@@ -46,9 +46,15 @@ export const getFileConfig = () => {
       S3_BUCKET: z.string().optional(),
       S3_ENABLE_PATH_STYLE: z.boolean(),
 
-      S3_ENDPOINT: z.string().url().optional(),
+      S3_ENDPOINT: z.preprocess(
+        (val) => (val && typeof val === 'string' && val.startsWith('http') ? val : undefined),
+        z.string().url().optional(),
+      ),
       S3_PREVIEW_URL_EXPIRE_IN: z.number(),
-      S3_PUBLIC_DOMAIN: z.string().url().optional(),
+      S3_PUBLIC_DOMAIN: z.preprocess(
+        (val) => (val && typeof val === 'string' && val.startsWith('http') ? val : undefined),
+        z.string().url().optional(),
+      ),
       S3_REGION: z.string().optional(),
       S3_SECRET_ACCESS_KEY: z.string().optional(),
       S3_SET_ACL: z.boolean(),

@@ -24,6 +24,17 @@ const nextConfig = defineConfig({
       webpackConfig.cache = false;
     }
 
+    // Suppress known warnings from next-auth beta / jose using Node.js-only APIs
+    // in Edge Runtime context. These are harmless — jose handles this gracefully at runtime.
+    // refs: https://github.com/nextauthjs/next-auth/issues/9382
+    webpackConfig.ignoreWarnings = [
+      ...(webpackConfig.ignoreWarnings || []),
+      {
+        module: /next-auth.*jose.*deflate\.js/,
+        message: /A Node\.js API is used/,
+      },
+    ];
+
     return webpackConfig;
   },
 });

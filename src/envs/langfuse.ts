@@ -15,7 +15,10 @@ export const getLangfuseConfig = () => {
       ENABLE_LANGFUSE: z.boolean(),
       LANGFUSE_SECRET_KEY: z.string().optional(),
       LANGFUSE_PUBLIC_KEY: z.string().optional(),
-      LANGFUSE_HOST: z.string().url(),
+      LANGFUSE_HOST: z.preprocess(
+        (val) => (val && typeof val === 'string' && val.startsWith('http') ? val : 'https://cloud.langfuse.com'),
+        z.string().url(),
+      ),
     },
   });
 };

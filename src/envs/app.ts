@@ -40,12 +40,18 @@ export const getAppConfig = () => {
       NEXT_PUBLIC_ENABLE_SENTRY: z.boolean(),
     },
     server: {
-      AGENTS_INDEX_URL: z.string().url(),
+      AGENTS_INDEX_URL: z.preprocess(
+        (val) => (val && typeof val === 'string' && val.startsWith('http') ? val : ASSISTANT_INDEX_URL),
+        z.string().url(),
+      ),
 
       DEFAULT_AGENT_CONFIG: z.string(),
       SYSTEM_AGENT: z.string().optional(),
 
-      PLUGINS_INDEX_URL: z.string().url(),
+      PLUGINS_INDEX_URL: z.preprocess(
+        (val) => (val && typeof val === 'string' && val.startsWith('http') ? val : PLUGINS_INDEX_URL),
+        z.string().url(),
+      ),
       PLUGIN_SETTINGS: z.string().optional(),
 
       APP_URL: z.string(),
@@ -89,16 +95,12 @@ export const getAppConfig = () => {
       // Sentry
       NEXT_PUBLIC_ENABLE_SENTRY: !!process.env.NEXT_PUBLIC_SENTRY_DSN,
 
-      AGENTS_INDEX_URL: !!process.env.AGENTS_INDEX_URL
-        ? process.env.AGENTS_INDEX_URL
-        : ASSISTANT_INDEX_URL,
+      AGENTS_INDEX_URL: process.env.AGENTS_INDEX_URL,
 
       DEFAULT_AGENT_CONFIG: process.env.DEFAULT_AGENT_CONFIG || '',
       SYSTEM_AGENT: process.env.SYSTEM_AGENT,
 
-      PLUGINS_INDEX_URL: !!process.env.PLUGINS_INDEX_URL
-        ? process.env.PLUGINS_INDEX_URL
-        : PLUGINS_INDEX_URL,
+      PLUGINS_INDEX_URL: process.env.PLUGINS_INDEX_URL,
 
       PLUGIN_SETTINGS: process.env.PLUGIN_SETTINGS,
 

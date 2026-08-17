@@ -36,5 +36,11 @@ export class DocService {
 }
 
 // Strangely, this `readdirSync` call is needed to read md files after Vercel deployment
-// Otherwise, mdx files cannot be found properly
-readdirSync(join(process.cwd(), 'docs'));
+// 很奇怪，需要加一行这个 `readdirSync` 才能在 vercel 部署后读到 md 文件
+// 否则没法正常找到 mdx 文件
+// Wrapped in try/catch to avoid ENOENT crash when docs/ directory doesn't exist (e.g. on CI)
+try {
+  readdirSync(join(process.cwd(), 'docs'));
+} catch {
+  // docs/ directory not present — safe to ignore
+}

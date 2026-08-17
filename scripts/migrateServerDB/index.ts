@@ -38,17 +38,37 @@ const runMigrations = async () => {
 
 let connectionString = process.env.DATABASE_URL;
 
-// only migrate database if the connection string is available
-if (!isDesktop && connectionString) {
+// Validate that DATABASE_URL is a proper URL (not a placeholder or key=value format)
+const isValidUrl = (url: string) => {
+  try {
+    new URL(url);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+// only migrate database if the connection string is available and valid
+if (!isDesktop && !connectionString) {
+  console.log('🟢 DATABASE_URL not set, migration skipped');
+} else if (!isDesktop && !isValidUrl(connectionString)) {
+  console.log('🟡 DATABASE_URL is not a valid URL, migration skipped');
+  console.log('   Make sure DATABASE_URL follows the format: postgresql://user:password@host:port/database');
+} else if (!isDesktop) {
   // eslint-disable-next-line unicorn/prefer-top-level-await
   runMigrations().catch((err) => {
     console.error('❌ Database migrate failed:', err);
 
     const errMsg = err.message as string;
+    const errCode = (err as NodeJS.ErrnoException).code;
 
     const constraint = (err as { constraint?: string })?.constraint;
 
-    if (errMsg.includes('extension "vector" is not available')) {
+    if (errCode === 'ERR_INVALID_URL' || errMsg.includes('Invalid URL')) {
+      console.log('🟡 DATABASE_URL could not be parsed, migration skipped');
+      // eslint-disable-next-line unicorn/no-process-exit
+      process.exit(0);
+    } else if (errMsg.includes('extension "vector" is not available')) {
       console.info(PGVECTOR_HINT);
     } else if (constraint === 'users_email_unique' || errMsg.includes('users_email_unique')) {
       console.info(DUPLICATE_EMAIL_HINT);
@@ -60,5 +80,5 @@ if (!isDesktop && connectionString) {
     process.exit(1);
   });
 } else {
-  console.log('🟢 not find database env or in desktop mode, migration skipped');
+  console.log('🟢 in desktop mode, migration skipped');
 }
