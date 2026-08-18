@@ -286,7 +286,7 @@ const DisabledModels = memo<DisabledModelsProps>(({ activeTab, providerId }) => 
                     label: t('providerModels.list.disabledActions.sortReleasedAtDesc'),
                     onClick: () => updateSortType(SortType.ReleasedAtDesc),
                   },
-                ] as ItemType[]
+                ] as any
               }
             >
               <ActionIcon

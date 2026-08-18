@@ -51,7 +51,7 @@ const isValidUrl = (url: string) => {
 // only migrate database if the connection string is available and valid
 if (!isDesktop && !connectionString) {
   console.log('🟢 DATABASE_URL not set, migration skipped');
-} else if (!isDesktop && !isValidUrl(connectionString)) {
+} else if (!isDesktop && !isValidUrl(connectionString as string)) {
   console.log('🟡 DATABASE_URL is not a valid URL, migration skipped');
   console.log('   Make sure DATABASE_URL follows the format: postgresql://user:password@host:port/database');
 } else if (!isDesktop) {

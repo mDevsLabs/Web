@@ -159,14 +159,14 @@ const ActionDropdown = memo<ActionDropdownProps>(
             onClick: (info) => {
               if (keepOpenOnClick) {
                 info.domEvent.stopPropagation();
-                menu.onClick?.(info);
-                itemOnClick?.(info);
+                menu.onClick?.(info as any);
+                itemOnClick?.(info as any);
                 return;
               }
 
               info.domEvent.preventDefault();
-              menu.onClick?.(info);
-              itemOnClick?.(info);
+              menu.onClick?.(info as any);
+              itemOnClick?.(info as any);
             },
           };
         });

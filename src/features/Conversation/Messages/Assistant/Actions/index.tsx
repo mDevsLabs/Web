@@ -48,7 +48,7 @@ const buildActionsMap = (items: MessageActionItemOrDivider[]): Map<string, Messa
       if ('children' in item && item.children) {
         for (const child of item.children) {
           if (child.key) {
-            map.set(`${item.key}.${child.key}`, child as unknown as MessageActionItem);
+            map.set(`${String(item.key)}.${String(child.key)}`, child as unknown as MessageActionItem);
           }
         }
       }

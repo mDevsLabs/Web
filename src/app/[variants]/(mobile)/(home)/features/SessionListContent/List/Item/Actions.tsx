@@ -182,7 +182,7 @@ const Actions = memo<ActionProps>(({ group, id, openCreateGroupModal, parentType
   );
 
   return (
-    <DropdownMenu items={items} onOpenChange={setOpen}>
+    <DropdownMenu items={items as any} onOpenChange={setOpen}>
       <ActionIcon
         icon={MoreVertical}
         size={{

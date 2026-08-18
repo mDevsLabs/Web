@@ -383,7 +383,7 @@ const MasonryFileItem = memo<MasonryFileItemProps>(
         draggable={!!knowledgeBaseId}
         onContextMenu={(e) => {
           e.preventDefault();
-          showContextMenu(menuItems());
+          showContextMenu(menuItems() as any);
         }}
         onDragEnd={handleDragEnd}
         onDragLeave={handleDragLeave}

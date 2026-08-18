@@ -41,7 +41,7 @@ const ViewSwitcher = memo(() => {
   );
 
   return (
-    <DropdownMenu items={menuItems} placement="bottomRight">
+    <DropdownMenu items={menuItems as any} placement="bottomRight">
       <ActionIconWithChevron icon={currentViewIcon} title={currentViewLabel} />
     </DropdownMenu>
   );

@@ -244,7 +244,7 @@ export const HierarchyNode = memo<HierarchyNodeProps>(
             onClick={() => handleFolderClick(item.id, item.slug)}
             onContextMenu={(e) => {
               e.preventDefault();
-              showContextMenu(menuItems());
+              showContextMenu(menuItems() as any);
             }}
             onDragEnd={handleDragEnd}
             onDragLeave={handleDragLeave}
@@ -339,7 +339,7 @@ export const HierarchyNode = memo<HierarchyNodeProps>(
           onClick={handleItemClick}
           onContextMenu={(e) => {
             e.preventDefault();
-            showContextMenu(menuItems());
+            showContextMenu(menuItems() as any);
           }}
           onDragEnd={handleDragEnd}
           onDragStart={handleDragStart}

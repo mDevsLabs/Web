@@ -10,7 +10,7 @@ interface DropdownMenuProps {
 
 const DropdownMenu = memo<DropdownMenuProps>(({ items, className }) => {
   return (
-    <DropdownMenuUI items={items}>
+    <DropdownMenuUI items={items as any}>
       <ActionIcon className={className} icon={MoreHorizontalIcon} size={'small'} />
     </DropdownMenuUI>
   );

@@ -51,7 +51,7 @@ const ConfigGroupModal = memo<ModalProps>(({ open, onCancel }) => {
     >
       <Flexbox>
         <SortableList
-          items={sessionGroupItems}
+          items={sessionGroupItems as SessionGroupItem[]}
           onChange={(items: SessionGroupItem[]) => {
             updateGroupSort(items);
           }}

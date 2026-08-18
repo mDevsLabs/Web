@@ -367,7 +367,7 @@ const FileListItem = memo<FileListItemProps>(
     });
 
     return (
-      <ContextMenuTrigger items={menuItems}>
+      <ContextMenuTrigger items={menuItems as any}>
         <Flexbox
           align={'center'}
           className={cx(

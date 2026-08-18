@@ -127,7 +127,7 @@ export const useSlashItems = (): SlashOptions['items'] => {
         ...item,
         extra: (
           <Text code fontSize={12} type={'secondary'}>
-            {item.key}
+            {String(item.key)}
           </Text>
         ),
         style: {
