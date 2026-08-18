@@ -27,7 +27,15 @@ export const getEmailConfig = () => {
       RESEND_FROM: z.string().optional(),
       SMTP_FROM: z.string().optional(),
       SMTP_HOST: z.string().optional(),
-      SMTP_PORT: z.coerce.number().optional(),
+      SMTP_PORT: z
+        .any()
+        .transform((v) => {
+          if (!v) return undefined;
+          const num = Number(v);
+          return isNaN(num) || num === 0 ? undefined : num;
+        })
+        .pipe(z.number().optional())
+        .optional(),
       SMTP_SECURE: z.boolean().optional(),
       SMTP_USER: z.string().optional(),
       SMTP_PASS: z.string().optional(),
