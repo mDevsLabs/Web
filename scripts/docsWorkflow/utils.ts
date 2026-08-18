@@ -1,6 +1,7 @@
-import { globSync } from 'glob';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+
+import { globSync } from 'glob';
 import remarkGfm from 'remark-gfm';
 import remarkParse from 'remark-parse';
 import { unified } from 'unified';
@@ -60,12 +61,12 @@ export const mergeAndDeduplicateArrays = (...arrays: string[][]) => {
 
 const mimeToExtensions = {
   'image/gif': '.gif',
-  // 图片类型
+  // Image types
   'image/jpeg': '.jpg',
   'image/png': '.png',
   'image/svg+xml': '.svg',
   'image/webp': '.webp',
-  // 视频类型
+  // Video types
   'video/mp4': '.mp4',
   'video/mpeg': '.mpeg',
   'video/ogg': '.ogv',

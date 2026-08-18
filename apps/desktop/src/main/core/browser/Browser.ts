@@ -1,28 +1,66 @@
-import { APP_WINDOW_MIN_SIZE, TITLE_BAR_HEIGHT } from '@lobechat/desktop-bridge';
-import { MainBroadcastEventKey, MainBroadcastParams } from '@lobechat/electron-client-ipc';
-import {
-  BrowserWindow,
-  BrowserWindowConstructorOptions,
-  session as electronSession,
-  ipcMain,
-  screen,
-} from 'electron';
 import console from 'node:console';
-import { join } from 'node:path';
+import path from 'node:path';
+
+import { APP_WINDOW_MIN_SIZE } from '@lobechat/desktop-bridge';
+import type { MainBroadcastEventKey, MainBroadcastParams } from '@lobechat/electron-client-ipc';
+import type { BrowserWindowConstructorOptions } from 'electron';
+import { app, BrowserWindow, ipcMain, screen, session as electronSession, shell } from 'electron';
 
 import { preloadDir, resourcesDir } from '@/const/dir';
-import { isMac } from '@/const/env';
-import { ELECTRON_BE_PROTOCOL_SCHEME } from '@/const/protocol';
+import { DESKTOP_EXTERNAL_NAVIGATION_HOSTS, isMac } from '@/const/env';
 import RemoteServerConfigCtr from '@/controllers/RemoteServerConfigCtr';
 import { backendProxyProtocolManager } from '@/core/infrastructure/BackendProxyProtocolManager';
-import { setResponseHeader } from '@/utils/http-headers';
+import { appendVercelCookie, setResponseHeader } from '@/utils/http-headers';
 import { createLogger } from '@/utils/logger';
+import { getSystemLanguage, resolveUILocale } from '@/utils/system-language';
+import { SYSTEM_LANGUAGE_ARG_PREFIX } from '~common/systemLanguage';
 
 import type { App } from '../App';
 import { WindowStateManager } from './WindowStateManager';
 import { WindowThemeManager } from './WindowThemeManager';
 
 const logger = createLogger('core:Browser');
+const BROWSER_WEBVIEW_PARTITION = 'persist:lobe-browser-app';
+
+const getExternalNavigationHosts = () =>
+  DESKTOP_EXTERNAL_NAVIGATION_HOSTS.split(',')
+    .map((host) => host.trim().toLowerCase())
+    .filter(Boolean);
+
+const EXTERNALLY_OPENABLE_PROTOCOLS = new Set(['http:', 'https:', 'mailto:']);
+
+/**
+ * The renderer runs on `app://renderer`, so a link the renderer did not claim can
+ * reach the window-open handler with an internal URL. Handing those to the OS opens
+ * nothing — deny instead of silently failing.
+ */
+const isExternallyOpenableUrl = (rawUrl: string) => {
+  try {
+    return EXTERNALLY_OPENABLE_PROTOCOLS.has(new URL(rawUrl).protocol);
+  } catch {
+    return false;
+  }
+};
+
+const shouldOpenTopLevelNavigationExternally = (rawUrl: string) => {
+  const externalNavigationHosts = getExternalNavigationHosts();
+  if (externalNavigationHosts.length === 0) return false;
+
+  let url: URL;
+  try {
+    url = new URL(rawUrl);
+  } catch {
+    return false;
+  }
+
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') return false;
+
+  const hostname = url.hostname.toLowerCase();
+
+  return externalNavigationHosts.some(
+    (externalHost) => hostname === externalHost || hostname.endsWith(`.${externalHost}`),
+  );
+};
 
 // ==================== Types ====================
 
@@ -33,6 +71,7 @@ export interface BrowserWindowOpts extends BrowserWindowConstructorOptions {
   keepAlive?: boolean;
   parentIdentifier?: string;
   path: string;
+  restoreWindowState?: boolean;
   showOnInit?: boolean;
   title?: string;
   width?: number;
@@ -46,6 +85,11 @@ export default class Browser {
   private readonly themeManager: WindowThemeManager;
 
   private _browserWindow?: BrowserWindow;
+  private hasPresentedFirstFrame = false;
+  private resolveFirstFrame!: () => void;
+  private readonly firstFramePromise = new Promise<void>((resolve) => {
+    this.resolveFirstFrame = resolve;
+  });
 
   readonly identifier: string;
   readonly options: BrowserWindowOpts;
@@ -114,13 +158,25 @@ export default class Browser {
   // ==================== Window Creation ====================
 
   private createBrowserWindow(): BrowserWindow {
-    const { title, width, height, ...rest } = this.options;
+    const {
+      title,
+      width,
+      height,
+      restoreWindowState = true,
+      // Strip platform visual effect props — these are managed exclusively
+      // by WindowThemeManager.getPlatformConfig() to prevent config leaking
+      // from appBrowsers/windowTemplates into the BrowserWindow constructor.
+      vibrancy: _vibrancy,
+      visualEffectState: _visualEffectState,
+      transparent: _transparent,
+      ...rest
+    } = this.options;
 
-    const resolvedState = this.stateManager.resolveState({ height, width });
+    const resolvedState = restoreWindowState
+      ? this.stateManager.resolveState({ height, width })
+      : { height, width };
     logger.info(`Creating new BrowserWindow instance: ${this.identifier}`);
     logger.debug(`[${this.identifier}] Resolved window state: ${JSON.stringify(resolvedState)}`);
-
-
 
     return new BrowserWindow({
       ...rest,
@@ -131,18 +187,18 @@ export default class Browser {
       height: resolvedState.height,
       show: false,
       title,
-
-      vibrancy: 'sidebar',
-      visualEffectState: 'active',
       webPreferences: {
+        additionalArguments: [`${SYSTEM_LANGUAGE_ARG_PREFIX}${getSystemLanguage()}`],
         backgroundThrottling: false,
         contextIsolation: true,
-        preload: join(preloadDir, 'index.js'),
+        preload: path.join(preloadDir, 'index.js'),
         sandbox: false,
+        webviewTag: true,
       },
       width: resolvedState.width,
       x: resolvedState.x,
       y: resolvedState.y,
+      // Platform visual config is the SOLE source of vibrancy / transparency / titleBarOverlay.
       ...this.themeManager.getPlatformConfig(),
     });
   }
@@ -163,22 +219,52 @@ export default class Browser {
     // Setup devtools if enabled
     if (this.options.devTools) {
       logger.debug(`[${this.identifier}] Opening DevTools.`);
-      browserWindow.webContents.openDevTools();
+      browserWindow.webContents.openDevTools({ mode: 'detach' });
     }
 
     // Setup event listeners
     this.setupEventListeners(browserWindow);
+
+    // Setup external link handler (prevents opening new windows in renderer)
+    this.setupWindowOpenHandler(browserWindow);
+    this.setupWebviewSecurity(browserWindow);
+  }
+
+  private setupWebviewSecurity(browserWindow: BrowserWindow): void {
+    browserWindow.webContents.on('will-attach-webview', (event, webPreferences, params) => {
+      if (params.partition !== BROWSER_WEBVIEW_PARTITION) {
+        event.preventDefault();
+        return;
+      }
+
+      let url: URL;
+      try {
+        url = new URL(params.src);
+      } catch {
+        event.preventDefault();
+        return;
+      }
+
+      if (!['about:', 'http:', 'https:'].includes(url.protocol)) {
+        event.preventDefault();
+        return;
+      }
+
+      delete webPreferences.preload;
+      webPreferences.contextIsolation = true;
+      webPreferences.nodeIntegration = false;
+      webPreferences.partition = BROWSER_WEBVIEW_PARTITION;
+      webPreferences.sandbox = true;
+    });
   }
 
   private initiateContentLoading(): void {
-    logger.debug(`[${this.identifier}] Initiating placeholder and URL loading sequence.`);
-    this.loadPlaceholder().then(() => {
-      this.loadUrl(this.options.path).catch((e) => {
-        logger.error(
-          `[${this.identifier}] Initial loadUrl error for path '${this.options.path}':`,
-          e,
-        );
-      });
+    logger.debug(`[${this.identifier}] Loading initial renderer URL directly.`);
+    this.loadUrl(this.options.path).catch((e) => {
+      logger.error(
+        `[${this.identifier}] Initial loadUrl error for path '${this.options.path}':`,
+        e,
+      );
     });
   }
 
@@ -188,8 +274,50 @@ export default class Browser {
     this.setupReadyToShowListener(browserWindow);
     this.setupCloseListener(browserWindow);
     this.setupFocusListener(browserWindow);
+    this.setupFullscreenListener(browserWindow);
+    this.setupTopLevelNavigationListener(browserWindow);
     this.setupWillPreventUnloadListener(browserWindow);
     this.setupContextMenu(browserWindow);
+  }
+
+  private setupTopLevelNavigationListener(browserWindow: BrowserWindow): void {
+    logger.debug(`[${this.identifier}] Setting up top-level navigation listener.`);
+
+    browserWindow.webContents.on('will-navigate', (event, url) => {
+      if (!shouldOpenTopLevelNavigationExternally(url)) return;
+
+      logger.info(`[${this.identifier}] Opening top-level navigation externally: ${url}`);
+      event.preventDefault();
+
+      shell.openExternal(url).catch((error) => {
+        logger.error(`[${this.identifier}] Failed to open external navigation URL: ${url}`, error);
+      });
+    });
+  }
+
+  /**
+   * Setup window open handler to intercept external links
+   * Prevents opening new windows in renderer and uses system browser instead
+   */
+  private setupWindowOpenHandler(browserWindow: BrowserWindow): void {
+    logger.debug(`[${this.identifier}] Setting up window open handler for external links`);
+
+    browserWindow.webContents.setWindowOpenHandler(({ url }) => {
+      logger.info(`[${this.identifier}] Intercepted window open for URL: ${url}`);
+
+      if (!isExternallyOpenableUrl(url)) {
+        logger.debug(`[${this.identifier}] Denied non-external window open URL: ${url}`);
+        return { action: 'deny' };
+      }
+
+      // Open external URL in system browser
+      shell.openExternal(url).catch((error) => {
+        logger.error(`[${this.identifier}] Failed to open external URL: ${url}`, error);
+      });
+
+      // Deny creating new window in renderer
+      return { action: 'deny' };
+    });
   }
 
   private setupWillPreventUnloadListener(browserWindow: BrowserWindow): void {
@@ -209,9 +337,11 @@ export default class Browser {
     logger.debug(`[${this.identifier}] Setting up 'ready-to-show' event listener.`);
     browserWindow.once('ready-to-show', () => {
       logger.debug(`[${this.identifier}] Window 'ready-to-show' event fired.`);
+      this.hasPresentedFirstFrame = true;
+      this.resolveFirstFrame();
       if (this.options.showOnInit) {
         logger.debug(`Showing window ${this.identifier} because showOnInit is true.`);
-        browserWindow.show();
+        this.show();
       } else {
         logger.debug(`Window ${this.identifier} not shown because showOnInit is false.`);
       }
@@ -232,6 +362,27 @@ export default class Browser {
     browserWindow.on('focus', () => {
       logger.debug(`[${this.identifier}] Window 'focus' event fired.`);
       this.broadcast('windowFocused');
+      // Clear any completion badge once the user returns to the app.
+      try {
+        app.setBadgeCount(0);
+        if (process.platform === 'darwin' && app.dock) app.dock.setBadge('');
+      } catch {
+        /* noop — some platforms may not support badge counts */
+      }
+    });
+  }
+
+  private setupFullscreenListener(browserWindow: BrowserWindow): void {
+    logger.debug(`[${this.identifier}] Setting up fullscreen event listeners.`);
+
+    browserWindow.on('enter-full-screen', () => {
+      this.themeManager.handleFullscreenChange(true);
+      this.broadcast('windowFullscreenChanged', { isFullScreen: true });
+    });
+
+    browserWindow.on('leave-full-screen', () => {
+      this.themeManager.handleFullscreenChange(false);
+      this.broadcast('windowFullscreenChanged', { isFullScreen: false });
     });
   }
 
@@ -262,6 +413,7 @@ export default class Browser {
 
   show(): void {
     logger.debug(`Showing window: ${this.identifier}`);
+    this.ensureForegroundAppOnMac();
     if (!this._browserWindow?.isDestroyed()) {
       this.determineWindowPosition();
     }
@@ -294,7 +446,7 @@ export default class Browser {
     if (this._browserWindow?.isVisible() && this._browserWindow.isFocused()) {
       this.hide();
     } else {
-      this._browserWindow?.show();
+      this.show();
       this._browserWindow?.focus();
     }
   }
@@ -353,12 +505,38 @@ export default class Browser {
     this._browserWindow!.setPosition(newX, newY, false);
   }
 
+  private ensureForegroundAppOnMac(): void {
+    if (!isMac || this.identifier !== 'app') return;
+
+    try {
+      app.setActivationPolicy('regular');
+      app.dock?.show();
+    } catch (error) {
+      logger.warn(`[${this.identifier}] Failed to restore regular activation policy:`, error);
+    }
+  }
+
   // ==================== Content Loading ====================
 
   loadPlaceholder = async (): Promise<void> => {
     logger.debug(`[${this.identifier}] Loading splash screen placeholder`);
-    await this._browserWindow!.loadFile(join(resourcesDir, 'splash.html'));
+    await this._browserWindow!.loadFile(path.join(resourcesDir, 'splash.html'));
     logger.debug(`[${this.identifier}] Splash screen placeholder loaded.`);
+  };
+
+  /** Wait until Chromium has produced a presentable frame, with a safety timeout. */
+  waitForFirstFrame = async (timeoutMs: number = 5000): Promise<void> => {
+    if (this.hasPresentedFirstFrame) return;
+
+    let timeout: NodeJS.Timeout | undefined;
+    await Promise.race([
+      this.firstFramePromise,
+      new Promise<void>((resolve) => {
+        timeout = setTimeout(resolve, timeoutMs);
+        timeout.unref?.();
+      }),
+    ]);
+    if (timeout) clearTimeout(timeout);
   };
 
   loadUrl = async (path: string): Promise<void> => {
@@ -378,17 +556,18 @@ export default class Browser {
   };
 
   private buildUrlWithLocale(initUrl: string): string {
-    const storedLocale = this.app.storeManager.get('locale', 'auto');
-    if (storedLocale && storedLocale !== 'auto') {
-      return `${initUrl}${initUrl.includes('?') ? '&' : '?'}lng=${storedLocale}`;
-    }
-    return initUrl;
+    // Always inject `lng` — including for `auto`, where the main process is the
+    // only side that can resolve the real OS language (the renderer's
+    // `navigator.language` reports English once packaging prunes the app's locales).
+    const locale = resolveUILocale(this.app.storeManager.get('locale', 'auto'));
+
+    return `${initUrl}${initUrl.includes('?') ? '&' : '?'}lng=${locale}`;
   }
 
   private async handleLoadError(urlWithLocale: string): Promise<void> {
     try {
       logger.info(`[${this.identifier}] Attempting to load error page...`);
-      await this._browserWindow!.loadFile(join(resourcesDir, 'error.html'));
+      await this._browserWindow!.loadFile(path.join(resourcesDir, 'error.html'));
       logger.info(`[${this.identifier}] Error page loaded successfully.`);
 
       this.setupRetryHandler(urlWithLocale);
@@ -411,7 +590,7 @@ export default class Browser {
       } catch (err: any) {
         logger.error(`[${this.identifier}] Retry connection failed:`, err);
         try {
-          await this._browserWindow?.loadFile(join(resourcesDir, 'error.html'));
+          await this._browserWindow?.loadFile(path.join(resourcesDir, 'error.html'));
         } catch (loadErr) {
           logger.error(`[${this.identifier}] Failed to reload error page:`, loadErr);
         }
@@ -464,7 +643,7 @@ export default class Browser {
 
   /**
    * Setup CORS bypass for ALL requests
-   * In production, the renderer uses app://next protocol which triggers CORS
+   * In production, the renderer uses app://renderer protocol which triggers CORS
    */
   private setupCORSBypass(browserWindow: BrowserWindow): void {
     logger.debug(`[${this.identifier}] Setting up CORS bypass for all requests`);
@@ -480,6 +659,8 @@ export default class Browser {
         delete requestHeaders['Origin'];
         logger.debug(`[${this.identifier}] Removed Origin header for: ${details.url}`);
       }
+
+      appendVercelCookie(requestHeaders);
 
       callback({ requestHeaders });
     });
@@ -513,7 +694,10 @@ export default class Browser {
   }
 
   /**
-   * Rewrite tRPC requests to remote server and inject OIDC token
+   * Bind this window's session to the backend proxy. The `app://` request
+   * interceptor (wired in `App.ts`) consumes this context to route
+   * `/trpc`, `/webapi`, `/api/auth`, and `/market` requests to the remote
+   * LobeHub server.
    */
   private setupRemoteServerRequestHook(browserWindow: BrowserWindow): void {
     const session = browserWindow.webContents.session;
@@ -529,7 +713,6 @@ export default class Browser {
         const remoteServerUrl = await remoteServerConfigCtr.getRemoteServerUrl(config);
         return remoteServerUrl || null;
       },
-      scheme: ELECTRON_BE_PROTOCOL_SCHEME,
       source: this.identifier,
     });
   }

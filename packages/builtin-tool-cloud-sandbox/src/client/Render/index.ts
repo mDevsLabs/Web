@@ -1,27 +1,36 @@
+import { LocalSystemRenders } from '@lobechat/builtin-tool-local-system/client';
+import { RunCommandRender } from '@lobechat/shared-tool-ui/renders';
+
 import { CloudSandboxApiName } from '../../types';
-import EditLocalFile from './EditLocalFile';
 import ExecuteCode from './ExecuteCode';
 import ExportFile from './ExportFile';
-import ListFiles from './ListFiles';
-import MoveLocalFiles from './MoveLocalFiles';
-import ReadLocalFile from './ReadLocalFile';
-import RunCommand from './RunCommand';
-import SearchFiles from './SearchFiles';
-import WriteFile from './WriteFile';
 
 /**
  * Cloud Sandbox Render Components Registry
+ *
+ * Reuses local-system renders for shared file/shell operations.
+ * Only cloud-specific tools (executeCode, exportFile) have their own renders.
+ *
+ * Each component is also registered under the legacy long API name so old DB
+ * messages with apiName like 'readLocalFile' still render after the rename.
  */
 export const CloudSandboxRenders = {
-  [CloudSandboxApiName.editLocalFile]: EditLocalFile,
+  [CloudSandboxApiName.editFile]: LocalSystemRenders.editFile,
   [CloudSandboxApiName.executeCode]: ExecuteCode,
   [CloudSandboxApiName.exportFile]: ExportFile,
-  [CloudSandboxApiName.listLocalFiles]: ListFiles,
-  [CloudSandboxApiName.moveLocalFiles]: MoveLocalFiles,
-  [CloudSandboxApiName.readLocalFile]: ReadLocalFile,
-  [CloudSandboxApiName.runCommand]: RunCommand,
-  [CloudSandboxApiName.searchLocalFiles]: SearchFiles,
-  [CloudSandboxApiName.writeLocalFile]: WriteFile,
+  [CloudSandboxApiName.listFiles]: LocalSystemRenders.listFiles,
+  [CloudSandboxApiName.moveFiles]: LocalSystemRenders.moveFiles,
+  [CloudSandboxApiName.readFile]: LocalSystemRenders.readFile,
+  [CloudSandboxApiName.runCommand]: RunCommandRender,
+  [CloudSandboxApiName.searchFiles]: LocalSystemRenders.searchFiles,
+  [CloudSandboxApiName.writeFile]: LocalSystemRenders.writeFile,
+  // Legacy aliases — keep these so historical messages keep rendering
+  editLocalFile: LocalSystemRenders.editFile,
+  listLocalFiles: LocalSystemRenders.listFiles,
+  moveLocalFiles: LocalSystemRenders.moveFiles,
+  readLocalFile: LocalSystemRenders.readFile,
+  searchLocalFiles: LocalSystemRenders.searchFiles,
+  writeLocalFile: LocalSystemRenders.writeFile,
 };
 
 // Export API names for use in other modules

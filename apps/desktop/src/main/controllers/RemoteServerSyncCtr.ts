@@ -1,17 +1,22 @@
-import { ProxyTRPCStreamRequestParams } from '@lobechat/electron-client-ipc';
-import { IpcMainEvent, WebContents, ipcMain } from 'electron';
-import { HttpProxyAgent } from 'http-proxy-agent';
-import { HttpsProxyAgent } from 'https-proxy-agent';
 import { Buffer } from 'node:buffer';
-import http, { IncomingMessage, OutgoingHttpHeaders } from 'node:http';
+import type { IncomingMessage, OutgoingHttpHeaders } from 'node:http';
+import http from 'node:http';
 import https from 'node:https';
 import { URL } from 'node:url';
 
-import { defaultProxySettings } from '@/const/store';
-import { createLogger } from '@/utils/logger';
+import type { ProxyTRPCStreamRequestParams } from '@lobechat/electron-client-ipc';
+import type { IpcMainEvent, WebContents } from 'electron';
+import { ipcMain } from 'electron';
+import { HttpProxyAgent } from 'http-proxy-agent';
+import { HttpsProxyAgent } from 'https-proxy-agent';
 
-import RemoteServerConfigCtr from './RemoteServerConfigCtr';
+import { defaultProxySettings } from '@/const/store';
+import { appendVercelCookie } from '@/utils/http-headers';
+import { createLogger } from '@/utils/logger';
+import { setDesktopUserAgentHeader } from '@/utils/user-agent';
+
 import { ControllerModule } from './index';
+import RemoteServerConfigCtr from './RemoteServerConfigCtr';
 
 // Create logger
 const logger = createLogger('controllers:RemoteServerSyncCtr');
@@ -55,8 +60,7 @@ export default class RemoteServerSyncCtr extends ControllerModule {
     logger.debug(`${logPrefix} Received stream:start IPC call`);
 
     try {
-      const config = await this.remoteServerConfigCtr.getRemoteServerConfig();
-      if (!config.active || (config.storageMode === 'selfHost' && !config.remoteServerUrl)) {
+      if (!(await this.remoteServerConfigCtr.isRemoteServerConfigured())) {
         logger.warn(`${logPrefix} Remote server sync not active or configured.`);
         event.sender.send(
           `stream:error:${requestId}`,
@@ -162,7 +166,7 @@ export default class RemoteServerSyncCtr extends ControllerModule {
       });
     });
 
-    // 5. 监听请求本身的错误（如 DNS 解析失败）
+    // 5. Listen for request errors (e.g., DNS resolution failure)
     clientReq.on('error', (error) => {
       logger.error(`${logPrefix} Error forwarding request:`, error);
       if (sender.isDestroyed()) return;
@@ -188,15 +192,16 @@ export default class RemoteServerSyncCtr extends ControllerModule {
     url: URL;
   }) {
     // Prepare headers, cloning and adding Oidc-Auth
-    const requestHeaders: OutgoingHttpHeaders = { ...headers }; // Use OutgoingHttpHeaders
-    requestHeaders['Oidc-Auth'] = accessToken;
+    const requestHeaders: OutgoingHttpHeaders = { ...headers, ['Oidc-Auth']: accessToken };
+    appendVercelCookie(requestHeaders);
+    setDesktopUserAgentHeader(requestHeaders);
 
     // Let node handle Host, Content-Length etc. Remove potentially problematic headers
     delete requestHeaders['host'];
     delete requestHeaders['connection']; // Often causes issues
     // delete requestHeaders['content-length']; // Let node handle it based on body
 
-    // 读取代理配置
+    // Read proxy configuration
     const proxyConfig = this.app.storeManager.get('networkProxy', defaultProxySettings);
 
     let agent;
@@ -211,7 +216,7 @@ export default class RemoteServerSyncCtr extends ControllerModule {
       // Use union type
       headers: requestHeaders,
       hostname: url.hostname,
-      method: method,
+      method,
       path: url.pathname + url.search,
       port: url.port || (url.protocol === 'https:' ? 443 : 80),
       protocol: url.protocol,

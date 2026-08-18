@@ -1,8 +1,9 @@
 import createDebug from 'debug';
 
-import { CreateImageOptions } from '../../core/openaiCompatibleFactory';
-import { CreateImagePayload, CreateImageResponse } from '../../types/image';
+import type { CreateImageOptions } from '../../core/openaiCompatibleFactory';
+import type { CreateImagePayload, CreateImageResponse } from '../../types/image';
 import { AgentRuntimeError } from '../../utils/createError';
+import { resolveMappedModelId } from '../../utils/modelIdMapping';
 
 const log = createDebug('lobe-image:minimax');
 
@@ -30,19 +31,30 @@ export async function createMiniMaxImage(
 ): Promise<CreateImageResponse> {
   const { apiKey, baseURL, provider } = options;
   const { model, params } = payload;
+  const requestModel = resolveMappedModelId(model, options);
 
   try {
     const endpoint = `${baseURL}/image_generation`;
 
+    const requestBody: Record<string, unknown> = {
+      aspect_ratio: params.aspectRatio,
+      model: requestModel,
+      n: 1,
+      prompt: params.prompt,
+      aigc_watermark: params.watermark ?? false,
+      prompt_optimizer: params.promptExtend ?? false,
+      ...(typeof params.seed === 'number' ? { seed: params.seed } : {}),
+    };
+
+    if (params.imageUrls && params.imageUrls.length > 0) {
+      requestBody.subject_reference = params.imageUrls.map((url) => ({
+        type: 'character',
+        image_file: url,
+      }));
+    }
+
     const response = await fetch(endpoint, {
-      body: JSON.stringify({
-        aspect_ratio: params.aspectRatio,
-        model,
-        n: 1,
-        prompt: params.prompt,
-        //prompt_optimizer: true, // 开启 prompt 自动优化
-        ...(typeof params.seed === 'number' ? { seed: params.seed } : {}),
-      }),
+      body: JSON.stringify(requestBody),
       headers: {
         'Authorization': `Bearer ${apiKey}`,
         'Content-Type': 'application/json',

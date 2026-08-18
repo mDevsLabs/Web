@@ -42,11 +42,11 @@ Docker 部署版本的升级非常简单，只需要重新部署 LobeHub 的最�
 <Steps>
   ### 停止并删除当前运行的 LobeHub 容器
 
-  假设 LobeHub 容器的名称是 `lobe-chat`，使用以下指令停止并删除当前运行的 LobeHub 容器：
+  假设 LobeHub 容器的名称是 `lobehub`，使用以下指令停止并删除当前运行的 LobeHub 容器：
 
   ```fish
-  docker stop lobe-chat
-  docker rm lobe-chat
+  docker stop lobehub
+  docker rm lobehub
   ```
 
   ### 拉取最新的 LobeHub 镜像
@@ -54,7 +54,7 @@ Docker 部署版本的升级非常简单，只需要重新部署 LobeHub 的最�
   使用以下命令拉取 LobeHub 的最新 Docker 镜像：
 
   ```fish
-  docker pull lobehub/lobe-chat
+  docker pull lobehub/lobehub
   ```
 
   ### 重新启动 Docker 容器
@@ -65,8 +65,8 @@ Docker 部署版本的升级非常简单，只需要重新部署 LobeHub 的最�
   docker run -d -p 3210:3210 \
     -e OPENAI_API_KEY=sk-xxxx \
     -e OPENAI_PROXY_URL=https://api-proxy.com/v1 \
-    --name lobe-chat \
-    lobehub/lobe-chat
+    --name lobehub \
+    lobehub/lobehub
   ```
 </Steps>
 
@@ -88,20 +88,20 @@ Docker 部署版本的升级非常简单，只需要重新部署 LobeHub 的最�
   ```env
   OPENAI_API_KEY=sk-xxxx
   OPENAI_PROXY_URL=https://api-proxy.com/v1
-  OPENAI_MODEL_LIST=-gpt-4,-gpt-4-32k,-gpt-3.5-turbo-16k,gpt-3.5-turbo-1106=gpt-3.5-turbo-16k,gpt-4-0125-preview=gpt-4-turbo,gpt-4-vision-preview=gpt-4-vision
+  OPENAI_MODEL_LIST=-gpt-4,-gpt-4-32k,-gpt-3.5-turbo-16k,gpt-3.5-turbo-1106=gpt-3.5-turbo-16k,gpt-4.1=gpt-4-turbo,gpt-4o=gpt-4-vision
   ```
 
   然后，你可以使用以下脚本来自动更新：
 
   ```bash
   #!/bin/bash
-  # auto-update-lobe-chat.sh
+  # auto-update-lobehub.sh
 
   # 设置代理（可选）
   # export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 
   # 拉取最新的镜像并将输出存储在变量中
-  output=$(docker pull lobehub/lobe-chat:latest 2>&1)
+  output=$(docker pull lobehub/lobehub:latest 2>&1)
 
   # 检查拉取命令是否成功执行
   if [ $? -ne 0 ]; then
@@ -109,27 +109,27 @@ Docker 部署版本的升级非常简单，只需要重新部署 LobeHub 的最�
   fi
 
   # 检查输出中是否包含特定的字符串
-  echo "$output" | grep -q "Image is up to date for lobehub/lobe-chat:latest"
+  echo "$output" | grep -q "Image is up to date for lobehub/lobehub:latest"
 
   # 如果镜像已经是最新的，则不执行任何操作
   if [ $? -eq 0 ]; then
     exit 0
   fi
 
-  echo "Detected lobe-chat update"
+  echo "Detected lobehub update"
 
   # 删除旧的容器
-  echo "Removed: $(docker rm -f lobe-chat)"
+  echo "Removed: $(docker rm -f lobehub)"
 
   # 运行新的容器(请将env配置文件地址改为你的实际地址)
-  echo "Started: $(docker run -d --network=host --env-file path/to/lobe.env --name=lobe-chat --restart=always lobehub/lobe-chat)"
+  echo "Started: $(docker run -d --network=host --env-file path/to/lobe.env --name=lobehub --restart=always lobehub/lobehub)"
 
   # 打印更新的时间和版本
   echo "Update time: $(date)"
-  echo "Version: $(docker inspect lobehub/lobe-chat:latest | grep 'org.opencontainers.image.version' | awk -F'"' '{print $4}')"
+  echo "Version: $(docker inspect lobehub/lobehub:latest | grep 'org.opencontainers.image.version' | awk -F'"' '{print $4}')"
 
   # 清理不再使用的镜像
-  docker images | grep 'lobehub/lobe-chat' | grep -v 'lobehub/lobe-chat-database' | grep -v 'latest' | awk '{print $3}' | xargs -r docker rmi > /dev/null 2>&1
+  docker images | grep 'lobehub/lobehub' | grep -v 'latest' | awk '{print $3}' | xargs -r docker rmi > /dev/null 2>&1
   echo "Removed old images."
   ```
 
@@ -142,6 +142,6 @@ Docker 部署版本的升级非常简单，只需要重新部署 LobeHub 的最�
   以下命令可以配置 Crontab 每 5 分钟执行一次脚本，你也可以根据需要调整执行频率：
 
   ```bash
-  */5 * * * * /path/to/auto-update-lobe-chat.sh >> /path/to/auto-update-lobe-chat.log 2>&1
+  */5 * * * * /path/to/auto-update-lobehub.sh >> /path/to/auto-update-lobehub.log 2>&1
   ```
 </Steps>

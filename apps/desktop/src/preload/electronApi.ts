@@ -1,8 +1,23 @@
 import { electronAPI } from '@electron-toolkit/preload';
-import { contextBridge } from 'electron';
+import type { ScreenCaptureSession } from '@lobechat/electron-client-ipc';
+import { contextBridge, ipcRenderer } from 'electron';
+
+import { readSystemLanguageArg } from '~common/systemLanguage';
 
 import { invoke } from './invoke';
 import { onStreamInvoke } from './streamer';
+
+const screenCaptureSessionListeners = new Set<(session: ScreenCaptureSession) => void>();
+
+let latestScreenCaptureSession: ScreenCaptureSession | null = null;
+
+ipcRenderer.on('screenCaptureSession', (_event, session: ScreenCaptureSession) => {
+  latestScreenCaptureSession = session;
+
+  for (const listener of screenCaptureSessionListeners) {
+    listener(session);
+  }
+});
 
 export const setupElectronApi = () => {
   // Use `contextBridge` APIs to expose Electron APIs to
@@ -16,15 +31,35 @@ export const setupElectronApi = () => {
   }
 
   contextBridge.exposeInMainWorld('electronAPI', {
+    getDesktopBootstrapIdentity: () => ipcRenderer.sendSync('desktop:get-bootstrap-identity'),
     invoke,
+    onScreenCaptureSession: (listener: (session: ScreenCaptureSession) => void) => {
+      screenCaptureSessionListeners.add(listener);
+
+      if (latestScreenCaptureSession) {
+        listener(latestScreenCaptureSession);
+      }
+
+      return () => {
+        screenCaptureSessionListeners.delete(listener);
+      };
+    },
     onStreamInvoke,
   });
 
   const os = require('node:os');
   const osInfo = os.release();
-  const darwinMajorVersion = osInfo.split('.')[0];
+  const darwinMajorVersion = Number(osInfo.split('.')[0]);
 
   contextBridge.exposeInMainWorld('lobeEnv', {
-    darwinMajorVersion: Number(darwinMajorVersion),
+    chromeVersion: process.versions.chrome,
+    darwinMajorVersion,
+    electronVersion: process.versions.electron,
+    isMacTahoe: process.platform === 'darwin' && darwinMajorVersion >= 25,
+    nodeVersion: process.versions.node,
+    platform: process.platform,
+    systemLanguage: readSystemLanguageArg(process.argv),
   });
 };
+
+export type SetupElectronApiFunction = typeof setupElectronApi;

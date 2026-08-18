@@ -1,11 +1,15 @@
-import { DataSyncConfig } from '@lobechat/electron-client-ipc';
-import retry from 'async-retry';
-import { safeStorage } from 'electron';
 import querystring from 'node:querystring';
 import { URL } from 'node:url';
 
+import type { DataSyncConfig, DesktopBootstrapIdentity } from '@lobechat/electron-client-ipc';
+import { safeStorage, session as electronSession } from 'electron';
+
 import { OFFICIAL_CLOUD_SERVER } from '@/const/env';
+import GatewayConnectionService from '@/services/gatewayConnectionSrv';
+import { appendVercelCookie } from '@/utils/http-headers';
 import { createLogger } from '@/utils/logger';
+import { netFetch } from '@/utils/net-fetch';
+import { setDesktopUserAgentHeader } from '@/utils/user-agent';
 
 import { ControllerModule, IpcMethod } from './index';
 
@@ -83,6 +87,38 @@ export default class RemoteServerConfigCtr extends ControllerModule {
   }
 
   /**
+   * Check if remote server is properly configured and ready for use
+   * For 'cloud' mode, only checks if active (remoteServerUrl is undefined, uses OFFICIAL_CLOUD_SERVER)
+   * For 'selfHost' mode, checks if active AND remoteServerUrl is configured
+   * @param config Optional config object, if not provided will fetch current config
+   * @returns true if remote server is properly configured
+   */
+  @IpcMethod()
+  async isRemoteServerConfigured(config?: DataSyncConfig): Promise<boolean> {
+    const effectiveConfig = config ?? (await this.getRemoteServerConfig());
+    const isActive = Boolean(effectiveConfig.active);
+    const isSelfHostConfigured =
+      effectiveConfig.storageMode !== 'selfHost' ||
+      this.isValidSelfHostRemoteUrl(effectiveConfig.remoteServerUrl);
+
+    return isActive && isSelfHostConfigured;
+  }
+
+  private isValidSelfHostRemoteUrl(remoteServerUrl?: string): boolean {
+    if (!remoteServerUrl) return false;
+    const normalizedUrl = remoteServerUrl.trim();
+
+    if (!normalizedUrl) return false;
+
+    try {
+      const parsedUrl = new URL(normalizedUrl);
+      return parsedUrl.protocol === 'http:' || parsedUrl.protocol === 'https:';
+    } catch {
+      return false;
+    }
+  }
+
+  /**
    * Set remote server configuration
    */
   @IpcMethod()
@@ -140,6 +176,43 @@ export default class RemoteServerConfigCtr extends ControllerModule {
   private tokenExpiresAt?: number;
 
   /**
+   * Last token refresh time (timestamp in milliseconds)
+   * Used to control refresh frequency on app startup/activate
+   */
+  private lastRefreshAt?: number;
+
+  /**
+   * Resolve the cache-partition identity synchronously for the renderer preload.
+   * This deliberately avoids `getUserState()`: the encrypted OIDC token already
+   * contains the stable subject required for local isolation.
+   */
+  getDesktopBootstrapIdentity(): DesktopBootstrapIdentity {
+    if (!this.encryptedAccessToken) this.loadTokensFromStore();
+
+    if (!this.encryptedAccessToken) return { isIdentityResolved: true };
+
+    try {
+      const accessToken = safeStorage.isEncryptionAvailable()
+        ? safeStorage.decryptString(Buffer.from(this.encryptedAccessToken, 'base64'))
+        : this.encryptedAccessToken;
+      const parts = accessToken.split('.');
+      if (parts.length !== 3) return { isIdentityResolved: false };
+
+      const payload = JSON.parse(Buffer.from(parts[1], 'base64url').toString('utf8')) as {
+        sub?: unknown;
+      };
+      if (typeof payload.sub !== 'string' || payload.sub.length === 0) {
+        return { isIdentityResolved: false };
+      }
+
+      return { isIdentityResolved: true, userId: payload.sub };
+    } catch (error) {
+      logger.warn('Failed to resolve Desktop bootstrap identity from access token:', error);
+      return { isIdentityResolved: false };
+    }
+  }
+
+  /**
    * Promise representing the ongoing token refresh operation.
    * Used to prevent concurrent refreshes and allow callers to wait.
    */
@@ -162,6 +235,10 @@ export default class RemoteServerConfigCtr extends ControllerModule {
       this.tokenExpiresAt = undefined;
     }
 
+    // Update last refresh time
+    this.lastRefreshAt = Date.now();
+    logger.debug(`Token last refreshed at: ${new Date(this.lastRefreshAt).toISOString()}`);
+
     // If platform doesn't support secure storage, store raw tokens
     if (!safeStorage.isEncryptionAvailable()) {
       logger.warn('Safe storage not available, storing tokens unencrypted');
@@ -171,6 +248,7 @@ export default class RemoteServerConfigCtr extends ControllerModule {
       this.app.storeManager.set(this.encryptedTokensKey, {
         accessToken: this.encryptedAccessToken,
         expiresAt: this.tokenExpiresAt,
+        lastRefreshAt: this.lastRefreshAt,
         refreshToken: this.encryptedRefreshToken,
       });
       return;
@@ -191,6 +269,7 @@ export default class RemoteServerConfigCtr extends ControllerModule {
     this.app.storeManager.set(this.encryptedTokensKey, {
       accessToken: this.encryptedAccessToken,
       expiresAt: this.tokenExpiresAt,
+      lastRefreshAt: this.lastRefreshAt,
       refreshToken: this.encryptedRefreshToken,
     });
   }
@@ -274,6 +353,13 @@ export default class RemoteServerConfigCtr extends ControllerModule {
     // Also clear from persistent storage
     logger.debug(`Deleting tokens from store key: ${this.encryptedTokensKey}`);
     this.app.storeManager.delete(this.encryptedTokensKey);
+
+    // Disconnect gateway when tokens are cleared (logout / token refresh failure)
+    const gatewaySrv = this.app.getService(GatewayConnectionService);
+    if (gatewaySrv) {
+      logger.debug('Disconnecting gateway due to token clear');
+      await gatewaySrv.disconnect();
+    }
   }
 
   /**
@@ -285,10 +371,10 @@ export default class RemoteServerConfigCtr extends ControllerModule {
 
   /**
    * Check if token is expired or will expire soon
-   * @param bufferTimeMs Buffer time in milliseconds (default 5 minutes)
+   * @param bufferTimeMs Buffer time in milliseconds (default 1 day)
    * @returns true if token is expired or will expire soon
    */
-  isTokenExpiringSoon(bufferTimeMs: number = 5 * 60 * 1000): boolean {
+  isTokenExpiringSoon(bufferTimeMs: number = 24 * 60 * 60 * 1000): boolean {
     if (!this.tokenExpiresAt) {
       return false; // No expiration time available
     }
@@ -324,10 +410,8 @@ export default class RemoteServerConfigCtr extends ControllerModule {
   }
 
   /**
-   * Refresh access token with retry mechanism
-   * Use stored refresh token to obtain a new access token
-   * Handles concurrent requests by returning the existing refresh promise if one is in progress.
-   * Retries up to 3 times with exponential backoff for transient errors.
+   * Refresh the access token using the stored refresh token (single attempt).
+   * Concurrent callers share the in-progress refresh promise.
    */
   async refreshAccessToken(): Promise<{ error?: string; success: boolean }> {
     // If a refresh is already in progress, return the existing promise
@@ -336,60 +420,18 @@ export default class RemoteServerConfigCtr extends ControllerModule {
       return this.refreshPromise;
     }
 
-    // Start a new refresh operation with retry
-    logger.info('Initiating new token refresh operation with retry.');
-    this.refreshPromise = this.performTokenRefreshWithRetry();
+    logger.info('Initiating new token refresh operation.');
 
-    // Return the promise so callers can wait
-    return this.refreshPromise;
-  }
-
-  /**
-   * Performs token refresh with retry mechanism
-   * Uses exponential backoff: 1s, 2s, 4s
-   */
-  private async performTokenRefreshWithRetry(): Promise<{ error?: string; success: boolean }> {
-    try {
-      return await retry(
-        async (bail, attemptNumber) => {
-          logger.debug(`Token refresh attempt ${attemptNumber}/3`);
-
-          const result = await this.performTokenRefresh();
-
-          if (result.success) {
-            return result;
-          }
-
-          // Check if error is non-retryable
-          if (this.isNonRetryableError(result.error)) {
-            logger.warn(`Non-retryable error encountered: ${result.error}`);
-            // Use bail to stop retrying immediately
-            bail(new Error(result.error));
-            return result; // This won't be reached, but TypeScript needs it
-          }
-
-          // Throw error to trigger retry for transient errors
-          throw new Error(result.error);
-        },
-        {
-          factor: 2, // Exponential backoff factor
-          maxTimeout: 4000, // Max wait time between retries: 4s
-          minTimeout: 1000, // Min wait time between retries: 1s
-          onRetry: (err: Error, attempt: number) => {
-            logger.info(`Token refresh retry ${attempt}/3: ${err.message}`);
-          },
-          retries: 3, // Total retry attempts
-        },
-      );
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : String(error);
-      logger.error('Token refresh failed after all retries:', errorMessage);
-      return { error: errorMessage, success: false };
-    } finally {
-      // Ensure the promise reference is cleared once the operation completes
+    // No retry: with refresh token rotation the server consumes the old token as soon
+    // as the request lands. Resending it (e.g. after a lost response) triggers reuse
+    // detection — invalid_grant + revocation of the whole grant — which logs the user
+    // out. Transient failures are recovered by the next refresh cycle instead.
+    this.refreshPromise = this.performTokenRefresh().finally(() => {
       logger.debug('Clearing the refresh promise reference.');
       this.refreshPromise = null;
-    }
+    });
+
+    return this.refreshPromise;
   }
 
   /**
@@ -401,7 +443,7 @@ export default class RemoteServerConfigCtr extends ControllerModule {
       // Get configuration information
       const config = await this.getRemoteServerConfig();
 
-      if (!config.remoteServerUrl || !config.active) {
+      if (!(await this.isRemoteServerConfigured(config))) {
         logger.warn('Remote server not active or configured, skipping refresh.');
         return { error: 'Remote server is not active or configured', success: false };
       }
@@ -428,13 +470,12 @@ export default class RemoteServerConfigCtr extends ControllerModule {
       logger.debug(`Sending token refresh request to ${tokenUrl.toString()}`);
 
       // Send request
-      const response = await fetch(tokenUrl.toString(), {
-        body,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        method: 'POST',
-      });
+      const headers: Record<string, string> = {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      };
+      appendVercelCookie(headers);
+      setDesktopUserAgentHeader(headers);
+      const response = await netFetch(tokenUrl.toString(), { body, headers, method: 'POST' });
 
       if (!response.ok) {
         // Try to parse error response
@@ -480,15 +521,27 @@ export default class RemoteServerConfigCtr extends ControllerModule {
       this.encryptedAccessToken = storedTokens.accessToken;
       this.encryptedRefreshToken = storedTokens.refreshToken;
       this.tokenExpiresAt = storedTokens.expiresAt;
+      this.lastRefreshAt = storedTokens.lastRefreshAt;
 
       if (this.tokenExpiresAt) {
         logger.debug(
           `Loaded token expiration time: ${new Date(this.tokenExpiresAt).toISOString()}`,
         );
       }
+      if (this.lastRefreshAt) {
+        logger.debug(`Loaded last refresh time: ${new Date(this.lastRefreshAt).toISOString()}`);
+      }
     } else {
       logger.debug('No valid tokens found in store.');
     }
+  }
+
+  /**
+   * Get the last token refresh time
+   * @returns The timestamp (in milliseconds) of the last token refresh, or undefined if never refreshed
+   */
+  getLastTokenRefreshAt(): number | undefined {
+    return this.lastRefreshAt;
   }
 
   // Initialize by loading tokens from store when the controller is ready
@@ -498,8 +551,44 @@ export default class RemoteServerConfigCtr extends ControllerModule {
   }
 
   async getRemoteServerUrl(config?: DataSyncConfig) {
-    const dataConfig = this.normalizeConfig(config ? config : await this.getRemoteServerConfig());
+    const dataConfig = this.normalizeConfig(config ?? (await this.getRemoteServerConfig()));
 
     return dataConfig.storageMode === 'cloud' ? OFFICIAL_CLOUD_SERVER : dataConfig.remoteServerUrl;
+  }
+
+  /**
+   * Setup subscription webview session with OIDC token injection
+   * This configures a webRequest interceptor on the given partition session
+   * to automatically inject the Oidc-Auth token header for official domain requests.
+   * @param params.partition The partition name for the webview session
+   */
+  @IpcMethod()
+  async setupSubscriptionWebviewSession(params: { partition: string }) {
+    const { partition } = params;
+
+    logger.info(`Setting up subscription webview session for partition: ${partition}`);
+
+    const session = electronSession.fromPartition(partition);
+
+    session.webRequest.onBeforeSendHeaders(
+      { urls: [`https://*.lobehub.com/*`] },
+      async (details, callback) => {
+        const requestHeaders = { ...details.requestHeaders };
+
+        const token = await this.getAccessToken();
+
+        if (token) {
+          requestHeaders['Oidc-Auth'] = token;
+          logger.debug(`Injected Oidc-Auth token for: ${details.url}`);
+        }
+        setDesktopUserAgentHeader(requestHeaders);
+
+        callback({ requestHeaders });
+      },
+    );
+
+    logger.debug(`Subscription webview session setup completed for partition: ${partition}`);
+
+    return { success: true };
   }
 }

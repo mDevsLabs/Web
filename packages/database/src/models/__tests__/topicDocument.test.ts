@@ -1,11 +1,11 @@
 // @vitest-environment node
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
+import { getTestDB } from '../../core/getTestDB';
 import { documents, sessions, topicDocuments, topics, users } from '../../schemas';
-import { LobeChatDatabase } from '../../type';
+import type { LobeChatDatabase } from '../../type';
 import { DocumentModel } from '../document';
 import { TopicDocumentModel } from '../topicDocument';
-import { getTestDB } from '../../core/getTestDB';
 
 const serverDB: LobeChatDatabase = await getTestDB();
 
@@ -90,6 +90,22 @@ describe('TopicDocumentModel', () => {
 
       const docs = await topicDocumentModel.findByTopicId(topicId);
       expect(docs).toHaveLength(2);
+    });
+
+    // The PK is (documentId, topicId), so re-associating the same pair must
+    // be a silent no-op — callers (e.g. re-crawl flows) rely on this to keep
+    // associate calls fire-and-forget.
+    it('should be idempotent — re-associating the same pair does not throw or duplicate', async () => {
+      const doc = await createTestDocument(documentModel, 'Idempotent doc');
+
+      await topicDocumentModel.associate({ documentId: doc.id, topicId });
+      await expect(topicDocumentModel.associate({ documentId: doc.id, topicId })).resolves.toEqual({
+        documentId: doc.id,
+        topicId,
+      });
+
+      const docs = await topicDocumentModel.findByTopicId(topicId);
+      expect(docs.filter((d) => d.id === doc.id)).toHaveLength(1);
     });
   });
 
@@ -211,6 +227,66 @@ describe('TopicDocumentModel', () => {
       // User 2 tries to find documents in user 1's topic
       const docsForUser2 = await topicDocumentModel2.findByTopicId(topicId);
       expect(docsForUser2).toHaveLength(0);
+    });
+
+    it('drops a doc that was flipped back to private after the association was created', async () => {
+      // Workspace-shared: A associates a public doc with the topic. Then A
+      // flips the doc back to `private`. Other members' subsequent read of the
+      // topic association list must not surface the doc anymore.
+      const wsId = 'topicdoc-vis-workspace';
+      const wsA = new TopicDocumentModel(serverDB, userId, wsId);
+      const wsB = new TopicDocumentModel(serverDB, userId2, wsId);
+      const docModelA = new DocumentModel(serverDB, userId, wsId);
+
+      const { workspaceMembers, workspaces } = await import('../../schemas');
+      await serverDB.insert(workspaces).values({
+        id: wsId,
+        name: 'topicdoc-vis',
+        primaryOwnerId: userId,
+        slug: wsId,
+      });
+      await serverDB.insert(workspaceMembers).values([
+        { userId, workspaceId: wsId, role: 'owner' },
+        { userId: userId2, workspaceId: wsId, role: 'editor' },
+      ]);
+      const { sessions: sessionsSchema, topics: topicsSchema } = await import('../../schemas');
+      const wsTopicId = 'topicdoc-vis-topic';
+      const wsSessionId = 'topicdoc-vis-session';
+      await serverDB.insert(sessionsSchema).values({
+        id: wsSessionId,
+        userId,
+        workspaceId: wsId,
+      });
+      await serverDB.insert(topicsSchema).values({
+        id: wsTopicId,
+        sessionId: wsSessionId,
+        userId,
+        workspaceId: wsId,
+      });
+
+      const publicDoc = await docModelA.create({
+        content: 'shared body',
+        fileType: 'markdown',
+        source: 'notebook:workspace-share',
+        sourceType: 'api',
+        title: 'Public Doc',
+        totalCharCount: 100,
+        totalLineCount: 5,
+        visibility: 'public',
+      });
+      await wsA.associate({ documentId: publicDoc.id, topicId: wsTopicId });
+
+      // B sees the shared doc while it's public
+      const beforeUnpublish = await wsB.findByTopicId(wsTopicId);
+      expect(beforeUnpublish).toHaveLength(1);
+      expect(beforeUnpublish[0]?.id).toBe(publicDoc.id);
+
+      // A flips it back to private
+      await docModelA.setVisibility(publicDoc.id, 'private');
+
+      // B no longer sees it in the topic associations
+      const afterUnpublish = await wsB.findByTopicId(wsTopicId);
+      expect(afterUnpublish).toHaveLength(0);
     });
   });
 

@@ -1,4 +1,4 @@
-import { Pool as NeonPool, neonConfig } from '@neondatabase/serverless';
+import { neonConfig, Pool as NeonPool } from '@neondatabase/serverless';
 import { drizzle as neonDrizzle } from 'drizzle-orm/neon-serverless';
 import { drizzle as nodeDrizzle } from 'drizzle-orm/node-postgres';
 import { Pool as NodePool } from 'pg';
@@ -7,7 +7,7 @@ import ws from 'ws';
 import { serverDBEnv } from '@/config/db';
 
 import * as schema from '../schemas';
-import { LobeChatDatabase } from '../type';
+import type { LobeChatDatabase } from '../type';
 
 export const getDBInstance = (): LobeChatDatabase => {
   // In test environment, return a mock instance to avoid initialization errors
@@ -24,14 +24,35 @@ If you don't have it, please run \`openssl rand -base64 32\` to create one.
     );
   }
 
-  let connectionString = serverDBEnv.DATABASE_URL;
+  const connectionString = serverDBEnv.DATABASE_URL;
 
   if (!connectionString) {
     throw new Error(`You are try to use database, but "DATABASE_URL" is not set correctly`);
   }
 
+  // When DATABASE_STATEMENT_TIMEOUT is set, Postgres aborts any statement (and any
+  // transaction left idle) exceeding it on the server side, so a stuck query can't
+  // block indefinitely. Omit the keys entirely when unset to keep Postgres' defaults.
+  const statementTimeout = serverDBEnv.DATABASE_STATEMENT_TIMEOUT;
+  const timeoutConfig = statementTimeout
+    ? {
+        idle_in_transaction_session_timeout: statementTimeout,
+        statement_timeout: statementTimeout,
+      }
+    : {};
+
   if (serverDBEnv.DATABASE_DRIVER === 'node') {
-    const client = new NodePool({ connectionString });
+    const client = new NodePool({ connectionString, ...timeoutConfig });
+    // pg.Pool emits 'error' on idle clients when the backend connection drops.
+    // Without a listener Node escalates it to uncaughtException and exits the process.
+    // See: https://node-postgres.com/apis/pool#error
+    client.on('error', (err) => {
+      console.error('[NodePool] idle client error (swallowed to prevent process crash):', {
+        code: (err as NodeJS.ErrnoException).code,
+        message: err.message,
+        stack: err.stack,
+      });
+    });
     return nodeDrizzle(client, { schema });
   }
 
@@ -40,6 +61,16 @@ If you don't have it, please run \`openssl rand -base64 32\` to create one.
     neonConfig.webSocketConstructor = ws;
   }
 
-  const client = new NeonPool({ connectionString });
+  const client = new NeonPool({ connectionString, ...timeoutConfig });
+  // NeonPool runs over WebSocket; transient drops surface as 'error' on the pool.
+  // Without a listener Node escalates it to uncaughtException — on Vercel this killed
+  // the entire Lambda 1800+ times in 5 minutes (see ).
+  client.on('error', (err: Error) => {
+    console.error('[NeonPool] idle client error (swallowed to prevent process crash):', {
+      code: (err as NodeJS.ErrnoException).code,
+      message: err.message,
+      stack: err.stack,
+    });
+  });
   return neonDrizzle(client, { schema });
 };

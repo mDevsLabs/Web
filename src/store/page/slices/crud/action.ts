@@ -1,9 +1,12 @@
-import type { SWRResponse } from 'swr';
-import { type StateCreator } from 'zustand/vanilla';
+import { CUSTOM_DOCUMENT_FILE_TYPE } from '@lobechat/const';
+import { type SWRResponse } from 'swr';
 
 import { useClientDataSWRWithSync } from '@/libs/swr';
 import { documentService } from '@/services/document';
-import { DocumentSourceType, type LobeDocument } from '@/types/document';
+import { documentSWRKeys } from '@/services/document/swrKeys';
+import { type StoreSetter } from '@/store/types';
+import { type LobeDocument } from '@/types/document';
+import { DocumentSourceType } from '@/types/document';
 import { standardizeIdentifier } from '@/utils/identifier';
 import { setNamespace } from '@/utils/storeDebug';
 
@@ -11,7 +14,7 @@ import { type PageStore } from '../../store';
 
 const n = setNamespace('page/crud');
 
-const EDITOR_PAGE_FILE_TYPE = 'custom/document';
+const EDITOR_PAGE_FILE_TYPE = CUSTOM_DOCUMENT_FILE_TYPE;
 
 /**
  * Page update parameters - flattened for easier use
@@ -21,81 +24,37 @@ export interface PageUpdateParams {
   title?: string;
 }
 
-export interface CrudAction {
-  /**
-   * Create a new page with optimistic update (for page explorer)
-   */
-  createNewPage: (title: string) => Promise<string>;
-  /**
-   * Create a new optimistic page immediately in documents array
-   */
-  createOptimisticPage: (title?: string) => string;
-  /**
-   * Create a new page with markdown content (not optimistic, waits for server response)
-   */
-  createPage: (params: {
-    content?: string;
-    knowledgeBaseId?: string;
-    parentId?: string;
-    title: string;
-  }) => Promise<{ [key: string]: any; id: string }>;
-  /**
-   * Delete a page and update selection if needed
-   */
-  deletePage: (pageId: string) => Promise<void>;
-  /**
-   * Duplicate an existing page
-   */
-  duplicatePage: (pageId: string) => Promise<{ [key: string]: any; id: string }>;
-  navigateToPage: (pageId: string | null) => void;
-  /**
-   * Remove a page (deletes from documents table)
-   */
-  removePage: (pageId: string) => Promise<void>;
-  /**
-   * Remove a temp page from documents array
-   */
-  removeTempPage: (tempId: string) => void;
-  /**
-   * Rename a page
-   */
-  renamePage: (pageId: string, title: string, emoji?: string) => Promise<void>;
-  /**
-   * Replace a temp page with real page data
-   */
-  replaceTempPageWithReal: (tempId: string, realPage: LobeDocument) => void;
-  /**
-   * Update page directly (no optimistic update)
-   */
-  updatePage: (pageId: string, updates: Partial<LobeDocument>) => Promise<void>;
-  /**
-   * Optimistically update page in documents array and queue for DB sync
-   */
-  updatePageOptimistically: (pageId: string, updates: PageUpdateParams) => Promise<void>;
-  /**
-   * SWR hook to fetch page detail with caching and auto-sync to store
-   */
-  useFetchPageDetail: (pageId: string | undefined) => SWRResponse<LobeDocument | null>;
-}
+type Setter = StoreSetter<PageStore>;
+export const createCrudSlice = (set: Setter, get: () => PageStore, _api?: unknown) =>
+  new CrudActionImpl(set, get, _api);
 
-export const createCrudSlice: StateCreator<
-  PageStore,
-  [['zustand/devtools', never]],
-  [],
-  CrudAction
-> = (set, get) => ({
-  createNewPage: async (title: string) => {
-    const { createOptimisticPage, createPage, replaceTempPageWithReal } = get();
+export class CrudActionImpl {
+  readonly #get: () => PageStore;
+  readonly #set: Setter;
 
-    // Create optimistic page immediately
-    const tempPageId = createOptimisticPage(title);
-    set({ isCreatingNew: true, selectedPageId: tempPageId }, false, n('createNewPage/start'));
+  constructor(set: Setter, get: () => PageStore, _api?: unknown) {
+    void _api;
+    this.#set = set;
+    this.#get = get;
+  }
+
+  createNewPage = async (title: string, visibility?: 'private' | 'public'): Promise<string> => {
+    const { createOptimisticPage, createPage, replaceTempPageWithReal } = this.#get();
+
+    // Create optimistic page immediately in the requested bucket so the item
+    // shows up under the correct accordion before the server responds. The
+    // real row will replace it and confirm the visibility a moment later.
+    const tempPageId = createOptimisticPage(title, visibility);
+    this.#set({ isCreatingNew: true, selectedPageId: tempPageId }, false, n('createNewPage/start'));
 
     try {
       // Create real page
-      const newPage = await createPage({ content: '', title });
+      const newPage = await createPage({ content: '', title, visibility });
 
-      // Convert to LobeDocument
+      // Convert to LobeDocument. `visibility` and `workspaceId` MUST come from
+      // the server response so the sidebar bucketing selector keeps the row in
+      // the same accordion the user clicked "+" from — omitting them makes the
+      // row silently fall back to the workspace bucket.
       const realPage: LobeDocument = {
         content: newPage.content || '',
         createdAt: newPage.createdAt ? new Date(newPage.createdAt) : new Date(),
@@ -103,7 +62,7 @@ export const createCrudSlice: StateCreator<
           typeof newPage.editorData === 'string'
             ? JSON.parse(newPage.editorData)
             : newPage.editorData || null,
-        fileType: 'custom/document',
+        fileType: CUSTOM_DOCUMENT_FILE_TYPE,
         filename: newPage.title || title,
         id: newPage.id,
         metadata: newPage.metadata || {},
@@ -113,26 +72,37 @@ export const createCrudSlice: StateCreator<
         totalCharCount: newPage.content?.length || 0,
         totalLineCount: 0,
         updatedAt: newPage.updatedAt ? new Date(newPage.updatedAt) : new Date(),
+        userId: newPage.userId,
+        visibility: newPage.visibility ?? visibility ?? null,
+        workspaceId: newPage.workspaceId ?? null,
       };
 
       // Replace optimistic with real
       replaceTempPageWithReal(tempPageId, realPage);
-      set({ isCreatingNew: false, selectedPageId: newPage.id }, false, n('createNewPage/success'));
+      this.#set(
+        { isCreatingNew: false, selectedPageId: newPage.id },
+        false,
+        n('createNewPage/success'),
+      );
 
       // Navigate to the new page
-      get().navigateToPage(newPage.id);
+      this.#get().navigateToPage(newPage.id);
 
       return newPage.id;
     } catch (error) {
       console.error('Failed to create page:', error);
-      get().removeTempPage(tempPageId);
-      set({ isCreatingNew: false, selectedPageId: null }, false, n('createNewPage/error'));
-      get().navigate?.('/page');
+      this.#get().removeTempPage(tempPageId);
+      this.#set({ isCreatingNew: false, selectedPageId: null }, false, n('createNewPage/error'));
+      this.#get().navigate?.('/page');
 
       throw error;
     }
-  },
-  createOptimisticPage: (title = 'Untitled') => {
+  };
+
+  createOptimisticPage = (
+    title: string = 'Untitled',
+    visibility?: 'private' | 'public',
+  ): string => {
     // Generate temporary ID with prefix to identify optimistic pages
     const tempId = `temp-page-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
     const now = new Date();
@@ -147,19 +117,32 @@ export const createCrudSlice: StateCreator<
       metadata: {},
       source: 'document',
       sourceType: DocumentSourceType.EDITOR,
-      title: title,
+      title,
       totalCharCount: 0,
       totalLineCount: 0,
       updatedAt: now,
+      visibility: visibility ?? null,
     };
 
     // Add to documents array via internal dispatch
-    get().internal_dispatchDocuments({ document: newPage, type: 'addDocument' });
+    this.#get().internal_dispatchDocuments({ document: newPage, type: 'addDocument' });
 
     return tempId;
-  },
+  };
 
-  createPage: async ({ title, content = '', knowledgeBaseId, parentId }) => {
+  createPage = async ({
+    title,
+    content = '',
+    knowledgeBaseId,
+    parentId,
+    visibility,
+  }: {
+    content?: string;
+    knowledgeBaseId?: string;
+    parentId?: string;
+    title: string;
+    visibility?: 'private' | 'public';
+  }): Promise<{ [key: string]: any; id: string }> => {
     const now = Date.now();
 
     const newPage = await documentService.createDocument({
@@ -172,21 +155,22 @@ export const createCrudSlice: StateCreator<
       },
       parentId,
       title,
+      visibility,
     });
 
     return newPage;
-  },
+  };
 
-  deletePage: async (pageId: string) => {
-    const { selectedPageId } = get();
+  deletePage = async (pageId: string): Promise<void> => {
+    const { selectedPageId } = this.#get();
 
     if (selectedPageId === pageId) {
-      set({ isCreatingNew: false, selectedPageId: null }, false, n('deletePage'));
-      get().navigateToPage(null);
+      this.#set({ isCreatingNew: false, selectedPageId: null }, false, n('deletePage'));
+      this.#get().navigateToPage(null);
     }
-  },
+  };
 
-  duplicatePage: async (pageId) => {
+  duplicatePage = async (pageId: string): Promise<{ [key: string]: any; id: string }> => {
     // Fetch the source page
     const sourcePage = await documentService.getDocumentById(pageId);
 
@@ -229,34 +213,39 @@ export const createCrudSlice: StateCreator<
       totalCharCount: newPage.content?.length || 0,
       totalLineCount: 0,
       updatedAt: newPage.updatedAt ? new Date(newPage.updatedAt) : new Date(),
+      userId: newPage.userId,
+      // Keep the sidebar bucket in sync — duplicating a private page must land
+      // in "Private", not silently in "Workspace".
+      visibility: newPage.visibility ?? null,
+      workspaceId: newPage.workspaceId ?? null,
     };
 
-    get().internal_dispatchDocuments({ document: editorPage, type: 'addDocument' });
+    this.#get().internal_dispatchDocuments({ document: editorPage, type: 'addDocument' });
 
     return newPage;
-  },
+  };
 
-  navigateToPage: (pageId) => {
+  navigateToPage = (pageId: string | null): void => {
     if (!pageId) {
-      get().navigate?.('/page');
+      this.#get().navigate?.('/page');
     } else {
-      get().navigate?.(`/page/${standardizeIdentifier(pageId)}`);
+      this.#get().navigate?.(`/page/${standardizeIdentifier(pageId)}`);
     }
-  },
+  };
 
-  removePage: async (pageId) => {
-    const { documents, selectedPageId } = get();
+  removePage = async (pageId: string): Promise<void> => {
+    const { documents, selectedPageId } = this.#get();
 
     // Store original documents for rollback
     const originalDocuments = documents;
 
     // Remove from documents array via internal dispatch (optimistic update)
-    get().internal_dispatchDocuments({ id: pageId, type: 'removeDocument' });
+    this.#get().internal_dispatchDocuments({ id: pageId, type: 'removeDocument' });
 
     // Clear selected page ID if the deleted page is currently selected
     if (selectedPageId === pageId) {
-      set({ selectedPageId: null }, false, n('removePage/clearSelection'));
-      get().navigateToPage(null);
+      this.#set({ selectedPageId: null }, false, n('removePage/clearSelection'));
+      this.#get().navigateToPage(null);
     }
 
     try {
@@ -266,41 +255,44 @@ export const createCrudSlice: StateCreator<
       console.error('Failed to delete page:', error);
       // Restore documents on error
       if (originalDocuments) {
-        get().internal_dispatchDocuments({ documents: originalDocuments, type: 'setDocuments' });
+        this.#get().internal_dispatchDocuments({
+          documents: originalDocuments,
+          type: 'setDocuments',
+        });
       }
       if (selectedPageId === pageId) {
-        set({ selectedPageId: pageId }, false, n('removePage/restoreSelection'));
-        get().navigateToPage(pageId);
+        this.#set({ selectedPageId: pageId }, false, n('removePage/restoreSelection'));
+        this.#get().navigateToPage(pageId);
       }
       throw error;
     }
-  },
+  };
 
-  removeTempPage: (tempId) => {
-    get().internal_dispatchDocuments({ id: tempId, type: 'removeDocument' });
-  },
+  removeTempPage = (tempId: string): void => {
+    this.#get().internal_dispatchDocuments({ id: tempId, type: 'removeDocument' });
+  };
 
-  renamePage: async (pageId: string, title: string, emoji?: string) => {
-    const { updatePageOptimistically } = get();
+  renamePage = async (pageId: string, title: string, emoji?: string): Promise<void> => {
+    const { updatePageOptimistically } = this.#get();
 
     try {
       await updatePageOptimistically(pageId, { emoji, title });
     } catch (error) {
       console.error('Failed to rename page:', error);
     } finally {
-      set({ renamingPageId: null }, false, n('renamePage'));
+      this.#set({ renamingPageId: null }, false, n('renamePage'));
     }
-  },
+  };
 
-  replaceTempPageWithReal: (tempId, realPage) => {
-    get().internal_dispatchDocuments({
+  replaceTempPageWithReal = (tempId: string, realPage: LobeDocument): void => {
+    this.#get().internal_dispatchDocuments({
       document: realPage,
       oldId: tempId,
       type: 'replaceDocument',
     });
-  },
+  };
 
-  updatePage: async (id, updates) => {
+  updatePage = async (id: string, updates: Partial<LobeDocument>): Promise<void> => {
     await documentService.updateDocument({
       content: updates.content ?? undefined,
       editorData: updates.editorData
@@ -313,11 +305,11 @@ export const createCrudSlice: StateCreator<
       parentId: updates.parentId !== undefined ? updates.parentId : undefined,
       title: updates.title,
     });
-    await get().refreshDocuments();
-  },
+    await this.#get().refreshDocuments();
+  };
 
-  updatePageOptimistically: async (pageId, updates) => {
-    const { documents } = get();
+  updatePageOptimistically = async (pageId: string, updates: PageUpdateParams): Promise<void> => {
+    const { documents } = this.#get();
 
     // Find the page in documents array
     const existingPage = documents?.find((doc) => doc.id === pageId);
@@ -346,16 +338,15 @@ export const createCrudSlice: StateCreator<
     };
 
     // Update documents array via internal dispatch (optimistic)
-    get().internal_dispatchDocuments({ document: updatedPage, id: pageId, type: 'updateDocument' });
+    this.#get().internal_dispatchDocuments({
+      document: updatedPage,
+      id: pageId,
+      type: 'updateDocument',
+    });
 
     // Queue background sync to DB
     try {
       await documentService.updateDocument({
-        content: updatedPage.content || '',
-        editorData:
-          typeof updatedPage.editorData === 'string'
-            ? updatedPage.editorData
-            : JSON.stringify(updatedPage.editorData || {}),
         id: pageId,
         metadata: updatedPage.metadata || {},
         parentId: updatedPage.parentId || undefined,
@@ -363,20 +354,20 @@ export const createCrudSlice: StateCreator<
       });
 
       // After successful sync, refresh document list to get server state
-      await get().refreshDocuments();
+      await this.#get().refreshDocuments();
     } catch (error) {
       console.error('[updatePageOptimistically] Failed to sync to DB:', error);
       // On error, revert by restoring original page
-      get().internal_dispatchDocuments({
+      this.#get().internal_dispatchDocuments({
         document: existingPage,
         id: pageId,
         type: 'updateDocument',
       });
     }
-  },
+  };
 
-  useFetchPageDetail: (pageId) => {
-    const swrKey = pageId ? ['pageDetail', pageId] : null;
+  useFetchPageDetail = (pageId: string | undefined): SWRResponse<LobeDocument | null> => {
+    const swrKey = pageId ? documentSWRKeys.pageDetail(pageId) : null;
 
     return useClientDataSWRWithSync<LobeDocument | null>(
       swrKey,
@@ -389,7 +380,10 @@ export const createCrudSlice: StateCreator<
           return null;
         }
 
-        // Transform API response to LobeDocument format
+        // Transform API response to LobeDocument format. `visibility` MUST be
+        // carried through so the sidebar's Private / Workspace bucketing stays
+        // stable when this hook's `onData` writes back into the shared docs
+        // array (see the `internal_dispatchDocuments` call below).
         const fullPage: LobeDocument = {
           content: document.content || null,
           createdAt: document.createdAt ? new Date(document.createdAt) : new Date(),
@@ -407,6 +401,9 @@ export const createCrudSlice: StateCreator<
           totalCharCount: document.content?.length || 0,
           totalLineCount: 0,
           updatedAt: document.updatedAt ? new Date(document.updatedAt) : new Date(),
+          userId: document.userId,
+          visibility: document.visibility ?? null,
+          workspaceId: document.workspaceId ?? null,
         };
 
         return fullPage;
@@ -417,13 +414,19 @@ export const createCrudSlice: StateCreator<
           if (!document || !pageId) return;
 
           // Auto-sync to documents array via internal dispatch
-          const { documents } = get();
+          const { documents } = this.#get();
           if (documents?.some((doc) => doc.id === pageId)) {
-            get().internal_dispatchDocuments({ document, id: pageId, type: 'updateDocument' });
+            this.#get().internal_dispatchDocuments({
+              document,
+              id: pageId,
+              type: 'updateDocument',
+            });
           }
         },
         revalidateOnFocus: true,
       },
     );
-  },
-});
+  };
+}
+
+export type CrudAction = Pick<CrudActionImpl, keyof CrudActionImpl>;

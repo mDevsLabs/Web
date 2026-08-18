@@ -1,12 +1,15 @@
-import { Alert, Button, Flexbox, FormItem, Input, InputPassword } from '@lobehub/ui';
-import { Divider, Form, type FormInstance, Radio } from 'antd';
+import { Flexbox, FormItem, Input, InputPassword } from '@lobehub/ui';
+import { Alert, Button, RadioGroup } from '@lobehub/ui/base-ui';
+import { type FormInstance } from 'antd';
+import { Divider, Form } from 'antd';
 import isEqual from 'fast-deep-equal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import KeyValueEditor from '@/components/KeyValueEditor';
 import MCPStdioCommandInput from '@/components/MCPStdioCommandInput';
 import ErrorDetails from '@/features/MCP/MCPInstallProgress/InstallError/ErrorDetails';
+import { lambdaClient } from '@/libs/trpc/client';
 import { useToolStore } from '@/store/tool';
 import { mcpStoreSelectors, pluginSelectors } from '@/store/tool/selectors';
 import { type MCPErrorInfoMetadata } from '@/types/plugins';
@@ -17,8 +20,20 @@ import MCPTypeSelect from './MCPTypeSelect';
 import QuickImportSection from './QuickImportSection';
 
 interface MCPManifestFormProps {
+  /**
+   * Expose the OAuth auth type. Only the custom-connector entry sets this — the
+   * OAuth flow is backed by the connector subsystem, so it must NOT show up for
+   * the plain custom-plugin DevModal callers (editing plugins, agent tools, …).
+   */
+  enableOAuth?: boolean;
   form: FormInstance;
   isEditMode?: boolean;
+  /**
+   * Run the connector OAuth authorize flow. Called instead of the token-less
+   * manifest test when the OAuth auth type is selected (testing an OAuth server
+   * without authorizing first only ever 401s).
+   */
+  onAuthorizeOAuth?: () => void;
 }
 
 const HTTP_URL_KEY = ['customParams', 'mcp', 'url'];
@@ -27,22 +42,48 @@ const STDIO_ARGS = ['customParams', 'mcp', 'args'];
 const STDIO_ENV = ['customParams', 'mcp', 'env'];
 const MCP_TYPE = ['customParams', 'mcp', 'type'];
 const DESC_TYPE = ['customParams', 'description'];
-// 新增认证相关常量
+// Authentication-related constants
 const AUTH_TYPE = ['customParams', 'mcp', 'auth', 'type'];
 const AUTH_TOKEN = ['customParams', 'mcp', 'auth', 'token'];
-// 新增 headers 相关常量
+const AUTH_CLIENT_ID = ['customParams', 'mcp', 'auth', 'clientId'];
+const AUTH_CLIENT_SECRET = ['customParams', 'mcp', 'auth', 'clientSecret'];
+// Headers-related constants
 const HEADERS = ['customParams', 'mcp', 'headers'];
 
-const MCPManifestForm = ({ form, isEditMode }: MCPManifestFormProps) => {
+const MCPManifestForm = ({
+  form,
+  isEditMode,
+  enableOAuth,
+  onAuthorizeOAuth,
+}: MCPManifestFormProps) => {
   const { t } = useTranslation('plugin');
   const mcpType = Form.useWatch(MCP_TYPE, form);
   const authType = Form.useWatch(AUTH_TYPE, form);
+  // For OAuth servers there is no token to test with — "testing" the connection
+  // means running the authorize flow instead.
+  const isOAuth = enableOAuth && mcpType === 'http' && authType === 'oauth2';
+
+  // The redirect URI the server will use at authorize time (APP_URL-based), shown
+  // so the user registers a matching URI on their OAuth app. Fetched lazily once
+  // the OAuth auth type is in play.
+  const [redirectUri, setRedirectUri] = useState('');
+  useEffect(() => {
+    if (!enableOAuth || authType !== 'oauth2' || redirectUri) return;
+    lambdaClient.connector.getRedirectUri
+      .query()
+      .then((r) => setRedirectUri(r.redirectUri))
+      .catch(() => {
+        if (typeof window !== 'undefined') {
+          setRedirectUri(`${window.location.origin}/oauth/connector/callback`);
+        }
+      });
+  }, [enableOAuth, authType, redirectUri]);
 
   const pluginIds = useToolStore(pluginSelectors.storeAndInstallPluginsIdList);
   const [isTesting, setIsTesting] = useState(false);
   const testMcpConnection = useToolStore((s) => s.testMcpConnection);
 
-  // 使用 identifier 来跟踪测试状态（如果表单中有的话）
+  // Use identifier to track test state (if present in the form)
   const formValues = form.getFieldsValue();
   const identifier = formValues?.identifier || 'temp-test-id';
   const testState = useToolStore(mcpStoreSelectors.getMCPConnectionTestState(identifier), isEqual);
@@ -62,7 +103,7 @@ const MCPManifestForm = ({ form, isEditMode }: MCPManifestFormProps) => {
         ...(mcpType === 'http' ? [HTTP_URL_KEY] : [STDIO_COMMAND, STDIO_ARGS]),
       ];
 
-      // 如果是 HTTP 类型，还需要验证认证字段
+      // For HTTP type, also validate authentication fields
       if (mcpType === 'http') {
         fieldsToValidate.push(AUTH_TYPE);
         const currentAuthType = form.getFieldValue(AUTH_TYPE);
@@ -89,7 +130,7 @@ const MCPManifestForm = ({ form, isEditMode }: MCPManifestFormProps) => {
       const description = values.customParams?.description;
       const avatar = values.customParams?.avatar;
 
-      // 使用 mcpStore 的 testMcpConnection 方法
+      // Use mcpStore's testMcpConnection method
       const result = await testMcpConnection({
         connection: mcp,
         identifier: id,
@@ -100,10 +141,10 @@ const MCPManifestForm = ({ form, isEditMode }: MCPManifestFormProps) => {
         // Optionally update form if manifest ID differs or to store the fetched manifest
         // Be careful about overwriting user input if not desired
         form.setFieldsValue({ manifest: result.manifest });
-        setConnectionError(null); // 清除本地错误状态
+        setConnectionError(null); // Clear local error state
         setErrorMetadata(null);
       } else if (result.error) {
-        // Store 已经处理了错误状态，这里可以选择显示额外的用户友好提示
+        // Store has already handled the error state; optionally show additional user-friendly messages here
         const errorMessage = t('error.testConnectionFailed', {
           error: result.error,
         });
@@ -161,6 +202,7 @@ const MCPManifestForm = ({ form, isEditMode }: MCPManifestFormProps) => {
             desc={t('dev.mcp.identifier.desc')}
             label={t('dev.mcp.identifier.label')}
             name={'identifier'}
+            tag={'identifier'}
             rules={[
               { message: t('dev.mcp.identifier.required'), required: true },
               {
@@ -180,7 +222,6 @@ const MCPManifestForm = ({ form, isEditMode }: MCPManifestFormProps) => {
                     },
                   },
             ]}
-            tag={'identifier'}
           >
             <Input placeholder={t('dev.mcp.identifier.placeholder')} />
           </FormItem>
@@ -190,6 +231,7 @@ const MCPManifestForm = ({ form, isEditMode }: MCPManifestFormProps) => {
                 desc={t('dev.mcp.url.desc')}
                 label={t('dev.mcp.url.label')}
                 name={HTTP_URL_KEY}
+                tag={'url'}
                 rules={[
                   { message: t('dev.mcp.url.required'), required: true },
                   {
@@ -197,12 +239,11 @@ const MCPManifestForm = ({ form, isEditMode }: MCPManifestFormProps) => {
                     validator: async (_, value) => {
                       if (!value) return true;
 
-                      // 如果不是 URL 就会自动抛出错误
+                      // Throws automatically if the value is not a valid URL
                       new URL(value);
                     },
                   },
                 ]}
-                tag={'url'}
               >
                 <Input placeholder="https://mcp.higress.ai/mcp-github/xxxxx" />
               </FormItem>
@@ -212,7 +253,8 @@ const MCPManifestForm = ({ form, isEditMode }: MCPManifestFormProps) => {
                 label={t('dev.mcp.auth.label')}
                 name={AUTH_TYPE}
               >
-                <Radio.Group
+                <RadioGroup
+                  style={{ width: '100%' }}
                   options={[
                     {
                       label: t('dev.mcp.auth.none'),
@@ -222,8 +264,15 @@ const MCPManifestForm = ({ form, isEditMode }: MCPManifestFormProps) => {
                       label: t('dev.mcp.auth.bear'),
                       value: 'bearer',
                     },
+                    ...(enableOAuth
+                      ? [
+                          {
+                            label: t('dev.mcp.auth.oauth'),
+                            value: 'oauth2',
+                          },
+                        ]
+                      : []),
                   ]}
-                  style={{ width: '100%' }}
                 />
               </FormItem>
               {authType === 'bearer' && (
@@ -233,8 +282,43 @@ const MCPManifestForm = ({ form, isEditMode }: MCPManifestFormProps) => {
                   name={AUTH_TOKEN}
                   rules={[{ message: t('dev.mcp.auth.token.required'), required: true }]}
                 >
-                  <InputPassword placeholder={t('dev.mcp.auth.token.placeholder')} />
+                  <InputPassword
+                    autoComplete="new-password"
+                    placeholder={t('dev.mcp.auth.token.placeholder')}
+                  />
                 </FormItem>
+              )}
+              {enableOAuth && authType === 'oauth2' && (
+                <>
+                  <FormItem
+                    desc={t('dev.mcp.auth.oauth.clientId.desc')}
+                    label={t('dev.mcp.auth.oauth.clientId.label')}
+                    name={AUTH_CLIENT_ID}
+                  >
+                    <Input placeholder={t('dev.mcp.auth.oauth.clientId.placeholder')} />
+                  </FormItem>
+                  <FormItem
+                    desc={t('dev.mcp.auth.oauth.clientSecret.desc')}
+                    label={t('dev.mcp.auth.oauth.clientSecret.label')}
+                    name={AUTH_CLIENT_SECRET}
+                  >
+                    <InputPassword
+                      autoComplete="new-password"
+                      placeholder={t('dev.mcp.auth.oauth.clientSecret.placeholder')}
+                    />
+                  </FormItem>
+                  <div
+                    style={{
+                      color: 'var(--lobe-colors-textDescription)',
+                      fontSize: 12,
+                      marginBottom: 8,
+                    }}
+                  >
+                    {t('dev.mcp.auth.oauth.redirectHint')}
+                    <br />
+                    <code style={{ wordBreak: 'break-all' }}>{redirectUri}</code>
+                  </div>
+                </>
               )}
               <CollapsibleSection title={t('dev.mcp.advanced.title')}>
                 <FormItem
@@ -281,30 +365,30 @@ const MCPManifestForm = ({ form, isEditMode }: MCPManifestFormProps) => {
             </>
           )}
           <FormItem colon={false} label={t('dev.mcp.testConnectionTip')} layout={'horizontal'}>
-            <Flexbox align={'center'} gap={8} horizontal justify={'flex-end'}>
+            <Flexbox horizontal align={'center'} gap={8} justify={'flex-end'}>
               <Button
                 loading={isTesting}
-                onClick={handleTestConnection}
                 type={!!mcpType ? 'primary' : undefined}
+                onClick={isOAuth ? onAuthorizeOAuth : handleTestConnection}
               >
-                {t('dev.mcp.testConnection')}
+                {isOAuth ? t('dev.mcp.auth.oauth.authorize') : t('dev.mcp.testConnection')}
               </Button>
             </Flexbox>
           </FormItem>
           {(connectionError || testState.error) && (
             <Alert
               closable
+              showIcon
               extra={errorMetadata ? <ErrorDetails errorInfo={errorMetadata} /> : undefined}
+              title={connectionError || testState.error}
+              type="error"
               onClose={() => {
                 setConnectionError(null);
                 setErrorMetadata(null);
               }}
-              showIcon
-              title={connectionError || testState.error}
-              type="error"
             />
           )}
-          <FormItem name={'manifest'} noStyle />
+          <FormItem noStyle name={'manifest'} />
           <Divider />
           <FormItem
             desc={t('dev.mcp.desc.desc')}

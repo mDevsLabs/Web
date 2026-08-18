@@ -1,8 +1,17 @@
 'use client';
 
 import { Github } from '@lobehub/icons';
-import { ActionIcon, Avatar, Button, Flexbox, Icon, Tag, Text, Tooltip } from '@lobehub/ui';
-import { App } from 'antd';
+import {
+  ActionIcon,
+  Avatar,
+  Flexbox,
+  Icon,
+  stopPropagation,
+  Tag,
+  Text,
+  Tooltip,
+} from '@lobehub/ui';
+import { Button, toast } from '@lobehub/ui/base-ui';
 import { createStaticStyles, cssVar, useResponsive } from 'antd-style';
 import {
   BookmarkIcon,
@@ -16,7 +25,7 @@ import {
 import qs from 'query-string';
 import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import useSWR from 'swr';
 
 import OfficialIcon from '@/components/OfficialIcon';
@@ -24,6 +33,7 @@ import Scores from '@/features/MCP/Scores';
 import { getLanguageColor, getRecommendedDeployment } from '@/features/MCP/utils';
 import { useCategory } from '@/hooks/useMCPCategory';
 import { useMarketAuth } from '@/layout/AuthProvider/MarketAuth';
+import { favoriteKeys } from '@/libs/swr/keys';
 import { socialService } from '@/services/social';
 
 import InstallationIcon from '../../components/MCPDepsIcon';
@@ -48,7 +58,7 @@ const styles = createStaticStyles(({ css }) => {
 
 const Header = memo<{ inModal?: boolean; mobile?: boolean }>(({ mobile: isMobile, inModal }) => {
   const { t } = useTranslation('discover');
-  const { message } = App.useApp();
+
   const {
     name,
     author,
@@ -80,7 +90,7 @@ const Header = memo<{ inModal?: boolean; mobile?: boolean }>(({ mobile: isMobile
 
   // Fetch favorite status
   const { data: favoriteStatus, mutate: mutateFavorite } = useSWR(
-    identifier && isAuthenticated ? ['favorite-status', 'plugin', identifier] : null,
+    identifier && isAuthenticated ? favoriteKeys.status('plugin', identifier) : null,
     () => socialService.checkFavoriteStatus('plugin', identifier!),
     { revalidateOnFocus: false },
   );
@@ -89,7 +99,7 @@ const Header = memo<{ inModal?: boolean; mobile?: boolean }>(({ mobile: isMobile
 
   const handleFavoriteClick = async () => {
     if (!isAuthenticated) {
-      await signIn();
+      await signIn('mcp');
       return;
     }
 
@@ -99,15 +109,15 @@ const Header = memo<{ inModal?: boolean; mobile?: boolean }>(({ mobile: isMobile
     try {
       if (isFavorited) {
         await socialService.removeFavorite('plugin', identifier);
-        message.success(t('assistant.unfavoriteSuccess'));
+        toast.success(t('assistant.unfavoriteSuccess'));
       } else {
         await socialService.addFavorite('plugin', identifier);
-        message.success(t('assistant.favoriteSuccess'));
+        toast.success(t('assistant.favoriteSuccess'));
       }
       await mutateFavorite();
     } catch (error) {
       console.error('Favorite action failed:', error);
-      message.error(t('assistant.favoriteFailed'));
+      toast.error(t('assistant.favoriteFailed'));
     } finally {
       setFavoriteLoading(false);
     }
@@ -138,7 +148,7 @@ const Header = memo<{ inModal?: boolean; mobile?: boolean }>(({ mobile: isMobile
         url: '/community/mcp',
       })}
     >
-      <Button icon={cate?.icon} size={'middle'} variant={'outlined'}>
+      <Button icon={cate?.icon} size={'middle'}>
         {cate?.label}
       </Button>
     </Link>
@@ -146,7 +156,7 @@ const Header = memo<{ inModal?: boolean; mobile?: boolean }>(({ mobile: isMobile
 
   return (
     <Flexbox gap={12}>
-      <Flexbox align={'flex-start'} gap={16} horizontal width={'100%'}>
+      <Flexbox horizontal align={'flex-start'} gap={16} width={'100%'}>
         <Avatar avatar={icon} shape={'square'} size={mobile ? 48 : 64} />
         <Flexbox
           flex={1}
@@ -156,9 +166,9 @@ const Header = memo<{ inModal?: boolean; mobile?: boolean }>(({ mobile: isMobile
           }}
         >
           <Flexbox
+            horizontal
             align={'center'}
             gap={8}
-            horizontal
             justify={'space-between'}
             style={{
               overflow: 'hidden',
@@ -166,18 +176,18 @@ const Header = memo<{ inModal?: boolean; mobile?: boolean }>(({ mobile: isMobile
             }}
           >
             <Flexbox
+              horizontal
               align={'center'}
               flex={1}
               gap={12}
-              horizontal
               style={{
                 overflow: 'hidden',
                 position: 'relative',
               }}
             >
               <Text
-                as={'h1'}
                 ellipsis
+                as={'h1'}
                 style={{ fontSize: inModal ? 20 : mobile ? 18 : 24, margin: 0 }}
                 title={identifier}
               >
@@ -190,17 +200,12 @@ const Header = memo<{ inModal?: boolean; mobile?: boolean }>(({ mobile: isMobile
               )}
               {!mobile && scores}
             </Flexbox>
-            <Flexbox align={'center'} gap={6} horizontal>
+            <Flexbox horizontal align={'center'} gap={6}>
               {recommendedDeployment?.installationMethod && (
                 <InstallationIcon type={recommendedDeployment.installationMethod} />
               )}
               {github?.url && (
-                <a
-                  href={github.url}
-                  onClick={(e) => e.stopPropagation()}
-                  rel="noreferrer"
-                  target={'_blank'}
-                >
+                <a href={github.url} rel="noreferrer" target={'_blank'} onClick={stopPropagation}>
                   <ActionIcon fill={cssVar.colorTextDescription} icon={Github} />
                 </a>
               )}
@@ -208,13 +213,13 @@ const Header = memo<{ inModal?: boolean; mobile?: boolean }>(({ mobile: isMobile
                 <ActionIcon
                   icon={isFavorited ? BookmarkMinusIcon : BookmarkIcon}
                   loading={favoriteLoading}
-                  onClick={handleFavoriteClick}
                   variant={isFavorited ? 'outlined' : undefined}
+                  onClick={handleFavoriteClick}
                 />
               </Tooltip>
             </Flexbox>
           </Flexbox>
-          <Flexbox align={'center'} gap={4} horizontal>
+          <Flexbox horizontal align={'center'} gap={4}>
             <div className={styles.version}>{version}</div>
             <Icon icon={DotIcon} />
             {author?.url ? (
@@ -226,28 +231,24 @@ const Header = memo<{ inModal?: boolean; mobile?: boolean }>(({ mobile: isMobile
             )}
             {isClaimed && <Tag size={'small'}>{t('isClaimed')}</Tag>}
             <Icon icon={DotIcon} />
-            <PublishedTime
-              className={styles.time}
-              date={(updatedAt || createdAt) as string}
-              template={'MMM DD, YYYY'}
-            />
+            <PublishedTime className={styles.time} date={(updatedAt || createdAt) as string} />
           </Flexbox>
         </Flexbox>
       </Flexbox>
       <Flexbox
+        horizontal
         align={'center'}
         gap={mobile ? 12 : 24}
-        horizontal
+        wrap={'wrap'}
         style={{
           color: cssVar.colorTextSecondary,
         }}
-        wrap={'wrap'}
       >
         {mobile && scores}
         {!mobile && cateButton}
-        <Flexbox align={'center'} gap={mobile ? 12 : 24} horizontal wrap={'wrap'}>
+        <Flexbox horizontal align={'center'} gap={mobile ? 12 : 24} wrap={'wrap'}>
           {Boolean(github?.language) && (
-            <Flexbox align={'center'} gap={6} horizontal>
+            <Flexbox horizontal align={'center'} gap={6}>
               <Icon
                 color={cssVar.colorFillTertiary}
                 fill={getLanguageColor(github?.language)}
@@ -258,19 +259,19 @@ const Header = memo<{ inModal?: boolean; mobile?: boolean }>(({ mobile: isMobile
             </Flexbox>
           )}
           {Boolean(github?.license) && (
-            <Flexbox align={'center'} gap={6} horizontal>
+            <Flexbox horizontal align={'center'} gap={6}>
               <Icon icon={ScaleIcon} size={14} />
               {github?.license}
             </Flexbox>
           )}
           {Boolean(installCount) && (
-            <Flexbox align={'center'} gap={6} horizontal>
+            <Flexbox horizontal align={'center'} gap={6}>
               <Icon icon={DownloadIcon} size={14} />
               {installCount}
             </Flexbox>
           )}
           {Boolean(github?.stars) && (
-            <Flexbox align={'center'} gap={6} horizontal>
+            <Flexbox horizontal align={'center'} gap={6}>
               <Icon icon={StarIcon} size={14} />
               {github?.stars}
             </Flexbox>

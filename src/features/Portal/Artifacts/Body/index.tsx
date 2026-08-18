@@ -19,22 +19,22 @@ const ArtifactsUI = memo(() => {
     isArtifactTagClosed,
   ] = useChatStore((s) => {
     const messageId = chatPortalSelectors.artifactMessageId(s) || '';
+    const identifier = chatPortalSelectors.artifactIdentifier(s);
 
     return [
       messageId,
       s.portalArtifactDisplayMode,
       messageStateSelectors.isMessageGenerating(messageId)(s),
       chatPortalSelectors.artifactType(s),
-      chatPortalSelectors.artifactCode(messageId)(s),
+      chatPortalSelectors.artifactCode(messageId, identifier)(s),
       chatPortalSelectors.artifactCodeLanguage(s),
-      chatPortalSelectors.isArtifactTagClosed(messageId)(s),
+      chatPortalSelectors.isArtifactTagClosed(messageId, identifier)(s),
     ];
   });
 
   useEffect(() => {
-    // when message generating , check whether the artifact is closed
-    // if close, move the display mode to preview
-    if (isMessageGenerating && isArtifactTagClosed && displayMode === ArtifactDisplayMode.Code) {
+    // When generation completes, switch from the live source stream to the final preview.
+    if (isMessageGenerating && displayMode === ArtifactDisplayMode.Code && isArtifactTagClosed) {
       useChatStore.setState({ portalArtifactDisplayMode: ArtifactDisplayMode.Preview });
     }
   }, [isMessageGenerating, displayMode, isArtifactTagClosed]);
@@ -59,14 +59,16 @@ const ArtifactsUI = memo(() => {
     }
   }, [artifactType, artifactCodeLanguage]);
 
+  // Keep incomplete artifacts in code mode so users can inspect and scroll the generated source.
+  const showCode =
+    artifactType === ArtifactType.Code ||
+    !isArtifactTagClosed ||
+    displayMode === ArtifactDisplayMode.Code;
+  const isStreamingCode = isMessageGenerating && showCode && !isArtifactTagClosed;
+  const isStreamingArtifact = isMessageGenerating && !isArtifactTagClosed;
+
   // make sure the message and id is valid
   if (!messageId) return;
-
-  // show code when the artifact is not closed or the display mode is code or the artifact type is code
-  const showCode =
-    !isArtifactTagClosed ||
-    displayMode === ArtifactDisplayMode.Code ||
-    artifactType === ArtifactType.Code;
 
   return (
     <Flexbox
@@ -78,14 +80,17 @@ const ArtifactsUI = memo(() => {
       style={{ overflow: 'hidden' }}
     >
       {showCode ? (
-        <Highlighter
-          language={language || 'txt'}
-          style={{ fontSize: 12, height: '100%', overflow: 'auto' }}
-        >
-          {artifactContent}
-        </Highlighter>
+        <Flexbox flex={1} style={{ minHeight: 0, overflow: 'auto' }}>
+          <Highlighter
+            animated={isStreamingCode}
+            language={language || 'txt'}
+            style={{ fontSize: 12, minHeight: '100%', overflow: 'visible' }}
+          >
+            {artifactContent}
+          </Highlighter>
+        </Flexbox>
       ) : (
-        <Renderer content={artifactContent} type={artifactType} />
+        <Renderer animated={isStreamingArtifact} content={artifactContent} type={artifactType} />
       )}
     </Flexbox>
   );

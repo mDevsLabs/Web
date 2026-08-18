@@ -1,3 +1,4 @@
+import { CLIENT_VERSION_HEADER, CURRENT_VERSION } from '@lobechat/const';
 import {
   adminClient,
   genericOAuthClient,
@@ -6,10 +7,12 @@ import {
 } from 'better-auth/client/plugins';
 import { createAuthClient } from 'better-auth/react';
 
-import type { auth } from '@/auth';
+import { type auth } from '@/auth';
 
 export const {
+  changeEmail,
   linkSocial,
+  oauth2,
   accountInfo,
   listAccounts,
   requestPasswordReset,
@@ -21,6 +24,11 @@ export const {
   unlinkAccount,
   useSession,
 } = createAuthClient({
+  fetchOptions: {
+    headers: {
+      [CLIENT_VERSION_HEADER]: CURRENT_VERSION,
+    },
+  },
   plugins: [
     adminClient(),
     inferAdditionalFields<typeof auth>(),

@@ -1,16 +1,32 @@
 import * as builtinAgents from '@lobechat/builtin-agents';
 import { GroupManagementIdentifier } from '@lobechat/builtin-tool-group-management';
-import { GTDIdentifier } from '@lobechat/builtin-tool-gtd';
+import { LobeAgentIdentifier } from '@lobechat/builtin-tool-lobe-agent';
 import { NotebookIdentifier } from '@lobechat/builtin-tool-notebook';
 import { PageAgentIdentifier } from '@lobechat/builtin-tool-page-agent';
+import { TaskIdentifier } from '@lobechat/builtin-tool-task';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import * as agentStore from '@/store/agent';
 import * as agentSelectors from '@/store/agent/selectors';
 import * as agentGroupStore from '@/store/agentGroup';
 import * as agentGroupSelectors from '@/store/agentGroup/selectors';
+import { useUserStore } from '@/store/user';
+import * as userSelectors from '@/store/user/selectors';
 
 import { resolveAgentConfig } from './agentConfigResolver';
+
+vi.hoisted(() => {
+  const storage = new Map<string, string>();
+  Object.defineProperty(globalThis, 'localStorage', {
+    configurable: true,
+    value: {
+      clear: () => storage.clear(),
+      getItem: (key: string) => storage.get(key) ?? null,
+      removeItem: (key: string) => storage.delete(key),
+      setItem: (key: string, value: string) => storage.set(key, value),
+    },
+  });
+});
 
 describe('resolveAgentConfig', () => {
   const mockAgentStoreState = { someState: true };
@@ -30,9 +46,13 @@ describe('resolveAgentConfig', () => {
     vi.spyOn(agentSelectors.agentSelectors, 'getAgentConfigById').mockReturnValue(
       () => mockAgentConfig as any,
     );
+    vi.spyOn(agentSelectors.agentByIdSelectors, 'getAgentById').mockReturnValue(
+      () => undefined as any,
+    );
     vi.spyOn(agentSelectors.chatConfigByIdSelectors, 'getChatConfigById').mockReturnValue(
       () => mockChatConfig as any,
     );
+    useUserStore.setState({ user: undefined, workspaceUserPreference: {} });
   });
 
   describe('regular agent (non-builtin)', () => {
@@ -102,11 +122,197 @@ describe('resolveAgentConfig', () => {
       expect(result.plugins).toEqual([]);
     });
 
+    it('should exclude disabled entries and resolve legacy strings as pinned, in a mixed-shape plugins array', () => {
+      vi.spyOn(agentSelectors.agentSelectors, 'getAgentConfigById').mockReturnValue(
+        () =>
+          ({
+            ...mockAgentConfig,
+            plugins: [
+              'plugin-a',
+              { identifier: 'plugin-b', mode: 'disabled' },
+              { identifier: 'plugin-c', mode: 'pinned' },
+            ],
+          }) as any,
+      );
+
+      const result = resolveAgentConfig({ agentId: 'test-agent' });
+
+      expect(result.plugins).toEqual(['plugin-a', 'plugin-c']);
+    });
+
     it('should return agent config and chat config correctly', () => {
       const result = resolveAgentConfig({ agentId: 'test-agent' });
 
-      expect(result.agentConfig).toEqual(mockAgentConfig);
+      // systemRole should have locale appended (currentResponseLanguage falls back to browser locale)
+      expect(result.agentConfig.systemRole).toContain('You are a helpful assistant');
+      expect(result.agentConfig.model).toBe(mockAgentConfig.model);
+      expect(result.agentConfig.plugins).toEqual(mockAgentConfig.plugins);
       expect(result.chatConfig).toEqual(mockChatConfig);
+    });
+
+    it('uses the current member model override for a workspace Agent that allows it', () => {
+      vi.spyOn(agentSelectors.agentByIdSelectors, 'getAgentById').mockReturnValue(
+        () => ({ visibility: 'public', workspaceId: 'workspace-1' }) as any,
+      );
+      vi.spyOn(agentSelectors.agentSelectors, 'getAgentConfigById').mockReturnValue(
+        () =>
+          ({
+            ...mockAgentConfig,
+            agencyConfig: { modelSelectionPolicy: 'member' },
+            provider: 'openai',
+          }) as any,
+      );
+      useUserStore.setState({
+        workspaceUserPreference: {
+          agentModelOverrides: {
+            'test-agent': { model: 'member-model', provider: 'member-provider' },
+          },
+        },
+      });
+
+      const result = resolveAgentConfig({ agentId: 'test-agent' });
+
+      expect(result.agentConfig.model).toBe('member-model');
+      expect(result.agentConfig.provider).toBe('member-provider');
+    });
+
+    it('uses a retained member model override when a legacy workspace policy is missing', () => {
+      vi.spyOn(agentSelectors.agentByIdSelectors, 'getAgentById').mockReturnValue(
+        () => ({ visibility: 'public', workspaceId: 'workspace-1' }) as any,
+      );
+      vi.spyOn(agentSelectors.agentSelectors, 'getAgentConfigById').mockReturnValue(
+        () => ({ ...mockAgentConfig, provider: 'openai' }) as any,
+      );
+      useUserStore.setState({
+        workspaceUserPreference: {
+          agentModelOverrides: {
+            'test-agent': { model: 'member-model', provider: 'member-provider' },
+          },
+        },
+      });
+
+      const result = resolveAgentConfig({ agentId: 'test-agent' });
+
+      expect(result.agentConfig.model).toBe('member-model');
+      expect(result.agentConfig.provider).toBe('member-provider');
+    });
+
+    it('uses the member model override on a collaborative builtin the caller created', () => {
+      vi.spyOn(agentSelectors.agentByIdSelectors, 'getAgentById').mockReturnValue(
+        () =>
+          ({
+            slug: 'group-agent-builder',
+            userId: 'member-1',
+            virtual: true,
+            visibility: 'public',
+            workspaceId: 'workspace-1',
+          }) as any,
+      );
+      vi.spyOn(agentSelectors.agentSelectors, 'getAgentConfigById').mockReturnValue(
+        () => ({ ...mockAgentConfig, provider: 'openai' }) as any,
+      );
+      useUserStore.setState({
+        user: { id: 'member-1' } as any,
+        workspaceUserPreference: {
+          agentModelOverrides: {
+            'test-agent': { model: 'member-model', provider: 'member-provider' },
+          },
+        },
+      });
+
+      const result = resolveAgentConfig({ agentId: 'test-agent' });
+
+      expect(result.agentConfig.model).toBe('member-model');
+      expect(result.agentConfig.provider).toBe('member-provider');
+    });
+
+    it('ignores a retained member model override when the workspace policy is fixed', () => {
+      vi.spyOn(agentSelectors.agentByIdSelectors, 'getAgentById').mockReturnValue(
+        () => ({ visibility: 'public', workspaceId: 'workspace-1' }) as any,
+      );
+      vi.spyOn(agentSelectors.agentSelectors, 'getAgentConfigById').mockReturnValue(
+        () =>
+          ({
+            ...mockAgentConfig,
+            agencyConfig: { modelSelectionPolicy: 'fixed' },
+            provider: 'openai',
+          }) as any,
+      );
+      useUserStore.setState({
+        workspaceUserPreference: {
+          agentModelOverrides: {
+            'test-agent': { model: 'member-model', provider: 'member-provider' },
+          },
+        },
+      });
+
+      const result = resolveAgentConfig({ agentId: 'test-agent' });
+
+      expect(result.agentConfig.model).toBe('gpt-4');
+      expect(result.agentConfig.provider).toBe('openai');
+    });
+
+    it('ignores a retained member model override for a private workspace Agent', () => {
+      vi.spyOn(agentSelectors.agentByIdSelectors, 'getAgentById').mockReturnValue(
+        () => ({ visibility: 'private', workspaceId: 'workspace-1' }) as any,
+      );
+      vi.spyOn(agentSelectors.agentSelectors, 'getAgentConfigById').mockReturnValue(
+        () =>
+          ({
+            ...mockAgentConfig,
+            agencyConfig: { modelSelectionPolicy: 'member' },
+            provider: 'openai',
+          }) as any,
+      );
+      useUserStore.setState({
+        workspaceUserPreference: {
+          agentModelOverrides: {
+            'test-agent': { model: 'member-model', provider: 'member-provider' },
+          },
+        },
+      });
+
+      const result = resolveAgentConfig({ agentId: 'test-agent' });
+
+      expect(result.agentConfig.model).toBe('gpt-4');
+      expect(result.agentConfig.provider).toBe('openai');
+    });
+
+    it('uses an ordinary member personal Agent/Chat mode for a public Workspace Agent', () => {
+      vi.spyOn(agentSelectors.agentByIdSelectors, 'getAgentById').mockReturnValue(
+        () => ({ userId: 'author-1', visibility: 'public', workspaceId: 'workspace-1' }) as any,
+      );
+      vi.spyOn(agentSelectors.chatConfigByIdSelectors, 'getChatConfigById').mockReturnValue(
+        () => ({ enableAgentMode: true, enableStreaming: true }) as any,
+      );
+      useUserStore.setState({
+        user: { id: 'member-1' } as any,
+        workspaceUserPreference: { agentModeOverrides: { 'test-agent': false } },
+      });
+
+      const result = resolveAgentConfig({ agentId: 'test-agent' });
+
+      expect(result.chatConfig).toMatchObject({
+        enableAgentMode: false,
+        enableStreaming: true,
+      });
+    });
+
+    it('ignores a personal mode override for the public Workspace Agent author', () => {
+      vi.spyOn(agentSelectors.agentByIdSelectors, 'getAgentById').mockReturnValue(
+        () => ({ userId: 'author-1', visibility: 'public', workspaceId: 'workspace-1' }) as any,
+      );
+      vi.spyOn(agentSelectors.chatConfigByIdSelectors, 'getChatConfigById').mockReturnValue(
+        () => ({ enableAgentMode: true }) as any,
+      );
+      useUserStore.setState({
+        user: { id: 'author-1' } as any,
+        workspaceUserPreference: { agentModeOverrides: { 'test-agent': false } },
+      });
+
+      const result = resolveAgentConfig({ agentId: 'test-agent' });
+
+      expect(result.chatConfig.enableAgentMode).toBe(true);
     });
 
     describe('params adjustment based on chatConfig', () => {
@@ -368,12 +574,16 @@ describe('resolveAgentConfig', () => {
         targetAgentConfig: targetAgentConfig as any,
       });
 
-      expect(getAgentRuntimeConfigSpy).toHaveBeenCalledWith('agent-builder', {
-        documentContent: 'some document content',
-        model: 'gpt-4-turbo',
-        plugins: ['input-plugin'],
-        targetAgentConfig,
-      });
+      expect(getAgentRuntimeConfigSpy).toHaveBeenCalledWith(
+        'agent-builder',
+        expect.objectContaining({
+          documentContent: 'some document content',
+          model: 'gpt-4-turbo',
+          plugins: ['input-plugin'],
+          targetAgentConfig,
+          userLocale: expect.any(String),
+        }),
+      );
     });
 
     it('should merge runtime chatConfig with base chatConfig', () => {
@@ -394,6 +604,33 @@ describe('resolveAgentConfig', () => {
         enableHistoryCount: false,
         enableStreaming: true,
         historyCount: 10,
+      });
+    });
+
+    it('should merge runtime agencyConfig with base agencyConfig', () => {
+      vi.spyOn(agentSelectors.agentSelectors, 'getAgentConfigById').mockReturnValue(
+        () =>
+          ({
+            ...mockAgentConfig,
+            agencyConfig: {
+              boundDeviceId: 'device-a',
+              executionTarget: 'device',
+            },
+          }) as any,
+      );
+      vi.spyOn(builtinAgents, 'getAgentRuntimeConfig').mockReturnValue({
+        agencyConfig: {
+          executionTarget: 'none',
+        },
+        plugins: ['runtime-plugin'],
+        systemRole: 'Runtime system role',
+      });
+
+      const result = resolveAgentConfig({ agentId: 'builtin-agent' });
+
+      expect(result.agentConfig.agencyConfig).toEqual({
+        boundDeviceId: 'device-a',
+        executionTarget: 'none',
       });
     });
 
@@ -440,23 +677,23 @@ describe('resolveAgentConfig', () => {
         vi.spyOn(agentSelectors.agentSelectors, 'getAgentSlugById').mockReturnValue(() => 'inbox');
       });
 
-      it('should include GTD and Notebook tools in plugins', () => {
+      it('should include lobe-agent and Notebook tools in plugins', () => {
         vi.spyOn(builtinAgents, 'getAgentRuntimeConfig').mockReturnValue({
-          plugins: [GTDIdentifier, NotebookIdentifier],
+          plugins: [LobeAgentIdentifier, NotebookIdentifier],
           systemRole: 'Inbox system role',
         });
 
         const result = resolveAgentConfig({ agentId: 'inbox-agent' });
 
-        expect(result.plugins).toContain(GTDIdentifier);
+        expect(result.plugins).toContain(LobeAgentIdentifier);
         expect(result.plugins).toContain(NotebookIdentifier);
         expect(result.isBuiltinAgent).toBe(true);
         expect(result.slug).toBe('inbox');
       });
 
-      it('should preserve user plugins while including GTD and Notebook', () => {
+      it('should preserve user plugins while including lobe-agent and Notebook', () => {
         vi.spyOn(builtinAgents, 'getAgentRuntimeConfig').mockReturnValue({
-          plugins: [GTDIdentifier, NotebookIdentifier, 'user-plugin'],
+          plugins: [LobeAgentIdentifier, NotebookIdentifier, 'user-plugin'],
           systemRole: 'Inbox system role',
         });
 
@@ -465,7 +702,7 @@ describe('resolveAgentConfig', () => {
           plugins: ['user-plugin'],
         });
 
-        expect(result.plugins).toContain(GTDIdentifier);
+        expect(result.plugins).toContain(LobeAgentIdentifier);
         expect(result.plugins).toContain(NotebookIdentifier);
         expect(result.plugins).toContain('user-plugin');
       });
@@ -488,8 +725,8 @@ describe('resolveAgentConfig', () => {
         const getAgentRuntimeConfigSpy = vi
           .spyOn(builtinAgents, 'getAgentRuntimeConfig')
           .mockImplementation((slug, ctx) => ({
-            // This simulates the actual INBOX runtime: [GTDIdentifier, NotebookIdentifier, ...(ctx.plugins || [])]
-            plugins: [GTDIdentifier, NotebookIdentifier, ...(ctx.plugins || [])],
+            // This simulates the actual INBOX runtime: [LobeAgentIdentifier, NotebookIdentifier, ...(ctx.plugins || [])]
+            plugins: [LobeAgentIdentifier, NotebookIdentifier, ...(ctx.plugins || [])],
             systemRole: 'Inbox system role',
           }));
 
@@ -505,7 +742,7 @@ describe('resolveAgentConfig', () => {
         );
 
         // Verify final plugins include both builtin tools AND user-configured plugins
-        expect(result.plugins).toContain(GTDIdentifier);
+        expect(result.plugins).toContain(LobeAgentIdentifier);
         expect(result.plugins).toContain(NotebookIdentifier);
         expect(result.plugins).toContain('web-search');
         expect(result.plugins).toContain('memory');
@@ -557,8 +794,9 @@ describe('resolveAgentConfig', () => {
 
       expect(result.agentConfig.systemRole).toContain('You are a helpful assistant');
       expect(result.agentConfig.systemRole).toContain('Page agent system prompt');
+      // Locale instruction is injected between custom role and page-agent role
       expect(result.agentConfig.systemRole).toMatch(
-        /You are a helpful assistant\n\nPage agent system prompt/,
+        /You are a helpful assistant[\s\S]*Page agent system prompt/,
       );
     });
 
@@ -576,7 +814,7 @@ describe('resolveAgentConfig', () => {
         scope: 'page',
       });
 
-      expect(result.agentConfig.systemRole).toBe(
+      expect(result.agentConfig.systemRole).toContain(
         'Page agent system prompt with XML instructions...',
       );
     });
@@ -610,6 +848,17 @@ describe('resolveAgentConfig', () => {
 
       expect(result.plugins.filter((p) => p === PageAgentIdentifier)).toHaveLength(1);
       expect(result.plugins).toEqual([PageAgentIdentifier, 'other-plugin']);
+    });
+
+    it('should strip page-agent from explicit plugins outside page scope', () => {
+      const result = resolveAgentConfig({
+        agentId: 'custom-agent',
+        plugins: [PageAgentIdentifier, 'other-plugin'],
+        scope: 'main',
+      });
+
+      expect(result.plugins).toEqual(['other-plugin']);
+      expect(result.plugins).not.toContain(PageAgentIdentifier);
     });
 
     it('should apply chatConfig overrides for page editor', () => {
@@ -672,9 +921,9 @@ describe('resolveAgentConfig', () => {
         scope: 'page',
       });
 
-      // Should still inject PageAgentIdentifier but with empty systemRole
+      // Should still inject PageAgentIdentifier but with no page-agent systemRole
       expect(result.plugins).toContain(PageAgentIdentifier);
-      expect(result.agentConfig.systemRole.trim()).toBe('You are a helpful assistant');
+      expect(result.agentConfig.systemRole).toContain('You are a helpful assistant');
       expect(result.chatConfig.enableHistoryCount).toBe(false);
     });
 
@@ -690,7 +939,7 @@ describe('resolveAgentConfig', () => {
       });
 
       expect(result.plugins).toContain(PageAgentIdentifier);
-      expect(result.agentConfig.systemRole.trim()).toBe('You are a helpful assistant');
+      expect(result.agentConfig.systemRole).toContain('You are a helpful assistant');
       expect(result.chatConfig.enableHistoryCount).toBe(false);
     });
 
@@ -715,6 +964,60 @@ describe('resolveAgentConfig', () => {
       expect(result.agentConfig.systemRole).toBe('Page agent system prompt');
       expect(result.isBuiltinAgent).toBe(true);
       expect(result.slug).toBe('page-agent');
+    });
+  });
+
+  describe('Task Manager Integration (scope: task)', () => {
+    beforeEach(() => {
+      vi.spyOn(agentSelectors.agentSelectors, 'getAgentSlugById').mockReturnValue(() => undefined);
+
+      vi.spyOn(builtinAgents, 'getAgentRuntimeConfig').mockReturnValue({
+        plugins: [TaskIdentifier],
+        systemRole: 'Task agent system prompt...',
+      });
+    });
+
+    it('should inject task tools for custom agent in task scope', () => {
+      const result = resolveAgentConfig({
+        agentId: 'custom-agent',
+        scope: 'task',
+      });
+
+      expect(result.plugins).toEqual([TaskIdentifier, 'plugin-a', 'plugin-b']);
+      expect(result.agentConfig.systemRole).toContain('Task agent system prompt');
+      expect(result.isBuiltinAgent).toBe(false);
+    });
+
+    it('should not duplicate TaskIdentifier if already present', () => {
+      const result = resolveAgentConfig({
+        agentId: 'custom-agent',
+        plugins: [TaskIdentifier, 'other-plugin'],
+        scope: 'task',
+      });
+
+      expect(result.plugins.filter((p) => p === TaskIdentifier)).toHaveLength(1);
+      expect(result.plugins).toEqual([TaskIdentifier, 'other-plugin']);
+    });
+
+    it('should not duplicate injection when task-agent itself is used in task scope', () => {
+      vi.spyOn(agentSelectors.agentSelectors, 'getAgentSlugById').mockReturnValue(
+        () => 'task-agent',
+      );
+
+      vi.spyOn(builtinAgents, 'getAgentRuntimeConfig').mockReturnValue({
+        plugins: [TaskIdentifier],
+        systemRole: 'Task agent system prompt',
+      });
+
+      const result = resolveAgentConfig({
+        agentId: 'task-agent-id',
+        scope: 'task',
+      });
+
+      expect(result.plugins.filter((p) => p === TaskIdentifier)).toHaveLength(1);
+      expect(result.agentConfig.systemRole).toBe('Task agent system prompt');
+      expect(result.isBuiltinAgent).toBe(true);
+      expect(result.slug).toBe('task-agent');
     });
   });
 
@@ -765,7 +1068,7 @@ describe('resolveAgentConfig', () => {
 
         vi.spyOn(builtinAgents, 'getAgentRuntimeConfig').mockReturnValue({
           chatConfig: { enableHistoryCount: false },
-          plugins: [GroupManagementIdentifier, GTDIdentifier],
+          plugins: [GroupManagementIdentifier, LobeAgentIdentifier],
           systemRole: 'You are a group supervisor...',
         });
 
@@ -800,7 +1103,7 @@ describe('resolveAgentConfig', () => {
       // Mock: getAgentRuntimeConfig for supervisor agent
       vi.spyOn(builtinAgents, 'getAgentRuntimeConfig').mockReturnValue({
         chatConfig: { enableHistoryCount: false },
-        plugins: [GroupManagementIdentifier, GTDIdentifier],
+        plugins: [GroupManagementIdentifier, LobeAgentIdentifier],
         systemRole: 'You are a group supervisor...',
       });
 
@@ -813,7 +1116,7 @@ describe('resolveAgentConfig', () => {
       expect(result.isBuiltinAgent).toBe(true);
       expect(result.slug).toBe('group-supervisor');
       expect(result.plugins).toContain(GroupManagementIdentifier);
-      expect(result.plugins).toContain(GTDIdentifier);
+      expect(result.plugins).toContain(LobeAgentIdentifier);
     });
 
     it('should pass groupSupervisorContext to getAgentRuntimeConfig', () => {
@@ -934,7 +1237,7 @@ describe('resolveAgentConfig', () => {
 
       vi.spyOn(builtinAgents, 'getAgentRuntimeConfig').mockReturnValue({
         chatConfig: { enableHistoryCount: false },
-        plugins: [GroupManagementIdentifier, GTDIdentifier],
+        plugins: [GroupManagementIdentifier, LobeAgentIdentifier],
         systemRole: 'Supervisor system role',
       });
 
@@ -954,67 +1257,71 @@ describe('resolveAgentConfig', () => {
     });
   });
 
-  describe('sub-task filtering (isSubTask)', () => {
+  // lobe-agent's sub-agent / group trimming moved into resolveLobeAgentManifest
+  // (manifest resolver, applied at tools-engine build time). resolveAgentConfig no
+  // longer drops lobe-agent from the plugins list based on isSubAgent — it stays so
+  // its plan / todo / visual-media APIs remain available; only callSubAgent is hidden
+  // downstream (covered by resolveManifest.test.ts).
+  describe('isSubAgent keeps lobe-agent in plugins (trimming moved to manifest resolver)', () => {
     beforeEach(() => {
       vi.spyOn(agentSelectors.agentSelectors, 'getAgentSlugById').mockReturnValue(() => undefined);
     });
 
-    it('should filter out lobe-gtd when isSubTask is true for regular agent', () => {
+    it('keeps lobe-agent when isSubAgent is true for regular agent', () => {
       vi.spyOn(agentSelectors.agentSelectors, 'getAgentConfigById').mockReturnValue(
         () =>
           ({
             ...mockAgentConfig,
-            plugins: ['lobe-gtd', 'plugin-a', 'plugin-b'],
+            plugins: ['lobe-agent', 'plugin-a', 'plugin-b'],
           }) as any,
       );
 
       const result = resolveAgentConfig({
         agentId: 'test-agent',
-        isSubTask: true,
+        isSubAgent: true,
       });
 
-      expect(result.plugins).not.toContain('lobe-gtd');
-      expect(result.plugins).toEqual(['plugin-a', 'plugin-b']);
+      expect(result.plugins).toEqual(['lobe-agent', 'plugin-a', 'plugin-b']);
     });
 
-    it('should keep lobe-gtd when isSubTask is false', () => {
+    it('should keep lobe-agent when isSubAgent is false', () => {
       vi.spyOn(agentSelectors.agentSelectors, 'getAgentConfigById').mockReturnValue(
         () =>
           ({
             ...mockAgentConfig,
-            plugins: ['lobe-gtd', 'plugin-a', 'plugin-b'],
+            plugins: ['lobe-agent', 'plugin-a', 'plugin-b'],
           }) as any,
       );
 
       const result = resolveAgentConfig({
         agentId: 'test-agent',
-        isSubTask: false,
+        isSubAgent: false,
       });
 
-      expect(result.plugins).toContain('lobe-gtd');
-      expect(result.plugins).toEqual(['lobe-gtd', 'plugin-a', 'plugin-b']);
+      expect(result.plugins).toContain('lobe-agent');
+      expect(result.plugins).toEqual(['lobe-agent', 'plugin-a', 'plugin-b']);
     });
 
-    it('should keep lobe-gtd when isSubTask is undefined', () => {
+    it('should keep lobe-agent when isSubAgent is undefined', () => {
       vi.spyOn(agentSelectors.agentSelectors, 'getAgentConfigById').mockReturnValue(
         () =>
           ({
             ...mockAgentConfig,
-            plugins: ['lobe-gtd', 'plugin-a'],
+            plugins: ['lobe-agent', 'plugin-a'],
           }) as any,
       );
 
       const result = resolveAgentConfig({ agentId: 'test-agent' });
 
-      expect(result.plugins).toContain('lobe-gtd');
+      expect(result.plugins).toContain('lobe-agent');
     });
 
-    it('should filter lobe-gtd in page scope when isSubTask is true', () => {
+    it('keeps lobe-agent in page scope when isSubAgent is true (and still injects page-agent)', () => {
       vi.spyOn(agentSelectors.agentSelectors, 'getAgentConfigById').mockReturnValue(
         () =>
           ({
             ...mockAgentConfig,
-            plugins: ['lobe-gtd', 'plugin-a'],
+            plugins: ['lobe-agent', 'plugin-a'],
           }) as any,
       );
       vi.spyOn(builtinAgents, 'getAgentRuntimeConfig').mockReturnValue({
@@ -1024,46 +1331,46 @@ describe('resolveAgentConfig', () => {
       const result = resolveAgentConfig({
         agentId: 'test-agent',
         scope: 'page',
-        isSubTask: true,
+        isSubAgent: true,
       });
 
-      expect(result.plugins).not.toContain('lobe-gtd');
+      expect(result.plugins).toContain('lobe-agent');
       expect(result.plugins).toContain(PageAgentIdentifier);
     });
 
-    it('should filter lobe-gtd for builtin agent when isSubTask is true', () => {
+    it('keeps lobe-agent for builtin agent when isSubAgent is true', () => {
       vi.spyOn(agentSelectors.agentSelectors, 'getAgentSlugById').mockReturnValue(
         () => 'agent-builder',
       );
       vi.spyOn(builtinAgents, 'getAgentRuntimeConfig').mockReturnValue({
-        plugins: ['lobe-gtd', 'runtime-plugin'],
+        plugins: ['lobe-agent', 'runtime-plugin'],
         systemRole: 'Runtime system role',
       });
 
       const result = resolveAgentConfig({
         agentId: 'builtin-agent',
-        isSubTask: true,
+        isSubAgent: true,
       });
 
-      expect(result.plugins).not.toContain('lobe-gtd');
+      expect(result.plugins).toContain('lobe-agent');
       expect(result.plugins).toContain('runtime-plugin');
     });
 
-    it('should keep lobe-gtd for builtin agent when isSubTask is false', () => {
+    it('should keep lobe-agent for builtin agent when isSubAgent is false', () => {
       vi.spyOn(agentSelectors.agentSelectors, 'getAgentSlugById').mockReturnValue(
         () => 'agent-builder',
       );
       vi.spyOn(builtinAgents, 'getAgentRuntimeConfig').mockReturnValue({
-        plugins: ['lobe-gtd', 'runtime-plugin'],
+        plugins: ['lobe-agent', 'runtime-plugin'],
         systemRole: 'Runtime system role',
       });
 
       const result = resolveAgentConfig({
         agentId: 'builtin-agent',
-        isSubTask: false,
+        isSubAgent: false,
       });
 
-      expect(result.plugins).toContain('lobe-gtd');
+      expect(result.plugins).toContain('lobe-agent');
     });
   });
 
@@ -1077,7 +1384,7 @@ describe('resolveAgentConfig', () => {
         () =>
           ({
             ...mockAgentConfig,
-            plugins: ['plugin-a', 'plugin-b', 'lobe-gtd'],
+            plugins: ['plugin-a', 'plugin-b', 'lobe-agent'],
           }) as any,
       );
 
@@ -1138,22 +1445,22 @@ describe('resolveAgentConfig', () => {
       expect(result.plugins).toEqual([]);
     });
 
-    it('should take precedence over isSubTask filtering', () => {
+    it('should take precedence over isSubAgent filtering', () => {
       vi.spyOn(agentSelectors.agentSelectors, 'getAgentConfigById').mockReturnValue(
         () =>
           ({
             ...mockAgentConfig,
-            plugins: ['lobe-gtd', 'plugin-a'],
+            plugins: ['lobe-agent', 'plugin-a'],
           }) as any,
       );
 
       const result = resolveAgentConfig({
         agentId: 'test-agent',
         disableTools: true,
-        isSubTask: true,
+        isSubAgent: true,
       });
 
-      // disableTools should result in empty plugins regardless of isSubTask
+      // disableTools should result in empty plugins regardless of isSubAgent
       expect(result.plugins).toEqual([]);
     });
 
@@ -1165,9 +1472,61 @@ describe('resolveAgentConfig', () => {
 
       // Only plugins should be empty, other config should be preserved
       expect(result.plugins).toEqual([]);
-      expect(result.agentConfig).toEqual(mockAgentConfig);
+      expect(result.agentConfig.systemRole).toContain('You are a helpful assistant');
+      expect(result.agentConfig.model).toBe(mockAgentConfig.model);
+      expect(result.agentConfig.plugins).toEqual(mockAgentConfig.plugins);
       expect(result.chatConfig).toEqual(mockChatConfig);
       expect(result.isBuiltinAgent).toBe(false);
+    });
+  });
+
+  describe('response language injection for regular agents', () => {
+    beforeEach(() => {
+      vi.spyOn(agentSelectors.agentSelectors, 'getAgentSlugById').mockReturnValue(() => undefined);
+    });
+
+    it('should append response language to systemRole when userLocale is set', () => {
+      vi.spyOn(
+        userSelectors.userGeneralSettingsSelectors,
+        'currentResponseLanguage',
+      ).mockReturnValue('zh-CN');
+
+      const result = resolveAgentConfig({ agentId: 'test-agent' });
+
+      expect(result.agentConfig.systemRole).toBe(
+        'You are a helpful assistant\n\nPreferred reply language: zh-CN. Use this language unless the user explicitly asks to switch.',
+      );
+    });
+
+    it('should use locale instruction as systemRole when agent has no systemRole', () => {
+      vi.spyOn(
+        userSelectors.userGeneralSettingsSelectors,
+        'currentResponseLanguage',
+      ).mockReturnValue('ja-JP');
+      vi.spyOn(agentSelectors.agentSelectors, 'getAgentConfigById').mockReturnValue(
+        () =>
+          ({
+            ...mockAgentConfig,
+            systemRole: '',
+          }) as any,
+      );
+
+      const result = resolveAgentConfig({ agentId: 'test-agent' });
+
+      expect(result.agentConfig.systemRole).toBe(
+        'Preferred reply language: ja-JP. Use this language unless the user explicitly asks to switch.',
+      );
+    });
+
+    it('should not modify systemRole when userLocale is falsy', () => {
+      vi.spyOn(
+        userSelectors.userGeneralSettingsSelectors,
+        'currentResponseLanguage',
+      ).mockReturnValue(undefined as any);
+
+      const result = resolveAgentConfig({ agentId: 'test-agent' });
+
+      expect(result.agentConfig.systemRole).toBe('You are a helpful assistant');
     });
   });
 });

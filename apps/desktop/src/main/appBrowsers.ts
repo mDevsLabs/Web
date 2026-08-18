@@ -18,7 +18,6 @@ export const appBrowsers = {
     path: '/',
     showOnInit: true,
     titleBarStyle: 'hidden',
-    vibrancy: 'under-window',
     width: 1200,
   },
   devtools: {
@@ -31,7 +30,6 @@ export const appBrowsers = {
     parentIdentifier: 'app',
     path: '/desktop/devtools',
     titleBarStyle: 'hiddenInset',
-    vibrancy: 'under-window',
     width: 1000,
   },
 } satisfies Record<string, BrowserWindowOpts>;
@@ -39,7 +37,6 @@ export const appBrowsers = {
 // Window templates for multi-instance windows
 export interface WindowTemplate {
   allowMultipleInstances: boolean;
-  // Include common BrowserWindow options
   autoHideMenuBar?: boolean;
   baseIdentifier: string;
   basePath: string;
@@ -51,22 +48,8 @@ export interface WindowTemplate {
   showOnInit?: boolean;
   title?: string;
   titleBarStyle?: 'hidden' | 'default' | 'hiddenInset' | 'customButtonsOnHover';
-  vibrancy?:
-    | 'appearance-based'
-    | 'content'
-    | 'fullscreen-ui'
-    | 'header'
-    | 'hud'
-    | 'menu'
-    | 'popover'
-    | 'selection'
-    | 'sheet'
-    | 'sidebar'
-    | 'titlebar'
-    | 'tooltip'
-    | 'under-page'
-    | 'under-window'
-    | 'window';
+  // Note: vibrancy / visualEffectState / transparent are intentionally omitted.
+  // Platform visual effects are managed exclusively by WindowThemeManager.
   width?: number;
 }
 
@@ -81,7 +64,20 @@ export const windowTemplates = {
     minWidth: 400,
     parentIdentifier: 'app',
     titleBarStyle: 'hidden',
-    vibrancy: 'under-window',
+    width: 900,
+  },
+  // Dedicated single-topic popup window. Loads the popup.html SPA entry
+  // (no sidebar / portal), one window per (scope, id) pair.
+  topicPopup: {
+    allowMultipleInstances: true,
+    autoHideMenuBar: true,
+    baseIdentifier: 'topicPopup',
+    basePath: '/popup',
+    height: 720,
+    keepAlive: false,
+    minWidth: 480,
+    parentIdentifier: 'app',
+    titleBarStyle: 'hidden',
     width: 900,
   },
 } satisfies Record<string, WindowTemplate>;

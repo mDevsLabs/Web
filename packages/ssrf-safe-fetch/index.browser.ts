@@ -13,6 +13,8 @@ export interface SSRFOptions {
   allowIPAddressList?: string[];
   /** Whether to allow private/local IP addresses */
   allowPrivateIPAddress?: boolean;
+  /** Maximum response body size in bytes (server-only; ignored in browser) */
+  maxContentLength?: number;
 }
 
 /**
@@ -24,11 +26,10 @@ export interface SSRFOptions {
  */
 export const ssrfSafeFetch = async (
   url: string,
-  // eslint-disable-next-line no-undef
+
   options?: RequestInit,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   _ssrfOptions?: SSRFOptions,
-  // eslint-disable-next-line no-undef
 ): Promise<Response> => {
   return fetch(url, options);
 };

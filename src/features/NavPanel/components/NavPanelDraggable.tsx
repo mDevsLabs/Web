@@ -2,34 +2,24 @@
 
 import { DraggablePanel } from '@lobehub/ui';
 import { createStaticStyles, cssVar } from 'antd-style';
-import { AnimatePresence, motion } from 'motion/react';
-import { type ReactNode, memo, useMemo, useRef } from 'react';
+import { type ReactNode } from 'react';
+import { memo, Suspense, useMemo, useRef } from 'react';
 
-import { USER_DROPDOWN_ICON_ID } from '@/app/[variants]/(main)/home/_layout/Header/components/User';
+import NavPanelUpgradeEntry from '@/business/client/features/NavPanelUpgradeEntry';
 import { isDesktop } from '@/const/version';
+import Footer from '@/features/HomeSidebar/Footer';
+import { USER_DROPDOWN_ICON_ID } from '@/features/NavPanel/constants';
 import { TOGGLE_BUTTON_ID } from '@/features/NavPanel/ToggleLeftPanelButton';
 import { useGlobalStore } from '@/store/global';
-import { systemStatusSelectors } from '@/store/global/selectors';
+import {
+  NAV_PANEL_MAX_WIDTH,
+  NAV_PANEL_MIN_WIDTH,
+  systemStatusSelectors,
+} from '@/store/global/selectors';
 import { isMacOS } from '@/utils/platform';
 
 import { useNavPanelSizeChangeHandler } from '../hooks/useNavPanel';
 import { BACK_BUTTON_ID } from './BackButton';
-
-const motionVariants = {
-  animate: { opacity: 1, x: 0 },
-  exit: {
-    opacity: 0,
-    x: '-20%',
-  },
-  initial: {
-    opacity: 0,
-    x: 0,
-  },
-  transition: {
-    duration: 0.4,
-    ease: [0.4, 0, 0.2, 1],
-  },
-} as const;
 
 const draggableStyles = createStaticStyles(({ css, cssVar }) => ({
   content: css`
@@ -37,6 +27,7 @@ const draggableStyles = createStaticStyles(({ css, cssVar }) => ({
 
     overflow: hidden;
     display: flex;
+    flex-direction: column;
 
     height: 100%;
     min-height: 100%;
@@ -44,13 +35,26 @@ const draggableStyles = createStaticStyles(({ css, cssVar }) => ({
   `,
   inner: css`
     position: relative;
-    inset: 0;
 
     overflow: hidden;
     flex: 1;
+
+    min-width: 240px;
+    max-width: 100%;
+    min-height: 0;
+  `,
+  layer: css`
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+    display: flex;
     flex-direction: column;
 
     min-width: 240px;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
   `,
   panel: css`
     user-select: none;
@@ -107,31 +111,35 @@ const classNames = {
 };
 
 export const NavPanelDraggable = memo<NavPanelDraggableProps>(({ activeContent }) => {
-  const [expand, togglePanel] = useGlobalStore((s) => [
+  const [expand, togglePanel, isStatusInit] = useGlobalStore((s) => [
     systemStatusSelectors.showLeftPanel(s),
     s.toggleLeftPanel,
+    systemStatusSelectors.isStatusInit(s),
   ]);
   const handleSizeChange = useNavPanelSizeChangeHandler();
 
+  // Defer DraggablePanel mount until system status hydrates; otherwise defaultSize
+  // captures the pre-hydration default and the DOM drifts off NavigationBar's live width.
   const defaultWidthRef = useRef(0);
-  if (defaultWidthRef.current === 0) {
+  if (defaultWidthRef.current === 0 && isStatusInit) {
     defaultWidthRef.current = systemStatusSelectors.leftPanelWidth(useGlobalStore.getState());
   }
 
-  const defaultSize = useMemo(
-    () => ({
-      height: '100%',
-      width: defaultWidthRef.current,
-    }),
-    [defaultWidthRef.current],
-  );
   const styles = useMemo(
     () => ({
       background: isDesktop && isMacOS() ? 'transparent' : cssVar.colorBgLayout,
       zIndex: 11,
     }),
-    [isDesktop, isMacOS()],
+    [],
   );
+
+  if (defaultWidthRef.current === 0) {
+    const pendingWidth = systemStatusSelectors.leftPanelWidth(useGlobalStore.getState());
+    return <div aria-hidden style={{ flexShrink: 0, height: '100%', width: pendingWidth }} />;
+  }
+
+  const defaultSize = { height: '100%', width: defaultWidthRef.current };
+
   return (
     <DraggablePanel
       className={draggableStyles.panel}
@@ -139,26 +147,25 @@ export const NavPanelDraggable = memo<NavPanelDraggableProps>(({ activeContent }
       defaultSize={defaultSize}
       expand={expand}
       expandable={false}
-      maxWidth={400}
-      minWidth={240}
-      onExpandChange={togglePanel}
-      onSizeDragging={handleSizeChange}
+      maxWidth={NAV_PANEL_MAX_WIDTH}
+      minWidth={NAV_PANEL_MIN_WIDTH}
       placement="left"
       showBorder={false}
       style={styles}
+      onExpandChange={togglePanel}
+      onSizeDragging={handleSizeChange}
     >
-      <AnimatePresence initial={false} mode="popLayout">
-        <motion.div
-          animate={motionVariants.animate}
-          className={draggableStyles.inner}
-          exit={motionVariants.exit}
-          initial={motionVariants.initial}
-          key={activeContent.key}
-          transition={motionVariants.transition}
-        >
+      <div className={draggableStyles.inner}>
+        <div className={draggableStyles.layer} key={activeContent.key}>
           {activeContent.node}
-        </motion.div>
-      </AnimatePresence>
+        </div>
+      </div>
+      <Suspense fallback={null}>
+        <NavPanelUpgradeEntry />
+      </Suspense>
+      <Suspense>
+        <Footer />
+      </Suspense>
     </DraggablePanel>
   );
 });

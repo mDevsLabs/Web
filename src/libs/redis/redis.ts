@@ -1,11 +1,14 @@
 import debug from 'debug';
-import type { Redis } from 'ioredis';
+import { type Redis } from 'ioredis';
 
 import {
   type BaseRedisProvider,
   type RedisConfig,
   type RedisKey,
   type RedisMSetArgument,
+  type RedisPipeline,
+  type RedisScanArgs,
+  type RedisScanResult,
   type RedisSetResult,
   type RedisValue,
   type SetOptions,
@@ -13,6 +16,9 @@ import {
 import { buildIORedisSetArgs, normalizeMsetValues } from './utils';
 
 const log = debug('lobe:redis');
+
+const REDIS_CONNECT_TIMEOUT_MS = 10_000;
+const REDIS_COMMAND_TIMEOUT_MS = 10_000;
 
 export class IoRedisRedisProvider implements BaseRedisProvider {
   private client: Redis | null = null;
@@ -23,6 +29,8 @@ export class IoRedisRedisProvider implements BaseRedisProvider {
     const IORedis = await import('ioredis');
 
     this.client = new IORedis.default(this.config.url, {
+      commandTimeout: REDIS_COMMAND_TIMEOUT_MS,
+      connectTimeout: REDIS_CONNECT_TIMEOUT_MS,
       db: this.config.database,
       keyPrefix: this.config.prefix ? `${this.config.prefix}:` : undefined,
       lazyConnect: true,
@@ -81,6 +89,19 @@ export class IoRedisRedisProvider implements BaseRedisProvider {
     return this.ensureClient().ttl(key);
   }
 
+  async scan(cursor: string, ...args: RedisScanArgs): Promise<RedisScanResult> {
+    const client = this.ensureClient();
+
+    if (args.length === 0) return client.scan(cursor);
+    if (args[0] === 'MATCH' && args.length === 2) return client.scan(cursor, 'MATCH', args[1]);
+    if (args[0] === 'COUNT' && args.length === 2) return client.scan(cursor, 'COUNT', args[1]);
+    if (args[0] === 'MATCH') {
+      return client.scan(cursor, 'MATCH', args[1], 'COUNT', args[3]);
+    }
+
+    return client.scan(cursor, 'MATCH', args[3], 'COUNT', args[1]);
+  }
+
   async incr(key: RedisKey): Promise<number> {
     return this.ensureClient().incr(key);
   }
@@ -111,5 +132,32 @@ export class IoRedisRedisProvider implements BaseRedisProvider {
 
   async hgetall(key: RedisKey): Promise<Record<string, string>> {
     return this.ensureClient().hgetall(key);
+  }
+
+  async eval<T = unknown>(script: string, numkeys: number, ...args: RedisValue[]): Promise<T> {
+    return this.ensureClient().eval(script, numkeys, ...args) as Promise<T>;
+  }
+
+  pipeline(): RedisPipeline {
+    const raw = this.ensureClient().pipeline();
+    const pipe: RedisPipeline = {
+      decr: (key) => (raw.decr(key), pipe),
+      del: (...keys) => (raw.del(...keys), pipe),
+      exec: () => raw.exec() as Promise<[Error | null, unknown][] | null>,
+      expire: (key, seconds) => (raw.expire(key, seconds), pipe),
+      get: (key) => (raw.get(key), pipe),
+      hdel: (key, ...fields) => (raw.hdel(key, ...fields), pipe),
+      hget: (key, field) => (raw.hget(key, field), pipe),
+      hgetall: (key) => (raw.hgetall(key), pipe),
+      hset: (key, field, value) => (raw.hset(key, field, value), pipe),
+      incr: (key) => (raw.incr(key), pipe),
+      set: (key, value, options?) => {
+        const args = buildIORedisSetArgs(options);
+        (raw.set as any)(key, value, ...args);
+        return pipe;
+      },
+      setex: (key, seconds, value) => (raw.setex(key, seconds, value), pipe),
+    };
+    return pipe;
   }
 }

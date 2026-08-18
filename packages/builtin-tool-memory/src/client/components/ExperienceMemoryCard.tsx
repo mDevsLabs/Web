@@ -89,9 +89,14 @@ export const ExperienceMemoryCard = memo<ExperienceMemoryCardProps>(({ data, loa
   const { summary, details, tags, title, withExperience } = data || {};
   const { situation, reasoning, action, possibleOutcome, keyLearning } = withExperience || {};
 
+  // `tags` comes from raw model tool-call args without zod coercion, so a model may
+  // emit a scalar where `string[]` is expected. Normalize to an array to keep this
+  // card from crashing on dirty input (`.map` on a non-array).
+  const safeTags = Array.isArray(tags) ? tags : [];
+
   const hasStarContent = situation || reasoning || action || possibleOutcome;
 
-  if (!summary && !details && !tags?.length && !title && !hasStarContent && !keyLearning)
+  if (!summary && !details && !safeTags.length && !title && !hasStarContent && !keyLearning)
     return null;
 
   const starItems = [
@@ -104,7 +109,7 @@ export const ExperienceMemoryCard = memo<ExperienceMemoryCardProps>(({ data, loa
   return (
     <Flexbox className={styles.container}>
       {/* Header */}
-      <Flexbox align={'center'} className={styles.header} gap={8} horizontal>
+      <Flexbox horizontal align={'center'} className={styles.header} gap={8}>
         <Flexbox flex={1}>
           <div className={styles.title}>{title || 'Experience Memory'}</div>
         </Flexbox>
@@ -115,7 +120,7 @@ export const ExperienceMemoryCard = memo<ExperienceMemoryCardProps>(({ data, loa
       {hasStarContent ? (
         <>
           {/* Collapsed Summary */}
-          {(summary || tags?.length) && (
+          {(summary || safeTags.length > 0) && (
             <Accordion gap={0}>
               <AccordionItem
                 itemKey="summary"
@@ -133,9 +138,9 @@ export const ExperienceMemoryCard = memo<ExperienceMemoryCardProps>(({ data, loa
                 <Flexbox gap={8} paddingBlock={'8px 12px'} paddingInline={8}>
                   {summary && <div className={styles.summary}>{summary}</div>}
                   {details && <div className={styles.detail}>{details}</div>}
-                  {tags && tags.length > 0 && (
-                    <Flexbox className={styles.tags} gap={8} horizontal wrap={'wrap'}>
-                      {tags.map((tag, index) => (
+                  {safeTags.length > 0 && (
+                    <Flexbox horizontal className={styles.tags} gap={8} wrap={'wrap'}>
+                      {safeTags.map((tag, index) => (
                         <Tag key={index}>{tag}</Tag>
                       ))}
                     </Flexbox>
@@ -162,12 +167,13 @@ export const ExperienceMemoryCard = memo<ExperienceMemoryCardProps>(({ data, loa
                   className={styles.stepsContainer}
                   current={null as any}
                   direction="vertical"
+                  size="small"
                   items={starItems.map((item) => ({
                     description: <div className={styles.stepContent}>{item.content}</div>,
                     icon: (
                       <Avatar
-                        avatar={item.avatar}
                         shadow
+                        avatar={item.avatar}
                         shape={'square'}
                         size={20}
                         style={{
@@ -182,7 +188,6 @@ export const ExperienceMemoryCard = memo<ExperienceMemoryCardProps>(({ data, loa
                       </Text>
                     ),
                   }))}
-                  size="small"
                 />
               </Flexbox>
             </AccordionItem>
@@ -211,9 +216,9 @@ export const ExperienceMemoryCard = memo<ExperienceMemoryCardProps>(({ data, loa
             <>
               {summary && <div className={styles.summary}>{summary}</div>}
               {details && <StreamingMarkdown>{details}</StreamingMarkdown>}
-              {tags && tags.length > 0 && (
-                <Flexbox className={styles.tags} gap={8} horizontal wrap={'wrap'}>
-                  {tags.map((tag, index) => (
+              {safeTags.length > 0 && (
+                <Flexbox horizontal className={styles.tags} gap={8} wrap={'wrap'}>
+                  {safeTags.map((tag, index) => (
                     <Tag key={index}>{tag}</Tag>
                   ))}
                 </Flexbox>

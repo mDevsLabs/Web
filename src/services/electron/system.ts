@@ -1,10 +1,17 @@
 import type {
   ElectronAppState,
+  PopupContextMenuParams,
+  PopupContextMenuResult,
   WindowMinimumSizeParams,
   WindowSizeParams,
 } from '@lobechat/electron-client-ipc';
 
 import { ensureElectronIpc } from '@/utils/electron/ipc';
+
+export interface SystemMonospaceFont {
+  label: string;
+  value: string;
+}
 
 /**
  * Service class for interacting with Electron's system-level information and actions.
@@ -24,6 +31,18 @@ class ElectronSystemService {
     return this.ipc.system.getAppState();
   }
 
+  async setDesktopOnboardingCompleted(completed: boolean): Promise<void> {
+    return this.ipc.system.setDesktopOnboardingCompleted(completed);
+  }
+
+  async setLastWorkspaceSlug(slug: string | null): Promise<void> {
+    return this.ipc.system.setLastWorkspaceSlug(slug);
+  }
+
+  async getSystemMonospaceFonts(): Promise<SystemMonospaceFont[]> {
+    return this.ipc.system.getSystemMonospaceFonts();
+  }
+
   async closeWindow(): Promise<void> {
     return this.ipc.windows.closeWindow();
   }
@@ -32,8 +51,24 @@ class ElectronSystemService {
     return this.ipc.windows.maximizeWindow();
   }
 
+  async isWindowMaximized(): Promise<boolean> {
+    return this.ipc.windows.isWindowMaximized();
+  }
+
+  async isWindowFullScreen(): Promise<boolean> {
+    return this.ipc.windows.isWindowFullScreen();
+  }
+
   async minimizeWindow(): Promise<void> {
     return this.ipc.windows.minimizeWindow();
+  }
+
+  async setWindowAlwaysOnTop(flag: boolean): Promise<void> {
+    return this.ipc.windows.setWindowAlwaysOnTop(flag);
+  }
+
+  async isWindowAlwaysOnTop(): Promise<boolean> {
+    return this.ipc.windows.isWindowAlwaysOnTop();
   }
 
   async setWindowSize(params: WindowSizeParams): Promise<void> {
@@ -52,8 +87,20 @@ class ElectronSystemService {
     return this.ipc.system.hasLegacyLocalDb();
   }
 
+  async runCliCommand(args: string): Promise<{ exitCode: number; stderr: string; stdout: string }> {
+    return this.ipc.cli.runCliCommand(args);
+  }
+
   showContextMenu = async (type: string, data?: any) => {
     return this.ipc.menu.showContextMenu({ data, type });
+  };
+
+  popupContextMenu = async (params: PopupContextMenuParams): Promise<PopupContextMenuResult> => {
+    return this.ipc.menu.popupContextMenu(params);
+  };
+
+  closePopupContextMenu = async (): Promise<void> => {
+    return this.ipc.menu.closePopupContextMenu();
   };
 
   /**
@@ -62,7 +109,7 @@ class ElectronSystemService {
   async selectFolder(params?: {
     defaultPath?: string;
     title?: string;
-  }): Promise<string | undefined> {
+  }): Promise<{ path: string; repoType?: 'git' | 'github' } | undefined> {
     return this.ipc.system.selectFolder(params);
   }
 }

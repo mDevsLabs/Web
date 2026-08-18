@@ -1,6 +1,7 @@
 import { createStaticStyles, cx } from 'antd-style';
 import { ChevronDown, ChevronRight } from 'lucide-react';
-import { type ReactNode, useState } from 'react';
+import { type ReactNode } from 'react';
+import { useState } from 'react';
 
 const styles = createStaticStyles(({ css, cssVar }) => ({
   container: css`
@@ -32,11 +33,11 @@ const styles = createStaticStyles(({ css, cssVar }) => ({
 }));
 
 interface CollapsibleSectionProps {
-  /** 子组件内容 */
+  /** Child component content */
   children: ReactNode;
-  /** 默认是否展开 */
+  /** Whether expanded by default */
   defaultExpanded?: boolean;
-  /** 标题文本 */
+  /** Title text */
   title: string;
 }
 

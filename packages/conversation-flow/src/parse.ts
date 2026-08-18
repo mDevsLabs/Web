@@ -21,9 +21,20 @@ import type { Message, MessageGroupMetadata, ParseResult } from './types';
  * @returns ParseResult containing messageMap, displayTree, and flatList
  */
 export function parse(messages: Message[], messageGroups?: MessageGroupMetadata[]): ParseResult {
+  // Pre-processing: Transform sub_agent messages before building helper maps
+  // This ensures FlatListBuilder and MessageCollector see the correct agentId
+  // and won't merge messages from different agents into the same group
+  // Only applies to scope: 'sub_agent' (agent-to-agent calls, not group orchestration)
+  const processedMessages = messages.map((msg) => {
+    if (msg.metadata?.scope === 'sub_agent' && msg.metadata?.subAgentId) {
+      return { ...msg, agentId: msg.metadata.subAgentId };
+    }
+    return msg;
+  });
+
   // Phase 1: Indexing
   // Build helper maps for O(1) access patterns
-  const helperMaps = buildHelperMaps(messages, messageGroups);
+  const helperMaps = buildHelperMaps(processedMessages, messageGroups);
 
   // Phase 2: Structuring
   // Convert flat parent-child relationships to tree structure
@@ -37,7 +48,7 @@ export function parse(messages: Message[], messageGroups?: MessageGroupMetadata[
 
   // Phase 3b: Generate flatList for virtual list rendering
   // Implements RFC priority-based pattern matching
-  const flatList = transformer.flatten(messages);
+  const flatList = transformer.flatten(processedMessages);
 
   // Convert messageMap from Map to plain object for serialization
   // Clean up metadata for assistant messages with tools
@@ -52,18 +63,24 @@ export function parse(messages: Message[], messageGroups?: MessageGroupMetadata[
     'inputCitationTokens',
     'inputImageTokens',
     'inputTextTokens',
+    'inputVideoTokens',
+    'inputToolTokens',
     'inputWriteCacheTokens',
     'latency',
     'outputAudioTokens',
     'outputImageTokens',
     'outputReasoningTokens',
     'outputTextTokens',
+    // Nested canonical shape — executors write `metadata.usage` / `metadata.performance`
+    // as objects; treat them as part of the usage/performance set alongside the legacy flat keys.
+    'performance',
     'rejectedPredictionTokens',
     'totalInputTokens',
     'totalOutputTokens',
     'totalTokens',
     'tps',
     'ttft',
+    'usage',
   ]);
 
   helperMaps.messageMap.forEach((message, id) => {
@@ -75,6 +92,9 @@ export function parse(messages: Message[], messageGroups?: MessageGroupMetadata[
     if (message.role === 'assistant' && message.metadata?.isSupervisor) {
       processedMessage = { ...message, role: 'supervisor' as const };
     }
+
+    // Note: sub_agent scope transformation is done in pre-processing phase (before buildHelperMaps)
+    // No need to transform agentId here since it's already been transformed
 
     // For assistant messages with tools, clean metadata to keep only usage/performance fields
     if (
@@ -100,16 +120,54 @@ export function parse(messages: Message[], messageGroups?: MessageGroupMetadata[
 
   // Transform supervisor messages in flatList
   // For non-grouped supervisor messages (e.g., supervisor summary without tools)
+  // Note: sub_agent scope transformation is done in pre-processing phase (before buildHelperMaps)
   const processedFlatList = flatList.map((msg) => {
-    if (msg.role === 'assistant' && msg.metadata?.isSupervisor) {
-      return { ...msg, role: 'supervisor' as const };
+    let next = msg;
+
+    // Transform supervisor messages
+    if (next.role === 'assistant' && next.metadata?.isSupervisor) {
+      next = { ...next, role: 'supervisor' as const };
     }
-    return msg;
+
+    // Promote `metadata.usage` (canonical storage) onto the top-level `usage`
+    // field that UIChatMessage consumers (Extras token badge, tokenCounter,
+    // etc.) read from. The DB layer stores token usage inside the metadata
+    // JSONB column — executors on every path (Gateway, hetero-agent CLI) write
+    // there — but no server-side transform lifts it out. Doing it here keeps
+    // the promotion in one place, close to where display shapes are built,
+    // and works for both desktop (local PGlite) and web (remote Postgres).
+    if (!next.usage && next.metadata?.usage) {
+      next = { ...next, usage: next.metadata.usage };
+    }
+
+    return next;
   });
+
+  // Historical data can contain a taskCallback and a tool result as
+  // sibling branches under the same assistant tool-use shell. Normal branch
+  // resolution must keep choosing one conversational continuation, but hiding
+  // the inactive callback also hides the only user-visible record that a task
+  // finished. Recover only those callback cards into the render list; do not
+  // pull their assistant descendants across branches (they may contradict the
+  // active continuation).
+  const visibleIds = new Set(processedFlatList.map((message) => message.id));
+  const recoveredFlatList = [...processedFlatList];
+  const hiddenTaskCallbacks = processedMessages
+    .filter((message) => message.role === 'taskCallback' && !visibleIds.has(message.id))
+    .toSorted((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+
+  for (const callback of hiddenTaskCallbacks) {
+    const callbackTime = new Date(callback.createdAt).getTime();
+    const insertAt = recoveredFlatList.findIndex(
+      (message) => new Date(message.createdAt).getTime() > callbackTime,
+    );
+    if (insertAt === -1) recoveredFlatList.push(callback);
+    else recoveredFlatList.splice(insertAt, 0, callback);
+  }
 
   return {
     contextTree,
-    flatList: processedFlatList,
+    flatList: recoveredFlatList,
     messageMap: messageMapObj,
   };
 }

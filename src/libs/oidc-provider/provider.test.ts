@@ -70,7 +70,39 @@ describe('OIDC Provider - Market Client Integration', () => {
       expect(module.API_AUDIENCE).toBe('urn:lobehub:chat');
 
       vi.doUnmock('@/envs/app');
-    });
+    }, 10000);
+
+    it('should define numeric TTLs for all OIDC provider artifacts', async () => {
+      vi.doMock('@/envs/app', () => ({
+        appEnv: {
+          APP_URL: 'https://example.com',
+          MARKET_BASE_URL: undefined,
+        },
+      }));
+
+      const module = await import('./provider');
+
+      expect(module.oidcArtifactTTL).toEqual({
+        AccessToken: 7 * 24 * 60 * 60,
+        AuthorizationCode: 600,
+        BackchannelAuthenticationRequest: 600,
+        ClientCredentials: 600,
+        DeviceCode: 600,
+        Grant: 14 * 24 * 60 * 60,
+        IdToken: 3600,
+        Interaction: 3600,
+        RefreshToken: 30 * 24 * 60 * 60,
+        Session: 30 * 24 * 60 * 60,
+      });
+
+      for (const ttl of Object.values(module.oidcArtifactTTL)) {
+        expect(typeof ttl).toBe('number');
+        expect(Number.isSafeInteger(ttl)).toBe(true);
+        expect(ttl).toBeGreaterThan(0);
+      }
+
+      vi.doUnmock('@/envs/app');
+    }, 10000);
 
     it('should have createOIDCProvider function', async () => {
       vi.doMock('@/envs/app', () => ({
@@ -85,7 +117,7 @@ describe('OIDC Provider - Market Client Integration', () => {
       expect(typeof module.createOIDCProvider).toBe('function');
 
       vi.doUnmock('@/envs/app');
-    });
+    }, 10000);
   });
 
   describe('Name Resolution Priority', () => {

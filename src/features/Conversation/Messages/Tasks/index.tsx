@@ -16,10 +16,9 @@ import TaskItem from './TaskItem';
 
 interface TasksMessageProps {
   id: string;
-  index: number;
 }
 
-const TasksMessage = memo<TasksMessageProps>(({ id, index }) => {
+const TasksMessage = memo<TasksMessageProps>(({ id }) => {
   const { t } = useTranslation('chat');
   const item = useConversationStore(dataSelectors.getDisplayMessageById(id), isEqual)!;
   const actionsConfig = useConversationStore((s) => s.actionsBar?.assistant);
@@ -37,16 +36,14 @@ const TasksMessage = memo<TasksMessageProps>(({ id, index }) => {
 
   return (
     <ChatItem
+      showTitle
       aboveMessage={null}
-      actions={
-        <AssistantActionsBar actionsConfig={actionsConfig} data={item} id={id} index={index} />
-      }
+      actions={<AssistantActionsBar actionsConfig={actionsConfig} data={item} id={id} />}
       avatar={avatar}
       customAvatarRender={(_, node) => <TaskAvatar>{node}</TaskAvatar>}
       id={id}
       message=""
       placement="left"
-      showTitle
       time={createdAt}
       titleAddon={<Tag>{t('task.batchTasks', { count: tasks.length })}</Tag>}
     >

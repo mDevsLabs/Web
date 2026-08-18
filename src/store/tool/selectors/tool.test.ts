@@ -1,20 +1,35 @@
-import { LobeChatPluginManifest, LobeChatPluginMeta } from '@lobehub/chat-plugin-sdk';
+import { type ToolManifest } from '@lobechat/types';
 import { describe, expect, it } from 'vitest';
 
+import { type ToolStoreState } from '../initialState';
 import { initialState } from '../initialState';
-import { ToolStoreState } from '../initialState';
 import { toolSelectors } from './tool';
+
+// Mock builtin skill for testing
+const mockBuiltinSkill = {
+  avatar: '🧪',
+  content: '# Test Skill',
+  description: 'A test skill',
+  identifier: 'test-skill',
+  name: 'Test Skill',
+  source: 'builtin' as const,
+};
 
 const mockState = {
   ...initialState,
+  builtinSkills: [mockBuiltinSkill],
   installedPlugins: [
     {
       identifier: 'plugin-1',
       manifest: {
         identifier: 'plugin-1',
         api: [{ name: 'api-1' }],
+        author: 'Test Author',
+        createdAt: '2024-01-01',
+        homepage: 'https://example.com/plugin-1',
         meta: { title: 'Plugin 1', description: 'Plugin 1 description' },
-      } as LobeChatPluginManifest,
+      } as ToolManifest,
+      runtimeType: 'standalone',
       type: 'plugin',
     },
     {
@@ -22,7 +37,10 @@ const mockState = {
       manifest: {
         identifier: 'plugin-2',
         api: [{ name: 'api-2' }],
-      } as LobeChatPluginManifest,
+        author: 'Another Author',
+        homepage: 'https://example.com/plugin-2',
+      } as ToolManifest,
+      runtimeType: 'default',
       type: 'plugin',
     },
     {
@@ -49,13 +67,15 @@ const mockState = {
         identifier: 'builtin-1',
         api: [{ name: 'builtin-api-1' }],
         meta: { title: 'Builtin 1', description: 'Builtin 1 description' },
-      } as LobeChatPluginManifest,
+      } as ToolManifest,
     },
   ],
   pluginInstallLoading: {
     'plugin-1': false,
     'plugin-2': true,
   },
+  pluginInstallErrors: {},
+  uninstalledBuiltinTools: [],
 } as ToolStoreState;
 
 describe('toolSelectors', () => {
@@ -74,6 +94,21 @@ describe('toolSelectors', () => {
       const result = toolSelectors.getManifestLoadingStatus('plugin-1')(mockState);
       expect(result).toBe('success');
     });
+
+    it('should return "error" when a refresh failed even if an old manifest remains', () => {
+      const state = {
+        ...mockState,
+        pluginInstallErrors: {
+          'plugin-1': { cause: 'Connection refused', message: 'fetchError' },
+        },
+      } as unknown as ToolStoreState;
+
+      expect(toolSelectors.getManifestLoadingStatus('plugin-1')(state)).toBe('error');
+      expect(toolSelectors.getPluginInstallError('plugin-1')(state)).toEqual({
+        cause: 'Connection refused',
+        message: 'fetchError',
+      });
+    });
   });
 
   describe('metaList and getMetaById', () => {
@@ -81,25 +116,44 @@ describe('toolSelectors', () => {
       const result = toolSelectors.metaList(mockState);
       expect(result).toEqual([
         {
+          author: 'LobeHub',
+          identifier: 'test-skill',
+          meta: { avatar: '🧪', description: 'A test skill', title: 'Test Skill' },
+          type: 'builtin',
+        },
+        {
           type: 'builtin',
           author: 'LobeHub',
           identifier: 'builtin-1',
           meta: { title: 'Builtin 1', description: 'Builtin 1 description' },
         },
         {
-          identifier: 'plugin-1',
-          type: 'plugin',
-          meta: { title: 'Plugin 1', description: 'Plugin 1 description' },
-          title: 'Plugin 1',
+          author: 'Test Author',
+          createdAt: '2024-01-01',
           description: 'Plugin 1 description',
+          homepage: 'https://example.com/plugin-1',
+          identifier: 'plugin-1',
+          meta: { title: 'Plugin 1', description: 'Plugin 1 description' },
+          runtimeType: 'standalone',
+          title: 'Plugin 1',
+          type: 'plugin',
         },
         {
-          type: 'plugin',
+          author: 'Another Author',
+          createdAt: undefined,
+          homepage: 'https://example.com/plugin-2',
           identifier: 'plugin-2',
           meta: undefined,
+          runtimeType: 'default',
+          type: 'plugin',
         },
         {
+          author: undefined,
+          createdAt: undefined,
+          homepage: undefined,
           identifier: 'plugin-3',
+          meta: undefined,
+          runtimeType: undefined,
           type: 'customPlugin',
         },
       ]);
@@ -122,6 +176,9 @@ describe('toolSelectors', () => {
       expect(result).toEqual({
         identifier: 'plugin-1',
         api: [{ name: 'api-1' }],
+        author: 'Test Author',
+        createdAt: '2024-01-01',
+        homepage: 'https://example.com/plugin-1',
         meta: { title: 'Plugin 1', description: 'Plugin 1 description' },
       });
     });

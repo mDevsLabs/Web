@@ -1,12 +1,14 @@
 'use client';
 
-import { Button, Flexbox, Modal, Text } from '@lobehub/ui';
+import { Flexbox, Text } from '@lobehub/ui';
+import { Button } from '@lobehub/ui/base-ui';
 import { Table } from 'antd';
 import { createStaticStyles } from 'antd-style';
 import { Info } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import ImperativeModal from '@/components/ImperativeModal';
 import { type ImportPgDataStructure } from '@/types/export';
 
 const getNonEmptyTables = (data: ImportPgDataStructure) => {
@@ -100,7 +102,7 @@ const ImportPreviewModal = ({
   const tables = getNonEmptyTables(importData);
   const totalRecords = getTotalRecords(tables);
 
-  // 表格列定义
+  // Table column definitions
   const columns = [
     {
       dataIndex: 'name',
@@ -121,7 +123,10 @@ const ImportPreviewModal = ({
   };
 
   return (
-    <Modal
+    <ImperativeModal
+      open={open}
+      title={t('importPreview.title')}
+      width={700}
       footer={[
         <Button
           key="cancel"
@@ -132,20 +137,17 @@ const ImportPreviewModal = ({
         >
           {t('cancel')}
         </Button>,
-        <Button key="confirm" onClick={handleConfirm} type="primary">
+        <Button key="confirm" type="primary" onClick={handleConfirm}>
           {t('importPreview.confirmImport')}
         </Button>,
       ]}
       onCancel={() => onOpenChange(false)}
-      open={open}
-      title={t('importPreview.title')}
-      width={700}
     >
       <div className={styles.modalContent}>
         <Flexbox gap={16}>
           <Flexbox gap={4}>
-            <Flexbox align="center" horizontal justify="space-between" width="100%">
-              <Flexbox align="center" gap={8} horizontal>
+            <Flexbox horizontal align="center" justify="space-between" width="100%">
+              <Flexbox horizontal align="center" gap={8}>
                 <Info className={styles.infoIcon} size={16} />
                 <Text strong>{t('importPreview.totalRecords', { count: totalRecords })}</Text>
               </Flexbox>
@@ -155,7 +157,7 @@ const ImportPreviewModal = ({
                 </Text>
               </Flexbox>
             </Flexbox>
-            <Flexbox className={styles.hash} gap={4} horizontal>
+            <Flexbox horizontal className={styles.hash} gap={4}>
               {t('importPreview.hashLabel')}: <span>{importData.schemaHash}</span>
             </Flexbox>
           </Flexbox>
@@ -172,7 +174,7 @@ const ImportPreviewModal = ({
           </div>
         </Flexbox>
       </div>
-    </Modal>
+    </ImperativeModal>
   );
 };
 

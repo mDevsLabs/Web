@@ -1,3 +1,4 @@
+import { type LobeOpenAICompatibleRuntime } from '@lobechat/model-runtime';
 import {
   LobeAnthropicAI,
   LobeAzureOpenAI,
@@ -9,7 +10,6 @@ import {
   LobeMoonshotAI,
   LobeOllamaAI,
   LobeOpenAI,
-  LobeOpenAICompatibleRuntime,
   LobeOpenRouterAI,
   LobePerplexityAI,
   LobeQwenAI,
@@ -74,6 +74,7 @@ const mockProviderKeyVaults = async (provider: string, keyVaults: any) => {
       ...state.aiProviderRuntimeConfig,
       [provider]: {
         keyVaults,
+        settings: {},
       },
     },
   }));
@@ -121,11 +122,32 @@ describe('ModelRuntimeOnClient', () => {
         expect(runtime['_runtime'].baseURL).toBe('user-openai-endpoint');
       });
 
-      it('Azure provider: with apiKey, apiVersion, endpoint', async () => {
+      it('custom router provider: passes actual provider id to runtime options', async () => {
+        await mockProviderKeyVaults('custom-router', {
+          apiKey: 'custom-router-key',
+          baseURL: 'https://custom-router.test.com/v1',
+        });
+
+        const initializeSpy = vi.spyOn(ModelRuntime, 'initializeWithProvider');
+
+        await initializeWithClientStore({
+          payload: {},
+          provider: 'custom-router',
+          runtimeProvider: 'router',
+        });
+
+        expect(initializeSpy).toHaveBeenCalledWith(
+          'router',
+          expect.objectContaining({
+            providerId: 'custom-router',
+          }),
+        );
+      });
+
+      it('Azure provider: with apiKey and endpoint', async () => {
         await mockProviderKeyVaults(ModelProvider.Azure, {
           apiKey: 'user-azure-key',
-          endpoint: 'user-azure-endpoint',
-          apiVersion: '2024-06-01',
+          endpoint: 'https://user-azure.openai.azure.com',
         });
 
         const runtime = await initializeWithClientStore({
@@ -134,6 +156,7 @@ describe('ModelRuntimeOnClient', () => {
         });
         expect(runtime).toBeInstanceOf(ModelRuntime);
         expect(runtime['_runtime']).toBeInstanceOf(LobeAzureOpenAI);
+        expect(runtime['_runtime'].baseURL).toBe('https://user-azure.openai.azure.com/openai/v1');
       });
 
       it('Google provider: with apiKey', async () => {

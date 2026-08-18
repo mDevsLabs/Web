@@ -10,9 +10,10 @@ import { KeyVaultsGateKeeper } from '@/server/modules/KeyVaultsEncrypt';
 import { getTestDB } from '../../../core/getTestDB';
 import { SessionModel } from '../../../models/session';
 import { UserModel, UserNotFoundError } from '../../../models/user';
-import { UserSettingsItem, nextauthAccounts, userSettings, users } from '../../../schemas';
+import type { UserSettingsItem } from '../../../schemas';
+import { nextauthAccounts, users, userSettings } from '../../../schemas';
 
-let serverDB = await getTestDB();
+const serverDB = await getTestDB();
 
 const userId = 'user-db';
 const userEmail = 'user@example.com';
@@ -253,7 +254,7 @@ describe('UserModel', () => {
 
     it('should handle decrypt failure and return empty object', async () => {
       const userId = 'user-api-test-id';
-      // 模拟解密失败的情况
+      // Simulate decrypt failure scenario
       const invalidEncryptedData = 'invalid:-encrypted-:data';
       await serverDB.insert(users).values({ id: userId });
       await serverDB.insert(userSettings).values({
@@ -305,7 +306,7 @@ describe('UserModel', () => {
     });
   });
 
-  // 补充一些边界情况的测试
+  // Additional edge case tests
   describe('edge cases', () => {
     describe('updatePreference', () => {
       it('should handle undefined preference', async () => {

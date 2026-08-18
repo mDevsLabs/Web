@@ -1,8 +1,14 @@
-/* eslint-disable unicorn/no-array-push-push */
-import { Menu, MenuItemConstructorOptions, app, clipboard, dialog, shell } from 'electron';
+import path from 'node:path';
+
+import { GITHUB, OFFICIAL_SITE } from '@lobechat/const/url';
+import type { TrayNavigationSnapshot } from '@lobechat/electron-client-ipc';
+import type { MenuItemConstructorOptions } from 'electron';
+import { app, clipboard, dialog, Menu, shell } from 'electron';
 
 import { isDev } from '@/const/env';
+import { HETERO_AGENT_DIR } from '@/const/heteroAgent';
 
+import { buildTrayMenuTemplate } from '../trayMenu';
 import type { ContextMenuData, IMenuPlatform, MenuOptions } from '../types';
 import { BaseMenuPlatform } from './BaseMenuPlatform';
 
@@ -35,8 +41,8 @@ export class LinuxMenu extends BaseMenuPlatform implements IMenuPlatform {
     return Menu.buildFromTemplate(template);
   }
 
-  buildTrayMenu(): Menu {
-    const template = this.getTrayMenuTemplate();
+  buildTrayMenu(snapshot: TrayNavigationSnapshot = { agents: [], pinned: [], recent: [] }): Menu {
+    const template = buildTrayMenuTemplate(this.app, snapshot);
     this.trayMenu = Menu.buildFromTemplate(template);
     return this.trayMenu;
   }
@@ -45,7 +51,7 @@ export class LinuxMenu extends BaseMenuPlatform implements IMenuPlatform {
     this.buildAndSetAppMenu(options);
   }
 
-  // --- 私有方法：定义菜单模板和逻辑 ---
+  // --- Private methods: define menu templates and logic ---
 
   private getAppMenuTemplate(options?: MenuOptions): MenuItemConstructorOptions[] {
     const showDev = isDev || options?.showDevItems;
@@ -56,7 +62,58 @@ export class LinuxMenu extends BaseMenuPlatform implements IMenuPlatform {
         label: t('file.title'),
         submenu: [
           {
-            click: () => this.app.browserManager.retrieveByIdentifier('settings').show(),
+            accelerator: 'Ctrl+N',
+            click: () => {
+              const mainWindow = this.app.browserManager.getMainWindow();
+              mainWindow.show();
+              mainWindow.broadcast('createNewTopic');
+            },
+            label: t('file.newTopic'),
+          },
+          {
+            accelerator: 'Ctrl+T',
+            click: () => {
+              const mainWindow = this.app.browserManager.getMainWindow();
+              mainWindow.show();
+              mainWindow.broadcast('createNewTab');
+            },
+            label: t('file.newTab'),
+          },
+          { type: 'separator' },
+          {
+            accelerator: 'Alt+Ctrl+A',
+            click: () => {
+              const mainWindow = this.app.browserManager.getMainWindow();
+              mainWindow.show();
+              mainWindow.broadcast('createNewAgent');
+            },
+            label: t('file.newAgent'),
+          },
+          {
+            accelerator: 'Alt+Ctrl+G',
+            click: () => {
+              const mainWindow = this.app.browserManager.getMainWindow();
+              mainWindow.show();
+              mainWindow.broadcast('createNewAgentGroup');
+            },
+            label: t('file.newAgentGroup'),
+          },
+          {
+            accelerator: 'Alt+Ctrl+P',
+            click: () => {
+              const mainWindow = this.app.browserManager.getMainWindow();
+              mainWindow.show();
+              mainWindow.broadcast('createNewPage');
+            },
+            label: t('file.newPage'),
+          },
+          { type: 'separator' },
+          {
+            click: async () => {
+              const mainWindow = this.app.browserManager.getMainWindow();
+              mainWindow.show();
+              mainWindow.broadcast('navigate', { path: '/settings' });
+            },
             label: t('file.preferences'),
           },
           {
@@ -67,15 +124,11 @@ export class LinuxMenu extends BaseMenuPlatform implements IMenuPlatform {
           },
           { type: 'separator' },
           {
-            accelerator: 'Ctrl+W',
+            accelerator: 'CmdOrCtrl+W',
+            click: (_item, targetWindow) => this.closeFocusedTabOrWindow(targetWindow),
             label: t('window.close'),
-            role: 'close',
           },
-          {
-            accelerator: 'Ctrl+M',
-            label: t('window.minimize'),
-            role: 'minimize',
-          },
+          { label: t('window.minimize'), role: 'minimize' },
           { type: 'separator' },
           { label: t('file.quit'), role: 'quit' },
         ],
@@ -83,24 +136,26 @@ export class LinuxMenu extends BaseMenuPlatform implements IMenuPlatform {
       {
         label: t('edit.title'),
         submenu: [
-          { accelerator: 'Ctrl+Z', label: t('edit.undo'), role: 'undo' },
-          { accelerator: 'Ctrl+Shift+Z', label: t('edit.redo'), role: 'redo' },
+          { label: t('edit.undo'), role: 'undo' },
+          { label: t('edit.redo'), role: 'redo' },
           { type: 'separator' },
-          { accelerator: 'Ctrl+X', label: t('edit.cut'), role: 'cut' },
-          { accelerator: 'Ctrl+C', label: t('edit.copy'), role: 'copy' },
-          { accelerator: 'Ctrl+V', label: t('edit.paste'), role: 'paste' },
+          { label: t('edit.cut'), role: 'cut' },
+          { label: t('edit.copy'), role: 'copy' },
+          { label: t('edit.paste'), role: 'paste' },
           { type: 'separator' },
-          { accelerator: 'Ctrl+A', label: t('edit.selectAll'), role: 'selectAll' },
+          { label: t('edit.selectAll'), role: 'selectAll' },
         ],
       },
       {
         label: t('view.title'),
         submenu: [
-          { accelerator: 'Ctrl+0', label: t('view.resetZoom'), role: 'resetZoom' },
-          { accelerator: 'Ctrl+Plus', label: t('view.zoomIn'), role: 'zoomIn' },
-          { accelerator: 'Ctrl+-', label: t('view.zoomOut'), role: 'zoomOut' },
+          this.buildDevToolsMenuItem(t('dev.devTools'), 'F12'),
           { type: 'separator' },
-          { accelerator: 'F11', label: t('view.toggleFullscreen'), role: 'togglefullscreen' },
+          this.buildZoomMenuItem('reset', t('view.resetZoom'), 'CmdOrCtrl+0'),
+          ...this.buildZoomMenuItems('in', t('view.zoomIn'), 'CmdOrCtrl+=', ['CmdOrCtrl+Plus']),
+          this.buildZoomMenuItem('out', t('view.zoomOut'), 'CmdOrCtrl+-'),
+          { type: 'separator' },
+          { label: t('view.toggleFullscreen'), role: 'togglefullscreen' },
         ],
       },
       {
@@ -145,15 +200,34 @@ export class LinuxMenu extends BaseMenuPlatform implements IMenuPlatform {
         submenu: [
           {
             click: async () => {
-              await shell.openExternal('https://lobehub.com');
+              await shell.openExternal(OFFICIAL_SITE);
             },
             label: t('help.visitWebsite'),
           },
           {
             click: async () => {
-              await shell.openExternal('https://github.com/lobehub/lobe-chat');
+              await shell.openExternal(GITHUB);
             },
             label: t('help.githubRepo'),
+          },
+          { type: 'separator' },
+          {
+            click: () => {
+              const heteroAgentPath = path.join(this.app.appStoragePath, HETERO_AGENT_DIR);
+              console.info(`[Menu] Opening HeteroAgent directory: ${heteroAgentPath}`);
+              shell.openPath(heteroAgentPath).catch((err) => {
+                console.error(`[Menu] Error opening path ${heteroAgentPath}:`, err);
+              });
+            },
+            label: t('help.openHeteroAgentDir'),
+          },
+          {
+            checked: this.app.storeManager.get('heteroTracingEnabled', false),
+            click: (item) => {
+              this.app.storeManager.set('heteroTracingEnabled', item.checked);
+            },
+            label: t('help.toggleHeteroTracing'),
+            type: 'checkbox',
           },
           { type: 'separator' },
           {
@@ -182,9 +256,9 @@ export class LinuxMenu extends BaseMenuPlatform implements IMenuPlatform {
       template.push({
         label: t('dev.title'),
         submenu: [
-          { accelerator: 'Ctrl+R', label: t('dev.reload'), role: 'reload' },
-          { accelerator: 'Ctrl+Shift+R', label: t('dev.forceReload'), role: 'forceReload' },
-          { accelerator: 'Ctrl+Shift+I', label: t('dev.devTools'), role: 'toggleDevTools' },
+          { label: t('dev.reload'), role: 'reload' },
+          { label: t('dev.forceReload'), role: 'forceReload' },
+          this.buildDevToolsMenuItem(t('dev.devTools')),
           { type: 'separator' },
           {
             click: () => {
@@ -327,8 +401,8 @@ export class LinuxMenu extends BaseMenuPlatform implements IMenuPlatform {
 
     // Standard edit actions for chat
     template.push(
-      { accelerator: 'Ctrl+C', label: t('edit.copy'), role: 'copy' },
-      { accelerator: 'Ctrl+V', label: t('edit.paste'), role: 'paste' },
+      { label: t('edit.copy'), role: 'copy' },
+      { label: t('edit.paste'), role: 'paste' },
       { type: 'separator' },
       { label: t('edit.selectAll'), role: 'selectAll' },
     );
@@ -368,11 +442,11 @@ export class LinuxMenu extends BaseMenuPlatform implements IMenuPlatform {
 
     // Standard edit actions for editor
     template.push(
-      { accelerator: 'Ctrl+X', label: t('edit.cut'), role: 'cut' },
-      { accelerator: 'Ctrl+C', label: t('edit.copy'), role: 'copy' },
-      { accelerator: 'Ctrl+V', label: t('edit.paste'), role: 'paste' },
+      { label: t('edit.cut'), role: 'cut' },
+      { label: t('edit.copy'), role: 'copy' },
+      { label: t('edit.paste'), role: 'paste' },
       { type: 'separator' },
-      { accelerator: 'Ctrl+A', label: t('edit.selectAll'), role: 'selectAll' },
+      { label: t('edit.selectAll'), role: 'selectAll' },
       { type: 'separator' },
       { label: t('edit.delete'), role: 'delete' },
     );
@@ -401,10 +475,22 @@ export class LinuxMenu extends BaseMenuPlatform implements IMenuPlatform {
         click: () => this.app.browserManager.showMainWindow(),
         label: t('tray.open', { appName }),
       },
+      {
+        click: () => this.app.screenCaptureManager.startSession(),
+        label: t('tray.openMiniToolbar'),
+      },
+      {
+        click: () => this.app.browserManager.openQuickChatPopup(),
+        label: t('tray.quickChat'),
+      },
       { type: 'separator' },
       {
-        click: () => this.app.browserManager.retrieveByIdentifier('settings').show(),
-        label: t('file.preferences'),
+        click: async () => {
+          const mainWindow = this.app.browserManager.getMainWindow();
+          mainWindow.show();
+          mainWindow.broadcast('navigate', { path: '/settings' });
+        },
+        label: t('tray.settings'),
       },
       { type: 'separator' },
       { label: t('tray.quit'), role: 'quit' },

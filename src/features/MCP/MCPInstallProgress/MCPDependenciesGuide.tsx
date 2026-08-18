@@ -1,8 +1,9 @@
-import { Button, Flexbox, Markdown, Snippet, Text } from '@lobehub/ui';
+import { Flexbox, Markdown, Snippet, Text } from '@lobehub/ui';
+import { Button } from '@lobehub/ui/base-ui';
 import { Card, Space } from 'antd';
 import { createStaticStyles, cssVar } from 'antd-style';
 import { AlertTriangle, CheckCircle, ExternalLink, Terminal } from 'lucide-react';
-import * as motion from 'motion/react-m';
+import * as m from 'motion/react-m';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -82,30 +83,30 @@ const MCPDependenciesGuide = memo<MCPDependenciesGuideProps>(
     };
 
     const handleRetryCheck = async () => {
-      // 重新检查依赖，重新开始安装流程
+      // Re-check dependencies, restart the installation process
       await installMCPPlugin(identifier);
     };
 
     const handleSkipCheck = async () => {
-      // 跳过依赖检查，继续安装流程
+      // Skip dependency check, continue installation process
       await installMCPPlugin(identifier, { skipDepsCheck: true });
     };
 
     return (
-      <motion.div
+      <m.div
         animate={{ y: 0 }}
         className={styles.container}
         initial={{ y: 8 }}
         transition={{ delay: 0.1, duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
       >
-        <motion.div
+        <m.div
           animate={{ opacity: 1, y: 0 }}
           initial={{ opacity: 0, y: 4 }}
           style={{ marginBottom: 8 }}
           transition={{ delay: 0.15, duration: 0.2 }}
         >
           <Flexbox gap={8}>
-            <Flexbox align="center" gap={8} horizontal>
+            <Flexbox horizontal align="center" gap={8}>
               <AlertTriangle color={cssVar.colorWarning} size={16} />
               <Text as={'h5'} style={{ margin: 0 }}>
                 {t('mcpInstall.dependenciesRequired')}
@@ -115,9 +116,9 @@ const MCPDependenciesGuide = memo<MCPDependenciesGuideProps>(
               {t('mcpInstall.dependenciesDescription')}
             </Text>
           </Flexbox>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           animate={{ opacity: 1, y: 0 }}
           initial={{ opacity: 0, y: 4 }}
           transition={{ delay: 0.2, duration: 0.2 }}
@@ -126,8 +127,8 @@ const MCPDependenciesGuide = memo<MCPDependenciesGuideProps>(
             {systemDependencies.map((dep) => (
               <Card className={styles.dependencyCard} key={dep.name} size="small">
                 <Flexbox gap={12}>
-                  <Flexbox align="center" horizontal justify="space-between">
-                    <Flexbox align="center" gap={8} horizontal>
+                  <Flexbox horizontal align="center" justify="space-between">
+                    <Flexbox horizontal align="center" gap={8}>
                       <Text strong>{dep.name}</Text>
                       {dep.requiredVersion && (
                         <Text style={{ fontSize: 12 }} type="secondary">
@@ -185,29 +186,29 @@ const MCPDependenciesGuide = memo<MCPDependenciesGuideProps>(
               </Card>
             ))}
           </Flexbox>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           animate={{ opacity: 1, y: 0 }}
           className={styles.footer}
           initial={{ opacity: 0, y: 4 }}
           transition={{ delay: 0.3, duration: 0.2 }}
         >
           <Flexbox horizontal justify={'space-between'}>
-            <Button onClick={handleCancel} size="small">
+            <Button size="small" onClick={handleCancel}>
               {t('common:cancel')}
             </Button>
             <Space>
-              <Button onClick={handleSkipCheck} size="small">
+              <Button size="small" onClick={handleSkipCheck}>
                 {t('mcpInstall.skipDependencies')}
               </Button>
-              <Button onClick={handleRetryCheck} size="small" type="primary">
+              <Button size="small" type="primary" onClick={handleRetryCheck}>
                 {t('mcpInstall.recheckDependencies')}
               </Button>
             </Space>
           </Flexbox>
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     );
   },
 );

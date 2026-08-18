@@ -1,3 +1,4 @@
+import { useActiveLocation } from '@/hooks/useActiveLocation';
 import { usePathname, useSearchParams } from '@/libs/router/navigation';
 import { ProfileTabs, SettingsTabs, SidebarTabKey } from '@/store/global/initialState';
 
@@ -6,7 +7,7 @@ import { ProfileTabs, SettingsTabs, SidebarTabKey } from '@/store/global/initial
  * React Router version for SPA
  */
 export const useActiveTabKey = () => {
-  const pathname = usePathname();
+  const { pathname } = useActiveLocation();
   return (pathname.split('/').find(Boolean)! as SidebarTabKey) || SidebarTabKey.Home;
 };
 
@@ -17,7 +18,7 @@ export const useActiveTabKey = () => {
 export const useActiveSettingsKey = () => {
   const [searchParams] = useSearchParams();
   const tabs = searchParams.get('active');
-  if (!tabs) return SettingsTabs.Common;
+  if (!tabs) return SettingsTabs.Appearance;
   return tabs as SettingsTabs;
 };
 

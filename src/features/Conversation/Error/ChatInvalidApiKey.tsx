@@ -1,11 +1,11 @@
 import { ProviderIcon } from '@lobehub/icons';
-import { Button } from '@lobehub/ui';
+import { Button } from '@lobehub/ui/base-ui';
 import { ModelProvider } from 'model-bank';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import urlJoin from 'url-join';
 
+import { useWorkspaceAwareNavigate } from '@/features/Workspace/useWorkspaceAwareNavigate';
 import { useProviderName } from '@/hooks/useProviderName';
 import { type GlobalLLMProviderKey } from '@/types/user/settings/modelProvider';
 
@@ -18,24 +18,25 @@ interface ChatInvalidAPIKeyProps {
 }
 const ChatInvalidAPIKey = memo<ChatInvalidAPIKeyProps>(({ id, provider }) => {
   const { t } = useTranslation(['modelProvider', 'error']);
-  const navigate = useNavigate();
+  const navigate = useWorkspaceAwareNavigate();
   const [deleteMessage] = useConversationStore((s) => [s.deleteMessage]);
   const providerName = useProviderName(provider as GlobalLLMProviderKey);
 
   return (
     <BaseErrorForm
+      avatar={<ProviderIcon provider={provider} shape={'square'} size={40} />}
+      title={t(`unlock.apiKey.title`, { name: providerName, ns: 'error' })}
       action={
         <Button
+          type={'primary'}
           onClick={() => {
             navigate(urlJoin('/settings/provider', provider || 'all'));
             deleteMessage(id);
           }}
-          type={'primary'}
         >
           {t('unlock.goToSettings', { ns: 'error' })}
         </Button>
       }
-      avatar={<ProviderIcon provider={provider} shape={'square'} size={40} />}
       desc={
         provider === ModelProvider.Bedrock
           ? t('bedrock.unlock.description')
@@ -44,7 +45,6 @@ const ChatInvalidAPIKey = memo<ChatInvalidAPIKeyProps>(({ id, provider }) => {
               ns: 'error',
             })
       }
-      title={t(`unlock.apiKey.title`, { name: providerName, ns: 'error' })}
     />
   );
 });

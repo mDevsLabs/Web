@@ -2,6 +2,7 @@
 import { Type as SchemaType } from '@google/genai';
 import { describe, expect, it, vi } from 'vitest';
 
+import { buildGoogleTool, sanitizeGeminiSchema } from '../../core/contextBuilders/google';
 import {
   convertOpenAISchemaToGoogleSchema,
   createGoogleGenerateObject,
@@ -178,6 +179,358 @@ describe('Google generateObject', () => {
         type: SchemaType.STRING,
       });
     });
+
+    // enum should only be copied for STRING type properties
+    it('should strip enum from non-STRING types', () => {
+      const openAISchema = {
+        name: 'test',
+        schema: {
+          properties: {
+            priority: { enum: ['low', 'medium', 'high'], type: 'number' },
+            status: { enum: ['active', 'inactive'], type: 'string' },
+            visible: { enum: ['true'], type: 'boolean' },
+          },
+          type: 'object' as const,
+        },
+      };
+
+      const result = convertOpenAISchemaToGoogleSchema(openAISchema);
+
+      // enum should be stripped from number and boolean types
+      expect(result).toEqual({
+        properties: {
+          priority: { type: SchemaType.NUMBER },
+          status: { enum: ['active', 'inactive'], type: SchemaType.STRING },
+          visible: { type: SchemaType.BOOLEAN },
+        },
+        type: SchemaType.OBJECT,
+      });
+    });
+
+    // enum with empty array should be stripped even for STRING type
+    it('should strip empty enum arrays', () => {
+      const openAISchema = {
+        name: 'test',
+        schema: {
+          properties: {
+            status: { enum: [], type: 'string' },
+          },
+          type: 'object' as const,
+        },
+      };
+
+      const result = convertOpenAISchemaToGoogleSchema(openAISchema);
+
+      expect(result).toEqual({
+        properties: {
+          status: { type: SchemaType.STRING },
+        },
+        type: SchemaType.OBJECT,
+      });
+    });
+
+    // required should only be copied for OBJECT types
+    it('should strip required from non-OBJECT types', () => {
+      const openAISchema = {
+        name: 'test',
+        schema: {
+          properties: {
+            nested: {
+              properties: { name: { type: 'string' } },
+              required: ['name'],
+              type: 'object',
+            },
+          },
+          required: ['nested'],
+          type: 'object' as const,
+        },
+      } as any;
+
+      const result = convertOpenAISchemaToGoogleSchema(openAISchema);
+
+      // required should be preserved for OBJECT types (both root and nested)
+      expect(result).toEqual({
+        properties: {
+          nested: {
+            properties: {
+              name: { type: SchemaType.STRING },
+            },
+            required: ['name'],
+            type: SchemaType.OBJECT,
+          },
+        },
+        required: ['nested'],
+        type: SchemaType.OBJECT,
+      });
+    });
+  });
+
+  describe('sanitizeGeminiSchema', () => {
+    it('should strip enum from non-STRING types', () => {
+      const schema = {
+        properties: {
+          priority: { enum: [1, 2, 3], type: 'integer' },
+          status: { enum: ['active'], type: 'string' },
+        },
+        type: 'object',
+      };
+
+      const result = sanitizeGeminiSchema(schema);
+
+      expect(result).toEqual({
+        properties: {
+          priority: { type: 'integer' },
+          status: { enum: ['active'], type: 'string' },
+        },
+        type: 'object',
+      });
+    });
+
+    it('should strip required from non-OBJECT types', () => {
+      const schema = {
+        properties: {
+          name: { required: ['firstName'], type: 'string' },
+          user: {
+            properties: { name: { type: 'string' } },
+            required: ['name'],
+            type: 'object',
+          },
+        },
+        type: 'object',
+      };
+
+      const result = sanitizeGeminiSchema(schema);
+
+      expect(result).toEqual({
+        properties: {
+          name: { type: 'string' },
+          user: {
+            properties: { name: { type: 'string' } },
+            required: ['name'],
+            type: 'object',
+          },
+        },
+        type: 'object',
+      });
+    });
+
+    it('should recursively sanitize nested properties', () => {
+      const schema = {
+        properties: {
+          dashboard: {
+            properties: {
+              widgets: {
+                items: {
+                  properties: {
+                    color: { enum: ['red'], type: 'string' },
+                    priority: { enum: [1, 2], type: 'number' },
+                    visible: { enum: ['true'], type: 'boolean' },
+                  },
+                  type: 'object',
+                },
+                type: 'array',
+              },
+            },
+            type: 'object',
+          },
+        },
+        type: 'object',
+      };
+
+      const result = sanitizeGeminiSchema(schema);
+
+      expect(result).toEqual({
+        properties: {
+          dashboard: {
+            properties: {
+              widgets: {
+                items: {
+                  properties: {
+                    color: { enum: ['red'], type: 'string' },
+                    priority: { type: 'number' },
+                    visible: { type: 'boolean' },
+                  },
+                  type: 'object',
+                },
+                type: 'array',
+              },
+            },
+            type: 'object',
+          },
+        },
+        type: 'object',
+      });
+    });
+
+    it('should handle empty enum arrays', () => {
+      const schema = {
+        properties: {
+          status: { enum: [], type: 'string' },
+        },
+        type: 'object',
+      };
+
+      const result = sanitizeGeminiSchema(schema);
+
+      expect(result).toEqual({
+        properties: {
+          status: { type: 'string' },
+        },
+        type: 'object',
+      });
+    });
+
+    it('should handle anyOf/oneOf/allOf combinators', () => {
+      const schema = {
+        anyOf: [
+          { enum: [1, 2], type: 'number' },
+          { enum: ['low'], type: 'string' },
+        ],
+      };
+
+      const result = sanitizeGeminiSchema(schema);
+
+      expect(result).toEqual({
+        anyOf: [{ type: 'number' }, { enum: ['low'], type: 'string' }],
+      });
+    });
+
+    it('should handle null/undefined gracefully', () => {
+      expect(sanitizeGeminiSchema(null)).toBeNull();
+      expect(sanitizeGeminiSchema(undefined)).toBeUndefined();
+    });
+
+    // nullable string enums should keep string members but drop the null sentinel
+    it('should strip null members from enum on nullable STRING types (type: array with string)', () => {
+      const schema = {
+        properties: {
+          status: {
+            enum: ['active', 'inactive', null],
+            type: ['string', 'null'],
+          },
+        },
+        type: 'object',
+      };
+
+      const result = sanitizeGeminiSchema(schema);
+
+      // Gemini proto only accepts STRING enum members; null is filtered out while
+      // nullability stays expressed via type: ['string', 'null'].
+      expect(result).toEqual({
+        properties: {
+          status: {
+            enum: ['active', 'inactive'],
+            type: ['string', 'null'],
+          },
+        },
+        type: 'object',
+      });
+    });
+
+    // nullable object required should be preserved
+    it('should preserve required on nullable OBJECT types (type: array with object)', () => {
+      const schema = {
+        properties: {
+          config: {
+            properties: { key: { type: 'string' } },
+            required: ['key'],
+            type: ['object', 'null'],
+          },
+        },
+        type: 'object',
+      };
+
+      const result = sanitizeGeminiSchema(schema);
+
+      expect(result).toEqual({
+        properties: {
+          config: {
+            properties: { key: { type: 'string' } },
+            required: ['key'],
+            type: ['object', 'null'],
+          },
+        },
+        type: 'object',
+      });
+    });
+
+    // should strip enum from nullable non-STRING types
+    it('should strip enum from nullable non-STRING types (type: array without string)', () => {
+      const schema = {
+        properties: {
+          count: {
+            enum: [1, 2, 3],
+            type: ['integer', 'null'],
+          },
+        },
+        type: 'object',
+      };
+
+      const result = sanitizeGeminiSchema(schema);
+
+      expect(result).toEqual({
+        properties: {
+          count: {
+            type: ['integer', 'null'],
+          },
+        },
+        type: 'object',
+      });
+    });
+
+    // recurse into definitions/$defs
+    it('should sanitize schemas under definitions', () => {
+      const schema = {
+        definitions: {
+          Priority: { enum: [1, 2, 3], type: 'number' },
+          Status: { enum: ['active', 'inactive'], type: 'string' },
+        },
+        properties: {
+          priority: { $ref: '#/definitions/Priority' },
+          status: { $ref: '#/definitions/Status' },
+        },
+        type: 'object',
+      };
+
+      const result = sanitizeGeminiSchema(schema);
+
+      expect(result).toEqual({
+        definitions: {
+          Priority: { type: 'number' },
+          Status: { enum: ['active', 'inactive'], type: 'string' },
+        },
+        properties: {
+          priority: { $ref: '#/definitions/Priority' },
+          status: { $ref: '#/definitions/Status' },
+        },
+        type: 'object',
+      });
+    });
+
+    // recurse into $defs
+    it('should sanitize schemas under $defs', () => {
+      const schema = {
+        $defs: {
+          Shape: { enum: ['circle', 'square'], required: ['radius'], type: 'string' },
+        },
+        properties: {
+          shape: { $ref: '#/$defs/Shape' },
+        },
+        type: 'object',
+      };
+
+      const result = sanitizeGeminiSchema(schema);
+
+      expect(result).toEqual({
+        $defs: {
+          Shape: { enum: ['circle', 'square'], type: 'string' },
+        },
+        properties: {
+          shape: { $ref: '#/$defs/Shape' },
+        },
+        type: 'object',
+      });
+    });
   });
 
   describe('createGoogleGenerateObject', () => {
@@ -270,6 +623,46 @@ describe('Google generateObject', () => {
       });
 
       expect(result).toEqual({ status: 'success' });
+    });
+
+    it('should call onUsage callback with usage data', async () => {
+      const mockClient = {
+        models: {
+          generateContent: vi.fn().mockResolvedValue({
+            text: '{"result": "ok"}',
+            usageMetadata: {
+              candidatesTokenCount: 20,
+              promptTokenCount: 80,
+              totalTokenCount: 100,
+            },
+          }),
+        },
+      };
+
+      const contents = [{ parts: [{ text: 'Generate data' }], role: 'user' }];
+
+      const payload = {
+        contents,
+        model: 'gemini-2.5-flash',
+        schema: {
+          name: 'test',
+          schema: {
+            properties: { result: { type: 'string' } },
+            type: 'object' as const,
+          },
+        },
+      };
+
+      const onUsage = vi.fn();
+      const result = await createGoogleGenerateObject(mockClient as any, payload, { onUsage });
+
+      expect(onUsage).toHaveBeenCalledWith(
+        expect.objectContaining({
+          totalInputTokens: 80,
+          totalOutputTokens: 20,
+        }),
+      );
+      expect(result).toEqual({ result: 'ok' });
     });
 
     it('should return undefined when JSON parsing fails', async () => {
@@ -481,14 +874,13 @@ describe('Google generateObject', () => {
                 {
                   description: 'Get weather information',
                   name: 'get_weather',
-                  parameters: {
-                    description: undefined,
+                  parametersJsonSchema: {
                     properties: {
                       city: { type: 'string' },
                       unit: { type: 'string' },
                     },
                     required: ['city'],
-                    type: SchemaType.OBJECT,
+                    type: 'object',
                   },
                 },
               ],
@@ -502,6 +894,68 @@ describe('Google generateObject', () => {
       expect(result).toEqual([
         { arguments: { city: 'New York', unit: 'celsius' }, name: 'get_weather' },
       ]);
+    });
+
+    it('should call onUsage callback with usage data', async () => {
+      const mockClient = {
+        models: {
+          generateContent: vi.fn().mockResolvedValue({
+            candidates: [
+              {
+                content: {
+                  parts: [
+                    {
+                      functionCall: {
+                        args: { city: 'Tokyo' },
+                        name: 'get_weather',
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            usageMetadata: {
+              candidatesTokenCount: 30,
+              promptTokenCount: 70,
+              totalTokenCount: 100,
+            },
+          }),
+        },
+      };
+
+      const contents = [{ parts: [{ text: 'What is the weather in Tokyo?' }], role: 'user' }];
+
+      const payload = {
+        contents,
+        model: 'gemini-2.5-flash',
+        tools: [
+          {
+            function: {
+              description: 'Get weather information',
+              name: 'get_weather',
+              parameters: {
+                properties: { city: { type: 'string' } },
+                required: ['city'],
+                type: 'object' as const,
+              },
+            },
+            type: 'function' as const,
+          },
+        ],
+      };
+
+      const onUsage = vi.fn();
+      const result = await createGoogleGenerateObjectWithTools(mockClient as any, payload, {
+        onUsage,
+      });
+
+      expect(onUsage).toHaveBeenCalledWith(
+        expect.objectContaining({
+          totalInputTokens: 70,
+          totalOutputTokens: 30,
+        }),
+      );
+      expect(result).toEqual([{ arguments: { city: 'Tokyo' }, name: 'get_weather' }]);
     });
 
     it('should handle multiple function calls', async () => {
@@ -848,7 +1302,7 @@ describe('Google generateObject', () => {
             {
               functionDeclarations: [
                 expect.objectContaining({
-                  parameters: expect.objectContaining({
+                  parametersJsonSchema: expect.objectContaining({
                     properties: { dummy: { type: 'string' } },
                   }),
                 }),
@@ -861,6 +1315,124 @@ describe('Google generateObject', () => {
       });
 
       expect(result).toEqual([{ arguments: {}, name: 'simple_function' }]);
+    });
+
+    // buildGoogleTool should sanitize schema to strip enum from non-STRING types
+    it('should sanitize enum from non-STRING types in tool parameters', () => {
+      const tool: any = {
+        function: {
+          description: 'Update status',
+          name: 'update_status',
+          parameters: {
+            properties: {
+              priority: { enum: [1, 2, 3], type: 'integer' },
+              status: { enum: ['active', 'inactive'], type: 'string' },
+            },
+            required: ['status'],
+            type: 'object',
+          },
+        },
+        type: 'function',
+      };
+
+      // Suppress console.warn from sanitizer
+      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+      const result = buildGoogleTool(tool);
+
+      expect(result.parametersJsonSchema).toEqual({
+        properties: {
+          priority: { type: 'integer' },
+          status: { enum: ['active', 'inactive'], type: 'string' },
+        },
+        required: ['status'],
+        type: 'object',
+      });
+
+      warnSpy.mockRestore();
+    });
+
+    // buildGoogleTool should sanitize nested tool parameters
+    it('should sanitize nested enum/required in tool parameters', () => {
+      const tool: any = {
+        function: {
+          description: 'Complex operation',
+          name: 'complex_op',
+          parameters: {
+            properties: {
+              config: {
+                properties: {
+                  color: { enum: ['red'], type: 'string' },
+                  level: { enum: [1, 2, 3], type: 'number' },
+                },
+                required: ['color'],
+                type: 'object',
+              },
+              role: { required: ['admin'], type: 'string' },
+            },
+            type: 'object',
+          },
+        },
+        type: 'function',
+      };
+
+      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+      const result = buildGoogleTool(tool);
+
+      expect(result.parametersJsonSchema).toEqual({
+        properties: {
+          config: {
+            properties: {
+              color: { enum: ['red'], type: 'string' },
+              level: { type: 'number' },
+            },
+            required: ['color'],
+            type: 'object',
+          },
+          role: { type: 'string' },
+        },
+        type: 'object',
+      });
+
+      warnSpy.mockRestore();
+    });
+
+    // buildGoogleTool should keep string enum members but drop the null sentinel
+    it('should strip null members from enum on nullable STRING type in tool parameters', () => {
+      const tool: any = {
+        function: {
+          description: 'A tool with nullable enum',
+          name: 'nullableTool',
+          parameters: {
+            properties: {
+              status: {
+                enum: ['active', 'inactive', null],
+                type: ['string', 'null'],
+              },
+            },
+            type: 'object',
+          },
+        },
+        type: 'function',
+      };
+
+      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+      const result = buildGoogleTool(tool);
+
+      // nullable type is passed through, but the null enum member is filtered out
+      expect(result.parametersJsonSchema).toEqual({
+        properties: {
+          status: {
+            enum: ['active', 'inactive'],
+            type: ['string', 'null'],
+          },
+        },
+        type: 'object',
+      });
+
+      warnSpy.mockRestore();
     });
   });
 });

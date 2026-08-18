@@ -1,8 +1,8 @@
-import { ElectronAppState, ThemeMode } from '@lobechat/electron-client-ipc';
-import { app, dialog, nativeTheme, shell } from 'electron';
-import { macOS } from 'electron-is';
-import { pathExists, readdir } from 'fs-extra';
+import { access, readdir } from 'node:fs/promises';
 import process from 'node:process';
+
+import type { ElectronAppState, ThemeMode } from '@lobechat/electron-client-ipc';
+import { app, dialog, nativeTheme, shell } from 'electron';
 
 import { legacyLocalDbDir } from '@/const/dir';
 import { createLogger } from '@/utils/logger';
@@ -15,13 +15,22 @@ import {
   requestMicrophoneAccess,
   requestScreenCaptureAccess,
 } from '@/utils/permissions';
+import * as electronIs from '@/utils/platform';
+import { getSystemLanguage, resolveUILocale } from '@/utils/system-language';
 
 import { ControllerModule, IpcMethod } from './index';
+import RemoteServerConfigCtr from './RemoteServerConfigCtr';
 
 const logger = createLogger('controllers:SystemCtr');
 
+interface SystemMonospaceFont {
+  label: string;
+  value: string;
+}
+
 export default class SystemController extends ControllerModule {
   static override readonly groupName = 'system';
+  private systemMonospaceFontsPromise?: Promise<SystemMonospaceFont[]>;
   private systemThemeListenerInitialized = false;
 
   /**
@@ -37,12 +46,15 @@ export default class SystemController extends ControllerModule {
    */
   @IpcMethod()
   async getAppState(): Promise<ElectronAppState> {
+    const { getShellInfo } = await import('@lobechat/local-file-shell/shell');
     const platform = process.platform;
     const arch = process.arch;
 
     return {
       // System Info
       arch,
+      // Tell the model which shell runCommand actually spawns (see local-file-shell).
+      defaultShell: (await getShellInfo()).displayName,
       isLinux: platform === 'linux',
       isMac: platform === 'darwin',
       isWindows: platform === 'win32',
@@ -61,6 +73,23 @@ export default class SystemController extends ControllerModule {
         videos: app.getPath('videos'),
       },
     };
+  }
+
+  @IpcMethod()
+  setDesktopOnboardingCompleted(completed: boolean): void {
+    this.app.storeManager.set('desktopOnboardingCompleted', completed);
+  }
+
+  @IpcMethod()
+  setLastWorkspaceSlug(slug: string | null): void {
+    const { userId } = this.app.getController(RemoteServerConfigCtr).getDesktopBootstrapIdentity();
+    if (!userId) return;
+
+    const slugByAccount = { ...this.app.storeManager.get('lastWorkspaceSlugByAccount', {}) };
+    if (slug) slugByAccount[userId] = slug;
+    else delete slugByAccount[userId];
+
+    this.app.storeManager.set('lastWorkspaceSlugByAccount', slugByAccount);
   }
 
   @IpcMethod()
@@ -101,7 +130,7 @@ export default class SystemController extends ControllerModule {
       return 'granted';
     }
 
-    if (!macOS()) {
+    if (!electronIs.macOS()) {
       logger.info('[FullDiskAccess] Not macOS, returning granted');
       return 'granted';
     }
@@ -122,8 +151,8 @@ export default class SystemController extends ControllerModule {
       buttons: [openSettingsButtonText, skipButtonText],
       cancelId: 1,
       defaultId: 0,
-      message: message,
-      title: title,
+      message,
+      title,
       type: 'info',
     });
 
@@ -168,7 +197,7 @@ export default class SystemController extends ControllerModule {
   async selectFolder(payload?: {
     defaultPath?: string;
     title?: string;
-  }): Promise<string | undefined> {
+  }): Promise<{ path: string; repoType?: 'git' | 'github' } | undefined> {
     const mainWindow = this.app.browserManager.getMainWindow()?.browserWindow;
 
     const result = await dialog.showOpenDialog(mainWindow!, {
@@ -181,19 +210,67 @@ export default class SystemController extends ControllerModule {
       return undefined;
     }
 
-    return result.filePaths[0];
+    const folderPath = result.filePaths[0];
+    const { detectRepoType } = await import('@lobechat/local-file-shell/git');
+    const repoType = await detectRepoType(folderPath);
+
+    try {
+      const approvedRoot = await this.app.localFileProtocolManager.approveWorkspaceRoot(folderPath);
+
+      if (approvedRoot) {
+        const storedRoots = this.app.storeManager.get('localFileWorkspaceRoots', []);
+        if (!storedRoots.includes(approvedRoot)) {
+          this.app.storeManager.set('localFileWorkspaceRoots', [approvedRoot, ...storedRoots]);
+        }
+      }
+    } catch (error) {
+      logger.error(`Failed to approve local file workspace root ${folderPath}:`, error);
+    }
+
+    return { path: folderPath, repoType };
   }
 
   @IpcMethod()
   getSystemLocale(): string {
-    return app.getLocale();
+    return getSystemLanguage();
+  }
+
+  @IpcMethod()
+  async getSystemMonospaceFonts(): Promise<SystemMonospaceFont[]> {
+    if (!this.systemMonospaceFontsPromise) {
+      this.systemMonospaceFontsPromise = import('font-list')
+        .then(({ getFonts2 }) => getFonts2())
+        .then((fonts) => {
+          const families = new Map<string, SystemMonospaceFont>();
+
+          for (const font of fonts) {
+            const label = font.name.trim();
+            const value = font.familyName.trim();
+            if (!font.monospace || !label || !value) continue;
+
+            const normalizedName = label.toLocaleLowerCase();
+            if (!families.has(normalizedName)) families.set(normalizedName, { label, value });
+          }
+
+          return [...families.values()].sort((left, right) =>
+            left.label.localeCompare(right.label),
+          );
+        })
+        .catch((error) => {
+          this.systemMonospaceFontsPromise = undefined;
+          logger.error('Failed to enumerate system monospace fonts:', error);
+          throw error;
+        });
+    }
+
+    return this.systemMonospaceFontsPromise;
   }
 
   @IpcMethod()
   async updateLocale(locale: string) {
     this.app.storeManager.set('locale', locale);
 
-    await this.app.i18n.changeLanguage(locale === 'auto' ? app.getLocale() : locale);
+    await this.app.i18n.changeLanguage(resolveUILocale(locale));
     this.app.browserManager.broadcastToAllWindows('localeChanged', { locale });
 
     return { success: true };
@@ -205,7 +282,6 @@ export default class SystemController extends ControllerModule {
     this.app.browserManager.broadcastToAllWindows('themeChanged', { themeMode });
     this.setSystemThemeMode(themeMode);
     this.app.browserManager.handleAppThemeChange();
-
   }
 
   @IpcMethod()
@@ -219,12 +295,12 @@ export default class SystemController extends ControllerModule {
    */
   @IpcMethod()
   async hasLegacyLocalDb(): Promise<boolean> {
-    if (!(await pathExists(legacyLocalDbDir))) return false;
-
     try {
+      await access(legacyLocalDbDir);
       const entries = await readdir(legacyLocalDbDir);
       return entries.length > 0;
-    } catch {
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === 'ENOENT') return false;
       // If directory exists but cannot be read, treat as "used" to surface guidance.
       return true;
     }

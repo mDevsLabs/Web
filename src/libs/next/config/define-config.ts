@@ -1,25 +1,23 @@
-import analyzer from '@next/bundle-analyzer';
-import withSerwistInit from '@serwist/next';
 import { codeInspectorPlugin } from 'code-inspector-plugin';
-import type { NextConfig } from 'next';
-import type { Header, Redirect } from 'next/dist/lib/load-custom-routes';
-import ReactComponentName from 'react-scan/react-component-name/webpack';
+import { type NextConfig } from 'next';
+import { type Header, type Redirect } from 'next/dist/lib/load-custom-routes';
+
+const LANDING_SITEMAP_URL = 'https://lobehub.com/sitemap.xml';
 
 interface CustomNextConfig {
   experimental?: NextConfig['experimental'];
   headers?: Header[];
   outputFileTracingExcludes?: NextConfig['outputFileTracingExcludes'];
+  outputFileTracingIncludes?: NextConfig['outputFileTracingIncludes'];
   redirects?: Redirect[];
   serverExternalPackages?: NextConfig['serverExternalPackages'];
   turbopack?: NextConfig['turbopack'];
-  webpack?: NextConfig['webpack'];
 }
 
 export function defineConfig(config: CustomNextConfig) {
   const isProd = process.env.NODE_ENV === 'production';
   const buildWithDocker = process.env.DOCKER === 'true';
 
-  const enableReactScan = !!process.env.REACT_SCAN_MONITOR_API_KEY;
   const shouldUseCSP = process.env.ENABLED_CSP === '1';
 
   const isTest =
@@ -29,14 +27,41 @@ export function defineConfig(config: CustomNextConfig) {
 
   const standaloneConfig: NextConfig = {
     output: 'standalone',
-    outputFileTracingIncludes: { '*': ['public/**/*', '.next/static/**/*'] },
+
+    outputFileTracingIncludes: {
+      '*': [
+        'public/**/*',
+        '.next/static/**/*',
+
+        // Only needed for Docker standalone builds.
+        // On Vercel (serverless), including native bindings can easily exceed function size limits.
+        ...(buildWithDocker
+          ? [
+              // Exclude SPA/desktop/mobile build artifacts from serverless functions
+              'public/_spa/**',
+              'dist/desktop/**',
+              'dist/mobile/**',
+
+              'packages/database/migrations/**',
+            ]
+          : []),
+      ],
+    },
   };
 
-  const assetPrefix = process.env.NEXT_PUBLIC_ASSET_PREFIX;
+  const assetPrefix = (process.env.ASSET_BASE_URL || process.env.NEXT_PUBLIC_ASSET_PREFIX)?.replace(
+    /\/+$/,
+    '',
+  );
 
   const nextConfig: NextConfig = {
     ...(isStandaloneMode ? standaloneConfig : {}),
+    // Stop `next dev` from auto-injecting the nextjs-agent-rules block into AGENTS.md.
+    agentRules: false,
     assetPrefix,
+    // Gated, not unconditional: an asset host that omits Access-Control-Allow-Origin
+    // turns every tag into one the browser refuses to execute. Same-origin needs no opt-in.
+    crossOrigin: assetPrefix ? 'anonymous' : undefined,
 
     compiler: {
       emotion: true,
@@ -57,8 +82,6 @@ export function defineConfig(config: CustomNextConfig) {
       // refs: https://github.com/lobehub/lobe-chat/pull/7430
       serverMinification: false,
       webVitalsAttribution: ['CLS', 'LCP'],
-      webpackBuildWorker: true,
-      webpackMemoryOptimizations: true,
       ...config.experimental,
     },
     async headers() {
@@ -94,7 +117,7 @@ export function defineConfig(config: CustomNextConfig) {
               value: 'public, max-age=31536000, immutable',
             },
           ],
-          source: '/icons/(.*).(png|jpe?g|gif|svg|ico|webp)',
+          source: '/app-icons/(.*).(png|jpe?g|gif|svg|ico|webp)',
         },
         {
           headers: [
@@ -111,7 +134,7 @@ export function defineConfig(config: CustomNextConfig) {
               value: 'public, max-age=31536000, immutable',
             },
           ],
-          source: '/images/(.*).(png|jpe?g|gif|svg|ico|webp)',
+          source: '/app-images/(.*).(png|jpe?g|gif|svg|ico|webp)',
         },
         {
           headers: [
@@ -242,27 +265,31 @@ export function defineConfig(config: CustomNextConfig) {
     ...(config.outputFileTracingExcludes && {
       outputFileTracingExcludes: config.outputFileTracingExcludes,
     }),
+    ...(config.outputFileTracingIncludes && {
+      outputFileTracingIncludes: config.outputFileTracingIncludes,
+    }),
     reactStrictMode: true,
     redirects: async () => [
+      // Sitemap generation lives on the landing site; keep legacy app sitemap URLs crawlable.
       {
-        destination: '/sitemap-index.xml',
+        destination: LANDING_SITEMAP_URL,
         permanent: true,
         source: '/sitemap.xml',
       },
       {
-        destination: '/sitemap-index.xml',
+        destination: LANDING_SITEMAP_URL,
         permanent: true,
         source: '/sitemap-0.xml',
       },
       {
-        destination: '/sitemap/plugins-1.xml',
+        destination: LANDING_SITEMAP_URL,
         permanent: true,
-        source: '/sitemap/plugins.xml',
+        source: '/sitemap-index.xml',
       },
       {
-        destination: '/sitemap/assistants-1.xml',
+        destination: LANDING_SITEMAP_URL,
         permanent: true,
-        source: '/sitemap/assistants.xml',
+        source: '/sitemap/:path*',
       },
       {
         destination: '/manifest.webmanifest',
@@ -325,95 +352,49 @@ export function defineConfig(config: CustomNextConfig) {
       ...(config.redirects ?? []),
     ],
     // when external packages in dev mode with turbopack, this config will lead to bundle error
-    // @napi-rs/canvas is a native module that can't be bundled by Turbopack
-    // pdfjs-dist uses @napi-rs/canvas for DOMMatrix polyfill in Node.js environment
-    serverExternalPackages: config.serverExternalPackages
-      ? config.serverExternalPackages
-      : ['pdfkit', '@napi-rs/canvas', 'pdfjs-dist'],
+    serverExternalPackages: config.serverExternalPackages ?? [
+      'pdfkit',
+      '@lobehub/editor',
+      'discord.js',
+      'ffmpeg-static',
+      'pdfjs-dist',
+      'ajv',
+      'oidc-provider',
+    ],
 
-    transpilePackages: ['mermaid', 'better-auth-harmony'],
+    transpilePackages: ['mermaid'],
     turbopack: {
-      rules: isTest
-        ? void 0
-        : codeInspectorPlugin({
-            bundler: 'turbopack',
-            hotKeys: ['altKey', 'ctrlKey'],
-          }),
+      rules: {
+        ...(isTest
+          ? void 0
+          : // Narrow the plugin's `**/*.{jsx,tsx,js,ts,mjs,mts}` rule to JSX
+            // files only. The broad glob also matches Turbopack-internal
+            // virtual assets like `[turbopack-ecmascript]/worker/browser/createWorker.ts`
+            // (injected for `new Worker(new URL(...))`), which the webpack
+            // loader shim then tries to read from disk — any page whose module
+            // graph pulls in a web worker dies with "Reading source code for
+            // parsing failed". The inspector only instruments JSX elements, so
+            // jsx/tsx keeps click-to-source fully functional.
+            Object.fromEntries(
+              Object.entries(
+                codeInspectorPlugin({
+                  bundler: 'turbopack',
+                  hotKeys: ['altKey', 'ctrlKey'],
+                }) as Record<string, unknown>,
+              ).map(([glob, rule]) => [glob.replace('{jsx,tsx,js,ts,mjs,mts}', '{jsx,tsx}'), rule]),
+            )),
+        '*.md': {
+          as: '*.js',
+          loaders: ['raw-loader'],
+        },
+      },
       ...config.turbopack,
     },
 
     typescript: {
       ignoreBuildErrors: true,
     },
-
-    webpack(baseWebpackConfig, options) {
-      baseWebpackConfig.experiments = {
-        asyncWebAssembly: true,
-        layers: true,
-      };
-
-      // 开启该插件会导致 pglite 的 fs bundler 被改表
-      if (enableReactScan) {
-        baseWebpackConfig.plugins.push(ReactComponentName({}));
-      }
-
-      // to fix shikiji compile error
-      // refs: https://github.com/antfu/shikiji/issues/23
-      baseWebpackConfig.module.rules.push({
-        resolve: {
-          fullySpecified: false,
-        },
-        test: /\.m?js$/,
-        type: 'javascript/auto',
-      });
-
-      baseWebpackConfig.resolve.alias.canvas = false;
-
-      // to ignore epub2 compile error
-      // refs: https://github.com/lobehub/lobe-chat/discussions/6769
-      baseWebpackConfig.resolve.fallback = {
-        ...baseWebpackConfig.resolve.fallback,
-        zipfile: false,
-      };
-
-      if (
-        assetPrefix &&
-        (assetPrefix.startsWith('http://') || assetPrefix.startsWith('https://'))
-      ) {
-        // fix the Worker URL cross-origin issue
-        // refs: https://github.com/lobehub/lobe-chat/pull/9624
-        baseWebpackConfig.module.rules.push({
-          generator: {
-            // @see https://webpack.js.org/configuration/module/#rulegeneratorpublicpath
-            publicPath: '/_next/',
-          },
-          test: /worker\.ts$/,
-          // @see https://webpack.js.org/guides/asset-modules/
-          type: 'asset/resource',
-        });
-      }
-
-      const updatedConfig = baseWebpackConfig;
-
-      if (config.webpack) {
-        return config.webpack(updatedConfig, options);
-      }
-
-      return updatedConfig;
-    },
   };
 
-  const noWrapper = (config: NextConfig) => config;
-
-  const withBundleAnalyzer = process.env.ANALYZE === 'true' ? analyzer() : noWrapper;
-
-  const withPWA = isProd
-    ? withSerwistInit({
-        register: false,
-        swDest: 'public/sw.js',
-        swSrc: 'src/app/sw.ts',
-      })
-    : noWrapper;
-
-  return withBundleAnalyzer(withPWA(nextConfig as NextConfig));
+  return nextConfig;
 }

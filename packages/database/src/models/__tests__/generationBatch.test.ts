@@ -1,19 +1,14 @@
 // @vitest-environment node
-import { GenerationConfig } from '@lobechat/types';
+import type { GenerationConfig } from '@lobechat/types';
 import { AsyncTaskStatus } from '@lobechat/types';
 import { eq } from 'drizzle-orm';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import {
-  NewGenerationBatch,
-  generationBatches,
-  generationTopics,
-  generations,
-  users,
-} from '../../schemas';
-import { LobeChatDatabase } from '../../type';
-import { GenerationBatchModel } from '../generationBatch';
 import { getTestDB } from '../../core/getTestDB';
+import type { NewGenerationBatch } from '../../schemas';
+import { generationBatches, generations, generationTopics, users, workspaces } from '../../schemas';
+import type { LobeChatDatabase } from '../../type';
+import { GenerationBatchModel } from '../generationBatch';
 
 const serverDB: LobeChatDatabase = await getTestDB();
 
@@ -35,6 +30,7 @@ vi.mock('../generation', () => ({
 
 const userId = 'generation-batch-test-user-id';
 const otherUserId = 'other-user-id';
+const workspaceId = 'generation-batch-workspace';
 const generationBatchModel = new GenerationBatchModel(serverDB, userId);
 
 // Test data
@@ -103,6 +99,12 @@ beforeEach(async () => {
   // Clear database and create test users
   await serverDB.delete(users);
   await serverDB.insert(users).values([{ id: userId }, { id: otherUserId }]);
+  await serverDB.insert(workspaces).values({
+    id: workspaceId,
+    name: 'Generation Batch Workspace',
+    primaryOwnerId: userId,
+    slug: workspaceId,
+  });
 
   // Create test topic
   await serverDB.insert(generationTopics).values(testTopic);
@@ -225,6 +227,29 @@ describe('GenerationBatchModel', () => {
       const results = await generationBatchModel.findByTopicId('non-existent-topic');
       expect(results).toHaveLength(0);
     });
+
+    it('should not return batches from another member private workspace topic', async () => {
+      await serverDB.insert(generationTopics).values({
+        id: 'private-topic-in-workspace',
+        title: 'Private Workspace Topic',
+        type: 'image',
+        userId,
+        visibility: 'private',
+        workspaceId,
+      });
+      await serverDB.insert(generationBatches).values({
+        ...testBatch,
+        id: 'private-topic-batch',
+        generationTopicId: 'private-topic-in-workspace',
+        userId,
+        workspaceId,
+      });
+
+      const otherMemberModel = new GenerationBatchModel(serverDB, otherUserId, workspaceId);
+      const results = await otherMemberModel.findByTopicId('private-topic-in-workspace');
+
+      expect(results).toHaveLength(0);
+    });
   });
 
   describe('findByTopicIdWithGenerations', () => {
@@ -309,6 +334,40 @@ describe('GenerationBatchModel', () => {
 
       expect(results).toHaveLength(1);
       expect(results[0].id).toBe(userBatch.id);
+    });
+
+    it('should not include batches when the parent workspace topic is private to another member', async () => {
+      await serverDB.insert(generationTopics).values({
+        id: 'private-topic-with-generations',
+        title: 'Private Topic with Generations',
+        type: 'image',
+        userId,
+        visibility: 'private',
+        workspaceId,
+      });
+      const [createdBatch] = await serverDB
+        .insert(generationBatches)
+        .values({
+          ...testBatch,
+          id: 'private-topic-with-generations-batch',
+          generationTopicId: 'private-topic-with-generations',
+          userId,
+          workspaceId,
+        })
+        .returning();
+      await serverDB.insert(generations).values({
+        ...testGeneration,
+        generationBatchId: createdBatch.id,
+        userId,
+        workspaceId,
+      });
+
+      const otherMemberModel = new GenerationBatchModel(serverDB, otherUserId, workspaceId);
+      const results = await otherMemberModel.findByTopicIdWithGenerations(
+        'private-topic-with-generations',
+      );
+
+      expect(results).toHaveLength(0);
     });
   });
 
@@ -412,6 +471,54 @@ describe('GenerationBatchModel', () => {
       });
     });
 
+    it('should transform config endImageUrl through FileService', async () => {
+      const [createdBatch] = await serverDB
+        .insert(generationBatches)
+        .values({
+          ...testBatch,
+          userId,
+          config: { endImageUrl: 'end-frame.jpg', prompt: 'test video prompt' },
+        })
+        .returning();
+
+      const results = await generationBatchModel.queryGenerationBatchesByTopicIdWithGenerations(
+        testTopic.id,
+      );
+
+      expect(results[0].config).toEqual({
+        endImageUrl: 'https://example.com/end-frame.jpg',
+        prompt: 'test video prompt',
+      });
+      expect(mockGetFullFileUrl).toHaveBeenCalledWith('end-frame.jpg');
+    });
+
+    it('should transform config with both imageUrl and endImageUrl through FileService', async () => {
+      const [createdBatch] = await serverDB
+        .insert(generationBatches)
+        .values({
+          ...testBatch,
+          userId,
+          config: {
+            imageUrl: 'start-frame.jpg',
+            endImageUrl: 'end-frame.jpg',
+            prompt: 'test video prompt',
+          },
+        })
+        .returning();
+
+      const results = await generationBatchModel.queryGenerationBatchesByTopicIdWithGenerations(
+        testTopic.id,
+      );
+
+      expect(results[0].config).toEqual({
+        imageUrl: 'https://example.com/start-frame.jpg',
+        endImageUrl: 'https://example.com/end-frame.jpg',
+        prompt: 'test video prompt',
+      });
+      expect(mockGetFullFileUrl).toHaveBeenCalledWith('start-frame.jpg');
+      expect(mockGetFullFileUrl).toHaveBeenCalledWith('end-frame.jpg');
+    });
+
     it('should handle config without imageUrls', async () => {
       const [createdBatch] = await serverDB
         .insert(generationBatches)
@@ -479,9 +586,43 @@ describe('GenerationBatchModel', () => {
         ...testBatch,
         userId,
       });
-      expect(result!.thumbnailUrls).toEqual(['thumbnail-url.jpg']);
+      expect(result!.filesToDelete).toEqual(['asset-url.jpg', 'thumbnail-url.jpg']);
 
       // Verify batch was actually deleted from database
+      const deletedBatch = await serverDB.query.generationBatches.findFirst({
+        where: eq(generationBatches.id, createdBatch.id),
+      });
+      expect(deletedBatch).toBeUndefined();
+    });
+
+    it('should delete a video generation batch and collect all asset URLs', async () => {
+      const [createdBatch] = await serverDB
+        .insert(generationBatches)
+        .values({ ...testBatch, userId })
+        .returning();
+
+      await serverDB.insert(generations).values({
+        ...testGeneration,
+        generationBatchId: createdBatch.id,
+        asset: {
+          coverUrl: 'cover.jpg',
+          duration: 5,
+          height: 720,
+          thumbnailUrl: 'thumbnail.jpg',
+          type: 'video',
+          url: 'video.mp4',
+          width: 1280,
+        },
+      });
+
+      const result = await generationBatchModel.delete(createdBatch.id);
+
+      expect(result).toBeDefined();
+      expect(result!.filesToDelete).toHaveLength(3);
+      expect(result!.filesToDelete).toContain('video.mp4');
+      expect(result!.filesToDelete).toContain('thumbnail.jpg');
+      expect(result!.filesToDelete).toContain('cover.jpg');
+
       const deletedBatch = await serverDB.query.generationBatches.findFirst({
         where: eq(generationBatches.id, createdBatch.id),
       });
@@ -525,9 +666,11 @@ describe('GenerationBatchModel', () => {
       const result = await generationBatchModel.delete(createdBatch.id);
 
       expect(result).toBeDefined();
-      expect(result!.thumbnailUrls).toHaveLength(2);
-      expect(result!.thumbnailUrls).toContain('thumbnail1.jpg');
-      expect(result!.thumbnailUrls).toContain('thumbnail2.jpg');
+      expect(result!.filesToDelete).toHaveLength(4);
+      expect(result!.filesToDelete).toContain('asset1.jpg');
+      expect(result!.filesToDelete).toContain('thumbnail1.jpg');
+      expect(result!.filesToDelete).toContain('asset2.jpg');
+      expect(result!.filesToDelete).toContain('thumbnail2.jpg');
     });
 
     it('should return empty thumbnail URLs when no generations have thumbnails', async () => {
@@ -540,7 +683,7 @@ describe('GenerationBatchModel', () => {
 
       expect(result).toBeDefined();
       expect(result!.deletedBatch.id).toBe(createdBatch.id);
-      expect(result!.thumbnailUrls).toEqual([]);
+      expect(result!.filesToDelete).toEqual([]);
     });
 
     it('should return undefined when trying to delete non-existent batch', async () => {
@@ -562,6 +705,36 @@ describe('GenerationBatchModel', () => {
       // Verify batch still exists
       const stillExists = await serverDB.query.generationBatches.findFirst({
         where: eq(generationBatches.id, otherUserBatch.id),
+      });
+      expect(stillExists).toBeDefined();
+    });
+
+    it('should not delete a batch from another member private workspace topic', async () => {
+      await serverDB.insert(generationTopics).values({
+        id: 'private-topic-delete',
+        title: 'Private Topic Delete',
+        type: 'image',
+        userId,
+        visibility: 'private',
+        workspaceId,
+      });
+      const [createdBatch] = await serverDB
+        .insert(generationBatches)
+        .values({
+          ...testBatch,
+          id: 'private-topic-delete-batch',
+          generationTopicId: 'private-topic-delete',
+          userId,
+          workspaceId,
+        })
+        .returning();
+
+      const otherMemberModel = new GenerationBatchModel(serverDB, otherUserId, workspaceId);
+      const result = await otherMemberModel.delete(createdBatch.id);
+
+      expect(result).toBeUndefined();
+      const stillExists = await serverDB.query.generationBatches.findFirst({
+        where: eq(generationBatches.id, createdBatch.id),
       });
       expect(stillExists).toBeDefined();
     });

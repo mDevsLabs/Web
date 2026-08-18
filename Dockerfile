@@ -8,24 +8,23 @@ ARG USE_CN_MIRROR
 
 ENV DEBIAN_FRONTEND="noninteractive"
 
-RUN <<'EOF'
-set -e
-if [ "${USE_CN_MIRROR:-false}" = "true" ]; then
-    sed -i "s/deb.debian.org/mirrors.ustc.edu.cn/g" "/etc/apt/sources.list.d/debian.sources"
-fi
-apt update
-apt install ca-certificates proxychains-ng -qy
-mkdir -p /distroless/bin /distroless/etc /distroless/etc/ssl/certs /distroless/lib
-cp /usr/lib/$(arch)-linux-gnu/libproxychains.so.4 /distroless/lib/libproxychains.so.4
-cp /usr/lib/$(arch)-linux-gnu/libdl.so.2 /distroless/lib/libdl.so.2
-cp /usr/bin/proxychains4 /distroless/bin/proxychains
-cp /etc/proxychains4.conf /distroless/etc/proxychains4.conf
-cp /usr/lib/$(arch)-linux-gnu/libstdc++.so.6 /distroless/lib/libstdc++.so.6
-cp /usr/lib/$(arch)-linux-gnu/libgcc_s.so.1 /distroless/lib/libgcc_s.so.1
-cp /usr/local/bin/node /distroless/bin/node
-cp /etc/ssl/certs/ca-certificates.crt /distroless/etc/ssl/certs/ca-certificates.crt
-rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
-EOF
+RUN set -e && \
+    if [ "${USE_CN_MIRROR:-false}" = "true" ]; then \
+        sed -i "s/deb.debian.org/mirrors.ustc.edu.cn/g" "/etc/apt/sources.list.d/debian.sources"; \
+    fi && \
+    apt update && \
+    apt install ca-certificates proxychains-ng -qy && \
+    mkdir -p /distroless/bin /distroless/etc /distroless/etc/ssl/certs /distroless/lib && \
+    cp /usr/lib/$(arch)-linux-gnu/libproxychains.so.4 /distroless/lib/libproxychains.so.4 && \
+    cp /usr/lib/$(arch)-linux-gnu/libdl.so.2 /distroless/lib/libdl.so.2 && \
+    cp /usr/bin/proxychains4 /distroless/bin/proxychains && \
+    cp /etc/proxychains4.conf /distroless/etc/proxychains4.conf && \
+    cp /usr/lib/$(arch)-linux-gnu/libstdc++.so.6 /distroless/lib/libstdc++.so.6 && \
+    cp /usr/lib/$(arch)-linux-gnu/libgcc_s.so.1 /distroless/lib/libgcc_s.so.1 && \
+    cp /usr/lib/$(arch)-linux-gnu/librt.so.1 /distroless/lib/librt.so.1 && \
+    cp /usr/local/bin/node /distroless/bin/node && \
+    cp /etc/ssl/certs/ca-certificates.crt /distroless/etc/ssl/certs/ca-certificates.crt && \
+    rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
 ## Builder image, install all the dependencies and build the app
 FROM base AS builder
@@ -33,9 +32,6 @@ FROM base AS builder
 ARG USE_CN_MIRROR
 ARG NEXT_PUBLIC_BASE_PATH
 ARG NEXT_PUBLIC_SENTRY_DSN
-ARG NEXT_PUBLIC_ANALYTICS_POSTHOG
-ARG NEXT_PUBLIC_POSTHOG_HOST
-ARG NEXT_PUBLIC_POSTHOG_KEY
 ARG NEXT_PUBLIC_ANALYTICS_UMAMI
 ARG NEXT_PUBLIC_UMAMI_SCRIPT_URL
 ARG NEXT_PUBLIC_UMAMI_WEBSITE_ID
@@ -55,11 +51,6 @@ ENV NEXT_PUBLIC_SENTRY_DSN="${NEXT_PUBLIC_SENTRY_DSN}" \
     SENTRY_ORG="" \
     SENTRY_PROJECT=""
 
-# Posthog
-ENV NEXT_PUBLIC_ANALYTICS_POSTHOG="${NEXT_PUBLIC_ANALYTICS_POSTHOG}" \
-    NEXT_PUBLIC_POSTHOG_HOST="${NEXT_PUBLIC_POSTHOG_HOST}" \
-    NEXT_PUBLIC_POSTHOG_KEY="${NEXT_PUBLIC_POSTHOG_KEY}"
-
 # Umami
 ENV NEXT_PUBLIC_ANALYTICS_UMAMI="${NEXT_PUBLIC_ANALYTICS_UMAMI}" \
     NEXT_PUBLIC_UMAMI_SCRIPT_URL="${NEXT_PUBLIC_UMAMI_SCRIPT_URL}" \
@@ -77,41 +68,33 @@ COPY patches ./patches
 # bring in desktop workspace manifest so pnpm can resolve it
 COPY apps/desktop/src/main/package.json ./apps/desktop/src/main/package.json
 
-RUN <<'EOF'
-set -e
-if [ "${USE_CN_MIRROR:-false}" = "true" ]; then
-    export SENTRYCLI_CDNURL="https://npmmirror.com/mirrors/sentry-cli"
-    npm config set registry "https://registry.npmmirror.com/"
-    echo 'canvas_binary_host_mirror=https://npmmirror.com/mirrors/canvas' >> .npmrc
-fi
-export COREPACK_NPM_REGISTRY=$(npm config get registry | sed 's/\/$//')
-npm i -g corepack@latest
-corepack enable
-corepack use $(sed -n 's/.*"packageManager": "\(.*\)".*/\1/p' package.json)
-pnpm i
-mkdir -p /deps
-cd /deps
-pnpm init
-pnpm add pg drizzle-orm
-EOF
+RUN set -e && \
+    if [ "${USE_CN_MIRROR:-false}" = "true" ]; then \
+        export SENTRYCLI_CDNURL="https://npmmirror.com/mirrors/sentry-cli"; \
+        npm config set registry "https://registry.npmmirror.com/"; \
+        echo 'canvas_binary_host_mirror=https://npmmirror.com/mirrors/canvas' >> .npmrc; \
+    fi && \
+    export COREPACK_NPM_REGISTRY=$(npm config get registry | sed 's/\/$//') && \
+    npm i -g corepack@latest && \
+    corepack enable && \
+    corepack use $(sed -n 's/.*"packageManager": "\(.*\)".*/\1/p' package.json) && \
+    pnpm i && \
+    mkdir -p /deps && \
+    cd /deps && \
+    echo '{"name":"deps","private":true}' > package.json && \
+    pnpm add pg drizzle-orm
 
 COPY . .
+
+# Prebuild: env checks (checkDeprecatedAuth, checkRequiredEnvVars, printEnvInfo) then remove desktop-only code
+RUN pnpm exec tsx scripts/dockerPrebuild.mts
+RUN rm -rf src/app/desktop "src/app/(backend)/trpc/desktop"
 
 # run build standalone for docker version
 RUN npm run build:docker
 
-# Prepare desktop export assets for Electron packaging (if generated)
-RUN <<'EOF'
-set -e
-if [ -d "/app/out" ]; then
-    mkdir -p /app/apps/desktop/dist/next
-    cp -a /app/out/. /app/apps/desktop/dist/next/
-    echo "✅ Copied Next export output into /app/apps/desktop/dist/next"
-else
-    echo "ℹ️ No Next export output found at /app/out, creating empty directory"
-    mkdir -p /app/apps/desktop/dist/next
-fi
-EOF
+# Preserve SWC helpers referenced through pnpm virtual-store symlinks by Next.js.
+RUN mkdir -p /runtime-deps && cp -a node_modules/.pnpm/@swc+helpers@* /runtime-deps/
 
 ## Application image, copy all the files for production
 FROM busybox:latest AS app
@@ -121,9 +104,10 @@ COPY --from=base /distroless/ /
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder /app/.next/standalone /app/
-# Copy Next export output for desktop renderer
-COPY --from=builder /app/apps/desktop/dist/next /app/apps/desktop/dist/next
-
+COPY --from=builder /app/.next/static /app/.next/static
+# Copy SPA assets (Vite build output)
+COPY --from=builder /app/public/_spa /app/public/_spa
+COPY --from=builder /app/public/_spa-workbench /app/public/_spa-workbench
 # Copy database migrations
 COPY --from=builder /app/packages/database/migrations /app/migrations
 COPY --from=builder /app/scripts/migrateServerDB/docker.cjs /app/docker.cjs
@@ -132,18 +116,17 @@ COPY --from=builder /app/scripts/migrateServerDB/errorHint.js /app/errorHint.js
 # copy dependencies
 COPY --from=builder /deps/node_modules/.pnpm /app/node_modules/.pnpm
 COPY --from=builder /deps/node_modules/pg /app/node_modules/pg
+COPY --from=builder /runtime-deps/ /app/node_modules/.pnpm/
 COPY --from=builder /deps/node_modules/drizzle-orm /app/node_modules/drizzle-orm
 
 # Copy server launcher and shared scripts
 COPY --from=builder /app/scripts/serverLauncher/startServer.js /app/startServer.js
 COPY --from=builder /app/scripts/_shared /app/scripts/_shared
 
-RUN <<'EOF'
-set -e
-addgroup -S -g 1001 nodejs
-adduser -D -G nodejs -H -S -h /app -u 1001 nextjs
-chown -R nextjs:nodejs /app /etc/proxychains4.conf
-EOF
+RUN set -e && \
+    addgroup -S -g 1001 nodejs && \
+    adduser -D -G nodejs -H -S -h /app -u 1001 nextjs && \
+    chown -R nextjs:nodejs /app /etc/proxychains4.conf
 
 ## Production image, copy all the files and run next
 FROM scratch
@@ -158,7 +141,7 @@ ENV NODE_ENV="production" \
     SSL_CERT_FILE="/etc/ssl/certs/ca-certificates.crt"
 
 # Make the middleware rewrite through local as default
-# refs: https://github.com/lobehub/lobe-chat/issues/5876
+# refs: https://github.com/lobehub/lobehub/issues/5876
 ENV MIDDLEWARE_REWRITE_THROUGH_LOCAL="1"
 
 # set hostname to localhost
@@ -166,14 +149,12 @@ ENV HOSTNAME="0.0.0.0" \
     PORT="3210"
 
 # General Variables
-ENV ACCESS_CODE="" \
-    APP_URL="" \
+ENV APP_URL="" \
     API_KEY_SELECT_MODE="" \
     DEFAULT_AGENT_CONFIG="" \
     SYSTEM_AGENT="" \
     FEATURE_FLAGS="" \
-    PROXY_URL="" \
-    ENABLE_AUTH_PROTECTION=""
+    PROXY_URL=""
 
 # Database
 ENV KEY_VAULTS_SECRET="" \
@@ -184,6 +165,10 @@ ENV KEY_VAULTS_SECRET="" \
 ENV AUTH_SECRET="" \
     AUTH_SSO_PROVIDERS="" \
     AUTH_ALLOWED_EMAILS="" \
+    AUTH_TRUSTED_ORIGINS="" \
+    AUTH_DISABLE_EMAIL_PASSWORD="" \
+    AUTH_EMAIL_VERIFICATION="" \
+    AUTH_ENABLE_MAGIC_LINK="" \
     # Google
     AUTH_GOOGLE_ID="" \
     AUTH_GOOGLE_SECRET="" \
@@ -192,7 +177,9 @@ ENV AUTH_SECRET="" \
     AUTH_GITHUB_SECRET="" \
     # Microsoft
     AUTH_MICROSOFT_ID="" \
-    AUTH_MICROSOFT_SECRET=""
+    AUTH_MICROSOFT_SECRET="" \
+    AUTH_MICROSOFT_AUTHORITY_URL="" \
+    AUTH_MICROSOFT_TENANT_ID=""
 
 # Redis
 ENV REDIS_URL="" \
@@ -220,6 +207,14 @@ ENV NEXT_PUBLIC_S3_DOMAIN="" \
     S3_ENABLE_PATH_STYLE="" \
     S3_SET_ACL=""
 
+# Cloud Sandbox
+ENV SANDBOX_PROVIDER="" \
+    ONLYBOXES_BASE_URL="" \
+    ONLYBOXES_JIT_ISSUER="" \
+    ONLYBOXES_JIT_SIGNING_KEY="" \
+    ONLYBOXES_JIT_TTL_SEC="" \
+    ONLYBOXES_LEASE_TTL_SEC=""
+
 # Model Variables
 ENV \
     # AI21
@@ -227,9 +222,9 @@ ENV \
     # Ai360
     AI360_API_KEY="" AI360_MODEL_LIST="" \
     # AiHubMix
-    AIHUBMIX_API_KEY="" AIHUBMIX_MODEL_LIST="" \
+    AIHUBMIX_API_KEY="" AIHUBMIX_MODEL_LIST="" AIHUBMIX_PROXY_URL="" \
     # Anthropic
-    ANTHROPIC_API_KEY="" ANTHROPIC_MODEL_LIST="" ANTHROPIC_PROXY_URL="" \
+    ANTHROPIC_API_KEY="" ANTHROPIC_CLIENT_TIMEOUT="" ANTHROPIC_MODEL_LIST="" ANTHROPIC_PROXY_URL="" \
     # Amazon Bedrock
     ENABLED_AWS_BEDROCK="" AWS_ACCESS_KEY_ID="" AWS_SECRET_ACCESS_KEY="" AWS_REGION="" AWS_BEDROCK_MODEL_LIST="" \
     # Azure OpenAI

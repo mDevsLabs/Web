@@ -3,7 +3,8 @@ import type { ModelRuntime } from '@lobechat/model-runtime';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { identityPrompt } from '../prompts';
-import { IdentityExtractor, IdentityExtractorTemplateProps } from './identity';
+import type { IdentityExtractorTemplateProps } from './identity';
+import { IdentityExtractor } from './identity';
 
 const runtimeMock = { generateObject: vi.fn() } as unknown as ModelRuntime;
 const extractorConfig = {
@@ -57,6 +58,7 @@ describe('IdentityExtractor', () => {
             relationship: 'self',
             role: 'developer',
             scoreConfidence: 0.8,
+            sourceIds: ['message-1'],
             sourceEvidence: null,
             type: 'personal',
           },
@@ -75,6 +77,7 @@ describe('IdentityExtractor', () => {
         schema: expect.objectContaining({ name: expect.stringContaining('identity') }),
         tools: undefined,
       }),
+      expect.objectContaining({ metadata: { trigger: 'memory' } }),
     );
     expect(result).toEqual(structuredResult);
   });

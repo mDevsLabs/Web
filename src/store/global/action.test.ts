@@ -1,12 +1,13 @@
 import { act, renderHook, waitFor } from '@testing-library/react';
 import { major, minor } from 'semver';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { withSWR } from '~test-utils';
 
+import * as activeWorkspaceModule from '@/business/client/hooks/useActiveWorkspaceId';
 import { CURRENT_VERSION } from '@/const/version';
 import { globalService } from '@/services/global';
 import { useGlobalStore } from '@/store/global/index';
-import { initialState } from '@/store/global/initialState';
+import { createInitialSystemStatus, initialState } from '@/store/global/initialState';
+import { withSWR } from '~test-utils';
 
 vi.mock('zustand/traditional');
 
@@ -31,11 +32,47 @@ afterEach(() => {
 });
 
 describe('createPreferenceSlice', () => {
+  describe('toggleHomeRail', () => {
+    it('should persist the Home rail visibility for the next page startup', async () => {
+      const previousStatus = localStorage.getItem('LOBE_SYSTEM_STATUS');
+      localStorage.removeItem('LOBE_SYSTEM_STATUS');
+      const { result } = renderHook(() => useGlobalStore());
+
+      try {
+        act(() => {
+          useGlobalStore.setState({
+            isStatusInit: true,
+            status: { ...initialState.status, showHomeRail: true },
+          });
+          result.current.toggleHomeRail();
+        });
+
+        expect(result.current.status.showHomeRail).toBe(false);
+        await waitFor(() => {
+          expect(createInitialSystemStatus().showHomeRail).toBe(false);
+        });
+
+        act(() => {
+          result.current.toggleHomeRail(true);
+        });
+
+        expect(result.current.status.showHomeRail).toBe(true);
+        await waitFor(() => {
+          expect(createInitialSystemStatus().showHomeRail).toBe(true);
+        });
+      } finally {
+        if (previousStatus === null) localStorage.removeItem('LOBE_SYSTEM_STATUS');
+        else localStorage.setItem('LOBE_SYSTEM_STATUS', previousStatus);
+      }
+    });
+  });
+
   describe('toggleRightPanel', () => {
     it('should toggle chat sidebar', () => {
       const { result } = renderHook(() => useGlobalStore());
 
       act(() => {
+        useGlobalStore.setState({ isStatusInit: true });
         useGlobalStore.getState().updateSystemStatus({ showRightPanel: false });
         result.current.toggleRightPanel();
       });
@@ -57,6 +94,95 @@ describe('createPreferenceSlice', () => {
       });
 
       expect(result.current.status.showRightPanel).toBe(false);
+    });
+  });
+
+  describe('setWorkingSidebarTab', () => {
+    it('emits a new request when the already-selected tab is requested again', () => {
+      const { result } = renderHook(() => useGlobalStore());
+
+      act(() => {
+        useGlobalStore.setState({
+          isStatusInit: true,
+          status: { ...initialState.status, workingSidebarTab: 'review' },
+        });
+        result.current.setWorkingSidebarTab('review');
+      });
+
+      const firstNonce = result.current.status.workingSidebarTabRequest?.nonce;
+
+      act(() => {
+        result.current.setWorkingSidebarTab('review');
+      });
+
+      expect(result.current.status.workingSidebarTab).toBe('review');
+      expect(result.current.status.workingSidebarTabRequest).toEqual({
+        nonce: (firstNonce ?? 0) + 1,
+        tab: 'review',
+      });
+    });
+  });
+
+  describe('openInBrowserTab / clearBrowserTabRequest', () => {
+    it('should raise a one-shot browser request and retire it once consumed', () => {
+      const { result } = renderHook(() => useGlobalStore());
+
+      act(() => {
+        useGlobalStore.setState({ isStatusInit: true });
+        result.current.openInBrowserTab('https://example.com');
+      });
+
+      expect(result.current.status.workingSidebarBrowserRequest?.url).toBe('https://example.com');
+      expect(result.current.status.workingSidebarTab).toBe('browser');
+
+      act(() => {
+        result.current.clearBrowserTabRequest();
+      });
+
+      // Must be null, not undefined: `updateSystemStatus` merges with lodash,
+      // which skips undefined — an undefined patch would leave the request in
+      // place. A surviving request is re-consumed on the browser pane's next
+      // remount (i.e. every topic switch) and drags that topic's page to the
+      // stale URL.
+      expect(result.current.status.workingSidebarBrowserRequest).toBeNull();
+    });
+  });
+
+  describe('toggleAgentBuilderPanel', () => {
+    it('should toggle agent builder panel without changing chat right panel', () => {
+      const { result } = renderHook(() => useGlobalStore());
+
+      act(() => {
+        useGlobalStore.setState({
+          isStatusInit: true,
+          status: {
+            ...initialState.status,
+            showAgentBuilderPanel: false,
+            showRightPanel: false,
+          },
+        });
+        result.current.toggleAgentBuilderPanel();
+      });
+
+      expect(result.current.status.showAgentBuilderPanel).toBe(true);
+      expect(result.current.status.showRightPanel).toBe(false);
+    });
+
+    it('should set agent builder panel to specified value', () => {
+      const { result } = renderHook(() => useGlobalStore());
+
+      act(() => {
+        useGlobalStore.setState({ isStatusInit: true });
+        result.current.toggleAgentBuilderPanel(true);
+      });
+
+      expect(result.current.status.showAgentBuilderPanel).toBe(true);
+
+      act(() => {
+        result.current.toggleAgentBuilderPanel(false);
+      });
+
+      expect(result.current.status.showAgentBuilderPanel).toBe(false);
     });
   });
 
@@ -214,28 +340,6 @@ describe('createPreferenceSlice', () => {
     });
   });
 
-  describe('toggleZenMode', () => {
-    it('should toggle zen mode', () => {
-      const { result } = renderHook(() => useGlobalStore());
-
-      act(() => {
-        useGlobalStore.setState({ isStatusInit: true });
-        // 初始值应该是 false
-        expect(result.current.status.zenMode).toBe(false);
-
-        result.current.toggleZenMode();
-      });
-
-      expect(result.current.status.zenMode).toBe(true);
-
-      act(() => {
-        result.current.toggleZenMode();
-      });
-
-      expect(result.current.status.zenMode).toBe(false);
-    });
-  });
-
   describe('toggleSystemRole', () => {
     it('should toggle system role', () => {
       const { result } = renderHook(() => useGlobalStore());
@@ -269,7 +373,7 @@ describe('createPreferenceSlice', () => {
       const navigate = vi.fn();
 
       act(() => {
-        useGlobalStore.setState({ navigate });
+        useGlobalStore.setState({ navigationRef: { current: navigate } });
         result.current.switchBackToChat(sessionId);
       });
 
@@ -406,6 +510,149 @@ describe('createPreferenceSlice', () => {
       });
 
       expect(result.current.status.noWideScreen).toEqual(false);
+    });
+  });
+
+  describe('revealInFilesTab', () => {
+    it('should set workingSidebarTab to files', () => {
+      const { result } = renderHook(() => useGlobalStore());
+
+      act(() => {
+        useGlobalStore.setState({ isStatusInit: true });
+        result.current.updateSystemStatus({ workingSidebarTab: 'review' });
+        result.current.revealInFilesTab('src/foo/bar.ts');
+      });
+
+      expect(result.current.status.workingSidebarTab).toBe('files');
+    });
+
+    it('should set workingSidebarRevealRequest with the given path and a positive nonce', () => {
+      const { result } = renderHook(() => useGlobalStore());
+
+      act(() => {
+        useGlobalStore.setState({ isStatusInit: true });
+        result.current.revealInFilesTab('src/foo/bar.ts');
+      });
+
+      expect(result.current.status.workingSidebarRevealRequest?.path).toBe('src/foo/bar.ts');
+      expect(result.current.status.workingSidebarRevealRequest?.nonce).toBeGreaterThan(0);
+    });
+
+    it('should produce a different nonce when called twice with the same path', async () => {
+      const { result } = renderHook(() => useGlobalStore());
+
+      let firstNonce: number | undefined;
+
+      act(() => {
+        useGlobalStore.setState({ isStatusInit: true });
+        result.current.revealInFilesTab('src/foo/bar.ts');
+        firstNonce = useGlobalStore.getState().status.workingSidebarRevealRequest?.nonce;
+      });
+
+      await new Promise((r) => setTimeout(r, 2));
+
+      act(() => {
+        result.current.revealInFilesTab('src/foo/bar.ts');
+      });
+
+      const secondNonce = result.current.status.workingSidebarRevealRequest?.nonce;
+      expect(secondNonce).not.toBe(firstNonce);
+    });
+
+    it('should reset workingSidebarRevealRequest to undefined on initSystemStatus', async () => {
+      vi.spyOn(useGlobalStore.getState().statusStorage, 'getFromLocalStorage').mockReturnValueOnce({
+        workingSidebarRevealRequest: { nonce: 12345, path: 'src/old.ts' },
+      } as any);
+
+      const { result } = renderHook(() => useGlobalStore().useInitSystemStatus(), {
+        wrapper: withSWR,
+      });
+
+      await waitFor(() => {
+        expect(result.current.isLoading).toBe(false);
+      });
+
+      expect(useGlobalStore.getState().status.workingSidebarRevealRequest).toBeUndefined();
+    });
+  });
+
+  describe('workspace overlay routing', () => {
+    // The lobehub-side `useActiveWorkspaceId` returns null by default; the
+    // cloud build overrides it. Stub the sync getter so we can exercise
+    // workspace-mode routing without booting a workspace store.
+    const setActiveWorkspace = (id: string | null) => {
+      vi.spyOn(activeWorkspaceModule, 'getActiveWorkspaceId').mockReturnValue(id);
+    };
+
+    beforeEach(() => {
+      useGlobalStore.setState({ isStatusInit: true });
+    });
+
+    it('routes whitelisted writes into status.workspace when inside a workspace', () => {
+      setActiveWorkspace('ws-1');
+      const { result } = renderHook(() => useGlobalStore());
+
+      act(() => {
+        result.current.updateSystemStatus({
+          hiddenSidebarSections: ['recents'],
+          sidebarItems: ['agent'],
+        });
+      });
+
+      expect(result.current.status.workspace?.hiddenSidebarSections).toEqual(['recents']);
+      expect(result.current.status.workspace?.sidebarItems).toEqual(['agent']);
+      // Top-level (personal mode) values stay untouched
+      expect(result.current.status.hiddenSidebarSections).toBeUndefined();
+      expect(result.current.status.sidebarItems).toBeUndefined();
+    });
+
+    it('keeps non-whitelisted writes at the top level when inside a workspace', () => {
+      setActiveWorkspace('ws-1');
+      const { result } = renderHook(() => useGlobalStore());
+
+      act(() => {
+        result.current.updateSystemStatus({ leftPanelWidth: 360 });
+      });
+
+      expect(result.current.status.leftPanelWidth).toBe(360);
+      expect(result.current.status.workspace).toBeUndefined();
+    });
+
+    it('writes whitelisted fields to the top level when not in a workspace', () => {
+      setActiveWorkspace(null);
+      const { result } = renderHook(() => useGlobalStore());
+
+      act(() => {
+        result.current.updateSystemStatus({ hiddenSidebarSections: ['memory'] });
+      });
+
+      expect(result.current.status.hiddenSidebarSections).toEqual(['memory']);
+      expect(result.current.status.workspace?.hiddenSidebarSections).toBeUndefined();
+    });
+
+    it('toggleExpandSessionGroup composes off the workspace overlay when inside a workspace', () => {
+      setActiveWorkspace('ws-1');
+      // Seed: personal has ['pinned','default'], workspace overlay has ['ws-only']
+      useGlobalStore.setState({
+        isStatusInit: true,
+        status: {
+          ...initialState.status,
+          expandSessionGroupKeys: ['pinned', 'default'],
+          workspace: { expandSessionGroupKeys: ['ws-only'] },
+        },
+      });
+      const { result } = renderHook(() => useGlobalStore());
+
+      act(() => {
+        result.current.toggleExpandSessionGroup('new-group', true);
+      });
+
+      // New key was appended to the workspace overlay, not to the personal list.
+      expect(result.current.status.workspace?.expandSessionGroupKeys).toEqual([
+        'ws-only',
+        'new-group',
+      ]);
+      expect(result.current.status.expandSessionGroupKeys).toEqual(['pinned', 'default']);
     });
   });
 });

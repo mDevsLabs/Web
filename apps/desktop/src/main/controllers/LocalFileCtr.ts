@@ -1,46 +1,310 @@
-import {
-  EditLocalFileParams,
-  EditLocalFileResult,
-  GlobFilesParams,
-  GlobFilesResult,
-  GrepContentParams,
-  GrepContentResult,
-  ListLocalFileParams,
-  LocalMoveFilesResultItem,
-  LocalReadFileParams,
-  LocalReadFileResult,
-  LocalReadFilesParams,
-  LocalSearchFilesParams,
-  MoveLocalFilesParams,
-  OpenLocalFileParams,
-  OpenLocalFolderParams,
-  RenameLocalFileResult,
-  ShowSaveDialogParams,
-  ShowSaveDialogResult,
-  WriteLocalFileParams,
-} from '@lobechat/electron-client-ipc';
-import { SYSTEM_FILES_TO_IGNORE, loadFile } from '@lobechat/file-loaders';
-import { createPatch } from 'diff';
-import { dialog, shell } from 'electron';
-import fg from 'fast-glob';
-import { Stats, constants } from 'node:fs';
-import { access, mkdir, readFile, readdir, rename, stat, writeFile } from 'node:fs/promises';
-import * as path from 'node:path';
+import { constants } from 'node:fs';
+import { access, readFile, realpath, stat } from 'node:fs/promises';
+import path from 'node:path';
 
+import type { SkillDirectoryDeps } from '@lobechat/device-control';
+import {
+  type AuditSafePathsParams,
+  type AuditSafePathsResult,
+  type EditLocalFileParams,
+  type EditLocalFileResult,
+  type GlobFilesParams,
+  type GlobFilesResult,
+  type GrepContentParams,
+  type GrepContentResult,
+  type ListLocalFileParams,
+  type LocalFilePreviewResult,
+  type LocalFilePreviewUrlParams,
+  type LocalFilePreviewUrlResult,
+  type LocalMoveFilesResultItem,
+  type LocalReadFileParams,
+  type LocalReadFileResult,
+  type LocalReadFilesParams,
+  type LocalSearchFilesParams,
+  type MoveLocalFilesParams,
+  type OpenLocalFileParams,
+  type OpenLocalFolderParams,
+  type PickFileParams,
+  type PickFileResult,
+  type PrepareSkillDirectoryParams,
+  type PrepareSkillDirectoryResult,
+  type ProjectFileIndexEntry,
+  type ProjectFileIndexParams,
+  type ProjectFileIndexResult,
+  type ProjectFileSearchParams,
+  type ProjectFileSearchResult,
+  type RenameLocalFileResult,
+  type ResolveSkillResourcePathParams,
+  type ResolveSkillResourcePathResult,
+  type ShowOpenDialogParams,
+  type ShowOpenDialogResult,
+  type ShowSaveDialogParams,
+  type ShowSaveDialogResult,
+  type WriteLocalFileParams,
+} from '@lobechat/electron-client-ipc';
+import {
+  editLocalFile,
+  expandTilde,
+  listLocalFiles,
+  moveLocalFiles,
+  readLocalFile,
+  renameLocalFile,
+  resolveAgainstCwd,
+  writeLocalFile,
+} from '@lobechat/local-file-shell/file';
+import type { FileResult, SearchOptions } from '@lobechat/local-file-shell/types';
+import { resolveMimeType } from '@lobechat/utils/mimeType';
+import { dialog, shell } from 'electron';
+
+import ContentSearchService from '@/services/contentSearchSrv';
 import FileSearchService from '@/services/fileSearchSrv';
-import { FileResult, SearchOptions } from '@/types/fileSearch';
-import { makeSureDirExist } from '@/utils/file-system';
+import RemoteFileUploadService from '@/services/remoteFileUploadSrv';
 import { createLogger } from '@/utils/logger';
+import { netFetch } from '@/utils/net-fetch';
 
 import { ControllerModule, IpcMethod } from './index';
 
 // Create logger
 const logger = createLogger('controllers:LocalFileCtr');
 
+const SAFE_PATH_PREFIXES = ['/tmp', '/var/tmp'] as const;
+const PROJECT_FILE_GLOB_LIMIT = 5000;
+
+/**
+ * Image extensions `readFile` uploads to file storage instead of refusing as
+ * binary. The agent then sees the image (vision) via an `image_url` part,
+ * rather than hitting "Unsupported binary file".
+ *
+ * Limited to the formats vision providers accept (Anthropic/OpenAI:
+ * png/jpeg/gif/webp) — anything else would be silently dropped by the
+ * model-runtime builders, which is worse than the binary refusal. SVG is
+ * intentionally absent: it's text, and reading the source is more useful to
+ * the model than a rasterization we can't produce here.
+ */
+const LOCAL_IMAGE_EXT_TO_MIME: Record<string, string> = {
+  gif: 'image/gif',
+  jpeg: 'image/jpeg',
+  jpg: 'image/jpeg',
+  png: 'image/png',
+  webp: 'image/webp',
+};
+
+/** Refuse to load image bytes beyond this size — providers reject them anyway. */
+const MAX_IMAGE_READ_BYTES = 10 * 1024 * 1024;
+
+const TEXT_PREVIEW_MIME_TYPES = new Set([
+  'application/graphql',
+  'application/javascript',
+  'application/json',
+  'application/markdown',
+  'application/toml',
+  'application/xml',
+  'application/yaml',
+  'text/markdown',
+  'text/mdx',
+  'text/x-markdown',
+]);
+
+const normalizeAbsolutePath = (inputPath: string): string =>
+  path.normalize(path.isAbsolute(inputPath) ? inputPath : `/${inputPath}`);
+
+const resolvePathWithScope = (inputPath: string, scope: string): string =>
+  path.isAbsolute(inputPath) ? inputPath : path.join(scope, inputPath);
+
+const isWithinSafePathPrefixes = (targetPath: string, prefixes: readonly string[]): boolean =>
+  prefixes.some((prefix) => targetPath === prefix || targetPath.startsWith(`${prefix}${path.sep}`));
+
+const resolveNearestExistingRealPath = async (targetPath: string): Promise<string | undefined> => {
+  let currentPath = targetPath;
+
+  while (true) {
+    try {
+      await access(currentPath, constants.F_OK);
+      return normalizeAbsolutePath(await realpath(currentPath));
+    } catch {
+      const parentPath = path.dirname(currentPath);
+      if (parentPath === currentPath) return undefined;
+      currentPath = parentPath;
+    }
+  }
+};
+
+const toPosixRelativePath = (filePath: string) => filePath.split(path.sep).join('/');
+
+const normalizeContentType = (contentType: string): string =>
+  contentType.split(';')[0].trim().toLowerCase();
+
+const isTextPreviewMimeType = (mimeType: string): boolean =>
+  mimeType.startsWith('text/') || TEXT_PREVIEW_MIME_TYPES.has(mimeType);
+
+/** Binary documents the in-app portal can preview (or offer to download). */
+const DOCUMENT_PREVIEW_MIME_TYPES = new Set([
+  'application/msword',
+  'application/pdf',
+  'application/vnd.ms-excel',
+  'application/vnd.ms-powerpoint',
+  'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+]);
+
+/**
+ * Documents above this raw size fall back to the content-less `binary` / `pdf`
+ * variants: base64 inflates the payload ~4/3 and it must fit in a single
+ * IPC / Gateway RPC response.
+ */
+const MAX_DOCUMENT_PREVIEW_BYTES = 20 * 1024 * 1024;
+
+const serializePreviewFile = ({
+  buffer,
+  contentType,
+  oversized,
+}: {
+  buffer: Buffer;
+  contentType: string;
+  oversized?: boolean;
+}): NonNullable<LocalFilePreviewResult['preview']> => {
+  const normalizedContentType = normalizeContentType(contentType);
+
+  // The protocol manager short-circuited the read (oversized document):
+  // `buffer` is empty by construction, so go straight to the content-less
+  // fallback instead of serializing the empty buffer as a real document.
+  if (oversized) {
+    return normalizedContentType === 'application/pdf'
+      ? { contentType: normalizedContentType, type: 'pdf' }
+      : { contentType: normalizedContentType, type: 'binary' };
+  }
+
+  if (normalizedContentType.startsWith('image/')) {
+    return {
+      base64: buffer.toString('base64'),
+      contentType: normalizedContentType,
+      type: 'image',
+    };
+  }
+
+  if (isTextPreviewMimeType(normalizedContentType)) {
+    return {
+      content: buffer.toString('utf8'),
+      contentType: normalizedContentType,
+      type: 'text',
+    };
+  }
+
+  if (
+    DOCUMENT_PREVIEW_MIME_TYPES.has(normalizedContentType) &&
+    buffer.byteLength <= MAX_DOCUMENT_PREVIEW_BYTES
+  ) {
+    return {
+      base64: buffer.toString('base64'),
+      contentType: normalizedContentType,
+      type: 'document',
+    };
+  }
+
+  if (normalizedContentType === 'application/pdf') {
+    return { contentType: normalizedContentType, type: 'pdf' };
+  }
+
+  if (normalizedContentType.startsWith('video/')) {
+    return { contentType: normalizedContentType, type: 'video' };
+  }
+
+  return { contentType: normalizedContentType, type: 'binary' };
+};
+
+const createProjectFileEntry = (
+  root: string,
+  absolutePath: string,
+  isDirectory: boolean,
+  gitIgnored?: boolean,
+): ProjectFileIndexEntry => {
+  const relativePath = toPosixRelativePath(path.relative(root, absolutePath));
+
+  return {
+    ...(gitIgnored ? { gitIgnored: true } : {}),
+    isDirectory,
+    name: path.basename(absolutePath),
+    path: absolutePath,
+    relativePath: isDirectory ? `${relativePath}/` : relativePath,
+  };
+};
+
+const collectProjectDirectories = (files: string[], root: string): ProjectFileIndexEntry[] => {
+  const directories = new Set<string>();
+
+  for (const filePath of files) {
+    let current = path.dirname(filePath);
+    while (current && current !== root && current.startsWith(`${root}${path.sep}`)) {
+      if (directories.has(current)) break;
+      directories.add(current);
+      current = path.dirname(current);
+    }
+  }
+
+  return [...directories].map((directory) => createProjectFileEntry(root, directory, true));
+};
+
+const createDetectedProjectFileEntry = async (
+  root: string,
+  absolutePath: string,
+): Promise<ProjectFileIndexEntry> => {
+  try {
+    const stats = await stat(absolutePath);
+    return createProjectFileEntry(root, absolutePath, stats.isDirectory());
+  } catch {
+    return createProjectFileEntry(root, absolutePath, false);
+  }
+};
+
+const resolveSafePathRealPrefixes = async (): Promise<string[]> => {
+  const prefixes = new Set<string>(SAFE_PATH_PREFIXES);
+
+  for (const safePrefix of SAFE_PATH_PREFIXES) {
+    try {
+      prefixes.add(normalizeAbsolutePath(await realpath(safePrefix)));
+    } catch {
+      // Keep the lexical prefix if the platform does not expose this directory.
+    }
+  }
+
+  return [...prefixes];
+};
+
+const areAllPathsSafeOnDisk = async (
+  paths: string[],
+  resolveAgainstScope: string,
+): Promise<boolean> => {
+  if (paths.length === 0) return false;
+
+  const safeRealPrefixes = await resolveSafePathRealPrefixes();
+
+  for (const currentPath of paths) {
+    const normalizedPath = normalizeAbsolutePath(
+      resolvePathWithScope(currentPath, resolveAgainstScope),
+    );
+
+    if (!isWithinSafePathPrefixes(normalizedPath, SAFE_PATH_PREFIXES)) {
+      return false;
+    }
+
+    const realPath = await resolveNearestExistingRealPath(normalizedPath);
+    if (!realPath || !isWithinSafePathPrefixes(realPath, safeRealPrefixes)) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
 export default class LocalFileCtr extends ControllerModule {
   static override readonly groupName = 'localSystem';
   private get searchService() {
     return this.app.getService(FileSearchService);
+  }
+
+  private get contentSearchService() {
+    return this.app.getService(ContentSearchService);
   }
 
   // ==================== File Operation ====================
@@ -50,14 +314,15 @@ export default class LocalFileCtr extends ControllerModule {
     error?: string;
     success: boolean;
   }> {
-    logger.debug('Attempting to open file:', { filePath });
+    const resolvedPath = expandTilde(filePath) ?? filePath;
+    logger.debug('Attempting to open file:', { filePath: resolvedPath });
 
     try {
-      await shell.openPath(filePath);
-      logger.debug('File opened successfully:', { filePath });
+      await shell.openPath(resolvedPath);
+      logger.debug('File opened successfully:', { filePath: resolvedPath });
       return { success: true };
     } catch (error) {
-      logger.error(`Failed to open file ${filePath}:`, error);
+      logger.error(`Failed to open file ${resolvedPath}:`, error);
       return { error: (error as Error).message, success: false };
     }
   }
@@ -67,8 +332,13 @@ export default class LocalFileCtr extends ControllerModule {
     error?: string;
     success: boolean;
   }> {
-    const folderPath = isDirectory ? targetPath : path.dirname(targetPath);
-    logger.debug('Attempting to open folder:', { folderPath, isDirectory, targetPath });
+    const resolvedTarget = expandTilde(targetPath) ?? targetPath;
+    const folderPath = isDirectory ? resolvedTarget : path.dirname(resolvedTarget);
+    logger.debug('Attempting to open folder:', {
+      folderPath,
+      isDirectory,
+      targetPath: resolvedTarget,
+    });
 
     try {
       await shell.openPath(folderPath);
@@ -78,6 +348,57 @@ export default class LocalFileCtr extends ControllerModule {
       logger.error(`Failed to open folder ${folderPath}:`, error);
       return { error: (error as Error).message, success: false };
     }
+  }
+
+  @IpcMethod()
+  async handleShowOpenDialog({
+    filters,
+    multiple,
+    title,
+  }: ShowOpenDialogParams): Promise<ShowOpenDialogResult> {
+    logger.debug('Showing open dialog:', { filters, multiple, title });
+
+    const result = await dialog.showOpenDialog({
+      filters,
+      properties: multiple ? ['openFile', 'multiSelections'] : ['openFile'],
+      title,
+    });
+
+    logger.debug('Open dialog result:', { canceled: result.canceled, filePaths: result.filePaths });
+
+    return {
+      canceled: result.canceled,
+      filePaths: result.filePaths,
+    };
+  }
+
+  @IpcMethod()
+  async handlePickFile({ filters, title }: PickFileParams): Promise<PickFileResult> {
+    logger.debug('Picking file:', { filters, title });
+
+    const result = await dialog.showOpenDialog({
+      filters,
+      properties: ['openFile'],
+      title,
+    });
+
+    if (result.canceled || result.filePaths.length === 0) {
+      return { canceled: true };
+    }
+
+    const filePath = result.filePaths[0];
+    const data = await readFile(filePath);
+    const name = path.basename(filePath);
+    const mimeType = await resolveMimeType(name, data);
+
+    return {
+      canceled: false,
+      file: {
+        data: new Uint8Array(data),
+        mimeType,
+        name,
+      },
+    };
   }
 
   @IpcMethod()
@@ -103,15 +424,14 @@ export default class LocalFileCtr extends ControllerModule {
   }
 
   @IpcMethod()
-  async readFiles({ paths }: LocalReadFilesParams): Promise<LocalReadFileResult[]> {
+  async readFiles({ paths, cwd }: LocalReadFilesParams): Promise<LocalReadFileResult[]> {
     logger.debug('Starting batch file reading:', { count: paths.length });
 
     const results: LocalReadFileResult[] = [];
 
     for (const filePath of paths) {
-      // Initialize result object
       logger.debug('Reading single file:', { filePath });
-      const result = await this.readFile({ path: filePath });
+      const result = await readLocalFile({ cwd, path: filePath });
       results.push(result);
     }
 
@@ -120,264 +440,100 @@ export default class LocalFileCtr extends ControllerModule {
   }
 
   @IpcMethod()
-  async readFile({
-    path: filePath,
-    loc,
-    fullContent,
-  }: LocalReadFileParams): Promise<LocalReadFileResult> {
-    const effectiveLoc = fullContent ? undefined : (loc ?? [0, 200]);
-    logger.debug('Starting to read file:', { filePath, fullContent, loc: effectiveLoc });
+  async readFile(params: LocalReadFileParams): Promise<LocalReadFileResult> {
+    logger.debug('Starting to read file:', {
+      filePath: params.path,
+      fullContent: params.fullContent,
+      loc: params.loc,
+    });
 
-    try {
-      const fileDocument = await loadFile(filePath);
+    // Image files: `local-file-shell` refuses binary, and the agent should be
+    // able to actually *see* the image (vision) rather than hit "Unsupported
+    // binary file type". Delegate the upload to the embedded CLI
+    // (`lh file upload`) and return a durable { fileId, url } — bytes never
+    // cross IPC and never reach the DB; the MessageContent processor turns
+    // the uploaded URL into an `image_url` part for the LLM.
+    const ext = path.extname(params.path).toLowerCase().replace('.', '');
+    const imageMimeType = LOCAL_IMAGE_EXT_TO_MIME[ext];
+    if (imageMimeType) {
+      const filePath = resolveAgainstCwd(params.path, params.cwd) ?? params.path;
+      const filename = path.basename(filePath);
 
-      const lines = fileDocument.content.split('\n');
-      const totalLineCount = lines.length;
-      const totalCharCount = fileDocument.content.length;
-
-      let content: string;
-      let charCount: number;
-      let lineCount: number;
-      let actualLoc: [number, number];
-
-      if (effectiveLoc === undefined) {
-        // Return full content
-        content = fileDocument.content;
-        charCount = totalCharCount;
-        lineCount = totalLineCount;
-        actualLoc = [0, totalLineCount];
-      } else {
-        // Return specified range
-        const [startLine, endLine] = effectiveLoc;
-        const selectedLines = lines.slice(startLine, endLine);
-        content = selectedLines.join('\n');
-        charCount = content.length;
-        lineCount = selectedLines.length;
-        actualLoc = effectiveLoc;
-      }
-
-      logger.debug('File read successfully:', {
-        filePath,
-        fullContent,
-        selectedLineCount: lineCount,
-        totalCharCount,
-        totalLineCount,
-      });
-
-      const result: LocalReadFileResult = {
-        // Char count for the selected range
-        charCount,
-        // Content for the selected range
-        content,
-        createdTime: fileDocument.createdTime,
-        fileType: fileDocument.fileType,
-        filename: fileDocument.filename,
-        lineCount,
-        loc: actualLoc,
-        // Line count for the selected range
-        modifiedTime: fileDocument.modifiedTime,
-
-        // Total char count of the file
-        totalCharCount,
-        // Total line count of the file
-        totalLineCount,
-      };
-
-      try {
-        const stats = await stat(filePath);
-        if (stats.isDirectory()) {
-          logger.warn('Attempted to read directory content:', { filePath });
-          result.content = 'This is a directory and cannot be read as plain text.';
-          result.charCount = 0;
-          result.lineCount = 0;
-          // Keep total counts for directory as 0 as well, or decide if they should reflect metadata size
-          result.totalCharCount = 0;
-          result.totalLineCount = 0;
-        }
-      } catch (statError) {
-        logger.error(`Failed to get file status ${filePath}:`, statError);
-      }
-
-      return result;
-    } catch (error) {
-      logger.error(`Failed to read file ${filePath}:`, error);
-      const errorMessage = (error as Error).message;
-      return {
+      const buildImageResult = (
+        content: string,
+        extra: Partial<LocalReadFileResult> = {},
+      ): LocalReadFileResult => ({
         charCount: 0,
-        content: `Error accessing or processing file: ${errorMessage}`,
+        content,
         createdTime: new Date(),
-        fileType: path.extname(filePath).toLowerCase().replace('.', '') || 'unknown',
-        filename: path.basename(filePath),
+        fileType: imageMimeType,
+        filename,
+        isImage: true,
         lineCount: 0,
         loc: [0, 0],
         modifiedTime: new Date(),
-        totalCharCount: 0, // Add total counts to error result
+        totalCharCount: 0,
         totalLineCount: 0,
-      };
-    }
-  }
-
-  @IpcMethod()
-  async listLocalFiles({ path: dirPath }: ListLocalFileParams): Promise<FileResult[]> {
-    logger.debug('Listing directory contents:', { dirPath });
-
-    const results: FileResult[] = [];
-    try {
-      const entries = await readdir(dirPath);
-      logger.debug('Directory entries retrieved successfully:', {
-        dirPath,
-        entriesCount: entries.length,
+        ...extra,
       });
 
-      for (const entry of entries) {
-        // Skip specific system files based on the ignore list
-        if (SYSTEM_FILES_TO_IGNORE.includes(entry)) {
-          logger.debug('Ignoring system file:', { fileName: entry });
-          continue;
-        }
-
-        const fullPath = path.join(dirPath, entry);
-        try {
-          const stats = await stat(fullPath);
-          const isDirectory = stats.isDirectory();
-          results.push({
-            createdTime: stats.birthtime,
-            isDirectory,
-            lastAccessTime: stats.atime,
-            modifiedTime: stats.mtime,
-            name: entry,
-            path: fullPath,
-            size: stats.size,
-            type: isDirectory ? 'directory' : path.extname(entry).toLowerCase().replace('.', ''),
-          });
-        } catch (statError) {
-          // Silently ignore files we can't stat (e.g. permissions)
-          logger.error(`Failed to get file status ${fullPath}:`, statError);
-        }
+      let fileStat;
+      try {
+        fileStat = await stat(filePath);
+      } catch (error) {
+        return buildImageResult(`Error accessing or processing file: ${(error as Error).message}`);
       }
 
-      // Sort entries: folders first, then by name
-      results.sort((a, b) => {
-        if (a.isDirectory !== b.isDirectory) {
-          return a.isDirectory ? -1 : 1; // Directories first
-        }
-        // Add null/undefined checks for robustness if needed, though names should exist
-        return (a.name || '').localeCompare(b.name || ''); // Then sort by name
-      });
+      if (!fileStat.isFile()) {
+        return buildImageResult(`Error: Not a regular file: ${filePath}`);
+      }
 
-      logger.debug('Directory listing successful', { dirPath, resultCount: results.length });
-      return results;
-    } catch (error) {
-      logger.error(`Failed to list directory ${dirPath}:`, error);
-      // Rethrow or return an empty array/error object depending on desired behavior
-      // For now, returning empty array on error listing directory itself
-      return [];
-    }
-  }
-
-  @IpcMethod()
-  async handleMoveFiles({ items }: MoveLocalFilesParams): Promise<LocalMoveFilesResultItem[]> {
-    logger.debug('Starting batch file move:', { itemsCount: items?.length });
-
-    const results: LocalMoveFilesResultItem[] = [];
-
-    if (!items || items.length === 0) {
-      logger.warn('moveLocalFiles called with empty parameters');
-      return [];
-    }
-
-    // Process each move request
-    for (const item of items) {
-      const { oldPath: sourcePath, newPath } = item;
-      const logPrefix = `[Moving file ${sourcePath} -> ${newPath}]`;
-      logger.debug(`${logPrefix} Starting process`);
-
-      const resultItem: LocalMoveFilesResultItem = {
-        newPath: undefined,
-        sourcePath,
-        success: false,
-      };
-
-      // Basic validation
-      if (!sourcePath || !newPath) {
-        logger.error(`${logPrefix} Parameter validation failed: source or target path is empty`);
-        resultItem.error = 'Both oldPath and newPath are required for each item.';
-        results.push(resultItem);
-        continue;
+      if (fileStat.size > MAX_IMAGE_READ_BYTES) {
+        return buildImageResult(
+          `Error: Image file is too large to preview (${fileStat.size} bytes, limit ${MAX_IMAGE_READ_BYTES}).`,
+        );
       }
 
       try {
-        // Check if source exists
-        try {
-          await access(sourcePath, constants.F_OK);
-          logger.debug(`${logPrefix} Source file exists`);
-        } catch (accessError: any) {
-          if (accessError.code === 'ENOENT') {
-            logger.error(`${logPrefix} Source file does not exist`);
-            throw new Error(`Source path not found: ${sourcePath}`);
-          } else {
-            logger.error(`${logPrefix} Permission error accessing source file:`, accessError);
-            throw new Error(
-              `Permission denied accessing source path: ${sourcePath}. ${accessError.message}`,
-            );
-          }
+        const record = await this.app.getService(RemoteFileUploadService).uploadLocalFile(filePath);
+
+        if (record?.url) {
+          return buildImageResult(`[Image: ${filename}]`, {
+            createdTime: fileStat.birthtime,
+            imageFileId: record.id,
+            imageUrl: record.url,
+            modifiedTime: fileStat.mtime,
+          });
         }
 
-        // Check if target path is the same as source path
-        if (path.normalize(sourcePath) === path.normalize(newPath)) {
-          logger.info(`${logPrefix} Source and target paths are identical, skipping move`);
-          resultItem.success = true;
-          resultItem.newPath = newPath; // Report target path even if not moved
-          results.push(resultItem);
-          continue;
-        }
-
-        // LBYL: Ensure target directory exists
-        const targetDir = path.dirname(newPath);
-        makeSureDirExist(targetDir);
-        logger.debug(`${logPrefix} Ensured target directory exists: ${targetDir}`);
-
-        // Execute move (rename)
-        await rename(sourcePath, newPath);
-        resultItem.success = true;
-        resultItem.newPath = newPath;
-        logger.info(`${logPrefix} Move successful`);
+        logger.warn('Image upload returned no record:', { filePath });
       } catch (error) {
-        logger.error(`${logPrefix} Move failed:`, error);
-        // Use similar error handling logic as handleMoveFile
-        let errorMessage = (error as Error).message;
-        if ((error as any).code === 'ENOENT')
-          errorMessage = `Source path not found: ${sourcePath}.`;
-        else if ((error as any).code === 'EPERM' || (error as any).code === 'EACCES')
-          errorMessage = `Permission denied to move the item at ${sourcePath}. Check file/folder permissions.`;
-        else if ((error as any).code === 'EBUSY')
-          errorMessage = `The file or directory at ${sourcePath} or ${newPath} is busy or locked by another process.`;
-        else if ((error as any).code === 'EXDEV')
-          errorMessage = `Cannot move across different file systems or drives. Source: ${sourcePath}, Target: ${newPath}.`;
-        else if ((error as any).code === 'EISDIR')
-          errorMessage = `Cannot overwrite a directory with a file, or vice versa. Source: ${sourcePath}, Target: ${newPath}.`;
-        else if ((error as any).code === 'ENOTEMPTY')
-          errorMessage = `The target directory ${newPath} is not empty (relevant on some systems if target exists and is a directory).`;
-        else if ((error as any).code === 'EEXIST')
-          errorMessage = `An item already exists at the target path: ${newPath}.`;
-        // Keep more specific errors from access or directory checks
-        else if (
-          !errorMessage.startsWith('Source path not found') &&
-          !errorMessage.startsWith('Permission denied accessing source path') &&
-          !errorMessage.includes('Target directory')
-        ) {
-          // Keep the original error message if none of the specific codes match
-        }
-        resultItem.error = errorMessage;
+        logger.warn('Image upload failed:', { error, filePath });
       }
-      results.push(resultItem);
+
+      // Degrade: the placeholder tells the model an image exists that it
+      // cannot inspect, instead of failing the read outright.
+      return buildImageResult(
+        `[Image: ${filename}] (upload unavailable — the model cannot view this image)`,
+        { createdTime: fileStat.birthtime, modifiedTime: fileStat.mtime },
+      );
     }
 
-    logger.debug('Batch file move completed', {
-      successCount: results.filter((r) => r.success).length,
-      totalCount: results.length,
-    });
-    return results;
+    return readLocalFile(params);
+  }
+
+  @IpcMethod()
+  async listLocalFiles(
+    params: ListLocalFileParams,
+  ): Promise<{ files: FileResult[]; totalCount: number }> {
+    logger.debug('Listing directory contents:', params);
+    return listLocalFiles(params) as any;
+  }
+
+  @IpcMethod()
+  async handleMoveFiles({ items, cwd }: MoveLocalFilesParams): Promise<LocalMoveFilesResultItem[]> {
+    logger.debug('Starting batch file move:', { itemsCount: items?.length });
+    return moveLocalFiles({ cwd, items });
   }
 
   @IpcMethod()
@@ -388,133 +544,327 @@ export default class LocalFileCtr extends ControllerModule {
     newName: string;
     path: string;
   }): Promise<RenameLocalFileResult> {
-    const logPrefix = `[Renaming ${currentPath} -> ${newName}]`;
-    logger.debug(`${logPrefix} Starting rename request`);
+    logger.debug(`Renaming ${currentPath} -> ${newName}`);
+    return renameLocalFile({ newName, path: currentPath });
+  }
 
-    // Basic validation (can also be done in frontend action)
-    if (!currentPath || !newName) {
-      logger.error(`${logPrefix} Parameter validation failed: path or new name is empty`);
-      return { error: 'Both path and newName are required.', newPath: '', success: false };
-    }
-    // Prevent path traversal or using invalid characters/names
-    if (
-      newName.includes('/') ||
-      newName.includes('\\') ||
-      newName === '.' ||
-      newName === '..' ||
-      /["*/:<>?\\|]/.test(newName) // Check for typical invalid filename characters
-    ) {
-      logger.error(`${logPrefix} New filename contains illegal characters: ${newName}`);
-      return {
-        error:
-          'Invalid new name. It cannot contain path separators (/, \\), be "." or "..", or include characters like < > : " / \\ | ? *.',
-        newPath: '',
-        success: false,
-      };
-    }
+  @IpcMethod()
+  async handleWriteFile({ path: filePath, content, cwd }: WriteLocalFileParams) {
+    logger.debug(`Writing file ${filePath}`, { contentLength: content?.length });
+    return writeLocalFile({ content, cwd, path: filePath });
+  }
 
-    let newPath: string;
+  @IpcMethod()
+  async auditSafePaths({
+    paths,
+    resolveAgainstScope,
+  }: AuditSafePathsParams): Promise<AuditSafePathsResult> {
+    logger.debug('Auditing safe paths', { count: paths.length, resolveAgainstScope });
+
+    return {
+      allSafe: await areAllPathsSafeOnDisk(paths, resolveAgainstScope),
+    };
+  }
+
+  @IpcMethod()
+  async getLocalFilePreviewUrl({
+    accept,
+    allowExternalFile,
+    path: filePath,
+    resourceScope,
+    workingDirectory,
+  }: LocalFilePreviewUrlParams): Promise<LocalFilePreviewUrlResult> {
     try {
-      const dir = path.dirname(currentPath);
-      newPath = path.join(dir, newName);
-      logger.debug(`${logPrefix} Calculated new path: ${newPath}`);
+      const url = await this.app.localFileProtocolManager.createPreviewUrl({
+        accept,
+        allowExternalFile,
+        filePath,
+        ...(resourceScope && { resourceScope }),
+        workspaceRoot: workingDirectory,
+      });
 
-      // Check if paths are identical after calculation
-      if (path.normalize(currentPath) === path.normalize(newPath)) {
-        logger.info(
-          `${logPrefix} Source path and calculated target path are identical, skipping rename`,
-        );
-        // Consider success as no change is needed, but maybe inform the user?
-        // Return success for now.
-        return { newPath, success: true };
+      if (!url) {
+        return { error: 'File is outside the approved workspace', success: false };
       }
-    } catch (error) {
-      logger.error(`${logPrefix} Failed to calculate new path:`, error);
-      return {
-        error: `Internal error calculating the new path: ${(error as Error).message}`,
-        newPath: '',
-        success: false,
-      };
-    }
 
-    // Perform the rename operation using rename directly
-    try {
-      await rename(currentPath, newPath);
-      logger.info(`${logPrefix} Rename successful: ${currentPath} -> ${newPath}`);
-      // Optionally return the newPath if frontend needs it
-      // return { success: true, newPath: newPath };
-      return { newPath, success: true };
+      return { success: true, url };
     } catch (error) {
-      logger.error(`${logPrefix} Rename failed:`, error);
-      let errorMessage = (error as Error).message;
-      // Provide more specific error messages based on common codes
-      if ((error as any).code === 'ENOENT') {
-        errorMessage = `File or directory not found at the original path: ${currentPath}.`;
-      } else if ((error as any).code === 'EPERM' || (error as any).code === 'EACCES') {
-        errorMessage = `Permission denied to rename the item at ${currentPath}. Check file/folder permissions.`;
-      } else if ((error as any).code === 'EBUSY') {
-        errorMessage = `The file or directory at ${currentPath} or ${newPath} is busy or locked by another process.`;
-      } else if ((error as any).code === 'EISDIR' || (error as any).code === 'ENOTDIR') {
-        errorMessage = `Cannot rename - conflict between file and directory. Source: ${currentPath}, Target: ${newPath}.`;
-      } else if ((error as any).code === 'EEXIST') {
-        // Target already exists
-        errorMessage = `Cannot rename: an item with the name '${newName}' already exists at this location.`;
-      }
-      // Add more specific checks as needed
-      return { error: errorMessage, newPath: '', success: false };
+      logger.error('Failed to create local file preview URL:', error);
+      return { error: (error as Error).message, success: false };
     }
   }
 
   @IpcMethod()
-  async handleWriteFile({ path: filePath, content }: WriteLocalFileParams) {
-    const logPrefix = `[Writing file ${filePath}]`;
-    logger.debug(`${logPrefix} Starting to write file`, { contentLength: content?.length });
-
-    // Validate parameters
-    if (!filePath) {
-      logger.error(`${logPrefix} Parameter validation failed: path is empty`);
-      return { error: 'Path cannot be empty', success: false };
-    }
-
-    if (content === undefined) {
-      logger.error(`${logPrefix} Parameter validation failed: content is empty`);
-      return { error: 'Content cannot be empty', success: false };
-    }
-
+  async getLocalFilePreview({
+    accept,
+    allowExternalFile,
+    path: filePath,
+    workingDirectory,
+  }: LocalFilePreviewUrlParams): Promise<LocalFilePreviewResult> {
     try {
-      // Ensure target directory exists (use async to avoid blocking main thread)
-      const dirname = path.dirname(filePath);
-      logger.debug(`${logPrefix} Creating directory: ${dirname}`);
-      await mkdir(dirname, { recursive: true });
-
-      // Write file content
-      logger.debug(`${logPrefix} Starting to write content to file`);
-      await writeFile(filePath, content, 'utf8');
-      logger.info(`${logPrefix} File written successfully`, {
-        path: filePath,
-        size: content.length,
+      const preview = await this.app.localFileProtocolManager.readPreviewFile({
+        accept,
+        allowExternalFile,
+        filePath,
+        workspaceRoot: workingDirectory,
       });
 
-      return { success: true };
-    } catch (error) {
-      logger.error(`${logPrefix} Failed to write file:`, error);
+      if (!preview) {
+        return { error: 'File is outside the approved workspace', success: false };
+      }
+
       return {
-        error: `Failed to write file: ${(error as Error).message}`,
-        success: false,
+        preview: serializePreviewFile(preview),
+        success: true,
       };
+    } catch (error) {
+      logger.error('Failed to read local file preview:', error);
+      return { error: (error as Error).message, success: false };
     }
   }
 
+  /**
+   * Host deps for the shared skill-archive cache: this keeps the renderer-IPC
+   * path (here) and the gateway RPC path (`GatewayConnectionCtr` →
+   * `@lobechat/device-control`) on ONE cache directory and one proxy-aware
+   * fetch, so a skill prepared by either entry point is a cache hit for the
+   * other.
+   */
+  getSkillDirectoryDeps(): SkillDirectoryDeps {
+    return {
+      fetchSkillArchive: netFetch,
+      skillCacheRoot: path.join(this.app.appStoragePath, 'file-storage', 'skills'),
+    };
+  }
+
+  @IpcMethod()
+  async handlePrepareSkillDirectory(
+    params: PrepareSkillDirectoryParams,
+  ): Promise<PrepareSkillDirectoryResult> {
+    const { prepareSkillDirectory } = await import('@lobechat/device-control/skill-directory');
+    return prepareSkillDirectory(params, this.getSkillDirectoryDeps());
+  }
+
+  @IpcMethod()
+  async handleResolveSkillResourcePath({
+    path: resourcePath,
+    url,
+    zipHash,
+  }: ResolveSkillResourcePathParams): Promise<ResolveSkillResourcePathResult> {
+    const prepared = await this.handlePrepareSkillDirectory({ url, zipHash });
+
+    if (!prepared.success) {
+      return { error: prepared.error, success: false };
+    }
+
+    const normalizedRoot = path.resolve(prepared.extractedDir);
+    const fullPath = path.resolve(normalizedRoot, resourcePath);
+
+    if (fullPath !== normalizedRoot && !fullPath.startsWith(`${normalizedRoot}${path.sep}`)) {
+      return {
+        error: `Unsafe skill resource path: ${resourcePath}`,
+        success: false,
+      };
+    }
+
+    return {
+      fullPath,
+      success: true,
+    };
+  }
+
   // ==================== Search & Find ====================
+
+  @IpcMethod()
+  async getProjectFileIndex(params: ProjectFileIndexParams = {}): Promise<ProjectFileIndexResult> {
+    const { execa } = await import('execa');
+    const requestedScope = params.scope || process.cwd();
+    const startedAt = Date.now();
+
+    try {
+      const rootResult = await execa(
+        'git',
+        ['-C', requestedScope, 'rev-parse', '--show-toplevel'],
+        {
+          reject: false,
+          timeout: 5000,
+        },
+      );
+      const root = rootResult.exitCode === 0 ? rootResult.stdout.trim() : requestedScope;
+
+      if (rootResult.exitCode === 0) {
+        const [trackedResult, untrackedResult, ignoredResult] = await Promise.all([
+          execa(
+            'git',
+            ['-C', root, '-c', 'core.quotepath=false', 'ls-files', '--recurse-submodules'],
+            {
+              reject: false,
+              timeout: 10_000,
+            },
+          ),
+          execa(
+            'git',
+            [
+              '-C',
+              root,
+              '-c',
+              'core.quotepath=false',
+              'ls-files',
+              '--others',
+              '--exclude-standard',
+            ],
+            { reject: false, timeout: 10_000 },
+          ),
+          execa(
+            'git',
+            [
+              '-C',
+              root,
+              '-c',
+              'core.quotepath=false',
+              'ls-files',
+              '--others',
+              '--ignored',
+              '--exclude-standard',
+              '--directory',
+            ],
+            { reject: false, timeout: 10_000 },
+          ),
+        ]);
+
+        if (trackedResult.exitCode !== 0) {
+          throw new Error(trackedResult.stderr || 'git ls-files failed');
+        }
+
+        const files = [
+          ...trackedResult.stdout.split('\n'),
+          ...(untrackedResult.exitCode === 0 ? untrackedResult.stdout.split('\n') : []),
+        ]
+          .map((item) => item.trim())
+          .filter(Boolean)
+          .map((relativePath) => path.resolve(root, relativePath));
+
+        const ignoredEntries =
+          ignoredResult.exitCode === 0
+            ? ignoredResult.stdout
+                .split('\n')
+                .map((item) => item.trim())
+                .filter(Boolean)
+                .map((relativePath) => {
+                  const isDirectory = relativePath.endsWith('/');
+                  const normalizedPath = isDirectory ? relativePath.slice(0, -1) : relativePath;
+                  return createProjectFileEntry(
+                    root,
+                    path.resolve(root, normalizedPath),
+                    isDirectory,
+                    true,
+                  );
+                })
+            : [];
+
+        const seen = new Set<string>();
+        const fileEntries = files
+          .filter((filePath) => {
+            if (seen.has(filePath)) return false;
+            seen.add(filePath);
+            return true;
+          })
+          .map((filePath) => createProjectFileEntry(root, filePath, false));
+
+        const uniqueIgnoredEntries = ignoredEntries.filter((entry) => {
+          if (seen.has(entry.path)) return false;
+          seen.add(entry.path);
+          return true;
+        });
+        const indexedPaths = [...fileEntries, ...uniqueIgnoredEntries].map((entry) => entry.path);
+        const entries = [
+          ...collectProjectDirectories(indexedPaths, root),
+          ...fileEntries,
+          ...uniqueIgnoredEntries,
+        ];
+        logger.debug('Project file index built from git', {
+          duration: Date.now() - startedAt,
+          entries: entries.length,
+          files: fileEntries.length,
+          ignored: uniqueIgnoredEntries.length,
+          requestedScope,
+          root,
+        });
+        await this.approveProjectRootForPreview(root);
+
+        return {
+          entries,
+          indexedAt: new Date().toISOString(),
+          root,
+          source: 'git',
+        };
+      }
+    } catch (error) {
+      logger.debug('Git project file index failed, falling back to glob', {
+        error,
+        requestedScope,
+      });
+    }
+
+    const fallback = await this.searchService.glob({
+      limit: PROJECT_FILE_GLOB_LIMIT,
+      pattern: '**/*',
+      scope: requestedScope,
+    });
+    const files = fallback.files.map((filePath) => path.resolve(filePath));
+    const entries = await Promise.all(
+      files.map((filePath) => createDetectedProjectFileEntry(requestedScope, filePath)),
+    );
+
+    logger.debug('Project file index built from glob', {
+      duration: Date.now() - startedAt,
+      entries: entries.length,
+      engine: fallback.engine,
+      requestedScope,
+    });
+    await this.approveProjectRootForPreview(requestedScope);
+
+    return {
+      entries,
+      indexedAt: new Date().toISOString(),
+      root: requestedScope,
+      source: 'glob',
+    };
+  }
+
+  @IpcMethod()
+  async searchProjectFiles(params: ProjectFileSearchParams): Promise<ProjectFileSearchResult> {
+    const startedAt = Date.now();
+    const { defaultSearchProjectFiles } =
+      await import('@lobechat/device-control/project-file-index');
+    const result = await defaultSearchProjectFiles(params);
+
+    logger.debug('Project file search completed', {
+      duration: Date.now() - startedAt,
+      entries: result.entries.length,
+      query: params.query,
+      requestedScope: params.scope,
+      root: result.root,
+      source: result.source,
+    });
+    await this.approveProjectRootForPreview(result.root);
+
+    return result;
+  }
 
   /**
    * Handle IPC event for local file search
    */
   @IpcMethod()
   async handleLocalFilesSearch(params: LocalSearchFilesParams): Promise<FileResult[]> {
+    const effectiveDirectory = expandTilde(params.directory ?? params.scope);
+
     logger.debug('Received file search request:', {
       directory: params.directory,
+      effectiveDirectory,
+      limit: params.limit,
       keywords: params.keywords,
+      scope: params.scope,
     });
 
     // Build search options from params, mapping directory to onlyIn
@@ -530,7 +880,7 @@ export default class LocalFileCtr extends ControllerModule {
       liveUpdate: params.liveUpdate,
       modifiedAfter: params.modifiedAfter ? new Date(params.modifiedAfter) : undefined,
       modifiedBefore: params.modifiedBefore ? new Date(params.modifiedBefore) : undefined,
-      onlyIn: params.directory, // Map directory param to onlyIn option
+      onlyIn: effectiveDirectory,
       sortBy: params.sortBy,
       sortDirection: params.sortDirection,
     };
@@ -540,6 +890,14 @@ export default class LocalFileCtr extends ControllerModule {
       logger.debug('File search completed', {
         count: results.length,
         directory: params.directory,
+        effectiveDirectory,
+        results: results.slice(0, 5).map((result) => ({
+          engine: result.engine,
+          isDirectory: result.isDirectory,
+          name: result.name,
+          path: result.path,
+        })),
+        scope: params.scope,
       });
       return results;
     } catch (error) {
@@ -550,254 +908,27 @@ export default class LocalFileCtr extends ControllerModule {
 
   @IpcMethod()
   async handleGrepContent(params: GrepContentParams): Promise<GrepContentResult> {
-    const {
-      pattern,
-      path: searchPath = process.cwd(),
-      output_mode = 'files_with_matches',
-    } = params;
-    const logPrefix = `[grepContent: ${pattern}]`;
-    logger.debug(`${logPrefix} Starting content search`, { output_mode, searchPath });
-
-    try {
-      const regex = new RegExp(
-        pattern,
-        `g${params['-i'] ? 'i' : ''}${params.multiline ? 's' : ''}`,
-      );
-
-      // Determine files to search
-      let filesToSearch: string[] = [];
-      const stats = await stat(searchPath);
-
-      if (stats.isFile()) {
-        filesToSearch = [searchPath];
-      } else {
-        // Use glob pattern if provided, otherwise search all files
-        // If glob doesn't contain directory separator and doesn't start with **,
-        // auto-prefix with **/ to make it recursive
-        let globPattern = params.glob || '**/*';
-        if (params.glob && !params.glob.includes('/') && !params.glob.startsWith('**')) {
-          globPattern = `**/${params.glob}`;
-        }
-
-        filesToSearch = await fg(globPattern, {
-          absolute: true,
-          cwd: searchPath,
-          dot: true,
-          ignore: ['**/node_modules/**', '**/.git/**'],
-        });
-
-        // Filter by type if provided
-        if (params.type) {
-          const ext = `.${params.type}`;
-          filesToSearch = filesToSearch.filter((file) => file.endsWith(ext));
-        }
-      }
-
-      logger.debug(`${logPrefix} Found ${filesToSearch.length} files to search`);
-
-      const matches: string[] = [];
-      let totalMatches = 0;
-
-      for (const filePath of filesToSearch) {
-        try {
-          const fileStats = await stat(filePath);
-          if (!fileStats.isFile()) continue;
-
-          const content = await readFile(filePath, 'utf8');
-          const lines = content.split('\n');
-
-          switch (output_mode) {
-            case 'files_with_matches': {
-              if (regex.test(content)) {
-                matches.push(filePath);
-                totalMatches++;
-                if (params.head_limit && matches.length >= params.head_limit) break;
-              }
-              break;
-            }
-            case 'content': {
-              const matchedLines: string[] = [];
-              for (let i = 0; i < lines.length; i++) {
-                if (regex.test(lines[i])) {
-                  const contextBefore = params['-B'] || params['-C'] || 0;
-                  const contextAfter = params['-A'] || params['-C'] || 0;
-
-                  const startLine = Math.max(0, i - contextBefore);
-                  const endLine = Math.min(lines.length - 1, i + contextAfter);
-
-                  for (let j = startLine; j <= endLine; j++) {
-                    const lineNum = params['-n'] ? `${j + 1}:` : '';
-                    matchedLines.push(`${filePath}:${lineNum}${lines[j]}`);
-                  }
-                  totalMatches++;
-                }
-              }
-              matches.push(...matchedLines);
-              if (params.head_limit && matches.length >= params.head_limit) break;
-              break;
-            }
-            case 'count': {
-              const fileMatches = (content.match(regex) || []).length;
-              if (fileMatches > 0) {
-                matches.push(`${filePath}:${fileMatches}`);
-                totalMatches += fileMatches;
-              }
-              break;
-            }
-          }
-        } catch (error) {
-          logger.debug(`${logPrefix} Skipping file ${filePath}:`, error);
-        }
-      }
-
-      logger.info(`${logPrefix} Search completed`, {
-        matchCount: matches.length,
-        totalMatches,
-      });
-
-      return {
-        matches: params.head_limit ? matches.slice(0, params.head_limit) : matches,
-        success: true,
-        total_matches: totalMatches,
-      };
-    } catch (error) {
-      logger.error(`${logPrefix} Grep failed:`, error);
-      return {
-        matches: [],
-        success: false,
-        total_matches: 0,
-      };
-    }
+    return this.contentSearchService.grep(params);
   }
 
   @IpcMethod()
-  async handleGlobFiles({
-    path: searchPath = process.cwd(),
-    pattern,
-  }: GlobFilesParams): Promise<GlobFilesResult> {
-    const logPrefix = `[globFiles: ${pattern}]`;
-    logger.debug(`${logPrefix} Starting glob search`, { searchPath });
-
-    try {
-      const files = await fg(pattern, {
-        absolute: true,
-        cwd: searchPath,
-        dot: true,
-        onlyFiles: false,
-        stats: true,
-      });
-
-      // Sort by modification time (most recent first)
-      const sortedFiles = (files as unknown as Array<{ path: string; stats: Stats }>)
-        .sort((a, b) => b.stats.mtime.getTime() - a.stats.mtime.getTime())
-        .map((f) => f.path);
-
-      logger.info(`${logPrefix} Glob completed`, { fileCount: sortedFiles.length });
-
-      return {
-        files: sortedFiles,
-        success: true,
-        total_files: sortedFiles.length,
-      };
-    } catch (error) {
-      logger.error(`${logPrefix} Glob failed:`, error);
-      return {
-        files: [],
-        success: false,
-        total_files: 0,
-      };
-    }
+  async handleGlobFiles(params: GlobFilesParams): Promise<GlobFilesResult> {
+    return this.searchService.glob(params);
   }
 
   // ==================== File Editing ====================
 
   @IpcMethod()
-  async handleEditFile({
-    file_path: filePath,
-    new_string,
-    old_string,
-    replace_all = false,
-  }: EditLocalFileParams): Promise<EditLocalFileResult> {
-    const logPrefix = `[editFile: ${filePath}]`;
-    logger.debug(`${logPrefix} Starting file edit`, { replace_all });
+  async handleEditFile(params: EditLocalFileParams): Promise<EditLocalFileResult> {
+    logger.debug(`Editing file ${params.file_path}`, { replace_all: params.replace_all });
+    return editLocalFile(params);
+  }
 
+  private async approveProjectRootForPreview(root: string) {
     try {
-      // Read file content
-      const content = await readFile(filePath, 'utf8');
-
-      // Check if old_string exists
-      if (!content.includes(old_string)) {
-        logger.error(`${logPrefix} Old string not found in file`);
-        return {
-          error: 'The specified old_string was not found in the file',
-          replacements: 0,
-          success: false,
-        };
-      }
-
-      // Perform replacement
-      let newContent: string;
-      let replacements: number;
-
-      if (replace_all) {
-        const regex = new RegExp(old_string.replaceAll(/[$()*+.?[\\\]^{|}]/g, '\\$&'), 'g');
-        const matches = content.match(regex);
-        replacements = matches ? matches.length : 0;
-        newContent = content.replaceAll(old_string, new_string);
-      } else {
-        // Replace only first occurrence
-        const index = content.indexOf(old_string);
-        if (index === -1) {
-          return {
-            error: 'Old string not found',
-            replacements: 0,
-            success: false,
-          };
-        }
-        newContent =
-          content.slice(0, index) + new_string + content.slice(index + old_string.length);
-        replacements = 1;
-      }
-
-      // Write back to file
-      await writeFile(filePath, newContent, 'utf8');
-
-      // Generate diff for UI display
-      const patch = createPatch(filePath, content, newContent, '', '');
-      const diffText = `diff --git a${filePath} b${filePath}\n${patch}`;
-
-      // Calculate lines added and deleted from patch
-      const patchLines = patch.split('\n');
-      let linesAdded = 0;
-      let linesDeleted = 0;
-
-      for (const line of patchLines) {
-        if (line.startsWith('+') && !line.startsWith('+++')) {
-          linesAdded++;
-        } else if (line.startsWith('-') && !line.startsWith('---')) {
-          linesDeleted++;
-        }
-      }
-
-      logger.info(`${logPrefix} File edited successfully`, {
-        linesAdded,
-        linesDeleted,
-        replacements,
-      });
-      return {
-        diffText,
-        linesAdded,
-        linesDeleted,
-        replacements,
-        success: true,
-      };
+      await this.app.localFileProtocolManager.approveIndexedProjectRoot(root);
     } catch (error) {
-      logger.error(`${logPrefix} Edit failed:`, error);
-      return {
-        error: (error as Error).message,
-        replacements: 0,
-        success: false,
-      };
+      logger.error(`Failed to approve project preview root ${root}:`, error);
     }
   }
 }

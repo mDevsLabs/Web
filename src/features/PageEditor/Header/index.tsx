@@ -5,12 +5,16 @@ import { ArrowLeftIcon, MoreHorizontal } from 'lucide-react';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { DESKTOP_HEADER_ICON_SIZE } from '@/const/layoutTokens';
+import ShareButton from '@/business/client/features/PageShare/ShareButton';
+import { DESKTOP_HEADER_ICON_SMALL_SIZE } from '@/const/layoutTokens';
 import { AutoSaveHint } from '@/features/EditorCanvas';
 import NavHeader from '@/features/NavHeader';
 import ToggleRightPanelButton from '@/features/RightPanel/ToggleRightPanelButton';
+import { usePermission } from '@/hooks/usePermission';
 
-import { usePageEditorStore } from '../store';
+import EditingIndicator from '../EditingIndicator';
+import { usePageAgentPanelControl } from '../RightPanel/OverrideContext';
+import { selectors, usePageEditorStore } from '../store';
 import Breadcrumb from './Breadcrumb';
 import { useMenu } from './useMenu';
 
@@ -23,7 +27,15 @@ const Header = memo(() => {
     s.parentId,
     s.onBack,
   ]);
+  const rightPanelMode = usePageEditorStore(selectors.rightPanelMode);
+  const { allowed: hasEditPermission } = usePermission('edit_own_content');
+  const { expand: showPageAgentPanel, toggle: togglePageAgentPanel } = usePageAgentPanelControl();
   const { menuItems } = useMenu();
+  // Mirror the gate inside PageEditor/RightPanel: copilot is a document-editing
+  // surface, so viewers can't open it; History is read-only and stays available
+  // to everyone. Without this guard the button toggles the store, then disappears
+  // via `hideWhenExpanded` while the panel refuses to open — a no-op control.
+  const canExpandRightPanel = hasEditPermission || rightPanelMode === 'history';
 
   return (
     <NavHeader
@@ -43,12 +55,13 @@ const Header = memo(() => {
               </Text>
             </>
           )}
-          {/* Auto Save Status */}
           {documentId && <AutoSaveHint documentId={documentId} style={{ marginLeft: 6 }} />}
         </>
       }
       right={
         <>
+          <EditingIndicator />
+          {documentId && <ShareButton documentId={documentId} />}
           {/* Three-dot menu */}
           <DropdownMenu
             iconSpaceMode="group"
@@ -60,9 +73,16 @@ const Header = memo(() => {
               },
             }}
           >
-            <ActionIcon icon={MoreHorizontal} size={DESKTOP_HEADER_ICON_SIZE} />
+            <ActionIcon icon={MoreHorizontal} size={DESKTOP_HEADER_ICON_SMALL_SIZE} />
           </DropdownMenu>
-          <ToggleRightPanelButton hideWhenExpanded showActive={false} />
+          {canExpandRightPanel && (
+            <ToggleRightPanelButton
+              hideWhenExpanded
+              expand={showPageAgentPanel}
+              showActive={false}
+              onToggle={() => togglePageAgentPanel()}
+            />
+          )}
         </>
       }
     />

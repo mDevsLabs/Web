@@ -8,7 +8,8 @@ import { useTranslation } from 'react-i18next';
 
 import { ChatItem } from '@/features/Conversation/ChatItem';
 import TaskAvatar from '@/features/Conversation/Messages/Tasks/shared/TaskAvatar';
-import { useNewScreen } from '@/features/Conversation/Messages/components/useNewScreen';
+import { useMessageCommentCount } from '@/features/TopicComment/hooks';
+import MessageCommentBadge from '@/features/TopicComment/MessageCommentBadge';
 import { useOpenChatSettings } from '@/hooks/useInterceptingRoutes';
 import { useAgentStore } from '@/store/agent';
 import { builtinAgentSelectors } from '@/store/agent/selectors';
@@ -29,7 +30,7 @@ interface TaskMessageProps {
   isLatestItem?: boolean;
 }
 
-const TaskMessage = memo<TaskMessageProps>(({ id, index, disableEditing, isLatestItem }) => {
+const TaskMessage = memo<TaskMessageProps>(({ id, disableEditing }) => {
   const { t } = useTranslation('chat');
 
   // Get message and actionsConfig from ConversationStore
@@ -43,12 +44,6 @@ const TaskMessage = memo<TaskMessageProps>(({ id, index, disableEditing, isLates
   // Get editing and generating state from ConversationStore
   const editing = useConversationStore(messageStateSelectors.isMessageEditing(id));
   const generating = useConversationStore(messageStateSelectors.isMessageGenerating(id));
-  const creating = useConversationStore(messageStateSelectors.isMessageCreating(id));
-  const { minHeight } = useNewScreen({
-    creating: generating || creating,
-    isLatestItem,
-    messageId: id,
-  });
 
   const errorContent = useErrorContent(error);
 
@@ -65,36 +60,39 @@ const TaskMessage = memo<TaskMessageProps>(({ id, index, disableEditing, isLates
     } else {
       openChatSettings();
     }
-  }, [isInbox]);
+  }, [isInbox, openChatSettings, toggleSystemRole]);
 
   const onDoubleClick = useDoubleClickEdit({ disableEditing, error, id, role });
 
   // Use taskTitle from metadata if available, otherwise fall back to avatar title
   const title = metadata?.taskTitle || avatar?.title;
+  const { count: commentCount, topicId: commentTopicId } = useMessageCommentCount(id);
 
   return (
     <ChatItem
+      showTitle
       aboveMessage={null}
-      actions={
-        <AssistantActionsBar actionsConfig={actionsConfig} data={item} id={id} index={index} />
-      }
+      actions={<AssistantActionsBar actionsConfig={actionsConfig} data={item} id={id} />}
       avatar={{ ...avatar, title }}
       customAvatarRender={(_, node) => <TaskAvatar>{node}</TaskAvatar>}
       customErrorRender={(error) => <ErrorMessageExtra data={item} error={error} />}
       editing={editing}
-      error={
-        errorContent && error && (message === LOADING_FLAT || !message) ? errorContent : undefined
-      }
       id={id}
       loading={generating}
       message={message}
-      newScreenMinHeight={minHeight}
-      onAvatarClick={onAvatarClick}
-      onDoubleClick={onDoubleClick}
       placement={'left'}
-      showTitle
       time={createdAt}
       titleAddon={<Tag>{t('task.subtask')}</Tag>}
+      actionAddon={
+        commentCount > 0 && commentTopicId ? (
+          <MessageCommentBadge count={commentCount} messageId={id} topicId={commentTopicId} />
+        ) : undefined
+      }
+      error={
+        errorContent && error && (message === LOADING_FLAT || !message) ? errorContent : undefined
+      }
+      onAvatarClick={onAvatarClick}
+      onDoubleClick={onDoubleClick}
     >
       {taskDetail?.clientMode ? (
         <ClientTaskDetail

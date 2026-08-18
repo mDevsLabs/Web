@@ -1,7 +1,7 @@
 import { find, isString, trim } from 'es-toolkit/compat';
 
 import { DEFAULT_SEARCH_USER_MEMORY_TOP_K } from '@/const/userMemory';
-import type { RetrieveMemoryParams } from '@/types/userMemory';
+import { type RetrieveMemoryParams } from '@/types/userMemory';
 
 interface MemorySearchSource {
   agent?: {
@@ -37,7 +37,7 @@ export const createMemorySearchParams = (
   if (!query) return undefined;
 
   return {
-    query,
+    queries: [query],
     topK: {
       ...DEFAULT_SEARCH_USER_MEMORY_TOP_K,
     },

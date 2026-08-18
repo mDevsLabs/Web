@@ -1,10 +1,10 @@
-import { Pricing, PricingUnit, PricingUnitName } from 'model-bank';
+import type { Pricing, PricingUnit, PricingUnitName } from 'model-bank';
 
 /**
  * Internal helper to extract the displayed unit rate from a pricing unit by strategy
- * - fixed → rate
- * - tiered → tiers[0].rate
- * - lookup → first price value
+ * - fixed: rate
+ * - tiered: tiers[0].rate
+ * - lookup: first price value
  */
 const getRateFromUnit = (unit: PricingUnit): number | undefined => {
   switch (unit.strategy) {
@@ -17,6 +17,24 @@ const getRateFromUnit = (unit: PricingUnit): number | undefined => {
     case 'lookup': {
       const prices = Object.values(unit.lookup?.prices || {});
       return prices[0];
+    }
+    default: {
+      return undefined;
+    }
+  }
+};
+
+const getOriginalRateFromUnit = (unit: PricingUnit): number | undefined => {
+  switch (unit.strategy) {
+    case 'fixed': {
+      return unit.originalRate;
+    }
+    case 'tiered': {
+      return unit.tiers?.[0]?.originalRate;
+    }
+    case 'lookup': {
+      const firstKey = Object.keys(unit.lookup?.prices || {})[0];
+      return firstKey ? unit.lookup.originalPrices?.[firstKey] : undefined;
     }
     default: {
       return undefined;
@@ -38,10 +56,28 @@ export const getUnitRateByName = (
 };
 
 /**
+ * Get unit original rate by unit name when it is higher than the current rate.
+ */
+export const getOriginalUnitRateByName = (
+  pricing?: Pricing,
+  unitName?: PricingUnitName,
+): number | undefined => {
+  if (!pricing?.units || !unitName) return undefined;
+  const unit = pricing.units.find((u) => u.name === unitName);
+  if (!unit) return undefined;
+
+  const originalRate = getOriginalRateFromUnit(unit);
+  const currentRate = getRateFromUnit(unit);
+  if (typeof originalRate !== 'number' || typeof currentRate !== 'number') return undefined;
+
+  return originalRate > currentRate ? originalRate : undefined;
+};
+
+/**
  * Get text input unit rate from pricing
- * - fixed → rate
- * - tiered → tiers[0].rate
- * - lookup → Object.values(lookup.prices)[0]
+ * - fixed: rate
+ * - tiered: tiers[0].rate
+ * - lookup: Object.values(lookup.prices)[0]
  */
 export function getTextInputUnitRate(pricing?: Pricing): number | undefined {
   return getUnitRateByName(pricing, 'textInput');

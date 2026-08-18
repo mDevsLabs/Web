@@ -1,34 +1,20 @@
-import { type StateCreator } from 'zustand/vanilla';
+import type { TopicCommentItem } from '@lobechat/types';
 
+import { projectFileService } from '@/services/projectFile';
 import { type ChatStore } from '@/store/chat/store';
+import { useGlobalStore } from '@/store/global';
+import { type StoreSetter } from '@/store/types';
 import { type PortalArtifact } from '@/types/artifact';
 
-import { type PortalFile, type PortalViewData, PortalViewType } from './initialState';
-
-export interface ChatPortalAction {
-  // ============== Core Stack Operations ==============
-  clearPortalStack: () => void;
-  // ============== Convenience Methods ==============
-  closeArtifact: () => void;
-  closeDocument: () => void;
-  closeFilePreview: () => void;
-  closeMessageDetail: () => void;
-  closeNotebook: () => void;
-
-  closeToolUI: () => void;
-  goBack: () => void;
-  goHome: () => void;
-  openArtifact: (artifact: PortalArtifact) => void;
-  openDocument: (documentId: string) => void;
-  openFilePreview: (file: PortalFile) => void;
-  openMessageDetail: (messageId: string) => void;
-  openNotebook: () => void;
-  openToolUI: (messageId: string, identifier: string) => void;
-  popPortalView: () => void;
-  pushPortalView: (view: PortalViewData) => void;
-  replacePortalView: (view: PortalViewData) => void;
-  toggleNotebook: (open?: boolean) => void;
-}
+import { topicSelectors } from '../topic/selectors';
+import {
+  createLocalFileScopeKey,
+  createLocalFileTabId,
+  createSandboxLocalFileScopeKey,
+  getLocalFileTabId,
+} from './helpers';
+import { type OpenLocalFileParams, type PortalFile, type PortalViewData } from './initialState';
+import { PortalViewType } from './initialState';
 
 // Helper to get current view type from stack
 const getCurrentViewType = (portalStack: PortalViewData[]): PortalViewType | null => {
@@ -36,64 +22,466 @@ const getCurrentViewType = (portalStack: PortalViewData[]): PortalViewType | nul
   return top?.type ?? null;
 };
 
-export const chatPortalSlice: StateCreator<
-  ChatStore,
-  [['zustand/devtools', never]],
-  [],
-  ChatPortalAction
-> = (set, get) => ({
-  clearPortalStack: () => {
-    set({ portalStack: [], showPortal: false }, false, 'clearPortalStack');
-  },
+const findLocalFileIndexById = (
+  openLocalFiles: Array<OpenLocalFileParams & { id?: string }>,
+  id: string,
+) => {
+  const index = openLocalFiles.findIndex((file) => getLocalFileTabId(file) === id);
+  return index >= 0 ? index : openLocalFiles.findIndex((file) => file.filePath === id);
+};
 
-  closeArtifact: () => {
-    const { portalStack } = get();
+const findLocalFileById = <T extends OpenLocalFileParams & { id?: string }>(
+  openLocalFiles: T[],
+  id: string | undefined,
+) =>
+  id
+    ? (openLocalFiles.find((file) => getLocalFileTabId(file) === id) ??
+      openLocalFiles.find((file) => file.filePath === id))
+    : undefined;
+
+// Sandbox tabs carry no client-side working directory, so their fallback scope
+// (used when the active topic has no cwd) is keyed by the serving topic —
+// otherwise every unscoped topic shares one global scope and overwrites the
+// others' activation.
+const getLocalFileEntryScopeKey = (file: OpenLocalFileParams): string =>
+  file.sandboxTopicId
+    ? createSandboxLocalFileScopeKey(file.sandboxTopicId)
+    : createLocalFileScopeKey(file.workingDirectory);
+
+const getLocalFilesInEntryScope = <T extends OpenLocalFileParams & { id?: string }>(
+  openLocalFiles: T[],
+  scopeKey: string,
+) => openLocalFiles.filter((file) => getLocalFileEntryScopeKey(file) === scopeKey);
+
+const getCurrentLocalFileScopeKey = (state: ChatStore): string | undefined => {
+  const workingDirectory = topicSelectors.currentTopicWorkingDirectory(state);
+
+  return workingDirectory ? createLocalFileScopeKey(workingDirectory) : undefined;
+};
+
+// Mirrors the selector's `isLocalFileInCurrentScope`: sandbox tabs carry no
+// client-side working directory, so they are scoped by their serving topic
+// rather than the cwd match — bulk-close actions must group them the same way
+// the tab strip renders them.
+const isLocalFileVisibleInScope = <T extends OpenLocalFileParams>(
+  state: ChatStore,
+  currentScopeKey: string,
+  file: T,
+): boolean => {
+  if (file.allowExternalFilePreview) return true;
+  if (file.sandboxTopicId) return file.sandboxTopicId === state.activeTopicId;
+  return getLocalFileEntryScopeKey(file) === currentScopeKey;
+};
+
+const getLocalFileCloseScope = <T extends OpenLocalFileParams & { id?: string }>({
+  openLocalFiles,
+  state,
+  target,
+}: {
+  openLocalFiles: T[];
+  state: ChatStore;
+  target: T;
+}): { files: T[]; scopeKey: string } => {
+  const currentScopeKey = getCurrentLocalFileScopeKey(state);
+  const targetEntryScopeKey = getLocalFileEntryScopeKey(target);
+  const targetIsVisibleInCurrentScope =
+    !!currentScopeKey && isLocalFileVisibleInScope(state, currentScopeKey, target);
+
+  if (!currentScopeKey || !targetIsVisibleInCurrentScope) {
+    return {
+      files: getLocalFilesInEntryScope(openLocalFiles, targetEntryScopeKey),
+      scopeKey: targetEntryScopeKey,
+    };
+  }
+
+  return {
+    files: openLocalFiles.filter((file) => isLocalFileVisibleInScope(state, currentScopeKey, file)),
+    scopeKey: currentScopeKey,
+  };
+};
+
+const getLocalFileActivationScopeKey = (state: ChatStore, file: OpenLocalFileParams): string => {
+  const entryScopeKey = getLocalFileEntryScopeKey(file);
+  const currentScopeKey = getCurrentLocalFileScopeKey(state);
+
+  // External and sandbox tabs render inside the current topic's scope (the
+  // visibility filter exempts them from the cwd match), so their activation
+  // must land in that scope too — otherwise a cwd topic keeps showing its
+  // previously active tab after the open.
+  const rendersInCurrentScope = file.allowExternalFilePreview || !!file.sandboxTopicId;
+  return rendersInCurrentScope && currentScopeKey ? currentScopeKey : entryScopeKey;
+};
+
+const resolveActiveLocalFile = <T extends OpenLocalFileParams & { id?: string }>(
+  openLocalFiles: T[],
+  activeLocalFileId: string | undefined,
+  activeLocalFilePath: string | undefined,
+) =>
+  findLocalFileById(openLocalFiles, activeLocalFileId) ??
+  (activeLocalFilePath
+    ? openLocalFiles.find((file) => file.filePath === activeLocalFilePath)
+    : undefined);
+
+const resolveActiveLocalFileInScope = <T extends OpenLocalFileParams & { id?: string }>(
+  openLocalFiles: T[],
+  scopeKey: string,
+  activeLocalFileIdsByScope: Record<string, string> | undefined,
+  activeLocalFileId: string | undefined,
+  activeLocalFilePath: string | undefined,
+) =>
+  findLocalFileById(openLocalFiles, activeLocalFileIdsByScope?.[scopeKey]) ??
+  resolveActiveLocalFile(openLocalFiles, activeLocalFileId, activeLocalFilePath);
+
+const setActiveLocalFileForScope = (
+  activeLocalFileIdsByScope: Record<string, string> | undefined,
+  scopeKey: string,
+  activeFile: (OpenLocalFileParams & { id?: string }) | undefined,
+) => {
+  const next = { ...activeLocalFileIdsByScope };
+
+  if (activeFile) {
+    next[scopeKey] = getLocalFileTabId(activeFile);
+  } else {
+    delete next[scopeKey];
+  }
+
+  return next;
+};
+
+const keepCloseScopedLocalFiles = <T extends OpenLocalFileParams & { id?: string }>(
+  openLocalFiles: T[],
+  closeScopeFiles: T[],
+  closeScopeFilesToKeep: T[],
+) => {
+  const closeScopeIds = new Set(closeScopeFiles.map(getLocalFileTabId));
+  const keepIds = new Set(closeScopeFilesToKeep.map(getLocalFileTabId));
+
+  return openLocalFiles.filter((file) => {
+    const id = getLocalFileTabId(file);
+    return !closeScopeIds.has(id) || keepIds.has(id);
+  });
+};
+
+const resolveLegacyActiveAfterClose = ({
+  activeLocalFileId,
+  activeLocalFilePath,
+  nextScopeActiveFile,
+  nextOpenLocalFiles,
+  openLocalFiles,
+}: {
+  activeLocalFileId: string | undefined;
+  activeLocalFilePath: string | undefined;
+  nextScopeActiveFile: (OpenLocalFileParams & { id?: string }) | undefined;
+  nextOpenLocalFiles: Array<OpenLocalFileParams & { id?: string }>;
+  openLocalFiles: Array<OpenLocalFileParams & { id?: string }>;
+}) => {
+  const activeFile = resolveActiveLocalFile(openLocalFiles, activeLocalFileId, activeLocalFilePath);
+  const activeStillOpen =
+    activeFile &&
+    nextOpenLocalFiles.some((file) => getLocalFileTabId(file) === getLocalFileTabId(activeFile));
+
+  if (!activeFile || activeStillOpen) {
+    return { activeLocalFileId, activeLocalFilePath };
+  }
+
+  return {
+    activeLocalFileId: nextScopeActiveFile ? getLocalFileTabId(nextScopeActiveFile) : undefined,
+    activeLocalFilePath: nextScopeActiveFile?.filePath,
+  };
+};
+
+type Setter = StoreSetter<ChatStore>;
+export const chatPortalSlice = (set: Setter, get: () => ChatStore, _api?: unknown) =>
+  new ChatPortalActionImpl(set, get, _api);
+
+export class ChatPortalActionImpl {
+  readonly #get: () => ChatStore;
+  readonly #set: Setter;
+
+  constructor(set: Setter, get: () => ChatStore, _api?: unknown) {
+    void _api;
+    this.#set = set;
+    this.#get = get;
+  }
+
+  clearPortalStack = (): void => {
+    this.#set({ portalStack: [], showPortal: false }, false, 'clearPortalStack');
+  };
+
+  closeArtifact = (): void => {
+    const { portalStack } = this.#get();
     if (getCurrentViewType(portalStack) === PortalViewType.Artifact) {
-      get().popPortalView();
+      this.#get().popPortalView();
     }
-  },
+  };
 
-  closeDocument: () => {
-    const { portalStack } = get();
+  closeDocument = (): void => {
+    const { portalStack } = this.#get();
     if (getCurrentViewType(portalStack) === PortalViewType.Document) {
-      get().popPortalView();
+      this.#get().popPortalView();
     }
-  },
+  };
 
-  closeFilePreview: () => {
-    const { portalStack } = get();
+  closeFilePreview = (): void => {
+    const { portalStack } = this.#get();
     if (getCurrentViewType(portalStack) === PortalViewType.FilePreview) {
-      get().popPortalView();
+      this.#get().popPortalView();
     }
-  },
+  };
 
-  closeMessageDetail: () => {
-    const { portalStack } = get();
+  closeLocalFile = (): void => {
+    const { portalStack } = this.#get();
+    if (getCurrentViewType(portalStack) === PortalViewType.LocalFile) {
+      this.#get().popPortalView();
+    }
+  };
+
+  closeLocalFileTab = (id: string): void => {
+    const {
+      activeLocalFileId,
+      activeLocalFileIdsByScope,
+      activeLocalFilePath,
+      dirtyLocalFileContents,
+      openLocalFiles,
+    } = this.#get();
+    const idx = findLocalFileIndexById(openLocalFiles, id);
+    if (idx === -1) return;
+
+    const target = openLocalFiles[idx];
+    const targetId = getLocalFileTabId(target);
+    const { files: scopedFiles, scopeKey } = getLocalFileCloseScope({
+      openLocalFiles,
+      state: this.#get(),
+      target,
+    });
+    const scopedIdx = findLocalFileIndexById(scopedFiles, targetId);
+    const nextFiles = openLocalFiles.filter((_, i) => i !== idx);
+    const nextScopedFiles = scopedFiles.filter((_, i) => i !== scopedIdx);
+
+    const scopedActiveFile = resolveActiveLocalFileInScope(
+      scopedFiles,
+      scopeKey,
+      activeLocalFileIdsByScope,
+      activeLocalFileId,
+      activeLocalFilePath,
+    );
+    const nextScopeActiveFile =
+      scopedActiveFile && getLocalFileTabId(scopedActiveFile) === targetId
+        ? (nextScopedFiles[scopedIdx] ?? nextScopedFiles[scopedIdx - 1])
+        : scopedActiveFile;
+    const legacyActive = resolveLegacyActiveAfterClose({
+      activeLocalFileId,
+      activeLocalFilePath,
+      nextOpenLocalFiles: nextFiles,
+      nextScopeActiveFile,
+      openLocalFiles,
+    });
+
+    // Edit buffers are keyed by tab identity, so each tab owns its buffer — drop
+    // this tab's unsaved content (the close was confirmed) without touching the
+    // buffer of any other tab that happens to share the same absolute path.
+    let nextDirty = dirtyLocalFileContents;
+    if (targetId in dirtyLocalFileContents) {
+      const { [targetId]: _, ...rest } = dirtyLocalFileContents;
+      nextDirty = rest;
+    }
+
+    this.#set(
+      {
+        activeLocalFileId: legacyActive.activeLocalFileId,
+        activeLocalFileIdsByScope: setActiveLocalFileForScope(
+          activeLocalFileIdsByScope,
+          scopeKey,
+          nextScopeActiveFile,
+        ),
+        activeLocalFilePath: legacyActive.activeLocalFilePath,
+        dirtyLocalFileContents: nextDirty,
+        openLocalFiles: nextFiles,
+      },
+      false,
+      'closeLocalFileTab',
+    );
+
+    if (nextScopedFiles.length === 0) {
+      this.#get().closeLocalFile();
+    }
+  };
+
+  closeLeftLocalFileTabs = (id: string): void => {
+    const { activeLocalFileId, activeLocalFileIdsByScope, activeLocalFilePath, openLocalFiles } =
+      this.#get();
+    const idx = findLocalFileIndexById(openLocalFiles, id);
+    if (idx < 0) return;
+
+    const target = openLocalFiles[idx];
+    const { files: scopedFiles, scopeKey } = getLocalFileCloseScope({
+      openLocalFiles,
+      state: this.#get(),
+      target,
+    });
+    const scopedIdx = findLocalFileIndexById(scopedFiles, getLocalFileTabId(target));
+    if (scopedIdx <= 0) return;
+
+    const nextScopedFiles = scopedFiles.slice(scopedIdx);
+    const nextFiles = keepCloseScopedLocalFiles(openLocalFiles, scopedFiles, nextScopedFiles);
+    const scopedActiveFile = resolveActiveLocalFileInScope(
+      scopedFiles,
+      scopeKey,
+      activeLocalFileIdsByScope,
+      activeLocalFileId,
+      activeLocalFilePath,
+    );
+    const currentScopeActiveId = scopedActiveFile ? getLocalFileTabId(scopedActiveFile) : undefined;
+    const targetId = getLocalFileTabId(target);
+    const nextScopeActiveId = nextScopedFiles.some(
+      (f) => getLocalFileTabId(f) === currentScopeActiveId,
+    )
+      ? currentScopeActiveId
+      : targetId;
+    const nextScopeActiveFile = findLocalFileById(nextScopedFiles, nextScopeActiveId);
+    const legacyActive = resolveLegacyActiveAfterClose({
+      activeLocalFileId,
+      activeLocalFilePath,
+      nextOpenLocalFiles: nextFiles,
+      nextScopeActiveFile,
+      openLocalFiles,
+    });
+
+    this.#set(
+      {
+        activeLocalFileId: legacyActive.activeLocalFileId,
+        activeLocalFileIdsByScope: setActiveLocalFileForScope(
+          activeLocalFileIdsByScope,
+          scopeKey,
+          nextScopeActiveFile,
+        ),
+        activeLocalFilePath: legacyActive.activeLocalFilePath,
+        openLocalFiles: nextFiles,
+      },
+      false,
+      'closeLeftLocalFileTabs',
+    );
+  };
+
+  closeOtherLocalFileTabs = (id: string): void => {
+    const { activeLocalFileIdsByScope, openLocalFiles } = this.#get();
+    const target = findLocalFileById(openLocalFiles, id);
+    if (!target) return;
+    const { files: scopedFiles, scopeKey } = getLocalFileCloseScope({
+      openLocalFiles,
+      state: this.#get(),
+      target,
+    });
+    const targetId = getLocalFileTabId(target);
+    const targetFile = { ...target, id: targetId };
+    const nextFiles = keepCloseScopedLocalFiles(openLocalFiles, scopedFiles, [targetFile]);
+
+    this.#set(
+      {
+        activeLocalFileId: targetId,
+        activeLocalFileIdsByScope: setActiveLocalFileForScope(
+          activeLocalFileIdsByScope,
+          scopeKey,
+          targetFile,
+        ),
+        activeLocalFilePath: target.filePath,
+        openLocalFiles: nextFiles,
+      },
+      false,
+      'closeOtherLocalFileTabs',
+    );
+  };
+
+  closeRightLocalFileTabs = (id: string): void => {
+    const { activeLocalFileId, activeLocalFileIdsByScope, activeLocalFilePath, openLocalFiles } =
+      this.#get();
+    const idx = findLocalFileIndexById(openLocalFiles, id);
+    if (idx < 0) return;
+
+    const target = openLocalFiles[idx];
+    const { files: scopedFiles, scopeKey } = getLocalFileCloseScope({
+      openLocalFiles,
+      state: this.#get(),
+      target,
+    });
+    const scopedIdx = findLocalFileIndexById(scopedFiles, getLocalFileTabId(target));
+    if (scopedIdx < 0 || scopedIdx >= scopedFiles.length - 1) return;
+
+    const nextScopedFiles = scopedFiles.slice(0, scopedIdx + 1);
+    const nextFiles = keepCloseScopedLocalFiles(openLocalFiles, scopedFiles, nextScopedFiles);
+    const scopedActiveFile = resolveActiveLocalFileInScope(
+      scopedFiles,
+      scopeKey,
+      activeLocalFileIdsByScope,
+      activeLocalFileId,
+      activeLocalFilePath,
+    );
+    const currentScopeActiveId = scopedActiveFile ? getLocalFileTabId(scopedActiveFile) : undefined;
+    const targetId = getLocalFileTabId(target);
+    const nextScopeActiveId = nextScopedFiles.some(
+      (f) => getLocalFileTabId(f) === currentScopeActiveId,
+    )
+      ? currentScopeActiveId
+      : targetId;
+    const nextScopeActiveFile = findLocalFileById(nextScopedFiles, nextScopeActiveId);
+    const legacyActive = resolveLegacyActiveAfterClose({
+      activeLocalFileId,
+      activeLocalFilePath,
+      nextOpenLocalFiles: nextFiles,
+      nextScopeActiveFile,
+      openLocalFiles,
+    });
+
+    this.#set(
+      {
+        activeLocalFileId: legacyActive.activeLocalFileId,
+        activeLocalFileIdsByScope: setActiveLocalFileForScope(
+          activeLocalFileIdsByScope,
+          scopeKey,
+          nextScopeActiveFile,
+        ),
+        activeLocalFilePath: legacyActive.activeLocalFilePath,
+        openLocalFiles: nextFiles,
+      },
+      false,
+      'closeRightLocalFileTabs',
+    );
+  };
+
+  closeMessageDetail = (): void => {
+    const { portalStack } = this.#get();
     if (getCurrentViewType(portalStack) === PortalViewType.MessageDetail) {
-      get().popPortalView();
+      this.#get().popPortalView();
     }
-  },
+  };
 
-  closeNotebook: () => {
-    const { portalStack } = get();
+  closeNotebook = (): void => {
+    const { portalStack } = this.#get();
     if (getCurrentViewType(portalStack) === PortalViewType.Notebook) {
-      get().popPortalView();
+      this.#get().popPortalView();
     }
-  },
+  };
 
-  closeToolUI: () => {
-    const { portalStack } = get();
+  closeTaskDetail = (): void => {
+    const { portalStack } = this.#get();
+    if (getCurrentViewType(portalStack) === PortalViewType.TaskDetail) {
+      this.#get().popPortalView();
+    }
+  };
+
+  closeToolUI = (): void => {
+    const { portalStack } = this.#get();
     if (getCurrentViewType(portalStack) === PortalViewType.ToolUI) {
-      get().popPortalView();
+      this.#get().popPortalView();
     }
-  },
+  };
 
-  goBack: () => {
-    get().popPortalView();
-  },
+  goBack = (): void => {
+    this.#get().popPortalView();
+  };
 
-  goHome: () => {
-    set(
+  goHome = (): void => {
+    this.#set(
       {
         portalStack: [{ type: PortalViewType.Home }],
         showPortal: true,
@@ -101,52 +489,211 @@ export const chatPortalSlice: StateCreator<
       false,
       'goHome',
     );
-  },
+  };
 
-  // ============== Convenience Methods (using stack operations) ==============
-  openArtifact: (artifact) => {
-    get().pushPortalView({ artifact, type: PortalViewType.Artifact });
-  },
+  openArtifact = (artifact: PortalArtifact): void => {
+    this.#get().pushPortalView({ artifact, type: PortalViewType.Artifact });
+  };
 
-  openDocument: (documentId) => {
-    get().pushPortalView({ documentId, type: PortalViewType.Document });
-  },
+  openAgentDetail = (agentId: string): void => {
+    this.#get().pushPortalView({ agentId, type: PortalViewType.AgentDetail });
+  };
 
-  openFilePreview: (file) => {
-    get().pushPortalView({ file, type: PortalViewType.FilePreview });
-  },
+  openDocument = (documentId: string, agentDocumentId?: string): void => {
+    this.#get().pushPortalView({ agentDocumentId, documentId, type: PortalViewType.Document });
+  };
 
-  openMessageDetail: (messageId) => {
-    get().pushPortalView({ messageId, type: PortalViewType.MessageDetail });
-  },
+  openFilePreview = (file: PortalFile): void => {
+    this.#get().pushPortalView({ file, type: PortalViewType.FilePreview });
+  };
 
-  openNotebook: () => {
-    get().pushPortalView({ type: PortalViewType.Notebook });
-  },
+  openLocalFile = ({
+    allowExternalFilePreview,
+    deviceId,
+    filePath,
+    sandboxTopicId,
+    workingDirectory,
+  }: OpenLocalFileParams): void => {
+    const { activeLocalFileIdsByScope, openLocalFiles } = this.#get();
+    const id = createLocalFileTabId({ deviceId, filePath, sandboxTopicId, workingDirectory });
+    const exists = openLocalFiles.some((f) => getLocalFileTabId(f) === id);
+    const nextFile = {
+      ...(allowExternalFilePreview === undefined ? {} : { allowExternalFilePreview }),
+      ...(deviceId ? { deviceId } : {}),
+      ...(sandboxTopicId ? { sandboxTopicId } : {}),
+      filePath,
+      id,
+      workingDirectory,
+    };
+    const scopeKey = getLocalFileActivationScopeKey(this.#get(), nextFile);
+    const nextFiles = exists
+      ? openLocalFiles.map((file) => (getLocalFileTabId(file) === id ? nextFile : file))
+      : [...openLocalFiles, nextFile];
+    this.#set(
+      {
+        activeLocalFileId: id,
+        activeLocalFileIdsByScope: setActiveLocalFileForScope(
+          activeLocalFileIdsByScope,
+          scopeKey,
+          nextFile,
+        ),
+        activeLocalFilePath: filePath,
+        openLocalFiles: nextFiles,
+      },
+      false,
+      'openLocalFile',
+    );
+    this.#get().pushPortalView({ type: PortalViewType.LocalFile });
+  };
 
-  openToolUI: (messageId, identifier) => {
-    get().pushPortalView({ identifier, messageId, type: PortalViewType.ToolUI });
-  },
+  setActiveLocalFile = (id: string): void => {
+    const { activeLocalFileIdsByScope, openLocalFiles } = this.#get();
+    const activeFile = findLocalFileById(openLocalFiles, id);
+    const scopeKey = activeFile
+      ? getLocalFileActivationScopeKey(this.#get(), activeFile)
+      : undefined;
+    this.#set(
+      {
+        activeLocalFileId: activeFile ? getLocalFileTabId(activeFile) : id,
+        activeLocalFileIdsByScope: scopeKey
+          ? setActiveLocalFileForScope(activeLocalFileIdsByScope, scopeKey, activeFile)
+          : activeLocalFileIdsByScope,
+        activeLocalFilePath: activeFile?.filePath ?? id,
+      },
+      false,
+      'setActiveLocalFile',
+    );
+  };
 
-  popPortalView: () => {
-    const { portalStack } = get();
+  setLocalFileBuffer = (tabId: string, content: string | undefined): void => {
+    const { dirtyLocalFileContents } = this.#get();
+    if (content === undefined) {
+      if (!(tabId in dirtyLocalFileContents)) return;
+
+      const { [tabId]: _, ...rest } = dirtyLocalFileContents;
+      this.#set({ dirtyLocalFileContents: rest }, false, 'setLocalFileBuffer/clear');
+      return;
+    }
+    if (dirtyLocalFileContents[tabId] === content) return;
+    this.#set(
+      { dirtyLocalFileContents: { ...dirtyLocalFileContents, [tabId]: content } },
+      false,
+      'setLocalFileBuffer',
+    );
+  };
+
+  saveLocalFile = async ({
+    deviceId,
+    filePath,
+    workingDirectory,
+  }: OpenLocalFileParams): Promise<string | undefined> => {
+    const { dirtyLocalFileContents } = this.#get();
+    // Edit buffers are scoped by tab identity (device + working directory +
+    // path), so the same absolute path opened on two devices/workspaces keeps
+    // independent unsaved content.
+    const tabId = createLocalFileTabId({ deviceId, filePath, workingDirectory });
+    const buffer = dirtyLocalFileContents[tabId];
+    if (buffer === undefined) return undefined;
+    // deviceId routes the write to the remote device over RPC; local desktop
+    // (no deviceId) goes straight to Electron IPC. The chokepoint hides the split.
+    const result = await projectFileService.writeProjectFile({
+      content: buffer,
+      deviceId,
+      path: filePath,
+      workingDirectory,
+    });
+    // The remote RPC / local IPC report fs failures (permission denied, etc.) as
+    // `{ success: false }` rather than rejecting — treat that as a failed save so
+    // the caller keeps the buffer dirty instead of marking it clean.
+    if (!result.success) throw new Error(result.error || 'Failed to save file');
+    return buffer;
+  };
+
+  openAcceptance = (acceptanceId: string): void => {
+    this.#get().pushPortalView({ acceptanceId, type: PortalViewType.Acceptance });
+  };
+
+  openAcceptanceCheck = (acceptanceId: string, checkId: string): void => {
+    this.#get().pushPortalView({ acceptanceId, checkId, type: PortalViewType.AcceptanceCheck });
+  };
+
+  openMessageDetail = (messageId: string): void => {
+    this.#get().pushPortalView({ messageId, type: PortalViewType.MessageDetail });
+  };
+
+  openNotebook = (): void => {
+    this.#get().pushPortalView({ type: PortalViewType.Notebook });
+  };
+
+  openTaskDetail = (taskId: string): void => {
+    this.#get().pushPortalView({ taskId, type: PortalViewType.TaskDetail });
+  };
+
+  openTopicCommentThread = (
+    topicId: string,
+    rootCommentId: string,
+    initialRoot?: TopicCommentItem,
+    initialReplyCount?: number,
+    focusCommentId?: string,
+  ): void => {
+    this.#get().pushPortalView({
+      ...(focusCommentId ? { focusCommentId } : {}),
+      ...(initialReplyCount === undefined ? {} : { initialReplyCount }),
+      ...(initialRoot ? { initialRoot } : {}),
+      rootCommentId,
+      topicId,
+      type: PortalViewType.TopicCommentThread,
+    });
+  };
+
+  openTopicComments = (topicId: string, messageId?: string): void => {
+    const { setWorkingSidebarTab, toggleRightPanel } = useGlobalStore.getState();
+    toggleRightPanel(true);
+    setWorkingSidebarTab('comments');
+    this.#get().pushPortalView({ messageId, topicId, type: PortalViewType.TopicComments });
+  };
+
+  openToolUI = (messageId: string, identifier: string, params?: Record<string, any>): void => {
+    this.#get().pushPortalView({ identifier, messageId, params, type: PortalViewType.ToolUI });
+  };
+
+  openTopicInPortal = (topicId: string): void => {
+    this.#get().pushPortalView({ topicId, type: PortalViewType.Topic });
+  };
+
+  closeTopicPortal = (): void => {
+    const { portalStack } = this.#get();
+    if (getCurrentViewType(portalStack) === PortalViewType.Topic) {
+      this.#get().popPortalView();
+    }
+  };
+
+  openVerifyResult = (operationId: string, checkItemId: string): void => {
+    this.#get().pushPortalView({ checkItemId, operationId, type: PortalViewType.VerifyResult });
+  };
+
+  openVerifyReport = (runId: string): void => {
+    this.#get().pushPortalView({ runId, type: PortalViewType.VerifyReport });
+  };
+
+  popPortalView = (): void => {
+    const { portalStack } = this.#get();
 
     if (portalStack.length <= 1) {
       // Stack empty or only one item, clear stack and close portal
-      set({ portalStack: [], showPortal: false }, false, 'popPortalView/close');
+      this.#set({ portalStack: [], showPortal: false }, false, 'popPortalView/close');
     } else {
-      set({ portalStack: portalStack.slice(0, -1) }, false, 'popPortalView');
+      this.#set({ portalStack: portalStack.slice(0, -1) }, false, 'popPortalView');
     }
-  },
+  };
 
-  // ============== Core Stack Operations ==============
-  pushPortalView: (view) => {
-    const { portalStack } = get();
+  pushPortalView = (view: PortalViewData): void => {
+    const { portalStack } = this.#get();
     const top = portalStack.at(-1);
 
     // If top of stack is same type, replace instead of push (avoid duplicates)
     if (top?.type === view.type) {
-      set(
+      this.#set(
         {
           portalStack: [...portalStack.slice(0, -1), view],
           showPortal: true,
@@ -155,7 +702,7 @@ export const chatPortalSlice: StateCreator<
         'pushPortalView/replace',
       );
     } else {
-      set(
+      this.#set(
         {
           portalStack: [...portalStack, view],
           showPortal: true,
@@ -164,15 +711,15 @@ export const chatPortalSlice: StateCreator<
         'pushPortalView',
       );
     }
-  },
+  };
 
-  replacePortalView: (view) => {
-    const { portalStack } = get();
+  replacePortalView = (view: PortalViewData): void => {
+    const { portalStack } = this.#get();
 
     if (portalStack.length === 0) {
-      set({ portalStack: [view], showPortal: true }, false, 'replacePortalView/push');
+      this.#set({ portalStack: [view], showPortal: true }, false, 'replacePortalView/push');
     } else {
-      set(
+      this.#set(
         {
           portalStack: [...portalStack.slice(0, -1), view],
           showPortal: true,
@@ -181,17 +728,19 @@ export const chatPortalSlice: StateCreator<
         'replacePortalView',
       );
     }
-  },
+  };
 
-  toggleNotebook: (open) => {
-    const { portalStack } = get();
+  toggleNotebook = (open?: boolean): void => {
+    const { portalStack } = this.#get();
     const isCurrentlyNotebook = getCurrentViewType(portalStack) === PortalViewType.Notebook;
     const shouldOpen = open ?? !isCurrentlyNotebook;
 
     if (shouldOpen) {
-      get().openNotebook();
+      this.#get().openNotebook();
     } else {
-      get().closeNotebook();
+      this.#get().closeNotebook();
     }
-  },
-});
+  };
+}
+
+export type ChatPortalAction = Pick<ChatPortalActionImpl, keyof ChatPortalActionImpl>;

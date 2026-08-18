@@ -11,8 +11,10 @@ import {
   formatShortenNumber,
   formatSize,
   formatSpeed,
+  formatSpendTime,
   formatTime,
   formatTokenNumber,
+  formatUsageValue,
 } from './format';
 
 describe('format', () => {
@@ -138,7 +140,14 @@ describe('format', () => {
     it('should format numbers 10,000,000 and above correctly', () => {
       expect(formatShortenNumber(10000000)).toBe('10.0M');
       expect(formatShortenNumber(123456789)).toBe('123.5M');
-      expect(formatShortenNumber(9876543210)).toBe('9876.5M');
+    });
+
+    it('should format billions and trillions correctly', () => {
+      expect(formatShortenNumber(1000000000)).toBe('1.0B');
+      expect(formatShortenNumber(9876543210)).toBe('9.9B');
+      expect(formatShortenNumber(15065800000)).toBe('15.1B');
+      expect(formatShortenNumber(1000000000000)).toBe('1.0T');
+      expect(formatShortenNumber(2500000000000)).toBe('2.5T');
     });
   });
 
@@ -184,6 +193,19 @@ describe('format', () => {
       expect(formatPrice(1234.56)).toBe('1,234.56');
       expect(formatPrice(0.99)).toBe('0.99');
       expect(formatPrice(1000000.01, 0)).toBe('1,000,000');
+    });
+
+    it('should expand precision when a positive price would round to zero', () => {
+      expect(formatPrice(0.003625)).toBe('0.004');
+      expect(formatPrice(0.0001)).toBe('0.0001');
+      expect(formatPrice(0)).toBe('0.00');
+    });
+
+    it('should not throw RangeError for sub-1e-100 prices', () => {
+      // Number.prototype.toFixed accepts digits in [0, 100]; without a clamp
+      // Math.ceil(-Math.log10(price)) can exceed that and throw RangeError.
+      expect(() => formatPrice(1e-101)).not.toThrow();
+      expect(() => formatPrice(Number.MIN_VALUE)).not.toThrow();
     });
   });
 
@@ -241,6 +263,38 @@ describe('format', () => {
     });
   });
 
+  describe('formatUsageValue', () => {
+    it('formats token usage details with short units', () => {
+      expect(formatUsageValue(93_405)).toBe('93.4K');
+      expect(formatUsageValue(92_119)).toBe('92.1K');
+      expect(formatUsageValue(3_488)).toBe('3.5K');
+      expect(formatUsageValue(189_018)).toBe('189K');
+    });
+
+    it('formats credit usage details with the same short units', () => {
+      expect(formatUsageValue(16_127)).toBe('16.1K');
+      expect(formatUsageValue(16_179)).toBe('16.2K');
+    });
+
+    it('keeps small token counts readable without suffixes', () => {
+      expect(formatUsageValue(0)).toBe('0');
+      expect(formatUsageValue(6)).toBe('6');
+      expect(formatUsageValue(999)).toBe('999');
+    });
+
+    it('formats million-level token counts with M suffix', () => {
+      expect(formatUsageValue(1_000_000)).toBe('1M');
+      expect(formatUsageValue(1_500_000)).toBe('1.5M');
+      expect(formatUsageValue(999_900_000)).toBe('999.9M');
+    });
+
+    it('rolls over to B suffix once counts reach a billion (1000M)', () => {
+      expect(formatUsageValue(1_000_000_000)).toBe('1B');
+      expect(formatUsageValue(9_092_900_000)).toBe('9.1B');
+      expect(formatUsageValue(10_285_700_000)).toBe('10.3B');
+    });
+  });
+
   describe('formatDate', () => {
     it('should format date correctly', () => {
       const date = new Date('2023-05-15T12:00:00Z');
@@ -255,6 +309,30 @@ describe('format', () => {
       const date = new Date('2023-05-15T12:00:00Z');
       const expectedFormat = dayjs(date).format('YYYY-MM-DD');
       expect(formatDate(date)).toBe(expectedFormat);
+    });
+  });
+
+  describe('formatSpendTime', () => {
+    it('should drop the year for entries from the current year', () => {
+      const date = dayjs().month(6).date(12).hour(12).minute(12).second(32);
+      expect(formatSpendTime(date.toDate())).toBe(date.format('MMM D HH:mm:ss'));
+    });
+
+    it('should keep the year for entries from another year', () => {
+      const date = dayjs().subtract(1, 'year').month(6).date(12);
+      expect(formatSpendTime(date.toDate())).toBe(date.format('MMM D, YYYY HH:mm:ss'));
+    });
+
+    it('should accept an ISO string', () => {
+      const iso = dayjs().subtract(2, 'year').startOf('year').toISOString();
+      expect(formatSpendTime(iso)).toBe(dayjs(iso).format('MMM D, YYYY HH:mm:ss'));
+    });
+
+    it('should fall back for empty and unparseable input', () => {
+      expect(formatSpendTime()).toBe('--');
+      expect(formatSpendTime(null)).toBe('--');
+      expect(formatSpendTime('')).toBe('--');
+      expect(formatSpendTime('not a date')).toBe('--');
     });
   });
 });

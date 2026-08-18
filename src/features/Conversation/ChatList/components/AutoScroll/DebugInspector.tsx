@@ -3,32 +3,79 @@
 import { memo } from 'react';
 import { createPortal } from 'react-dom';
 
+import { useDevDockStore } from '@/features/DevDock/store';
+import { useDevDockMounted } from '@/hooks/useDevDockMounted';
+
 import { messageStateSelectors, useConversationStore, virtuaListSelectors } from '../../../store';
+import { AT_BOTTOM_THRESHOLD } from './const';
 
-/**
- * 判断是否在底部的阈值（单位：px）
- * 当距离底部小于等于此值时，认为在底部
- */
-export const AT_BOTTOM_THRESHOLD = 300;
+export const ScrollDebugThresholdOverlay = memo<{ atBottom: boolean }>(({ atBottom }) => {
+  const mounted = useDevDockMounted();
+  const enabled = useDevDockStore((s) => s.scrollDebug);
+  if (!mounted || !enabled) return null;
 
-/**
- * 是否开启调试面板
- * 设为 true 可以显示滚动位置调试信息
- */
-export const OPEN_DEV_INSPECTOR = false;
+  return (
+    <div
+      style={{
+        bottom: 0,
+        left: 0,
+        pointerEvents: 'none',
+        position: 'absolute',
+        right: 0,
+      }}
+    >
+      <div
+        style={{
+          background: atBottom ? '#22c55e' : '#ef4444',
+          height: 2,
+          left: 0,
+          opacity: 0.5,
+          position: 'absolute',
+          right: 0,
+          top: -AT_BOTTOM_THRESHOLD,
+        }}
+      />
+      <div
+        style={{
+          background: atBottom
+            ? 'linear-gradient(to top, rgba(34, 197, 94, 0.15), transparent)'
+            : 'linear-gradient(to top, rgba(239, 68, 68, 0.1), transparent)',
+          height: AT_BOTTOM_THRESHOLD,
+          left: 0,
+          position: 'absolute',
+          right: 0,
+          top: -AT_BOTTOM_THRESHOLD,
+        }}
+      />
+      <div
+        style={{
+          background: atBottom ? '#22c55e' : '#ef4444',
+          height: 2,
+          width: '100%',
+        }}
+      />
+    </div>
+  );
+});
+
+ScrollDebugThresholdOverlay.displayName = 'ScrollDebugThresholdOverlay';
 
 const DebugInspector = memo(() => {
+  const mounted = useDevDockMounted();
+  const enabled = useDevDockStore((s) => s.scrollDebug);
   const atBottom = useConversationStore(virtuaListSelectors.atBottom);
   const isScrolling = useConversationStore(virtuaListSelectors.isScrolling);
   const isGenerating = useConversationStore(messageStateSelectors.isAIGenerating);
   const virtuaScrollMethods = useConversationStore((s) => s.virtuaScrollMethods);
+
+  if (!mounted || !enabled) return null;
 
   const shouldAutoScroll = atBottom && isGenerating && !isScrolling;
   const scrollOffset = virtuaScrollMethods?.getScrollOffset?.() ?? 0;
   const scrollSize = virtuaScrollMethods?.getScrollSize?.() ?? 0;
   const viewportSize = virtuaScrollMethods?.getViewportSize?.() ?? 0;
   const distanceToBottom = scrollSize - scrollOffset - viewportSize;
-  // 可视化计算
+  // Visual calculation
   const visualHeight = 120;
   const scale = scrollSize > 0 ? visualHeight / scrollSize : 0;
   const viewportVisualHeight = Math.max(viewportSize * scale, 10);
@@ -51,7 +98,7 @@ const DebugInspector = memo(() => {
         zIndex: 9999,
       }}
     >
-      {/* 滚动条可视化 */}
+      {/* Scroll bar visualization */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
         <div style={{ color: '#9ca3af', fontSize: 10 }}>Scroll Position</div>
         <div
@@ -63,7 +110,7 @@ const DebugInspector = memo(() => {
             width: 24,
           }}
         >
-          {/* threshold 区域 (底部 200px) */}
+          {/* Threshold area (bottom 200px) */}
           <div
             style={{
               background: atBottom ? 'rgba(34, 197, 94, 0.3)' : 'rgba(239, 68, 68, 0.3)',
@@ -75,7 +122,7 @@ const DebugInspector = memo(() => {
               right: 0,
             }}
           />
-          {/* 当前视口位置 */}
+          {/* Current viewport position */}
           <div
             style={{
               background: atBottom ? '#22c55e' : '#3b82f6',
@@ -88,7 +135,7 @@ const DebugInspector = memo(() => {
               transition: 'top 0.1s',
             }}
           />
-          {/* threshold 线 */}
+          {/* Threshold line */}
           <div
             style={{
               background: '#f59e0b',
@@ -105,7 +152,7 @@ const DebugInspector = memo(() => {
         </div>
       </div>
 
-      {/* 数值信息 */}
+      {/* Numeric information */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
         <div style={{ color: '#9ca3af', fontSize: 10 }}>
           scrollSize: <span style={{ color: 'white' }}>{Math.round(scrollSize)}px</span>

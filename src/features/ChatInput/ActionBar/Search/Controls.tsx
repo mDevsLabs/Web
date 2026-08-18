@@ -2,16 +2,19 @@ import { Center, Flexbox, Icon } from '@lobehub/ui';
 import { GlobeOffIcon } from '@lobehub/ui/icons';
 import { Divider } from 'antd';
 import { createStaticStyles, cssVar, cx } from 'antd-style';
-import { type LucideIcon, SparkleIcon } from 'lucide-react';
+import { type LucideIcon } from 'lucide-react';
+import { SparkleIcon } from 'lucide-react';
 import { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { usePermission } from '@/hooks/usePermission';
 import { useAgentStore } from '@/store/agent';
-import { agentByIdSelectors, chatConfigByIdSelectors } from '@/store/agent/selectors';
+import { chatConfigByIdSelectors } from '@/store/agent/selectors';
 import { aiModelSelectors, aiProviderSelectors, useAiInfraStore } from '@/store/aiInfra';
 import { type SearchMode } from '@/types/search';
 
 import { useAgentId } from '../../hooks/useAgentId';
+import { useEffectiveModel } from '../../hooks/useEffectiveModel';
 import { useUpdateAgentConfig } from '../../hooks/useUpdateAgentConfig';
 import FCSearchModel from './FCSearchModel';
 import ModelBuiltinSearch from './ModelBuiltinSearch';
@@ -67,15 +70,21 @@ const Item = memo<NetworkOption>(({ value, description, icon, label }) => {
   const agentId = useAgentId();
   const { updateAgentChatConfig } = useUpdateAgentConfig();
   const mode = useAgentStore((s) => chatConfigByIdSelectors.getSearchModeById(agentId)(s));
+  const { allowed: canCreate } = usePermission('create_content');
 
   return (
     <Flexbox
+      horizontal
       align={'flex-start'}
       className={cx(styles.option, mode === value && styles.active)}
       gap={12}
-      horizontal
       key={value}
+      style={{
+        cursor: canCreate ? undefined : 'not-allowed',
+        opacity: canCreate ? undefined : 0.5,
+      }}
       onClick={async () => {
+        if (!canCreate) return;
         await updateAgentChatConfig({ searchMode: value });
       }}
     >
@@ -94,10 +103,10 @@ const Controls = memo(() => {
   const { t } = useTranslation('chat');
   const agentId = useAgentId();
   const { updateAgentChatConfig } = useUpdateAgentConfig();
+  const { allowed: canCreate } = usePermission('create_content');
 
-  const [model, provider, useModelBuiltinSearch, searchMode] = useAgentStore((s) => [
-    agentByIdSelectors.getAgentModelById(agentId)(s),
-    agentByIdSelectors.getAgentModelProviderById(agentId)(s),
+  const { model, provider } = useEffectiveModel(agentId);
+  const [useModelBuiltinSearch, searchMode] = useAgentStore((s) => [
     chatConfigByIdSelectors.getUseModelBuiltinSearchById(agentId)(s),
     chatConfigByIdSelectors.getChatConfigById(agentId)(s).searchMode,
   ]);
@@ -117,10 +126,14 @@ const Controls = memo(() => {
   );
 
   useEffect(() => {
-    if (isModelBuiltinSearchInternal && (searchMode ?? 'off') === 'off') {
-      updateAgentChatConfig({ searchMode: 'auto' });
+    if (!canCreate) return;
+    if (isModelBuiltinSearchInternal && (searchMode ?? 'auto') === 'off') {
+      // Auto-correction for a model whose search can't be turned off — the user
+      // didn't touch the toggle, so a rejected write must stay silent instead of
+      // reporting a change they never made (automatic corrections must not trigger phantom save-error toasts).
+      updateAgentChatConfig({ searchMode: 'auto' }, { showErrorMessage: false });
     }
-  }, [isModelBuiltinSearchInternal, searchMode, updateAgentChatConfig]);
+  }, [canCreate, isModelBuiltinSearchInternal, searchMode, updateAgentChatConfig]);
 
   const options: NetworkOption[] = isModelBuiltinSearchInternal
     ? [
@@ -163,8 +176,8 @@ const Controls = memo(() => {
         <Item {...option} key={option.value} />
       ))}
       {showDivider && <Divider style={{ margin: 0 }} />}
-      {showModelBuiltinSearch && <ModelBuiltinSearch />}
-      {showFCSearchModel && <FCSearchModel />}
+      {showModelBuiltinSearch && <ModelBuiltinSearch disabled={!canCreate} />}
+      {showFCSearchModel && <FCSearchModel disabled={!canCreate} />}
     </Flexbox>
   );
 });

@@ -1,8 +1,8 @@
 // @vitest-environment node
 import { ModelProvider } from 'model-bank';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { LobeOpenAICompatibleRuntime } from '../../core/BaseAI';
+import type { LobeOpenAICompatibleRuntime } from '../../core/BaseAI';
 import { testProvider } from '../../providerTestUtils';
 import { LobeWenxinAI, params } from './index';
 
@@ -141,6 +141,25 @@ describe('LobeWenxinAI - Custom Features', () => {
     });
   });
 
+  describe('handlePollVideoStatus', () => {
+    it('should strip /v2 from baseURL when polling video status', async () => {
+      global.fetch = vi.fn().mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ status: 'processing', task_id: 'task-123' }),
+      });
+
+      await params.handlePollVideoStatus!('task-123', {
+        apiKey: 'test-key',
+        baseURL: 'https://qianfan.baidubce.com/v2',
+        provider: 'wenxin',
+      });
+
+      const url = (global.fetch as any).mock.calls[0][0];
+      expect(url).toBe('https://qianfan.baidubce.com/video/generations?task_id=task-123');
+      expect(url).not.toContain('/v2/');
+    });
+  });
+
   describe('handlePayload', () => {
     it('should transform payload without enabledSearch', () => {
       const payload = {
@@ -259,6 +278,33 @@ describe('LobeWenxinAI - Custom Features', () => {
 
       const result2 = params.chatCompletion!.handlePayload!(payloadWithStreamFalse as any);
       expect(result2.stream).toBe(true);
+    });
+
+    it('should only send thinking_budget for budget-only models without thinking type', () => {
+      const payload = {
+        messages: [{ role: 'user', content: 'Hello' }],
+        model: 'deepseek-r1-250528',
+        thinking: {
+          budget_tokens: 2048,
+        },
+      };
+
+      const result = params.chatCompletion!.handlePayload!(payload as any);
+
+      expect(result.enable_thinking).toBeUndefined();
+      expect(result.thinking_budget).toBe(2048);
+    });
+
+    it('should not send thinking_budget when thinking budget is not provided', () => {
+      const payload = {
+        messages: [{ role: 'user', content: 'Hello' }],
+        model: 'deepseek-r1-250528',
+        thinking: {},
+      };
+
+      const result = params.chatCompletion!.handlePayload!(payload as any);
+
+      expect(result.thinking_budget).toBeUndefined();
     });
   });
 });

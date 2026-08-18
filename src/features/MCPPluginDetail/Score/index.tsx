@@ -9,8 +9,8 @@ import {
   sortItemsByPriority,
 } from '@/features/MCP/calculateScore';
 import { useScoreList } from '@/features/MCP/useScoreList';
+import Title from '@/routes/(main)/community/features/Title';
 
-import Title from '../../../app/[variants]/(main)/community/features/Title';
 import { useDetailContext } from '../DetailProvider';
 import GithubBadge from './GithubBadge';
 import ScoreList from './ScoreList';
@@ -28,11 +28,11 @@ const Score = memo(() => {
     deploymentOptions,
   } = useDetailContext();
 
-  // 使用工具函数计算所有的 has* 值
+  // Use utility function to calculate all has* values
   const scoreFlags = calculateScoreFlags({
     deploymentOptions,
     github,
-    isClaimed: false, // 详情页暂时没有 claimed 状态
+    isClaimed: false, // Detail page does not have claimed state yet
     isValidated,
     overview,
     promptsCount,
@@ -40,31 +40,31 @@ const Score = memo(() => {
     toolsCount,
   });
 
-  // 计算总分和评级
+  // Calculate total score and grade
   const scoreItems = createScoreItems(scoreFlags);
   const scoreResult = calculateScore(scoreItems);
 
-  // 使用新的 hook 创建评分项目列表
+  // Use the new hook to create the score item list
   const scoreListItems = useScoreList();
 
-  // 使用工具函数排序
+  // Sort using utility function
   const sortedScoreListItems = sortItemsByPriority(scoreListItems);
 
   return (
     <Flexbox gap={16}>
-      {/* 总分显示 */}
+      {/* Total score display */}
       <TotalScore
         isValidated={isValidated}
+        scoreResult={scoreResult}
         scoreItems={scoreListItems.map((item) => ({
           check: item.check,
           required: item.required,
           title: item.title,
           weight: item.weight,
         }))}
-        scoreResult={scoreResult}
       />
 
-      {/* 评分明细 */}
+      {/* Score details */}
 
       <Grid rows={2}>
         <Flexbox gap={16}>

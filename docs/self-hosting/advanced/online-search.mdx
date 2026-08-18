@@ -51,6 +51,41 @@ Supported crawler types are listed below:
 
 ---
 
+## `JINA_USE_CN_DOMAINS`
+
+Switch Jina Reader/Search to the mainland China fallback domains.
+
+```env
+JINA_USE_CN_DOMAINS=true
+```
+
+When enabled, LobeHub replaces the Jina endpoints as follows:
+
+- `https://r.jina.ai` → `https://r.jinaai.cn`
+- `https://s.jina.ai` → `https://s.jinaai.cn`
+
+> 📌 Useful when `jina.ai` is unreachable from mainland China. Authentication and API behavior stay the same.
+
+---
+
+## `CRAWL_CONCURRENCY`
+
+Controls crawler concurrency per crawl task. The default is `3`. On low-resource servers, use `1` to reduce CPU spikes.
+
+```env
+CRAWL_CONCURRENCY=3
+```
+
+## `CRAWLER_RETRY`
+
+Controls retry attempts per URL on crawl failures. The default is `1` (up to 2 attempts total).
+
+```env
+CRAWLER_RETRY=1
+```
+
+---
+
 ## `SEARCH_PROVIDERS`
 
 Configure which search engine providers to use for web search.
@@ -191,7 +226,7 @@ This URL should point to a functional SearXNG instance. You can choose to self-h
 
 You can find publicly available SearXNG instances in the [SearXNG instance list](https://searx.space/). Choose an instance that is fast and reliable, and then configure its URL in LobeHub.
 
-> Note that the `searxng` you use must have `json` output enabled; otherwise, the `lobe-chat` call will result in an error. If self-hosting, find the `searxng` configuration file and add `json` as shown below.
+> Note that the `searxng` you use must have `json` output enabled; otherwise, the `lobehub` call will result in an error. If self-hosting, find the `searxng` configuration file and add `json` as shown below.
 
 ```bash
 $ vi searxng/settings.yml
@@ -214,6 +249,6 @@ If AI can answer these time-sensitive questions, it indicates that the online se
 
 ## References
 
-- [LobeHub Online Search RFC Discussion](https://github.com/lobehub/lobe-chat/discussions/6447)
+- [LobeHub Online Search RFC Discussion](https://github.com/lobehub/lobehub/discussions/6447)
 - [SearXNG GitHub Repository](https://github.com/searxng/searxng)
 - [Discussion on Enabling JSON Output for SearXNG](https://github.com/searxng/searxng/discussions/3542)

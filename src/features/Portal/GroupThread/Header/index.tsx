@@ -1,3 +1,4 @@
+import { agentDisplayName } from '@lobechat/types';
 import { ActionIcon, Avatar, Flexbox } from '@lobehub/ui';
 import { cssVar } from 'antd-style';
 import { t } from 'i18next';
@@ -24,8 +25,11 @@ const Header = memo(() => {
 
   return (
     <NavHeader
+      paddingBlock={6}
+      paddingInline={8}
+      showTogglePanelButton={false}
       left={
-        <Flexbox align={'center'} gap={8} horizontal>
+        <Flexbox horizontal align={'center'} gap={8}>
           <Avatar
             avatar={currentAgent?.avatar || DEFAULT_AVATAR}
             background={currentAgent?.backgroundColor ?? undefined}
@@ -33,18 +37,15 @@ const Header = memo(() => {
             size={20}
           />
           <div style={{ fontWeight: 600 }}>
-            {currentAgent?.title || t('defaultSession', { ns: 'common' })}
+            {agentDisplayName(currentAgent, t('defaultSession', { ns: 'common' }))}
           </div>
         </Flexbox>
       }
-      paddingBlock={6}
-      paddingInline={8}
       right={
-        <Flexbox gap={4} horizontal>
-          <ActionIcon icon={XIcon} onClick={close} size={'small'} />
+        <Flexbox horizontal gap={4}>
+          <ActionIcon icon={XIcon} size={'small'} onClick={close} />
         </Flexbox>
       }
-      showTogglePanelButton={false}
       style={{
         background: cssVar.colorBgContainer,
       }}

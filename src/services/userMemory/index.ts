@@ -1,11 +1,11 @@
-import type {
-  ActivityMemoryItemSchema,
-  AddIdentityActionSchema,
-  ContextMemoryItemSchema,
-  ExperienceMemoryItemSchema,
-  PreferenceMemoryItemSchema,
-  RemoveIdentityActionSchema,
-  UpdateIdentityActionSchema,
+import {
+  type ActivityMemoryItemSchema,
+  type AddIdentityActionSchema,
+  type ContextMemoryItemSchema,
+  type ExperienceMemoryItemSchema,
+  type PreferenceMemoryItemSchema,
+  type RemoveIdentityActionSchema,
+  type UpdateIdentityActionSchema,
 } from '@lobechat/memory-user-memory/schemas';
 import {
   type ActivityListParams,
@@ -20,6 +20,8 @@ import {
   type IdentityListParams,
   type IdentityListResult,
   type LayersEnum,
+  type QueryTaxonomyOptionsParams,
+  type QueryTaxonomyOptionsResult,
   type RemoveIdentityMemoryResult,
   type SearchMemoryParams,
   type SearchMemoryResult,
@@ -121,6 +123,12 @@ class UserMemoryService {
 
   queryIdentityRoles = async (params?: { page?: number; size?: number }) => {
     return lambdaClient.userMemories.queryIdentityRoles.query(params);
+  };
+
+  queryTaxonomyOptions = async (
+    params?: QueryTaxonomyOptionsParams,
+  ): Promise<QueryTaxonomyOptionsResult> => {
+    return lambdaClient.userMemories.queryTaxonomyOptions.query(params);
   };
 
   /**

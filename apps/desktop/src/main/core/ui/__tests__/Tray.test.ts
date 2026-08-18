@@ -1,8 +1,10 @@
-import { Tray as ElectronTray, Menu, app, nativeImage } from 'electron';
+import { app, Menu, nativeImage, Tray as ElectronTray } from 'electron';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import type { App } from '../../App';
 import { Tray } from '../Tray';
+
+const mockEnv = vi.hoisted(() => ({ isWindows: false }));
 
 // Mock electron modules
 vi.mock('electron', () => ({
@@ -33,6 +35,8 @@ vi.mock('@/const/dir', () => ({
   resourcesDir: '/mock/resources',
 }));
 
+vi.mock('@/const/env', () => mockEnv);
+
 describe('Tray', () => {
   let tray: Tray;
   let mockApp: App;
@@ -42,11 +46,13 @@ describe('Tray', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+    mockEnv.isWindows = false;
 
     // Mock Electron Tray instance
     mockElectronTray = {
       setToolTip: vi.fn(),
       setContextMenu: vi.fn(),
+      popUpContextMenu: vi.fn(),
       setImage: vi.fn(),
       on: vi.fn(),
       destroy: vi.fn(),
@@ -74,11 +80,16 @@ describe('Tray', () => {
         showMainWindow: vi.fn(),
         getMainWindow: vi.fn(() => mockMainWindow),
       },
+      screenCaptureManager: {
+        startSession: vi.fn(),
+      },
     } as unknown as App;
 
     // Mock electron constructors
     vi.mocked(ElectronTray).mockImplementation(() => mockElectronTray);
-    vi.mocked(nativeImage.createFromPath).mockReturnValue({} as any);
+    vi.mocked(nativeImage.createFromPath).mockReturnValue({
+      setTemplateImage: vi.fn(),
+    } as any);
     vi.mocked(Menu.buildFromTemplate).mockReturnValue({} as any);
   });
 
@@ -168,7 +179,7 @@ describe('Tray', () => {
       expect(mockElectronTray.on).toHaveBeenCalledWith('click', expect.any(Function));
     });
 
-    it('should set default context menu', () => {
+    it('should build the default context menu and store it in-house', () => {
       tray = new Tray(
         {
           iconPath: 'tray.png',
@@ -178,7 +189,24 @@ describe('Tray', () => {
       );
 
       expect(Menu.buildFromTemplate).toHaveBeenCalled();
-      expect(mockElectronTray.setContextMenu).toHaveBeenCalled();
+      // We no longer hand the menu to Electron directly; macOS would hijack
+      // left-click if we did. The menu is popped up manually on right-click.
+      expect(mockElectronTray.setContextMenu).not.toHaveBeenCalled();
+    });
+
+    it('should register click and right-click listeners only', () => {
+      tray = new Tray(
+        {
+          iconPath: 'tray.png',
+          identifier: 'test-tray',
+        },
+        mockApp,
+      );
+
+      const events = mockElectronTray.on.mock.calls.map((c: any[]) => c[0]);
+      expect(events).toContain('click');
+      expect(events).toContain('right-click');
+      expect(events).not.toContain('double-click');
     });
 
     it('should handle errors when creating tray', () => {
@@ -221,7 +249,9 @@ describe('Tray', () => {
           expect.objectContaining({ label: 'Quit' }),
         ]),
       );
-      expect(mockElectronTray.setContextMenu).toHaveBeenCalled();
+      // Menu is stored for manual popup on right-click — never handed to
+      // `_tray.setContextMenu`, which would steal left-click on macOS.
+      expect(mockElectronTray.setContextMenu).not.toHaveBeenCalled();
     });
 
     it('should set custom context menu when template provided', () => {
@@ -233,7 +263,37 @@ describe('Tray', () => {
       tray.setContextMenu(customTemplate);
 
       expect(Menu.buildFromTemplate).toHaveBeenCalledWith(customTemplate);
-      expect(mockElectronTray.setContextMenu).toHaveBeenCalled();
+      expect(mockElectronTray.setContextMenu).not.toHaveBeenCalled();
+    });
+
+    it('should pop up the stored menu on right-click', () => {
+      // beforeEach cleared mocks after constructing the tray, so capture the
+      // right-click handler from a fresh instance.
+      const mockTrayForRightClick = {
+        setToolTip: vi.fn(),
+        setContextMenu: vi.fn(),
+        popUpContextMenu: vi.fn(),
+        setImage: vi.fn(),
+        on: vi.fn(),
+        destroy: vi.fn(),
+        displayBalloon: vi.fn(),
+      };
+      vi.mocked(ElectronTray).mockImplementationOnce(() => mockTrayForRightClick as any);
+
+      const builtMenu = { _mockMenu: true } as any;
+      vi.mocked(Menu.buildFromTemplate).mockReturnValue(builtMenu);
+
+      const freshTray = new Tray({ iconPath: 'tray.png', identifier: 'rc-tray' }, mockApp);
+      freshTray.setContextMenu();
+
+      const rightClickHandler = mockTrayForRightClick.on.mock.calls.find(
+        (c: any[]) => c[0] === 'right-click',
+      )?.[1];
+      expect(rightClickHandler).toBeDefined();
+
+      rightClickHandler?.();
+
+      expect(mockTrayForRightClick.popUpContextMenu).toHaveBeenCalledWith(builtMenu);
     });
 
     it('should call showMainWindow when Show Main Window is clicked', () => {
@@ -259,53 +319,60 @@ describe('Tray', () => {
     });
   });
 
-  describe('onClick', () => {
-    beforeEach(() => {
-      tray = new Tray(
-        {
-          iconPath: 'tray.png',
-          identifier: 'test-tray',
-        },
-        mockApp,
-      );
+  describe('mouse interaction', () => {
+    it.each(['click', 'right-click'])('should open the same menu on %s', (event) => {
+      const builtMenu = { _mockMenu: true } as any;
+      vi.mocked(Menu.buildFromTemplate).mockReturnValue(builtMenu);
+      tray = new Tray({ iconPath: 'tray.png', identifier: 'test-tray' }, mockApp);
+      const handler = mockElectronTray.on.mock.calls.find((call: any[]) => call[0] === event)?.[1];
+
+      handler?.();
+
+      expect(mockElectronTray.popUpContextMenu).toHaveBeenCalledWith(builtMenu);
+      expect(mockApp.screenCaptureManager.startSession).not.toHaveBeenCalled();
+      expect(mockApp.browserManager.showMainWindow).not.toHaveBeenCalled();
     });
 
-    it('should hide window when it is visible and focused', () => {
-      mockBrowserWindow.isVisible.mockReturnValue(true);
-      mockBrowserWindow.isFocused.mockReturnValue(true);
+    it('should preserve Windows double-click to show the main window', () => {
+      vi.useFakeTimers();
+      mockEnv.isWindows = true;
+      const builtMenu = { _mockMenu: true } as any;
+      vi.mocked(Menu.buildFromTemplate).mockReturnValue(builtMenu);
+      tray = new Tray({ iconPath: 'tray.png', identifier: 'windows-tray' }, mockApp);
+      const clickHandler = mockElectronTray.on.mock.calls.find(
+        (call: any[]) => call[0] === 'click',
+      )?.[1];
+      const doubleClickHandler = mockElectronTray.on.mock.calls.find(
+        (call: any[]) => call[0] === 'double-click',
+      )?.[1];
 
-      tray.onClick();
+      clickHandler?.();
+      doubleClickHandler?.();
+      vi.advanceTimersByTime(1000);
 
-      expect(mockMainWindow.hide).toHaveBeenCalled();
-      expect(mockMainWindow.show).not.toHaveBeenCalled();
+      expect(doubleClickHandler).toBeDefined();
+      expect(mockElectronTray.popUpContextMenu).not.toHaveBeenCalled();
+      expect(mockApp.browserManager.showMainWindow).toHaveBeenCalledTimes(1);
+      vi.useRealTimers();
     });
 
-    it('should show and focus window when it is not visible', () => {
-      mockBrowserWindow.isVisible.mockReturnValue(false);
-      mockBrowserWindow.isFocused.mockReturnValue(false);
+    it('should still open the tray menu on a Windows single click', () => {
+      vi.useFakeTimers();
+      mockEnv.isWindows = true;
+      const builtMenu = { _mockMenu: true } as any;
+      vi.mocked(Menu.buildFromTemplate).mockReturnValue(builtMenu);
+      tray = new Tray({ iconPath: 'tray.png', identifier: 'windows-tray' }, mockApp);
+      const clickHandler = mockElectronTray.on.mock.calls.find(
+        (call: any[]) => call[0] === 'click',
+      )?.[1];
 
-      tray.onClick();
+      clickHandler?.();
+      expect(mockElectronTray.popUpContextMenu).not.toHaveBeenCalled();
+      vi.advanceTimersByTime(250);
 
-      expect(mockMainWindow.show).toHaveBeenCalled();
-      expect(mockBrowserWindow.focus).toHaveBeenCalled();
-      expect(mockMainWindow.hide).not.toHaveBeenCalled();
-    });
-
-    it('should show and focus window when it is visible but not focused', () => {
-      mockBrowserWindow.isVisible.mockReturnValue(true);
-      mockBrowserWindow.isFocused.mockReturnValue(false);
-
-      tray.onClick();
-
-      expect(mockMainWindow.show).toHaveBeenCalled();
-      expect(mockBrowserWindow.focus).toHaveBeenCalled();
-      expect(mockMainWindow.hide).not.toHaveBeenCalled();
-    });
-
-    it('should handle case when main window is null', () => {
-      vi.mocked(mockApp.browserManager.getMainWindow).mockReturnValue(null);
-
-      expect(() => tray.onClick()).not.toThrow();
+      expect(mockElectronTray.popUpContextMenu).toHaveBeenCalledWith(builtMenu);
+      expect(mockApp.browserManager.showMainWindow).not.toHaveBeenCalled();
+      vi.useRealTimers();
     });
   });
 
@@ -504,11 +571,13 @@ describe('Tray', () => {
       tray.updateTooltip('New Tooltip');
       expect(mockElectronTray.setToolTip).toHaveBeenCalledWith('New Tooltip');
 
-      // Test click behavior
-      mockBrowserWindow.isVisible.mockReturnValue(true);
-      mockBrowserWindow.isFocused.mockReturnValue(true);
-      tray.onClick();
-      expect(mockMainWindow.hide).toHaveBeenCalled();
+      // Test click behavior — opens the stored native menu
+      const clickHandler = mockElectronTray.on.mock.calls.find(
+        (call: any[]) => call[0] === 'click',
+      )?.[1];
+      clickHandler?.();
+      expect(mockElectronTray.popUpContextMenu).toHaveBeenCalled();
+      expect(mockApp.screenCaptureManager.startSession).not.toHaveBeenCalled();
 
       // Destroy
       tray.destroy();

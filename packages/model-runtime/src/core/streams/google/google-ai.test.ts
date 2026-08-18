@@ -1,8 +1,13 @@
-import { GenerateContentResponse } from '@google/genai';
+import type { GenerateContentResponse } from '@google/genai';
 import { describe, expect, it, vi } from 'vitest';
 
+import { serializeScopedSignature, type SignatureScope } from '../../../utils/signatureScope';
 import * as uuidModule from '../../../utils/uuid';
 import { GoogleGenerativeAIStream, LOBE_ERROR_KEY } from './index';
+
+const thoughtSignatureScope: SignatureScope = { fingerprint: 'a'.repeat(32) };
+const scopedThoughtSignature = (signature: string) =>
+  serializeScopedSignature(signature, thoughtSignatureScope, 'thought_signature')!;
 
 /**
  * Helper function to decode stream chunks into string array
@@ -155,8 +160,48 @@ describe('GoogleGenerativeAIStream', () => {
         `data: "STOP"\n\n`,
         'id: chat_E5M9dFKw\n',
         'event: usage\n',
-        `data: {"inputCachedTokens":0,"inputImageTokens":0,"inputTextTokens":0,"outputImageTokens":0,"outputTextTokens":0,"totalInputTokens":0,"totalOutputTokens":0,"totalTokens":0}\n\n`,
+        `data: {"inputCacheMissTokens":0,"inputCachedTokens":0,"inputImageTokens":0,"inputTextTokens":0,"outputImageTokens":0,"outputTextTokens":0,"totalInputTokens":0,"totalOutputTokens":0,"totalTokens":0}\n\n`,
       ]);
+    });
+
+    it('should expose missing usage diagnostics when finishReason has no usageMetadata', async () => {
+      vi.spyOn(uuidModule, 'nanoid').mockReturnValueOnce('missingUsage');
+      const mockGoogleStream = new ReadableStream({
+        start(controller) {
+          controller.enqueue({
+            candidates: [
+              {
+                content: { parts: [{ text: '' }], role: 'model' },
+                finishReason: 'STOP',
+                index: 0,
+              },
+            ],
+            modelVersion: 'gemini-test',
+          } as unknown as GenerateContentResponse);
+          controller.close();
+        },
+      });
+      const onFinal = vi.fn();
+
+      const protocolStream = GoogleGenerativeAIStream(mockGoogleStream, {
+        callbacks: { onFinal },
+        payload: { model: 'gemini-3.1-flash-lite', provider: 'google' },
+      });
+
+      await decodeStreamChunks(protocolStream);
+
+      expect(onFinal).toHaveBeenCalledWith(
+        expect.objectContaining({
+          usageMissingDiagnostics: {
+            finishReason: 'STOP',
+            hasUsageMetadata: false,
+            model: 'gemini-3.1-flash-lite',
+            provider: 'google',
+            source: 'google_generative_ai',
+            terminalEventType: 'GenerateContentResponse.candidates.finishReason',
+          },
+        }),
+      );
     });
 
     it('should return undefined data without text', async () => {
@@ -251,16 +296,16 @@ describe('GoogleGenerativeAIStream', () => {
       expect(chunks).toEqual(
         [
           'id: chat_1',
-          'event: content_part',
-          'data: {"content":"234","partType":"text"}\n',
+          'event: text',
+          'data: "234"\n',
 
           'id: chat_1',
           'event: text',
           'data: ""\n',
 
           'id: chat_1',
-          'event: content_part',
-          `data: {"content":"567890\\n","partType":"text"}\n`,
+          'event: text',
+          `data: "567890\\n"\n`,
           // stop
           'id: chat_1',
           'event: stop',
@@ -384,12 +429,12 @@ describe('GoogleGenerativeAIStream', () => {
           `data: {"content":"**Finalizing Interpretation**\\n\\n","inReasoning":true,"partType":"text"}\n`,
 
           'id: chat_1',
-          'event: content_part',
-          `data: {"content":"简单来说，","partType":"text"}\n`,
+          'event: text',
+          'data: "简单来说，"\n',
 
           'id: chat_1',
-          'event: content_part',
-          `data: {"content":"文本内容。","partType":"text"}\n`,
+          'event: text',
+          'data: "文本内容。"\n',
           // stop
           'id: chat_1',
           'event: stop',
@@ -471,12 +516,12 @@ describe('GoogleGenerativeAIStream', () => {
       expect(chunks).toEqual(
         [
           'id: chat_1',
-          'event: content_part',
-          'data: {"content":"234","partType":"text"}\n',
+          'event: text',
+          'data: "234"\n',
 
           'id: chat_1',
-          'event: content_part',
-          `data: {"content":"567890\\n","partType":"text"}\n`,
+          'event: text',
+          'data: "567890\\n"\n',
           // stop
           'id: chat_1',
           'event: stop',
@@ -567,7 +612,7 @@ describe('GoogleGenerativeAIStream', () => {
         // usage
         'id: chat_1\n',
         'event: usage\n',
-        `data: {"inputCacheMissTokens":1439,"inputCachedTokens":14286,"inputTextTokens":15725,"outputImageTokens":0,"outputTextTokens":1053,"totalInputTokens":15725,"totalOutputTokens":1053,"totalTokens":16778}\n\n`,
+        `data: {"inputCachedTextTokens":14286,"inputCacheMissTokens":1439,"inputCachedTokens":14286,"inputTextTokens":15725,"outputImageTokens":0,"outputTextTokens":1053,"totalInputTokens":15725,"totalOutputTokens":1053,"totalTokens":16778}\n\n`,
       ]);
     });
 
@@ -840,7 +885,7 @@ describe('GoogleGenerativeAIStream', () => {
 
           'id: chat_1',
           'event: grounding',
-          `data: {\"citations\":[{\"favicon\":\"npmjs.com\",\"title\":\"npmjs.com\",\"url\":\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AbF9wXG1234545\"},{\"favicon\":\"google.dev\",\"title\":\"google.dev\",\"url\":\"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AbF9wXE9288334\"}],\"searchQueries\":[\"sdk latest version\"]}\n`,
+          `data: {"citations":[{"favicon":"npmjs.com","title":"npmjs.com","url":"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AbF9wXG1234545"},{"favicon":"google.dev","title":"google.dev","url":"https://vertexaisearch.cloud.google.com/grounding-api-redirect/AbF9wXE9288334"}],"searchQueries":["sdk latest version"]}\n`,
           // stop
           'id: chat_1',
           'event: stop',
@@ -849,6 +894,269 @@ describe('GoogleGenerativeAIStream', () => {
           'id: chat_1',
           'event: usage',
           `data: {"inputTextTokens":9,"outputImageTokens":0,"outputTextTokens":122,"totalInputTokens":9,"totalOutputTokens":122,"totalTokens":131}\n`,
+        ].map((i) => i + '\n'),
+      );
+    });
+
+    it('should handle groundingMetadata with image search results', async () => {
+      vi.spyOn(uuidModule, 'nanoid').mockReturnValueOnce('1');
+
+      const data = [
+        {
+          text: 'Here are some images',
+          candidates: [
+            {
+              content: {
+                parts: [{ text: 'Here are some images' }],
+                role: 'model',
+              },
+              finishReason: 'STOP',
+              index: 0,
+              groundingMetadata: {
+                groundingChunks: [
+                  {
+                    web: {
+                      uri: 'https://example.com/article',
+                      title: 'example.com',
+                    },
+                  },
+                  {
+                    image: {
+                      imageUri: 'https://example.com/photo.jpg',
+                      sourceUri: 'https://example.com/page',
+                      title: 'Example Photo',
+                      domain: 'example.com',
+                    },
+                  },
+                  {
+                    image: {
+                      imageUri: 'https://another.com/img.png',
+                      sourceUri: 'https://another.com/gallery',
+                      title: 'Another Image',
+                      domain: 'another.com',
+                    },
+                  },
+                ],
+                webSearchQueries: ['example images'],
+                imageSearchQueries: ['example photo search'],
+              },
+            },
+          ],
+          usageMetadata: {
+            promptTokenCount: 5,
+            candidatesTokenCount: 10,
+            totalTokenCount: 15,
+            promptTokensDetails: [{ modality: 'TEXT', tokenCount: 5 }],
+          },
+          modelVersion: 'gemini-3.1-flash-image-preview',
+        },
+      ];
+
+      const mockGoogleStream = new ReadableStream({
+        start(controller) {
+          data.forEach((item) => controller.enqueue(item));
+          controller.close();
+        },
+      });
+
+      const protocolStream = GoogleGenerativeAIStream(mockGoogleStream);
+      const chunks = await decodeStreamChunks(protocolStream);
+
+      expect(chunks).toEqual(
+        [
+          'id: chat_1',
+          'event: text',
+          'data: "Here are some images"\n',
+
+          'id: chat_1',
+          'event: grounding',
+          `data: ${JSON.stringify({
+            citations: [
+              {
+                favicon: 'example.com',
+                title: 'example.com',
+                url: 'https://example.com/article',
+              },
+            ],
+            imageResults: [
+              {
+                domain: 'example.com',
+                imageUri: 'https://example.com/photo.jpg',
+                sourceUri: 'https://example.com/page',
+                title: 'Example Photo',
+              },
+              {
+                domain: 'another.com',
+                imageUri: 'https://another.com/img.png',
+                sourceUri: 'https://another.com/gallery',
+                title: 'Another Image',
+              },
+            ],
+            imageSearchQueries: ['example photo search'],
+            searchQueries: ['example images'],
+          })}\n`,
+
+          'id: chat_1',
+          'event: stop',
+          `data: "STOP"\n`,
+
+          'id: chat_1',
+          'event: usage',
+          `data: {"inputTextTokens":5,"outputImageTokens":0,"outputTextTokens":10,"totalInputTokens":5,"totalOutputTokens":10,"totalTokens":15}\n`,
+        ].map((i) => i + '\n'),
+      );
+    });
+
+    it('should handle groundingMetadata with only image search results (no web)', async () => {
+      vi.spyOn(uuidModule, 'nanoid').mockReturnValueOnce('1');
+
+      const data = [
+        {
+          text: 'Image only results',
+          candidates: [
+            {
+              content: {
+                parts: [{ text: 'Image only results' }],
+                role: 'model',
+              },
+              finishReason: 'STOP',
+              index: 0,
+              groundingMetadata: {
+                groundingChunks: [
+                  {
+                    image: {
+                      imageUri: 'https://img.example.com/cat.jpg',
+                      sourceUri: 'https://example.com/cats',
+                      title: 'Cat Photo',
+                      domain: 'example.com',
+                    },
+                  },
+                ],
+                imageSearchQueries: ['cute cats'],
+              },
+            },
+          ],
+          usageMetadata: {
+            promptTokenCount: 3,
+            candidatesTokenCount: 5,
+            totalTokenCount: 8,
+            promptTokensDetails: [{ modality: 'TEXT', tokenCount: 3 }],
+          },
+          modelVersion: 'gemini-3.1-flash-image-preview',
+        },
+      ];
+
+      const mockGoogleStream = new ReadableStream({
+        start(controller) {
+          data.forEach((item) => controller.enqueue(item));
+          controller.close();
+        },
+      });
+
+      const protocolStream = GoogleGenerativeAIStream(mockGoogleStream);
+      const chunks = await decodeStreamChunks(protocolStream);
+
+      expect(chunks).toEqual(
+        [
+          'id: chat_1',
+          'event: text',
+          'data: "Image only results"\n',
+
+          'id: chat_1',
+          'event: grounding',
+          `data: ${JSON.stringify({
+            imageResults: [
+              {
+                domain: 'example.com',
+                imageUri: 'https://img.example.com/cat.jpg',
+                sourceUri: 'https://example.com/cats',
+                title: 'Cat Photo',
+              },
+            ],
+            imageSearchQueries: ['cute cats'],
+          })}\n`,
+
+          'id: chat_1',
+          'event: stop',
+          `data: "STOP"\n`,
+
+          'id: chat_1',
+          'event: usage',
+          `data: {"inputTextTokens":3,"outputImageTokens":0,"outputTextTokens":5,"totalInputTokens":3,"totalOutputTokens":5,"totalTokens":8}\n`,
+        ].map((i) => i + '\n'),
+      );
+    });
+
+    it('should filter empty strings from searchQueries in groundingMetadata', async () => {
+      vi.spyOn(uuidModule, 'nanoid').mockReturnValueOnce('1');
+
+      const data = [
+        {
+          text: 'result',
+          candidates: [
+            {
+              content: { parts: [{ text: 'result' }], role: 'model' },
+              finishReason: 'STOP',
+              index: 0,
+              groundingMetadata: {
+                groundingChunks: [
+                  {
+                    web: {
+                      uri: 'https://vertexaisearch.cloud.google.com/grounding-api-redirect/abc',
+                      title: 'example.com',
+                    },
+                  },
+                ],
+                webSearchQueries: ['', '杭州天气', 'Hangzhou weather'],
+              },
+            },
+          ],
+          usageMetadata: {
+            promptTokenCount: 5,
+            candidatesTokenCount: 3,
+            totalTokenCount: 8,
+            promptTokensDetails: [{ modality: 'TEXT', tokenCount: 5 }],
+          },
+          modelVersion: 'gemini-3.1-flash-image-preview',
+        },
+      ];
+
+      const mockGoogleStream = new ReadableStream({
+        start(controller) {
+          data.forEach((item) => controller.enqueue(item));
+          controller.close();
+        },
+      });
+
+      const protocolStream = GoogleGenerativeAIStream(mockGoogleStream);
+      const chunks = await decodeStreamChunks(protocolStream);
+
+      expect(chunks).toEqual(
+        [
+          'id: chat_1',
+          'event: text',
+          'data: "result"\n',
+
+          'id: chat_1',
+          'event: grounding',
+          `data: ${JSON.stringify({
+            citations: [
+              {
+                favicon: 'example.com',
+                title: 'example.com',
+                url: 'https://vertexaisearch.cloud.google.com/grounding-api-redirect/abc',
+              },
+            ],
+            searchQueries: ['杭州天气', 'Hangzhou weather'],
+          })}\n`,
+
+          'id: chat_1',
+          'event: stop',
+          `data: "STOP"\n`,
+
+          'id: chat_1',
+          'event: usage',
+          `data: {"inputTextTokens":5,"outputImageTokens":0,"outputTextTokens":3,"totalInputTokens":5,"totalOutputTokens":3,"totalTokens":8}\n`,
         ].map((i) => i + '\n'),
       );
     });
@@ -866,6 +1174,7 @@ describe('GoogleGenerativeAIStream', () => {
                 parts: [
                   {
                     functionCall: {
+                      id: 'call_search_1',
                       name: 'grep____searchGitHub____mcp',
                       args: {
                         query: '"version":',
@@ -920,7 +1229,9 @@ describe('GoogleGenerativeAIStream', () => {
         },
       });
 
-      const protocolStream = GoogleGenerativeAIStream(mockGoogleStream);
+      const protocolStream = GoogleGenerativeAIStream(mockGoogleStream, {
+        payload: { thoughtSignatureScope },
+      });
 
       const chunks = await decodeStreamChunks(protocolStream);
 
@@ -928,7 +1239,7 @@ describe('GoogleGenerativeAIStream', () => {
         [
           'id: chat_1',
           'event: tool_calls',
-          'data: [{"function":{"arguments":"{\\"query\\":\\"\\\\\\\"version\\\\\\":\\",\\"repo\\":\\"lobehub/lobe-chat\\",\\"path\\":\\"package.json\\"}","name":"grep____searchGitHub____mcp"},"id":"grep____searchGitHub____mcp_0_abcd1234","index":0,"thoughtSignature":"123","type":"function"}]\n',
+          `data: [{"function":{"arguments":"{\\"query\\":\\"\\\\\\"version\\\\\\":\\",\\"repo\\":\\"lobehub/lobe-chat\\",\\"path\\":\\"package.json\\"}","name":"grep____searchGitHub____mcp"},"id":"call_search_1","index":0,"thoughtSignature":"${scopedThoughtSignature('123')}","type":"function"}]\n`,
 
           'id: chat_1',
           'event: stop',
@@ -1058,7 +1369,9 @@ describe('GoogleGenerativeAIStream', () => {
         },
       });
 
-      const protocolStream = GoogleGenerativeAIStream(mockGoogleStream);
+      const protocolStream = GoogleGenerativeAIStream(mockGoogleStream, {
+        payload: { thoughtSignatureScope },
+      });
 
       const chunks = await decodeStreamChunks(protocolStream);
 
@@ -1066,7 +1379,7 @@ describe('GoogleGenerativeAIStream', () => {
         [
           'id: chat_1',
           'event: tool_calls',
-          'data: [{"function":{"arguments":"{\\"location\\":\\"Paris\\"}","name":"get_current_temperature"},"id":"get_current_temperature_0_abcd1234","index":0,"thoughtSignature":"ErEDCq4DAdHtim...","type":"function"}]\n',
+          `data: [{"function":{"arguments":"{\\"location\\":\\"Paris\\"}","name":"get_current_temperature"},"id":"get_current_temperature_0_abcd1234","index":0,"thoughtSignature":"${scopedThoughtSignature('ErEDCq4DAdHtim...')}","type":"function"}]\n`,
 
           'id: chat_1',
           'event: tool_calls',
@@ -1103,7 +1416,7 @@ describe('GoogleGenerativeAIStream', () => {
               content: {
                 parts: [
                   {
-                    text: '**Planning the Solution**\n\nI\'m solidifying my plan...',
+                    text: "**Planning the Solution**\n\nI'm solidifying my plan...",
                     thought: true,
                   },
                 ],
@@ -1128,7 +1441,7 @@ describe('GoogleGenerativeAIStream', () => {
                 parts: [
                   {
                     functionCall: {
-                      name: 'lobe-gtd____createPlan____builtin',
+                      name: 'lobe-agent____createPlan',
                       args: {
                         goal: 'Fix Linear API Argument Validation Error',
                         description: 'Investigate the Linear API error.',
@@ -1161,7 +1474,7 @@ describe('GoogleGenerativeAIStream', () => {
                 parts: [
                   {
                     functionCall: {
-                      name: 'lobe-gtd____createTodos____builtin',
+                      name: 'lobe-agent____createTodos',
                       args: {
                         adds: [
                           'Verify Linear GraphQL API requirements',
@@ -1220,7 +1533,9 @@ describe('GoogleGenerativeAIStream', () => {
         },
       });
 
-      const protocolStream = GoogleGenerativeAIStream(mockGoogleStream);
+      const protocolStream = GoogleGenerativeAIStream(mockGoogleStream, {
+        payload: { thoughtSignatureScope },
+      });
 
       const chunks = await decodeStreamChunks(protocolStream);
 
@@ -1235,12 +1550,12 @@ describe('GoogleGenerativeAIStream', () => {
           // First tool call (createPlan)
           'id: chat_test',
           'event: tool_calls',
-          'data: [{"function":{"arguments":"{\\"goal\\":\\"Fix Linear API Argument Validation Error\\",\\"description\\":\\"Investigate the Linear API error.\\",\\"context\\":\\"The user is encountering a validation error.\\"}","name":"lobe-gtd____createPlan____builtin"},"id":"lobe-gtd____createPlan____builtin_0_tool_id_1","index":0,"thoughtSignature":"EoIYCv8XAXLI2nx+C18votz5l0A...","type":"function"}]\n',
+          `data: [{"function":{"arguments":"{\\"goal\\":\\"Fix Linear API Argument Validation Error\\",\\"description\\":\\"Investigate the Linear API error.\\",\\"context\\":\\"The user is encountering a validation error.\\"}","name":"lobe-agent____createPlan"},"id":"lobe-agent____createPlan_0_tool_id_1","index":0,"thoughtSignature":"${scopedThoughtSignature('EoIYCv8XAXLI2nx+C18votz5l0A...')}","type":"function"}]\n`,
 
           // Second tool call (createTodos) - should be a SEPARATE event with index:0
           'id: chat_test',
           'event: tool_calls',
-          'data: [{"function":{"arguments":"{\\"adds\\":[\\"Verify Linear GraphQL API requirements\\",\\"Determine if code needs to look up Team UUID\\",\\"Provide corrected code\\"]}","name":"lobe-gtd____createTodos____builtin"},"id":"lobe-gtd____createTodos____builtin_0_tool_id_2","index":0,"type":"function"}]\n',
+          'data: [{"function":{"arguments":"{\\"adds\\":[\\"Verify Linear GraphQL API requirements\\",\\"Determine if code needs to look up Team UUID\\",\\"Provide corrected code\\"]}","name":"lobe-agent____createTodos"},"id":"lobe-agent____createTodos_0_tool_id_2","index":0,"type":"function"}]\n',
 
           // Stop and usage
           'id: chat_test',
@@ -1383,7 +1698,85 @@ describe('GoogleGenerativeAIStream', () => {
       expect(chunks).toEqual([
         'id: chat_1\n',
         'event: error\n',
-        `data: {"body":{"context":{"promptFeedback":{"blockReason":"PROHIBITED_CONTENT"}},"message":"Your request may contain prohibited content. Please adjust your request to comply with the usage guidelines.","provider":"google"},"type":"ProviderBizError"}\n\n`,
+        `data: {"body":{"context":{"promptFeedback":{"blockReason":"PROHIBITED_CONTENT"}},"message":"The content may contain prohibited content. Please adjust it and try again.","provider":"google"},"type":"ProviderContentPolicyViolation"}\n\n`,
+      ]);
+    });
+
+    it('should handle blocked candidate finishReason (PROHIBITED_CONTENT)', async () => {
+      vi.spyOn(uuidModule, 'nanoid').mockReturnValueOnce('1');
+
+      const data = {
+        candidates: [
+          {
+            content: {},
+            finishMessage:
+              'The model output could not be generated. This output contains sensitive words that violate policies.',
+            finishReason: 'PROHIBITED_CONTENT',
+            index: 0,
+          },
+        ],
+        usageMetadata: {
+          candidatesTokenCount: 2,
+          promptTokenCount: 10,
+          promptTokensDetails: [{ modality: 'TEXT', tokenCount: 10 }],
+          totalTokenCount: 12,
+        },
+        modelVersion: 'gemini-3.1-flash-lite-preview',
+      };
+
+      const mockGoogleStream = new ReadableStream({
+        start(controller) {
+          controller.enqueue(data);
+          controller.close();
+        },
+      });
+
+      const protocolStream = GoogleGenerativeAIStream(mockGoogleStream);
+      const chunks = await decodeStreamChunks(protocolStream);
+
+      expect(chunks).toEqual([
+        'id: chat_1\n',
+        'event: usage\n',
+        `data: {"inputTextTokens":10,"outputImageTokens":0,"outputTextTokens":2,"totalInputTokens":10,"totalOutputTokens":2,"totalTokens":12}\n\n`,
+        'id: chat_1\n',
+        'event: error\n',
+        `data: {"body":{"context":{"finishMessage":"The model output could not be generated. This output contains sensitive words that violate policies.","finishReason":"PROHIBITED_CONTENT"},"message":"The content may contain prohibited content. Please adjust it and try again.","provider":"google"},"type":"ProviderContentPolicyViolation"}\n\n`,
+      ]);
+    });
+
+    it('should classify IMAGE_PROHIBITED_CONTENT as a content policy violation', async () => {
+      vi.spyOn(uuidModule, 'nanoid').mockReturnValueOnce('1');
+
+      const mockGoogleStream = new ReadableStream({
+        start(controller) {
+          controller.enqueue({
+            candidates: [
+              {
+                content: {},
+                finishReason: 'IMAGE_PROHIBITED_CONTENT',
+                index: 0,
+              },
+            ],
+            usageMetadata: {
+              candidatesTokenCount: 0,
+              promptTokenCount: 10,
+              promptTokensDetails: [{ modality: 'TEXT', tokenCount: 10 }],
+              totalTokenCount: 10,
+            },
+          });
+          controller.close();
+        },
+      });
+
+      const chunks = await decodeStreamChunks(GoogleGenerativeAIStream(mockGoogleStream));
+
+      expect(chunks).toEqual([
+        'id: chat_1\n',
+        'event: usage\n',
+        `data: {"inputTextTokens":10,"outputImageTokens":0,"outputTextTokens":0,"totalInputTokens":10,"totalOutputTokens":0,"totalTokens":10}\n\n`,
+        'id: chat_1\n',
+        'event: error\n',
+        `data: {"body":{"context":{"finishReason":"IMAGE_PROHIBITED_CONTENT"},"message":"The generated image was blocked due to prohibited content. Please modify your request and try again.","provider":"google"},"type":"ProviderContentPolicyViolation"}\n\n`,
       ]);
     });
 
@@ -1412,7 +1805,7 @@ describe('GoogleGenerativeAIStream', () => {
   });
 
   describe('Thought filtering logic', () => {
-    it('should keep text and thoughtSignature when both exist in parts', async () => {
+    it('should scope thoughtSignature across reasoning and content parts', async () => {
       vi.spyOn(uuidModule, 'nanoid').mockReturnValueOnce('1');
 
       const data = [
@@ -1421,6 +1814,11 @@ describe('GoogleGenerativeAIStream', () => {
             {
               content: {
                 parts: [
+                  {
+                    text: 'Thinking',
+                    thought: true,
+                    thoughtSignature: 'thought-sig',
+                  },
                   {
                     text: 'Here is my answer',
                     thoughtSignature: 'sig123',
@@ -1451,14 +1849,20 @@ describe('GoogleGenerativeAIStream', () => {
         },
       });
 
-      const protocolStream = GoogleGenerativeAIStream(mockGoogleStream);
+      const protocolStream = GoogleGenerativeAIStream(mockGoogleStream, {
+        payload: { thoughtSignatureScope },
+      });
       const chunks = await decodeStreamChunks(protocolStream);
 
       expect(chunks).toEqual(
         [
           'id: chat_1',
+          'event: reasoning_part',
+          `data: {"content":"Thinking","inReasoning":true,"partType":"text","thoughtSignature":"${scopedThoughtSignature('thought-sig')}"}\n`,
+
+          'id: chat_1',
           'event: content_part',
-          'data: {"content":"Here is my answer","partType":"text","thoughtSignature":"sig123"}\n',
+          `data: {"content":"Here is my answer","partType":"text","thoughtSignature":"${scopedThoughtSignature('sig123')}"}\n`,
 
           'id: chat_1',
           'event: stop',
@@ -1469,6 +1873,38 @@ describe('GoogleGenerativeAIStream', () => {
           'data: {"inputTextTokens":10,"outputImageTokens":0,"outputReasoningTokens":50,"outputTextTokens":5,"totalInputTokens":10,"totalOutputTokens":55,"totalTokens":15}\n',
         ].map((i) => i + '\n'),
       );
+    });
+
+    it('should omit thoughtSignature from parts when no scope is available', async () => {
+      vi.spyOn(uuidModule, 'nanoid').mockReturnValueOnce('1');
+
+      const mockGoogleStream = new ReadableStream({
+        start(controller) {
+          controller.enqueue({
+            candidates: [
+              {
+                content: {
+                  parts: [{ text: 'Here is my answer', thoughtSignature: 'sig123' }],
+                  role: 'model',
+                },
+                finishReason: 'STOP',
+                index: 0,
+              },
+            ],
+            usageMetadata: {
+              candidatesTokenCount: 4,
+              promptTokenCount: 3,
+              totalTokenCount: 7,
+            },
+          });
+          controller.close();
+        },
+      });
+
+      const chunks = await decodeStreamChunks(GoogleGenerativeAIStream(mockGoogleStream));
+
+      expect(chunks).toContain('data: {"content":"Here is my answer","partType":"text"}\n\n');
+      expect(chunks.join('')).not.toContain('sig123');
     });
   });
 
@@ -1660,7 +2096,9 @@ describe('GoogleGenerativeAIStream', () => {
         },
       });
 
-      const protocolStream = GoogleGenerativeAIStream(mockGoogleStream);
+      const protocolStream = GoogleGenerativeAIStream(mockGoogleStream, {
+        payload: { thoughtSignatureScope },
+      });
       const chunks = await decodeStreamChunks(protocolStream);
 
       expect(chunks).toEqual(
@@ -1698,7 +2136,7 @@ describe('GoogleGenerativeAIStream', () => {
           // Content image (with thoughtSignature but not thought:true)
           'id: chat_1',
           'event: content_part',
-          'data: {"content":"/9j/4AAQSkZJRgABAQEBLAEsAAD/2wBDAAEBAQEBAQEBA2Q==","mimeType":"image/jpeg","partType":"image","thoughtSignature":"EueybArjsmwB0e2Kby+QPRkacnmPuV+CqMr6tiey3M5BHLHgIiggQOMeFmnKzsoux6PI6dQMgmdbXE1OTLLcWUmUD1CgFn+C2VdI09FpHrVhxVAtSk/zFVSlsjfCuANxtkP8tCDppVZqIya0QYjzg5K1fEO0m42CZX2/MHyqL8NjzR0lT8ENdoV3RSaK2tXqPH45uIb6nGeBSuX1n2EUMzO"}\n',
+          `data: {"content":"/9j/4AAQSkZJRgABAQEBLAEsAAD/2wBDAAEBAQEBAQEBA2Q==","mimeType":"image/jpeg","partType":"image","thoughtSignature":"${scopedThoughtSignature('EueybArjsmwB0e2Kby+QPRkacnmPuV+CqMr6tiey3M5BHLHgIiggQOMeFmnKzsoux6PI6dQMgmdbXE1OTLLcWUmUD1CgFn+C2VdI09FpHrVhxVAtSk/zFVSlsjfCuANxtkP8tCDppVZqIya0QYjzg5K1fEO0m42CZX2/MHyqL8NjzR0lT8ENdoV3RSaK2tXqPH45uIb6nGeBSuX1n2EUMzO')}"}\n`,
 
           // stop
           'id: chat_1',
@@ -1900,6 +2338,47 @@ describe('GoogleGenerativeAIStream', () => {
           'data: {"inputTextTokens":10,"outputImageTokens":0,"outputReasoningTokens":5,"outputTextTokens":20,"totalInputTokens":10,"totalOutputTokens":25,"totalTokens":30}\n',
         ].map((i) => i + '\n'),
       );
+    });
+
+    it('should NOT use multimodal processing if only thoughtsTokenCount is present in metadata but no thought parts', async () => {
+      vi.spyOn(uuidModule, 'nanoid').mockReturnValueOnce('1');
+
+      const data = [
+        {
+          candidates: [
+            {
+              content: {
+                parts: [{ text: 'Hello world' }],
+                role: 'model',
+              },
+              index: 0,
+            },
+          ],
+          usageMetadata: {
+            promptTokenCount: 10,
+            candidatesTokenCount: 2,
+            totalTokenCount: 17,
+            thoughtsTokenCount: 5,
+          },
+          modelVersion: 'gemini-2.5-flash',
+        },
+      ];
+
+      const mockGoogleStream = new ReadableStream({
+        start(controller) {
+          data.forEach((item) => {
+            controller.enqueue(item);
+          });
+          controller.close();
+        },
+      });
+
+      const protocolStream = GoogleGenerativeAIStream(mockGoogleStream);
+      const chunks = await decodeStreamChunks(protocolStream);
+
+      // Should use 'text' event, not 'content_part'
+      expect(chunks).toContain('event: text\n');
+      expect(chunks).not.toContain('event: content_part\n');
     });
   });
 });

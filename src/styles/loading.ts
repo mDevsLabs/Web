@@ -37,7 +37,16 @@ const shine = keyframes`
   }
 `;
 
+export const elapsedTimeStyles = createStaticStyles(({ css, cssVar }) => ({
+  elapsedTime: css`
+    color: ${cssVar.colorTextTertiary};
+  `,
+}));
+
 export const shinyTextStyles = createStaticStyles(({ css, cssVar }) => ({
+  errorText: css`
+    color: ${cssVar.colorError};
+  `,
   shinyText: css`
     color: color-mix(in srgb, ${cssVar.colorText} 45%, transparent);
 
@@ -51,5 +60,9 @@ export const shinyTextStyles = createStaticStyles(({ css, cssVar }) => ({
     background-size: 200% 100%;
 
     animation: ${shine} 1.5s linear infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
   `,
 }));

@@ -1,8 +1,9 @@
 import { act, renderHook } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { mcpService } from '@/services/mcp';
 import { pluginService } from '@/services/plugin';
-import { LobeToolCustomPlugin } from '@/types/tool/plugin';
+import { type LobeToolCustomPlugin } from '@/types/tool/plugin';
 
 import { useToolStore } from '../../store';
 import { defaultCustomPlugin } from './initialState';
@@ -16,13 +17,18 @@ vi.mock('@/services/plugin', () => ({
     createCustomPlugin: vi.fn(),
     uninstallPlugin: vi.fn(),
     updatePluginManifest: vi.fn(),
+    getInstalledPlugins: vi.fn().mockResolvedValue([]),
   },
 }));
 
-vi.mock('@/services/tool', () => ({
-  toolService: {
-    getToolManifest: vi.fn(),
+vi.mock('@/services/mcp', () => ({
+  mcpService: {
+    getStreamableMcpServerManifest: vi.fn(),
   },
+}));
+
+vi.mock('i18next', () => ({
+  t: (_key: string, options?: { error?: string }) => options?.error || 'Plugin refresh failed',
 }));
 
 describe('useToolStore:customPlugin', () => {
@@ -108,6 +114,41 @@ describe('useToolStore:customPlugin', () => {
       });
 
       expect(pluginService.updatePlugin).toHaveBeenCalledWith(pluginId, updatedPlugin);
+    });
+  });
+
+  describe('reinstallCustomPlugin', () => {
+    it('retains the connection failure on the plugin row', async () => {
+      const pluginId = 'broken-plugin';
+      vi.mocked(mcpService.getStreamableMcpServerManifest).mockRejectedValueOnce({
+        cause: 'Connection refused',
+        message: 'connectionError',
+      });
+
+      act(() => {
+        useToolStore.setState({
+          installedPlugins: [
+            {
+              customParams: { mcp: { url: 'https://mcp.example.com' } },
+              identifier: pluginId,
+              type: 'customPlugin',
+            } as LobeToolCustomPlugin,
+          ],
+          pluginInstallErrors: {},
+        });
+      });
+
+      const { result } = renderHook(() => useToolStore());
+
+      await act(async () => {
+        await result.current.reinstallCustomPlugin(pluginId);
+      });
+
+      expect(result.current.pluginInstallErrors[pluginId]).toEqual({
+        cause: 'Connection refused',
+        message: 'connectionError',
+      });
+      expect(result.current.pluginInstallLoading[pluginId]).toBe(false);
     });
   });
 

@@ -1,4 +1,4 @@
-import { ErrorResponse } from '@lobechat/types';
+import type { ErrorResponse } from '@lobechat/types';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { getMessageError } from '../parseError';
@@ -77,6 +77,22 @@ describe('getMessageError', () => {
       type: 500,
     });
     expect(mockResponse.json).toHaveBeenCalled();
+  });
+
+  it('should surface the desktop proxy network errorType instead of a generic 502', async () => {
+    const mockErrorResponse: ErrorResponse = {
+      body: { detail: 'net::ERR_TIMED_OUT', url: 'https://remote.example.com/trpc/hello' },
+      errorType: 'RemoteServerTimeout',
+    };
+    const mockResponse = createMockResponse(mockErrorResponse, false, 502);
+
+    const error = await getMessageError(mockResponse as any);
+
+    expect(error).toEqual({
+      body: mockErrorResponse.body,
+      message: 'translated_response.RemoteServerTimeout',
+      type: 'RemoteServerTimeout',
+    });
   });
 
   it('should handle timeout error correctly', async () => {

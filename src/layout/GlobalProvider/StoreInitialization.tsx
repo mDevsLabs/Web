@@ -1,23 +1,22 @@
 'use client';
 
 import { INBOX_SESSION_ID } from '@lobechat/const';
-import { memo } from 'react';
+import { lazy, memo, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createStoreUpdater } from 'zustand-utils';
 
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { useAgentStore } from '@/store/agent';
-import { useAiInfraStore } from '@/store/aiInfra';
-import { useElectronStore } from '@/store/electron';
-import { electronSyncSelectors } from '@/store/electron/selectors';
 import { useGlobalStore } from '@/store/global';
 import { useServerConfigStore } from '@/store/serverConfig';
 import { serverConfigSelectors } from '@/store/serverConfig/selectors';
 import { useUserStore } from '@/store/user';
 import { authSelectors } from '@/store/user/selectors';
-import { useUserMemoryStore } from '@/store/userMemory';
 
+import ElectronAppStateSync from './ElectronAppStateSync';
 import { useUserStateRedirect } from './useUserStateRedirect';
+
+const DeferredStoreInitialization = lazy(() => import('./DeferredStoreInitialization'));
 
 const StoreInitialization = memo(() => {
   // prefetch error ns to avoid don't show error content correctly
@@ -36,8 +35,6 @@ const StoreInitialization = memo(() => {
   ]);
 
   const useInitBuiltinAgent = useAgentStore((s) => s.useInitBuiltinAgent);
-  const useInitAiProviderKeyVaults = useAiInfraStore((s) => s.useFetchAiProviderRuntimeState);
-  const useInitIdentities = useUserMemoryStore((s) => s.useInitIdentities);
 
   // init the system preference
   useInitSystemStatus();
@@ -67,14 +64,6 @@ const StoreInitialization = memo(() => {
   // init inbox agent via builtin agent mechanism
   useInitBuiltinAgent(INBOX_SESSION_ID, { isLogin: isLoginOnInit });
 
-  const isSyncActive = useElectronStore((s) => electronSyncSelectors.isSyncActive(s));
-
-  // init user provider key vaults
-  useInitAiProviderKeyVaults(isLoginOnInit, isSyncActive);
-
-  // init user memory identities (for chat context injection)
-  useInitIdentities(isLoginOnInit);
-
   const onUserStateSuccess = useUserStateRedirect();
 
   // init user state
@@ -88,7 +77,14 @@ const StoreInitialization = memo(() => {
 
   useStoreUpdater('isMobile', mobile);
 
-  return null;
+  return (
+    <>
+      <ElectronAppStateSync />
+      <Suspense>
+        <DeferredStoreInitialization isLogin={isLoginOnInit} />
+      </Suspense>
+    </>
+  );
 });
 
 export default StoreInitialization;

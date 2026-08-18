@@ -1,18 +1,26 @@
 // @vitest-environment node
 import { eq } from 'drizzle-orm';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
-import { apiKeys, users } from '../../schemas';
-import { LobeChatDatabase } from '../../type';
-import { ApiKeyModel } from '../apiKey';
+import { hashApiKey } from '@/utils/server/apiKeyHash';
+
 import { getTestDB } from '../../core/getTestDB';
+import { apiKeys, users, workspaces } from '../../schemas';
+import type { LobeChatDatabase } from '../../type';
+import { ApiKeyModel } from '../apiKey';
 
 const serverDB: LobeChatDatabase = await getTestDB();
 
 const userId = 'api-key-model-test-user-id';
-const apiKeyModel = new ApiKeyModel(serverDB, userId);
+const validKeyVaultsSecret = 'ofQiJCXLF8mYemwfMWLOHoHimlPu91YmLfU7YZ4lreQ=';
+
+let apiKeyModel: ApiKeyModel;
+let originalKeyVaultsSecret: string | undefined;
 
 beforeEach(async () => {
+  originalKeyVaultsSecret = process.env.KEY_VAULTS_SECRET;
+  process.env.KEY_VAULTS_SECRET = validKeyVaultsSecret;
+  apiKeyModel = new ApiKeyModel(serverDB, userId);
   await serverDB.delete(users);
   await serverDB.insert(users).values([{ id: userId }, { id: 'user2' }]);
 });
@@ -20,11 +28,12 @@ beforeEach(async () => {
 afterEach(async () => {
   await serverDB.delete(users).where(eq(users.id, userId));
   await serverDB.delete(apiKeys).where(eq(apiKeys.userId, userId));
+  process.env.KEY_VAULTS_SECRET = originalKeyVaultsSecret;
 });
 
 describe('ApiKeyModel', () => {
   describe('create', () => {
-    it('should create a new API key without encryption', async () => {
+    it('should create a new API key with default hash behavior', async () => {
       const params = {
         enabled: true,
         name: 'Test API Key',
@@ -36,33 +45,15 @@ describe('ApiKeyModel', () => {
       expect(result.name).toBe(params.name);
       expect(result.enabled).toBe(params.enabled);
       expect(result.key).toBeDefined();
-      expect(result.key).toMatch(/^lb-[\da-z]{16}$/);
+      expect(result.key).not.toMatch(/^sk-lh-[\da-z]{16}$/);
       expect(result.userId).toBe(userId);
 
       const apiKey = await serverDB.query.apiKeys.findFirst({
         where: eq(apiKeys.id, result.id),
       });
       expect(apiKey).toMatchObject({ ...params, userId });
-    });
-
-    it('should create a new API key with encryption', async () => {
-      const mockEncryptor = vi.fn().mockResolvedValue('encrypted-key-value');
-      const params = {
-        enabled: true,
-        name: 'Encrypted API Key',
-      };
-
-      const result = await apiKeyModel.create(params, mockEncryptor);
-
-      expect(result.id).toBeDefined();
-      expect(result.name).toBe(params.name);
-      expect(result.key).toBe('encrypted-key-value');
-      expect(mockEncryptor).toHaveBeenCalledWith(expect.stringMatching(/^lb-[\da-z]{16}$/));
-
-      const apiKey = await serverDB.query.apiKeys.findFirst({
-        where: eq(apiKeys.id, result.id),
-      });
-      expect(apiKey?.key).toBe('encrypted-key-value');
+      expect(apiKey?.key).toContain(':');
+      expect(apiKey?.keyHash).toMatch(/^[\da-f]{64}$/);
     });
 
     it('should create API key with expiration date', async () => {
@@ -76,6 +67,16 @@ describe('ApiKeyModel', () => {
       const result = await apiKeyModel.create(params);
 
       expect(result.expiresAt).toEqual(expiresAt);
+    });
+
+    it('reveals plaintext only through the explicit one-time create method', async () => {
+      const created = await apiKeyModel.createWithPlaintext({ name: 'One-time Key' });
+
+      expect(created.key).toMatch(/^sk-lh-[\da-z]{16}$/);
+
+      const stored = await apiKeyModel.findById(created.id);
+      expect(stored?.key).not.toBe(created.key);
+      expect(stored?.key).toContain(':');
     });
   });
 
@@ -95,7 +96,10 @@ describe('ApiKeyModel', () => {
       const { id: key1 } = await apiKeyModel.create({ name: 'User 1 Key', enabled: true });
 
       const anotherApiKeyModel = new ApiKeyModel(serverDB, 'user2');
-      const { id: key2 } = await anotherApiKeyModel.create({ name: 'User 2 Key', enabled: true });
+      const { id: key2 } = await anotherApiKeyModel.create({
+        name: 'User 2 Key',
+        enabled: true,
+      });
 
       await apiKeyModel.delete(key2);
 
@@ -145,13 +149,21 @@ describe('ApiKeyModel', () => {
   });
 
   describe('query', () => {
-    it('should query API keys for the user without decryption', async () => {
+    it('should query API keys for the user', async () => {
       await apiKeyModel.create({ name: 'Key 1', enabled: true });
       await apiKeyModel.create({ name: 'Key 2', enabled: true });
 
       const keys = await apiKeyModel.query();
       expect(keys).toHaveLength(2);
-      expect(keys[0].key).toMatch(/^lb-[\da-z]{16}$/);
+      expect(keys[0].key).toMatch(/^sk-lh-[\da-z]{16}$/);
+    });
+
+    it('keeps metadata queries free of decrypted plaintext', async () => {
+      const created = await apiKeyModel.createWithPlaintext({ name: 'Metadata Key' });
+      const [metadata] = await apiKeyModel.queryMetadata();
+
+      expect(metadata.key).not.toBe(created.key);
+      expect(metadata.key).toContain(':');
     });
 
     it('should query API keys ordered by updatedAt desc', async () => {
@@ -166,19 +178,6 @@ describe('ApiKeyModel', () => {
       expect(keys[1].id).toBe(key1.id);
     });
 
-    it('should query API keys with decryption', async () => {
-      const mockEncryptor = vi.fn().mockResolvedValue('encrypted-key');
-      const mockDecryptor = vi.fn().mockResolvedValue({ plaintext: 'decrypted-key-value' });
-
-      await apiKeyModel.create({ name: 'Encrypted Key', enabled: true }, mockEncryptor);
-
-      const keys = await apiKeyModel.query(mockDecryptor);
-
-      expect(keys).toHaveLength(1);
-      expect(keys[0].key).toBe('decrypted-key-value');
-      expect(mockDecryptor).toHaveBeenCalledWith('encrypted-key');
-    });
-
     it('should only query API keys for the current user', async () => {
       await apiKeyModel.create({ name: 'User 1 Key', enabled: true });
 
@@ -189,15 +188,82 @@ describe('ApiKeyModel', () => {
       expect(keys).toHaveLength(1);
       expect(keys[0].name).toBe('User 1 Key');
     });
+
+    it('should keep the list available when one API key cannot be decrypted', async () => {
+      const staleKey = await apiKeyModel.create({ name: 'Stale Key', enabled: true });
+
+      process.env.KEY_VAULTS_SECRET = 'Q10pwdq00KXUu9R+c8A8p4PSlIRWi7KwgUophBtkHVk=';
+      const modelAfterSecretRotation = new ApiKeyModel(serverDB, userId);
+      const freshKey = await modelAfterSecretRotation.create({ name: 'Fresh Key', enabled: true });
+
+      const keys = await modelAfterSecretRotation.query();
+      const staleResult = keys.find(({ id }) => id === staleKey.id);
+      const freshResult = keys.find(({ id }) => id === freshKey.id);
+
+      expect(keys).toHaveLength(2);
+      expect(staleResult).toMatchObject({ key: '', keyDecryptionFailed: true });
+      expect(freshResult).toMatchObject({ keyDecryptionFailed: false });
+      expect(freshResult?.key).toMatch(/^sk-lh-[\da-z]{16}$/);
+    });
+
+    it('lets workspace admins list all keys while members only see their own', async () => {
+      const workspaceId = 'api-key-model-workspace';
+      await serverDB.insert(workspaces).values({
+        id: workspaceId,
+        name: 'API Key Test Workspace',
+        primaryOwnerId: userId,
+        slug: workspaceId,
+      });
+
+      const adminModel = new ApiKeyModel(serverDB, userId, workspaceId, { canManageAll: true });
+      const memberModel = new ApiKeyModel(serverDB, 'user2', workspaceId, {
+        canManageAll: false,
+      });
+      await adminModel.create({ enabled: true, name: 'Admin Key' });
+      await memberModel.create({ enabled: true, name: 'Member Key' });
+
+      const memberKeys = await memberModel.query();
+      const adminKeys = await adminModel.query();
+
+      expect(memberKeys.map(({ name }) => name)).toEqual(['Member Key']);
+      expect(adminKeys.map(({ name }) => name).sort()).toEqual(['Admin Key', 'Member Key']);
+      expect(adminKeys.find(({ name }) => name === 'Member Key')).toMatchObject({
+        isMine: false,
+        key: '',
+      });
+    });
+
+    it('prevents workspace members from reading, updating, or deleting another member key', async () => {
+      const workspaceId = 'api-key-model-ownership-workspace';
+      await serverDB.insert(workspaces).values({
+        id: workspaceId,
+        name: 'API Key Ownership Workspace',
+        primaryOwnerId: userId,
+        slug: workspaceId,
+      });
+
+      const adminModel = new ApiKeyModel(serverDB, userId, workspaceId, { canManageAll: true });
+      const memberModel = new ApiKeyModel(serverDB, 'user2', workspaceId, {
+        canManageAll: false,
+      });
+      const adminKey = await adminModel.create({ enabled: true, name: 'Admin Key' });
+
+      expect(await memberModel.findById(adminKey.id)).toBeUndefined();
+      await memberModel.update(adminKey.id, { name: 'Hijacked' });
+      await memberModel.delete(adminKey.id);
+
+      expect(await adminModel.findById(adminKey.id)).toMatchObject({ name: 'Admin Key' });
+    });
   });
 
   describe('findByKey', () => {
-    it('should find API key by key value without encryption', async () => {
+    it('should find API key by key value without custom hasher', async () => {
       // Use a valid hex format key since validateApiKeyFormat checks for hex pattern
-      const validKey = 'lb-abcdef0123456789';
+      const validKey = 'sk-lh-abcdef0123456789';
       await serverDB.insert(apiKeys).values({
         enabled: true,
         key: validKey,
+        keyHash: hashApiKey(validKey),
         name: 'Test Key',
         userId,
       });
@@ -209,17 +275,6 @@ describe('ApiKeyModel', () => {
       expect(found?.name).toBe('Test Key');
     });
 
-    it('should find API key by key value with encryption', async () => {
-      const mockEncryptor = vi.fn().mockResolvedValue('encrypted-key-value');
-      const created = await apiKeyModel.create({ name: 'Test Key', enabled: true }, mockEncryptor);
-
-      const testKey = 'lb-0123456789abcdef';
-      mockEncryptor.mockResolvedValue('encrypted-key-value');
-      const found = await apiKeyModel.findByKey(testKey, mockEncryptor);
-
-      expect(mockEncryptor).toHaveBeenCalledWith(testKey);
-    });
-
     it('should return null for invalid key format', async () => {
       const found = await apiKeyModel.findByKey('invalid-key-format');
 
@@ -227,7 +282,7 @@ describe('ApiKeyModel', () => {
     });
 
     it('should return undefined for non-existent key', async () => {
-      const found = await apiKeyModel.findByKey('lb-0123456789abcdef');
+      const found = await apiKeyModel.findByKey('sk-lh-0123456789abcdef');
 
       expect(found).toBeUndefined();
     });
@@ -239,11 +294,12 @@ describe('ApiKeyModel', () => {
       futureDate.setFullYear(futureDate.getFullYear() + 1);
 
       // Use a valid hex format key
-      const validKey = 'lb-0123456789abcdef';
+      const validKey = 'sk-lh-0123456789abcdef';
       await serverDB.insert(apiKeys).values({
         enabled: true,
         expiresAt: futureDate,
         key: validKey,
+        keyHash: hashApiKey(validKey),
         name: 'Valid Key',
         userId,
       });
@@ -255,10 +311,11 @@ describe('ApiKeyModel', () => {
 
     it('should validate enabled key without expiration with valid hex format', async () => {
       // Use a valid hex format key
-      const validKey = 'lb-fedcba9876543210';
+      const validKey = 'sk-lh-fedcba9876543210';
       await serverDB.insert(apiKeys).values({
         enabled: true,
         key: validKey,
+        keyHash: hashApiKey(validKey),
         name: 'Valid Key',
         userId,
       });
@@ -269,16 +326,17 @@ describe('ApiKeyModel', () => {
     });
 
     it('should reject non-existent key', async () => {
-      const isValid = await apiKeyModel.validateKey('lb-0123456789abcdef');
+      const isValid = await apiKeyModel.validateKey('sk-lh-0123456789abcdef');
 
       expect(isValid).toBe(false);
     });
 
     it('should reject disabled key', async () => {
-      const validKey = 'lb-1111111111111111';
+      const validKey = 'sk-lh-1111111111111111';
       await serverDB.insert(apiKeys).values({
         enabled: false,
         key: validKey,
+        keyHash: hashApiKey(validKey),
         name: 'Disabled Key',
         userId,
       });
@@ -292,11 +350,12 @@ describe('ApiKeyModel', () => {
       const pastDate = new Date();
       pastDate.setFullYear(pastDate.getFullYear() - 1);
 
-      const validKey = 'lb-2222222222222222';
+      const validKey = 'sk-lh-2222222222222222';
       await serverDB.insert(apiKeys).values({
         enabled: true,
         expiresAt: pastDate,
         key: validKey,
+        keyHash: hashApiKey(validKey),
         name: 'Expired Key',
         userId,
       });
@@ -343,10 +402,13 @@ describe('ApiKeyModel', () => {
     });
 
     it('should only update API keys for the current user', async () => {
-      const { id: key1 } = await apiKeyModel.create({ name: 'User 1 Key', enabled: true });
+      await apiKeyModel.create({ name: 'User 1 Key', enabled: true });
 
       const anotherApiKeyModel = new ApiKeyModel(serverDB, 'user2');
-      const { id: key2 } = await anotherApiKeyModel.create({ name: 'User 2 Key', enabled: true });
+      const { id: key2 } = await anotherApiKeyModel.create({
+        name: 'User 2 Key',
+        enabled: true,
+      });
 
       await apiKeyModel.update(key2, { name: 'Attempted Update' });
 
@@ -372,14 +434,17 @@ describe('ApiKeyModel', () => {
     });
 
     it('should return undefined for non-existent id', async () => {
-      const found = await apiKeyModel.findById(999_999);
+      const found = await apiKeyModel.findById('999_999');
 
       expect(found).toBeUndefined();
     });
 
     it('should only find API keys for the current user', async () => {
       const anotherApiKeyModel = new ApiKeyModel(serverDB, 'user2');
-      const { id: key2 } = await anotherApiKeyModel.create({ name: 'User 2 Key', enabled: true });
+      const { id: key2 } = await anotherApiKeyModel.create({
+        name: 'User 2 Key',
+        enabled: true,
+      });
 
       const found = await apiKeyModel.findById(key2);
 
@@ -406,7 +471,10 @@ describe('ApiKeyModel', () => {
 
     it('should only update API keys for the current user', async () => {
       const anotherApiKeyModel = new ApiKeyModel(serverDB, 'user2');
-      const { id: key2 } = await anotherApiKeyModel.create({ name: 'User 2 Key', enabled: true });
+      const { id: key2 } = await anotherApiKeyModel.create({
+        name: 'User 2 Key',
+        enabled: true,
+      });
 
       await apiKeyModel.updateLastUsed(key2);
 

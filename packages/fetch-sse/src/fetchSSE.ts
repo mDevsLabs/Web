@@ -1,17 +1,18 @@
 import { LOBE_CHAT_OBSERVATION_ID, LOBE_CHAT_TRACE_ID, MESSAGE_CANCEL_FLAT } from '@lobechat/const';
-import { parseToolCalls } from '@lobechat/model-runtime';
-import {
-  ChatErrorType,
+import { parseToolCalls } from '@lobechat/model-runtime/helpers/parseToolCalls';
+import type {
   ChatImageChunk,
   ChatMessageError,
   GroundingSearch,
   MessageToolCall,
   ModelPerformance,
   ModelReasoning,
+  ModelReasoningResponseItem,
   ModelUsage,
   ResponseAnimation,
   ResponseAnimationStyle,
 } from '@lobechat/types';
+import { ChatErrorType } from '@lobechat/types';
 import { fetchEventSource } from '@lobechat/utils/client/fetchEventSource/index';
 import { nanoid } from '@lobechat/utils/uuid';
 
@@ -93,6 +94,13 @@ interface MessageToolCallsChunk {
   type: 'tool_calls';
 }
 
+export interface FetchSSERequestContext {
+  apiMode?: string;
+  fetchOnClient?: boolean;
+  model?: string;
+  provider?: string;
+}
+
 export interface FetchSSEOptions {
   fetcher?: typeof fetch;
   onAbort?: (text: string) => Promise<void>;
@@ -111,6 +119,7 @@ export interface FetchSSEOptions {
       | MessageSpeedChunk
       | MessageStopChunk,
   ) => void;
+  requestContext?: FetchSSERequestContext;
   responseAnimation?: ResponseAnimation;
 }
 
@@ -123,7 +132,7 @@ const createSmoothMessage = (params: {
   const { startSpeed = START_ANIMATION_SPEED } = params;
 
   let buffer = '';
-  let outputQueue: string[] = [];
+  const outputQueue: string[] = [];
   let isAnimationActive = false;
   let animationFrameId: number | null = null;
   let lastFrameTime = 0;
@@ -179,7 +188,7 @@ const createSmoothMessage = (params: {
         if (charsToProcess > 0) {
           accumulatedTime -= (charsToProcess * 1000) / currentSpeed;
 
-          let actualChars = Math.min(charsToProcess, outputQueue.length);
+          const actualChars = Math.min(charsToProcess, outputQueue.length);
           // actualChars = Math.min(speed, actualChars); // Speed upper limit
 
           // if (actualChars * 2 < outputQueue.length && /[\dA-Za-z]/.test(outputQueue[actualChars])) {
@@ -210,7 +219,15 @@ const createSmoothMessage = (params: {
     outputQueue.push(...text.split(''));
   };
 
+  const flushQueue = () => {
+    if (outputQueue.length === 0) return;
+    const remaining = outputQueue.splice(0).join('');
+    buffer += remaining;
+    params.onTextUpdate(remaining, buffer);
+  };
+
   return {
+    flushQueue,
     isAnimationActive,
     isTokenRemain: () => outputQueue.length > 0,
     pushToQueue,
@@ -228,13 +245,14 @@ export const standardizeAnimationStyle = (
 /**
  * Fetch data using stream method
  */
-// eslint-disable-next-line no-undef
+
 export const fetchSSE = async (url: string, options: RequestInit & FetchSSEOptions = {}) => {
   let toolCalls: undefined | MessageToolCall[];
   let triggerOnMessageHandler = false;
 
   let finishedType: SSEFinishType = 'done';
   let response!: Response;
+  const fetchStartTime = Date.now();
 
   const { text, speed: smoothingSpeed } = standardizeAnimationStyle(
     options.responseAnimation ?? {},
@@ -265,6 +283,7 @@ export const fetchSSE = async (url: string, options: RequestInit & FetchSSEOptio
 
   let thinking = '';
   let thinkingSignature: string | undefined;
+  const reasoningResponseItems: ModelReasoningResponseItem[] = [];
 
   const thinkingController = createSmoothMessage({
     onTextUpdate: (delta, text) => {
@@ -287,7 +306,7 @@ export const fetchSSE = async (url: string, options: RequestInit & FetchSSEOptio
 
   let grounding: GroundingSearch | undefined = undefined;
   let usage: ModelUsage | undefined = undefined;
-  let images: ChatImageChunk[] = [];
+  const images: ChatImageChunk[] = [];
   let speed: ModelPerformance | undefined = undefined;
 
   await fetchEventSource(url, {
@@ -303,6 +322,15 @@ export const fetchSSE = async (url: string, options: RequestInit & FetchSSEOptio
       } else {
         finishedType = 'error';
 
+        const elapsedMs = Date.now() - fetchStartTime;
+        const networkStatus = typeof navigator !== 'undefined' ? navigator.onLine : undefined;
+
+        const contextBody = {
+          ...options.requestContext,
+          elapsedMs,
+          networkStatus,
+        };
+
         options.onErrorHandle?.(
           error.type
             ? error
@@ -310,7 +338,7 @@ export const fetchSSE = async (url: string, options: RequestInit & FetchSSEOptio
                 body: {
                   message: error.message,
                   name: error.name,
-                  stack: error.stack,
+                  ...contextBody,
                 },
                 message: error.message,
                 type: ChatErrorType.UnknownChatFetchError,
@@ -406,7 +434,14 @@ export const fetchSSE = async (url: string, options: RequestInit & FetchSSEOptio
         }
 
         case 'reasoning_signature': {
-          thinkingSignature = data;
+          // Server guarantees string payloads on this event; guard against object
+          // payloads so a malformed stream can't corrupt the persisted signature.
+          if (typeof data === 'string') thinkingSignature = data;
+          break;
+        }
+
+        case 'reasoning_response_item': {
+          reasoningResponseItems.push(data as ModelReasoningResponseItem);
           break;
         }
 
@@ -492,6 +527,7 @@ export const fetchSSE = async (url: string, options: RequestInit & FetchSSEOptio
   // so like abort, we don't need to call onFinish
   if (response) {
     textController.stopAnimation();
+    thinkingController.stopAnimation();
 
     // Ensure all buffered data is processed
     if (bufferTimer) {
@@ -514,15 +550,35 @@ export const fetchSSE = async (url: string, options: RequestInit & FetchSSEOptio
       const traceId = response.headers.get(LOBE_CHAT_TRACE_ID);
       const observationId = response.headers.get(LOBE_CHAT_OBSERVATION_ID);
 
-      if (textController.isTokenRemain()) {
-        await textController.startAnimation(smoothingSpeed);
-      }
+      textController.flushQueue();
+      thinkingController.flushQueue();
 
       await options?.onFinish?.(output, {
         grounding,
         images: images.length > 0 ? images : undefined,
         observationId,
-        reasoning: !!thinking ? { content: thinking, signature: thinkingSignature } : undefined,
+        reasoning: (() => {
+          /**
+           * Non-streaming Responses conversion emits reasoning items without summary
+           * deltas; derive visible thinking text from item summaries when nothing was
+           * streamed so the summary renders instead of being replay-only state.
+           */
+          const responseItemsThinking = reasoningResponseItems
+            .flatMap(({ summary }) => summary ?? [])
+            .map(({ text }) => text)
+            .filter(Boolean)
+            .join('\n');
+          const reasoningContent = thinking || responseItemsThinking || undefined;
+
+          return reasoningContent || thinkingSignature || reasoningResponseItems.length > 0
+            ? {
+                content: reasoningContent,
+                responseItems:
+                  reasoningResponseItems.length > 0 ? reasoningResponseItems : undefined,
+                signature: thinkingSignature,
+              }
+            : undefined;
+        })(),
         speed,
         toolCalls,
         traceId,

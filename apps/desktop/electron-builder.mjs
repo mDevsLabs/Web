@@ -1,15 +1,21 @@
-import dotenv from 'dotenv';
+import { execSync } from 'node:child_process';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import dotenv from 'dotenv';
+
 import {
-  copyNativeModules,
+  copyExternalRuntimeModulesToSource,
+  getExternalRuntimeModulesFilesConfig,
+} from './external-runtime-deps.config.mjs';
+import {
   copyNativeModulesToSource,
   getAsarUnpackPatterns,
   getNativeModulesFilesConfig,
 } from './native-deps.config.mjs';
+import { verifyFontListSignature } from './scripts/verifyFontListSigning.mjs';
 
 dotenv.config();
 
@@ -24,55 +30,59 @@ const hasAppleCertificate = Boolean(process.env.CSC_LINK);
 // 自定义更新服务器 URL (用于 stable 频道)
 const updateServerUrl = process.env.UPDATE_SERVER_URL;
 
-console.log(`🚄 Build Version ${packageJSON.version}, Channel: ${channel}`);
-console.log(`🏗️ Building for architecture: ${arch}`);
+console.info(`🚄 Build Version ${packageJSON.version}, Channel: ${channel}`);
+console.info(`🏗️ Building for architecture: ${arch}`);
 
+// Channel identity derived solely from UPDATE_CHANNEL env var.
+// Supported channels: stable, nightly, canary
+const isStable = !channel || channel === 'stable';
 const isNightly = channel === 'nightly';
-const isBeta = packageJSON.name.includes('beta');
-const isStable = !isNightly && !isBeta;
+const isCanary = channel === 'canary';
 
-// 根据 channel 配置不同的 publish provider
-// - Stable + UPDATE_SERVER_URL: 使用 generic (自定义 HTTP 服务器)
-// - Beta/Nightly: 仅使用 GitHub
+// Strip trailing channel path from URL for re-appending the correct channel
+// Handles both base URL (https://cdn.example.com) and legacy URL with channel (https://cdn.example.com/stable)
+const stripChannelSuffix = (url) => url.replace(/\/(stable|nightly|canary|beta)\/?$/, '');
+
+// 根据 channel 配置 publish provider
+// - 所有渠道 + UPDATE_SERVER_URL: 使用 generic (S3)
+// - 无 UPDATE_SERVER_URL: 回退到 GitHub (本地开发)
 const getPublishConfig = () => {
-  const githubProvider = {
-    owner: 'lobehub',
-    provider: 'github',
-    repo: 'lobe-chat',
-  };
+  const channelPath = isStable ? 'stable' : isNightly ? 'nightly' : channel || 'stable';
 
-  // Stable channel: 使用自定义服务器 (generic provider)
-  if (isStable && updateServerUrl) {
-    console.log(`📦 Stable channel: Using generic provider (${updateServerUrl})`);
-    const genericProvider = {
-      provider: 'generic',
-      url: updateServerUrl,
-    };
-    // 同时发布到自定义服务器和 GitHub (GitHub 作为备用/镜像)
-    return [genericProvider, githubProvider];
+  if (updateServerUrl) {
+    const baseUrl = stripChannelSuffix(updateServerUrl);
+    const fullUrl = `${baseUrl}/${channelPath}`;
+    console.info(`📦 ${channelPath} channel: Using generic provider (${fullUrl})`);
+    return [
+      {
+        provider: 'generic',
+        url: fullUrl,
+      },
+    ];
   }
 
-  // Beta/Nightly channel: 仅使用 GitHub
-  console.log(`📦 ${channel || 'default'} channel: Using GitHub provider`);
-  return [githubProvider];
+  // 本地开发无 S3 时回退到 GitHub
+  console.info(`📦 ${channelPath} channel: No UPDATE_SERVER_URL, falling back to GitHub provider`);
+  return [
+    {
+      owner: 'lobehub',
+      provider: 'github',
+      repo: 'lobehub',
+    },
+  ];
 };
-
-// Keep only these Electron Framework localization folders (*.lproj)
-// (aligned with previous Electron Forge build config)
-const keepLanguages = new Set(['en', 'en_GB', 'en-US', 'en_US']);
 
 // https://www.electron.build/code-signing-mac#how-to-disable-code-signing-during-the-build-process-on-macos
 if (!hasAppleCertificate) {
   // Disable auto discovery to keep electron-builder from searching unavailable signing identities
   process.env.CSC_IDENTITY_AUTO_DISCOVERY = 'false';
-  console.log('⚠️ Apple certificate link not found, macOS artifacts will be unsigned.');
+  console.info('⚠️ Apple certificate link not found, macOS artifacts will be unsigned.');
 }
 
 // 根据版本类型确定协议 scheme
 const getProtocolScheme = () => {
+  if (isCanary) return 'lobehub-canary';
   if (isNightly) return 'lobehub-nightly';
-  if (isBeta) return 'lobehub-beta';
-
   return 'lobehub';
 };
 
@@ -80,9 +90,9 @@ const protocolScheme = getProtocolScheme();
 
 // Determine icon file based on version type
 const getIconFileName = () => {
-  if (isNightly) return 'Icon-nightly';
-  if (isBeta) return 'Icon-beta';
-  return 'Icon';
+  if (isStable || isCanary) return 'Icon';
+  // nightly uses pre-release icon
+  return 'Icon-nightly';
 };
 
 /**
@@ -96,92 +106,75 @@ const config = {
    */
   beforePack: async () => {
     await copyNativeModulesToSource();
+    await copyExternalRuntimeModulesToSource();
+
+    // agent-browser is no longer bundled in the installer — BinaryManager
+    // lazily downloads it on first use into the per-user cache dir. See
+    // apps/desktop/src/main/modules/binaries/agentBrowserBinaries.ts.
+
+    // Build and copy CLI bundle for embedding
+    console.info('📦 Building CLI for embedding...');
+    execSync('npm run build:cli', { stdio: 'inherit', cwd: __dirname });
+    const cliSrc = path.resolve(__dirname, '../cli/dist/index.js');
+    const cliDest = path.resolve(__dirname, 'resources/bin/lobe-cli.js');
+    await fs.mkdir(path.dirname(cliDest), { recursive: true });
+    await fs.copyFile(cliSrc, cliDest);
+
+    // Write a minimal package.json next to the CLI bundle so that
+    // createRequire('../package.json') resolves correctly in the packaged app.
+    // The CLI script lives at Resources/bin/lobe-cli.js, so '../package.json'
+    // resolves to Resources/package.json.
+    const cliPkg = JSON.parse(
+      await fs.readFile(path.resolve(__dirname, '../cli/package.json'), 'utf8'),
+    );
+    await fs.writeFile(
+      path.resolve(__dirname, 'resources/cli-package.json'),
+      JSON.stringify({ name: cliPkg.name, type: 'module', version: cliPkg.version }),
+    );
+    console.info('✅ CLI bundle copied to resources/bin/lobe-cli.js');
   },
   /**
-   * AfterPack hook for post-processing:
-   * 1. Copy native modules to asar.unpacked (resolving pnpm symlinks)
-   * 2. Copy Liquid Glass Assets.car for macOS 26+
-   * 3. Remove unused Electron Framework localizations
+   * AfterPack hook for copying Liquid Glass Assets.car on macOS 26+.
    *
    * @see https://github.com/electron-userland/electron-builder/issues/9254
    * @see https://github.com/MultiboxLabs/flow-browser/pull/159
-   * @see https://github.com/electron/packager/pull/1806
    */
   afterPack: async (context) => {
     const isMac = ['darwin', 'mas'].includes(context.electronPlatformName);
 
-    // Determine resources path based on platform
-    let resourcesPath;
-    if (isMac) {
-      resourcesPath = path.join(
-        context.appOutDir,
-        `${context.packager.appInfo.productFilename}.app`,
-        'Contents',
-        'Resources',
-      );
-    } else {
-      // Windows and Linux: resources is directly in appOutDir
-      resourcesPath = path.join(context.appOutDir, 'resources');
-    }
-
-    // Copy native modules to asar.unpacked, resolving pnpm symlinks
-    const unpackedNodeModules = path.join(resourcesPath, 'app.asar.unpacked', 'node_modules');
-    await copyNativeModules(unpackedNodeModules);
-
-    // macOS-specific post-processing
     if (!isMac) {
       return;
     }
 
+    const resourcesPath = path.join(
+      context.appOutDir,
+      `${context.packager.appInfo.productFilename}.app`,
+      'Contents',
+      'Resources',
+    );
     const iconFileName = getIconFileName();
     const assetsCarSource = path.join(__dirname, 'build', `${iconFileName}.Assets.car`);
     const assetsCarDest = path.join(resourcesPath, 'Assets.car');
 
-    // Remove unused Electron Framework localizations to reduce app size
-    const frameworkResourcePath = path.join(
-      context.appOutDir,
-      `${context.packager.appInfo.productFilename}.app`,
-      'Contents',
-      'Frameworks',
-      'Electron Framework.framework',
-      'Versions',
-      'A',
-      'Resources',
-    );
-
-    try {
-      const entries = await fs.readdir(frameworkResourcePath);
-      await Promise.all(
-        entries.map(async (file) => {
-          if (!file.endsWith('.lproj')) return;
-
-          const lang = file.split('.')[0];
-          if (keepLanguages.has(lang)) return;
-
-          await fs.rm(path.join(frameworkResourcePath, file), { force: true, recursive: true });
-        }),
-      );
-    } catch {
-      // Non-critical: folder may not exist depending on packaging details
-    }
-
     try {
       await fs.access(assetsCarSource);
       await fs.copyFile(assetsCarSource, assetsCarDest);
-      console.log(`✅ Copied Liquid Glass icon: ${iconFileName}.Assets.car`);
+      console.info(`✅ Copied Liquid Glass icon: ${iconFileName}.Assets.car`);
     } catch {
       // Non-critical: Assets.car not found or copy failed
       // App will use fallback .icns icon on all macOS versions
-      console.log(`⏭️  Skipping Assets.car (not found or copy failed)`);
+      console.info(`⏭️  Skipping Assets.car (not found or copy failed)`);
     }
   },
-  appId: isNightly
-    ? 'com.lobehub.lobehub-desktop-nightly'
-    : isBeta
-      ? 'com.lobehub.lobehub-desktop-beta'
-      : 'com.lobehub.lobehub-desktop',
+  afterSign: verifyFontListSignature,
+  appId: 'com.lobehub.lobehub-desktop',
   appImage: {
     artifactName: '${productName}-${version}.${ext}',
+  },
+
+  // Only explicitly selected native binaries should live outside app.asar.
+  asar: {
+    smartUnpack: false,
   },
 
   // Native modules must be unpacked from asar to work correctly
@@ -196,34 +189,47 @@ const config = {
 
   dmg: {
     artifactName: '${productName}-${version}-${arch}.${ext}',
+    background: 'resources/dmg.png',
+    contents: [
+      { type: 'file', x: 150, y: 240 },
+      { type: 'link', path: '/Applications', x: 450, y: 240 },
+    ],
+    iconSize: 80,
+    window: {
+      height: 400,
+      width: 600,
+    },
   },
 
   electronDownload: {
     mirror: 'https://npmmirror.com/mirrors/electron/',
   },
+  // Electron uses underscores for macOS .lproj directories and hyphens for
+  // Windows/Linux locale packs. Keep the English variants on every platform.
+  electronLanguages: ['en', 'en_GB', 'en_US', 'en-GB', 'en-US'],
 
   files: [
     'dist',
     'resources',
-    // Ensure Next export assets are packaged
-    'dist/next/**/*',
+    'dist/renderer/**/*',
     '!resources/locales',
-    '!dist/next/docs',
-    '!dist/next/packages',
-    '!dist/next/.next/server/app/sitemap',
-    '!dist/next/.next/static/media',
+    '!resources/dmg.png',
     // Exclude all node_modules first
     '!node_modules',
     // Then explicitly include native modules using object form (handles pnpm symlinks)
     ...getNativeModulesFilesConfig(),
+    // Include non-native runtime modules that are intentionally externalized from Vite.
+    ...getExternalRuntimeModulesFilesConfig(),
   ],
   generateUpdatesFilesForAllChannels: true,
   linux: {
     category: 'Utility',
+    icon: 'build/icon.png',
     maintainer: 'electronjs.org',
     target: ['AppImage', 'snap', 'deb', 'rpm', 'tar.gz'],
   },
   mac: {
+    binaries: ['Contents/Resources/app.asar.unpacked/node_modules/font-list/libs/darwin/fontlist'],
     compression: 'maximum',
     entitlementsInherit: 'build/entitlements.mac.plist',
     extendInfo: {
@@ -249,15 +255,10 @@ const config = {
     hardenedRuntime: hasAppleCertificate,
     notarize: hasAppleCertificate,
     ...(hasAppleCertificate ? {} : { identity: null }),
-    target:
-      // 降低构建时间，nightly 只打 dmg
-      // 根据当前机器架构只构建对应架构的包
-      isNightly
-        ? [{ arch: [arch === 'arm64' ? 'arm64' : 'x64'], target: 'dmg' }]
-        : [
-            { arch: [arch === 'arm64' ? 'arm64' : 'x64'], target: 'dmg' },
-            { arch: [arch === 'arm64' ? 'arm64' : 'x64'], target: 'zip' },
-          ],
+    target: [
+      { arch: [arch === 'arm64' ? 'arm64' : 'x64'], target: 'dmg' },
+      { arch: [arch === 'arm64' ? 'arm64' : 'x64'], target: 'zip' },
+    ],
   },
   npmRebuild: true,
   nsis: {
@@ -285,6 +286,34 @@ const config = {
   releaseInfo: {
     releaseNotes: process.env.RELEASE_NOTES || undefined,
   },
+
+  extraResources: [
+    { from: 'resources/bin', to: 'bin' },
+    { from: 'resources/cli-package.json', to: 'package.json' },
+    // Local Sandbox helper binaries. The sandbox spawns these by path, so they
+    // must be real files — not entries inside app.asar, and not something the
+    // user is expected to install separately.
+    //
+    // Shipped as a resource rather than by externalizing
+    // `@anthropic-ai/sandbox-runtime`: its JavaScript bundles into the main
+    // process perfectly well, and making it a production dependency instead
+    // drags four transitive packages into electron-builder's node_modules
+    // traversal, which pnpm's layout does not satisfy (`@pondwader/socks5-server
+    // not found`). Only the binaries need to exist on disk.
+    {
+      from: 'node_modules/@anthropic-ai/sandbox-runtime/vendor',
+      to: 'sandbox-runtime/vendor',
+    },
+    // Carried alongside the binaries so the staging directory stays keyed on the
+    // backend's real version. Without it the version lookup falls back to the
+    // binary's size — which still works, but would defeat the per-version
+    // isolation in exactly the case it exists for: an installed app being
+    // updated.
+    {
+      from: 'node_modules/@anthropic-ai/sandbox-runtime/package.json',
+      to: 'sandbox-runtime/package.json',
+    },
+  ],
 
   win: {
     executableName: 'LobeHub',

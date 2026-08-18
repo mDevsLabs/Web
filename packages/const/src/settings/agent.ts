@@ -1,9 +1,9 @@
 import { DEFAULT_PROVIDER } from '@lobechat/business-const';
 import {
-  LobeAgentChatConfig,
-  LobeAgentConfig,
-  LobeAgentTTSConfig,
-  UserDefaultAgent,
+  type LobeAgentChatConfig,
+  type LobeAgentConfig,
+  type LobeAgentTTSConfig,
+  type UserDefaultAgent,
 } from '@lobechat/types';
 
 import { DEFAULT_AGENT_META } from '../meta';
@@ -24,17 +24,19 @@ export const DEFAULT_AGENT_SEARCH_FC_MODEL = {
 };
 
 export const DEFAULT_AGENT_CHAT_CONFIG: LobeAgentChatConfig = {
-  autoCreateTopicThreshold: 2,
-  enableAutoCreateTopic: true,
+  enableAgentMode: true,
   enableCompressHistory: true,
   enableContextCompression: true,
-  enableHistoryCount: true,
-  enableReasoning: false,
+  enableFollowUpChips: false,
+  enableHistoryCount: false,
   enableStreaming: true,
   historyCount: 20,
   reasoningBudgetToken: 1024,
   searchFCModel: DEFAULT_AGENT_SEARCH_FC_MODEL,
-  searchMode: 'off',
+  searchMode: 'auto',
+  selfIteration: {
+    enabled: false,
+  },
 };
 
 export const DEFAULT_AGENT_CONFIG: LobeAgentConfig = {

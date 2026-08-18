@@ -1,9 +1,10 @@
 import { ActionIcon, Block, Center, Flexbox, Text } from '@lobehub/ui';
 import { createStaticStyles, cssVar } from 'antd-style';
-import { Trash2Icon } from 'lucide-react';
+import { RotateCwIcon, Trash2Icon } from 'lucide-react';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { FileUploadErrorActions } from '@/business/client/features/FileUploadErrorActions';
 import { useFileStore } from '@/store/file';
 import { type UploadFileItem } from '@/types/files/upload';
 
@@ -47,35 +48,56 @@ const styles = createStaticStyles(({ css }) => ({
 type FileItemProps = UploadFileItem;
 
 const FileItem = memo<FileItemProps>((props) => {
-  const { file, uploadState, status, id, tasks } = props;
+  const { error, errorCode, file, uploadState, status, id, tasks } = props;
   const { t } = useTranslation(['chat', 'common']);
-  const [removeChatUploadFile] = useFileStore((s) => [s.removeChatUploadFile]);
+  const [removeChatUploadFile, retryChatUploadFile] = useFileStore((s) => [
+    s.removeChatUploadFile,
+    s.retryChatUploadFile,
+  ]);
 
   return (
-    <Block align={'center'} className={styles.container} horizontal variant={'outlined'}>
+    <Block horizontal align={'center'} className={styles.container} variant={'outlined'}>
       <Center flex={1} height={64} padding={4} style={{ maxWidth: 64 }}>
         <Content {...props} />
       </Center>
       <Flexbox flex={1} gap={4} style={{ paddingBottom: 4, paddingInline: 4 }}>
         <Text
+          style={{ fontSize: 12, maxWidth: 88 }}
           ellipsis={{
             tooltip: file.name,
           }}
-          style={{ fontSize: 12, maxWidth: 88 }}
         >
           {file.name}
         </Text>
-        <UploadDetail size={file.size} status={status} tasks={tasks} uploadState={uploadState} />
+        <UploadDetail
+          error={error}
+          size={file.size}
+          status={status}
+          tasks={tasks}
+          uploadState={uploadState}
+        />
       </Flexbox>
-      <Flexbox className={styles.actions}>
+      <Flexbox horizontal className={styles.actions}>
+        {status === 'error' && errorCode ? (
+          <FileUploadErrorActions compact code={errorCode} />
+        ) : status === 'error' ? (
+          <ActionIcon
+            icon={RotateCwIcon}
+            size={'small'}
+            title={t('retry', { ns: 'common' })}
+            onClick={() => {
+              void retryChatUploadFile(id);
+            }}
+          />
+        ) : null}
         <ActionIcon
           color={'red'}
           icon={Trash2Icon}
-          onClick={() => {
-            removeChatUploadFile(id);
-          }}
           size={'small'}
           title={t('delete', { ns: 'common' })}
+          onClick={() => {
+            void removeChatUploadFile(id);
+          }}
         />
       </Flexbox>
     </Block>

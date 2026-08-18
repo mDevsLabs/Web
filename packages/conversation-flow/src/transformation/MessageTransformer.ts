@@ -15,7 +15,7 @@ export class MessageTransformer {
    * Convert a Message to AssistantContentBlock
    */
   messageToContentBlock(message: Message): AssistantContentBlock {
-    const { usage, performance } = this.splitMetadata(message.metadata);
+    const { usage, performance } = this.splitMetadata(message.metadata, message.usage);
 
     return {
       content: message.content || '',
@@ -31,16 +31,30 @@ export class MessageTransformer {
   }
 
   /**
-   * Split metadata into usage and performance objects
+   * Split metadata into usage and performance objects.
+   *
+   * Supports two storage shapes:
+   * - **Nested** (canonical): `metadata.usage = {...}`, `metadata.performance = {...}`
+   *   — written by hetero-agent / Gateway executors.
+   * - **Flat** (legacy): `metadata.totalTokens`, `metadata.ttft`, etc — older write paths
+   *   that splatted token fields directly onto metadata.
+   *
+   * Top-level usage takes priority. Nested and flat metadata fields only fill in
+   * missing keys for legacy rows during the migration period.
    */
-  splitMetadata(metadata?: any): {
+  splitMetadata(
+    metadata?: any,
+    topLevelUsage?: ModelUsage,
+  ): {
     performance?: ModelPerformance;
     usage?: ModelUsage;
   } {
-    if (!metadata) return {};
+    if (!metadata && !topLevelUsage) return {};
 
-    const usage: ModelUsage = {};
-    const performance: ModelPerformance = {};
+    const usage: ModelUsage = { ...metadata?.usage, ...topLevelUsage };
+    const performance: ModelPerformance = { ...metadata?.performance };
+    let hasUsage = Object.keys(usage).length > 0;
+    let hasPerformance = Object.keys(performance).length > 0;
 
     const usageFields = [
       'acceptedPredictionTokens',
@@ -51,6 +65,8 @@ export class MessageTransformer {
       'inputCitationTokens',
       'inputImageTokens',
       'inputTextTokens',
+      'inputVideoTokens',
+      'inputToolTokens',
       'inputWriteCacheTokens',
       'outputAudioTokens',
       'outputImageTokens',
@@ -62,18 +78,16 @@ export class MessageTransformer {
       'totalTokens',
     ] as const;
 
-    let hasUsage = false;
     usageFields.forEach((field) => {
-      if (metadata[field] !== undefined) {
+      if (metadata?.[field] !== undefined && (usage as any)[field] === undefined) {
         (usage as any)[field] = metadata[field];
         hasUsage = true;
       }
     });
 
     const performanceFields = ['duration', 'latency', 'tps', 'ttft'] as const;
-    let hasPerformance = false;
     performanceFields.forEach((field) => {
-      if (metadata[field] !== undefined) {
+      if (metadata?.[field] !== undefined && (performance as any)[field] === undefined) {
         (performance as any)[field] = metadata[field];
         hasPerformance = true;
       }
@@ -113,6 +127,8 @@ export class MessageTransformer {
           'inputCitationTokens',
           'inputImageTokens',
           'inputTextTokens',
+          'inputVideoTokens',
+          'inputToolTokens',
           'inputWriteCacheTokens',
           'outputAudioTokens',
           'outputImageTokens',

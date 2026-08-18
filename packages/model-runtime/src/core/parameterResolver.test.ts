@@ -1,7 +1,10 @@
 import { describe, expect, it } from 'vitest';
 
-import { hasTemperatureTopPConflict } from '../const/models';
-import { createParameterResolver, resolveParameters } from './parameterResolver';
+import {
+  createParameterResolver,
+  resolveModelSamplingParameters,
+  resolveParameters,
+} from './parameterResolver';
 
 describe('resolveParameters', () => {
   describe('Basic functionality', () => {
@@ -213,10 +216,108 @@ describe('resolveParameters', () => {
       expect(result).toEqual({ top_p: 0.9 });
     });
 
+    it('should treat null values as undefined', () => {
+      const result = resolveParameters(
+        { frequency_penalty: null, temperature: null, top_p: 0.9 },
+        {},
+      );
+      expect(result).toEqual({ top_p: 0.9 });
+    });
+
     it('should handle both parameters undefined with conflict', () => {
       const result = resolveParameters({}, { hasConflict: true });
       expect(result).toEqual({});
     });
+  });
+});
+
+describe('resolveModelSamplingParameters', () => {
+  it('should omit top_p for Claude 4+ models when temperature is also set', () => {
+    const result = resolveModelSamplingParameters(
+      'claude-haiku-4-5-20251001',
+      { temperature: 0.7, top_p: 0.9 },
+      { normalizeTemperature: false, preferTemperature: true },
+    );
+
+    // Always returns both keys so spreading onto a payload clears the conflicting field
+    expect(result).toEqual({ temperature: 0.7, top_p: undefined });
+  });
+
+  it('should keep both parameters for non-conflict models', () => {
+    const result = resolveModelSamplingParameters(
+      'claude-3-5-sonnet-20240620',
+      { temperature: 0.7, top_p: 0.9 },
+      { normalizeTemperature: false, preferTemperature: true },
+    );
+
+    expect(result).toEqual({ temperature: 0.7, top_p: 0.9 });
+  });
+
+  it('should treat null sampling values as undefined and not include them in result', () => {
+    const result = resolveModelSamplingParameters(
+      'claude-haiku-4-5-20251001',
+      { temperature: null, top_p: 0.9 },
+      { normalizeTemperature: false, preferTemperature: true },
+    );
+
+    // temperature was null (treated as not provided), so it should not appear in result
+    expect(result).toEqual({ top_p: 0.9 });
+    expect(result).not.toHaveProperty('temperature');
+  });
+
+  it('should not add spurious undefined keys when input omits fields', () => {
+    const result = resolveModelSamplingParameters(
+      'gpt-4o',
+      {},
+      { normalizeTemperature: false, preferTemperature: true },
+    );
+
+    expect(result).toEqual({});
+    expect(result).not.toHaveProperty('temperature');
+    expect(result).not.toHaveProperty('top_p');
+  });
+
+  it('should omit temperature and top_p for models that reject sampling params', () => {
+    const result = resolveModelSamplingParameters(
+      'claude-opus-4-7',
+      { temperature: 0.7, top_p: 0.9 },
+      { normalizeTemperature: false, preferTemperature: true },
+    );
+
+    // Both keys present with undefined values so spreading clears any pre-set payload fields
+    expect(result).toEqual({ temperature: undefined, top_p: undefined });
+  });
+
+  it('should omit temperature and top_p for Claude Opus 4.8', () => {
+    const result = resolveModelSamplingParameters(
+      'claude-opus-4-8',
+      { temperature: 0.7, top_p: 0.9 },
+      { normalizeTemperature: false, preferTemperature: true },
+    );
+
+    expect(result).toEqual({ temperature: undefined, top_p: undefined });
+  });
+
+  it('should omit temperature and top_p for Bedrock Opus 4.7 id', () => {
+    const result = resolveModelSamplingParameters(
+      'us.anthropic.claude-opus-4-7-v1',
+      { temperature: 0.7, top_p: 0.9 },
+      { normalizeTemperature: false, preferTemperature: true },
+    );
+
+    expect(result).toEqual({ temperature: undefined, top_p: undefined });
+  });
+
+  it('should not add spurious keys when omit-model input has no sampling fields', () => {
+    const result = resolveModelSamplingParameters(
+      'claude-opus-4-7',
+      {},
+      { normalizeTemperature: false, preferTemperature: true },
+    );
+
+    expect(result).toEqual({});
+    expect(result).not.toHaveProperty('temperature');
+    expect(result).not.toHaveProperty('top_p');
   });
 });
 
@@ -241,44 +342,5 @@ describe('createParameterResolver', () => {
 
     const result = resolver({ temperature: 0.02, top_p: 0.005 });
     expect(result).toEqual({ temperature: 0.01, top_p: 0.01 });
-  });
-});
-
-describe('hasTemperatureTopPConflict', () => {
-  describe('Anthropic Claude 4+ models', () => {
-    it('should return true for Claude 4+ models', () => {
-      expect(hasTemperatureTopPConflict('claude-opus-4-1-20250805')).toBe(true);
-      expect(hasTemperatureTopPConflict('claude-sonnet-4-5-20250929')).toBe(true);
-      expect(hasTemperatureTopPConflict('claude-haiku-4-5-20251001')).toBe(true);
-    });
-
-    it('should return false for Claude 3.x models', () => {
-      expect(hasTemperatureTopPConflict('claude-3-opus-20240229')).toBe(false);
-      expect(hasTemperatureTopPConflict('claude-3-5-sonnet-20240620')).toBe(false);
-    });
-  });
-
-  describe('OpenRouter Claude 4+ models', () => {
-    it('should return true for OpenRouter Claude 4+ models', () => {
-      expect(hasTemperatureTopPConflict('anthropic/claude-opus-4.5')).toBe(true);
-      expect(hasTemperatureTopPConflict('anthropic/claude-sonnet-4.1')).toBe(true);
-      expect(hasTemperatureTopPConflict('anthropic/claude-4.5-opus')).toBe(true);
-    });
-
-    it('should return false for OpenRouter Claude 3.x models', () => {
-      expect(hasTemperatureTopPConflict('anthropic/claude-3.5-sonnet')).toBe(false);
-      expect(hasTemperatureTopPConflict('anthropic/claude-3.7-sonnet')).toBe(false);
-    });
-  });
-
-  describe('Bedrock Claude 4+ models', () => {
-    it('should return true for Bedrock Claude 4+ models', () => {
-      expect(hasTemperatureTopPConflict('anthropic.claude-opus-4-1-20250805-v1:0')).toBe(true);
-      expect(hasTemperatureTopPConflict('us.anthropic.claude-sonnet-4-5-20250929-v1:0')).toBe(true);
-    });
-
-    it('should return false for Bedrock Claude 3.x models', () => {
-      expect(hasTemperatureTopPConflict('anthropic.claude-3-5-sonnet-20240620-v1:0')).toBe(false);
-    });
   });
 });

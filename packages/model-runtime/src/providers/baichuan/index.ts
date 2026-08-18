@@ -1,12 +1,10 @@
 import type { ChatModelCard } from '@lobechat/types';
 import { ModelProvider } from 'model-bank';
 
-import {
-  OpenAICompatibleFactoryOptions,
-  createOpenAICompatibleRuntime,
-} from '../../core/openaiCompatibleFactory';
+import type { OpenAICompatibleFactoryOptions } from '../../core/openaiCompatibleFactory';
+import { createOpenAICompatibleRuntime } from '../../core/openaiCompatibleFactory';
 import { resolveParameters } from '../../core/parameterResolver';
-import { ChatStreamPayload } from '../../types';
+import type { ChatStreamPayload } from '../../types';
 
 export interface BaichuanModelCard {
   function_call: boolean;
@@ -20,7 +18,7 @@ export const params = {
   baseURL: 'https://api.baichuan-ai.com/v1',
   chatCompletion: {
     handlePayload: (payload: ChatStreamPayload) => {
-      const { enabledSearch, temperature, tools, ...rest } = payload;
+      const { model, enabledSearch, temperature, thinking, tools, ...rest } = payload;
 
       const baichuanTools = enabledSearch
         ? [
@@ -40,8 +38,17 @@ export const params = {
 
       return {
         ...rest,
+        model,
         temperature: resolvedParams.temperature,
         tools: baichuanTools,
+        ...(model?.startsWith('Baichuan-M') && {
+          frequency_penalty: undefined,
+          presence_penalty: undefined,
+        }),
+        ...(thinking?.budget_tokens !== undefined && {
+          budget_tokens:
+            thinking.budget_tokens === 0 ? 0 : Math.min(thinking.budget_tokens, 1024) || undefined,
+        }),
       } as any;
     },
   },

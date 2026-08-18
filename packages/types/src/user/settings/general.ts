@@ -9,6 +9,18 @@ export type ContextMenuMode = 'disabled' | 'default';
 export interface UserGeneralConfig {
   animationMode?: AnimationMode;
   contextMenuMode?: ContextMenuMode;
+  costEstimateWarningThreshold?: number;
+  /**
+   * Whether to auto-scroll during AI streaming output
+   * @default true
+   */
+  enableAutoScrollOnStreaming?: boolean;
+  /**
+   * Whether to show the website/favicon icon before links in chat messages.
+   * Turning it off renders plain links, which copy cleanly into email and other apps.
+   * @default true
+   */
+  enableMessageLinkIcon?: boolean;
   fontSize: number;
   highlighterTheme?: HighlighterProps['theme'];
   isDevMode: boolean;
@@ -18,5 +30,6 @@ export interface UserGeneralConfig {
   primaryColor?: PrimaryColors;
   responseLanguage?: string;
   telemetry: boolean;
+  timezone?: string;
   transitionMode?: ResponseAnimationStyle;
 }

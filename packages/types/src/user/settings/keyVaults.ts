@@ -19,6 +19,7 @@ export interface AzureOpenAIKeyVault {
 
 export interface AWSBedrockKeyVault {
   accessKeyId?: string;
+  apiKey?: string;
   region?: string;
   secretAccessKey?: string;
   sessionToken?: string;
@@ -41,6 +42,40 @@ export interface ComfyUIKeyVault {
   customHeaders?: Record<string, string>;
   password?: string;
   username?: string;
+}
+
+export interface GithubCopilotKeyVault {
+  /**
+   * Traditional PAT (Personal Access Token)
+   */
+  apiKey?: string;
+  /**
+   * Provider-specific bearer token (Copilot API token)
+   */
+  bearerToken?: string;
+  /**
+   * Bearer token expiration timestamp (ms)
+   */
+  bearerTokenExpiresAt?: string;
+  /**
+   * OAuth access token (e.g., GitHub's ghu_xxx)
+   */
+  oauthAccessToken?: string;
+}
+
+export interface SuperGrokKeyVault {
+  /**
+   * xAI OAuth access token (JWT, ~1h lifetime)
+   */
+  oauthAccessToken?: string;
+  /**
+   * xAI OAuth refresh token. Rotates on every refresh — single use.
+   */
+  oauthRefreshToken?: string;
+  /**
+   * Access token expiration timestamp (ms)
+   */
+  oauthTokenExpiresAt?: string;
 }
 
 export interface SearchEngineKeyVaults {

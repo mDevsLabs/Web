@@ -11,62 +11,82 @@ describe('handleOpenAIError', () => {
         472,
         { error: { message: 'API error', type: 'invalid_request' } },
         'test-message',
-        { status: 400 } as any,
+        undefined,
       );
 
       const result = handleOpenAIError(apiError);
 
-      expect(result).toEqual({
-        errorResult: { error: { message: 'API error', type: 'invalid_request' } },
+      expect(result.errorResult).toEqual({
+        error: { message: 'API error', type: 'invalid_request' },
       });
+      expect(result.message).toBe(apiError.message);
       expect(result.RuntimeError).toBeUndefined();
     });
 
     it('should handle OpenAI APIError with cause', () => {
       const cause = { message: 'Network error', code: 'ECONNRESET' };
-      const apiError = new OpenAI.APIError(472, null as any, 'test-message', {
-        status: 500,
-      } as any);
+      const apiError = new OpenAI.APIError(472, null as any, 'test-message', undefined);
       (apiError as any).cause = cause;
 
       const result = handleOpenAIError(apiError);
 
-      expect(result).toEqual({
-        errorResult: cause,
-      });
+      expect(result.errorResult).toEqual(cause);
+      expect(result.message).toBe(apiError.message);
       expect(result.RuntimeError).toBeUndefined();
     });
 
     it('should handle OpenAI APIError without error or cause', () => {
-      const headers = { 'content-type': 'application/json' };
-      const apiError = new OpenAI.APIError(472, null as any, 'test-message', {
-        status: 401,
-        headers,
-      } as any);
+      const headers = new Headers({ 'content-type': 'application/json' });
+      const apiError = new OpenAI.APIError(472, null as any, 'test-message', headers);
 
       const result = handleOpenAIError(apiError);
 
       expect(result.errorResult).toEqual({
-        headers: { headers, status: 401 },
+        headers: apiError.headers,
         status: 472,
       });
+      expect(result.message).toBe(apiError.message);
       expect(result.RuntimeError).toBeUndefined();
     });
 
     it('should handle OpenAI APIError with both error and cause', () => {
       const errorObject = { message: 'API error', type: 'rate_limit' };
       const cause = { message: 'Rate limit exceeded' };
-      const apiError = new OpenAI.APIError(472, { error: errorObject }, 'test-message', {
-        status: 429,
-      } as any);
+      const apiError = new OpenAI.APIError(472, { error: errorObject }, 'test-message', undefined);
       (apiError as any).cause = cause;
 
       const result = handleOpenAIError(apiError);
 
       // Should prioritize error over cause
-      expect(result).toEqual({
-        errorResult: { error: errorObject },
+      expect(result.errorResult).toEqual({ error: errorObject });
+      expect(result.message).toBe(apiError.message);
+    });
+
+    it('should classify OpenAI content_filter APIError as provider content policy violation', () => {
+      const apiError = new OpenAI.APIError(
+        400,
+        {
+          error: {
+            code: 'content_filter',
+            message: 'The provider blocked this prompt.',
+            type: 'content_filter',
+          },
+        },
+        'content filter',
+        undefined,
+      );
+
+      const result = handleOpenAIError(apiError);
+
+      expect(result.errorResult).toEqual({
+        error: {
+          code: 'content_filter',
+          message: 'The provider blocked this prompt.',
+          type: 'content_filter',
+        },
       });
+      expect(result.message).toBe(apiError.message);
+      expect(result.RuntimeError).toBe(AgentRuntimeErrorType.ProviderContentPolicyViolation);
     });
   });
 
@@ -84,6 +104,7 @@ describe('handleOpenAIError', () => {
           message: 'Generic error',
           name: 'Error',
         },
+        message: 'Generic error',
       });
     });
 
@@ -99,6 +120,7 @@ describe('handleOpenAIError', () => {
           message: 'Simple error',
           name: 'Error',
         },
+        message: 'Simple error',
       });
     });
 
@@ -120,6 +142,7 @@ describe('handleOpenAIError', () => {
           message: 'Custom error message',
           name: 'CustomError',
         },
+        message: 'Custom error message',
       });
     });
 
@@ -138,6 +161,7 @@ describe('handleOpenAIError', () => {
           message: 'Object error',
           name: undefined,
         },
+        message: 'Object error',
       });
     });
   });

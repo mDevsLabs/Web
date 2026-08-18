@@ -2,7 +2,7 @@
 import { fal } from '@fal-ai/client';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { CreateImagePayload } from '../../types';
+import type { CreateImagePayload } from '../../types';
 import { LobeFalAI } from './index';
 
 // Mock the fal client
@@ -102,6 +102,32 @@ describe('LobeFalAI', () => {
         imageUrl: 'https://example.com/image.jpg',
         width: 1024,
         height: 1024,
+      });
+    });
+
+    it('should use mapped model id for fal endpoint requests', async () => {
+      const mappedInstance = new LobeFalAI({
+        apiKey: 'test-api-key',
+        modelIdMapping: { 'logical-fal-image': 'fal-ai/upstream/image-model' },
+      });
+      mockFal.subscribe.mockResolvedValue({
+        data: {
+          images: [{ url: 'https://example.com/mapped.jpg' }],
+        },
+        requestId: 'test-request-id',
+      } as any);
+
+      await mappedInstance.createImage({
+        model: 'logical-fal-image',
+        params: { prompt: 'A mapped image' },
+      });
+
+      expect(mockFal.subscribe).toHaveBeenCalledWith('fal-ai/upstream/image-model', {
+        input: {
+          enable_safety_checker: false,
+          num_images: 1,
+          prompt: 'A mapped image',
+        },
       });
     });
 
@@ -423,7 +449,7 @@ describe('LobeFalAI', () => {
             prompt: 'Test with undefined values',
             imageUrl: undefined,
             steps: undefined,
-            cfg: 5.0,
+            cfg: 5,
           } as any,
         };
 
@@ -436,7 +462,7 @@ describe('LobeFalAI', () => {
             enable_safety_checker: false,
             num_images: 1,
             prompt: 'Test with undefined values',
-            guidance_scale: 5.0,
+            guidance_scale: 5,
           },
         });
       });
@@ -679,7 +705,7 @@ describe('LobeFalAI', () => {
             prompt: 'Edit with custom settings',
             imageUrls: ['https://example.com/input.jpg'],
             steps: 30,
-            cfg: 8.0,
+            cfg: 8,
           },
         };
 
@@ -694,7 +720,7 @@ describe('LobeFalAI', () => {
             prompt: 'Edit with custom settings',
             image_urls: ['https://example.com/input.jpg'],
             num_inference_steps: 30,
-            guidance_scale: 8.0,
+            guidance_scale: 8,
           },
         });
       });

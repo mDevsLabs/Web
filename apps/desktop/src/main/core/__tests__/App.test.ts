@@ -1,6 +1,8 @@
+import { app as electronApp, ipcMain } from 'electron';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 // Import after mocks are set up
+import LocalDatabaseService from '../../services/LocalDatabaseSrv';
 import { App } from '../App';
 
 const mockPathExistsSync = vi.fn();
@@ -11,6 +13,7 @@ vi.mock('electron', () => ({
     getAppPath: vi.fn(() => '/mock/app/path'),
     getLocale: vi.fn(() => 'en-US'),
     getPath: vi.fn(() => '/mock/user/path'),
+    getVersion: vi.fn(() => '1.2.3'),
     requestSingleInstanceLock: vi.fn(() => true),
     isReady: vi.fn(() => true),
     whenReady: vi.fn(() => Promise.resolve()),
@@ -44,13 +47,6 @@ vi.mock('electron', () => ({
   },
 }));
 
-// electron-devtools-installer accesses electron.app.getPath at import-time in node env;
-// mock it to avoid side effects in unit tests
-vi.mock('electron-devtools-installer', () => ({
-  REACT_DEVELOPER_TOOLS: 'REACT_DEVELOPER_TOOLS',
-  default: vi.fn(),
-}));
-
 vi.mock('fs-extra', () => ({
   pathExistsSync: (...args: any[]) => mockPathExistsSync(...args),
 }));
@@ -72,7 +68,7 @@ vi.mock('~common/routes', () => ({
 }));
 
 // Mock other dependencies
-vi.mock('electron-is', () => ({
+vi.mock('@/utils/platform', () => ({
   macOS: vi.fn(() => false),
   windows: vi.fn(() => false),
 }));
@@ -90,8 +86,9 @@ vi.mock('@/env', () => ({
 }));
 
 vi.mock('@/const/dir', () => ({
+  binDir: '/mock/bin',
   buildDir: '/mock/build',
-  nextExportDir: '/mock/export/out',
+  rendererDir: '/mock/export/out',
   appStorageDir: '/mock/storage/path',
   userDataDir: '/mock/user/data',
   FILE_STORAGE_DIR: 'file-storage',
@@ -114,9 +111,9 @@ vi.mock('../infrastructure/I18nManager', () => ({
 
 vi.mock('../infrastructure/StoreManager', () => ({
   StoreManager: vi.fn().mockImplementation(() => ({
-    get: vi.fn((key) => {
-      if (key === 'storagePath') return '/mock/storage/path';
-      return undefined;
+    get: vi.fn((_key, defaultValue) => {
+      if (_key === 'storagePath') return '/mock/storage/path';
+      return defaultValue;
     }),
     set: vi.fn(),
   })),
@@ -146,6 +143,7 @@ vi.mock('../browser/BrowserManager', () => ({
   BrowserManager: vi.fn().mockImplementation(() => ({
     initializeBrowsers: vi.fn(),
     getIdentifierByWebContents: vi.fn(),
+    waitForMainWindowFirstFrame: vi.fn(() => new Promise(() => {})),
   })),
 }));
 
@@ -194,6 +192,54 @@ describe('App', () => {
       const storagePath = appInstance.appStoragePath;
 
       expect(storagePath).toBe('/mock/storage/path');
+    });
+  });
+
+  describe('service lifecycle', () => {
+    it('destroys registered services before quitting', () => {
+      appInstance = new App();
+      const databaseService = appInstance.getService(LocalDatabaseService);
+      const destroy = vi.spyOn(databaseService, 'destroy');
+      const beforeQuitHandler = vi
+        .mocked(electronApp.on)
+        .mock.calls.findLast(([event]) => (event as string) === 'before-quit')?.[1] as () => void;
+
+      beforeQuitHandler();
+
+      expect(destroy).toHaveBeenCalledOnce();
+    });
+
+    it('prewarms the local database after browser initialization yields to the event loop', async () => {
+      appInstance = new App();
+      const databaseService = appInstance.getService(LocalDatabaseService);
+      const initialize = vi.spyOn(databaseService, 'initialize').mockImplementation(() => {});
+
+      await appInstance.bootstrap();
+
+      expect(appInstance.browserManager.initializeBrowsers).toHaveBeenCalledOnce();
+      expect(initialize).not.toHaveBeenCalled();
+
+      await new Promise((resolve) => setImmediate(resolve));
+
+      expect(initialize).toHaveBeenCalledOnce();
+      expect(
+        vi.mocked(appInstance.browserManager.initializeBrowsers).mock.invocationCallOrder[0],
+      ).toBeLessThan(initialize.mock.invocationCallOrder[0]);
+    });
+  });
+
+  describe('desktop bootstrap identity', () => {
+    it('responds through the registered controller without an elided runtime symbol', () => {
+      appInstance = new App();
+      const listener = vi
+        .mocked(ipcMain.on)
+        .mock.calls.findLast(
+          ([channel]) => channel === 'desktop:get-bootstrap-identity',
+        )?.[1] as (event: { returnValue?: unknown }) => void;
+      const event: { returnValue?: unknown } = {};
+
+      expect(() => listener(event)).not.toThrow();
+      expect(event.returnValue).toEqual({ isIdentityResolved: true });
     });
   });
 });

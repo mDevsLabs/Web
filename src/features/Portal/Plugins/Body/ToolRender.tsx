@@ -1,14 +1,14 @@
+import { getBuiltinPortal } from '@lobechat/builtin-tools/portals';
 import isEqual from 'fast-deep-equal';
 import { memo } from 'react';
 
-import PluginRender from '@/features/PluginsUI/Render';
 import { useChatStore } from '@/store/chat';
 import { chatPortalSelectors, dbMessageSelectors } from '@/store/chat/selectors';
-import { BuiltinToolsPortals } from '@/tools/portals';
 import { safeParseJSON } from '@/utils/safeParseJSON';
 
 const ToolRender = memo(() => {
   const messageId = useChatStore(chatPortalSelectors.toolMessageId);
+  const params = useChatStore(chatPortalSelectors.toolUIParams, isEqual);
   const message = useChatStore(dbMessageSelectors.getDbMessageById(messageId || ''), isEqual);
 
   // make sure the message and id is valid
@@ -23,21 +23,9 @@ const ToolRender = memo(() => {
 
   if (!args) return;
 
-  const Render = BuiltinToolsPortals[plugin.identifier];
+  const Render = getBuiltinPortal(plugin.identifier);
 
-  if (!Render)
-    return (
-      <PluginRender
-        arguments={plugin.arguments}
-        content={message.content}
-        identifier={plugin.identifier}
-        messageId={messageId}
-        payload={plugin}
-        pluginState={pluginState}
-        toolCallId={message.tool_call_id}
-        type={plugin?.type}
-      />
-    );
+  if (!Render) return null;
 
   return (
     <Render
@@ -45,6 +33,7 @@ const ToolRender = memo(() => {
       arguments={args}
       identifier={plugin.identifier}
       messageId={messageId}
+      params={params}
       state={pluginState}
     />
   );

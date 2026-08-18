@@ -1,9 +1,10 @@
-import { DBMessageItem } from '@lobechat/types';
-import { eq } from 'drizzle-orm';
+import type { DBMessageItem } from '@lobechat/types';
+import { asc, eq } from 'drizzle-orm';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 import { uuid } from '@/utils/uuid';
 
+import { getTestDB } from '../../../core/getTestDB';
 import {
   chatGroups,
   chunks,
@@ -15,11 +16,11 @@ import {
   messages,
   messagesFiles,
   sessions,
+  topics,
   users,
 } from '../../../schemas';
-import { LobeChatDatabase } from '../../../type';
+import type { LobeChatDatabase } from '../../../type';
 import { MessageModel } from '../../message';
-import { getTestDB } from '../../../core/getTestDB';
 import { codeEmbedding } from '../fixtures/embedding';
 
 const serverDB: LobeChatDatabase = await getTestDB();
@@ -43,7 +44,7 @@ beforeEach(async () => {
     ]);
     await trx.insert(files).values({
       id: 'f1',
-      userId: userId,
+      userId,
       url: 'abc',
       name: 'file-1',
       fileType: 'image/png',
@@ -93,6 +94,59 @@ describe('MessageModel Create Tests', () => {
       expect(result.userId).toBe(userId);
     });
 
+    it('finds a message by client id within the current user scope', async () => {
+      await Promise.all([
+        messageModel.create(
+          {
+            clientId: 'shared-client-id',
+            content: 'owned message',
+            role: 'assistant',
+          },
+          'owned-message',
+        ),
+        new MessageModel(serverDB, otherUserId).create(
+          {
+            clientId: 'shared-client-id',
+            content: 'other message',
+            role: 'assistant',
+          },
+          'other-message',
+        ),
+      ]);
+
+      await expect(messageModel.findByClientId('shared-client-id')).resolves.toMatchObject({
+        content: 'owned message',
+        id: 'owned-message',
+      });
+    });
+
+    it('promotes metadata.usage into the dedicated usage column on create', async () => {
+      const usage = { cost: 0.004, totalInputTokens: 70, totalOutputTokens: 30, totalTokens: 100 };
+      const result = await messageModel.create({
+        content: 'answer',
+        metadata: { usage } as any,
+        role: 'assistant',
+        sessionId: '1',
+      });
+
+      expect(result.usage).toEqual(usage);
+      expect((result.metadata as any).usage).toBeUndefined();
+    });
+
+    it('prefers a top-level usage over metadata.usage on create', async () => {
+      const topLevel = { cost: 0.01, totalTokens: 200 };
+      const result = await messageModel.create({
+        content: 'answer',
+        metadata: { usage: { cost: 0.004, totalTokens: 100 } } as any,
+        role: 'assistant',
+        sessionId: '1',
+        usage: topLevel as any,
+      });
+
+      expect(result.usage).toEqual(topLevel);
+      expect((result.metadata as any).usage).toBeUndefined();
+    });
+
     it('should generate message ID automatically', async () => {
       // Call createMessage method
       await messageModel.create({
@@ -104,7 +158,7 @@ describe('MessageModel Create Tests', () => {
       // Assert result
       const result = await serverDB.select().from(messages).where(eq(messages.userId, userId));
       expect(result[0].id).toBeDefined();
-      expect(result[0].id).toHaveLength(18);
+      expect(result[0].id).toHaveLength(22);
     });
 
     it('should create a tool message and insert into messagePlugins table', async () => {
@@ -202,6 +256,240 @@ describe('MessageModel Create Tests', () => {
       expect(pluginResult).toHaveLength(1);
       expect(pluginResult[0].identifier).toBe('lobe-web-browsing');
       expect(pluginResult[0].state!).toMatchObject(state);
+    });
+
+    it('should handle tool message with null bytes (\\u0000) in plugin state/arguments', async () => {
+      // Regression: PostgreSQL rejects \u0000 in text/jsonb columns.
+      // This reproduces a real crash from web search tool returning corrupted Unicode,
+      // e.g. "montée" encoded as "mont\u0000e9e" instead of "mont\u00e9e".
+      const stateWithNullByte = {
+        query: 'Auxerre mont\u0000e Ligue 1',
+        results: [
+          {
+            content: 'Some result with null\u0000byte',
+            url: 'https://example.com',
+          },
+        ],
+      };
+
+      const argsWithNullByte = `{"query":"Auxerre mont\u0000e9e 2022"}`;
+
+      await expect(
+        messageModel.create({
+          content: 'tool result',
+          plugin: {
+            apiName: 'search',
+            arguments: argsWithNullByte,
+            identifier: 'lobe-web-browsing',
+            type: 'builtin',
+          },
+          pluginState: stateWithNullByte,
+          role: 'tool',
+          tool_call_id: 'call_null_byte_test',
+          sessionId: '1',
+        }),
+      ).resolves.toBeDefined();
+
+      // Verify the data was stored and null bytes were handled
+      const pluginResult = await serverDB
+        .select()
+        .from(messagePlugins)
+        .where(eq(messagePlugins.toolCallId, 'call_null_byte_test'));
+      expect(pluginResult).toHaveLength(1);
+      expect(pluginResult[0].identifier).toBe('lobe-web-browsing');
+      // The stored data should not contain null bytes
+      expect(JSON.stringify(pluginResult[0].state)).not.toContain('\u0000');
+      expect(pluginResult[0].arguments).not.toContain('\u0000');
+    });
+
+    it('should create user and assistant messages with one topic touch', async () => {
+      await serverDB.insert(topics).values({
+        id: 'topic-pair',
+        sessionId: '1',
+        title: 'Topic pair',
+        userId,
+      });
+
+      const timingEvents: string[] = [];
+      const result = await messageModel.createUserAndAssistantMessages(
+        {
+          assistantMessage: {
+            content: '',
+            model: 'gpt-4o',
+            provider: 'openai',
+            role: 'assistant',
+            sessionId: '1',
+            topicId: 'topic-pair',
+          },
+          userMessage: {
+            content: 'hello',
+            files: ['f1'],
+            role: 'user',
+            sessionId: '1',
+            topicId: 'topic-pair',
+          },
+        },
+        {
+          timing: {
+            log: (event) => timingEvents.push(event),
+          },
+        },
+      );
+
+      expect(result.userMessage.id).toBeDefined();
+      expect(result.assistantMessage.id).toBeDefined();
+      expect(result.assistantMessage.parentId).toBe(result.userMessage.id);
+      expect(result.userMessage.createdAt.getTime()).toBeLessThan(
+        result.assistantMessage.createdAt.getTime(),
+      );
+
+      const dbMessages = await serverDB
+        .select()
+        .from(messages)
+        .where(eq(messages.userId, userId))
+        .orderBy(asc(messages.createdAt));
+
+      expect(dbMessages.map((message) => message.id)).toEqual([
+        result.userMessage.id,
+        result.assistantMessage.id,
+      ]);
+
+      const messageFiles = await serverDB
+        .select()
+        .from(messagesFiles)
+        .where(eq(messagesFiles.messageId, result.userMessage.id));
+
+      expect(messageFiles).toHaveLength(1);
+      expect(
+        timingEvents.filter(
+          (event) => event === 'db.message.createUserAndAssistant.messages.insert:start',
+        ),
+      ).toHaveLength(1);
+      expect(timingEvents.some((event) => event.includes('topic.touchUpdatedAt'))).toBe(false);
+    });
+
+    it('should honour caller-supplied ids for the pair', async () => {
+      await serverDB.insert(topics).values({
+        id: 'topic-client-ids',
+        sessionId: '1',
+        title: 'Client ids',
+        userId,
+      });
+
+      // The client renders the optimistic pair under these ids before the row
+      // exists; honouring them verbatim is what removes the placeholder → real
+      // id swap from the send flow.
+      const userMessageId = 'msg_clientUser01';
+      const assistantMessageId = 'msg_clientAsst01';
+
+      const result = await messageModel.createUserAndAssistantMessages(
+        {
+          assistantMessage: {
+            content: '',
+            role: 'assistant',
+            sessionId: '1',
+            topicId: 'topic-client-ids',
+          },
+          userMessage: {
+            content: 'hello',
+            role: 'user',
+            sessionId: '1',
+            topicId: 'topic-client-ids',
+          },
+        },
+        { ids: { assistantMessageId, userMessageId } },
+      );
+
+      expect(result.userMessage.id).toBe(userMessageId);
+      expect(result.assistantMessage.id).toBe(assistantMessageId);
+      // The pair must still be linked, now through the supplied user id.
+      expect(result.assistantMessage.parentId).toBe(userMessageId);
+
+      const stored = await serverDB
+        .select({ id: messages.id })
+        .from(messages)
+        .where(eq(messages.topicId, 'topic-client-ids'))
+        .orderBy(asc(messages.createdAt));
+
+      expect(stored.map((row) => row.id)).toEqual([userMessageId, assistantMessageId]);
+    });
+
+    it('should mint ids when the caller supplies none', async () => {
+      await serverDB.insert(topics).values({
+        id: 'topic-server-ids',
+        sessionId: '1',
+        title: 'Server ids',
+        userId,
+      });
+
+      // Back-compat: a client that predates client-minted ids sends none, and
+      // the model keeps generating them.
+      const result = await messageModel.createUserAndAssistantMessages({
+        assistantMessage: {
+          content: '',
+          role: 'assistant',
+          sessionId: '1',
+          topicId: 'topic-server-ids',
+        },
+        userMessage: {
+          content: 'hello',
+          role: 'user',
+          sessionId: '1',
+          topicId: 'topic-server-ids',
+        },
+      });
+
+      expect(result.userMessage.id).toMatch(/^msg_/);
+      expect(result.assistantMessage.id).toMatch(/^msg_/);
+      expect(result.assistantMessage.parentId).toBe(result.userMessage.id);
+    });
+
+    it('should not touch topic updatedAt when creating a pair for an existing topic', async () => {
+      await serverDB.insert(topics).values({
+        id: 'topic-pair-no-touch',
+        sessionId: '1',
+        title: 'Topic pair no touch',
+        updatedAt: new Date('2024-01-01T00:00:00Z'),
+        userId,
+      });
+
+      const timingEvents: string[] = [];
+      const result = await messageModel.createUserAndAssistantMessages(
+        {
+          assistantMessage: {
+            content: '',
+            model: 'gpt-4o',
+            provider: 'openai',
+            role: 'assistant',
+            sessionId: '1',
+            topicId: 'topic-pair-no-touch',
+          },
+          userMessage: {
+            content: 'hello',
+            role: 'user',
+            sessionId: '1',
+            topicId: 'topic-pair-no-touch',
+          },
+        },
+        {
+          timing: {
+            log: (event) => timingEvents.push(event),
+          },
+        },
+      );
+      const topic = await serverDB.query.topics.findFirst({
+        where: (table, { eq }) => eq(table.id, 'topic-pair-no-touch'),
+      });
+
+      expect(result.userMessage.id).toBeDefined();
+      expect(result.assistantMessage.parentId).toBe(result.userMessage.id);
+      expect(
+        timingEvents.filter(
+          (event) => event === 'db.message.createUserAndAssistant.messages.insert:start',
+        ),
+      ).toHaveLength(1);
+      expect(timingEvents.some((event) => event.includes('topic.touchUpdatedAt'))).toBe(false);
+      expect(topic?.updatedAt.toISOString()).toBe('2024-01-01T00:00:00.000Z');
     });
 
     describe('create with advanced parameters', () => {
@@ -419,7 +707,7 @@ describe('MessageModel Create Tests', () => {
         content: 'test message',
       });
 
-      // 调用 createMessageQuery 方法
+      // Call createMessageQuery method
       const result = await messageModel.createMessageQuery({
         messageId: 'msg1',
         userQuery: 'original query',
@@ -435,7 +723,7 @@ describe('MessageModel Create Tests', () => {
       expect(result.rewriteQuery).toBe('rewritten query');
       expect(result.userId).toBe(userId);
 
-      // 验证数据库中的记录
+      // Verify records in the database
       const dbResult = await serverDB
         .select()
         .from(messageQueries)
@@ -456,7 +744,7 @@ describe('MessageModel Create Tests', () => {
         content: 'test message',
       });
 
-      // 调用 createMessageQuery 方法
+      // Call createMessageQuery method
       const result = await messageModel.createMessageQuery({
         messageId: 'msg2',
         userQuery: 'test query',
@@ -468,7 +756,7 @@ describe('MessageModel Create Tests', () => {
       expect(result).toBeDefined();
       expect(result.embeddingsId).toBe(embeddingsId);
 
-      // 验证数据库中的记录
+      // Verify records in the database
       const dbResult = await serverDB
         .select()
         .from(messageQueries)
@@ -486,7 +774,7 @@ describe('MessageModel Create Tests', () => {
         content: 'test message',
       });
 
-      // 连续创建两个消息查询
+      // Create two message queries consecutively
       const result1 = await messageModel.createMessageQuery({
         messageId: 'msg3',
         userQuery: 'query 1',

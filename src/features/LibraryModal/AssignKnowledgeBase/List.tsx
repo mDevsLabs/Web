@@ -1,4 +1,5 @@
 import { Center, Empty, Flexbox, Icon } from '@lobehub/ui';
+import { Alert } from '@lobehub/ui/base-ui';
 import { VirtuosoMasonry } from '@virtuoso.dev/masonry';
 import { BookOpen, ServerCrash } from 'lucide-react';
 import React, { memo, useMemo, useState } from 'react';
@@ -12,17 +13,33 @@ import Item from './Item';
 import MasonryItemWrapper from './Item/MasonryItemWrapper';
 import Loading from './Loading';
 import MasonrySkeleton from './MasonrySkeleton';
-import ViewSwitcher, { type ViewMode } from './ViewSwitcher';
+import { resolvePickerScope } from './resolvePickerScope';
+import { type ViewMode } from './ViewSwitcher';
+import ViewSwitcher from './ViewSwitcher';
+import VisibilityTabs, { type PickerVisibility } from './VisibilityTabs';
 
 export const List = memo(() => {
-  const { t } = useTranslation('file');
+  const { t } = useTranslation(['file', 'chat']);
 
-  const [useFetchFilesAndKnowledgeBases, activeAgentId] = useAgentStore((s) => [
-    s.useFetchFilesAndKnowledgeBases,
-    s.activeAgentId,
-  ]);
+  const [useFetchFilesAndKnowledgeBases, activeAgentId, agentVisibility, agentWorkspaceId] =
+    useAgentStore((s) => [
+      s.useFetchFilesAndKnowledgeBases,
+      s.activeAgentId,
+      s.activeAgentId ? s.agentMap[s.activeAgentId]?.visibility : undefined,
+      s.activeAgentId ? s.agentMap[s.activeAgentId]?.workspaceId : undefined,
+    ]);
 
-  const { isLoading, error, data } = useFetchFilesAndKnowledgeBases(activeAgentId);
+  const [mode, setMode] = useState<PickerVisibility>('public');
+  const { effectiveVisibility, showPublicAgentHint, showVisibilityTabs } = resolvePickerScope({
+    agentVisibility,
+    agentWorkspaceId,
+    mode,
+  });
+
+  const { isLoading, error, data } = useFetchFilesAndKnowledgeBases(
+    activeAgentId,
+    effectiveVisibility,
+  );
 
   const [columnCount, setColumnCount] = useState(2);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -75,10 +92,24 @@ export const List = memo(() => {
 
   return (
     <Flexbox height={500}>
-      <Flexbox paddingInline={16} style={{ paddingBlockEnd: 12 }}>
-        <Flexbox align={'center'} horizontal justify={'flex-end'}>
-          <ViewSwitcher onViewChange={setViewMode} view={viewMode} />
+      {/*
+       * Toolbar sits flush with the list items below: Virtuoso uses
+       * `marginInline: -16` to pull rows back to the outer edge and each
+       * Item re-applies `paddingInline={16}`. Match that here so the tab
+       * group and view switcher line up with the item icons / add buttons.
+       */}
+      <Flexbox gap={8} style={{ paddingBlockEnd: 12 }}>
+        <Flexbox horizontal align={'center'} justify={'space-between'}>
+          {showVisibilityTabs ? <VisibilityTabs value={mode} onChange={setMode} /> : <span />}
+          <ViewSwitcher view={viewMode} onViewChange={setViewMode} />
         </Flexbox>
+        {showPublicAgentHint && (
+          <Alert
+            showIcon
+            message={t('resources.knowledgePicker.publicAgentHint', { ns: 'chat' })}
+            type={'info'}
+          />
+        )}
       </Flexbox>
       {isLoading || isTransitioning ? (
         viewMode === 'masonry' ? (
@@ -105,13 +136,13 @@ export const List = memo(() => {
       ) : viewMode === 'list' ? (
         <Virtuoso
           increaseViewportBy={typeof window !== 'undefined' ? window.innerHeight : 0}
+          overscan={24}
+          style={{ flex: 1, marginInline: -16 }}
+          totalCount={data!.length}
           itemContent={(index) => {
             const item = data![index];
             return <Item key={item.id} {...item} />;
           }}
-          overscan={24}
-          style={{ flex: 1, marginInline: -16 }}
-          totalCount={data!.length}
         />
       ) : (
         <div style={{ height: '100%', position: 'relative' }}>

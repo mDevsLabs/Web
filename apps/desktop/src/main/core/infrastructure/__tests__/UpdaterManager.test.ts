@@ -23,23 +23,33 @@ vi.mock('electron-log', () => ({
 }));
 
 // Mock electron-updater
-vi.mock('electron-updater', () => ({
-  autoUpdater: {
-    allowDowngrade: false,
-    allowPrerelease: false,
-    autoDownload: false,
-    autoInstallOnAppQuit: false,
-    channel: 'stable',
-    checkForUpdates: vi.fn(),
-    currentVersion: undefined as any,
-    downloadUpdate: vi.fn(),
-    forceDevUpdateConfig: false,
-    logger: null as any,
-    on: vi.fn(),
-    quitAndInstall: vi.fn(),
-    setFeedURL: vi.fn(),
-  },
-}));
+vi.mock('electron-updater', () => {
+  let channel = 'stable';
+
+  return {
+    autoUpdater: {
+      allowDowngrade: false,
+      allowPrerelease: false,
+      autoDownload: false,
+      autoInstallOnAppQuit: false,
+      get channel() {
+        return channel;
+      },
+      set channel(value: string) {
+        channel = value;
+        this.allowDowngrade = true;
+      },
+      checkForUpdates: vi.fn(),
+      currentVersion: undefined as any,
+      downloadUpdate: vi.fn(),
+      forceDevUpdateConfig: false,
+      logger: null as any,
+      on: vi.fn(),
+      quitAndInstall: vi.fn(),
+      setFeedURL: vi.fn(),
+    },
+  };
+});
 
 // Mock electron - uses hoisted functions for require() compatibility
 vi.mock('electron', () => ({
@@ -66,11 +76,6 @@ vi.mock('@/utils/logger', () => ({
 vi.mock('@/modules/updater/configs', () => ({
   UPDATE_CHANNEL: 'stable',
   UPDATE_SERVER_URL: 'https://mock.update.server',
-  githubConfig: {
-    owner: 'lobehub',
-    repo: 'lobe-chat',
-  },
-  isStableChannel: true,
   updaterConfig: {
     app: {
       autoCheckUpdate: false,
@@ -130,6 +135,13 @@ describe('UpdaterManager', () => {
         }),
       },
       isQuiting: false,
+      menuManager: {
+        rebuildAppMenu: vi.fn(),
+      },
+      storeManager: {
+        get: vi.fn().mockReturnValue('stable'),
+        set: vi.fn(),
+      },
     } as unknown as AppCore;
 
     updaterManager = new UpdaterManager(mockApp);
@@ -153,7 +165,17 @@ describe('UpdaterManager', () => {
       expect(autoUpdater.autoInstallOnAppQuit).toBe(false);
       expect(autoUpdater.channel).toBe('stable');
       expect(autoUpdater.allowPrerelease).toBe(false);
-      expect(autoUpdater.allowDowngrade).toBe(false);
+      expect(autoUpdater.allowDowngrade).toBe(true);
+    });
+
+    it('should allow a persisted canary channel to roll back to an older canary build', async () => {
+      vi.mocked(mockApp.storeManager.get).mockReturnValue('canary');
+
+      await updaterManager.initialize();
+
+      expect(autoUpdater.channel).toBe('canary');
+      expect(autoUpdater.allowPrerelease).toBe(true);
+      expect(autoUpdater.allowDowngrade).toBe(true);
     });
 
     it('should register all event listeners', async () => {
@@ -165,6 +187,29 @@ describe('UpdaterManager', () => {
       expect(autoUpdater.on).toHaveBeenCalledWith('error', expect.any(Function));
       expect(autoUpdater.on).toHaveBeenCalledWith('download-progress', expect.any(Function));
       expect(autoUpdater.on).toHaveBeenCalledWith('update-downloaded', expect.any(Function));
+    });
+  });
+
+  describe('switchChannel', () => {
+    it('should allow rollback whenever canary is the target channel', () => {
+      updaterManager.switchChannel('canary');
+
+      expect(autoUpdater.allowDowngrade).toBe(true);
+    });
+
+    it('should preserve canary-to-stable downgrade support', async () => {
+      vi.mocked(mockApp.storeManager.get).mockReturnValue('canary');
+      await updaterManager.initialize();
+
+      updaterManager.switchChannel('stable');
+
+      expect(autoUpdater.allowDowngrade).toBe(true);
+    });
+
+    it('should allow rollback when stable remains the target channel', () => {
+      updaterManager.switchChannel('stable');
+
+      expect(autoUpdater.allowDowngrade).toBe(true);
     });
   });
 
@@ -180,16 +225,22 @@ describe('UpdaterManager', () => {
       expect(autoUpdater.checkForUpdates).toHaveBeenCalled();
     });
 
-    it('should broadcast manualUpdateCheckStart when manual check', async () => {
+    it('should broadcast updaterStateChanged with checking stage when checking', async () => {
       await updaterManager.checkForUpdates({ manual: true });
 
-      expect(mockBroadcast).toHaveBeenCalledWith('manualUpdateCheckStart');
+      expect(mockBroadcast).toHaveBeenCalledWith(
+        'updaterStateChanged',
+        expect.objectContaining({ stage: 'checking' }),
+      );
     });
 
-    it('should not broadcast when auto check', async () => {
+    it('should broadcast updaterStateChanged for auto check', async () => {
       await updaterManager.checkForUpdates({ manual: false });
 
-      expect(mockBroadcast).not.toHaveBeenCalledWith('manualUpdateCheckStart');
+      expect(mockBroadcast).toHaveBeenCalledWith(
+        'updaterStateChanged',
+        expect.objectContaining({ stage: 'checking' }),
+      );
     });
 
     it('should ignore duplicate check requests while checking', async () => {
@@ -207,16 +258,19 @@ describe('UpdaterManager', () => {
       expect(autoUpdater.checkForUpdates).toHaveBeenCalledTimes(1);
     });
 
-    it('should broadcast updateError when check fails during manual check', async () => {
+    it('should broadcast updaterStateChanged with error stage when check fails', async () => {
       const error = new Error('Network error');
       vi.mocked(autoUpdater.checkForUpdates).mockRejectedValue(error);
 
       await updaterManager.checkForUpdates({ manual: true });
 
-      expect(mockBroadcast).toHaveBeenCalledWith('updateError', 'Network error');
+      expect(mockBroadcast).toHaveBeenCalledWith(
+        'updaterStateChanged',
+        expect.objectContaining({ stage: 'error', errorMessage: 'Network error' }),
+      );
     });
 
-    it('should treat missing latest/stable yml 404 as not-available during manual check', async () => {
+    it('should set stage to latest when missing manifest 404 (gap period)', async () => {
       const error = new Error(
         'Cannot find latest-mac.yml in the latest release artifacts (https://github.com/lobehub/lobe-chat/releases/download/v2.0.0-next.311/latest-mac.yml): HttpError: 404',
       );
@@ -225,11 +279,8 @@ describe('UpdaterManager', () => {
       await updaterManager.checkForUpdates({ manual: true });
 
       expect(mockBroadcast).toHaveBeenCalledWith(
-        'manualUpdateNotAvailable',
-        expect.objectContaining({
-          releaseDate: expect.any(String),
-          version: expect.any(String),
-        }),
+        'updaterStateChanged',
+        expect.objectContaining({ stage: 'latest' }),
       );
       expect(mockBroadcast).not.toHaveBeenCalledWith('updateError', expect.anything());
     });
@@ -280,65 +331,37 @@ describe('UpdaterManager', () => {
       expect(autoUpdater.downloadUpdate).toHaveBeenCalledTimes(1);
     });
 
-    it('should broadcast updateDownloadStart when isManualCheck is true', async () => {
-      // Create a fresh manager to avoid state pollution from beforeEach
+    it('should broadcast updaterStateChanged with downloading stage when download starts', async () => {
       const freshManager = new UpdaterManager(mockApp);
-
-      // Setup fresh event capture
-      const freshEvents = new Map<string, (...args: any[]) => void>();
-      vi.mocked(autoUpdater.on).mockImplementation((event: string, handler: any) => {
-        freshEvents.set(event, handler);
-        return autoUpdater;
-      });
       await freshManager.initialize();
 
-      // Trigger a manual check to set isManualCheck = true
-      vi.mocked(autoUpdater.checkForUpdates).mockResolvedValue({} as any);
-      await freshManager.checkForUpdates({ manual: true });
-
-      // Manually set updateAvailable without triggering auto-download
-      // Access private property to set state
       (freshManager as any).updateAvailable = true;
-
-      // Clear previous broadcast calls
       mockBroadcast.mockClear();
 
-      // Now download should broadcast updateDownloadStart because isManualCheck is true
       vi.mocked(autoUpdater.downloadUpdate).mockResolvedValue([] as any);
       await freshManager.downloadUpdate();
 
-      expect(mockBroadcast).toHaveBeenCalledWith('updateDownloadStart');
+      expect(mockBroadcast).toHaveBeenCalledWith(
+        'updaterStateChanged',
+        expect.objectContaining({ stage: 'downloading' }),
+      );
     });
 
-    it('should broadcast updateError when download fails with isManualCheck true', async () => {
-      // Create a fresh manager to avoid state pollution from beforeEach
+    it('should broadcast updaterStateChanged with error stage when download fails', async () => {
       const freshManager = new UpdaterManager(mockApp);
-
-      // Setup fresh event capture
-      const freshEvents = new Map<string, (...args: any[]) => void>();
-      vi.mocked(autoUpdater.on).mockImplementation((event: string, handler: any) => {
-        freshEvents.set(event, handler);
-        return autoUpdater;
-      });
       await freshManager.initialize();
 
-      // Trigger a manual check to set isManualCheck = true
-      vi.mocked(autoUpdater.checkForUpdates).mockResolvedValue({} as any);
-      await freshManager.checkForUpdates({ manual: true });
-
-      // Manually set updateAvailable without triggering auto-download
       (freshManager as any).updateAvailable = true;
-
-      // Clear previous broadcast calls
       mockBroadcast.mockClear();
 
-      // Setup error
-      const error = new Error('Download failed');
-      vi.mocked(autoUpdater.downloadUpdate).mockRejectedValue(error);
+      vi.mocked(autoUpdater.downloadUpdate).mockRejectedValue(new Error('Download failed'));
 
       await freshManager.downloadUpdate();
 
-      expect(mockBroadcast).toHaveBeenCalledWith('updateError', 'Download failed');
+      expect(mockBroadcast).toHaveBeenCalledWith(
+        'updaterStateChanged',
+        expect.objectContaining({ stage: 'error', errorMessage: 'Download failed' }),
+      );
     });
   });
 
@@ -381,6 +404,51 @@ describe('UpdaterManager', () => {
     });
   });
 
+  describe('captureRestoreRoute', () => {
+    const callCapture = () => (updaterManager as any).captureRestoreRoute();
+
+    it('stores the derived route from the main window URL', () => {
+      (mockApp.browserManager.getMainWindow as any).mockReturnValue({
+        webContents: { getURL: () => 'app://renderer/agent/abc' },
+      });
+
+      callCapture();
+
+      expect(mockApp.storeManager.set).toHaveBeenCalledWith('pendingRestoreRoute', '/agent/abc');
+    });
+
+    it('stores nothing when the URL is not a restorable route', () => {
+      (mockApp.browserManager.getMainWindow as any).mockReturnValue({
+        webContents: { getURL: () => 'app://renderer/' },
+      });
+
+      callCapture();
+
+      expect(mockApp.storeManager.set).not.toHaveBeenCalled();
+    });
+
+    it('stores nothing when there is no webContents', () => {
+      (mockApp.browserManager.getMainWindow as any).mockReturnValue({ webContents: null });
+
+      callCapture();
+
+      expect(mockApp.storeManager.set).not.toHaveBeenCalled();
+    });
+
+    it('does not throw when reading the URL fails', () => {
+      (mockApp.browserManager.getMainWindow as any).mockReturnValue({
+        webContents: {
+          getURL: () => {
+            throw new Error('boom');
+          },
+        },
+      });
+
+      expect(() => callCapture()).not.toThrow();
+      expect(mockApp.storeManager.set).not.toHaveBeenCalled();
+    });
+  });
+
   describe('installLater', () => {
     it('should set autoInstallOnAppQuit to true', () => {
       updaterManager.installLater();
@@ -395,22 +463,116 @@ describe('UpdaterManager', () => {
     });
   });
 
+  describe('install-later session guard', () => {
+    beforeEach(async () => {
+      await updaterManager.initialize();
+      vi.mocked(autoUpdater.downloadUpdate).mockResolvedValue([] as any);
+    });
+
+    const fireDownloaded = (version: string) => {
+      registeredEvents.get('update-downloaded')?.({ version });
+    };
+    const fireAvailable = (version: string) => {
+      registeredEvents.get('update-available')?.({ version });
+    };
+
+    it('suppresses re-broadcast of updateDownloaded for the install-later version', () => {
+      fireDownloaded('2.2.6');
+      expect(mockBroadcast).toHaveBeenCalledWith(
+        'updateDownloaded',
+        expect.objectContaining({ version: '2.2.6' }),
+      );
+
+      updaterManager.installLater();
+
+      mockBroadcast.mockClear();
+      fireDownloaded('2.2.6');
+
+      expect(mockBroadcast).not.toHaveBeenCalledWith('updateDownloaded', expect.anything());
+      expect(mockBroadcast).toHaveBeenCalledWith(
+        'updaterStateChanged',
+        expect.objectContaining({ stage: 'downloaded' }),
+      );
+    });
+
+    it('skips auto-download on update-available for the install-later version', () => {
+      fireDownloaded('2.2.6');
+      updaterManager.installLater();
+
+      vi.mocked(autoUpdater.downloadUpdate).mockClear();
+
+      fireAvailable('2.2.6');
+
+      expect(autoUpdater.downloadUpdate).not.toHaveBeenCalled();
+    });
+
+    it('clears the guard and re-broadcasts when a newer version arrives', () => {
+      fireDownloaded('2.2.6');
+      updaterManager.installLater();
+      mockBroadcast.mockClear();
+
+      fireAvailable('2.2.7');
+      fireDownloaded('2.2.7');
+
+      expect(mockBroadcast).toHaveBeenCalledWith(
+        'updateDownloaded',
+        expect.objectContaining({ version: '2.2.7' }),
+      );
+    });
+
+    it('keeps the guard when an older version arrives', () => {
+      fireDownloaded('2.2.6');
+      updaterManager.installLater();
+      mockBroadcast.mockClear();
+
+      fireDownloaded('2.2.5');
+
+      expect(mockBroadcast).not.toHaveBeenCalledWith(
+        'updateDownloaded',
+        expect.objectContaining({ version: '2.2.5' }),
+      );
+    });
+
+    it('clears the guard on channel switch', () => {
+      fireDownloaded('2.2.6');
+      updaterManager.installLater();
+
+      updaterManager.switchChannel('canary');
+
+      mockBroadcast.mockClear();
+      fireDownloaded('2.2.6');
+
+      expect(mockBroadcast).toHaveBeenCalledWith(
+        'updateDownloaded',
+        expect.objectContaining({ version: '2.2.6' }),
+      );
+    });
+  });
+
   describe('event handlers', () => {
     beforeEach(async () => {
       await updaterManager.initialize();
     });
 
     describe('update-available', () => {
-      it('should broadcast manualUpdateAvailable when manual check', async () => {
-        // Trigger manual check first
+      it('should broadcast updaterStateChanged and auto download when update available', async () => {
         vi.mocked(autoUpdater.checkForUpdates).mockResolvedValue({} as any);
         await updaterManager.checkForUpdates({ manual: true });
+
+        vi.mocked(autoUpdater.downloadUpdate).mockResolvedValue([] as any);
 
         const updateInfo = { version: '2.0.0' };
         const handler = registeredEvents.get('update-available');
         handler?.(updateInfo);
 
-        expect(mockBroadcast).toHaveBeenCalledWith('manualUpdateAvailable', updateInfo);
+        expect(mockBroadcast).toHaveBeenCalledWith(
+          'updaterStateChanged',
+          expect.objectContaining({
+            stage: 'downloading',
+            updateInfo: expect.objectContaining({ version: '2.0.0' }),
+          }),
+        );
+        expect(autoUpdater.downloadUpdate).toHaveBeenCalled();
       });
 
       it('should auto download when auto check finds update', async () => {
@@ -428,7 +590,7 @@ describe('UpdaterManager', () => {
     });
 
     describe('update-not-available', () => {
-      it('should broadcast manualUpdateNotAvailable when manual check', async () => {
+      it('should broadcast updaterStateChanged with latest stage when manual check', async () => {
         vi.mocked(autoUpdater.checkForUpdates).mockResolvedValue({} as any);
         await updaterManager.checkForUpdates({ manual: true });
 
@@ -436,19 +598,22 @@ describe('UpdaterManager', () => {
         const handler = registeredEvents.get('update-not-available');
         handler?.(info);
 
-        expect(mockBroadcast).toHaveBeenCalledWith('manualUpdateNotAvailable', info);
+        expect(mockBroadcast).toHaveBeenCalledWith(
+          'updaterStateChanged',
+          expect.objectContaining({ stage: 'latest' }),
+        );
       });
 
-      it('should not broadcast when auto check', async () => {
+      it('should broadcast updaterStateChanged when auto check finds no update', async () => {
         vi.mocked(autoUpdater.checkForUpdates).mockResolvedValue({} as any);
         await updaterManager.checkForUpdates({ manual: false });
 
         const handler = registeredEvents.get('update-not-available');
         handler?.({ version: '1.0.0' });
 
-        expect(mockBroadcast).not.toHaveBeenCalledWith(
-          'manualUpdateNotAvailable',
-          expect.anything(),
+        expect(mockBroadcast).toHaveBeenCalledWith(
+          'updaterStateChanged',
+          expect.objectContaining({ stage: 'latest' }),
         );
       });
     });
@@ -497,7 +662,7 @@ describe('UpdaterManager', () => {
         expect(mockBroadcast).toHaveBeenCalledWith('updateError', 'Update error');
       });
 
-      it('should not broadcast when auto check', async () => {
+      it('should broadcast updateError when auto check has non-manifest error', async () => {
         vi.mocked(autoUpdater.checkForUpdates).mockResolvedValue({} as any);
         await updaterManager.checkForUpdates({ manual: false });
 
@@ -505,10 +670,10 @@ describe('UpdaterManager', () => {
         const handler = registeredEvents.get('error');
         handler?.(error);
 
-        expect(mockBroadcast).not.toHaveBeenCalledWith('updateError', expect.anything());
+        expect(mockBroadcast).toHaveBeenCalledWith('updateError', 'Update error');
       });
 
-      it('should not broadcast updateError for missing manifest 404 (gap period)', async () => {
+      it('should set stage to latest (not error) for missing manifest 404 (gap period)', async () => {
         vi.mocked(autoUpdater.checkForUpdates).mockResolvedValue({} as any);
         await updaterManager.checkForUpdates({ manual: true });
 
@@ -519,11 +684,8 @@ describe('UpdaterManager', () => {
         await handler?.(error);
 
         expect(mockBroadcast).toHaveBeenCalledWith(
-          'manualUpdateNotAvailable',
-          expect.objectContaining({
-            releaseDate: expect.any(String),
-            version: expect.any(String),
-          }),
+          'updaterStateChanged',
+          expect.objectContaining({ stage: 'latest' }),
         );
         expect(mockBroadcast).not.toHaveBeenCalledWith('updateError', expect.anything());
       });

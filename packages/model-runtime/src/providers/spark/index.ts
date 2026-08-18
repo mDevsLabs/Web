@@ -1,30 +1,39 @@
 import { ModelProvider } from 'model-bank';
 
-import {
-  OpenAICompatibleFactoryOptions,
-  createOpenAICompatibleRuntime,
-} from '../../core/openaiCompatibleFactory';
+import type { OpenAICompatibleFactoryOptions } from '../../core/openaiCompatibleFactory';
+import { createOpenAICompatibleRuntime } from '../../core/openaiCompatibleFactory';
 import { SparkAIStream, transformSparkResponseToStream } from '../../core/streams';
-import { ChatStreamPayload } from '../../types';
+import type { ChatStreamPayload } from '../../types';
 
 const getBaseURLByModel = (model: string): string => {
-  if (model.includes('x1-preview')) {
-    return 'https://spark-api-open-preview.xf-yun.com/v2';
-  }
-  if (model.includes('spark-x')) {
-    return 'https://spark-api-open.xf-yun.com/v2';
-  }
+  switch (model) {
+    case 'spark-x2-flash': {
+      return 'https://spark-api-open.xf-yun.com/agent/v1';
+    }
 
-  return 'https://spark-api-open.xf-yun.com/v1';
+    case 'spark-x2': {
+      return 'https://spark-api-open.xf-yun.com/x2';
+    }
+
+    case 'spark-x1.5': {
+      return 'https://spark-api-open.xf-yun.com/v2';
+    }
+
+    default: {
+      return 'https://spark-api-open.xf-yun.com/v1';
+    }
+  }
 };
 
 export const params = {
   baseURL: 'https://spark-api-open.xf-yun.com/v1',
   chatCompletion: {
     handlePayload: (payload: ChatStreamPayload, options) => {
-      const { enabledSearch, thinking, tools, ...rest } = payload;
+      const { deploymentName, enabledSearch, model, thinking, tools, ...rest } = payload;
 
-      const baseURL = getBaseURLByModel(payload.model);
+      const requestModel = deploymentName ?? model;
+
+      const baseURL = getBaseURLByModel(model);
       if (options) options.baseURL = baseURL;
 
       const sparkTools = enabledSearch
@@ -45,6 +54,7 @@ export const params = {
 
       return {
         ...rest,
+        model: requestModel,
         thinking: { type: thinking?.type },
         tools: sparkTools,
       } as any;

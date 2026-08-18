@@ -1,58 +1,34 @@
-import { type EditLocalFileState } from '@lobechat/builtin-tool-local-system';
-import { type EditLocalFileParams } from '@lobechat/electron-client-ipc';
-import { type BuiltinRenderProps } from '@lobechat/types';
-import { Alert, Flexbox, Skeleton } from '@lobehub/ui';
-import { useTheme } from 'next-themes';
-import React, { memo, useMemo } from 'react';
-import { Diff, Hunk, parseDiff } from 'react-diff-view';
-import 'react-diff-view/style/index.css';
+import type { EditLocalFileState } from '@lobechat/builtin-tool-local-system';
+import type { BuiltinRenderProps } from '@lobechat/types';
+import { Flexbox, PatchDiff, Skeleton } from '@lobehub/ui';
+import { Alert } from '@lobehub/ui/base-ui';
+import React, { memo } from 'react';
 
-import '@/styles/react-diff-view.dark.css';
-
-const EditLocalFile = memo<BuiltinRenderProps<EditLocalFileParams, EditLocalFileState>>(
+const EditLocalFile = memo<BuiltinRenderProps<any, EditLocalFileState>>(
   ({ args, pluginState, pluginError }) => {
-    // Parse diff for react-diff-view
-    const files = useMemo(() => {
-      const diffText = pluginState?.diffText;
-      if (!diffText) return [];
-
-      try {
-        return parseDiff(diffText);
-      } catch (error) {
-        console.error('Failed to parse diff:', error);
-        return [];
-      }
-    }, [pluginState?.diffText]);
-    const { resolvedTheme } = useTheme();
-    const isDarkMode = resolvedTheme === 'dark';
-
     if (!args) return <Skeleton active />;
+
+    // Support both IPC format (file_path) and ComputerRuntime format (path)
+    const filePath = args.file_path || args.path || '';
 
     return (
       <Flexbox gap={12}>
         {pluginError ? (
           <Alert
-            description={pluginError.message || 'Unknown error occurred'}
             showIcon
+            description={pluginError.message || 'Unknown error occurred'}
             title="Edit Failed"
             type="error"
           />
-        ) : (
-          <Flexbox data-theme={isDarkMode ? 'dark' : 'light'} gap={12}>
-            {files.map((file, index) => (
-              <div key={`${file.oldPath}-${index}`} style={{ fontSize: '12px' }}>
-                <Diff
-                  diffType={file.type}
-                  gutterType="default"
-                  hunks={file.hunks}
-                  viewType="unified"
-                >
-                  {(hunks) => hunks.map((hunk) => <Hunk hunk={hunk} key={hunk.content} />)}
-                </Diff>
-              </div>
-            ))}
-          </Flexbox>
-        )}
+        ) : pluginState?.diffText ? (
+          <PatchDiff
+            fileName={filePath}
+            patch={pluginState.diffText}
+            showHeader={false}
+            variant="borderless"
+            viewMode="unified"
+          />
+        ) : null}
       </Flexbox>
     );
   },

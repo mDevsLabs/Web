@@ -1,6 +1,8 @@
 ---
 name: add-provider-doc
-description: Guide for adding new AI provider documentation. Use when adding documentation for a new AI provider (like OpenAI, Anthropic, etc.), including usage docs, environment variables, Docker config, and image resources. Triggers on provider documentation tasks.
+description: Add documentation for a new AI provider — usage docs, env vars, Docker config, image resources.
+disable-model-invocation: true
+argument-hint: '[provider-name]'
 ---
 
 # Adding New AI Provider Documentation
@@ -43,11 +45,13 @@ Reference: `docs/usage/providers/fal.mdx`
 
 ```markdown
 ### `{PROVIDER}_API_KEY`
+
 - Type: Required
 - Description: API key from {Provider Name}
 - Example: `{api-key-format}`
 
 ### `{PROVIDER}_MODEL_LIST`
+
 - Type: Optional
 - Description: Control model list. Use `+` to add, `-` to hide
 - Example: `-all,+model-1,+model-2=Display Name`
@@ -77,7 +81,7 @@ Update all Dockerfiles at the **end** of ENV section:
 
 - Cover image
 - 3-4 API dashboard screenshots
-- 2-3 LobeChat configuration screenshots
+- 2-3 LobeHub configuration screenshots
 - Host on LobeHub CDN: `hub-apac-1.lobeobjects.space`
 
 ## Checklist

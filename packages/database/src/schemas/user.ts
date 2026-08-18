@@ -1,11 +1,9 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix  */
 import { DEFAULT_PREFERENCE } from '@lobechat/const';
-import type { CustomPluginParams, UserOnboarding } from '@lobechat/types';
-import type { LobeChatPluginManifest } from '@lobehub/chat-plugin-sdk';
+import type { UserAgentOnboarding, UserOnboarding } from '@lobechat/types';
 import { sql } from 'drizzle-orm';
-import { boolean, index, jsonb, pgTable, primaryKey, text, varchar } from 'drizzle-orm/pg-core';
+import { boolean, index, jsonb, pgTable, text, varchar } from 'drizzle-orm/pg-core';
 
-import { timestamps, timestamptz, varchar255 } from './_helpers';
+import { timestamps, timestamptz } from './_helpers';
 
 export const users = pgTable(
   'users',
@@ -22,7 +20,9 @@ export const users = pgTable(
     fullName: text('full_name'),
     interests: varchar('interests', { length: 64 }).array(),
 
+    /** @deprecated */
     isOnboarded: boolean('is_onboarded').default(false),
+    agentOnboarding: jsonb('agent_onboarding').$type<UserAgentOnboarding>(),
     onboarding: jsonb('onboarding').$type<UserOnboarding>(),
     // Time user was created in Clerk
     clerkCreatedAt: timestamptz('clerk_created_at'),
@@ -82,28 +82,6 @@ export const userSettings = pgTable('user_settings', {
   memory: jsonb('memory'),
   tool: jsonb('tool'),
   image: jsonb('image'),
+  notification: jsonb('notification'),
 });
 export type UserSettingsItem = typeof userSettings.$inferSelect;
-
-export const userInstalledPlugins = pgTable(
-  'user_installed_plugins',
-  {
-    userId: text('user_id')
-      .references(() => users.id, { onDelete: 'cascade' })
-      .notNull(),
-
-    identifier: text('identifier').notNull(),
-    type: text('type', { enum: ['plugin', 'customPlugin'] }).notNull(),
-    manifest: jsonb('manifest').$type<LobeChatPluginManifest>(),
-    settings: jsonb('settings'),
-    customParams: jsonb('custom_params').$type<CustomPluginParams>(),
-    source: varchar255('source'),
-    ...timestamps,
-  },
-  (self) => ({
-    id: primaryKey({ columns: [self.userId, self.identifier] }),
-  }),
-);
-
-export type NewInstalledPlugin = typeof userInstalledPlugins.$inferInsert;
-export type InstalledPluginItem = typeof userInstalledPlugins.$inferSelect;

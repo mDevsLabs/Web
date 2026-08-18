@@ -1,6 +1,7 @@
 ---
 name: hotkey
-description: Guide for adding keyboard shortcuts. Use when implementing new hotkeys, registering shortcuts, or working with keyboard interactions. Triggers on hotkey implementation or keyboard shortcut tasks.
+description: 'Add or edit LobeHub keyboard shortcuts. Use for HotkeyEnum, HOTKEYS_REGISTRATION, combineKeys, useHotkeyById, tooltip hotkeys, shortcut scope, conflicts, or Cmd/Ctrl key combos.'
+user-invocable: false
 ---
 
 # Adding Keyboard Shortcuts Guide
@@ -37,7 +38,7 @@ export const HOTKEYS_REGISTRATION: HotkeyRegistration = [
 
 ### 3. Add i18n Translation
 
-In `src/locales/default/hotkey.ts`:
+In `packages/locales/src/default/hotkey.ts`:
 
 ```typescript
 const hotkey: HotkeyI18nTranslations = {
@@ -71,7 +72,7 @@ const clearChatHotkey = useUserStore(settingsSelectors.getHotkeyById(HotkeyEnum.
 
 <Tooltip hotkey={clearChatHotkey} title={t('clearChat.title', { ns: 'hotkey' })}>
   <Button icon={<DeleteOutlined />} onClick={clearMessages} />
-</Tooltip>
+</Tooltip>;
 ```
 
 ## Best Practices
@@ -85,6 +86,6 @@ const clearChatHotkey = useUserStore(settingsSelectors.getHotkeyById(HotkeyEnum.
 ## Troubleshooting
 
 - **Not working**: Check scope and RegisterHotkeys hook
-- **Not in settings**: Verify HOTKEYS_REGISTRATION config
+- **Not in settings**: Verify HOTKEYS\_REGISTRATION config
 - **Conflict**: HotkeyInput component shows warnings
 - **Page-specific**: Ensure correct scope activation

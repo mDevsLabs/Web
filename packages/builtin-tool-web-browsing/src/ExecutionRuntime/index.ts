@@ -1,20 +1,44 @@
 import { crawlResultsPrompt, searchResultsPrompt } from '@lobechat/prompts';
-import {
-  type BuiltinServerRuntimeOutput,
-  type CrawlMultiPagesQuery,
-  type CrawlSinglePageQuery,
-  type SearchContent,
-  type SearchQuery,
-  type SearchServiceImpl,
+import type {
+  BuiltinServerRuntimeOutput,
+  CrawlMultiPagesQuery,
+  CrawlSinglePageQuery,
+  SearchContent,
+  SearchQuery,
+  SearchServiceImpl,
 } from '@lobechat/types';
+import type { CrawlSuccessResult } from '@lobechat/web-crawler';
 
 import { CRAWL_CONTENT_LIMITED_COUNT, SEARCH_ITEM_LIMITED_COUNT } from '../const';
 
-export class WebBrowsingExecutionRuntime {
-  private searchService: SearchServiceImpl;
+export interface WebBrowsingDocumentService {
+  associateDocument: (documentId: string) => Promise<void>;
+  createDocument: (params: {
+    content: string;
+    description?: string;
+    title: string;
+    url: string;
+  }) => Promise<{ id: string }>;
+}
 
-  constructor(options: { searchService: SearchServiceImpl }) {
+export interface WebBrowsingRuntimeOptions {
+  agentId?: string;
+  documentService?: WebBrowsingDocumentService;
+  searchService: SearchServiceImpl;
+  topicId?: string;
+}
+
+export class WebBrowsingExecutionRuntime {
+  private agentId?: string;
+  private documentService?: WebBrowsingDocumentService;
+  private searchService: SearchServiceImpl;
+  private topicId?: string;
+
+  constructor(options: WebBrowsingRuntimeOptions) {
     this.searchService = options.searchService;
+    this.documentService = options.documentService;
+    this.agentId = options.agentId;
+    this.topicId = options.topicId;
   }
 
   async search(
@@ -23,6 +47,16 @@ export class WebBrowsingExecutionRuntime {
   ): Promise<BuiltinServerRuntimeOutput> {
     try {
       const data = await this.searchService.webSearch(args as SearchQuery, options);
+
+      // If search failed with error detail, return as failure
+      if (data.errorDetail) {
+        return {
+          content: data.errorDetail,
+          error: { message: data.errorDetail },
+          state: data,
+          success: false,
+        };
+      }
 
       // add LIMITED_COUNT search results to message content
       const searchContent: SearchContent[] = data.results
@@ -55,6 +89,31 @@ export class WebBrowsingExecutionRuntime {
     });
 
     const { results } = response;
+
+    // Save crawled pages as documents and associate with agent
+    if (this.documentService) {
+      await Promise.all(
+        results.map(async (item) => {
+          if ('errorMessage' in item.data) return;
+
+          const pageData = item.data as CrawlSuccessResult;
+          if (!pageData.content) return;
+
+          try {
+            const doc = await this.documentService!.createDocument({
+              content: pageData.content,
+              description: pageData.description || `Crawled from ${pageData.url}`,
+              title: pageData.title || pageData.url,
+              url: pageData.url,
+            });
+
+            await this.documentService!.associateDocument(doc.id);
+          } catch (error) {
+            console.error('[WebBrowsing] Failed to save crawl result to agent document:', error);
+          }
+        }),
+      );
+    }
 
     const content = results.map((item) =>
       'errorMessage' in item

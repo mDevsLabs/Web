@@ -1,20 +1,27 @@
 'use client';
 
 import { Flexbox } from '@lobehub/ui';
-import { memo, useEffect, useMemo } from 'react';
+import { memo, useMemo } from 'react';
 
-import { useFolderPath } from '@/app/[variants]/(main)/resource/features/hooks/useFolderPath';
-import { useResourceManagerUrlSync } from '@/app/[variants]/(main)/resource/features/hooks/useResourceManagerUrlSync';
-import { useResourceManagerStore } from '@/app/[variants]/(main)/resource/features/store';
-import { sortFileList } from '@/app/[variants]/(main)/resource/features/store/selectors';
+import AsyncBoundary from '@/components/AsyncBoundary';
+import { useFolderPath } from '@/features/ResourceManager/hooks/useFolderPath';
+import { useResourceManagerUrlSync } from '@/features/ResourceManager/hooks/useResourceManagerUrlSync';
+import { useResourceManagerStore } from '@/features/ResourceManager/store';
+import {
+  getResourceQueryVisibility,
+  getResourceSourceFilter,
+  sortFileList,
+} from '@/features/ResourceManager/store/selectors';
 import { useFetchResources, useResourceStore } from '@/store/file/slices/resource/hooks';
 
+import { KnowledgeBaseListProvider } from '../KnowledgeBaseListProvider';
 import EmptyPlaceholder from './EmptyPlaceholder';
 import Header from './Header';
+import { useResetSelectionOnQueryChange } from './hooks/useResetSelectionOnQueryChange';
 import ListView from './ListView';
 import MasonryView from './MasonryView';
+import SearchResultsOverlay from './SearchResultsOverlay';
 import { useCheckTaskStatus } from './useCheckTaskStatus';
-import { useResourceExplorer } from './useResourceExplorer';
 
 /**
  * Explore resource items in a library
@@ -29,16 +36,25 @@ const ResourceExplorer = memo(() => {
   useResourceManagerUrlSync();
 
   // Get state from Resource Manager store
-  const [libraryId, category, viewMode, searchQuery, setSelectedFileIds, sorter, sortType] =
-    useResourceManagerStore((s) => [
-      s.libraryId,
-      s.category,
-      s.viewMode,
-      s.searchQuery,
-      s.setSelectedFileIds,
-      s.sorter,
-      s.sortType,
-    ]);
+  const [
+    libraryId,
+    category,
+    viewMode,
+    searchQuery,
+    sorter,
+    sortType,
+    listVisibility,
+    sourceFilter,
+  ] = useResourceManagerStore((s) => [
+    s.libraryId,
+    s.category,
+    s.viewMode,
+    s.searchQuery,
+    s.sorter,
+    s.sortType,
+    s.listVisibility,
+    getResourceSourceFilter(s),
+  ]);
 
   // Get folder path for empty state check
   const { currentFolderSlug } = useFolderPath();
@@ -51,16 +67,23 @@ const ResourceExplorer = memo(() => {
       category: libraryId ? undefined : category,
       libraryId,
       parentId: currentFolderSlug || null,
-      q: searchQuery ?? undefined,
       showFilesInKnowledgeBase: false,
       sortType,
       sorter,
+      sourceFilter,
+      // The two-mode narrowing belongs to the resource home. A concrete
+      // library supplies its own visibility boundary and must not inherit the
+      // user's last home filter.
+      visibility: getResourceQueryVisibility(libraryId, listVisibility),
     }),
-    [category, libraryId, currentFolderSlug, searchQuery, sortType, sorter],
+    [category, libraryId, currentFolderSlug, sortType, sorter, listVisibility, sourceFilter],
   );
 
-  // Use SWR for data fetching with automatic caching and revalidation
-  const { isLoading, isValidating } = useFetchResources(queryParams);
+  // Use SWR for data fetching with automatic caching and revalidation.
+  // `error` / `mutate` were previously discarded, so a failed resource fetch fell
+  // through to the "create your first resource" onboarding empty (Read §1.1
+  // failure-as-empty). Capture them and branch the failure before empty.
+  const { isLoading, isValidating, error, mutate } = useFetchResources(queryParams);
 
   // Get resource data from store (updated by SWR hook)
   const { resourceList } = useResourceStore();
@@ -85,27 +108,52 @@ const ResourceExplorer = memo(() => {
   // Check task status
   useCheckTaskStatus(data);
 
-  // Initialize folder/file navigation effects (still need hook for complex effects)
-  useResourceExplorer({ category, libraryId });
+  useResetSelectionOnQueryChange({
+    category,
+    currentFolderSlug,
+    libraryId,
+    searchQuery,
+  });
 
-  // Clear selections when category/library/search changes
-  useEffect(() => {
-    setSelectedFileIds([]);
-  }, [category, libraryId, searchQuery, setSelectedFileIds]);
-
-  const showEmptyStatus = !isLoading && !isValidating && data?.length === 0 && !currentFolderSlug;
+  const showEmptyStatus = !isLoading && !isValidating && data?.length === 0;
 
   return (
-    <Flexbox height={'100%'}>
-      <Header />
-      {showEmptyStatus ? (
-        <EmptyPlaceholder />
-      ) : viewMode === 'list' ? (
-        <ListView />
-      ) : (
-        <MasonryView />
-      )}
-    </Flexbox>
+    <KnowledgeBaseListProvider>
+      <Flexbox height={'100%'}>
+        <Header />
+        <div style={{ flex: 1, overflow: 'hidden', position: 'relative' }}>
+          {/*
+            AsyncBoundary gates error → empty → data. `isLoading` stays false here
+            because the list/masonry views own their own skeletons (loading is a
+            content swap inside them, not a full relayout), so the boundary only
+            arbitrates the failed-vs-empty-vs-data precedence the call site got wrong.
+          */}
+          <AsyncBoundary
+            data={data}
+            empty={<EmptyPlaceholder />}
+            error={error}
+            errorVariant={'block'}
+            isEmpty={showEmptyStatus}
+            onRetry={() => mutate()}
+          >
+            {viewMode === 'list' ? (
+              <ListView
+                isLoading={isLoading}
+                isValidating={isValidating}
+                queryParams={queryParams}
+              />
+            ) : (
+              <MasonryView
+                isLoading={isLoading}
+                isValidating={isValidating}
+                queryParams={queryParams}
+              />
+            )}
+          </AsyncBoundary>
+          <SearchResultsOverlay />
+        </div>
+      </Flexbox>
+    </KnowledgeBaseListProvider>
   );
 });
 

@@ -1,18 +1,28 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix  */
 import { relations } from 'drizzle-orm';
 import { index, pgTable, primaryKey, text, uuid, varchar } from 'drizzle-orm/pg-core';
 
 import { createdAt } from './_helpers';
 import { agents, agentsFiles, agentsKnowledgeBases } from './agent';
+import {
+  agentEvalBenchmarks,
+  agentEvalDatasets,
+  agentEvalRuns,
+  agentEvalRunTopics,
+  agentEvalTestCases,
+} from './agentEvals';
+import { agentShares } from './agentShare';
 import { asyncTasks } from './asyncTask';
 import { chatGroups, chatGroupsAgents } from './chatGroup';
+import { documentHistories } from './documentHistory';
 import { documents, files, knowledgeBases } from './file';
-import { generationBatches, generationTopics, generations } from './generation';
-import { messageGroups, messages, messagesFiles } from './message';
+import { generationBatches, generations, generationTopics } from './generation';
+import { messageGroups, messages, messagesFiles, messageTranslates } from './message';
 import { chunks, documentChunks, unstructuredChunks } from './rag';
 import { sessionGroups, sessions } from './session';
 import { threads, topicDocuments, topics } from './topic';
+import { topicCommentMentions, topicComments } from './topicComment';
 import { users } from './user';
+import { workspaces } from './workspace';
 
 export const agentsToSessions = pgTable(
   'agents_to_sessions',
@@ -26,12 +36,14 @@ export const agentsToSessions = pgTable(
     userId: text('user_id')
       .references(() => users.id, { onDelete: 'cascade' })
       .notNull(),
+    workspaceId: text('workspace_id').references(() => workspaces.id, { onDelete: 'cascade' }),
   },
   (t) => [
     primaryKey({ columns: [t.agentId, t.sessionId] }),
     index('agents_to_sessions_session_id_idx').on(t.sessionId),
     index('agents_to_sessions_agent_id_idx').on(t.agentId),
     index('agents_to_sessions_user_id_idx').on(t.userId),
+    index('agents_to_sessions_workspace_id_idx').on(t.workspaceId),
   ],
 );
 
@@ -47,10 +59,12 @@ export const filesToSessions = pgTable(
     userId: text('user_id')
       .references(() => users.id, { onDelete: 'cascade' })
       .notNull(),
+    workspaceId: text('workspace_id').references(() => workspaces.id, { onDelete: 'cascade' }),
   },
   (t) => ({
     pk: primaryKey({ columns: [t.fileId, t.sessionId] }),
     userIdIdx: index('files_to_sessions_user_id_idx').on(t.userId),
+    workspaceIdIdx: index('files_to_sessions_workspace_id_idx').on(t.workspaceId),
     fileIdIdx: index('files_to_sessions_file_id_idx').on(t.fileId),
     sessionIdIdx: index('files_to_sessions_session_id_idx').on(t.sessionId),
   }),
@@ -65,10 +79,12 @@ export const fileChunks = pgTable(
     userId: text('user_id')
       .references(() => users.id, { onDelete: 'cascade' })
       .notNull(),
+    workspaceId: text('workspace_id').references(() => workspaces.id, { onDelete: 'cascade' }),
   },
   (t) => ({
     pk: primaryKey({ columns: [t.fileId, t.chunkId] }),
     userIdIdx: index('file_chunks_user_id_idx').on(t.userId),
+    workspaceIdIdx: index('file_chunks_workspace_id_idx').on(t.workspaceId),
     fileIdIdx: index('file_chunks_file_id_idx').on(t.fileId),
     chunkIdIdx: index('file_chunks_chunk_id_idx').on(t.chunkId),
   }),
@@ -81,6 +97,38 @@ export const topicRelations = relations(topics, ({ one, many }) => ({
     references: [sessions.id],
   }),
   documents: many(topicDocuments),
+  comments: many(topicComments),
+}));
+
+export const topicCommentsRelations = relations(topicComments, ({ one, many }) => ({
+  topic: one(topics, {
+    fields: [topicComments.topicId],
+    references: [topics.id],
+  }),
+  message: one(messages, {
+    fields: [topicComments.messageId],
+    references: [messages.id],
+  }),
+  author: one(users, {
+    fields: [topicComments.authorUserId],
+    references: [users.id],
+  }),
+  workspace: one(workspaces, {
+    fields: [topicComments.workspaceId],
+    references: [workspaces.id],
+  }),
+  mentions: many(topicCommentMentions),
+}));
+
+export const topicCommentMentionsRelations = relations(topicCommentMentions, ({ one }) => ({
+  comment: one(topicComments, {
+    fields: [topicCommentMentions.commentId],
+    references: [topicComments.id],
+  }),
+  mentionedUser: one(users, {
+    fields: [topicCommentMentions.mentionedUserId],
+    references: [users.id],
+  }),
 }));
 
 export const threadsRelations = relations(threads, ({ one }) => ({
@@ -92,6 +140,10 @@ export const threadsRelations = relations(threads, ({ one }) => ({
 
 export const messagesRelations = relations(messages, ({ many, one }) => ({
   filesToMessages: many(messagesFiles),
+  translation: one(messageTranslates, {
+    fields: [messages.id],
+    references: [messageTranslates.id],
+  }),
 
   session: one(sessions, {
     fields: [messages.sessionId],
@@ -119,11 +171,12 @@ export const messagesRelations = relations(messages, ({ many, one }) => ({
   }),
 }));
 
-export const agentsRelations = relations(agents, ({ many }) => ({
+export const agentsRelations = relations(agents, ({ many, one }) => ({
   agentsToSessions: many(agentsToSessions),
-  knowledgeBases: many(agentsKnowledgeBases),
-  files: many(agentsFiles),
   chatGroups: many(chatGroupsAgents),
+  files: many(agentsFiles),
+  knowledgeBases: many(agentsKnowledgeBases),
+  share: one(agentShares, { fields: [agents.id], references: [agentShares.agentId] }),
 }));
 
 export const agentsToSessionsRelations = relations(agentsToSessions, ({ one }) => ({
@@ -236,6 +289,18 @@ export const documentsRelations = relations(documents, ({ one, many }) => ({
   }),
   topics: many(topicDocuments),
   chunks: many(documentChunks),
+  histories: many(documentHistories),
+}));
+
+export const documentHistoriesRelations = relations(documentHistories, ({ one }) => ({
+  document: one(documents, {
+    fields: [documentHistories.documentId],
+    references: [documents.id],
+  }),
+  user: one(users, {
+    fields: [documentHistories.userId],
+    references: [users.id],
+  }),
 }));
 
 export const topicDocumentsRelations = relations(topicDocuments, ({ one }) => ({
@@ -336,4 +401,61 @@ export const messageGroupsRelations = relations(messageGroups, ({ many, one }) =
   }),
   childGroups: many(messageGroups),
   messages: many(messages),
+}));
+
+// Agent Evaluation-related relation definitions
+export const agentEvalBenchmarksRelations = relations(agentEvalBenchmarks, ({ many }) => ({
+  datasets: many(agentEvalDatasets),
+}));
+
+export const agentEvalDatasetsRelations = relations(agentEvalDatasets, ({ one, many }) => ({
+  benchmark: one(agentEvalBenchmarks, {
+    fields: [agentEvalDatasets.benchmarkId],
+    references: [agentEvalBenchmarks.id],
+  }),
+  user: one(users, {
+    fields: [agentEvalDatasets.userId],
+    references: [users.id],
+  }),
+  testCases: many(agentEvalTestCases),
+  runs: many(agentEvalRuns),
+}));
+
+export const agentEvalTestCasesRelations = relations(agentEvalTestCases, ({ one, many }) => ({
+  dataset: one(agentEvalDatasets, {
+    fields: [agentEvalTestCases.datasetId],
+    references: [agentEvalDatasets.id],
+  }),
+  runTopics: many(agentEvalRunTopics),
+}));
+
+export const agentEvalRunsRelations = relations(agentEvalRuns, ({ one, many }) => ({
+  dataset: one(agentEvalDatasets, {
+    fields: [agentEvalRuns.datasetId],
+    references: [agentEvalDatasets.id],
+  }),
+  targetAgent: one(agents, {
+    fields: [agentEvalRuns.targetAgentId],
+    references: [agents.id],
+  }),
+  user: one(users, {
+    fields: [agentEvalRuns.userId],
+    references: [users.id],
+  }),
+  runTopics: many(agentEvalRunTopics),
+}));
+
+export const agentEvalRunTopicsRelations = relations(agentEvalRunTopics, ({ one }) => ({
+  run: one(agentEvalRuns, {
+    fields: [agentEvalRunTopics.runId],
+    references: [agentEvalRuns.id],
+  }),
+  topic: one(topics, {
+    fields: [agentEvalRunTopics.topicId],
+    references: [topics.id],
+  }),
+  testCase: one(agentEvalTestCases, {
+    fields: [agentEvalRunTopics.testCaseId],
+    references: [agentEvalTestCases.id],
+  }),
 }));

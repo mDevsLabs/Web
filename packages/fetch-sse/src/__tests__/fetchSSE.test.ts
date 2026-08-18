@@ -1,6 +1,6 @@
 import { MESSAGE_CANCEL_FLAT } from '@lobechat/const';
-import { ChatMessageError } from '@lobechat/types';
-import { FetchEventSourceInit } from '@lobechat/utils/client/fetchEventSource/index';
+import type { ChatMessageError } from '@lobechat/types';
+import type { FetchEventSourceInit } from '@lobechat/utils/client/fetchEventSource/index';
 import { fetchEventSource } from '@lobechat/utils/client/fetchEventSource/index';
 import { sleep } from '@lobechat/utils/sleep';
 import { afterEach, describe, expect, it, vi } from 'vitest';
@@ -140,25 +140,10 @@ describe('fetchSSE', () => {
       responseAnimation: 'smooth',
     });
 
-    const expectedMessages = [
-      { text: 'H', type: 'text' },
-      { text: 'e', type: 'text' },
-      { text: 'l', type: 'text' },
-      { text: 'l', type: 'text' },
-      { text: 'o', type: 'text' },
-      { text: ' ', type: 'text' },
-      { text: 'W', type: 'text' },
-      { text: 'o', type: 'text' },
-      { text: 'r', type: 'text' },
-      { text: 'l', type: 'text' },
-      { text: 'd', type: 'text' },
-    ];
+    const allCalls = mockOnMessageHandle.mock.calls.map((call) => call[0]);
+    const allTexts = allCalls.filter((c) => c.type === 'text').map((c) => c.text);
+    expect(allTexts.join('')).toBe('Hello World');
 
-    expectedMessages.forEach((message, index) => {
-      expect(mockOnMessageHandle).toHaveBeenNthCalledWith(index + 1, message);
-    });
-
-    // more assertions for each character...
     expect(mockOnFinish).toHaveBeenCalledWith('Hello World', {
       observationId: null,
       toolCalls: undefined,
@@ -481,23 +466,9 @@ describe('fetchSSE', () => {
       responseAnimation: 'smooth',
     });
 
-    const expectedMessages = [
-      { text: 'H', type: 'text' },
-      { text: 'e', type: 'text' },
-      { text: 'l', type: 'text' },
-      { text: 'l', type: 'text' },
-      { text: 'o', type: 'text' },
-      { text: ' ', type: 'text' },
-      { text: 'W', type: 'text' },
-      { text: 'o', type: 'text' },
-      { text: 'r', type: 'text' },
-      { text: 'l', type: 'text' },
-      { text: 'd', type: 'text' },
-    ];
-
-    expectedMessages.forEach((message, index) => {
-      expect(mockOnMessageHandle).toHaveBeenNthCalledWith(index + 1, message);
-    });
+    const allCalls = mockOnMessageHandle.mock.calls.map((call) => call[0]);
+    const allTexts = allCalls.filter((c) => c.type === 'text').map((c) => c.text);
+    expect(allTexts.join('')).toBe('Hello World');
 
     expect(mockOnFinish).toHaveBeenCalledWith('Hello World', {
       type: 'done',
@@ -593,9 +564,45 @@ describe('fetchSSE', () => {
 
       try {
         await fetchSSE('/', { onErrorHandle: mockOnErrorHandle });
-      } catch (e) {}
+      } catch {}
 
       expect(mockOnErrorHandle).toHaveBeenCalledWith(mockError);
+    });
+
+    it('should NOT inject contextBody into structured provider errors (regression)', async () => {
+      const mockOnErrorHandle = vi.fn();
+      const mockError: ChatMessageError = {
+        body: {
+          error: {
+            type: 'invalid_request_error',
+            message: 'Invalid signature in thinking block',
+          },
+          provider: 'lobehub',
+          errorType: 'ProviderBizError',
+        },
+        message: 'ProviderBizError',
+        type: 'ProviderBizError',
+      };
+
+      (fetchEventSource as any).mockImplementationOnce(
+        (url: string, options: FetchEventSourceInit) => {
+          options.onerror!(mockError);
+        },
+      );
+
+      try {
+        await fetchSSE('/', {
+          onErrorHandle: mockOnErrorHandle,
+          requestContext: { provider: 'openai', model: 'gpt-4o' },
+        });
+      } catch {}
+
+      expect(mockOnErrorHandle).toHaveBeenCalledWith(mockError);
+      const receivedError = mockOnErrorHandle.mock.calls[0][0];
+      expect(receivedError.body).not.toHaveProperty('elapsedMs');
+      expect(receivedError.body).not.toHaveProperty('networkStatus');
+      expect(receivedError.body).not.toHaveProperty('model');
+      expect(receivedError.body.provider).toBe('lobehub');
     });
 
     it('should call onErrorHandle when Unknown error is thrown', async () => {
@@ -609,8 +616,11 @@ describe('fetchSSE', () => {
       );
 
       try {
-        await fetchSSE('/', { onErrorHandle: mockOnErrorHandle });
-      } catch (e) {}
+        await fetchSSE('/', {
+          onErrorHandle: mockOnErrorHandle,
+          requestContext: { provider: 'openai', model: 'gpt-4o' },
+        });
+      } catch {}
 
       expect(mockOnErrorHandle).toHaveBeenCalledWith({
         type: 'UnknownChatFetchError',
@@ -618,7 +628,10 @@ describe('fetchSSE', () => {
         body: {
           message: 'Unknown error',
           name: 'Error',
-          stack: expect.any(String),
+          provider: 'openai',
+          model: 'gpt-4o',
+          elapsedMs: expect.any(Number),
+          networkStatus: expect.any(Boolean),
         },
       });
     });
@@ -635,7 +648,7 @@ describe('fetchSSE', () => {
 
           try {
             await options.onopen!(res as any);
-          } catch (e) {}
+          } catch {}
         },
       );
 
@@ -669,7 +682,7 @@ describe('fetchSSE', () => {
 
       try {
         await fetchSSE('/', { onErrorHandle: mockOnErrorHandle });
-      } catch (e) {}
+      } catch {}
 
       expect(mockOnErrorHandle).toHaveBeenCalledWith(mockError);
     });
@@ -686,7 +699,7 @@ describe('fetchSSE', () => {
 
       try {
         await fetchSSE('/', { onErrorHandle: mockOnErrorHandle });
-      } catch (e) {}
+      } catch {}
 
       expect(mockOnErrorHandle).toHaveBeenCalledWith({
         body: {

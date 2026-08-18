@@ -1,19 +1,24 @@
 import { describe, expect, it } from 'vitest';
 
-import { DEFAULT_OPERATION_STATE } from '../types/operation';
-import type { State } from './initialState';
-import { conversationSelectors } from './selectors';
+import { DEFAULT_MESSAGE_OPERATION_STATE, DEFAULT_OPERATION_STATE } from '../types/operation';
+import { type State } from './initialState';
+import { conversationSelectors, dataSelectors } from './selectors';
 
 // Helper to create a mock state
 const createMockState = (overrides: Partial<State> = {}): State => ({
   // Input state
+  chatInputOverlayHeight: 0,
   editor: null,
   inputMessage: '',
 
   // MessageState
+  heteroOverloadRetryAttempts: {},
+  heteroOverloadWaitOpIds: {},
   messageEditingIds: [],
   messageLoadingIds: [],
   pendingArgsUpdates: new Map(),
+  selectedMessageIds: [],
+  selectionMode: false,
 
   // VirtuaList state
   activeIndex: null,
@@ -23,6 +28,7 @@ const createMockState = (overrides: Partial<State> = {}): State => ({
   visibleItems: new Map(),
 
   // Core state
+  composerTarget: { contextKey: 'main_session-1_new', writable: true },
   context: {
     agentId: 'session-1',
     topicId: null,
@@ -229,6 +235,141 @@ describe('conversationSelectors', () => {
         const hookSelector = conversationSelectors.hook('onBeforeSendMessage');
         expect(hookSelector(store)).toBeUndefined();
       });
+    });
+  });
+
+  describe('Message State Selectors', () => {
+    describe('isMessageGenerating', () => {
+      it('only checks the requested message id', () => {
+        const store = createMockState({
+          displayMessages: [
+            {
+              children: [
+                { content: 'first', id: 'block-1' },
+                { content: 'second', id: 'block-2' },
+              ],
+              content: '',
+              id: 'group-1',
+              role: 'assistantGroup',
+            } as any,
+          ],
+          operationState: {
+            ...DEFAULT_OPERATION_STATE,
+            getMessageOperationState: (messageId) => ({
+              ...DEFAULT_MESSAGE_OPERATION_STATE,
+              isGenerating: messageId === 'block-2',
+            }),
+          },
+        });
+
+        expect(conversationSelectors.isMessageGenerating('group-1')(store)).toBe(false);
+      });
+    });
+
+    describe('isAssistantGroupItemGenerating', () => {
+      it('returns true for an assistantGroup when any child block is generating', () => {
+        const store = createMockState({
+          displayMessages: [
+            {
+              children: [
+                { content: 'first', id: 'block-1' },
+                { content: 'second', id: 'block-2' },
+              ],
+              content: '',
+              id: 'group-1',
+              role: 'assistantGroup',
+            } as any,
+          ],
+          operationState: {
+            ...DEFAULT_OPERATION_STATE,
+            getMessageOperationState: (messageId) => ({
+              ...DEFAULT_MESSAGE_OPERATION_STATE,
+              isGenerating: messageId === 'block-2',
+            }),
+          },
+        });
+
+        expect(conversationSelectors.isAssistantGroupItemGenerating('group-1')(store)).toBe(true);
+      });
+
+      it('returns true for a child block when its assistantGroup is generating', () => {
+        const store = createMockState({
+          displayMessages: [
+            {
+              children: [
+                { content: 'first', id: 'block-1' },
+                { content: 'second', id: 'block-2' },
+              ],
+              content: '',
+              id: 'group-1',
+              role: 'assistantGroup',
+            } as any,
+          ],
+          operationState: {
+            ...DEFAULT_OPERATION_STATE,
+            getMessageOperationState: (messageId) => ({
+              ...DEFAULT_MESSAGE_OPERATION_STATE,
+              isGenerating: messageId === 'group-1',
+            }),
+          },
+        });
+
+        expect(conversationSelectors.isAssistantGroupItemGenerating('block-2')(store)).toBe(true);
+      });
+    });
+  });
+});
+
+describe('dataSelectors', () => {
+  describe('getToolMessageCreatedAt', () => {
+    const createToolMessage = (
+      createdAt: Date | number | string,
+      id = 'tool-message-1',
+      toolCallId = 'tool-call-1',
+    ) =>
+      ({
+        createdAt,
+        id,
+        role: 'tool',
+        tool_call_id: toolCallId,
+      }) as unknown as State['dbMessages'][number];
+
+    it.each([
+      ['number', 2000, 2000],
+      ['Date', new Date(2000), 2000],
+    ])('normalizes a %s createdAt to epoch milliseconds', (_, createdAt, expected) => {
+      const store = createMockState({ dbMessages: [createToolMessage(createdAt)] });
+
+      expect(dataSelectors.getToolMessageCreatedAt('tool-message-1')(store)).toBe(expected);
+    });
+
+    it('resolves the current result row when Codex reuses a tool call id', () => {
+      const store = createMockState({
+        dbMessages: [
+          createToolMessage(1000, 'old-result', 'item_1'),
+          createToolMessage(5000, 'current-result', 'item_1'),
+        ],
+      });
+
+      expect(dataSelectors.getToolMessageCreatedAt('current-result')(store)).toBe(5000);
+    });
+
+    it('returns undefined when the tool message is absent', () => {
+      expect(
+        dataSelectors.getToolMessageCreatedAt('tool-message-1')(createMockState()),
+      ).toBeUndefined();
+    });
+
+    it('returns undefined while the result message id is unavailable', () => {
+      const store = createMockState({ dbMessages: [createToolMessage(2000)] });
+
+      expect(dataSelectors.getToolMessageCreatedAt(undefined)(store)).toBeUndefined();
+    });
+
+    it('returns undefined for an invalid createdAt', () => {
+      const store = createMockState({ dbMessages: [createToolMessage('not-a-date')] });
+
+      expect(dataSelectors.getToolMessageCreatedAt('tool-message-1')(store)).toBeUndefined();
     });
   });
 });

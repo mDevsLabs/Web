@@ -1,10 +1,11 @@
 'use client';
 
 import { useAgentStore } from '@/store/agent';
-import { agentByIdSelectors, chatConfigByIdSelectors } from '@/store/agent/selectors';
+import { chatConfigByIdSelectors } from '@/store/agent/selectors';
 import { aiModelSelectors, useAiInfraStore } from '@/store/aiInfra';
 
 import { useAgentId } from './useAgentId';
+import { useEffectiveModel } from './useEffectiveModel';
 
 /**
  * Hook to check if search is enabled for the current agent context.
@@ -12,17 +13,16 @@ import { useAgentId } from './useAgentId';
  */
 export const useAgentEnableSearch = () => {
   const agentId = useAgentId();
-  const [model, provider, agentSearchMode] = useAgentStore((s) => [
-    agentByIdSelectors.getAgentModelById(agentId)(s),
-    agentByIdSelectors.getAgentModelProviderById(agentId)(s),
+  const { model, provider } = useEffectiveModel(agentId);
+  const agentSearchMode = useAgentStore((s) =>
     chatConfigByIdSelectors.getSearchModeById(agentId)(s),
-  ]);
+  );
 
   const searchImpl = useAiInfraStore(aiModelSelectors.modelBuiltinSearchImpl(model, provider));
 
-  // 只要是内置的搜索实现，一定可以联网搜索
+  // If using a built-in search implementation, web search is always available
   if (searchImpl === 'internal') return true;
 
-  // 如果是关闭状态，一定不能联网搜索
+  // If the search mode is off, web search is never available
   return agentSearchMode !== 'off';
 };

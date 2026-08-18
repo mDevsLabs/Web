@@ -59,6 +59,8 @@ interface MemoryItemProps {
 }
 
 const MemoryItem = memo<MemoryItemProps>(({ title, content, subContent, tags }) => {
+  // Guard against non-array `tags` (dirty data) so a bad row can't crash the list.
+  const safeTags = Array.isArray(tags) ? tags : [];
   return (
     <Flexbox className={styles.item} gap={4}>
       {title && <div className={styles.itemTitle}>{title}</div>}
@@ -68,9 +70,9 @@ const MemoryItem = memo<MemoryItemProps>(({ title, content, subContent, tags }) 
           {subContent}
         </Text>
       )}
-      {tags && tags.length > 0 && (
-        <Flexbox className={styles.tags} gap={4} horizontal wrap={'wrap'}>
-          {tags.map((tag, index) => (
+      {safeTags.length > 0 && (
+        <Flexbox horizontal className={styles.tags} gap={4} wrap={'wrap'}>
+          {safeTags.map((tag, index) => (
             <Tag key={index} size={'small'}>
               {tag}
             </Tag>
@@ -87,11 +89,18 @@ const SearchUserMemoryRender = memo<BuiltinRenderProps<SearchMemoryParams, Searc
   ({ pluginState }) => {
     const { t } = useTranslation('plugin');
 
+    const activities = pluginState?.activities || [];
     const contexts = pluginState?.contexts || [];
     const experiences = pluginState?.experiences || [];
+    const identities = pluginState?.identities || [];
     const preferences = pluginState?.preferences || [];
 
-    const totalCount = contexts.length + experiences.length + preferences.length;
+    const totalCount =
+      activities.length +
+      contexts.length +
+      experiences.length +
+      identities.length +
+      preferences.length;
 
     if (totalCount === 0) {
       return (
@@ -102,14 +111,45 @@ const SearchUserMemoryRender = memo<BuiltinRenderProps<SearchMemoryParams, Searc
     }
 
     const defaultActiveKeys = [
+      ...(activities.length > 0 ? ['activities'] : []),
       ...(contexts.length > 0 ? ['contexts'] : []),
       ...(experiences.length > 0 ? ['experiences'] : []),
+      ...(identities.length > 0 ? ['identities'] : []),
       ...(preferences.length > 0 ? ['preferences'] : []),
     ];
 
     return (
       <Flexbox className={styles.container}>
         <Accordion defaultExpandedKeys={defaultActiveKeys} gap={0}>
+          {activities.length > 0 && (
+            <AccordionItem
+              itemKey="activities"
+              paddingBlock={8}
+              paddingInline={12}
+              title={
+                <Text className={styles.sectionHeader}>
+                  <span>Activities</span>
+                  <Text as={'span'} type={'secondary'}>
+                    {' '}
+                    ({activities.length})
+                  </Text>
+                </Text>
+              }
+            >
+              <Flexbox>
+                {activities.map((item) => (
+                  <MemoryItem
+                    content={item.narrative}
+                    key={item.id}
+                    subContent={item.feedback}
+                    tags={item.tags}
+                    title={item.notes || item.type}
+                  />
+                ))}
+              </Flexbox>
+            </AccordionItem>
+          )}
+
           {/* Contexts */}
           {contexts.length > 0 && (
             <AccordionItem
@@ -171,6 +211,35 @@ const SearchUserMemoryRender = memo<BuiltinRenderProps<SearchMemoryParams, Searc
           )}
 
           {/* Preferences */}
+          {identities.length > 0 && (
+            <AccordionItem
+              itemKey="identities"
+              paddingBlock={8}
+              paddingInline={12}
+              title={
+                <Text className={styles.sectionHeader}>
+                  <span>Identities</span>
+                  <Text as={'span'} type={'secondary'}>
+                    {' '}
+                    ({identities.length})
+                  </Text>
+                </Text>
+              }
+            >
+              <Flexbox>
+                {identities.map((item) => (
+                  <MemoryItem
+                    content={item.description}
+                    key={item.id}
+                    subContent={item.role}
+                    tags={item.tags}
+                    title={item.relationship || item.type}
+                  />
+                ))}
+              </Flexbox>
+            </AccordionItem>
+          )}
+
           {preferences.length > 0 && (
             <AccordionItem
               itemKey="preferences"

@@ -1,22 +1,27 @@
 'use client';
 
+import { agentDisplayName } from '@lobechat/types';
 import { Flexbox } from '@lobehub/ui';
 import { cx } from 'antd-style';
 import { memo } from 'react';
 
+import FollowUpChips from '../FollowUp/FollowUpChips';
+import { contextSelectors, useConversationStore } from '../store';
 import Actions from './components/Actions';
 import Avatar from './components/Avatar';
 import ErrorContent from './components/ErrorContent';
 import MessageContent from './components/MessageContent';
 import Title from './components/Title';
 import { styles } from './style';
-import { type ChatItemProps } from './type';
+import type { ChatItemProps } from './type';
 
 const ChatItem = memo<ChatItemProps>(
   ({
     onAvatarClick,
     avatarProps,
     customAvatarRender,
+    afterActions,
+    actionAddon,
     actions,
     className,
     loading,
@@ -39,10 +44,10 @@ const ChatItem = memo<ChatItemProps>(
     disabled = false,
     id,
     style,
-    newScreenMinHeight,
     ...rest
   }) => {
     const isUser = placement === 'right';
+    const conversationKey = useConversationStore(contextSelectors.conversationKey);
     const isEmptyMessage =
       !message || String(message).trim() === '' || message === placeholderMessage;
     const errorContent = error && (
@@ -51,10 +56,10 @@ const ChatItem = memo<ChatItemProps>(
 
     const avatarContent = (
       <Avatar
-        alt={avatarProps?.alt || avatar.title || 'avatar'}
+        alt={avatarProps?.alt || agentDisplayName(avatar, 'avatar')}
         loading={loading}
-        onClick={onAvatarClick}
         shape={'square'}
+        onClick={onAvatarClick}
         {...avatarProps}
         avatar={avatar}
       />
@@ -68,7 +73,6 @@ const ChatItem = memo<ChatItemProps>(
         gap={8}
         paddingBlock={8}
         style={{
-          minHeight: newScreenMinHeight,
           paddingInlineStart: isUser ? 36 : 0,
           ...style,
         }}
@@ -103,6 +107,7 @@ const ChatItem = memo<ChatItemProps>(
               editing={editing}
               id={id!}
               message={message}
+              variant={isUser ? 'bubble' : undefined}
               messageExtra={
                 <>
                   {errorContent}
@@ -110,14 +115,27 @@ const ChatItem = memo<ChatItemProps>(
                 </>
               }
               onDoubleClick={onDoubleClick}
-              variant={isUser ? 'bubble' : undefined}
             >
               {children}
             </MessageContent>
           )}
           {belowMessage}
         </Flexbox>
-        {actions && <Actions actions={actions} placement={placement} />}
+        {id && conversationKey && (
+          <FollowUpChips conversationKey={conversationKey} messageId={id} />
+        )}
+        {(actionAddon || actions) && (
+          <Actions actionAddon={actionAddon} actions={actions} placement={placement} />
+        )}
+        {afterActions && (
+          <Flexbox
+            style={{
+              width: isUser ? undefined : '100%',
+            }}
+          >
+            {afterActions}
+          </Flexbox>
+        )}
       </Flexbox>
     );
   },

@@ -1,12 +1,8 @@
 import { and, desc, eq } from 'drizzle-orm';
 
-import {
-  NewUserMemoryContext,
-  UserMemoryContext,
-  userMemories,
-  userMemoriesContexts,
-} from '../../schemas';
-import { LobeChatDatabase } from '../../type';
+import type { NewUserMemoryContext, UserMemoryContext } from '../../schemas';
+import { userMemories, userMemoriesContexts } from '../../schemas';
+import type { LobeChatDatabase } from '../../type';
 
 export class UserMemoryContextModel {
   private userId: string;
@@ -15,6 +11,10 @@ export class UserMemoryContextModel {
   constructor(db: LobeChatDatabase, userId: string) {
     this.userId = userId;
     this.db = db;
+  }
+
+  private memoryWhere(table: { userId: any }) {
+    return eq(table.userId, this.userId);
   }
 
   create = async (params: Omit<NewUserMemoryContext, 'userId'>) => {
@@ -29,7 +29,7 @@ export class UserMemoryContextModel {
   delete = async (id: string) => {
     return this.db.transaction(async (tx) => {
       const context = await tx.query.userMemoriesContexts.findFirst({
-        where: and(eq(userMemoriesContexts.id, id), eq(userMemoriesContexts.userId, this.userId)),
+        where: and(eq(userMemoriesContexts.id, id), this.memoryWhere(userMemoriesContexts)),
       });
 
       if (!context) {
@@ -45,34 +45,34 @@ export class UserMemoryContextModel {
         for (const memoryId of memoryIds) {
           await tx
             .delete(userMemories)
-            .where(and(eq(userMemories.id, memoryId), eq(userMemories.userId, this.userId)));
+            .where(and(eq(userMemories.id, memoryId), this.memoryWhere(userMemories)));
         }
       }
 
       // Delete the context entry
       await tx
         .delete(userMemoriesContexts)
-        .where(and(eq(userMemoriesContexts.id, id), eq(userMemoriesContexts.userId, this.userId)));
+        .where(and(eq(userMemoriesContexts.id, id), this.memoryWhere(userMemoriesContexts)));
 
       return { success: true };
     });
   };
 
   deleteAll = async () => {
-    return this.db.delete(userMemoriesContexts).where(eq(userMemoriesContexts.userId, this.userId));
+    return this.db.delete(userMemoriesContexts).where(this.memoryWhere(userMemoriesContexts));
   };
 
   query = async (limit = 50) => {
     return this.db.query.userMemoriesContexts.findMany({
       limit,
       orderBy: [desc(userMemoriesContexts.createdAt)],
-      where: eq(userMemoriesContexts.userId, this.userId),
+      where: this.memoryWhere(userMemoriesContexts),
     });
   };
 
   findById = async (id: string) => {
     return this.db.query.userMemoriesContexts.findFirst({
-      where: and(eq(userMemoriesContexts.id, id), eq(userMemoriesContexts.userId, this.userId)),
+      where: and(eq(userMemoriesContexts.id, id), this.memoryWhere(userMemoriesContexts)),
     });
   };
 
@@ -80,6 +80,6 @@ export class UserMemoryContextModel {
     return this.db
       .update(userMemoriesContexts)
       .set({ ...value, updatedAt: new Date() })
-      .where(and(eq(userMemoriesContexts.id, id), eq(userMemoriesContexts.userId, this.userId)));
+      .where(and(eq(userMemoriesContexts.id, id), this.memoryWhere(userMemoriesContexts)));
   };
 }

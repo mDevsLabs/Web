@@ -11,33 +11,32 @@ import { SkillStoreTab } from '../SkillStoreContent';
 interface SearchProps {
   activeTab: SkillStoreTab;
   onLobeHubSearch: (keywords: string) => void;
+  onSkillSearch: (keywords: string) => void;
 }
 
-export const Search = memo<SearchProps>(({ activeTab, onLobeHubSearch }) => {
+export const Search = memo<SearchProps>(({ activeTab, onLobeHubSearch, onSkillSearch }) => {
   const { t } = useTranslation('setting');
   const mcpKeywords = useToolStore((s) => s.mcpSearchKeywords);
 
-  const isCustomTab = activeTab === SkillStoreTab.Custom;
-
-  const keywords = activeTab === SkillStoreTab.Community ? mcpKeywords : '';
+  const keywords = activeTab === SkillStoreTab.MCP ? mcpKeywords : '';
 
   return (
-    <Flexbox align={'center'} gap={8} horizontal justify={'space-between'}>
+    <Flexbox horizontal align={'center'} gap={8} justify={'space-between'}>
       <Flexbox flex={1}>
         <SearchBar
           allowClear
           defaultValue={keywords}
+          placeholder={t('skillStore.search')}
+          variant="outlined"
           onSearch={(keywords: string) => {
-            if (activeTab === SkillStoreTab.Community) {
+            if (activeTab === SkillStoreTab.MCP) {
               useToolStore.setState({ mcpSearchKeywords: keywords, searchLoading: true });
-            } else if (isCustomTab) {
-              useToolStore.setState({ customPluginSearchKeywords: keywords });
+            } else if (activeTab === SkillStoreTab.Skills) {
+              onSkillSearch(keywords);
             } else {
               onLobeHubSearch(keywords);
             }
           }}
-          placeholder={t('skillStore.search')}
-          variant="outlined"
         />
       </Flexbox>
     </Flexbox>

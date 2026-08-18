@@ -1,8 +1,9 @@
+import { Buffer } from 'buffer.js';
 import Replicate from 'replicate';
 
-import { LobeRuntimeAI } from '../../core/BaseAI';
-import {
-  type ChatCompletionErrorPayload,
+import type { LobeRuntimeAI } from '../../core/BaseAI';
+import type {
+  ChatCompletionErrorPayload,
   ChatMethodOptions,
   ChatStreamPayload,
   CreateImagePayload,
@@ -139,7 +140,7 @@ export class LobeReplicateAI implements LobeRuntimeAI {
           const isPrivate192Range = hostname.startsWith('192.168.');
 
           // 172.16.0.0 – 172.31.255.255
-          const isPrivate172Range = /^172\.(1[6-9]|2\d|3[01])\./.test(hostname);
+          const isPrivate172Range = /^172\.(?:1[6-9]|2\d|3[01])\./.test(hostname);
 
           const isLocalTld = hostname.endsWith('.local');
 
@@ -186,7 +187,9 @@ export class LobeReplicateAI implements LobeRuntimeAI {
             this.debugLog('[Replicate createImage] Mapped to', imageParamName, 'as Buffer');
           } catch (fetchError: any) {
             this.debugLog('[Replicate createImage] Error fetching local image:', fetchError);
-            throw new Error(`Failed to fetch local image: ${fetchError.message}`);
+            throw new Error(`Failed to fetch local image: ${fetchError.message}`, {
+              cause: fetchError,
+            });
           }
         } else {
           // Public URL - use directly
@@ -303,9 +306,9 @@ export class LobeReplicateAI implements LobeRuntimeAI {
       this.debugLog('[Replicate] Final imageUrl:', outputImageUrl);
 
       return {
-        height: height,
+        height,
         imageUrl: outputImageUrl,
-        width: width,
+        width,
       };
     } catch (error) {
       throw this.handleError(error);
@@ -399,7 +402,7 @@ export class LobeReplicateAI implements LobeRuntimeAI {
     // Generic error
     throw AgentRuntimeError.chat({
       endpoint: desensitizedEndpoint,
-      error: error,
+      error,
       errorType: AgentRuntimeErrorType.ProviderBizError,
       provider: this.id,
     });
@@ -416,8 +419,7 @@ export class LobeReplicateAI implements LobeRuntimeAI {
 
     if (!isReplicateDebug) return;
 
-    // eslint-disable-next-line no-console
-    console.log(...args);
+    console.info(...args);
   }
 }
 

@@ -1,7 +1,9 @@
-import { Form, type FormItemProps, SliderWithInput } from '@lobehub/ui';
-import { Form as AntdForm, Switch } from 'antd';
+import { type FormItemProps } from '@lobehub/ui';
+import { Form } from '@lobehub/ui';
+import { SliderWithInput, Switch } from '@lobehub/ui/base-ui';
+import { Form as AntdForm } from 'antd';
 import { debounce } from 'es-toolkit/compat';
-import { memo, useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useAgentStore } from '@/store/agent';
@@ -10,13 +12,10 @@ import { chatConfigByIdSelectors } from '@/store/agent/selectors';
 import { useAgentId } from '../../hooks/useAgentId';
 import { useUpdateAgentConfig } from '../../hooks/useUpdateAgentConfig';
 
-interface ControlsProps {
-  setUpdating: (updating: boolean) => void;
-  updating: boolean;
-}
-const Controls = memo<ControlsProps>(({ updating, setUpdating }) => {
+const Controls = () => {
   const { t } = useTranslation('setting');
   const [form] = AntdForm.useForm();
+  const [updating, setUpdating] = useState(false);
   const agentId = useAgentId();
   const { updateAgentChatConfig } = useUpdateAgentConfig();
 
@@ -33,7 +32,22 @@ const Controls = memo<ControlsProps>(({ updating, setUpdating }) => {
     });
   }, [enableHistoryCount, historyCount, form]);
 
-  let items: FormItemProps[] = [
+  const handleValuesChange = useMemo(
+    () =>
+      debounce(async (values) => {
+        setUpdating(true);
+        try {
+          await updateAgentChatConfig(values);
+        } finally {
+          setUpdating(false);
+        }
+      }, 500),
+    [updateAgentChatConfig],
+  );
+
+  useEffect(() => () => handleValuesChange.cancel(), [handleValuesChange]);
+
+  const items: FormItemProps[] = [
     {
       children: <Switch loading={updating} size={'small'} />,
       label: t('settingChat.enableHistoryCount.title'),
@@ -51,12 +65,12 @@ const Controls = memo<ControlsProps>(({ updating, setUpdating }) => {
           size={'small'}
           step={1}
           style={{ marginBlock: 8, paddingLeft: 4 }}
+          unlimitedInput={true}
           styles={{
             input: {
               maxWidth: 64,
             },
           }}
-          unlimitedInput={true}
         />
       ),
       name: 'historyCount',
@@ -67,24 +81,20 @@ const Controls = memo<ControlsProps>(({ updating, setUpdating }) => {
   return (
     <Form
       form={form}
+      items={items}
+      itemsType={'flat'}
       initialValues={{
         enableHistoryCount,
         historyCount,
       }}
-      items={items}
-      itemsType={'flat'}
-      onValuesChange={debounce(async (values) => {
-        setUpdating(true);
-        await updateAgentChatConfig(values);
-        setUpdating(false);
-      }, 500)}
       styles={{
         group: {
           background: 'transparent',
         },
       }}
+      onValuesChange={handleValuesChange}
     />
   );
-});
+};
 
 export default Controls;

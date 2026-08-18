@@ -4,7 +4,6 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { lambdaClient } from '@/libs/trpc/client';
 import { agentRuntimeClient } from '@/services/agentRuntime';
 import { useChatStore } from '@/store/chat/store';
-import { messageMapKey } from '@/store/chat/utils/messageMapKey';
 
 // Keep zustand mock as it's needed globally
 vi.mock('zustand/traditional');
@@ -67,7 +66,7 @@ const resetTestEnvironment = () => {
 };
 
 // Helper to create test context
-const createTestContext = (overrides = {}) => ({
+const createTestContext = (overrides: any = {}) => ({
   agentId: TEST_IDS.AGENT_ID,
   groupId: TEST_IDS.GROUP_ID,
   topicId: null as string | null,
@@ -76,7 +75,7 @@ const createTestContext = (overrides = {}) => ({
 });
 
 // Helper to create mock response from execGroupAgent
-const createMockExecGroupAgentResponse = (overrides = {}) => ({
+const createMockExecGroupAgentResponse = (overrides: any = {}) => ({
   assistantMessageId: TEST_IDS.ASSISTANT_MESSAGE_ID,
   operationId: TEST_IDS.OPERATION_ID,
   topicId: TEST_IDS.TOPIC_ID,
@@ -113,7 +112,6 @@ describe('agentGroup actions', () => {
     act(() => {
       useChatStore.setState({
         optimisticCreateTmpMessage: vi.fn(),
-        internal_toggleMessageLoading: vi.fn(),
         internal_dispatchMessage: vi.fn(),
         internal_handleAgentStreamEvent: vi.fn(),
         internal_cleanupAgentOperation: vi.fn(),
@@ -562,6 +560,34 @@ describe('agentGroup actions', () => {
         });
       });
 
+      it('should populate the new topic bucket BEFORE switching into it (no blank flicker)', async () => {
+        const { result } = renderHook(() => useChatStore());
+
+        vi.mocked(lambdaClient.aiAgent.execGroupAgent.mutate).mockResolvedValue(
+          createMockExecGroupAgentResponse({
+            isCreateNewTopic: true,
+            topics: { items: [], total: 1 },
+          }),
+        );
+        vi.mocked(agentRuntimeClient.createStreamConnection).mockReturnValue({} as any);
+
+        await act(async () => {
+          await result.current.sendGroupMessage({
+            context: createTestContext(),
+            message: TEST_CONTENT.GROUP_MESSAGE,
+          });
+        });
+
+        // The flicker bug: switchTopic both clears the optimistic (topicId: null)
+        // bucket and points the view at the new, still-empty topic bucket. If it runs
+        // before replaceMessages, the view lands on an empty key for a frame and the
+        // just-sent message visibly disappears then reappears. Guard the ordering:
+        // replaceMessages (populate new bucket) must precede switchTopic.
+        const replaceOrder = vi.mocked(result.current.replaceMessages).mock.invocationCallOrder[0];
+        const switchOrder = vi.mocked(result.current.switchTopic).mock.invocationCallOrder[0];
+        expect(replaceOrder).toBeLessThan(switchOrder);
+      });
+
       it('should not switch topic when using existing topic', async () => {
         const { result } = renderHook(() => useChatStore());
 
@@ -668,12 +694,6 @@ describe('agentGroup actions', () => {
             message: TEST_CONTENT.GROUP_MESSAGE,
           });
         });
-
-        // Should toggle loading off in finally block
-        expect(result.current.internal_toggleMessageLoading).toHaveBeenLastCalledWith(
-          false,
-          expect.any(String),
-        );
       });
 
       it('should handle abort error without calling failOperation', async () => {

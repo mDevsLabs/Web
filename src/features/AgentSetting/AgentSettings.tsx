@@ -1,5 +1,5 @@
 import { Skeleton } from '@lobehub/ui';
-import { Suspense, memo } from 'react';
+import { memo, Suspense } from 'react';
 
 import { ChatSettingsTabs } from '@/store/global/initialState';
 import { useServerConfigStore } from '@/store/serverConfig';
@@ -12,7 +12,7 @@ export interface AgentSettingsProps extends StoreUpdaterProps {
   tab: ChatSettingsTabs;
 }
 
-const AgentSettings = memo<AgentSettingsProps>(({ tab = ChatSettingsTabs.Meta, ...rest }) => {
+const AgentSettings = memo<AgentSettingsProps>(({ tab = ChatSettingsTabs.Opening, ...rest }) => {
   const isMobile = useServerConfigStore((s) => s.isMobile);
   const loadingSkeleton = (
     <Skeleton active paragraph={{ rows: 6 }} style={{ padding: isMobile ? 16 : 0 }} title={false} />

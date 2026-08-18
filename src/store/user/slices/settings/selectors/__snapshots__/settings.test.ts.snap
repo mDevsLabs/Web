@@ -51,34 +51,73 @@ exports[`settingsSelectors > currentSettings > should merge DEFAULT_SETTINGS and
 exports[`settingsSelectors > currentSystemAgent > should merge DEFAULT_SYSTEM_AGENT_CONFIG and s.settings.systemAgent correctly 1`] = `
 {
   "agentMeta": {
-    "model": "claude-sonnet-4-5-20250929",
-    "provider": "anthropic",
+    "model": "deepseek-v4-flash",
+    "provider": "deepseek",
   },
   "enableAutoReply": true,
+  "expertise": {
+    "model": "gpt-5.6-luna",
+    "provider": "openai",
+  },
+  "followUpAction": {
+    "enabled": false,
+    "model": "gpt-5.6-luna",
+    "provider": "openai",
+  },
   "generationTopic": {
-    "model": "gpt-5-mini",
+    "model": "gpt-5.6-luna",
     "provider": "openai",
   },
   "historyCompress": {
-    "model": "claude-sonnet-4-5-20250929",
-    "provider": "anthropic",
+    "model": "deepseek-v4-flash",
+    "provider": "deepseek",
   },
-  "queryRewrite": {
+  "inputCompletion": {
+    "enabled": false,
+    "model": "gpt-5.6-luna",
+    "provider": "openai",
+  },
+  "memoryAnalysisAgentConfig": {
+    "model": "gpt-5.6-luna",
+    "provider": "openai",
+  },
+  "onboardingTaskRecommender": {
+    "model": "gpt-5.6-luna",
+    "provider": "openai",
+  },
+  "onboardingUnderstanding": {
+    "model": "gpt-5.6-luna",
+    "provider": "openai",
+  },
+  "promptRewrite": {
     "enabled": true,
-    "model": "gpt-5-mini",
+    "model": "gpt-5.6-luna",
     "provider": "openai",
   },
   "replyMessage": "Custom auto reply",
   "thread": {
-    "model": "claude-sonnet-4-5-20250929",
-    "provider": "anthropic",
+    "model": "deepseek-v4-flash",
+    "provider": "deepseek",
   },
   "topic": {
-    "model": "gpt-5-mini",
+    "model": "gpt-5.6-luna",
     "provider": "openai",
   },
+  "topicAutoSummary": {
+    "enabled": false,
+    "model": "deepseek-v4-flash",
+    "provider": "deepseek",
+  },
   "translation": {
-    "model": "gpt-5-mini",
+    "model": "gpt-5.6-luna",
+    "provider": "openai",
+  },
+  "userMemoryEmbedding": {
+    "model": "text-embedding-3-small",
+    "provider": "openai",
+  },
+  "userMemoryPersonaWriter": {
+    "model": "gpt-5.6-luna",
     "provider": "openai",
   },
 }
@@ -99,20 +138,22 @@ exports[`settingsSelectors > defaultAgent > should merge DEFAULT_AGENT and s.set
 {
   "config": {
     "chatConfig": {
-      "autoCreateTopicThreshold": 2,
-      "enableAutoCreateTopic": true,
+      "enableAgentMode": true,
       "enableCompressHistory": true,
       "enableContextCompression": true,
-      "enableHistoryCount": true,
-      "enableReasoning": false,
+      "enableFollowUpChips": false,
+      "enableHistoryCount": false,
       "enableStreaming": true,
       "historyCount": 20,
       "reasoningBudgetToken": 1024,
       "searchFCModel": {
-        "model": "claude-sonnet-4-5-20250929",
-        "provider": "anthropic",
+        "model": "deepseek-v4-flash",
+        "provider": "deepseek",
       },
-      "searchMode": "off",
+      "searchMode": "auto",
+      "selfIteration": {
+        "enabled": false,
+      },
     },
     "model": "gpt-3.5-turbo",
     "openingQuestions": [],
@@ -123,7 +164,7 @@ exports[`settingsSelectors > defaultAgent > should merge DEFAULT_AGENT and s.set
       "top_p": 1,
     },
     "plugins": [],
-    "provider": "anthropic",
+    "provider": "deepseek",
     "systemRole": "user",
     "tts": {
       "showAllLocaleVoice": false,
@@ -144,20 +185,22 @@ exports[`settingsSelectors > defaultAgent > should merge DEFAULT_AGENT and s.set
 exports[`settingsSelectors > defaultAgentConfig > should merge DEFAULT_AGENT_CONFIG and defaultAgent(s).config correctly 1`] = `
 {
   "chatConfig": {
-    "autoCreateTopicThreshold": 2,
-    "enableAutoCreateTopic": true,
+    "enableAgentMode": true,
     "enableCompressHistory": true,
     "enableContextCompression": true,
-    "enableHistoryCount": true,
-    "enableReasoning": false,
+    "enableFollowUpChips": false,
+    "enableHistoryCount": false,
     "enableStreaming": true,
     "historyCount": 20,
     "reasoningBudgetToken": 1024,
     "searchFCModel": {
-      "model": "claude-sonnet-4-5-20250929",
-      "provider": "anthropic",
+      "model": "deepseek-v4-flash",
+      "provider": "deepseek",
     },
-    "searchMode": "off",
+    "searchMode": "auto",
+    "selfIteration": {
+      "enabled": false,
+    },
   },
   "model": "gpt-4",
   "openingQuestions": [],
@@ -168,7 +211,7 @@ exports[`settingsSelectors > defaultAgentConfig > should merge DEFAULT_AGENT_CON
     "top_p": 1,
   },
   "plugins": [],
-  "provider": "anthropic",
+  "provider": "deepseek",
   "systemRole": "custom role",
   "tts": {
     "showAllLocaleVoice": false,

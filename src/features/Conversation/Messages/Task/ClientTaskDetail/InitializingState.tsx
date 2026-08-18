@@ -43,6 +43,10 @@ const styles = createStaticStyles(({ css, cssVar }) => ({
     background: linear-gradient(90deg, transparent, ${cssVar.colorPrimaryBgHover}, transparent);
 
     animation: ${shimmer} 2s infinite;
+
+    @media (prefers-reduced-motion: reduce) {
+      display: none;
+    }
   `,
 }));
 
@@ -51,7 +55,7 @@ const InitializingState = memo(() => {
 
   return (
     <Flexbox className={styles.container} gap={12}>
-      <Flexbox align="center" gap={8} horizontal>
+      <Flexbox horizontal align="center" gap={8}>
         <NeuralNetworkLoading size={14} />
         <Text className={shinyTextStyles.shinyText} weight={500}>
           {t('task.status.initializing')}

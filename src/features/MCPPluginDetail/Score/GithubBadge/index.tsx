@@ -1,4 +1,5 @@
-import { Markdown, Select, Snippet, Tag } from '@lobehub/ui';
+import { Markdown, Snippet, Tag } from '@lobehub/ui';
+import { Select } from '@lobehub/ui/base-ui';
 import { Divider } from 'antd';
 import { cssVar } from 'antd-style';
 import { memo, useState } from 'react';
@@ -25,7 +26,7 @@ const GithubBadge = memo(() => {
 
   const badgeFullUrl = urlJoin(OFFICIAL_SITE, 'badge/mcp-full', identifier);
 
-  // 构建带主题参数的完整 badge URL
+  // Build the full badge URL with theme parameter
   const styledBadgeFullUrl =
     selectedTheme === 'dark' ? badgeFullUrl : `${badgeFullUrl}?theme=${selectedTheme}`;
 
@@ -50,15 +51,15 @@ const GithubBadge = memo(() => {
       <Markdown>{t('mcp.details.githubBadge.desc')}</Markdown>
 
       <Select
-        onChange={setSelectedStyle}
         options={styleOptions}
         prefix={<Tag style={{ marginRight: 4 }}>style</Tag>}
         value={selectedStyle}
+        onChange={setSelectedStyle}
       />
       <Snippet language={'md'} style={{ fontSize: 12 }} variant={'outlined'}>
         {badgeLite}
       </Snippet>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
+      {}
       <img
         alt="MCP Badge"
         height={selectedStyle === 'for-the-badge' ? 28 : 20}
@@ -66,15 +67,15 @@ const GithubBadge = memo(() => {
       />
       <Divider style={{ color: cssVar.colorTextDescription, fontSize: 12 }}>OR</Divider>
       <Select
-        onChange={setSelectedTheme}
         options={themeOptions}
         prefix={<Tag style={{ marginRight: 4 }}>theme</Tag>}
         value={selectedTheme}
+        onChange={setSelectedTheme}
       />
       <Snippet language={'md'} style={{ fontSize: 12 }} variant={'outlined'}>
         {badge}
       </Snippet>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
+      {}
       <img alt="MCP Badge" src={styledBadgeFullUrl} />
     </>
   );

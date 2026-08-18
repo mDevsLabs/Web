@@ -10,6 +10,10 @@ class RemoteServerService {
     return ensureElectronIpc().remoteServer.getRemoteServerConfig();
   };
 
+  isRemoteServerConfigured = async () => {
+    return ensureElectronIpc().remoteServer.isRemoteServerConfigured();
+  };
+
   /**
    * Set remote server configuration
    */
@@ -43,6 +47,16 @@ class RemoteServerService {
    */
   cancelAuthorization = async () => {
     return ensureElectronIpc().auth.cancelAuthorization();
+  };
+
+  /**
+   * Setup subscription webview session with OIDC token injection
+   * This configures the webview partition session to inject authentication tokens
+   * for requests to the official domain.
+   * @param partition The partition name for the webview session
+   */
+  setupSubscriptionWebviewSession = async (partition: string) => {
+    return ensureElectronIpc().remoteServer.setupSubscriptionWebviewSession({ partition });
   };
 }
 

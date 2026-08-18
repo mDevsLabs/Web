@@ -1,10 +1,10 @@
-import type { UIChatMessage } from '@lobechat/types';
+import { type UIChatMessage } from '@lobechat/types';
 import { act } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import * as messageServiceModule from '@/services/message';
 
-import type { ConversationContext } from '../../../../types';
+import { type ConversationContext } from '../../../../types';
 import { createStore } from '../../../index';
 
 // Mock conversation-flow parse function (必须 mock，因为这是外部库)
@@ -95,6 +95,72 @@ describe('Message CRUD Actions', () => {
       });
 
       expect(result).toBeUndefined();
+    });
+
+    it('discards a create result that resolves after switching conversations', async () => {
+      let resolveCreate!: (result: any) => void;
+      vi.spyOn(messageServiceModule.messageService, 'createMessage').mockReturnValue(
+        new Promise((resolve) => {
+          resolveCreate = resolve;
+        }),
+      );
+
+      const oldContext = {
+        agentId: 'test-session',
+        threadId: null,
+        topicId: 'topic-old',
+      };
+      const currentContext = {
+        agentId: 'test-session',
+        threadId: null,
+        topicId: 'topic-current',
+      };
+      const currentMessages: UIChatMessage[] = [
+        {
+          content: 'current topic',
+          createdAt: 2000,
+          id: 'msg-current',
+          role: 'user',
+          updatedAt: 2000,
+        },
+      ];
+      const store = createTestStore(oldContext);
+      const onMessagesChange = vi.fn();
+      store.setState({ onMessagesChange });
+
+      const createPromise = store.getState().createMessage({
+        content: 'old topic message',
+        role: 'user',
+      });
+      onMessagesChange.mockClear();
+      store.setState({
+        context: currentContext,
+        dbMessages: currentMessages,
+        displayMessages: currentMessages,
+        messageLoadingIds: [],
+        messagesInit: true,
+      });
+
+      let result: string | undefined;
+      await act(async () => {
+        resolveCreate({
+          id: 'msg-old',
+          messages: [
+            {
+              content: 'late old topic result',
+              createdAt: 1000,
+              id: 'msg-old',
+              role: 'user',
+              updatedAt: 1000,
+            },
+          ],
+        });
+        result = await createPromise;
+      });
+
+      expect(result).toBeUndefined();
+      expect(store.getState().dbMessages).toEqual(currentMessages);
+      expect(onMessagesChange).not.toHaveBeenCalled();
     });
   });
 

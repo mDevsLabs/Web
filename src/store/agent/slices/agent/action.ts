@@ -1,117 +1,160 @@
+import { isDesktop, randomAgentName } from '@lobechat/const';
+import { type AgentContextDocument } from '@lobechat/context-engine';
+import {
+  isChatGroupSessionId,
+  type LobeAgentAgencyConfig,
+  pruneWorkingDirByDeviceDeletes,
+} from '@lobechat/types';
 import { getSingletonAnalyticsOptional } from '@lobehub/analytics';
+import { toast } from '@lobehub/ui/base-ui';
 import isEqual from 'fast-deep-equal';
+import { t } from 'i18next';
 import { produce } from 'immer';
 import type { SWRResponse } from 'swr';
 import type { PartialDeep } from 'type-fest';
-import { type StateCreator } from 'zustand/vanilla';
 
 import { MESSAGE_CANCEL_FLAT } from '@/const/message';
-import { mutate, useClientDataSWR } from '@/libs/swr';
-import { type CreateAgentParams, type CreateAgentResult, agentService } from '@/services/agent';
+import { mutate, useClientDataSWRWithSync } from '@/libs/swr';
+import { agentConfigKeys } from '@/libs/swr/keys';
+import type { AvailableAgentItem, CreateAgentParams, CreateAgentResult } from '@/services/agent';
+import { agentService, AVAILABLE_AGENTS_CONTEXT_QUERY_LIMIT } from '@/services/agent';
+import {
+  type AgentDocumentListItem,
+  agentDocumentService,
+  agentDocumentSWRKeys,
+  resolveAgentDocumentsContext,
+} from '@/services/agentDocument';
+import { useGlobalStore } from '@/store/global';
+import { globalGeneralSelectors } from '@/store/global/selectors';
+import type { StoreSetter } from '@/store/types';
 import { getUserStoreState } from '@/store/user';
 import { userProfileSelectors } from '@/store/user/selectors';
-import {
-  type LobeAgentChatConfig,
-  type LobeAgentConfig,
-  type LocalSystemConfig,
+import type {
+  AgentItem,
+  LobeAgentChatConfig,
+  LobeAgentConfig,
+  RuntimeEnvConfig,
 } from '@/types/agent';
-import { type MetaData } from '@/types/meta';
 import { merge } from '@/utils/merge';
 
 import type { AgentStore } from '../../store';
-import { type AgentSliceState, type LoadingState, type SaveStatus } from './initialState';
+import { setLocalAgentWorkingDirectory } from '../../utils/localAgentWorkingDirectoryStorage';
+import type { AgentSliceState, LoadingState, SaveStatus } from './initialState';
 
-const FETCH_AGENT_CONFIG_KEY = 'FETCH_AGENT_CONFIG';
+type AgentMetaUpdate = Partial<
+  Pick<
+    AgentItem,
+    'avatar' | 'backgroundColor' | 'description' | 'marketIdentifier' | 'name' | 'tags' | 'title'
+  >
+>;
+type AgencyConfigPatch = PartialDeep<LobeAgentAgencyConfig>;
+
+interface AgentConfigUpdateOptions {
+  /** Propagate the persistence failure so a scoped editor can render failed + Retry. */
+  rethrow?: boolean;
+  /** Keep generic error messaging for ordinary config controls. @default true */
+  showErrorMessage?: boolean;
+}
+
+const preserveWorkingDirDeleteMarkers = (
+  merged: LobeAgentAgencyConfig,
+  patch: AgencyConfigPatch,
+): void => {
+  const incoming = patch.workingDirByDevice;
+  if (!incoming) return;
+
+  const deletions = Object.keys(incoming).filter((key) => incoming[key] === undefined);
+  if (deletions.length === 0) return;
+
+  const workingDirByDevice = {
+    ...merged.workingDirByDevice,
+  } as Record<string, string | undefined>;
+
+  for (const key of deletions) {
+    workingDirByDevice[key] = undefined;
+  }
+
+  merged.workingDirByDevice = workingDirByDevice as Record<string, string>;
+};
 
 /**
  * Agent Slice Actions
  * Handles agent CRUD operations (config/meta updates)
  */
-export interface AgentSliceAction {
-  /**
-   * Append content chunk to streaming system role
-   */
-  appendStreamingSystemRole: (chunk: string) => void;
-  /**
-   * Create a new agent with session
-   * @returns Created agent result with agentId and sessionId
-   */
-  createAgent: (params: CreateAgentParams) => Promise<CreateAgentResult>;
-  /**
-   * Finish streaming and save final content to agent config
-   */
-  finishStreamingSystemRole: (agentId: string) => Promise<void>;
-  internal_createAbortController: (key: keyof AgentSliceState) => AbortController;
-  internal_dispatchAgentMap: (id: string, config: PartialDeep<LobeAgentConfig>) => void;
-  internal_refreshAgentConfig: (id: string) => Promise<void>;
-  optimisticUpdateAgentConfig: (
-    id: string,
-    data: PartialDeep<LobeAgentConfig>,
-    signal?: AbortSignal,
-  ) => Promise<void>;
-  optimisticUpdateAgentMeta: (
-    id: string,
-    meta: Partial<MetaData>,
-    signal?: AbortSignal,
-  ) => Promise<void>;
-  /**
-   * Update current active agent id
-   */
-  setActiveAgentId: (agentId?: string) => void;
-  /**
-   * Set the agent panel pinned state
-   */
-  setAgentPinned: (pinned: boolean | ((prev: boolean) => boolean)) => void;
-  /**
-   * Start streaming system role update
-   */
-  startStreamingSystemRole: () => void;
-  /**
-   * Toggle the agent panel pinned state
-   */
-  toggleAgentPinned: () => void;
-  /**
-   * Toggle a plugin for the current agent
-   * @param pluginId - The plugin identifier
-   * @param state - Optional explicit state (true = enable, false = disable). If not provided, toggles.
-   */
-  toggleAgentPlugin: (pluginId: string, state?: boolean) => Promise<void>;
-  updateAgentChatConfig: (config: Partial<LobeAgentChatConfig>) => Promise<void>;
-  updateAgentChatConfigById: (
-    agentId: string,
-    config: Partial<LobeAgentChatConfig>,
-  ) => Promise<void>;
-  updateAgentConfig: (config: PartialDeep<LobeAgentConfig>) => Promise<void>;
-  updateAgentConfigById: (agentId: string, config: PartialDeep<LobeAgentConfig>) => Promise<void>;
-  updateAgentLocalSystemConfigById: (
-    agentId: string,
-    config: Partial<LocalSystemConfig>,
-  ) => Promise<void>;
-  updateAgentMeta: (meta: Partial<MetaData>) => Promise<void>;
-  /**
-   * Update loading state for meta fields (used during autocomplete)
-   */
-  updateLoadingState: (key: keyof LoadingState, value: boolean) => void;
-  /**
-   * Update save status for showing auto-save hint
-   */
-  updateSaveStatus: (status: SaveStatus) => void;
-  useFetchAgentConfig: (isLogin: boolean | undefined, id: string) => SWRResponse<LobeAgentConfig>;
-}
 
-export const createAgentSlice: StateCreator<
-  AgentStore,
-  [['zustand/devtools', never]],
-  [],
-  AgentSliceAction
-> = (set, get) => ({
-  appendStreamingSystemRole: (chunk) => {
-    const currentContent = get().streamingSystemRole || '';
-    set({ streamingSystemRole: currentContent + chunk }, false, 'appendStreamingSystemRole');
-  },
+type Setter = StoreSetter<AgentStore>;
+export const createAgentSlice = (set: Setter, get: () => AgentStore, _api?: unknown) =>
+  new AgentSliceActionImpl(set, get, _api);
 
-  createAgent: async (params) => {
-    const result = await agentService.createAgent(params);
+export class AgentSliceActionImpl {
+  readonly #get: () => AgentStore;
+  readonly #set: Setter;
+  readonly #pendingAgentDocuments = new Map<string, Promise<AgentContextDocument[] | undefined>>();
+  readonly #updateAgentConfigControllers = new Map<string, AbortController>();
+  readonly #updateAgentMetaControllers = new Map<string, AbortController>();
+
+  constructor(set: Setter, get: () => AgentStore, _api?: unknown) {
+    void _api;
+    this.#set = set;
+    this.#get = get;
+  }
+
+  #createAgentScopedAbortController = (
+    controllers: Map<string, AbortController>,
+    agentId: string,
+  ): AbortController => {
+    controllers.get(agentId)?.abort(MESSAGE_CANCEL_FLAT);
+
+    const controller = new AbortController();
+    controllers.set(agentId, controller);
+    return controller;
+  };
+
+  #syncAgentDocuments = (agentId: string, documents: AgentContextDocument[]) => {
+    this.#set(
+      (state) => ({
+        agentDocumentsMap: {
+          ...state.agentDocumentsMap,
+          [agentId]: documents,
+        },
+      }),
+      false,
+      'syncAgentDocuments',
+    );
+  };
+
+  appendStreamingSystemRole = (agentId: string, generation: number, chunk: string): void => {
+    const {
+      streamingSystemRole,
+      streamingSystemRoleAgentId,
+      streamingSystemRoleGeneration,
+      streamingSystemRoleInProgress,
+    } = this.#get();
+    if (
+      !streamingSystemRoleInProgress ||
+      streamingSystemRoleAgentId !== agentId ||
+      streamingSystemRoleGeneration !== generation
+    )
+      return;
+
+    const currentContent = streamingSystemRole || '';
+    this.#set({ streamingSystemRole: currentContent + chunk }, false, 'appendStreamingSystemRole');
+  };
+
+  createAgent = async (params: CreateAgentParams): Promise<CreateAgentResult> => {
+    // Seed a personal name so a new agent has an identity before the Agent
+    // Builder conversation produces one; the builder may replace it later. This
+    // lives here rather than in the create endpoint because the language only
+    // resolves on the client (`auto` follows the browser). A caller that already
+    // carries a name — e.g. a market agent — keeps it.
+    const locale = globalGeneralSelectors.currentLanguage(useGlobalStore.getState());
+    const config = {
+      ...params.config,
+      name: params.config?.name || randomAgentName(locale),
+    };
+
+    const result = await agentService.createAgent({ ...params, config });
+    this.#get().invalidateAvailableAgents();
 
     // Track new agent creation analytics
     const analytics = getSingletonAnalyticsOptional();
@@ -125,74 +168,80 @@ export const createAgentSlice: StateCreator<
           agent_id: result.agentId,
           assistant_name: params.config?.title || 'Untitled Agent',
           assistant_tags: params.config?.tags || [],
-          session_id: result.sessionId,
           user_id: userId || 'anonymous',
         },
       });
     }
 
     return result;
-  },
+  };
 
-  finishStreamingSystemRole: async (agentId) => {
-    const { streamingSystemRole } = get();
-
-    if (!streamingSystemRole) {
-      set({ streamingSystemRoleInProgress: false }, false, 'finishStreamingSystemRole');
+  finishStreamingSystemRole = async (agentId: string, generation: number): Promise<void> => {
+    const { streamingSystemRoleAgentId, streamingSystemRoleGeneration } = this.#get();
+    if (streamingSystemRoleAgentId !== agentId || streamingSystemRoleGeneration !== generation)
       return;
-    }
 
-    // Save the final content to agent config
-    await get().optimisticUpdateAgentConfig(agentId, {
-      systemRole: streamingSystemRole,
-    });
-
-    // Reset streaming state
-    set(
+    // Persistence is handled by the invocation-scoped AgentManagerRuntime.
+    // This singleton state only owns the visible typewriter animation, so a
+    // superseded invocation must never clear the newer owner's buffer.
+    this.#set(
       {
         streamingSystemRole: undefined,
+        streamingSystemRoleAgentId: undefined,
         streamingSystemRoleInProgress: false,
       },
       false,
       'finishStreamingSystemRole',
     );
-  },
+  };
 
-  setActiveAgentId: (agentId) => {
-    set(
+  setActiveAgentId = (agentId?: string): void => {
+    this.#set(
       (state) => (state.activeAgentId === agentId ? state : { activeAgentId: agentId }),
       false,
       'setActiveAgentId',
     );
-  },
+  };
 
-  setAgentPinned: (value) => {
-    set(
+  setAgentPinned = (value: boolean | ((prev: boolean) => boolean)): void => {
+    this.#set(
       (state) => ({
         isAgentPinned: typeof value === 'function' ? value(state.isAgentPinned) : value,
       }),
       false,
       'setAgentPinned',
     );
-  },
+  };
 
-  startStreamingSystemRole: () => {
-    set(
+  startStreamingSystemRole = (agentId: string): number => {
+    const generation = (this.#get().streamingSystemRoleGeneration ?? 0) + 1;
+    this.#set(
       {
         streamingSystemRole: '',
+        streamingSystemRoleAgentId: agentId,
+        streamingSystemRoleGeneration: generation,
         streamingSystemRoleInProgress: true,
       },
       false,
       'startStreamingSystemRole',
     );
-  },
+    return generation;
+  };
 
-  toggleAgentPinned: () => {
-    set((state) => ({ isAgentPinned: !state.isAgentPinned }), false, 'toggleAgentPinned');
-  },
+  toggleAgentPinned = (): void => {
+    this.#set((state) => ({ isAgentPinned: !state.isAgentPinned }), false, 'toggleAgentPinned');
+  };
 
-  toggleAgentPlugin: async (pluginId, state) => {
-    const { activeAgentId, agentMap, updateAgentConfig } = get();
+  transferAgent = async (
+    agentId: string,
+    targetWorkspaceId: string | null,
+    targetVisibility?: 'private' | 'public',
+  ): Promise<{ agentId: string; slug: string | null; transferJobId: string | null }> => {
+    return agentService.transferAgent(agentId, targetWorkspaceId, targetVisibility);
+  };
+
+  toggleAgentPlugin = async (pluginId: string, state?: boolean): Promise<void> => {
+    const { activeAgentId, agentMap, updateAgentConfig } = this.#get();
     if (!activeAgentId) return;
 
     const currentPlugins = (agentMap[activeAgentId]?.plugins as string[]) || [];
@@ -212,120 +261,404 @@ export const createAgentSlice: StateCreator<
     }
 
     await updateAgentConfig({ plugins: newPlugins });
-  },
+  };
 
-  updateAgentChatConfig: async (config) => {
-    const { activeAgentId } = get();
-
-    if (!activeAgentId) return;
-
-    await get().updateAgentConfig({ chatConfig: config });
-  },
-
-  updateAgentChatConfigById: async (agentId, config) => {
-    if (!agentId) return;
-
-    await get().updateAgentConfigById(agentId, { chatConfig: config });
-  },
-
-  updateAgentConfig: async (config) => {
-    const { activeAgentId } = get();
+  updateAgentChatConfig = async (
+    config: Partial<LobeAgentChatConfig>,
+    options?: AgentConfigUpdateOptions,
+  ): Promise<void> => {
+    const { activeAgentId } = this.#get();
 
     if (!activeAgentId) return;
 
-    const controller = get().internal_createAbortController('updateAgentConfigSignal');
+    await this.#get().updateAgentConfig({ chatConfig: config }, options);
+  };
 
-    await get().optimisticUpdateAgentConfig(activeAgentId, config, controller.signal);
-  },
-
-  updateAgentConfigById: async (agentId, config) => {
+  updateAgentChatConfigById = async (
+    agentId: string,
+    config: Partial<LobeAgentChatConfig>,
+    options?: AgentConfigUpdateOptions,
+  ): Promise<void> => {
     if (!agentId) return;
 
-    const controller = get().internal_createAbortController('updateAgentConfigSignal');
+    await this.#get().updateAgentConfigById(agentId, { chatConfig: config }, options);
+  };
 
-    await get().optimisticUpdateAgentConfig(agentId, config, controller.signal);
-  },
-
-  updateAgentLocalSystemConfigById: async (agentId, config) => {
-    if (!agentId) return;
-
-    await get().updateAgentChatConfigById(agentId, { localSystem: config });
-  },
-
-  updateAgentMeta: async (meta) => {
-    const { activeAgentId } = get();
+  updateAgentConfig = async (
+    config: PartialDeep<LobeAgentConfig>,
+    options?: AgentConfigUpdateOptions,
+  ): Promise<void> => {
+    const { activeAgentId } = this.#get();
 
     if (!activeAgentId) return;
 
-    const controller = get().internal_createAbortController('updateAgentMetaSignal');
+    await this.#get().updateAgentConfigById(activeAgentId, config, options);
+  };
 
-    await get().optimisticUpdateAgentMeta(activeAgentId, meta, controller.signal);
-  },
+  updateAgentConfigById = async (
+    agentId: string,
+    config: PartialDeep<LobeAgentConfig>,
+    options?: AgentConfigUpdateOptions,
+  ): Promise<void> => {
+    if (!agentId) return;
 
-  updateLoadingState: (key, value) => {
-    set({ loadingState: { ...get().loadingState, [key]: value } }, false, 'updateLoadingState');
-  },
+    const controller = this.#createAgentScopedAbortController(
+      this.#updateAgentConfigControllers,
+      agentId,
+    );
 
-  updateSaveStatus: (status) => {
-    set(
+    try {
+      await this.#get().optimisticUpdateAgentConfig(agentId, config, controller.signal, options);
+    } finally {
+      if (this.#updateAgentConfigControllers.get(agentId) === controller) {
+        this.#updateAgentConfigControllers.delete(agentId);
+      }
+    }
+  };
+
+  updateAgentRuntimeEnvConfigById = async (
+    agentId: string,
+    config: Partial<RuntimeEnvConfig>,
+  ): Promise<void> => {
+    if (!agentId) return;
+
+    if (isDesktop && 'workingDirectory' in config) {
+      setLocalAgentWorkingDirectory(agentId, config.workingDirectory);
+      const nextMap = { ...this.#get().localAgentWorkingDirectoryMap };
+      if (config.workingDirectory) {
+        nextMap[agentId] = config.workingDirectory;
+      } else {
+        delete nextMap[agentId];
+      }
+      this.#set({ localAgentWorkingDirectoryMap: nextMap }, false, 'updateAgentWorkingDirectory');
+    }
+
+    const restConfig = { ...config };
+    delete restConfig.workingDirectory;
+    if (Object.keys(restConfig).length > 0) {
+      await this.#get().updateAgentChatConfigById(agentId, { runtimeEnv: restConfig });
+    }
+  };
+
+  updateAgentMeta = async (meta: AgentMetaUpdate): Promise<void> => {
+    const { activeAgentId } = this.#get();
+
+    if (!activeAgentId) return;
+
+    await this.#get().updateAgentMetaById(activeAgentId, meta);
+  };
+
+  updateAgentMetaById = async (agentId: string, meta: AgentMetaUpdate): Promise<void> => {
+    if (!agentId) return;
+
+    const controller = this.#createAgentScopedAbortController(
+      this.#updateAgentMetaControllers,
+      agentId,
+    );
+
+    try {
+      await this.#get().optimisticUpdateAgentMeta(agentId, meta, controller.signal);
+    } finally {
+      if (this.#updateAgentMetaControllers.get(agentId) === controller) {
+        this.#updateAgentMetaControllers.delete(agentId);
+      }
+    }
+  };
+
+  updateLoadingState = (key: keyof LoadingState, value: boolean): void => {
+    this.#set(
+      { loadingState: { ...this.#get().loadingState, [key]: value } },
+      false,
+      'updateLoadingState',
+    );
+  };
+
+  updateSaveStatus = (status: SaveStatus): void => {
+    this.#set(
       {
-        lastUpdatedTime: status === 'saved' ? new Date() : get().lastUpdatedTime,
+        lastUpdatedTime: status === 'saved' ? new Date() : this.#get().lastUpdatedTime,
         saveStatus: status,
       },
       false,
       'updateSaveStatus',
     );
-  },
+  };
 
-  useFetchAgentConfig: (isLogin, agentId) =>
-    useClientDataSWR<LobeAgentConfig>(
-      // Only fetch when login status is explicitly true (not null/undefined)
-      isLogin === true && agentId && !agentId.startsWith('cg_')
-        ? ([FETCH_AGENT_CONFIG_KEY, agentId] as const)
-        : null,
-      async ([, id]: readonly [string, string]) => {
-        const data = await agentService.getAgentConfigById(id);
+  useFetchAgentConfig = (
+    isLogin: boolean | undefined,
+    agentId: string,
+  ): SWRResponse<LobeAgentConfig> => {
+    const swrKey =
+      isLogin === true && agentId && !isChatGroupSessionId(agentId)
+        ? agentConfigKeys.config(agentId)
+        : null;
+
+    return useClientDataSWRWithSync<LobeAgentConfig>(
+      swrKey,
+      async () => {
+        const data = await agentService.getAgentConfigById(agentId);
         return data as LobeAgentConfig;
       },
       {
-        onSuccess: (data) => {
-          get().internal_dispatchAgentMap(agentId, data);
-
-          set({ activeAgentId: data.id }, false, 'fetchAgentConfig');
+        onData: (data) => {
+          // A successful fetch that resolves to null means the agent doesn't
+          // exist or the caller lost access (e.g. a workspace agent switched
+          // back to private) — a settled state, not "still loading".
+          if (!data) {
+            this.#markAgentNotFound(agentId);
+            return;
+          }
+          this.#clearAgentNotFound(agentId);
+          // This endpoint returns a complete, authoritative profile snapshot.
+          // Replace the cached entry instead of applying patch semantics: fields
+          // cleared on the server (for example editorData: null) may be omitted
+          // from the response and must not survive from an older local profile.
+          if (!isEqual(this.#get().agentMap[agentId], data)) {
+            this.#set(
+              (state) => ({ agentMap: { ...state.agentMap, [agentId]: data } }),
+              false,
+              'fetchAgentConfig',
+            );
+          }
+          // Only adopt the fetched agent as the active one when nothing is
+          // active yet. The active agent is owned by the route-level sync
+          // (AgentIdSync on desktop/mobile, the popup pages' own setState).
+          // A background or secondary config fetch — e.g. the inbox config
+          // requested by the home input, a side-panel copilot, or another
+          // open tab — must NOT hijack `activeAgentId` away from the routed
+          // agent, which would otherwise flash the conversation header/welcome
+          // back to the inbox ("Lobe AI") agent.
+          if (!this.#get().activeAgentId) {
+            this.#set({ activeAgentId: data.id }, false, 'fetchAgentConfig');
+          }
+          this.#clearAgentConfigError(agentId);
+        },
+        onError: (error) => {
+          this.#set(
+            (state) => ({
+              agentConfigErrorMap: {
+                ...state.agentConfigErrorMap,
+                [agentId]: error?.message || String(error),
+              },
+            }),
+            false,
+            'fetchAgentConfig/error',
+          );
         },
       },
-    ),
+    );
+  };
 
-  /* eslint-disable sort-keys-fix/sort-keys-fix */
+  /**
+   * Re-trigger the agent config fetch after a failure. Clears the recorded
+   * error first so consumers fall back to the loading skeleton, then
+   * revalidates every SWR entry for this agent (keys may carry a workspace
+   * suffix, hence the filter form).
+   */
+  retryAgentConfigFetch = async (agentId?: string): Promise<void> => {
+    const id = agentId ?? this.#get().activeAgentId;
+    if (!id) return;
 
-  internal_dispatchAgentMap: (id, config) => {
-    const agentMap = produce(get().agentMap, (draft) => {
+    this.#clearAgentConfigError(id);
+
+    await mutate(
+      (key) => Array.isArray(key) && key[0] === agentConfigKeys.config.root && key[1] === id,
+    );
+  };
+
+  #markAgentNotFound = (agentId: string) => {
+    const { agentNotFoundMap, agentMap } = this.#get();
+    if (agentNotFoundMap[agentId] && !agentMap[agentId]) return;
+
+    this.#set(
+      (state) => {
+        // Also drop the previously cached config: surfaces reading `agentMap`
+        // (title/avatar in the sidebar or header) must not keep showing an
+        // agent the viewer lost access to next to the 404 content area.
+        const nextAgentMap = { ...state.agentMap };
+        delete nextAgentMap[agentId];
+        return {
+          agentMap: nextAgentMap,
+          agentNotFoundMap: { ...state.agentNotFoundMap, [agentId]: true },
+        };
+      },
+      false,
+      'markAgentNotFound',
+    );
+  };
+
+  #clearAgentNotFound = (agentId: string) => {
+    if (!this.#get().agentNotFoundMap[agentId]) return;
+
+    this.#set(
+      (state) => {
+        const next = { ...state.agentNotFoundMap };
+        delete next[agentId];
+        return { agentNotFoundMap: next };
+      },
+      false,
+      'clearAgentNotFound',
+    );
+  };
+
+  #clearAgentConfigError = (agentId: string) => {
+    if (!this.#get().agentConfigErrorMap[agentId]) return;
+
+    this.#set(
+      (state) => {
+        const next = { ...state.agentConfigErrorMap };
+        delete next[agentId];
+        return { agentConfigErrorMap: next };
+      },
+      false,
+      'clearAgentConfigError',
+    );
+  };
+
+  useHydrateAgentConfig = (
+    isLogin: boolean | undefined,
+    agentId: string,
+  ): SWRResponse<LobeAgentConfig> => {
+    const swrKey =
+      isLogin === true && agentId && !isChatGroupSessionId(agentId)
+        ? agentConfigKeys.config(agentId)
+        : null;
+
+    return useClientDataSWRWithSync<LobeAgentConfig>(
+      swrKey,
+      async () => {
+        const data = await agentService.getAgentConfigById(agentId);
+        return data as LobeAgentConfig;
+      },
+      {
+        onData: (data) => {
+          if (!data) {
+            this.#markAgentNotFound(agentId);
+            return;
+          }
+          this.#clearAgentNotFound(agentId);
+          this.#get().internal_dispatchAgentMap(agentId, data);
+        },
+      },
+    );
+  };
+
+  useFetchAgentDocuments = (agentId?: string | null): SWRResponse<AgentDocumentListItem[]> => {
+    return useClientDataSWRWithSync<AgentDocumentListItem[]>(
+      agentId ? agentDocumentSWRKeys.documentsList(agentId) : null,
+      async () => agentDocumentService.listDocuments({ agentId: agentId! }),
+      {
+        revalidateOnFocus: false,
+      },
+    );
+  };
+
+  useFetchAvailableAgents = (enabled: boolean): SWRResponse<AvailableAgentItem[]> => {
+    return useClientDataSWRWithSync<AvailableAgentItem[]>(
+      enabled ? agentConfigKeys.available() : null,
+      () => agentService.queryAgents({ limit: AVAILABLE_AGENTS_CONTEXT_QUERY_LIMIT }),
+      {
+        onData: (data) => {
+          this.#set({ availableAgents: data }, false, 'useFetchAvailableAgents');
+        },
+        revalidateOnFocus: false,
+      },
+    );
+  };
+
+  invalidateAvailableAgents = (): void => {
+    this.#set({ availableAgents: undefined }, false, 'invalidateAvailableAgents');
+    void mutate(agentConfigKeys.available());
+  };
+
+  ensureAgentDocuments = async (
+    agentId?: string | null,
+  ): Promise<AgentContextDocument[] | undefined> => {
+    if (!agentId) return undefined;
+
+    const cachedDocuments = this.#get().agentDocumentsMap[agentId];
+    if (cachedDocuments !== undefined) return cachedDocuments;
+
+    const pendingRequest = this.#pendingAgentDocuments.get(agentId);
+    if (pendingRequest) return pendingRequest;
+
+    const request = resolveAgentDocumentsContext({ agentId })
+      .then((documents) => {
+        if (documents) {
+          this.#syncAgentDocuments(agentId, documents);
+        }
+
+        return documents;
+      })
+      .finally(() => {
+        this.#pendingAgentDocuments.delete(agentId);
+      });
+
+    this.#pendingAgentDocuments.set(agentId, request);
+
+    return request;
+  };
+
+  internal_dispatchAgentMap = (id: string, config: PartialDeep<LobeAgentConfig>): void => {
+    const agentMap = produce(this.#get().agentMap, (draft) => {
       if (!draft[id]) {
         draft[id] = config;
       } else {
         draft[id] = merge(draft[id], config);
+        // merge() can't drop keys; honor `undefined` as a per-device delete so
+        // clearing a working directory takes effect optimistically.
+        pruneWorkingDirByDeviceDeletes(draft[id].agencyConfig, config.agencyConfig);
       }
     });
 
-    if (isEqual(get().agentMap, agentMap)) return;
+    if (isEqual(this.#get().agentMap, agentMap)) return;
 
-    set({ agentMap }, false, 'dispatchAgentMap');
-  },
+    this.#set({ agentMap }, false, 'dispatchAgentMap');
+  };
 
-  optimisticUpdateAgentConfig: async (id, data, signal) => {
-    const { internal_dispatchAgentMap, updateSaveStatus } = get();
+  #mergeLatestAgencyConfigPatch = (
+    id: string,
+    data: PartialDeep<LobeAgentConfig>,
+  ): PartialDeep<LobeAgentConfig> => {
+    const agencyConfigPatch = data.agencyConfig;
+    if (!agencyConfigPatch) return data;
+
+    const currentAgencyConfig = this.#get().agentMap[id]?.agencyConfig;
+    const agencyConfig = merge(
+      currentAgencyConfig ?? {},
+      agencyConfigPatch,
+    ) as LobeAgentAgencyConfig;
+
+    pruneWorkingDirByDeviceDeletes(agencyConfig, agencyConfigPatch);
+    preserveWorkingDirDeleteMarkers(agencyConfig, agencyConfigPatch);
+
+    return { ...data, agencyConfig };
+  };
+
+  optimisticUpdateAgentConfig = async (
+    id: string,
+    data: PartialDeep<LobeAgentConfig>,
+    signal?: AbortSignal,
+    options?: AgentConfigUpdateOptions,
+  ): Promise<void> => {
+    const { internal_dispatchAgentMap, updateSaveStatus } = this.#get();
+    const mergedData = this.#mergeLatestAgencyConfigPatch(id, data);
 
     // 1. Optimistic update (instant UI feedback)
-    internal_dispatchAgentMap(id, data);
+    internal_dispatchAgentMap(id, mergedData);
     updateSaveStatus('saving');
 
     try {
       // 2. API call returns updated agent data
-      const result = await agentService.updateAgentConfig(id, data, signal);
+      const result = await agentService.updateAgentConfig(id, mergedData, signal);
 
-      // 3. Use returned data directly (no refetch needed!)
+      // 3. Apply returned data, then invalidate the SWR key for later subscribers.
       if (result?.success && result.agent) {
         internal_dispatchAgentMap(id, result.agent);
+        // Refresh agent:config so cached model A cannot replay after a
+        // successful model A -> B update.
+        await this.#get().internal_refreshAgentConfig(id);
+        this.#get().invalidateAvailableAgents();
       }
       updateSaveStatus('saved');
     } catch (error: any) {
@@ -334,12 +667,30 @@ export const createAgentSlice: StateCreator<
       } else {
         console.error('[AgentStore] Failed to save config:', error);
         updateSaveStatus('idle');
+        // A swallowed failure reads as saved and surfaces later as mysterious
+        // data loss (the next refetch reverts the optimistic value) — tell the
+        // user right away.
+        if (options?.showErrorMessage !== false) {
+          toast.error(t('saveAgentConfigFail', { ns: 'common' }));
+        }
+        // Roll back only agencyConfig patches: those are discrete picks the
+        // server actively validates (e.g. a workspace agent binding a
+        // non-workspace device is rejected), so keeping the optimistic value
+        // just shows a selection that never persisted. Other config fields keep
+        // the optimistic value on purpose — refetching would clobber in-flight
+        // form edits on a transient failure (see #16337).
+        if (data.agencyConfig) await this.#get().internal_refreshAgentConfig(id);
       }
+      if (options?.rethrow) throw error;
     }
-  },
+  };
 
-  optimisticUpdateAgentMeta: async (id, meta, signal) => {
-    const { internal_dispatchAgentMap, updateSaveStatus } = get();
+  optimisticUpdateAgentMeta = async (
+    id: string,
+    meta: AgentMetaUpdate,
+    signal?: AbortSignal,
+  ): Promise<void> => {
+    const { internal_dispatchAgentMap, updateSaveStatus } = this.#get();
 
     // 1. Optimistic update - meta fields are at the top level of agent config
     internal_dispatchAgentMap(id, meta as PartialDeep<LobeAgentConfig>);
@@ -352,6 +703,7 @@ export const createAgentSlice: StateCreator<
       // 3. Use returned data directly (no refetch needed!)
       if (result?.success && result.agent) {
         internal_dispatchAgentMap(id, result.agent);
+        this.#get().invalidateAvailableAgents();
       }
       updateSaveStatus('saved');
     } catch (error: any) {
@@ -362,18 +714,20 @@ export const createAgentSlice: StateCreator<
         updateSaveStatus('idle');
       }
     }
-  },
+  };
 
-  internal_refreshAgentConfig: async (id) => {
-    await mutate([FETCH_AGENT_CONFIG_KEY, id]);
-  },
+  internal_refreshAgentConfig = async (id: string): Promise<void> => {
+    await mutate(agentConfigKeys.config(id));
+  };
 
-  internal_createAbortController: (key) => {
-    const abortController = get()[key] as AbortController;
+  internal_createAbortController = (key: keyof AgentSliceState): AbortController => {
+    const abortController = this.#get()[key] as AbortController;
     if (abortController) abortController.abort(MESSAGE_CANCEL_FLAT);
     const controller = new AbortController();
-    set({ [key]: controller }, false, 'internal_createAbortController');
+    this.#set({ [key]: controller }, false, 'internal_createAbortController');
 
     return controller;
-  },
-});
+  };
+}
+
+export type AgentSliceAction = Pick<AgentSliceActionImpl, keyof AgentSliceActionImpl>;

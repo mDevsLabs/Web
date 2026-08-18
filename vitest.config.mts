@@ -1,12 +1,72 @@
 import { dirname, join, resolve } from 'node:path';
+
+import tsconfigPaths from 'vite-tsconfig-paths';
 import { coverageConfigDefaults, defineConfig } from 'vitest/config';
 
+if (process.env.NODE_ENV === 'production') {
+  Reflect.set(process.env, 'NODE_ENV', 'test');
+}
+
+const alias = {
+  // Downstream workspaces sometimes pnpm-override @lobechat/business-* packages to
+  // internal implementations whose source files import alias paths that only exist
+  // in the outer workspace, causing vite import-analysis to fail when running tests
+  // from this repo. Pin the package to the local stub so tests here stay hermetic.
+  '@lobechat/business-model-runtime': resolve(
+    __dirname,
+    './packages/business/model-runtime/src/index.ts',
+  ),
+  '@lobechat/business-model-bank/model-config': resolve(
+    __dirname,
+    './packages/business/model-bank/src/model-config.ts',
+  ),
+  '@lobechat/business-model-bank': resolve(
+    __dirname,
+    './packages/business/model-bank/src/index.ts',
+  ),
+  '@emoji-mart/data': resolve(__dirname, './tests/mocks/emojiMartData.ts'),
+  '@emoji-mart/react': resolve(__dirname, './tests/mocks/emojiMartReact.tsx'),
+  '@/utils/client/switchLang': resolve(__dirname, './src/utils/client/switchLang'),
+  '@/const/locale': resolve(__dirname, './src/const/locale'),
+  // TODO: after refactor the errorResponse, we can remove it
+  '@/utils/errorResponse': resolve(__dirname, './src/utils/errorResponse'),
+  '@/utils/unzipFile': resolve(__dirname, './src/utils/unzipFile'),
+  '@/utils/server': resolve(__dirname, './src/utils/server'),
+  '@/utils/identifier': resolve(__dirname, './src/utils/identifier'),
+  '@/utils/electron': resolve(__dirname, './src/utils/electron'),
+  '@/utils/markdownToTxt': resolve(__dirname, './src/utils/markdownToTxt'),
+  '@/utils/sanitizeFileName': resolve(__dirname, './src/utils/sanitizeFileName'),
+  // Workspace store lives in the cloud repo; submodule-only tests get a stub
+  // that reports no active workspace so workspace-aware nav helpers behave
+  // like plain react-router.
+  '@/store/workspace': resolve(__dirname, './tests/mocks/storeWorkspace.ts'),
+  '~test-utils': resolve(__dirname, './tests/utils.tsx'),
+  'lru_map': resolve(__dirname, './tests/mocks/lru_map'),
+};
+
 export default defineConfig({
+  define: {
+    '__CI__': process.env.CI === 'true' ? 'true' : 'false',
+    '__DEV__': process.env.NODE_ENV !== 'production' ? 'true' : 'false',
+    '__ELECTRON__': 'false',
+    '__MOBILE__': 'false',
+    '__TEST__': 'true',
+  },
   optimizeDeps: {
     exclude: ['crypto', 'util', 'tty'],
     include: ['@lobehub/tts'],
   },
   plugins: [
+    tsconfigPaths({ projects: ['.'] }),
+    // Let `.md` imports resolve to their raw text content so Rollup/Vitest
+    // doesn't try to parse Markdown as JavaScript.
+    {
+      name: 'raw-md',
+      transform(_, id) {
+        if (id.endsWith('.md'))
+          return { code: 'export default ""', map: null };
+      },
+    },
     /**
      * @lobehub/fluent-emoji@4.0.0 ships `es/FluentEmoji/style.js` but its `es/FluentEmoji/index.js`
      * imports `./style/index.js` which doesn't exist.
@@ -38,27 +98,11 @@ export default defineConfig({
       },
     },
   ],
+  resolve: {
+    alias,
+  },
   test: {
-    alias: {
-      /* eslint-disable sort-keys-fix/sort-keys-fix */
-      '@/database/_deprecated': resolve(__dirname, './src/database/_deprecated'),
-      '@/database': resolve(__dirname, './packages/database/src'),
-      '@/utils/client/switchLang': resolve(__dirname, './src/utils/client/switchLang'),
-      '@/const/locale': resolve(__dirname, './src/const/locale'),
-      // TODO: after refactor the errorResponse, we can remove it
-      '@/utils/errorResponse': resolve(__dirname, './src/utils/errorResponse'),
-      '@/utils/unzipFile': resolve(__dirname, './src/utils/unzipFile'),
-      '@/utils/server': resolve(__dirname, './src/utils/server'),
-      '@/utils/identifier': resolve(__dirname, './src/utils/identifier'),
-      '@/utils/electron': resolve(__dirname, './src/utils/electron'),
-      '@/utils': resolve(__dirname, './packages/utils/src'),
-      '@/types': resolve(__dirname, './packages/types/src'),
-      '@/const': resolve(__dirname, './packages/const/src'),
-      '@': resolve(__dirname, './src'),
-      '~test-utils': resolve(__dirname, './tests/utils.tsx'),
-      'lru_map': resolve(__dirname, './tests/mocks/lru_map'),
-      /* eslint-enable */
-    },
+    alias,
     coverage: {
       all: false,
       exclude: [
@@ -69,7 +113,6 @@ export default defineConfig({
         // just ignore the migration code
         // we will use pglite in the future
         // so the coverage of this file is not important
-        'src/database/client/core/db.ts',
         'src/utils/fetch/fetchEventSource/*.ts',
       ],
       provider: 'v8',
@@ -77,6 +120,14 @@ export default defineConfig({
       reportsDirectory: './coverage/app',
     },
     environment: 'happy-dom',
+    // Frontend (src/**) needs a DOM, but apps/server is backend code that runs
+    // under Node in production. Forcing Node here makes `typeof window` undefined
+    // so the t3-env server/client guard reads server config instead of throwing
+    // "server-side environment variable on the client" — the failure the full
+    // `Test Server` run hit non-deterministically (it depended on which
+    // ModelRuntime-importing suite a happy-dom worker evaluated first). Per-file
+    // `// @vitest-environment` directives still win over this.
+    environmentMatchGlobs: [['**/apps/server/**', 'node']],
     exclude: [
       '**/node_modules/**',
       '**/.*/**',
@@ -89,6 +140,7 @@ export default defineConfig({
       '**/public/**',
       '**/apps/desktop/**',
       '**/apps/mobile/**',
+      '**/apps/cli/**',
       '**/packages/**',
       '**/e2e/**',
     ],
@@ -97,11 +149,16 @@ export default defineConfig({
       deps: {
         inline: [
           'vitest-canvas-mock',
+          /@emoji-mart/,
+          'emoji-mart',
           '@lobehub/ui',
           '@lobehub/fluent-emoji',
           '@pierre/diffs',
           '@pierre/diffs/react',
           'lru_map',
+          'lexical',
+          /@lexical\//,
+          /@lobehub\//,
         ],
       },
     },

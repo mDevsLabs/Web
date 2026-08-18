@@ -1,4 +1,4 @@
-import { AIChatModelCard } from '../types/aiModel';
+import type { AIChatModelCard } from '../types/aiModel';
 
 const perplexityChatModels: AIChatModelCard[] = [
   {
@@ -11,6 +11,7 @@ const perplexityChatModels: AIChatModelCard[] = [
       'Deep Research performs comprehensive expert-level research and synthesizes it into accessible, actionable reports.',
     displayName: 'Sonar Deep Research',
     enabled: true,
+    family: 'sonar',
     id: 'sonar-deep-research',
     maxOutput: 8192,
     pricing: {
@@ -33,9 +34,11 @@ const perplexityChatModels: AIChatModelCard[] = [
       vision: true,
     },
     contextWindowTokens: 127_072,
-    description: 'An advanced search product with search grounding for complex queries and follow-ups.',
+    description:
+      'An advanced search product with search grounding for complex queries and follow-ups.',
     displayName: 'Sonar Reasoning Pro',
     enabled: true,
+    family: 'sonar',
     id: 'sonar-reasoning-pro',
     maxOutput: 8192,
     pricing: {
@@ -57,9 +60,11 @@ const perplexityChatModels: AIChatModelCard[] = [
       vision: true,
     },
     contextWindowTokens: 127_072,
-    description: 'An advanced search product with search grounding for complex queries and follow-ups.',
+    description:
+      'An advanced search product with search grounding for complex queries and follow-ups.',
     displayName: 'Sonar Reasoning',
     enabled: true,
+    family: 'sonar',
     id: 'sonar-reasoning',
     maxOutput: 8192,
     pricing: {
@@ -80,9 +85,11 @@ const perplexityChatModels: AIChatModelCard[] = [
       vision: true,
     },
     contextWindowTokens: 200_000,
-    description: 'An advanced search product with search grounding for complex queries and follow-ups.',
+    description:
+      'An advanced search product with search grounding for complex queries and follow-ups.',
     displayName: 'Sonar Pro',
     enabled: true,
+    family: 'sonar',
     id: 'sonar-pro',
     pricing: {
       units: [
@@ -105,6 +112,7 @@ const perplexityChatModels: AIChatModelCard[] = [
     description: 'A lightweight search-grounded product, faster and cheaper than Sonar Pro.',
     displayName: 'Sonar',
     enabled: true,
+    family: 'sonar',
     id: 'sonar',
     pricing: {
       units: [

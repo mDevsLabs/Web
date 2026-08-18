@@ -1,6 +1,12 @@
 export interface LobeGlobalAgentContext {
+  /** CPU architecture reported by the desktop main process (e.g. 'arm64', 'x64'). */
+  arch?: string;
+
   // Other potential context
   currentTime?: string;
+
+  /** Human-readable name of the shell that runCommand uses (Windows: PowerShell/cmd). */
+  defaultShell?: string;
 
   // App's data directory
   // Paths commonly used by agents
@@ -74,7 +80,7 @@ class GlobalAgentContextManager {
     if (!template) return '';
 
     // Updated to use replaceAll for potentially multiple occurrences
-    return template.replaceAll(/{{([^}]+)}}/g, (match, key) => {
+    return template.replaceAll(/\{\{([^}]+)\}\}/g, (match, key) => {
       const trimmedKey = key.trim() as keyof LobeGlobalAgentContext;
       return ctx[trimmedKey] !== undefined ? String(ctx[trimmedKey]) : '[N/A]';
     });

@@ -210,6 +210,15 @@ describe('googleErrorParser', () => {
       expect(result.error.message).toBe(input);
     });
 
+    it('should classify text-only image response messages as no-image errors', () => {
+      const input =
+        'The model returned text instead of an image. Try an image generation instruction.';
+      const result = parseGoogleErrorMessage(input);
+
+      expect(result.errorType).toBe(AgentRuntimeErrorType.ProviderNoImageGenerated);
+      expect(result.error.message).toBe(input);
+    });
+
     it('should handle status JSON format', () => {
       const input =
         'got status: UNAVAILABLE. {"error":{"code":503,"message":"Service temporarily unavailable","status":"UNAVAILABLE"}}';
@@ -318,6 +327,31 @@ describe('googleErrorParser', () => {
       expect(result.error.message).toBe(
         'Request contains invalid parameters Please check the documentation Contact support for help',
       );
+    });
+
+    it('should detect exceeded context window from message text', () => {
+      const input =
+        'The input token count exceeds the maximum number of tokens allowed for this model';
+      const result = parseGoogleErrorMessage(input);
+
+      expect(result.errorType).toBe(AgentRuntimeErrorType.ExceededContextWindow);
+      expect(result.error.message).toBe(input);
+    });
+
+    it('should detect quota limit from "resource has been exhausted" message', () => {
+      const input = 'Resource has been exhausted (e.g. check quota).';
+      const result = parseGoogleErrorMessage(input);
+
+      expect(result.errorType).toBe(AgentRuntimeErrorType.QuotaLimitReached);
+      expect(result.error.message).toBe(input);
+    });
+
+    it('should detect quota limit from "too many requests" message', () => {
+      const input = 'Too many requests, please try again later';
+      const result = parseGoogleErrorMessage(input);
+
+      expect(result.errorType).toBe(AgentRuntimeErrorType.QuotaLimitReached);
+      expect(result.error.message).toBe(input);
     });
 
     it('should return default error for unparseable messages', () => {

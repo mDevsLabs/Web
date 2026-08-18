@@ -1,6 +1,6 @@
 import { authEnv } from '@/envs/auth';
 
-import type { BuiltinProviderDefinition } from '../types';
+import { type BuiltinProviderDefinition } from '../types';
 
 const provider: BuiltinProviderDefinition<
   {
@@ -13,6 +13,7 @@ const provider: BuiltinProviderDefinition<
     return {
       clientId: env.AUTH_GOOGLE_ID,
       clientSecret: env.AUTH_GOOGLE_SECRET,
+      prompt: 'select_account',
     };
   },
   checkEnvs: () => {

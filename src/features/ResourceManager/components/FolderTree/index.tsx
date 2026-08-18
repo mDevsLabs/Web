@@ -4,7 +4,7 @@ import { CaretDownFilled } from '@ant-design/icons';
 import { ActionIcon, Flexbox, Icon } from '@lobehub/ui';
 import { createStaticStyles, cx } from 'antd-style';
 import { FolderIcon, FolderOpenIcon } from 'lucide-react';
-import * as motion from 'motion/react-m';
+import * as m from 'motion/react-m';
 import { memo, useCallback } from 'react';
 
 const styles = createStaticStyles(({ css, cssVar }) => ({
@@ -83,30 +83,30 @@ export const FolderTreeItemComponent = memo<FolderTreeItemProps>(
     return (
       <Flexbox gap={2}>
         <Flexbox
+          horizontal
           align={'center'}
           className={cx(styles.folderHeader, isActive && styles.folderHeaderActive)}
-          horizontal
-          onClick={handleClick}
           style={{ paddingInlineStart: level * 16 + 8 }}
+          onClick={handleClick}
         >
-          <motion.div
+          <m.div
             animate={{ rotate: isExpanded ? 0 : -90 }}
             transition={{ duration: 0.2, ease: 'easeInOut' }}
           >
             <ActionIcon
               icon={CaretDownFilled as any}
+              size={'small'}
               onClick={(e) => {
                 e.stopPropagation();
                 handleToggle();
               }}
-              size={'small'}
             />
-          </motion.div>
+          </m.div>
           <Flexbox
+            horizontal
             align={'center'}
             flex={1}
             gap={8}
-            horizontal
             style={{ minHeight: 28, minWidth: 0 }}
           >
             <Icon icon={isExpanded ? FolderOpenIcon : FolderIcon} size={16} />
@@ -126,7 +126,7 @@ export const FolderTreeItemComponent = memo<FolderTreeItemProps>(
         </Flexbox>
 
         {isExpanded && item.children && item.children.length > 0 && (
-          <motion.div
+          <m.div
             animate={{ height: 'auto', opacity: 1 }}
             initial={{ height: 0, opacity: 0 }}
             style={{ overflow: 'hidden' }}
@@ -140,14 +140,14 @@ export const FolderTreeItemComponent = memo<FolderTreeItemProps>(
                   key={child.id}
                   level={level + 1}
                   loadedFolders={loadedFolders}
+                  selectedKey={selectedKey}
                   onFolderClick={onFolderClick}
                   onLoadFolder={onLoadFolder}
                   onToggleFolder={onToggleFolder}
-                  selectedKey={selectedKey}
                 />
               ))}
             </Flexbox>
-          </motion.div>
+          </m.div>
         )}
       </Flexbox>
     );
@@ -184,10 +184,10 @@ const FolderTree = memo<FolderTreeProps>(
             item={item}
             key={item.id}
             loadedFolders={loadedFolders}
+            selectedKey={selectedKey}
             onFolderClick={onFolderClick}
             onLoadFolder={onLoadFolder}
             onToggleFolder={onToggleFolder}
-            selectedKey={selectedKey}
           />
         ))}
       </Flexbox>

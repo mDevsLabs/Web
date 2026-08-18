@@ -1,9 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import {
-  VARIABLE_GENERATORS,
   parsePlaceholderVariables,
   parsePlaceholderVariablesMessages,
+  VARIABLE_GENERATORS,
 } from './index';
 
 // Mock dependencies
@@ -36,7 +36,7 @@ vi.mock('@/store/agent/selectors', () => ({
   agentSelectors: {
     currentAgentModel: () => 'gpt-4',
     currentAgentModelProvider: () => 'openai',
-    currentAgentWorkingDirectory: () => undefined,
+    currentAgentWorkingDirectory: () => () => undefined,
   },
 }));
 
@@ -458,7 +458,10 @@ describe('VARIABLE_GENERATORS', () => {
     });
 
     it('should generate hour with padding', () => {
+      // getHours() returns local time, so we need to mock it directly
+      const spy = vi.spyOn(Date.prototype, 'getHours').mockReturnValue(6);
       expect(VARIABLE_GENERATORS.hour()).toBe('06');
+      spy.mockRestore();
     });
 
     it('should generate minute with padding', () => {
@@ -632,9 +635,9 @@ describe('VARIABLE_GENERATORS', () => {
       expect(VARIABLE_GENERATORS.userDataPath()).toBe('');
     });
 
-    it('should return default message for working directory when not specified', () => {
+    it('should return empty string for working directory when not on desktop', () => {
       const result = VARIABLE_GENERATORS.workingDirectory();
-      expect(result).toBe('(not specified, use user Desktop directory as default)');
+      expect(result).toBe('');
     });
   });
 

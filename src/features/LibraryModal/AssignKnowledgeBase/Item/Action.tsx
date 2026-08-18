@@ -1,4 +1,5 @@
-import { ActionIcon, Button, DropdownMenu, Flexbox, Icon } from '@lobehub/ui';
+import { ActionIcon, DropdownMenu, Flexbox, Icon } from '@lobehub/ui';
+import { Button } from '@lobehub/ui/base-ui';
 import { InfoIcon, MoreVerticalIcon, Trash2 } from 'lucide-react';
 import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -52,9 +53,10 @@ const Actions = memo<ActionsProps>(({ id, type, enabled }) => {
   };
 
   return (
-    <Flexbox align={'center'} horizontal>
+    <Flexbox horizontal align={'center'}>
       {enabled ? (
         <DropdownMenu
+          placement="bottomRight"
           items={[
             {
               icon: <Icon icon={InfoIcon} />,
@@ -77,16 +79,15 @@ const Actions = memo<ActionsProps>(({ id, type, enabled }) => {
               onClick: removeKnowledge,
             },
           ]}
-          placement="bottomRight"
         >
           <ActionIcon icon={MoreVerticalIcon} loading={loading} />
         </DropdownMenu>
       ) : (
         <Button
           loading={loading}
-          onClick={assignKnowledge}
           size={mobile ? 'small' : undefined}
           type={'primary'}
+          onClick={assignKnowledge}
         >
           {t('knowledgeBase.library.action.add')}
         </Button>

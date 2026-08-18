@@ -1,10 +1,12 @@
 'use client';
 
 import { useEditor } from '@lobehub/editor/react';
-import { type ReactNode, memo } from 'react';
+import { type ReactNode } from 'react';
+import { memo } from 'react';
 
-import StoreUpdater, { type StoreUpdaterProps } from './StoreUpdater';
-import { Provider, createStore } from './store';
+import { createStore, Provider } from './store';
+import { type StoreUpdaterProps } from './StoreUpdater';
+import StoreUpdater from './StoreUpdater';
 
 interface PageEditorProviderProps extends StoreUpdaterProps {
   children: ReactNode;
@@ -18,6 +20,7 @@ export const PageEditorProvider = memo<PageEditorProviderProps>(
     children,
     pageId,
     knowledgeBaseId,
+    metaReadOnly,
     onDocumentIdChange,
     onEmojiChange,
     onSave,
@@ -38,6 +41,7 @@ export const PageEditorProvider = memo<PageEditorProviderProps>(
             editor,
             emoji,
             knowledgeBaseId,
+            metaReadOnly,
             onBack,
             onDelete,
             onDocumentIdChange,
@@ -52,15 +56,16 @@ export const PageEditorProvider = memo<PageEditorProviderProps>(
         <StoreUpdater
           emoji={emoji}
           knowledgeBaseId={knowledgeBaseId}
+          metaReadOnly={metaReadOnly}
+          pageId={pageId}
+          parentId={parentId}
+          title={title}
           onBack={onBack}
           onDelete={onDelete}
           onDocumentIdChange={onDocumentIdChange}
           onEmojiChange={onEmojiChange}
           onSave={onSave}
           onTitleChange={onTitleChange}
-          pageId={pageId}
-          parentId={parentId}
-          title={title}
         />
         {children}
       </Provider>

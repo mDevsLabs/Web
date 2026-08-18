@@ -1,9 +1,10 @@
-import { type ModelProviderCard } from '@/types/llm';
+import type { ModelProviderCard } from '../types';
 
 // ref: https://ollama.com/library
 const LMStudio: ModelProviderCard = {
   chatModels: [],
-  description: 'LM Studio is a desktop app for developing and experimenting with LLMs on your computer.',
+  description:
+    'LM Studio is a desktop app for developing and experimenting with LLMs on your computer.',
   id: 'lmstudio',
   modelsUrl: 'https://lmstudio.ai/models',
   name: 'LM Studio',
@@ -16,7 +17,6 @@ const LMStudio: ModelProviderCard = {
       speed: 2,
       text: 'smooth',
     },
-    showApiKey: false,
     showModelFetcher: true,
   },
   url: 'https://lmstudio.ai',

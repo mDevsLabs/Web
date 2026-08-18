@@ -1,6 +1,6 @@
+import { DEFAULT_ELECTRON_DESKTOP_SHORTCUTS } from '@lobechat/const/desktopGlobalShortcuts';
 import { globalShortcut } from 'electron';
 
-import { DEFAULT_SHORTCUTS_CONFIG } from '@/shortcuts';
 import { createLogger } from '@/utils/logger';
 
 import type { App } from '../App';
@@ -10,12 +10,7 @@ const logger = createLogger('core:ShortcutManager');
 
 export interface ShortcutUpdateResult {
   errorType?:
-    | 'INVALID_ID'
-    | 'INVALID_FORMAT'
-    | 'NO_MODIFIER'
-    | 'CONFLICT'
-    | 'SYSTEM_OCCUPIED'
-    | 'UNKNOWN';
+    'INVALID_ID' | 'INVALID_FORMAT' | 'NO_MODIFIER' | 'CONFLICT' | 'SYSTEM_OCCUPIED' | 'UNKNOWN';
   success: boolean;
 }
 
@@ -77,20 +72,30 @@ export class ShortcutManager {
     try {
       logger.debug(`Updating shortcut ${id} to ${accelerator}`);
 
-      // 1. Check if ID is valid
-      if (!DEFAULT_SHORTCUTS_CONFIG[id]) {
+      // 1. Check if ID is valid (value may be empty string when disabled by default)
+      if (!(id in DEFAULT_ELECTRON_DESKTOP_SHORTCUTS)) {
         logger.error(`Invalid shortcut ID: ${id}`);
         return { errorType: 'INVALID_ID', success: false };
       }
 
       // 2. Basic format validation
-      if (!accelerator || typeof accelerator !== 'string' || accelerator.trim() === '') {
+      if (typeof accelerator !== 'string') {
         logger.error(`Invalid accelerator format: ${accelerator}`);
         return { errorType: 'INVALID_FORMAT', success: false };
       }
 
+      const trimmedAccelerator = accelerator.trim();
+
+      // Empty value means disable this shortcut binding
+      if (trimmedAccelerator === '') {
+        this.shortcutsConfig[id] = '';
+        this.saveShortcutsConfig();
+        this.registerConfiguredShortcuts();
+        return { success: true };
+      }
+
       // Convert frontend format to Electron format
-      const convertedAccelerator = this.convertAcceleratorFormat(accelerator.trim());
+      const convertedAccelerator = this.convertAcceleratorFormat(trimmedAccelerator);
       const cleanAccelerator = convertedAccelerator.toLowerCase();
 
       logger.debug(`Converted accelerator from ${accelerator} to ${convertedAccelerator}`);
@@ -162,8 +167,12 @@ export class ShortcutManager {
         this.unregisterShortcut(accelerator);
       }
 
-      // Register new shortcut
-      const success = globalShortcut.register(accelerator, callback);
+      // globalShortcut callbacks fire synchronously from native code with no
+      // task wrapper, so microtasks queued by an async handler (any `await`
+      // continuation) are not drained until the event loop next wakes — on an
+      // idle app that can be seconds later. setImmediate re-enters the handler
+      // through a normal libuv task so continuations run right away.
+      const success = globalShortcut.register(accelerator, () => setImmediate(callback));
 
       if (success) {
         this.shortcuts.set(accelerator, callback);
@@ -221,15 +230,15 @@ export class ShortcutManager {
       // If no configuration, use default configuration
       if (!config || Object.keys(config).length === 0) {
         logger.debug('No shortcuts config found, using defaults');
-        this.shortcutsConfig = DEFAULT_SHORTCUTS_CONFIG;
+        this.shortcutsConfig = { ...DEFAULT_ELECTRON_DESKTOP_SHORTCUTS };
         this.saveShortcutsConfig();
       } else {
-        // Filter out invalid shortcuts that are not in DEFAULT_SHORTCUTS_CONFIG
+        // Filter out invalid shortcuts that are not in DEFAULT_ELECTRON_DESKTOP_SHORTCUTS
         const filteredConfig: Record<string, string> = {};
         let hasInvalidKeys = false;
 
         Object.entries(config).forEach(([id, accelerator]) => {
-          if (DEFAULT_SHORTCUTS_CONFIG[id]) {
+          if (id in DEFAULT_ELECTRON_DESKTOP_SHORTCUTS) {
             filteredConfig[id] = accelerator;
           } else {
             hasInvalidKeys = true;
@@ -238,7 +247,7 @@ export class ShortcutManager {
         });
 
         // Ensure all default shortcuts are present
-        Object.entries(DEFAULT_SHORTCUTS_CONFIG).forEach(([id, defaultAccelerator]) => {
+        Object.entries(DEFAULT_ELECTRON_DESKTOP_SHORTCUTS).forEach(([id, defaultAccelerator]) => {
           if (!(id in filteredConfig)) {
             filteredConfig[id] = defaultAccelerator;
             logger.debug(`Adding missing default shortcut: ${id} = ${defaultAccelerator}`);
@@ -257,7 +266,7 @@ export class ShortcutManager {
       logger.debug('Loaded shortcuts config:', this.shortcutsConfig);
     } catch (error) {
       logger.error('Error loading shortcuts config:', error);
-      this.shortcutsConfig = DEFAULT_SHORTCUTS_CONFIG;
+      this.shortcutsConfig = { ...DEFAULT_ELECTRON_DESKTOP_SHORTCUTS };
       this.saveShortcutsConfig();
     }
   }
@@ -285,9 +294,9 @@ export class ShortcutManager {
     Object.entries(this.shortcutsConfig).forEach(([id, accelerator]) => {
       logger.debug(`Registering shortcut '${id}' with ${accelerator}`);
 
-      // Only register shortcuts that exist in DEFAULT_SHORTCUTS_CONFIG
-      if (!DEFAULT_SHORTCUTS_CONFIG[id]) {
-        logger.debug(`Skipping shortcut '${id}' - not found in DEFAULT_SHORTCUTS_CONFIG`);
+      // Only register shortcuts that exist in DEFAULT_ELECTRON_DESKTOP_SHORTCUTS
+      if (!(id in DEFAULT_ELECTRON_DESKTOP_SHORTCUTS)) {
+        logger.debug(`Skipping shortcut '${id}' - not found in DEFAULT_ELECTRON_DESKTOP_SHORTCUTS`);
         return;
       }
 

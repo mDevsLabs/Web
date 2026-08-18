@@ -5,7 +5,7 @@ import { genDefaultLocale } from './genDefaultLocale';
 import { genDiff } from './genDiff';
 import { split } from './utils';
 
-// 确保所有语言目录存在
+// Ensure all locale directories exist
 const ensureLocalesDirs = () => {
   [i18nConfig.entryLocale, ...i18nConfig.outputLocales].forEach((locale) => {
     const dir = localeDir(locale);
@@ -15,21 +15,21 @@ const ensureLocalesDirs = () => {
   });
 };
 
-// 运行工作流
+// Run workflow
 const run = async () => {
-  // 确保目录存在
+  // Ensure directories exist
   ensureLocalesDirs();
 
-  // 差异分析
-  split('差异分析');
+  // Diff analysis
+  split('Diff Analysis');
   genDiff();
 
-  // 生成默认语言文件
-  split('生成默认语言文件');
+  // Generate default locale files
+  split('Generate Default Locale Files');
   genDefaultLocale();
 
-  // 生成国际化文件
-  split('生成国际化文件');
+  // Generate i18n files
+  split('Generate i18n Files');
 };
 
 run();

@@ -35,13 +35,33 @@ class MCPService {
     payload: ChatToolPayload,
     { signal, topicId }: { signal?: AbortSignal; topicId?: string },
   ) {
-    await discoverService.injectMPToken();
+    await discoverService.safeInjectMPToken();
 
     const { pluginSelectors } = await import('@/store/tool/selectors');
     const { getToolStoreState } = await import('@/store/tool/store');
 
     const s = getToolStoreState();
     const { identifier, arguments: args, apiName } = payload;
+
+    // Connector-first: custom connectors execute server-side with their stored
+    // (encrypted) OAuth token, so route them before the plugin path. The client
+    // has no credentials, hence the dedicated `connector.callTool` endpoint.
+    // Only connectors with a real MCP endpoint are routed here — Lobehub/Composio
+    // skills synced into the connector store have no mcpServerUrl and keep their
+    // original executor path.
+    const { connectorSelectors } = await import('@/store/tool/slices/connector');
+    const connector = connectorSelectors.connectorByIdentifier(identifier)(s);
+    if (
+      connector &&
+      connector.isEnabled &&
+      (connector.mcpServerUrl || connector.mcpConnectionType === 'stdio')
+    ) {
+      const { lambdaClient } = await import('@/libs/trpc/client');
+      return (await lambdaClient.connector.callTool.mutate(
+        { args, identifier, toolName: apiName },
+        { signal },
+      )) as MCPToolCallResult;
+    }
 
     const installPlugin = pluginSelectors.getInstalledPluginById(identifier)(s);
     const customPlugin = pluginSelectors.getCustomPluginById(identifier)(s);
@@ -149,7 +169,6 @@ class MCPService {
       success = true;
       return result;
     } catch (error) {
-      success = false;
       const err = error as Error;
       errorCode = 'CALL_FAILED';
       errorMessage = err.message;

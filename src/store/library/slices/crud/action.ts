@@ -1,41 +1,37 @@
 import type { SWRResponse } from 'swr';
-import { type StateCreator } from 'zustand/vanilla';
 
+import { getActiveWorkspaceId } from '@/business/client/hooks/useActiveWorkspaceId';
 import { mutate, useClientDataSWR } from '@/libs/swr';
+import { knowledgeBaseKeys } from '@/libs/swr/keys';
 import { knowledgeBaseService } from '@/services/knowledgeBase';
-import { type KnowledgeBaseStore } from '@/store/library/store';
-import { type CreateKnowledgeBaseParams, type KnowledgeBaseItem } from '@/types/knowledgeBase';
+import type { KnowledgeBaseStore } from '@/store/library/store';
+import type { StoreSetter } from '@/store/types';
+import type { CreateKnowledgeBaseParams, KnowledgeBaseItem } from '@/types/knowledgeBase';
 
-const FETCH_KNOWLEDGE_BASE_LIST_KEY = 'FETCH_KNOWLEDGE_BASE';
-const FETCH_KNOWLEDGE_BASE_ITEM_KEY = 'FETCH_KNOWLEDGE_BASE_ITEM';
+type Setter = StoreSetter<KnowledgeBaseStore>;
+export const createCrudSlice = (set: Setter, get: () => KnowledgeBaseStore, _api?: unknown) =>
+  new KnowledgeBaseCrudActionImpl(set, get, _api);
 
-export interface KnowledgeBaseCrudAction {
-  createNewKnowledgeBase: (params: CreateKnowledgeBaseParams) => Promise<string>;
-  internal_toggleKnowledgeBaseLoading: (id: string, loading: boolean) => void;
-  refreshKnowledgeBaseList: () => Promise<void>;
+export class KnowledgeBaseCrudActionImpl {
+  readonly #get: () => KnowledgeBaseStore;
+  readonly #set: Setter;
 
-  removeKnowledgeBase: (id: string) => Promise<void>;
-  updateKnowledgeBase: (id: string, value: CreateKnowledgeBaseParams) => Promise<void>;
+  constructor(set: Setter, get: () => KnowledgeBaseStore, _api?: unknown) {
+    void _api;
+    this.#set = set;
+    this.#get = get;
+  }
 
-  useFetchKnowledgeBaseItem: (id: string) => SWRResponse<KnowledgeBaseItem | undefined>;
-  useFetchKnowledgeBaseList: (params?: { suspense?: boolean }) => SWRResponse<KnowledgeBaseItem[]>;
-}
-
-export const createCrudSlice: StateCreator<
-  KnowledgeBaseStore,
-  [['zustand/devtools', never]],
-  [],
-  KnowledgeBaseCrudAction
-> = (set, get) => ({
-  createNewKnowledgeBase: async (params) => {
+  createNewKnowledgeBase = async (params: CreateKnowledgeBaseParams): Promise<string> => {
     const id = await knowledgeBaseService.createKnowledgeBase(params);
 
-    await get().refreshKnowledgeBaseList();
+    await this.#get().refreshKnowledgeBaseList();
 
     return id;
-  },
-  internal_toggleKnowledgeBaseLoading: (id, loading) => {
-    set(
+  };
+
+  internal_toggleKnowledgeBaseLoading = (id: string, loading: boolean): void => {
+    this.#set(
       (state) => {
         if (loading) return { knowledgeBaseLoadingIds: [...state.knowledgeBaseLoadingIds, id] };
 
@@ -44,52 +40,85 @@ export const createCrudSlice: StateCreator<
       false,
       'toggleKnowledgeBaseLoading',
     );
-  },
-  refreshKnowledgeBaseList: async () => {
-    await mutate(FETCH_KNOWLEDGE_BASE_LIST_KEY);
-  },
-  removeKnowledgeBase: async (id) => {
+  };
+
+  refreshKnowledgeBaseList = async (): Promise<void> => {
+    const workspaceId = getActiveWorkspaceId();
+    // The KB list is keyed by (workspaceId, visibility?), so we invalidate the
+    // three surfaces that can be currently rendered — unscoped, private-only,
+    // workspace-only — to keep both modes in sync after a mutation.
+    await Promise.all([
+      mutate(knowledgeBaseKeys.list(workspaceId)),
+      mutate(knowledgeBaseKeys.list(workspaceId, 'private')),
+      mutate(knowledgeBaseKeys.list(workspaceId, 'public')),
+    ]);
+  };
+
+  removeKnowledgeBase = async (id: string): Promise<void> => {
     await knowledgeBaseService.deleteKnowledgeBase(id);
-    await get().refreshKnowledgeBaseList();
-  },
-  updateKnowledgeBase: async (id, value) => {
-    get().internal_toggleKnowledgeBaseLoading(id, true);
+    await this.#get().refreshKnowledgeBaseList();
+  };
+
+  publishKnowledgeBaseToWorkspace = async (id: string): Promise<void> => {
+    await knowledgeBaseService.publishKnowledgeBaseToWorkspace(id);
+    await this.#get().refreshKnowledgeBaseList();
+  };
+
+  setKnowledgeBaseVisibility = async (
+    id: string,
+    visibility: 'private' | 'public',
+  ): Promise<void> => {
+    await knowledgeBaseService.setKnowledgeBaseVisibility(id, visibility);
+    await this.#get().refreshKnowledgeBaseList();
+  };
+
+  updateKnowledgeBase = async (id: string, value: CreateKnowledgeBaseParams): Promise<void> => {
+    this.#get().internal_toggleKnowledgeBaseLoading(id, true);
     await knowledgeBaseService.updateKnowledgeBaseList(id, value);
-    await get().refreshKnowledgeBaseList();
+    await this.#get().refreshKnowledgeBaseList();
 
-    get().internal_toggleKnowledgeBaseLoading(id, false);
-  },
+    this.#get().internal_toggleKnowledgeBaseLoading(id, false);
+  };
 
-  useFetchKnowledgeBaseItem: (id) =>
-    useClientDataSWR<KnowledgeBaseItem | undefined>(
-      [FETCH_KNOWLEDGE_BASE_ITEM_KEY, id],
+  useFetchKnowledgeBaseItem = (id: string): SWRResponse<KnowledgeBaseItem | undefined> => {
+    return useClientDataSWR<KnowledgeBaseItem | undefined>(
+      knowledgeBaseKeys.item(id),
       () => knowledgeBaseService.getKnowledgeBaseById(id),
       {
         onSuccess: (item) => {
           if (!item) return;
 
-          set({
+          this.#set({
             activeKnowledgeBaseId: id,
             activeKnowledgeBaseItems: {
-              ...get().activeKnowledgeBaseItems,
+              ...this.#get().activeKnowledgeBaseItems,
               [id]: item,
             },
           });
         },
       },
-    ),
+    );
+  };
 
-  useFetchKnowledgeBaseList: (params = {}) =>
-    useClientDataSWR<KnowledgeBaseItem[]>(
-      FETCH_KNOWLEDGE_BASE_LIST_KEY,
-      () => knowledgeBaseService.getKnowledgeBaseList(),
+  useFetchKnowledgeBaseList = (
+    visibility?: 'private' | 'public',
+  ): SWRResponse<KnowledgeBaseItem[]> => {
+    const workspaceId = getActiveWorkspaceId();
+    return useClientDataSWR<KnowledgeBaseItem[]>(
+      knowledgeBaseKeys.list(workspaceId, visibility),
+      () => knowledgeBaseService.getKnowledgeBaseList(visibility),
       {
         fallbackData: [],
         onSuccess: () => {
-          if (!get().initKnowledgeBaseList)
-            set({ initKnowledgeBaseList: true }, false, 'useFetchKnowledgeBaseList/init');
+          if (!this.#get().initKnowledgeBaseList)
+            this.#set({ initKnowledgeBaseList: true }, false, 'useFetchKnowledgeBaseList/init');
         },
-        suspense: params.suspense,
       },
-    ),
-});
+    );
+  };
+}
+
+export type KnowledgeBaseCrudAction = Pick<
+  KnowledgeBaseCrudActionImpl,
+  keyof KnowledgeBaseCrudActionImpl
+>;

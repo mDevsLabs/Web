@@ -1,3 +1,11 @@
+import {
+  AGENT_CHAT_TOPIC_URL,
+  DEFAULT_AVATAR,
+  GROUP_CHAT_TOPIC_URL,
+  GROUP_CHAT_URL,
+} from '@lobechat/const';
+import { agentDisplayName } from '@lobechat/types';
+import { Avatar, Flexbox } from '@lobehub/ui';
 import { Command } from 'cmdk';
 import dayjs from 'dayjs';
 import {
@@ -6,22 +14,30 @@ import {
   ChevronRight,
   FileText,
   Folder,
+  Library,
   MessageCircle,
   MessageSquare,
   Plug,
   Puzzle,
   Sparkles,
+  Users,
 } from 'lucide-react';
-import { memo } from 'react';
+import { memo, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
-import type { SearchResult } from '@/database/repositories/search';
+import { type SearchResult } from '@/database/repositories/search';
+import { useCommandMenuContext } from '@/features/CommandMenu/CommandMenuContext';
+import { useWorkspaceAwareNavigate } from '@/features/Workspace/useWorkspaceAwareNavigate';
+import { useImageStore } from '@/store/image';
+import { generationTopicSelectors as imageGenerationTopicSelectors } from '@/store/image/slices/generationTopic/selectors';
+import { useVideoStore } from '@/store/video';
+import { generationTopicSelectors as videoGenerationTopicSelectors } from '@/store/video/slices/generationTopic/selectors';
 import { markdownToTxt } from '@/utils/markdownToTxt';
 
 import { CommandItem } from './components';
 import { styles } from './styles';
-import type { ValidSearchType } from './utils/queryParser';
+import { shouldShowMarketplaceFallback } from './utils/marketplaceFallback';
+import { type ValidSearchType } from './utils/queryParser';
 
 interface SearchResultsProps {
   isLoading: boolean;
@@ -32,13 +48,27 @@ interface SearchResultsProps {
   typeFilter: ValidSearchType | undefined;
 }
 
+interface LocalGenerationTopicResult {
+  createdAt: Date;
+  id: string;
+  title: string;
+  updatedAt: Date;
+}
+
 /**
  * Search results from unified search index.
  */
 const SearchResults = memo<SearchResultsProps>(
   ({ isLoading, onClose, onSetTypeFilter, results, searchQuery, typeFilter }) => {
     const { t } = useTranslation('common');
-    const navigate = useNavigate();
+    const { t: tImage } = useTranslation('image');
+    const { t: tVideo } = useTranslation('video');
+    const navigate = useWorkspaceAwareNavigate();
+    const { menuContext } = useCommandMenuContext();
+    const imageTopics = useImageStore(imageGenerationTopicSelectors.generationTopics);
+    const activeImageTopicId = useImageStore((s) => s.activeGenerationTopicId);
+    const videoTopics = useVideoStore(videoGenerationTopicSelectors.generationTopics);
+    const activeVideoTopicId = useVideoStore((s) => s.activeGenerationTopicId);
 
     const handleNavigate = (result: SearchResult) => {
       switch (result.type) {
@@ -46,24 +76,32 @@ const SearchResults = memo<SearchResultsProps>(
           navigate(`/agent/${result.id}?agent=${result.id}`);
           break;
         }
+        case 'chatGroup': {
+          navigate(`/group/${result.id}`);
+          break;
+        }
         case 'topic': {
           if (result.agentId) {
-            navigate(`/agent/${result.agentId}?topic=${result.id}`);
+            navigate(AGENT_CHAT_TOPIC_URL(result.agentId, result.id));
+          } else if (result.groupId) {
+            navigate(GROUP_CHAT_TOPIC_URL(result.groupId, result.id));
           } else {
-            navigate(`/chat?topic=${result.id}`);
+            navigate('/');
           }
           break;
         }
         case 'message': {
-          // Navigate to the topic/agent where the message is
+          // Navigate to the topic/agent (or group) where the message lives
           if (result.topicId && result.agentId) {
-            navigate(`/agent/${result.agentId}?topic=${result.topicId}#${result.id}`);
-          } else if (result.topicId) {
-            navigate(`/chat?topic=${result.topicId}#${result.id}`);
+            navigate(`${AGENT_CHAT_TOPIC_URL(result.agentId, result.topicId)}#${result.id}`);
+          } else if (result.topicId && result.groupId) {
+            navigate(`${GROUP_CHAT_TOPIC_URL(result.groupId, result.topicId)}#${result.id}`);
           } else if (result.agentId) {
             navigate(`/agent/${result.agentId}#${result.id}`);
+          } else if (result.groupId) {
+            navigate(`${GROUP_CHAT_URL(result.groupId)}#${result.id}`);
           } else {
-            navigate(`/chat#${result.id}`);
+            navigate('/');
           }
           break;
         }
@@ -72,7 +110,7 @@ const SearchResults = memo<SearchResultsProps>(
           const fileUrl = result.knowledgeBaseId
             ? `/resource/library/${result.knowledgeBaseId}?file=${result.id}`
             : `/resource?file=${result.id}`;
-          console.log('[SearchResults] File navigation:', {
+          console.info('[SearchResults] File navigation:', {
             fileDetails: result,
             url: fileUrl,
           });
@@ -100,7 +138,7 @@ const SearchResults = memo<SearchResultsProps>(
           break;
         }
         case 'plugin': {
-          navigate(`/community/plugins/${result.identifier}`);
+          navigate(`/community/mcp/${result.identifier}`);
           break;
         }
         case 'communityAgent': {
@@ -108,7 +146,11 @@ const SearchResults = memo<SearchResultsProps>(
           break;
         }
         case 'memory': {
-          navigate(`/memory`);
+          navigate(`/memory/preferences?preferenceId=${result.id}`);
+          break;
+        }
+        case 'knowledgeBase': {
+          navigate(`/resource/library/${result.id}`);
           break;
         }
       }
@@ -119,6 +161,9 @@ const SearchResults = memo<SearchResultsProps>(
       switch (type) {
         case 'agent': {
           return <Sparkles size={16} />;
+        }
+        case 'chatGroup': {
+          return <Users size={16} />;
         }
         case 'topic': {
           return <MessageSquare size={16} />;
@@ -147,6 +192,9 @@ const SearchResults = memo<SearchResultsProps>(
         case 'memory': {
           return <Brain size={16} />;
         }
+        case 'knowledgeBase': {
+          return <Library size={16} />;
+        }
       }
     };
 
@@ -154,6 +202,9 @@ const SearchResults = memo<SearchResultsProps>(
       switch (type) {
         case 'agent': {
           return t('cmdk.search.agent');
+        }
+        case 'chatGroup': {
+          return t('cmdk.search.chatGroup');
         }
         case 'topic': {
           return t('cmdk.search.topic');
@@ -182,10 +233,12 @@ const SearchResults = memo<SearchResultsProps>(
         case 'memory': {
           return t('cmdk.search.memory');
         }
+        case 'knowledgeBase': {
+          return t('cmdk.search.knowledgeBase');
+        }
       }
     };
 
-    // eslint-disable-next-line unicorn/consistent-function-scoping
     const getItemValue = (result: SearchResult) => {
       const meta = [result.title, result.description].filter(Boolean).join(' ');
       // Prefix with "search-result" to ensure these items rank after built-in commands
@@ -193,7 +246,6 @@ const SearchResults = memo<SearchResultsProps>(
       return `search-result ${result.type} ${result.id} ${meta}`.trim();
     };
 
-    // eslint-disable-next-line unicorn/consistent-function-scoping
     const getDescription = (result: SearchResult) => {
       if (!result.description) return null;
       // Sanitize markdown content for message search results
@@ -203,12 +255,42 @@ const SearchResults = memo<SearchResultsProps>(
       return result.description;
     };
 
-    // eslint-disable-next-line unicorn/consistent-function-scoping
-    const getSubtitle = (result: SearchResult) => {
+    const getSubtitle = (result: SearchResult): ReactNode => {
       const description = getDescription(result);
 
-      // For topic and message results, append creation date
-      if (result.type === 'topic' || result.type === 'message') {
+      // Topic results: prefix with agent identity (avatar + title) so users can
+      // distinguish topics with the same name (e.g. customer email) across agents.
+      if (result.type === 'topic') {
+        const formattedDate = dayjs(result.createdAt).format('MMM D, YYYY');
+        if (!result.agent) {
+          return description ? `${description} · ${formattedDate}` : formattedDate;
+        }
+        return (
+          <Flexbox horizontal align="center" gap={6} style={{ minWidth: 0 }}>
+            <Avatar
+              avatar={result.agent.avatar || DEFAULT_AVATAR}
+              background={result.agent.backgroundColor || undefined}
+              size={14}
+            />
+            <span style={{ flex: 'none' }}>
+              {agentDisplayName(result.agent, t('defaultAgent'))}
+            </span>
+            <span style={{ flex: 'none' }}>·</span>
+            <span style={{ flex: 'none' }}>{formattedDate}</span>
+            {description && (
+              <>
+                <span style={{ flex: 'none' }}>·</span>
+                <span style={{ minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  {description}
+                </span>
+              </>
+            )}
+          </Flexbox>
+        );
+      }
+
+      // For message results, append creation date
+      if (result.type === 'message') {
         const formattedDate = dayjs(result.createdAt).format('MMM D, YYYY');
         if (description) {
           return `${description} · ${formattedDate}`;
@@ -223,10 +305,55 @@ const SearchResults = memo<SearchResultsProps>(
       onSetTypeFilter(type);
     };
 
+    const localImageTopicResults: LocalGenerationTopicResult[] =
+      menuContext === 'painting'
+        ? (imageTopics || [])
+            .filter((topic) => {
+              const title = topic.title || tImage('topic.untitled');
+              return title.toLowerCase().includes(searchQuery.toLowerCase());
+            })
+            .sort((a, b) => {
+              if (a.id === activeImageTopicId) return -1;
+              if (b.id === activeImageTopicId) return 1;
+              return b.updatedAt.getTime() - a.updatedAt.getTime();
+            })
+            .slice(0, 8)
+            .map((topic) => ({
+              createdAt: topic.createdAt,
+              id: topic.id,
+              title: topic.title || tImage('topic.untitled'),
+              updatedAt: topic.updatedAt,
+            }))
+        : [];
+
+    const localVideoTopicResults: LocalGenerationTopicResult[] =
+      menuContext === 'video'
+        ? (videoTopics || [])
+            .filter((topic) => {
+              const title = topic.title || tVideo('topic.untitled');
+              return title.toLowerCase().includes(searchQuery.toLowerCase());
+            })
+            .sort((a, b) => {
+              if (a.id === activeVideoTopicId) return -1;
+              if (b.id === activeVideoTopicId) return 1;
+              return b.updatedAt.getTime() - a.updatedAt.getTime();
+            })
+            .slice(0, 8)
+            .map((topic) => ({
+              createdAt: topic.createdAt,
+              id: topic.id,
+              title: topic.title || tVideo('topic.untitled'),
+              updatedAt: topic.updatedAt,
+            }))
+        : [];
+
     const hasResults = results.length > 0;
+    const hasLocalTopicResults =
+      localImageTopicResults.length > 0 || localVideoTopicResults.length > 0;
 
     // Group results by type
     const messageResults = results.filter((r) => r.type === 'message');
+    const chatGroupResults = results.filter((r) => r.type === 'chatGroup');
     const agentResults = results.filter((r) => r.type === 'agent');
     const topicResults = results.filter((r) => r.type === 'topic');
     const fileResults = results.filter((r) => r.type === 'file');
@@ -235,10 +362,14 @@ const SearchResults = memo<SearchResultsProps>(
     const memoryResults = results.filter((r) => r.type === 'memory');
     const mcpResults = results.filter((r) => r.type === 'mcp');
     const pluginResults = results.filter((r) => r.type === 'plugin');
+    const knowledgeBaseResults = results.filter((r) => r.type === 'knowledgeBase');
     const assistantResults = results.filter((r) => r.type === 'communityAgent');
 
-    // Don't render anything if no results and not loading
-    if (!hasResults && !isLoading) {
+    // Don't render anything if no results and not loading — except in the
+    // unfiltered view, which always carries the permanent marketplace entries
+    // below (the aggregate response is DB-only, so a query whose matches live
+    // only in the marketplace would otherwise dead-end with no visible route).
+    if (!hasResults && !hasLocalTopicResults && !isLoading && typeFilter) {
       return null;
     }
 
@@ -271,24 +402,30 @@ const SearchResults = memo<SearchResultsProps>(
 
       return (
         <CommandItem
+          forceMount
           description={subtitle}
           icon={getIcon(result.type)}
           key={result.id}
-          onSelect={() => handleNavigate(result)}
           title={titleWithPrefix}
           value={getItemValue(result)}
           variant="detailed"
+          onSelect={() => handleNavigate(result)}
         />
       );
     };
+
+    // Marketplace types are absent from the aggregate response (it is DB-only),
+    // so their "Search More" entries must not depend on a non-zero result count.
+    const MARKETPLACE_TYPES: ValidSearchType[] = ['mcp', 'plugin', 'communityAgent'];
 
     // Helper to render "Search More" button
     const renderSearchMore = (type: ValidSearchType, count: number) => {
       // Don't show if already filtering by this type
       if (typeFilter) return null;
 
-      // Show if there are results (might have more)
-      if (count === 0) return null;
+      // Show if there are results (might have more); marketplace entries always
+      // show — they are the only visible route into the explicit marketplace search
+      if (count === 0 && !MARKETPLACE_TYPES.includes(type)) return null;
 
       const typeLabel = getTypeLabel(type);
       const titleText = `${t('cmdk.search.searchMore', { type: typeLabel })} with "${searchQuery}"`;
@@ -298,8 +435,8 @@ const SearchResults = memo<SearchResultsProps>(
           forceMount
           key={`search-more-${type}`}
           keywords={[`zzz-action-${type}`]}
-          onSelect={() => handleSearchMore(type)}
           value={`zzz-action-${type}-search-more`}
+          onSelect={() => handleSearchMore(type)}
         >
           <div className={styles.itemContent}>
             <div className={styles.itemIcon}>{getIcon(type)}</div>
@@ -313,80 +450,183 @@ const SearchResults = memo<SearchResultsProps>(
 
     return (
       <>
+        {localImageTopicResults.length > 0 && (
+          <Command.Group forceMount>
+            {localImageTopicResults.map((result) => {
+              const formattedDate = dayjs(result.updatedAt).format('MMM D, YYYY');
+              return (
+                <CommandItem
+                  forceMount
+                  description={formattedDate}
+                  icon={<MessageSquare size={16} />}
+                  key={`image-topic-${result.id}`}
+                  value={`local-image-topic ${result.id} ${result.title}`}
+                  variant="detailed"
+                  title={
+                    <>
+                      <span style={{ opacity: 0.5 }}>{t('tab.image')}</span>
+                      <ChevronRight
+                        size={14}
+                        style={{
+                          display: 'inline',
+                          marginInline: '6px',
+                          opacity: 0.5,
+                          verticalAlign: 'middle',
+                        }}
+                      />
+                      {result.title}
+                    </>
+                  }
+                  onSelect={() => {
+                    navigate(`/image?topic=${result.id}`);
+                    onClose();
+                  }}
+                />
+              );
+            })}
+          </Command.Group>
+        )}
+
+        {localVideoTopicResults.length > 0 && (
+          <Command.Group forceMount>
+            {localVideoTopicResults.map((result) => {
+              const formattedDate = dayjs(result.updatedAt).format('MMM D, YYYY');
+              return (
+                <CommandItem
+                  forceMount
+                  description={formattedDate}
+                  icon={<MessageSquare size={16} />}
+                  key={`video-topic-${result.id}`}
+                  value={`local-video-topic ${result.id} ${result.title}`}
+                  variant="detailed"
+                  title={
+                    <>
+                      <span style={{ opacity: 0.5 }}>{t('tab.video')}</span>
+                      <ChevronRight
+                        size={14}
+                        style={{
+                          display: 'inline',
+                          marginInline: '6px',
+                          opacity: 0.5,
+                          verticalAlign: 'middle',
+                        }}
+                      />
+                      {result.title}
+                    </>
+                  }
+                  onSelect={() => {
+                    navigate(`/video?topic=${result.id}`);
+                    onClose();
+                  }}
+                />
+              );
+            })}
+          </Command.Group>
+        )}
+
         {/* Render search results grouped by type without headers */}
         {messageResults.length > 0 && (
-          <Command.Group>
+          <Command.Group forceMount>
             {messageResults.map((result) => renderResultItem(result))}
             {renderSearchMore('message', messageResults.length)}
           </Command.Group>
         )}
 
         {agentResults.length > 0 && (
-          <Command.Group>
+          <Command.Group forceMount>
             {agentResults.map((result) => renderResultItem(result))}
             {renderSearchMore('agent', agentResults.length)}
           </Command.Group>
         )}
 
+        {chatGroupResults.length > 0 && (
+          <Command.Group forceMount>
+            {chatGroupResults.map((result) => renderResultItem(result))}
+            {renderSearchMore('chatGroup', chatGroupResults.length)}
+          </Command.Group>
+        )}
+
         {topicResults.length > 0 && (
-          <Command.Group>
+          <Command.Group forceMount>
             {topicResults.map((result) => renderResultItem(result))}
             {renderSearchMore('topic', topicResults.length)}
           </Command.Group>
         )}
 
         {pageResults.length > 0 && (
-          <Command.Group>
+          <Command.Group forceMount>
             {pageResults.map((result) => renderResultItem(result))}
             {renderSearchMore('page', pageResults.length)}
           </Command.Group>
         )}
 
         {memoryResults.length > 0 && (
-          <Command.Group>
+          <Command.Group forceMount>
             {memoryResults.map((result) => renderResultItem(result))}
             {renderSearchMore('memory', memoryResults.length)}
           </Command.Group>
         )}
 
         {fileResults.length > 0 && (
-          <Command.Group>
+          <Command.Group forceMount>
             {fileResults.map((result) => renderResultItem(result))}
             {renderSearchMore('file', fileResults.length)}
           </Command.Group>
         )}
 
         {folderResults.length > 0 && (
-          <Command.Group>
+          <Command.Group forceMount>
             {folderResults.map((result) => renderResultItem(result))}
             {renderSearchMore('folder', folderResults.length)}
           </Command.Group>
         )}
 
+        {knowledgeBaseResults.length > 0 && (
+          <Command.Group forceMount>
+            {knowledgeBaseResults.map((result) => renderResultItem(result))}
+            {renderSearchMore('knowledgeBase', knowledgeBaseResults.length)}
+          </Command.Group>
+        )}
+
         {mcpResults.length > 0 && (
-          <Command.Group>
+          <Command.Group forceMount>
             {mcpResults.map((result) => renderResultItem(result))}
             {renderSearchMore('mcp', mcpResults.length)}
           </Command.Group>
         )}
 
         {pluginResults.length > 0 && (
-          <Command.Group>
+          <Command.Group forceMount>
             {pluginResults.map((result) => renderResultItem(result))}
             {renderSearchMore('plugin', pluginResults.length)}
           </Command.Group>
         )}
 
         {assistantResults.length > 0 && (
-          <Command.Group>
+          <Command.Group forceMount>
             {assistantResults.map((result) => renderResultItem(result))}
+            {renderSearchMore('communityAgent', assistantResults.length)}
+          </Command.Group>
+        )}
+
+        {/* Marketplace typed-search entries as the no-result fallback; see
+            shouldShowMarketplaceFallback for the rationale. */}
+        {shouldShowMarketplaceFallback({
+          hasLocalTopicResults,
+          hasResults,
+          isLoading,
+          typeFilter,
+        }) && (
+          <Command.Group forceMount>
+            {renderSearchMore('mcp', mcpResults.length)}
+            {renderSearchMore('plugin', pluginResults.length)}
             {renderSearchMore('communityAgent', assistantResults.length)}
           </Command.Group>
         )}
 
         {/* Show loading skeleton below existing results */}
         {isLoading && (
-          <Command.Group>
+          <Command.Group forceMount>
             {[1, 2, 3].map((i) => (
               <Command.Item
                 disabled

@@ -7,16 +7,12 @@
   "editor.formatOnSave": true,
   // don't show errors, but fix when save and git pre commit
   "eslint.rules.customizations": [
-    // { "rule": "import/order", "severity": "off" },
-    // { "rule": "prettier/prettier", "severity": "off" },
-    // { "rule": "react/jsx-sort-props", "severity": "off" },
-    // { "rule": "sort-keys-fix/sort-keys-fix", "severity": "off" },
-    // { "rule": "simple-import-sort/exports", "severity": "off" },
-    // { "rule": "typescript-sort-keys/interface", "severity": "off" }
+    { "rule": "simple-import-sort/exports", "severity": "off" },
+    { "rule": "perfectionist/sort-interfaces", "severity": "off" },
+    { "rule": "simple-import-sort/imports", "severity": "off" }
   ],
   "eslint.validate": [
-    // vscode eslint not 插件兼容性有问题
-    // "json",
+    "json",
     "javascript",
     "javascriptreact",
     "typescript",
@@ -24,6 +20,19 @@
     // support mdx
     "mdx"
   ],
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/.next/**": true,
+    "**/coverage/**": true,
+    "**/dist/**": true,
+    "**/logs/**": true,
+    "**/node_modules/*/**": true,
+    "**/public/_spa-auth/**": true,
+    "**/public/_spa-workbench/**": true,
+    "**/public/_spa/**": true
+  },
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
   "npm.packageManager": "pnpm",
   "search.exclude": {
     "**/node_modules": true,
@@ -51,7 +60,7 @@
     // make stylelint work with tsx antd-style css template string
     "typescriptreact"
   ],
-  "vitest.maximumConfigs": 20,
+  "vitest.disableWorkspaceWarning": true,
   "workbench.editor.customLabels.patterns": {
     "**/app/**/[[]*[]]/[[]*[]]/page.tsx": "${dirname(2)}/${dirname(1)}/${dirname} • page component",
     "**/app/**/[[]*[]]/page.tsx": "${dirname(1)}/${dirname} • page component",

@@ -8,28 +8,29 @@ import { CollapsedMessage } from '../../AssistantGroup/components/CollapsedMessa
 import DisplayContent from '../../components/DisplayContent';
 import FileChunks from '../../components/FileChunks';
 import ImageFileListViewer from '../../components/ImageFileListViewer';
-import Reasoning from '../../components/Reasoning';
+import Reasoning, { hasRenderableReasoning } from '../../components/Reasoning';
 import SearchGrounding from '../../components/SearchGrounding';
 import { useMarkdown } from '../useMarkdown';
 
 const MessageContent = memo<UIChatMessage>(
   ({ id, tools, content, chunksList, search, imageList, metadata, ...props }) => {
-    const markdownProps = useMarkdown(id);
+    const { drawer, markdownProps } = useMarkdown(id, !!tools?.length);
     // Use ConversationStore instead of ChatStore
     const generating = useConversationStore(messageStateSelectors.isMessageGenerating(id));
+    const isCreating = useConversationStore(messageStateSelectors.isMessageCreating(id));
     const isCollapsed = useConversationStore(messageStateSelectors.isMessageCollapsed(id));
     const isReasoning = useConversationStore(messageStateSelectors.isMessageInReasoning(id));
 
-    const isToolCallGenerating = generating && (content === LOADING_FLAT || !content) && !!tools;
+    const isLoading = generating || isCreating;
+    const isToolCallGenerating = isLoading && (content === LOADING_FLAT || !content) && !!tools;
 
-    const showSearch = !!search && !!search.citations?.length;
+    const showSearch = !!search && (!!search.citations?.length || !!search.imageResults?.length);
     const showImageItems = !!imageList && imageList.length > 0;
 
     // remove \n to avoid empty content
     // refs: https://github.com/lobehub/lobe-chat/pull/6153
     const showReasoning =
-      (!!props.reasoning && props.reasoning.content?.trim() !== '') ||
-      (!props.reasoning && isReasoning);
+      hasRenderableReasoning(props.reasoning) || (!props.reasoning && isReasoning);
 
     const showFileChunks = !!chunksList && chunksList.length > 0;
 
@@ -37,13 +38,20 @@ const MessageContent = memo<UIChatMessage>(
 
     return (
       <Flexbox gap={8} id={id}>
+        {drawer}
         {showSearch && (
-          <SearchGrounding citations={search?.citations} searchQueries={search?.searchQueries} />
+          <SearchGrounding
+            citations={search?.citations}
+            imageResults={search?.imageResults}
+            imageSearchQueries={search?.imageSearchQueries}
+            searchQueries={search?.searchQueries}
+          />
         )}
         {showFileChunks && <FileChunks data={chunksList} />}
         {showReasoning && <Reasoning {...props.reasoning} id={id} />}
         <DisplayContent
           content={content}
+          generating={isLoading}
           hasImages={showImageItems}
           id={id}
           isMultimodal={metadata?.isMultimodal}

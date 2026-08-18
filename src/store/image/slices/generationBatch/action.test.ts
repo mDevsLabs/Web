@@ -1,14 +1,15 @@
 import { act, renderHook, waitFor } from '@testing-library/react';
 import React from 'react';
-import { Mock, afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
+import type * as SwrModule from '@/libs/swr';
 import { mutate } from '@/libs/swr';
 import { generationService } from '@/services/generation';
 import { generationBatchService } from '@/services/generationBatch';
 import { useImageStore } from '@/store/image';
 import { generationBatchSelectors } from '@/store/image/slices/generationBatch/selectors';
 import { AsyncTaskStatus } from '@/types/asyncTask';
-import { GenerationBatch } from '@/types/generation';
+import { type GenerationBatch } from '@/types/generation';
 
 // Mock services and dependencies
 vi.mock('@/services/generation', () => ({
@@ -26,7 +27,7 @@ vi.mock('@/services/generationBatch', () => ({
 }));
 
 vi.mock('@/libs/swr', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@/libs/swr')>();
+  const actual = await importOriginal<typeof SwrModule>();
   return {
     ...actual,
     mutate: vi.fn(),
@@ -403,7 +404,7 @@ describe('GenerationBatchAction', () => {
         await result.current.refreshGenerationBatches();
       });
 
-      expect(mutate).toHaveBeenCalledWith(['SWR_USE_FETCH_GENERATION_BATCHES', topicId]);
+      expect(mutate).toHaveBeenCalledWith(['image:generationBatches', topicId]);
     });
 
     it('should not call mutate when no active topic', async () => {

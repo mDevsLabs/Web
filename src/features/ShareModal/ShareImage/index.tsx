@@ -1,6 +1,6 @@
-import { Button, Form, type FormItemProps, Segmented } from '@lobehub/ui';
-import { Flexbox } from '@lobehub/ui';
-import { Switch } from 'antd';
+import { type FormItemProps } from '@lobehub/ui';
+import { Flexbox, Form } from '@lobehub/ui';
+import { Button, Switch, Tabs } from '@lobehub/ui/base-ui';
 import { CopyIcon } from 'lucide-react';
 import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -12,9 +12,11 @@ import { ImageType, imageTypeOptions, useScreenshot } from '@/hooks/useScreensho
 import { useAgentStore } from '@/store/agent';
 import { agentSelectors } from '@/store/agent/selectors';
 
+import { useShareData } from '../ShareDataProvider';
 import { styles } from '../style';
 import Preview from './Preview';
-import { type FieldType, WidthMode } from './type';
+import { type FieldType } from './type';
+import { WidthMode } from './type';
 
 const DEFAULT_FIELD_VALUE: FieldType = {
   imageType: ImageType.JPG,
@@ -26,9 +28,10 @@ const DEFAULT_FIELD_VALUE: FieldType = {
 };
 
 const ShareImage = memo<{ mobile?: boolean }>(() => {
-  const currentAgentTitle = useAgentStore(agentSelectors.currentAgentTitle);
+  const currentAgentTitle = useAgentStore(agentSelectors.currentAgentDisplayName);
   const [fieldValue, setFieldValue] = useState<FieldType>(DEFAULT_FIELD_VALUE);
   const { t } = useTranslation(['chat', 'common']);
+  const { context, dbMessages } = useShareData();
   const { loading, onDownload, title } = useScreenshot({
     imageType: fieldValue.imageType,
     title: currentAgentTitle ?? undefined,
@@ -36,17 +39,18 @@ const ShareImage = memo<{ mobile?: boolean }>(() => {
   const { loading: copyLoading, onCopy } = useImgToClipboard();
 
   const widthModeOptions = [
-    { label: t('shareModal.widthMode.wide'), value: WidthMode.Wide },
-    { label: t('shareModal.widthMode.narrow'), value: WidthMode.Narrow },
+    { key: WidthMode.Wide, label: t('shareModal.widthMode.wide') },
+    { key: WidthMode.Narrow, label: t('shareModal.widthMode.narrow') },
   ];
 
   const settings: FormItemProps[] = [
     {
-      children: <Segmented options={widthModeOptions} />,
+      children: <Tabs items={widthModeOptions} />,
       label: t('shareModal.widthMode.label'),
       layout: 'horizontal',
       minWidth: undefined,
       name: 'widthMode',
+      valuePropName: 'activeKey',
     },
     {
       children: <Switch />,
@@ -65,11 +69,12 @@ const ShareImage = memo<{ mobile?: boolean }>(() => {
       valuePropName: 'checked',
     },
     {
-      children: <Segmented options={imageTypeOptions} />,
+      children: <Tabs items={imageTypeOptions} />,
       label: t('shareModal.imageType'),
       layout: 'horizontal',
       minWidth: undefined,
       name: 'imageType',
+      valuePropName: 'activeKey',
     },
   ];
 
@@ -81,13 +86,13 @@ const ShareImage = memo<{ mobile?: boolean }>(() => {
         block
         icon={CopyIcon}
         loading={copyLoading}
-        onClick={() => onCopy()}
         size={isMobile ? undefined : 'large'}
         type={'primary'}
+        onClick={() => onCopy()}
       >
         {t('copy', { ns: 'common' })}
       </Button>
-      <Button block loading={loading} onClick={onDownload} size={isMobile ? undefined : 'large'}>
+      <Button block loading={loading} size={isMobile ? undefined : 'large'} onClick={onDownload}>
         {t('shareModal.download')}
       </Button>
     </>
@@ -96,7 +101,7 @@ const ShareImage = memo<{ mobile?: boolean }>(() => {
   return (
     <>
       <Flexbox className={styles.body} gap={16} horizontal={!isMobile}>
-        <Preview title={title} {...fieldValue} />
+        <Preview context={context} messages={dbMessages} title={title} {...fieldValue} />
         <Flexbox className={styles.sidebar} gap={12}>
           <Form
             initialValues={DEFAULT_FIELD_VALUE}
@@ -109,7 +114,7 @@ const ShareImage = memo<{ mobile?: boolean }>(() => {
         </Flexbox>
       </Flexbox>
       {isMobile && (
-        <Flexbox className={styles.footer} gap={8} horizontal>
+        <Flexbox horizontal className={styles.footer} gap={8}>
           {button}
         </Flexbox>
       )}

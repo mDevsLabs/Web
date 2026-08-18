@@ -1,13 +1,18 @@
+import VoiceDictation from '../Dictation';
+import VoiceMessage from '../VoiceMessage';
 import AgentMode from './AgentMode';
 import Clear from './Clear';
+import Effort from './Effort';
 import History from './History';
+import Memory from './Memory';
 import Mention from './Mention';
 import Model from './Model';
+import ModelLabel from './ModelLabel';
 import Params from './Params';
-import STT from './STT';
-import SaveTopic from './SaveTopic';
+import Plus from './Plus';
+import PromptTransform from './PromptTransform';
 import Search from './Search';
-import { MainToken, PortalToken } from './Token';
+import ContextWindow from './Token';
 import Tools from './Tools';
 import Typo from './Typo';
 import Upload from './Upload';
@@ -15,19 +20,23 @@ import Upload from './Upload';
 export const actionMap = {
   agentMode: AgentMode,
   clear: Clear,
+  contextWindow: ContextWindow,
+  effort: Effort,
   fileUpload: Upload,
+  plus: Plus,
   history: History,
-  mainToken: MainToken,
+  memory: Memory,
   mention: Mention,
   model: Model,
+  modelLabel: ModelLabel,
   params: Params,
-  portalToken: PortalToken,
-  saveTopic: SaveTopic,
+  promptTransform: PromptTransform,
   search: Search,
-  stt: STT,
   temperature: Params,
   tools: Tools,
   typo: Typo,
+  voiceDictation: VoiceDictation,
+  voiceMessage: VoiceMessage,
 } as const;
 
 export type ActionKey = keyof typeof actionMap;

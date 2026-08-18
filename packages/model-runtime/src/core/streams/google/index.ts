@@ -1,15 +1,19 @@
-import { GenerateContentResponse, Part } from '@google/genai';
-import { GroundingSearch } from '@lobechat/types';
+import type { GenerateContentResponse, Part } from '@google/genai';
+import type { GroundingSearch } from '@lobechat/types';
 
-import { ChatStreamCallbacks } from '../../../types';
+import type { ChatStreamCallbacks } from '../../../types';
+import { AgentRuntimeErrorType } from '../../../types/error';
+import { serializeScopedSignature } from '../../../utils/signatureScope';
 import { nanoid } from '../../../utils/uuid';
 import { convertGoogleAIUsage } from '../../usageConverters/google-ai';
-import {
+import type {
   ChatPayloadForTransformStream,
   StreamContext,
   StreamPartChunkData,
   StreamProtocolChunk,
   StreamToolCallChunkData,
+} from '../protocol';
+import {
   createCallbacksTransformer,
   createSSEProtocolTransformer,
   createTokenSpeedCalculator,
@@ -28,6 +32,18 @@ const getBlockReasonMessage = (blockReason: string): string => {
   );
 };
 
+const getCandidateBlockedReason = (
+  candidate: NonNullable<GenerateContentResponse['candidates']>[number] | undefined,
+) => {
+  const finishReason = candidate?.finishReason;
+
+  if (!finishReason || typeof finishReason !== 'string') return undefined;
+
+  if (finishReason in GOOGLE_AI_BLOCK_REASON) return finishReason;
+
+  return undefined;
+};
+
 const transformGoogleGenerativeAIStream = (
   chunk: GenerateContentResponse,
   context: StreamContext,
@@ -42,6 +58,7 @@ const transformGoogleGenerativeAIStream = (
     };
   }
   // Handle promptFeedback with blockReason (e.g., PROHIBITED_CONTENT)
+  // Content blocks are terminal policy rejections — never retryable ProviderBizError.
   if ('promptFeedback' in chunk && (chunk as any).promptFeedback?.blockReason) {
     const blockReason = (chunk as any).promptFeedback.blockReason;
     const humanFriendlyMessage = getBlockReasonMessage(blockReason);
@@ -55,7 +72,7 @@ const transformGoogleGenerativeAIStream = (
           message: humanFriendlyMessage,
           provider: 'google',
         },
-        type: 'ProviderBizError',
+        type: AgentRuntimeErrorType.ProviderContentPolicyViolation,
       },
       id: context?.id || 'error',
       type: 'error',
@@ -65,14 +82,58 @@ const transformGoogleGenerativeAIStream = (
   // maybe need another structure to add support for multiple choices
   const candidate = chunk.candidates?.[0];
   const { usageMetadata } = chunk;
+  const serializeThoughtSignature = (signature?: string) =>
+    serializeScopedSignature(signature, payload?.thoughtSignatureScope, 'thought_signature');
+
+  // Handle blocked terminal candidate finishReason (e.g., PROHIBITED_CONTENT, SAFETY)
+  // Same as promptFeedback: policy blocks must stop the attempt, not trigger LLM retry.
+  const blockedReason = getCandidateBlockedReason(candidate);
+  if (blockedReason) {
+    const convertedUsage = usageMetadata
+      ? convertGoogleAIUsage(usageMetadata, payload?.pricing)
+      : undefined;
+    const humanFriendlyMessage = getBlockReasonMessage(blockedReason);
+
+    return [
+      ...(convertedUsage
+        ? [{ data: convertedUsage, id: context?.id, type: 'usage' as const }]
+        : []),
+      {
+        data: {
+          body: {
+            context: {
+              finishMessage: (candidate as any)?.finishMessage,
+              finishReason: blockedReason,
+            },
+            message: humanFriendlyMessage,
+            provider: 'google',
+          },
+          type: AgentRuntimeErrorType.ProviderContentPolicyViolation,
+        },
+        id: context?.id || 'error',
+        type: 'error' as const,
+      },
+    ];
+  }
+
   const usageChunks: StreamProtocolChunk[] = [];
   if (candidate?.finishReason && usageMetadata) {
+    delete context.usageMissingDiagnostics;
     usageChunks.push({ data: candidate.finishReason, id: context?.id, type: 'stop' });
 
     const convertedUsage = convertGoogleAIUsage(usageMetadata, payload?.pricing);
     if (convertedUsage) {
       usageChunks.push({ data: convertedUsage, id: context?.id, type: 'usage' });
     }
+  } else if (candidate?.finishReason) {
+    context.usageMissingDiagnostics = {
+      finishReason: candidate.finishReason,
+      hasUsageMetadata: false,
+      model: payload?.model,
+      provider: payload?.provider,
+      source: 'google_generative_ai',
+      terminalEventType: 'GenerateContentResponse.candidates.finishReason',
+    };
   }
 
   // Parse function calls from candidate.content.parts
@@ -81,24 +142,22 @@ const transformGoogleGenerativeAIStream = (
       ?.filter((part: any) => part.functionCall)
       .map((part: Part) => ({
         ...part.functionCall,
-        thoughtSignature: part.thoughtSignature,
+        thoughtSignature: serializeThoughtSignature(part.thoughtSignature),
       })) || [];
 
   if (functionCalls.length > 0) {
     return [
       {
-        data: functionCalls.map(
-          (value, index: number): StreamToolCallChunkData => ({
-            function: {
-              arguments: JSON.stringify(value.args),
-              name: value.name,
-            },
-            id: generateToolCallId(index, value.name),
-            index: index,
-            thoughtSignature: value.thoughtSignature,
-            type: 'function',
-          }),
-        ),
+        data: functionCalls.map((value, index: number): StreamToolCallChunkData => ({
+          function: {
+            arguments: JSON.stringify(value.args),
+            name: value.name,
+          },
+          id: value.id || generateToolCallId(index, value.name),
+          index,
+          thoughtSignature: value.thoughtSignature,
+          type: 'function',
+        })),
         id: context.id,
         type: 'tool_calls',
       },
@@ -120,7 +179,6 @@ const transformGoogleGenerativeAIStream = (
     const hasReasoningParts = parts.some((p: any) => p.thought === true);
     const hasImageParts = parts.some((p: any) => p.inlineData);
     const hasThoughtSignature = parts.some((p: any) => p.thoughtSignature);
-    const hasThoughtsInMetadata = (usageMetadata as any)?.thoughtsTokenCount > 0;
 
     // Check model version to determine if new format should be used
     const modelVersion = (chunk as any).modelVersion || '';
@@ -144,8 +202,7 @@ const transformGoogleGenerativeAIStream = (
     // 1. There are reasoning parts in current chunk (thought: true)
     // 2. There are multiple parts with images (multimodal content)
     // 3. There are thoughtSignature in parts (reasoning metadata attached to content)
-    // 4. There is thoughtsTokenCount in metadata (indicates response contains reasoning)
-    // 5. This is Gemini 3 model with image generation (always use new format for consistency)
+    // 4. This is Gemini 3 model with image generation (always use new format for consistency)
     // BUT NOT for:
     // - The legacy single-image scenario
     // - Grounding metadata scenario (uses legacy text + grounding events)
@@ -153,7 +210,6 @@ const transformGoogleGenerativeAIStream = (
       (hasReasoningParts ||
         (hasImageParts && parts.length > 1) ||
         hasThoughtSignature ||
-        hasThoughtsInMetadata ||
         isGemini3Model) &&
       !isSingleImageWithFinish &&
       !hasGroundingMetadata;
@@ -174,7 +230,7 @@ const transformGoogleGenerativeAIStream = (
               content: part.text,
               inReasoning: true,
               partType: 'text',
-              thoughtSignature: part.thoughtSignature,
+              thoughtSignature: serializeThoughtSignature(part.thoughtSignature),
             } as StreamPartChunkData,
             id: context.id,
             type: 'reasoning_part',
@@ -189,7 +245,7 @@ const transformGoogleGenerativeAIStream = (
               inReasoning: true,
               mimeType: part.inlineData.mimeType,
               partType: 'image',
-              thoughtSignature: part.thoughtSignature,
+              thoughtSignature: serializeThoughtSignature(part.thoughtSignature),
             } as StreamPartChunkData,
             id: context.id,
             type: 'reasoning_part',
@@ -202,7 +258,7 @@ const transformGoogleGenerativeAIStream = (
             data: {
               content: part.text,
               partType: 'text',
-              thoughtSignature: part.thoughtSignature,
+              thoughtSignature: serializeThoughtSignature(part.thoughtSignature),
             } as StreamPartChunkData,
             id: context.id,
             type: 'content_part',
@@ -216,7 +272,7 @@ const transformGoogleGenerativeAIStream = (
               content: part.inlineData.data,
               mimeType: part.inlineData.mimeType,
               partType: 'image',
-              thoughtSignature: part.thoughtSignature,
+              thoughtSignature: serializeThoughtSignature(part.thoughtSignature),
             } as StreamPartChunkData,
             id: context.id,
             type: 'content_part',
@@ -234,26 +290,55 @@ const transformGoogleGenerativeAIStream = (
     }
 
     // return the grounding
-    const { groundingChunks, webSearchQueries } = candidate.groundingMetadata ?? {};
+    const { groundingChunks, imageSearchQueries, webSearchQueries } =
+      candidate.groundingMetadata ?? {};
     if (groundingChunks) {
+      const webChunks = groundingChunks.filter((chunk) => chunk.web);
+      const imageChunks = groundingChunks.filter((chunk) => chunk.image);
+
       return [
-        { data: text, id: context.id, type: 'text' },
+        ...(text ? [{ data: text, id: context.id, type: 'text' as const }] : []),
         {
           data: {
-            citations: groundingChunks?.map((chunk) => ({
-              // Google returns a uri processed by Google itself, so it cannot display the real favicon
-              // Need to use title as a replacement
-              favicon: chunk.web?.title,
-              title: chunk.web?.title,
-              url: chunk.web?.uri,
-            })),
-            searchQueries: webSearchQueries,
+            citations:
+              webChunks.length > 0
+                ? webChunks.map((chunk) => {
+                    // Fall back to hostname when title is empty
+                    let displayTitle = chunk.web?.title?.replaceAll(/<[^>]*>/g, '');
+                    if (!displayTitle) {
+                      try {
+                        displayTitle = new URL(chunk.web?.uri || '').hostname.replace('www.', '');
+                      } catch {
+                        displayTitle = chunk.web?.uri;
+                      }
+                    }
+                    return {
+                      // Google returns a uri processed by Google itself, so it cannot display the real favicon
+                      // Need to use title (or derived hostname) as a replacement
+                      favicon: displayTitle,
+                      title: displayTitle,
+                      url: chunk.web?.uri,
+                    };
+                  })
+                : undefined,
+            imageResults:
+              imageChunks.length > 0
+                ? imageChunks.map((chunk) => ({
+                    domain: chunk.image?.domain,
+                    imageUri: chunk.image?.imageUri,
+                    sourceUri: chunk.image?.sourceUri,
+                    title: chunk.image?.title,
+                  }))
+                : undefined,
+            imageSearchQueries:
+              imageSearchQueries && imageSearchQueries.length > 0 ? imageSearchQueries : undefined,
+            searchQueries: webSearchQueries?.filter(Boolean),
           } as GroundingSearch,
           id: context.id,
           type: 'grounding',
         },
         ...usageChunks,
-      ];
+      ].filter(Boolean) as StreamProtocolChunk[];
     }
 
     // Check for image data before handling finishReason
@@ -329,7 +414,7 @@ export const GoogleGenerativeAIStream = (
   return rawStream
     .pipeThrough(
       createTokenSpeedCalculator(transformWithPayload, {
-        enableStreaming: enableStreaming,
+        enableStreaming,
         inputStartAt,
         streamStack,
       }),
@@ -337,5 +422,5 @@ export const GoogleGenerativeAIStream = (
     .pipeThrough(
       createSSEProtocolTransformer((c) => c, streamStack, { requireTerminalEvent: true }),
     )
-    .pipeThrough(createCallbacksTransformer(callbacks));
+    .pipeThrough(createCallbacksTransformer(callbacks, { streamStack }));
 };

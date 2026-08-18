@@ -1,6 +1,7 @@
 import { eq } from 'drizzle-orm';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
+import { getTestDB } from '../../../core/getTestDB';
 import {
   agents,
   agentsToSessions,
@@ -9,10 +10,10 @@ import {
   sessions,
   topics,
   users,
+  workspaces,
 } from '../../../schemas';
-import { LobeChatDatabase } from '../../../type';
+import type { LobeChatDatabase } from '../../../type';
 import { TopicModel } from '../../topic';
-import { getTestDB } from '../../../core/getTestDB';
 
 const userId = 'topic-delete-user';
 const userId2 = 'topic-delete-user-2';
@@ -47,8 +48,8 @@ describe('TopicModel - Delete', () => {
           { id: 'topic2', sessionId: 'session2', userId: '345' },
         ]);
         await tx.insert(messages).values([
-          { id: 'message1', role: 'user', topicId: topicId, userId },
-          { id: 'message2', role: 'assistant', topicId: topicId, userId },
+          { id: 'message1', role: 'user', topicId, userId },
+          { id: 'message2', role: 'assistant', topicId, userId },
           { id: 'message3', role: 'user', topicId: 'topic2', userId: '345' },
         ]);
       });
@@ -160,7 +161,7 @@ describe('TopicModel - Delete', () => {
       expect(remainingTopics[0].id).toBe('topic-agent-2');
     });
 
-    it('should delete legacy topics via sessionId lookup', async () => {
+    it('should not delete legacy session-only topics', async () => {
       await serverDB.transaction(async (trx) => {
         await trx.insert(sessions).values([
           { id: 'legacy-session-1', userId },
@@ -179,12 +180,12 @@ describe('TopicModel - Delete', () => {
 
       await topicModel.batchDeleteByAgentId('legacy-agent');
 
+      // Topics carrying only a legacy sessionId are not matched by agentId, so none are deleted.
       const remainingTopics = await serverDB.select().from(topics).where(eq(topics.userId, userId));
-      expect(remainingTopics).toHaveLength(1);
-      expect(remainingTopics[0].id).toBe('other-session-topic');
+      expect(remainingTopics).toHaveLength(3);
     });
 
-    it('should delete both new and legacy topics', async () => {
+    it('should delete only topics carrying the agentId, keeping session-only ones', async () => {
       await serverDB.transaction(async (trx) => {
         await trx.insert(sessions).values([{ id: 'mixed-del-session', userId }]);
         await trx
@@ -202,8 +203,10 @@ describe('TopicModel - Delete', () => {
 
       await topicModel.batchDeleteByAgentId('mixed-del-agent');
 
+      // Only `mixed-legacy` (sessionId only, no agentId) survives.
       const remainingTopics = await serverDB.select().from(topics).where(eq(topics.userId, userId));
-      expect(remainingTopics).toHaveLength(0);
+      expect(remainingTopics).toHaveLength(1);
+      expect(remainingTopics[0].id).toBe('mixed-legacy');
     });
 
     it('should not delete topics from other users', async () => {
@@ -323,6 +326,91 @@ describe('TopicModel - Delete', () => {
 
       expect(await serverDB.select().from(topics).where(eq(topics.userId, userId))).toHaveLength(0);
       expect(await serverDB.select().from(topics)).toHaveLength(1);
+    });
+  });
+
+  describe('workspace mode', () => {
+    const workspaceId = 'topic-delete-workspace';
+    const workspaceTopicModel = new TopicModel(serverDB, userId, workspaceId);
+
+    beforeEach(async () => {
+      await serverDB.insert(workspaces).values({
+        id: workspaceId,
+        name: 'Topic Delete Workspace',
+        primaryOwnerId: userId,
+        slug: workspaceId,
+      });
+      await serverDB.insert(agents).values({ id: 'ws-agent', userId, workspaceId });
+      await serverDB.insert(topics).values([
+        { id: 'ws-topic-mine', agentId: 'ws-agent', userId, workspaceId },
+        { id: 'ws-topic-other', agentId: 'ws-agent', userId: userId2, workspaceId },
+      ]);
+    });
+
+    it('deleteAll should only clear the caller own topics', async () => {
+      await workspaceTopicModel.deleteAll();
+
+      const remaining = await serverDB
+        .select()
+        .from(topics)
+        .where(eq(topics.workspaceId, workspaceId));
+      expect(remaining).toHaveLength(1);
+      expect(remaining[0].userId).toBe(userId2);
+    });
+
+    it('batchDeleteByAgentId should scope to the caller when restrictToCreator is set', async () => {
+      await workspaceTopicModel.batchDeleteByAgentId('ws-agent', { restrictToCreator: true });
+
+      const remaining = await serverDB
+        .select()
+        .from(topics)
+        .where(eq(topics.workspaceId, workspaceId));
+      expect(remaining).toHaveLength(1);
+      expect(remaining[0].userId).toBe(userId2);
+    });
+
+    it('batchDeleteByGroupId should scope to the caller when restrictToCreator is set', async () => {
+      await serverDB.insert(chatGroups).values({
+        id: 'ws-group',
+        title: 'Workspace Group',
+        userId,
+        workspaceId,
+      });
+      await serverDB.insert(topics).values([
+        { groupId: 'ws-group', id: 'ws-g-topic-mine', userId, workspaceId },
+        { groupId: 'ws-group', id: 'ws-g-topic-other', userId: userId2, workspaceId },
+      ]);
+
+      await workspaceTopicModel.batchDeleteByGroupId('ws-group', { restrictToCreator: true });
+
+      const remaining = await serverDB.select().from(topics).where(eq(topics.groupId, 'ws-group'));
+      expect(remaining).toHaveLength(1);
+      expect(remaining[0].userId).toBe(userId2);
+    });
+
+    it('batchDeleteByAgentId should keep workspace-wide scope by default', async () => {
+      await workspaceTopicModel.batchDeleteByAgentId('ws-agent');
+
+      expect(
+        await serverDB.select().from(topics).where(eq(topics.workspaceId, workspaceId)),
+      ).toHaveLength(0);
+    });
+
+    it('batchDeleteBySessionId should scope to the caller when restrictToCreator is set', async () => {
+      await serverDB.insert(sessions).values({ id: 'ws-session', userId, workspaceId });
+      await serverDB.insert(topics).values([
+        { id: 'ws-s-topic-mine', sessionId: 'ws-session', userId, workspaceId },
+        { id: 'ws-s-topic-other', sessionId: 'ws-session', userId: userId2, workspaceId },
+      ]);
+
+      await workspaceTopicModel.batchDeleteBySessionId('ws-session', { restrictToCreator: true });
+
+      const remaining = await serverDB
+        .select()
+        .from(topics)
+        .where(eq(topics.sessionId, 'ws-session'));
+      expect(remaining).toHaveLength(1);
+      expect(remaining[0].userId).toBe(userId2);
     });
   });
 });

@@ -9,7 +9,7 @@ export abstract class BaseProcessor implements ContextProcessor {
   abstract readonly name: string;
 
   // Keep parameters for compatibility with existing subclass constructor signatures, but do no processing
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   constructor(_options: ProcessorOptions = {}) {}
 
   /**
@@ -27,11 +27,8 @@ export abstract class BaseProcessor implements ContextProcessor {
       this.validateOutput(result);
       return result;
     } catch (error) {
-      throw new ProcessorError(
-        this.name,
-        `Processing failed: ${error}`,
-        error instanceof Error ? error : new Error(String(error)),
-      );
+      const cause = error instanceof Error ? error : new Error(String(error));
+      throw new ProcessorError(this.name, `Processing failed: ${cause.message}`, cause);
     }
   }
 
@@ -79,7 +76,7 @@ export abstract class BaseProcessor implements ContextProcessor {
    * Check if message is empty
    */
   protected isEmptyMessage(message: string | undefined | null): boolean {
-    return !message || message.trim().length === 0;
+    return !message || typeof message !== 'string' || message.trim().length === 0;
   }
 
   protected markAsExecuted(context: PipelineContext): PipelineContext {

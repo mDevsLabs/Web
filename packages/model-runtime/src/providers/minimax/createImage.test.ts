@@ -1,8 +1,8 @@
 // @vitest-environment node
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { CreateImageOptions } from '../../core/openaiCompatibleFactory';
-import { CreateImagePayload } from '../../types/image';
+import type { CreateImageOptions } from '../../core/openaiCompatibleFactory';
+import type { CreateImagePayload } from '../../types/image';
 import { createMiniMaxImage } from './createImage';
 
 // Mock the console.error to avoid polluting test output
@@ -66,6 +66,8 @@ describe('createMiniMaxImage', () => {
           model: 'image-01',
           n: 1,
           prompt: 'A beautiful sunset over the mountains',
+          aigc_watermark: false,
+          prompt_optimizer: false,
         }),
       });
 
@@ -113,6 +115,8 @@ describe('createMiniMaxImage', () => {
             model: 'image-01',
             n: 1,
             prompt: 'Abstract digital art',
+            aigc_watermark: false,
+            prompt_optimizer: false,
           }),
         }),
       );
@@ -161,6 +165,8 @@ describe('createMiniMaxImage', () => {
             model: 'image-01',
             n: 1,
             prompt: 'Reproducible image with seed',
+            aigc_watermark: false,
+            prompt_optimizer: false,
             seed: 42,
           }),
         }),
@@ -211,6 +217,8 @@ describe('createMiniMaxImage', () => {
             model: 'image-01',
             n: 1,
             prompt: 'Image with seed 0',
+            aigc_watermark: false,
+            prompt_optimizer: false,
             seed: 0,
           }),
         }),
@@ -284,6 +292,165 @@ describe('createMiniMaxImage', () => {
       };
 
       const result = await createMiniMaxImage(payload, mockOptions);
+
+      expect(result).toEqual({
+        imageUrl: mockImageUrl,
+      });
+    });
+
+    it('should handle imageUrls parameter correctly', async () => {
+      const mockImageUrl = 'https://minimax-cdn.com/images/generated/ref-image.jpg';
+      const referenceImageUrl =
+        'https://cdn.hailuoai.com/prod/2025-08-12-17/video_cover/1754990600020238321-411603868533342214-cover.jpg';
+
+      global.fetch = vi.fn().mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({
+          base_resp: {
+            status_code: 0,
+            status_msg: 'success',
+          },
+          data: {
+            image_urls: [mockImageUrl],
+          },
+          id: 'img-ref',
+          metadata: {
+            failed_count: '0',
+            success_count: '1',
+          },
+        }),
+      });
+
+      const payload: CreateImagePayload = {
+        model: 'image-01',
+        params: {
+          prompt: 'A girl looking into the distance from a library window',
+          imageUrls: [referenceImageUrl],
+        },
+      };
+
+      const result = await createMiniMaxImage(payload, mockOptions);
+
+      expect(fetch).toHaveBeenCalledWith(
+        'https://api.minimaxi.com/v1/image_generation',
+        expect.objectContaining({
+          body: JSON.stringify({
+            aspect_ratio: undefined,
+            model: 'image-01',
+            n: 1,
+            prompt: 'A girl looking into the distance from a library window',
+            aigc_watermark: false,
+            prompt_optimizer: false,
+            subject_reference: [
+              {
+                type: 'character',
+                image_file: referenceImageUrl,
+              },
+            ],
+          }),
+        }),
+      );
+
+      expect(result).toEqual({
+        imageUrl: mockImageUrl,
+      });
+    });
+
+    it('should handle multiple imageUrls correctly', async () => {
+      const mockImageUrl = 'https://minimax-cdn.com/images/generated/multi-ref.jpg';
+      const referenceImageUrls = [
+        'https://cdn.hailuoai.com/prod/2025-08-12-17/video_cover/1754990600020238321-411603868533342214-cover.jpg',
+        'https://cdn.hailuoai.com/prod/2025-08-12-17/video_cover/1754990600020238321-411603868533342214-cover2.jpg',
+      ];
+
+      global.fetch = vi.fn().mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({
+          base_resp: {
+            status_code: 0,
+            status_msg: 'success',
+          },
+          data: {
+            image_urls: [mockImageUrl],
+          },
+          id: 'img-multi-ref',
+          metadata: {
+            failed_count: '0',
+            success_count: '1',
+          },
+        }),
+      });
+
+      const payload: CreateImagePayload = {
+        model: 'image-01',
+        params: {
+          prompt: 'A girl looking into the distance from a library window',
+          imageUrls: referenceImageUrls,
+        },
+      };
+
+      const result = await createMiniMaxImage(payload, mockOptions);
+
+      expect(fetch).toHaveBeenCalledWith(
+        'https://api.minimaxi.com/v1/image_generation',
+        expect.objectContaining({
+          body: JSON.stringify({
+            aspect_ratio: undefined,
+            model: 'image-01',
+            n: 1,
+            prompt: 'A girl looking into the distance from a library window',
+            aigc_watermark: false,
+            prompt_optimizer: false,
+            subject_reference: referenceImageUrls.map((url) => ({
+              type: 'character',
+              image_file: url,
+            })),
+          }),
+        }),
+      );
+
+      expect(result).toEqual({
+        imageUrl: mockImageUrl,
+      });
+    });
+
+    it('should not include subject_reference when imageUrls is empty', async () => {
+      const mockImageUrl = 'https://minimax-cdn.com/images/generated/no-ref.jpg';
+
+      global.fetch = vi.fn().mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({
+          base_resp: {
+            status_code: 0,
+            status_msg: 'success',
+          },
+          data: {
+            image_urls: [mockImageUrl],
+          },
+          id: 'img-no-ref',
+          metadata: {
+            failed_count: '0',
+            success_count: '1',
+          },
+        }),
+      });
+
+      const payload: CreateImagePayload = {
+        model: 'image-01',
+        params: {
+          prompt: 'A simple image generation',
+          imageUrls: [],
+        },
+      };
+
+      const result = await createMiniMaxImage(payload, mockOptions);
+
+      expect(fetch).toHaveBeenCalledWith(
+        'https://api.minimaxi.com/v1/image_generation',
+        expect.objectContaining({
+          body: expect.not.stringContaining('subject_reference'),
+        }),
+      );
 
       expect(result).toEqual({
         imageUrl: mockImageUrl,

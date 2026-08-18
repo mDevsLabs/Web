@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import type { PipelineContext } from '../../types';
-import { ToolCallProcessor } from '../ToolCall';
 import type { ToolCallConfig } from '../ToolCall';
+import { ToolCallProcessor } from '../ToolCall';
 
 describe('ToolCallProcessor', () => {
   const createContext = (messages: any[]): PipelineContext => ({
@@ -262,6 +262,57 @@ describe('ToolCallProcessor', () => {
         content: 'Regular message',
         role: 'assistant',
       });
+    });
+
+    // protect against history poisoning from invalid tool_call arguments
+    it('should sanitize invalid tool arguments in history to "{}"', async () => {
+      const processor = new ToolCallProcessor(defaultConfig);
+      const context = createContext([
+        {
+          content: '',
+          id: 'msg1',
+          role: 'assistant',
+          tools: [
+            {
+              apiName: 'executeCode',
+              // exact shape from the NVIDIA/Qwen trace
+              arguments: '{, "description": "Create data models", "language": "python"}',
+              id: 'call_1',
+              identifier: 'code',
+              type: 'builtin',
+            },
+          ],
+        },
+      ]);
+
+      const result = await processor.process(context);
+
+      expect(result.messages[0].tool_calls[0].function.arguments).toBe('{}');
+    });
+
+    it('should pass through valid tool arguments unchanged (prompt-cache stable)', async () => {
+      const processor = new ToolCallProcessor(defaultConfig);
+      const rawArgs = '{"description":"Create data models","language":"python"}';
+      const context = createContext([
+        {
+          content: '',
+          id: 'msg1',
+          role: 'assistant',
+          tools: [
+            {
+              apiName: 'executeCode',
+              arguments: rawArgs,
+              id: 'call_1',
+              identifier: 'code',
+              type: 'builtin',
+            },
+          ],
+        },
+      ]);
+
+      const result = await processor.process(context);
+
+      expect(result.messages[0].tool_calls[0].function.arguments).toBe(rawArgs);
     });
   });
 

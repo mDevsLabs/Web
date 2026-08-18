@@ -1,4 +1,4 @@
-import { Menu, app, shell } from 'electron';
+import { app, Menu, shell } from 'electron';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import type { App } from '@/core/App';
@@ -13,6 +13,9 @@ vi.mock('electron', () => ({
     setApplicationMenu: vi.fn(),
   },
   app: {
+    dock: {
+      setMenu: vi.fn(),
+    },
     getAppPath: vi.fn(() => '/mock/app/path'),
     getName: vi.fn(() => 'LobeChat'),
     getPath: vi.fn((type: string) => {
@@ -28,6 +31,19 @@ vi.mock('electron', () => ({
   },
 }));
 
+vi.mock('@/utils/platform', () => ({
+  macOS: vi.fn(() => true),
+}));
+
+vi.mock('@/utils/logger', () => ({
+  createLogger: () => ({
+    debug: vi.fn(),
+    error: vi.fn(),
+    info: vi.fn(),
+    warn: vi.fn(),
+  }),
+}));
+
 // Mock isDev
 vi.mock('@/const/env', () => ({
   isDev: false,
@@ -39,7 +55,7 @@ const createMockApp = () => {
     let translation = menuTranslations[key as keyof typeof menuTranslations] || key;
     if (params && typeof translation === 'string') {
       Object.keys(params).forEach((paramKey) => {
-        translation = translation.replace(
+        translation = translation.replaceAll(
           new RegExp(`{{${paramKey}}}`, 'g'),
           params[paramKey] as string,
         );
@@ -63,8 +79,13 @@ const createMockApp = () => {
         show: vi.fn(),
       })),
     },
+    screenCaptureManager: {
+      startSession: vi.fn(),
+    },
     updaterManager: {
       checkForUpdates: vi.fn(),
+      getUpdaterState: vi.fn(() => ({ stage: 'idle' })),
+      installNow: vi.fn(),
       simulateUpdateAvailable: vi.fn(),
       simulateDownloadProgress: vi.fn(),
       simulateUpdateDownloaded: vi.fn(),
@@ -73,7 +94,9 @@ const createMockApp = () => {
       rebuildAppMenu: vi.fn(),
     },
     storeManager: {
+      get: vi.fn(),
       openInEditor: vi.fn(),
+      set: vi.fn(),
     },
   } as unknown as App;
 };
@@ -94,6 +117,7 @@ describe('MacOSMenu', () => {
 
       expect(Menu.buildFromTemplate).toHaveBeenCalled();
       expect(Menu.setApplicationMenu).toHaveBeenCalled();
+      expect(app.dock.setMenu).toHaveBeenCalled();
       expect(menu).toBeDefined();
     });
 
@@ -162,13 +186,21 @@ describe('MacOSMenu', () => {
       expect(menu).toBeDefined();
     });
 
-    it('should include show and quit items in tray menu', () => {
+    it('should include open and quit items in tray menu', () => {
       macOSMenu.buildTrayMenu();
 
       const template = (Menu.buildFromTemplate as any).mock.calls[0][0];
       expect(template.length).toBeGreaterThan(0);
-      expect(template.some((item: any) => item.label?.includes('Show'))).toBe(true);
+      expect(template.some((item: any) => item.label?.includes('Open'))).toBe(true);
+      expect(template.some((item: any) => item.label === 'Settings')).toBe(true);
       expect(template.some((item: any) => item.label === 'Quit')).toBe(true);
+    });
+
+    it('should include the mini toolbar action in the dock menu', () => {
+      macOSMenu.buildAndSetAppMenu();
+
+      const dockMenu = (app.dock.setMenu as any).mock.calls[0][0];
+      expect(dockMenu.template.some((item: any) => item.label === 'Quick Composer')).toBe(true);
     });
   });
 
@@ -251,11 +283,11 @@ describe('MacOSMenu', () => {
       expect(shell.openPath).toHaveBeenCalledWith('/path/to/logs');
     });
 
-    it('should handle tray show click', () => {
+    it('should handle tray open click', () => {
       macOSMenu.buildTrayMenu();
 
       const template = (Menu.buildFromTemplate as any).mock.calls[0][0];
-      const showItem = template.find((item: any) => item.label?.includes('Show'));
+      const showItem = template.find((item: any) => item.label?.includes('Open'));
 
       expect(showItem).toBeDefined();
       showItem.click();
@@ -274,24 +306,37 @@ describe('MacOSMenu', () => {
       expect(preferencesItem.accelerator).toBe('Command+,');
     });
 
-    it('should set correct accelerator for quit', () => {
+    it('should not show a fixed accelerator for Quick Composer', () => {
+      macOSMenu.buildAndSetAppMenu();
+
+      const template = (Menu.buildFromTemplate as any).mock.calls[0][0];
+      const fileMenu = template.find((item: any) => item.label === 'File');
+      const quickComposerItem = fileMenu.submenu.find(
+        (item: any) => item.label === 'Quick Composer',
+      );
+
+      expect(quickComposerItem).toBeDefined();
+      expect(quickComposerItem.accelerator).toBeUndefined();
+    });
+
+    it('should use role for quit (accelerator handled by Electron)', () => {
       macOSMenu.buildAndSetAppMenu();
 
       const template = (Menu.buildFromTemplate as any).mock.calls[0][0];
       const appMenu = template[0];
       const quitItem = appMenu.submenu.find((item: any) => item.label === 'Quit');
 
-      expect(quitItem.accelerator).toBe('Command+Q');
+      expect(quitItem.role).toBe('quit');
     });
 
-    it('should set correct accelerator for copy in edit menu', () => {
+    it('should use role for copy in edit menu (accelerator handled by Electron)', () => {
       macOSMenu.buildAndSetAppMenu();
 
       const template = (Menu.buildFromTemplate as any).mock.calls[0][0];
       const editMenu = template.find((item: any) => item.label === 'Edit');
       const copyItem = editMenu.submenu.find((item: any) => item.label === 'Copy');
 
-      expect(copyItem.accelerator).toBe('Command+C');
+      expect(copyItem.role).toBe('copy');
     });
 
     it('should set correct accelerators for history navigation', () => {

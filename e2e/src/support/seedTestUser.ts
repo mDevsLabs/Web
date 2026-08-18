@@ -1,12 +1,20 @@
+import { randomBytes } from 'node:crypto';
+
 import bcrypt from 'bcryptjs';
+
+const runId = process.env.E2E_RUN_ID || process.env.GITHUB_RUN_ID || 'local';
+const workerId = process.env.CUCUMBER_WORKER_ID || process.env.E2E_WORKER_ID || 'local';
+const testScope = runId === 'local' ? workerId : `${runId}_${workerId}`;
+const workerSuffix = testScope.replaceAll(/[^\w-]/g, '_');
+const isParallelWorker = workerSuffix !== 'local';
 
 // Test user credentials - these are used for e2e testing only
 export const TEST_USER = {
-  email: 'e2e-test@lobehub.com',
-  fullName: 'E2E Test User',
-  id: 'user_e2e_test_user_001',
+  email: isParallelWorker ? `e2e-test+${workerSuffix}@lobehub.com` : 'e2e-test@lobehub.com',
+  fullName: isParallelWorker ? `E2E Test User ${workerSuffix}` : 'E2E Test User',
+  id: isParallelWorker ? `user_e2e_test_user_${workerSuffix}` : 'user_e2e_test_user_001',
   password: 'TestPassword123!',
-  username: 'e2e_test_user',
+  username: isParallelWorker ? `e2e_test_user_${workerSuffix}` : 'e2e_test_user',
 };
 
 /**
@@ -39,7 +47,9 @@ export async function seedTestUser(): Promise<void> {
 
     const now = new Date().toISOString();
     // Use fixed account ID to avoid conflicts when multiple workers run concurrently
-    const accountId = 'e2e_test_account_001';
+    const accountId = isParallelWorker
+      ? `e2e_test_account_${workerSuffix}`
+      : 'e2e_test_account_001';
 
     // Use upsert to handle concurrent worker execution
     // Insert user or do nothing if already exists (handles all unique constraints)
@@ -87,6 +97,39 @@ export async function seedTestUser(): Promise<void> {
   } catch (error) {
     console.error('❌ Failed to seed test user:', error);
     throw error;
+  } finally {
+    await client.end();
+  }
+}
+
+export async function createTestSession(): Promise<string | null> {
+  const databaseUrl = process.env.DATABASE_URL;
+
+  if (!databaseUrl) {
+    console.log('⚠️ DATABASE_URL not set, cannot create test session');
+    return null;
+  }
+
+  await seedTestUser();
+
+  const { default: pg } = await import('pg');
+  const client = new pg.Client({ connectionString: databaseUrl });
+
+  try {
+    await client.connect();
+
+    const now = new Date();
+    const expiresAt = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
+    const sessionId = randomBytes(9).toString('base64url');
+    const sessionToken = randomBytes(24).toString('base64url');
+
+    await client.query(
+      `INSERT INTO auth_sessions (id, token, user_id, expires_at, created_at, updated_at)
+       VALUES ($1, $2, $3, $4, $5, $5)`,
+      [sessionId, sessionToken, TEST_USER.id, expiresAt.toISOString(), now.toISOString()],
+    );
+
+    return sessionToken;
   } finally {
     await client.end();
   }

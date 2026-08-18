@@ -1,9 +1,12 @@
 // @vitest-environment node
-import { AzureOpenAI } from 'openai';
-import { Mock, afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import OpenAI from 'openai';
+import type { Mock } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import * as openaiCompatibleFactoryModule from '../../core/openaiCompatibleFactory';
+import * as nonStreamToStreamModule from '../../core/openaiCompatibleFactory/nonStreamToStream';
+import * as streamsModule from '../../core/streams';
 import * as debugStreamModule from '../../utils/debugStream';
+import * as getModelPricingModule from '../../utils/getModelPricing';
 import { LobeAzureOpenAI } from './index';
 
 const bizErrorType = 'ProviderBizError';
@@ -19,13 +22,13 @@ describe('LobeAzureOpenAI', () => {
     instance = new LobeAzureOpenAI({
       baseURL: 'https://test.openai.azure.com/',
       apiKey: 'test_key',
-      apiVersion: '2023-03-15-preview',
     });
 
     // 使用 vi.spyOn 来模拟 streamChatCompletions 方法
     vi.spyOn(instance['client'].chat.completions, 'create').mockResolvedValue(
       new ReadableStream() as any,
     );
+    vi.spyOn(instance['client'].responses, 'create').mockResolvedValue(new ReadableStream() as any);
   });
 
   afterEach(() => {
@@ -44,12 +47,11 @@ describe('LobeAzureOpenAI', () => {
     it('should create an instance of OpenAIClient with correct parameters', () => {
       const baseURL = 'https://test.openai.azure.com/';
       const apiKey = 'test_key';
-      const apiVersion = '2023-03-15-preview';
 
-      const instance = new LobeAzureOpenAI({ baseURL, apiKey, apiVersion });
+      const instance = new LobeAzureOpenAI({ baseURL, apiKey });
 
-      expect(instance.client).toBeInstanceOf(AzureOpenAI);
-      expect(instance.baseURL).toBe(baseURL);
+      expect(instance.client).toBeInstanceOf(OpenAI);
+      expect(instance.baseURL).toBe('https://test.openai.azure.com/openai/v1');
     });
   });
 
@@ -60,6 +62,7 @@ describe('LobeAzureOpenAI', () => {
       const mockResponse = Promise.resolve(mockStream);
 
       (instance['client'].chat.completions.create as Mock).mockResolvedValue(mockResponse);
+      vi.spyOn(getModelPricingModule, 'getModelPricing').mockResolvedValue(undefined);
 
       // Act
       const result = await instance.chat({
@@ -73,99 +76,204 @@ describe('LobeAzureOpenAI', () => {
     });
 
     describe('streaming response', () => {
-      it('should handle multiple data chunks correctly', async () => {
-        const data = [
-          {
-            choices: [],
-            created: 0,
-            id: '',
-            model: '',
-            object: '',
-            prompt_filter_results: [
-              {
-                prompt_index: 0,
-                content_filter_results: {
-                  hate: { filtered: false, severity: 'safe' },
-                  self_harm: { filtered: false, severity: 'safe' },
-                  sexual: { filtered: false, severity: 'safe' },
-                  violence: { filtered: false, severity: 'safe' },
-                },
-              },
-            ],
-          },
-          {
-            choices: [
-              {
-                content_filter_results: {
-                  hate: { filtered: false, severity: 'safe' },
-                  self_harm: { filtered: false, severity: 'safe' },
-                  sexual: { filtered: false, severity: 'safe' },
-                  violence: { filtered: false, severity: 'safe' },
-                },
-                delta: { content: '你' },
-                finish_reason: null,
-                index: 0,
-                logprobs: null,
-              },
-            ],
-            created: 1715516381,
-            id: 'chatcmpl-9O2SzeGv5xy6yz0TcQNA1DHHLJ8N1',
-            model: 'gpt-35-turbo-16k',
-            object: 'chat.completion.chunk',
-            system_fingerprint: null,
-          },
-          {
-            choices: [
-              {
-                content_filter_results: {
-                  hate: { filtered: false, severity: 'safe' },
-                  self_harm: { filtered: false, severity: 'safe' },
-                  sexual: { filtered: false, severity: 'safe' },
-                  violence: { filtered: false, severity: 'safe' },
-                },
-                delta: { content: '好' },
-                finish_reason: null,
-                index: 0,
-                logprobs: null,
-              },
-            ],
-            created: 1715516381,
-            id: 'chatcmpl-9O2SzeGv5xy6yz0TcQNA1DHHLJ8N1',
-            model: 'gpt-35-turbo-16k',
-            object: 'chat.completion.chunk',
-            system_fingerprint: null,
-          },
-          {
-            choices: [
-              {
-                content_filter_results: {
-                  hate: { filtered: false, severity: 'safe' },
-                  self_harm: { filtered: false, severity: 'safe' },
-                  sexual: { filtered: false, severity: 'safe' },
-                  violence: { filtered: false, severity: 'safe' },
-                },
-                delta: { content: '！' },
-                finish_reason: null,
-                index: 0,
-                logprobs: null,
-              },
-            ],
-            created: 1715516381,
-            id: 'chatcmpl-9O2SzeGv5xy6yz0TcQNA1DHHLJ8N1',
-            model: 'gpt-35-turbo-16k',
-            object: 'chat.completion.chunk',
-            system_fingerprint: null,
-          },
-        ];
+      it('should use responses API and append web_search tool when enabledSearch is true', async () => {
+        const mockStream = new ReadableStream() as any;
+        const mockPricing = { units: [] };
 
-        const mockStream = new ReadableStream({
-          start(controller) {
-            data.forEach((chunk) => controller.enqueue(chunk));
-            controller.close();
-          },
+        instance = new LobeAzureOpenAI({
+          apiKey: 'test_key',
+          baseURL: 'https://test.openai.azure.com/',
+          id: 'lobehub',
         });
+
         vi.spyOn(instance['client'].chat.completions, 'create').mockResolvedValue(
-          mockStream as any,
+          new ReadableStream() as any,
+        );
+        vi.spyOn(instance['client'].responses, 'create').mockResolvedValue(mockStream);
+        vi.spyOn(getModelPricingModule, 'getModelPricing').mockResolvedValue(mockPricing as any);
+        vi.spyOn(streamsModule, 'OpenAIResponsesStream').mockReturnValue(new ReadableStream());
+
+        await instance.chat({
+          enabledSearch: true,
+          messages: [{ role: 'user', content: "Search for today's OpenAI news." }],
+          model: 'gpt-5.4',
+          reasoning_effort: 'medium',
+          stream: true,
+          top_p: 0.9,
+          verbosity: 'high',
+        } as any);
+
+        expect(instance['client'].chat.completions.create).not.toHaveBeenCalled();
+
+        const createCall = (instance['client'].responses.create as Mock).mock.calls[0][0];
+
+        expect(createCall.input).toBeDefined();
+        expect(createCall.model).toBe('gpt-5.4');
+        expect(createCall.reasoning).toEqual({ effort: 'medium', summary: 'auto' });
+        expect(createCall.store).toBe(false);
+        expect(createCall.stream).toBe(true);
+        expect(createCall.text).toEqual({ verbosity: 'high' });
+        expect(createCall.top_p).toBeUndefined();
+        expect(createCall.tools).toEqual(
+          expect.arrayContaining([expect.objectContaining({ type: 'web_search' })]),
+        );
+
+        expect(streamsModule.OpenAIResponsesStream).toHaveBeenCalledWith(
+          mockStream,
+          expect.objectContaining({
+            inputStartAt: expect.any(Number),
+            payload: expect.objectContaining({
+              apiMode: 'responses',
+              model: 'gpt-5.4',
+              pricing: mockPricing,
+              provider: 'lobehub',
+            }),
+          }),
+        );
+      });
+
+      it('should preserve GPT-5.6 Pro mode and Max effort in Responses payloads', async () => {
+        const mockStream = new ReadableStream() as any;
+
+        vi.spyOn(instance['client'].responses, 'create').mockResolvedValue(mockStream);
+        vi.spyOn(getModelPricingModule, 'getModelPricing').mockResolvedValue(undefined);
+        vi.spyOn(streamsModule, 'OpenAIResponsesStream').mockReturnValue(new ReadableStream());
+
+        await instance.chat({
+          messages: [{ content: 'Review this migration.', role: 'user' }],
+          model: 'gpt-5.6-sol',
+          reasoning: { mode: 'pro' },
+          reasoning_effort: 'max',
+          stream: true,
+        });
+
+        const createCall = (instance['client'].responses.create as Mock).mock.calls[0][0];
+
+        expect(createCall.reasoning).toEqual({
+          effort: 'max',
+          mode: 'pro',
+          summary: 'auto',
+        });
+      });
+
+      it('should use deploymentName for Azure Responses API requests while keeping logical model for pricing', async () => {
+        const mockStream = new ReadableStream() as any;
+        const mockPricing = { units: [] };
+
+        instance = new LobeAzureOpenAI({
+          apiKey: 'test_key',
+          baseURL: 'https://test.openai.azure.com/',
+          id: 'lobehub',
+        });
+
+        vi.spyOn(instance['client'].chat.completions, 'create').mockResolvedValue(
+          new ReadableStream() as any,
+        );
+        vi.spyOn(instance['client'].responses, 'create').mockResolvedValue(mockStream);
+        vi.spyOn(getModelPricingModule, 'getModelPricing').mockResolvedValue(mockPricing as any);
+        vi.spyOn(streamsModule, 'OpenAIResponsesStream').mockReturnValue(new ReadableStream());
+
+        await instance.chat({
+          deploymentName: 'prod-gpt-54',
+          messages: [{ role: 'user', content: 'Hello' }],
+          model: 'gpt-5.4',
+          stream: true,
+        } as any);
+
+        expect(instance['client'].chat.completions.create).not.toHaveBeenCalled();
+
+        const createCall = (instance['client'].responses.create as Mock).mock.calls[0][0];
+
+        expect(createCall.model).toBe('prod-gpt-54');
+        expect(createCall.reasoning).toEqual({ summary: 'auto' });
+        expect(createCall.deploymentName).toBeUndefined();
+
+        expect(streamsModule.OpenAIResponsesStream).toHaveBeenCalledWith(
+          mockStream,
+          expect.objectContaining({
+            payload: expect.objectContaining({
+              apiMode: 'responses',
+              model: 'gpt-5.4',
+              pricing: mockPricing,
+              provider: 'lobehub',
+            }),
+          }),
+        );
+      });
+
+      it('should strip unsupported params for Azure reasoning models and include usage in stream options', async () => {
+        const mockStream = new ReadableStream() as any;
+        const mockPricing = { units: [] };
+
+        instance = new LobeAzureOpenAI({
+          apiKey: 'test_key',
+          baseURL: 'https://test.openai.azure.com/',
+          id: 'lobehub',
+        });
+
+        vi.spyOn(instance['client'].chat.completions, 'create').mockResolvedValue(mockStream);
+        vi.spyOn(getModelPricingModule, 'getModelPricing').mockResolvedValue(mockPricing as any);
+        vi.spyOn(streamsModule, 'OpenAIStream').mockReturnValue(new ReadableStream());
+
+        await instance.chat({
+          frequency_penalty: 0.4,
+          logit_bias: { '42': 1 },
+          logprobs: true,
+          max_tokens: 256,
+          messages: [{ role: 'system', content: 'You are helpful.' }],
+          model: 'o3',
+          presence_penalty: 0.3,
+          reasoning_effort: 'minimal',
+          temperature: 0.7,
+          top_logprobs: 2,
+          top_p: 0.9,
+        } as any);
+
+        const createCall = (instance['client'].chat.completions.create as Mock).mock.calls[0][0];
+
+        expect(createCall.frequency_penalty).toBeUndefined();
+        expect(createCall.logit_bias).toBeUndefined();
+        expect(createCall.logprobs).toBeUndefined();
+        expect(createCall.max_tokens).toBeUndefined();
+        expect(createCall.messages[0].role).toBe('developer');
+        expect(createCall.presence_penalty).toBeUndefined();
+        expect(createCall.reasoning_effort).toBe('low');
+        expect(createCall.stream).toBe(true);
+        expect(createCall.stream_options).toEqual({ include_usage: true });
+        expect(createCall.temperature).toBeUndefined();
+        expect(createCall.top_logprobs).toBeUndefined();
+        expect(createCall.top_p).toBeUndefined();
+
+        expect(getModelPricingModule.getModelPricing).toHaveBeenCalledWith(
+          'o3',
+          'lobehub',
+          undefined,
+        );
+        expect(streamsModule.OpenAIStream).toHaveBeenCalledWith(
+          mockStream,
+          expect.objectContaining({
+            inputStartAt: expect.any(Number),
+            payload: expect.objectContaining({
+              apiMode: 'chat_completions',
+              includeUsageRequested: true,
+              model: 'o3',
+              pricing: mockPricing,
+              provider: 'lobehub',
+            }),
+          }),
+        );
+      });
+
+      it('should handle multiple data chunks correctly', async () => {
+        const mockStream = new ReadableStream() as any;
+        vi.spyOn(instance['client'].chat.completions, 'create').mockResolvedValue(mockStream);
+        vi.spyOn(streamsModule, 'OpenAIStream').mockReturnValue(
+          new ReadableStream({
+            start(controller) {
+              controller.enqueue(new TextEncoder().encode('event: text\ndata: "你好！"\n\n'));
+              controller.close();
+            },
+          }),
         );
 
         const result = await instance.chat({
@@ -179,40 +287,30 @@ describe('LobeAzureOpenAI', () => {
           messages: [{ role: 'user', content: '你好' }],
         });
 
-        const decoder = new TextDecoder();
-        const reader = result.body!.getReader();
-        const stream: string[] = [];
-
-        while (true) {
-          const { value, done } = await reader.read();
-          if (done) break;
-          stream.push(decoder.decode(value));
-        }
-
-        expect(stream).toEqual(
-          [
-            'id: ',
-            'event: data',
-            'data: {"choices":[],"created":0,"id":"","model":"","object":"","prompt_filter_results":[{"prompt_index":0,"content_filter_results":{"hate":{"filtered":false,"severity":"safe"},"self_harm":{"filtered":false,"severity":"safe"},"sexual":{"filtered":false,"severity":"safe"},"violence":{"filtered":false,"severity":"safe"}}}]}\n',
-            'id: chatcmpl-9O2SzeGv5xy6yz0TcQNA1DHHLJ8N1',
-            'event: text',
-            'data: "你"\n',
-            'id: chatcmpl-9O2SzeGv5xy6yz0TcQNA1DHHLJ8N1',
-            'event: text',
-            'data: "好"\n',
-            'id: chatcmpl-9O2SzeGv5xy6yz0TcQNA1DHHLJ8N1',
-            'event: text',
-            'data: "！"\n',
-          ].map((item) => `${item}\n`),
+        expect(result).toBeInstanceOf(Response);
+        expect(streamsModule.OpenAIStream).toHaveBeenCalledWith(
+          mockStream,
+          expect.objectContaining({
+            inputStartAt: expect.any(Number),
+            payload: expect.objectContaining({
+              model: 'gpt-35-turbo-16k',
+              provider: 'azure',
+            }),
+          }),
         );
       });
 
       it('should handle non-streaming response', async () => {
-        vi.spyOn(openaiCompatibleFactoryModule, 'transformResponseToStream').mockImplementation(
-          () => {
-            return new ReadableStream();
-          },
-        );
+        vi.spyOn(nonStreamToStreamModule, 'transformResponseToStream').mockImplementation(() => {
+          return new ReadableStream();
+        });
+        vi.spyOn(instance['client'].chat.completions, 'create').mockResolvedValue({
+          choices: [],
+          created: 1715516381,
+          id: 'chatcmpl-non-stream',
+          model: 'gpt-35-turbo-16k',
+          object: 'chat.completion',
+        } as any);
         // Act
         await instance.chat({
           stream: false,
@@ -222,16 +320,21 @@ describe('LobeAzureOpenAI', () => {
         });
 
         // Assert
-        expect(openaiCompatibleFactoryModule.transformResponseToStream).toHaveBeenCalled();
+        expect(nonStreamToStreamModule.transformResponseToStream).toHaveBeenCalled();
       });
     });
 
     it('should handle o1 series models without streaming', async () => {
-      vi.spyOn(openaiCompatibleFactoryModule, 'transformResponseToStream').mockImplementation(
-        () => {
-          return new ReadableStream();
-        },
-      );
+      vi.spyOn(nonStreamToStreamModule, 'transformResponseToStream').mockImplementation(() => {
+        return new ReadableStream();
+      });
+      vi.spyOn(instance['client'].chat.completions, 'create').mockResolvedValue({
+        choices: [],
+        created: 1715516381,
+        id: 'chatcmpl-o1',
+        model: 'o1-preview',
+        object: 'chat.completion',
+      } as any);
 
       // Act
       await instance.chat({
@@ -241,7 +344,7 @@ describe('LobeAzureOpenAI', () => {
       });
 
       // Assert
-      expect(openaiCompatibleFactoryModule.transformResponseToStream).toHaveBeenCalled();
+      expect(nonStreamToStreamModule.transformResponseToStream).toHaveBeenCalled();
     });
 
     describe('Error', () => {
@@ -264,7 +367,7 @@ describe('LobeAzureOpenAI', () => {
         } catch (e) {
           // Assert
           expect(e).toEqual({
-            endpoint: 'https://***.openai.azure.com/',
+            endpoint: 'https://***.openai.azure.com/openai/v1',
             error: {
               code: 'DeploymentNotFound',
               message: 'Deployment not found',
@@ -292,7 +395,7 @@ describe('LobeAzureOpenAI', () => {
         } catch (e) {
           // Assert
           expect(e).toEqual({
-            endpoint: 'https://***.openai.azure.com/',
+            endpoint: 'https://***.openai.azure.com/openai/v1',
             errorType: 'AgentRuntimeError',
             provider: 'azure',
             error: {
@@ -309,20 +412,15 @@ describe('LobeAzureOpenAI', () => {
       it('should call debugStream when DEBUG_CHAT_COMPLETION is 1', async () => {
         // Arrange
         const mockProdStream = new ReadableStream() as any;
-        const mockDebugStream = new ReadableStream({
-          start(controller) {
-            controller.enqueue('Debug stream content');
-            controller.close();
-          },
-        }) as any;
-        mockDebugStream.toReadableStream = () => mockDebugStream;
+        const mockDebugStream = new ReadableStream() as any;
 
         (instance['client'].chat.completions.create as Mock).mockResolvedValue({
-          tee: () => [mockProdStream, { toReadableStream: () => mockDebugStream }],
+          tee: () => [mockProdStream, mockDebugStream],
         });
 
         process.env.DEBUG_AZURE_CHAT_COMPLETION = '1';
         vi.spyOn(debugStreamModule, 'debugStream').mockImplementation(() => Promise.resolve());
+        vi.spyOn(streamsModule, 'OpenAIStream').mockReturnValue(new ReadableStream());
 
         // Act
         await instance.chat({
@@ -361,6 +459,30 @@ describe('LobeAzureOpenAI', () => {
       const args = vi.mocked(generateSpy).mock.calls[0][0] as any;
       expect(args).not.toHaveProperty('image');
       expect(res).toEqual({ imageUrl: url });
+    });
+
+    it('should use mapped model id for image generation requests', async () => {
+      instance = new LobeAzureOpenAI({
+        apiKey: 'test_key',
+        baseURL: 'https://test.openai.azure.com/',
+        modelIdMapping: { 'gpt-image-1': 'azure-image-deployment' },
+      });
+      const editSpy = vi
+        .spyOn(instance['client'].images, 'edit')
+        .mockResolvedValue({ data: [{ url: 'https://example.com/mapped.png' }] } as any);
+      const helpers = await import('../../core/contextBuilders/openai');
+      vi.spyOn(helpers, 'convertImageUrlToFile').mockResolvedValue({} as any);
+
+      await instance.createImage({
+        model: 'gpt-image-1',
+        params: { imageUrl: 'https://example.com/source.png', prompt: 'mapped cat' },
+      });
+
+      expect(vi.mocked(editSpy).mock.calls[0][0]).toMatchObject({
+        input_fidelity: 'high',
+        model: 'azure-image-deployment',
+        prompt: 'mapped cat',
+      });
     });
 
     it('should parse string JSON response from images.generate', async () => {
@@ -406,7 +528,7 @@ describe('LobeAzureOpenAI', () => {
       await expect(
         instance.createImage({ model: 'gpt-image-1', params: { prompt: 'moon' } }),
       ).rejects.toMatchObject({
-        endpoint: 'https://***.openai.azure.com/',
+        endpoint: 'https://***.openai.azure.com/openai/v1',
         errorType: 'AgentRuntimeError',
         provider: 'azure',
         error: {
@@ -425,7 +547,7 @@ describe('LobeAzureOpenAI', () => {
       await expect(
         instance.createImage({ model: 'gpt-image-1', params: { prompt: 'stars' } }),
       ).rejects.toEqual({
-        endpoint: 'https://***.openai.azure.com/',
+        endpoint: 'https://***.openai.azure.com/openai/v1',
         errorType: 'AgentRuntimeError',
         provider: 'azure',
         error: {
@@ -453,6 +575,27 @@ describe('LobeAzureOpenAI', () => {
       expect(editSpy).toHaveBeenCalledTimes(1);
       const arg = vi.mocked(editSpy).mock.calls[0][0] as any;
       expect(arg).not.toHaveProperty('size');
+      expect(arg).toHaveProperty('input_fidelity', 'high');
+      expect(res).toEqual({ imageUrl: url });
+    });
+
+    it('should not send input_fidelity for gpt-image-2 edit requests', async () => {
+      const url = 'https://example.com/gpt-image-2-edited.png';
+      const editSpy = vi
+        .spyOn(instance['client'].images, 'edit')
+        .mockResolvedValue({ data: [{ url }] } as any);
+
+      const helpers = await import('../../core/contextBuilders/openai');
+      vi.spyOn(helpers, 'convertImageUrlToFile').mockResolvedValue({} as any);
+
+      const res = await instance.createImage({
+        model: 'gpt-image-2',
+        params: { prompt: 'edit', imageUrl: 'https://example.com/in.png' },
+      });
+
+      expect(editSpy).toHaveBeenCalledTimes(1);
+      const arg = vi.mocked(editSpy).mock.calls[0][0] as any;
+      expect(arg).not.toHaveProperty('input_fidelity');
       expect(res).toEqual({ imageUrl: url });
     });
 
@@ -484,58 +627,6 @@ describe('LobeAzureOpenAI', () => {
 
       const arg = vi.mocked(generateSpy).mock.calls[0][0] as any;
       expect(arg).not.toHaveProperty('image');
-    });
-  });
-
-  describe('private method', () => {
-    describe('tocamelCase', () => {
-      it('should convert string to camel case', () => {
-        const key = 'image_url';
-
-        const camelCaseKey = instance['tocamelCase'](key);
-
-        expect(camelCaseKey).toEqual('imageUrl');
-      });
-    });
-
-    describe('camelCaseKeys', () => {
-      it('should convert object keys to camel case', () => {
-        const obj = {
-          frequency_penalty: 0,
-          messages: [
-            {
-              role: 'user',
-              content: [
-                {
-                  type: 'image_url',
-                  image_url: {
-                    url: '<image URL>',
-                  },
-                },
-              ],
-            },
-          ],
-        };
-
-        const newObj = instance['camelCaseKeys'](obj);
-
-        expect(newObj).toEqual({
-          frequencyPenalty: 0,
-          messages: [
-            {
-              role: 'user',
-              content: [
-                {
-                  type: 'image_url',
-                  imageUrl: {
-                    url: '<image URL>',
-                  },
-                },
-              ],
-            },
-          ],
-        });
-      });
     });
   });
 });

@@ -1,81 +1,59 @@
 'use client';
 
-import { Button, Flexbox, Text } from '@lobehub/ui';
+import { Flexbox, Skeleton, Text } from '@lobehub/ui';
 import { cx } from 'antd-style';
-import { ExternalLink } from 'lucide-react';
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 
+import { useClientDataSWR } from '@/libs/swr';
+import { portalKeys } from '@/libs/swr/keys';
 import { documentService } from '@/services/document';
-import { useChatStore } from '@/store/chat';
-import { chatPortalSelectors } from '@/store/chat/selectors';
-import { useNotebookStore } from '@/store/notebook';
-import { notebookSelectors } from '@/store/notebook/selectors';
 import { oneLineEllipsis } from '@/styles';
-import { standardizeIdentifier } from '@/utils/identifier';
+import { getDocumentRenderMode } from '@/utils/documentRenderMode';
 
 import AutoSaveHint from './AutoSaveHint';
+import { useResolvedDocumentId } from './documentViewContext';
 
 const Header = () => {
-  const { t } = useTranslation('portal');
-  const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
+  const documentId = useResolvedDocumentId();
 
-  const [topicId, documentId] = useChatStore((s) => [
-    s.activeTopicId,
-    chatPortalSelectors.portalDocumentId(s),
-  ]);
+  const { data: document, isLoading } = useClientDataSWR(
+    documentId ? portalKeys.documentHeader(documentId) : null,
+    () => documentService.getDocumentById(documentId!),
+  );
 
-  const [useFetchDocuments, title, fileType] = useNotebookStore((s) => [
-    s.useFetchDocuments,
-    notebookSelectors.getDocumentById(topicId, documentId)(s)?.title,
-    notebookSelectors.getDocumentById(topicId, documentId)(s)?.fileType,
-  ]);
-  useFetchDocuments(topicId);
+  const title = document?.filename || document?.title;
+  const isReadonly = !!document && getDocumentRenderMode(document).mode === 'highlight';
 
-  const handleOpenInPageEditor = async () => {
-    if (!documentId) return;
+  if (!documentId) return null;
 
-    setLoading(true);
-    try {
-      // Update fileType to custom/document so it appears in page list
-      await documentService.updateDocument({
-        fileType: 'custom/document',
-        id: documentId,
-      });
-
-      // Navigate to the page editor
-      // Note: /page route automatically adds 'docs_' prefix to the id
-      navigate(`/page/${standardizeIdentifier(documentId)}`);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if (!title) return null;
+  if (isLoading || !title) {
+    return (
+      <Flexbox
+        horizontal
+        align={'center'}
+        flex={1}
+        gap={12}
+        justify={'space-between'}
+        width={'100%'}
+      >
+        <Flexbox flex={1}>
+          <Skeleton.Button active size={'small'} style={{ height: 16, width: 180 }} />
+        </Flexbox>
+      </Flexbox>
+    );
+  }
 
   return (
-    <Flexbox align={'center'} flex={1} gap={12} horizontal justify={'space-between'} width={'100%'}>
+    <Flexbox horizontal align={'center'} flex={1} gap={12} justify={'space-between'} width={'100%'}>
       <Flexbox flex={1}>
         <Text className={cx(oneLineEllipsis)} type={'secondary'}>
           {title}
         </Text>
       </Flexbox>
-      <Flexbox align={'center'} gap={8} horizontal>
-        <AutoSaveHint />
-        {fileType !== 'agent/plan' && (
-          <Button
-            icon={<ExternalLink size={14} />}
-            loading={loading}
-            onClick={handleOpenInPageEditor}
-            size={'small'}
-            type={'text'}
-          >
-            {t('openInPageEditor')}
-          </Button>
-        )}
-      </Flexbox>
+      {!isReadonly && (
+        <Flexbox horizontal align={'center'} gap={8}>
+          <AutoSaveHint />
+        </Flexbox>
+      )}
     </Flexbox>
   );
 };

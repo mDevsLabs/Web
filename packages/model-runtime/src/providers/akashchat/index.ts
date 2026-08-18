@@ -1,9 +1,7 @@
 import { ModelProvider } from 'model-bank';
 
-import {
-  OpenAICompatibleFactoryOptions,
-  createOpenAICompatibleRuntime,
-} from '../../core/openaiCompatibleFactory';
+import type { OpenAICompatibleFactoryOptions } from '../../core/openaiCompatibleFactory';
+import { createOpenAICompatibleRuntime } from '../../core/openaiCompatibleFactory';
 import { processMultiProviderModelList } from '../../utils/modelParse';
 
 const THINKING_MODELS = new Set(['DeepSeek-V3-1']);
@@ -38,22 +36,14 @@ export const params = {
     chatCompletion: () => process.env.DEBUG_AKASH_CHAT_COMPLETION === '1',
   },
   models: async ({ client }) => {
-    try {
-      const modelsPage = (await client.models.list()) as any;
-      const rawList: any[] = modelsPage.data || [];
+    const modelsPage = (await client.models.list()) as any;
+    const rawList: any[] = modelsPage.data || [];
 
-      // Remove `created` field from each model item
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const modelList: AkashChatModelCard[] = rawList.map(({ created: _, ...rest }) => rest);
+    // Remove `created` field from each model item
 
-      return await processMultiProviderModelList(modelList, 'akashchat');
-    } catch (error) {
-      console.warn(
-        'Failed to fetch AkashChat models. Please ensure your AkashChat API key is valid:',
-        error,
-      );
-      return [];
-    }
+    const modelList: AkashChatModelCard[] = rawList.map(({ created: _, ...rest }) => rest);
+
+    return await processMultiProviderModelList(modelList, 'akashchat');
   },
   provider: ModelProvider.AkashChat,
 } satisfies OpenAICompatibleFactoryOptions;

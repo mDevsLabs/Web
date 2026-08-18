@@ -2,9 +2,8 @@
 
 import { DEFAULT_AVATAR } from '@lobechat/const';
 import type { AgentGroupMember, BuiltinRenderProps } from '@lobechat/types';
-import { Avatar, Flexbox, Text } from '@lobehub/ui';
+import { Accordion, AccordionItem, Avatar, Block, Flexbox, Markdown, Text } from '@lobehub/ui';
 import { createStaticStyles, useTheme } from 'antd-style';
-import { Clock } from 'lucide-react';
 import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -14,103 +13,133 @@ import { agentGroupSelectors } from '@/store/agentGroup/selectors';
 import type { ExecuteTasksParams } from '../../../types';
 
 const styles = createStaticStyles(({ css, cssVar }) => ({
-  container: css`
+  assignee: css`
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding-block: 12px;
+    flex-shrink: 0;
+    gap: 6px;
+    align-items: center;
+
+    font-size: 12px;
+    color: ${cssVar.colorTextSecondary};
   `,
-  taskCard: css`
-    padding: 12px;
-    border-radius: 8px;
-    background: ${cssVar.colorFillQuaternary};
+  container: css`
+    .accordion-action {
+      margin-inline-end: 8px;
+      opacity: 1 !important;
+    }
   `,
-  taskContent: css`
-    padding-block: 8px;
-    padding-inline: 12px;
-    border-radius: ${cssVar.borderRadius};
-    background: ${cssVar.colorFillTertiary};
+  index: css`
+    flex-shrink: 0;
+    font-size: 12px;
+    color: ${cssVar.colorTextQuaternary};
   `,
-  taskHeader: css`
+  instruction: css`
     font-size: 13px;
-    font-weight: 500;
-    color: ${cssVar.colorText};
+    line-height: 1.6;
+    color: ${cssVar.colorTextSecondary};
   `,
-  timeout: css`
+  resultBox: css`
+    overflow: hidden;
+  `,
+  resultLabel: css`
+    padding-inline: 4px;
     font-size: 12px;
     color: ${cssVar.colorTextTertiary};
+  `,
+
+  taskTitle: css`
+    overflow: hidden;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   `,
 }));
 
 /**
  * ExecuteTasks Render component for Group Management tool
- * Read-only display of multiple task execution requests
+ * Accordion-style task list with expandable instruction and assignee on the right
  */
-const ExecuteTasksRender = memo<BuiltinRenderProps<ExecuteTasksParams>>(({ args }) => {
-  const { t } = useTranslation('tool');
-  const theme = useTheme();
-  const { tasks } = args || {};
+const ExecuteTasksRender = memo<BuiltinRenderProps<ExecuteTasksParams, unknown, string>>(
+  ({ args, content }) => {
+    const { t } = useTranslation('tool');
+    const theme = useTheme();
+    const { tasks } = args || {};
+    const resultContent = typeof content === 'string' ? content.trim() : '';
 
-  // Get active group ID and agents from store
-  const activeGroupId = useAgentGroupStore(agentGroupSelectors.activeGroupId);
-  const groupAgents = useAgentGroupStore((s) =>
-    activeGroupId ? agentGroupSelectors.getGroupAgents(activeGroupId)(s) : [],
-  );
+    // Get active group ID and agents from store
+    const activeGroupId = useAgentGroupStore(agentGroupSelectors.activeGroupId);
+    const groupAgents = useAgentGroupStore((s) =>
+      activeGroupId ? agentGroupSelectors.getGroupAgents(activeGroupId)(s) : [],
+    );
 
-  // Get agent details for each task
-  const tasksWithAgents = useMemo(() => {
-    if (!tasks?.length || !groupAgents.length) return [];
-    return tasks.map((task) => ({
-      ...task,
-      agent: groupAgents.find((agent) => agent.id === task.agentId) as AgentGroupMember | undefined,
-    }));
-  }, [tasks, groupAgents]);
+    // Get agent details for each task
+    const tasksWithAgents = useMemo(() => {
+      if (!tasks?.length) return [];
+      return tasks.map((task) => ({
+        ...task,
+        agent: groupAgents.find((agent) => agent.id === task.agentId) as
+          AgentGroupMember | undefined,
+      }));
+    }, [tasks, groupAgents]);
 
-  if (!tasksWithAgents.length) return null;
+    if (!tasksWithAgents.length && !resultContent) return null;
 
-  return (
-    <div className={styles.container}>
-      {tasksWithAgents.map((task, index) => {
-        const timeoutMinutes = task.timeout ? Math.round(task.timeout / 60_000) : 30;
+    return (
+      <Flexbox className={styles.container} gap={12}>
+        {!!tasksWithAgents.length && (
+          <Accordion defaultExpandedKeys={[]} gap={0} variant={'borderless'}>
+            {tasksWithAgents.map((task, index) => (
+              <AccordionItem
+                itemKey={task.agentId || String(index)}
+                key={task.agentId || index}
+                paddingBlock={8}
+                paddingInline={4}
+                action={
+                  <div className={styles.assignee}>
+                    <Avatar
+                      avatar={task.agent?.avatar || DEFAULT_AVATAR}
+                      background={task.agent?.backgroundColor || theme.colorBgContainer}
+                      shape={'circle'}
+                      size={20}
+                    />
+                    <span>{task.agent?.title}</span>
+                  </div>
+                }
+                title={
+                  <Flexbox horizontal align={'center'} gap={8} style={{ minWidth: 0 }}>
+                    <span className={styles.index}>{index + 1}.</span>
+                    <Text className={styles.taskTitle} weight={500}>
+                      {task.title || 'Task'}
+                    </Text>
+                  </Flexbox>
+                }
+              >
+                {task.instruction && (
+                  <Block padding={12} style={{ marginTop: 8 }} variant={'filled'}>
+                    <Text className={styles.instruction}>{task.instruction}</Text>
+                  </Block>
+                )}
+              </AccordionItem>
+            ))}
+          </Accordion>
+        )}
 
-        return (
-          <div className={styles.taskCard} key={task.agentId || index}>
-            <Flexbox gap={12}>
-              {/* Header: Agent info + Timeout */}
-              <Flexbox align={'center'} gap={12} horizontal justify={'space-between'}>
-                <Flexbox align={'center'} flex={1} gap={8} horizontal style={{ minWidth: 0 }}>
-                  <Avatar
-                    avatar={task.agent?.avatar || DEFAULT_AVATAR}
-                    background={task.agent?.backgroundColor || theme.colorBgContainer}
-                    shape={'square'}
-                    size={20}
-                  />
-                  <span className={styles.taskHeader}>
-                    {task.title || task.agent?.title || 'Task'}
-                  </span>
-                </Flexbox>
-                <Flexbox align="center" className={styles.timeout} gap={4} horizontal>
-                  <Clock size={14} />
-                  <span>
-                    {timeoutMinutes}{' '}
-                    {t('agentGroupManagement.executeTask.intervention.timeoutUnit')}
-                  </span>
-                </Flexbox>
-              </Flexbox>
-
-              {/* Task content (read-only) */}
-              {task.instruction && (
-                <Text className={styles.taskContent} style={{ margin: 0 }}>
-                  {task.instruction}
-                </Text>
-              )}
-            </Flexbox>
-          </div>
-        );
-      })}
-    </div>
-  );
-});
+        {resultContent && (
+          <Flexbox gap={4}>
+            <Text className={styles.resultLabel}>
+              {t('agentGroupManagement.executeTasks.results')}
+            </Text>
+            <Block className={styles.resultBox} padding={12} variant={'filled'}>
+              <Markdown style={{ maxHeight: 320, overflow: 'auto' }} variant={'chat'}>
+                {resultContent}
+              </Markdown>
+            </Block>
+          </Flexbox>
+        )}
+      </Flexbox>
+    );
+  },
+);
 
 ExecuteTasksRender.displayName = 'ExecuteTasksRender';
 

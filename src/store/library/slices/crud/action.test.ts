@@ -1,13 +1,33 @@
 import { act, renderHook, waitFor } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { withSWR } from '~test-utils';
 
+import { getActiveWorkspaceId } from '@/business/client/hooks/useActiveWorkspaceId';
+import { mutate } from '@/libs/swr';
+import { knowledgeBaseKeys } from '@/libs/swr/keys';
 import { knowledgeBaseService } from '@/services/knowledgeBase';
-import { CreateKnowledgeBaseParams, KnowledgeBaseItem } from '@/types/knowledgeBase';
+import type { CreateKnowledgeBaseParams, KnowledgeBaseItem } from '@/types/knowledgeBase';
+import { withSWR } from '~test-utils';
 
 import { useKnowledgeBaseStore } from '../../store';
 
 vi.mock('zustand/traditional');
+
+const mocks = vi.hoisted(() => ({
+  activeWorkspaceId: null as string | null,
+}));
+
+vi.mock('@/business/client/hooks/useActiveWorkspaceId', () => ({
+  getActiveWorkspaceId: vi.fn(() => mocks.activeWorkspaceId),
+  useActiveWorkspaceId: vi.fn(() => mocks.activeWorkspaceId),
+}));
+
+vi.mock('@/libs/swr', async (importOriginal) => {
+  const modules = await importOriginal();
+  return {
+    ...(modules as any),
+    mutate: vi.fn(),
+  };
+});
 
 vi.mock('swr', async (importOriginal) => {
   const modules = await importOriginal();
@@ -19,6 +39,7 @@ vi.mock('swr', async (importOriginal) => {
 
 beforeEach(() => {
   vi.clearAllMocks();
+  mocks.activeWorkspaceId = null;
 
   useKnowledgeBaseStore.setState(
     {
@@ -127,12 +148,25 @@ describe('KnowledgeBaseCrudAction', () => {
     it('should execute refresh without errors', async () => {
       const { result } = renderHook(() => useKnowledgeBaseStore());
 
-      // The action uses mutate internally - we just verify it doesn't throw
       await expect(
         act(async () => {
           await result.current.refreshKnowledgeBaseList();
         }),
       ).resolves.not.toThrow();
+
+      expect(mutate).toHaveBeenCalledWith(knowledgeBaseKeys.list());
+    });
+
+    it('should refresh the active workspace-scoped cache key', async () => {
+      mocks.activeWorkspaceId = 'workspace-1';
+      const { result } = renderHook(() => useKnowledgeBaseStore());
+
+      await act(async () => {
+        await result.current.refreshKnowledgeBaseList();
+      });
+
+      expect(mutate).toHaveBeenCalledWith(knowledgeBaseKeys.list('workspace-1'));
+      expect(getActiveWorkspaceId).toHaveBeenCalled();
     });
   });
 
@@ -226,9 +260,12 @@ describe('KnowledgeBaseCrudAction', () => {
 
       vi.spyOn(knowledgeBaseService, 'getKnowledgeBaseById').mockResolvedValue(mockItem);
 
-      const { result } = renderHook(() => useKnowledgeBaseStore().useFetchKnowledgeBaseItem('kb-1'), {
-        wrapper: withSWR,
-      });
+      const { result } = renderHook(
+        () => useKnowledgeBaseStore().useFetchKnowledgeBaseItem('kb-1'),
+        {
+          wrapper: withSWR,
+        },
+      );
 
       await waitFor(() => {
         expect(result.current.data).toEqual(mockItem);
@@ -253,9 +290,12 @@ describe('KnowledgeBaseCrudAction', () => {
 
       vi.spyOn(knowledgeBaseService, 'getKnowledgeBaseById').mockResolvedValue(mockItem);
 
-      const { result } = renderHook(() => useKnowledgeBaseStore().useFetchKnowledgeBaseItem('kb-2'), {
-        wrapper: withSWR,
-      });
+      const { result } = renderHook(
+        () => useKnowledgeBaseStore().useFetchKnowledgeBaseItem('kb-2'),
+        {
+          wrapper: withSWR,
+        },
+      );
 
       await waitFor(() => {
         expect(result.current.data).toEqual(mockItem);
@@ -276,9 +316,12 @@ describe('KnowledgeBaseCrudAction', () => {
         });
       });
 
-      const { result } = renderHook(() => useKnowledgeBaseStore().useFetchKnowledgeBaseItem('kb-3'), {
-        wrapper: withSWR,
-      });
+      const { result } = renderHook(
+        () => useKnowledgeBaseStore().useFetchKnowledgeBaseItem('kb-3'),
+        {
+          wrapper: withSWR,
+        },
+      );
 
       await waitFor(() => {
         expect(result.current.data).toBeUndefined();
@@ -326,9 +369,12 @@ describe('KnowledgeBaseCrudAction', () => {
 
       vi.spyOn(knowledgeBaseService, 'getKnowledgeBaseById').mockResolvedValue(newItem);
 
-      const { result } = renderHook(() => useKnowledgeBaseStore().useFetchKnowledgeBaseItem('kb-new'), {
-        wrapper: withSWR,
-      });
+      const { result } = renderHook(
+        () => useKnowledgeBaseStore().useFetchKnowledgeBaseItem('kb-new'),
+        {
+          wrapper: withSWR,
+        },
+      );
 
       await waitFor(() => {
         expect(result.current.data).toEqual(newItem);

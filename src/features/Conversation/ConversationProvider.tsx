@@ -1,22 +1,40 @@
 'use client';
 
-import type { UIChatMessage } from '@lobechat/types';
+import { type UIChatMessage } from '@lobechat/types';
 import debug from 'debug';
 import isEqual from 'fast-deep-equal';
-import { type ReactNode, memo, useMemo } from 'react';
+import { type ReactNode } from 'react';
+import { memo, useMemo } from 'react';
 
+import { useFetchAvailableAgents } from '@/hooks/useFetchAvailableAgents';
 import { messageMapKey } from '@/store/chat/utils/messageMapKey';
 
+import AssistantTurnSettledWatcher from './AssistantTurnSettledWatcher';
+import { createStore, Provider } from './store';
 import StoreUpdater from './StoreUpdater';
-import { Provider, createStore } from './store';
-import type {
-  ActionsBarConfig,
-  ConversationContext,
-  ConversationHooks,
-  OperationState,
+import {
+  type ActionsBarConfig,
+  type ComposerTarget,
+  type ConversationContext,
+  type ConversationHooks,
+  createComposerTarget,
+  type MessagesChangeMeta,
+  type OperationState,
 } from './types';
 
 const log = debug('lobe-render:features:Conversation');
+
+interface ConversationContextPrefetcherProps {
+  context: ConversationContext;
+}
+
+const ConversationContextPrefetcher = memo<ConversationContextPrefetcherProps>(({ context }) => {
+  useFetchAvailableAgents(!context.topicShareId && !!context.agentId);
+
+  return null;
+});
+
+ConversationContextPrefetcher.displayName = 'ConversationContextPrefetcher';
 
 export interface ConversationProviderProps {
   /**
@@ -24,6 +42,11 @@ export interface ConversationProviderProps {
    */
   actionsBar?: ActionsBarConfig;
   children: ReactNode;
+  /**
+   * Explicit composer capability for this surface. Defaults to this
+   * conversation's own context key.
+   */
+  composerTarget?: ComposerTarget;
   /**
    * Conversation context (data coordinates)
    */
@@ -48,8 +71,15 @@ export interface ConversationProviderProps {
    *
    * @param messages - The updated messages array
    * @param context - The context that this data belongs to (prevents race conditions)
+   * @param meta - Set when the messages are a fetched server snapshot; forward
+   *   it as `source` to ChatStore.replaceMessages so the SWR write-through can
+   *   skip fetch echoes (see MessagesChangeMeta)
    */
-  onMessagesChange?: (messages: UIChatMessage[], context: ConversationContext) => void;
+  onMessagesChange?: (
+    messages: UIChatMessage[],
+    context: ConversationContext,
+    meta?: MessagesChangeMeta,
+  ) => void;
   /**
    * External operation state (from ChatStore)
    *
@@ -72,6 +102,7 @@ export const ConversationProvider = memo<ConversationProviderProps>(
   ({
     actionsBar,
     children,
+    composerTarget,
     context,
     hooks = {},
     hasInitMessages,
@@ -81,6 +112,10 @@ export const ConversationProvider = memo<ConversationProviderProps>(
     skipFetch,
   }) => {
     const contextKey = useMemo(() => messageMapKey(context), [context]);
+    const resolvedComposerTarget = useMemo(
+      () => composerTarget ?? createComposerTarget(contextKey),
+      [composerTarget, contextKey],
+    );
 
     log(
       '[Provider] render | contextKey=%s | messagesCount=%d | hasInitMessages=%s | skipFetch=%s',
@@ -91,17 +126,30 @@ export const ConversationProvider = memo<ConversationProviderProps>(
     );
 
     return (
-      <Provider createStore={() => createStore({ context, hooks, skipFetch })}>
+      <Provider
+        createStore={() =>
+          createStore({
+            composerTarget: resolvedComposerTarget,
+            context,
+            hooks,
+            initialMessages: messages,
+            skipFetch,
+          })
+        }
+      >
         <StoreUpdater
           actionsBar={actionsBar}
+          composerTarget={resolvedComposerTarget}
           context={context}
           hasInitMessages={hasInitMessages}
           hooks={hooks}
           messages={messages}
-          onMessagesChange={onMessagesChange}
           operationState={operationState}
           skipFetch={skipFetch}
+          onMessagesChange={onMessagesChange}
         />
+        <AssistantTurnSettledWatcher />
+        <ConversationContextPrefetcher context={context} />
         {children}
       </Provider>
     );

@@ -1,16 +1,17 @@
-import { type ModelProviderCard } from '@/types/llm';
+import type { ModelProviderCard } from '../types';
 
 // ref: https://x.ai/about
 const XAI: ModelProviderCard = {
   chatModels: [],
-  checkModel: 'grok-4-1-fast-non-reasoning',
+  checkModel: 'grok-4.3',
   description:
     'xAI builds AI to accelerate scientific discovery, with a mission to deepen humanity’s understanding of the universe.',
   id: 'xai',
   modelList: { showModelFetcher: true },
   modelsUrl: 'https://docs.x.ai/docs#models',
-  name: 'xAI (Grok)',
+  name: 'xAI',
   settings: {
+    disableBrowserRequest: true,
     proxyUrl: {
       placeholder: 'https://api.x.ai/v1',
     },

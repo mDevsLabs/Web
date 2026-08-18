@@ -1,7 +1,7 @@
-import { ChatToolPayload } from '@lobechat/types';
+import { type ChatToolPayload, type GlobalInterventionAuditConfig } from '@lobechat/types';
 import { describe, expect, it } from 'vitest';
 
-import { AgentRuntimeContext, AgentState } from '../../types';
+import { type AgentRuntimeContext, type AgentState } from '../../types';
 import { GeneralChatAgent } from '../GeneralChatAgent';
 
 describe('GeneralChatAgent', () => {
@@ -53,6 +53,26 @@ describe('GeneralChatAgent', () => {
     },
   });
 
+  const createCompressionAgent = () =>
+    new GeneralChatAgent({
+      agentConfig: { maxSteps: 100 },
+      compressionConfig: {
+        enabled: true,
+        maxWindowToken: 1,
+      },
+      operationId: 'test-session',
+      modelRuntimeConfig: mockModelRuntimeConfig,
+    });
+
+  const expectCompressionInstruction = (messages: AgentState['messages']) => ({
+    type: 'compress_context',
+    payload: {
+      currentTokenCount: expect.any(Number),
+      existingSummary: undefined,
+      messages,
+    },
+  });
+
   describe('init and user_input phase', () => {
     it('should return call_llm instruction for init phase', async () => {
       const agent = new GeneralChatAgent({
@@ -74,6 +94,7 @@ describe('GeneralChatAgent', () => {
           messages: state.messages,
           model: 'gpt-4o-mini',
           provider: 'openai',
+          tools: undefined,
         },
       });
     });
@@ -99,8 +120,155 @@ describe('GeneralChatAgent', () => {
         payload: {
           messages: state.messages,
           message: { role: 'user', content: 'What is the weather?' },
+          tools: undefined,
         },
       });
+    });
+
+    it('should not infer allowedToolNames from normal state tools', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+      const state = createMockState({
+        messages: [{ role: 'user', content: 'Use tools if needed' }] as any,
+        tools: [{ function: { name: 'workspace____read' }, type: 'function' }] as any,
+      });
+
+      const result = await agent.runner(createMockContext('user_input'), state);
+
+      expect((result as any).payload).not.toHaveProperty('allowedToolNames');
+      expect((result as any).payload.tools).toBe(state.tools);
+    });
+
+    it('should pass explicit allowedToolNames from config', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        allowedToolNames: ['workspace____read'],
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+        tools: [{ function: { name: 'workspace____read' }, type: 'function' }],
+      });
+      const state = createMockState({
+        messages: [{ role: 'user', content: 'Use read only' }] as any,
+      });
+
+      const result = await agent.runner(createMockContext('user_input'), state);
+
+      expect((result as any).payload.allowedToolNames).toEqual(['workspace____read']);
+    });
+
+    it('should trigger compression using thresholdRatio from compressionConfig', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        compressionConfig: {
+          enabled: true,
+          maxWindowToken: 200_000,
+          thresholdRatio: 0.5,
+        },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const state = createMockState({
+        messages: [
+          {
+            content: '',
+            metadata: { usage: { totalOutputTokens: 100_001 } },
+            role: 'assistant',
+          },
+        ] as any,
+      });
+      const context = createMockContext('init', { model: 'gpt-4o-mini', provider: 'openai' });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual(expectCompressionInstruction(state.messages));
+    });
+
+    it('should carry a persisted compressedGroup summary into incremental compression', async () => {
+      const agent = createCompressionAgent();
+      const state = createMockState({
+        messages: [
+          {
+            content: 'Outdated decisions',
+            id: 'compressed-group-old',
+            role: 'compressedGroup',
+          },
+          {
+            content: 'Earlier decisions and constraints',
+            id: 'compressed-group-current',
+            role: 'compressedGroup',
+          },
+          { content: 'A new follow-up question', id: 'user-message', role: 'user' },
+        ] as any,
+      });
+
+      const result = await agent.runner(
+        createMockContext('init', { model: 'gpt-4o-mini', provider: 'openai' }),
+        state,
+      );
+
+      expect(result).toEqual({
+        payload: {
+          currentTokenCount: expect.any(Number),
+          existingSummary: 'Outdated decisions\n\nEarlier decisions and constraints',
+          messages: state.messages,
+        },
+        type: 'compress_context',
+      });
+    });
+
+    // Bug B: state.tools must feed into the compression budget,
+    // otherwise large tool manifests (16-22K tokens observed on openrouter)
+    // slip past the threshold and overflow the model context window.
+    it('should fold state.tools into the compression budget on init', async () => {
+      const compressionConfig = {
+        enabled: true,
+        maxWindowToken: 200_000,
+        thresholdRatio: 0.5,
+      };
+      const messages = [
+        {
+          content: '',
+          metadata: { usage: { totalOutputTokens: 50_000 } },
+          role: 'assistant',
+        },
+      ] as any;
+      const context = createMockContext('init', { model: 'gpt-4o-mini', provider: 'openai' });
+
+      // Without tools: raw=50K, adjusted=62.5K vs 100K threshold → no compression.
+      const agentNoTools = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        compressionConfig,
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+      const noToolsResult = await agentNoTools.runner(context, createMockState({ messages }));
+      expect((noToolsResult as any).type).toBe('call_llm');
+
+      // With a chunky tool manifest (~66K tokens) total raw input is ~116K,
+      // drift-adjusted ~145K, which crosses the 100K threshold.
+      const bigTool = {
+        function: {
+          description: 'x'.repeat(400_000),
+          name: 'big_tool',
+          parameters: { properties: {}, type: 'object' },
+        },
+        type: 'function',
+      };
+      const agentWithTools = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        compressionConfig,
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+      const withToolsResult = await agentWithTools.runner(
+        context,
+        createMockState({ messages, tools: [bigTool] as any }),
+      );
+      expect((withToolsResult as any).type).toBe('compress_context');
     });
   });
 
@@ -125,6 +293,41 @@ describe('GeneralChatAgent', () => {
         type: 'finish',
         reason: 'completed',
         reasonDetail: 'LLM response completed without tool calls',
+      });
+    });
+
+    // Regression for when the LLM emits tool_calls whose names
+    // can't be resolved (e.g. `activateTools` instead of
+    // `lobe-activator____activateTools`), the agent used to silently finish
+    // with "completed without tool calls". Surface the unresolved names so
+    // dashboards can spot the regression.
+    it('should report unresolvable tool_calls in reasonDetail', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const state = createMockState();
+      const context = createMockContext('llm_result', {
+        hasToolsCalling: true,
+        toolsCalling: [],
+        parentMessageId: 'msg-1',
+        result: {
+          content: '',
+          tool_calls: [
+            { id: 't1', type: 'function', function: { name: 'activateTools', arguments: '{}' } },
+            { id: 't2', type: 'function', function: { name: 'activateSkill', arguments: '{}' } },
+          ],
+        },
+      });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual({
+        type: 'finish',
+        reason: 'completed',
+        reasonDetail: 'LLM returned 2 unresolvable tool_calls: activateTools, activateSkill',
       });
     });
 
@@ -221,6 +424,118 @@ describe('GeneralChatAgent', () => {
       ]);
     });
 
+    it('should block every tool when allowedToolNames is empty', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        allowedToolNames: [],
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+      const toolCall: ChatToolPayload = {
+        apiName: 'runCommand',
+        arguments: '{}',
+        id: 'call-1',
+        identifier: 'lobe-local-system',
+        type: 'builtin',
+      };
+
+      const result = await agent.runner(
+        createMockContext('llm_result', {
+          hasToolsCalling: true,
+          parentMessageId: 'msg-1',
+          toolsCalling: [toolCall],
+        }),
+        createMockState(),
+      );
+
+      expect(result).toEqual([
+        {
+          payload: {
+            blockedContent:
+              'Tool execution blocked because the tool is not allowed in the current execution scope.',
+            blockedReason: 'tool_not_allowed',
+            parentMessageId: 'msg-1',
+            toolsCalling: [toolCall],
+          },
+          type: 'resolve_blocked_tools',
+        },
+      ]);
+    });
+
+    it('should execute allowed tools, resolve denied tools, then pause for approval', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        allowedToolNames: ['lobe-local-system____readFile', 'lobe-local-system____deleteFile'],
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+      const readFile: ChatToolPayload = {
+        apiName: 'readFile',
+        arguments: '{}',
+        id: 'call-read',
+        identifier: 'lobe-local-system',
+        type: 'builtin',
+      };
+      const deleteFile: ChatToolPayload = {
+        apiName: 'deleteFile',
+        arguments: '{}',
+        id: 'call-delete',
+        identifier: 'lobe-local-system',
+        type: 'builtin',
+      };
+      const runCommand: ChatToolPayload = {
+        apiName: 'runCommand',
+        arguments: '{}',
+        id: 'call-command',
+        identifier: 'lobe-local-system',
+        type: 'builtin',
+      };
+
+      const result = await agent.runner(
+        createMockContext('llm_result', {
+          hasToolsCalling: true,
+          parentMessageId: 'msg-1',
+          toolsCalling: [readFile, deleteFile, runCommand],
+        }),
+        createMockState({
+          toolManifestMap: {
+            'lobe-local-system': {
+              api: [
+                { name: 'readFile' },
+                { humanIntervention: 'require', name: 'deleteFile' },
+                { name: 'runCommand' },
+              ],
+              identifier: 'lobe-local-system',
+              type: 'builtin',
+            },
+          },
+        }),
+      );
+
+      expect(result).toEqual([
+        {
+          payload: { parentMessageId: 'msg-1', toolCalling: readFile },
+          type: 'call_tool',
+        },
+        {
+          payload: {
+            blockedContent:
+              'Tool execution blocked because the tool is not allowed in the current execution scope.',
+            blockedReason: 'tool_not_allowed',
+            parentMessageId: 'msg-1',
+            toolsCalling: [runCommand],
+          },
+          type: 'resolve_blocked_tools',
+        },
+        {
+          parentMessageId: 'msg-1',
+          pendingToolsCalling: [deleteFile],
+          reason: 'human_intervention_required',
+          type: 'request_human_approve',
+        },
+      ]);
+    });
+
     it('should handle invalid JSON in tool arguments gracefully', async () => {
       const agent = new GeneralChatAgent({
         agentConfig: { maxSteps: 100 },
@@ -297,9 +612,13 @@ describe('GeneralChatAgent', () => {
 
       const result = await agent.runner(context, state);
 
+      // `parentMessageId` must be carried: the executor persists the pending
+      // tool row under it, and without it the row lands on the previous turn's
+      // assistant and renders as an orphaned tool call.
       expect(result).toEqual([
         {
           type: 'request_human_approve',
+          parentMessageId: 'msg-1',
           pendingToolsCalling: [toolCall],
           reason: 'human_intervention_required',
         },
@@ -359,7 +678,10 @@ describe('GeneralChatAgent', () => {
           },
         },
         {
+          // Same parent as the sibling call_tool above — both halves of a mixed
+          // step belong to the assistant this llm_result produced.
           type: 'request_human_approve',
+          parentMessageId: 'msg-1',
           pendingToolsCalling: [dangerousTool],
           reason: 'human_intervention_required',
         },
@@ -368,8 +690,8 @@ describe('GeneralChatAgent', () => {
   });
 
   describe('tool_result phase', () => {
-    describe('GTD async tasks', () => {
-      it('should return exec_task for single async task (execTask)', async () => {
+    describe('Lobe Agent sub-agents (execSubAgent state)', () => {
+      it('should return exec_sub_agent for single sub-agent (execSubAgent)', async () => {
         const agent = new GeneralChatAgent({
           agentConfig: { maxSteps: 100 },
           operationId: 'test-session',
@@ -382,7 +704,7 @@ describe('GeneralChatAgent', () => {
           stop: true,
           data: {
             state: {
-              type: 'execTask',
+              type: 'execSubAgent',
               parentMessageId: 'exec-parent-msg',
               task: { instruction: 'Do something async', timeout: 30000 },
             },
@@ -392,7 +714,7 @@ describe('GeneralChatAgent', () => {
         const result = await agent.runner(context, state);
 
         expect(result).toEqual({
-          type: 'exec_task',
+          type: 'exec_sub_agent',
           payload: {
             parentMessageId: 'exec-parent-msg',
             task: { instruction: 'Do something async', timeout: 30000 },
@@ -400,7 +722,7 @@ describe('GeneralChatAgent', () => {
         });
       });
 
-      it('should return exec_tasks for multiple async tasks (execTasks)', async () => {
+      it('should return exec_sub_agents for multiple sub-agents (execSubAgents)', async () => {
         const agent = new GeneralChatAgent({
           agentConfig: { maxSteps: 100 },
           operationId: 'test-session',
@@ -417,7 +739,7 @@ describe('GeneralChatAgent', () => {
           stop: true,
           data: {
             state: {
-              type: 'execTasks',
+              type: 'execSubAgents',
               parentMessageId: 'exec-parent-msg',
               tasks,
             },
@@ -427,7 +749,7 @@ describe('GeneralChatAgent', () => {
         const result = await agent.runner(context, state);
 
         expect(result).toEqual({
-          type: 'exec_tasks',
+          type: 'exec_sub_agents',
           payload: {
             parentMessageId: 'exec-parent-msg',
             tasks,
@@ -435,73 +757,7 @@ describe('GeneralChatAgent', () => {
         });
       });
 
-      it('should return exec_client_task for single client-side async task (execClientTask)', async () => {
-        const agent = new GeneralChatAgent({
-          agentConfig: { maxSteps: 100 },
-          operationId: 'test-session',
-          modelRuntimeConfig: mockModelRuntimeConfig,
-        });
-
-        const state = createMockState();
-        const context = createMockContext('tool_result', {
-          parentMessageId: 'tool-msg-1',
-          stop: true,
-          data: {
-            state: {
-              type: 'execClientTask',
-              parentMessageId: 'exec-parent-msg',
-              task: { type: 'localFile', path: '/path/to/file' },
-            },
-          },
-        });
-
-        const result = await agent.runner(context, state);
-
-        expect(result).toEqual({
-          type: 'exec_client_task',
-          payload: {
-            parentMessageId: 'exec-parent-msg',
-            task: { type: 'localFile', path: '/path/to/file' },
-          },
-        });
-      });
-
-      it('should return exec_client_tasks for multiple client-side async tasks (execClientTasks)', async () => {
-        const agent = new GeneralChatAgent({
-          agentConfig: { maxSteps: 100 },
-          operationId: 'test-session',
-          modelRuntimeConfig: mockModelRuntimeConfig,
-        });
-
-        const state = createMockState();
-        const tasks = [
-          { type: 'localFile', path: '/path/to/file1' },
-          { type: 'localFile', path: '/path/to/file2' },
-        ];
-        const context = createMockContext('tool_result', {
-          parentMessageId: 'tool-msg-1',
-          stop: true,
-          data: {
-            state: {
-              type: 'execClientTasks',
-              parentMessageId: 'exec-parent-msg',
-              tasks,
-            },
-          },
-        });
-
-        const result = await agent.runner(context, state);
-
-        expect(result).toEqual({
-          type: 'exec_client_tasks',
-          payload: {
-            parentMessageId: 'exec-parent-msg',
-            tasks,
-          },
-        });
-      });
-
-      it('should not trigger exec_task when stop is false', async () => {
+      it('should not trigger exec_sub_agent when stop is false', async () => {
         const agent = new GeneralChatAgent({
           agentConfig: { maxSteps: 100 },
           operationId: 'test-session',
@@ -517,10 +773,10 @@ describe('GeneralChatAgent', () => {
         });
         const context = createMockContext('tool_result', {
           parentMessageId: 'tool-msg-1',
-          stop: false, // stop is false, should not trigger exec_task
+          stop: false, // stop is false, should not trigger exec_sub_agent
           data: {
             state: {
-              type: 'execTask',
+              type: 'execSubAgent',
               parentMessageId: 'exec-parent-msg',
               task: { instruction: 'Do something async' },
             },
@@ -529,10 +785,11 @@ describe('GeneralChatAgent', () => {
 
         const result = await agent.runner(context, state);
 
-        // Should return call_llm instead of exec_task
+        // Should return call_llm instead of exec_sub_agent
         expect(result).toEqual({
           type: 'call_llm',
           payload: {
+            assistantMessageId: undefined,
             messages: state.messages,
             model: 'gpt-4o-mini',
             parentMessageId: 'tool-msg-1',
@@ -542,7 +799,7 @@ describe('GeneralChatAgent', () => {
         });
       });
 
-      it('should not trigger exec_task when data.state is undefined', async () => {
+      it('should not trigger exec_sub_agent when data.state is undefined', async () => {
         const agent = new GeneralChatAgent({
           agentConfig: { maxSteps: 100 },
           operationId: 'test-session',
@@ -564,10 +821,11 @@ describe('GeneralChatAgent', () => {
 
         const result = await agent.runner(context, state);
 
-        // Should return call_llm instead of exec_task
+        // Should return call_llm instead of exec_sub_agent
         expect(result).toEqual({
           type: 'call_llm',
           payload: {
+            assistantMessageId: undefined,
             messages: state.messages,
             model: 'gpt-4o-mini',
             parentMessageId: 'tool-msg-1',
@@ -603,6 +861,7 @@ describe('GeneralChatAgent', () => {
       expect(result).toEqual({
         type: 'call_llm',
         payload: {
+          assistantMessageId: undefined,
           messages: state.messages,
           model: 'gpt-4o-mini',
           parentMessageId: 'tool-msg-1',
@@ -610,6 +869,124 @@ describe('GeneralChatAgent', () => {
           tools: undefined,
         },
       });
+    });
+
+    // Resume-seeded placeholder reuse: when an operation resumes by executing a
+    // tool first (e.g. the tools activator auto-approved via human_approved_tool),
+    // the seeded assistant placeholder is stashed on state.pendingAssistantMessageId.
+    // The first call_llm after the tool result must carry it so the LLM turn fills
+    // that placeholder instead of creating a new message and orphaning the seed.
+    it('should reuse the seeded assistant placeholder for the first call_llm after a tool result', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const state = createMockState({
+        messages: [
+          { role: 'user', content: 'Hello' },
+          { role: 'assistant', content: '', tools: [] },
+          { role: 'tool', content: 'Successfully activated tools', tool_call_id: 'call-1' },
+        ] as any,
+        pendingAssistantMessageId: 'msg_seeded_placeholder',
+      });
+
+      const context = createMockContext('tool_result', { parentMessageId: 'tool-msg-1' });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual({
+        type: 'call_llm',
+        payload: {
+          assistantMessageId: 'msg_seeded_placeholder',
+          messages: state.messages,
+          model: 'gpt-4o-mini',
+          parentMessageId: 'tool-msg-1',
+          provider: 'openai',
+          tools: undefined,
+        },
+      });
+    });
+
+    it('should return compress_context before continuing to LLM when tool results exceed window', async () => {
+      const agent = createCompressionAgent();
+
+      const state = createMockState({
+        messages: [
+          { role: 'user', content: 'Hello' },
+          { role: 'assistant', content: '' },
+          { role: 'tool', content: 'Result', tool_call_id: 'call-1' },
+        ] as any,
+      });
+
+      const context = createMockContext('tool_result', {
+        parentMessageId: 'tool-msg-1',
+      });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual(expectCompressionInstruction(state.messages));
+    });
+
+    // follow-up: when state.forceFinish is set, RuntimeExecutors strips
+    // every tool before the LLM call (buildStepToolDelta returns deactivatedToolIds
+    // ['*']). The compression budget must mirror that stripping — otherwise the
+    // tool schemas push the budget over threshold and we burn an extra summarization
+    // pass on tokens that won't be sent.
+    it('should skip tools from compression budget on force-finish continuation', async () => {
+      const compressionConfig = {
+        enabled: true,
+        maxWindowToken: 200_000,
+        thresholdRatio: 0.5,
+      };
+      const messages = [
+        { role: 'user', content: 'Hello' },
+        {
+          content: '',
+          metadata: { usage: { totalOutputTokens: 50_000 } },
+          role: 'assistant',
+        },
+        { role: 'tool', content: 'Result', tool_call_id: 'call-1' },
+      ] as any;
+      // Chunky tool manifest that alone is enough to push the request over the
+      // compression threshold when counted in the budget.
+      const bigTool = {
+        function: {
+          description: 'x'.repeat(400_000),
+          name: 'big_tool',
+          parameters: { properties: {}, type: 'object' },
+        },
+        type: 'function',
+      };
+      const context = createMockContext('tool_result', { parentMessageId: 'tool-msg-1' });
+
+      // Sanity check: without forceFinish, the big tool manifest trips compression.
+      const baselineAgent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        compressionConfig,
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+      const baseline = await baselineAgent.runner(
+        context,
+        createMockState({ messages, tools: [bigTool] as any }),
+      );
+      expect((baseline as any).type).toBe('compress_context');
+
+      // With forceFinish set, the executor will drop tools, so the agent must
+      // ignore them in the compression check and go straight to call_llm.
+      const forceFinishAgent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        compressionConfig,
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+      const forced = await forceFinishAgent.runner(
+        context,
+        createMockState({ forceFinish: true, messages, tools: [bigTool] as any }),
+      );
+      expect((forced as any).type).toBe('call_llm');
     });
 
     it('should return request_human_approve when there are pending tools', async () => {
@@ -627,12 +1004,32 @@ describe('GeneralChatAgent', () => {
         type: 'default',
       };
 
+      // Pending tool messages must hang off the *current* assistant turn for
+      // the runner to treat them as live (otherwise they're treated as stale
+      // history). Mirror the real persisted shape: assistant carries
+      // `tool_calls`, pending tool message carries `parentId`.
       const state = createMockState({
         messages: [
           { role: 'user', content: 'Hello' },
-          { role: 'assistant', content: '', tools: [] },
-          { role: 'tool', content: 'Result', tool_call_id: 'call-1' },
           {
+            id: 'assistant-1',
+            role: 'assistant',
+            content: '',
+            tool_calls: [
+              { id: 'call-1', function: { name: 'plugin-1', arguments: '{}' }, type: 'function' },
+              { id: 'call-2', function: { name: 'plugin-2', arguments: '{}' }, type: 'function' },
+            ],
+          },
+          {
+            id: 'tool-1',
+            parentId: 'assistant-1',
+            role: 'tool',
+            content: 'Result',
+            tool_call_id: 'call-1',
+          },
+          {
+            id: 'tool-2',
+            parentId: 'assistant-1',
             role: 'tool',
             content: '',
             tool_call_id: 'call-2',
@@ -654,6 +1051,151 @@ describe('GeneralChatAgent', () => {
         reason: 'Some tools still pending approval',
         skipCreateToolMessage: true,
       });
+    });
+
+    it('should return request_human_approve when current assistant turn stores calls in tools', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const pendingPlugin: ChatToolPayload = {
+        id: 'call-2',
+        identifier: 'plugin-2',
+        apiName: 'api-2',
+        arguments: '{}',
+        type: 'default',
+      };
+
+      const state = createMockState({
+        messages: [
+          { role: 'user', content: 'Hello' },
+          {
+            id: 'assistant-1',
+            role: 'assistant',
+            content: '',
+            tools: [
+              {
+                apiName: 'api-1',
+                arguments: '{}',
+                id: 'call-1',
+                identifier: 'plugin-1',
+                type: 'default',
+              },
+              pendingPlugin,
+            ],
+          },
+          {
+            id: 'tool-1',
+            parentId: 'assistant-1',
+            role: 'tool',
+            content: 'Result',
+            tool_call_id: 'call-1',
+          },
+          {
+            id: 'tool-2',
+            parentId: 'assistant-1',
+            role: 'tool',
+            content: '',
+            tool_call_id: 'call-2',
+            plugin: pendingPlugin,
+            pluginIntervention: { status: 'pending' },
+          },
+        ] as any,
+      });
+
+      const context = createMockContext('tool_result', {
+        parentMessageId: 'tool-msg-1',
+      });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual({
+        type: 'request_human_approve',
+        pendingToolsCalling: [pendingPlugin],
+        reason: 'Some tools still pending approval',
+        skipCreateToolMessage: true,
+      });
+    });
+
+    it('should ignore stale pending tool messages from a previous assistant turn', async () => {
+      // Regression: before scoping, a previous turn's never-resolved
+      // `pluginIntervention.status === 'pending'` row would be loaded back
+      // into state.messages via historyMessages and hijack every subsequent
+      // tool_result phase, parking the loop in waiting_for_human forever.
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const stalePendingPlugin: ChatToolPayload = {
+        id: 'old-call-1',
+        identifier: 'plugin-old',
+        apiName: 'api-old',
+        arguments: '{}',
+        type: 'default',
+      };
+
+      const state = createMockState({
+        messages: [
+          // Previous turn — abandoned, leaves a pending tool message behind.
+          { role: 'user', content: 'old prompt' },
+          {
+            id: 'old-assistant',
+            role: 'assistant',
+            content: '',
+            tool_calls: [
+              {
+                id: 'old-call-1',
+                function: { name: 'plugin-old', arguments: '{}' },
+                type: 'function',
+              },
+            ],
+          },
+          {
+            id: 'old-tool-1',
+            parentId: 'old-assistant',
+            role: 'tool',
+            content: '',
+            tool_call_id: 'old-call-1',
+            plugin: stalePendingPlugin,
+            pluginIntervention: { status: 'pending' },
+          },
+          // Current turn — assistant called a different tool and it succeeded.
+          { role: 'user', content: 'new prompt' },
+          {
+            id: 'current-assistant',
+            role: 'assistant',
+            content: '',
+            tool_calls: [
+              {
+                id: 'new-call-1',
+                function: { name: 'plugin-new', arguments: '{}' },
+                type: 'function',
+              },
+            ],
+          },
+          {
+            id: 'current-tool-1',
+            parentId: 'current-assistant',
+            role: 'tool',
+            content: 'OK',
+            tool_call_id: 'new-call-1',
+          },
+        ] as any,
+      });
+
+      const context = createMockContext('tool_result', {
+        parentMessageId: 'current-tool-1',
+      });
+
+      const result = await agent.runner(context, state);
+
+      // The loop must continue with another LLM call, NOT get hijacked into
+      // request_human_approve by the stale pending row from the prior turn.
+      expect((result as any).type).toBe('call_llm');
     });
   });
 
@@ -683,6 +1225,7 @@ describe('GeneralChatAgent', () => {
       expect(result).toEqual({
         type: 'call_llm',
         payload: {
+          assistantMessageId: undefined,
           messages: state.messages,
           model: 'gpt-4o-mini',
           parentMessageId: 'tool-msg-2',
@@ -707,13 +1250,40 @@ describe('GeneralChatAgent', () => {
         type: 'default',
       };
 
+      // Pending tool messages must hang off the *current* assistant turn for
+      // the runner to treat them as live (otherwise they're treated as stale
+      // history). Mirror the real persisted shape: assistant carries
+      // `tool_calls`, pending tool message carries `parentId`.
       const state = createMockState({
         messages: [
           { role: 'user', content: 'Hello' },
-          { role: 'assistant', content: '', tools: [] },
-          { role: 'tool', content: 'Result 1', tool_call_id: 'call-1' },
-          { role: 'tool', content: 'Result 2', tool_call_id: 'call-2' },
           {
+            id: 'assistant-1',
+            role: 'assistant',
+            content: '',
+            tool_calls: [
+              { id: 'call-1', function: { name: 'plugin-1', arguments: '{}' }, type: 'function' },
+              { id: 'call-2', function: { name: 'plugin-2', arguments: '{}' }, type: 'function' },
+              { id: 'call-3', function: { name: 'plugin-3', arguments: '{}' }, type: 'function' },
+            ],
+          },
+          {
+            id: 'tool-1',
+            parentId: 'assistant-1',
+            role: 'tool',
+            content: 'Result 1',
+            tool_call_id: 'call-1',
+          },
+          {
+            id: 'tool-2',
+            parentId: 'assistant-1',
+            role: 'tool',
+            content: 'Result 2',
+            tool_call_id: 'call-2',
+          },
+          {
+            id: 'tool-3',
+            parentId: 'assistant-1',
             role: 'tool',
             content: '',
             tool_call_id: 'call-3',
@@ -735,6 +1305,107 @@ describe('GeneralChatAgent', () => {
         reason: 'Some tools still pending approval',
         skipCreateToolMessage: true,
       });
+    });
+
+    it('should return request_human_approve when batch current assistant turn stores calls in tools', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const pendingPlugin: ChatToolPayload = {
+        id: 'call-3',
+        identifier: 'plugin-3',
+        apiName: 'api-3',
+        arguments: '{}',
+        type: 'default',
+      };
+
+      const state = createMockState({
+        messages: [
+          { role: 'user', content: 'Hello' },
+          {
+            id: 'assistant-1',
+            role: 'assistant',
+            content: '',
+            tools: [
+              {
+                apiName: 'api-1',
+                arguments: '{}',
+                id: 'call-1',
+                identifier: 'plugin-1',
+                type: 'default',
+              },
+              {
+                apiName: 'api-2',
+                arguments: '{}',
+                id: 'call-2',
+                identifier: 'plugin-2',
+                type: 'default',
+              },
+              pendingPlugin,
+            ],
+          },
+          {
+            id: 'tool-1',
+            parentId: 'assistant-1',
+            role: 'tool',
+            content: 'Result 1',
+            tool_call_id: 'call-1',
+          },
+          {
+            id: 'tool-2',
+            parentId: 'assistant-1',
+            role: 'tool',
+            content: 'Result 2',
+            tool_call_id: 'call-2',
+          },
+          {
+            id: 'tool-3',
+            parentId: 'assistant-1',
+            role: 'tool',
+            content: '',
+            tool_call_id: 'call-3',
+            plugin: pendingPlugin,
+            pluginIntervention: { status: 'pending' },
+          },
+        ] as any,
+      });
+
+      const context = createMockContext('tools_batch_result', {
+        parentMessageId: 'tool-msg-2',
+      });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual({
+        type: 'request_human_approve',
+        pendingToolsCalling: [pendingPlugin],
+        reason: 'Some tools still pending approval',
+        skipCreateToolMessage: true,
+      });
+    });
+
+    it('should return compress_context before continuing to LLM when batch tool results exceed window', async () => {
+      const agent = createCompressionAgent();
+
+      const state = createMockState({
+        messages: [
+          { role: 'user', content: 'Hello' },
+          { role: 'assistant', content: '' },
+          { role: 'tool', content: 'Result 1', tool_call_id: 'call-1' },
+          { role: 'tool', content: 'Result 2', tool_call_id: 'call-2' },
+        ] as any,
+      });
+
+      const context = createMockContext('tools_batch_result', {
+        parentMessageId: 'tool-msg-2',
+      });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual(expectCompressionInstruction(state.messages));
     });
   });
 
@@ -853,10 +1524,13 @@ describe('GeneralChatAgent', () => {
 
       const result = await agent.runner(context, state);
 
-      // Should handle abort and resolve pending tools
+      // Should handle abort and resolve pending tools, carrying the id of the
+      // row that already exists so the executor settles it instead of inserting
+      // a duplicate beside it.
       expect(result).toEqual({
         type: 'resolve_aborted_tools',
         payload: {
+          existingToolMessageIds: { 'call-1': 'tool-msg-1' },
           parentMessageId: 'msg-456',
           toolsCalling: [
             {
@@ -869,6 +1543,66 @@ describe('GeneralChatAgent', () => {
           ],
         },
       });
+    });
+
+    it('carries existing tool message ids when aborting a FOLDED (server-shape) pending batch', async () => {
+      // The server runtime rebuilds `state.messages` through conversation-flow,
+      // which folds an assistant plus its tool rows into one `assistantGroup`.
+      // Without the ids, `resolve_aborted_tools` would insert a second row per
+      // call and leave the originals `pending` — the approval cards would
+      // survive the Stop.
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const state = createMockState({
+        status: 'interrupted',
+        messages: [
+          {
+            id: 'assistant-group-1',
+            role: 'assistantGroup',
+            children: [
+              {
+                tools: [
+                  {
+                    apiName: 'createPlan',
+                    arguments: '{}',
+                    id: 'call-alpha',
+                    identifier: 'lobe-agent',
+                    intervention: { status: 'pending' },
+                    result_msg_id: 'pending-msg-alpha',
+                    type: 'builtin',
+                  },
+                  {
+                    apiName: 'createPlan',
+                    arguments: '{}',
+                    id: 'call-beta',
+                    identifier: 'lobe-agent',
+                    intervention: { status: 'pending' },
+                    result_msg_id: 'pending-msg-beta',
+                    type: 'builtin',
+                  },
+                ],
+              },
+            ],
+          } as any,
+        ],
+      });
+
+      const context = createMockContext('tools_batch_result', {
+        parentMessageId: 'assistant-group-1',
+      });
+
+      const result = await agent.runner(context, state);
+
+      expect((result as any).type).toBe('resolve_aborted_tools');
+      expect((result as any).payload.existingToolMessageIds).toEqual({
+        'call-alpha': 'pending-msg-alpha',
+        'call-beta': 'pending-msg-beta',
+      });
+      expect((result as any).payload.toolsCalling).toHaveLength(2);
     });
 
     it('should return finish when state is interrupted with no tools', async () => {
@@ -917,6 +1651,9 @@ describe('GeneralChatAgent', () => {
 
       const state = createMockState({
         status: 'running', // Normal running state
+        toolManifestMap: {
+          'lobe-web-browsing': { identifier: 'lobe-web-browsing' },
+        },
       });
 
       const context = createMockContext('llm_result', {
@@ -1103,7 +1840,7 @@ describe('GeneralChatAgent', () => {
     });
   });
 
-  describe('task_result phase (single task)', () => {
+  describe('sub_agent_result phase (single sub-agent)', () => {
     it('should return call_llm when task completed', async () => {
       const agent = new GeneralChatAgent({
         agentConfig: { maxSteps: 100 },
@@ -1115,15 +1852,14 @@ describe('GeneralChatAgent', () => {
         messages: [
           { role: 'user', content: 'Execute task' },
           { role: 'assistant', content: '' },
-          { role: 'task', content: 'Task result', metadata: { instruction: 'Do task' } },
+          { role: 'tool', content: 'Task result', tool_call_id: 'call-sub-agent-1' },
         ] as any,
       });
 
-      const context = createMockContext('task_result', {
+      const context = createMockContext('sub_agent_result', {
         parentMessageId: 'task-parent-msg',
         result: {
           success: true,
-          taskMessageId: 'task-1',
           threadId: 'thread-1',
           result: 'Task result',
         },
@@ -1154,15 +1890,14 @@ describe('GeneralChatAgent', () => {
         messages: [
           { role: 'user', content: 'Execute task' },
           { role: 'assistant', content: '' },
-          { role: 'task', content: 'Task failed: timeout', metadata: { instruction: 'Do task' } },
+          { role: 'tool', content: 'Task failed: timeout', tool_call_id: 'call-sub-agent-1' },
         ] as any,
       });
 
-      const context = createMockContext('task_result', {
+      const context = createMockContext('sub_agent_result', {
         parentMessageId: 'task-parent-msg',
         result: {
           success: false,
-          taskMessageId: 'task-1',
           threadId: 'thread-1',
           error: 'Task timeout after 1800000ms',
         },
@@ -1181,9 +1916,29 @@ describe('GeneralChatAgent', () => {
         },
       });
     });
+
+    it('should return compress_context before continuing to LLM when task results exceed window', async () => {
+      const agent = createCompressionAgent();
+
+      const state = createMockState({
+        messages: [
+          { role: 'user', content: 'Execute task' },
+          { role: 'assistant', content: '' },
+          { role: 'tool', content: 'Task result', tool_call_id: 'call-sub-agent-1' },
+        ] as any,
+      });
+
+      const context = createMockContext('sub_agent_result', {
+        parentMessageId: 'task-parent-msg',
+      });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual(expectCompressionInstruction(state.messages));
+    });
   });
 
-  describe('tasks_batch_result phase (multiple tasks)', () => {
+  describe('sub_agents_batch_result phase (multiple sub-agents)', () => {
     it('should return call_llm when tasks completed', async () => {
       const agent = new GeneralChatAgent({
         agentConfig: { maxSteps: 100 },
@@ -1195,16 +1950,16 @@ describe('GeneralChatAgent', () => {
         messages: [
           { role: 'user', content: 'Execute tasks' },
           { role: 'assistant', content: '' },
-          { role: 'task', content: 'Task 1 result', metadata: { instruction: 'Do task 1' } },
-          { role: 'task', content: 'Task 2 result', metadata: { instruction: 'Do task 2' } },
+          { role: 'tool', content: 'Task 1 result', tool_call_id: 'call-sub-agent-1' },
+          { role: 'tool', content: 'Task 2 result', tool_call_id: 'call-sub-agent-2' },
         ] as any,
       });
 
-      const context = createMockContext('tasks_batch_result', {
+      const context = createMockContext('sub_agents_batch_result', {
         parentMessageId: 'task-parent-msg',
         results: [
-          { success: true, taskMessageId: 'task-1', threadId: 'thread-1', result: 'Task 1 result' },
-          { success: true, taskMessageId: 'task-2', threadId: 'thread-2', result: 'Task 2 result' },
+          { success: true, threadId: 'thread-1', result: 'Task 1 result' },
+          { success: true, threadId: 'thread-2', result: 'Task 2 result' },
         ],
       });
 
@@ -1240,18 +1995,17 @@ describe('GeneralChatAgent', () => {
         messages: [
           { role: 'user', content: 'Execute tasks' },
           { role: 'assistant', content: '' },
-          { role: 'task', content: 'Task 1 result', metadata: { instruction: 'Do task 1' } },
-          { role: 'task', content: 'Task failed: timeout', metadata: { instruction: 'Do task 2' } },
+          { role: 'tool', content: 'Task 1 result', tool_call_id: 'call-sub-agent-1' },
+          { role: 'tool', content: 'Task failed: timeout', tool_call_id: 'call-sub-agent-2' },
         ] as any,
       });
 
-      const context = createMockContext('tasks_batch_result', {
+      const context = createMockContext('sub_agents_batch_result', {
         parentMessageId: 'task-parent-msg',
         results: [
-          { success: true, taskMessageId: 'task-1', threadId: 'thread-1', result: 'Task 1 result' },
+          { success: true, threadId: 'thread-1', result: 'Task 1 result' },
           {
             success: false,
-            taskMessageId: 'task-2',
             threadId: 'thread-2',
             error: 'Task timeout after 1800000ms',
           },
@@ -1278,6 +2032,118 @@ describe('GeneralChatAgent', () => {
         },
       });
     });
+
+    it('should return compress_context and preserve the follow-up prompt when tasks exceed window', async () => {
+      const agent = createCompressionAgent();
+
+      const state = createMockState({
+        messages: [
+          { role: 'user', content: 'Execute tasks' },
+          { role: 'assistant', content: '' },
+          { role: 'tool', content: 'Task 1 result', tool_call_id: 'call-sub-agent-1' },
+          { role: 'tool', content: 'Task 2 result', tool_call_id: 'call-sub-agent-2' },
+        ] as any,
+      });
+
+      const context = createMockContext('sub_agents_batch_result', {
+        parentMessageId: 'task-parent-msg',
+      });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual(
+        expectCompressionInstruction([
+          ...state.messages,
+          {
+            content:
+              'All tasks above have been completed. Please summarize the results or continue with your response following user query language.',
+            role: 'user',
+          },
+        ]),
+      );
+    });
+  });
+
+  describe('compression_result phase', () => {
+    it('should return call_llm with compressed messages and force a new assistant message', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const compressedMessages = [
+        { content: 'Compressed summary', id: 'group-1', role: 'compressedGroup' },
+        { content: 'Latest user follow-up', role: 'user' },
+      ] as any;
+
+      const state = createMockState({
+        tools: [{ name: 'search' }] as any,
+      });
+
+      const context = createMockContext('compression_result', {
+        compressedMessages,
+        parentMessageId: 'assistant-msg-after-compression',
+        skipped: false,
+      });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual({
+        type: 'call_llm',
+        payload: {
+          createAssistantMessage: true,
+          messages: compressedMessages,
+          model: 'gpt-4o-mini',
+          parentMessageId: 'assistant-msg-after-compression',
+          provider: 'openai',
+          tools: state.tools,
+        },
+      });
+    });
+
+    // High-context tool-first resume: when the first post-tool turn compresses
+    // before running, the seeded placeholder must still be reused after
+    // compression rather than orphaned by createAssistantMessage.
+    it('should reuse the seeded assistant placeholder instead of forcing a new message', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const compressedMessages = [
+        { content: 'Compressed summary', id: 'group-1', role: 'compressedGroup' },
+        { content: 'Latest user follow-up', role: 'user' },
+      ] as any;
+
+      const state = createMockState({
+        pendingAssistantMessageId: 'msg_seeded_placeholder',
+        tools: [{ name: 'search' }] as any,
+      });
+
+      const context = createMockContext('compression_result', {
+        compressedMessages,
+        parentMessageId: 'tool-msg-1',
+        skipped: false,
+      });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual({
+        type: 'call_llm',
+        payload: {
+          assistantMessageId: 'msg_seeded_placeholder',
+          messages: compressedMessages,
+          model: 'gpt-4o-mini',
+          parentMessageId: 'tool-msg-1',
+          provider: 'openai',
+          tools: state.tools,
+        },
+      });
+      // Must not also force a brand-new message when reusing the placeholder.
+      expect((result as any).payload.createAssistantMessage).toBeUndefined();
+    });
   });
 
   describe('unknown phase', () => {
@@ -1302,6 +2168,261 @@ describe('GeneralChatAgent', () => {
   });
 
   describe('intervention checking', () => {
+    it('should require intervention when dynamic policy resolves to required', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        dynamicInterventionAudits: {
+          pathScopeAudit: async (toolArgs, metadata) => {
+            const workingDirectory = metadata?.workingDirectory as string | undefined;
+            if (!workingDirectory) return false;
+            const path = toolArgs.path as string;
+            return !path.startsWith(workingDirectory);
+          },
+        },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const toolCall: ChatToolPayload = {
+        id: 'call-1',
+        identifier: 'local-system',
+        apiName: 'readLocalFile',
+        arguments: '{"path":"/etc/passwd"}',
+        type: 'builtin',
+      };
+
+      const state = createMockState({
+        metadata: { workingDirectory: '/workspace' },
+        toolManifestMap: {
+          'local-system': {
+            identifier: 'local-system',
+            api: [
+              {
+                name: 'readLocalFile',
+                humanIntervention: {
+                  dynamic: {
+                    default: 'never',
+                    policy: 'required',
+                    type: 'pathScopeAudit',
+                  },
+                },
+              },
+            ],
+          },
+        },
+      });
+
+      const context = createMockContext('llm_result', {
+        hasToolsCalling: true,
+        toolsCalling: [toolCall],
+        parentMessageId: 'msg-1',
+      });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual([
+        {
+          type: 'request_human_approve',
+          parentMessageId: 'msg-1',
+          pendingToolsCalling: [toolCall],
+          reason: 'human_intervention_required',
+        },
+      ]);
+    });
+
+    it('should execute dynamic required tools when user approvalMode is auto-run', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        dynamicInterventionAudits: {
+          pathScopeAudit: async (toolArgs, metadata) => {
+            const workingDirectory = metadata?.workingDirectory as string | undefined;
+            if (!workingDirectory) return false;
+            const path = toolArgs.path as string;
+            return !path.startsWith(workingDirectory);
+          },
+        },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const toolCall: ChatToolPayload = {
+        id: 'call-1',
+        identifier: 'local-system',
+        apiName: 'readLocalFile',
+        arguments: '{"path":"/etc/passwd"}',
+        type: 'builtin',
+      };
+
+      const state = createMockState({
+        metadata: { workingDirectory: '/workspace' },
+        toolManifestMap: {
+          'local-system': {
+            identifier: 'local-system',
+            api: [
+              {
+                name: 'readLocalFile',
+                humanIntervention: {
+                  dynamic: {
+                    default: 'never',
+                    policy: 'required',
+                    type: 'pathScopeAudit',
+                  },
+                },
+              },
+            ],
+          },
+        },
+        userInterventionConfig: {
+          approvalMode: 'auto-run',
+          allowList: [],
+        },
+      });
+
+      const context = createMockContext('llm_result', {
+        hasToolsCalling: true,
+        toolsCalling: [toolCall],
+        parentMessageId: 'msg-1',
+      });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual([
+        {
+          type: 'call_tool',
+          payload: {
+            parentMessageId: 'msg-1',
+            toolCalling: toolCall,
+          },
+        },
+      ]);
+    });
+
+    it('should execute tool when dynamic policy resolves to never', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        dynamicInterventionAudits: {
+          pathScopeAudit: async (toolArgs, metadata) => {
+            const workingDirectory = metadata?.workingDirectory as string | undefined;
+            if (!workingDirectory) return false;
+            const path = toolArgs.path as string;
+            return !path.startsWith(workingDirectory);
+          },
+        },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const toolCall: ChatToolPayload = {
+        id: 'call-1',
+        identifier: 'local-system',
+        apiName: 'readLocalFile',
+        arguments: '{"path":"/workspace/README.md"}',
+        type: 'builtin',
+      };
+
+      const state = createMockState({
+        metadata: { workingDirectory: '/workspace' },
+        toolManifestMap: {
+          'local-system': {
+            identifier: 'local-system',
+            api: [
+              {
+                name: 'readLocalFile',
+                humanIntervention: {
+                  dynamic: {
+                    default: 'never',
+                    policy: 'required',
+                    type: 'pathScopeAudit',
+                  },
+                },
+              },
+            ],
+          },
+        },
+      });
+
+      const context = createMockContext('llm_result', {
+        hasToolsCalling: true,
+        toolsCalling: [toolCall],
+        parentMessageId: 'msg-1',
+      });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual([
+        {
+          type: 'call_tool',
+          payload: {
+            parentMessageId: 'msg-1',
+            toolCalling: toolCall,
+          },
+        },
+      ]);
+    });
+
+    it('should await async dynamic intervention resolvers', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        dynamicInterventionAudits: {
+          pathScopeAudit: async (toolArgs, metadata) => {
+            const workingDirectory = metadata?.workingDirectory as string | undefined;
+            if (!workingDirectory) return false;
+
+            const path = toolArgs.path as string;
+            return !path.startsWith(workingDirectory);
+          },
+        },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const toolCall: ChatToolPayload = {
+        id: 'call-1',
+        identifier: 'local-system',
+        apiName: 'readLocalFile',
+        arguments: '{"path":"/etc/passwd"}',
+        type: 'builtin',
+      };
+
+      const state = createMockState({
+        metadata: { workingDirectory: '/workspace' },
+        toolManifestMap: {
+          'local-system': {
+            identifier: 'local-system',
+            api: [
+              {
+                name: 'readLocalFile',
+                humanIntervention: {
+                  dynamic: {
+                    default: 'never',
+                    policy: 'required',
+                    type: 'pathScopeAudit',
+                  },
+                },
+              },
+            ],
+          },
+        },
+      });
+
+      const context = createMockContext('llm_result', {
+        hasToolsCalling: true,
+        toolsCalling: [toolCall],
+        parentMessageId: 'msg-1',
+      });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual([
+        {
+          type: 'request_human_approve',
+          parentMessageId: 'msg-1',
+          pendingToolsCalling: [toolCall],
+          reason: 'human_intervention_required',
+        },
+      ]);
+    });
+
     it('should check intervention at API level when configured', async () => {
       const agent = new GeneralChatAgent({
         agentConfig: { maxSteps: 100 },
@@ -1350,6 +2471,7 @@ describe('GeneralChatAgent', () => {
       expect(result).toEqual([
         {
           type: 'request_human_approve',
+          parentMessageId: 'msg-1',
           pendingToolsCalling: [toolCall],
           reason: 'human_intervention_required',
         },
@@ -1459,6 +2581,7 @@ describe('GeneralChatAgent', () => {
         },
         {
           type: 'request_human_approve',
+          parentMessageId: 'msg-1',
           pendingToolsCalling: [blockedTool],
           reason: 'human_intervention_required',
         },
@@ -1523,6 +2646,7 @@ describe('GeneralChatAgent', () => {
         },
         {
           type: 'request_human_approve',
+          parentMessageId: 'msg-1',
           pendingToolsCalling: [dangerousTool],
           reason: 'human_intervention_required',
         },
@@ -1574,6 +2698,7 @@ describe('GeneralChatAgent', () => {
       expect(result).toEqual([
         {
           type: 'request_human_approve',
+          parentMessageId: 'msg-1',
           pendingToolsCalling: [alwaysTool],
           reason: 'human_intervention_required',
         },
@@ -1620,6 +2745,7 @@ describe('GeneralChatAgent', () => {
       expect(result).toEqual([
         {
           type: 'request_human_approve',
+          parentMessageId: 'msg-1',
           pendingToolsCalling: [alwaysTool],
           reason: 'human_intervention_required',
         },
@@ -1690,6 +2816,7 @@ describe('GeneralChatAgent', () => {
         },
         {
           type: 'request_human_approve',
+          parentMessageId: 'msg-1',
           pendingToolsCalling: [alwaysTool],
           reason: 'human_intervention_required',
         },
@@ -1742,6 +2869,7 @@ describe('GeneralChatAgent', () => {
       expect(result).toEqual([
         {
           type: 'request_human_approve',
+          parentMessageId: 'msg-1',
           pendingToolsCalling: [toolCall],
           reason: 'human_intervention_required',
         },
@@ -1749,8 +2877,425 @@ describe('GeneralChatAgent', () => {
     });
   });
 
+  describe('global intervention resolvers', () => {
+    it('should use custom global resolver with policy always to block tools', async () => {
+      const customResolver: GlobalInterventionAuditConfig = {
+        type: 'customBlocker',
+        policy: 'always',
+        resolver: async (toolArgs) => toolArgs.dangerous === true,
+      };
+
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        globalInterventionAudits: [customResolver],
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const toolCall: ChatToolPayload = {
+        id: 'call-1',
+        identifier: 'my-tool',
+        apiName: 'doSomething',
+        arguments: '{"dangerous":true}',
+        type: 'default',
+      };
+
+      const state = createMockState({
+        toolManifestMap: {
+          'my-tool': { identifier: 'my-tool', humanIntervention: 'never' },
+        },
+      });
+
+      const context = createMockContext('llm_result', {
+        hasToolsCalling: true,
+        toolsCalling: [toolCall],
+        parentMessageId: 'msg-1',
+      });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual([
+        {
+          type: 'request_human_approve',
+          parentMessageId: 'msg-1',
+          pendingToolsCalling: [toolCall],
+          reason: 'human_intervention_required',
+        },
+      ]);
+    });
+
+    it('should allow tool execution when global resolver does not trigger', async () => {
+      const customResolver: GlobalInterventionAuditConfig = {
+        type: 'customBlocker',
+        policy: 'always',
+        resolver: async (toolArgs) => toolArgs.dangerous === true,
+      };
+
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        globalInterventionAudits: [customResolver],
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const toolCall: ChatToolPayload = {
+        id: 'call-1',
+        identifier: 'my-tool',
+        apiName: 'doSomething',
+        arguments: '{"dangerous":false}',
+        type: 'default',
+      };
+
+      const state = createMockState({
+        toolManifestMap: {
+          'my-tool': { identifier: 'my-tool', humanIntervention: 'never' },
+        },
+        userInterventionConfig: { approvalMode: 'auto-run' },
+      });
+
+      const context = createMockContext('llm_result', {
+        hasToolsCalling: true,
+        toolsCalling: [toolCall],
+        parentMessageId: 'msg-1',
+      });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual([
+        {
+          type: 'call_tool',
+          payload: { parentMessageId: 'msg-1', toolCalling: toolCall },
+        },
+      ]);
+    });
+
+    it('should resolve blocked tool in headless mode when global resolver with policy always triggers', async () => {
+      const customResolver: GlobalInterventionAuditConfig = {
+        type: 'customBlocker',
+        policy: 'always',
+        resolver: async (toolArgs) => toolArgs.blocked === true,
+      };
+
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        globalInterventionAudits: [customResolver],
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const blockedTool: ChatToolPayload = {
+        id: 'call-1',
+        identifier: 'my-tool',
+        apiName: 'doSomething',
+        arguments: '{"blocked":true}',
+        type: 'default',
+      };
+
+      const state = createMockState({
+        toolManifestMap: {
+          'my-tool': { identifier: 'my-tool' },
+        },
+        userInterventionConfig: { approvalMode: 'headless' },
+      });
+
+      const context = createMockContext('llm_result', {
+        hasToolsCalling: true,
+        toolsCalling: [blockedTool],
+        parentMessageId: 'msg-1',
+      });
+
+      const result = await agent.runner(context, state);
+
+      // Headless/CLI has no human intervention UI, so return a blocked tool result for replan.
+      expect(result).toEqual([
+        {
+          payload: {
+            parentMessageId: 'msg-1',
+            toolsCalling: [blockedTool],
+          },
+          type: 'resolve_blocked_tools',
+        },
+      ]);
+    });
+
+    it('should execute tool in headless mode when global resolver with policy required triggers', async () => {
+      const customResolver: GlobalInterventionAuditConfig = {
+        type: 'softBlocker',
+        policy: 'required',
+        resolver: async () => true, // always triggers
+      };
+
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        globalInterventionAudits: [customResolver],
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const toolCall: ChatToolPayload = {
+        id: 'call-1',
+        identifier: 'my-tool',
+        apiName: 'doSomething',
+        arguments: '{}',
+        type: 'default',
+      };
+
+      const state = createMockState({
+        toolManifestMap: {
+          'my-tool': { identifier: 'my-tool' },
+        },
+        userInterventionConfig: { approvalMode: 'headless' },
+      });
+
+      const context = createMockContext('llm_result', {
+        hasToolsCalling: true,
+        toolsCalling: [toolCall],
+        parentMessageId: 'msg-1',
+      });
+
+      const result = await agent.runner(context, state);
+
+      // 'required' policy is overridable → headless mode executes directly
+      expect(result).toEqual([
+        {
+          type: 'call_tool',
+          payload: { parentMessageId: 'msg-1', toolCalling: toolCall },
+        },
+      ]);
+    });
+
+    it('should require intervention for overridable global resolver in non-headless mode', async () => {
+      const customResolver: GlobalInterventionAuditConfig = {
+        type: 'softBlocker',
+        policy: 'required',
+        resolver: async () => true,
+      };
+
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        globalInterventionAudits: [customResolver],
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const toolCall: ChatToolPayload = {
+        id: 'call-1',
+        identifier: 'my-tool',
+        apiName: 'doSomething',
+        arguments: '{}',
+        type: 'default',
+      };
+
+      const state = createMockState({
+        toolManifestMap: {
+          'my-tool': { identifier: 'my-tool', humanIntervention: 'never' },
+        },
+      });
+
+      const context = createMockContext('llm_result', {
+        hasToolsCalling: true,
+        toolsCalling: [toolCall],
+        parentMessageId: 'msg-1',
+      });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual([
+        {
+          type: 'request_human_approve',
+          parentMessageId: 'msg-1',
+          pendingToolsCalling: [toolCall],
+          reason: 'human_intervention_required',
+        },
+      ]);
+    });
+
+    it('should pass resolver metadata including securityBlacklist to global resolvers', async () => {
+      let capturedMetadata: Record<string, any> | undefined;
+
+      const spyResolver: GlobalInterventionAuditConfig = {
+        type: 'spy',
+        policy: 'always',
+        resolver: async (_toolArgs, metadata) => {
+          capturedMetadata = metadata;
+          return false;
+        },
+      };
+
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        globalInterventionAudits: [spyResolver],
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const toolCall: ChatToolPayload = {
+        id: 'call-1',
+        identifier: 'my-tool',
+        apiName: 'doSomething',
+        arguments: '{}',
+        type: 'default',
+      };
+
+      const state = createMockState({
+        metadata: { workingDirectory: '/workspace' },
+        toolManifestMap: {
+          'my-tool': { identifier: 'my-tool', humanIntervention: 'never' },
+        },
+        userInterventionConfig: { approvalMode: 'auto-run' },
+      });
+
+      const context = createMockContext('llm_result', {
+        hasToolsCalling: true,
+        toolsCalling: [toolCall],
+        parentMessageId: 'msg-1',
+      });
+
+      await agent.runner(context, state);
+
+      // Resolver should receive metadata with securityBlacklist merged in
+      expect(capturedMetadata).toBeDefined();
+      expect(capturedMetadata!.workingDirectory).toBe('/workspace');
+      expect(capturedMetadata!.securityBlacklist).toBeDefined();
+      expect(Array.isArray(capturedMetadata!.securityBlacklist)).toBe(true);
+    });
+
+    it('should evaluate global resolvers in array order and stop at first match', async () => {
+      const callOrder: string[] = [];
+
+      const resolver1: GlobalInterventionAuditConfig = {
+        type: 'first',
+        policy: 'always',
+        resolver: async () => {
+          callOrder.push('first');
+          return true; // matches
+        },
+      };
+
+      const resolver2: GlobalInterventionAuditConfig = {
+        type: 'second',
+        policy: 'required',
+        resolver: async () => {
+          callOrder.push('second');
+          return true;
+        },
+      };
+
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        globalInterventionAudits: [resolver1, resolver2],
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const toolCall: ChatToolPayload = {
+        id: 'call-1',
+        identifier: 'my-tool',
+        apiName: 'doSomething',
+        arguments: '{}',
+        type: 'default',
+      };
+
+      const state = createMockState({
+        toolManifestMap: { 'my-tool': { identifier: 'my-tool' } },
+      });
+
+      const context = createMockContext('llm_result', {
+        hasToolsCalling: true,
+        toolsCalling: [toolCall],
+        parentMessageId: 'msg-1',
+      });
+
+      await agent.runner(context, state);
+
+      // Only first resolver should be called (break on first match)
+      expect(callOrder).toEqual(['first']);
+    });
+
+    it('should use default security blacklist audit when globalInterventionAudits is not provided', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        // NOT providing globalInterventionAudits → should default to security blacklist
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const blacklistedTool: ChatToolPayload = {
+        id: 'call-1',
+        identifier: 'bash',
+        apiName: 'bash',
+        arguments: '{"command":"rm -rf /"}',
+        type: 'builtin',
+      };
+
+      const state = createMockState({
+        toolManifestMap: {
+          bash: { identifier: 'bash', humanIntervention: 'never' },
+        },
+      });
+
+      const context = createMockContext('llm_result', {
+        hasToolsCalling: true,
+        toolsCalling: [blacklistedTool],
+        parentMessageId: 'msg-1',
+      });
+
+      const result = await agent.runner(context, state);
+
+      // Default global resolver (security blacklist) should catch this
+      expect(result).toEqual([
+        {
+          type: 'request_human_approve',
+          parentMessageId: 'msg-1',
+          pendingToolsCalling: [blacklistedTool],
+          reason: 'human_intervention_required',
+        },
+      ]);
+    });
+
+    it('should still require intervention for default always blacklist tools in auto-run mode', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const alwaysTool: ChatToolPayload = {
+        id: 'call-1',
+        identifier: 'bash',
+        apiName: 'bash',
+        arguments: '{"command":"rm -rf /"}',
+        type: 'builtin',
+      };
+
+      const state = createMockState({
+        toolManifestMap: {
+          bash: { identifier: 'bash', humanIntervention: 'never' },
+        },
+        userInterventionConfig: { approvalMode: 'auto-run' },
+      });
+
+      const context = createMockContext('llm_result', {
+        hasToolsCalling: true,
+        toolsCalling: [alwaysTool],
+        parentMessageId: 'msg-1',
+      });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual([
+        {
+          type: 'request_human_approve',
+          parentMessageId: 'msg-1',
+          pendingToolsCalling: [alwaysTool],
+          reason: 'human_intervention_required',
+        },
+      ]);
+    });
+  });
+
   describe('headless mode (for async tasks)', () => {
-    it('should execute all tools directly in headless mode including those requiring approval', async () => {
+    it('should execute tool-level required tools in headless mode', async () => {
       const agent = new GeneralChatAgent({
         agentConfig: { maxSteps: 100 },
         operationId: 'test-session',
@@ -1785,19 +3330,63 @@ describe('GeneralChatAgent', () => {
 
       const result = await agent.runner(context, state);
 
-      // Should execute directly in headless mode
       expect(result).toEqual([
         {
           type: 'call_tool',
-          payload: {
-            parentMessageId: 'msg-1',
-            toolCalling: toolCall,
-          },
+          payload: { parentMessageId: 'msg-1', toolCalling: toolCall },
         },
       ]);
     });
 
-    it('should execute tools with "always" policy in headless mode', async () => {
+    it('should execute API-level required runCommand in headless mode', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const toolCall: ChatToolPayload = {
+        id: 'call-1',
+        identifier: 'lobe-local-system',
+        apiName: 'runCommand',
+        arguments: '{"command":"which R","description":"Locate the R executable"}',
+        type: 'default',
+      };
+
+      const state = createMockState({
+        toolManifestMap: {
+          'lobe-local-system': {
+            identifier: 'lobe-local-system',
+            api: [
+              {
+                name: 'runCommand',
+                humanIntervention: 'required',
+              },
+            ],
+          },
+        },
+        userInterventionConfig: {
+          approvalMode: 'headless',
+        },
+      });
+
+      const context = createMockContext('llm_result', {
+        hasToolsCalling: true,
+        toolsCalling: [toolCall],
+        parentMessageId: 'msg-1',
+      });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual([
+        {
+          type: 'call_tool',
+          payload: { parentMessageId: 'msg-1', toolCalling: toolCall },
+        },
+      ]);
+    });
+
+    it('should resolve tools with "always" policy in headless mode', async () => {
       const agent = new GeneralChatAgent({
         agentConfig: { maxSteps: 100 },
         operationId: 'test-session',
@@ -1837,19 +3426,19 @@ describe('GeneralChatAgent', () => {
 
       const result = await agent.runner(context, state);
 
-      // Should execute directly in headless mode, even for 'always' policy
+      // Headless/CLI cannot ask a human to approve always-policy tools, so return results for replan.
       expect(result).toEqual([
         {
-          type: 'call_tool',
           payload: {
             parentMessageId: 'msg-1',
-            toolCalling: alwaysTool,
+            toolsCalling: [alwaysTool],
           },
+          type: 'resolve_blocked_tools',
         },
       ]);
     });
 
-    it('should skip security blacklisted tools in headless mode', async () => {
+    it('should resolve security blacklisted tools in headless mode', async () => {
       const agent = new GeneralChatAgent({
         agentConfig: { maxSteps: 100 },
         operationId: 'test-session',
@@ -1885,18 +3474,26 @@ describe('GeneralChatAgent', () => {
 
       const result = await agent.runner(context, state);
 
-      // Should return empty array (tool is skipped, not executed or pending)
-      expect(result).toEqual([]);
+      // Headless/CLI cannot wait on security blacklist approval, so return a blocked result for replan.
+      expect(result).toEqual([
+        {
+          payload: {
+            parentMessageId: 'msg-1',
+            toolsCalling: [blacklistedTool],
+          },
+          type: 'resolve_blocked_tools',
+        },
+      ]);
     });
 
-    it('should handle mixed tools in headless mode - execute safe ones, skip blacklisted', async () => {
+    it('should resolve all tools needing approval in headless mode', async () => {
       const agent = new GeneralChatAgent({
         agentConfig: { maxSteps: 100 },
         operationId: 'test-session',
         modelRuntimeConfig: mockModelRuntimeConfig,
       });
 
-      const safeTool: ChatToolPayload = {
+      const requiredTool: ChatToolPayload = {
         id: 'call-1',
         identifier: 'web-search',
         apiName: 'search',
@@ -1946,25 +3543,29 @@ describe('GeneralChatAgent', () => {
 
       const context = createMockContext('llm_result', {
         hasToolsCalling: true,
-        toolsCalling: [safeTool, blacklistedTool, alwaysTool],
+        toolsCalling: [requiredTool, blacklistedTool, alwaysTool],
         parentMessageId: 'msg-1',
       });
 
       const result = await agent.runner(context, state);
 
-      // Should execute safeTool and alwaysTool, skip blacklistedTool
+      // Headless/CLI auto-runs required tools and returns blocked results for non-bypassable tools.
       expect(result).toEqual([
         {
-          type: 'call_tools_batch',
+          payload: { parentMessageId: 'msg-1', toolCalling: requiredTool },
+          type: 'call_tool',
+        },
+        {
           payload: {
             parentMessageId: 'msg-1',
-            toolsCalling: [safeTool, alwaysTool],
+            toolsCalling: [blacklistedTool, alwaysTool],
           },
+          type: 'resolve_blocked_tools',
         },
       ]);
     });
 
-    it('should execute multiple tools as batch in headless mode', async () => {
+    it('should resolve multiple tools requiring approval in headless mode', async () => {
       const agent = new GeneralChatAgent({
         agentConfig: { maxSteps: 100 },
         operationId: 'test-session',
@@ -2005,16 +3606,240 @@ describe('GeneralChatAgent', () => {
 
       const result = await agent.runner(context, state);
 
-      // Should execute both tools as batch in headless mode
+      // Headless/CLI auto-runs required tools and returns blocked results for non-bypassable tools.
       expect(result).toEqual([
         {
-          type: 'call_tools_batch',
+          payload: { parentMessageId: 'msg-1', toolCalling: tool1 },
+          type: 'call_tool',
+        },
+        {
+          payload: {
+            parentMessageId: 'msg-1',
+            toolsCalling: [tool2],
+          },
+          type: 'resolve_blocked_tools',
+        },
+      ]);
+    });
+
+    it('should batch multiple tool-level required tools in headless mode', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const tool1: ChatToolPayload = {
+        id: 'call-1',
+        identifier: 'search',
+        apiName: 'search',
+        arguments: '{}',
+        type: 'default',
+      };
+
+      const tool2: ChatToolPayload = {
+        id: 'call-2',
+        identifier: 'crawl',
+        apiName: 'crawl',
+        arguments: '{}',
+        type: 'default',
+      };
+
+      const state = createMockState({
+        toolManifestMap: {
+          search: { identifier: 'search', humanIntervention: 'required' },
+          crawl: { identifier: 'crawl', humanIntervention: 'required' },
+        },
+        userInterventionConfig: {
+          approvalMode: 'headless',
+        },
+      });
+
+      const context = createMockContext('llm_result', {
+        hasToolsCalling: true,
+        toolsCalling: [tool1, tool2],
+        parentMessageId: 'msg-1',
+      });
+
+      const result = await agent.runner(context, state);
+
+      expect(result).toEqual([
+        {
           payload: {
             parentMessageId: 'msg-1',
             toolsCalling: [tool1, tool2],
           },
+          type: 'call_tools_batch',
         },
       ]);
+    });
+  });
+  describe('pending approval guard across message shapes', () => {
+    // `AgentRuntimeService` rebuilds `state.messages` from the DB through
+    // conversation-flow's `parse()` on every server-runtime step, and
+    // `FlatListBuilder` folds an assistant plus its tool rows into ONE
+    // `role: 'assistantGroup'` message. Matching only the raw shape made this
+    // guard a permanent no-op there: approving one tool of a parallel batch
+    // resumed the LLM while the siblings were still pending empty rows.
+    const groupedToolEntry = (id: string, status: 'pending' | 'approved') => ({
+      apiName: 'calculate',
+      arguments: `{"expression":"${id}"}`,
+      id,
+      identifier: 'lobe-calculator',
+      intervention: { status },
+      result: { content: '', id: `tool-msg-${id}` },
+      result_msg_id: `tool-msg-${id}`,
+      type: 'builtin',
+    });
+
+    const parsedStateWith = (entries: any[]) =>
+      createMockState({
+        messages: [
+          { id: 'msg-user', role: 'user', content: 'calc' },
+          {
+            children: [{ content: '', id: 'msg-assistant', tools: entries }],
+            content: '',
+            id: 'msg-assistant',
+            role: 'assistantGroup',
+          },
+        ] as any,
+      });
+
+    it('re-parks on the parsed assistantGroup shape while siblings are still pending', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const state = parsedStateWith([
+        groupedToolEntry('call-a', 'approved'),
+        groupedToolEntry('call-b', 'pending'),
+        groupedToolEntry('call-c', 'pending'),
+      ]);
+
+      const result = await agent.runner(
+        createMockContext('tools_batch_result', { parentMessageId: 'tool-msg-call-a' }),
+        state,
+      );
+
+      expect(result).toMatchObject({
+        skipCreateToolMessage: true,
+        type: 'request_human_approve',
+      });
+      // The payload must be plain ChatToolPayloads — the display-only fields
+      // FlatListBuilder merges on (intervention/result/result_msg_id) would
+      // otherwise ride into `pendingToolsCalling` and back out to the client.
+      expect((result as any).pendingToolsCalling).toEqual([
+        {
+          apiName: 'calculate',
+          arguments: '{"expression":"call-b"}',
+          id: 'call-b',
+          identifier: 'lobe-calculator',
+          type: 'builtin',
+        },
+        {
+          apiName: 'calculate',
+          arguments: '{"expression":"call-c"}',
+          id: 'call-c',
+          identifier: 'lobe-calculator',
+          type: 'builtin',
+        },
+      ]);
+    });
+
+    it('continues to the LLM once every tool in the parsed group is resolved', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const state = parsedStateWith([
+        groupedToolEntry('call-a', 'approved'),
+        groupedToolEntry('call-b', 'approved'),
+      ]);
+
+      const result = await agent.runner(
+        createMockContext('tools_batch_result', { parentMessageId: 'tool-msg-call-b' }),
+        state,
+      );
+
+      expect((result as any).type).toBe('call_llm');
+    });
+
+    it('still re-parks on the raw assistant + tool-row shape', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const plugin = {
+        apiName: 'calculate',
+        arguments: '{"expression":"1+1"}',
+        id: 'call-b',
+        identifier: 'lobe-calculator',
+        type: 'builtin',
+      };
+
+      const state = createMockState({
+        messages: [
+          { id: 'msg-assistant', role: 'assistant', content: '', tools: [plugin] },
+          {
+            content: '',
+            id: 'tool-msg-b',
+            parentId: 'msg-assistant',
+            plugin,
+            pluginIntervention: { status: 'pending' },
+            role: 'tool',
+          },
+        ] as any,
+      });
+
+      const result = await agent.runner(
+        createMockContext('tools_batch_result', { parentMessageId: 'tool-msg-b' }),
+        state,
+      );
+
+      expect(result).toMatchObject({ type: 'request_human_approve' });
+      expect((result as any).pendingToolsCalling).toEqual([plugin]);
+    });
+
+    it('ignores a stale pending row from an earlier turn', async () => {
+      const agent = new GeneralChatAgent({
+        agentConfig: { maxSteps: 100 },
+        operationId: 'test-session',
+        modelRuntimeConfig: mockModelRuntimeConfig,
+      });
+
+      const state = createMockState({
+        messages: [
+          {
+            children: [
+              { content: '', id: 'msg-old', tools: [groupedToolEntry('stale', 'pending')] },
+            ],
+            content: '',
+            id: 'msg-old',
+            role: 'assistantGroup',
+          },
+          {
+            children: [
+              { content: '', id: 'msg-new', tools: [groupedToolEntry('call-new', 'approved')] },
+            ],
+            content: '',
+            id: 'msg-new',
+            role: 'assistantGroup',
+          },
+        ] as any,
+      });
+
+      const result = await agent.runner(
+        createMockContext('tools_batch_result', { parentMessageId: 'tool-msg-call-new' }),
+        state,
+      );
+
+      expect((result as any).type).toBe('call_llm');
     });
   });
 });

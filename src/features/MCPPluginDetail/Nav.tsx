@@ -1,10 +1,12 @@
 'use client';
 
 import { SOCIAL_URL } from '@lobechat/business-const';
-import { Flexbox, Icon, Tabs, type TabsProps, Tag } from '@lobehub/ui';
+import { Flexbox, Icon, Tag } from '@lobehub/ui';
+import { Tabs, type TabsItem } from '@lobehub/ui/base-ui';
 import { createStaticStyles } from 'antd-style';
 import {
   BookOpenIcon,
+  BotIcon,
   CodeIcon,
   DownloadIcon,
   HistoryIcon,
@@ -67,7 +69,7 @@ const Nav = memo<NavProps>(
       identifier,
     } = useDetailContext();
 
-    // 检查插件是否已安装
+    // Check if the plugin is installed
     const installedPlugin = useToolStore(pluginSelectors.getInstalledPluginById(identifier));
 
     const deploymentCount = deploymentOptions?.length || 0;
@@ -78,10 +80,10 @@ const Nav = memo<NavProps>(
       <Tabs
         activeKey={activeTab}
         className={styles.tabs}
-        compact={mobile}
+        variant="square"
         items={
           [
-            // 只有已安装的插件才显示设置 tab
+            // Only show the settings tab for installed plugins
             !noSettings &&
               installedPlugin && {
                 icon: <Icon icon={SettingsIcon} size={16} />,
@@ -99,9 +101,9 @@ const Nav = memo<NavProps>(
               label:
                 deploymentCount > 1 ? (
                   <Flexbox
+                    horizontal
                     align={'center'}
                     gap={6}
-                    horizontal
                     style={{
                       display: 'inline-flex',
                     }}
@@ -119,9 +121,9 @@ const Nav = memo<NavProps>(
               label:
                 schemaCount > 1 ? (
                   <Flexbox
+                    horizontal
                     align={'center'}
                     gap={6}
-                    horizontal
                     style={{
                       display: 'inline-flex',
                     }}
@@ -143,16 +145,20 @@ const Nav = memo<NavProps>(
               key: McpNavKey.Score,
               label: t('mcp.details.score.title'),
             },
-
+            {
+              icon: <Icon icon={BotIcon} size={16} />,
+              key: McpNavKey.Agents,
+              label: t('mcp.details.agents.title'),
+            },
             !inModal && {
               icon: <Icon icon={HistoryIcon} size={16} />,
               key: McpNavKey.Version,
               label:
                 versionCount > 1 ? (
                   <Flexbox
+                    horizontal
                     align={'center'}
                     gap={6}
-                    horizontal
                     style={{
                       display: 'inline-flex',
                     }}
@@ -164,7 +170,7 @@ const Nav = memo<NavProps>(
                   t('mcp.details.versions.title')
                 ),
             },
-          ].filter(Boolean) as TabsProps['items']
+          ].filter(Boolean) as TabsItem[]
         }
         onChange={(key) => setActiveTab?.(key as McpNavKey)}
       />
@@ -173,10 +179,15 @@ const Nav = memo<NavProps>(
     return mobile ? (
       nav
     ) : (
-      <Flexbox align={'center'} className={styles.nav} horizontal justify={'space-between'}>
+      <Flexbox horizontal align={'center'} className={styles.nav} justify={'space-between'}>
         {nav}
         {!inModal && (
-          <Flexbox gap={12} horizontal>
+          <Flexbox
+            horizontal
+            flex="none"
+            gap={12}
+            style={{ marginInlineStart: 12, whiteSpace: 'nowrap' }}
+          >
             <a className={styles.link} href={SOCIAL_URL.discord} rel="noreferrer" target="_blank">
               {t('mcp.details.nav.needHelp')}
             </a>

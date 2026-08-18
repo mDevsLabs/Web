@@ -1,37 +1,58 @@
+import { toast } from '@lobehub/ui/base-ui';
 import { act, renderHook } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
+import { getActiveWorkspaceId } from '@/business/client/hooks/useActiveWorkspaceId';
 import { INBOX_SESSION_ID } from '@/const/session';
 import { agentService } from '@/services/agent';
 import { chatGroupService } from '@/services/chatGroup';
 import { homeService } from '@/services/home';
 import { sessionService } from '@/services/session';
+import type * as AgentStoreModule from '@/store/agent';
 import { getAgentStoreState } from '@/store/agent';
 import { useHomeStore } from '@/store/home';
+import type * as SessionStoreModule from '@/store/session';
 import { getSessionStoreState } from '@/store/session';
+import { useUserStore } from '@/store/user';
 
 // Mock dependencies
-vi.mock('@/components/AntdStaticMethods', () => ({
-  message: {
-    destroy: vi.fn(),
+vi.mock('@lobehub/ui/base-ui', () => ({
+  toast: {
     error: vi.fn(),
-    loading: vi.fn(),
+    loading: vi.fn(() => ({ close: vi.fn() })),
     success: vi.fn(),
   },
 }));
 
-vi.mock('@/store/session', () => ({
-  getSessionStoreState: vi.fn(() => ({
-    activeId: 'test-session',
-    switchSession: vi.fn(),
-  })),
+vi.mock('@/business/client/hooks/useActiveWorkspaceId', () => ({
+  getActiveWorkspaceId: vi.fn(() => null),
+  useActiveWorkspaceId: vi.fn(() => null),
 }));
 
-vi.mock('@/store/agent', () => ({
-  getAgentStoreState: vi.fn(() => ({
-    setActiveAgentId: vi.fn(),
-  })),
-}));
+vi.mock('@/store/session', async (importOriginal) => {
+  const actual = await importOriginal<typeof SessionStoreModule>();
+
+  return {
+    ...actual,
+    getSessionStoreState: vi.fn(() => ({
+      activeId: 'test-session',
+      switchSession: vi.fn(),
+    })),
+  };
+});
+
+vi.mock('@/store/agent', async (importOriginal) => {
+  const actual = await importOriginal<typeof AgentStoreModule>();
+
+  return {
+    ...actual,
+    getAgentStoreState: vi.fn(() => ({
+      invalidateAvailableAgents: vi.fn(),
+      setActiveAgentId: vi.fn(),
+    })),
+    useAgentStore: actual.useAgentStore,
+  };
+});
 
 afterEach(() => {
   vi.restoreAllMocks();
@@ -103,6 +124,49 @@ describe('createSidebarUISlice', () => {
     });
   });
 
+  describe('pin in workspace mode', () => {
+    // Regression: pinning is part of the SHARED sidebar arrangement. It briefly
+    // wrote a per-member preference instead, which split the sidebar into two
+    // mental models; it must go back to the shared column in both scopes.
+    it('should write agent pin to the shared column, not a per-member preference', async () => {
+      vi.mocked(getActiveWorkspaceId).mockReturnValue('ws-1');
+      const spyOnPreference = vi.spyOn(useUserStore.getState(), 'updateWorkspaceUserPreference');
+      const spyOnShared = vi
+        .spyOn(agentService, 'updateAgentPinned')
+        .mockResolvedValueOnce(undefined as any);
+      const spyOnRefresh = vi.spyOn(useHomeStore.getState(), 'refreshAgentList');
+
+      const { result } = renderHook(() => useHomeStore());
+
+      await act(async () => {
+        await result.current.pinAgent('agent-123', true);
+      });
+
+      expect(spyOnShared).toHaveBeenCalledWith('agent-123', true);
+      expect(spyOnPreference).not.toHaveBeenCalled();
+      expect(spyOnRefresh).toHaveBeenCalled();
+    });
+
+    it('should write group pin to the shared column, not a per-member preference', async () => {
+      vi.mocked(getActiveWorkspaceId).mockReturnValue('ws-1');
+      const spyOnPreference = vi.spyOn(useUserStore.getState(), 'updateWorkspaceUserPreference');
+      const spyOnShared = vi
+        .spyOn(chatGroupService, 'updateGroup')
+        .mockResolvedValueOnce(undefined as any);
+      const spyOnRefresh = vi.spyOn(useHomeStore.getState(), 'refreshAgentList');
+
+      const { result } = renderHook(() => useHomeStore());
+
+      await act(async () => {
+        await result.current.pinAgentGroup('group-123', false);
+      });
+
+      expect(spyOnShared).toHaveBeenCalledWith('group-123', { pinned: false });
+      expect(spyOnPreference).not.toHaveBeenCalled();
+      expect(spyOnRefresh).toHaveBeenCalled();
+    });
+  });
+
   describe('removeAgent', () => {
     it('should remove an agent and refresh agent list', async () => {
       const mockAgentId = 'agent-123';
@@ -149,6 +213,7 @@ describe('createSidebarUISlice', () => {
       const mockSetActiveAgentId = vi.fn();
 
       vi.mocked(getAgentStoreState).mockReturnValue({
+        invalidateAvailableAgents: vi.fn(),
         setActiveAgentId: mockSetActiveAgentId,
       } as any);
 
@@ -166,9 +231,8 @@ describe('createSidebarUISlice', () => {
       expect(mockSetActiveAgentId).toHaveBeenCalledWith(mockNewAgentId);
     });
 
-    it('should show error message when duplication fails', async () => {
+    it('should show an error toast when duplication fails', async () => {
       const mockAgentId = 'agent-123';
-      const { message } = await import('@/components/AntdStaticMethods');
 
       vi.spyOn(agentService, 'duplicateAgent').mockResolvedValueOnce(null);
       vi.spyOn(useHomeStore.getState(), 'refreshAgentList');
@@ -179,7 +243,7 @@ describe('createSidebarUISlice', () => {
         await result.current.duplicateAgent(mockAgentId, 'Test');
       });
 
-      expect(message.error).toHaveBeenCalled();
+      expect(toast.error).toHaveBeenCalled();
     });
 
     it('should use provided title when duplicating', async () => {
@@ -187,6 +251,7 @@ describe('createSidebarUISlice', () => {
       const mockNewAgentId = 'new-agent-456';
 
       vi.mocked(getAgentStoreState).mockReturnValue({
+        invalidateAvailableAgents: vi.fn(),
         setActiveAgentId: vi.fn(),
       } as any);
 
@@ -233,6 +298,24 @@ describe('createSidebarUISlice', () => {
 
       expect(homeService.updateAgentSessionGroupId).toHaveBeenCalledWith(mockAgentId, null);
     });
+
+    // Regression: folder membership is shared. It briefly wrote a per-member
+    // assignment map in workspace mode, so one member's tidy-up was invisible
+    // to everyone else.
+    it('should write the shared column in workspace mode too', async () => {
+      vi.mocked(getActiveWorkspaceId).mockReturnValue('ws-1');
+      const spyOnPreference = vi.spyOn(useUserStore.getState(), 'updateWorkspaceUserPreference');
+      vi.spyOn(homeService, 'updateAgentSessionGroupId').mockResolvedValueOnce(undefined as any);
+
+      const { result } = renderHook(() => useHomeStore());
+
+      await act(async () => {
+        await result.current.updateAgentGroup('agent-123', 'group-456');
+      });
+
+      expect(homeService.updateAgentSessionGroupId).toHaveBeenCalledWith('agent-123', 'group-456');
+      expect(spyOnPreference).not.toHaveBeenCalled();
+    });
   });
 
   // ========== Group Operations ==========
@@ -250,7 +333,11 @@ describe('createSidebarUISlice', () => {
         returnedId = await result.current.addGroup(mockName);
       });
 
-      expect(sessionService.createSessionGroup).toHaveBeenCalledWith(mockName);
+      expect(sessionService.createSessionGroup).toHaveBeenCalledWith(
+        mockName,
+        undefined,
+        undefined,
+      );
       expect(spyOnRefresh).toHaveBeenCalled();
       expect(returnedId!).toBe(mockId);
     });
@@ -317,32 +404,6 @@ describe('createSidebarUISlice', () => {
   });
 
   // ========== UI State Actions ==========
-  describe('setAgentRenamingId', () => {
-    it('should set agent renaming id', () => {
-      const { result } = renderHook(() => useHomeStore());
-
-      act(() => {
-        result.current.setAgentRenamingId('agent-123');
-      });
-
-      expect(result.current.agentRenamingId).toBe('agent-123');
-    });
-
-    it('should clear agent renaming id when set to null', () => {
-      const { result } = renderHook(() => useHomeStore());
-
-      act(() => {
-        result.current.setAgentRenamingId('agent-123');
-      });
-
-      act(() => {
-        result.current.setAgentRenamingId(null);
-      });
-
-      expect(result.current.agentRenamingId).toBeNull();
-    });
-  });
-
   describe('setAgentUpdatingId', () => {
     it('should set agent updating id', () => {
       const { result } = renderHook(() => useHomeStore());
@@ -366,32 +427,6 @@ describe('createSidebarUISlice', () => {
       });
 
       expect(result.current.agentUpdatingId).toBeNull();
-    });
-  });
-
-  describe('setGroupRenamingId', () => {
-    it('should set group renaming id', () => {
-      const { result } = renderHook(() => useHomeStore());
-
-      act(() => {
-        result.current.setGroupRenamingId('group-123');
-      });
-
-      expect(result.current.groupRenamingId).toBe('group-123');
-    });
-
-    it('should clear group renaming id when set to null', () => {
-      const { result } = renderHook(() => useHomeStore());
-
-      act(() => {
-        result.current.setGroupRenamingId('group-123');
-      });
-
-      act(() => {
-        result.current.setGroupRenamingId(null);
-      });
-
-      expect(result.current.groupRenamingId).toBeNull();
     });
   });
 

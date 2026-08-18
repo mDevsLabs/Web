@@ -1,13 +1,19 @@
 'use client';
 
-import { type WriteLocalFileParams } from '@lobechat/electron-client-ipc';
-import { type BuiltinStreamingProps } from '@lobechat/types';
+import type { WriteLocalFileParams } from '@lobechat/electron-client-ipc';
+import type { BuiltinStreamingProps } from '@lobechat/types';
 import { Highlighter, Markdown } from '@lobehub/ui';
 import path from 'path-browserify-esm';
 import { memo } from 'react';
 
-export const WriteFileStreaming = memo<BuiltinStreamingProps<WriteLocalFileParams>>(({ args }) => {
-  const { content, path: filePath } = args || {};
+type WriteFileArgs = WriteLocalFileParams & {
+  file_path?: string;
+  filePath?: string;
+};
+
+export const WriteFileStreaming = memo<BuiltinStreamingProps<WriteFileArgs>>(({ args }) => {
+  const content = args?.content;
+  const filePath = args?.path || args?.filePath || args?.file_path;
 
   // Don't render if no content yet
   if (!content) return null;
@@ -29,11 +35,11 @@ export const WriteFileStreaming = memo<BuiltinStreamingProps<WriteLocalFileParam
   return (
     <Highlighter
       animated
+      wrap
       language={ext || 'text'}
       showLanguage={false}
       style={{ padding: '4px 8px' }}
       variant={'outlined'}
-      wrap
     >
       {content}
     </Highlighter>

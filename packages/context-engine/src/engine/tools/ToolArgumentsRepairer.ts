@@ -1,3 +1,5 @@
+import { parse as parsePartialJSON } from 'partial-json';
+
 import type { LobeToolManifest } from './types';
 
 /**
@@ -10,14 +12,20 @@ export interface ToolParameterSchema {
 }
 
 /**
- * Safe JSON parse utility
+ * Safe JSON parse with partial JSON fallback.
+ * When strict JSON.parse fails (e.g. stream interrupted mid-arguments),
+ * falls back to partial-json to recover as many fields as possible.
  */
 const safeParseJSON = <T = Record<string, unknown>>(text?: string): T | undefined => {
   if (typeof text !== 'string') return undefined;
   try {
     return JSON.parse(text) as T;
   } catch {
-    return undefined;
+    try {
+      return parsePartialJSON(text) as T;
+    } catch {
+      return undefined;
+    }
   }
 };
 
@@ -42,7 +50,7 @@ const safeParseJSON = <T = Record<string, unknown>>(text?: string): T | undefine
  * @example Usage:
  * ```typescript
  * const repairer = new ToolArgumentsRepairer(manifest);
- * const args = repairer.parse('execTask', argumentsString);
+ * const args = repairer.parse('callSubAgent', argumentsString);
  * ```
  */
 export class ToolArgumentsRepairer {

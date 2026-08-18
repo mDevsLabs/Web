@@ -1,10 +1,36 @@
 import { act, renderHook } from '@testing-library/react';
-import { ModelParamsSchema, RuntimeImageGenParams, extractDefaultValues } from 'model-bank';
-import { fluxSchnellParamsSchema } from 'model-bank';
-import { AIImageModelCard } from 'model-bank';
+import {
+  type AIImageModelCard,
+  type ModelParamsSchema,
+  type RuntimeImageGenParams,
+} from 'model-bank';
+import { extractDefaultValues, fluxSchnellParamsSchema } from 'model-bank';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useImageStore } from '@/store/image';
+
+const localStorageMock = vi.hoisted(() => {
+  let store: Record<string, string> = {};
+  const storage = {
+    clear: vi.fn(() => {
+      store = {};
+    }),
+    getItem: vi.fn((key: string) => store[key] ?? null),
+    removeItem: vi.fn((key: string) => {
+      delete store[key];
+    }),
+    setItem: vi.fn((key: string, value: string) => {
+      store[key] = value;
+    }),
+  };
+
+  Object.defineProperty(globalThis, 'localStorage', {
+    configurable: true,
+    value: storage,
+  });
+
+  return storage;
+});
 
 const { currentImageSettingsMock } = vi.hoisted(() => ({
   currentImageSettingsMock: vi.fn(() => ({
@@ -21,9 +47,16 @@ vi.mock('@/store/user/slices/settings/selectors', () => ({
 // Test fixtures
 const customModelSchema: ModelParamsSchema = {
   prompt: { default: '' },
+  imageUrls: { default: [] },
   width: { default: 1024, min: 256, max: 2048, step: 64 },
   height: { default: 1024, min: 256, max: 2048, step: 64 },
   steps: { default: 20, min: 1, max: 50 },
+};
+
+const sizeOnlyModelSchema: ModelParamsSchema = {
+  prompt: { default: '' },
+  imageUrls: { default: [] },
+  size: { default: 'auto', enum: ['auto', '1024x1024'] },
 };
 
 const testImageModels: AIImageModelCard[] = [
@@ -41,6 +74,24 @@ const testImageModels: AIImageModelCard[] = [
     parameters: customModelSchema,
     releasedAt: '2024-01-01',
   },
+  {
+    id: 'single-image-model',
+    displayName: 'Single Image Model',
+    type: 'image',
+    parameters: {
+      prompt: { default: '' },
+      imageUrl: { default: '' },
+      steps: { default: 20, min: 1, max: 50 },
+    } as ModelParamsSchema,
+    releasedAt: '2024-01-01',
+  },
+  {
+    id: 'size-only-model',
+    displayName: 'Size Only Model',
+    type: 'image',
+    parameters: sizeOnlyModelSchema,
+    releasedAt: '2024-01-01',
+  },
 ];
 
 const mockProviders = [
@@ -53,6 +104,16 @@ const mockProviders = [
     id: 'custom-provider',
     name: 'Custom Provider',
     children: [testImageModels[1]],
+  },
+  {
+    id: 'single-image-provider',
+    name: 'Single Image Provider',
+    children: [testImageModels[2]],
+  },
+  {
+    id: 'size-only-provider',
+    name: 'Size Only Provider',
+    children: [testImageModels[3]],
   },
 ];
 
@@ -86,6 +147,7 @@ const initialTestState = {
 
 beforeEach(() => {
   vi.clearAllMocks();
+  localStorageMock.clear();
   currentImageSettingsMock.mockReturnValue({ defaultImageNum: 4 });
   useImageStore.setState(initialTestState);
 });
@@ -175,7 +237,10 @@ describe('GenerationConfigAction', () => {
 
       expect(result.current.model).toBe('flux/schnell');
       expect(result.current.provider).toBe('fal');
-      expect(result.current.parameters).toEqual(fluxSchnellDefaultValues);
+      expect(result.current.parameters).toEqual({
+        ...fluxSchnellDefaultValues,
+        prompt: 'initial prompt',
+      });
       expect(result.current.parametersSchema).toEqual(fluxSchnellParamsSchema);
     });
 
@@ -188,26 +253,112 @@ describe('GenerationConfigAction', () => {
 
       expect(result.current.model).toBe('custom-model');
       expect(result.current.provider).toBe('custom-provider');
-      expect(result.current.parameters).toEqual(customModelDefaultValues);
+      expect(result.current.parameters).toEqual({
+        ...customModelDefaultValues,
+        prompt: 'initial prompt',
+      });
       expect(result.current.parametersSchema).toEqual(customModelSchema);
     });
 
-    it('should completely replace parameters when switching models', () => {
+    it('should preserve prompt and image inputs when switching models', () => {
       const { result } = renderHook(() => useImageStore());
 
       // Set some custom parameters
       act(() => {
         result.current.setParamOnInput('prompt', 'custom prompt');
+        result.current.setParamOnInput('imageUrls', ['custom-image-1.png']);
         result.current.setParamOnInput('steps', 50);
       });
 
       // Switch model
       act(() => {
-        result.current.setModelAndProviderOnSelect('flux/schnell', 'fal');
+        result.current.setModelAndProviderOnSelect('custom-model', 'custom-provider');
       });
 
-      expect(result.current.parameters).toEqual(fluxSchnellDefaultValues);
-      expect(result.current.parameters?.prompt).toBe('');
+      expect(result.current.parameters).toEqual({
+        ...customModelDefaultValues,
+        prompt: 'custom prompt',
+        imageUrls: ['custom-image-1.png'],
+      });
+      expect(result.current.parameters?.steps).toBe(customModelDefaultValues.steps);
+    });
+
+    it('should convert imageUrls[0] to imageUrl when switching to single-image model', () => {
+      const { result } = renderHook(() => useImageStore());
+
+      // Set up multi-image state with imageUrls
+      act(() => {
+        result.current.setParamOnInput('prompt', 'test prompt');
+        result.current.setParamOnInput('imageUrls', ['image1.png', 'image2.png', 'image3.png']);
+      });
+
+      // Switch to single-image model - should convert imageUrls[0] to imageUrl
+      act(() => {
+        result.current.setModelAndProviderOnSelect('single-image-model', 'single-image-provider');
+      });
+
+      expect(result.current.parameters?.imageUrl).toBe('image1.png');
+      expect(result.current.parameters?.prompt).toBe('test prompt');
+      expect(result.current.parameters?.imageUrls).toBeUndefined();
+    });
+
+    it('should convert imageUrl to imageUrls array when switching to multi-image model', () => {
+      const singleImageSchema: ModelParamsSchema = {
+        prompt: { default: '' },
+        imageUrl: { default: '' },
+        steps: { default: 20, min: 1, max: 50 },
+      };
+
+      // Initialize with single-image model state
+      useImageStore.setState({
+        model: 'single-image-model',
+        provider: 'single-image-provider',
+        parameters: {
+          prompt: 'test prompt',
+          imageUrl: 'reference-image.png',
+          steps: 20,
+        },
+        parametersSchema: singleImageSchema,
+      });
+
+      // Get fresh hook after state update
+      const { result: storeResult } = renderHook(() => useImageStore());
+
+      // Switch to multi-image model - should convert imageUrl to imageUrls array
+      act(() => {
+        storeResult.current.setModelAndProviderOnSelect('custom-model', 'custom-provider');
+      });
+
+      expect(storeResult.current.parameters?.imageUrls).toEqual(['reference-image.png']);
+      expect(storeResult.current.parameters?.prompt).toBe('test prompt');
+      expect(storeResult.current.parameters?.imageUrl).toBeUndefined();
+    });
+
+    it('should migrate imageUrl when target model has empty imageUrls default', () => {
+      const singleImageSchema: ModelParamsSchema = {
+        prompt: { default: '' },
+        imageUrl: { default: '' },
+      };
+
+      useImageStore.setState({
+        model: 'single-image-model',
+        provider: 'single-image-provider',
+        parameters: {
+          prompt: 'keep this prompt',
+          imageUrl: 'from-single-model.png',
+        },
+        parametersSchema: singleImageSchema,
+      });
+
+      const { result } = renderHook(() => useImageStore());
+
+      // custom-model schema defines imageUrls default as []
+      act(() => {
+        result.current.setModelAndProviderOnSelect('custom-model', 'custom-provider');
+      });
+
+      expect(result.current.parameters?.imageUrls).toEqual(['from-single-model.png']);
+      expect(result.current.parameters?.prompt).toBe('keep this prompt');
     });
   });
 
@@ -247,7 +398,27 @@ describe('GenerationConfigAction', () => {
       });
 
       expect(result.current.parameters?.seed).toBeNull();
-      expect(result.current.parameters?.imageUrl).toBeNull();
+      expect(result.current.parameters?.imageUrl).toBeUndefined();
+    });
+
+    it('should drop settings that are unsupported by the target model schema', () => {
+      const { result } = renderHook(() => useImageStore());
+
+      act(() => {
+        result.current.reuseSettings('size-only-model', 'size-only-provider', {
+          height: 1024,
+          prompt: 'reuse prompt',
+          seed: 123,
+          size: '1024x1024',
+          width: 1024,
+        });
+      });
+
+      expect(result.current.parameters).toEqual({
+        imageUrls: [],
+        prompt: 'reuse prompt',
+        size: '1024x1024',
+      });
     });
 
     it('should update only seed parameter via reuseSeed', () => {

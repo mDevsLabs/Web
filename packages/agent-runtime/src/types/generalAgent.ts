@@ -1,6 +1,20 @@
-import { ChatToolPayload, MessageToolCall } from '@lobechat/types';
+import {
+  type ChatToolPayload,
+  type DynamicInterventionResolver,
+  type GlobalInterventionAuditConfig,
+  type MessageToolCall,
+  type RuntimeAdditionalContextFragment,
+} from '@lobechat/types';
 
 export interface GeneralAgentCallLLMInstructionPayload {
+  additionalContexts?: readonly RuntimeAdditionalContextFragment[];
+  allowedToolNames?: string[];
+  /**
+   * Reuse an existing assistant message instead of creating a new one. Set when
+   * resuming from a tool-first step (e.g. tools activator) whose seeded
+   * placeholder must be filled by this LLM turn rather than orphaned.
+   */
+  assistantMessageId?: string;
   /** Force create a new assistant message (e.g., after compression) */
   createAssistantMessage?: boolean;
   isFirstMessage?: boolean;
@@ -29,7 +43,7 @@ export interface GeneralAgentCallToolResultPayload {
   executionTime: number;
   isSuccess: boolean;
   parentMessageId: string;
-  /** Whether tool requested to stop execution (e.g., group management speak/delegate, GTD async tasks) */
+  /** Whether tool requested to stop execution (e.g., group management speak/delegate, lobe-agent async sub-agents) */
   stop?: boolean;
   toolCall: ChatToolPayload;
   toolCallId: string;
@@ -67,18 +81,32 @@ export interface GeneralAgentConfig {
     [key: string]: any;
     maxSteps?: number;
   };
+  /** Explicit tool-name allow-list for agents that intentionally restrict tools. */
+  allowedToolNames?: string[];
   /**
    * Context compression configuration
-   * Note: Compression checking is always enabled to prevent context overflow.
-   * When triggered, ALL messages are compressed into a single MessageGroup summary.
+   * When enabled and triggered, ALL messages are compressed into a single MessageGroup summary.
    */
   compressionConfig?: {
+    /** Whether context compression is enabled (default: true) */
+    enabled?: boolean;
     /** Model's max context window token count (default: 128k) */
     maxWindowToken?: number;
+    /** Threshold ratio for triggering compression (default: 0.5) */
+    thresholdRatio?: number;
   };
+  /**
+   * Dynamic intervention audits registry (per-tool)
+   * Used to evaluate runtime intervention policies for tools with dynamic config
+   */
+  dynamicInterventionAudits?: Record<string, DynamicInterventionResolver>;
+  /**
+   * Global intervention resolvers that run for EVERY tool call
+   * Evaluated in array order, before per-tool dynamic resolvers.
+   * When not provided, defaults to [createSecurityBlacklistGlobalAudit()]
+   */
+  globalInterventionAudits?: GlobalInterventionAuditConfig[];
   modelRuntimeConfig?: {
-    model: string;
-    provider: string;
     /**
      * Compression model configuration
      * Used for context compression tasks
@@ -87,8 +115,12 @@ export interface GeneralAgentConfig {
       model: string;
       provider: string;
     };
+    model: string;
+    provider: string;
   };
   operationId: string;
+  /** Phase-level tools exposed to this agent run. Falls back to AgentState.tools. */
+  tools?: any[];
   userId?: string;
 }
 

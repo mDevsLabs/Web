@@ -1,29 +1,47 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { z } from 'zod';
 
-import { GroundingSearch, GroundingSearchSchema } from '../../search';
-import {
+import type { GroundingSearch } from '../../search';
+import { GroundingSearchSchema } from '../../search';
+import type {
   ChatImageItem,
-  ChatImageItemSchema,
   ChatMessageError,
-  ChatMessageErrorSchema,
   ChatToolPayload,
-  ChatToolPayloadSchema,
   MessageMetadata,
-  MessageMetadataSchema,
   MessageToolCall,
-  MessageToolCallSchema,
   ModelReasoning,
-  ModelReasoningSchema,
+  ModelUsage,
 } from '../common';
-import { UIChatMessage } from '../ui';
+import {
+  ChatImageItemSchema,
+  ChatMessageErrorSchema,
+  ChatToolPayloadSchema,
+  MessageMetadataSchema,
+  MessageToolCallSchema,
+  ModelReasoningSchema,
+  ModelUsageSchema,
+} from '../common';
+import type { UIChatMessage } from '../ui';
 
 export interface QueryMessageParams {
   agentId?: string | null;
   current?: number;
   groupId?: string | null;
+  /**
+   * Opt-in for `file` work summaries embedded in the message payload. Absent →
+   * the legacy set, so already-deployed clients (whose descriptor table lacks
+   * `file`) never receive a `file` summary that would crash their works UI. New
+   * clients set it. Ignored when `skipWorks` is set.
+   */
+  includeFileWorks?: boolean;
   pageSize?: number;
   sessionId?: string | null;
+  /**
+   * Skip the Work-summary assembly (`message.works`). Mid-stream refetches
+   * (tool_end / step_complete / step_start snapshots) set this so each tool
+   * round doesn't re-run the per-type Work queries — works settle on the
+   * initial page load and the terminal agent_runtime_end refetch instead.
+   */
+  skipWorks?: boolean;
   threadId?: string | null;
   topicId?: string | null;
 }
@@ -89,6 +107,7 @@ export interface NewMessage {
 
 export interface UpdateMessageParams {
   content?: string;
+  editorData?: Record<string, any> | null;
   error?: ChatMessageError | null;
   imageList?: ChatImageItem[];
   metadata?: MessageMetadata;
@@ -97,10 +116,16 @@ export interface UpdateMessageParams {
   provider?: string;
   reasoning?: ModelReasoning;
   role?: string;
-  search?: GroundingSearch;
+  search?: GroundingSearch | null;
   toolCalls?: MessageToolCall[];
   tools?: ChatToolPayload[] | null;
   traceId?: string;
+  /**
+   * Token usage + cost, promoted out of `metadata.usage` into the dedicated
+   * `usage` column. Writers may pass it top-level; the model also falls back to
+   * `metadata.usage` so existing callers keep populating the column.
+   */
+  usage?: ModelUsage;
 }
 
 export interface NewMessageQueryParams {
@@ -115,7 +140,8 @@ export interface NewMessageQueryParams {
 export const UpdateMessageParamsSchema = z
   .object({
     content: z.string().optional(),
-    error: ChatMessageErrorSchema.nullable().optional(),
+    editorData: z.record(z.string(), z.any()).nullish(),
+    error: ChatMessageErrorSchema.nullish(),
     imageList: z.array(ChatImageItemSchema).optional(),
     metadata: MessageMetadataSchema.optional(),
     model: z.string().optional(),
@@ -123,9 +149,10 @@ export const UpdateMessageParamsSchema = z
     provider: z.string().optional(),
     reasoning: ModelReasoningSchema.optional(),
     role: z.string().optional(),
-    search: GroundingSearchSchema.optional(),
+    search: GroundingSearchSchema.nullish(),
     toolCalls: z.array(MessageToolCallSchema).optional(),
-    tools: z.array(ChatToolPayloadSchema).nullable().optional(),
+    tools: z.array(ChatToolPayloadSchema).nullish(),
     traceId: z.string().optional(),
+    usage: ModelUsageSchema.optional(),
   })
   .passthrough();

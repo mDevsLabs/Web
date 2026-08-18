@@ -1,11 +1,9 @@
 import { ModelProvider } from 'model-bank';
 
-import {
-  OpenAICompatibleFactoryOptions,
-  createOpenAICompatibleRuntime,
-} from '../../core/openaiCompatibleFactory';
+import type { OpenAICompatibleFactoryOptions } from '../../core/openaiCompatibleFactory';
+import { createOpenAICompatibleRuntime } from '../../core/openaiCompatibleFactory';
 import { processMultiProviderModelList } from '../../utils/modelParse';
-import { OpenRouterModelCard, OpenRouterReasoning } from './type';
+import type { OpenRouterModelCard, OpenRouterReasoning } from './type';
 
 const formatPrice = (price?: string) => {
   if (price === undefined || price === '-1') return undefined;
@@ -16,12 +14,25 @@ export const params = {
   baseURL: 'https://openrouter.ai/api/v1',
   chatCompletion: {
     handlePayload: (payload) => {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { reasoning_effort, thinking, reasoning: _reasoning, ...rest } = payload;
+      const {
+        reasoning_effort,
+        thinking,
+        reasoning: _reasoning,
+        thinkingLevel,
+        imageAspectRatio,
+        imageResolution,
+        model,
+        ...rest
+      } = payload;
 
       let reasoning: OpenRouterReasoning | undefined;
 
-      if (thinking?.type || thinking?.budget_tokens !== undefined || reasoning_effort) {
+      if (
+        thinking?.type ||
+        thinking?.budget_tokens !== undefined ||
+        reasoning_effort ||
+        thinkingLevel
+      ) {
         if (thinking?.type === 'disabled') {
           reasoning = { enabled: false };
         } else if (thinking?.budget_tokens !== undefined) {
@@ -30,11 +41,42 @@ export const params = {
           };
         } else if (reasoning_effort) {
           reasoning = { effort: reasoning_effort };
+        } else if (thinkingLevel) {
+          reasoning = { effort: thinkingLevel };
         }
       }
 
+      // Add modalities and image_config for image generation models
+      const isImageModel = model.includes('-image') || model.includes('flux');
+      const modalities =
+        (payload as any).modalities ?? (isImageModel ? ['image', 'text'] : undefined);
+
+      // Map imageResolution to image_size: '512' → '0.5K', others pass through.
+      // OpenRouter's image_size field expects '0.5K' for 512px output; the rest
+      // ('1K'/'2K'/'4K') are passed through verbatim.
+      const imageSizeValue = imageResolution
+        ? imageResolution === '512'
+          ? '0.5K'
+          : imageResolution
+        : undefined;
+
+      // 'auto' means use model default — omit the parameter
+      const aspectRatioValue =
+        imageAspectRatio && imageAspectRatio !== 'auto' ? imageAspectRatio : undefined;
+
+      const image_config =
+        (payload as any).image_config ??
+        (isImageModel && (aspectRatioValue || imageSizeValue)
+          ? {
+              ...(aspectRatioValue && { aspect_ratio: aspectRatioValue }),
+              ...(imageSizeValue && { image_size: imageSizeValue }),
+            }
+          : undefined);
+
       return {
         ...rest,
+        ...(image_config && { image_config }),
+        ...(modalities && { modalities }),
         model: payload.enabledSearch ? `${payload.model}:online` : payload.model,
         ...(reasoning && { reasoning }),
         stream: payload.stream ?? true,
@@ -51,26 +93,21 @@ export const params = {
     chatCompletion: () => process.env.DEBUG_OPENROUTER_CHAT_COMPLETION === '1',
   },
   models: async () => {
-    let modelList: OpenRouterModelCard[] = [];
-
-    try {
-      const response = await fetch('https://openrouter.ai/api/v1/models');
-      if (response.ok) {
-        const data = await response.json();
-        modelList = data['data'];
-      }
-    } catch (error) {
-      console.error('Failed to fetch OpenRouter frontend models:', error);
-      return [];
+    const response = await fetch('https://openrouter.ai/api/v1/models');
+    if (!response.ok) {
+      throw new Error(`OpenRouter models API request failed with status ${response.status}`);
     }
 
-    // 处理前端获取的模型信息，转换为标准格式
+    const data = (await response.json()) as { data: OpenRouterModelCard[] };
+    const modelList = data.data;
+
+    // Process the model info fetched from the frontend and convert to standard format
     const formattedModels = modelList.map((model) => {
       const { top_provider, architecture, pricing, supported_parameters } = model;
 
       const inputModalities = architecture.input_modalities || [];
 
-      // 处理 name，默认去除冒号及其前面的内容
+      // Process the name, by default strip the colon and everything before it
       let displayName = model.name;
       const colonIndex = displayName.indexOf(':');
       if (colonIndex !== -1) {
@@ -126,11 +163,19 @@ export const params = {
           if (model.description && model.description.includes('`reasoning` `enabled`')) {
             extendParams.push('enableReasoning');
           }
-          if (hasReasoning && model.id.includes('gpt-5')) {
-            extendParams.push('gpt5ReasoningEffort');
-          }
-          if (hasReasoning && model.id.includes('openai') && !model.id.includes('gpt-5')) {
-            extendParams.push('reasoningEffort');
+          if (
+            hasReasoning &&
+            (model.id.includes('gpt-5.2') ||
+              model.id.includes('gpt-5.4') ||
+              model.id.includes('gpt-5.5'))
+          ) {
+            extendParams.push('gpt5_2ReasoningEffort', 'textVerbosity');
+          } else if (hasReasoning && model.id.includes('gpt-5.1')) {
+            extendParams.push('gpt5_1ReasoningEffort', 'textVerbosity');
+          } else if (hasReasoning && model.id.includes('gpt-5')) {
+            extendParams.push('gpt5ReasoningEffort', 'textVerbosity');
+          } else if (hasReasoning && model.id.includes('openai')) {
+            extendParams.push('reasoningEffort', 'textVerbosity');
           }
           if (hasReasoning && model.id.includes('claude')) {
             extendParams.push('enableReasoning', 'reasoningBudgetToken');
@@ -140,6 +185,12 @@ export const params = {
           }
           if (hasReasoning && model.id.includes('gemini-2.5')) {
             extendParams.push('reasoningBudgetToken');
+          }
+          if (hasReasoning && model.id.includes('gemini-3-pro')) {
+            extendParams.push('thinkingLevel2');
+          }
+          if (hasReasoning && model.id.includes('gemini-3-flash')) {
+            extendParams.push('thinkingLevel');
           }
           return extendParams.length > 0 ? { settings: { extendParams } } : {};
         })(),

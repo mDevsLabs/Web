@@ -1,4 +1,7 @@
-import { type MouseEventHandler, useCallback } from 'react';
+import { type MouseEventHandler } from 'react';
+import { useCallback } from 'react';
+
+import { usePermission } from '@/hooks/usePermission';
 
 import { useConversationStore } from '../store';
 
@@ -15,11 +18,13 @@ export const useDoubleClickEdit = ({
   error,
   id,
 }: UseDoubleClickEditProps) => {
+  const { allowed: canEdit } = usePermission('edit_own_content');
   const toggleMessageEditing = useConversationStore((s) => s.toggleMessageEditing);
 
   return useCallback<MouseEventHandler<HTMLDivElement>>(
     (e) => {
       if (
+        !canEdit ||
         disableEditing ||
         error ||
         id === 'default' ||
@@ -30,6 +35,6 @@ export const useDoubleClickEdit = ({
 
       toggleMessageEditing(id, true);
     },
-    [role, disableEditing, toggleMessageEditing, id],
+    [role, canEdit, disableEditing, error, toggleMessageEditing, id],
   );
 };

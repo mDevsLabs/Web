@@ -1,23 +1,33 @@
-import {
-  AuthorizationPhase,
+import crypto from 'node:crypto';
+import querystring from 'node:querystring';
+import { URL } from 'node:url';
+
+import type {
   AuthorizationProgress,
   DataSyncConfig,
   MarketAuthorizationParams,
 } from '@lobechat/electron-client-ipc';
 import { BrowserWindow, shell } from 'electron';
-import crypto from 'node:crypto';
-import querystring from 'node:querystring';
-import { URL } from 'node:url';
 
+import GatewayConnectionService from '@/services/gatewayConnectionSrv';
+import { appendVercelCookie } from '@/utils/http-headers';
 import { createLogger } from '@/utils/logger';
+import { netFetch } from '@/utils/net-fetch';
+import { setDesktopUserAgentHeader } from '@/utils/user-agent';
 
-import RemoteServerConfigCtr from './RemoteServerConfigCtr';
 import { ControllerModule, IpcMethod } from './index';
+import RemoteServerConfigCtr from './RemoteServerConfigCtr';
 
 const logger = createLogger('controllers:AuthCtr');
 
 const MAX_POLL_TIME = 2 * 60 * 1000; // 2 minutes (reduced from 5 minutes for better UX)
 const POLL_INTERVAL = 3000; // 3 seconds
+
+// Refresh the access token only once it is within this window of its expiry. Kept
+// small (minutes) on purpose: a buffer that is large relative to the server's
+// access-token lifetime makes the token look "expiring soon" right after login,
+// refreshing on every launch/activation and churning refresh-token rotations.
+const TOKEN_REFRESH_BUFFER = 10 * 60 * 1000; // 10 minutes
 
 /**
  * Authentication Controller
@@ -41,14 +51,14 @@ export default class AuthCtr extends ControllerModule {
   /**
    * Polling related parameters
    */
-  // eslint-disable-next-line no-undef
+
   private pollingInterval: NodeJS.Timeout | null = null;
   private cachedRemoteUrl: string | null = null;
 
   /**
    * Auto-refresh timer
    */
-  // eslint-disable-next-line no-undef
+
   private autoRefreshTimer: NodeJS.Timeout | null = null;
 
   /**
@@ -288,35 +298,37 @@ export default class AuthCtr extends ControllerModule {
 
     this.autoRefreshTimer = setInterval(async () => {
       try {
-        // Check if token is expiring soon (refresh 5 minutes in advance)
-        if (this.remoteServerConfigCtr.isTokenExpiringSoon()) {
-          const expiresAt = this.remoteServerConfigCtr.getTokenExpiresAt();
-          logger.info(
-            `Token is expiring soon, triggering auto-refresh. Expires at: ${expiresAt ? new Date(expiresAt).toISOString() : 'unknown'}`,
-          );
+        if (!this.remoteServerConfigCtr.isTokenExpiringSoon(TOKEN_REFRESH_BUFFER)) {
+          return;
+        }
+        const expiresAt = this.remoteServerConfigCtr.getTokenExpiresAt();
+        logger.info(
+          `Token is expiring soon, triggering auto-refresh. Expires at: ${expiresAt ? new Date(expiresAt).toISOString() : 'unknown'}`,
+        );
 
-          const result = await this.remoteServerConfigCtr.refreshAccessToken();
-          if (result.success) {
-            logger.info('Auto-refresh successful');
-            this.broadcastTokenRefreshed();
+        const result = await this.remoteServerConfigCtr.refreshAccessToken();
+        if (result.success) {
+          logger.info('Auto-refresh successful');
+          this.broadcastTokenRefreshed();
+        } else {
+          logger.error(`Auto-refresh failed after retries: ${result.error}`);
+
+          // Only clear tokens for non-retryable errors (e.g., invalid_grant)
+          // The retry mechanism in RemoteServerConfigCtr already handles transient errors
+          if (this.remoteServerConfigCtr.isNonRetryableError(result.error)) {
+            logger.warn(
+              'Non-retryable error detected, clearing tokens and requiring re-authorization',
+            );
+            this.stopAutoRefresh();
+            await this.remoteServerConfigCtr.clearTokens();
+            await this.remoteServerConfigCtr.setRemoteServerConfig({ active: false });
+            this.broadcastAuthorizationRequired(
+              `auto-refresh:non_retryable ${result.error ?? ''}`.trim(),
+            );
           } else {
-            logger.error(`Auto-refresh failed after retries: ${result.error}`);
-
-            // Only clear tokens for non-retryable errors (e.g., invalid_grant)
-            // The retry mechanism in RemoteServerConfigCtr already handles transient errors
-            if (this.remoteServerConfigCtr.isNonRetryableError(result.error)) {
-              logger.warn(
-                'Non-retryable error detected, clearing tokens and requiring re-authorization',
-              );
-              this.stopAutoRefresh();
-              await this.remoteServerConfigCtr.clearTokens();
-              await this.remoteServerConfigCtr.setRemoteServerConfig({ active: false });
-              this.broadcastAuthorizationRequired();
-            } else {
-              // For other errors (after retries exhausted), log but don't clear tokens immediately
-              // The next refresh cycle will retry
-              logger.warn('Refresh failed but error may be transient, will retry on next cycle');
-            }
+            // For other errors (after retries exhausted), log but don't clear tokens immediately
+            // The next refresh cycle will retry
+            logger.warn('Refresh failed but error may be transient, will retry on next cycle');
           }
         }
       } catch (error) {
@@ -356,13 +368,11 @@ export default class AuthCtr extends ControllerModule {
 
       logger.debug(`Polling for credentials: ${url.toString()}`);
 
-      // Send HTTP request directly
-      const response = await fetch(url.toString(), {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        method: 'GET',
-      });
+      // Use Electron net.fetch to respect system CA store (self-signed/private CA certs)
+      const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+      appendVercelCookie(headers);
+      setDesktopUserAgentHeader(headers);
+      const response = await netFetch(url.toString(), { headers, method: 'GET' });
 
       // Check response status
       if (response.status === 404) {
@@ -426,7 +436,7 @@ export default class AuthCtr extends ControllerModule {
           this.stopAutoRefresh();
           await this.remoteServerConfigCtr.clearTokens();
           await this.remoteServerConfigCtr.setRemoteServerConfig({ active: false });
-          this.broadcastAuthorizationRequired();
+          this.broadcastAuthorizationRequired(`refresh:non_retryable ${result.error ?? ''}`.trim());
         } else {
           // For transient errors, don't clear tokens - allow manual retry
           logger.warn('Refresh failed but error may be transient, tokens preserved for retry');
@@ -444,7 +454,7 @@ export default class AuthCtr extends ControllerModule {
         this.stopAutoRefresh();
         await this.remoteServerConfigCtr.clearTokens();
         await this.remoteServerConfigCtr.setRemoteServerConfig({ active: false });
-        this.broadcastAuthorizationRequired();
+        this.broadcastAuthorizationRequired(`refresh:exception ${errorMessage}`);
       }
 
       return { error: errorMessage, success: false };
@@ -476,11 +486,14 @@ export default class AuthCtr extends ControllerModule {
 
       logger.debug('Sending token exchange request');
       // Send request to get token
-      const response = await fetch(tokenUrl.toString(), {
+      const tokenHeaders: Record<string, string> = {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      };
+      appendVercelCookie(tokenHeaders);
+      setDesktopUserAgentHeader(tokenHeaders);
+      const response = await netFetch(tokenUrl.toString(), {
         body,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
+        headers: tokenHeaders,
         method: 'POST',
       });
 
@@ -529,10 +542,26 @@ export default class AuthCtr extends ControllerModule {
       // Start auto-refresh timer
       this.startAutoRefresh();
 
+      // Connect to device gateway after successful login
+      this.connectGateway();
+
       return { success: true };
     } catch (error) {
       logger.error('Exchanging authorization code failed:', error);
       return { error: error.message, success: false };
+    }
+  }
+
+  /**
+   * Connect to device gateway (fire-and-forget)
+   */
+  private connectGateway() {
+    const gatewaySrv = this.app.getService(GatewayConnectionService);
+    if (gatewaySrv) {
+      logger.info('Triggering gateway connection after login');
+      gatewaySrv.connect().catch((error) => {
+        logger.error('Gateway connection after login failed:', error);
+      });
     }
   }
 
@@ -594,15 +623,17 @@ export default class AuthCtr extends ControllerModule {
   }
 
   /**
-   * Broadcast authorization required event
+   * Broadcast authorization required event.
+   * `reason` is a short tag (e.g. `refresh:invalid_grant`, `startup:non_retryable`)
+   * recorded so the renderer can log why the Session Expired modal appeared.
    */
-  private broadcastAuthorizationRequired() {
-    logger.debug('Broadcasting authorizationRequired event to all windows');
+  private broadcastAuthorizationRequired(reason: string) {
+    logger.info(`Broadcasting authorizationRequired event (reason=${reason})`);
     const allWindows = BrowserWindow.getAllWindows();
 
     for (const win of allWindows) {
       if (!win.isDestroyed()) {
-        win.webContents.send('authorizationRequired');
+        win.webContents.send('authorizationRequired', { reason });
       }
     }
   }
@@ -663,13 +694,14 @@ export default class AuthCtr extends ControllerModule {
   /**
    * Initialize auto-refresh functionality
    * Checks for valid token at app startup and starts auto-refresh timer if token exists
+   * Proactively refreshes the token only when it is expired or near expiry
    */
   private async initializeAutoRefresh() {
     try {
       const config = await this.remoteServerConfigCtr.getRemoteServerConfig();
 
       // Check if remote server is configured and active
-      if (!config.active || !config.remoteServerUrl) {
+      if (!(await this.remoteServerConfigCtr.isRemoteServerConfigured(config))) {
         logger.debug(
           'Remote server not active or configured, skipping auto-refresh initialization',
         );
@@ -690,35 +722,13 @@ export default class AuthCtr extends ControllerModule {
         return;
       }
 
-      // Check if token has already expired
-      const currentTime = Date.now();
-      if (currentTime >= expiresAt) {
-        logger.info('Token has expired, attempting to refresh it');
-
-        // Attempt to refresh token (includes retry mechanism)
-        const refreshResult = await this.remoteServerConfigCtr.refreshAccessToken();
-        if (refreshResult.success) {
-          logger.info('Token refresh successful during initialization');
-          this.broadcastTokenRefreshed();
-          // Restart auto-refresh timer
-          this.startAutoRefresh();
-          return;
-        } else {
-          logger.error(`Token refresh failed during initialization: ${refreshResult.error}`);
-
-          // Only clear token for non-retryable errors
-          if (this.remoteServerConfigCtr.isNonRetryableError(refreshResult.error)) {
-            logger.warn('Non-retryable error during initialization, clearing tokens');
-            await this.remoteServerConfigCtr.clearTokens();
-            await this.remoteServerConfigCtr.setRemoteServerConfig({ active: false });
-            this.broadcastAuthorizationRequired();
-          } else {
-            // For transient errors, still start auto-refresh timer to retry later
-            logger.warn('Transient error during initialization, will retry via auto-refresh');
-            this.startAutoRefresh();
-          }
-          return;
-        }
+      // Refresh proactively only when the token is actually near expiry. The access
+      // token is long-lived; refreshing on every launch just multiplies refresh-token
+      // rotations — and the chance of a lost-response logout — for no benefit.
+      if (this.remoteServerConfigCtr.isTokenExpiringSoon(TOKEN_REFRESH_BUFFER)) {
+        logger.info('Token is expired or expiring soon, refreshing on startup');
+        await this.performProactiveRefresh();
+        return;
       }
 
       // Start auto-refresh timer
@@ -728,6 +738,69 @@ export default class AuthCtr extends ControllerModule {
       this.startAutoRefresh();
     } catch (error) {
       logger.error('Error during auto-refresh initialization:', error);
+    }
+  }
+
+  /**
+   * Perform proactive token refresh (used on startup and app activation)
+   */
+  private async performProactiveRefresh(): Promise<void> {
+    const refreshResult = await this.remoteServerConfigCtr.refreshAccessToken();
+    if (refreshResult.success) {
+      logger.info('Proactive token refresh successful');
+      this.broadcastTokenRefreshed();
+      this.startAutoRefresh();
+    } else {
+      logger.error(`Proactive token refresh failed: ${refreshResult.error}`);
+
+      // Only clear token for non-retryable errors
+      if (this.remoteServerConfigCtr.isNonRetryableError(refreshResult.error)) {
+        logger.warn('Non-retryable error during proactive refresh, clearing tokens');
+        await this.remoteServerConfigCtr.clearTokens();
+        await this.remoteServerConfigCtr.setRemoteServerConfig({ active: false });
+        this.broadcastAuthorizationRequired(
+          `startup:non_retryable ${refreshResult.error ?? ''}`.trim(),
+        );
+      } else {
+        // For transient errors, still start auto-refresh timer to retry later
+        logger.warn('Transient error during proactive refresh, will retry via auto-refresh');
+        this.startAutoRefresh();
+      }
+    }
+  }
+
+  /**
+   * Handle app activation event (e.g., Mac dock click, window focus)
+   * Proactively refresh token if it is expired or near expiry
+   */
+  async onAppActivate(): Promise<void> {
+    logger.debug('App activated, checking if token refresh is needed');
+
+    try {
+      const config = await this.remoteServerConfigCtr.getRemoteServerConfig();
+
+      // Check if remote server is configured and active
+      if (!(await this.remoteServerConfigCtr.isRemoteServerConfigured(config))) {
+        logger.debug('Remote server not active, skipping activation refresh');
+        return;
+      }
+
+      // Check if valid access token exists
+      const accessToken = await this.remoteServerConfigCtr.getAccessToken();
+      if (!accessToken) {
+        logger.debug('No access token found, skipping activation refresh');
+        return;
+      }
+
+      // Refresh only when the token is actually near expiry (see initializeAutoRefresh).
+      if (this.remoteServerConfigCtr.isTokenExpiringSoon(TOKEN_REFRESH_BUFFER)) {
+        logger.info('Token is expiring soon on app activation, refreshing token');
+        await this.performProactiveRefresh();
+      } else {
+        logger.debug('Token is still valid, skipping activation refresh');
+      }
+    } catch (error) {
+      logger.error('Error during app activation refresh check:', error);
     }
   }
 }

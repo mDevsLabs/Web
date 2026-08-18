@@ -1,7 +1,8 @@
-import { ChatToolPayload, UIChatMessage } from '@lobechat/types';
+import { type ChatToolPayload, type UIChatMessage } from '@lobechat/types';
 import { beforeEach, describe, expect, it } from 'vitest';
 
-import { MessageDispatch, messagesReducer } from './reducer';
+import { type MessageDispatch } from './reducer';
+import { messagesReducer } from './reducer';
 
 describe('messagesReducer', () => {
   let initialState: UIChatMessage[];
@@ -62,7 +63,7 @@ describe('messagesReducer', () => {
       const payload: MessageDispatch = { type: 'unimplementedType' };
 
       expect(() => messagesReducer(initialState, payload)).toThrowError(
-        '未实现的 dispatch type，请检查 reducer',
+        'Unimplemented dispatch type, check reducer',
       );
     });
   });

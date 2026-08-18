@@ -1,4 +1,4 @@
-import { Pricing } from 'model-bank';
+import type { Pricing } from 'model-bank';
 import { describe, expect, it } from 'vitest';
 
 import {
@@ -6,6 +6,7 @@ import {
   getAudioOutputUnitRate,
   getCachedAudioInputUnitRate,
   getCachedTextInputUnitRate,
+  getOriginalUnitRateByName,
   getTextInputUnitRate,
   getTextOutputUnitRate,
   getUnitRateByName,
@@ -125,6 +126,68 @@ describe('pricing utilities (new)', () => {
       expect(getUnitRateByName(pricing, 'textInput')).toBe(0.001);
       expect(getUnitRateByName(pricing, 'textOutput')).toBe(0.002);
       expect(getUnitRateByName(pricing, 'audioInput')).toBe(0.01);
+    });
+  });
+
+  describe('getOriginalUnitRateByName', () => {
+    it('returns fixed originalRate when it is higher than the current rate', () => {
+      const pricing: Pricing = {
+        units: [
+          {
+            name: 'textInput',
+            originalRate: 0.435,
+            rate: 0.0435,
+            strategy: 'fixed',
+            unit: 'millionTokens',
+          },
+        ],
+      };
+
+      expect(getOriginalUnitRateByName(pricing, 'textInput')).toBe(0.435);
+    });
+
+    it('returns undefined when originalRate is absent or not higher than current rate', () => {
+      const pricing: Pricing = {
+        units: [
+          { name: 'textInput', strategy: 'fixed', unit: 'millionTokens', rate: 0.0435 },
+          {
+            name: 'textOutput',
+            originalRate: 0.087,
+            rate: 0.087,
+            strategy: 'fixed',
+            unit: 'millionTokens',
+          },
+        ],
+      };
+
+      expect(getOriginalUnitRateByName(pricing, 'textInput')).toBeUndefined();
+      expect(getOriginalUnitRateByName(pricing, 'textOutput')).toBeUndefined();
+    });
+
+    it('returns tiered and lookup original prices when they are higher than current rates', () => {
+      const pricing: Pricing = {
+        units: [
+          {
+            name: 'textInput',
+            strategy: 'tiered',
+            tiers: [{ originalRate: 0.2, rate: 0.1, upTo: 'infinity' }],
+            unit: 'millionTokens',
+          },
+          {
+            lookup: {
+              originalPrices: { default: 0.4 },
+              prices: { default: 0.2 },
+              pricingParams: ['quality'],
+            },
+            name: 'textOutput',
+            strategy: 'lookup',
+            unit: 'millionTokens',
+          },
+        ],
+      };
+
+      expect(getOriginalUnitRateByName(pricing, 'textInput')).toBe(0.2);
+      expect(getOriginalUnitRateByName(pricing, 'textOutput')).toBe(0.4);
     });
   });
 

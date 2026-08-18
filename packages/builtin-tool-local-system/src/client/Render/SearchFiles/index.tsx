@@ -1,13 +1,12 @@
-import type { LocalFileSearchState } from '@lobechat/builtin-tool-local-system';
-import { type LocalSearchFilesParams } from '@lobechat/electron-client-ipc';
-import { type BuiltinRenderProps } from '@lobechat/types';
+import type { SearchFilesState } from '@lobechat/tool-runtime';
+import type { BuiltinRenderProps } from '@lobechat/types';
 import { Flexbox } from '@lobehub/ui';
 import { memo } from 'react';
 
 import SearchResult from './Result';
 import SearchQuery from './SearchQuery';
 
-const SearchFiles = memo<BuiltinRenderProps<LocalSearchFilesParams, LocalFileSearchState>>(
+const SearchFiles = memo<BuiltinRenderProps<any, SearchFilesState>>(
   ({ messageId, pluginError, args, pluginState }) => {
     return (
       <Flexbox gap={4}>
@@ -15,7 +14,7 @@ const SearchFiles = memo<BuiltinRenderProps<LocalSearchFilesParams, LocalFileSea
         <SearchResult
           messageId={messageId}
           pluginError={pluginError}
-          searchResults={pluginState?.searchResults}
+          searchResults={pluginState?.results}
         />
       </Flexbox>
     );

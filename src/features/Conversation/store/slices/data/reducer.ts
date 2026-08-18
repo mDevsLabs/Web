@@ -1,9 +1,9 @@
-import type {
-  ChatMessageExtra,
-  ChatToolPayload,
-  CreateMessageParams,
-  MessagePluginItem,
-  UIChatMessage,
+import {
+  type ChatMessageExtra,
+  type ChatToolPayload,
+  type CreateMessageParams,
+  type MessagePluginItem,
+  type UIChatMessage,
 } from '@lobechat/types';
 import isEqual from 'fast-deep-equal';
 import { produce } from 'immer';
@@ -314,7 +314,7 @@ export const messagesReducer = (
     }
 
     default: {
-      throw new Error('未实现的 dispatch type，请检查 reducer');
+      throw new Error('Unimplemented dispatch type, check reducer');
     }
   }
 };

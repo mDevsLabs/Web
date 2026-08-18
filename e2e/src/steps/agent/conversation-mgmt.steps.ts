@@ -11,7 +11,8 @@
 import { Given, Then, When } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 
-import { CustomWorld } from '../../support/world';
+import { llmMockManager } from '../../mocks/llm';
+import type { CustomWorld } from '../../support/world';
 
 // ============================================
 // Given Steps
@@ -52,6 +53,11 @@ Given('用户已有一个对话', async function (this: CustomWorld) {
 
 Given('用户有多个对话历史', async function (this: CustomWorld) {
   console.log('   📍 Step: 创建多个对话...');
+
+  // Keep the search fixture self-contained. Without a deterministic title,
+  // the generic mock response becomes the topic title and the search scenario
+  // only passes when another scenario happened to rename a topic on this worker.
+  llmMockManager.setResponseContaining('测试对话内容', '测试对话');
 
   // Create first conversation
   const chatInputs = this.page.locator('[data-testid="chat-input"]');
@@ -158,25 +164,9 @@ When('用户点击另一个对话', async function (this: CustomWorld) {
   }
 
   // Fallback: try to find topic items in the sidebar
-  // Topics are displayed with star icons (lucide-star) in the left sidebar
-  const sidebarTopics = this.page.locator('svg.lucide-star').locator('..').locator('..');
-  let topicCount = await sidebarTopics.count();
-  console.log(`   📍 Found ${topicCount} topics with star icons`);
-
-  // If not found by star, try finding by topic list structure
-  if (topicCount < 2) {
-    // Topics might be in a list container - look for items in sidebar with specific text
-    const topicItems = this.page.locator('[class*="nav-item"], [class*="NavItem"]');
-    topicCount = await topicItems.count();
-    console.log(`   📍 Found ${topicCount} nav items`);
-
-    if (topicCount >= 2) {
-      await topicItems.nth(1).click();
-      console.log('   ✅ 已点击另一个对话');
-      await this.page.waitForTimeout(500);
-      return;
-    }
-  }
+  const sidebarTopics = this.page.locator('[data-testid="topic-item"]');
+  const topicCount = await sidebarTopics.count();
+  console.log(`   📍 Found ${topicCount} topic items`);
 
   // Click the second topic (first one is current/active)
   if (topicCount >= 2) {
@@ -192,13 +182,11 @@ When('用户点击另一个对话', async function (this: CustomWorld) {
 When('用户右键点击对话', async function (this: CustomWorld) {
   console.log('   📍 Step: 右键点击对话...');
 
-  // Find topic items by their star icon - each saved topic has a star
-  const sidebarTopics = this.page.locator('svg.lucide-star').locator('..').locator('..');
-  let topicCount = await sidebarTopics.count();
-  console.log(`   📍 Found ${topicCount} topics with star icons`);
+  const sidebarTopics = this.page.locator('[data-testid="topic-item"]');
+  const topicCount = await sidebarTopics.count();
+  console.log(`   📍 Found ${topicCount} topic items`);
 
   if (topicCount > 0) {
-    // Right-click the first saved topic
     await sidebarTopics.first().click({ button: 'right' });
     console.log('   ✅ 已右键点击对话');
   } else {
@@ -211,10 +199,9 @@ When('用户右键点击对话', async function (this: CustomWorld) {
 When('用户右键点击一个对话', async function (this: CustomWorld) {
   console.log('   📍 Step: 右键点击一个对话...');
 
-  // Find topic items by their star icon
-  const sidebarTopics = this.page.locator('svg.lucide-star').locator('..').locator('..');
-  let topicCount = await sidebarTopics.count();
-  console.log(`   📍 Found ${topicCount} topics with star icons`);
+  const sidebarTopics = this.page.locator('[data-testid="topic-item"]');
+  const topicCount = await sidebarTopics.count();
+  console.log(`   📍 Found ${topicCount} topic items`);
 
   // Store the topic text for later verification
   if (topicCount > 0) {
@@ -238,7 +225,7 @@ When('用户选择重命名选项', async function (this: CustomWorld) {
 
   // Instead of using right-click context menu, use the "..." dropdown menu
   // which appears when hovering over a topic item
-  const topicItems = this.page.locator('svg.lucide-star').locator('..').locator('..');
+  const topicItems = this.page.locator('[data-testid="topic-item"]');
   const topicCount = await topicItems.count();
   console.log(`   📍 Found ${topicCount} topic items`);
 
@@ -253,7 +240,7 @@ When('用户选择重命名选项', async function (this: CustomWorld) {
     // Important: we must find the icon WITHIN the hovered topic, not the global one
     // The topic item has a specific structure with nav-item-actions
     const moreButtonInTopic = firstTopic.locator('svg.lucide-ellipsis, svg.lucide-more-horizontal');
-    let moreButtonCount = await moreButtonInTopic.count();
+    const moreButtonCount = await moreButtonInTopic.count();
     console.log(`   📍 Found ${moreButtonCount} more buttons inside topic`);
 
     if (moreButtonCount > 0) {
@@ -331,21 +318,21 @@ When('用户输入新的对话名称 {string}', async function (this: CustomWorl
   // Wait a short moment for the popover to render
   await this.page.waitForTimeout(300);
 
-  // Try to find the popover input using various selectors
-  // @lobehub/ui Popover uses antd's Popover internally
-  const popoverInputSelectors = [
-    // antd popover structure
+  // The rename UI can render as a dialog/modal in CI, not only as a popover.
+  const renameInputSelectors = [
+    '[role="dialog"] input[type="text"]',
+    '.ant-modal input[type="text"]',
+    '[data-testid="editing-popover"] input',
     '.ant-popover-inner input',
     '.ant-popover-content input',
     '.ant-popover input',
-    // Generic input that's visible and not the chat input
-    'input:not([data-testid="chat-input"] input)',
+    'input[type="text"]:visible',
   ];
 
   let renameInput = null;
 
-  // Wait for any popover input to appear
-  for (const selector of popoverInputSelectors) {
+  // Wait for any rename input to appear
+  for (const selector of renameInputSelectors) {
     try {
       const locator = this.page.locator(selector).first();
       await locator.waitFor({ state: 'visible', timeout: 2000 });
@@ -367,18 +354,23 @@ When('用户输入新的对话名称 {string}', async function (this: CustomWorl
     for (let i = 0; i < count; i++) {
       const input = allInputs.nth(i);
       const placeholder = await input.getAttribute('placeholder').catch(() => '');
-      const testId = await input.dataset.testid.catch(() => '');
+      const testId = await input.getAttribute('data-testid').catch(() => '');
 
       // Skip search inputs and chat inputs
       if (placeholder?.includes('Search') || placeholder?.includes('搜索')) continue;
       if (testId === 'chat-input') continue;
 
-      // Check if it's inside a popover-like container
-      const isInPopover = await input.evaluate((el) => {
-        return el.closest('.ant-popover') !== null || el.closest('[class*="popover"]') !== null;
+      // Prefer inputs rendered inside rename containers.
+      const isInRenameContainer = await input.evaluate((el) => {
+        return (
+          el.closest('[role="dialog"]') !== null ||
+          el.closest('.ant-modal') !== null ||
+          el.closest('.ant-popover') !== null ||
+          el.closest('[class*="popover"]') !== null
+        );
       });
 
-      if (isInPopover || count === 1) {
+      if (isInRenameContainer || count === 1) {
         renameInput = input;
         console.log(`   📍 Found candidate input at index ${i}`);
         break;
@@ -393,8 +385,21 @@ When('用户输入新的对话名称 {string}', async function (this: CustomWorl
     await renameInput.fill(newName);
     console.log(`   📍 Filled input with "${newName}"`);
 
-    // Press Enter to confirm
-    await renameInput.press('Enter');
+    const saveButton = this.page
+      .locator('[role="dialog"]')
+      .getByRole('button', { exact: true, name: /^(Save|保存)$/ })
+      .first();
+
+    try {
+      await saveButton.waitFor({ state: 'visible', timeout: 1000 });
+      await saveButton.click();
+      console.log('   📍 Clicked save button');
+    } catch {
+      // Popover-based rename UIs still confirm with Enter.
+      await renameInput.press('Enter');
+      console.log('   📍 Confirmed rename with Enter');
+    }
+
     console.log(`   ✅ 已输入新名称 "${newName}"`);
   } else {
     // Last resort: the input should have autoFocus, so keyboard should work
@@ -428,10 +433,12 @@ When('用户选择删除选项', async function (this: CustomWorld) {
 When('用户确认删除', async function (this: CustomWorld) {
   console.log('   📍 Step: 确认删除...');
 
-  // A confirmation modal should appear
-  const confirmButton = this.page.locator('.ant-modal-confirm-btns button.ant-btn-dangerous');
+  // `Delete Topic` / `删除话题`: the topic delete flow confirms through the
+  // DeleteTopicConfirm modal (#16030) instead of a generic ok/删除 button.
+  const confirmButton = this.page
+    .getByRole('dialog')
+    .getByRole('button', { name: /^(ok|delete( topic)?|删除(话题)?|确认|确定)$/i });
 
-  // Wait for modal to appear
   await expect(confirmButton).toBeVisible({ timeout: 5000 });
   await confirmButton.click();
 

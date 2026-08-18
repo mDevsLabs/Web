@@ -2,7 +2,7 @@
 
 import { type UIChatMessage } from '@lobechat/types';
 import { Flexbox, Icon } from '@lobehub/ui';
-import { Segmented } from 'antd';
+import { Tabs } from '@lobehub/ui/base-ui';
 import isEqual from 'fast-deep-equal';
 import { BotIcon, Columns2, Layers } from 'lucide-react';
 import { memo, useState } from 'react';
@@ -33,36 +33,35 @@ const AgentCouncilMessage = memo<AgentCouncilMessageProps>(({ id }) => {
     <>
       <WideScreenContainer>
         <Flexbox
+          horizontal
           align={'center'}
           gap={8}
           height={48}
-          horizontal
           justify={'space-between'}
           paddingBlock={8}
         >
           {displayMode === 'tab' ? (
-            <Segmented
-              onChange={(value) => setActiveTab(Number(value))}
-              options={members.map((_, idx) => {
-                return {
-                  icon: <Icon icon={BotIcon} size={14} />,
-                  value: idx,
-                };
-              })}
-              size={'small'}
-              value={activeTab}
+            <Tabs
+              activeKey={String(activeTab)}
+              size="small"
+              items={members.map((_, idx) => ({
+                icon: <Icon icon={BotIcon} size={14} />,
+                key: String(idx),
+                label: null,
+              }))}
+              onChange={(key) => setActiveTab(Number(key))}
             />
           ) : (
             <div />
           )}
-          <Segmented
-            onChange={(value) => setDisplayMode(value as DisplayMode)}
-            options={[
-              { icon: <Icon icon={Columns2} />, value: 'horizontal' },
-              { icon: <Icon icon={Layers} />, value: 'tab' },
-            ]}
+          <Tabs
+            activeKey={displayMode}
             size="small"
-            value={displayMode}
+            items={[
+              { icon: <Icon icon={Columns2} />, key: 'horizontal', label: null },
+              { icon: <Icon icon={Layers} />, key: 'tab', label: null },
+            ]}
+            onChange={(key) => setDisplayMode(key as DisplayMode)}
           />
         </Flexbox>
       </WideScreenContainer>

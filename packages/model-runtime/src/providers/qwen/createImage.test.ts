@@ -1,8 +1,8 @@
 // @vitest-environment node
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { CreateImageOptions } from '../../core/openaiCompatibleFactory';
-import { CreateImagePayload } from '../../types/image';
+import { type CreateImageOptions } from '../../core/openaiCompatibleFactory';
+import { type CreateImagePayload } from '../../types/image';
 import { createQwenImage } from './createImage';
 
 // Mock the console.error to avoid polluting test output
@@ -23,6 +23,109 @@ afterEach(() => {
 });
 
 describe('createQwenImage', () => {
+  describe('Base URL handling', () => {
+    it('should use intl baseURL when provided', async () => {
+      const mockTaskId = 'task-123456';
+      const mockImageUrl = 'https://example.com/test-image.jpg';
+      const intlBaseUrl = 'https://dashscope-intl.aliyuncs.com/compatible-mode/v1';
+
+      // Mock fetch for task creation and immediate success
+      global.fetch = vi
+        .fn()
+        .mockResolvedValueOnce({
+          ok: true,
+          json: async () => ({
+            output: { task_id: mockTaskId },
+            request_id: 'req-123',
+          }),
+        })
+        .mockResolvedValueOnce({
+          ok: true,
+          json: async () => ({
+            output: {
+              task_id: mockTaskId,
+              task_status: 'SUCCEEDED',
+              results: [{ url: mockImageUrl }],
+            },
+            request_id: 'req-124',
+          }),
+        });
+
+      const payload: CreateImagePayload = {
+        model: 'wanx-v1',
+        params: {
+          prompt: 'Test image',
+        },
+      };
+
+      const optionsWithCustomUrl: CreateImageOptions = {
+        apiKey: 'test-api-key',
+        provider: 'qwen',
+        baseURL: intlBaseUrl,
+      };
+
+      const result = await createQwenImage(payload, optionsWithCustomUrl);
+
+      // Verify the custom base URL is used (without /compatible-mode/v1)
+      expect(fetch).toHaveBeenCalledWith(
+        'https://dashscope-intl.aliyuncs.com/api/v1/services/aigc/text2image/image-synthesis',
+        expect.any(Object),
+      );
+
+      // Verify the task status query also uses the custom base URL
+      expect(fetch).toHaveBeenCalledWith(
+        'https://dashscope-intl.aliyuncs.com/api/v1/tasks/task-123456',
+        expect.any(Object),
+      );
+
+      expect(result).toEqual({ imageUrl: mockImageUrl });
+    });
+
+    it('should use default baseURL when not provided', async () => {
+      const mockTaskId = 'task-123456';
+      const mockImageUrl = 'https://dashscope.oss-cn-beijing.aliyuncs.com/aigc/test-image.jpg';
+
+      // Mock fetch for task creation and immediate success
+      global.fetch = vi
+        .fn()
+        .mockResolvedValueOnce({
+          ok: true,
+          json: async () => ({
+            output: { task_id: mockTaskId },
+            request_id: 'req-123',
+          }),
+        })
+        .mockResolvedValueOnce({
+          ok: true,
+          json: async () => ({
+            output: {
+              task_id: mockTaskId,
+              task_status: 'SUCCEEDED',
+              results: [{ url: mockImageUrl }],
+            },
+            request_id: 'req-124',
+          }),
+        });
+
+      const payload: CreateImagePayload = {
+        model: 'wanx-v1',
+        params: {
+          prompt: 'Test image',
+        },
+      };
+
+      const result = await createQwenImage(payload, mockOptions);
+
+      // Verify the default base URL is used
+      expect(fetch).toHaveBeenCalledWith(
+        'https://dashscope.aliyuncs.com/api/v1/services/aigc/text2image/image-synthesis',
+        expect.any(Object),
+      );
+
+      expect(result).toEqual({ imageUrl: mockImageUrl });
+    });
+  });
+
   describe('Success scenarios', () => {
     it('should successfully generate image with immediate success', async () => {
       const mockTaskId = 'task-123456';
@@ -654,7 +757,7 @@ describe('createQwenImage', () => {
           ],
         },
         model: 'qwen-image-edit',
-        parameters: {},
+        parameters: { n: 1 },
       });
     });
 
@@ -701,54 +804,208 @@ describe('createQwenImage', () => {
       );
     });
 
-    it('should convert imageUrls array to imageUrl for qwen-image-edit', async () => {
-      const mockImageUrl =
-        'https://dashscope.oss-cn-beijing.aliyuncs.com/aigc/imageUrls-converted.jpg';
-
-      global.fetch = vi.fn().mockResolvedValueOnce({
-        ok: true,
-        json: async () => ({
-          output: {
-            choices: [
-              {
-                message: {
-                  content: [{ image: mockImageUrl }],
-                },
-              },
-            ],
-          },
-          request_id: 'req-imageUrls-123',
-        }),
-      });
-
+    it('should throw error when imageUrl is not provided', async () => {
       const payload: CreateImagePayload = {
         model: 'qwen-image-edit',
         params: {
-          prompt: 'Edit this image to add a dog',
-          imageUrls: [
-            'https://example.com/source-image-1.jpg',
-            'https://example.com/source-image-2.jpg',
-          ],
+          prompt: 'Edit this image',
+          // imageUrl not provided
+        },
+      };
+
+      await expect(createQwenImage(payload, mockOptions)).rejects.toEqual(
+        expect.objectContaining({
+          errorType: 'ProviderBizError',
+          provider: 'qwen',
+        }),
+      );
+    });
+  });
+
+  describe('new image-generation route coverage', () => {
+    it('should throw helpful validation error when image is missing for wan2.6-image model', async () => {
+      const payload: CreateImagePayload = {
+        model: 'wan2.6-image-pro',
+        params: {
+          prompt: '参考输入图生成新图',
+        },
+      };
+
+      try {
+        await createQwenImage(payload, mockOptions);
+      } catch (error) {
+        const runtimeError = error as any;
+
+        expect(runtimeError).toEqual(
+          expect.objectContaining({
+            errorType: 'ProviderBizError',
+            provider: 'qwen',
+          }),
+        );
+
+        const errorMessage = runtimeError?.error?.message ?? runtimeError?.error?.error?.message;
+        expect(errorMessage).toBe('imageUrl or imageUrls is required for model wan2.6-image-pro');
+
+        expect(fetch).not.toHaveBeenCalled();
+        return;
+      }
+
+      throw new Error('Expected createQwenImage to throw for missing image on wan2.6-image');
+    });
+
+    it('should use image-generation async API for kling model and parse choices result', async () => {
+      const mockTaskId = 'task-kling-123';
+      const mockImageUrl = 'https://p4-fdl.klingai.com/xxx.png?token=abc';
+
+      global.fetch = vi
+        .fn()
+        .mockResolvedValueOnce({
+          ok: true,
+          json: async () => ({
+            output: { task_id: mockTaskId },
+            request_id: 'req-kling-1',
+          }),
+        })
+        .mockResolvedValueOnce({
+          ok: true,
+          json: async () => ({
+            output: {
+              choices: [
+                {
+                  message: {
+                    content: [{ image: mockImageUrl, type: 'image' }],
+                  },
+                },
+              ],
+              task_id: mockTaskId,
+              task_status: 'SUCCEEDED',
+            },
+            request_id: 'req-kling-2',
+          }),
+        });
+
+      const payload: CreateImagePayload = {
+        model: 'kling/kling-v3-omni-image-generation',
+        params: {
+          aspectRatio: '1:1',
+          imageUrls: ['https://cdn.example.com/ref-1.png', 'https://cdn.example.com/ref-2.png'],
+          prompt: '参考图1风格和图2背景生成番茄炒蛋',
+          resolution: '1k',
         },
       };
 
       const result = await createQwenImage(payload, mockOptions);
 
-      expect(result).toEqual({
-        imageUrl: mockImageUrl,
+      expect(result).toEqual({ imageUrl: mockImageUrl });
+
+      const [firstUrl, firstOptions] = (fetch as any).mock.calls[0];
+      expect(firstUrl).toBe(
+        'https://dashscope.aliyuncs.com/api/v1/services/aigc/image-generation/generation',
+      );
+      expect(firstOptions).toEqual({
+        body: JSON.stringify({
+          input: {
+            messages: [
+              {
+                content: [
+                  { text: '参考图1风格和图2背景生成番茄炒蛋' },
+                  { image: 'https://cdn.example.com/ref-1.png' },
+                  { image: 'https://cdn.example.com/ref-2.png' },
+                ],
+                role: 'user',
+              },
+            ],
+          },
+          model: 'kling/kling-v3-omni-image-generation',
+          parameters: {
+            n: 1,
+            aspect_ratio: '1:1',
+            resolution: '1k',
+            size: '1024*1024',
+          },
+        }),
+        headers: {
+          'Authorization': 'Bearer test-api-key',
+          'Content-Type': 'application/json',
+          'X-DashScope-Async': 'enable',
+        },
+        method: 'POST',
+      });
+    });
+
+    it('should use image-generation async API for wan2.7 model', async () => {
+      const mockTaskId = 'task-wan27-1';
+      const mockImageUrl = 'https://dashscope.oss-cn-beijing.aliyuncs.com/aigc/wan27-image.jpg';
+
+      global.fetch = vi
+        .fn()
+        .mockResolvedValueOnce({
+          ok: true,
+          json: async () => ({
+            output: { task_id: mockTaskId },
+            request_id: 'req-wan27-create',
+          }),
+        })
+        .mockResolvedValueOnce({
+          ok: true,
+          json: async () => ({
+            output: {
+              results: [{ url: mockImageUrl }],
+              task_id: mockTaskId,
+              task_status: 'SUCCEEDED',
+            },
+            request_id: 'req-wan27-status',
+          }),
+        });
+
+      const payload: CreateImagePayload = {
+        model: 'wan2.7-image-pro',
+        params: {
+          height: 2048,
+          prompt: 'A futuristic city skyline',
+          seed: 123,
+          width: 2048,
+        },
+      };
+
+      const result = await createQwenImage(payload, mockOptions);
+
+      expect(result).toEqual({ imageUrl: mockImageUrl });
+
+      const [createUrl, createOptions] = (fetch as any).mock.calls[0];
+
+      expect(createUrl).toBe(
+        'https://dashscope.aliyuncs.com/api/v1/services/aigc/image-generation/generation',
+      );
+      expect(JSON.parse(createOptions.body)).toEqual({
+        input: {
+          messages: [
+            {
+              content: [{ text: 'A futuristic city skyline' }],
+              role: 'user',
+            },
+          ],
+        },
+        model: 'wan2.7-image-pro',
+        parameters: {
+          n: 1,
+          seed: 123,
+          size: '2048*2048',
+        },
       });
 
-      const [url, options] = (fetch as any).mock.calls[0];
-      const body = JSON.parse(options.body);
-
-      // Verify that the first imageUrl from imageUrls array was used
-      expect(body.input.messages[0].content[0].image).toBe(
-        'https://example.com/source-image-1.jpg',
+      expect(fetch).toHaveBeenCalledWith(
+        `https://dashscope.aliyuncs.com/api/v1/tasks/${mockTaskId}`,
+        {
+          headers: {
+            Authorization: 'Bearer test-api-key',
+          },
+        },
       );
     });
 
-    it('should use first imageUrl when imageUrls has multiple elements', async () => {
-      const mockImageUrl = 'https://dashscope.oss-cn-beijing.aliyuncs.com/aigc/first-element.jpg';
+    it('should use multimodal-generation sync API for sync-only model', async () => {
+      const mockImageUrl = 'https://dashscope.oss-cn-beijing.aliyuncs.com/aigc/sync-only-image.jpg';
 
       global.fetch = vi.fn().mockResolvedValueOnce({
         ok: true,
@@ -762,105 +1019,42 @@ describe('createQwenImage', () => {
               },
             ],
           },
-          request_id: 'req-first-element',
+          request_id: 'req-sync-only',
         }),
       });
 
       const payload: CreateImagePayload = {
-        model: 'qwen-image-edit',
+        model: 'qwen-image-max',
         params: {
-          prompt: 'Use the first image only',
-          imageUrls: [
-            'https://example.com/first-image.jpg',
-            'https://example.com/second-image.jpg',
-            'https://example.com/third-image.jpg',
+          prompt: 'A cinematic portrait',
+          seed: 42,
+        },
+      };
+
+      const result = await createQwenImage(payload, mockOptions);
+
+      expect(result).toEqual({ imageUrl: mockImageUrl });
+
+      const [syncUrl, syncOptions] = (fetch as any).mock.calls[0];
+
+      expect(syncUrl).toBe(
+        'https://dashscope.aliyuncs.com/api/v1/services/aigc/multimodal-generation/generation',
+      );
+      expect(JSON.parse(syncOptions.body)).toEqual({
+        input: {
+          messages: [
+            {
+              content: [{ text: 'A cinematic portrait' }],
+              role: 'user',
+            },
           ],
         },
-      };
-
-      await createQwenImage(payload, mockOptions);
-
-      const [url, options] = (fetch as any).mock.calls[0];
-      const body = JSON.parse(options.body);
-
-      // Should use only the first image from the array
-      expect(body.input.messages[0].content[0].image).toBe('https://example.com/first-image.jpg');
-    });
-
-    it('should throw error when imageUrls is empty array', async () => {
-      const payload: CreateImagePayload = {
-        model: 'qwen-image-edit',
-        params: {
-          prompt: 'Edit this image',
-          imageUrls: [], // Empty array
+        model: 'qwen-image-max',
+        parameters: {
+          n: 1,
+          seed: 42,
         },
-      };
-
-      await expect(createQwenImage(payload, mockOptions)).rejects.toEqual(
-        expect.objectContaining({
-          errorType: 'ProviderBizError',
-          provider: 'qwen',
-        }),
-      );
-    });
-
-    it('should prioritize imageUrl over imageUrls when both are provided', async () => {
-      const mockImageUrl = 'https://dashscope.oss-cn-beijing.aliyuncs.com/aigc/priority-test.jpg';
-
-      global.fetch = vi.fn().mockResolvedValueOnce({
-        ok: true,
-        json: async () => ({
-          output: {
-            choices: [
-              {
-                message: {
-                  content: [{ image: mockImageUrl }],
-                },
-              },
-            ],
-          },
-          request_id: 'req-priority-test',
-        }),
       });
-
-      const payload: CreateImagePayload = {
-        model: 'qwen-image-edit',
-        params: {
-          prompt: 'Test priority between imageUrl and imageUrls',
-          imageUrl: 'https://example.com/priority-image.jpg',
-          imageUrls: [
-            'https://example.com/should-not-use-1.jpg',
-            'https://example.com/should-not-use-2.jpg',
-          ],
-        },
-      };
-
-      await createQwenImage(payload, mockOptions);
-
-      const [url, options] = (fetch as any).mock.calls[0];
-      const body = JSON.parse(options.body);
-
-      // Should use imageUrl, not imageUrls
-      expect(body.input.messages[0].content[0].image).toBe(
-        'https://example.com/priority-image.jpg',
-      );
-    });
-
-    it('should throw error when neither imageUrl nor imageUrls are provided', async () => {
-      const payload: CreateImagePayload = {
-        model: 'qwen-image-edit',
-        params: {
-          prompt: 'Edit this image',
-          // Neither imageUrl nor imageUrls provided
-        },
-      };
-
-      await expect(createQwenImage(payload, mockOptions)).rejects.toEqual(
-        expect.objectContaining({
-          errorType: 'ProviderBizError',
-          provider: 'qwen',
-        }),
-      );
     });
   });
 });

@@ -1,11 +1,11 @@
 import { DEFAULT_AGENT_CONFIG } from '@lobechat/const';
 import { and, eq, inArray } from 'drizzle-orm';
-import { LLMParams } from 'model-bank';
+import type { LLMParams } from 'model-bank';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { getTestDB } from '../../core/getTestDB';
+import type { NewSession, SessionItem } from '../../schemas';
 import {
-  NewSession,
-  SessionItem,
   agents,
   agentsToSessions,
   messages,
@@ -14,10 +14,9 @@ import {
   topics,
   users,
 } from '../../schemas';
-import { LobeChatDatabase } from '../../type';
+import type { LobeChatDatabase } from '../../type';
 import { idGenerator } from '../../utils/idGenerator';
 import { SessionModel } from '../session';
-import { getTestDB } from '../../core/getTestDB';
 
 const serverDB: LobeChatDatabase = await getTestDB();
 
@@ -26,19 +25,19 @@ const sessionModel = new SessionModel(serverDB, userId);
 
 beforeEach(async () => {
   await serverDB.delete(users);
-  // 并创建初始用户
+  // and create the initial user
   await serverDB.insert(users).values({ id: userId });
 });
 
 afterEach(async () => {
-  // 在每个测试用例之后, 清空用户表 (应该会自动级联删除所有数据)
+  // After each test case, clear the users table (should auto-cascade delete all data)
   await serverDB.delete(users);
 });
 
 describe('SessionModel', () => {
   describe('query', () => {
     it('should query sessions by user ID', async () => {
-      // 创建一些测试数据
+      // Create some test data
       await serverDB.insert(users).values([{ id: '456' }]);
 
       await serverDB.insert(sessions).values([
@@ -47,10 +46,10 @@ describe('SessionModel', () => {
         { id: '3', userId: '456', updatedAt: new Date('2023-03-01') },
       ]);
 
-      // 调用 query 方法
+      // Call the query method
       const result = await sessionModel.query();
 
-      // 断言结果
+      // Assert results
       expect(result).toHaveLength(2);
       expect(result[0].id).toBe('2');
       expect(result[1].id).toBe('1');
@@ -77,7 +76,7 @@ describe('SessionModel', () => {
 
   describe('queryWithGroups', () => {
     it('should return sessions grouped by group', async () => {
-      // 创建测试数据
+      // Create test data
       await serverDB.transaction(async (trx) => {
         await trx.insert(users).values([{ id: '456' }]);
         await trx.insert(sessionGroups).values([
@@ -95,10 +94,10 @@ describe('SessionModel', () => {
         ]);
       });
 
-      // 调用 queryWithGroups 方法
+      // Call the queryWithGroups method
       const result = await sessionModel.queryWithGroups();
 
-      // 断言结果
+      // Assert results
       expect(result.sessions).toHaveLength(6);
       expect(result.sessionGroups).toHaveLength(2);
       expect(result.sessionGroups[0].id).toBe('group1');
@@ -108,10 +107,10 @@ describe('SessionModel', () => {
     });
 
     it('should return empty groups if no sessions', async () => {
-      // 调用 queryWithGroups 方法
+      // Call the queryWithGroups method
       const result = await sessionModel.queryWithGroups();
 
-      // 断言结果
+      // Assert results
       expect(result.sessions).toHaveLength(0);
       expect(result.sessionGroups).toHaveLength(0);
     });
@@ -237,7 +236,7 @@ describe('SessionModel', () => {
 
   describe('count', () => {
     it('should return the count of sessions for the user', async () => {
-      // 创建测试数据
+      // Create test data
       await serverDB.insert(users).values([{ id: '456' }]);
       await serverDB.insert(sessions).values([
         { id: '1', userId },
@@ -245,27 +244,48 @@ describe('SessionModel', () => {
         { id: '3', userId: '456' },
       ]);
 
-      // 调用 count 方法
+      // Call the count method
       const result = await sessionModel.count();
 
-      // 断言结果
+      // Assert results
       expect(result).toBe(2);
     });
 
     it('should return 0 if no sessions exist for the user', async () => {
-      // 创建测试数据
+      // Create test data
       await serverDB.insert(users).values([{ id: '456' }]);
       await serverDB.insert(sessions).values([{ id: '3', userId: '456' }]);
 
-      // 调用 count 方法
+      // Call the count method
       const result = await sessionModel.count();
 
-      // 断言结果
+      // Assert results
       expect(result).toBe(0);
+    });
+
+    it('should count sessions with date range filter', async () => {
+      await serverDB.insert(sessions).values([
+        { id: 's1', userId, createdAt: new Date('2024-01-01') },
+        { id: 's2', userId, createdAt: new Date('2024-06-01') },
+        { id: 's3', userId, createdAt: new Date('2024-12-01') },
+      ]);
+
+      const rangeResult = await sessionModel.count({
+        range: ['2024-03-01', '2024-09-01'],
+      });
+      expect(rangeResult).toBe(1);
+
+      const startResult = await sessionModel.count({ startDate: '2024-05-01' });
+      expect(startResult).toBe(2);
+
+      const endResult = await sessionModel.count({ endDate: '2024-07-01' });
+      expect(endResult).toBe(2);
     });
   });
 
-  describe('queryByKeyword', () => {
+  // BM25 search requires pg_search extension (ParadeDB), not available in PGlite
+  const isServerDB = process.env.TEST_SERVER_DB === '1';
+  describe.skipIf(!isServerDB)('queryByKeyword', () => {
     it('should return an empty array if keyword is empty', async () => {
       const result = await sessionModel.queryByKeyword('');
       expect(result).toEqual([]);
@@ -348,7 +368,7 @@ describe('SessionModel', () => {
 
   describe('create', () => {
     it('should create a new session', async () => {
-      // 调用 create 方法
+      // Call the create method
       const result = await sessionModel.create({
         type: 'agent',
         session: {
@@ -357,7 +377,7 @@ describe('SessionModel', () => {
         config: { model: 'gpt-3.5-turbo' },
       });
 
-      // 断言结果
+      // Assert results
       const sessionId = result.id;
       expect(sessionId).toBeDefined();
       expect(sessionId.startsWith('ssn_')).toBeTruthy();
@@ -372,7 +392,7 @@ describe('SessionModel', () => {
     });
 
     it('should create a new session with custom ID', async () => {
-      // 调用 create 方法,传入自定义 ID
+      // Call the create method with a custom ID
       const customId = 'custom-id';
       const result = await sessionModel.create({
         type: 'agent',
@@ -381,7 +401,7 @@ describe('SessionModel', () => {
         id: customId,
       });
 
-      // 断言结果
+      // Assert results
       expect(result.id).toBe(customId);
     });
 
@@ -453,7 +473,7 @@ describe('SessionModel', () => {
 
   describe('batchCreate', () => {
     it('should batch create sessions', async () => {
-      // 调用 batchCreate 方法
+      // Call the batchCreate method
       const sessions: NewSession[] = [
         {
           id: '1',
@@ -472,13 +492,13 @@ describe('SessionModel', () => {
       ];
       const result = await sessionModel.batchCreate(sessions);
 
-      // 断言结果
+      // Assert results
       // pglite return affectedRows while postgres return rowCount
       expect((result as any).affectedRows || result.rowCount).toEqual(2);
     });
 
     it.skip('should set group to default if group does not exist', async () => {
-      // 调用 batchCreate 方法,传入不存在的 group
+      // Call the batchCreate method with a non-existent group
       const sessions: NewSession[] = [
         {
           id: '1',
@@ -491,14 +511,14 @@ describe('SessionModel', () => {
       ];
       const result = await sessionModel.batchCreate(sessions);
 
-      // 断言结果
+      // Assert results
       // expect(result[0].group).toBe('default');
     });
   });
 
   describe('duplicate', () => {
     it('should duplicate a session', async () => {
-      // 创建一个用户和一个 session
+      // Create a user and a session
       await serverDB.transaction(async (trx) => {
         await trx
           .insert(sessions)
@@ -507,10 +527,10 @@ describe('SessionModel', () => {
         await trx.insert(agentsToSessions).values({ agentId: 'agent-1', sessionId: '1', userId });
       });
 
-      // 调用 duplicate 方法
+      // Call the duplicate method
       const result = (await sessionModel.duplicate('1', 'Duplicated Session')) as SessionItem;
 
-      // 断言结果
+      // Assert results
       expect(result.id).not.toBe('1');
       expect(result.userId).toBe(userId);
       expect(result.type).toBe('agent');
@@ -524,34 +544,34 @@ describe('SessionModel', () => {
     });
 
     it('should return undefined if session does not exist', async () => {
-      // 调用 duplicate 方法,传入不存在的 session ID
+      // Call the duplicate method with a non-existent session ID
       const result = await sessionModel.duplicate('non-existent-id');
 
-      // 断言结果
+      // Assert results
       expect(result).toBeUndefined();
     });
   });
 
   describe('update', () => {
     it('should update a session', async () => {
-      // 创建一个测试 session
+      // Create a test session
       const sessionId = '123';
       await serverDB.insert(sessions).values({ userId, id: sessionId, title: 'Test Session' });
 
-      // 调用 update 方法更新 session
+      // Call the update method to update the session
       const updatedSessions = await sessionModel.update(sessionId, {
         title: 'Updated Test Session',
         description: 'This is an updated test session',
       });
 
-      // 断言更新后的结果
+      // Assert the updated results
       expect(updatedSessions).toHaveLength(1);
       expect(updatedSessions[0].title).toBe('Updated Test Session');
       expect(updatedSessions[0].description).toBe('This is an updated test session');
     });
 
     it('should not update a session if user ID does not match', async () => {
-      // 创建一个测试 session,但使用不同的 user ID
+      // Create a test session with a different user ID
       await serverDB.insert(users).values([{ id: '777' }]);
 
       const sessionId = '123';
@@ -560,7 +580,7 @@ describe('SessionModel', () => {
         .insert(sessions)
         .values({ userId: '777', id: sessionId, title: 'Test Session' });
 
-      // 尝试更新这个 session,应该不会有任何更新
+      // Attempt to update this session — should produce no updates
       const updatedSessions = await sessionModel.update(sessionId, {
         title: 'Updated Test Session',
       });
@@ -571,26 +591,26 @@ describe('SessionModel', () => {
 
   describe('delete', () => {
     it('should handle deleting a session with no associated messages or topics', async () => {
-      // 创建测试数据
+      // Create test data
       await serverDB.insert(sessions).values({ id: '1', userId });
 
-      // 调用 delete 方法
+      // Call the delete method
       await sessionModel.delete('1');
 
-      // 断言删除结果
+      // Assert deletion results
       const result = await serverDB.select({ id: sessions.id }).from(sessions);
 
       expect(result).toHaveLength(0);
     });
 
     it('should handle concurrent deletions gracefully', async () => {
-      // 创建测试数据
+      // Create test data
       await serverDB.insert(sessions).values({ id: '1', userId });
 
-      // 并发调用 delete 方法
+      // Concurrently call the delete method
       await Promise.all([sessionModel.delete('1'), sessionModel.delete('1')]);
 
-      // 断言删除结果
+      // Assert deletion results
       const result = await serverDB.select({ id: sessions.id }).from(sessions);
 
       expect(result).toHaveLength(0);
@@ -651,39 +671,63 @@ describe('SessionModel', () => {
       expect(await serverDB.select().from(sessions).where(eq(sessions.id, '1'))).toHaveLength(0);
       expect(await serverDB.select().from(sessions).where(eq(sessions.id, '2'))).toHaveLength(1);
     });
+
+    it('should report orphan-deleted agent ids so callers can clean permission rows', async () => {
+      await serverDB.insert(sessions).values([
+        { id: '1', userId },
+        { id: '2', userId },
+      ]);
+      await serverDB.insert(agents).values([
+        { id: 'orphaned', userId },
+        { id: 'still-linked', userId },
+      ]);
+      await serverDB.insert(agentsToSessions).values([
+        { agentId: 'orphaned', sessionId: '1', userId },
+        { agentId: 'still-linked', sessionId: '1', userId },
+        { agentId: 'still-linked', sessionId: '2', userId },
+      ]);
+
+      const { orphanedAgentIds } = await sessionModel.delete('1');
+
+      expect(orphanedAgentIds).toEqual(['orphaned']);
+      expect(await serverDB.select().from(agents).where(eq(agents.id, 'orphaned'))).toHaveLength(0);
+      expect(
+        await serverDB.select().from(agents).where(eq(agents.id, 'still-linked')),
+      ).toHaveLength(1);
+    });
   });
 
   describe('batchDelete', () => {
     it('should handle deleting sessions with no associated messages or topics', async () => {
-      // 创建测试数据
+      // Create test data
       await serverDB.insert(sessions).values([
         { id: '1', userId },
         { id: '2', userId },
       ]);
 
-      // 调用 batchDelete 方法
+      // Call the batchDelete method
       await sessionModel.batchDelete(['1', '2']);
 
-      // 断言删除结果
+      // Assert deletion results
       const result = await serverDB.select({ id: sessions.id }).from(sessions);
 
       expect(result).toHaveLength(0);
     });
 
     it('should handle concurrent batch deletions gracefully', async () => {
-      // 创建测试数据
+      // Create test data
       await serverDB.insert(sessions).values([
         { id: '1', userId },
         { id: '2', userId },
       ]);
 
-      // 并发调用 batchDelete 方法
+      // Concurrently call the batchDelete method
       await Promise.all([
         sessionModel.batchDelete(['1', '2']),
         sessionModel.batchDelete(['1', '2']),
       ]);
 
-      // 断言删除结果
+      // Assert deletion results
       const result = await serverDB.select({ id: sessions.id }).from(sessions);
 
       expect(result).toHaveLength(0);
@@ -1132,6 +1176,109 @@ describe('SessionModel', () => {
       expect(result3).toBeUndefined();
     });
 
+    it('should clean out undefined values from params during final cleanup', async () => {
+      // This test covers the final cleanup logic that removes undefined values from params
+      const sessionId = 'test-session-cleanup-undefined';
+      const agentId = 'test-agent-cleanup-undefined';
+
+      await serverDB.transaction(async (trx) => {
+        await trx.insert(sessions).values({
+          id: sessionId,
+          userId,
+          type: 'agent',
+        });
+
+        await trx.insert(agents).values({
+          id: agentId,
+          userId,
+          model: 'gpt-3.5-turbo',
+          title: 'Test Agent',
+          params: {
+            temperature: 0.7,
+            top_p: 1,
+            presence_penalty: 0,
+          },
+        });
+
+        await trx.insert(agentsToSessions).values({
+          sessionId,
+          agentId,
+          userId,
+        });
+      });
+
+      // Update with some params set to undefined (delete them) and some set to new values
+      await sessionModel.updateConfig(sessionId, {
+        params: {
+          temperature: undefined,
+          presence_penalty: undefined,
+          top_p: 0.9,
+        },
+      });
+
+      // Verify: temperature and presence_penalty should be removed, top_p updated
+      const updatedAgent = await serverDB
+        .select()
+        .from(agents)
+        .where(and(eq(agents.id, agentId), eq(agents.userId, userId)));
+
+      expect(updatedAgent[0].params).toEqual({ top_p: 0.9 });
+      expect(updatedAgent[0].params).not.toHaveProperty('temperature');
+      expect(updatedAgent[0].params).not.toHaveProperty('presence_penalty');
+    });
+
+    it('should set params to undefined when all param values are removed', async () => {
+      // This test covers the branch where after cleanup, params object becomes empty
+      // and mergedValue.params is set to undefined.
+      // Note: when mergedValue.params is undefined, drizzle ORM does not update the column,
+      // so the database retains the original params value.
+      const sessionId = 'test-session-all-params-removed';
+      const agentId = 'test-agent-all-params-removed';
+
+      await serverDB.transaction(async (trx) => {
+        await trx.insert(sessions).values({
+          id: sessionId,
+          userId,
+          type: 'agent',
+        });
+
+        await trx.insert(agents).values({
+          id: agentId,
+          userId,
+          model: 'gpt-3.5-turbo',
+          title: 'Test Agent',
+          params: {
+            temperature: 0.7,
+            top_p: 1,
+          },
+        });
+
+        await trx.insert(agentsToSessions).values({
+          sessionId,
+          agentId,
+          userId,
+        });
+      });
+
+      // Delete ALL params by setting them to undefined
+      await sessionModel.updateConfig(sessionId, {
+        params: {
+          temperature: undefined,
+          top_p: undefined,
+        },
+      });
+
+      // When all params are removed, mergedValue.params is set to undefined.
+      // Drizzle ORM skips undefined fields in .set(), so the DB column is not modified.
+      // The original params value is retained.
+      const updatedAgent = await serverDB
+        .select()
+        .from(agents)
+        .where(and(eq(agents.id, agentId), eq(agents.userId, userId)));
+
+      expect(updatedAgent[0].params).toEqual({ temperature: 0.7, top_p: 1 });
+    });
+
     it('should not update config for other users sessions', async () => {
       // Create agent for another user
       const sessionId = 'other-session';
@@ -1175,139 +1322,6 @@ describe('SessionModel', () => {
         model: 'gpt-3.5-turbo',
         title: 'Original Title',
       });
-    });
-  });
-
-  describe('rank', () => {
-    it('should return ranked sessions based on topic count', async () => {
-      // Create test data
-      await serverDB.transaction(async (trx) => {
-        // Create sessions
-        await trx.insert(sessions).values([
-          { id: '1', userId },
-          { id: '2', userId },
-          { id: '3', userId },
-        ]);
-
-        // Create agents
-        await trx.insert(agents).values([
-          { id: 'a1', userId, title: 'Agent 1', avatar: 'avatar1', backgroundColor: 'bg1' },
-          { id: 'a2', userId, title: 'Agent 2', avatar: 'avatar2', backgroundColor: 'bg2' },
-          { id: 'a3', userId, title: 'Agent 3', avatar: 'avatar3', backgroundColor: 'bg3' },
-        ]);
-
-        // Link agents to sessions
-        await trx.insert(agentsToSessions).values([
-          { sessionId: '1', agentId: 'a1', userId },
-          { sessionId: '2', agentId: 'a2', userId },
-          { sessionId: '3', agentId: 'a3', userId },
-        ]);
-
-        // Create topics (different counts for ranking)
-        await trx.insert(topics).values([
-          { id: 't1', sessionId: '1', userId },
-          { id: 't2', sessionId: '1', userId },
-          { id: 't3', sessionId: '1', userId }, // Session 1 has 3 topics
-          { id: 't4', sessionId: '2', userId },
-          { id: 't5', sessionId: '2', userId }, // Session 2 has 2 topics
-          { id: 't6', sessionId: '3', userId }, // Session 3 has 1 topic
-        ]);
-      });
-
-      // Get ranked sessions with default limit
-      const result = await sessionModel.rank();
-
-      // Verify results
-      expect(result).toHaveLength(3);
-      // Should be ordered by topic count (descending)
-      expect(result[0]).toMatchObject({
-        id: '1',
-        count: 3,
-        title: 'Agent 1',
-        avatar: 'avatar1',
-        backgroundColor: 'bg1',
-      });
-      expect(result[1]).toMatchObject({
-        id: '2',
-        count: 2,
-        title: 'Agent 2',
-        avatar: 'avatar2',
-        backgroundColor: 'bg2',
-      });
-      expect(result[2]).toMatchObject({
-        id: '3',
-        count: 1,
-        title: 'Agent 3',
-        avatar: 'avatar3',
-        backgroundColor: 'bg3',
-      });
-    });
-
-    it('should respect the limit parameter', async () => {
-      // Create test data
-      await serverDB.transaction(async (trx) => {
-        // Create sessions and related data
-        await trx.insert(sessions).values([
-          { id: '1', userId },
-          { id: '2', userId },
-          { id: '3', userId },
-        ]);
-
-        await trx.insert(agents).values([
-          { id: 'a1', userId, title: 'Agent 1' },
-          { id: 'a2', userId, title: 'Agent 2' },
-          { id: 'a3', userId, title: 'Agent 3' },
-        ]);
-
-        await trx.insert(agentsToSessions).values([
-          { sessionId: '1', agentId: 'a1', userId },
-          { sessionId: '2', agentId: 'a2', userId },
-          { sessionId: '3', agentId: 'a3', userId },
-        ]);
-
-        await trx.insert(topics).values([
-          { id: 't1', sessionId: '1', userId },
-          { id: 't2', sessionId: '1', userId },
-          { id: 't6', sessionId: '1', userId },
-          { id: 't3', sessionId: '2', userId },
-          { id: 't8', sessionId: '2', userId },
-          { id: 't4', sessionId: '3', userId },
-        ]);
-      });
-
-      // Get ranked sessions with limit of 2
-      const result = await sessionModel.rank(2);
-
-      // Verify results
-      expect(result).toHaveLength(2);
-      expect(result[0].id).toBe('1'); // Most topics (2)
-      expect(result[1].id).toBe('2'); // Second most topics (1)
-    });
-
-    it('should handle sessions with no topics', async () => {
-      // Create test data
-      await serverDB.transaction(async (trx) => {
-        await trx.insert(sessions).values([
-          { id: '1', userId },
-          { id: '2', userId },
-        ]);
-
-        await trx.insert(agents).values([
-          { id: 'a1', userId, title: 'Agent 1' },
-          { id: 'a2', userId, title: 'Agent 2' },
-        ]);
-
-        await trx.insert(agentsToSessions).values([
-          { sessionId: '1', agentId: 'a1', userId },
-          { sessionId: '2', agentId: 'a2', userId },
-        ]);
-
-        // No topics created
-      });
-
-      const result = await sessionModel.rank();
-
-      expect(result).toHaveLength(0);
     });
   });
 
@@ -1367,7 +1381,7 @@ describe('SessionModel', () => {
 
   describe('findSessionsByKeywords', () => {
     it('should handle errors gracefully and return empty array', async () => {
-      // 这个测试旨在覆盖 findSessionsByKeywords 中的错误处理逻辑
+      // This test aims to cover the error-handling logic in findSessionsByKeywords
       const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
       // Mock the database query to throw an error
@@ -1376,7 +1390,7 @@ describe('SessionModel', () => {
 
       const result = await sessionModel.findSessionsByKeywords({ keyword: 'test' });
 
-      // 即使发生错误，方法也应该返回一个空数组
+      // Even when an error occurs, the method should return an empty array
       expect(Array.isArray(result)).toBe(true);
       expect(result).toEqual([]);
       expect(consoleSpy).toHaveBeenCalledWith('findSessionsByKeywords error:', expect.any(Error), {

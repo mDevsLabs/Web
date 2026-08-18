@@ -1,7 +1,17 @@
-import type { PartialDeep } from 'type-fest';
+import type { OnboardingUserInfo } from '@lobechat/context-engine';
+import { type MarkdownPatchHunk } from '@lobechat/markdown-patch';
+import type {
+  ConfirmOnboardingUnderstandingInput,
+  OnboardingUnderstandingPollingResult,
+  RetryOnboardingUnderstandingProviderInput,
+  ReviseOnboardingUnderstandingInput,
+  StartOnboardingUnderstandingInput,
+} from '@lobechat/types';
+import { type PartialDeep } from 'type-fest';
 
 import { lambdaClient } from '@/libs/trpc/client';
 import {
+  type SaveUserQuestionInput,
   type SSOProvider,
   type UserGuide,
   type UserInitializationState,
@@ -11,6 +21,23 @@ import {
 import { type UserSettings } from '@/types/user/settings';
 
 export class UserService {
+  confirmOnboardingUnderstanding = async (input: ConfirmOnboardingUnderstandingInput) => {
+    return lambdaClient.user.confirmOnboardingUnderstanding.mutate(input);
+  };
+
+  getOnboardingUnderstanding = async (
+    topicId: string,
+  ): Promise<OnboardingUnderstandingPollingResult> => {
+    return lambdaClient.user.getOnboardingUnderstanding.query({ topicId });
+  };
+
+  getUserActivitySummary = async (): Promise<{
+    lastUserMessageAt: Date | null;
+    userCreatedAt: Date | null;
+  }> => {
+    return lambdaClient.user.getUserActivitySummary.query();
+  };
+
   getUserRegistrationDuration = async (): Promise<{
     createdAt: string;
     duration: number;
@@ -27,8 +54,53 @@ export class UserService {
     return lambdaClient.user.getUserSSOProviders.query();
   };
 
-  makeUserOnboarded = async () => {
-    return lambdaClient.user.makeUserOnboarded.mutate();
+  getOnboardingAgentContext = async (): Promise<{
+    personaContent: string | null;
+    phaseGuidance: string;
+    soulContent: string | null;
+    userInfo?: OnboardingUserInfo;
+  }> => {
+    return lambdaClient.user.getOnboardingAgentContext.query();
+  };
+
+  saveUserQuestion = async (params: SaveUserQuestionInput) => {
+    return lambdaClient.user.saveUserQuestion.mutate(
+      params as Parameters<typeof lambdaClient.user.saveUserQuestion.mutate>[0],
+    );
+  };
+
+  finishOnboarding = async () => {
+    return lambdaClient.user.finishOnboarding.mutate({});
+  };
+
+  readOnboardingDocument = async (type: 'soul' | 'persona') => {
+    return lambdaClient.user.readOnboardingDocument.query({ type });
+  };
+
+  updateOnboardingDocument = async (type: 'soul' | 'persona', content: string) => {
+    return lambdaClient.user.updateOnboardingDocument.mutate({ content, type });
+  };
+
+  patchOnboardingDocument = async (type: 'soul' | 'persona', hunks: MarkdownPatchHunk[]) => {
+    return lambdaClient.user.patchOnboardingDocument.mutate({ hunks, type });
+  };
+
+  retryOnboardingUnderstandingSource = async (
+    input: RetryOnboardingUnderstandingProviderInput,
+  ): Promise<OnboardingUnderstandingPollingResult> => {
+    return lambdaClient.user.retryOnboardingUnderstandingSource.mutate(input);
+  };
+
+  reviseOnboardingUnderstanding = async (
+    input: ReviseOnboardingUnderstandingInput,
+  ): Promise<OnboardingUnderstandingPollingResult> => {
+    return lambdaClient.user.reviseOnboardingUnderstanding.mutate(input);
+  };
+
+  startOnboardingUnderstanding = async (
+    input: StartOnboardingUnderstandingInput,
+  ): Promise<OnboardingUnderstandingPollingResult> => {
+    return lambdaClient.user.startOnboardingUnderstanding.mutate(input);
   };
 
   updateOnboarding = async (onboarding: UserOnboarding) => {

@@ -4,9 +4,10 @@ import { createStaticStyles, cssVar } from 'antd-style';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { type ScoreResult, sortItemsByPriority } from '../../MCP/calculateScore';
+import { type ScoreResult } from '../../MCP/calculateScore';
+import { sortItemsByPriority } from '../../MCP/calculateScore';
 
-// 使用 cssVar 的 getGradeColor 版本
+// Version of getGradeColor using cssVar
 const getGradeColor = (grade: string): string => {
   switch (grade) {
     case 'a': {
@@ -126,15 +127,15 @@ const TotalScore = memo<TotalScoreProps>(({ scoreResult, scoreItems = [], isVali
 
   const { totalScore, maxScore, percentage, grade } = scoreResult;
 
-  // 使用主题颜色的段级颜色配置
+  // Segment-level color configuration using theme colors
   const SEGMENT_COLORS = {
-    // 绿色 (80-100%)
+    // Green (80-100%)
     A_COLOR: cssVar.colorSuccess,
 
-    // 黄色 (60-85%)
+    // Yellow (60-85%)
     B_COLOR: cssVar.colorWarning,
 
-    // 红色 (0-60%)
+    // Red (0-60%)
     F_COLOR: cssVar.colorError,
   };
 
@@ -144,11 +145,11 @@ const TotalScore = memo<TotalScoreProps>(({ scoreResult, scoreItems = [], isVali
   const completedOptional = allItems.filter((item) => !item.required && item.check);
   const incompleteOptional = allItems.filter((item) => !item.required && !item.check);
 
-  // 计算必需项个数
+  // Count the number of required items
   const totalRequiredItems = completedRequired.length + incompleteRequired.length;
   const completedRequiredItems = completedRequired.length;
 
-  // 生成 tooltip 内容
+  // Generate tooltip content
   const renderTooltipContent = () => (
     <div className={styles.tooltipContent}>
       <div style={{ fontSize: '14px', marginBottom: '12px' }}>
@@ -226,7 +227,7 @@ const TotalScore = memo<TotalScoreProps>(({ scoreResult, scoreItems = [], isVali
 
   return (
     <Block gap={12} padding={16} variant={'outlined'}>
-      <Flexbox align="flex-start" horizontal justify="space-between">
+      <Flexbox horizontal align="flex-start" justify="space-between">
         <Flexbox>
           <h2 style={{ fontWeight: 'bold', margin: 0 }}>
             {t(`mcp.details.scoreLevel.${grade}.fullTitle`)}
@@ -248,6 +249,8 @@ const TotalScore = memo<TotalScoreProps>(({ scoreResult, scoreItems = [], isVali
 
       <div className={styles.progressContainer}>
         <Popover
+          placement="bottom"
+          trigger={['hover', 'click']}
           content={
             <div>
               <div style={{ fontWeight: 'bold', marginBottom: 8 }}>
@@ -256,8 +259,6 @@ const TotalScore = memo<TotalScoreProps>(({ scoreResult, scoreItems = [], isVali
               {renderTooltipContent()}
             </div>
           }
-          placement="bottom"
-          trigger={['hover', 'click']}
         >
           <Progress
             percent={Math.round(percentage)}

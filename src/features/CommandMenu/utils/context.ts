@@ -1,4 +1,4 @@
-import type { Context, MenuContext } from '../types';
+import { type Context, type MenuContext } from '../types';
 
 /**
  * Configuration for context detection
@@ -15,7 +15,7 @@ interface ContextConfig {
  */
 const CONTEXT_CONFIGS: ContextConfig[] = [
   {
-    matcher: /^\/agent\/[^/]+$/,
+    matcher: /^\/agent\/[^/]+(?:\/[^/]+(?:\/page(?:\/[^/]+)?)?)?$/,
     name: 'Agent',
     type: 'agent',
   },
@@ -28,6 +28,11 @@ const CONTEXT_CONFIGS: ContextConfig[] = [
     matcher: /^\/image$/,
     name: 'Painting',
     type: 'painting',
+  },
+  {
+    matcher: /^\/video$/,
+    name: 'Video',
+    type: 'video',
   },
   {
     captureSubPath: true,

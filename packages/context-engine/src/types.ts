@@ -1,4 +1,16 @@
-import { UIChatMessage } from '@lobechat/types';
+import type { UIChatMessage } from '@lobechat/types';
+
+/**
+ * Consumer-side metadata extensions for PipelineContext.metadata.
+ *
+ * Example:
+ * declare module '@lobechat/context-engine' {
+ *   interface PipelineContextMetadataOverrides {
+ *     myCustomFlag?: boolean;
+ *   }
+ * }
+ */
+export interface PipelineContextMetadataOverrides {}
 
 /**
  * Agent state - inferred from original project types
@@ -40,6 +52,19 @@ export interface Message {
 }
 
 /**
+ * Metadata shared across pipeline processors.
+ * Consumers can extend this through declaration merging on
+ * `LobeChatContextEngine.PipelineContextMetadataOverrides`.
+ */
+export interface PipelineContextMetadata extends PipelineContextMetadataOverrides {
+  [key: `${string}InjectedCount`]: number | undefined;
+  currentTokenCount?: number;
+  maxTokens?: number;
+  model?: string;
+  provider?: string;
+}
+
+/**
  * Pipeline context - core data structure flowing through the pipeline
  */
 export interface PipelineContext {
@@ -55,16 +80,7 @@ export interface PipelineContext {
   /** Mutable message list being built */
   messages: Message[];
   /** Metadata for communication between processors */
-  metadata: {
-    /** Other custom metadata */
-    [key: string]: any;
-    /** Current token count estimate */
-    currentTokenCount?: number;
-    /** Maximum token limit */
-    maxTokens?: number;
-    /** Model identifier */
-    model?: string;
-  };
+  metadata: PipelineContextMetadata;
 }
 
 /**
@@ -98,7 +114,7 @@ export interface PipelineResult {
   /** Final processed messages */
   messages: any[];
   /** Metadata from processing */
-  metadata: Record<string, any>;
+  metadata: PipelineContextMetadata;
   /** Execution statistics */
   stats: {
     /** Number of processors processed */
@@ -172,30 +188,74 @@ export interface ModelCapabilities {
 }
 
 /**
- * Processor error
+ * Processor error — carries diagnostic context about which processor failed and why.
+ *
+ * The `cause` chain follows the ES2022 standard so that error-reporting tooling
+ * (Sentry, DataDog, dashboard log viewers) can walk the full causal chain without
+ * custom deserialisation.  The legacy `originalError` property is kept for
+ * backwards compatibility with existing catch sites that destructure it directly.
  */
 export class ProcessorError extends Error {
+  /** @deprecated Prefer reading the standard `cause` property. */
+  public originalError?: Error;
+
   constructor(
     public processorName: string,
     message: string,
-    public originalError?: Error,
+    cause?: Error,
   ) {
-    super(`[${processorName}] ${message}`);
+    super(`[${processorName}] ${message}`, { cause });
     this.name = 'ProcessorError';
+    this.originalError = cause;
+  }
+
+  /** Serialise the full causal chain so log aggregators can ingest it. */
+  toJSON(): Record<string, unknown> {
+    return {
+      message: this.message,
+      name: this.name,
+      processorName: this.processorName,
+      cause: this.cause
+        ? this.cause instanceof Error && typeof (this.cause as any).toJSON === 'function'
+          ? (this.cause as any).toJSON()
+          : String(this.cause)
+        : undefined,
+    };
   }
 }
 
 /**
- * Pipeline error
+ * Pipeline error — thrown when a pipeline processor fails.
+ *
+ * Same design principles as {@link ProcessorError}: standard `cause` chain,
+ * legacy `originalError` compatibility, and a `toJSON()` that preserves the
+ * full error tree.
  */
 export class PipelineError extends Error {
+  /** @deprecated Prefer reading the standard `cause` property. */
+  public originalError?: Error;
+
   constructor(
     message: string,
     public processorName?: string,
-    public originalError?: Error,
+    cause?: Error,
   ) {
-    super(message);
+    super(message, { cause });
     this.name = 'PipelineError';
+    this.originalError = cause;
+  }
+
+  toJSON(): Record<string, unknown> {
+    return {
+      message: this.message,
+      name: this.name,
+      processorName: this.processorName,
+      cause: this.cause
+        ? this.cause instanceof Error && typeof (this.cause as any).toJSON === 'function'
+          ? (this.cause as any).toJSON()
+          : String(this.cause)
+        : undefined,
+    };
   }
 }
 

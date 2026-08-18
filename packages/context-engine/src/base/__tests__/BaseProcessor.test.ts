@@ -51,6 +51,11 @@ class MessageCheckingProcessor extends BaseProcessor {
 
     return this.markAsExecuted(cloned);
   }
+
+  /** Expose isEmptyMessage for direct testing with arbitrary values */
+  public testIsEmptyMessage(value: any): boolean {
+    return this.isEmptyMessage(value);
+  }
 }
 
 describe('BaseProcessor', () => {
@@ -185,14 +190,14 @@ describe('BaseProcessor', () => {
     it('should preserve all context properties', async () => {
       const processor = new TestProcessor();
       const context = createContext([{ content: 'test', role: 'user' }]);
-      context.metadata.customField = 'customValue';
+      (context.metadata as any).customField = 'customValue';
 
       const result = await processor.process(context);
 
       expect(result.isAborted).toBe(context.isAborted);
       expect(result.metadata.model).toBe(context.metadata.model);
       expect(result.metadata.maxTokens).toBe(context.metadata.maxTokens);
-      expect(result.metadata.customField).toBe('customValue');
+      expect((result.metadata as any).customField).toBe('customValue');
     });
   });
 
@@ -279,6 +284,26 @@ describe('BaseProcessor', () => {
       await processor.process(context);
 
       expect(processor.lastEmptyCheck).toBe(false);
+    });
+
+    it('should return true for non-string truthy values (object)', () => {
+      const processor = new MessageCheckingProcessor();
+      expect(processor.testIsEmptyMessage({ key: 'value' } as any)).toBe(true);
+    });
+
+    it('should return true for non-string truthy values (array)', () => {
+      const processor = new MessageCheckingProcessor();
+      expect(processor.testIsEmptyMessage(['hello'] as any)).toBe(true);
+    });
+
+    it('should return true for non-string truthy values (number)', () => {
+      const processor = new MessageCheckingProcessor();
+      expect(processor.testIsEmptyMessage(42 as any)).toBe(true);
+    });
+
+    it('should return true for boolean true', () => {
+      const processor = new MessageCheckingProcessor();
+      expect(processor.testIsEmptyMessage(true as any)).toBe(true);
     });
   });
 

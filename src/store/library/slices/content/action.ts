@@ -1,31 +1,30 @@
-import { type StateCreator } from 'zustand/vanilla';
-
-import { knowledgeBaseService } from '@/services/knowledgeBase';
-import { revalidateResources } from '@/store/file/slices/resource/hooks';
+import { useFileStore } from '@/store/file';
 import { type KnowledgeBaseStore } from '@/store/library/store';
+import { type StoreSetter } from '@/store/types';
 
-export interface KnowledgeBaseContentAction {
-  addFilesToKnowledgeBase: (knowledgeBaseId: string, ids: string[]) => Promise<void>;
-  removeFilesFromKnowledgeBase: (knowledgeBaseId: string, ids: string[]) => Promise<void>;
+type Setter = StoreSetter<KnowledgeBaseStore>;
+export const createContentSlice = (set: Setter, get: () => KnowledgeBaseStore, _api?: unknown) =>
+  new KnowledgeBaseContentActionImpl(set, get, _api);
+
+export class KnowledgeBaseContentActionImpl {
+  constructor(set: Setter, get: () => KnowledgeBaseStore, _api?: unknown) {
+    void _api;
+    void set;
+    void get;
+  }
+
+  addFilesToKnowledgeBase = async (knowledgeBaseId: string, ids: string[]): Promise<void> => {
+    const fileStore = useFileStore.getState();
+    await fileStore.addResourcesToKnowledgeBase(knowledgeBaseId, ids);
+  };
+
+  removeFilesFromKnowledgeBase = async (knowledgeBaseId: string, ids: string[]): Promise<void> => {
+    const fileStore = useFileStore.getState();
+    await fileStore.removeResourcesFromKnowledgeBase(knowledgeBaseId, ids);
+  };
 }
 
-export const createContentSlice: StateCreator<
-  KnowledgeBaseStore,
-  [['zustand/devtools', never]],
-  [],
-  KnowledgeBaseContentAction
-> = () => ({
-  addFilesToKnowledgeBase: async (knowledgeBaseId, ids) => {
-    await knowledgeBaseService.addFilesToKnowledgeBase(knowledgeBaseId, ids);
-
-    // Revalidate resource list to show updated KB associations
-    await revalidateResources();
-  },
-
-  removeFilesFromKnowledgeBase: async (knowledgeBaseId, ids) => {
-    await knowledgeBaseService.removeFilesFromKnowledgeBase(knowledgeBaseId, ids);
-
-    // Revalidate resource list to show updated KB associations
-    await revalidateResources();
-  },
-});
+export type KnowledgeBaseContentAction = Pick<
+  KnowledgeBaseContentActionImpl,
+  keyof KnowledgeBaseContentActionImpl
+>;

@@ -1,8 +1,9 @@
-import { Button, Flexbox, Icon, Input, Text } from '@lobehub/ui';
-import { Form as AForm, App } from 'antd';
+import { Flexbox, Icon, Input, Text } from '@lobehub/ui';
+import { Button, toast } from '@lobehub/ui/base-ui';
+import { Form as AForm } from 'antd';
 import { createStaticStyles } from 'antd-style';
 import { EditIcon, LinkIcon, Settings2Icon, TerminalIcon } from 'lucide-react';
-import { forwardRef, useImperativeHandle, useState } from 'react';
+import { useImperativeHandle, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import KeyValueEditor from '@/components/KeyValueEditor';
@@ -158,7 +159,11 @@ interface SettingsProps {
   identifier: string;
 }
 
-const Settings = forwardRef<SettingsRef, SettingsProps>(({ identifier, hideFooter }, ref) => {
+const Settings = ({
+  ref,
+  identifier,
+  hideFooter,
+}: SettingsProps & { ref?: React.RefObject<SettingsRef | null> }) => {
   const { t } = useTranslation(['plugin', 'common']);
   const [connectionForm] = AForm.useForm();
   const [envForm] = AForm.useForm();
@@ -170,7 +175,6 @@ const Settings = forwardRef<SettingsRef, SettingsProps>(({ identifier, hideFoote
     s.updatePluginSettings,
     s.updateInstallMcpPlugin,
   ]);
-  const { message } = App.useApp();
 
   useImperativeHandle(ref, () => ({
     reset: () => {
@@ -186,7 +190,7 @@ const Settings = forwardRef<SettingsRef, SettingsProps>(({ identifier, hideFoote
     },
   }));
 
-  // 获取已安装插件信息
+  // Get installed plugin info
   const installedPlugin = useToolStore(pluginSelectors.getInstalledPluginById(identifier));
   const pluginSettings = useToolStore(pluginSelectors.getPluginSettingsById(identifier));
 
@@ -202,11 +206,11 @@ const Settings = forwardRef<SettingsRef, SettingsProps>(({ identifier, hideFoote
     try {
       await updateInstallPlugin(identifier!, values);
 
-      message.success(t('settings.messages.connectionUpdateSuccess'));
+      toast.success(t('settings.messages.connectionUpdateSuccess'));
       setIsEditingConnection(false);
     } catch (error) {
       console.error('Connection update failed:', error);
-      message.error(t('settings.messages.connectionUpdateFailed'));
+      toast.error(t('settings.messages.connectionUpdateFailed'));
     } finally {
       setConnectionLoading(false);
     }
@@ -221,10 +225,10 @@ const Settings = forwardRef<SettingsRef, SettingsProps>(({ identifier, hideFoote
     setLoading(true);
     try {
       await updatePluginSettings(identifier!, values.env || {}, { override: true });
-      message.success(t('settings.messages.envUpdateSuccess'));
+      toast.success(t('settings.messages.envUpdateSuccess'));
     } catch (error) {
       console.error('Settings update failed:', error);
-      message.error(t('settings.messages.envUpdateFailed'));
+      toast.error(t('settings.messages.envUpdateFailed'));
     } finally {
       setLoading(false);
     }
@@ -241,9 +245,9 @@ const Settings = forwardRef<SettingsRef, SettingsProps>(({ identifier, hideFoote
               <Button
                 className={styles.editButton}
                 icon={<EditIcon size={12} />}
-                onClick={() => setIsEditingConnection(true)}
                 size="small"
                 type="text"
+                onClick={() => setIsEditingConnection(true)}
               >
                 {t('settings.edit')}
               </Button>
@@ -251,7 +255,7 @@ const Settings = forwardRef<SettingsRef, SettingsProps>(({ identifier, hideFoote
           </div>
 
           {!isEditingConnection ? (
-            // 预览模式
+            // Preview mode
             <Flexbox paddingInline={8}>
               <div className={styles.previewItem}>
                 <span className={styles.previewLabel}>{t('settings.connection.type')}</span>
@@ -291,7 +295,7 @@ const Settings = forwardRef<SettingsRef, SettingsProps>(({ identifier, hideFoote
               )}
             </Flexbox>
           ) : (
-            // 编辑模式
+            // Edit mode
             <div className={styles.connectionForm}>
               <AForm
                 className={styles.compactForm}
@@ -329,7 +333,7 @@ const Settings = forwardRef<SettingsRef, SettingsProps>(({ identifier, hideFoote
                     </AForm.Item>
                   </>
                 )}
-                <Flexbox className={styles.footer} gap={8} horizontal>
+                <Flexbox horizontal className={styles.footer} gap={8}>
                   <Button htmlType="submit" loading={connectionLoading} type="primary">
                     {t('common:save')}
                   </Button>
@@ -340,7 +344,7 @@ const Settings = forwardRef<SettingsRef, SettingsProps>(({ identifier, hideFoote
           )}
         </Flexbox>
 
-        {/* 环境变量配置（仅 stdio 类型） */}
+        {/* Environment variable configuration (stdio type only) */}
         {isStdioType && (
           <Flexbox gap={12}>
             <div className={styles.sectionTitle}>
@@ -363,7 +367,7 @@ const Settings = forwardRef<SettingsRef, SettingsProps>(({ identifier, hideFoote
                 />
               </AForm.Item>
               {!hideFooter && (
-                <Flexbox className={styles.footer} gap={8} horizontal>
+                <Flexbox horizontal className={styles.footer} gap={8}>
                   <Button htmlType="submit" loading={loading} type="primary">
                     {t('common:save')}
                   </Button>
@@ -374,7 +378,7 @@ const Settings = forwardRef<SettingsRef, SettingsProps>(({ identifier, hideFoote
           </Flexbox>
         )}
 
-        {/* HTTP 类型提示 */}
+        {/* HTTP type notice */}
         {!isStdioType && (
           <div>
             <div className={styles.sectionTitle}>
@@ -389,6 +393,6 @@ const Settings = forwardRef<SettingsRef, SettingsProps>(({ identifier, hideFoote
       </Flexbox>
     </Flexbox>
   );
-});
+};
 
 export default Settings;

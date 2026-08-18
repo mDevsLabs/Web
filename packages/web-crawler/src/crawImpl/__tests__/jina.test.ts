@@ -1,6 +1,13 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { createMockResponse } from '../../test-utils';
+import * as withTimeoutModule from '../../utils/withTimeout';
 import { jina } from '../jina';
+
+// Mock withTimeout to just call the factory function directly (bypassing real timeout)
+vi.spyOn(withTimeoutModule, 'withTimeout').mockImplementation((fn) =>
+  fn(new AbortController().signal),
+);
 
 describe('jina crawler', () => {
   const mockFetch = vi.fn();
@@ -8,22 +15,39 @@ describe('jina crawler', () => {
 
   beforeEach(() => {
     vi.resetAllMocks();
+    // Re-apply the withTimeout spy after resetAllMocks
+    vi.spyOn(withTimeoutModule, 'withTimeout').mockImplementation((fn) =>
+      fn(new AbortController().signal),
+    );
+    delete process.env.JINA_API_KEY;
+    delete process.env.JINA_READER_API_KEY;
+    delete process.env.JINA_USE_CN_DOMAINS;
+  });
+
+  afterEach(() => {
+    delete process.env.JINA_API_KEY;
+    delete process.env.JINA_READER_API_KEY;
+    delete process.env.JINA_USE_CN_DOMAINS;
   });
 
   it('should crawl url successfully', async () => {
-    const mockResponse = {
-      ok: true,
-      json: () =>
-        Promise.resolve({
-          code: 200,
-          data: {
-            content: 'test content',
-            description: 'test description',
-            siteName: 'test site',
-            title: 'test title',
-          },
-        }),
-    };
+    const testContent =
+      'This is a test content that is long enough to pass the minimum length validation check. '.repeat(
+        2,
+      );
+
+    const mockResponse = createMockResponse(
+      {
+        code: 200,
+        data: {
+          content: testContent,
+          description: 'test description',
+          siteName: 'test site',
+          title: 'test title',
+        },
+      },
+      { ok: true },
+    );
 
     mockFetch.mockResolvedValue(mockResponse);
 
@@ -38,13 +62,14 @@ describe('jina crawler', () => {
         'Authorization': 'Bearer test-key',
         'x-send-from': 'LobeChat Community',
       },
+      signal: expect.any(AbortSignal),
     });
 
     expect(result).toEqual({
-      content: 'test content',
+      content: testContent,
       contentType: 'text',
       description: 'test description',
-      length: 12,
+      length: testContent.length,
       siteName: 'test site',
       title: 'test title',
       url: 'https://example.com',
@@ -54,16 +79,15 @@ describe('jina crawler', () => {
   it('should use JINA_READER_API_KEY from env if apiKey not provided', async () => {
     process.env.JINA_READER_API_KEY = 'env-reader-key';
 
-    const mockResponse = {
-      ok: true,
-      json: () =>
-        Promise.resolve({
-          code: 200,
-          data: {
-            content: 'test content',
-          },
-        }),
-    };
+    const mockResponse = createMockResponse(
+      {
+        code: 200,
+        data: {
+          content: 'test content',
+        },
+      },
+      { ok: true },
+    );
 
     mockFetch.mockResolvedValue(mockResponse);
 
@@ -75,6 +99,7 @@ describe('jina crawler', () => {
         'Authorization': 'Bearer env-reader-key',
         'x-send-from': 'LobeChat Community',
       },
+      signal: expect.any(AbortSignal),
     });
 
     delete process.env.JINA_READER_API_KEY;
@@ -83,16 +108,15 @@ describe('jina crawler', () => {
   it('should use JINA_API_KEY from env if apiKey and JINA_READER_API_KEY not provided', async () => {
     process.env.JINA_API_KEY = 'env-key';
 
-    const mockResponse = {
-      ok: true,
-      json: () =>
-        Promise.resolve({
-          code: 200,
-          data: {
-            content: 'test content',
-          },
-        }),
-    };
+    const mockResponse = createMockResponse(
+      {
+        code: 200,
+        data: {
+          content: 'test content',
+        },
+      },
+      { ok: true },
+    );
 
     mockFetch.mockResolvedValue(mockResponse);
 
@@ -104,22 +128,22 @@ describe('jina crawler', () => {
         'Authorization': 'Bearer env-key',
         'x-send-from': 'LobeChat Community',
       },
+      signal: expect.any(AbortSignal),
     });
 
     delete process.env.JINA_API_KEY;
   });
 
   it('should send empty Authorization header if no api key provided', async () => {
-    const mockResponse = {
-      ok: true,
-      json: () =>
-        Promise.resolve({
-          code: 200,
-          data: {
-            content: 'test content',
-          },
-        }),
-    };
+    const mockResponse = createMockResponse(
+      {
+        code: 200,
+        data: {
+          content: 'test content',
+        },
+      },
+      { ok: true },
+    );
 
     mockFetch.mockResolvedValue(mockResponse);
 
@@ -131,39 +155,68 @@ describe('jina crawler', () => {
         'Authorization': '',
         'x-send-from': 'LobeChat Community',
       },
+      signal: expect.any(AbortSignal),
     });
   });
 
-  it('should return undefined if response is not ok', async () => {
-    mockFetch.mockResolvedValue({ ok: false });
+  it('should use cn reader domain when JINA_USE_CN_DOMAINS is true', async () => {
+    process.env.JINA_USE_CN_DOMAINS = 'true';
 
-    const result = await jina('https://example.com', { filterOptions: {} });
-
-    expect(result).toBeUndefined();
-  });
-
-  it('should return undefined if response code is not 200', async () => {
-    const mockResponse = {
-      ok: true,
-      json: () =>
-        Promise.resolve({
-          code: 400,
-          message: 'Bad Request',
-        }),
-    };
+    const mockResponse = createMockResponse(
+      {
+        code: 200,
+        data: {
+          content: 'test content',
+        },
+      },
+      { ok: true },
+    );
 
     mockFetch.mockResolvedValue(mockResponse);
 
-    const result = await jina('https://example.com', { filterOptions: {} });
+    await jina('https://example.com', { filterOptions: {} });
 
-    expect(result).toBeUndefined();
+    expect(mockFetch).toHaveBeenCalledWith('https://r.jinaai.cn/https://example.com', {
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': '',
+        'x-send-from': 'LobeChat Community',
+      },
+      signal: expect.any(AbortSignal),
+    });
   });
 
-  it('should return undefined if fetch throws error', async () => {
+  it('should throw HTTP status error if response is not ok', async () => {
+    mockFetch.mockResolvedValue(
+      createMockResponse(null, { ok: false, status: 429, statusText: 'Too Many Requests' }),
+    );
+
+    await expect(jina('https://example.com', { filterOptions: {} })).rejects.toThrow(
+      'Jina request failed with status 429: Too Many Requests',
+    );
+  });
+
+  it('should throw error if response code is not 200', async () => {
+    const mockResponse = createMockResponse(
+      {
+        code: 400,
+        message: 'Bad Request',
+      },
+      { ok: true },
+    );
+
+    mockFetch.mockResolvedValue(mockResponse);
+
+    await expect(jina('https://example.com', { filterOptions: {} })).rejects.toThrow(
+      'Jina request failed with code 400: Bad Request',
+    );
+  });
+
+  it('should throw error if fetch throws non-fetch-failed error', async () => {
     mockFetch.mockRejectedValue(new Error('Network error'));
 
-    const result = await jina('https://example.com', { filterOptions: {} });
-
-    expect(result).toBeUndefined();
+    await expect(jina('https://example.com', { filterOptions: {} })).rejects.toThrow(
+      'Network error',
+    );
   });
 });

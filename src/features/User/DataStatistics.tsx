@@ -1,6 +1,7 @@
 'use client';
 
-import { Flexbox, type FlexboxProps, Tooltip } from '@lobehub/ui';
+import { type FlexboxProps } from '@lobehub/ui';
+import { Flexbox, Tooltip } from '@lobehub/ui';
 import { Badge } from 'antd';
 import { createStaticStyles, cssVar } from 'antd-style';
 import { isUndefined } from 'es-toolkit/compat';
@@ -9,8 +10,9 @@ import { useTranslation } from 'react-i18next';
 
 import NeuralNetworkLoading from '@/components/NeuralNetworkLoading';
 import { useClientDataSWR } from '@/libs/swr';
+import { statsKeys } from '@/libs/swr/keys';
+import { agentService } from '@/services/agent';
 import { messageService } from '@/services/message';
-import { sessionService } from '@/services/session';
 import { topicService } from '@/services/topic';
 import { useServerConfigStore } from '@/store/serverConfig';
 import { formatShortenNumber } from '@/utils/format';
@@ -44,17 +46,17 @@ const styles = createStaticStyles(({ css, cssVar }) => ({
 
 const DataStatistics = memo<Omit<FlexboxProps, 'children'>>(({ style, ...rest }) => {
   const mobile = useServerConfigStore((s) => s.isMobile);
-  // sessions
-  const { data: sessions, isLoading: sessionsLoading } = useClientDataSWR('count-sessions', () =>
-    sessionService.countSessions(),
+  // assistants (counted from the agents table — the sidebar list source of truth)
+  const { data: agents, isLoading: agentsLoading } = useClientDataSWR(statsKeys.countAgents(), () =>
+    agentService.countAgents(),
   );
   // topics
-  const { data: topics, isLoading: topicsLoading } = useClientDataSWR('count-topics', () =>
+  const { data: topics, isLoading: topicsLoading } = useClientDataSWR(statsKeys.countTopics(), () =>
     topicService.countTopics(),
   );
   // messages
   const { data: { messages, messagesToday } = {}, isLoading: messagesLoading } = useClientDataSWR(
-    'count-messages',
+    statsKeys.countMessages(),
     async () => ({
       messages: await messageService.countMessages(),
       messagesToday: await messageService.countMessages({
@@ -69,7 +71,7 @@ const DataStatistics = memo<Omit<FlexboxProps, 'children'>>(({ style, ...rest })
 
   const items = [
     {
-      count: sessionsLoading || isUndefined(sessions) ? loading : sessions,
+      count: agentsLoading || isUndefined(agents) ? loading : agents,
       key: 'sessions',
       title: t('dataStatistics.sessions'),
     },
@@ -88,9 +90,9 @@ const DataStatistics = memo<Omit<FlexboxProps, 'children'>>(({ style, ...rest })
 
   return (
     <Flexbox
+      horizontal
       align={'center'}
       gap={4}
-      horizontal
       paddingInline={8}
       style={{ marginBottom: 8, ...style }}
       width={'100%'}
@@ -101,11 +103,11 @@ const DataStatistics = memo<Omit<FlexboxProps, 'children'>>(({ style, ...rest })
           const showBadge = Boolean(item.countToady && item.countToady > 0);
           return (
             <Flexbox
+              horizontal
               align={'center'}
               className={styles.card}
               flex={showBadge && !mobile ? 2 : 1}
               gap={4}
-              horizontal
               justify={'space-between'}
               key={item.key}
             >

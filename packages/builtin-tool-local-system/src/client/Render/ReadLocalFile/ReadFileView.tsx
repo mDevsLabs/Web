@@ -1,14 +1,13 @@
-import { type LocalReadFileResult } from '@lobechat/electron-client-ipc';
-import { ActionIcon, Flexbox, Icon, Markdown, Text } from '@lobehub/ui';
+import { useToolRenderCapabilities } from '@lobechat/shared-tool-ui';
+import type { ReadFileState } from '@lobechat/tool-runtime';
+import { ActionIcon, Flexbox, Icon, Image, Markdown, PreviewGroup, Text } from '@lobehub/ui';
 import { createStaticStyles } from 'antd-style';
 import { AlignLeft, Asterisk, ExternalLink, FolderOpen } from 'lucide-react';
 import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import FileIcon from '@/components/FileIcon';
-import { localFileService } from '@/services/electron/localFileService';
-import { useElectronStore } from '@/store/electron';
-import { desktopStateSelectors } from '@/store/electron/selectors';
+import { InlineHtmlPreview, isHtmlFile } from '@/components/HtmlPreview';
 
 const styles = createStaticStyles(({ css, cssVar }) => ({
   actions: css`
@@ -78,6 +77,9 @@ const styles = createStaticStyles(({ css, cssVar }) => ({
     background: ${cssVar.colorBgContainer};
   `,
   previewText: css`
+    overflow: auto;
+
+    font-family: ${cssVar.fontFamilyCode};
     font-size: 12px;
     line-height: 1.6;
     word-break: break-all;
@@ -85,85 +87,134 @@ const styles = createStaticStyles(({ css, cssVar }) => ({
   `,
 }));
 
-// Assuming the result object might include the original path and an optional warning
-interface ReadFileViewProps extends LocalReadFileResult {
-  path: string; // The full path requested
-}
-
-const ReadFileView = memo<ReadFileViewProps>(
-  ({ filename, path, fileType, charCount, content, totalLineCount, totalCharCount, loc }) => {
+const ReadFileView = memo<ReadFileState>(
+  ({
+    filename: filenameProp,
+    path,
+    fileType,
+    charCount,
+    content,
+    images,
+    totalLines,
+    totalCharCount,
+    loc,
+  }) => {
     const { t } = useTranslation('tool');
+    const { openFile, openFolder, displayRelativePath } = useToolRenderCapabilities();
+    const filename = filenameProp || path.split('/').pop() || path;
+    const isHtml = isHtmlFile({ fileName: filename, fileType, path });
 
-    const handleOpenFile = (e: React.MouseEvent) => {
-      e.stopPropagation();
-      localFileService.openLocalFile({ path });
-    };
+    const handleOpenFile = openFile
+      ? (e: React.MouseEvent) => {
+          e.stopPropagation();
+          openFile(path);
+        }
+      : undefined;
 
-    const handleOpenFolder = (e: React.MouseEvent) => {
-      e.stopPropagation();
-      localFileService.openLocalFolder({ isDirectory: false, path });
-    };
+    const handleOpenFolder = openFolder
+      ? (e: React.MouseEvent) => {
+          e.stopPropagation();
+          openFolder(path);
+        }
+      : undefined;
 
-    const displayPath = useElectronStore(desktopStateSelectors.displayRelativePath(path));
+    const displayPath = displayRelativePath ? displayRelativePath(path) : path;
 
     return (
       <Flexbox className={styles.container} gap={12}>
         <Flexbox>
           <Flexbox
+            horizontal
             align={'center'}
             className={styles.header}
             gap={12}
-            horizontal
             justify={'space-between'}
           >
-            <Flexbox align={'center'} flex={1} gap={0} horizontal style={{ overflow: 'hidden' }}>
+            <Flexbox horizontal align={'center'} flex={1} gap={0} style={{ overflow: 'hidden' }}>
               <FileIcon fileName={filename} fileType={fileType} size={16} variant={'raw'} />
               <Flexbox horizontal>
-                <Text className={styles.fileName} ellipsis>
+                <Text ellipsis className={styles.fileName}>
                   {filename}
                 </Text>
-                {/* Actions on Hover */}
-                <Flexbox className={styles.actions} gap={2} horizontal style={{ marginLeft: 8 }}>
-                  <ActionIcon
-                    icon={ExternalLink}
-                    onClick={handleOpenFile}
-                    size="small"
-                    title={t('localFiles.openFile')}
-                  />
-                  <ActionIcon
-                    icon={FolderOpen}
-                    onClick={handleOpenFolder}
-                    size="small"
-                    title={t('localFiles.openFolder')}
-                  />
-                </Flexbox>
+                {(handleOpenFile || handleOpenFolder) && (
+                  <Flexbox horizontal className={styles.actions} gap={2} style={{ marginLeft: 8 }}>
+                    {handleOpenFile && (
+                      <ActionIcon
+                        icon={ExternalLink}
+                        size="small"
+                        title={t('localFiles.openFile')}
+                        onClick={handleOpenFile}
+                      />
+                    )}
+                    {handleOpenFolder && (
+                      <ActionIcon
+                        icon={FolderOpen}
+                        size="small"
+                        title={t('localFiles.openFolder')}
+                        onClick={handleOpenFolder}
+                      />
+                    )}
+                  </Flexbox>
+                )}
               </Flexbox>
             </Flexbox>
-            <Flexbox align={'center'} className={styles.meta} gap={16} horizontal>
-              <Flexbox align={'center'} gap={4} horizontal>
-                <Icon icon={Asterisk} size={'small'} />
-                <span>
-                  {charCount} / <span className={styles.lineCount}>{totalCharCount}</span>
-                </span>
-              </Flexbox>
-              <Flexbox align={'center'} gap={4} horizontal>
-                <Icon icon={AlignLeft} size={'small'} />
-                <span>
-                  L{loc?.[0]}-{loc?.[1]} /{' '}
-                  <span className={styles.lineCount}>{totalLineCount}</span>
-                </span>
-              </Flexbox>
+            <Flexbox horizontal align={'center'} className={styles.meta} gap={16}>
+              {charCount !== undefined && (
+                <Flexbox horizontal align={'center'} gap={4}>
+                  <Icon icon={Asterisk} size={'small'} />
+                  <span>
+                    {charCount}
+                    {totalCharCount !== undefined && (
+                      <>
+                        {' '}
+                        / <span className={styles.lineCount}>{totalCharCount}</span>
+                      </>
+                    )}
+                  </span>
+                </Flexbox>
+              )}
+              {loc && (
+                <Flexbox horizontal align={'center'} gap={4}>
+                  <Icon icon={AlignLeft} size={'small'} />
+                  <span>
+                    L{loc[0]}-{loc[1]}
+                    {totalLines !== undefined && (
+                      <>
+                        {' '}
+                        / <span className={styles.lineCount}>{totalLines}</span>
+                      </>
+                    )}
+                  </span>
+                </Flexbox>
+              )}
             </Flexbox>
           </Flexbox>
 
-          {/* Path */}
-          <Text className={styles.path} ellipsis type={'secondary'}>
+          <Text ellipsis className={styles.path} type={'secondary'}>
             {displayPath}
           </Text>
         </Flexbox>
 
-        <Flexbox className={styles.previewBox} style={{ maxHeight: 240 }}>
-          {fileType === 'md' ? (
+        <Flexbox
+          className={styles.previewBox}
+          style={{ height: isHtml ? 240 : undefined, maxHeight: 240 }}
+        >
+          {images && images.length > 0 ? (
+            <PreviewGroup>
+              <Flexbox horizontal gap={8} style={{ flexWrap: 'wrap', padding: 8 }}>
+                {images.map((image, index) => (
+                  <Image
+                    alt={filename || image.mediaType || ''}
+                    key={image.url || index}
+                    src={image.url}
+                    style={{ borderRadius: 8, maxHeight: 224, objectFit: 'contain' }}
+                  />
+                ))}
+              </Flexbox>
+            </PreviewGroup>
+          ) : isHtml ? (
+            <InlineHtmlPreview content={content} />
+          ) : fileType === 'md' ? (
             <Markdown style={{ overflow: 'auto' }}>{content}</Markdown>
           ) : (
             <div className={styles.previewText} style={{ width: '100%' }}>

@@ -1,5 +1,5 @@
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
-import type { NextRequest } from 'next/server';
+import { type NextRequest } from 'next/server';
 
 import { createAsyncRouteContext } from '@/libs/trpc/async/context';
 import { prepareRequestForTRPC } from '@/libs/trpc/utils/request-adapter';
@@ -12,7 +12,7 @@ const handler = (req: NextRequest) => {
   const preparedReq = prepareRequestForTRPC(req);
 
   return fetchRequestHandler({
-    // 避免请求之间互相影响
+    // Avoid interference between requests
     // https://github.com/lobehub/lobe-chat/discussions/7442#discussioncomment-13658563
     allowBatching: false,
 
@@ -24,7 +24,7 @@ const handler = (req: NextRequest) => {
     endpoint: '/trpc/async',
 
     onError: ({ error, path, type }) => {
-      console.log(`Error in tRPC handler (async) on path: ${path}, type: ${type}`);
+      console.info(`Error in tRPC handler (async) on path: ${path}, type: ${type}`);
       console.error(error);
     },
 

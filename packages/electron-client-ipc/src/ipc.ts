@@ -1,5 +1,8 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
-import type { StreamInvokeRequestParams } from './types';
+import type {
+  DesktopBootstrapIdentity,
+  ScreenCaptureSession,
+  StreamInvokeRequestParams,
+} from './types';
 
 type IpcInvoke = <T = unknown>(event: string, ...data: unknown[]) => Promise<T>;
 
@@ -46,8 +49,13 @@ let cachedProxy: DesktopIpcServices | null = null;
 declare global {
   interface Window {
     electronAPI?: {
+      getDesktopBootstrapIdentity?: () => DesktopBootstrapIdentity;
       invoke?: IpcInvoke;
-      onStreamInvoke: (params: StreamInvokeRequestParams, callbacks: StreamerCallbacks) => () => void;
+      onScreenCaptureSession?: (listener: (session: ScreenCaptureSession) => void) => () => void;
+      onStreamInvoke: (
+        params: StreamInvokeRequestParams,
+        callbacks: StreamerCallbacks,
+      ) => () => void;
     };
   }
 }

@@ -15,16 +15,19 @@ export interface FileUploadState {
 }
 
 export type FileUploadStatus =
-  | 'pending'
-  | 'uploading'
-  | 'processing'
-  | 'success'
-  | 'error'
-  | 'cancelled';
+  'pending' | 'uploading' | 'processing' | 'success' | 'error' | 'cancelled';
 
 export type FileProcessStatus = 'pending' | 'chunking' | 'embedding' | 'success' | 'error';
 
 export const UPLOAD_STATUS_SET = new Set(['uploading', 'pending', 'processing']);
+
+export interface VoiceMessageRecording {
+  codec?: string;
+  durationMs: number;
+  file: File;
+  mimeType: string;
+  waveform: number[];
+}
 
 // the file that is upload at chat page
 export interface UploadFileItem {
@@ -32,10 +35,26 @@ export interface UploadFileItem {
    * AbortController to cancel the upload
    */
   abortController?: AbortController;
+  /** Agent that owns the draft upload, used to retry in the same conversation context. */
+  agentId?: string;
+  /**
+   * Metadata captured by the voice-message recorder. Kept on the upload item so
+   * optimistic and queued messages can render duration/codec before the
+   * persisted file relation is fetched.
+   */
+  audioMetadata?: {
+    codec?: string;
+    durationMs: number;
+    mimeType: string;
+  };
   /**
    * base64 data, it will use in other data
    */
   base64Url?: string;
+  /** Human-readable reason retained on the originating upload surface. */
+  error?: string;
+  /** Stable business reason used to render an in-context remedy action. */
+  errorCode?: string;
   file: File;
   /**
    * the file url after upload,it will be s3 url
@@ -43,21 +62,45 @@ export interface UploadFileItem {
    */
   fileUrl?: string;
   id: string;
+  knowledgeBaseId?: string;
+  parentId?: string;
   /**
    * blob url for local preview
    * it will use in the file preview before send the message
    */
   previewUrl?: string;
+  /**
+   * marks a draft entry that references an already-persisted file still backing
+   * an existing message (e.g. restored via "restore to input"). Removing such
+   * an entry from the draft must only drop the draft item — it must NOT delete
+   * the underlying file, or the original message would lose its attachment.
+   */
+  skipRemoveFile?: boolean;
   status: FileUploadStatus;
   tasks?: FileParsingTask;
   uploadState?: FileUploadState;
+  visibility?: 'private' | 'public';
 }
 
 export const FileMetadataSchema = z.object({
   date: z.string(),
   dirname: z.string(),
   filename: z.string(),
+  /**
+   * intrinsic image height in pixels, recorded for images so consumers can
+   * reserve layout space (avoid CLS) without loading the file first
+   */
+  height: z.number().optional(),
   path: z.string(),
+  /**
+   * intrinsic image aspect ratio (width / height), recorded for images so
+   * consumers can group/reserve layout by orientation without recomputing
+   */
+  ratio: z.number().optional(),
+  /**
+   * intrinsic image width in pixels, recorded for images
+   */
+  width: z.number().optional(),
 });
 
 export type FileMetadata = z.infer<typeof FileMetadataSchema>;

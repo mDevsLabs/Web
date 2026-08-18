@@ -1,9 +1,15 @@
 // @vitest-environment node
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { LobeOpenAICompatibleRuntime } from '../../core/BaseAI';
+import type { LobeOpenAICompatibleRuntime } from '../../core/BaseAI';
 import { testProvider } from '../../providerTestUtils';
 import { LobeOpenRouterAI, params } from './index';
+
+const loadModelsMock = vi.hoisted(() => vi.fn().mockResolvedValue([]));
+
+vi.mock('@lobechat/business-model-bank/model-config', () => ({
+  loadModels: loadModelsMock,
+}));
 
 const provider = 'openrouter';
 const defaultBaseURL = 'https://openrouter.ai/api/v1';
@@ -34,6 +40,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  vi.unstubAllGlobals();
   vi.clearAllMocks();
 });
 
@@ -331,6 +338,247 @@ describe('LobeOpenRouterAI - custom features', () => {
           reasoning: { max_tokens: -100 },
         }),
         expect.anything(),
+      );
+    });
+
+    it('should map thinkingLevel to reasoning effort', async () => {
+      await instance.chat({
+        messages: [{ content: 'Think level', role: 'user' }],
+        model: 'openai/gpt-4',
+        thinkingLevel: 'medium',
+      } as any);
+
+      expect(instance['client'].chat.completions.create).toHaveBeenCalledWith(
+        expect.objectContaining({ reasoning: { effort: 'medium' } }),
+        expect.anything(),
+      );
+    });
+
+    describe('image model handling', () => {
+      it('should add modalities for model with -image suffix', async () => {
+        await instance.chat({
+          messages: [{ content: 'Generate an image', role: 'user' }],
+          model: 'openai/dall-e-3-image',
+        });
+
+        expect(instance['client'].chat.completions.create).toHaveBeenCalledWith(
+          expect.objectContaining({
+            modalities: ['image', 'text'],
+          }),
+          expect.anything(),
+        );
+      });
+
+      it('should add modalities for model with flux in name', async () => {
+        await instance.chat({
+          messages: [{ content: 'Generate an image', role: 'user' }],
+          model: 'black-forest-labs/flux-pro',
+        });
+
+        expect(instance['client'].chat.completions.create).toHaveBeenCalledWith(
+          expect.objectContaining({
+            modalities: ['image', 'text'],
+          }),
+          expect.anything(),
+        );
+      });
+
+      it('should not add modalities for non-image model', async () => {
+        await instance.chat({
+          messages: [{ content: 'Hello', role: 'user' }],
+          model: 'openai/gpt-4',
+        });
+
+        expect(instance['client'].chat.completions.create).toHaveBeenCalledWith(
+          expect.not.objectContaining({
+            modalities: expect.anything(),
+          }),
+          expect.anything(),
+        );
+      });
+
+      it('should add image_config with aspect_ratio for image model', async () => {
+        await instance.chat({
+          messages: [{ content: 'Generate an image', role: 'user' }],
+          model: 'openai/dall-e-3-image',
+          imageAspectRatio: '16:9',
+        });
+
+        expect(instance['client'].chat.completions.create).toHaveBeenCalledWith(
+          expect.objectContaining({
+            modalities: ['image', 'text'],
+            image_config: { aspect_ratio: '16:9' },
+          }),
+          expect.anything(),
+        );
+      });
+
+      it('should add image_config with image_size for image model', async () => {
+        await instance.chat({
+          messages: [{ content: 'Generate an image', role: 'user' }],
+          model: 'openai/dall-e-3-image',
+          imageResolution: '4K',
+        } as any);
+
+        expect(instance['client'].chat.completions.create).toHaveBeenCalledWith(
+          expect.objectContaining({
+            modalities: ['image', 'text'],
+            image_config: { image_size: '4K' },
+          }),
+          expect.anything(),
+        );
+      });
+
+      it("should map '512' to '0.5K' in image_config.image_size", async () => {
+        await instance.chat({
+          messages: [{ content: 'Generate an image', role: 'user' }],
+          model: 'openai/dall-e-3-image',
+          imageResolution: '512',
+        } as any);
+
+        expect(instance['client'].chat.completions.create).toHaveBeenCalledWith(
+          expect.objectContaining({
+            modalities: ['image', 'text'],
+            image_config: { image_size: '0.5K' },
+          }),
+          expect.anything(),
+        );
+      });
+
+      it('should combine aspect_ratio and image_size in image_config', async () => {
+        await instance.chat({
+          messages: [{ content: 'Generate an image', role: 'user' }],
+          model: 'openai/dall-e-3-image',
+          imageAspectRatio: '16:9',
+          imageResolution: '2K',
+        } as any);
+
+        expect(instance['client'].chat.completions.create).toHaveBeenCalledWith(
+          expect.objectContaining({
+            modalities: ['image', 'text'],
+            image_config: { aspect_ratio: '16:9', image_size: '2K' },
+          }),
+          expect.anything(),
+        );
+      });
+
+      it('should omit aspect_ratio when imageAspectRatio is auto', async () => {
+        await instance.chat({
+          messages: [{ content: 'Generate an image', role: 'user' }],
+          model: 'openai/dall-e-3-image',
+          imageAspectRatio: 'auto',
+          imageResolution: '2K',
+        } as any);
+
+        expect(instance['client'].chat.completions.create).toHaveBeenCalledWith(
+          expect.objectContaining({
+            modalities: ['image', 'text'],
+            image_config: { image_size: '2K' },
+          }),
+          expect.anything(),
+        );
+      });
+    });
+  });
+
+  describe('models mapping', () => {
+    it('should map extendParams for gpt-5.x reasoning and verbosity', async () => {
+      const mockModels = [
+        {
+          architecture: { input_modalities: ['text'] },
+          created: 1_700_000_000,
+          description: 'Test model',
+          id: 'openai/gpt-5.5',
+          name: 'openai/gpt-5.5',
+          pricing: { completion: '0.00001', prompt: '0.00001' },
+          supported_parameters: ['reasoning'],
+          top_provider: { context_length: 8192, max_completion_tokens: 1024 },
+        },
+        {
+          architecture: { input_modalities: ['text'] },
+          created: 1_700_000_000,
+          description: 'Test model',
+          id: 'openai/gpt-5.2-mini',
+          name: 'openai/gpt-5.2-mini',
+          pricing: { completion: '0.00001', prompt: '0.00001' },
+          supported_parameters: ['reasoning'],
+          top_provider: { context_length: 8192, max_completion_tokens: 1024 },
+        },
+        {
+          architecture: { input_modalities: ['text'] },
+          created: 1_700_000_000,
+          description: 'Test model',
+          id: 'openai/gpt-5.1-mini',
+          name: 'openai/gpt-5.1-mini',
+          pricing: { completion: '0.00001', prompt: '0.00001' },
+          supported_parameters: ['reasoning'],
+          top_provider: { context_length: 8192, max_completion_tokens: 1024 },
+        },
+      ];
+
+      vi.stubGlobal(
+        'fetch',
+        vi.fn().mockResolvedValue({
+          ok: true,
+          json: async () => ({ data: mockModels }),
+        } as any),
+      );
+
+      const models = await params.models();
+      const gpt55 = models.find((m) => m.id === 'openai/gpt-5.5');
+      const gpt52 = models.find((m) => m.id === 'openai/gpt-5.2-mini');
+      const gpt51 = models.find((m) => m.id === 'openai/gpt-5.1-mini');
+
+      expect(gpt55?.settings?.extendParams).toEqual(
+        expect.arrayContaining(['gpt5_2ReasoningEffort', 'textVerbosity']),
+      );
+      expect(gpt52?.settings?.extendParams).toEqual(
+        expect.arrayContaining(['gpt5_2ReasoningEffort', 'textVerbosity']),
+      );
+      expect(gpt51?.settings?.extendParams).toEqual(
+        expect.arrayContaining(['gpt5_1ReasoningEffort', 'textVerbosity']),
+      );
+    });
+
+    it('should map thinkingLevel for gemini-3 flash/pro reasoning', async () => {
+      const mockModels = [
+        {
+          architecture: { input_modalities: ['text'] },
+          created: 1_700_000_000,
+          description: 'Test model',
+          id: 'google/gemini-3-pro',
+          name: 'google/gemini-3-pro',
+          pricing: { completion: '0.00001', prompt: '0.00001' },
+          supported_parameters: ['reasoning'],
+          top_provider: { context_length: 8192, max_completion_tokens: 1024 },
+        },
+        {
+          architecture: { input_modalities: ['text'] },
+          created: 1_700_000_000,
+          description: 'Test model',
+          id: 'google/gemini-3-flash',
+          name: 'google/gemini-3-flash',
+          pricing: { completion: '0.00001', prompt: '0.00001' },
+          supported_parameters: ['reasoning'],
+          top_provider: { context_length: 8192, max_completion_tokens: 1024 },
+        },
+      ];
+
+      vi.stubGlobal(
+        'fetch',
+        vi.fn().mockResolvedValue({
+          ok: true,
+          json: async () => ({ data: mockModels }),
+        } as any),
+      );
+
+      const models = await params.models();
+      const geminiPro = models.find((m) => m.id === 'google/gemini-3-pro');
+      const geminiFlash = models.find((m) => m.id === 'google/gemini-3-flash');
+
+      expect(geminiPro?.settings?.extendParams).toEqual(expect.arrayContaining(['thinkingLevel2']));
+      expect(geminiFlash?.settings?.extendParams).toEqual(
+        expect.arrayContaining(['thinkingLevel']),
       );
     });
   });
@@ -1105,29 +1353,24 @@ describe('LobeOpenRouterAI - custom features', () => {
       expect(models).toEqual([]);
     });
 
-    it('should return empty array when fetch fails', async () => {
+    it('should throw when fetch fails', async () => {
       vi.stubGlobal(
         'fetch',
         vi.fn().mockResolvedValue({
           ok: false,
+          status: 401,
         }),
       );
 
-      const models = await params.models();
-
-      expect(models).toEqual([]);
+      await expect(params.models()).rejects.toThrow(
+        'OpenRouter models API request failed with status 401',
+      );
     });
 
-    it('should return empty array when fetch throws error', async () => {
+    it('should throw when fetch throws error', async () => {
       vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new Error('Network error')));
 
-      const models = await params.models();
-
-      expect(models).toEqual([]);
-      expect(console.error).toHaveBeenCalledWith(
-        'Failed to fetch OpenRouter frontend models:',
-        expect.any(Error),
-      );
+      await expect(params.models()).rejects.toThrow('Network error');
     });
 
     it('should handle models with missing optional fields', async () => {

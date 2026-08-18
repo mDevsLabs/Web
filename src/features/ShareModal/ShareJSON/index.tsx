@@ -1,24 +1,20 @@
 import { FORM_STYLE } from '@lobechat/const';
 import { type TopicExportMode } from '@lobechat/types';
 import { exportFile } from '@lobechat/utils/client';
-import { Button, Form, type FormItemProps, copyToClipboard } from '@lobehub/ui';
-import { Flexbox } from '@lobehub/ui';
-import { App, Segmented, Switch } from 'antd';
-import isEqual from 'fast-deep-equal';
+import { type FormItemProps } from '@lobehub/ui';
+import { copyToClipboard, Flexbox, Form } from '@lobehub/ui';
+import { Button, Switch, Tabs, toast } from '@lobehub/ui/base-ui';
 import { CopyIcon } from 'lucide-react';
 import { memo, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useIsMobile } from '@/hooks/useIsMobile';
-import { useAgentStore } from '@/store/agent';
-import { agentSelectors } from '@/store/agent/selectors';
-import { useChatStore } from '@/store/chat';
-import { dbMessageSelectors, topicSelectors } from '@/store/chat/selectors';
 
+import { useShareData } from '../ShareDataProvider';
 import { styles } from '../style';
-import Preview from './Preview';
 import { generateFullExport } from './generateFullExport';
 import { generateMessages } from './generateMessages';
+import Preview from './Preview';
 import { type FieldType } from './type';
 
 const DEFAULT_FIELD_VALUE: FieldType = {
@@ -30,12 +26,11 @@ const DEFAULT_FIELD_VALUE: FieldType = {
 const ShareJSON = memo(() => {
   const [fieldValue, setFieldValue] = useState(DEFAULT_FIELD_VALUE);
   const { t } = useTranslation(['chat', 'common']);
-  const { message } = App.useApp();
 
   const exportModeOptions = useMemo(
     () => [
-      { label: t('shareModal.exportMode.full'), value: 'full' as TopicExportMode },
-      { label: t('shareModal.exportMode.simple'), value: 'simple' as TopicExportMode },
+      { key: 'full' as TopicExportMode, label: t('shareModal.exportMode.full') },
+      { key: 'simple' as TopicExportMode, label: t('shareModal.exportMode.simple') },
     ],
     [t],
   );
@@ -43,11 +38,16 @@ const ShareJSON = memo(() => {
   const settings: FormItemProps[] = [
     {
       children: (
-        <Segmented
-          block
-          onChange={(value) => setFieldValue((prev) => ({ ...prev, exportMode: value }))}
-          options={exportModeOptions}
-          value={fieldValue.exportMode}
+        <Tabs
+          activeKey={fieldValue.exportMode}
+          items={exportModeOptions}
+          styles={{
+            list: { display: 'flex', width: '100%' },
+            tab: { flex: 1 },
+          }}
+          onChange={(key) =>
+            setFieldValue((prev) => ({ ...prev, exportMode: key as TopicExportMode }))
+          }
         />
       ),
       label: t('shareModal.exportMode.label'),
@@ -65,25 +65,26 @@ const ShareJSON = memo(() => {
     },
   ];
 
-  const systemRole = useAgentStore(agentSelectors.currentAgentSystemRole);
-  const messages = useChatStore(dbMessageSelectors.activeDbMessages, isEqual);
-  const topic = useChatStore(topicSelectors.currentActiveTopic, isEqual);
+  const { dbMessages, systemRole, title, topic } = useShareData();
 
   // Always include tool messages (includeTool: true)
   const data =
     fieldValue.exportMode === 'simple'
-      ? generateMessages({ ...fieldValue, includeTool: true, messages, systemRole })
+      ? generateMessages({
+          ...fieldValue,
+          includeTool: true,
+          messages: dbMessages,
+          systemRole: systemRole ?? '',
+        })
       : generateFullExport({
           ...fieldValue,
           includeTool: true,
-          messages,
-          systemRole,
+          messages: dbMessages,
+          systemRole: systemRole ?? '',
           topic: topic ?? undefined,
         });
 
   const content = JSON.stringify(data, null, 2);
-
-  const title = topic?.title || t('shareModal.exportTitle');
 
   const isMobile = useIsMobile();
 
@@ -92,21 +93,21 @@ const ShareJSON = memo(() => {
       <Button
         block
         icon={CopyIcon}
-        onClick={async () => {
-          await copyToClipboard(content);
-          message.success(t('copySuccess', { ns: 'common' }));
-        }}
         size={isMobile ? undefined : 'large'}
         type={'primary'}
+        onClick={async () => {
+          await copyToClipboard(content);
+          toast.success(t('copySuccess', { ns: 'common' }));
+        }}
       >
         {t('copy', { ns: 'common' })}
       </Button>
       <Button
         block
+        size={isMobile ? undefined : 'large'}
         onClick={() => {
           exportFile(content, `${title}.json`);
         }}
-        size={isMobile ? undefined : 'large'}
       >
         {t('shareModal.downloadFile')}
       </Button>
@@ -129,7 +130,7 @@ const ShareJSON = memo(() => {
         </Flexbox>
       </Flexbox>
       {isMobile && (
-        <Flexbox className={styles.footer} gap={8} horizontal>
+        <Flexbox horizontal className={styles.footer} gap={8}>
           {button}
         </Flexbox>
       )}

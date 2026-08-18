@@ -1,10 +1,13 @@
 import { copyToClipboard } from '@lobehub/ui';
 import { produce } from 'immer';
-import type { StateCreator } from 'zustand';
+import { type StateCreator } from 'zustand';
 
 import { messageService } from '@/services/message';
+import { useChatStore } from '@/store/chat';
+import { cleanSpeakerTag } from '@/store/chat/utils/cleanSpeakerTag';
 
-import type { Store as ConversationStore } from '../../../action';
+import { type Store as ConversationStore } from '../../../action';
+import { isSameConversationContext } from '../../../utils/contextGuard';
 import { dataSelectors } from '../../data/selectors';
 
 /**
@@ -13,6 +16,11 @@ import { dataSelectors } from '../../data/selectors';
  * Handles message state operations like loading, collapsed, etc.
  */
 export interface MessageStateAction {
+  /**
+   * Cancel compression and restore original messages
+   */
+  cancelCompression: (id: string) => Promise<void>;
+
   /**
    * Copy message content to clipboard
    */
@@ -26,7 +34,11 @@ export interface MessageStateAction {
   /**
    * Modify message content (with optimistic update)
    */
-  modifyMessageContent: (id: string, content: string) => Promise<void>;
+  modifyMessageContent: (
+    id: string,
+    content: string,
+    editorData?: Record<string, any> | null,
+  ) => Promise<void>;
 
   /**
    * Toggle compressed group expanded state
@@ -50,10 +62,34 @@ export const messageStateSlice: StateCreator<
   [],
   MessageStateAction
 > = (set, get) => ({
+  cancelCompression: async (id) => {
+    const message = dataSelectors.getDisplayMessageById(id)(get());
+    if (!message || message.role !== 'compressedGroup') return;
+
+    const { context, replaceMessages } = get();
+    if (!context.agentId || !context.topicId) return;
+
+    useChatStore
+      .getState()
+      .cancelOperations({ messageId: id, status: 'running' }, 'Compression cancelled');
+
+    // Call service to cancel compression
+    const { messages } = await messageService.cancelCompression({
+      agentId: context.agentId,
+      groupId: context.groupId,
+      messageGroupId: id,
+      threadId: context.threadId,
+      topicId: context.topicId,
+    });
+
+    // Replace messages with restored original messages
+    replaceMessages(messages, { expectedContext: context });
+  },
+
   copyMessage: async (id, content) => {
     const { hooks } = get();
 
-    await copyToClipboard(content);
+    await copyToClipboard(cleanSpeakerTag(content));
 
     // ===== Hook: onMessageCopied =====
     if (hooks.onMessageCopied) {
@@ -78,15 +114,16 @@ export const messageStateSlice: StateCreator<
     );
   },
 
-  modifyMessageContent: async (id, content) => {
-    const { hooks } = get();
+  modifyMessageContent: async (id, content, editorData) => {
+    const { context, hooks } = get();
 
     // Get original content for hook
     const originalMessage = dataSelectors.getDisplayMessageById(id)(get());
     const originalContent = originalMessage?.content;
 
     // Update content
-    await get().updateMessageContent(id, content);
+    await get().updateMessageContent(id, content, editorData ? { editorData } : undefined);
+    if (!isSameConversationContext(context, get().context)) return;
 
     // ===== Hook: onMessageModified =====
     if (hooks.onMessageModified) {
@@ -125,7 +162,7 @@ export const messageStateSlice: StateCreator<
     });
 
     // Sync with server data
-    replaceMessages(messages);
+    replaceMessages(messages, { expectedContext: context });
   },
 
   toggleInspectExpanded: async (id, expanded) => {

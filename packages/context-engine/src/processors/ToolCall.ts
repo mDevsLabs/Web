@@ -1,7 +1,17 @@
+import { sanitizeToolCallArguments } from '@lobechat/utils';
 import debug from 'debug';
 
 import { BaseProcessor } from '../base/BaseProcessor';
 import type { MessageToolCall, PipelineContext, ProcessorOptions } from '../types';
+
+declare module '../types' {
+  interface PipelineContextMetadataOverrides {
+    supportTools?: boolean;
+    toolCallProcessed?: number;
+    toolCallsConverted?: number;
+    toolMessagesConverted?: number;
+  }
+}
 
 const log = debug('context-engine:processor:ToolCallProcessor');
 
@@ -110,7 +120,7 @@ export class ToolCallProcessor extends BaseProcessor {
 
     if (!supportTools || (!hasTools && hasEmptyToolCalls)) {
       // If tools not supported or only has empty tool calls, return regular message (remove tool-related properties)
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
       const { tools, tool_calls, ...messageWithoutTools } = message;
       return messageWithoutTools;
     }
@@ -120,11 +130,15 @@ export class ToolCallProcessor extends BaseProcessor {
       return message;
     }
 
-    // Convert tools to tool_calls format
+    // Convert tools to tool_calls format.
+    // Sanitize `arguments` as a last line of defense against historical messages
+    // whose tool_calls arguments are invalid JSON (e.g. persisted before the
+    // server-side sanitizer landed, or produced by an older client). Strict
+    // providers like NVIDIA NIM otherwise 400 on the entire request. See .
     const tool_calls = message.tools.map(
       (tool: any): MessageToolCall => ({
         function: {
-          arguments: tool.arguments,
+          arguments: sanitizeToolCallArguments(tool.arguments),
           name: this.config.genToolCallingName
             ? this.config.genToolCallingName(tool.identifier, tool.apiName, tool.type)
             : `${tool.identifier}.${tool.apiName}`,

@@ -1,22 +1,27 @@
 const { execSync } = require('node:child_process');
 
-// 获取当前分支名
+// Get current branch name
 const branchName = process.env.VERCEL_GIT_COMMIT_REF || '';
 
 function shouldProceedBuild() {
-  // 如果是 lighthouse 分支或以 testgru 开头的分支，取消构建
-  if (branchName === 'lighthouse' || branchName.startsWith('gru/')) {
+  // If the branch is 'lighthouse' or starts with a skip prefix, cancel the build
+  if (
+    branchName === 'lighthouse' ||
+    ['gru', 'automatic', 'reproduction'].some((item) =>
+      branchName.startsWith(`${item.toLowerCase()}/`),
+    )
+  ) {
     return false;
   }
 
   try {
-    // 检查文件变更，排除特定文件和目录
+    // Check file changes, excluding specific files and directories
     const diffCommand =
       'git diff HEAD^ HEAD --quiet -- \
       ":!./*.md" \
       ":!./Dockerfile" \
       ":!./.github" \
-      ":!./.husky" \
+      ":!./.githooks" \
       ":!./scripts"';
 
     execSync(diffCommand);
@@ -32,10 +37,10 @@ const shouldBuild = shouldProceedBuild();
 console.log('shouldBuild:', shouldBuild);
 if (shouldBuild) {
   console.log('✅ - Build can proceed');
-  // eslint-disable-next-line unicorn/no-process-exit
+
   process.exit(1);
 } else {
   console.log('🛑 - Build cancelled');
-  // eslint-disable-next-line unicorn/no-process-exit
+
   process.exit(0);
 }

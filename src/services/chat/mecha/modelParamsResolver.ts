@@ -1,6 +1,16 @@
-import { type LobeAgentChatConfig } from '@lobechat/types';
+import {
+  applyModelExtendParams,
+  type ModelExtendParams,
+  resolveDefaultEnableAdaptiveThinkingForModel,
+  resolveDefaultThinkingLevelForModel,
+  resolveEffectiveReasoningChatConfig,
+} from '@lobechat/model-runtime/utils/modelExtendParams';
+import type { LobeAgentChatConfig } from '@lobechat/types';
 
 import { aiModelSelectors, getAiInfraStoreState } from '@/store/aiInfra';
+
+export type { ModelExtendParams };
+export { resolveDefaultEnableAdaptiveThinkingForModel, resolveDefaultThinkingLevelForModel };
 
 /**
  * Context for resolving model parameters
@@ -9,35 +19,26 @@ export interface ModelParamsContext {
   chatConfig: LobeAgentChatConfig;
   model: string;
   provider: string;
+  /**
+   * Raw sub-agent chatConfig override; explicit reasoning fields set here win
+   * over the user's model-instance defaults.
+   */
+  subAgentChatConfigOverride?: Partial<LobeAgentChatConfig>;
 }
 
 /**
- * Extended parameters for model runtime
- */
-export interface ModelExtendParams {
-  enabledContextCaching?: boolean;
-  imageAspectRatio?: string;
-  imageResolution?: string;
-  reasoning_effort?: string;
-  thinking?: {
-    budget_tokens?: number;
-    type: string;
-  };
-  thinkingBudget?: number;
-  thinkingLevel?: string;
-  urlContext?: boolean;
-  verbosity?: string;
-}
-
-/**
- * Resolves extended parameters for model runtime based on model capabilities and chat config
+ * Resolves extended parameters for model runtime based on model capabilities and chat config.
  *
- * This function checks what extended parameters the model supports and applies
- * the corresponding values from chat config.
+ * Looks up the model's supported `extendParams` from the aiInfra store, then delegates the
+ * actual resolution to the shared `applyModelExtendParams` so the client chat service and the
+ * server-side agent runtime stay in sync.
+ *
+ * Reasoning fields (effort family + reasoningMode) are user-level model-instance settings:
+ * same-named agent chatConfig values are ignored and the personal-scope config from the
+ * aiInfra store applies instead — except explicit sub-agent overrides, which stay honored.
  */
 export const resolveModelExtendParams = (ctx: ModelParamsContext): ModelExtendParams => {
-  const { model, provider, chatConfig } = ctx;
-  const extendParams: ModelExtendParams = {};
+  const { model, provider, chatConfig, subAgentChatConfigOverride } = ctx;
 
   const aiInfraStoreState = getAiInfraStoreState();
 
@@ -47,96 +48,20 @@ export const resolveModelExtendParams = (ctx: ModelParamsContext): ModelExtendPa
   )(aiInfraStoreState);
 
   if (!isModelHasExtendParams) {
-    return extendParams;
+    return {};
   }
 
   const modelExtendParams = aiModelSelectors.modelExtendParams(model, provider)(aiInfraStoreState);
 
-  if (!modelExtendParams) {
-    return extendParams;
-  }
+  const effectiveChatConfig = resolveEffectiveReasoningChatConfig({
+    agentChatConfig: chatConfig,
+    modelReasoningConfig: aiModelSelectors.modelReasoningConfig(model, provider)(aiInfraStoreState),
+    subAgentReasoningOverrides: subAgentChatConfigOverride,
+  });
 
-  // Reasoning configuration
-  if (modelExtendParams.includes('enableReasoning')) {
-    if (chatConfig.enableReasoning) {
-      extendParams.thinking = {
-        budget_tokens: chatConfig.reasoningBudgetToken || 1024,
-        type: 'enabled',
-      };
-    } else {
-      extendParams.thinking = {
-        budget_tokens: 0,
-        type: 'disabled',
-      };
-    }
-  } else if (modelExtendParams.includes('reasoningBudgetToken')) {
-    // For models that only have reasoningBudgetToken without enableReasoning
-    extendParams.thinking = {
-      budget_tokens: chatConfig.reasoningBudgetToken || 1024,
-      type: 'enabled',
-    };
-  }
-
-  // Context caching
-  if (modelExtendParams.includes('disableContextCaching') && chatConfig.disableContextCaching) {
-    extendParams.enabledContextCaching = false;
-  }
-
-  // Reasoning effort variants
-  if (modelExtendParams.includes('reasoningEffort') && chatConfig.reasoningEffort) {
-    extendParams.reasoning_effort = chatConfig.reasoningEffort;
-  }
-
-  if (modelExtendParams.includes('gpt5ReasoningEffort') && chatConfig.gpt5ReasoningEffort) {
-    extendParams.reasoning_effort = chatConfig.gpt5ReasoningEffort;
-  }
-
-  if (modelExtendParams.includes('gpt5_1ReasoningEffort') && chatConfig.gpt5_1ReasoningEffort) {
-    extendParams.reasoning_effort = chatConfig.gpt5_1ReasoningEffort;
-  }
-
-  if (modelExtendParams.includes('gpt5_2ReasoningEffort') && chatConfig.gpt5_2ReasoningEffort) {
-    extendParams.reasoning_effort = chatConfig.gpt5_2ReasoningEffort;
-  }
-
-  if (
-    modelExtendParams.includes('gpt5_2ProReasoningEffort') &&
-    chatConfig.gpt5_2ProReasoningEffort
-  ) {
-    extendParams.reasoning_effort = chatConfig.gpt5_2ProReasoningEffort;
-  }
-
-  // Text verbosity
-  if (modelExtendParams.includes('textVerbosity') && chatConfig.textVerbosity) {
-    extendParams.verbosity = chatConfig.textVerbosity;
-  }
-
-  // Thinking configuration
-  if (modelExtendParams.includes('thinking') && chatConfig.thinking) {
-    extendParams.thinking = { type: chatConfig.thinking };
-  }
-
-  if (modelExtendParams.includes('thinkingBudget') && chatConfig.thinkingBudget !== undefined) {
-    extendParams.thinkingBudget = chatConfig.thinkingBudget;
-  }
-
-  if (modelExtendParams.includes('thinkingLevel') && chatConfig.thinkingLevel) {
-    extendParams.thinkingLevel = chatConfig.thinkingLevel;
-  }
-
-  // URL context
-  if (modelExtendParams.includes('urlContext') && chatConfig.urlContext) {
-    extendParams.urlContext = chatConfig.urlContext;
-  }
-
-  // Image generation params
-  if (modelExtendParams.includes('imageAspectRatio') && chatConfig.imageAspectRatio) {
-    extendParams.imageAspectRatio = chatConfig.imageAspectRatio;
-  }
-
-  if (modelExtendParams.includes('imageResolution') && chatConfig.imageResolution) {
-    extendParams.imageResolution = chatConfig.imageResolution;
-  }
-
-  return extendParams;
+  return applyModelExtendParams({
+    chatConfig: effectiveChatConfig,
+    extendParams: modelExtendParams,
+    model,
+  });
 };

@@ -1,34 +1,36 @@
-import { Button, Flexbox, Icon, Modal } from '@lobehub/ui';
-import { App } from 'antd';
+import { CUSTOM_FOLDER_FILE_TYPE } from '@lobechat/const';
+import { Flexbox, Icon } from '@lobehub/ui';
+import { Button, createModal, ModalFooter, toast, useModalContext } from '@lobehub/ui/base-ui';
+import { t as translate } from 'i18next';
 import { FolderIcon } from 'lucide-react';
 import { memo, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import FolderTree, { type FolderTreeItem } from '@/features/ResourceManager/components/FolderTree';
-import { clearTreeFolderCache } from '@/features/ResourceManager/components/LibraryHierarchy';
+import { type FolderTreeItem } from '@/features/ResourceManager/components/FolderTree';
+import FolderTree from '@/features/ResourceManager/components/FolderTree';
 import { fileService } from '@/services/file';
 import { useFileStore } from '@/store/file';
+import { useTreeStore } from '@/store/tree';
 
-interface MoveToFolderModalProps {
+interface MoveToFolderModalContentProps {
   fileId: string;
   knowledgeBaseId?: string;
-  onClose: () => void;
-  open: boolean;
 }
 
-const MoveToFolderModal = memo<MoveToFolderModalProps>(
-  ({ open, onClose, fileId, knowledgeBaseId }) => {
+const MoveToFolderModalContent = memo<MoveToFolderModalContentProps>(
+  ({ fileId, knowledgeBaseId }) => {
     const { t } = useTranslation('components');
-    const { message } = App.useApp();
+    const { close } = useModalContext();
 
     const [folders, setFolders] = useState<FolderTreeItem[]>([]);
     const [loading, setLoading] = useState(false);
     const [selectedFolderId, setSelectedFolderId] = useState<string | null>(null);
-    const [expandedFolders, setExpandedFolders] = useState<Set<string>>(new Set());
-    const [loadedFolders, setLoadedFolders] = useState<Set<string>>(new Set());
+    const [expandedFolders, setExpandedFolders] = useState<Set<string>>(() => new Set());
+    const [loadedFolders, setLoadedFolders] = useState<Set<string>>(() => new Set());
     const [isCreatingFolder, setIsCreatingFolder] = useState(false);
 
-    const [moveResource, createFolder] = useFileStore((s) => [s.moveResource, s.createFolder]);
+    const createFolder = useFileStore((s) => s.createFolder);
+    const moveItem = useTreeStore((s) => s.moveItem);
 
     // Sort items: folders only
     const sortItems = useCallback((items: FolderTreeItem[]): FolderTreeItem[] => {
@@ -47,7 +49,7 @@ const MoveToFolderModal = memo<MoveToFolderModalProps>(
 
         // Filter only folders
         const folderItems = response.items
-          .filter((item) => item.fileType === 'custom/folder')
+          .filter((item) => item.fileType === CUSTOM_FOLDER_FILE_TYPE)
           .map((item) => ({
             children: undefined,
             id: item.id,
@@ -65,10 +67,8 @@ const MoveToFolderModal = memo<MoveToFolderModalProps>(
     }, [knowledgeBaseId, sortItems]);
 
     useEffect(() => {
-      if (open) {
-        fetchRootFolders();
-      }
-    }, [open, fetchRootFolders]);
+      void fetchRootFolders();
+    }, [fetchRootFolders]);
 
     const handleLoadFolder = useCallback(
       async (folderId: string) => {
@@ -83,7 +83,7 @@ const MoveToFolderModal = memo<MoveToFolderModalProps>(
 
           // Filter only folders
           const childFolders: FolderTreeItem[] = response.items
-            .filter((item) => item.fileType === 'custom/folder')
+            .filter((item) => item.fileType === CUSTOM_FOLDER_FILE_TYPE)
             .map((item) => ({
               children: undefined,
               id: item.id,
@@ -129,7 +129,7 @@ const MoveToFolderModal = memo<MoveToFolderModalProps>(
 
           // Filter only folders
           const childFolders: FolderTreeItem[] = response.items
-            .filter((item) => item.fileType === 'custom/folder')
+            .filter((item) => item.fileType === CUSTOM_FOLDER_FILE_TYPE)
             .map((item) => ({
               children: undefined,
               id: item.id,
@@ -173,7 +173,6 @@ const MoveToFolderModal = memo<MoveToFolderModalProps>(
       });
     }, []);
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const handleFolderClick = useCallback((folderId: string, _folderSlug?: string | null) => {
       // Always use the document ID, not the slug
       setSelectedFolderId(folderId);
@@ -204,7 +203,7 @@ const MoveToFolderModal = memo<MoveToFolderModalProps>(
         setSelectedFolderId(newFolderId);
       } catch (error) {
         console.error('Failed to create folder:', error);
-        message.error(t('FileManager.actions.renameError'));
+        toast.error(t('FileManager.actions.renameError'));
       } finally {
         setIsCreatingFolder(false);
       }
@@ -215,99 +214,100 @@ const MoveToFolderModal = memo<MoveToFolderModalProps>(
       reloadFolderChildren,
       fetchRootFolders,
       t,
-      message,
     ]);
 
-    const handleMove = async () => {
-      try {
-        // Use optimistic moveResource for instant UI update
-        await moveResource(fileId, selectedFolderId);
-
-        // Clear and reload all expanded folders in Tree's module-level cache
-        if (knowledgeBaseId) {
-          await clearTreeFolderCache(knowledgeBaseId);
+    const handleMove = () => {
+      if (!selectedFolderId) return;
+      const { children } = useTreeStore.getState();
+      let fromParent = '';
+      for (const [parentKey, items] of Object.entries(children)) {
+        if (items.some((i) => i.id === fileId)) {
+          fromParent = parentKey;
+          break;
         }
-
-        message.success(t('FileManager.actions.moveSuccess'));
-        onClose();
-      } catch (error) {
-        console.error('Failed to move file:', error);
-        message.error(t('FileManager.actions.moveError'));
       }
+
+      void moveItem(fileId, fromParent, selectedFolderId).catch(() => {
+        toast.error(t('FileManager.actions.moveError'));
+      });
+      toast.success(t('FileManager.actions.moveSuccess'));
+      close();
     };
 
-    const handleMoveToRoot = async () => {
-      try {
-        // Use optimistic moveResource for instant UI update
-        await moveResource(fileId, null);
-
-        // Clear and reload all expanded folders in Tree's module-level cache
-        if (knowledgeBaseId) {
-          await clearTreeFolderCache(knowledgeBaseId);
+    const handleMoveToRoot = () => {
+      const { children } = useTreeStore.getState();
+      let fromParent = '';
+      for (const [parentKey, items] of Object.entries(children)) {
+        if (items.some((i) => i.id === fileId)) {
+          fromParent = parentKey;
+          break;
         }
-
-        message.success(t('FileManager.actions.moveSuccess'));
-        onClose();
-      } catch (error) {
-        console.error('Failed to move file:', error);
-        message.error(t('FileManager.actions.moveError'));
       }
+
+      void moveItem(fileId, fromParent, '').catch(() => {
+        toast.error(t('FileManager.actions.moveError'));
+      });
+      toast.success(t('FileManager.actions.moveSuccess'));
+      close();
     };
 
     return (
-      <Modal
-        footer={
-          <Flexbox gap={8} horizontal justify={'flex-end'}>
-            <Button onClick={onClose}>{t('cancel', { ns: 'common' })}</Button>
-            <Button onClick={handleMoveToRoot} type="default">
-              {t('FileManager.actions.moveToRoot')}
-            </Button>
-            <Button disabled={!selectedFolderId} onClick={handleMove} type="primary">
-              {t('FileManager.actions.moveHere')}
+      <>
+        <Flexbox style={{ padding: 16 }}>
+          <Flexbox horizontal justify="flex-end" style={{ marginBottom: 12 }}>
+            <Button
+              icon={<Icon icon={FolderIcon} />}
+              loading={isCreatingFolder}
+              size="small"
+              type="default"
+              onClick={handleCreateNewFolder}
+            >
+              {t('header.actions.newFolder', { ns: 'file' })}
             </Button>
           </Flexbox>
-        }
-        onCancel={onClose}
-        open={open}
-        title={t('FileManager.actions.moveToFolder')}
-      >
-        <Flexbox horizontal justify="flex-end" style={{ marginBottom: 12 }}>
-          <Button
-            icon={<Icon icon={FolderIcon} />}
-            loading={isCreatingFolder}
-            onClick={handleCreateNewFolder}
-            size="small"
-            type="default"
-          >
-            {t('header.actions.newFolder', { ns: 'file' })}
+          <Flexbox style={{ maxHeight: 400, minHeight: 200, overflowY: 'auto' }}>
+            {loading ? (
+              <div>{t('loading', { ns: 'common' })}</div>
+            ) : folders.length === 0 ? (
+              <Flexbox align="center" justify="center" style={{ minHeight: 200 }}>
+                <div style={{ color: 'var(--lobe-color-text-secondary)' }}>
+                  {t('FileManager.noFolders')}
+                </div>
+              </Flexbox>
+            ) : (
+              <FolderTree
+                expandedFolders={expandedFolders}
+                items={folders}
+                loadedFolders={loadedFolders}
+                selectedKey={selectedFolderId}
+                onFolderClick={handleFolderClick}
+                onLoadFolder={handleLoadFolder}
+                onToggleFolder={handleToggleFolder}
+              />
+            )}
+          </Flexbox>
+        </Flexbox>
+        <ModalFooter>
+          <Button onClick={close}>{t('cancel', { ns: 'common' })}</Button>
+          <Button type="default" onClick={handleMoveToRoot}>
+            {t('FileManager.actions.moveToRoot')}
           </Button>
-        </Flexbox>
-        <Flexbox style={{ maxHeight: 400, minHeight: 200, overflowY: 'auto' }}>
-          {loading ? (
-            <div>{t('loading', { ns: 'common' })}</div>
-          ) : folders.length === 0 ? (
-            <Flexbox align="center" justify="center" style={{ minHeight: 200 }}>
-              <div style={{ color: 'var(--lobe-color-text-secondary)' }}>
-                {t('FileManager.noFolders')}
-              </div>
-            </Flexbox>
-          ) : (
-            <FolderTree
-              expandedFolders={expandedFolders}
-              items={folders}
-              loadedFolders={loadedFolders}
-              onFolderClick={handleFolderClick}
-              onLoadFolder={handleLoadFolder}
-              onToggleFolder={handleToggleFolder}
-              selectedKey={selectedFolderId}
-            />
-          )}
-        </Flexbox>
-      </Modal>
+          <Button disabled={!selectedFolderId} type="primary" onClick={handleMove}>
+            {t('FileManager.actions.moveHere')}
+          </Button>
+        </ModalFooter>
+      </>
     );
   },
 );
 
-MoveToFolderModal.displayName = 'MoveToFolderModal';
+MoveToFolderModalContent.displayName = 'MoveToFolderModalContent';
 
-export default MoveToFolderModal;
+export const openMoveToFolderModal = (props: MoveToFolderModalContentProps) =>
+  createModal({
+    content: <MoveToFolderModalContent {...props} />,
+    footer: null,
+    maskClosable: true,
+    styles: { content: { padding: 0 } },
+    title: translate('FileManager.actions.moveToFolder', { ns: 'components' }),
+  });

@@ -1,15 +1,20 @@
 import { renderPlaceholderTemplate } from '@lobechat/context-engine';
-import type { ChatCompletionTool, GenerateObjectPayload } from '@lobechat/model-runtime';
-import { GenerateObjectSchema, ModelRuntime } from '@lobechat/model-runtime';
+import type {
+  ChatCompletionTool,
+  GenerateObjectPayload,
+  GenerateObjectSchema,
+  ModelRuntime,
+} from '@lobechat/model-runtime';
 import { SpanStatusCode } from '@lobechat/observability-otel/api';
 import {
   ATTR_GEN_AI_OPERATION_NAME,
   ATTR_GEN_AI_REQUEST_MODEL,
 } from '@lobechat/observability-otel/gen-ai';
 import { tracer } from '@lobechat/observability-otel/modules/memory-user-memory';
-import { z } from 'zod';
+import { RequestTrigger } from '@lobechat/types';
+import type { z } from 'zod';
 
-import {
+import type {
   ExtractorOptions,
   ExtractorTemplateProps,
   MemoryExtractionAgent,
@@ -57,9 +62,8 @@ export abstract class BaseMemoryExtractor<
   protected getPromptName(): string {
     return this.agent;
   }
-  protected abstract getResultSchema(): z.ZodType<TOutput> | undefined;
+  protected abstract getResultSchema(): z.ZodType<TOutput, unknown> | undefined;
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   protected getSchema(_options: TExtractorTemplateProps): GenerateObjectSchema | undefined {
     const schema = this.getResultSchema();
     if (!schema) return undefined;
@@ -77,7 +81,6 @@ export abstract class BaseMemoryExtractor<
     } satisfies TemplateProps;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   protected getTools(_options: TExtractorTemplateProps): ChatCompletionTool[] | undefined {
     return undefined;
   }
@@ -153,7 +156,17 @@ export abstract class BaseMemoryExtractor<
               }
 
               span.addEvent('gen_ai.request.send');
-              const result = await this.runtime.generateObject(payload);
+              const result = await this.runtime.generateObject(payload, {
+                metadata: {
+                  // Optional backlink to the job-level memory trace blob; the
+                  // llm_generation_tracing hook persists it under metadata so a
+                  // per-call row can be traced back to the job-level dump.
+                  ...(options?.parentMemoryTraceKey
+                    ? { parent_memory_trace_key: options.parentMemoryTraceKey }
+                    : {}),
+                  trigger: RequestTrigger.Memory,
+                },
+              });
               span.addEvent('gen_ai.response.receive');
 
               span.setAttributes({

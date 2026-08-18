@@ -2,21 +2,41 @@
  * Agent Builder Executor
  *
  * Handles all agent builder tool calls for configuring and customizing agents.
+ * Delegates to AgentManagerRuntime for actual implementation.
  */
-import { BaseExecutor, type BuiltinToolContext, type BuiltinToolResult } from '@lobechat/types';
+import { AgentManagerRuntime } from '@lobechat/agent-manager-runtime';
+import type { BuiltinToolContext, BuiltinToolResult, ToolAfterCallContext } from '@lobechat/types';
+import { BaseExecutor } from '@lobechat/types';
+import { pickNonEmptyString, toRecord } from '@lobechat/utils/object';
 
-import { AgentBuilderExecutionRuntime } from './ExecutionRuntime';
-import {
-  AgentBuilderApiName,
-  AgentBuilderIdentifier,
-  type GetAvailableModelsParams,
-  type InstallPluginParams,
-  type SearchMarketToolsParams,
-  type UpdateAgentConfigParams,
-  type UpdatePromptParams,
+import { agentService } from '@/services/agent';
+import { discoverService } from '@/services/discover';
+import { getAgentStoreState } from '@/store/agent';
+
+import { normalizeUpdateConfigParams } from './normalizeUpdateConfigParams';
+import type {
+  GetAvailableModelsParams,
+  InstallPluginParams,
+  SearchMarketToolsParams,
+  UpdateAgentConfigParams,
+  UpdatePromptParams,
 } from './types';
+import { AgentBuilderApiName, AgentBuilderIdentifier } from './types';
 
-const runtime = new AgentBuilderExecutionRuntime();
+// Write APIs that mutate agent state and require a client-side store refresh.
+const WRITE_APIS = new Set<string>([
+  AgentBuilderApiName.updateAgentConfig,
+  AgentBuilderApiName.updatePrompt,
+  AgentBuilderApiName.installPlugin,
+]);
+
+const runtime = new AgentManagerRuntime({
+  agentService,
+  discoverService,
+});
+
+const getResultAgentId = (state: unknown): string | undefined =>
+  pickNonEmptyString(toRecord(state)?.agentId);
 
 class AgentBuilderExecutor extends BaseExecutor<typeof AgentBuilderApiName> {
   readonly identifier = AgentBuilderIdentifier;
@@ -25,27 +45,11 @@ class AgentBuilderExecutor extends BaseExecutor<typeof AgentBuilderApiName> {
   // ==================== Read Operations ====================
 
   getAvailableModels = async (params: GetAvailableModelsParams): Promise<BuiltinToolResult> => {
-    const result = await runtime.getAvailableModels(params);
-    return {
-      content: result.content,
-      error: result.error
-        ? { body: result.error, message: String(result.error), type: 'RuntimeError' }
-        : undefined,
-      state: result.state,
-      success: result.success,
-    };
+    return runtime.getAvailableModels(params);
   };
 
   searchMarketTools = async (params: SearchMarketToolsParams): Promise<BuiltinToolResult> => {
-    const result = await runtime.searchMarketTools(params);
-    return {
-      content: result.content,
-      error: result.error
-        ? { body: result.error, message: String(result.error), type: 'RuntimeError' }
-        : undefined,
-      state: result.state,
-      success: result.success,
-    };
+    return runtime.searchMarketTools(params);
   };
 
   // ==================== Write Operations ====================
@@ -64,15 +68,7 @@ class AgentBuilderExecutor extends BaseExecutor<typeof AgentBuilderApiName> {
       };
     }
 
-    const result = await runtime.updateAgentConfig(agentId, params);
-    return {
-      content: result.content,
-      error: result.error
-        ? { body: result.error, message: String(result.error), type: 'RuntimeError' }
-        : undefined,
-      state: result.state,
-      success: result.success,
-    };
+    return runtime.updateAgentConfig(agentId, normalizeUpdateConfigParams(params));
   };
 
   updatePrompt = async (
@@ -89,18 +85,10 @@ class AgentBuilderExecutor extends BaseExecutor<typeof AgentBuilderApiName> {
       };
     }
 
-    const result = await runtime.updatePrompt(agentId, {
+    return runtime.updatePrompt(agentId, {
       streaming: true,
       ...params,
     });
-    return {
-      content: result.content,
-      error: result.error
-        ? { body: result.error, message: String(result.error), type: 'RuntimeError' }
-        : undefined,
-      state: result.state,
-      success: result.success,
-    };
   };
 
   installPlugin = async (
@@ -117,15 +105,22 @@ class AgentBuilderExecutor extends BaseExecutor<typeof AgentBuilderApiName> {
       };
     }
 
-    const result = await runtime.installPlugin(agentId, params);
-    return {
-      content: result.content,
-      error: result.error
-        ? { body: result.error, message: String(result.error), type: 'RuntimeError' }
-        : undefined,
-      state: result.state,
-      success: result.success,
-    };
+    return runtime.installPlugin(agentId, params);
+  };
+
+  // ==================== Hooks ====================
+
+  onAfterCall = async ({ apiName, result }: ToolAfterCallContext): Promise<void> => {
+    if (!result.success || !WRITE_APIS.has(apiName)) return;
+    const agentId = getResultAgentId(result.state);
+    if (!agentId) return;
+
+    // Gateway writes are already committed by the server runtime. Refresh the
+    // exact target recorded by that invocation instead of consulting mutable UI
+    // navigation state. In particular, do not replay updatePrompt through the
+    // streaming store: its finalizer persists again and can write to another
+    // agent if the user navigates while the tool call is in flight.
+    await getAgentStoreState().internal_refreshAgentConfig(agentId);
   };
 }
 

@@ -1,4 +1,4 @@
-import type { Operation, OperationType } from './types';
+import { type Operation, type OperationType, type QueuedMessage } from './types';
 
 /**
  * Chat Operation State
@@ -33,6 +33,14 @@ export interface ChatOperationState {
    * key: OperationType, value: operationId[]
    */
   operationsByType: Record<OperationType, string[]>;
+
+  /**
+   * Message queue per conversation context.
+   * key: contextKey (messageMapKey), value: queued messages
+   * Messages are consumed either by the running step loop (injection)
+   * or by triggering a new sendMessage when no operation is running.
+   */
+  queuedMessages: Record<string, QueuedMessage[]>;
 }
 
 export const initialOperationState: ChatOperationState = {
@@ -41,4 +49,5 @@ export const initialOperationState: ChatOperationState = {
   operationsByContext: {},
   operationsByMessage: {},
   operationsByType: {} as Record<OperationType, string[]>,
+  queuedMessages: {},
 };

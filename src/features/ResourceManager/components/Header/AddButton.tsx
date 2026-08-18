@@ -1,17 +1,24 @@
 'use client';
 
-import { FILE_URL } from '@lobechat/business-const';
+import {
+  CUSTOM_DOCUMENT_FILE_TYPE,
+  CUSTOM_FOLDER_FILE_TYPE,
+  DERIVED_DOCUMENT_SOURCE_TYPE,
+} from '@lobechat/const';
 import { Notion } from '@lobehub/icons';
-import { Button, DropdownMenu, Icon, type MenuProps } from '@lobehub/ui';
+import { type DropdownItem } from '@lobehub/ui';
+import { DropdownMenu, Icon, Tooltip } from '@lobehub/ui';
+import { Button, toast } from '@lobehub/ui/base-ui';
 import { Upload } from 'antd';
 import { FilePenLine, FileUp, FolderIcon, FolderUp, Link, Plus } from 'lucide-react';
-import { type ChangeEvent, useCallback, useMemo, useState } from 'react';
+import { type ChangeEvent } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { useResourceManagerStore } from '@/app/[variants]/(main)/resource/features/store';
-import { message } from '@/components/AntdStaticMethods';
-import GuideModal from '@/components/GuideModal';
-import GuideVideo from '@/components/GuideVideo';
+import { useCurrentFolderId } from '@/features/ResourceManager/hooks/useCurrentFolderId';
+import { useTopLevelFileUpload } from '@/features/ResourceManager/hooks/useTopLevelFileUpload';
+import { useResourceManagerStore } from '@/features/ResourceManager/store';
+import { usePermission } from '@/hooks/usePermission';
 import { useFileStore } from '@/store/file';
 import { FilesTabs } from '@/types/files';
 
@@ -27,7 +34,7 @@ const getAcceptedFileTypes = (category: FilesTabs): string | undefined => {
       return 'audio/*';
     }
     case FilesTabs.Documents: {
-      return '.pdf,.doc,.docx,.md,.markdown,.xls,.xlsx';
+      return '.pdf,.doc,.docx,.md,.markdown,.txt,.rtf,.csv,.xls,.xlsx,.ppt,.pptx,.epub';
     }
     case FilesTabs.Images: {
       return 'image/*';
@@ -40,36 +47,31 @@ const getAcceptedFileTypes = (category: FilesTabs): string | undefined => {
 
 const AddButton = () => {
   const { t } = useTranslation('file');
-  const pushDockFileList = useFileStore((s) => s.pushDockFileList);
   const uploadFolderWithStructure = useFileStore((s) => s.uploadFolderWithStructure);
   const createResourceAndSync = useFileStore((s) => s.createResourceAndSync);
   const [menuOpen, setMenuOpen] = useState(false);
+  const currentFolderId = useCurrentFolderId();
+  const { allowed: canCreate, reason } = usePermission('create_content');
+  const uploadTopLevel = useTopLevelFileUpload();
 
   // TODO: Migrate Notion import to use createResource
   // Keep old functions temporarily for components not yet migrated
   const createDocument = useFileStore((s) => s.createDocument);
 
-  const [
-    libraryId,
-    category,
-    currentFolderId,
-    setCategory,
-    setCurrentViewItemId,
-    setMode,
-    setPendingRenameItemId,
-  ] = useResourceManagerStore((s) => [
-    s.libraryId,
-    s.category,
-    s.currentFolderId,
-    s.setCategory,
-    s.setCurrentViewItemId,
-    s.setMode,
-    s.setPendingRenameItemId,
-  ]);
+  const [libraryId, category, setCategory, setCurrentViewItemId, setMode, setPendingRenameItemId] =
+    useResourceManagerStore((s) => [
+      s.libraryId,
+      s.category,
+      s.setCategory,
+      s.setCurrentViewItemId,
+      s.setMode,
+      s.setPendingRenameItemId,
+    ]);
 
   const handleOpenPageEditor = useCallback(async () => {
-    // Navigate to "All" category first if not already there
-    if (category !== FilesTabs.All) {
+    // Navigate to "All" category first if not already there. The home
+    // dashboard and the Pages category both surface the new page, so stay put.
+    if (category !== FilesTabs.All && category !== FilesTabs.Home && category !== FilesTabs.Pages) {
       setCategory(FilesTabs.All);
     }
 
@@ -77,21 +79,30 @@ const AddButton = () => {
     const untitledTitle = t('pageList.untitled');
     const realId = await createResourceAndSync({
       content: '',
-      fileType: 'custom/document',
+      fileType: CUSTOM_DOCUMENT_FILE_TYPE,
       knowledgeBaseId: libraryId,
       parentId: currentFolderId ?? undefined,
-      sourceType: 'document',
+      sourceType: DERIVED_DOCUMENT_SOURCE_TYPE,
       title: untitledTitle,
     });
 
     // Switch to page view mode with real ID
     setCurrentViewItemId(realId);
     setMode('page');
-  }, [category, createResourceAndSync, currentFolderId, libraryId, setCategory, setCurrentViewItemId, setMode, t]);
+  }, [
+    category,
+    createResourceAndSync,
+    currentFolderId,
+    libraryId,
+    setCategory,
+    setCurrentViewItemId,
+    setMode,
+    t,
+  ]);
 
   const handleCreateFolder = useCallback(async () => {
     // Navigate to "All" category first if not already there
-    if (category !== FilesTabs.All) {
+    if (category !== FilesTabs.All && category !== FilesTabs.Home) {
       setCategory(FilesTabs.All);
     }
 
@@ -103,7 +114,7 @@ const AddButton = () => {
       // Filter for folders at the same level
       const foldersAtSameLevel = resourceList.filter(
         (item) =>
-          item.fileType === 'custom/folder' &&
+          item.fileType === CUSTOM_FOLDER_FILE_TYPE &&
           (item.parentId ?? null) === (currentFolderId ?? null),
       );
 
@@ -122,36 +133,33 @@ const AddButton = () => {
       // Wait for sync to complete to get the real ID
       const realId = await createResourceAndSync({
         content: '',
-        fileType: 'custom/folder',
+        fileType: CUSTOM_FOLDER_FILE_TYPE,
         knowledgeBaseId: libraryId,
         parentId: currentFolderId ?? undefined,
-        sourceType: 'document',
+        sourceType: DERIVED_DOCUMENT_SOURCE_TYPE,
         title: uniqueName,
       });
 
       // Trigger auto-rename with the real ID (after sync completes)
       setPendingRenameItemId(realId);
     } catch (error) {
-      message.error(t('header.actions.createFolderError'));
+      toast.error(t('header.actions.createFolderError'));
       console.error('Failed to create folder:', error);
     }
-  }, [category, createResourceAndSync, currentFolderId, libraryId, setCategory, setPendingRenameItemId, t]);
+  }, [
+    category,
+    createResourceAndSync,
+    currentFolderId,
+    libraryId,
+    setCategory,
+    setPendingRenameItemId,
+    t,
+  ]);
 
-  const {
-    handleCloseNotionGuide,
-    handleNotionImport,
-    handleOpenNotionGuide,
-    handleStartNotionImport,
-    notionGuideOpen,
-    notionInputRef,
-  } = useNotionImport({
+  const { handleNotionImport, handleOpenNotionGuide, notionInputRef } = useNotionImport({
     createDocument,
     currentFolderId,
     libraryId,
-    refetchResources: async () => {
-      const { revalidateResources } = await import('@/store/file/slices/resource/hooks');
-      await revalidateResources();
-    },
     t,
   });
 
@@ -169,7 +177,7 @@ const AddButton = () => {
     [handleFolderUpload],
   );
 
-  const items = useMemo<MenuProps['items']>(
+  const items = useMemo<DropdownItem[]>(
     () => [
       {
         icon: <Icon icon={FilePenLine} />,
@@ -197,14 +205,13 @@ const AddButton = () => {
         label: (
           <Upload
             accept={getAcceptedFileTypes(category)}
-            beforeUpload={async (file) => {
-              setMenuOpen(false);
-              await pushDockFileList([file], libraryId, currentFolderId ?? undefined);
-
-              return false;
-            }}
             multiple={true}
             showUploadList={false}
+            beforeUpload={async (file) => {
+              setMenuOpen(false);
+              await uploadTopLevel([file]);
+              return false;
+            }}
           >
             <div>{t('header.actions.uploadFile')}</div>
           </Upload>
@@ -231,58 +238,52 @@ const AddButton = () => {
         icon: <Icon icon={Link} />,
         key: 'connect',
         label: t('header.actions.connect'),
+        type: 'submenu',
       },
     ],
     [
       category,
-      currentFolderId,
       handleCreateFolder,
       handleOpenPageEditor,
       handleOpenNotionGuide,
       libraryId,
-      pushDockFileList,
+      uploadTopLevel,
       t,
     ],
   );
 
   return (
     <>
-      <DropdownMenu
-        items={items}
-        onOpenChange={setMenuOpen}
-        open={menuOpen}
-        placement="bottomRight"
-        trigger="both"
-      >
-        <Button data-no-highlight icon={Plus} type="primary">
-          {t('addLibrary')}
-        </Button>
-      </DropdownMenu>
-      <GuideModal
-        cancelText={t('header.actions.notionGuide.cancel')}
-        cover={<GuideVideo height={269} src={FILE_URL.importFromNotionGuide} width={358} />}
-        desc={t('header.actions.notionGuide.desc')}
-        okText={t('header.actions.notionGuide.ok')}
-        onCancel={handleCloseNotionGuide}
-        onOk={handleStartNotionImport}
-        open={notionGuideOpen}
-        title={t('header.actions.notionGuide.title')}
-      />
+      <Tooltip title={canCreate ? undefined : reason}>
+        <DropdownMenu
+          items={canCreate ? items : []}
+          open={menuOpen}
+          placement="bottomRight"
+          onOpenChange={(open) => {
+            if (!canCreate) return;
+            setMenuOpen(open);
+          }}
+        >
+          <Button data-no-highlight disabled={!canCreate} icon={Plus} type="primary">
+            {t('addLibrary')}
+          </Button>
+        </DropdownMenu>
+      </Tooltip>
       <input
-        id="folder-upload-input"
         multiple
-        onChange={handleFolderUploadWithClose}
+        id="folder-upload-input"
         style={{ display: 'none' }}
         type="file"
         // @ts-expect-error - webkitdirectory is not in the React types
         webkitdirectory=""
+        onChange={handleFolderUploadWithClose}
       />
       <input
         accept=".zip"
-        onChange={handleNotionImport}
         ref={notionInputRef}
         style={{ display: 'none' }}
         type="file"
+        onChange={handleNotionImport}
       />
     </>
   );

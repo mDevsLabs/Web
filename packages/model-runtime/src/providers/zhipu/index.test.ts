@@ -1,7 +1,7 @@
 // @vitest-environment node
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { LobeOpenAICompatibleRuntime } from '../../core/BaseAI';
+import { type LobeOpenAICompatibleRuntime } from '../../core/BaseAI';
 import { testProvider } from '../../providerTestUtils';
 import { LobeZhipuAI, params } from './index';
 
@@ -15,6 +15,10 @@ testProvider({
     skipAPICall: true, // Skip because Zhipu has custom handlePayload that normalizes temperature
   },
 });
+
+vi.mock('@lobechat/business-model-bank/model-config', () => ({
+  loadModels: vi.fn().mockResolvedValue([]),
+}));
 
 // Mock the console.error to avoid polluting test output
 vi.spyOn(console, 'error').mockImplementation(() => {});
@@ -51,6 +55,32 @@ describe('LobeZhipuAI - custom features', () => {
   });
 
   describe('handlePayload', () => {
+    it('should send mapped model id when modelIdMapping is configured', async () => {
+      const mappedInstance = new LobeZhipuAI({
+        apiKey: 'test',
+        modelIdMapping: { 'glm-4-alltools': 'upstream-glm-deployment' },
+      });
+      vi.spyOn(mappedInstance['client'].chat.completions, 'create').mockResolvedValue(
+        new ReadableStream() as any,
+      );
+
+      await mappedInstance.chat({
+        messages: [{ content: 'Hello', role: 'user' }],
+        model: 'glm-4-alltools',
+        temperature: 2,
+        top_p: 2,
+      });
+
+      expect(mappedInstance['client'].chat.completions.create).toHaveBeenCalledWith(
+        expect.objectContaining({
+          model: 'upstream-glm-deployment',
+          temperature: 0.99,
+          top_p: 0.99,
+        }),
+        expect.anything(),
+      );
+    });
+
     describe('Web Search Feature', () => {
       it('should add web_search tool when enabledSearch is true', async () => {
         await instance.chat({
@@ -244,7 +274,7 @@ describe('LobeZhipuAI - custom features', () => {
         await instance.chat({
           messages: [{ content: 'Hello', role: 'user' }],
           model: 'glm-4-alltools',
-          temperature: 2.0, // Will be normalized to 1.0, then clamped to 0.99
+          temperature: 2, // Will be normalized to 1.0, then clamped to 0.99
         });
 
         expect(instance['client'].chat.completions.create).toHaveBeenCalledWith(
@@ -291,7 +321,7 @@ describe('LobeZhipuAI - custom features', () => {
         await instance.chat({
           messages: [{ content: 'Hello', role: 'user' }],
           model: 'glm-4-alltools',
-          temperature: 1.0, // Will be normalized to 0.5
+          temperature: 1, // Will be normalized to 0.5
         });
 
         expect(instance['client'].chat.completions.create).toHaveBeenCalledWith(
@@ -308,7 +338,7 @@ describe('LobeZhipuAI - custom features', () => {
         await instance.chat({
           messages: [{ content: 'Hello', role: 'user' }],
           model: 'glm-4',
-          temperature: 1.0,
+          temperature: 1,
         });
 
         expect(instance['client'].chat.completions.create).toHaveBeenCalledWith(
@@ -384,36 +414,253 @@ describe('LobeZhipuAI - custom features', () => {
       });
     });
 
-    describe('Stream parameter', () => {
-      it('should always set stream to true', async () => {
-        await instance.chat({
+    describe('tool_stream for streaming tool calls', () => {
+      it.each([
+        ['glm-4.6', true, true],
+        ['glm-4.7', true, true],
+        ['glm-5', true, true],
+        ['glm-5.1', true, true],
+        ['glm-5.2', true, true],
+        ['glm-5.3', true, true],
+        ['glm-6', true, true],
+        ['glm-4.5', true, undefined],
+        ['glm-5-turbo', true, undefined],
+        ['glm-4', true, undefined],
+        ['glm-5.2', false, undefined],
+        ['glm-5.1', false, undefined],
+      ] as const)('model=%s stream=%s → tool_stream=%s', (model, stream, expected) => {
+        const payload = params.chatCompletion.handlePayload({
+          max_tokens: 4096,
           messages: [{ content: 'Hello', role: 'user' }],
-          model: 'glm-4',
+          model,
+          stream,
           temperature: 0.5,
         });
 
-        expect(instance['client'].chat.completions.create).toHaveBeenCalledWith(
-          expect.objectContaining({
-            stream: true,
-          }),
-          expect.anything(),
-        );
+        expect(payload.tool_stream).toBe(expected);
       });
 
-      it('should override stream parameter to true', async () => {
-        await instance.chat({
+      it('should allow compatible channels to disable tool_stream without disabling Zhipu payload handling', () => {
+        const payload = params.chatCompletion.handlePayload(
+          {
+            max_tokens: 4096,
+            messages: [
+              { content: 'Hello', reasoning: { content: 'cached thought' }, role: 'user' },
+            ],
+            model: 'glm-5.2',
+            preserveThinking: true,
+            stream: true,
+            temperature: 0.5,
+            thinking: { type: 'enabled' },
+          },
+          { disableToolStream: true },
+        );
+
+        expect(payload.tool_stream).toBeUndefined();
+        expect(payload.thinking).toEqual({ clear_thinking: false, type: 'enabled' });
+        expect(payload.messages).toEqual([
+          { content: 'Hello', reasoning_content: 'cached thought', role: 'user' },
+        ]);
+      });
+
+      it('should suppress tool_stream for Fireworks-hosted GLM streams', () => {
+        const payload = params.chatCompletion.handlePayload(
+          {
+            max_tokens: 4096,
+            messages: [{ content: 'Hello', role: 'user' }],
+            model: 'glm-5.2',
+            stream: true,
+            temperature: 0.5,
+          },
+          { baseURL: 'https://api.fireworks.ai/inference/v1' },
+        );
+
+        expect(payload.tool_stream).toBeUndefined();
+      });
+    });
+
+    describe('GLM-5.2 optional params', () => {
+      it('should forward reasoning_effort with thinking enabled for Z.ai', () => {
+        const payload = params.chatCompletion.handlePayload({
+          max_tokens: 4096,
           messages: [{ content: 'Hello', role: 'user' }],
-          model: 'glm-4',
-          stream: false,
-          temperature: 0.5,
+          model: 'glm-5.2',
+          reasoning_effort: 'max',
+          temperature: 1,
+          thinking: { type: 'enabled' },
         });
 
-        expect(instance['client'].chat.completions.create).toHaveBeenCalledWith(
-          expect.objectContaining({
-            stream: true,
-          }),
-          expect.anything(),
+        expect(payload.reasoning_effort).toBe('max');
+        expect(payload.thinking).toEqual({ type: 'enabled' });
+      });
+
+      it('should omit thinking when Fireworks handles GLM-5.2 reasoning_effort', () => {
+        const payload = params.chatCompletion.handlePayload(
+          {
+            max_tokens: 4096,
+            messages: [{ content: 'Hello', role: 'user' }],
+            model: 'glm-5.2',
+            preserveThinking: true,
+            reasoning_effort: 'max',
+            temperature: 1,
+            thinking: { type: 'enabled' },
+          },
+          { baseURL: 'https://api.fireworks.ai/inference/v1' },
         );
+
+        expect(payload.reasoning_effort).toBe('max');
+        expect(payload.thinking).toBeUndefined();
+        expect(payload.reasoning_history).toBe('preserved');
+      });
+
+      it('should omit reasoning_effort when Fireworks handles disabled thinking', () => {
+        const payload = params.chatCompletion.handlePayload(
+          {
+            max_tokens: 4096,
+            messages: [{ content: 'Hello', role: 'user' }],
+            model: 'glm-5.2',
+            reasoning_effort: 'max',
+            temperature: 1,
+            thinking: { type: 'disabled' },
+          },
+          { baseURL: 'https://api.fireworks.ai/inference/v1' },
+        );
+
+        expect(payload.reasoning_effort).toBeUndefined();
+        expect(payload.thinking).toEqual({ type: 'disabled' });
+      });
+
+      it('should keep disabled thinking with reasoning_effort for Z.ai', () => {
+        const payload = params.chatCompletion.handlePayload({
+          max_tokens: 4096,
+          messages: [{ content: 'Hello', role: 'user' }],
+          model: 'glm-5.2',
+          reasoning_effort: 'max',
+          temperature: 1,
+          thinking: { type: 'disabled' },
+        });
+
+        expect(payload.reasoning_effort).toBe('max');
+        expect(payload.thinking).toEqual({ type: 'disabled' });
+      });
+    });
+
+    describe('GLM-5.3 always-on thinking', () => {
+      it('should coerce disabled thinking to enabled', () => {
+        const payload = params.chatCompletion.handlePayload({
+          max_tokens: 4096,
+          messages: [{ content: 'Hello', role: 'user' }],
+          model: 'glm-5.3',
+          reasoning_effort: 'low',
+          temperature: 1,
+          thinking: { type: 'disabled' },
+        });
+
+        expect(payload.reasoning_effort).toBe('low');
+        expect(payload.thinking).toEqual({ type: 'enabled' });
+      });
+
+      it('should enable thinking when the payload omits it', () => {
+        const payload = params.chatCompletion.handlePayload({
+          max_tokens: 4096,
+          messages: [{ content: 'Hello', role: 'user' }],
+          model: 'glm-5.3',
+          reasoning_effort: 'max',
+          temperature: 1,
+        });
+
+        expect(payload.reasoning_effort).toBe('max');
+        expect(payload.thinking).toEqual({ type: 'enabled' });
+      });
+    });
+
+    describe('preserve thinking mapping', () => {
+      it('should map preserveThinking=true to clear_thinking=false and convert reasoning content', () => {
+        const payload = {
+          messages: [
+            { content: 'hello', role: 'user' },
+            {
+              content: 'answer',
+              reasoning: { content: 'reasoning content' },
+              role: 'assistant',
+            },
+          ],
+          model: 'glm-5',
+          preserveThinking: true,
+          thinking: { budget_tokens: 1024, type: 'enabled' },
+        } as any;
+
+        const result = params.chatCompletion.handlePayload(payload);
+
+        expect(result.thinking).toEqual({ clear_thinking: false, type: 'enabled' });
+        expect(result.messages).toEqual([
+          { content: 'hello', role: 'user' },
+          {
+            content: 'answer',
+            reasoning_content: 'reasoning content',
+            role: 'assistant',
+          },
+        ]);
+      });
+
+      it('should still convert reasoning to reasoning_content when preserveThinking is absent', () => {
+        const payload = {
+          messages: [
+            {
+              content: 'answer',
+              reasoning: { content: 'reasoning content' },
+              role: 'assistant',
+            },
+          ],
+          model: 'glm-5',
+        } as any;
+
+        const result = params.chatCompletion.handlePayload(payload);
+
+        expect(result.thinking).toBeUndefined();
+        expect(result.messages).toEqual([
+          {
+            content: 'answer',
+            reasoning_content: 'reasoning content',
+            role: 'assistant',
+          },
+        ]);
+      });
+
+      it('should map preserveThinking=false to clear_thinking=true', () => {
+        const payload = {
+          messages: [{ content: 'hello', role: 'user' }],
+          model: 'glm-4.7',
+          preserveThinking: false,
+        } as any;
+
+        const result = params.chatCompletion.handlePayload(payload);
+
+        expect(result.thinking).toEqual({ clear_thinking: true });
+      });
+
+      it('should keep caller-provided reasoning_content', () => {
+        const payload = {
+          messages: [
+            {
+              content: 'answer',
+              reasoning_content: 'existing reasoning content',
+              role: 'assistant',
+            },
+          ],
+          model: 'glm-5',
+          preserveThinking: true,
+        } as any;
+
+        const result = params.chatCompletion.handlePayload(payload);
+
+        expect(result.messages).toEqual([
+          {
+            content: 'answer',
+            reasoning_content: 'existing reasoning content',
+            role: 'assistant',
+          },
+        ]);
       });
     });
 
@@ -669,6 +916,76 @@ describe('LobeZhipuAI - custom features', () => {
         });
 
         // Read the stream to trigger the transform
+        const reader = result.body?.getReader();
+        if (reader) {
+          let done = false;
+          while (!done) {
+            const { value, done: isDone } = await reader.read();
+            done = isDone;
+          }
+        }
+
+        expect(result).toBeDefined();
+      });
+
+      it('should filter out incomplete placeholder tool_call chunks from proxies', async () => {
+        // Some proxies (e.g., aihubmix) send empty placeholder chunks without
+        // id/function.name when tool_stream is enabled. These must be filtered
+        // out to prevent ZodError in parseToolCalls.
+        const mockStream = new ReadableStream({
+          start(controller) {
+            // Placeholder chunks (no id, no name, empty arguments)
+            controller.enqueue({
+              choices: [
+                {
+                  delta: {
+                    tool_calls: [{ type: 'function', function: { arguments: '' }, index: 0 }],
+                  },
+                  finish_reason: null,
+                  index: 0,
+                },
+              ],
+              created: 1234567890,
+              id: 'chatcmpl-123',
+              model: 'glm-5',
+              object: 'chat.completion.chunk',
+            });
+            // Real chunk with id and name
+            controller.enqueue({
+              choices: [
+                {
+                  delta: {
+                    tool_calls: [
+                      {
+                        id: 'tool-abc123',
+                        type: 'function',
+                        function: { name: 'calculator', arguments: '{"expression":"1+1"}' },
+                        index: 0,
+                      },
+                    ],
+                  },
+                  finish_reason: null,
+                  index: 0,
+                },
+              ],
+              created: 1234567890,
+              id: 'chatcmpl-123',
+              model: 'glm-5',
+              object: 'chat.completion.chunk',
+            });
+            controller.close();
+          },
+        });
+
+        (instance['client'].chat.completions.create as any).mockResolvedValue(mockStream);
+
+        // Should not throw ZodError from incomplete placeholder chunks
+        const result = await instance.chat({
+          messages: [{ content: 'Hello', role: 'user' }],
+          model: 'glm-5',
+          temperature: 0.5,
+        });
+
         const reader = result.body?.getReader();
         if (reader) {
           let done = false;

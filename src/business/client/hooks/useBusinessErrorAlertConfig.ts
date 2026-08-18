@@ -1,9 +1,8 @@
-import type { ErrorType } from '@lobechat/types';
-import type { AlertProps } from '@lobehub/ui';
+import { type ErrorType } from '@lobechat/types';
+import { type AlertProps } from '@lobehub/ui/base-ui';
 
 export default function useBusinessErrorAlertConfig(
-  // eslint-disable-next-line unused-imports/no-unused-vars, @typescript-eslint/no-unused-vars
-  errorType?: ErrorType,
+  _errorType?: ErrorType,
 ): AlertProps | undefined {
   return undefined;
 }

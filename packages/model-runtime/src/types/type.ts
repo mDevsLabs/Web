@@ -1,8 +1,8 @@
-import { ModelProvider } from 'model-bank';
-import OpenAI from 'openai';
+import type { ErrorType } from '@lobechat/types';
+import type OpenAI from 'openai';
 
-import { ChatStreamPayload } from './chat';
-import { ILobeAgentRuntimeErrorType } from './error';
+import type { ChatStreamPayload } from './chat';
+import type { ILobeAgentRuntimeErrorType } from './error';
 
 export interface AgentInitErrorPayload {
   error: object;
@@ -13,7 +13,8 @@ export interface ChatCompletionErrorPayload {
   [key: string]: any;
   endpoint?: string;
   error: object;
-  errorType: ILobeAgentRuntimeErrorType;
+  errorType: ErrorType | ILobeAgentRuntimeErrorType;
+  message?: string;
   provider: string;
 }
 
@@ -28,4 +29,5 @@ export interface CreateChatCompletionOptions {
   payload: ChatStreamPayload;
 }
 
-export type ModelProviderKey = Lowercase<keyof typeof ModelProvider>;
+// canonical definition lives next to the ModelProvider enum in model-bank
+export type { ModelProviderKey } from 'model-bank';

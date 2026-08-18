@@ -1,7 +1,8 @@
-import { LobeChatPluginManifest, LobeChatPluginMeta } from '@lobehub/chat-plugin-sdk';
+import { type ToolManifest } from '@lobechat/types';
 import { describe, expect, it } from 'vitest';
 
-import { ToolStoreState, initialState } from '../../initialState';
+import { type ToolStoreState } from '../../initialState';
+import { initialState } from '../../initialState';
 import { customPluginSelectors } from './selectors';
 
 const mockState = {
@@ -18,7 +19,7 @@ const mockState = {
         identifier: 'plugin-1',
         api: [{ name: 'api-1' }],
         type: 'default',
-      } as LobeChatPluginManifest,
+      } as ToolManifest,
     },
     {
       identifier: 'plugin-2',
@@ -37,7 +38,7 @@ const mockState = {
       createdAt: '2021-01-01',
       meta: { avatar: 'avatar-url-1', title: 'Plugin 1' },
       homepage: 'http://homepage-1.com',
-    } as LobeChatPluginMeta,
+    } as any,
     {
       identifier: 'plugin-2',
       author: 'Author 2',

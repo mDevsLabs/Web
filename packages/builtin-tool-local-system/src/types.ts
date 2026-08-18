@@ -1,30 +1,32 @@
-import {
-  GetCommandOutputResult,
-  GlobFilesResult,
-  GrepContentResult,
-  KillCommandResult,
+import type {
   LocalFileItem,
   LocalMoveFilesResultItem,
   LocalReadFileResult,
-  RunCommandResult,
 } from '@lobechat/electron-client-ipc';
+
+// Re-export shared state types from @lobechat/tool-runtime
+export type {
+  EditFileState as EditLocalFileState,
+  GlobFilesState,
+  GrepContentState,
+  RunCommandState,
+} from '@lobechat/tool-runtime';
 
 export const LocalSystemIdentifier = 'lobe-local-system';
 
 export const LocalSystemApiName = {
-  editLocalFile: 'editLocalFile',
+  editFile: 'editFile',
   getCommandOutput: 'getCommandOutput',
-  globLocalFiles: 'globLocalFiles',
+  globFiles: 'globFiles',
   grepContent: 'grepContent',
   killCommand: 'killCommand',
-  listLocalFiles: 'listLocalFiles',
-  moveLocalFiles: 'moveLocalFiles',
-  readLocalFile: 'readLocalFile',
-  renameLocalFile: 'renameLocalFile',
+  listFiles: 'listFiles',
+  moveFiles: 'moveFiles',
+  readFile: 'readFile',
   runCommand: 'runCommand',
-  searchLocalFiles: 'searchLocalFiles',
-  writeLocalFile: 'writeLocalFile',
-};
+  searchFiles: 'searchFiles',
+  writeFile: 'writeFile',
+} as const;
 
 export interface FileResult {
   contentType?: string;
@@ -41,12 +43,19 @@ export interface FileResult {
   type: string;
 }
 
+// ==================== Local-System-Specific State Types ====================
+
 export interface LocalFileSearchState {
+  /** Search engine used (e.g., 'mdfind', 'fd', 'find', 'fast-glob') */
+  engine?: string;
+  /** Resolved search directory after scope resolution */
+  resolvedPath?: string;
   searchResults: LocalFileItem[];
 }
 
 export interface LocalFileListState {
   listResults: LocalFileItem[];
+  totalCount: number;
 }
 
 export interface LocalReadFileState {
@@ -69,36 +78,4 @@ export interface LocalRenameFileState {
   newPath: string;
   oldPath: string;
   success: boolean;
-}
-
-export interface RunCommandState {
-  message: string;
-  result: RunCommandResult;
-}
-
-export interface GetCommandOutputState {
-  message: string;
-  result: GetCommandOutputResult;
-}
-
-export interface KillCommandState {
-  message: string;
-  result: KillCommandResult;
-}
-
-export interface GrepContentState {
-  message: string;
-  result: GrepContentResult;
-}
-
-export interface GlobFilesState {
-  message: string;
-  result: GlobFilesResult;
-}
-
-export interface EditLocalFileState {
-  diffText?: string;
-  linesAdded?: number;
-  linesDeleted?: number;
-  replacements: number;
 }

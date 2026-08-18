@@ -1,24 +1,32 @@
-import { PluginQueryParams, SystemDependency } from '@lobehub/market-sdk';
+import type { PluginQueryParams, SystemDependency } from '@lobehub/market-sdk';
 import { z } from 'zod';
 
-import { MCPErrorType } from '@/libs/mcp';
+import type { McpConnectionType } from '../discover/mcp';
+import type { CustomPluginMetadata } from '../tool/plugin';
 
-import { McpConnectionType } from '../discover/mcp';
-import { CustomPluginMetadata } from '../tool/plugin';
+/**
+ * MCP client error categories. Owned here so shared packages don't reach into
+ * the app-layer MCP lib; `src/libs/mcp` re-exports this for its own consumers.
+ */
+export type MCPErrorType =
+  | 'CONNECTION_FAILED'
+  | 'PROCESS_SPAWN_ERROR'
+  | 'INITIALIZATION_TIMEOUT'
+  | 'VALIDATION_ERROR'
+  | 'UNKNOWN_ERROR'
+  | 'AUTHORIZATION_ERROR';
 
-/* eslint-disable typescript-sort-keys/string-enum */
 export enum MCPInstallStep {
-  FETCHING_MANIFEST = 'FETCHING_MANIFEST',
   CHECKING_INSTALLATION = 'CHECKING_INSTALLATION',
-  DEPENDENCIES_REQUIRED = 'DEPENDENCIES_REQUIRED',
-  GETTING_SERVER_MANIFEST = 'GETTING_SERVER_MANIFEST',
-  CONFIGURATION_REQUIRED = 'CONFIGURATION_REQUIRED',
-  INSTALLING_PLUGIN = 'INSTALLING_PLUGIN',
   COMPLETED = 'COMPLETED',
+  CONFIGURATION_REQUIRED = 'CONFIGURATION_REQUIRED',
+  DEPENDENCIES_REQUIRED = 'DEPENDENCIES_REQUIRED',
   ERROR = 'Error',
+  FETCHING_MANIFEST = 'FETCHING_MANIFEST',
+  GETTING_SERVER_MANIFEST = 'GETTING_SERVER_MANIFEST',
+  INSTALLING_PLUGIN = 'INSTALLING_PLUGIN',
 }
 
-/* eslint-enable */
 export interface CheckMcpInstallParams {
   /**
    * Installation details
@@ -242,7 +250,7 @@ export const StreamableHTTPAuthSchema = z
  */
 export const GetStreamableMcpServerManifestInputSchema = z.object({
   auth: StreamableHTTPAuthSchema,
-  headers: z.record(z.string()).optional(),
+  headers: z.record(z.string(), z.string()).optional(),
   identifier: z.string(),
   metadata: z
     .object({

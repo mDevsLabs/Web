@@ -1,68 +1,53 @@
 import isEqual from 'fast-deep-equal';
-import type { SWRResponse } from 'swr';
-import type { StateCreator } from 'zustand/vanilla';
+import { type SWRResponse } from 'swr';
 
-import type { SidebarAgentItem, SidebarAgentListResponse } from '@/database/repositories/home';
+import { type SidebarAgentItem, type SidebarAgentListResponse } from '@/database/repositories/home';
 import { mutate, useClientDataSWR, useClientDataSWRWithSync } from '@/libs/swr';
+import { agentConfigKeys, agentKeys } from '@/libs/swr/keys';
 import { homeService } from '@/services/home';
-import type { HomeStore } from '@/store/home/store';
+import { getAgentStoreState } from '@/store/agent';
+import { type HomeStore } from '@/store/home/store';
+import { type StoreSetter } from '@/store/types';
 import { setNamespace } from '@/utils/storeDebug';
 
 import { mapResponseToState } from './initialState';
 
 const n = setNamespace('agentList');
 
-const FETCH_AGENT_LIST_KEY = 'fetchAgentList';
-const SEARCH_AGENTS_KEY = 'searchAgents';
+type Setter = StoreSetter<HomeStore>;
+export const createAgentListSlice = (set: Setter, get: () => HomeStore, _api?: unknown) =>
+  new AgentListActionImpl(set, get, _api);
 
-export interface AgentListAction {
-  /**
-   * Close all agents drawer
-   */
-  closeAllAgentsDrawer: () => void;
-  /**
-   * Open all agents drawer
-   */
-  openAllAgentsDrawer: () => void;
-  /**
-   * Refresh the agent list (mutate SWR cache)
-   */
-  refreshAgentList: () => Promise<void>;
-  /**
-   * SWR hook to fetch sidebar agent list
-   */
-  useFetchAgentList: (isLogin: boolean | undefined) => SWRResponse<SidebarAgentListResponse>;
-  /**
-   * SWR hook to search agents by keyword
-   */
-  useSearchAgents: (keyword?: string) => SWRResponse<SidebarAgentItem[]>;
-}
+export class AgentListActionImpl {
+  readonly #get: () => HomeStore;
+  readonly #set: Setter;
 
-export const createAgentListSlice: StateCreator<
-  HomeStore,
-  [['zustand/devtools', never]],
-  [],
-  AgentListAction
-> = (set, get) => ({
-  closeAllAgentsDrawer: () => {
-    set({ allAgentsDrawerOpen: false }, false, n('closeAllAgentsDrawer'));
-  },
+  constructor(set: Setter, get: () => HomeStore, _api?: unknown) {
+    void _api;
+    this.#set = set;
+    this.#get = get;
+  }
 
-  openAllAgentsDrawer: () => {
-    set({ allAgentsDrawerOpen: true }, false, n('openAllAgentsDrawer'));
-  },
+  closeAllAgentsDrawer = (): void => {
+    this.#set({ allAgentsDrawerOpen: false }, false, n('closeAllAgentsDrawer'));
+  };
 
-  refreshAgentList: async () => {
-    await mutate([FETCH_AGENT_LIST_KEY, true]);
-  },
+  openAllAgentsDrawer = (): void => {
+    this.#set({ allAgentsDrawerOpen: true }, false, n('openAllAgentsDrawer'));
+  };
 
-  useFetchAgentList: (isLogin) =>
-    useClientDataSWRWithSync<SidebarAgentListResponse>(
-      isLogin === true ? [FETCH_AGENT_LIST_KEY, isLogin] : null,
+  refreshAgentList = async (): Promise<void> => {
+    getAgentStoreState().invalidateAvailableAgents();
+    await mutate(agentKeys.list(true));
+  };
+
+  useFetchAgentList = (isLogin: boolean | undefined): SWRResponse<SidebarAgentListResponse> => {
+    return useClientDataSWRWithSync<SidebarAgentListResponse>(
+      isLogin === true ? agentKeys.list(isLogin) : null,
       () => homeService.getSidebarAgentList(),
       {
         onData: (data) => {
-          const state = get();
+          const state = this.#get();
           const newState = mapResponseToState(data);
 
           // Skip update if data is the same
@@ -70,12 +55,15 @@ export const createAgentListSlice: StateCreator<
             state.isAgentListInit &&
             isEqual(state.pinnedAgents, newState.pinnedAgents) &&
             isEqual(state.agentGroups, newState.agentGroups) &&
-            isEqual(state.ungroupedAgents, newState.ungroupedAgents)
+            isEqual(state.ungroupedAgents, newState.ungroupedAgents) &&
+            isEqual(state.privateAgentGroups, newState.privateAgentGroups) &&
+            isEqual(state.privatePinnedAgents, newState.privatePinnedAgents) &&
+            isEqual(state.privateUngroupedAgents, newState.privateUngroupedAgents)
           ) {
             return;
           }
 
-          set(
+          this.#set(
             {
               ...newState,
               isAgentListInit: true,
@@ -85,12 +73,16 @@ export const createAgentListSlice: StateCreator<
           );
         },
       },
-    ),
+    );
+  };
 
-  useSearchAgents: (keyword) =>
-    useClientDataSWR<SidebarAgentItem[]>([SEARCH_AGENTS_KEY, keyword], async () => {
+  useSearchAgents = (keyword?: string): SWRResponse<SidebarAgentItem[]> => {
+    return useClientDataSWR<SidebarAgentItem[]>(agentConfigKeys.search(keyword), async () => {
       if (!keyword) return [];
 
       return homeService.searchAgents(keyword);
-    }),
-});
+    });
+  };
+}
+
+export type AgentListAction = Pick<AgentListActionImpl, keyof AgentListActionImpl>;

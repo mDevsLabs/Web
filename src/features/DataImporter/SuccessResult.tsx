@@ -1,6 +1,7 @@
 'use client';
 
-import { Button, Flexbox, Icon } from '@lobehub/ui';
+import { Flexbox, Icon } from '@lobehub/ui';
+import { Button } from '@lobehub/ui/base-ui';
 import { Result, Table } from 'antd';
 import { createStaticStyles } from 'antd-style';
 import { CheckCircle } from 'lucide-react';
@@ -35,14 +36,15 @@ const SuccessResult = memo<SuccessResultProps>(({ duration, dataSource, onClickF
   };
   return (
     <Result
-      extra={
-        <Button onClick={onClickFinish} size={'large'} type={'primary'}>
-          {t('importModal.finish.start')}
-        </Button>
-      }
       icon={<Icon icon={CheckCircle} />}
       status={'success'}
       style={{ paddingBlock: 24, paddingInline: 0 }}
+      title={t('importModal.finish.title')}
+      extra={
+        <Button size={'large'} type={'primary'} onClick={onClickFinish}>
+          {t('importModal.finish.start')}
+        </Button>
+      }
       subTitle={
         // if there is no importData, means it's only import the settings
         !dataSource ? (
@@ -52,6 +54,10 @@ const SuccessResult = memo<SuccessResultProps>(({ duration, dataSource, onClickF
             {t('importModal.finish.subTitle', { duration: (duration / 1000).toFixed(2) })}
             <Table
               bordered
+              dataSource={dataSource}
+              pagination={false}
+              rowKey={'title'}
+              size={'small'}
               columns={[
                 { dataIndex: 'title', render: cellRender, title: t('importModal.result.type') },
                 { dataIndex: 'added', render: cellRender, title: t('importModal.result.added') },
@@ -59,15 +65,10 @@ const SuccessResult = memo<SuccessResultProps>(({ duration, dataSource, onClickF
                 { dataIndex: 'error', render: cellRender, title: t('importModal.result.errors') },
                 { dataIndex: 'updated', render: cellRender, title: t('importModal.result.update') },
               ]}
-              dataSource={dataSource}
-              pagination={false}
-              rowKey={'title'}
-              size={'small'}
             />
           </Flexbox>
         )
       }
-      title={t('importModal.finish.title')}
     />
   );
 });

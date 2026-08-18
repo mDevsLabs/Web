@@ -5,7 +5,6 @@ import { CloudSandboxApiName } from './types';
 
 export const CloudSandboxIdentifier = 'lobe-cloud-sandbox';
 
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 export const CloudSandboxManifest: BuiltinToolManifest = {
   api: [
     {
@@ -37,7 +36,7 @@ export const CloudSandboxManifest: BuiltinToolManifest = {
     {
       description:
         'List files and folders in a specified directory. Input should be a path. Output is a JSON array of file/folder names.',
-      name: CloudSandboxApiName.listLocalFiles,
+      name: CloudSandboxApiName.listFiles,
       parameters: {
         properties: {
           directoryPath: {
@@ -52,7 +51,7 @@ export const CloudSandboxManifest: BuiltinToolManifest = {
     {
       description:
         'Read the content of a specific file. Input should be the file path. Output is the file content as a string.',
-      name: CloudSandboxApiName.readLocalFile,
+      name: CloudSandboxApiName.readFile,
       parameters: {
         properties: {
           endLine: {
@@ -74,7 +73,7 @@ export const CloudSandboxManifest: BuiltinToolManifest = {
     },
     {
       description: 'Search for files within the sandbox based on keywords and filter options.',
-      name: CloudSandboxApiName.searchLocalFiles,
+      name: CloudSandboxApiName.searchFiles,
       parameters: {
         properties: {
           directory: {
@@ -106,7 +105,7 @@ export const CloudSandboxManifest: BuiltinToolManifest = {
       description:
         'Moves or renames multiple files/directories. Input is an array of operations with source and destination paths.',
       humanIntervention: 'required',
-      name: CloudSandboxApiName.moveLocalFiles,
+      name: CloudSandboxApiName.moveFiles,
       parameters: {
         properties: {
           operations: {
@@ -134,28 +133,9 @@ export const CloudSandboxManifest: BuiltinToolManifest = {
     },
     {
       description:
-        'Rename a file or folder in its current location. Input should be the current full path and the new name.',
-      name: CloudSandboxApiName.renameLocalFile,
-      parameters: {
-        properties: {
-          newName: {
-            description: 'The new name for the file or folder (filename only, not full path)',
-            type: 'string',
-          },
-          oldPath: {
-            description: 'The current full path of the file or folder to rename',
-            type: 'string',
-          },
-        },
-        required: ['oldPath', 'newName'],
-        type: 'object',
-      },
-    },
-    {
-      description:
         'Write content to a specific file. Input should be the file path and content. Overwrites existing file or creates a new one.',
       humanIntervention: 'required',
-      name: CloudSandboxApiName.writeLocalFile,
+      name: CloudSandboxApiName.writeFile,
       parameters: {
         properties: {
           content: {
@@ -179,7 +159,7 @@ export const CloudSandboxManifest: BuiltinToolManifest = {
       description:
         'Perform exact string replacements in files. Must read the file first before editing.',
       humanIntervention: 'required',
-      name: CloudSandboxApiName.editLocalFile,
+      name: CloudSandboxApiName.editFile,
       parameters: {
         properties: {
           all: {
@@ -204,6 +184,7 @@ export const CloudSandboxManifest: BuiltinToolManifest = {
       },
     },
     {
+      defaultTimeoutMs: 120_000,
       description:
         'Execute a shell command and return its output. Supports both synchronous and background execution with timeout control.',
       humanIntervention: 'required',
@@ -291,7 +272,7 @@ export const CloudSandboxManifest: BuiltinToolManifest = {
     {
       description:
         'Find files matching glob patterns. Supports standard glob syntax like "**/*.js" or "src/**/*.ts".',
-      name: CloudSandboxApiName.globLocalFiles,
+      name: CloudSandboxApiName.globFiles,
       parameters: {
         properties: {
           directory: {
@@ -327,6 +308,9 @@ export const CloudSandboxManifest: BuiltinToolManifest = {
   identifier: CloudSandboxIdentifier,
   meta: {
     avatar: '💻',
+    description: 'Execute code, run commands, and manage files in a secure cloud environment',
+    readme:
+      'Execute Python, JavaScript, and TypeScript code in an isolated cloud environment. Run shell commands, manage files, search content with regex, and export results securely.',
     title: 'Cloud Sandbox',
   },
   systemRole: systemPrompt,

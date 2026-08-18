@@ -1,9 +1,11 @@
 import { ActionIcon, Flexbox, Text } from '@lobehub/ui';
 import { createStaticStyles } from 'antd-style';
-import { XIcon } from 'lucide-react';
-import { type ReactNode, memo, useMemo } from 'react';
+import { RotateCwIcon, XIcon } from 'lucide-react';
+import { type ReactNode } from 'react';
+import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { FileUploadErrorActions } from '@/business/client/features/FileUploadErrorActions';
 import FileIcon from '@/components/FileIcon';
 import { useFileStore } from '@/store/file';
 import { type UploadFileItem } from '@/types/files/upload';
@@ -22,7 +24,7 @@ const styles = createStaticStyles(({ css, cssVar }) => {
     `,
     progress: css`
       position: absolute;
-      inset-block: 0 0;
+      inset-block: 0;
       inset-inline: 0 1%;
 
       height: 100%;
@@ -44,10 +46,11 @@ const styles = createStaticStyles(({ css, cssVar }) => {
 
 type UploadItemProps = UploadFileItem;
 
-const UploadItem = memo<UploadItemProps>(({ id, file, status, uploadState }) => {
+const UploadItem = memo<UploadItemProps>(({ error, errorCode, id, file, status, uploadState }) => {
   const { t } = useTranslation('file');
   const { type, name, size } = file;
   const cancelUpload = useFileStore((s) => s.cancelUpload);
+  const retryDockUpload = useFileStore((s) => s.retryDockUpload);
 
   const desc: ReactNode = useMemo(() => {
     switch (status) {
@@ -94,9 +97,12 @@ const UploadItem = memo<UploadItemProps>(({ id, file, status, uploadState }) => 
       }
       case 'error': {
         return (
-          <Text style={{ fontSize: 12 }} type={'danger'}>
-            {formatSize(size)} · {t('uploadDock.body.item.error')}
-          </Text>
+          <Flexbox gap={6}>
+            <Text style={{ fontSize: 12 }} type={'danger'}>
+              {error || `${formatSize(size)} · ${t('uploadDock.body.item.error')}`}
+            </Text>
+            {errorCode ? <FileUploadErrorActions code={errorCode} /> : null}
+          </Flexbox>
         );
       }
       case 'cancelled': {
@@ -110,14 +116,14 @@ const UploadItem = memo<UploadItemProps>(({ id, file, status, uploadState }) => 
         return '';
       }
     }
-  }, [status, uploadState, size, t]);
+  }, [error, errorCode, status, uploadState, size, t]);
 
   return (
     <Flexbox
+      horizontal
       align={'center'}
       className={styles.container}
       gap={12}
-      horizontal
       key={name}
       paddingBlock={8}
       paddingInline={12}
@@ -133,13 +139,24 @@ const UploadItem = memo<UploadItemProps>(({ id, file, status, uploadState }) => 
         <ActionIcon
           className={`${styles.cancelButton} cancel-button`}
           icon={XIcon}
+          size="small"
+          title={t('uploadDock.body.item.cancel')}
           onClick={() => {
             cancelUpload(id);
           }}
-          size="small"
-          title={t('uploadDock.body.item.cancel')}
         />
       )}
+
+      {status === 'error' && !errorCode ? (
+        <ActionIcon
+          icon={RotateCwIcon}
+          size="small"
+          title={t('uploadDock.body.item.retry')}
+          onClick={() => {
+            void retryDockUpload(id);
+          }}
+        />
+      ) : null}
 
       {status === 'uploading' && !!uploadState && (
         <div

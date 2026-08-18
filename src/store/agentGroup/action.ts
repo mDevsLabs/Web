@@ -1,31 +1,28 @@
-import type { AgentGroupDetail } from '@lobechat/types';
+import { type AgentGroupDetail } from '@lobechat/types';
 import isEqual from 'fast-deep-equal';
 import { produce } from 'immer';
 import { type StateCreator } from 'zustand/vanilla';
 
-import type { ChatGroupItem } from '@/database/schemas/chatGroup';
+import { type ChatGroupItem } from '@/database/schemas/chatGroup';
 import { mutate, useClientDataSWRWithSync } from '@/libs/swr';
+import { groupKeys } from '@/libs/swr/keys';
 import { chatGroupService } from '@/services/chatGroup';
 import { getAgentStoreState } from '@/store/agent';
 import { type ChatGroupStore } from '@/store/agentGroup/store';
 import { useChatStore } from '@/store/chat';
+import { type StoreSetter } from '@/store/types';
+import { flattenActions } from '@/store/utils/flattenActions';
+import { type ResetableStore } from '@/store/utils/resetableStore';
 import { setNamespace } from '@/utils/storeDebug';
 
-import { type ChatGroupState } from './initialState';
-import { type ChatGroupReducer, chatGroupReducers } from './reducers';
-import {
-  type ChatGroupCurdAction,
-  type ChatGroupLifecycleAction,
-  type ChatGroupMemberAction,
-  chatGroupCurdSlice,
-  chatGroupLifecycleSlice,
-  chatGroupMemberSlice,
-} from './slices';
+import { type ChatGroupState, initialChatGroupState } from './initialState';
+import { type ChatGroupDispatchPayloads, type ChatGroupReducer } from './reducers';
+import { chatGroupReducers } from './reducers';
+import { ChatGroupCurdAction } from './slices/curd';
+import { ChatGroupLifecycleAction } from './slices/lifecycle';
+import { ChatGroupMemberAction } from './slices/member';
 
 const n = setNamespace('chatGroup');
-
-const FETCH_GROUPS_KEY = 'fetchGroups';
-const FETCH_GROUP_DETAIL_KEY = 'fetchGroupDetail';
 
 /**
  * Convert ChatGroupItem to AgentGroupDetail by adding empty agents array if not present
@@ -36,264 +33,292 @@ const toAgentGroupDetail = (group: ChatGroupItem): AgentGroupDetail =>
     agents: [],
   }) as AgentGroupDetail;
 
-// Internal action interface
-export interface ChatGroupInternalAction {
-  internal_dispatchChatGroup: (
-    payload:
-      | {
-          type: string;
-        }
-      | {
-          payload: any;
-          type: string;
-        },
-  ) => void;
-  /**
-   * Fetch group detail directly and update store.
-   * Unlike refreshGroupDetail which uses SWR mutate, this method fetches immediately
-   * and is useful when SWR hook is not yet mounted (e.g., after createGroup).
-   */
-  internal_fetchGroupDetail: (groupId: string) => Promise<void>;
-  internal_updateGroupMaps: (groups: ChatGroupItem[]) => void;
-  loadGroups: () => Promise<void>;
-  refreshGroupDetail: (groupId: string) => Promise<void>;
-  refreshGroups: () => Promise<void>;
-  toggleGroupSetting: (open: boolean) => void;
-  toggleThread: (agentId: string) => void;
-  useFetchGroupDetail: (enabled: boolean, groupId: string) => any;
-  useFetchGroups: (enabled: boolean, isLogin: boolean) => any;
-}
+type Setter = StoreSetter<ChatGroupStore>;
+class ChatGroupInternalAction implements ResetableStore {
+  readonly #get: () => ChatGroupState;
+  readonly #set: Setter;
 
-// Combined action interface
-export interface ChatGroupAction
-  extends
-    ChatGroupInternalAction,
-    ChatGroupLifecycleAction,
-    ChatGroupMemberAction,
-    ChatGroupCurdAction {}
+  constructor(set: Setter, get: () => ChatGroupState, _api?: unknown) {
+    // keep signature aligned with StateCreator params: (set, get, api)
+    void _api;
 
-const chatGroupInternalSlice: StateCreator<
-  ChatGroupStore,
-  [['zustand/devtools', never]],
-  [],
-  ChatGroupInternalAction
-> = (set, get) => {
-  const dispatch: ChatGroupInternalAction['internal_dispatchChatGroup'] = (payload) => {
-    set(
+    this.#set = set;
+    this.#get = get;
+  }
+
+  reset: ResetableStore['reset'] = () => {
+    this.#set(initialChatGroupState, false, n('reset'));
+  };
+
+  internal_dispatchChatGroup = <T extends keyof ChatGroupDispatchPayloads>(payload: {
+    payload: ChatGroupDispatchPayloads[T];
+    type: T;
+  }) => {
+    this.#set(
       produce((draft: ChatGroupState) => {
-        const reducer = chatGroupReducers[
-          payload.type as keyof typeof chatGroupReducers
-        ] as ChatGroupReducer;
-        if (reducer) {
-          // Apply the reducer and return the new state
-          return reducer(draft, payload);
-        }
+        const reducer = chatGroupReducers[payload.type] as ChatGroupReducer | undefined;
+        if (reducer) return reducer(draft, payload);
       }),
       false,
       payload,
     );
   };
 
-  return {
-    internal_dispatchChatGroup: dispatch,
-
-    internal_fetchGroupDetail: async (groupId: string) => {
-      const groupDetail = await chatGroupService.getGroupDetail(groupId);
-      if (!groupDetail) return;
-
-      // Update groupMap with full group detail including supervisorAgentId and agents
-      dispatch({ payload: { id: groupDetail.id, value: groupDetail }, type: 'updateGroup' });
-
-      // Sync group agents to agentStore for builtin agent resolution
-      const agentStore = getAgentStoreState();
-      for (const agent of groupDetail.agents) {
-        agentStore.internal_dispatchAgentMap(agent.id, agent as any);
-      }
-
-      // Set activeAgentId to supervisor for correct model resolution
-      if (groupDetail.supervisorAgentId) {
-        agentStore.setActiveAgentId(groupDetail.supervisorAgentId);
-        useChatStore.setState(
-          { activeAgentId: groupDetail.supervisorAgentId },
-          false,
-          'syncActiveAgentIdFromAgentGroup',
-        );
-      }
-    },
-
-    internal_updateGroupMaps: (groups) => {
-      // Build a candidate map from incoming groups
-      const incomingMap = groups.reduce(
-        (map, group) => {
-          map[group.id] = group;
-          return map;
-        },
-        {} as Record<string, ChatGroupItem>,
-      );
-
-      // Merge with existing map, preserving existing config and agents if present
-      const mergedMap = produce(get().groupMap, (draft) => {
-        for (const id of Object.keys(incomingMap)) {
-          const incoming = incomingMap[id];
-          const existing = draft[id];
-          if (existing) {
-            draft[id] = {
-              ...existing,
-              ...incoming,
-
-              // Preserve existing agents data
-              agents: existing.agents,
-
-              // Keep existing config (authoritative) if present; do not overwrite
-              config: existing.config || incoming.config,
-            } as AgentGroupDetail;
-          } else {
-            draft[id] = toAgentGroupDetail(incoming);
-          }
-        }
-      });
-
-      set(
-        {
-          groupMap: mergedMap,
-          groupsInit: true,
-        },
-        false,
-        n('internal_updateGroupMaps/chatGroup'),
-      );
-    },
-
-    loadGroups: async () => {
-      const groups = await chatGroupService.getGroups();
-      dispatch({ payload: groups, type: 'loadGroups' });
-    },
-
-    refreshGroupDetail: async (groupId: string) => {
-      await mutate([FETCH_GROUP_DETAIL_KEY, groupId]);
-    },
-
-    refreshGroups: async () => {
-      await mutate([FETCH_GROUPS_KEY, true]);
-    },
-
-    toggleGroupSetting: (open) => {
-      set({ showGroupSetting: open }, false, 'toggleGroupSetting');
-    },
-
-    toggleThread: (agentId) => {
-      set({ activeThreadAgentId: agentId }, false, 'toggleThread');
-    },
-
-    useFetchGroupDetail: (enabled, groupId) =>
-      useClientDataSWRWithSync<AgentGroupDetail | null>(
-        enabled && groupId ? [FETCH_GROUP_DETAIL_KEY, groupId] : null,
-        async () => {
-          const groupDetail = await chatGroupService.getGroupDetail(groupId);
-          if (!groupDetail) throw new Error(`Group ${groupId} not found`);
-          return groupDetail;
-        },
-        {
-          onData: (groupDetail) => {
-            if (!groupDetail) return;
-
-            // Update groupMap with detailed group info including agents
-            const currentGroup = get().groupMap[groupDetail.id];
-            if (isEqual(currentGroup, groupDetail)) return;
-
-            const nextGroupMap = {
-              ...get().groupMap,
-              [groupDetail.id]: groupDetail,
-            };
-
-            set(
-              {
-                groupMap: nextGroupMap,
-              },
-              false,
-              n('useFetchGroupDetail/onData', { groupId: groupDetail.id }),
-            );
-
-            // Sync group agents to agentStore for builtin agent resolution (e.g., supervisor slug)
-            // Use smart merge: only overwrite if server data is newer to prevent race conditions
-            const agentStore = getAgentStoreState();
-            for (const agent of groupDetail.agents) {
-              const currentAgentInStore = agentStore.agentMap[agent.id];
-
-              // Only overwrite if:
-              // 1. Agent doesn't exist in store
-              // 2. Server data is newer than store data (based on updatedAt)
-              if (
-                !currentAgentInStore ||
-                new Date(agent.updatedAt) > new Date(currentAgentInStore.updatedAt || 0)
-              ) {
-                // AgentGroupMember extends AgentItem which shares fields with LobeAgentConfig
-                agentStore.internal_dispatchAgentMap(agent.id, agent as any);
-              }
-            }
-
-            // Set activeAgentId to supervisor for correct model resolution in sendMessage
-            if (groupDetail.supervisorAgentId) {
-              agentStore.setActiveAgentId(groupDetail.supervisorAgentId);
-              useChatStore.setState(
-                { activeAgentId: groupDetail.supervisorAgentId },
-                false,
-                'syncActiveAgentIdFromAgentGroup',
-              );
-            }
-          },
-        },
-      ),
-
-    // SWR Hooks for data fetching
-    // This is not used for now, as we are combining group in the session lambda's response
-    useFetchGroups: (enabled, isLogin) =>
-      useClientDataSWRWithSync<ChatGroupItem[]>(
-        enabled ? [FETCH_GROUPS_KEY, isLogin] : null,
-        async () => chatGroupService.getGroups(),
-        {
-          fallbackData: [],
-          onData: (groups) => {
-            // Update both groups list and groupMap
-            const currentMap = get().groupMap;
-            const nextGroupMap = groups.reduce(
-              (map, group) => {
-                // Preserve existing agents data if available
-                const existing = currentMap[group.id];
-                map[group.id] = existing
-                  ? ({ ...existing, ...group } as AgentGroupDetail)
-                  : toAgentGroupDetail(group);
-                return map;
-              },
-              {} as Record<string, AgentGroupDetail>,
-            );
-
-            if (get().groupsInit && isEqual(currentMap, nextGroupMap)) {
-              return;
-            }
-
-            set(
-              {
-                groupMap: nextGroupMap,
-                groupsInit: true,
-              },
-              false,
-              n('useFetchGroups/onData'),
-            );
-          },
-          suspense: true,
-        },
-      ),
+  private removeStaleGroup = (groupId: string) => {
+    this.internal_dispatchChatGroup({ payload: groupId, type: 'deleteGroup' });
   };
-};
+
+  // A successful fetch that resolves to nothing means the group doesn't exist
+  // or the caller lost access (e.g. switched back to private) — a settled
+  // state the UI renders as a 404 card, not an error to retry.
+  #markGroupNotFound = (groupId: string) => {
+    if (this.#get().groupNotFoundMap[groupId]) return;
+
+    this.#set(
+      (state) => ({ groupNotFoundMap: { ...state.groupNotFoundMap, [groupId]: true } }),
+      false,
+      'markGroupNotFound',
+    );
+  };
+
+  #clearGroupNotFound = (groupId: string) => {
+    if (!this.#get().groupNotFoundMap[groupId]) return;
+
+    this.#set(
+      (state) => {
+        const next = { ...state.groupNotFoundMap };
+        delete next[groupId];
+        return { groupNotFoundMap: next };
+      },
+      false,
+      'clearGroupNotFound',
+    );
+  };
+
+  internal_fetchGroupDetail = async (groupId: string) => {
+    const groupDetail = await chatGroupService.getGroupDetail(groupId);
+    if (!groupDetail) {
+      this.removeStaleGroup(groupId);
+      this.#markGroupNotFound(groupId);
+      return;
+    }
+    this.#clearGroupNotFound(groupId);
+
+    // Update groupMap with full group detail including supervisorAgentId and agents
+    this.internal_dispatchChatGroup({
+      payload: { id: groupDetail.id, value: groupDetail },
+      type: 'updateGroup',
+    });
+
+    // Sync group agents to agentStore for builtin agent resolution
+    const agentStore = getAgentStoreState();
+    for (const agent of groupDetail.agents) {
+      agentStore.internal_dispatchAgentMap(agent.id, agent as any);
+    }
+
+    // Set activeAgentId to supervisor for correct model resolution
+    if (groupDetail.supervisorAgentId) {
+      agentStore.setActiveAgentId(groupDetail.supervisorAgentId);
+      useChatStore.setState(
+        { activeAgentId: groupDetail.supervisorAgentId },
+        false,
+        'syncActiveAgentIdFromAgentGroup',
+      );
+    }
+  };
+
+  internal_updateGroupMaps = (groups: ChatGroupItem[]) => {
+    // Build a candidate map from incoming groups
+    const incomingMap = groups.reduce(
+      (map, group) => {
+        map[group.id] = group;
+        return map;
+      },
+      {} as Record<string, ChatGroupItem>,
+    );
+
+    // Merge with existing map, preserving existing config and agents if present
+    const mergedMap = produce(this.#get().groupMap, (draft) => {
+      for (const id of Object.keys(incomingMap)) {
+        const incoming = incomingMap[id];
+        const existing = draft[id];
+        if (existing) {
+          draft[id] = {
+            ...existing,
+            ...incoming,
+
+            // Preserve existing agents data
+            agents: existing.agents,
+
+            // Keep existing config (authoritative) if present; do not overwrite
+            config: existing.config || incoming.config,
+          } as AgentGroupDetail;
+        } else {
+          draft[id] = toAgentGroupDetail(incoming);
+        }
+      }
+    });
+
+    this.#set(
+      {
+        groupMap: mergedMap,
+        groupsInit: true,
+      },
+      false,
+      n('internal_updateGroupMaps/chatGroup'),
+    );
+  };
+
+  loadGroups = async () => {
+    const groups = await chatGroupService.getGroups();
+    this.internal_dispatchChatGroup({ payload: groups, type: 'loadGroups' });
+  };
+
+  refreshGroupDetail = async (groupId: string) => {
+    await mutate(groupKeys.detail(groupId));
+  };
+
+  refreshGroups = async () => {
+    await mutate(groupKeys.list(true));
+  };
+
+  toggleGroupSetting = (open: boolean) => {
+    this.#set({ showGroupSetting: open }, false, 'toggleGroupSetting');
+  };
+
+  toggleThread = (agentId: string) => {
+    this.#set({ activeThreadAgentId: agentId }, false, 'toggleThread');
+  };
+
+  useFetchGroupDetail = (enabled: boolean, groupId: string) =>
+    useClientDataSWRWithSync<AgentGroupDetail | null>(
+      enabled && groupId ? groupKeys.detail(groupId) : null,
+      async () => {
+        const groupDetail = await chatGroupService.getGroupDetail(groupId);
+        // Resolve to null instead of throwing: "gone / no access" is a settled
+        // terminal state (rendered as a 404 card), not a retryable error.
+        if (!groupDetail) {
+          this.removeStaleGroup(groupId);
+          return null;
+        }
+        return groupDetail;
+      },
+      {
+        onData: (groupDetail) => {
+          if (!groupDetail) {
+            this.#markGroupNotFound(groupId);
+            return;
+          }
+          this.#clearGroupNotFound(groupId);
+
+          // Update groupMap with detailed group info including agents
+          const currentGroup = this.#get().groupMap[groupDetail.id];
+          if (isEqual(currentGroup, groupDetail)) return;
+
+          const nextGroupMap = {
+            ...this.#get().groupMap,
+            [groupDetail.id]: groupDetail,
+          };
+
+          this.#set(
+            {
+              groupMap: nextGroupMap,
+            },
+            false,
+            n('useFetchGroupDetail/onData', { groupId: groupDetail.id }),
+          );
+
+          // Sync group agents to agentStore for builtin agent resolution (e.g., supervisor slug)
+          // Use smart merge: only overwrite if server data is newer to prevent race conditions
+          const agentStore = getAgentStoreState();
+          for (const agent of groupDetail.agents) {
+            const currentAgentInStore = agentStore.agentMap[agent.id];
+
+            // Only overwrite if:
+            // 1. Agent doesn't exist in store
+            // 2. Server data is newer than store data (based on updatedAt)
+            if (
+              !currentAgentInStore ||
+              new Date(agent.updatedAt) > new Date(currentAgentInStore.updatedAt || 0)
+            ) {
+              // AgentGroupMember extends AgentItem which shares fields with LobeAgentConfig
+              agentStore.internal_dispatchAgentMap(agent.id, agent as any);
+            }
+          }
+
+          // Set activeAgentId to supervisor for correct model resolution in sendMessage
+          if (groupDetail.supervisorAgentId) {
+            agentStore.setActiveAgentId(groupDetail.supervisorAgentId);
+            useChatStore.setState(
+              { activeAgentId: groupDetail.supervisorAgentId },
+              false,
+              'syncActiveAgentIdFromAgentGroup',
+            );
+          }
+        },
+      },
+    );
+
+  // SWR Hooks for data fetching
+  // This is not used for now, as we are combining group in the session lambda's response
+  useFetchGroups = (enabled: boolean, isLogin: boolean) =>
+    useClientDataSWRWithSync<ChatGroupItem[]>(
+      enabled ? groupKeys.list(isLogin) : null,
+      async () => chatGroupService.getGroups(),
+      {
+        fallbackData: [],
+        onData: (groups) => {
+          // Update both groups list and groupMap
+          const currentMap = this.#get().groupMap;
+          const nextGroupMap = groups.reduce(
+            (map, group) => {
+              // Preserve existing agents data if available
+              const existing = currentMap[group.id];
+              map[group.id] = existing
+                ? ({ ...existing, ...group } as AgentGroupDetail)
+                : toAgentGroupDetail(group);
+              return map;
+            },
+            {} as Record<string, AgentGroupDetail>,
+          );
+
+          if (this.#get().groupsInit && isEqual(currentMap, nextGroupMap)) {
+            return;
+          }
+
+          this.#set(
+            {
+              groupMap: nextGroupMap,
+              groupsInit: true,
+            },
+            false,
+            n('useFetchGroups/onData'),
+          );
+        },
+      },
+    );
+}
+
+type PublicActions<T> = { [K in keyof T]: T[K] };
+
+// Combined action type (public methods only)
+export type ChatGroupAction = PublicActions<
+  ChatGroupInternalAction & ChatGroupLifecycleAction & ChatGroupMemberAction & ChatGroupCurdAction
+>;
 
 export const chatGroupAction: StateCreator<
   ChatGroupStore,
   [['zustand/devtools', never]],
   [],
   ChatGroupAction
-> = (...params) => ({
-  ...chatGroupInternalSlice(...params),
-  ...chatGroupLifecycleSlice(...params),
-  ...chatGroupMemberSlice(...params),
-  ...chatGroupCurdSlice(...params),
-});
+> = (
+  ...params: Parameters<
+    StateCreator<ChatGroupStore, [['zustand/devtools', never]], [], ChatGroupAction>
+  >
+) =>
+  flattenActions<ChatGroupAction>([
+    new ChatGroupInternalAction(...params),
+    new ChatGroupLifecycleAction(...params),
+    new ChatGroupMemberAction(...params),
+    new ChatGroupCurdAction(...params),
+  ]);

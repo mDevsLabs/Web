@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 
-import type { ConversationContext, OperationState } from '@/features/Conversation/types';
+import { type ConversationContext, type OperationState } from '@/features/Conversation/types';
 import {
   DEFAULT_MESSAGE_OPERATION_STATE,
   DEFAULT_TOOL_OPERATION_STATE,
@@ -36,7 +36,17 @@ export const useOperationState = (context: ConversationContext): OperationState 
 
   // Check if AI is generating in this context
   const isAIGenerating = useChatStore((s) =>
-    operationSelectors.isAgentRuntimeRunningByContext(context)(s),
+    operationSelectors.isAgentRuntimeVisiblyRunningByContext(context)(s),
+  );
+
+  // Check if input actions should stay blocked until operation bookkeeping ends.
+  const isInputLoading = useChatStore((s) =>
+    operationSelectors.isInputLoadingByContext(context)(s),
+  );
+
+  // Check if input should still show visible loading controls.
+  const isInputVisiblyLoading = useChatStore((s) =>
+    operationSelectors.isInputVisiblyLoadingByContext(context)(s),
   );
 
   // Get send message error for this context
@@ -68,19 +78,34 @@ export const useOperationState = (context: ConversationContext): OperationState 
         const messageOps = operationIds.map((id) => operations[id]).filter(Boolean);
         const runningOps = messageOps.filter((op) => op.status === 'running');
 
+        const visibleRunningOps = runningOps.filter((op) => !op.metadata.visibleLoadingDone);
+
+        const isGenerating = visibleRunningOps.some((op) =>
+          AI_RUNTIME_OPERATION_TYPES.includes(op.type),
+        );
+
+        // A message is interrupted only if the latest AI runtime operation was cancelled.
+        // Using .some() would incorrectly flag messages where a stale cancelled op
+        // precedes a successful retry (stop-then-continue flow).
+        const latestRuntimeOp = [...messageOps]
+          .reverse()
+          .find((op) => AI_RUNTIME_OPERATION_TYPES.includes(op.type));
+        const isInterrupted =
+          !isGenerating && !!latestRuntimeOp && latestRuntimeOp.status === 'cancelled';
+
         return {
-          isContinuing: runningOps.some((op) => op.type === 'continue'),
-          isCreating: runningOps.some(
+          isContinuing: visibleRunningOps.some((op) => op.type === 'continue'),
+          isCreating: visibleRunningOps.some(
             (op) => op.type === 'sendMessage' || op.type === 'createAssistantMessage',
           ),
-          // Check AI runtime operations (client-side and server-side)
-          isGenerating: runningOps.some((op) => AI_RUNTIME_OPERATION_TYPES.includes(op.type)),
-          isInReasoning: runningOps.some((op) => op.type === 'reasoning'),
+          isGenerating,
+          isInReasoning: visibleRunningOps.some((op) => op.type === 'reasoning'),
+          isInterrupted,
           isProcessing: operationSelectors.isMessageProcessing(messageId)(state),
-          isRegenerating: runningOps.some((op) => op.type === 'regenerate'),
+          isRegenerating: visibleRunningOps.some((op) => op.type === 'regenerate'),
         };
       },
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
       getToolOperationState: (messageId: string, index: number, _toolCallId?: string) => {
         const state = useChatStore.getState();
 
@@ -101,9 +126,19 @@ export const useOperationState = (context: ConversationContext): OperationState 
         };
       },
       isAIGenerating,
+      isInputLoading,
+      isInputVisiblyLoading,
       sendMessageError,
     };
-  }, [operations, operationsByMessage, toolCallingStreamIds, isAIGenerating, sendMessageError]);
+  }, [
+    operations,
+    operationsByMessage,
+    toolCallingStreamIds,
+    isAIGenerating,
+    isInputLoading,
+    isInputVisiblyLoading,
+    sendMessageError,
+  ]);
 
   return operationState;
 };

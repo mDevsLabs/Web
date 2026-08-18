@@ -1,12 +1,13 @@
-import { ChatToolPayload } from '@lobechat/types';
+import type { ChatToolPayload } from '@lobechat/types';
 import pMap from 'p-map';
 
-import {
+import type {
   Agent,
   AgentEvent,
   AgentInstruction,
   AgentInstructionCallTool,
   AgentInstructionCallToolsBatch,
+  AgentInstructionResolveBlockedTools,
   AgentRuntimeContext,
   AgentState,
   Cost,
@@ -17,6 +18,7 @@ import {
   ToolsCalling,
   Usage,
 } from '../types';
+import { isBlockedStatus } from '../utils/status';
 
 /**
  * Simplified Agent Runtime - The "Engine" that executes instructions from an "Agent" (Brain).
@@ -42,6 +44,7 @@ export class AgentRuntime {
       request_human_approve: this.createHumanApproveExecutor(),
       request_human_prompt: this.createHumanPromptExecutor(),
       request_human_select: this.createHumanSelectExecutor(),
+      resolve_blocked_tools: this.createResolveBlockedToolsExecutor(),
       // Config executors override built-in
       ...config.executors,
       // Agent provided executors have highest priority
@@ -88,20 +91,14 @@ export class AgentRuntime {
 
       // Check maximum steps limit
       if (newState.maxSteps && newState.stepCount > newState.maxSteps) {
-        // Finish execution when maxSteps is exceeded
-        newState.status = 'done';
-        const finishEvent = {
-          finalState: newState,
-          reason: 'max_steps_exceeded' as const,
-          reasonDetail: `Maximum steps exceeded: ${newState.maxSteps}`,
-          type: 'done' as const,
-        };
-
-        return {
-          events: [finishEvent],
-          newState,
-          nextContext: undefined, // No next context when done
-        };
+        if (newState.forceFinish) {
+          // Already in forceFinish flow, skip maxSteps check and continue execution
+        } else {
+          // First time exceeding: set forceFinish flag
+          // Tools will be allowed to complete, but the next LLM call will produce
+          // a final text response (tools stripped, summary prompt injected)
+          newState.forceFinish = true;
+        }
       }
 
       // Use provided context or create initial context
@@ -113,21 +110,68 @@ export class AgentRuntime {
       // Handle human approved tool calls
       if (runtimeContext.phase === 'human_approved_tool') {
         const approvedPayload = runtimeContext.payload as {
-          approvedToolCall: ChatToolPayload;
+          approvedToolCall?: ChatToolPayload;
+          /**
+           * Batch approval — every tool the user approved in ONE action.
+           * Present instead of `approvedToolCall` when the client resolved the
+           * whole pending batch at once.
+           */
+          approvedToolCalls?: ChatToolPayload[];
+          assistantMessageId?: string;
           parentMessageId: string;
-          skipCreateToolMessage: boolean;
+          skipCreateToolMessage?: boolean;
+          /** `tool_call_id → pending tool message id`, batch path only. */
+          toolMessageIds?: Record<string, string>;
         };
-        const toolCalling = approvedPayload.approvedToolCall;
 
-        rawInstructions = {
-          payload: {
-            parentMessageId: approvedPayload.parentMessageId,
-            skipCreateToolMessage: approvedPayload.skipCreateToolMessage,
-            toolCalling,
-          },
-          type: 'call_tool',
-        };
+        // The resume seeded an assistant placeholder (assistantMessageId) for
+        // this operation, but the first instruction here is a tool execution —
+        // not an LLM call — so nothing consumes the placeholder and it would be
+        // left as an empty orphan sibling once the follow-up call_llm creates
+        // its own message. Stash the id on state so the first call_llm after
+        // the tool result reuses the placeholder instead (consumed once, then
+        // cleared in the instruction loop below).
+        if (approvedPayload.assistantMessageId) {
+          newState.pendingAssistantMessageId = approvedPayload.assistantMessageId;
+        }
+
+        const approvedBatch = approvedPayload.approvedToolCalls ?? [];
+
+        if (approvedBatch.length > 0) {
+          // Run every approved tool in ONE batch, exactly as the original
+          // (pre-approval) `call_tools_batch` would have. Approving them one at
+          // a time instead means one LLM continuation per tool, each seeing the
+          // not-yet-approved siblings as empty results.
+          rawInstructions = {
+            payload: {
+              existingToolMessageIds: approvedPayload.toolMessageIds ?? {},
+              parentMessageId: approvedPayload.parentMessageId,
+              toolsCalling: approvedBatch,
+            },
+            type: 'call_tools_batch',
+          };
+        } else {
+          rawInstructions = {
+            payload: {
+              parentMessageId: approvedPayload.parentMessageId,
+              skipCreateToolMessage: approvedPayload.skipCreateToolMessage,
+              toolCalling: approvedPayload.approvedToolCall,
+            },
+            type: 'call_tool',
+          };
+        }
       } else {
+        if (runtimeContext.phase === 'tool_result') {
+          const toolResultPayload = runtimeContext.payload as
+            | {
+                assistantMessageId?: string;
+              }
+            | undefined;
+          if (toolResultPayload?.assistantMessageId) {
+            newState.pendingAssistantMessageId = toolResultPayload.assistantMessageId;
+          }
+        }
+
         // Standard flow: Plan -> Execute
         rawInstructions = await this.agent.runner(runtimeContext, newState);
       }
@@ -146,6 +190,7 @@ export class AgentRuntime {
             arguments: tc.function.arguments,
             id: tc.id,
             identifier: tc.function.name,
+            thoughtSignature: tc.thoughtSignature,
             type: 'default' as any,
           }));
 
@@ -164,19 +209,27 @@ export class AgentRuntime {
       let currentState = newState;
       const allEvents: AgentEvent[] = [];
       let finalNextContext: AgentRuntimeContext | undefined = undefined;
+      let hasFinishInstruction = false;
 
-      for (const instruction of normalizedInstructions) {
+      for (const [instructionIndex, instruction] of normalizedInstructions.entries()) {
+        if (instruction.type === 'finish') hasFinishInstruction = true;
+
         let result;
+        const instructionContext = { ...runtimeContext, instructionIndex };
 
         // Special handling for batch tool execution
         if (instruction.type === 'call_tools_batch') {
           // Check if custom executor is provided (e.g., server-side with DB access)
           const customExecutor = this.executors['call_tools_batch' as keyof typeof this.executors];
           if (customExecutor) {
-            result = await customExecutor(instruction, currentState, runtimeContext);
+            result = await customExecutor(instruction, currentState, instructionContext);
           } else {
             // Fallback to built-in executeToolsBatch
-            result = await this.executeToolsBatch(instruction as any, currentState, runtimeContext);
+            result = await this.executeToolsBatch(
+              instruction as any,
+              currentState,
+              instructionContext,
+            );
           }
         } else {
           const executor = this.executors[instruction.type as keyof typeof this.executors];
@@ -184,7 +237,7 @@ export class AgentRuntime {
             throw new Error(`No executor found for instruction type: ${instruction.type}`);
           }
           // Pass runtimeContext to executor so it can access stepContext
-          result = await executor(instruction, currentState, runtimeContext);
+          result = await executor(instruction, currentState, instructionContext);
         }
 
         // Accumulate events
@@ -193,13 +246,21 @@ export class AgentRuntime {
         // Update state
         currentState = result.newState;
 
+        // A call_llm consumes any resume-seeded assistant placeholder exactly
+        // once — it has now either reused that message id or created its own —
+        // so clear the seed before the next step. Otherwise a later assistant
+        // turn in the same operation would reuse the id and overwrite this one.
+        if (instruction.type === 'call_llm' && currentState.pendingAssistantMessageId) {
+          currentState.pendingAssistantMessageId = undefined;
+        }
+
         // Keep the last nextContext
         if (result.nextContext) {
           finalNextContext = result.nextContext;
         }
 
         // Stop execution if blocked
-        if (currentState.status === 'waiting_for_human' || currentState.status === 'interrupted') {
+        if (isBlockedStatus(currentState.status)) {
           break;
         }
       }
@@ -208,10 +269,18 @@ export class AgentRuntime {
       currentState.stepCount = newState.stepCount;
       currentState.lastModified = newState.lastModified;
 
+      // A 'finish' instruction is not a real execution step, undo the +1 from the top of step()
+      if (hasFinishInstruction) {
+        currentState.stepCount = Math.max(currentState.stepCount - 1, 0);
+      }
+
       return {
         events: allEvents,
         newState: currentState,
-        nextContext: finalNextContext,
+        // When execution is blocked (waiting for human, waiting for an async
+        // tool result, or interrupted), clear nextContext so the outer loop
+        // stops instead of continuing
+        nextContext: isBlockedStatus(currentState.status) ? undefined : finalNextContext,
       };
     } catch (error) {
       const errorState = structuredClone(state);
@@ -560,6 +629,46 @@ export class AgentRuntime {
       };
 
       return { events, newState, nextContext };
+    };
+  }
+
+  /** Create blocked tools executor */
+  private createResolveBlockedToolsExecutor(): InstructionExecutor {
+    return async (instruction, state) => {
+      const { payload } = instruction as AgentInstructionResolveBlockedTools;
+      const newState = structuredClone(state);
+      const events: AgentEvent[] = [];
+
+      for (const toolCalling of payload.toolsCalling) {
+        const result = {
+          content: 'Blocked by security/privacy.',
+          success: false,
+        };
+
+        newState.messages.push({
+          content: result.content,
+          role: 'tool',
+          tool_call_id: toolCalling.id,
+        });
+        events.push({ id: toolCalling.id, result, type: 'tool_result' });
+      }
+
+      newState.lastModified = new Date().toISOString();
+      newState.status = 'running';
+
+      return {
+        events,
+        newState,
+        nextContext: {
+          operationId: this.operationId,
+          payload: {
+            parentMessageId: payload.parentMessageId,
+            toolCount: payload.toolsCalling.length,
+          },
+          phase: 'tools_batch_result',
+          session: this.createSessionContext(newState),
+        },
+      };
     };
   }
 

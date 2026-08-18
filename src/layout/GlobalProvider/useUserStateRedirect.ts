@@ -1,86 +1,85 @@
 'use client';
 
-import { OFFICIAL_URL } from '@lobechat/const';
 import { useCallback } from 'react';
 
-import { getDesktopOnboardingCompleted } from '@/app/[variants]/(desktop)/desktop-onboarding/storage';
 import { isDesktop } from '@/const/version';
-import { useElectronStore } from '@/store/electron';
-import { useUserStore } from '@/store/user';
 import { onboardingSelectors } from '@/store/user/selectors';
-import type { UserInitializationState } from '@/types/user';
+import { type UserInitializationState } from '@/types/user';
+import { buildOnboardingRedirectUrl } from '@/utils/onboardingRedirect';
 
-const redirectIfNotOn = (currentPath: string, path: string) => {
-  if (!currentPath.startsWith(path)) {
-    window.location.href = path;
+const DEFER_REDIRECT_PREFIXES = ['/invite'];
+
+const RESERVED_FIRST_SEGMENTS = new Set([
+  'agent',
+  'community',
+  'desktop-onboarding',
+  'devtools',
+  'eval',
+  'group',
+  'image',
+  'me',
+  'memory',
+  'next-auth',
+  'onboarding',
+  'page',
+  'projects',
+  'resource',
+  'settings',
+  'share',
+  'signin',
+  'signup',
+  'subscription',
+  'task',
+  'tasks',
+  'video',
+]);
+
+const FIRST_SEGMENT_REGEX = /^\/([^/?#]+)/;
+
+const isPathUnder = (pathname: string, prefix: string): boolean =>
+  pathname === prefix || pathname.startsWith(`${prefix}/`);
+
+const parseFirstSegment = (pathname: string): string | null => {
+  const match = pathname.match(FIRST_SEGMENT_REGEX);
+  return match ? match[1] : null;
+};
+
+/**
+ * Defer the onboarding redirect when the path is a workspace-scoped route
+ * (first segment is a workspace slug, i.e. not one of the reserved app
+ * segments) or an explicitly deferred prefix like `/invite`. Reserved
+ * first segments (e.g. `/agent`, `/settings`) fall through to the normal
+ * onboarding check.
+ */
+export const shouldDeferOnboardingRedirect = (pathname: string): boolean => {
+  if (DEFER_REDIRECT_PREFIXES.some((prefix) => isPathUnder(pathname, prefix))) return true;
+
+  const first = parseFirstSegment(pathname);
+
+  return !!first && !RESERVED_FIRST_SEGMENTS.has(first);
+};
+
+const redirectToOnboarding = (currentPath: string, search: string) => {
+  if (!currentPath.startsWith('/onboarding')) {
+    // Thread the page the user was on so onboarding finish points return there
+    window.location.href = buildOnboardingRedirectUrl(currentPath + search);
   }
 };
 
 export const useDesktopUserStateRedirect = () => {
-  const dataSyncConfig = useElectronStore((s) => s.dataSyncConfig);
-  const logout = useUserStore((s) => s.logout);
-
-  const openExternalAndLogout = useCallback(
-    async (path: string) => {
-      const baseUrl = dataSyncConfig.remoteServerUrl || OFFICIAL_URL;
-      let targetUrl = baseUrl;
-      try {
-        targetUrl = new URL(path, baseUrl).toString();
-      } catch {
-        // Ignore: keep fallback URL for external open attempt.
-      }
-
-      try {
-        const { electronSystemService } = await import('@/services/electron/system');
-        await electronSystemService.openExternalLink(targetUrl);
-      } catch {
-        // Ignore: fallback to logout flow even if IPC is unavailable.
-      }
-
-      try {
-        const { remoteServerService } = await import('@/services/electron/remoteServer');
-        await remoteServerService.clearRemoteServerConfig();
-      } catch {
-        // Ignore: fallback to logout flow even if IPC is unavailable.
-      }
-
-      await logout();
-    },
-    [dataSyncConfig.remoteServerUrl, logout],
-  );
-
-  return useCallback(
-    (state: UserInitializationState) => {
-      if (state.isInviteCodeRequired === true) {
-        void openExternalAndLogout('/invite-code');
-        return;
-      }
-
-      if (!getDesktopOnboardingCompleted()) return;
-      // Desktop onboarding is handled by desktop-only flow.
-    },
-    [openExternalAndLogout],
-  );
+  // Desktop onboarding redirect is now handled by main process (BrowserManager)
+  // No need to check localStorage here
+  return useCallback(() => {}, []);
 };
 
 export const useWebUserStateRedirect = () =>
   useCallback((state: UserInitializationState) => {
-    const { pathname } = window.location;
-
-    if (state.isInviteCodeRequired === true) {
-      redirectIfNotOn(pathname, '/invite-code');
-      return;
-    }
-
-    // Redirect away from invite-code page if no longer required
-    if (pathname.startsWith('/invite-code')) {
-      window.location.href = '/';
-      return;
-    }
+    const { pathname, search } = window.location;
 
     if (!onboardingSelectors.needsOnboarding(state)) return;
+    if (shouldDeferOnboardingRedirect(pathname)) return;
 
-    redirectIfNotOn(pathname, '/onboarding');
+    redirectToOnboarding(pathname, search);
   }, []);
 
 export const useUserStateRedirect = () => {

@@ -1,8 +1,8 @@
-import Anthropic from '@anthropic-ai/sdk';
-import { imageUrlToBase64 } from '@lobechat/utils';
-import OpenAI from 'openai';
+import type Anthropic from '@anthropic-ai/sdk';
+import { imageUrlToBase64, resolveImageMimeTypeFromBase64 } from '@lobechat/utils';
+import type OpenAI from 'openai';
 
-import { OpenAIChatMessage, UserMessageContentPart } from '../../types';
+import type { OpenAIChatMessage, UserMessageContentPart } from '../../types';
 import { parseDataUri } from '../../utils/uriParser';
 
 const ANTHROPIC_SUPPORTED_IMAGE_TYPES = new Set([
@@ -13,14 +13,37 @@ const ANTHROPIC_SUPPORTED_IMAGE_TYPES = new Set([
   'image/webp',
 ]);
 
-const isImageTypeSupported = (mimeType: string | null): boolean => {
-  if (!mimeType) return true;
-  return ANTHROPIC_SUPPORTED_IMAGE_TYPES.has(mimeType.toLowerCase());
-};
+interface AnthropicVideoBlockParam {
+  source:
+    | {
+        data: string;
+        media_type: string;
+        type: 'base64';
+      }
+    | {
+        type: 'url';
+        url: string;
+      };
+  type: 'video';
+}
+
+const isImageTypeSupported = (mimeType: string | null | undefined): mimeType is string =>
+  !!mimeType && ANTHROPIC_SUPPORTED_IMAGE_TYPES.has(mimeType.toLowerCase());
+
+const isVideoTypeSupported = (mimeType: string | null | undefined): mimeType is string =>
+  !!mimeType && mimeType.toLowerCase().startsWith('video/');
+
+/**
+ * Check if a text value contains visible (non-whitespace) characters.
+ * Used to filter out empty/whitespace-only messages that would cause Anthropic API errors.
+ */
+const hasVisibleText = (text: string | null | undefined): text is string => !!text?.trim();
 
 export const buildAnthropicBlock = async (
   content: UserMessageContentPart,
-): Promise<Anthropic.ContentBlock | Anthropic.ImageBlockParam | undefined> => {
+): Promise<
+  Anthropic.ContentBlock | Anthropic.ImageBlockParam | AnthropicVideoBlockParam | undefined
+> => {
   switch (content.type) {
     case 'thinking': {
       // just pass-through the content
@@ -37,12 +60,14 @@ export const buildAnthropicBlock = async (
       const { mimeType, base64, type } = parseDataUri(content.image_url.url);
 
       if (type === 'base64') {
-        if (!isImageTypeSupported(mimeType)) return undefined;
+        const resolvedMimeType = await resolveImageMimeTypeFromBase64(mimeType, base64);
+
+        if (!isImageTypeSupported(resolvedMimeType)) return undefined;
 
         return {
           source: {
             data: base64 as string,
-            media_type: mimeType as Anthropic.Base64ImageSource['media_type'],
+            media_type: resolvedMimeType as Anthropic.Base64ImageSource['media_type'],
             type: 'base64',
           },
           type: 'image',
@@ -66,6 +91,47 @@ export const buildAnthropicBlock = async (
 
       throw new Error(`Invalid image URL: ${content.image_url.url}`);
     }
+
+    case 'video_url': {
+      // MiniMax M3's Anthropic-compatible API accepts video content blocks, while
+      // the upstream Anthropic SDK types do not expose a video block param yet.
+      if (content.video_url.url.startsWith('mm_file://')) {
+        return {
+          source: {
+            type: 'url',
+            url: content.video_url.url,
+          },
+          type: 'video',
+        };
+      }
+
+      const { mimeType, base64, type } = parseDataUri(content.video_url.url);
+
+      if (type === 'base64') {
+        if (!isVideoTypeSupported(mimeType)) return undefined;
+
+        return {
+          source: {
+            data: base64 as string,
+            media_type: mimeType,
+            type: 'base64',
+          },
+          type: 'video',
+        };
+      }
+
+      if (type === 'url') {
+        return {
+          source: {
+            type: 'url',
+            url: content.video_url.url,
+          },
+          type: 'video',
+        };
+      }
+
+      throw new Error(`Invalid video URL: ${content.video_url.url}`);
+    }
   }
 };
 
@@ -79,6 +145,33 @@ const buildArrayContent = async (content: UserMessageContentPart[]) => {
   return messageContent;
 };
 
+/**
+ * Build a single Anthropic tool_result block from an OpenAI tool message.
+ * Returns undefined if tool_call_id is missing. Uses '<empty_content>' placeholder
+ * when content is empty, as Anthropic requires non-empty tool_result content.
+ */
+const buildAnthropicToolResultBlock = async (
+  message: Pick<OpenAIChatMessage, 'content' | 'tool_call_id'>,
+): Promise<Anthropic.ToolResultBlockParam | undefined> => {
+  if (!message.tool_call_id) return undefined;
+
+  const toolResultContent = Array.isArray(message.content)
+    ? await buildArrayContent(message.content)
+    : hasVisibleText(message.content)
+      ? [{ text: message.content, type: 'text' as const }]
+      : [];
+
+  return {
+    content: (toolResultContent.length > 0
+      ? toolResultContent
+      : [
+          { text: '<empty_content>', type: 'text' as const },
+        ]) as Anthropic.ToolResultBlockParam['content'],
+    tool_use_id: message.tool_call_id,
+    type: 'tool_result',
+  };
+};
+
 export const buildAnthropicMessage = async (
   message: OpenAIChatMessage,
 ): Promise<Anthropic.Messages.MessageParam | undefined> => {
@@ -90,8 +183,22 @@ export const buildAnthropicMessage = async (
     }
 
     case 'user': {
+      // Filter out empty user messages to prevent Anthropic API validation errors.
+      // Empty messages can appear after context truncation or user edits.
+      if (Array.isArray(content)) {
+        const messageContent = await buildArrayContent(content);
+        if (messageContent.length === 0) return undefined;
+
+        return {
+          content: messageContent,
+          role: 'user',
+        };
+      }
+
+      if (!hasVisibleText(content)) return undefined;
+
       return {
-        content: typeof content === 'string' ? content : await buildArrayContent(content),
+        content,
         role: 'user',
       };
     }
@@ -128,12 +235,72 @@ export const buildAnthropicMessage = async (
           content: [
             // avoid empty text content block
             ...messageContent,
-            ...(message.tool_calls.map((tool) => ({
-              id: tool.id,
-              input: JSON.parse(tool.function.arguments),
-              name: tool.function.name,
-              type: 'tool_use',
-            })) as any),
+            ...(message.tool_calls.map((tool) => {
+              let input: Record<string, unknown> = {};
+              try {
+                const parsed = JSON.parse(tool.function.arguments);
+                // Anthropic requires tool_use.input to be a plain object.
+                // Models occasionally emit malformed JSON whose top-level shape
+                // is an array / null / primitive (e.g. unescaped quotes inside
+                // a long string arg make the parser re-segment the payload).
+                if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
+                  input = parsed;
+                } else if (
+                  Array.isArray(parsed) &&
+                  parsed.length > 0 &&
+                  parsed[0] &&
+                  typeof parsed[0] === 'object' &&
+                  !Array.isArray(parsed[0])
+                ) {
+                  // Best-effort recovery: either the model wrapped the args
+                  // in `[...]` (length === 1, full recovery) or unescaped
+                  // quotes re-segmented the payload (partial recovery —
+                  // parsed[0] usually still carries the first legit key,
+                  // e.g. `content` for writeLocalFile).
+                  input = parsed[0] as Record<string, unknown>;
+                  console.warn(
+                    '[anthropic] tool_use.input recovered from array — parsed arguments was wrapped in []',
+                    {
+                      argumentsLength: tool.function.arguments?.length,
+                      arrayLength: parsed.length,
+                      id: tool.id,
+                      name: tool.function.name,
+                    },
+                  );
+                } else {
+                  console.warn(
+                    '[anthropic] tool_use.input fallback to {} — parsed arguments is not a plain object',
+                    {
+                      argumentsLength: tool.function.arguments?.length,
+                      id: tool.id,
+                      name: tool.function.name,
+                      parsedType: Array.isArray(parsed)
+                        ? 'array'
+                        : parsed === null
+                          ? 'null'
+                          : typeof parsed,
+                    },
+                  );
+                }
+              } catch (error) {
+                // Surface the failure instead of silently falling back to `{}`.
+                // Bad arguments should be sanitized upstream (context-engine
+                // ToolCallProcessor); if we reach here it means the defense
+                // was bypassed and the Anthropic call will proceed with empty
+                // input — worth knowing about.
+                console.error(
+                  'parse tool call arguments error:',
+                  { id: tool.id, name: tool.function.name, arguments: tool.function.arguments },
+                  error,
+                );
+              }
+              return {
+                id: tool.id,
+                input,
+                name: tool.function.name,
+                type: 'tool_use',
+              };
+            }) as any),
           ].filter(Boolean),
           role: 'assistant',
         };
@@ -164,9 +331,22 @@ export const buildAnthropicMessages = async (
   options: { enabledContextCaching?: boolean } = {},
 ): Promise<Anthropic.Messages.MessageParam[]> => {
   const messages: Anthropic.Messages.MessageParam[] = [];
-  let pendingToolResults: Anthropic.ToolResultBlockParam[] = [];
 
-  // 首先收集所有 assistant 消息中的 tool_call_id 以便后续查找
+  // === Two-pass strategy to guarantee tool_use / tool_result pairing ===
+  //
+  // Anthropic requires every tool_use block in an assistant message to have a
+  // matching tool_result block in the immediately following user message. The old
+  // sequential approach relied on message ordering, which broke when messages were
+  // truncated, reordered, or deleted — causing "tool_use ids were found without
+  // tool_result blocks" errors.
+  //
+  // Pass 1: Collect all valid tool_call_ids from assistant messages, then build a
+  //         Map<tool_call_id, ToolResultBlock> from matching tool messages.
+  // Pass 2: For each assistant message, only keep tool_calls that have a paired
+  //         tool_result, and emit the paired tool_results right after.
+  //         Unpaired tool messages degrade to plain-text user messages.
+
+  // Pass 1a: Collect valid tool_call_ids from assistant messages
   const validToolCallIds = new Set<string>();
   for (const message of oaiMessages) {
     if (message.role === 'assistant' && message.tool_calls?.length) {
@@ -178,50 +358,74 @@ export const buildAnthropicMessages = async (
     }
   }
 
+  // Pass 1b: Pre-build tool_result blocks indexed by tool_call_id
+  const toolResultsByCallId = new Map<string, Anthropic.ToolResultBlockParam>();
   for (const message of oaiMessages) {
-    const index = oaiMessages.indexOf(message);
+    if (
+      message.role !== 'tool' ||
+      !message.tool_call_id ||
+      !validToolCallIds.has(message.tool_call_id)
+    )
+      continue;
 
-    // refs: https://docs.anthropic.com/claude/docs/tool-use#tool-use-and-tool-result-content-blocks
-    if (message.role === 'tool') {
-      // Handle different content types in tool messages
-      const toolResultContent = Array.isArray(message.content)
-        ? await buildArrayContent(message.content)
-        : !message.content
-          ? [{ text: '<empty_content>', type: 'text' as const }]
-          : [{ text: message.content, type: 'text' as const }];
+    const toolResultBlock = await buildAnthropicToolResultBlock(message);
+    if (toolResultBlock) {
+      toolResultsByCallId.set(message.tool_call_id, toolResultBlock);
+    }
+  }
 
-      // 检查这个工具消息是否有对应的 assistant 工具调用
-      if (message.tool_call_id && validToolCallIds.has(message.tool_call_id)) {
-        pendingToolResults.push({
-          content: toolResultContent as Anthropic.ToolResultBlockParam['content'],
-          tool_use_id: message.tool_call_id,
-          type: 'tool_result',
-        });
+  // Pass 2: Build final message array with guaranteed tool_use/tool_result pairing
+  for (const message of oaiMessages) {
+    if (message.role === 'assistant') {
+      // Only keep tool_calls that have a matching tool_result in the Map
+      const pairedToolCalls = message.tool_calls?.filter(
+        (toolCall) => !!toolCall.id && toolResultsByCallId.has(toolCall.id),
+      );
 
-        // 如果这是最后一个消息或者下一个消息不是 'tool'，则添加累积的工具结果作为一个 'user' 消息
-        if (index === oaiMessages.length - 1 || oaiMessages[index + 1].role !== 'tool') {
-          messages.push({
-            content: pendingToolResults,
-            role: 'user',
-          });
-          pendingToolResults = [];
-        }
-      } else {
-        // 如果工具消息没有对应的 assistant 工具调用，则作为普通文本处理
-        const fallbackContent = Array.isArray(message.content)
-          ? JSON.stringify(message.content)
-          : message.content || '<empty_content>';
-        messages.push({
-          content: fallbackContent,
-          role: 'user',
-        });
-      }
-    } else {
-      const anthropicMessage = await buildAnthropicMessage(message);
-      // Filter out undefined messages (e.g., empty assistant messages)
+      const anthropicMessage = await buildAnthropicMessage({
+        ...message,
+        tool_calls: pairedToolCalls?.length ? pairedToolCalls : undefined,
+      });
+
       if (anthropicMessage) {
         messages.push(anthropicMessage);
       }
+
+      // Emit paired tool_results as a user message immediately after the assistant message
+      if (pairedToolCalls?.length) {
+        messages.push({
+          content: pairedToolCalls.flatMap((toolCall) => {
+            const toolResultBlock = toolResultsByCallId.get(toolCall.id);
+            return toolResultBlock ? [toolResultBlock] : [];
+          }),
+          role: 'user',
+        });
+      }
+
+      continue;
+    }
+
+    if (message.role === 'tool') {
+      // Already handled in Pass 1b and emitted above — skip
+      if (message.tool_call_id && validToolCallIds.has(message.tool_call_id)) {
+        continue;
+      }
+
+      // Orphan tool message (no matching assistant tool_call) — degrade to plain text
+      const fallbackContent = Array.isArray(message.content)
+        ? JSON.stringify(message.content)
+        : message.content || '<empty_content>';
+      messages.push({
+        content: fallbackContent,
+        role: 'user',
+      });
+
+      continue;
+    }
+
+    const anthropicMessage = await buildAnthropicMessage(message);
+    if (anthropicMessage) {
+      messages.push(anthropicMessage);
     }
   }
 
@@ -256,17 +460,19 @@ export const buildAnthropicTools = (
 ) => {
   if (!tools) return;
 
-  return tools.map(
-    (tool, index): Anthropic.Tool => ({
+  return tools.map((tool, index): Anthropic.Tool => {
+    // OpenAI SDK v6 made `ChatCompletionTool` a function|custom union; lobehub only sends function tools.
+    const { function: fn } = tool as OpenAI.ChatCompletionFunctionTool;
+    return {
       cache_control:
         options.enabledContextCaching && index === tools.length - 1
           ? { type: 'ephemeral' }
           : undefined,
-      description: tool.function.description,
-      input_schema: tool.function.parameters as Anthropic.Tool.InputSchema,
-      name: tool.function.name,
-    }),
-  );
+      description: fn.description,
+      input_schema: fn.parameters as Anthropic.Tool.InputSchema,
+      name: fn.name,
+    };
+  });
 };
 
 export const buildSearchTool = (): Anthropic.WebSearchTool20250305 => {

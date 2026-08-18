@@ -1,7 +1,12 @@
+// When you copy this template for a new model, also copy the matching test
+// template `./__tests__/_test_template.ts` into `./__tests__/<name>.test.ts`.
+// Every model ships with a sibling test — see the `testing` skill
+// (.agents/skills/testing/references/db-model-test.md).
 import { and, desc, eq } from 'drizzle-orm';
 
-import { NewSessionGroup, SessionGroupItem, sessionGroups } from '../schemas';
-import { LobeChatDatabase } from '../type';
+import type { NewSessionGroup, SessionGroupItem } from '../schemas';
+import { sessionGroups } from '../schemas';
+import type { LobeChatDatabase } from '../type';
 
 export class TemplateModel {
   private userId: string;

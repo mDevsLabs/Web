@@ -1,4 +1,4 @@
-import { ShowDesktopNotificationParams } from '@lobechat/electron-client-ipc';
+import type { ShowDesktopNotificationParams } from '@lobechat/electron-client-ipc';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import type { App } from '@/core/App';
@@ -34,19 +34,24 @@ vi.mock('electron', () => {
     },
     Notification: MockNotification,
     app: {
+      dock: {
+        bounce: vi.fn(),
+      },
       setAppUserModelId: vi.fn(),
     },
   };
 });
 
-// Mock electron-is
-vi.mock('electron-is', () => ({
+// Mock platform detection
+vi.mock('@/utils/platform', () => ({
+  linux: vi.fn(() => false),
   macOS: vi.fn(() => false),
   windows: vi.fn(() => false),
 }));
 
 // Mock browserManager
 const mockBrowserWindow = {
+  flashFrame: vi.fn(),
   focus: vi.fn(),
   isDestroyed: vi.fn(() => false),
   isFocused: vi.fn(() => true),
@@ -55,12 +60,14 @@ const mockBrowserWindow = {
 };
 
 const mockMainWindow = {
+  broadcast: vi.fn(),
   browserWindow: mockBrowserWindow,
   show: vi.fn(),
 };
 
 const mockBrowserManager = {
   getMainWindow: vi.fn(() => mockMainWindow),
+  showMainWindow: vi.fn(),
 };
 
 const mockApp = {
@@ -101,7 +108,7 @@ describe('NotificationCtr', () => {
     });
 
     it('should set app user model ID on Windows', async () => {
-      const { windows } = await import('electron-is');
+      const { windows } = await import('@/utils/platform');
       const { app, Notification } = await import('electron');
       vi.mocked(windows).mockReturnValue(true);
       vi.mocked(Notification.isSupported).mockReturnValue(true);
@@ -114,7 +121,7 @@ describe('NotificationCtr', () => {
     });
 
     it('should handle macOS platform', async () => {
-      const { macOS } = await import('electron-is');
+      const { macOS } = await import('@/utils/platform');
       const { Notification } = await import('electron');
       vi.mocked(macOS).mockReturnValue(true);
       vi.mocked(Notification.isSupported).mockReturnValue(true);
@@ -180,6 +187,44 @@ describe('NotificationCtr', () => {
       expect(result).toEqual({ success: true });
     });
 
+    it('should show notification when force is true even if window is visible and focused', async () => {
+      const { Notification } = await import('electron');
+      vi.mocked(Notification.isSupported).mockReturnValue(true);
+      mockBrowserWindow.isVisible.mockReturnValue(true);
+      mockBrowserWindow.isFocused.mockReturnValue(true);
+      mockBrowserWindow.isMinimized.mockReturnValue(false);
+
+      const promise = controller.showDesktopNotification({
+        ...params,
+        force: true,
+      });
+      vi.advanceTimersByTime(100);
+      const result = await promise;
+
+      expect(Notification).toHaveBeenCalled();
+      expect(result).toEqual({ success: true });
+    });
+
+    it('should use low urgency on Linux to prevent GNOME Shell freeze', async () => {
+      const { linux } = await import('@/utils/platform');
+      const { Notification } = await import('electron');
+      vi.mocked(linux).mockReturnValue(true);
+      vi.mocked(Notification.isSupported).mockReturnValue(true);
+      mockBrowserWindow.isVisible.mockReturnValue(false);
+
+      const promise = controller.showDesktopNotification(params);
+      vi.advanceTimersByTime(100);
+      await promise;
+
+      expect(Notification).toHaveBeenCalledWith(
+        expect.objectContaining({
+          urgency: 'low',
+        }),
+      );
+
+      vi.mocked(linux).mockReturnValue(false);
+    });
+
     it('should show notification when window is minimized', async () => {
       const { Notification } = await import('electron');
       vi.mocked(Notification.isSupported).mockReturnValue(true);
@@ -231,6 +276,40 @@ describe('NotificationCtr', () => {
       );
     });
 
+    it('should request window attention when requested and window is hidden', async () => {
+      const { Notification } = await import('electron');
+      vi.mocked(Notification.isSupported).mockReturnValue(true);
+      mockBrowserWindow.isVisible.mockReturnValue(false);
+
+      const promise = controller.showDesktopNotification({
+        ...params,
+        requestAttention: true,
+      });
+      vi.advanceTimersByTime(100);
+      await promise;
+
+      expect(mockBrowserWindow.flashFrame).toHaveBeenCalledWith(true);
+    });
+
+    it('should bounce dock on macOS when attention is requested', async () => {
+      const { app, Notification } = await import('electron');
+      const { macOS } = await import('@/utils/platform');
+      vi.mocked(macOS).mockReturnValue(true);
+      vi.mocked(Notification.isSupported).mockReturnValue(true);
+      mockBrowserWindow.isVisible.mockReturnValue(false);
+
+      const promise = controller.showDesktopNotification({
+        ...params,
+        requestAttention: true,
+      });
+      vi.advanceTimersByTime(100);
+      await promise;
+
+      expect(app.dock.bounce).toHaveBeenCalledWith('informational');
+
+      vi.mocked(macOS).mockReturnValue(false);
+    });
+
     it('should register click handler to show main window', async () => {
       const { Notification } = await import('electron');
       vi.mocked(Notification.isSupported).mockReturnValue(true);
@@ -252,8 +331,9 @@ describe('NotificationCtr', () => {
       // Simulate click
       clickHandler();
 
-      expect(mockMainWindow.show).toHaveBeenCalled();
-      expect(mockBrowserWindow.focus).toHaveBeenCalled();
+      // Delegates to the shared show path, which restores a minimized window
+      // before showing/focusing — a bare `show()` cannot un-minimize on macOS.
+      expect(mockBrowserManager.showMainWindow).toHaveBeenCalled();
     });
 
     it('should handle notification error', async () => {

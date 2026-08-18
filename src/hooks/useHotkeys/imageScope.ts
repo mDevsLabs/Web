@@ -1,9 +1,9 @@
+import { HotkeyEnum, HotkeyScopeEnum } from '@lobechat/const/hotkeys';
 import { useEffect } from 'react';
 import { useHotkeysContext } from 'react-hotkeys-hook';
 
 import { useGlobalStore } from '@/store/global';
 import { systemStatusSelectors } from '@/store/global/selectors';
-import { HotkeyEnum, HotkeyScopeEnum } from '@/types/hotkey';
 
 import { useHotkeyById } from './useHotkeyById';
 
@@ -19,7 +19,7 @@ export const useToggleImageRightPanelHotkey = () => {
   );
 };
 
-// 注册聚合
+// Register aggregate
 
 export const useRegisterImageHotkeys = () => {
   const { enableScope, disableScope } = useHotkeysContext();

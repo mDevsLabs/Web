@@ -1,43 +1,52 @@
+import { AGENT_CHAT_TOPIC_URL, GROUP_CHAT_TOPIC_URL } from '@lobechat/const';
 import isEqual from 'fast-deep-equal';
 import { gt, parse, valid } from 'semver';
-import { type SWRResponse } from 'swr';
-import type { StateCreator } from 'zustand/vanilla';
+import type { SWRResponse } from 'swr';
 
+import { getActiveWorkspaceId } from '@/business/client/hooks/useActiveWorkspaceId';
+import { getActiveWorkspaceSlug } from '@/business/client/hooks/useActiveWorkspaceSlug';
 import { CURRENT_VERSION, isDesktop } from '@/const/version';
+import { buildWorkspaceAwarePath } from '@/features/Workspace/workspaceAwarePath';
 import { useOnlyFetchOnceSWR } from '@/libs/swr';
+import { globalKeys } from '@/libs/swr/keys';
 import { globalService } from '@/services/global';
 import { getElectronStoreState } from '@/store/electron';
 import { electronSyncSelectors } from '@/store/electron/selectors';
 import type { SystemStatus } from '@/store/global/initialState';
-import { type LocaleMode } from '@/types/locale';
+import {
+  DEFAULT_HOME_SIDEBAR_EXPANDED_KEYS,
+  DEFAULT_RESOURCE_MANAGER_COLUMN_WIDTHS,
+} from '@/store/global/initialState';
+import type { StoreSetter } from '@/store/types';
+import type { LocaleMode } from '@/types/locale';
 import { switchLang } from '@/utils/client/switchLang';
 import { merge } from '@/utils/merge';
 import { setNamespace } from '@/utils/storeDebug';
 
+import {
+  DEFAULT_HIDDEN_SECTIONS,
+  DEFAULT_SIDEBAR_ITEMS,
+  routeOverlayWrites,
+} from '../selectors/systemStatus';
 import type { GlobalStore } from '../store';
 
 const n = setNamespace('g');
 
-export interface GlobalGeneralAction {
-  openAgentInNewWindow: (agentId: string) => Promise<void>;
-  openTopicInNewWindow: (agentId: string, topicId: string) => Promise<void>;
-  switchLocale: (locale: LocaleMode, params?: { skipBroadcast?: boolean }) => void;
-  updateResourceManagerColumnWidth: (column: 'name' | 'date' | 'size', width: number) => void;
-  updateSystemStatus: (status: Partial<SystemStatus>, action?: any) => void;
-  useCheckLatestVersion: (enabledCheck?: boolean) => SWRResponse<string>;
-  useCheckServerVersion: () => SWRResponse<string | null>;
-  useInitSystemStatus: () => SWRResponse;
-}
+type Setter = StoreSetter<GlobalStore>;
+export const generalActionSlice = (set: Setter, get: () => GlobalStore, _api?: unknown) =>
+  new GlobalGeneralActionImpl(set, get, _api);
 
-export const generalActionSlice: StateCreator<
-  GlobalStore,
-  [['zustand/devtools', never]],
-  [],
-  GlobalGeneralAction
-> = (set, get) => ({
-  openAgentInNewWindow: async (agentId: string) => {
-    const url = `/agent/${agentId}${isDesktop ? '?mode=single' : ''}`;
+export class GlobalGeneralActionImpl {
+  readonly #get: () => GlobalStore;
+  readonly #set: Setter;
 
+  constructor(set: Setter, get: () => GlobalStore, _api?: unknown) {
+    void _api;
+    this.#set = set;
+    this.#get = get;
+  }
+
+  openAgentInNewWindow = async (agentId: string): Promise<void> => {
     if (isDesktop) {
       try {
         const { ensureElectronIpc } = await import('@/utils/electron/ipc');
@@ -57,27 +66,27 @@ export const generalActionSlice: StateCreator<
       }
     } else {
       // Open in popup window for browser
+      const browserUrl = buildWorkspaceAwarePath(`/agent/${agentId}`, getActiveWorkspaceSlug());
       const width = 1200;
       const height = 800;
       const left = (window.screen.width - width) / 2;
       const top = (window.screen.height - height) / 2;
       const features = `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes,status=yes`;
-      window.open(url, `agent_${agentId}`, features);
+      window.open(browserUrl, `agent_${agentId}`, features);
     }
-  },
+  };
 
-  openTopicInNewWindow: async (agentId: string, topicId: string) => {
-    const url = `/agent/${agentId}?topic=${topicId}${isDesktop ? '&mode=single' : ''}`;
+  openTopicInNewWindow = async (agentId: string, topicId: string): Promise<void> => {
+    const popupPath = `/popup/agent/${agentId}/${topicId}`;
 
     if (isDesktop) {
       try {
         const { ensureElectronIpc } = await import('@/utils/electron/ipc');
-        const path = `/agent/${agentId}?topic=${topicId}&mode=single`;
 
         const result = await ensureElectronIpc().windows.createMultiInstanceWindow({
-          path,
-          templateId: 'chatSingle',
-          uniqueId: `chat_${agentId}_${topicId}`,
+          path: popupPath,
+          templateId: 'topicPopup',
+          uniqueId: `topicPopup_agent_${agentId}_${topicId}`,
         });
 
         if (!result.success) {
@@ -88,17 +97,57 @@ export const generalActionSlice: StateCreator<
       }
     } else {
       // Open in popup window for browser
+      const browserUrl = buildWorkspaceAwarePath(
+        AGENT_CHAT_TOPIC_URL(agentId, topicId),
+        getActiveWorkspaceSlug(),
+      );
       const width = 1200;
       const height = 800;
       const left = (window.screen.width - width) / 2;
       const top = (window.screen.height - height) / 2;
       const features = `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes,status=yes`;
-      window.open(url, `agent_${agentId}_topic_${topicId}`, features);
+      window.open(browserUrl, `agent_${agentId}_topic_${topicId}`, features);
     }
-  },
+  };
 
-  switchLocale: (locale, { skipBroadcast } = {}) => {
-    get().updateSystemStatus({ language: locale });
+  openGroupTopicInNewWindow = async (groupId: string, topicId: string): Promise<void> => {
+    const popupPath = `/popup/group/${groupId}/${topicId}`;
+
+    if (isDesktop) {
+      try {
+        const { ensureElectronIpc } = await import('@/utils/electron/ipc');
+
+        const result = await ensureElectronIpc().windows.createMultiInstanceWindow({
+          path: popupPath,
+          templateId: 'topicPopup',
+          uniqueId: `topicPopup_group_${groupId}_${topicId}`,
+        });
+
+        if (!result.success) {
+          console.error('Failed to open group topic in new window:', result.error);
+        }
+      } catch (error) {
+        console.error('Error opening group topic in new window:', error);
+      }
+    } else {
+      const browserUrl = buildWorkspaceAwarePath(
+        GROUP_CHAT_TOPIC_URL(groupId, topicId),
+        getActiveWorkspaceSlug(),
+      );
+      const width = 1200;
+      const height = 800;
+      const left = (window.screen.width - width) / 2;
+      const top = (window.screen.height - height) / 2;
+      const features = `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes,status=yes`;
+      window.open(browserUrl, `group_${groupId}_topic_${topicId}`, features);
+    }
+  };
+
+  switchLocale = (
+    locale: LocaleMode,
+    { skipBroadcast }: { skipBroadcast?: boolean } = {},
+  ): void => {
+    this.#get().updateSystemStatus({ language: locale });
 
     switchLang(locale);
 
@@ -113,35 +162,90 @@ export const generalActionSlice: StateCreator<
         }
       })();
     }
-  },
-  updateResourceManagerColumnWidth: (column, width) => {
-    const currentWidths = get().status.resourceManagerColumnWidths || {
-      date: 160,
-      name: 574,
-      size: 140,
+  };
+
+  updateResourceManagerColumnWidth = (
+    column: 'name' | 'date' | 'size' | 'uploader',
+    width: number,
+  ): void => {
+    const currentWidths = {
+      ...DEFAULT_RESOURCE_MANAGER_COLUMN_WIDTHS,
+      ...this.#get().status.resourceManagerColumnWidths,
     };
 
-    get().updateSystemStatus({
+    this.#get().updateSystemStatus({
       resourceManagerColumnWidths: {
         ...currentWidths,
         [column]: width,
       },
     });
-  },
-  updateSystemStatus: (status, action) => {
-    if (!get().isStatusInit) return;
+  };
 
-    const nextStatus = merge(get().status, status);
+  /**
+   * Replace the workspace overlay's sidebar-layout fields wholesale. An
+   * absent field is DELETED from the overlay (falling back to "untouched"
+   * defaults) — `updateSystemStatus` deep-merges and can neither delete keys
+   * nor drop a field the incoming server preference no longer carries.
+   */
+  setWorkspaceSidebarOverlay = (layout: {
+    hiddenSidebarSections?: string[];
+    sidebarItems?: string[];
+  }): void => {
+    if (!this.#get().isStatusInit) return;
+    const status = this.#get().status;
+    const {
+      hiddenSidebarSections: _hidden,
+      sidebarItems: _items,
+      ...rest
+    } = status.workspace ?? {};
+    const workspace = {
+      ...rest,
+      ...(layout.hiddenSidebarSections
+        ? { hiddenSidebarSections: layout.hiddenSidebarSections }
+        : {}),
+      ...(layout.sidebarItems ? { sidebarItems: layout.sidebarItems } : {}),
+    };
+    if (isEqual(status.workspace ?? {}, workspace)) return;
+    const nextStatus = { ...status, workspace };
+    this.#set({ status: nextStatus }, false, n('setWorkspaceSidebarOverlay'));
+    this.#get().statusStorage.saveToLocalStorage(nextStatus);
+  };
 
-    if (isEqual(get().status, nextStatus)) return;
+  resetSidebarCustomization = (): void => {
+    this.#get().updateSystemStatus(
+      {
+        hiddenSidebarSections: DEFAULT_HIDDEN_SECTIONS,
+        sidebarExpandedKeys: DEFAULT_HOME_SIDEBAR_EXPANDED_KEYS,
+        sidebarItems: DEFAULT_SIDEBAR_ITEMS,
+      },
+      n('resetSidebarCustomization'),
+    );
+  };
 
-    set({ status: nextStatus }, false, action || n('updateSystemStatus'));
-    get().statusStorage.saveToLocalStorage(nextStatus);
-  },
+  updateSystemStatus = (
+    status: Partial<SystemStatus>,
+    action?: any,
+    options?: { skipWorkspaceOverlay?: boolean },
+  ): void => {
+    if (!this.#get().isStatusInit) return;
 
-  useCheckLatestVersion: (enabledCheck = true) =>
-    useOnlyFetchOnceSWR(
-      enabledCheck ? 'checkLatestVersion' : null,
+    // When inside a workspace, route whitelisted sidebar-layout fields into
+    // `status.workspace.*` so personal-mode preferences stay untouched. The
+    // init path bypasses routing — it rehydrates whatever shape was persisted.
+    const workspaceId = options?.skipWorkspaceOverlay ? null : getActiveWorkspaceId();
+    const routedPatch = routeOverlayWrites(status, workspaceId);
+
+    const nextStatus = merge(this.#get().status, routedPatch);
+
+    if (isEqual(this.#get().status, nextStatus)) return;
+
+    this.#set({ status: nextStatus }, false, action || n('updateSystemStatus'));
+    this.#get().statusStorage.saveToLocalStorage(nextStatus);
+  };
+
+  useCheckLatestVersion = (enabledCheck: boolean = true): SWRResponse<string> => {
+    return useOnlyFetchOnceSWR(
+      enabledCheck ? globalKeys.latestVersion() : null,
       async () => globalService.getLatestVersion(),
       {
         focusThrottleInterval: 1000 * 60 * 30,
@@ -157,28 +261,29 @@ export const generalActionSlice: StateCreator<
           const latestMajorMinor = `${latestVersion.major}.${latestVersion.minor}.0`;
 
           if (gt(latestMajorMinor, currentMajorMinor)) {
-            set({ hasNewVersion: true, latestVersion: data }, false, n('checkLatestVersion'));
+            this.#set({ hasNewVersion: true, latestVersion: data }, false, n('checkLatestVersion'));
           }
         },
       },
-    ),
+    );
+  };
 
-  useCheckServerVersion: () =>
-    useOnlyFetchOnceSWR(
+  useCheckServerVersion = (): SWRResponse<string | null> => {
+    return useOnlyFetchOnceSWR(
       isDesktop &&
-      // only check server version for self-hosted remote server
-      electronSyncSelectors.storageMode(getElectronStoreState()) !== 'cloud'
-        ? 'checkServerVersion'
+        // only check server version for self-hosted remote server
+        electronSyncSelectors.storageMode(getElectronStoreState()) !== 'cloud'
+        ? globalKeys.serverVersion()
         : null,
       async () => globalService.getServerVersion(),
       {
         onSuccess: (data: string | null) => {
           if (data === null) {
-            set({ isServerVersionOutdated: true }, false);
+            this.#set({ isServerVersionOutdated: true }, false);
             return;
           }
 
-          set({ serverVersion: data }, false);
+          this.#set({ serverVersion: data }, false);
 
           if (!valid(CURRENT_VERSION) || !valid(data)) return;
 
@@ -188,47 +293,54 @@ export const generalActionSlice: StateCreator<
           if (!clientVersion || !serverVersion) return;
 
           const DIFF_THRESHOLD = 5;
-          //         版本差异计算规则
-          // ┌─────────────────┬────────┬─────────┐
-          // │ 客户端 → 服务端 │ 差异值 │  结果   │
-          // ├─────────────────┼────────┼─────────┤
-          // │ 1.0.5 → 1.0.0   │ 5      │ ⚠️ 过旧 │
-          // ├─────────────────┼────────┼─────────┤
-          // │ 1.1.0 → 1.0.5   │ 5      │ ⚠️ 过旧 │
-          // ├─────────────────┼────────┼─────────┤
-          // │ 2.0.0 → 1.9.9   │ 91     │ ⚠️ 过旧 │
-          // ├─────────────────┼────────┼─────────┤
-          // │ 1.0.4 → 1.0.0   │ 4      │ ✅ 正常 │
-          // └─────────────────┴────────┴─────────┘
+          //         Version difference calculation rules
+          // ┌─────────────────┬────────┬───────────┐
+          // │ Client → Server │  Diff  │  Result   │
+          // ├─────────────────┼────────┼───────────┤
+          // │ 1.0.5 → 1.0.0   │ 5      │ ⚠️ Too old│
+          // ├─────────────────┼────────┼───────────┤
+          // │ 1.1.0 → 1.0.5   │ 5      │ ⚠️ Too old│
+          // ├─────────────────┼────────┼───────────┤
+          // │ 2.0.0 → 1.9.9   │ 91     │ ⚠️ Too old│
+          // ├─────────────────┼────────┼───────────┤
+          // │ 1.0.4 → 1.0.0   │ 4      │ ✅ Normal │
+          // └─────────────────┴────────┴───────────┘
           const versionDiff =
             (clientVersion.major - serverVersion.major) * 100 +
             (clientVersion.minor - serverVersion.minor) * 10 +
             (clientVersion.patch - serverVersion.patch);
 
           if (versionDiff >= DIFF_THRESHOLD) {
-            set({ isServerVersionOutdated: true }, false);
+            this.#set({ isServerVersionOutdated: true }, false);
           }
         },
       },
-    ),
+    );
+  };
 
-  useInitSystemStatus: () =>
-    useOnlyFetchOnceSWR<SystemStatus>(
-      'initSystemStatus',
-      () => get().statusStorage.getFromLocalStorage(),
+  useInitSystemStatus = (): SWRResponse => {
+    return useOnlyFetchOnceSWR<SystemStatus>(
+      globalKeys.systemStatus(),
+      () => this.#get().statusStorage.getFromLocalStorage(),
       {
         onSuccess: (status) => {
-          set({ isStatusInit: true }, false, 'setStatusInit');
+          this.#set({ isStatusInit: true }, false, 'setStatusInit');
 
           // Reset transient UI states that should not persist across page reloads
           const statusWithResetTransientStates = {
             ...status,
             showCommandMenu: false,
             showHotkeyHelper: false,
+            workingSidebarRevealRequest: undefined,
           };
 
-          get().updateSystemStatus(statusWithResetTransientStates, 'initSystemStatus');
+          this.#get().updateSystemStatus(statusWithResetTransientStates, 'initSystemStatus', {
+            skipWorkspaceOverlay: true,
+          });
         },
       },
-    ),
-});
+    );
+  };
+}
+
+export type GlobalGeneralAction = Pick<GlobalGeneralActionImpl, keyof GlobalGeneralActionImpl>;

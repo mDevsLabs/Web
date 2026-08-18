@@ -1,4 +1,4 @@
-import Anthropic from '@anthropic-ai/sdk';
+import type Anthropic from '@anthropic-ai/sdk';
 import { describe, expect, it } from 'vitest';
 
 import { convertAnthropicUsage } from './anthropic';
@@ -26,6 +26,7 @@ describe('convertAnthropicUsage', () => {
       inputWriteCacheTokens: 20,
       totalInputTokens: 130,
       totalOutputTokens: 5,
+      totalTokens: 135,
     });
   });
 

@@ -1,9 +1,15 @@
-import { UIChatMessage } from '@lobechat/types';
+import { type UIChatMessage } from '@lobechat/types';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { messageService } from '@/services/message';
 
 import { createStore } from '../../../index';
+
+const { chatStoreMock } = vi.hoisted(() => ({
+  chatStoreMock: {
+    cancelOperations: vi.fn(),
+  },
+}));
 
 // Mock conversation-flow parse function
 vi.mock('@lobechat/conversation-flow', () => ({
@@ -20,9 +26,16 @@ vi.mock('@lobechat/conversation-flow', () => ({
 // Mock messageService
 vi.mock('@/services/message', () => ({
   messageService: {
+    cancelCompression: vi.fn(),
     getMessages: vi.fn(),
     updateMessageGroupMetadata: vi.fn(),
     updateMessageMetadata: vi.fn().mockResolvedValue({ success: true, messages: [] }),
+  },
+}));
+
+vi.mock('@/store/chat', () => ({
+  useChatStore: {
+    getState: () => chatStoreMock,
   },
 }));
 
@@ -43,6 +56,55 @@ const createTestStore = (options?: { agentId?: string; topicId?: string | null }
 describe('MessageStateAction', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  describe('cancelCompression', () => {
+    it('should cancel running compression operations before restoring messages', async () => {
+      const store = createTestStore();
+
+      const compressedGroup: UIChatMessage = {
+        id: 'group-1',
+        content: 'Summary content',
+        role: 'compressedGroup' as any,
+        createdAt: 1000,
+        updatedAt: 1000,
+      };
+      const restoredMessages: UIChatMessage[] = [
+        {
+          id: 'msg-1',
+          content: 'Original content',
+          role: 'user',
+          createdAt: 1000,
+          updatedAt: 1000,
+        },
+      ];
+
+      store.setState({ displayMessages: [compressedGroup] });
+      vi.mocked(messageService.cancelCompression).mockResolvedValue({ messages: restoredMessages });
+
+      const replaceMessagesSpy = vi.spyOn(store.getState(), 'replaceMessages');
+
+      await store.getState().cancelCompression('group-1');
+
+      expect(chatStoreMock.cancelOperations).toHaveBeenCalledWith(
+        { messageId: 'group-1', status: 'running' },
+        'Compression cancelled',
+      );
+      expect(messageService.cancelCompression).toHaveBeenCalledWith({
+        agentId: 'test-agent',
+        groupId: undefined,
+        messageGroupId: 'group-1',
+        threadId: null,
+        topicId: 'test-topic',
+      });
+      expect(replaceMessagesSpy).toHaveBeenCalledWith(restoredMessages, {
+        expectedContext: {
+          agentId: 'test-agent',
+          threadId: null,
+          topicId: 'test-topic',
+        },
+      });
+    });
   });
 
   describe('toggleCompressedGroupExpanded', () => {
@@ -272,7 +334,13 @@ describe('MessageStateAction', () => {
       await store.getState().toggleCompressedGroupExpanded('group-1');
 
       // Assert
-      expect(replaceMessagesSpy).toHaveBeenCalledWith(updatedMessages);
+      expect(replaceMessagesSpy).toHaveBeenCalledWith(updatedMessages, {
+        expectedContext: {
+          agentId: 'test-agent',
+          threadId: null,
+          topicId: 'test-topic',
+        },
+      });
     });
   });
 });

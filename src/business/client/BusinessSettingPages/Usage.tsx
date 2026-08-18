@@ -1,3 +1,3 @@
-export default function Usage() {
-  return null;
-}
+const Usage = () => null;
+
+export default Usage;

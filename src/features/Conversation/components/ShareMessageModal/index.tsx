@@ -1,11 +1,16 @@
 import { type UIChatMessage } from '@lobechat/types';
-import { Flexbox, Modal, Segmented, Tabs } from '@lobehub/ui';
+import { Flexbox } from '@lobehub/ui';
+import { createModal, Tabs } from '@lobehub/ui/base-ui';
+import { t } from 'i18next';
 import { memo, useId, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import ShareDataProvider from '@/features/ShareModal/ShareDataProvider';
 import SharePdf from '@/features/ShareModal/SharePdf';
 import { useIsMobile } from '@/hooks/useIsMobile';
 
+import type { createStore } from '../../store';
+import { Provider, useConversationStore } from '../../store';
 import ShareImage from './ShareImage';
 import ShareText from './ShareText';
 
@@ -15,17 +20,16 @@ enum Tab {
   Text = 'text',
 }
 
-export interface ShareModalProps {
+interface ShareMessageModalContentProps {
   message: UIChatMessage;
-  onCancel: () => void;
-  open: boolean;
 }
 
-const ShareModal = memo<ShareModalProps>(({ onCancel, open, message }) => {
+const ShareMessageModalContent = memo<ShareMessageModalContentProps>(({ message }) => {
   const [tab, setTab] = useState<Tab>(Tab.Screenshot);
   const { t } = useTranslation('chat');
   const uniqueId = useId();
   const isMobile = useIsMobile();
+  const context = useConversationStore((s) => s.context);
 
   const tabItems = useMemo(() => {
     const items = [
@@ -40,51 +44,48 @@ const ShareModal = memo<ShareModalProps>(({ onCancel, open, message }) => {
         label: t('shareModal.text'),
       },
       {
-        children: <SharePdf message={message} />,
+        children: (
+          <ShareDataProvider context={context}>
+            <SharePdf message={message} />
+          </ShareDataProvider>
+        ),
         key: Tab.PDF,
         label: t('shareModal.pdf'),
       },
     ];
 
     return items;
-  }, [isMobile, message, uniqueId, t]);
+  }, [context, isMobile, message, uniqueId, t]);
 
   return (
-    <Modal
-      allowFullscreen
-      centered={false}
-      destroyOnHidden={true}
-      footer={null}
-      onCancel={onCancel}
-      open={open}
-      title={t('share', { ns: 'common' })}
-      width={1440}
-    >
-      <Flexbox gap={isMobile ? 8 : 24}>
-        <Segmented
-          block
-          onChange={(value) => setTab(value as Tab)}
-          options={tabItems.map((item) => {
-            return {
-              label: item?.label,
-              value: item?.key,
-            };
-          })}
-          style={{ width: '100%' }}
-          value={tab}
-          variant={'filled'}
-        />
-        <Tabs
-          activeKey={tab}
-          indicator={{ align: 'center', size: (origin) => origin - 20 }}
-          items={tabItems}
-          onChange={(key) => setTab(key as Tab)}
-          // eslint-disable-next-line react/jsx-no-useless-fragment
-          renderTabBar={() => <></>}
-        />
-      </Flexbox>
-    </Modal>
+    <Flexbox gap={isMobile ? 8 : 24}>
+      <Tabs
+        activeKey={tab}
+        items={tabItems}
+        styles={{
+          list: { display: 'flex', width: '100%' },
+          tab: { flex: 1 },
+        }}
+        onChange={(key) => setTab(key as Tab)}
+      />
+    </Flexbox>
   );
 });
 
-export default ShareModal;
+ShareMessageModalContent.displayName = 'ShareMessageModalContent';
+
+export const openShareMessageModal = (
+  message: UIChatMessage,
+  createConversationStore: () => ReturnType<typeof createStore>,
+) =>
+  createModal({
+    content: (
+      <Provider createStore={createConversationStore}>
+        <ShareMessageModalContent message={message} />
+      </Provider>
+    ),
+    footer: null,
+    maskClosable: true,
+    title: t('share', { ns: 'common' }),
+    width: 'min(95vw, 1440px)',
+  });

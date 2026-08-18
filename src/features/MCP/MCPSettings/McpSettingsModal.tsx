@@ -1,58 +1,47 @@
 'use client';
 
-import { Button, Flexbox, Modal } from '@lobehub/ui';
-import { memo, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
+import { Flexbox } from '@lobehub/ui';
+import { Button, createModal } from '@lobehub/ui/base-ui';
+import { t as i18nT } from 'i18next';
+import { type RefObject } from 'react';
 
-import Settings, { type SettingsRef } from './index';
+import { type SettingsRef } from './index';
+import Settings from './index';
 
-interface McpSettingsModalProps {
+interface McpSettingsModalOptions {
   identifier: string;
-  onClose: () => void;
-  open: boolean;
 }
 
-const McpSettingsModal = memo<McpSettingsModalProps>(({ identifier, open, onClose }) => {
-  const { t } = useTranslation(['plugin', 'common']);
-  const settingsRef = useRef<SettingsRef>(null);
+export const createMcpSettingsModal = ({ identifier }: McpSettingsModalOptions) => {
+  const settingsRef: RefObject<SettingsRef | null> = { current: null };
 
-  const footer = (
-    <Flexbox horizontal justify="space-between" style={{ width: '100%' }}>
-      <Button
-        onClick={() => {
-          settingsRef.current?.reset();
-        }}
-      >
-        {t('common:reset')}
-      </Button>
-      <Flexbox gap={8} horizontal>
-        <Button onClick={onClose}>{t('common:cancel')}</Button>
+  const modal = createModal({
+    content: <Settings hideFooter identifier={identifier} ref={settingsRef} />,
+    footer: (
+      <Flexbox horizontal justify="space-between" style={{ width: '100%' }}>
         <Button
           onClick={() => {
-            settingsRef.current?.save();
+            settingsRef.current?.reset();
           }}
-          type="primary"
         >
-          {t('common:save')}
+          {i18nT('reset', { ns: 'common' })}
         </Button>
+        <Flexbox horizontal gap={8}>
+          <Button onClick={() => modal.close()}>{i18nT('cancel', { ns: 'common' })}</Button>
+          <Button
+            type="primary"
+            onClick={() => {
+              settingsRef.current?.save();
+            }}
+          >
+            {i18nT('save', { ns: 'common' })}
+          </Button>
+        </Flexbox>
       </Flexbox>
-    </Flexbox>
-  );
+    ),
+    title: i18nT('dev.title.skillSettings', { ns: 'plugin' }),
+    width: 600,
+  });
 
-  return (
-    <Modal
-      destroyOnHidden
-      footer={footer}
-      onCancel={onClose}
-      open={open}
-      title={t('plugin:dev.title.skillSettings')}
-      width={600}
-    >
-      <Settings hideFooter identifier={identifier} ref={settingsRef} />
-    </Modal>
-  );
-});
-
-McpSettingsModal.displayName = 'McpSettingsModal';
-
-export default McpSettingsModal;
+  return modal;
+};

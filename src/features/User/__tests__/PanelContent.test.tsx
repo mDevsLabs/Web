@@ -1,5 +1,5 @@
 import { act, render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router';
 import { describe, expect, it, vi } from 'vitest';
 
 import { useUserStore } from '@/store/user';
@@ -15,16 +15,12 @@ vi.mock('next/navigation', () => ({
   })),
 }));
 
-vi.mock('@/components/BrandWatermark', () => ({
-  default: vi.fn(() => <div>Mocked BrandWatermark</div>),
-}));
-
 vi.mock('@/components/Menu', () => ({
   default: vi.fn(({ items, onClick }) => (
     <div>
       Mocked Menu
       {items.map((item: any) => (
-        <button key={item.key} onClick={onClick} type={'button'}>
+        <button key={item.key} type={'button'} onClick={() => onClick({ key: item.key })}>
           {item.label}
         </button>
       ))}
@@ -34,7 +30,7 @@ vi.mock('@/components/Menu', () => ({
 
 vi.mock('../UserInfo', () => ({
   default: vi.fn(({ onClick }) => (
-    <button onClick={onClick} type={'button'}>
+    <button type={'button'} onClick={onClick}>
       Mocked UserInfo
     </button>
   )),
@@ -52,10 +48,14 @@ vi.mock('../UserPanel/useMenu', () => ({
 
 vi.mock('../UserLoginOrSignup', () => ({
   default: vi.fn(({ onClick }) => (
-    <button onClick={onClick} type={'button'}>
+    <button type={'button'} onClick={onClick}>
       Mocked SignInBlock
     </button>
   )),
+}));
+
+vi.mock('../UserPanel/LangButton', () => ({
+  default: () => <div>Language chooser</div>,
 }));
 
 vi.mock('../DataStatistics', () => ({
@@ -65,6 +65,13 @@ vi.mock('../DataStatistics', () => ({
 vi.mock('@/const/version', () => ({
   isDeprecatedEdition: false,
   isDesktop: false,
+}));
+
+vi.mock('@/store/serverConfig', () => ({
+  serverConfigSelectors: {
+    enableBusinessFeatures: () => false,
+  },
+  useServerConfigStore: (selector: (s: unknown) => unknown) => selector({}),
 }));
 
 describe('PanelContent', () => {
@@ -100,24 +107,25 @@ describe('PanelContent', () => {
       expect(screen.queryByText('Mocked UserInfo')).not.toBeInTheDocument();
     });
 
-    it('should render logout items when user is signed in', () => {
+    it('should render profile actions in a single menu when user is signed in', () => {
       act(() => {
         useUserStore.setState({ isSignedIn: true });
       });
 
       renderWithRouter(<PanelContent closePopover={closePopover} />);
 
-      expect(screen.getAllByText('Mocked Menu').length).toBe(2);
+      expect(screen.getAllByText('Mocked Menu')).toHaveLength(1);
+      expect(screen.getByText('Logout')).toBeInTheDocument();
     });
 
-    it('should render BrandWatermark when user is not signed in', () => {
+    it('should render SignInBlock when user is not signed in', () => {
       act(() => {
         useUserStore.setState({ isSignedIn: false });
       });
 
       renderWithRouter(<PanelContent closePopover={closePopover} />);
 
-      expect(screen.getByText('Mocked BrandWatermark')).toBeInTheDocument();
+      expect(screen.getByText('Mocked SignInBlock')).toBeInTheDocument();
     });
   });
 
@@ -125,5 +133,6 @@ describe('PanelContent', () => {
     renderWithRouter(<PanelContent closePopover={closePopover} />);
 
     expect(screen.getAllByText('Mocked Menu').length).toBeGreaterThan(0);
+    expect(screen.queryByText('Language chooser')).not.toBeInTheDocument();
   });
 });

@@ -1,6 +1,8 @@
-import debug from 'debug';
-import { type NextRequest, NextResponse } from 'next/server';
 import { URL } from 'node:url';
+
+import debug from 'debug';
+import { type NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 
 import { authEnv } from '@/envs/auth';
 import { createNodeRequest, createNodeResponse } from '@/libs/oidc-provider/http-adapter';
@@ -13,7 +15,7 @@ const handler = async (req: NextRequest) => {
   log(`Received ${req.method.toUpperCase()} request: %s %s`, req.method, req.url);
   log('Path: %s, Pathname: %s', requestUrl.pathname, requestUrl.pathname);
 
-  // 声明响应收集器
+  // Declare the response collector
   let responseCollector;
 
   try {
@@ -22,7 +24,7 @@ const handler = async (req: NextRequest) => {
       return new NextResponse('OIDC is not enabled', { status: 404 });
     }
 
-    // 获取 OIDC Provider 实例
+    // Get the OIDC Provider instance
     const provider = await getOIDCProvider();
 
     log(`Calling provider.callback() for ${req.method}`); // Log the method
@@ -39,11 +41,11 @@ const handler = async (req: NextRequest) => {
         return;
       }
 
-      // 使用辅助方法创建响应收集器
+      // Use helper method to create the response collector
       responseCollector = createNodeResponse(resolve);
       const nodeResponse = responseCollector.nodeResponse;
 
-      // 使用辅助方法创建 Node.js 请求对象，现在需要 await
+      // Use helper method to create the Node.js request object, now requires await
       createNodeRequest(req).then((nodeRequest) => {
         log('Calling the obtained middleware...');
         middleware(nodeRequest, nodeResponse, (error?: Error) => {
@@ -59,12 +61,12 @@ const handler = async (req: NextRequest) => {
           }
         });
         log('Middleware call initiated, waiting for its callback OR nodeResponse.end()...');
-      });
+      }, reject);
     });
 
     log('Promise surrounding middleware call resolved.');
 
-    // 访问最终的响应状态
+    // Access the final response status
     if (!responseCollector) {
       throw new Error('ResponseCollector was not initialized.');
     }
@@ -79,12 +81,14 @@ const handler = async (req: NextRequest) => {
     log('Final Response Headers: %O', finalHeaders);
 
     return new NextResponse(finalBody, {
-      // eslint-disable-next-line no-undef
       headers: finalHeaders as HeadersInit,
       status: finalStatus,
     });
   } catch (error) {
-    log(`Error handling OIDC ${req.method} request: %O`, error); // Log method in error
+    // Surface the real stack to production logs. A debug `log()` only writes to the
+    // `lobe-oidc:route` namespace, which is disabled in production, so 500s otherwise
+    // land with no application-layer error signature (monitoring blind spot).
+    console.error(`[OIDC Route] Error handling ${req.method} ${requestUrl.pathname}:`, error);
     return new NextResponse(`Internal Server Error: ${(error as Error).message}`, { status: 500 });
   }
 };

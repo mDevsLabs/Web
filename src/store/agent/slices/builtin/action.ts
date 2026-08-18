@@ -1,12 +1,13 @@
 import { type AgentItem, type LobeAgentConfig } from '@lobechat/types';
 import { type SWRResponse } from 'swr';
-import type { PartialDeep } from 'type-fest';
-import { type StateCreator } from 'zustand/vanilla';
+import { type PartialDeep } from 'type-fest';
 
 import { useOnlyFetchOnceSWR } from '@/libs/swr';
+import { builtinAgentKeys } from '@/libs/swr/keys';
 import { agentService } from '@/services/agent';
+import { type StoreSetter } from '@/store/types';
 
-import type { AgentStore } from '../../store';
+import { type AgentStore } from '../../store';
 
 interface UseInitBuiltinAgentContext {
   /**
@@ -20,29 +21,42 @@ interface UseInitBuiltinAgentContext {
  * Builtin Agent Slice Actions
  * Handles initialization and management of builtin agents (page-agent, inbox, etc.)
  */
-export interface BuiltinAgentSliceAction {
-  /**
-   * Generic hook to initialize a builtin agent by slug.
-   * Fetches the builtin agent (creating it if it doesn't exist)
-   *
-   * @param slug - The builtin agent slug (e.g., 'page-agent', 'inbox')
-   * @param context - Optional context with isLogin flag
-   */
-  useInitBuiltinAgent: (
+
+type Setter = StoreSetter<AgentStore>;
+export const createBuiltinAgentSlice = (set: Setter, get: () => AgentStore, _api?: unknown) =>
+  new BuiltinAgentSliceActionImpl(set, get, _api);
+
+export class BuiltinAgentSliceActionImpl {
+  readonly #get: () => AgentStore;
+  readonly #set: Setter;
+
+  constructor(set: Setter, get: () => AgentStore, _api?: unknown) {
+    void _api;
+    this.#set = set;
+    this.#get = get;
+  }
+
+  refreshBuiltinAgent = async (slug: string): Promise<void> => {
+    const data = await agentService.getBuiltinAgent(slug);
+    if (data?.id) {
+      this.#get().internal_dispatchAgentMap(data.id, data as PartialDeep<LobeAgentConfig>);
+      // Mirror useInitBuiltinAgent's onSuccess: keep builtinAgentIdMap in sync
+      // so callers can rely on this as a real "ensure" path instead of just a
+      // post-init refresh.
+      this.#set(
+        { builtinAgentIdMap: { ...this.#get().builtinAgentIdMap, [slug]: data.id } },
+        false,
+        `refreshBuiltinAgent/${slug}`,
+      );
+    }
+  };
+
+  useInitBuiltinAgent = (
     slug: string,
     context?: UseInitBuiltinAgentContext,
-  ) => SWRResponse<AgentItem | null>;
-}
-
-export const createBuiltinAgentSlice: StateCreator<
-  AgentStore,
-  [['zustand/devtools', never]],
-  [],
-  BuiltinAgentSliceAction
-> = (set, get) => ({
-  useInitBuiltinAgent: (slug, context) =>
-    useOnlyFetchOnceSWR(
-      context?.isLogin === false ? null : `initBuiltinAgent:${slug}`,
+  ): SWRResponse<AgentItem | null> => {
+    return useOnlyFetchOnceSWR(
+      context?.isLogin === false ? null : builtinAgentKeys.init(slug),
       async () => {
         const data = await agentService.getBuiltinAgent(slug);
 
@@ -54,15 +68,21 @@ export const createBuiltinAgentSlice: StateCreator<
             // Update builtinAgentIdMap with the agent id
             // Update agentMap with the agent config
             // AgentItem contains all fields needed for LobeAgentConfig
-            get().internal_dispatchAgentMap(data.id, data as PartialDeep<LobeAgentConfig>);
+            this.#get().internal_dispatchAgentMap(data.id, data as PartialDeep<LobeAgentConfig>);
 
-            set(
-              { builtinAgentIdMap: { ...get().builtinAgentIdMap, [slug]: data.id } },
+            this.#set(
+              { builtinAgentIdMap: { ...this.#get().builtinAgentIdMap, [slug]: data.id } },
               false,
               `useInitBuiltinAgent/${slug}`,
             );
           }
         },
       },
-    ),
-});
+    );
+  };
+}
+
+export type BuiltinAgentSliceAction = Pick<
+  BuiltinAgentSliceActionImpl,
+  keyof BuiltinAgentSliceActionImpl
+>;

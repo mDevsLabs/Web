@@ -19,11 +19,13 @@ LobeHub provides some additional configuration options when deployed, which can 
 
   <Card href={'environment-variables/model-provider'} title={'Model Service Providers'} />
 
-  <Cards href={'environment-variables/auth'} title={'Authentication'} />
+  <Card href={'environment-variables/auth'} title={'Authentication'} />
 
-  <Cards href={'environment-variables/s3'} title={'S3 Storage Service'} />
+  <Card href={'environment-variables/s3'} title={'S3 Storage Service'} />
 
-  <Cards href={'environment-variables/analytics'} title={'Data Analytics'} />
+  <Card href={'environment-variables/cloud-sandbox'} title={'Cloud Sandbox'} />
+
+  <Card href={'environment-variables/analytics'} title={'Data Analytics'} />
 </Cards>
 
 ## Building a Custom Image with Overridden `NEXT_PUBLIC` Variables
@@ -44,7 +46,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository_owner }}/lobe-chat-database # Name of your image
+  IMAGE_NAME: ${{ github.repository_owner }}/lobehub # Name of your image
 
 jobs:
   build-and-push:
@@ -57,7 +59,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          repository: lobehub/lobe-chat
+          repository: lobehub/lobehub
 
       - name: Log in to the Container registry
         uses: docker/login-action@v2

@@ -34,26 +34,30 @@ export class ModelsService {
     });
 
     const runtimeProvider = resolveRuntimeProvider(provider);
-    try {
-      /**
-       * Use browser agent runtime
-       */
-      const enableFetchOnClient = isEnableFetchOnClient(provider);
-      if (enableFetchOnClient) {
-        const agentRuntime = await initializeWithClientStore({
-          provider,
-          runtimeProvider,
-        });
-        return agentRuntime.models();
-      }
-
-      const res = await fetch(API_ENDPOINTS.models(provider), { headers });
-      if (!res.ok) return;
-
-      return res.json();
-    } catch {
-      return;
+    /**
+     * Use browser agent runtime
+     */
+    const enableFetchOnClient = isEnableFetchOnClient(provider);
+    if (enableFetchOnClient) {
+      const agentRuntime = await initializeWithClientStore({
+        provider,
+        runtimeProvider,
+      });
+      return agentRuntime.models();
     }
+
+    const res = await fetch(API_ENDPOINTS.models(provider), { headers });
+    if (!res.ok) {
+      const error = await getMessageError(res);
+      const message =
+        typeof error.body?.message === 'string' && error.body.message
+          ? error.body.message
+          : error.message;
+
+      throw new Error(message, { cause: error });
+    }
+
+    return res.json();
   };
 
   /**
@@ -75,7 +79,6 @@ export class ModelsService {
       const runtimeProvider = resolveRuntimeProvider(provider);
       const enableFetchOnClient = isEnableFetchOnClient(provider);
 
-      console.log('enableFetchOnClient：', enableFetchOnClient);
       let res: Response;
       if (enableFetchOnClient) {
         const agentRuntime = await initializeWithClientStore({
@@ -132,7 +135,6 @@ export class ModelsService {
     const reader = response.body?.getReader();
     if (!reader) return;
 
-    // eslint-disable-next-line no-constant-condition
     while (true) {
       const { done, value } = await reader.read();
       if (done) break;
@@ -151,7 +153,7 @@ export class ModelsService {
         }
 
         if (progress.status === 'canceled') {
-          console.log('progress:', progress);
+          console.info('progress:', progress);
         }
 
         if (progress.status === 'error') {

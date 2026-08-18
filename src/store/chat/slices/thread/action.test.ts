@@ -1,12 +1,13 @@
-import type { UIChatMessage } from '@lobechat/types';
+import { type UIChatMessage } from '@lobechat/types';
 import { act, renderHook, waitFor } from '@testing-library/react';
-import { Mock, afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { type Mock } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { mutate } from '@/libs/swr';
 import { chatService } from '@/services/chat';
 import { threadService } from '@/services/thread';
-import { useSessionStore } from '@/store/session';
-import { ThreadItem, ThreadStatus, ThreadType } from '@/types/topic';
+import { type ThreadItem } from '@/types/topic';
+import { ThreadStatus, ThreadType } from '@/types/topic';
 
 import { useChatStore } from '../../store';
 
@@ -77,6 +78,9 @@ vi.mock('@/store/user', () => ({
 vi.mock('@/store/user/selectors', () => ({
   systemAgentSelectors: {
     thread: vi.fn(() => ({})),
+  },
+  userGeneralSettingsSelectors: {
+    currentResponseLanguage: vi.fn(() => 'en-US'),
   },
   userProfileSelectors: {
     userAvatar: vi.fn(() => 'avatar-url'),
@@ -154,6 +158,146 @@ describe('thread action', () => {
         type: 'thread',
         startMessageId: 'message-id',
       });
+    });
+
+    it('should initialize optimistic parent messages from main scope messages', () => {
+      const { result } = renderHook(() => useChatStore());
+
+      const mainMessages: UIChatMessage[] = [
+        {
+          id: 'msg-1',
+          role: 'user',
+          content: 'first',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+          agentId: 'test-session-id',
+        },
+        {
+          id: 'msg-2',
+          role: 'assistant',
+          content: 'reply',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+          agentId: 'test-session-id',
+        },
+        {
+          id: 'msg-3',
+          role: 'user',
+          content: 'second',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+          agentId: 'test-session-id',
+        },
+      ];
+
+      act(() => {
+        useChatStore.setState({
+          messagesMap: {
+            'main_test-session-id_test-topic-id': mainMessages,
+          },
+        });
+      });
+
+      const replaceMessagesSpy = vi.spyOn(result.current, 'replaceMessages');
+
+      act(() => {
+        result.current.openThreadCreator('msg-3');
+      });
+
+      // Should call replaceMessages with all 3 parent messages (continuation mode)
+      expect(replaceMessagesSpy).toHaveBeenCalledWith(
+        mainMessages,
+        expect.objectContaining({ action: 'initThreadMessages' }),
+      );
+    });
+
+    it('should use main scope messages even when activeThreadId is set ()', () => {
+      const { result } = renderHook(() => useChatStore());
+
+      const mainMessages: UIChatMessage[] = [
+        {
+          id: 'msg-1',
+          role: 'user',
+          content: 'first',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+          agentId: 'test-session-id',
+        },
+        {
+          id: 'msg-2',
+          role: 'assistant',
+          content: 'reply',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+          agentId: 'test-session-id',
+        },
+        {
+          id: 'msg-3',
+          role: 'user',
+          content: 'second',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+          agentId: 'test-session-id',
+        },
+      ];
+
+      const threadMessages: UIChatMessage[] = [
+        {
+          id: 'msg-1',
+          role: 'user',
+          content: 'first',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+          agentId: 'test-session-id',
+        },
+        {
+          id: 'thread-msg-1',
+          role: 'user',
+          content: 'thread msg',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+          agentId: 'test-session-id',
+          threadId: 'existing-thread',
+        },
+        {
+          id: 'thread-msg-2',
+          role: 'assistant',
+          content: 'thread reply',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+          agentId: 'test-session-id',
+          threadId: 'existing-thread',
+        },
+      ];
+
+      act(() => {
+        useChatStore.setState({
+          activeThreadId: 'existing-thread',
+          messagesMap: {
+            // Main scope has all messages including msg-3
+            'main_test-session-id_test-topic-id': mainMessages,
+            // Thread scope does NOT have msg-3
+            'thread_test-session-id_test-topic-id_existing-thread': threadMessages,
+          },
+        });
+      });
+
+      const replaceMessagesSpy = vi.spyOn(result.current, 'replaceMessages');
+
+      act(() => {
+        // Fork from msg-3 which only exists in main scope
+        result.current.openThreadCreator('msg-3');
+      });
+
+      // BUG: if openThreadCreator uses activeDisplayMessages (which includes activeThreadId),
+      // it gets thread-scoped messages that don't contain msg-3,
+      // genParentMessages returns [], and replaceMessages is never called.
+      //
+      // FIX: openThreadCreator should always use main scope key to get messages.
+      expect(replaceMessagesSpy).toHaveBeenCalledWith(
+        mainMessages,
+        expect.objectContaining({ action: 'initThreadMessages' }),
+      );
     });
   });
 
@@ -329,7 +473,7 @@ describe('thread action', () => {
         await result.current.refreshThreads();
       });
 
-      expect(mutate).toHaveBeenCalledWith(['SWR_USE_FETCH_THREADS', 'test-topic-id']);
+      expect(mutate).toHaveBeenCalledWith(['thread:list', 'test-topic-id']);
     });
 
     it('should not mutate when activeTopicId is undefined', async () => {
@@ -353,7 +497,9 @@ describe('thread action', () => {
 
       (threadService.removeThread as Mock).mockResolvedValue(undefined);
 
-      const refreshThreadsSpy = vi.spyOn(result.current, 'refreshThreads').mockResolvedValue();
+      const refreshThreadsSpy = vi
+        .spyOn(result.current, 'refreshThreads')
+        .mockResolvedValue(undefined);
 
       await act(async () => {
         await result.current.removeThread('thread-id');
@@ -371,7 +517,7 @@ describe('thread action', () => {
       });
 
       (threadService.removeThread as Mock).mockResolvedValue(undefined);
-      vi.spyOn(result.current, 'refreshThreads').mockResolvedValue();
+      vi.spyOn(result.current, 'refreshThreads').mockResolvedValue(undefined);
 
       await act(async () => {
         await result.current.removeThread('thread-id');
@@ -388,7 +534,7 @@ describe('thread action', () => {
       });
 
       (threadService.removeThread as Mock).mockResolvedValue(undefined);
-      vi.spyOn(result.current, 'refreshThreads').mockResolvedValue();
+      vi.spyOn(result.current, 'refreshThreads').mockResolvedValue(undefined);
 
       await act(async () => {
         await result.current.removeThread('different-thread-id');
@@ -404,7 +550,7 @@ describe('thread action', () => {
 
       const internalUpdateSpy = vi
         .spyOn(result.current, 'internal_updateThread')
-        .mockResolvedValue();
+        .mockResolvedValue(undefined);
 
       await act(async () => {
         await result.current.updateThreadTitle('thread-id', 'New Title');
@@ -462,7 +608,7 @@ describe('thread action', () => {
 
       const internalUpdateSpy = vi
         .spyOn(result.current, 'internal_updateThread')
-        .mockResolvedValue();
+        .mockResolvedValue(undefined);
 
       await act(async () => {
         await result.current.summaryThreadTitle('thread-id', messages);
@@ -507,7 +653,7 @@ describe('thread action', () => {
         },
       );
 
-      vi.spyOn(result.current, 'internal_updateThread').mockResolvedValue();
+      vi.spyOn(result.current, 'internal_updateThread').mockResolvedValue(undefined);
 
       await act(async () => {
         await result.current.summaryThreadTitle('thread-id', []);
@@ -545,7 +691,7 @@ describe('thread action', () => {
         await onError?.();
       });
 
-      vi.spyOn(result.current, 'internal_updateThread').mockResolvedValue();
+      vi.spyOn(result.current, 'internal_updateThread').mockResolvedValue(undefined);
 
       await act(async () => {
         await result.current.summaryThreadTitle('thread-id', []);
@@ -646,7 +792,7 @@ describe('thread action', () => {
       (threadService.updateThread as Mock).mockResolvedValue(undefined);
 
       const dispatchSpy = vi.spyOn(result.current, 'internal_dispatchThread');
-      const refreshSpy = vi.spyOn(result.current, 'refreshThreads').mockResolvedValue();
+      const refreshSpy = vi.spyOn(result.current, 'refreshThreads').mockResolvedValue(undefined);
       const loadingSpy = vi.spyOn(result.current, 'internal_updateThreadLoading');
 
       await act(async () => {

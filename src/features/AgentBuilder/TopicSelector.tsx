@@ -1,17 +1,15 @@
-import { ActionIcon, DropdownMenu, type DropdownMenuCheckboxItem, Flexbox } from '@lobehub/ui';
+import { type DropdownMenuCheckboxItem } from '@lobehub/ui';
+import { ActionIcon, DropdownMenu, Flexbox } from '@lobehub/ui';
 import { createStaticStyles } from 'antd-style';
 import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
 import { Clock3Icon, PlusIcon } from 'lucide-react';
 import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { DESKTOP_HEADER_ICON_SIZE } from '@/const/layoutTokens';
+import { DESKTOP_HEADER_ICON_SMALL_SIZE } from '@/const/layoutTokens';
 import NavHeader from '@/features/NavHeader';
 import { useChatStore } from '@/store/chat';
 import { topicSelectors } from '@/store/chat/slices/topic/selectors';
-
-dayjs.extend(relativeTime);
 
 const styles = createStaticStyles(({ css, cssVar }) => ({
   time: css`
@@ -31,9 +29,10 @@ const styles = createStaticStyles(({ css, cssVar }) => ({
 
 interface TopicSelectorProps {
   agentId: string;
+  disabled?: boolean;
 }
 
-const TopicSelector = memo<TopicSelectorProps>(({ agentId }) => {
+const TopicSelector = memo<TopicSelectorProps>(({ agentId, disabled }) => {
   const { t } = useTranslation('topic');
 
   // Fetch topics for the agent builder
@@ -66,12 +65,13 @@ const TopicSelector = memo<TopicSelectorProps>(({ agentId }) => {
           closeOnClick: true,
           key: topic.id,
           label: (
-            <Flexbox align="center" gap={4} horizontal justify="space-between" width="100%">
+            <Flexbox horizontal align="center" gap={4} justify="space-between" width="100%">
               <span className={styles.title}>{topic.title}</span>
               <span className={styles.time}>{displayTime}</span>
             </Flexbox>
           ),
           onCheckedChange: (checked) => {
+            if (disabled) return;
             if (checked) {
               switchTopic(topic.id);
             }
@@ -85,28 +85,42 @@ const TopicSelector = memo<TopicSelectorProps>(({ agentId }) => {
 
   return (
     <NavHeader
+      showTogglePanelButton={false}
+      styles={{ right: { flex: 'none' } }}
       left={
-        activeTopic?.title ? <span className={styles.title}>{activeTopic.title}</span> : undefined
+        activeTopic?.title ? (
+          <span className={styles.title} title={activeTopic.title}>
+            {activeTopic.title}
+          </span>
+        ) : undefined
       }
       right={
         <>
           <ActionIcon
+            disabled={disabled}
             icon={PlusIcon}
-            onClick={() => switchTopic()}
-            size={DESKTOP_HEADER_ICON_SIZE}
+            size={DESKTOP_HEADER_ICON_SMALL_SIZE}
             title={t('actions.addNewTopic')}
+            onClick={() => {
+              if (disabled) return;
+
+              switchTopic();
+            }}
           />
           <DropdownMenu
             items={items}
             placement="bottomRight"
             popupProps={{ style: { maxHeight: 400, minWidth: 280, overflowY: 'auto' } }}
-            triggerProps={{ disabled: isEmpty }}
+            triggerProps={{ disabled: disabled || isEmpty }}
           >
-            <ActionIcon disabled={isEmpty} icon={Clock3Icon} />
+            <ActionIcon
+              disabled={disabled || isEmpty}
+              icon={Clock3Icon}
+              size={DESKTOP_HEADER_ICON_SMALL_SIZE}
+            />
           </DropdownMenu>
         </>
       }
-      showTogglePanelButton={false}
     />
   );
 });

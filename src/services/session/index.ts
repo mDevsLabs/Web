@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import type { PartialDeep } from 'type-fest';
+import { type PartialDeep } from 'type-fest';
 
 import { lambdaClient } from '@/libs/trpc/client';
 import { type LobeAgentChatConfig, type LobeAgentConfig } from '@/types/agent';
@@ -7,19 +6,23 @@ import { type MetaData } from '@/types/meta';
 import {
   type ChatSessionList,
   type LobeAgentSession,
-  type LobeSessionType,
   type LobeSessions,
+  type LobeSessionType,
   type SessionGroupItem,
-  type SessionRankItem,
   type UpdateSessionParams,
 } from '@/types/session';
 
+/**
+ * @deprecated Session service is legacy. Use agentService for agent CRUD operations.
+ * Mobile still uses this, but should migrate to agentService.
+ */
 export class SessionService {
   hasSessions = async (): Promise<boolean> => {
     const result = await this.countSessions();
     return result === 0;
   };
 
+  /** @deprecated Use agentService.createAgent instead */
   createSession = async (
     type: LobeSessionType,
     data: Partial<LobeAgentSession>,
@@ -46,10 +49,6 @@ export class SessionService {
     startDate?: string;
   }): Promise<number> => {
     return lambdaClient.session.countSessions.query(params);
-  };
-
-  rankSessions = async (limit?: number): Promise<SessionRankItem[]> => {
-    return lambdaClient.session.rankSessions.query(limit);
   };
 
   updateSession = (id: string, data: Partial<UpdateSessionParams>) => {
@@ -100,27 +99,24 @@ export class SessionService {
     return lambdaClient.session.removeSession.mutate({ id });
   };
 
-  removeAllSessions = () => {
-    return lambdaClient.session.removeAllSessions.mutate();
-  };
-
   // ************************************** //
   // ***********  SessionGroup  *********** //
   // ************************************** //
 
-  createSessionGroup = (name: string, sort?: number): Promise<string> => {
-    return lambdaClient.sessionGroup.createSessionGroup.mutate({ name, sort });
+  createSessionGroup = (
+    name: string,
+    sort?: number,
+    visibility?: 'private' | 'public',
+  ): Promise<string> => {
+    return lambdaClient.sessionGroup.createSessionGroup.mutate({ name, sort, visibility });
   };
 
   removeSessionGroup = (id: string, removeChildren?: boolean) => {
     return lambdaClient.sessionGroup.removeSessionGroup.mutate({ id, removeChildren });
   };
 
-  removeSessionGroups = () => {
-    return lambdaClient.sessionGroup.removeAllSessionGroups.mutate();
-  };
-
-  updateSessionGroup = (id: string, value: Partial<SessionGroupItem>) => {
+  /** Rename / reorder only — scope fields are rejected server-side. */
+  updateSessionGroup = (id: string, value: Partial<Pick<SessionGroupItem, 'name' | 'sort'>>) => {
     return lambdaClient.sessionGroup.updateSessionGroup.mutate({ id, value });
   };
 

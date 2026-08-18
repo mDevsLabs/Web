@@ -1,7 +1,12 @@
-import { DEFAULT_AGENT_CHAT_CONFIG, DEFAULT_AGENT_SEARCH_FC_MODEL } from '@lobechat/const';
-import { isContextCachingModel, isThinkingWithToolClaudeModel } from '@lobechat/model-runtime';
-import { type LobeAgentChatConfig } from '@lobechat/types';
+import {
+  DEFAULT_AGENT_CHAT_CONFIG,
+  DEFAULT_AGENT_SEARCH_FC_MODEL,
+  isDesktop,
+} from '@lobechat/const';
+import { type LobeAgentChatConfig, type RuntimeEnvMode } from '@lobechat/types';
 
+import { resolveRuntimeMode, resolveToolMode } from '@/helpers/executionTarget';
+import { resolveGatewayModeEnabled } from '@/helpers/gatewayMode';
 import { type AgentStoreState } from '@/store/agent/initialState';
 
 import { agentSelectors } from './selectors';
@@ -11,28 +16,18 @@ import { agentSelectors } from './selectors';
  * Used in ChatInput components where agentId is passed as prop.
  */
 
-const getChatConfigById =
+const getStoredChatConfigById =
   (agentId: string) =>
   (s: AgentStoreState): LobeAgentChatConfig =>
     agentSelectors.getAgentConfigById(agentId)(s)?.chatConfig || {};
 
-const getEnableHistoryCountById = (agentId: string) => (s: AgentStoreState) => {
-  const config = agentSelectors.getAgentConfigById(agentId)(s);
-  const chatConfig = getChatConfigById(agentId)(s);
+const getChatConfigById =
+  (agentId: string) =>
+  (s: AgentStoreState): LobeAgentChatConfig =>
+    getStoredChatConfigById(agentId)(s);
 
-  // 如果开启了上下文缓存，且当前模型类型匹配，则不开启历史记录
-  const enableContextCaching = !chatConfig.disableContextCaching;
-
-  if (enableContextCaching && config?.model && isContextCachingModel(config.model)) return false;
-
-  // 当开启搜索时，针对 claude 3.7 sonnet 模型不开启历史记录
-  const searchMode = chatConfig.searchMode || 'off';
-  const enableSearch = searchMode !== 'off';
-
-  if (enableSearch && config?.model && isThinkingWithToolClaudeModel(config.model)) return false;
-
-  return chatConfig.enableHistoryCount;
-};
+const getEnableHistoryCountById = (agentId: string) => (s: AgentStoreState) =>
+  getStoredChatConfigById(agentId)(s).enableHistoryCount;
 
 const getHistoryCountById =
   (agentId: string) =>
@@ -43,7 +38,7 @@ const getHistoryCountById =
   };
 
 const getSearchModeById = (agentId: string) => (s: AgentStoreState) =>
-  getChatConfigById(agentId)(s).searchMode || 'off';
+  getChatConfigById(agentId)(s).searchMode || 'auto';
 
 const isEnableSearchById = (agentId: string) => (s: AgentStoreState) =>
   getSearchModeById(agentId)(s) !== 'off';
@@ -54,12 +49,77 @@ const getUseModelBuiltinSearchById = (agentId: string) => (s: AgentStoreState) =
 const getSearchFCModelById = (agentId: string) => (s: AgentStoreState) =>
   getChatConfigById(agentId)(s).searchFCModel || DEFAULT_AGENT_SEARCH_FC_MODEL;
 
+const getMemoryToolConfigById = (agentId: string) => (s: AgentStoreState) =>
+  getChatConfigById(agentId)(s).memory;
+
+const isMemoryToolEnabledById = (agentId: string) => (s: AgentStoreState) =>
+  getChatConfigById(agentId)(s).memory?.enabled ?? false;
+
+const getMemoryToolEffortById = (agentId: string) => (s: AgentStoreState) =>
+  getChatConfigById(agentId)(s).memory?.effort ?? 'medium';
+
+const getRuntimeEnvConfigById = (agentId: string) => (s: AgentStoreState) =>
+  getChatConfigById(agentId)(s).runtimeEnv;
+
+const isLocalSystemEnabledById = (agentId: string) => (s: AgentStoreState) =>
+  getRuntimeModeById(agentId)(s) === 'local';
+
+/**
+ * Get the agent's runtime mode, derived from the unified
+ * `agencyConfig.executionTarget` (sandbox → cloud, local → local, device →
+ * none).
+ */
+const getRuntimeModeById =
+  (agentId: string) =>
+  (s: AgentStoreState): RuntimeEnvMode => {
+    const config = agentSelectors.getAgentConfigById(agentId)(s);
+
+    // On web a bound `local` target only surfaces as `device` (not `sandbox`)
+    // when Gateway mode is effectively enabled and can route to the device
+    //. Derive the gate from this selector's own state `s` so it
+    // re-evaluates on `disableGatewayMode` changes without a second global read.
+    // Workspace agents never execute on the current member's own client —
+    // their default/stored `local` coerces away (see `workspaceScoped`).
+    return resolveRuntimeMode(
+      config?.agencyConfig,
+      isDesktop,
+      resolveGatewayModeEnabled(s, agentId),
+      !!s.agentMap[agentId]?.workspaceId,
+    );
+  };
+
+const getSkillActivateModeById =
+  (agentId: string) =>
+  (s: AgentStoreState): 'auto' | 'manual' =>
+    getChatConfigById(agentId)(s).skillActivateMode ?? 'auto';
+
+/**
+ * Resolve the agent's tool mode via the shared `resolveToolMode` helper, so
+ * client and server agree on what counts as chat mode.
+ */
+const getToolModeById =
+  (agentId: string) =>
+  (s: AgentStoreState): 'agent' | 'chat' | 'custom' =>
+    resolveToolMode(getChatConfigById(agentId)(s));
+
+const isChatModeById = (agentId: string) => (s: AgentStoreState) =>
+  getToolModeById(agentId)(s) === 'chat';
+
 export const chatConfigByIdSelectors = {
   getChatConfigById,
   getEnableHistoryCountById,
   getHistoryCountById,
+  getRuntimeEnvConfigById,
+  getMemoryToolConfigById,
+  getMemoryToolEffortById,
+  getRuntimeModeById,
   getSearchFCModelById,
   getSearchModeById,
+  getSkillActivateModeById,
+  getToolModeById,
   getUseModelBuiltinSearchById,
+  isChatModeById,
   isEnableSearchById,
+  isLocalSystemEnabledById,
+  isMemoryToolEnabledById,
 };

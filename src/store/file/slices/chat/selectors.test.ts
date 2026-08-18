@@ -1,7 +1,10 @@
+import type { ChatContextContent } from '@lobechat/types';
 import { describe, expect, it } from 'vitest';
 
-import { FilesStoreState, initialState } from '@/store/file/initialState';
-import { UPLOAD_STATUS_SET, UploadFileItem } from '@/types/files/upload';
+import { type FilesStoreState } from '@/store/file/initialState';
+import { initialState } from '@/store/file/initialState';
+import { type UploadFileItem } from '@/types/files/upload';
+import { UPLOAD_STATUS_SET } from '@/types/files/upload';
 
 import { fileChatSelectors, filesSelectors } from './selectors';
 
@@ -30,6 +33,42 @@ describe('filesSelectors', () => {
 });
 
 describe('fileChatSelectors', () => {
+  describe('chatContextSelections', () => {
+    it('returns only the selections owned by the requested conversation', () => {
+      const selectionA: ChatContextContent = {
+        content: 'selection A',
+        id: 'selection-a',
+        type: 'text',
+      };
+      const selectionB: ChatContextContent = {
+        content: 'selection B',
+        id: 'selection-b',
+        type: 'text',
+      };
+      const state = {
+        ...initialState,
+        chatContextSelectionsByContext: {
+          'topic-a': [selectionA],
+          'topic-b': [selectionB],
+        },
+      } as FilesStoreState;
+
+      expect(fileChatSelectors.chatContextSelections('topic-a')(state)).toEqual([selectionA]);
+      expect(fileChatSelectors.chatContextSelections('topic-b')(state)).toEqual([selectionB]);
+      expect(fileChatSelectors.chatContextSelections('topic-c')(state)).toEqual([]);
+      expect(fileChatSelectors.chatContextSelectionHasItem('topic-a')(state)).toBe(true);
+      expect(fileChatSelectors.chatContextSelectionHasItem('topic-c')(state)).toBe(false);
+    });
+
+    it('returns the same empty list when no conversation key is available', () => {
+      const first = fileChatSelectors.chatContextSelections()(initialState);
+      const second = fileChatSelectors.chatContextSelections()(initialState);
+
+      expect(first).toBe(second);
+      expect(first).toEqual([]);
+    });
+  });
+
   describe('chatRawFileList', () => {
     it('should return a list of raw files', () => {
       const state = {

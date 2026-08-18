@@ -1,16 +1,19 @@
 import { isDesktop } from '@lobechat/const';
+import type { UserGeneralConfig } from '@lobechat/types';
 import { getSingletonAnalyticsOptional } from '@lobehub/analytics';
-import useSWR, { type SWRResponse } from 'swr';
-import type { PartialDeep } from 'type-fest';
-import type { StateCreator } from 'zustand/vanilla';
+import { type SWRResponse } from 'swr';
+import useSWR from 'swr';
+import { type PartialDeep } from 'type-fest';
 
 import { DEFAULT_PREFERENCE } from '@/const/user';
 import { mutate, useOnlyFetchOnceSWR } from '@/libs/swr';
+import { taskTemplateKeys, userKeys } from '@/libs/swr/keys';
 import { userService } from '@/services/user';
-import type { UserStore } from '@/store/user';
-import type { GlobalServerConfig } from '@/types/serverConfig';
+import { type StoreSetter } from '@/store/types';
+import { type UserStore } from '@/store/user';
+import { type GlobalServerConfig } from '@/types/serverConfig';
 import { type LobeUser, type UserInitializationState } from '@/types/user';
-import type { UserSettings } from '@/types/user/settings';
+import { type UserSettings } from '@/types/user/settings';
 import { merge } from '@/utils/merge';
 import { setNamespace } from '@/utils/storeDebug';
 
@@ -18,82 +21,95 @@ import { userGeneralSettingsSelectors } from '../settings/selectors';
 
 const n = setNamespace('common');
 
-const GET_USER_STATE_KEY = 'initUserState';
 /**
  * Common actions
  */
-export interface CommonAction {
-  refreshUserState: () => Promise<void>;
-  updateAvatar: (avatar: string) => Promise<void>;
-  updateFullName: (fullName: string) => Promise<void>;
-  updateInterests: (interests: string[]) => Promise<void>;
-  updateKeyVaultConfig: (provider: string, config: any) => Promise<void>;
-  updateUsername: (username: string) => Promise<void>;
-  useCheckTrace: (shouldFetch: boolean) => SWRResponse;
-  useInitUserState: (
-    isLogin: boolean | undefined,
-    serverConfig: GlobalServerConfig,
-    options?: {
-      onError?: (error: any) => void;
-      onSuccess: (data: UserInitializationState) => void;
-    },
-  ) => SWRResponse;
-}
 
-export const createCommonSlice: StateCreator<
-  UserStore,
-  [['zustand/devtools', never]],
-  [],
-  CommonAction
-> = (set, get) => ({
-  refreshUserState: async () => {
-    await mutate(GET_USER_STATE_KEY);
-  },
-  updateAvatar: async (avatar) => {
+type Setter = StoreSetter<UserStore>;
+export const createCommonSlice = (set: Setter, get: () => UserStore, _api?: unknown) =>
+  new CommonActionImpl(set, get, _api);
+
+export const isTaskTemplateRecommendationKey = (key: unknown): boolean =>
+  Array.isArray(key) && key[0] === taskTemplateKeys.listDailyRecommend.root;
+
+export class CommonActionImpl {
+  readonly #get: () => UserStore;
+  readonly #set: Setter;
+
+  constructor(set: Setter, get: () => UserStore, _api?: unknown) {
+    void _api;
+    this.#set = set;
+    this.#get = get;
+  }
+
+  refreshUserState = async (): Promise<void> => {
+    await mutate(userKeys.initState());
+  };
+
+  updateAvatar = async (avatar: string): Promise<void> => {
     await userService.updateAvatar(avatar);
-    await get().refreshUserState();
-  },
+    await this.#get().refreshUserState();
+  };
 
-  updateFullName: async (fullName) => {
+  updateFullName = async (fullName: string): Promise<void> => {
     await userService.updateFullName(fullName);
-    await get().refreshUserState();
-  },
+    await this.#get().refreshUserState();
+  };
 
-  updateInterests: async (interests) => {
+  updateInterests = async (interests: string[]): Promise<void> => {
+    const previousUser = this.#get().user;
+    if (previousUser) {
+      this.#set({ user: { ...previousUser, interests } }, false, n('updateInterests/optimistic'));
+    }
     await userService.updateInterests(interests);
-    await get().refreshUserState();
-  },
+    void mutate(isTaskTemplateRecommendationKey).catch((error) => {
+      console.error('[taskTemplate:recommendationCache:invalidate]', error);
+    });
+    await this.#get().refreshUserState();
+  };
 
-  updateKeyVaultConfig: async (provider, config) => {
-    await get().setSettings({ keyVaults: { [provider]: config } });
-  },
+  updateKeyVaultConfig = async (provider: string, config: any): Promise<void> => {
+    await this.#get().setSettings({ keyVaults: { [provider]: config } });
+  };
 
-  updateUsername: async (username) => {
+  updateUsername = async (username: string): Promise<void> => {
     await userService.updateUsername(username);
-    await get().refreshUserState();
-  },
+    await this.#get().refreshUserState();
+  };
 
-  useCheckTrace: (shouldFetch) =>
-    useSWR<boolean>(
-      shouldFetch ? 'checkTrace' : null,
+  useCheckTrace = (shouldFetch: boolean): SWRResponse<any> => {
+    return useSWR<boolean>(
+      shouldFetch ? userKeys.checkTrace() : null,
       () => {
-        const telemetry = userGeneralSettingsSelectors.telemetry(get());
+        const telemetry = userGeneralSettingsSelectors.telemetry(this.#get());
 
         // if user have set the telemetry, return false
         if (typeof telemetry === 'boolean') return Promise.resolve(false);
 
-        return Promise.resolve(get().isUserCanEnableTrace);
+        return Promise.resolve(this.#get().isUserCanEnableTrace);
       },
       {
         revalidateOnFocus: false,
       },
-    ),
-  useInitUserState: (isLogin, serverConfig, options) =>
-    useOnlyFetchOnceSWR<UserInitializationState>(
-      !!isLogin || isDesktop ? GET_USER_STATE_KEY : null,
+    );
+  };
+
+  useInitUserState = (
+    isLogin: boolean | undefined,
+    serverConfig: GlobalServerConfig,
+    options?: {
+      onError?: (error: any) => void;
+      onSuccess?: (data: UserInitializationState) => void;
+    },
+  ): SWRResponse => {
+    return useOnlyFetchOnceSWR<UserInitializationState>(
+      !!isLogin || isDesktop ? userKeys.initState() : null,
       () => userService.getUserState(),
       {
         onError: (error) => {
+          // Record the init failure so gated tabs (Advanced / ServiceModel) can
+          // render error + Retry instead of a permanent skeleton.
+          this.#set({ isUserStateInitError: error }, false, n('initUserState/error'));
           options?.onError?.(error);
         },
         onSuccess: (data) => {
@@ -107,7 +123,7 @@ export const createCommonSlice: StateCreator<
               systemAgent: serverConfig.systemAgent,
             };
 
-            const defaultSettings = merge(get().defaultSettings, serverSettings);
+            const defaultSettings = merge(this.#get().defaultSettings, serverSettings);
 
             // merge preference
             const isEmpty = Object.keys(data.preference || {}).length === 0;
@@ -116,7 +132,7 @@ export const createCommonSlice: StateCreator<
             // if there is avatar or userId (from client DB), update it into user
             const user =
               data.avatar || data.userId
-                ? merge(get().user, {
+                ? merge(this.#get().user, {
                     avatar: data.avatar,
                     email: data.email,
                     firstName: data.firstName,
@@ -126,9 +142,9 @@ export const createCommonSlice: StateCreator<
                     latestName: data.lastName,
                     username: data.username,
                   } as LobeUser)
-                : get().user;
+                : this.#get().user;
 
-            set(
+            this.#set(
               {
                 defaultSettings,
                 isFreePlan: data.isFreePlan,
@@ -136,7 +152,10 @@ export const createCommonSlice: StateCreator<
                 isShowPWAGuide: data.canEnablePWAGuide,
                 isUserCanEnableTrace: data.canEnableTrace,
                 isUserHasConversation: data.hasConversation,
+                isIdentityResolved: true,
+                isSignedIn: Boolean(data.userId) || this.#get().isSignedIn,
                 isUserStateInit: true,
+                isUserStateInitError: undefined,
                 onboarding: data.onboarding,
                 preference,
                 referralStatus: data.referralStatus,
@@ -147,6 +166,35 @@ export const createCommonSlice: StateCreator<
               false,
               n('initUserState'),
             );
+
+            const autoDetectedGeneralConfig: Partial<UserGeneralConfig> = {};
+            const currentGeneralSettings = data.settings?.general;
+
+            // Auto-detect and sync browser timezone on first load
+            if (!currentGeneralSettings?.timezone && typeof Intl !== 'undefined') {
+              const detectedTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+              if (detectedTimezone) autoDetectedGeneralConfig.timezone = detectedTimezone;
+            }
+
+            // Keep reply language aligned with the browser locale until the user makes a choice.
+            // Only auto-fill once onboarding has finished — otherwise it pre-empts the
+            // language step in the onboarding flow, skipping past the user's explicit choice.
+            const hasFinishedOnboarding = !!data.onboarding?.finishedAt;
+            if (
+              hasFinishedOnboarding &&
+              !currentGeneralSettings?.responseLanguage &&
+              typeof navigator !== 'undefined'
+            ) {
+              autoDetectedGeneralConfig.responseLanguage =
+                userGeneralSettingsSelectors.currentResponseLanguage(this.#get());
+            }
+
+            if (Object.keys(autoDetectedGeneralConfig).length > 0) {
+              this.#get()
+                .updateGeneralConfig(autoDetectedGeneralConfig)
+                .catch(() => {});
+            }
+
             //analytics
             const analytics = getSingletonAnalyticsOptional();
             analytics?.identify(data.userId || '', {
@@ -158,5 +206,8 @@ export const createCommonSlice: StateCreator<
           }
         },
       },
-    ),
-});
+    );
+  };
+}
+
+export type CommonAction = Pick<CommonActionImpl, keyof CommonActionImpl>;

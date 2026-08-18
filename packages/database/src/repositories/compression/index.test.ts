@@ -6,7 +6,7 @@ import { getTestDB } from '../../core/getTestDB';
 import { messageGroups, messages } from '../../schemas/message';
 import { topics } from '../../schemas/topic';
 import { users } from '../../schemas/user';
-import { LobeChatDatabase } from '../../type';
+import type { LobeChatDatabase } from '../../type';
 import { CompressionRepository } from './index';
 
 const userId = 'compression-test-user';
@@ -176,6 +176,169 @@ describe('CompressionRepository', () => {
     });
   });
 
+  describe('finalizeCompressionGroup', () => {
+    it('should supersede prior groups without deleting their messages', async () => {
+      await serverDB.insert(messages).values([
+        { content: 'Old question', id: 'msg-old-user', role: 'user', topicId, userId },
+        { content: 'Old answer', id: 'msg-old-assistant', role: 'assistant', topicId, userId },
+        { content: 'Recent question', id: 'msg-new-user', role: 'user', topicId, userId },
+        { content: 'Recent answer', id: 'msg-new-assistant', role: 'assistant', topicId, userId },
+      ]);
+      const oldGroupId = await compressionRepo.createCompressionGroup({
+        content: 'Old summary',
+        messageIds: ['msg-old-user', 'msg-old-assistant'],
+        metadata: { originalMessageCount: 2 },
+        topicId,
+      });
+      const newGroupId = await compressionRepo.createCompressionGroup({
+        content: '...',
+        messageIds: ['msg-new-user', 'msg-new-assistant'],
+        metadata: { originalMessageCount: 2 },
+        topicId,
+      });
+
+      await compressionRepo.finalizeCompressionGroup({
+        content: 'Combined summary',
+        groupId: newGroupId,
+        sourceGroupIds: [oldGroupId],
+        topicId,
+      });
+
+      const groups = await compressionRepo.getCompressionGroups(topicId);
+      expect(groups).toHaveLength(1);
+      expect(groups[0]).toMatchObject({ content: 'Combined summary', id: newGroupId });
+
+      const compressedMessages = await compressionRepo.getCompressedMessages(newGroupId);
+      expect(compressedMessages.map((message) => message.id)).toEqual(
+        expect.arrayContaining([
+          'msg-old-user',
+          'msg-old-assistant',
+          'msg-new-user',
+          'msg-new-assistant',
+        ]),
+      );
+      expect(compressedMessages).toHaveLength(4);
+    });
+
+    it('should not supersede groups outside the target topic', async () => {
+      await serverDB.insert(topics).values({ id: 'other-topic', userId });
+      await serverDB.insert(messages).values([
+        { content: 'Target', id: 'msg-target', role: 'user', topicId, userId },
+        {
+          content: 'Other topic',
+          id: 'msg-other-topic',
+          role: 'user',
+          topicId: 'other-topic',
+          userId,
+        },
+      ]);
+      const otherGroupId = await compressionRepo.createCompressionGroup({
+        content: 'Other summary',
+        messageIds: ['msg-other-topic'],
+        metadata: { originalMessageCount: 1 },
+        topicId: 'other-topic',
+      });
+      const targetGroupId = await compressionRepo.createCompressionGroup({
+        content: '...',
+        messageIds: ['msg-target'],
+        metadata: { originalMessageCount: 1 },
+        topicId,
+      });
+
+      await compressionRepo.finalizeCompressionGroup({
+        content: 'Target summary',
+        groupId: targetGroupId,
+        sourceGroupIds: [otherGroupId],
+        topicId,
+      });
+
+      expect(await compressionRepo.getCompressionGroups('other-topic')).toHaveLength(1);
+      expect(await compressionRepo.getCompressedMessages(otherGroupId)).toHaveLength(1);
+    });
+  });
+
+  describe('updateMetadata', () => {
+    it('should update metadata jsonb column on a compression group', async () => {
+      const groupId = await compressionRepo.createCompressionGroup({
+        content: 'Summary',
+        messageIds: [],
+        metadata: {},
+        topicId,
+      });
+
+      await compressionRepo.updateMetadata(groupId, { expanded: true } as any);
+
+      // Query metadata column directly since getCompressionGroups returns description-based metadata
+      const { eq, and } = await import('drizzle-orm');
+      const [group] = await serverDB
+        .select({ metadata: messageGroups.metadata })
+        .from(messageGroups)
+        .where(and(eq(messageGroups.id, groupId), eq(messageGroups.userId, userId)));
+      expect((group.metadata as any)?.expanded).toBe(true);
+    });
+
+    it('should merge with existing metadata', async () => {
+      const groupId = await compressionRepo.createCompressionGroup({
+        content: 'Summary',
+        messageIds: [],
+        metadata: {},
+        topicId,
+      });
+
+      await compressionRepo.updateMetadata(groupId, { expanded: true } as any);
+      await compressionRepo.updateMetadata(groupId, { collapsed: false } as any);
+
+      const { eq, and } = await import('drizzle-orm');
+      const [group] = await serverDB
+        .select({ metadata: messageGroups.metadata })
+        .from(messageGroups)
+        .where(and(eq(messageGroups.id, groupId), eq(messageGroups.userId, userId)));
+      const meta = group.metadata as any;
+      expect(meta?.expanded).toBe(true);
+      expect(meta?.collapsed).toBe(false);
+    });
+
+    it('should handle updating metadata on non-existent group gracefully', async () => {
+      // Should not throw
+      await compressionRepo.updateMetadata('non-existent-group-id', { expanded: true } as any);
+    });
+  });
+
+  describe('updateCompressionContent with metadata merge', () => {
+    it('should merge description metadata when updating content', async () => {
+      const groupId = await compressionRepo.createCompressionGroup({
+        content: 'Original summary',
+        messageIds: [],
+        metadata: { originalTokenCount: 1000 },
+        topicId,
+      });
+
+      await compressionRepo.updateCompressionContent(groupId, 'Updated summary', {
+        compressedTokenCount: 100,
+      });
+
+      const groups = await compressionRepo.getCompressionGroups(topicId);
+      expect(groups[0].content).toBe('Updated summary');
+      // Verify the description-based metadata was merged
+      expect((groups[0].metadata as any)?.originalTokenCount).toBe(1000);
+      expect((groups[0].metadata as any)?.compressedTokenCount).toBe(100);
+    });
+
+    it('should update content without metadata', async () => {
+      const groupId = await compressionRepo.createCompressionGroup({
+        content: 'Original',
+        messageIds: [],
+        metadata: {},
+        topicId,
+      });
+
+      await compressionRepo.updateCompressionContent(groupId, 'New content');
+
+      const groups = await compressionRepo.getCompressionGroups(topicId);
+      expect(groups[0].content).toBe('New content');
+    });
+  });
+
   describe('toggleMessagePin', () => {
     it('should pin a message', async () => {
       await serverDB.insert(messages).values({
@@ -267,7 +430,7 @@ describe('CompressionRepository', () => {
       });
 
       // Verify messages are compressed
-      let compressedMessages = await compressionRepo.getCompressedMessages(groupId);
+      const compressedMessages = await compressionRepo.getCompressedMessages(groupId);
       expect(compressedMessages).toHaveLength(2);
 
       // Delete the group
@@ -307,7 +470,7 @@ describe('CompressionRepository', () => {
   });
 
   /**
-   * Tests for LOBE-2066: MessageGroup aggregation in queryMessage
+   * Tests for MessageGroup aggregation in queryMessage
    *
    * These tests verify the expected behavior for querying messages with compression groups,
    * specifically focusing on:
@@ -315,7 +478,7 @@ describe('CompressionRepository', () => {
    * 2. Compression groups should appear as aggregated nodes
    * 3. Pinned (favorite) messages within compression groups should be extracted
    */
-  describe('MessageGroup aggregation query scenarios (LOBE-2066)', () => {
+  describe('MessageGroup aggregation query scenarios', () => {
     describe('compressed messages filtering', () => {
       it('should exclude compressed messages from uncompressed query', async () => {
         // Setup: Create 5 messages, compress 3 of them

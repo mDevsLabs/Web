@@ -1,12 +1,12 @@
-/* eslint-disable unicorn/prefer-top-level-await */
-import prettier from '@prettier/sync';
-import { consola } from 'consola';
-import { colors } from 'consola/utils';
-import { readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
+import { readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-import { toLodashPath } from '../../src/locales/utils';
+import prettier from '@prettier/sync';
+import { consola } from 'consola';
+import { colors } from 'consola/utils';
+
+import { toLodashPath } from '../../packages/locales/src/utils';
 import { localeDir, localeDirJsonList, localesDir, srcDefaultLocales } from './const';
 
 const prettierOptions = prettier.resolveConfig(resolve(__dirname, '../../.prettierrc.js')) ?? {};
@@ -123,7 +123,7 @@ const flattenLocaleJsons = () => {
 };
 
 const run = async () => {
-  consola.start('Flattening src/locales/default...');
+  consola.start('Flattening packages/locales/src/default...');
   await flattenDefaultLocales();
 
   consola.start('Flattening locales JSON files...');
@@ -134,6 +134,6 @@ const run = async () => {
 
 run().catch((error) => {
   consola.error(error);
-  // eslint-disable-next-line unicorn/no-process-exit
+
   process.exit(1);
 });

@@ -1,7 +1,8 @@
 import { isProviderDisableBrowserRequest } from 'model-bank/modelProviders';
 
 import { type AIProviderStoreState } from '@/store/aiInfra/initialState';
-import { type AiProviderRuntimeConfig, AiProviderSourceEnum } from '@/types/aiProvider';
+import { type AiProviderRuntimeConfig } from '@/types/aiProvider';
+import { AiProviderSourceEnum } from '@/types/aiProvider';
 import { type GlobalLLMProviderKey } from '@/types/user/settings';
 
 // List
@@ -14,7 +15,13 @@ const disabledAiProviderList = (s: AIProviderStoreState) =>
 const disabledCustomAiProviderList = (s: AIProviderStoreState) =>
   s.aiProviderList.filter((item) => !item.enabled && item.source === AiProviderSourceEnum.Custom);
 
+const enabledEmbeddingModelList = (s: AIProviderStoreState) => s.enabledEmbeddingModelList || [];
+
 const enabledImageModelList = (s: AIProviderStoreState) => s.enabledImageModelList || [];
+
+const enabledVideoModelList = (s: AIProviderStoreState) => s.enabledVideoModelList || [];
+
+const hiddenBuiltinModels = (s: AIProviderStoreState) => s.hiddenBuiltinModels;
 
 const isProviderEnabled = (id: string) => (s: AIProviderStoreState) =>
   enabledAiProviderList(s).some((i) => i.id === id);
@@ -134,7 +141,10 @@ export const aiProviderSelectors = {
   disabledAiProviderList,
   disabledCustomAiProviderList,
   enabledAiProviderList,
+  enabledEmbeddingModelList,
   enabledImageModelList,
+  enabledVideoModelList,
+  hiddenBuiltinModels,
   isActiveProviderApiKeyNotEmpty,
   isActiveProviderEndpointNotEmpty,
   isAiProviderConfigLoading,

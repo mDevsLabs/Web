@@ -1,16 +1,27 @@
 import { imageUrlToBase64 } from '@lobechat/utils';
 import { cleanObject } from '@lobechat/utils/object';
 import createDebug from 'debug';
-import { RuntimeImageGenParamsValue } from 'model-bank';
-import OpenAI from 'openai';
+import type { RuntimeImageGenParamsValue } from 'model-bank';
+import type OpenAI from 'openai';
 
-import { CreateImagePayload, CreateImageResponse } from '../../types/image';
+import type {
+  CreateImageMethodOptions,
+  CreateImagePayload,
+  CreateImageResponse,
+} from '../../types/image';
 import { getModelPricing } from '../../utils/getModelPricing';
 import { parseDataUri } from '../../utils/uriParser';
 import { convertImageUrlToFile } from '../contextBuilders/openai';
 import { convertOpenAIImageUsage } from '../usageConverters/openai';
 
 const log = createDebug('lobe-image:openai-compatible');
+
+interface CreateOpenAICompatibleImageOptions {
+  pricingContext?: CreateImageMethodOptions['pricingContext'];
+  pricingModel?: string;
+  requestModel?: string;
+  routingModel?: string;
+}
 
 /**
  * Generate images using traditional OpenAI images API (DALL-E, etc.)
@@ -19,10 +30,13 @@ async function generateByImageMode(
   client: OpenAI,
   payload: CreateImagePayload,
   provider: string,
+  imageOptions?: CreateOpenAICompatibleImageOptions,
 ): Promise<CreateImageResponse> {
   const { model, params } = payload;
+  const requestModel = imageOptions?.requestModel ?? model;
+  const routingModel = imageOptions?.routingModel ?? model;
 
-  log('Creating image with model: %s and params: %O', model, params);
+  log('Creating image with model: %s and params: %O', requestModel, params);
 
   // Map parameter names, mapping imageUrls to image
   const paramsMap = new Map<RuntimeImageGenParamsValue, string>([
@@ -54,7 +68,7 @@ async function generateByImageMode(
       // According to official docs, if there are multiple images, pass an array; if only one, pass a single File
       userInput.image = imageFiles.length === 1 ? imageFiles[0] : imageFiles;
     } catch (error) {
-      throw new Error(`Failed to convert image URLs to File objects: ${error}`);
+      throw new Error(`Failed to convert image URLs to File objects: ${error}`, { cause: error });
     }
   } else {
     delete userInput.image;
@@ -64,17 +78,22 @@ async function generateByImageMode(
     delete userInput.size;
   }
 
+  // gpt-image-2 dropped input_fidelity ("output is already high fidelity by default").
+  // https://developers.openai.com/cookbook/examples/multimodal/image-gen-models-prompting-guide
+  // Match the gpt-image-1 family (including dated snapshots like
+  // `gpt-image-1-2025-04-15` and the `.5` variant), but exclude the mini tier.
+  const isGptImage1Family = /^gpt-image-1(?:$|[-.])/.test(routingModel);
+  const supportsInputFidelity = isImageEdit && isGptImage1Family && !routingModel.includes('mini');
+
   const defaultInput = {
     n: 1,
-    ...(model.includes('dall-e') ? { response_format: 'b64_json' } : {}),
+    ...(routingModel.includes('dall-e') ? { response_format: 'b64_json' } : {}),
     // https://platform.openai.com/docs/api-reference/images/createEdit#images_createedit-input_fidelity
-    ...(isImageEdit && model.includes('gpt-image-') && !model.includes('mini')
-      ? { input_fidelity: 'high' }
-      : {}),
+    ...(supportsInputFidelity ? { input_fidelity: 'high' } : {}),
   };
 
   const options = cleanObject({
-    model,
+    model: requestModel,
     ...defaultInput,
     ...userInput,
   });
@@ -121,7 +140,14 @@ async function generateByImageMode(
     imageUrl,
     ...(img.usage
       ? {
-          modelUsage: convertOpenAIImageUsage(img.usage, await getModelPricing(model, provider)),
+          modelUsage: convertOpenAIImageUsage(
+            img.usage,
+            await getModelPricing(
+              imageOptions?.pricingModel ?? routingModel,
+              provider,
+              imageOptions?.pricingContext,
+            ),
+          ),
         }
       : {}),
   };
@@ -153,9 +179,10 @@ async function processImageUrlForChat(imageUrl: string): Promise<string> {
 async function generateByChatModel(
   client: OpenAI,
   payload: CreateImagePayload,
+  requestModel?: string,
 ): Promise<CreateImageResponse> {
   const { model, params } = payload;
-  const actualModel = model.replace(':image', ''); // Remove :image suffix
+  const actualModel = (requestModel ?? model).replace(':image', ''); // Remove :image suffix
 
   log('Creating image via chat API with model: %s and params: %O', actualModel, params);
 
@@ -180,7 +207,7 @@ async function generateByChatModel(
       });
       log('Successfully processed image URL for chat input');
     } catch (error) {
-      throw new Error(`Failed to process image URL: ${error}`);
+      throw new Error(`Failed to process image URL: ${error}`, { cause: error });
     }
   }
 
@@ -227,14 +254,16 @@ export async function createOpenAICompatibleImage(
   client: OpenAI,
   payload: CreateImagePayload,
   provider: string,
+  options?: CreateOpenAICompatibleImageOptions,
 ): Promise<CreateImageResponse> {
   const { model } = payload;
+  const routingModel = options?.routingModel ?? model;
 
   // Check if it's a chat model for image generation (via :image suffix)
-  if (model.endsWith(':image')) {
-    return await generateByChatModel(client, payload);
+  if (routingModel.endsWith(':image')) {
+    return await generateByChatModel(client, payload, options?.requestModel);
   }
 
   // Default to traditional images API
-  return await generateByImageMode(client, payload, provider);
+  return await generateByImageMode(client, payload, provider, options);
 }

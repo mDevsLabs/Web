@@ -1,38 +1,32 @@
-import { ENABLE_BUSINESS_FEATURES } from '@lobechat/business-const';
-import { type StateCreator } from 'zustand';
-
-import { markUserValidAction } from '@/business/client/markUserValidAction';
+import { handleGenerationPromptModerationError } from '@/business/client/handleGenerationPromptModerationError';
+import { handleLobeHubModelDeprecatedError } from '@/business/client/handleLobeHubModelDeprecatedError';
 import { imageService } from '@/services/image';
+import { type StoreSetter } from '@/store/types';
 
 import { type ImageStore } from '../../store';
 import { generationBatchSelectors } from '../generationBatch/selectors';
 import { imageGenerationConfigSelectors } from '../generationConfig/selectors';
 import { generationTopicSelectors } from '../generationTopic';
 
-// ====== action interface ====== //
+type Setter = StoreSetter<ImageStore>;
+export const createCreateImageSlice = (set: Setter, get: () => ImageStore, _api?: unknown) =>
+  new CreateImageActionImpl(set, get, _api);
 
-export interface CreateImageAction {
-  createImage: () => Promise<void>;
-  /**
-   * eg: invalid api key, recreate image
-   */
-  recreateImage: (generationBatchId: string) => Promise<void>;
-}
+export class CreateImageActionImpl {
+  readonly #get: () => ImageStore;
+  readonly #set: Setter;
 
-// ====== helper functions ====== //
+  constructor(set: Setter, get: () => ImageStore, _api?: unknown) {
+    // keep signature aligned with StateCreator params: (set, get, api)
+    void _api;
+    this.#set = set;
+    this.#get = get;
+  }
 
-// ====== action implementation ====== //
-
-export const createCreateImageSlice: StateCreator<
-  ImageStore,
-  [['zustand/devtools', never]],
-  [],
-  CreateImageAction
-> = (set, get) => ({
   async createImage() {
-    set({ isCreating: true }, false, 'createImage/startCreateImage');
+    this.#set({ isCreating: true }, false, 'createImage/startCreateImage');
 
-    const store = get();
+    const store = this.#get();
     const imageNum = imageGenerationConfigSelectors.imageNum(store);
     const parameters = imageGenerationConfigSelectors.parameters(store);
     const provider = imageGenerationConfigSelectors.provider(store);
@@ -52,7 +46,7 @@ export const createCreateImageSlice: StateCreator<
     let finalTopicId = activeGenerationTopicId;
 
     // 1. Create generation topic if not exists
-    let generationTopicId = activeGenerationTopicId;
+    const generationTopicId = activeGenerationTopicId;
     let isNewTopic = false;
 
     if (!generationTopicId) {
@@ -71,11 +65,11 @@ export const createCreateImageSlice: StateCreator<
     try {
       // 4. If it's a new topic, set the creating state after topic creation
       if (isNewTopic) {
-        set({ isCreatingWithNewTopic: true }, false, 'createImage/startCreateImageWithNewTopic');
-      }
-
-      if (ENABLE_BUSINESS_FEATURES) {
-        markUserValidAction();
+        this.#set(
+          { isCreatingWithNewTopic: true },
+          false,
+          'createImage/startCreateImageWithNewTopic',
+        );
       }
 
       // 5. Create image via service
@@ -89,35 +83,39 @@ export const createCreateImageSlice: StateCreator<
 
       // 6. Only refresh generation batches if it's not a new topic
       if (!isNewTopic) {
-        await get().refreshGenerationBatches();
+        await this.#get().refreshGenerationBatches();
       }
 
       // 7. Clear the prompt input after successful image creation
-      set(
+      this.#set(
         (state) => ({
           parameters: { ...state.parameters, prompt: '' },
         }),
         false,
         'createImage/clearPrompt',
       );
+    } catch (error) {
+      handleGenerationPromptModerationError(error);
+      handleLobeHubModelDeprecatedError(error);
+      throw error;
     } finally {
       // 8. Reset all creating states
       if (isNewTopic) {
-        set(
+        this.#set(
           { isCreating: false, isCreatingWithNewTopic: false },
           false,
           'createImage/endCreateImageWithNewTopic',
         );
       } else {
-        set({ isCreating: false }, false, 'createImage/endCreateImage');
+        this.#set({ isCreating: false }, false, 'createImage/endCreateImage');
       }
     }
-  },
+  }
 
   async recreateImage(generationBatchId: string) {
-    set({ isCreating: true }, false, 'recreateImage/startCreateImage');
+    this.#set({ isCreating: true }, false, 'recreateImage/startCreateImage');
 
-    const store = get();
+    const store = this.#get();
     const activeGenerationTopicId = generationTopicSelectors.activeGenerationTopicId(store);
     if (!activeGenerationTopicId) {
       throw new Error('No active generation topic');
@@ -144,8 +142,14 @@ export const createCreateImageSlice: StateCreator<
 
       // 3. Refresh generation batches to show the real data
       await store.refreshGenerationBatches();
+    } catch (error) {
+      handleGenerationPromptModerationError(error);
+      handleLobeHubModelDeprecatedError(error);
+      throw error;
     } finally {
-      set({ isCreating: false }, false, 'recreateImage/endCreateImage');
+      this.#set({ isCreating: false }, false, 'recreateImage/endCreateImage');
     }
-  },
-});
+  }
+}
+
+export type CreateImageAction = Pick<CreateImageActionImpl, keyof CreateImageActionImpl>;

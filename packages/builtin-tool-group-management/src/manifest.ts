@@ -7,7 +7,6 @@ import { GroupManagementApiName } from './types';
 export const GroupManagementIdentifier = 'lobe-group-management';
 
 export const GroupManagementManifest: BuiltinToolManifest = {
-  /* eslint-disable sort-keys-fix/sort-keys-fix */
   api: [
     // ==================== Communication Coordination ====================
     {
@@ -100,9 +99,9 @@ export const GroupManagementManifest: BuiltinToolManifest = {
             description: 'Brief title describing what this task does (shown in UI).',
             type: 'string',
           },
-          task: {
+          instruction: {
             description:
-              'Clear description of the task to perform. Be specific about expected deliverables.',
+              'Clear instruction describing the task to perform. Be specific about expected deliverables.',
             type: 'string',
           },
           ...(isDesktop && {
@@ -125,57 +124,56 @@ export const GroupManagementManifest: BuiltinToolManifest = {
             type: 'boolean',
           },
         },
-        required: ['agentId', 'title', 'task'],
+        required: ['agentId', 'title', 'instruction'],
         type: 'object',
       },
     },
-    // TODO: Enable executeAgentTasks when ready
-    // {
-    //   description:
-    //     'Assign multiple tasks to different agents to run in parallel. Each agent works independently in their own context. Use this when you need multiple agents to work on different parts of a problem simultaneously.',
-    //   name: GroupManagementApiName.executeAgentTasks,
-    //   humanIntervention: 'required',
-    //   parameters: {
-    //     properties: {
-    //       tasks: {
-    //         description: 'Array of tasks, each assigned to a specific agent.',
-    //         items: {
-    //           properties: {
-    //             agentId: {
-    //               description: 'The ID of the agent to execute this task.',
-    //               type: 'string',
-    //             },
-    //             title: {
-    //               description: 'Brief title describing what this task does (shown in UI).',
-    //               type: 'string',
-    //             },
-    //             instruction: {
-    //               description:
-    //                 'Detailed instruction/prompt for the task execution. Be specific about expected deliverables.',
-    //               type: 'string',
-    //             },
-    //             timeout: {
-    //               description:
-    //                 'Optional timeout in milliseconds for this task (default: 1800000, 30 minutes).',
-    //               type: 'number',
-    //             },
-    //           },
-    //           required: ['agentId', 'title', 'instruction'],
-    //           type: 'object',
-    //         },
-    //         type: 'array',
-    //       },
-    //       skipCallSupervisor: {
-    //         default: false,
-    //         description:
-    //           'If true, the orchestration will end after all tasks complete, without calling the supervisor again.',
-    //         type: 'boolean',
-    //       },
-    //     },
-    //     required: ['tasks'],
-    //     type: 'object',
-    //   },
-    // },
+    {
+      description:
+        'Assign multiple tasks to different agents to run in parallel. Each agent works independently in their own context. Use this when you need multiple agents to work on different parts of a problem simultaneously.',
+      name: GroupManagementApiName.executeAgentTasks,
+      humanIntervention: 'required',
+      parameters: {
+        properties: {
+          tasks: {
+            description: 'Array of tasks, each assigned to a specific agent.',
+            items: {
+              properties: {
+                agentId: {
+                  description: 'The ID of the agent to execute this task.',
+                  type: 'string',
+                },
+                title: {
+                  description: 'Brief title describing what this task does (shown in UI).',
+                  type: 'string',
+                },
+                instruction: {
+                  description:
+                    'Detailed instruction for the agent to execute. Be specific about expected deliverables.',
+                  type: 'string',
+                },
+                timeout: {
+                  description:
+                    'Optional timeout in milliseconds for this task (default: 1800000, 30 minutes).',
+                  type: 'number',
+                },
+              },
+              required: ['agentId', 'title', 'instruction'],
+              type: 'object',
+            },
+            type: 'array',
+          },
+          skipCallSupervisor: {
+            default: false,
+            description:
+              'If true, the orchestration will end after all tasks complete, without calling the supervisor again.',
+            type: 'boolean',
+          },
+        },
+        required: ['tasks'],
+        type: 'object',
+      },
+    },
     // {
     //   description:
     //     'Interrupt a running agent task. Use this to stop a task that is taking too long or is no longer needed.',

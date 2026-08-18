@@ -1,3 +1,3 @@
-export default function Billing() {
-  return null;
-}
+const Billing = () => null;
+
+export default Billing;

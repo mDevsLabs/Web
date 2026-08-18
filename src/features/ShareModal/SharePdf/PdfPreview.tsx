@@ -1,8 +1,9 @@
 'use client';
 
 import { LoadingOutlined } from '@ant-design/icons';
-import { Button, Flexbox } from '@lobehub/ui';
-import { Input, Modal, Spin } from 'antd';
+import { Flexbox } from '@lobehub/ui';
+import { Button, createModal } from '@lobehub/ui/base-ui';
+import { Input, Spin } from 'antd';
 import { createStaticStyles, cx } from 'antd-style';
 import { ChevronLeft, ChevronRight, Expand, FileText } from 'lucide-react';
 import { memo, useState } from 'react';
@@ -47,7 +48,7 @@ const styles = createStaticStyles(({ css }) => ({
     position: absolute;
     z-index: 10;
     inset-block-end: 0;
-    inset-inline: 0 0;
+    inset-inline: 0;
 
     padding: 12px;
     border-block-start: 1px solid color-mix(in srgb, black 10%, transparent);
@@ -123,6 +124,98 @@ const styles = createStaticStyles(({ css }) => ({
   `,
 }));
 
+interface FullscreenContentProps {
+  initialPage: number;
+  pdfDataUri: string;
+}
+
+const FullscreenContent = memo<FullscreenContentProps>(({ pdfDataUri, initialPage }) => {
+  const [numPages, setNumPages] = useState<number>(0);
+  const [pageNumber, setPageNumber] = useState<number>(initialPage);
+
+  const goToPrev = () => {
+    if (pageNumber > 1) setPageNumber(pageNumber - 1);
+  };
+
+  const goToNext = () => {
+    if (pageNumber < numPages) setPageNumber(pageNumber + 1);
+  };
+
+  const goToPage = (page: number) => {
+    if (page >= 1 && page <= numPages) setPageNumber(page);
+  };
+
+  return (
+    <div className={styles.fullscreenModal}>
+      <div className={styles.fullscreenContent}>
+        <Document
+          file={pdfDataUri}
+          onLoadSuccess={({ numPages: total }: { numPages: number }) => setNumPages(total)}
+        >
+          <Page
+            pageNumber={pageNumber}
+            renderAnnotationLayer={false}
+            renderTextLayer={false}
+            width={Math.min(window.innerWidth * 0.8, 1000)}
+          />
+        </Document>
+      </div>
+
+      {numPages > 1 && (
+        <div className={styles.fullscreenNavigation}>
+          <Flexbox horizontal align="center" gap={12}>
+            <Button
+              className={styles.fullscreenButton}
+              disabled={pageNumber <= 1}
+              icon={<ChevronLeft size={16} />}
+              size="small"
+              type="text"
+              onClick={goToPrev}
+            />
+            <Flexbox horizontal align="center" gap={8}>
+              <Input
+                className={styles.fullscreenPageInput}
+                max={numPages}
+                min={1}
+                size="small"
+                type="number"
+                value={pageNumber}
+                onChange={(e) => {
+                  const value = parseInt(e.target.value);
+                  if (!isNaN(value)) goToPage(value);
+                }}
+              />
+              <span className={styles.fullscreenPageText}>/ {numPages}</span>
+            </Flexbox>
+            <Button
+              className={styles.fullscreenButton}
+              disabled={pageNumber >= numPages}
+              icon={<ChevronRight size={16} />}
+              size="small"
+              type="text"
+              onClick={goToNext}
+            />
+          </Flexbox>
+        </div>
+      )}
+    </div>
+  );
+});
+
+FullscreenContent.displayName = 'PdfFullscreenContent';
+
+const openPdfFullscreenModal = (pdfDataUri: string, initialPage: number) =>
+  createModal({
+    content: <FullscreenContent initialPage={initialPage} pdfDataUri={pdfDataUri} />,
+    footer: null,
+    maskClosable: true,
+    styles: {
+      content: { padding: 0 },
+      header: { display: 'none' },
+    },
+    width: '95vw',
+  });
+
 interface PdfPreviewProps {
   loading: boolean;
   onGeneratePdf?: () => void;
@@ -134,11 +227,8 @@ const PdfPreview = memo<PdfPreviewProps>(({ loading, pdfData, onGeneratePdf }) =
   const { t } = useTranslation('chat');
   const isMobile = useIsMobile();
 
-  // Page navigation state
   const [numPages, setNumPages] = useState<number>(0);
   const [pageNumber, setPageNumber] = useState<number>(1);
-  const [fullscreenOpen, setFullscreenOpen] = useState(false);
-  const [fullscreenPageNumber, setFullscreenPageNumber] = useState<number>(1);
 
   const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
     setNumPages(numPages);
@@ -163,31 +253,6 @@ const PdfPreview = memo<PdfPreviewProps>(({ loading, pdfData, onGeneratePdf }) =
     }
   };
 
-  const handleFullscreen = () => {
-    if (pdfData) {
-      setFullscreenPageNumber(pageNumber);
-      setFullscreenOpen(true);
-    }
-  };
-
-  const goToFullscreenPrevPage = () => {
-    if (fullscreenPageNumber > 1) {
-      setFullscreenPageNumber(fullscreenPageNumber - 1);
-    }
-  };
-
-  const goToFullscreenNextPage = () => {
-    if (fullscreenPageNumber < numPages) {
-      setFullscreenPageNumber(fullscreenPageNumber + 1);
-    }
-  };
-
-  const goToFullscreenPage = (page: number) => {
-    if (page >= 1 && page <= numPages) {
-      setFullscreenPageNumber(page);
-    }
-  };
-
   if (loading) {
     return (
       <div
@@ -209,7 +274,7 @@ const PdfPreview = memo<PdfPreviewProps>(({ loading, pdfData, onGeneratePdf }) =
         style={{ padding: 12 }}
       >
         <div className={localStyles.emptyState}>
-          <Button icon={<FileText size={20} />} onClick={onGeneratePdf} size="large" type="primary">
+          <Button icon={<FileText size={20} />} size="large" type="primary" onClick={onGeneratePdf}>
             {t('shareModal.generatePdf')}
           </Button>
         </div>
@@ -217,150 +282,86 @@ const PdfPreview = memo<PdfPreviewProps>(({ loading, pdfData, onGeneratePdf }) =
     );
   }
 
-  // Convert base64 to data URI
   const pdfDataUri = `data:application/pdf;base64,${pdfData}`;
 
+  const handleFullscreen = () => {
+    if (pdfData) openPdfFullscreenModal(pdfDataUri, pageNumber);
+  };
+
   return (
-    <>
-      <div className={localStyles.containerWrapper}>
-        {pdfData && (
-          <Button
-            className={localStyles.expandButton}
-            icon={<Expand size={16} />}
-            onClick={handleFullscreen}
-            size="small"
-            type="text"
-          />
-        )}
+    <div className={localStyles.containerWrapper}>
+      {pdfData && (
+        <Button
+          className={localStyles.expandButton}
+          icon={<Expand size={16} />}
+          size="small"
+          type="text"
+          onClick={handleFullscreen}
+        />
+      )}
 
-        <div
-          className={cx(
-            containerStyles.preview,
-            containerStyles.previewWide,
-            localStyles.previewContainer,
-          )}
+      <div
+        className={cx(
+          containerStyles.preview,
+          containerStyles.previewWide,
+          localStyles.previewContainer,
+        )}
+      >
+        <Document
+          file={pdfDataUri}
+          loading={
+            <div className={localStyles.documentLoading}>
+              <Spin />
+              <div className={localStyles.loadingText}>{t('shareModal.loadingPdf')}</div>
+            </div>
+          }
+          onLoadSuccess={onDocumentLoadSuccess}
         >
-          <Document
-            file={pdfDataUri}
-            loading={
-              <div className={localStyles.documentLoading}>
-                <Spin />
-                <div className={localStyles.loadingText}>{t('shareModal.loadingPdf')}</div>
-              </div>
-            }
-            onLoadSuccess={onDocumentLoadSuccess}
-          >
-            <Page
-              pageNumber={pageNumber}
-              renderAnnotationLayer={false}
-              renderTextLayer={false}
-              width={isMobile ? 300 : 400}
-            />
-          </Document>
-        </div>
-
-        {/* 页脚导航 */}
-        {pdfData && numPages > 1 && (
-          <div className={localStyles.footerNavigation}>
-            <Flexbox align="center" gap={8} horizontal justify="center">
-              <Button
-                disabled={pageNumber <= 1}
-                icon={<ChevronLeft size={16} />}
-                onClick={goToPrevPage}
-                size="small"
-                type="text"
-              />
-              <Flexbox align="center" gap={4} horizontal>
-                <Input
-                  className={localStyles.pageInput}
-                  max={numPages}
-                  min={1}
-                  onChange={(e) => {
-                    const value = parseInt(e.target.value);
-                    if (!isNaN(value)) goToPage(value);
-                  }}
-                  size="small"
-                  type="number"
-                  value={pageNumber}
-                />
-                <span className={localStyles.pageNumberText}>/ {numPages}</span>
-              </Flexbox>
-              <Button
-                disabled={pageNumber >= numPages}
-                icon={<ChevronRight size={16} />}
-                onClick={goToNextPage}
-                size="small"
-                type="text"
-              />
-            </Flexbox>
-          </div>
-        )}
+          <Page
+            pageNumber={pageNumber}
+            renderAnnotationLayer={false}
+            renderTextLayer={false}
+            width={isMobile ? 300 : 400}
+          />
+        </Document>
       </div>
 
-      {/* 全屏模态框 */}
-      <Modal
-        centered
-        footer={null}
-        onCancel={() => setFullscreenOpen(false)}
-        open={fullscreenOpen}
-        styles={{
-          body: { padding: 0 },
-        }}
-        width="95vw"
-      >
-        <div className={localStyles.fullscreenModal}>
-          <div className={localStyles.fullscreenContent}>
-            <Document file={pdfDataUri} onLoadSuccess={onDocumentLoadSuccess}>
-              <Page
-                pageNumber={fullscreenPageNumber}
-                renderAnnotationLayer={false}
-                renderTextLayer={false}
-                width={Math.min(window.innerWidth * 0.8, 1000)}
+      {pdfData && numPages > 1 && (
+        <div className={localStyles.footerNavigation}>
+          <Flexbox horizontal align="center" gap={8} justify="center">
+            <Button
+              disabled={pageNumber <= 1}
+              icon={<ChevronLeft size={16} />}
+              size="small"
+              type="text"
+              onClick={goToPrevPage}
+            />
+            <Flexbox horizontal align="center" gap={4}>
+              <Input
+                className={localStyles.pageInput}
+                max={numPages}
+                min={1}
+                size="small"
+                type="number"
+                value={pageNumber}
+                onChange={(e) => {
+                  const value = parseInt(e.target.value);
+                  if (!isNaN(value)) goToPage(value);
+                }}
               />
-            </Document>
-          </div>
-
-          {/* 全屏模式下的导航 */}
-          {numPages > 1 && (
-            <div className={localStyles.fullscreenNavigation}>
-              <Flexbox align="center" gap={12} horizontal>
-                <Button
-                  className={localStyles.fullscreenButton}
-                  disabled={fullscreenPageNumber <= 1}
-                  icon={<ChevronLeft size={16} />}
-                  onClick={goToFullscreenPrevPage}
-                  size="small"
-                  type="text"
-                />
-                <Flexbox align="center" gap={8} horizontal>
-                  <Input
-                    className={localStyles.fullscreenPageInput}
-                    max={numPages}
-                    min={1}
-                    onChange={(e) => {
-                      const value = parseInt(e.target.value);
-                      if (!isNaN(value)) goToFullscreenPage(value);
-                    }}
-                    size="small"
-                    type="number"
-                    value={fullscreenPageNumber}
-                  />
-                  <span className={localStyles.fullscreenPageText}>/ {numPages}</span>
-                </Flexbox>
-                <Button
-                  className={localStyles.fullscreenButton}
-                  disabled={fullscreenPageNumber >= numPages}
-                  icon={<ChevronRight size={16} />}
-                  onClick={goToFullscreenNextPage}
-                  size="small"
-                  type="text"
-                />
-              </Flexbox>
-            </div>
-          )}
+              <span className={localStyles.pageNumberText}>/ {numPages}</span>
+            </Flexbox>
+            <Button
+              disabled={pageNumber >= numPages}
+              icon={<ChevronRight size={16} />}
+              size="small"
+              type="text"
+              onClick={goToNextPage}
+            />
+          </Flexbox>
         </div>
-      </Modal>
-    </>
+      )}
+    </div>
   );
 });
 

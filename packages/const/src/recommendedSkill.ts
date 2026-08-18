@@ -1,5 +1,6 @@
 export enum RecommendedSkillType {
-  Klavis = 'klavis',
+  Builtin = 'builtin',
+  Composio = 'composio',
   Lobehub = 'lobehub',
 }
 
@@ -9,9 +10,22 @@ export interface RecommendedSkillItem {
 }
 
 export const RECOMMENDED_SKILLS: RecommendedSkillItem[] = [
-  { id: 'gmail', type: RecommendedSkillType.Klavis },
-  { id: 'notion', type: RecommendedSkillType.Klavis },
-  { id: 'google-drive', type: RecommendedSkillType.Klavis },
-  { id: 'google-calendar', type: RecommendedSkillType.Klavis },
-  { id: 'slack', type: RecommendedSkillType.Klavis },
+  // Builtin skills
+  { id: 'lobe-artifacts', type: RecommendedSkillType.Builtin },
+  { id: 'lobe-user-memory', type: RecommendedSkillType.Builtin },
+  { id: 'lobe-cloud-sandbox', type: RecommendedSkillType.Builtin },
+  { id: 'lobe-task', type: RecommendedSkillType.Builtin },
+  { id: 'lobe-agent-documents', type: RecommendedSkillType.Builtin },
+  { id: 'lobe-message', type: RecommendedSkillType.Builtin },
+  // Opt-in chat image generation: default-installed so Tools can pin it without Skill Store first.
+  { id: 'lobe-image-generation', type: RecommendedSkillType.Builtin },
+  // LobeHub skills
+  { id: 'notion', type: RecommendedSkillType.Lobehub },
+  { id: 'posthog', type: RecommendedSkillType.Lobehub },
+  { id: 'twitter', type: RecommendedSkillType.Lobehub },
+  // Composio skills
+  { id: 'gmail', type: RecommendedSkillType.Composio },
+  { id: 'google-drive', type: RecommendedSkillType.Composio },
+  { id: 'google-calendar', type: RecommendedSkillType.Composio },
+  { id: 'slack', type: RecommendedSkillType.Composio },
 ];

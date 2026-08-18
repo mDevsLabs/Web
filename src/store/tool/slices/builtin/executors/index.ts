@@ -1,29 +1,20 @@
 /**
  * Builtin Tool Executor Registry
  *
- * Central registry for all builtin tool executors.
- * Executors are registered as class instances by identifier.
+ * Lightweight registry shell for builtin tool executors. Executor
+ * implementations live behind one asynchronous catalog boundary so importing
+ * the store does not pull every tool runtime into the initial SPA graph.
  */
-import { agentBuilderExecutor } from '@lobechat/builtin-tool-agent-builder/executor';
-import { cloudSandboxExecutor } from '@lobechat/builtin-tool-cloud-sandbox/executor';
-import { groupAgentBuilderExecutor } from '@lobechat/builtin-tool-group-agent-builder/executor';
-import { groupManagementExecutor } from '@lobechat/builtin-tool-group-management/executor';
-import { gtdExecutor } from '@lobechat/builtin-tool-gtd/executor';
-import { knowledgeBaseExecutor } from '@lobechat/builtin-tool-knowledge-base/executor';
-import { localSystemExecutor } from '@lobechat/builtin-tool-local-system/executor';
-import { memoryExecutor } from '@lobechat/builtin-tool-memory/executor';
-import { notebookExecutor } from '@lobechat/builtin-tool-notebook/executor';
 
-import type { IBuiltinToolExecutor } from '../types';
-import { pageAgentExecutor } from './lobe-page-agent';
-import { webBrowsing } from './lobe-web-browsing';
-
-// ==================== Import and register all executors ====================
+import type { BuiltinToolContext, BuiltinToolResult, IBuiltinToolExecutor } from '../types';
+import { stashBuiltinToolWorkIntent } from './workRegistration';
 
 /**
  * Registry structure: Map<identifier, executor instance>
  */
 const executorRegistry = new Map<string, IBuiltinToolExecutor>();
+let executorsRegistered = false;
+let registrationPromise: Promise<void> | undefined;
 
 /**
  * Get a builtin tool executor by identifier
@@ -42,7 +33,9 @@ export const getExecutor = (identifier: string): IBuiltinToolExecutor | undefine
  * @param apiName - The API name
  * @returns Whether the executor exists and supports the API
  */
-export const hasExecutor = (identifier: string, apiName: string): boolean => {
+export const hasExecutor = async (identifier: string, apiName: string): Promise<boolean> => {
+  await registerBuiltinToolExecutors();
+
   const executor = executorRegistry.get(identifier);
   return executor?.hasApi(apiName) ?? false;
 };
@@ -80,8 +73,10 @@ export const invokeExecutor = async (
   identifier: string,
   apiName: string,
   params: any,
-  ctx: import('../types').BuiltinToolContext,
-): Promise<import('../types').BuiltinToolResult> => {
+  ctx: BuiltinToolContext,
+): Promise<BuiltinToolResult> => {
+  await registerBuiltinToolExecutors();
+
   const executor = executorRegistry.get(identifier);
 
   if (!executor) {
@@ -104,7 +99,15 @@ export const invokeExecutor = async (
     };
   }
 
-  return executor.invoke(apiName, params, ctx);
+  const result = await executor.invoke(apiName, params, ctx);
+
+  // Manifest-driven Work registration (best-effort; a no-op unless the API
+  // declares a `work` config). Only STASH the intent here — `call_tool` drains
+  // it and writes the Work version once the tool call's cumulative cost is known
+  // (write-once instead of register-then-backfill).
+  stashBuiltinToolWorkIntent(identifier, apiName, params, ctx, result);
+
+  return result;
 };
 
 /**
@@ -118,17 +121,18 @@ const registerExecutors = (executors: IBuiltinToolExecutor[]): void => {
   }
 };
 
-// Register all executor instances
-registerExecutors([
-  agentBuilderExecutor,
-  cloudSandboxExecutor,
-  groupAgentBuilderExecutor,
-  groupManagementExecutor,
-  gtdExecutor,
-  knowledgeBaseExecutor,
-  localSystemExecutor,
-  memoryExecutor,
-  notebookExecutor,
-  pageAgentExecutor,
-  webBrowsing,
-]);
+export const registerBuiltinToolExecutors = async (): Promise<void> => {
+  if (executorsRegistered) return;
+
+  registrationPromise ??= import('./catalog').then(({ builtinToolExecutors }) => {
+    registerExecutors(builtinToolExecutors);
+    executorsRegistered = true;
+  });
+
+  try {
+    await registrationPromise;
+  } catch (error) {
+    registrationPromise = undefined;
+    throw error;
+  }
+};

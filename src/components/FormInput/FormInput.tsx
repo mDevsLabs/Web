@@ -1,6 +1,9 @@
-import { Input, type InputProps as Props } from '@lobehub/ui';
+import { type InputProps as Props } from '@lobehub/ui';
+import { Input } from '@lobehub/ui';
 import { type InputRef } from 'antd/es/input/Input';
 import { memo, useEffect, useRef, useState } from 'react';
+
+import { useIMECompositionEvent } from '@/hooks/useIMECompositionEvent';
 
 interface FormInputProps extends Omit<Props, 'onChange'> {
   onChange?: (value: string) => void;
@@ -8,7 +11,7 @@ interface FormInputProps extends Omit<Props, 'onChange'> {
 
 const FormInput = memo<FormInputProps>(({ onChange, value: defaultValue, ...props }) => {
   const ref = useRef<InputRef>(null);
-  const isChineseInput = useRef(false);
+  const { compositionProps, isComposingRef } = useIMECompositionEvent();
 
   const [value, setValue] = useState(defaultValue as string);
 
@@ -18,23 +21,18 @@ const FormInput = memo<FormInputProps>(({ onChange, value: defaultValue, ...prop
 
   return (
     <Input
+      ref={ref}
       onBlur={() => {
         onChange?.(value);
       }}
       onChange={(e) => {
         setValue(e.target.value);
       }}
-      onCompositionEnd={() => {
-        isChineseInput.current = false;
-      }}
-      onCompositionStart={() => {
-        isChineseInput.current = true;
-      }}
+      {...compositionProps}
       onPressEnter={() => {
-        if (isChineseInput.current) return;
+        if (isComposingRef.current) return;
         onChange?.(value);
       }}
-      ref={ref}
       {...props}
       value={value}
     />

@@ -1,7 +1,7 @@
 'use client';
 
-import { ActionIcon, Button, Empty, Flexbox, Input, SortableList } from '@lobehub/ui';
-import { Space } from 'antd';
+import { ActionIcon, Empty, Flexbox, Input, SortableList } from '@lobehub/ui';
+import { Button } from '@lobehub/ui/base-ui';
 import { createStaticStyles } from 'antd-style';
 import { MessageCircle, PlusIcon, Trash } from 'lucide-react';
 import { memo, useCallback, useMemo, useState } from 'react';
@@ -14,7 +14,7 @@ import { selectors } from '../store/selectors';
 const styles = createStaticStyles(({ css, cssVar }) => ({
   empty: css`
     margin-block: 24px;
-    margin-inline: 0;
+    margin-inline: auto;
   `,
   questionItemContainer: css`
     padding-block: 8px;
@@ -43,11 +43,15 @@ const OpeningQuestions = memo(() => {
   const [questionInput, setQuestionInput] = useState('');
 
   const openingQuestions = useStore(selectors.openingQuestions);
-  const updateConfig = useStore((s) => s.setAgentConfig);
+  const [disabled, updateConfig] = useStore((s) => [s.disabled, s.setAgentConfig]);
 
-  // 乐观更新，不然会抖
+  // Optimistic update to avoid jitter
   const [questions, setQuestions] = useMergeState(openingQuestions, {
-    onChange: (questions: string[]) => updateConfig({ openingQuestions: questions }),
+    onChange: (questions: string[]) => {
+      if (disabled) return;
+
+      updateConfig({ openingQuestions: questions });
+    },
     value: openingQuestions,
   });
 
@@ -59,28 +63,33 @@ const OpeningQuestions = memo(() => {
   }, [questions]);
 
   const addQuestion = useCallback(() => {
+    if (disabled) return;
     if (!questionInput.trim()) return;
 
     setQuestions([...openingQuestions, questionInput.trim()]);
     setQuestionInput('');
-  }, [openingQuestions, questionInput, setQuestions]);
+  }, [disabled, openingQuestions, questionInput, setQuestions]);
 
   const removeQuestion = useCallback(
     (content: string) => {
+      if (disabled) return;
+
       const newQuestions = [...openingQuestions];
       const index = newQuestions.indexOf(content);
       newQuestions.splice(index, 1);
       setQuestions(newQuestions);
     },
-    [openingQuestions, setQuestions],
+    [disabled, openingQuestions, setQuestions],
   );
 
-  // 处理拖拽排序后的逻辑
+  // Handle logic after drag-and-drop sorting
   const handleSortEnd = useCallback(
     (items: QuestionItem[]) => {
+      if (disabled) return;
+
       setQuestions(items.map((item) => item.content));
     },
-    [setQuestions],
+    [disabled, setQuestions],
   );
 
   const isRepeat = openingQuestions.includes(questionInput.trim());
@@ -88,21 +97,22 @@ const OpeningQuestions = memo(() => {
   return (
     <Flexbox gap={8} width={'100%'}>
       <Flexbox gap={4} width={'100%'}>
-        <Space.Compact style={{ width: '100%' }}>
+        <Flexbox horizontal align={'center'} gap={8} width={'100%'}>
           <Input
-            onChange={(e) => setQuestionInput(e.target.value)}
-            onPressEnter={addQuestion}
+            disabled={disabled}
             placeholder={t('settingOpening.openingQuestions.placeholder')}
             style={{ flex: 1 }}
             value={questionInput}
+            onChange={(e) => setQuestionInput(e.target.value)}
+            onPressEnter={addQuestion}
           />
           <Button
             // don't allow repeat
-            disabled={openingQuestions.includes(questionInput.trim())}
+            disabled={disabled || openingQuestions.includes(questionInput.trim())}
             icon={PlusIcon}
             onClick={addQuestion}
           />
-        </Space.Compact>
+        </Flexbox>
 
         {isRepeat && (
           <p className={styles.repeatError}>{t('settingOpening.openingQuestions.repeat')}</p>
@@ -113,22 +123,23 @@ const OpeningQuestions = memo(() => {
         {openingQuestions.length > 0 ? (
           <SortableList
             items={items}
-            onChange={handleSortEnd}
-            renderItem={(item) => (
+            renderItem={(item: QuestionItem) => (
               <SortableList.Item
                 className={styles.questionItemContainer}
                 id={item.id}
                 variant={'filled'}
               >
-                <SortableList.DragHandle />
+                {!disabled && <SortableList.DragHandle />}
                 <div className={styles.questionItemContent}>{item.content}</div>
                 <ActionIcon
+                  disabled={disabled}
                   icon={Trash}
-                  onClick={() => removeQuestion(item.content)}
                   size={'small'}
+                  onClick={() => removeQuestion(item.content)}
                 />
               </SortableList.Item>
             )}
+            onChange={handleSortEnd}
           />
         ) : (
           <Empty

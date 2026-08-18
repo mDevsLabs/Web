@@ -1,8 +1,8 @@
-import { ModelParamsSchema, RuntimeImageGenParams, gptImage1ParamsSchema } from 'model-bank';
-import { AIImageModelCard } from 'model-bank';
+import type { AIImageModelCard, ModelParamsSchema, RuntimeImageGenParams } from 'model-bank';
+import { gptImage1Schema } from 'model-bank';
 import { describe, expect, it, vi } from 'vitest';
 
-import { ImageStore } from '@/store/image';
+import { type ImageStore } from '@/store/image';
 import { initialState } from '@/store/image/initialState';
 import { merge } from '@/utils/merge';
 
@@ -21,7 +21,7 @@ vi.mock('@/store/aiInfra', () => ({
             id: 'gpt-image-1',
             displayName: 'GPT Image 1',
             type: 'image',
-            parameters: gptImage1ParamsSchema,
+            parameters: gptImage1Schema,
             releasedAt: '2024-12-01',
           } as AIImageModelCard,
         ],
@@ -194,7 +194,7 @@ describe('imageGenerationConfigSelectors', () => {
     });
 
     it('should work correctly with gpt-image-1 parameters', () => {
-      const state = merge(initialStore, { parametersSchema: gptImage1ParamsSchema });
+      const state = merge(initialStore, { parametersSchema: gptImage1Schema });
 
       // Test some known gpt-image-1 parameters
       expect(imageGenerationConfigSelectors.isSupportedParam('prompt')(state)).toBe(true);

@@ -1,8 +1,8 @@
-/* eslint-disable unicorn/prefer-top-level-await */
-import { consola } from 'consola';
-import { colors } from 'consola/utils';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+
+import { consola } from 'consola';
+import { colors } from 'consola/utils';
 
 import { IGNORED_FILES } from './protectedPatterns';
 
@@ -72,7 +72,7 @@ function removeKeyFromObject(obj: any, keyPath: string): boolean {
  * Clean unused keys from TypeScript default locale files
  */
 function cleanDefaultLocaleFiles(unusedKeys: UnusedKey[], dryRun: boolean = true) {
-  const defaultLocalesPath = path.join(process.cwd(), 'src/locales/default');
+  const defaultLocalesPath = path.join(process.cwd(), 'packages/locales/src/default');
 
   // Get ignored namespace names from IGNORED_FILES (remove .ts extension)
   const ignoredNamespaces = new Set(IGNORED_FILES.map((f) => f.replace('.ts', '')));
@@ -105,7 +105,6 @@ function cleanDefaultLocaleFiles(unusedKeys: UnusedKey[], dryRun: boolean = true
     }
 
     try {
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
       const loadedModule = require(filePath);
       const translations = loadedModule.default || loadedModule;
 
@@ -131,7 +130,7 @@ function cleanDefaultLocaleFiles(unusedKeys: UnusedKey[], dryRun: boolean = true
 
         if (!dryRun) {
           // Generate new content
-          // eslint-disable-next-line @typescript-eslint/no-use-before-define
+
           const newContent = generateTypeScriptContent(updatedTranslations);
 
           // Write back to file
@@ -233,7 +232,7 @@ function needsQuotes(key: string): boolean {
   // - Contains special characters (-, ., spaces, etc.)
   // - Starts with a number
   // - Is a reserved keyword
-  return !/^[$A-Z_a-z][\w$]*$/.test(key);
+  return !/^[$_a-z][\w$]*$/i.test(key);
 }
 
 /**

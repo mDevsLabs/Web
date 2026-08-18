@@ -1,6 +1,8 @@
-import { type LobeChatPluginManifest } from '@lobehub/chat-plugin-sdk';
-import { Block, Button, Flexbox, Icon, Text } from '@lobehub/ui';
-import { Form as AForm, type FormInstance } from 'antd';
+import { type ToolManifest } from '@lobechat/types';
+import { Block, Flexbox, Icon, Text } from '@lobehub/ui';
+import { Button } from '@lobehub/ui/base-ui';
+import { type FormInstance } from 'antd';
+import { Form as AForm } from 'antd';
 import { cssVar } from 'antd-style';
 import { FileCode } from 'lucide-react';
 import { memo } from 'react';
@@ -16,7 +18,7 @@ import PluginEmptyState from './EmptyState';
 
 const PluginPreview = memo<{ form: FormInstance }>(({ form }) => {
   const { t } = useTranslation('plugin');
-  const manifest: LobeChatPluginManifest = AForm.useWatch(['manifest'], form);
+  const manifest: ToolManifest = AForm.useWatch(['manifest'], form);
   const meta = manifest?.meta;
 
   if (!manifest)
@@ -34,17 +36,17 @@ const PluginPreview = memo<{ form: FormInstance }>(({ form }) => {
       style={{ background: cssVar.colorBgLayout, overflowY: 'auto' }}
     >
       <Block
-        gap={16}
         horizontal
+        gap={16}
         justify={'space-between'}
         padding={16}
         title={t('dev.preview.card')}
         variant={'outlined'}
       >
-        <Flexbox gap={16} horizontal>
+        <Flexbox horizontal gap={16}>
           <PluginAvatar avatar={pluginHelpers.getPluginAvatar(meta)} size={40} />
           <Flexbox gap={2}>
-            <Flexbox align={'center'} gap={8} horizontal>
+            <Flexbox horizontal align={'center'} gap={8}>
               {pluginHelpers.getPluginTitle(meta) || 'Plugin Title'}
               <PluginTag type={'customPlugin'} />
             </Flexbox>

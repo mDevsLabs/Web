@@ -1,12 +1,16 @@
-import { MainBroadcastEventKey, MainBroadcastParams } from '@lobechat/electron-client-ipc';
-import { nativeTheme } from 'electron';
+import type {
+  MainBroadcastEventKey,
+  MainBroadcastParams,
+  TrayNavigationSnapshot,
+} from '@lobechat/electron-client-ipc';
 
 import { name } from '@/../../package.json';
 import { isMac } from '@/const/env';
 import { createLogger } from '@/utils/logger';
 
 import type { App } from '../App';
-import { Tray, TrayOptions } from './Tray';
+import type { TrayOptions } from './Tray';
+import { Tray } from './Tray';
 
 // Create logger
 const logger = createLogger('core:TrayManager');
@@ -18,6 +22,7 @@ export type TrayIdentifiers = 'main';
 
 export class TrayManager {
   app: App;
+  private navigationSnapshot: TrayNavigationSnapshot = { agents: [], pinned: [], recent: [] };
 
   /**
    * Store all tray instances
@@ -39,8 +44,22 @@ export class TrayManager {
   initializeTrays() {
     logger.debug('Initialize application tray');
 
+    if (!this.app.storeManager.get('appTrayVisible', true)) {
+      logger.debug('Application tray is disabled by user settings');
+      this.destroyAll();
+      return;
+    }
+
     // Initialize main tray
-    this.initializeMainTray();
+    const mainTray = this.initializeMainTray();
+
+    // Attach the platform-specific context menu built by MenuManager so the
+    // tray right-click entries stay in sync with the app menu i18n.
+    try {
+      mainTray.setMenu(this.app.menuManager.buildTrayMenu(this.navigationSnapshot));
+    } catch (error) {
+      logger.error('Failed to attach tray context menu:', error);
+    }
   }
 
   /**
@@ -51,72 +70,89 @@ export class TrayManager {
   }
 
   /**
-   * Initialize main tray
+   * Toggle the application tray at runtime.
+   */
+  setAppTrayVisible(visible: boolean) {
+    logger.debug(`Set application tray visible: ${visible}`);
+
+    if (visible) {
+      this.initializeTrays();
+    } else {
+      this.destroyAll();
+    }
+  }
+
+  updateNavigationSnapshot(snapshot: TrayNavigationSnapshot) {
+    this.navigationSnapshot = snapshot;
+    const mainTray = this.getMainTray();
+    if (mainTray) mainTray.setMenu(this.app.menuManager.buildTrayMenu(snapshot));
+  }
+
+  /**
+   * Initialize main tray. On macOS we ship a template image (black + alpha)
+   * so the system recolors it automatically for light / dark menu bars.
    */
   initializeMainTray() {
     logger.debug('Initialize main tray');
     return this.retrieveOrInitialize({
-      iconPath: isMac
-        ? nativeTheme.shouldUseDarkColorsForSystemIntegratedUI
-          ? 'tray-dark.png'
-          : 'tray-light.png'
-        : 'tray.png',
-      identifier: 'main', // Use app icon, ensure this file exists in resources directory
-      tooltip: name, // Can use app.getName() or localized string
+      iconPath: isMac ? 'trayTemplate.png' : 'tray.png',
+      identifier: 'main',
+      isTemplateImage: isMac,
+      tooltip: name,
     });
   }
 
   /**
-   * 通过标识符获取托盘实例
-   * @param identifier 托盘标识符
+   * Retrieve a tray instance by identifier
+   * @param identifier Tray identifier
    */
   retrieveByIdentifier(identifier: TrayIdentifiers) {
-    logger.debug(`通过标识符获取托盘: ${identifier}`);
+    logger.debug(`Retrieving tray by identifier: ${identifier}`);
     return this.trays.get(identifier);
   }
 
   /**
-   * 向所有托盘广播消息
-   * @param event 事件名称
-   * @param data 事件数据
+   * Broadcast a message to all trays
+   * @param event Event name
+   * @param data Event data
    */
   broadcastToAllTrays = <T extends MainBroadcastEventKey>(
     event: T,
     data: MainBroadcastParams<T>,
   ) => {
-    logger.debug(`向所有托盘广播事件 ${event}`);
+    logger.debug(`Broadcasting event ${event} to all trays`);
     this.trays.forEach((tray) => {
       tray.broadcast(event, data);
     });
   };
 
   /**
-   * 向指定托盘广播消息
-   * @param identifier 托盘标识符
-   * @param event 事件名称
-   * @param data 事件数据
+   * Broadcast a message to a specific tray
+   * @param identifier Tray identifier
+   * @param event Event name
+   * @param data Event data
    */
   broadcastToTray = <T extends MainBroadcastEventKey>(
     identifier: TrayIdentifiers,
     event: T,
     data: MainBroadcastParams<T>,
   ) => {
-    logger.debug(`向托盘 ${identifier} 广播事件 ${event}`);
+    logger.debug(`Broadcasting event ${event} to tray ${identifier}`);
     this.trays.get(identifier)?.broadcast(event, data);
   };
 
   /**
-   * 获取或创建托盘实例
-   * @param options 托盘选项
+   * Retrieve or create a tray instance
+   * @param options Tray options
    */
   private retrieveOrInitialize(options: TrayOptions) {
     let tray = this.trays.get(options.identifier as TrayIdentifiers);
     if (tray) {
-      logger.debug(`获取现有托盘: ${options.identifier}`);
+      logger.debug(`Retrieved existing tray: ${options.identifier}`);
       return tray;
     }
 
-    logger.debug(`创建新托盘: ${options.identifier}`);
+    logger.debug(`Creating new tray: ${options.identifier}`);
     tray = new Tray(options, this.app);
 
     this.trays.set(options.identifier as TrayIdentifiers, tray);
@@ -125,10 +161,10 @@ export class TrayManager {
   }
 
   /**
-   * 销毁所有托盘
+   * Destroy all trays
    */
   destroyAll() {
-    logger.debug('销毁所有托盘');
+    logger.debug('Destroying all trays');
     this.trays.forEach((tray) => {
       tray.destroy();
     });

@@ -1,7 +1,6 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix  */
-import { isNotNull } from 'drizzle-orm';
+import { isNotNull, sql } from 'drizzle-orm';
+import type { AnyPgColumn } from 'drizzle-orm/pg-core';
 import {
-  AnyPgColumn,
   boolean,
   index,
   integer,
@@ -14,14 +13,36 @@ import {
   varchar,
 } from 'drizzle-orm/pg-core';
 import { createInsertSchema } from 'drizzle-zod';
+import { z } from 'zod';
 
-import { LobeDocumentPage } from '@/types/document';
-import { FileSource } from '@/types/files';
+import type { LobeDocumentPage } from '@/types/document';
+import type { FileSource } from '@/types/files';
 
 import { idGenerator, randomSlug } from '../utils/idGenerator';
 import { accessedAt, createdAt, timestamps } from './_helpers';
 import { asyncTasks } from './asyncTask';
 import { users } from './user';
+import { workspaces } from './workspace';
+
+export const DOCUMENT_FOLDER_TYPE = 'custom/folder';
+
+/** File type used by the parent document for a managed skill bundle. */
+export const SKILL_BUNDLE_FILE_TYPE = 'skills/bundle';
+
+/** File type used by the SKILL.md index document inside a managed skill bundle. */
+export const SKILL_INDEX_FILE_TYPE = 'skills/index';
+
+/** Source attribution stored on documents created by skill-management tooling. */
+export const SKILL_MANAGEMENT_SOURCE = 'agent-signal:skill-management';
+
+/** Source type stored on documents created by Agent Signal skill-management tooling. */
+export const SKILL_MANAGEMENT_SOURCE_TYPE = 'agent-signal';
+
+/** Canonical filename for a skill index document. */
+export const SKILL_INDEX_FILENAME = 'SKILL.md';
+
+/** Template id applied to agent document bindings that represent managed skills. */
+export const AGENT_SKILL_TEMPLATE_ID = 'agent-skill';
 
 export const globalFiles = pgTable(
   'global_files',
@@ -73,14 +94,16 @@ export const documents = pgTable(
     pages: jsonb('pages').$type<LobeDocumentPage[]>(),
 
     // Source type
-    sourceType: text('source_type', { enum: ['file', 'web', 'api', 'topic'] }).notNull(),
+    sourceType: text('source_type', {
+      enum: ['file', 'web', 'api', 'topic', 'agent', 'agent-signal'],
+    }).notNull(),
     source: text('source').notNull(), // File path or web URL
 
     // Associated file (optional)
     // forward reference needs AnyPgColumn to avoid circular type inference
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+
     fileId: text('file_id').references((): AnyPgColumn => files.id, { onDelete: 'set null' }),
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+
     knowledgeBaseId: text('knowledge_base_id').references(() => knowledgeBases.id, {
       onDelete: 'set null',
     }),
@@ -100,6 +123,22 @@ export const documents = pgTable(
 
     slug: varchar('slug', { length: 255 }).$defaultFn(() => randomSlug(3)),
 
+    workspaceId: text('workspace_id').references(() => workspaces.id, { onDelete: 'cascade' }),
+
+    /**
+     * Visibility within the owning workspace. `public` (default) means every
+     * workspace member can see the document; `private` constrains it to the
+     * creator (`user_id`). Within a documents tree (folder/Page hierarchy) the
+     * value is kept strongly consistent across the whole subtree by the service
+     * layer — children mirror the root's visibility. Standalone pages publish
+     * via `private → public`; creator-owned pages inside a library synchronize
+     * bidirectionally with the library. Ignored in personal mode where the row
+     * is implicitly private to its owner.
+     */
+    visibility: text('visibility', { enum: ['private', 'public'] })
+      .default('public')
+      .notNull(),
+
     // Timestamps
     ...timestamps,
   },
@@ -114,7 +153,16 @@ export const documents = pgTable(
     uniqueIndex('documents_client_id_user_id_unique').on(table.clientId, table.userId),
     uniqueIndex('documents_slug_user_id_unique')
       .on(table.slug, table.userId)
-      .where(isNotNull(table.slug)),
+      .where(sql`${table.workspaceId} IS NULL AND ${table.slug} IS NOT NULL`),
+    index('documents_workspace_id_idx').on(table.workspaceId),
+    index('documents_workspace_visibility_idx').on(
+      table.workspaceId,
+      table.visibility,
+      table.userId,
+    ),
+    uniqueIndex('documents_slug_workspace_id_unique')
+      .on(table.workspaceId, table.slug)
+      .where(isNotNull(table.workspaceId)),
   ],
 );
 
@@ -159,6 +207,20 @@ export const files = pgTable(
       onDelete: 'set null',
     }),
 
+    workspaceId: text('workspace_id').references(() => workspaces.id, { onDelete: 'cascade' }),
+
+    /**
+     * Visibility within the owning workspace. `public` (default) means every
+     * workspace member can see the file; `private` constrains it to the
+     * creator (`user_id`). Standalone files publish via `private → public`;
+     * creator-owned files inside a library synchronize bidirectionally with
+     * the library. Ignored in personal mode (`workspace_id IS NULL`) where the
+     * row is implicitly private to its owner.
+     */
+    visibility: text('visibility', { enum: ['private', 'public'] })
+      .default('public')
+      .notNull(),
+
     ...timestamps,
   },
   (table) => {
@@ -172,11 +234,20 @@ export const files = pgTable(
         table.clientId,
         table.userId,
       ),
+      workspaceIdIdx: index('files_workspace_id_idx').on(table.workspaceId),
+      workspaceVisibilityIdx: index('files_workspace_visibility_idx').on(
+        table.workspaceId,
+        table.visibility,
+        table.userId,
+      ),
     };
   },
 );
 export type NewFile = typeof files.$inferInsert;
 export type FileItem = typeof files.$inferSelect;
+
+/** Knowledge-base visibility — shared by column def and insert schema. */
+export const KNOWLEDGE_BASE_VISIBILITY = ['private', 'public'] as const;
 
 export const knowledgeBases = pgTable(
   'knowledge_bases',
@@ -200,15 +271,38 @@ export const knowledgeBases = pgTable(
 
     settings: jsonb('settings'),
 
+    workspaceId: text('workspace_id').references(() => workspaces.id, { onDelete: 'cascade' }),
+
+    /**
+     * Visibility within the owning workspace. `public` (default) means every
+     * workspace member sees the KB in their sidebar; `private` constrains
+     * discoverability to the creator (`user_id`). The only legal transition is
+     * `private → public` via `publishKnowledgeBaseToWorkspace`. Ignored in
+     * personal mode (`workspace_id IS NULL`).
+     *
+     * Independent of `isPublic` (marketplace discovery). Files and documents
+     * keep their own visibility columns for direct-resource authorization, but
+     * creator-owned rows inside a KB are synchronized to this value when the
+     * library is published or made private.
+     */
+    visibility: text('visibility', { enum: KNOWLEDGE_BASE_VISIBILITY }).default('public').notNull(),
+
     ...timestamps,
   },
   (t) => [
     uniqueIndex('knowledge_bases_client_id_user_id_unique').on(t.clientId, t.userId),
     index('knowledge_bases_user_id_idx').on(t.userId),
+    index('knowledge_bases_workspace_id_idx').on(t.workspaceId),
+    index('knowledge_bases_workspace_visibility_idx').on(t.workspaceId, t.visibility, t.userId),
   ],
 );
 
-export const insertKnowledgeBasesSchema = createInsertSchema(knowledgeBases);
+// See insertSessionGroupSchema: Zod 4 + drizzle-zod text-enum inference pollution.
+// `.optional()` preserves defaulted-column omit semantics at runtime.
+// Enum values from KNOWLEDGE_BASE_VISIBILITY so column def and schema stay in sync.
+export const insertKnowledgeBasesSchema = createInsertSchema(knowledgeBases, {
+  visibility: z.enum(KNOWLEDGE_BASE_VISIBILITY).optional(),
+});
 
 export type NewKnowledgeBase = typeof knowledgeBases.$inferInsert;
 export type KnowledgeBaseItem = typeof knowledgeBases.$inferSelect;
@@ -227,6 +321,7 @@ export const knowledgeBaseFiles = pgTable(
     userId: text('user_id')
       .references(() => users.id, { onDelete: 'cascade' })
       .notNull(),
+    workspaceId: text('workspace_id').references(() => workspaces.id, { onDelete: 'cascade' }),
 
     createdAt: createdAt(),
   },
@@ -235,5 +330,6 @@ export const knowledgeBaseFiles = pgTable(
     index('knowledge_base_files_kb_id_idx').on(t.knowledgeBaseId),
     index('knowledge_base_files_user_id_idx').on(t.userId),
     index('knowledge_base_files_file_id_idx').on(t.fileId),
+    index('knowledge_base_files_workspace_id_idx').on(t.workspaceId),
   ],
 );

@@ -5,11 +5,12 @@ import {
   DEFAULT_HOTKEY_CONFIG,
   DEFAULT_IMAGE_CONFIG,
   DEFAULT_MEMORY_SETTINGS,
+  DEFAULT_NOTIFICATION_SETTINGS,
   DEFAULT_SYSTEM_AGENT_CONFIG,
   DEFAULT_TOOL_CONFIG,
   DEFAULT_TTS_CONFIG,
 } from '@lobechat/const';
-import { UserSettings } from '@lobechat/types';
+import type { UserSettings } from '@lobechat/types';
 
 export const DEFAULT_SETTINGS: UserSettings = {
   defaultAgent: DEFAULT_AGENT,
@@ -19,6 +20,7 @@ export const DEFAULT_SETTINGS: UserSettings = {
   keyVaults: {},
   languageModel: DEFAULT_LLM_CONFIG,
   memory: DEFAULT_MEMORY_SETTINGS,
+  notification: DEFAULT_NOTIFICATION_SETTINGS,
   systemAgent: DEFAULT_SYSTEM_AGENT_CONFIG,
   tool: DEFAULT_TOOL_CONFIG,
   tts: DEFAULT_TTS_CONFIG,

@@ -1,14 +1,10 @@
+import { getBuiltinStreaming } from '@lobechat/builtin-tools/streamings';
 import { type ChatToolResult, type ToolIntervention } from '@lobechat/types';
 import { safeParsePartialJSON } from '@lobechat/utils';
 import { Flexbox } from '@lobehub/ui';
-import { Suspense, memo } from 'react';
-
-import { getBuiltinStreaming } from '@/tools/streamings';
+import { memo, Suspense } from 'react';
 
 import AbortResponse from './AbortResponse';
-import ErrorResponse from './ErrorResponse';
-import Intervention from './Intervention';
-import ModeSelector from './Intervention/ModeSelector';
 import LoadingPlaceholder from './LoadingPlaceholder';
 import RejectedResponse from './RejectedResponse';
 import ToolRender from './Render';
@@ -54,20 +50,19 @@ const Render = memo<RenderProps>(
     isToolCalling,
     showCustomToolRender,
   }) => {
+    // Pending interventions are rendered in the bottom InterventionBar, not inline
     if (toolMessageId && intervention?.status === 'pending' && !disableEditing) {
-      return (
-        <Intervention
-          apiName={apiName}
-          id={toolMessageId}
-          identifier={identifier}
-          requestArgs={requestArgs || ''}
-          toolCallId={toolCallId}
-        />
-      );
+      return null;
     }
 
     if (intervention?.status === 'rejected') {
-      return <RejectedResponse reason={intervention.rejectedReason} />;
+      return (
+        <RejectedResponse
+          apiName={apiName}
+          reason={intervention.rejectedReason}
+          skipped={intervention.skipped}
+        />
+      );
     }
 
     if (intervention?.status === 'aborted') {
@@ -97,31 +92,11 @@ const Render = memo<RenderProps>(
       return null;
     }
 
-    // Handle error state
-    if (result.error) {
-      return (
-        <ErrorResponse
-          {...result.error}
-          id={messageId}
-          plugin={
-            type
-              ? ({
-                  apiName,
-                  arguments: requestArgs || '',
-                  identifier,
-                  type,
-                } as any)
-              : undefined
-          }
-        />
-      );
-    }
-
     const placeholder = (
       <LoadingPlaceholder
+        loading
         apiName={apiName}
         identifier={identifier}
-        loading
         messageId={messageId}
         requestArgs={requestArgs}
         toolCallId={toolCallId}
@@ -136,21 +111,16 @@ const Render = memo<RenderProps>(
           <ToolRender
             content={result.content || ''}
             messageId={toolMessageId}
+            pluginState={result.state}
+            showCustomToolRender={result.error ? false : showCustomToolRender}
+            toolCallId={toolCallId}
             plugin={{
               apiName,
               arguments: requestArgs || '',
               identifier,
               type: type as any,
             }}
-            pluginState={result.state}
-            showCustomToolRender={showCustomToolRender}
-            toolCallId={toolCallId}
           />
-          {!disableEditing && (
-            <div>
-              <ModeSelector />
-            </div>
-          )}
         </Flexbox>
       </Suspense>
     );

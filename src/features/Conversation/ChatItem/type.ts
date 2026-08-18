@@ -1,16 +1,26 @@
-import { type AlertProps, type AvatarProps, type DivProps, type FlexboxProps } from '@lobehub/ui';
-import { type EditableMessageProps, type MetaData } from '@lobehub/ui/chat';
-import { type ReactNode } from 'react';
+import type { AvatarProps, DivProps, FlexboxProps } from '@lobehub/ui';
+import { type AlertProps } from '@lobehub/ui/base-ui';
+import type { EditableMessageProps, MetaData } from '@lobehub/ui/chat';
+import type { ReactNode } from 'react';
+
+/**
+ * `MetaData` from `@lobehub/ui/chat` predates the agent's `name`/`title` split, so
+ * it only carries `title`. Every caller in this app passes an agent meta that also
+ * has `name` (see `useAgentMeta`), which is what the author label resolves from.
+ */
+export type ChatItemAvatarMeta = MetaData & { name?: string | null };
 
 export interface ChatItemProps extends Omit<FlexboxProps, 'children' | 'onChange'> {
   aboveMessage?: ReactNode;
+  actionAddon?: ReactNode;
   actions?: ReactNode;
   actionsWrapWidth?: number;
-  avatar: MetaData;
+  afterActions?: ReactNode;
+  avatar: ChatItemAvatarMeta;
   avatarProps?: AvatarProps;
   belowMessage?: ReactNode;
   children?: ReactNode;
-  customAvatarRender?: (avatar: MetaData, node: ReactNode) => ReactNode;
+  customAvatarRender?: (avatar: ChatItemAvatarMeta, node: ReactNode) => ReactNode;
   customErrorRender?: (error: AlertProps) => ReactNode;
   /**
    * @description Whether the chat item is disabled
@@ -36,9 +46,8 @@ export interface ChatItemProps extends Omit<FlexboxProps, 'children' | 'onChange
   message?: ReactNode;
   messageExtra?: ReactNode;
   /**
-   * Dynamic min-height for new screen effect, e.g. "calc(100dvh - 350px)"
+   * Avatar click handler
    */
-  newScreenMinHeight?: string;
   onAvatarClick?: () => void;
   onDoubleClick?: DivProps['onDoubleClick'];
   /**

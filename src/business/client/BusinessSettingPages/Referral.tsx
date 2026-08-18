@@ -1,3 +1,3 @@
-export default function Referral() {
-  return null;
-}
+const Referral = () => null;
+
+export default Referral;

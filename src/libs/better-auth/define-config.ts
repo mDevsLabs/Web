@@ -1,23 +1,20 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix, typescript-sort-keys/interface */
 import { expo } from '@better-auth/expo';
 import { passkey } from '@better-auth/passkey';
-import { ENABLE_BUSINESS_FEATURES } from '@lobechat/business-const';
 import { createNanoId, idGenerator, serverDB } from '@lobechat/database';
 import * as schema from '@lobechat/database/schemas';
 import bcrypt from 'bcryptjs';
-import { emailHarmony } from 'better-auth-harmony';
-import { validateEmail } from 'better-auth-harmony/email';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { verifyPassword as defaultVerifyPassword } from 'better-auth/crypto';
-import { type BetterAuthOptions, betterAuth } from 'better-auth/minimal';
+import { type BetterAuthOptions } from 'better-auth/minimal';
+import { betterAuth } from 'better-auth/minimal';
 import { admin, emailOTP, genericOAuth, magicLink } from 'better-auth/plugins';
 import { type BetterAuthPlugin } from 'better-auth/types';
-import { ProxyAgent, setGlobalDispatcher } from 'undici';
+import { EnvHttpProxyAgent, setGlobalDispatcher } from 'undici';
 
-import { businessEmailValidator } from '@/business/server/better-auth';
 import { appEnv } from '@/envs/app';
 import { authEnv } from '@/envs/auth';
 import {
+  getChangeEmailVerificationTemplate,
   getMagicLinkEmailTemplate,
   getResetPasswordEmailTemplate,
   getVerificationEmailTemplate,
@@ -26,22 +23,45 @@ import {
 import { emailWhitelist } from '@/libs/better-auth/plugins/email-whitelist';
 import { initBetterAuthSSOProviders } from '@/libs/better-auth/sso';
 import { createSecondaryStorage, getTrustedOrigins } from '@/libs/better-auth/utils/config';
+import { expireLegacyHostOnlyCookies } from '@/libs/better-auth/utils/host-only-cookies';
 import { parseSSOProviders } from '@/libs/better-auth/utils/server';
+import { clearMismatchedOIDCSession } from '@/libs/oidc-provider/session-cleanup';
 import { EmailService } from '@/server/services/email';
 import { UserService } from '@/server/services/user';
 
-// Configure HTTP proxy for OAuth provider requests in development (e.g., Google token exchange)
-// Node.js native fetch doesn't respect system proxy settings
+const LOCAL_NO_PROXY_HOSTS = ['localhost', '127.0.0.1', '[::1]'];
+
+export const mergeLocalNoProxy = (noProxy?: string): string => {
+  const entries = new Set(
+    (noProxy || '')
+      .split(/[,\s]+/)
+      .map((entry) => entry.trim())
+      .filter(Boolean),
+  );
+
+  if (entries.has('*')) return '*';
+
+  for (const host of LOCAL_NO_PROXY_HOSTS) {
+    entries.add(host);
+  }
+
+  return [...entries].join(',');
+};
+
+// Configure HTTP proxy for OAuth provider requests in development (e.g., Google token exchange).
+// Node.js native fetch doesn't respect system proxy settings. Keep localhost direct so Next can
+// fetch local Vite templates such as /index.auth.html without depending on the system proxy.
 // Ref: https://github.com/better-auth/better-auth/issues/7396
 if (process.env.NODE_ENV === 'development') {
-  const proxyUrl =
-    process.env.HTTPS_PROXY ||
-    process.env.https_proxy ||
-    process.env.HTTP_PROXY ||
-    process.env.http_proxy;
+  const httpProxy = process.env.HTTP_PROXY || process.env.http_proxy;
+  const httpsProxy = process.env.HTTPS_PROXY || process.env.https_proxy || httpProxy;
 
-  if (proxyUrl) {
-    const proxyAgent = new ProxyAgent(proxyUrl);
+  if (httpProxy || httpsProxy) {
+    const proxyAgent = new EnvHttpProxyAgent({
+      ...(httpProxy && { httpProxy }),
+      ...(httpsProxy && { httpsProxy }),
+      noProxy: mergeLocalNoProxy(process.env.NO_PROXY || process.env.no_proxy),
+    });
     setGlobalDispatcher(proxyAgent);
   }
 }
@@ -75,6 +95,25 @@ const getPasskeyOrigins = (): string[] | undefined => {
     return undefined;
   }
 };
+/**
+ * Browsers silently drop a cookie whose `Domain` the current host is not a member of.
+ * Applying a production domain on a preview deployment (`*.vercel.app`) or localhost would
+ * therefore erase every auth cookie instead of widening it, so fall back to host-only there.
+ */
+const resolveCookieDomain = (cookieDomain?: string): string | undefined => {
+  if (!cookieDomain) return undefined;
+
+  const base = cookieDomain.replace(/^\./, '');
+  try {
+    const { hostname } = new URL(appEnv.APP_URL);
+    if (hostname !== base && !hostname.endsWith(`.${base}`)) return undefined;
+  } catch {
+    return undefined;
+  }
+
+  return cookieDomain;
+};
+
 const MAGIC_LINK_EXPIRES_IN = 900;
 // OTP expiration time (in seconds) - 5 minutes for mobile OTP verification
 const OTP_EXPIRES_IN = 300;
@@ -83,15 +122,20 @@ const enabledSSOProviders = parseSSOProviders(authEnv.AUTH_SSO_PROVIDERS);
 
 const { socialProviders, genericOAuthProviders } = initBetterAuthSSOProviders();
 
-async function customEmailValidator(email: string): Promise<boolean> {
-  return ENABLE_BUSINESS_FEATURES ? businessEmailValidator(email) : validateEmail(email);
-}
-
 interface CustomBetterAuthOptions {
+  /**
+   * Share auth cookies across every subdomain of this domain (e.g. `.example.com`).
+   * Omit to keep cookies host-only.
+   */
+  cookieDomain?: string;
+  /** Namespace every Better Auth cookie so colocated deployments cannot overwrite each other. */
+  cookiePrefix?: string;
   plugins: BetterAuthPlugin[];
 }
 
 export function defineConfig(customOptions: CustomBetterAuthOptions) {
+  const cookieDomain = resolveCookieDomain(customOptions.cookieDomain);
+
   const options = {
     account: {
       accountLinking: {
@@ -107,10 +151,12 @@ export function defineConfig(customOptions: CustomBetterAuthOptions) {
 
     emailAndPassword: {
       autoSignIn: true,
-      enabled: true,
+      disableSignUp: authEnv.AUTH_DISABLE_EMAIL_PASSWORD,
+      enabled: !authEnv.AUTH_DISABLE_EMAIL_PASSWORD,
       maxPasswordLength: 64,
       minPasswordLength: 8,
       requireEmailVerification: authEnv.AUTH_EMAIL_VERIFICATION,
+      revokeSessionsOnPasswordReset: true,
 
       // Compatible with bcrypt password hashes migrated from Clerk; after login, you can re-hash in the backend using BetterAuth's default scrypt.
       password: {
@@ -148,11 +194,19 @@ export function defineConfig(customOptions: CustomBetterAuthOptions) {
           return;
         }
 
-        const template = getVerificationEmailTemplate({
-          expiresInSeconds: VERIFICATION_LINK_EXPIRES_IN,
-          url,
-          userName: user.name,
-        });
+        // Use different template for change-email vs signup verification
+        const isChangeEmail = request?.url?.includes('/change-email');
+        const template = isChangeEmail
+          ? getChangeEmailVerificationTemplate({
+              expiresInSeconds: VERIFICATION_LINK_EXPIRES_IN,
+              url,
+              userName: user.name,
+            })
+          : getVerificationEmailTemplate({
+              expiresInSeconds: VERIFICATION_LINK_EXPIRES_IN,
+              url,
+              userName: user.name,
+            });
 
         const emailService = new EmailService();
         await emailService.sendMail({
@@ -167,8 +221,10 @@ export function defineConfig(customOptions: CustomBetterAuthOptions) {
     session: {
       cookieCache: {
         enabled: true,
-        maxAge: 10 * 60, // Cache duration in seconds
+        maxAge: 2 * 60, // Cache duration in seconds
       },
+      // Keep a DB-backed fallback when Redis secondary storage entries are unexpectedly missing.
+      storeSessionInDatabase: true,
     },
     database: drizzleAdapter(serverDB, {
       provider: 'pg',
@@ -189,6 +245,21 @@ export function defineConfig(customOptions: CustomBetterAuthOptions) {
      * Ref: https://www.better-auth.com/docs/reference/options#databasehooks
      */
     databaseHooks: {
+      session: {
+        create: {
+          before: async (session, context) => {
+            try {
+              await clearMismatchedOIDCSession(serverDB, session.userId, context);
+            } catch (error) {
+              /**
+               * OIDC cleanup is a provider-specific recovery guard. Its failure must not prevent
+               * Better Auth from creating the primary application session.
+               */
+              console.error('[Better Auth] Failed to clear a stale OIDC session:', error);
+            }
+          },
+        },
+      },
       user: {
         create: {
           after: async (user) => {
@@ -205,6 +276,9 @@ export function defineConfig(customOptions: CustomBetterAuthOptions) {
       },
     },
     user: {
+      changeEmail: {
+        enabled: true,
+      },
       additionalFields: {
         username: {
           required: false,
@@ -221,6 +295,10 @@ export function defineConfig(customOptions: CustomBetterAuthOptions) {
 
     socialProviders,
     advanced: {
+      ...(cookieDomain && {
+        crossSubDomainCookies: { domain: cookieDomain, enabled: true },
+      }),
+      ...(customOptions.cookiePrefix && { cookiePrefix: customOptions.cookiePrefix }),
       database: {
         /**
          * Align Better Auth user IDs with our shared idGenerator for consistency.
@@ -238,11 +316,16 @@ export function defineConfig(customOptions: CustomBetterAuthOptions) {
         },
       },
     },
+    rateLimit: {
+      customRules: {
+        '/request-password-reset': { max: 3, window: 60 },
+        '/send-verification-email': { max: 3, window: 60 },
+      },
+    },
     plugins: [
       ...customOptions.plugins,
       emailWhitelist(),
       expo(),
-      emailHarmony({ allowNormalizedSignin: false, validator: customEmailValidator }),
       admin(),
       // Email OTP plugin for mobile verification
       emailOTP({
@@ -307,5 +390,12 @@ export function defineConfig(customOptions: CustomBetterAuthOptions) {
     ],
   } satisfies BetterAuthOptions;
 
-  return betterAuth(options);
+  const instance = betterAuth(options);
+  if (!cookieDomain) return instance;
+
+  const handleRequest = instance.handler;
+  instance.handler = async (request) =>
+    expireLegacyHostOnlyCookies(request, await handleRequest(request), cookieDomain);
+
+  return instance;
 }

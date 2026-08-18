@@ -2,16 +2,19 @@
 
 import { DEFAULT_INBOX_AVATAR } from '@lobechat/const';
 import { nanoid } from '@lobechat/utils';
-import { HIDE_TOOLBAR_COMMAND, type IEditor } from '@lobehub/editor';
+import { type IEditor } from '@lobehub/editor';
+import { HIDE_TOOLBAR_COMMAND } from '@lobehub/editor';
 import { type ChatInputActionsProps } from '@lobehub/editor/react';
 import { Avatar, Block } from '@lobehub/ui';
 import { createStaticStyles, cssVar } from 'antd-style';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { useConversationStore } from '@/features/Conversation/store';
+import type { ComposerTarget } from '@/features/Conversation/types';
 import { useFileStore } from '@/store/file';
-import { useGlobalStore } from '@/store/global';
 
+import { usePageAgentPanelControl } from '../RightPanel/OverrideContext';
 import { usePageEditorStore } from '../store';
 
 const styles = createStaticStyles(({ css }) => ({
@@ -25,13 +28,20 @@ const styles = createStaticStyles(({ css }) => ({
   `,
 }));
 
-export const useAskCopilotItem = (editor: IEditor | undefined): ChatInputActionsProps['items'] => {
+export const useAskCopilotItem = (
+  editor: IEditor | undefined,
+  explicitComposerTarget?: ComposerTarget,
+): ChatInputActionsProps['items'] => {
   const { t } = useTranslation('common');
+  const providerComposerTarget = useConversationStore((s) => s.composerTarget);
+  const composerTarget = explicitComposerTarget ?? providerComposerTarget;
   const addSelectionContext = useFileStore((s) => s.addChatContextSelection);
   const pageId = usePageEditorStore((s) => s.documentId);
+  const setRightPanelMode = usePageEditorStore((s) => s.setRightPanelMode);
+  const { toggle: togglePageAgentPanel } = usePageAgentPanelControl();
 
   return useMemo(() => {
-    if (!editor) return [];
+    if (!editor || !composerTarget.writable) return [];
 
     const label = t('cmdk.askLobeAI');
 
@@ -39,11 +49,14 @@ export const useAskCopilotItem = (editor: IEditor | undefined): ChatInputActions
       {
         children: (
           <Block
+            clickable
+            horizontal
             align="center"
             className={styles.askCopilot}
-            clickable
             gap={8}
-            horizontal
+            paddingBlock={6}
+            paddingInline={12}
+            variant="borderless"
             onClick={() => {
               const xml = (editor.getSelectionDocument?.('litexml') as string) || '';
               const plainText = (editor.getSelectionDocument?.('text') as string) || '';
@@ -60,17 +73,21 @@ export const useAskCopilotItem = (editor: IEditor | undefined): ChatInputActions
 
               // Store action handles deduplication
               addSelectionContext({
-                content,
-                format,
-                id: `selection-${nanoid(6)}`,
-                pageId,
-                preview,
-                title: 'Selection',
-                type: 'text',
+                contextKey: composerTarget.contextKey,
+                selection: {
+                  content,
+                  format,
+                  id: `selection-${nanoid(6)}`,
+                  pageId,
+                  preview,
+                  title: 'Selection',
+                  type: 'text',
+                },
               });
 
               // Open right panel if not opened
-              useGlobalStore.getState().toggleRightPanel(true);
+              setRightPanelMode('copilot');
+              togglePageAgentPanel(true);
 
               // Focus on chat input after a short delay to ensure panel is opened
               setTimeout(() => {
@@ -86,9 +103,6 @@ export const useAskCopilotItem = (editor: IEditor | undefined): ChatInputActions
               editor.dispatchCommand(HIDE_TOOLBAR_COMMAND, undefined);
               editor.blur();
             }}
-            paddingBlock={6}
-            paddingInline={12}
-            variant="borderless"
           >
             <Avatar avatar={DEFAULT_INBOX_AVATAR} shape="square" size={16} />
             <span>{label}</span>
@@ -99,5 +113,13 @@ export const useAskCopilotItem = (editor: IEditor | undefined): ChatInputActions
         onClick: () => {},
       },
     ];
-  }, [addSelectionContext, editor, pageId, t]);
+  }, [
+    addSelectionContext,
+    composerTarget,
+    editor,
+    pageId,
+    setRightPanelMode,
+    t,
+    togglePageAgentPanel,
+  ]);
 };

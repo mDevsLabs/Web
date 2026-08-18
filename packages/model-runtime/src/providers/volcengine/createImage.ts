@@ -1,9 +1,9 @@
 import createDebug from 'debug';
-import { RuntimeImageGenParamsValue } from 'model-bank';
+import type { RuntimeImageGenParamsValue } from 'model-bank';
 import OpenAI from 'openai';
 
-import { CreateImageOptions } from '../../core/openaiCompatibleFactory';
-import { CreateImagePayload, CreateImageResponse } from '../../types/image';
+import type { CreateImageOptions } from '../../core/openaiCompatibleFactory';
+import type { CreateImagePayload, CreateImageResponse } from '../../types/image';
 
 const log = createDebug('lobe-image:volcengine');
 
@@ -39,6 +39,22 @@ export async function createVolcengineImage(
     ]),
   );
 
+  // Handle size parameter: use directly if provided, otherwise convert from height/width
+  if (userInput.size) {
+    log('Using direct size parameter: %s', userInput.size);
+    delete userInput.height;
+    delete userInput.width;
+  } else {
+    const imgHeight = userInput.height;
+    const imgWidth = userInput.width;
+
+    if (imgHeight !== undefined && imgWidth !== undefined) {
+      userInput.size = `${imgWidth}x${imgHeight}`;
+      delete userInput.height;
+      delete userInput.width;
+    }
+  }
+
   // Volcengine supports direct URL or base64, no need to convert to File objects
   // Check if there is image input
   const hasImageInput =
@@ -52,10 +68,19 @@ export async function createVolcengineImage(
     delete userInput.image;
   }
 
+  // Remove promptExtend and webSearch parameters that are not supported by Volcengine API
+  delete userInput.promptExtend;
+  delete userInput.webSearch;
+
   // Build request options
   const requestOptions = {
     model,
-    watermark: false, // Default to no watermark
+    watermark: params.watermark ?? false, // Default to no watermark
+    ...(params.webSearch && { tools: [{ type: 'web_search' }] }),
+    ...(params.promptExtend &&
+      params.promptExtend !== 'off' && {
+        optimize_prompt_options: { mode: params.promptExtend },
+      }),
     ...userInput,
   };
 

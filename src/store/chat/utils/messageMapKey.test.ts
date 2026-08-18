@@ -63,6 +63,50 @@ describe('messageMapKey', () => {
     });
   });
 
+  describe('Task mode', () => {
+    it('should generate key for a new task manager topic', () => {
+      const result = messageMapKey({ scope: 'task', agentId: 'agt_task' });
+      expect(result).toBe('task_agt_task_new');
+    });
+
+    it('should generate key for an existing task manager topic', () => {
+      const result = messageMapKey({
+        scope: 'task',
+        agentId: 'agt_task',
+        topicId: 'tpc_task',
+      });
+      expect(result).toBe('task_agt_task_tpc_task');
+    });
+  });
+
+  describe('Page mode', () => {
+    it('should bind a page conversation to the open document id', () => {
+      const result = messageMapKey({ scope: 'page', agentId: 'agt_page', documentId: 'doc_aaa' });
+      expect(result).toBe('page_agt_page_doc_aaa');
+    });
+
+    it('should isolate different documents sharing the same page agent', () => {
+      const a = messageMapKey({ scope: 'page', agentId: 'agt_page', documentId: 'doc_aaa' });
+      const b = messageMapKey({ scope: 'page', agentId: 'agt_page', documentId: 'doc_bbb' });
+      expect(a).not.toBe(b);
+    });
+
+    it('should fall back to the new bucket when no document is open', () => {
+      const result = messageMapKey({ scope: 'page', agentId: 'agt_page' });
+      expect(result).toBe('page_agt_page_new');
+    });
+
+    it('should include topicId alongside documentId when a page topic exists', () => {
+      const result = messageMapKey({
+        scope: 'page',
+        agentId: 'agt_page',
+        documentId: 'doc_aaa',
+        topicId: 'tpc_yyy',
+      });
+      expect(result).toBe('page_agt_page_tpc_yyy_doc_aaa');
+    });
+  });
+
   describe('Group mode with groupId (auto-detected)', () => {
     it('should auto-detect group scope when groupId is present', () => {
       const result = messageMapKey({
@@ -424,7 +468,7 @@ describe('messageMapKey', () => {
     });
 
     it('Scenario: Agent has independent message stream in group (group_agent scope)', () => {
-      // When an agent needs its own message stream (future execTask scenario)
+      // When an agent needs its own message stream (future sub-agent scenario)
       const result = messageMapKey({
         agentId: 'agt_supervisor',
         groupId: 'grp_group001',

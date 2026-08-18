@@ -4,16 +4,32 @@ import { eq } from 'drizzle-orm';
 import { beforeEach, describe, expect, it } from 'vitest';
 
 import { getTestDB } from '../../../core/getTestDB';
-import { documents, files, knowledgeBaseFiles, knowledgeBases, users } from '../../../schemas';
-import { LobeChatDatabase } from '../../../type';
+import {
+  chunks,
+  documents,
+  embeddings,
+  fileChunks,
+  files,
+  knowledgeBaseFiles,
+  knowledgeBases,
+  users,
+  workspaces,
+} from '../../../schemas';
+import type { LobeChatDatabase } from '../../../type';
 import { KnowledgeRepo } from '../index';
 
 const serverDB: LobeChatDatabase = await getTestDB();
 
 const userId = 'knowledge-repo-test-user';
 const otherUserId = 'other-knowledge-user';
+const deleteDocChunkId = '33333333-3333-4333-8333-333333333333';
+const deleteManyDocChunkId = '44444444-4444-4444-8444-444444444444';
+const deleteFolderFileChunkId = '55555555-5555-4555-8555-555555555555';
+const deleteFolderDocChunkId = '66666666-6666-4666-8666-666666666666';
+const deleteNestedFolderFileChunkId = '77777777-7777-4777-8777-777777777777';
 
 let knowledgeRepo: KnowledgeRepo;
+const testEmbedding = Array.from({ length: 1024 }, () => 0.1);
 
 beforeEach(async () => {
   // Clean up
@@ -196,9 +212,9 @@ describe('KnowledgeRepo', () => {
       ]);
 
       // Add file to knowledge base
-      await serverDB.insert(knowledgeBaseFiles).values([
-        { fileId: 'file-in-kb', knowledgeBaseId: 'kb-1', userId },
-      ]);
+      await serverDB
+        .insert(knowledgeBaseFiles)
+        .values([{ fileId: 'file-in-kb', knowledgeBaseId: 'kb-1', userId }]);
     });
 
     it('should return files and documents for current user', async () => {
@@ -208,6 +224,32 @@ describe('KnowledgeRepo', () => {
       expect(result.length).toBeGreaterThan(0);
       expect(result.every((item) => item.id !== 'other-file')).toBe(true);
       expect(result.every((item) => item.id !== 'other-doc')).toBe(true);
+    });
+
+    it('should return uploader info for current user owned files and documents', async () => {
+      await serverDB
+        .update(users)
+        .set({
+          avatar: 'https://example.com/avatar.png',
+          fullName: 'Current User',
+          username: 'current-user',
+        })
+        .where(eq(users.id, userId));
+
+      const result = await knowledgeRepo.query({ showFilesInKnowledgeBase: true });
+
+      expect(result.find((item) => item.id === 'file-1')?.uploader).toMatchObject({
+        avatar: 'https://example.com/avatar.png',
+        fullName: 'Current User',
+        id: userId,
+        username: 'current-user',
+      });
+      expect(result.find((item) => item.id === 'doc-1')?.uploader).toMatchObject({
+        avatar: 'https://example.com/avatar.png',
+        fullName: 'Current User',
+        id: userId,
+        username: 'current-user',
+      });
     });
 
     it('should filter by category - Images', async () => {
@@ -228,16 +270,87 @@ describe('KnowledgeRepo', () => {
       expect(result.every((item) => item.fileType.startsWith('audio'))).toBe(true);
     });
 
-    it('should filter by category - Documents', async () => {
+    it('should filter by category - Documents includes uploaded text/pdf files only', async () => {
       const result = await knowledgeRepo.query({ category: FilesTabs.Documents });
 
+      const fileTypes = result.map((item) => item.fileType);
+      // uploaded text/* and office/pdf files are document files
+      expect(fileTypes).toContain('text/plain');
+      expect(fileTypes).toContain('application/pdf');
+      // derived notes/pages belong to the Pages category, media stays out too
+      expect(result.every((item) => item.sourceType === 'file')).toBe(true);
       expect(
         result.every(
           (item) =>
-            item.fileType.startsWith('application') ||
-            (item.fileType.startsWith('custom') && item.fileType !== 'custom/document'),
+            !/^(?:audio|image|video|custom)/.test(item.fileType) &&
+            item.fileType !== 'custom/folder',
         ),
       ).toBe(true);
+    });
+
+    it('should filter by category - Pages returns derived notes only', async () => {
+      const result = await knowledgeRepo.query({ category: FilesTabs.Pages });
+
+      const fileTypes = result.map((item) => item.fileType);
+      // derived notes/pages surface here
+      expect(fileTypes).toContain('custom/note');
+      // uploaded files (text, pdf, media, raw data) never do
+      expect(result.every((item) => item.sourceType === 'document')).toBe(true);
+      expect(fileTypes).not.toContain('text/plain');
+      expect(fileTypes).not.toContain('application/pdf');
+      expect(fileTypes).not.toContain('custom/folder');
+    });
+
+    it('should filter by category - Files returns raw data files only', async () => {
+      // Document-table rows (agent instructions, derived docs) must never leak
+      // into the Files category even when their fileType matches no other bucket.
+      await serverDB.insert(documents).values([
+        {
+          id: 'doc-verify-instruction',
+          userId,
+          title: 'Verification checklist',
+          fileType: 'verify/instruction',
+          sourceType: 'agent',
+          source: 'internal://verify/doc-verify-instruction',
+          totalCharCount: 100,
+          totalLineCount: 5,
+        },
+      ]);
+      await serverDB.insert(files).values([
+        {
+          id: 'file-raw-json',
+          userId,
+          name: 'data.json',
+          fileType: 'application/json',
+          size: 100,
+          url: 'https://example.com/data.json',
+        },
+        {
+          id: 'file-raw-zip',
+          userId,
+          name: 'bundle.zip',
+          fileType: 'application/zip',
+          size: 100,
+          url: 'https://example.com/bundle.zip',
+        },
+      ]);
+
+      const result = await knowledgeRepo.query({ category: FilesTabs.Files });
+
+      const ids = result.map((item) => item.id);
+      expect(ids).toContain('file-raw-json');
+      expect(ids).toContain('file-raw-zip');
+      // documents / media / notes are excluded from the Files category
+      expect(
+        result.every(
+          (item) =>
+            !/^(?:audio|image|video|text|custom)/.test(item.fileType) &&
+            item.fileType !== 'application/pdf',
+        ),
+      ).toBe(true);
+      // no documents-table rows at all, whatever their fileType
+      expect(ids).not.toContain('doc-verify-instruction');
+      expect(result.every((item) => item.sourceType === 'file')).toBe(true);
     });
 
     it('should search by query', async () => {
@@ -397,6 +510,15 @@ describe('KnowledgeRepo', () => {
         url: 'https://example.com/delete.txt',
       });
 
+      await serverDB.insert(files).values({
+        id: 'delete-doc-file',
+        userId,
+        name: 'delete-doc-file.pdf',
+        fileType: 'application/pdf',
+        size: 2048,
+        url: 'https://example.com/delete-doc-file.pdf',
+      });
+
       await serverDB.insert(documents).values([
         {
           id: 'delete-doc',
@@ -407,6 +529,153 @@ describe('KnowledgeRepo', () => {
           source: 'internal://note/delete-doc',
           totalCharCount: 100,
           totalLineCount: 2,
+        },
+        {
+          id: 'delete-folder',
+          userId,
+          title: 'Folder To Delete',
+          fileType: 'custom/folder',
+          sourceType: 'topic',
+          source: 'internal://folder/delete-folder',
+          totalCharCount: 0,
+          totalLineCount: 0,
+        },
+      ]);
+      await serverDB.insert(files).values([
+        {
+          id: 'delete-folder-file',
+          userId,
+          name: 'delete-folder-file.pdf',
+          fileType: 'application/pdf',
+          size: 256,
+          parentId: 'delete-folder',
+          url: 'https://example.com/delete-folder-file.pdf',
+        },
+        {
+          id: 'delete-folder-doc-file',
+          userId,
+          name: 'delete-folder-doc-file.pdf',
+          fileType: 'application/pdf',
+          size: 512,
+          url: 'https://example.com/delete-folder-doc-file.pdf',
+        },
+      ]);
+      await serverDB.insert(documents).values([
+        {
+          id: 'delete-doc-with-file',
+          userId,
+          title: 'To Delete File-Backed Note',
+          fileId: 'delete-doc-file',
+          fileType: 'application/pdf',
+          filename: 'delete-doc-file.pdf',
+          sourceType: 'api',
+          source: 'internal://note/delete-doc-with-file',
+          totalCharCount: 120,
+          totalLineCount: 3,
+        },
+        {
+          id: 'delete-folder-doc',
+          userId,
+          parentId: 'delete-folder',
+          title: 'Folder Child Doc',
+          fileId: 'delete-folder-doc-file',
+          fileType: 'application/pdf',
+          filename: 'delete-folder-doc-file.pdf',
+          sourceType: 'api',
+          source: 'internal://note/delete-folder-doc',
+          totalCharCount: 90,
+          totalLineCount: 2,
+        },
+        {
+          id: 'delete-folder-child',
+          userId,
+          parentId: 'delete-folder',
+          title: 'Nested Folder',
+          fileType: 'custom/folder',
+          sourceType: 'topic',
+          source: 'internal://folder/delete-folder-child',
+          totalCharCount: 0,
+          totalLineCount: 0,
+        },
+      ]);
+      await serverDB.insert(files).values({
+        id: 'delete-folder-child-file',
+        userId,
+        name: 'delete-folder-child-file.pdf',
+        fileType: 'application/pdf',
+        size: 768,
+        parentId: 'delete-folder-child',
+        url: 'https://example.com/delete-folder-child-file.pdf',
+      });
+
+      await serverDB.insert(chunks).values({
+        id: deleteDocChunkId,
+        text: 'chunk for mirrored file',
+        userId,
+      });
+      await serverDB.insert(fileChunks).values({
+        chunkId: deleteDocChunkId,
+        fileId: 'delete-doc-file',
+        userId,
+      });
+      await serverDB.insert(embeddings).values({
+        chunkId: deleteDocChunkId,
+        embeddings: testEmbedding,
+        model: 'test-model',
+        userId,
+      });
+      await serverDB.insert(chunks).values([
+        {
+          id: deleteFolderFileChunkId,
+          text: 'chunk for folder file',
+          userId,
+        },
+        {
+          id: deleteFolderDocChunkId,
+          text: 'chunk for folder child mirrored file',
+          userId,
+        },
+        {
+          id: deleteNestedFolderFileChunkId,
+          text: 'chunk for nested folder file',
+          userId,
+        },
+      ]);
+      await serverDB.insert(fileChunks).values([
+        {
+          chunkId: deleteFolderFileChunkId,
+          fileId: 'delete-folder-file',
+          userId,
+        },
+        {
+          chunkId: deleteFolderDocChunkId,
+          fileId: 'delete-folder-doc-file',
+          userId,
+        },
+        {
+          chunkId: deleteNestedFolderFileChunkId,
+          fileId: 'delete-folder-child-file',
+          userId,
+        },
+      ]);
+      await serverDB.insert(embeddings).values([
+        {
+          chunkId: deleteFolderFileChunkId,
+          embeddings: testEmbedding,
+          model: 'test-model',
+          userId,
+        },
+        {
+          chunkId: deleteFolderDocChunkId,
+          embeddings: testEmbedding,
+          model: 'test-model',
+          userId,
+        },
+        {
+          chunkId: deleteNestedFolderFileChunkId,
+          embeddings: testEmbedding,
+          model: 'test-model',
+          userId,
         },
       ]);
     });
@@ -427,6 +696,82 @@ describe('KnowledgeRepo', () => {
         where: eq(documents.id, 'delete-doc'),
       });
       expect(doc).toBeUndefined();
+    });
+
+    it('should delete mirrored file data when deleting a file-backed document', async () => {
+      await knowledgeRepo.deleteItem('delete-doc-with-file', 'document');
+
+      const doc = await serverDB.query.documents.findFirst({
+        where: eq(documents.id, 'delete-doc-with-file'),
+      });
+      const file = await serverDB.query.files.findFirst({
+        where: eq(files.id, 'delete-doc-file'),
+      });
+      const chunk = await serverDB.query.chunks.findFirst({
+        where: eq(chunks.id, deleteDocChunkId),
+      });
+      const embedding = await serverDB.query.embeddings.findFirst({
+        where: eq(embeddings.chunkId, deleteDocChunkId),
+      });
+
+      expect(doc).toBeUndefined();
+      expect(file).toBeUndefined();
+      expect(chunk).toBeUndefined();
+      expect(embedding).toBeUndefined();
+    });
+
+    it('should recursively delete child documents, files and vectors when deleting a folder', async () => {
+      await knowledgeRepo.deleteItem('delete-folder', 'document');
+
+      const folder = await serverDB.query.documents.findFirst({
+        where: eq(documents.id, 'delete-folder'),
+      });
+      const childDoc = await serverDB.query.documents.findFirst({
+        where: eq(documents.id, 'delete-folder-doc'),
+      });
+      const childFolder = await serverDB.query.documents.findFirst({
+        where: eq(documents.id, 'delete-folder-child'),
+      });
+      const folderFile = await serverDB.query.files.findFirst({
+        where: eq(files.id, 'delete-folder-file'),
+      });
+      const childDocFile = await serverDB.query.files.findFirst({
+        where: eq(files.id, 'delete-folder-doc-file'),
+      });
+      const nestedFolderFile = await serverDB.query.files.findFirst({
+        where: eq(files.id, 'delete-folder-child-file'),
+      });
+      const folderFileChunk = await serverDB.query.chunks.findFirst({
+        where: eq(chunks.id, deleteFolderFileChunkId),
+      });
+      const childDocChunk = await serverDB.query.chunks.findFirst({
+        where: eq(chunks.id, deleteFolderDocChunkId),
+      });
+      const nestedFolderFileChunk = await serverDB.query.chunks.findFirst({
+        where: eq(chunks.id, deleteNestedFolderFileChunkId),
+      });
+      const folderFileEmbedding = await serverDB.query.embeddings.findFirst({
+        where: eq(embeddings.chunkId, deleteFolderFileChunkId),
+      });
+      const childDocEmbedding = await serverDB.query.embeddings.findFirst({
+        where: eq(embeddings.chunkId, deleteFolderDocChunkId),
+      });
+      const nestedFolderFileEmbedding = await serverDB.query.embeddings.findFirst({
+        where: eq(embeddings.chunkId, deleteNestedFolderFileChunkId),
+      });
+
+      expect(folder).toBeUndefined();
+      expect(childDoc).toBeUndefined();
+      expect(childFolder).toBeUndefined();
+      expect(folderFile).toBeUndefined();
+      expect(childDocFile).toBeUndefined();
+      expect(nestedFolderFile).toBeUndefined();
+      expect(folderFileChunk).toBeUndefined();
+      expect(childDocChunk).toBeUndefined();
+      expect(nestedFolderFileChunk).toBeUndefined();
+      expect(folderFileEmbedding).toBeUndefined();
+      expect(childDocEmbedding).toBeUndefined();
+      expect(nestedFolderFileEmbedding).toBeUndefined();
     });
   });
 
@@ -449,6 +794,14 @@ describe('KnowledgeRepo', () => {
           size: 100,
           url: 'https://example.com/delete2.txt',
         },
+        {
+          id: 'delete-many-doc-file-1',
+          userId,
+          name: 'delete-many-doc-file-1.pdf',
+          fileType: 'application/pdf',
+          size: 512,
+          url: 'https://example.com/delete-many-doc-file-1.pdf',
+        },
       ]);
 
       await serverDB.insert(documents).values([
@@ -456,6 +809,7 @@ describe('KnowledgeRepo', () => {
           id: 'delete-many-doc-1',
           userId,
           title: 'Delete Note 1',
+          fileId: 'delete-many-doc-file-1',
           fileType: 'custom/note',
           sourceType: 'topic',
           source: 'internal://note/delete-many-doc-1',
@@ -473,6 +827,22 @@ describe('KnowledgeRepo', () => {
           totalLineCount: 2,
         },
       ]);
+      await serverDB.insert(chunks).values({
+        id: deleteManyDocChunkId,
+        text: 'delete many mirrored chunk',
+        userId,
+      });
+      await serverDB.insert(fileChunks).values({
+        chunkId: deleteManyDocChunkId,
+        fileId: 'delete-many-doc-file-1',
+        userId,
+      });
+      await serverDB.insert(embeddings).values({
+        chunkId: deleteManyDocChunkId,
+        embeddings: testEmbedding,
+        model: 'test-model',
+        userId,
+      });
     });
 
     it('should delete multiple files and documents', async () => {
@@ -495,11 +865,23 @@ describe('KnowledgeRepo', () => {
       const doc2 = await serverDB.query.documents.findFirst({
         where: eq(documents.id, 'delete-many-doc-2'),
       });
+      const mirroredFile = await serverDB.query.files.findFirst({
+        where: eq(files.id, 'delete-many-doc-file-1'),
+      });
+      const chunk = await serverDB.query.chunks.findFirst({
+        where: eq(chunks.id, deleteManyDocChunkId),
+      });
+      const embedding = await serverDB.query.embeddings.findFirst({
+        where: eq(embeddings.chunkId, deleteManyDocChunkId),
+      });
 
       expect(file1).toBeUndefined();
       expect(file2).toBeUndefined();
       expect(doc1).toBeUndefined();
       expect(doc2).toBeUndefined();
+      expect(mirroredFile).toBeUndefined();
+      expect(chunk).toBeUndefined();
+      expect(embedding).toBeUndefined();
     });
 
     it('should handle empty arrays', async () => {
@@ -597,6 +979,215 @@ describe('KnowledgeRepo', () => {
     });
   });
 
+  describe('query with knowledgeBaseId + filters', () => {
+    beforeEach(async () => {
+      await serverDB
+        .insert(knowledgeBases)
+        .values([{ id: 'kb-filter', name: 'Filter KB', userId }]);
+
+      // Create a folder doc in KB
+      await serverDB.insert(documents).values([
+        {
+          id: 'kb-folder-doc',
+          userId,
+          title: 'KB Folder',
+          fileType: 'custom/folder',
+          sourceType: 'topic',
+          source: 'internal://folder/kb-folder-doc',
+          slug: 'kb-folder',
+          knowledgeBaseId: 'kb-filter',
+          totalCharCount: 0,
+          totalLineCount: 0,
+        },
+        {
+          id: 'kb-standalone-doc',
+          userId,
+          title: 'KB Standalone Note',
+          fileType: 'custom/note',
+          sourceType: 'topic',
+          source: 'internal://note/kb-standalone-doc',
+          knowledgeBaseId: 'kb-filter',
+          totalCharCount: 200,
+          totalLineCount: 4,
+        },
+        {
+          id: 'kb-standalone-doc-searchable',
+          userId,
+          title: 'Searchable KB Note',
+          fileType: 'custom/note',
+          sourceType: 'topic',
+          source: 'internal://note/kb-standalone-doc-searchable',
+          knowledgeBaseId: 'kb-filter',
+          totalCharCount: 100,
+          totalLineCount: 2,
+        },
+        {
+          id: 'kb-app-doc',
+          userId,
+          title: 'KB App Doc',
+          fileType: 'application/pdf',
+          sourceType: 'topic',
+          source: 'internal://doc/kb-app-doc',
+          knowledgeBaseId: 'kb-filter',
+          totalCharCount: 300,
+          totalLineCount: 6,
+        },
+      ]);
+
+      // Create files in KB
+      await serverDB.insert(files).values([
+        {
+          id: 'kb-f-image',
+          userId,
+          name: 'kb-image.png',
+          fileType: 'image/png',
+          size: 1000,
+          url: 'https://example.com/kb-image.png',
+        },
+        {
+          id: 'kb-f-pdf',
+          userId,
+          name: 'kb-doc.pdf',
+          fileType: 'application/pdf',
+          size: 2000,
+          url: 'https://example.com/kb-doc.pdf',
+          parentId: 'kb-folder-doc',
+        },
+        {
+          id: 'kb-f-searchable',
+          userId,
+          name: 'searchable-file.txt',
+          fileType: 'text/plain',
+          size: 100,
+          url: 'https://example.com/searchable.txt',
+        },
+      ]);
+
+      await serverDB.insert(knowledgeBaseFiles).values([
+        { fileId: 'kb-f-image', knowledgeBaseId: 'kb-filter', userId },
+        { fileId: 'kb-f-pdf', knowledgeBaseId: 'kb-filter', userId },
+        { fileId: 'kb-f-searchable', knowledgeBaseId: 'kb-filter', userId },
+      ]);
+    });
+
+    it('should filter KB files by parentId', async () => {
+      const result = await knowledgeRepo.query({
+        knowledgeBaseId: 'kb-filter',
+        parentId: 'kb-folder-doc',
+      });
+
+      expect(result.some((item) => item.id === 'kb-f-pdf')).toBe(true);
+      expect(result.every((item) => item.id !== 'kb-f-image')).toBe(true);
+    });
+
+    it('should filter KB files by null parentId', async () => {
+      const result = await knowledgeRepo.query({
+        knowledgeBaseId: 'kb-filter',
+        parentId: null,
+      });
+
+      // Files without parentId should be returned
+      expect(result.some((item) => item.id === 'kb-f-image')).toBe(true);
+    });
+
+    it('should filter KB files by search query', async () => {
+      const result = await knowledgeRepo.query({
+        knowledgeBaseId: 'kb-filter',
+        q: 'searchable',
+      });
+
+      expect(result.some((item) => item.id === 'kb-f-searchable')).toBe(true);
+    });
+
+    it('should filter KB files by category (Images)', async () => {
+      const result = await knowledgeRepo.query({
+        knowledgeBaseId: 'kb-filter',
+        category: FilesTabs.Images,
+      });
+
+      // Images category returns only image files, document query returns empty set
+      expect(result.some((item) => item.id === 'kb-f-image')).toBe(true);
+      expect(result.every((item) => item.fileType.startsWith('image'))).toBe(true);
+    });
+
+    it('should filter KB files by category (Documents) including text files and notes', async () => {
+      const result = await knowledgeRepo.query({
+        knowledgeBaseId: 'kb-filter',
+        category: FilesTabs.Documents,
+      });
+
+      const ids = result.map((item) => item.id);
+      expect(ids).toContain('kb-f-pdf');
+      expect(ids).toContain('kb-f-searchable');
+      // media stays out of Documents
+      expect(result.every((item) => !/^(?:audio|image|video)/.test(item.fileType))).toBe(true);
+    });
+
+    it('should return KB standalone documents (no fileId) with search', async () => {
+      const result = await knowledgeRepo.query({
+        knowledgeBaseId: 'kb-filter',
+        q: 'Searchable KB',
+      });
+
+      expect(result.some((item) => item.id === 'kb-standalone-doc-searchable')).toBe(true);
+    });
+
+    it('should handle KB with parentId for documents', async () => {
+      // Add a child document under the KB folder
+      await serverDB.insert(documents).values([
+        {
+          id: 'kb-child-doc',
+          userId,
+          title: 'KB Child Doc',
+          fileType: 'custom/note',
+          sourceType: 'topic',
+          source: 'internal://note/kb-child-doc',
+          knowledgeBaseId: 'kb-filter',
+          parentId: 'kb-folder-doc',
+          totalCharCount: 50,
+          totalLineCount: 1,
+        },
+      ]);
+
+      const result = await knowledgeRepo.query({
+        knowledgeBaseId: 'kb-filter',
+        parentId: 'kb-folder-doc',
+      });
+
+      expect(result.some((item) => item.id === 'kb-child-doc')).toBe(true);
+    });
+
+    it('should handle KB with null parentId for documents', async () => {
+      const result = await knowledgeRepo.query({
+        knowledgeBaseId: 'kb-filter',
+        parentId: null,
+      });
+
+      // Standalone docs without parentId should be returned
+      expect(result.some((item) => item.id === 'kb-standalone-doc')).toBe(true);
+    });
+  });
+
+  describe('query with non-matching categories (empty document results)', () => {
+    it('should return empty document set for Images category', async () => {
+      // Images only match files, documents should return empty
+      const result = await knowledgeRepo.query({ category: FilesTabs.Images });
+
+      // All results should be files with image/* type
+      result.forEach((item) => {
+        expect(item.fileType.startsWith('image')).toBe(true);
+      });
+    });
+
+    it('should return empty document set for Videos category', async () => {
+      const result = await knowledgeRepo.query({ category: FilesTabs.Videos });
+
+      result.forEach((item) => {
+        expect(item.fileType.startsWith('video')).toBe(true);
+      });
+    });
+  });
+
   describe('query with website category', () => {
     beforeEach(async () => {
       await serverDB.insert(files).values([
@@ -617,13 +1208,43 @@ describe('KnowledgeRepo', () => {
           url: 'https://example.com/readme.txt',
         },
       ]);
+
+      // a web clipping saved as an article document plus a plain note that
+      // must stay out of the Websites category
+      await serverDB.insert(documents).values([
+        {
+          id: 'article-doc',
+          userId,
+          title: 'Clipped Article',
+          fileType: 'article',
+          sourceType: 'web',
+          source: 'https://example.com/some-article',
+          content: 'clipped content',
+          totalCharCount: 15,
+          totalLineCount: 1,
+        },
+        {
+          id: 'plain-note',
+          userId,
+          title: 'Plain Note',
+          fileType: 'custom/note',
+          sourceType: 'topic',
+          source: 'internal://note/plain-note',
+          totalCharCount: 10,
+          totalLineCount: 1,
+        },
+      ]);
     });
 
-    it('should filter by category - Websites', async () => {
+    it('should filter by category - Websites includes html files and article clippings', async () => {
       const result = await knowledgeRepo.query({ category: FilesTabs.Websites });
 
       expect(result.some((item) => item.id === 'website-file')).toBe(true);
-      expect(result.every((item) => item.fileType === 'text/html')).toBe(true);
+      expect(result.some((item) => item.id === 'article-doc')).toBe(true);
+      expect(result.every((item) => item.id !== 'plain-note')).toBe(true);
+      expect(
+        result.every((item) => item.fileType === 'text/html' || item.fileType === 'article'),
+      ).toBe(true);
     });
   });
 
@@ -666,6 +1287,183 @@ describe('KnowledgeRepo', () => {
       const result = await knowledgeRepo.query({ category: FilesTabs.All });
 
       expect(result.length).toBeGreaterThanOrEqual(3);
+    });
+  });
+
+  describe('query with unknown category (default getFileTypePrefix)', () => {
+    beforeEach(async () => {
+      await serverDB.insert(files).values([
+        {
+          id: 'default-cat-file',
+          userId,
+          name: 'file.txt',
+          fileType: 'text/plain',
+          size: 100,
+          url: 'https://example.com/default.txt',
+        },
+      ]);
+    });
+
+    it('should handle Home category (default prefix returns empty string)', async () => {
+      // FilesTabs.Home triggers getFileTypePrefix default case, returning ''
+      // This means all file types match since ILIKE '%' matches everything
+      const result = await knowledgeRepo.query({ category: FilesTabs.Home as any });
+
+      expect(result.length).toBeGreaterThanOrEqual(0);
+    });
+  });
+
+  describe('query sort edge cases', () => {
+    beforeEach(async () => {
+      await serverDB.insert(files).values([
+        {
+          id: 'sort-file-1',
+          userId,
+          name: 'a-file.txt',
+          fileType: 'text/plain',
+          size: 300,
+          url: 'https://example.com/a.txt',
+          createdAt: new Date('2024-01-01T10:00:00Z'),
+          updatedAt: new Date('2024-01-05T10:00:00Z'),
+        },
+        {
+          id: 'sort-file-2',
+          userId,
+          name: 'z-file.txt',
+          fileType: 'text/plain',
+          size: 100,
+          url: 'https://example.com/z.txt',
+          createdAt: new Date('2024-01-03T10:00:00Z'),
+          updatedAt: new Date('2024-01-03T10:00:00Z'),
+        },
+      ]);
+    });
+
+    it('should sort by updatedAt asc', async () => {
+      const result = await knowledgeRepo.query({
+        sorter: 'updatedAt',
+        sortType: SortType.Asc,
+      });
+
+      if (result.length >= 2) {
+        expect(result[0].updatedAt.getTime()).toBeLessThanOrEqual(result[1].updatedAt.getTime());
+      }
+    });
+
+    it('should sort by createdAt desc', async () => {
+      const result = await knowledgeRepo.query({
+        sorter: 'createdAt',
+        sortType: SortType.Desc,
+      });
+
+      if (result.length >= 2) {
+        expect(result[0].createdAt.getTime()).toBeGreaterThanOrEqual(result[1].createdAt.getTime());
+      }
+    });
+
+    it('should fallback to default sort when invalid sorter is given', async () => {
+      const result = await knowledgeRepo.query({
+        sorter: 'invalidField',
+        sortType: SortType.Asc,
+      });
+
+      // Should still return results (falls back to created_at DESC)
+      expect(result.length).toBeGreaterThan(0);
+    });
+  });
+
+  describe('query with workspace visibility filter', () => {
+    const workspaceId = 'kr-vis-ws';
+    let wsRepo: KnowledgeRepo;
+
+    beforeEach(async () => {
+      await serverDB.insert(workspaces).values({
+        id: workspaceId,
+        name: 'Visibility WS',
+        slug: 'kr-vis-ws',
+        primaryOwnerId: userId,
+      });
+
+      await serverDB.insert(files).values([
+        {
+          id: 'vis-file-priv',
+          userId,
+          workspaceId,
+          visibility: 'private',
+          name: 'private.txt',
+          fileType: 'text/plain',
+          size: 10,
+          url: 'https://example.com/priv.txt',
+        },
+        {
+          id: 'vis-file-pub',
+          userId,
+          workspaceId,
+          visibility: 'public',
+          name: 'public.txt',
+          fileType: 'text/plain',
+          size: 10,
+          url: 'https://example.com/pub.txt',
+        },
+        {
+          id: 'vis-file-other-priv',
+          userId: otherUserId,
+          workspaceId,
+          visibility: 'private',
+          name: 'other-private.txt',
+          fileType: 'text/plain',
+          size: 10,
+          url: 'https://example.com/other.txt',
+        },
+      ]);
+
+      await serverDB.insert(documents).values([
+        {
+          id: 'vis-doc-priv',
+          userId,
+          workspaceId,
+          visibility: 'private',
+          title: 'Private Note',
+          fileType: 'custom/note',
+          sourceType: 'topic',
+          source: 'internal://note/vis-priv',
+          totalCharCount: 5,
+          totalLineCount: 1,
+        },
+        {
+          id: 'vis-doc-pub',
+          userId,
+          workspaceId,
+          visibility: 'public',
+          title: 'Public Note',
+          fileType: 'custom/note',
+          sourceType: 'topic',
+          source: 'internal://note/vis-pub',
+          totalCharCount: 5,
+          totalLineCount: 1,
+        },
+      ]);
+
+      wsRepo = new KnowledgeRepo(serverDB, userId, workspaceId);
+    });
+
+    it('should return only private rows when visibility=private', async () => {
+      const result = await wsRepo.query({ visibility: 'private' });
+      const ids = result.map((r) => r.id).sort();
+      expect(ids).toEqual(['vis-doc-priv', 'vis-file-priv']);
+    });
+
+    it('should return only public rows when visibility=public', async () => {
+      const result = await wsRepo.query({ visibility: 'public' });
+      const ids = result.map((r) => r.id).sort();
+      expect(ids).toEqual(['vis-doc-pub', 'vis-file-pub']);
+    });
+
+    it('should ignore the visibility filter when the repo has no workspaceId (personal mode)', async () => {
+      // knowledgeRepo has no workspaceId; personal-mode rows above are absent
+      // from this branch so we're just asserting the call succeeds without
+      // an unexpected error caused by hidden clauses.
+      await expect(knowledgeRepo.query({ visibility: 'private' })).resolves.toBeDefined();
     });
   });
 });

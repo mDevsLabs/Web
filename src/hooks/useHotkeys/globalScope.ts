@@ -1,5 +1,6 @@
 import { INBOX_SESSION_ID } from '@lobechat/const';
-import { HotkeyEnum } from '@lobechat/types';
+import { HotkeyEnum } from '@lobechat/const/hotkeys';
+import { useLocation } from 'react-router';
 
 import { useNavigateToAgent } from '@/hooks/useNavigateToAgent';
 import { usePinnedAgentState } from '@/hooks/usePinnedAgentState';
@@ -7,7 +8,21 @@ import { useGlobalStore } from '@/store/global';
 
 import { useHotkeyById } from './useHotkeyById';
 
-// 切换到会话标签(并聚焦到Lobe AI)
+/**
+ * Task routes render AgentTaskManager, whose panel status is intentionally
+ * independent from the generic right panel used by chat and page editor routes.
+ */
+export const isTaskPanelRoute = (pathname: string) =>
+  pathname === '/tasks' || pathname.startsWith('/tasks/') || pathname.startsWith('/task/');
+
+/**
+ * Agent profile renders AgentBuilder, whose panel status is intentionally
+ * independent from the generic right panel used by chat routes.
+ */
+export const isAgentProfilePanelRoute = (pathname: string) =>
+  /^\/agent\/[^/]+\/profile\/?$/.test(pathname);
+
+// Switch to chat tab (and focus on Lobe AI)
 export const useNavigateToChatHotkey = () => {
   const navigateToAgent = useNavigateToAgent();
   const [, { unpinAgent }] = usePinnedAgentState();
@@ -30,22 +45,48 @@ export const useOpenHotkeyHelperHotkey = () => {
 };
 
 export const useToggleLeftPanelHotkey = () => {
-  const isZenMode = useGlobalStore((s) => s.status.zenMode);
   const toggleLeftPanel = useGlobalStore((s) => s.toggleLeftPanel);
   return useHotkeyById(HotkeyEnum.ToggleLeftPanel, () => toggleLeftPanel(), {
     enableOnContentEditable: true,
-    enabled: !isZenMode,
   });
 };
 
 export const useToggleRightPanelHotkey = () => {
-  const isZenMode = useGlobalStore((s) => s.status.zenMode);
-  const toggleConfig = useGlobalStore((s) => s.toggleRightPanel);
+  const { pathname } = useLocation();
+  const [toggleAgentBuilderPanel, toggleRightPanel, toggleTaskAgentPanel] = useGlobalStore((s) => [
+    s.toggleAgentBuilderPanel,
+    s.toggleRightPanel,
+    s.toggleTaskAgentPanel,
+  ]);
+  const isAgentProfileRoute = isAgentProfilePanelRoute(pathname);
+  const isTaskRoute = isTaskPanelRoute(pathname);
 
-  return useHotkeyById(HotkeyEnum.ToggleRightPanel, () => toggleConfig(), {
-    enableOnContentEditable: true,
-    enabled: !isZenMode,
-  });
+  return useHotkeyById(
+    HotkeyEnum.ToggleRightPanel,
+    () => {
+      if (isTaskRoute) {
+        toggleTaskAgentPanel();
+        return;
+      }
+
+      if (isAgentProfileRoute) {
+        toggleAgentBuilderPanel();
+        return;
+      }
+
+      toggleRightPanel();
+    },
+    {
+      enableOnContentEditable: true,
+    },
+    [
+      isAgentProfileRoute,
+      isTaskRoute,
+      toggleAgentBuilderPanel,
+      toggleRightPanel,
+      toggleTaskAgentPanel,
+    ],
+  );
 };
 
 // CMDK
@@ -58,7 +99,7 @@ export const useCommandPaletteHotkey = () => {
 };
 
 export const useRegisterGlobalHotkeys = () => {
-  // 全局自动注册不需要 enableScope
+  // Global auto-registration doesn't need enableScope
   useToggleLeftPanelHotkey();
   useToggleRightPanelHotkey();
   useNavigateToChatHotkey();

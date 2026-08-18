@@ -1,6 +1,8 @@
-import useSWR, { type SWRResponse, mutate } from 'swr';
-import type { StateCreator } from 'zustand/vanilla';
+import { type SWRResponse } from 'swr';
+import useSWR from 'swr';
 
+import { mutate } from '@/libs/swr';
+import { discoverKeys } from '@/libs/swr/keys';
 import {
   type FavoriteAgentItem,
   type FavoritePluginItem,
@@ -9,153 +11,169 @@ import {
   type FollowUserItem,
   type PaginatedResponse,
   type SocialTargetType,
-  socialService,
 } from '@/services/social';
+import { socialService } from '@/services/social';
 import { type DiscoverStore } from '@/store/discover';
+import { type StoreSetter } from '@/store/types';
 
-export interface SocialAction {
-  // Favorite actions
-  addFavorite: (targetType: SocialTargetType, targetId: number) => Promise<void>;
-  // Follow actions
-  follow: (followingId: number) => Promise<void>;
+type Setter = StoreSetter<DiscoverStore>;
+export const createSocialSlice = (set: Setter, get: () => DiscoverStore, _api?: unknown) =>
+  new SocialActionImpl(set, get, _api);
 
-  removeFavorite: (targetType: SocialTargetType, targetId: number) => Promise<void>;
-  // Like actions
-  toggleLike: (targetType: SocialTargetType, targetId: number) => Promise<{ liked: boolean }>;
+const optimisticFollowCounts =
+  (isFollowing: boolean) =>
+  (current?: FollowCounts): FollowCounts => {
+    const followersCount = current?.followersCount ?? 0;
 
-  unfollow: (followingId: number) => Promise<void>;
+    return {
+      followersCount: isFollowing ? followersCount + 1 : Math.max(0, followersCount - 1),
+      followingCount: current?.followingCount ?? 0,
+    };
+  };
 
-  // Favorite queries
-  useFavoriteAgents: (
-    userId: number | undefined,
-    params?: { page?: number; pageSize?: number },
-  ) => SWRResponse<PaginatedResponse<FavoriteAgentItem>>;
-  useFavoritePlugins: (
-    userId: number | undefined,
-    params?: { page?: number; pageSize?: number },
-  ) => SWRResponse<PaginatedResponse<FavoritePluginItem>>;
-  useFollowCounts: (userId: number | undefined) => SWRResponse<FollowCounts>;
-  // Follow queries
-  useFollowStatus: (userId: number | undefined) => SWRResponse<FollowStatus>;
+const updateFollowCaches = async (followingId: number, isFollowing: boolean) => {
+  await Promise.all([
+    mutate(
+      discoverKeys.followStatus(followingId),
+      {
+        isFollowing,
+        isMutual: false,
+      } satisfies FollowStatus,
+      { revalidate: false },
+    ),
+    mutate(discoverKeys.followCounts(followingId), optimisticFollowCounts(isFollowing), {
+      revalidate: false,
+    }),
+    mutate(
+      (key) =>
+        Array.isArray(key) &&
+        (key[0] === discoverKeys.followers.root || key[0] === discoverKeys.following.root),
+      undefined,
+      {
+        revalidate: true,
+      },
+    ),
+  ]);
+};
 
-  useFollowers: (
-    userId: number | undefined,
-    params?: { page?: number; pageSize?: number },
-  ) => SWRResponse<PaginatedResponse<FollowUserItem>>;
-  useFollowing: (
-    userId: number | undefined,
-    params?: { page?: number; pageSize?: number },
-  ) => SWRResponse<PaginatedResponse<FollowUserItem>>;
-}
+export class SocialActionImpl {
+  constructor(set: Setter, get: () => DiscoverStore, _api?: unknown) {
+    void _api;
+    void set;
+    void get;
+  }
 
-export const createSocialSlice: StateCreator<
-  DiscoverStore,
-  [['zustand/devtools', never]],
-  [],
-  SocialAction
-> = () => ({
-  
-  // Favorite actions
-addFavorite: async (targetType, targetId) => {
+  addFavorite = async (targetType: SocialTargetType, targetId: number): Promise<void> => {
     await socialService.addFavorite(targetType, targetId);
     // Invalidate favorite-related caches
-    await mutate((key) => typeof key === 'string' && key.startsWith('favorite-'), undefined, {
-      revalidate: true,
-    });
-  },
+    await mutate(
+      (key) =>
+        Array.isArray(key) &&
+        (key[0] === discoverKeys.favoriteAgents.root ||
+          key[0] === discoverKeys.favoritePlugins.root),
+      undefined,
+      {
+        revalidate: true,
+      },
+    );
+  };
 
-  
-// Follow actions
-follow: async (followingId) => {
+  follow = async (followingId: number): Promise<void> => {
     await socialService.follow(followingId);
-    // Invalidate follow-related caches
-    await mutate((key) => typeof key === 'string' && key.startsWith('follow-'), undefined, {
-      revalidate: true,
-    });
-  },
+    await updateFollowCaches(followingId, true);
+  };
 
-  
-  removeFavorite: async (targetType, targetId) => {
+  removeFavorite = async (targetType: SocialTargetType, targetId: number): Promise<void> => {
     await socialService.removeFavorite(targetType, targetId);
     // Invalidate favorite-related caches
-    await mutate((key) => typeof key === 'string' && key.startsWith('favorite-'), undefined, {
-      revalidate: true,
-    });
-  },
+    await mutate(
+      (key) =>
+        Array.isArray(key) &&
+        (key[0] === discoverKeys.favoriteAgents.root ||
+          key[0] === discoverKeys.favoritePlugins.root),
+      undefined,
+      {
+        revalidate: true,
+      },
+    );
+  };
 
-  // Like actions
-toggleLike: async (targetType, targetId) => {
+  toggleLike = async (
+    targetType: SocialTargetType,
+    targetId: number,
+  ): Promise<{ liked: boolean }> => {
     const result = await socialService.toggleLike(targetType, targetId);
     // Invalidate like-related caches
     await mutate((key) => typeof key === 'string' && key.startsWith('liked-'), undefined, {
       revalidate: true,
     });
     return result;
-  },
+  };
 
-  
-  unfollow: async (followingId) => {
+  unfollow = async (followingId: number): Promise<void> => {
     await socialService.unfollow(followingId);
-    // Invalidate follow-related caches
-    await mutate((key) => typeof key === 'string' && key.startsWith('follow-'), undefined, {
-      revalidate: true,
-    });
-  },
+    await updateFollowCaches(followingId, false);
+  };
 
-  
-  // Favorite queries
-useFavoriteAgents: (userId, params) => {
+  useFavoriteAgents = (
+    userId: number | undefined,
+    params?: { page?: number; pageSize?: number },
+  ): SWRResponse<PaginatedResponse<FavoriteAgentItem>> => {
     return useSWR(
-      userId ? ['favorite-agents', userId, params?.page, params?.pageSize].join('-') : null,
+      userId ? discoverKeys.favoriteAgents(userId, params) : null,
       async () => socialService.getUserFavoriteAgents(userId!, params),
       { revalidateOnFocus: false },
     );
-  },
+  };
 
-  
-
-useFavoritePlugins: (userId, params) => {
+  useFavoritePlugins = (
+    userId: number | undefined,
+    params?: { page?: number; pageSize?: number },
+  ): SWRResponse<PaginatedResponse<FavoritePluginItem>> => {
     return useSWR(
-      userId ? ['favorite-plugins', userId, params?.page, params?.pageSize].join('-') : null,
+      userId ? discoverKeys.favoritePlugins(userId, params) : null,
       async () => socialService.getUserFavoritePlugins(userId!, params),
       { revalidateOnFocus: false },
     );
-  },
+  };
 
-  
-
-useFollowCounts: (userId) => {
+  useFollowCounts = (userId: number | undefined): SWRResponse<FollowCounts> => {
     return useSWR(
-      userId ? ['follow-counts', userId].join('-') : null,
+      userId ? discoverKeys.followCounts(userId) : null,
       async () => socialService.getFollowCounts(userId!),
       { revalidateOnFocus: false },
     );
-  },
+  };
 
-  
-// Follow queries
-useFollowStatus: (userId) => {
+  useFollowStatus = (userId: number | undefined): SWRResponse<FollowStatus> => {
     return useSWR(
-      userId ? ['follow-status', userId].join('-') : null,
+      userId ? discoverKeys.followStatus(userId) : null,
       async () => socialService.checkFollowStatus(userId!),
       { revalidateOnFocus: false },
     );
-  },
+  };
 
-  
-  useFollowers: (userId, params) => {
+  useFollowers = (
+    userId: number | undefined,
+    params?: { page?: number; pageSize?: number },
+  ): SWRResponse<PaginatedResponse<FollowUserItem>> => {
     return useSWR(
-      userId ? ['followers', userId, params?.page, params?.pageSize].join('-') : null,
+      userId ? discoverKeys.followers(userId, params) : null,
       async () => socialService.getFollowers(userId!, params),
       { revalidateOnFocus: false },
     );
-  },
+  };
 
-  useFollowing: (userId, params) => {
+  useFollowing = (
+    userId: number | undefined,
+    params?: { page?: number; pageSize?: number },
+  ): SWRResponse<PaginatedResponse<FollowUserItem>> => {
     return useSWR(
-      userId ? ['following', userId, params?.page, params?.pageSize].join('-') : null,
+      userId ? discoverKeys.following(userId, params) : null,
       async () => socialService.getFollowing(userId!, params),
       { revalidateOnFocus: false },
     );
-  },
-});
+  };
+}
+
+export type SocialAction = Pick<SocialActionImpl, keyof SocialActionImpl>;

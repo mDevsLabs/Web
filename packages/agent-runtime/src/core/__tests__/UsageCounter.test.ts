@@ -1,8 +1,8 @@
-import { ModelUsage } from '@lobechat/types';
+import type { ModelUsage } from '@lobechat/types';
 import { describe, expect, it } from 'vitest';
 
-import { UsageCounter } from '../UsageCounter';
 import { AgentRuntime } from '../runtime';
+import { UsageCounter } from '../UsageCounter';
 
 describe('UsageCounter', () => {
   describe('UsageCounter.accumulateLLM', () => {
@@ -41,7 +41,7 @@ describe('UsageCounter', () => {
       const { usage } = UsageCounter.accumulateLLM({
         cost: state.cost,
         model: 'gpt-4',
-        modelUsage: modelUsage,
+        modelUsage,
         provider: 'openai',
         usage: state.usage,
       });
@@ -63,7 +63,7 @@ describe('UsageCounter', () => {
       const { cost } = UsageCounter.accumulateLLM({
         cost: state.cost,
         model: 'gpt-4',
-        modelUsage: modelUsage,
+        modelUsage,
         provider: 'openai',
         usage: state.usage,
       });
@@ -183,7 +183,7 @@ describe('UsageCounter', () => {
       const { cost } = UsageCounter.accumulateLLM({
         cost: state.cost,
         model: 'claude-3-5-sonnet-20241022',
-        modelUsage: modelUsage,
+        modelUsage,
         provider: 'anthropic',
         usage: state.usage,
       });
@@ -248,7 +248,7 @@ describe('UsageCounter', () => {
       const { cost } = UsageCounter.accumulateLLM({
         cost: state.cost,
         model: 'gpt-4',
-        modelUsage: modelUsage,
+        modelUsage,
         provider: 'openai',
         usage: state.usage,
       });
@@ -270,21 +270,21 @@ describe('UsageCounter', () => {
       const result1 = UsageCounter.accumulateLLM({
         cost: state.cost,
         model: 'gpt-4',
-        modelUsage: modelUsage,
+        modelUsage,
         provider: 'openai',
         usage: state.usage,
       });
       const result2 = UsageCounter.accumulateLLM({
         cost: result1.cost,
         model: 'gpt-4',
-        modelUsage: modelUsage,
+        modelUsage,
         provider: 'openai',
         usage: result1.usage,
       });
       const result3 = UsageCounter.accumulateLLM({
         cost: result2.cost,
         model: 'claude-3-5-sonnet-20241022',
-        modelUsage: modelUsage,
+        modelUsage,
         provider: 'anthropic',
         usage: result2.usage,
       });
@@ -663,6 +663,7 @@ describe('UsageCounter', () => {
         cost: 0.05,
         inputAudioTokens: 10,
         inputImageTokens: 20,
+        inputVideoTokens: 30,
         outputAudioTokens: 5,
         outputImageTokens: 15,
         totalInputTokens: 30,
@@ -674,6 +675,7 @@ describe('UsageCounter', () => {
         cost: 0.03,
         inputAudioTokens: 15,
         inputImageTokens: 25,
+        inputVideoTokens: 35,
         outputAudioTokens: 8,
         outputImageTokens: 12,
         totalInputTokens: 40,
@@ -683,14 +685,14 @@ describe('UsageCounter', () => {
 
       const result1 = UsageCounter.accumulateLLM({
         cost: state.cost,
-        model: 'gpt-4o-audio-preview',
+        model: 'gpt-audio',
         modelUsage: usage1,
         provider: 'openai',
         usage: state.usage,
       });
       const result2 = UsageCounter.accumulateLLM({
         cost: result1.cost,
-        model: 'gpt-4o-audio-preview',
+        model: 'gpt-audio',
         modelUsage: usage2,
         provider: 'openai',
         usage: result1.usage,
@@ -700,6 +702,7 @@ describe('UsageCounter', () => {
         cost: 0.08,
         inputAudioTokens: 25,
         inputImageTokens: 45,
+        inputVideoTokens: 65,
         outputAudioTokens: 13,
         outputImageTokens: 27,
         totalInputTokens: 70,
@@ -803,6 +806,7 @@ describe('UsageCounter', () => {
         inputCitationTokens: 10,
         inputImageTokens: 20,
         inputTextTokens: 100,
+        inputVideoTokens: 40,
         inputWriteCacheTokens: 30,
         outputAudioTokens: 3,
         outputImageTokens: 8,
@@ -823,6 +827,7 @@ describe('UsageCounter', () => {
         inputCitationTokens: 5,
         inputImageTokens: 10,
         inputTextTokens: 50,
+        inputVideoTokens: 20,
         inputWriteCacheTokens: 15,
         outputAudioTokens: 2,
         outputImageTokens: 4,
@@ -858,6 +863,7 @@ describe('UsageCounter', () => {
         inputCitationTokens: 15,
         inputImageTokens: 30,
         inputTextTokens: 150,
+        inputVideoTokens: 60,
         inputWriteCacheTokens: 45,
         outputAudioTokens: 5,
         outputImageTokens: 12,

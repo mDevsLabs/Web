@@ -66,7 +66,7 @@ const Render = memo<ArtifactProps>(({ identifier, title, type, language, childre
   const [isGenerating, isArtifactTagClosed, openArtifact, closeArtifact] = useChatStore((s) => {
     return [
       messageStateSelectors.isMessageGenerating(id)(s),
-      chatPortalSelectors.isArtifactTagClosed(id)(s),
+      chatPortalSelectors.isArtifactTagClosed(id, identifier)(s),
       s.openArtifact,
       s.closeArtifact,
     ];
@@ -86,37 +86,37 @@ const Render = memo<ArtifactProps>(({ identifier, title, type, language, childre
     <Flexbox
       className={cx(styles.container, isDarkMode && styles.container_dark)}
       gap={16}
+      width={'100%'}
       onClick={() => {
-        const currentArtifactMessageId = chatPortalSelectors.artifactMessageId(
-          useChatStore.getState(),
-        );
-        if (currentArtifactMessageId === id) {
+        const state = useChatStore.getState();
+        const currentArtifactMessageId = chatPortalSelectors.artifactMessageId(state);
+        const currentArtifactIdentifier = chatPortalSelectors.artifactIdentifier(state);
+        if (currentArtifactMessageId === id && currentArtifactIdentifier === identifier) {
           closeArtifact();
         } else {
           openArtifactUI();
         }
       }}
-      width={'100%'}
     >
-      <Flexbox align={'center'} flex={1} horizontal>
-        <Center className={styles.avatar} height={64} horizontal width={64}>
+      <Flexbox horizontal align={'center'} flex={1}>
+        <Center horizontal className={styles.avatar} height={64} width={64}>
           <ArtifactIcon type={type} />
         </Center>
         <Flexbox gap={4} paddingBlock={8} paddingInline={12}>
           {!title && isGenerating ? (
-            <Flexbox className={cx(dotLoading)} horizontal>
+            <Flexbox horizontal className={cx(dotLoading)}>
               {t('artifact.generating')}
             </Flexbox>
           ) : (
             <Flexbox className={cx(styles.title)}>{title || t('artifact.unknownTitle')}</Flexbox>
           )}
           {hasChildren && (
-            <Flexbox className={styles.desc} horizontal>
-              {identifier} ·{' '}
-              <Flexbox gap={2} horizontal>
+            <Flexbox horizontal className={styles.desc}>
+              {identifier} ·&nbsp;
+              <Flexbox horizontal gap={2}>
                 {!isArtifactTagClosed && (
                   <div>
-                    <Icon icon={Loader2} spin />
+                    <Icon spin icon={Loader2} />
                   </div>
                 )}
                 {str?.length}

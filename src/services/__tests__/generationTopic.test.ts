@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { lambdaClient } from '@/libs/trpc/client';
-import { UpdateTopicValue } from '@/server/routers/lambda/generationTopic';
+import { type UpdateTopicValue } from '@/server/routers/lambda/generationTopic';
 
 import { ServerService } from '../generationTopic';
 
@@ -33,6 +33,15 @@ describe('GenerationTopic ServerService', () => {
   it('createTopic should call lambdaClient with undefined', async () => {
     await service.createTopic();
     expect(lambdaClient.generationTopic.createTopic.mutate).toBeCalledWith(undefined);
+  });
+
+  it('createTopic should pass type, visibility, and title to lambdaClient', async () => {
+    await service.createTopic('image', 'public', 'A mountain lake at sunrise');
+    expect(lambdaClient.generationTopic.createTopic.mutate).toBeCalledWith({
+      title: 'A mountain lake at sunrise',
+      type: 'image',
+      visibility: 'public',
+    });
   });
 
   it('updateTopic should call lambdaClient with correct params', async () => {

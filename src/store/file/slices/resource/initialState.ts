@@ -1,4 +1,5 @@
-import type { ResourceItem, ResourceQueryParams, SyncOperation } from '@/types/resource';
+import type { OptimisticMutationSnapshot } from '@/store/utils/optimisticEngine';
+import type { ResourceItem, ResourceQueryParams } from '@/types/resource';
 
 /**
  * Resource slice state
@@ -39,15 +40,15 @@ export interface ResourceState {
 
   syncError?: Error;
   /**
-   * Sync queue (FIFO)
-   * Contains pending operations to be synced to server
-   */
-  syncQueue: SyncOperation[];
-
-  /**
    * Track which resources are currently syncing
    */
   syncingIds: Set<string>;
+
+  /**
+   * Sync queue (FIFO)
+   * Contains pending operations to be synced to server
+   */
+  syncQueue: OptimisticMutationSnapshot[];
   total: number;
 }
 

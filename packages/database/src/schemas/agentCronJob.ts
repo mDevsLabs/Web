@@ -1,5 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix  */
-import { type ExecutionConditions } from '@lobechat/types';
 import { boolean, index, integer, jsonb, pgTable, text, timestamp } from 'drizzle-orm/pg-core';
 
 import { idGenerator } from '../utils/idGenerator';
@@ -7,6 +5,13 @@ import { timestamps } from './_helpers';
 import { agents } from './agent';
 import { chatGroups } from './chatGroup';
 import { users } from './user';
+import { workspaces } from './workspace';
+
+interface ExecutionConditions {
+  activeDays?: number[];
+  activeHours?: { end: number; start: number };
+  maxExecutionsPerDay?: number;
+}
 
 // Agent cron jobs table - supports multiple cron jobs per agent
 export const agentCronJobs = pgTable(
@@ -25,6 +30,7 @@ export const agentCronJobs = pgTable(
     userId: text('user_id')
       .references(() => users.id, { onDelete: 'cascade' })
       .notNull(),
+    workspaceId: text('workspace_id').references(() => workspaces.id, { onDelete: 'cascade' }),
 
     // Task identification
     name: text('name'), // Optional task name like "Daily Report", "Data Monitoring"
@@ -57,6 +63,7 @@ export const agentCronJobs = pgTable(
     index('agent_cron_jobs_agent_id_idx').on(t.agentId),
     index('agent_cron_jobs_group_id_idx').on(t.groupId),
     index('agent_cron_jobs_user_id_idx').on(t.userId),
+    index('agent_cron_jobs_workspace_id_idx').on(t.workspaceId),
     index('agent_cron_jobs_enabled_idx').on(t.enabled),
     index('agent_cron_jobs_remaining_executions_idx').on(t.remainingExecutions),
     index('agent_cron_jobs_last_executed_at_idx').on(t.lastExecutedAt),
@@ -66,8 +73,8 @@ export const agentCronJobs = pgTable(
 // Type exports
 export type NewAgentCronJob = typeof agentCronJobs.$inferInsert;
 export type AgentCronJob = typeof agentCronJobs.$inferSelect;
+export type CreateAgentCronJobData = Partial<NewAgentCronJob> &
+  Pick<NewAgentCronJob, 'agentId' | 'cronPattern' | 'content'>;
+export type UpdateAgentCronJobData = Partial<AgentCronJob>;
 
-// Re-export types from types package for consumers
-export type { ExecutionConditions } from '@lobechat/types';
-export type { InsertAgentCronJob as CreateAgentCronJobData } from '@lobechat/types';
-export type { UpdateAgentCronJob as UpdateAgentCronJobData } from '@lobechat/types';
+export type { ExecutionConditions };

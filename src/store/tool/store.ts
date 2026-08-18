@@ -3,38 +3,71 @@ import { createWithEqualityFn } from 'zustand/traditional';
 import { type StateCreator } from 'zustand/vanilla';
 
 import { createDevtools } from '../middleware/createDevtools';
-import { type ToolStoreState, initialState } from './initialState';
-import { type BuiltinToolAction, createBuiltinToolSlice } from './slices/builtin';
-import { type CustomPluginAction, createCustomPluginSlice } from './slices/customPlugin';
-import { type KlavisStoreAction, createKlavisStoreSlice } from './slices/klavisStore';
+import { expose } from '../middleware/expose';
+import { flattenActions } from '../utils/flattenActions';
+import { type ResetableStore, ResetableStoreAction } from '../utils/resetableStore';
+import { initialState, type ToolStoreState } from './initialState';
 import {
-  type LobehubSkillStoreAction,
+  type AgentDocumentSkillsAction,
+  createAgentDocumentSkillsSlice,
+} from './slices/agentDocumentSkills';
+import { type AgentSkillsAction, createAgentSkillsSlice } from './slices/agentSkills';
+import { type BuiltinToolAction, createBuiltinToolSlice } from './slices/builtin';
+import { type ComposioStoreAction, createComposioStoreSlice } from './slices/composioStore';
+import { type ConnectorAction, createConnectorSlice } from './slices/connector';
+import { createCustomPluginSlice, type CustomPluginAction } from './slices/customPlugin';
+import {
   createLobehubSkillStoreSlice,
+  type LobehubSkillStoreAction,
 } from './slices/lobehubSkillStore';
-import { type PluginMCPStoreAction, createMCPPluginStoreSlice } from './slices/mcpStore';
-import { type PluginStoreAction, createPluginStoreSlice } from './slices/oldStore';
-import { type PluginAction, createPluginSlice } from './slices/plugin';
+import { createMCPPluginStoreSlice, type PluginMCPStoreAction } from './slices/mcpStore';
+import { createPluginSlice, type PluginAction } from './slices/plugin';
 
 //  ===============  Aggregate createStoreFn ============ //
 
 export type ToolStore = ToolStoreState &
+  ConnectorAction &
   CustomPluginAction &
   PluginAction &
-  PluginStoreAction &
   BuiltinToolAction &
   PluginMCPStoreAction &
-  KlavisStoreAction &
-  LobehubSkillStoreAction;
+  ComposioStoreAction &
+  LobehubSkillStoreAction &
+  AgentSkillsAction &
+  AgentDocumentSkillsAction &
+  ResetableStore;
 
-const createStore: StateCreator<ToolStore, [['zustand/devtools', never]]> = (...parameters) => ({
+type ToolStoreAction = ConnectorAction &
+  CustomPluginAction &
+  PluginAction &
+  BuiltinToolAction &
+  PluginMCPStoreAction &
+  ComposioStoreAction &
+  LobehubSkillStoreAction &
+  AgentSkillsAction &
+  AgentDocumentSkillsAction &
+  ResetableStore;
+
+class ToolStoreResetAction extends ResetableStoreAction<ToolStore> {
+  protected readonly resetActionName = 'resetToolStore';
+}
+
+const createStore: StateCreator<ToolStore, [['zustand/devtools', never]]> = (
+  ...parameters: Parameters<StateCreator<ToolStore, [['zustand/devtools', never]]>>
+) => ({
   ...initialState,
-  ...createPluginSlice(...parameters),
-  ...createCustomPluginSlice(...parameters),
-  ...createPluginStoreSlice(...parameters),
-  ...createBuiltinToolSlice(...parameters),
-  ...createMCPPluginStoreSlice(...parameters),
-  ...createKlavisStoreSlice(...parameters),
-  ...createLobehubSkillStoreSlice(...parameters),
+  ...flattenActions<ToolStoreAction>([
+    createConnectorSlice(...parameters),
+    createPluginSlice(...parameters),
+    createCustomPluginSlice(...parameters),
+    createBuiltinToolSlice(...parameters),
+    createMCPPluginStoreSlice(...parameters),
+    createComposioStoreSlice(...parameters),
+    createLobehubSkillStoreSlice(...parameters),
+    createAgentSkillsSlice(...parameters),
+    createAgentDocumentSkillsSlice(...parameters),
+    new ToolStoreResetAction(...parameters),
+  ]),
 });
 
 //  ===============  Implement useStore ============ //
@@ -42,5 +75,7 @@ const createStore: StateCreator<ToolStore, [['zustand/devtools', never]]> = (...
 const devtools = createDevtools('tools');
 
 export const useToolStore = createWithEqualityFn<ToolStore>()(devtools(createStore), shallow);
+
+expose('tool', useToolStore);
 
 export const getToolStoreState = () => useToolStore.getState();

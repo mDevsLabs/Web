@@ -1,5 +1,5 @@
 import { DEFAULT_SYSTEM_AGENT_CONFIG } from '@/const/settings';
-import type { UserStore } from '@/store/user';
+import { type UserStore } from '@/store/user';
 import { merge } from '@/utils/merge';
 
 import { currentSettings } from './settings';
@@ -9,18 +9,24 @@ const currentSystemAgent = (s: UserStore) =>
 
 const translation = (s: UserStore) => currentSystemAgent(s).translation;
 const topic = (s: UserStore) => currentSystemAgent(s).topic;
+const topicAutoSummary = (s: UserStore) => currentSystemAgent(s).topicAutoSummary;
 const thread = (s: UserStore) => currentSystemAgent(s).thread;
 const agentMeta = (s: UserStore) => currentSystemAgent(s).agentMeta;
-const queryRewrite = (s: UserStore) => currentSystemAgent(s).queryRewrite;
+const promptRewrite = (s: UserStore) => currentSystemAgent(s).promptRewrite;
 const historyCompress = (s: UserStore) => currentSystemAgent(s).historyCompress;
 const generationTopic = (s: UserStore) => currentSystemAgent(s).generationTopic;
+const inputCompletion = (s: UserStore) => currentSystemAgent(s).inputCompletion;
+const followUpAction = (s: UserStore) => currentSystemAgent(s).followUpAction;
 
 export const systemAgentSelectors = {
   agentMeta,
+  followUpAction,
   generationTopic,
   historyCompress,
-  queryRewrite,
+  inputCompletion,
+  promptRewrite,
   thread,
   topic,
+  topicAutoSummary,
   translation,
 };

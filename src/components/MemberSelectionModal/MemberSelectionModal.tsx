@@ -1,30 +1,24 @@
 'use client';
 
-import {
-  ActionIcon,
-  Avatar,
-  Button,
-  Checkbox,
-  Flexbox,
-  List,
-  Modal,
-  SearchBar,
-  Text,
-  Tooltip,
-} from '@lobehub/ui';
+import { agentDisplayName } from '@lobechat/types';
+import { ActionIcon, Avatar, Flexbox, List, SearchBar, Text, Tooltip } from '@lobehub/ui';
+import { Button, Checkbox, Switch } from '@lobehub/ui/base-ui';
 import { useHover } from 'ahooks';
-import { List as AntdList, Switch } from 'antd';
+import { List as AntdList } from 'antd';
 import { createStaticStyles, cx } from 'antd-style';
 import { X } from 'lucide-react';
-import { type ChangeEvent, memo, useCallback, useMemo, useRef, useState } from 'react';
+import { type ChangeEvent } from 'react';
+import { memo, useCallback, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import ImperativeModal from '@/components/ImperativeModal';
 import { DEFAULT_AVATAR } from '@/const/meta';
 import AgentSelectionEmpty from '@/features/AgentSelectionEmpty';
 import ModelSelect from '@/features/ModelSelect';
 import { useEnabledChatModels } from '@/hooks/useEnabledChatModels';
 import { useSessionStore } from '@/store/session';
-import { type LobeAgentSession, LobeSessionType } from '@/types/session';
+import { type LobeAgentSession } from '@/types/session';
+import { LobeSessionType } from '@/types/session';
 
 const AvailableAgentItem = memo<{
   agent: LobeAgentSession;
@@ -38,7 +32,7 @@ const AvailableAgentItem = memo<{
   const isHovering = useHover(ref);
 
   const _agentId = agent.config?.id;
-  const title = agent.meta?.title || t('defaultSession', { ns: 'common' });
+  const title = agentDisplayName(agent.meta, t('defaultSession', { ns: 'common' }));
   const description = agent.meta?.description || '';
   const avatar = agent.meta?.avatar || DEFAULT_AVATAR;
   const avatarBackground = agent.meta?.backgroundColor;
@@ -46,8 +40,8 @@ const AvailableAgentItem = memo<{
   if (!_agentId) return null;
 
   return (
-    <AntdList.Item className={cx(styles.listItem)} onClick={() => onToggle(_agentId)} ref={ref}>
-      <Flexbox align="center" gap={12} horizontal width="100%">
+    <AntdList.Item className={cx(styles.listItem)} ref={ref} onClick={() => onToggle(_agentId)}>
+      <Flexbox horizontal align="center" gap={12} width="100%">
         <Checkbox
           checked={isSelected}
           onChange={() => {
@@ -65,7 +59,7 @@ const AvailableAgentItem = memo<{
             {title}
           </Text>
           {description && (
-            <Text className={styles.description} ellipsis>
+            <Text ellipsis className={styles.description}>
               {description}
             </Text>
           )}
@@ -230,9 +224,9 @@ const MemberSelectionModal = memo<MemberSelectionModalProps>(
       );
     };
 
-    const handleRemoveAgent = (agentId: string) => {
+    const handleRemoveAgent = useCallback((agentId: string) => {
       setSelectedAgents((prev) => prev.filter((id) => id !== agentId));
-    };
+    }, []);
 
     const handleSearchChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
       setSearchTerm(e.target.value);
@@ -265,7 +259,7 @@ const MemberSelectionModal = memo<MemberSelectionModalProps>(
       if (!searchTerm.trim()) return availableAgents;
 
       return availableAgents.filter((agent) => {
-        const title = agent.meta?.title || '';
+        const title = agentDisplayName(agent.meta) ?? '';
         const description = agent.meta?.description || '';
         const searchLower = searchTerm.toLowerCase();
 
@@ -282,7 +276,7 @@ const MemberSelectionModal = memo<MemberSelectionModalProps>(
           const agent = agentSessions.find((session) => session.config.id === agentId);
           if (!agent) return null;
 
-          const title = agent.meta?.title || t('defaultSession', { ns: 'common' });
+          const title = agentDisplayName(agent.meta, t('defaultSession', { ns: 'common' }));
           const avatar = agent.meta?.avatar || DEFAULT_AVATAR;
           const avatarBackground = agent.meta?.backgroundColor;
           const description = agent.meta?.description || '';
@@ -291,9 +285,9 @@ const MemberSelectionModal = memo<MemberSelectionModalProps>(
             actions: (
               <ActionIcon
                 icon={X}
-                onClick={() => handleRemoveAgent(agentId)}
                 size="small"
                 style={{ color: '#999' }}
+                onClick={() => handleRemoveAgent(agentId)}
               />
             ),
             avatar: (
@@ -364,35 +358,35 @@ const MemberSelectionModal = memo<MemberSelectionModalProps>(
     const isConfirmDisabled = totalMemberCount < minMembersRequired || isAdding;
 
     return (
-      <Modal
+      <ImperativeModal
         allowFullscreen
+        open={open}
+        title={modalTitle}
+        width={800}
         footer={
-          <Flexbox gap={8} horizontal justify="end">
+          <Flexbox horizontal gap={8} justify="end">
             <Button onClick={handleCancel}>{t('cancel', { ns: 'common' })}</Button>
             <Button
               disabled={isConfirmDisabled}
               loading={isAdding}
-              onClick={handleConfirm}
               type="primary"
+              onClick={handleConfirm}
             >
               {confirmButtonText} ({totalMemberCount})
             </Button>
           </Flexbox>
         }
         onCancel={handleCancel}
-        open={open}
-        title={modalTitle}
-        width={800}
       >
-        <Flexbox className={styles.container} horizontal>
+        <Flexbox horizontal className={styles.container}>
           {/* Left Column - Available Agents */}
           <Flexbox className={styles.leftColumn} flex={1} gap={12}>
             <SearchBar
               allowClear
-              onChange={handleSearchChange}
               placeholder={t('memberSelection.searchAgents')}
               value={searchTerm}
               variant="filled"
+              onChange={handleSearchChange}
             />
 
             <Flexbox flex={1} style={{ overflowY: 'auto' }}>
@@ -404,6 +398,7 @@ const MemberSelectionModal = memo<MemberSelectionModalProps>(
               ) : (
                 <AntdList
                   dataSource={filteredAvailableAgents}
+                  split={false}
                   renderItem={(agent) => {
                     const agentId = agent.config?.id;
                     if (!agentId) return null;
@@ -416,13 +411,12 @@ const MemberSelectionModal = memo<MemberSelectionModalProps>(
                         cx={cx}
                         isSelected={isSelected}
                         key={agentId}
-                        onToggle={handleAgentToggle}
                         styles={styles}
                         t={t}
+                        onToggle={handleAgentToggle}
                       />
                     );
                   }}
-                  split={false}
                 />
               )}
             </Flexbox>
@@ -433,7 +427,7 @@ const MemberSelectionModal = memo<MemberSelectionModalProps>(
             <Flexbox gap={16}>
               {/* Host Card - Only show in create mode or when host is disabled in add mode */}
               {!isHostCurrentlyEnabled && (
-                <Flexbox align="center" className={styles.hostCard} gap={12} horizontal>
+                <Flexbox horizontal align="center" className={styles.hostCard} gap={12}>
                   <Flexbox flex={1} gap={2}>
                     <Text
                       style={{ fontSize: 14, fontWeight: 500 }}
@@ -448,22 +442,22 @@ const MemberSelectionModal = memo<MemberSelectionModalProps>(
                       {t('groupWizard.host.description')}
                     </Text>
                   </Flexbox>
-                  <Flexbox align="center" gap={12} horizontal>
+                  <Flexbox horizontal align="center" gap={12}>
                     <div
                       className={cx(isHostRemoved && styles.modelSelectDisabled)}
                       style={{ opacity: isHostRemoved ? 0.6 : 1 }}
                     >
                       <ModelSelect
-                        onChange={handleHostModelChange}
                         requiredAbilities={['functionCall']}
                         value={normalizedHostModelConfig}
+                        onChange={handleHostModelChange}
                       />
                     </div>
                     <Tooltip title={t('groupWizard.host.tooltip')}>
                       <Switch
                         checked={!isHostRemoved}
-                        onChange={(checked) => handleHostToggle(checked)}
                         size="small"
+                        onChange={(checked) => handleHostToggle(checked)}
                       />
                     </Tooltip>
                   </Flexbox>
@@ -481,7 +475,7 @@ const MemberSelectionModal = memo<MemberSelectionModalProps>(
             </Flexbox>
           </Flexbox>
         </Flexbox>
-      </Modal>
+      </ImperativeModal>
     );
   },
 );

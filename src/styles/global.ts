@@ -1,10 +1,11 @@
 import { CLASSNAMES } from '@lobehub/ui';
-import { type Theme, css } from 'antd-style';
+import type { Theme } from 'antd-style';
+import { css } from 'antd-style';
 
 // fix ios input keyboard
 // overflow: hidden;
 // ref: https://zhuanlan.zhihu.com/p/113855026
-export default ({ token }: { prefixCls: string; token: Theme }) => css`
+const genGlobalStyle = ({ token }: { prefixCls: string; token: Theme }) => css`
   html,
   body,
   #__next {
@@ -16,15 +17,18 @@ export default ({ token }: { prefixCls: string; token: Theme }) => css`
     min-height: 100dvh;
     max-height: 100dvh;
 
-    @media (min-device-width: 576px) {
+    @media (device-width >= 576px) {
       overflow: hidden;
     }
   }
 
   body {
-    /* 提高合成层级，强制硬件加速，否则会有渲染黑边出现 */
+    /* Own stacking context, otherwise render black edges will appear. Must NOT
+       be a transform-based hack: a transform on body rebases every position:
+       fixed descendant onto body, and a drawer panel mid slide-in then overflows
+       body horizontally — focusing it scrolls the whole page sideways. */
     will-change: opacity;
-    transform: translateZ(0);
+    isolation: isolate;
   }
 
   * {
@@ -51,6 +55,14 @@ export default ({ token }: { prefixCls: string; token: Theme }) => css`
     }
   }
 
+  html.desktop[data-theme='dark'] body {
+    background-color: color-mix(in srgb, ${token.colorBgLayout} 50%, transparent);
+  }
+
+  html.desktop[data-theme='light'] body {
+    background-color: color-mix(in srgb, ${token.colorBgLayout} 70%, transparent);
+  }
+
   button {
     -webkit-app-region: no-drag;
   }
@@ -59,4 +71,11 @@ export default ({ token }: { prefixCls: string; token: Theme }) => css`
   .${CLASSNAMES.DropdownMenuTrigger}[data-popup-open]:not([data-no-highlight]) {
     background: ${token.colorFillTertiary};
   }
+  .accordion-action:has(
+    .${CLASSNAMES.DropdownMenuTrigger}[data-popup-open]:not([data-no-highlight])
+  ) {
+    opacity: 1;
+  }
 `;
+
+export default genGlobalStyle;

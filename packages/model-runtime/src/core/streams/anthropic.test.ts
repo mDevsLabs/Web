@@ -12,7 +12,7 @@ describe('AnthropicStream', () => {
         return {
           next: async () => {
             switch (count) {
-              case 0:
+              case 0: {
                 count++;
                 return {
                   done: false,
@@ -21,7 +21,8 @@ describe('AnthropicStream', () => {
                     message: { id: 'message_1', metadata: {} },
                   },
                 };
-              case 1:
+              }
+              case 1: {
                 count++;
                 return {
                   done: false,
@@ -30,7 +31,8 @@ describe('AnthropicStream', () => {
                     delta: { type: 'text_delta', text: 'Hello' },
                   },
                 };
-              case 2:
+              }
+              case 2: {
                 count++;
                 return {
                   done: false,
@@ -39,7 +41,8 @@ describe('AnthropicStream', () => {
                     delta: { type: 'text_delta', text: ' world!' },
                   },
                 };
-              case 3:
+              }
+              case 3: {
                 count++;
                 return {
                   done: false,
@@ -48,8 +51,10 @@ describe('AnthropicStream', () => {
                     delta: { stop_reason: 'stop' },
                   },
                 };
-              default:
+              }
+              default: {
                 return { done: true, value: undefined };
+              }
             }
           },
         };
@@ -59,13 +64,16 @@ describe('AnthropicStream', () => {
     const onStartMock = vi.fn();
     const onTextMock = vi.fn();
     const onCompletionMock = vi.fn();
+    const onFinalMock = vi.fn();
 
     const protocolStream = AnthropicStream(mockAnthropicStream, {
       callbacks: {
         onStart: onStartMock,
         onText: onTextMock,
         onCompletion: onCompletionMock,
+        onFinal: onFinalMock,
       },
+      payload: { apiMode: 'messages', model: 'claude-opus-4-8', provider: 'anthropic' },
     });
 
     const decoder = new TextDecoder();
@@ -95,6 +103,19 @@ describe('AnthropicStream', () => {
     expect(onTextMock).toHaveBeenNthCalledWith(1, 'Hello');
     expect(onTextMock).toHaveBeenNthCalledWith(2, ' world!');
     expect(onCompletionMock).toHaveBeenCalledTimes(1);
+    expect(onFinalMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        usageMissingDiagnostics: {
+          apiMode: 'messages',
+          finishReason: 'stop',
+          hasUsageMetadata: false,
+          model: 'claude-opus-4-8',
+          provider: 'anthropic',
+          source: 'anthropic_messages',
+          terminalEventType: 'message_delta',
+        },
+      }),
+    );
   });
 
   it('should handle tool use event and ReadableStream input', async () => {

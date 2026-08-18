@@ -1,9 +1,9 @@
-import { type LobeChatPluginManifest } from '@lobehub/chat-plugin-sdk';
-import { uniq } from 'es-toolkit/compat';
+import { type ToolManifest } from '@lobechat/types';
 
+import { isInstalledPluginAvailableInCurrentEnv } from '@/helpers/toolAvailability';
 import { type InstallPluginMeta, type LobeToolCustomPlugin } from '@/types/tool/plugin';
 
-import type { ToolStoreState } from '../../initialState';
+import { type ToolStoreState } from '../../initialState';
 
 const installedPlugins = (s: ToolStoreState) => s.installedPlugins;
 
@@ -17,17 +17,6 @@ const getInstalledPluginById = (id?: string) => (s: ToolStoreState) => {
 };
 
 const getPluginMetaById = (id: string) => (s: ToolStoreState) => {
-  // first try to find meta from store
-  const item = s.oldPluginItems.find((i) => i.identifier === id);
-  if (item)
-    return {
-      avatar: item.avatar,
-      description: item.description,
-      tags: item.tags,
-      title: item.title,
-    };
-
-  // then use installed meta
   return getInstalledPluginById(id)(s)?.manifest?.meta;
 };
 
@@ -43,19 +32,18 @@ const getPluginSettingsById = (id: string) => (s: ToolStoreState) =>
   getInstalledPluginById(id)(s)?.settings || {};
 
 const storeAndInstallPluginsIdList = (s: ToolStoreState) =>
-  uniq(
-    [s.installedPlugins.map((i) => i.identifier), s.oldPluginItems.map((i) => i.identifier)].flat(),
-  );
+  s.installedPlugins.map((i) => i.identifier);
 
 const installedPluginManifestList = (s: ToolStoreState) =>
   installedPlugins(s)
-    .map((i) => i.manifest as LobeChatPluginManifest)
+    .map((i) => i.manifest as ToolManifest)
     .filter((i) => !!i);
 
 const installedPluginMetaList = (s: ToolStoreState) =>
   installedPlugins(s)
-    // Filter out Klavis plugins (they have their own display location)
-    .filter((p) => !p.customParams?.klavis)
+    // Filter out Composio plugins (they have their own display location)
+    .filter((p) => !p.customParams?.composio)
+    .filter((plugin) => isInstalledPluginAvailableInCurrentEnv(plugin))
     .map<InstallPluginMeta>((p) => ({
       author: p.manifest?.author,
       createdAt: p.manifest?.createdAt || (p.manifest as any)?.createAt,

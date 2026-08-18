@@ -1,12 +1,23 @@
-import debug from 'debug';
 import { stat } from 'node:fs/promises';
-import * as path from 'node:path';
+import path from 'node:path';
+
+import debug from 'debug';
 
 import { getFileLoader } from './loaders';
 import type { DocumentPage, FileDocument, FileMetadata, SupportedFileType } from './types';
 import { isTextReadableFile } from './utils/isTextReadableFile';
 
 const log = debug('file-loaders:loadFile');
+
+export class UnsupportedFileTypeError extends Error {
+  fileType: string;
+
+  constructor(fileType: string, filename: string) {
+    super(`Unsupported file type '${fileType || 'unknown'}' for file '${filename}'.`);
+    this.name = 'UnsupportedFileTypeError';
+    this.fileType = fileType;
+  }
+}
 
 /**
  * Determines the file type based on the filename extension.
@@ -31,6 +42,10 @@ const getFileType = (filePath: string): SupportedFileType | undefined => {
   // Handle specific non-text or complex types
   log(`Checking specific types for extension: '${extension}'`);
   switch (extension) {
+    case 'ipynb': {
+      log('File type identified as ipynb');
+      return 'ipynb';
+    }
     case 'pdf': {
       log('File type identified as pdf');
       return 'pdf';
@@ -111,19 +126,19 @@ export const loadFile = async (
   const parserType = getFileType(filePath);
   log('Parser type determined as:', parserType);
 
-  // Use lazy loading to get the loader class - this prevents heavy dependencies
-  // like pdfjs-dist from being loaded until they're actually needed
-  const loaderType = parserType ?? 'txt';
-  const LoaderClass = await getFileLoader(loaderType);
-  log('Selected loader class:', LoaderClass.name);
-
-  if (!parserType) {
+  if (!parserType && !fsError) {
     console.warn(
-      `No specific loader found for file type '${fileType}'. Using default loader (TextLoader) as fallback.`,
+      `No specific loader found for file type '${fileType}'. Rejecting unsupported file type.`,
     );
+    throw new UnsupportedFileTypeError(fileType, filename);
   }
 
-  let pages: DocumentPage[] = [];
+  // Use lazy loading to get the loader class - this prevents heavy dependencies
+  // like pdfjs-dist from being loaded until they're actually needed
+  const LoaderClass = await getFileLoader(parserType ?? 'txt');
+  log('Selected loader class:', LoaderClass.name);
+
+  let pages: DocumentPage[];
   let aggregatedContent = '';
   let loaderError: string | undefined;
   let aggregationError: string | undefined;

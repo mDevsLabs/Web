@@ -1,6 +1,6 @@
-import { FewShots } from '../llm';
-import { MetaData } from '../meta';
-import { LobeAgentSettings } from '../session';
+import type { FewShots } from '../llm';
+import type { MetaData } from '../meta';
+import type { LobeAgentSettings } from '../session';
 
 export enum AssistantCategory {
   Academic = 'academic',
@@ -58,10 +58,15 @@ export interface DiscoverAssistantItem extends Omit<LobeAgentSettings, 'meta'>, 
   installCount?: number;
   isValidated?: boolean;
   knowledgeCount: number;
+  /**
+   * Owner account type, used to resolve the author profile link
+   */
+  ownerType?: 'user' | 'organization';
   pluginCount: number;
   status?: AgentStatus;
   tokenUsage: number;
   type?: AgentType;
+  updatedAt?: string;
   userName?: string;
 }
 

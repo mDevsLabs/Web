@@ -66,6 +66,178 @@ describe('FlatListBuilder', () => {
       expect(result[1].id).toBe('msg-2');
     });
 
+    it('should hide cross-agent dispatch user envelope while preserving target reply', () => {
+      const messages: Message[] = [
+        {
+          agentId: 'parent-agent',
+          content: '@Target please handle this',
+          createdAt: 0,
+          id: 'user-parent',
+          role: 'user',
+          updatedAt: 0,
+        },
+        {
+          agentId: 'parent-agent',
+          content: '',
+          createdAt: 1,
+          id: 'assistant-parent',
+          parentId: 'user-parent',
+          role: 'assistant',
+          tools: [
+            {
+              apiName: 'callAgent',
+              arguments: '{"agentId":"target-agent"}',
+              id: 'call-agent-1',
+              identifier: 'lobe-agent-management',
+              type: 'default',
+            },
+          ],
+          updatedAt: 1,
+        },
+        {
+          content: 'Called agent "target-agent" to respond.',
+          createdAt: 2,
+          id: 'tool-call-agent',
+          parentId: 'assistant-parent',
+          role: 'tool',
+          tool_call_id: 'call-agent-1',
+          updatedAt: 2,
+        },
+        {
+          agentId: 'target-agent',
+          content: '@Target please handle this',
+          createdAt: 3,
+          id: 'user-dispatch-envelope',
+          metadata: { agentDispatch: { kind: 'callAgent', visibility: 'internal' } },
+          parentId: 'assistant-parent',
+          role: 'user',
+          updatedAt: 3,
+        },
+        {
+          agentId: 'target-agent',
+          content: 'Target result',
+          createdAt: 4,
+          id: 'assistant-target',
+          parentId: 'user-dispatch-envelope',
+          role: 'assistant',
+          updatedAt: 4,
+        },
+      ];
+
+      const builder = createBuilder(messages);
+      const result = builder.flatten(messages);
+
+      expect(result.map((message) => message.id)).toEqual([
+        'user-parent',
+        'assistant-parent',
+        'assistant-target',
+      ]);
+      expect(result.filter((message) => message.role === 'user')).toHaveLength(1);
+      expect(result.at(-1)).toMatchObject({
+        agentId: 'target-agent',
+        content: 'Target result',
+        role: 'assistant',
+      });
+    });
+
+    it('should not hide an unmarked cross-agent user turn', () => {
+      const messages: Message[] = [
+        {
+          agentId: 'parent-agent',
+          content: 'Parent answer',
+          createdAt: 0,
+          id: 'assistant-parent',
+          role: 'assistant',
+          updatedAt: 0,
+        },
+        {
+          agentId: 'target-agent',
+          content: 'A real user-authored turn',
+          createdAt: 1,
+          id: 'user-cross-agent',
+          parentId: 'assistant-parent',
+          role: 'user',
+          updatedAt: 1,
+        },
+      ];
+
+      const result = createBuilder(messages).flatten(messages);
+
+      expect(result.map((message) => message.id)).toEqual(['assistant-parent', 'user-cross-agent']);
+    });
+
+    it('should keep a normal same-agent follow-up user message visible', () => {
+      const messages: Message[] = [
+        {
+          agentId: 'agent-a',
+          content: 'First question',
+          createdAt: 0,
+          id: 'user-1',
+          role: 'user',
+          updatedAt: 0,
+        },
+        {
+          agentId: 'agent-a',
+          content: 'First answer',
+          createdAt: 1,
+          id: 'assistant-1',
+          parentId: 'user-1',
+          role: 'assistant',
+          updatedAt: 1,
+        },
+        {
+          agentId: 'agent-a',
+          content: 'Follow-up question',
+          createdAt: 2,
+          id: 'user-2',
+          parentId: 'assistant-1',
+          role: 'user',
+          updatedAt: 2,
+        },
+      ];
+
+      const builder = createBuilder(messages);
+      const result = builder.flatten(messages);
+
+      expect(result.map((message) => message.id)).toEqual(['user-1', 'assistant-1', 'user-2']);
+    });
+
+    it('should keep a user follow-up after a direct cross-agent reply visible', () => {
+      const messages: Message[] = [
+        {
+          agentId: 'conversation-owner',
+          content: '@Target first question',
+          createdAt: 0,
+          id: 'user-1',
+          role: 'user',
+          updatedAt: 0,
+        },
+        {
+          agentId: 'target-agent',
+          content: 'Direct answer',
+          createdAt: 1,
+          id: 'assistant-1',
+          parentId: 'user-1',
+          role: 'assistant',
+          updatedAt: 1,
+        },
+        {
+          agentId: 'conversation-owner',
+          content: 'Follow-up question',
+          createdAt: 2,
+          id: 'user-2',
+          parentId: 'assistant-1',
+          role: 'user',
+          updatedAt: 2,
+        },
+      ];
+
+      const builder = createBuilder(messages);
+      const result = builder.flatten(messages);
+
+      expect(result.map((message) => message.id)).toEqual(['user-1', 'assistant-1', 'user-2']);
+    });
+
     it('should create assistant group virtual message', () => {
       const messages: Message[] = [
         {
@@ -556,6 +728,260 @@ describe('FlatListBuilder', () => {
       expect(result[0].id).toBe('msg-1');
       expect(result[1].id).toBe('msg-2');
       expect(result[2].id).toBe('msg-3');
+    });
+
+    it('should create tasks message when multiple tasks have same agentId', () => {
+      const messages: Message[] = [
+        {
+          content: 'User request',
+          createdAt: 0,
+          id: 'msg-1',
+          role: 'user',
+          updatedAt: 0,
+        },
+        {
+          content: 'Tool message',
+          createdAt: 0,
+          id: 'tool-1',
+          parentId: 'msg-1',
+          role: 'tool',
+          updatedAt: 0,
+        },
+        {
+          agentId: 'agent-1',
+          content: 'Task 1 result',
+          createdAt: 1,
+          id: 'task-1',
+          parentId: 'tool-1',
+          role: 'task',
+          updatedAt: 1,
+        },
+        {
+          agentId: 'agent-1',
+          content: 'Task 2 result',
+          createdAt: 2,
+          id: 'task-2',
+          parentId: 'tool-1',
+          role: 'task',
+          updatedAt: 2,
+        },
+      ];
+
+      const builder = createBuilder(messages);
+      const result = builder.flatten(messages);
+
+      // Should create tasks (not groupTasks) since all tasks have same agentId
+      expect(result).toHaveLength(3);
+      expect(result[0].id).toBe('msg-1');
+      expect(result[1].id).toBe('tool-1');
+      expect(result[2].role).toBe('tasks');
+      expect((result[2] as any).tasks).toHaveLength(2);
+    });
+
+    it('should create groupTasks message when multiple tasks have different agentIds', () => {
+      const messages: Message[] = [
+        {
+          content: 'User request',
+          createdAt: 0,
+          id: 'msg-1',
+          role: 'user',
+          updatedAt: 0,
+        },
+        {
+          content: 'Tool message',
+          createdAt: 0,
+          id: 'tool-1',
+          parentId: 'msg-1',
+          role: 'tool',
+          updatedAt: 0,
+        },
+        {
+          agentId: 'agent-1',
+          content: 'Task 1 result',
+          createdAt: 1,
+          id: 'task-1',
+          parentId: 'tool-1',
+          role: 'task',
+          updatedAt: 1,
+        },
+        {
+          agentId: 'agent-2',
+          content: 'Task 2 result',
+          createdAt: 2,
+          id: 'task-2',
+          parentId: 'tool-1',
+          role: 'task',
+          updatedAt: 2,
+        },
+        {
+          agentId: 'agent-3',
+          content: 'Task 3 result',
+          createdAt: 3,
+          id: 'task-3',
+          parentId: 'tool-1',
+          role: 'task',
+          updatedAt: 3,
+        },
+      ];
+
+      const builder = createBuilder(messages);
+      const result = builder.flatten(messages);
+
+      // Should create groupTasks since tasks have different agentIds
+      expect(result).toHaveLength(3);
+      expect(result[0].id).toBe('msg-1');
+      expect(result[1].id).toBe('tool-1');
+      expect(result[2].role).toBe('groupTasks');
+      expect((result[2] as any).tasks).toHaveLength(3);
+      // Verify ID format
+      expect(result[2].id).toContain('groupTasks-');
+    });
+
+    it('should create groupTasks with correct timestamps from task messages', () => {
+      const messages: Message[] = [
+        {
+          content: 'Tool message',
+          createdAt: 0,
+          id: 'tool-1',
+          role: 'tool',
+          updatedAt: 0,
+        },
+        {
+          agentId: 'agent-1',
+          content: 'Task 1',
+          createdAt: 100,
+          id: 'task-1',
+          parentId: 'tool-1',
+          role: 'task',
+          updatedAt: 150,
+        },
+        {
+          agentId: 'agent-2',
+          content: 'Task 2',
+          createdAt: 200,
+          id: 'task-2',
+          parentId: 'tool-1',
+          role: 'task',
+          updatedAt: 300,
+        },
+      ];
+
+      const builder = createBuilder(messages);
+      const result = builder.flatten(messages);
+
+      const groupTasksMsg = result.find((m) => m.role === 'groupTasks');
+      expect(groupTasksMsg).toBeDefined();
+      // createdAt should be min of task createdAt
+      expect(groupTasksMsg!.createdAt).toBe(100);
+      // updatedAt should be max of task updatedAt
+      expect(groupTasksMsg!.updatedAt).toBe(300);
+    });
+  });
+
+  // ────────────────────────────────────────────────────
+  // signal callbacks attached on virtual AssistantGroup
+  // ────────────────────────────────────────────────────
+  describe('signal callbacks ()', () => {
+    it('attaches signalCallbacks to the virtual group and processes callback messages', () => {
+      const signalMeta = (sequence: number) =>
+        ({
+          signal: {
+            sequence,
+            sourceToolCallId: 'toolu_mon_0',
+            sourceToolName: 'Monitor',
+            type: 'tool-stdout' as const,
+          },
+        }) as any;
+
+      const messages: Message[] = [
+        // User
+        { content: 'go', createdAt: 0, id: 'u-1', role: 'user', updatedAt: 0 },
+        // Step 0: assistant with Monitor tool
+        {
+          agentId: 'a',
+          content: 'starting',
+          createdAt: 0,
+          id: 'ast-0',
+          parentId: 'u-1',
+          role: 'assistant',
+          tools: [
+            {
+              apiName: 'Monitor',
+              arguments: '{}',
+              id: 'toolu_mon_0',
+              identifier: 'claude-code',
+              type: 'default',
+            },
+          ],
+          updatedAt: 0,
+        },
+        // Tool result
+        {
+          content: 'started',
+          createdAt: 0,
+          id: 'tool-1',
+          parentId: 'ast-0',
+          role: 'tool',
+          tool_call_id: 'toolu_mon_0',
+          updatedAt: 0,
+        },
+        // 3 signal callbacks under tool-1
+        {
+          agentId: 'a',
+          content: '等 list 完。',
+          createdAt: 0,
+          id: 'cb-1',
+          metadata: signalMeta(1),
+          model: 'claude-opus-4-7',
+          parentId: 'tool-1',
+          role: 'assistant',
+          updatedAt: 0,
+        },
+        {
+          agentId: 'a',
+          content: '84842 列完，开干。',
+          createdAt: 0,
+          id: 'cb-2',
+          metadata: signalMeta(2),
+          model: 'claude-opus-4-7',
+          parentId: 'tool-1',
+          role: 'assistant',
+          updatedAt: 0,
+        },
+        {
+          agentId: 'a',
+          content: '100/84842 全 skip…',
+          createdAt: 0,
+          id: 'cb-3',
+          metadata: signalMeta(3),
+          model: 'claude-opus-4-7',
+          parentId: 'tool-1',
+          role: 'assistant',
+          updatedAt: 0,
+        },
+      ];
+
+      const builder = createBuilder(messages);
+      const result = builder.flatten(messages);
+
+      // Expect: user msg + one assistantGroup virtual message. NO standalone
+      // bubbles for cb-1/cb-2/cb-3 — they belong to the group.
+      const ids = result.map((m) => m.id);
+      expect(ids).not.toContain('cb-1');
+      expect(ids).not.toContain('cb-2');
+      expect(ids).not.toContain('cb-3');
+      const group = result.find((m) => m.role === ('assistantGroup' as any));
+      expect(group).toBeDefined();
+      expect(group!.signalCallbacks).toHaveLength(1);
+      const block = group!.signalCallbacks![0];
+      expect(block).toMatchObject({
+        sourceToolCallId: 'toolu_mon_0',
+        sourceToolMessageId: 'tool-1',
+        sourceToolName: 'Monitor',
+      });
+      expect(block.callbacks.map((c) => c.id)).toEqual(['cb-1', 'cb-2', 'cb-3']);
+      expect(block.callbacks.map((c) => c.sequence)).toEqual([1, 2, 3]);
+      expect(block.callbacks[0].content).toBe('等 list 完。');
     });
   });
 });

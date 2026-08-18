@@ -1,4 +1,4 @@
-import { AIChatModelCard } from '../types/aiModel';
+import type { AIChatModelCard } from '../types/aiModel';
 
 const ai21ChatModels: AIChatModelCard[] = [
   {
@@ -6,10 +6,13 @@ const ai21ChatModels: AIChatModelCard[] = [
       functionCall: true,
     },
     contextWindowTokens: 256_000,
-    description: 'The most efficient model in its class, balancing speed and quality with a smaller footprint.',
+    description:
+      'The most efficient model in its class, balancing speed and quality with a smaller footprint.',
     displayName: 'Jamba Mini',
     enabled: true,
+    family: 'jamba',
     id: 'jamba-mini',
+    knowledgeCutoff: '2024-08',
     pricing: {
       units: [
         { name: 'textInput', rate: 0.2, strategy: 'fixed', unit: 'millionTokens' },
@@ -28,7 +31,9 @@ const ai21ChatModels: AIChatModelCard[] = [
       'Our most powerful, advanced model, designed for complex enterprise tasks with outstanding performance.',
     displayName: 'Jamba Large',
     enabled: true,
+    family: 'jamba',
     id: 'jamba-large',
+    knowledgeCutoff: '2024-08',
     pricing: {
       units: [
         { name: 'textInput', rate: 2, strategy: 'fixed', unit: 'millionTokens' },

@@ -1,128 +1,149 @@
 import { type DataSyncConfig } from '@lobechat/electron-client-ipc';
 import isEqual from 'fast-deep-equal';
-import useSWR, { type SWRResponse } from 'swr';
-import type { StateCreator } from 'zustand/vanilla';
+import { type SWRResponse } from 'swr';
+import useSWR from 'swr';
 
 import { mutate } from '@/libs/swr';
+import { electronKeys } from '@/libs/swr/keys';
 import { remoteServerService } from '@/services/electron/remoteServer';
+import { type StoreSetter } from '@/store/types';
+import { useUserStore } from '@/store/user';
 
-import { initialState } from '../initialState';
-import type { ElectronStore } from '../store';
+import { type ElectronStore } from '../store';
 
 /**
- * 设置操作
+ * Remote server actions
  */
-export interface ElectronRemoteServerAction {
-  clearRemoteServerSyncError: () => void;
-  connectRemoteServer: (params: DataSyncConfig) => Promise<void>;
-  disconnectRemoteServer: () => Promise<void>;
-  refreshServerConfig: () => Promise<void>;
-  refreshUserData: () => Promise<void>;
-  useDataSyncConfig: () => SWRResponse;
-}
 
-const REMOTE_SERVER_CONFIG_KEY = 'electron:getRemoteServerConfig';
+type Setter = StoreSetter<ElectronStore>;
+export const remoteSyncSlice = (set: Setter, get: () => ElectronStore, _api?: unknown) =>
+  new ElectronRemoteServerActionImpl(set, get, _api);
 
-export const remoteSyncSlice: StateCreator<
-  ElectronStore,
-  [['zustand/devtools', never]],
-  [],
-  ElectronRemoteServerAction
-> = (set, get) => ({
-  clearRemoteServerSyncError: () => {
-    set({ remoteServerSyncError: undefined }, false, 'clearRemoteServerSyncError');
-  },
+export class ElectronRemoteServerActionImpl {
+  readonly #get: () => ElectronStore;
+  readonly #set: Setter;
 
-  connectRemoteServer: async (values) => {
+  constructor(set: Setter, get: () => ElectronStore, _api?: unknown) {
+    void _api;
+    this.#set = set;
+    this.#get = get;
+  }
+
+  clearRemoteServerSyncError = (): void => {
+    this.#set({ remoteServerSyncError: undefined }, false, 'clearRemoteServerSyncError');
+  };
+
+  connectRemoteServer = async (values: DataSyncConfig): Promise<void> => {
     if (values.storageMode === 'selfHost' && !values.remoteServerUrl) return;
 
-    set({ isConnectingServer: true });
-    get().clearRemoteServerSyncError();
+    this.#set({ isConnectingServer: true });
+    this.#get().clearRemoteServerSyncError();
     try {
-      // 获取当前配置
+      // Get current configuration
       const config = await remoteServerService.getRemoteServerConfig();
 
-      // 如果已经激活，需要先清除
+      // If already active, need to clear first
       if (!isEqual(config, values)) {
         await remoteServerService.setRemoteServerConfig({ ...values, active: false });
       }
 
-      // 请求授权
+      // Request authorization
       const result = await remoteServerService.requestAuthorization(values);
 
       if (!result.success) {
-        console.error('请求授权失败:', result.error);
+        console.error('Authorization request failed:', result.error);
 
-        set({
+        this.#set({
           remoteServerSyncError: { message: result.error, type: 'AUTH_ERROR' },
         });
       }
-      // 刷新状态
-      await get().refreshServerConfig();
+      // Refresh state
+      await this.#get().refreshServerConfig();
     } catch (error) {
-      console.error('远程服务器配置出错:', error);
-      set({
+      console.error('Remote server configuration error:', error);
+      this.#set({
         remoteServerSyncError: { message: (error as Error).message, type: 'CONFIG_ERROR' },
       });
     } finally {
-      set({ isConnectingServer: false });
+      this.#set({ isConnectingServer: false });
     }
-  },
+  };
 
-  disconnectRemoteServer: async () => {
-    set({ isConnectingServer: false });
-    get().clearRemoteServerSyncError();
+  disconnectRemoteServer = async (): Promise<void> => {
+    this.#set({ isConnectingServer: false });
+    this.#get().clearRemoteServerSyncError();
     try {
-      await remoteServerService.setRemoteServerConfig({ active: false, storageMode: 'cloud' });
-      // 更新表单URL为空
-      set({ dataSyncConfig: initialState.dataSyncConfig });
-      // 刷新状态
-      await get().refreshServerConfig();
+      // Must use clearRemoteServerConfig (not only set active: false): main process
+      // clears encrypted OIDC access/refresh tokens; otherwise sign-out still leaves auth state.
+      await remoteServerService.clearRemoteServerConfig();
+      const { stores } = await import('@/store/utils/userDataStores');
+      stores.reset();
+      await this.#get().refreshServerConfig();
     } catch (error) {
-      console.error('断开连接失败:', error);
-      set({
+      console.error('Disconnect failed:', error);
+      this.#set({
         remoteServerSyncError: { message: (error as Error).message, type: 'DISCONNECT_ERROR' },
       });
     } finally {
-      set({ isConnectingServer: false });
+      this.#set({ isConnectingServer: false });
     }
-  },
+  };
 
-  refreshServerConfig: async () => {
-    await mutate(REMOTE_SERVER_CONFIG_KEY);
-  },
+  refreshServerConfig = async (): Promise<void> => {
+    await mutate(electronKeys.remoteServerConfig());
+  };
 
-  refreshUserData: async () => {
-    const { getSessionStoreState } = await import('@/store/session');
-    const { getChatStoreState } = await import('@/store/chat');
-    const { getUserStoreState } = await import('@/store/user');
+  refreshUserData = async (): Promise<void> => {
+    const { stores } = await import('@/store/utils/userDataStores');
+    stores.reset();
 
-    await getSessionStoreState().refreshSessions();
-    await getChatStoreState().refreshMessages();
-    await getChatStoreState().refreshTopic();
-    await getUserStoreState().refreshUserState();
-  },
+    const [{ useSessionStore }, { useChatStore }] = await Promise.all([
+      import('@/store/session'),
+      import('@/store/chat'),
+    ]);
 
-  useDataSyncConfig: () =>
-    useSWR<DataSyncConfig>(
-      REMOTE_SERVER_CONFIG_KEY,
+    await useSessionStore.getState().refreshSessions();
+    await useChatStore.getState().refreshMessages();
+    await useChatStore.getState().refreshTopic();
+    await useUserStore.getState().refreshUserState();
+  };
+
+  useDataSyncConfig = (): SWRResponse => {
+    return useSWR<DataSyncConfig>(
+      electronKeys.remoteServerConfig(),
       async () => {
         try {
           return await remoteServerService.getRemoteServerConfig();
         } catch (error) {
-          console.error('获取远程服务器配置失败:', error);
+          console.error('Failed to get remote server configuration:', error);
           throw error;
         }
       },
       {
         onSuccess: (data) => {
-          if (!isEqual(data, get().dataSyncConfig)) {
-            get().refreshUserData();
+          const { dataSyncConfig, isInitRemoteServerConfig } = this.#get();
+          // Only refresh on genuine config changes AFTER the first hydration.
+          // On initial load the stores are already fresh, and `refreshUserData`
+          // runs `stores.reset()` which wipes chat state (notably `activeAgentId`)
+          // that `AgentIdSync` just set from the URL — leaving the topic list
+          // unable to resolve its agent scope on reload.
+          if (isInitRemoteServerConfig && !isEqual(data, dataSyncConfig)) {
+            void this.#get()
+              .refreshUserData()
+              .catch((error) => {
+                console.error('Failed to refresh user data:', error);
+              });
           }
 
-          set({ dataSyncConfig: data, isInitRemoteServerConfig: true });
+          this.#set({ dataSyncConfig: data, isInitRemoteServerConfig: true });
         },
         suspense: false,
       },
-    ),
-});
+    );
+  };
+}
+
+export type ElectronRemoteServerAction = Pick<
+  ElectronRemoteServerActionImpl,
+  keyof ElectronRemoteServerActionImpl
+>;

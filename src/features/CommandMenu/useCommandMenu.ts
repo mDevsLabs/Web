@@ -1,33 +1,36 @@
 import { useDebounce } from 'ahooks';
 import { useTheme as useNextThemesTheme } from 'next-themes';
-import { useCallback, useEffect, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useCallback, useEffect } from 'react';
 import useSWR from 'swr';
 
-import { useCreateMenuItems } from '@/app/[variants]/(main)/home/_layout/hooks';
 import { isDesktop } from '@/const/version';
-import type { SearchResult } from '@/database/repositories/search';
+import { type SearchResult } from '@/database/repositories/search';
+import { useCreateMenuItems } from '@/features/HomeSidebar/hooks';
 import { useCreateNewModal } from '@/features/LibraryModal';
+import { useWorkspaceAwareNavigate } from '@/features/Workspace/useWorkspaceAwareNavigate';
+import { usePermission } from '@/hooks/usePermission';
 import { useGroupWizard } from '@/layout/GlobalProvider/GroupWizardProvider';
 import { lambdaClient } from '@/libs/trpc/client';
 import { electronSystemService } from '@/services/electron/system';
 import { useAgentStore } from '@/store/agent';
 import { builtinAgentSelectors } from '@/store/agent/selectors/builtinAgentSelectors';
 import { useChatStore } from '@/store/chat';
+import { topicSelectors } from '@/store/chat/selectors';
 import { useGlobalStore } from '@/store/global';
 import { globalHelpers } from '@/store/global/helpers';
 import { useHomeStore } from '@/store/home';
 
 import { useCommandMenuContext } from './CommandMenuContext';
-import type { ThemeMode } from './types';
+import { type ThemeMode } from './types';
 
 /**
  * Shared methods for CommandMenu
  */
 export const useCommandMenu = () => {
-  const [open, setOpen] = useGlobalStore((s) => [s.status.showCommandMenu, s.updateSystemStatus]);
+  const [open] = useGlobalStore((s) => [s.status.showCommandMenu]);
   const {
     mounted,
+    onClose,
     search,
     setSearch,
     pages,
@@ -35,13 +38,14 @@ export const useCommandMenu = () => {
     typeFilter,
     setTypeFilter,
     page,
-    menuContext: context,
     pathname,
     selectedAgent,
     setSelectedAgent,
+    activeAgentId: agentId,
   } = useCommandMenuContext();
 
-  const navigate = useNavigate();
+  const navigate = useWorkspaceAwareNavigate();
+  const { allowed: canCreate } = usePermission('create_content');
   const { setTheme } = useNextThemesTheme();
   const createAgent = useAgentStore((s) => s.createAgent);
   const refreshAgentList = useHomeStore((s) => s.refreshAgentList);
@@ -49,15 +53,6 @@ export const useCommandMenu = () => {
   const { openGroupWizard } = useGroupWizard();
   const { createGroupWithMembers, createGroupFromTemplate, createPage } = useCreateMenuItems();
   const { open: openCreateLibraryModal } = useCreateNewModal();
-
-  // Extract agentId from pathname when in agent context
-  const agentId = useMemo(() => {
-    if (context === 'agent') {
-      const match = pathname?.match(/^\/agent\/([^/?]+)/);
-      return match?.[1] || undefined;
-    }
-    return undefined;
-  }, [context, pathname]);
 
   // Debounce search input to reduce API calls
   const debouncedSearch = useDebounce(search, { wait: 600 });
@@ -72,6 +67,10 @@ export const useCommandMenu = () => {
       const locale = globalHelpers.getCurrentLanguage();
       return lambdaClient.search.query.query({
         agentId,
+        // Keep the aggregate response DB-only: marketplace results are reached
+        // through the permanent typed-search entries instead of gating every
+        // keystroke on three remote marketplace round-trips.
+        includeMarketplace: false,
         limitPerType: typeFilter ? 50 : 5, // Show more results when filtering by type
         locale,
         query: searchQuery,
@@ -97,15 +96,15 @@ export const useCommandMenu = () => {
   }, [open]);
 
   const closeCommandMenu = useCallback(() => {
-    setOpen({ showCommandMenu: false });
-  }, [setOpen]);
+    onClose();
+  }, [onClose]);
 
   const handleNavigate = useCallback(
     (path: string) => {
       navigate(path);
-      setOpen({ showCommandMenu: false });
+      onClose();
     },
-    [navigate, setOpen],
+    [navigate, onClose],
   );
 
   const handleExternalLink = useCallback(
@@ -115,17 +114,17 @@ export const useCommandMenu = () => {
       } else {
         window.open(url, '_blank', 'noopener,noreferrer');
       }
-      setOpen({ showCommandMenu: false });
+      onClose();
     },
-    [setOpen],
+    [onClose],
   );
 
   const handleThemeChange = useCallback(
     (theme: ThemeMode) => {
       setTheme(theme);
-      setOpen({ showCommandMenu: false });
+      onClose();
     },
-    [setTheme, setOpen],
+    [setTheme, onClose],
   );
 
   const handleAskLobeAI = useCallback(() => {
@@ -133,18 +132,18 @@ export const useCommandMenu = () => {
     if (inboxAgentId && search.trim()) {
       const message = encodeURIComponent(search.trim());
       navigate(`/agent/${inboxAgentId}?message=${message}`);
-      setOpen({ showCommandMenu: false });
+      onClose();
     }
-  }, [inboxAgentId, search, navigate, setOpen]);
+  }, [inboxAgentId, search, navigate, onClose]);
 
   const handleAIPainting = useCallback(() => {
     // Navigate to painting page with search as prompt
     if (search.trim()) {
       const prompt = encodeURIComponent(search.trim());
       navigate(`/image?prompt=${prompt}`);
-      setOpen({ showCommandMenu: false });
+      onClose();
     }
-  }, [search, navigate, setOpen]);
+  }, [search, navigate, onClose]);
 
   const handleBack = useCallback(() => {
     setPages((prev) => prev.slice(0, -1));
@@ -155,11 +154,13 @@ export const useCommandMenu = () => {
       const message = encodeURIComponent(search.trim());
       navigate(`/agent/${selectedAgent.id}?message=${message}`);
       setSelectedAgent(undefined);
-      setOpen({ showCommandMenu: false });
+      onClose();
     }
-  }, [selectedAgent, search, navigate, setSelectedAgent, setOpen]);
+  }, [selectedAgent, search, navigate, setSelectedAgent, onClose]);
 
   const handleCreateSession = useCallback(async () => {
+    if (!canCreate) return;
+
     const result = await createAgent({});
     await refreshAgentList();
 
@@ -168,32 +169,44 @@ export const useCommandMenu = () => {
       navigate(`/agent/${result.agentId}`);
     }
 
-    setOpen({ showCommandMenu: false });
-  }, [createAgent, refreshAgentList, navigate, setOpen]);
+    onClose();
+  }, [canCreate, createAgent, refreshAgentList, navigate, onClose]);
 
   const openNewTopicOrSaveTopic = useChatStore((s) => s.openNewTopicOrSaveTopic);
 
   const handleCreateTopic = useCallback(() => {
+    if (!canCreate) return;
+    // The command item is disabled while a new-topic send is in flight, but a
+    // selection can still race the window opening — don't close the palette on
+    // what would be a silent no-op in openNewTopicOrSaveTopic.
+    if (topicSelectors.isNewTopicSendInFlight(useChatStore.getState())) return;
+
     openNewTopicOrSaveTopic();
-    setOpen({ showCommandMenu: false });
-  }, [openNewTopicOrSaveTopic, setOpen]);
+    onClose();
+  }, [canCreate, openNewTopicOrSaveTopic, onClose]);
 
   const handleCreateLibrary = useCallback(() => {
-    setOpen({ showCommandMenu: false });
+    if (!canCreate) return;
+
+    onClose();
     openCreateLibraryModal({
       onSuccess: (id) => {
         navigate(`/resource/library/${id}`);
       },
     });
-  }, [setOpen, openCreateLibraryModal, navigate]);
+  }, [canCreate, onClose, openCreateLibraryModal, navigate]);
 
   const handleCreatePage = useCallback(async () => {
+    if (!canCreate) return;
+
     await createPage();
-    setOpen({ showCommandMenu: false });
-  }, [createPage, setOpen]);
+    onClose();
+  }, [canCreate, createPage, onClose]);
 
   const handleCreateAgentTeam = useCallback(() => {
-    setOpen({ showCommandMenu: false });
+    if (!canCreate) return;
+
+    onClose();
     openGroupWizard({
       onCreateCustom: async (selectedAgents) => {
         await createGroupWithMembers(selectedAgents);
@@ -202,7 +215,7 @@ export const useCommandMenu = () => {
         await createGroupFromTemplate(templateId, selectedMemberTitles);
       },
     });
-  }, [setOpen, openGroupWizard, createGroupWithMembers, createGroupFromTemplate]);
+  }, [canCreate, onClose, openGroupWizard, createGroupWithMembers, createGroupFromTemplate]);
 
   return {
     closeCommandMenu,

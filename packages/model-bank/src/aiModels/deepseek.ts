@@ -1,51 +1,63 @@
-import { AIChatModelCard } from '../types/aiModel';
+import type { AIChatModelCard } from '../types/aiModel';
 
 // https://api-docs.deepseek.com/zh-cn/quick_start/pricing
 const deepseekChatModels: AIChatModelCard[] = [
   {
     abilities: {
       functionCall: true,
+      reasoning: true,
       structuredOutput: true,
     },
-    contextWindowTokens: 131_072,
+    contextWindowTokens: 1_048_576,
     description:
-      'DeepSeek V3.2 is DeepSeek’s latest general model with a hybrid reasoning architecture and stronger agent capabilities.',
-    displayName: 'DeepSeek V3.2 Exp',
+      'DeepSeek V4 Flash is the fast, cost-efficient member of the V4 family with a 1M context window and hybrid thinking — one of the cheapest capable models available.',
+    displayName: 'DeepSeek V4 Flash',
     enabled: true,
-    id: 'deepseek-chat',
-    maxOutput: 8192,
+    family: 'deepseek',
+    generation: 'deepseek-v4',
+    id: 'deepseek-v4-flash',
+    maxOutput: 393_216,
     pricing: {
       currency: 'CNY',
       units: [
-        { name: 'textInput_cacheRead', rate: 0.2, strategy: 'fixed', unit: 'millionTokens' },
-        { name: 'textInput', rate: 2, strategy: 'fixed', unit: 'millionTokens' },
-        { name: 'textOutput', rate: 3, strategy: 'fixed', unit: 'millionTokens' },
+        { name: 'textInput_cacheRead', rate: 0.05, strategy: 'fixed', unit: 'millionTokens' },
+        { name: 'textInput', rate: 1.5, strategy: 'fixed', unit: 'millionTokens' },
+        { name: 'textOutput', rate: 4.5, strategy: 'fixed', unit: 'millionTokens' },
       ],
     },
-    releasedAt: '2025-12-01',
+    releasedAt: '2026-07-31',
+    settings: {
+      extendParams: ['deepseekV4GAReasoningEffort'],
+    },
     type: 'chat',
   },
   {
     abilities: {
       functionCall: true,
       reasoning: true,
+      structuredOutput: true,
     },
-    contextWindowTokens: 131_072,
+    contextWindowTokens: 1_048_576,
     description:
-      'DeepSeek V3.2 thinking mode outputs a chain-of-thought before the final answer to improve accuracy.',
-    displayName: 'DeepSeek V3.2 Exp Thinking',
+      'DeepSeek V4 Pro is the flagship of the V4 family, built for high-intensity reasoning and agentic workflows with a 1M context window — excellent Chinese writing and outstanding value for money.',
+    displayName: 'DeepSeek V4 Pro',
     enabled: true,
-    id: 'deepseek-reasoner',
-    maxOutput: 65_536,
+    family: 'deepseek',
+    generation: 'deepseek-v4',
+    id: 'deepseek-v4-pro',
+    maxOutput: 393_216,
     pricing: {
       currency: 'CNY',
       units: [
-        { name: 'textInput_cacheRead', rate: 0.2, strategy: 'fixed', unit: 'millionTokens' },
-        { name: 'textInput', rate: 2, strategy: 'fixed', unit: 'millionTokens' },
-        { name: 'textOutput', rate: 3, strategy: 'fixed', unit: 'millionTokens' },
+        { name: 'textInput_cacheRead', rate: 0.15, strategy: 'fixed', unit: 'millionTokens' },
+        { name: 'textInput', rate: 4.5, strategy: 'fixed', unit: 'millionTokens' },
+        { name: 'textOutput', rate: 13.5, strategy: 'fixed', unit: 'millionTokens' },
       ],
     },
-    releasedAt: '2025-12-01',
+    releasedAt: '2026-08-13',
+    settings: {
+      extendParams: ['deepseekV4GAReasoningEffort'],
+    },
     type: 'chat',
   },
 ];

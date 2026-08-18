@@ -26,6 +26,11 @@ export interface MessageOperationState {
   isInReasoning: boolean;
 
   /**
+   * Message generation was interrupted by user
+   */
+  isInterrupted: boolean;
+
+  /**
    * Message has any operation in progress
    */
   isProcessing: boolean;
@@ -88,6 +93,16 @@ export interface OperationState {
   isAIGenerating: boolean;
 
   /**
+   * Check if input actions should stay blocked until operation bookkeeping ends.
+   */
+  isInputLoading: boolean;
+
+  /**
+   * Check if input should still show visible loading controls.
+   */
+  isInputVisiblyLoading: boolean;
+
+  /**
    * Send message error for this context (if any)
    */
   sendMessageError?: string;
@@ -101,6 +116,7 @@ export const DEFAULT_MESSAGE_OPERATION_STATE: MessageOperationState = {
   isCreating: false,
   isGenerating: false,
   isInReasoning: false,
+  isInterrupted: false,
   isProcessing: false,
   isRegenerating: false,
 };
@@ -120,5 +136,7 @@ export const DEFAULT_OPERATION_STATE: OperationState = {
   getMessageOperationState: () => DEFAULT_MESSAGE_OPERATION_STATE,
   getToolOperationState: () => DEFAULT_TOOL_OPERATION_STATE,
   isAIGenerating: false,
+  isInputLoading: false,
+  isInputVisiblyLoading: false,
   sendMessageError: undefined,
 };

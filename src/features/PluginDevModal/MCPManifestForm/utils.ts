@@ -1,8 +1,8 @@
-import { type LobeChatPluginManifest } from '@lobehub/chat-plugin-sdk';
+import { type ToolManifest } from '@lobechat/types';
 
 import { safeParseJSON } from '@/utils/safeParseJSON';
 
-// （McpConfig, McpServers, ParsedMcpInput 接口定义保持不变）
+// (McpConfig, McpServers, ParsedMcpInput interface definitions remain unchanged)
 interface McpConfig {
   args?: string[];
   command?: string;
@@ -14,11 +14,11 @@ interface McpServers {
 }
 
 interface ParsedMcpInput {
-  manifest?: LobeChatPluginManifest;
+  manifest?: ToolManifest;
   mcpServers?: McpServers;
 }
 
-// 移除 DuplicateIdentifier
+// Removed DuplicateIdentifier
 export enum McpParseErrorCode {
   EmptyMcpServers = 'EmptyMcpServers',
   InvalidJsonStructure = 'InvalidJsonStructure',
@@ -26,7 +26,7 @@ export enum McpParseErrorCode {
   ManifestNotSupported = 'ManifestNotSupported',
 }
 
-// 移除 isDuplicate
+// Removed isDuplicate
 interface ParseSuccessResult {
   identifier: string;
   mcpConfig: McpConfig & { type: 'stdio' | 'http' };
@@ -35,7 +35,7 @@ interface ParseSuccessResult {
 
 interface ParseErrorResult {
   errorCode: McpParseErrorCode;
-  // identifier 字段仍然可能有用，用于在结构错误时也能显示用户输入的 ID
+  // identifier field may still be useful for displaying the user-input ID when structure errors occur
   identifier?: string;
   status: 'error';
 }
@@ -60,19 +60,16 @@ export const parseMcpInput = (value: string): ParseResult => {
 
       if (mcpKeys.length > 0) {
         const identifier = mcpKeys[0];
-        // @ts-expect-error type 不一样
+        // @ts-expect-error type mismatch
         const mcpConfig = parsedJson.mcpServers[identifier];
 
         if (mcpConfig && typeof mcpConfig === 'object' && !Array.isArray(mcpConfig)) {
-          let type: 'stdio' | 'http' | undefined;
-          let resultMcpConfig: McpConfig & { type?: 'stdio' | 'http' } = {};
+          let resultMcpConfig: McpConfig & { type?: 'stdio' | 'http' };
 
           if (mcpConfig.command && Array.isArray(mcpConfig.args)) {
-            type = 'stdio';
-            resultMcpConfig = { ...mcpConfig, type };
+            resultMcpConfig = { ...mcpConfig, type: 'stdio' };
           } else if (mcpConfig.url) {
-            type = 'http';
-            resultMcpConfig = { type, url: mcpConfig.url };
+            resultMcpConfig = { type: 'http', url: mcpConfig.url };
           } else {
             return {
               errorCode: McpParseErrorCode.InvalidMcpStructure,
@@ -90,7 +87,7 @@ export const parseMcpInput = (value: string): ParseResult => {
         // mcpConfig is invalid or not an object
         return {
           errorCode: McpParseErrorCode.InvalidMcpStructure,
-          identifier: identifier,
+          identifier,
           status: 'error',
         };
       } else {
@@ -109,17 +106,14 @@ export const parseMcpInput = (value: string): ParseResult => {
         const mcpConfig = (parsedJson as any)[identifier];
 
         if (mcpConfig && typeof mcpConfig === 'object' && !Array.isArray(mcpConfig)) {
-          let type: 'stdio' | 'http' | undefined;
-          let resultMcpConfig: McpConfig & { type?: 'stdio' | 'http' } = {};
+          let resultMcpConfig: McpConfig & { type?: 'stdio' | 'http' };
 
           // Explicitly check properties of mcpConfig
           if (mcpConfig.command && Array.isArray(mcpConfig.args)) {
-            type = 'stdio';
-            resultMcpConfig = { ...mcpConfig, type };
+            resultMcpConfig = { ...mcpConfig, type: 'stdio' };
           } else if (mcpConfig.url) {
-            type = 'http';
             // For the flat structure, ensure only 'url' is included for http type
-            resultMcpConfig = { type, url: mcpConfig.url };
+            resultMcpConfig = { type: 'http', url: mcpConfig.url };
           } else {
             // Invalid structure within the identifier's value
             return {

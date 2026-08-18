@@ -24,13 +24,19 @@ export interface AuthorizationProgress {
 }
 
 /**
- * 从主进程广播的远程服务器相关事件
+ * Remote server related events broadcast from main process
  */
 export interface RemoteServerBroadcastEvents {
   authorizationFailed: (params: { error: string }) => void;
   /** Broadcast authorization progress for UI updates */
   authorizationProgress: (params: AuthorizationProgress) => void;
-  authorizationRequired: (params: void) => void;
+  /**
+   * Broadcast when the main process needs the user to re-authenticate.
+   * `reason` is a short, log-friendly tag describing why (e.g. `refresh:invalid_grant`,
+   * `proxy:status=401`, `startup:non_retryable`). Useful for diagnosing why the
+   * Session Expired modal showed up in field reports.
+   */
+  authorizationRequired: (params: { reason: string }) => void;
   authorizationSuccessful: (params: void) => void;
   remoteServerConfigUpdated: (params: void) => void;
   tokenRefreshed: (params: void) => void;

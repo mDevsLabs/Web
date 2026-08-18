@@ -1,4 +1,5 @@
-import { Menu } from 'electron';
+import type { TrayNavigationSnapshot } from '@lobechat/electron-client-ipc';
+import type { Menu } from 'electron';
 
 export interface MenuOptions {
   showDevItems?: boolean;
@@ -30,20 +31,20 @@ export interface IMenuPlatform {
   /**
    * Build and set application menu
    */
-  buildAndSetAppMenu(options?: MenuOptions): Menu;
+  buildAndSetAppMenu: (options?: MenuOptions) => Menu;
 
   /**
    * Build context menu
    */
-  buildContextMenu(type: string, data?: ContextMenuData): Menu;
+  buildContextMenu: (type: string, data?: ContextMenuData) => Menu;
 
   /**
    * Build tray menu
    */
-  buildTrayMenu(): Menu;
+  buildTrayMenu: (snapshot?: TrayNavigationSnapshot) => Menu;
 
   /**
    * Refresh menu
    */
-  refresh(options?: MenuOptions): void;
+  refresh: (options?: MenuOptions) => void;
 }

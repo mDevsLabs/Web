@@ -1,9 +1,10 @@
+import { eq } from 'drizzle-orm';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
-import { sessions, topics, users } from '../../../schemas';
-import { LobeChatDatabase } from '../../../type';
-import { TopicModel } from '../../topic';
 import { getTestDB } from '../../../core/getTestDB';
+import { messages, sessions, topics, users } from '../../../schemas';
+import type { LobeChatDatabase } from '../../../type';
+import { TopicModel } from '../../topic';
 
 const userId = 'topic-update-user';
 const sessionId = 'topic-update-session';
@@ -121,6 +122,177 @@ describe('TopicModel - Update', () => {
       });
 
       expect(result).toHaveLength(0);
+    });
+  });
+
+  describe('task callback reservation', () => {
+    it('reserves only an idle topic and releases only the matching owner', async () => {
+      const topicId = 'task-callback-reservation';
+      await serverDB.insert(topics).values({ userId, id: topicId, title: 'Test' });
+
+      await expect(topicModel.tryReserveTaskCallback(topicId, 'callback-1')).resolves.toBe(true);
+      await expect(topicModel.tryReserveTaskCallback(topicId, 'callback-2')).resolves.toBe(false);
+
+      await topicModel.releaseTaskCallbackReservation(topicId, 'callback-2');
+      await expect(topicModel.tryReserveTaskCallback(topicId, 'callback-2')).resolves.toBe(false);
+
+      await topicModel.releaseTaskCallbackReservation(topicId, 'callback-1');
+      await expect(topicModel.tryReserveTaskCallback(topicId, 'callback-2')).resolves.toBe(true);
+    });
+
+    it('allows the reservation owner to re-enter the same topic-start claim', async () => {
+      const topicId = 'topic-start-reentrant-reservation';
+      await serverDB.insert(topics).values({ id: topicId, title: 'Test', userId });
+
+      await expect(topicModel.tryReserveTaskCallback(topicId, 'foreground-1')).resolves.toBe(true);
+      await expect(topicModel.tryReserveTaskCallback(topicId, 'foreground-1')).resolves.toBe(true);
+      await expect(topicModel.tryReserveTaskCallback(topicId, 'callback-2')).resolves.toBe(false);
+    });
+
+    it('waits while a foreground operation is running', async () => {
+      const topicId = 'task-callback-running-operation';
+      await serverDB.insert(topics).values({
+        userId,
+        id: topicId,
+        title: 'Test',
+        metadata: {
+          runningOperation: {
+            assistantMessageId: 'assistant-1',
+            operationId: 'operation-1',
+          },
+        },
+      });
+
+      await expect(topicModel.tryReserveTaskCallback(topicId, 'callback-1')).resolves.toBe(false);
+
+      await topicModel.updateMetadata(topicId, { runningOperation: null });
+
+      await expect(topicModel.tryReserveTaskCallback(topicId, 'callback-1')).resolves.toBe(true);
+    });
+
+    it('atomically hands a topic from the matching visible-finished operation to a new start', async () => {
+      const topicId = 'topic-start-operation-handoff';
+      await serverDB.insert(topics).values({
+        userId,
+        id: topicId,
+        title: 'Test',
+        metadata: {
+          runningOperation: {
+            assistantMessageId: 'assistant-1',
+            operationId: 'old-operation',
+          },
+        },
+      });
+
+      await expect(
+        topicModel.tryReserveTaskCallback(topicId, 'new-start', 'different-operation'),
+      ).resolves.toBe(false);
+      await expect(
+        topicModel.tryReserveTaskCallback(topicId, 'new-start', 'old-operation'),
+      ).resolves.toBe(true);
+
+      const topic = await serverDB.query.topics.findFirst({ where: eq(topics.id, topicId) });
+      expect(topic?.metadata?.runningOperation).toBeNull();
+      expect(topic?.metadata?.taskCallbackReservation?.messageId).toBe('new-start');
+    });
+
+    it('recovers a stale reservation left by a crashed delivery worker', async () => {
+      const topicId = 'task-callback-stale-reservation';
+      await serverDB.insert(topics).values({
+        userId,
+        id: topicId,
+        title: 'Test',
+        metadata: {
+          taskCallbackReservation: {
+            messageId: 'crashed-callback',
+            reservedAt: new Date(Date.now() - 10 * 60 * 1000).toISOString(),
+          },
+        },
+      });
+
+      await expect(topicModel.tryReserveTaskCallback(topicId, 'retry-callback')).resolves.toBe(
+        true,
+      );
+    });
+
+    it('does not reserve another user topic', async () => {
+      await serverDB.insert(users).values({ id: 'task-callback-other-user' });
+      await serverDB.insert(topics).values({
+        userId: 'task-callback-other-user',
+        id: 'task-callback-other-topic',
+        title: 'Test',
+      });
+
+      await expect(
+        topicModel.tryReserveTaskCallback('task-callback-other-topic', 'callback-1'),
+      ).resolves.toBeNull();
+    });
+  });
+
+  describe('recomputeUsage', () => {
+    it('rolls the topic assistant messages into the denormalized usage/cost columns', async () => {
+      const topicId = 'usage-recompute-1';
+      // Seed a pinned model (config). The roll-up must preserve it, not overwrite
+      // it with the message's model — those columns hold the topic's config, not
+      // the measured dominant model (which lives in cost.llm.byModel).
+      await serverDB.insert(topics).values({
+        id: topicId,
+        model: 'pinned-model',
+        provider: 'pinned-provider',
+        sessionId,
+        userId,
+      });
+      await serverDB.insert(messages).values([
+        {
+          id: 'usage-msg-1',
+          metadata: {
+            performance: { duration: 500 },
+            usage: { cost: 0.003, totalInputTokens: 60, totalOutputTokens: 40, totalTokens: 100 },
+          },
+          model: 'gpt-4o',
+          provider: 'openai',
+          role: 'assistant',
+          topicId,
+          userId,
+        },
+        // a non-usage message must be ignored
+        { id: 'usage-msg-2', content: 'hi', role: 'user', topicId, userId },
+      ]);
+
+      await topicModel.recomputeUsage(topicId);
+
+      const [topic] = await serverDB.select().from(topics).where(eq(topics.id, topicId));
+      expect(topic.totalTokens).toBe(100);
+      expect(topic.totalInputTokens).toBe(60);
+      expect(topic.totalOutputTokens).toBe(40);
+      expect(topic.totalCost).toBeCloseTo(0.003, 6);
+      // Pinned model (config) is preserved — roll-up does not write the message model.
+      expect(topic.model).toBe('pinned-model');
+      expect(topic.provider).toBe('pinned-provider');
+      expect((topic.usage as any).llm).toEqual({
+        apiCalls: 1,
+        processingTimeMs: 500,
+        tokens: { input: 60, output: 40, total: 100 },
+      });
+    });
+
+    it('resets the usage columns to NULL when the topic has no measurable usage', async () => {
+      const topicId = 'usage-recompute-2';
+      await serverDB.insert(topics).values({
+        id: topicId,
+        sessionId,
+        totalCost: 1.23,
+        totalTokens: 999,
+        userId,
+      });
+
+      await topicModel.recomputeUsage(topicId);
+
+      const [topic] = await serverDB.select().from(topics).where(eq(topics.id, topicId));
+      expect(topic.totalTokens).toBeNull();
+      expect(topic.totalCost).toBeNull();
+      expect(topic.usage).toBeNull();
+      expect(topic.cost).toBeNull();
     });
   });
 });

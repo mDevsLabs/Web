@@ -1,8 +1,11 @@
-import { Flexbox, Segmented, Tag } from '@lobehub/ui';
-import { type ReactNode, memo } from 'react';
+import { Flexbox, Tag } from '@lobehub/ui';
+import { Tabs } from '@lobehub/ui/base-ui';
+import { type ReactNode } from 'react';
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import Title from '../../../app/[variants]/(main)/community/features/Title';
+import Title from '@/routes/(main)/community/features/Title';
+
 import { ModeType } from './types';
 
 interface BlockProps {
@@ -19,25 +22,23 @@ const Block = memo<BlockProps>(({ title, count, desc, children, mode, setMode, i
   const { t } = useTranslation('discover');
   return (
     <Flexbox gap={8}>
-      <Flexbox align={'center'} gap={12} horizontal justify={'space-between'}>
+      <Flexbox horizontal align={'center'} gap={12} justify={'space-between'}>
         <Title id={id} tag={<Tag>{count}</Tag>}>
           {title}
         </Title>
-        <Segmented
-          onChange={(v) => setMode?.(v as ModeType)}
-          options={[
+        <Tabs
+          activeKey={mode}
+          items={[
             {
+              key: ModeType.Docs,
               label: t('mcp.details.schema.mode.docs'),
-              value: ModeType.Docs,
             },
             {
+              key: ModeType.JSON,
               label: 'JSON',
-              value: ModeType.JSON,
             },
           ]}
-          shape={'round'}
-          value={mode}
-          variant={'outlined'}
+          onChange={(key) => setMode?.(key as ModeType)}
         />
       </Flexbox>
       <p style={{ marginBottom: 24 }}>{desc}</p>

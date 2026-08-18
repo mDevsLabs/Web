@@ -1,8 +1,9 @@
+import { join } from 'node:path';
+
 import * as dotenv from 'dotenv';
 import dotenvExpand from 'dotenv-expand';
 import { migrate as neonMigrate } from 'drizzle-orm/neon-serverless/migrator';
 import { migrate as nodeMigrate } from 'drizzle-orm/node-postgres/migrator';
-import { join } from 'node:path';
 
 // @ts-ignore tsgo handle esm import cjs and compatibility issues
 import { DB_FAIL_INIT_HINT, DUPLICATE_EMAIL_HINT, PGVECTOR_HINT } from './errorHint';
@@ -19,8 +20,6 @@ dotenvExpand.expand(dotenv.config({ override: true, path: `.env.${env}.local` })
 
 const migrationsFolder = join(__dirname, '../../packages/database/migrations');
 
-const isDesktop = process.env.NEXT_PUBLIC_IS_DESKTOP_APP === '1';
-
 const runMigrations = async () => {
   const { serverDB } = await import('../../packages/database/src/server');
 
@@ -32,43 +31,22 @@ const runMigrations = async () => {
   }
 
   console.log('✅ database migration pass. use: %s ms', Date.now() - time);
-  // eslint-disable-next-line unicorn/no-process-exit
+
   process.exit(0);
 };
 
-let connectionString = process.env.DATABASE_URL;
+const connectionString = process.env.DATABASE_URL;
 
-// Validate that DATABASE_URL is a proper URL (not a placeholder or key=value format)
-const isValidUrl = (url: string) => {
-  try {
-    new URL(url);
-    return true;
-  } catch {
-    return false;
-  }
-};
-
-// only migrate database if the connection string is available and valid
-if (!isDesktop && !connectionString) {
-  console.log('🟢 DATABASE_URL not set, migration skipped');
-} else if (!isDesktop && !isValidUrl(connectionString as string)) {
-  console.log('🟡 DATABASE_URL is not a valid URL, migration skipped');
-  console.log('   Make sure DATABASE_URL follows the format: postgresql://user:password@host:port/database');
-} else if (!isDesktop) {
-  // eslint-disable-next-line unicorn/prefer-top-level-await
+// only migrate database if the connection string is available
+if (connectionString) {
   runMigrations().catch((err) => {
     console.error('❌ Database migrate failed:', err);
 
     const errMsg = err.message as string;
-    const errCode = (err as NodeJS.ErrnoException).code;
 
     const constraint = (err as { constraint?: string })?.constraint;
 
-    if (errCode === 'ERR_INVALID_URL' || errMsg.includes('Invalid URL')) {
-      console.log('🟡 DATABASE_URL could not be parsed, migration skipped');
-      // eslint-disable-next-line unicorn/no-process-exit
-      process.exit(0);
-    } else if (errMsg.includes('extension "vector" is not available')) {
+    if (errMsg.includes('extension "vector" is not available')) {
       console.info(PGVECTOR_HINT);
     } else if (constraint === 'users_email_unique' || errMsg.includes('users_email_unique')) {
       console.info(DUPLICATE_EMAIL_HINT);
@@ -76,9 +54,8 @@ if (!isDesktop && !connectionString) {
       console.info(DB_FAIL_INIT_HINT);
     }
 
-    // eslint-disable-next-line unicorn/no-process-exit
     process.exit(1);
   });
 } else {
-  console.log('🟢 in desktop mode, migration skipped');
+  console.log('🟢 not find database env or in desktop mode, migration skipped');
 }

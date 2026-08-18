@@ -1,12 +1,10 @@
-import { UIChatMessage } from '@lobechat/types';
-import { LobeAgentConfig } from '@lobechat/types';
+import { type UIChatMessage } from '@lobechat/types';
 import { act } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
-import { DEFAULT_INBOX_AVATAR } from '@/const/meta';
 import { INBOX_SESSION_ID } from '@/const/session';
 import { useAgentStore } from '@/store/agent';
-import { ChatStore } from '@/store/chat';
+import { type ChatStore } from '@/store/chat';
 import { initialState } from '@/store/chat/initialState';
 import { messageMapKey } from '@/store/chat/utils/messageMapKey';
 import { createServerConfigStore } from '@/store/serverConfig/store';
@@ -796,7 +794,7 @@ describe('displayMessageSelectors', () => {
       expect(result).toBeUndefined();
     });
 
-    it('should return last child with tools result_msg_id', () => {
+    it('should return last child id even when the child has tools', () => {
       const messageWithChildrenAndTools = {
         id: 'msg-1',
         role: 'assistantGroup',
@@ -831,7 +829,83 @@ describe('displayMessageSelectors', () => {
       };
 
       const result = displayMessageSelectors.findLastMessageId('msg-1')(state as ChatStore);
-      expect(result).toBe('tool-result-id');
+      expect(result).toBe('child-2');
+    });
+
+    it('should not use an internal tool result as the parent for a new user message', () => {
+      // ROOT CAUSE:
+      //
+      // When the visible last message is an assistantGroup and its last block has
+      // tools, findLastMessageId returns the tool result id. sendMessage then
+      // stores the new user message with parentId=<tool-result-id>, which makes
+      // normal user turns siblings under a tool message instead of continuing
+      // the conversational chain.
+      //
+      // Before patch:
+      // assistantGroup -> last block -> internal tool result
+      // new user message parentId = tool result id
+      //
+      // Expected behavior:
+      // new user message parentId = the visible conversational block id
+      const assistantGroup = {
+        id: 'assistant-group-1',
+        role: 'assistantGroup',
+        content: '',
+        children: [
+          {
+            id: 'assistant-block-1',
+            content: 'I will run an internal tool.',
+          },
+          {
+            id: 'assistant-block-2',
+            content: 'Internal tool completed.',
+            tools: [
+              {
+                id: 'internal-tool-call',
+                identifier: 'test-runner',
+                apiName: 'internal_update',
+                arguments: '{}',
+                type: 'default',
+                result_msg_id: 'internal-tool-result-message',
+              },
+            ],
+          },
+        ],
+      } as unknown as UIChatMessage;
+
+      const state: Partial<ChatStore> = {
+        activeAgentId: 'test-id',
+        messagesMap: {
+          [messageMapKey({ agentId: 'test-id' })]: [assistantGroup],
+        },
+      };
+
+      const result = displayMessageSelectors.findLastMessageId('assistant-group-1')(
+        state as ChatStore,
+      );
+
+      expect(result).toBe('assistant-block-2');
+    });
+
+    it('should return lastMessageId for compressedGroup instead of group id', () => {
+      const compressedGroupMessage = {
+        id: 'mg_123456',
+        role: 'compressedGroup',
+        content: 'Compressed summary',
+        lastMessageId: 'msg-999',
+        compressedMessages: [],
+        pinnedMessages: [],
+      } as unknown as UIChatMessage;
+
+      const state: Partial<ChatStore> = {
+        activeAgentId: 'test-id',
+        messagesMap: {
+          [messageMapKey({ agentId: 'test-id' })]: [compressedGroupMessage],
+        },
+      };
+
+      const result = displayMessageSelectors.findLastMessageId('mg_123456')(state as ChatStore);
+      expect(result).toBe('msg-999');
     });
   });
 });

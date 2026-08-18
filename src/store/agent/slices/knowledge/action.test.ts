@@ -1,9 +1,9 @@
 import { act, renderHook, waitFor } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { withSWR } from '~test-utils';
 
 import { agentService } from '@/services/agent';
 import { KnowledgeType } from '@/types/knowledgeBase';
+import { withSWR } from '~test-utils';
 
 import { useAgentStore } from '../../store';
 
@@ -12,6 +12,7 @@ vi.mock('zustand/traditional');
 
 // Mock agentService
 vi.mock('@/services/agent', () => ({
+  AVAILABLE_AGENTS_CONTEXT_QUERY_LIMIT: 12,
   agentService: {
     createAgentFiles: vi.fn(),
     createAgentKnowledgeBase: vi.fn(),
@@ -279,13 +280,16 @@ describe('KnowledgeSlice Actions', () => {
         useAgentStore.setState({ activeAgentId: 'agent-1' });
       });
 
-      const { result } = renderHook(() => useAgentStore().useFetchFilesAndKnowledgeBases('agent-1'), {
-        wrapper: withSWR,
-      });
+      const { result } = renderHook(
+        () => useAgentStore().useFetchFilesAndKnowledgeBases('agent-1'),
+        {
+          wrapper: withSWR,
+        },
+      );
 
       await waitFor(() => expect(result.current.data).toEqual(mockData));
 
-      expect(agentService.getFilesAndKnowledgeBases).toHaveBeenCalledWith('agent-1');
+      expect(agentService.getFilesAndKnowledgeBases).toHaveBeenCalledWith('agent-1', undefined);
     });
 
     it('should return empty array as fallback', async () => {
@@ -295,9 +299,12 @@ describe('KnowledgeSlice Actions', () => {
         useAgentStore.setState({ activeAgentId: 'agent-1' });
       });
 
-      const { result } = renderHook(() => useAgentStore().useFetchFilesAndKnowledgeBases('agent-1'), {
-        wrapper: withSWR,
-      });
+      const { result } = renderHook(
+        () => useAgentStore().useFetchFilesAndKnowledgeBases('agent-1'),
+        {
+          wrapper: withSWR,
+        },
+      );
 
       await waitFor(() => expect(result.current.data).toEqual([]));
     });

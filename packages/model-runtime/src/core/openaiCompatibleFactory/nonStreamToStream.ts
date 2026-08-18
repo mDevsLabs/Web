@@ -1,4 +1,4 @@
-import OpenAI from 'openai';
+import type OpenAI from 'openai';
 
 /**
  * make the OpenAI response data as a stream
@@ -8,7 +8,7 @@ export const transformResponseToStream = (data: OpenAI.ChatCompletion) =>
     start(controller) {
       const choices = data.choices || [];
       const first = choices[0];
-      // 兼容：非流式里 DeepSeek 等会把“深度思考”放在 message.reasoning_content
+      // Compatibility: Non-streaming responses from DeepSeek etc. put "deep thinking" in message.reasoning_content
       const message: any = first?.message ?? {};
       const reasoningText =
         typeof message.reasoning_content === 'string' && message.reasoning_content.length > 0
@@ -36,12 +36,16 @@ export const transformResponseToStream = (data: OpenAI.ChatCompletion) =>
             content: choice.message.content,
             role: choice.message.role,
             tool_calls: choice.message.tool_calls?.map(
-              (tool, index): OpenAI.ChatCompletionChunk.Choice.Delta.ToolCall => ({
-                function: tool.function,
-                id: tool.id,
-                index,
-                type: tool.type,
-              }),
+              (tool, index): OpenAI.ChatCompletionChunk.Choice.Delta.ToolCall => {
+                // OpenAI SDK v6 made tool calls a function|custom union; lobehub only emits function calls.
+                const fnTool = tool as OpenAI.ChatCompletionMessageFunctionToolCall;
+                return {
+                  function: fnTool.function,
+                  id: fnTool.id,
+                  index,
+                  type: fnTool.type,
+                };
+              },
             ),
           },
           finish_reason: null,
@@ -93,7 +97,7 @@ export const transformResponseAPIToStream = (data: OpenAI.Responses.Response) =>
     start(controller) {
       // Check if output exists and is an array
       if (data.output && Array.isArray(data.output)) {
-        data.output.forEach((output) => {
+        data.output.forEach((output, outputIndex) => {
           switch (output.type) {
             case 'message': {
               // Check if content exists and is an array
@@ -112,6 +116,17 @@ export const transformResponseAPIToStream = (data: OpenAI.Responses.Response) =>
                     }
                   }
                 });
+              }
+              break;
+            }
+            case 'reasoning': {
+              if (output.encrypted_content) {
+                controller.enqueue({
+                  item: output,
+                  output_index: outputIndex,
+                  sequence_number: outputIndex,
+                  type: 'response.output_item.done',
+                } as OpenAI.Responses.ResponseOutputItemDoneEvent);
               }
               break;
             }

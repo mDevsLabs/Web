@@ -1,6 +1,6 @@
 'use client';
 
-import { BuiltinRenderProps } from '@lobechat/types';
+import type { BuiltinRenderProps } from '@lobechat/types';
 import { Flexbox } from '@lobehub/ui';
 import { CheckCircle, Clock, XCircle } from 'lucide-react';
 import { memo } from 'react';
@@ -14,7 +14,7 @@ const InstallPlugin = memo<BuiltinRenderProps<InstallPluginParams, InstallPlugin
       pluginName,
       installed,
       awaitingApproval,
-      isKlavis,
+      isComposio,
       isLobehubSkill,
       serverStatus,
       error,
@@ -25,7 +25,7 @@ const InstallPlugin = memo<BuiltinRenderProps<InstallPluginParams, InstallPlugin
     // Error state
     if (error) {
       return (
-        <Flexbox align={'center'} gap={8} horizontal style={{ fontSize: 13 }}>
+        <Flexbox horizontal align={'center'} gap={8} style={{ fontSize: 13 }}>
           <XCircle size={14} style={{ color: 'var(--lobe-error-6)' }} />
           <span style={{ fontWeight: 500 }}>
             Failed to install plugin:{' '}
@@ -48,10 +48,10 @@ const InstallPlugin = memo<BuiltinRenderProps<InstallPluginParams, InstallPlugin
     // Awaiting approval state
     if (awaitingApproval) {
       return (
-        <Flexbox align={'center'} gap={8} horizontal style={{ fontSize: 13 }}>
+        <Flexbox horizontal align={'center'} gap={8} style={{ fontSize: 13 }}>
           <Clock size={14} style={{ color: 'var(--lobe-warning-6)' }} />
           <span style={{ fontWeight: 500 }}>
-            {isKlavis || isLobehubSkill ? (
+            {isComposio || isLobehubSkill ? (
               <>
                 Waiting for authorization:{' '}
                 <code
@@ -95,10 +95,10 @@ const InstallPlugin = memo<BuiltinRenderProps<InstallPluginParams, InstallPlugin
     // Installed state
     if (installed) {
       return (
-        <Flexbox align={'center'} gap={8} horizontal style={{ fontSize: 13 }}>
+        <Flexbox horizontal align={'center'} gap={8} style={{ fontSize: 13 }}>
           <CheckCircle size={14} style={{ color: 'var(--lobe-success-6)' }} />
           <span style={{ fontWeight: 500 }}>
-            {isKlavis || isLobehubSkill ? 'Connected and enabled' : 'Installed and enabled'}:{' '}
+            {isComposio || isLobehubSkill ? 'Connected and enabled' : 'Installed and enabled'}:{' '}
             <code
               style={{
                 background: 'var(--lobe-fill-tertiary)',

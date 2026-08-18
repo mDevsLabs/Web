@@ -1,6 +1,7 @@
+import { resolve } from 'node:path';
+
 import { readJSONSync } from 'fs-extra';
 import { globSync } from 'glob';
-import { resolve } from 'node:path';
 
 import { opimized, opimizedGif } from './optimized';
 
@@ -38,12 +39,12 @@ export const mergeAndDeduplicateArrays = (...arrays: string[][]) => {
 
 const mimeToExtensions = {
   'image/gif': '.gif',
-  // 图片类型
+  // Image types
   'image/jpeg': '.jpg',
   'image/png': '.png',
   'image/svg+xml': '.svg',
   'image/webp': '.webp',
-  // 视频类型
+  // Video types
   'video/mp4': '.mp4',
   'video/mpeg': '.mpeg',
   'video/ogg': '.ogv',

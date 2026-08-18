@@ -1,23 +1,22 @@
-import {
+import type {
   AsyncTaskError,
   AsyncTaskStatus,
-  FileSource,
   Generation,
+  GenerationAsset,
   ImageGenerationAsset,
+  VideoGenerationAsset,
 } from '@lobechat/types';
+import { FileSource } from '@lobechat/types';
 import debug from 'debug';
-import { and, eq } from 'drizzle-orm';
+import { and, eq, exists } from 'drizzle-orm';
 
 import { FileService } from '@/server/services/file';
 
-import { NewFile } from '../schemas';
-import {
-  GenerationItem,
-  GenerationWithAsyncTask,
-  NewGeneration,
-  generations,
-} from '../schemas/generation';
-import { LobeChatDatabase, Transaction } from '../type';
+import type { NewFile } from '../schemas';
+import type { GenerationItem, GenerationWithAsyncTask, NewGeneration } from '../schemas/generation';
+import { generationBatches, generations, generationTopics } from '../schemas/generation';
+import type { LobeChatDatabase, Transaction } from '../type';
+import { buildWorkspacePayload, buildWorkspaceWhere } from '../utils/workspace';
 import { FileModel } from './file';
 
 // Create debug logger
@@ -26,14 +25,52 @@ const log = debug('lobe-image:generation-model');
 export class GenerationModel {
   private db: LobeChatDatabase;
   private userId: string;
+  private workspaceId?: string;
   private fileModel: FileModel;
   private fileService: FileService;
 
-  constructor(db: LobeChatDatabase, userId: string) {
+  constructor(db: LobeChatDatabase, userId: string, workspaceId?: string) {
     this.db = db;
     this.userId = userId;
-    this.fileModel = new FileModel(db, userId);
+    this.workspaceId = workspaceId;
+    this.fileModel = new FileModel(db, userId, workspaceId);
     this.fileService = new FileService(db, userId);
+  }
+
+  private ownership = () =>
+    and(
+      buildWorkspaceWhere({ userId: this.userId, workspaceId: this.workspaceId }, generations),
+      exists(
+        this.db
+          .select({ id: generationBatches.id })
+          .from(generationBatches)
+          .innerJoin(generationTopics, eq(generationTopics.id, generationBatches.generationTopicId))
+          .where(
+            and(
+              eq(generationBatches.id, generations.generationBatchId),
+              buildWorkspaceWhere(
+                { userId: this.userId, workspaceId: this.workspaceId },
+                generationBatches,
+              ),
+              buildWorkspaceWhere(
+                { userId: this.userId, workspaceId: this.workspaceId },
+                generationTopics,
+              ),
+            ),
+          ),
+      ),
+    );
+
+  private async findTopicVisibilityByGenerationId(id: string, trx: Transaction) {
+    const [result] = await trx
+      .select({ visibility: generationTopics.visibility })
+      .from(generations)
+      .innerJoin(generationBatches, eq(generationBatches.id, generations.generationBatchId))
+      .innerJoin(generationTopics, eq(generationTopics.id, generationBatches.generationTopicId))
+      .where(and(eq(generations.id, id), this.ownership()))
+      .limit(1);
+
+    return result?.visibility;
   }
 
   async create(value: Omit<NewGeneration, 'userId'>): Promise<GenerationItem> {
@@ -44,7 +81,9 @@ export class GenerationModel {
 
     const [result] = await this.db
       .insert(generations)
-      .values({ ...value, userId: this.userId })
+      .values(
+        buildWorkspacePayload({ userId: this.userId, workspaceId: this.workspaceId }, { ...value }),
+      )
       .returning();
 
     log('Generation created successfully: %s', result.id);
@@ -55,7 +94,7 @@ export class GenerationModel {
     log('Finding generation by ID: %s for user: %s', id, this.userId);
 
     const result = await this.db.query.generations.findFirst({
-      where: and(eq(generations.id, id), eq(generations.userId, this.userId)),
+      where: and(eq(generations.id, id), this.ownership()),
     });
 
     log('Generation %s: %s', id, result ? 'found' : 'not found');
@@ -66,7 +105,7 @@ export class GenerationModel {
     log('Finding generation by ID: %s for user: %s', id, this.userId);
 
     const result = await this.db.query.generations.findFirst({
-      where: and(eq(generations.id, id), eq(generations.userId, this.userId)),
+      where: and(eq(generations.id, id), this.ownership()),
       with: {
         asyncTask: true,
       },
@@ -86,7 +125,7 @@ export class GenerationModel {
       return await tx
         .update(generations)
         .set({ ...value, updatedAt: new Date() })
-        .where(and(eq(generations.id, id), eq(generations.userId, this.userId)));
+        .where(and(eq(generations.id, id), this.ownership()));
     };
 
     const result = await (trx ? executeUpdate(trx) : this.db.transaction(executeUpdate));
@@ -97,19 +136,24 @@ export class GenerationModel {
 
   async createAssetAndFile(
     id: string,
-    asset: ImageGenerationAsset,
+    asset: GenerationAsset,
     file: Omit<NewFile, 'id' | 'userId'>,
-  ) {
+    source: FileSource = FileSource.ImageGeneration,
+  ): Promise<{ file: { id: string } } | undefined> {
     log('Creating generation asset and file with transaction: %s', id);
 
     return await this.db.transaction(async (tx: Transaction) => {
+      const topicVisibility = await this.findTopicVisibilityByGenerationId(id, tx);
+      if (!topicVisibility) return;
+
       // Create file first using transaction
       // Since duplicates are very rare, we always create globalFile - checking existence first would be wasteful
       const newFile = await this.fileModel.create(
         {
           ...file,
           parentId: file.parentId ?? undefined,
-          source: FileSource.ImageGeneration,
+          source,
+          ...(this.workspaceId ? { visibility: topicVisibility } : {}),
         },
         true,
         tx,
@@ -133,13 +177,21 @@ export class GenerationModel {
     });
   }
 
+  async findByAsyncTaskId(asyncTaskId: string) {
+    log('Finding generation by asyncTaskId: %s', asyncTaskId);
+
+    return this.db.query.generations.findFirst({
+      where: and(eq(generations.asyncTaskId, asyncTaskId), this.ownership()),
+    });
+  }
+
   async delete(id: string, trx?: Transaction) {
     log('Deleting generation: %s for user: %s', id, this.userId);
 
     const executeDelete = async (tx: Transaction) => {
       return await tx
         .delete(generations)
-        .where(and(eq(generations.id, id), eq(generations.userId, this.userId)))
+        .where(and(eq(generations.id, id), this.ownership()))
         .returning();
     };
 
@@ -172,14 +224,29 @@ export class GenerationModel {
    */
   async transformGeneration(generation: GenerationWithAsyncTask): Promise<Generation> {
     // Process asset URLs if they exist, following the same logic as in generationBatch.ts
-    const asset = generation.asset as ImageGenerationAsset | null;
+    const asset = generation.asset as ImageGenerationAsset | VideoGenerationAsset | null;
     if (asset && asset.url && asset.thumbnailUrl) {
-      const [url, thumbnailUrl] = await Promise.all([
-        this.fileService.getFullFileUrl(asset.url),
+      const urlPromises: Promise<string>[] = [
+        this.fileService.getFileAccessUrl({
+          fileId: generation.fileId ?? undefined,
+          url: asset.url,
+        }),
         this.fileService.getFullFileUrl(asset.thumbnailUrl),
-      ]);
-      asset.url = url;
-      asset.thumbnailUrl = thumbnailUrl;
+      ];
+
+      // Also convert coverUrl for video assets
+      const videoAsset = asset as VideoGenerationAsset;
+      const hasCoverUrl = videoAsset.coverUrl;
+      if (hasCoverUrl) {
+        urlPromises.push(this.fileService.getFullFileUrl(videoAsset.coverUrl!));
+      }
+
+      const urls = await Promise.all(urlPromises);
+      asset.url = urls[0];
+      asset.thumbnailUrl = urls[1];
+      if (hasCoverUrl) {
+        videoAsset.coverUrl = urls[2];
+      }
     }
 
     // Build the Generation object following the same structure as in generationBatch.ts

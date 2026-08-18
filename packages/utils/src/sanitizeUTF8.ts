@@ -8,7 +8,10 @@ export const sanitizeUTF8 = (str: string) => {
     str
       .replaceAll('�', '') // Remove Unicode replacement character
       // eslint-disable-next-line no-control-regex
-      .replaceAll(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F-\u009F]/g, '') // Remove control characters
-      .replaceAll(/[\uD800-\uDFFF]/g, '')
-  ); // Remove unpaired surrogate code points
+      .replaceAll(/[\u0000-\u0008\v\f\u000E-\u001F\u007F-\u009F]/g, '') // Remove control characters
+      // The `u` flag makes valid surrogate PAIRS match as a single code point
+      // outside this range, so emoji / astral-plane characters are preserved;
+      // only truly unpaired (lone) surrogates are removed.
+      .replaceAll(/[\uD800-\uDFFF]/gu, '')
+  );
 };

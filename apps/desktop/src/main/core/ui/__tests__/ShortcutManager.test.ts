@@ -1,7 +1,6 @@
+import { DEFAULT_ELECTRON_DESKTOP_SHORTCUTS } from '@lobechat/const/desktopGlobalShortcuts';
 import { globalShortcut } from 'electron';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-
-import { DEFAULT_SHORTCUTS_CONFIG } from '@/shortcuts';
 
 import type { App } from '../../App';
 import { ShortcutManager } from '../ShortcutManager';
@@ -26,10 +25,11 @@ vi.mock('@/utils/logger', () => ({
   }),
 }));
 
-// Mock DEFAULT_SHORTCUTS_CONFIG
-vi.mock('@/shortcuts', () => ({
-  DEFAULT_SHORTCUTS_CONFIG: {
-    showApp: 'Control+E',
+// Mock desktop global shortcut defaults
+vi.mock('@lobechat/const/desktopGlobalShortcuts', () => ({
+  DEFAULT_ELECTRON_DESKTOP_SHORTCUTS: {
+    quickComposer: 'Alt+Shift+Space',
+    showApp: '',
     openSettings: 'CommandOrControl+,',
   },
 }));
@@ -57,8 +57,10 @@ describe('ShortcutManager', () => {
 
     // Mock shortcut method map
     mockShortcutMethodMap = new Map();
+    const quickComposerMethod = vi.fn();
     const showAppMethod = vi.fn();
     const openSettingsMethod = vi.fn();
+    mockShortcutMethodMap.set('quickComposer', quickComposerMethod);
     mockShortcutMethodMap.set('showApp', showAppMethod);
     mockShortcutMethodMap.set('openSettings', openSettingsMethod);
 
@@ -78,7 +80,8 @@ describe('ShortcutManager', () => {
     });
 
     it('should populate shortcuts map from app shortcut method map', () => {
-      expect(shortcutManager['shortcuts'].size).toBe(2);
+      expect(shortcutManager['shortcuts'].size).toBe(3);
+      expect(shortcutManager['shortcuts'].has('quickComposer')).toBe(true);
       expect(shortcutManager['shortcuts'].has('showApp')).toBe(true);
       expect(shortcutManager['shortcuts'].has('openSettings')).toBe(true);
     });
@@ -115,15 +118,17 @@ describe('ShortcutManager', () => {
 
       expect(mockStoreManager.get).toHaveBeenCalledWith('shortcuts');
       expect(globalShortcut.unregisterAll).toHaveBeenCalled();
-      expect(globalShortcut.register).toHaveBeenCalledWith('Control+E', expect.any(Function));
+      expect(globalShortcut.register).toHaveBeenCalledWith('Alt+Shift+Space', expect.any(Function));
       expect(globalShortcut.register).toHaveBeenCalledWith(
         'CommandOrControl+,',
         expect.any(Function),
       );
+      expect(globalShortcut.register).not.toHaveBeenCalledWith('', expect.any(Function));
     });
 
     it('should handle stored config with filtering', () => {
       const storedConfig = {
+        quickComposer: 'Alt+Shift+Q',
         showApp: 'Alt+E',
         openSettings: 'Ctrl+Shift+P',
         invalidKey: 'Ctrl+I', // Should be filtered out
@@ -133,6 +138,7 @@ describe('ShortcutManager', () => {
       shortcutManager.initialize();
 
       const config = shortcutManager.getShortcutsConfig();
+      expect(config.quickComposer).toBe('Alt+Shift+Q');
       expect(config.showApp).toBe('Alt+E');
       expect(config.openSettings).toBe('Ctrl+Shift+P');
       expect(config.invalidKey).toBeUndefined();
@@ -145,7 +151,7 @@ describe('ShortcutManager', () => {
       shortcutManager.initialize();
 
       const config = shortcutManager.getShortcutsConfig();
-      expect(config).toEqual(DEFAULT_SHORTCUTS_CONFIG);
+      expect(config).toEqual(DEFAULT_ELECTRON_DESKTOP_SHORTCUTS);
     });
   });
 
@@ -175,11 +181,17 @@ describe('ShortcutManager', () => {
       expect(result.errorType).toBe('INVALID_ID');
     });
 
-    it('should reject empty accelerator', () => {
+    it('should clear shortcut when accelerator is empty', () => {
       const result = shortcutManager.updateShortcutConfig('showApp', '');
 
-      expect(result.success).toBe(false);
-      expect(result.errorType).toBe('INVALID_FORMAT');
+      expect(result.success).toBe(true);
+      expect(result.errorType).toBeUndefined();
+      expect(mockStoreManager.set).toHaveBeenCalledWith(
+        'shortcuts',
+        expect.objectContaining({
+          showApp: '',
+        }),
+      );
     });
 
     it('should reject accelerator without modifier keys', () => {
@@ -254,8 +266,22 @@ describe('ShortcutManager', () => {
       const result = shortcutManager.registerShortcut('Ctrl+T', callback);
 
       expect(result).toBe(true);
-      expect(globalShortcut.register).toHaveBeenCalledWith('Ctrl+T', callback);
+      expect(globalShortcut.register).toHaveBeenCalledWith('Ctrl+T', expect.any(Function));
       expect(shortcutManager['shortcuts'].has('Ctrl+T')).toBe(true);
+    });
+
+    it('should defer the callback to a task so await continuations run immediately', async () => {
+      const callback = vi.fn();
+      vi.mocked(globalShortcut.register).mockReturnValue(true);
+
+      shortcutManager.registerShortcut('Ctrl+T', callback);
+
+      const registeredCallback = vi.mocked(globalShortcut.register).mock.calls[0][1];
+      registeredCallback();
+      expect(callback).not.toHaveBeenCalled();
+
+      await new Promise((resolve) => setImmediate(resolve));
+      expect(callback).toHaveBeenCalledTimes(1);
     });
 
     it('should unregister existing shortcut before registering new one', () => {
@@ -269,7 +295,7 @@ describe('ShortcutManager', () => {
       shortcutManager.registerShortcut('Ctrl+T', callback2);
 
       expect(globalShortcut.unregister).toHaveBeenCalledWith('Ctrl+T');
-      expect(globalShortcut.register).toHaveBeenCalledWith('Ctrl+T', callback2);
+      expect(globalShortcut.register).toHaveBeenCalledWith('Ctrl+T', expect.any(Function));
     });
 
     it('should handle registration failure', () => {
@@ -328,6 +354,13 @@ describe('ShortcutManager', () => {
 
   describe('unregisterAll', () => {
     it('should unregister all shortcuts', () => {
+      shortcutManager['shortcutsConfig'] = {
+        quickComposer: 'Alt+Shift+Space',
+        showApp: 'Alt+E',
+        openSettings: 'Ctrl+P',
+      };
+      shortcutManager['registerConfiguredShortcuts']();
+
       shortcutManager.unregisterAll();
 
       expect(globalShortcut.unregisterAll).toHaveBeenCalled();
@@ -340,8 +373,11 @@ describe('ShortcutManager', () => {
 
       shortcutManager['loadShortcutsConfig']();
 
-      expect(shortcutManager['shortcutsConfig']).toEqual(DEFAULT_SHORTCUTS_CONFIG);
-      expect(mockStoreManager.set).toHaveBeenCalledWith('shortcuts', DEFAULT_SHORTCUTS_CONFIG);
+      expect(shortcutManager['shortcutsConfig']).toEqual(DEFAULT_ELECTRON_DESKTOP_SHORTCUTS);
+      expect(mockStoreManager.set).toHaveBeenCalledWith(
+        'shortcuts',
+        DEFAULT_ELECTRON_DESKTOP_SHORTCUTS,
+      );
     });
 
     it('should use defaults when config is empty', () => {
@@ -349,11 +385,12 @@ describe('ShortcutManager', () => {
 
       shortcutManager['loadShortcutsConfig']();
 
-      expect(shortcutManager['shortcutsConfig']).toEqual(DEFAULT_SHORTCUTS_CONFIG);
+      expect(shortcutManager['shortcutsConfig']).toEqual(DEFAULT_ELECTRON_DESKTOP_SHORTCUTS);
     });
 
     it('should filter invalid keys from stored config', () => {
       const storedConfig = {
+        quickComposer: 'Alt+Shift+Q',
         showApp: 'Alt+E',
         openSettings: 'Ctrl+P',
         invalidKey1: 'Ctrl+I',
@@ -364,6 +401,7 @@ describe('ShortcutManager', () => {
       shortcutManager['loadShortcutsConfig']();
 
       const config = shortcutManager['shortcutsConfig'];
+      expect(config.quickComposer).toBe('Alt+Shift+Q');
       expect(config.showApp).toBe('Alt+E');
       expect(config.openSettings).toBe('Ctrl+P');
       expect(config.invalidKey1).toBeUndefined();
@@ -376,19 +414,21 @@ describe('ShortcutManager', () => {
     it('should add missing default shortcuts', () => {
       const incompleteConfig = {
         showApp: 'Alt+E',
-        // Missing openSettings
+        // Missing quickComposer and openSettings
       };
       mockStoreManager.get.mockReturnValue(incompleteConfig);
 
       shortcutManager['loadShortcutsConfig']();
 
       const config = shortcutManager['shortcutsConfig'];
+      expect(config.quickComposer).toBe('Alt+Shift+Space');
       expect(config.showApp).toBe('Alt+E');
       expect(config.openSettings).toBe('CommandOrControl+,'); // Default value
     });
 
     it('should not save config if no invalid keys were found', () => {
       const validConfig = {
+        quickComposer: 'Alt+Shift+Q',
         showApp: 'Alt+E',
         openSettings: 'Ctrl+P',
       };
@@ -407,18 +447,26 @@ describe('ShortcutManager', () => {
 
       shortcutManager['loadShortcutsConfig']();
 
-      expect(shortcutManager['shortcutsConfig']).toEqual(DEFAULT_SHORTCUTS_CONFIG);
-      expect(mockStoreManager.set).toHaveBeenCalledWith('shortcuts', DEFAULT_SHORTCUTS_CONFIG);
+      expect(shortcutManager['shortcutsConfig']).toEqual(DEFAULT_ELECTRON_DESKTOP_SHORTCUTS);
+      expect(mockStoreManager.set).toHaveBeenCalledWith(
+        'shortcuts',
+        DEFAULT_ELECTRON_DESKTOP_SHORTCUTS,
+      );
     });
   });
 
   describe('saveShortcutsConfig', () => {
     it('should save shortcuts config to store', () => {
-      shortcutManager['shortcutsConfig'] = { showApp: 'Alt+E', openSettings: 'Ctrl+P' };
+      shortcutManager['shortcutsConfig'] = {
+        quickComposer: 'Alt+Shift+Q',
+        showApp: 'Alt+E',
+        openSettings: 'Ctrl+P',
+      };
 
       shortcutManager['saveShortcutsConfig']();
 
       expect(mockStoreManager.set).toHaveBeenCalledWith('shortcuts', {
+        quickComposer: 'Alt+Shift+Q',
         showApp: 'Alt+E',
         openSettings: 'Ctrl+P',
       });
@@ -437,6 +485,7 @@ describe('ShortcutManager', () => {
   describe('registerConfiguredShortcuts', () => {
     beforeEach(() => {
       shortcutManager['shortcutsConfig'] = {
+        quickComposer: 'Alt+Shift+Q',
         showApp: 'Alt+E',
         openSettings: 'Ctrl+P',
       };
@@ -448,24 +497,28 @@ describe('ShortcutManager', () => {
       shortcutManager['registerConfiguredShortcuts']();
 
       expect(globalShortcut.unregisterAll).toHaveBeenCalled();
+      expect(globalShortcut.register).toHaveBeenCalledWith('Alt+Shift+Q', expect.any(Function));
       expect(globalShortcut.register).toHaveBeenCalledWith('Alt+E', expect.any(Function));
       expect(globalShortcut.register).toHaveBeenCalledWith('Ctrl+P', expect.any(Function));
     });
 
-    it('should skip shortcuts not in DEFAULT_SHORTCUTS_CONFIG', () => {
+    it('should skip shortcuts not defined in default electron desktop shortcuts', () => {
       shortcutManager['shortcutsConfig'] = {
+        quickComposer: 'Alt+Shift+Q',
         showApp: 'Alt+E',
         invalidKey: 'Ctrl+I',
       };
 
       shortcutManager['registerConfiguredShortcuts']();
 
+      expect(globalShortcut.register).toHaveBeenCalledWith('Alt+Shift+Q', expect.any(Function));
       expect(globalShortcut.register).toHaveBeenCalledWith('Alt+E', expect.any(Function));
       expect(globalShortcut.register).not.toHaveBeenCalledWith('Ctrl+I', expect.any(Function));
     });
 
     it('should skip shortcuts with empty accelerator', () => {
       shortcutManager['shortcutsConfig'] = {
+        quickComposer: '',
         showApp: '',
         openSettings: 'Ctrl+P',
       };
@@ -481,12 +534,14 @@ describe('ShortcutManager', () => {
       mockShortcutMethodMap.delete('openSettings');
       shortcutManager = new ShortcutManager(mockApp);
       shortcutManager['shortcutsConfig'] = {
+        quickComposer: 'Alt+Shift+Q',
         showApp: 'Alt+E',
         openSettings: 'Ctrl+P',
       };
 
       shortcutManager['registerConfiguredShortcuts']();
 
+      expect(globalShortcut.register).toHaveBeenCalledWith('Alt+Shift+Q', expect.any(Function));
       expect(globalShortcut.register).toHaveBeenCalledWith('Alt+E', expect.any(Function));
       expect(globalShortcut.register).not.toHaveBeenCalledWith('Ctrl+P', expect.any(Function));
     });
@@ -495,6 +550,7 @@ describe('ShortcutManager', () => {
   describe('integration tests', () => {
     it('should complete full initialization flow', () => {
       const storedConfig = {
+        quickComposer: 'Alt+Shift+Q',
         showApp: 'Alt+E',
         openSettings: 'Ctrl+Shift+P',
         invalidKey: 'Ctrl+I',
@@ -506,11 +562,12 @@ describe('ShortcutManager', () => {
 
       // Should filter config and register valid shortcuts
       const config = shortcutManager.getShortcutsConfig();
+      expect(config.quickComposer).toBe('Alt+Shift+Q');
       expect(config.showApp).toBe('Alt+E');
       expect(config.openSettings).toBe('Ctrl+Shift+P');
       expect(config.invalidKey).toBeUndefined();
 
-      expect(globalShortcut.register).toHaveBeenCalledTimes(2);
+      expect(globalShortcut.register).toHaveBeenCalledTimes(3);
       expect(mockStoreManager.set).toHaveBeenCalledWith('shortcuts', config);
     });
 

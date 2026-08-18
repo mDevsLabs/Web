@@ -1,12 +1,15 @@
-import {
-  type GroupContextMemberInfo,
-  formatGroupMembers,
-  groupContextTemplate,
-} from '@lobechat/prompts';
+import type { GroupContextMemberInfo } from '@lobechat/prompts';
+import { formatGroupMembers, groupContextTemplate } from '@lobechat/prompts';
 import debug from 'debug';
 
 import { BaseFirstUserContentProvider } from '../base/BaseFirstUserContentProvider';
 import type { PipelineContext, ProcessorOptions } from '../types';
+
+declare module '../types' {
+  interface PipelineContextMetadataOverrides {
+    groupContextInjected?: boolean;
+  }
+}
 
 const log = debug('context-engine:provider:GroupContextInjector');
 

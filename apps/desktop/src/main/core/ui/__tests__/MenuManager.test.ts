@@ -1,4 +1,3 @@
-import { Menu } from 'electron';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import type { App } from '../../App';
@@ -35,6 +34,16 @@ vi.mock('@/menus', () => ({
     buildTrayMenu: mockBuildTrayMenu,
     refresh: mockRefresh,
   })),
+}));
+
+const { mockCloseNativeContextMenuPopup, mockPopupNativeContextMenu } = vi.hoisted(() => ({
+  mockCloseNativeContextMenuPopup: vi.fn(),
+  mockPopupNativeContextMenu: vi.fn(),
+}));
+
+vi.mock('../nativeContextMenu', () => ({
+  closeNativeContextMenuPopup: mockCloseNativeContextMenuPopup,
+  popupNativeContextMenu: mockPopupNativeContextMenu,
 }));
 
 describe('MenuManager', () => {
@@ -126,6 +135,38 @@ describe('MenuManager', () => {
         expect(mockBuildContextMenu).toHaveBeenCalledWith(type, undefined);
         expect(mockMenu.popup).toHaveBeenCalled();
       });
+    });
+  });
+
+  describe('popupContextMenu', () => {
+    it('delegates to popupNativeContextMenu with the params and window', async () => {
+      const params = { items: [{ id: 'copy', label: 'Copy', type: 'normal' as const }] };
+      const window = { isDestroyed: () => false } as any;
+      mockPopupNativeContextMenu.mockResolvedValueOnce({ clickedId: 'copy' });
+
+      const result = await menuManager.popupContextMenu(params, window);
+
+      expect(mockPopupNativeContextMenu).toHaveBeenCalledWith(params, window);
+      expect(result).toEqual({ clickedId: 'copy' });
+    });
+
+    it('forwards a null window through to popupNativeContextMenu', async () => {
+      const params = { items: [] };
+      mockPopupNativeContextMenu.mockResolvedValueOnce({ clickedId: null });
+
+      const result = await menuManager.popupContextMenu(params, null);
+
+      expect(mockPopupNativeContextMenu).toHaveBeenCalledWith(params, null);
+      expect(result).toEqual({ clickedId: null });
+    });
+  });
+
+  describe('closePopupContextMenu', () => {
+    it('delegates to closeNativeContextMenuPopup and reports success', () => {
+      const result = menuManager.closePopupContextMenu();
+
+      expect(mockCloseNativeContextMenuPopup).toHaveBeenCalled();
+      expect(result).toEqual({ success: true });
     });
   });
 

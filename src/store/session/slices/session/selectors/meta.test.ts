@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { DEFAULT_AVATAR } from '@/const/meta';
-import { MetaData } from '@/types/meta';
+import { type MetaData } from '@/types/meta';
 
 import { sessionMetaSelectors } from './meta';
 
@@ -40,20 +40,6 @@ describe('sessionMetaSelectors', () => {
       const meta: MetaData = {};
       const title = sessionMetaSelectors.getTitle(meta);
       expect(title).toBe('defaultSession'); // Assuming translation returns this key
-    });
-  });
-
-  describe('getDescription', () => {
-    it('should return the description from the meta data', () => {
-      const meta: MetaData = { description: 'Custom Description' };
-      const description = sessionMetaSelectors.getDescription(meta);
-      expect(description).toBe(meta.description);
-    });
-
-    it('should return the default description if none is defined in the meta data', () => {
-      const meta: MetaData = {};
-      const description = sessionMetaSelectors.getDescription(meta);
-      expect(description).toBe(undefined); // Assuming translation returns this key
     });
   });
 });

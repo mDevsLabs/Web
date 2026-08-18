@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix  */
 import { bigint, index, jsonb, numeric, pgTable, real, text, vector } from 'drizzle-orm/pg-core';
 
 import { idGenerator } from '../../utils/idGenerator';
@@ -13,7 +12,6 @@ export const userMemories = pgTable(
       .primaryKey(),
 
     userId: text('user_id').references(() => users.id, { onDelete: 'cascade' }),
-
     memoryCategory: varchar255('memory_category'),
     memoryLayer: varchar255('memory_layer'),
     memoryType: varchar255('memory_type'),

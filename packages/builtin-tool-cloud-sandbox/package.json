@@ -9,11 +9,16 @@
     "./executionRuntime": "./src/ExecutionRuntime/index.ts"
   },
   "main": "./src/index.ts",
+  "dependencies": {
+    "@lobechat/builtin-tool-local-system": "workspace:*",
+    "@lobechat/shared-tool-ui": "workspace:*",
+    "@lobechat/tool-runtime": "workspace:*"
+  },
   "devDependencies": {
     "@lobechat/types": "workspace:*"
   },
   "peerDependencies": {
-    "@lobehub/ui": "^4",
+    "@lobehub/ui": "^5",
     "antd": "^6",
     "antd-style": "*",
     "lucide-react": "*",

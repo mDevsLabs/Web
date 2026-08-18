@@ -1,6 +1,5 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
-import type { DocumentStore } from '../../store';
-import type { EditorContentState } from './initialState';
+import { type DocumentStore } from '../../store';
+import { type EditorContentState } from './initialState';
 
 // ===== Active Document Selectors =====
 
@@ -18,6 +17,9 @@ const documentById = (id: string) => (s: DocumentStore) => s.documents[id];
 const isDirty = (id: string) => (s: DocumentStore) => s.documents[id]?.isDirty ?? false;
 
 const saveStatus = (id: string) => (s: DocumentStore) => s.documents[id]?.saveStatus ?? 'idle';
+
+const saveBlockedByLock = (id: string) => (s: DocumentStore) =>
+  s.documents[id]?.saveBlockedByLock ?? false;
 
 const content = (id: string) => (s: DocumentStore) => s.documents[id]?.content ?? '';
 
@@ -103,6 +105,7 @@ export const editorSelectors = {
   isDocumentLoading,
   isDirty,
   lastUpdatedTime,
+  saveBlockedByLock,
   saveStatus,
   sourceType,
 

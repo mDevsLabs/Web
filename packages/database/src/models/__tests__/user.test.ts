@@ -1,11 +1,12 @@
-import { UserPreference } from '@lobechat/types';
-import { eq } from 'drizzle-orm';
+import type { UserPreference } from '@lobechat/types';
+import { eq, sql } from 'drizzle-orm';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { nextauthAccounts, userSettings, users } from '../../schemas';
-import { LobeChatDatabase } from '../../type';
-import { ListUsersForMemoryExtractorCursor, UserModel, UserNotFoundError } from '../user';
 import { getTestDB } from '../../core/getTestDB';
+import { messages, nextauthAccounts, topics, users, userSettings } from '../../schemas';
+import type { LobeChatDatabase } from '../../type';
+import type { ListUsersForMemoryExtractorCursor } from '../user';
+import { UserModel, UserNotFoundError } from '../user';
 
 const userId = 'user-model-test';
 const otherUserId = 'other-user-test';
@@ -28,6 +29,56 @@ describe('UserModel', () => {
   afterEach(async () => {
     await serverDB.delete(users);
     vi.clearAllMocks();
+  });
+
+  describe('getUserActivitySummary', () => {
+    it('returns the user creation time and latest user-authored message', async () => {
+      const userCreatedAt = new Date('2026-01-01T00:00:00.000Z');
+      const latestUserMessageAt = new Date('2026-03-01T00:00:00.000Z');
+      await serverDB.update(users).set({ createdAt: userCreatedAt }).where(eq(users.id, userId));
+      await serverDB.insert(messages).values([
+        {
+          content: 'older',
+          createdAt: new Date('2026-02-01T00:00:00.000Z'),
+          id: 'activity-user-old',
+          role: 'user',
+          userId,
+        },
+        {
+          content: 'ignored assistant',
+          createdAt: new Date('2026-04-01T00:00:00.000Z'),
+          id: 'activity-assistant',
+          role: 'assistant',
+          userId,
+        },
+        {
+          content: 'latest',
+          createdAt: latestUserMessageAt,
+          id: 'activity-user-latest',
+          role: 'user',
+          userId,
+        },
+        {
+          content: 'other user',
+          createdAt: new Date('2026-05-01T00:00:00.000Z'),
+          id: 'activity-other-user',
+          role: 'user',
+          userId: otherUserId,
+        },
+      ]);
+
+      await expect(userModel.getUserActivitySummary()).resolves.toEqual({
+        lastUserMessageAt: latestUserMessageAt,
+        userCreatedAt,
+      });
+    });
+
+    it('returns a null message time when the user has never sent a message', async () => {
+      const result = await userModel.getUserActivitySummary();
+
+      expect(result.lastUserMessageAt).toBeNull();
+      expect(result.userCreatedAt).toBeInstanceOf(Date);
+    });
   });
 
   describe('getUserRegistrationDuration', () => {
@@ -59,6 +110,7 @@ describe('UserModel', () => {
       await serverDB.insert(userSettings).values({
         id: userId,
         general: { fontSize: 14 },
+        notification: { inbox: { enabled: false } },
         tts: { voice: 'default' },
       });
 
@@ -69,6 +121,7 @@ describe('UserModel', () => {
       expect(result.fullName).toBe('Test User');
       expect(result.settings.general).toEqual({ fontSize: 14 });
       expect(result.settings.tts).toEqual({ voice: 'default' });
+      expect(result.settings.notification).toEqual({ inbox: { enabled: false } });
     });
 
     it('should throw UserNotFoundError for non-existent user', async () => {
@@ -149,6 +202,100 @@ describe('UserModel', () => {
 
       expect(updated?.fullName).toBe('Updated Name');
       expect(updated?.avatar).toBe('https://example.com/avatar.jpg');
+    });
+
+    it('should normalize empty string email to null', async () => {
+      await userModel.updateUser({
+        email: '',
+      });
+
+      const updated = await serverDB.query.users.findFirst({
+        where: eq(users.id, userId),
+      });
+
+      expect(updated?.email).toBeNull();
+    });
+
+    it('should normalize empty string phone to null', async () => {
+      await userModel.updateUser({
+        phone: '',
+      });
+
+      const updated = await serverDB.query.users.findFirst({
+        where: eq(users.id, userId),
+      });
+
+      expect(updated?.phone).toBeNull();
+    });
+
+    it('should normalize empty string username to null', async () => {
+      await userModel.updateUser({
+        username: '  ',
+      });
+
+      const updated = await serverDB.query.users.findFirst({
+        where: eq(users.id, userId),
+      });
+
+      expect(updated?.username).toBeNull();
+    });
+
+    it('should trim username when updating', async () => {
+      await userModel.updateUser({
+        username: '  myuser  ',
+      });
+
+      const updated = await serverDB.query.users.findFirst({
+        where: eq(users.id, userId),
+      });
+
+      expect(updated?.username).toBe('myuser');
+    });
+  });
+
+  describe('advanceLastActiveAt', () => {
+    it('should advance lastActiveAt and return the previous activity state', async () => {
+      const previousLastActiveAt = new Date('2026-03-01T00:00:00.000Z');
+      const currentTime = new Date('2026-05-01T00:00:00.000Z');
+
+      await serverDB
+        .update(users)
+        .set({ lastActiveAt: previousLastActiveAt })
+        .where(eq(users.id, userId));
+
+      await expect(userModel.advanceLastActiveAt(currentTime)).resolves.toMatchObject({
+        previousLastActiveAt,
+      });
+
+      const updated = await serverDB.query.users.findFirst({
+        where: eq(users.id, userId),
+      });
+
+      expect(updated?.lastActiveAt.getTime()).toBe(currentTime.getTime());
+    });
+
+    it('should advance lastActiveAt when the previous DB value has microsecond precision', async () => {
+      const currentTime = new Date('2026-05-01T00:00:00.000Z');
+
+      await serverDB.execute(sql`
+        UPDATE ${users}
+        SET last_active_at = '2026-03-01T00:00:00.123456Z'::timestamptz
+        WHERE id = ${userId}
+      `);
+
+      const user = await UserModel.findById(serverDB, userId);
+
+      expect(user?.lastActiveAt.getTime()).toBe(new Date('2026-03-01T00:00:00.123Z').getTime());
+
+      await expect(userModel.advanceLastActiveAt(currentTime)).resolves.toMatchObject({
+        previousLastActiveAt: new Date('2026-03-01T00:00:00.123Z'),
+      });
+
+      const updated = await serverDB.query.users.findFirst({
+        where: eq(users.id, userId),
+      });
+
+      expect(updated?.lastActiveAt.getTime()).toBe(currentTime.getTime());
     });
   });
 
@@ -255,12 +402,47 @@ describe('UserModel', () => {
       expect(preference?.guide?.moveSettingsToAvatar).toBe(true);
     });
 
+    it('should handle user with null preference (preference || {} fallback)', async () => {
+      // Ensure user has null preference
+      await serverDB.update(users).set({ preference: null }).where(eq(users.id, userId));
+
+      await userModel.updateGuide({
+        moveSettingsToAvatar: true,
+      });
+
+      const user = await serverDB.query.users.findFirst({
+        where: eq(users.id, userId),
+      });
+
+      const preference = user?.preference as UserPreference;
+      expect(preference?.guide?.moveSettingsToAvatar).toBe(true);
+    });
+
     it('should do nothing for non-existent user', async () => {
       const nonExistentUserModel = new UserModel(serverDB, 'non-existent');
 
       await expect(
         nonExistentUserModel.updateGuide({ moveSettingsToAvatar: true }),
       ).resolves.toBeUndefined();
+    });
+  });
+
+  describe('getUserSettingsDefaultAgentConfig', () => {
+    it('should return defaultAgent config when settings exist', async () => {
+      await serverDB.insert(userSettings).values({
+        id: userId,
+        defaultAgent: { model: 'gpt-4' } as any,
+      });
+
+      const result = await userModel.getUserSettingsDefaultAgentConfig();
+
+      expect(result).toEqual({ model: 'gpt-4' });
+    });
+
+    it('should return undefined when no settings exist', async () => {
+      const result = await userModel.getUserSettingsDefaultAgentConfig();
+
+      expect(result).toBeUndefined();
     });
   });
 
@@ -330,6 +512,38 @@ describe('UserModel', () => {
       });
     });
 
+    describe('findByUsername', () => {
+      it('should find user by username', async () => {
+        await serverDB.update(users).set({ username: 'testuser' }).where(eq(users.id, userId));
+
+        const user = await UserModel.findByUsername(serverDB, 'testuser');
+
+        expect(user).toBeDefined();
+        expect(user?.id).toBe(userId);
+      });
+
+      it('should return null for empty/whitespace username', async () => {
+        const result = await UserModel.findByUsername(serverDB, '   ');
+
+        expect(result).toBeNull();
+      });
+
+      it('should trim username before searching', async () => {
+        await serverDB.update(users).set({ username: 'testuser' }).where(eq(users.id, userId));
+
+        const user = await UserModel.findByUsername(serverDB, '  testuser  ');
+
+        expect(user).toBeDefined();
+        expect(user?.id).toBe(userId);
+      });
+
+      it('should return undefined for non-existent username', async () => {
+        const user = await UserModel.findByUsername(serverDB, 'nonexistent');
+
+        expect(user).toBeUndefined();
+      });
+    });
+
     describe('findByEmail', () => {
       it('should find user by email', async () => {
         const user = await UserModel.findByEmail(serverDB, 'test@example.com');
@@ -342,6 +556,44 @@ describe('UserModel', () => {
         const user = await UserModel.findByEmail(serverDB, 'nonexistent@example.com');
 
         expect(user).toBeUndefined();
+      });
+    });
+
+    describe('getDisplayInfoByIds', () => {
+      it('should return empty array for empty ids without querying', async () => {
+        const result = await UserModel.getDisplayInfoByIds(serverDB, []);
+        expect(result).toEqual([]);
+      });
+
+      it('should return only display columns (name + avatar), never settings', async () => {
+        await serverDB
+          .update(users)
+          .set({ avatar: 'avatar.png', username: 'tester' })
+          .where(eq(users.id, userId));
+
+        const result = await UserModel.getDisplayInfoByIds(serverDB, [userId, otherUserId]);
+
+        const byId = new Map(result.map((r) => [r.id, r]));
+        expect(byId.get(userId)).toEqual({
+          avatar: 'avatar.png',
+          fullName: 'Test User',
+          id: userId,
+          username: 'tester',
+        });
+        // otherUserId was inserted with only an email — name fields stay null.
+        expect(byId.get(otherUserId)).toEqual({
+          avatar: null,
+          fullName: null,
+          id: otherUserId,
+          username: null,
+        });
+        // The row must not leak email or any non-display column.
+        expect(Object.keys(result[0])).toEqual(['avatar', 'fullName', 'id', 'username']);
+      });
+
+      it('should skip ids that do not exist', async () => {
+        const result = await UserModel.getDisplayInfoByIds(serverDB, [userId, 'ghost']);
+        expect(result.map((r) => r.id)).toEqual([userId]);
       });
     });
 
@@ -440,6 +692,73 @@ describe('UserModel', () => {
       });
     });
 
+    describe('listUsersForHourlyMemoryExtractor', () => {
+      it('should return only users with memory enabled and at least one chatted topic', async () => {
+        await serverDB.delete(users);
+        await serverDB.insert(users).values([
+          { id: 'u1', createdAt: new Date('2024-01-01T00:00:00Z') }, // no settings => enabled
+          { id: 'u2', createdAt: new Date('2024-01-02T00:00:00Z') }, // memory disabled
+          { id: 'u3', createdAt: new Date('2024-01-03T00:00:00Z') }, // no messages
+          { id: 'u4', createdAt: new Date('2024-01-04T00:00:00Z') }, // assistant-only messages
+          { id: 'u5', createdAt: new Date('2024-01-05T00:00:00Z') }, // enabled + chatted
+        ]);
+
+        await serverDB.insert(userSettings).values([
+          { id: 'u2', memory: { enabled: false } },
+          { id: 'u3', memory: { enabled: true } },
+          { id: 'u4', memory: { enabled: true } },
+          { id: 'u5', memory: { enabled: true } },
+        ]);
+
+        await serverDB.insert(topics).values([
+          { id: 't1', userId: 'u1' },
+          { id: 't2', userId: 'u2' },
+          { id: 't3', userId: 'u3' },
+          { id: 't4', userId: 'u4' },
+          { id: 't5', userId: 'u5' },
+        ]);
+
+        await serverDB.insert(messages).values([
+          { id: 'm1', role: 'user', topicId: 't1', userId: 'u1' },
+          { id: 'm2', role: 'user', topicId: 't2', userId: 'u2' },
+          { id: 'm4', role: 'assistant', topicId: 't4', userId: 'u4' },
+          { id: 'm5', role: 'user', topicId: 't5', userId: 'u5' },
+        ]);
+
+        const result = await UserModel.listUsersForHourlyMemoryExtractor(serverDB);
+
+        expect(result.map((u) => u.id)).toEqual(['u1', 'u5']);
+      });
+
+      it('should support whitelist and cursor pagination', async () => {
+        await serverDB.delete(users);
+        await serverDB.insert(users).values([
+          { id: 'user-a', createdAt: new Date('2024-01-01T00:00:00Z') },
+          { id: 'user-b', createdAt: new Date('2024-01-02T00:00:00Z') },
+          { id: 'user-c', createdAt: new Date('2024-01-03T00:00:00Z') },
+        ]);
+
+        await serverDB.insert(topics).values([
+          { id: 'topic-a', userId: 'user-a' },
+          { id: 'topic-b', userId: 'user-b' },
+          { id: 'topic-c', userId: 'user-c' },
+        ]);
+
+        await serverDB.insert(messages).values([
+          { id: 'msg-a', role: 'user', topicId: 'topic-a', userId: 'user-a' },
+          { id: 'msg-b', role: 'user', topicId: 'topic-b', userId: 'user-b' },
+          { id: 'msg-c', role: 'user', topicId: 'topic-c', userId: 'user-c' },
+        ]);
+
+        const result = await UserModel.listUsersForHourlyMemoryExtractor(serverDB, {
+          cursor: { createdAt: new Date('2024-01-02T00:00:00Z'), id: 'user-b' },
+          whitelist: ['user-a', 'user-c'],
+        });
+
+        expect(result.map((u) => u.id)).toEqual(['user-c']);
+      });
+    });
+
     describe('getInfoForAIGeneration', () => {
       it('should return user info with language preference', async () => {
         await serverDB.insert(userSettings).values({
@@ -487,6 +806,30 @@ describe('UserModel', () => {
 
         expect(result.userName).toBe('User');
         expect(result.responseLanguage).toBe('en-US');
+      });
+    });
+
+    describe('getUserPreference', () => {
+      it('should return user preference after update', async () => {
+        await serverDB
+          .update(users)
+          .set({ preference: { telemetry: true, useCmdEnterKey: false } })
+          .where(eq(users.id, userId));
+
+        const result = await userModel.getUserPreference();
+        expect(result).toBeDefined();
+        expect(result).toMatchObject({ telemetry: true, useCmdEnterKey: false });
+      });
+
+      it('should return default preference for existing user', async () => {
+        const result = await userModel.getUserPreference();
+        expect(result).toBeDefined();
+      });
+
+      it('should return undefined for non-existent user', async () => {
+        const nonExistentModel = new UserModel(serverDB, 'non-existent-user');
+        const result = await nonExistentModel.getUserPreference();
+        expect(result).toBeUndefined();
       });
     });
   });

@@ -1,11 +1,11 @@
-import { ChatImageItem, ChatVideoItem, UIChatMessage } from '@lobechat/types';
+import type { ChatAudioItem, ChatImageItem, ChatVideoItem, UIChatMessage } from '@lobechat/types';
 import { describe, expect, it, vi } from 'vitest';
 
 import type { PipelineContext } from '../../types';
-import { MessageContentProcessor } from '../MessageContent';
+import { MessageContentProcessor, VISION_DOWNGRADE_PLACEHOLDER } from '../MessageContent';
 
 vi.mock('@lobechat/utils/imageToBase64', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('@lobechat/utils/imageToBase64')>();
+  const actual = await importOriginal<Record<string, unknown>>();
   return {
     ...actual,
     imageUrlToBase64: vi.fn().mockResolvedValue({
@@ -24,10 +24,11 @@ const createContext = (messages: UIChatMessage[]): PipelineContext => ({
 
 const mockIsCanUseVision = vi.fn();
 const mockIsCanUseVideo = vi.fn();
+const mockIsCanUseAudio = vi.fn();
 
 describe('MessageContentProcessor', () => {
   describe('Image processing functionality', () => {
-    it('should return empty content parts if model cannot use vision', async () => {
+    it('should downgrade image to placeholder text if model cannot use vision', async () => {
       mockIsCanUseVision.mockReturnValue(false);
 
       const processor = new MessageContentProcessor({
@@ -50,8 +51,9 @@ describe('MessageContentProcessor', () => {
 
       const result = await processor.process(createContext(messages));
 
-      // Since vision is not supported, should return plain text content
-      expect(result.messages[0].content).toBe('Hello');
+      // Vision not supported — image is replaced by a textual placeholder so
+      // the conversation still carries the signal that an image was sent.
+      expect(result.messages[0].content).toBe(`Hello\n\n${VISION_DOWNGRADE_PLACEHOLDER}`);
     });
 
     it('should process images if model can use vision', async () => {
@@ -112,8 +114,113 @@ describe('MessageContentProcessor', () => {
       const result = await processor.process(createContext(messages));
 
       expect(mockIsCanUseVision).toHaveBeenCalledWith('text-model', 'openai');
-      // Should return plain text since vision is not supported
-      expect(result.messages[0].content).toBe('Hello');
+      // Should downgrade image to placeholder text since vision is not supported
+      expect(result.messages[0].content).toBe(`Hello\n\n${VISION_DOWNGRADE_PLACEHOLDER}`);
+    });
+
+    it('should downgrade multiple images into separate placeholder lines', async () => {
+      mockIsCanUseVision.mockReturnValue(false);
+
+      const processor = new MessageContentProcessor({
+        model: 'deepseek-chat',
+        provider: 'deepseek',
+        isCanUseVision: mockIsCanUseVision,
+        fileContext: { enabled: false },
+      });
+
+      const messages: UIChatMessage[] = [
+        {
+          id: 'test',
+          role: 'user',
+          content: 'compare these',
+          imageList: [
+            { url: 'http://example.com/a.jpg', alt: '', id: 'a' } as ChatImageItem,
+            { url: 'http://example.com/b.jpg', alt: '', id: 'b' } as ChatImageItem,
+          ],
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+      ];
+
+      const result = await processor.process(createContext(messages));
+
+      expect(result.messages[0].content).toBe(
+        `compare these\n\n${VISION_DOWNGRADE_PLACEHOLDER}\n${VISION_DOWNGRADE_PLACEHOLDER}`,
+      );
+    });
+
+    // regression: historical messages are often persisted in the
+    // multimodal parts form (content is an array of {type: 'text' | 'image_url'}).
+    // They bypass the legacy `imageList` code path. Switching to a non-vision
+    // model (e.g. deepseek-chat) previously caused the processor to forward the
+    // `image_url` parts verbatim, and the provider rejected the request with
+    // "unknown variant `image_url`". The processor must downgrade these parts.
+    it('should downgrade image_url parts in pre-existing array content when vision is disabled', async () => {
+      mockIsCanUseVision.mockReturnValue(false);
+
+      const processor = new MessageContentProcessor({
+        model: 'deepseek-chat',
+        provider: 'deepseek',
+        isCanUseVision: mockIsCanUseVision,
+        fileContext: { enabled: false },
+      });
+
+      const messages: UIChatMessage[] = [
+        {
+          id: 'test',
+          role: 'user',
+          content: [
+            { type: 'text', text: '换 DEEPSEEK 来处理问题我看看快不快' },
+            {
+              type: 'image_url',
+              image_url: { url: 'https://s3.example.com/screenshot.png' },
+            },
+          ] as any,
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+      ];
+
+      const result = await processor.process(createContext(messages));
+
+      const content = result.messages[0].content;
+      expect(typeof content).toBe('string');
+      expect(content).toBe(`换 DEEPSEEK 来处理问题我看看快不快\n\n${VISION_DOWNGRADE_PLACEHOLDER}`);
+    });
+
+    it('should preserve image_url parts in pre-existing array content when vision is supported', async () => {
+      mockIsCanUseVision.mockReturnValue(true);
+
+      const processor = new MessageContentProcessor({
+        model: 'gpt-4o',
+        provider: 'openai',
+        isCanUseVision: mockIsCanUseVision,
+        fileContext: { enabled: false },
+      });
+
+      const messages: UIChatMessage[] = [
+        {
+          id: 'test',
+          role: 'user',
+          content: [
+            { type: 'text', text: 'hi' },
+            {
+              type: 'image_url',
+              image_url: { url: 'https://s3.example.com/screenshot.png' },
+            },
+          ] as any,
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+      ];
+
+      const result = await processor.process(createContext(messages));
+
+      // Vision supported — content should be passed through unchanged.
+      expect(result.messages[0].content).toEqual([
+        { type: 'text', text: 'hi' },
+        { type: 'image_url', image_url: { url: 'https://s3.example.com/screenshot.png' } },
+      ]);
     });
 
     it('should process local image URLs to base64', async () => {
@@ -211,6 +318,141 @@ describe('MessageContentProcessor', () => {
     });
   });
 
+  describe('Tool message with images', () => {
+    it('should convert tool message imageList to image_url parts when vision is supported', async () => {
+      mockIsCanUseVision.mockReturnValue(true);
+
+      const processor = new MessageContentProcessor({
+        model: 'gpt-4-vision',
+        provider: 'openai',
+        isCanUseVision: mockIsCanUseVision,
+        fileContext: { enabled: false },
+      });
+
+      const messages: UIChatMessage[] = [
+        {
+          content: '1 result',
+          id: 'tool-1',
+          pluginState: {
+            images: [{ url: 'http://example.com/screenshot.png', mediaType: 'image/png' }],
+          },
+          role: 'tool',
+          tool_call_id: 'call_abc',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        } as any,
+      ];
+
+      const result = await processor.process(createContext(messages));
+
+      const message = result.messages[0];
+      // tool_call_id is preserved so the provider can pair the result with the call.
+      expect(message.tool_call_id).toBe('call_abc');
+      expect(message.content).toEqual([
+        { text: '1 result', type: 'text' },
+        {
+          image_url: { detail: 'auto', url: 'http://example.com/screenshot.png' },
+          type: 'image_url',
+        },
+      ]);
+    });
+
+    it('should downgrade tool message images to placeholder when vision is not supported', async () => {
+      mockIsCanUseVision.mockReturnValue(false);
+
+      const processor = new MessageContentProcessor({
+        model: 'any-model',
+        provider: 'any-provider',
+        isCanUseVision: mockIsCanUseVision,
+        fileContext: { enabled: false },
+      });
+
+      const messages: UIChatMessage[] = [
+        {
+          content: '1 result',
+          id: 'tool-1',
+          pluginState: {
+            images: [{ url: 'http://example.com/screenshot.png', mediaType: 'image/png' }],
+          },
+          role: 'tool',
+          tool_call_id: 'call_abc',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        } as any,
+      ];
+
+      const result = await processor.process(createContext(messages));
+
+      // Non-vision provider: image parts are dropped, a placeholder signals the
+      // tool produced an image, and the textual result + tool_call_id survive.
+      expect(result.messages[0].content).toBe(`1 result\n\n${VISION_DOWNGRADE_PLACEHOLDER}`);
+      expect(result.messages[0].tool_call_id).toBe('call_abc');
+    });
+
+    it('should pass through tool messages without images unchanged', async () => {
+      mockIsCanUseVision.mockReturnValue(true);
+
+      const processor = new MessageContentProcessor({
+        model: 'gpt-4-vision',
+        provider: 'openai',
+        isCanUseVision: mockIsCanUseVision,
+        fileContext: { enabled: false },
+      });
+
+      const messages: UIChatMessage[] = [
+        {
+          content: 'plain text result',
+          id: 'tool-1',
+          role: 'tool',
+          tool_call_id: 'call_abc',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        } as any,
+      ];
+
+      const result = await processor.process(createContext(messages));
+
+      expect(result.messages[0].content).toBe('plain text result');
+      expect(result.messages[0].tool_call_id).toBe('call_abc');
+    });
+
+    it('should ignore image entries without a fetchable URL', async () => {
+      mockIsCanUseVision.mockReturnValue(true);
+
+      const processor = new MessageContentProcessor({
+        model: 'gpt-4-vision',
+        provider: 'openai',
+        isCanUseVision: mockIsCanUseVision,
+        fileContext: { enabled: false },
+      });
+
+      const messages: UIChatMessage[] = [
+        {
+          content: '[Image: cat.png]',
+          id: 'tool-1',
+          pluginState: {
+            images: [
+              // Malformed entry without a url — must never reach the payload.
+              { mediaType: 'image/png' },
+              // Legacy desktop-only preview URL — unfetchable by the send path.
+              { mediaType: 'image/png', url: 'localfile://file/tmp/cat.png?token=abc' },
+            ],
+          },
+          role: 'tool',
+          tool_call_id: 'call_abc',
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        } as any,
+      ];
+
+      const result = await processor.process(createContext(messages));
+
+      // No usable image: the tool message passes through as plain text.
+      expect(result.messages[0].content).toBe('[Image: cat.png]');
+      expect(result.messages[0].tool_call_id).toBe('call_abc');
+    });
+  });
+
   describe('File context processing', () => {
     it('should add file context when enabled', async () => {
       mockIsCanUseVision.mockReturnValue(false);
@@ -251,6 +493,50 @@ describe('MessageContentProcessor', () => {
       expect(content[0].type).toBe('text');
       expect(content[0].text).toContain('SYSTEM CONTEXT');
       expect(content[0].text).toContain('Hello');
+      expect(content[0].text).toContain(
+        '<image ref="msg_1cs5ql.image_1" name="test.png" url="http://example.com/image.jpg"></image>',
+      );
+      expect(content[0].text).toContain(
+        '<file id="file1" name="test.txt" type="text/plain" size="100" url="http://example.com/test.txt"></file>',
+      );
+    });
+
+    it('should omit file URLs when includeFileUrl is disabled', async () => {
+      mockIsCanUseVision.mockReturnValue(false);
+
+      const processor = new MessageContentProcessor({
+        fileContext: { enabled: true, includeFileUrl: false },
+        isCanUseVision: mockIsCanUseVision,
+        model: 'gpt-4',
+        provider: 'openai',
+      });
+
+      const messages: UIChatMessage[] = [
+        {
+          content: 'Hello',
+          createdAt: Date.now(),
+          fileList: [
+            {
+              fileType: 'text/plain',
+              id: 'file1',
+              name: 'test.txt',
+              size: 100,
+              url: 'http://example.com/test.txt',
+            },
+          ],
+          id: 'test',
+          role: 'user',
+          updatedAt: Date.now(),
+        },
+      ];
+
+      const result = await processor.process(createContext(messages));
+
+      const content = result.messages[0].content as any[];
+      expect(content[0].text).toContain(
+        '<file id="file1" name="test.txt" type="text/plain" size="100"></file>',
+      );
+      expect(content[0].text).not.toContain('http://example.com/test.txt');
     });
 
     it('should not add file context when disabled', async () => {
@@ -286,6 +572,55 @@ describe('MessageContentProcessor', () => {
 
       // Should not include file context
       expect(result.messages[0].content).toBe('Hello');
+    });
+
+    // Regression: when an already-multimodal user message (content is an array
+    // of parts) is re-processed with file context enabled, the old code did
+    // `textContent = message.content || ''` — turning the array back into
+    // `[object Object],[object Object]` via string coercion when concatenated
+    // with filesContext. Processor should instead extract text parts from the
+    // array (or leave the content untouched) rather than emit garbage.
+    it('should not stringify array content when concatenating file context', async () => {
+      mockIsCanUseVision.mockReturnValue(false);
+
+      const processor = new MessageContentProcessor({
+        model: 'gpt-4',
+        provider: 'openai',
+        isCanUseVision: mockIsCanUseVision,
+        fileContext: { enabled: true },
+      });
+
+      const messages: UIChatMessage[] = [
+        {
+          id: 'test',
+          role: 'user',
+          // Already-multimodal content (e.g. a historical user turn that was
+          // previously normalized to parts). Shape matches UserMessageContentPart[].
+          content: [{ text: 'Hello', type: 'text' }] as any,
+          fileList: [
+            {
+              id: 'file1',
+              name: 'test.txt',
+              fileType: 'text/plain',
+              size: 100,
+              url: 'http://example.com/test.txt',
+            },
+          ],
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+      ];
+
+      const result = await processor.process(createContext(messages));
+
+      const content = result.messages[0].content as any[];
+      expect(Array.isArray(content)).toBe(true);
+      const textPart = content.find((p) => p.type === 'text');
+      expect(textPart).toBeDefined();
+      // Must not contain the `[object Object]` string coercion artifact.
+      expect(textPart.text).not.toContain('[object Object]');
+      // Must preserve the original text payload.
+      expect(textPart.text).toContain('Hello');
     });
   });
 
@@ -326,6 +661,46 @@ describe('MessageContentProcessor', () => {
           type: 'text',
         },
       ]);
+    });
+
+    it('should serialize an explicit empty thinking string for signature-only reasoning', async () => {
+      const processor = new MessageContentProcessor({
+        model: 'claude-sonnet-5',
+        provider: 'anthropic',
+        isCanUseVision: mockIsCanUseVision,
+        fileContext: { enabled: false },
+      });
+
+      const messages: UIChatMessage[] = [
+        {
+          id: 'test',
+          role: 'assistant',
+          content: 'The answer is 42.',
+          // Claude 5 `thinking.display: 'omitted'` returns a signature without
+          // any thinking text — the replayed part must still carry the
+          // `thinking` key, otherwise JSON serialization drops it and strict
+          // Anthropic-compatible endpoints (e.g. DeepSeek) reject the request
+          // with 400 `missing field 'thinking'`.
+          reasoning: {
+            signature: 'signature-only',
+          },
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+      ];
+
+      const result = await processor.process(createContext(messages));
+
+      const content = result.messages[0].content as any[];
+      expect(content[0]).toEqual({
+        signature: 'signature-only',
+        thinking: '',
+        type: 'thinking',
+      });
+      // Intentional JSON round-trip (not a deep clone): asserts the `thinking`
+      // key survives serialization the way the HTTP client would send it.
+      // eslint-disable-next-line unicorn/prefer-structured-clone
+      expect(JSON.parse(JSON.stringify(content[0]))).toHaveProperty('thinking', '');
     });
   });
 
@@ -551,8 +926,156 @@ describe('MessageContentProcessor', () => {
     });
   });
 
+  describe('Audio processing functionality', () => {
+    it('should return plain text if model cannot use audio', async () => {
+      mockIsCanUseAudio.mockReturnValue(false);
+
+      const processor = new MessageContentProcessor({
+        model: 'text-model',
+        provider: 'openai',
+        isCanUseAudio: mockIsCanUseAudio,
+        fileContext: { enabled: false },
+      });
+
+      const messages: UIChatMessage[] = [
+        {
+          id: 'test',
+          role: 'user',
+          content: 'Transcribe this',
+          audioList: [{ url: 'audio_url', alt: 'test audio', id: 'test' } as ChatAudioItem],
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+      ];
+
+      const result = await processor.process(createContext(messages));
+
+      // Should return plain text when audio is not supported
+      expect(result.messages[0].content).toBe('Transcribe this');
+    });
+
+    it('should process audios as audio_url parts if model can use audio', async () => {
+      mockIsCanUseAudio.mockReturnValue(true);
+
+      const processor = new MessageContentProcessor({
+        model: 'gemini-3-flash',
+        provider: 'google',
+        isCanUseAudio: mockIsCanUseAudio,
+        fileContext: { enabled: false },
+      });
+
+      const messages: UIChatMessage[] = [
+        {
+          id: 'test',
+          role: 'user',
+          content: 'Listen',
+          audioList: [
+            { url: 'http://example.com/a.mp3', alt: 'a1', durationMs: 2500, id: 'a1' },
+            { url: 'http://example.com/b.mp3', alt: 'a2', durationMs: -1, id: 'a2' },
+          ] as ChatAudioItem[],
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+      ];
+
+      const result = await processor.process(createContext(messages));
+
+      const content = result.messages[0].content as any[];
+      expect(content).toHaveLength(3); // text + 2 audios
+      expect(content[0].type).toBe('text');
+      expect(content[0].text).toBe('Listen');
+      expect(content[1].type).toBe('audio_url');
+      expect(content[1].audio_url.url).toBe('http://example.com/a.mp3');
+      expect(content[1].audio_url.durationMs).toBe(2500);
+      expect(content[2].type).toBe('audio_url');
+      expect(content[2].audio_url.url).toBe('http://example.com/b.mp3');
+      expect(content[2].audio_url).not.toHaveProperty('durationMs');
+    });
+
+    it('should preserve audio metadata when converting audios to audio_url parts', async () => {
+      mockIsCanUseAudio.mockReturnValue(true);
+
+      const processor = new MessageContentProcessor({
+        model: 'gpt-audio',
+        provider: 'openai',
+        isCanUseAudio: mockIsCanUseAudio,
+        fileContext: { enabled: false },
+      });
+
+      const messages: UIChatMessage[] = [
+        {
+          id: 'test',
+          role: 'user',
+          content: 'Listen',
+          audioList: [
+            {
+              alt: 'voice message',
+              codec: 'pcm_s16le',
+              durationMs: 3210,
+              id: 'voice-1',
+              mimeType: 'audio/wav',
+              url: 'http://example.com/voice.wav',
+            },
+          ],
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+      ];
+
+      const result = await processor.process(createContext(messages));
+
+      const content = result.messages[0].content as any[];
+      expect(content[1]).toEqual({
+        audio_url: {
+          codec: 'pcm_s16le',
+          durationMs: 3210,
+          mimeType: 'audio/wav',
+          url: 'http://example.com/voice.wav',
+        },
+        type: 'audio_url',
+      });
+    });
+
+    it('should include audios in file context when enabled even if audio not supported', async () => {
+      mockIsCanUseAudio.mockReturnValue(false);
+
+      const processor = new MessageContentProcessor({
+        model: 'gpt-4',
+        provider: 'openai',
+        isCanUseAudio: mockIsCanUseAudio,
+        fileContext: { enabled: true, includeFileUrl: true },
+      });
+
+      const messages: UIChatMessage[] = [
+        {
+          id: 'test',
+          role: 'user',
+          content: 'Hello',
+          audioList: [
+            { id: 'audio1', url: 'http://example.com/a.mp3', alt: 'Test audio' },
+          ] as ChatAudioItem[],
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+      ];
+
+      const result = await processor.process(createContext(messages));
+
+      expect(Array.isArray(result.messages[0].content)).toBe(true);
+      const content = result.messages[0].content as any[];
+      expect(content).toHaveLength(1);
+      expect(content[0].type).toBe('text');
+      expect(content[0].text).toContain('SYSTEM CONTEXT');
+      expect(content[0].text).toContain('<audios>');
+      // No raw audio_url part when audio understanding is unsupported
+      expect(content.some((p) => p.type === 'audio_url')).toBe(false);
+    });
+  });
+
   describe('Multimodal message content processing', () => {
     it('should convert assistant message with metadata.isMultimodal to OpenAI format', async () => {
+      mockIsCanUseVision.mockReturnValue(true);
+
       const processor = new MessageContentProcessor({
         model: 'gpt-4',
         provider: 'openai',
@@ -630,6 +1153,8 @@ describe('MessageContentProcessor', () => {
     });
 
     it('should handle both reasoning.isMultimodal and metadata.isMultimodal', async () => {
+      mockIsCanUseVision.mockReturnValue(true);
+
       const processor = new MessageContentProcessor({
         model: 'gpt-4',
         provider: 'openai',
@@ -744,6 +1269,8 @@ describe('MessageContentProcessor', () => {
     });
 
     it('should preserve thoughtSignature in multimodal content parts', async () => {
+      mockIsCanUseVision.mockReturnValue(true);
+
       const processor = new MessageContentProcessor({
         model: 'gpt-4',
         provider: 'openai',
@@ -785,6 +1312,77 @@ describe('MessageContentProcessor', () => {
           { type: 'text', text: 'Conclusion' },
         ],
       });
+    });
+
+    // assistant multimodal content (image generation output) must
+    // also be downgraded when the target model lacks vision. Without this,
+    // image parts get serialized back to `image_url` and DeepSeek 400s.
+    it('should downgrade assistant multimodal image parts to placeholder text when vision is disabled', async () => {
+      mockIsCanUseVision.mockReturnValue(false);
+
+      const processor = new MessageContentProcessor({
+        model: 'deepseek-chat',
+        provider: 'deepseek',
+        isCanUseVision: mockIsCanUseVision,
+        fileContext: { enabled: false },
+      });
+
+      const messages: UIChatMessage[] = [
+        {
+          id: 'test',
+          role: 'assistant',
+          content: JSON.stringify([
+            { type: 'text', text: 'Here is an image:' },
+            { type: 'image', image: 'https://s3.example.com/image.png' },
+            { type: 'text', text: 'What do you think?' },
+          ]),
+          metadata: {
+            isMultimodal: true,
+          },
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+      ];
+
+      const result = await processor.process(createContext(messages));
+
+      expect(result.messages[0]).toMatchObject({
+        content: [
+          { type: 'text', text: 'Here is an image:' },
+          { type: 'text', text: VISION_DOWNGRADE_PLACEHOLDER },
+          { type: 'text', text: 'What do you think?' },
+        ],
+      });
+    });
+
+    it('should downgrade assistant legacy imageList to placeholder text when vision is disabled', async () => {
+      mockIsCanUseVision.mockReturnValue(false);
+
+      const processor = new MessageContentProcessor({
+        model: 'deepseek-chat',
+        provider: 'deepseek',
+        isCanUseVision: mockIsCanUseVision,
+        fileContext: { enabled: false },
+      });
+
+      const messages: UIChatMessage[] = [
+        {
+          id: 'test',
+          role: 'assistant',
+          content: 'Here is an image.',
+          imageList: [
+            { id: 'img1', url: 'http://example.com/image.png', alt: 'test.png' } as ChatImageItem,
+          ],
+          createdAt: Date.now(),
+          updatedAt: Date.now(),
+        },
+      ];
+
+      const result = await processor.process(createContext(messages));
+
+      expect(result.messages[0].content).toBe(
+        `Here is an image.\n\n${VISION_DOWNGRADE_PLACEHOLDER}`,
+      );
     });
   });
 });

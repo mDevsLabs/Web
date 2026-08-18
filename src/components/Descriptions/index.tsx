@@ -1,7 +1,8 @@
-import { Grid, type GridProps, Icon, type IconProps, Text } from '@lobehub/ui';
-import { Flexbox } from '@lobehub/ui';
-import { createStaticStyles, cssVar, cx , responsive } from 'antd-style';
-import { type CSSProperties, type ReactNode, memo } from 'react';
+import { type GridProps, type IconProps } from '@lobehub/ui';
+import { Flexbox, Grid, Icon, Text } from '@lobehub/ui';
+import { createStaticStyles, cssVar, cx, responsive } from 'antd-style';
+import { type CSSProperties, type ReactNode } from 'react';
+import { memo } from 'react';
 
 import CopyableLabel from '../CopyableLabel';
 
@@ -45,7 +46,7 @@ export interface DescriptionItem {
   value: ReactNode;
 }
 
-interface DescriptionsProps extends Omit<GridProps, 'children'> {
+interface DescriptionsProps extends Omit<GridProps, 'children' | 'wrap'> {
   bordered?: boolean;
   classNames?: {
     item?: string;
@@ -59,6 +60,7 @@ interface DescriptionsProps extends Omit<GridProps, 'children'> {
     label?: CSSProperties;
     value?: CSSProperties;
   };
+  wrap?: boolean;
 }
 
 const Descriptions = memo<DescriptionsProps>(
@@ -70,6 +72,7 @@ const Descriptions = memo<DescriptionsProps>(
     items,
     classNames,
     styles: customStyles,
+    wrap,
     ...rest
   }) => {
     return (
@@ -83,24 +86,24 @@ const Descriptions = memo<DescriptionsProps>(
         >
           {items.map((item) => (
             <Flexbox
-              align={'center'}
+              horizontal
+              align={wrap ? 'flex-start' : 'center'}
               className={cx(bordered && styles.cell, item.className, classNames?.item)}
               flex={1}
-              horizontal
               key={item.key}
               style={{
-                overflow: 'hidden',
+                overflow: wrap ? undefined : 'hidden',
                 position: 'relative',
                 ...customStyles?.item,
                 ...item.style,
               }}
             >
               <Flexbox
+                horizontal
                 align={'center'}
                 className={cx(bordered && styles.label)}
                 flex={'none'}
                 gap={6}
-                horizontal
                 paddingBlock={bordered ? 12 : 4}
                 paddingInline={bordered ? 16 : 0}
                 style={{ height: '100%', position: 'relative' }}
@@ -108,8 +111,8 @@ const Descriptions = memo<DescriptionsProps>(
               >
                 {item.icon && <Icon color={cssVar.colorTextSecondary} icon={item.icon} />}
                 <Text
-                  className={cx(classNames?.label, item.classNames?.label)}
                   ellipsis
+                  className={cx(classNames?.label, item.classNames?.label)}
                   style={{
                     color: cssVar.colorTextSecondary,
                     ...customStyles?.label,
@@ -120,25 +123,38 @@ const Descriptions = memo<DescriptionsProps>(
                 </Text>
               </Flexbox>
               <Flexbox
-                align={'center'}
-                flex={1}
                 horizontal
+                align={wrap ? 'flex-start' : 'center'}
+                flex={1}
                 justify={'flex-start'}
                 paddingBlock={bordered ? 12 : 4}
                 paddingInline={16}
-                style={{ height: '100%', overflow: 'hidden', position: 'relative' }}
+                style={{
+                  height: '100%',
+                  overflow: wrap ? undefined : 'hidden',
+                  position: 'relative',
+                }}
               >
                 {item.copyable ? (
                   <CopyableLabel
                     className={cx(classNames?.value, item.classNames?.value)}
                     style={{ ...customStyles?.value, ...item.styles?.value }}
                     value={item.value ? String(item.value) : '--'}
+                    wrap={wrap}
                   />
                 ) : (
                   <Text
                     className={cx(classNames?.value, item.classNames?.value)}
-                    ellipsis
-                    style={{ ...customStyles?.value, ...item.styles?.value }}
+                    ellipsis={!wrap}
+                    style={{
+                      ...(wrap && {
+                        overflowWrap: 'anywhere',
+                        whiteSpace: 'pre-wrap',
+                        wordBreak: 'break-word',
+                      }),
+                      ...customStyles?.value,
+                      ...item.styles?.value,
+                    }}
                   >
                     {item.value}
                   </Text>

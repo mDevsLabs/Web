@@ -1,3 +1,3 @@
-export default function Plans() {
-  return null;
-}
+const Plans = () => null;
+
+export default Plans;

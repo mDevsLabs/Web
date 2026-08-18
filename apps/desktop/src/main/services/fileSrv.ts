@@ -1,8 +1,9 @@
-import { DeleteFilesResponse } from '@lobechat/electron-server-ipc';
 import * as fs from 'node:fs';
 import { writeFile } from 'node:fs/promises';
-import path, { join } from 'node:path';
+import nodePath from 'node:path';
 import { promisify } from 'node:util';
+
+import type { DeleteFilesResponse } from '@lobechat/electron-server-ipc';
 
 import { FILE_STORAGE_DIR, LOCAL_STORAGE_URL_PREFIX } from '@/const/dir';
 import { makeSureDirExist } from '@/utils/file-system';
@@ -50,7 +51,7 @@ export default class FileService extends ServiceModule {
    * @deprecated Only for backward compatibility with legacy file access, new files should be stored under custom paths in FILE_STORAGE_DIR
    */
   get UPLOADS_DIR() {
-    return join(this.app.appStoragePath, FILE_STORAGE_DIR, 'uploads');
+    return nodePath.join(this.app.appStoragePath, FILE_STORAGE_DIR, 'uploads');
   }
 
   constructor(app) {
@@ -74,11 +75,11 @@ export default class FileService extends ServiceModule {
       const date = (now / 1000 / 60 / 60).toFixed(0);
 
       // Use provided filePath as the file storage path
-      const fullStoragePath = join(this.app.appStoragePath, FILE_STORAGE_DIR, filePath);
+      const fullStoragePath = nodePath.join(this.app.appStoragePath, FILE_STORAGE_DIR, filePath);
       logger.debug(`Target file storage path: ${fullStoragePath}`);
 
       // Ensure target directory exists
-      const targetDir = path.dirname(fullStoragePath);
+      const targetDir = nodePath.dirname(fullStoragePath);
       logger.debug(`Ensuring target directory exists: ${targetDir}`);
       makeSureDirExist(targetDir);
 
@@ -115,7 +116,7 @@ export default class FileService extends ServiceModule {
       logger.info(`File upload successful: ${desktopPath}`);
 
       // Extract filename and directory information from path
-      const parsedPath = path.parse(filePath);
+      const parsedPath = nodePath.parse(filePath);
       const dirname = parsedPath.dir || '';
       const savedFilename = parsedPath.base;
 
@@ -130,7 +131,7 @@ export default class FileService extends ServiceModule {
       };
     } catch (error) {
       logger.error(`File upload failed:`, error);
-      throw new Error(`File upload failed: ${(error as Error).message}`);
+      throw new Error(`File upload failed: ${(error as Error).message}`, { cause: error });
     }
   }
 
@@ -158,7 +159,7 @@ export default class FileService extends ServiceModule {
   async getFile(path: string): Promise<{ content: ArrayBuffer; mimeType: string }> {
     logger.info(`Getting file content: ${path}`);
     try {
-      // 处理desktop://路径
+      // Handle desktop:// paths
       if (!path.startsWith('desktop://')) {
         logger.error(`Invalid desktop file path: ${path}`);
         throw new Error(`Invalid desktop file path: ${path}`);
@@ -178,12 +179,12 @@ export default class FileService extends ServiceModule {
 
       if (this.isLegacyPath(relativePath)) {
         // Legacy path: read from uploads directory (backward compatibility)
-        filePath = join(this.UPLOADS_DIR, relativePath);
+        filePath = nodePath.join(this.UPLOADS_DIR, relativePath);
         isLegacyAttempt = true;
         logger.debug(`Legacy path detected, reading from uploads directory: ${filePath}`);
       } else {
         // New path: read from FILE_STORAGE_DIR root directory
-        filePath = join(this.app.appStoragePath, FILE_STORAGE_DIR, relativePath);
+        filePath = nodePath.join(this.app.appStoragePath, FILE_STORAGE_DIR, relativePath);
         logger.debug(`New path format, reading from storage root: ${filePath}`);
       }
 
@@ -196,7 +197,11 @@ export default class FileService extends ServiceModule {
       } catch (firstError) {
         if (isLegacyAttempt) {
           // If legacy path read fails, try reading from new path
-          const fallbackPath = join(this.app.appStoragePath, FILE_STORAGE_DIR, relativePath);
+          const fallbackPath = nodePath.join(
+            this.app.appStoragePath,
+            FILE_STORAGE_DIR,
+            relativePath,
+          );
           logger.debug(
             `Legacy path read failed, attempting fallback to storage root: ${fallbackPath}`,
           );
@@ -208,7 +213,7 @@ export default class FileService extends ServiceModule {
             logger.error(
               `Both legacy and fallback paths failed. Legacy error: ${(firstError as Error).message}, Fallback error: ${(fallbackError as Error).message}`,
             );
-            throw firstError; // 抛出原始错误
+            throw firstError; // Re-throw the original error
           }
         } else {
           throw firstError;
@@ -276,7 +281,7 @@ export default class FileService extends ServiceModule {
         throw new FileNotFoundError(`File not found: ${path}`, path);
       }
 
-      throw new Error(`File retrieval failed: ${(error as Error).message}`);
+      throw new Error(`File retrieval failed: ${(error as Error).message}`, { cause: error });
     }
   }
 
@@ -286,7 +291,7 @@ export default class FileService extends ServiceModule {
   async deleteFile(path: string): Promise<{ success: boolean }> {
     logger.info(`Deleting file: ${path}`);
     try {
-      // 处理desktop://路径
+      // Handle desktop:// paths
       if (!path.startsWith('desktop://')) {
         logger.error(`Invalid desktop file path: ${path}`);
         throw new Error(`Invalid desktop file path: ${path}`);
@@ -304,12 +309,12 @@ export default class FileService extends ServiceModule {
 
       if (this.isLegacyPath(relativePath)) {
         // Legacy path: delete from uploads directory (backward compatibility)
-        filePath = join(this.UPLOADS_DIR, relativePath);
+        filePath = nodePath.join(this.UPLOADS_DIR, relativePath);
         isLegacyAttempt = true;
         logger.debug(`Legacy path detected, deleting from uploads directory: ${filePath}`);
       } else {
         // New path: delete from FILE_STORAGE_DIR root directory
-        filePath = join(this.app.appStoragePath, FILE_STORAGE_DIR, relativePath);
+        filePath = nodePath.join(this.app.appStoragePath, FILE_STORAGE_DIR, relativePath);
         logger.debug(`New path format, deleting from storage root: ${filePath}`);
       }
 
@@ -321,7 +326,11 @@ export default class FileService extends ServiceModule {
       } catch (firstError) {
         if (isLegacyAttempt) {
           // If legacy path deletion fails, try deleting from new path
-          const fallbackPath = join(this.app.appStoragePath, FILE_STORAGE_DIR, relativePath);
+          const fallbackPath = nodePath.join(
+            this.app.appStoragePath,
+            FILE_STORAGE_DIR,
+            relativePath,
+          );
           logger.debug(
             `Legacy path deletion failed, attempting fallback to storage root: ${fallbackPath}`,
           );
@@ -333,7 +342,7 @@ export default class FileService extends ServiceModule {
             logger.error(
               `Both legacy and fallback deletion failed. Legacy error: ${(firstError as Error).message}, Fallback error: ${(fallbackError as Error).message}`,
             );
-            throw firstError; // 抛出原始错误
+            throw firstError; // Re-throw the original error
           }
         } else {
           throw firstError;
@@ -353,7 +362,7 @@ export default class FileService extends ServiceModule {
       return { success: true };
     } catch (error) {
       logger.error(`File deletion failed:`, error);
-      throw new Error(`File deletion failed: ${(error as Error).message}`);
+      throw new Error(`File deletion failed: ${(error as Error).message}`, { cause: error });
     }
   }
 
@@ -427,7 +436,7 @@ export default class FileService extends ServiceModule {
     let fullPath: string;
     if (this.isLegacyPath(relativePath)) {
       // Legacy path: get from uploads directory (backward compatibility)
-      fullPath = join(this.UPLOADS_DIR, relativePath);
+      fullPath = nodePath.join(this.UPLOADS_DIR, relativePath);
       logger.debug(`Legacy path detected, resolved to uploads directory: ${fullPath}`);
 
       // Check if file exists, if not try new path
@@ -436,7 +445,7 @@ export default class FileService extends ServiceModule {
         logger.debug(`Legacy path file exists: ${fullPath}`);
       } catch {
         // If legacy path file doesn't exist, try new path
-        const fallbackPath = join(this.app.appStoragePath, FILE_STORAGE_DIR, relativePath);
+        const fallbackPath = nodePath.join(this.app.appStoragePath, FILE_STORAGE_DIR, relativePath);
         logger.debug(`Legacy path file not found, trying fallback path: ${fallbackPath}`);
         try {
           await fs.promises.access(fallbackPath, fs.constants.F_OK);
@@ -451,7 +460,7 @@ export default class FileService extends ServiceModule {
       }
     } else {
       // New path: get from FILE_STORAGE_DIR root directory
-      fullPath = join(this.app.appStoragePath, FILE_STORAGE_DIR, relativePath);
+      fullPath = nodePath.join(this.app.appStoragePath, FILE_STORAGE_DIR, relativePath);
       logger.debug(`New path format, resolved to storage root: ${fullPath}`);
     }
 

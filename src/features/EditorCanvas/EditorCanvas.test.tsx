@@ -2,10 +2,12 @@
  * @vitest-environment happy-dom
  */
 import { type IEditor } from '@lobehub/editor';
-import { cleanup, render, screen } from '@testing-library/react';
+import { act, cleanup, render, screen, waitFor } from '@testing-library/react';
+import type { ComponentType } from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { EditorCanvas } from './EditorCanvas';
+import type { EditorDataModeProps } from './EditorDataMode';
 
 // Mock DocumentIdMode
 vi.mock('./DocumentIdMode', () => ({
@@ -26,9 +28,9 @@ vi.mock('./InternalEditor', () => ({
   default: vi.fn(() => <div data-testid="internal-editor">InternalEditor</div>),
 }));
 
-// Mock ErrorBoundary to pass through children
-vi.mock('./ErrorBoundary', () => ({
-  EditorErrorBoundary: vi.fn(({ children }) => <>{children}</>),
+// Mock SafeBoundary to pass through children
+vi.mock('@/components/ErrorBoundary', () => ({
+  default: vi.fn(({ children }) => <>{children}</>),
 }));
 
 describe('EditorCanvas', () => {
@@ -106,10 +108,12 @@ describe('EditorCanvas', () => {
           autoSave={false}
           documentId="doc-123"
           editor={mockEditor}
-          onContentChange={onContentChange}
-          onInit={onInit}
           placeholder="Custom placeholder"
           sourceType="notebook"
+          topicId="topic-123"
+          unsavedChangesGuard={{ enabled: true, message: 'unsaved', title: 'Unsaved' }}
+          onContentChange={onContentChange}
+          onInit={onInit}
         />,
       );
 
@@ -124,6 +128,8 @@ describe('EditorCanvas', () => {
         onInit,
         placeholder: 'Custom placeholder',
         sourceType: 'notebook',
+        topicId: 'topic-123',
+        unsavedChangesGuard: { enabled: true, message: 'unsaved', title: 'Unsaved' },
       });
     });
 
@@ -134,11 +140,12 @@ describe('EditorCanvas', () => {
 
       render(
         <EditorCanvas
+          contentRevision={3}
           editor={mockEditor}
           editorData={editorData}
+          placeholder="Custom placeholder"
           onContentChange={onContentChange}
           onInit={onInit}
-          placeholder="Custom placeholder"
         />,
       );
 
@@ -146,11 +153,72 @@ describe('EditorCanvas', () => {
       const lastCall = (EditorDataMode.default as ReturnType<typeof vi.fn>).mock.calls.at(-1);
 
       expect(lastCall?.[0]).toMatchObject({
+        contentRevision: 3,
         editor: mockEditor,
         editorData,
         onContentChange,
         onInit,
         placeholder: 'Custom placeholder',
+      });
+    });
+
+    it('should reload same-entity content only when its authoritative revision changes', async () => {
+      const editorDataModeModule = (await vi.importActual('./EditorDataMode')) as {
+        default: ComponentType<EditorDataModeProps>;
+      };
+      const ActualEditorDataMode = editorDataModeModule.default;
+
+      const { rerender } = render(
+        <ActualEditorDataMode
+          contentRevision={0}
+          editor={mockEditor}
+          editorData={{ content: 'Old instruction' }}
+          entityId="T-1"
+        />,
+      );
+
+      const InternalEditor = await vi.importMock('./InternalEditor');
+      const onInit = (InternalEditor.default as ReturnType<typeof vi.fn>).mock.calls.at(-1)?.[0]
+        .onInit;
+      act(() => onInit?.(mockEditor));
+      vi.mocked(mockEditor.setDocument).mockClear();
+
+      rerender(
+        <ActualEditorDataMode
+          contentRevision={0}
+          editor={mockEditor}
+          editorData={{ content: 'Old instruction' }}
+          entityId="T-1"
+        />,
+      );
+      expect(mockEditor.setDocument).not.toHaveBeenCalled();
+
+      // A refetch or local autosave can replace the props while the revision
+      // stays stable. Never inspect/reload the live document in that case.
+      rerender(
+        <ActualEditorDataMode
+          contentRevision={0}
+          editor={mockEditor}
+          editorData={{ content: 'New instruction' }}
+          entityId="T-1"
+        />,
+      );
+      expect(mockEditor.setDocument).not.toHaveBeenCalled();
+      expect(mockEditor.getDocument).not.toHaveBeenCalled();
+
+      rerender(
+        <ActualEditorDataMode
+          contentRevision={1}
+          editor={mockEditor}
+          editorData={{ content: 'New instruction' }}
+          entityId="T-1"
+        />,
+      );
+
+      await waitFor(() => {
+        expect(mockEditor.setDocument).toHaveBeenCalledWith('markdown', 'New instruction', {
+          keepId: true,
+        });
       });
     });
 
@@ -162,9 +230,9 @@ describe('EditorCanvas', () => {
         <EditorCanvas
           editor={mockEditor}
           floatingToolbar={false}
+          placeholder="Custom placeholder"
           onContentChange={onContentChange}
           onInit={onInit}
-          placeholder="Custom placeholder"
         />,
       );
 
@@ -182,25 +250,25 @@ describe('EditorCanvas', () => {
   });
 
   describe('error boundary wrapping', () => {
-    it('should wrap DocumentIdMode with ErrorBoundary', async () => {
+    it('should wrap DocumentIdMode with SafeBoundary', async () => {
       render(<EditorCanvas documentId="doc-123" editor={mockEditor} />);
 
-      const ErrorBoundary = await vi.importMock('./ErrorBoundary');
-      expect(ErrorBoundary.EditorErrorBoundary).toHaveBeenCalled();
+      const SafeBoundary = await vi.importMock('@/components/ErrorBoundary');
+      expect(SafeBoundary.default).toHaveBeenCalled();
     });
 
-    it('should wrap EditorDataMode with ErrorBoundary', async () => {
+    it('should wrap EditorDataMode with SafeBoundary', async () => {
       render(<EditorCanvas editor={mockEditor} editorData={{ content: 'test' }} />);
 
-      const ErrorBoundary = await vi.importMock('./ErrorBoundary');
-      expect(ErrorBoundary.EditorErrorBoundary).toHaveBeenCalled();
+      const SafeBoundary = await vi.importMock('@/components/ErrorBoundary');
+      expect(SafeBoundary.default).toHaveBeenCalled();
     });
 
-    it('should wrap InternalEditor with ErrorBoundary in basic mode', async () => {
+    it('should wrap InternalEditor with SafeBoundary in basic mode', async () => {
       render(<EditorCanvas editor={mockEditor} />);
 
-      const ErrorBoundary = await vi.importMock('./ErrorBoundary');
-      expect(ErrorBoundary.EditorErrorBoundary).toHaveBeenCalled();
+      const SafeBoundary = await vi.importMock('@/components/ErrorBoundary');
+      expect(SafeBoundary.default).toHaveBeenCalled();
     });
   });
 });

@@ -47,11 +47,11 @@ Upgrading the Docker deployment version is very simple, you just need to redeplo
 <Steps>
   ### Stop and Remove the Current Running LobeHub Container
 
-  Assuming the LobeHub container is named `lobe-chat`, use the following commands to stop and remove the currently running LobeHub container:
+  Assuming the LobeHub container is named `lobehub`, use the following commands to stop and remove the currently running LobeHub container:
 
   ```fish
-  docker stop lobe-chat
-  docker rm lobe-chat
+  docker stop lobehub
+  docker rm lobehub
   ```
 
   ### Pull the Latest LobeHub Image
@@ -59,7 +59,7 @@ Upgrading the Docker deployment version is very simple, you just need to redeplo
   Use the following command to pull the latest Docker image for LobeHub:
 
   ```fish
-  docker pull lobehub/lobe-chat
+  docker pull lobehub/lobehub
   ```
 
   ### Restart the Docker Container
@@ -70,8 +70,8 @@ Upgrading the Docker deployment version is very simple, you just need to redeplo
   docker run -d -p 3210:3210 \
     -e OPENAI_API_KEY=sk-xxxx \
     -e OPENAI_PROXY_URL=https://api-proxy.com/v1 \
-    --name lobe-chat \
-    lobehub/lobe-chat
+    --name lobehub \
+    lobehub/lobehub
   ```
 </Steps>
 
@@ -93,20 +93,20 @@ If you wish to automate the above steps, you can follow the method below and use
   ```env
   OPENAI_API_KEY=sk-xxxx
   OPENAI_PROXY_URL=https://api-proxy.com/v1
-  OPENAI_MODEL_LIST=-gpt-4,-gpt-4-32k,-gpt-3.5-turbo-16k,gpt-3.5-turbo-1106=gpt-3.5-turbo-16k,gpt-4-0125-preview=gpt-4-turbo,gpt-4-vision-preview=gpt-4-vision
+  OPENAI_MODEL_LIST=-gpt-4,-gpt-4-32k,-gpt-3.5-turbo-16k,gpt-3.5-turbo-1106=gpt-3.5-turbo-16k,gpt-4.1=gpt-4-turbo,gpt-4o=gpt-4-vision
   ```
 
   Then, you can use the following script to automate the update:
 
   ```bash
   #!/bin/bash
-  # auto-update-lobe-chat.sh
+  # auto-update-lobehub.sh
 
   # Set up proxy (optional)
   export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
 
   # Pull the latest image and store the output in a variable
-  output=$(docker pull lobehub/lobe-chat:latest 2>&1)
+  output=$(docker pull lobehub/lobehub:latest 2>&1)
 
   # Check if the pull command was executed successfully
   if [ $? -ne 0 ]; then
@@ -114,27 +114,27 @@ If you wish to automate the above steps, you can follow the method below and use
   fi
 
   # Check if the output contains a specific string
-  echo "$output" | grep -q "Image is up to date for lobehub/lobe-chat:latest"
+  echo "$output" | grep -q "Image is up to date for lobehub/lobehub:latest"
 
   # If the image is already up to date, do nothing
   if [ $? -eq 0 ]; then
     exit 0
   fi
 
-  echo "Detected lobe-chat update"
+  echo "Detected lobehub update"
 
   # Remove the old container
-  echo "Removed: $(docker rm -f lobe-chat)"
+  echo "Removed: $(docker rm -f lobehub)"
 
   # Run the new container(Please change the path to the env file)
-  echo "Started: $(docker run -d --network=host --env-file /path/to/lobe.env --name=lobe-chat --restart=always lobehub/lobe-chat)"
+  echo "Started: $(docker run -d --network=host --env-file /path/to/lobe.env --name=lobehub --restart=always lobehub/lobehub)"
 
   # Print the update time and version
   echo "Update time: $(date)"
-  echo "Version: $(docker inspect lobehub/lobe-chat:latest | grep 'org.opencontainers.image.version' | awk -F'"' '{print $4}')"
+  echo "Version: $(docker inspect lobehub/lobehub:latest | grep 'org.opencontainers.image.version' | awk -F'"' '{print $4}')"
 
   # Clean up unused images
-  docker images | grep 'lobehub/lobe-chat' | grep -v 'lobehub/lobe-chat-database' | grep -v 'latest' | awk '{print $3}' | xargs -r docker rmi > /dev/null 2>&1
+  docker images | grep 'lobehub/lobehub' | grep -v 'latest' | awk '{print $3}' | xargs -r docker rmi > /dev/null 2>&1
   echo "Removed old images."
   ```
 
@@ -150,6 +150,6 @@ If you wish to automate the above steps, you can follow the method below and use
   The following command configures Crontab to execute scripts every 5 minutes, or as often as you like:
 
   ```bash
-  */5 * * * * /path/to/auto-update-lobe-chat.sh >> /path/to/auto-update-lobe-chat.log 2>&1
+  */5 * * * * /path/to/auto-update-lobehub.sh >> /path/to/auto-update-lobehub.log 2>&1
   ```
 </Steps>

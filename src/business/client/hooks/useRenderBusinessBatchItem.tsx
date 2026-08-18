@@ -1,7 +1,6 @@
-import { GenerationBatch } from '@/types/generation';
+import { type GenerationBatch } from '@/types/generation';
 
-// eslint-disable-next-line unused-imports/no-unused-vars, @typescript-eslint/no-unused-vars
-export default function useRenderBusinessBatchItem(batch: GenerationBatch) {
+export default function useRenderBusinessBatchItem(_batch: GenerationBatch) {
   return {
     businessBatchItem: null,
     shouldRenderBusinessBatchItem: false,

@@ -1,4 +1,5 @@
-import { ChatFileItem, ChatImageItem, ChatVideoItem } from '@lobechat/types';
+import { createMediaFileRef } from '@lobechat/const/mediaRef';
+import type { ChatAudioItem, ChatFileItem, ChatImageItem, ChatVideoItem } from '@lobechat/types';
 import { describe, expect, it } from 'vitest';
 
 import { filesPrompts } from './index';
@@ -25,6 +26,12 @@ describe('filesPrompts', () => {
     url: 'https://example.com/video.mp4',
   };
 
+  const mockAudio: ChatAudioItem = {
+    id: 'audio-1',
+    alt: 'test audio',
+    url: 'https://example.com/audio.mp3',
+  };
+
   it('should generate prompt with only images', () => {
     const result = filesPrompts({
       imageList: [mockImage],
@@ -41,7 +48,7 @@ describe('filesPrompts', () => {
 <files_info>
 <images>
 <images_docstring>here are user upload images you can refer to</images_docstring>
-<image name="test image" url="https://example.com/image.jpg"></image>
+<image ref="image_1" name="test image" url="https://example.com/image.jpg"></image>
 </images>
 </files_info>
 <!-- END SYSTEM CONTEXT -->`,
@@ -87,7 +94,7 @@ describe('filesPrompts', () => {
 <files_info>
 <images>
 <images_docstring>here are user upload images you can refer to</images_docstring>
-<image name="test image" url="https://example.com/image.jpg"></image>
+<image ref="image_1" name="test image" url="https://example.com/image.jpg"></image>
 </images>
 <files>
 <files_docstring>here are user upload files you can refer to</files_docstring>
@@ -135,8 +142,8 @@ describe('filesPrompts', () => {
 
     expect(result).toContain('second image');
     expect(result).toContain('document.docx');
-    expect(result).toMatch(/<image.*?>.*<image.*?>/s); // Check for multiple image tags
-    expect(result).toMatch(/<file.*?>.*<file.*?>/s); // Check for multiple file tags
+    expect(result.match(/<image\b/g)).toHaveLength(2);
+    expect(result.match(/<file\b/g)).toHaveLength(2);
   });
 
   it('should handle without url', () => {
@@ -176,8 +183,8 @@ describe('filesPrompts', () => {
       <files_info>
       <images>
       <images_docstring>here are user upload images you can refer to</images_docstring>
-      <image name="test image"></image>
-      <image name="second image"></image>
+      <image ref="image_1" name="test image"></image>
+      <image ref="image_2" name="second image"></image>
       </images>
       <files>
       <files_docstring>here are user upload files you can refer to</files_docstring>
@@ -187,6 +194,53 @@ describe('filesPrompts', () => {
       </files_info>
       <!-- END SYSTEM CONTEXT -->"
     `);
+  });
+
+  it('should generate stable visual refs when message id is provided', () => {
+    const messageId = 'message-with-visual-media';
+    const imageRef = createMediaFileRef({ index: 0, messageId, type: 'image' });
+    const videoRef = createMediaFileRef({ index: 0, messageId, type: 'video' });
+
+    const result = filesPrompts({
+      imageList: [mockImage],
+      messageId,
+      videoList: [mockVideo],
+    });
+
+    expect(result).toContain(
+      `<image ref="${imageRef}" name="test image" url="https://example.com/image.jpg"></image>`,
+    );
+    expect(result).toContain(
+      `<video ref="${videoRef}" name="test video" url="https://example.com/video.mp4"></video>`,
+    );
+  });
+
+  describe('Audio functionality', () => {
+    it('should generate prompt with only audios', () => {
+      const result = filesPrompts({
+        audioList: [mockAudio],
+      });
+
+      expect(result).toEqual(
+        `<!-- SYSTEM CONTEXT (NOT PART OF USER QUERY) -->
+<context.instruction>following part contains context information injected by the system. Please follow these instructions:
+
+1. Always prioritize handling user-visible content.
+2. the context is only required when user's queries rely on it.
+</context.instruction>
+<files_info>
+<audios>
+<audios_docstring>here are user upload audios you can refer to</audios_docstring>
+<audio ref="audio_1" name="test audio" url="https://example.com/audio.mp3"></audio>
+</audios>
+</files_info>
+<!-- END SYSTEM CONTEXT -->`,
+      );
+    });
+
+    it('should return empty string for empty audio list', () => {
+      expect(filesPrompts({ audioList: [] })).toBe('');
+    });
   });
 
   describe('Video functionality', () => {
@@ -205,7 +259,7 @@ describe('filesPrompts', () => {
 <files_info>
 <videos>
 <videos_docstring>here are user upload videos you can refer to</videos_docstring>
-<video name="test video" url="https://example.com/video.mp4"></video>
+<video ref="video_1" name="test video" url="https://example.com/video.mp4"></video>
 </videos>
 </files_info>
 <!-- END SYSTEM CONTEXT -->`,
@@ -228,11 +282,11 @@ describe('filesPrompts', () => {
 <files_info>
 <images>
 <images_docstring>here are user upload images you can refer to</images_docstring>
-<image name="test image" url="https://example.com/image.jpg"></image>
+<image ref="image_1" name="test image" url="https://example.com/image.jpg"></image>
 </images>
 <videos>
 <videos_docstring>here are user upload videos you can refer to</videos_docstring>
-<video name="test video" url="https://example.com/video.mp4"></video>
+<video ref="video_1" name="test video" url="https://example.com/video.mp4"></video>
 </videos>
 </files_info>
 <!-- END SYSTEM CONTEXT -->`,
@@ -256,7 +310,7 @@ describe('filesPrompts', () => {
 <files_info>
 <images>
 <images_docstring>here are user upload images you can refer to</images_docstring>
-<image name="test image" url="https://example.com/image.jpg"></image>
+<image ref="image_1" name="test image" url="https://example.com/image.jpg"></image>
 </images>
 <files>
 <files_docstring>here are user upload files you can refer to</files_docstring>
@@ -264,7 +318,7 @@ describe('filesPrompts', () => {
 </files>
 <videos>
 <videos_docstring>here are user upload videos you can refer to</videos_docstring>
-<video name="test video" url="https://example.com/video.mp4"></video>
+<video ref="video_1" name="test video" url="https://example.com/video.mp4"></video>
 </videos>
 </files_info>
 <!-- END SYSTEM CONTEXT -->`,
@@ -287,7 +341,7 @@ describe('filesPrompts', () => {
 
       expect(result).toContain('test video');
       expect(result).toContain('second video');
-      expect(result).toMatch(/<video.*?>.*<video.*?>/s); // Check for multiple video tags
+      expect(result.match(/<video\b/g)).toHaveLength(2);
     });
 
     it('should handle videos without url when addUrl is false', () => {
@@ -306,7 +360,7 @@ describe('filesPrompts', () => {
         <files_info>
         <videos>
         <videos_docstring>here are user upload videos you can refer to</videos_docstring>
-        <video name="test video"></video>
+        <video ref="video_1" name="test video"></video>
         </videos>
         </files_info>
         <!-- END SYSTEM CONTEXT -->"

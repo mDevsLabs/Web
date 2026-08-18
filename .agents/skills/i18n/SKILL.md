@@ -1,14 +1,15 @@
 ---
 name: i18n
-description: Internationalization guide using react-i18next. Use when adding translations, creating i18n keys, or working with localized text in React components (.tsx files). Triggers on translation tasks, locale management, or i18n implementation.
+description: 'LobeHub i18n with react-i18next. Use for user-facing strings, locale keys, namespaces, useTranslation, t(), interpolation, zh-CN/en-US previews, hardcoded UI copy, or bun run i18n.'
+user-invocable: false
 ---
 
-# LobeChat Internationalization Guide
+# LobeHub Internationalization Guide
 
-- Default language: Chinese (zh-CN)
+- Default language: English (en-US)
 - Framework: react-i18next
-- **Only edit files in `src/locales/default/`** - Never edit JSON files in `locales/`
-- Run `pnpm i18n` to generate translations (or manually translate zh-CN/en-US for dev preview)
+- **Only edit files in `packages/locales/src/default/`** - Never edit JSON files in `locales/` (except hand-written en-US/zh-CN previews)
+- Leave generated locales to the daily `auto-i18n.yml` workflow by default; run `bun run i18n` manually only when they are needed immediately
 
 ## Key Naming Convention
 
@@ -31,11 +32,13 @@ export default {
 **Patterns:** `{feature}.{context}.{action|status}`
 
 **Parameters:** Use `{{variableName}}` syntax
+
 ```typescript
 'alert.cloud.desc': '我们提供 {{credit}} 额度积分',
 ```
 
 **Avoid key conflicts:**
+
 ```typescript
 // ❌ Conflict
 'clientDB.solve': '自助解决',
@@ -48,10 +51,11 @@ export default {
 
 ## Workflow
 
-1. Add keys to `src/locales/default/{namespace}.ts`
-2. Export new namespace in `src/locales/default/index.ts`
+1. Add keys to `packages/locales/src/default/{namespace}.ts`
+2. Export new namespace in `packages/locales/src/default/index.ts`
 3. For dev preview: manually translate `locales/zh-CN/{namespace}.json` and `locales/en-US/{namespace}.json`
-4. Run `pnpm i18n` to generate all languages (CI handles this automatically)
+4. Leave all other locales to `.github/workflows/auto-i18n.yml`, which runs daily and opens an automated translation PR
+5. Run `bun run i18n` manually only when the branch needs those translations immediately; it is slow and requires `OPENAI_API_KEY`
 
 ## Usage
 
@@ -60,12 +64,12 @@ import { useTranslation } from 'react-i18next';
 
 const { t } = useTranslation('common');
 
-t('newFeature.title')
-t('alert.cloud.desc', { credit: '1000' })
+t('newFeature.title');
+t('alert.cloud.desc', { credit: '1000' });
 
 // Multiple namespaces
 const { t } = useTranslation(['common', 'chat']);
-t('common:save')
+t('common:save');
 ```
 
 ## Common Namespaces

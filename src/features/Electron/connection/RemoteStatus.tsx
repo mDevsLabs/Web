@@ -18,14 +18,13 @@ const RemoteStatus = memo<SyncProps>(({ onClick }) => {
     s.useDataSyncConfig,
   ]);
 
-  // 使用useSWR获取远程服务器配置
+  // Use useSWR to fetch the remote server configuration
   useRemoteServerConfig();
 
   return (
     <ActionIcon
       icon={isIniting ? Loader : isSyncActive ? Wifi : WifiOffIcon}
       loading={isIniting}
-      onClick={onClick}
       size="small"
       title={
         isIniting
@@ -37,6 +36,7 @@ const RemoteStatus = memo<SyncProps>(({ onClick }) => {
       tooltipProps={{
         placement: 'bottomRight',
       }}
+      onClick={onClick}
     />
   );
 });

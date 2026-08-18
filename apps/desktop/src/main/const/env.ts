@@ -1,15 +1,25 @@
-import { dev, linux, macOS, windows } from 'electron-is';
 import os from 'node:os';
 
 import { getDesktopEnv } from '@/env';
+import * as electronIs from '@/utils/platform';
 
-export const isDev = dev();
+export const isDev = electronIs.dev();
 
 export const OFFICIAL_CLOUD_SERVER = getDesktopEnv().OFFICIAL_CLOUD_SERVER;
+export const DESKTOP_EXTERNAL_NAVIGATION_HOSTS = getDesktopEnv().DESKTOP_EXTERNAL_NAVIGATION_HOSTS;
 
-export const isMac = macOS();
-export const isWindows = windows();
-export const isLinux = linux();
+export const isMac = electronIs.macOS();
+export const isWindows = electronIs.windows();
+export const isLinux = electronIs.linux();
+
+function getIsMacTahoe(): boolean {
+  if (!isMac) return false;
+  // macOS 26 (Tahoe) corresponds to Darwin kernel 25.x
+  const darwinMajor = parseInt(os.release().split('.')[0], 10);
+  return darwinMajor >= 25;
+}
+
+export const isMacTahoe = getIsMacTahoe();
 
 function getIsWindows11() {
   if (!isWindows) return false;

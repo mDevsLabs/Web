@@ -1,31 +1,22 @@
 import { ModelIcon } from '@lobehub/icons';
-import { Center, Flexbox } from '@lobehub/ui';
+import { Center, Tooltip } from '@lobehub/ui';
 import { createStaticStyles, cx } from 'antd-style';
-import { Settings2Icon } from 'lucide-react';
 import { memo, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
 
 import ModelSwitchPanel from '@/features/ModelSwitchPanel';
-import { useAgentStore } from '@/store/agent';
-import { agentByIdSelectors } from '@/store/agent/selectors';
 import { aiModelSelectors, useAiInfraStore } from '@/store/aiInfra';
+import { useChatStore } from '@/store/chat';
+import { topicSelectors } from '@/store/chat/slices/topic/selectors';
 
 import { useAgentId } from '../../hooks/useAgentId';
-import Action from '../components/Action';
+import { useAgentModelSelection } from '../../hooks/useAgentModelSelection';
+import { useModelLockTooltip } from '../../hooks/useModelLockTooltip';
 import { useActionBarContext } from '../context';
-import ControlsForm from './ControlsForm';
 
 const styles = createStaticStyles(({ css, cssVar }) => ({
-  container: css`
-    border-radius: 24px;
-    background: ${cssVar.colorFillTertiary};
+  icon: css`
+    transition: scale 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
   `,
-  icon: cx(
-    'model-switch',
-    css`
-      transition: scale 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
-    `,
-  ),
   model: css`
     cursor: pointer;
     border-radius: 24px;
@@ -35,80 +26,92 @@ const styles = createStaticStyles(({ css, cssVar }) => ({
     }
 
     :active {
-      .model-switch {
+      div {
         scale: 0.8;
       }
     }
   `,
-  modelWithControl: css`
-    border-radius: 24px;
+  modelReadonly: css`
+    cursor: default;
 
     :hover {
-      background: ${cssVar.colorFillTertiary};
+      background: transparent;
     }
-  `,
 
-  video: css`
-    overflow: hidden;
-    border-radius: 24px;
+    :active {
+      div {
+        scale: 1;
+      }
+    }
   `,
 }));
 
 const ModelSwitch = memo(() => {
-  const { t } = useTranslation('chat');
-  const { dropdownPlacement } = useActionBarContext();
-
+  const { actionSize, dropdownPlacement } = useActionBarContext();
+  const blockSize = actionSize?.blockSize ?? 32;
+  const iconSize = actionSize?.size ?? 20;
   const agentId = useAgentId();
-  const [model, provider, updateAgentConfigById] = useAgentStore((s) => [
-    agentByIdSelectors.getAgentModelById(agentId)(s),
-    agentByIdSelectors.getAgentModelProviderById(agentId)(s),
-    s.updateAgentConfigById,
-  ]);
+  const {
+    canDisplayModel,
+    canSelectModel,
+    model: agentModel,
+    provider: agentProvider,
+    selectionLockReason,
+    selectModel,
+  } = useAgentModelSelection(agentId);
+  // Topic-scoped model: a topic pins its own model (top-level `topics.model`
+  // column). Display the topic's pinned model when present, else the agent
+  // default; a switch pins to the active topic, otherwise updates the agent
+  // (via selectModel, which honors workspace member overrides).
+  const activeTopicId = useChatStore((s) => s.activeTopicId);
+  const topicModel = useChatStore(topicSelectors.activeTopicModel);
+  const updateTopicModel = useChatStore((s) => s.updateTopicModel);
+  const model = topicModel?.model ?? agentModel;
+  const provider = topicModel?.model ? topicModel.provider : agentProvider;
 
-  const isModelHasExtendParams = useAiInfraStore(
-    aiModelSelectors.isModelHasExtendParams(model, provider),
-  );
+  const enabledModel = useAiInfraStore(aiModelSelectors.getEnabledModelById(model, provider));
+  const displayName = enabledModel?.displayName || model;
+  const lockTooltip = useModelLockTooltip(displayName, selectionLockReason);
 
   const handleModelChange = useCallback(
     async (params: { model: string; provider: string }) => {
-      await updateAgentConfigById(agentId, params);
+      if (!canSelectModel) return;
+
+      if (activeTopicId) await updateTopicModel(activeTopicId, params);
+      else await selectModel(params);
     },
-    [agentId, updateAgentConfigById],
+    [activeTopicId, canSelectModel, selectModel, updateTopicModel],
   );
 
-  return (
-    <Flexbox align={'center'} className={isModelHasExtendParams ? styles.container : ''} horizontal>
-      <ModelSwitchPanel
-        model={model}
-        onModelChange={handleModelChange}
-        placement={dropdownPlacement}
-        provider={provider}
-      >
-        <Center
-          className={cx(styles.model, isModelHasExtendParams && styles.modelWithControl)}
-          height={36}
-          width={36}
-        >
-          <div className={styles.icon}>
-            <ModelIcon model={model} size={22} />
-          </div>
-        </Center>
-      </ModelSwitchPanel>
+  const trigger = (
+    <Center
+      aria-disabled={!canSelectModel}
+      aria-label={displayName}
+      className={cx(styles.model, !canSelectModel && styles.modelReadonly)}
+      height={blockSize}
+      width={blockSize}
+    >
+      <div className={styles.icon}>
+        <ModelIcon model={model} size={iconSize} />
+      </div>
+    </Center>
+  );
 
-      {isModelHasExtendParams && (
-        <Action
-          icon={Settings2Icon}
-          popover={{
-            content: <ControlsForm />,
-            minWidth: 350,
-            placement: 'topLeft',
-          }}
-          showTooltip={false}
-          style={{ borderRadius: 24, marginInlineStart: -4 }}
-          title={t('extendParams.title')}
-        />
-      )}
-    </Flexbox>
+  if (!canDisplayModel) return null;
+
+  // Locked: say which model is pinned AND why it can't be changed here — the
+  // bare model name used to leave the inert button unexplained.
+  if (!canSelectModel) return <Tooltip title={lockTooltip ?? displayName}>{trigger}</Tooltip>;
+
+  return (
+    <ModelSwitchPanel
+      model={model}
+      placement={dropdownPlacement}
+      provider={provider}
+      onModelChange={handleModelChange}
+    >
+      {trigger}
+    </ModelSwitchPanel>
   );
 });
 

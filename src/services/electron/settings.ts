@@ -1,8 +1,19 @@
-import { type NetworkProxySettings, type ShortcutUpdateResult } from '@lobechat/electron-client-ipc';
+import {
+  type NetworkProxySettings,
+  type ShortcutUpdateResult,
+  type WindowsShellMode,
+} from '@lobechat/electron-client-ipc';
 
 import { ensureElectronIpc } from '@/utils/electron/ipc';
 
 class DesktopSettingsService {
+  /**
+   * Get app tray visibility
+   */
+  getAppTrayVisible = async () => {
+    return ensureElectronIpc().tray.getAppTrayVisible();
+  };
+
   /**
    * Get proxy settings
    */
@@ -11,10 +22,31 @@ class DesktopSettingsService {
   };
 
   /**
+   * Get shell settings for agent command execution (Windows shell selection)
+   */
+  getShellSettings = async () => {
+    return ensureElectronIpc().shellCommand.getShellSettings();
+  };
+
+  /**
+   * Set the Windows shell mode for agent command execution
+   */
+  setShellMode = async (mode: WindowsShellMode) => {
+    return ensureElectronIpc().shellCommand.setShellMode({ mode });
+  };
+
+  /**
    * Set proxy settings
    */
   setSettings = async (data: Partial<NetworkProxySettings>) => {
     return ensureElectronIpc().networkProxy.setProxySettings(data);
+  };
+
+  /**
+   * Set app tray visibility
+   */
+  setAppTrayVisible = async (visible: boolean) => {
+    return ensureElectronIpc().tray.setAppTrayVisible(visible);
   };
 
   /**

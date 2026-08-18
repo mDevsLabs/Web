@@ -1,13 +1,18 @@
+import { DEFAULT_AVATAR } from '@lobechat/const';
+import { agentDisplayName } from '@lobechat/types';
 import { Avatar, Tag } from '@lobehub/ui';
 import { Command } from 'cmdk';
 import { ArrowLeft, X } from 'lucide-react';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { useAgentStore } from '@/store/agent';
+import { agentSelectors } from '@/store/agent/selectors';
+
 import { useCommandMenuContext } from '../CommandMenuContext';
 import { styles } from '../styles';
 import { useCommandMenu } from '../useCommandMenu';
-import type { ValidSearchType } from '../utils/queryParser';
+import { type ValidSearchType } from '../utils/queryParser';
 
 const CommandInput = memo(() => {
   const { t } = useTranslation('common');
@@ -23,10 +28,16 @@ const CommandInput = memo(() => {
     setTypeFilter,
     selectedAgent,
     setSelectedAgent,
+    activeAgentId,
   } = useCommandMenuContext();
+
+  const activeAgentMeta = useAgentStore((s) =>
+    activeAgentId ? agentSelectors.getAgentMetaById(activeAgentId)(s) : undefined,
+  );
 
   const hasPages = pages.length > 0;
   const hasSelectedAgent = !!selectedAgent;
+  const hasActiveAgent = !!activeAgentId && menuContext === 'agent';
 
   // Get localized context name
   const contextName = t(`cmdk.context.${menuContext}`, { defaultValue: menuContext });
@@ -37,7 +48,7 @@ const CommandInput = memo(() => {
 
   const getPlaceholder = () => {
     if (hasSelectedAgent) {
-      return t('cmdk.askAgentPlaceholder', { agent: selectedAgent.title });
+      return t('cmdk.askAgentPlaceholder', { agent: agentDisplayName(selectedAgent) });
     }
     if (page === 'ask-ai') {
       return t('cmdk.aiModePlaceholder');
@@ -49,7 +60,24 @@ const CommandInput = memo(() => {
     <>
       {(menuContext !== 'general' || typeFilter) && !hasPages && !hasSelectedAgent && (
         <div className={styles.contextWrapper}>
-          {menuContext !== 'general' && <Tag className={styles.contextTag}>{contextName}</Tag>}
+          {hasActiveAgent ? (
+            <Tag
+              className={styles.contextTag}
+              icon={
+                <Avatar
+                  emojiScaleWithBackground
+                  avatar={activeAgentMeta?.avatar || DEFAULT_AVATAR}
+                  background={activeAgentMeta?.backgroundColor}
+                  shape="square"
+                  size={14}
+                />
+              }
+            >
+              {agentDisplayName(activeAgentMeta, t('defaultAgent'))}
+            </Tag>
+          ) : (
+            menuContext !== 'general' && <Tag className={styles.contextTag}>{contextName}</Tag>
+          )}
           {typeFilter && (
             <Tag
               className={styles.backTag}
@@ -70,23 +98,23 @@ const CommandInput = memo(() => {
             closable
             icon={
               <Avatar
-                avatar={selectedAgent.avatar}
                 emojiScaleWithBackground
+                avatar={selectedAgent.avatar}
                 shape="square"
                 size={14}
               />
             }
             onClose={() => setSelectedAgent(undefined)}
           >
-            {selectedAgent.title}
+            {agentDisplayName(selectedAgent)}
           </Tag>
         )}
         <Command.Input
           autoFocus
           maxLength={500}
-          onValueChange={setSearch}
           placeholder={getPlaceholder()}
           value={search}
+          onValueChange={setSearch}
         />
         {page !== 'ask-ai' && !hasSelectedAgent && search.trim() ? (
           <>

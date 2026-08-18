@@ -1,11 +1,12 @@
-import type { ActivityListResult } from '@lobechat/types';
+import { type ActivityListResult } from '@lobechat/types';
 import { uniqBy } from 'es-toolkit/compat';
 import { produce } from 'immer';
-import useSWR, { type SWRResponse } from 'swr';
-import { type StateCreator } from 'zustand/vanilla';
+import { type SWRResponse } from 'swr';
+import useSWR from 'swr';
 
-import { userMemoryService } from '@/services/userMemory';
-import { memoryCRUDService } from '@/services/userMemory/index';
+import { userMemoryKeys } from '@/libs/swr/keys';
+import { memoryCRUDService, userMemoryService } from '@/services/userMemory';
+import { type StoreSetter } from '@/store/types';
 import { setNamespace } from '@/utils/storeDebug';
 
 import { type UserMemoryStore } from '../../store';
@@ -18,31 +19,35 @@ export interface ActivityQueryParams {
   q?: string;
   sort?: 'capturedAt' | 'startsAt';
   status?: string[];
-   types?: string[];
+  types?: string[];
 }
 
-export interface ActivityAction {
-  deleteActivity: (id: string) => Promise<void>;
-  loadMoreActivities: () => void;
-  resetActivitiesList: (params?: Omit<ActivityQueryParams, 'page' | 'pageSize'>) => void;
-  useFetchActivities: (params: ActivityQueryParams) => SWRResponse<ActivityListResult>;
-}
+type Setter = StoreSetter<UserMemoryStore>;
+export const createActivitySlice = (set: Setter, get: () => UserMemoryStore, _api?: unknown) =>
+  new ActivityActionImpl(set, get, _api);
 
-export const createActivitySlice: StateCreator<
-  UserMemoryStore,
-  [['zustand/devtools', never]],
-  [],
-  ActivityAction
-> = (set, get) => ({
-  deleteActivity: async (id) => {
+export class ActivityActionImpl {
+  readonly #get: () => UserMemoryStore;
+  readonly #set: Setter;
+
+  constructor(set: Setter, get: () => UserMemoryStore, _api?: unknown) {
+    void _api;
+    this.#set = set;
+    this.#get = get;
+  }
+
+  deleteActivity = async (id: string): Promise<void> => {
     await memoryCRUDService.deleteActivity(id);
-    get().resetActivitiesList({ q: get().activitiesQuery, sort: get().activitiesSort });
-  },
+    this.#get().resetActivitiesList({
+      q: this.#get().activitiesQuery,
+      sort: this.#get().activitiesSort,
+    });
+  };
 
-  loadMoreActivities: () => {
-    const { activitiesPage, activitiesTotal, activities } = get();
+  loadMoreActivities = (): void => {
+    const { activitiesPage, activitiesTotal, activities } = this.#get();
     if (activities.length < (activitiesTotal || 0)) {
-      set(
+      this.#set(
         produce((draft) => {
           draft.activitiesPage = activitiesPage + 1;
         }),
@@ -50,10 +55,10 @@ export const createActivitySlice: StateCreator<
         n('loadMoreActivities'),
       );
     }
-  },
+  };
 
-  resetActivitiesList: (params) => {
-    set(
+  resetActivitiesList = (params?: Omit<ActivityQueryParams, 'page' | 'pageSize'>): void => {
+    this.#set(
       produce((draft) => {
         draft.activities = [];
         draft.activitiesPage = 1;
@@ -64,25 +69,13 @@ export const createActivitySlice: StateCreator<
       false,
       n('resetActivitiesList'),
     );
-  },
+  };
 
-  useFetchActivities: (params) => {
-    const swrKeyParts = [
-      'useFetchActivities',
-      params.page,
-      params.pageSize,
-      params.q,
-      params.sort,
-      params.status?.join(',') ?? '',
-      params.types?.join(',') ?? '',
-    ];
-    const swrKey = swrKeyParts
-      .filter((part) => part !== undefined && part !== null && part !== '')
-      .join('-');
+  useFetchActivities = (params: ActivityQueryParams): SWRResponse<ActivityListResult> => {
     const page = params.page ?? 1;
 
     return useSWR(
-      swrKey,
+      userMemoryKeys.activities(params),
       async () => {
         return userMemoryService.queryActivities({
           page: params.page,
@@ -94,8 +87,8 @@ export const createActivitySlice: StateCreator<
         });
       },
       {
-        onSuccess(data: ActivityListResult) {
-          set(
+        onSuccess: (data: ActivityListResult) => {
+          this.#set(
             produce((draft) => {
               draft.activitiesSearchLoading = false;
               draft.activitiesTotal = data.total;
@@ -119,5 +112,7 @@ export const createActivitySlice: StateCreator<
         revalidateOnFocus: false,
       },
     );
-  },
-});
+  };
+}
+
+export type ActivityAction = Pick<ActivityActionImpl, keyof ActivityActionImpl>;

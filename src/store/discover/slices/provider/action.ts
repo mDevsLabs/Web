@@ -1,9 +1,11 @@
-import useSWR, { type SWRResponse } from 'swr';
-import type { StateCreator } from 'zustand/vanilla';
+import { type SWRResponse } from 'swr';
+import useSWR from 'swr';
 
+import { discoverKeys } from '@/libs/swr/keys';
 import { discoverService } from '@/services/discover';
 import { type DiscoverStore } from '@/store/discover';
 import { globalHelpers } from '@/store/global/helpers';
+import { type StoreSetter } from '@/store/types';
 import {
   type DiscoverProviderDetail,
   type IdentifiersResponse,
@@ -11,42 +13,45 @@ import {
   type ProviderQueryParams,
 } from '@/types/discover';
 
-export interface ProviderAction {
-  useProviderDetail: (params: {
+type Setter = StoreSetter<DiscoverStore>;
+export const createProviderSlice = (set: Setter, get: () => DiscoverStore, _api?: unknown) =>
+  new ProviderActionImpl(set, get, _api);
+
+export class ProviderActionImpl {
+  constructor(set: Setter, get: () => DiscoverStore, _api?: unknown) {
+    void _api;
+    void set;
+    void get;
+  }
+
+  useProviderDetail = (params: {
     identifier: string;
     withReadme?: boolean;
-  }) => SWRResponse<DiscoverProviderDetail | undefined>;
-  useProviderIdentifiers: () => SWRResponse<IdentifiersResponse>;
-  useProviderList: (params?: ProviderQueryParams) => SWRResponse<ProviderListResponse>;
-}
-
-export const createProviderSlice: StateCreator<
-  DiscoverStore,
-  [['zustand/devtools', never]],
-  [],
-  ProviderAction
-> = () => ({
-  useProviderDetail: (params) => {
+  }): SWRResponse<DiscoverProviderDetail | undefined> => {
     const locale = globalHelpers.getCurrentLanguage();
     return useSWR(
-      ['provider-details', locale, params.identifier].filter(Boolean).join('-'),
+      discoverKeys.providerDetail(locale, params.identifier),
       async () => discoverService.getProviderDetail(params),
       {
         revalidateOnFocus: false,
       },
     );
-  },
+  };
 
-  useProviderIdentifiers: () => {
-    return useSWR('provider-identifiers', async () => discoverService.getProviderIdentifiers(), {
-      revalidateOnFocus: false,
-    });
-  },
+  useProviderIdentifiers = (): SWRResponse<IdentifiersResponse> => {
+    return useSWR(
+      discoverKeys.providerIdentifiers(),
+      async () => discoverService.getProviderIdentifiers(),
+      {
+        revalidateOnFocus: false,
+      },
+    );
+  };
 
-  useProviderList: (params = {}) => {
+  useProviderList = (params: ProviderQueryParams = {}): SWRResponse<ProviderListResponse> => {
     const locale = globalHelpers.getCurrentLanguage();
     return useSWR(
-      ['provider-list', locale, ...Object.values(params)].filter(Boolean).join('-'),
+      discoverKeys.providerList(locale, params),
       async () =>
         discoverService.getProviderList({
           ...params,
@@ -57,5 +62,7 @@ export const createProviderSlice: StateCreator<
         revalidateOnFocus: false,
       },
     );
-  },
-});
+  };
+}
+
+export type ProviderAction = Pick<ProviderActionImpl, keyof ProviderActionImpl>;

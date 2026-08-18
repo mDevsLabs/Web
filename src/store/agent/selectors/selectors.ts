@@ -3,24 +3,33 @@ import {
   DEFAULT_AGENT_CONFIG,
   DEFAULT_AVATAR,
   DEFAULT_BACKGROUND_COLOR,
+  DEFAULT_INBOX_AVATAR,
   DEFAULT_MODEL,
   DEFAUTT_AGENT_TTS_CONFIG,
+  isDesktop,
 } from '@lobechat/const';
 import {
+  agentDisplayName,
   type AgentMode,
   type KnowledgeItem,
-  KnowledgeType,
   type LobeAgentConfig,
   type LobeAgentTTSConfig,
-  type LocalSystemConfig,
   type MetaData,
+  type RuntimeEnvConfig,
 } from '@lobechat/types';
-import { VoiceList } from '@lobehub/tts';
+import {
+  getActivePluginIds,
+  getDisabledPluginIds,
+  getWorkingDirEffectivePath,
+  KnowledgeType,
+} from '@lobechat/types';
 
 import { DEFAULT_OPENING_QUESTIONS } from '@/features/AgentSetting/store/selectors';
+import { resolveTargetDeviceId } from '@/helpers/agentWorkingDirectory';
+import { globalAgentContextManager } from '@/helpers/GlobalAgentContextManager';
 import { filterToolIds } from '@/helpers/toolFilters';
 
-import type { AgentStoreState } from '../initialState';
+import { type AgentStoreState } from '../initialState';
 import { builtinAgentSelectors } from './builtinAgentSelectors';
 
 // ==========   Meta   ============== //
@@ -30,7 +39,21 @@ const currentAgentData = (s: AgentStoreState) =>
 
 const currentAgentTitle = (s: AgentStoreState) => currentAgentData(s)?.title;
 
-const currentAgentAvatar = (s: AgentStoreState) => currentAgentData(s)?.avatar || DEFAULT_AVATAR;
+/**
+ * The label to show for the active agent: personal name first, role as the
+ * fallback. Use this for rendering; `currentAgentTitle` stays the raw role for
+ * anything that edits or reasons about it.
+ */
+const currentAgentDisplayName = (s: AgentStoreState) => agentDisplayName(currentAgentData(s));
+
+const getDefaultAvatarByAgentId = (s: AgentStoreState, agentId?: string) => {
+  const inboxAgentId = builtinAgentSelectors.inboxAgentId(s);
+
+  return agentId && inboxAgentId === agentId ? DEFAULT_INBOX_AVATAR : DEFAULT_AVATAR;
+};
+
+const currentAgentAvatar = (s: AgentStoreState) =>
+  currentAgentData(s)?.avatar || getDefaultAvatarByAgentId(s, s.activeAgentId);
 
 const currentAgentDescription = (s: AgentStoreState) => currentAgentData(s)?.description;
 
@@ -39,6 +62,12 @@ const currentAgentBackgroundColor = (s: AgentStoreState) =>
 
 const currentAgentTags = (s: AgentStoreState) => currentAgentData(s)?.tags || [];
 
+const currentAgentAuthorId = (s: AgentStoreState) => currentAgentData(s)?.userId;
+
+const currentAgentCreatedAt = (s: AgentStoreState) => currentAgentData(s)?.createdAt;
+
+const currentAgentVisibility = (s: AgentStoreState) => currentAgentData(s)?.visibility;
+
 /**
  * Get complete meta data for the current agent
  * Used to replace sessionMetaSelectors.currentAgentMeta
@@ -46,10 +75,11 @@ const currentAgentTags = (s: AgentStoreState) => currentAgentData(s)?.tags || []
 const currentAgentMeta = (s: AgentStoreState): MetaData => {
   const data = currentAgentData(s);
   return {
-    avatar: data?.avatar || DEFAULT_AVATAR,
+    avatar: data?.avatar || getDefaultAvatarByAgentId(s, s.activeAgentId),
     backgroundColor: data?.backgroundColor || DEFAULT_BACKGROUND_COLOR,
     description: data?.description || undefined,
     marketIdentifier: data?.marketIdentifier || undefined,
+    name: data?.name || undefined,
     tags: data?.tags,
     title: data?.title || undefined,
   };
@@ -66,10 +96,11 @@ const getAgentMetaById =
     if (!data) return {};
 
     return {
-      avatar: data.avatar || DEFAULT_AVATAR,
+      avatar: data.avatar || getDefaultAvatarByAgentId(s, agentId),
       backgroundColor: data.backgroundColor || DEFAULT_BACKGROUND_COLOR,
       description: data.description || undefined,
       marketIdentifier: data.marketIdentifier || undefined,
+      name: data.name || undefined,
       tags: data.tags,
       title: data.title || undefined,
     };
@@ -109,10 +140,29 @@ const currentAgentModelProvider = (s: AgentStoreState) => {
   return config?.provider || DEFAULT_PROVIDER;
 };
 
+/**
+ * Pinned plugin identifiers for the current agent — disabled entries are
+ * excluded. Matches the pre-tri-state semantics where array-membership meant
+ * pinned; consumers that need the disabled set use `getDisabledPluginIds`
+ * directly.
+ */
 const currentAgentPlugins = (s: AgentStoreState) => {
   const config = currentAgentConfig(s);
 
-  return config?.plugins || [];
+  return getActivePluginIds(config?.plugins);
+};
+
+/**
+ * Disabled plugin identifiers for the current agent. Consumers that build a
+ * tool/skill candidate pool (not just the "always whitelisted" rule map)
+ * need this to actually drop a disabled entry from the pool — being absent
+ * from `currentAgentPlugins` alone doesn't stop it from being present (and
+ * explicit-activation-eligible) in an unfiltered manifest source.
+ */
+const currentAgentDisabledPlugins = (s: AgentStoreState) => {
+  const config = currentAgentConfig(s);
+
+  return getDisabledPluginIds(config?.plugins);
 };
 
 /**
@@ -142,28 +192,8 @@ const currentAgentTTS = (s: AgentStoreState): LobeAgentTTSConfig => {
   return config?.tts || DEFAUTT_AGENT_TTS_CONFIG;
 };
 
-const currentAgentTTSVoice =
-  (lang: string) =>
-  (s: AgentStoreState): string => {
-    const { voice, ttsService } = currentAgentTTS(s);
-    const voiceList = new VoiceList(lang);
-    let currentVoice;
-    switch (ttsService) {
-      case 'openai': {
-        currentVoice = voice.openai || (VoiceList.openaiVoiceOptions?.[0].value as string);
-        break;
-      }
-      case 'edge': {
-        currentVoice = voice.edge || (voiceList.edgeVoiceOptions?.[0].value as string);
-        break;
-      }
-      case 'microsoft': {
-        currentVoice = voice.microsoft || (voiceList.microsoftVoiceOptions?.[0].value as string);
-        break;
-      }
-    }
-    return currentVoice || 'alloy';
-  };
+const currentAgentTTSVoice = (s: AgentStoreState): string =>
+  currentAgentTTS(s).voice?.openai || 'alloy';
 
 const currentEnabledKnowledge = (s: AgentStoreState) => {
   const knowledgeBases = currentAgentKnowledgeBases(s);
@@ -214,7 +244,26 @@ const currentKnowledgeIds = (s: AgentStoreState) => {
 };
 
 const isAgentConfigLoading = (s: AgentStoreState) =>
-  !s.activeAgentId || !s.agentMap[s.activeAgentId];
+  // A not-found agent never lands in `agentMap` — treat it as settled so the
+  // UI renders the 404 card instead of an endless skeleton.
+  !s.activeAgentId || (!s.agentMap[s.activeAgentId] && !s.agentNotFoundMap[s.activeAgentId]);
+
+/**
+ * The active agent's config fetch settled on `null` — the agent doesn't exist
+ * or the caller lost access (e.g. a workspace agent switched back to private).
+ */
+const isCurrentAgentNotFound = (s: AgentStoreState): boolean =>
+  !!s.activeAgentId && !!s.agentNotFoundMap[s.activeAgentId];
+
+/**
+ * Fetch error for the active agent's config (undefined when none).
+ * Distinguishes "fetch failed" from `isAgentConfigLoading`'s "no data yet",
+ * so failure surfaces a retry UI instead of an endless skeleton.
+ */
+const currentAgentConfigError = (s: AgentStoreState): string | undefined =>
+  s.activeAgentId ? s.agentConfigErrorMap[s.activeAgentId] : undefined;
+
+const isAgentConfigError = (s: AgentStoreState) => !!currentAgentConfigError(s);
 
 /**
  * Get agent's slug by ID (used to identify builtin agents)
@@ -228,18 +277,14 @@ const openingMessage = (s: AgentStoreState) => currentAgentConfig(s)?.openingMes
 // ==========   Agent Mode Config   ============== //
 
 /**
- * Get current agent's mode
- * Now reads from chatConfig.agentMode and chatConfig.enableAgentMode
+ * Get current agent's mode.
+ * Agent mode is the default — only an explicit `chatConfig.enableAgentMode === false`
+ * collapses the agent to chat mode.
  */
 const currentAgentMode = (s: AgentStoreState): AgentMode | undefined => {
   const config = currentAgentConfig(s);
-
-  // Fallback: convert enableAgentMode to mode
-  if (config?.enableAgentMode) {
-    return 'auto';
-  }
-
-  return undefined;
+  const chatConfig = config?.chatConfig;
+  return chatConfig?.enableAgentMode === false ? undefined : 'auto';
 };
 
 /**
@@ -248,30 +293,77 @@ const currentAgentMode = (s: AgentStoreState): AgentMode | undefined => {
 const isAgentModeEnabled = (s: AgentStoreState): boolean => currentAgentMode(s) !== undefined;
 
 /**
- * Get current agent's local system config
- * Now reads from chatConfig.localSystem
+ * Get current agent's runtime env config
+ * Now reads from chatConfig.runtimeEnv
  */
-const currentAgentLocalSystemConfig = (s: AgentStoreState): LocalSystemConfig | undefined =>
-  currentAgentConfig(s)?.chatConfig?.localSystem;
+const currentAgentRuntimeEnvConfig = (s: AgentStoreState): RuntimeEnvConfig | undefined =>
+  currentAgentConfig(s)?.chatConfig?.runtimeEnv;
 
 /**
- * Get current agent's working directory
+ * Get the active agent's agent-level working directory.
+ *
+ * Precedence mirrors `getAgentWorkingDirectoryById` (the agent-owned slice only;
+ * topic overrides are layered on by callers):
+ *
+ *   agent's per-device choice (`agencyConfig.workingDirByDevice[targetDeviceId]`)
+ *     > legacy per-agent localStorage value > home path
+ *
+ * `currentDeviceId` is passed in (not read cross-store) so the target device is
+ * resolved correctly for device-bound agents and hook callers stay reactive.
  */
-const currentAgentWorkingDirectory = (s: AgentStoreState): string | undefined =>
-  currentAgentLocalSystemConfig(s)?.workingDirectory;
+const currentAgentWorkingDirectory =
+  (currentDeviceId?: string) =>
+  (s: AgentStoreState): string | undefined => {
+    if (!isDesktop) return;
+
+    const homePath = globalAgentContextManager.getContext().homePath;
+    const activeAgentId = s.activeAgentId;
+    if (!activeAgentId) return homePath;
+
+    const agencyConfig = currentAgentConfig(s)?.agencyConfig;
+    const targetDeviceId = resolveTargetDeviceId(agencyConfig, currentDeviceId);
+    const agentChoice = targetDeviceId
+      ? getWorkingDirEffectivePath(agencyConfig?.workingDirByDevice?.[targetDeviceId])
+      : undefined;
+
+    return agentChoice ?? s.localAgentWorkingDirectoryMap[activeAgentId] ?? homePath;
+  };
 
 const isCurrentAgentExternal = (s: AgentStoreState): boolean => !currentAgentData(s)?.virtual;
 
+/**
+ * Whether current agent is driven by an external heterogeneous runtime
+ * (e.g. Claude Code). These agents skip LobeHub's message-channel / model
+ * pickers because their toolchain is owned by the external runtime.
+ */
+const isCurrentAgentHeterogeneous = (s: AgentStoreState): boolean =>
+  !!currentAgentConfig(s)?.agencyConfig?.heterogeneousProvider;
+
+const currentAgentHeterogeneousProviderType = (s: AgentStoreState) =>
+  currentAgentConfig(s)?.agencyConfig?.heterogeneousProvider?.type;
+
+const currentAgentExecutionTarget = (s: AgentStoreState) =>
+  currentAgentConfig(s)?.agencyConfig?.executionTarget;
+
+const getAgentDocumentsById = (agentId: string) => (s: AgentStoreState) =>
+  s.agentDocumentsMap[agentId];
+
 export const agentSelectors = {
+  currentAgentExecutionTarget,
+  currentAgentHeterogeneousProviderType,
+  currentAgentAuthorId,
   currentAgentAvatar,
   currentAgentBackgroundColor,
+  currentAgentCreatedAt,
   currentAgentConfig,
+  currentAgentConfigError,
   currentAgentDescription,
   currentAgentFiles,
   currentAgentKnowledgeBases,
-  currentAgentLocalSystemConfig,
+  currentAgentRuntimeEnvConfig,
   currentAgentMeta,
   currentAgentMode,
+  currentAgentDisabledPlugins,
   currentAgentModel,
   currentAgentModelProvider,
   currentAgentPlugins,
@@ -279,12 +371,15 @@ export const agentSelectors = {
   currentAgentTTS,
   currentAgentTTSVoice,
   currentAgentTags,
+  currentAgentDisplayName,
   currentAgentTitle,
+  currentAgentVisibility,
   currentAgentWorkingDirectory,
   currentEnabledKnowledge,
   currentKnowledgeIds,
   displayableAgentPlugins,
   getAgentConfigById,
+  getAgentDocumentsById,
   getAgentMetaById,
   getAgentSlugById,
   hasEnabledKnowledge,
@@ -293,9 +388,12 @@ export const agentSelectors = {
   hasSystemRole,
   inboxAgentConfig,
   inboxAgentModel,
+  isAgentConfigError,
   isAgentConfigLoading,
+  isCurrentAgentNotFound,
   isAgentModeEnabled,
   isCurrentAgentExternal,
+  isCurrentAgentHeterogeneous,
   openingMessage,
   openingQuestions,
 };

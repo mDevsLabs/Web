@@ -1,12 +1,16 @@
-import { Flexbox, Icon, type ItemType, Text } from '@lobehub/ui';
+import type { ItemType } from '@lobehub/ui';
+import { Flexbox, Icon, Popover, Text } from '@lobehub/ui';
 import { Divider } from 'antd';
 import { createStaticStyles, cssVar } from 'antd-style';
 import type { ReactNode } from 'react';
 import { Fragment, isValidElement, memo } from 'react';
 
+import { useDetailPopoverState } from '../components/useDetailPopoverState';
+import { useScrollSignal } from './ScrollSignalContext';
+
 export const toolsListStyles = createStaticStyles(({ css }) => ({
   groupLabel: css`
-    padding-block: 4px;
+    padding-block: 12px 4px;
     padding-inline: 12px;
   `,
   item: css`
@@ -38,10 +42,6 @@ export const toolsListStyles = createStaticStyles(({ css }) => ({
 
     width: 24px;
     height: 24px;
-
-    .ant-avatar {
-      margin-inline-end: 0;
-    }
   `,
 }));
 
@@ -52,58 +52,122 @@ interface ToolItemData {
   key?: string;
   label?: ReactNode;
   onClick?: () => void;
+  /**
+   * Optional rich content shown in a hover popover for this row.
+   * When set, the row is wrapped with a Popover triggered on hover, similar
+   * to the model selector's detail popover.
+   */
+  popoverContent?: ReactNode;
   type?: 'group' | 'divider';
 }
 
 interface ToolsListProps {
+  detailPopoverDisabled?: boolean;
   items: ItemType[];
 }
 
-const ToolsList = memo<ToolsListProps>(({ items }) => {
-  const renderItem = (item: ToolItemData, index: number) => {
-    if (item.type === 'divider') {
-      return <Divider key={`divider-${index}`} style={{ margin: '4px 0' }} />;
-    }
+const DividerItem = memo<{ index: number }>(({ index }) => (
+  <Divider key={`divider-${index}`} style={{ margin: '4px 0' }} />
+));
 
-    if (item.type === 'group') {
-      return (
-        <Fragment key={item.key || `group-${index}`}>
-          <Text className={toolsListStyles.groupLabel} fontSize={12} type="secondary">
-            {item.label}
-          </Text>
-          {item.children?.map((child, childIndex) => renderItem(child, childIndex))}
-        </Fragment>
-      );
-    }
+const RegularItem = memo<{
+  detailPopoverDisabled?: boolean;
+  index: number;
+  item: ToolItemData;
+}>(({ detailPopoverDisabled, item, index }) => {
+  const { close, onOpenChange, open } = useDetailPopoverState(detailPopoverDisabled);
 
-    // Regular item
-    // icon can be: ReactNode (already rendered), LucideIcon/ForwardRef (needs Icon wrapper), or undefined
-    const iconNode = item.icon ? (
-      isValidElement(item.icon) ? (
-        item.icon
-      ) : (
-        <Icon icon={item.icon as any} size={20} />
-      )
-    ) : null;
+  // Close hover popover whenever the surrounding list scrolls — avoids the
+  // detail panel hovering in mid-air after its anchor row has moved away.
+  useScrollSignal(close);
 
-    return (
-      <div
-        className={toolsListStyles.item}
-        key={item.key || `item-${index}`}
-        onClick={item.onClick}
-        role="button"
-        tabIndex={0}
-      >
-        {iconNode && <div className={toolsListStyles.itemIcon}>{iconNode}</div>}
-        <div className={toolsListStyles.itemContent}>{item.label}</div>
-        {item.extra}
-      </div>
-    );
-  };
+  const iconNode = item.icon ? (
+    isValidElement(item.icon) ? (
+      item.icon
+    ) : (
+      <Icon icon={item.icon as any} size={20} />
+    )
+  ) : null;
 
+  const row = (
+    <div
+      className={toolsListStyles.item}
+      key={item.key || `item-${index}`}
+      role="button"
+      tabIndex={0}
+      onClick={item.onClick}
+    >
+      {iconNode && <div className={toolsListStyles.itemIcon}>{iconNode}</div>}
+      <div className={toolsListStyles.itemContent}>{item.label}</div>
+      {item.extra}
+    </div>
+  );
+
+  if (!item.popoverContent) return row;
+
+  // The detail card is a hover information surface: keep it inert
+  // (pointer-events: none) so a press can never land on the portal'd card and
+  // be read as an outside press that dismisses the surrounding popover.
+  return (
+    <Popover
+      arrow={false}
+      content={item.popoverContent}
+      disabled={detailPopoverDisabled}
+      mouseEnterDelay={0.3}
+      open={open}
+      placement={'rightTop'}
+      positionerProps={{ sideOffset: 8 }}
+      styles={{ content: { padding: 0 }, root: { pointerEvents: 'none' } }}
+      onOpenChange={onOpenChange}
+    >
+      {row}
+    </Popover>
+  );
+});
+
+const GroupItem = memo<{
+  detailPopoverDisabled?: boolean;
+  index: number;
+  item: ToolItemData;
+}>(({ detailPopoverDisabled, item, index }) => (
+  <Fragment key={item.key || `group-${index}`}>
+    <Text className={toolsListStyles.groupLabel} fontSize={12} type="secondary">
+      {item.label}
+    </Text>
+    {item.children?.map((child, childIndex) => (
+      <ToolListItem
+        detailPopoverDisabled={detailPopoverDisabled}
+        index={childIndex}
+        item={child}
+        key={child.key || `item-${childIndex}`}
+      />
+    ))}
+  </Fragment>
+));
+
+const ToolListItem = memo<{
+  detailPopoverDisabled?: boolean;
+  index: number;
+  item: ToolItemData | null;
+}>(({ detailPopoverDisabled, item, index }) => {
+  if (!item) return null;
+  if (item.type === 'divider') return <DividerItem index={index} />;
+  if (item.type === 'group')
+    return <GroupItem detailPopoverDisabled={detailPopoverDisabled} index={index} item={item} />;
+  return <RegularItem detailPopoverDisabled={detailPopoverDisabled} index={index} item={item} />;
+});
+
+const ToolsList = memo<ToolsListProps>(({ detailPopoverDisabled, items }) => {
   return (
     <Flexbox gap={0} padding={4}>
-      {items.map((item, index) => renderItem(item as ToolItemData, index))}
+      {items.map((item, index) => (
+        <ToolListItem
+          detailPopoverDisabled={detailPopoverDisabled}
+          index={index}
+          item={item as ToolItemData | null}
+          key={item?.key || `item-${index}`}
+        />
+      ))}
     </Flexbox>
   );
 });

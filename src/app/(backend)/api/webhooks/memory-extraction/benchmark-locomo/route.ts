@@ -1,12 +1,12 @@
+import { BenchmarkLocomoContextProvider } from '@lobechat/memory-user-memory';
+import { MemorySourceType } from '@lobechat/types';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 
-import { MemorySourceType } from '@lobechat/types';
-import { BenchmarkLocomoContextProvider } from '@lobechat/memory-user-memory';
 import { UserMemorySourceBenchmarkLoCoMoModel } from '@/database/models/userMemory/sources/benchmarkLoCoMo';
+import { parseMemoryExtractionConfig } from '@/server/globalConfig/parseMemoryExtractionConfig';
 import { MemoryExtractionExecutor } from '@/server/services/memory/userMemory/extract';
 import { LayersEnum } from '@/types/userMemory';
-import { parseMemoryExtractionConfig } from '@/server/globalConfig/parseMemoryExtractionConfig';
 
 
 const turnSchema = z.object({
@@ -80,10 +80,7 @@ export const POST = async (req: Request) => {
     const executor = await MemoryExtractionExecutor.create();
     const layers = normalizeLayers(parsed.layers);
 
-    const results: SessionExtractionResult[] = [];
-    let totalInsertedParts = 0;
-
-    await Promise.all(parsed.sessions.map(async (session) => {
+    const results: SessionExtractionResult[] = await Promise.all(parsed.sessions.map(async (session) => {
       const sessionSourceId = `${baseSourceId}_${session.sessionId}`;
 
       try {
@@ -104,7 +101,7 @@ export const POST = async (req: Request) => {
           insertedParts: 0,
           sessionId: session.sessionId,
           sourceId: sessionSourceId,
-        }
+        };
       }
 
       const parts = session.turns.map((turn, index) => {
@@ -151,7 +148,7 @@ export const POST = async (req: Request) => {
           insertedParts: parts.length,
           sessionId: session.sessionId,
           sourceId: sessionSourceId,
-        }
+        };
       } catch (error) {
         console.error(`[locomo-ingest-webhook] extractBenchmarkSource failed for sourceId=${sessionSourceId}`, error);
         return {
@@ -159,9 +156,10 @@ export const POST = async (req: Request) => {
           insertedParts: parts.length,
           sessionId: session.sessionId,
           sourceId: sessionSourceId,
-        }
+        };
       }
-    }))
+    }));
+    const totalInsertedParts = results.reduce((total, result) => total + result.insertedParts, 0);
 
     return NextResponse.json(
       {

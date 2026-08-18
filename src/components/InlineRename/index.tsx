@@ -1,8 +1,12 @@
 'use client';
 
-import { Input, type InputProps, Popover } from '@lobehub/ui';
-import type { InputRef, PopoverProps } from 'antd';
-import { KeyboardEvent, memo, useCallback, useEffect, useRef, useState } from 'react';
+import { type InputProps } from '@lobehub/ui';
+import { Input, Popover, stopPropagation } from '@lobehub/ui';
+import { type InputRef, type PopoverProps } from 'antd';
+import { type KeyboardEvent } from 'react';
+import { memo, useCallback, useEffect, useRef, useState } from 'react';
+
+import { useOverlayPopoverPortalProps } from '@/features/NavPanel/OverlayContainer';
 
 function FocusableInput(props: InputProps) {
   const ref = useRef<InputRef>(null);
@@ -49,6 +53,7 @@ const InlineRename = memo<InlineRenameProps>(
   ({ open, title, onOpenChange, onSave, onCancel, placement = 'bottomLeft', width = 320 }) => {
     const [newTitle, setNewTitle] = useState(title);
     const savedRef = useRef(false);
+    const popoverPortalProps = useOverlayPopoverPortalProps();
 
     // Reset state when opening
     useEffect(() => {
@@ -85,12 +90,16 @@ const InlineRename = memo<InlineRenameProps>(
 
     return (
       <Popover
+        open={open}
+        placement={placement}
+        portalProps={popoverPortalProps}
+        trigger="click"
         content={
           <FocusableInput
             defaultValue={title}
             onBlur={handleSave}
             onChange={(e) => setNewTitle(e.target.value)}
-            onClick={(e) => e.stopPropagation()}
+            onClick={stopPropagation}
             onKeyDown={handleKeyDown}
             onPressEnter={() => {
               handleSave();
@@ -98,19 +107,16 @@ const InlineRename = memo<InlineRenameProps>(
             }}
           />
         }
-        onOpenChange={(nextOpen) => {
-          if (!nextOpen) handleSave();
-          onOpenChange(nextOpen);
-        }}
-        open={open}
-        placement={placement}
         styles={{
           content: {
             padding: 4,
             width,
           },
         }}
-        trigger="click"
+        onOpenChange={(nextOpen) => {
+          if (!nextOpen) handleSave();
+          onOpenChange(nextOpen);
+        }}
       >
         <div />
       </Popover>

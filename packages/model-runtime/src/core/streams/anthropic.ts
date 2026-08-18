@@ -1,15 +1,17 @@
-import Anthropic from '@anthropic-ai/sdk';
+import type Anthropic from '@anthropic-ai/sdk';
 import type { Stream } from '@anthropic-ai/sdk/streaming';
-import { ChatCitationItem } from '@lobechat/types';
+import type { ChatCitationItem } from '@lobechat/types';
 
-import { ChatStreamCallbacks } from '../../types';
+import type { ChatStreamCallbacks } from '../../types';
 import { convertAnthropicUsage } from '../usageConverters';
-import {
+import type {
   ChatPayloadForTransformStream,
   StreamContext,
   StreamProtocolChunk,
   StreamProtocolToolCallChunk,
   StreamToolCallChunkData,
+} from './protocol';
+import {
   convertIterableToStream,
   createCallbacksTransformer,
   createSSEProtocolTransformer,
@@ -191,16 +193,38 @@ export const transformAnthropicStream = (
       }
 
       if (aggregatedUsage && (aggregatedUsage.totalTokens ?? 0) > 0) {
+        delete context.usageMissingDiagnostics;
         return [
           { data: chunk.delta.stop_reason, id: context.id, type: 'stop' },
           { data: aggregatedUsage, id: context.id, type: 'usage' },
         ];
       }
 
+      context.usageMissingDiagnostics = {
+        apiMode: 'messages',
+        finishReason: chunk.delta.stop_reason,
+        hasUsageMetadata: Boolean(chunk.usage),
+        model: payload?.model,
+        provider: payload?.provider,
+        source: 'anthropic_messages',
+        terminalEventType: chunk.type,
+      };
+
       return { data: chunk.delta.stop_reason, id: context.id, type: 'stop' };
     }
 
     case 'message_stop': {
+      if (!context.usage && !context.usageMissingDiagnostics) {
+        context.usageMissingDiagnostics = {
+          apiMode: 'messages',
+          hasUsageMetadata: false,
+          model: payload?.model,
+          provider: payload?.provider,
+          source: 'anthropic_messages',
+          terminalEventType: chunk.type,
+        };
+      }
+
       return [
         ...(context.returnedCitationArray?.length
           ? [
@@ -235,7 +259,9 @@ export const AnthropicStream = (
   const streamStack: StreamContext = { id: '' };
 
   const readableStream =
-    stream instanceof ReadableStream ? stream : convertIterableToStream(stream);
+    stream instanceof ReadableStream
+      ? stream
+      : convertIterableToStream(stream, { model: payload?.model, provider: payload?.provider });
 
   const transformWithPayload: typeof transformAnthropicStream = (chunk, ctx) =>
     transformAnthropicStream(chunk, ctx, payload);
@@ -243,11 +269,11 @@ export const AnthropicStream = (
   return readableStream
     .pipeThrough(
       createTokenSpeedCalculator(transformWithPayload, {
-        enableStreaming: enableStreaming,
+        enableStreaming,
         inputStartAt,
         streamStack,
       }),
     )
     .pipeThrough(createSSEProtocolTransformer((c) => c, streamStack))
-    .pipeThrough(createCallbacksTransformer(callbacks));
+    .pipeThrough(createCallbacksTransformer(callbacks, { streamStack }));
 };

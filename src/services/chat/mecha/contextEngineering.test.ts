@@ -1,11 +1,36 @@
-import { UIChatMessage } from '@lobechat/types';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { type UIChatMessage } from '@lobechat/types';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import * as isCanUseFCModule from '@/helpers/isCanUseFC';
+import { agentService } from '@/services/agent';
+import { agentDocumentService } from '@/services/agentDocument';
+import { useAgentStore } from '@/store/agent';
 
 import * as helpers from '../helper';
 import { contextEngineering } from './contextEngineering';
 import * as memoryManager from './memoryManager';
+
+vi.hoisted(() => {
+  const storage = new Map<string, string>();
+
+  Object.defineProperty(globalThis, 'localStorage', {
+    configurable: true,
+    value: {
+      clear: () => storage.clear(),
+      getItem: (key: string) => storage.get(key) ?? null,
+      key: (index: number) => Array.from(storage.keys())[index] ?? null,
+      get length() {
+        return storage.size;
+      },
+      removeItem: (key: string) => {
+        storage.delete(key);
+      },
+      setItem: (key: string, value: string) => {
+        storage.set(key, value);
+      },
+    },
+  });
+});
 
 // Mock VARIABLE_GENERATORS
 vi.mock('@/helpers/parserPlaceholder', () => ({
@@ -17,30 +42,258 @@ vi.mock('@/helpers/parserPlaceholder', () => ({
   },
 }));
 
-// 默认设置 isServerMode 为 false
-let isServerMode = false;
+vi.mock('@/services/agentDocument', () => ({
+  agentDocumentService: {
+    getDocuments: vi.fn(),
+  },
+}));
+
+vi.mock('@/services/agent', () => ({
+  AVAILABLE_AGENTS_CONTEXT_LIMIT: 10,
+  AVAILABLE_AGENTS_CONTEXT_QUERY_LIMIT: 12,
+  agentService: {
+    queryAgents: vi.fn(),
+  },
+}));
+
+// 默认设置运行环境为 browser/client
+const runtimeFlags = vi.hoisted(() => ({
+  isServerMode: false,
+}));
 
 vi.mock('@lobechat/const', async (importOriginal) => {
   const actual = await importOriginal();
   return {
     ...(actual as any),
     get isServerMode() {
-      return isServerMode;
+      return runtimeFlags.isServerMode;
     },
-    isDeprecatedEdition: false,
     isDesktop: false,
+    isDeprecatedEdition: false,
   };
 });
 
+beforeEach(() => {
+  vi.mocked(agentService.queryAgents).mockResolvedValue([]);
+  useAgentStore.setState({
+    activeAgentId: undefined,
+    agentMap: {},
+    availableAgents: undefined,
+  });
+});
+
 afterEach(() => {
+  runtimeFlags.isServerMode = false;
   vi.resetModules();
   vi.clearAllMocks();
 });
 
+// Helper to compute expected date content from SystemDateProvider
+const getCurrentDateContent = () => {
+  const tz = 'UTC';
+  const today = new Date();
+  const year = today.toLocaleString('en-US', { timeZone: tz, year: 'numeric' });
+  const month = today.toLocaleString('en-US', { month: '2-digit', timeZone: tz });
+  const day = today.toLocaleString('en-US', { day: '2-digit', timeZone: tz });
+  return `Current date: ${year}-${month}-${day} (${tz})`;
+};
+
 describe('contextEngineering', () => {
+  it('should not fetch agent documents implicitly when agentId is provided', async () => {
+    const messages = [{ content: 'Hello', role: 'user' }] as UIChatMessage[];
+
+    await contextEngineering({
+      agentId: 'agent-1',
+      messages,
+      model: 'gpt-4',
+      provider: 'openai',
+    });
+
+    expect(agentDocumentService.getDocuments).not.toHaveBeenCalled();
+  });
+
+  it('should use provided agent documents without fetching', async () => {
+    const messages = [{ content: 'Summarize the setup', role: 'user' }] as UIChatMessage[];
+
+    const output = await contextEngineering({
+      agentDocuments: [
+        {
+          content: 'Project setup steps',
+          filename: 'setup.md',
+          id: 'doc-1',
+          // `always` keeps this doc in the inline bucket; without it the
+          // default is progressive (metadata-only index, content hidden).
+          policyLoad: 'always',
+          title: 'Setup',
+        },
+      ],
+      agentId: 'agent-1',
+      messages,
+      model: 'gpt-4',
+      provider: 'openai',
+    });
+
+    expect(agentDocumentService.getDocuments).not.toHaveBeenCalled();
+    const documentsMessage = output.find(
+      (message) =>
+        message.role === 'user' &&
+        typeof message.content === 'string' &&
+        message.content.includes('Project setup steps'),
+    );
+
+    expect(documentsMessage).toEqual({
+      content: expect.stringContaining('Project setup steps'),
+      role: 'user',
+    });
+  });
+
+  it('should suppress agent documents when runtime agent mode is disabled', async () => {
+    const output = await contextEngineering({
+      agentDocuments: [
+        {
+          content: 'Project setup steps',
+          filename: 'setup.md',
+          id: 'doc-1',
+          policyLoad: 'always',
+          title: 'Setup',
+        },
+      ],
+      agentId: 'agent-1',
+      enableAgentMode: false,
+      messages: [{ content: 'Summarize the setup', role: 'user' }] as UIChatMessage[],
+      model: 'gpt-4',
+      provider: 'openai',
+    });
+
+    // Example: image-only models force chat mode for this request, so agent
+    // documents must not leak into the prompt while the stored config stays true.
+    const documentsMessage = output.find(
+      (message) =>
+        message.role === 'user' &&
+        typeof message.content === 'string' &&
+        message.content.includes('Project setup steps'),
+    );
+
+    expect(documentsMessage).toBeUndefined();
+  });
+
+  it('should fall back to stored chat mode when runtime agent mode is omitted', async () => {
+    useAgentStore.setState({
+      activeAgentId: 'agent-1',
+      agentMap: {
+        'agent-1': {
+          chatConfig: { enableAgentMode: false },
+        },
+      },
+    });
+
+    const output = await contextEngineering({
+      agentDocuments: [
+        {
+          content: 'Project setup steps',
+          filename: 'setup.md',
+          id: 'doc-1',
+          policyLoad: 'always',
+          title: 'Setup',
+        },
+      ],
+      messages: [{ content: 'Summarize the setup', role: 'user' }] as UIChatMessage[],
+      model: 'gpt-4',
+      provider: 'openai',
+    });
+
+    // Example: preset-task calls do not pass runtime mode, but explicit stored
+    // Chat mode should still suppress agent-document context.
+    const documentsMessage = output.find(
+      (message) =>
+        message.role === 'user' &&
+        typeof message.content === 'string' &&
+        message.content.includes('Project setup steps'),
+    );
+
+    expect(documentsMessage).toBeUndefined();
+  });
+
+  it('should use cached available agents without querying during context engineering', async () => {
+    useAgentStore.setState({
+      availableAgents: [
+        {
+          avatar: null,
+          backgroundColor: null,
+          description: null,
+          id: 'agent-1',
+          name: null,
+          title: 'Current Agent',
+        },
+        {
+          avatar: null,
+          backgroundColor: null,
+          description: 'Helps with setup',
+          id: 'agent-2',
+          name: null,
+          title: 'Setup Agent',
+        },
+      ],
+    });
+
+    await contextEngineering({
+      agentId: 'agent-1',
+      messages: [{ content: 'Hello', role: 'user' }] as UIChatMessage[],
+      model: 'gpt-4',
+      provider: 'openai',
+    });
+
+    expect(agentService.queryAgents).not.toHaveBeenCalled();
+  });
+
+  it('should query available agents when the prefetch cache is missing', async () => {
+    await contextEngineering({
+      agentId: 'agent-1',
+      messages: [{ content: 'Hello', role: 'user' }] as UIChatMessage[],
+      model: 'gpt-4',
+      provider: 'openai',
+    });
+
+    expect(agentService.queryAgents).toHaveBeenCalledWith({ limit: 12 });
+  });
+
+  it('should inject runtime model knowledge cutoff', async () => {
+    vi.spyOn(helpers, 'getRuntimeModelKnowledgeCutoff').mockReturnValue('2024-06');
+
+    const output = await contextEngineering({
+      messages: [{ content: 'Hello', role: 'user' }] as UIChatMessage[],
+      model: 'gpt-4',
+      provider: 'openai',
+      systemRole: 'You are a helpful assistant',
+    });
+
+    expect(helpers.getRuntimeModelKnowledgeCutoff).toHaveBeenCalledWith('gpt-4', 'openai');
+    expect(output[0]).toEqual({
+      content: expect.stringContaining('Model knowledge cutoff: 2024-06'),
+      role: 'system',
+    });
+  });
+
+  it('should inject runtime model name and id', async () => {
+    vi.spyOn(helpers, 'getRuntimeModelDisplayName').mockReturnValue('Fable 5');
+
+    const output = await contextEngineering({
+      messages: [{ content: 'Hello', role: 'user' }] as UIChatMessage[],
+      model: 'claude-fable-5',
+      provider: 'lobehub',
+      systemRole: 'You are a helpful assistant',
+    });
+
+    expect(helpers.getRuntimeModelDisplayName).toHaveBeenCalledWith('claude-fable-5', 'lobehub');
+    expect(output[0]).toEqual({
+      content: expect.stringContaining('Current model: Fable 5 (claude-fable-5)'),
+      role: 'system',
+    });
+  });
+
   describe('handle with files content in server mode', () => {
     it('should includes files', async () => {
-      isServerMode = true;
+      runtimeFlags.isServerMode = true;
       // Mock isCanUseVision to return true for vision models
       vi.spyOn(helpers, 'isCanUseVision').mockReturnValue(true);
 
@@ -82,6 +335,7 @@ describe('contextEngineering', () => {
       });
 
       expect(output).toEqual([
+        { content: expect.stringContaining(getCurrentDateContent()), role: 'system' },
         {
           content: [
             {
@@ -96,7 +350,7 @@ describe('contextEngineering', () => {
 <files_info>
 <images>
 <images_docstring>here are user upload images you can refer to</images_docstring>
-<image name="ttt.png" url="http://example.com/xxx0asd-dsd.png"></image>
+<image ref="image_1" name="ttt.png" url="http://example.com/xxx0asd-dsd.png"></image>
 </images>
 <files>
 <files_docstring>here are user upload files you can refer to</files_docstring>
@@ -120,11 +374,11 @@ describe('contextEngineering', () => {
         },
       ]);
 
-      isServerMode = false;
+      runtimeFlags.isServerMode = false;
     });
 
     it('should include image files in server mode', async () => {
-      isServerMode = true;
+      runtimeFlags.isServerMode = true;
 
       vi.spyOn(helpers, 'isCanUseVision').mockReturnValue(false);
 
@@ -149,10 +403,16 @@ describe('contextEngineering', () => {
       });
 
       expect(output).toEqual([
+        { content: expect.stringContaining(getCurrentDateContent()), role: 'system' },
         {
           content: [
             {
+              // Vision disabled: the image is surfaced in the file-context
+              // block AND appended as a textual placeholder so the target
+              // model still sees that an image was sent (see ).
               text: `Hello
+
+[image omitted: native vision is not supported. Do not infer or describe the image. If the request depends on it, use an available visual-analysis tool before answering; otherwise state that the image cannot be inspected.]
 
 <!-- SYSTEM CONTEXT (NOT PART OF USER QUERY) -->
 <context.instruction>following part contains context information injected by the system. Please follow these instructions:
@@ -163,7 +423,7 @@ describe('contextEngineering', () => {
 <files_info>
 <images>
 <images_docstring>here are user upload images you can refer to</images_docstring>
-<image name="abc.png" url="http://example.com/image.jpg"></image>
+<image ref="image_1" name="abc.png" url="http://example.com/image.jpg"></image>
 </images>
 </files_info>
 <!-- END SYSTEM CONTEXT -->`,
@@ -178,7 +438,7 @@ describe('contextEngineering', () => {
         },
       ]);
 
-      isServerMode = false;
+      runtimeFlags.isServerMode = false;
     });
   });
 
@@ -203,7 +463,9 @@ describe('contextEngineering', () => {
 
     expect(result).toEqual([
       {
-        content: '## Tools\n\nYou can use these tools',
+        content: expect.stringContaining(
+          '## Tools\n\nYou can use these tools\n\n' + getCurrentDateContent(),
+        ),
         role: 'system',
       },
       {
@@ -232,6 +494,7 @@ describe('contextEngineering', () => {
     });
 
     expect(result).toEqual([
+      { content: expect.stringContaining(getCurrentDateContent()), role: 'system' },
       {
         content: [
           {
@@ -279,6 +542,37 @@ describe('contextEngineering', () => {
     expect(systemMessage!.content).toContain(historySummary);
     expect(Object.keys(systemMessage!).length).toEqual(2);
   });
+
+  it('should preserve normalized skill and tool tags in user messages before sending to model', async () => {
+    vi.spyOn(isCanUseFCModule, 'isCanUseFC').mockReturnValue(true);
+
+    const messages: UIChatMessage[] = [
+      {
+        role: 'user',
+        content:
+          '<skill name="grep" label="Grep" /> <tool name="lobe-notebook" label="Notebook" /> hi',
+        createdAt: Date.now(),
+        id: 'selected-skill-user',
+        updatedAt: Date.now(),
+      },
+    ];
+
+    const result = await contextEngineering({
+      messages,
+      model: 'gpt-4',
+      provider: 'openai',
+    });
+
+    expect(result[0]).toEqual({
+      content: expect.stringContaining(getCurrentDateContent()),
+      role: 'system',
+    });
+    expect(result[1].role).toBe('user');
+    expect(result[1].content).toContain('hi');
+    expect(result[1].content).toContain('<skill name="grep" label="Grep" />');
+    expect(result[1].content).toContain('<tool name="lobe-notebook" label="Notebook" />');
+  });
+
   describe('getAssistantContent', () => {
     it('should handle assistant message with imageList and content', async () => {
       // Mock isCanUseVision to return true for vision models
@@ -300,7 +594,11 @@ describe('contextEngineering', () => {
         provider: 'openai',
       });
 
-      expect(result[0].content).toEqual([
+      expect(result[0]).toEqual({
+        content: expect.stringContaining(getCurrentDateContent()),
+        role: 'system',
+      });
+      expect(result[1].content).toEqual([
         { text: 'Here is an image.', type: 'text' },
         { image_url: { detail: 'auto', url: 'http://example.com/image.png' }, type: 'image_url' },
       ]);
@@ -326,7 +624,11 @@ describe('contextEngineering', () => {
         provider: 'openai',
       });
 
-      expect(result[0].content).toEqual([
+      expect(result[0]).toEqual({
+        content: expect.stringContaining(getCurrentDateContent()),
+        role: 'system',
+      });
+      expect(result[1].content).toEqual([
         { image_url: { detail: 'auto', url: 'http://example.com/image.png' }, type: 'image_url' },
       ]);
     });
@@ -361,8 +663,12 @@ describe('contextEngineering', () => {
       provider: 'openai',
     });
 
-    expect(result[0].tool_calls).toBeUndefined();
-    expect(result[0].content).toBe('I have a tool call.');
+    expect(result[0]).toEqual({
+      content: expect.stringContaining(getCurrentDateContent()),
+      role: 'system',
+    });
+    expect(result[1].tool_calls).toBeUndefined();
+    expect(result[1].content).toBe('I have a tool call.');
   });
 
   describe('Process placeholder variables', () => {
@@ -390,10 +696,14 @@ describe('contextEngineering', () => {
         provider: 'openai',
       });
 
-      expect(result[0].content).toBe(
+      expect(result[0]).toEqual({
+        content: expect.stringContaining(getCurrentDateContent()),
+        role: 'system',
+      });
+      expect(result[1].content).toBe(
         'Hello TestUser, today is 2023-12-25 and the time is 14:30:45',
       );
-      expect(result[1].content).toBe('Hi there! Your random number is 12345');
+      expect(result[2].content).toBe('Hi there! Your random number is 12345');
     });
 
     it('should process placeholder variables in array content', async () => {
@@ -422,8 +732,12 @@ describe('contextEngineering', () => {
         provider: 'openai',
       });
 
-      expect(Array.isArray(result[0].content)).toBe(true);
-      const content = result[0].content as any[];
+      expect(result[0]).toEqual({
+        content: expect.stringContaining(getCurrentDateContent()),
+        role: 'system',
+      });
+      expect(Array.isArray(result[1].content)).toBe(true);
+      const content = result[1].content as any[];
       expect(content[0].text).toBe('Hello TestUser, today is 2023-12-25');
       expect(content[1].image_url.url).toBe('data:image/png;base64,abc123');
     });
@@ -447,7 +761,7 @@ describe('contextEngineering', () => {
         },
       ];
 
-      // Mock topic memories and global identities separately
+      // Mock topic memories and user persona separately
       vi.spyOn(memoryManager, 'resolveTopicMemories').mockReturnValue({
         activities: [],
         contexts: [
@@ -472,7 +786,7 @@ describe('contextEngineering', () => {
         experiences: [],
         preferences: [],
       });
-      vi.spyOn(memoryManager, 'resolveGlobalIdentities').mockReturnValue([]);
+      vi.spyOn(memoryManager, 'resolveUserPersona').mockReturnValue(undefined);
 
       const result = await contextEngineering({
         enableUserMemories: true,
@@ -481,10 +795,11 @@ describe('contextEngineering', () => {
         provider: 'openai',
       });
 
-      // Keep the original system message as-is
+      // Keep the original system message as-is (with date appended by SystemDateProvider)
       expect(result[0].role).toBe('system');
-      expect(result[0].content).toBe(
-        'Memory load: available={{memory_available}}, total contexts={{memory_contexts_count}}\n{{memory_summary}}',
+      expect(result[0].content).toContain(
+        'Memory load: available={{memory_available}}, total contexts={{memory_contexts_count}}\n{{memory_summary}}\n\n' +
+          getCurrentDateContent(),
       );
 
       // Memory context is injected as a consolidated user message before the first user message
@@ -516,7 +831,11 @@ describe('contextEngineering', () => {
         provider: 'openai',
       });
 
-      expect(result[0].content).toBe('Hello TestUser, missing: {{missing_var}}');
+      expect(result[0]).toEqual({
+        content: expect.stringContaining(getCurrentDateContent()),
+        role: 'system',
+      });
+      expect(result[1].content).toBe('Hello TestUser, missing: {{missing_var}}');
     });
 
     it('should not modify messages without placeholder variables', async () => {
@@ -536,11 +855,15 @@ describe('contextEngineering', () => {
         provider: 'openai',
       });
 
-      expect(result[0].content).toBe('Hello there, no variables here');
+      expect(result[0]).toEqual({
+        content: expect.stringContaining(getCurrentDateContent()),
+        role: 'system',
+      });
+      expect(result[1].content).toBe('Hello there, no variables here');
     });
 
     it('should process placeholder variables combined with other processors', async () => {
-      isServerMode = true;
+      runtimeFlags.isServerMode = true;
       vi.spyOn(helpers, 'isCanUseVision').mockReturnValue(true);
 
       const messages: UIChatMessage[] = [
@@ -566,8 +889,12 @@ describe('contextEngineering', () => {
         provider: 'openai',
       });
 
-      expect(Array.isArray(result[0].content)).toBe(true);
-      const content = result[0].content as any[];
+      expect(result[0]).toEqual({
+        content: expect.stringContaining(getCurrentDateContent()),
+        role: 'system',
+      });
+      expect(Array.isArray(result[1].content)).toBe(true);
+      const content = result[1].content as any[];
 
       // Should contain processed placeholder variables in the text content
       expect(content[0].text).toContain('Hello TestUser, check this image from 2023-12-25');
@@ -579,7 +906,7 @@ describe('contextEngineering', () => {
       expect(content[1].type).toBe('image_url');
       expect(content[1].image_url.url).toBe('http://example.com/test.jpg');
 
-      isServerMode = false;
+      runtimeFlags.isServerMode = false;
     });
   });
 
@@ -629,9 +956,10 @@ describe('contextEngineering', () => {
         provider: 'openai',
       });
 
-      // Should keep all messages
-      expect(result).toHaveLength(5);
+      // Should keep all messages (plus system date)
+      expect(result).toHaveLength(6);
       expect(result).toEqual([
+        { content: expect.stringContaining(getCurrentDateContent()), role: 'system' },
         { content: 'Message 1', role: 'user' },
         { content: 'Response 1', role: 'assistant' },
         { content: 'Message 2', role: 'user' },
@@ -667,6 +995,7 @@ describe('contextEngineering', () => {
 
       // Should apply template to user message only
       expect(result).toEqual([
+        { content: expect.stringContaining(getCurrentDateContent()), role: 'system' },
         {
           content: 'Template: Original user input - End',
           role: 'user',
@@ -676,7 +1005,7 @@ describe('contextEngineering', () => {
           content: 'Assistant response',
         },
       ]);
-      expect(result[1].content).toBe('Assistant response'); // Unchanged
+      expect(result[2].content).toBe('Assistant response'); // Unchanged
     });
 
     it('should inject system role at the beginning', async () => {
@@ -697,9 +1026,14 @@ describe('contextEngineering', () => {
         systemRole: 'You are a helpful assistant.',
       });
 
-      // Should have system role at the beginning
+      // Should have system role at the beginning (with date appended)
       expect(result).toEqual([
-        { content: 'You are a helpful assistant.', role: 'system' },
+        {
+          content: expect.stringContaining(
+            'You are a helpful assistant.\n\n' + getCurrentDateContent(),
+          ),
+          role: 'system',
+        },
         { content: 'User message', role: 'user' },
       ]);
     });
@@ -737,10 +1071,10 @@ describe('contextEngineering', () => {
         inputTemplate: 'Processed: {{text}}',
       });
 
-      // System role should be first, followed by all messages with input template applied to user messages
+      // System role should be first (with date appended), followed by all messages with input template applied to user messages
       expect(result).toEqual([
         {
-          content: 'System instructions.',
+          content: expect.stringContaining('System instructions.\n\n' + getCurrentDateContent()),
           role: 'system',
         },
         {
@@ -775,8 +1109,9 @@ describe('contextEngineering', () => {
         provider: 'openai',
       });
 
-      // Should pass message unchanged
+      // Should pass message unchanged (with system date prepended)
       expect(result).toEqual([
+        { content: expect.stringContaining(getCurrentDateContent()), role: 'system' },
         {
           content: 'Simple message',
           role: 'user',
@@ -816,10 +1151,10 @@ describe('contextEngineering', () => {
         systemRole: 'System role here.',
       });
 
-      // Should have system role + all messages
+      // Should have system role (with date) + all messages
       expect(result).toEqual([
         {
-          content: 'System role here.',
+          content: expect.stringContaining('System role here.\n\n' + getCurrentDateContent()),
           role: 'system',
         },
         {
@@ -856,8 +1191,9 @@ describe('contextEngineering', () => {
         inputTemplate: '<%- invalid javascript syntax %>',
       });
 
-      // Should keep original message when template fails
+      // Should keep original message when template fails (with system date prepended)
       expect(result).toEqual([
+        { content: expect.stringContaining(getCurrentDateContent()), role: 'system' },
         {
           content: 'User message',
           role: 'user',

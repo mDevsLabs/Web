@@ -1,14 +1,14 @@
 import { Then, When } from '@cucumber/cucumber';
 import { expect } from '@playwright/test';
 
-import { CustomWorld } from '../../support/world';
+import type { CustomWorld } from '../../support/world';
 
 // ============================================
 // When Steps (Actions)
 // ============================================
 
 When('I type {string} in the search bar', async function (this: CustomWorld, searchText: string) {
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
   const searchBar = this.page.locator('input[type="text"]').first();
   await searchBar.waitFor({ state: 'visible', timeout: 30_000 });
@@ -20,13 +20,13 @@ When('I type {string} in the search bar', async function (this: CustomWorld, sea
 
 When('I wait for the search results to load', async function (this: CustomWorld) {
   // Wait for network to be idle after typing
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
   // Add a small delay to ensure UI updates
   await this.page.waitForTimeout(500);
 });
 
 When('I click on a category in the category menu', async function (this: CustomWorld) {
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
   // Find the category menu items - they are clickable elements in the sidebar
   // The UI shows categories like "All", "Academic", "Career", etc.
@@ -66,7 +66,7 @@ When('I click on a category in the category menu', async function (this: CustomW
 });
 
 When('I click on a category in the category filter', async function (this: CustomWorld) {
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
   // Find the category filter items - MCP page has categories like "Developer Tools", "Productivity Tools"
   // Use the same selector pattern as the category menu
@@ -107,13 +107,13 @@ When('I click on a category in the category filter', async function (this: Custo
 
 When('I wait for the filtered results to load', async function (this: CustomWorld) {
   // Wait for network to be idle after filtering
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
   // Add a small delay to ensure UI updates
   await this.page.waitForTimeout(500);
 });
 
 When('I click the next page button', async function (this: CustomWorld) {
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
   // Wait for initial cards to load first
   const assistantCards = this.page.locator('[data-testid="assistant-item"]');
@@ -135,15 +135,17 @@ When('I click the next page button', async function (this: CustomWorld) {
 
 When('I wait for the next page to load', async function (this: CustomWorld) {
   // Wait for network to be idle after page change
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
   // Add a small delay to ensure UI updates
   await this.page.waitForTimeout(500);
 });
 
 When('I click on the first assistant card', async function (this: CustomWorld) {
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
-  const firstCard = this.page.locator('[data-testid="assistant-item"]').first();
+  const firstCard = this.page
+    .locator('[data-testid="assistant-item"][data-agent-type="agent"]')
+    .first();
   await firstCard.waitFor({ state: 'visible', timeout: 30_000 });
 
   // Store the current URL before clicking
@@ -160,7 +162,7 @@ When('I click on the first assistant card', async function (this: CustomWorld) {
 });
 
 When('I click on the first model card', async function (this: CustomWorld) {
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
   const firstCard = this.page.locator('[data-testid="model-item"]').first();
   await firstCard.waitFor({ state: 'visible', timeout: 30_000 });
@@ -179,7 +181,7 @@ When('I click on the first model card', async function (this: CustomWorld) {
 });
 
 When('I click on the first provider card', async function (this: CustomWorld) {
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
   const firstCard = this.page.locator('[data-testid="provider-item"]').first();
   await firstCard.waitFor({ state: 'visible', timeout: 30_000 });
@@ -198,7 +200,7 @@ When('I click on the first provider card', async function (this: CustomWorld) {
 });
 
 When('I click on the first MCP card', async function (this: CustomWorld) {
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
   const firstCard = this.page.locator('[data-testid="mcp-item"]').first();
   await firstCard.waitFor({ state: 'visible', timeout: 30_000 });
@@ -217,7 +219,7 @@ When('I click on the first MCP card', async function (this: CustomWorld) {
 });
 
 When('I click on the sort dropdown', async function (this: CustomWorld) {
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
   const sortDropdown = this.page
     .locator(
@@ -249,7 +251,7 @@ When('I select a sort option', async function (this: CustomWorld) {
 
 When('I wait for the sorted results to load', async function (this: CustomWorld) {
   // Wait for network to be idle after sorting
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
   // Add a small delay to ensure UI updates
   await this.page.waitForTimeout(500);
 });
@@ -257,7 +259,7 @@ When('I wait for the sorted results to load', async function (this: CustomWorld)
 When(
   'I click on the {string} link in the featured assistants section',
   async function (this: CustomWorld, linkText: string) {
-    await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+    await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
     // Find the featured assistants section and the "more" link
     const moreLink = this.page
@@ -272,7 +274,7 @@ When(
 When(
   'I click on the {string} link in the featured MCP tools section',
   async function (this: CustomWorld, linkText: string) {
-    await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+    await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
     // The home page might not have a direct MCP section with a "more" link
     // Try to find MCP-specific link first, then fall back to direct navigation
@@ -319,7 +321,7 @@ When(
 );
 
 When('I click on the first featured assistant card', async function (this: CustomWorld) {
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
   const firstCard = this.page.locator('[data-testid="assistant-item"]').first();
   await firstCard.waitFor({ state: 'visible', timeout: 30_000 });
@@ -342,7 +344,7 @@ When('I click on the first featured assistant card', async function (this: Custo
 // ============================================
 
 Then('I should see filtered assistant cards', async function (this: CustomWorld) {
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
   const assistantItems = this.page.locator('[data-testid="assistant-item"]');
 
@@ -357,7 +359,7 @@ Then('I should see filtered assistant cards', async function (this: CustomWorld)
 Then(
   'I should see assistant cards filtered by the selected category',
   async function (this: CustomWorld) {
-    await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+    await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
     const assistantItems = this.page.locator('[data-testid="assistant-item"]');
 
@@ -390,7 +392,7 @@ Then('the URL should contain the category parameter', async function (this: Cust
 });
 
 Then('I should see different assistant cards', async function (this: CustomWorld) {
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
   const assistantItems = this.page.locator('[data-testid="assistant-item"]');
 
@@ -430,7 +432,7 @@ Then('the URL should contain the page parameter', async function (this: CustomWo
 });
 
 Then('I should be navigated to the assistant detail page', async function (this: CustomWorld) {
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
   const currentUrl = this.page.url();
   // Verify that URL changed and contains /agent/ followed by an identifier
@@ -444,7 +446,7 @@ Then('I should be navigated to the assistant detail page', async function (this:
 });
 
 Then('I should see the assistant detail content', async function (this: CustomWorld) {
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
   // Look for assistant detail page content
   const detailContent = this.page.locator('[data-testid="assistant-detail-content"]');
@@ -452,7 +454,7 @@ Then('I should see the assistant detail content', async function (this: CustomWo
 });
 
 Then('I should see model cards in the sorted order', async function (this: CustomWorld) {
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
   const modelItems = this.page.locator('[data-testid="model-item"]');
 
@@ -465,7 +467,7 @@ Then('I should see model cards in the sorted order', async function (this: Custo
 });
 
 Then('I should be navigated to the model detail page', async function (this: CustomWorld) {
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
   const currentUrl = this.page.url();
   // Verify that URL changed and contains /model/ followed by an identifier
@@ -480,7 +482,7 @@ Then('I should be navigated to the model detail page', async function (this: Cus
 
 Then('I should see the model detail content', async function (this: CustomWorld) {
   // Wait for page to load
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
   // Model detail page should have tabs like "Overview", "Model Parameters"
   // Wait for these specific elements to appear
@@ -498,7 +500,7 @@ Then('I should see the model detail content', async function (this: CustomWorld)
 });
 
 Then('I should be navigated to the provider detail page', async function (this: CustomWorld) {
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
   const currentUrl = this.page.url();
   // Verify that URL changed and contains /provider/ followed by an identifier
@@ -513,7 +515,7 @@ Then('I should be navigated to the provider detail page', async function (this: 
 
 Then('I should see the provider detail content', async function (this: CustomWorld) {
   // Wait for page to load
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
   // Provider detail page should have provider name/title and model list
   // Wait for the provider title to appear
@@ -531,7 +533,7 @@ Then('I should see the provider detail content', async function (this: CustomWor
 Then(
   'I should see MCP cards filtered by the selected category',
   async function (this: CustomWorld) {
-    await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+    await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
     const mcpItems = this.page.locator('[data-testid="mcp-item"]');
 
@@ -545,7 +547,7 @@ Then(
 );
 
 Then('I should be navigated to the MCP detail page', async function (this: CustomWorld) {
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
   const currentUrl = this.page.url();
   // Verify that URL changed and contains /mcp/ followed by an identifier
@@ -559,7 +561,7 @@ Then('I should be navigated to the MCP detail page', async function (this: Custo
 });
 
 Then('I should see the MCP detail content', async function (this: CustomWorld) {
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
 
   // Look for MCP detail page content
   const detailContent = this.page.locator('[data-testid="mcp-detail-content"]');
@@ -567,7 +569,7 @@ Then('I should see the MCP detail content', async function (this: CustomWorld) {
 });
 
 Then('I should be navigated to {string}', async function (this: CustomWorld, expectedPath: string) {
-  await this.page.waitForLoadState('networkidle', { timeout: 30_000 });
+  await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 });
   await this.page.waitForTimeout(500); // Extra wait for client-side routing
 
   const currentUrl = this.page.url();

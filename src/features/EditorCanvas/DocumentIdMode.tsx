@@ -1,43 +1,29 @@
 'use client';
 
 import { type IEditor } from '@lobehub/editor';
-import { Alert, Skeleton } from '@lobehub/ui';
-import { memo, useEffect, useRef } from 'react';
+import { Skeleton } from '@lobehub/ui';
+import { memo, useCallback, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { createStoreUpdater } from 'zustand-utils';
 
+import NotFound from '@/components/404';
+import AsyncError from '@/components/AsyncError';
 import { useSaveDocumentHotkey } from '@/hooks/useHotkeys';
 import { useDocumentStore } from '@/store/document';
 import { editorSelectors } from '@/store/document/slices/editor';
 
-import type { EditorCanvasProps } from './EditorCanvas';
+import { type EditorCanvasProps } from './EditorCanvas';
 import InternalEditor from './InternalEditor';
+import UnsavedChangesGuard from './UnsavedChangesGuard';
 
 /**
  * Loading skeleton for the editor
  */
-const EditorSkeleton = memo(() => (
+const EditorSkeleton = () => (
   <div style={{ paddingBlock: 24 }}>
     <Skeleton active paragraph={{ rows: 8 }} />
   </div>
-));
-
-/**
- * Error display for fetch failures
- */
-const EditorError = memo<{ error: Error }>(({ error }) => {
-  const { t } = useTranslation('file');
-
-  return (
-    <Alert
-      description={error.message || t('pageEditor.loadError', 'Failed to load document')}
-      showIcon
-      style={{ margin: 16 }}
-      title={t('pageEditor.error', 'Error')}
-      type="error"
-    />
-  );
-});
+);
 
 export interface DocumentIdModeProps extends EditorCanvasProps {
   documentId: string;
@@ -53,28 +39,86 @@ const DocumentIdMode = memo<DocumentIdModeProps>(
     documentId,
     autoSave = true,
     sourceType = 'page',
+    topicId,
     onContentChange,
+    onInit,
+    unsavedChangesGuard,
     style,
     ...editorProps
   }) => {
-    const { t } = useTranslation('file');
+    const { t } = useTranslation(['file', 'ui']);
 
     const storeUpdater = createStoreUpdater(useDocumentStore);
     storeUpdater('activeDocumentId', documentId);
     storeUpdater('editor', editor);
 
     // Get document store actions
-    const [onEditorInit, handleContentChangeStore, useFetchDocument, flushSave] = useDocumentStore(
-      (s) => [s.onEditorInit, s.handleContentChange, s.useFetchDocument, s.flushSave],
+    const [onEditorInit, handleContentChangeStore, useFetchDocument, performSave] =
+      useDocumentStore((s) => [
+        s.onEditorInit,
+        s.handleContentChange,
+        s.useFetchDocument,
+        s.performSave,
+      ]);
+
+    const handleManualSave = useCallback(async () => {
+      handleContentChangeStore();
+      await performSave(documentId, undefined, { saveSource: 'manual' });
+    }, [documentId, handleContentChangeStore, performSave]);
+
+    useSaveDocumentHotkey(handleManualSave);
+
+    const handleEditorInit = useCallback(
+      (editorInstance: IEditor) => {
+        void onEditorInit(editorInstance).finally(() => {
+          onInit?.(editorInstance);
+        });
+      },
+      [onEditorInit, onInit],
     );
 
-    useSaveDocumentHotkey(flushSave);
-
     // Use SWR hook for document fetching (auto-initializes via onSuccess in DocumentStore)
-    const { error } = useFetchDocument(documentId, { autoSave, editor, sourceType });
+    const {
+      data: remoteDocument,
+      error,
+      isLoading: isFetchingDocument,
+      mutate,
+    } = useFetchDocument(documentId, {
+      autoSave,
+      editor,
+      sourceType,
+      topicId,
+    });
+    const remoteDocumentUpdatedAt = remoteDocument?.updatedAt;
+    const remoteDocumentVersion = remoteDocumentUpdatedAt?.toISOString();
 
     // Check loading state via selector (document not yet in store)
     const isLoading = useDocumentStore(editorSelectors.isDocumentLoading(documentId));
+    const isDirty = useDocumentStore(editorSelectors.isDirty(documentId));
+    const shouldGuardUnsavedChanges = unsavedChangesGuard?.enabled ?? false;
+
+    const handleAutoSaveBeforeLeave = useCallback(async () => {
+      if (!shouldGuardUnsavedChanges) return true;
+
+      handleContentChangeStore();
+      await performSave(documentId, undefined, { saveSource: 'system' });
+
+      const latestDocument = useDocumentStore.getState().documents[documentId];
+      // A lock CONFLICT is not a network failure — surface the real reason
+      // instead of the generic "check your connection" toast.
+      if (latestDocument?.saveBlockedByLock)
+        throw new Error(t('pageEditor.editMode.lockedBySomeone'));
+      return latestDocument ? !latestDocument.isDirty : true;
+    }, [documentId, handleContentChangeStore, performSave, shouldGuardUnsavedChanges, t]);
+
+    const unsavedGuardNode = (
+      <UnsavedChangesGuard
+        isDirty={shouldGuardUnsavedChanges && isDirty}
+        message={unsavedChangesGuard?.message || t('form.unsavedWarning', { ns: 'ui' })}
+        title={unsavedChangesGuard?.title || t('form.unsavedChanges', { ns: 'ui' })}
+        onAutoSave={handleAutoSaveBeforeLeave}
+      />
+    );
 
     // Handle content change
     const handleChange = () => {
@@ -83,41 +127,133 @@ const DocumentIdMode = memo<DocumentIdModeProps>(
     };
 
     const isEditorInitialized = !!editor?.getLexicalEditor();
+    const contentChangeLockRef = useRef(false);
+    const initRunIdRef = useRef(0);
 
-    // 追踪已经为哪个 documentId 调用过 onEditorInit
+    // Track which documentId has already had onEditorInit called
     const initializedDocIdRef = useRef<string | null>(null);
+    const hydratedVersionRef = useRef<string | undefined>(undefined);
 
-    // 关键修复：如果 editor 已经初始化，需要主动调用 onEditorInit
-    // 因为 onInit 回调只在 editor 首次初始化时触发
+    // Critical fix: if the editor is already initialized, we need to manually call onEditorInit
+    // because the onInit callback only fires on the first editor initialization
     useEffect(() => {
-      // 避免重复调用：只在 documentId 变化且 editor 已初始化时调用
+      // Avoid duplicate calls: only invoke when documentId changes and editor is initialized
       if (
         editor &&
         isEditorInitialized &&
         !isLoading &&
         initializedDocIdRef.current !== documentId
       ) {
+        const runId = ++initRunIdRef.current;
         initializedDocIdRef.current = documentId;
-        onEditorInit(editor);
+        hydratedVersionRef.current = remoteDocumentVersion;
+
+        // Lock content-change callback while hydrating document content into editor.
+        contentChangeLockRef.current = true;
+
+        void onEditorInit(editor).finally(() => {
+          onInit?.(editor);
+          queueMicrotask(() => {
+            if (initRunIdRef.current === runId) {
+              contentChangeLockRef.current = false;
+            }
+          });
+        });
       }
-    }, [documentId, editor, isEditorInitialized, isLoading, onEditorInit]);
+    }, [
+      documentId,
+      editor,
+      isEditorInitialized,
+      isLoading,
+      onEditorInit,
+      onInit,
+      remoteDocumentVersion,
+    ]);
+
+    useEffect(() => {
+      if (!editor || !isEditorInitialized || isLoading || !remoteDocumentVersion) return;
+      if (initializedDocIdRef.current !== documentId) return;
+      if (hydratedVersionRef.current === remoteDocumentVersion) return;
+      if (isDirty) return;
+
+      const runId = ++initRunIdRef.current;
+      hydratedVersionRef.current = remoteDocumentVersion;
+      contentChangeLockRef.current = true;
+
+      void onEditorInit(editor).finally(() => {
+        onInit?.(editor);
+        queueMicrotask(() => {
+          if (initRunIdRef.current === runId) {
+            contentChangeLockRef.current = false;
+          }
+        });
+      });
+    }, [
+      documentId,
+      editor,
+      isDirty,
+      isEditorInitialized,
+      isLoading,
+      onEditorInit,
+      onInit,
+      remoteDocumentVersion,
+    ]);
+
+    if (error && isLoading && !isFetchingDocument) {
+      return (
+        <>
+          {unsavedGuardNode}
+          <AsyncError
+            error={error}
+            variant={'page'}
+            onRetry={() => {
+              void mutate();
+            }}
+          />
+        </>
+      );
+    }
+
+    if (remoteDocument === null) {
+      return (
+        <>
+          {unsavedGuardNode}
+          <NotFound />
+        </>
+      );
+    }
 
     // Show loading state
     if (isLoading) {
-      return <EditorSkeleton />;
+      return (
+        <>
+          {unsavedGuardNode}
+          <EditorSkeleton />
+        </>
+      );
     }
 
-    if (!editor) return null;
+    if (!editor) return unsavedGuardNode;
 
     return (
       <>
-        {error && <EditorError error={error as Error} />}
+        {unsavedGuardNode}
+        {error && (
+          <AsyncError
+            error={error}
+            variant={'inline'}
+            onRetry={() => {
+              void mutate();
+            }}
+          />
+        )}
         <InternalEditor
+          contentChangeLockRef={contentChangeLockRef}
           editor={editor}
-          onContentChange={handleChange}
-          onInit={onEditorInit}
           placeholder={editorProps.placeholder || t('pageEditor.editorPlaceholder')}
           style={style}
+          onContentChange={handleChange}
+          onInit={handleEditorInit}
           {...editorProps}
         />
       </>

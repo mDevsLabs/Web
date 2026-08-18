@@ -1,4 +1,5 @@
-import { Button, Flexbox, MaskShadow } from '@lobehub/ui';
+import { Flexbox, MaskShadow } from '@lobehub/ui';
+import { Button } from '@lobehub/ui/base-ui';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -23,12 +24,11 @@ export const CollapsedMessage = memo<CollapsedMessageProps>(({ id, content }) =>
       <Flexbox padding={4}>
         <Button
           block
-          color={'default'}
+          size={'small'}
+          type={'fill'}
           onClick={() => {
             toggleMessageCollapsed(id, false);
           }}
-          size={'small'}
-          variant={'filled'}
         >
           {t('chatList.expandMessage')}
         </Button>

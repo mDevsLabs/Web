@@ -1,13 +1,12 @@
+import type { FileResult, SearchOptions } from '@lobechat/local-file-shell/types';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import type { App } from '@/core/App';
-import { FileSearchImpl } from '@/modules/fileSearch';
-import type { FileResult, SearchOptions } from '@/types/fileSearch';
 
 import FileSearchService from '../fileSearchSrv';
 
 // Mock the fileSearch module
-vi.mock('@/modules/fileSearch', () => {
+vi.mock('@lobechat/local-file-shell/file-search', () => {
   const MockFileSearchImpl = vi.fn().mockImplementation(() => ({
     search: vi.fn(),
     checkSearchServiceStatus: vi.fn(),
@@ -15,7 +14,7 @@ vi.mock('@/modules/fileSearch', () => {
   }));
 
   return {
-    FileSearchImpl: vi.fn(),
+    BaseFileSearch: vi.fn(),
     createFileSearchModule: vi.fn(() => new MockFileSearchImpl()),
   };
 });
@@ -48,7 +47,7 @@ describe('FileSearchService', () => {
     fileSearchService = new FileSearchService(mockApp);
 
     // Get the mock implementation instance
-    mockImpl = (fileSearchService as any).impl;
+    mockImpl = await (fileSearchService as any).getImpl();
   });
 
   describe('search', () => {

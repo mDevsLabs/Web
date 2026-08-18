@@ -1,5 +1,6 @@
-import {
+import type {
   ShowTrayNotificationParams,
+  TrayNavigationSnapshot,
   UpdateTrayIconParams,
   UpdateTrayTooltipParams,
 } from '@lobechat/electron-client-ipc';
@@ -17,6 +18,33 @@ export default class TrayMenuCtr extends ControllerModule {
     logger.debug('Toggle main window visibility via shortcut');
     const mainWindow = this.app.browserManager.getMainWindow();
     mainWindow.toggleVisible();
+  }
+
+  /**
+   * Get whether the application tray is visible.
+   */
+  @IpcMethod()
+  getAppTrayVisible(): boolean {
+    return this.app.storeManager.get('appTrayVisible', true);
+  }
+
+  /**
+   * Persist and apply application tray visibility.
+   */
+  @IpcMethod()
+  setAppTrayVisible(visible: boolean) {
+    logger.debug(`Set app tray visibility: ${visible}`);
+    this.app.storeManager.set('appTrayVisible', visible);
+    this.app.trayManager.setAppTrayVisible(visible);
+
+    return { success: true };
+  }
+
+  @IpcMethod()
+  updateNavigationSnapshot(snapshot: TrayNavigationSnapshot) {
+    this.app.trayManager.updateNavigationSnapshot(snapshot);
+
+    return { success: true as const };
   }
 
   /**

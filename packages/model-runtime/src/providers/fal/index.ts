@@ -1,13 +1,15 @@
 import { fal } from '@fal-ai/client';
 import debug from 'debug';
 import { pick } from 'es-toolkit/compat';
-import { RuntimeImageGenParamsValue } from 'model-bank';
-import { ClientOptions } from 'openai';
+import type { RuntimeImageGenParamsValue } from 'model-bank';
+import type { ClientOptions } from 'openai';
 
-import { LobeRuntimeAI } from '../../core/BaseAI';
+import type { LobeRuntimeAI } from '../../core/BaseAI';
 import { AgentRuntimeErrorType } from '../../types/error';
-import { CreateImagePayload, CreateImageResponse } from '../../types/image';
+import type { CreateImagePayload, CreateImageResponse } from '../../types/image';
 import { AgentRuntimeError } from '../../utils/createError';
+import type { ModelIdMappingOptions } from '../../utils/modelIdMapping';
+import { resolveMappedModelId } from '../../utils/modelIdMapping';
 
 // Create debug logger
 const log = debug('lobe-image:fal');
@@ -15,18 +17,26 @@ const log = debug('lobe-image:fal');
 type FluxDevOutput = Awaited<ReturnType<typeof fal.subscribe<'fal-ai/flux/dev'>>>['data'];
 
 export class LobeFalAI implements LobeRuntimeAI {
-  constructor({ apiKey }: ClientOptions = {}) {
+  private readonly modelIdMappingOptions: ModelIdMappingOptions;
+
+  // OpenAI SDK v6 widened `apiKey` to `string | ApiKeySetter`; lobehub only uses the string form.
+  constructor({
+    apiKey,
+    modelIdMapping,
+  }: Omit<ClientOptions, 'apiKey'> & { apiKey?: string } & ModelIdMappingOptions = {}) {
     if (!apiKey) throw AgentRuntimeError.createError(AgentRuntimeErrorType.InvalidProviderAPIKey);
 
     fal.config({
       credentials: apiKey,
     });
+    this.modelIdMappingOptions = { modelIdMapping };
     log('FalAI initialized with apiKey: %s', apiKey ? '*****' : 'Not set');
   }
 
   async createImage(payload: CreateImagePayload): Promise<CreateImageResponse> {
     const { model, params } = payload;
-    log('Creating image with model: %s and params: %O', model, params);
+    const requestModel = resolveMappedModelId(model, this.modelIdMappingOptions);
+    log('Creating image with model: %s and params: %O', requestModel, params);
 
     const paramsMap = new Map<RuntimeImageGenParamsValue, string>([
       ['steps', 'num_inference_steps'],
@@ -64,12 +74,12 @@ export class LobeFalAI implements LobeRuntimeAI {
     }
 
     const modelsAcceleratedByDefault = new Set<string>(['flux/krea']);
-    if (modelsAcceleratedByDefault.has(model)) {
+    if (modelsAcceleratedByDefault.has(requestModel)) {
       defaultInput['acceleration'] = 'high';
     }
 
     // Ensure model has fal-ai/ prefix
-    let endpoint = model.startsWith('fal-ai/') ? model : `fal-ai/${model}`;
+    let endpoint = requestModel.startsWith('fal-ai/') ? requestModel : `fal-ai/${requestModel}`;
     const hasImageUrls = (params.imageUrls?.length ?? 0) > 0;
     if (
       ['fal-ai/bytedance/seedream/v', 'fal-ai/hunyuan-image/v'].some((m) => endpoint.startsWith(m))
@@ -101,6 +111,22 @@ export class LobeFalAI implements LobeRuntimeAI {
         throw AgentRuntimeError.createError(AgentRuntimeErrorType.InvalidProviderAPIKey, {
           error,
         });
+      }
+
+      // 422 ValidationError with content_policy_violation — show a clean message
+      if (error instanceof Error && 'status' in error && error.status === 422) {
+        const body = 'body' in error ? (error as any).body : undefined;
+        const hasContentPolicyViolation =
+          Array.isArray(body?.detail) &&
+          body.detail.some((d: any) => d.type === 'content_policy_violation');
+
+        if (hasContentPolicyViolation) {
+          throw AgentRuntimeError.createError(AgentRuntimeErrorType.ProviderBizError, {
+            error,
+            message:
+              'The request content violates content policy. Please modify your prompt and try again.',
+          });
+        }
       }
 
       throw AgentRuntimeError.createError(AgentRuntimeErrorType.ProviderBizError, { error });

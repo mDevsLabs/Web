@@ -1,6 +1,4 @@
-import { ChatToolPayload } from '@lobechat/types';
-import { LobeChatPluginManifest } from '@lobehub/chat-plugin-sdk';
-import { act } from '@testing-library/react';
+import { type ChatToolPayload, type ToolManifest } from '@lobechat/types';
 import superjson from 'superjson';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -58,7 +56,7 @@ vi.mock('@/utils/electron/ipc', () => ({
 
 vi.mock('./discover', () => ({
   discoverService: {
-    injectMPToken: vi.fn().mockResolvedValue(undefined),
+    safeInjectMPToken: vi.fn().mockResolvedValue(undefined),
     reportPluginCall: vi.fn().mockResolvedValue(undefined),
   },
 }));
@@ -439,7 +437,7 @@ describe('MCPService', () => {
   describe('getStreamableMcpServerManifest', () => {
     it('should use toolsClient for streamable URLs when not on desktop', async () => {
       const { toolsClient } = await import('@/libs/trpc/client');
-      const mockManifest: LobeChatPluginManifest = {
+      const mockManifest: ToolManifest = {
         identifier: 'streamable-server',
         version: '1',
         meta: { title: 'Streamable MCP Server', avatar: '🌐' },
@@ -471,7 +469,7 @@ describe('MCPService', () => {
 
     it('should use toolsClient for remote URLs', async () => {
       const { toolsClient } = await import('@/libs/trpc/client');
-      const mockManifest: LobeChatPluginManifest = {
+      const mockManifest: ToolManifest = {
         identifier: 'remote-server',
         version: '1',
         meta: { title: 'Remote MCP Server', avatar: '🌍' },
@@ -508,7 +506,7 @@ describe('MCPService', () => {
 
     it('should handle different URL formats correctly', async () => {
       const { toolsClient } = await import('@/libs/trpc/client');
-      const mockManifest: LobeChatPluginManifest = {
+      const mockManifest: ToolManifest = {
         identifier: 'server',
         version: '1',
         meta: { title: 'URL Test Server', avatar: '🔗' },
@@ -538,7 +536,7 @@ describe('MCPService', () => {
 
     it('should handle OAuth2 authentication', async () => {
       const { toolsClient } = await import('@/libs/trpc/client');
-      const mockManifest: LobeChatPluginManifest = {
+      const mockManifest: ToolManifest = {
         identifier: 'oauth-server',
         version: '1',
         meta: { title: 'OAuth Server', avatar: '🔐' },
@@ -580,7 +578,7 @@ describe('MCPService', () => {
 
   describe('getStdioMcpServerManifest', () => {
     it('should call ipc mcp.getStdioMcpServerManifest with stdio parameters', async () => {
-      const mockManifest: LobeChatPluginManifest = {
+      const mockManifest: ToolManifest = {
         identifier: 'stdio-server',
         version: '1',
         meta: { title: 'Stdio Server', avatar: '📦' },
@@ -617,7 +615,7 @@ describe('MCPService', () => {
     });
 
     it('should handle abort signal for stdio manifest', async () => {
-      const mockManifest: LobeChatPluginManifest = {
+      const mockManifest: ToolManifest = {
         identifier: 'python-server',
         version: '1',
         meta: { title: 'Stdio Server', avatar: '🐍' },
@@ -651,7 +649,7 @@ describe('MCPService', () => {
     });
 
     it('should work without optional parameters', async () => {
-      const mockManifest: LobeChatPluginManifest = {
+      const mockManifest: ToolManifest = {
         identifier: 'npm-server',
         version: '1',
         meta: { title: 'Simple Server', avatar: '📦' },

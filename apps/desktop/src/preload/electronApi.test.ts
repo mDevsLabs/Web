@@ -1,12 +1,20 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import type { SetupElectronApiFunction } from './electronApi';
+
 // Mock electron modules
 const mockElectronAPI = { someAPI: 'mock-electron-api' };
 const mockContextBridgeExposeInMainWorld = vi.fn();
+const mockIpcRendererOn = vi.fn();
+const mockIpcRendererSendSync = vi.fn();
 
 vi.mock('electron', () => ({
   contextBridge: {
     exposeInMainWorld: mockContextBridgeExposeInMainWorld,
+  },
+  ipcRenderer: {
+    on: mockIpcRendererOn,
+    sendSync: mockIpcRendererSendSync,
   },
 }));
 
@@ -26,14 +34,15 @@ vi.mock('./streamer', () => ({
   onStreamInvoke: mockOnStreamInvoke,
 }));
 
-const { setupElectronApi } = await import('./electronApi');
-
 describe('setupElectronApi', () => {
   let consoleErrorSpy: ReturnType<typeof vi.spyOn>;
+  let setupElectronApi: SetupElectronApiFunction;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     vi.clearAllMocks();
+    vi.resetModules();
     consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    ({ setupElectronApi } = await import('./electronApi'));
   });
 
   it('should expose electron API to main world', () => {
@@ -45,13 +54,29 @@ describe('setupElectronApi', () => {
   it('should expose electronAPI with invoke and onStreamInvoke methods', () => {
     setupElectronApi();
 
-    expect(mockContextBridgeExposeInMainWorld).toHaveBeenCalledWith('electronAPI', {
+    const call = mockContextBridgeExposeInMainWorld.mock.calls.find((i) => i[0] === 'electronAPI');
+
+    expect(call).toBeTruthy();
+    expect(call?.[1]).toMatchObject({
       invoke: mockInvoke,
+      getDesktopBootstrapIdentity: expect.any(Function),
+      onScreenCaptureSession: expect.any(Function),
       onStreamInvoke: mockOnStreamInvoke,
     });
   });
 
-  it('should expose lobeEnv with darwinMajorVersion', () => {
+  it('reads the bootstrap identity synchronously before renderer initialization', () => {
+    const identity = { isIdentityResolved: true, userId: 'user-1' };
+    mockIpcRendererSendSync.mockReturnValue(identity);
+    setupElectronApi();
+
+    const exposedAPI = mockContextBridgeExposeInMainWorld.mock.calls[1][1];
+
+    expect(exposedAPI.getDesktopBootstrapIdentity()).toEqual(identity);
+    expect(mockIpcRendererSendSync).toHaveBeenCalledWith('desktop:get-bootstrap-identity');
+  });
+
+  it('should expose lobeEnv with darwinMajorVersion, isMacTahoe, platform and version info', () => {
     setupElectronApi();
 
     const call = mockContextBridgeExposeInMainWorld.mock.calls.find((i) => i[0] === 'lobeEnv');
@@ -63,6 +88,26 @@ describe('setupElectronApi', () => {
       exposedEnv.darwinMajorVersion === undefined ||
         typeof exposedEnv.darwinMajorVersion === 'number',
     ).toBe(true);
+
+    expect(Object.prototype.hasOwnProperty.call(exposedEnv, 'isMacTahoe')).toBe(true);
+    expect(typeof exposedEnv.isMacTahoe).toBe('boolean');
+
+    expect(Object.prototype.hasOwnProperty.call(exposedEnv, 'platform')).toBe(true);
+    expect(['darwin', 'linux', 'win32'].includes(exposedEnv.platform)).toBe(true);
+
+    // electronVersion and chromeVersion may be undefined in Node.js test env
+    expect(Object.prototype.hasOwnProperty.call(exposedEnv, 'electronVersion')).toBe(true);
+    expect(
+      exposedEnv.electronVersion === undefined || typeof exposedEnv.electronVersion === 'string',
+    ).toBe(true);
+
+    expect(Object.prototype.hasOwnProperty.call(exposedEnv, 'chromeVersion')).toBe(true);
+    expect(
+      exposedEnv.chromeVersion === undefined || typeof exposedEnv.chromeVersion === 'string',
+    ).toBe(true);
+
+    expect(Object.prototype.hasOwnProperty.call(exposedEnv, 'nodeVersion')).toBe(true);
+    expect(typeof exposedEnv.nodeVersion).toBe('string');
   });
 
   it('should expose both APIs in correct order', () => {
@@ -76,8 +121,9 @@ describe('setupElectronApi', () => {
 
     // Second call should be for 'electronAPI'
     expect(mockContextBridgeExposeInMainWorld.mock.calls[1][0]).toBe('electronAPI');
-    expect(mockContextBridgeExposeInMainWorld.mock.calls[1][1]).toEqual({
+    expect(mockContextBridgeExposeInMainWorld.mock.calls[1][1]).toMatchObject({
       invoke: mockInvoke,
+      onScreenCaptureSession: expect.any(Function),
       onStreamInvoke: mockOnStreamInvoke,
     });
 
@@ -137,6 +183,55 @@ describe('setupElectronApi', () => {
 
     const exposedAPI = mockContextBridgeExposeInMainWorld.mock.calls[1][1];
     expect(exposedAPI.onStreamInvoke).toBe(mockOnStreamInvoke);
+  });
+
+  it('should subscribe to screenCaptureSession in preload and replay cached payloads', () => {
+    setupElectronApi();
+
+    expect(mockIpcRendererOn).toHaveBeenCalledWith('screenCaptureSession', expect.any(Function));
+
+    const preloadListener = mockIpcRendererOn.mock.calls.find(
+      ([channel]) => channel === 'screenCaptureSession',
+    )?.[1];
+
+    const session = {
+      displayBounds: { height: 900, width: 1440, x: 0, y: 0 },
+      scaleFactor: 2,
+      windows: [],
+    };
+
+    preloadListener?.({}, session);
+
+    const exposedAPI = mockContextBridgeExposeInMainWorld.mock.calls[1][1];
+    const rendererListener = vi.fn();
+    exposedAPI.onScreenCaptureSession(rendererListener);
+
+    expect(rendererListener).toHaveBeenCalledWith(session);
+  });
+
+  it('should unsubscribe screenCapture session listeners', () => {
+    setupElectronApi();
+
+    const exposedAPI = mockContextBridgeExposeInMainWorld.mock.calls[1][1];
+    const rendererListener = vi.fn();
+    const unsubscribe = exposedAPI.onScreenCaptureSession(rendererListener);
+
+    unsubscribe();
+
+    const preloadListener = mockIpcRendererOn.mock.calls.find(
+      ([channel]) => channel === 'screenCaptureSession',
+    )?.[1];
+
+    preloadListener?.(
+      {},
+      {
+        displayBounds: { height: 900, width: 1440, x: 0, y: 0 },
+        scaleFactor: 2,
+        windows: [],
+      },
+    );
+
+    expect(rendererListener).not.toHaveBeenCalled();
   });
 
   it('should not modify the original functions', () => {

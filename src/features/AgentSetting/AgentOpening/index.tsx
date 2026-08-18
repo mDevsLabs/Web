@@ -19,29 +19,24 @@ const AgentOpening = memo(() => {
 
   return (
     <Form
+      itemsType={'flat'}
+      variant={'borderless'}
       items={[
         {
-          children: [
-            {
-              children: <OpeningMessage />,
-              desc: t('settingOpening.openingMessage.desc'),
-              label: t('settingOpening.openingMessage.title'),
-              layout: 'vertical',
-              wrapperCol,
-            },
-            {
-              children: <OpeningQuestions />,
-              desc: t('settingOpening.openingQuestions.desc'),
-              label: t('settingOpening.openingQuestions.title'),
-              layout: 'vertical',
-              wrapperCol,
-            },
-          ],
-          title: t('settingOpening.title'),
+          children: <OpeningMessage />,
+          desc: t('settingOpening.openingMessage.desc'),
+          label: t('settingOpening.openingMessage.title'),
+          layout: 'vertical',
+          wrapperCol,
+        },
+        {
+          children: <OpeningQuestions />,
+          desc: t('settingOpening.openingQuestions.desc'),
+          label: t('settingOpening.openingQuestions.title'),
+          layout: 'vertical',
+          wrapperCol,
         },
       ]}
-      itemsType={'group'}
-      variant={'borderless'}
     />
   );
 });

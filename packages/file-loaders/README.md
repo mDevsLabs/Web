@@ -1,8 +1,8 @@
 # @lobechat/file-loaders
 
-`@lobechat/file-loaders` is a toolkit within the LobeChat project, specifically designed for loading various types of files from local file paths and converting their content into standardized `Document` object arrays.
+`@lobechat/file-loaders` is a toolkit within the LobeHub project, specifically designed for loading various types of files from local file paths and converting their content into standardized `Document` object arrays.
 
-Its primary purpose is to provide a unified interface for reading different file formats, extracting their core text content, and preparing them for subsequent processing (such as file preview, content extraction, or serving as knowledge base data sources in LobeChat).
+Its primary purpose is to provide a unified interface for reading different file formats, extracting their core text content, and preparing them for subsequent processing (such as file preview, content extraction, or serving as knowledge base data sources in LobeHub).
 
 ## ✨ Features
 
@@ -14,6 +14,7 @@ Its primary purpose is to provide a unified interface for reading different file
   - **Word**: `.docx` files.
   - **Excel**: `.xlsx`, `.xls` files, with each worksheet as a `Page`.
   - **PowerPoint**: `.pptx` files, with each slide as a `Page`.
+  - **Jupyter Notebook**: `.ipynb` files, converted to markdown (one page per cell); token-heavy outputs become short sized placeholders.
 - **Standardized Output**: Always returns `Promise<Document>`. A `Document` object represents a loaded file, containing an array of `Page` objects that represent the logical units of the file (pages, slides, worksheets, text blocks, etc.).
 - **Hierarchical Structure**: Uses a structure where `Document` contains `Page[]`, better reflecting the original organization of the file.
 - **Rich Metadata**: Provides detailed metadata at both `Document` and `Page` levels, including file information, content statistics, and structural information.
@@ -73,7 +74,7 @@ File formats and parsing requirements are constantly evolving. We welcome commun
 
 ### Contribution Process
 
-1. Fork the [LobeChat repository](https://github.com/lobehub/lobe-chat)
+1. Fork the [LobeHub repository](https://github.com/lobehub/lobe-chat)
 2. Add new format support or improve existing parsers
 3. Submit a Pull Request describing:
 
@@ -84,6 +85,6 @@ File formats and parsing requirements are constantly evolving. We welcome commun
 
 ## 📌 Note
 
-This is an internal module of LobeHub (`"private": true`), designed specifically for LobeChat and not published as a standalone package.
+This is an internal module of LobeHub (`"private": true`), designed specifically for LobeHub and not published as a standalone package.
 
 If you're interested in our project, feel free to check it out, star it, or contribute code on [GitHub](https://github.com/lobehub/lobe-chat)!

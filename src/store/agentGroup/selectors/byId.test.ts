@@ -1,7 +1,7 @@
-import { AgentGroupDetail } from '@lobechat/types';
+import { type AgentGroupDetail } from '@lobechat/types';
 import { describe, expect, it } from 'vitest';
 
-import { ChatGroupStore } from '../store';
+import { type ChatGroupStore } from '../store';
 import { agentGroupByIdSelectors } from './byId';
 
 // Helper to create mock AgentGroupDetail with required fields
@@ -99,6 +99,22 @@ describe('agentGroupByIdSelectors', () => {
       );
 
       expect(result).toEqual(mockGroup2);
+    });
+  });
+
+  describe('isGroupNotFoundById', () => {
+    it('returns true only for groups flagged in groupNotFoundMap', () => {
+      const state: Partial<ChatGroupStore> = {
+        groupNotFoundMap: { 'group-gone': true },
+      };
+
+      expect(
+        agentGroupByIdSelectors.isGroupNotFoundById('group-gone')(state as ChatGroupStore),
+      ).toBe(true);
+      expect(agentGroupByIdSelectors.isGroupNotFoundById('group-1')(state as ChatGroupStore)).toBe(
+        false,
+      );
+      expect(agentGroupByIdSelectors.isGroupNotFoundById('')(state as ChatGroupStore)).toBe(false);
     });
   });
 });

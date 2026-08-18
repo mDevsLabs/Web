@@ -23,7 +23,7 @@ interface TreeSkeletonItemProps {
 
 const TreeSkeletonItem = memo<TreeSkeletonItemProps>(({ opacity = 1 }) => {
   return (
-    <Flexbox className={styles.container} horizontal style={{ opacity }}>
+    <Flexbox horizontal className={styles.container} style={{ opacity }}>
       <Skeleton.Button
         active
         size={'small'}
@@ -47,7 +47,7 @@ const TreeSkeletonItem = memo<TreeSkeletonItemProps>(({ opacity = 1 }) => {
 
 TreeSkeletonItem.displayName = 'TreeSkeletonItem';
 
-const TreeSkeleton = memo(() => {
+const TreeSkeleton = () => {
   const count = 6;
   // Calculate opacity gradient from 100% to 20%
   const getOpacity = (index: number) => 1 - (index / (count - 1)) * 0.8;
@@ -59,8 +59,6 @@ const TreeSkeleton = memo(() => {
       ))}
     </Flexbox>
   );
-});
-
-TreeSkeleton.displayName = 'TreeSkeleton';
+};
 
 export default TreeSkeleton;

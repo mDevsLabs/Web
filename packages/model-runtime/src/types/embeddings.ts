@@ -1,3 +1,7 @@
+import type { ModelUsage } from '@lobechat/types';
+
+import type { ModelPricingContext } from './pricing';
+
 export interface EmbeddingsPayload {
   /**
    * The number of dimensions the resulting output embeddings should have. Only
@@ -18,6 +22,11 @@ export interface EmbeddingsPayload {
 
 export interface EmbeddingsOptions {
   headers?: Record<string, any>;
+  /** Metadata passed to hooks (billing, tracing, etc.) */
+  metadata?: Record<string, unknown>;
+  onUsage?: (usage: ModelUsage) => void | Promise<void>;
+  /** Request-scoped pricing context for model-bank pricing lookups. */
+  pricingContext?: ModelPricingContext;
   signal?: AbortSignal;
   /**
    * userId for the embeddings

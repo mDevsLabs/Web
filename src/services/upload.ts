@@ -1,11 +1,10 @@
-import { parseDataUri } from '@lobechat/model-runtime';
+import { parseDataUri } from '@lobechat/model-runtime/utils/uriParser';
 import { uuid } from '@lobechat/utils';
 import dayjs from 'dayjs';
 import { sha256 } from 'js-sha256';
 
 import { fileEnv } from '@/envs/file';
 import { lambdaClient } from '@/libs/trpc/client';
-import { API_ENDPOINTS } from '@/services/_url';
 import { type FileMetadata, type UploadBase64ToS3Result } from '@/types/files';
 import { type FileUploadState, type FileUploadStatus } from '@/types/files/upload';
 
@@ -146,7 +145,7 @@ class UploadService {
     const xhr = new XMLHttpRequest();
 
     const { preSignUrl, ...result } = await this.getSignedUploadUrl(file, { directory, pathname });
-    let startTime = Date.now();
+    const startTime = Date.now();
 
     // Setup abort listener
     if (abortController) {
@@ -201,19 +200,6 @@ class UploadService {
     });
 
     return result;
-  };
-
-  /**
-   * get image File item with cors image URL
-   * @param url
-   * @param filename
-   * @param fileType
-   */
-  getImageFileByUrlWithCORS = async (url: string, filename: string, fileType = 'image/png') => {
-    const res = await fetch(API_ENDPOINTS.proxy, { body: url, method: 'POST' });
-    const data = await res.arrayBuffer();
-
-    return new File([data], filename, { lastModified: Date.now(), type: fileType });
   };
 
   private getSignedUploadUrl = async (

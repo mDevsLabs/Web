@@ -1,9 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
-import { agents, agentsToSessions, messages, sessions, topics, users } from '../../../schemas';
-import { LobeChatDatabase } from '../../../type';
-import { TopicModel } from '../../topic';
 import { getTestDB } from '../../../core/getTestDB';
+import { agents, agentsToSessions, messages, sessions, topics, users } from '../../../schemas';
+import type { LobeChatDatabase } from '../../../type';
+import { TopicModel } from '../../topic';
 
 const userId = 'topic-stats-user';
 const userId2 = 'topic-stats-user-2';
@@ -54,26 +54,35 @@ describe('TopicModel - Stats', () => {
         expect(result).toBe(2);
       });
 
-      it('should count legacy topics via agentsToSessions lookup', async () => {
+      it('should not count legacy session-only topics by agentId', async () => {
         await serverDB.transaction(async (trx) => {
           await trx.insert(sessions).values([{ id: 'count-legacy-session', userId }]);
-          await trx.insert(agents).values([{ id: 'count-legacy-agent', userId, title: 'Legacy Agent' }]);
-          await trx.insert(agentsToSessions).values([{ agentId: 'count-legacy-agent', sessionId: 'count-legacy-session', userId }]);
+          await trx
+            .insert(agents)
+            .values([{ id: 'count-legacy-agent', userId, title: 'Legacy Agent' }]);
+          await trx
+            .insert(agentsToSessions)
+            .values([{ agentId: 'count-legacy-agent', sessionId: 'count-legacy-session', userId }]);
           await trx.insert(topics).values([
             { id: 'legacy-count-1', userId, sessionId: 'count-legacy-session', agentId: null },
             { id: 'legacy-count-2', userId, sessionId: 'count-legacy-session', agentId: null },
           ]);
         });
 
+        // Topics carrying only a legacy sessionId are no longer counted for the agent.
         const result = await topicModel.count({ agentId: 'count-legacy-agent' });
-        expect(result).toBe(2);
+        expect(result).toBe(0);
       });
 
-      it('should count both new and legacy topics', async () => {
+      it('should count only topics carrying the agentId, ignoring session-only ones', async () => {
         await serverDB.transaction(async (trx) => {
           await trx.insert(sessions).values([{ id: 'count-mixed-session', userId }]);
-          await trx.insert(agents).values([{ id: 'count-mixed-agent', userId, title: 'Mixed Agent' }]);
-          await trx.insert(agentsToSessions).values([{ agentId: 'count-mixed-agent', sessionId: 'count-mixed-session', userId }]);
+          await trx
+            .insert(agents)
+            .values([{ id: 'count-mixed-agent', userId, title: 'Mixed Agent' }]);
+          await trx
+            .insert(agentsToSessions)
+            .values([{ agentId: 'count-mixed-agent', sessionId: 'count-mixed-session', userId }]);
           await trx.insert(topics).values([
             { id: 'mixed-count-legacy', userId, sessionId: 'count-mixed-session', agentId: null },
             { id: 'mixed-count-new', userId, agentId: 'count-mixed-agent', sessionId: null },
@@ -81,7 +90,7 @@ describe('TopicModel - Stats', () => {
         });
 
         const result = await topicModel.count({ agentId: 'count-mixed-agent' });
-        expect(result).toBe(2);
+        expect(result).toBe(1);
       });
 
       it('should return 0 when agent has no topics', async () => {
@@ -136,10 +145,11 @@ describe('TopicModel - Stats', () => {
   describe('rank', () => {
     it('should return ranked topics based on message count', async () => {
       await serverDB.transaction(async (tx) => {
+        await tx.insert(agents).values([{ id: 'rank-agent', userId, title: 'Rank Agent' }]);
         await tx.insert(topics).values([
-          { id: 'topic1', title: 'Topic 1', sessionId, userId },
-          { id: 'topic2', title: 'Topic 2', sessionId, userId },
-          { id: 'topic3', title: 'Topic 3', sessionId, userId },
+          { id: 'topic1', title: 'Topic 1', agentId: 'rank-agent', userId },
+          { id: 'topic2', title: 'Topic 2', agentId: 'rank-agent', userId },
+          { id: 'topic3', title: 'Topic 3', agentId: 'rank-agent', userId },
         ]);
 
         await tx.insert(messages).values([
@@ -163,13 +173,13 @@ describe('TopicModel - Stats', () => {
         id: 'topic1',
         title: 'Topic 1',
         count: 3,
-        sessionId,
+        agentId: 'rank-agent',
       });
       expect(result[1]).toMatchObject({
         id: 'topic2',
         title: 'Topic 2',
         count: 2,
-        sessionId,
+        agentId: 'rank-agent',
       });
     });
 

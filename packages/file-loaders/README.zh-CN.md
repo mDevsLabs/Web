@@ -1,8 +1,8 @@
 # @lobechat/file-loaders
 
-`@lobechat/file-loaders` 是 LobeChat 项目中的一个工具包，专门用于从本地文件路径加载各种类型的文件，并将其内容转换为标准化的 `Document` 对象数组。
+`@lobechat/file-loaders` 是 LobeHub 项目中的一个工具包，专门用于从本地文件路径加载各种类型的文件，并将其内容转换为标准化的 `Document` 对象数组。
 
-它的主要目的是提供一个统一的接口来读取不同的文件格式，提取其核心文本内容，并为后续处理（例如在 LobeChat 中进行文件预览、内容提取或将其作为知识库数据源）做好准备。
+它的主要目的是提供一个统一的接口来读取不同的文件格式，提取其核心文本内容，并为后续处理（例如在 LobeHub 中进行文件预览、内容提取或将其作为知识库数据源）做好准备。
 
 ## ✨ 功能特性
 
@@ -14,6 +14,7 @@
   - **Word**: `.docx` 文件。
   - **Excel**: `.xlsx`, `.xls` 文件，每个工作表作为一个 `Page`。
   - **PowerPoint**: `.pptx` 文件，每个幻灯片作为一个 `Page`。
+  - **Jupyter Notebook**: `.ipynb` 文件，转换为 markdown（每个单元格一页）；高 token 输出会被替换为简短占位符。
 - **标准化输出**: 始终返回 `Promise<Document>`。 `Document` 对象代表一个加载的文件，其内部包含一个 `Page` 数组，代表文件的各个逻辑单元（页、幻灯片、工作表、文本块等）。
 - **层级结构**: 采用 `Document` 包含 `Page[]` 的结构，更好地反映文件原始组织方式。
 - **丰富的元数据**: 在 `Document` 和 `Page` 层面提供详细的元数据，包括文件信息、内容统计和结构信息。
@@ -73,7 +74,7 @@
 
 ### 贡献流程
 
-1. Fork [LobeChat 仓库](https://github.com/lobehub/lobe-chat)
+1. Fork [LobeHub 仓库](https://github.com/lobehub/lobe-chat)
 2. 添加新格式支持或改进现有解析器
 3. 提交 Pull Request 并描述：
 
@@ -84,6 +85,6 @@
 
 ## 📌 说明
 
-这是 LobeHub 的内部模块（`"private": true`），专为 LobeChat 设计，不作为独立包发布。
+这是 LobeHub 的内部模块（`"private": true`），专为 LobeHub 设计，不作为独立包发布。
 
 如果你对我们的项目感兴趣，欢迎在 [GitHub](https://github.com/lobehub/lobe-chat) 上查看、点赞或贡献代码！

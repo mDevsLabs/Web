@@ -3,10 +3,12 @@ import { ChevronRight } from 'lucide-react';
 import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { serverConfigSelectors, useServerConfigStore } from '@/store/serverConfig';
+
 import { useCommandMenuContext } from './CommandMenuContext';
 import { CommandItem } from './components';
 import { useCommandMenu } from './useCommandMenu';
-import { CONTEXT_COMMANDS, getContextCommands } from './utils/contextCommands';
+import { buildContextCommands, getContextCommands } from './utils/contextCommands';
 
 const ContextCommands = memo(() => {
   const { t } = useTranslation('setting');
@@ -15,6 +17,7 @@ const ContextCommands = memo(() => {
   const { t: tCommon } = useTranslation('common');
   const { handleNavigate } = useCommandMenu();
   const { menuContext, pathname } = useCommandMenuContext();
+  const enableBusinessFeatures = useServerConfigStore(serverConfigSelectors.enableBusinessFeatures);
 
   // Extract subPath from pathname
   const subPath = useMemo(() => {
@@ -22,13 +25,13 @@ const ContextCommands = memo(() => {
     return pathParts && pathParts.length > 1 ? pathParts[1] : undefined;
   }, [pathname]);
 
-  const commands = getContextCommands(menuContext, subPath);
+  const commands = getContextCommands(menuContext, subPath, { enableBusinessFeatures });
 
   // Get settings commands to show globally (when not in settings context)
   const globalSettingsCommands = useMemo(() => {
     if (menuContext === 'settings') return [];
-    return CONTEXT_COMMANDS.settings;
-  }, [menuContext]);
+    return buildContextCommands({ enableBusinessFeatures }).settings;
+  }, [menuContext, enableBusinessFeatures]);
 
   const hasCommands = commands.length > 0 || globalSettingsCommands.length > 0;
 
@@ -66,8 +69,8 @@ const ContextCommands = memo(() => {
               <CommandItem
                 icon={<Icon />}
                 key={cmd.path}
-                onSelect={() => handleNavigate(cmd.path)}
                 value={searchValue}
+                onSelect={() => handleNavigate(cmd.path)}
               >
                 <span style={{ opacity: 0.5 }}>{contextName}</span>
                 <ChevronRight
@@ -112,9 +115,9 @@ const ContextCommands = memo(() => {
               <CommandItem
                 icon={<Icon />}
                 key={cmd.path}
-                onSelect={() => handleNavigate(cmd.path)}
                 unpinned={true}
                 value={searchValue}
+                onSelect={() => handleNavigate(cmd.path)}
               >
                 <span style={{ opacity: 0.5 }}>{settingsContextName}</span>
                 <ChevronRight

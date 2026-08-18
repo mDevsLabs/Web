@@ -1,53 +1,37 @@
-import { ENABLE_BUSINESS_FEATURES } from '@lobechat/business-const';
 import { Flexbox } from '@lobehub/ui';
-import { memo } from 'react';
-import { Link } from 'react-router-dom';
+import { type FC } from 'react';
 
-import { navigateToDesktopOnboarding } from '@/app/[variants]/(desktop)/desktop-onboarding/navigation';
-import { clearDesktopOnboardingCompleted } from '@/app/[variants]/(desktop)/desktop-onboarding/storage';
-import { DesktopOnboardingScreen } from '@/app/[variants]/(desktop)/desktop-onboarding/types';
 import BusinessPanelContent from '@/business/client/features/User/BusinessPanelContent';
-import BrandWatermark from '@/components/BrandWatermark';
-import Menu from '@/components/Menu';
+import UserPanelAccountSection from '@/business/client/features/User/UserPanelAccountSection';
+import UserPanelStatistics from '@/business/client/features/User/UserPanelStatistics';
+import UserPanelWorkspaceSection from '@/business/client/features/User/UserPanelWorkspaceSection';
+import Menu, { type MenuProps } from '@/components/Menu';
 import { isDesktop } from '@/const/version';
+import UserInfo from '@/features/User/UserInfo';
+import { useSignOut } from '@/hooks/useSignOut';
+import { serverConfigSelectors, useServerConfigStore } from '@/store/serverConfig';
 import { useUserStore } from '@/store/user';
 import { authSelectors } from '@/store/user/selectors';
 
-import DataStatistics from '../DataStatistics';
-import UserInfo from '../UserInfo';
 import UserLoginOrSignup from '../UserLoginOrSignup';
-import LangButton from './LangButton';
 import { useMenu } from './useMenu';
 
-const PanelContent = memo<{ closePopover: () => void }>(({ closePopover }) => {
+const PanelContent: FC<{ closePopover: () => void }> = ({ closePopover }) => {
   const isLoginWithAuth = useUserStore(authSelectors.isLoginWithAuth);
-  const [openSignIn, signOut] = useUserStore((s) => [s.openLogin, s.logout]);
+  const openSignIn = useUserStore((s) => s.openLogin);
+  const enableBusinessFeatures = useServerConfigStore(serverConfigSelectors.enableBusinessFeatures);
   const { mainItems, logoutItems } = useMenu();
+  const signOut = useSignOut();
 
   const handleSignIn = () => {
     openSignIn();
     closePopover();
   };
 
-  const handleSignOut = async () => {
-    if (isDesktop) {
-      closePopover();
-
-      try {
-        const { remoteServerService } = await import('@/services/electron/remoteServer');
-        await remoteServerService.clearRemoteServerConfig();
-      } catch (error) {
-        console.error(error);
-      } finally {
-        clearDesktopOnboardingCompleted();
-        signOut();
-        navigateToDesktopOnboarding(DesktopOnboardingScreen.Login);
-      }
-      return;
-    }
-
-    signOut();
+  const handleMenuClick: MenuProps['onClick'] = ({ key }) => {
     closePopover();
+
+    if (key === 'logout') void signOut();
   };
 
   return (
@@ -55,23 +39,19 @@ const PanelContent = memo<{ closePopover: () => void }>(({ closePopover }) => {
       {isDesktop || isLoginWithAuth ? (
         <>
           <UserInfo avatarProps={{ clickable: false }} />
-          <Link style={{ color: 'inherit' }} to={'/settings/stats'}>
-            <DataStatistics />
-          </Link>
-          {ENABLE_BUSINESS_FEATURES && <BusinessPanelContent />}
+          <UserPanelStatistics />
+          {enableBusinessFeatures && <BusinessPanelContent />}
+          <UserPanelWorkspaceSection onSwitch={closePopover} />
         </>
       ) : (
         <UserLoginOrSignup onClick={handleSignIn} />
       )}
 
-      <Menu items={mainItems} onClick={closePopover} />
-      <Menu items={logoutItems} onClick={handleSignOut} />
-      <Flexbox gap={4} horizontal justify={'space-between'} style={{ padding: '6px 8px 6px 16px' }}>
-        <BrandWatermark />
-        <LangButton placement={'right' as any} />
-      </Flexbox>
+      <Menu items={[...(mainItems ?? []), ...(logoutItems ?? [])]} onClick={handleMenuClick} />
+
+      <UserPanelAccountSection onNavigate={closePopover} />
     </Flexbox>
   );
-});
+};
 
 export default PanelContent;

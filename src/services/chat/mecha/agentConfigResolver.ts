@@ -1,23 +1,34 @@
+import { type BuiltinAgentSlug } from '@lobechat/builtin-agents';
 import {
   BUILTIN_AGENT_SLUGS,
-  type BuiltinAgentSlug,
   getAgentRuntimeConfig,
+  isCollaborativeBuiltinAgentRow,
 } from '@lobechat/builtin-agents';
 import { PageAgentIdentifier } from '@lobechat/builtin-tool-page-agent';
-import type { LobeToolManifest } from '@lobechat/context-engine';
+import { TaskIdentifier } from '@lobechat/builtin-tool-task';
+import { type LobeToolManifest } from '@lobechat/context-engine';
 import {
   type ChatCompletionTool,
+  getActivePluginIds,
   type LobeAgentChatConfig,
   type LobeAgentConfig,
   type MessageMapScope,
+  resolveAgentModelConfig,
 } from '@lobechat/types';
 import debug from 'debug';
 import { produce } from 'immer';
 
 import { getAgentStoreState } from '@/store/agent';
-import { agentSelectors, chatConfigByIdSelectors } from '@/store/agent/selectors';
+import {
+  agentByIdSelectors,
+  agentSelectors,
+  chatConfigByIdSelectors,
+} from '@/store/agent/selectors';
 import { getChatGroupStoreState } from '@/store/agentGroup';
 import { agentGroupByIdSelectors, agentGroupSelectors } from '@/store/agentGroup/selectors';
+import { useUserStore } from '@/store/user';
+import { userGeneralSettingsSelectors, userProfileSelectors } from '@/store/user/selectors';
+import { isDev } from '@/utils/env';
 
 const log = debug('mecha:agentConfigResolver');
 
@@ -47,7 +58,7 @@ const applyParamsFromChatConfig = (
   chatConfig: LobeAgentChatConfig,
 ): LobeAgentConfig => {
   // If params is not defined, return agentConfig as-is
-  if (!agentConfig.params) {
+  if (!agentConfig?.params) {
     return agentConfig;
   }
 
@@ -86,10 +97,11 @@ export interface AgentConfigResolverContext {
   groupId?: string;
 
   /**
-   * Whether this is a sub-task execution.
-   * When true, filters out lobe-gtd tools to prevent nested sub-task creation.
+   * Whether this is a sub-agent execution.
+   * When true, filters out the lobe-agent tool (which owns the sub-agent
+   * dispatch APIs) to prevent nested sub-agent creation.
    */
-  isSubTask?: boolean;
+  isSubAgent?: boolean;
 
   /** Current model being used (for template variables) */
   model?: string;
@@ -127,6 +139,13 @@ export interface ResolvedAgentConfig {
   plugins: string[];
   /** The agent's slug (if builtin) */
   slug?: string;
+  /**
+   * The raw sub-agent chatConfig override (`agencyConfig.subagent.chatConfig`).
+   * `chatConfig` above already has it merged in for non-migrated fields; this
+   * copy lets the model-params resolver re-apply the user's explicit sub-agent
+   * reasoning choices on top of the model-instance defaults.
+   */
+  subAgentChatConfigOverride?: Partial<LobeAgentChatConfig>;
   /** Pre-generated tools array (populated by internal_createAgentState, undefined means tools disabled) */
   tools?: ChatCompletionTool[];
 }
@@ -142,36 +161,83 @@ export interface ResolvedAgentConfig {
  * For regular agents, this simply returns the config from the store.
  */
 export const resolveAgentConfig = (ctx: AgentConfigResolverContext): ResolvedAgentConfig => {
-  const { agentId, model, documentContent, plugins, targetAgentConfig, isSubTask, disableTools } =
+  const { agentId, model, documentContent, plugins, targetAgentConfig, isSubAgent, disableTools } =
     ctx;
 
   log(
-    'resolveAgentConfig called with agentId: %s, scope: %s, isSubTask: %s, disableTools: %s',
+    'resolveAgentConfig called with agentId: %s, scope: %s, isSubAgent: %s, disableTools: %s',
     agentId,
     ctx.scope,
-    isSubTask,
+    isSubAgent,
     disableTools,
   );
 
   // Helper to apply plugin filters:
   // 1. If disableTools is true, return empty array (for broadcast scenarios)
-  // 2. If isSubTask is true, filter out lobe-gtd to prevent nested sub-task creation
+  // 2. Drop page-agent outside page scope.
+  //
+  // lobe-agent's context trimming (hide `callSubAgent` in group / sub-agent runs)
+  // now lives in its manifest resolver (resolveLobeAgentManifest), applied at
+  // tools-engine build time. That keeps lobe-agent's plan / todo / media-analysis
+  // available to sub-agents — only the nested dispatch API is removed — instead of
+  // dropping the whole tool here.
   const applyPluginFilters = (pluginIds: string[]) => {
     if (disableTools) {
       log('disableTools is true, returning empty plugins');
       return [];
     }
-    return isSubTask ? pluginIds.filter((id) => id !== 'lobe-gtd') : pluginIds;
+
+    let nextPluginIds = pluginIds;
+
+    if (ctx.scope !== 'page') {
+      nextPluginIds = nextPluginIds.filter((id) => id !== PageAgentIdentifier);
+    }
+
+    return nextPluginIds;
   };
 
   const agentStoreState = getAgentStoreState();
 
   // Get base config from store
-  const agentConfig = agentSelectors.getAgentConfigById(agentId)(agentStoreState);
-  const chatConfig = chatConfigByIdSelectors.getChatConfigById(agentId)(agentStoreState);
+  const sharedAgentConfig = agentSelectors.getAgentConfigById(agentId)(agentStoreState);
+  const agent = agentByIdSelectors.getAgentById(agentId)(agentStoreState);
+  const currentUserId = userProfileSelectors.userId(useUserStore.getState());
+  const isAuthor = !!currentUserId && agent?.userId === currentUserId;
+  const isPublicWorkspaceAgent = !!agent?.workspaceId && agent.visibility !== 'private';
+  // A collaborative builtin has no real author (the row is provisioned by
+  // whoever opened the feature first), so its *model* stays personal even for
+  // that member — see `AgentModelConfig.personalModelSelection`. Chat/Agent mode
+  // keeps the ordinary author rule.
+  const personalModelSelection = isCollaborativeBuiltinAgentRow(agent ?? {});
+  const usesWorkspaceMemberSelection = isPublicWorkspaceAgent && !isAuthor;
+  const memberModelOverride =
+    isPublicWorkspaceAgent && (personalModelSelection || !isAuthor)
+      ? useUserStore.getState().workspaceUserPreference.agentModelOverrides?.[agentId]
+      : undefined;
+  const memberModeOverride = usesWorkspaceMemberSelection
+    ? useUserStore.getState().workspaceUserPreference.agentModeOverrides?.[agentId]
+    : undefined;
+  const agentConfig = {
+    ...sharedAgentConfig,
+    ...resolveAgentModelConfig(
+      {
+        ...sharedAgentConfig,
+        canManage: isAuthor,
+        personalModelSelection,
+        visibility: agent?.visibility,
+        workspaceId: agent?.workspaceId,
+      },
+      memberModelOverride,
+    ),
+  };
+  const sharedChatConfig = chatConfigByIdSelectors.getChatConfigById(agentId)(agentStoreState);
+  const chatConfig =
+    memberModeOverride === undefined
+      ? sharedChatConfig
+      : { ...sharedChatConfig, enableAgentMode: memberModeOverride };
 
-  // Base plugins from agent config
-  const basePlugins = agentConfig.plugins ?? [];
+  // Base plugins from agent config (pinned identifiers only — disabled entries excluded)
+  const basePlugins = getActivePluginIds(agentConfig?.plugins);
 
   // Check if this is a builtin agent
   // Priority: supervisor check (when in group scope) > agent store slug
@@ -228,8 +294,24 @@ export const resolveAgentConfig = (ctx: AgentConfigResolverContext): ResolvedAge
     // Regular agent - use provided plugins if available, fallback to agent's plugins
     const finalPlugins = plugins && plugins.length > 0 ? plugins : basePlugins;
 
+    // Inject response language preference into system role for regular agents
+    const userLocale = userGeneralSettingsSelectors.currentResponseLanguage(
+      useUserStore.getState(),
+    );
+    const localeInstruction = userLocale
+      ? `Preferred reply language: ${userLocale}. Use this language unless the user explicitly asks to switch.`
+      : '';
+    const systemRoleWithLocale = localeInstruction
+      ? agentConfig.systemRole
+        ? `${agentConfig.systemRole}\n\n${localeInstruction}`
+        : localeInstruction
+      : agentConfig.systemRole;
+
     // Apply params adjustments based on chatConfig
-    let finalAgentConfig = applyParamsFromChatConfig(agentConfig, chatConfig);
+    let finalAgentConfig = applyParamsFromChatConfig(
+      { ...agentConfig, systemRole: systemRoleWithLocale },
+      chatConfig,
+    );
     let finalChatConfig = chatConfig;
 
     // === Page Editor Auto-Injection ===
@@ -245,13 +327,13 @@ export const resolveAgentConfig = (ctx: AgentConfigResolverContext): ResolvedAge
       const pageAgentRuntime = getAgentRuntimeConfig(BUILTIN_AGENT_SLUGS.pageAgent, {});
       const pageAgentSystemRole = pageAgentRuntime?.systemRole || '';
 
-      // 3. Merge system roles: custom agent's role + page-agent role
+      // 3. Merge system roles: custom agent's role (with locale) + page-agent role
       // Only append page-agent role if it exists
       const mergedSystemRole = pageAgentSystemRole
-        ? agentConfig.systemRole
-          ? `${agentConfig.systemRole}\n\n${pageAgentSystemRole}`
+        ? systemRoleWithLocale
+          ? `${systemRoleWithLocale}\n\n${pageAgentSystemRole}`
           : pageAgentSystemRole
-        : agentConfig.systemRole || '';
+        : systemRoleWithLocale || '';
 
       finalAgentConfig = {
         ...finalAgentConfig,
@@ -269,6 +351,31 @@ export const resolveAgentConfig = (ctx: AgentConfigResolverContext): ResolvedAge
         chatConfig: finalChatConfig,
         isBuiltinAgent: false,
         plugins: applyPluginFilters(pageAgentPlugins),
+      };
+    }
+
+    if (ctx.scope === 'task') {
+      const taskAgentPlugins = finalPlugins.includes(TaskIdentifier)
+        ? finalPlugins
+        : [TaskIdentifier, ...finalPlugins];
+      const taskAgentRuntime = getAgentRuntimeConfig(BUILTIN_AGENT_SLUGS.taskAgent, {});
+      const taskAgentSystemRole = taskAgentRuntime?.systemRole || '';
+      const mergedSystemRole = taskAgentSystemRole
+        ? systemRoleWithLocale
+          ? `${systemRoleWithLocale}\n\n${taskAgentSystemRole}`
+          : taskAgentSystemRole
+        : systemRoleWithLocale || '';
+
+      finalAgentConfig = {
+        ...finalAgentConfig,
+        systemRole: mergedSystemRole,
+      };
+
+      return {
+        agentConfig: finalAgentConfig,
+        chatConfig: finalChatConfig,
+        isBuiltinAgent: false,
+        plugins: applyPluginFilters(taskAgentPlugins),
       };
     }
 
@@ -334,9 +441,11 @@ export const resolveAgentConfig = (ctx: AgentConfigResolverContext): ResolvedAge
   const runtimeConfig = getAgentRuntimeConfig(slug, {
     documentContent,
     groupSupervisorContext,
+    isDev,
     model,
     plugins: plugins || basePlugins,
     targetAgentConfig,
+    userLocale: userGeneralSettingsSelectors.currentResponseLanguage(useUserStore.getState()),
   });
 
   // Merge runtime systemRole into agent config
@@ -353,6 +462,12 @@ export const resolveAgentConfig = (ctx: AgentConfigResolverContext): ResolvedAge
     ...chatConfig,
     ...runtimeConfig?.chatConfig,
   };
+  const resolvedAgencyConfig = runtimeConfig?.agencyConfig
+    ? {
+        ...agentConfig.agencyConfig,
+        ...runtimeConfig.agencyConfig,
+      }
+    : agentConfig.agencyConfig;
 
   // === Page Editor Auto-Injection for Builtin Agents ===
   // When a builtin agent (other than page-agent itself) is used in page editor,
@@ -381,9 +496,25 @@ export const resolveAgentConfig = (ctx: AgentConfigResolverContext): ResolvedAge
     };
   }
 
+  if (ctx.scope === 'task' && slug !== BUILTIN_AGENT_SLUGS.taskAgent) {
+    if (!finalPlugins.includes(TaskIdentifier)) {
+      finalPlugins = [TaskIdentifier, ...finalPlugins];
+    }
+
+    const taskAgentRuntime = getAgentRuntimeConfig(BUILTIN_AGENT_SLUGS.taskAgent, {});
+    const taskAgentSystemRole = taskAgentRuntime?.systemRole || '';
+
+    if (taskAgentSystemRole) {
+      resolvedSystemRole = resolvedSystemRole
+        ? `${resolvedSystemRole}\n\n${taskAgentSystemRole}`
+        : taskAgentSystemRole;
+    }
+  }
+
   // Merge runtime systemRole into agent config
   const resolvedAgentConfig: LobeAgentConfig = {
     ...agentConfig,
+    ...(resolvedAgencyConfig ? { agencyConfig: resolvedAgencyConfig } : {}),
     systemRole: resolvedSystemRole,
   };
 

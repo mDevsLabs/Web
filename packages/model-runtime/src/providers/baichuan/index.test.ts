@@ -1,8 +1,9 @@
 // @vitest-environment node
 import { ModelProvider } from 'model-bank';
-import { Mock, afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import type { Mock } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { LobeOpenAICompatibleRuntime } from '../../core/BaseAI';
+import type { LobeOpenAICompatibleRuntime } from '../../core/BaseAI';
 import { testProvider } from '../../providerTestUtils';
 import { LobeBaichuanAI, params } from './index';
 
@@ -245,6 +246,16 @@ describe('LobeBaichuanAI - custom features', () => {
       expect(calledPayload.temperature).toBe(0.4);
       expect(calledPayload.max_tokens).toBe(500);
       expect(calledPayload.top_p).toBe(0.95);
+    });
+
+    it('should not send budget_tokens when thinking budget is not provided', () => {
+      const result = params.chatCompletion!.handlePayload!({
+        messages: [{ content: 'Hello', role: 'user' }],
+        model: 'Baichuan-M2',
+        thinking: {},
+      } as any);
+
+      expect(result).not.toHaveProperty('budget_tokens');
     });
   });
 

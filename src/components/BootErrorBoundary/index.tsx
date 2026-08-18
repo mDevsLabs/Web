@@ -1,8 +1,9 @@
 'use client';
 
-import { Component, type ErrorInfo, type ReactNode } from 'react';
+import { type ErrorInfo, type ReactNode } from 'react';
+import { Component } from 'react';
 
-interface BootErrorBoundaryProps {
+export interface BootErrorBoundaryProps {
   children: ReactNode;
   fallback?: ReactNode;
   /**
@@ -10,6 +11,7 @@ interface BootErrorBoundaryProps {
    * Defaults to 1 to avoid reload loops.
    */
   maxBootReloads?: number;
+  onError?: (error: Error, errorInfo: ErrorInfo) => Promise<void> | void;
 }
 
 interface BootErrorBoundaryState {
@@ -31,6 +33,9 @@ class BootErrorBoundary extends Component<BootErrorBoundaryProps, BootErrorBound
   private hasBooted = false;
 
   public componentDidMount() {
+    // A fallback mount is not a successful boot; preserve the reload budget across reporting.
+    if (this.state.hasError) return;
+
     this.hasBooted = true;
     this.resetReloadAttempts();
     this.cleanForceReloadMarker();
@@ -41,12 +46,35 @@ class BootErrorBoundary extends Component<BootErrorBoundaryProps, BootErrorBound
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    // eslint-disable-next-line no-console
     console.error('Unexpected boot error captured by BootErrorBoundary', error, errorInfo);
 
-    if (!this.hasBooted && this.tryHardReload()) {
+    const shouldHardReload = !this.hasBooted;
+    let errorReport: Promise<void> | void = undefined;
+
+    try {
+      errorReport = this.props.onError?.(error, errorInfo);
+    } catch (reportError) {
+      if (__DEV__) {
+        console.warn('BootErrorBoundary onError callback failed', reportError);
+      }
+    }
+
+    if (errorReport) {
+      const settledReport = errorReport.catch((reportError) => {
+        if (__DEV__) {
+          console.warn('BootErrorBoundary onError callback failed', reportError);
+        }
+      });
+
+      if (shouldHardReload) {
+        void settledReport.finally(() => this.tryHardReload());
+      } else {
+        void settledReport;
+      }
       return;
     }
+
+    if (shouldHardReload) this.tryHardReload();
   }
 
   public render() {
@@ -63,8 +91,7 @@ class BootErrorBoundary extends Component<BootErrorBoundaryProps, BootErrorBound
       window.sessionStorage.removeItem(RELOAD_SESSION_KEY);
     } catch (error) {
       // Access to sessionStorage can fail in restricted environments; ignore.
-      if (process.env.NODE_ENV === 'development') {
-        // eslint-disable-next-line no-console
+      if (__DEV__) {
         console.warn('BootErrorBoundary failed to reset reload attempts', error);
       }
     }
@@ -79,7 +106,6 @@ class BootErrorBoundary extends Component<BootErrorBoundaryProps, BootErrorBound
       const href = window.location.href;
 
       if (attempts >= maxReloads) {
-        // eslint-disable-next-line no-console
         console.warn('BootErrorBoundary reached max reload attempts', {
           attempts,
           href,
@@ -88,13 +114,11 @@ class BootErrorBoundary extends Component<BootErrorBoundaryProps, BootErrorBound
         return false;
       }
 
-      // eslint-disable-next-line no-console
       console.info('BootErrorBoundary forcing hard reload', { attempts, href, maxReloads });
       window.sessionStorage.setItem(RELOAD_SESSION_KEY, String(attempts + 1));
     } catch (error) {
       // If sessionStorage is unavailable, we still attempt a reload once.
-      if (process.env.NODE_ENV === 'development') {
-        // eslint-disable-next-line no-console
+      if (__DEV__) {
         console.warn('BootErrorBoundary failed to persist reload attempts', error);
       }
     }

@@ -1,14 +1,11 @@
-import { type HomeInputState, initialHomeInputState } from './slices/homeInput/initialState';
-import { type RecentState, initialRecentState } from './slices/recent/initialState';
-import { type SessionState, initialSessionState } from './slices/session/initialState';
-import { type SessionGroupState, initSessionGroupState } from './slices/sessionGroup/initialState';
+import { type SessionState } from './slices/session/initialState';
+import { initialSessionState } from './slices/session/initialState';
+import { type SessionGroupState } from './slices/sessionGroup/initialState';
+import { initSessionGroupState } from './slices/sessionGroup/initialState';
 
-export interface SessionStoreState
-  extends SessionGroupState, SessionState, RecentState, HomeInputState {}
+export interface SessionStoreState extends SessionGroupState, SessionState {}
 
 export const initialState: SessionStoreState = {
   ...initSessionGroupState,
   ...initialSessionState,
-  ...initialRecentState,
-  ...initialHomeInputState,
 };

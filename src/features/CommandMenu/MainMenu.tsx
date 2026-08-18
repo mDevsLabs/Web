@@ -1,11 +1,10 @@
 import { SOCIAL_URL } from '@lobechat/business-const';
-import { DiscordIcon } from '@lobehub/ui/icons';
+import { DiscordIcon, GithubIcon } from '@lobehub/ui/icons';
 import { Command } from 'cmdk';
 import {
   Bot,
   FeatherIcon,
   FilePen,
-  Github,
   LibraryBig,
   MessageSquarePlusIcon,
   Monitor,
@@ -14,19 +13,26 @@ import {
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { openFeedbackModal } from '@/components/FeedbackModal';
 import { getNavigableRoutes, getRouteById } from '@/config/routes';
 import { FEEDBACK } from '@/const/url';
-import { useFeedbackModal } from '@/hooks/useFeedbackModal';
+import { usePermission } from '@/hooks/usePermission';
+import { useChatStore } from '@/store/chat';
+import { topicSelectors } from '@/store/chat/selectors';
 
 import { useCommandMenuContext } from './CommandMenuContext';
-import ContextCommands from './ContextCommands';
 import { CommandItem } from './components';
+import ContextCommands from './ContextCommands';
 import { useCommandMenu } from './useCommandMenu';
 
 const MainMenu = memo(() => {
-  const { pathname, menuContext, setPages, pages } = useCommandMenuContext();
+  const { pathname, menuContext, setPages, pages, onClose } = useCommandMenuContext();
   const { t } = useTranslation('common');
-  const { open: openFeedbackModal } = useFeedbackModal();
+  const { allowed: canCreate } = usePermission('create_content');
+  // While the first send from the new-topic view is still creating the real
+  // topic, openNewTopicOrSaveTopic is a no-op — disable the command instead of
+  // letting it close the palette as a false success (same as the sidebar entry).
+  const isNewTopicSendInFlight = useChatStore(topicSelectors.isNewTopicSendInFlight);
 
   const {
     handleCreateSession,
@@ -44,43 +50,52 @@ const MainMenu = memo(() => {
 
       <Command.Group>
         <CommandItem
+          disabled={!canCreate}
           icon={<Bot />}
-          onSelect={handleCreateSession}
           unpinned={menuContext === 'agent' || menuContext === 'page'}
           value="create new agent assistant"
+          onSelect={handleCreateSession}
         >
           {t('cmdk.newAgent')}
         </CommandItem>
 
         <CommandItem
+          disabled={!canCreate}
           icon={<Bot />}
-          onSelect={handleCreateAgentTeam}
           unpinned={menuContext === 'agent' || menuContext === 'page'}
           value="create new agent team"
+          onSelect={handleCreateAgentTeam}
         >
           {t('cmdk.newAgentTeam')}
         </CommandItem>
 
         {menuContext === 'agent' && (
           <CommandItem
+            disabled={!canCreate || isNewTopicSendInFlight}
             icon={<MessageSquarePlusIcon />}
-            onSelect={handleCreateTopic}
             unpinned={menuContext !== 'agent'}
             value="create new topic"
+            onSelect={handleCreateTopic}
           >
             {t('cmdk.newTopic')}
           </CommandItem>
         )}
 
-        <CommandItem icon={<FilePen />} onSelect={handleCreatePage} value="create new page">
+        <CommandItem
+          disabled={!canCreate}
+          icon={<FilePen />}
+          value="create new page"
+          onSelect={handleCreatePage}
+        >
           {t('cmdk.newPage')}
         </CommandItem>
 
         <CommandItem
+          disabled={!canCreate}
           icon={<LibraryBig />}
-          onSelect={handleCreateLibrary}
           unpinned={menuContext !== 'resource'}
           value="create new library"
+          onSelect={handleCreateLibrary}
         >
           {t('cmdk.newLibrary')}
         </CommandItem>
@@ -96,8 +111,8 @@ const MainMenu = memo(() => {
               <CommandItem
                 icon={SettingsIcon && <SettingsIcon />}
                 keywords={keywords}
-                onSelect={() => handleNavigate(settingsRoute?.path || '/settings')}
                 value="settings"
+                onSelect={() => handleNavigate(settingsRoute?.path || '/settings')}
               >
                 {t('cmdk.settings')}
               </CommandItem>
@@ -106,8 +121,8 @@ const MainMenu = memo(() => {
 
         <CommandItem
           icon={<Monitor />}
-          onSelect={() => setPages([...pages, 'theme'])}
           value="theme"
+          onSelect={() => setPages([...pages, 'theme'])}
         >
           {t('cmdk.theme')}
         </CommandItem>
@@ -125,8 +140,8 @@ const MainMenu = memo(() => {
                 icon={<RouteIcon />}
                 key={route.id}
                 keywords={keywords}
-                onSelect={() => handleNavigate(route.path)}
                 value={route.id}
+                onSelect={() => handleNavigate(route.path)}
               >
                 {t(route.cmdkKey as any)}
               </CommandItem>
@@ -139,32 +154,39 @@ const MainMenu = memo(() => {
         <CommandItem
           icon={<FeatherIcon />}
           keywords={t('cmdk.keywords.contactUs').split(' ')}
-          onSelect={openFeedbackModal}
           value="contact-via-email"
+          onSelect={() => {
+            // Close the palette through the context handler (which runs the exit
+            // animation and clears the local `isVisible` state) before opening the
+            // modal. `openFeedbackModal` only flips the store flag, which alone
+            // doesn't unmount the palette — so without this it stays on screen.
+            onClose();
+            openFeedbackModal();
+          }}
         >
           {t('cmdk.contactUs')}
         </CommandItem>
         <CommandItem
-          icon={<Github />}
+          icon={<GithubIcon />}
           keywords={t('cmdk.keywords.submitIssue').split(' ')}
-          onSelect={() => handleExternalLink(FEEDBACK)}
           value="submit-issue"
+          onSelect={() => handleExternalLink(FEEDBACK)}
         >
           {t('cmdk.submitIssue')}
         </CommandItem>
         <CommandItem
           icon={<Star />}
           keywords={t('cmdk.keywords.starGitHub').split(' ')}
-          onSelect={() => handleExternalLink(SOCIAL_URL.github)}
           value="star-github"
+          onSelect={() => handleExternalLink(SOCIAL_URL.github)}
         >
           {t('cmdk.starOnGitHub')}
         </CommandItem>
         <CommandItem
           icon={<DiscordIcon />}
           keywords={t('cmdk.keywords.discord').split(' ')}
-          onSelect={() => handleExternalLink(SOCIAL_URL.discord)}
           value="discord"
+          onSelect={() => handleExternalLink(SOCIAL_URL.discord)}
         >
           {t('cmdk.communitySupport')}
         </CommandItem>

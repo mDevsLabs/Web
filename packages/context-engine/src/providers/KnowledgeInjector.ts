@@ -1,9 +1,17 @@
-import { promptAgentKnowledge } from '@lobechat/prompts';
 import type { FileContent, KnowledgeBaseInfo } from '@lobechat/prompts';
+import { promptAgentKnowledge } from '@lobechat/prompts';
 import debug from 'debug';
 
 import { BaseFirstUserContentProvider } from '../base/BaseFirstUserContentProvider';
 import type { PipelineContext, ProcessorOptions } from '../types';
+
+declare module '../types' {
+  interface PipelineContextMetadataOverrides {
+    filesCount?: number;
+    knowledgeBasesCount?: number;
+    knowledgeInjected?: boolean;
+  }
+}
 
 const log = debug('context-engine:provider:KnowledgeInjector');
 
@@ -29,7 +37,6 @@ export class KnowledgeInjector extends BaseFirstUserContentProvider {
     super(options);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   protected buildContent(_context: PipelineContext): string | null {
     const fileContents = this.config.fileContents || [];
     const knowledgeBases = this.config.knowledgeBases || [];

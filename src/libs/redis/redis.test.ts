@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
-import { RedisConfig } from './types';
+import { type RedisConfig } from './types';
 
 const buildRedisConfig = (): RedisConfig | null => {
   const url = process.env.REDIS_URL;
@@ -23,6 +23,34 @@ const buildRedisConfig = (): RedisConfig | null => {
 const loadRedisProvider = async () => (await import('./redis')).IoRedisRedisProvider;
 
 const createMockedProvider = async () => {
+  const instances: Array<{ options: Record<PropertyKey, unknown>; url: string }> = [];
+
+  const createPipelineMock = () => {
+    const pipeMocks = {
+      incr: vi.fn(),
+      expire: vi.fn(),
+      get: vi.fn(),
+      set: vi.fn(),
+      setex: vi.fn(),
+      del: vi.fn(),
+      decr: vi.fn(),
+      hget: vi.fn(),
+      hset: vi.fn(),
+      hdel: vi.fn(),
+      hgetall: vi.fn(),
+      exec: vi.fn().mockResolvedValue([]),
+    };
+    // Make each command return the pipeline itself for chaining
+    for (const key of Object.keys(pipeMocks) as (keyof typeof pipeMocks)[]) {
+      if (key !== 'exec') {
+        pipeMocks[key].mockReturnValue(pipeMocks);
+      }
+    }
+    return pipeMocks;
+  };
+
+  const pipelineMocks = createPipelineMock();
+
   const mocks = {
     connect: vi.fn().mockResolvedValue(undefined),
     ping: vi.fn().mockResolvedValue('PONG'),
@@ -42,6 +70,9 @@ const createMockedProvider = async () => {
     hset: vi.fn().mockResolvedValue(1),
     hdel: vi.fn().mockResolvedValue(1),
     hgetall: vi.fn().mockResolvedValue({ a: '1' }),
+    eval: vi.fn().mockResolvedValue(null),
+    scan: vi.fn().mockResolvedValue(['0', []]),
+    pipeline: vi.fn().mockReturnValue(pipelineMocks),
   };
 
   vi.resetModules();
@@ -49,8 +80,10 @@ const createMockedProvider = async () => {
     class FakeRedis {
       constructor(
         public url: string,
-        public options: any,
-      ) {}
+        public options: Record<PropertyKey, unknown>,
+      ) {
+        instances.push({ options, url });
+      }
       connect = mocks.connect;
       ping = mocks.ping;
       quit = mocks.quit;
@@ -69,6 +102,9 @@ const createMockedProvider = async () => {
       hset = mocks.hset;
       hdel = mocks.hdel;
       hgetall = mocks.hgetall;
+      eval = mocks.eval;
+      scan = mocks.scan;
+      pipeline = mocks.pipeline;
     }
 
     return { default: FakeRedis };
@@ -84,7 +120,7 @@ const createMockedProvider = async () => {
 
   await provider.initialize();
 
-  return { mocks, provider };
+  return { instances, mocks, provider };
 };
 
 const shouldSkipIntegration = (error: unknown) =>
@@ -133,11 +169,87 @@ describe('integrated', (test) => {
 });
 
 describe('mocked', () => {
+  it('sets bounded ioredis connection and command timeouts', async () => {
+    const { instances, provider } = await createMockedProvider();
+
+    expect(instances).toHaveLength(1);
+    expect(instances[0]).toMatchObject({
+      options: {
+        commandTimeout: 10_000,
+        connectTimeout: 10_000,
+        maxRetriesPerRequest: 2,
+      },
+      url: 'redis://localhost:6379',
+    });
+
+    await provider.disconnect();
+  });
+
   it('normalizes set options into ioredis arguments', async () => {
     const { mocks, provider } = await createMockedProvider();
     await provider.set('key', 'value', { ex: 10, nx: true, get: true });
 
     expect(mocks.set).toHaveBeenCalledWith('key', 'value', 'EX', 10, 'NX', 'GET');
+    await provider.disconnect();
+  });
+
+  it('forwards eval to ioredis', async () => {
+    const { mocks, provider } = await createMockedProvider();
+    mocks.eval.mockResolvedValue(1);
+
+    const result = await provider.eval('return redis.call("GET", KEYS[1])', 1, 'my-key');
+
+    expect(mocks.eval).toHaveBeenCalledWith('return redis.call("GET", KEYS[1])', 1, 'my-key');
+    expect(result).toBe(1);
+    await provider.disconnect();
+  });
+
+  it('forwards scan to ioredis', async () => {
+    const { mocks, provider } = await createMockedProvider();
+    mocks.scan.mockResolvedValue(['0', ['workflow:run-guard:global']]);
+
+    const result = await provider.scan('0', 'MATCH', 'workflow:run-guard:*', 'COUNT', 100);
+
+    expect(mocks.scan).toHaveBeenCalledWith('0', 'MATCH', 'workflow:run-guard:*', 'COUNT', 100);
+    expect(result).toEqual(['0', ['workflow:run-guard:global']]);
+    await provider.disconnect();
+  });
+
+  it('pipeline chains commands and executes in one round-trip', async () => {
+    const { mocks, provider } = await createMockedProvider();
+    const pipeMock = mocks.pipeline();
+
+    pipeMock.exec.mockResolvedValue([
+      [null, 2],
+      [null, 1],
+      [null, 3],
+      [null, 1],
+    ]);
+
+    const pipe = provider.pipeline();
+    pipe.incr('key1').expire('key1', 100).incr('key2').expire('key2', 200);
+    const results = await pipe.exec();
+
+    expect(mocks.pipeline).toHaveBeenCalled();
+    expect(pipeMock.incr).toHaveBeenCalledWith('key1');
+    expect(pipeMock.expire).toHaveBeenCalledWith('key1', 100);
+    expect(pipeMock.incr).toHaveBeenCalledWith('key2');
+    expect(pipeMock.expire).toHaveBeenCalledWith('key2', 200);
+    expect(results).toHaveLength(4);
+    await provider.disconnect();
+  });
+
+  it('pipeline set converts SetOptions to ioredis token args', async () => {
+    const { mocks, provider } = await createMockedProvider();
+    const pipeMock = mocks.pipeline();
+
+    pipeMock.exec.mockResolvedValue([[null, 'OK']]);
+
+    const pipe = provider.pipeline();
+    pipe.set('key', 'value', { ex: 60, nx: true });
+    await pipe.exec();
+
+    expect(pipeMock.set).toHaveBeenCalledWith('key', 'value', 'EX', 60, 'NX');
     await provider.disconnect();
   });
 

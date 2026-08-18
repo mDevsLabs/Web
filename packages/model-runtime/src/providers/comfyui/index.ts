@@ -2,8 +2,12 @@ import type { ComfyUIKeyVault } from '@lobechat/types';
 import { createBasicAuthCredentials } from '@lobechat/utils';
 import debug from 'debug';
 
-import { LobeRuntimeAI } from '../../core/BaseAI';
-import { AuthenticatedImageRuntime, CreateImagePayload, CreateImageResponse } from '../../types';
+import type { LobeRuntimeAI } from '../../core/BaseAI';
+import type {
+  AuthenticatedImageRuntime,
+  CreateImagePayload,
+  CreateImageResponse,
+} from '../../types';
 import { parseComfyUIErrorMessage } from '../../utils/comfyuiErrorParser';
 import { AgentRuntimeError } from '../../utils/createError';
 
@@ -72,6 +76,7 @@ export class LobeComfyUI implements LobeRuntimeAI, AuthenticatedImageRuntime {
       const isInVercel = process.env.VERCEL === '1';
       const vercelUrl = `https://${process.env.VERCEL_URL}`;
       const appUrl =
+        process.env.INTERNAL_APP_URL ||
         process.env.APP_URL ||
         (isInVercel ? vercelUrl : `http://localhost:${process.env.PORT || 3010}`);
 

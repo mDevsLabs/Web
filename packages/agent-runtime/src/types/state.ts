@@ -1,5 +1,16 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix, typescript-sort-keys/interface */
-import { ChatToolPayload, SecurityBlacklistConfig, UserInterventionConfig } from '@lobechat/types';
+import type {
+  ActivatedStepSkill,
+  ActivatedStepTool,
+  OperationToolSet,
+  ToolExecutor,
+  ToolSource,
+} from '@lobechat/context-engine';
+import type {
+  ChatToolPayload,
+  ExpertiseContextSnapshot,
+  SecurityBlacklistConfig,
+  UserInterventionConfig,
+} from '@lobechat/types';
 
 import type { Cost, CostLimit, Usage } from './usage';
 
@@ -8,17 +19,62 @@ import type { Cost, CostLimit, Usage } from './usage';
  * This is the "passport" that can be persisted and transferred.
  */
 export interface AgentState {
-  operationId: string;
-  // --- State Machine ---
-  status: 'idle' | 'running' | 'waiting_for_human' | 'done' | 'error' | 'interrupted';
+  /** Cumulative record of skills activated at step level */
+  activatedStepSkills?: ActivatedStepSkill[];
+  /** Cumulative record of tools activated at step level */
+  activatedStepTools?: ActivatedStepTool[];
+  /**
+   * Current calculated cost for this session.
+   * Updated after each billable operation.
+   */
+  cost: Cost;
+
+  /**
+   * Optional cost limits configuration.
+   * If set, execution will stop when limits are exceeded.
+   */
+  costLimit?: CostLimit;
+  // --- Metadata ---
+  createdAt: string;
+  /** Whether ContextEngine may inject the operation expertise snapshot. */
+  enableExpertise?: boolean;
+  error?: any;
+  /** Immutable expertise snapshot resolved once when this operation starts. */
+  expertise?: ExpertiseContextSnapshot;
+  /**
+   * When true, the agent is in force-finish mode (maxSteps exceeded).
+   * Tools are allowed to complete, but the next LLM call will have tools stripped
+   * and a summary prompt injected to produce a final text response.
+   */
+  forceFinish?: boolean;
+  // --- Interruption Handling ---
+  /**
+   * When status is 'interrupted', this stores the interruption context
+   * for potential resumption or cleanup.
+   */
+  interruption?: {
+    /** Reason for interruption */
+    reason: string;
+    /** Timestamp when interruption occurred */
+    interruptedAt: string;
+    /** The instruction that was being executed when interrupted */
+    interruptedInstruction?: any;
+    /** Whether the interruption can be resumed */
+    canResume: boolean;
+  };
+  lastModified: string;
+
+  /**
+   * Optional maximum number of steps allowed.
+   * If set, execution will stop with error when exceeded.
+   */
+  maxSteps?: number;
 
   // --- Core Context ---
   messages: any[];
-  tools?: any[];
-  systemRole?: string;
-  toolManifestMap: Record<string, any>;
-  /** Tool source map for routing tool execution to correct handler */
-  toolSourceMap?: Record<string, 'builtin' | 'plugin' | 'mcp' | 'klavis' | 'lobehubSkill'>;
+
+  // --- Extensible metadata ---
+  metadata?: Record<string, any>;
 
   /**
    * Model runtime configuration
@@ -36,13 +92,32 @@ export interface AgentState {
       provider: string;
     };
   };
+  operationId: string;
 
+  /** Operation-level tool set snapshot (immutable after creation) */
+  operationToolSet?: OperationToolSet;
+  // --- HIL ---
   /**
-   * User's global intervention configuration
-   * Controls how tools requiring approval are handled
+   * Assistant placeholder seeded for a resume that starts by executing a tool
+   * (e.g. a human-approved / auto-approved tool such as the tools activator).
+   * The first `call_llm` after that tool consumes this id so its output reuses
+   * the placeholder instead of creating a new message and orphaning the seed.
+   * Cleared once consumed.
    */
-  userInterventionConfig?: UserInterventionConfig;
+  pendingAssistantMessageId?: string;
+  pendingHumanPrompt?: { metadata?: Record<string, unknown>; prompt: string };
 
+  pendingHumanSelect?: {
+    metadata?: Record<string, unknown>;
+    multi?: boolean;
+    options: Array<{ label: string; value: string }>;
+    prompt?: string;
+  };
+  /**
+   * When status is 'waiting_for_human', this stores pending requests
+   * for human-in-the-loop operations.
+   */
+  pendingToolsCalling?: ChatToolPayload[];
   /**
    * Security blacklist configuration
    * These rules will ALWAYS block execution and require human intervention,
@@ -50,6 +125,15 @@ export interface AgentState {
    * If not provided, DEFAULT_SECURITY_BLACKLIST will be used.
    */
   securityBlacklist?: SecurityBlacklistConfig;
+  // --- State Machine ---
+  status:
+    | 'idle'
+    | 'running'
+    | 'waiting_for_human'
+    | 'waiting_for_async_tool'
+    | 'done'
+    | 'error'
+    | 'interrupted';
 
   // --- Execution Tracking ---
   /**
@@ -57,66 +141,29 @@ export interface AgentState {
    * Incremented on each runtime.step() call.
    */
   stepCount: number;
-  /**
-   * Optional maximum number of steps allowed.
-   * If set, execution will stop with error when exceeded.
-   */
-  maxSteps?: number;
 
+  systemRole?: string;
+  /** Tool executor map for routing tool execution between server and client */
+  toolExecutorMap?: Record<string, ToolExecutor>;
+
+  toolManifestMap: Record<string, any>;
+
+  tools?: any[];
+
+  /** Tool source map for routing tool execution to correct handler */
+  toolSourceMap?: Record<string, ToolSource>;
   // --- Usage and Cost Tracking ---
   /**
    * Accumulated usage statistics for this session.
    * Tracks tokens, API calls, tool usage, etc.
    */
   usage: Usage;
-  /**
-   * Current calculated cost for this session.
-   * Updated after each billable operation.
-   */
-  cost: Cost;
-  /**
-   * Optional cost limits configuration.
-   * If set, execution will stop when limits are exceeded.
-   */
-  costLimit?: CostLimit;
 
-  // --- HIL ---
   /**
-   * When status is 'waiting_for_human', this stores pending requests
-   * for human-in-the-loop operations.
+   * User's global intervention configuration
+   * Controls how tools requiring approval are handled
    */
-  pendingToolsCalling?: ChatToolPayload[];
-  pendingHumanPrompt?: { metadata?: Record<string, unknown>; prompt: string };
-  pendingHumanSelect?: {
-    metadata?: Record<string, unknown>;
-    multi?: boolean;
-    options: Array<{ label: string; value: string }>;
-    prompt?: string;
-  };
-
-  // --- Interruption Handling ---
-  /**
-   * When status is 'interrupted', this stores the interruption context
-   * for potential resumption or cleanup.
-   */
-  interruption?: {
-    /** Reason for interruption */
-    reason: string;
-    /** Timestamp when interruption occurred */
-    interruptedAt: string;
-    /** The instruction that was being executed when interrupted */
-    interruptedInstruction?: any;
-    /** Whether the interruption can be resumed */
-    canResume: boolean;
-  };
-
-  // --- Metadata ---
-  createdAt: string;
-  error?: any;
-  lastModified: string;
-
-  // --- Extensible metadata ---
-  metadata?: Record<string, any>;
+  userInterventionConfig?: UserInterventionConfig;
 }
 
 /**
@@ -128,6 +175,12 @@ export interface ToolsCalling {
     name: string; // A JSON string of arguments
   };
   id: string;
+  /**
+   * Gemini 3.x thought signature, captured from `functionCall.thoughtSignature` in the
+   * streaming response. Must be round-tripped back in subsequent requests or Gemini will
+   * 400 with a misleading "ordering" error. Optional; only set for Gemini 3.x tool calls.
+   */
+  thoughtSignature?: string;
   type: 'function';
 }
 

@@ -1,7 +1,7 @@
 import { USD_TO_CNY } from '@lobechat/const';
 import dayjs from 'dayjs';
 import { isNumber } from 'es-toolkit/compat';
-import { ModelPriceCurrency } from 'model-bank';
+import type { ModelPriceCurrency } from 'model-bank';
 import numeral from 'numeral';
 
 export const formatSize = (bytes: number, fractionDigits: number = 1): string => {
@@ -25,26 +25,10 @@ export const formatSize = (bytes: number, fractionDigits: number = 1): string =>
 export const formatSpeed = (byte: number, fractionDigits = 2) => {
   if (!byte && byte !== 0) return '--';
 
-  let word = '';
-
-  // Byte
-  if (byte <= 1000) {
-    word = byte.toFixed(fractionDigits) + ' Byte/s';
-  }
-  // KB
-  else if (byte / 1024 <= 1000) {
-    word = (byte / 1024).toFixed(fractionDigits) + ' KB/s';
-  }
-  // MB
-  else if (byte / 1024 / 1024 <= 1000) {
-    word = (byte / 1024 / 1024).toFixed(fractionDigits) + ' MB/s';
-  }
-  // GB
-  else {
-    word = (byte / 1024 / 1024 / 1024).toFixed(fractionDigits) + ' GB/s';
-  }
-
-  return word;
+  if (byte <= 1000) return byte.toFixed(fractionDigits) + ' Byte/s';
+  if (byte / 1024 <= 1000) return (byte / 1024).toFixed(fractionDigits) + ' KB/s';
+  if (byte / 1024 / 1024 <= 1000) return (byte / 1024 / 1024).toFixed(fractionDigits) + ' MB/s';
+  return (byte / 1024 / 1024 / 1024).toFixed(fractionDigits) + ' GB/s';
 };
 
 export const formatTime = (timeInSeconds: number): string => {
@@ -67,8 +51,12 @@ export const formatShortenNumber = (num: any) => {
   // Use Intl.NumberFormat to add thousand separators
   const formattedWithComma = new Intl.NumberFormat('en-US').format(num);
 
-  // Format as K or M
-  if (num >= 1_000_000) {
+  // Format as K, M, B or T
+  if (num >= 1_000_000_000_000) {
+    return (num / 1_000_000_000_000).toFixed(1) + 'T';
+  } else if (num >= 1_000_000_000) {
+    return (num / 1_000_000_000).toFixed(1) + 'B';
+  } else if (num >= 1_000_000) {
     return (num / 1_000_000).toFixed(1) + 'M';
   } else if (num >= 10_000) {
     return (num / 1000).toFixed(1) + 'K';
@@ -93,6 +81,13 @@ export const formatIntergerNumber = (num?: any) => {
   return numeral(num).format('0,0');
 };
 
+export const formatUsageValue = (number: number) => {
+  if (number >= 1_000_000_000) return `${numeral(number / 1_000_000_000).format('0.[0]')}B`;
+  if (number >= 1_000_000) return `${numeral(number / 1_000_000).format('0.[0]')}M`;
+  if (number >= 1_000) return `${numeral(number / 1_000).format('0.[0]')}K`;
+  return numeral(number).format('0,0');
+};
+
 export const formatTokenNumber = (num: number): string => {
   if (!num && num !== 0) return '--';
 
@@ -106,12 +101,27 @@ export const formatTokenNumber = (num: number): string => {
   return kiloToken < 1000 ? `${kiloToken}K` : `${Math.floor(kiloToken / 1000)}M`;
 };
 
+export const formatCost = (value: number): string => {
+  return value.toLocaleString('en-US', {
+    maximumSignificantDigits: 4,
+    minimumSignificantDigits: 2,
+  });
+};
+
 export const formatPrice = (price: number, fractionDigits: number = 2) => {
   if (!price && price !== 0) return '--';
 
   if (fractionDigits === 0) return numeral(price).format('0,0');
 
-  const [a, b] = price.toFixed(fractionDigits).split('.');
+  // Expand precision when a positive price would round to zero at the requested
+  // precision (e.g. $0.003625 → "0.00"), so users can tell it isn't actually free.
+  // Cap at 100 because Number.prototype.toFixed throws RangeError beyond that.
+  let digits = fractionDigits;
+  if (price > 0 && Number(price.toFixed(fractionDigits)) === 0) {
+    digits = Math.min(100, Math.ceil(-Math.log10(price)));
+  }
+
+  const [a, b] = price.toFixed(digits).split('.');
   return `${numeral(a).format('0,0')}.${b}`;
 };
 
@@ -128,4 +138,18 @@ export const formatDate = (date?: Date) => {
   if (!date) return '--';
 
   return dayjs(date).format('YYYY-MM-DD');
+};
+
+/**
+ * Log-style timestamp: `Jul 12 12:12:32`. The year only shows up when the entry
+ * is not from the current year, so the common case stays short.
+ */
+export const formatSpendTime = (value?: Date | string | null): string => {
+  if (!value) return '--';
+
+  const time = dayjs(value);
+  if (!time.isValid()) return '--';
+
+  const format = time.year() === dayjs().year() ? 'MMM D HH:mm:ss' : 'MMM D, YYYY HH:mm:ss';
+  return time.format(format);
 };

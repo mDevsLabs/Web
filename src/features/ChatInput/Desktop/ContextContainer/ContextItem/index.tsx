@@ -1,14 +1,15 @@
-import { Flexbox, Tag, Tooltip, createRawModal } from '@lobehub/ui';
+import { Flexbox, Tag, Tooltip } from '@lobehub/ui';
 import { Progress } from 'antd';
 import { createStaticStyles, cssVar } from 'antd-style';
 import { memo } from 'react';
 
 import { useEventCallback } from '@/hooks/useEventCallback';
 import { useFileStore } from '@/store/file';
-import { UPLOAD_STATUS_SET, type UploadFileItem } from '@/types/files/upload';
+import { type UploadFileItem } from '@/types/files/upload';
+import { UPLOAD_STATUS_SET } from '@/types/files/upload';
 
 import Content from './Content';
-import FilePreviewModal from './FilePreviewModal';
+import { openFilePreviewModal } from './FilePreviewModal.loader';
 import { getFileBasename } from './utils';
 
 const styles = createStaticStyles(({ css }) => ({
@@ -21,14 +22,25 @@ const styles = createStaticStyles(({ css }) => ({
       background: ${cssVar.colorErrorBg};
     }
   `,
+  content: css`
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    min-width: 0;
+  `,
   icon: css`
     position: relative;
 
+    display: flex;
     flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
 
     width: 18px;
     height: 18px;
     border-radius: 4px;
+
+    line-height: 0;
 
     img,
     video {
@@ -44,6 +56,7 @@ const styles = createStaticStyles(({ css }) => ({
 
     min-width: 0;
 
+    line-height: 18px;
     text-overflow: ellipsis;
     white-space: nowrap;
   `,
@@ -72,27 +85,33 @@ const ContextItem = memo<FileItemProps>((props) => {
   const progress = uploadState?.progress ?? 0;
 
   const handleClick = useEventCallback(() => {
-    createRawModal(FilePreviewModal, {
-      file: props,
-    });
+    void openFilePreviewModal(props);
   });
 
   const handleClose = useEventCallback(() => {
     removeChatUploadFile(id);
   });
   return (
-    <Tag closable onClick={handleClick} onClose={handleClose} size={'large'}>
-      <Flexbox className={styles.icon}>
-        <Content {...props} />
-        {isUploading && (
-          <div className={styles.progress}>
-            <Progress percent={progress} showInfo={false} size={14} strokeWidth={2} type="circle" />
-          </div>
-        )}
+    <Tag closable size={'large'} onClick={handleClick} onClose={handleClose}>
+      <Flexbox horizontal align={'center'} className={styles.content}>
+        <Flexbox className={styles.icon}>
+          <Content {...props} />
+          {isUploading && (
+            <div className={styles.progress}>
+              <Progress
+                percent={progress}
+                showInfo={false}
+                size={14}
+                strokeWidth={2}
+                type="circle"
+              />
+            </div>
+          )}
+        </Flexbox>
+        <Tooltip title={file.name}>
+          <span className={styles.name}>{basename}</span>
+        </Tooltip>
       </Flexbox>
-      <Tooltip title={file.name}>
-        <span className={styles.name}>{basename}</span>
-      </Tooltip>
     </Tag>
   );
 });

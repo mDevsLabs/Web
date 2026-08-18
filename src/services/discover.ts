@@ -4,7 +4,7 @@ import {
   type PluginManifest,
 } from '@lobehub/market-sdk';
 import {
-  AgentEventRequest,
+  type AgentEventRequest,
   type CallReportRequest,
   type InstallReportRequest,
   type PluginEventRequest,
@@ -23,6 +23,7 @@ import {
   type DiscoverModelDetail,
   type DiscoverPluginDetail,
   type DiscoverProviderDetail,
+  type DiscoverSkillDetail,
   type DiscoverUserProfile,
   type GroupAgentQueryParams,
   type IdentifiersResponse,
@@ -34,12 +35,42 @@ import {
   type PluginQueryParams,
   type ProviderListResponse,
   type ProviderQueryParams,
+  type SkillCategoryItem,
+  type SkillCommentListResponse,
+  type SkillCommentsQueryParams,
+  type SkillListResponse,
+  type SkillQueryParams,
+  type SkillRatingDistribution,
 } from '@/types/discover';
 import { type MCPPluginListParams } from '@/types/plugins';
 import { cleanObject } from '@/utils/object';
 
 class DiscoverService {
   private _isRetrying = false;
+  private _tokenRefreshPromise: Promise<void> | null = null;
+
+  private isMarketTrustedClientEnabled = (): boolean => {
+    if (typeof window === 'undefined' || !window.global_serverConfigStore) return false;
+    try {
+      const state = window.global_serverConfigStore.getState();
+      return state.serverConfig.enableMarketTrustedClient || false;
+    } catch {
+      return false;
+    }
+  };
+
+  safeInjectMPToken = async () => {
+    // If trusted client is enabled, authentication is handled by backend
+    // No need to inject M2M token from client side
+    if (this.isMarketTrustedClientEnabled()) return;
+
+    try {
+      await this.injectMPToken();
+    } catch (error) {
+      // Log error but don't block the request
+      console.warn('Failed to inject MP token, continuing without it:', error);
+    }
+  };
 
   // ============================== Assistant Market ==============================
   getAssistantCategories = async (
@@ -76,6 +107,8 @@ class DiscoverService {
   };
 
   getAssistantList = async (params: AssistantQueryParams = {}): Promise<AssistantListResponse> => {
+    await this.safeInjectMPToken();
+
     const locale = globalHelpers.getCurrentLanguage();
     return lambdaClient.market.getAssistantList.query(
       {
@@ -86,6 +119,21 @@ class DiscoverService {
       },
       { context: { showNotification: false } },
     );
+  };
+
+  getAgentsByPlugin = async (params: {
+    locale?: string;
+    page?: number;
+    pageSize?: number;
+    pluginId: string;
+  }): Promise<AssistantListResponse> => {
+    const locale = globalHelpers.getCurrentLanguage();
+    return lambdaClient.market.getAgentsByPlugin.query({
+      ...params,
+      locale,
+      page: params.page ? Number(params.page) : 1,
+      pageSize: params.pageSize ? Number(params.pageSize) : 20,
+    });
   };
 
   // ============================== MCP Market ==============================
@@ -111,6 +159,8 @@ class DiscoverService {
   };
 
   getMcpList = async (params: McpQueryParams = {}): Promise<McpListResponse> => {
+    await this.safeInjectMPToken();
+
     const locale = globalHelpers.getCurrentLanguage();
     return lambdaClient.market.getMcpList.query({
       ...params,
@@ -121,7 +171,7 @@ class DiscoverService {
   };
 
   getMCPPluginList = async (params: MCPPluginListParams): Promise<McpListResponse> => {
-    await this.injectMPToken();
+    await this.safeInjectMPToken();
 
     const locale = globalHelpers.getCurrentLanguage();
 
@@ -172,7 +222,7 @@ class DiscoverService {
     const allow = userGeneralSettingsSelectors.telemetry(useUserStore.getState());
 
     if (!allow) return;
-    await this.injectMPToken();
+    await this.safeInjectMPToken();
 
     const reportData = {
       errorCode: success ? undefined : errorCode,
@@ -198,7 +248,7 @@ class DiscoverService {
 
     if (!allow) return;
 
-    await this.injectMPToken();
+    await this.safeInjectMPToken();
 
     lambdaClient.market.reportCall.mutate(cleanObject(reportData)).catch((reportError) => {
       console.warn('Failed to report call:', reportError);
@@ -209,7 +259,7 @@ class DiscoverService {
     const allow = userGeneralSettingsSelectors.telemetry(useUserStore.getState());
     if (!allow) return;
 
-    await this.injectMPToken();
+    await this.safeInjectMPToken();
 
     const payload = cleanObject({
       ...eventData,
@@ -230,7 +280,7 @@ class DiscoverService {
 
     if (!allow) return;
 
-    await this.injectMPToken();
+    await this.safeInjectMPToken();
 
     lambdaClient.market.reportAgentInstall.mutate({ identifier }).catch((reportError) => {
       console.warn('Failed to report agent installation:', reportError);
@@ -241,7 +291,7 @@ class DiscoverService {
     const allow = userGeneralSettingsSelectors.telemetry(useUserStore.getState());
     if (!allow) return;
 
-    await this.injectMPToken();
+    await this.safeInjectMPToken();
 
     const payload = cleanObject({
       ...eventData,
@@ -370,6 +420,22 @@ class DiscoverService {
     const tokenStatus = this.getTokenStatusFromCookie();
     if (tokenStatus === 'active') return;
 
+    // If a token refresh is already in progress, wait for it to complete
+    if (this._tokenRefreshPromise) {
+      await this._tokenRefreshPromise;
+      return;
+    }
+
+    // Create a new refresh promise and execute
+    this._tokenRefreshPromise = this._doRefreshToken();
+    try {
+      await this._tokenRefreshPromise;
+    } finally {
+      this._tokenRefreshPromise = null;
+    }
+  }
+
+  private async _doRefreshToken() {
     let clientId: string;
     let clientSecret: string;
 
@@ -425,7 +491,7 @@ class DiscoverService {
         if (!this._isRetrying) {
           this._isRetrying = true;
           try {
-            await this.injectMPToken();
+            await this._doRefreshToken();
           } finally {
             this._isRetrying = false;
           }
@@ -435,10 +501,25 @@ class DiscoverService {
 
         return;
       }
+
+      // 6. Wait for cookie to be set by browser
+      // The Set-Cookie header processing may have a tiny delay
+      await this._waitForCookieSet();
     } catch (error) {
       console.error('Failed to register M2M token:', error);
-      return null;
     }
+  }
+
+  private async _waitForCookieSet(maxRetries = 10, interval = 10): Promise<void> {
+    for (let i = 0; i < maxRetries; i++) {
+      if (this.getTokenStatusFromCookie() === 'active') {
+        return;
+      }
+      await new Promise((resolve) => setTimeout(resolve, interval));
+    }
+    // If cookie still not set after retries, continue anyway
+    // The request might still work if the cookie was set but we couldn't detect it
+    console.warn('Cookie may not be fully set, proceeding anyway');
   }
 
   private getTokenStatusFromCookie(): string | null {
@@ -453,6 +534,58 @@ class DiscoverService {
     }
     return null;
   }
+
+  // ============================== Skills Market ==============================
+
+  getSkillCategories = async (params: CategoryListQuery = {}): Promise<SkillCategoryItem[]> => {
+    const locale = globalHelpers.getCurrentLanguage();
+    return lambdaClient.market.skill.getSkillCategories.query({
+      ...params,
+      locale,
+    });
+  };
+
+  getSkillComments = async (params: SkillCommentsQueryParams): Promise<SkillCommentListResponse> =>
+    lambdaClient.market.skill.getSkillComments.query(params);
+
+  getSkillDetail = async (params: {
+    identifier: string;
+    locale?: string;
+    version?: string;
+  }): Promise<DiscoverSkillDetail> => {
+    const locale = globalHelpers.getCurrentLanguage();
+    return lambdaClient.market.skill.getSkillDetail.query({
+      ...params,
+      locale,
+    });
+  };
+
+  getSkillList = async (params: SkillQueryParams = {}): Promise<SkillListResponse> => {
+    const locale = globalHelpers.getCurrentLanguage();
+    return lambdaClient.market.skill.getSkillList.query({
+      ...params,
+      locale,
+      page: params.page ? Number(params.page) : 1,
+      pageSize: params.pageSize ? Number(params.pageSize) : 20,
+    });
+  };
+
+  getSkillRatingDistribution = async (identifier: string): Promise<SkillRatingDistribution> =>
+    lambdaClient.market.skill.getSkillRatingDistribution.query({ identifier });
+
+  reportSkillEvent = async (eventData: { event: string; identifier: string; source?: string }) => {
+    const allow = userGeneralSettingsSelectors.telemetry(useUserStore.getState());
+    if (!allow) return;
+
+    const payload = cleanObject({
+      ...eventData,
+      source: eventData.source ?? 'community/skill',
+    });
+
+    // Note: skill event reporting can be added when the backend supports it
+    // Payload prepared for future backend integration
+    void payload;
+  };
 
   // ============================== Group Agent Market ==============================
 
@@ -483,7 +616,7 @@ class DiscoverService {
 
   getGroupAgentList = async (params: GroupAgentQueryParams = {}): Promise<any> => {
     const locale = globalHelpers.getCurrentLanguage();
-    return lambdaClient.market.getGroupAgentList.query(
+    return lambdaClient.market.agentGroup.getAgentGroupList.query(
       {
         ...params,
         locale,

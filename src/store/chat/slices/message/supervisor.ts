@@ -22,16 +22,12 @@ export interface SupervisorTodoItem {
 
 export interface SupervisorDecisionResult {
   decisions: SupervisorDecisionList;
-  todoUpdated: boolean;
   todos: SupervisorTodoItem[];
+  todoUpdated: boolean;
 }
 
 export type SupervisorToolName =
-  | 'create_todo'
-  | 'finish_todo'
-  | 'wait_for_user_input'
-  | 'trigger_agent'
-  | 'trigger_agent_dm';
+  'create_todo' | 'finish_todo' | 'wait_for_user_input' | 'trigger_agent' | 'trigger_agent_dm';
 
 export interface SupervisorToolCall {
   parameter?: unknown;
@@ -72,13 +68,14 @@ export class GroupChatSupervisor {
       const response = await this.callLLMForDecision(context);
       const result = this.parseSupervisorResponse(response, availableAgents, context);
 
-      console.log('Supervisor TODO list:', result.todos);
+      console.info('Supervisor TODO list:', result.todos);
 
       return result;
     } catch (error) {
       // Re-throw the error so it can be caught and displayed to the user via toast
       throw new Error(
         `Supervisor decision failed: ${error instanceof Error ? error.message : String(error)}`,
+        { cause: error },
       );
     }
   }
@@ -93,7 +90,7 @@ export class GroupChatSupervisor {
       allowDM: context.allowDM,
       availableAgents: context.availableAgents
         .filter((agent) => agent.id)
-        .map((agent) => ({ id: agent.id, title: agent.title })),
+        .map((agent) => ({ id: agent.id, name: agent.name, title: agent.title })),
       messages: context.messages,
       scene: context.scene,
       todoList: context.todoList,
@@ -101,7 +98,10 @@ export class GroupChatSupervisor {
     });
 
     try {
-      const response = await aiChatService.generateJSON(
+      // `aiChatService.generateJSON` returns `{ data, tracingId }` — supervisor
+      // only consumes the generated payload, so unwrap eagerly. The tracingId
+      // is intentionally discarded (no feedback path here yet).
+      const envelope = await aiChatService.generateJSON(
         {
           ...(contexts as any),
           model: context.model,
@@ -109,8 +109,9 @@ export class GroupChatSupervisor {
         },
         context.abortController || new AbortController(),
       );
+      const response = envelope?.data;
 
-      console.log('SUPERVISOR RESPONSE', JSON.stringify(response, null, 2));
+      console.info('SUPERVISOR RESPONSE', JSON.stringify(response, null, 2));
 
       // Parse the response to SupervisorToolCall[]
       if (Array.isArray(response)) {
@@ -170,7 +171,7 @@ export class GroupChatSupervisor {
     context: SupervisorContext,
   ): SupervisorDecisionResult {
     const previousTodos = (context.todoList || []).map((item) => ({ ...item }));
-    let primaryError: unknown = null;
+    let primaryError: unknown;
 
     try {
       const toolCalls = this.normalizeToolCalls(response);
@@ -193,7 +194,9 @@ export class GroupChatSupervisor {
       const legacyMessage =
         legacyError instanceof Error ? legacyError.message : String(legacyError);
 
-      throw new Error(`Failed to parse supervisor response: ${primaryMessage} | ${legacyMessage}`);
+      throw new Error(`Failed to parse supervisor response: ${primaryMessage} | ${legacyMessage}`, {
+        cause: legacyError,
+      });
     }
   }
 
@@ -250,26 +253,26 @@ export class GroupChatSupervisor {
         case 'create_todo': {
           if (context.scene === 'productive') {
             const changed = this.applyCreateTodo(todos, call.parameter);
-            todoUpdated = todoUpdated || changed;
+            if (changed) todoUpdated = true;
           }
           break;
         }
         case 'finish_todo': {
           if (context.scene === 'productive') {
             const changed = this.applyFinishTodo(todos, call.parameter);
-            todoUpdated = todoUpdated || changed;
+            if (changed) todoUpdated = true;
           }
           break;
         }
         case 'wait_for_user_input': {
           // Pause conversation - no action needed, just don't add any decisions
-          console.log('DEBUG: Supervisor paused conversation:', call.parameter);
+          console.info('DEBUG: Supervisor paused conversation:', call.parameter);
           break;
         }
         case 'trigger_agent':
         case 'trigger_agent_dm': {
           const decision = this.buildDecisionFromTool(call.parameter, availableAgents, context);
-          console.log('DEBUG: Built decision from tool:', {
+          console.info('DEBUG: Built decision from tool:', {
             decision,
             parameter: call.parameter,
             toolName: call.tool_name,
@@ -282,7 +285,7 @@ export class GroupChatSupervisor {
       }
     });
 
-    console.log('DEBUG: Final decisions:', decisions);
+    console.info('DEBUG: Final decisions:', decisions);
 
     return { decisions, todoUpdated, todos };
   }
@@ -338,7 +341,7 @@ export class GroupChatSupervisor {
   private extractTodoData(parameter: unknown): { assignee?: string; content: string | null } {
     if (typeof parameter === 'string') {
       const trimmed = parameter.trim();
-      return { content: trimmed ? trimmed : null };
+      return { content: trimmed || null };
     }
 
     if (!parameter || typeof parameter !== 'object') return { content: null };
@@ -449,7 +452,7 @@ export class GroupChatSupervisor {
       if (!targetExists) target = undefined;
     }
 
-    if (context.allowDM === false) {
+    if (context.allowDM === false && target === 'user') {
       target = undefined;
     }
 
@@ -491,6 +494,7 @@ export class GroupChatSupervisor {
     } catch (error) {
       throw new Error(
         `Failed to parse supervisor decision: ${error instanceof Error ? error.message : String(error)}`,
+        { cause: error },
       );
     }
   }
@@ -534,7 +538,7 @@ export class GroupChatSupervisor {
             typeof (item as any).content === 'string' &&
             typeof (item as any).finished === 'boolean',
         )
-        .map((item) => ({
+        .map((item: any) => ({
           assignee:
             typeof (item as any).assignee === 'string' && (item as any).assignee.trim()
               ? ((item as any).assignee as string).trim()

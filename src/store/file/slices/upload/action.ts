@@ -1,15 +1,19 @@
 import { LOBE_CHAT_CLOUD } from '@lobechat/business-const';
+import { inferImageMimeTypeFromBytes } from '@lobechat/utils';
+import { toast } from '@lobehub/ui/base-ui';
 import { t } from 'i18next';
 import { sha256 } from 'js-sha256';
-import { type StateCreator } from 'zustand/vanilla';
 
-import { message } from '@/components/AntdStaticMethods';
+import { handleFileUploadError } from '@/business/client/handleFileUploadError';
 import { fileService } from '@/services/file';
 import { uploadService } from '@/services/upload';
-import { type FileMetadata, type UploadFileItem } from '@/types/files';
+import { type StoreSetter } from '@/store/types';
+import { type UploadFileItem } from '@/types/files';
+import { getAudioDuration } from '@/utils/client/audioDuration';
 import { getImageDimensions } from '@/utils/client/imageDimensions';
 
 import { type FileStore } from '../../store';
+import { audioMimeFromExtension } from '../chat/uploadGuard';
 
 type OnStatusUpdate = (
   data:
@@ -27,6 +31,12 @@ type OnStatusUpdate = (
 interface UploadWithProgressParams {
   abortController?: AbortController;
   file: File;
+  /**
+   * Additional metadata persisted with the file record. Media capture flows use
+   * this for duration/codec while the storage path metadata continues to come
+   * from the upload service.
+   */
+  fileMetadata?: Record<string, unknown>;
   knowledgeBaseId?: string;
   onStatusUpdate?: OnStatusUpdate;
   parentId?: string;
@@ -40,11 +50,20 @@ interface UploadWithProgressParams {
    * Optional source identifier for the file (e.g., 'page-editor', 'image_generation')
    */
   source?: string;
+  uploadId?: string;
+  /**
+   * Optional workspace visibility override sent to `file.createFile`. Only
+   * meaningful in workspace mode; personal mode ignores it server-side. When
+   * omitted the server picks its default (top-level uploads default to
+   * `'private'`, children inherit their parent document's visibility).
+   */
+  visibility?: 'private' | 'public';
 }
 
 interface UploadWithProgressResult {
   dimensions?: {
     height: number;
+    ratio: number;
     width: number;
   };
   filename?: string;
@@ -52,135 +71,209 @@ interface UploadWithProgressResult {
   url: string;
 }
 
-export interface FileUploadAction {
-  uploadBase64FileWithProgress: (
+const normalizeUploadedImageFileType = async (
+  file: File,
+  fileArrayBuffer: ArrayBuffer,
+): Promise<File> => {
+  const detectedMimeType = await inferImageMimeTypeFromBytes(fileArrayBuffer);
+
+  if (!detectedMimeType || detectedMimeType === file.type) return file;
+
+  return new File([file], file.name, {
+    lastModified: file.lastModified,
+    type: detectedMimeType,
+  });
+};
+
+type ExistingFileMetadata = Record<string, unknown> & { path?: string };
+
+const normalizeExistingFileMetadata = (metadata: unknown): ExistingFileMetadata => {
+  // Existing hash records can come from generated assets or older upload paths where metadata is null.
+  if (!metadata || typeof metadata !== 'object' || Array.isArray(metadata)) return {};
+
+  return metadata as ExistingFileMetadata;
+};
+
+type Setter = StoreSetter<FileStore>;
+
+export const createFileUploadSlice = (set: Setter, get: () => FileStore, _api?: unknown) =>
+  new FileUploadActionImpl(set, get, _api);
+
+export class FileUploadActionImpl {
+  constructor(set: Setter, get: () => FileStore, _api?: unknown) {
+    void _api;
+    void set;
+    void get;
+  }
+
+  uploadBase64FileWithProgress = async (
     base64: string,
-    params?: {
-      onStatusUpdate?: OnStatusUpdate;
-    },
-  ) => Promise<UploadWithProgressResult | undefined>;
+  ): Promise<UploadWithProgressResult | undefined> => {
+    try {
+      // Extract image dimensions from base64 data
+      const dimensions = await getImageDimensions(base64);
 
-  uploadWithProgress: (
-    params: UploadWithProgressParams,
-  ) => Promise<UploadWithProgressResult | undefined>;
-}
+      const { metadata, fileType, size, hash } = await uploadService.uploadBase64ToS3(base64);
 
-export const createFileUploadSlice: StateCreator<
-  FileStore,
-  [['zustand/devtools', never]],
-  [],
-  FileUploadAction
-> = () => ({
-  uploadBase64FileWithProgress: async (base64) => {
-    // Extract image dimensions from base64 data
-    const dimensions = await getImageDimensions(base64);
+      const res = await fileService.createFile({
+        fileType,
+        hash,
+        metadata: { ...metadata, ...dimensions },
+        name: metadata.filename,
+        size,
+        url: metadata.path,
+      });
+      return { ...res, dimensions, filename: metadata.filename };
+    } catch (error) {
+      if (handleFileUploadError(error)) return;
 
-    const { metadata, fileType, size, hash } = await uploadService.uploadBase64ToS3(base64);
+      throw error;
+    }
+  };
 
-    const res = await fileService.createFile({
-      fileType,
-      hash,
-      metadata,
-      name: metadata.filename,
-      size: size,
-      url: metadata.path,
-    });
-    return { ...res, dimensions, filename: metadata.filename };
-  },
-  uploadWithProgress: async ({
+  uploadWithProgress = async ({
     file,
     onStatusUpdate,
     knowledgeBaseId,
     skipCheckFileType,
     parentId,
     source,
+    uploadId,
     abortController,
-  }) => {
-    const fileArrayBuffer = await file.arrayBuffer();
+    visibility,
+    fileMetadata,
+  }: UploadWithProgressParams): Promise<UploadWithProgressResult | undefined> => {
+    const statusId = uploadId ?? file.name;
 
-    // 1. extract image dimensions if applicable
-    const dimensions = await getImageDimensions(file);
+    try {
+      const fileArrayBuffer = await file.arrayBuffer();
+      const normalizedFile = await normalizeUploadedImageFileType(file, fileArrayBuffer);
+      const extensionAudioMime = audioMimeFromExtension(normalizedFile.name);
+      const audioDurationPromise =
+        normalizedFile.type.startsWith('audio/') || extensionAudioMime
+          ? getAudioDuration(normalizedFile).catch(() => undefined)
+          : undefined;
 
-    // 2. check file hash
-    const hash = sha256(fileArrayBuffer);
+      // 1. extract image dimensions if applicable
+      const dimensions = await getImageDimensions(normalizedFile);
 
-    const checkStatus = await fileService.checkFileHash(hash);
-    let metadata: FileMetadata;
+      // 2. check file hash
+      const hash = sha256(fileArrayBuffer);
 
-    // 3. if file exist, just skip upload
-    if (checkStatus.isExist) {
-      metadata = checkStatus.metadata as FileMetadata;
+      const checkStatus = await fileService.checkFileHash(hash);
+      let metadata: ExistingFileMetadata;
+
+      // 3. if file exist, just skip upload
+      if (checkStatus.isExist) {
+        metadata = normalizeExistingFileMetadata(checkStatus.metadata);
+        onStatusUpdate?.({
+          id: statusId,
+          type: 'updateFile',
+          value: { status: 'processing', uploadState: { progress: 100, restTime: 0, speed: 0 } },
+        });
+      }
+      // 3. if file don't exist, need upload files
+      else {
+        const { data, success } = await uploadService.uploadFileToS3(normalizedFile, {
+          abortController,
+          onNotSupported: () => {
+            onStatusUpdate?.({ id: statusId, type: 'removeFile' });
+            toast.info({
+              description: t('upload.fileOnlySupportInServerMode', {
+                cloud: LOBE_CHAT_CLOUD,
+                ext: normalizedFile.name.split('.').pop(),
+                ns: 'error',
+              }),
+              duration: 5000,
+            });
+          },
+          onProgress: (status, upload) => {
+            onStatusUpdate?.({
+              id: statusId,
+              type: 'updateFile',
+              value: { status: status === 'success' ? 'processing' : status, uploadState: upload },
+            });
+          },
+          skipCheckFileType,
+        });
+        if (!success) return;
+
+        metadata = { ...data };
+      }
+
+      // 4. use more powerful file type detector to get file type
+      let fileType = normalizedFile.type;
+
+      if (!normalizedFile.type) {
+        const { fileTypeFromBuffer } = await import('file-type');
+
+        const type = await fileTypeFromBuffer(fileArrayBuffer);
+        fileType = type?.mime || 'text/plain';
+      }
+
+      // Audio containers like .m4a share the ISO-BMFF box with .mp4, so both the browser and
+      // byte-sniffing may report an empty or `video/*` mime. Trust the extension to keep these
+      // classified (and rendered) as audio.
+      if (extensionAudioMime && !fileType.startsWith('audio/')) fileType = extensionAudioMime;
+
+      const durationMs = fileType.startsWith('audio/')
+        ? await (audioDurationPromise ?? getAudioDuration(normalizedFile).catch(() => undefined))
+        : undefined;
+
+      // 5. create file to db
+      // Fall back to the global file URL when legacy/generated metadata has no `path`.
+      const fileUrl = metadata.path || checkStatus.url;
+      if (!fileUrl) throw new Error('File upload failed: missing file url');
+
+      const data = await fileService.createFile(
+        {
+          fileType,
+          hash,
+          metadata: {
+            ...fileMetadata,
+            ...metadata,
+            ...dimensions,
+            ...(durationMs === undefined ? {} : { durationMs }),
+          },
+          name: normalizedFile.name,
+          parentId,
+          size: normalizedFile.size,
+          source,
+          url: fileUrl,
+          visibility,
+        },
+        knowledgeBaseId,
+      );
+
       onStatusUpdate?.({
-        id: file.name,
+        id: statusId,
         type: 'updateFile',
-        value: { status: 'processing', uploadState: { progress: 100, restTime: 0, speed: 0 } },
+        value: {
+          fileUrl: data.url,
+          id: data.id,
+          status: 'success',
+          uploadState: { progress: 100, restTime: 0, speed: 0 },
+        },
       });
-    }
-    // 3. if file don't exist, need upload files
-    else {
-      const { data, success } = await uploadService.uploadFileToS3(file, {
-        abortController,
-        onNotSupported: () => {
-          onStatusUpdate?.({ id: file.name, type: 'removeFile' });
-          message.info({
-            content: t('upload.fileOnlySupportInServerMode', {
-              cloud: LOBE_CHAT_CLOUD,
-              ext: file.name.split('.').pop(),
-              ns: 'error',
+
+      return { ...data, dimensions, filename: normalizedFile.name };
+    } catch (error) {
+      if (
+        handleFileUploadError(error, {
+          onUploadBlocked: ({ code, description }) =>
+            onStatusUpdate?.({
+              id: statusId,
+              type: 'updateFile',
+              value: { error: description, errorCode: code, status: 'error' },
             }),
-            duration: 5,
-          });
-        },
-        onProgress: (status, upload) => {
-          onStatusUpdate?.({
-            id: file.name,
-            type: 'updateFile',
-            value: { status: status === 'success' ? 'processing' : status, uploadState: upload },
-          });
-        },
-        skipCheckFileType,
-      });
-      if (!success) return;
+        })
+      ) {
+        return;
+      }
 
-      metadata = data;
+      throw error;
     }
+  };
+}
 
-    // 4. use more powerful file type detector to get file type
-    let fileType = file.type;
-
-    if (!file.type) {
-      const { fileTypeFromBuffer } = await import('file-type');
-
-      const type = await fileTypeFromBuffer(fileArrayBuffer);
-      fileType = type?.mime || 'text/plain';
-    }
-
-    // 5. create file to db
-    const data = await fileService.createFile(
-      {
-        fileType,
-        hash,
-        metadata,
-        name: file.name,
-        parentId,
-        size: file.size,
-        source,
-        url: metadata.path || checkStatus.url,
-      },
-      knowledgeBaseId,
-    );
-
-    onStatusUpdate?.({
-      id: file.name,
-      type: 'updateFile',
-      value: {
-        fileUrl: data.url,
-        id: data.id,
-        status: 'success',
-        uploadState: { progress: 100, restTime: 0, speed: 0 },
-      },
-    });
-
-    return { ...data, dimensions, filename: file.name };
-  },
-});
+export type FileUploadAction = Pick<FileUploadActionImpl, keyof FileUploadActionImpl>;

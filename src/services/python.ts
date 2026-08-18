@@ -1,16 +1,21 @@
-import { PythonInterpreter } from '@lobechat/python-interpreter';
+import { getPythonInterpreter } from '@lobechat/python-interpreter';
 import { type CodeInterpreterResponse } from '@lobechat/types';
+
+import { pythonEnv } from '@/envs/python';
 
 class PythonService {
   async runPython(
     code: string,
     packages: string[],
     files: File[],
-  ): Promise<CodeInterpreterResponse | undefined> {
-    if (typeof Worker === 'undefined') return;
-    const interpreter = await new PythonInterpreter!({
-      pyodideIndexUrl: process.env.NEXT_PUBLIC_PYODIDE_INDEX_URL!,
-      pypiIndexUrl: process.env.NEXT_PUBLIC_PYPI_INDEX_URL!,
+  ): Promise<CodeInterpreterResponse> {
+    const PythonInterpreter = getPythonInterpreter();
+    if (!PythonInterpreter)
+      throw new Error('Python interpreter is unavailable: this environment has no Web Worker.');
+
+    const interpreter = await new PythonInterpreter({
+      pyodideIndexUrl: pythonEnv.NEXT_PUBLIC_PYODIDE_INDEX_URL!,
+      pypiIndexUrl: pythonEnv.NEXT_PUBLIC_PYODIDE_PIP_INDEX_URL!,
     });
     await interpreter.init();
     await interpreter.installPackages(packages.filter((p) => p !== ''));

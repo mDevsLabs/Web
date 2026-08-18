@@ -1,5 +1,6 @@
 import debug from 'debug';
-import { type NextRequest, NextResponse } from 'next/server';
+import { type NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 
 import { OAuthHandoffModel } from '@/database/models/oauthHandoff';
 import { serverDB } from '@/database/server';
@@ -8,7 +9,7 @@ const log = debug('lobe-oidc:handoff');
 
 /**
  * GET /oidc/handoff?id=xxx&client=xxx
- * 轮询获取并消费认证凭证
+ * Poll to fetch and consume the authentication credential
  */
 export async function GET(request: NextRequest) {
   log('Received GET request for /oidc/handoff');
@@ -39,7 +40,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ data: result, success: true });
   } catch (error) {
-    log('Error fetching handoff record: %O', error);
+    console.error('Error fetching handoff record: %O', error);
 
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }

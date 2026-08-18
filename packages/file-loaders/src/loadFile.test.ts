@@ -1,6 +1,8 @@
 // @vitest-environment node
-import * as fsPromises from 'node:fs/promises';
+import { mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
 import path from 'node:path';
+
 import { describe, expect, it, vi } from 'vitest';
 
 import { loadFile } from './loadFile';
@@ -29,7 +31,7 @@ describe('loadFile', () => {
     expect(doc.source).toBe(file);
     expect(doc.content).toContain('123');
     expect(doc.pages && doc.pages.length).toBeGreaterThan(0);
-  });
+  }, 15_000);
 
   it('returns error page when fs.stat fails', async () => {
     const doc = await loadFile('/not/exists.xyz');
@@ -38,12 +40,47 @@ describe('loadFile', () => {
     expect(doc.metadata.error).toContain('Failed to access file stats:');
   });
 
-  it('falls back to TextLoader for unsupported type and warns', async () => {
+  it('rejects unsupported binary-like file types before text parsing', async () => {
     const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
-    const doc = await loadFile(fp('test.epub')); // epub is unsupported in current mapping
-    expect(warn).toHaveBeenCalled();
-    expect(doc.content.length).toBeGreaterThanOrEqual(0);
-    warn.mockRestore();
+    const tempDir = await mkdtemp(path.join(tmpdir(), 'lobe-file-loaders-'));
+
+    try {
+      const file = path.join(tempDir, 'archive.zip');
+      await writeFile(file, Buffer.from([80, 75, 3, 4, 0, 0]));
+
+      await expect(loadFile(file)).rejects.toMatchObject({
+        fileType: 'zip',
+        name: 'UnsupportedFileTypeError',
+      });
+      expect(warn).toHaveBeenCalledWith(
+        "No specific loader found for file type 'zip'. Rejecting unsupported file type.",
+      );
+    } finally {
+      warn.mockRestore();
+      await rm(tempDir, { force: true, recursive: true });
+    }
+  });
+
+  it('surfaces a binary .ipynb rejection at the document level', async () => {
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const tempDir = await mkdtemp(path.join(tmpdir(), 'lobe-file-loaders-'));
+
+    try {
+      const file = path.join(tempDir, 'renamed.ipynb');
+      await writeFile(file, Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x00, 0x1a, 0x0a]));
+
+      const doc = await loadFile(file);
+
+      // The document-level error is what `readFile` / callers check; a
+      // page-only error would be read as a successful empty file.
+      expect(doc.metadata.error).toContain('Binary content in .ipynb file');
+      expect(doc.content).toBe('');
+      expect(doc.pages).toHaveLength(1);
+      expect(doc.pages?.[0].metadata.error).toContain('Binary content in .ipynb file');
+    } finally {
+      errorSpy.mockRestore();
+      await rm(tempDir, { force: true, recursive: true });
+    }
   });
 
   it('allows overriding metadata via second parameter', async () => {

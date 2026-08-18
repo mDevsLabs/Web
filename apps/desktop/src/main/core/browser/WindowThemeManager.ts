@@ -1,9 +1,12 @@
+import path from 'node:path';
+
 import { TITLE_BAR_HEIGHT } from '@lobechat/desktop-bridge';
-import { BrowserWindow, BrowserWindowConstructorOptions, nativeTheme } from 'electron';
-import { join } from 'node:path';
+import { type BrowserWindow, type BrowserWindowConstructorOptions, nativeTheme } from 'electron';
 
 import { buildDir } from '@/const/dir';
-import { isDev, isMac, isWindows } from '@/const/env';
+import { isDev, isLinux, isMac, isWindows } from '@/const/env';
+import { createLogger } from '@/utils/logger';
+
 import {
   BACKGROUND_DARK,
   BACKGROUND_LIGHT,
@@ -11,9 +14,10 @@ import {
   SYMBOL_COLOR_LIGHT,
   THEME_CHANGE_DELAY,
 } from '../../const/theme';
-import { createLogger } from '@/utils/logger';
 
 const logger = createLogger('core:WindowThemeManager');
+
+const MACOS_VIBRANCY = 'sidebar';
 
 interface WindowsThemeConfig {
   backgroundColor: string;
@@ -24,6 +28,11 @@ interface WindowsThemeConfig {
     symbolColor: string;
   };
   titleBarStyle: 'hidden';
+}
+
+interface LinuxThemeConfig {
+  backgroundColor: string;
+  hasShadow: true;
 }
 
 /**
@@ -52,7 +61,7 @@ export class WindowThemeManager {
   // ==================== Lifecycle ====================
 
   /**
-   * Attach to a browser window and setup theme handling
+   * Attach to a browser window and setup theme handling.
    */
   attach(browserWindow: BrowserWindow): void {
     this.browserWindow = browserWindow;
@@ -92,9 +101,15 @@ export class WindowThemeManager {
       // Calculate traffic light position to center vertically in title bar
       // Traffic light buttons are approximately 12px tall
       const trafficLightY = Math.round((TITLE_BAR_HEIGHT - 12) / 2);
+
       return {
         trafficLightPosition: { x: 12, y: trafficLightY },
+        vibrancy: MACOS_VIBRANCY,
+        visualEffectState: 'active',
       };
+    }
+    if (isLinux) {
+      return this.getLinuxConfig();
     }
     return {};
   }
@@ -105,9 +120,16 @@ export class WindowThemeManager {
   private getWindowsConfig(isDarkMode: boolean): WindowsThemeConfig {
     return {
       backgroundColor: isDarkMode ? BACKGROUND_DARK : BACKGROUND_LIGHT,
-      icon: isDev ? join(buildDir, 'icon-dev.ico') : undefined,
+      icon: isDev ? path.join(buildDir, 'icon-dev.ico') : undefined,
       titleBarOverlay: this.getWindowsTitleBarOverlay(isDarkMode),
       titleBarStyle: 'hidden',
+    };
+  }
+
+  private getLinuxConfig(): LinuxThemeConfig {
+    return {
+      backgroundColor: this.resolveIsDarkMode() ? BACKGROUND_DARK : BACKGROUND_LIGHT,
+      hasShadow: true,
     };
   }
 
@@ -135,58 +157,54 @@ export class WindowThemeManager {
     logger.debug(`[${this.identifier}] App theme mode changed, reapplying visual effects.`);
     setTimeout(() => {
       this.applyVisualEffects();
-      this.applyWindowsTitleBarOverlay();
     }, THEME_CHANGE_DELAY);
+  }
+
+  /**
+   * Disable macOS vibrancy while fullscreen so the window remains opaque.
+   */
+  handleFullscreenChange(isFullScreen: boolean): void {
+    if (!isMac || !this.browserWindow || this.browserWindow.isDestroyed()) return;
+
+    logger.debug(
+      `[${this.identifier}] Updating macOS vibrancy for fullscreen state: ${isFullScreen}`,
+    );
+
+    try {
+      this.browserWindow.setVibrancy(isFullScreen ? null : MACOS_VIBRANCY);
+    } catch (error) {
+      logger.error(`[${this.identifier}] Failed to update macOS fullscreen vibrancy:`, error);
+    }
   }
 
   // ==================== Visual Effects ====================
 
-  private resolveWindowsIsDarkModeFromElectron(): boolean {
+  /**
+   * Resolve dark mode from Electron theme source for runtime visual effect updates.
+   * Checks explicit themeSource first to handle app-level theme overrides correctly.
+   */
+  private resolveIsDarkMode(): boolean {
     if (nativeTheme.themeSource === 'dark') return true;
     if (nativeTheme.themeSource === 'light') return false;
     return nativeTheme.shouldUseDarkColors;
   }
 
   /**
-   * Apply Windows title bar overlay based on Electron theme mode.
-   * Mirror the structure of `applyVisualEffects`, but only updates title bar overlay.
-   */
-  private applyWindowsTitleBarOverlay(): void {
-    if (!this.browserWindow || this.browserWindow.isDestroyed()) return;
-
-    logger.debug(`[${this.identifier}] Applying Windows title bar overlay`);
-    const isDarkMode = this.resolveWindowsIsDarkModeFromElectron();
-
-    try {
-      if (!isWindows) return;
-
-      this.browserWindow.setTitleBarOverlay(this.getWindowsTitleBarOverlay(isDarkMode));
-
-      logger.debug(
-        `[${this.identifier}] Windows title bar overlay applied successfully (dark mode: ${isDarkMode})`,
-      );
-    } catch (error) {
-      logger.error(`[${this.identifier}] Failed to apply Windows title bar overlay:`, error);
-    }
-  }
-
-  /**
-   * Apply visual effects based on current theme
+   * Apply visual effects based on current theme.
+   * Single entry point for ALL platform visual effects.
    */
   applyVisualEffects(): void {
     if (!this.browserWindow || this.browserWindow.isDestroyed()) return;
 
-    logger.debug(`[${this.identifier}] Applying visual effects for platform`);
-    const isDarkMode = this.isDarkMode;
+    const isDarkMode = this.resolveIsDarkMode();
+    logger.debug(`[${this.identifier}] Applying visual effects (dark: ${isDarkMode})`);
 
     try {
       if (isWindows) {
         this.applyWindowsVisualEffects(isDarkMode);
+      } else if (isLinux) {
+        this.applyLinuxVisualEffects();
       }
-
-      logger.debug(
-        `[${this.identifier}] Visual effects applied successfully (dark mode: ${isDarkMode})`,
-      );
     } catch (error) {
       logger.error(`[${this.identifier}] Failed to apply visual effects:`, error);
     }
@@ -206,5 +224,17 @@ export class WindowThemeManager {
     const config = this.getWindowsConfig(isDarkMode);
     this.browserWindow.setBackgroundColor(config.backgroundColor);
     this.browserWindow.setTitleBarOverlay(config.titleBarOverlay);
+  }
+
+  private applyLinuxVisualEffects(): void {
+    if (!this.browserWindow) return;
+
+    const config = this.getLinuxConfig();
+    const browserWindow = this.browserWindow as BrowserWindow & {
+      setHasShadow?: (hasShadow: boolean) => void;
+    };
+
+    browserWindow.setBackgroundColor(config.backgroundColor);
+    browserWindow.setHasShadow?.(true);
   }
 }

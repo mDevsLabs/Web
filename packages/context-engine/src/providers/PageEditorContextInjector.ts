@@ -1,8 +1,15 @@
-import { type PageContentContext, formatPageContentContext } from '@lobechat/prompts';
+import type { PageContentContext } from '@lobechat/prompts';
+import { formatPageContentContext } from '@lobechat/prompts';
 import debug from 'debug';
 
 import { BaseLastUserContentProvider } from '../base/BaseLastUserContentProvider';
 import type { PipelineContext, ProcessorOptions } from '../types';
+
+declare module '../types' {
+  interface PipelineContextMetadataOverrides {
+    pageEditorContextInjected?: boolean;
+  }
+}
 
 const log = debug('context-engine:provider:PageEditorContextInjector');
 

@@ -1,18 +1,11 @@
 'use client';
 
 import type { CompressionGroupMetadata, UIChatMessage } from '@lobechat/types';
-import {
-  ActionIcon,
-  Flexbox,
-  Icon,
-  Markdown,
-  ScrollShadow,
-  Tabs,
-  type TabsProps,
-} from '@lobehub/ui';
+import { ActionIcon, Flexbox, Icon, Markdown, ScrollShadow } from '@lobehub/ui';
+import { confirmModal, Tabs, type TabsItem } from '@lobehub/ui/base-ui';
 import { createStaticStyles, cx } from 'antd-style';
 import isEqual from 'fast-deep-equal';
-import { ChevronDown, ChevronUp, History, Sparkles } from 'lucide-react';
+import { ChevronDown, ChevronUp, History, Sparkles, Undo2 } from 'lucide-react';
 import { memo, useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -23,6 +16,7 @@ import { shinyTextStyles } from '@/styles/loading';
 
 import { dataSelectors, useConversationStore } from '../../store';
 import CompressedMessageItem from './CompressedMessageItem';
+import { isCompressionSummaryGenerating, shouldShowCompressedGroupPanel } from './logic';
 
 const STORAGE_KEY_PREFIX = 'compressed-group-tab:';
 
@@ -80,6 +74,15 @@ const CompressedGroupMessage = memo<CompressedGroupMessageProps>(({ id }) => {
   const toggleCompressedGroupExpanded = useConversationStore(
     (s) => s.toggleCompressedGroupExpanded,
   );
+  const cancelCompression = useConversationStore((s) => s.cancelCompression);
+
+  const handleCancelCompression = useCallback(() => {
+    confirmModal({
+      content: t('compression.cancelConfirm'),
+      onOk: () => cancelCompression(id),
+      title: t('compression.cancel'),
+    });
+  }, [id, cancelCompression, t]);
 
   const content = message?.content;
   const rawCompressedMessages = (message as UIChatMessage)?.compressedMessages;
@@ -102,12 +105,14 @@ const CompressedGroupMessage = memo<CompressedGroupMessageProps>(({ id }) => {
 
   // Check if generateSummary operation is running for this message
   const runningOp = useChatStore(operationSelectors.getDeepestRunningOperationByMessage(id));
-  const isGeneratingSummary = runningOp?.type === 'generateSummary';
+  const isGeneratingSummary = isCompressionSummaryGenerating(runningOp?.type);
 
-  // Auto-expand when generating summary to show streaming content
-  const showContent = expanded || isGeneratingSummary;
+  const showPanelContent = shouldShowCompressedGroupPanel({
+    expanded,
+    isGeneratingSummary,
+  });
 
-  const tabItems: TabsProps['items'] = useMemo(
+  const tabItems: TabsItem[] = useMemo(
     () => [
       {
         icon: <Icon icon={Sparkles} size={14} />,
@@ -136,23 +141,30 @@ const CompressedGroupMessage = memo<CompressedGroupMessageProps>(({ id }) => {
           <StreamingMarkdown>{content}</StreamingMarkdown>
         </>
       ) : (
-        <Flexbox align={'center'} distribution={'space-between'} horizontal width={'100%'}>
+        <Flexbox horizontal align={'center'} distribution={'space-between'} width={'100%'}>
           <Tabs
             activeKey={isGeneratingSummary ? 'summary' : activeTab}
             className={styles.header}
-            compact
             items={tabItems}
-            onChange={handleTabChange}
             variant={'rounded'}
+            onChange={handleTabChange}
           />
-          <ActionIcon
-            icon={expanded ? ChevronUp : ChevronDown}
-            onClick={() => toggleCompressedGroupExpanded(id)}
-            size={'small'}
-          />
+          <Flexbox horizontal gap={4}>
+            <ActionIcon
+              icon={Undo2}
+              size={'small'}
+              title={t('compression.cancel')}
+              onClick={handleCancelCompression}
+            />
+            <ActionIcon
+              icon={expanded ? ChevronUp : ChevronDown}
+              size={'small'}
+              onClick={() => toggleCompressedGroupExpanded(id)}
+            />
+          </Flexbox>
         </Flexbox>
       )}
-      {!showContent ? null : activeTab === 'summary' ? (
+      {!showPanelContent ? null : activeTab === 'summary' ? (
         <ScrollShadow className={styles.contentScroll} offset={12} size={12}>
           <Markdown style={{ overflow: 'unset' }} variant={'chat'}>
             {content}

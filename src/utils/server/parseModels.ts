@@ -11,7 +11,7 @@ export const parseModelString = async (
   modelString: string = '',
   withDeploymentName = false,
 ) => {
-  let models: AiFullModelCard[] = [];
+  const models: AiFullModelCard[] = [];
   let removeAll = false;
   const removedModels: string[] = [];
   const modelNames = modelString.split(/[,，]/).filter(Boolean);
@@ -20,8 +20,9 @@ export const parseModelString = async (
     const disable = item.startsWith('-');
     const nameConfig = item.startsWith('+') || item.startsWith('-') ? item.slice(1) : item;
     const [idAndDisplayName, ...capabilities] = nameConfig.split('<');
-    let [id, displayName] = idAndDisplayName.split('=');
+    const [rawId, displayName] = idAndDisplayName.split('=');
 
+    let id = rawId;
     let deploymentName: string | undefined;
 
     if (withDeploymentName) {
@@ -142,19 +143,20 @@ export const transformToAiModelList = async ({
   }
 
   // Asynchronously load configuration
-  const { LOBE_DEFAULT_MODEL_LIST } = await import('model-bank');
+  const { loadModels } = await import('@/business/client/model-bank/loadModels');
+  const builtinModels = await loadModels();
 
   return produce(chatModels, (draft) => {
     // Handle add or replace logic
     for (const toAddModel of modelConfig.add) {
-      // first try to find the model in LOBE_DEFAULT_MODEL_LIST to confirm if it is a known model
-      let knownModel = LOBE_DEFAULT_MODEL_LIST.find(
+      // First try to find the model in the provider-specific builtin list.
+      let knownModel = builtinModels.find(
         (model) => model.id === toAddModel.id && model.providerId === providerId,
       );
 
       if (!knownModel) {
-        knownModel = LOBE_DEFAULT_MODEL_LIST.find((model) => model.id === toAddModel.id);
-        if (knownModel) knownModel.providerId = providerId;
+        knownModel = builtinModels.find((model) => model.id === toAddModel.id);
+        if (knownModel) knownModel = { ...knownModel, providerId };
       }
       if (withDeploymentName) {
         toAddModel.config = toAddModel.config || {};
@@ -186,7 +188,7 @@ export const transformToAiModelList = async ({
           );
         }
       } else {
-        // if the model is not in LOBE_DEFAULT_MODEL_LIST, add it as a new custom model
+        // If the model is not in the builtin list, add it as a new custom model.
         draft.push({
           ...toAddModel,
           displayName: toAddModel.displayName || toAddModel.id,

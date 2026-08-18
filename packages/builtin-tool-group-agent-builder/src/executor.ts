@@ -4,32 +4,69 @@
  * Handles all group agent builder tool calls for configuring groups and their agents.
  * Extends AgentBuilder functionality with group-specific operations.
  */
+import { AgentManagerRuntime } from '@lobechat/agent-manager-runtime';
 import type {
   GetAvailableModelsParams,
   InstallPluginParams,
   SearchMarketToolsParams,
 } from '@lobechat/builtin-tool-agent-builder';
-import { AgentBuilderExecutionRuntime } from '@lobechat/builtin-tool-agent-builder/executionRuntime';
-import { BaseExecutor, type BuiltinToolContext, type BuiltinToolResult } from '@lobechat/types';
+import type { BuiltinToolContext, BuiltinToolResult, ToolAfterCallContext } from '@lobechat/types';
+import { BaseExecutor } from '@lobechat/types';
+
+import { agentService } from '@/services/agent';
+import { discoverService } from '@/services/discover';
+import { getChatGroupStoreState } from '@/store/agentGroup';
+import { useGroupProfileStore } from '@/store/groupProfile';
 
 import { GroupAgentBuilderExecutionRuntime } from './ExecutionRuntime';
-import {
-  type BatchCreateAgentsParams,
-  type CreateAgentParams,
-  type GetAgentInfoParams,
-  GroupAgentBuilderApiName,
-  GroupAgentBuilderIdentifier,
-  type InviteAgentParams,
-  type RemoveAgentParams,
-  type SearchAgentParams,
-  type UpdateAgentConfigWithIdParams,
-  type UpdateAgentPromptParams,
-  type UpdateGroupParams,
-  type UpdateGroupPromptParams,
+import type {
+  BatchCreateAgentsParams,
+  CreateAgentParams,
+  CreateGroupParams,
+  GetAgentInfoParams,
+  InviteAgentParams,
+  RemoveAgentParams,
+  SearchAgentParams,
+  UpdateAgentConfigWithIdParams,
+  UpdateAgentPromptParams,
+  UpdateGroupParams,
+  UpdateGroupPromptParams,
 } from './types';
+import { GroupAgentBuilderApiName, GroupAgentBuilderIdentifier } from './types';
 
-const agentBuilderRuntime = new AgentBuilderExecutionRuntime();
+const agentManagerRuntime = new AgentManagerRuntime({
+  agentService,
+  discoverService,
+});
 const groupAgentBuilderRuntime = new GroupAgentBuilderExecutionRuntime();
+
+// APIs that mutate group / member state. Under gateway mode these commit inside
+// the server runtime, so the client stores only learn about them through
+// `onAfterCall` (fired on `tool_end` regardless of where the tool ran).
+const GROUP_WRITE_APIS = new Set<string>([
+  GroupAgentBuilderApiName.batchCreateAgents,
+  GroupAgentBuilderApiName.createAgent,
+  GroupAgentBuilderApiName.inviteAgent,
+  GroupAgentBuilderApiName.removeAgent,
+  GroupAgentBuilderApiName.updateAgentPrompt,
+  GroupAgentBuilderApiName.updateGroup,
+  GroupAgentBuilderApiName.updateGroupPrompt,
+]);
+
+/**
+ * The Group Agent Builder conversation is keyed by the builtin builder agent, so
+ * its ConversationContext deliberately carries no groupId. The edited group is
+ * whatever the profile page has active — the same source `resolveGroupTarget`
+ * already uses for the group-level APIs.
+ */
+const resolveActiveGroupId = (ctx: BuiltinToolContext): string | undefined =>
+  ctx.groupId ?? getChatGroupStoreState().activeGroupId ?? undefined;
+
+const NO_GROUP_CONTEXT: BuiltinToolResult = {
+  content: 'No active group found',
+  error: { message: 'No active group found', type: 'NoGroupContext' },
+  success: false,
+};
 
 class GroupAgentBuilderExecutor extends BaseExecutor<typeof GroupAgentBuilderApiName> {
   readonly identifier = GroupAgentBuilderIdentifier;
@@ -41,129 +78,61 @@ class GroupAgentBuilderExecutor extends BaseExecutor<typeof GroupAgentBuilderApi
     params: GetAgentInfoParams,
     ctx: BuiltinToolContext,
   ): Promise<BuiltinToolResult> => {
-    const result = await groupAgentBuilderRuntime.getAgentInfo(ctx.groupId, params);
-    return {
-      content: result.content,
-      error: result.error
-        ? { body: result.error, message: String(result.error), type: 'RuntimeError' }
-        : undefined,
-      state: result.state,
-      success: result.success,
-    };
+    return groupAgentBuilderRuntime.getAgentInfo(ctx.groupId, params);
   };
 
   // ==================== Group Member Management ====================
 
   searchAgent = async (params: SearchAgentParams): Promise<BuiltinToolResult> => {
-    const result = await groupAgentBuilderRuntime.searchAgent(params);
-    return {
-      content: result.content,
-      error: result.error
-        ? { body: result.error, message: String(result.error), type: 'RuntimeError' }
-        : undefined,
-      state: result.state,
-      success: result.success,
-    };
+    return groupAgentBuilderRuntime.searchAgent(params);
+  };
+
+  createGroup = async (params: CreateGroupParams): Promise<BuiltinToolResult> => {
+    return groupAgentBuilderRuntime.createGroup(params);
   };
 
   createAgent = async (
     params: CreateAgentParams,
     ctx: BuiltinToolContext,
   ): Promise<BuiltinToolResult> => {
-    const groupId = ctx.groupId;
+    const groupId = resolveActiveGroupId(ctx);
 
-    if (!groupId) {
-      return {
-        content: 'No active group found',
-        error: { message: 'No active group found', type: 'NoGroupContext' },
-        success: false,
-      };
-    }
+    if (!groupId) return NO_GROUP_CONTEXT;
 
-    const result = await groupAgentBuilderRuntime.createAgent(groupId, params);
-    return {
-      content: result.content,
-      error: result.error
-        ? { body: result.error, message: String(result.error), type: 'RuntimeError' }
-        : undefined,
-      state: result.state,
-      success: result.success,
-    };
+    return groupAgentBuilderRuntime.createAgent(groupId, params);
   };
 
   batchCreateAgents = async (
     params: BatchCreateAgentsParams,
     ctx: BuiltinToolContext,
   ): Promise<BuiltinToolResult> => {
-    const groupId = ctx.groupId;
+    const groupId = resolveActiveGroupId(ctx);
 
-    if (!groupId) {
-      return {
-        content: 'No active group found',
-        error: { message: 'No active group found', type: 'NoGroupContext' },
-        success: false,
-      };
-    }
+    if (!groupId) return NO_GROUP_CONTEXT;
 
-    const result = await groupAgentBuilderRuntime.batchCreateAgents(groupId, params);
-    return {
-      content: result.content,
-      error: result.error
-        ? { body: result.error, message: String(result.error), type: 'RuntimeError' }
-        : undefined,
-      state: result.state,
-      success: result.success,
-    };
+    return groupAgentBuilderRuntime.batchCreateAgents(groupId, params);
   };
 
   inviteAgent = async (
     params: InviteAgentParams,
     ctx: BuiltinToolContext,
   ): Promise<BuiltinToolResult> => {
-    const groupId = ctx.groupId;
+    const groupId = resolveActiveGroupId(ctx);
 
-    if (!groupId) {
-      return {
-        content: 'No active group found',
-        error: { message: 'No active group found', type: 'NoGroupContext' },
-        success: false,
-      };
-    }
+    if (!groupId) return NO_GROUP_CONTEXT;
 
-    const result = await groupAgentBuilderRuntime.inviteAgent(groupId, params);
-    return {
-      content: result.content,
-      error: result.error
-        ? { body: result.error, message: String(result.error), type: 'RuntimeError' }
-        : undefined,
-      state: result.state,
-      success: result.success,
-    };
+    return groupAgentBuilderRuntime.inviteAgent(groupId, params);
   };
 
   removeAgent = async (
     params: RemoveAgentParams,
     ctx: BuiltinToolContext,
   ): Promise<BuiltinToolResult> => {
-    const groupId = ctx.groupId;
+    const groupId = resolveActiveGroupId(ctx);
 
-    if (!groupId) {
-      return {
-        content: 'No active group found',
-        error: { message: 'No active group found', type: 'NoGroupContext' },
-        success: false,
-      };
-    }
+    if (!groupId) return NO_GROUP_CONTEXT;
 
-    const result = await groupAgentBuilderRuntime.removeAgent(groupId, params);
-    return {
-      content: result.content,
-      error: result.error
-        ? { body: result.error, message: String(result.error), type: 'RuntimeError' }
-        : undefined,
-      state: result.state,
-      success: result.success,
-    };
+    return groupAgentBuilderRuntime.removeAgent(groupId, params);
   };
 
   // ==================== Group Configuration ====================
@@ -172,78 +141,32 @@ class GroupAgentBuilderExecutor extends BaseExecutor<typeof GroupAgentBuilderApi
     params: UpdateAgentPromptParams,
     ctx: BuiltinToolContext,
   ): Promise<BuiltinToolResult> => {
-    const groupId = ctx.groupId;
+    const groupId = resolveActiveGroupId(ctx);
 
-    if (!groupId) {
-      return {
-        content: 'No active group found',
-        error: { message: 'No active group found', type: 'NoGroupContext' },
-        success: false,
-      };
-    }
+    if (!groupId) return NO_GROUP_CONTEXT;
 
-    const result = await groupAgentBuilderRuntime.updateAgentPrompt(groupId, params);
-    return {
-      content: result.content,
-      error: result.error
-        ? { body: result.error, message: String(result.error), type: 'RuntimeError' }
-        : undefined,
-      state: result.state,
-      success: result.success,
-    };
+    return groupAgentBuilderRuntime.updateAgentPrompt(groupId, params);
   };
 
   updateGroup = async (params: UpdateGroupParams): Promise<BuiltinToolResult> => {
-    const result = await groupAgentBuilderRuntime.updateGroup(params);
-    return {
-      content: result.content,
-      error: result.error
-        ? { body: result.error, message: String(result.error), type: 'RuntimeError' }
-        : undefined,
-      state: result.state,
-      success: result.success,
-    };
+    return groupAgentBuilderRuntime.updateGroup(params);
   };
 
   updateGroupPrompt = async (params: UpdateGroupPromptParams): Promise<BuiltinToolResult> => {
-    const result = await groupAgentBuilderRuntime.updateGroupPrompt({
+    return groupAgentBuilderRuntime.updateGroupPrompt({
       streaming: true,
       ...params,
     });
-    return {
-      content: result.content,
-      error: result.error
-        ? { body: result.error, message: String(result.error), type: 'RuntimeError' }
-        : undefined,
-      state: result.state,
-      success: result.success,
-    };
   };
 
   // ==================== Inherited Operations (for supervisor agent) ====================
 
   getAvailableModels = async (params: GetAvailableModelsParams): Promise<BuiltinToolResult> => {
-    const result = await agentBuilderRuntime.getAvailableModels(params);
-    return {
-      content: result.content,
-      error: result.error
-        ? { body: result.error, message: String(result.error), type: 'RuntimeError' }
-        : undefined,
-      state: result.state,
-      success: result.success,
-    };
+    return agentManagerRuntime.getAvailableModels(params);
   };
 
   searchMarketTools = async (params: SearchMarketToolsParams): Promise<BuiltinToolResult> => {
-    const result = await agentBuilderRuntime.searchMarketTools(params);
-    return {
-      content: result.content,
-      error: result.error
-        ? { body: result.error, message: String(result.error), type: 'RuntimeError' }
-        : undefined,
-      state: result.state,
-      success: result.success,
-    };
+    return agentManagerRuntime.searchMarketTools(params);
   };
 
   updateConfig = async (
@@ -263,15 +186,7 @@ class GroupAgentBuilderExecutor extends BaseExecutor<typeof GroupAgentBuilderApi
       };
     }
 
-    const result = await agentBuilderRuntime.updateAgentConfig(agentId, restParams);
-    return {
-      content: result.content,
-      error: result.error
-        ? { body: result.error, message: String(result.error), type: 'RuntimeError' }
-        : undefined,
-      state: result.state,
-      success: result.success,
-    };
+    return agentManagerRuntime.updateAgentConfig(agentId, restParams);
   };
 
   installPlugin = async (
@@ -288,15 +203,44 @@ class GroupAgentBuilderExecutor extends BaseExecutor<typeof GroupAgentBuilderApi
       };
     }
 
-    const result = await agentBuilderRuntime.installPlugin(agentId, params);
-    return {
-      content: result.content,
-      error: result.error
-        ? { body: result.error, message: String(result.error), type: 'RuntimeError' }
-        : undefined,
-      state: result.state,
-      success: result.success,
-    };
+    return agentManagerRuntime.installPlugin(agentId, params);
+  };
+
+  // ==================== Hooks ====================
+
+  /**
+   * Under gateway mode these tools run in the server runtime, so the client-side
+   * `refreshGroupDetail` inside `GroupAgentBuilderExecutionRuntime` never fires
+   * and the group Profile sidebar keeps showing the pre-change roster. This hook
+   * runs on `tool_end` for both transports, so it is the one place that reliably
+   * re-syncs the stores after a write.
+   */
+  onAfterCall = async ({ apiName, params, result }: ToolAfterCallContext): Promise<void> => {
+    const groupStore = getChatGroupStoreState();
+
+    // A brand-new group isn't in the list yet — refresh the list, not a detail.
+    if (apiName === GroupAgentBuilderApiName.createGroup) {
+      if (result.success) await groupStore.refreshGroups();
+      return;
+    }
+
+    if (!result.success || !GROUP_WRITE_APIS.has(apiName)) return;
+
+    const args = (params ?? {}) as { agentId?: string; groupId?: string; prompt?: string };
+    const groupId = args.groupId ?? groupStore.activeGroupId;
+    if (!groupId) return;
+
+    await groupStore.refreshGroupDetail(groupId);
+
+    // Prompt writes must also land in the open editor: it treats its own JSON
+    // doc as authoritative and would otherwise autosave the stale text back over
+    // the change the agent just made.
+    if (apiName === GroupAgentBuilderApiName.updateAgentPrompt && args.agentId) {
+      useGroupProfileStore.getState().setAgentBuilderContent(args.agentId, args.prompt ?? '');
+    }
+    if (apiName === GroupAgentBuilderApiName.updateGroupPrompt) {
+      useGroupProfileStore.getState().setAgentBuilderContent(groupId, args.prompt ?? '');
+    }
   };
 }
 
