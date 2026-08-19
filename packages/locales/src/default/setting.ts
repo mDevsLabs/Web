@@ -360,6 +360,19 @@ export default {
 
   // Heterogeneous agent CLI status (shown on agent profile page in integration mode)
   'heterogeneousStatus.account.label': 'Account',
+  'heterogeneousStatus.apiMode.configureProvider': 'Go to provider settings',
+  'heterogeneousStatus.apiMode.enableInLabs': 'Enable in Labs',
+  'heterogeneousStatus.apiMode.labDisabled':
+    'API authentication is a Labs experiment. Enable it to use a configured provider instead of a Claude subscription.',
+  'heterogeneousStatus.apiMode.localOnly': 'Available only for Desktop local execution',
+  'heterogeneousStatus.apiMode.model': 'Model',
+  'heterogeneousStatus.apiMode.modelPlaceholder': 'Select a model',
+  'heterogeneousStatus.apiMode.noProviders':
+    'No enabled provider with an Anthropic-compatible endpoint is configured.',
+  'heterogeneousStatus.apiMode.smallFastModel': 'Background model',
+  'heterogeneousStatus.apiMode.smallFastModelDesc':
+    'Used for session titles, summaries, and other background work. Does not change the main conversation.',
+  'heterogeneousStatus.apiMode.smallFastModelPlaceholder': 'Same as primary model',
   'heterogeneousStatus.auth.api': 'API',
   'heterogeneousStatus.auth.label': 'Auth Method',
   'heterogeneousStatus.auth.subscription': 'Subscription',
@@ -523,10 +536,10 @@ export default {
   'devices.connectWizard.cli.connectTitle': 'Start the daemon',
   'devices.connectWizard.cli.installTitle': 'Install the CLI',
   'devices.connectWizard.cli.loginTitle': 'Sign in',
-  'devices.connectWizard.desktop.downloadLink': 'Download LobeHub Desktop',
+  'devices.connectWizard.desktop.downloadLink': 'Download mAI Desktop',
   'devices.connectWizard.desktop.step1': 'Download the desktop app',
   'devices.connectWizard.desktop.step1Desc':
-    'Visit the LobeHub downloads page and get the app for your operating system.',
+    'Visit the mAI downloads page and get the app for your operating system.',
   'devices.connectWizard.desktop.step2': 'Sign in and open the device gateway',
   'devices.connectWizard.desktop.step2Desc':
     "After signing in, click the device gateway icon in the top-right corner and confirm it's turned on.",
@@ -537,10 +550,10 @@ export default {
     'Only device metadata is registered — your data is never accessed.',
   'devices.connectWizard.method.cli': 'Via CLI',
   'devices.connectWizard.method.desktop': 'Via Desktop',
-  'devices.connectWizard.subtitle': 'Choose how to connect your computer to LobeHub.',
+  'devices.connectWizard.subtitle': 'Choose how to connect your computer to mAI.',
   'devices.connectWizard.title': 'Connect Device',
   'devices.empty.desc':
-    'Once connected, LobeHub agents can read/write files, run commands, and call system tools directly on your computer.',
+    'Once connected, mAI agents can read/write files, run commands, and call system tools directly on your computer.',
   'devices.empty.methodCli.desc':
     'Install the CLI in your terminal — great for servers or headless machines.',
   'devices.empty.methodCli.title': 'Connect via CLI',
@@ -605,12 +618,12 @@ export default {
   'apps.desktop.title': 'Desktop',
   'apps.kicker': 'Ways',
   'apps.messenger.cta': 'Set up Messenger',
-  'apps.messenger.desc': 'Talk to LobeHub in Discord, Feishu, Slack, and the rest.',
+  'apps.messenger.desc': 'Talk to mAI in Discord, Feishu, Slack, and the rest.',
   'apps.messenger.title': 'Messenger',
   'apps.mobile.cta': 'Get mobile app',
   'apps.mobile.desc': 'Start conversations from your phone when you leave the computer.',
   'apps.mobile.title': 'Mobile',
-  'apps.title': 'Discover more ways to use LobeHub',
+  'apps.title': 'Discover more ways to use mAI',
   'checkingPermissions': 'Checking permissions...',
   'danger.reset.action': 'Reset Now',
   'danger.reset.confirm': 'Reset all settings?',
@@ -720,7 +733,7 @@ export default {
   'memory.effort.medium': 'Medium — Balanced behavior',
   'memory.effort.title': 'Aggressiveness',
   'memory.enabled.desc':
-    'Allow LobeHub to extract preferences and info from conversations and use them later. You can view, edit, or clear memory anytime.',
+    'Allow mAI to extract preferences and info from conversations and use them later. You can view, edit, or clear memory anytime.',
   'memory.enabled.title': 'Enable Memory',
   'memory.manageEntry': 'Manage memories',
   'memory.title': 'Memory Settings',
@@ -734,18 +747,18 @@ export default {
   'notification.email.desc': 'Receive email notifications when important events occur',
   'notification.im.banner.platformUnlinked': '{{platform}} is not linked yet',
   'notification.im.desc':
-    'Deliver notifications to your linked messenger (Telegram, Discord, Slack, or WeChat) via the LobeHub bot',
+    'Deliver notifications to your linked messenger (Telegram, Discord, Slack, or WeChat) via the mAI bot',
   'notification.im.linkAccount': 'Link account',
   'notification.im.title': 'Messenger Notifications',
   'notification.im.platform.desc':
-    'Deliver notifications to your {{platform}} DM via the LobeHub bot',
+    'Deliver notifications to your {{platform}} DM via the mAI bot',
   'notification.im.platform.enable': 'Enable {{platform}} notifications',
   'notification.im.platform.viewSetup': 'View setup',
   'notification.email.title': 'Email Notifications',
   'notification.inbox.desc': 'Show notifications in the in-app inbox',
   'notification.inbox.title': 'Inbox Notifications',
   'notification.push.desc':
-    'Send push notifications to your mobile devices (LobeHub mobile app required)',
+    'Send push notifications to your mobile devices (mAI mobile app required)',
   'notification.push.title': 'Mobile Push Notifications',
   'notification.test.action': 'Send test notification',
   'notification.test.failed': 'Test notification failed: {{reason}}',
@@ -930,7 +943,7 @@ export default {
   'settingAgent.tag.title': 'Tag',
   'settingAgent.title': 'Agent info',
   'settingAppearance.appTray.desc':
-    'Show the LobeHub icon in the system tray or macOS menu bar. Disabling it also removes tray menu access.',
+    'Show the mAI icon in the system tray or macOS menu bar. Disabling it also removes tray menu access.',
   'settingAppearance.appTray.title': 'Show App Tray',
   'settingAppearance.animationMode.agile': 'Agile',
   'settingAppearance.animationMode.desc':
@@ -1171,7 +1184,7 @@ export default {
   'settingSelfIteration.enabled.desc':
     'Allow this assistant to review recent signals and improve its own skills when the self-iteration workflow runs.',
   'settingSelfIteration.enabled.managedDesc':
-    'Always on for Lobe AI while Self-Iteration is available.',
+    'Always on for mAI while Self-Iteration is available.',
   'settingSelfIteration.enabled.title': 'Enable Self-Iteration',
   'settingSelfIteration.title': 'Self-Iteration',
   'settingsSearch.empty': 'No settings found for "{{keyword}}"',
@@ -1269,7 +1282,7 @@ export default {
   'settingSystemTools.tools.grep.desc': 'GNU grep - standard text search tool',
   'settingSystemTools.tools.kimi.desc': 'Kimi Code - Moonshot AI agentic coding CLI',
   'settingSystemTools.tools.mdfind.desc': 'macOS Spotlight search (fast indexed search)',
-  'settingSystemTools.tools.lobehub.desc': 'LobeHub CLI - manage and connect to LobeHub services',
+  'settingSystemTools.tools.lobehub.desc': 'mAI CLI - manage and connect to mAI services',
   'settingSystemTools.tools.bun.desc': 'Bun - fast JavaScript runtime and package manager',
   'settingSystemTools.tools.bunx.desc': 'bunx - Bun package runner for executing npm packages',
   'settingSystemTools.tools.node.desc': 'Node.js - JavaScript runtime for executing JS/TS',
@@ -1321,7 +1334,7 @@ export default {
   'skillStore.search': 'Search skills by name or keyword, press Enter to search…',
   'skillStore.tabs.community': 'Community',
   'skillStore.tabs.custom': 'Custom',
-  'skillStore.tabs.lobehub': 'LobeHub',
+  'skillStore.tabs.lobehub': 'mAI',
   'skillStore.tabs.mcp': 'MCP',
   'skillStore.tabs.skills': 'Skills',
   'skillStore.title': 'Skill Store',
@@ -1350,16 +1363,16 @@ When I am ___, I need ___
   'startConversation': 'Start Conversation',
   'storage.actions.transfer.button': 'Move to…',
   'storage.actions.transfer.desc':
-    'Move agents and their data to another Workspace or your personal account. The originals leave the current space. LobeAI cannot be moved; copy it instead.',
+    'Move agents and their data to another Workspace or your personal account. The originals leave the current space. mAI cannot be moved; copy it instead.',
   'storage.actions.transfer.title': 'Move Agents',
   'storage.actions.transferAgentGroups.button': 'Move to…',
   'storage.actions.transferAgentGroups.desc':
     'Move groups, member Agents, and group conversation data to another Workspace or your personal account.',
   'storage.actions.transferAgentGroups.title': 'Move Groups',
-  'storage.actions.copyLobeAI.button': 'Copy to…',
-  'storage.actions.copyLobeAI.desc':
+  'storage.actions.copymAI.button': 'Copy to…',
+  'storage.actions.copymAI.desc':
     'Keep the originals and create independent copies in another Workspace or your personal account. Topics and messages are optional.',
-  'storage.actions.copyLobeAI.title': 'Copy Agents',
+  'storage.actions.copymAI.title': 'Copy Agents',
   'storage.actions.copyAgentGroups.button': 'Copy to…',
   'storage.actions.copyAgentGroups.desc':
     'Copy agent groups and their member agents into another workspace or personal account.',
@@ -2133,7 +2146,7 @@ When I am ___, I need ___
   'workspace.apiKey.policy.title': 'API Key creation',
   'workspace.apiKey.policy.updateFailed': 'Failed to update the API Key creation policy',
   'workspace.apiKey.upgrade.benefits.integration.desc':
-    'Call workspace agents and resources from your own systems via the LobeHub API.',
+    'Call workspace agents and resources from your own systems via the mAI API.',
   'workspace.apiKey.upgrade.benefits.integration.title': 'Programmatic access',
   'workspace.apiKey.upgrade.benefits.security.desc':
     'Requests stay bound to the workspace and can never exceed the issuer’s current permissions.',
@@ -2431,7 +2444,7 @@ When I am ___, I need ___
   'workspace.general.devReset.confirm.title': 'Rerun setup wizard?',
   'workspace.general.devReset.cta': 'Rerun setup',
   'workspace.general.devReset.description':
-    'Reopens the setup wizard so you can revise LobeAI, pick new scenarios, or invite more teammates. Your existing settings and data are kept.',
+    'Reopens the setup wizard so you can revise mAI, pick new scenarios, or invite more teammates. Your existing settings and data are kept.',
   'workspace.general.devReset.failed': 'Could not reopen setup wizard',
   'workspace.general.devReset.hint': '',
   'workspace.general.devReset.success': 'Setup wizard reopened',
@@ -2528,44 +2541,44 @@ When I am ___, I need ___
   'workspace.general.transferAgentGroups.modal.title': 'Move Agent Groups',
   'workspace.general.transferAgentGroups.modal.transfer': 'Move {{count}} agent group(s)',
   'workspace.general.transferAgentGroups.modal.untitledGroup': 'Untitled Agent Group',
-  'workspace.general.copyLobeAI.modal.back': 'Back',
-  'workspace.general.copyLobeAI.modal.continue': 'Continue',
-  'workspace.general.copyLobeAI.modal.copyOptions.config.desc':
+  'workspace.general.copymAI.modal.back': 'Back',
+  'workspace.general.copymAI.modal.continue': 'Continue',
+  'workspace.general.copymAI.modal.copyOptions.config.desc':
     'Required. Copies the model, prompt, tools, and Agent profile into a new Agent.',
-  'workspace.general.copyLobeAI.modal.copyOptions.config.title': 'Agent configuration',
-  'workspace.general.copyLobeAI.modal.copyOptions.history.desc':
+  'workspace.general.copymAI.modal.copyOptions.config.title': 'Agent configuration',
+  'workspace.general.copymAI.modal.copyOptions.history.desc':
     'Optional. Copies selected Agents’ topics and messages into the new Agents.',
-  'workspace.general.copyLobeAI.modal.copyOptions.history.title': 'Topics and messages',
-  'workspace.general.copyLobeAI.modal.copyOptions.knowledgeBase.reason':
+  'workspace.general.copymAI.modal.copyOptions.history.title': 'Topics and messages',
+  'workspace.general.copymAI.modal.copyOptions.knowledgeBase.reason':
     'Not supported yet. Reconnect them in the target workspace or personal account after copying.',
-  'workspace.general.copyLobeAI.modal.copyOptions.knowledgeBase.title': 'Knowledge bases and files',
-  'workspace.general.copyLobeAI.modal.copyOptions.optional': 'Optional',
-  'workspace.general.copyLobeAI.modal.copyOptions.required': 'Selected by default',
-  'workspace.general.copyLobeAI.modal.copyOptions.title': 'Copy options',
-  'workspace.general.copyLobeAI.modal.copyOptions.unsupported': 'Unavailable',
-  'workspace.general.copyLobeAI.modal.create': 'Copy {{count}} agent(s)',
-  'workspace.general.copyLobeAI.modal.defaultInboxTitle': 'LobeAI',
-  'workspace.general.copyLobeAI.modal.done': 'Done',
-  'workspace.general.copyLobeAI.modal.failed': 'Failed to copy agents',
-  'workspace.general.copyLobeAI.modal.goToTarget': 'Go to {{target}}',
-  'workspace.general.copyLobeAI.modal.includeHistory': 'Copy topics and messages',
-  'workspace.general.copyLobeAI.modal.includeHistoryDesc':
+  'workspace.general.copymAI.modal.copyOptions.knowledgeBase.title': 'Knowledge bases and files',
+  'workspace.general.copymAI.modal.copyOptions.optional': 'Optional',
+  'workspace.general.copymAI.modal.copyOptions.required': 'Selected by default',
+  'workspace.general.copymAI.modal.copyOptions.title': 'Copy options',
+  'workspace.general.copymAI.modal.copyOptions.unsupported': 'Unavailable',
+  'workspace.general.copymAI.modal.create': 'Copy {{count}} agent(s)',
+  'workspace.general.copymAI.modal.defaultInboxTitle': 'mAI',
+  'workspace.general.copymAI.modal.done': 'Done',
+  'workspace.general.copymAI.modal.failed': 'Failed to copy agents',
+  'workspace.general.copymAI.modal.goToTarget': 'Go to {{target}}',
+  'workspace.general.copymAI.modal.includeHistory': 'Copy topics and messages',
+  'workspace.general.copymAI.modal.includeHistoryDesc':
     'Optional. Copies selected Agents’ conversation history into the new Agents.',
-  'workspace.general.copyLobeAI.modal.loadFailed': 'Failed to load agents',
-  'workspace.general.copyLobeAI.modal.noAgents': 'No agents available to copy',
-  'workspace.general.copyLobeAI.modal.selected': 'selected',
-  'workspace.general.copyLobeAI.modal.selectedAgent':
+  'workspace.general.copymAI.modal.loadFailed': 'Failed to load agents',
+  'workspace.general.copymAI.modal.noAgents': 'No agents available to copy',
+  'workspace.general.copymAI.modal.selected': 'selected',
+  'workspace.general.copymAI.modal.selectedAgent':
     'This Agent will be copied. The original stays where it is.',
-  'workspace.general.copyLobeAI.modal.selectAgents':
+  'workspace.general.copymAI.modal.selectAgents':
     'Select Agents to copy. Originals stay where they are.',
-  'workspace.general.copyLobeAI.modal.selectPlaceholder': 'Select workspace or personal account...',
-  'workspace.general.copyLobeAI.modal.selectTarget':
+  'workspace.general.copymAI.modal.selectPlaceholder': 'Select workspace or personal account...',
+  'workspace.general.copymAI.modal.selectTarget':
     'You can copy to personal or workspaces that have permission to create an agent.',
-  'workspace.general.copyLobeAI.modal.success': '{{count}} agent(s) copied',
-  'workspace.general.copyLobeAI.modal.backgroundCopy':
+  'workspace.general.copymAI.modal.success': '{{count}} agent(s) copied',
+  'workspace.general.copymAI.modal.backgroundCopy':
     'Chat history is large, so it keeps copying in the background. The agents are ready to use now; conversations light up one by one as they finish.',
-  'workspace.general.copyLobeAI.modal.title': 'Copy Agents',
-  'workspace.general.copyLobeAI.modal.untitledAgent': 'Untitled Agent',
+  'workspace.general.copymAI.modal.title': 'Copy Agents',
+  'workspace.general.copymAI.modal.untitledAgent': 'Untitled Agent',
   'workspace.general.copyAgentGroups.modal.back': 'Back',
   'workspace.general.copyAgentGroups.modal.backgroundCopy':
     'Chat history is large, so it keeps copying in the background. The agent group is ready to use now; conversations light up one by one as they finish.',
@@ -2649,7 +2662,7 @@ When I am ___, I need ___
   'workspace.general.url.title': 'Workspace URL',
   'workspace.slugBrandApply.button': 'Apply',
   'workspace.slugBrandApply.mailBody':
-    'Hi LobeHub team,\n\nI would like to request the workspace URL "{{slug}}" (https://lobehub.com/{{slug}}).\n\n- Brand / organization I represent:\n- Official website / domain:\n- My role in the organization:\n- Organization email (please reply from this address):\n\nThanks!',
+    'Hi mAI team,\n\nI would like to request the workspace URL "{{slug}}" (https://lobehub.com/{{slug}}).\n\n- Brand / organization I represent:\n- Official website / domain:\n- My role in the organization:\n- Organization email (please reply from this address):\n\nThanks!',
   'workspace.slugBrandApply.mailButton': 'Apply via email',
   'workspace.slugBrandApply.mailSubject': 'Workspace URL brand request: {{slug}}',
   'workspace.slugBrandApply.modalCreateTip':
@@ -2754,7 +2767,7 @@ When I am ___, I need ___
   'workspace.waitlistPage.enabledSubtitle': 'Workspace is already enabled for your account.',
   'workspace.waitlistPage.enabledTitle': 'Workspace is ready for you',
   'workspace.waitlistPage.entryCta': 'Join Workspace Beta',
-  'workspace.waitlistPage.goHome': 'Back to LobeHub',
+  'workspace.waitlistPage.goHome': 'Back to mAI',
   'workspace.waitlistPage.organizationLabel': 'Organization / Group (optional)',
   'workspace.waitlistPage.organizationPlaceholder': 'Company, school, or family…',
   'workspace.waitlistPage.pendingSubtitle':
@@ -3058,22 +3071,22 @@ When I am ___, I need ___
   'workspace.onboarding.finish': 'Finish',
   'workspace.onboarding.skipConfirm.title': 'Skip workspace setup?',
   'workspace.onboarding.skipConfirm.description':
-    'You can always customize LobeAI and add agents later in Workspace settings.',
+    'You can always customize mAI and add agents later in Workspace settings.',
   'workspace.onboarding.skipConfirm.ok': 'Skip',
   'workspace.onboarding.skipConfirm.cancel': 'Continue setup',
   'workspace.onboarding.toast.saved': 'Saved',
   'workspace.onboarding.toast.failed': 'Could not save. Please try again.',
   'workspace.onboarding.toast.installAgentsFailed':
     "Couldn't add the selected agents. You can install them later from the marketplace.",
-  'workspace.onboarding.step1.heading': 'Personalize LobeAI',
+  'workspace.onboarding.step1.heading': 'Personalize mAI',
   'workspace.onboarding.step1.subtitle':
     'Give your workspace assistant an identity your team will recognize.',
   'workspace.onboarding.step1.avatarLabel': 'Avatar',
   'workspace.onboarding.step1.avatarHint': 'Pick an emoji or upload an image.',
   'workspace.onboarding.step1.avatarTooLarge': 'Avatar file must be smaller than 5MB.',
   'workspace.onboarding.step1.avatarUploadFailed': 'Failed to upload avatar',
-  'workspace.onboarding.step1.nameLabel': "LobeAI's name",
-  'workspace.onboarding.step1.namePlaceholder': 'e.g. LobeAI',
+  'workspace.onboarding.step1.nameLabel': "mAI's name",
+  'workspace.onboarding.step1.namePlaceholder': 'e.g. mAI',
   'workspace.onboarding.step1.suggestion.title': 'Need ideas? Pick one to start.',
   'workspace.onboarding.step1.suggestion.switch': 'Try another set',
   'workspace.onboarding.step1.guide.name.title': 'Give It a Name',
@@ -3086,7 +3099,7 @@ When I am ___, I need ___
   'workspace.onboarding.step1.guide.growTogether.desc':
     "Every conversation teaches me your team's vibe — the longer we work together, the better.",
   'workspace.onboarding.step1.footer':
-    "Set up your workspace's LobeAI assistant — it learns from every conversation and grows into your team's go-to teammate.",
+    "Set up your workspace's mAI assistant — it learns from every conversation and grows into your team's go-to teammate.",
   'workspace.onboarding.step1.sentence.1': "Ready? Let me be your team's go-to teammate.",
   'workspace.onboarding.step1.sentence.2': 'What role do you want me to play in this workspace?',
   'workspace.onboarding.step1.sentence.3': 'First, give me a name your team will love :)',
@@ -3315,7 +3328,7 @@ When I am ___, I need ___
     'Manage connections to your desktop devices. List online devices, activate a device for remote operations, and check connection status.',
   'tools.builtins.lobe-remote-device.title': 'Remote Device',
   'tools.builtins.lobe-skill-store.description':
-    'Browse and install agent skills from the LobeHub marketplace. Use this when you need extended capabilities or want to install a specific skill.',
+    'Browse and install agent skills from the mAI marketplace. Use this when you need extended capabilities or want to install a specific skill.',
   'tools.builtins.lobe-skill-store.title': 'Skill Store',
   'tools.builtins.lobe-skills.description': 'Activate and use reusable skill packages',
   'tools.builtins.lobe-skills.title': 'Skills',
@@ -3334,7 +3347,7 @@ When I am ___, I need ___
     'Search the web for current information and crawl web pages to extract content. Supports multiple search engines, categories, and time ranges for comprehensive research.',
   'tools.builtins.lobe-web-browsing.title': 'Web Browsing',
   'tools.builtins.lobe-image-generation.description':
-    'Generate images through LobeHub providers when the current chat model has no native image output.',
+    'Generate images through mAI providers when the current chat model has no native image output.',
   'tools.builtins.lobe-image-generation.readme':
     'Opt-in image generation for models without native image output. Pin this tool to enable it in chat or agent mode; leave unpinned to avoid the tool schema cost.',
   'tools.builtins.lobe-image-generation.title': 'Image Generation',
@@ -3349,8 +3362,8 @@ When I am ___, I need ___
     'Browser automation CLI for AI agents. Use when tasks involve website or Electron interaction such as navigation, form filling, clicking, screenshot capture, scraping data, login flows, and end-to-end app testing.',
   'tools.builtins.lobe-agent-browser.title': 'Agent Browser',
   'tools.builtins.lobehub.description':
-    'Manage the LobeHub platform via CLI — knowledge bases, memory, agents, files, search, generation, and more.',
-  'tools.builtins.lobehub.title': 'LobeHub',
+    'Manage the mAI platform via CLI — knowledge bases, memory, agents, files, search, generation, and more.',
+  'tools.builtins.lobehub.title': 'mAI',
   'tools.builtins.task.description':
     'Task management and execution — create, track, review, and complete tasks via CLI.',
   'tools.builtins.task.title': 'Task',
@@ -3542,7 +3555,7 @@ When I am ___, I need ___
   'tools.lobehubSkill.disconnected': 'Disconnected',
 
   'tools.lobehubSkill.error': 'Error',
-  // LobeHub Skill Providers i18n
+  // mAI Skill Providers i18n
   'tools.lobehubSkill.providers.github.description':
     'GitHub is a platform for version control and collaboration, enabling developers to host, review, and manage code repositories.',
   'tools.lobehubSkill.providers.github.readme':
