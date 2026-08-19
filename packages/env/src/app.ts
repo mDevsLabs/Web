@@ -40,12 +40,12 @@ export const getAppConfig = () => {
       NEXT_PUBLIC_ENABLE_SENTRY: z.boolean(),
     },
     server: {
-      AGENTS_INDEX_URL: z.string().url(),
+      AGENTS_INDEX_URL: z.string(),
 
       DEFAULT_AGENT_CONFIG: z.string(),
       SYSTEM_AGENT: z.string().optional(),
 
-      PLUGINS_INDEX_URL: z.string().url(),
+      PLUGINS_INDEX_URL: z.string(),
       PLUGIN_SETTINGS: z.string().optional(),
 
       APP_URL: z.string(),
