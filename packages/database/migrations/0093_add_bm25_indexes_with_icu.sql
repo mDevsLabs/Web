@@ -1,4 +1,4 @@
-DO $
+DO $$
 BEGIN
   IF EXISTS (SELECT 1 FROM pg_extension WHERE extname = 'pg_search') THEN
 -- Custom SQL migration file, put your code below! --
