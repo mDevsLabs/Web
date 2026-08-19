@@ -5,8 +5,8 @@ import { zstdCompress, zstdDecompress } from 'node:zlib';
 import type { ExecutionSnapshot } from '@lobechat/agent-tracing';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-const compressZstd = promisify(zstdCompress);
-const decompressZstd = promisify(zstdDecompress);
+const compressZstd = zstdCompress ? promisify(zstdCompress) : null;
+const decompressZstd = zstdDecompress ? promisify(zstdDecompress) : null;
 
 // Stub FileS3 with vi.fn methods so we can assert calls + return canned data.
 const uploadBuffer = vi.fn();
@@ -63,6 +63,7 @@ describe('S3SnapshotStore.save', () => {
     // zstd frame magic: 0x28 b5 2f fd
     expect([body[0], body[1], body[2], body[3]]).toEqual([0x28, 0xb5, 0x2f, 0xfd]);
 
+    if (!decompressZstd) return;
     const roundtripped = JSON.parse((await decompressZstd(body)).toString('utf8'));
     expect(roundtripped).toEqual(snap);
   });
@@ -106,6 +107,7 @@ describe('S3SnapshotStore.savePartial', () => {
     expect(key).toBe('agent-traces/_partial/op_partial_1.json.zst');
     expect(contentType).toBe('application/zstd');
 
+    if (!decompressZstd) return;
     const roundtripped = JSON.parse((await decompressZstd(body)).toString('utf8'));
     expect(roundtripped).toEqual(partial);
   });
@@ -113,6 +115,7 @@ describe('S3SnapshotStore.savePartial', () => {
 
 describe('S3SnapshotStore.loadPartial', () => {
   it('decodes the zstd-compressed .json.zst object when present', async () => {
+    if (!compressZstd) return;
     const partial = { operationId: 'op_load_1', steps: [{ stepIndex: 7 }] };
     const compressed = await compressZstd(Buffer.from(JSON.stringify(partial)));
     getFileByteArray.mockResolvedValueOnce(new Uint8Array(compressed));
