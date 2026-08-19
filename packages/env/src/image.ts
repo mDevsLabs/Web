@@ -6,7 +6,9 @@ import { MAX_DEFAULT_IMAGE_NUM, MIN_DEFAULT_IMAGE_NUM } from '@/const/settings';
 export const getImageConfig = () => {
   return createEnv({
     runtimeEnv: {
-      AI_IMAGE_DEFAULT_IMAGE_NUM: process.env.AI_IMAGE_DEFAULT_IMAGE_NUM,
+      AI_IMAGE_DEFAULT_IMAGE_NUM: process.env.AI_IMAGE_DEFAULT_IMAGE_NUM && !isNaN(Number(process.env.AI_IMAGE_DEFAULT_IMAGE_NUM))
+        ? process.env.AI_IMAGE_DEFAULT_IMAGE_NUM
+        : undefined,
     },
     server: {
       AI_IMAGE_DEFAULT_IMAGE_NUM: z.coerce
@@ -19,7 +21,8 @@ export const getImageConfig = () => {
           MAX_DEFAULT_IMAGE_NUM,
           `AI_IMAGE_DEFAULT_IMAGE_NUM must be at most ${MAX_DEFAULT_IMAGE_NUM}`,
         )
-        .optional(),
+        .optional()
+        .catch(undefined),
     },
   });
 };
