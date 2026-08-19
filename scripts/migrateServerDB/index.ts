@@ -37,8 +37,17 @@ const runMigrations = async () => {
 
 const connectionString = process.env.DATABASE_URL;
 
-// only migrate database if the connection string is available
-if (connectionString) {
+const isValidUrl = (url: string) => {
+  try {
+    new URL(url);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+// only migrate database if the connection string is available and valid
+if (connectionString && isValidUrl(connectionString)) {
   runMigrations().catch((err) => {
     console.error('❌ Database migrate failed:', err);
 
