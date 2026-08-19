@@ -14,9 +14,9 @@ import { DB_FAIL_INIT_HINT, DUPLICATE_EMAIL_HINT, PGVECTOR_HINT } from './errorH
 // 3. .env.[env].local (highest priority, overrides previous)
 // Use dotenv-expand to support ${var} variable expansion
 const env = process.env.NODE_ENV || 'development';
-dotenvExpand.expand(dotenv.config()); // Load .env
-dotenvExpand.expand(dotenv.config({ override: true, path: `.env.${env}` })); // Load .env.[env] and override
-dotenvExpand.expand(dotenv.config({ override: true, path: `.env.${env}.local` })); // Load .env.[env].local and override
+dotenvExpand.expand(dotenv.config({ path: `.env.${env}.local` })); // Load .env.[env].local first
+dotenvExpand.expand(dotenv.config({ path: `.env.${env}` })); // Load .env.[env]
+dotenvExpand.expand(dotenv.config()); // Load .env last
 
 const migrationsFolder = join(__dirname, '../../packages/database/migrations');
 
