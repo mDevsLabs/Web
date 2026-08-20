@@ -38,13 +38,30 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
   if (_migrationRan) return;
   _migrationRan = true;
   try {
+    await client`ALTER TABLE "Chat" DROP CONSTRAINT IF EXISTS "Chat_userId_fkey" CASCADE`;
+    await client`ALTER TABLE "Chat" DROP CONSTRAINT IF EXISTS "Chat_userId_User_id_fk" CASCADE`;
     await client`ALTER TABLE "Chat" ALTER COLUMN "userId" TYPE text USING "userId"::text`;
   } catch {}
   try {
+    await client`ALTER TABLE "Document" DROP CONSTRAINT IF EXISTS "Document_userId_fkey" CASCADE`;
+    await client`ALTER TABLE "Document" DROP CONSTRAINT IF EXISTS "Document_userId_User_id_fk" CASCADE`;
     await client`ALTER TABLE "Document" ALTER COLUMN "userId" TYPE text USING "userId"::text`;
   } catch {}
   try {
+    await client`ALTER TABLE "Suggestion" DROP CONSTRAINT IF EXISTS "Suggestion_userId_fkey" CASCADE`;
+    await client`ALTER TABLE "Suggestion" DROP CONSTRAINT IF EXISTS "Suggestion_userId_User_id_fk" CASCADE`;
     await client`ALTER TABLE "Suggestion" ALTER COLUMN "userId" TYPE text USING "userId"::text`;
+  } catch {}
+  try {
+    await client`ALTER TABLE "Message_v2" DROP CONSTRAINT IF EXISTS "Message_v2_chatId_fkey" CASCADE`;
+    await client`ALTER TABLE "Message_v2" ALTER COLUMN "id" TYPE text USING "id"::text`;
+  } catch {}
+  try {
+    await client`ALTER TABLE "Vote_v2" DROP CONSTRAINT IF EXISTS "Vote_v2_messageId_fkey" CASCADE`;
+    await client`ALTER TABLE "Vote_v2" ALTER COLUMN "messageId" TYPE text USING "messageId"::text`;
+  } catch {}
+  try {
+    await client`ALTER TABLE "Stream" ALTER COLUMN "id" TYPE text USING "id"::text`;
   } catch {}
 }
 

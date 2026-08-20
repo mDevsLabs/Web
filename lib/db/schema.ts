@@ -29,11 +29,12 @@ export const message = pgTable("Message_v2", {
     .notNull()
     .references(() => chat.id, { onDelete: "cascade" }),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
-  id: uuid("id").primaryKey().notNull().defaultRandom(),
+  id: text("id").primaryKey().notNull(),
   parts: json("parts").notNull(),
   role: varchar("role").notNull(),
 });
 
+export const DBMessage = message;
 export type DBMessage = InferSelectModel<typeof message>;
 
 export const vote = pgTable(
@@ -43,9 +44,7 @@ export const vote = pgTable(
       .notNull()
       .references(() => chat.id, { onDelete: "cascade" }),
     isUpvoted: boolean("isUpvoted").notNull(),
-    messageId: uuid("messageId")
-      .notNull()
-      .references(() => message.id, { onDelete: "cascade" }),
+    messageId: text("messageId").notNull(),
   },
   (table) => ({
     pk: primaryKey({ columns: [table.chatId, table.messageId] }),
@@ -104,7 +103,7 @@ export const stream = pgTable(
       .notNull()
       .references(() => chat.id, { onDelete: "cascade" }),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
-    id: uuid("id").notNull().defaultRandom(),
+    id: text("id").primaryKey().notNull(),
   },
   (table) => ({
     chatRef: foreignKey({
