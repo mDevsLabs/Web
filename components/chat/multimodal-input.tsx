@@ -683,14 +683,12 @@ const AttachmentsButton = memo(PureAttachmentsButton);
 
 function ModelSelectorOption({
   capabilities,
-  curated,
   model,
   onModelChange,
   selectedModelId,
   setOpen,
 }: {
   capabilities: Record<string, ModelCapabilities> | undefined;
-  curated: boolean;
   model: ChatModel;
   onModelChange?: (modelId: string) => void;
   selectedModelId: string;
@@ -698,10 +696,6 @@ function ModelSelectorOption({
 }) {
   const [logoProvider] = model.id.split("/");
   const maybeWithTooltip = (icon: ReactNode, label: string) => {
-    if (!curated) {
-      return icon;
-    }
-
     return (
       <Tooltip>
         <TooltipTrigger asChild>
@@ -713,33 +707,28 @@ function ModelSelectorOption({
       </Tooltip>
     );
   };
+
   const handleSelect = useCallback(() => {
-    if (!curated) {
-      return;
-    }
     onModelChange?.(model.id);
-    setCookie("chat-model", model.id);
+    document.cookie = `chat-model=${encodeURIComponent(model.id)}; path=/; max-age=31536000`;
     setOpen(false);
     setTimeout(() => {
       document
         .querySelector<HTMLTextAreaElement>("[data-testid='multimodal-input']")
         ?.focus();
     }, 50);
-  }, [curated, model.id, onModelChange, setOpen]);
+  }, [model.id, onModelChange, setOpen]);
 
-  const option = (
+  return (
     <ModelSelectorItem
-      aria-disabled={!curated}
       className={cn(
-        "flex w-full transition-colors",
+        "flex w-full cursor-pointer transition-colors text-[13px] py-2 px-2.5 rounded-lg",
         model.id === selectedModelId &&
-          "border-b border-dashed border-foreground/50",
-        curated
-          ? "data-[selected=true]:bg-muted data-[selected=true]:text-foreground"
-          : "cursor-not-allowed opacity-40 data-[selected=true]:bg-transparent data-[selected=true]:opacity-60 data-[selected=true]:ring-1 data-[selected=true]:ring-muted-foreground/30 data-[selected=true]:ring-inset"
+          "bg-muted/80 font-medium text-foreground",
+        "data-[selected=true]:bg-muted data-[selected=true]:text-foreground hover:bg-muted/50"
       )}
       onSelect={handleSelect}
-      value={model.id}
+      value={model.name + " " + model.id}
     >
       <ModelSelectorLogo provider={logoProvider} />
       <ModelSelectorName>{model.name}</ModelSelectorName>
@@ -762,24 +751,8 @@ function ModelSelectorOption({
               "Raisonnement avancé"
             )
           : null}
-        {!curated && <LockIcon className="size-3 text-muted-foreground/50" />}
       </div>
     </ModelSelectorItem>
-  );
-
-  if (curated) {
-    return option;
-  }
-
-  return (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <div className="w-full cursor-not-allowed">{option}</div>
-      </TooltipTrigger>
-      <TooltipContent side="right" sideOffset={8}>
-        This model is not available in the demo.
-      </TooltipContent>
-    </Tooltip>
   );
 }
 
@@ -794,116 +767,79 @@ function PureModelSelectorCompact({
   const { data: modelsData } = useSWR(
     `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models`,
     (url: string) => fetch(url).then((r) => r.json()),
-    { dedupingInterval: 3_600_000, revalidateOnFocus: false }
+    { dedupingInterval: 60_000, revalidateOnFocus: true }
   );
 
   const capabilities: Record<string, ModelCapabilities> | undefined =
-    modelsData?.capabilities ?? modelsData;
-  const dynamicModels: ChatModel[] | undefined = modelsData?.models;
-  const activeModels = dynamicModels ?? chatModels;
+    modelsData?.capabilities;
+  const models: ChatModel[] =
+    modelsData?.models && modelsData.models.length > 0
+      ? modelsData.models
+      : chatModels;
 
   const selectedModel =
-    activeModels.find((m: ChatModel) => m.id === selectedModelId) ??
-    activeModels.find((m: ChatModel) => m.id === DEFAULT_CHAT_MODEL) ??
-    activeModels[0];
-  const [provider] = selectedModel.id.split("/");
+    models.find((m: ChatModel) => m.id === selectedModelId) ??
+    models.find((m: ChatModel) => m.id === DEFAULT_CHAT_MODEL) ??
+    models[0];
+  const [provider] = (selectedModel?.id || DEFAULT_CHAT_MODEL).split("/");
+
+  // Regrouper par fournisseur
+  const grouped: Record<string, ChatModel[]> = {};
+  for (const m of models) {
+    const p = m.provider || "mAI";
+    if (!grouped[p]) {
+      grouped[p] = [];
+    }
+    grouped[p].push(m);
+  }
+
+  const providerNames: Record<string, string> = {
+    google: "Google",
+    "meta-llama": "Meta Llama",
+    deepseek: "DeepSeek",
+    qwen: "Qwen / Alibaba",
+    openai: "OpenAI",
+    anthropic: "Anthropic",
+    mistralai: "Mistral AI",
+    mistral: "Mistral AI",
+    cohere: "Cohere",
+    xai: "xAI",
+    mdevslabs: "mAI Exclusif",
+    mai: "mAI",
+  };
 
   return (
     <ModelSelector onOpenChange={setOpen} open={open}>
       <ModelSelectorTrigger asChild>
         <Button
-          className="h-7 max-w-[200px] justify-between gap-1.5 rounded-lg px-2 text-[12px] text-muted-foreground transition-colors hover:text-foreground"
+          className="h-7 max-w-[220px] justify-between gap-1.5 rounded-lg px-2 text-[12px] text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
           data-testid="model-selector"
           variant="ghost"
         >
           {provider ? <ModelSelectorLogo provider={provider} /> : null}
-          <ModelSelectorName>{selectedModel.name}</ModelSelectorName>
+          <ModelSelectorName>{selectedModel?.name || "Modèle IA"}</ModelSelectorName>
         </Button>
       </ModelSelectorTrigger>
-      <ModelSelectorContent commandDefaultValue={selectedModel.id}>
+      <ModelSelectorContent commandDefaultValue={selectedModel?.id}>
         <ModelSelectorInput placeholder="Rechercher un modèle..." />
         <ModelSelectorList>
-          {(() => {
-            const curatedIds = new Set(chatModels.map((m: ChatModel) => m.id));
-            const allModels = dynamicModels
-              ? [
-                  ...chatModels,
-                  ...dynamicModels.filter((m: ChatModel) => !curatedIds.has(m.id)),
-                ]
-              : chatModels;
-
-            const grouped: Record<
-              string,
-              { model: ChatModel; curated: boolean }[]
-            > = {};
-            for (const model of allModels) {
-              const key = curatedIds.has(model.id)
-                ? "_available"
-                : model.provider;
-              if (!grouped[key]) {
-                grouped[key] = [];
-              }
-              grouped[key].push({ curated: curatedIds.has(model.id), model });
-            }
-
-            const sortedKeys = Object.keys(grouped).sort((a, b) => {
-              if (a === "_available") {
-                return -1;
-              }
-              if (b === "_available") {
-                return 1;
-              }
-              return a.localeCompare(b);
-            });
-
-            const providerNames: Record<string, string> = {
-              alibaba: "Alibaba",
-              anthropic: "Anthropic",
-              "arcee-ai": "Arcee AI",
-              bytedance: "ByteDance",
-              cohere: "Cohere",
-              deepseek: "DeepSeek",
-              google: "Google",
-              inception: "Inception",
-              kwaipilot: "Kwaipilot",
-              meituan: "Meituan",
-              meta: "Meta",
-              minimax: "MiniMax",
-              mistral: "Mistral",
-              moonshotai: "Moonshot",
-              morph: "Morph",
-              nvidia: "Nvidia",
-              openai: "OpenAI",
-              perplexity: "Perplexity",
-              "prime-intellect": "Prime Intellect",
-              xai: "xAI",
-              xiaomi: "Xiaomi",
-              zai: "Zai",
-            };
-
-            return sortedKeys.map((key) => (
-              <ModelSelectorGroup
-                heading={
-                  key === "_available"
-                    ? "Modèles disponibles"
-                    : (providerNames[key] ?? key)
-                }
-                key={key}
-              >
-                {grouped[key].map(({ model, curated }) => (
-                  <ModelSelectorOption
-                    capabilities={capabilities}
-                    curated={curated}
-                    key={model.id}
-                    model={model}
-                    onModelChange={onModelChange}
-                    selectedModelId={selectedModel.id}
-                    setOpen={setOpen}
-                  />
-                ))}
-              </ModelSelectorGroup>
-            ));
-          })()}
+          {Object.entries(grouped).map(([groupKey, groupModels]) => (
+            <ModelSelectorGroup
+              heading={providerNames[groupKey.toLowerCase()] || groupKey.toUpperCase()}
+              key={groupKey}
+            >
+              {groupModels.map((model) => (
+                <ModelSelectorOption
+                  capabilities={capabilities}
+                  key={model.id}
+                  model={model}
+                  onModelChange={onModelChange}
+                  selectedModelId={selectedModel?.id}
+                  setOpen={setOpen}
+                />
+              ))}
+            </ModelSelectorGroup>
+          ))}
         </ModelSelectorList>
       </ModelSelectorContent>
     </ModelSelector>

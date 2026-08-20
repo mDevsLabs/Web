@@ -1,6 +1,14 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { MAI_API_URL } from "@/lib/constants";
-import { getMaiSessionToken } from "@/lib/auth/session";
+import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
+
+export const TIER_STORAGE_LIMITS: Record<string, number> = {
+  free: 500 * 1024 * 1024,      // 500 MO
+  gratuit: 500 * 1024 * 1024,
+  plus: 1024 * 1024 * 1024,     // 1 GB
+  pro: 2 * 1024 * 1024 * 1024,  // 2 GB
+  max: 5 * 1024 * 1024 * 1024,  // 5 GB
+};
 
 export async function GET() {
   const token = await getMaiSessionToken();
@@ -9,7 +17,8 @@ export async function GET() {
   }
 
   try {
-    const [storageRes, filesRes] = await Promise.all([
+    const [user, storageRes, filesRes] = await Promise.all([
+      getMaiUser(token),
       fetch(`${MAI_API_URL}/cloud/storage`, {
         headers: { Authorization: `Bearer ${token}` },
         cache: "no-store",
@@ -23,8 +32,24 @@ export async function GET() {
     const storageData = storageRes.ok ? await storageRes.json() : null;
     const filesData = filesRes.ok ? await filesRes.json() : { files: [] };
 
+    const userTier = (user?.tier || storageData?.tier || "Free").trim();
+    const tierKey = userTier.toLowerCase();
+    const exactLimit = TIER_STORAGE_LIMITS[tierKey] || TIER_STORAGE_LIMITS.free;
+
+    const bytesUsed = Number(storageData?.bytes_used || 0);
+    const percentUsed = exactLimit > 0 ? Math.min(100, Math.round((bytesUsed / exactLimit) * 10000) / 100) : 0;
+
+    const finalStorage = {
+      bytes_limit: exactLimit,
+      bytes_used: bytesUsed,
+      files_count: Number(storageData?.files_count || (filesData?.files?.length ?? 0)),
+      over_limit: bytesUsed >= exactLimit,
+      percent_used: percentUsed,
+      tier: userTier,
+    };
+
     return NextResponse.json({
-      storage: storageData,
+      storage: finalStorage,
       files: filesData.files || [],
     });
   } catch (error) {

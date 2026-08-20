@@ -17,9 +17,13 @@ export type MaiUser = {
 };
 
 export async function getMaiSessionToken(): Promise<string | null> {
-  const cookieStore = await cookies();
-  const token = cookieStore.get(MAI_SESSION_COOKIE)?.value;
-  return token || null;
+  try {
+    const cookieStore = await cookies();
+    const token = cookieStore.get(MAI_SESSION_COOKIE)?.value;
+    return token || null;
+  } catch {
+    return null;
+  }
 }
 
 export async function setMaiSessionToken(token: string) {

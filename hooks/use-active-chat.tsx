@@ -9,6 +9,7 @@ import {
   type Dispatch,
   type ReactNode,
   type SetStateAction,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -75,9 +76,28 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
 
   const [currentModelId, setCurrentModelId] = useState(DEFAULT_CHAT_MODEL);
   const currentModelIdRef = useRef(currentModelId);
+
+  const handleModelChange = useCallback((id: string) => {
+    setCurrentModelId(id);
+    currentModelIdRef.current = id;
+    if (typeof document !== "undefined") {
+      document.cookie = `chat-model=${encodeURIComponent(id)}; path=/; max-age=31536000`;
+    }
+  }, []);
+
   useEffect(() => {
-    currentModelIdRef.current = currentModelId;
-  }, [currentModelId]);
+    if (typeof document !== "undefined") {
+      const cookieModel = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("chat-model="))
+        ?.split("=")[1];
+      if (cookieModel) {
+        const decoded = decodeURIComponent(cookieModel);
+        setCurrentModelId(decoded);
+        currentModelIdRef.current = decoded;
+      }
+    }
+  }, []);
 
   const [input, setInput] = useState("");
   const [showCreditCardAlert, setShowCreditCardAlert] = useState(false);
@@ -265,7 +285,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       messages,
       regenerate,
       sendMessage,
-      setCurrentModelId,
+      setCurrentModelId: handleModelChange,
       setInput,
       setMessages,
       setShowCreditCardAlert,
