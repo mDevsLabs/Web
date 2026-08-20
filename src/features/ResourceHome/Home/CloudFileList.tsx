@@ -19,7 +19,7 @@ const { Text } = Typography;
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
-const useStyles = createStaticStyles(({ css }) => ({
+const styles = createStaticStyles(({ css }) => ({
   deleteBtn: css`
     opacity: 0;
     transition: opacity 0.15s ease;
@@ -95,7 +95,6 @@ interface FileRowProps {
 }
 
 const FileRow = memo(({ file, isDeleting, onDelete }: FileRowProps) => {
-  const styles = useStyles();
   const timeAgo = dayjs(file.uploaded_at).fromNow();
 
   return (
@@ -143,7 +142,6 @@ FileRow.displayName = 'FileRow';
 // ─── CloudFileList ────────────────────────────────────────────────────────────
 
 const CloudFileList = memo(() => {
-  const styles = useStyles();
   const { message } = App.useApp();
   const inputRef = useRef<HTMLInputElement>(null);
 

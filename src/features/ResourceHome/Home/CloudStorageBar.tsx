@@ -12,7 +12,7 @@ const { Text } = Typography;
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
-const useStyles = createStaticStyles(({ css }) => ({
+const styles = createStaticStyles(({ css }) => ({
   badge: css`
     display: inline-block;
     padding: 2px 8px;
@@ -62,7 +62,6 @@ function getProgressColor(percent: number, overLimit: boolean): string {
 // ─── Composant ────────────────────────────────────────────────────────────────
 
 const CloudStorageBar = memo(() => {
-  const styles = useStyles();
   const { error, loading, storage } = useCloudStorageStore((s) => ({
     error: s.error,
     loading: s.loading,
