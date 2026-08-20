@@ -1,4 +1,4 @@
-import { auth } from "@/app/(auth)/auth";
+import { getMaiUser } from "@/lib/auth/session";
 import { getSuggestionsByDocumentId } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 
@@ -13,9 +13,9 @@ export async function GET(request: Request) {
     ).toResponse();
   }
 
-  const session = await auth();
+  const maiUser = await getMaiUser();
 
-  if (!session?.user) {
+  if (!maiUser) {
     return new ChatbotError("unauthorized:suggestions").toResponse();
   }
 
@@ -29,7 +29,8 @@ export async function GET(request: Request) {
     return Response.json([], { status: 200 });
   }
 
-  if (suggestion.userId !== session.user.id) {
+  const userId = maiUser.id || maiUser.email;
+  if (suggestion.userId !== userId && suggestion.userId !== maiUser.email) {
     return new ChatbotError("forbidden:api").toResponse();
   }
 

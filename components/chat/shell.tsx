@@ -22,11 +22,15 @@ import { cn } from "@/lib/utils";
 import { Artifact } from "./artifact";
 import { ChatHeader } from "./chat-header";
 import { DataStreamHandler } from "./data-stream-handler";
+import { usePathname } from "next/navigation";
 import { submitEditedMessage } from "./message-editor";
 import { Messages } from "./messages";
 import { MultimodalInput } from "./multimodal-input";
 
 export function ChatShell() {
+  const pathname = usePathname();
+  const isChatRoute = pathname === "/" || pathname?.startsWith("/chat");
+
   const {
     chatId,
     messages,
@@ -109,6 +113,10 @@ export function ChatShell() {
     );
     window.location.href = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/`;
   }, []);
+
+  if (!isChatRoute) {
+    return null;
+  }
 
   return (
     <>

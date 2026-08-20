@@ -1,6 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { getToken } from "next-auth/jwt";
-import { guestRegex, isDevelopmentEnvironment } from "./lib/constants";
+import { MAI_SESSION_COOKIE } from "./lib/constants";
 
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -9,29 +8,38 @@ export async function proxy(request: NextRequest) {
     return new Response("pong", { status: 200 });
   }
 
-  if (pathname.startsWith("/api/auth")) {
+  // Routes publiques autorisées
+  const isAuthRoute = pathname.startsWith("/login") || pathname.startsWith("/register");
+  const isStaticRoute =
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/api/auth") ||
+    pathname.startsWith("/favicon.ico") ||
+    pathname.startsWith("/logo.png") ||
+    pathname.startsWith("/images") ||
+    pathname.endsWith(".png") ||
+    pathname.endsWith(".svg") ||
+    pathname.endsWith(".ico");
+
+  if (isStaticRoute) {
     return NextResponse.next();
   }
 
-  const token = await getToken({
-    req: request,
-    secret: process.env.AUTH_SECRET,
-    secureCookie: !isDevelopmentEnvironment,
-  });
-
+  const token = request.cookies.get(MAI_SESSION_COOKIE)?.value;
   const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
+  // 1. Utilisateur non authentifié tentant d'accéder à une route privée
   if (!token) {
+    if (isAuthRoute) {
+      return NextResponse.next();
+    }
     const redirectUrl = encodeURIComponent(new URL(request.url).pathname);
-
     return NextResponse.redirect(
-      new URL(`${base}/api/auth/guest?redirectUrl=${redirectUrl}`, request.url)
+      new URL(`${base}/login?redirectUrl=${redirectUrl}`, request.url)
     );
   }
 
-  const isGuest = guestRegex.test(token?.email ?? "");
-
-  if (token && !isGuest && ["/login", "/register"].includes(pathname)) {
+  // 2. Utilisateur déjà authentifié tentant d'aller sur /login ou /register
+  if (token && isAuthRoute) {
     return NextResponse.redirect(new URL(`${base}/`, request.url));
   }
 
@@ -41,11 +49,12 @@ export async function proxy(request: NextRequest) {
 export const config = {
   matcher: [
     "/",
-    "/chat/:id",
+    "/chat/:id*",
+    "/settings",
+    "/library",
     "/api/:path*",
     "/login",
     "/register",
-
     "/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
   ],
 };

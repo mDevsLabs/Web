@@ -1,19 +1,22 @@
-import Form from "next/form";
+"use client";
 
-import { signOut } from "@/app/(auth)/auth";
+import { logoutAction } from "@/app/(auth)/actions";
+import { useRouter } from "next/navigation";
 
-async function signOutAction() {
-  "use server";
+export const SignOutForm = () => {
+  const router = useRouter();
 
-  await signOut({
-    redirectTo: "/",
-  });
-}
+  const handleLogout = async () => {
+    await logoutAction();
+    router.push("/login");
+    router.refresh();
+  };
 
-export const SignOutForm = () => (
-  <Form action={signOutAction} className="w-full">
-    <button className="w-full px-1 py-0.5 text-left text-red-500" type="submit">
-      Sign out
-    </button>
-  </Form>
-);
+  return (
+    <form action={handleLogout} className="w-full">
+      <button className="w-full px-1 py-0.5 text-left text-red-500 text-xs font-medium cursor-pointer" type="submit">
+        Se déconnecter
+      </button>
+    </form>
+  );
+};

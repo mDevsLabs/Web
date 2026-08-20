@@ -1,5 +1,5 @@
 import type { NextRequest } from "next/server";
-import { auth } from "@/app/(auth)/auth";
+import { getMaiUser } from "@/lib/auth/session";
 import { deleteAllChatsByUserId, getChatsByUserId } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 
@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
 
   const limit = Math.min(
-    Math.max(Number.parseInt(searchParams.get("limit") || "10", 10), 1),
+    Math.max(Number.parseInt(searchParams.get("limit") || "20", 10), 1),
     50
   );
   const startingAfter = searchParams.get("starting_after");
@@ -20,15 +20,17 @@ export async function GET(request: NextRequest) {
     ).toResponse();
   }
 
-  const session = await auth();
+  const user = await getMaiUser();
 
-  if (!session?.user) {
+  if (!user) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
 
+  const userId = user.id || user.email;
+
   const chats = await getChatsByUserId({
     endingBefore,
-    id: session.user.id,
+    id: userId,
     limit,
     startingAfter,
   });
@@ -37,13 +39,14 @@ export async function GET(request: NextRequest) {
 }
 
 export async function DELETE() {
-  const session = await auth();
+  const user = await getMaiUser();
 
-  if (!session?.user) {
+  if (!user) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
 
-  const result = await deleteAllChatsByUserId({ userId: session.user.id });
+  const userId = user.id || user.email;
+  const result = await deleteAllChatsByUserId({ userId });
 
   return Response.json(result, { status: 200 });
 }

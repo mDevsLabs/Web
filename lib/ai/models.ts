@@ -1,13 +1,3 @@
-export const DEFAULT_CHAT_MODEL = "moonshotai/kimi-k2.5";
-
-export const titleModel = {
-  description: "Fast model for title generation",
-  gatewayOrder: ["fireworks", "bedrock"],
-  id: "moonshotai/kimi-k2.5",
-  name: "Kimi K2.5",
-  provider: "moonshotai",
-};
-
 export type ModelCapabilities = {
   tools: boolean;
   vision: boolean;
@@ -19,211 +9,99 @@ export type ChatModel = {
   name: string;
   provider: string;
   description: string;
-  gatewayOrder?: string[];
-  reasoningEffort?: "none" | "minimal" | "low" | "medium" | "high";
+  maxContext?: number;
+  maxOutput?: number;
+  isFree?: boolean;
 };
 
-export const chatModels: ChatModel[] = [
+export const DEFAULT_CHAT_MODEL = "google/gemini-2.5-flash:free";
+
+export const titleModel = {
+  description: "Modèle rapide pour la génération de titres",
+  id: "google/gemini-2.5-flash:free",
+  name: "Gemini 2.5 Flash",
+  provider: "google",
+};
+
+export const FALLBACK_MODELS: ChatModel[] = [
   {
-    description: "Fast and capable model with tool use",
-    gatewayOrder: ["bedrock", "deepinfra"],
-    id: "deepseek/deepseek-v3.2",
-    name: "DeepSeek V3.2",
+    id: "google/gemini-2.5-flash:free",
+    name: "Gemini 2.5 Flash",
+    provider: "google",
+    description: "Modèle multimodal ultra-rapide de Google",
+    isFree: true,
+  },
+  {
+    id: "meta-llama/llama-3.3-70b-instruct:free",
+    name: "Llama 3.3 70B",
+    provider: "meta-llama",
+    description: "Modèle open-source de pointe par Meta",
+    isFree: true,
+  },
+  {
+    id: "deepseek/deepseek-r1:free",
+    name: "DeepSeek R1",
     provider: "deepseek",
+    description: "Modèle de raisonnement avancé DeepSeek",
+    isFree: true,
   },
   {
-    description: "Moonshot AI flagship model",
-    gatewayOrder: ["fireworks", "bedrock"],
-    id: "moonshotai/kimi-k2.5",
-    name: "Kimi K2.5",
-    provider: "moonshotai",
-  },
-  {
-    description: "Compact reasoning model",
-    gatewayOrder: ["groq", "bedrock"],
-    id: "openai/gpt-oss-20b",
-    name: "GPT OSS 20B",
-    provider: "openai",
-    reasoningEffort: "low",
-  },
-  {
-    description: "Open-source 120B parameter model",
-    gatewayOrder: ["fireworks", "bedrock"],
-    id: "openai/gpt-oss-120b",
-    name: "GPT OSS 120B",
-    provider: "openai",
-    reasoningEffort: "low",
-  },
-  {
-    description: "Fast non-reasoning model with tool use",
-    gatewayOrder: ["xai"],
-    id: "xai/grok-4.1-fast-non-reasoning",
-    name: "Grok 4.1 Fast",
-    provider: "xai",
+    id: "qwen/qwen-2.5-coder-32b-instruct:free",
+    name: "Qwen 2.5 Coder 32B",
+    provider: "qwen",
+    description: "Spécialisé pour le code et le développement",
+    isFree: true,
   },
 ];
 
-export async function getCapabilities(): Promise<
-  Record<string, ModelCapabilities>
-> {
-  const results = await Promise.all(
-    chatModels.map(async (model) => {
-      try {
-        const res = await fetch(
-          `https://ai-gateway.vercel.sh/v1/models/${model.id}/endpoints`,
-          { next: { revalidate: 86_400 } }
-        );
-        if (!res.ok) {
-          return [model.id, { reasoning: false, tools: false, vision: false }];
-        }
+export const chatModels = FALLBACK_MODELS;
+export const allowedModelIds = new Set(FALLBACK_MODELS.map((m) => m.id));
 
-        const json = await res.json();
-        const endpoints = json.data?.endpoints ?? [];
-        const params = new Set(
-          endpoints.flatMap(
-            (e: { supported_parameters?: string[] }) =>
-              e.supported_parameters ?? []
-          )
-        );
-        const inputModalities = new Set(
-          json.data?.architecture?.input_modalities ?? []
-        );
+export function formatModelName(modelId: string): { name: string; provider: string; isFree: boolean } {
+  const parts = modelId.split("/");
+  const provider = parts.length > 1 ? parts[0] : "mAI";
+  const rawName = parts.length > 1 ? parts.slice(1).join("/") : modelId;
+  const isFree = modelId.toLowerCase().includes("free");
 
-        return [
-          model.id,
-          {
-            reasoning: params.has("reasoning"),
-            tools: params.has("tools"),
-            vision: inputModalities.has("image"),
-          },
-        ];
-      } catch {
-        return [model.id, { reasoning: false, tools: false, vision: false }];
-      }
-    })
-  );
+  let cleanName = rawName.replace(/:free/gi, "").trim();
 
-  return Object.fromEntries(results);
-}
-
-export const isDemo = process.env.IS_DEMO === "1";
-
-type GatewayModel = {
-  id: string;
-  name: string;
-  type?: string;
-  tags?: string[];
-};
-
-export type GatewayModelWithCapabilities = ChatModel & {
-  capabilities: ModelCapabilities;
-};
-
-export async function getAllGatewayModels(): Promise<
-  GatewayModelWithCapabilities[]
-> {
-  try {
-    const res = await fetch("https://ai-gateway.vercel.sh/v1/models", {
-      next: { revalidate: 86_400 },
-    });
-    if (!res.ok) {
-      return [];
-    }
-
-    const json = await res.json();
-    return (json.data ?? [])
-      .filter((m: GatewayModel) => m.type === "language")
-      .map((m: GatewayModel) => ({
-        capabilities: {
-          reasoning: m.tags?.includes("reasoning") ?? false,
-          tools: m.tags?.includes("tool-use") ?? false,
-          vision: m.tags?.includes("vision") ?? false,
-        },
-        description: "",
-        id: m.id,
-        name: m.name,
-        provider: m.id.split("/")[0],
-      }));
-  } catch {
-    return [];
-  }
-}
-
-export function getActiveModels(): ChatModel[] {
-  return chatModels;
-}
-
-export const allowedModelIds = new Set(chatModels.map((m) => m.id));
-
-export const modelsByProvider = chatModels.reduce(
-  (acc, model) => {
-    if (!acc[model.provider]) {
-      acc[model.provider] = [];
-    }
-    acc[model.provider].push(model);
-    return acc;
-  },
-  {} as Record<string, ChatModel[]>
-);
-
-export type ModelAvailability = "healthy" | "impacted" | "unknown";
-
-type GatewayEndpoint = {
-  provider_name?: string;
-  status?: number;
-  uptime_last_15m?: number;
-  uptime_last_1h?: number;
-  latency_last_1h?: {
-    p50?: number;
-    p95?: number;
+  // Mappings élégants des modèles courants
+  const nameMap: Record<string, string> = {
+    "gemini-2.5-flash": "Gemini 2.5 Flash",
+    "gemini-2.0-flash": "Gemini 2.0 Flash",
+    "gemini-1.5-flash": "Gemini 1.5 Flash",
+    "gemini-1.5-pro": "Gemini 1.5 Pro",
+    "llama-3.3-70b-instruct": "Llama 3.3 70B Instruct",
+    "llama-3.1-70b-instruct": "Llama 3.1 70B Instruct",
+    "llama-3.1-8b-instruct": "Llama 3.1 8B Instruct",
+    "deepseek-r1": "DeepSeek R1 (Raisonnement)",
+    "deepseek-v3": "DeepSeek V3",
+    "deepseek-chat": "DeepSeek Chat",
+    "qwen-2.5-coder-32b-instruct": "Qwen 2.5 Coder 32B",
+    "qwen-2.5-72b-instruct": "Qwen 2.5 72B Instruct",
+    "gpt-4o": "GPT-4o",
+    "gpt-4o-mini": "GPT-4o Mini",
+    "o1-preview": "OpenAI o1 Preview",
+    "o1-mini": "OpenAI o1 Mini",
+    "claude-3-5-sonnet": "Claude 3.5 Sonnet",
+    "claude-3-5-haiku": "Claude 3.5 Haiku",
+    "mistral-large": "Mistral Large",
+    "mistral-small": "Mistral Small",
+    "mixtral-8x7b-instruct": "Mixtral 8x7B",
   };
-};
 
-const PROVIDER_IMPACTED_UPTIME_THRESHOLD = 99;
-const PROVIDER_IMPACTED_P50_MS = 10_000;
-const PROVIDER_IMPACTED_P95_MS = 30_000;
-
-function isEndpointImpacted(endpoint: GatewayEndpoint) {
-  return (
-    (endpoint.status !== undefined && endpoint.status !== 0) ||
-    (endpoint.uptime_last_15m !== undefined &&
-      endpoint.uptime_last_15m < PROVIDER_IMPACTED_UPTIME_THRESHOLD) ||
-    (endpoint.uptime_last_1h !== undefined &&
-      endpoint.uptime_last_1h < PROVIDER_IMPACTED_UPTIME_THRESHOLD) ||
-    (endpoint.latency_last_1h?.p50 !== undefined &&
-      endpoint.latency_last_1h.p50 > PROVIDER_IMPACTED_P50_MS) ||
-    (endpoint.latency_last_1h?.p95 !== undefined &&
-      endpoint.latency_last_1h.p95 > PROVIDER_IMPACTED_P95_MS)
-  );
-}
-
-export async function getModelAvailability(
-  modelId: string
-): Promise<ModelAvailability> {
-  const model = chatModels.find((item) => item.id === modelId);
-
-  if (!model) {
-    return "unknown";
+  if (nameMap[cleanName.toLowerCase()]) {
+    cleanName = nameMap[cleanName.toLowerCase()];
+  } else {
+    cleanName = cleanName
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
   }
 
-  try {
-    const res = await fetch(
-      `https://ai-gateway.vercel.sh/v1/models/${model.id}/endpoints`,
-      { next: { revalidate: 60 } }
-    );
-    if (!res.ok) {
-      return "unknown";
-    }
-
-    const json = await res.json();
-    const endpoints = (json.data?.endpoints ?? []) as GatewayEndpoint[];
-
-    if (endpoints.length === 0) {
-      return "unknown";
-    }
-
-    return endpoints.some(isEndpointImpacted) ? "impacted" : "healthy";
-  } catch {
-    return "unknown";
-  }
+  return {
+    name: cleanName + (isFree ? " (Gratuit)" : ""),
+    provider,
+    isFree,
+  };
 }

@@ -538,7 +538,7 @@ function PureMultimodalInput({
           onChange={handleInput}
           onKeyDown={handleTextareaKeyDown}
           placeholder={
-            editingMessage ? "Edit your message..." : "Ask anything..."
+            editingMessage ? "Modifier votre message..." : "Poser une question à mAI..."
           }
           ref={textareaRef}
           value={input}
@@ -747,19 +747,19 @@ function ModelSelectorOption({
         {capabilities?.[model.id]?.tools
           ? maybeWithTooltip(
               <WrenchIcon className="size-3.5" />,
-              "Supports tool use"
+              "Outils supportés"
             )
           : null}
         {capabilities?.[model.id]?.vision
           ? maybeWithTooltip(
               <EyeIcon className="size-3.5" />,
-              "Supports vision"
+              "Vision / Images supportées"
             )
           : null}
         {capabilities?.[model.id]?.reasoning
           ? maybeWithTooltip(
               <BrainIcon className="size-3.5" />,
-              "Supports reasoning"
+              "Raisonnement avancé"
             )
           : null}
         {!curated && <LockIcon className="size-3 text-muted-foreground/50" />}
@@ -821,14 +821,14 @@ function PureModelSelectorCompact({
         </Button>
       </ModelSelectorTrigger>
       <ModelSelectorContent commandDefaultValue={selectedModel.id}>
-        <ModelSelectorInput placeholder="Search models..." />
+        <ModelSelectorInput placeholder="Rechercher un modèle..." />
         <ModelSelectorList>
           {(() => {
-            const curatedIds = new Set(chatModels.map((m) => m.id));
+            const curatedIds = new Set(chatModels.map((m: ChatModel) => m.id));
             const allModels = dynamicModels
               ? [
                   ...chatModels,
-                  ...dynamicModels.filter((m) => !curatedIds.has(m.id)),
+                  ...dynamicModels.filter((m: ChatModel) => !curatedIds.has(m.id)),
                 ]
               : chatModels;
 
@@ -885,7 +885,7 @@ function PureModelSelectorCompact({
               <ModelSelectorGroup
                 heading={
                   key === "_available"
-                    ? "Available"
+                    ? "Modèles disponibles"
                     : (providerNames[key] ?? key)
                 }
                 key={key}

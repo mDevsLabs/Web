@@ -11,14 +11,10 @@ import {
 import { checkBotId } from "botid/server";
 import { after } from "next/server";
 import { createResumableStreamContext } from "resumable-stream";
-import { auth, type UserType } from "@/app/(auth)/auth";
-import { entitlementsByUserType } from "@/lib/ai/entitlements";
+import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
+import { getUserApiKey } from "@/lib/db/api-keys";
 import {
-  allowedModelIds,
-  chatModels,
   DEFAULT_CHAT_MODEL,
-  getCapabilities,
-  getModelAvailability,
 } from "@/lib/ai/models";
 import { type RequestHints, systemPrompt } from "@/lib/ai/prompts";
 import { getLanguageModel } from "@/lib/ai/providers";
@@ -27,12 +23,11 @@ import { editDocument } from "@/lib/ai/tools/edit-document";
 import { getWeather } from "@/lib/ai/tools/get-weather";
 import { requestSuggestions } from "@/lib/ai/tools/request-suggestions";
 import { updateDocument } from "@/lib/ai/tools/update-document";
-import { isProductionEnvironment } from "@/lib/constants";
+import { isProductionEnvironment, MAI_API_URL } from "@/lib/constants";
 import {
   createStreamId,
   deleteChatById,
   getChatById,
-  getMessageCountByUserId,
   getMessagesByChatId,
   saveChat,
   saveMessages,
@@ -48,8 +43,6 @@ import { generateTitleFromUserMessage } from "../../actions";
 import { type PostRequestBody, postRequestBodySchema } from "./schema";
 
 export const maxDuration = 60;
-
-const HEALTH_CHECK_DELAY_MS = 9000;
 
 function isModelStreamActivity(chunk: { type: string }) {
   return !["start", "start-step", "finish-step", "finish", "raw"].includes(
@@ -81,52 +74,59 @@ export async function POST(request: Request) {
     const { id, message, messages, selectedChatModel, selectedVisibilityType } =
       requestBody;
 
-    const [botIdResult, session] = await Promise.all([
+    const [botIdResult, sessionToken, maiUser] = await Promise.all([
       checkBotId().catch(() => null),
-      auth(),
+      getMaiSessionToken(),
+      getMaiUser(),
     ]);
 
     if (botIdResult?.isBot) {
       return new ChatbotError("forbidden:api").toResponse();
     }
 
-    if (!session?.user) {
+    if (!sessionToken || !maiUser) {
       return new ChatbotError("unauthorized:chat").toResponse();
     }
 
-    const chatModel = allowedModelIds.has(selectedChatModel)
-      ? selectedChatModel
-      : DEFAULT_CHAT_MODEL;
+    // 1. Vérification du quota hebdomadaire
+    if (maiUser.tokensUsed >= maiUser.limit) {
+      return new Response(
+        JSON.stringify({
+          error: "Votre limite hebdomadaire de tokens est atteinte. Veuillez mettre à niveau votre forfait sur https://mai-devs.vercel.app pour continuer.",
+          over_limit: true,
+          limit: maiUser.limit,
+          used: maiUser.tokensUsed,
+        }),
+        {
+          status: 429,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+    }
 
     await checkIpRateLimit(ipAddress(request));
 
-    const userType: UserType = session.user.type;
-
-    const messageCount = await getMessageCountByUserId({
-      differenceInHours: 1,
-      id: session.user.id,
-    });
-
-    if (messageCount > entitlementsByUserType[userType].maxMessagesPerHour) {
-      return new ChatbotError("rate_limit:chat").toResponse();
-    }
-
+    const chatModel = selectedChatModel || DEFAULT_CHAT_MODEL;
     const isToolApprovalFlow = Boolean(messages);
+    const userId = maiUser.id || maiUser.email;
+
+    // Récupérer la clé API Neon du compte
+    const userApiKey = maiUser.id ? await getUserApiKey(maiUser.id) : null;
 
     const chat = await getChatById({ id });
     let messagesFromDb: DBMessage[] = [];
     let titlePromise: Promise<string> | null = null;
 
     if (chat) {
-      if (chat.userId !== session.user.id) {
+      if (chat.userId !== userId && chat.userId !== maiUser.email) {
         return new ChatbotError("forbidden:chat").toResponse();
       }
       messagesFromDb = await getMessagesByChatId({ id });
     } else if (message?.role === "user") {
       await saveChat({
         id,
-        title: "New chat",
-        userId: session.user.id,
+        title: "Nouvelle discussion",
+        userId,
         visibility: selectedVisibilityType,
       });
       titlePromise = generateTitleFromUserMessage({ message });
@@ -194,113 +194,49 @@ export async function POST(request: Request) {
       });
     }
 
-    const modelConfig = chatModels.find((m) => m.id === chatModel);
-    const modelCapabilities = await getCapabilities();
-    const capabilities = modelCapabilities[chatModel];
-    const isReasoningModel = capabilities?.reasoning === true;
-    const supportsTools = capabilities?.tools === true;
-
     const modelMessages = await convertToModelMessages(uiMessages);
+
+    // Initialiser le modèle de langage mAI
+    const model = getLanguageModel(chatModel, {
+      apiKey: userApiKey,
+      sessionToken,
+      userId: maiUser.id,
+    });
 
     const stream = createUIMessageStream({
       execute: async ({ writer: dataStream }) => {
-        const modelName = modelConfig?.name ?? chatModel;
         let hasModelActivity = false;
-        let healthCheckTimer: ReturnType<typeof setTimeout> | undefined;
 
-        const clearHealthCheckTimer = () => {
-          if (healthCheckTimer) {
-            clearTimeout(healthCheckTimer);
-          }
-        };
-
-        const writeWaitingStatus = (
-          phase: WaitingStatusData["phase"],
-          messageText: string
-        ) => {
-          if (hasModelActivity && phase !== "thinking") {
-            return;
-          }
+        const markModelActive = () => {
+          if (hasModelActivity) return;
+          hasModelActivity = true;
           dataStream.write({
             data: {
-              message: messageText,
+              message: "Génération en cours...",
               modelId: chatModel,
-              modelName,
-              phase,
+              modelName: chatModel,
+              phase: "thinking",
             },
             transient: true,
             type: "data-waiting-status",
           });
         };
 
-        writeWaitingStatus("waiting", "Waiting...");
-
-        healthCheckTimer = setTimeout(() => {
-          getModelAvailability(chatModel)
-            .then((availability) => {
-              if (availability === "impacted") {
-                writeWaitingStatus(
-                  "health",
-                  `${modelName} may be slow or unavailable right now...`
-                );
-              } else {
-                writeWaitingStatus("still-waiting", "Still waiting...");
-              }
-            })
-            .catch(() => {
-              writeWaitingStatus("still-waiting", "Still waiting...");
-            });
-        }, HEALTH_CHECK_DELAY_MS);
-
-        const markModelActive = () => {
-          if (hasModelActivity) {
-            return;
-          }
-          hasModelActivity = true;
-          clearHealthCheckTimer();
-          writeWaitingStatus("thinking", "Thinking...");
-        };
-
-        const stopWaitingStatus = () => {
-          hasModelActivity = true;
-          clearHealthCheckTimer();
-        };
-
         const result = streamText({
-          activeTools:
-            isReasoningModel && !supportsTools
-              ? []
-              : [
-                  "getWeather",
-                  "createDocument",
-                  "editDocument",
-                  "updateDocument",
-                  "requestSuggestions",
-                ],
-          instructions: systemPrompt({ requestHints, supportsTools }),
+          activeTools: [
+            "getWeather",
+            "createDocument",
+            "editDocument",
+            "updateDocument",
+            "requestSuggestions",
+          ],
+          instructions: systemPrompt({ requestHints, supportsTools: true }),
           messages: modelMessages,
-          model: getLanguageModel(chatModel),
-          onAbort() {
-            stopWaitingStatus();
-          },
+          model,
           onChunk({ chunk }) {
             if (isModelStreamActivity(chunk)) {
               markModelActive();
             }
-          },
-          onEnd() {
-            stopWaitingStatus();
-          },
-          onError() {
-            stopWaitingStatus();
-          },
-          providerOptions: {
-            ...(modelConfig?.gatewayOrder && {
-              gateway: { order: modelConfig.gatewayOrder },
-            }),
-            ...(modelConfig?.reasoningEffort && {
-              openai: { reasoningEffort: modelConfig.reasoningEffort },
-            }),
           },
           stopWhen: isStepCount(5),
           telemetry: {
@@ -311,26 +247,50 @@ export async function POST(request: Request) {
             createDocument: createDocument({
               dataStream,
               modelId: chatModel,
-              session,
+              session: { user: { id: userId, email: maiUser.email } } as any,
             }),
-            editDocument: editDocument({ dataStream, session }),
+            editDocument: editDocument({
+              dataStream,
+              session: { user: { id: userId, email: maiUser.email } } as any,
+            }),
             getWeather,
             requestSuggestions: requestSuggestions({
               dataStream,
               modelId: chatModel,
-              session,
+              session: { user: { id: userId, email: maiUser.email } } as any,
             }),
             updateDocument: updateDocument({
               dataStream,
               modelId: chatModel,
-              session,
+              session: { user: { id: userId, email: maiUser.email } } as any,
             }),
+          },
+          onFinish: async ({ usage }) => {
+            // Décompte précis des tokens (entrée + sortie additionnés)
+            const inputTokens = (usage as any)?.inputTokens ?? (usage as any)?.promptTokens ?? 0;
+            const outputTokens = (usage as any)?.outputTokens ?? (usage as any)?.completionTokens ?? 0;
+            const totalTokens = (usage as any)?.totalTokens ?? (inputTokens + outputTokens);
+
+            if (totalTokens > 0) {
+              try {
+                await fetch(`${MAI_API_URL}/log-usage`, {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${sessionToken}`,
+                  },
+                  body: JSON.stringify({ tokensUsed: totalTokens }),
+                });
+              } catch (logErr) {
+                console.error("Erreur décompte log-usage:", logErr);
+              }
+            }
           },
         });
 
         dataStream.merge(
           toUIMessageStream({
-            sendReasoning: isReasoningModel,
+            sendReasoning: true,
             stream: result.stream,
           })
         );
@@ -389,15 +349,8 @@ export async function POST(request: Request) {
         }
       },
       onError: (error) => {
-        if (
-          error instanceof Error &&
-          error.message?.includes(
-            "AI Gateway requires a valid credit card on file to service requests"
-          )
-        ) {
-          return "AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.";
-        }
-        return "Oops, an error occurred!";
+        console.error("Erreur Stream AI:", error);
+        return "Une erreur est survenue lors de la génération de la réponse.";
       },
       originalMessages: isToolApprovalFlow ? uiMessages : undefined,
     });
@@ -424,22 +377,10 @@ export async function POST(request: Request) {
       stream,
     });
   } catch (error) {
-    const vercelId = request.headers.get("x-vercel-id");
-
     if (error instanceof ChatbotError) {
       return error.toResponse();
     }
-
-    if (
-      error instanceof Error &&
-      error.message?.includes(
-        "AI Gateway requires a valid credit card on file to service requests"
-      )
-    ) {
-      return new ChatbotError("bad_request:activate_gateway").toResponse();
-    }
-
-    console.error("Unhandled error in chat API:", error, { vercelId });
+    console.error("Unhandled error in chat API:", error);
     return new ChatbotError("offline:chat").toResponse();
   }
 }
@@ -452,19 +393,18 @@ export async function DELETE(request: Request) {
     return new ChatbotError("bad_request:api").toResponse();
   }
 
-  const session = await auth();
-
-  if (!session?.user) {
+  const maiUser = await getMaiUser();
+  if (!maiUser) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
 
   const chat = await getChatById({ id });
+  const userId = maiUser.id || maiUser.email;
 
-  if (chat?.userId !== session.user.id) {
+  if (chat?.userId !== userId && chat?.userId !== maiUser.email) {
     return new ChatbotError("forbidden:chat").toResponse();
   }
 
   const deletedChat = await deleteChatById({ id });
-
   return Response.json(deletedChat, { status: 200 });
 }

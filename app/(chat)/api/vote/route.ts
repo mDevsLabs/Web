@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { auth } from "@/app/(auth)/auth";
+import { getMaiUser } from "@/lib/auth/session";
 import { getChatById, getVotesByChatId, voteMessage } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 
@@ -20,9 +20,9 @@ export async function GET(request: Request) {
     ).toResponse();
   }
 
-  const session = await auth();
+  const maiUser = await getMaiUser();
 
-  if (!session?.user) {
+  if (!maiUser) {
     return new ChatbotError("unauthorized:vote").toResponse();
   }
 
@@ -32,7 +32,8 @@ export async function GET(request: Request) {
     return new ChatbotError("not_found:chat").toResponse();
   }
 
-  if (chat.userId !== session.user.id) {
+  const currentUserId = maiUser.id || maiUser.email;
+  if (chat.userId !== currentUserId && chat.userId !== maiUser.email) {
     return new ChatbotError("forbidden:vote").toResponse();
   }
 
@@ -55,9 +56,9 @@ export async function PATCH(request: Request) {
     ).toResponse();
   }
 
-  const session = await auth();
+  const maiUser = await getMaiUser();
 
-  if (!session?.user) {
+  if (!maiUser) {
     return new ChatbotError("unauthorized:vote").toResponse();
   }
 
@@ -67,7 +68,8 @@ export async function PATCH(request: Request) {
     return new ChatbotError("not_found:vote").toResponse();
   }
 
-  if (chat.userId !== session.user.id) {
+  const currentUserId = maiUser.id || maiUser.email;
+  if (chat.userId !== currentUserId && chat.userId !== maiUser.email) {
     return new ChatbotError("forbidden:vote").toResponse();
   }
 

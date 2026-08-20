@@ -33,13 +33,13 @@ const visibilities: Array<{
   icon: ReactNode;
 }> = [
   {
-    description: "Only you can access this chat",
+    description: "Vous seul avez accès à cette discussion",
     icon: <LockIcon />,
     id: "private",
-    label: "Private",
+    label: "Privé",
   },
   {
-    description: "Anyone with the link can access this chat",
+    description: "Toute personne disposant du lien peut consulter cette discussion",
     icon: <GlobeIcon />,
     id: "public",
     label: "Public",
@@ -64,13 +64,13 @@ function VisibilitySelectorItem({
 
   return (
     <DropdownMenuItem
-      className="group/item flex flex-row items-center justify-between gap-4"
+      className="group/item flex flex-row items-center justify-between gap-4 cursor-pointer"
       data-active={visibility.id === visibilityType}
       data-testid={`visibility-selector-item-${visibility.id}`}
       onSelect={handleSelect}
     >
       <div className="flex flex-col items-start gap-1">
-        {visibility.label}
+        <span className="font-medium text-[13px]">{visibility.label}</span>
         {visibility.description ? (
           <div className="text-muted-foreground text-xs">
             {visibility.description}
@@ -114,18 +114,18 @@ export function VisibilitySelector({
         )}
       >
         <Button
-          className="gap-1.5 rounded-lg border-border/50 text-muted-foreground shadow-none transition-colors hover:text-foreground focus-visible:ring-0 focus-visible:border-border/50 active:translate-y-0"
+          className="gap-1.5 rounded-xl border-border/50 text-muted-foreground shadow-none transition-colors hover:text-foreground focus-visible:ring-0 focus-visible:border-border/50 active:translate-y-0 text-xs h-8 cursor-pointer"
           data-testid="visibility-selector"
           size="sm"
           variant="outline"
         >
           {selectedVisibility?.icon}
-          <span className="md:sr-only">{selectedVisibility?.label}</span>
+          <span>{selectedVisibility?.label}</span>
           <ChevronDownIcon />
         </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent align="start" className="min-w-[300px]">
+      <DropdownMenuContent align="start" className="min-w-[280px] rounded-xl p-1.5 border-border/60 bg-card/95 backdrop-blur-xl shadow-[var(--shadow-float)]">
         {visibilities.map((visibility) => (
           <VisibilitySelectorItem
             key={visibility.id}

@@ -1,14 +1,16 @@
 "use client";
 
 import {
+  FolderArchiveIcon,
   MessageSquareIcon,
   PanelLeftIcon,
   PenSquareIcon,
+  SettingsIcon,
   TrashIcon,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import type { User } from "next-auth";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
 import { useSWRConfig } from "swr";
@@ -43,8 +45,9 @@ import {
   AlertDialogTitle,
 } from "../ui/alert-dialog";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import type { MaiUser } from "@/lib/auth/session";
 
-export function AppSidebar({ user }: { user: User | undefined }) {
+export function AppSidebar({ user }: { user?: MaiUser | null }) {
   const router = useRouter();
   const { setOpenMobile, toggleSidebar } = useSidebar();
   const { mutate } = useSWRConfig();
@@ -78,7 +81,7 @@ export function AppSidebar({ user }: { user: User | undefined }) {
       method: "DELETE",
     });
 
-    toast.success("All chats deleted");
+    toast.success("Toutes les discussions ont été supprimées");
   }, [mutate, router]);
 
   return (
@@ -91,10 +94,16 @@ export function AppSidebar({ user }: { user: User | undefined }) {
                 <SidebarMenuButton
                   asChild
                   className="size-8 !px-0 items-center justify-center group-data-[collapsible=icon]:group-hover/logo:opacity-0"
-                  tooltip="Chatbot"
+                  tooltip="mAI Web"
                 >
-                  <Link href="/" onClick={closeMobile}>
-                    <MessageSquareIcon className="size-4 text-sidebar-foreground/50" />
+                  <Link href="/" onClick={closeMobile} className="flex items-center justify-center">
+                    <Image
+                      src="/logo.png"
+                      alt="mAI"
+                      width={22}
+                      height={22}
+                      className="rounded-md"
+                    />
                   </Link>
                 </SidebarMenuButton>
                 <Tooltip>
@@ -107,9 +116,13 @@ export function AppSidebar({ user }: { user: User | undefined }) {
                     </SidebarMenuButton>
                   </TooltipTrigger>
                   <TooltipContent className="hidden md:block" side="right">
-                    Open sidebar
+                    Ouvrir la barre latérale
                   </TooltipContent>
                 </Tooltip>
+              </div>
+              <div className="group-data-[collapsible=icon]:hidden flex items-center gap-1.5">
+                <span className="font-bold text-sm tracking-tight text-foreground">mAI</span>
+                <span className="text-[10px] uppercase font-semibold px-1.5 py-0.2 rounded bg-muted text-muted-foreground">Web</span>
               </div>
               <div className="group-data-[collapsible=icon]:hidden">
                 <SidebarTrigger className="text-sidebar-foreground/60 transition-colors duration-150 hover:text-sidebar-foreground" />
@@ -117,37 +130,67 @@ export function AppSidebar({ user }: { user: User | undefined }) {
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarHeader>
+
         <SidebarContent>
-          <SidebarGroup className="pt-1">
+          <SidebarGroup className="pt-2">
             <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem>
                   <SidebarMenuButton
-                    className="h-8 rounded-lg border border-sidebar-border text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                    className="h-8 rounded-lg border border-sidebar-border text-[13px] text-sidebar-foreground/80 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
                     onClick={handleNewChat}
-                    tooltip="New Chat"
+                    tooltip="Nouvelle discussion"
                   >
                     <PenSquareIcon className="size-4" />
-                    <span className="font-medium">New chat</span>
+                    <span className="font-medium">Nouvelle discussion</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
+
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    asChild
+                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                    tooltip="Bibliothèque"
+                  >
+                    <Link href="/library" onClick={closeMobile}>
+                      <FolderArchiveIcon className="size-4" />
+                      <span>Bibliothèque</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    asChild
+                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                    tooltip="Paramètres"
+                  >
+                    <Link href="/settings" onClick={closeMobile}>
+                      <SettingsIcon className="size-4" />
+                      <span>Paramètres</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+
                 {user ? (
                   <SidebarMenuItem>
                     <SidebarMenuButton
                       className="rounded-lg text-sidebar-foreground/40 transition-colors duration-150 hover:bg-destructive/10 hover:text-destructive"
                       onClick={handleShowDeleteAllDialog}
-                      tooltip="Delete All Chats"
+                      tooltip="Supprimer toutes les discussions"
                     >
                       <TrashIcon className="size-4" />
-                      <span className="text-[13px]">Delete all</span>
+                      <span className="text-[13px]">Supprimer l'historique</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ) : null}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
-          <SidebarHistory user={user} />
+
+          <SidebarHistory user={user ? { email: user.email, id: user.id } : undefined} />
         </SidebarContent>
+
         <SidebarFooter className="border-t border-sidebar-border pt-2 pb-3">
           {user ? <SidebarUserNav user={user} /> : null}
         </SidebarFooter>
@@ -160,16 +203,15 @@ export function AppSidebar({ user }: { user: User | undefined }) {
       >
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Delete all chats?</AlertDialogTitle>
+            <AlertDialogTitle>Supprimer toutes les discussions ?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete all
-              your chats and remove them from our servers.
+              Cette action est irréversible. Toutes vos conversations seront définitivement effacées.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={handleDeleteAll}>
-              Delete All
+            <AlertDialogCancel>Annuler</AlertDialogCancel>
+            <AlertDialogAction onClick={handleDeleteAll} className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
+              Tout supprimer
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

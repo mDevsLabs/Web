@@ -1,33 +1,43 @@
-import { customProvider, gateway } from "ai";
-import { isTestEnvironment } from "../constants";
+import { createOpenAI } from "@ai-sdk/openai";
+import { MAI_API_URL } from "../constants";
 import { titleModel } from "./models";
 
-export const myProvider = isTestEnvironment
-  ? (() => {
-      const {
-        chatModel,
-        titleModel: mockTitleModel,
-      } = require("./models.mock");
-      return customProvider({
-        languageModels: {
-          "chat-model": chatModel,
-          "title-model": mockTitleModel,
-        },
-      });
-    })()
-  : null;
+export function getLanguageModel(
+  modelId: string,
+  options?: {
+    apiKey?: string | null;
+    sessionToken?: string | null;
+    userId?: string | null;
+  }
+) {
+  const effectiveKey =
+    options?.apiKey ||
+    options?.sessionToken ||
+    process.env.MAI_API_KEY ||
+    "mai-web-default";
 
-export function getLanguageModel(modelId: string) {
-  if (isTestEnvironment && myProvider) {
-    return myProvider.languageModel(modelId);
+  const headers: Record<string, string> = {
+    "HTTP-Referer": "https://mai.val.run",
+    "X-Title": "mAI Web",
+  };
+
+  if (options?.userId) {
+    headers["x-user-id"] = options.userId;
   }
 
-  return gateway.languageModel(modelId);
+  const maiClient = createOpenAI({
+    baseURL: `${MAI_API_URL}/v1`,
+    apiKey: effectiveKey,
+    headers,
+  });
+
+  return maiClient(modelId);
 }
 
-export function getTitleModel() {
-  if (isTestEnvironment && myProvider) {
-    return myProvider.languageModel("title-model");
-  }
-  return gateway.languageModel(titleModel.id);
+export function getTitleModel(options?: {
+  apiKey?: string | null;
+  sessionToken?: string | null;
+  userId?: string | null;
+}) {
+  return getLanguageModel(titleModel.id, options);
 }

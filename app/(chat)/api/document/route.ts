@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { auth } from "@/app/(auth)/auth";
+import { getMaiUser } from "@/lib/auth/session";
 import type { ArtifactKind } from "@/components/chat/artifact";
 import {
   deleteDocumentsByIdAfterTimestamp,
@@ -27,21 +27,21 @@ export async function GET(request: Request) {
     ).toResponse();
   }
 
-  const session = await auth();
+  const maiUser = await getMaiUser();
 
-  if (!session?.user) {
+  if (!maiUser) {
     return new ChatbotError("unauthorized:document").toResponse();
   }
 
   const documents = await getDocumentsById({ id });
+  const [doc] = documents;
 
-  const [document] = documents;
-
-  if (!document) {
+  if (!doc) {
     return new ChatbotError("not_found:document").toResponse();
   }
 
-  if (document.userId !== session.user.id) {
+  const userId = maiUser.id || maiUser.email;
+  if (doc.userId !== userId && doc.userId !== maiUser.email) {
     return new ChatbotError("forbidden:document").toResponse();
   }
 
@@ -59,11 +59,13 @@ export async function POST(request: Request) {
     ).toResponse();
   }
 
-  const session = await auth();
+  const maiUser = await getMaiUser();
 
-  if (!session?.user) {
+  if (!maiUser) {
     return new ChatbotError("not_found:document").toResponse();
   }
+
+  const userId = maiUser.id || maiUser.email;
 
   let content: string;
   let title: string;
@@ -86,7 +88,7 @@ export async function POST(request: Request) {
   if (documents.length > 0) {
     const [doc] = documents;
 
-    if (doc.userId !== session.user.id) {
+    if (doc.userId !== userId && doc.userId !== maiUser.email) {
       return new ChatbotError("forbidden:document").toResponse();
     }
   }
@@ -96,15 +98,15 @@ export async function POST(request: Request) {
     return Response.json(result, { status: 200 });
   }
 
-  const document = await saveDocument({
+  const savedDoc = await saveDocument({
     content,
     id,
     kind,
     title,
-    userId: session.user.id,
+    userId,
   });
 
-  return Response.json(document, { status: 200 });
+  return Response.json(savedDoc, { status: 200 });
 }
 
 export async function DELETE(request: Request) {
@@ -126,17 +128,18 @@ export async function DELETE(request: Request) {
     ).toResponse();
   }
 
-  const session = await auth();
+  const maiUser = await getMaiUser();
 
-  if (!session?.user) {
+  if (!maiUser) {
     return new ChatbotError("unauthorized:document").toResponse();
   }
 
+  const userId = maiUser.id || maiUser.email;
+
   const documents = await getDocumentsById({ id });
+  const [doc] = documents;
 
-  const [document] = documents;
-
-  if (document.userId !== session.user.id) {
+  if (doc && doc.userId !== userId && doc.userId !== maiUser.email) {
     return new ChatbotError("forbidden:document").toResponse();
   }
 

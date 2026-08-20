@@ -35,12 +35,12 @@ export function PureMessageActions({
 
   const handleCopy = useCallback(async () => {
     if (!textFromParts) {
-      toast.error("There's no text to copy!");
+      toast.error("Aucun texte à copier !");
       return;
     }
 
     await copyToClipboard(textFromParts);
-    toast.success("Copied to clipboard!");
+    toast.success("Copié dans le presse-papiers ! 📋");
   }, [copyToClipboard, textFromParts]);
 
   const handleUpvote = useCallback(() => {
@@ -57,8 +57,8 @@ export function PureMessageActions({
     );
 
     toast.promise(upvote, {
-      error: "Failed to upvote response.",
-      loading: "Upvoting Response...",
+      error: "Échec de l'enregistrement du vote.",
+      loading: "Envoi du vote...",
       success: () => {
         mutate<Vote[]>(
           `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/vote?chatId=${chatId}`,
@@ -83,7 +83,7 @@ export function PureMessageActions({
           { revalidate: false }
         );
 
-        return "Upvoted Response!";
+        return "Réponse appréciée ! 👍";
       },
     });
   }, [chatId, message.id, mutate]);
@@ -102,8 +102,8 @@ export function PureMessageActions({
     );
 
     toast.promise(downvote, {
-      error: "Failed to downvote response.",
-      loading: "Downvoting Response...",
+      error: "Échec de l'enregistrement du vote.",
+      loading: "Envoi du vote...",
       success: () => {
         mutate<Vote[]>(
           `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/vote?chatId=${chatId}`,
@@ -128,7 +128,7 @@ export function PureMessageActions({
           { revalidate: false }
         );
 
-        return "Downvoted Response!";
+        return "Vote enregistré ! 👎";
       },
     });
   }, [chatId, message.id, mutate]);
@@ -146,7 +146,7 @@ export function PureMessageActions({
               className="size-7 text-muted-foreground/50 hover:text-foreground"
               data-testid="message-edit-button"
               onClick={onEdit}
-              tooltip="Edit"
+              tooltip="Modifier"
             >
               <PencilEditIcon />
             </Action>
@@ -154,7 +154,7 @@ export function PureMessageActions({
           <Action
             className="size-7 text-muted-foreground/50 hover:text-foreground"
             onClick={handleCopy}
-            tooltip="Copy"
+            tooltip="Copier"
           >
             <CopyIcon />
           </Action>
@@ -168,7 +168,7 @@ export function PureMessageActions({
       <Action
         className="text-muted-foreground/50 hover:text-foreground"
         onClick={handleCopy}
-        tooltip="Copy"
+        tooltip="Copier"
       >
         <CopyIcon />
       </Action>
@@ -178,7 +178,7 @@ export function PureMessageActions({
         data-testid="message-upvote"
         disabled={vote?.isUpvoted}
         onClick={handleUpvote}
-        tooltip="Upvote Response"
+        tooltip="Bonne réponse"
       >
         <ThumbUpIcon />
       </Action>
@@ -188,7 +188,7 @@ export function PureMessageActions({
         data-testid="message-downvote"
         disabled={vote && !vote.isUpvoted}
         onClick={handleDownvote}
-        tooltip="Downvote Response"
+        tooltip="Mauvaise réponse"
       >
         <ThumbDownIcon />
       </Action>

@@ -1,12 +1,13 @@
 "use client";
 
-import { PanelLeftIcon } from "lucide-react";
+import { FolderArchiveIcon, PanelLeftIcon, SettingsIcon, SparklesIcon } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { memo } from "react";
 import { Button } from "@/components/ui/button";
 import { useSidebar } from "@/components/ui/sidebar";
-import { VercelIcon } from "./icons";
 import { VisibilitySelector, type VisibilityType } from "./visibility-selector";
+import { MAI_UPGRADE_URL } from "@/lib/constants";
 
 function PureChatHeader({
   chatId,
@@ -24,7 +25,7 @@ function PureChatHeader({
   }
 
   return (
-    <header className="sticky top-0 flex h-14 items-center gap-2 bg-sidebar px-3">
+    <header className="sticky top-0 z-10 flex h-14 items-center gap-2 bg-sidebar/80 backdrop-blur-md px-4 border-b border-border/40">
       <Button
         className="md:hidden"
         onClick={toggleSidebar}
@@ -35,12 +36,10 @@ function PureChatHeader({
       </Button>
 
       <Link
-        className="flex size-8 items-center justify-center rounded-lg md:hidden"
-        href="https://vercel.com/templates/next.js/chatbot"
-        rel="noopener noreferrer"
-        target="_blank"
+        className="flex size-7 items-center justify-center rounded-lg md:hidden overflow-hidden"
+        href="/"
       >
-        <VercelIcon size={14} />
+        <Image src="/logo.png" alt="mAI" width={24} height={24} className="rounded-md" />
       </Link>
 
       {!isReadonly && (
@@ -50,19 +49,34 @@ function PureChatHeader({
         />
       )}
 
-      <Button
-        asChild
-        className="hidden rounded-lg bg-foreground px-4 text-background hover:bg-foreground/90 md:ml-auto md:flex"
-      >
-        <Link
-          href="https://vercel.com/templates/next.js/chatbot"
-          rel="noopener noreferrer"
-          target="_blank"
+      <div className="ml-auto flex items-center gap-2">
+        <Button
+          asChild
+          size="sm"
+          variant="outline"
+          className="hidden sm:inline-flex rounded-xl text-xs gap-1.5 h-8 border-border/60 hover:bg-muted"
         >
-          <VercelIcon size={16} />
-          Deploy with Vercel
-        </Link>
-      </Button>
+          <Link href="/library">
+            <FolderArchiveIcon className="size-3.5" />
+            <span>Bibliothèque</span>
+          </Link>
+        </Button>
+
+        <Button
+          asChild
+          size="sm"
+          className="hidden sm:inline-flex rounded-xl bg-foreground px-3 text-background hover:bg-foreground/90 text-xs gap-1.5 h-8 font-medium shadow-sm"
+        >
+          <Link
+            href={MAI_UPGRADE_URL}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <SparklesIcon className="size-3.5 text-amber-400" />
+            <span>Passer à mAI Pro</span>
+          </Link>
+        </Button>
+      </div>
     </header>
   );
 }
