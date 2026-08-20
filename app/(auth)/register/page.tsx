@@ -85,7 +85,7 @@ export default function RegisterPage() {
       return;
     }
 
-    toast.success("Compte mAI créé avec succès ! Bienvenue 🚀");
+    toast.success("Compte mAI Web créé avec succès ! Bienvenue 🚀");
     router.push("/");
     router.refresh();
   };
@@ -112,10 +112,10 @@ export default function RegisterPage() {
         <>
           <div>
             <h1 className="text-2xl font-bold tracking-tight text-foreground">
-              Créer un compte mAI
+              Créer un compte mAI Web
             </h1>
             <p className="text-sm text-muted-foreground mt-1">
-              Rejoignez mAI et accédez gratuitement à vos modèles d'IA.
+              Rejoignez mAI Web et accédez gratuitement à vos modèles d'IA.
             </p>
           </div>
 

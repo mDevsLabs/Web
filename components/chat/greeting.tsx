@@ -33,7 +33,7 @@ export const Greeting = () => (
       initial={{ opacity: 0, y: 10 }}
       transition={{ delay: 0.5, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
     >
-      Posez vos questions du quotidien, rédigez des documents ou explorez vos projets avec mAI.
+      Posez vos questions du quotidien, rédigez des documents ou explorez vos projets avec mAI Web.
     </motion.div>
   </div>
 );

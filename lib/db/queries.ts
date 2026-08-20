@@ -10,6 +10,7 @@ import {
   gte,
   inArray,
   lt,
+  sql,
   type SQL,
 } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
@@ -31,14 +32,33 @@ import {
 } from "./schema";
 
 let _db: ReturnType<typeof drizzle> | null = null;
+let _migrationRan = false;
+
+async function ensureTableTypes(client: ReturnType<typeof postgres>) {
+  if (_migrationRan) return;
+  _migrationRan = true;
+  try {
+    await client`ALTER TABLE "Chat" ALTER COLUMN "userId" TYPE text USING "userId"::text`;
+  } catch {}
+  try {
+    await client`ALTER TABLE "Document" ALTER COLUMN "userId" TYPE text USING "userId"::text`;
+  } catch {}
+  try {
+    await client`ALTER TABLE "Suggestion" ALTER COLUMN "userId" TYPE text USING "userId"::text`;
+  } catch {}
+}
 
 export function getDb() {
   if (!_db) {
     const connectionString =
+      process.env.DATABASE_URL ||
       process.env.POSTGRES_URL ||
       "postgres://postgres:postgres@localhost:5432/postgres";
     const client = postgres(connectionString);
     _db = drizzle(client);
+    if (process.env.DATABASE_URL || process.env.POSTGRES_URL) {
+      ensureTableTypes(client).catch(() => {});
+    }
   }
   return _db;
 }
@@ -98,7 +118,7 @@ export async function deleteAllChatsByUserId({ userId }: { userId: string }) {
     const userChats = await db
       .select({ id: chat.id })
       .from(chat)
-      .where(eq(chat.userId, userId));
+      .where(sql`${chat.userId}::text = ${userId}::text`);
 
     if (userChats.length === 0) {
       return { deletedCount: 0 };
@@ -112,7 +132,7 @@ export async function deleteAllChatsByUserId({ userId }: { userId: string }) {
 
     const deletedChats = await db
       .delete(chat)
-      .where(eq(chat.userId, userId))
+      .where(sql`${chat.userId}::text = ${userId}::text`)
       .returning();
 
     return { deletedCount: deletedChats.length };
@@ -141,8 +161,8 @@ export async function getChatsByUserId({
         .from(chat)
         .where(
           whereCondition
-            ? and(whereCondition, eq(chat.userId, id))
-            : eq(chat.userId, id)
+            ? and(whereCondition, sql`${chat.userId}::text = ${id}::text`)
+            : sql`${chat.userId}::text = ${id}::text`
         )
         .orderBy(desc(chat.createdAt))
         .limit(extendedLimit);
@@ -527,7 +547,7 @@ export async function getMessageCountByUserId({
       .innerJoin(chat, eq(message.chatId, chat.id))
       .where(
         and(
-          eq(chat.userId, id),
+          sql`${chat.userId}::text = ${id}::text`,
           gte(message.createdAt, cutoffTime),
           eq(message.role, "user")
         )

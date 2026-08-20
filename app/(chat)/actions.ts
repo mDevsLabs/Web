@@ -25,15 +25,22 @@ export async function generateTitleFromUserMessage({
 }: {
   message: UIMessage;
 }) {
-  const { text } = await generateText({
-    instructions: titlePrompt,
-    model: getTitleModel(),
-    prompt: getTextFromMessage(message),
-  });
-  return text
-    .replace(/^[#*"\s]+/, "")
-    .replace(/["]+$/, "")
-    .trim();
+  try {
+    const { getMaiSessionToken, getMaiUser } = await import("@/lib/auth/session");
+    const [token, user] = await Promise.all([getMaiSessionToken(), getMaiUser()]);
+    const { text } = await generateText({
+      instructions: titlePrompt,
+      model: getTitleModel({ sessionToken: token, userId: user?.id }),
+      prompt: getTextFromMessage(message),
+    });
+    return text
+      .replace(/^[#*"\s]+/, "")
+      .replace(/["]+$/, "")
+      .trim();
+  } catch (err) {
+    console.error("Erreur génération titre:", err);
+    return "Nouvelle discussion";
+  }
 }
 
 export async function deleteTrailingMessages({ id }: { id: string }) {

@@ -80,7 +80,7 @@ export default function LoginPage() {
       return;
     }
 
-    toast.success("Connexion réussie ! Bienvenue sur mAI ✨");
+    toast.success("Connexion réussie ! Bienvenue sur mAI Web ✨");
     router.push("/");
     router.refresh();
   };
@@ -107,7 +107,7 @@ export default function LoginPage() {
         <>
           <div>
             <h1 className="text-2xl font-bold tracking-tight text-foreground">
-              Connexion à mAI
+              Connexion à mAI Web
             </h1>
             <p className="text-sm text-muted-foreground mt-1">
               Accédez à votre espace d'intelligence artificielle et vos modèles.

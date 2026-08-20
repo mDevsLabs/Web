@@ -3,10 +3,11 @@ import "server-only";
 import postgres from "postgres";
 
 export async function getUserApiKey(userId: string): Promise<string | null> {
-  if (!userId || !process.env.POSTGRES_URL) return null;
+  const dbUrl = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+  if (!userId || !dbUrl) return null;
 
   try {
-    const sql = postgres(process.env.POSTGRES_URL);
+    const sql = postgres(dbUrl);
     const rows = await sql`
       SELECT api_key FROM mprojects_api_keys 
       WHERE user_id = ${userId}::text 

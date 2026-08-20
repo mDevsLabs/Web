@@ -51,6 +51,12 @@ jobs:
       - name: 📥 Installation des dépendances
         run: pnpm install
 
+      - name: 🗄️ Exécution des migrations base de données
+        run: pnpm exec tsx lib/db/migrate
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          POSTGRES_URL: ${{ secrets.DATABASE_URL }}
+
       - name: 🌍 Pull Vercel Environment Information
         run: |
           if [ "${{ github.ref }}" = "refs/heads/main" ]; then

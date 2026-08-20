@@ -7,9 +7,42 @@ import "./globals.css";
 import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
-  description: "Next.js chatbot template using the AI SDK.",
-  metadataBase: new URL("https://chat.vercel.ai"),
-  title: "Next.js Chatbot Template",
+  title: {
+    default: "mAI Web",
+    template: "%s | mAI Web",
+  },
+  description: "mAI Web — Votre assistant d'intelligence artificielle tout-en-un.",
+  metadataBase: new URL("https://mai.val.run"),
+  icons: {
+    icon: [
+      { url: "/logo.png", href: "/logo.png" },
+      { url: "/favicon.ico", href: "/favicon.ico" },
+      { url: "/favicon.png", href: "/favicon.png" },
+    ],
+    apple: "/logo.png",
+    shortcut: "/logo.png",
+  },
+  openGraph: {
+    title: "mAI Web",
+    description: "mAI Web — Votre assistant d'intelligence artificielle tout-en-un.",
+    siteName: "mAI Web",
+    images: [
+      {
+        url: "/logo.png",
+        width: 512,
+        height: 512,
+        alt: "mAI Web Logo",
+      },
+    ],
+    locale: "fr_FR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "mAI Web",
+    description: "mAI Web — Votre assistant d'intelligence artificielle tout-en-un.",
+    images: ["/logo.png"],
+  },
 };
 
 export const viewport = {
@@ -56,7 +89,7 @@ export default function RootLayout({
   return (
     <html
       className={`${geist.variable} ${geistMono.variable}`}
-      lang="en"
+      lang="fr"
       suppressHydrationWarning
     >
       <head>

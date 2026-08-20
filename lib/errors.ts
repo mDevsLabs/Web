@@ -27,7 +27,7 @@ export const visibilityBySurface: Record<Surface, ErrorVisibility> = {
   api: "response",
   auth: "response",
   chat: "response",
-  database: "log",
+  database: "response",
   document: "response",
   history: "response",
   stream: "response",
@@ -41,7 +41,7 @@ export class ChatbotError extends Error {
   statusCode: number;
 
   constructor(errorCode: ErrorCode, cause?: string | ErrorOptions) {
-    const message = getMessageByErrorCode(errorCode);
+    const message = getMessageByErrorCode(errorCode, cause);
     const options = typeof cause === "string" ? undefined : cause;
 
     super(message, options);
@@ -58,66 +58,61 @@ export class ChatbotError extends Error {
 
   toResponse() {
     const code: ErrorCode = `${this.type}:${this.surface}`;
-    const visibility = visibilityBySurface[this.surface];
-
     const { message, cause, statusCode } = this;
 
-    if (visibility === "log") {
-      console.error({
-        cause,
+    const causeMsg =
+      typeof cause === "string"
+        ? cause
+        : (cause as any)?.message || (cause as any)?.error || undefined;
+
+    return Response.json(
+      {
+        cause: causeMsg,
         code,
-        message,
-      });
-
-      return Response.json(
-        { code: "", message: "Something went wrong. Please try again later." },
-        { status: statusCode }
-      );
-    }
-
-    return Response.json({ cause, code, message }, { status: statusCode });
+        message: causeMsg ? `${message} (${causeMsg})` : message,
+      },
+      { status: statusCode }
+    );
   }
 }
 
-export function getMessageByErrorCode(errorCode: ErrorCode): string {
+export function getMessageByErrorCode(errorCode: ErrorCode, cause?: string | ErrorOptions): string {
   if (errorCode.includes("database")) {
-    return "An error occurred while executing a database query.";
+    return "Une erreur est survenue lors de l'accès à la base de données.";
   }
 
   switch (errorCode) {
     case "bad_request:api":
-      return "The request couldn't be processed. Please check your input and try again.";
-
-    case "bad_request:activate_gateway":
-      return "AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.";
+      return "La requête n'a pas pu être traitée. Veuillez vérifier vos données.";
 
     case "unauthorized:auth":
-      return "You need to sign in before continuing.";
+    case "unauthorized:chat":
+    case "unauthorized:document":
+      return "Votre session a expiré. Veuillez vous reconnecter à mAI Web.";
+
     case "forbidden:auth":
-      return "Your account does not have access to this feature.";
+    case "forbidden:chat":
+    case "forbidden:document":
+    case "forbidden:api":
+      return "Vous n'avez pas l'autorisation d'accéder à cette ressource.";
 
     case "rate_limit:chat":
-      return "You've reached the message limit. Come back in 1 hour to continue chatting.";
+      return "Votre limite de messages hebdomadaire ou horaire a été atteinte.";
+
     case "not_found:chat":
-      return "The requested chat was not found. Please check the chat ID and try again.";
-    case "forbidden:chat":
-      return "This chat belongs to another user. Please check the chat ID and try again.";
-    case "unauthorized:chat":
-      return "You need to sign in to view this chat. Please sign in and try again.";
-    case "offline:chat":
-      return "We're having trouble sending your message. Please check your internet connection and try again.";
+      return "La discussion demandée est introuvable.";
 
     case "not_found:document":
-      return "The requested document was not found. Please check the document ID and try again.";
-    case "forbidden:document":
-      return "This document belongs to another user. Please check the document ID and try again.";
-    case "unauthorized:document":
-      return "You need to sign in to view this document. Please sign in and try again.";
+      return "Le document demandé est introuvable.";
+
+    case "offline:chat":
+      return "Impossible de joindre le serveur mAI. Veuillez vérifier votre connexion.";
+
     case "bad_request:document":
-      return "The request to create or update the document was invalid. Please check your input and try again.";
+      return "Impossible de créer ou mettre à jour le document.";
 
     default:
-      return "Something went wrong. Please try again later.";
+      return "Une erreur inattendue est survenue. Veuillez réessayer.";
   }
 }
 

@@ -17,8 +17,13 @@ export const fetcher = async (url: string) => {
   const response = await fetch(url);
 
   if (!response.ok) {
-    const { code, cause } = await response.json();
-    throw new ChatbotError(code as ErrorCode, cause);
+    let errData: any = {};
+    try {
+      errData = await response.json();
+    } catch {}
+    const msg = errData.message || errData.error || response.statusText;
+    const code = errData.code || "bad_request:api";
+    throw new ChatbotError(code as ErrorCode, msg);
   }
 
   return response.json();
@@ -32,8 +37,13 @@ export async function fetchWithErrorHandlers(
     const response = await fetch(input, init);
 
     if (!response.ok) {
-      const { code, cause } = await response.json();
-      throw new ChatbotError(code as ErrorCode, cause);
+      let errData: any = {};
+      try {
+        errData = await response.json();
+      } catch {}
+      const msg = errData.message || errData.error || response.statusText;
+      const code = errData.code || "bad_request:api";
+      throw new ChatbotError(code as ErrorCode, msg);
     }
 
     return response;

@@ -264,7 +264,7 @@ export default function LibraryPage() {
             Bibliothèque de fichiers
           </h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Importez et organisez vos documents, codes, médias et fichiers pour mAI.
+            Importez et organisez vos documents, codes, médias et fichiers pour mAI Web.
           </p>
         </div>
 
