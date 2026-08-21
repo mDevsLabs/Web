@@ -11,15 +11,14 @@ import {
   gte,
   inArray,
   lt,
-  sql,
   type SQL,
+  sql,
 } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import type { ArtifactKind } from "@/components/chat/artifact";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
 import { ChatbotError } from "../errors";
-import { generateUUID } from "../utils";
 import {
   type Chat,
   chat,
@@ -36,130 +35,179 @@ let _db: ReturnType<typeof drizzle> | null = null;
 let _migrationRan = false;
 
 async function ensureTableTypes(client: ReturnType<typeof postgres>) {
-  if (_migrationRan) return;
-  _migrationRan = true;
-  try {
-    await client`
-      CREATE TABLE IF NOT EXISTS "User" (
-        "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-        "email" varchar(64) NOT NULL,
-        "password" varchar(64),
-        "name" text,
-        "emailVerified" boolean NOT NULL DEFAULT false,
-        "image" text,
-        "isAnonymous" boolean NOT NULL DEFAULT false,
-        "createdAt" timestamp DEFAULT now() NOT NULL,
-        "updatedAt" timestamp DEFAULT now() NOT NULL
-      );
-      CREATE TABLE IF NOT EXISTS "Chat" (
-        "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-        "createdAt" timestamp NOT NULL DEFAULT now(),
-        "title" text NOT NULL DEFAULT 'Nouvelle discussion',
-        "userId" text NOT NULL,
-        "visibility" varchar NOT NULL DEFAULT 'private'
-      );
-      CREATE TABLE IF NOT EXISTS "Message_v2" (
-        "id" text PRIMARY KEY NOT NULL,
-        "chatId" uuid NOT NULL,
-        "role" varchar NOT NULL,
-        "parts" json NOT NULL,
-        "attachments" json NOT NULL DEFAULT '[]'::json,
-        "createdAt" timestamp NOT NULL DEFAULT now()
-      );
-      CREATE TABLE IF NOT EXISTS "Vote_v2" (
-        "chatId" uuid NOT NULL,
-        "messageId" text NOT NULL,
-        "isUpvoted" boolean NOT NULL,
-        PRIMARY KEY ("chatId", "messageId")
-      );
-      CREATE TABLE IF NOT EXISTS "Document" (
-        "id" uuid DEFAULT gen_random_uuid() NOT NULL,
-        "createdAt" timestamp NOT NULL DEFAULT now(),
-        "title" text NOT NULL,
-        "content" text,
-        "text" varchar NOT NULL DEFAULT 'text',
-        "userId" text NOT NULL,
-        PRIMARY KEY ("id", "createdAt")
-      );
-      CREATE TABLE IF NOT EXISTS "Suggestion" (
-        "id" uuid DEFAULT gen_random_uuid() NOT NULL,
-        "documentId" uuid NOT NULL,
-        "documentCreatedAt" timestamp NOT NULL,
-        "originalText" text NOT NULL,
-        "suggestedText" text NOT NULL,
-        "description" text,
-        "isResolved" boolean NOT NULL DEFAULT false,
-        "userId" text NOT NULL,
-        "createdAt" timestamp NOT NULL DEFAULT now(),
-        PRIMARY KEY ("id")
-      );
-      CREATE TABLE IF NOT EXISTS "Stream" (
-        "id" text PRIMARY KEY NOT NULL,
-        "chatId" uuid NOT NULL,
-        "createdAt" timestamp NOT NULL DEFAULT now()
-      );
-    `;
-
-    try {
-      await client`ALTER TABLE "Chat" DROP CONSTRAINT IF EXISTS "Chat_userId_fkey" CASCADE`;
-      await client`ALTER TABLE "Chat" DROP CONSTRAINT IF EXISTS "Chat_userId_User_id_fk" CASCADE`;
-      await client`ALTER TABLE "Chat" ALTER COLUMN "userId" TYPE text USING "userId"::text`;
-    } catch {}
-    try {
-      await client`ALTER TABLE "Document" DROP CONSTRAINT IF EXISTS "Document_userId_fkey" CASCADE`;
-      await client`ALTER TABLE "Document" DROP CONSTRAINT IF EXISTS "Document_userId_User_id_fk" CASCADE`;
-      await client`ALTER TABLE "Document" ALTER COLUMN "userId" TYPE text USING "userId"::text`;
-    } catch {}
-    try {
-      await client`ALTER TABLE "Suggestion" DROP CONSTRAINT IF EXISTS "Suggestion_userId_fkey" CASCADE`;
-      await client`ALTER TABLE "Suggestion" DROP CONSTRAINT IF EXISTS "Suggestion_userId_User_id_fk" CASCADE`;
-      await client`ALTER TABLE "Suggestion" ALTER COLUMN "userId" TYPE text USING "userId"::text`;
-    } catch {}
-    try {
-      await client`ALTER TABLE "Message_v2" DROP CONSTRAINT IF EXISTS "Message_v2_chatId_fkey" CASCADE`;
-      await client`ALTER TABLE "Message_v2" ALTER COLUMN "id" TYPE text USING "id"::text`;
-    } catch {}
-    try {
-      await client`ALTER TABLE "Vote_v2" DROP CONSTRAINT IF EXISTS "Vote_v2_messageId_fkey" CASCADE`;
-      await client`ALTER TABLE "Vote_v2" ALTER COLUMN "messageId" TYPE text USING "messageId"::text`;
-    } catch {}
-    try {
-      await client`ALTER TABLE "Stream" ALTER COLUMN "id" TYPE text USING "id"::text`;
-    } catch {}
-  } catch (err) {
-    console.error("ensureTableTypes error:", err);
+  if (_migrationRan) {
+    return;
   }
+  _migrationRan = true;
+
+  // Neon pooler: chaque instruction doit être dans une requête séparée
+  const run = async (query: Promise<unknown>) => {
+    try {
+      await query;
+    } catch {
+      /* ignorer les erreurs (déjà existant, etc.) */
+    }
+  };
+
+  // Création des tables une par une
+  await run(client`CREATE TABLE IF NOT EXISTS "User" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "email" varchar(64) NOT NULL,
+    "password" varchar(64),
+    "name" text,
+    "emailVerified" boolean NOT NULL DEFAULT false,
+    "image" text,
+    "isAnonymous" boolean NOT NULL DEFAULT false,
+    "createdAt" timestamp DEFAULT now() NOT NULL,
+    "updatedAt" timestamp DEFAULT now() NOT NULL
+  )`);
+
+  await run(client`CREATE TABLE IF NOT EXISTS "Chat" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "createdAt" timestamp NOT NULL DEFAULT now(),
+    "title" text NOT NULL DEFAULT 'Nouvelle discussion',
+    "userId" text NOT NULL,
+    "visibility" varchar NOT NULL DEFAULT 'private'
+  )`);
+
+  await run(client`CREATE TABLE IF NOT EXISTS "Message_v2" (
+    "id" text PRIMARY KEY NOT NULL,
+    "chatId" uuid NOT NULL,
+    "role" varchar NOT NULL,
+    "parts" json NOT NULL,
+    "attachments" json NOT NULL DEFAULT '[]'::json,
+    "createdAt" timestamp NOT NULL DEFAULT now()
+  )`);
+
+  await run(client`CREATE TABLE IF NOT EXISTS "Vote_v2" (
+    "chatId" uuid NOT NULL,
+    "messageId" text NOT NULL,
+    "isUpvoted" boolean NOT NULL,
+    PRIMARY KEY ("chatId", "messageId")
+  )`);
+
+  await run(client`CREATE TABLE IF NOT EXISTS "Document" (
+    "id" uuid DEFAULT gen_random_uuid() NOT NULL,
+    "createdAt" timestamp NOT NULL DEFAULT now(),
+    "title" text NOT NULL,
+    "content" text,
+    "text" varchar NOT NULL DEFAULT 'text',
+    "userId" text NOT NULL,
+    PRIMARY KEY ("id", "createdAt")
+  )`);
+
+  await run(client`CREATE TABLE IF NOT EXISTS "Suggestion" (
+    "id" uuid DEFAULT gen_random_uuid() NOT NULL,
+    "documentId" uuid NOT NULL,
+    "documentCreatedAt" timestamp NOT NULL,
+    "originalText" text NOT NULL,
+    "suggestedText" text NOT NULL,
+    "description" text,
+    "isResolved" boolean NOT NULL DEFAULT false,
+    "userId" text NOT NULL,
+    "createdAt" timestamp NOT NULL DEFAULT now(),
+    PRIMARY KEY ("id")
+  )`);
+
+  await run(client`CREATE TABLE IF NOT EXISTS "Stream" (
+    "id" text PRIMARY KEY NOT NULL,
+    "chatId" uuid NOT NULL,
+    "createdAt" timestamp NOT NULL DEFAULT now()
+  )`);
+
+  // Migrations de colonnes (supprimer contraintes FK, caster vers text)
+  await run(
+    client`ALTER TABLE "Chat" DROP CONSTRAINT IF EXISTS "Chat_userId_fkey" CASCADE`
+  );
+  await run(
+    client`ALTER TABLE "Chat" DROP CONSTRAINT IF EXISTS "Chat_userId_User_id_fk" CASCADE`
+  );
+  await run(
+    client`ALTER TABLE "Chat" ALTER COLUMN "userId" TYPE text USING "userId"::text`
+  );
+
+  await run(
+    client`ALTER TABLE "Document" DROP CONSTRAINT IF EXISTS "Document_userId_fkey" CASCADE`
+  );
+  await run(
+    client`ALTER TABLE "Document" DROP CONSTRAINT IF EXISTS "Document_userId_User_id_fk" CASCADE`
+  );
+  await run(
+    client`ALTER TABLE "Document" ALTER COLUMN "userId" TYPE text USING "userId"::text`
+  );
+
+  await run(
+    client`ALTER TABLE "Suggestion" DROP CONSTRAINT IF EXISTS "Suggestion_userId_fkey" CASCADE`
+  );
+  await run(
+    client`ALTER TABLE "Suggestion" DROP CONSTRAINT IF EXISTS "Suggestion_userId_User_id_fk" CASCADE`
+  );
+  await run(
+    client`ALTER TABLE "Suggestion" ALTER COLUMN "userId" TYPE text USING "userId"::text`
+  );
+
+  await run(
+    client`ALTER TABLE "Message_v2" DROP CONSTRAINT IF EXISTS "Message_v2_chatId_fkey" CASCADE`
+  );
+  await run(
+    client`ALTER TABLE "Message_v2" ALTER COLUMN "id" TYPE text USING "id"::text`
+  );
+
+  await run(
+    client`ALTER TABLE "Vote_v2" DROP CONSTRAINT IF EXISTS "Vote_v2_messageId_fkey" CASCADE`
+  );
+  await run(
+    client`ALTER TABLE "Vote_v2" ALTER COLUMN "messageId" TYPE text USING "messageId"::text`
+  );
+
+  await run(
+    client`ALTER TABLE "Stream" ALTER COLUMN "id" TYPE text USING "id"::text`
+  );
+}
+
+let _migrationPromise: Promise<void> | null = null;
+
+function initDb() {
+  const connectionString =
+    process.env.DATABASE_URL ||
+    process.env.POSTGRES_URL ||
+    process.env.POSTGRES_PRISMA_URL;
+
+  if (!connectionString) {
+    throw new Error(
+      "DATABASE_URL or POSTGRES_URL is missing in environment variables. Please check your .env configuration."
+    );
+  }
+
+  const client = postgres(connectionString, { prepare: false });
+  _db = drizzle(client);
+  _migrationPromise = ensureTableTypes(client);
 }
 
 export function getDb() {
   if (!_db) {
-    const connectionString =
-      process.env.DATABASE_URL ||
-      process.env.POSTGRES_URL ||
-      process.env.POSTGRES_PRISMA_URL;
-
-    if (!connectionString) {
-      throw new Error(
-        "DATABASE_URL or POSTGRES_URL is missing in environment variables. Please check your .env configuration."
-      );
-    }
-
-    const client = postgres(connectionString, {
-      prepare: false,
-    });
-    _db = drizzle(client);
-    ensureTableTypes(client).catch(() => {});
+    initDb();
+  }
+  if (!_db) {
+    throw new Error("Database initialization failed.");
   }
   return _db;
 }
 
-const db = new Proxy({} as ReturnType<typeof drizzle>, {
-  get(_target, prop, receiver) {
-    const target = getDb();
-    const value = Reflect.get(target, prop, receiver);
-    return typeof value === "function" ? value.bind(target) : value;
-  },
-});
+// Helper utilisé dans toutes les fonctions de requêtes
+async function dbReady() {
+  if (!_db) {
+    initDb();
+  }
+  if (_migrationPromise) {
+    await _migrationPromise;
+    _migrationPromise = null; // éviter de re-await
+  }
+  if (!_db) {
+    throw new Error("Database initialization failed.");
+  }
+  return _db;
+}
 
 export async function saveChat({
   id,
@@ -173,7 +221,8 @@ export async function saveChat({
   visibility: VisibilityType;
 }) {
   try {
-    return await getDb().insert(chat).values({
+    const db = await dbReady();
+    return await db.insert(chat).values({
       createdAt: new Date(),
       id,
       title,
@@ -181,18 +230,16 @@ export async function saveChat({
       visibility,
     });
   } catch (error) {
-    throw new ChatbotError("bad_request:database", {
-      cause: error,
-    });
+    throw new ChatbotError("bad_request:database", { cause: error });
   }
 }
 
 export async function deleteChatById({ id }: { id: string }) {
   try {
-    await getDb().delete(vote).where(eq(vote.chatId, id));
-    await getDb().delete(message).where(eq(message.chatId, id));
-    await getDb().delete(stream).where(eq(stream.chatId, id));
-
+    const db = await dbReady();
+    await db.delete(vote).where(eq(vote.chatId, id));
+    await db.delete(message).where(eq(message.chatId, id));
+    await db.delete(stream).where(eq(stream.chatId, id));
     const [chatsDeleted] = await db
       .delete(chat)
       .where(eq(chat.id, id))
@@ -205,6 +252,7 @@ export async function deleteChatById({ id }: { id: string }) {
 
 export async function deleteAllChatsByUserId({ userId }: { userId: string }) {
   try {
+    const db = await dbReady();
     const userChats = await db
       .select({ id: chat.id })
       .from(chat)
@@ -215,10 +263,9 @@ export async function deleteAllChatsByUserId({ userId }: { userId: string }) {
     }
 
     const chatIds = userChats.map((c) => c.id);
-
-    await getDb().delete(vote).where(inArray(vote.chatId, chatIds));
-    await getDb().delete(message).where(inArray(message.chatId, chatIds));
-    await getDb().delete(stream).where(inArray(stream.chatId, chatIds));
+    await db.delete(vote).where(inArray(vote.chatId, chatIds));
+    await db.delete(message).where(inArray(message.chatId, chatIds));
+    await db.delete(stream).where(inArray(stream.chatId, chatIds));
 
     const deletedChats = await db
       .delete(chat)
@@ -243,6 +290,7 @@ export async function getChatsByUserId({
   endingBefore: string | null;
 }) {
   try {
+    const db = await dbReady();
     const extendedLimit = limit + 1;
 
     const query = (whereCondition?: SQL<unknown>) =>
@@ -306,26 +354,23 @@ export async function getChatsByUserId({
 
 export async function getChatById({ id }: { id: string }) {
   try {
-    const [selectedChat] = await getDb().select().from(chat).where(eq(chat.id, id));
+    const db = await dbReady();
+    const [selectedChat] = await db.select().from(chat).where(eq(chat.id, id));
     if (!selectedChat) {
       return null;
     }
-
     return selectedChat;
   } catch (error) {
-    throw new ChatbotError("bad_request:database", {
-      cause: error,
-    });
+    throw new ChatbotError("bad_request:database", { cause: error });
   }
 }
 
 export async function saveMessages({ messages }: { messages: DBMessage[] }) {
   try {
-    return await getDb().insert(message).values(messages);
+    const db = await dbReady();
+    return await db.insert(message).values(messages);
   } catch (error) {
-    throw new ChatbotError("bad_request:database", {
-      cause: error,
-    });
+    throw new ChatbotError("bad_request:database", { cause: error });
   }
 }
 
@@ -337,16 +382,16 @@ export async function updateMessage({
   parts: DBMessage["parts"];
 }) {
   try {
-    return await getDb().update(message).set({ parts }).where(eq(message.id, id));
+    const db = await dbReady();
+    return await db.update(message).set({ parts }).where(eq(message.id, id));
   } catch (error) {
-    throw new ChatbotError("bad_request:database", {
-      cause: error,
-    });
+    throw new ChatbotError("bad_request:database", { cause: error });
   }
 }
 
 export async function getMessagesByChatId({ id }: { id: string }) {
   try {
+    const db = await dbReady();
     return await db
       .select()
       .from(message)
@@ -367,6 +412,7 @@ export async function voteMessage({
   type: "up" | "down";
 }) {
   try {
+    const db = await dbReady();
     const [existingVote] = await db
       .select()
       .from(vote)
@@ -378,21 +424,20 @@ export async function voteMessage({
         .set({ isUpvoted: type === "up" })
         .where(and(eq(vote.messageId, messageId), eq(vote.chatId, chatId)));
     }
-    return await getDb().insert(vote).values({
+    return await db.insert(vote).values({
       chatId,
       isUpvoted: type === "up",
       messageId,
     });
   } catch (error) {
-    throw new ChatbotError("bad_request:database", {
-      cause: error,
-    });
+    throw new ChatbotError("bad_request:database", { cause: error });
   }
 }
 
 export async function getVotesByChatId({ id }: { id: string }) {
   try {
-    return await getDb().select().from(vote).where(eq(vote.chatId, id));
+    const db = await dbReady();
+    return await db.select().from(vote).where(eq(vote.chatId, id));
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -412,21 +457,13 @@ export async function saveDocument({
   userId: string;
 }) {
   try {
+    const db = await dbReady();
     return await db
       .insert(document)
-      .values({
-        content,
-        createdAt: new Date(),
-        id,
-        kind,
-        title,
-        userId,
-      })
+      .values({ content, createdAt: new Date(), id, kind, title, userId })
       .returning();
   } catch (error) {
-    throw new ChatbotError("bad_request:database", {
-      cause: error,
-    });
+    throw new ChatbotError("bad_request:database", { cause: error });
   }
 }
 
@@ -438,6 +475,7 @@ export async function updateDocumentContent({
   content: string;
 }) {
   try {
+    const db = await dbReady();
     const docs = await db
       .select()
       .from(document)
@@ -459,21 +497,18 @@ export async function updateDocumentContent({
     if (error instanceof ChatbotError) {
       throw error;
     }
-    throw new ChatbotError("bad_request:database", {
-      cause: error,
-    });
+    throw new ChatbotError("bad_request:database", { cause: error });
   }
 }
 
 export async function getDocumentsById({ id }: { id: string }) {
   try {
-    const documents = await db
+    const db = await dbReady();
+    return await db
       .select()
       .from(document)
       .where(eq(document.id, id))
       .orderBy(asc(document.createdAt));
-
-    return documents;
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -481,12 +516,12 @@ export async function getDocumentsById({ id }: { id: string }) {
 
 export async function getDocumentById({ id }: { id: string }) {
   try {
+    const db = await dbReady();
     const [selectedDocument] = await db
       .select()
       .from(document)
       .where(eq(document.id, id))
       .orderBy(desc(document.createdAt));
-
     return selectedDocument;
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
@@ -501,6 +536,7 @@ export async function deleteDocumentsByIdAfterTimestamp({
   timestamp: Date;
 }) {
   try {
+    const db = await dbReady();
     await db
       .delete(suggestion)
       .where(
@@ -525,7 +561,8 @@ export async function saveSuggestions({
   suggestions: Suggestion[];
 }) {
   try {
-    return await getDb().insert(suggestion).values(suggestions);
+    const db = await dbReady();
+    return await db.insert(suggestion).values(suggestions);
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -537,6 +574,7 @@ export async function getSuggestionsByDocumentId({
   documentId: string;
 }) {
   try {
+    const db = await dbReady();
     return await db
       .select()
       .from(suggestion)
@@ -548,7 +586,8 @@ export async function getSuggestionsByDocumentId({
 
 export async function getMessageById({ id }: { id: string }) {
   try {
-    return await getDb().select().from(message).where(eq(message.id, id));
+    const db = await dbReady();
+    return await db.select().from(message).where(eq(message.id, id));
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -562,6 +601,7 @@ export async function deleteMessagesByChatIdAfterTimestamp({
   timestamp: Date;
 }) {
   try {
+    const db = await dbReady();
     const messagesToDelete = await db
       .select({ id: message.id })
       .from(message)
@@ -569,9 +609,7 @@ export async function deleteMessagesByChatIdAfterTimestamp({
         and(eq(message.chatId, chatId), gte(message.createdAt, timestamp))
       );
 
-    const messageIds = messagesToDelete.map(
-      (currentMessage) => currentMessage.id
-    );
+    const messageIds = messagesToDelete.map((m) => m.id);
 
     if (messageIds.length > 0) {
       await db
@@ -599,7 +637,8 @@ export async function updateChatVisibilityById({
   visibility: "private" | "public";
 }) {
   try {
-    return await getDb().update(chat).set({ visibility }).where(eq(chat.id, chatId));
+    const db = await dbReady();
+    return await db.update(chat).set({ visibility }).where(eq(chat.id, chatId));
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -613,7 +652,8 @@ export async function updateChatTitleById({
   title: string;
 }) {
   try {
-    return await getDb().update(chat).set({ title }).where(eq(chat.id, chatId));
+    const db = await dbReady();
+    return await db.update(chat).set({ title }).where(eq(chat.id, chatId));
   } catch {
     // Best effort title update.
   }
@@ -627,6 +667,7 @@ export async function getMessageCountByUserId({
   differenceInHours: number;
 }) {
   try {
+    const db = await dbReady();
     const cutoffTime = new Date(
       Date.now() - differenceInHours * 60 * 60 * 1000
     );
@@ -658,6 +699,7 @@ export async function createStreamId({
   chatId: string;
 }) {
   try {
+    const db = await dbReady();
     await db
       .insert(stream)
       .values({ chatId, createdAt: new Date(), id: streamId });
@@ -668,6 +710,7 @@ export async function createStreamId({
 
 export async function getStreamIdsByChatId({ chatId }: { chatId: string }) {
   try {
+    const db = await dbReady();
     const streamIds = await db
       .select({ id: stream.id })
       .from(stream)

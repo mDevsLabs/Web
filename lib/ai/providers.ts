@@ -26,8 +26,8 @@ export function getLanguageModel(
   }
 
   const maiClient = createOpenAI({
-    baseURL: MAI_API_URL,
     apiKey: effectiveKey,
+    baseURL: `${MAI_API_URL}/v1`,
     headers,
   });
 
