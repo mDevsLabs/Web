@@ -27,7 +27,15 @@ export function getLanguageModel(
 
   const maiClient = createOpenAI({
     apiKey: effectiveKey,
-    baseURL: `${MAI_API_URL}/v1`,
+    baseURL: MAI_API_URL,
+    fetch: async (url, init) => {
+      const urlStr = url.toString();
+      const targetUrl = urlStr.replace(
+        "/v1/chat/completions",
+        "/chat/completions"
+      );
+      return await fetch(targetUrl, init);
+    },
     headers,
   });
 
