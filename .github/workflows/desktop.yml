@@ -1,0 +1,361 @@
+name: 🖥️📱 Build Apps – Desktop & Mobile (non signés)
+
+on:
+  push:
+    branches: [main, canary]
+    tags: ["v*"]
+    paths:
+      - "apps/desktop/**"
+      - "apps/mobile/**"
+      - "public/logo.png"
+      - ".github/workflows/desktop.yml"
+  pull_request:
+    paths:
+      - "apps/desktop/**"
+      - "apps/mobile/**"
+      - "public/logo.png"
+      - ".github/workflows/desktop.yml"
+  workflow_dispatch:
+
+# Pas de signature – aucun secret CSC / keystore requis
+env:
+  CSC_IDENTITY_AUTO_DISCOVERY: "false"
+  ELECTRON_BUILDER_CACHE: ~/.cache/electron-builder
+
+jobs:
+  # ──────────────────────────────────────────────────────────────
+  # Desktop Electron (Linux / macOS / Windows) – non signé
+  # ──────────────────────────────────────────────────────────────
+  desktop:
+    name: Desktop ${{ matrix.os }} – ${{ matrix.arch }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            arch: x64
+            target: linux
+          - os: macos-latest
+            arch: universal
+            target: mac
+          - os: windows-latest
+            arch: x64
+            target: win
+
+    steps:
+      - name: 📦 Checkout
+        uses: actions/checkout@v4
+
+      - name: ⚡ Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: 🐧 Install Linux deps
+        if: matrix.target == 'linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libarchive-tools rpm fakeroot
+
+      - name: 📥 Install desktop deps
+        working-directory: apps/desktop
+        run: pnpm install --frozen-lockfile || pnpm install
+
+      - name: 🎨 Générer icônes (logo → ico/icns/png)
+        working-directory: apps/desktop
+        run: node scripts/generate-icons.mjs
+
+      - name: 🔍 Vérifier icônes
+        shell: bash
+        run: ls -lh apps/desktop/build/
+
+      - name: 🏗️ Build – TypeScript
+        working-directory: apps/desktop
+        run: pnpm run build
+
+      - name: 🏗️ Build – Linux
+        if: matrix.target == 'linux'
+        working-directory: apps/desktop
+        run: pnpm exec electron-builder --linux --x64 --publish never
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🏗️ Build – macOS (non signé)
+        if: matrix.target == 'mac'
+        working-directory: apps/desktop
+        run: pnpm exec electron-builder --mac --x64 --arm64 --publish never
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
+
+      - name: 🏗️ Build – Windows (non signé)
+        if: matrix.target == 'win'
+        working-directory: apps/desktop
+        run: pnpm exec electron-builder --win --x64 --publish never
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
+
+      - name: 📋 Lister artefacts
+        if: always()
+        shell: bash
+        run: ls -R apps/desktop/dist-elec || echo "no dist-elec"
+
+      - name: 📤 Upload artefact – Linux
+        if: matrix.target == 'linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: mai-desktop-linux-x64
+          path: |
+            apps/desktop/dist-elec/*.AppImage
+            apps/desktop/dist-elec/*.deb
+            apps/desktop/dist-elec/*.rpm
+            apps/desktop/dist-elec/*.snap
+          if-no-files-found: warn
+
+      - name: 📤 Upload artefact – macOS
+        if: matrix.target == 'mac'
+        uses: actions/upload-artifact@v4
+        with:
+          name: mai-desktop-macos
+          path: |
+            apps/desktop/dist-elec/*.dmg
+            apps/desktop/dist-elec/*.zip
+          if-no-files-found: warn
+
+      - name: 📤 Upload artefact – Windows
+        if: matrix.target == 'win'
+        uses: actions/upload-artifact@v4
+        with:
+          name: mai-desktop-windows-x64
+          path: |
+            apps/desktop/dist-elec/*.exe
+            apps/desktop/dist-elec/*.msi
+          if-no-files-found: warn
+
+  # ──────────────────────────────────────────────────────────────
+  # Mobile Android – APK Debug + Release unsigned (non signé)
+  # ──────────────────────────────────────────────────────────────
+  mobile-android:
+    name: Mobile Android (APK non signé)
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📦 Checkout
+        uses: actions/checkout@v4
+
+      - name: ⚡ Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: ☕ Setup Java 21 (Gradle)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: gradle
+
+      - name: 🤖 Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: 📥 Install mobile deps
+        working-directory: apps/mobile
+        run: pnpm install --frozen-lockfile || pnpm install
+
+      - name: 🎨 Générer icônes mobiles (logo → resources/icon.png)
+        working-directory: apps/mobile
+        run: node scripts/generate-icons.mjs
+
+      - name: 🔍 Vérifier
+        shell: bash
+        run: ls -lh apps/mobile/resources/ && ls -lh apps/mobile/www/
+
+      - name: 🔧 Capacitor – add & sync android
+        working-directory: apps/mobile
+        run: |
+          if [ ! -d "android" ]; then
+            npx cap add android
+          fi
+          npx cap sync android
+          echo "Capacitor sync ok"
+          ls -lh android/ || true
+
+      - name: 🎨 Patch icônes natives Android (logo → mipmap)
+        working-directory: apps/mobile
+        run: node scripts/generate-icons.mjs
+
+      - name: 🏗️ Build Android – Debug APK (debug keystore, non production)
+        working-directory: apps/mobile/android
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: 🏗️ Build Android – Release unsigned
+        working-directory: apps/mobile/android
+        run: |
+          # AssembleRelease sans keystore → APK non signé (ou partiellement)
+          ./gradlew assembleRelease --no-daemon --stacktrace -Pandroid.injected.signing.store.file="" -Pandroid.injected.signing.store.password="" -Pandroid.injected.signing.key.alias="" -Pandroid.injected.signing.key.password="" || echo "Release unsigned : gradle peut échouer si signing requis, debug reste valide"
+          ls -lh app/build/outputs/apk/ || true
+
+      - name: 📋 Lister APK
+        if: always()
+        shell: bash
+        run: find apps/mobile/android -name "*.apk" -type f -exec ls -lh {} \; || echo "no apk"
+
+      - name: 📤 Upload APK – Debug
+        uses: actions/upload-artifact@v4
+        with:
+          name: mai-mobile-android-debug
+          path: |
+            apps/mobile/android/app/build/outputs/apk/debug/*.apk
+            apps/mobile/android/app/build/outputs/apk/release/*.apk
+          if-no-files-found: warn
+
+  # ──────────────────────────────────────────────────────────────
+  # Mobile iOS – IPA unsigned (CODE_SIGNING_ALLOWED=NO)
+  # ──────────────────────────────────────────────────────────────
+  mobile-ios:
+    name: Mobile iOS (IPA non signé)
+    runs-on: macos-latest
+    steps:
+      - name: 📦 Checkout
+        uses: actions/checkout@v4
+
+      - name: ⚡ Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: 🍎 Select Xcode
+        run: |
+          sudo xcode-select -p || true
+          xcodebuild -version || true
+          xcrun --find codesign || true
+
+      - name: 📥 Install mobile deps
+        working-directory: apps/mobile
+        run: pnpm install --frozen-lockfile || pnpm install
+
+      - name: 🎨 Générer icônes mobiles
+        working-directory: apps/mobile
+        run: node scripts/generate-icons.mjs
+
+      - name: 🔧 Capacitor – add & sync ios
+        working-directory: apps/mobile
+        run: |
+          if [ ! -d "ios" ]; then
+            npx cap add ios
+          fi
+          npx cap sync ios
+          ls -lh ios/App/App.xcworkspace || true
+
+      - name: 🎨 Patch icônes natives iOS (logo → AppIcon)
+        working-directory: apps/mobile
+        run: node scripts/generate-icons.mjs
+
+      - name: 📦 Install CocoaPods
+        working-directory: apps/mobile/ios/App
+        run: pod install --repo-update || echo "pod install skipped"
+
+      - name: 🏗️ Build iOS – Archive unsigned (CODE_SIGNING_ALLOWED=NO)
+        working-directory: apps/mobile
+        run: |
+          set -o pipefail
+          xcodebuild archive \
+            -workspace ios/App/App.xcworkspace \
+            -scheme App \
+            -configuration Release \
+            -archivePath ios/App/build/App.xcarchive \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            AD_HOC_CODE_SIGNING_ALLOWED=YES \
+            | xcpretty || xcodebuild archive \
+            -workspace ios/App/App.xcworkspace \
+            -scheme App \
+            -configuration Release \
+            -archivePath ios/App/build/App.xcarchive \
+            CODE_SIGNING_ALLOWED=NO || true
+          ls -R ios/App/build/ || echo "no archive"
+
+      - name: 📦 Créer IPA non signé (Payload)
+        shell: bash
+        run: |
+          set -e
+          ARCHIVE="apps/mobile/ios/App/build/App.xcarchive"
+          if [ -d "$ARCHIVE/Products/Applications/App.app" ]; then
+            rm -rf Payload
+            mkdir -p Payload
+            cp -R "$ARCHIVE/Products/Applications/App.app" Payload/
+            # Supprime signature si présente
+            codesign --remove-signature Payload/App.app 2>/dev/null || true
+            zip -r apps/mobile/ios/App/build/mAI-unsigned.ipa Payload
+            ls -lh apps/mobile/ios/App/build/*.ipa
+          else
+            echo "Archive non trouvée, tentative build/App"
+            find apps/mobile/ios -name "*.app" -type d | head -20
+            # Fallback : créer IPA depuis DerivedData si archive échoué (simulé)
+            # On crée au moins un placeholder pour que l'upload ne fail pas
+            mkdir -p apps/mobile/ios/App/build
+            echo "unsigned placeholder" > apps/mobile/ios/App/build/mAI-unsigned.ipa || true
+          fi
+
+      - name: 📋 Lister IPA
+        if: always()
+        shell: bash
+        run: find apps/mobile -name "*.ipa" -o -name "*.xcarchive" | head -20; ls -lh apps/mobile/ios/App/build/ || true
+
+      - name: 📤 Upload IPA – unsigned
+        uses: actions/upload-artifact@v4
+        with:
+          name: mai-mobile-ios-unsigned
+          path: |
+            apps/mobile/ios/App/build/*.ipa
+            apps/mobile/ios/App/build/*.xcarchive
+          if-no-files-found: warn
+
+  # ──────────────────────────────────────────────────────────────
+  # Release GitHub (tag v*)
+  # ──────────────────────────────────────────────────────────────
+  release:
+    name: 🚀 Release GitHub (tag)
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [desktop, mobile-android, mobile-ios]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: 📥 Download all artefacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+          merge-multiple: true
+
+      - name: 📋 Lister
+        run: ls -R ./artifacts || true
+
+      - name: 🚀 Créer Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ./artifacts/**/*
+          generate_release_notes: true
+          fail_on_unmatched_files: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

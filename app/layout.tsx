@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
@@ -49,16 +49,17 @@ export const viewport = {
   maximumScale: 1,
 };
 
-const geist = Geist({
+const fontSans = Plus_Jakarta_Sans({
   display: "swap",
   subsets: ["latin"],
-  variable: "--font-geist",
+  variable: "--font-sans",
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const geistMono = Geist_Mono({
+const fontMono = JetBrains_Mono({
   display: "swap",
   subsets: ["latin"],
-  variable: "--font-geist-mono",
+  variable: "--font-mono",
 });
 
 const LIGHT_THEME_COLOR = "hsl(0 0% 100%)";
@@ -88,7 +89,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className={`${geist.variable} ${geistMono.variable}`}
+      className={`${fontSans.variable} ${fontMono.variable} font-sans`}
       lang="fr"
       suppressHydrationWarning
     >

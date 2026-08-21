@@ -109,3 +109,45 @@ export function formatModelName(modelId: string): {
     provider,
   };
 }
+
+export function getModelCapabilities(modelId: string): ModelCapabilities {
+  const lower = modelId.toLowerCase();
+  const isVision =
+    lower.includes("gemini") ||
+    lower.includes("gpt-4o") ||
+    lower.includes("gpt-4-turbo") ||
+    lower.includes("claude-3") ||
+    lower.includes("pixtral") ||
+    lower.includes("qwen-vl") ||
+    lower.includes("vision") ||
+    lower.includes("vl") ||
+    lower.includes("multimodal") ||
+    lower.includes("apex") ||
+    lower.includes("opal");
+
+  const isReasoning =
+    lower.includes("r1") ||
+    lower.includes("o1") ||
+    lower.includes("o3") ||
+    lower.includes("reasoning") ||
+    lower.includes("thinking") ||
+    lower.includes("qwq");
+
+  const isTools =
+    lower.includes("gemini") ||
+    lower.includes("gpt-4") ||
+    lower.includes("gpt-3.5") ||
+    lower.includes("claude") ||
+    lower.includes("llama-3.3") ||
+    lower.includes("llama-3.1") ||
+    lower.includes("qwen-2.5") ||
+    lower.includes("mistral");
+
+  return {
+    tools: isTools,
+    vision: isVision,
+    reasoning: isReasoning,
+  };
+}
+
+

@@ -6,8 +6,11 @@ import equal from "fast-deep-equal";
 import {
   ArrowUpIcon,
   BrainIcon,
+  CloudIcon,
   EyeIcon,
   LockIcon,
+  PlusIcon,
+  UploadIcon,
   WrenchIcon,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -45,6 +48,15 @@ import {
 } from "@/lib/ai/models";
 import type { Attachment, ChatMessage } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { formatBytes } from "@/app/(chat)/library/page";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   PromptInput,
   PromptInputFooter,
@@ -56,6 +68,7 @@ import { Button } from "../ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import { PaperclipIcon, StopIcon } from "./icons";
 import { PreviewAttachment } from "./preview-attachment";
+import { CloudFilePickerDialog } from "./cloud-file-picker-dialog";
 import {
   type SlashCommand,
   SlashCommandMenu,
@@ -143,9 +156,18 @@ function PureMultimodalInput({
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [uploadQueue, setUploadQueue] = useState<string[]>([]);
+  const [cloudPickerOpen, setCloudPickerOpen] = useState(false);
   const [slashOpen, setSlashOpen] = useState(false);
   const [slashQuery, setSlashQuery] = useState("");
   const [slashIndex, setSlashIndex] = useState(0);
+
+  const handleCloudAttachments = useCallback(
+    (newAttachments: Attachment[]) => {
+      setAttachments((curr) => [...curr, ...newAttachments]);
+    },
+    [setAttachments]
+  );
+
 
   const handleInput = useCallback(
     (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -545,8 +567,9 @@ function PureMultimodalInput({
         />
         <PromptInputFooter className="px-3 pb-3">
           <PromptInputTools>
-            <AttachmentsButton
+            <PlusMenuButton
               fileInputRef={fileInputRef}
+              onOpenCloudPicker={() => setCloudPickerOpen(true)}
               selectedModelId={selectedModelId}
               status={status}
             />
@@ -576,6 +599,12 @@ function PureMultimodalInput({
           )}
         </PromptInputFooter>
       </PromptInput>
+
+      <CloudFilePickerDialog
+        open={cloudPickerOpen}
+        onOpenChange={setCloudPickerOpen}
+        onSelectAttachments={handleCloudAttachments}
+      />
     </div>
   );
 }
@@ -635,51 +664,223 @@ function PureAttachmentPreviewItem({
 
 const AttachmentPreviewItem = memo(PureAttachmentPreviewItem);
 
-function PureAttachmentsButton({
+function formatTokenCount(n: number) {
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
+  if (n >= 1_000) return `${Math.round(n / 1_000)}k`;
+  return String(n);
+}
+
+function PurePlusMenuButton({
   fileInputRef,
   status,
   selectedModelId,
+  onOpenCloudPicker,
 }: {
   fileInputRef: React.MutableRefObject<HTMLInputElement | null>;
   status: UseChatHelpers<ChatMessage>["status"];
   selectedModelId: string;
+  onOpenCloudPicker: () => void;
 }) {
   const { data: modelsResponse } = useSWR(
     `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models`,
     (url: string) => fetch(url).then((r) => r.json()),
-    { dedupingInterval: 3_600_000, revalidateOnFocus: false }
+    { dedupingInterval: 60_000, revalidateOnFocus: false }
+  );
+
+  const { data: settingsData } = useSWR(
+    `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/settings`,
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 30_000, revalidateOnFocus: true }
+  );
+
+  const { data: libraryData } = useSWR(
+    `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/library`,
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 30_000, revalidateOnFocus: true }
   );
 
   const caps: Record<string, ModelCapabilities> | undefined =
     modelsResponse?.capabilities ?? modelsResponse;
-  const hasVision = caps?.[selectedModelId]?.vision ?? false;
-  const handleClick = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
-      event.preventDefault();
-      fileInputRef.current?.click();
-    },
-    [fileInputRef]
-  );
+  const hasVision =
+    caps?.[selectedModelId]?.vision ??
+    selectedModelId.toLowerCase().includes("gemini") ??
+    false;
+
+  // Calculs d'usages
+  const aiTokensUsed = settingsData?.aiUsage?.tokensUsed ?? 0;
+  const aiTokensLimit = settingsData?.aiUsage?.limit ?? 500000;
+  const aiPercentUsed =
+    aiTokensLimit > 0
+      ? Math.min(100, Math.round((aiTokensUsed / aiTokensLimit) * 100))
+      : 0;
+
+  const cloudBytesUsed = libraryData?.storage?.bytes_used ?? 0;
+  const cloudBytesLimit = libraryData?.storage?.bytes_limit ?? 524288000;
+  const cloudPercentUsed =
+    libraryData?.storage?.percent_used ??
+    (cloudBytesLimit > 0
+      ? Math.min(100, Math.round((cloudBytesUsed / cloudBytesLimit) * 100))
+      : 0);
+
+  const handleDeviceUploadClick = () => {
+    if (!hasVision) {
+      toast.error(
+        "Ce modèle ne prend pas en charge l'importation de fichiers."
+      );
+      return;
+    }
+    fileInputRef.current?.click();
+  };
+
+  const handleCloudImportClick = () => {
+    if (!hasVision) {
+      toast.error(
+        "Ce modèle ne prend pas en charge l'importation de fichiers."
+      );
+      return;
+    }
+    onOpenCloudPicker();
+  };
 
   return (
-    <Button
-      className={cn(
-        "h-7 w-7 rounded-lg border border-border/40 p-1 transition-colors",
-        hasVision
-          ? "text-foreground hover:border-border hover:text-foreground"
-          : "text-muted-foreground/30 cursor-not-allowed"
-      )}
-      data-testid="attachments-button"
-      disabled={status !== "ready" || !hasVision}
-      onClick={handleClick}
-      variant="ghost"
-    >
-      <PaperclipIcon size={14} style={{ height: 14, width: 14 }} />
-    </Button>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          className={cn(
+            "h-7 w-7 rounded-lg border border-border/40 p-1 transition-colors hover:bg-muted text-foreground cursor-pointer shadow-2xs",
+            !hasVision && "opacity-80"
+          )}
+          data-testid="plus-menu-button"
+          disabled={status !== "ready" && status !== "error"}
+          variant="ghost"
+          title="Ajouter du contenu & Options"
+        >
+          <PlusIcon className="size-4" />
+        </Button>
+      </DropdownMenuTrigger>
+
+      <DropdownMenuContent
+        align="start"
+        side="top"
+        sideOffset={8}
+        className="w-72 p-2 rounded-2xl bg-popover/95 backdrop-blur-md shadow-2xl border border-border/60"
+      >
+        <DropdownMenuLabel className="px-2 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+          Ajouter du contexte à l'IA
+        </DropdownMenuLabel>
+
+        {/* Option 1: Importer depuis l'appareil */}
+        <DropdownMenuItem
+          onClick={handleDeviceUploadClick}
+          disabled={!hasVision}
+          className={cn(
+            "flex items-start gap-2.5 p-2 rounded-xl cursor-pointer text-xs transition-colors",
+            hasVision
+              ? "hover:bg-muted focus:bg-muted text-foreground"
+              : "opacity-45 cursor-not-allowed text-muted-foreground"
+          )}
+        >
+          <div className="p-1.5 rounded-lg bg-primary/10 text-primary shrink-0 mt-0.5">
+            <UploadIcon className="size-3.5" />
+          </div>
+          <div className="flex flex-col gap-0.5">
+            <span className="font-medium text-[13px]">
+              Importer depuis votre appareil
+            </span>
+            <span className="text-[11px] text-muted-foreground leading-tight">
+              {hasVision
+                ? "Photos, PDF, code et documents locaux"
+                : "Non supporté par ce modèle"}
+            </span>
+          </div>
+        </DropdownMenuItem>
+
+        {/* Option 2: Importer depuis la Bibliothèque Cloud */}
+        <DropdownMenuItem
+          onClick={handleCloudImportClick}
+          disabled={!hasVision}
+          className={cn(
+            "flex items-start gap-2.5 p-2 rounded-xl cursor-pointer text-xs transition-colors mt-1",
+            hasVision
+              ? "hover:bg-muted focus:bg-muted text-foreground"
+              : "opacity-45 cursor-not-allowed text-muted-foreground"
+          )}
+        >
+          <div className="p-1.5 rounded-lg bg-blue-500/10 text-blue-500 shrink-0 mt-0.5">
+            <CloudIcon className="size-3.5" />
+          </div>
+          <div className="flex flex-col gap-0.5">
+            <span className="font-medium text-[13px]">
+              Fichiers de la Bibliothèque Cloud
+            </span>
+            <span className="text-[11px] text-muted-foreground leading-tight">
+              {hasVision
+                ? "Sélectionner parmi vos documents enregistrés"
+                : "Non supporté par ce modèle"}
+            </span>
+          </div>
+        </DropdownMenuItem>
+
+        <DropdownMenuSeparator className="my-2 bg-border/40" />
+
+        {/* Visibilité Usages mAI & Cloud en petit texte */}
+        <div className="px-2 py-1.5 flex flex-col gap-2 bg-muted/30 rounded-xl border border-border/30">
+          {/* Usage mAI */}
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center justify-between text-[11px]">
+              <span className="font-semibold text-foreground">
+                mAI - {aiPercentUsed}% utilisés
+              </span>
+              <span className="text-[10px] text-muted-foreground font-mono">
+                {formatTokenCount(aiTokensUsed)} / {formatTokenCount(aiTokensLimit)}
+              </span>
+            </div>
+            <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
+              <div
+                className={cn(
+                  "h-full rounded-full transition-all duration-300",
+                  aiPercentUsed > 90
+                    ? "bg-red-500"
+                    : aiPercentUsed > 75
+                    ? "bg-amber-500"
+                    : "bg-primary"
+                )}
+                style={{ width: `${aiPercentUsed}%` }}
+              />
+            </div>
+          </div>
+
+          {/* Usage Cloud */}
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center justify-between text-[11px]">
+              <span className="font-semibold text-foreground">
+                Cloud - {cloudPercentUsed}% utilisés
+              </span>
+              <span className="text-[10px] text-muted-foreground font-mono">
+                {formatBytes(cloudBytesUsed)} / {formatBytes(cloudBytesLimit)}
+              </span>
+            </div>
+            <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
+              <div
+                className={cn(
+                  "h-full rounded-full transition-all duration-300",
+                  cloudPercentUsed > 90
+                    ? "bg-red-500"
+                    : cloudPercentUsed > 75
+                    ? "bg-amber-500"
+                    : "bg-blue-500"
+                )}
+                style={{ width: `${cloudPercentUsed}%` }}
+              />
+            </div>
+          </div>
+        </div>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
 
-const AttachmentsButton = memo(PureAttachmentsButton);
+const PlusMenuButton = memo(PurePlusMenuButton);
 
 function ModelSelectorOption({
   capabilities,

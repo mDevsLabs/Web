@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>mAI</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { height: 100%; overflow: hidden; background: #0a0a0a; }
+      /* Fallback Web : si lancé hors Capacitor, affiche iframe plein écran */
+      #app { width: 100vw; height: 100vh; border: 0; display: block; background: #0a0a0a; }
+      .loader {
+        position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+        background: #0a0a0a; color: #fff; font-family: system-ui, sans-serif; flex-direction: column; gap: 16px;
+      }
+      .loader img { width: 96px; height: 96px; border-radius: 22px; }
+      .loader p { opacity: 0.6; font-size: 14px; }
+    </style>
+  </head>
+  <body>
+    <div class="loader" id="loader">
+      <img src="./icon.png" alt="mAI" onerror="this.style.display='none'" />
+      <p>Chargement de mAI…</p>
+    </div>
+    <iframe
+      id="app"
+      title="mAI"
+      src="https://mai-officiel.vercel.app"
+      allow="clipboard-read; clipboard-write; fullscreen; geolocation; camera; microphone"
+      sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+    ></iframe>
+    <script>
+      // Hors Capacitor, on cache le loader quand l'iframe charge
+      const iframe = document.getElementById("app");
+      const loader = document.getElementById("loader");
+      iframe.addEventListener("load", () => (loader.style.display = "none"));
+      iframe.addEventListener("error", () => (loader.innerHTML = "<p>Impossible de charger mAI. Vérifiez votre connexion.</p>"));
+      // Détection Capacitor : si présent, il chargera server.url directement et cette page ne sera pas utilisée
+      if (window.Capacitor) {
+        // Capacitor natif : les plugins sont dispos, on peut masquer la WebView fallback
+        loader.innerHTML = "<p>Ouverture de mAI…</p>";
+      }
+      // Timeout fallback
+      setTimeout(() => { if (loader) loader.style.display = "none"; }, 8000);
+    </script>
+  </body>
+</html>

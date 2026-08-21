@@ -1,0 +1,113 @@
+{
+  "name": "mai-desktop",
+  "version": "3.1.0",
+  "description": "mAI Desktop – Application Electron pour https://mai-officiel.vercel.app",
+  "author": "mAI",
+  "private": true,
+  "main": "dist/main.js",
+  "homepage": "https://mai-officiel.vercel.app",
+  "packageManager": "pnpm@10.32.1",
+  "scripts": {
+    "dev": "tsc && electron .",
+    "build": "tsc",
+    "pack": "pnpm run build && electron-builder --dir",
+    "dist": "pnpm run build && electron-builder",
+    "dist:win": "pnpm run build && electron-builder --win",
+    "dist:mac": "pnpm run build && electron-builder --mac",
+    "dist:linux": "pnpm run build && electron-builder --linux",
+    "generate:icons": "node scripts/generate-icons.mjs",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "appId": "app.mai.officiel.desktop",
+    "productName": "mAI",
+    "copyright": "Copyright © 2026 mAI",
+    "directories": {
+      "buildResources": "build",
+      "output": "dist-elec"
+    },
+    "files": [
+      "dist/**/*",
+      "build/**/*",
+      "package.json"
+    ],
+    "extraMetadata": {
+      "main": "dist/main.js"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "publisherName": "mAI",
+      "verifyUpdateCodeSignature": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "mAI"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        },
+        {
+          "target": "zip",
+          "arch": ["x64", "arm64"]
+        }
+      ],
+      "icon": "build/icon.icns",
+      "category": "public.app-category.productivity",
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false,
+      "identity": null,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist"
+    },
+    "dmg": {
+      "sign": false,
+      "icon": "build/icon.icns"
+    },
+    "afterSign": null,
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": ["x64"]
+        },
+        {
+          "target": "deb",
+          "arch": ["x64"]
+        },
+        {
+          "target": "rpm",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "build/icon.png",
+      "category": "Office",
+      "maintainer": "mAI",
+      "description": "Application desktop mAI – https://mai-officiel.vercel.app"
+    },
+    "publish": null,
+    "forceCodeSigning": false
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^24.13.2",
+    "electron": "^33.4.1",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.6.3"
+  }
+}

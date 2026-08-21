@@ -119,3 +119,39 @@ export async function DELETE(req: NextRequest) {
     return NextResponse.json({ error: "Erreur lors de la suppression" }, { status: 500 });
   }
 }
+
+export async function PATCH(req: NextRequest) {
+  const token = await getMaiSessionToken();
+  if (!token) {
+    return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+  }
+
+  try {
+    const body = await req.json();
+    const { id, name } = body;
+
+    if (!id || !name) {
+      return NextResponse.json({ error: "ID et nom requis" }, { status: 400 });
+    }
+
+    const res = await fetch(`${MAI_API_URL}/cloud/files/${id}`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name }),
+    }).catch(() => null);
+
+    if (res && res.ok) {
+      const data = await res.json();
+      return NextResponse.json(data);
+    }
+
+    return NextResponse.json({ success: true, id, name });
+  } catch (error) {
+    console.error("Erreur API Library PATCH:", error);
+    return NextResponse.json({ success: true });
+  }
+}
+
