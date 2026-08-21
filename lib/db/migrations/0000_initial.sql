@@ -12,35 +12,35 @@ CREATE TABLE IF NOT EXISTS "User" (
 
 CREATE TABLE IF NOT EXISTS "Chat" (
   "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-  "createdAt" timestamp NOT NULL,
-  "title" text NOT NULL,
-  "userId" uuid NOT NULL REFERENCES "User"("id"),
+  "createdAt" timestamp NOT NULL DEFAULT now(),
+  "title" text NOT NULL DEFAULT 'Nouvelle discussion',
+  "userId" text NOT NULL,
   "visibility" varchar NOT NULL DEFAULT 'private'
 );
 
 CREATE TABLE IF NOT EXISTS "Message_v2" (
-  "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-  "chatId" uuid NOT NULL REFERENCES "Chat"("id"),
+  "id" text PRIMARY KEY NOT NULL,
+  "chatId" uuid NOT NULL REFERENCES "Chat"("id") ON DELETE CASCADE,
   "role" varchar NOT NULL,
   "parts" json NOT NULL,
-  "attachments" json NOT NULL,
-  "createdAt" timestamp NOT NULL
+  "attachments" json NOT NULL DEFAULT '[]'::json,
+  "createdAt" timestamp NOT NULL DEFAULT now()
 );
 
 CREATE TABLE IF NOT EXISTS "Vote_v2" (
-  "chatId" uuid NOT NULL REFERENCES "Chat"("id"),
-  "messageId" uuid NOT NULL REFERENCES "Message_v2"("id"),
+  "chatId" uuid NOT NULL REFERENCES "Chat"("id") ON DELETE CASCADE,
+  "messageId" text NOT NULL,
   "isUpvoted" boolean NOT NULL,
   PRIMARY KEY ("chatId", "messageId")
 );
 
 CREATE TABLE IF NOT EXISTS "Document" (
   "id" uuid DEFAULT gen_random_uuid() NOT NULL,
-  "createdAt" timestamp NOT NULL,
+  "createdAt" timestamp NOT NULL DEFAULT now(),
   "title" text NOT NULL,
   "content" text,
   "text" varchar NOT NULL DEFAULT 'text',
-  "userId" uuid NOT NULL REFERENCES "User"("id"),
+  "userId" text NOT NULL,
   PRIMARY KEY ("id", "createdAt")
 );
 
@@ -52,16 +52,15 @@ CREATE TABLE IF NOT EXISTS "Suggestion" (
   "suggestedText" text NOT NULL,
   "description" text,
   "isResolved" boolean NOT NULL DEFAULT false,
-  "userId" uuid NOT NULL REFERENCES "User"("id"),
-  "createdAt" timestamp NOT NULL,
+  "userId" text NOT NULL,
+  "createdAt" timestamp NOT NULL DEFAULT now(),
   PRIMARY KEY ("id"),
   FOREIGN KEY ("documentId", "documentCreatedAt") REFERENCES "Document"("id", "createdAt")
 );
 
 CREATE TABLE IF NOT EXISTS "Stream" (
-  "id" uuid DEFAULT gen_random_uuid() NOT NULL,
-  "chatId" uuid NOT NULL,
-  "createdAt" timestamp NOT NULL,
-  PRIMARY KEY ("id"),
-  FOREIGN KEY ("chatId") REFERENCES "Chat"("id")
+  "id" text PRIMARY KEY NOT NULL,
+  "chatId" uuid NOT NULL REFERENCES "Chat"("id") ON DELETE CASCADE,
+  "createdAt" timestamp NOT NULL DEFAULT now(),
+  PRIMARY KEY ("id")
 );
