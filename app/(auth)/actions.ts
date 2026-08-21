@@ -50,24 +50,42 @@ export async function verifyLoginAction(
   email: string,
   code: string
 ): Promise<AuthResponse> {
-  if (!email || !code) {
+  const cleanEmail = email ? email.trim() : "";
+  const cleanCode = code ? code.trim() : "";
+
+  if (!cleanEmail || !cleanCode) {
     return { success: false, error: "E-mail et code requis." };
   }
 
   try {
+    // 1ère tentative avec email exact
     const res = await fetch(`${MAI_API_URL}/verify-login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, code: code.trim() }),
+      body: JSON.stringify({ email: cleanEmail, code: cleanCode }),
     });
 
     const data = await res.json();
-    if (!res.ok || !data.token) {
-      return { success: false, error: data.error || "Code invalide ou expiré." };
+    if (res.ok && data.token) {
+      await setMaiSessionToken(data.token);
+      return { success: true, tier: data.tier };
     }
 
-    await setMaiSessionToken(data.token);
-    return { success: true, tier: data.tier };
+    // 2ème tentative en minuscules si différent
+    if (cleanEmail !== cleanEmail.toLowerCase()) {
+      const lowerRes = await fetch(`${MAI_API_URL}/verify-login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: cleanEmail.toLowerCase(), code: cleanCode }),
+      });
+      const lowerData = await lowerRes.json();
+      if (lowerRes.ok && lowerData.token) {
+        await setMaiSessionToken(lowerData.token);
+        return { success: true, tier: lowerData.tier };
+      }
+    }
+
+    return { success: false, error: data.error || "Code invalide ou expiré." };
   } catch (err: any) {
     console.error("Erreur verifyLoginAction:", err);
     return { success: false, error: "Erreur serveur lors de la vérification du code." };
