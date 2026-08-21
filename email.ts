@@ -93,54 +93,77 @@ export async function sendVerificationEmail(
   `;
 
   // 1. Gmail SMTP via Nodemailer
-  const gmailUser = Deno.env.get("GMAIL_USER") || "tusseaumathias85@gmail.com";
-  const gmailAppPass = Deno.env.get("GMAIL_APP_PASSWORD");
+  const rawGmailUser = Deno.env.get("GMAIL_USER") || "tusseaumathias85@gmail.com";
+  const gmailUser = rawGmailUser.trim();
+  const rawGmailAppPass = Deno.env.get("GMAIL_APP_PASSWORD");
+  // Nettoyer les espaces souvent présents dans les mots de passe d'application Google
+  const gmailAppPass = rawGmailAppPass ? rawGmailAppPass.replace(/\s+/g, "").trim() : "";
+
+  let emailSent = false;
 
   if (gmailAppPass) {
     try {
       const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
         auth: {
-          pass: gmailAppPass,
           user: gmailUser,
+          pass: gmailAppPass,
         },
-        service: "gmail",
       });
 
       await transporter.sendMail({
         from: `"mAI" <${gmailUser}>`,
-        html,
-        subject,
         to: email,
+        subject,
+        html,
       });
 
-      console.log(`✉️ E-mail envoyé avec succès via Gmail SMTP à ${email}`);
+      console.log(`✉️ [Gmail SMTP] E-mail envoyé avec succès à ${email}`);
+      emailSent = true;
       return;
     } catch (err: any) {
-      console.error("❌ Erreur d'envoi Gmail SMTP :", err?.message || err);
+      console.error("❌ [Gmail SMTP] Erreur d'envoi :", err?.message || err);
     }
+  } else {
+    console.warn("⚠️ [Gmail SMTP] GMAIL_APP_PASSWORD non défini dans les variables d'environnement.");
   }
 
   // 2. Resend Fallback
   const resendKey = Deno.env.get("RESEND_API_KEY");
-  if (resendKey) {
+  if (resendKey && !emailSent) {
     try {
       const res = await fetch("https://api.resend.com/emails", {
-        body: JSON.stringify({
-          from: "mAI <onboarding@resend.dev>",
-          html,
-          subject,
-          to: email,
-        }),
+        method: "POST",
         headers: {
-          Authorization: `Bearer ${resendKey}`,
+          Authorization: `Bearer ${resendKey.trim()}`,
           "Content-Type": "application/json",
         },
-        method: "POST",
+        body: JSON.stringify({
+          from: "mAI <onboarding@resend.dev>",
+          to: email,
+          subject,
+          html,
+        }),
       });
+
       if (res.ok) {
+        console.log(`✉️ [Resend] E-mail envoyé avec succès à ${email}`);
+        emailSent = true;
+        return;
+      } else {
+        const errBody = await res.text();
+        console.error("❌ [Resend] Erreur API :", res.status, errBody);
       }
-    } catch (_e) {
-      // ignore
+    } catch (e: any) {
+      console.error("❌ [Resend] Erreur fetch :", e?.message || e);
     }
+  } else if (!resendKey && !emailSent) {
+    console.warn("⚠️ [Resend] RESEND_API_KEY non défini dans les variables d'environnement.");
+  }
+
+  if (!emailSent) {
+    console.error(`🚨 [ALERTE EMAIL] Échec total de l'envoi d'e-mail pour ${email} (Code: ${code}). Vérifiez les secrets Val Town !`);
   }
 }
