@@ -70,8 +70,11 @@ export function getDb() {
     const connectionString =
       process.env.DATABASE_URL ||
       process.env.POSTGRES_URL ||
+      process.env.POSTGRES_PRISMA_URL ||
       "postgres://postgres:postgres@localhost:5432/postgres";
-    const client = postgres(connectionString);
+    const client = postgres(connectionString, {
+      prepare: false,
+    });
     _db = drizzle(client);
     if (process.env.DATABASE_URL || process.env.POSTGRES_URL) {
       ensureTableTypes(client).catch(() => {});

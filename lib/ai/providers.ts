@@ -26,12 +26,12 @@ export function getLanguageModel(
   }
 
   const maiClient = createOpenAI({
-    baseURL: `${MAI_API_URL}/v1`,
+    baseURL: MAI_API_URL,
     apiKey: effectiveKey,
     headers,
   });
 
-  return maiClient(modelId);
+  return maiClient.chat(modelId);
 }
 
 export function getTitleModel(options?: {
