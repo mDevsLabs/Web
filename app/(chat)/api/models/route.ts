@@ -6,7 +6,7 @@ export async function GET() {
   const capabilities: Record<string, ReturnType<typeof getModelCapabilities>> = {};
 
   for (const model of models) {
-    capabilities[model.id] = getModelCapabilities(model.id);
+    capabilities[model.id] = getModelCapabilities(model);
   }
 
   return Response.json(

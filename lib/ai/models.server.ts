@@ -51,13 +51,15 @@ export async function fetchUserModels(): Promise<ChatModel[]> {
     return rawList.map((m: any) => {
       const { name, provider, isFree } = formatModelName(m.id);
       return {
+        architecture: m.architecture,
+        description: m.description || `Modèle ${provider}`,
         id: m.id,
-        name,
-        provider,
-        description: `Modèle ${provider}`,
-        maxContext: m.maxContext || 128000,
+        isFree: m.isFree !== undefined ? m.isFree : isFree,
+        maxContext: m.maxContext || m.context_length || 128000,
         maxOutput: m.maxOutput || 4096,
-        isFree,
+        name: m.name && m.name !== m.id ? m.name : name,
+        provider,
+        supported_parameters: m.supported_parameters,
       };
     });
   } catch (err) {

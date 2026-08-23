@@ -42,13 +42,15 @@ export function registerMiddleware(app: Hono) {
         LIMIT 1
       `;
 
+      const isJwtRoute = path.startsWith("/v1/devices");
+
       if (rows.length > 0) {
         const apiKeyData = rows[0];
         userPlan = apiKeyData.user_tier || apiKeyData.plan || "Free";
         currentUserId = apiKeyData.user_id;
         matchedApiKey = apiKeyData.api_key || apiKey;
-      } else {
-        // Tenter de valider comme jeton JWT de session (pour l'application Web mAI)
+      } else if (isJwtRoute && apiKey) {
+        // Routes de compte : accepter un token JWT de session (pas une API Key)
         try {
           const blacklisted = await sqlite.execute({ args: [apiKey], sql: "SELECT 1 FROM token_blacklist WHERE token = ?" });
           if (blacklisted.rows.length > 0) {
@@ -58,10 +60,10 @@ export function registerMiddleware(app: Hono) {
           currentUserId = String(payload.sub);
           userPlan = String(payload.tier || "Free");
         } catch (_jwtErr) {
-          if (!isPublicRoute) {
-            return c.json({ error: "Invalid API Key." }, 403);
-          }
+          return c.json({ error: "Invalid API Key." }, 403);
         }
+      } else if (!isPublicRoute) {
+        return c.json({ error: "Invalid API Key." }, 403);
       }
     }
 

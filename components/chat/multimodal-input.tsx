@@ -701,8 +701,11 @@ function PurePlusMenuButton({
 
   const caps: Record<string, ModelCapabilities> | undefined =
     modelsResponse?.capabilities ?? modelsResponse;
-  const hasVision =
-    caps?.[selectedModelId]?.vision ??
+  const currentCap = caps?.[selectedModelId];
+  const hasFileOrImage =
+    currentCap?.file ??
+    currentCap?.image ??
+    currentCap?.vision ??
     selectedModelId.toLowerCase().includes("gemini") ??
     false;
 
@@ -723,7 +726,7 @@ function PurePlusMenuButton({
       : 0);
 
   const handleDeviceUploadClick = () => {
-    if (!hasVision) {
+    if (!hasFileOrImage) {
       toast.error(
         "Ce modèle ne prend pas en charge l'importation de fichiers."
       );
@@ -733,7 +736,7 @@ function PurePlusMenuButton({
   };
 
   const handleCloudImportClick = () => {
-    if (!hasVision) {
+    if (!hasFileOrImage) {
       toast.error(
         "Ce modèle ne prend pas en charge l'importation de fichiers."
       );
@@ -748,7 +751,7 @@ function PurePlusMenuButton({
         <Button
           className={cn(
             "h-7 w-7 rounded-lg border border-border/40 p-1 transition-colors hover:bg-muted text-foreground cursor-pointer shadow-2xs",
-            !hasVision && "opacity-80"
+            !hasFileOrImage && "opacity-80"
           )}
           data-testid="plus-menu-button"
           disabled={status !== "ready" && status !== "error"}
@@ -772,10 +775,10 @@ function PurePlusMenuButton({
         {/* Option 1: Importer depuis l'appareil */}
         <DropdownMenuItem
           onClick={handleDeviceUploadClick}
-          disabled={!hasVision}
+          disabled={!hasFileOrImage}
           className={cn(
             "flex items-start gap-2.5 p-2 rounded-xl cursor-pointer text-xs transition-colors",
-            hasVision
+            hasFileOrImage
               ? "hover:bg-muted focus:bg-muted text-foreground"
               : "opacity-45 cursor-not-allowed text-muted-foreground"
           )}
@@ -788,7 +791,7 @@ function PurePlusMenuButton({
               Importer depuis votre appareil
             </span>
             <span className="text-[11px] text-muted-foreground leading-tight">
-              {hasVision
+              {hasFileOrImage
                 ? "Photos, PDF, code et documents locaux"
                 : "Non supporté par ce modèle"}
             </span>
@@ -798,10 +801,10 @@ function PurePlusMenuButton({
         {/* Option 2: Importer depuis la Bibliothèque Cloud */}
         <DropdownMenuItem
           onClick={handleCloudImportClick}
-          disabled={!hasVision}
+          disabled={!hasFileOrImage}
           className={cn(
             "flex items-start gap-2.5 p-2 rounded-xl cursor-pointer text-xs transition-colors mt-1",
-            hasVision
+            hasFileOrImage
               ? "hover:bg-muted focus:bg-muted text-foreground"
               : "opacity-45 cursor-not-allowed text-muted-foreground"
           )}
@@ -814,7 +817,7 @@ function PurePlusMenuButton({
               Fichiers de la Bibliothèque Cloud
             </span>
             <span className="text-[11px] text-muted-foreground leading-tight">
-              {hasVision
+              {hasFileOrImage
                 ? "Sélectionner parmi vos documents enregistrés"
                 : "Non supporté par ce modèle"}
             </span>
@@ -940,10 +943,12 @@ function ModelSelectorOption({
               "Outils supportés"
             )
           : null}
-        {capabilities?.[model.id]?.vision
+        {capabilities?.[model.id]?.image ||
+        capabilities?.[model.id]?.file ||
+        capabilities?.[model.id]?.vision
           ? maybeWithTooltip(
               <EyeIcon className="size-3.5" />,
-              "Vision / Images supportées"
+              "Fichiers & Images supportés"
             )
           : null}
         {capabilities?.[model.id]?.reasoning

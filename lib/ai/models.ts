@@ -1,6 +1,8 @@
 export type ModelCapabilities = {
   tools: boolean;
   vision: boolean;
+  image: boolean;
+  file: boolean;
   reasoning: boolean;
 };
 
@@ -12,6 +14,13 @@ export type ChatModel = {
   maxContext?: number;
   maxOutput?: number;
   isFree?: boolean;
+  architecture?: {
+    modality?: string;
+    input_modalities?: string[];
+    output_modalities?: string[];
+    [key: string]: any;
+  };
+  supported_parameters?: string[];
 };
 
 export const DEFAULT_CHAT_MODEL = "google/gemini-2.5-flash";
@@ -25,32 +34,76 @@ export const titleModel = {
 
 export const FALLBACK_MODELS: ChatModel[] = [
   {
+    architecture: {
+      input_modalities: ["text", "image", "file"],
+      modality: "text+image->text",
+      output_modalities: ["text"],
+    },
     description: "Modèle multimodal ultra-rapide de Google",
     id: "google/gemini-2.5-flash",
     isFree: false,
     name: "Gemini 2.5 Flash",
     provider: "google",
+    supported_parameters: [
+      "temperature",
+      "top_p",
+      "top_k",
+      "max_tokens",
+      "tools",
+      "response_format",
+    ],
   },
   {
+    architecture: {
+      input_modalities: ["text"],
+      modality: "text->text",
+      output_modalities: ["text"],
+    },
     description: "Modèle open-source de pointe par Meta",
     id: "meta-llama/llama-3.3-70b-instruct:free",
     isFree: true,
     name: "Llama 3.3 70B",
     provider: "meta-llama",
+    supported_parameters: [
+      "temperature",
+      "top_p",
+      "max_tokens",
+      "tools",
+      "response_format",
+    ],
   },
   {
+    architecture: {
+      input_modalities: ["text"],
+      modality: "text->text",
+      output_modalities: ["text"],
+    },
     description: "Modèle de raisonnement avancé DeepSeek",
     id: "deepseek/deepseek-r1:free",
     isFree: true,
     name: "DeepSeek R1",
     provider: "deepseek",
+    supported_parameters: [
+      "temperature",
+      "top_p",
+      "max_tokens",
+      "stream",
+      "thinking",
+      "reasoning",
+    ],
   },
   {
+    architecture: {
+      input_modalities: ["text"],
+      modality: "text->text",
+      output_modalities: ["text"],
+    },
     description: "Spécialisé pour le code et le développement",
     id: "qwen/qwen-2.5-coder-32b-instruct:free",
     isFree: true,
     name: "Qwen 2.5 Coder 32B",
     provider: "qwen",
+    supported_parameters: ["temperature", "top_p", "max_tokens", "stop", "tools"],
   },
 ];
 
@@ -110,9 +163,45 @@ export function formatModelName(modelId: string): {
   };
 }
 
-export function getModelCapabilities(modelId: string): ModelCapabilities {
+export function getModelCapabilities(
+  modelInput: string | Partial<ChatModel> | any
+): ModelCapabilities {
+  const model: Partial<ChatModel> =
+    typeof modelInput === "string" ? { id: modelInput } : modelInput || {};
+  const modelId = model.id || "";
   const lower = modelId.toLowerCase();
-  const isVision =
+
+  const inputModalities: string[] =
+    model.architecture?.input_modalities ||
+    (model as any)?.input_modalities ||
+    [];
+  const modality = (
+    model.architecture?.modality ||
+    (model as any)?.modality ||
+    ""
+  ).toLowerCase();
+  const supportedParams: string[] =
+    model.supported_parameters ||
+    (model as any)?.supported_parameters ||
+    [];
+
+  // 1. Détection prise en charge images
+  const hasImageModal =
+    inputModalities.includes("image") ||
+    modality.includes("image") ||
+    modality.includes("multimodal");
+
+  // 2. Détection prise en charge fichiers (documents, pdf, code, etc.)
+  const hasFileModal =
+    inputModalities.includes("file") ||
+    inputModalities.includes("document") ||
+    inputModalities.includes("pdf") ||
+    modality.includes("file") ||
+    modality.includes("document") ||
+    modality.includes("multimodal");
+
+  // Heuristique de secours par nom de modèle si aucune métadonnée n'est fournie par l'API
+  const isVisionHeuristic =
     lower.includes("gemini") ||
     lower.includes("gpt-4o") ||
     lower.includes("gpt-4-turbo") ||
@@ -123,30 +212,64 @@ export function getModelCapabilities(modelId: string): ModelCapabilities {
     lower.includes("vl") ||
     lower.includes("multimodal") ||
     lower.includes("apex") ||
-    lower.includes("opal");
+    lower.includes("opal") ||
+    lower.includes("light");
 
-  const isReasoning =
-    lower.includes("r1") ||
-    lower.includes("o1") ||
-    lower.includes("o3") ||
-    lower.includes("reasoning") ||
-    lower.includes("thinking") ||
-    lower.includes("qwq");
+  const isImage =
+    inputModalities.length > 0 || modality
+      ? hasImageModal
+      : isVisionHeuristic;
 
+  const isFile =
+    inputModalities.length > 0 || modality
+      ? hasFileModal || hasImageModal
+      : (lower.includes("gemini") ||
+          lower.includes("gpt-4o") ||
+          lower.includes("claude-3") ||
+          isVisionHeuristic);
+
+  const isVision = isImage || isFile;
+
+  // 3. Détection des outils supportés
   const isTools =
-    lower.includes("gemini") ||
-    lower.includes("gpt-4") ||
-    lower.includes("gpt-3.5") ||
-    lower.includes("claude") ||
-    lower.includes("llama-3.3") ||
-    lower.includes("llama-3.1") ||
-    lower.includes("qwen-2.5") ||
-    lower.includes("mistral");
+    supportedParams.length > 0
+      ? supportedParams.includes("tools") ||
+        supportedParams.includes("function_calling")
+      : (
+          lower.includes("gemini") ||
+          lower.includes("gpt-4") ||
+          lower.includes("gpt-3.5") ||
+          lower.includes("claude") ||
+          lower.includes("llama-3.3") ||
+          lower.includes("llama-3.1") ||
+          lower.includes("qwen-2.5") ||
+          lower.includes("mistral") ||
+          lower.includes("apex") ||
+          lower.includes("opal") ||
+          lower.includes("light")
+        );
+
+  // 4. Détection du raisonnement (Reasoning / Thinking)
+  const isReasoning =
+    supportedParams.length > 0 &&
+    (supportedParams.includes("thinking") ||
+      supportedParams.includes("reasoning"))
+      ? true
+      : (
+          lower.includes("r1") ||
+          lower.includes("o1") ||
+          lower.includes("o3") ||
+          lower.includes("reasoning") ||
+          lower.includes("thinking") ||
+          lower.includes("qwq")
+        );
 
   return {
+    file: isFile,
+    image: isImage,
+    reasoning: isReasoning,
     tools: isTools,
     vision: isVision,
-    reasoning: isReasoning,
   };
 }
 

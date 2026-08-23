@@ -34,6 +34,15 @@ export async function sendVerificationEmail(
       title = "Suppression du compte";
       textContent = "Vous avez demandé la suppression de votre compte. Voici votre code à 8 chiffres :";
       break;
+    case "subscription_unlocked":
+      const tierUnlocked = extraInfo?.tier || "Pro";
+      subject = `Merci d'avoir souscrit au forfait ${tierUnlocked} ! - mAI`;
+      title = `Merci d'avoir souscrit au forfait ${tierUnlocked} !`;
+      showCode = false;
+      textContent = `Nous vous remercions chaleureusement pour votre souscription au forfait <strong>${tierUnlocked}</strong> sur <strong>mAI</strong> ! 🎉<br><br>
+        Votre compte bénéficie dès maintenant de vos nouveaux quotas étendus pour l'ensemble de vos applications et clés d'API (tokens mAI, requêtes API et stockage Cloud).<br><br>
+        Toute l'équipe mDevsLabs vous remercie pour votre confiance et vous souhaite une excellente expérience créative et productive avec mAI.`;
+      break;
     case "new_login":
       subject = "Nouvelle connexion détectée - mAI";
       title = "Alerte de sécurité";
@@ -93,77 +102,54 @@ export async function sendVerificationEmail(
   `;
 
   // 1. Gmail SMTP via Nodemailer
-  const rawGmailUser = Deno.env.get("GMAIL_USER") || "tusseaumathias85@gmail.com";
-  const gmailUser = rawGmailUser.trim();
-  const rawGmailAppPass = Deno.env.get("GMAIL_APP_PASSWORD");
-  // Nettoyer les espaces souvent présents dans les mots de passe d'application Google
-  const gmailAppPass = rawGmailAppPass ? rawGmailAppPass.replace(/\s+/g, "").trim() : "";
-
-  let emailSent = false;
+  const gmailUser = Deno.env.get("GMAIL_USER") || "tusseaumathias85@gmail.com";
+  const gmailAppPass = Deno.env.get("GMAIL_APP_PASSWORD");
 
   if (gmailAppPass) {
     try {
       const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 465,
-        secure: true,
         auth: {
-          user: gmailUser,
           pass: gmailAppPass,
+          user: gmailUser,
         },
+        service: "gmail",
       });
 
       await transporter.sendMail({
         from: `"mAI" <${gmailUser}>`,
-        to: email,
-        subject,
         html,
+        subject,
+        to: email,
       });
 
-      console.log(`✉️ [Gmail SMTP] E-mail envoyé avec succès à ${email}`);
-      emailSent = true;
+      console.log(`✉️ E-mail envoyé avec succès via Gmail SMTP à ${email}`);
       return;
     } catch (err: any) {
-      console.error("❌ [Gmail SMTP] Erreur d'envoi :", err?.message || err);
+      console.error("❌ Erreur d'envoi Gmail SMTP :", err?.message || err);
     }
-  } else {
-    console.warn("⚠️ [Gmail SMTP] GMAIL_APP_PASSWORD non défini dans les variables d'environnement.");
   }
 
   // 2. Resend Fallback
   const resendKey = Deno.env.get("RESEND_API_KEY");
-  if (resendKey && !emailSent) {
+  if (resendKey) {
     try {
       const res = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${resendKey.trim()}`,
-          "Content-Type": "application/json",
-        },
         body: JSON.stringify({
           from: "mAI <onboarding@resend.dev>",
-          to: email,
-          subject,
           html,
+          subject,
+          to: email,
         }),
+        headers: {
+          Authorization: `Bearer ${resendKey}`,
+          "Content-Type": "application/json",
+        },
+        method: "POST",
       });
-
       if (res.ok) {
-        console.log(`✉️ [Resend] E-mail envoyé avec succès à ${email}`);
-        emailSent = true;
-        return;
-      } else {
-        const errBody = await res.text();
-        console.error("❌ [Resend] Erreur API :", res.status, errBody);
       }
-    } catch (e: any) {
-      console.error("❌ [Resend] Erreur fetch :", e?.message || e);
+    } catch (_e) {
+      // ignore
     }
-  } else if (!resendKey && !emailSent) {
-    console.warn("⚠️ [Resend] RESEND_API_KEY non défini dans les variables d'environnement.");
-  }
-
-  if (!emailSent) {
-    console.error(`🚨 [ALERTE EMAIL] Échec total de l'envoi d'e-mail pour ${email} (Code: ${code}). Vérifiez les secrets Val Town !`);
   }
 }
