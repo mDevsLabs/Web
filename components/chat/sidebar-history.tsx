@@ -79,9 +79,9 @@ const groupChatsByDate = (chats: Chat[]): GroupedChats => {
 
 export function getChatHistoryPaginationKey(
   pageIndex: number,
-  previousPageData: ChatHistory
+  previousPageData: ChatHistory | null
 ) {
-  if (previousPageData && previousPageData.hasMore === false) {
+  if (previousPageData && (previousPageData.hasMore === false || !Array.isArray(previousPageData.chats))) {
     return null;
   }
 
@@ -89,7 +89,7 @@ export function getChatHistoryPaginationKey(
     return `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/history?limit=${PAGE_SIZE}`;
   }
 
-  const firstChatFromPage = previousPageData.chats.at(-1);
+  const firstChatFromPage = previousPageData?.chats?.at(-1);
 
   if (!firstChatFromPage) {
     return null;
@@ -109,6 +109,7 @@ export function SidebarHistory({ user }: { user?: { email?: string; id?: string 
     setSize,
     isValidating,
     isLoading,
+    error,
     mutate,
   } = useSWRInfinite<ChatHistory>(
     user ? getChatHistoryPaginationKey : () => null,
@@ -121,15 +122,16 @@ export function SidebarHistory({ user }: { user?: { email?: string; id?: string 
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   const allChats = paginatedChatHistories
-    ? paginatedChatHistories.flatMap((page) => page.chats || [])
+    ? paginatedChatHistories.flatMap((page) => (Array.isArray(page?.chats) ? page.chats : []))
     : [];
 
   const hasReachedEnd = paginatedChatHistories
-    ? paginatedChatHistories.some((page) => page.hasMore === false)
+    ? paginatedChatHistories.some((page) => !page || page.hasMore === false)
     : false;
 
   const hasEmptyChatHistory =
     !isLoading &&
+    !error &&
     Boolean(paginatedChatHistories && paginatedChatHistories.length > 0 && allChats.length === 0);
 
   const handleDelete = useCallback(() => {
@@ -165,10 +167,10 @@ export function SidebarHistory({ user }: { user?: { email?: string; id?: string 
   }, []);
 
   const handleViewportEnter = useCallback(() => {
-    if (!isValidating && !hasReachedEnd) {
+    if (!isValidating && !isLoading && !error && !hasReachedEnd) {
       setSize((size) => size + 1);
     }
-  }, [hasReachedEnd, isValidating, setSize]);
+  }, [hasReachedEnd, isValidating, isLoading, error, setSize]);
 
   if (!user) {
     return (
@@ -205,6 +207,30 @@ export function SidebarHistory({ user }: { user?: { email?: string; id?: string 
                 />
               </div>
             ))}
+          </div>
+        </SidebarGroupContent>
+      </SidebarGroup>
+    );
+  }
+
+  if (error && allChats.length === 0) {
+    return (
+      <SidebarGroup className="group-data-[collapsible=icon]:hidden">
+        <SidebarGroupLabel className="text-[10px] font-semibold uppercase tracking-[0.12em] text-sidebar-foreground/70">
+          Historique
+        </SidebarGroupLabel>
+        <SidebarGroupContent>
+          <div className="flex flex-col items-center justify-center gap-2 px-3 py-4 text-center">
+            <span className="text-[12px] text-muted-foreground">
+              Impossible de charger l'historique.
+            </span>
+            <button
+              onClick={() => mutate()}
+              className="text-[11px] font-medium text-primary hover:underline cursor-pointer"
+              type="button"
+            >
+              Réessayer
+            </button>
           </div>
         </SidebarGroupContent>
       </SidebarGroup>
@@ -341,7 +367,7 @@ export function SidebarHistory({ user }: { user?: { email?: string; id?: string 
 
           <motion.div onViewportEnter={handleViewportEnter} />
 
-          {hasReachedEnd ? null : (
+          {!error && !hasReachedEnd && allChats.length > 0 && (
             <div className="mt-1 flex flex-row items-center gap-2 px-4 py-2 text-sidebar-foreground/50">
               <div className="animate-spin">
                 <LoaderIcon />

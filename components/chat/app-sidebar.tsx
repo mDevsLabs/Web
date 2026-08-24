@@ -52,14 +52,29 @@ import {
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import type { MaiUser } from "@/lib/auth/session";
 
-const fetcher = (url: string) => fetch(url).then((r) => r.json());
+import { useProjects } from "@/hooks/use-projects";
 
 function SidebarProjects() {
-  const { data } = useSWR<{ projects: { id: string; name: string; icon: string; color: string; chatCount?: number }[] }>(
-    "/api/projects",
-    fetcher
-  );
-  const projects = data?.projects?.slice(0, 6) ?? [];
+  const { projects: allProjects, isLoading } = useProjects();
+  const projects = allProjects.slice(0, 6);
+
+  if (isLoading) {
+    return (
+      <SidebarGroup className="py-1">
+        <div className="flex items-center justify-between px-2 pb-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+          <span>Dossiers</span>
+          <Link href="/projects" className="text-muted-foreground hover:text-foreground">
+            <PlusIcon className="size-3.5" />
+          </Link>
+        </div>
+        <div className="flex flex-col gap-1 px-2 py-1">
+          <div className="h-6 w-full animate-pulse rounded bg-sidebar-foreground/[0.06]" />
+          <div className="h-6 w-3/4 animate-pulse rounded bg-sidebar-foreground/[0.06]" />
+        </div>
+      </SidebarGroup>
+    );
+  }
+
   if (projects.length === 0) {
     return (
       <SidebarGroup className="py-1">

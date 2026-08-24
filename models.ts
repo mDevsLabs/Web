@@ -2,6 +2,13 @@ import type { Hono } from "npm:hono@4";
 import { extractToken, getDb, getWeekData, TIER_LIMITS, verifyToken } from "./config.ts";
 import { maiModelsList } from "./maiModels.ts";
 
+function getOpenRouterApiKey(userCustomKey?: string | null): string {
+  if (userCustomKey && userCustomKey.trim().startsWith("sk-or-")) {
+    return userCustomKey.trim();
+  }
+  return Deno.env.get("OPENROUTER_API_KEY") || "";
+}
+
 export function registerModelRoutes(app: Hono) {
   // GET /usage
   app.get("/usage", async (c) => {
@@ -129,10 +136,10 @@ export function registerModelRoutes(app: Hono) {
       const keyRows = await sql`
         SELECT api_key FROM mprojects_api_keys WHERE user_id = ${userId}::text LIMIT 1
       `;
-      const apiKey = keyRows.length > 0 ? keyRows[0].api_key : Deno.env.get("OPENROUTER_API_KEY");
+      const apiKey = getOpenRouterApiKey(keyRows.length > 0 ? keyRows[0].api_key : null);
 
       if (!apiKey) {
-        return c.json({ error: "Clé fournisseur manquante." }, 500);
+        return c.json({ error: "Clé fournisseur OpenRouter manquante." }, 500);
       }
 
       try {
@@ -414,10 +421,10 @@ export function registerModelRoutes(app: Hono) {
       const keyRows = await sql`
         SELECT api_key FROM mprojects_api_keys WHERE user_id = ${userId}::text LIMIT 1
       `;
-      const apiKey = keyRows.length > 0 ? keyRows[0].api_key : Deno.env.get("OPENROUTER_API_KEY");
+      const apiKey = getOpenRouterApiKey(keyRows.length > 0 ? keyRows[0].api_key : null);
 
       if (!apiKey) {
-        return c.json({ error: "Clé fournisseur manquante." }, 500);
+        return c.json({ error: "Clé fournisseur OpenRouter manquante." }, 500);
       }
 
       try {
@@ -507,10 +514,10 @@ export function registerModelRoutes(app: Hono) {
       const keyRows = await sql`
         SELECT api_key FROM mprojects_api_keys WHERE user_id = ${userId}::text LIMIT 1
       `;
-      const apiKey = keyRows.length > 0 ? keyRows[0].api_key : Deno.env.get("OPENROUTER_API_KEY");
+      const apiKey = getOpenRouterApiKey(keyRows.length > 0 ? keyRows[0].api_key : null);
 
       if (!apiKey) {
-        return c.json({ error: "Clé fournisseur manquante." }, 500);
+        return c.json({ error: "Clé fournisseur OpenRouter manquante." }, 500);
       }
 
       try {
@@ -600,10 +607,10 @@ export function registerModelRoutes(app: Hono) {
       const keyRows = await sql`
         SELECT api_key FROM mprojects_api_keys WHERE user_id = ${userId}::text LIMIT 1
       `;
-      const apiKey = keyRows.length > 0 ? keyRows[0].api_key : Deno.env.get("OPENROUTER_API_KEY");
+      const apiKey = getOpenRouterApiKey(keyRows.length > 0 ? keyRows[0].api_key : null);
 
       if (!apiKey) {
-        return c.json({ error: "Clé fournisseur manquante." }, 500);
+        return c.json({ error: "Clé fournisseur OpenRouter manquante." }, 500);
       }
 
       try {

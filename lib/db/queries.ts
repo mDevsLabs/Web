@@ -194,8 +194,71 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
   await run(
     client`ALTER TABLE "Stream" ALTER COLUMN "id" TYPE text USING "id"::text`
   );
+
+  // Colonnes étendues pour Chat
+  await run(
+    client`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "projectId" uuid REFERENCES "Project"("id") ON DELETE SET NULL`
+  );
+  await run(
+    client`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "isArchived" boolean DEFAULT false NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "archivedAt" timestamp`
+  );
+  await run(
+    client`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "pinned" boolean DEFAULT false NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "tags" text[] DEFAULT '{}' NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "customInstructions" text`
+  );
+  await run(
+    client`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "temperatureOverride" double precision`
+  );
+  await run(
+    client`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "modeId" varchar(20) DEFAULT 'standard'`
+  );
+
+  // Colonnes étendues pour Project
   await run(
     client`ALTER TABLE "Project" ADD COLUMN IF NOT EXISTS "customInstructions" text`
+  );
+  await run(
+    client`ALTER TABLE "Project" ADD COLUMN IF NOT EXISTS "description" text DEFAULT ''`
+  );
+  await run(
+    client`ALTER TABLE "Project" ADD COLUMN IF NOT EXISTS "icon" text DEFAULT '📁'`
+  );
+  await run(
+    client`ALTER TABLE "Project" ADD COLUMN IF NOT EXISTS "color" varchar(7) DEFAULT '#6366f1'`
+  );
+  await run(
+    client`ALTER TABLE "Project" ADD COLUMN IF NOT EXISTS "isArchived" boolean DEFAULT false NOT NULL`
+  );
+
+  // Index de performance
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "Chat_projectId_idx" ON "Chat" USING btree ("projectId")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "Chat_userId_isArchived_idx" ON "Chat" USING btree ("userId", "isArchived")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "Chat_userId_createdAt_desc_idx" ON "Chat" USING btree ("userId", "createdAt" DESC)`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "Chat_userId_pinned_idx" ON "Chat" USING btree ("userId", "pinned")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "Chat_userId_projectId_idx" ON "Chat" USING btree ("userId", "projectId")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "Project_userId_idx" ON "Project" USING btree ("userId")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "Project_userId_createdAt_idx" ON "Project" USING btree ("userId", "createdAt" DESC)`
   );
 }
 

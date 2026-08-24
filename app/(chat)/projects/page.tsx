@@ -129,7 +129,12 @@ export default function ProjectsPage() {
     router.replace(`/projects${qs ? `?${qs}` : ""}`, { scroll: false });
   }, [debouncedSearch, selectedProjectFilter, debouncedTag, includeArchived, viewMode, router]);
 
-  const { data: projectsData, mutate: mutateProjects } = useSWR(
+  const {
+    data: projectsData,
+    mutate: mutateProjects,
+    isLoading: isProjectsLoading,
+    error: projectsError,
+  } = useSWR(
     `/api/projects?includeArchived=${includeArchived}${debouncedSearch ? `&search=${encodeURIComponent(debouncedSearch)}` : ""}`,
     fetcher,
     { dedupingInterval: 5000, keepPreviousData: true }
@@ -139,7 +144,7 @@ export default function ProjectsPage() {
 
   const getChatKey = useCallback(
     (pageIndex: number, prev: { chats: Chat[]; hasMore: boolean } | null) => {
-      if (prev && !prev.hasMore) return null;
+      if (prev && (prev.hasMore === false || !Array.isArray(prev.chats))) return null;
       const params = new URLSearchParams();
       params.set("limit", "20");
       params.set("includeArchived", String(includeArchived));
@@ -150,7 +155,7 @@ export default function ProjectsPage() {
       if (debouncedSearch) params.set("search", debouncedSearch);
       if (debouncedTag) params.set("tag", debouncedTag);
       if (prev && pageIndex > 0) {
-        const last = prev.chats.at(-1);
+        const last = prev.chats?.at(-1);
         if (!last) return null;
         params.set("ending_before", last.id);
       }
@@ -165,9 +170,10 @@ export default function ProjectsPage() {
     setSize,
     mutate: mutateChats,
     isLoading: chatsLoading,
+    error: chatsError,
   } = useSWRInfinite<{ chats: Chat[]; hasMore: boolean }>(getChatKey, fetcher);
 
-  const chats: Chat[] = useMemo(() => chatPages?.flatMap((p) => p.chats) ?? [], [chatPages]);
+  const chats: Chat[] = useMemo(() => chatPages?.flatMap((p) => (Array.isArray(p?.chats) ? p.chats : [])) ?? [], [chatPages]);
   const hasMore = chatPages?.at(-1)?.hasMore ?? false;
 
   const projectMap = useMemo(() => new Map(projects.map((p) => [p.id, p])), [projects]);
@@ -454,7 +460,29 @@ export default function ProjectsPage() {
       </div>
 
       {/* Projects Grid/List */}
-      {projects.length === 0 ? (
+      {isProjectsLoading ? (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="h-28 rounded-xl border bg-card p-4 animate-pulse flex flex-col justify-between">
+              <div className="flex items-center gap-3">
+                <div className="size-9 rounded-lg bg-muted" />
+                <div className="flex flex-col gap-1.5 flex-1">
+                  <div className="h-4 w-28 bg-muted rounded" />
+                  <div className="h-3 w-40 bg-muted/60 rounded" />
+                </div>
+              </div>
+              <div className="h-4 w-20 bg-muted/40 rounded" />
+            </div>
+          ))}
+        </div>
+      ) : projectsError ? (
+        <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-8 text-center">
+          <p className="text-sm text-destructive font-medium mb-3">Impossible de charger les projets.</p>
+          <Button variant="outline" size="sm" onClick={() => mutateProjects()}>
+            Réessayer
+          </Button>
+        </div>
+      ) : projects.length === 0 ? (
         <div className="rounded-xl border border-dashed p-10 text-center">
           <FolderIcon className="mx-auto size-8 text-muted-foreground mb-3" />
           <h3 className="font-semibold">Aucun projet</h3>
@@ -581,6 +609,11 @@ export default function ProjectsPage() {
         <div className="min-h-[300px]">
           {chatsLoading ? (
             <div className="p-8 text-center text-sm text-muted-foreground">Chargement...</div>
+          ) : chatsError ? (
+            <div className="p-8 text-center text-sm text-destructive flex flex-col items-center gap-2">
+              <span>Impossible de charger les discussions.</span>
+              <Button variant="outline" size="sm" onClick={() => mutateChats()}>Réessayer</Button>
+            </div>
           ) : chats.length === 0 ? (
             <div className="p-8 text-center text-sm text-muted-foreground">Aucune discussion ne correspond aux filtres.</div>
           ) : (

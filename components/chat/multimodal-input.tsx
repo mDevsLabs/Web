@@ -693,6 +693,7 @@ function PureMultimodalInput({
               selectedModelId={selectedModelId}
               status={status}
             />
+            <AIModeSelectorCompact />
             <ModelSelectorCompact
               onModelChange={onModelChange}
               selectedModelId={selectedModelId}
@@ -845,14 +846,6 @@ function PurePlusMenuButton({
       ? Math.min(100, Math.round((cloudBytesUsed / cloudBytesLimit) * 100))
       : 0);
 
-  // Mode IA global (via ActiveChat context)
-  const { currentModeId, setCurrentModeId } = useActiveChat();
-
-  const handleModeSelect = (id: AIModeId) => {
-    setCurrentModeId(id);
-    toast.success(`Mode IA : ${AI_MODES[id].label}`);
-  };
-
   const handleDeviceUploadClick = () => {
     if (!hasFileOrImage && hasStrictCapsBtn && !isVisionLoading) {
       toast.error(
@@ -961,67 +954,6 @@ function PurePlusMenuButton({
           </div>
         </DropdownMenuItem>
 
-        {/* Modes IA - sous-menu déroulant global */}
-        <DropdownMenuSub>
-          <DropdownMenuSubTrigger className="flex items-center gap-2.5 p-2 rounded-xl cursor-pointer text-xs mt-1 data-[state=open]:bg-muted">
-            <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-600 shrink-0">
-              <SparklesIcon className="size-3.5" />
-            </div>
-            <div className="flex flex-col gap-0.5 text-left">
-              <span className="font-medium text-[13px] text-foreground">Mode d'IA</span>
-              <span className="text-[11px] text-muted-foreground leading-tight">
-                {AI_MODES[currentModeId]?.label ?? "Standard"} • global
-              </span>
-            </div>
-          </DropdownMenuSubTrigger>
-          <DropdownMenuSubContent
-            sideOffset={8}
-            className="w-72 p-2 rounded-2xl bg-popover/95 backdrop-blur-md shadow-2xl border border-border/60"
-          >
-            <DropdownMenuLabel className="px-2 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-              Choisir un mode (global)
-            </DropdownMenuLabel>
-            {Object.values(AI_MODES).map((mode) => {
-              const Icon = mode.icon;
-              const isActive = currentModeId === mode.id;
-              return (
-                <DropdownMenuItem
-                  key={mode.id}
-                  onClick={() => handleModeSelect(mode.id as AIModeId)}
-                  className={cn(
-                    "flex items-start gap-2.5 p-2.5 rounded-xl cursor-pointer text-xs mt-1 transition-colors",
-                    isActive
-                      ? "bg-primary/10 border border-primary/20 text-foreground"
-                      : "hover:bg-muted focus:bg-muted text-foreground border border-transparent"
-                  )}
-                >
-                  <div
-                    className={cn(
-                      "p-1.5 rounded-lg shrink-0 mt-0.5",
-                      isActive ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
-                    )}
-                  >
-                    <Icon className="size-3.5" />
-                  </div>
-                  <div className="flex flex-col gap-0.5 min-w-0 flex-1">
-                    <span className="font-medium text-[13px] flex items-center gap-1.5">
-                      {mode.label}
-                      {isActive && <CheckCircle2Icon className="size-3.5 text-primary" />}
-                    </span>
-                    <span className="text-[11px] text-muted-foreground leading-tight">
-                      {mode.description}
-                    </span>
-                  </div>
-                </DropdownMenuItem>
-              );
-            })}
-            <DropdownMenuSeparator className="my-2 bg-border/40" />
-            <div className="px-2 py-1 text-[10px] text-muted-foreground leading-tight">
-              Descriptions complètes dans Paramètres → Préférences IA.
-            </div>
-          </DropdownMenuSubContent>
-        </DropdownMenuSub>
-
         <DropdownMenuSeparator className="my-2 bg-border/40" />
 
         {/* Visibilité Usages mAI & Cloud en petit texte */}
@@ -1082,6 +1014,83 @@ function PurePlusMenuButton({
 }
 
 const PlusMenuButton = memo(PurePlusMenuButton);
+
+function PureAIModeSelectorCompact() {
+  const { currentModeId, setCurrentModeId } = useActiveChat();
+  const currentMode = AI_MODES[currentModeId] ?? AI_MODES.standard;
+  const CurrentIcon = currentMode.icon;
+
+  const handleModeSelect = (id: AIModeId) => {
+    setCurrentModeId(id);
+    toast.success(`Mode IA : ${AI_MODES[id].label}`);
+  };
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          className="h-7 justify-between gap-1.5 rounded-lg px-2 text-[12px] text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
+          data-testid="ai-mode-selector"
+          variant="ghost"
+          title="Mode IA"
+        >
+          <CurrentIcon className="size-3.5 text-primary" />
+          <span className="font-medium text-foreground/90">{currentMode.label}</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        align="start"
+        side="top"
+        sideOffset={8}
+        className="w-72 p-2 rounded-2xl bg-popover/95 backdrop-blur-md shadow-2xl border border-border/60"
+      >
+        <DropdownMenuLabel className="px-2 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+          Mode d'IA
+        </DropdownMenuLabel>
+        {Object.values(AI_MODES).map((mode) => {
+          const Icon = mode.icon;
+          const isActive = currentModeId === mode.id;
+          return (
+            <DropdownMenuItem
+              key={mode.id}
+              onClick={() => handleModeSelect(mode.id as AIModeId)}
+              className={cn(
+                "flex items-start gap-2.5 p-2.5 rounded-xl cursor-pointer text-xs mt-1 transition-colors",
+                isActive
+                  ? "bg-primary/10 border border-primary/20 text-foreground"
+                  : "hover:bg-muted focus:bg-muted text-foreground border border-transparent"
+              )}
+            >
+              <div
+                className={cn(
+                  "p-1.5 rounded-lg shrink-0 mt-0.5",
+                  isActive ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
+                )}
+              >
+                <Icon className="size-3.5" />
+              </div>
+              <div className="flex flex-col gap-0.5 min-w-0 flex-1">
+                <span className="font-medium text-[13px] flex items-center gap-1.5">
+                  {mode.label}
+                  {isActive && <CheckCircle2Icon className="size-3.5 text-primary" />}
+                </span>
+                <span className="text-[11px] text-muted-foreground leading-tight">
+                  {mode.description}
+                </span>
+              </div>
+            </DropdownMenuItem>
+          );
+        })}
+        <DropdownMenuSeparator className="my-2 bg-border/40" />
+        <div className="px-2 py-1 text-[10px] text-muted-foreground leading-tight">
+          Descriptions complètes dans Paramètres → Préférences IA.
+        </div>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
+const AIModeSelectorCompact = memo(PureAIModeSelectorCompact);
 
 function ModelSelectorOption({
   capabilities,

@@ -18,11 +18,11 @@ export default function ProjectDetailPage() {
   const params = useParams<{ id: string }>();
   const router = useRouter();
   const id = params.id;
-  const { data, mutate } = useSWR(id ? `/api/projects/${id}` : null, fetcher);
+  const { data, mutate, isLoading, error } = useSWR(id ? `/api/projects/${id}` : null, fetcher);
   const project = data?.project;
   const recentChats: any[] = data?.recentChats ?? [];
 
-  const { data: chatsData } = useSWR(id ? `/api/history?projectId=${id}&limit=50&includeArchived=true` : null, fetcher);
+  const { data: chatsData, mutate: mutateChats, isLoading: chatsLoading, error: chatsError } = useSWR(id ? `/api/history?projectId=${id}&limit=50&includeArchived=true` : null, fetcher);
   const chats: any[] = chatsData?.chats ?? [];
 
   const [editOpen, setEditOpen] = useState(false);
@@ -30,8 +30,35 @@ export default function ProjectDetailPage() {
   const [description, setDescription] = useState("");
   const [customInstructions, setCustomInstructions] = useState("");
 
-  if (!data && !project) return <div className="p-8 text-sm text-muted-foreground">Chargement...</div>;
-  if (data && !project) return <div className="p-8">Projet introuvable. <Link href="/projects" className="underline">Retour</Link></div>;
+  if (isLoading) {
+    return (
+      <div className="max-w-[900px] mx-auto w-full p-6 flex flex-col gap-6">
+        <div className="h-6 w-36 bg-muted/60 animate-pulse rounded-md" />
+        <div className="rounded-xl border p-6 h-36 bg-muted/30 animate-pulse" />
+        <div className="rounded-xl border p-6 h-64 bg-muted/20 animate-pulse" />
+      </div>
+    );
+  }
+
+  if (error || (data && !project)) {
+    return (
+      <div className="max-w-[900px] mx-auto w-full p-6 flex flex-col items-center justify-center gap-4 py-16 text-center">
+        <p className="text-sm text-muted-foreground">
+          {error ? "Erreur lors du chargement du projet." : "Projet introuvable."}
+        </p>
+        <div className="flex gap-2">
+          {error && (
+            <Button variant="outline" size="sm" onClick={() => mutate()}>
+              Réessayer
+            </Button>
+          )}
+          <Button asChild size="sm" variant="secondary">
+            <Link href="/projects">Retour aux projets</Link>
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   const openEdit = () => {
     setName(project.name);
