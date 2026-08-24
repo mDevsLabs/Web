@@ -8,10 +8,12 @@ import { Hono } from "npm:hono@4";
 import { registerAuthRoutes } from "./auth.ts";
 import { initSQLite } from "./config.ts";
 import { registerDeviceRoutes } from "./devices.ts";
+import { registerImageRoutes } from "./images.ts";
 import { registerMiddleware } from "./api-middleware.ts";
 import { registerModelRoutes } from "./models.ts";
 import { registerProjectRoutes } from "./projects.ts";
 import { registerStorageRoutes } from "./storage.ts";
+import { registerWebRoutes } from "./web.ts";
 
 // ─────────────────────────────────────────────
 // Init DB SQLite en background
@@ -44,6 +46,10 @@ app.use(
       "x-api-key",
       "X-User-Id",
       "X-API-Key",
+      "x-web-search",
+      "X-Web-Search",
+      "x-disable-web-search",
+      "X-Disable-Web-Search",
     ],
     allowMethods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     exposeHeaders: ["Content-Type", "Authorization", "x-user-id"],
@@ -71,6 +77,8 @@ registerMiddleware(app);
 registerAuthRoutes(app);
 registerStorageRoutes(app);
 registerModelRoutes(app);
+registerImageRoutes(app);
+registerWebRoutes(app);
 registerProjectRoutes(app);
 registerDeviceRoutes(app);
 

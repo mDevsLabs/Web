@@ -70,6 +70,7 @@ type Project = {
   description: string;
   icon: string;
   color: string;
+  customInstructions?: string;
   isArchived: boolean;
   createdAt: string;
   updatedAt: string;
@@ -111,6 +112,7 @@ export default function ProjectsPage() {
   const [newDesc, setNewDesc] = useState("");
   const [newIcon, setNewIcon] = useState("📁");
   const [newColor, setNewColor] = useState("#6366f1");
+  const [newInstructions, setNewInstructions] = useState("");
   const [selectedChatIds, setSelectedChatIds] = useState<Set<string>>(new Set());
   const [bulkTagInput, setBulkTagInput] = useState("");
   const [showBulkTagDialog, setShowBulkTagDialog] = useState(false);
@@ -178,7 +180,13 @@ export default function ProjectsPage() {
     const res = await fetch("/api/projects", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: newName.trim(), description: newDesc.trim(), icon: newIcon, color: newColor }),
+      body: JSON.stringify({
+        color: newColor,
+        customInstructions: newInstructions.trim() || undefined,
+        description: newDesc.trim(),
+        icon: newIcon,
+        name: newName.trim(),
+      }),
     });
     const data = await res.json();
     if (!res.ok) {
@@ -189,6 +197,7 @@ export default function ProjectsPage() {
     setCreateOpen(false);
     setNewName("");
     setNewDesc("");
+    setNewInstructions("");
     mutateProjects();
   };
 
@@ -197,7 +206,13 @@ export default function ProjectsPage() {
     const res = await fetch(`/api/projects/${editingProject.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: newName.trim(), description: newDesc.trim(), icon: newIcon, color: newColor }),
+      body: JSON.stringify({
+        color: newColor,
+        customInstructions: newInstructions.trim() || null,
+        description: newDesc.trim(),
+        icon: newIcon,
+        name: newName.trim(),
+      }),
     });
     if (!res.ok) {
       const d = await res.json();
@@ -474,7 +489,7 @@ export default function ProjectsPage() {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" onClick={(e) => e.stopPropagation()}>
-                    <DropdownMenuItem onClick={() => { setEditingProject(p); setNewName(p.name); setNewDesc(p.description); setNewIcon(p.icon); setNewColor(p.color); }}>
+                    <DropdownMenuItem onClick={() => { setEditingProject(p); setNewName(p.name); setNewDesc(p.description); setNewIcon(p.icon); setNewColor(p.color); setNewInstructions(p.customInstructions || ""); }}>
                       <Edit2Icon className="size-3.5 mr-2" /> Modifier
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={async () => {
@@ -600,6 +615,18 @@ export default function ProjectsPage() {
               <Label>Description</Label>
               <Input placeholder="Optionnel" value={newDesc} onChange={(e) => setNewDesc(e.target.value)} maxLength={500} />
             </div>
+            <div className="grid gap-2">
+              <Label>Instructions personnalisées (optionnel)</Label>
+              <textarea
+                placeholder="Ex: Répondre toujours en tant qu'expert TypeScript senior..."
+                value={newInstructions}
+                onChange={(e) => setNewInstructions(e.target.value)}
+                maxLength={4000}
+                rows={3}
+                className="w-full rounded-md border border-input bg-background p-2 text-xs placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+              />
+              <span className="text-[11px] text-muted-foreground">Ces instructions seront appliquées à toutes les discussions créées dans ce dossier.</span>
+            </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="grid gap-2">
                 <Label>Icône</Label>
@@ -641,6 +668,18 @@ export default function ProjectsPage() {
             <div className="grid gap-2">
               <Label>Description</Label>
               <Input value={newDesc} onChange={(e) => setNewDesc(e.target.value)} />
+            </div>
+            <div className="grid gap-2">
+              <Label>Instructions personnalisées du dossier</Label>
+              <textarea
+                placeholder="Ex: Contexte, rôle IA, règles spécifiques..."
+                value={newInstructions}
+                onChange={(e) => setNewInstructions(e.target.value)}
+                maxLength={4000}
+                rows={3}
+                className="w-full rounded-md border border-input bg-background p-2 text-xs placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+              />
+              <span className="text-[11px] text-muted-foreground">Injectées automatiquement comme contexte pour les échanges dans ce projet.</span>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="grid gap-2">

@@ -113,20 +113,24 @@ export function SidebarHistory({ user }: { user?: { email?: string; id?: string 
   } = useSWRInfinite<ChatHistory>(
     user ? getChatHistoryPaginationKey : () => null,
     fetcher,
-    { fallbackData: [], revalidateOnFocus: false }
+    { revalidateOnFocus: false }
   );
 
   const router = useRouter();
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
+  const allChats = paginatedChatHistories
+    ? paginatedChatHistories.flatMap((page) => page.chats || [])
+    : [];
+
   const hasReachedEnd = paginatedChatHistories
     ? paginatedChatHistories.some((page) => page.hasMore === false)
     : false;
 
-  const hasEmptyChatHistory = paginatedChatHistories
-    ? paginatedChatHistories.every((page) => page.chats.length === 0)
-    : false;
+  const hasEmptyChatHistory =
+    !isLoading &&
+    Boolean(paginatedChatHistories && paginatedChatHistories.length > 0 && allChats.length === 0);
 
   const handleDelete = useCallback(() => {
     const chatToDelete = deleteId;

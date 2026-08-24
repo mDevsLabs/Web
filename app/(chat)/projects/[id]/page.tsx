@@ -28,6 +28,7 @@ export default function ProjectDetailPage() {
   const [editOpen, setEditOpen] = useState(false);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [customInstructions, setCustomInstructions] = useState("");
 
   if (!data && !project) return <div className="p-8 text-sm text-muted-foreground">Chargement...</div>;
   if (data && !project) return <div className="p-8">Projet introuvable. <Link href="/projects" className="underline">Retour</Link></div>;
@@ -35,6 +36,7 @@ export default function ProjectDetailPage() {
   const openEdit = () => {
     setName(project.name);
     setDescription(project.description || "");
+    setCustomInstructions(project.customInstructions || "");
     setEditOpen(true);
   };
 
@@ -42,7 +44,11 @@ export default function ProjectDetailPage() {
     const res = await fetch(`/api/projects/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: name.trim(), description: description.trim() }),
+      body: JSON.stringify({
+        customInstructions: customInstructions.trim() || null,
+        description: description.trim(),
+        name: name.trim(),
+      }),
     });
     if (!res.ok) {
       toast.error("Erreur");
@@ -71,6 +77,12 @@ export default function ProjectDetailPage() {
             <div>
               <h1 className="text-2xl font-bold">{project.name}</h1>
               <p className="text-sm text-muted-foreground">{project.description || "—"}</p>
+              {project.customInstructions && (
+                <div className="mt-2 text-xs bg-muted/40 rounded-lg p-2.5 border border-border/60">
+                  <span className="font-semibold text-foreground">💡 Instructions du dossier : </span>
+                  <span className="text-muted-foreground">{project.customInstructions}</span>
+                </div>
+              )}
               <div className="mt-2 flex gap-2">
                 <Badge variant="secondary">{chats.length} discussions</Badge>
                 <Badge variant="outline">{project.isArchived ? "Archivé" : "Actif"}</Badge>
@@ -131,6 +143,16 @@ export default function ProjectDetailPage() {
             <div className="grid gap-2">
               <Label>Description</Label>
               <Input value={description} onChange={(e) => setDescription(e.target.value)} />
+            </div>
+            <div className="grid gap-2">
+              <Label>Instructions personnalisées</Label>
+              <textarea
+                value={customInstructions}
+                onChange={(e) => setCustomInstructions(e.target.value)}
+                placeholder="Instructions pour les discussions de ce dossier..."
+                rows={3}
+                className="w-full rounded-md border border-input bg-background p-2 text-xs placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+              />
             </div>
           </div>
           <DialogFooter>

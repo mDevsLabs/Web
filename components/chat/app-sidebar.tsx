@@ -4,9 +4,11 @@ import {
   FolderArchiveIcon,
   FolderIcon,
   FolderKanbanIcon,
+  ImageIcon,
   MessageSquareIcon,
   PanelLeftIcon,
   PenSquareIcon,
+  PlusIcon,
   SettingsIcon,
   TrashIcon,
 } from "lucide-react";
@@ -58,10 +60,26 @@ function SidebarProjects() {
     fetcher
   );
   const projects = data?.projects?.slice(0, 6) ?? [];
-  if (projects.length === 0) return null;
+  if (projects.length === 0) {
+    return (
+      <SidebarGroup className="py-1">
+        <div className="flex items-center justify-between px-2 pb-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+          <span>Dossiers</span>
+          <Link href="/projects" className="text-muted-foreground hover:text-foreground">
+            <PlusIcon className="size-3.5" />
+          </Link>
+        </div>
+      </SidebarGroup>
+    );
+  }
   return (
     <SidebarGroup className="py-1">
-      <div className="px-2 pb-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Dossiers</div>
+      <div className="flex items-center justify-between px-2 pb-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+        <span>Dossiers</span>
+        <Link href="/projects" className="text-muted-foreground hover:text-foreground">
+          <PlusIcon className="size-3.5" />
+        </Link>
+      </div>
       <SidebarGroupContent>
         <SidebarMenu>
           {projects.map((p) => (
@@ -84,7 +102,7 @@ function SidebarProjects() {
               asChild
               className="h-7 rounded-lg text-[12px] text-muted-foreground hover:text-foreground"
             >
-              <Link href="/projects">Voir tous →</Link>
+              <Link href="/projects">Tous les dossiers →</Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
@@ -214,6 +232,19 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                     <Link href="/projects" onClick={closeMobile}>
                       <FolderKanbanIcon className="size-4" />
                       <span>Projets</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    asChild
+                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                    tooltip="Studio Images"
+                  >
+                    <Link href="/images" onClick={closeMobile}>
+                      <ImageIcon className="size-4" />
+                      <span>Studio Images</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

@@ -61,18 +61,24 @@ export async function getMaiUser(tokenInput?: string | null): Promise<MaiUser | 
     const data = await res.json();
     if (data.error) return null;
 
-    // Décodage payload JWT pour récupérer l'id utilisateur
-    let userId: string | undefined;
-    try {
-      const parts = token.split(".");
-      if (parts.length === 3) {
-        const payload = JSON.parse(Buffer.from(parts[1], "base64").toString("utf-8"));
-        userId = String(payload.sub || "");
-      }
-    } catch {}
+    // Récupération de l'id utilisateur (depuis data.id ou payload JWT)
+    let userId: string | undefined = data.id ? String(data.id) : undefined;
+    if (!userId) {
+      try {
+        const parts = token.split(".");
+        if (parts.length === 3) {
+          const payloadStr =
+            typeof Buffer !== "undefined"
+              ? Buffer.from(parts[1], "base64").toString("utf-8")
+              : atob(parts[1]);
+          const payload = JSON.parse(payloadStr);
+          userId = payload.sub ? String(payload.sub) : undefined;
+        }
+      } catch {}
+    }
 
     return {
-      id: userId,
+      id: userId || data.email,
       username: data.username || "Utilisateur",
       email: data.email || "",
       phone: data.phone || "",

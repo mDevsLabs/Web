@@ -6,8 +6,11 @@ import {
   BrainIcon,
   CameraIcon,
   CheckCircle2Icon,
+  CloudIcon,
   Code2Icon,
   ExternalLinkIcon,
+  HardDriveIcon,
+  ImageIcon,
   KeyRoundIcon,
   Loader2Icon,
   MailIcon,
@@ -59,6 +62,22 @@ type AIUsageData = {
   tier: string;
 };
 
+type ImagesUsageData = {
+  usedToday: number;
+  dailyLimit: number;
+  resetAt?: string;
+  plan: string;
+};
+
+type CloudUsageData = {
+  bytesUsed: number;
+  bytesLimit: number;
+  filesCount: number;
+  percentUsed: number;
+  overLimit: boolean;
+  tier: string;
+};
+
 type APIUsageData = {
   requestCount: number;
   limit: number;
@@ -67,6 +86,13 @@ type APIUsageData = {
 
 function formatTokens(n: number) {
   return new Intl.NumberFormat("fr-FR").format(n);
+}
+
+function formatBytes(bytes: number) {
+  if (!bytes || bytes === 0) return "0 Mo";
+  const mb = bytes / (1024 * 1024);
+  if (mb < 1000) return `${mb.toFixed(1)} Mo`;
+  return `${(mb / 1024).toFixed(2)} Go`;
 }
 
 function formatDate(dateStr?: string) {
@@ -127,6 +153,8 @@ export default function SettingsPage() {
   // Données utilisateur
   const [profile, setProfile] = useState<UserSettingsData | null>(null);
   const [aiUsage, setAiUsage] = useState<AIUsageData | null>(null);
+  const [imagesUsage, setImagesUsage] = useState<ImagesUsageData | null>(null);
+  const [cloudUsage, setCloudUsage] = useState<CloudUsageData | null>(null);
   const [apiUsage, setApiUsage] = useState<APIUsageData | null>(null);
 
   // Formulaire profil
@@ -234,6 +262,8 @@ export default function SettingsPage() {
         setNotifyLimits(Boolean(data.user.notify_limits));
       }
       setAiUsage(data.aiUsage);
+      setImagesUsage(data.imagesUsage);
+      setCloudUsage(data.cloudUsage);
       setApiUsage(data.apiUsage);
     } catch (err) {
       console.error(err);
@@ -382,12 +412,20 @@ export default function SettingsPage() {
     }
   };
 
-  const aiPercent = aiUsage
-    ? Math.min(100, Math.round((aiUsage.tokensUsed / aiUsage.limit) * 100))
+  const aiPercent = aiUsage?.limit
+    ? Math.min(100, Math.round(((aiUsage.tokensUsed || 0) / aiUsage.limit) * 100))
     : 0;
 
-  const apiPercent = apiUsage
-    ? Math.min(100, Math.round((apiUsage.requestCount / apiUsage.limit) * 100))
+  const imagesPercent = imagesUsage?.dailyLimit
+    ? Math.min(100, Math.round(((imagesUsage.usedToday || 0) / imagesUsage.dailyLimit) * 100))
+    : 0;
+
+  const cloudPercent = cloudUsage?.bytesLimit
+    ? Math.min(100, Math.round(((cloudUsage.bytesUsed || 0) / cloudUsage.bytesLimit) * 100))
+    : 0;
+
+  const apiPercent = apiUsage?.limit
+    ? Math.min(100, Math.round(((apiUsage.requestCount || 0) / apiUsage.limit) * 100))
     : 0;
 
   return (
@@ -871,6 +909,96 @@ export default function SettingsPage() {
             <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
               <span>Renouvellement hebdomadaire :</span>
               <span className="font-medium text-foreground">{formatDate(aiUsage?.resetAt)}</span>
+            </div>
+          </div>
+
+          {/* Consommation Images (Quota journalier) */}
+          <div className="p-6 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 rounded-xl bg-purple-500/10 text-purple-500 ring-1 ring-purple-500/20">
+                  <ImageIcon className="size-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-semibold text-foreground">
+                    Générations d'Images (Studio mAI)
+                  </h3>
+                  <p className="text-xs text-muted-foreground">
+                    Images générées aujourd'hui (quota réinitialisé à minuit UTC)
+                  </p>
+                </div>
+              </div>
+
+              <div className="text-right">
+                <span className="text-sm font-bold text-foreground">
+                  {imagesUsage?.usedToday ?? 0} / {imagesUsage?.dailyLimit ?? (profile?.tier === "Plus" ? 5 : profile?.tier === "Pro" ? 10 : profile?.tier === "Max" ? 20 : 3)}
+                </span>
+                <span className="text-xs text-muted-foreground block">images ({imagesPercent}%)</span>
+              </div>
+            </div>
+
+            {/* Jauge */}
+            <div className="h-3 w-full rounded-full bg-muted/60 overflow-hidden relative">
+              <div
+                className={`h-full transition-all duration-500 rounded-full ${
+                  imagesPercent >= 100
+                    ? "bg-red-500"
+                    : imagesPercent > 75
+                    ? "bg-amber-500"
+                    : "bg-gradient-to-r from-purple-500 to-pink-600"
+                }`}
+                style={{ width: `${imagesPercent}%` }}
+              />
+            </div>
+
+            <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
+              <span>Réinitialisation du quota :</span>
+              <span className="font-medium text-foreground">{formatDate(imagesUsage?.resetAt)} (Minuit UTC)</span>
+            </div>
+          </div>
+
+          {/* Consommation Cloud Storage */}
+          <div className="p-6 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 rounded-xl bg-blue-500/10 text-blue-500 ring-1 ring-blue-500/20">
+                  <CloudIcon className="size-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-semibold text-foreground">
+                    Stockage Cloud mAI (Documents & Fichiers)
+                  </h3>
+                  <p className="text-xs text-muted-foreground">
+                    Espace utilisé pour vos documents, pièces jointes et médias
+                  </p>
+                </div>
+              </div>
+
+              <div className="text-right">
+                <span className="text-sm font-bold text-foreground">
+                  {formatBytes(cloudUsage?.bytesUsed || 0)} / {formatBytes(cloudUsage?.bytesLimit || 524288000)}
+                </span>
+                <span className="text-xs text-muted-foreground block">utilisés ({cloudPercent}%)</span>
+              </div>
+            </div>
+
+            {/* Jauge */}
+            <div className="h-3 w-full rounded-full bg-muted/60 overflow-hidden relative">
+              <div
+                className={`h-full transition-all duration-500 rounded-full ${
+                  cloudPercent > 90
+                    ? "bg-red-500"
+                    : cloudPercent > 75
+                    ? "bg-amber-500"
+                    : "bg-gradient-to-r from-blue-500 to-cyan-600"
+                }`}
+                style={{ width: `${cloudPercent}%` }}
+              />
+            </div>
+
+            <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
+              <span>Fichiers hébergés :</span>
+              <span className="font-medium text-foreground">{cloudUsage?.filesCount || 0} fichier(s)</span>
             </div>
           </div>
 

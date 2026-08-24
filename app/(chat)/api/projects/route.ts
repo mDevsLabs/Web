@@ -12,19 +12,21 @@ const createSchema = z.object({
   description: z.string().max(500).optional(),
   icon: z.string().max(10).optional(),
   color: z.string().regex(/^#[0-9a-fA-F]{6}$/).optional(),
+  customInstructions: z.string().max(4000).optional(),
 });
 
 export async function GET(request: Request) {
   const user = await getMaiUser();
   if (!user) return new ChatbotError("unauthorized:chat").toResponse();
   const userId = user.id || user.email;
+  const userEmail = user.email;
   const { searchParams } = new URL(request.url);
   const includeArchived = searchParams.get("includeArchived") === "true";
   const search = searchParams.get("search") ?? undefined;
 
   const [projects, counts] = await Promise.all([
-    getProjectsByUserId({ userId, includeArchived, search }),
-    getProjectChatCounts({ userId, includeArchived }),
+    getProjectsByUserId({ userId, userEmail, includeArchived, search }),
+    getProjectChatCounts({ userId, userEmail, includeArchived }),
   ]);
 
   const countMap = new Map(counts.map((c) => [c.projectId, c.count]));
@@ -43,13 +45,14 @@ export async function POST(request: Request) {
   const user = await getMaiUser();
   if (!user) return new ChatbotError("unauthorized:chat").toResponse();
   const userId = user.id || user.email;
+  const userEmail = user.email;
 
   try {
     const body = await request.json();
     const parsed = createSchema.parse(body);
 
     // Limit projects per user
-    const existing = await getProjectsByUserId({ userId, includeArchived: true });
+    const existing = await getProjectsByUserId({ userId, userEmail, includeArchived: true });
     if (existing.length >= 50) {
       return new ChatbotError("bad_request:api", "Limite de 50 projets atteinte.").toResponse();
     }
@@ -60,6 +63,7 @@ export async function POST(request: Request) {
       description: parsed.description?.trim(),
       icon: parsed.icon,
       color: parsed.color,
+      customInstructions: parsed.customInstructions?.trim(),
     });
 
     return Response.json({ success: true, project });

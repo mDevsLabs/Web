@@ -194,6 +194,9 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
   await run(
     client`ALTER TABLE "Stream" ALTER COLUMN "id" TYPE text USING "id"::text`
   );
+  await run(
+    client`ALTER TABLE "Project" ADD COLUMN IF NOT EXISTS "customInstructions" text`
+  );
 }
 
 let _migrationPromise: Promise<void> | null = null;
@@ -326,6 +329,7 @@ export async function deleteAllChatsByUserId({ userId }: { userId: string }) {
 
 export async function getChatsByUserId({
   id,
+  userEmail,
   limit,
   startingAfter,
   endingBefore,
@@ -337,6 +341,7 @@ export async function getChatsByUserId({
   includeArchived = false,
 }: {
   id: string;
+  userEmail?: string;
   limit: number;
   startingAfter: string | null;
   endingBefore: string | null;
@@ -381,8 +386,12 @@ export async function getChatsByUserId({
       extraConditions.push(sql`${chat.title} ILIKE ${escaped}`);
     }
 
+    const userCondition = userEmail && userEmail !== id
+      ? sql`(${chat.userId}::text = ${id}::text OR ${chat.userId}::text = ${userEmail}::text)`
+      : sql`${chat.userId}::text = ${id}::text`;
+
     const baseWhere = and(
-      sql`${chat.userId}::text = ${id}::text`,
+      userCondition,
       ...extraConditions
     );
 
@@ -466,12 +475,14 @@ export async function createProject({
   description,
   icon,
   color,
+  customInstructions,
 }: {
   userId: string;
   name: string;
   description?: string;
   icon?: string;
   color?: string;
+  customInstructions?: string;
 }) {
   try {
     const db = await dbReady();
@@ -479,6 +490,7 @@ export async function createProject({
       .insert(project)
       .values({
         color: color ?? "#6366f1",
+        customInstructions: customInstructions ?? null,
         description: description ?? "",
         icon: icon ?? "📁",
         name,
@@ -493,20 +505,23 @@ export async function createProject({
 
 export async function getProjectsByUserId({
   userId,
+  userEmail,
   includeArchived = false,
   search,
   limit = 50,
 }: {
   userId: string;
+  userEmail?: string;
   includeArchived?: boolean;
   search?: string;
   limit?: number;
 }) {
   try {
     const db = await dbReady();
-    const conditions: SQL<unknown>[] = [
-      sql`${project.userId}::text = ${userId}::text`,
-    ];
+    const userCondition = userEmail && userEmail !== userId
+      ? sql`(${project.userId}::text = ${userId}::text OR ${project.userId}::text = ${userEmail}::text)`
+      : sql`${project.userId}::text = ${userId}::text`;
+    const conditions: SQL<unknown>[] = [userCondition];
     if (!includeArchived) {
       conditions.push(eq(project.isArchived, false));
     }
@@ -530,16 +545,21 @@ export async function getProjectsByUserId({
 export async function getProjectById({
   id,
   userId,
+  userEmail,
 }: {
   id: string;
   userId: string;
+  userEmail?: string;
 }) {
   try {
     const db = await dbReady();
+    const userCondition = userEmail && userEmail !== userId
+      ? sql`(${project.userId}::text = ${userId}::text OR ${project.userId}::text = ${userEmail}::text)`
+      : sql`${project.userId}::text = ${userId}::text`;
     const [p] = await db
       .select()
       .from(project)
-      .where(and(eq(project.id, id), sql`${project.userId}::text = ${userId}::text`))
+      .where(and(eq(project.id, id), userCondition))
       .limit(1);
     return p ?? null;
   } catch (error) {
@@ -550,14 +570,17 @@ export async function getProjectById({
 export async function updateProject({
   id,
   userId,
+  userEmail,
   ...fields
 }: {
   id: string;
   userId: string;
+  userEmail?: string;
   name?: string;
   description?: string;
   icon?: string;
   color?: string;
+  customInstructions?: string;
   isArchived?: boolean;
 }) {
   try {
@@ -567,11 +590,15 @@ export async function updateProject({
     if (fields.description !== undefined) updateData.description = fields.description;
     if (fields.icon !== undefined) updateData.icon = fields.icon;
     if (fields.color !== undefined) updateData.color = fields.color;
+    if (fields.customInstructions !== undefined) updateData.customInstructions = fields.customInstructions;
     if (fields.isArchived !== undefined) updateData.isArchived = fields.isArchived;
+    const userCondition = userEmail && userEmail !== userId
+      ? sql`(${project.userId}::text = ${userId}::text OR ${project.userId}::text = ${userEmail}::text)`
+      : sql`${project.userId}::text = ${userId}::text`;
     const [updated] = await db
       .update(project)
       .set(updateData as any)
-      .where(and(eq(project.id, id), sql`${project.userId}::text = ${userId}::text`))
+      .where(and(eq(project.id, id), userCondition))
       .returning();
     return updated;
   } catch (error) {
@@ -582,19 +609,28 @@ export async function updateProject({
 export async function deleteProject({
   id,
   userId,
+  userEmail,
   deleteChats = false,
 }: {
   id: string;
   userId: string;
+  userEmail?: string;
   deleteChats?: boolean;
 }) {
   try {
     const db = await dbReady();
+    const userCondition = userEmail && userEmail !== userId
+      ? sql`(${chat.userId}::text = ${userId}::text OR ${chat.userId}::text = ${userEmail}::text)`
+      : sql`${chat.userId}::text = ${userId}::text`;
+    const projectUserCondition = userEmail && userEmail !== userId
+      ? sql`(${project.userId}::text = ${userId}::text OR ${project.userId}::text = ${userEmail}::text)`
+      : sql`${project.userId}::text = ${userId}::text`;
+
     if (deleteChats) {
       const chatsToDelete = await db
         .select({ id: chat.id })
         .from(chat)
-        .where(and(eq(chat.projectId, id), sql`${chat.userId}::text = ${userId}::text`));
+        .where(and(eq(chat.projectId, id), userCondition));
       const ids = chatsToDelete.map((c) => c.id);
       if (ids.length > 0) {
         await db.delete(vote).where(inArray(vote.chatId, ids));
@@ -606,11 +642,11 @@ export async function deleteProject({
       await db
         .update(chat)
         .set({ projectId: null })
-        .where(and(eq(chat.projectId, id), sql`${chat.userId}::text = ${userId}::text`));
+        .where(and(eq(chat.projectId, id), userCondition));
     }
     const [deleted] = await db
       .delete(project)
-      .where(and(eq(project.id, id), sql`${project.userId}::text = ${userId}::text`))
+      .where(and(eq(project.id, id), projectUserCondition))
       .returning();
     return deleted;
   } catch (error) {
@@ -620,16 +656,21 @@ export async function deleteProject({
 
 export async function getProjectChatCounts({
   userId,
+  userEmail,
   includeArchived = false,
 }: {
   userId: string;
+  userEmail?: string;
   includeArchived?: boolean;
 }) {
   try {
     const db = await dbReady();
+    const userCondition = userEmail && userEmail !== userId
+      ? sql`(${chat.userId}::text = ${userId}::text OR ${chat.userId}::text = ${userEmail}::text)`
+      : sql`${chat.userId}::text = ${userId}::text`;
     const where = includeArchived
-      ? sql`${chat.userId}::text = ${userId}::text`
-      : and(sql`${chat.userId}::text = ${userId}::text`, eq(chat.isArchived, false));
+      ? userCondition
+      : and(userCondition, eq(chat.isArchived, false));
     const rows = await db
       .select({ projectId: chat.projectId, count: count(chat.id) })
       .from(chat)

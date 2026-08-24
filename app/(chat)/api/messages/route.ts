@@ -26,7 +26,13 @@ export async function GET(request: Request) {
   }
 
   const currentUserId = maiUser?.id || maiUser?.email;
-  const isOwner = currentUserId && (chat.userId === currentUserId || chat.userId === maiUser?.email);
+  const isOwner = Boolean(
+    currentUserId &&
+      (chat.userId === currentUserId ||
+        chat.userId === maiUser?.id ||
+        chat.userId === maiUser?.email ||
+        chat.userId === maiUser?.username)
+  );
 
   if (chat.visibility === "private" && !isOwner) {
     return Response.json({ error: "forbidden" }, { status: 403 });

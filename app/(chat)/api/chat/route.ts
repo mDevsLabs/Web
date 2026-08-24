@@ -289,11 +289,27 @@ export async function POST(request: Request) {
     const chatModeOverride = (chat as any)?.modeId ?? chatModeId;
     const chatTempOverride = (chat as any)?.temperatureOverride ?? temperatureOverride ?? null;
 
+    // Instructions du projet associé
+    let projectCustomInstructions: string | null = null;
+    const effectiveProjectId = (chat as any)?.projectId || projectId;
+    if (effectiveProjectId) {
+      try {
+        const { getProjectById } = await import("@/lib/db/queries");
+        const proj = await getProjectById({ id: effectiveProjectId, userId, userEmail: maiUser.email });
+        if (proj?.customInstructions) {
+          projectCustomInstructions = proj.customInstructions;
+        }
+      } catch {}
+    }
+
     // Construire le prompt addendum effectif
     const effectiveMode = getAIMode(chatModeOverride);
     let effectiveAddendum = effectiveMode.systemPromptAddendum || "";
     if (userCustomEnabled && userCustomInstructions) {
       effectiveAddendum = `Instructions personnalisées de l'utilisateur (à respecter en priorité):\n${userCustomInstructions}\n\n${effectiveAddendum}`;
+    }
+    if (projectCustomInstructions) {
+      effectiveAddendum = `${effectiveAddendum}\n\nContexte et instructions du dossier/projet :\n${projectCustomInstructions}`;
     }
     if (chatCustomInstructions) {
       effectiveAddendum = `${effectiveAddendum}\n\nInstructions spécifiques à cette discussion:\n${chatCustomInstructions}`;

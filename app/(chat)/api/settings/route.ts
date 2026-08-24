@@ -10,7 +10,7 @@ export async function GET() {
   }
 
   try {
-    const [usageRes, keysRes] = await Promise.all([
+    const [usageRes, keysRes, imagesRes, cloudRes] = await Promise.all([
       fetch(`${MAI_API_URL}/usage`, {
         headers: { Authorization: `Bearer ${token}` },
         cache: "no-store",
@@ -19,10 +19,20 @@ export async function GET() {
         headers: { Authorization: `Bearer ${token}` },
         cache: "no-store",
       }),
+      fetch(`${MAI_API_URL}/v1/images/usage`, {
+        headers: { Authorization: `Bearer ${token}` },
+        cache: "no-store",
+      }),
+      fetch(`${MAI_API_URL}/cloud/storage`, {
+        headers: { Authorization: `Bearer ${token}` },
+        cache: "no-store",
+      }),
     ]);
 
     const usageData = usageRes.ok ? await usageRes.json() : null;
     const keysData = keysRes.ok ? await keysRes.json() : { keys: [] };
+    const imagesData = imagesRes.ok ? await imagesRes.json() : null;
+    const cloudData = cloudRes.ok ? await cloudRes.json() : null;
 
     // Calculer le total des requêtes API consommées ce mois-ci
     const keys = keysData.keys || [];
@@ -49,10 +59,28 @@ export async function GET() {
         resetAt: usageData?.resetAt,
         tier: userTier,
       },
+      imagesUsage: imagesData
+        ? {
+            dailyLimit: Number(imagesData.dailyLimit || 3),
+            plan: imagesData.plan || userTier,
+            resetAt: imagesData.resetAt,
+            usedToday: Number(imagesData.usedToday || 0),
+          }
+        : null,
+      cloudUsage: cloudData
+        ? {
+            bytesLimit: Number(cloudData.bytes_limit || 524288000),
+            bytesUsed: Number(cloudData.bytes_used || 0),
+            filesCount: Number(cloudData.files_count || 0),
+            overLimit: Boolean(cloudData.over_limit),
+            percentUsed: Number(cloudData.percent_used || 0),
+            tier: cloudData.tier || userTier,
+          }
+        : null,
       apiUsage: {
-        requestCount: totalApiRequests,
-        limit: apiLimit,
         keysCount: keys.length,
+        limit: apiLimit,
+        requestCount: totalApiRequests,
       },
     });
   } catch (error) {

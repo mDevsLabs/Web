@@ -48,6 +48,7 @@ export async function GET(request: NextRequest) {
     search: search ?? null,
     startingAfter,
     tag: tag ?? null,
+    userEmail: user.email,
   });
 
   return Response.json(chats);

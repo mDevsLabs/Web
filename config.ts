@@ -23,6 +23,51 @@ export const TIER_REQUEST_LIMITS: Record<string, number> = {
   Pro: 2000,
 };
 
+// Limites quotidiennes de génération d'images (Free: 3/j, Plus: 5/j, Pro: 10/j, Max: 20/j)
+export const TIER_DAILY_IMAGE_LIMITS: Record<string, number> = {
+  Free: 3,
+  Gratuit: 3,
+  free: 3,
+  gratuit: 3,
+  Plus: 5,
+  plus: 5,
+  Pro: 10,
+  pro: 10,
+  Max: 20,
+  max: 20,
+};
+
+export function getTierDailyImageLimit(tier?: string | null): number {
+  const t = (tier || "Free").toLowerCase().trim();
+  if (t === "max") return 20;
+  if (t === "pro") return 10;
+  if (t === "plus") return 5;
+  return 3;
+}
+
+// Coût en requêtes API par génération d'image
+// Free = 100 requêtes, Plus = 50 requêtes, Pro = 25 requêtes, Max = 10 requêtes
+export const TIER_IMAGE_REQUEST_COST: Record<string, number> = {
+  Free: 100,
+  Gratuit: 100,
+  free: 100,
+  gratuit: 100,
+  Plus: 50,
+  plus: 50,
+  Pro: 25,
+  pro: 25,
+  Max: 10,
+  max: 10,
+};
+
+export function getTierImageRequestCost(tier?: string | null): number {
+  const t = (tier || "Free").toLowerCase().trim();
+  if (t === "max") return 10;
+  if (t === "pro") return 25;
+  if (t === "plus") return 50;
+  return 100;
+}
+
 // Limites de stockage Cloud par tier (en bytes) — SSOT: Free 500Mo / Plus 1Go / Pro 2Go / Max 5Go
 export const STORAGE_LIMITS_BYTES: Record<string, number> = {
   Free: 500 * 1024 * 1024,           // 500 MB

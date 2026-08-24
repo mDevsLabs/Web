@@ -13,6 +13,7 @@ const patchSchema = z.object({
   description: z.string().max(500).optional(),
   icon: z.string().max(10).optional(),
   color: z.string().regex(/^#[0-9a-fA-F]{6}$/).nullable().optional(),
+  customInstructions: z.string().max(4000).nullable().optional(),
   isArchived: z.boolean().optional(),
 });
 
@@ -24,13 +25,15 @@ export async function GET(
   const user = await getMaiUser();
   if (!user) return new ChatbotError("unauthorized:chat").toResponse();
   const userId = user.id || user.email;
+  const userEmail = user.email;
 
-  const project = await getProjectById({ id, userId });
+  const project = await getProjectById({ id, userId, userEmail });
   if (!project) return new ChatbotError("not_found:database", "Projet introuvable").toResponse();
 
   // Get recent chats preview
   const { chats } = await getChatsByUserId({
     id: userId,
+    userEmail,
     limit: 5,
     startingAfter: null,
     endingBefore: null,
@@ -49,6 +52,7 @@ export async function PATCH(
   const user = await getMaiUser();
   if (!user) return new ChatbotError("unauthorized:chat").toResponse();
   const userId = user.id || user.email;
+  const userEmail = user.email;
 
   try {
     const body = await request.json();
@@ -57,10 +61,12 @@ export async function PATCH(
     const updated = await updateProject({
       id,
       userId,
+      userEmail,
       name: parsed.name?.trim(),
       description: parsed.description?.trim(),
       icon: parsed.icon,
       color: parsed.color ?? undefined,
+      customInstructions: parsed.customInstructions ?? undefined,
       isArchived: parsed.isArchived,
     });
 
@@ -85,10 +91,11 @@ export async function DELETE(
   const user = await getMaiUser();
   if (!user) return new ChatbotError("unauthorized:chat").toResponse();
   const userId = user.id || user.email;
+  const userEmail = user.email;
   const { searchParams } = new URL(request.url);
   const deleteChats = searchParams.get("deleteChats") === "true";
 
-  const deleted = await deleteProject({ id, userId, deleteChats });
+  const deleted = await deleteProject({ id, userId, userEmail, deleteChats });
   if (!deleted) return new ChatbotError("not_found:database", "Projet introuvable").toResponse();
 
   return Response.json({ success: true });
