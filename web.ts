@@ -1,11 +1,11 @@
 import type { Hono } from "npm:hono@4";
 
 export interface YouSearchHit {
+  description?: string;
+  page_age?: string;
+  snippets?: string[];
   title?: string;
   url?: string;
-  description?: string;
-  snippets?: string[];
-  page_age?: string;
 }
 
 export interface YouSearchResponse {
@@ -30,16 +30,21 @@ function getYouApiKeys(): string[] {
     if (typeof process !== "undefined" && process.env) {
       return process.env[name];
     }
-    return undefined;
   };
 
   const k1 = getEnv("YOU_API_KEY") || getEnv("YOU_API_KEY_1");
   const k2 = getEnv("YOU_API_KEY_2");
   const k3 = getEnv("YOU_API_KEY_3");
 
-  if (k1) keys.push(k1.trim());
-  if (k2) keys.push(k2.trim());
-  if (k3) keys.push(k3.trim());
+  if (k1) {
+    keys.push(k1.trim());
+  }
+  if (k2) {
+    keys.push(k2.trim());
+  }
+  if (k3) {
+    keys.push(k3.trim());
+  }
 
   return keys;
 }
@@ -47,7 +52,10 @@ function getYouApiKeys(): string[] {
 /**
  * Exécute une recherche Web via l'API You.com avec triple fallback automatique.
  */
-export async function executeWebSearch(query: string, count: number = 5): Promise<{
+export async function executeWebSearch(
+  query: string,
+  count = 5
+): Promise<{
   success: boolean;
   query: string;
   results: Array<{ title: string; url: string; snippet: string }>;
@@ -57,11 +65,11 @@ export async function executeWebSearch(query: string, count: number = 5): Promis
   const trimmedQuery = (query || "").trim();
   if (!trimmedQuery) {
     return {
-      success: false,
+      error: "La requête de recherche est vide.",
+      provider: "you.com",
       query: "",
       results: [],
-      provider: "you.com",
-      error: "La requête de recherche est vide.",
+      success: false,
     };
   }
 
@@ -69,11 +77,12 @@ export async function executeWebSearch(query: string, count: number = 5): Promis
   if (keys.length === 0) {
     console.warn("[WebSearch] Aucune clé YOU_API_KEY configurée.");
     return {
-      success: false,
+      error:
+        "Service de recherche temporairement non configuré (clés API You.com manquantes).",
+      provider: "you.com",
       query: trimmedQuery,
       results: [],
-      provider: "you.com",
-      error: "Service de recherche temporairement non configuré (clés API You.com manquantes).",
+      success: false,
     };
   }
 
@@ -88,35 +97,38 @@ export async function executeWebSearch(query: string, count: number = 5): Promis
       // Endpoint standard You.com Search API (ydc-index ou api.you.com)
       const url = `https://api.ydc-index.io/search?query=${encodeURIComponent(trimmedQuery)}&count=${count}`;
       const res = await fetch(url, {
-        method: "GET",
         headers: {
+          Accept: "application/json",
           "X-API-Key": key,
-          "Accept": "application/json",
         },
+        method: "GET",
       });
 
       if (res.ok) {
         const data: YouSearchResponse = await res.json();
         const rawHits = data.hits || data.results || [];
         const formattedResults = rawHits.map((hit) => ({
+          snippet:
+            hit.snippets && hit.snippets.length > 0
+              ? hit.snippets.join(" ... ")
+              : hit.description || "",
           title: hit.title || "Sans titre",
           url: hit.url || "",
-          snippet: (hit.snippets && hit.snippets.length > 0)
-            ? hit.snippets.join(" ... ")
-            : (hit.description || ""),
         }));
 
         return {
-          success: true,
+          provider: "you.com",
           query: trimmedQuery,
           results: formattedResults,
-          provider: "you.com",
+          success: true,
         };
       }
 
       const status = res.status;
       const errBody = await res.text().catch(() => "");
-      console.warn(`[WebSearch] Échec ${keyLabel} (HTTP ${status}): ${errBody.slice(0, 150)}`);
+      console.warn(
+        `[WebSearch] Échec ${keyLabel} (HTTP ${status}): ${errBody.slice(0, 150)}`
+      );
       lastError = new Error(`HTTP ${status}: ${errBody}`);
     } catch (err: any) {
       console.warn(`[WebSearch] Erreur réseau avec ${keyLabel}:`, err.message);
@@ -125,11 +137,11 @@ export async function executeWebSearch(query: string, count: number = 5): Promis
   }
 
   return {
-    success: false,
+    error: `Échec de la recherche après tentative sur toutes les clés You.com (${lastError?.message || "Erreur inconnue"}).`,
+    provider: "you.com",
     query: trimmedQuery,
     results: [],
-    provider: "you.com",
-    error: `Échec de la recherche après tentative sur toutes les clés You.com (${lastError?.message || "Erreur inconnue"}).`,
+    success: false,
   };
 }
 
@@ -137,21 +149,22 @@ export async function executeWebSearch(query: string, count: number = 5): Promis
  * Définition standard de l'outil web_search pour les IA compatibles Tool Calling.
  */
 export const WEB_SEARCH_TOOL = {
-  type: "function" as const,
   function: {
+    description:
+      "Recherche sur le Web des informations récentes et actualisées en temps réel via You.com.",
     name: "web_search",
-    description: "Recherche sur le Web des informations récentes et actualisées en temps réel via You.com.",
     parameters: {
-      type: "object",
       properties: {
         query: {
-          type: "string",
           description: "La requête de recherche textuelle complète et précise.",
+          type: "string",
         },
       },
       required: ["query"],
+      type: "object",
     },
   },
+  type: "function" as const,
 };
 
 /**
@@ -160,18 +173,22 @@ export const WEB_SEARCH_TOOL = {
  * ou via l'en-tête HTTP 'x-web-search: false' / 'x-disable-web-search: true'.
  */
 export function isWebSearchEnabled(body: any, reqHeaders?: Headers): boolean {
-  if (body) {
-    if (body.web_search === false || body.enable_web_search === false) {
-      return false;
-    }
+  if (body && (body.web_search === false || body.enable_web_search === false)) {
+    return false;
   }
   if (reqHeaders) {
-    const headerVal = reqHeaders.get("x-web-search") || reqHeaders.get("X-Web-Search");
+    const headerVal =
+      reqHeaders.get("x-web-search") || reqHeaders.get("X-Web-Search");
     if (headerVal && headerVal.toLowerCase() === "false") {
       return false;
     }
-    const disableHeader = reqHeaders.get("x-disable-web-search") || reqHeaders.get("X-Disable-Web-Search");
-    if (disableHeader && (disableHeader.toLowerCase() === "true" || disableHeader === "1")) {
+    const disableHeader =
+      reqHeaders.get("x-disable-web-search") ||
+      reqHeaders.get("X-Disable-Web-Search");
+    if (
+      disableHeader &&
+      (disableHeader.toLowerCase() === "true" || disableHeader === "1")
+    ) {
       return false;
     }
   }
@@ -204,13 +221,16 @@ export function registerWebRoutes(app: Hono) {
   app.get("/v1/web/search", async (c) => {
     const query = c.req.query("q") || c.req.query("query");
     const countParam = c.req.query("count");
-    const count = countParam ? parseInt(countParam, 10) : 5;
+    const count = countParam ? Number.parseInt(countParam, 10) : 5;
 
     if (!query) {
       return c.json({ error: "Paramètre 'q' ou 'query' manquant." }, 400);
     }
 
-    const searchResult = await executeWebSearch(query, isNaN(count) ? 5 : count);
+    const searchResult = await executeWebSearch(
+      query,
+      isNaN(count) ? 5 : count
+    );
     return c.json(searchResult, searchResult.success ? 200 : 502);
   });
 }

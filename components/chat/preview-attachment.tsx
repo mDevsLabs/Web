@@ -1,9 +1,9 @@
 import {
   ArchiveIcon,
   CodeIcon,
+  FileIcon,
   FileSpreadsheetIcon,
   FileTextIcon,
-  FileIcon,
   MusicIcon,
   VideoIcon,
 } from "lucide-react";
@@ -15,20 +15,38 @@ import { CrossSmallIcon } from "./icons";
 function getAttachmentIcon(contentType?: string, name?: string) {
   const ct = (contentType || "").toLowerCase();
   const n = (name || "").toLowerCase();
-  if (ct.includes("pdf") || n.endsWith(".pdf")) return <FileTextIcon className="size-6 text-red-500" />;
-  if (ct.includes("sheet") || ct.includes("excel") || n.endsWith(".csv") || n.endsWith(".xlsx"))
+  if (ct.includes("pdf") || n.endsWith(".pdf")) {
+    return <FileTextIcon className="size-6 text-red-500" />;
+  }
+  if (
+    ct.includes("sheet") ||
+    ct.includes("excel") ||
+    n.endsWith(".csv") ||
+    n.endsWith(".xlsx")
+  ) {
     return <FileSpreadsheetIcon className="size-6 text-green-500" />;
-  if (ct.includes("video") || /\.(mp4|webm|mov)$/i.test(n)) return <VideoIcon className="size-6 text-purple-500" />;
-  if (ct.includes("audio") || /\.(mp3|wav|ogg)$/i.test(n)) return <MusicIcon className="size-6 text-pink-500" />;
-  if (ct.includes("zip") || ct.includes("tar") || /\.(zip|rar|7z|tar|gz)$/i.test(n))
+  }
+  if (ct.includes("video") || /\.(mp4|webm|mov)$/i.test(n)) {
+    return <VideoIcon className="size-6 text-purple-500" />;
+  }
+  if (ct.includes("audio") || /\.(mp3|wav|ogg)$/i.test(n)) {
+    return <MusicIcon className="size-6 text-pink-500" />;
+  }
+  if (
+    ct.includes("zip") ||
+    ct.includes("tar") ||
+    /\.(zip|rar|7z|tar|gz)$/i.test(n)
+  ) {
     return <ArchiveIcon className="size-6 text-amber-500" />;
+  }
   if (
     ct.includes("javascript") ||
     ct.includes("typescript") ||
     ct.includes("json") ||
     /\.(ts|tsx|js|jsx|py|json|html|css|sql|sh)$/i.test(n)
-  )
+  ) {
     return <CodeIcon className="size-6 text-emerald-500" />;
+  }
   return <FileIcon className="size-6 text-muted-foreground" />;
 }
 

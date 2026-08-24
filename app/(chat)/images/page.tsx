@@ -2,66 +2,103 @@
 
 import {
   AlertCircleIcon,
-  CheckCircle2Icon,
   CopyIcon,
   DownloadIcon,
   EyeIcon,
-  FolderArchiveIcon,
   ImageIcon,
-  InfoIcon,
   LayersIcon,
   Loader2Icon,
   Maximize2Icon,
+  MonitorIcon,
   PlusIcon,
+  RectangleVerticalIcon,
   RefreshCwIcon,
   SlidersHorizontalIcon,
+  SmartphoneIcon,
   SparklesIcon,
+  SquareIcon,
   Trash2Icon,
   UploadCloudIcon,
   Wand2Icon,
   XIcon,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import type React from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 interface ImageModel {
+  created?: number;
+  description: string;
+  features?: string[];
   id: string;
   name: string;
-  description: string;
-  created?: number;
-  features?: string[];
 }
 
 interface ImageUsage {
-  usedToday: number;
   dailyLimit: number;
   plan: string;
   resetAt?: string;
+  usedToday: number;
 }
 
 interface GeneratedImage {
-  id: string;
-  user_id: string;
-  model: string;
-  prompt: string;
-  negative_prompt?: string;
-  image_url: string;
-  width: number;
-  height: number;
   created_at: string;
+  height: number;
+  id: string;
+  image_url: string;
+  model: string;
+  negative_prompt?: string;
+  prompt: string;
+  user_id: string;
+  width: number;
 }
 
-const ASPECT_RATIOS = [
-  { id: "1:1", label: "1:1 Carré", width: 1024, height: 1024, icon: "⏹️" },
-  { id: "16:9", label: "16:9 Paysage", width: 1344, height: 768, icon: "🖥️" },
-  { id: "9:16", label: "9:16 Story / Mobile", width: 768, height: 1344, icon: "📱" },
-  { id: "4:3", label: "4:3 Standard", width: 1152, height: 864, icon: "🖼️" },
-  { id: "3:4", label: "3:4 Portrait", width: 864, height: 1152, icon: "👤" },
+const ASPECT_RATIOS: {
+  id: string;
+  label: string;
+  width: number;
+  height: number;
+  icon: React.ComponentType<{ className?: string }>;
+}[] = [
+  {
+    height: 1024,
+    icon: SquareIcon,
+    id: "1:1",
+    label: "1:1 Carré",
+    width: 1024,
+  },
+  {
+    height: 768,
+    icon: MonitorIcon,
+    id: "16:9",
+    label: "16:9 Paysage",
+    width: 1344,
+  },
+  {
+    height: 1344,
+    icon: SmartphoneIcon,
+    id: "9:16",
+    label: "9:16 Story / Mobile",
+    width: 768,
+  },
+  {
+    height: 864,
+    icon: ImageIcon,
+    id: "4:3",
+    label: "4:3 Standard",
+    width: 1152,
+  },
+  {
+    height: 1152,
+    icon: RectangleVerticalIcon,
+    id: "3:4",
+    label: "3:4 Portrait",
+    width: 864,
+  },
 ];
 
 const PROMPT_SUGGESTIONS = [
@@ -74,28 +111,35 @@ const PROMPT_SUGGESTIONS = [
 
 const fetcher = (url: string) =>
   fetch(url).then((res) => {
-    if (!res.ok) throw new Error("Erreur de chargement");
+    if (!res.ok) {
+      throw new Error("Erreur de chargement");
+    }
     return res.json();
   });
 
 export default function ImagesPage() {
   // 1. Modèles d'images disponibles via /api/models/images
-  const { data: modelsData, isLoading: isLoadingModels } = useSWR<{ data: ImageModel[] }>(
-    "/api/models/images",
-    fetcher,
-    { revalidateOnFocus: false, dedupingInterval: 60_000 }
-  );
+  const { data: modelsData, isLoading: isLoadingModels } = useSWR<{
+    data: ImageModel[];
+  }>("/api/models/images", fetcher, {
+    dedupingInterval: 60_000,
+    revalidateOnFocus: false,
+  });
   const models = useMemo(() => modelsData?.data || [], [modelsData]);
 
   // 2. Quota d'utilisation via /api/images/usage
   const { data: usageData, mutate: mutateUsage } = useSWR<ImageUsage>(
     "/api/images/usage",
     fetcher,
-    { revalidateOnFocus: true, refreshInterval: 30_000 }
+    { refreshInterval: 30_000, revalidateOnFocus: true }
   );
 
   // 3. Historique des générations via /api/images/history
-  const { data: historyData, mutate: mutateHistory, isLoading: isLoadingHistory } = useSWR<{
+  const {
+    data: historyData,
+    mutate: mutateHistory,
+    isLoading: isLoadingHistory,
+  } = useSWR<{
     images: GeneratedImage[];
     total: number;
   }>("/api/images/history", fetcher, { revalidateOnFocus: false });
@@ -115,7 +159,9 @@ export default function ImagesPage() {
 
   // États de génération
   const [isGenerating, setIsGenerating] = useState<boolean>(false);
-  const [currentResult, setCurrentResult] = useState<GeneratedImage | null>(null);
+  const [currentResult, setCurrentResult] = useState<GeneratedImage | null>(
+    null
+  );
   const [activeTab, setActiveTab] = useState<"create" | "history">("create");
 
   // Modale plein écran
@@ -138,7 +184,9 @@ export default function ImagesPage() {
   );
 
   const supportsImageToImage = useMemo(() => {
-    if (!selectedModel) return false;
+    if (!selectedModel) {
+      return false;
+    }
     const features = selectedModel.features || [];
     return (
       features.includes("image-to-image") ||
@@ -147,12 +195,15 @@ export default function ImagesPage() {
     );
   }, [selectedModel]);
 
-  const currentSize = useMemo(() => {
-    return ASPECT_RATIOS.find((r) => r.id === aspectRatio) || ASPECT_RATIOS[0];
-  }, [aspectRatio]);
+  const currentSize = useMemo(
+    () => ASPECT_RATIOS.find((r) => r.id === aspectRatio) || ASPECT_RATIOS[0],
+    [aspectRatio]
+  );
 
   const quotaRemaining = useMemo(() => {
-    if (!usageData) return 3;
+    if (!usageData) {
+      return 3;
+    }
     return Math.max(0, usageData.dailyLimit - usageData.usedToday);
   }, [usageData]);
 
@@ -161,10 +212,14 @@ export default function ImagesPage() {
   // Gestion de l'upload d'image source
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file) return;
+    if (!file) {
+      return;
+    }
 
     if (!file.type.startsWith("image/")) {
-      toast.error("Veuillez sélectionner un fichier image valide (JPG, PNG, WebP).");
+      toast.error(
+        "Veuillez sélectionner un fichier image valide (JPG, PNG, WebP)."
+      );
       return;
     }
 
@@ -177,7 +232,7 @@ export default function ImagesPage() {
     const reader = new FileReader();
     reader.onload = (event) => {
       setSourceImage(event.target?.result as string);
-      toast.success("Image source importée avec succès ! 🖼️");
+      toast.success("Image source importée avec succès !");
     };
     reader.readAsDataURL(file);
   };
@@ -185,19 +240,23 @@ export default function ImagesPage() {
   const handleRemoveSourceImage = () => {
     setSourceImage(null);
     setSourceImageFile(null);
-    if (fileInputRef.current) fileInputRef.current.value = "";
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
   };
 
   // Lancement de la génération
   const handleGenerate = async () => {
     if (!prompt.trim()) {
-      toast.error("Veuillez saisir une description (prompt) pour générer votre image.");
+      toast.error(
+        "Veuillez saisir une description (prompt) pour générer votre image."
+      );
       return;
     }
 
     if (isQuotaExhausted) {
       toast.error(
-        `Votre quota journalier est atteint (${usageData?.usedToday}/${usageData?.dailyLimit}). Mettez à niveau votre compte pour plus de générations ! 🚀`
+        `Votre quota journalier est atteint (${usageData?.usedToday}/${usageData?.dailyLimit}). Mettez à niveau votre compte pour plus de générations !`
       );
       return;
     }
@@ -217,12 +276,12 @@ export default function ImagesPage() {
 
       // 2. Appel de la génération
       const payload: Record<string, any> = {
-        model: selectedModelId || "black-forest-labs/flux-1-schnell",
-        prompt: prompt.trim(),
-        negative_prompt: negativePrompt.trim() || undefined,
-        width: currentSize.width,
         height: currentSize.height,
+        model: selectedModelId || "black-forest-labs/flux-1-schnell",
+        negative_prompt: negativePrompt.trim() || undefined,
+        prompt: prompt.trim(),
         size: `${currentSize.width}x${currentSize.height}`,
+        width: currentSize.width,
       };
 
       if (sourceImage) {
@@ -230,17 +289,18 @@ export default function ImagesPage() {
       }
 
       const res = await fetch("/api/images/generations", {
-        method: "POST",
+        body: JSON.stringify(payload),
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(payload),
+        method: "POST",
       });
 
       const data = await res.json();
 
       if (!res.ok) {
-        const errMsg = data?.error?.message || data?.error || "Erreur lors de la génération";
+        const errMsg =
+          data?.error?.message || data?.error || "Erreur lors de la génération";
         throw new Error(errMsg);
       }
 
@@ -250,19 +310,19 @@ export default function ImagesPage() {
       }
 
       const generated: GeneratedImage = {
-        id: data.id || `img_${Date.now()}`,
-        user_id: "",
-        model: selectedModel?.name || selectedModelId,
-        prompt: prompt.trim(),
-        negative_prompt: negativePrompt.trim() || undefined,
-        image_url: imageUrl,
-        width: currentSize.width,
-        height: currentSize.height,
         created_at: new Date().toISOString(),
+        height: currentSize.height,
+        id: data.id || `img_${Date.now()}`,
+        image_url: imageUrl,
+        model: selectedModel?.name || selectedModelId,
+        negative_prompt: negativePrompt.trim() || undefined,
+        prompt: prompt.trim(),
+        user_id: "",
+        width: currentSize.width,
       };
 
       setCurrentResult(generated);
-      toast.success("Image générée avec succès ! ✨🎨");
+      toast.success("Image générée avec succès !");
 
       // Actualiser le quota et l'historique
       mutateUsage();
@@ -281,8 +341,10 @@ export default function ImagesPage() {
       const res = await fetch(`/api/images/history?id=${id}`, {
         method: "DELETE",
       });
-      if (!res.ok) throw new Error("Erreur de suppression");
-      toast.success("Image supprimée de l'historique 🗑️");
+      if (!res.ok) {
+        throw new Error("Erreur de suppression");
+      }
+      toast.success("Image supprimée de l'historique");
       mutateHistory();
       if (currentResult?.id === id) {
         setCurrentResult(null);
@@ -299,7 +361,7 @@ export default function ImagesPage() {
       setPrompt(imgPrompt);
     }
     setActiveTab("create");
-    toast.info("Image chargée comme référence pour l'édition ! 🪄");
+    toast.info("Image chargée comme référence pour l'édition !");
   };
 
   return (
@@ -312,13 +374,16 @@ export default function ImagesPage() {
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-lg font-bold tracking-tight text-foreground">Studio Images mAI</h1>
+              <h1 className="text-lg font-bold tracking-tight text-foreground">
+                Studio Images mAI
+              </h1>
               <span className="rounded-full bg-gradient-to-r from-indigo-500/20 to-purple-500/20 px-2 py-0.5 text-[10px] font-semibold text-indigo-400 border border-indigo-500/30">
                 IA Générative
               </span>
             </div>
             <p className="text-xs text-muted-foreground">
-              Créez, éditez et explorez des images haute définition avec les modèles Flux & Diffusion
+              Créez, éditez et explorez des images haute définition avec les
+              modèles Flux & Diffusion
             </p>
           </div>
         </div>
@@ -331,15 +396,17 @@ export default function ImagesPage() {
               <span className="font-semibold text-foreground">
                 {usageData?.usedToday ?? 0} / {usageData?.dailyLimit ?? 3}
               </span>{" "}
-              <span className="text-muted-foreground">générations/j ({usageData?.plan || "Free"})</span>
+              <span className="text-muted-foreground">
+                générations/j ({usageData?.plan || "Free"})
+              </span>
             </div>
           </div>
 
           {isQuotaExhausted && (
             <Link
+              className="inline-flex items-center gap-1.5 rounded-xl bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 active:scale-95"
               href={MAI_UPGRADE_URL}
               target="_blank"
-              className="inline-flex items-center gap-1.5 rounded-xl bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 active:scale-95"
             >
               <SparklesIcon className="size-3.5" />
               <span>Débloquer plus</span>
@@ -352,28 +419,28 @@ export default function ImagesPage() {
       <div className="border-b border-border/40 bg-muted/20 px-6 py-2">
         <div className="flex items-center gap-2">
           <button
-            type="button"
-            onClick={() => setActiveTab("create")}
             className={cn(
               "flex items-center gap-2 rounded-lg px-3.5 py-1.5 text-xs font-semibold transition-all",
               activeTab === "create"
                 ? "bg-primary text-primary-foreground shadow-sm"
                 : "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
             )}
+            onClick={() => setActiveTab("create")}
+            type="button"
           >
             <Wand2Icon className="size-3.5" />
             <span>Studio de Création</span>
           </button>
 
           <button
-            type="button"
-            onClick={() => setActiveTab("history")}
             className={cn(
               "flex items-center gap-2 rounded-lg px-3.5 py-1.5 text-xs font-semibold transition-all",
               activeTab === "history"
                 ? "bg-primary text-primary-foreground shadow-sm"
                 : "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
             )}
+            onClick={() => setActiveTab("history")}
+            type="button"
           >
             <LayersIcon className="size-3.5" />
             <span>Galerie & Historique ({history.length})</span>
@@ -409,9 +476,9 @@ export default function ImagesPage() {
                 ) : (
                   <div className="flex flex-col gap-2">
                     <select
-                      value={selectedModelId}
-                      onChange={(e) => setSelectedModelId(e.target.value)}
                       className="w-full rounded-xl border border-border/80 bg-background/90 px-3.5 py-2.5 text-sm font-medium text-foreground transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                      onChange={(e) => setSelectedModelId(e.target.value)}
+                      value={selectedModelId}
                     >
                       {models.map((mod) => (
                         <option key={mod.id} value={mod.id}>
@@ -444,22 +511,24 @@ export default function ImagesPage() {
                   </div>
 
                   <textarea
-                    value={prompt}
+                    className="w-full rounded-xl border border-border/80 bg-background/90 p-3.5 text-sm text-foreground placeholder:text-muted-foreground/60 transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 resize-none"
                     onChange={(e) => setPrompt(e.target.value)}
                     placeholder="Décrivez précisément ce que vous souhaitez générer (sujet, style artistique, éclairage, ambiance, détails)..."
                     rows={4}
-                    className="w-full rounded-xl border border-border/80 bg-background/90 p-3.5 text-sm text-foreground placeholder:text-muted-foreground/60 transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 resize-none"
+                    value={prompt}
                   />
 
                   {/* Suggestions rapides */}
                   <div className="mt-2.5 flex flex-wrap gap-1.5">
-                    <span className="text-[10px] uppercase font-semibold text-muted-foreground py-0.5">Idées :</span>
+                    <span className="text-[10px] uppercase font-semibold text-muted-foreground py-0.5">
+                      Idées :
+                    </span>
                     {PROMPT_SUGGESTIONS.slice(0, 3).map((sug, i) => (
                       <button
-                        key={i}
-                        type="button"
-                        onClick={() => setPrompt(sug)}
                         className="rounded-lg border border-border/60 bg-muted/30 px-2 py-0.5 text-[11px] text-muted-foreground transition hover:border-primary/40 hover:bg-primary/5 hover:text-foreground truncate max-w-[200px]"
+                        key={i}
+                        onClick={() => setPrompt(sug)}
+                        type="button"
                       >
                         {sug}
                       </button>
@@ -485,9 +554,9 @@ export default function ImagesPage() {
                     <div className="relative flex items-center gap-3 rounded-lg border border-border/60 bg-background/80 p-2">
                       <div className="relative size-16 overflow-hidden rounded-md border border-border">
                         <img
-                          src={sourceImage}
                           alt="Source"
                           className="size-full object-cover"
+                          src={sourceImage}
                         />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -499,10 +568,10 @@ export default function ImagesPage() {
                         </p>
                       </div>
                       <button
-                        type="button"
-                        onClick={handleRemoveSourceImage}
                         className="p-1.5 text-muted-foreground hover:text-destructive rounded-md transition"
+                        onClick={handleRemoveSourceImage}
                         title="Retirer l'image"
+                        type="button"
                       >
                         <XIcon className="size-4" />
                       </button>
@@ -510,23 +579,24 @@ export default function ImagesPage() {
                   ) : (
                     <div>
                       <input
-                        ref={fileInputRef}
-                        type="file"
                         accept="image/*"
-                        onChange={handleFileSelect}
                         className="hidden"
                         id="image-upload"
+                        onChange={handleFileSelect}
+                        ref={fileInputRef}
+                        type="file"
                       />
                       <label
-                        htmlFor="image-upload"
                         className="flex flex-col items-center justify-center gap-1 py-3 cursor-pointer rounded-lg hover:bg-muted/30 transition text-center"
+                        htmlFor="image-upload"
                       >
                         <UploadCloudIcon className="size-5 text-muted-foreground" />
                         <span className="text-xs font-medium text-foreground">
                           Importer une image source
                         </span>
                         <span className="text-[10px] text-muted-foreground">
-                          Optionnel : transformez ou modifiez une image existante
+                          Optionnel : transformez ou modifiez une image
+                          existante
                         </span>
                       </label>
                     </div>
@@ -541,17 +611,17 @@ export default function ImagesPage() {
                   <div className="grid grid-cols-3 gap-2 sm:grid-cols-5">
                     {ASPECT_RATIOS.map((r) => (
                       <button
-                        key={r.id}
-                        type="button"
-                        onClick={() => setAspectRatio(r.id)}
                         className={cn(
                           "flex flex-col items-center justify-center rounded-xl border p-2 text-center transition-all",
                           aspectRatio === r.id
                             ? "border-primary bg-primary/10 text-primary ring-1 ring-primary/20 shadow-sm"
                             : "border-border/60 bg-muted/20 text-muted-foreground hover:border-border hover:bg-muted/40 hover:text-foreground"
                         )}
+                        key={r.id}
+                        onClick={() => setAspectRatio(r.id)}
+                        type="button"
                       >
-                        <span className="text-base mb-1">{r.icon}</span>
+                        <r.icon className="size-4 mb-1" />
                         <span className="text-xs font-bold">{r.id}</span>
                         <span className="text-[10px] text-muted-foreground/80 mt-0.5">
                           {r.width}x{r.height}
@@ -564,12 +634,16 @@ export default function ImagesPage() {
                 {/* Paramètres avancés (Prompt négatif) */}
                 <div>
                   <button
-                    type="button"
-                    onClick={() => setShowAdvanced(!showAdvanced)}
                     className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground hover:text-foreground transition"
+                    onClick={() => setShowAdvanced(!showAdvanced)}
+                    type="button"
                   >
                     <SlidersHorizontalIcon className="size-3.5" />
-                    <span>{showAdvanced ? "Masquer les options avancées" : "Options avancées (Prompt négatif)"}</span>
+                    <span>
+                      {showAdvanced
+                        ? "Masquer les options avancées"
+                        : "Options avancées (Prompt négatif)"}
+                    </span>
                   </button>
 
                   {showAdvanced && (
@@ -578,11 +652,11 @@ export default function ImagesPage() {
                         Prompt Négatif (éléments à exclure)
                       </label>
                       <textarea
-                        value={negativePrompt}
+                        className="w-full rounded-lg border border-border/80 bg-background p-2 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/20 resize-none"
                         onChange={(e) => setNegativePrompt(e.target.value)}
                         placeholder="flou, basse qualité, artefacts, texte déformé, filigrane..."
                         rows={2}
-                        className="w-full rounded-lg border border-border/80 bg-background p-2 text-xs text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary/20 resize-none"
+                        value={negativePrompt}
                       />
                     </div>
                   )}
@@ -591,15 +665,17 @@ export default function ImagesPage() {
                 {/* Bouton de génération & Quota */}
                 <div className="pt-2">
                   <button
-                    type="button"
-                    onClick={handleGenerate}
-                    disabled={isGenerating || !prompt.trim() || isQuotaExhausted}
                     className={cn(
                       "w-full flex items-center justify-center gap-2 rounded-xl py-3.5 text-sm font-bold text-white shadow-md transition-all active:scale-[0.98]",
                       isQuotaExhausted
                         ? "bg-muted text-muted-foreground cursor-not-allowed"
                         : "bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:opacity-95 hover:shadow-indigo-500/25"
                     )}
+                    disabled={
+                      isGenerating || !prompt.trim() || isQuotaExhausted
+                    }
+                    onClick={handleGenerate}
+                    type="button"
                   >
                     {isGenerating ? (
                       <>
@@ -614,15 +690,23 @@ export default function ImagesPage() {
                     ) : (
                       <>
                         <SparklesIcon className="size-4" />
-                        <span>Générer l'image ({quotaRemaining} restant{quotaRemaining > 1 ? "s" : ""})</span>
+                        <span>
+                          Générer l'image ({quotaRemaining} restant
+                          {quotaRemaining > 1 ? "s" : ""})
+                        </span>
                       </>
                     )}
                   </button>
 
                   {isQuotaExhausted && (
                     <p className="mt-2 text-center text-xs text-amber-500">
-                      Quota journalier atteint. Réinitialisation automatique à minuit UTC ou{" "}
-                      <Link href={MAI_UPGRADE_URL} target="_blank" className="underline font-semibold">
+                      Quota journalier atteint. Réinitialisation automatique à
+                      minuit UTC ou{" "}
+                      <Link
+                        className="underline font-semibold"
+                        href={MAI_UPGRADE_URL}
+                        target="_blank"
+                      >
                         passez à un forfait supérieur
                       </Link>
                       .
@@ -644,19 +728,19 @@ export default function ImagesPage() {
                   {currentResult && (
                     <div className="flex items-center gap-1.5">
                       <button
-                        type="button"
-                        onClick={() => setPreviewImage(currentResult.image_url)}
                         className="p-1.5 text-muted-foreground hover:text-foreground rounded-lg border border-border/60 hover:bg-muted/40 transition"
+                        onClick={() => setPreviewImage(currentResult.image_url)}
                         title="Plein écran"
+                        type="button"
                       >
                         <Maximize2Icon className="size-4" />
                       </button>
                       <a
-                        href={currentResult.image_url}
-                        download={`mai-image-${Date.now()}.png`}
-                        target="_blank"
-                        rel="noreferrer"
                         className="p-1.5 text-muted-foreground hover:text-foreground rounded-lg border border-border/60 hover:bg-muted/40 transition"
+                        download={`mai-image-${Date.now()}.png`}
+                        href={currentResult.image_url}
+                        rel="noreferrer"
+                        target="_blank"
                         title="Télécharger l'image"
                       >
                         <DownloadIcon className="size-4" />
@@ -673,9 +757,15 @@ export default function ImagesPage() {
                         <Loader2Icon className="size-8 animate-spin" />
                       </div>
                       <div>
-                        <h4 className="text-sm font-bold text-foreground">Génération par l'IA en cours</h4>
+                        <h4 className="text-sm font-bold text-foreground">
+                          Génération par l'IA en cours
+                        </h4>
                         <p className="text-xs text-muted-foreground mt-1 max-w-sm">
-                          Le modèle <span className="font-semibold text-primary">{selectedModel?.name}</span> calcule les pixels de votre chef-d'œuvre...
+                          Le modèle{" "}
+                          <span className="font-semibold text-primary">
+                            {selectedModel?.name}
+                          </span>{" "}
+                          calcule les pixels de votre chef-d'œuvre...
                         </p>
                       </div>
                     </div>
@@ -686,9 +776,9 @@ export default function ImagesPage() {
                         onClick={() => setPreviewImage(currentResult.image_url)}
                       >
                         <img
-                          src={currentResult.image_url}
                           alt={currentResult.prompt}
                           className="max-h-[460px] w-auto object-contain rounded-xl transition duration-300 group-hover:scale-[1.01]"
+                          src={currentResult.image_url}
                         />
                         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
                           <span className="flex items-center gap-1.5 rounded-full bg-black/70 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md">
@@ -704,13 +794,17 @@ export default function ImagesPage() {
                             "{currentResult.prompt}"
                           </p>
                           <button
-                            type="button"
-                            onClick={() => {
-                              navigator.clipboard.writeText(currentResult.prompt);
-                              toast.success("Prompt copié ! 📋");
-                            }}
                             className="p-1 text-muted-foreground hover:text-foreground shrink-0"
+                            onClick={() => {
+                              navigator.clipboard.writeText(
+                                currentResult.prompt
+                              );
+                              toast.success(
+                                "Prompt copié dans le presse-papier !"
+                              );
+                            }}
                             title="Copier le prompt"
+                            type="button"
                           >
                             <CopyIcon className="size-3.5" />
                           </button>
@@ -718,15 +812,25 @@ export default function ImagesPage() {
 
                         <div className="flex items-center justify-between text-[11px] text-muted-foreground pt-1 border-t border-border/40">
                           <span>
-                            Modèle : <strong className="text-foreground">{currentResult.model}</strong> • {currentResult.width}x{currentResult.height}
+                            Modèle :{" "}
+                            <strong className="text-foreground">
+                              {currentResult.model}
+                            </strong>{" "}
+                            • {currentResult.width}x{currentResult.height}
                           </span>
                           <div className="flex items-center gap-2">
                             <button
-                              type="button"
-                              onClick={() => handleEditAsSource(currentResult.image_url, currentResult.prompt)}
                               className="text-primary hover:underline font-semibold flex items-center gap-1"
+                              onClick={() =>
+                                handleEditAsSource(
+                                  currentResult.image_url,
+                                  currentResult.prompt
+                                )
+                              }
+                              type="button"
                             >
-                              <Wand2Icon className="size-3" /> Éditer cette image
+                              <Wand2Icon className="size-3" /> Éditer cette
+                              image
                             </button>
                           </div>
                         </div>
@@ -738,9 +842,12 @@ export default function ImagesPage() {
                         <ImageIcon className="size-7" />
                       </div>
                       <div>
-                        <h4 className="text-sm font-semibold text-foreground">Aucune image générée</h4>
+                        <h4 className="text-sm font-semibold text-foreground">
+                          Aucune image générée
+                        </h4>
                         <p className="text-xs text-muted-foreground mt-1 max-w-xs">
-                          Rédigez un prompt à gauche et cliquez sur Générer pour créer votre première illustration.
+                          Rédigez un prompt à gauche et cliquez sur Générer pour
+                          créer votre première illustration.
                         </p>
                       </div>
                     </div>
@@ -754,16 +861,18 @@ export default function ImagesPage() {
           <div className="mx-auto max-w-7xl flex flex-col gap-6">
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-base font-bold text-foreground">Historique de vos créations</h2>
+                <h2 className="text-base font-bold text-foreground">
+                  Historique de vos créations
+                </h2>
                 <p className="text-xs text-muted-foreground">
                   Retrouvez toutes les images générées avec votre compte mAI
                 </p>
               </div>
 
               <button
-                type="button"
-                onClick={() => mutateHistory()}
                 className="flex items-center gap-1.5 rounded-xl border border-border/60 bg-card px-3 py-1.5 text-xs font-semibold text-foreground hover:bg-muted/40 transition"
+                onClick={() => mutateHistory()}
+                type="button"
               >
                 <RefreshCwIcon className="size-3.5" />
                 <span>Actualiser</span>
@@ -781,15 +890,18 @@ export default function ImagesPage() {
                   <ImageIcon className="size-6" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-foreground">Votre galerie est vide</h3>
+                  <h3 className="text-sm font-bold text-foreground">
+                    Votre galerie est vide
+                  </h3>
                   <p className="text-xs text-muted-foreground mt-1">
-                    Générez des images depuis le studio pour les retrouver sauvegardées ici.
+                    Générez des images depuis le studio pour les retrouver
+                    sauvegardées ici.
                   </p>
                 </div>
                 <button
-                  type="button"
-                  onClick={() => setActiveTab("create")}
                   className="mt-2 inline-flex items-center gap-1.5 rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground shadow-sm transition hover:opacity-90"
+                  onClick={() => setActiveTab("create")}
+                  type="button"
                 >
                   <PlusIcon className="size-4" /> Créer une image
                 </button>
@@ -798,17 +910,17 @@ export default function ImagesPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 {history.map((item) => (
                   <div
-                    key={item.id}
                     className="group flex flex-col rounded-2xl border border-border/60 bg-card/60 overflow-hidden shadow-sm hover:shadow-md transition backdrop-blur-md"
+                    key={item.id}
                   >
                     <div
                       className="relative aspect-square cursor-pointer overflow-hidden bg-black/10"
                       onClick={() => setPreviewImage(item.image_url)}
                     >
                       <img
-                        src={item.image_url}
                         alt={item.prompt}
                         className="size-full object-cover transition duration-300 group-hover:scale-105"
+                        src={item.image_url}
                       />
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
                         <EyeIcon className="size-6 text-white" />
@@ -816,36 +928,43 @@ export default function ImagesPage() {
                     </div>
 
                     <div className="p-3.5 flex flex-col gap-2 flex-1 justify-between text-xs">
-                      <p className="text-foreground font-medium line-clamp-2" title={item.prompt}>
+                      <p
+                        className="text-foreground font-medium line-clamp-2"
+                        title={item.prompt}
+                      >
                         {item.prompt}
                       </p>
 
                       <div className="flex items-center justify-between pt-2 border-t border-border/40 text-[11px] text-muted-foreground">
-                        <span className="truncate max-w-[110px]">{item.model}</span>
+                        <span className="truncate max-w-[110px]">
+                          {item.model}
+                        </span>
                         <div className="flex items-center gap-1">
                           <button
-                            type="button"
-                            onClick={() => handleEditAsSource(item.image_url, item.prompt)}
                             className="p-1 text-muted-foreground hover:text-primary transition"
+                            onClick={() =>
+                              handleEditAsSource(item.image_url, item.prompt)
+                            }
                             title="Utiliser comme source"
+                            type="button"
                           >
                             <Wand2Icon className="size-3.5" />
                           </button>
                           <a
-                            href={item.image_url}
-                            download={`mai-image-${item.id}.png`}
-                            target="_blank"
-                            rel="noreferrer"
                             className="p-1 text-muted-foreground hover:text-foreground transition"
+                            download={`mai-image-${item.id}.png`}
+                            href={item.image_url}
+                            rel="noreferrer"
+                            target="_blank"
                             title="Télécharger"
                           >
                             <DownloadIcon className="size-3.5" />
                           </a>
                           <button
-                            type="button"
-                            onClick={() => handleDeleteFromHistory(item.id)}
                             className="p-1 text-muted-foreground hover:text-destructive transition"
+                            onClick={() => handleDeleteFromHistory(item.id)}
                             title="Supprimer"
+                            type="button"
                           >
                             <Trash2Icon className="size-3.5" />
                           </button>
@@ -871,36 +990,36 @@ export default function ImagesPage() {
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              type="button"
-              onClick={() => setPreviewImage(null)}
               className="absolute -top-10 right-0 p-2 text-white/80 hover:text-white rounded-full transition"
+              onClick={() => setPreviewImage(null)}
+              type="button"
             >
               <XIcon className="size-6" />
             </button>
 
             <img
-              src={previewImage}
               alt="Prévisualisation plein écran"
               className="max-h-[85vh] max-w-[85vw] object-contain rounded-2xl shadow-2xl border border-white/10"
+              src={previewImage}
             />
 
             <div className="mt-3 flex items-center gap-3">
               <a
-                href={previewImage}
-                download={`mai-image-${Date.now()}.png`}
-                target="_blank"
-                rel="noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white px-4 py-2 text-xs font-semibold backdrop-blur-md transition"
+                download={`mai-image-${Date.now()}.png`}
+                href={previewImage}
+                rel="noreferrer"
+                target="_blank"
               >
                 <DownloadIcon className="size-4" /> Télécharger l'original
               </a>
               <button
-                type="button"
+                className="inline-flex items-center gap-1.5 rounded-xl bg-primary hover:bg-primary/90 text-white px-4 py-2 text-xs font-semibold transition"
                 onClick={() => {
                   handleEditAsSource(previewImage);
                   setPreviewImage(null);
                 }}
-                className="inline-flex items-center gap-1.5 rounded-xl bg-primary hover:bg-primary/90 text-white px-4 py-2 text-xs font-semibold transition"
+                type="button"
               >
                 <Wand2Icon className="size-4" /> Éditer dans le studio
               </button>

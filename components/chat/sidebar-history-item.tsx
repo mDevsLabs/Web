@@ -1,3 +1,11 @@
+import {
+  Archive as ArchiveIcon,
+  ArchiveRestore as ArchiveRestoreIcon,
+  Check as CheckIcon,
+  Folder as FolderIcon,
+  Pin as PinIcon,
+  PinOff as PinOffIcon,
+} from "lucide-react";
 import Link from "next/link";
 import { memo, useCallback } from "react";
 import { toast } from "sonner";
@@ -5,7 +13,6 @@ import { useSWRConfig } from "swr";
 import { unstable_serialize } from "swr/infinite";
 import { useChatVisibility } from "@/hooks/use-chat-visibility";
 import type { Chat } from "@/lib/db/schema";
-import { getChatHistoryPaginationKey } from "./sidebar-history";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,6 +36,8 @@ import {
   ShareIcon,
   TrashIcon,
 } from "./icons";
+import { ProjectIcon } from "./project-icon";
+import { getChatHistoryPaginationKey } from "./sidebar-history";
 
 const PureChatItem = ({
   chat,
@@ -67,9 +76,9 @@ const PureChatItem = ({
   const handleMoveToProject = useCallback(
     async (projectId: string | null) => {
       const res = await fetch(`/api/chats/${chat.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ projectId }),
+        headers: { "Content-Type": "application/json" },
+        method: "PATCH",
       });
       if (res.ok) {
         toast.success(projectId ? "Déplacé" : "Retiré du dossier");
@@ -84,9 +93,9 @@ const PureChatItem = ({
 
   const handleTogglePin = useCallback(async () => {
     const res = await fetch(`/api/chats/${chat.id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ pinned: !(chat as any).pinned }),
+      headers: { "Content-Type": "application/json" },
+      method: "PATCH",
     });
     if (res.ok) {
       toast.success((chat as any).pinned ? "Désépinglé" : "Épinglé");
@@ -96,9 +105,9 @@ const PureChatItem = ({
 
   const handleToggleArchive = useCallback(async () => {
     const res = await fetch(`/api/chats/${chat.id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ isArchived: !(chat as any).isArchived }),
+      headers: { "Content-Type": "application/json" },
+      method: "PATCH",
     });
     if (res.ok) {
       toast.success((chat as any).isArchived ? "Désarchivé" : "Archivé");
@@ -165,27 +174,55 @@ const PureChatItem = ({
 
           <DropdownMenuSub>
             <DropdownMenuSubTrigger className="cursor-pointer">
-              <span>📁 Dossier</span>
+              <FolderIcon className="size-4 mr-2 shrink-0" />
+              <span>Dossier</span>
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
-                <DropdownMenuItem onClick={() => handleMoveToProject(null)}>Sans dossier</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleMoveToProject(null)}>
+                  Sans dossier
+                </DropdownMenuItem>
                 {projects?.map((p) => (
-                  <DropdownMenuItem key={p.id} onClick={() => handleMoveToProject(p.id)}>
-                    <span className="mr-2">{p.icon}</span> {p.name}
-                    {(chat as any).projectId === p.id ? " ✓" : ""}
+                  <DropdownMenuItem
+                    className="flex items-center justify-between gap-2"
+                    key={p.id}
+                    onClick={() => handleMoveToProject(p.id)}
+                  >
+                    <div className="flex items-center gap-2 min-w-0">
+                      <ProjectIcon className="size-4 shrink-0" name={p.icon} />
+                      <span className="truncate">{p.name}</span>
+                    </div>
+                    {(chat as any).projectId === p.id && (
+                      <CheckIcon className="size-3.5 text-primary shrink-0" />
+                    )}
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>
 
-          <DropdownMenuItem onClick={handleTogglePin} className="cursor-pointer">
-            <span>{(chat as any).pinned ? "📌 Désépingler" : "📌 Épingler"}</span>
+          <DropdownMenuItem
+            className="cursor-pointer"
+            onClick={handleTogglePin}
+          >
+            {(chat as any).pinned ? (
+              <PinOffIcon className="size-4 mr-2" />
+            ) : (
+              <PinIcon className="size-4 mr-2" />
+            )}
+            <span>{(chat as any).pinned ? "Désépingler" : "Épingler"}</span>
           </DropdownMenuItem>
 
-          <DropdownMenuItem onClick={handleToggleArchive} className="cursor-pointer">
-            <span>{(chat as any).isArchived ? "📂 Désarchiver" : "📦 Archiver"}</span>
+          <DropdownMenuItem
+            className="cursor-pointer"
+            onClick={handleToggleArchive}
+          >
+            {(chat as any).isArchived ? (
+              <ArchiveRestoreIcon className="size-4 mr-2" />
+            ) : (
+              <ArchiveIcon className="size-4 mr-2" />
+            )}
+            <span>{(chat as any).isArchived ? "Désarchiver" : "Archiver"}</span>
           </DropdownMenuItem>
 
           <DropdownMenuItem onSelect={handleDelete} variant="destructive">
@@ -199,11 +236,25 @@ const PureChatItem = ({
 };
 
 export const ChatItem = memo(PureChatItem, (prevProps, nextProps) => {
-  if (prevProps.isActive !== nextProps.isActive) return false;
-  if (prevProps.chat.id !== nextProps.chat.id) return false;
-  if ((prevProps.chat as any).projectId !== (nextProps.chat as any).projectId) return false;
-  if ((prevProps.chat as any).pinned !== (nextProps.chat as any).pinned) return false;
-  if ((prevProps.chat as any).isArchived !== (nextProps.chat as any).isArchived) return false;
-  if (prevProps.projects !== nextProps.projects) return false;
+  if (prevProps.isActive !== nextProps.isActive) {
+    return false;
+  }
+  if (prevProps.chat.id !== nextProps.chat.id) {
+    return false;
+  }
+  if ((prevProps.chat as any).projectId !== (nextProps.chat as any).projectId) {
+    return false;
+  }
+  if ((prevProps.chat as any).pinned !== (nextProps.chat as any).pinned) {
+    return false;
+  }
+  if (
+    (prevProps.chat as any).isArchived !== (nextProps.chat as any).isArchived
+  ) {
+    return false;
+  }
+  if (prevProps.projects !== nextProps.projects) {
+    return false;
+  }
   return true;
 });

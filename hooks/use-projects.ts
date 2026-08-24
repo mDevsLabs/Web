@@ -12,15 +12,16 @@ export type ProjectLite = {
 };
 
 export function useProjects() {
-  const { data, error, isLoading, mutate } = useSWR<{ projects: ProjectLite[] }>(
-    "/api/projects",
-    fetcher,
-    { dedupingInterval: 30_000, revalidateOnFocus: false }
-  );
+  const { data, error, isLoading, mutate } = useSWR<{
+    projects: ProjectLite[];
+  }>("/api/projects", fetcher, {
+    dedupingInterval: 30_000,
+    revalidateOnFocus: false,
+  });
   return {
-    projects: data?.projects ?? [],
-    isLoading,
     error,
+    isLoading,
     mutate,
+    projects: data?.projects ?? [],
   };
 }

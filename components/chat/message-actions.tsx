@@ -1,8 +1,11 @@
 import equal from "fast-deep-equal";
-import { memo, useCallback } from "react";
+import { GitForkIcon, Volume2Icon, VolumeXIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { memo, useCallback, useState } from "react";
 import { toast } from "sonner";
 import { useSWRConfig } from "swr";
 import { useCopyToClipboard } from "usehooks-ts";
+import { speakText, stopSpeaking } from "@/hooks/use-speech";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatMessage } from "@/lib/types";
 import {
@@ -25,6 +28,7 @@ export function PureMessageActions({
   onEdit?: () => void;
 }) {
   const { mutate } = useSWRConfig();
+  const router = useRouter();
   const [_, copyToClipboard] = useCopyToClipboard();
 
   const textFromParts = message.parts
@@ -40,7 +44,7 @@ export function PureMessageActions({
     }
 
     await copyToClipboard(textFromParts);
-    toast.success("Copié dans le presse-papiers ! 📋");
+    toast.success("Copié dans le presse-papiers !");
   }, [copyToClipboard, textFromParts]);
 
   const handleUpvote = useCallback(() => {
@@ -83,10 +87,51 @@ export function PureMessageActions({
           { revalidate: false }
         );
 
-        return "Réponse appréciée ! 👍";
+        return "Réponse appréciée !";
       },
     });
   }, [chatId, message.id, mutate]);
+
+  const handleFork = useCallback(async () => {
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chats/${chatId}/fork`,
+        {
+          body: JSON.stringify({ upToMessageId: message.id }),
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+        }
+      );
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Erreur fork");
+      }
+      toast.success("Branche créée");
+      router.push(`/chat/${data.id}`);
+    } catch (e: any) {
+      toast.error(e.message || "Impossible de brancher");
+    }
+  }, [chatId, message.id, router]);
+
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const handleSpeak = useCallback(() => {
+    if (isSpeaking) {
+      stopSpeaking();
+      setIsSpeaking(false);
+      return;
+    }
+    if (!textFromParts) {
+      toast.error("Aucun texte à lire");
+      return;
+    }
+    setIsSpeaking(true);
+    speakText(textFromParts);
+    // reset after utterance ends (approx)
+    setTimeout(
+      () => setIsSpeaking(false),
+      Math.min(30_000, textFromParts.length * 60)
+    );
+  }, [isSpeaking, textFromParts]);
 
   const handleDownvote = useCallback(() => {
     const downvote = fetch(
@@ -128,7 +173,7 @@ export function PureMessageActions({
           { revalidate: false }
         );
 
-        return "Vote enregistré ! 👎";
+        return "Vote enregistré !";
       },
     });
   }, [chatId, message.id, mutate]);
@@ -171,6 +216,26 @@ export function PureMessageActions({
         tooltip="Copier"
       >
         <CopyIcon />
+      </Action>
+
+      <Action
+        className="text-muted-foreground/50 hover:text-foreground"
+        onClick={handleSpeak}
+        tooltip={isSpeaking ? "Stop" : "Écouter"}
+      >
+        {isSpeaking ? (
+          <VolumeXIcon className="size-4" />
+        ) : (
+          <Volume2Icon className="size-4" />
+        )}
+      </Action>
+
+      <Action
+        className="text-muted-foreground/50 hover:text-foreground"
+        onClick={handleFork}
+        tooltip="Brancher (fork)"
+      >
+        <GitForkIcon className="size-4" />
       </Action>
 
       <Action

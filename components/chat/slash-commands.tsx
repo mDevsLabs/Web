@@ -2,22 +2,46 @@
 
 import {
   BombIcon,
+  FolderArchiveIcon,
+  FolderKanbanIcon,
   ListIcon,
   PaletteIcon,
   PenLineIcon,
   PenSquareIcon,
+  SearchIcon,
   Trash2Icon,
   XIcon,
+  ZapIcon,
 } from "lucide-react";
 import { type ReactNode, useCallback, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
+
+export type SlashCommandAction =
+  | "new"
+  | "clear"
+  | "rename"
+  | "model"
+  | "theme"
+  | "delete"
+  | "purge"
+  | "usage"
+  | "library"
+  | "projects"
+  | "search"
+  | "tool-image"
+  | "tool-code"
+  | "tool-weather"
+  | "tool-doc"
+  | "tool-suggest"
+  | "tools-clear";
 
 export type SlashCommand = {
   name: string;
   description: string;
   icon: ReactNode;
-  action: string;
+  action: SlashCommandAction;
   shortcut?: string;
+  aliases?: string[];
 };
 
 export const slashCommands: SlashCommand[] = [
@@ -41,9 +65,77 @@ export const slashCommands: SlashCommand[] = [
   },
   {
     action: "model",
-    description: "Change the AI model",
+    description: "Ouvre le sélecteur de modèles",
     icon: <ListIcon className="size-3.5" />,
     name: "model",
+  },
+  {
+    action: "usage",
+    description: "Paramètres → Consommation (Usage mAI)",
+    icon: <ZapIcon className="size-3.5" />,
+    name: "usage",
+  },
+  {
+    action: "library",
+    aliases: ["stockage"],
+    description: "Ouvrir la Bibliothèque Cloud (/stockage, /library)",
+    icon: <FolderArchiveIcon className="size-3.5" />,
+    name: "library",
+  },
+  {
+    action: "projects",
+    description: "Ouvrir la page Projets",
+    icon: <FolderKanbanIcon className="size-3.5" />,
+    name: "projects",
+  },
+  {
+    action: "search",
+    aliases: ["recherche", "find"],
+    description: "Rechercher dans conversations / projets / fichiers",
+    icon: <SearchIcon className="size-3.5" />,
+    name: "search",
+  },
+  {
+    action: "tool-image",
+    aliases: ["image", "images", "generate"],
+    description: "Activer génération d'image (one-shot, fortement recommandé)",
+    icon: <SearchIcon className="size-3.5" />,
+    name: "image",
+  },
+  {
+    action: "tool-code",
+    aliases: ["code", "execute", "run"],
+    description: "Activer exécution de code Pyodide (one-shot)",
+    icon: <SearchIcon className="size-3.5" />,
+    name: "code",
+  },
+  {
+    action: "tool-weather",
+    aliases: ["weather", "meteo"],
+    description: "Activer outil météo (one-shot)",
+    icon: <SearchIcon className="size-3.5" />,
+    name: "weather",
+  },
+  {
+    action: "tool-doc",
+    aliases: ["doc", "document"],
+    description: "Activer création/édition de documents (one-shot)",
+    icon: <SearchIcon className="size-3.5" />,
+    name: "doc",
+  },
+  {
+    action: "tool-suggest",
+    aliases: ["suggest", "suggestion"],
+    description: "Activer suggestions d'amélioration (one-shot)",
+    icon: <SearchIcon className="size-3.5" />,
+    name: "suggest",
+  },
+  {
+    action: "tools-clear",
+    aliases: ["tools-off", "clear-tools"],
+    description: "Désactiver tous les outils",
+    icon: <SearchIcon className="size-3.5" />,
+    name: "tools-clear",
   },
   {
     action: "theme",
@@ -121,6 +213,30 @@ function SlashCommandMenuItem({
   );
 }
 
+export function getFilteredSlashCommands(query: string): SlashCommand[] {
+  const q = query.toLowerCase().trim();
+  if (!q) {
+    return slashCommands;
+  }
+  return slashCommands.filter((cmd) => {
+    const name = cmd.name.toLowerCase();
+    if (name.startsWith(q) || name.includes(q)) {
+      return true;
+    }
+    if (
+      cmd.aliases?.some(
+        (a) => a.toLowerCase().startsWith(q) || a.toLowerCase().includes(q)
+      )
+    ) {
+      return true;
+    }
+    if (cmd.description.toLowerCase().includes(q)) {
+      return true;
+    }
+    return false;
+  });
+}
+
 export function SlashCommandMenu({
   query,
   onSelect,
@@ -128,16 +244,14 @@ export function SlashCommandMenu({
   selectedIndex,
 }: SlashCommandMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
-  const filtered = slashCommands.filter((cmd) =>
-    cmd.name.startsWith(query.toLowerCase())
-  );
+  const filtered = getFilteredSlashCommands(query);
 
   useEffect(() => {
     const selected = menuRef.current?.querySelector("[data-selected='true']");
     if (selected) {
       selected.scrollIntoView({ block: "nearest" });
     }
-  }, []);
+  }, [selectedIndex]);
 
   if (filtered.length === 0) {
     return null;

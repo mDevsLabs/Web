@@ -1,7 +1,7 @@
 import "server-only";
 
-import { MAI_API_URL } from "@/lib/constants";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
+import { MAI_API_URL } from "@/lib/constants";
 import { getUserApiKey } from "@/lib/db/api-keys";
 import { type ChatModel, FALLBACK_MODELS, formatModelName } from "./models";
 
@@ -33,8 +33,8 @@ export async function fetchUserModels(): Promise<ChatModel[]> {
     }
 
     const res = await fetch(`${MAI_API_URL}/v1/models`, {
-      headers,
       cache: "no-store",
+      headers,
     });
 
     if (!res.ok) {
@@ -54,8 +54,8 @@ export async function fetchUserModels(): Promise<ChatModel[]> {
         architecture: m.architecture,
         description: m.description || `Modèle ${provider}`,
         id: m.id,
-        isFree: m.isFree !== undefined ? m.isFree : isFree,
-        maxContext: m.maxContext || m.context_length || 128000,
+        isFree: m.isFree === undefined ? isFree : m.isFree,
+        maxContext: m.maxContext || m.context_length || 128_000,
         maxOutput: m.maxOutput || 4096,
         name: m.name && m.name !== m.id ? m.name : name,
         provider,

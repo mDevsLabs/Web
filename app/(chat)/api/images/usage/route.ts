@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { MAI_API_URL } from "@/lib/constants";
 import { getMaiSessionToken } from "@/lib/auth/session";
+import { MAI_API_URL } from "@/lib/constants";
 
 export async function GET() {
   const token = await getMaiSessionToken();
@@ -10,10 +10,10 @@ export async function GET() {
 
   try {
     const res = await fetch(`${MAI_API_URL}/v1/images/usage`, {
+      cache: "no-store",
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      cache: "no-store",
     });
 
     const data = await res.json();
@@ -24,6 +24,9 @@ export async function GET() {
     return NextResponse.json(data);
   } catch (error) {
     console.error("Erreur API images/usage:", error);
-    return NextResponse.json({ error: "Erreur de récupération de l'usage" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Erreur de récupération de l'usage" },
+      { status: 500 }
+    );
   }
 }

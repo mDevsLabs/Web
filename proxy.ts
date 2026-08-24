@@ -9,7 +9,8 @@ export async function proxy(request: NextRequest) {
   }
 
   // Routes publiques autorisées
-  const isAuthRoute = pathname.startsWith("/login") || pathname.startsWith("/register");
+  const isAuthRoute =
+    pathname.startsWith("/login") || pathname.startsWith("/register");
   const isStaticRoute =
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api/auth") ||

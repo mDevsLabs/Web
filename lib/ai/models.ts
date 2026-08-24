@@ -103,7 +103,13 @@ export const FALLBACK_MODELS: ChatModel[] = [
     isFree: true,
     name: "Qwen 2.5 Coder 32B",
     provider: "qwen",
-    supported_parameters: ["temperature", "top_p", "max_tokens", "stop", "tools"],
+    supported_parameters: [
+      "temperature",
+      "top_p",
+      "max_tokens",
+      "stop",
+      "tools",
+    ],
   },
 ];
 
@@ -181,12 +187,9 @@ export function getModelCapabilities(
     ""
   ).toLowerCase();
   const supportedParams: string[] =
-    model.supported_parameters ||
-    (model as any)?.supported_parameters ||
-    [];
+    model.supported_parameters || (model as any)?.supported_parameters || [];
 
-  const hasArchitecture =
-    inputModalities.length > 0 || modality.length > 0;
+  const hasArchitecture = inputModalities.length > 0 || modality.length > 0;
 
   // 1. Détection prise en charge images (stricte si architecture fournie)
   const hasImageModal =
@@ -241,19 +244,17 @@ export function getModelCapabilities(
     supportedParams.length > 0
       ? supportedParams.includes("tools") ||
         supportedParams.includes("function_calling")
-      : (
-          lower.includes("gemini") ||
-          lower.includes("gpt-4") ||
-          lower.includes("gpt-3.5") ||
-          lower.includes("claude") ||
-          lower.includes("llama-3.3") ||
-          lower.includes("llama-3.1") ||
-          lower.includes("qwen-2.5") ||
-          lower.includes("mistral") ||
-          lower.includes("apex") ||
-          lower.includes("opal") ||
-          lower.includes("light")
-        );
+      : lower.includes("gemini") ||
+        lower.includes("gpt-4") ||
+        lower.includes("gpt-3.5") ||
+        lower.includes("claude") ||
+        lower.includes("llama-3.3") ||
+        lower.includes("llama-3.1") ||
+        lower.includes("qwen-2.5") ||
+        lower.includes("mistral") ||
+        lower.includes("apex") ||
+        lower.includes("opal") ||
+        lower.includes("light");
 
   // 4. Détection du raisonnement (Reasoning / Thinking)
   const isReasoning =
@@ -261,14 +262,12 @@ export function getModelCapabilities(
     (supportedParams.includes("thinking") ||
       supportedParams.includes("reasoning"))
       ? true
-      : (
-          lower.includes("r1") ||
-          lower.includes("o1") ||
-          lower.includes("o3") ||
-          lower.includes("reasoning") ||
-          lower.includes("thinking") ||
-          lower.includes("qwq")
-        );
+      : lower.includes("r1") ||
+        lower.includes("o1") ||
+        lower.includes("o3") ||
+        lower.includes("reasoning") ||
+        lower.includes("thinking") ||
+        lower.includes("qwq");
 
   return {
     file: isFile,
@@ -278,5 +277,3 @@ export function getModelCapabilities(
     vision: isVision,
   };
 }
-
-

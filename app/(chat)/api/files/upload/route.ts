@@ -26,7 +26,9 @@ const FileSchema = z.object({
     })
     .refine(
       (file) => {
-        if (!file.type) return true; // fallback si mime manquant (certains navigateurs)
+        if (!file.type) {
+          return true; // fallback si mime manquant (certains navigateurs)
+        }
         return (
           ALLOWED_UPLOAD_TYPES.includes(file.type) ||
           file.type.startsWith("image/") ||

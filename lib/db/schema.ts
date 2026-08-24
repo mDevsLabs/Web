@@ -20,7 +20,7 @@ export const project = pgTable(
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     customInstructions: text("customInstructions"),
     description: text("description").default(""),
-    icon: text("icon").default("📁"),
+    icon: text("icon").default("folder"),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     isArchived: boolean("isArchived").notNull().default(false),
     name: text("name").notNull(),
@@ -28,11 +28,11 @@ export const project = pgTable(
     userId: text("userId").notNull(),
   },
   (table) => ({
-    userIdIdx: index("Project_userId_idx").on(table.userId),
     userCreatedIdx: index("Project_userId_createdAt_idx").on(
       table.userId,
       table.createdAt
     ),
+    userIdIdx: index("Project_userId_idx").on(table.userId),
   })
 );
 
@@ -179,9 +179,7 @@ export const stream = pgTable(
 export type Stream = InferSelectModel<typeof stream>;
 
 export const tokenBlacklist = pgTable("token_blacklist", {
-  expiresAt: timestamp("expires_at")
-    .notNull()
-    .defaultNow(),
+  expiresAt: timestamp("expires_at").notNull().defaultNow(),
   revokedAt: timestamp("revoked_at").notNull().defaultNow(),
   token: text("token").primaryKey().notNull(),
 });

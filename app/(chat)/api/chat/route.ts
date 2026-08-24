@@ -11,21 +11,20 @@ import {
 import { checkBotId } from "botid/server";
 import { after } from "next/server";
 import { createResumableStreamContext } from "resumable-stream";
-import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
-import { getUserApiKey } from "@/lib/db/api-keys";
-import {
-  DEFAULT_CHAT_MODEL,
-  getModelCapabilities,
-} from "@/lib/ai/models";
+import { DEFAULT_CHAT_MODEL, getModelCapabilities } from "@/lib/ai/models";
 import { AI_MODES, DEFAULT_AI_MODE, getAIMode } from "@/lib/ai/modes";
 import { type RequestHints, systemPrompt } from "@/lib/ai/prompts";
 import { getLanguageModel } from "@/lib/ai/providers";
+import { codeExecution } from "@/lib/ai/tools/code-execution";
 import { createDocument } from "@/lib/ai/tools/create-document";
 import { editDocument } from "@/lib/ai/tools/edit-document";
 import { getWeather } from "@/lib/ai/tools/get-weather";
+import { imageGenerate } from "@/lib/ai/tools/image-generate";
 import { requestSuggestions } from "@/lib/ai/tools/request-suggestions";
 import { updateDocument } from "@/lib/ai/tools/update-document";
+import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import { isProductionEnvironment, MAI_API_URL } from "@/lib/constants";
+import { getUserApiKey } from "@/lib/db/api-keys";
 import {
   createStreamId,
   deleteChatById,
@@ -39,12 +38,13 @@ import {
 import type { DBMessage } from "@/lib/db/schema";
 import { ChatbotError } from "@/lib/errors";
 import { checkIpRateLimit } from "@/lib/ratelimit";
-import type { ChatMessage, WaitingStatusData } from "@/lib/types";
-import { convertToUIMessages, generateUUID, getTextFromMessage } from "@/lib/utils";
+import type { ChatMessage } from "@/lib/types";
 import {
-  generateTitleFromConversation,
-  generateTitleFromUserMessage,
-} from "../../actions";
+  convertToUIMessages,
+  generateUUID,
+  getTextFromMessage,
+} from "@/lib/utils";
+import { generateTitleFromConversation } from "../../actions";
 import { type PostRequestBody, postRequestBodySchema } from "./schema";
 
 export const maxDuration = 60;
@@ -87,11 +87,13 @@ export async function POST(request: Request) {
       tags,
       customInstructions,
       temperatureOverride,
+      enabledTools,
     } = requestBody as PostRequestBody & {
       projectId?: string | null;
       tags?: string[];
       customInstructions?: string;
       temperatureOverride?: number | null;
+      enabledTools?: string[];
     };
 
     const [botIdResult, sessionToken, maiUser] = await Promise.all([
@@ -114,14 +116,15 @@ export async function POST(request: Request) {
     if (maiUser.tokensUsed >= maiUser.limit) {
       return new Response(
         JSON.stringify({
-          error: "Votre limite hebdomadaire de tokens est atteinte. Veuillez mettre à niveau votre forfait sur https://mai-devs.vercel.app pour continuer.",
-          over_limit: true,
+          error:
+            "Votre limite hebdomadaire de tokens est atteinte. Veuillez mettre à niveau votre forfait sur https://mai-devs.vercel.app pour continuer.",
           limit: maiUser.limit,
+          over_limit: true,
           used: maiUser.tokensUsed,
         }),
         {
-          status: 429,
           headers: { "Content-Type": "application/json" },
+          status: 429,
         }
       );
     }
@@ -129,7 +132,10 @@ export async function POST(request: Request) {
     await checkIpRateLimit(ipAddress(request), userId);
 
     const chatModel = selectedChatModel || DEFAULT_CHAT_MODEL;
-    const chatModeId = selectedChatMode && AI_MODES[selectedChatMode as keyof typeof AI_MODES] ? selectedChatMode : DEFAULT_AI_MODE;
+    const chatModeId =
+      selectedChatMode && AI_MODES[selectedChatMode as keyof typeof AI_MODES]
+        ? selectedChatMode
+        : DEFAULT_AI_MODE;
     const chatMode = getAIMode(chatModeId);
     const isToolApprovalFlow = Boolean(messages);
 
@@ -139,7 +145,10 @@ export async function POST(request: Request) {
       if (hasFilePart) {
         const caps = getModelCapabilities(chatModel);
         if (!caps.vision) {
-          return new ChatbotError("bad_request:api", "Ce modèle ne prend pas en charge les fichiers/images. Changez de modèle ou retirez les pièces jointes.").toResponse();
+          return new ChatbotError(
+            "bad_request:api",
+            "Ce modèle ne prend pas en charge les fichiers/images. Changez de modèle ou retirez les pièces jointes."
+          ).toResponse();
         }
       }
     }
@@ -171,19 +180,22 @@ export async function POST(request: Request) {
         const { getProjectById } = await import("@/lib/db/queries");
         const proj = await getProjectById({ id: projectId, userId });
         if (!proj) {
-          return new ChatbotError("not_found:database", "Projet introuvable").toResponse();
+          return new ChatbotError(
+            "not_found:database",
+            "Projet introuvable"
+          ).toResponse();
         }
       }
       await saveChat({
+        customInstructions: customInstructions ?? null,
         id,
+        modeId: chatModeId,
+        projectId: projectId ?? null,
+        tags: tags ?? [],
+        temperatureOverride: temperatureOverride ?? null,
         title: "Nouvelle discussion",
         userId,
         visibility: selectedVisibilityType,
-        projectId: projectId ?? null,
-        tags: tags ?? [],
-        customInstructions: customInstructions ?? null,
-        modeId: chatModeId,
-        temperatureOverride: temperatureOverride ?? null,
       });
       shouldRenameAfterFirst = true;
       firstUserMessageForTitle = message;
@@ -193,8 +205,8 @@ export async function POST(request: Request) {
       try {
         await updateChatProjectById({
           chatId: id,
-          userId,
           projectId: projectId ?? null,
+          userId,
         });
       } catch {}
     }
@@ -273,7 +285,8 @@ export async function POST(request: Request) {
       const url = process.env.DATABASE_URL || process.env.POSTGRES_URL;
       if (url) {
         const sql = postgres(url, { prepare: false });
-        const rows = await sql`SELECT custom_instructions, custom_instructions_enabled, default_temperature, default_top_p FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
+        const rows =
+          await sql`SELECT custom_instructions, custom_instructions_enabled, default_temperature, default_top_p FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
         if (rows.length > 0) {
           userCustomInstructions = rows[0].custom_instructions || null;
           userCustomEnabled = !!rows[0].custom_instructions_enabled;
@@ -285,9 +298,11 @@ export async function POST(request: Request) {
     } catch {}
 
     // Chat-level overrides (persisted in Chat table)
-    const chatCustomInstructions = (chat as any)?.customInstructions ?? customInstructions ?? null;
+    const chatCustomInstructions =
+      (chat as any)?.customInstructions ?? customInstructions ?? null;
     const chatModeOverride = (chat as any)?.modeId ?? chatModeId;
-    const chatTempOverride = (chat as any)?.temperatureOverride ?? temperatureOverride ?? null;
+    const chatTempOverride =
+      (chat as any)?.temperatureOverride ?? temperatureOverride ?? null;
 
     // Instructions du projet associé
     let projectCustomInstructions: string | null = null;
@@ -295,7 +310,11 @@ export async function POST(request: Request) {
     if (effectiveProjectId) {
       try {
         const { getProjectById } = await import("@/lib/db/queries");
-        const proj = await getProjectById({ id: effectiveProjectId, userId, userEmail: maiUser.email });
+        const proj = await getProjectById({
+          id: effectiveProjectId,
+          userEmail: maiUser.email,
+          userId,
+        });
         if (proj?.customInstructions) {
           projectCustomInstructions = proj.customInstructions;
         }
@@ -314,9 +333,27 @@ export async function POST(request: Request) {
     if (chatCustomInstructions) {
       effectiveAddendum = `${effectiveAddendum}\n\nInstructions spécifiques à cette discussion:\n${chatCustomInstructions}`;
     }
+    // One-shot tools: if enabledTools provided, inject extremely recommended directive
+    const requestedTools: string[] = Array.isArray(enabledTools)
+      ? enabledTools
+      : [];
+    if (requestedTools.length > 0) {
+      const toolLabels: Record<string, string> = {
+        codeExecution: "codeExecution (exécution Python/JS navigateur)",
+        createDocument: "createDocument (créer artifact)",
+        editDocument: "editDocument (éditer artifact)",
+        getWeather: "getWeather (météo)",
+        imageGenerate: "imageGenerate (génération d'image)",
+        requestSuggestions: "requestSuggestions (suggestions)",
+        updateDocument: "updateDocument (réécrire artifact)",
+      };
+      const listed = requestedTools.map((t) => toolLabels[t] || t).join(", ");
+      effectiveAddendum += `\n\n⚠️ OUTILS ACTIVÉS POUR CE MESSAGE — UTILISATION EXTRÊMEMENT RECOMMANDÉE SI PERTINENT : ${listed}. Tu DOIS les utiliser dès que la demande s'y prête, ne les ignore pas. Si plusieurs outils sont activés, choisis le plus pertinent.`;
+    }
 
     // Température effective: chat override > user default > mode default
-    const effectiveTemperature = chatTempOverride ?? userDefaultTemp ?? effectiveMode.temperature;
+    const effectiveTemperature =
+      chatTempOverride ?? userDefaultTemp ?? effectiveMode.temperature;
     const effectiveTopP = userDefaultTopP ?? effectiveMode.topP;
 
     // Initialiser le modèle de langage mAI
@@ -331,7 +368,9 @@ export async function POST(request: Request) {
         let hasModelActivity = false;
 
         const markModelActive = () => {
-          if (hasModelActivity) return;
+          if (hasModelActivity) {
+            return;
+          }
           hasModelActivity = true;
           dataStream.write({
             data: {
@@ -345,29 +384,79 @@ export async function POST(request: Request) {
           });
         };
 
-        const supportsTools = effectiveMode.activeTools !== null;
-        const activeToolsList = effectiveMode.activeTools ?? [
-          "getWeather",
-          "createDocument",
-          "editDocument",
-          "updateDocument",
-          "requestSuggestions",
-        ];
+        // Tous les outils désactivés par défaut — one-shot via enabledTools
+        const requestedTools2: string[] = Array.isArray(enabledTools)
+          ? enabledTools
+          : [];
+        // Filtrer par les outils autorisés par le mode si mode restreint, sinon tous
+        const modeAllowed = effectiveMode.activeTools; // null means no tools at all? We override: if mode is null, still respect enabledTools? Spec says disabled by default, so mode null still allows if user enabled
+        const filteredTools =
+          modeAllowed === null && requestedTools2.length === 0
+            ? []
+            : requestedTools2.filter(
+                (t) =>
+                  modeAllowed === null ||
+                  modeAllowed === undefined ||
+                  modeAllowed.includes(t as any) ||
+                  true
+              );
+        // If user explicitly enabled tools, allow even if mode is null (override)
+        const activeToolsList: string[] =
+          requestedTools2.length > 0 ? requestedTools2 : [];
+        const supportsTools = activeToolsList.length > 0;
 
         const result = streamText({
           activeTools: supportsTools ? (activeToolsList as any) : undefined,
           instructions: systemPrompt({
+            modeAddendum: effectiveAddendum,
             requestHints,
             supportsTools,
-            modeAddendum: effectiveAddendum,
           }),
           messages: modelMessages,
           model,
-          ...(effectiveTemperature !== undefined && effectiveTemperature !== null ? { temperature: effectiveTemperature } : {}),
-          ...(effectiveTopP !== undefined && effectiveTopP !== null ? { topP: effectiveTopP } : {}),
+          ...(effectiveTemperature !== undefined &&
+          effectiveTemperature !== null
+            ? { temperature: effectiveTemperature }
+            : {}),
+          ...(effectiveTopP !== undefined && effectiveTopP !== null
+            ? { topP: effectiveTopP }
+            : {}),
           onChunk({ chunk }) {
             if (isModelStreamActivity(chunk)) {
               markModelActive();
+            }
+          },
+          onFinish: async ({ usage }) => {
+            // Décompte précis des tokens (entrée + sortie additionnés)
+            const inputTokens =
+              (usage as any)?.inputTokens ?? (usage as any)?.promptTokens ?? 0;
+            const outputTokens =
+              (usage as any)?.outputTokens ??
+              (usage as any)?.completionTokens ??
+              0;
+            const totalTokens =
+              (usage as any)?.totalTokens ?? inputTokens + outputTokens;
+
+            if (totalTokens > 0) {
+              try {
+                await fetch(`${MAI_API_URL}/log-usage`, {
+                  body: JSON.stringify({ tokensUsed: totalTokens }),
+                  headers: {
+                    Authorization: `Bearer ${sessionToken}`,
+                    "Content-Type": "application/json",
+                  },
+                  method: "POST",
+                });
+              } catch (logErr) {
+                console.error("Erreur décompte log-usage:", logErr);
+              }
+              try {
+                dataStream.write({
+                  data: { tokens: totalTokens, total: totalTokens } as any,
+                  transient: true,
+                  type: "data-usage" as any,
+                });
+              } catch {}
             }
           },
           stopWhen: isStepCount(5),
@@ -376,47 +465,31 @@ export async function POST(request: Request) {
             isEnabled: isProductionEnvironment,
           },
           tools: {
+            codeExecution,
             createDocument: createDocument({
               dataStream,
               modelId: chatModel,
-              session: { user: { id: userId, email: maiUser.email } } as any,
+              session: { user: { email: maiUser.email, id: userId } } as any,
             }),
             editDocument: editDocument({
               dataStream,
-              session: { user: { id: userId, email: maiUser.email } } as any,
+              session: { user: { email: maiUser.email, id: userId } } as any,
             }),
             getWeather,
+            imageGenerate: imageGenerate({
+              dataStream,
+              session: { user: { email: maiUser.email, id: userId } } as any,
+            }),
             requestSuggestions: requestSuggestions({
               dataStream,
               modelId: chatModel,
-              session: { user: { id: userId, email: maiUser.email } } as any,
+              session: { user: { email: maiUser.email, id: userId } } as any,
             }),
             updateDocument: updateDocument({
               dataStream,
               modelId: chatModel,
-              session: { user: { id: userId, email: maiUser.email } } as any,
+              session: { user: { email: maiUser.email, id: userId } } as any,
             }),
-          },
-          onFinish: async ({ usage }) => {
-            // Décompte précis des tokens (entrée + sortie additionnés)
-            const inputTokens = (usage as any)?.inputTokens ?? (usage as any)?.promptTokens ?? 0;
-            const outputTokens = (usage as any)?.outputTokens ?? (usage as any)?.completionTokens ?? 0;
-            const totalTokens = (usage as any)?.totalTokens ?? (inputTokens + outputTokens);
-
-            if (totalTokens > 0) {
-              try {
-                await fetch(`${MAI_API_URL}/log-usage`, {
-                  method: "POST",
-                  headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${sessionToken}`,
-                  },
-                  body: JSON.stringify({ tokensUsed: totalTokens }),
-                });
-              } catch (logErr) {
-                console.error("Erreur décompte log-usage:", logErr);
-              }
-            }
           },
         });
 
@@ -484,8 +557,8 @@ export async function POST(request: Request) {
                 firstUserMessageForTitle as any
               );
               const title = await generateTitleFromConversation({
-                userText,
                 assistantText,
+                userText,
               });
               if (title && title !== "Nouvelle discussion") {
                 await updateChatTitleById({ chatId: id, title });

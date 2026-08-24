@@ -1,7 +1,7 @@
 "use server";
 
+import { removeMaiSessionToken, setMaiSessionToken } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
-import { setMaiSessionToken, removeMaiSessionToken } from "@/lib/auth/session";
 
 export type AuthResponse = {
   success: boolean;
@@ -12,36 +12,39 @@ export type AuthResponse = {
 };
 
 // 1. Demande de connexion (Envoi de l'OTP)
-export async function loginAction(
-  formData: FormData
-): Promise<AuthResponse> {
-  const identifier = String(formData.get("identifier") || formData.get("email") || "").trim();
+export async function loginAction(formData: FormData): Promise<AuthResponse> {
+  const identifier = String(
+    formData.get("identifier") || formData.get("email") || ""
+  ).trim();
   const password = String(formData.get("password") || "");
 
   if (!identifier || !password) {
-    return { success: false, error: "Veuillez renseigner tous les champs." };
+    return { error: "Veuillez renseigner tous les champs.", success: false };
   }
 
   try {
     const res = await fetch(`${MAI_API_URL}/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ identifier, password }),
+      headers: { "Content-Type": "application/json" },
+      method: "POST",
     });
 
     const data = await res.json();
     if (!res.ok || data.error) {
-      return { success: false, error: data.error || "Identifiants invalides." };
+      return { error: data.error || "Identifiants invalides.", success: false };
     }
 
     return {
-      success: true,
-      status: data.status || "verification_required",
       email: data.email || identifier,
+      status: data.status || "verification_required",
+      success: true,
     };
   } catch (err: any) {
     console.error("Erreur loginAction:", err);
-    return { success: false, error: "Impossible de joindre le serveur d'authentification." };
+    return {
+      error: "Impossible de joindre le serveur d'authentification.",
+      success: false,
+    };
   }
 }
 
@@ -54,15 +57,15 @@ export async function verifyLoginAction(
   const cleanCode = code ? code.trim() : "";
 
   if (!cleanEmail || !cleanCode) {
-    return { success: false, error: "E-mail et code requis." };
+    return { error: "E-mail et code requis.", success: false };
   }
 
   try {
     // 1ère tentative avec email exact
     const res = await fetch(`${MAI_API_URL}/verify-login`, {
-      method: "POST",
+      body: JSON.stringify({ code: cleanCode, email: cleanEmail }),
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: cleanEmail, code: cleanCode }),
+      method: "POST",
     });
 
     const data = await res.json();
@@ -74,9 +77,12 @@ export async function verifyLoginAction(
     // 2ème tentative en minuscules si différent
     if (cleanEmail !== cleanEmail.toLowerCase()) {
       const lowerRes = await fetch(`${MAI_API_URL}/verify-login`, {
-        method: "POST",
+        body: JSON.stringify({
+          code: cleanCode,
+          email: cleanEmail.toLowerCase(),
+        }),
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: cleanEmail.toLowerCase(), code: cleanCode }),
+        method: "POST",
       });
       const lowerData = await lowerRes.json();
       if (lowerRes.ok && lowerData.token) {
@@ -85,10 +91,13 @@ export async function verifyLoginAction(
       }
     }
 
-    return { success: false, error: data.error || "Code invalide ou expiré." };
+    return { error: data.error || "Code invalide ou expiré.", success: false };
   } catch (err: any) {
     console.error("Erreur verifyLoginAction:", err);
-    return { success: false, error: "Erreur serveur lors de la vérification du code." };
+    return {
+      error: "Erreur serveur lors de la vérification du code.",
+      success: false,
+    };
   }
 }
 
@@ -101,33 +110,42 @@ export async function registerAction(
   const password = String(formData.get("password") || "");
 
   if (!email || !username || !password) {
-    return { success: false, error: "Tous les champs sont requis." };
+    return { error: "Tous les champs sont requis.", success: false };
   }
 
   if (password.length < 6) {
-    return { success: false, error: "Le mot de passe doit faire au moins 6 caractères." };
+    return {
+      error: "Le mot de passe doit faire au moins 6 caractères.",
+      success: false,
+    };
   }
 
   try {
     const res = await fetch(`${MAI_API_URL}/register`, {
-      method: "POST",
+      body: JSON.stringify({ email, password, username }),
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, username, password }),
+      method: "POST",
     });
 
     const data = await res.json();
     if (!res.ok || data.error) {
-      return { success: false, error: data.error || "Erreur lors de l'inscription." };
+      return {
+        error: data.error || "Erreur lors de l'inscription.",
+        success: false,
+      };
     }
 
     return {
-      success: true,
-      status: data.status || "verification_required",
       email,
+      status: data.status || "verification_required",
+      success: true,
     };
   } catch (err: any) {
     console.error("Erreur registerAction:", err);
-    return { success: false, error: "Impossible de joindre le serveur d'authentification." };
+    return {
+      error: "Impossible de joindre le serveur d'authentification.",
+      success: false,
+    };
   }
 }
 
@@ -139,26 +157,32 @@ export async function verifyRegisterAction(
   code: string
 ): Promise<AuthResponse> {
   if (!email || !username || !password || !code) {
-    return { success: false, error: "Champs manquants." };
+    return { error: "Champs manquants.", success: false };
   }
 
   try {
     const res = await fetch(`${MAI_API_URL}/verify-register`, {
-      method: "POST",
+      body: JSON.stringify({ code: code.trim(), email, password, username }),
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, username, password, code: code.trim() }),
+      method: "POST",
     });
 
     const data = await res.json();
     if (!res.ok || !data.token) {
-      return { success: false, error: data.error || "Code invalide ou expiré." };
+      return {
+        error: data.error || "Code invalide ou expiré.",
+        success: false,
+      };
     }
 
     await setMaiSessionToken(data.token);
     return { success: true, tier: data.tier };
   } catch (err: any) {
     console.error("Erreur verifyRegisterAction:", err);
-    return { success: false, error: "Erreur serveur lors de la finalisation de l'inscription." };
+    return {
+      error: "Erreur serveur lors de la finalisation de l'inscription.",
+      success: false,
+    };
   }
 }
 
@@ -169,20 +193,23 @@ export async function resendCodeAction(
 ): Promise<AuthResponse> {
   try {
     const res = await fetch(`${MAI_API_URL}/resend-code`, {
-      method: "POST",
+      body: JSON.stringify({ action, email }),
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, action }),
+      method: "POST",
     });
 
     const data = await res.json();
     if (!res.ok || data.error) {
-      return { success: false, error: data.error || "Erreur lors du renvoi du code." };
+      return {
+        error: data.error || "Erreur lors du renvoi du code.",
+        success: false,
+      };
     }
 
     return { success: true };
   } catch (err: any) {
     console.error("Erreur resendCodeAction:", err);
-    return { success: false, error: "Impossible de renvoyer le code." };
+    return { error: "Impossible de renvoyer le code.", success: false };
   }
 }
 

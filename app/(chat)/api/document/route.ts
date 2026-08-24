@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { getMaiUser } from "@/lib/auth/session";
 import type { ArtifactKind } from "@/components/chat/artifact";
+import { getMaiUser } from "@/lib/auth/session";
 import {
   deleteDocumentsByIdAfterTimestamp,
   getDocumentsById,

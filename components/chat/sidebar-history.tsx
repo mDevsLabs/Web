@@ -23,9 +23,9 @@ import {
   SidebarMenu,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { useProjects } from "@/hooks/use-projects";
 import type { Chat } from "@/lib/db/schema";
 import { fetcher } from "@/lib/utils";
-import { useProjects } from "@/hooks/use-projects";
 import { LoaderIcon } from "./icons";
 import { ChatItem } from "./sidebar-history-item";
 
@@ -81,7 +81,11 @@ export function getChatHistoryPaginationKey(
   pageIndex: number,
   previousPageData: ChatHistory | null
 ) {
-  if (previousPageData && (previousPageData.hasMore === false || !Array.isArray(previousPageData.chats))) {
+  if (
+    previousPageData &&
+    (previousPageData.hasMore === false ||
+      !Array.isArray(previousPageData.chats))
+  ) {
     return null;
   }
 
@@ -98,7 +102,11 @@ export function getChatHistoryPaginationKey(
   return `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/history?ending_before=${firstChatFromPage.id}&limit=${PAGE_SIZE}`;
 }
 
-export function SidebarHistory({ user }: { user?: { email?: string; id?: string } | undefined }) {
+export function SidebarHistory({
+  user,
+}: {
+  user?: { email?: string; id?: string } | undefined;
+}) {
   const { setOpenMobile } = useSidebar();
   const pathname = usePathname();
   const id = pathname?.startsWith("/chat/") ? pathname.split("/")[2] : null;
@@ -122,7 +130,9 @@ export function SidebarHistory({ user }: { user?: { email?: string; id?: string 
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   const allChats = paginatedChatHistories
-    ? paginatedChatHistories.flatMap((page) => (Array.isArray(page?.chats) ? page.chats : []))
+    ? paginatedChatHistories.flatMap((page) =>
+        Array.isArray(page?.chats) ? page.chats : []
+      )
     : [];
 
   const hasReachedEnd = paginatedChatHistories
@@ -132,7 +142,11 @@ export function SidebarHistory({ user }: { user?: { email?: string; id?: string 
   const hasEmptyChatHistory =
     !isLoading &&
     !error &&
-    Boolean(paginatedChatHistories && paginatedChatHistories.length > 0 && allChats.length === 0);
+    Boolean(
+      paginatedChatHistories &&
+        paginatedChatHistories.length > 0 &&
+        allChats.length === 0
+    );
 
   const handleDelete = useCallback(() => {
     const chatToDelete = deleteId;
@@ -225,8 +239,8 @@ export function SidebarHistory({ user }: { user?: { email?: string; id?: string 
               Impossible de charger l'historique.
             </span>
             <button
-              onClick={() => mutate()}
               className="text-[11px] font-medium text-primary hover:underline cursor-pointer"
+              onClick={() => mutate()}
               type="button"
             >
               Réessayer
@@ -245,7 +259,8 @@ export function SidebarHistory({ user }: { user?: { email?: string; id?: string 
         </SidebarGroupLabel>
         <SidebarGroupContent>
           <div className="flex w-full flex-row items-center justify-center gap-2 px-2 text-[13px] text-sidebar-foreground/60 text-center py-4">
-            Vos conversations apparaîtront ici dès que vous commencerez à discuter.
+            Vos conversations apparaîtront ici dès que vous commencerez à
+            discuter.
           </div>
         </SidebarGroupContent>
       </SidebarGroup>
@@ -383,12 +398,16 @@ export function SidebarHistory({ user }: { user?: { email?: string; id?: string 
           <AlertDialogHeader>
             <AlertDialogTitle>Supprimer cette discussion ?</AlertDialogTitle>
             <AlertDialogDescription>
-              Cette action est irréversible. La discussion sera définitivement effacée de nos serveurs.
+              Cette action est irréversible. La discussion sera définitivement
+              effacée de nos serveurs.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Annuler</AlertDialogCancel>
-            <AlertDialogAction onClick={handleDelete} className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
+            <AlertDialogAction
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              onClick={handleDelete}
+            >
               Supprimer
             </AlertDialogAction>
           </AlertDialogFooter>

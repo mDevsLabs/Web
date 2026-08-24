@@ -1,8 +1,11 @@
 import type { InferUITool, UIMessage } from "ai";
 import { z } from "zod";
 import type { ArtifactKind } from "@/components/chat/artifact";
+import type { codeExecution } from "./ai/tools/code-execution";
 import type { createDocument } from "./ai/tools/create-document";
+import type { editDocument } from "./ai/tools/edit-document";
 import type { getWeather } from "./ai/tools/get-weather";
+import type { imageGenerate } from "./ai/tools/image-generate";
 import type { requestSuggestions } from "./ai/tools/request-suggestions";
 import type { updateDocument } from "./ai/tools/update-document";
 import type { Suggestion } from "./db/schema";
@@ -15,16 +18,22 @@ export type MessageMetadata = z.infer<typeof messageMetadataSchema>;
 
 type weatherTool = InferUITool<typeof getWeather>;
 type createDocumentTool = InferUITool<ReturnType<typeof createDocument>>;
+type editDocumentTool = InferUITool<ReturnType<typeof editDocument>>;
 type updateDocumentTool = InferUITool<ReturnType<typeof updateDocument>>;
 type requestSuggestionsTool = InferUITool<
   ReturnType<typeof requestSuggestions>
 >;
+type imageGenerateTool = InferUITool<ReturnType<typeof imageGenerate>>;
+type codeExecutionTool = InferUITool<typeof codeExecution>;
 
 export type ChatTools = {
   getWeather: weatherTool;
   createDocument: createDocumentTool;
+  editDocument: editDocumentTool;
   updateDocument: updateDocumentTool;
   requestSuggestions: requestSuggestionsTool;
+  imageGenerate: imageGenerateTool;
+  codeExecution: codeExecutionTool;
 };
 
 export type WaitingStatusData = {
@@ -49,6 +58,7 @@ export type CustomUIDataTypes = {
   finish: null;
   "chat-title": string;
   "waiting-status": WaitingStatusData;
+  usage: { tokens: number; total: number };
 };
 
 export type ChatMessage = UIMessage<

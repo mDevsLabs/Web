@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export const Greeting = () => (
   <div className="flex flex-col items-center px-4" key="overview">
@@ -10,12 +10,12 @@ export const Greeting = () => (
       transition={{ delay: 0.2, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
     >
       <Image
-        src="/logo.png"
         alt="mAI"
-        width={64}
-        height={64}
         className="rounded-2xl shadow-lg drop-shadow-md"
+        height={64}
         priority
+        src="/logo.png"
+        width={64}
       />
     </motion.div>
 
@@ -33,7 +33,8 @@ export const Greeting = () => (
       initial={{ opacity: 0, y: 10 }}
       transition={{ delay: 0.5, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
     >
-      Posez vos questions du quotidien, rédigez des documents ou explorez vos projets avec mAI Web.
+      Posez vos questions du quotidien, rédigez des documents ou explorez vos
+      projets avec mAI Web.
     </motion.div>
   </div>
 );

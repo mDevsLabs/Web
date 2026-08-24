@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { MAI_API_URL } from "@/lib/constants";
 import { getMaiSessionToken } from "@/lib/auth/session";
+import { MAI_API_URL } from "@/lib/constants";
 
 export async function GET(req: NextRequest) {
   const token = await getMaiSessionToken();
@@ -13,12 +13,15 @@ export async function GET(req: NextRequest) {
   const limit = searchParams.get("limit") || "20";
 
   try {
-    const res = await fetch(`${MAI_API_URL}/v1/images/history?page=${page}&limit=${limit}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      cache: "no-store",
-    });
+    const res = await fetch(
+      `${MAI_API_URL}/v1/images/history?page=${page}&limit=${limit}`,
+      {
+        cache: "no-store",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     const data = await res.json();
     if (!res.ok) {
@@ -28,7 +31,10 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(data);
   } catch (error) {
     console.error("Erreur API images/history:", error);
-    return NextResponse.json({ error: "Erreur lors du chargement de l'historique" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Erreur lors du chargement de l'historique" },
+      { status: 500 }
+    );
   }
 }
 
@@ -46,10 +52,10 @@ export async function DELETE(req: NextRequest) {
 
   try {
     const res = await fetch(`${MAI_API_URL}/v1/images/history/${id}`, {
-      method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
       },
+      method: "DELETE",
     });
 
     const data = await res.json();
@@ -60,6 +66,9 @@ export async function DELETE(req: NextRequest) {
     return NextResponse.json(data);
   } catch (error) {
     console.error("Erreur suppression image:", error);
-    return NextResponse.json({ error: "Erreur lors de la suppression de l'image" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Erreur lors de la suppression de l'image" },
+      { status: 500 }
+    );
   }
 }

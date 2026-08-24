@@ -3,7 +3,10 @@ import { fetchUserModels } from "@/lib/ai/models.server";
 
 export async function GET() {
   const models = await fetchUserModels();
-  const capabilities: Record<string, ReturnType<typeof getModelCapabilities>> = {};
+  const capabilities: Record<
+    string,
+    ReturnType<typeof getModelCapabilities>
+  > = {};
 
   for (const model of models) {
     capabilities[model.id] = getModelCapabilities(model);
@@ -18,4 +21,3 @@ export async function GET() {
     }
   );
 }
-

@@ -24,11 +24,23 @@ import { toast } from "@/components/chat/toast";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
 import { useAutoResume } from "@/hooks/use-auto-resume";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
-import { DEFAULT_AI_MODE, type AIModeId, isValidAIModeId } from "@/lib/ai/modes";
+import {
+  type AIModeId,
+  DEFAULT_AI_MODE,
+  isValidAIModeId,
+} from "@/lib/ai/modes";
+import { DEFAULT_ENABLED_TOOLS, type ToolId } from "@/lib/ai/tools/config";
 import type { Vote } from "@/lib/db/schema";
 import { ChatbotError } from "@/lib/errors";
 import type { ChatMessage } from "@/lib/types";
 import { fetcher, fetchWithErrorHandlers, generateUUID } from "@/lib/utils";
+
+export type PendingProject = {
+  id: string;
+  name: string;
+  color?: string;
+  icon?: string;
+} | null;
 
 type ActiveChatContextValue = {
   chatId: string;
@@ -49,6 +61,13 @@ type ActiveChatContextValue = {
   setCurrentModelId: (id: string) => void;
   currentModeId: AIModeId;
   setCurrentModeId: (id: AIModeId) => void;
+  pendingProject: PendingProject;
+  setPendingProject: (p: PendingProject) => void;
+  clearPendingProject: () => void;
+  pendingTools: ToolId[];
+  setPendingTools: (tools: ToolId[]) => void;
+  togglePendingTool: (tool: ToolId) => void;
+  clearPendingTools: () => void;
   showCreditCardAlert: boolean;
   setShowCreditCardAlert: Dispatch<SetStateAction<boolean>>;
 };
@@ -67,20 +86,118 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   const { mutate } = useSWRConfig();
   const pendingProjectIdRef = useRef<string | null>(null);
 
-  // Lire projectId depuis query ?projectId= ou sessionStorage legacy
+  const [pendingProject, setPendingProjectState] =
+    useState<PendingProject>(null);
+  const pendingProjectRef = useRef<PendingProject>(null);
+  pendingProjectRef.current = pendingProject;
+
+  const setPendingProject = useCallback((p: PendingProject) => {
+    setPendingProjectState(p);
+    pendingProjectIdRef.current = p?.id ?? null;
+    if (typeof window !== "undefined") {
+      if (p?.id) {
+        try {
+          localStorage.setItem("pendingProjectId", p.id);
+          localStorage.setItem("pendingProjectName", p.name);
+          if (p.color) {
+            localStorage.setItem("pendingProjectColor", p.color);
+          }
+          if (p.icon) {
+            localStorage.setItem("pendingProjectIcon", p.icon);
+          }
+        } catch {}
+      } else {
+        try {
+          localStorage.removeItem("pendingProjectId");
+          localStorage.removeItem("pendingProjectName");
+          localStorage.removeItem("pendingProjectColor");
+          localStorage.removeItem("pendingProjectIcon");
+        } catch {}
+      }
+    }
+  }, []);
+
+  const clearPendingProject = useCallback(() => {
+    setPendingProject(null);
+  }, [setPendingProject]);
+
+  // Pending tools one-shot (disabled by default)
+  const [pendingTools, setPendingToolsState] = useState<ToolId[]>(
+    DEFAULT_ENABLED_TOOLS
+  );
+  const pendingToolsRef = useRef<ToolId[]>(pendingTools);
+  pendingToolsRef.current = pendingTools;
+  const setPendingTools = useCallback((tools: ToolId[]) => {
+    setPendingToolsState(tools);
+    pendingToolsRef.current = tools;
+  }, []);
+  const togglePendingTool = useCallback((tool: ToolId) => {
+    setPendingToolsState((prev) => {
+      const next = prev.includes(tool)
+        ? prev.filter((t) => t !== tool)
+        : [...prev, tool];
+      pendingToolsRef.current = next;
+      return next;
+    });
+  }, []);
+  const clearPendingTools = useCallback(() => {
+    setPendingToolsState([]);
+    pendingToolsRef.current = [];
+  }, []);
+
+  // Lire projectId depuis query ?projectId= ou sessionStorage legacy ou localStorage sticky
   useEffect(() => {
+    // Restore sticky from localStorage first
+    if (typeof window !== "undefined" && !pendingProjectIdRef.current) {
+      try {
+        const storedId = localStorage.getItem("pendingProjectId");
+        const storedName = localStorage.getItem("pendingProjectName");
+        const storedColor = localStorage.getItem("pendingProjectColor");
+        const storedIcon = localStorage.getItem("pendingProjectIcon");
+        if (storedId && storedName) {
+          const restored: PendingProject = {
+            color: storedColor ?? undefined,
+            icon: storedIcon ?? undefined,
+            id: storedId,
+            name: storedName,
+          };
+          setPendingProjectState(restored);
+          pendingProjectIdRef.current = storedId;
+          pendingProjectRef.current = restored;
+        }
+      } catch {}
+    }
     const qp = searchParams.get("projectId");
     if (qp) {
       pendingProjectIdRef.current = qp;
+      // Try to fetch name async - fallback to id
+      setPendingProjectState((prev) =>
+        prev?.id === qp ? prev : { id: qp, name: qp.slice(0, 8) }
+      );
       // Nettoyer l'URL sans reload (garde chatId)
       const url = new URL(window.location.href);
       url.searchParams.delete("projectId");
-      window.history.replaceState({}, "", url.pathname + (url.search ? `?${url.searchParams.toString()}` : "") + url.hash);
+      window.history.replaceState(
+        {},
+        "",
+        url.pathname +
+          (url.search ? `?${url.searchParams.toString()}` : "") +
+          url.hash
+      );
+      try {
+        localStorage.setItem("pendingProjectId", qp);
+      } catch {}
     } else if (typeof window !== "undefined") {
       const legacy = sessionStorage.getItem("pendingProjectId");
       if (legacy) {
         pendingProjectIdRef.current = legacy;
+        setPendingProjectState((prev) =>
+          prev?.id === legacy ? prev : { id: legacy, name: legacy.slice(0, 8) }
+        );
         sessionStorage.removeItem("pendingProjectId");
+        try {
+          localStorage.setItem("pendingProjectId", legacy);
+        } catch {}
       }
     }
   }, [searchParams]);
@@ -116,6 +233,12 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     if (typeof document !== "undefined") {
       document.cookie = `ai-mode=${encodeURIComponent(id)}; path=/; max-age=31536000`;
     }
+    // Persist default mode to DB (async, fire-and-forget)
+    fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`, {
+      body: JSON.stringify({ defaultMode: id }),
+      headers: { "Content-Type": "application/json" },
+      method: "POST",
+    }).catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -140,6 +263,21 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
           currentModeIdRef.current = decodedMode as AIModeId;
         }
       }
+      // Sync default mode from DB (overrides cookie if present)
+      fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`)
+        .then((r) => r.json())
+        .then((data) => {
+          if (data?.defaultMode && isValidAIModeId(data.defaultMode)) {
+            const dbMode = data.defaultMode as AIModeId;
+            // Only override if no cookie or DB differs from cookie -> treat DB as source of truth
+            if (dbMode !== currentModeIdRef.current) {
+              setCurrentModeId(dbMode);
+              currentModeIdRef.current = dbMode;
+              document.cookie = `ai-mode=${encodeURIComponent(dbMode)}; path=/; max-age=31536000`;
+            }
+          }
+        })
+        .catch(() => {});
     }
   }, []);
 
@@ -224,14 +362,19 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
             })
           );
 
-        // Inject projectId pour nouvelle discussion si présent
-        const projectIdToSend = !isToolApprovalContinuation ? pendingProjectIdRef.current : null;
-        // Nettoyer après premier envoi
-        if (projectIdToSend) {
-          // garder jusqu'à ce que le chat soit créé côté serveur, puis clear async
-          setTimeout(() => {
-            pendingProjectIdRef.current = null;
-          }, 2000);
+        // Inject projectId pour nouvelle discussion si présent (sticky session)
+        const projectIdToSend = isToolApprovalContinuation
+          ? null
+          : pendingProjectIdRef.current;
+        // Session complète: on NE clear pas après envoi, reste sticky jusqu'à clear manuel
+
+        // One-shot tools: capture and clear after send
+        const toolsToSend = isToolApprovalContinuation
+          ? []
+          : [...pendingToolsRef.current];
+        if (!isToolApprovalContinuation && pendingToolsRef.current.length > 0) {
+          // Clear after capturing — one-shot
+          setTimeout(() => clearPendingTools(), 0);
         }
 
         return {
@@ -239,11 +382,17 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
             id: request.id,
             ...(isToolApprovalContinuation
               ? { messages: request.messages }
-              : { message: lastMessage, ...(projectIdToSend ? { projectId: projectIdToSend } : {}) }),
-            selectedChatModel: currentModelIdRef.current,
+              : {
+                  message: lastMessage,
+                  ...(projectIdToSend ? { projectId: projectIdToSend } : {}),
+                }),
+            enabledTools: toolsToSend,
             selectedChatMode: currentModeIdRef.current,
+            selectedChatModel: currentModelIdRef.current,
             selectedVisibilityType: visibility,
-            ...(projectIdToSend && isToolApprovalContinuation ? { projectId: projectIdToSend } : {}),
+            ...(projectIdToSend && isToolApprovalContinuation
+              ? { projectId: projectIdToSend }
+              : {}),
             ...request.body,
           },
         };
@@ -334,22 +483,29 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     () => ({
       addToolApprovalResponse,
       chatId,
+      clearPendingProject,
+      clearPendingTools,
       currentModeId,
       currentModelId,
       input,
       isLoading: !isNewChat && isLoading,
       isReadonly,
       messages,
+      pendingProject,
+      pendingTools,
       regenerate,
       sendMessage,
       setCurrentModeId: handleModeChange,
       setCurrentModelId: handleModelChange,
       setInput,
       setMessages,
+      setPendingProject,
+      setPendingTools,
       setShowCreditCardAlert,
       showCreditCardAlert,
       status,
       stop,
+      togglePendingTool,
       visibilityType: visibility,
       votes,
     }),
@@ -370,6 +526,13 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       votes,
       currentModelId,
       currentModeId,
+      pendingProject,
+      setPendingProject,
+      clearPendingProject,
+      pendingTools,
+      setPendingTools,
+      togglePendingTool,
+      clearPendingTools,
       showCreditCardAlert,
     ]
   );

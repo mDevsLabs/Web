@@ -1,35 +1,35 @@
 import type { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
+  android: {
+    allowMixedContent: false,
+    backgroundColor: "#0a0a0a",
+  },
   appId: "app.mai.officiel.mobile",
   appName: "mAI",
-  webDir: "www",
-  // Charge directement le site – pas de serveur local nécessaire
-  // En mode natif, Capacitor utilisera server.url comme WebView source
-  server: {
-    url: "https://mai-officiel.vercel.app",
-    cleartext: false,
-    androidScheme: "https",
-    iosScheme: "https",
+  ios: {
+    backgroundColor: "#0a0a0a",
+    contentInset: "always",
   },
   plugins: {
     SplashScreen: {
-      launchShowDuration: 1500,
       backgroundColor: "#0a0a0a",
+      launchShowDuration: 1500,
     },
     StatusBar: {
-      style: "dark",
       backgroundColor: "#0a0a0a",
+      style: "dark",
     },
   },
-  ios: {
-    contentInset: "always",
-    backgroundColor: "#0a0a0a",
+  // Charge directement le site – pas de serveur local nécessaire
+  // En mode natif, Capacitor utilisera server.url comme WebView source
+  server: {
+    androidScheme: "https",
+    cleartext: false,
+    iosScheme: "https",
+    url: "https://mai-officiel.vercel.app",
   },
-  android: {
-    backgroundColor: "#0a0a0a",
-    allowMixedContent: false,
-  },
+  webDir: "www",
 };
 
 export default config;

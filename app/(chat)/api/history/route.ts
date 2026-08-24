@@ -34,8 +34,14 @@ export async function GET(request: NextRequest) {
 
   const userId = user.id || user.email;
 
-  const isArchived = isArchivedParam === "true" ? true : isArchivedParam === "false" ? false : null;
-  const pinned = pinnedParam === "true" ? true : pinnedParam === "false" ? false : null;
+  const isArchived =
+    isArchivedParam === "true"
+      ? true
+      : isArchivedParam === "false"
+        ? false
+        : null;
+  const pinned =
+    pinnedParam === "true" ? true : pinnedParam === "false" ? false : null;
 
   const chats = await getChatsByUserId({
     endingBefore,

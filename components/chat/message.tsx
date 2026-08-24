@@ -13,6 +13,7 @@ import {
   ToolInput,
   ToolOutput,
 } from "../ai-elements/tool";
+import { CodeExecution } from "./code-execution";
 import { useDataStream } from "./data-stream-provider";
 import { DocumentToolResult } from "./document";
 import { DocumentPreview } from "./document-preview";
@@ -303,6 +304,65 @@ const PurePreviewMessage = ({
       );
     }
 
+    if (type === "tool-editDocument") {
+      const { toolCallId, state } = part as any;
+
+      if (
+        state === "output-available" &&
+        part.output &&
+        "error" in part.output
+      ) {
+        return (
+          <div
+            className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-500 dark:bg-red-950/50"
+            key={toolCallId}
+          >
+            Error editing document: {String(part.output.error)}
+          </div>
+        );
+      }
+
+      if (state === "output-available" && part.output) {
+        return (
+          <div className="relative" key={toolCallId}>
+            <DocumentPreview
+              args={{ ...part.output, isUpdate: true }}
+              isReadonly={isReadonly}
+              result={part.output}
+            />
+          </div>
+        );
+      }
+
+      // Streaming / input states
+      return (
+        <Tool
+          className="w-[min(100%,450px)]"
+          defaultOpen={true}
+          key={toolCallId}
+        >
+          <ToolHeader state={state} type="tool-editDocument" />
+          <ToolContent>
+            {state === "input-available" && <ToolInput input={part.input} />}
+            {state === "output-available" &&
+              part.output &&
+              !("error" in part.output) && (
+                <ToolOutput
+                  errorText={undefined}
+                  output={
+                    <DocumentToolResult
+                      isReadonly={isReadonly}
+                      result={part.output}
+                      type="update"
+                    />
+                  }
+                />
+              )}
+          </ToolContent>
+        </Tool>
+      );
+    }
+
     if (type === "tool-requestSuggestions") {
       const { toolCallId, state } = part;
 
@@ -332,6 +392,103 @@ const PurePreviewMessage = ({
                   )
                 }
               />
+            )}
+          </ToolContent>
+        </Tool>
+      );
+    }
+
+    if (type === "tool-imageGenerate") {
+      const { toolCallId, state } = part as any;
+      if (state === "output-available" && part.output) {
+        if ("error" in part.output) {
+          return (
+            <div
+              className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600"
+              key={toolCallId}
+            >
+              Erreur génération image: {String(part.output.error)}
+            </div>
+          );
+        }
+        const url = (part.output as any).image_url;
+        if (url) {
+          return (
+            <div
+              className="w-[min(100%,480px)] rounded-xl overflow-hidden border border-border/60 bg-card"
+              key={toolCallId}
+            >
+              <img
+                alt={(part.output as any).prompt || "Image générée"}
+                className="w-full h-auto"
+                src={url}
+              />
+              {(part.output as any).prompt && (
+                <div className="px-3 py-2 text-[11px] text-muted-foreground border-t border-border/40">
+                  {(part.output as any).prompt}
+                </div>
+              )}
+            </div>
+          );
+        }
+      }
+      return (
+        <Tool
+          className="w-[min(100%,450px)]"
+          defaultOpen={true}
+          key={(part as any).toolCallId}
+        >
+          <ToolHeader state={state} type="tool-imageGenerate" />
+          <ToolContent>
+            {state === "input-available" && (
+              <ToolInput input={(part as any).input} />
+            )}
+          </ToolContent>
+        </Tool>
+      );
+    }
+
+    if (type === "tool-codeExecution") {
+      const { toolCallId, state } = part as any;
+      if (
+        state === "output-available" &&
+        part.output &&
+        !("error" in part.output) &&
+        (part.output as any).code
+      ) {
+        return (
+          <div className="w-full" key={toolCallId}>
+            <CodeExecution
+              code={(part.output as any).code}
+              language={(part.output as any).language}
+            />
+          </div>
+        );
+      }
+      if (
+        state === "output-available" &&
+        part.output &&
+        "error" in part.output
+      ) {
+        return (
+          <div
+            className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600"
+            key={toolCallId}
+          >
+            Erreur code: {String((part.output as any).error)}
+          </div>
+        );
+      }
+      return (
+        <Tool
+          className="w-[min(100%,450px)]"
+          defaultOpen={true}
+          key={(part as any).toolCallId}
+        >
+          <ToolHeader state={state} type="tool-codeExecution" />
+          <ToolContent>
+            {state === "input-available" && (
+              <ToolInput input={(part as any).input} />
             )}
           </ToolContent>
         </Tool>

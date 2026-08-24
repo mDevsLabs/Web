@@ -1,14 +1,13 @@
 "use client";
 
-import Image from "next/image";
+import { ArrowLeftIcon, Loader2Icon, ShieldCheckIcon } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ArrowLeftIcon, KeyRoundIcon, Loader2Icon, MailIcon, ShieldCheckIcon } from "lucide-react";
+import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { toast } from "sonner";
-import { loginAction, verifyLoginAction, resendCodeAction } from "../actions";
+import { loginAction, resendCodeAction, verifyLoginAction } from "../actions";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -60,7 +59,7 @@ export default function LoginPage() {
     setStep("otp");
     setCountdown(60);
     setCanResend(false);
-    toast.success("Code de sécurité envoyé par e-mail ! ✉️");
+    toast.success("Code de sécurité envoyé par e-mail !");
   };
 
   // Étape 2 : Vérification du code OTP
@@ -80,14 +79,16 @@ export default function LoginPage() {
       return;
     }
 
-    toast.success("Connexion réussie ! Bienvenue sur mAI Web ✨");
+    toast.success("Connexion réussie ! Bienvenue sur mAI Web");
     router.push("/");
     router.refresh();
   };
 
   // Renvoi du code
   const handleResend = async () => {
-    if (!canResend) return;
+    if (!canResend) {
+      return;
+    }
     setIsLoading(true);
     const res = await resendCodeAction(targetEmail, "login");
     setIsLoading(false);
@@ -114,48 +115,57 @@ export default function LoginPage() {
             </p>
           </div>
 
-          <form onSubmit={handleCredentialsSubmit} className="flex flex-col gap-4">
+          <form
+            className="flex flex-col gap-4"
+            onSubmit={handleCredentialsSubmit}
+          >
             <div className="flex flex-col gap-2">
-              <Label className="text-xs font-medium text-muted-foreground" htmlFor="identifier">
+              <Label
+                className="text-xs font-medium text-muted-foreground"
+                htmlFor="identifier"
+              >
                 E-mail ou Nom d'utilisateur
               </Label>
               <div className="relative">
                 <Input
-                  id="identifier"
-                  type="text"
-                  placeholder="nom@exemple.fr ou pseudo"
-                  value={identifier}
-                  onChange={(e) => setIdentifier(e.target.value)}
-                  className="h-10 pl-3 rounded-lg border-border/60 bg-muted/40 text-sm focus:bg-background"
                   autoComplete="username"
                   autoFocus
+                  className="h-10 pl-3 rounded-lg border-border/60 bg-muted/40 text-sm focus:bg-background"
+                  id="identifier"
+                  onChange={(e) => setIdentifier(e.target.value)}
+                  placeholder="nom@exemple.fr ou pseudo"
                   required
+                  type="text"
+                  value={identifier}
                 />
               </div>
             </div>
 
             <div className="flex flex-col gap-2">
-              <Label className="text-xs font-medium text-muted-foreground" htmlFor="password">
+              <Label
+                className="text-xs font-medium text-muted-foreground"
+                htmlFor="password"
+              >
                 Mot de passe
               </Label>
               <div className="relative">
                 <Input
-                  id="password"
-                  type="password"
-                  placeholder="••••••••••••"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="h-10 pl-3 rounded-lg border-border/60 bg-muted/40 text-sm focus:bg-background"
                   autoComplete="current-password"
+                  className="h-10 pl-3 rounded-lg border-border/60 bg-muted/40 text-sm focus:bg-background"
+                  id="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••••••"
                   required
+                  type="password"
+                  value={password}
                 />
               </div>
             </div>
 
             <button
-              type="submit"
-              disabled={isLoading}
               className="mt-2 h-10 w-full rounded-lg bg-foreground text-background font-medium text-sm transition-opacity hover:opacity-90 disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
+              disabled={isLoading}
+              type="submit"
             >
               {isLoading ? (
                 <>
@@ -170,8 +180,8 @@ export default function LoginPage() {
             <p className="text-center text-[13px] text-muted-foreground mt-2">
               Pas encore de compte ?{" "}
               <Link
-                href="/register"
                 className="font-medium text-foreground underline-offset-4 hover:underline"
+                href="/register"
               >
                 Créer un compte
               </Link>
@@ -189,32 +199,36 @@ export default function LoginPage() {
               Code de vérification
             </h1>
             <p className="text-sm text-muted-foreground mt-1">
-              Entrez le code à 6 chiffres envoyé à <strong className="text-foreground">{targetEmail}</strong>.
+              Entrez le code à 6 chiffres envoyé à{" "}
+              <strong className="text-foreground">{targetEmail}</strong>.
             </p>
           </div>
 
-          <form onSubmit={handleOtpSubmit} className="flex flex-col gap-4">
+          <form className="flex flex-col gap-4" onSubmit={handleOtpSubmit}>
             <div className="flex flex-col gap-2">
-              <Label className="text-xs font-medium text-muted-foreground" htmlFor="otpCode">
+              <Label
+                className="text-xs font-medium text-muted-foreground"
+                htmlFor="otpCode"
+              >
                 Code de sécurité (6 chiffres)
               </Label>
               <Input
-                id="otpCode"
-                type="text"
-                maxLength={8}
-                placeholder="123456"
-                value={otpCode}
-                onChange={(e) => setOtpCode(e.target.value)}
-                className="h-12 text-center text-xl font-mono tracking-[0.3em] font-bold rounded-lg border-border/60 bg-muted/40 focus:bg-background"
                 autoFocus
+                className="h-12 text-center text-xl font-mono tracking-[0.3em] font-bold rounded-lg border-border/60 bg-muted/40 focus:bg-background"
+                id="otpCode"
+                maxLength={8}
+                onChange={(e) => setOtpCode(e.target.value)}
+                placeholder="123456"
                 required
+                type="text"
+                value={otpCode}
               />
             </div>
 
             <button
-              type="submit"
-              disabled={isLoading}
               className="h-10 w-full rounded-lg bg-foreground text-background font-medium text-sm transition-opacity hover:opacity-90 disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
+              disabled={isLoading}
+              type="submit"
             >
               {isLoading ? (
                 <>
@@ -228,19 +242,19 @@ export default function LoginPage() {
 
             <div className="flex items-center justify-between text-[13px] text-muted-foreground pt-2">
               <button
-                type="button"
-                onClick={() => setStep("credentials")}
                 className="flex items-center gap-1 hover:text-foreground cursor-pointer"
+                onClick={() => setStep("credentials")}
+                type="button"
               >
                 <ArrowLeftIcon className="size-3.5" />
                 Retour
               </button>
 
               <button
-                type="button"
-                onClick={handleResend}
-                disabled={!canResend || isLoading}
                 className="hover:text-foreground disabled:opacity-50 cursor-pointer"
+                disabled={!canResend || isLoading}
+                onClick={handleResend}
+                type="button"
               >
                 {canResend ? "Renvoyer le code" : `Renvoyer (${countdown}s)`}
               </button>

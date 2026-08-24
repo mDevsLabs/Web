@@ -3,7 +3,6 @@
 import {
   AlertCircleIcon,
   ArchiveIcon,
-  CheckIcon,
   CheckSquareIcon,
   CloudIcon,
   CloudUploadIcon,
@@ -33,7 +32,6 @@ import {
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
-import { MAI_UPGRADE_URL } from "@/lib/constants";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -44,6 +42,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -53,7 +52,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { MAI_UPGRADE_URL } from "@/lib/constants";
 
 export type CloudFile = {
   id: string;
@@ -75,12 +74,14 @@ export type StorageUsage = {
 };
 
 export function formatBytes(bytes: number, decimals = 2) {
-  if (!bytes || bytes === 0) return "0 Octet";
+  if (!bytes || bytes === 0) {
+    return "0 Octet";
+  }
   const k = 1024;
   const dm = decimals < 0 ? 0 : decimals;
   const sizes = ["Octets", "Ko", "Mo", "Go", "To"];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
+  return `${Number.parseFloat((bytes / k ** i).toFixed(dm))} ${sizes[i]}`;
 }
 
 export function formatDate(dateStr: string) {
@@ -88,10 +89,10 @@ export function formatDate(dateStr: string) {
     const d = new Date(dateStr);
     return new Intl.DateTimeFormat("fr-FR", {
       day: "numeric",
-      month: "short",
-      year: "numeric",
       hour: "2-digit",
       minute: "2-digit",
+      month: "short",
+      year: "numeric",
     }).format(d);
   } catch {
     return dateStr;
@@ -106,18 +107,21 @@ export function getFileCategory(
   if (
     mimeType.startsWith("image/") ||
     /\.(png|jpe?g|gif|webp|svg|bmp|ico)$/i.test(lowerName)
-  )
+  ) {
     return "image";
+  }
   if (
     mimeType.startsWith("video/") ||
     /\.(mp4|webm|mov|avi|mkv)$/i.test(lowerName)
-  )
+  ) {
     return "video";
+  }
   if (
     mimeType.startsWith("audio/") ||
     /\.(mp3|wav|ogg|m4a|aac|flac)$/i.test(lowerName)
-  )
+  ) {
     return "audio";
+  }
   if (
     mimeType.includes("pdf") ||
     mimeType.includes("word") ||
@@ -154,16 +158,21 @@ export function getFileCategory(
 
 export function getFileIcon(mimeType: string, filename: string) {
   const category = getFileCategory(mimeType, filename);
-  if (category === "image")
+  if (category === "image") {
     return <ImageIcon className="size-5 text-blue-500" />;
-  if (category === "video")
+  }
+  if (category === "video") {
     return <VideoIcon className="size-5 text-purple-500" />;
-  if (category === "audio")
+  }
+  if (category === "audio") {
     return <MusicIcon className="size-5 text-pink-500" />;
-  if (category === "code")
+  }
+  if (category === "code") {
     return <CodeIcon className="size-5 text-emerald-500" />;
-  if (category === "archive")
+  }
+  if (category === "archive") {
     return <ArchiveIcon className="size-5 text-amber-500" />;
+  }
   if (category === "document") {
     if (
       mimeType.includes("sheet") ||
@@ -201,15 +210,10 @@ export default function LibraryPage() {
         ? prev.filter((item) => item !== id)
         : [id, ...prev];
       try {
-        localStorage.setItem(
-          "mai_pinned_cloud_files",
-          JSON.stringify(updated)
-        );
+        localStorage.setItem("mai_pinned_cloud_files", JSON.stringify(updated));
       } catch {}
       toast.success(
-        isPinned
-          ? "Fichier désépinglé"
-          : "Fichier épinglé en tête de liste 📌"
+        isPinned ? "Fichier désépinglé" : "Fichier épinglé en tête de liste"
       );
       return updated;
     });
@@ -257,7 +261,9 @@ export default function LibraryPage() {
   const fetchLibraryData = useCallback(async () => {
     try {
       const res = await fetch("/api/library");
-      if (!res.ok) throw new Error("Impossible de charger les fichiers");
+      if (!res.ok) {
+        throw new Error("Impossible de charger les fichiers");
+      }
       const data = await res.json();
       setFiles(data.files || []);
       setStorage(data.storage || null);
@@ -275,9 +281,14 @@ export default function LibraryPage() {
 
   // Upload d'un fichier individuel
   const uploadSingleFile = async (file: File) => {
-    if (!storage) return;
+    if (!storage) {
+      return;
+    }
 
-    const remainingBytes = Math.max(0, storage.bytes_limit - storage.bytes_used);
+    const remainingBytes = Math.max(
+      0,
+      storage.bytes_limit - storage.bytes_used
+    );
     if (file.size > remainingBytes) {
       toast.error(
         `Espace insuffisant pour "${file.name}" (${formatBytes(file.size)}). Espace restant : ${formatBytes(remainingBytes)}.`
@@ -287,7 +298,7 @@ export default function LibraryPage() {
 
     setUploadingFiles((prev) => [
       ...prev,
-      { name: file.name, size: file.size, progress: 30 },
+      { name: file.name, progress: 30, size: file.size },
     ]);
 
     const formData = new FormData();
@@ -295,8 +306,8 @@ export default function LibraryPage() {
 
     try {
       const res = await fetch("/api/library", {
-        method: "POST",
         body: formData,
+        method: "POST",
       });
 
       const data = await res.json();
@@ -307,7 +318,7 @@ export default function LibraryPage() {
         return;
       }
 
-      toast.success(`Fichier "${file.name}" importé avec succès ! ✨`);
+      toast.success(`Fichier "${file.name}" importé avec succès !`);
       if (data.file) {
         setFiles((prev) => [data.file, ...prev]);
       }
@@ -324,7 +335,9 @@ export default function LibraryPage() {
   };
 
   const handleFilesSelected = (selectedFiles: FileList | null) => {
-    if (!selectedFiles || selectedFiles.length === 0) return;
+    if (!selectedFiles || selectedFiles.length === 0) {
+      return;
+    }
     Array.from(selectedFiles).forEach((file) => uploadSingleFile(file));
   };
 
@@ -346,7 +359,9 @@ export default function LibraryPage() {
 
   // Suppression d'un fichier unique
   const confirmDelete = async () => {
-    if (!fileToDelete) return;
+    if (!fileToDelete) {
+      return;
+    }
     setIsDeleting(true);
 
     try {
@@ -370,15 +385,18 @@ export default function LibraryPage() {
       });
 
       if (storage) {
-        const newUsed = Math.max(0, storage.bytes_used - fileToDelete.size_bytes);
+        const newUsed = Math.max(
+          0,
+          storage.bytes_used - fileToDelete.size_bytes
+        );
         const newPercent =
-          Math.round((newUsed / storage.bytes_limit) * 10000) / 100;
+          Math.round((newUsed / storage.bytes_limit) * 10_000) / 100;
         setStorage({
           ...storage,
           bytes_used: newUsed,
           files_count: Math.max(0, storage.files_count - 1),
-          percent_used: newPercent,
           over_limit: newUsed >= storage.bytes_limit,
+          percent_used: newPercent,
         });
       }
     } catch {
@@ -391,7 +409,9 @@ export default function LibraryPage() {
 
   // Suppression groupée
   const confirmBulkDelete = async () => {
-    if (selectedIds.length === 0) return;
+    if (selectedIds.length === 0) {
+      return;
+    }
     setIsBulkDeleting(true);
 
     let deletedCount = 0;
@@ -403,7 +423,9 @@ export default function LibraryPage() {
         const res = await fetch(`/api/library?id=${id}`, { method: "DELETE" });
         if (res.ok) {
           deletedCount++;
-          if (targetFile) freedBytes += targetFile.size_bytes;
+          if (targetFile) {
+            freedBytes += targetFile.size_bytes;
+          }
         }
       } catch {}
     }
@@ -418,13 +440,13 @@ export default function LibraryPage() {
     if (storage && freedBytes > 0) {
       const newUsed = Math.max(0, storage.bytes_used - freedBytes);
       const newPercent =
-        Math.round((newUsed / storage.bytes_limit) * 10000) / 100;
+        Math.round((newUsed / storage.bytes_limit) * 10_000) / 100;
       setStorage({
         ...storage,
         bytes_used: newUsed,
         files_count: Math.max(0, storage.files_count - deletedCount),
-        percent_used: newPercent,
         over_limit: newUsed >= storage.bytes_limit,
+        percent_used: newPercent,
       });
     }
 
@@ -442,7 +464,9 @@ export default function LibraryPage() {
 
   const handleRenameSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!fileToRename || !newName.trim()) return;
+    if (!fileToRename || !newName.trim()) {
+      return;
+    }
 
     const trimmed = newName.trim();
     if (trimmed === fileToRename.original_name) {
@@ -453,9 +477,9 @@ export default function LibraryPage() {
     setIsRenaming(true);
     try {
       const res = await fetch("/api/library", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: fileToRename.id, name: trimmed }),
+        headers: { "Content-Type": "application/json" },
+        method: "PATCH",
       });
 
       if (!res.ok) {
@@ -468,7 +492,7 @@ export default function LibraryPage() {
           f.id === fileToRename.id ? { ...f, original_name: trimmed } : f
         )
       );
-      toast.success("Fichier renommé avec succès ! ✏️");
+      toast.success("Fichier renommé avec succès !");
       setFileToRename(null);
     } catch {
       toast.error("Impossible de renommer le fichier");
@@ -480,7 +504,7 @@ export default function LibraryPage() {
   // Copie de l'URL
   const copyFileLink = (url: string) => {
     navigator.clipboard.writeText(url);
-    toast.success("Lien direct copié dans le presse-papier ! 📋");
+    toast.success("Lien direct copié dans le presse-papier !");
   };
 
   // Téléchargement groupé
@@ -489,7 +513,9 @@ export default function LibraryPage() {
     selectedFiles.forEach((file) => {
       window.open(file.url, "_blank");
     });
-    toast.success(`Téléchargement de ${selectedFiles.length} fichier(s) lancé.`);
+    toast.success(
+      `Téléchargement de ${selectedFiles.length} fichier(s) lancé.`
+    );
   };
 
   // Épinglage groupé
@@ -504,7 +530,9 @@ export default function LibraryPage() {
       return next;
     });
     toast.success(
-      pin ? "Fichiers sélectionnés épinglés 📌" : "Fichiers sélectionnés désépinglés"
+      pin
+        ? "Fichiers sélectionnés épinglés"
+        : "Fichiers sélectionnés désépinglés"
     );
     setSelectedIds([]);
   };
@@ -522,10 +550,16 @@ export default function LibraryPage() {
       const matchesSearch =
         f.original_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         f.mime_type.toLowerCase().includes(searchQuery.toLowerCase());
-      if (!matchesSearch) return false;
+      if (!matchesSearch) {
+        return false;
+      }
 
-      if (selectedCategory === "all") return true;
-      if (selectedCategory === "pinned") return pinnedIds.includes(f.id);
+      if (selectedCategory === "all") {
+        return true;
+      }
+      if (selectedCategory === "pinned") {
+        return pinnedIds.includes(f.id);
+      }
 
       const category = getFileCategory(f.mime_type, f.original_name);
       return category === selectedCategory;
@@ -534,8 +568,12 @@ export default function LibraryPage() {
     result.sort((a, b) => {
       const aPinned = pinnedIds.includes(a.id);
       const bPinned = pinnedIds.includes(b.id);
-      if (aPinned && !bPinned) return -1;
-      if (!aPinned && bPinned) return 1;
+      if (aPinned && !bPinned) {
+        return -1;
+      }
+      if (!aPinned && bPinned) {
+        return 1;
+      }
 
       switch (sortBy) {
         case "date-asc":
@@ -616,24 +654,25 @@ export default function LibraryPage() {
             Bibliothèque de fichiers
           </h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Importez, épinglez et gérez vos documents, médias et codes pour alimenter l'IA.
+            Importez, épinglez et gérez vos documents, médias et codes pour
+            alimenter l'IA.
           </p>
         </div>
 
         <button
-          onClick={() => fileInputRef.current?.click()}
           className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-4 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer"
+          onClick={() => fileInputRef.current?.click()}
         >
           <CloudUploadIcon className="size-4" />
           <span>Importer des fichiers</span>
         </button>
 
         <input
-          type="file"
-          ref={fileInputRef}
-          onChange={(e) => handleFilesSelected(e.target.files)}
-          multiple
           className="hidden"
+          multiple
+          onChange={(e) => handleFilesSelected(e.target.files)}
+          ref={fileInputRef}
+          type="file"
         />
       </div>
 
@@ -642,15 +681,20 @@ export default function LibraryPage() {
         <div className="my-6 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md p-5 shadow-sm">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-3">
             <div className="flex items-center gap-2.5">
-              <span className="text-sm font-semibold text-foreground">Espace utilisé</span>
+              <span className="text-sm font-semibold text-foreground">
+                Espace utilisé
+              </span>
               <span className="text-xs px-2.5 py-0.5 rounded-full font-bold uppercase bg-primary/10 text-primary border border-primary/20">
                 Forfait {storage.tier}
               </span>
             </div>
             <div className="text-xs sm:text-sm font-medium text-muted-foreground">
-              <strong className="text-foreground">{formatBytes(storage.bytes_used)}</strong> sur{" "}
-              <strong>{formatBytes(storage.bytes_limit)}</strong> ({storage.percent_used}%) •{" "}
-              {storage.files_count} {storage.files_count > 1 ? "fichiers" : "fichier"}
+              <strong className="text-foreground">
+                {formatBytes(storage.bytes_used)}
+              </strong>{" "}
+              sur <strong>{formatBytes(storage.bytes_limit)}</strong> (
+              {storage.percent_used}%) • {storage.files_count}{" "}
+              {storage.files_count > 1 ? "fichiers" : "fichier"}
             </div>
           </div>
 
@@ -661,8 +705,8 @@ export default function LibraryPage() {
                 storage.percent_used > 90
                   ? "bg-red-500"
                   : storage.percent_used > 75
-                  ? "bg-amber-500"
-                  : "bg-gradient-to-r from-blue-500 to-indigo-600"
+                    ? "bg-amber-500"
+                    : "bg-gradient-to-r from-blue-500 to-indigo-600"
               }`}
               style={{ width: `${Math.min(100, storage.percent_used)}%` }}
             />
@@ -675,9 +719,9 @@ export default function LibraryPage() {
                 <span>Vous approchez de votre limite de stockage.</span>
               </div>
               <Link
+                className="font-semibold underline hover:text-amber-400 shrink-0 flex items-center gap-1"
                 href={MAI_UPGRADE_URL}
                 target="_blank"
-                className="font-semibold underline hover:text-amber-400 shrink-0 flex items-center gap-1"
               >
                 Mettre à niveau
                 <ExternalLinkIcon className="size-3" />
@@ -689,24 +733,28 @@ export default function LibraryPage() {
 
       {/* Zone de Drag & Drop */}
       <div
-        onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}
-        onDrop={handleDrop}
-        onClick={() => fileInputRef.current?.click()}
         className={`my-2 flex flex-col items-center justify-center rounded-2xl border-2 border-dashed p-7 text-center transition-all cursor-pointer ${
           isDragging
             ? "border-primary bg-primary/5 scale-[1.01]"
             : "border-border/60 bg-muted/20 hover:bg-muted/40 hover:border-border"
         }`}
+        onClick={() => fileInputRef.current?.click()}
+        onDragLeave={handleDragLeave}
+        onDragOver={handleDragOver}
+        onDrop={handleDrop}
       >
         <div className="size-11 rounded-2xl bg-muted/80 flex items-center justify-center text-muted-foreground mb-2.5 ring-1 ring-border/50">
           <CloudUploadIcon className="size-5 text-primary" />
         </div>
         <p className="text-sm font-medium text-foreground">
-          Glissez-déposez vos fichiers ici, ou <span className="text-primary underline">parcourez votre appareil</span>
+          Glissez-déposez vos fichiers ici, ou{" "}
+          <span className="text-primary underline">
+            parcourez votre appareil
+          </span>
         </p>
         <p className="text-xs text-muted-foreground mt-1">
-          Tous formats supportés : PDF, Documents, Code, Images, Audio, Vidéo, Archives...
+          Tous formats supportés : PDF, Documents, Code, Images, Audio, Vidéo,
+          Archives...
         </p>
       </div>
 
@@ -715,15 +763,21 @@ export default function LibraryPage() {
         <div className="my-4 flex flex-col gap-2">
           {uploadingFiles.map((up) => (
             <div
-              key={up.name}
               className="flex items-center justify-between p-3 rounded-xl border border-primary/30 bg-primary/5 text-xs animate-pulse"
+              key={up.name}
             >
               <div className="flex items-center gap-2.5 truncate">
                 <Loader2Icon className="size-4 animate-spin text-primary shrink-0" />
-                <span className="font-medium truncate text-foreground">{up.name}</span>
-                <span className="text-muted-foreground">({formatBytes(up.size)})</span>
+                <span className="font-medium truncate text-foreground">
+                  {up.name}
+                </span>
+                <span className="text-muted-foreground">
+                  ({formatBytes(up.size)})
+                </span>
               </div>
-              <span className="text-primary font-medium shrink-0">Téléversement...</span>
+              <span className="text-primary font-medium shrink-0">
+                Téléversement...
+              </span>
             </div>
           ))}
         </div>
@@ -732,80 +786,90 @@ export default function LibraryPage() {
       {/* Filtres par catégorie */}
       <div className="mt-6 flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar">
         <button
-          onClick={() => setSelectedCategory("all")}
           className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-colors cursor-pointer shrink-0 flex items-center gap-1.5 ${
             selectedCategory === "all"
               ? "bg-foreground text-background shadow-xs"
               : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground"
           }`}
+          onClick={() => setSelectedCategory("all")}
         >
           <span>Tous</span>
           <span className="opacity-70 text-[10px]">({categoryCounts.all})</span>
         </button>
 
         <button
-          onClick={() => setSelectedCategory("pinned")}
           className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-colors cursor-pointer shrink-0 flex items-center gap-1.5 ${
             selectedCategory === "pinned"
               ? "bg-foreground text-background shadow-xs"
               : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground"
           }`}
+          onClick={() => setSelectedCategory("pinned")}
         >
           <PinIcon className="size-3" />
           <span>Épinglés</span>
-          <span className="opacity-70 text-[10px]">({categoryCounts.pinned})</span>
+          <span className="opacity-70 text-[10px]">
+            ({categoryCounts.pinned})
+          </span>
         </button>
 
         <button
-          onClick={() => setSelectedCategory("document")}
           className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-colors cursor-pointer shrink-0 flex items-center gap-1.5 ${
             selectedCategory === "document"
               ? "bg-foreground text-background shadow-xs"
               : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground"
           }`}
+          onClick={() => setSelectedCategory("document")}
         >
           <FileTextIcon className="size-3 text-red-500" />
           <span>Documents</span>
-          <span className="opacity-70 text-[10px]">({categoryCounts.document})</span>
+          <span className="opacity-70 text-[10px]">
+            ({categoryCounts.document})
+          </span>
         </button>
 
         <button
-          onClick={() => setSelectedCategory("image")}
           className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-colors cursor-pointer shrink-0 flex items-center gap-1.5 ${
             selectedCategory === "image"
               ? "bg-foreground text-background shadow-xs"
               : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground"
           }`}
+          onClick={() => setSelectedCategory("image")}
         >
           <ImageIcon className="size-3 text-blue-500" />
           <span>Images</span>
-          <span className="opacity-70 text-[10px]">({categoryCounts.image})</span>
+          <span className="opacity-70 text-[10px]">
+            ({categoryCounts.image})
+          </span>
         </button>
 
         <button
-          onClick={() => setSelectedCategory("code")}
           className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-colors cursor-pointer shrink-0 flex items-center gap-1.5 ${
             selectedCategory === "code"
               ? "bg-foreground text-background shadow-xs"
               : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground"
           }`}
+          onClick={() => setSelectedCategory("code")}
         >
           <CodeIcon className="size-3 text-emerald-500" />
           <span>Code</span>
-          <span className="opacity-70 text-[10px]">({categoryCounts.code})</span>
+          <span className="opacity-70 text-[10px]">
+            ({categoryCounts.code})
+          </span>
         </button>
 
         <button
-          onClick={() => setSelectedCategory("archive")}
           className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-colors cursor-pointer shrink-0 flex items-center gap-1.5 ${
             selectedCategory === "archive"
               ? "bg-foreground text-background shadow-xs"
               : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground"
           }`}
+          onClick={() => setSelectedCategory("archive")}
         >
           <ArchiveIcon className="size-3 text-amber-500" />
           <span>Archives</span>
-          <span className="opacity-70 text-[10px]">({categoryCounts.archive})</span>
+          <span className="opacity-70 text-[10px]">
+            ({categoryCounts.archive})
+          </span>
         </button>
       </div>
 
@@ -814,20 +878,20 @@ export default function LibraryPage() {
         <div className="relative flex-1 max-w-sm">
           <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
           <Input
-            type="text"
-            placeholder="Rechercher par nom ou format..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
             className="h-9 pl-9 pr-3 rounded-xl border-border/60 bg-muted/30 text-xs"
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Rechercher par nom ou format..."
+            type="text"
+            value={searchQuery}
           />
         </div>
 
         <div className="flex items-center gap-2 self-end sm:self-auto">
           {/* Sélecteur de tri */}
           <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as any)}
             className="h-9 px-3 rounded-xl border border-border/60 bg-muted/30 text-xs text-foreground font-medium cursor-pointer outline-none hover:bg-muted/50"
+            onChange={(e) => setSortBy(e.target.value as any)}
+            value={sortBy}
           >
             <option value="date-desc">Plus récents</option>
             <option value="date-asc">Plus anciens</option>
@@ -840,23 +904,23 @@ export default function LibraryPage() {
           {/* Bascule Grille / Liste */}
           <div className="flex items-center p-0.5 rounded-xl border border-border/60 bg-muted/30">
             <button
-              onClick={() => setViewMode("table")}
               className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
                 viewMode === "table"
                   ? "bg-background text-foreground shadow-xs"
                   : "text-muted-foreground hover:text-foreground"
               }`}
+              onClick={() => setViewMode("table")}
               title="Vue Liste"
             >
               <ListIcon className="size-4" />
             </button>
             <button
-              onClick={() => setViewMode("grid")}
               className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
                 viewMode === "grid"
                   ? "bg-background text-foreground shadow-xs"
                   : "text-muted-foreground hover:text-foreground"
               }`}
+              onClick={() => setViewMode("grid")}
               title="Vue Grille"
             >
               <GridIcon className="size-4" />
@@ -875,8 +939,8 @@ export default function LibraryPage() {
 
           <div className="flex items-center gap-1.5 text-xs">
             <button
-              onClick={() => handleBulkPin(true)}
               className="px-2.5 py-1.5 rounded-lg bg-background/15 hover:bg-background/25 transition-colors cursor-pointer flex items-center gap-1"
+              onClick={() => handleBulkPin(true)}
               title="Épingler la sélection"
             >
               <PinIcon className="size-3.5" />
@@ -884,8 +948,8 @@ export default function LibraryPage() {
             </button>
 
             <button
-              onClick={() => handleBulkPin(false)}
               className="px-2.5 py-1.5 rounded-lg bg-background/15 hover:bg-background/25 transition-colors cursor-pointer flex items-center gap-1"
+              onClick={() => handleBulkPin(false)}
               title="Désépingler la sélection"
             >
               <PinOffIcon className="size-3.5" />
@@ -893,8 +957,8 @@ export default function LibraryPage() {
             </button>
 
             <button
-              onClick={handleBulkDownload}
               className="px-2.5 py-1.5 rounded-lg bg-background/15 hover:bg-background/25 transition-colors cursor-pointer flex items-center gap-1"
+              onClick={handleBulkDownload}
               title="Télécharger la sélection"
             >
               <DownloadIcon className="size-3.5" />
@@ -902,8 +966,8 @@ export default function LibraryPage() {
             </button>
 
             <button
-              onClick={() => setBulkDeleteDialogOpen(true)}
               className="px-2.5 py-1.5 rounded-lg bg-red-500/20 text-red-300 hover:bg-red-500/30 transition-colors cursor-pointer flex items-center gap-1"
+              onClick={() => setBulkDeleteDialogOpen(true)}
               title="Supprimer la sélection"
             >
               <Trash2Icon className="size-3.5" />
@@ -911,8 +975,8 @@ export default function LibraryPage() {
             </button>
 
             <button
-              onClick={() => setSelectedIds([])}
               className="p-1.5 rounded-lg hover:bg-background/20 transition-colors cursor-pointer ml-1"
+              onClick={() => setSelectedIds([])}
               title="Désélectionner tout"
             >
               <XIcon className="size-4" />
@@ -953,14 +1017,14 @@ export default function LibraryPage() {
                   <tr className="border-b border-border/50 bg-muted/40 text-muted-foreground font-medium">
                     <th className="py-3 px-3 w-10 text-center">
                       <button
-                        type="button"
-                        onClick={toggleSelectAllVisible}
                         className="p-1 rounded text-muted-foreground hover:text-foreground cursor-pointer"
+                        onClick={toggleSelectAllVisible}
                         title={
                           allVisibleSelected
                             ? "Tout désélectionner"
                             : "Tout sélectionner"
                         }
+                        type="button"
                       >
                         {allVisibleSelected ? (
                           <CheckSquareIcon className="size-4 text-primary" />
@@ -985,16 +1049,16 @@ export default function LibraryPage() {
 
                     return (
                       <tr
-                        key={file.id}
                         className={`transition-colors group ${
                           isSelected ? "bg-primary/5" : "hover:bg-muted/30"
                         }`}
+                        key={file.id}
                       >
                         <td className="py-3 px-3 text-center">
                           <button
-                            type="button"
-                            onClick={() => toggleSelectFile(file.id)}
                             className="p-1 rounded text-muted-foreground hover:text-foreground cursor-pointer"
+                            onClick={() => toggleSelectFile(file.id)}
+                            type="button"
                           >
                             {isSelected ? (
                               <CheckSquareIcon className="size-4 text-primary" />
@@ -1009,8 +1073,8 @@ export default function LibraryPage() {
                             <div className="relative p-1.5 rounded-lg bg-muted/60 ring-1 ring-border/50 shrink-0">
                               {getFileIcon(file.mime_type, file.original_name)}
                               {isPinned && (
-                                <span className="absolute -top-1 -right-1 size-3 bg-amber-500 rounded-full ring-2 ring-background flex items-center justify-center text-[8px] text-white">
-                                  📌
+                                <span className="absolute -top-1 -right-1 size-3.5 bg-amber-500 rounded-full ring-2 ring-background flex items-center justify-center text-white">
+                                  <PinIcon className="size-2 fill-white text-white" />
                                 </span>
                               )}
                             </div>
@@ -1049,13 +1113,15 @@ export default function LibraryPage() {
                           <div className="flex items-center justify-end gap-1">
                             {/* Épingler */}
                             <button
-                              onClick={() => togglePin(file.id)}
                               className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
                                 isPinned
                                   ? "text-amber-500 bg-amber-500/10 hover:bg-amber-500/20"
                                   : "text-muted-foreground hover:text-foreground hover:bg-muted"
                               }`}
-                              title={isPinned ? "Désépingler" : "Épingler en tête"}
+                              onClick={() => togglePin(file.id)}
+                              title={
+                                isPinned ? "Désépingler" : "Épingler en tête"
+                              }
                             >
                               <PinIcon
                                 className={`size-3.5 ${
@@ -1066,8 +1132,8 @@ export default function LibraryPage() {
 
                             {/* Aperçu */}
                             <button
-                              onClick={() => setPreviewFile(file)}
                               className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
+                              onClick={() => setPreviewFile(file)}
                               title="Aperçu rapide"
                             >
                               <EyeIcon className="size-3.5" />
@@ -1075,8 +1141,8 @@ export default function LibraryPage() {
 
                             {/* Renommer */}
                             <button
-                              onClick={() => openRenameModal(file)}
                               className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
+                              onClick={() => openRenameModal(file)}
                               title="Renommer"
                             >
                               <Edit2Icon className="size-3.5" />
@@ -1084,8 +1150,8 @@ export default function LibraryPage() {
 
                             {/* Copier le lien */}
                             <button
-                              onClick={() => copyFileLink(file.url)}
                               className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
+                              onClick={() => copyFileLink(file.url)}
                               title="Copier le lien"
                             >
                               <CopyIcon className="size-3.5" />
@@ -1093,10 +1159,10 @@ export default function LibraryPage() {
 
                             {/* Télécharger */}
                             <a
-                              href={file.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
                               className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
+                              href={file.url}
+                              rel="noopener noreferrer"
+                              target="_blank"
                               title="Télécharger"
                             >
                               <DownloadIcon className="size-3.5" />
@@ -1104,8 +1170,8 @@ export default function LibraryPage() {
 
                             {/* Supprimer */}
                             <button
-                              onClick={() => setFileToDelete(file)}
                               className="p-1.5 rounded-lg text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors cursor-pointer"
+                              onClick={() => setFileToDelete(file)}
                               title="Supprimer"
                             >
                               <Trash2Icon className="size-3.5" />
@@ -1128,19 +1194,19 @@ export default function LibraryPage() {
 
               return (
                 <div
-                  key={file.id}
                   className={`relative flex flex-col justify-between rounded-2xl border p-4 transition-all duration-200 bg-card/60 backdrop-blur-md ${
                     isSelected
                       ? "border-primary ring-1 ring-primary shadow-md bg-primary/5"
                       : "border-border/60 hover:border-border hover:shadow-sm"
                   }`}
+                  key={file.id}
                 >
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <div className="flex items-center gap-2.5">
                       <button
-                        type="button"
-                        onClick={() => toggleSelectFile(file.id)}
                         className="p-0.5 rounded text-muted-foreground hover:text-foreground cursor-pointer"
+                        onClick={() => toggleSelectFile(file.id)}
+                        type="button"
                       >
                         {isSelected ? (
                           <CheckSquareIcon className="size-4 text-primary" />
@@ -1155,12 +1221,12 @@ export default function LibraryPage() {
 
                     <div className="flex items-center gap-1">
                       <button
-                        onClick={() => togglePin(file.id)}
                         className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
                           isPinned
                             ? "text-amber-500 bg-amber-500/10 hover:bg-amber-500/20"
                             : "text-muted-foreground hover:text-foreground hover:bg-muted"
                         }`}
+                        onClick={() => togglePin(file.id)}
                         title={isPinned ? "Désépingler" : "Épingler"}
                       >
                         <PinIcon
@@ -1171,8 +1237,8 @@ export default function LibraryPage() {
                       </button>
 
                       <button
-                        onClick={() => openRenameModal(file)}
                         className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
+                        onClick={() => openRenameModal(file)}
                         title="Renommer"
                       >
                         <Edit2Icon className="size-3.5" />
@@ -1183,8 +1249,8 @@ export default function LibraryPage() {
                   <div className="my-1">
                     <h3
                       className="font-medium text-xs text-foreground truncate cursor-pointer hover:underline"
-                      title={file.original_name}
                       onClick={() => setPreviewFile(file)}
+                      title={file.original_name}
                     >
                       {file.original_name}
                     </h3>
@@ -1202,26 +1268,26 @@ export default function LibraryPage() {
 
                     <div className="flex items-center gap-1">
                       <button
-                        onClick={() => copyFileLink(file.url)}
                         className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
+                        onClick={() => copyFileLink(file.url)}
                         title="Copier le lien"
                       >
                         <CopyIcon className="size-3.5" />
                       </button>
 
                       <a
-                        href={file.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
+                        href={file.url}
+                        rel="noopener noreferrer"
+                        target="_blank"
                         title="Télécharger"
                       >
                         <DownloadIcon className="size-3.5" />
                       </a>
 
                       <button
-                        onClick={() => setFileToDelete(file)}
                         className="p-1.5 rounded-lg text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors cursor-pointer"
+                        onClick={() => setFileToDelete(file)}
                         title="Supprimer"
                       >
                         <Trash2Icon className="size-3.5" />
@@ -1237,8 +1303,8 @@ export default function LibraryPage() {
 
       {/* Modale de Renommage */}
       <Dialog
-        open={Boolean(fileToRename)}
         onOpenChange={(open) => !open && setFileToRename(null)}
+        open={Boolean(fileToRename)}
       >
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
@@ -1247,26 +1313,26 @@ export default function LibraryPage() {
               Modifiez le nom d'affichage de votre document Cloud.
             </DialogDescription>
           </DialogHeader>
-          <form onSubmit={handleRenameSubmit} className="space-y-4 py-2">
+          <form className="space-y-4 py-2" onSubmit={handleRenameSubmit}>
             <div className="space-y-2">
               <Input
-                value={newName}
-                onChange={(e) => setNewName(e.target.value)}
-                placeholder="Nouveau nom de fichier..."
                 autoFocus
                 className="rounded-xl text-xs"
+                onChange={(e) => setNewName(e.target.value)}
+                placeholder="Nouveau nom de fichier..."
+                value={newName}
               />
             </div>
             <DialogFooter>
               <Button
+                disabled={isRenaming}
+                onClick={() => setFileToRename(null)}
                 type="button"
                 variant="outline"
-                onClick={() => setFileToRename(null)}
-                disabled={isRenaming}
               >
                 Annuler
               </Button>
-              <Button type="submit" disabled={isRenaming || !newName.trim()}>
+              <Button disabled={isRenaming || !newName.trim()} type="submit">
                 {isRenaming ? "Enregistrement..." : "Renommer"}
               </Button>
             </DialogFooter>
@@ -1276,8 +1342,8 @@ export default function LibraryPage() {
 
       {/* Modale de Prévisualisation */}
       <Dialog
-        open={Boolean(previewFile)}
         onOpenChange={(open) => !open && setPreviewFile(null)}
+        open={Boolean(previewFile)}
       >
         <DialogContent className="sm:max-w-xl max-h-[85vh] overflow-y-auto">
           <DialogHeader>
@@ -1294,33 +1360,44 @@ export default function LibraryPage() {
             {previewFile?.mime_type.startsWith("image/") ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
-                src={previewFile.url}
                 alt={previewFile.original_name}
                 className="max-h-80 w-auto rounded-lg object-contain shadow-sm"
                 loading="lazy"
+                src={previewFile.url}
               />
             ) : previewFile?.mime_type.startsWith("video/") ? (
-              <video controls className="max-h-80 w-full rounded-lg">
+              <video className="max-h-80 w-full rounded-lg" controls>
                 <source src={previewFile.url} type={previewFile.mime_type} />
                 Votre navigateur ne prend pas en charge la lecture de vidéos.
               </video>
             ) : previewFile?.mime_type.startsWith("audio/") ? (
-              <audio controls className="w-full">
+              <audio className="w-full" controls>
                 <source src={previewFile.url} type={previewFile.mime_type} />
                 Votre navigateur ne prend pas en charge la lecture audio.
               </audio>
             ) : previewFile?.mime_type === "application/pdf" ? (
-              <iframe src={previewFile.url} title={previewFile.original_name} className="w-full h-[60vh] rounded-lg border bg-white" />
+              <iframe
+                className="w-full h-[60vh] rounded-lg border bg-white"
+                src={previewFile.url}
+                title={previewFile.original_name}
+              />
             ) : previewFile?.mime_type.startsWith("text/") ||
               previewFile?.mime_type === "application/json" ||
               previewFile?.original_name.endsWith(".md") ||
               previewFile?.original_name.endsWith(".csv") ||
               previewFile?.original_name.endsWith(".txt") ? (
               <div className="w-full max-h-80 overflow-auto rounded-lg bg-background border p-3 text-xs font-mono whitespace-pre-wrap">
-                <a href={previewFile.url} target="_blank" rel="noopener noreferrer" className="text-primary underline text-xs mb-2 inline-block">
+                <a
+                  className="text-primary underline text-xs mb-2 inline-block"
+                  href={previewFile.url}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
                   Ouvrir le fichier texte
                 </a>
-                <div className="text-muted-foreground">Aperçu texte disponible via ouverture.</div>
+                <div className="text-muted-foreground">
+                  Aperçu texte disponible via ouverture.
+                </div>
               </div>
             ) : (
               <div className="flex flex-col items-center gap-3 text-center p-6">
@@ -1332,7 +1409,8 @@ export default function LibraryPage() {
                     )}
                 </div>
                 <p className="text-xs text-muted-foreground max-w-xs">
-                  Aperçu direct non disponible pour ce format. Vous pouvez l'ouvrir ou le télécharger directement.
+                  Aperçu direct non disponible pour ce format. Vous pouvez
+                  l'ouvrir ou le télécharger directement.
                 </p>
               </div>
             )}
@@ -1340,21 +1418,21 @@ export default function LibraryPage() {
 
           <DialogFooter className="flex-row justify-between sm:justify-between items-center">
             <Button
+              className="gap-1.5 text-xs"
+              onClick={() => previewFile && copyFileLink(previewFile.url)}
+              size="sm"
               type="button"
               variant="outline"
-              size="sm"
-              onClick={() => previewFile && copyFileLink(previewFile.url)}
-              className="gap-1.5 text-xs"
             >
               <CopyIcon className="size-3.5" />
               Copier le lien
             </Button>
 
             <a
-              href={previewFile?.url}
-              target="_blank"
-              rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-2 rounded-lg bg-foreground text-background hover:opacity-90 transition-opacity"
+              href={previewFile?.url}
+              rel="noopener noreferrer"
+              target="_blank"
             >
               <DownloadIcon className="size-3.5" />
               Ouvrir / Télécharger
@@ -1365,24 +1443,26 @@ export default function LibraryPage() {
 
       {/* Modale de confirmation de suppression individuelle */}
       <AlertDialog
-        open={Boolean(fileToDelete)}
         onOpenChange={(open) => !open && setFileToDelete(null)}
+        open={Boolean(fileToDelete)}
       >
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Supprimer ce fichier ?</AlertDialogTitle>
             <AlertDialogDescription>
               Êtes-vous sûr de vouloir supprimer définitivement{" "}
-              <strong>{fileToDelete?.original_name}</strong> de votre Cloud ? Cette action libérera{" "}
-              {fileToDelete && formatBytes(fileToDelete.size_bytes)} d'espace de stockage.
+              <strong>{fileToDelete?.original_name}</strong> de votre Cloud ?
+              Cette action libérera{" "}
+              {fileToDelete && formatBytes(fileToDelete.size_bytes)} d'espace de
+              stockage.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel disabled={isDeleting}>Annuler</AlertDialogCancel>
             <AlertDialogAction
-              onClick={confirmDelete}
-              disabled={isDeleting}
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              disabled={isDeleting}
+              onClick={confirmDelete}
             >
               {isDeleting ? "Suppression..." : "Supprimer définitivement"}
             </AlertDialogAction>
@@ -1392,25 +1472,32 @@ export default function LibraryPage() {
 
       {/* Modale de confirmation de suppression groupée */}
       <AlertDialog
-        open={bulkDeleteDialogOpen}
         onOpenChange={(open) => !open && setBulkDeleteDialogOpen(false)}
+        open={bulkDeleteDialogOpen}
       >
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Supprimer les fichiers sélectionnés ?</AlertDialogTitle>
+            <AlertDialogTitle>
+              Supprimer les fichiers sélectionnés ?
+            </AlertDialogTitle>
             <AlertDialogDescription>
               Êtes-vous sûr de vouloir supprimer définitivement les{" "}
-              <strong>{selectedIds.length} fichier(s)</strong> sélectionnés de votre Cloud ? Cette action est irréversible.
+              <strong>{selectedIds.length} fichier(s)</strong> sélectionnés de
+              votre Cloud ? Cette action est irréversible.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel disabled={isBulkDeleting}>Annuler</AlertDialogCancel>
+            <AlertDialogCancel disabled={isBulkDeleting}>
+              Annuler
+            </AlertDialogCancel>
             <AlertDialogAction
-              onClick={confirmBulkDelete}
-              disabled={isBulkDeleting}
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              disabled={isBulkDeleting}
+              onClick={confirmBulkDelete}
             >
-              {isBulkDeleting ? "Suppression en cours..." : "Supprimer la sélection"}
+              {isBulkDeleting
+                ? "Suppression en cours..."
+                : "Supprimer la sélection"}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

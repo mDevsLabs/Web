@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { MAI_API_URL, MAI_SESSION_COOKIE } from "@/lib/constants";
+
 export { MAI_SESSION_COOKIE } from "@/lib/constants";
 export { getUserApiKey } from "@/lib/db/api-keys";
 
@@ -30,10 +31,10 @@ export async function setMaiSessionToken(token: string) {
   const cookieStore = await cookies();
   cookieStore.set(MAI_SESSION_COOKIE, token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
     maxAge: 30 * 24 * 60 * 60, // 30 jours
+    path: "/",
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
   });
 }
 
@@ -42,16 +43,20 @@ export async function removeMaiSessionToken() {
   cookieStore.delete(MAI_SESSION_COOKIE);
 }
 
-export async function getMaiUser(tokenInput?: string | null): Promise<MaiUser | null> {
+export async function getMaiUser(
+  tokenInput?: string | null
+): Promise<MaiUser | null> {
   const token = tokenInput || (await getMaiSessionToken());
-  if (!token) return null;
+  if (!token) {
+    return null;
+  }
 
   try {
     const res = await fetch(`${MAI_API_URL}/usage`, {
+      cache: "no-store",
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      cache: "no-store",
     });
 
     if (!res.ok) {
@@ -59,7 +64,9 @@ export async function getMaiUser(tokenInput?: string | null): Promise<MaiUser | 
     }
 
     const data = await res.json();
-    if (data.error) return null;
+    if (data.error) {
+      return null;
+    }
 
     // Récupération de l'id utilisateur (depuis data.id ou payload JWT)
     let userId: string | undefined = data.id ? String(data.id) : undefined;
@@ -68,9 +75,9 @@ export async function getMaiUser(tokenInput?: string | null): Promise<MaiUser | 
         const parts = token.split(".");
         if (parts.length === 3) {
           const payloadStr =
-            typeof Buffer !== "undefined"
-              ? Buffer.from(parts[1], "base64").toString("utf-8")
-              : atob(parts[1]);
+            typeof Buffer === "undefined"
+              ? atob(parts[1])
+              : Buffer.from(parts[1], "base64").toString("utf-8");
           const payload = JSON.parse(payloadStr);
           userId = payload.sub ? String(payload.sub) : undefined;
         }
@@ -78,15 +85,15 @@ export async function getMaiUser(tokenInput?: string | null): Promise<MaiUser | 
     }
 
     return {
-      id: userId || data.email,
-      username: data.username || "Utilisateur",
-      email: data.email || "",
-      phone: data.phone || "",
-      tier: data.tier || "Free",
       avatarUrl: data.avatarUrl || null,
-      tokensUsed: Number(data.tokensUsed || 0),
-      limit: Number(data.limit || 500000),
+      email: data.email || "",
+      id: userId || data.email,
+      limit: Number(data.limit || 500_000),
+      phone: data.phone || "",
       resetAt: data.resetAt,
+      tier: data.tier || "Free",
+      tokensUsed: Number(data.tokensUsed || 0),
+      username: data.username || "Utilisateur",
       weekStart: data.weekStart,
     };
   } catch (error) {

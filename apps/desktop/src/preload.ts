@@ -3,8 +3,6 @@ import { contextBridge, ipcRenderer } from "electron";
 // Expose une API minimale et sécurisée au renderer (si besoin futur)
 // L'app charge directement https://mai-officiel.vercel.app donc peu de bridge nécessaire
 contextBridge.exposeInMainWorld("maiDesktop", {
-  version: process.env.npm_package_version ?? "3.1.0",
-  platform: process.platform,
   // Permet au site de détecter qu'il tourne dans Electron si besoin
   isElectron: true,
   // Exemple d'IPC générique (non utilisé pour l'instant)
@@ -14,4 +12,6 @@ contextBridge.exposeInMainWorld("maiDesktop", {
       ipcRenderer.on(channel, (_event, ...args) => callback(...args));
     }
   },
+  platform: process.platform,
+  version: process.env.npm_package_version ?? "3.1.0",
 });

@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { MAI_API_URL } from "@/lib/constants";
 import { getMaiSessionToken } from "@/lib/auth/session";
+import { MAI_API_URL } from "@/lib/constants";
 
 export async function POST(req: NextRequest) {
   const token = await getMaiSessionToken();
@@ -12,12 +12,12 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
 
     const res = await fetch(`${MAI_API_URL}/v1/images/generations`, {
-      method: "POST",
+      body: JSON.stringify(body),
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(body),
+      method: "POST",
     });
 
     const data = await res.json();
@@ -28,6 +28,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(data);
   } catch (error) {
     console.error("Erreur API images/generations:", error);
-    return NextResponse.json({ error: "Erreur lors de la génération de l'image" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Erreur lors de la génération de l'image" },
+      { status: 500 }
+    );
   }
 }

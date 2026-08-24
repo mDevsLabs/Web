@@ -13,14 +13,16 @@ export default function AuthLayout({
           <div className="flex flex-col gap-4">
             <div className="mb-2 flex items-center gap-3">
               <Image
-                src="/logo.png"
                 alt="mAI Logo"
-                width={42}
-                height={42}
                 className="rounded-xl shadow-md"
+                height={42}
                 priority
+                src="/logo.png"
+                width={42}
               />
-              <span className="font-bold text-xl tracking-tight text-foreground">mAI Web</span>
+              <span className="font-bold text-xl tracking-tight text-foreground">
+                mAI Web
+              </span>
             </div>
             {children}
           </div>
@@ -29,7 +31,13 @@ export default function AuthLayout({
 
       <div className="hidden flex-1 flex-col overflow-hidden pl-12 xl:flex bg-sidebar/50">
         <div className="flex items-center gap-2 pt-8 text-[13px] text-muted-foreground">
-          <Image src="/logo.png" alt="mAI" width={18} height={18} className="rounded-sm" />
+          <Image
+            alt="mAI"
+            className="rounded-sm"
+            height={18}
+            src="/logo.png"
+            width={18}
+          />
           <span className="font-semibold text-foreground">mAI Plateforme</span>
           <span>• Intelligence Artificielle & APIs</span>
         </div>

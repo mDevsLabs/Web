@@ -1,11 +1,20 @@
 "use client";
 
-import { ChevronUp, FolderArchiveIcon, LogOutIcon, MoonIcon, SettingsIcon, SunIcon, UserIcon } from "lucide-react";
+import {
+  ChevronUp,
+  FolderArchiveIcon,
+  LogOutIcon,
+  MoonIcon,
+  SettingsIcon,
+  SunIcon,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useCallback, useState } from "react";
+import { toast } from "sonner";
+import { logoutAction } from "@/app/(auth)/actions";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,8 +28,6 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import type { MaiUser } from "@/lib/auth/session";
-import { logoutAction } from "@/app/(auth)/actions";
-import { toast } from "sonner";
 
 export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
   const router = useRouter();
@@ -61,12 +68,12 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
               <div className="relative size-7 shrink-0 overflow-hidden rounded-full ring-1 ring-border/60 bg-muted flex items-center justify-center">
                 {avatarUrl ? (
                   <Image
-                    src={avatarUrl}
                     alt={username}
-                    width={28}
-                    height={28}
                     className="size-full object-cover"
+                    height={28}
+                    src={avatarUrl}
                     unoptimized
+                    width={28}
                   />
                 ) : (
                   <div className="size-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-[12px] font-semibold text-white">
@@ -77,7 +84,10 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
 
               <div className="flex flex-col flex-1 min-w-0 text-left">
                 <div className="flex items-center gap-1.5">
-                  <span className="truncate text-[13px] font-medium" data-testid="user-username">
+                  <span
+                    className="truncate text-[13px] font-medium"
+                    data-testid="user-username"
+                  >
                     {username}
                   </span>
                   <span className="text-[10px] font-semibold px-1.5 py-0.2 rounded-full bg-primary/10 text-primary border border-primary/20">
@@ -94,15 +104,15 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
           </DropdownMenuTrigger>
 
           <DropdownMenuContent
+            align="start"
             className="w-60 rounded-xl border border-border/60 bg-card/95 backdrop-blur-xl shadow-[var(--shadow-float)] p-1.5"
             data-testid="user-nav-menu"
             side="top"
-            align="start"
           >
             <DropdownMenuItem asChild>
               <Link
-                href="/settings"
                 className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[13px] cursor-pointer hover:bg-sidebar-accent"
+                href="/settings"
               >
                 <SettingsIcon className="size-4 text-muted-foreground" />
                 <span>Paramètres du compte</span>
@@ -111,8 +121,8 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
 
             <DropdownMenuItem asChild>
               <Link
-                href="/library"
                 className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[13px] cursor-pointer hover:bg-sidebar-accent"
+                href="/library"
               >
                 <FolderArchiveIcon className="size-4 text-muted-foreground" />
                 <span>Bibliothèque de fichiers</span>
@@ -142,8 +152,8 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
 
             <DropdownMenuItem
               className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[13px] text-destructive cursor-pointer hover:bg-destructive/10 focus:text-destructive"
-              onSelect={handleLogout}
               disabled={isLoggingOut}
+              onSelect={handleLogout}
             >
               <LogOutIcon className="size-4" />
               <span>{isLoggingOut ? "Déconnexion..." : "Se déconnecter"}</span>

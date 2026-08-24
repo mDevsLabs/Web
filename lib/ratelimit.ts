@@ -22,10 +22,15 @@ function getClient() {
 const MAX_MESSAGES_PER_USER = 50;
 const MAX_MESSAGES_PER_IP = 20;
 
-export async function checkIpRateLimit(ip: string | undefined, userId?: string) {
+export async function checkIpRateLimit(
+  ip: string | undefined,
+  userId?: string
+) {
   // En dev, on rate-limit aussi si REDIS_URL présent (évite bypass)
   const shouldCheck = isProductionEnvironment || !!process.env.REDIS_URL;
-  if (!shouldCheck) return;
+  if (!shouldCheck) {
+    return;
+  }
 
   const redis = getClient();
   const hasRedis = !!redis?.isReady;
@@ -35,18 +40,27 @@ export async function checkIpRateLimit(ip: string | undefined, userId?: string) 
     try {
       const { getMessageCountByUserId } = await import("./db/queries");
       if (uid) {
-        const c = await getMessageCountByUserId({ id: uid, differenceInHours: 1 });
-        if (c >= MAX_MESSAGES_PER_USER) throw new ChatbotError("rate_limit:chat");
+        const c = await getMessageCountByUserId({
+          differenceInHours: 1,
+          id: uid,
+        });
+        if (c >= MAX_MESSAGES_PER_USER) {
+          throw new ChatbotError("rate_limit:chat");
+        }
       } else if (ipAddr && !uid) {
         // Sans user, on ne peut pas fallback efficacement, on laisse passer (mais IP Redis manquant = fail open limité)
       }
     } catch (e) {
-      if (e instanceof ChatbotError) throw e;
+      if (e instanceof ChatbotError) {
+        throw e;
+      }
     }
   };
 
   if (!hasRedis) {
-    if (userId) await fallbackDbCheck(userId);
+    if (userId) {
+      await fallbackDbCheck(userId);
+    }
     return;
   }
 
@@ -60,23 +74,82 @@ export async function checkIpRateLimit(ip: string | undefined, userId?: string) 
       multi.incr(`ip-rate-limit:${ip}`);
       multi.expire(`ip-rate-limit:${ip}`, TTL_SECONDS, "NX" as any);
     }
-    const results = (await multi.exec()) as unknown as (number | null)[];
+    const rawResults = (await multi.exec()) as unknown as unknown[];
 
-    // results order: user incr, user expire, ip incr, ip expire  OR ip only
-    // Simplified: check any count > limit
-    const counts = (results as unknown as (number | null)[]).filter((v) => typeof v === "number") as number[];
-    // First count corresponds to user if userId present
-    if (userId && counts[0] !== undefined && counts[0] > MAX_MESSAGES_PER_USER) {
+    // rawResults is array of [error, result] tuples OR flat results depending on redis client version.
+    // Robust parsing: flatten and extract numeric incr results in order added.
+    const incrResults: (number | null)[] = [];
+    if (Array.isArray(rawResults)) {
+      for (const entry of rawResults as any[]) {
+        if (Array.isArray(entry) && entry.length >= 2) {
+          // tuple [err, value]
+          const val = entry[1];
+          if (typeof val === "number") {
+            incrResults.push(val);
+          } else if (val === null) {
+            incrResults.push(null);
+          }
+          // "OK" or 0/1 from expire are ignored for counting
+          else if (typeof val === "string" && !Number.isNaN(Number(val))) {
+            incrResults.push(Number(val));
+          }
+        } else if (typeof entry === "number") {
+          incrResults.push(entry);
+        } else if (typeof entry === "string" && !Number.isNaN(Number(entry))) {
+          incrResults.push(Number(entry));
+        }
+      }
+    }
+
+    // incrResults order: [userIncr?, ipIncr?] — only incr values, expire results filtered out
+    // Fallback if parsing yielded nothing (older client returns flat numbers + "OK" strings)
+    let userCount: number | null = null;
+    let ipCount: number | null = null;
+    if (userId && ip) {
+      userCount = incrResults[0] ?? null;
+      ipCount = incrResults[1] ?? null;
+      // If only one numeric found but both expected, try alternative flat parsing from rawResults
+      if (userCount === null && ipCount === null && rawResults.length >= 2) {
+        const flatNums = (rawResults as any[]).filter(
+          (v) => typeof v === "number"
+        );
+        if (flatNums.length >= 2) {
+          userCount = flatNums[0];
+          ipCount = flatNums[1];
+        }
+      }
+    } else if (userId) {
+      userCount = incrResults[0] ?? null;
+      if (userCount === null) {
+        const flatNums = (rawResults as any[]).filter(
+          (v) => typeof v === "number"
+        );
+        userCount = flatNums[0] ?? null;
+      }
+    } else if (ip) {
+      ipCount = incrResults[0] ?? null;
+      if (ipCount === null) {
+        const flatNums = (rawResults as any[]).filter(
+          (v) => typeof v === "number"
+        );
+        ipCount = flatNums[0] ?? null;
+      }
+    }
+
+    if (typeof userCount === "number" && userCount > MAX_MESSAGES_PER_USER) {
       throw new ChatbotError("rate_limit:chat");
     }
-    const ipCount = userId ? counts[1] : counts[0];
     if (typeof ipCount === "number" && ipCount > MAX_MESSAGES_PER_IP) {
       throw new ChatbotError("rate_limit:chat");
     }
   } catch (error) {
-    if (error instanceof ChatbotError) throw error;
+    if (error instanceof ChatbotError) {
+      throw error;
+    }
     // Fallback DB en cas d'erreur Redis
-    if (userId) await fallbackDbCheck(userId);
+    if (userId) {
+      await fallbackDbCheck(userId);
+    }
   }
 }
 

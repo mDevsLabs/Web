@@ -78,7 +78,9 @@ function createIcoMultiFromPng(pngBuffer) {
   }
   // On concatène le header + entries + N * pngBuffer
   const pngs = Buffer.alloc(pngBuffer.length * count);
-  for (let i = 0; i < count; i++) pngBuffer.copy(pngs, i * pngBuffer.length);
+  for (let i = 0; i < count; i++) {
+    pngBuffer.copy(pngs, i * pngBuffer.length);
+  }
   return Buffer.concat([header, entries, pngs]);
 }
 
@@ -101,7 +103,9 @@ function createIcnsMultiFromPng(pngBuffer) {
   // Multi-entrées pour meilleure compatibilité Retina, mais même PNG
   const types = ["icp4", "icp5", "ic07", "ic08", "ic09"]; // 16,32,128,256,512
   let totalIconsLen = 0;
-  for (const _t of types) totalIconsLen += 8 + pngBuffer.length;
+  for (const _t of types) {
+    totalIconsLen += 8 + pngBuffer.length;
+  }
   const fileLen = 8 + totalIconsLen;
   const buf = Buffer.alloc(fileLen);
   buf.write("icns", 0, "ascii");
@@ -120,12 +124,20 @@ function createIcnsMultiFromPng(pngBuffer) {
 async function trySharpGeneration(pngBuffer) {
   try {
     const sharp = (await import("sharp")).default;
-    console.log("[icons] sharp détecté – génération multi-résolutions optimale");
+    console.log(
+      "[icons] sharp détecté – génération multi-résolutions optimale"
+    );
     // Génère des PNG redimensionnés propres puis embed
     const sizes = [16, 32, 48, 256, 512];
     const pngs = {};
     for (const s of sizes) {
-      pngs[s] = await sharp(pngBuffer).resize(s, s, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer();
+      pngs[s] = await sharp(pngBuffer)
+        .resize(s, s, {
+          background: { alpha: 0, b: 0, g: 0, r: 0 },
+          fit: "contain",
+        })
+        .png()
+        .toBuffer();
     }
     // ICO avec vraies tailles
     {
@@ -159,16 +171,20 @@ async function trySharpGeneration(pngBuffer) {
     // ICNS avec vraies tailles
     {
       const mapping = [
-        { type: "icp4", size: 16 },
-        { type: "icp5", size: 32 },
-        { type: "ic07", size: 128 },
-        { type: "ic08", size: 256 },
-        { type: "ic09", size: 512 },
+        { size: 16, type: "icp4" },
+        { size: 32, type: "icp5" },
+        { size: 128, type: "ic07" },
+        { size: 256, type: "ic08" },
+        { size: 512, type: "ic09" },
       ];
       // Génère 128 via sharp si pas déjà fait
-      if (!pngs[128]) pngs[128] = await sharp(pngBuffer).resize(128, 128).png().toBuffer();
+      if (!pngs[128]) {
+        pngs[128] = await sharp(pngBuffer).resize(128, 128).png().toBuffer();
+      }
       let total = 8;
-      for (const m of mapping) total += 8 + pngs[m.size].length;
+      for (const m of mapping) {
+        total += 8 + pngs[m.size].length;
+      }
       const buf = Buffer.alloc(total);
       buf.write("icns", 0);
       buf.writeUInt32BE(total, 4);
@@ -185,10 +201,12 @@ async function trySharpGeneration(pngBuffer) {
     }
     // PNG principal 512
     fs.writeFileSync(dstPng, pngs[512]);
-    console.log(`[icons] icon.png (512) généré via sharp`);
+    console.log("[icons] icon.png (512) généré via sharp");
     return true;
   } catch (e) {
-    if (e.code !== "ERR_MODULE_NOT_FOUND") console.warn("[icons] sharp non utilisé:", e.message);
+    if (e.code !== "ERR_MODULE_NOT_FOUND") {
+      console.warn("[icons] sharp non utilisé:", e.message);
+    }
     return false;
   }
 }
@@ -204,7 +222,9 @@ async function main() {
 
   // Copie PNG de base (on écrase après sharp si dispo)
   fs.copyFileSync(srcPng, dstPng);
-  console.log(`[icons] icon.png copié (${pngBuffer.length} bytes) -> ${dstPng}`);
+  console.log(
+    `[icons] icon.png copié (${pngBuffer.length} bytes) -> ${dstPng}`
+  );
 
   // Tente sharp d'abord
   const sharpOk = await trySharpGeneration(pngBuffer);
@@ -216,11 +236,15 @@ async function main() {
   // Fallback pure-JS : embed PNG direct
   const ico = createIcoMultiFromPng(pngBuffer);
   fs.writeFileSync(dstIco, ico);
-  console.log(`[icons] icon.ico généré (fallback embed PNG x${4}) -> ${dstIco} (${ico.length} bytes)`);
+  console.log(
+    `[icons] icon.ico généré (fallback embed PNG x${4}) -> ${dstIco} (${ico.length} bytes)`
+  );
 
   const icns = createIcnsMultiFromPng(pngBuffer);
   fs.writeFileSync(dstIcns, icns);
-  console.log(`[icons] icon.icns généré (fallback embed PNG x5) -> ${dstIcns} (${icns.length} bytes)`);
+  console.log(
+    `[icons] icon.icns généré (fallback embed PNG x5) -> ${dstIcns} (${icns.length} bytes)`
+  );
 }
 
 main().catch((e) => {

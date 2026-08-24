@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { MAI_API_URL } from "@/lib/constants";
 import { getMaiSessionToken } from "@/lib/auth/session";
+import { MAI_API_URL } from "@/lib/constants";
 
 // GET /api/settings : récupère le profil utilisateur, consommation IA et consommation API
 export async function GET() {
@@ -12,20 +12,20 @@ export async function GET() {
   try {
     const [usageRes, keysRes, imagesRes, cloudRes] = await Promise.all([
       fetch(`${MAI_API_URL}/usage`, {
-        headers: { Authorization: `Bearer ${token}` },
         cache: "no-store",
+        headers: { Authorization: `Bearer ${token}` },
       }),
       fetch(`${MAI_API_URL}/api-keys`, {
-        headers: { Authorization: `Bearer ${token}` },
         cache: "no-store",
+        headers: { Authorization: `Bearer ${token}` },
       }),
       fetch(`${MAI_API_URL}/v1/images/usage`, {
-        headers: { Authorization: `Bearer ${token}` },
         cache: "no-store",
+        headers: { Authorization: `Bearer ${token}` },
       }),
       fetch(`${MAI_API_URL}/cloud/storage`, {
-        headers: { Authorization: `Bearer ${token}` },
         cache: "no-store",
+        headers: { Authorization: `Bearer ${token}` },
       }),
     ]);
 
@@ -43,22 +43,36 @@ export async function GET() {
 
     const tierLimitsApi: Record<string, number> = {
       Free: 500,
+      Max: 5000,
       Plus: 1000,
       Pro: 2000,
-      Max: 5000,
     };
 
     const userTier = usageData?.tier || "Free";
     const apiLimit = tierLimitsApi[userTier] || 500;
 
     return NextResponse.json({
-      user: usageData,
       aiUsage: {
-        tokensUsed: Number(usageData?.tokensUsed || 0),
-        limit: Number(usageData?.limit || 500000),
+        limit: Number(usageData?.limit || 500_000),
         resetAt: usageData?.resetAt,
         tier: userTier,
+        tokensUsed: Number(usageData?.tokensUsed || 0),
       },
+      apiUsage: {
+        keysCount: keys.length,
+        limit: apiLimit,
+        requestCount: totalApiRequests,
+      },
+      cloudUsage: cloudData
+        ? {
+            bytesLimit: Number(cloudData.bytes_limit || 524_288_000),
+            bytesUsed: Number(cloudData.bytes_used || 0),
+            filesCount: Number(cloudData.files_count || 0),
+            overLimit: Boolean(cloudData.over_limit),
+            percentUsed: Number(cloudData.percent_used || 0),
+            tier: cloudData.tier || userTier,
+          }
+        : null,
       imagesUsage: imagesData
         ? {
             dailyLimit: Number(imagesData.dailyLimit || 3),
@@ -67,21 +81,7 @@ export async function GET() {
             usedToday: Number(imagesData.usedToday || 0),
           }
         : null,
-      cloudUsage: cloudData
-        ? {
-            bytesLimit: Number(cloudData.bytes_limit || 524288000),
-            bytesUsed: Number(cloudData.bytes_used || 0),
-            filesCount: Number(cloudData.files_count || 0),
-            overLimit: Boolean(cloudData.over_limit),
-            percentUsed: Number(cloudData.percent_used || 0),
-            tier: cloudData.tier || userTier,
-          }
-        : null,
-      apiUsage: {
-        keysCount: keys.length,
-        limit: apiLimit,
-        requestCount: totalApiRequests,
-      },
+      user: usageData,
     });
   } catch (error) {
     console.error("Erreur Settings GET:", error);
@@ -104,23 +104,29 @@ export async function POST(req: NextRequest) {
       const formData = await req.formData();
       const avatarFile = formData.get("avatar");
       if (!avatarFile || !(avatarFile instanceof File)) {
-        return NextResponse.json({ error: "Fichier d'avatar manquant" }, { status: 400 });
+        return NextResponse.json(
+          { error: "Fichier d'avatar manquant" },
+          { status: 400 }
+        );
       }
 
       const uploadFormData = new FormData();
       uploadFormData.append("avatar", avatarFile);
 
       const res = await fetch(`${MAI_API_URL}/upload-avatar`, {
-        method: "POST",
-        headers: { Authorization: `Bearer ${token}` },
         body: uploadFormData,
+        headers: { Authorization: `Bearer ${token}` },
+        method: "POST",
       });
 
       const data = await res.json();
       return NextResponse.json(data, { status: res.status });
     } catch (err) {
       console.error("Erreur upload avatar:", err);
-      return NextResponse.json({ error: "Erreur lors de l'upload de l'avatar" }, { status: 500 });
+      return NextResponse.json(
+        { error: "Erreur lors de l'upload de l'avatar" },
+        { status: 500 }
+      );
     }
   }
 
@@ -131,12 +137,12 @@ export async function POST(req: NextRequest) {
     // Vérification du code OTP de changement d'e-mail
     if (body.action === "verify_new_email") {
       const res = await fetch(`${MAI_API_URL}/verify-new-email`, {
-        method: "POST",
+        body: JSON.stringify({ code: body.code, email: body.email }),
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email: body.email, code: body.code }),
+        method: "POST",
       });
       const data = await res.json();
       return NextResponse.json(data, { status: res.status });
@@ -144,18 +150,21 @@ export async function POST(req: NextRequest) {
 
     // Mise à jour classique du profil
     const res = await fetch(`${MAI_API_URL}/update-profile`, {
-      method: "POST",
+      body: JSON.stringify(body),
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(body),
+      method: "POST",
     });
 
     const data = await res.json();
     return NextResponse.json(data, { status: res.status });
   } catch (err) {
     console.error("Erreur update profil:", err);
-    return NextResponse.json({ error: "Erreur serveur lors de la mise à jour" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Erreur serveur lors de la mise à jour" },
+      { status: 500 }
+    );
   }
 }

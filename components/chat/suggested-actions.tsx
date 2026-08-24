@@ -52,20 +52,25 @@ function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
   );
 
   const displayedList =
-    currentSuggestions.length > 0 ? currentSuggestions : suggestions.slice(0, 4);
+    currentSuggestions.length > 0
+      ? currentSuggestions
+      : suggestions.slice(0, 4);
 
   return (
-    <div className="flex flex-col gap-2.5 w-full" data-testid="suggested-actions">
+    <div
+      className="flex flex-col gap-2.5 w-full"
+      data-testid="suggested-actions"
+    >
       <div className="flex items-center justify-between px-1">
         <div className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground/80">
           <SparklesIcon className="size-3.5 text-primary/70" />
           <span>Suggestions</span>
         </div>
         <button
-          type="button"
-          onClick={handleRefresh}
           className="flex items-center gap-1 text-[11px] text-muted-foreground/60 hover:text-foreground transition-colors p-1 rounded-md hover:bg-muted/40 cursor-pointer"
+          onClick={handleRefresh}
           title="Nouvelles suggestions"
+          type="button"
         >
           <RotateCwIcon
             className={`size-3 transition-transform ${isRotating ? "animate-spin" : ""}`}
@@ -74,9 +79,7 @@ function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
         </button>
       </div>
 
-      <div
-        className="flex w-full gap-2.5 overflow-x-auto pb-1 sm:grid sm:grid-cols-2 sm:overflow-visible no-scrollbar"
-      >
+      <div className="flex w-full gap-2.5 overflow-x-auto pb-1 sm:grid sm:grid-cols-2 sm:overflow-visible no-scrollbar">
         <AnimatePresence mode="popLayout">
           {displayedList.map((suggestedAction, index) => (
             <motion.div

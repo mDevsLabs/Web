@@ -1,26 +1,39 @@
+import postgres from "postgres";
 import { z } from "zod";
 import { getMaiUser } from "@/lib/auth/session";
-import { getDb } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
-import postgres from "postgres";
 
 function getPostgres() {
   const url = process.env.DATABASE_URL || process.env.POSTGRES_URL;
-  if (!url) throw new Error("DATABASE_URL missing");
+  if (!url) {
+    throw new Error("DATABASE_URL missing");
+  }
   return postgres(url, { prepare: false });
 }
 
 export async function GET() {
   const user = await getMaiUser();
-  if (!user) return new ChatbotError("unauthorized:chat").toResponse();
+  if (!user) {
+    return new ChatbotError("unauthorized:chat").toResponse();
+  }
   const userId = user.id || user.email;
   try {
     const sql = getPostgres();
-    const rows = await sql`SELECT custom_instructions, custom_instructions_enabled, default_temperature, default_top_p FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
+    const rows =
+      await sql`SELECT custom_instructions, custom_instructions_enabled, default_temperature, default_top_p, default_ai_mode FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
     await sql.end();
-    if (rows.length === 0) return Response.json({ customInstructions: "", enabled: false, temperature: 0.7 });
+    if (rows.length === 0) {
+      return Response.json({
+        customInstructions: "",
+        defaultMode: "standard",
+        enabled: false,
+        temperature: 0.7,
+        topP: 0.9,
+      });
+    }
     return Response.json({
       customInstructions: rows[0].custom_instructions || "",
+      defaultMode: rows[0].default_ai_mode || "standard",
       enabled: rows[0].custom_instructions_enabled || false,
       temperature: rows[0].default_temperature ?? 0.7,
       topP: rows[0].default_top_p ?? 0.9,
@@ -33,6 +46,9 @@ export async function GET() {
 
 const schema = z.object({
   customInstructions: z.string().max(4000).optional(),
+  defaultMode: z
+    .enum(["standard", "creative", "precise", "code", "reasoning"])
+    .optional(),
   enabled: z.boolean().optional(),
   temperature: z.number().min(0).max(2).optional(),
   topP: z.number().min(0).max(1).optional(),
@@ -40,7 +56,9 @@ const schema = z.object({
 
 export async function POST(request: Request) {
   const user = await getMaiUser();
-  if (!user) return new ChatbotError("unauthorized:chat").toResponse();
+  if (!user) {
+    return new ChatbotError("unauthorized:chat").toResponse();
+  }
   const userId = user.id || user.email;
   try {
     const body = await request.json();
@@ -66,6 +84,10 @@ export async function POST(request: Request) {
       sets.push(`default_top_p = $${idx++}`);
       values.push(parsed.topP);
     }
+    if (parsed.defaultMode !== undefined) {
+      sets.push(`default_ai_mode = $${idx++}`);
+      values.push(parsed.defaultMode);
+    }
     if (sets.length === 0) {
       await sql.end();
       return Response.json({ success: true });
@@ -78,7 +100,9 @@ export async function POST(request: Request) {
     return Response.json({ success: true });
   } catch (e) {
     console.error("POST preferences error", e);
-    if (e instanceof z.ZodError) return new ChatbotError("bad_request:api", e.message).toResponse();
+    if (e instanceof z.ZodError) {
+      return new ChatbotError("bad_request:api", e.message).toResponse();
+    }
     return new ChatbotError("bad_request:database").toResponse();
   }
 }

@@ -4,7 +4,6 @@ import { generateText, type UIMessage } from "ai";
 import { cookies } from "next/headers";
 import { auth } from "@/app/(auth)/auth";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
-import { titleModel } from "@/lib/ai/models";
 import { titlePrompt } from "@/lib/ai/prompts";
 import { getTitleModel } from "@/lib/ai/providers";
 import {
@@ -26,7 +25,7 @@ export async function generateTitleFromUserMessage({
   message: UIMessage;
 }) {
   const text = getTextFromMessage(message);
-  return generateTitleFromConversation({ userText: text, assistantText: "" });
+  return generateTitleFromConversation({ assistantText: "", userText: text });
 }
 
 export async function generateTitleFromConversation({
@@ -37,8 +36,13 @@ export async function generateTitleFromConversation({
   assistantText: string;
 }) {
   try {
-    const { getMaiSessionToken, getMaiUser } = await import("@/lib/auth/session");
-    const [token, user] = await Promise.all([getMaiSessionToken(), getMaiUser()]);
+    const { getMaiSessionToken, getMaiUser } = await import(
+      "@/lib/auth/session"
+    );
+    const [token, user] = await Promise.all([
+      getMaiSessionToken(),
+      getMaiUser(),
+    ]);
     // Construire le prompt avec user + 500 chars de l'IA si disponible
     const combined = assistantText
       ? `User: ${userText}\nAssistant (début): ${assistantText}`

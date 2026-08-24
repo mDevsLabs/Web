@@ -39,7 +39,8 @@ const visibilities: Array<{
     label: "Privé",
   },
   {
-    description: "Toute personne disposant du lien peut consulter cette discussion",
+    description:
+      "Toute personne disposant du lien peut consulter cette discussion",
     icon: <GlobeIcon />,
     id: "public",
     label: "Public",
@@ -125,7 +126,10 @@ export function VisibilitySelector({
         </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent align="start" className="min-w-[280px] rounded-xl p-1.5 border-border/60 bg-card/95 backdrop-blur-xl shadow-[var(--shadow-float)]">
+      <DropdownMenuContent
+        align="start"
+        className="min-w-[280px] rounded-xl p-1.5 border-border/60 bg-card/95 backdrop-blur-xl shadow-[var(--shadow-float)]"
+      >
         {visibilities.map((visibility) => (
           <VisibilitySelectorItem
             key={visibility.id}

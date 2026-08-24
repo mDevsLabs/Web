@@ -1,14 +1,17 @@
 "use client";
 
-import Image from "next/image";
+import { ArrowLeftIcon, Loader2Icon, ShieldCheckIcon } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ArrowLeftIcon, Loader2Icon, ShieldCheckIcon } from "lucide-react";
+import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { toast } from "sonner";
-import { registerAction, verifyRegisterAction, resendCodeAction } from "../actions";
+import {
+  registerAction,
+  resendCodeAction,
+  verifyRegisterAction,
+} from "../actions";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -65,7 +68,7 @@ export default function RegisterPage() {
     setStep("otp");
     setCountdown(60);
     setCanResend(false);
-    toast.success("Code de vérification envoyé par e-mail ! ✉️");
+    toast.success("Code de vérification envoyé par e-mail !");
   };
 
   // Étape 2 : Validation du code OTP
@@ -77,7 +80,12 @@ export default function RegisterPage() {
     }
 
     setIsLoading(true);
-    const res = await verifyRegisterAction(email.trim(), username.trim(), password, otpCode.trim());
+    const res = await verifyRegisterAction(
+      email.trim(),
+      username.trim(),
+      password,
+      otpCode.trim()
+    );
     setIsLoading(false);
 
     if (!res.success) {
@@ -85,14 +93,16 @@ export default function RegisterPage() {
       return;
     }
 
-    toast.success("Compte mAI Web créé avec succès ! Bienvenue 🚀");
+    toast.success("Compte mAI Web créé avec succès ! Bienvenue");
     router.push("/");
     router.refresh();
   };
 
   // Renvoi du code
   const handleResend = async () => {
-    if (!canResend) return;
+    if (!canResend) {
+      return;
+    }
     setIsLoading(true);
     const res = await resendCodeAction(email.trim(), "register");
     setIsLoading(false);
@@ -119,60 +129,69 @@ export default function RegisterPage() {
             </p>
           </div>
 
-          <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
+          <form className="flex flex-col gap-4" onSubmit={handleFormSubmit}>
             <div className="flex flex-col gap-2">
-              <Label className="text-xs font-medium text-muted-foreground" htmlFor="username">
+              <Label
+                className="text-xs font-medium text-muted-foreground"
+                htmlFor="username"
+              >
                 Nom d'utilisateur
               </Label>
               <Input
-                id="username"
-                type="text"
-                placeholder="Mathias_Tss"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className="h-10 pl-3 rounded-lg border-border/60 bg-muted/40 text-sm focus:bg-background"
                 autoComplete="username"
                 autoFocus
+                className="h-10 pl-3 rounded-lg border-border/60 bg-muted/40 text-sm focus:bg-background"
+                id="username"
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Mathias_Tss"
                 required
+                type="text"
+                value={username}
               />
             </div>
 
             <div className="flex flex-col gap-2">
-              <Label className="text-xs font-medium text-muted-foreground" htmlFor="email">
+              <Label
+                className="text-xs font-medium text-muted-foreground"
+                htmlFor="email"
+              >
                 Adresse e-mail
               </Label>
               <Input
-                id="email"
-                type="email"
-                placeholder="nom@exemple.fr"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="h-10 pl-3 rounded-lg border-border/60 bg-muted/40 text-sm focus:bg-background"
                 autoComplete="email"
+                className="h-10 pl-3 rounded-lg border-border/60 bg-muted/40 text-sm focus:bg-background"
+                id="email"
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="nom@exemple.fr"
                 required
+                type="email"
+                value={email}
               />
             </div>
 
             <div className="flex flex-col gap-2">
-              <Label className="text-xs font-medium text-muted-foreground" htmlFor="password">
+              <Label
+                className="text-xs font-medium text-muted-foreground"
+                htmlFor="password"
+              >
                 Mot de passe (6 caractères min.)
               </Label>
               <Input
-                id="password"
-                type="password"
-                placeholder="••••••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="h-10 pl-3 rounded-lg border-border/60 bg-muted/40 text-sm focus:bg-background"
                 autoComplete="new-password"
+                className="h-10 pl-3 rounded-lg border-border/60 bg-muted/40 text-sm focus:bg-background"
+                id="password"
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="••••••••••••"
                 required
+                type="password"
+                value={password}
               />
             </div>
 
             <button
-              type="submit"
-              disabled={isLoading}
               className="mt-2 h-10 w-full rounded-lg bg-foreground text-background font-medium text-sm transition-opacity hover:opacity-90 disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
+              disabled={isLoading}
+              type="submit"
             >
               {isLoading ? (
                 <>
@@ -187,8 +206,8 @@ export default function RegisterPage() {
             <p className="text-center text-[13px] text-muted-foreground mt-2">
               Vous avez déjà un compte ?{" "}
               <Link
-                href="/login"
                 className="font-medium text-foreground underline-offset-4 hover:underline"
+                href="/login"
               >
                 Se connecter
               </Link>
@@ -206,32 +225,37 @@ export default function RegisterPage() {
               Vérifiez votre e-mail
             </h1>
             <p className="text-sm text-muted-foreground mt-1">
-              Entrez le code à 6 chiffres envoyé à <strong className="text-foreground">{email}</strong> pour activer votre compte.
+              Entrez le code à 6 chiffres envoyé à{" "}
+              <strong className="text-foreground">{email}</strong> pour activer
+              votre compte.
             </p>
           </div>
 
-          <form onSubmit={handleOtpSubmit} className="flex flex-col gap-4">
+          <form className="flex flex-col gap-4" onSubmit={handleOtpSubmit}>
             <div className="flex flex-col gap-2">
-              <Label className="text-xs font-medium text-muted-foreground" htmlFor="otpCode">
+              <Label
+                className="text-xs font-medium text-muted-foreground"
+                htmlFor="otpCode"
+              >
                 Code de vérification (6 chiffres)
               </Label>
               <Input
-                id="otpCode"
-                type="text"
-                maxLength={8}
-                placeholder="123456"
-                value={otpCode}
-                onChange={(e) => setOtpCode(e.target.value)}
-                className="h-12 text-center text-xl font-mono tracking-[0.3em] font-bold rounded-lg border-border/60 bg-muted/40 focus:bg-background"
                 autoFocus
+                className="h-12 text-center text-xl font-mono tracking-[0.3em] font-bold rounded-lg border-border/60 bg-muted/40 focus:bg-background"
+                id="otpCode"
+                maxLength={8}
+                onChange={(e) => setOtpCode(e.target.value)}
+                placeholder="123456"
                 required
+                type="text"
+                value={otpCode}
               />
             </div>
 
             <button
-              type="submit"
-              disabled={isLoading}
               className="h-10 w-full rounded-lg bg-foreground text-background font-medium text-sm transition-opacity hover:opacity-90 disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
+              disabled={isLoading}
+              type="submit"
             >
               {isLoading ? (
                 <>
@@ -245,19 +269,19 @@ export default function RegisterPage() {
 
             <div className="flex items-center justify-between text-[13px] text-muted-foreground pt-2">
               <button
-                type="button"
-                onClick={() => setStep("form")}
                 className="flex items-center gap-1 hover:text-foreground cursor-pointer"
+                onClick={() => setStep("form")}
+                type="button"
               >
                 <ArrowLeftIcon className="size-3.5" />
                 Retour
               </button>
 
               <button
-                type="button"
-                onClick={handleResend}
-                disabled={!canResend || isLoading}
                 className="hover:text-foreground disabled:opacity-50 cursor-pointer"
+                disabled={!canResend || isLoading}
+                onClick={handleResend}
+                type="button"
               >
                 {canResend ? "Renvoyer le code" : `Renvoyer (${countdown}s)`}
               </button>

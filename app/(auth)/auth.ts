@@ -4,16 +4,18 @@ export type UserType = "regular";
 
 export async function auth() {
   const user = await getMaiUser();
-  if (!user) return null;
+  if (!user) {
+    return null;
+  }
 
   return {
     user: {
-      id: user.id || user.email,
       email: user.email,
-      name: user.username,
+      id: user.id || user.email,
       image: user.avatarUrl,
-      type: "regular" as UserType,
+      name: user.username,
       tier: user.tier,
+      type: "regular" as UserType,
     },
   };
 }

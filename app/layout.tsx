@@ -7,41 +7,44 @@ import "./globals.css";
 import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
+  description:
+    "mAI Web — Votre assistant d'intelligence artificielle tout-en-un.",
+  icons: {
+    apple: "/logo.png",
+    icon: [
+      { href: "/logo.png", url: "/logo.png" },
+      { href: "/favicon.ico", url: "/favicon.ico" },
+      { href: "/favicon.png", url: "/favicon.png" },
+    ],
+    shortcut: "/logo.png",
+  },
+  metadataBase: new URL("https://mai.val.run"),
+  openGraph: {
+    description:
+      "mAI Web — Votre assistant d'intelligence artificielle tout-en-un.",
+    images: [
+      {
+        alt: "mAI Web Logo",
+        height: 512,
+        url: "/logo.png",
+        width: 512,
+      },
+    ],
+    locale: "fr_FR",
+    siteName: "mAI Web",
+    title: "mAI Web",
+    type: "website",
+  },
   title: {
     default: "mAI Web",
     template: "%s | mAI Web",
   },
-  description: "mAI Web — Votre assistant d'intelligence artificielle tout-en-un.",
-  metadataBase: new URL("https://mai.val.run"),
-  icons: {
-    icon: [
-      { url: "/logo.png", href: "/logo.png" },
-      { url: "/favicon.ico", href: "/favicon.ico" },
-      { url: "/favicon.png", href: "/favicon.png" },
-    ],
-    apple: "/logo.png",
-    shortcut: "/logo.png",
-  },
-  openGraph: {
-    title: "mAI Web",
-    description: "mAI Web — Votre assistant d'intelligence artificielle tout-en-un.",
-    siteName: "mAI Web",
-    images: [
-      {
-        url: "/logo.png",
-        width: 512,
-        height: 512,
-        alt: "mAI Web Logo",
-      },
-    ],
-    locale: "fr_FR",
-    type: "website",
-  },
   twitter: {
     card: "summary",
-    title: "mAI Web",
-    description: "mAI Web — Votre assistant d'intelligence artificielle tout-en-un.",
+    description:
+      "mAI Web — Votre assistant d'intelligence artificielle tout-en-un.",
     images: ["/logo.png"],
+    title: "mAI Web",
   },
 };
 

@@ -3,13 +3,15 @@
 import { useCallback, useEffect, useState } from "react";
 import {
   AI_MODES,
-  DEFAULT_AI_MODE,
   type AIModeId,
+  DEFAULT_AI_MODE,
   isValidAIModeId,
 } from "@/lib/ai/modes";
 
 function getCookie(name: string): string | null {
-  if (typeof document === "undefined") return null;
+  if (typeof document === "undefined") {
+    return null;
+  }
   const match = document.cookie
     .split("; ")
     .find((row) => row.startsWith(`${name}=`));
@@ -24,7 +26,9 @@ function setCookie(name: string, value: string) {
 export function useAIMode() {
   const [mode, setModeState] = useState<AIModeId>(() => {
     const c = getCookie("ai-mode");
-    if (c && isValidAIModeId(c)) return c;
+    if (c && isValidAIModeId(c)) {
+      return c;
+    }
     return DEFAULT_AI_MODE;
   });
 
@@ -36,7 +40,9 @@ export function useAIMode() {
   }, [mode]);
 
   const setMode = useCallback((id: AIModeId) => {
-    if (!isValidAIModeId(id)) return;
+    if (!isValidAIModeId(id)) {
+      return;
+    }
     setModeState(id);
     setCookie("ai-mode", id);
   }, []);

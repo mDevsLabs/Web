@@ -2,26 +2,33 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { CodeEditor } from "@/components/chat/code-editor";
 import { Artifact } from "@/components/chat/create-artifact";
-import { CopyIcon, RedoIcon, UndoIcon, PlayIcon } from "@/components/chat/icons";
+import {
+  CopyIcon,
+  PlayIcon,
+  RedoIcon,
+  UndoIcon,
+} from "@/components/chat/icons";
 
 const HtmlPreview = ({ content }: { content: string }) => {
   const [key, setKey] = useState(0);
   return (
     <div className="flex flex-col gap-2 h-full">
       <div className="flex items-center justify-between px-1">
-        <span className="text-xs font-medium text-muted-foreground">Aperçu Live</span>
+        <span className="text-xs font-medium text-muted-foreground">
+          Aperçu Live
+        </span>
         <button
-          onClick={() => setKey((k) => k + 1)}
           className="text-xs px-2 py-1 rounded border hover:bg-muted"
+          onClick={() => setKey((k) => k + 1)}
         >
           Recharger
         </button>
       </div>
       <iframe
-        key={key}
-        srcDoc={content}
-        sandbox="allow-scripts allow-same-origin"
         className="w-full flex-1 min-h-[300px] rounded border bg-white"
+        key={key}
+        sandbox="allow-scripts allow-same-origin"
+        srcDoc={content}
         title="HTML Preview"
       />
     </div>
@@ -29,46 +36,6 @@ const HtmlPreview = ({ content }: { content: string }) => {
 };
 
 export const htmlArtifact = new Artifact<"html">({
-  kind: "html",
-  description: "Génération de pages HTML interactives avec aperçu live.",
-  content: function HtmlContent(props) {
-    const { content, mode, isCurrentVersion, getDocumentContentById, currentVersionIndex } = props as any;
-    const [view, setView] = useState<"split" | "code" | "preview">("split");
-
-    if (mode === "diff") {
-      const oldContent = getDocumentContentById(currentVersionIndex - 1) ?? "";
-      const newContent = getDocumentContentById(currentVersionIndex) ?? "";
-      // Simple diff fallback: show both
-      return (
-        <div className="p-4 grid grid-cols-2 gap-4 text-xs">
-          <pre className="whitespace-pre-wrap bg-muted p-2 rounded overflow-auto">{oldContent.slice(0, 2000)}</pre>
-          <pre className="whitespace-pre-wrap bg-primary/5 p-2 rounded overflow-auto">{newContent.slice(0, 2000)}</pre>
-        </div>
-      );
-    }
-
-    return (
-      <div className="flex flex-col h-full p-2 gap-2">
-        <div className="flex gap-1 border-b pb-2">
-          <button onClick={() => setView("split")} className={`px-3 py-1 text-xs rounded ${view === "split" ? "bg-primary text-primary-foreground" : "bg-muted"}`}>Split</button>
-          <button onClick={() => setView("code")} className={`px-3 py-1 text-xs rounded ${view === "code" ? "bg-primary text-primary-foreground" : "bg-muted"}`}>Code</button>
-          <button onClick={() => setView("preview")} className={`px-3 py-1 text-xs rounded ${view === "preview" ? "bg-primary text-primary-foreground" : "bg-muted"}`}>Preview</button>
-        </div>
-        <div className={`flex-1 grid gap-2 ${view === "split" ? "grid-cols-2" : "grid-cols-1"} min-h-[400px]`}>
-          {(view === "split" || view === "code") && (
-            <div className="border rounded overflow-hidden">
-              <CodeEditor {...props} content={isCurrentVersion ? content : getDocumentContentById(currentVersionIndex)} />
-            </div>
-          )}
-          {(view === "split" || view === "preview") && (
-            <div className="border rounded p-2 bg-white overflow-hidden flex flex-col">
-              <HtmlPreview content={isCurrentVersion ? content : getDocumentContentById(currentVersionIndex)} />
-            </div>
-          )}
-        </div>
-      </div>
-    );
-  },
   actions: [
     {
       description: "Copy HTML",
@@ -92,6 +59,101 @@ export const htmlArtifact = new Artifact<"html">({
       onClick: ({ handleVersionChange }) => handleVersionChange("next"),
     },
   ],
+  content(props) {
+    const {
+      content,
+      mode,
+      isCurrentVersion,
+      getDocumentContentById,
+      currentVersionIndex,
+    } = props as any;
+    const [view, setView] = useState<"split" | "code" | "preview">("split");
+
+    if (mode === "diff") {
+      const oldContent = getDocumentContentById(currentVersionIndex - 1) ?? "";
+      const newContent = getDocumentContentById(currentVersionIndex) ?? "";
+      // Simple diff fallback: show both
+      return (
+        <div className="p-4 grid grid-cols-2 gap-4 text-xs">
+          <pre className="whitespace-pre-wrap bg-muted p-2 rounded overflow-auto">
+            {oldContent.slice(0, 2000)}
+          </pre>
+          <pre className="whitespace-pre-wrap bg-primary/5 p-2 rounded overflow-auto">
+            {newContent.slice(0, 2000)}
+          </pre>
+        </div>
+      );
+    }
+
+    return (
+      <div className="flex flex-col h-full p-2 gap-2">
+        <div className="flex gap-1 border-b pb-2">
+          <button
+            className={`px-3 py-1 text-xs rounded ${view === "split" ? "bg-primary text-primary-foreground" : "bg-muted"}`}
+            onClick={() => setView("split")}
+          >
+            Split
+          </button>
+          <button
+            className={`px-3 py-1 text-xs rounded ${view === "code" ? "bg-primary text-primary-foreground" : "bg-muted"}`}
+            onClick={() => setView("code")}
+          >
+            Code
+          </button>
+          <button
+            className={`px-3 py-1 text-xs rounded ${view === "preview" ? "bg-primary text-primary-foreground" : "bg-muted"}`}
+            onClick={() => setView("preview")}
+          >
+            Preview
+          </button>
+        </div>
+        <div
+          className={`flex-1 grid gap-2 ${view === "split" ? "grid-cols-2" : "grid-cols-1"} min-h-[400px]`}
+        >
+          {(view === "split" || view === "code") && (
+            <div className="border rounded overflow-hidden">
+              <CodeEditor
+                {...props}
+                content={
+                  isCurrentVersion
+                    ? content
+                    : getDocumentContentById(currentVersionIndex)
+                }
+              />
+            </div>
+          )}
+          {(view === "split" || view === "preview") && (
+            <div className="border rounded p-2 bg-white overflow-hidden flex flex-col">
+              <HtmlPreview
+                content={
+                  isCurrentVersion
+                    ? content
+                    : getDocumentContentById(currentVersionIndex)
+                }
+              />
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  },
+  description: "Génération de pages HTML interactives avec aperçu live.",
+  kind: "html",
+  onStreamPart: ({ streamPart, setArtifact }: any) => {
+    if ((streamPart as any).type === "data-htmlDelta") {
+      setArtifact((draft: any) => ({
+        ...draft,
+        content: (streamPart as any).data as string,
+        isVisible:
+          draft.status === "streaming" &&
+          draft.content.length > 200 &&
+          draft.content.length < 300
+            ? true
+            : draft.isVisible,
+        status: "streaming",
+      }));
+    }
+  },
   toolbar: [
     {
       description: "Preview in new tab",
@@ -104,14 +166,4 @@ export const htmlArtifact = new Artifact<"html">({
       },
     },
   ],
-  onStreamPart: ({ streamPart, setArtifact }: any) => {
-    if ((streamPart as any).type === "data-htmlDelta") {
-      setArtifact((draft: any) => ({
-        ...draft,
-        content: (streamPart as any).data as string,
-        isVisible: draft.status === "streaming" && draft.content.length > 200 && draft.content.length < 300 ? true : draft.isVisible,
-        status: "streaming",
-      }));
-    }
-  },
 });

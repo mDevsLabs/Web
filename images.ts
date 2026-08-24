@@ -1,11 +1,17 @@
 import type { Hono } from "npm:hono@4";
-import { extractToken, getDb, getTierDailyImageLimit, getTierImageRequestCost, verifyToken } from "./config.ts";
+import {
+  extractToken,
+  getDb,
+  getTierDailyImageLimit,
+  getTierImageRequestCost,
+  verifyToken,
+} from "./config.ts";
 
 export interface ImageModelItem {
+  created: number;
+  description: string;
   id: string;
   name: string;
-  description: string;
-  created: number;
 }
 
 export function getCometApiKey(): string {
@@ -23,52 +29,58 @@ export function getCometApiKey(): string {
  */
 const FALLBACK_IMAGE_MODELS = [
   {
+    created: Math.floor(Date.now() / 1000) - 86_400 * 30,
+    description:
+      "Modèle de génération d'images ultra-rapide en 4 étapes par Black Forest Labs (Text-to-Image).",
+    features: ["text-to-image"],
     id: "black-forest-labs/flux-1-schnell",
+    model_type: "image",
     name: "FLUX.1 Schnell",
-    description: "Modèle de génération d'images ultra-rapide en 4 étapes par Black Forest Labs (Text-to-Image).",
-    created: Math.floor(Date.now() / 1000) - 86400 * 30,
-    model_type: "image",
-    features: ["text-to-image"],
   },
   {
+    created: Math.floor(Date.now() / 1000) - 86_400 * 30,
+    description:
+      "Modèle phare de haute précision pour la synthèse d'images photoréalistes et artistiques (Text-to-Image).",
+    features: ["text-to-image"],
     id: "black-forest-labs/flux-1-dev",
+    model_type: "image",
     name: "FLUX.1 Dev",
-    description: "Modèle phare de haute précision pour la synthèse d'images photoréalistes et artistiques (Text-to-Image).",
-    created: Math.floor(Date.now() / 1000) - 86400 * 30,
-    model_type: "image",
-    features: ["text-to-image"],
   },
   {
+    created: Math.floor(Date.now() / 1000) - 86_400 * 15,
+    description:
+      "Le sommet de la qualité visuelle, cohérence typographique et détails avancés par Black Forest Labs.",
+    features: ["text-to-image"],
     id: "black-forest-labs/flux-1.1-pro",
+    model_type: "image",
     name: "FLUX 1.1 Pro",
-    description: "Le sommet de la qualité visuelle, cohérence typographique et détails avancés par Black Forest Labs.",
-    created: Math.floor(Date.now() / 1000) - 86400 * 15,
-    model_type: "image",
-    features: ["text-to-image"],
   },
   {
-    id: "stabilityai/stable-diffusion-3.5-large",
-    name: "Stable Diffusion 3.5 Large",
-    description: "Modèle de pointe de 8 milliards de paramètres de Stability AI pour une variété stylistique maximale.",
-    created: Math.floor(Date.now() / 1000) - 86400 * 20,
-    model_type: "image",
+    created: Math.floor(Date.now() / 1000) - 86_400 * 20,
+    description:
+      "Modèle de pointe de 8 milliards de paramètres de Stability AI pour une variété stylistique maximale.",
     features: ["text-to-image", "image-to-image"],
+    id: "stabilityai/stable-diffusion-3.5-large",
+    model_type: "image",
+    name: "Stable Diffusion 3.5 Large",
   },
   {
+    created: Math.floor(Date.now() / 1000) - 86_400 * 60,
+    description:
+      "Génération stylisée haut de gamme avec esthétique et prompt comprehension avancée.",
+    features: ["text-to-image"],
     id: "midjourney/v6",
-    name: "Midjourney v6",
-    description: "Génération stylisée haut de gamme avec esthétique et prompt comprehension avancée.",
-    created: Math.floor(Date.now() / 1000) - 86400 * 60,
     model_type: "image",
-    features: ["text-to-image"],
+    name: "Midjourney v6",
   },
   {
-    id: "recraft-ai/recraft-v3",
-    name: "Recraft V3",
-    description: "Génération vectorielle et matricielle spécialisée dans les logos, illustrations et design graphique.",
-    created: Math.floor(Date.now() / 1000) - 86400 * 10,
-    model_type: "image",
+    created: Math.floor(Date.now() / 1000) - 86_400 * 10,
+    description:
+      "Génération vectorielle et matricielle spécialisée dans les logos, illustrations et design graphique.",
     features: ["text-to-image"],
+    id: "recraft-ai/recraft-v3",
+    model_type: "image",
+    name: "Recraft V3",
   },
 ];
 
@@ -79,7 +91,9 @@ export function registerImageRoutes(app: Hono) {
   app.get("/v1/models/images", async (c) => {
     const userPlan = c.get("userPlan");
     const apiKey = c.get("apiKey");
-    const planStr = String(userPlan || "Free").toLowerCase().trim();
+    const planStr = String(userPlan || "Free")
+      .toLowerCase()
+      .trim();
     const isPaidPlan = ["plus", "pro", "max"].includes(planStr);
     const shouldFilterFreeOnly = !isPaidPlan;
 
@@ -108,8 +122,15 @@ export function registerImageRoutes(app: Hono) {
 
       // 1. Premier filtre : model_type === 'image'
       let imageModels = rawModels.filter((m) => {
-        const mType = (m.model_type || m.type || m.architecture?.modality || "").toLowerCase();
-        const features = (m.features || m.supported_features || []).map((f: string) => f.toLowerCase());
+        const mType = (
+          m.model_type ||
+          m.type ||
+          m.architecture?.modality ||
+          ""
+        ).toLowerCase();
+        const features = (m.features || m.supported_features || []).map(
+          (f: string) => f.toLowerCase()
+        );
         const isImg =
           mType.includes("image") ||
           features.includes("text-to-image") ||
@@ -132,8 +153,14 @@ export function registerImageRoutes(app: Hono) {
       // 3. Renvoyer les données : id, description, name, created et features
       const formatted = imageModels.map((m) => ({
         created: m.created || Math.floor(Date.now() / 1000),
-        description: m.description || `Modèle de génération d'images ${m.name || m.id}.`,
-        features: m.features || m.supported_features || (m.id?.toLowerCase().includes("diffusion") ? ["text-to-image", "image-to-image"] : ["text-to-image"]),
+        description:
+          m.description || `Modèle de génération d'images ${m.name || m.id}.`,
+        features:
+          m.features ||
+          m.supported_features ||
+          (m.id?.toLowerCase().includes("diffusion")
+            ? ["text-to-image", "image-to-image"]
+            : ["text-to-image"]),
         id: m.id,
         name: m.name || m.id,
       }));
@@ -163,7 +190,9 @@ export function registerImageRoutes(app: Hono) {
     try {
       const token = extractToken(c.req.raw);
       const authHeader = c.req.header("Authorization");
-      const apiKey = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
+      const apiKey = authHeader?.startsWith("Bearer ")
+        ? authHeader.slice(7)
+        : null;
       let userId = c.get("userId");
       let userPlan = c.get("userPlan") || "Free";
 
@@ -196,7 +225,16 @@ export function registerImageRoutes(app: Hono) {
 
       // Calculer la prochaine réinitialisation (minuit UTC)
       const now = new Date();
-      const tomorrowMidnight = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1, 0, 0, 0));
+      const tomorrowMidnight = new Date(
+        Date.UTC(
+          now.getUTCFullYear(),
+          now.getUTCMonth(),
+          now.getUTCDate() + 1,
+          0,
+          0,
+          0
+        )
+      );
 
       return c.json({
         dailyLimit,
@@ -206,7 +244,13 @@ export function registerImageRoutes(app: Hono) {
         userId,
       });
     } catch (err: any) {
-      return c.json({ error: "Erreur lors de la récupération de l'usage image.", details: err.message }, 500);
+      return c.json(
+        {
+          details: err.message,
+          error: "Erreur lors de la récupération de l'usage image.",
+        },
+        500
+      );
     }
   });
 
@@ -240,7 +284,10 @@ export function registerImageRoutes(app: Hono) {
 
       return c.json({ data: history, success: true });
     } catch (err: any) {
-      return c.json({ error: "Erreur historique images.", details: err.message }, 500);
+      return c.json(
+        { details: err.message, error: "Erreur historique images." },
+        500
+      );
     }
   });
 
@@ -251,7 +298,9 @@ export function registerImageRoutes(app: Hono) {
     try {
       const token = extractToken(c.req.raw);
       const authHeader = c.req.header("Authorization");
-      const apiKey = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : null;
+      const apiKey = authHeader?.startsWith("Bearer ")
+        ? authHeader.slice(7)
+        : null;
       let userId = c.get("userId");
       let userPlan = c.get("userPlan") || "Free";
 
@@ -264,14 +313,21 @@ export function registerImageRoutes(app: Hono) {
       }
 
       if (!userId) {
-        return c.json({ error: "Non authentifié. Clé API ou token requis." }, 401);
+        return c.json(
+          { error: "Non authentifié. Clé API ou token requis." },
+          401
+        );
       }
 
       const body = await c.req.json().catch(() => ({}));
       const prompt = body.prompt;
       const model = body.model || "black-forest-labs/flux-1-schnell";
-      const width = body.width || (body.size ? parseInt(body.size.split("x")[0], 10) : 1024);
-      const height = body.height || (body.size ? parseInt(body.size.split("x")[1], 10) : 1024);
+      const width =
+        body.width ||
+        (body.size ? Number.parseInt(body.size.split("x")[0], 10) : 1024);
+      const height =
+        body.height ||
+        (body.size ? Number.parseInt(body.size.split("x")[1], 10) : 1024);
       const negativePrompt = body.negative_prompt || "";
 
       if (!prompt || typeof prompt !== "string") {
@@ -347,20 +403,26 @@ export function registerImageRoutes(app: Hono) {
           imagePayload.image = body.image || body.image_url;
         }
 
-        const cometRes = await fetch("https://api.cometapi.com/v1/images/generations", {
-          body: JSON.stringify(imagePayload),
-          headers: {
-            Authorization: `Bearer ${cometApiKey}`,
-            "Content-Type": "application/json",
-          },
-          method: "POST",
-        });
+        const cometRes = await fetch(
+          "https://api.cometapi.com/v1/images/generations",
+          {
+            body: JSON.stringify(imagePayload),
+            headers: {
+              Authorization: `Bearer ${cometApiKey}`,
+              "Content-Type": "application/json",
+            },
+            method: "POST",
+          }
+        );
 
         if (!cometRes.ok) {
           const errText = await cometRes.text().catch(() => "");
           console.error("[CometAPI] Erreur génération:", errText);
           return c.json(
-            { error: "Erreur retournée par le fournisseur Comet API.", details: errText },
+            {
+              details: errText,
+              error: "Erreur retournée par le fournisseur Comet API.",
+            },
             cometRes.status
           );
         }
@@ -368,7 +430,8 @@ export function registerImageRoutes(app: Hono) {
         const cometJson = await cometRes.json();
         cometResultData = cometJson.data || [];
         if (cometResultData.length > 0) {
-          generatedImageUrl = cometResultData[0].url || cometResultData[0].b64_json || "";
+          generatedImageUrl =
+            cometResultData[0].url || cometResultData[0].b64_json || "";
         }
       } else {
         // Mode simulation / fallback si la clé Comet n'est pas encore renseignée
@@ -434,7 +497,13 @@ export function registerImageRoutes(app: Hono) {
       });
     } catch (err: any) {
       console.error("[ImagesAPI] Erreur serveur:", err);
-      return c.json({ error: "Erreur serveur lors de la génération d'image.", details: err.message }, 500);
+      return c.json(
+        {
+          details: err.message,
+          error: "Erreur serveur lors de la génération d'image.",
+        },
+        500
+      );
     }
   });
 }

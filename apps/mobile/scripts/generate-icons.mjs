@@ -30,7 +30,10 @@ async function trySharp(pngBuffer) {
     console.log("[mobile-icons] sharp détecté – génération optimisée");
     // icon 1024 requis par capacitor-assets / stores
     const icon1024 = await sharp(pngBuffer)
-      .resize(1024, 1024, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } })
+      .resize(1024, 1024, {
+        background: { alpha: 0, b: 0, g: 0, r: 0 },
+        fit: "contain",
+      })
       .png()
       .toBuffer();
     fs.writeFileSync(path.join(resourcesDir, "icon.png"), icon1024);
@@ -39,18 +42,31 @@ async function trySharp(pngBuffer) {
     console.log("[mobile-icons] icon.png 1024 généré");
 
     // splash 2732x2732 fond #0a0a0a + logo centré ~ 800px
-    const logo800 = await sharp(pngBuffer).resize(800, 800, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer();
+    const logo800 = await sharp(pngBuffer)
+      .resize(800, 800, {
+        background: { alpha: 0, b: 0, g: 0, r: 0 },
+        fit: "contain",
+      })
+      .png()
+      .toBuffer();
     const splash = await sharp({
-      create: { width: 2732, height: 2732, channels: 4, background: { r: 10, g: 10, b: 10, alpha: 1 } },
+      create: {
+        background: { alpha: 1, b: 10, g: 10, r: 10 },
+        channels: 4,
+        height: 2732,
+        width: 2732,
+      },
     })
-      .composite([{ input: logo800, gravity: "centre" }])
+      .composite([{ gravity: "centre", input: logo800 }])
       .png()
       .toBuffer();
     fs.writeFileSync(path.join(resourcesDir, "splash.png"), splash);
     console.log("[mobile-icons] splash.png 2732 généré");
     return true;
   } catch (e) {
-    if (e.code !== "ERR_MODULE_NOT_FOUND") console.warn("[mobile-icons] sharp non utilisé:", e.message);
+    if (e.code !== "ERR_MODULE_NOT_FOUND") {
+      console.warn("[mobile-icons] sharp non utilisé:", e.message);
+    }
     return false;
   }
 }
@@ -58,26 +74,52 @@ async function trySharp(pngBuffer) {
 function patchNativeIcons(iconPngPath) {
   const iconBuf = fs.readFileSync(iconPngPath);
   // Android : patch mipmap si android/ existe
-  const androidRes = path.join(mobileRoot, "android", "app", "src", "main", "res");
+  const androidRes = path.join(
+    mobileRoot,
+    "android",
+    "app",
+    "src",
+    "main",
+    "res"
+  );
   if (fs.existsSync(androidRes)) {
-    const densities = ["mipmap-hdpi", "mipmap-mdpi", "mipmap-xhdpi", "mipmap-xxhdpi", "mipmap-xxxhdpi"];
+    const densities = [
+      "mipmap-hdpi",
+      "mipmap-mdpi",
+      "mipmap-xhdpi",
+      "mipmap-xxhdpi",
+      "mipmap-xxxhdpi",
+    ];
     for (const d of densities) {
       const dir = path.join(androidRes, d);
       fs.mkdirSync(dir, { recursive: true });
-      for (const name of ["ic_launcher.png", "ic_launcher_round.png", "ic_launcher_foreground.png"]) {
+      for (const name of [
+        "ic_launcher.png",
+        "ic_launcher_round.png",
+        "ic_launcher_foreground.png",
+      ]) {
         const dst = path.join(dir, name);
         try {
           fs.copyFileSync(iconPngPath, dst);
         } catch {}
       }
     }
-    console.log(`[mobile-icons] Android mipmap patché (${densities.length} densités)`);
+    console.log(
+      `[mobile-icons] Android mipmap patché (${densities.length} densités)`
+    );
   } else {
     console.log("[mobile-icons] Android non trouvé – skip patch");
   }
 
   // iOS : patch AppIcon si ios/ existe
-  const iosIconSet = path.join(mobileRoot, "ios", "App", "App", "Assets.xcassets", "AppIcon.appiconset");
+  const iosIconSet = path.join(
+    mobileRoot,
+    "ios",
+    "App",
+    "App",
+    "Assets.xcassets",
+    "AppIcon.appiconset"
+  );
   if (fs.existsSync(iosIconSet)) {
     const files = fs.readdirSync(iosIconSet).filter((f) => f.endsWith(".png"));
     for (const f of files) {
@@ -86,9 +128,18 @@ function patchNativeIcons(iconPngPath) {
       } catch {}
     }
     // Aussi splash si présent
-    const iosSplash = path.join(mobileRoot, "ios", "App", "App", "Assets.xcassets", "Splash.imageset");
+    const iosSplash = path.join(
+      mobileRoot,
+      "ios",
+      "App",
+      "App",
+      "Assets.xcassets",
+      "Splash.imageset"
+    );
     if (fs.existsSync(iosSplash)) {
-      const sFiles = fs.readdirSync(iosSplash).filter((f) => f.endsWith(".png"));
+      const sFiles = fs
+        .readdirSync(iosSplash)
+        .filter((f) => f.endsWith(".png"));
       for (const f of sFiles) {
         try {
           fs.copyFileSync(iconPngPath, path.join(iosSplash, f));

@@ -3,22 +3,16 @@
 import {
   AlertCircleIcon,
   BotIcon,
-  BrainIcon,
   CameraIcon,
   CheckCircle2Icon,
   CloudIcon,
   Code2Icon,
   ExternalLinkIcon,
-  HardDriveIcon,
   ImageIcon,
   KeyRoundIcon,
   Loader2Icon,
-  MailIcon,
-  PhoneIcon,
-  ScaleIcon,
   ShieldCheckIcon,
   SparklesIcon,
-  TargetIcon,
   UserIcon,
   ZapIcon,
 } from "lucide-react";
@@ -28,10 +22,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
-import { MAI_UPGRADE_URL } from "@/lib/constants";
-import { AI_MODES, DEFAULT_AI_MODE, type AIModeId, isValidAIModeId } from "@/lib/ai/modes";
-import type { ChatModel } from "@/lib/ai/models";
-import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -44,6 +34,15 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import type { ChatModel } from "@/lib/ai/models";
+import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import {
+  AI_MODES,
+  type AIModeId,
+  DEFAULT_AI_MODE,
+  isValidAIModeId,
+} from "@/lib/ai/modes";
+import { MAI_UPGRADE_URL } from "@/lib/constants";
 
 type UserSettingsData = {
   username: string;
@@ -89,22 +88,28 @@ function formatTokens(n: number) {
 }
 
 function formatBytes(bytes: number) {
-  if (!bytes || bytes === 0) return "0 Mo";
+  if (!bytes || bytes === 0) {
+    return "0 Mo";
+  }
   const mb = bytes / (1024 * 1024);
-  if (mb < 1000) return `${mb.toFixed(1)} Mo`;
+  if (mb < 1000) {
+    return `${mb.toFixed(1)} Mo`;
+  }
   return `${(mb / 1024).toFixed(2)} Go`;
 }
 
 function formatDate(dateStr?: string) {
-  if (!dateStr) return "Prochainement";
+  if (!dateStr) {
+    return "Prochainement";
+  }
   try {
     const d = new Date(dateStr);
     return new Intl.DateTimeFormat("fr-FR", {
-      weekday: "long",
       day: "numeric",
-      month: "long",
       hour: "2-digit",
       minute: "2-digit",
+      month: "long",
+      weekday: "long",
     }).format(d);
   } catch {
     return dateStr;
@@ -112,7 +117,9 @@ function formatDate(dateStr?: string) {
 }
 
 function getCookie(name: string): string | null {
-  if (typeof document === "undefined") return null;
+  if (typeof document === "undefined") {
+    return null;
+  }
   const m = document.cookie
     .split("; ")
     .find((row) => row.startsWith(`${name}=`));
@@ -126,9 +133,15 @@ function setCookie(name: string, value: string) {
 export default function SettingsPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const initialTab = (searchParams.get("tab") as "profile" | "usage" | "preferences") || "profile";
-  const [activeTab, setActiveTab] = useState<"profile" | "usage" | "preferences">(
-    ["profile", "usage", "preferences"].includes(initialTab) ? initialTab : "profile"
+  const initialTab =
+    (searchParams.get("tab") as "profile" | "usage" | "preferences") ||
+    "profile";
+  const [activeTab, setActiveTab] = useState<
+    "profile" | "usage" | "preferences"
+  >(
+    ["profile", "usage", "preferences"].includes(initialTab)
+      ? initialTab
+      : "profile"
   );
   const [isLoading, setIsLoading] = useState(true);
 
@@ -144,11 +157,33 @@ export default function SettingsPage() {
 
   useEffect(() => {
     const t = searchParams.get("tab") as any;
-    if (t && ["profile", "usage", "preferences"].includes(t) && t !== activeTab) {
+    if (
+      t &&
+      ["profile", "usage", "preferences"].includes(t) &&
+      t !== activeTab
+    ) {
       setActiveTab(t);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
+
+  // Scroll vers ancre usage si tab=usage
+  useEffect(() => {
+    if (activeTab === "usage") {
+      const hash = typeof window === "undefined" ? "" : window.location.hash;
+      const targetId = hash ? hash.replace("#", "") : "usage-mAI";
+      const el =
+        document.getElementById(targetId) ||
+        document.getElementById("usage-mAI") ||
+        document.getElementById("usage");
+      if (el) {
+        setTimeout(
+          () => el.scrollIntoView({ behavior: "smooth", block: "start" }),
+          150
+        );
+      }
+    }
+  }, [activeTab]);
 
   // Données utilisateur
   const [profile, setProfile] = useState<UserSettingsData | null>(null);
@@ -179,7 +214,8 @@ export default function SettingsPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Préférences IA (cookie + serveur)
-  const [defaultModelId, setDefaultModelId] = useState<string>(DEFAULT_CHAT_MODEL);
+  const [defaultModelId, setDefaultModelId] =
+    useState<string>(DEFAULT_CHAT_MODEL);
   const [defaultModeId, setDefaultModeId] = useState<AIModeId>(DEFAULT_AI_MODE);
   const [customInstructions, setCustomInstructions] = useState("");
   const [customEnabled, setCustomEnabled] = useState(false);
@@ -202,55 +238,101 @@ export default function SettingsPage() {
 
   useEffect(() => {
     if (customPrefData) {
-      if (customPrefData.customInstructions !== undefined) setCustomInstructions(customPrefData.customInstructions || "");
-      if (customPrefData.enabled !== undefined) setCustomEnabled(!!customPrefData.enabled);
-      if (customPrefData.temperature !== undefined) setCustomTemp(customPrefData.temperature);
-      if (customPrefData.topP !== undefined) setCustomTopP(customPrefData.topP);
+      if (customPrefData.customInstructions !== undefined) {
+        setCustomInstructions(customPrefData.customInstructions || "");
+      }
+      if (customPrefData.enabled !== undefined) {
+        setCustomEnabled(!!customPrefData.enabled);
+      }
+      if (customPrefData.temperature !== undefined) {
+        setCustomTemp(customPrefData.temperature);
+      }
+      if (customPrefData.topP !== undefined) {
+        setCustomTopP(customPrefData.topP);
+      }
+      if (
+        customPrefData.defaultMode !== undefined &&
+        isValidAIModeId(customPrefData.defaultMode)
+      ) {
+        setDefaultModeId(customPrefData.defaultMode);
+      }
     }
   }, [customPrefData]);
 
   useEffect(() => {
     const cModel = getCookie("chat-model");
-    if (cModel) setDefaultModelId(cModel);
-    const cMode = getCookie("ai-mode");
-    if (cMode && isValidAIModeId(cMode)) setDefaultModeId(cMode as AIModeId);
-  }, []);
+    if (cModel) {
+      setDefaultModelId(cModel);
+    }
+    // DB defaultMode overrides cookie if present
+    if (
+      customPrefData?.defaultMode &&
+      isValidAIModeId(customPrefData.defaultMode)
+    ) {
+      setDefaultModeId(customPrefData.defaultMode);
+    } else {
+      const cMode = getCookie("ai-mode");
+      if (cMode && isValidAIModeId(cMode)) {
+        setDefaultModeId(cMode as AIModeId);
+      }
+    }
+  }, [customPrefData]);
 
-  const handleSavePreferences = useCallback(() => {
+  const handleSavePreferences = useCallback(async () => {
     setCookie("chat-model", defaultModelId);
     setCookie("ai-mode", defaultModeId);
-    toast.success("Préférences IA enregistrées ! ✨");
+    try {
+      const res = await fetch("/api/user/preferences", {
+        body: JSON.stringify({ defaultMode: defaultModeId }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      });
+      if (!res.ok) {
+        throw new Error("Erreur DB");
+      }
+    } catch {}
+    toast.success("Préférences IA enregistrées !");
   }, [defaultModelId, defaultModeId]);
 
   const handleSaveCustomInstructions = useCallback(async () => {
     setIsSavingCustom(true);
     try {
       const res = await fetch("/api/user/preferences", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           customInstructions: customInstructions.slice(0, 4000),
           enabled: customEnabled,
           temperature: customTemp,
           topP: customTopP,
         }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Erreur");
-      toast.success("Instructions personnalisées enregistrées ! ✨");
+      if (!res.ok) {
+        throw new Error(data.error || "Erreur");
+      }
+      toast.success("Instructions personnalisées enregistrées !");
       mutateCustomPref();
     } catch (e: any) {
       toast.error(e.message || "Erreur lors de la sauvegarde");
     } finally {
       setIsSavingCustom(false);
     }
-  }, [customInstructions, customEnabled, customTemp, customTopP, mutateCustomPref]);
+  }, [
+    customInstructions,
+    customEnabled,
+    customTemp,
+    customTopP,
+    mutateCustomPref,
+  ]);
 
   // Récupérer les données
   const fetchSettings = useCallback(async () => {
     try {
       const res = await fetch("/api/settings");
-      if (!res.ok) throw new Error("Erreur de chargement");
+      if (!res.ok) {
+        throw new Error("Erreur de chargement");
+      }
       const data = await res.json();
 
       if (data.user) {
@@ -280,7 +362,9 @@ export default function SettingsPage() {
   // Upload d'avatar
   const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    if (!files || files.length === 0) return;
+    if (!files || files.length === 0) {
+      return;
+    }
     const file = files[0];
 
     setIsUploadingAvatar(true);
@@ -289,8 +373,8 @@ export default function SettingsPage() {
 
     try {
       const res = await fetch("/api/settings", {
-        method: "POST",
         body: formData,
+        method: "POST",
       });
       const data = await res.json();
 
@@ -299,7 +383,7 @@ export default function SettingsPage() {
         return;
       }
 
-      toast.success("Photo de profil mise à jour ! ✨");
+      toast.success("Photo de profil mise à jour !");
       if (profile) {
         setProfile({ ...profile, avatarUrl: data.avatarUrl });
       }
@@ -320,24 +404,28 @@ export default function SettingsPage() {
       username.trim() !== (profile?.username || "") ||
       (newPassword && newPassword.trim().length > 0);
     if (isSensitiveChange && !currentPassword) {
-      toast.error("Votre mot de passe actuel est requis pour modifier e-mail, téléphone, nom ou mot de passe.");
+      toast.error(
+        "Votre mot de passe actuel est requis pour modifier e-mail, téléphone, nom ou mot de passe."
+      );
       return;
     }
 
     setIsSaving(true);
     try {
       const payload: any = {
-        username: username.trim(),
-        email: email.trim(),
-        phone: phone.trim() || undefined,
         currentPassword,
+        email: email.trim(),
         newsletter,
         notify_limits: notifyLimits,
+        phone: phone.trim() || undefined,
+        username: username.trim(),
       };
 
       if (newPassword && newPassword.trim()) {
         if (newPassword.length < 6) {
-          toast.error("Le nouveau mot de passe doit comporter au moins 6 caractères.");
+          toast.error(
+            "Le nouveau mot de passe doit comporter au moins 6 caractères."
+          );
           setIsSaving(false);
           return;
         }
@@ -345,9 +433,9 @@ export default function SettingsPage() {
       }
 
       const res = await fetch("/api/settings", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
       });
 
       const data = await res.json();
@@ -361,11 +449,13 @@ export default function SettingsPage() {
       if (data.status === "email_verification_required") {
         setPendingEmail(data.email || email.trim());
         setShowEmailOtpModal(true);
-        toast.info("Un code a été envoyé à votre nouvelle adresse e-mail pour validation !");
+        toast.info(
+          "Un code a été envoyé à votre nouvelle adresse e-mail pour validation !"
+        );
         return;
       }
 
-      toast.success("Profil mis à jour avec succès ! ✨");
+      toast.success("Profil mis à jour avec succès !");
       setCurrentPassword("");
       setNewPassword("");
       fetchSettings();
@@ -386,13 +476,13 @@ export default function SettingsPage() {
     setIsVerifyingEmail(true);
     try {
       const res = await fetch("/api/settings", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           action: "verify_new_email",
-          email: pendingEmail,
           code: emailOtpCode.trim(),
+          email: pendingEmail,
         }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
       });
 
       const data = await res.json();
@@ -413,19 +503,33 @@ export default function SettingsPage() {
   };
 
   const aiPercent = aiUsage?.limit
-    ? Math.min(100, Math.round(((aiUsage.tokensUsed || 0) / aiUsage.limit) * 100))
+    ? Math.min(
+        100,
+        Math.round(((aiUsage.tokensUsed || 0) / aiUsage.limit) * 100)
+      )
     : 0;
 
   const imagesPercent = imagesUsage?.dailyLimit
-    ? Math.min(100, Math.round(((imagesUsage.usedToday || 0) / imagesUsage.dailyLimit) * 100))
+    ? Math.min(
+        100,
+        Math.round(
+          ((imagesUsage.usedToday || 0) / imagesUsage.dailyLimit) * 100
+        )
+      )
     : 0;
 
   const cloudPercent = cloudUsage?.bytesLimit
-    ? Math.min(100, Math.round(((cloudUsage.bytesUsed || 0) / cloudUsage.bytesLimit) * 100))
+    ? Math.min(
+        100,
+        Math.round(((cloudUsage.bytesUsed || 0) / cloudUsage.bytesLimit) * 100)
+      )
     : 0;
 
   const apiPercent = apiUsage?.limit
-    ? Math.min(100, Math.round(((apiUsage.requestCount || 0) / apiUsage.limit) * 100))
+    ? Math.min(
+        100,
+        Math.round(((apiUsage.requestCount || 0) / apiUsage.limit) * 100)
+      )
     : 0;
 
   return (
@@ -436,42 +540,43 @@ export default function SettingsPage() {
           Paramètres du compte
         </h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Gérez votre profil, vos informations personnelles et visualisez votre consommation IA et API.
+          Gérez votre profil, vos informations personnelles et visualisez votre
+          consommation IA et API.
         </p>
 
         {/* Onglets */}
         <div className="flex items-center gap-2 mt-6 flex-wrap">
           <button
-            onClick={() => handleTabChange("profile")}
             className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer ${
               activeTab === "profile"
                 ? "bg-foreground text-background shadow-sm"
                 : "bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
             }`}
+            onClick={() => handleTabChange("profile")}
           >
             <UserIcon className="size-4" />
             <span>Mon Profil</span>
           </button>
 
           <button
-            onClick={() => handleTabChange("preferences")}
             className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer ${
               activeTab === "preferences"
                 ? "bg-foreground text-background shadow-sm"
                 : "bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
             }`}
+            onClick={() => handleTabChange("preferences")}
           >
             <SparklesIcon className="size-4" />
             <span>Préférences IA</span>
           </button>
 
           <button
-            onClick={() => handleTabChange("usage")}
             className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer ${
               activeTab === "usage"
                 ? "bg-foreground text-background shadow-sm"
                 : "bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
             }`}
+            onClick={() => handleTabChange("usage")}
           >
             <ZapIcon className="size-4" />
             <span>Consommation & Forfait</span>
@@ -493,12 +598,12 @@ export default function SettingsPage() {
               <div className="size-20 rounded-full ring-2 ring-border/80 overflow-hidden bg-muted flex items-center justify-center shadow-md">
                 {profile?.avatarUrl ? (
                   <Image
-                    src={profile.avatarUrl}
                     alt={username}
-                    width={80}
-                    height={80}
                     className="size-full object-cover"
+                    height={80}
+                    src={profile.avatarUrl}
                     unoptimized
+                    width={80}
                   />
                 ) : (
                   <div className="size-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-2xl font-bold text-white">
@@ -508,11 +613,11 @@ export default function SettingsPage() {
               </div>
 
               <button
-                type="button"
-                onClick={() => fileInputRef.current?.click()}
-                disabled={isUploadingAvatar}
                 className="absolute inset-0 rounded-full bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white cursor-pointer"
+                disabled={isUploadingAvatar}
+                onClick={() => fileInputRef.current?.click()}
                 title="Changer la photo"
+                type="button"
               >
                 {isUploadingAvatar ? (
                   <Loader2Icon className="size-6 animate-spin" />
@@ -522,27 +627,29 @@ export default function SettingsPage() {
               </button>
 
               <input
-                type="file"
-                ref={fileInputRef}
-                onChange={handleAvatarChange}
                 accept="image/*"
                 className="hidden"
+                onChange={handleAvatarChange}
+                ref={fileInputRef}
+                type="file"
               />
             </div>
 
             <div className="flex flex-col">
               <div className="flex items-center gap-2">
-                <h3 className="font-semibold text-foreground text-base">{username}</h3>
+                <h3 className="font-semibold text-foreground text-base">
+                  {username}
+                </h3>
                 <span className="text-xs px-2 py-0.5 rounded-full font-bold uppercase bg-primary/10 text-primary border border-primary/20">
                   {profile?.tier || "Free"}
                 </span>
               </div>
               <p className="text-xs text-muted-foreground mt-0.5">{email}</p>
               <button
-                type="button"
-                onClick={() => fileInputRef.current?.click()}
-                disabled={isUploadingAvatar}
                 className="mt-2 text-xs font-medium text-primary hover:underline cursor-pointer flex items-center gap-1"
+                disabled={isUploadingAvatar}
+                onClick={() => fileInputRef.current?.click()}
+                type="button"
               >
                 <CameraIcon className="size-3.5" />
                 Changer la photo de profil
@@ -551,47 +658,56 @@ export default function SettingsPage() {
           </div>
 
           {/* Formulaire des informations personnelles */}
-          <form onSubmit={handleProfileSubmit} className="flex flex-col gap-5">
+          <form className="flex flex-col gap-5" onSubmit={handleProfileSubmit}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="flex flex-col gap-2">
-                <Label htmlFor="settings-username" className="text-xs font-medium text-muted-foreground">
+                <Label
+                  className="text-xs font-medium text-muted-foreground"
+                  htmlFor="settings-username"
+                >
                   Nom d'utilisateur
                 </Label>
                 <Input
-                  id="settings-username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
                   className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
+                  id="settings-username"
+                  onChange={(e) => setUsername(e.target.value)}
                   required
+                  value={username}
                 />
               </div>
 
               <div className="flex flex-col gap-2">
-                <Label htmlFor="settings-email" className="text-xs font-medium text-muted-foreground">
+                <Label
+                  className="text-xs font-medium text-muted-foreground"
+                  htmlFor="settings-email"
+                >
                   Adresse e-mail
                 </Label>
                 <Input
+                  className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
                   id="settings-email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                   type="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
-                  required
                 />
               </div>
             </div>
 
             <div className="flex flex-col gap-2">
-              <Label htmlFor="settings-phone" className="text-xs font-medium text-muted-foreground">
+              <Label
+                className="text-xs font-medium text-muted-foreground"
+                htmlFor="settings-phone"
+              >
                 Numéro de téléphone (optionnel)
               </Label>
               <Input
-                id="settings-phone"
-                type="tel"
-                placeholder="+33 6 12 34 56 78"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
                 className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
+                id="settings-phone"
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="+33 6 12 34 56 78"
+                type="tel"
+                value={phone}
               />
             </div>
 
@@ -604,31 +720,38 @@ export default function SettingsPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col gap-2">
-                  <Label htmlFor="settings-current-password" className="text-xs font-medium text-muted-foreground">
-                    Mot de passe actuel <strong className="text-red-500">*</strong>
+                  <Label
+                    className="text-xs font-medium text-muted-foreground"
+                    htmlFor="settings-current-password"
+                  >
+                    Mot de passe actuel{" "}
+                    <strong className="text-red-500">*</strong>
                   </Label>
                   <Input
-                    id="settings-current-password"
-                    type="password"
-                    placeholder="Obligatoire pour valider"
-                    value={currentPassword}
-                    onChange={(e) => setCurrentPassword(e.target.value)}
                     className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
+                    id="settings-current-password"
+                    onChange={(e) => setCurrentPassword(e.target.value)}
+                    placeholder="Obligatoire pour valider"
                     required
+                    type="password"
+                    value={currentPassword}
                   />
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <Label htmlFor="settings-new-password" className="text-xs font-medium text-muted-foreground">
+                  <Label
+                    className="text-xs font-medium text-muted-foreground"
+                    htmlFor="settings-new-password"
+                  >
                     Nouveau mot de passe (optionnel)
                   </Label>
                   <Input
-                    id="settings-new-password"
-                    type="password"
-                    placeholder="Laisser vide si inchangé"
-                    value={newPassword}
-                    onChange={(e) => setNewPassword(e.target.value)}
                     className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
+                    id="settings-new-password"
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    placeholder="Laisser vide si inchangé"
+                    type="password"
+                    value={newPassword}
                   />
                 </div>
               </div>
@@ -638,30 +761,33 @@ export default function SettingsPage() {
             <div className="pt-4 border-t border-border/50 flex flex-col gap-3">
               <label className="flex items-center gap-3 text-xs text-foreground cursor-pointer">
                 <input
-                  type="checkbox"
                   checked={newsletter}
-                  onChange={(e) => setNewsletter(e.target.checked)}
                   className="rounded border-border size-4 accent-primary"
+                  onChange={(e) => setNewsletter(e.target.checked)}
+                  type="checkbox"
                 />
                 <span>Recevoir les actualités et annonces mAI par e-mail</span>
               </label>
 
               <label className="flex items-center gap-3 text-xs text-foreground cursor-pointer">
                 <input
-                  type="checkbox"
                   checked={notifyLimits}
-                  onChange={(e) => setNotifyLimits(e.target.checked)}
                   className="rounded border-border size-4 accent-primary"
+                  onChange={(e) => setNotifyLimits(e.target.checked)}
+                  type="checkbox"
                 />
-                <span>M'alerter par e-mail lorsque j'atteins 90% de mes limites de tokens ou stockage</span>
+                <span>
+                  M'alerter par e-mail lorsque j'atteins 90% de mes limites de
+                  tokens ou stockage
+                </span>
               </label>
             </div>
 
             <div className="pt-4">
               <button
-                type="submit"
-                disabled={isSaving}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 disabled:opacity-50 cursor-pointer shadow-sm"
+                disabled={isSaving}
+                type="submit"
               >
                 {isSaving ? (
                   <>
@@ -684,9 +810,12 @@ export default function SettingsPage() {
                 <SparklesIcon className="size-5" />
               </div>
               <div>
-                <h3 className="text-base font-semibold text-foreground">Préférences IA</h3>
+                <h3 className="text-base font-semibold text-foreground">
+                  Préférences IA
+                </h3>
                 <p className="text-xs text-muted-foreground">
-                  Modèle par défaut et mode d'IA (stockés en cookie, appliqués aux nouvelles discussions).
+                  Modèle par défaut et mode d'IA (stockés en cookie, appliqués
+                  aux nouvelles discussions).
                 </p>
               </div>
             </div>
@@ -696,12 +825,14 @@ export default function SettingsPage() {
                 Modèle par défaut
               </Label>
               <select
-                value={defaultModelId}
-                onChange={(e) => setDefaultModelId(e.target.value)}
                 className="h-10 rounded-xl border border-border/60 bg-muted/30 px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary/20"
+                onChange={(e) => setDefaultModelId(e.target.value)}
+                value={defaultModelId}
               >
                 {prefModels.length === 0 ? (
-                  <option value={DEFAULT_CHAT_MODEL}>{DEFAULT_CHAT_MODEL}</option>
+                  <option value={DEFAULT_CHAT_MODEL}>
+                    {DEFAULT_CHAT_MODEL}
+                  </option>
                 ) : (
                   prefModels.map((m) => (
                     <option key={m.id} value={m.id}>
@@ -711,7 +842,9 @@ export default function SettingsPage() {
                 )}
               </select>
               <span className="text-[11px] text-muted-foreground">
-                Ce modèle sera pré-sélectionné pour chaque nouvelle conversation. Vous pouvez le changer à la volée dans la barre de saisie.
+                Ce modèle sera pré-sélectionné pour chaque nouvelle
+                conversation. Vous pouvez le changer à la volée dans la barre de
+                saisie.
               </span>
             </div>
 
@@ -725,46 +858,59 @@ export default function SettingsPage() {
                   const isSelected = defaultModeId === mode.id;
                   return (
                     <button
-                      key={mode.id}
-                      type="button"
-                      onClick={() => setDefaultModeId(mode.id)}
                       className={`flex items-start gap-3 p-3 rounded-xl border text-left transition-all cursor-pointer ${
                         isSelected
                           ? "bg-primary/10 border-primary/30 ring-1 ring-primary/20"
                           : "bg-muted/20 border-border/50 hover:bg-muted/40 hover:border-border"
                       }`}
+                      key={mode.id}
+                      onClick={() => setDefaultModeId(mode.id)}
+                      type="button"
                     >
                       <div
                         className={`p-2 rounded-lg shrink-0 mt-0.5 ${
-                          isSelected ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
+                          isSelected
+                            ? "bg-primary text-primary-foreground"
+                            : "bg-muted text-muted-foreground"
                         }`}
                       >
                         <Icon className="size-4" />
                       </div>
                       <div className="flex flex-col gap-0.5 min-w-0">
-                        <span className="text-[13px] font-semibold text-foreground">{mode.label}</span>
-                        <span className="text-[11px] text-muted-foreground leading-tight">{mode.longDescription}</span>
+                        <span className="text-[13px] font-semibold text-foreground">
+                          {mode.label}
+                        </span>
+                        <span className="text-[11px] text-muted-foreground leading-tight">
+                          {mode.longDescription}
+                        </span>
                         {mode.temperature !== undefined && (
                           <span className="text-[10px] font-mono text-muted-foreground/70">
-                            temp: {mode.temperature} {mode.topP !== undefined ? `• topP: ${mode.topP}` : ""}
+                            temp: {mode.temperature}{" "}
+                            {mode.topP === undefined
+                              ? ""
+                              : `• topP: ${mode.topP}`}
                           </span>
                         )}
                       </div>
-                      {isSelected && <CheckCircle2Icon className="size-4 text-primary shrink-0 ml-auto mt-1" />}
+                      {isSelected && (
+                        <CheckCircle2Icon className="size-4 text-primary shrink-0 ml-auto mt-1" />
+                      )}
                     </button>
                   );
                 })}
               </div>
               <span className="text-[11px] text-muted-foreground">
-                Le mode influence le style de réponse et la température du modèle. Global par défaut, modifiable dans le menu <span className="font-medium">+</span> de la conversation.
+                Le mode influence le style de réponse et la température du
+                modèle. Global par défaut, modifiable dans le menu{" "}
+                <span className="font-medium">+</span> de la conversation.
               </span>
             </div>
 
             <div className="pt-2 flex justify-end">
               <button
-                type="button"
-                onClick={handleSavePreferences}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer"
+                onClick={handleSavePreferences}
+                type="button"
               >
                 Enregistrer les préférences
               </button>
@@ -778,47 +924,93 @@ export default function SettingsPage() {
                 <BotIcon className="size-5" />
               </div>
               <div className="flex-1">
-                <h3 className="text-base font-semibold text-foreground">Instructions personnalisées</h3>
-                <p className="text-xs text-muted-foreground">Personnalisez le comportement de mAI — ton, langue, contexte métier. Stocké en base, synchronisé sur tous vos appareils.</p>
+                <h3 className="text-base font-semibold text-foreground">
+                  Instructions personnalisées
+                </h3>
+                <p className="text-xs text-muted-foreground">
+                  Personnalisez le comportement de mAI — ton, langue, contexte
+                  métier. Stocké en base, synchronisé sur tous vos appareils.
+                </p>
               </div>
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="checkbox" checked={customEnabled} onChange={(e) => setCustomEnabled(e.target.checked)} className="size-4 rounded border-border accent-primary" />
+                <input
+                  checked={customEnabled}
+                  className="size-4 rounded border-border accent-primary"
+                  onChange={(e) => setCustomEnabled(e.target.checked)}
+                  type="checkbox"
+                />
                 <span className="text-xs font-medium">Activé</span>
               </label>
             </div>
             <div className="flex flex-col gap-2">
-              <Label className="text-xs font-medium text-muted-foreground">Qui êtes-vous ? Que doit savoir mAI sur vous ? (max 4000c)</Label>
+              <Label className="text-xs font-medium text-muted-foreground">
+                Qui êtes-vous ? Que doit savoir mAI sur vous ? (max 4000c)
+              </Label>
               <textarea
-                value={customInstructions}
-                onChange={(e) => setCustomInstructions(e.target.value)}
-                maxLength={4000}
-                rows={5}
-                placeholder="Ex: Je suis développeur full-stack à Paris. Réponds toujours en français, tutoie, sois concis, privilégie TypeScript avec exemples exécutables. Mon projet principal est mAI Web..."
                 className="w-full rounded-xl border border-border/60 bg-muted/20 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary/20 resize-y"
+                maxLength={4000}
+                onChange={(e) => setCustomInstructions(e.target.value)}
+                placeholder="Ex: Je suis développeur full-stack à Paris. Réponds toujours en français, tutoie, sois concis, privilégie TypeScript avec exemples exécutables. Mon projet principal est mAI Web..."
+                rows={5}
+                value={customInstructions}
               />
-              <span className="text-[11px] text-muted-foreground text-right">{customInstructions.length}/4000</span>
+              <span className="text-[11px] text-muted-foreground text-right">
+                {customInstructions.length}/4000
+              </span>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col gap-1.5">
-                <Label className="text-xs font-medium text-muted-foreground">Température ({customTemp})</Label>
-                <input type="range" min={0} max={2} step={0.1} value={customTemp} onChange={(e) => setCustomTemp(parseFloat(e.target.value))} className="w-full accent-primary" />
-                <span className="text-[11px] text-muted-foreground">0 = Précis, 2 = Créatif</span>
+                <Label className="text-xs font-medium text-muted-foreground">
+                  Température ({customTemp})
+                </Label>
+                <input
+                  className="w-full accent-primary"
+                  max={2}
+                  min={0}
+                  onChange={(e) =>
+                    setCustomTemp(Number.parseFloat(e.target.value))
+                  }
+                  step={0.1}
+                  type="range"
+                  value={customTemp}
+                />
+                <span className="text-[11px] text-muted-foreground">
+                  0 = Précis, 2 = Créatif
+                </span>
               </div>
               <div className="flex flex-col gap-1.5">
-                <Label className="text-xs font-medium text-muted-foreground">Top P ({customTopP})</Label>
-                <input type="range" min={0} max={1} step={0.05} value={customTopP} onChange={(e) => setCustomTopP(parseFloat(e.target.value))} className="w-full accent-primary" />
-                <span className="text-[11px] text-muted-foreground">Contrôle diversité</span>
+                <Label className="text-xs font-medium text-muted-foreground">
+                  Top P ({customTopP})
+                </Label>
+                <input
+                  className="w-full accent-primary"
+                  max={1}
+                  min={0}
+                  onChange={(e) =>
+                    setCustomTopP(Number.parseFloat(e.target.value))
+                  }
+                  step={0.05}
+                  type="range"
+                  value={customTopP}
+                />
+                <span className="text-[11px] text-muted-foreground">
+                  Contrôle diversité
+                </span>
               </div>
             </div>
             <div className="flex justify-end">
               <button
-                type="button"
-                onClick={handleSaveCustomInstructions}
-                disabled={isSavingCustom}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-600 text-white px-6 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer disabled:opacity-50"
+                disabled={isSavingCustom}
+                onClick={handleSaveCustomInstructions}
+                type="button"
               >
-                {isSavingCustom ? <Loader2Icon className="size-4 animate-spin" /> : null}
-                {isSavingCustom ? "Enregistrement..." : "Enregistrer instructions"}
+                {isSavingCustom ? (
+                  <Loader2Icon className="size-4 animate-spin" />
+                ) : null}
+                {isSavingCustom
+                  ? "Enregistrement..."
+                  : "Enregistrer instructions"}
               </button>
             </div>
           </div>
@@ -826,17 +1018,30 @@ export default function SettingsPage() {
           <div className="p-5 rounded-2xl border border-border/60 bg-muted/20 flex items-start gap-3">
             <AlertCircleIcon className="size-5 text-primary shrink-0 mt-0.5" />
             <div className="text-xs text-muted-foreground">
-              <p className="font-semibold text-foreground mb-1">Comment ça marche ?</p>
+              <p className="font-semibold text-foreground mb-1">
+                Comment ça marche ?
+              </p>
               <p>
-                Les préférences sont stockées en cookie (<code className="px-1 py-0.5 rounded bg-muted font-mono text-[11px]">chat-model</code> &{" "}
-                <code className="px-1 py-0.5 rounded bg-muted font-mono text-[11px]">ai-mode</code>) valables 1 an. Elles s'appliquent aux nouvelles discussions, pas aux conversations existantes.
+                Les préférences sont stockées en cookie (
+                <code className="px-1 py-0.5 rounded bg-muted font-mono text-[11px]">
+                  chat-model
+                </code>{" "}
+                &{" "}
+                <code className="px-1 py-0.5 rounded bg-muted font-mono text-[11px]">
+                  ai-mode
+                </code>
+                ) valables 1 an. Elles s'appliquent aux nouvelles discussions,
+                pas aux conversations existantes.
               </p>
             </div>
           </div>
         </div>
       ) : (
         /* ────────────── SECTION CONSOMMATION & QUOTAS ────────────── */
-        <div className="py-6 flex flex-col gap-6 max-w-3xl">
+        <div
+          className="py-6 flex flex-col gap-6 max-w-3xl scroll-mt-6"
+          id="usage-mAI"
+        >
           {/* Forfait actuel */}
           <div className="p-6 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
@@ -844,7 +1049,9 @@ export default function SettingsPage() {
                 Forfait Actuel
               </span>
               <div className="flex items-center gap-3 mt-1">
-                <h2 className="text-2xl font-bold text-foreground">mAI {profile?.tier || "Free"}</h2>
+                <h2 className="text-2xl font-bold text-foreground">
+                  mAI {profile?.tier || "Free"}
+                </h2>
                 <span className="text-xs px-2.5 py-0.5 rounded-full font-bold uppercase bg-primary/10 text-primary border border-primary/20">
                   Actif
                 </span>
@@ -857,9 +1064,9 @@ export default function SettingsPage() {
             </div>
 
             <Link
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2.5 text-sm font-semibold transition-all hover:opacity-90 active:scale-95 shadow-md shrink-0"
               href={MAI_UPGRADE_URL}
               target="_blank"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2.5 text-sm font-semibold transition-all hover:opacity-90 active:scale-95 shadow-md shrink-0"
             >
               <SparklesIcon className="size-4" />
               <span>Gérer / Mettre à niveau</span>
@@ -868,7 +1075,10 @@ export default function SettingsPage() {
           </div>
 
           {/* Consommation mAI (Tokens hebdomadaires) */}
-          <div className="p-6 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4">
+          <div
+            className="p-6 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4"
+            id="usage"
+          >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
                 <div className="p-2 rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
@@ -886,9 +1096,12 @@ export default function SettingsPage() {
 
               <div className="text-right">
                 <span className="text-sm font-bold text-foreground">
-                  {formatTokens(aiUsage?.tokensUsed || 0)} / {formatTokens(aiUsage?.limit || 500000)}
+                  {formatTokens(aiUsage?.tokensUsed || 0)} /{" "}
+                  {formatTokens(aiUsage?.limit || 500_000)}
                 </span>
-                <span className="text-xs text-muted-foreground block">tokens ({aiPercent}%)</span>
+                <span className="text-xs text-muted-foreground block">
+                  tokens ({aiPercent}%)
+                </span>
               </div>
             </div>
 
@@ -899,8 +1112,8 @@ export default function SettingsPage() {
                   aiPercent > 90
                     ? "bg-red-500"
                     : aiPercent > 75
-                    ? "bg-amber-500"
-                    : "bg-gradient-to-r from-indigo-500 to-purple-600"
+                      ? "bg-amber-500"
+                      : "bg-gradient-to-r from-indigo-500 to-purple-600"
                 }`}
                 style={{ width: `${aiPercent}%` }}
               />
@@ -908,7 +1121,9 @@ export default function SettingsPage() {
 
             <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
               <span>Renouvellement hebdomadaire :</span>
-              <span className="font-medium text-foreground">{formatDate(aiUsage?.resetAt)}</span>
+              <span className="font-medium text-foreground">
+                {formatDate(aiUsage?.resetAt)}
+              </span>
             </div>
           </div>
 
@@ -924,16 +1139,27 @@ export default function SettingsPage() {
                     Générations d'Images (Studio mAI)
                   </h3>
                   <p className="text-xs text-muted-foreground">
-                    Images générées aujourd'hui (quota réinitialisé à minuit UTC)
+                    Images générées aujourd'hui (quota réinitialisé à minuit
+                    UTC)
                   </p>
                 </div>
               </div>
 
               <div className="text-right">
                 <span className="text-sm font-bold text-foreground">
-                  {imagesUsage?.usedToday ?? 0} / {imagesUsage?.dailyLimit ?? (profile?.tier === "Plus" ? 5 : profile?.tier === "Pro" ? 10 : profile?.tier === "Max" ? 20 : 3)}
+                  {imagesUsage?.usedToday ?? 0} /{" "}
+                  {imagesUsage?.dailyLimit ??
+                    (profile?.tier === "Plus"
+                      ? 5
+                      : profile?.tier === "Pro"
+                        ? 10
+                        : profile?.tier === "Max"
+                          ? 20
+                          : 3)}
                 </span>
-                <span className="text-xs text-muted-foreground block">images ({imagesPercent}%)</span>
+                <span className="text-xs text-muted-foreground block">
+                  images ({imagesPercent}%)
+                </span>
               </div>
             </div>
 
@@ -944,8 +1170,8 @@ export default function SettingsPage() {
                   imagesPercent >= 100
                     ? "bg-red-500"
                     : imagesPercent > 75
-                    ? "bg-amber-500"
-                    : "bg-gradient-to-r from-purple-500 to-pink-600"
+                      ? "bg-amber-500"
+                      : "bg-gradient-to-r from-purple-500 to-pink-600"
                 }`}
                 style={{ width: `${imagesPercent}%` }}
               />
@@ -953,7 +1179,9 @@ export default function SettingsPage() {
 
             <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
               <span>Réinitialisation du quota :</span>
-              <span className="font-medium text-foreground">{formatDate(imagesUsage?.resetAt)} (Minuit UTC)</span>
+              <span className="font-medium text-foreground">
+                {formatDate(imagesUsage?.resetAt)} (Minuit UTC)
+              </span>
             </div>
           </div>
 
@@ -976,9 +1204,12 @@ export default function SettingsPage() {
 
               <div className="text-right">
                 <span className="text-sm font-bold text-foreground">
-                  {formatBytes(cloudUsage?.bytesUsed || 0)} / {formatBytes(cloudUsage?.bytesLimit || 524288000)}
+                  {formatBytes(cloudUsage?.bytesUsed || 0)} /{" "}
+                  {formatBytes(cloudUsage?.bytesLimit || 524_288_000)}
                 </span>
-                <span className="text-xs text-muted-foreground block">utilisés ({cloudPercent}%)</span>
+                <span className="text-xs text-muted-foreground block">
+                  utilisés ({cloudPercent}%)
+                </span>
               </div>
             </div>
 
@@ -989,8 +1220,8 @@ export default function SettingsPage() {
                   cloudPercent > 90
                     ? "bg-red-500"
                     : cloudPercent > 75
-                    ? "bg-amber-500"
-                    : "bg-gradient-to-r from-blue-500 to-cyan-600"
+                      ? "bg-amber-500"
+                      : "bg-gradient-to-r from-blue-500 to-cyan-600"
                 }`}
                 style={{ width: `${cloudPercent}%` }}
               />
@@ -998,7 +1229,9 @@ export default function SettingsPage() {
 
             <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
               <span>Fichiers hébergés :</span>
-              <span className="font-medium text-foreground">{cloudUsage?.filesCount || 0} fichier(s)</span>
+              <span className="font-medium text-foreground">
+                {cloudUsage?.filesCount || 0} fichier(s)
+              </span>
             </div>
           </div>
 
@@ -1023,7 +1256,9 @@ export default function SettingsPage() {
                 <span className="text-sm font-bold text-foreground">
                   {apiUsage?.requestCount || 0} / {apiUsage?.limit || 500}
                 </span>
-                <span className="text-xs text-muted-foreground block">requêtes ({apiPercent}%)</span>
+                <span className="text-xs text-muted-foreground block">
+                  requêtes ({apiPercent}%)
+                </span>
               </div>
             </div>
 
@@ -1034,8 +1269,8 @@ export default function SettingsPage() {
                   apiPercent > 90
                     ? "bg-red-500"
                     : apiPercent > 75
-                    ? "bg-amber-500"
-                    : "bg-gradient-to-r from-emerald-500 to-teal-600"
+                      ? "bg-amber-500"
+                      : "bg-gradient-to-r from-emerald-500 to-teal-600"
                 }`}
                 style={{ width: `${apiPercent}%` }}
               />
@@ -1043,7 +1278,9 @@ export default function SettingsPage() {
 
             <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
               <span>Clés API associées au compte :</span>
-              <span className="font-medium text-foreground">{apiUsage?.keysCount || 0} active(s)</span>
+              <span className="font-medium text-foreground">
+                {apiUsage?.keysCount || 0} active(s)
+              </span>
             </div>
           </div>
 
@@ -1055,12 +1292,13 @@ export default function SettingsPage() {
                 Besoin de plus de tokens ou d'espace de stockage ?
               </p>
               <p>
-                Les mises à niveau de forfait (Plus, Pro, Max) et l'activation des codes promotionnels
-                s'effectuent directement sur le portail officiel{" "}
+                Les mises à niveau de forfait (Plus, Pro, Max) et l'activation
+                des codes promotionnels s'effectuent directement sur le portail
+                officiel{" "}
                 <Link
+                  className="text-primary font-medium underline inline-flex items-center gap-0.5"
                   href={MAI_UPGRADE_URL}
                   target="_blank"
-                  className="text-primary font-medium underline inline-flex items-center gap-0.5"
                 >
                   mai-devs.vercel.app
                   <ExternalLinkIcon className="size-3" />
@@ -1073,40 +1311,47 @@ export default function SettingsPage() {
       )}
 
       {/* Modale de validation OTP du nouvel e-mail */}
-      <AlertDialog open={showEmailOtpModal} onOpenChange={setShowEmailOtpModal}>
+      <AlertDialog onOpenChange={setShowEmailOtpModal} open={showEmailOtpModal}>
         <AlertDialogContent>
           <AlertDialogHeader>
             <div className="flex items-center gap-2 text-primary font-semibold text-xs mb-1">
               <ShieldCheckIcon className="size-4" />
               Changement d'adresse e-mail
             </div>
-            <AlertDialogTitle>Confirmez votre nouvelle adresse</AlertDialogTitle>
+            <AlertDialogTitle>
+              Confirmez votre nouvelle adresse
+            </AlertDialogTitle>
             <AlertDialogDescription>
-              Un code de confirmation a été envoyé à <strong>{pendingEmail}</strong>. Veuillez le saisir
-              pour finaliser la mise à jour de votre profil.
+              Un code de confirmation a été envoyé à{" "}
+              <strong>{pendingEmail}</strong>. Veuillez le saisir pour finaliser
+              la mise à jour de votre profil.
             </AlertDialogDescription>
           </AlertDialogHeader>
 
           <div className="my-3">
             <Input
-              type="text"
-              maxLength={8}
-              placeholder="123456"
-              value={emailOtpCode}
-              onChange={(e) => setEmailOtpCode(e.target.value)}
-              className="h-11 text-center text-lg font-mono tracking-widest font-bold"
               autoFocus
+              className="h-11 text-center text-lg font-mono tracking-widest font-bold"
+              maxLength={8}
+              onChange={(e) => setEmailOtpCode(e.target.value)}
+              placeholder="123456"
+              type="text"
+              value={emailOtpCode}
             />
           </div>
 
           <AlertDialogFooter>
-            <AlertDialogCancel disabled={isVerifyingEmail}>Annuler</AlertDialogCancel>
+            <AlertDialogCancel disabled={isVerifyingEmail}>
+              Annuler
+            </AlertDialogCancel>
             <AlertDialogAction
-              onClick={handleVerifyNewEmail}
-              disabled={isVerifyingEmail}
               className="bg-primary text-primary-foreground"
+              disabled={isVerifyingEmail}
+              onClick={handleVerifyNewEmail}
             >
-              {isVerifyingEmail ? "Vérification..." : "Confirmer le nouvel e-mail"}
+              {isVerifyingEmail
+                ? "Vérification..."
+                : "Confirmer le nouvel e-mail"}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

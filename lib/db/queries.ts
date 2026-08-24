@@ -25,13 +25,10 @@ import {
   type DBMessage,
   document,
   message,
-  type Project,
   project,
   type Suggestion,
   stream,
   suggestion,
-  tokenBlacklist,
-  userTotp,
   vote,
 } from "./schema";
 
@@ -124,7 +121,7 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     "userId" text NOT NULL,
     "name" text NOT NULL,
     "description" text DEFAULT '',
-    "icon" text DEFAULT '📁',
+    "icon" text DEFAULT 'folder',
     "color" varchar(7) DEFAULT '#6366f1',
     "isArchived" boolean DEFAULT false NOT NULL,
     "createdAt" timestamp DEFAULT now() NOT NULL,
@@ -229,7 +226,7 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     client`ALTER TABLE "Project" ADD COLUMN IF NOT EXISTS "description" text DEFAULT ''`
   );
   await run(
-    client`ALTER TABLE "Project" ADD COLUMN IF NOT EXISTS "icon" text DEFAULT '📁'`
+    client`ALTER TABLE "Project" ADD COLUMN IF NOT EXISTS "icon" text DEFAULT 'folder'`
   );
   await run(
     client`ALTER TABLE "Project" ADD COLUMN IF NOT EXISTS "color" varchar(7) DEFAULT '#6366f1'`
@@ -449,14 +446,12 @@ export async function getChatsByUserId({
       extraConditions.push(sql`${chat.title} ILIKE ${escaped}`);
     }
 
-    const userCondition = userEmail && userEmail !== id
-      ? sql`(${chat.userId}::text = ${id}::text OR ${chat.userId}::text = ${userEmail}::text)`
-      : sql`${chat.userId}::text = ${id}::text`;
+    const userCondition =
+      userEmail && userEmail !== id
+        ? sql`(${chat.userId}::text = ${id}::text OR ${chat.userId}::text = ${userEmail}::text)`
+        : sql`${chat.userId}::text = ${id}::text`;
 
-    const baseWhere = and(
-      userCondition,
-      ...extraConditions
-    );
+    const baseWhere = and(userCondition, ...extraConditions);
 
     const query = (whereCondition?: SQL<unknown>) => {
       const where = whereCondition ? and(whereCondition, baseWhere) : baseWhere;
@@ -555,7 +550,7 @@ export async function createProject({
         color: color ?? "#6366f1",
         customInstructions: customInstructions ?? null,
         description: description ?? "",
-        icon: icon ?? "📁",
+        icon: icon ?? "folder",
         name,
         userId,
       })
@@ -581,9 +576,10 @@ export async function getProjectsByUserId({
 }) {
   try {
     const db = await dbReady();
-    const userCondition = userEmail && userEmail !== userId
-      ? sql`(${project.userId}::text = ${userId}::text OR ${project.userId}::text = ${userEmail}::text)`
-      : sql`${project.userId}::text = ${userId}::text`;
+    const userCondition =
+      userEmail && userEmail !== userId
+        ? sql`(${project.userId}::text = ${userId}::text OR ${project.userId}::text = ${userEmail}::text)`
+        : sql`${project.userId}::text = ${userId}::text`;
     const conditions: SQL<unknown>[] = [userCondition];
     if (!includeArchived) {
       conditions.push(eq(project.isArchived, false));
@@ -616,9 +612,10 @@ export async function getProjectById({
 }) {
   try {
     const db = await dbReady();
-    const userCondition = userEmail && userEmail !== userId
-      ? sql`(${project.userId}::text = ${userId}::text OR ${project.userId}::text = ${userEmail}::text)`
-      : sql`${project.userId}::text = ${userId}::text`;
+    const userCondition =
+      userEmail && userEmail !== userId
+        ? sql`(${project.userId}::text = ${userId}::text OR ${project.userId}::text = ${userEmail}::text)`
+        : sql`${project.userId}::text = ${userId}::text`;
     const [p] = await db
       .select()
       .from(project)
@@ -649,15 +646,28 @@ export async function updateProject({
   try {
     const db = await dbReady();
     const updateData: Record<string, unknown> = { updatedAt: new Date() };
-    if (fields.name !== undefined) updateData.name = fields.name;
-    if (fields.description !== undefined) updateData.description = fields.description;
-    if (fields.icon !== undefined) updateData.icon = fields.icon;
-    if (fields.color !== undefined) updateData.color = fields.color;
-    if (fields.customInstructions !== undefined) updateData.customInstructions = fields.customInstructions;
-    if (fields.isArchived !== undefined) updateData.isArchived = fields.isArchived;
-    const userCondition = userEmail && userEmail !== userId
-      ? sql`(${project.userId}::text = ${userId}::text OR ${project.userId}::text = ${userEmail}::text)`
-      : sql`${project.userId}::text = ${userId}::text`;
+    if (fields.name !== undefined) {
+      updateData.name = fields.name;
+    }
+    if (fields.description !== undefined) {
+      updateData.description = fields.description;
+    }
+    if (fields.icon !== undefined) {
+      updateData.icon = fields.icon;
+    }
+    if (fields.color !== undefined) {
+      updateData.color = fields.color;
+    }
+    if (fields.customInstructions !== undefined) {
+      updateData.customInstructions = fields.customInstructions;
+    }
+    if (fields.isArchived !== undefined) {
+      updateData.isArchived = fields.isArchived;
+    }
+    const userCondition =
+      userEmail && userEmail !== userId
+        ? sql`(${project.userId}::text = ${userId}::text OR ${project.userId}::text = ${userEmail}::text)`
+        : sql`${project.userId}::text = ${userId}::text`;
     const [updated] = await db
       .update(project)
       .set(updateData as any)
@@ -682,12 +692,14 @@ export async function deleteProject({
 }) {
   try {
     const db = await dbReady();
-    const userCondition = userEmail && userEmail !== userId
-      ? sql`(${chat.userId}::text = ${userId}::text OR ${chat.userId}::text = ${userEmail}::text)`
-      : sql`${chat.userId}::text = ${userId}::text`;
-    const projectUserCondition = userEmail && userEmail !== userId
-      ? sql`(${project.userId}::text = ${userId}::text OR ${project.userId}::text = ${userEmail}::text)`
-      : sql`${project.userId}::text = ${userId}::text`;
+    const userCondition =
+      userEmail && userEmail !== userId
+        ? sql`(${chat.userId}::text = ${userId}::text OR ${chat.userId}::text = ${userEmail}::text)`
+        : sql`${chat.userId}::text = ${userId}::text`;
+    const projectUserCondition =
+      userEmail && userEmail !== userId
+        ? sql`(${project.userId}::text = ${userId}::text OR ${project.userId}::text = ${userEmail}::text)`
+        : sql`${project.userId}::text = ${userId}::text`;
 
     if (deleteChats) {
       const chatsToDelete = await db
@@ -728,14 +740,15 @@ export async function getProjectChatCounts({
 }) {
   try {
     const db = await dbReady();
-    const userCondition = userEmail && userEmail !== userId
-      ? sql`(${chat.userId}::text = ${userId}::text OR ${chat.userId}::text = ${userEmail}::text)`
-      : sql`${chat.userId}::text = ${userId}::text`;
+    const userCondition =
+      userEmail && userEmail !== userId
+        ? sql`(${chat.userId}::text = ${userId}::text OR ${chat.userId}::text = ${userEmail}::text)`
+        : sql`${chat.userId}::text = ${userId}::text`;
     const where = includeArchived
       ? userCondition
       : and(userCondition, eq(chat.isArchived, false));
     const rows = await db
-      .select({ projectId: chat.projectId, count: count(chat.id) })
+      .select({ count: count(chat.id), projectId: chat.projectId })
       .from(chat)
       .where(where)
       .groupBy(chat.projectId);
@@ -761,16 +774,22 @@ export async function updateChatProjectById({
     const db = await dbReady();
     if (projectId) {
       const proj = await getProjectById({ id: projectId, userId });
-      if (!proj) throw new ChatbotError("not_found:database", "Project not found");
+      if (!proj) {
+        throw new ChatbotError("not_found:database", "Project not found");
+      }
     }
     const [updated] = await db
       .update(chat)
       .set({ projectId })
-      .where(and(eq(chat.id, chatId), sql`${chat.userId}::text = ${userId}::text`))
+      .where(
+        and(eq(chat.id, chatId), sql`${chat.userId}::text = ${userId}::text`)
+      )
       .returning();
     return updated;
   } catch (error) {
-    if (error instanceof ChatbotError) throw error;
+    if (error instanceof ChatbotError) {
+      throw error;
+    }
     throw new ChatbotError("bad_request:database", { cause: error });
   }
 }
@@ -788,7 +807,9 @@ export async function updateChatArchivedById({
   return db
     .update(chat)
     .set({ archivedAt: isArchived ? new Date() : null, isArchived })
-    .where(and(eq(chat.id, chatId), sql`${chat.userId}::text = ${userId}::text`))
+    .where(
+      and(eq(chat.id, chatId), sql`${chat.userId}::text = ${userId}::text`)
+    )
     .returning();
 }
 
@@ -805,7 +826,9 @@ export async function updateChatPinnedById({
   return db
     .update(chat)
     .set({ pinned })
-    .where(and(eq(chat.id, chatId), sql`${chat.userId}::text = ${userId}::text`))
+    .where(
+      and(eq(chat.id, chatId), sql`${chat.userId}::text = ${userId}::text`)
+    )
     .returning();
 }
 
@@ -826,7 +849,9 @@ export async function updateChatTagsById({
   return db
     .update(chat)
     .set({ tags: sanitized })
-    .where(and(eq(chat.id, chatId), sql`${chat.userId}::text = ${userId}::text`))
+    .where(
+      and(eq(chat.id, chatId), sql`${chat.userId}::text = ${userId}::text`)
+    )
     .returning();
 }
 
@@ -845,13 +870,21 @@ export async function updateChatCustomInstructionsById({
 }) {
   const db = await dbReady();
   const data: Record<string, unknown> = {};
-  if (customInstructions !== undefined) data.customInstructions = customInstructions;
-  if (modeId !== undefined) data.modeId = modeId;
-  if (temperatureOverride !== undefined) data.temperatureOverride = temperatureOverride;
+  if (customInstructions !== undefined) {
+    data.customInstructions = customInstructions;
+  }
+  if (modeId !== undefined) {
+    data.modeId = modeId;
+  }
+  if (temperatureOverride !== undefined) {
+    data.temperatureOverride = temperatureOverride;
+  }
   return db
     .update(chat)
     .set(data as any)
-    .where(and(eq(chat.id, chatId), sql`${chat.userId}::text = ${userId}::text`))
+    .where(
+      and(eq(chat.id, chatId), sql`${chat.userId}::text = ${userId}::text`)
+    )
     .returning();
 }
 
@@ -871,8 +904,13 @@ export async function bulkUpdateChats({
   isArchived?: boolean;
 }) {
   const db = await dbReady();
-  if (chatIds.length === 0) return { updated: 0 };
-  const where = and(inArray(chat.id, chatIds), sql`${chat.userId}::text = ${userId}::text`);
+  if (chatIds.length === 0) {
+    return { updated: 0 };
+  }
+  const where = and(
+    inArray(chat.id, chatIds),
+    sql`${chat.userId}::text = ${userId}::text`
+  );
   if (action === "delete") {
     await db.delete(vote).where(inArray(vote.chatId, chatIds));
     await db.delete(message).where(inArray(message.chatId, chatIds));
@@ -883,17 +921,28 @@ export async function bulkUpdateChats({
   if (action === "move") {
     if (projectId) {
       const proj = await getProjectById({ id: projectId, userId });
-      if (!proj) throw new ChatbotError("not_found:database", "Project not found");
+      if (!proj) {
+        throw new ChatbotError("not_found:database", "Project not found");
+      }
     }
-    await db.update(chat).set({ projectId: projectId ?? null }).where(where);
+    await db
+      .update(chat)
+      .set({ projectId: projectId ?? null })
+      .where(where);
     return { updated: chatIds.length };
   }
   if (action === "archive") {
-    await db.update(chat).set({ archivedAt: new Date(), isArchived: true }).where(where);
+    await db
+      .update(chat)
+      .set({ archivedAt: new Date(), isArchived: true })
+      .where(where);
     return { updated: chatIds.length };
   }
   if (action === "unarchive") {
-    await db.update(chat).set({ archivedAt: null, isArchived: false }).where(where);
+    await db
+      .update(chat)
+      .set({ archivedAt: null, isArchived: false })
+      .where(where);
     return { updated: chatIds.length };
   }
   if (action === "pin") {
@@ -909,14 +958,20 @@ export async function bulkUpdateChats({
       await db.update(chat).set({ tags: [] }).where(where);
       return { updated: chatIds.length };
     }
-    const sanitized = tags.map((t) => t.trim().slice(0, 30)).filter(Boolean).slice(0, 10);
+    const sanitized = tags
+      .map((t) => t.trim().slice(0, 30))
+      .filter(Boolean)
+      .slice(0, 10);
     // Append mode: merge with existing tags (non-destructif)
     const existing = await db
       .select({ id: chat.id, tags: chat.tags })
       .from(chat)
       .where(where);
     for (const row of existing) {
-      const merged = [...new Set([...(row.tags || []), ...sanitized])].slice(0, 10);
+      const merged = [...new Set([...(row.tags || []), ...sanitized])].slice(
+        0,
+        10
+      );
       await db.update(chat).set({ tags: merged }).where(eq(chat.id, row.id));
     }
     return { updated: existing.length };

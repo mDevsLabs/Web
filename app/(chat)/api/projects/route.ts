@@ -2,22 +2,27 @@ import { z } from "zod";
 import { getMaiUser } from "@/lib/auth/session";
 import {
   createProject,
-  getProjectsByUserId,
   getProjectChatCounts,
+  getProjectsByUserId,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 
 const createSchema = z.object({
-  name: z.string().min(1).max(100),
+  color: z
+    .string()
+    .regex(/^#[0-9a-fA-F]{6}$/)
+    .optional(),
+  customInstructions: z.string().max(4000).optional(),
   description: z.string().max(500).optional(),
   icon: z.string().max(10).optional(),
-  color: z.string().regex(/^#[0-9a-fA-F]{6}$/).optional(),
-  customInstructions: z.string().max(4000).optional(),
+  name: z.string().min(1).max(100),
 });
 
 export async function GET(request: Request) {
   const user = await getMaiUser();
-  if (!user) return new ChatbotError("unauthorized:chat").toResponse();
+  if (!user) {
+    return new ChatbotError("unauthorized:chat").toResponse();
+  }
   const userId = user.id || user.email;
   const userEmail = user.email;
   const { searchParams } = new URL(request.url);
@@ -25,8 +30,8 @@ export async function GET(request: Request) {
   const search = searchParams.get("search") ?? undefined;
 
   const [projects, counts] = await Promise.all([
-    getProjectsByUserId({ userId, userEmail, includeArchived, search }),
-    getProjectChatCounts({ userId, userEmail, includeArchived }),
+    getProjectsByUserId({ includeArchived, search, userEmail, userId }),
+    getProjectChatCounts({ includeArchived, userEmail, userId }),
   ]);
 
   const countMap = new Map(counts.map((c) => [c.projectId, c.count]));
@@ -43,7 +48,9 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   const user = await getMaiUser();
-  if (!user) return new ChatbotError("unauthorized:chat").toResponse();
+  if (!user) {
+    return new ChatbotError("unauthorized:chat").toResponse();
+  }
   const userId = user.id || user.email;
   const userEmail = user.email;
 
@@ -52,23 +59,32 @@ export async function POST(request: Request) {
     const parsed = createSchema.parse(body);
 
     // Limit projects per user
-    const existing = await getProjectsByUserId({ userId, userEmail, includeArchived: true });
+    const existing = await getProjectsByUserId({
+      includeArchived: true,
+      userEmail,
+      userId,
+    });
     if (existing.length >= 50) {
-      return new ChatbotError("bad_request:api", "Limite de 50 projets atteinte.").toResponse();
+      return new ChatbotError(
+        "bad_request:api",
+        "Limite de 50 projets atteinte."
+      ).toResponse();
     }
 
     const project = await createProject({
-      userId,
-      name: parsed.name.trim(),
-      description: parsed.description?.trim(),
-      icon: parsed.icon,
       color: parsed.color,
       customInstructions: parsed.customInstructions?.trim(),
+      description: parsed.description?.trim(),
+      icon: parsed.icon,
+      name: parsed.name.trim(),
+      userId,
     });
 
-    return Response.json({ success: true, project });
+    return Response.json({ project, success: true });
   } catch (error) {
-    if (error instanceof ChatbotError) return error.toResponse();
+    if (error instanceof ChatbotError) {
+      return error.toResponse();
+    }
     if (error instanceof z.ZodError) {
       return new ChatbotError("bad_request:api", error.message).toResponse();
     }
