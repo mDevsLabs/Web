@@ -25,9 +25,13 @@ import {
   type DBMessage,
   document,
   message,
+  type Project,
+  project,
   type Suggestion,
   stream,
   suggestion,
+  tokenBlacklist,
+  userTotp,
   vote,
 } from "./schema";
 
@@ -113,6 +117,33 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     "id" text PRIMARY KEY NOT NULL,
     "chatId" uuid NOT NULL,
     "createdAt" timestamp NOT NULL DEFAULT now()
+  )`);
+
+  await run(client`CREATE TABLE IF NOT EXISTS "Project" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "userId" text NOT NULL,
+    "name" text NOT NULL,
+    "description" text DEFAULT '',
+    "icon" text DEFAULT '📁',
+    "color" varchar(7) DEFAULT '#6366f1',
+    "isArchived" boolean DEFAULT false NOT NULL,
+    "createdAt" timestamp DEFAULT now() NOT NULL,
+    "updatedAt" timestamp DEFAULT now() NOT NULL
+  )`);
+
+  await run(client`CREATE TABLE IF NOT EXISTS "token_blacklist" (
+    "token" text PRIMARY KEY NOT NULL,
+    "revoked_at" timestamp DEFAULT now() NOT NULL,
+    "expires_at" timestamp DEFAULT now() NOT NULL
+  )`);
+
+  await run(client`CREATE TABLE IF NOT EXISTS "user_totp" (
+    "user_id" text PRIMARY KEY NOT NULL,
+    "secret" text NOT NULL,
+    "verified" boolean DEFAULT false NOT NULL,
+    "backup_codes" text[] DEFAULT '{}' NOT NULL,
+    "created_at" timestamp DEFAULT now() NOT NULL,
+    "verified_at" timestamp
   )`);
 
   // Migrations de colonnes (supprimer contraintes FK, caster vers text)
@@ -214,17 +245,32 @@ export async function saveChat({
   userId,
   title,
   visibility,
+  projectId,
+  tags,
+  customInstructions,
+  modeId,
+  temperatureOverride,
 }: {
   id: string;
   userId: string;
   title: string;
   visibility: VisibilityType;
+  projectId?: string | null;
+  tags?: string[];
+  customInstructions?: string | null;
+  modeId?: string;
+  temperatureOverride?: number | null;
 }) {
   try {
     const db = await dbReady();
     return await db.insert(chat).values({
       createdAt: new Date(),
+      customInstructions: customInstructions ?? null,
       id,
+      modeId: modeId ?? "standard",
+      projectId: projectId ?? null,
+      tags: tags ?? [],
+      temperatureOverride: temperatureOverride ?? null,
       title,
       userId,
       visibility,
@@ -283,27 +329,73 @@ export async function getChatsByUserId({
   limit,
   startingAfter,
   endingBefore,
+  projectId,
+  isArchived,
+  pinned,
+  search,
+  tag,
+  includeArchived = false,
 }: {
   id: string;
   limit: number;
   startingAfter: string | null;
   endingBefore: string | null;
+  projectId?: string | null;
+  isArchived?: boolean | null;
+  pinned?: boolean | null;
+  search?: string | null;
+  tag?: string | null;
+  includeArchived?: boolean;
 }) {
   try {
     const db = await dbReady();
     const extendedLimit = limit + 1;
 
-    const query = (whereCondition?: SQL<unknown>) =>
-      db
+    const extraConditions: SQL<unknown>[] = [];
+
+    // Project filter: "null" means no project, undefined means no filter
+    if (projectId !== undefined) {
+      if (projectId === null || projectId === "null" || projectId === "") {
+        extraConditions.push(sql`${chat.projectId} IS NULL`);
+      } else {
+        extraConditions.push(sql`${chat.projectId} = ${projectId}::uuid`);
+      }
+    }
+
+    if (isArchived !== undefined && isArchived !== null) {
+      extraConditions.push(eq(chat.isArchived, isArchived));
+    } else if (!includeArchived) {
+      extraConditions.push(eq(chat.isArchived, false));
+    }
+
+    if (pinned !== undefined && pinned !== null) {
+      extraConditions.push(eq(chat.pinned, pinned));
+    }
+
+    if (tag) {
+      extraConditions.push(sql`${tag} = ANY(${chat.tags})`);
+    }
+
+    if (search) {
+      const escaped = `%${search.replace(/[%_]/g, "\\$&")}%`;
+      extraConditions.push(sql`${chat.title} ILIKE ${escaped}`);
+    }
+
+    const baseWhere = and(
+      sql`${chat.userId}::text = ${id}::text`,
+      ...extraConditions
+    );
+
+    const query = (whereCondition?: SQL<unknown>) => {
+      const where = whereCondition ? and(whereCondition, baseWhere) : baseWhere;
+      // Pinned first, then createdAt desc
+      return db
         .select()
         .from(chat)
-        .where(
-          whereCondition
-            ? and(whereCondition, sql`${chat.userId}::text = ${id}::text`)
-            : sql`${chat.userId}::text = ${id}::text`
-        )
-        .orderBy(desc(chat.createdAt))
+        .where(where)
+        .orderBy(desc(chat.pinned), desc(chat.createdAt))
         .limit(extendedLimit);
+    };
 
     let filteredChats: Chat[] = [];
 
@@ -363,6 +455,369 @@ export async function getChatById({ id }: { id: string }) {
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
+}
+
+// ─────────────────────────────────────────────
+// Projects
+// ─────────────────────────────────────────────
+export async function createProject({
+  userId,
+  name,
+  description,
+  icon,
+  color,
+}: {
+  userId: string;
+  name: string;
+  description?: string;
+  icon?: string;
+  color?: string;
+}) {
+  try {
+    const db = await dbReady();
+    const [p] = await db
+      .insert(project)
+      .values({
+        color: color ?? "#6366f1",
+        description: description ?? "",
+        icon: icon ?? "📁",
+        name,
+        userId,
+      })
+      .returning();
+    return p;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function getProjectsByUserId({
+  userId,
+  includeArchived = false,
+  search,
+  limit = 50,
+}: {
+  userId: string;
+  includeArchived?: boolean;
+  search?: string;
+  limit?: number;
+}) {
+  try {
+    const db = await dbReady();
+    const conditions: SQL<unknown>[] = [
+      sql`${project.userId}::text = ${userId}::text`,
+    ];
+    if (!includeArchived) {
+      conditions.push(eq(project.isArchived, false));
+    }
+    if (search) {
+      const escaped = `%${search.replace(/[%_]/g, "\\$&")}%`;
+      conditions.push(sql`${project.name} ILIKE ${escaped}`);
+    }
+    const where = and(...conditions);
+    const rows = await db
+      .select()
+      .from(project)
+      .where(where)
+      .orderBy(desc(project.updatedAt), desc(project.createdAt))
+      .limit(Math.min(Math.max(limit, 1), 100));
+    return rows;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function getProjectById({
+  id,
+  userId,
+}: {
+  id: string;
+  userId: string;
+}) {
+  try {
+    const db = await dbReady();
+    const [p] = await db
+      .select()
+      .from(project)
+      .where(and(eq(project.id, id), sql`${project.userId}::text = ${userId}::text`))
+      .limit(1);
+    return p ?? null;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function updateProject({
+  id,
+  userId,
+  ...fields
+}: {
+  id: string;
+  userId: string;
+  name?: string;
+  description?: string;
+  icon?: string;
+  color?: string;
+  isArchived?: boolean;
+}) {
+  try {
+    const db = await dbReady();
+    const updateData: Record<string, unknown> = { updatedAt: new Date() };
+    if (fields.name !== undefined) updateData.name = fields.name;
+    if (fields.description !== undefined) updateData.description = fields.description;
+    if (fields.icon !== undefined) updateData.icon = fields.icon;
+    if (fields.color !== undefined) updateData.color = fields.color;
+    if (fields.isArchived !== undefined) updateData.isArchived = fields.isArchived;
+    const [updated] = await db
+      .update(project)
+      .set(updateData as any)
+      .where(and(eq(project.id, id), sql`${project.userId}::text = ${userId}::text`))
+      .returning();
+    return updated;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function deleteProject({
+  id,
+  userId,
+  deleteChats = false,
+}: {
+  id: string;
+  userId: string;
+  deleteChats?: boolean;
+}) {
+  try {
+    const db = await dbReady();
+    if (deleteChats) {
+      const chatsToDelete = await db
+        .select({ id: chat.id })
+        .from(chat)
+        .where(and(eq(chat.projectId, id), sql`${chat.userId}::text = ${userId}::text`));
+      const ids = chatsToDelete.map((c) => c.id);
+      if (ids.length > 0) {
+        await db.delete(vote).where(inArray(vote.chatId, ids));
+        await db.delete(message).where(inArray(message.chatId, ids));
+        await db.delete(stream).where(inArray(stream.chatId, ids));
+        await db.delete(chat).where(inArray(chat.id, ids));
+      }
+    } else {
+      await db
+        .update(chat)
+        .set({ projectId: null })
+        .where(and(eq(chat.projectId, id), sql`${chat.userId}::text = ${userId}::text`));
+    }
+    const [deleted] = await db
+      .delete(project)
+      .where(and(eq(project.id, id), sql`${project.userId}::text = ${userId}::text`))
+      .returning();
+    return deleted;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function getProjectChatCounts({
+  userId,
+  includeArchived = false,
+}: {
+  userId: string;
+  includeArchived?: boolean;
+}) {
+  try {
+    const db = await dbReady();
+    const where = includeArchived
+      ? sql`${chat.userId}::text = ${userId}::text`
+      : and(sql`${chat.userId}::text = ${userId}::text`, eq(chat.isArchived, false));
+    const rows = await db
+      .select({ projectId: chat.projectId, count: count(chat.id) })
+      .from(chat)
+      .where(where)
+      .groupBy(chat.projectId);
+    return rows;
+  } catch {
+    return [];
+  }
+}
+
+// ─────────────────────────────────────────────
+// Chat extended: pin / archive / tags / project / bulk
+// ─────────────────────────────────────────────
+export async function updateChatProjectById({
+  chatId,
+  userId,
+  projectId,
+}: {
+  chatId: string;
+  userId: string;
+  projectId: string | null;
+}) {
+  try {
+    const db = await dbReady();
+    if (projectId) {
+      const proj = await getProjectById({ id: projectId, userId });
+      if (!proj) throw new ChatbotError("not_found:database", "Project not found");
+    }
+    const [updated] = await db
+      .update(chat)
+      .set({ projectId })
+      .where(and(eq(chat.id, chatId), sql`${chat.userId}::text = ${userId}::text`))
+      .returning();
+    return updated;
+  } catch (error) {
+    if (error instanceof ChatbotError) throw error;
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function updateChatArchivedById({
+  chatId,
+  userId,
+  isArchived,
+}: {
+  chatId: string;
+  userId: string;
+  isArchived: boolean;
+}) {
+  const db = await dbReady();
+  return db
+    .update(chat)
+    .set({ archivedAt: isArchived ? new Date() : null, isArchived })
+    .where(and(eq(chat.id, chatId), sql`${chat.userId}::text = ${userId}::text`))
+    .returning();
+}
+
+export async function updateChatPinnedById({
+  chatId,
+  userId,
+  pinned,
+}: {
+  chatId: string;
+  userId: string;
+  pinned: boolean;
+}) {
+  const db = await dbReady();
+  return db
+    .update(chat)
+    .set({ pinned })
+    .where(and(eq(chat.id, chatId), sql`${chat.userId}::text = ${userId}::text`))
+    .returning();
+}
+
+export async function updateChatTagsById({
+  chatId,
+  userId,
+  tags,
+}: {
+  chatId: string;
+  userId: string;
+  tags: string[];
+}) {
+  const sanitized = tags
+    .map((t) => t.trim().slice(0, 30))
+    .filter(Boolean)
+    .slice(0, 10);
+  const db = await dbReady();
+  return db
+    .update(chat)
+    .set({ tags: sanitized })
+    .where(and(eq(chat.id, chatId), sql`${chat.userId}::text = ${userId}::text`))
+    .returning();
+}
+
+export async function updateChatCustomInstructionsById({
+  chatId,
+  userId,
+  customInstructions,
+  modeId,
+  temperatureOverride,
+}: {
+  chatId: string;
+  userId: string;
+  customInstructions?: string | null;
+  modeId?: string | null;
+  temperatureOverride?: number | null;
+}) {
+  const db = await dbReady();
+  const data: Record<string, unknown> = {};
+  if (customInstructions !== undefined) data.customInstructions = customInstructions;
+  if (modeId !== undefined) data.modeId = modeId;
+  if (temperatureOverride !== undefined) data.temperatureOverride = temperatureOverride;
+  return db
+    .update(chat)
+    .set(data as any)
+    .where(and(eq(chat.id, chatId), sql`${chat.userId}::text = ${userId}::text`))
+    .returning();
+}
+
+export async function bulkUpdateChats({
+  userId,
+  chatIds,
+  action,
+  projectId,
+  tags,
+  isArchived,
+}: {
+  userId: string;
+  chatIds: string[];
+  action: "move" | "archive" | "unarchive" | "pin" | "unpin" | "tag" | "delete";
+  projectId?: string | null;
+  tags?: string[];
+  isArchived?: boolean;
+}) {
+  const db = await dbReady();
+  if (chatIds.length === 0) return { updated: 0 };
+  const where = and(inArray(chat.id, chatIds), sql`${chat.userId}::text = ${userId}::text`);
+  if (action === "delete") {
+    await db.delete(vote).where(inArray(vote.chatId, chatIds));
+    await db.delete(message).where(inArray(message.chatId, chatIds));
+    await db.delete(stream).where(inArray(stream.chatId, chatIds));
+    const deleted = await db.delete(chat).where(where).returning();
+    return { updated: deleted.length };
+  }
+  if (action === "move") {
+    if (projectId) {
+      const proj = await getProjectById({ id: projectId, userId });
+      if (!proj) throw new ChatbotError("not_found:database", "Project not found");
+    }
+    await db.update(chat).set({ projectId: projectId ?? null }).where(where);
+    return { updated: chatIds.length };
+  }
+  if (action === "archive") {
+    await db.update(chat).set({ archivedAt: new Date(), isArchived: true }).where(where);
+    return { updated: chatIds.length };
+  }
+  if (action === "unarchive") {
+    await db.update(chat).set({ archivedAt: null, isArchived: false }).where(where);
+    return { updated: chatIds.length };
+  }
+  if (action === "pin") {
+    await db.update(chat).set({ pinned: true }).where(where);
+    return { updated: chatIds.length };
+  }
+  if (action === "unpin") {
+    await db.update(chat).set({ pinned: false }).where(where);
+    return { updated: chatIds.length };
+  }
+  if (action === "tag" && tags) {
+    if (tags.length === 0) {
+      await db.update(chat).set({ tags: [] }).where(where);
+      return { updated: chatIds.length };
+    }
+    const sanitized = tags.map((t) => t.trim().slice(0, 30)).filter(Boolean).slice(0, 10);
+    // Append mode: merge with existing tags (non-destructif)
+    const existing = await db
+      .select({ id: chat.id, tags: chat.tags })
+      .from(chat)
+      .where(where);
+    for (const row of existing) {
+      const merged = [...new Set([...(row.tags || []), ...sanitized])].slice(0, 10);
+      await db.update(chat).set({ tags: merged }).where(eq(chat.id, row.id));
+    }
+    return { updated: existing.length };
+  }
+  return { updated: 0 };
 }
 
 export async function saveMessages({ messages }: { messages: DBMessage[] }) {

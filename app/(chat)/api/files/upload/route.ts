@@ -4,15 +4,41 @@ import { z } from "zod";
 
 import { auth } from "@/app/(auth)/auth";
 
+const ALLOWED_UPLOAD_TYPES = [
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "image/gif",
+  "application/pdf",
+  "text/plain",
+  "text/markdown",
+  "text/csv",
+  "application/json",
+];
+
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB aligné bibliothèque Cloud
+
 const FileSchema = z.object({
   file: z
     .instanceof(Blob)
-    .refine((file) => file.size <= 5 * 1024 * 1024, {
-      message: "File size should be less than 5MB",
+    .refine((file) => file.size <= MAX_FILE_SIZE, {
+      message: "File size should be less than 10MB",
     })
-    .refine((file) => ["image/jpeg", "image/png"].includes(file.type), {
-      message: "File type should be JPEG or PNG",
-    }),
+    .refine(
+      (file) => {
+        if (!file.type) return true; // fallback si mime manquant (certains navigateurs)
+        return (
+          ALLOWED_UPLOAD_TYPES.includes(file.type) ||
+          file.type.startsWith("image/") ||
+          file.type.startsWith("text/") ||
+          file.type === "application/pdf" ||
+          file.type === "application/json"
+        );
+      },
+      {
+        message: "File type should be image, PDF or text",
+      }
+    ),
 });
 
 export async function POST(request: Request) {

@@ -66,17 +66,20 @@ About the origin of user's request:
 export const systemPrompt = ({
   requestHints,
   supportsTools,
+  modeAddendum,
 }: {
   requestHints: RequestHints;
   supportsTools: boolean;
+  modeAddendum?: string;
 }) => {
   const requestPrompt = getRequestPromptFromHints(requestHints);
+  const modePrompt = modeAddendum ? `\n\nMode IA actif:\n${modeAddendum}` : "";
 
   if (!supportsTools) {
-    return `${regularPrompt}\n\n${requestPrompt}`;
+    return `${regularPrompt}\n\n${requestPrompt}${modePrompt}`;
   }
 
-  return `${regularPrompt}\n\n${requestPrompt}\n\n${artifactsPrompt}`;
+  return `${regularPrompt}\n\n${requestPrompt}\n\n${artifactsPrompt}${modePrompt}`;
 };
 
 export const codePrompt = `

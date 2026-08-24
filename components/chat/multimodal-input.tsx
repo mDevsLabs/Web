@@ -6,10 +6,15 @@ import equal from "fast-deep-equal";
 import {
   ArrowUpIcon,
   BrainIcon,
+  CheckCircle2Icon,
   CloudIcon,
+  Code2Icon,
   EyeIcon,
   LockIcon,
   PlusIcon,
+  ScaleIcon,
+  SparklesIcon,
+  TargetIcon,
   UploadIcon,
   WrenchIcon,
 } from "lucide-react";
@@ -46,15 +51,20 @@ import {
   DEFAULT_CHAT_MODEL,
   type ModelCapabilities,
 } from "@/lib/ai/models";
+import { AI_MODES, type AIModeId } from "@/lib/ai/modes";
 import type { Attachment, ChatMessage } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { formatBytes } from "@/app/(chat)/library/page";
+import { useActiveChat } from "@/hooks/use-active-chat";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -138,7 +148,7 @@ function PureMultimodalInput({
   }, [width]);
 
   const [localStorageInput, setLocalStorageInput] = useLocalStorage(
-    "input",
+    `input:${chatId}`,
     ""
   );
 
@@ -148,7 +158,8 @@ function PureMultimodalInput({
       const finalValue = domValue || localStorageInput || "";
       setInput(finalValue);
     }
-  }, [localStorageInput, setInput]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [localStorageInput, chatId]);
 
   useEffect(() => {
     setLocalStorageInput(input);
@@ -161,11 +172,45 @@ function PureMultimodalInput({
   const [slashQuery, setSlashQuery] = useState("");
   const [slashIndex, setSlashIndex] = useState(0);
 
+  // Capacités du modèle sélectionné (source unique via /api/models)
+  const { data: modelCapsData } = useSWR(
+    `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models`,
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 30_000, revalidateOnFocus: false }
+  );
+  const capsMap: Record<string, ModelCapabilities> | undefined =
+    modelCapsData?.capabilities;
+  const currentCapabilities = capsMap?.[selectedModelId];
+  const hasVisionSupport = Boolean(
+    currentCapabilities?.vision ||
+      currentCapabilities?.image ||
+      currentCapabilities?.file
+  );
+  const hasStrictCaps = Boolean(capsMap && currentCapabilities !== undefined);
+
+  // Vider les pièces jointes si le modèle ne supporte plus la vision/fichiers
+  useEffect(() => {
+    if (!hasStrictCaps) return;
+    if (!hasVisionSupport && attachments.length > 0) {
+      setAttachments([]);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      toast.error(
+        "Pièces jointes retirées : ce modèle ne prend pas en charge les fichiers/images."
+      );
+    }
+  }, [hasVisionSupport, hasStrictCaps, attachments.length, setAttachments]);
+
   const handleCloudAttachments = useCallback(
     (newAttachments: Attachment[]) => {
+      if (!hasVisionSupport && hasStrictCaps) {
+        toast.error(
+          "Ce modèle ne prend pas en charge l'importation de fichiers."
+        );
+        return;
+      }
       setAttachments((curr) => [...curr, ...newAttachments]);
     },
-    [setAttachments]
+    [setAttachments, hasVisionSupport, hasStrictCaps]
   );
 
 
@@ -249,6 +294,13 @@ function PureMultimodalInput({
   );
 
   const submitForm = useCallback(() => {
+    if (attachments.length > 0 && !hasVisionSupport && hasStrictCaps) {
+      toast.error(
+        "Ce modèle ne prend pas en charge les fichiers. Retirez les pièces jointes ou changez de modèle."
+      );
+      return;
+    }
+
     window.history.pushState(
       {},
       "",
@@ -282,6 +334,8 @@ function PureMultimodalInput({
     input,
     setInput,
     attachments,
+    hasVisionSupport,
+    hasStrictCaps,
     sendMessage,
     setAttachments,
     setLocalStorageInput,
@@ -321,6 +375,13 @@ function PureMultimodalInput({
 
   const handleFileChange = useCallback(
     async (event: ChangeEvent<HTMLInputElement>) => {
+      if (!hasVisionSupport && hasStrictCaps) {
+        toast.error(
+          "Ce modèle ne prend pas en charge l'importation de fichiers."
+        );
+        if (fileInputRef.current) fileInputRef.current.value = "";
+        return;
+      }
       const files = Array.from(event.target.files || []);
 
       setUploadQueue(files.map((file) => file.name));
@@ -342,11 +403,27 @@ function PureMultimodalInput({
         setUploadQueue([]);
       }
     },
-    [setAttachments, uploadFile]
+    [setAttachments, uploadFile, hasVisionSupport, hasStrictCaps]
   );
 
   const handlePaste = useCallback(
     async (event: ClipboardEvent) => {
+      if (!hasVisionSupport && hasStrictCaps) {
+        const itemsCheck = event.clipboardData?.items;
+        if (itemsCheck) {
+          const hasImages = Array.from(itemsCheck).some((i) =>
+            i.type.startsWith("image/")
+          );
+          if (hasImages) {
+            event.preventDefault();
+            toast.error(
+              "Ce modèle ne prend pas en charge les images. Changez de modèle pour coller des fichiers."
+            );
+            return;
+          }
+        }
+        return;
+      }
       const items = event.clipboardData?.items;
       if (!items) {
         return;
@@ -388,7 +465,7 @@ function PureMultimodalInput({
         setUploadQueue([]);
       }
     },
-    [setAttachments, uploadFile]
+    [setAttachments, uploadFile, hasVisionSupport, hasStrictCaps]
   );
 
   useEffect(() => {
@@ -400,6 +477,29 @@ function PureMultimodalInput({
     textarea.addEventListener("paste", handlePaste);
     return () => textarea.removeEventListener("paste", handlePaste);
   }, [handlePaste]);
+
+  // Bloquer le drag & drop si le modèle ne supporte pas vision/fichiers
+  useEffect(() => {
+    if (hasVisionSupport || !hasStrictCaps) return;
+    const handler = (e: DragEvent) => {
+      if (e.dataTransfer?.types?.includes("Files")) {
+        e.preventDefault();
+        // toast uniquement sur drop, pas sur dragover continu
+        if (e.type === "drop") {
+          toast.error(
+            "Ce modèle ne prend pas en charge les fichiers. Changez de modèle pour glisser-déposer."
+          );
+        }
+      }
+    };
+    const el = textareaRef.current?.closest("form") || document;
+    el.addEventListener("dragover", handler as any);
+    el.addEventListener("drop", handler as any);
+    return () => {
+      el.removeEventListener("dragover", handler as any);
+      el.removeEventListener("drop", handler as any);
+    };
+  }, [hasVisionSupport, hasStrictCaps]);
 
   const handleCancelEditMouseDown = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -425,12 +525,26 @@ function PureMultimodalInput({
     if (!input.trim() && attachments.length === 0) {
       return;
     }
+    if (attachments.length > 0 && !hasVisionSupport && hasStrictCaps) {
+      toast.error(
+        "Ce modèle ne prend pas en charge les fichiers. Retirez les pièces jointes ou changez de modèle."
+      );
+      return;
+    }
     if (status === "ready" || status === "error") {
       submitForm();
     } else {
       toast.error("Please wait for the model to finish its response!");
     }
-  }, [attachments.length, handleSlashSelect, input, status, submitForm]);
+  }, [
+    attachments.length,
+    handleSlashSelect,
+    hasVisionSupport,
+    hasStrictCaps,
+    input,
+    status,
+    submitForm,
+  ]);
 
   const handleTextareaKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -504,7 +618,13 @@ function PureMultimodalInput({
         )}
 
       <input
+        accept={
+          hasVisionSupport || !hasStrictCaps
+            ? "image/jpeg,image/png,image/webp,image/gif,application/pdf,text/plain,text/markdown,text/csv,application/json"
+            : ""
+        }
         className="pointer-events-none fixed -top-4 -left-4 size-0.5 opacity-0"
+        disabled={!hasVisionSupport && hasStrictCaps}
         multiple
         onChange={handleFileChange}
         ref={fileInputRef}
@@ -585,12 +705,12 @@ function PureMultimodalInput({
             <PromptInputSubmit
               className={cn(
                 "h-7 w-7 rounded-xl transition-all duration-200",
-                input.trim()
+                input.trim() || attachments.length > 0
                   ? "bg-foreground text-background hover:opacity-85 active:scale-95"
                   : "bg-muted text-muted-foreground/25 cursor-not-allowed"
               )}
               data-testid="send-button"
-              disabled={!input.trim() || uploadQueue.length > 0}
+              disabled={(!input.trim() && attachments.length === 0) || uploadQueue.length > 0}
               status={status}
               variant="secondary"
             >
@@ -700,14 +820,14 @@ function PurePlusMenuButton({
   );
 
   const caps: Record<string, ModelCapabilities> | undefined =
-    modelsResponse?.capabilities ?? modelsResponse;
+    modelsResponse?.capabilities;
   const currentCap = caps?.[selectedModelId];
-  const hasFileOrImage =
-    currentCap?.file ??
-    currentCap?.image ??
-    currentCap?.vision ??
-    selectedModelId.toLowerCase().includes("gemini") ??
-    false;
+  const hasStrictCapsBtn = Boolean(caps && currentCap !== undefined);
+  const hasFileOrImage = hasStrictCapsBtn
+    ? Boolean(currentCap?.vision || currentCap?.image || currentCap?.file)
+    : false;
+  // Pendant le chargement initial, on considère non grisé pour éviter flash
+  const isVisionLoading = !hasStrictCapsBtn && !modelsResponse;
 
   // Calculs d'usages
   const aiTokensUsed = settingsData?.aiUsage?.tokensUsed ?? 0;
@@ -725,21 +845,37 @@ function PurePlusMenuButton({
       ? Math.min(100, Math.round((cloudBytesUsed / cloudBytesLimit) * 100))
       : 0);
 
+  // Mode IA global (via ActiveChat context)
+  const { currentModeId, setCurrentModeId } = useActiveChat();
+
+  const handleModeSelect = (id: AIModeId) => {
+    setCurrentModeId(id);
+    toast.success(`Mode IA : ${AI_MODES[id].label}`);
+  };
+
   const handleDeviceUploadClick = () => {
-    if (!hasFileOrImage) {
+    if (!hasFileOrImage && hasStrictCapsBtn && !isVisionLoading) {
       toast.error(
         "Ce modèle ne prend pas en charge l'importation de fichiers."
       );
+      return;
+    }
+    if (isVisionLoading) {
+      toast("Chargement des capacités du modèle...");
       return;
     }
     fileInputRef.current?.click();
   };
 
   const handleCloudImportClick = () => {
-    if (!hasFileOrImage) {
+    if (!hasFileOrImage && hasStrictCapsBtn && !isVisionLoading) {
       toast.error(
         "Ce modèle ne prend pas en charge l'importation de fichiers."
       );
+      return;
+    }
+    if (isVisionLoading) {
+      toast("Chargement des capacités du modèle...");
       return;
     }
     onOpenCloudPicker();
@@ -749,10 +885,7 @@ function PurePlusMenuButton({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          className={cn(
-            "h-7 w-7 rounded-lg border border-border/40 p-1 transition-colors hover:bg-muted text-foreground cursor-pointer shadow-2xs",
-            !hasFileOrImage && "opacity-80"
-          )}
+          className="h-7 w-7 rounded-lg border border-border/40 p-1 transition-colors hover:bg-muted text-foreground cursor-pointer shadow-2xs"
           data-testid="plus-menu-button"
           disabled={status !== "ready" && status !== "error"}
           variant="ghost"
@@ -766,7 +899,7 @@ function PurePlusMenuButton({
         align="start"
         side="top"
         sideOffset={8}
-        className="w-72 p-2 rounded-2xl bg-popover/95 backdrop-blur-md shadow-2xl border border-border/60"
+        className="w-80 p-2 rounded-2xl bg-popover/95 backdrop-blur-md shadow-2xl border border-border/60"
       >
         <DropdownMenuLabel className="px-2 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
           Ajouter du contexte à l'IA
@@ -775,10 +908,10 @@ function PurePlusMenuButton({
         {/* Option 1: Importer depuis l'appareil */}
         <DropdownMenuItem
           onClick={handleDeviceUploadClick}
-          disabled={!hasFileOrImage}
+          disabled={!hasFileOrImage && hasStrictCapsBtn}
           className={cn(
             "flex items-start gap-2.5 p-2 rounded-xl cursor-pointer text-xs transition-colors",
-            hasFileOrImage
+            hasFileOrImage || isVisionLoading || !hasStrictCapsBtn
               ? "hover:bg-muted focus:bg-muted text-foreground"
               : "opacity-45 cursor-not-allowed text-muted-foreground"
           )}
@@ -791,9 +924,11 @@ function PurePlusMenuButton({
               Importer depuis votre appareil
             </span>
             <span className="text-[11px] text-muted-foreground leading-tight">
-              {hasFileOrImage
-                ? "Photos, PDF, code et documents locaux"
-                : "Non supporté par ce modèle"}
+              {isVisionLoading
+                ? "Vérification du modèle..."
+                : hasFileOrImage || !hasStrictCapsBtn
+                  ? "Photos, PDF, code et documents locaux"
+                  : "Non supporté par ce modèle"}
             </span>
           </div>
         </DropdownMenuItem>
@@ -801,10 +936,10 @@ function PurePlusMenuButton({
         {/* Option 2: Importer depuis la Bibliothèque Cloud */}
         <DropdownMenuItem
           onClick={handleCloudImportClick}
-          disabled={!hasFileOrImage}
+          disabled={!hasFileOrImage && hasStrictCapsBtn}
           className={cn(
             "flex items-start gap-2.5 p-2 rounded-xl cursor-pointer text-xs transition-colors mt-1",
-            hasFileOrImage
+            hasFileOrImage || isVisionLoading || !hasStrictCapsBtn
               ? "hover:bg-muted focus:bg-muted text-foreground"
               : "opacity-45 cursor-not-allowed text-muted-foreground"
           )}
@@ -817,12 +952,75 @@ function PurePlusMenuButton({
               Fichiers de la Bibliothèque Cloud
             </span>
             <span className="text-[11px] text-muted-foreground leading-tight">
-              {hasFileOrImage
-                ? "Sélectionner parmi vos documents enregistrés"
-                : "Non supporté par ce modèle"}
+              {isVisionLoading
+                ? "Vérification du modèle..."
+                : hasFileOrImage || !hasStrictCapsBtn
+                  ? "Sélectionner parmi vos documents enregistrés"
+                  : "Non supporté par ce modèle"}
             </span>
           </div>
         </DropdownMenuItem>
+
+        {/* Modes IA - sous-menu déroulant global */}
+        <DropdownMenuSub>
+          <DropdownMenuSubTrigger className="flex items-center gap-2.5 p-2 rounded-xl cursor-pointer text-xs mt-1 data-[state=open]:bg-muted">
+            <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-600 shrink-0">
+              <SparklesIcon className="size-3.5" />
+            </div>
+            <div className="flex flex-col gap-0.5 text-left">
+              <span className="font-medium text-[13px] text-foreground">Mode d'IA</span>
+              <span className="text-[11px] text-muted-foreground leading-tight">
+                {AI_MODES[currentModeId]?.label ?? "Standard"} • global
+              </span>
+            </div>
+          </DropdownMenuSubTrigger>
+          <DropdownMenuSubContent
+            sideOffset={8}
+            className="w-72 p-2 rounded-2xl bg-popover/95 backdrop-blur-md shadow-2xl border border-border/60"
+          >
+            <DropdownMenuLabel className="px-2 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+              Choisir un mode (global)
+            </DropdownMenuLabel>
+            {Object.values(AI_MODES).map((mode) => {
+              const Icon = mode.icon;
+              const isActive = currentModeId === mode.id;
+              return (
+                <DropdownMenuItem
+                  key={mode.id}
+                  onClick={() => handleModeSelect(mode.id as AIModeId)}
+                  className={cn(
+                    "flex items-start gap-2.5 p-2.5 rounded-xl cursor-pointer text-xs mt-1 transition-colors",
+                    isActive
+                      ? "bg-primary/10 border border-primary/20 text-foreground"
+                      : "hover:bg-muted focus:bg-muted text-foreground border border-transparent"
+                  )}
+                >
+                  <div
+                    className={cn(
+                      "p-1.5 rounded-lg shrink-0 mt-0.5",
+                      isActive ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
+                    )}
+                  >
+                    <Icon className="size-3.5" />
+                  </div>
+                  <div className="flex flex-col gap-0.5 min-w-0 flex-1">
+                    <span className="font-medium text-[13px] flex items-center gap-1.5">
+                      {mode.label}
+                      {isActive && <CheckCircle2Icon className="size-3.5 text-primary" />}
+                    </span>
+                    <span className="text-[11px] text-muted-foreground leading-tight">
+                      {mode.description}
+                    </span>
+                  </div>
+                </DropdownMenuItem>
+              );
+            })}
+            <DropdownMenuSeparator className="my-2 bg-border/40" />
+            <div className="px-2 py-1 text-[10px] text-muted-foreground leading-tight">
+              Descriptions complètes dans Paramètres → Préférences IA.
+            </div>
+          </DropdownMenuSubContent>
+        </DropdownMenuSub>
 
         <DropdownMenuSeparator className="my-2 bg-border/40" />
 

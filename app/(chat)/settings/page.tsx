@@ -3,6 +3,7 @@
 import {
   AlertCircleIcon,
   BotIcon,
+  BrainIcon,
   CameraIcon,
   CheckCircle2Icon,
   Code2Icon,
@@ -11,16 +12,23 @@ import {
   Loader2Icon,
   MailIcon,
   PhoneIcon,
+  ScaleIcon,
   ShieldCheckIcon,
   SparklesIcon,
+  TargetIcon,
   UserIcon,
   ZapIcon,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
+import useSWR from "swr";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
+import { AI_MODES, DEFAULT_AI_MODE, type AIModeId, isValidAIModeId } from "@/lib/ai/modes";
+import type { ChatModel } from "@/lib/ai/models";
+import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -77,9 +85,44 @@ function formatDate(dateStr?: string) {
   }
 }
 
+function getCookie(name: string): string | null {
+  if (typeof document === "undefined") return null;
+  const m = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith(`${name}=`));
+  return m ? decodeURIComponent(m.split("=")[1]) : null;
+}
+function setCookie(name: string, value: string) {
+  const maxAge = 60 * 60 * 24 * 365;
+  document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${maxAge}`;
+}
+
 export default function SettingsPage() {
-  const [activeTab, setActiveTab] = useState<"profile" | "usage">("profile");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const initialTab = (searchParams.get("tab") as "profile" | "usage" | "preferences") || "profile";
+  const [activeTab, setActiveTab] = useState<"profile" | "usage" | "preferences">(
+    ["profile", "usage", "preferences"].includes(initialTab) ? initialTab : "profile"
+  );
   const [isLoading, setIsLoading] = useState(true);
+
+  const handleTabChange = useCallback(
+    (tab: "profile" | "usage" | "preferences") => {
+      setActiveTab(tab);
+      const params = new URLSearchParams(searchParams.toString());
+      params.set("tab", tab);
+      router.replace(`/settings?${params.toString()}`, { scroll: false });
+    },
+    [router, searchParams]
+  );
+
+  useEffect(() => {
+    const t = searchParams.get("tab") as any;
+    if (t && ["profile", "usage", "preferences"].includes(t) && t !== activeTab) {
+      setActiveTab(t);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
 
   // Données utilisateur
   const [profile, setProfile] = useState<UserSettingsData | null>(null);
@@ -106,6 +149,74 @@ export default function SettingsPage() {
   const [isVerifyingEmail, setIsVerifyingEmail] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Préférences IA (cookie + serveur)
+  const [defaultModelId, setDefaultModelId] = useState<string>(DEFAULT_CHAT_MODEL);
+  const [defaultModeId, setDefaultModeId] = useState<AIModeId>(DEFAULT_AI_MODE);
+  const [customInstructions, setCustomInstructions] = useState("");
+  const [customEnabled, setCustomEnabled] = useState(false);
+  const [customTemp, setCustomTemp] = useState(0.7);
+  const [customTopP, setCustomTopP] = useState(0.9);
+  const [isSavingCustom, setIsSavingCustom] = useState(false);
+
+  const { data: prefModelsData } = useSWR(
+    `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models`,
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 60_000 }
+  );
+  const prefModels: ChatModel[] = prefModelsData?.models || [];
+
+  const { data: customPrefData, mutate: mutateCustomPref } = useSWR(
+    "/api/user/preferences",
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 30_000 }
+  );
+
+  useEffect(() => {
+    if (customPrefData) {
+      if (customPrefData.customInstructions !== undefined) setCustomInstructions(customPrefData.customInstructions || "");
+      if (customPrefData.enabled !== undefined) setCustomEnabled(!!customPrefData.enabled);
+      if (customPrefData.temperature !== undefined) setCustomTemp(customPrefData.temperature);
+      if (customPrefData.topP !== undefined) setCustomTopP(customPrefData.topP);
+    }
+  }, [customPrefData]);
+
+  useEffect(() => {
+    const cModel = getCookie("chat-model");
+    if (cModel) setDefaultModelId(cModel);
+    const cMode = getCookie("ai-mode");
+    if (cMode && isValidAIModeId(cMode)) setDefaultModeId(cMode as AIModeId);
+  }, []);
+
+  const handleSavePreferences = useCallback(() => {
+    setCookie("chat-model", defaultModelId);
+    setCookie("ai-mode", defaultModeId);
+    toast.success("Préférences IA enregistrées ! ✨");
+  }, [defaultModelId, defaultModeId]);
+
+  const handleSaveCustomInstructions = useCallback(async () => {
+    setIsSavingCustom(true);
+    try {
+      const res = await fetch("/api/user/preferences", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customInstructions: customInstructions.slice(0, 4000),
+          enabled: customEnabled,
+          temperature: customTemp,
+          topP: customTopP,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Erreur");
+      toast.success("Instructions personnalisées enregistrées ! ✨");
+      mutateCustomPref();
+    } catch (e: any) {
+      toast.error(e.message || "Erreur lors de la sauvegarde");
+    } finally {
+      setIsSavingCustom(false);
+    }
+  }, [customInstructions, customEnabled, customTemp, customTopP, mutateCustomPref]);
 
   // Récupérer les données
   const fetchSettings = useCallback(async () => {
@@ -173,8 +284,13 @@ export default function SettingsPage() {
   const handleProfileSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!currentPassword) {
-      toast.error("Votre mot de passe actuel est requis pour enregistrer les modifications.");
+    const isSensitiveChange =
+      email.trim() !== (profile?.email || "") ||
+      phone.trim() !== (profile?.phone || "") ||
+      username.trim() !== (profile?.username || "") ||
+      (newPassword && newPassword.trim().length > 0);
+    if (isSensitiveChange && !currentPassword) {
+      toast.error("Votre mot de passe actuel est requis pour modifier e-mail, téléphone, nom ou mot de passe.");
       return;
     }
 
@@ -286,9 +402,9 @@ export default function SettingsPage() {
         </p>
 
         {/* Onglets */}
-        <div className="flex items-center gap-2 mt-6">
+        <div className="flex items-center gap-2 mt-6 flex-wrap">
           <button
-            onClick={() => setActiveTab("profile")}
+            onClick={() => handleTabChange("profile")}
             className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer ${
               activeTab === "profile"
                 ? "bg-foreground text-background shadow-sm"
@@ -300,7 +416,19 @@ export default function SettingsPage() {
           </button>
 
           <button
-            onClick={() => setActiveTab("usage")}
+            onClick={() => handleTabChange("preferences")}
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer ${
+              activeTab === "preferences"
+                ? "bg-foreground text-background shadow-sm"
+                : "bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
+            }`}
+          >
+            <SparklesIcon className="size-4" />
+            <span>Préférences IA</span>
+          </button>
+
+          <button
+            onClick={() => handleTabChange("usage")}
             className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer ${
               activeTab === "usage"
                 ? "bg-foreground text-background shadow-sm"
@@ -508,6 +636,165 @@ export default function SettingsPage() {
               </button>
             </div>
           </form>
+        </div>
+      ) : activeTab === "preferences" ? (
+        /* ────────────── SECTION PRÉFÉRENCES IA ────────────── */
+        <div className="py-6 flex flex-col gap-6 max-w-3xl">
+          <div className="p-6 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5">
+            <div className="flex items-center gap-2.5">
+              <div className="p-2 rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
+                <SparklesIcon className="size-5" />
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-foreground">Préférences IA</h3>
+                <p className="text-xs text-muted-foreground">
+                  Modèle par défaut et mode d'IA (stockés en cookie, appliqués aux nouvelles discussions).
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2 pt-2">
+              <Label className="text-xs font-medium text-muted-foreground">
+                Modèle par défaut
+              </Label>
+              <select
+                value={defaultModelId}
+                onChange={(e) => setDefaultModelId(e.target.value)}
+                className="h-10 rounded-xl border border-border/60 bg-muted/30 px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary/20"
+              >
+                {prefModels.length === 0 ? (
+                  <option value={DEFAULT_CHAT_MODEL}>{DEFAULT_CHAT_MODEL}</option>
+                ) : (
+                  prefModels.map((m) => (
+                    <option key={m.id} value={m.id}>
+                      {m.name} ({m.id})
+                    </option>
+                  ))
+                )}
+              </select>
+              <span className="text-[11px] text-muted-foreground">
+                Ce modèle sera pré-sélectionné pour chaque nouvelle conversation. Vous pouvez le changer à la volée dans la barre de saisie.
+              </span>
+            </div>
+
+            <div className="flex flex-col gap-3 pt-4 border-t border-border/40">
+              <Label className="text-xs font-medium text-muted-foreground">
+                Mode d'IA par défaut
+              </Label>
+              <div className="grid grid-cols-1 gap-2">
+                {(Object.values(AI_MODES) as any[]).map((mode: any) => {
+                  const Icon = mode.icon;
+                  const isSelected = defaultModeId === mode.id;
+                  return (
+                    <button
+                      key={mode.id}
+                      type="button"
+                      onClick={() => setDefaultModeId(mode.id)}
+                      className={`flex items-start gap-3 p-3 rounded-xl border text-left transition-all cursor-pointer ${
+                        isSelected
+                          ? "bg-primary/10 border-primary/30 ring-1 ring-primary/20"
+                          : "bg-muted/20 border-border/50 hover:bg-muted/40 hover:border-border"
+                      }`}
+                    >
+                      <div
+                        className={`p-2 rounded-lg shrink-0 mt-0.5 ${
+                          isSelected ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
+                        }`}
+                      >
+                        <Icon className="size-4" />
+                      </div>
+                      <div className="flex flex-col gap-0.5 min-w-0">
+                        <span className="text-[13px] font-semibold text-foreground">{mode.label}</span>
+                        <span className="text-[11px] text-muted-foreground leading-tight">{mode.longDescription}</span>
+                        {mode.temperature !== undefined && (
+                          <span className="text-[10px] font-mono text-muted-foreground/70">
+                            temp: {mode.temperature} {mode.topP !== undefined ? `• topP: ${mode.topP}` : ""}
+                          </span>
+                        )}
+                      </div>
+                      {isSelected && <CheckCircle2Icon className="size-4 text-primary shrink-0 ml-auto mt-1" />}
+                    </button>
+                  );
+                })}
+              </div>
+              <span className="text-[11px] text-muted-foreground">
+                Le mode influence le style de réponse et la température du modèle. Global par défaut, modifiable dans le menu <span className="font-medium">+</span> de la conversation.
+              </span>
+            </div>
+
+            <div className="pt-2 flex justify-end">
+              <button
+                type="button"
+                onClick={handleSavePreferences}
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer"
+              >
+                Enregistrer les préférences
+              </button>
+            </div>
+          </div>
+
+          {/* Instructions personnalisées */}
+          <div className="p-6 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5">
+            <div className="flex items-center gap-2.5">
+              <div className="p-2 rounded-xl bg-amber-500/10 text-amber-600 ring-1 ring-amber-500/20">
+                <BotIcon className="size-5" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-base font-semibold text-foreground">Instructions personnalisées</h3>
+                <p className="text-xs text-muted-foreground">Personnalisez le comportement de mAI — ton, langue, contexte métier. Stocké en base, synchronisé sur tous vos appareils.</p>
+              </div>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" checked={customEnabled} onChange={(e) => setCustomEnabled(e.target.checked)} className="size-4 rounded border-border accent-primary" />
+                <span className="text-xs font-medium">Activé</span>
+              </label>
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label className="text-xs font-medium text-muted-foreground">Qui êtes-vous ? Que doit savoir mAI sur vous ? (max 4000c)</Label>
+              <textarea
+                value={customInstructions}
+                onChange={(e) => setCustomInstructions(e.target.value)}
+                maxLength={4000}
+                rows={5}
+                placeholder="Ex: Je suis développeur full-stack à Paris. Réponds toujours en français, tutoie, sois concis, privilégie TypeScript avec exemples exécutables. Mon projet principal est mAI Web..."
+                className="w-full rounded-xl border border-border/60 bg-muted/20 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary/20 resize-y"
+              />
+              <span className="text-[11px] text-muted-foreground text-right">{customInstructions.length}/4000</span>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex flex-col gap-1.5">
+                <Label className="text-xs font-medium text-muted-foreground">Température ({customTemp})</Label>
+                <input type="range" min={0} max={2} step={0.1} value={customTemp} onChange={(e) => setCustomTemp(parseFloat(e.target.value))} className="w-full accent-primary" />
+                <span className="text-[11px] text-muted-foreground">0 = Précis, 2 = Créatif</span>
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <Label className="text-xs font-medium text-muted-foreground">Top P ({customTopP})</Label>
+                <input type="range" min={0} max={1} step={0.05} value={customTopP} onChange={(e) => setCustomTopP(parseFloat(e.target.value))} className="w-full accent-primary" />
+                <span className="text-[11px] text-muted-foreground">Contrôle diversité</span>
+              </div>
+            </div>
+            <div className="flex justify-end">
+              <button
+                type="button"
+                onClick={handleSaveCustomInstructions}
+                disabled={isSavingCustom}
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-600 text-white px-6 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer disabled:opacity-50"
+              >
+                {isSavingCustom ? <Loader2Icon className="size-4 animate-spin" /> : null}
+                {isSavingCustom ? "Enregistrement..." : "Enregistrer instructions"}
+              </button>
+            </div>
+          </div>
+
+          <div className="p-5 rounded-2xl border border-border/60 bg-muted/20 flex items-start gap-3">
+            <AlertCircleIcon className="size-5 text-primary shrink-0 mt-0.5" />
+            <div className="text-xs text-muted-foreground">
+              <p className="font-semibold text-foreground mb-1">Comment ça marche ?</p>
+              <p>
+                Les préférences sont stockées en cookie (<code className="px-1 py-0.5 rounded bg-muted font-mono text-[11px]">chat-model</code> &{" "}
+                <code className="px-1 py-0.5 rounded bg-muted font-mono text-[11px]">ai-mode</code>) valables 1 an. Elles s'appliquent aux nouvelles discussions, pas aux conversations existantes.
+              </p>
+            </div>
+          </div>
         </div>
       ) : (
         /* ────────────── SECTION CONSOMMATION & QUOTAS ────────────── */

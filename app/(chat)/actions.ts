@@ -25,18 +25,38 @@ export async function generateTitleFromUserMessage({
 }: {
   message: UIMessage;
 }) {
+  const text = getTextFromMessage(message);
+  return generateTitleFromConversation({ userText: text, assistantText: "" });
+}
+
+export async function generateTitleFromConversation({
+  userText,
+  assistantText,
+}: {
+  userText: string;
+  assistantText: string;
+}) {
   try {
     const { getMaiSessionToken, getMaiUser } = await import("@/lib/auth/session");
     const [token, user] = await Promise.all([getMaiSessionToken(), getMaiUser()]);
+    // Construire le prompt avec user + 500 chars de l'IA si disponible
+    const combined = assistantText
+      ? `User: ${userText}\nAssistant (début): ${assistantText}`
+      : userText;
     const { text } = await generateText({
       instructions: titlePrompt,
       model: getTitleModel({ sessionToken: token, userId: user?.id }),
-      prompt: getTextFromMessage(message),
+      prompt: combined.slice(0, 2000),
     });
-    return text
+    const cleaned = text
       .replace(/^[#*"\s]+/, "")
       .replace(/["]+$/, "")
       .trim();
+    // Garde-fou: titre trop long ou vide
+    if (!cleaned || cleaned.length > 60) {
+      return cleaned.slice(0, 60).trim() || "Nouvelle discussion";
+    }
+    return cleaned;
   } catch (err) {
     console.error("Erreur génération titre:", err);
     return "Nouvelle discussion";

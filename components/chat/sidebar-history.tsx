@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/sidebar";
 import type { Chat } from "@/lib/db/schema";
 import { fetcher } from "@/lib/utils";
+import { useProjects } from "@/hooks/use-projects";
 import { LoaderIcon } from "./icons";
 import { ChatItem } from "./sidebar-history-item";
 
@@ -101,6 +102,7 @@ export function SidebarHistory({ user }: { user?: { email?: string; id?: string 
   const { setOpenMobile } = useSidebar();
   const pathname = usePathname();
   const id = pathname?.startsWith("/chat/") ? pathname.split("/")[2] : null;
+  const { projects } = useProjects();
 
   const {
     data: paginatedChatHistories,
@@ -249,6 +251,7 @@ export function SidebarHistory({ user }: { user?: { email?: string; id?: string 
                               isActive={chat.id === id}
                               key={chat.id}
                               onDelete={handleShowDeleteDialog}
+                              projects={projects}
                               setOpenMobile={setOpenMobile}
                             />
                           ))}
@@ -266,6 +269,7 @@ export function SidebarHistory({ user }: { user?: { email?: string; id?: string 
                               isActive={chat.id === id}
                               key={chat.id}
                               onDelete={handleShowDeleteDialog}
+                              projects={projects}
                               setOpenMobile={setOpenMobile}
                             />
                           ))}
@@ -283,6 +287,7 @@ export function SidebarHistory({ user }: { user?: { email?: string; id?: string 
                               isActive={chat.id === id}
                               key={chat.id}
                               onDelete={handleShowDeleteDialog}
+                              projects={projects}
                               setOpenMobile={setOpenMobile}
                             />
                           ))}
@@ -300,6 +305,7 @@ export function SidebarHistory({ user }: { user?: { email?: string; id?: string 
                               isActive={chat.id === id}
                               key={chat.id}
                               onDelete={handleShowDeleteDialog}
+                              projects={projects}
                               setOpenMobile={setOpenMobile}
                             />
                           ))}
@@ -317,6 +323,7 @@ export function SidebarHistory({ user }: { user?: { email?: string; id?: string 
                               isActive={chat.id === id}
                               key={chat.id}
                               onDelete={handleShowDeleteDialog}
+                              projects={projects}
                               setOpenMobile={setOpenMobile}
                             />
                           ))}

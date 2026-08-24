@@ -2,6 +2,8 @@
 
 import {
   FolderArchiveIcon,
+  FolderIcon,
+  FolderKanbanIcon,
   MessageSquareIcon,
   PanelLeftIcon,
   PenSquareIcon,
@@ -13,6 +15,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
+import useSWR from "swr";
 import { useSWRConfig } from "swr";
 import { unstable_serialize } from "swr/infinite";
 import {
@@ -46,6 +49,49 @@ import {
 } from "../ui/alert-dialog";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import type { MaiUser } from "@/lib/auth/session";
+
+const fetcher = (url: string) => fetch(url).then((r) => r.json());
+
+function SidebarProjects() {
+  const { data } = useSWR<{ projects: { id: string; name: string; icon: string; color: string; chatCount?: number }[] }>(
+    "/api/projects",
+    fetcher
+  );
+  const projects = data?.projects?.slice(0, 6) ?? [];
+  if (projects.length === 0) return null;
+  return (
+    <SidebarGroup className="py-1">
+      <div className="px-2 pb-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Dossiers</div>
+      <SidebarGroupContent>
+        <SidebarMenu>
+          {projects.map((p) => (
+            <SidebarMenuItem key={p.id}>
+              <SidebarMenuButton
+                asChild
+                className="h-7 rounded-lg text-[13px] text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                tooltip={`${p.name} (${p.chatCount ?? 0})`}
+              >
+                <Link href={`/projects/${p.id}`}>
+                  <span className="text-sm">{p.icon}</span>
+                  <span className="truncate">{p.name}</span>
+                  <span className="ml-auto text-[11px] text-muted-foreground">{p.chatCount ?? 0}</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              asChild
+              className="h-7 rounded-lg text-[12px] text-muted-foreground hover:text-foreground"
+            >
+              <Link href="/projects">Voir tous →</Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarGroupContent>
+    </SidebarGroup>
+  );
+}
 
 export function AppSidebar({ user }: { user?: MaiUser | null }) {
   const router = useRouter();
@@ -163,6 +209,19 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                   <SidebarMenuButton
                     asChild
                     className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                    tooltip="Projets"
+                  >
+                    <Link href="/projects" onClick={closeMobile}>
+                      <FolderKanbanIcon className="size-4" />
+                      <span>Projets</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    asChild
+                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
                     tooltip="Paramètres"
                   >
                     <Link href="/settings" onClick={closeMobile}>
@@ -187,6 +246,8 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
+
+          {user ? <SidebarProjects /> : null}
 
           <SidebarHistory user={user ? { email: user.email, id: user.id } : undefined} />
         </SidebarContent>

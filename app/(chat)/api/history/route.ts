@@ -12,6 +12,12 @@ export async function GET(request: NextRequest) {
   );
   const startingAfter = searchParams.get("starting_after");
   const endingBefore = searchParams.get("ending_before");
+  const projectId = searchParams.get("projectId");
+  const isArchivedParam = searchParams.get("isArchived");
+  const includeArchived = searchParams.get("includeArchived") === "true";
+  const pinnedParam = searchParams.get("pinned");
+  const search = searchParams.get("search");
+  const tag = searchParams.get("tag");
 
   if (startingAfter && endingBefore) {
     return new ChatbotError(
@@ -28,11 +34,20 @@ export async function GET(request: NextRequest) {
 
   const userId = user.id || user.email;
 
+  const isArchived = isArchivedParam === "true" ? true : isArchivedParam === "false" ? false : null;
+  const pinned = pinnedParam === "true" ? true : pinnedParam === "false" ? false : null;
+
   const chats = await getChatsByUserId({
     endingBefore,
     id: userId,
+    includeArchived,
+    isArchived,
     limit,
+    pinned,
+    projectId: projectId ?? undefined,
+    search: search ?? null,
     startingAfter,
+    tag: tag ?? null,
   });
 
   return Response.json(chats);

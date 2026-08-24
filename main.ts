@@ -23,6 +23,17 @@ initSQLite().catch(console.error);
 // ─────────────────────────────────────────────
 const app = new Hono();
 
+const ALLOWED_ORIGINS = [
+  "https://mai-officiel.vercel.app",
+  "https://mai-devs.vercel.app",
+  "https://mai.val.run",
+  "https://mdevslabs.github.io",
+  "https://m-ai.fr",
+  "https://www.m-ai.fr",
+  "http://localhost:3000",
+  "http://localhost:3001",
+];
+
 app.use(
   "*",
   cors({
@@ -33,12 +44,18 @@ app.use(
       "x-api-key",
       "X-User-Id",
       "X-API-Key",
-      "*",
     ],
     allowMethods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     exposeHeaders: ["Content-Type", "Authorization", "x-user-id"],
     maxAge: 86_400,
-    origin: "*",
+    origin: (origin) => {
+      if (!origin) return "*"; // allow curl / mobile
+      if (ALLOWED_ORIGINS.includes(origin)) return origin;
+      // Allow vercel preview deployments
+      if (origin.endsWith(".vercel.app")) return origin;
+      return ALLOWED_ORIGINS[0];
+    },
+    credentials: true,
   })
 );
 

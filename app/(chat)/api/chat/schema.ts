@@ -1,13 +1,34 @@
 import { z } from "zod";
+import { AI_MODE_IDS } from "@/lib/ai/modes";
 
 const textPartSchema = z.object({
   text: z.string().min(1).max(2000),
   type: z.enum(["text"]),
 });
 
+const ALLOWED_MEDIA_TYPES = [
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "image/gif",
+  "application/pdf",
+  "text/plain",
+  "text/markdown",
+  "text/csv",
+  "application/json",
+] as const;
+
 const filePartSchema = z.object({
-  mediaType: z.enum(["image/jpeg", "image/png"]),
-  name: z.string().min(1).max(100),
+  mediaType: z.string().min(1).max(127).refine(
+    (v) =>
+      (ALLOWED_MEDIA_TYPES as readonly string[]).includes(v) ||
+      v.startsWith("image/") ||
+      v.startsWith("text/") ||
+      v === "application/pdf" ||
+      v === "application/json",
+    { message: "Type de fichier non supporté" }
+  ),
+  name: z.string().min(1).max(255),
   type: z.enum(["file"]),
   url: z.url(),
 });
@@ -27,11 +48,16 @@ const toolApprovalMessageSchema = z.object({
 });
 
 export const postRequestBodySchema = z.object({
+  customInstructions: z.string().max(4000).optional(),
   id: z.uuid(),
   message: userMessageSchema.optional(),
   messages: z.array(toolApprovalMessageSchema).optional(),
+  projectId: z.string().uuid().nullable().optional(),
   selectedChatModel: z.string(),
+  selectedChatMode: z.enum(AI_MODE_IDS as [string, ...string[]]).optional(),
   selectedVisibilityType: z.enum(["public", "private"]),
+  tags: z.array(z.string().min(1).max(30)).max(10).optional(),
+  temperatureOverride: z.number().min(0).max(2).nullable().optional(),
 });
 
 export type PostRequestBody = z.infer<typeof postRequestBodySchema>;

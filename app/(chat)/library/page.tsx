@@ -1297,6 +1297,7 @@ export default function LibraryPage() {
                 src={previewFile.url}
                 alt={previewFile.original_name}
                 className="max-h-80 w-auto rounded-lg object-contain shadow-sm"
+                loading="lazy"
               />
             ) : previewFile?.mime_type.startsWith("video/") ? (
               <video controls className="max-h-80 w-full rounded-lg">
@@ -1308,6 +1309,19 @@ export default function LibraryPage() {
                 <source src={previewFile.url} type={previewFile.mime_type} />
                 Votre navigateur ne prend pas en charge la lecture audio.
               </audio>
+            ) : previewFile?.mime_type === "application/pdf" ? (
+              <iframe src={previewFile.url} title={previewFile.original_name} className="w-full h-[60vh] rounded-lg border bg-white" />
+            ) : previewFile?.mime_type.startsWith("text/") ||
+              previewFile?.mime_type === "application/json" ||
+              previewFile?.original_name.endsWith(".md") ||
+              previewFile?.original_name.endsWith(".csv") ||
+              previewFile?.original_name.endsWith(".txt") ? (
+              <div className="w-full max-h-80 overflow-auto rounded-lg bg-background border p-3 text-xs font-mono whitespace-pre-wrap">
+                <a href={previewFile.url} target="_blank" rel="noopener noreferrer" className="text-primary underline text-xs mb-2 inline-block">
+                  Ouvrir le fichier texte
+                </a>
+                <div className="text-muted-foreground">Aperçu texte disponible via ouverture.</div>
+              </div>
             ) : (
               <div className="flex flex-col items-center gap-3 text-center p-6">
                 <div className="p-4 rounded-2xl bg-muted/80">

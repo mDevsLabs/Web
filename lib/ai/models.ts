@@ -185,7 +185,10 @@ export function getModelCapabilities(
     (model as any)?.supported_parameters ||
     [];
 
-  // 1. Détection prise en charge images
+  const hasArchitecture =
+    inputModalities.length > 0 || modality.length > 0;
+
+  // 1. Détection prise en charge images (stricte si architecture fournie)
   const hasImageModal =
     inputModalities.includes("image") ||
     modality.includes("image") ||
@@ -197,36 +200,39 @@ export function getModelCapabilities(
     inputModalities.includes("document") ||
     inputModalities.includes("pdf") ||
     modality.includes("file") ||
-    modality.includes("document") ||
-    modality.includes("multimodal");
+    modality.includes("document");
 
   // Heuristique de secours par nom de modèle si aucune métadonnée n'est fournie par l'API
+  // Restreinte aux familles dont la capacité vision est documentée publiquement
   const isVisionHeuristic =
     lower.includes("gemini") ||
     lower.includes("gpt-4o") ||
     lower.includes("gpt-4-turbo") ||
+    lower.includes("gpt-4-vision") ||
     lower.includes("claude-3") ||
+    lower.includes("claude-4") ||
     lower.includes("pixtral") ||
     lower.includes("qwen-vl") ||
+    lower.includes("qwen2-vl") ||
     lower.includes("vision") ||
-    lower.includes("vl") ||
     lower.includes("multimodal") ||
-    lower.includes("apex") ||
-    lower.includes("opal") ||
-    lower.includes("light");
+    lower.includes("mdevslabs/mai") ||
+    lower.includes("mai-1.5");
 
-  const isImage =
-    inputModalities.length > 0 || modality
-      ? hasImageModal
-      : isVisionHeuristic;
+  let isImage: boolean;
+  let isFile: boolean;
 
-  const isFile =
-    inputModalities.length > 0 || modality
-      ? hasFileModal || hasImageModal
-      : (lower.includes("gemini") ||
-          lower.includes("gpt-4o") ||
-          lower.includes("claude-3") ||
-          isVisionHeuristic);
+  if (hasArchitecture) {
+    // Architecture présente -> on s'y fie strictement, pas de heuristique
+    isImage = hasImageModal;
+    isFile = hasFileModal;
+    // Certains fournisseurs exposent "image" mais acceptent aussi les PDF comme file
+    // On ne propage image->file que si file explicit, sinon file reste false
+  } else {
+    // Pas d'architecture -> heuristique restreinte
+    isImage = isVisionHeuristic;
+    isFile = isVisionHeuristic;
+  }
 
   const isVision = isImage || isFile;
 

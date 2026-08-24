@@ -15,7 +15,9 @@ import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import { getUserApiKey } from "@/lib/db/api-keys";
 import {
   DEFAULT_CHAT_MODEL,
+  getModelCapabilities,
 } from "@/lib/ai/models";
+import { AI_MODES, DEFAULT_AI_MODE, getAIMode } from "@/lib/ai/modes";
 import { type RequestHints, systemPrompt } from "@/lib/ai/prompts";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { createDocument } from "@/lib/ai/tools/create-document";
@@ -38,8 +40,11 @@ import type { DBMessage } from "@/lib/db/schema";
 import { ChatbotError } from "@/lib/errors";
 import { checkIpRateLimit } from "@/lib/ratelimit";
 import type { ChatMessage, WaitingStatusData } from "@/lib/types";
-import { convertToUIMessages, generateUUID } from "@/lib/utils";
-import { generateTitleFromUserMessage } from "../../actions";
+import { convertToUIMessages, generateUUID, getTextFromMessage } from "@/lib/utils";
+import {
+  generateTitleFromConversation,
+  generateTitleFromUserMessage,
+} from "../../actions";
 import { type PostRequestBody, postRequestBodySchema } from "./schema";
 
 export const maxDuration = 60;
@@ -71,8 +76,23 @@ export async function POST(request: Request) {
   }
 
   try {
-    const { id, message, messages, selectedChatModel, selectedVisibilityType } =
-      requestBody;
+    const {
+      id,
+      message,
+      messages,
+      selectedChatModel,
+      selectedChatMode,
+      selectedVisibilityType,
+      projectId,
+      tags,
+      customInstructions,
+      temperatureOverride,
+    } = requestBody as PostRequestBody & {
+      projectId?: string | null;
+      tags?: string[];
+      customInstructions?: string;
+      temperatureOverride?: number | null;
+    };
 
     const [botIdResult, sessionToken, maiUser] = await Promise.all([
       checkBotId().catch(() => null),
@@ -89,6 +109,8 @@ export async function POST(request: Request) {
     }
 
     // 1. Vérification du quota hebdomadaire
+    const userId = maiUser.id || maiUser.email;
+
     if (maiUser.tokensUsed >= maiUser.limit) {
       return new Response(
         JSON.stringify({
@@ -104,32 +126,77 @@ export async function POST(request: Request) {
       );
     }
 
-    await checkIpRateLimit(ipAddress(request));
+    await checkIpRateLimit(ipAddress(request), userId);
 
     const chatModel = selectedChatModel || DEFAULT_CHAT_MODEL;
+    const chatModeId = selectedChatMode && AI_MODES[selectedChatMode as keyof typeof AI_MODES] ? selectedChatMode : DEFAULT_AI_MODE;
+    const chatMode = getAIMode(chatModeId);
     const isToolApprovalFlow = Boolean(messages);
-    const userId = maiUser.id || maiUser.email;
+
+    // Règle: bloquer l'envoi de fichiers si le modèle ne supporte pas vision/file
+    if (message?.parts) {
+      const hasFilePart = message.parts.some((p: any) => p.type === "file");
+      if (hasFilePart) {
+        const caps = getModelCapabilities(chatModel);
+        if (!caps.vision) {
+          return new ChatbotError("bad_request:api", "Ce modèle ne prend pas en charge les fichiers/images. Changez de modèle ou retirez les pièces jointes.").toResponse();
+        }
+      }
+    }
 
     // Récupérer la clé API Neon du compte
     const userApiKey = maiUser.id ? await getUserApiKey(maiUser.id) : null;
 
     const chat = await getChatById({ id });
     let messagesFromDb: DBMessage[] = [];
-    let titlePromise: Promise<string> | null = null;
+    let shouldRenameAfterFirst = false;
+    let firstUserMessageForTitle: typeof message | null = null;
 
     if (chat) {
       if (chat.userId !== userId && chat.userId !== maiUser.email) {
         return new ChatbotError("forbidden:chat").toResponse();
       }
       messagesFromDb = await getMessagesByChatId({ id });
+      // Renommer seulement si c'est la première interaction (pas de messages en DB)
+      if (
+        messagesFromDb.length === 0 &&
+        message?.role === "user" &&
+        chat.title === "Nouvelle discussion"
+      ) {
+        shouldRenameAfterFirst = true;
+        firstUserMessageForTitle = message;
+      }
     } else if (message?.role === "user") {
+      if (projectId) {
+        const { getProjectById } = await import("@/lib/db/queries");
+        const proj = await getProjectById({ id: projectId, userId });
+        if (!proj) {
+          return new ChatbotError("not_found:database", "Projet introuvable").toResponse();
+        }
+      }
       await saveChat({
         id,
         title: "Nouvelle discussion",
         userId,
         visibility: selectedVisibilityType,
+        projectId: projectId ?? null,
+        tags: tags ?? [],
+        customInstructions: customInstructions ?? null,
+        modeId: chatModeId,
+        temperatureOverride: temperatureOverride ?? null,
       });
-      titlePromise = generateTitleFromUserMessage({ message });
+      shouldRenameAfterFirst = true;
+      firstUserMessageForTitle = message;
+    } else if (chat && projectId !== undefined) {
+      // Update project association on existing chat if explicitly passed
+      const { updateChatProjectById } = await import("@/lib/db/queries");
+      try {
+        await updateChatProjectById({
+          chatId: id,
+          userId,
+          projectId: projectId ?? null,
+        });
+      } catch {}
     }
 
     let uiMessages: ChatMessage[];
@@ -196,6 +263,46 @@ export async function POST(request: Request) {
 
     const modelMessages = await convertToModelMessages(uiMessages);
 
+    // Récupérer custom instructions utilisateur + chat
+    let userCustomInstructions: string | null = null;
+    let userCustomEnabled = false;
+    let userDefaultTemp: number | null = null;
+    let userDefaultTopP: number | null = null;
+    try {
+      const postgres = (await import("postgres")).default;
+      const url = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+      if (url) {
+        const sql = postgres(url, { prepare: false });
+        const rows = await sql`SELECT custom_instructions, custom_instructions_enabled, default_temperature, default_top_p FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
+        if (rows.length > 0) {
+          userCustomInstructions = rows[0].custom_instructions || null;
+          userCustomEnabled = !!rows[0].custom_instructions_enabled;
+          userDefaultTemp = rows[0].default_temperature ?? null;
+          userDefaultTopP = rows[0].default_top_p ?? null;
+        }
+        await sql.end();
+      }
+    } catch {}
+
+    // Chat-level overrides (persisted in Chat table)
+    const chatCustomInstructions = (chat as any)?.customInstructions ?? customInstructions ?? null;
+    const chatModeOverride = (chat as any)?.modeId ?? chatModeId;
+    const chatTempOverride = (chat as any)?.temperatureOverride ?? temperatureOverride ?? null;
+
+    // Construire le prompt addendum effectif
+    const effectiveMode = getAIMode(chatModeOverride);
+    let effectiveAddendum = effectiveMode.systemPromptAddendum || "";
+    if (userCustomEnabled && userCustomInstructions) {
+      effectiveAddendum = `Instructions personnalisées de l'utilisateur (à respecter en priorité):\n${userCustomInstructions}\n\n${effectiveAddendum}`;
+    }
+    if (chatCustomInstructions) {
+      effectiveAddendum = `${effectiveAddendum}\n\nInstructions spécifiques à cette discussion:\n${chatCustomInstructions}`;
+    }
+
+    // Température effective: chat override > user default > mode default
+    const effectiveTemperature = chatTempOverride ?? userDefaultTemp ?? effectiveMode.temperature;
+    const effectiveTopP = userDefaultTopP ?? effectiveMode.topP;
+
     // Initialiser le modèle de langage mAI
     const model = getLanguageModel(chatModel, {
       apiKey: userApiKey,
@@ -222,17 +329,26 @@ export async function POST(request: Request) {
           });
         };
 
+        const supportsTools = effectiveMode.activeTools !== null;
+        const activeToolsList = effectiveMode.activeTools ?? [
+          "getWeather",
+          "createDocument",
+          "editDocument",
+          "updateDocument",
+          "requestSuggestions",
+        ];
+
         const result = streamText({
-          activeTools: [
-            "getWeather",
-            "createDocument",
-            "editDocument",
-            "updateDocument",
-            "requestSuggestions",
-          ],
-          instructions: systemPrompt({ requestHints, supportsTools: true }),
+          activeTools: supportsTools ? (activeToolsList as any) : undefined,
+          instructions: systemPrompt({
+            requestHints,
+            supportsTools,
+            modeAddendum: effectiveAddendum,
+          }),
           messages: modelMessages,
           model,
+          ...(effectiveTemperature !== undefined && effectiveTemperature !== null ? { temperature: effectiveTemperature } : {}),
+          ...(effectiveTopP !== undefined && effectiveTopP !== null ? { topP: effectiveTopP } : {}),
           onChunk({ chunk }) {
             if (isModelStreamActivity(chunk)) {
               markModelActive();
@@ -294,16 +410,6 @@ export async function POST(request: Request) {
             stream: result.stream,
           })
         );
-
-        if (titlePromise) {
-          try {
-            const title = await titlePromise;
-            dataStream.write({ data: title, type: "data-chat-title" });
-            updateChatTitleById({ chatId: id, title });
-          } catch {
-            /* non-fatal */
-          }
-        }
       },
       generateId: generateUUID,
       onEnd: async ({ messages: finishedMessages }) => {
@@ -346,6 +452,32 @@ export async function POST(request: Request) {
               role: currentMessage.role,
             })),
           });
+
+          // Renommage auto après fin du stream IA (premier message uniquement)
+          if (shouldRenameAfterFirst && firstUserMessageForTitle) {
+            try {
+              const assistantMsg = [...finishedMessages]
+                .reverse()
+                .find((m) => m.role === "assistant");
+              const assistantText = assistantMsg
+                ? (getTextFromMessage(assistantMsg as any) || "")
+                    .slice(0, 500)
+                    .trim()
+                : "";
+              const userText = getTextFromMessage(
+                firstUserMessageForTitle as any
+              );
+              const title = await generateTitleFromConversation({
+                userText,
+                assistantText,
+              });
+              if (title && title !== "Nouvelle discussion") {
+                await updateChatTitleById({ chatId: id, title });
+              }
+            } catch (e) {
+              console.error("Erreur renommage auto:", e);
+            }
+          }
         }
       },
       onError: (error) => {

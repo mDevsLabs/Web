@@ -20,12 +20,17 @@ function PureChatHeader({
 }) {
   const { state, toggleSidebar, isMobile } = useSidebar();
 
-  if (state === "collapsed" && !isMobile) {
-    return null;
-  }
+  const isCollapsedDesktop = state === "collapsed" && !isMobile;
 
   return (
-    <header className="sticky top-0 z-10 flex h-14 items-center gap-2 bg-sidebar/80 backdrop-blur-md px-4 border-b border-border/40">
+    <header
+      className={`sticky top-0 z-10 flex items-center gap-2 bg-sidebar/80 backdrop-blur-md px-4 border-b border-border/40 ${isCollapsedDesktop ? "h-10" : "h-14"}`}
+    >
+      {isCollapsedDesktop && (
+        <Button onClick={toggleSidebar} size="icon-sm" variant="ghost" aria-label="Ouvrir sidebar">
+          <PanelLeftIcon className="size-4" />
+        </Button>
+      )}
       <Button
         className="md:hidden"
         onClick={toggleSidebar}

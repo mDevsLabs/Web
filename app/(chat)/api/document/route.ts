@@ -12,7 +12,7 @@ import { ChatbotError } from "@/lib/errors";
 const documentSchema = z.object({
   content: z.string(),
   isManualEdit: z.boolean().optional(),
-  kind: z.enum(["text", "code", "image", "sheet"]),
+  kind: z.enum(["text", "code", "image", "sheet", "html"]),
   title: z.string(),
 });
 
