@@ -2,13 +2,21 @@
 
 import {
   BombIcon,
+  CloudSunIcon,
+  Code2Icon,
+  FileTextIcon,
   FolderArchiveIcon,
   FolderKanbanIcon,
+  GhostIcon,
+  GlobeIcon,
+  ImageIcon,
+  LightbulbIcon,
   ListIcon,
   PaletteIcon,
   PenLineIcon,
   PenSquareIcon,
   SearchIcon,
+  SlidersHorizontalIcon,
   Trash2Icon,
   XIcon,
   ZapIcon,
@@ -19,6 +27,7 @@ import { cn } from "@/lib/utils";
 export type SlashCommandAction =
   | "new"
   | "clear"
+  | "ghost"
   | "rename"
   | "model"
   | "theme"
@@ -29,6 +38,7 @@ export type SlashCommandAction =
   | "projects"
   | "search"
   | "tool-image"
+  | "tool-web"
   | "tool-code"
   | "tool-weather"
   | "tool-doc"
@@ -45,6 +55,14 @@ export type SlashCommand = {
 };
 
 export const slashCommands: SlashCommand[] = [
+  {
+    action: "ghost",
+    aliases: ["fantome", "incognito", "temporary", "temp"],
+    description:
+      "Activer / désactiver le Mode fantôme (temporaire, non sauvegardé, sans image) 👻",
+    icon: <GhostIcon className="size-3.5" />,
+    name: "ghost",
+  },
   {
     action: "new",
     description: "Start a new chat",
@@ -99,42 +117,49 @@ export const slashCommands: SlashCommand[] = [
     action: "tool-image",
     aliases: ["image", "images", "generate"],
     description: "Activer génération d'image (one-shot, fortement recommandé)",
-    icon: <SearchIcon className="size-3.5" />,
+    icon: <ImageIcon className="size-3.5" />,
     name: "image",
+  },
+  {
+    action: "tool-web",
+    aliases: ["web", "recherche-web", "search-web"],
+    description: "Activer recherche Web en temps réel (one-shot)",
+    icon: <GlobeIcon className="size-3.5" />,
+    name: "web",
   },
   {
     action: "tool-code",
     aliases: ["code", "execute", "run"],
     description: "Activer exécution de code Pyodide (one-shot)",
-    icon: <SearchIcon className="size-3.5" />,
+    icon: <Code2Icon className="size-3.5" />,
     name: "code",
   },
   {
     action: "tool-weather",
     aliases: ["weather", "meteo"],
     description: "Activer outil météo (one-shot)",
-    icon: <SearchIcon className="size-3.5" />,
+    icon: <CloudSunIcon className="size-3.5" />,
     name: "weather",
   },
   {
     action: "tool-doc",
     aliases: ["doc", "document"],
     description: "Activer création/édition de documents (one-shot)",
-    icon: <SearchIcon className="size-3.5" />,
+    icon: <FileTextIcon className="size-3.5" />,
     name: "doc",
   },
   {
     action: "tool-suggest",
     aliases: ["suggest", "suggestion"],
     description: "Activer suggestions d'amélioration (one-shot)",
-    icon: <SearchIcon className="size-3.5" />,
+    icon: <LightbulbIcon className="size-3.5" />,
     name: "suggest",
   },
   {
     action: "tools-clear",
     aliases: ["tools-off", "clear-tools"],
     description: "Désactiver tous les outils",
-    icon: <SearchIcon className="size-3.5" />,
+    icon: <SlidersHorizontalIcon className="size-3.5" />,
     name: "tools-clear",
   },
   {

@@ -3,6 +3,7 @@
 import {
   DownloadIcon,
   FolderArchiveIcon,
+  GhostIcon,
   PanelLeftIcon,
   SparklesIcon,
 } from "lucide-react";
@@ -18,7 +19,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useSidebar } from "@/components/ui/sidebar";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { useActiveChat } from "@/hooks/use-active-chat";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 import { VisibilitySelector, type VisibilityType } from "./visibility-selector";
 
 function PureChatHeader({
@@ -31,6 +39,7 @@ function PureChatHeader({
   isReadonly: boolean;
 }) {
   const { state, toggleSidebar, isMobile } = useSidebar();
+  const { isGhostMode, toggleGhostMode } = useActiveChat();
 
   const handleExport = useCallback(
     async (format: "md" | "json" | "txt") => {
@@ -100,6 +109,42 @@ function PureChatHeader({
           selectedVisibilityType={selectedVisibilityType}
         />
       )}
+
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            aria-label={
+              isGhostMode
+                ? "Désactiver le Mode fantôme"
+                : "Activer le Mode fantôme"
+            }
+            className={cn(
+              "h-8 rounded-xl text-xs gap-1.5 px-2.5 transition-all border cursor-pointer",
+              isGhostMode
+                ? "bg-purple-500/15 border-purple-500/40 text-purple-400 font-medium shadow-xs ring-1 ring-purple-500/30 hover:bg-purple-500/25"
+                : "border-border/60 hover:bg-muted text-muted-foreground hover:text-foreground"
+            )}
+            onClick={toggleGhostMode}
+            size="sm"
+            variant="ghost"
+          >
+            <GhostIcon
+              className={cn(
+                "size-3.5 shrink-0",
+                isGhostMode
+                  ? "text-purple-400 animate-pulse"
+                  : "text-muted-foreground"
+              )}
+            />
+            <span>{isGhostMode ? "Fantôme actif" : "Fantôme"}</span>
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent side="bottom">
+          {isGhostMode
+            ? "Mode fantôme actif : discussion éphémère, non sauvegardée, sans génération d'image"
+            : "Activer le Mode fantôme : temporaire, non sauvegardé en BDD, sans génération d'image"}
+        </TooltipContent>
+      </Tooltip>
 
       <div className="ml-auto flex items-center gap-2">
         <DropdownMenu>

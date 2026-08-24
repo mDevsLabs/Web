@@ -8,9 +8,14 @@ import {
   BrainIcon,
   CloudIcon,
   EyeIcon,
+  FolderArchiveIcon,
   FolderKanbanIcon,
+  GhostIcon,
+  GlobeIcon,
+  ImageIcon,
   MicIcon,
   MicOffIcon,
+  PaperclipIcon,
   PlusIcon,
   UploadIcon,
   WrenchIcon,
@@ -46,13 +51,10 @@ import {
 } from "@/components/ai-elements/model-selector";
 import { useDataStream } from "@/components/chat/data-stream-provider";
 import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import {
   useActiveChat,
   useActiveChat as useActiveChatForTools,
@@ -221,6 +223,8 @@ function PureMultimodalInput({
     pendingTools,
     togglePendingTool,
     clearPendingTools,
+    isGhostMode,
+    toggleGhostMode,
   } = useActiveChat();
   const { projects, isLoading: isProjectsLoading } = useProjects();
 
@@ -388,6 +392,10 @@ function PureMultimodalInput({
       setSlashOpen(false);
       setInput("");
       switch (cmd.action) {
+        case "ghost": {
+          toggleGhostMode();
+          break;
+        }
         case "new":
           router.push("/");
           break;
@@ -436,10 +444,21 @@ function PureMultimodalInput({
           break;
         }
         case "tool-image": {
+          if (isGhostMode) {
+            toast.error(
+              "La génération d'image est indisponible en Mode fantôme 👻"
+            );
+            break;
+          }
           togglePendingTool("imageGenerate" as any);
           toast.success(
             "Outil imageGenerate activé pour le prochain message — fortement recommandé"
           );
+          break;
+        }
+        case "tool-web": {
+          togglePendingTool("webSearch" as any);
+          toast.success("Outil Recherche Web activé pour le prochain message");
           break;
         }
         case "tool-code": {
@@ -536,6 +555,8 @@ function PureMultimodalInput({
       pendingTools,
       togglePendingTool,
       clearPendingTools,
+      toggleGhostMode,
+      isGhostMode,
     ]
   );
 
@@ -604,11 +625,13 @@ function PureMultimodalInput({
       return;
     }
 
-    window.history.pushState(
-      {},
-      "",
-      `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/chat/${chatId}`
-    );
+    if (!isGhostMode) {
+      window.history.pushState(
+        {},
+        "",
+        `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/chat/${chatId}`
+      );
+    }
 
     sendMessage({
       parts: [
@@ -644,6 +667,7 @@ function PureMultimodalInput({
     setLocalStorageInput,
     width,
     chatId,
+    isGhostMode,
   ]);
 
   const uploadFile = useCallback(async (file: File) => {
@@ -962,6 +986,28 @@ function PureMultimodalInput({
 
   return (
     <div className={cn("relative flex w-full flex-col gap-4", className)}>
+      {isGhostMode ? (
+        <div className="flex items-center justify-between gap-2 px-3 py-2 rounded-xl border border-purple-500/30 bg-purple-500/10 text-purple-300 text-xs shadow-xs">
+          <div className="flex items-center gap-2 min-w-0">
+            <GhostIcon className="size-4 shrink-0 text-purple-400 animate-pulse" />
+            <span className="font-semibold text-foreground shrink-0">
+              Mode fantôme actif
+            </span>
+            <span className="hidden sm:inline text-muted-foreground truncate">
+              — Discussion temporaire non enregistrée en BDD. Génération d'image
+              indisponible.
+            </span>
+          </div>
+          <button
+            className="text-xs font-medium text-purple-400 hover:text-purple-300 underline shrink-0 ml-auto cursor-pointer"
+            onClick={toggleGhostMode}
+            type="button"
+          >
+            Désactiver
+          </button>
+        </div>
+      ) : null}
+
       {pendingProject ? (
         <div className="flex items-center gap-2 px-1 -mb-1">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-muted/40 px-2.5 py-1 text-[11px] font-medium text-foreground">
@@ -1109,12 +1155,12 @@ function PureMultimodalInput({
       </div>
 
       <PromptInput
-        className="[&>div]:rounded-2xl [&>div]:border [&>div]:border-border/30 [&>div]:bg-card/70 [&>div]:shadow-[var(--shadow-composer)] [&>div]:transition-shadow [&>div]:duration-300 [&>div]:focus-within:shadow-[var(--shadow-composer-focus)]"
+        className="[&>div]:rounded-[28px] [&>div]:border [&>div]:border-border/40 [&>div]:bg-card/85 [&>div]:backdrop-blur-xl [&>div]:shadow-[var(--shadow-composer)] [&>div]:transition-all [&>div]:duration-200 [&>div]:focus-within:border-border/70 [&>div]:focus-within:shadow-[var(--shadow-composer-focus)]"
         onSubmit={handlePromptSubmit}
       >
         {(attachments.length > 0 || uploadQueue.length > 0) && (
           <div
-            className="flex w-full self-start flex-row gap-2 overflow-x-auto px-3 pt-3 no-scrollbar"
+            className="flex w-full self-start flex-row gap-2 overflow-x-auto px-4 pt-3 no-scrollbar"
             data-testid="attachments-preview"
           >
             {attachments.map((attachment) => (
@@ -1139,21 +1185,46 @@ function PureMultimodalInput({
             ))}
           </div>
         )}
+
+        {pendingTools.length > 0 ? (
+          <div className="flex flex-wrap items-center gap-1.5 px-4 pt-2.5">
+            {pendingTools.map((tid) => {
+              const meta = TOOLS_META[tid as ToolId];
+              const Icon = meta?.icon as any;
+              return (
+                <span
+                  className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 border border-primary/25 px-2.5 py-0.5 text-[11px] font-medium text-primary shadow-xs"
+                  key={tid}
+                >
+                  {Icon && <Icon className="size-3" />}
+                  <span>{meta?.label || tid}</span>
+                  <button
+                    aria-label="Désactiver l'outil"
+                    className="ml-0.5 rounded-full p-0.5 hover:bg-primary/20 cursor-pointer"
+                    onClick={() => togglePendingTool(tid as ToolId)}
+                    type="button"
+                  >
+                    <XIcon className="size-3" />
+                  </button>
+                </span>
+              );
+            })}
+          </div>
+        ) : null}
+
         <PromptInputTextarea
-          className="min-h-24 text-[13px] leading-relaxed px-4 pt-3.5 pb-1.5 placeholder:text-muted-foreground/35"
+          className="min-h-[48px] max-h-36 text-[13.5px] leading-relaxed px-4 pt-3.5 pb-1.5 placeholder:text-muted-foreground/45 resize-none"
           data-testid="multimodal-input"
           onBlur={handleTextareaBlur}
           onChange={handleInput}
           onKeyDown={handleTextareaKeyDown}
           placeholder={
-            editingMessage
-              ? "Modifier votre message..."
-              : "Poser une question à mAI...  (/ pour commandes, @ pour projets & modes)"
+            editingMessage ? "Modifier votre message..." : "Poser une question"
           }
           ref={textareaRef}
           value={input}
         />
-        <PromptInputFooter className="px-3 pb-3">
+        <PromptInputFooter className="px-3 pb-2.5 pt-0">
           <PromptInputTools>
             <PlusMenuButton
               fileInputRef={fileInputRef}
@@ -1162,7 +1233,7 @@ function PureMultimodalInput({
               status={status}
             />
             <Button
-              className={`h-7 w-7 rounded-lg p-1 border ${isListening ? "bg-red-500/10 border-red-500/30 text-red-500 animate-pulse" : "border-border/40 hover:bg-muted text-foreground"} ${isSpeechSupported ? "" : "opacity-40"}`}
+              className={`h-8 w-8 rounded-full p-1.5 border ${isListening ? "bg-red-500/10 border-red-500/30 text-red-500 animate-pulse" : "border-border/40 hover:bg-muted text-foreground"} ${isSpeechSupported ? "" : "opacity-40"}`}
               onClick={handleMicClick}
               title={isListening ? "Arrêter la dictée" : "Dictée vocale"}
               type="button"
@@ -1185,7 +1256,7 @@ function PureMultimodalInput({
           ) : (
             <PromptInputSubmit
               className={cn(
-                "h-7 w-7 rounded-xl transition-all duration-200",
+                "h-8 w-8 rounded-full transition-all duration-200",
                 input.trim() || attachments.length > 0
                   ? "bg-foreground text-background hover:opacity-85 active:scale-95"
                   : "bg-muted text-muted-foreground/25 cursor-not-allowed"
@@ -1295,18 +1366,6 @@ function PurePlusMenuButton({
     { dedupingInterval: 60_000, revalidateOnFocus: false }
   );
 
-  const { data: settingsData } = useSWR(
-    `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/settings`,
-    (url: string) => fetch(url).then((r) => r.json()),
-    { dedupingInterval: 30_000, revalidateOnFocus: true }
-  );
-
-  const { data: libraryData } = useSWR(
-    `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/library`,
-    (url: string) => fetch(url).then((r) => r.json()),
-    { dedupingInterval: 30_000, revalidateOnFocus: true }
-  );
-
   const caps: Record<string, ModelCapabilities> | undefined =
     modelsResponse?.capabilities;
   const currentCap = caps?.[selectedModelId];
@@ -1316,22 +1375,7 @@ function PurePlusMenuButton({
     : false;
   const isVisionLoading = !hasStrictCapsBtn && !modelsResponse;
 
-  const aiTokensUsed = settingsData?.aiUsage?.tokensUsed ?? 0;
-  const aiTokensLimit = settingsData?.aiUsage?.limit ?? 500_000;
-  const aiPercentUsed =
-    aiTokensLimit > 0
-      ? Math.min(100, Math.round((aiTokensUsed / aiTokensLimit) * 100))
-      : 0;
-
-  const cloudBytesUsed = libraryData?.storage?.bytes_used ?? 0;
-  const cloudBytesLimit = libraryData?.storage?.bytes_limit ?? 524_288_000;
-  const cloudPercentUsed =
-    libraryData?.storage?.percent_used ??
-    (cloudBytesLimit > 0
-      ? Math.min(100, Math.round((cloudBytesUsed / cloudBytesLimit) * 100))
-      : 0);
-
-  const { pendingTools, togglePendingTool, clearPendingTools } =
+  const { pendingTools, togglePendingTool, clearPendingTools, isGhostMode } =
     useActiveChatForTools();
   const [open, setOpen] = useState(false);
 
@@ -1365,251 +1409,182 @@ function PurePlusMenuButton({
     setOpen(false);
   };
 
-  const isToolEnabled = (id: ToolId) => pendingTools.includes(id);
+  const toggleToolExclusive = (toolId: ToolId, label: string) => {
+    const isCurrentlyEnabled = pendingTools.includes(toolId);
+    togglePendingTool(toolId);
+    toast(
+      isCurrentlyEnabled
+        ? `${label} désactivé`
+        : `${label} activé pour le prochain message`
+    );
+    setOpen(false);
+  };
+
+  const isImageActive = pendingTools.includes("imageGenerate" as ToolId);
+  const isWebActive = pendingTools.includes("webSearch" as ToolId);
 
   return (
-    <Sheet onOpenChange={setOpen} open={open}>
-      <SheetTrigger asChild>
+    <Popover onOpenChange={setOpen} open={open}>
+      <PopoverTrigger asChild>
         <Button
-          className="h-7 w-7 rounded-lg border border-border/40 p-1 transition-colors hover:bg-muted text-foreground cursor-pointer shadow-2xs relative"
+          className={cn(
+            "h-8 w-8 rounded-full border border-border/40 p-1.5 transition-colors hover:bg-muted text-foreground cursor-pointer shrink-0 relative",
+            pendingTools.length > 0 &&
+              "bg-primary/10 border-primary/30 text-primary"
+          )}
           data-testid="plus-menu-button"
           disabled={status !== "ready" && status !== "error"}
-          title="Ajouter du contenu & Outils (one-shot)"
+          title="Ajouter des options & outils"
           variant="ghost"
         >
           <PlusIcon className="size-4" />
           {pendingTools.length > 0 && (
-            <span className="absolute -top-1 -right-1 size-2.5 bg-primary rounded-full ring-2 ring-background" />
+            <span className="absolute -top-0.5 -right-0.5 size-2 bg-primary rounded-full ring-2 ring-background" />
           )}
         </Button>
-      </SheetTrigger>
-      <SheetContent
-        className="max-h-[85vh] overflow-y-auto rounded-t-2xl p-0"
-        side="bottom"
+      </PopoverTrigger>
+      <PopoverContent
+        align="start"
+        className="w-[320px] sm:w-[480px] p-2 rounded-2xl border border-border/50 bg-popover/95 backdrop-blur-xl shadow-2xl flex flex-col gap-1 z-50"
+        side="top"
+        sideOffset={10}
       >
-        <SheetHeader className="p-5 pb-3 text-left border-b border-border/40">
-          <SheetTitle className="text-base flex items-center gap-2">
-            <PlusIcon className="size-4" /> Options & Outils IA (one-shot)
-          </SheetTitle>
-          <SheetDescription className="text-xs">
-            Tous les outils sont <strong>désactivés par défaut</strong>.
-            Active-les pour le <strong>prochain message uniquement</strong> —
-            l'IA les utilisera de façon extrêmement recommandée. Via{" "}
-            <code className="px-1 py-0.5 bg-muted rounded text-[11px]">
-              /image
-            </code>
-            ,{" "}
-            <code className="px-1 py-0.5 bg-muted rounded text-[11px]">
-              /code
-            </code>{" "}
-            aussi.
-          </SheetDescription>
-        </SheetHeader>
-
-        <div className="p-4 space-y-5">
-          {/* Fichiers */}
-          <div>
-            <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground mb-2">
-              Fichiers
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              <button
-                className={cn(
-                  "flex items-start gap-2.5 p-3 rounded-xl border text-left transition-colors",
-                  hasFileOrImage || isVisionLoading || !hasStrictCapsBtn
-                    ? "bg-card hover:bg-muted border-border/60"
-                    : "opacity-45 cursor-not-allowed bg-muted border-border/40"
-                )}
-                disabled={!hasFileOrImage && hasStrictCapsBtn}
-                onClick={handleDeviceUploadClick}
-              >
-                <div className="p-1.5 rounded-lg bg-primary/10 text-primary shrink-0 mt-0.5">
-                  <UploadIcon className="size-3.5" />
-                </div>
-                <div className="flex flex-col gap-0.5">
-                  <span className="font-medium text-[13px]">Appareil</span>
-                  <span className="text-[11px] text-muted-foreground leading-tight">
-                    {isVisionLoading
-                      ? "Vérification..."
-                      : hasFileOrImage || !hasStrictCapsBtn
-                        ? "Photos, PDF, code locaux"
-                        : "Non supporté"}
-                  </span>
-                </div>
-              </button>
-              <button
-                className={cn(
-                  "flex items-start gap-2.5 p-3 rounded-xl border text-left transition-colors",
-                  hasFileOrImage || isVisionLoading || !hasStrictCapsBtn
-                    ? "bg-card hover:bg-muted border-border/60"
-                    : "opacity-45 cursor-not-allowed bg-muted border-border/40"
-                )}
-                disabled={!hasFileOrImage && hasStrictCapsBtn}
-                onClick={handleCloudImportClick}
-              >
-                <div className="p-1.5 rounded-lg bg-blue-500/10 text-blue-500 shrink-0 mt-0.5">
-                  <CloudIcon className="size-3.5" />
-                </div>
-                <div className="flex flex-col gap-0.5">
-                  <span className="font-medium text-[13px]">
-                    Bibliothèque Cloud
-                  </span>
-                  <span className="text-[11px] text-muted-foreground leading-tight">
-                    {isVisionLoading
-                      ? "Vérification..."
-                      : hasFileOrImage || !hasStrictCapsBtn
-                        ? "Documents enregistrés"
-                        : "Non supporté"}
-                  </span>
-                </div>
-              </button>
-            </div>
+        {/* Option 1: Ajouter des photos et fichiers */}
+        <button
+          className={cn(
+            "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
+            hasFileOrImage || isVisionLoading || !hasStrictCapsBtn
+              ? "hover:bg-muted/70 text-foreground"
+              : "opacity-45 cursor-not-allowed bg-muted/30"
+          )}
+          disabled={!hasFileOrImage && hasStrictCapsBtn}
+          onClick={handleDeviceUploadClick}
+          type="button"
+        >
+          <div className="flex size-7 items-center justify-center rounded-lg text-foreground/80 shrink-0">
+            <PaperclipIcon className="size-4" />
           </div>
+          <div className="flex items-center justify-between w-full min-w-0 gap-2">
+            <span className="text-[13.5px] font-semibold text-foreground truncate">
+              Ajouter des photos et fichiers
+            </span>
+            <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
+              {isVisionLoading
+                ? "Vérification..."
+                : hasFileOrImage || !hasStrictCapsBtn
+                  ? "Importer depuis l’ordinateur"
+                  : "Non supporté"}
+            </span>
+          </div>
+        </button>
 
-          {/* Outils IA */}
-          <div>
-            <div className="flex items-center justify-between mb-2">
-              <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                Outils IA — one-shot
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] text-muted-foreground">
-                  {pendingTools.length} actif(s)
+        {/* Option 2: Ajouter depuis la bibliothèque */}
+        <button
+          className={cn(
+            "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
+            hasFileOrImage || isVisionLoading || !hasStrictCapsBtn
+              ? "hover:bg-muted/70 text-foreground"
+              : "opacity-45 cursor-not-allowed bg-muted/30"
+          )}
+          disabled={!hasFileOrImage && hasStrictCapsBtn}
+          onClick={handleCloudImportClick}
+          type="button"
+        >
+          <div className="flex size-7 items-center justify-center rounded-lg text-foreground/80 shrink-0">
+            <FolderArchiveIcon className="size-4" />
+          </div>
+          <div className="flex items-center justify-between w-full min-w-0 gap-2">
+            <span className="text-[13.5px] font-semibold text-foreground truncate">
+              Ajouter depuis la bibliothèque
+            </span>
+            <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
+              Parcourez et recherchez vos fichiers
+            </span>
+          </div>
+        </button>
+
+        {/* Option 3: Créer une image */}
+        <button
+          className={cn(
+            "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
+            isGhostMode
+              ? "opacity-50 cursor-not-allowed bg-muted/20"
+              : isImageActive
+                ? "bg-primary/10 border border-primary/30 ring-1 ring-primary/20 text-primary"
+                : "hover:bg-muted/70 text-foreground"
+          )}
+          disabled={isGhostMode}
+          onClick={() => {
+            if (isGhostMode) {
+              toast.error(
+                "La génération d'image est indisponible en Mode fantôme 👻"
+              );
+              return;
+            }
+            toggleToolExclusive("imageGenerate", "Création d'image");
+          }}
+          type="button"
+        >
+          <div className="flex size-7 items-center justify-center rounded-lg text-cyan-500 shrink-0">
+            <ImageIcon className="size-4" />
+          </div>
+          <div className="flex items-center justify-between w-full min-w-0 gap-2">
+            <div className="flex items-center gap-2">
+              <span className="text-[13.5px] font-semibold truncate">
+                Créer une image
+              </span>
+              {isGhostMode ? (
+                <span className="text-[10px] bg-purple-500/20 text-purple-400 font-medium px-1.5 py-0.5 rounded-full">
+                  INDISPONIBLE EN FANTÔME 👻
                 </span>
-                {pendingTools.length > 0 && (
-                  <button
-                    className="text-[11px] px-2 py-1 rounded-lg bg-muted hover:bg-muted/80"
-                    onClick={() => {
-                      clearPendingTools();
-                      toast("Tous les outils désactivés");
-                    }}
-                  >
-                    Tout désactiver
-                  </button>
-                )}
-              </div>
+              ) : isImageActive ? (
+                <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
+                  ACTIF
+                </span>
+              ) : null}
             </div>
-            <div className="grid grid-cols-1 gap-2">
-              {TOOL_IDS.map((id) => {
-                const meta = TOOLS_META[id as ToolId];
-                const Icon = meta.icon as any;
-                const enabled = isToolEnabled(id as ToolId);
-                return (
-                  <button
-                    className={cn(
-                      "flex items-center gap-3 p-3 rounded-xl border text-left transition-all",
-                      enabled
-                        ? "bg-primary/10 border-primary/30 ring-1 ring-primary/20"
-                        : "bg-card hover:bg-muted border-border/60"
-                    )}
-                    key={id}
-                    onClick={() => {
-                      togglePendingTool(id as ToolId);
-                      toast(
-                        enabled
-                          ? `${meta.label} désactivé`
-                          : `${meta.label} activé — fortement recommandé`
-                      );
-                    }}
-                  >
-                    <div
-                      className={cn(
-                        "p-2 rounded-lg shrink-0",
-                        enabled
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-muted text-muted-foreground"
-                      )}
-                    >
-                      <Icon className="size-4" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-[13px] font-medium flex items-center gap-1.5">
-                        {meta.label}
-                        {enabled && (
-                          <span className="text-[10px] bg-primary text-primary-foreground px-1.5 py-0.5 rounded-full">
-                            ACTIF
-                          </span>
-                        )}
-                      </div>
-                      <div className="text-[11px] text-muted-foreground leading-tight">
-                        {meta.description}
-                      </div>
-                    </div>
-                    <div
-                      className={cn(
-                        "w-9 h-5 rounded-full p-0.5 transition-colors shrink-0",
-                        enabled ? "bg-primary" : "bg-muted"
-                      )}
-                    >
-                      <div
-                        className={cn(
-                          "size-4 rounded-full bg-white shadow-sm transition-transform",
-                          enabled ? "translate-x-4" : "translate-x-0"
-                        )}
-                      />
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-            <div className="mt-2 text-[11px] text-muted-foreground bg-amber-500/10 border border-amber-500/20 rounded-lg p-2.5">
-              💡 Tous désactivés par défaut. Active uniquement ce dont tu as
-              besoin pour le prochain message. L'IA recevra{" "}
-              <strong>"outil extrêmement recommandé"</strong> dans le prompt
-              système.
-            </div>
+            <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
+              {isGhostMode
+                ? "Indisponible dans ce mode"
+                : "Transformez vos idées en images"}
+            </span>
           </div>
+        </button>
 
-          {/* Usages */}
-          <div className="p-3 rounded-xl bg-muted/30 border border-border/30 space-y-3">
-            <div className="flex items-center justify-between text-[11px]">
-              <span className="font-semibold">mAI - {aiPercentUsed}%</span>
-              <span className="text-[10px] font-mono text-muted-foreground">
-                {formatTokenCount(aiTokensUsed)} /{" "}
-                {formatTokenCount(aiTokensLimit)}
-              </span>
-            </div>
-            <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
-              <div
-                className={cn(
-                  "h-full rounded-full transition-all",
-                  aiPercentUsed > 90
-                    ? "bg-red-500"
-                    : aiPercentUsed > 75
-                      ? "bg-amber-500"
-                      : "bg-primary"
-                )}
-                style={{ width: `${aiPercentUsed}%` }}
-              />
-            </div>
-            <div className="flex items-center justify-between text-[11px]">
-              <span className="font-semibold">Cloud - {cloudPercentUsed}%</span>
-              <span className="text-[10px] font-mono text-muted-foreground">
-                {formatBytes(cloudBytesUsed)} / {formatBytes(cloudBytesLimit)}
-              </span>
-            </div>
-            <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
-              <div
-                className={cn(
-                  "h-full rounded-full transition-all",
-                  cloudPercentUsed > 90
-                    ? "bg-red-500"
-                    : cloudPercentUsed > 75
-                      ? "bg-amber-500"
-                      : "bg-blue-500"
-                )}
-                style={{ width: `${cloudPercentUsed}%` }}
-              />
-            </div>
-            {aiPercentUsed > 90 && (
-              <div className="text-[11px] text-red-500 font-medium">
-                ⚠️ 90% atteint — envisage une mise à niveau.
-              </div>
-            )}
+        {/* Option 4: Recherche sur le Web */}
+        <button
+          className={cn(
+            "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
+            isWebActive
+              ? "bg-primary/10 border border-primary/30 ring-1 ring-primary/20 text-primary"
+              : "hover:bg-muted/70 text-foreground"
+          )}
+          onClick={() =>
+            toggleToolExclusive("webSearch", "Recherche sur le Web")
+          }
+          type="button"
+        >
+          <div className="flex size-7 items-center justify-center rounded-lg text-sky-500 shrink-0">
+            <GlobeIcon className="size-4" />
           </div>
-        </div>
-      </SheetContent>
-    </Sheet>
+          <div className="flex items-center justify-between w-full min-w-0 gap-2">
+            <div className="flex items-center gap-2">
+              <span className="text-[13.5px] font-semibold truncate">
+                Recherche sur le Web
+              </span>
+              {isWebActive && (
+                <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
+                  ACTIF
+                </span>
+              )}
+            </div>
+            <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
+              Trouvez des infos en temps réel
+            </span>
+          </div>
+        </button>
+      </PopoverContent>
+    </Popover>
   );
 }
 

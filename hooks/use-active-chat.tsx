@@ -70,6 +70,9 @@ type ActiveChatContextValue = {
   clearPendingTools: () => void;
   showCreditCardAlert: boolean;
   setShowCreditCardAlert: Dispatch<SetStateAction<boolean>>;
+  isGhostMode: boolean;
+  setIsGhostMode: Dispatch<SetStateAction<boolean>>;
+  toggleGhostMode: () => void;
 };
 
 const ActiveChatContext = createContext<ActiveChatContextValue | null>(null);
@@ -121,6 +124,37 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     setPendingProject(null);
   }, [setPendingProject]);
 
+  // Ghost mode (ephemeral, no DB recording, imageGenerate disabled)
+  const [isGhostMode, setIsGhostMode] = useState<boolean>(false);
+  const isGhostModeRef = useRef<boolean>(isGhostMode);
+  isGhostModeRef.current = isGhostMode;
+
+  const toggleGhostMode = useCallback(() => {
+    setIsGhostMode((prev) => {
+      const next = !prev;
+      isGhostModeRef.current = next;
+      if (next) {
+        // Auto-disable imageGenerate tool if pending
+        setPendingToolsState((tools) => {
+          const filtered = tools.filter((t) => t !== "imageGenerate");
+          pendingToolsRef.current = filtered;
+          return filtered;
+        });
+        toast({
+          description:
+            "Mode fantôme activé 👻 - La discussion est temporaire et ne sera pas enregistrée en base de données.",
+          type: "success",
+        });
+      } else {
+        toast({
+          description: "Mode fantôme désactivé",
+          type: "success",
+        });
+      }
+      return next;
+    });
+  }, []);
+
   // Pending tools one-shot (disabled by default)
   const [pendingTools, setPendingToolsState] = useState<ToolId[]>(
     DEFAULT_ENABLED_TOOLS
@@ -132,6 +166,14 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     pendingToolsRef.current = tools;
   }, []);
   const togglePendingTool = useCallback((tool: ToolId) => {
+    if (tool === "imageGenerate" && isGhostModeRef.current) {
+      toast({
+        description:
+          "La génération d'image est indisponible en Mode fantôme 👻",
+        type: "error",
+      });
+      return;
+    }
     setPendingToolsState((prev) => {
       const next = prev.includes(tool)
         ? prev.filter((t) => t !== tool)
@@ -332,7 +374,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       }
     },
     onFinish: () => {
-      mutate(unstable_serialize(getChatHistoryPaginationKey));
+      if (!isGhostModeRef.current) {
+        mutate(unstable_serialize(getChatHistoryPaginationKey));
+      }
     },
     sendAutomaticallyWhen: ({ messages: currentMessages }) => {
       const lastMessage = currentMessages.at(-1);
@@ -371,7 +415,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
         // One-shot tools: capture and clear after send
         const toolsToSend = isToolApprovalContinuation
           ? []
-          : [...pendingToolsRef.current];
+          : isGhostModeRef.current
+            ? pendingToolsRef.current.filter((t) => t !== "imageGenerate")
+            : [...pendingToolsRef.current];
         if (!isToolApprovalContinuation && pendingToolsRef.current.length > 0) {
           // Clear after capturing — one-shot
           setTimeout(() => clearPendingTools(), 0);
@@ -387,6 +433,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
                   ...(projectIdToSend ? { projectId: projectIdToSend } : {}),
                 }),
             enabledTools: toolsToSend,
+            isGhostMode: isGhostModeRef.current,
             selectedChatMode: currentModeIdRef.current,
             selectedChatModel: currentModelIdRef.current,
             selectedVisibilityType: visibility,
@@ -501,10 +548,13 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       setMessages,
       setPendingProject,
       setPendingTools,
+      isGhostMode,
+      setIsGhostMode,
       setShowCreditCardAlert,
       showCreditCardAlert,
       status,
       stop,
+      toggleGhostMode,
       togglePendingTool,
       visibilityType: visibility,
       votes,
@@ -534,6 +584,8 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       togglePendingTool,
       clearPendingTools,
       showCreditCardAlert,
+      isGhostMode,
+      toggleGhostMode,
     ]
   );
 

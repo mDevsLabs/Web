@@ -1,6 +1,7 @@
 import {
   CloudSunIcon,
   FileTextIcon,
+  GlobeIcon,
   ImageIcon,
   LightbulbIcon,
   PencilIcon,
@@ -16,6 +17,7 @@ export const TOOL_IDS = [
   "requestSuggestions",
   "imageGenerate",
   "codeExecution",
+  "webSearch",
 ] as const;
 
 export type ToolId = (typeof TOOL_IDS)[number];
@@ -73,6 +75,12 @@ export const TOOLS_META: Record<ToolId, ToolMeta> = {
     id: "updateDocument",
     isArtifact: true,
     label: "Réécrire document",
+  },
+  webSearch: {
+    description: "Recherche sur le Web en temps réel",
+    icon: GlobeIcon as any,
+    id: "webSearch",
+    label: "Recherche Web",
   },
 };
 

@@ -22,6 +22,7 @@ import { getWeather } from "@/lib/ai/tools/get-weather";
 import { imageGenerate } from "@/lib/ai/tools/image-generate";
 import { requestSuggestions } from "@/lib/ai/tools/request-suggestions";
 import { updateDocument } from "@/lib/ai/tools/update-document";
+import { webSearch } from "@/lib/ai/tools/web-search";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import { isProductionEnvironment, MAI_API_URL } from "@/lib/constants";
 import { getUserApiKey } from "@/lib/db/api-keys";
@@ -88,12 +89,14 @@ export async function POST(request: Request) {
       customInstructions,
       temperatureOverride,
       enabledTools,
+      isGhostMode = false,
     } = requestBody as PostRequestBody & {
       projectId?: string | null;
       tags?: string[];
       customInstructions?: string;
       temperatureOverride?: number | null;
       enabledTools?: string[];
+      isGhostMode?: boolean;
     };
 
     const [botIdResult, sessionToken, maiUser] = await Promise.all([
@@ -168,6 +171,7 @@ export async function POST(request: Request) {
       messagesFromDb = await getMessagesByChatId({ id });
       // Renommer seulement si c'est la première interaction (pas de messages en DB)
       if (
+        !isGhostMode &&
         messagesFromDb.length === 0 &&
         message?.role === "user" &&
         chat.title === "Nouvelle discussion"
@@ -175,7 +179,7 @@ export async function POST(request: Request) {
         shouldRenameAfterFirst = true;
         firstUserMessageForTitle = message;
       }
-    } else if (message?.role === "user") {
+    } else if (message?.role === "user" && !isGhostMode) {
       if (projectId) {
         const { getProjectById } = await import("@/lib/db/queries");
         const proj = await getProjectById({ id: projectId, userId });
@@ -199,7 +203,7 @@ export async function POST(request: Request) {
       });
       shouldRenameAfterFirst = true;
       firstUserMessageForTitle = message;
-    } else if (chat && projectId !== undefined) {
+    } else if (chat && projectId !== undefined && !isGhostMode) {
       // Update project association on existing chat if explicitly passed
       const { updateChatProjectById } = await import("@/lib/db/queries");
       try {
@@ -258,7 +262,7 @@ export async function POST(request: Request) {
       longitude,
     };
 
-    if (message?.role === "user") {
+    if (message?.role === "user" && !isGhostMode) {
       await saveMessages({
         messages: [
           {
@@ -333,9 +337,12 @@ export async function POST(request: Request) {
     if (chatCustomInstructions) {
       effectiveAddendum = `${effectiveAddendum}\n\nInstructions spécifiques à cette discussion:\n${chatCustomInstructions}`;
     }
+    if (isGhostMode) {
+      effectiveAddendum += `\n\n👻 MODE FANTÔME ACTIF : Cette discussion est éphémère et confidentielle (non enregistrée en base de données). L'outil de génération d'image est strictement indisponible dans ce mode.`;
+    }
     // One-shot tools: if enabledTools provided, inject extremely recommended directive
     const requestedTools: string[] = Array.isArray(enabledTools)
-      ? enabledTools
+      ? enabledTools.filter((t) => !isGhostMode || t !== "imageGenerate")
       : [];
     if (requestedTools.length > 0) {
       const toolLabels: Record<string, string> = {
@@ -346,6 +353,7 @@ export async function POST(request: Request) {
         imageGenerate: "imageGenerate (génération d'image)",
         requestSuggestions: "requestSuggestions (suggestions)",
         updateDocument: "updateDocument (réécrire artifact)",
+        webSearch: "webSearch (recherche sur le Web en temps réel)",
       };
       const listed = requestedTools.map((t) => toolLabels[t] || t).join(", ");
       effectiveAddendum += `\n\n⚠️ OUTILS ACTIVÉS POUR CE MESSAGE — UTILISATION EXTRÊMEMENT RECOMMANDÉE SI PERTINENT : ${listed}. Tu DOIS les utiliser dès que la demande s'y prête, ne les ignore pas. Si plusieurs outils sont activés, choisis le plus pertinent.`;
@@ -386,7 +394,7 @@ export async function POST(request: Request) {
 
         // Tous les outils désactivés par défaut — one-shot via enabledTools
         const requestedTools2: string[] = Array.isArray(enabledTools)
-          ? enabledTools
+          ? enabledTools.filter((t) => !isGhostMode || t !== "imageGenerate")
           : [];
         // Filtrer par les outils autorisés par le mode si mode restreint, sinon tous
         const modeAllowed = effectiveMode.activeTools; // null means no tools at all? We override: if mode is null, still respect enabledTools? Spec says disabled by default, so mode null still allows if user enabled
@@ -395,10 +403,11 @@ export async function POST(request: Request) {
             ? []
             : requestedTools2.filter(
                 (t) =>
-                  modeAllowed === null ||
-                  modeAllowed === undefined ||
-                  modeAllowed.includes(t as any) ||
-                  true
+                  (!isGhostMode || t !== "imageGenerate") &&
+                  (modeAllowed === null ||
+                    modeAllowed === undefined ||
+                    modeAllowed.includes(t as any) ||
+                    true)
               );
         // If user explicitly enabled tools, allow even if mode is null (override)
         const activeToolsList: string[] =
@@ -469,27 +478,42 @@ export async function POST(request: Request) {
             createDocument: createDocument({
               dataStream,
               modelId: chatModel,
-              session: { user: { email: maiUser.email, id: userId } } as any,
+              session: {
+                user: isGhostMode ? null : { email: maiUser.email, id: userId },
+              } as any,
             }),
             editDocument: editDocument({
               dataStream,
-              session: { user: { email: maiUser.email, id: userId } } as any,
+              session: {
+                user: isGhostMode ? null : { email: maiUser.email, id: userId },
+              } as any,
             }),
             getWeather,
-            imageGenerate: imageGenerate({
-              dataStream,
-              session: { user: { email: maiUser.email, id: userId } } as any,
-            }),
+            ...(isGhostMode
+              ? {}
+              : {
+                  imageGenerate: imageGenerate({
+                    dataStream,
+                    session: {
+                      user: { email: maiUser.email, id: userId },
+                    } as any,
+                  }),
+                }),
             requestSuggestions: requestSuggestions({
               dataStream,
               modelId: chatModel,
-              session: { user: { email: maiUser.email, id: userId } } as any,
+              session: {
+                user: isGhostMode ? null : { email: maiUser.email, id: userId },
+              } as any,
             }),
             updateDocument: updateDocument({
               dataStream,
               modelId: chatModel,
-              session: { user: { email: maiUser.email, id: userId } } as any,
+              session: {
+                user: isGhostMode ? null : { email: maiUser.email, id: userId },
+              } as any,
             }),
+            webSearch,
           },
         });
 
@@ -502,6 +526,11 @@ export async function POST(request: Request) {
       },
       generateId: generateUUID,
       onEnd: async ({ messages: finishedMessages }) => {
+        if (isGhostMode) {
+          // Mode fantôme : ne pas enregistrer la discussion ou les messages en BDD
+          return;
+        }
+
         if (isToolApprovalFlow) {
           await Promise.all(
             finishedMessages.map(async (finishedMsg) => {
@@ -578,7 +607,7 @@ export async function POST(request: Request) {
 
     return createUIMessageStreamResponse({
       async consumeSseStream({ stream: sseStream }) {
-        if (!process.env.REDIS_URL) {
+        if (!process.env.REDIS_URL || isGhostMode) {
           return;
         }
         try {
