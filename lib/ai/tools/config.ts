@@ -6,6 +6,7 @@ import {
   LightbulbIcon,
   PencilIcon,
   PlayIcon,
+  Volume2Icon,
 } from "lucide-react";
 import type { ComponentType } from "react";
 
@@ -16,6 +17,7 @@ export const TOOL_IDS = [
   "updateDocument",
   "requestSuggestions",
   "imageGenerate",
+  "audioGenerate",
   "codeExecution",
   "webSearch",
 ] as const;
@@ -31,6 +33,12 @@ export type ToolMeta = {
 };
 
 export const TOOLS_META: Record<ToolId, ToolMeta> = {
+  audioGenerate: {
+    description: "Générer une voix ou extrait audio via mAI Audio Studio",
+    icon: Volume2Icon as any,
+    id: "audioGenerate",
+    label: "Générer audio",
+  },
   codeExecution: {
     description: "Générer et exécuter code Python/JS côté navigateur (Pyodide)",
     icon: PlayIcon as any,

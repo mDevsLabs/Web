@@ -11,6 +11,7 @@ import {
   SearchIcon,
   SettingsIcon,
   TrashIcon,
+  Volume2Icon,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -277,11 +278,11 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                   <SidebarMenuButton
                     asChild
                     className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
-                    tooltip="Bibliothèque"
+                    tooltip="Stockage"
                   >
                     <Link href="/library" onClick={closeMobile}>
                       <FolderArchiveIcon className="size-4" />
-                      <span>Bibliothèque</span>
+                      <span>Stockage</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -303,11 +304,24 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                   <SidebarMenuButton
                     asChild
                     className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
-                    tooltip="Studio Images"
+                    tooltip="Images"
                   >
                     <Link href="/images" onClick={closeMobile}>
                       <ImageIcon className="size-4" />
-                      <span>Studio Images</span>
+                      <span>Images</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    asChild
+                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                    tooltip="Audio"
+                  >
+                    <Link href="/audio" onClick={closeMobile}>
+                      <Volume2Icon className="size-4" />
+                      <span>Audio</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

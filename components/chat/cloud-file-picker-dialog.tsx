@@ -110,7 +110,7 @@ export function CloudFilePickerDialog({
         <DialogHeader className="gap-1">
           <div className="flex items-center gap-2 text-primary font-semibold text-xs uppercase tracking-wider">
             <CloudIcon className="size-4" />
-            Bibliothèque Cloud
+            Stockage Cloud
           </div>
           <DialogTitle className="text-xl">
             Sélectionner des fichiers pour l'IA
@@ -139,7 +139,7 @@ export function CloudFilePickerDialog({
             <div className="py-16 flex flex-col items-center justify-center text-muted-foreground gap-3">
               <Loader2Icon className="size-6 animate-spin text-primary" />
               <span className="text-xs">
-                Chargement de votre bibliothèque...
+                Chargement de votre stockage...
               </span>
             </div>
           ) : filteredFiles.length === 0 ? (
@@ -148,12 +148,12 @@ export function CloudFilePickerDialog({
               <p className="text-xs font-medium text-foreground">
                 {searchQuery
                   ? "Aucun résultat trouvé"
-                  : "Votre bibliothèque est vide"}
+                  : "Votre stockage est vide"}
               </p>
               <p className="text-[11px] text-muted-foreground max-w-xs">
                 {searchQuery
                   ? "Modifiez votre recherche pour retrouver vos fichiers."
-                  : "Importez d'abord des fichiers dans la section Bibliothèque pour les retrouver ici."}
+                  : "Importez d'abord des fichiers dans la section Stockage pour les retrouver ici."}
               </p>
             </div>
           ) : (

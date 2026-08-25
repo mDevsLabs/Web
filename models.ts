@@ -2,6 +2,7 @@ import type { Hono } from "npm:hono@4";
 import {
   extractToken,
   getDb,
+  getTierSpeechLimit,
   getWeekData,
   TIER_LIMITS,
   verifyToken,
@@ -29,14 +30,18 @@ export function registerModelRoutes(app: Hono) {
       const { weekStartStr, nextResetIso } = getWeekData();
 
       const sql = getDb();
-      const [usageResult, userResult] = await Promise.all([
+      const [usageResult, userResult, speechResult] = await Promise.all([
         sql`SELECT tokens_used FROM weekly_usage WHERE user_id = ${userId} AND week_start = ${weekStartStr}`,
         sql`SELECT tier, email, username, phone, avatar_url FROM users WHERE id = ${userId} LIMIT 1`,
+        sql`SELECT tokens_used FROM weekly_speech_usage WHERE user_id = ${userId}::text AND week_start = ${weekStartStr}::date LIMIT 1`.catch(() => []),
       ]);
 
       const user = userResult[0];
       const tokensUsed = usageResult[0]?.tokens_used || 0;
-      const limit = TIER_LIMITS[user?.tier] || TIER_LIMITS["Free"];
+      const speechTokensUsed = Number(speechResult?.[0]?.tokens_used || 0);
+      const userTier = user?.tier || "Free";
+      const limit = TIER_LIMITS[userTier] || TIER_LIMITS["Free"];
+      const speechLimit = getTierSpeechLimit(userTier);
 
       return c.json({
         avatarUrl: user?.avatar_url,
@@ -45,7 +50,9 @@ export function registerModelRoutes(app: Hono) {
         limit,
         phone: user?.phone,
         resetAt: nextResetIso,
-        tier: user?.tier || "Free",
+        speechLimit,
+        speechTokensUsed,
+        tier: userTier,
         tokensUsed,
         username: user?.username,
         weekStart: weekStartStr,
@@ -136,26 +143,33 @@ export function registerModelRoutes(app: Hono) {
             modality.includes("->text")
           );
         })
-        .map((m) => ({
-          architecture: m.architecture,
-          created: m.created || Math.floor(Date.now() / 1000),
-          description: m.description || "",
-          id: m.id,
-          maxContext: m.context_length || 128_000,
-          maxOutput: m.top_provider?.max_completion_tokens || 4096,
-          name: m.name || m.id,
-          object: "model",
-          owned_by: m.id.split("/")[0] || "openrouter",
-          supported_parameters: m.supported_parameters || [
-            "temperature",
-            "top_p",
-            "max_tokens",
-            "stream",
-            "stop",
-            "tools",
-            "response_format",
-          ],
-        }));
+        .map((m) => {
+          const rawName = m.name || m.id;
+          const cleanName = (rawName || "")
+            .replace(/\s*\((free|gratuit|free tier)\)/gi, "")
+            .replace(/:free/gi, "")
+            .trim();
+          return {
+            architecture: m.architecture,
+            created: m.created || Math.floor(Date.now() / 1000),
+            description: m.description || "",
+            id: m.id,
+            maxContext: m.context_length || 128_000,
+            maxOutput: m.top_provider?.max_completion_tokens || 4096,
+            name: cleanName || m.id,
+            object: "model",
+            owned_by: m.id.split("/")[0] || "openrouter",
+            supported_parameters: m.supported_parameters || [
+              "temperature",
+              "top_p",
+              "max_tokens",
+              "stream",
+              "stop",
+              "tools",
+              "response_format",
+            ],
+          };
+        });
 
       if (shouldFilterFreeOnly) {
         filtered = filtered.filter((m) =>

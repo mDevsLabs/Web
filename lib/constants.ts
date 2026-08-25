@@ -11,6 +11,39 @@ export const MAI_API_URL =
   process.env.NEXT_PUBLIC_MAI_API_URL || "https://mai.val.run";
 export const MAI_UPGRADE_URL = "https://mai-devs.vercel.app";
 
+// Limites quotidiennes de génération d'images par tier
+// (miroir de TIER_DAILY_IMAGE_LIMITS / getTierDailyImageLimit côté backend Val
+// Town, config.ts — non importable car code Deno)
+export function getTierImageDailyLimit(tier?: string | null): number {
+  const t = (tier || "Free").toLowerCase().trim();
+  if (t === "max") {
+    return 20;
+  }
+  if (t === "pro") {
+    return 10;
+  }
+  if (t === "plus") {
+    return 5;
+  }
+  return 3;
+}
+
+// Limites hebdomadaires de tokens Speech par tier
+// Free: 20M, Plus: 50M, Pro: 100M, Max: 200M
+export function getTierSpeechLimit(tier?: string | null): number {
+  const t = (tier || "Free").toLowerCase().trim();
+  if (t === "max") {
+    return 200_000_000;
+  }
+  if (t === "pro") {
+    return 100_000_000;
+  }
+  if (t === "plus") {
+    return 50_000_000;
+  }
+  return 20_000_000;
+}
+
 export const suggestions = [
   "Analyse ce concept et explique-le avec des analogies simples et concrètes",
   "Rédige un e-mail professionnel pour relancer un client de manière courtoise",

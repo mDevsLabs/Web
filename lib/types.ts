@@ -1,6 +1,7 @@
 import type { InferUITool, UIMessage } from "ai";
 import { z } from "zod";
 import type { ArtifactKind } from "@/components/chat/artifact";
+import type { audioGenerate } from "./ai/tools/audio-generate";
 import type { codeExecution } from "./ai/tools/code-execution";
 import type { createDocument } from "./ai/tools/create-document";
 import type { editDocument } from "./ai/tools/edit-document";
@@ -24,6 +25,7 @@ type requestSuggestionsTool = InferUITool<
   ReturnType<typeof requestSuggestions>
 >;
 type imageGenerateTool = InferUITool<ReturnType<typeof imageGenerate>>;
+type audioGenerateTool = InferUITool<ReturnType<typeof audioGenerate>>;
 type codeExecutionTool = InferUITool<typeof codeExecution>;
 
 export type ChatTools = {
@@ -33,6 +35,7 @@ export type ChatTools = {
   updateDocument: updateDocumentTool;
   requestSuggestions: requestSuggestionsTool;
   imageGenerate: imageGenerateTool;
+  audioGenerate: audioGenerateTool;
   codeExecution: codeExecutionTool;
 };
 
@@ -46,6 +49,7 @@ export type WaitingStatusData = {
 export type CustomUIDataTypes = {
   textDelta: string;
   imageDelta: string;
+  audioDelta: string;
   sheetDelta: string;
   codeDelta: string;
   htmlDelta: string;

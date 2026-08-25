@@ -32,6 +32,7 @@ import {
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
+import { PageBackButton } from "@/components/chat/page-back-button";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -257,7 +258,7 @@ export default function LibraryPage() {
   // Prévisualisation
   const [previewFile, setPreviewFile] = useState<CloudFile | null>(null);
 
-  // Charger les données de la bibliothèque
+  // Charger les données du stockage
   const fetchLibraryData = useCallback(async () => {
     try {
       const res = await fetch("/api/library");
@@ -269,7 +270,7 @@ export default function LibraryPage() {
       setStorage(data.storage || null);
     } catch (err) {
       console.error(err);
-      toast.error("Erreur lors de la récupération de votre bibliothèque.");
+      toast.error("Erreur lors de la récupération de votre stockage.");
     } finally {
       setIsLoading(false);
     }
@@ -642,25 +643,28 @@ export default function LibraryPage() {
   }, [files, pinnedIds]);
 
   return (
-    <div className="flex flex-1 flex-col h-full overflow-y-auto bg-background p-6 md:p-10 max-w-6xl mx-auto w-full">
+    <div className="flex flex-1 flex-col h-full overflow-y-auto bg-background p-4 sm:p-6 md:p-10 max-w-6xl mx-auto w-full">
       {/* En-tête de la page */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-border/50">
-        <div>
-          <div className="flex items-center gap-2 text-primary font-semibold text-xs tracking-wider uppercase mb-1">
-            <CloudIcon className="size-4" />
-            Stockage Cloud Sécurisé
+        <div className="flex items-start gap-3 min-w-0">
+          <PageBackButton />
+          <div className="min-w-0">
+            <div className="flex items-center gap-2 text-primary font-semibold text-xs tracking-wider uppercase mb-1">
+              <CloudIcon className="size-4" />
+              Stockage Cloud Sécurisé
+            </div>
+            <h1 className="text-2xl truncate md:text-3xl font-bold tracking-tight text-foreground">
+              Stockage de fichiers
+            </h1>
+            <p className="hidden sm:block text-sm text-muted-foreground mt-1">
+              Importez, épinglez et gérez vos documents, médias et codes pour
+              alimenter l'IA.
+            </p>
           </div>
-          <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
-            Bibliothèque de fichiers
-          </h1>
-          <p className="text-sm text-muted-foreground mt-1">
-            Importez, épinglez et gérez vos documents, médias et codes pour
-            alimenter l'IA.
-          </p>
         </div>
 
         <button
-          className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-4 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer"
+          className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-4 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer shrink-0"
           onClick={() => fileInputRef.current?.click()}
         >
           <CloudUploadIcon className="size-4" />
@@ -990,7 +994,7 @@ export default function LibraryPage() {
         {isLoading ? (
           <div className="py-16 flex flex-col items-center justify-center text-muted-foreground gap-3">
             <Loader2Icon className="size-6 animate-spin text-primary" />
-            <span className="text-sm">Chargement de votre bibliothèque...</span>
+            <span className="text-sm">Chargement de votre stockage...</span>
           </div>
         ) : filteredAndSortedFiles.length === 0 ? (
           <div className="py-16 flex flex-col items-center justify-center text-muted-foreground rounded-2xl border border-border/40 bg-card/30 p-8 text-center">
@@ -1000,7 +1004,7 @@ export default function LibraryPage() {
             <p className="text-sm font-medium text-foreground">
               {searchQuery || selectedCategory !== "all"
                 ? "Aucun fichier correspondant aux critères sélectionnés"
-                : "Votre bibliothèque est vide"}
+                : "Votre stockage est vide"}
             </p>
             <p className="text-xs text-muted-foreground mt-1 max-w-sm">
               {searchQuery || selectedCategory !== "all"

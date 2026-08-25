@@ -6,6 +6,7 @@
 import { cors } from "npm:hono/cors";
 import { Hono } from "npm:hono@4";
 import { registerAuthRoutes } from "./auth.ts";
+import { registerAudioRoutes } from "./audio.ts";
 import { initSQLite } from "./config.ts";
 import { registerDeviceRoutes } from "./devices.ts";
 import { registerImageRoutes } from "./images.ts";
@@ -82,6 +83,7 @@ registerAuthRoutes(app);
 registerStorageRoutes(app);
 registerModelRoutes(app);
 registerImageRoutes(app);
+registerAudioRoutes(app);
 registerWebRoutes(app);
 registerProjectRoutes(app);
 registerDeviceRoutes(app);

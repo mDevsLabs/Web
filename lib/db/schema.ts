@@ -1,14 +1,19 @@
 import type { InferSelectModel } from "drizzle-orm";
 import {
+  bigint,
   boolean,
+  date,
   doublePrecision,
   foreignKey,
   index,
+  integer,
   json,
   pgTable,
   primaryKey,
+  serial,
   text,
   timestamp,
+  uniqueIndex,
   uuid,
   varchar,
 } from "drizzle-orm/pg-core";
@@ -196,3 +201,55 @@ export const userTotp = pgTable("user_totp", {
 });
 
 export type UserTotp = InferSelectModel<typeof userTotp>;
+
+export const weeklySpeechUsage = pgTable(
+  "weekly_speech_usage",
+  {
+    id: serial("id").primaryKey().notNull(),
+    requestsCount: integer("requests_count").notNull().default(0),
+    tokensUsed: bigint("tokens_used", { mode: "number" }).notNull().default(0),
+    updatedAt: timestamp("updated_at").notNull().defaultNow(),
+    userId: text("user_id").notNull(),
+    weekStart: date("week_start").notNull(),
+  },
+  (table) => ({
+    userWeekUnique: uniqueIndex("weekly_speech_usage_user_week_idx").on(
+      table.userId,
+      table.weekStart
+    ),
+    userIdIdx: index("weekly_speech_usage_user_id_idx").on(table.userId),
+    weekStartIdx: index("weekly_speech_usage_week_start_idx").on(
+      table.weekStart
+    ),
+  })
+);
+
+export type WeeklySpeechUsage = InferSelectModel<typeof weeklySpeechUsage>;
+
+export const mprojectsSpeechGenerations = pgTable(
+  "mprojects_speech_generations",
+  {
+    apiKey: text("api_key"),
+    characterCount: integer("character_count").notNull().default(0),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    inputText: text("input_text").notNull(),
+    model: text("model").notNull().default("deepgram/flux-tts:free"),
+    status: text("status").notNull().default("completed"),
+    tokensCount: integer("tokens_count").notNull().default(0),
+    userId: text("user_id").notNull(),
+    voice: text("voice").default("flux-alexis-en"),
+  },
+  (table) => ({
+    createdAtIdx: index("mprojects_speech_generations_created_at_idx").on(
+      table.createdAt
+    ),
+    userIdIdx: index("mprojects_speech_generations_user_id_idx").on(
+      table.userId
+    ),
+  })
+);
+
+export type MprojectsSpeechGenerations = InferSelectModel<
+  typeof mprojectsSpeechGenerations
+>;

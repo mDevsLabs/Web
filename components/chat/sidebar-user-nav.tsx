@@ -7,6 +7,7 @@ import {
   MoonIcon,
   SettingsIcon,
   SunIcon,
+  ZapIcon,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -122,10 +123,20 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
             <DropdownMenuItem asChild>
               <Link
                 className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[13px] cursor-pointer hover:bg-sidebar-accent"
+                href="/settings?tab=usage"
+              >
+                <ZapIcon className="size-4 text-muted-foreground" />
+                <span>Consommation & Quotas</span>
+              </Link>
+            </DropdownMenuItem>
+
+            <DropdownMenuItem asChild>
+              <Link
+                className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[13px] cursor-pointer hover:bg-sidebar-accent"
                 href="/library"
               >
                 <FolderArchiveIcon className="size-4 text-muted-foreground" />
-                <span>Bibliothèque de fichiers</span>
+                <span>Stockage de fichiers</span>
               </Link>
             </DropdownMenuItem>
 

@@ -15,6 +15,7 @@ import { DEFAULT_CHAT_MODEL, getModelCapabilities } from "@/lib/ai/models";
 import { AI_MODES, DEFAULT_AI_MODE, getAIMode } from "@/lib/ai/modes";
 import { type RequestHints, systemPrompt } from "@/lib/ai/prompts";
 import { getLanguageModel } from "@/lib/ai/providers";
+import { audioGenerate } from "@/lib/ai/tools/audio-generate";
 import { codeExecution } from "@/lib/ai/tools/code-execution";
 import { createDocument } from "@/lib/ai/tools/create-document";
 import { editDocument } from "@/lib/ai/tools/edit-document";
@@ -342,10 +343,13 @@ export async function POST(request: Request) {
     }
     // One-shot tools: if enabledTools provided, inject extremely recommended directive
     const requestedTools: string[] = Array.isArray(enabledTools)
-      ? enabledTools.filter((t) => !isGhostMode || t !== "imageGenerate")
+      ? enabledTools.filter(
+          (t) => !isGhostMode || (t !== "imageGenerate" && t !== "audioGenerate")
+        )
       : [];
     if (requestedTools.length > 0) {
       const toolLabels: Record<string, string> = {
+        audioGenerate: "audioGenerate (synthèse vocale et génération audio)",
         codeExecution: "codeExecution (exécution Python/JS navigateur)",
         createDocument: "createDocument (créer artifact)",
         editDocument: "editDocument (éditer artifact)",
@@ -394,16 +398,19 @@ export async function POST(request: Request) {
 
         // Tous les outils désactivés par défaut — one-shot via enabledTools
         const requestedTools2: string[] = Array.isArray(enabledTools)
-          ? enabledTools.filter((t) => !isGhostMode || t !== "imageGenerate")
+          ? enabledTools.filter(
+              (t) => !isGhostMode || (t !== "imageGenerate" && t !== "audioGenerate")
+            )
           : [];
         // Filtrer par les outils autorisés par le mode si mode restreint, sinon tous
-        const modeAllowed = effectiveMode.activeTools; // null means no tools at all? We override: if mode is null, still respect enabledTools? Spec says disabled by default, so mode null still allows if user enabled
+        const modeAllowed = effectiveMode.activeTools;
         const filteredTools =
           modeAllowed === null && requestedTools2.length === 0
             ? []
             : requestedTools2.filter(
                 (t) =>
-                  (!isGhostMode || t !== "imageGenerate") &&
+                  (!isGhostMode ||
+                    (t !== "imageGenerate" && t !== "audioGenerate")) &&
                   (modeAllowed === null ||
                     modeAllowed === undefined ||
                     modeAllowed.includes(t as any) ||
@@ -474,6 +481,12 @@ export async function POST(request: Request) {
             isEnabled: isProductionEnvironment,
           },
           tools: {
+            audioGenerate: audioGenerate({
+              dataStream,
+              session: {
+                user: isGhostMode ? null : { email: maiUser.email, id: userId },
+              } as any,
+            }),
             codeExecution,
             createDocument: createDocument({
               dataStream,

@@ -6,7 +6,6 @@ import {
   CameraIcon,
   CheckCircle2Icon,
   CloudIcon,
-  Code2Icon,
   ExternalLinkIcon,
   ImageIcon,
   KeyRoundIcon,
@@ -14,6 +13,7 @@ import {
   ShieldCheckIcon,
   SparklesIcon,
   UserIcon,
+  Volume2Icon,
   ZapIcon,
 } from "lucide-react";
 import Image from "next/image";
@@ -34,6 +34,12 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PageBackButton } from "@/components/chat/page-back-button";
+import {
+  resolveImagesUsage,
+  resolveSpeechUsage,
+  useSettings,
+} from "@/hooks/use-settings";
 import type { ChatModel } from "@/lib/ai/models";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import {
@@ -43,45 +49,6 @@ import {
   isValidAIModeId,
 } from "@/lib/ai/modes";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
-
-type UserSettingsData = {
-  username: string;
-  email: string;
-  phone?: string;
-  tier: string;
-  avatarUrl?: string;
-  newsletter?: boolean;
-  notify_limits?: boolean;
-};
-
-type AIUsageData = {
-  tokensUsed: number;
-  limit: number;
-  resetAt?: string;
-  tier: string;
-};
-
-type ImagesUsageData = {
-  usedToday: number;
-  dailyLimit: number;
-  resetAt?: string;
-  plan: string;
-};
-
-type CloudUsageData = {
-  bytesUsed: number;
-  bytesLimit: number;
-  filesCount: number;
-  percentUsed: number;
-  overLimit: boolean;
-  tier: string;
-};
-
-type APIUsageData = {
-  requestCount: number;
-  limit: number;
-  keysCount: number;
-};
 
 function formatTokens(n: number) {
   return new Intl.NumberFormat("fr-FR").format(n);
@@ -143,7 +110,6 @@ export default function SettingsPage() {
       ? initialTab
       : "profile"
   );
-  const [isLoading, setIsLoading] = useState(true);
 
   const handleTabChange = useCallback(
     (tab: "profile" | "usage" | "preferences") => {
@@ -154,6 +120,7 @@ export default function SettingsPage() {
     },
     [router, searchParams]
   );
+
 
   useEffect(() => {
     const t = searchParams.get("tab") as any;
@@ -185,12 +152,32 @@ export default function SettingsPage() {
     }
   }, [activeTab]);
 
-  // Données utilisateur
-  const [profile, setProfile] = useState<UserSettingsData | null>(null);
-  const [aiUsage, setAiUsage] = useState<AIUsageData | null>(null);
-  const [imagesUsage, setImagesUsage] = useState<ImagesUsageData | null>(null);
-  const [cloudUsage, setCloudUsage] = useState<CloudUsageData | null>(null);
-  const [apiUsage, setApiUsage] = useState<APIUsageData | null>(null);
+  // Données utilisateur — source unique partagée (hook use-settings) avec la
+  // page Images et le bandeau de quota du chat : affichage toujours cohérent
+  const {
+    data: settingsData,
+    isLoading,
+    mutate: mutateSettings,
+  } = useSettings({ revalidateOnFocus: true });
+
+  const profile = settingsData?.user ?? null;
+  const aiUsage = settingsData?.aiUsage ?? null;
+  const cloudUsage = settingsData?.cloudUsage ?? null;
+
+  // Synchronisation des champs du formulaire une seule fois au premier
+  // chargement (les revalidations SWR ne doivent pas écraser la saisie)
+  const initialSyncDone = useRef(false);
+  useEffect(() => {
+    if (!initialSyncDone.current && settingsData?.user) {
+      initialSyncDone.current = true;
+      const u = settingsData.user;
+      setUsername(u.username || "");
+      setEmail(u.email || "");
+      setPhone(u.phone || "");
+      setNewsletter(Boolean(u.newsletter));
+      setNotifyLimits(Boolean(u.notify_limits));
+    }
+  }, [settingsData]);
 
   // Formulaire profil
   const [username, setUsername] = useState("");
@@ -326,39 +313,6 @@ export default function SettingsPage() {
     mutateCustomPref,
   ]);
 
-  // Récupérer les données
-  const fetchSettings = useCallback(async () => {
-    try {
-      const res = await fetch("/api/settings");
-      if (!res.ok) {
-        throw new Error("Erreur de chargement");
-      }
-      const data = await res.json();
-
-      if (data.user) {
-        setProfile(data.user);
-        setUsername(data.user.username || "");
-        setEmail(data.user.email || "");
-        setPhone(data.user.phone || "");
-        setNewsletter(Boolean(data.user.newsletter));
-        setNotifyLimits(Boolean(data.user.notify_limits));
-      }
-      setAiUsage(data.aiUsage);
-      setImagesUsage(data.imagesUsage);
-      setCloudUsage(data.cloudUsage);
-      setApiUsage(data.apiUsage);
-    } catch (err) {
-      console.error(err);
-      toast.error("Impossible de récupérer les paramètres.");
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchSettings();
-  }, [fetchSettings]);
-
   // Upload d'avatar
   const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -384,9 +338,13 @@ export default function SettingsPage() {
       }
 
       toast.success("Photo de profil mise à jour !");
-      if (profile) {
-        setProfile({ ...profile, avatarUrl: data.avatarUrl });
-      }
+      mutateSettings(
+        (current) =>
+          current?.user
+            ? { ...current, user: { ...current.user, avatarUrl: data.avatarUrl } }
+            : current,
+        { revalidate: false }
+      );
     } catch {
       toast.error("Impossible de mettre à jour l'avatar.");
     } finally {
@@ -458,7 +416,7 @@ export default function SettingsPage() {
       toast.success("Profil mis à jour avec succès !");
       setCurrentPassword("");
       setNewPassword("");
-      fetchSettings();
+      mutateSettings();
     } catch {
       toast.error("Erreur de communication avec le serveur.");
     } finally {
@@ -494,7 +452,7 @@ export default function SettingsPage() {
       toast.success("Votre nouvelle adresse e-mail est confirmée !");
       setShowEmailOtpModal(false);
       setEmailOtpCode("");
-      fetchSettings();
+      mutateSettings();
     } catch {
       toast.error("Impossible de confirmer l'adresse e-mail.");
     } finally {
@@ -509,11 +467,27 @@ export default function SettingsPage() {
       )
     : 0;
 
-  const imagesPercent = imagesUsage?.dailyLimit
+  // Même résolution que la page Images : valeurs identiques garanties
+  const resolvedImagesUsage = resolveImagesUsage(settingsData);
+  const imagesPercent = resolvedImagesUsage.dailyLimit
     ? Math.min(
         100,
         Math.round(
-          ((imagesUsage.usedToday || 0) / imagesUsage.dailyLimit) * 100
+          ((resolvedImagesUsage.usedToday || 0) /
+            resolvedImagesUsage.dailyLimit) *
+            100
+        )
+      )
+    : 0;
+
+  const resolvedSpeechUsage = resolveSpeechUsage(settingsData);
+  const speechPercent = resolvedSpeechUsage.limit
+    ? Math.min(
+        100,
+        Math.round(
+          ((resolvedSpeechUsage.tokensUsed || 0) /
+            resolvedSpeechUsage.limit) *
+            100
         )
       )
     : 0;
@@ -525,24 +499,22 @@ export default function SettingsPage() {
       )
     : 0;
 
-  const apiPercent = apiUsage?.limit
-    ? Math.min(
-        100,
-        Math.round(((apiUsage.requestCount || 0) / apiUsage.limit) * 100)
-      )
-    : 0;
-
   return (
-    <div className="flex flex-1 flex-col h-full overflow-y-auto bg-background p-6 md:p-10 max-w-5xl mx-auto w-full">
+    <div className="flex flex-1 flex-col h-full overflow-y-auto bg-background p-4 sm:p-6 md:p-10 max-w-5xl mx-auto w-full">
       {/* En-tête de la page */}
       <div className="pb-6 border-b border-border/50">
-        <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
-          Paramètres du compte
-        </h1>
-        <p className="text-sm text-muted-foreground mt-1">
-          Gérez votre profil, vos informations personnelles et visualisez votre
-          consommation IA et API.
-        </p>
+        <div className="flex items-start gap-3">
+          <PageBackButton />
+          <div className="min-w-0">
+            <h1 className="text-2xl truncate md:text-3xl font-bold tracking-tight text-foreground">
+              Paramètres du compte
+            </h1>
+            <p className="hidden text-sm text-muted-foreground mt-1 sm:block">
+              Gérez votre profil, vos informations personnelles et visualisez
+              votre consommation IA.
+            </p>
+          </div>
+        </div>
 
         {/* Onglets */}
         <div className="flex items-center gap-2 mt-6 flex-wrap">
@@ -804,7 +776,7 @@ export default function SettingsPage() {
       ) : activeTab === "preferences" ? (
         /* ────────────── SECTION PRÉFÉRENCES IA ────────────── */
         <div className="py-6 flex flex-col gap-6 max-w-3xl">
-          <div className="p-6 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5">
+          <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6">
             <div className="flex items-center gap-2.5">
               <div className="p-2 rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
                 <SparklesIcon className="size-5" />
@@ -918,7 +890,7 @@ export default function SettingsPage() {
           </div>
 
           {/* Instructions personnalisées */}
-          <div className="p-6 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5">
+          <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6">
             <div className="flex items-center gap-2.5">
               <div className="p-2 rounded-xl bg-amber-500/10 text-amber-600 ring-1 ring-amber-500/20">
                 <BotIcon className="size-5" />
@@ -1043,7 +1015,7 @@ export default function SettingsPage() {
           id="usage-mAI"
         >
           {/* Forfait actuel */}
-          <div className="p-6 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col md:flex-row md:items-center justify-between gap-4 sm:p-6">
             <div>
               <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                 Forfait Actuel
@@ -1076,7 +1048,7 @@ export default function SettingsPage() {
 
           {/* Consommation mAI (Tokens hebdomadaires) */}
           <div
-            className="p-6 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4"
+            className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6"
             id="usage"
           >
             <div className="flex items-center justify-between">
@@ -1128,34 +1100,27 @@ export default function SettingsPage() {
           </div>
 
           {/* Consommation Images (Quota journalier) */}
-          <div className="p-6 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <div className="p-2 rounded-xl bg-purple-500/10 text-purple-500 ring-1 ring-purple-500/20">
+          <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="p-2 rounded-xl bg-purple-500/10 text-purple-500 ring-1 ring-purple-500/20 shrink-0">
                   <ImageIcon className="size-5" />
                 </div>
-                <div>
-                  <h3 className="text-base font-semibold text-foreground">
-                    Générations d'Images (Studio mAI)
+                <div className="min-w-0">
+                  <h3 className="text-base font-semibold text-foreground truncate">
+                    Générations d'Images
                   </h3>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="hidden text-xs text-muted-foreground sm:block">
                     Images générées aujourd'hui (quota réinitialisé à minuit
                     UTC)
                   </p>
                 </div>
               </div>
 
-              <div className="text-right">
+              <div className="text-right shrink-0">
                 <span className="text-sm font-bold text-foreground">
-                  {imagesUsage?.usedToday ?? 0} /{" "}
-                  {imagesUsage?.dailyLimit ??
-                    (profile?.tier === "Plus"
-                      ? 5
-                      : profile?.tier === "Pro"
-                        ? 10
-                        : profile?.tier === "Max"
-                          ? 20
-                          : 3)}
+                  {resolvedImagesUsage.usedToday} /{" "}
+                  {resolvedImagesUsage.dailyLimit}
                 </span>
                 <span className="text-xs text-muted-foreground block">
                   images ({imagesPercent}%)
@@ -1180,13 +1145,63 @@ export default function SettingsPage() {
             <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
               <span>Réinitialisation du quota :</span>
               <span className="font-medium text-foreground">
-                {formatDate(imagesUsage?.resetAt)} (Minuit UTC)
+                {formatDate(resolvedImagesUsage.resetAt)} (Minuit UTC)
+              </span>
+            </div>
+          </div>
+
+          {/* Consommation Synthèse Vocale (Tokens Speech) */}
+          <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-500 ring-1 ring-emerald-500/20 shrink-0">
+                  <Volume2Icon className="size-5" />
+                </div>
+                <div className="min-w-0">
+                  <h3 className="text-base font-semibold text-foreground truncate">
+                    Synthèse Vocale (Tokens Speech)
+                  </h3>
+                  <p className="hidden text-xs text-muted-foreground sm:block">
+                    Tokens consommés pour l'API Speech et Text-to-Speech OpenRouter
+                  </p>
+                </div>
+              </div>
+
+              <div className="text-right shrink-0">
+                <span className="text-sm font-bold text-foreground">
+                  {formatTokens(resolvedSpeechUsage.tokensUsed)} /{" "}
+                  {formatTokens(resolvedSpeechUsage.limit)}
+                </span>
+                <span className="text-xs text-muted-foreground block">
+                  tokens ({speechPercent}%)
+                </span>
+              </div>
+            </div>
+
+            {/* Jauge */}
+            <div className="h-3 w-full rounded-full bg-muted/60 overflow-hidden relative">
+              <div
+                className={`h-full transition-all duration-500 rounded-full ${
+                  speechPercent >= 100
+                    ? "bg-red-500"
+                    : speechPercent > 75
+                      ? "bg-amber-500"
+                      : "bg-gradient-to-r from-emerald-500 to-teal-600"
+                }`}
+                style={{ width: `${speechPercent}%` }}
+              />
+            </div>
+
+            <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
+              <span>Renouvellement hebdomadaire :</span>
+              <span className="font-medium text-foreground">
+                {formatDate(resolvedSpeechUsage.resetAt || aiUsage?.resetAt)}
               </span>
             </div>
           </div>
 
           {/* Consommation Cloud Storage */}
-          <div className="p-6 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4">
+          <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
                 <div className="p-2 rounded-xl bg-blue-500/10 text-blue-500 ring-1 ring-blue-500/20">
@@ -1231,55 +1246,6 @@ export default function SettingsPage() {
               <span>Fichiers hébergés :</span>
               <span className="font-medium text-foreground">
                 {cloudUsage?.filesCount || 0} fichier(s)
-              </span>
-            </div>
-          </div>
-
-          {/* Consommation API Développeur */}
-          <div className="p-6 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-500 ring-1 ring-emerald-500/20">
-                  <Code2Icon className="size-5" />
-                </div>
-                <div>
-                  <h3 className="text-base font-semibold text-foreground">
-                    Utilisation de l'API mAI
-                  </h3>
-                  <p className="text-xs text-muted-foreground">
-                    Requêtes exécutées via vos clés API ce mois-ci
-                  </p>
-                </div>
-              </div>
-
-              <div className="text-right">
-                <span className="text-sm font-bold text-foreground">
-                  {apiUsage?.requestCount || 0} / {apiUsage?.limit || 500}
-                </span>
-                <span className="text-xs text-muted-foreground block">
-                  requêtes ({apiPercent}%)
-                </span>
-              </div>
-            </div>
-
-            {/* Jauge */}
-            <div className="h-3 w-full rounded-full bg-muted/60 overflow-hidden relative">
-              <div
-                className={`h-full transition-all duration-500 rounded-full ${
-                  apiPercent > 90
-                    ? "bg-red-500"
-                    : apiPercent > 75
-                      ? "bg-amber-500"
-                      : "bg-gradient-to-r from-emerald-500 to-teal-600"
-                }`}
-                style={{ width: `${apiPercent}%` }}
-              />
-            </div>
-
-            <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
-              <span>Clés API associées au compte :</span>
-              <span className="font-medium text-foreground">
-                {apiUsage?.keysCount || 0} active(s)
               </span>
             </div>
           </div>

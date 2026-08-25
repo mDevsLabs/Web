@@ -448,6 +448,75 @@ const PurePreviewMessage = ({
       );
     }
 
+    if (type === "tool-audioGenerate") {
+      const { toolCallId, state } = part as any;
+      if (state === "output-available" && part.output) {
+        if ("error" in part.output) {
+          return (
+            <div
+              className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600"
+              key={toolCallId}
+            >
+              Erreur synthèse vocale: {String(part.output.error)}
+            </div>
+          );
+        }
+        const audioUrl = (part.output as any).audio_url;
+        if (audioUrl) {
+          return (
+            <div
+              className="w-[min(100%,480px)] rounded-2xl border border-border/60 bg-card/90 p-4 shadow-sm backdrop-blur-xs flex flex-col gap-3"
+              key={toolCallId}
+            >
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <span className="flex size-7 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold text-xs">
+                    🎙️
+                  </span>
+                  <span className="font-semibold text-[13px] text-foreground">
+                    Synthèse vocale mAI
+                  </span>
+                </div>
+                {(part.output as any).voice && (
+                  <span className="text-[11px] font-medium bg-muted/60 text-muted-foreground px-2 py-0.5 rounded-full border border-border/30">
+                    Voix : {(part.output as any).voice.replace("flux-", "").replace("-en", "")}
+                  </span>
+                )}
+              </div>
+
+              <audio
+                className="w-full h-10 rounded-lg outline-hidden"
+                controls
+                src={audioUrl}
+              >
+                Votre navigateur ne supporte pas l'élément audio.
+              </audio>
+
+              {(part.output as any).text && (
+                <div className="text-[12px] leading-relaxed text-muted-foreground/90 italic bg-muted/30 p-2.5 rounded-xl border border-border/20">
+                  "{(part.output as any).text}"
+                </div>
+              )}
+            </div>
+          );
+        }
+      }
+      return (
+        <Tool
+          className="w-[min(100%,450px)]"
+          defaultOpen={true}
+          key={(part as any).toolCallId}
+        >
+          <ToolHeader state={state} type="tool-audioGenerate" />
+          <ToolContent>
+            {state === "input-available" && (
+              <ToolInput input={(part as any).input} />
+            )}
+          </ToolContent>
+        </Tool>
+      );
+    }
+
     if (type === "tool-codeExecution") {
       const { toolCallId, state } = part as any;
       if (

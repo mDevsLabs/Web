@@ -27,6 +27,8 @@ import type React from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
+import { PageBackButton } from "@/components/chat/page-back-button";
+import { useImagesUsage } from "@/hooks/use-settings";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -36,13 +38,6 @@ interface ImageModel {
   features?: string[];
   id: string;
   name: string;
-}
-
-interface ImageUsage {
-  dailyLimit: number;
-  plan: string;
-  resetAt?: string;
-  usedToday: number;
 }
 
 interface GeneratedImage {
@@ -127,12 +122,12 @@ export default function ImagesPage() {
   });
   const models = useMemo(() => modelsData?.data || [], [modelsData]);
 
-  // 2. Quota d'utilisation via /api/images/usage
-  const { data: usageData, mutate: mutateUsage } = useSWR<ImageUsage>(
-    "/api/images/usage",
-    fetcher,
-    { refreshInterval: 30_000, revalidateOnFocus: true }
-  );
+  // 2. Quota d'utilisation — source unique partagée avec les paramètres
+  // (Consommation & Forfait) via le hook use-settings
+  const {
+    mutate: mutateUsage,
+    usage: { dailyLimit, plan, usedToday },
+  } = useImagesUsage();
 
   // 3. Historique des générations via /api/images/history
   const {
@@ -200,12 +195,10 @@ export default function ImagesPage() {
     [aspectRatio]
   );
 
-  const quotaRemaining = useMemo(() => {
-    if (!usageData) {
-      return 3;
-    }
-    return Math.max(0, usageData.dailyLimit - usageData.usedToday);
-  }, [usageData]);
+  const quotaRemaining = useMemo(
+    () => Math.max(0, dailyLimit - usedToday),
+    [dailyLimit, usedToday]
+  );
 
   const isQuotaExhausted = quotaRemaining <= 0;
 
@@ -256,7 +249,7 @@ export default function ImagesPage() {
 
     if (isQuotaExhausted) {
       toast.error(
-        `Votre quota journalier est atteint (${usageData?.usedToday}/${usageData?.dailyLimit}). Mettez à niveau votre compte pour plus de générations !`
+        `Votre quota journalier est atteint (${usedToday}/${dailyLimit}). Mettez à niveau votre compte pour plus de générations !`
       );
       return;
     }
@@ -268,7 +261,7 @@ export default function ImagesPage() {
       // 1. Demande et validation du quota préalable
       const usageCheck = await fetch("/api/images/usage").then((r) => r.json());
       if (usageCheck.usedToday >= usageCheck.dailyLimit) {
-        mutateUsage(usageCheck, false);
+        mutateUsage();
         throw new Error(
           `Quota journalier épuisé (${usageCheck.usedToday}/${usageCheck.dailyLimit}). Réinitialisation à minuit UTC.`
         );
@@ -367,21 +360,22 @@ export default function ImagesPage() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       {/* En-tête de page */}
-      <header className="sticky top-0 z-30 flex items-center justify-between border-b border-border/60 bg-background/80 px-6 py-4 backdrop-blur-md">
-        <div className="flex items-center gap-3">
-          <div className="flex size-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 text-primary ring-1 ring-primary/25 shadow-sm">
+      <header className="sticky top-0 z-30 flex flex-wrap items-center gap-x-3 gap-y-2 justify-between border-b border-border/60 bg-background/80 px-4 py-3 backdrop-blur-md sm:px-6 sm:py-4">
+        <div className="flex min-w-0 items-center gap-3">
+          <PageBackButton />
+          <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 text-primary ring-1 ring-primary/25 shadow-sm">
             <ImageIcon className="size-5 text-indigo-400" />
           </div>
-          <div>
+          <div className="min-w-0">
             <div className="flex items-center gap-2">
-              <h1 className="text-lg font-bold tracking-tight text-foreground">
-                Studio Images mAI
+              <h1 className="text-base truncate font-bold tracking-tight text-foreground sm:text-lg">
+                Images mAI
               </h1>
-              <span className="rounded-full bg-gradient-to-r from-indigo-500/20 to-purple-500/20 px-2 py-0.5 text-[10px] font-semibold text-indigo-400 border border-indigo-500/30">
+              <span className="hidden rounded-full border border-indigo-500/30 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 px-2 py-0.5 text-[10px] font-semibold text-indigo-400 md:inline">
                 IA Générative
               </span>
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="hidden text-xs text-muted-foreground sm:block">
               Créez, éditez et explorez des images haute définition avec les
               modèles Flux & Diffusion
             </p>
@@ -394,10 +388,10 @@ export default function ImagesPage() {
             <SparklesIcon className="size-4 text-amber-400" />
             <div className="text-xs">
               <span className="font-semibold text-foreground">
-                {usageData?.usedToday ?? 0} / {usageData?.dailyLimit ?? 3}
+                {usedToday} / {dailyLimit}
               </span>{" "}
               <span className="text-muted-foreground">
-                générations/j ({usageData?.plan || "Free"})
+                générations/j ({plan})
               </span>
             </div>
           </div>
@@ -416,11 +410,11 @@ export default function ImagesPage() {
       </header>
 
       {/* Onglets Navigation (Créer / Galerie) */}
-      <div className="border-b border-border/40 bg-muted/20 px-6 py-2">
-        <div className="flex items-center gap-2">
+      <div className="border-b border-border/40 bg-muted/20 px-4 py-2 sm:px-6">
+        <div className="flex items-center gap-2 overflow-x-auto">
           <button
             className={cn(
-              "flex items-center gap-2 rounded-lg px-3.5 py-1.5 text-xs font-semibold transition-all",
+              "flex shrink-0 items-center gap-2 rounded-lg px-3.5 py-1.5 text-xs font-semibold transition-all",
               activeTab === "create"
                 ? "bg-primary text-primary-foreground shadow-sm"
                 : "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
@@ -434,7 +428,7 @@ export default function ImagesPage() {
 
           <button
             className={cn(
-              "flex items-center gap-2 rounded-lg px-3.5 py-1.5 text-xs font-semibold transition-all",
+              "flex shrink-0 items-center gap-2 rounded-lg px-3.5 py-1.5 text-xs font-semibold transition-all",
               activeTab === "history"
                 ? "bg-primary text-primary-foreground shadow-sm"
                 : "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
@@ -449,7 +443,7 @@ export default function ImagesPage() {
       </div>
 
       {/* Contenu Principal */}
-      <main className="flex-1 p-6">
+      <main className="flex-1 p-4 sm:p-6">
         {activeTab === "create" ? (
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 lg:grid-cols-12">
             {/* Colonne gauche : Panneau de contrôle */}
@@ -718,7 +712,7 @@ export default function ImagesPage() {
 
             {/* Colonne droite : Résultat & Prévisualisation */}
             <div className="flex flex-col gap-5 lg:col-span-7">
-              <div className="flex flex-col rounded-2xl border border-border/60 bg-card/60 p-5 shadow-sm backdrop-blur-md min-h-[560px]">
+              <div className="flex flex-col rounded-2xl border border-border/60 bg-card/60 p-4 shadow-sm backdrop-blur-md min-h-[420px] sm:min-h-[560px] sm:p-5">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-sm font-bold text-foreground flex items-center gap-2">
                     <ImageIcon className="size-4 text-primary" />
@@ -894,8 +888,8 @@ export default function ImagesPage() {
                     Votre galerie est vide
                   </h3>
                   <p className="text-xs text-muted-foreground mt-1">
-                    Générez des images depuis le studio pour les retrouver
-                    sauvegardées ici.
+                    Générez des images depuis la page Images pour les
+                    retrouver sauvegardées ici.
                   </p>
                 </div>
                 <button
@@ -941,7 +935,7 @@ export default function ImagesPage() {
                         </span>
                         <div className="flex items-center gap-1">
                           <button
-                            className="p-1 text-muted-foreground hover:text-primary transition"
+                            className="p-1.5 text-muted-foreground hover:text-primary transition"
                             onClick={() =>
                               handleEditAsSource(item.image_url, item.prompt)
                             }
@@ -951,7 +945,7 @@ export default function ImagesPage() {
                             <Wand2Icon className="size-3.5" />
                           </button>
                           <a
-                            className="p-1 text-muted-foreground hover:text-foreground transition"
+                            className="p-1.5 text-muted-foreground hover:text-foreground transition"
                             download={`mai-image-${item.id}.png`}
                             href={item.image_url}
                             rel="noreferrer"
@@ -961,7 +955,7 @@ export default function ImagesPage() {
                             <DownloadIcon className="size-3.5" />
                           </a>
                           <button
-                            className="p-1 text-muted-foreground hover:text-destructive transition"
+                            className="p-1.5 text-muted-foreground hover:text-destructive transition"
                             onClick={() => handleDeleteFromHistory(item.id)}
                             title="Supprimer"
                             type="button"
@@ -1003,7 +997,7 @@ export default function ImagesPage() {
               src={previewImage}
             />
 
-            <div className="mt-3 flex items-center gap-3">
+            <div className="mt-3 flex flex-wrap items-center justify-center gap-3">
               <a
                 className="inline-flex items-center gap-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white px-4 py-2 text-xs font-semibold backdrop-blur-md transition"
                 download={`mai-image-${Date.now()}.png`}
@@ -1021,7 +1015,7 @@ export default function ImagesPage() {
                 }}
                 type="button"
               >
-                <Wand2Icon className="size-4" /> Éditer dans le studio
+                <Wand2Icon className="size-4" /> Éditer dans Images
               </button>
             </div>
           </div>

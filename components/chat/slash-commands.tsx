@@ -18,6 +18,7 @@ import {
   SearchIcon,
   SlidersHorizontalIcon,
   Trash2Icon,
+  Volume2Icon,
   XIcon,
   ZapIcon,
 } from "lucide-react";
@@ -38,6 +39,7 @@ export type SlashCommandAction =
   | "projects"
   | "search"
   | "tool-image"
+  | "tool-audio"
   | "tool-web"
   | "tool-code"
   | "tool-weather"
@@ -59,7 +61,7 @@ export const slashCommands: SlashCommand[] = [
     action: "ghost",
     aliases: ["fantome", "incognito", "temporary", "temp"],
     description:
-      "Activer / désactiver le Mode fantôme (temporaire, non sauvegardé, sans image) 👻",
+      "Activer / désactiver le Mode fantôme (temporaire, non sauvegardé, sans image)",
     icon: <GhostIcon className="size-3.5" />,
     name: "ghost",
   },
@@ -96,7 +98,7 @@ export const slashCommands: SlashCommand[] = [
   {
     action: "library",
     aliases: ["stockage"],
-    description: "Ouvrir la Bibliothèque Cloud (/stockage, /library)",
+    description: "Ouvrir le Stockage (/stockage, /library)",
     icon: <FolderArchiveIcon className="size-3.5" />,
     name: "library",
   },
@@ -119,6 +121,13 @@ export const slashCommands: SlashCommand[] = [
     description: "Activer génération d'image (one-shot, fortement recommandé)",
     icon: <ImageIcon className="size-3.5" />,
     name: "image",
+  },
+  {
+    action: "tool-audio",
+    aliases: ["audio", "son", "voice", "speech", "tts", "voix"],
+    description: "Activer génération audio & voix (one-shot, fortement recommandé)",
+    icon: <Volume2Icon className="size-3.5" />,
+    name: "audio",
   },
   {
     action: "tool-web",

@@ -178,7 +178,7 @@ function PureChatHeader({
         >
           <Link href="/library">
             <FolderArchiveIcon className="size-3.5" />
-            <span>Bibliothèque</span>
+            <span>Stockage</span>
           </Link>
         </Button>
 

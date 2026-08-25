@@ -2,43 +2,36 @@ import { type NextRequest, NextResponse } from "next/server";
 import { getMaiSessionToken } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
 
-export async function GET(req: NextRequest) {
+export async function GET(_req: NextRequest) {
   const token = await getMaiSessionToken();
   if (!token) {
     return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
   }
 
-  const { searchParams } = req.nextUrl;
-  const page = searchParams.get("page") || "1";
-  const limit = searchParams.get("limit") || "20";
-
   try {
-    const res = await fetch(
-      `${MAI_API_URL}/v1/images/history?page=${page}&limit=${limit}`,
-      {
-        cache: "no-store",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const res = await fetch(`${MAI_API_URL}/v1/audio/history`, {
+      cache: "no-store",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     const data = await res.json();
     if (!res.ok) {
       return NextResponse.json(data, { status: res.status });
     }
 
-    const items = data.data || data.images || [];
+    const items = data.data || data.history || [];
     return NextResponse.json({
+      audios: items,
       data: items,
-      images: items,
       success: true,
-      total: data.total || items.length,
+      total: items.length,
     });
   } catch (error) {
-    console.error("Erreur API images/history:", error);
+    console.error("Erreur API audio/history:", error);
     return NextResponse.json(
-      { error: "Erreur lors du chargement de l'historique" },
+      { error: "Erreur lors du chargement de l'historique audio" },
       { status: 500 }
     );
   }
@@ -57,7 +50,7 @@ export async function DELETE(req: NextRequest) {
   }
 
   try {
-    const res = await fetch(`${MAI_API_URL}/v1/images/history/${id}`, {
+    const res = await fetch(`${MAI_API_URL}/v1/audio/history/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -71,9 +64,9 @@ export async function DELETE(req: NextRequest) {
 
     return NextResponse.json(data);
   } catch (error) {
-    console.error("Erreur suppression image:", error);
+    console.error("Erreur suppression audio:", error);
     return NextResponse.json(
-      { error: "Erreur lors de la suppression de l'image" },
+      { error: "Erreur lors de la suppression de l'audio" },
       { status: 500 }
     );
   }

@@ -18,6 +18,8 @@ import {
   PaperclipIcon,
   PlusIcon,
   UploadIcon,
+  TriangleAlertIcon,
+  Volume2Icon,
   WrenchIcon,
   XIcon,
 } from "lucide-react";
@@ -308,7 +310,7 @@ function PureMultimodalInput({
   useEffect(() => {
     if (costPercent >= 90 && costAiLimit > 0) {
       toast.error(
-        `⚠️ Tu as utilisé ${costPercent}% de ton quota mAI (${costAiUsed}/${costAiLimit} tokens) — mise à niveau recommandée.`
+        `Tu as utilisé ${costPercent}% de ton quota mAI (${costAiUsed}/${costAiLimit} tokens) — mise à niveau recommandée.`
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -446,13 +448,26 @@ function PureMultimodalInput({
         case "tool-image": {
           if (isGhostMode) {
             toast.error(
-              "La génération d'image est indisponible en Mode fantôme 👻"
+              "La génération d'image est indisponible en Mode fantôme"
             );
             break;
           }
           togglePendingTool("imageGenerate" as any);
           toast.success(
             "Outil imageGenerate activé pour le prochain message — fortement recommandé"
+          );
+          break;
+        }
+        case "tool-audio": {
+          if (isGhostMode) {
+            toast.error(
+              "La génération audio est indisponible en Mode fantôme"
+            );
+            break;
+          }
+          togglePendingTool("audioGenerate" as any);
+          toast.success(
+            "Outil audioGenerate activé pour le prochain message — fortement recommandé"
           );
           break;
         }
@@ -1075,8 +1090,11 @@ function PureMultimodalInput({
         <div
           className={`flex items-center gap-2 px-2.5 py-1.5 rounded-xl border text-[11px] ${costPercent >= 90 ? "bg-red-500/10 border-red-500/30 text-red-600" : costPercent >= 75 ? "bg-amber-500/10 border-amber-500/30 text-amber-600" : "bg-muted/30 border-border/40 text-muted-foreground"}`}
         >
-          <span className="font-semibold">
-            {costPercent >= 90 ? "⚠️ Quota mAI à " : "Quota mAI: "}
+          <span className="font-semibold flex items-center gap-1">
+            {costPercent >= 90 ? (
+              <TriangleAlertIcon className="size-3.5 shrink-0" />
+            ) : null}
+            {costPercent >= 90 ? "Quota mAI à " : "Quota mAI: "}
             {costPercent}%
           </span>
           <span className="font-mono text-[10px]">
@@ -1421,6 +1439,7 @@ function PurePlusMenuButton({
   };
 
   const isImageActive = pendingTools.includes("imageGenerate" as ToolId);
+  const isAudioActive = pendingTools.includes("audioGenerate" as ToolId);
   const isWebActive = pendingTools.includes("webSearch" as ToolId);
 
   return (
@@ -1517,7 +1536,7 @@ function PurePlusMenuButton({
           onClick={() => {
             if (isGhostMode) {
               toast.error(
-                "La génération d'image est indisponible en Mode fantôme 👻"
+                "La génération d'image est indisponible en Mode fantôme"
               );
               return;
             }
@@ -1535,7 +1554,7 @@ function PurePlusMenuButton({
               </span>
               {isGhostMode ? (
                 <span className="text-[10px] bg-purple-500/20 text-purple-400 font-medium px-1.5 py-0.5 rounded-full">
-                  INDISPONIBLE EN FANTÔME 👻
+                  INDISPONIBLE EN FANTÔME
                 </span>
               ) : isImageActive ? (
                 <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
@@ -1551,7 +1570,55 @@ function PurePlusMenuButton({
           </div>
         </button>
 
-        {/* Option 4: Recherche sur le Web */}
+        {/* Option 4: Créer un audio ou son */}
+        <button
+          className={cn(
+            "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
+            isGhostMode
+              ? "opacity-50 cursor-not-allowed bg-muted/20"
+              : isAudioActive
+                ? "bg-primary/10 border border-primary/30 ring-1 ring-primary/20 text-primary"
+                : "hover:bg-muted/70 text-foreground"
+          )}
+          disabled={isGhostMode}
+          onClick={() => {
+            if (isGhostMode) {
+              toast.error(
+                "La génération audio est indisponible en Mode fantôme"
+              );
+              return;
+            }
+            toggleToolExclusive("audioGenerate", "Génération audio");
+          }}
+          type="button"
+        >
+          <div className="flex size-7 items-center justify-center rounded-lg text-emerald-500 shrink-0">
+            <Volume2Icon className="size-4" />
+          </div>
+          <div className="flex items-center justify-between w-full min-w-0 gap-2">
+            <div className="flex items-center gap-2">
+              <span className="text-[13.5px] font-semibold truncate">
+                Créer un audio ou son
+              </span>
+              {isGhostMode ? (
+                <span className="text-[10px] bg-purple-500/20 text-purple-400 font-medium px-1.5 py-0.5 rounded-full">
+                  INDISPONIBLE EN FANTÔME
+                </span>
+              ) : isAudioActive ? (
+                <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
+                  ACTIF
+                </span>
+              ) : null}
+            </div>
+            <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
+              {isGhostMode
+                ? "Indisponible dans ce mode"
+                : "Synthèse vocale et audio IA"}
+            </span>
+          </div>
+        </button>
+
+        {/* Option 5: Recherche sur le Web */}
         <button
           className={cn(
             "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",

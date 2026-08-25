@@ -2,7 +2,7 @@ import { type NextRequest, NextResponse } from "next/server";
 import { getMaiSessionToken } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
 
-// GET /api/settings : récupère le profil utilisateur, consommation IA et consommation API
+// GET /api/settings : récupère le profil utilisateur et la consommation IA/images/cloud
 export async function GET() {
   const token = await getMaiSessionToken();
   if (!token) {
@@ -10,12 +10,8 @@ export async function GET() {
   }
 
   try {
-    const [usageRes, keysRes, imagesRes, cloudRes] = await Promise.all([
+    const [usageRes, imagesRes, cloudRes, speechRes] = await Promise.all([
       fetch(`${MAI_API_URL}/usage`, {
-        cache: "no-store",
-        headers: { Authorization: `Bearer ${token}` },
-      }),
-      fetch(`${MAI_API_URL}/api-keys`, {
         cache: "no-store",
         headers: { Authorization: `Bearer ${token}` },
       }),
@@ -27,29 +23,18 @@ export async function GET() {
         cache: "no-store",
         headers: { Authorization: `Bearer ${token}` },
       }),
+      fetch(`${MAI_API_URL}/v1/speech/usage`, {
+        cache: "no-store",
+        headers: { Authorization: `Bearer ${token}` },
+      }),
     ]);
 
     const usageData = usageRes.ok ? await usageRes.json() : null;
-    const keysData = keysRes.ok ? await keysRes.json() : { keys: [] };
     const imagesData = imagesRes.ok ? await imagesRes.json() : null;
     const cloudData = cloudRes.ok ? await cloudRes.json() : null;
-
-    // Calculer le total des requêtes API consommées ce mois-ci
-    const keys = keysData.keys || [];
-    const totalApiRequests = keys.reduce(
-      (sum: number, k: any) => sum + (Number(k.request_count) || 0),
-      0
-    );
-
-    const tierLimitsApi: Record<string, number> = {
-      Free: 500,
-      Max: 5000,
-      Plus: 1000,
-      Pro: 2000,
-    };
+    const speechData = speechRes.ok ? await speechRes.json() : null;
 
     const userTier = usageData?.tier || "Free";
-    const apiLimit = tierLimitsApi[userTier] || 500;
 
     return NextResponse.json({
       aiUsage: {
@@ -57,11 +42,6 @@ export async function GET() {
         resetAt: usageData?.resetAt,
         tier: userTier,
         tokensUsed: Number(usageData?.tokensUsed || 0),
-      },
-      apiUsage: {
-        keysCount: keys.length,
-        limit: apiLimit,
-        requestCount: totalApiRequests,
       },
       cloudUsage: cloudData
         ? {
@@ -73,12 +53,24 @@ export async function GET() {
             tier: cloudData.tier || userTier,
           }
         : null,
+      // Passer les valeurs brutes : la normalisation/fallback par tier est
+      // appliquée côté client (resolveImagesUsage), de manière identique sur
+      // toutes les vues
       imagesUsage: imagesData
         ? {
-            dailyLimit: Number(imagesData.dailyLimit || 3),
+            dailyLimit: imagesData.dailyLimit ?? null,
             plan: imagesData.plan || userTier,
             resetAt: imagesData.resetAt,
-            usedToday: Number(imagesData.usedToday || 0),
+            usedToday: imagesData.usedToday ?? null,
+          }
+        : null,
+      speechUsage: speechData
+        ? {
+            limit: Number(speechData.weeklyLimit || 20_000_000),
+            requestsCount: Number(speechData.requestsCount || 0),
+            resetAt: speechData.resetAt,
+            tier: speechData.plan || userTier,
+            tokensUsed: Number(speechData.tokensUsed || 0),
           }
         : null,
       user: usageData,

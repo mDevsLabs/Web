@@ -18,6 +18,14 @@ export function registerMiddleware(app: Hono) {
       path.startsWith("/chat/") ||
       path === "/messages" ||
       path.startsWith("/messages/") ||
+      path === "/speech" ||
+      path.startsWith("/speech/") ||
+      path === "/images" ||
+      path.startsWith("/images/") ||
+      path === "/images/generations" ||
+      path === "/audio/speech" ||
+      path.startsWith("/audio/") ||
+      path === "/usage/speech" ||
       path === "/usage" ||
       path === "/log-usage" ||
       path === "/v1/status" ||
@@ -34,6 +42,14 @@ export function registerMiddleware(app: Hono) {
       path === "/v1beta/models" ||
       path === "/v1/models/images" ||
       path === "/models/images" ||
+      path === "/v1/models/speech" ||
+      path === "/models/speech" ||
+      path === "/v1/speech/models" ||
+      path === "/speech/models" ||
+      path === "/v1/speech/voices" ||
+      path === "/speech/voices" ||
+      path === "/v1/audio/models" ||
+      path === "/v1/audio/voices" ||
       path === "/v1/models/mai" ||
       path === "/v1/mai/models" ||
       path === "/models/mai" ||

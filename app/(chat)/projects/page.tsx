@@ -30,6 +30,7 @@ import {
   PROJECT_ICON_LIST,
   ProjectIcon,
 } from "@/components/chat/project-icon";
+import { PageBackButton } from "@/components/chat/page-back-button";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -570,16 +571,19 @@ export default function ProjectsPage() {
   }, [selectedChatIds]);
 
   return (
-    <div className="flex flex-col gap-6 p-6 max-w-7xl mx-auto w-full">
+    <div className="flex flex-col gap-6 p-4 sm:p-6 max-w-7xl mx-auto w-full">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight">
-            Projets & Dossiers
-          </h1>
-          <p className="text-sm text-muted-foreground">
-            Organisez et classez vos discussions par thématique.
-          </p>
+        <div className="flex items-start gap-3 min-w-0">
+          <PageBackButton />
+          <div className="min-w-0">
+            <h1 className="text-2xl truncate font-bold tracking-tight">
+              Projets & Dossiers
+            </h1>
+            <p className="hidden sm:block text-sm text-muted-foreground">
+              Organisez et classez vos discussions par thématique.
+            </p>
+          </div>
         </div>
         <div className="flex items-center gap-2 flex-wrap">
           <div className="relative">

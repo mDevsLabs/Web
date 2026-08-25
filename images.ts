@@ -14,6 +14,13 @@ export interface ImageModelItem {
   name: string;
 }
 
+function cleanModelName(name: string): string {
+  return (name || "")
+    .replace(/\s*\((free|gratuit|free tier)\)/gi, "")
+    .replace(/:free/gi, "")
+    .trim();
+}
+
 export function getCometApiKey(): string {
   if (typeof Deno !== "undefined" && Deno.env) {
     return Deno.env.get("COMET_API_KEY") || "";
@@ -25,7 +32,7 @@ export function getCometApiKey(): string {
 }
 
 /**
- * Modèles de repli d'image de haute qualité
+ * Modèles de repli d'image de haute qualité (sans mentions (Free))
  */
 const FALLBACK_IMAGE_MODELS = [
   {
@@ -86,11 +93,10 @@ const FALLBACK_IMAGE_MODELS = [
 
 export function registerImageRoutes(app: Hono) {
   // ─────────────────────────────────────────────
-  // GET /v1/models/images
+  // GET /v1/models/images & /models/images
   // ─────────────────────────────────────────────
-  app.get("/v1/models/images", async (c) => {
+  const handleGetImageModels = async (c: any) => {
     const userPlan = c.get("userPlan");
-    const apiKey = c.get("apiKey");
     const planStr = String(userPlan || "Free")
       .toLowerCase()
       .trim();
@@ -150,20 +156,24 @@ export function registerImageRoutes(app: Hono) {
         });
       }
 
-      // 3. Renvoyer les données : id, description, name, created et features
-      const formatted = imageModels.map((m) => ({
-        created: m.created || Math.floor(Date.now() / 1000),
-        description:
-          m.description || `Modèle de génération d'images ${m.name || m.id}.`,
-        features:
-          m.features ||
-          m.supported_features ||
-          (m.id?.toLowerCase().includes("diffusion")
-            ? ["text-to-image", "image-to-image"]
-            : ["text-to-image"]),
-        id: m.id,
-        name: m.name || m.id,
-      }));
+      // 3. Renvoyer les données avec noms propres sans (Free)
+      const formatted = imageModels.map((m) => {
+        const rawName = m.name || m.id;
+        const cleanedName = cleanModelName(rawName) || cleanModelName(m.id);
+        return {
+          created: m.created || Math.floor(Date.now() / 1000),
+          description:
+            m.description || `Modèle de génération d'images ${cleanedName}.`,
+          features:
+            m.features ||
+            m.supported_features ||
+            (m.id?.toLowerCase().includes("diffusion")
+              ? ["text-to-image", "image-to-image"]
+              : ["text-to-image"]),
+          id: m.id,
+          name: cleanedName,
+        };
+      });
 
       return c.json({ data: formatted, object: "list" });
     } catch (_err) {
@@ -177,11 +187,14 @@ export function registerImageRoutes(app: Hono) {
         description: m.description,
         features: m.features || ["text-to-image"],
         id: m.id,
-        name: m.name,
+        name: cleanModelName(m.name),
       }));
       return c.json({ data: formatted, object: "list" });
     }
-  });
+  };
+
+  app.get("/v1/models/images", handleGetImageModels);
+  app.get("/models/images", handleGetImageModels);
 
   // ─────────────────────────────────────────────
   // GET /v1/images/usage
@@ -189,10 +202,6 @@ export function registerImageRoutes(app: Hono) {
   app.get("/v1/images/usage", async (c) => {
     try {
       const token = extractToken(c.req.raw);
-      const authHeader = c.req.header("Authorization");
-      const apiKey = authHeader?.startsWith("Bearer ")
-        ? authHeader.slice(7)
-        : null;
       let userId = c.get("userId");
       let userPlan = c.get("userPlan") || "Free";
 
@@ -216,7 +225,7 @@ export function registerImageRoutes(app: Hono) {
           FROM mprojects_daily_image_usage 
           WHERE user_id = ${userId}::text AND usage_date = CURRENT_DATE 
           LIMIT 1
-        `,
+        `.catch(() => []),
       ]);
 
       const effectiveTier = uRows[0]?.tier || userPlan || "Free";
@@ -280,9 +289,9 @@ export function registerImageRoutes(app: Hono) {
         WHERE user_id = ${userId}::text
         ORDER BY created_at DESC
         LIMIT 50
-      `;
+      `.catch(() => []);
 
-      return c.json({ data: history, success: true });
+      return c.json({ data: history, images: history, success: true });
     } catch (err: any) {
       return c.json(
         { details: err.message, error: "Erreur historique images." },
@@ -292,15 +301,65 @@ export function registerImageRoutes(app: Hono) {
   });
 
   // ─────────────────────────────────────────────
-  // POST /v1/images/generations
+  // DELETE /v1/images/history/:id & /v1/images/history
   // ─────────────────────────────────────────────
-  app.post("/v1/images/generations", async (c) => {
+  const handleDeleteImageHistory = async (c: any) => {
+    try {
+      const token = extractToken(c.req.raw);
+      let userId = c.get("userId");
+
+      if (token) {
+        try {
+          const payload = await verifyToken(token);
+          userId = payload.sub as string;
+        } catch {}
+      }
+
+      if (!userId) {
+        return c.json({ error: "Non authentifié." }, 401);
+      }
+
+      const id = c.req.param("id") || c.req.query("id");
+      if (!id) {
+        return c.json({ error: "ID manquant." }, 400);
+      }
+
+      const sql = getDb();
+      await sql`
+        DELETE FROM mprojects_image_generations
+        WHERE id::text = ${id}::text AND user_id = ${userId}::text
+      `;
+
+      return c.json({ message: "Image supprimée avec succès", success: true });
+    } catch (err: any) {
+      return c.json(
+        { details: err.message, error: "Erreur lors de la suppression de l'image." },
+        500
+      );
+    }
+  };
+
+  app.delete("/v1/images/history/:id", handleDeleteImageHistory);
+  app.delete("/v1/images/history", handleDeleteImageHistory);
+  app.delete("/images/history/:id", handleDeleteImageHistory);
+  app.delete("/images/history", handleDeleteImageHistory);
+
+  // ─────────────────────────────────────────────
+  // POST /v1/images/generations, /v1beta/models/*:generateImages (OpenAI, Google & Anthropic SDK)
+  // ─────────────────────────────────────────────
+  const handleImageGeneration = async (c: any) => {
     try {
       const token = extractToken(c.req.raw);
       const authHeader = c.req.header("Authorization");
+      const headerApiKey =
+        c.req.header("x-api-key") ||
+        c.req.header("X-API-Key") ||
+        c.req.header("x-goog-api-key") ||
+        c.req.header("X-Goog-Api-Key");
       const apiKey = authHeader?.startsWith("Bearer ")
         ? authHeader.slice(7)
-        : null;
+        : headerApiKey || null;
+
       let userId = c.get("userId");
       let userPlan = c.get("userPlan") || "Free";
 
@@ -320,18 +379,80 @@ export function registerImageRoutes(app: Hono) {
       }
 
       const body = await c.req.json().catch(() => ({}));
-      const prompt = body.prompt;
-      const model = body.model || "black-forest-labs/flux-1-schnell";
-      const width =
-        body.width ||
-        (body.size ? Number.parseInt(body.size.split("x")[0], 10) : 1024);
-      const height =
-        body.height ||
-        (body.size ? Number.parseInt(body.size.split("x")[1], 10) : 1024);
+      const reqPath = c.req.path || "";
+      const isGoogleFormat =
+        reqPath.includes(":generateImages") ||
+        reqPath.includes(":predict") ||
+        Boolean(body.instances || body.numberOfImages || body.aspectRatio);
+
+      // Support des paramètres OpenAI & Google GenAI
+      const rawPrompt =
+        body.prompt ||
+        body.instances?.[0]?.prompt ||
+        body.parameters?.prompt ||
+        "";
+      const prompt = typeof rawPrompt === "string" ? rawPrompt.trim() : "";
+
+      // Extraction du modèle demandé
+      const pathModel = reqPath
+        .replace(/^\/(v1beta|v1)\/models\//, "")
+        .replace(/:(generateImages|predict).*$/, "");
+      const requestedModel =
+        body.model || pathModel || "black-forest-labs/flux-1-schnell";
+
+      // Mapping des alias OpenAI (ex: dall-e-3, dall-e-2) et Google (imagen-3)
+      let model = requestedModel;
+      if (
+        model.toLowerCase().includes("dall-e") ||
+        model.toLowerCase().includes("imagen")
+      ) {
+        model = "black-forest-labs/flux-1-schnell";
+      }
+
+      // Résolution des dimensions (support aspectRatio Google et size OpenAI)
+      let width = 1024;
+      let height = 1024;
+
+      if (body.aspectRatio) {
+        const ar = String(body.aspectRatio).trim();
+        if (ar === "16:9") {
+          width = 1280;
+          height = 720;
+        } else if (ar === "9:16") {
+          width = 720;
+          height = 1280;
+        } else if (ar === "4:3") {
+          width = 1024;
+          height = 768;
+        } else if (ar === "3:4") {
+          width = 768;
+          height = 1024;
+        }
+      } else if (body.size) {
+        const parts = String(body.size).split("x");
+        if (parts.length === 2) {
+          width = Number.parseInt(parts[0], 10) || 1024;
+          height = Number.parseInt(parts[1], 10) || 1024;
+        }
+      } else {
+        if (body.width) width = Number(body.width);
+        if (body.height) height = Number(body.height);
+      }
+
       const negativePrompt = body.negative_prompt || "";
 
-      if (!prompt || typeof prompt !== "string") {
-        return c.json({ error: "Le paramètre 'prompt' est obligatoire." }, 400);
+      if (!prompt) {
+        return c.json(
+          {
+            error: {
+              code: "missing_prompt",
+              message: "Le paramètre 'prompt' est obligatoire pour la génération d'images.",
+              param: "prompt",
+              type: "invalid_request_error",
+            },
+          },
+          400
+        );
       }
 
       const sql = getDb();
@@ -341,7 +462,7 @@ export function registerImageRoutes(app: Hono) {
         SELECT tier FROM users 
         WHERE id::text = ${userId}::text OR username = ${userId}::text 
         LIMIT 1
-      `;
+      `.catch(() => []);
       const effectiveTier = uRows[0]?.tier || userPlan || "Free";
       const planStr = effectiveTier.toLowerCase().trim();
       const isPaidPlan = ["plus", "pro", "max"].includes(planStr);
@@ -368,7 +489,7 @@ export function registerImageRoutes(app: Hono) {
         FROM mprojects_daily_image_usage 
         WHERE user_id = ${userId}::text AND usage_date = CURRENT_DATE 
         LIMIT 1
-      `;
+      `.catch(() => []);
       const currentDailyUsage = usageRows[0]?.images_generated || 0;
 
       if (currentDailyUsage >= dailyLimit) {
@@ -394,7 +515,7 @@ export function registerImageRoutes(app: Hono) {
       if (cometApiKey) {
         const imagePayload: Record<string, any> = {
           model,
-          n: 1,
+          n: body.n || body.numberOfImages || 1,
           prompt,
           response_format: body.response_format || "url",
           size: `${width}x${height}`,
@@ -440,53 +561,82 @@ export function registerImageRoutes(app: Hono) {
       }
 
       // Incrémentation du quota journalier
-      await sql`
-        INSERT INTO mprojects_daily_image_usage (user_id, usage_date, images_generated, updated_at)
-        VALUES (${userId}::text, CURRENT_DATE, 1, NOW())
-        ON CONFLICT (user_id, usage_date)
-        DO UPDATE SET 
-          images_generated = mprojects_daily_image_usage.images_generated + 1,
-          updated_at = NOW()
-      `;
+      try {
+        await sql`
+          INSERT INTO mprojects_daily_image_usage (user_id, usage_date, images_generated, updated_at)
+          VALUES (${userId}::text, CURRENT_DATE, 1, NOW())
+          ON CONFLICT (user_id, usage_date)
+          DO UPDATE SET 
+            images_generated = mprojects_daily_image_usage.images_generated + 1,
+            updated_at = NOW()
+        `;
+      } catch (e) {}
 
       // Enregistrement dans l'historique
-      await sql`
-        INSERT INTO mprojects_image_generations (
-          user_id, api_key, model, prompt, negative_prompt, width, height, image_url, status
-        ) VALUES (
-          ${userId}::text,
-          ${apiKey || null},
-          ${model}::text,
-          ${prompt}::text,
-          ${negativePrompt || null},
-          ${width}::integer,
-          ${height}::integer,
-          ${generatedImageUrl}::text,
-          'completed'
-        )
-      `;
+      let insertedId = `img_${Date.now()}`;
+      try {
+        const insertRes = await sql`
+          INSERT INTO mprojects_image_generations (
+            user_id, api_key, model, prompt, negative_prompt, width, height, image_url, status
+          ) VALUES (
+            ${userId}::text,
+            ${apiKey || null},
+            ${model}::text,
+            ${prompt}::text,
+            ${negativePrompt || null},
+            ${width}::integer,
+            ${height}::integer,
+            ${generatedImageUrl}::text,
+            'completed'
+          ) RETURNING id
+        `;
+        if (insertRes.length > 0 && insertRes[0].id) {
+          insertedId = String(insertRes[0].id);
+        }
+      } catch (e) {}
 
       // Incrémentation du compteur de requêtes de la clé API selon le forfait (Free: 100, Plus: 50, Pro: 25, Max: 10)
       const requestCost = getTierImageRequestCost(effectiveTier);
       if (apiKey) {
-        await sql`
-          UPDATE mprojects_api_keys
-          SET request_count = request_count + ${requestCost}, last_used_at = NOW()
-          WHERE api_key = ${apiKey}
-        `;
+        try {
+          await sql`
+            UPDATE mprojects_api_keys
+            SET request_count = request_count + ${requestCost}, last_used_at = NOW()
+            WHERE api_key = ${apiKey}
+          `;
+        } catch (e) {}
       }
 
       // Enregistrement d'usage log dans mprojects_api_logs
       try {
         await sql`
           INSERT INTO mprojects_api_logs (api_key, endpoint, method, status_code, latency_ms, created_at)
-          VALUES (${apiKey || "anonymous"}::text, '/v1/images/generations', 'POST', 200, 1500, NOW())
+          VALUES (${apiKey || "anonymous"}::text, ${reqPath || "/v1/images/generations"}::text, 'POST', 200, 1500, NOW())
         `;
       } catch {}
 
+      // Formatage de la réponse selon le SDK appelant (Google GenAI vs OpenAI / Anthropic)
+      if (isGoogleFormat) {
+        return c.json({
+          generatedImages: cometResultData.map((img) => ({
+            image: {
+              imageBytes: img.b64_json || "",
+              mimeType: "image/jpeg",
+              uri: img.url || generatedImageUrl,
+            },
+          })),
+        });
+      }
+
+      // Format standard enrichi (utilisé par OpenAI SDK, Frontend & AI Tool)
       return c.json({
         created: Math.floor(Date.now() / 1000),
         data: cometResultData,
+        id: insertedId,
+        image_url: generatedImageUrl,
+        model: cleanModelName(model),
+        prompt,
+        success: true,
         usage: {
           daily_limit: dailyLimit,
           daily_used: currentDailyUsage + 1,
@@ -505,5 +655,22 @@ export function registerImageRoutes(app: Hono) {
         500
       );
     }
-  });
+  };
+
+  // Routes OpenAI & Anthropic SDK
+  app.post("/v1/images/generations", handleImageGeneration);
+  app.post("/images/generations", handleImageGeneration);
+  app.post("/v1/images", handleImageGeneration);
+  app.post("/images", handleImageGeneration);
+  app.post("/v1/images/edits", handleImageGeneration);
+  app.post("/images/edits", handleImageGeneration);
+  app.post("/v1/images/variations", handleImageGeneration);
+  app.post("/images/variations", handleImageGeneration);
+
+  // Routes Google GenAI / Gemini / Vertex SDK
+  app.post("/v1beta/models/*:generateImages", handleImageGeneration);
+  app.post("/v1/models/*:generateImages", handleImageGeneration);
+  app.post("/v1beta/models/*:predict", handleImageGeneration);
+  app.post("/v1/models/*:predict", handleImageGeneration);
 }
+

@@ -24,6 +24,15 @@ export async function GET() {
     }
 
     const data = await res.json();
+    if (Array.isArray(data?.data)) {
+      data.data = data.data.map((m: any) => ({
+        ...m,
+        name: (m.name || m.id)
+          .replace(/\s*\((Free|free|Gratuit|gratuit)\)/gi, "")
+          .replace(/:free$/i, "")
+          .trim(),
+      }));
+    }
     return NextResponse.json(data);
   } catch (error) {
     console.error("Erreur API models/images:", error);

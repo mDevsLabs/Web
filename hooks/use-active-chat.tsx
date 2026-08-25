@@ -142,7 +142,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
         });
         toast({
           description:
-            "Mode fantôme activé 👻 - La discussion est temporaire et ne sera pas enregistrée en base de données.",
+            "Mode fantôme activé - La discussion est temporaire et ne sera pas enregistrée en base de données.",
           type: "success",
         });
       } else {
@@ -168,8 +168,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   const togglePendingTool = useCallback((tool: ToolId) => {
     if (tool === "imageGenerate" && isGhostModeRef.current) {
       toast({
-        description:
-          "La génération d'image est indisponible en Mode fantôme 👻",
+        description: "La génération d'image est indisponible en Mode fantôme",
         type: "error",
       });
       return;

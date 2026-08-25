@@ -164,7 +164,7 @@ export function formatModelName(modelId: string): {
 
   return {
     isFree,
-    name: cleanName + (isFree ? " (Gratuit)" : ""),
+    name: cleanName,
     provider,
   };
 }
