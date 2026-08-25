@@ -30,7 +30,7 @@ import useSWR from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { useImagesUsage } from "@/hooks/use-settings";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
-import { cn } from "@/lib/utils";
+import { cn, downloadImage } from "@/lib/utils";
 
 interface ImageModel {
   created?: number;
@@ -729,16 +729,19 @@ export default function ImagesPage() {
                       >
                         <Maximize2Icon className="size-4" />
                       </button>
-                      <a
+                      <button
                         className="p-1.5 text-muted-foreground hover:text-foreground rounded-lg border border-border/60 hover:bg-muted/40 transition"
-                        download={`mai-image-${Date.now()}.png`}
-                        href={currentResult.image_url}
-                        rel="noreferrer"
-                        target="_blank"
+                        onClick={() =>
+                          downloadImage(
+                            currentResult.image_url,
+                            `mai-image-${Date.now()}.png`
+                          )
+                        }
                         title="Télécharger l'image"
+                        type="button"
                       >
                         <DownloadIcon className="size-4" />
-                      </a>
+                      </button>
                     </div>
                   )}
                 </div>
@@ -944,16 +947,19 @@ export default function ImagesPage() {
                           >
                             <Wand2Icon className="size-3.5" />
                           </button>
-                          <a
+                          <button
                             className="p-1.5 text-muted-foreground hover:text-foreground transition"
-                            download={`mai-image-${item.id}.png`}
-                            href={item.image_url}
-                            rel="noreferrer"
-                            target="_blank"
+                            onClick={() =>
+                              downloadImage(
+                                item.image_url,
+                                `mai-image-${item.id}.png`
+                              )
+                            }
                             title="Télécharger"
+                            type="button"
                           >
                             <DownloadIcon className="size-3.5" />
-                          </a>
+                          </button>
                           <button
                             className="p-1.5 text-muted-foreground hover:text-destructive transition"
                             onClick={() => handleDeleteFromHistory(item.id)}
@@ -998,15 +1004,15 @@ export default function ImagesPage() {
             />
 
             <div className="mt-3 flex flex-wrap items-center justify-center gap-3">
-              <a
+              <button
                 className="inline-flex items-center gap-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white px-4 py-2 text-xs font-semibold backdrop-blur-md transition"
-                download={`mai-image-${Date.now()}.png`}
-                href={previewImage}
-                rel="noreferrer"
-                target="_blank"
+                onClick={() =>
+                  downloadImage(previewImage, `mai-image-${Date.now()}.png`)
+                }
+                type="button"
               >
                 <DownloadIcon className="size-4" /> Télécharger l'original
-              </a>
+              </button>
               <button
                 className="inline-flex items-center gap-1.5 rounded-xl bg-primary hover:bg-primary/90 text-white px-4 py-2 text-xs font-semibold transition"
                 onClick={() => {

@@ -95,3 +95,114 @@ export function getTextFromMessage(message: ChatMessage | UIMessage): string {
     .map((part) => (part as { type: 'text'; text: string}).text)
     .join('');
 }
+
+export async function downloadImage(url: string, filename = "mai-image.png") {
+  if (typeof window === "undefined") {
+    return;
+  }
+  try {
+    const isBase64 =
+      !url.startsWith("http://") &&
+      !url.startsWith("https://") &&
+      !url.startsWith("data:") &&
+      !url.startsWith("blob:") &&
+      !url.startsWith("/");
+    const src = isBase64 ? `data:image/png;base64,${url}` : url;
+
+    if (src.startsWith("data:") || src.startsWith("blob:")) {
+      const a = document.createElement("a");
+      a.href = src;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      return;
+    }
+
+    const response = await fetch(src, { mode: "cors" });
+    if (!response.ok) {
+      throw new Error("Fetch failed");
+    }
+    const blob = await response.blob();
+    const blobUrl = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = blobUrl;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+  } catch {
+    const isBase64 =
+      !url.startsWith("http://") &&
+      !url.startsWith("https://") &&
+      !url.startsWith("data:") &&
+      !url.startsWith("blob:") &&
+      !url.startsWith("/");
+    const src = isBase64 ? `data:image/png;base64,${url}` : url;
+    const a = document.createElement("a");
+    a.href = src;
+    a.target = "_blank";
+    a.rel = "noreferrer";
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+}
+
+export async function copyImageToClipboard(content: string): Promise<boolean> {
+  if (typeof window === "undefined") {
+    return false;
+  }
+  const isBase64 =
+    !content.startsWith("http://") &&
+    !content.startsWith("https://") &&
+    !content.startsWith("data:") &&
+    !content.startsWith("blob:") &&
+    !content.startsWith("/");
+  const src = isBase64 ? `data:image/png;base64,${content}` : content;
+
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => {
+      try {
+        const canvas = document.createElement("canvas");
+        canvas.width = img.naturalWidth || img.width;
+        canvas.height = img.naturalHeight || img.height;
+        const ctx = canvas.getContext("2d");
+        ctx?.drawImage(img, 0, 0);
+        canvas.toBlob(async (blob) => {
+          if (blob && navigator.clipboard && window.ClipboardItem) {
+            try {
+              await navigator.clipboard.write([
+                new ClipboardItem({ "image/png": blob }),
+              ]);
+              resolve(true);
+              return;
+            } catch {}
+          }
+          try {
+            await navigator.clipboard.writeText(src);
+            resolve(true);
+          } catch {
+            resolve(false);
+          }
+        }, "image/png");
+      } catch {
+        navigator.clipboard
+          .writeText(src)
+          .then(() => resolve(true))
+          .catch(() => resolve(false));
+      }
+    };
+    img.onerror = () => {
+      navigator.clipboard
+        .writeText(src)
+        .then(() => resolve(true))
+        .catch(() => resolve(false));
+    };
+    img.src = src;
+  });
+}

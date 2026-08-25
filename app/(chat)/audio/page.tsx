@@ -173,14 +173,16 @@ export default function AudioPage() {
     mutate: mutateHistory,
     isLoading: isLoadingHistory,
   } = useSWR<{
-    audio: GeneratedAudio[];
+    audios?: GeneratedAudio[];
+    data?: GeneratedAudio[];
+    success: boolean;
     total: number;
   }>("/api/audio/history", fetcher, { revalidateOnFocus: false });
-  const history = useMemo(() => historyData?.audio || [], [historyData]);
+  const history = useMemo(() => historyData?.data || historyData?.audios || [], [historyData]);
 
   // Formulaire & Options
   const [selectedModelId, setSelectedModelId] = useState<string>("");
-  const [selectedVoice, setSelectedVoice] = useState<string>("flux-alexis-en");
+  const [selectedVoice, setSelectedVoice] = useState<string>("");
   const [inputText, setInputText] = useState<string>("");
   const [speed, setSpeed] = useState<number>(1.0);
   const [showAdvanced, setShowAdvanced] = useState<boolean>(false);
@@ -204,6 +206,13 @@ export default function AudioPage() {
       setSelectedModelId(defaultMod.id);
     }
   }, [models, selectedModelId]);
+
+  // Voix par défaut au chargement (auto-sélection)
+  useEffect(() => {
+    if (voices.length > 0 && !selectedVoice) {
+      setSelectedVoice(voices[0].id);
+    }
+  }, [voices, selectedVoice]);
 
   const selectedModel = useMemo(
     () => models.find((m) => m.id === selectedModelId),

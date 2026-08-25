@@ -143,6 +143,34 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     "verified_at" timestamp
   )`);
 
+  await run(client`CREATE TABLE IF NOT EXISTS "weekly_speech_usage" (
+    "id" serial PRIMARY KEY NOT NULL,
+    "user_id" text NOT NULL,
+    "week_start" date NOT NULL,
+    "tokens_used" bigint DEFAULT 0 NOT NULL,
+    "requests_count" integer DEFAULT 0 NOT NULL,
+    "updated_at" timestamp DEFAULT now() NOT NULL,
+    CONSTRAINT weekly_speech_usage_user_week_unique UNIQUE ("user_id", "week_start")
+  )`);
+
+  await run(client`CREATE TABLE IF NOT EXISTS "mprojects_speech_generations" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "user_id" text NOT NULL,
+    "api_key" text,
+    "model" text DEFAULT 'deepgram/flux-tts:free' NOT NULL,
+    "voice" text DEFAULT 'flux-alexis-en',
+    "input_text" text NOT NULL,
+    "audio_url" text,
+    "tokens_count" integer DEFAULT 0 NOT NULL,
+    "character_count" integer DEFAULT 0 NOT NULL,
+    "status" text DEFAULT 'completed' NOT NULL,
+    "created_at" timestamp DEFAULT now() NOT NULL
+  )`);
+
+  await run(
+    client`ALTER TABLE "mprojects_speech_generations" ADD COLUMN IF NOT EXISTS "audio_url" text`
+  );
+
   // Migrations de colonnes (supprimer contraintes FK, caster vers text)
   await run(
     client`ALTER TABLE "Chat" DROP CONSTRAINT IF EXISTS "Chat_userId_fkey" CASCADE`
@@ -256,6 +284,18 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
   );
   await run(
     client`CREATE INDEX IF NOT EXISTS "Project_userId_createdAt_idx" ON "Project" USING btree ("userId", "createdAt" DESC)`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "weekly_speech_usage_user_id_idx" ON "weekly_speech_usage" USING btree ("user_id")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "weekly_speech_usage_week_start_idx" ON "weekly_speech_usage" USING btree ("week_start")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "mprojects_speech_generations_user_id_idx" ON "mprojects_speech_generations" USING btree ("user_id")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "mprojects_speech_generations_created_at_idx" ON "mprojects_speech_generations" USING btree ("created_at" DESC)`
   );
 }
 

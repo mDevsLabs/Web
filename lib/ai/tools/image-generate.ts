@@ -1,6 +1,7 @@
 import { tool, type UIMessageStreamWriter } from "ai";
 import type { Session } from "next-auth";
 import { z } from "zod";
+import { getMaiSessionToken } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
 import type { ChatMessage } from "@/lib/types";
 
@@ -17,8 +18,11 @@ export const imageGenerate = ({ session, dataStream }: ImageGenerateProps) =>
       const userId = session.user?.id || session.user?.email || "";
       // Check quota first via internal API (reuse logic)
       try {
-        const token =
+        let token =
           (session as any)?.token || (session as any)?.user?.token || null;
+        if (!token) {
+          token = await getMaiSessionToken();
+        }
         // Call MAI API directly for generation
         const payload: any = {
           height: height || 1024,
@@ -27,12 +31,8 @@ export const imageGenerate = ({ session, dataStream }: ImageGenerateProps) =>
           prompt,
           width: width || 1024,
         };
-        // Try to use internal route via fetch if session token available
-        // Fallback to direct MAI_API_URL if not
         const apiUrl = `${MAI_API_URL}/v1/images/generations`;
-        // We need a token; if not available, return error to instruct manual
         if (!token) {
-          // Attempt to call local API via MAI session proxy? Return placeholder
           return {
             error:
               "Génération d'image non disponible sans session valide. Redirige vers /images.",

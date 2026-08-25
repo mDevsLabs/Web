@@ -88,7 +88,7 @@ export async function getMaiUser(
       avatarUrl: data.avatarUrl || null,
       email: data.email || "",
       id: userId || data.email,
-      limit: Number(data.limit || 500_000),
+      limit: Number(data.limit || 2_000_000),
       phone: data.phone || "",
       resetAt: data.resetAt,
       tier: data.tier || "Free",

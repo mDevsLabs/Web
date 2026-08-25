@@ -25,16 +25,22 @@ export function getLanguageModel(
     headers["x-user-id"] = options.userId;
   }
 
+  const maiBaseUrl = MAI_API_URL.endsWith("/v1")
+    ? MAI_API_URL
+    : `${MAI_API_URL.replace(/\/+$/, "")}/v1`;
+
   const maiClient = createOpenAI({
     apiKey: effectiveKey,
-    baseURL: MAI_API_URL,
+    baseURL: maiBaseUrl,
     fetch: async (url, init) => {
-      const urlStr = url.toString();
-      const targetUrl = urlStr.replace(
-        "/v1/chat/completions",
-        "/chat/completions"
-      );
-      return await fetch(targetUrl, init);
+      let urlStr = url.toString();
+      if (
+        urlStr.includes("/chat/completions") &&
+        !urlStr.includes("/v1/chat/completions")
+      ) {
+        urlStr = urlStr.replace("/chat/completions", "/v1/chat/completions");
+      }
+      return await fetch(urlStr, init);
     },
     headers,
   });

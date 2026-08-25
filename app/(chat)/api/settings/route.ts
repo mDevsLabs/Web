@@ -38,7 +38,7 @@ export async function GET() {
 
     return NextResponse.json({
       aiUsage: {
-        limit: Number(usageData?.limit || 500_000),
+        limit: Number(usageData?.limit || 2_000_000),
         resetAt: usageData?.resetAt,
         tier: userTier,
         tokensUsed: Number(usageData?.tokensUsed || 0),
@@ -66,7 +66,7 @@ export async function GET() {
         : null,
       speechUsage: speechData
         ? {
-            limit: Number(speechData.weeklyLimit || 20_000_000),
+            limit: Number(speechData.limit || speechData.weeklyLimit || 20_000_000),
             requestsCount: Number(speechData.requestsCount || 0),
             resetAt: speechData.resetAt,
             tier: speechData.plan || userTier,

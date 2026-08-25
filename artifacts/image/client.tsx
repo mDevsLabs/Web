@@ -1,7 +1,13 @@
 import { toast } from "sonner";
 import { Artifact } from "@/components/chat/create-artifact";
-import { CopyIcon, RedoIcon, UndoIcon } from "@/components/chat/icons";
+import {
+  CopyIcon,
+  DownloadIcon,
+  RedoIcon,
+  UndoIcon,
+} from "@/components/chat/icons";
 import { ImageEditor } from "@/components/chat/image-editor";
+import { copyImageToClipboard, downloadImage } from "@/lib/utils";
 
 export const imageArtifact = new Artifact({
   actions: [
@@ -34,28 +40,23 @@ export const imageArtifact = new Artifact({
       },
     },
     {
+      description: "Download image",
+      icon: <DownloadIcon size={18} />,
+      onClick: ({ content }) => {
+        downloadImage(content, "mai-image.png");
+        toast.success("Téléchargement de l'image lancé !");
+      },
+    },
+    {
       description: "Copy image to clipboard",
       icon: <CopyIcon size={18} />,
-      onClick: ({ content }) => {
-        const img = new Image();
-        img.src = `data:image/png;base64,${content}`;
-
-        img.onload = () => {
-          const canvas = document.createElement("canvas");
-          canvas.width = img.width;
-          canvas.height = img.height;
-          const ctx = canvas.getContext("2d");
-          ctx?.drawImage(img, 0, 0);
-          canvas.toBlob((blob) => {
-            if (blob) {
-              navigator.clipboard.write([
-                new ClipboardItem({ "image/png": blob }),
-              ]);
-            }
-          }, "image/png");
-        };
-
-        toast.success("Copied image to clipboard!");
+      onClick: async ({ content }) => {
+        const success = await copyImageToClipboard(content);
+        if (success) {
+          toast.success("Image copiée dans le presse-papier !");
+        } else {
+          toast.error("Impossible de copier l'image.");
+        }
       },
     },
   ],
@@ -68,7 +69,7 @@ export const imageArtifact = new Artifact({
         ...draftArtifact,
         content: streamPart.data,
         isVisible: true,
-        status: "streaming",
+        status: "idle",
       }));
     }
   },

@@ -10,13 +10,9 @@ export const metadata: Metadata = {
   description:
     "mAI Web — Votre assistant d'intelligence artificielle tout-en-un.",
   icons: {
-    apple: "/logo.png",
-    icon: [
-      { href: "/logo.png", url: "/logo.png" },
-      { href: "/favicon.ico", url: "/favicon.ico" },
-      { href: "/favicon.png", url: "/favicon.png" },
-    ],
-    shortcut: "/logo.png",
+    apple: [{ type: "image/png", url: "/logo.png" }],
+    icon: [{ type: "image/png", url: "/logo.png" }],
+    shortcut: { type: "image/png", url: "/logo.png" },
   },
   metadataBase: new URL("https://mai.val.run"),
   openGraph: {

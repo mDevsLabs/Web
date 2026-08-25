@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS mprojects_speech_generations (
   model TEXT NOT NULL DEFAULT 'deepgram/flux-tts:free',
   voice TEXT DEFAULT 'flux-alexis-en',
   input_text TEXT NOT NULL,
+  audio_url TEXT,
   tokens_count INTEGER NOT NULL DEFAULT 0,
   character_count INTEGER NOT NULL DEFAULT 0,
   status TEXT NOT NULL DEFAULT 'completed',

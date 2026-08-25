@@ -1030,7 +1030,7 @@ export default function SettingsPage() {
               </div>
               <p className="text-xs text-muted-foreground mt-1">
                 {profile?.tier === "Free"
-                  ? "Accès gratuit avec 500k tokens hebdomadaires et 500 Mo de stockage cloud."
+                  ? `Accès gratuit avec ${formatTokens(aiUsage?.limit || 2_000_000)} tokens hebdomadaires et ${formatBytes(cloudUsage?.bytesLimit || 524_288_000)} de stockage cloud.`
                   : "Forfait premium débloqué avec quotas étendus et modèles avancés."}
               </p>
             </div>
@@ -1069,7 +1069,7 @@ export default function SettingsPage() {
               <div className="text-right">
                 <span className="text-sm font-bold text-foreground">
                   {formatTokens(aiUsage?.tokensUsed || 0)} /{" "}
-                  {formatTokens(aiUsage?.limit || 500_000)}
+                  {formatTokens(aiUsage?.limit || 2_000_000)}
                 </span>
                 <span className="text-xs text-muted-foreground block">
                   tokens ({aiPercent}%)

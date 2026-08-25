@@ -230,6 +230,7 @@ export const mprojectsSpeechGenerations = pgTable(
   "mprojects_speech_generations",
   {
     apiKey: text("api_key"),
+    audioUrl: text("audio_url"),
     characterCount: integer("character_count").notNull().default(0),
     createdAt: timestamp("created_at").notNull().defaultNow(),
     id: uuid("id").primaryKey().notNull().defaultRandom(),

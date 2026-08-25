@@ -64,7 +64,47 @@ const FALLBACK_SPEECH_MODELS = [
   },
 ];
 
+let speechTablesInitialized = false;
+async function ensureSpeechTables(sql: any) {
+  if (speechTablesInitialized) return;
+  try {
+    await sql`
+      CREATE TABLE IF NOT EXISTS weekly_speech_usage (
+        id SERIAL PRIMARY KEY,
+        user_id TEXT NOT NULL,
+        week_start DATE NOT NULL,
+        tokens_used BIGINT NOT NULL DEFAULT 0,
+        requests_count INTEGER NOT NULL DEFAULT 0,
+        updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+        CONSTRAINT weekly_speech_usage_user_week_unique UNIQUE (user_id, week_start)
+      )
+    `;
+    await sql`
+      CREATE TABLE IF NOT EXISTS mprojects_speech_generations (
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+        user_id TEXT NOT NULL,
+        api_key TEXT,
+        model TEXT NOT NULL DEFAULT 'deepgram/flux-tts:free',
+        voice TEXT DEFAULT 'flux-alexis-en',
+        input_text TEXT NOT NULL,
+        audio_url TEXT,
+        tokens_count INTEGER NOT NULL DEFAULT 0,
+        character_count INTEGER NOT NULL DEFAULT 0,
+        status TEXT NOT NULL DEFAULT 'completed',
+        created_at TIMESTAMP NOT NULL DEFAULT NOW()
+      )
+    `;
+    await sql`ALTER TABLE mprojects_speech_generations ADD COLUMN IF NOT EXISTS audio_url TEXT`;
+    speechTablesInitialized = true;
+  } catch (err) {
+    console.error("[Speech API] Error initializing speech tables:", err);
+  }
+}
+
 export function registerAudioRoutes(app: Hono) {
+  try {
+    ensureSpeechTables(getDb()).catch(() => {});
+  } catch {}
   // ─────────────────────────────────────────────
   // GET /v1/models/speech, /models/speech & /v1/audio/models
   // ─────────────────────────────────────────────

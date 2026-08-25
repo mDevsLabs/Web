@@ -143,33 +143,26 @@ export function registerModelRoutes(app: Hono) {
             modality.includes("->text")
           );
         })
-        .map((m) => {
-          const rawName = m.name || m.id;
-          const cleanName = (rawName || "")
-            .replace(/\s*\((free|gratuit|free tier)\)/gi, "")
-            .replace(/:free/gi, "")
-            .trim();
-          return {
-            architecture: m.architecture,
-            created: m.created || Math.floor(Date.now() / 1000),
-            description: m.description || "",
-            id: m.id,
-            maxContext: m.context_length || 128_000,
-            maxOutput: m.top_provider?.max_completion_tokens || 4096,
-            name: cleanName || m.id,
-            object: "model",
-            owned_by: m.id.split("/")[0] || "openrouter",
-            supported_parameters: m.supported_parameters || [
-              "temperature",
-              "top_p",
-              "max_tokens",
-              "stream",
-              "stop",
-              "tools",
-              "response_format",
-            ],
-          };
-        });
+        .map((m) => ({
+          architecture: m.architecture,
+          created: m.created || Math.floor(Date.now() / 1000),
+          description: m.description || "",
+          id: m.id,
+          maxContext: m.context_length || 128_000,
+          maxOutput: m.top_provider?.max_completion_tokens || 4096,
+          name: m.name || m.id,
+          object: "model",
+          owned_by: m.id.split("/")[0] || "openrouter",
+          supported_parameters: m.supported_parameters || [
+            "temperature",
+            "top_p",
+            "max_tokens",
+            "stream",
+            "stop",
+            "tools",
+            "response_format",
+          ],
+        }));
 
       if (shouldFilterFreeOnly) {
         filtered = filtered.filter((m) =>
@@ -447,7 +440,7 @@ export function registerModelRoutes(app: Hono) {
           ON CONFLICT (user_id, week_start)
           DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
         `;
-      } catch (e) {}
+      } catch (_e) {}
 
       const openRouterRes = await fetch(
         "https://openrouter.ai/api/v1/chat/completions",
@@ -562,7 +555,7 @@ export function registerModelRoutes(app: Hono) {
           ON CONFLICT (user_id, week_start)
           DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
         `;
-      } catch (e) {}
+      } catch (_e) {}
 
       const openRouterRes = await fetch(
         "https://openrouter.ai/api/v1/chat/completions",
@@ -684,7 +677,7 @@ export function registerModelRoutes(app: Hono) {
           ON CONFLICT (user_id, week_start)
           DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
         `;
-      } catch (e) {}
+      } catch (_e) {}
 
       const openRouterPayload = {
         ...body,

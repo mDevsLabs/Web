@@ -1,9 +1,10 @@
 "use client";
 import type { UseChatHelpers } from "@ai-sdk/react";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
+import { toast } from "sonner";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatMessage } from "@/lib/types";
-import { cn, sanitizeText } from "@/lib/utils";
+import { cn, copyImageToClipboard, downloadImage, sanitizeText } from "@/lib/utils";
 import { MessageContent, MessageResponse } from "../ai-elements/message";
 import { Shimmer } from "../ai-elements/shimmer";
 import {
@@ -17,7 +18,12 @@ import { CodeExecution } from "./code-execution";
 import { useDataStream } from "./data-stream-provider";
 import { DocumentToolResult } from "./document";
 import { DocumentPreview } from "./document-preview";
-import { SparklesIcon } from "./icons";
+import {
+  CopyIcon,
+  DownloadIcon,
+  EyeIcon,
+  SparklesIcon,
+} from "./icons";
 import { MessageActions } from "./message-actions";
 import { MessageReasoning } from "./message-reasoning";
 import { PreviewAttachment } from "./preview-attachment";
@@ -78,6 +84,117 @@ function ToolApprovalActions({
       >
         Allow
       </button>
+    </div>
+  );
+}
+
+function ImageToolResult({
+  output,
+  toolCallId,
+}: {
+  output: any;
+  toolCallId: string;
+}) {
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  const url = output.image_url || "";
+  const isFullUrl =
+    url.startsWith("http://") ||
+    url.startsWith("https://") ||
+    url.startsWith("data:") ||
+    url.startsWith("blob:") ||
+    url.startsWith("/");
+  const imageSrc = isFullUrl ? url : `data:image/png;base64,${url}`;
+
+  return (
+    <div
+      className="group relative w-[min(100%,480px)] overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm"
+      key={toolCallId}
+    >
+      <div
+        className="relative cursor-pointer overflow-hidden bg-black/5"
+        onClick={() => setIsPreviewOpen(true)}
+      >
+        <img
+          alt={output.prompt || "Image générée"}
+          className="h-auto w-full object-contain transition duration-300 group-hover:scale-[1.01]"
+          src={imageSrc}
+        />
+        <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 transition-opacity group-hover:opacity-100">
+          <span className="flex items-center gap-1.5 rounded-full bg-black/70 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md">
+            <EyeIcon size={14} /> Agrandir
+          </span>
+        </div>
+      </div>
+
+      <div className="flex items-center justify-between border-t border-border/40 bg-muted/20 px-3.5 py-2 text-xs">
+        <div className="min-w-0 flex-1 truncate pr-2 text-muted-foreground">
+          {output.prompt || "Image générée par mAI"}
+        </div>
+        <div className="flex shrink-0 items-center gap-1">
+          <button
+            className="rounded-lg p-1.5 text-muted-foreground transition hover:bg-muted/60 hover:text-foreground"
+            onClick={async () => {
+              const ok = await copyImageToClipboard(imageSrc);
+              if (ok) {
+                toast.success("Image copiée !");
+              } else {
+                toast.error("Échec de la copie.");
+              }
+            }}
+            title="Copier l'image"
+            type="button"
+          >
+            <CopyIcon size={14} />
+          </button>
+          <button
+            className="rounded-lg p-1.5 text-muted-foreground transition hover:bg-muted/60 hover:text-foreground"
+            onClick={() =>
+              downloadImage(imageSrc, `mai-image-${Date.now()}.png`)
+            }
+            title="Télécharger l'image"
+            type="button"
+          >
+            <DownloadIcon size={14} />
+          </button>
+        </div>
+      </div>
+
+      {isPreviewOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-md"
+          onClick={() => setIsPreviewOpen(false)}
+        >
+          <div
+            className="relative flex max-h-[90vh] max-w-[90vw] flex-col items-center gap-3"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              alt={output.prompt || "Image agrandie"}
+              className="max-h-[85vh] max-w-[85vw] rounded-2xl border border-white/10 object-contain shadow-2xl"
+              src={imageSrc}
+            />
+            <div className="flex items-center gap-3">
+              <button
+                className="inline-flex items-center gap-2 rounded-xl bg-white/20 px-4 py-2 text-xs font-semibold text-white backdrop-blur-md transition hover:bg-white/30"
+                onClick={() =>
+                  downloadImage(imageSrc, `mai-image-${Date.now()}.png`)
+                }
+                type="button"
+              >
+                <DownloadIcon size={16} />
+                <span>Télécharger</span>
+              </button>
+              <button
+                className="inline-flex items-center gap-2 rounded-xl bg-white/10 px-4 py-2 text-xs font-semibold text-white backdrop-blur-md transition hover:bg-white/20"
+                onClick={() => setIsPreviewOpen(false)}
+                type="button"
+              >
+                <span>Fermer</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -411,24 +528,13 @@ const PurePreviewMessage = ({
             </div>
           );
         }
-        const url = (part.output as any).image_url;
-        if (url) {
+        if ((part.output as any).image_url) {
           return (
-            <div
-              className="w-[min(100%,480px)] rounded-xl overflow-hidden border border-border/60 bg-card"
+            <ImageToolResult
               key={toolCallId}
-            >
-              <img
-                alt={(part.output as any).prompt || "Image générée"}
-                className="w-full h-auto"
-                src={url}
-              />
-              {(part.output as any).prompt && (
-                <div className="px-3 py-2 text-[11px] text-muted-foreground border-t border-border/40">
-                  {(part.output as any).prompt}
-                </div>
-              )}
-            </div>
+              output={part.output}
+              toolCallId={toolCallId}
+            />
           );
         }
       }

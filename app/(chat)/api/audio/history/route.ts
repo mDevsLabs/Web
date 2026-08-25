@@ -16,25 +16,26 @@ export async function GET(_req: NextRequest) {
       },
     });
 
-    const data = await res.json();
-    if (!res.ok) {
-      return NextResponse.json(data, { status: res.status });
+    if (res.ok) {
+      const data = await res.json();
+      const items = data.data || data.history || data.audios || [];
+      return NextResponse.json({
+        audios: items,
+        data: items,
+        success: true,
+        total: data.total || items.length,
+      });
     }
-
-    const items = data.data || data.history || [];
-    return NextResponse.json({
-      audios: items,
-      data: items,
-      success: true,
-      total: items.length,
-    });
   } catch (error) {
     console.error("Erreur API audio/history:", error);
-    return NextResponse.json(
-      { error: "Erreur lors du chargement de l'historique audio" },
-      { status: 500 }
-    );
   }
+
+  return NextResponse.json({
+    audios: [],
+    data: [],
+    success: true,
+    total: 0,
+  });
 }
 
 export async function DELETE(req: NextRequest) {

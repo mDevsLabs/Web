@@ -63,6 +63,7 @@ import {
 } from "@/hooks/use-active-chat";
 import { useProjects } from "@/hooks/use-projects";
 import { useSpeechRecognition } from "@/hooks/use-speech";
+import { useSettings } from "@/hooks/use-settings";
 import {
   type ChatModel,
   chatModels,
@@ -283,12 +284,11 @@ function PureMultimodalInput({
     toggleListening();
   }, [isListening, isSpeechSupported, input, toggleListening]);
 
-  // Live cost: poll settings + dataStream usage
-  const { data: costSettings } = useSWR(
-    `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/settings`,
-    (url: string) => fetch(url).then((r) => r.json()),
-    { dedupingInterval: 30_000, revalidateOnFocus: true }
-  );
+  // Live cost: poll settings + dataStream usage via shared useSettings hook
+  const { data: costSettings } = useSettings({
+    refreshInterval: 30_000,
+    revalidateOnFocus: true,
+  });
   const { dataStream } = useDataStream();
   const [liveSessionTokens, setLiveSessionTokens] = useState(0);
   useEffect(() => {
@@ -302,7 +302,7 @@ function PureMultimodalInput({
   }, [dataStream]);
   const costAiUsed =
     (costSettings?.aiUsage?.tokensUsed ?? 0) + liveSessionTokens;
-  const costAiLimit = costSettings?.aiUsage?.limit ?? 500_000;
+  const costAiLimit = costSettings?.aiUsage?.limit ?? 2_000_000;
   const costPercent =
     costAiLimit > 0
       ? Math.min(100, Math.round((costAiUsed / costAiLimit) * 100))

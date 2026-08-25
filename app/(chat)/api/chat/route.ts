@@ -484,7 +484,10 @@ export async function POST(request: Request) {
             audioGenerate: audioGenerate({
               dataStream,
               session: {
-                user: isGhostMode ? null : { email: maiUser.email, id: userId },
+                token: sessionToken,
+                user: isGhostMode
+                  ? null
+                  : { email: maiUser.email, id: userId, token: sessionToken },
               } as any,
             }),
             codeExecution,
@@ -508,7 +511,12 @@ export async function POST(request: Request) {
                   imageGenerate: imageGenerate({
                     dataStream,
                     session: {
-                      user: { email: maiUser.email, id: userId },
+                      token: sessionToken,
+                      user: {
+                        email: maiUser.email,
+                        id: userId,
+                        token: sessionToken,
+                      },
                     } as any,
                   }),
                 }),

@@ -66,11 +66,12 @@ export function resolveSpeechUsage(
 ): ResolvedSpeechUsage {
   const speechUsage = data?.speechUsage ?? null;
   const plan = speechUsage?.tier || data?.user?.tier || "Free";
+  const rawLimit = speechUsage?.limit ?? (speechUsage as any)?.weeklyLimit;
   const limit =
-    typeof speechUsage?.limit === "number" &&
-    Number.isFinite(speechUsage.limit) &&
-    speechUsage.limit > 0
-      ? speechUsage.limit
+    typeof rawLimit === "number" &&
+    Number.isFinite(rawLimit) &&
+    rawLimit > 0
+      ? rawLimit
       : getTierSpeechLimit(plan);
   const tokensUsed =
     typeof speechUsage?.tokensUsed === "number" &&

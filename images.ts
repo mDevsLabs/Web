@@ -14,13 +14,6 @@ export interface ImageModelItem {
   name: string;
 }
 
-function cleanModelName(name: string): string {
-  return (name || "")
-    .replace(/\s*\((free|gratuit|free tier)\)/gi, "")
-    .replace(/:free/gi, "")
-    .trim();
-}
-
 export function getCometApiKey(): string {
   if (typeof Deno !== "undefined" && Deno.env) {
     return Deno.env.get("COMET_API_KEY") || "";
@@ -32,7 +25,7 @@ export function getCometApiKey(): string {
 }
 
 /**
- * Modèles de repli d'image de haute qualité (sans mentions (Free))
+ * Modèles de repli d'image de haute qualité
  */
 const FALLBACK_IMAGE_MODELS = [
   {
@@ -93,10 +86,11 @@ const FALLBACK_IMAGE_MODELS = [
 
 export function registerImageRoutes(app: Hono) {
   // ─────────────────────────────────────────────
-  // GET /v1/models/images & /models/images
+  // GET /v1/models/images
   // ─────────────────────────────────────────────
-  const handleGetImageModels = async (c: any) => {
+  app.get("/v1/models/images", async (c) => {
     const userPlan = c.get("userPlan");
+    const _apiKey = c.get("apiKey");
     const planStr = String(userPlan || "Free")
       .toLowerCase()
       .trim();
@@ -156,24 +150,20 @@ export function registerImageRoutes(app: Hono) {
         });
       }
 
-      // 3. Renvoyer les données avec noms propres sans (Free)
-      const formatted = imageModels.map((m) => {
-        const rawName = m.name || m.id;
-        const cleanedName = cleanModelName(rawName) || cleanModelName(m.id);
-        return {
-          created: m.created || Math.floor(Date.now() / 1000),
-          description:
-            m.description || `Modèle de génération d'images ${cleanedName}.`,
-          features:
-            m.features ||
-            m.supported_features ||
-            (m.id?.toLowerCase().includes("diffusion")
-              ? ["text-to-image", "image-to-image"]
-              : ["text-to-image"]),
-          id: m.id,
-          name: cleanedName,
-        };
-      });
+      // 3. Renvoyer les données : id, description, name, created et features
+      const formatted = imageModels.map((m) => ({
+        created: m.created || Math.floor(Date.now() / 1000),
+        description:
+          m.description || `Modèle de génération d'images ${m.name || m.id}.`,
+        features:
+          m.features ||
+          m.supported_features ||
+          (m.id?.toLowerCase().includes("diffusion")
+            ? ["text-to-image", "image-to-image"]
+            : ["text-to-image"]),
+        id: m.id,
+        name: m.name || m.id,
+      }));
 
       return c.json({ data: formatted, object: "list" });
     } catch (_err) {
@@ -187,14 +177,11 @@ export function registerImageRoutes(app: Hono) {
         description: m.description,
         features: m.features || ["text-to-image"],
         id: m.id,
-        name: cleanModelName(m.name),
+        name: m.name,
       }));
       return c.json({ data: formatted, object: "list" });
     }
-  };
-
-  app.get("/v1/models/images", handleGetImageModels);
-  app.get("/models/images", handleGetImageModels);
+  });
 
   // ─────────────────────────────────────────────
   // GET /v1/images/usage
@@ -202,6 +189,11 @@ export function registerImageRoutes(app: Hono) {
   app.get("/v1/images/usage", async (c) => {
     try {
       const token = extractToken(c.req.raw);
+      const authHeader = c.req.header("Authorization");
+      const _apiKey = authHeader?.startsWith("Bearer ")
+        ? authHeader.slice(7)
+        : null;
+      void _apiKey;
       let userId = c.get("userId");
       let userPlan = c.get("userPlan") || "Free";
 
@@ -225,7 +217,7 @@ export function registerImageRoutes(app: Hono) {
           FROM mprojects_daily_image_usage 
           WHERE user_id = ${userId}::text AND usage_date = CURRENT_DATE 
           LIMIT 1
-        `.catch(() => []),
+        `,
       ]);
 
       const effectiveTier = uRows[0]?.tier || userPlan || "Free";
@@ -289,9 +281,9 @@ export function registerImageRoutes(app: Hono) {
         WHERE user_id = ${userId}::text
         ORDER BY created_at DESC
         LIMIT 50
-      `.catch(() => []);
+      `;
 
-      return c.json({ data: history, images: history, success: true });
+      return c.json({ data: history, success: true });
     } catch (err: any) {
       return c.json(
         { details: err.message, error: "Erreur historique images." },
@@ -299,50 +291,6 @@ export function registerImageRoutes(app: Hono) {
       );
     }
   });
-
-  // ─────────────────────────────────────────────
-  // DELETE /v1/images/history/:id & /v1/images/history
-  // ─────────────────────────────────────────────
-  const handleDeleteImageHistory = async (c: any) => {
-    try {
-      const token = extractToken(c.req.raw);
-      let userId = c.get("userId");
-
-      if (token) {
-        try {
-          const payload = await verifyToken(token);
-          userId = payload.sub as string;
-        } catch {}
-      }
-
-      if (!userId) {
-        return c.json({ error: "Non authentifié." }, 401);
-      }
-
-      const id = c.req.param("id") || c.req.query("id");
-      if (!id) {
-        return c.json({ error: "ID manquant." }, 400);
-      }
-
-      const sql = getDb();
-      await sql`
-        DELETE FROM mprojects_image_generations
-        WHERE id::text = ${id}::text AND user_id = ${userId}::text
-      `;
-
-      return c.json({ message: "Image supprimée avec succès", success: true });
-    } catch (err: any) {
-      return c.json(
-        { details: err.message, error: "Erreur lors de la suppression de l'image." },
-        500
-      );
-    }
-  };
-
-  app.delete("/v1/images/history/:id", handleDeleteImageHistory);
-  app.delete("/v1/images/history", handleDeleteImageHistory);
-  app.delete("/images/history/:id", handleDeleteImageHistory);
-  app.delete("/images/history", handleDeleteImageHistory);
 
   // ─────────────────────────────────────────────
   // POST /v1/images/generations, /v1beta/models/*:generateImages (OpenAI, Google & Anthropic SDK)
@@ -462,18 +410,19 @@ export function registerImageRoutes(app: Hono) {
         SELECT tier FROM users 
         WHERE id::text = ${userId}::text OR username = ${userId}::text 
         LIMIT 1
-      `.catch(() => []);
+      `;
       const effectiveTier = uRows[0]?.tier || userPlan || "Free";
       const planStr = effectiveTier.toLowerCase().trim();
       const isPaidPlan = ["plus", "pro", "max"].includes(planStr);
 
-      // Vérification des droits sur le modèle
-      if (!isPaidPlan && !model.toLowerCase().includes("flux")) {
+      // Bloquer les utilisateurs du forfait Free pour la génération d'images via clé API
+      if (!isPaidPlan) {
         return c.json(
           {
             error: {
-              code: "image_model_access_denied",
-              message: `Le modèle d'image '${model}' nécessite un forfait payant (Plus, Pro ou Max). Votre forfait actuel (${effectiveTier}) autorise les modèles Flux (ex: 'black-forest-labs/flux-1-schnell').`,
+              code: "image_generation_tier_restricted",
+              message: `La génération d'images via l'API est réservée aux abonnements payants (Plus, Pro, Max). Les clés API issues d'un compte Free ne sont pas autorisées à effectuer de requêtes de génération d'images.`,
+              param: null,
               type: "permission_error",
             },
           },
@@ -481,7 +430,7 @@ export function registerImageRoutes(app: Hono) {
         );
       }
 
-      // Vérification du quota journalier (Free: 3/j, Plus: 5/j, Pro: 10/j, Max: 20/j)
+      // Vérification du quota journalier (Plus: 5/j, Pro: 10/j, Max: 20/j)
       const dailyLimit = getTierDailyImageLimit(effectiveTier);
 
       const usageRows = await sql`
@@ -489,7 +438,7 @@ export function registerImageRoutes(app: Hono) {
         FROM mprojects_daily_image_usage 
         WHERE user_id = ${userId}::text AND usage_date = CURRENT_DATE 
         LIMIT 1
-      `.catch(() => []);
+      `;
       const currentDailyUsage = usageRows[0]?.images_generated || 0;
 
       if (currentDailyUsage >= dailyLimit) {
@@ -561,50 +510,40 @@ export function registerImageRoutes(app: Hono) {
       }
 
       // Incrémentation du quota journalier
-      try {
-        await sql`
-          INSERT INTO mprojects_daily_image_usage (user_id, usage_date, images_generated, updated_at)
-          VALUES (${userId}::text, CURRENT_DATE, 1, NOW())
-          ON CONFLICT (user_id, usage_date)
-          DO UPDATE SET 
-            images_generated = mprojects_daily_image_usage.images_generated + 1,
-            updated_at = NOW()
-        `;
-      } catch (e) {}
+      await sql`
+        INSERT INTO mprojects_daily_image_usage (user_id, usage_date, images_generated, updated_at)
+        VALUES (${userId}::text, CURRENT_DATE, 1, NOW())
+        ON CONFLICT (user_id, usage_date)
+        DO UPDATE SET 
+          images_generated = mprojects_daily_image_usage.images_generated + 1,
+          updated_at = NOW()
+      `;
 
       // Enregistrement dans l'historique
-      let insertedId = `img_${Date.now()}`;
-      try {
-        const insertRes = await sql`
-          INSERT INTO mprojects_image_generations (
-            user_id, api_key, model, prompt, negative_prompt, width, height, image_url, status
-          ) VALUES (
-            ${userId}::text,
-            ${apiKey || null},
-            ${model}::text,
-            ${prompt}::text,
-            ${negativePrompt || null},
-            ${width}::integer,
-            ${height}::integer,
-            ${generatedImageUrl}::text,
-            'completed'
-          ) RETURNING id
-        `;
-        if (insertRes.length > 0 && insertRes[0].id) {
-          insertedId = String(insertRes[0].id);
-        }
-      } catch (e) {}
+      await sql`
+        INSERT INTO mprojects_image_generations (
+          user_id, api_key, model, prompt, negative_prompt, width, height, image_url, status
+        ) VALUES (
+          ${userId}::text,
+          ${apiKey || null},
+          ${model}::text,
+          ${prompt}::text,
+          ${negativePrompt || null},
+          ${width}::integer,
+          ${height}::integer,
+          ${generatedImageUrl}::text,
+          'completed'
+        )
+      `;
 
       // Incrémentation du compteur de requêtes de la clé API selon le forfait (Free: 100, Plus: 50, Pro: 25, Max: 10)
       const requestCost = getTierImageRequestCost(effectiveTier);
       if (apiKey) {
-        try {
-          await sql`
-            UPDATE mprojects_api_keys
-            SET request_count = request_count + ${requestCost}, last_used_at = NOW()
-            WHERE api_key = ${apiKey}
-          `;
-        } catch (e) {}
+        await sql`
+          UPDATE mprojects_api_keys
+          SET request_count = request_count + ${requestCost}, last_used_at = NOW()
+          WHERE api_key = ${apiKey}
+        `;
       }
 
       // Enregistrement d'usage log dans mprojects_api_logs
@@ -628,15 +567,10 @@ export function registerImageRoutes(app: Hono) {
         });
       }
 
-      // Format standard enrichi (utilisé par OpenAI SDK, Frontend & AI Tool)
+      // Format OpenAI par défaut (utilisé par OpenAI SDK & Anthropic proxy)
       return c.json({
         created: Math.floor(Date.now() / 1000),
         data: cometResultData,
-        id: insertedId,
-        image_url: generatedImageUrl,
-        model: cleanModelName(model),
-        prompt,
-        success: true,
         usage: {
           daily_limit: dailyLimit,
           daily_used: currentDailyUsage + 1,
@@ -673,4 +607,3 @@ export function registerImageRoutes(app: Hono) {
   app.post("/v1beta/models/*:predict", handleImageGeneration);
   app.post("/v1/models/*:predict", handleImageGeneration);
 }
-
