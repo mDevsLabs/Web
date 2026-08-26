@@ -239,6 +239,20 @@ export default function AudioPage() {
     setCurrentResult(null);
 
     try {
+      // 1. Demande et validation du quota préalable
+      try {
+        const usageCheck = await fetch("/api/audio/usage").then((r) => r.json());
+        const checkLimit = Number(usageCheck.weeklyLimit ?? 0);
+        const checkUsed = Number(usageCheck.tokensUsed ?? 0);
+        if (checkLimit > 0 && checkUsed >= checkLimit) {
+          toast.error(
+            `Quota hebdomadaire Speech épuisé (${formatTokens(checkUsed)}/${formatTokens(checkLimit)} tokens).`
+          );
+          setIsGenerating(false);
+          return;
+        }
+      } catch {}
+
       const payload = {
         input: inputText.trim(),
         model: selectedModelId || "openai/tts-1",

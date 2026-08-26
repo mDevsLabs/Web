@@ -44,6 +44,35 @@ export async function POST(req: NextRequest) {
     const speed = body.speed !== undefined ? Number(body.speed) : 1.0;
     const response_format = body.response_format || "mp3";
 
+    // Vérification préalable du quota Speech avant d'envoyer la requête
+    try {
+      const usageRes = await fetch(`${MAI_API_URL}/v1/audio/usage`, {
+        cache: "no-store",
+        headers: {
+          Authorization: authHeader,
+        },
+      });
+      if (usageRes.ok) {
+        const usageData = await usageRes.json();
+        const weeklyLimit = Number(usageData.weeklyLimit ?? 0);
+        const tokensUsed = Number(usageData.tokensUsed ?? 0);
+        const estimatedTokens = Math.max(1, Math.ceil(input.trim().length / 3.5));
+        if (weeklyLimit > 0 && (tokensUsed >= weeklyLimit || tokensUsed + estimatedTokens > weeklyLimit)) {
+          return NextResponse.json(
+            {
+              error: `Votre quota hebdomadaire Speech est atteint (${tokensUsed}/${weeklyLimit} tokens). Mettez à niveau votre forfait pour continuer.`,
+              limit: weeklyLimit,
+              over_limit: true,
+              used: tokensUsed,
+            },
+            { status: 429 }
+          );
+        }
+      }
+    } catch (quotaErr) {
+      console.warn("Avertissement vérification quota audio:", quotaErr);
+    }
+
     const maiRes = await fetch(`${MAI_API_URL}/v1/audio/speech`, {
       body: JSON.stringify({
         format: "json",

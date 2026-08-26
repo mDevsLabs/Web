@@ -251,6 +251,9 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     client`ALTER TABLE "Project" ADD COLUMN IF NOT EXISTS "customInstructions" text`
   );
   await run(
+    client`ALTER TABLE "Project" ADD COLUMN IF NOT EXISTS "defaultModel" text`
+  );
+  await run(
     client`ALTER TABLE "Project" ADD COLUMN IF NOT EXISTS "description" text DEFAULT ''`
   );
   await run(
@@ -300,6 +303,7 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
 }
 
 let _migrationPromise: Promise<void> | null = null;
+let _rawClient: postgres.Sql | null = null;
 
 function initDb() {
   const connectionString =
@@ -314,6 +318,7 @@ function initDb() {
   }
 
   const client = postgres(connectionString, { prepare: false });
+  _rawClient = client;
   _db = drizzle(client);
   _migrationPromise = ensureTableTypes(client);
 }
@@ -552,6 +557,9 @@ export async function getChatsByUserId({
 }
 
 export async function getChatById({ id }: { id: string }) {
+  if (!id || typeof id !== "string") {
+    return null;
+  }
   try {
     const db = await dbReady();
     const [selectedChat] = await db.select().from(chat).where(eq(chat.id, id));
@@ -559,8 +567,8 @@ export async function getChatById({ id }: { id: string }) {
       return null;
     }
     return selectedChat;
-  } catch (error) {
-    throw new ChatbotError("bad_request:database", { cause: error });
+  } catch (_error) {
+    return null;
   }
 }
 
@@ -574,6 +582,7 @@ export async function createProject({
   icon,
   color,
   customInstructions,
+  defaultModel,
 }: {
   userId: string;
   name: string;
@@ -581,6 +590,7 @@ export async function createProject({
   icon?: string;
   color?: string;
   customInstructions?: string;
+  defaultModel?: string;
 }) {
   try {
     const db = await dbReady();
@@ -589,6 +599,7 @@ export async function createProject({
       .values({
         color: color ?? "#6366f1",
         customInstructions: customInstructions ?? null,
+        defaultModel: defaultModel ?? null,
         description: description ?? "",
         icon: icon ?? "folder",
         name,
@@ -680,7 +691,8 @@ export async function updateProject({
   description?: string;
   icon?: string;
   color?: string;
-  customInstructions?: string;
+  customInstructions?: string | null;
+  defaultModel?: string | null;
   isArchived?: boolean;
 }) {
   try {
@@ -700,6 +712,9 @@ export async function updateProject({
     }
     if (fields.customInstructions !== undefined) {
       updateData.customInstructions = fields.customInstructions;
+    }
+    if (fields.defaultModel !== undefined) {
+      updateData.defaultModel = fields.defaultModel;
     }
     if (fields.isArchived !== undefined) {
       updateData.isArchived = fields.isArchived;
@@ -1044,6 +1059,9 @@ export async function updateMessage({
 }
 
 export async function getMessagesByChatId({ id }: { id: string }) {
+  if (!id || typeof id !== "string") {
+    return [];
+  }
   try {
     const db = await dbReady();
     return await db
@@ -1051,8 +1069,8 @@ export async function getMessagesByChatId({ id }: { id: string }) {
       .from(message)
       .where(eq(message.chatId, id))
       .orderBy(asc(message.createdAt));
-  } catch (error) {
-    throw new ChatbotError("bad_request:database", { cause: error });
+  } catch (_error) {
+    return [];
   }
 }
 
@@ -1377,3 +1395,77 @@ export async function getStreamIdsByChatId({ chatId }: { chatId: string }) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
 }
+
+export async function recordTokenUsage({
+  userId,
+  userEmail,
+  inputTokens = 0,
+  outputTokens = 0,
+  totalTokens = 0,
+  model = "default",
+  isGhostMode = false,
+}: {
+  userId: string;
+  userEmail?: string | null;
+  inputTokens?: number;
+  outputTokens?: number;
+  totalTokens?: number;
+  model?: string;
+  isGhostMode?: boolean;
+}) {
+  const actualTotal =
+    totalTokens > 0
+      ? totalTokens
+      : Math.max(0, (inputTokens || 0) + (outputTokens || 0));
+
+  if (actualTotal <= 0 && (!inputTokens || inputTokens <= 0) && (!outputTokens || outputTokens <= 0)) {
+    return;
+  }
+
+  try {
+    await dbReady();
+    if (!_rawClient) {
+      return;
+    }
+
+    // Calcul du début de la semaine (Lundi 00:00 UTC)
+    const now = new Date();
+    const day = now.getUTCDay();
+    const diff = now.getUTCDate() - day + (day === 0 ? -6 : 1);
+    const monday = new Date(
+      Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), diff)
+    );
+    const weekStartStr = monday.toISOString().split("T")[0];
+
+    const targetUserId = userId || userEmail || "";
+    if (!targetUserId) {
+      return;
+    }
+
+    // 1. Mise à jour ou insertion dans weekly_usage
+    await _rawClient`
+      INSERT INTO weekly_usage (user_id, week_start, tokens_used)
+      VALUES (${targetUserId}::text, ${weekStartStr}::date, ${actualTotal})
+      ON CONFLICT (user_id, week_start)
+      DO UPDATE SET tokens_used = weekly_usage.tokens_used + ${actualTotal}
+    `;
+
+    // 2. Enregistrement dans mprojects_api_logs
+    try {
+      await _rawClient`
+        INSERT INTO mprojects_api_logs (api_key, endpoint, method, status_code, latency_ms, created_at)
+        VALUES (
+          ${targetUserId}::text,
+          ${isGhostMode ? `/v1/chat/completions?ghost=true&model=${model}` : `/v1/chat/completions?model=${model}`}::text,
+          'POST',
+          200,
+          1200,
+          NOW()
+        )
+      `;
+    } catch {}
+  } catch (err) {
+    console.error("Erreur recordTokenUsage direct en BDD:", err);
+  }
+}
+

@@ -66,13 +66,21 @@ export async function GET() {
         : null,
       speechUsage: speechData
         ? {
-            limit: Number(speechData.limit || speechData.weeklyLimit || 20_000_000),
+            limit: Number(speechData.limit || speechData.weeklyLimit || usageData?.speechLimit || 20_000_000),
             requestsCount: Number(speechData.requestsCount || 0),
-            resetAt: speechData.resetAt,
+            resetAt: speechData.resetAt || usageData?.resetAt,
             tier: speechData.plan || userTier,
-            tokensUsed: Number(speechData.tokensUsed || 0),
+            tokensUsed: Number(speechData.tokensUsed ?? usageData?.speechTokensUsed ?? 0),
           }
-        : null,
+        : usageData?.speechTokensUsed !== undefined
+          ? {
+              limit: Number(usageData?.speechLimit || 20_000_000),
+              requestsCount: 0,
+              resetAt: usageData?.resetAt,
+              tier: userTier,
+              tokensUsed: Number(usageData?.speechTokensUsed || 0),
+            }
+          : null,
       user: usageData,
     });
   } catch (error) {

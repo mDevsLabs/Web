@@ -46,7 +46,10 @@ CRITICAL RULES:
 
 export const regularPrompt = `You are a helpful assistant. Keep responses concise and direct.
 
-When asked to write, create, or build something, do it immediately. Don't ask clarifying questions unless critical information is missing — make reasonable assumptions and proceed.`;
+When asked to write, create, or build something, do it immediately. Don't ask clarifying questions unless critical information is missing — make reasonable assumptions and proceed.
+
+CRITICAL RULE FOR AUDIO/VOICE GENERATION:
+When the user asks to generate audio, speak, vocalize, or synthesize speech, NEVER ask the user which voice to use. Call the audio generation tool immediately using the default voice (flux-alexis-en) unless the user explicitly requested a specific voice name in their prompt.`;
 
 export type RequestHints = {
   latitude: Geo["latitude"];

@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { getMaiSessionToken } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
+import { formatImageSrc } from "@/lib/utils";
 
 export async function GET(req: NextRequest) {
   const token = await getMaiSessionToken();
@@ -28,7 +29,12 @@ export async function GET(req: NextRequest) {
       return NextResponse.json(data, { status: res.status });
     }
 
-    const items = data.data || data.images || [];
+    const rawItems = data.data || data.images || [];
+    const items = rawItems.map((item: any) => ({
+      ...item,
+      image_url: formatImageSrc(item.image_url),
+    }));
+
     return NextResponse.json({
       data: items,
       images: items,

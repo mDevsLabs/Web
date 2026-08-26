@@ -3,6 +3,7 @@
 import {
   AlertCircleIcon,
   ArchiveIcon,
+  BotIcon,
   CheckSquareIcon,
   CloudIcon,
   CloudUploadIcon,
@@ -19,17 +20,24 @@ import {
   ImageIcon,
   ListIcon,
   Loader2Icon,
+  MessageSquareIcon,
   MusicIcon,
   PinIcon,
   PinOffIcon,
+  PlusIcon,
+  RefreshCwIcon,
   SearchIcon,
+  Share2Icon,
+  SlidersHorizontalIcon,
   SparklesIcon,
   SquareIcon,
   Trash2Icon,
+  TrendingUpIcon,
   VideoIcon,
   XIcon,
 } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import { PageBackButton } from "@/components/chat/page-back-button";
@@ -188,10 +196,27 @@ export function getFileIcon(mimeType: string, filename: string) {
 }
 
 export default function LibraryPage() {
+  const router = useRouter();
   const [files, setFiles] = useState<CloudFile[]>([]);
   const [storage, setStorage] = useState<StorageUsage | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+
+  const handleAskAIWithFile = useCallback(
+    (file: CloudFile) => {
+      const prompt = `Voici mon fichier hébergé sur le Stockage Cloud mAI : ${file.original_name} (${file.url}). Analyse son contenu, donne un aperçu clair et réponds à mes questions.`;
+      router.push(`/?query=${encodeURIComponent(prompt)}`);
+    },
+    [router]
+  );
+
+  const handleSummarizeFile = useCallback(
+    (file: CloudFile) => {
+      const prompt = `Fais un résumé structuré, clair et synthétique du document ${file.original_name} (${file.url}) avec les points clés essentiels.`;
+      router.push(`/?query=${encodeURIComponent(prompt)}`);
+    },
+    [router]
+  );
 
   // Épinglage (persistance dans le stockage local)
   const [pinnedIds, setPinnedIds] = useState<string[]>([]);
@@ -622,7 +647,7 @@ export default function LibraryPage() {
     }
   };
 
-  // Compteurs par catégorie
+  // Compteurs et poids par catégorie
   const categoryCounts = useMemo(() => {
     const counts = {
       all: files.length,
@@ -642,98 +667,180 @@ export default function LibraryPage() {
     return counts;
   }, [files, pinnedIds]);
 
+  const categoryBytes = useMemo(() => {
+    const b = {
+      archive: 0,
+      audio: 0,
+      code: 0,
+      document: 0,
+      image: 0,
+      other: 0,
+      video: 0,
+    };
+    files.forEach((f) => {
+      const cat = getFileCategory(f.mime_type, f.original_name);
+      if (cat in b) {
+        b[cat as keyof typeof b] += f.size_bytes;
+      } else {
+        b.other += f.size_bytes;
+      }
+    });
+    return b;
+  }, [files]);
+
   return (
     <div className="flex flex-1 flex-col h-full overflow-y-auto bg-background p-4 sm:p-6 md:p-10 max-w-6xl mx-auto w-full">
-      {/* En-tête de la page */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-border/50">
-        <div className="flex items-start gap-3 min-w-0">
-          <PageBackButton />
-          <div className="min-w-0">
-            <div className="flex items-center gap-2 text-primary font-semibold text-xs tracking-wider uppercase mb-1">
-              <CloudIcon className="size-4" />
-              Stockage Cloud Sécurisé
-            </div>
-            <h1 className="text-2xl truncate md:text-3xl font-bold tracking-tight text-foreground">
-              Stockage de fichiers
-            </h1>
-            <p className="hidden sm:block text-sm text-muted-foreground mt-1">
-              Importez, épinglez et gérez vos documents, médias et codes pour
-              alimenter l'IA.
-            </p>
-          </div>
-        </div>
-
-        <button
-          className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-4 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer shrink-0"
-          onClick={() => fileInputRef.current?.click()}
-        >
-          <CloudUploadIcon className="size-4" />
-          <span>Importer des fichiers</span>
-        </button>
-
-        <input
-          className="hidden"
-          multiple
-          onChange={(e) => handleFilesSelected(e.target.files)}
-          ref={fileInputRef}
-          type="file"
-        />
-      </div>
-
-      {/* Carte Quota & Forfait */}
-      {storage && (
-        <div className="my-6 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md p-5 shadow-sm">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-3">
-            <div className="flex items-center gap-2.5">
-              <span className="text-sm font-semibold text-foreground">
-                Espace utilisé
-              </span>
-              <span className="text-xs px-2.5 py-0.5 rounded-full font-bold uppercase bg-primary/10 text-primary border border-primary/20">
-                Forfait {storage.tier}
-              </span>
-            </div>
-            <div className="text-xs sm:text-sm font-medium text-muted-foreground">
-              <strong className="text-foreground">
-                {formatBytes(storage.bytes_used)}
-              </strong>{" "}
-              sur <strong>{formatBytes(storage.bytes_limit)}</strong> (
-              {storage.percent_used}%) • {storage.files_count}{" "}
-              {storage.files_count > 1 ? "fichiers" : "fichier"}
-            </div>
-          </div>
-
-          {/* Barre de progression */}
-          <div className="h-2.5 w-full rounded-full bg-muted/60 overflow-hidden relative">
-            <div
-              className={`h-full transition-all duration-500 rounded-full ${
-                storage.percent_used > 90
-                  ? "bg-red-500"
-                  : storage.percent_used > 75
-                    ? "bg-amber-500"
-                    : "bg-gradient-to-r from-blue-500 to-indigo-600"
-              }`}
-              style={{ width: `${Math.min(100, storage.percent_used)}%` }}
-            />
-          </div>
-
-          {storage.percent_used >= 90 && (
-            <div className="mt-3 flex items-center justify-between text-xs text-amber-500 bg-amber-500/10 p-2.5 rounded-lg border border-amber-500/20">
-              <div className="flex items-center gap-2">
-                <AlertCircleIcon className="size-4 shrink-0" />
-                <span>Vous approchez de votre limite de stockage.</span>
+      {/* En-tête Studio Cloud & Quota en haut */}
+      <div className="flex flex-col gap-5 pb-6 border-b border-border/50">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="flex items-start gap-3 min-w-0">
+            <PageBackButton />
+            <div className="min-w-0">
+              <div className="flex items-center gap-2 text-primary font-semibold text-xs tracking-wider uppercase mb-1">
+                <span className="flex size-2 rounded-full bg-primary animate-pulse" />
+                <CloudIcon className="size-4" />
+                mAI Cloud Studio
               </div>
-              <Link
-                className="font-semibold underline hover:text-amber-400 shrink-0 flex items-center gap-1"
-                href={MAI_UPGRADE_URL}
-                target="_blank"
-              >
-                Mettre à niveau
-                <ExternalLinkIcon className="size-3" />
-              </Link>
+              <h1 className="text-2xl truncate md:text-3xl font-bold tracking-tight text-foreground">
+                Stockage de fichiers
+              </h1>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+                Importez, prévisualisez et analysez vos documents, médias et codes avec l'IA.
+              </p>
             </div>
-          )}
+          </div>
+
+          <div className="flex items-center gap-2.5 shrink-0 flex-wrap">
+            <button
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-4 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer"
+              onClick={() => fileInputRef.current?.click()}
+            >
+              <CloudUploadIcon className="size-4" />
+              <span>Importer des fichiers</span>
+            </button>
+
+            <Link
+              className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-border/60 bg-muted/30 px-3.5 py-2.5 text-xs font-medium text-foreground transition-all hover:bg-muted active:scale-95"
+              href={MAI_UPGRADE_URL}
+              target="_blank"
+            >
+              <SparklesIcon className="size-3.5 text-amber-400" />
+              <span>Forfaits</span>
+              <ExternalLinkIcon className="size-3 text-muted-foreground" />
+            </Link>
+          </div>
+
+          <input
+            className="hidden"
+            multiple
+            onChange={(e) => handleFilesSelected(e.target.files)}
+            ref={fileInputRef}
+            type="file"
+          />
         </div>
-      )}
+
+        {/* Barre de progression d'usage en haut de l'interface */}
+        {storage && (
+          <div className="rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md p-4 sm:p-5 shadow-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2.5">
+              <div className="flex items-center gap-2.5">
+                <span className="text-xs sm:text-sm font-semibold text-foreground flex items-center gap-1.5">
+                  <TrendingUpIcon className="size-4 text-primary" />
+                  Espace utilisé
+                </span>
+                <span className="text-[11px] px-2.5 py-0.5 rounded-full font-bold uppercase bg-primary/10 text-primary border border-primary/20">
+                  Forfait {storage.tier}
+                </span>
+              </div>
+              <div className="text-xs sm:text-sm font-medium text-muted-foreground">
+                <strong className="text-foreground">
+                  {formatBytes(storage.bytes_used)}
+                </strong>{" "}
+                sur <strong>{formatBytes(storage.bytes_limit)}</strong> (
+                {storage.percent_used}%) •{" "}
+                <span className="text-foreground font-medium">
+                  {storage.files_count}
+                </span>{" "}
+                {storage.files_count > 1 ? "fichiers" : "fichier"}
+              </div>
+            </div>
+
+            {/* Barre de progression globale */}
+            <div className="h-3 w-full rounded-full bg-muted/60 overflow-hidden relative">
+              <div
+                className={`h-full transition-all duration-500 rounded-full ${
+                  storage.percent_used > 90
+                    ? "bg-red-500"
+                    : storage.percent_used > 75
+                      ? "bg-amber-500"
+                      : "bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600"
+                }`}
+                style={{ width: `${Math.min(100, Math.max(1, storage.percent_used))}%` }}
+              />
+            </div>
+
+            {/* Répartition visuelle par types de fichiers */}
+            {files.length > 0 && (
+              <div className="mt-3 flex flex-wrap items-center gap-3 pt-2.5 border-t border-border/40 text-[11px] text-muted-foreground">
+                <span className="font-medium text-foreground">Répartition :</span>
+                {categoryBytes.document > 0 && (
+                  <span className="flex items-center gap-1">
+                    <span className="size-2 rounded-full bg-red-500" />
+                    Docs: {formatBytes(categoryBytes.document)}
+                  </span>
+                )}
+                {categoryBytes.image > 0 && (
+                  <span className="flex items-center gap-1">
+                    <span className="size-2 rounded-full bg-blue-500" />
+                    Images: {formatBytes(categoryBytes.image)}
+                  </span>
+                )}
+                {categoryBytes.code > 0 && (
+                  <span className="flex items-center gap-1">
+                    <span className="size-2 rounded-full bg-emerald-500" />
+                    Code: {formatBytes(categoryBytes.code)}
+                  </span>
+                )}
+                {categoryBytes.audio > 0 && (
+                  <span className="flex items-center gap-1">
+                    <span className="size-2 rounded-full bg-pink-500" />
+                    Audio: {formatBytes(categoryBytes.audio)}
+                  </span>
+                )}
+                {categoryBytes.video > 0 && (
+                  <span className="flex items-center gap-1">
+                    <span className="size-2 rounded-full bg-purple-500" />
+                    Vidéos: {formatBytes(categoryBytes.video)}
+                  </span>
+                )}
+                {categoryBytes.archive > 0 && (
+                  <span className="flex items-center gap-1">
+                    <span className="size-2 rounded-full bg-amber-500" />
+                    Archives: {formatBytes(categoryBytes.archive)}
+                  </span>
+                )}
+              </div>
+            )}
+
+            {storage.percent_used >= 90 && (
+              <div className="mt-3 flex items-center justify-between text-xs text-amber-500 bg-amber-500/10 p-2.5 rounded-xl border border-amber-500/20">
+                <div className="flex items-center gap-2">
+                  <AlertCircleIcon className="size-4 shrink-0" />
+                  <span>Vous approchez de votre limite de stockage Cloud.</span>
+                </div>
+                <Link
+                  className="font-semibold underline hover:text-amber-400 shrink-0 flex items-center gap-1"
+                  href={MAI_UPGRADE_URL}
+                  target="_blank"
+                >
+                  Mettre à niveau
+                  <ExternalLinkIcon className="size-3" />
+                </Link>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
 
       {/* Zone de Drag & Drop */}
       <div
@@ -1115,6 +1222,15 @@ export default function LibraryPage() {
 
                         <td className="py-3 px-4 text-right whitespace-nowrap">
                           <div className="flex items-center justify-end gap-1">
+                            {/* Analyser avec l'IA */}
+                            <button
+                              className="p-1.5 rounded-lg text-primary hover:bg-primary/10 transition-colors cursor-pointer"
+                              onClick={() => handleAskAIWithFile(file)}
+                              title="Analyser avec l'IA"
+                            >
+                              <SparklesIcon className="size-3.5" />
+                            </button>
+
                             {/* Épingler */}
                             <button
                               className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
@@ -1272,6 +1388,14 @@ export default function LibraryPage() {
 
                     <div className="flex items-center gap-1">
                       <button
+                        className="p-1.5 rounded-lg text-primary hover:bg-primary/10 transition-colors cursor-pointer"
+                        onClick={() => handleAskAIWithFile(file)}
+                        title="Analyser avec l'IA"
+                      >
+                        <SparklesIcon className="size-3.5" />
+                      </button>
+
+                      <button
                         className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
                         onClick={() => copyFileLink(file.url)}
                         title="Copier le lien"
@@ -1420,27 +1544,53 @@ export default function LibraryPage() {
             )}
           </div>
 
-          <DialogFooter className="flex-row justify-between sm:justify-between items-center">
-            <Button
-              className="gap-1.5 text-xs"
-              onClick={() => previewFile && copyFileLink(previewFile.url)}
-              size="sm"
-              type="button"
-              variant="outline"
-            >
-              <CopyIcon className="size-3.5" />
-              Copier le lien
-            </Button>
+          <DialogFooter className="flex-col sm:flex-row justify-between gap-2.5 items-stretch sm:items-center pt-2 border-t border-border/40">
+            <div className="flex items-center gap-2 flex-wrap">
+              <Button
+                className="gap-1.5 text-xs rounded-xl"
+                onClick={() => previewFile && handleAskAIWithFile(previewFile)}
+                size="sm"
+                type="button"
+                variant="default"
+              >
+                <BotIcon className="size-3.5" />
+                Discuter avec ce fichier
+              </Button>
 
-            <a
-              className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-2 rounded-lg bg-foreground text-background hover:opacity-90 transition-opacity"
-              href={previewFile?.url}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <DownloadIcon className="size-3.5" />
-              Ouvrir / Télécharger
-            </a>
+              <Button
+                className="gap-1.5 text-xs rounded-xl"
+                onClick={() => previewFile && handleSummarizeFile(previewFile)}
+                size="sm"
+                type="button"
+                variant="secondary"
+              >
+                <SparklesIcon className="size-3.5 text-amber-400" />
+                Résumé IA
+              </Button>
+            </div>
+
+            <div className="flex items-center gap-2 justify-end">
+              <Button
+                className="gap-1.5 text-xs rounded-xl"
+                onClick={() => previewFile && copyFileLink(previewFile.url)}
+                size="sm"
+                type="button"
+                variant="outline"
+              >
+                <CopyIcon className="size-3.5" />
+                Copier lien
+              </Button>
+
+              <a
+                className="inline-flex items-center justify-center gap-1.5 text-xs font-medium px-3 py-2 rounded-xl bg-foreground text-background hover:opacity-90 transition-opacity"
+                href={previewFile?.url}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <DownloadIcon className="size-3.5" />
+                Ouvrir
+              </a>
+            </div>
           </DialogFooter>
         </DialogContent>
       </Dialog>

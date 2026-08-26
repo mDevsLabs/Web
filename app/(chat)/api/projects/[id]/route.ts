@@ -15,6 +15,7 @@ const patchSchema = z.object({
     .nullable()
     .optional(),
   customInstructions: z.string().max(4000).nullable().optional(),
+  defaultModel: z.string().max(100).nullable().optional(),
   description: z.string().max(500).optional(),
   icon: z.string().max(10).optional(),
   isArchived: z.boolean().optional(),
@@ -74,6 +75,7 @@ export async function PATCH(
     const updated = await updateProject({
       color: parsed.color ?? undefined,
       customInstructions: parsed.customInstructions ?? undefined,
+      defaultModel: parsed.defaultModel ?? undefined,
       description: parsed.description?.trim(),
       icon: parsed.icon,
       id,

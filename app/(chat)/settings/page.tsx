@@ -10,6 +10,7 @@ import {
   ImageIcon,
   KeyRoundIcon,
   Loader2Icon,
+  SettingsIcon,
   ShieldCheckIcon,
   SparklesIcon,
   UserIcon,
@@ -506,10 +507,15 @@ export default function SettingsPage() {
         <div className="flex items-start gap-3">
           <PageBackButton />
           <div className="min-w-0">
+            <div className="flex items-center gap-2 text-primary font-semibold text-xs tracking-wider uppercase mb-1">
+              <span className="flex size-2 rounded-full bg-primary animate-pulse" />
+              <SettingsIcon className="size-4" />
+              mAI Account & Preferences
+            </div>
             <h1 className="text-2xl truncate md:text-3xl font-bold tracking-tight text-foreground">
               Paramètres du compte
             </h1>
-            <p className="hidden text-sm text-muted-foreground mt-1 sm:block">
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
               Gérez votre profil, vos informations personnelles et visualisez
               votre consommation IA.
             </p>

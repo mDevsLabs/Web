@@ -13,6 +13,7 @@ const createSchema = z.object({
     .regex(/^#[0-9a-fA-F]{6}$/)
     .optional(),
   customInstructions: z.string().max(4000).optional(),
+  defaultModel: z.string().max(100).optional(),
   description: z.string().max(500).optional(),
   icon: z.string().max(10).optional(),
   name: z.string().min(1).max(100),
@@ -74,6 +75,7 @@ export async function POST(request: Request) {
     const project = await createProject({
       color: parsed.color,
       customInstructions: parsed.customInstructions?.trim(),
+      defaultModel: parsed.defaultModel?.trim(),
       description: parsed.description?.trim(),
       icon: parsed.icon,
       name: parsed.name.trim(),

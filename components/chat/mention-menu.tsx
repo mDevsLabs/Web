@@ -186,15 +186,15 @@ export function MentionMenu({
 
   return (
     <div
-      className="absolute bottom-full left-0 right-0 z-50 mb-2 overflow-hidden rounded-xl border border-border/50 bg-card/95 shadow-[var(--shadow-float)] backdrop-blur-xl"
+      className="absolute bottom-full left-0 right-0 z-50 mb-3 overflow-hidden rounded-2xl border border-border/80 bg-popover text-popover-foreground shadow-2xl ring-1 ring-black/10 dark:ring-white/10"
       ref={menuRef}
     >
       <div className="max-h-72 overflow-y-auto pb-1 no-scrollbar">
         {/* Section Projets */}
-        <div className="px-4 py-2 text-[10px] font-medium uppercase tracking-wider text-muted-foreground/40 flex items-center justify-between">
-          <span>Projets</span>
+        <div className="px-4 py-2.5 bg-muted/40 border-b border-border/40 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground flex items-center justify-between">
+          <span>Projets (@)</span>
           {isLoadingProjects ? (
-            <span className="text-[10px] normal-case tracking-normal">
+            <span className="text-[10px] normal-case tracking-normal font-normal">
               Chargement…
             </span>
           ) : null}
@@ -202,7 +202,7 @@ export function MentionMenu({
         {showNoProject ? (
           <div className="px-4 py-3 flex flex-col gap-2">
             <span className="text-[13px] text-muted-foreground">
-              Aucuns projets crées.
+              Aucuns projets créés.
             </span>
             <Link
               className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline w-fit"
@@ -213,7 +213,7 @@ export function MentionMenu({
             </Link>
           </div>
         ) : projectItems.length === 0 ? (
-          <div className="px-4 py-2 text-[12px] text-muted-foreground/50">
+          <div className="px-4 py-2.5 text-[12px] text-muted-foreground/60">
             Aucun projet correspondant à “{query}”
           </div>
         ) : (
@@ -231,11 +231,11 @@ export function MentionMenu({
         )}
 
         {/* Section Modes */}
-        <div className="px-4 py-2 mt-1 border-t border-border/30 text-[10px] font-medium uppercase tracking-wider text-muted-foreground/40">
+        <div className="px-4 py-2.5 mt-1 bg-muted/40 border-t border-b border-border/40 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
           Modes IA
         </div>
         {modeItems.length === 0 ? (
-          <div className="px-4 py-2 text-[12px] text-muted-foreground/50">
+          <div className="px-4 py-2.5 text-[12px] text-muted-foreground/60">
             Aucun mode correspondant
           </div>
         ) : (

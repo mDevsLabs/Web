@@ -5,6 +5,7 @@ import {
   ArchiveRestoreIcon,
   Edit2Icon,
   FolderIcon,
+  FolderKanbanIcon,
   LayoutGridIcon,
   ListIcon,
   MoreHorizontalIcon,
@@ -12,6 +13,7 @@ import {
   PinOffIcon,
   PlusIcon,
   SearchIcon,
+  SparklesIcon,
   TagIcon,
   Trash2Icon,
 } from "lucide-react";
@@ -77,6 +79,7 @@ type Project = {
   icon: string;
   color: string;
   customInstructions?: string;
+  defaultModel?: string | null;
   isArchived: boolean;
   createdAt: string;
   updatedAt: string;
@@ -110,6 +113,9 @@ export default function ProjectsPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { resolvedTheme } = useTheme();
+  const { data: modelsData } = useSWR<{ models: any[] }>("/api/models", fetcher);
+  const availableModels: any[] = modelsData?.models || [];
+
   const [viewMode, setViewMode] = useState<"grid" | "list">(
     (searchParams.get("view") as "grid" | "list") || "grid"
   );
@@ -132,6 +138,7 @@ export default function ProjectsPage() {
   const [newIcon, setNewIcon] = useState("folder");
   const [newColor, setNewColor] = useState("#6366f1");
   const [newInstructions, setNewInstructions] = useState("");
+  const [newDefaultModel, setNewDefaultModel] = useState("");
   const [selectedChatIds, setSelectedChatIds] = useState<Set<string>>(
     new Set()
   );
@@ -243,6 +250,7 @@ export default function ProjectsPage() {
       body: JSON.stringify({
         color: newColor,
         customInstructions: newInstructions.trim() || undefined,
+        defaultModel: newDefaultModel.trim() || undefined,
         description: newDesc.trim(),
         icon: newIcon,
         name: newName.trim(),
@@ -260,6 +268,7 @@ export default function ProjectsPage() {
     setNewName("");
     setNewDesc("");
     setNewInstructions("");
+    setNewDefaultModel("");
     mutateProjects();
   };
 
@@ -271,6 +280,7 @@ export default function ProjectsPage() {
       body: JSON.stringify({
         color: newColor,
         customInstructions: newInstructions.trim() || null,
+        defaultModel: newDefaultModel.trim() || null,
         description: newDesc.trim(),
         icon: newIcon,
         name: newName.trim(),
@@ -571,21 +581,26 @@ export default function ProjectsPage() {
   }, [selectedChatIds]);
 
   return (
-    <div className="flex flex-col gap-6 p-4 sm:p-6 max-w-7xl mx-auto w-full">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div className="flex flex-1 flex-col h-full overflow-y-auto bg-background p-4 sm:p-6 md:p-10 max-w-7xl mx-auto w-full gap-6">
+      {/* En-tête Studio Projets */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-border/50">
         <div className="flex items-start gap-3 min-w-0">
           <PageBackButton />
           <div className="min-w-0">
-            <h1 className="text-2xl truncate font-bold tracking-tight">
-              Projets & Dossiers
+            <div className="flex items-center gap-2 text-primary font-semibold text-xs tracking-wider uppercase mb-1">
+              <span className="flex size-2 rounded-full bg-primary animate-pulse" />
+              <FolderKanbanIcon className="size-4" />
+              mAI Projects Workspace
+            </div>
+            <h1 className="text-2xl truncate md:text-3xl font-bold tracking-tight text-foreground">
+              Projets & Espaces de travail
             </h1>
-            <p className="hidden sm:block text-sm text-muted-foreground">
-              Organisez et classez vos discussions par thématique.
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+              Organisez vos discussions par thématique et configurez des instructions dédiées.
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-2 flex-wrap shrink-0">
           <div className="relative">
             <SearchIcon className="absolute left-2.5 top-2.5 size-4 text-muted-foreground" />
             <Input
@@ -749,6 +764,7 @@ export default function ProjectsPage() {
                         setNewIcon(p.icon || "folder");
                         setNewColor(p.color);
                         setNewInstructions(p.customInstructions || "");
+                        setNewDefaultModel(p.defaultModel || "");
                       }}
                     >
                       <Edit2Icon className="size-3.5 mr-2" /> Modifier
@@ -780,10 +796,16 @@ export default function ProjectsPage() {
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
-              <div className="mt-3 flex items-center gap-2 relative z-10">
+              <div className="mt-3 flex flex-wrap items-center gap-2 relative z-10">
                 <Badge className="text-xs" variant="secondary">
                   {p.chatCount ?? 0} discussions
                 </Badge>
+                {p.defaultModel && (
+                  <Badge className="text-[11px] bg-primary/10 text-primary border-primary/20 gap-1 font-normal" variant="secondary">
+                    <SparklesIcon className="size-3 text-amber-500" />
+                    {availableModels.find((m) => m.id === p.defaultModel)?.name || p.defaultModel}
+                  </Badge>
+                )}
                 {p.isArchived && (
                   <Badge className="text-xs" variant="outline">
                     Archivé
@@ -1004,6 +1026,24 @@ export default function ProjectsPage() {
                 créées dans ce dossier.
               </span>
             </div>
+            <div className="grid gap-2">
+              <Label>Modèle d'IA par défaut (optionnel)</Label>
+              <select
+                className="w-full rounded-md border border-input bg-background p-2 text-xs text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                onChange={(e) => setNewDefaultModel(e.target.value)}
+                value={newDefaultModel}
+              >
+                <option value="">Par défaut / Automatique</option>
+                {availableModels.map((m) => (
+                  <option key={m.id} value={m.id}>
+                    {m.name || m.id} ({m.id})
+                  </option>
+                ))}
+              </select>
+              <span className="text-[11px] text-muted-foreground">
+                Modèle utilisé par défaut pour chaque nouvelle discussion lancée dans ce projet.
+              </span>
+            </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="grid gap-2">
                 <Label>Icône</Label>
@@ -1088,6 +1128,24 @@ export default function ProjectsPage() {
               <span className="text-[11px] text-muted-foreground">
                 Injectées automatiquement comme contexte pour les échanges dans
                 ce projet.
+              </span>
+            </div>
+            <div className="grid gap-2">
+              <Label>Modèle d'IA par défaut</Label>
+              <select
+                className="w-full rounded-md border border-input bg-background p-2 text-xs text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                onChange={(e) => setNewDefaultModel(e.target.value)}
+                value={newDefaultModel}
+              >
+                <option value="">Par défaut / Automatique</option>
+                {availableModels.map((m) => (
+                  <option key={m.id} value={m.id}>
+                    {m.name || m.id} ({m.id})
+                  </option>
+                ))}
+              </select>
+              <span className="text-[11px] text-muted-foreground">
+                Modèle utilisé par défaut pour chaque nouvelle discussion lancée dans ce projet.
               </span>
             </div>
             <div className="grid grid-cols-2 gap-4">

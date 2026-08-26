@@ -1,8 +1,8 @@
 "use client";
 
 import {
+  CloudIcon,
   DownloadIcon,
-  FolderArchiveIcon,
   GhostIcon,
   PanelLeftIcon,
   SparklesIcon,
@@ -177,7 +177,7 @@ function PureChatHeader({
           variant="outline"
         >
           <Link href="/library">
-            <FolderArchiveIcon className="size-3.5" />
+            <CloudIcon className="size-3.5" />
             <span>Stockage</span>
           </Link>
         </Button>

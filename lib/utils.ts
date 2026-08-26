@@ -96,19 +96,46 @@ export function getTextFromMessage(message: ChatMessage | UIMessage): string {
     .join('');
 }
 
+export function formatImageSrc(url?: string | null): string {
+  if (!url || typeof url !== "string") {
+    return "";
+  }
+  const clean = url.trim().replace(/^["']|["']$/g, "");
+  if (!clean) {
+    return "";
+  }
+
+  if (
+    clean.startsWith("http://") ||
+    clean.startsWith("https://") ||
+    clean.startsWith("data:") ||
+    clean.startsWith("blob:") ||
+    clean.startsWith("/")
+  ) {
+    return clean;
+  }
+
+  // Base64 detection
+  let mime = "image/png";
+  if (clean.startsWith("/9j/")) {
+    mime = "image/jpeg";
+  } else if (clean.startsWith("R0lGOD")) {
+    mime = "image/gif";
+  } else if (clean.startsWith("UklGR")) {
+    mime = "image/webp";
+  } else if (clean.startsWith("PHN2Zy") || clean.startsWith("PD94bWw")) {
+    mime = "image/svg+xml";
+  }
+
+  return `data:${mime};base64,${clean}`;
+}
+
 export async function downloadImage(url: string, filename = "mai-image.png") {
-  if (typeof window === "undefined") {
+  if (typeof window === "undefined" || !url) {
     return;
   }
+  const src = formatImageSrc(url);
   try {
-    const isBase64 =
-      !url.startsWith("http://") &&
-      !url.startsWith("https://") &&
-      !url.startsWith("data:") &&
-      !url.startsWith("blob:") &&
-      !url.startsWith("/");
-    const src = isBase64 ? `data:image/png;base64,${url}` : url;
-
     if (src.startsWith("data:") || src.startsWith("blob:")) {
       const a = document.createElement("a");
       a.href = src;
@@ -133,13 +160,6 @@ export async function downloadImage(url: string, filename = "mai-image.png") {
     document.body.removeChild(a);
     setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
   } catch {
-    const isBase64 =
-      !url.startsWith("http://") &&
-      !url.startsWith("https://") &&
-      !url.startsWith("data:") &&
-      !url.startsWith("blob:") &&
-      !url.startsWith("/");
-    const src = isBase64 ? `data:image/png;base64,${url}` : url;
     const a = document.createElement("a");
     a.href = src;
     a.target = "_blank";
@@ -152,16 +172,10 @@ export async function downloadImage(url: string, filename = "mai-image.png") {
 }
 
 export async function copyImageToClipboard(content: string): Promise<boolean> {
-  if (typeof window === "undefined") {
+  if (typeof window === "undefined" || !content) {
     return false;
   }
-  const isBase64 =
-    !content.startsWith("http://") &&
-    !content.startsWith("https://") &&
-    !content.startsWith("data:") &&
-    !content.startsWith("blob:") &&
-    !content.startsWith("/");
-  const src = isBase64 ? `data:image/png;base64,${content}` : content;
+  const src = formatImageSrc(content);
 
   return new Promise((resolve) => {
     const img = new Image();

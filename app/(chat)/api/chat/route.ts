@@ -32,6 +32,7 @@ import {
   deleteChatById,
   getChatById,
   getMessagesByChatId,
+  recordTokenUsage,
   saveChat,
   saveMessages,
   updateChatTitleById,
@@ -135,7 +136,30 @@ export async function POST(request: Request) {
 
     await checkIpRateLimit(ipAddress(request), userId);
 
-    const chatModel = selectedChatModel || DEFAULT_CHAT_MODEL;
+    const chat = await getChatById({ id });
+    const effectiveProjectId = (chat as any)?.projectId || projectId;
+    let projectCustomInstructions: string | null = null;
+    let projectDefaultModel: string | null = null;
+
+    if (effectiveProjectId) {
+      try {
+        const { getProjectById } = await import("@/lib/db/queries");
+        const proj = await getProjectById({
+          id: effectiveProjectId,
+          userEmail: maiUser.email,
+          userId,
+        });
+        if (proj?.customInstructions) {
+          projectCustomInstructions = proj.customInstructions;
+        }
+        if (proj?.defaultModel) {
+          projectDefaultModel = proj.defaultModel;
+        }
+      } catch {}
+    }
+
+    const chatModel =
+      selectedChatModel || projectDefaultModel || DEFAULT_CHAT_MODEL;
     const chatModeId =
       selectedChatMode && AI_MODES[selectedChatMode as keyof typeof AI_MODES]
         ? selectedChatMode
@@ -160,7 +184,6 @@ export async function POST(request: Request) {
     // Récupérer la clé API Neon du compte
     const userApiKey = maiUser.id ? await getUserApiKey(maiUser.id) : null;
 
-    const chat = await getChatById({ id });
     let messagesFromDb: DBMessage[] = [];
     let shouldRenameAfterFirst = false;
     let firstUserMessageForTitle: typeof message | null = null;
@@ -309,23 +332,6 @@ export async function POST(request: Request) {
     const chatTempOverride =
       (chat as any)?.temperatureOverride ?? temperatureOverride ?? null;
 
-    // Instructions du projet associé
-    let projectCustomInstructions: string | null = null;
-    const effectiveProjectId = (chat as any)?.projectId || projectId;
-    if (effectiveProjectId) {
-      try {
-        const { getProjectById } = await import("@/lib/db/queries");
-        const proj = await getProjectById({
-          id: effectiveProjectId,
-          userEmail: maiUser.email,
-          userId,
-        });
-        if (proj?.customInstructions) {
-          projectCustomInstructions = proj.customInstructions;
-        }
-      } catch {}
-    }
-
     // Construire le prompt addendum effectif
     const effectiveMode = getAIMode(chatModeOverride);
     let effectiveAddendum = effectiveMode.systemPromptAddendum || "";
@@ -349,7 +355,8 @@ export async function POST(request: Request) {
       : [];
     if (requestedTools.length > 0) {
       const toolLabels: Record<string, string> = {
-        audioGenerate: "audioGenerate (synthèse vocale et génération audio)",
+        audioGenerate:
+          "audioGenerate (synthèse vocale - exécuter immédiatement avec la voix par défaut 'flux-alexis-en' sans demander à l'utilisateur de choisir la voix)",
         codeExecution: "codeExecution (exécution Python/JS navigateur)",
         createDocument: "createDocument (créer artifact)",
         editDocument: "editDocument (éditer artifact)",
@@ -360,7 +367,7 @@ export async function POST(request: Request) {
         webSearch: "webSearch (recherche sur le Web en temps réel)",
       };
       const listed = requestedTools.map((t) => toolLabels[t] || t).join(", ");
-      effectiveAddendum += `\n\n⚠️ OUTILS ACTIVÉS POUR CE MESSAGE — UTILISATION EXTRÊMEMENT RECOMMANDÉE SI PERTINENT : ${listed}. Tu DOIS les utiliser dès que la demande s'y prête, ne les ignore pas. Si plusieurs outils sont activés, choisis le plus pertinent.`;
+      effectiveAddendum += `\n\n⚠️ OUTILS ACTIVÉS POUR CE MESSAGE — UTILISATION EXTRÊMEMENT RECOMMANDÉE SI PERTINENT : ${listed}. Tu DOIS les utiliser dès que la demande s'y prête, ne les ignore pas. Si plusieurs outils sont activés, choisis le plus pertinent. Pour l'audio, ne demande JAMAIS de choix de voix, génère directement avec la voix par défaut.`;
     }
 
     // Température effective: chat override > user default > mode default
@@ -454,9 +461,27 @@ export async function POST(request: Request) {
               (usage as any)?.totalTokens ?? inputTokens + outputTokens;
 
             if (totalTokens > 0) {
+              // 1. Enregistrement direct et persistant en BDD (normal et fantôme)
+              await recordTokenUsage({
+                inputTokens,
+                isGhostMode,
+                model: chatModel,
+                outputTokens,
+                totalTokens,
+                userEmail: maiUser.email,
+                userId,
+              });
+
+              // 2. Notification de l'endpoint API mAI log-usage
               try {
                 await fetch(`${MAI_API_URL}/log-usage`, {
-                  body: JSON.stringify({ tokensUsed: totalTokens }),
+                  body: JSON.stringify({
+                    inputTokens,
+                    isGhostMode,
+                    model: chatModel,
+                    outputTokens,
+                    tokensUsed: totalTokens,
+                  }),
                   headers: {
                     Authorization: `Bearer ${sessionToken}`,
                     "Content-Type": "application/json",
@@ -466,9 +491,16 @@ export async function POST(request: Request) {
               } catch (logErr) {
                 console.error("Erreur décompte log-usage:", logErr);
               }
+
+              // 3. Diffusion en direct au client via le flux
               try {
                 dataStream.write({
-                  data: { tokens: totalTokens, total: totalTokens } as any,
+                  data: {
+                    inputTokens,
+                    outputTokens,
+                    tokens: totalTokens,
+                    total: totalTokens,
+                  } as any,
                   transient: true,
                   type: "data-usage" as any,
                 });

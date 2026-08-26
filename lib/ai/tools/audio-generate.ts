@@ -12,7 +12,7 @@ type AudioGenerateProps = {
 export const audioGenerate = ({ session, dataStream }: AudioGenerateProps) =>
   tool({
     description:
-      "Generate speech or audio via mAI Audio Studio. Use when the user asks to generate, speak, synthesize audio, voice, speech, tts or create sound. Returns audio_url to be played directly.",
+      "Generate speech or audio via mAI Audio Studio immediately with default voice 'flux-alexis-en' without asking the user for voice selection. Use whenever the user asks to speak, synthesize, vocalize audio, voice, speech, tts or create sound. Returns audio_url to be played directly.",
     execute: async ({ text, voice, speed }) => {
       const userId = session.user?.id || session.user?.email || "";
       try {
@@ -24,6 +24,31 @@ export const audioGenerate = ({ session, dataStream }: AudioGenerateProps) =>
             error:
               "Génération audio non disponible sans session valide. Redirige vers /audio.",
           };
+        }
+
+        // Vérification préalable du quota Speech hebdomadaire
+        try {
+          const usageRes = await fetch(`${MAI_API_URL}/v1/audio/usage`, {
+            cache: "no-store",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          if (usageRes.ok) {
+            const usageData = await usageRes.json();
+            const weeklyLimit = Number(usageData.weeklyLimit ?? 0);
+            const tokensUsed = Number(usageData.tokensUsed ?? 0);
+            const estimatedTokens = Math.max(1, Math.ceil(text.length / 3.5));
+            if (weeklyLimit > 0 && (tokensUsed >= weeklyLimit || tokensUsed + estimatedTokens > weeklyLimit)) {
+              return {
+                error: `Votre quota hebdomadaire Speech est atteint (${tokensUsed}/${weeklyLimit} tokens). Mettez à niveau votre forfait pour continuer.`,
+                limit: weeklyLimit,
+                used: tokensUsed,
+              };
+            }
+          }
+        } catch (quotaErr) {
+          console.warn("Avertissement vérification quota tool audio:", quotaErr);
         }
 
         const payload = {
@@ -126,7 +151,7 @@ export const audioGenerate = ({ session, dataStream }: AudioGenerateProps) =>
         .optional()
         .default("flux-alexis-en")
         .describe(
-          "Nom de la voix : flux-alexis-en (Alexis femme), flux-michael-en (Michael homme), flux-stacy-en (Stacy femme), flux-sam-en (Sam homme), flux-asteria-en (Asteria femme), flux-orion-en (Orion homme)"
+          "Nom de la voix (par défaut 'flux-alexis-en'). Ne JAMAIS demander à l'utilisateur de choisir la voix : utiliser directement la voix par défaut sauf s'il a explicitement précisé un nom de voix."
         ),
     }),
   });

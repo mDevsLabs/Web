@@ -34,6 +34,18 @@ export const requestSuggestions = ({
         return { error: "Forbidden" };
       }
 
+      const { getMaiSessionToken, getMaiUser } = await import("@/lib/auth/session");
+      const [token, user] = await Promise.all([
+        getMaiSessionToken(),
+        getMaiUser(),
+      ]);
+
+      if (user && user.limit > 0 && user.tokensUsed >= user.limit) {
+        return {
+          error: "Votre limite hebdomadaire de tokens est atteinte. Impossible de générer des suggestions.",
+        };
+      }
+
       const suggestions: Omit<
         Suggestion,
         "userId" | "createdAt" | "documentCreatedAt"
@@ -42,7 +54,10 @@ export const requestSuggestions = ({
       const { partialOutputStream } = streamText({
         instructions:
           "You are a writing assistant. Given a piece of writing, offer up to 5 suggestions to improve it. Each suggestion must contain full sentences, not just individual words. Describe what changed and why.",
-        model: getLanguageModel(modelId),
+        model: getLanguageModel(modelId, {
+          sessionToken: token,
+          userId: user?.id || session.user?.id,
+        }),
         output: Output.array({
           element: z.object({
             description: z

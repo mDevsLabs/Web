@@ -30,7 +30,7 @@ import useSWR from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { useImagesUsage } from "@/hooks/use-settings";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
-import { cn, downloadImage } from "@/lib/utils";
+import { cn, downloadImage, formatImageSrc } from "@/lib/utils";
 
 interface ImageModel {
   created?: number;
@@ -297,10 +297,16 @@ export default function ImagesPage() {
         throw new Error(errMsg);
       }
 
-      const imageUrl = data?.data?.[0]?.url || data?.image_url;
-      if (!imageUrl) {
+      const rawUrl =
+        data?.data?.[0]?.url ||
+        data?.data?.[0]?.b64_json ||
+        data?.image_url ||
+        data?.generatedImages?.[0]?.image?.uri ||
+        data?.generatedImages?.[0]?.image?.imageBytes;
+      if (!rawUrl) {
         throw new Error("Aucune image retournée par le fournisseur.");
       }
+      const imageUrl = formatImageSrc(rawUrl);
 
       const generated: GeneratedImage = {
         created_at: new Date().toISOString(),
@@ -550,7 +556,7 @@ export default function ImagesPage() {
                         <img
                           alt="Source"
                           className="size-full object-cover"
-                          src={sourceImage}
+                          src={formatImageSrc(sourceImage)}
                         />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -723,7 +729,11 @@ export default function ImagesPage() {
                     <div className="flex items-center gap-1.5">
                       <button
                         className="p-1.5 text-muted-foreground hover:text-foreground rounded-lg border border-border/60 hover:bg-muted/40 transition"
-                        onClick={() => setPreviewImage(currentResult.image_url)}
+                        onClick={() =>
+                          setPreviewImage(
+                            formatImageSrc(currentResult.image_url)
+                          )
+                        }
                         title="Plein écran"
                         type="button"
                       >
@@ -733,7 +743,7 @@ export default function ImagesPage() {
                         className="p-1.5 text-muted-foreground hover:text-foreground rounded-lg border border-border/60 hover:bg-muted/40 transition"
                         onClick={() =>
                           downloadImage(
-                            currentResult.image_url,
+                            formatImageSrc(currentResult.image_url),
                             `mai-image-${Date.now()}.png`
                           )
                         }
@@ -770,12 +780,16 @@ export default function ImagesPage() {
                     <div className="flex flex-col items-center gap-4 w-full">
                       <div
                         className="group relative cursor-pointer overflow-hidden rounded-xl border border-border/80 shadow-lg transition hover:shadow-2xl max-h-[460px]"
-                        onClick={() => setPreviewImage(currentResult.image_url)}
+                        onClick={() =>
+                          setPreviewImage(
+                            formatImageSrc(currentResult.image_url)
+                          )
+                        }
                       >
                         <img
                           alt={currentResult.prompt}
                           className="max-h-[460px] w-auto object-contain rounded-xl transition duration-300 group-hover:scale-[1.01]"
-                          src={currentResult.image_url}
+                          src={formatImageSrc(currentResult.image_url)}
                         />
                         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
                           <span className="flex items-center gap-1.5 rounded-full bg-black/70 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-md">
@@ -820,7 +834,7 @@ export default function ImagesPage() {
                               className="text-primary hover:underline font-semibold flex items-center gap-1"
                               onClick={() =>
                                 handleEditAsSource(
-                                  currentResult.image_url,
+                                  formatImageSrc(currentResult.image_url),
                                   currentResult.prompt
                                 )
                               }
@@ -912,12 +926,14 @@ export default function ImagesPage() {
                   >
                     <div
                       className="relative aspect-square cursor-pointer overflow-hidden bg-black/10"
-                      onClick={() => setPreviewImage(item.image_url)}
+                      onClick={() =>
+                        setPreviewImage(formatImageSrc(item.image_url))
+                      }
                     >
                       <img
                         alt={item.prompt}
                         className="size-full object-cover transition duration-300 group-hover:scale-105"
-                        src={item.image_url}
+                        src={formatImageSrc(item.image_url)}
                       />
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
                         <EyeIcon className="size-6 text-white" />
@@ -940,7 +956,10 @@ export default function ImagesPage() {
                           <button
                             className="p-1.5 text-muted-foreground hover:text-primary transition"
                             onClick={() =>
-                              handleEditAsSource(item.image_url, item.prompt)
+                              handleEditAsSource(
+                                formatImageSrc(item.image_url),
+                                item.prompt
+                              )
                             }
                             title="Utiliser comme source"
                             type="button"
@@ -951,7 +970,7 @@ export default function ImagesPage() {
                             className="p-1.5 text-muted-foreground hover:text-foreground transition"
                             onClick={() =>
                               downloadImage(
-                                item.image_url,
+                                formatImageSrc(item.image_url),
                                 `mai-image-${item.id}.png`
                               )
                             }
@@ -1000,14 +1019,17 @@ export default function ImagesPage() {
             <img
               alt="Prévisualisation plein écran"
               className="max-h-[85vh] max-w-[85vw] object-contain rounded-2xl shadow-2xl border border-white/10"
-              src={previewImage}
+              src={formatImageSrc(previewImage)}
             />
 
             <div className="mt-3 flex flex-wrap items-center justify-center gap-3">
               <button
                 className="inline-flex items-center gap-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white px-4 py-2 text-xs font-semibold backdrop-blur-md transition"
                 onClick={() =>
-                  downloadImage(previewImage, `mai-image-${Date.now()}.png`)
+                  downloadImage(
+                    formatImageSrc(previewImage),
+                    `mai-image-${Date.now()}.png`
+                  )
                 }
                 type="button"
               >
@@ -1016,7 +1038,7 @@ export default function ImagesPage() {
               <button
                 className="inline-flex items-center gap-1.5 rounded-xl bg-primary hover:bg-primary/90 text-white px-4 py-2 text-xs font-semibold transition"
                 onClick={() => {
-                  handleEditAsSource(previewImage);
+                  handleEditAsSource(formatImageSrc(previewImage));
                   setPreviewImage(null);
                 }}
                 type="button"

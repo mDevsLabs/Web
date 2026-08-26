@@ -4,6 +4,7 @@ import { z } from "zod";
 import { getMaiSessionToken } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
 import type { ChatMessage } from "@/lib/types";
+import { formatImageSrc } from "@/lib/utils";
 
 type ImageGenerateProps = {
   session: Session;
@@ -31,13 +32,38 @@ export const imageGenerate = ({ session, dataStream }: ImageGenerateProps) =>
           prompt,
           width: width || 1024,
         };
-        const apiUrl = `${MAI_API_URL}/v1/images/generations`;
         if (!token) {
           return {
             error:
               "Génération d'image non disponible sans session valide. Redirige vers /images.",
           };
         }
+
+        // Vérification préalable du quota journalier disponible
+        try {
+          const usageRes = await fetch(`${MAI_API_URL}/v1/images/usage`, {
+            cache: "no-store",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          if (usageRes.ok) {
+            const usageData = await usageRes.json();
+            const dailyLimit = Number(usageData.dailyLimit ?? 0);
+            const usedToday = Number(usageData.usedToday ?? 0);
+            const remaining = Number(usageData.remaining ?? (dailyLimit - usedToday));
+            if (dailyLimit > 0 && (usedToday >= dailyLimit || remaining <= 0)) {
+              return {
+                error: `Votre quota journalier de génération d'images est épuisé (${usedToday}/${dailyLimit} images). Réinitialisation à minuit UTC.`,
+                limit: dailyLimit,
+                used: usedToday,
+              };
+            }
+          }
+        } catch (quotaErr) {
+          console.warn("Avertissement vérification quota tool image:", quotaErr);
+        }
+        const apiUrl = `${MAI_API_URL}/v1/images/generations`;
         const res = await fetch(apiUrl, {
           body: JSON.stringify(payload),
           headers: {
@@ -55,10 +81,14 @@ export const imageGenerate = ({ session, dataStream }: ImageGenerateProps) =>
             quota: data?.quota,
           };
         }
-        const image_url = data?.data?.[0]?.url || data?.image_url;
-        if (!image_url) {
+        const rawUrl =
+          data?.data?.[0]?.url ||
+          data?.data?.[0]?.b64_json ||
+          data?.image_url;
+        if (!rawUrl) {
           return { error: "Aucune image retournée" };
         }
+        const image_url = formatImageSrc(rawUrl);
 
         // Stream imageDelta for realtime preview
         dataStream.write({

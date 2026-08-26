@@ -20,21 +20,38 @@ export const editDocument = ({ session, dataStream }: EditDocumentProps) =>
         return { error: "Document not found" };
       }
 
-      if (document.userId !== session.user?.id) {
+      const sessionUserId = session.user?.id || (session.user as any)?.email;
+      if (
+        document.userId !== sessionUserId &&
+        document.userId !== session.user?.id &&
+        document.userId !== (session.user as any)?.email
+      ) {
         return { error: "Forbidden" };
       }
 
-      if (!document.content) {
-        return { error: "Document has no content" };
-      }
+      let updated = "";
+      const currentContent = document.content ?? "";
 
-      if (!document.content.includes(old_string)) {
-        return { error: "old_string not found in document" };
+      if (!currentContent) {
+        // Document has no content yet, initialize it directly with new_string
+        updated = new_string;
+      } else if (!old_string || old_string === "" || old_string === currentContent) {
+        updated = new_string;
+      } else if (currentContent.includes(old_string)) {
+        updated = replace_all
+          ? currentContent.replaceAll(old_string, new_string)
+          : currentContent.replace(old_string, new_string);
+      } else {
+        // Try trimming / normalized search
+        const trimmedOld = old_string.trim();
+        if (trimmedOld && currentContent.includes(trimmedOld)) {
+          updated = replace_all
+            ? currentContent.replaceAll(trimmedOld, new_string)
+            : currentContent.replace(trimmedOld, new_string);
+        } else {
+          return { error: "old_string not found in document" };
+        }
       }
-
-      const updated = replace_all
-        ? document.content.replaceAll(old_string, new_string)
-        : document.content.replace(old_string, new_string);
 
       await saveDocument({
         content: updated,
@@ -61,6 +78,12 @@ export const editDocument = ({ session, dataStream }: EditDocumentProps) =>
           data: updated,
           transient: true,
           type: "data-sheetDelta",
+        });
+      } else if (document.kind === "html") {
+        dataStream.write({
+          data: updated,
+          transient: true,
+          type: "data-htmlDelta",
         });
       } else {
         dataStream.write({

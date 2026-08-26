@@ -2,12 +2,14 @@ import {
   Archive as ArchiveIcon,
   ArchiveRestore as ArchiveRestoreIcon,
   Check as CheckIcon,
+  Edit2 as Edit2Icon,
   Folder as FolderIcon,
   Pin as PinIcon,
   PinOff as PinOffIcon,
+  X as XIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { memo, useCallback } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useSWRConfig } from "swr";
 import { unstable_serialize } from "swr/infinite";
@@ -18,6 +20,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuPortal,
+  DropdownMenuSeparator,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
@@ -60,6 +63,13 @@ const PureChatItem = ({
     setOpenMobile(false);
   }, [setOpenMobile]);
 
+  const [isEditing, setIsEditing] = useState(false);
+  const [titleValue, setTitleValue] = useState(chat.title);
+
+  useEffect(() => {
+    setTitleValue(chat.title);
+  }, [chat.title]);
+
   const handleSetPrivate = useCallback(() => {
     setVisibilityType("private");
   }, [setVisibilityType]);
@@ -72,6 +82,28 @@ const PureChatItem = ({
   const handleDelete = useCallback(() => {
     onDelete(chat.id);
   }, [chat.id, onDelete]);
+
+  const handleRename = useCallback(async () => {
+    const trimmed = titleValue.trim();
+    if (!trimmed || trimmed === chat.title) {
+      setIsEditing(false);
+      setTitleValue(chat.title);
+      return;
+    }
+    const res = await fetch(`/api/chats/${chat.id}`, {
+      body: JSON.stringify({ title: trimmed }),
+      headers: { "Content-Type": "application/json" },
+      method: "PATCH",
+    });
+    if (res.ok) {
+      toast.success("Discussion renommée");
+      setIsEditing(false);
+      mutate(unstable_serialize(getChatHistoryPaginationKey));
+      mutate(`/api/chats/${chat.id}`);
+    } else {
+      toast.error("Erreur lors du renommage");
+    }
+  }, [chat.id, chat.title, titleValue, mutate]);
 
   const handleMoveToProject = useCallback(
     async (projectId: string | null) => {
@@ -115,6 +147,51 @@ const PureChatItem = ({
     }
   }, [chat, mutate]);
 
+  if (isEditing) {
+    return (
+      <SidebarMenuItem className="px-1 py-0.5">
+        <div className="flex items-center gap-1 w-full bg-sidebar-accent/50 rounded-md p-1 border border-border/60">
+          <input
+            autoFocus
+            className="h-6 w-full rounded bg-background px-1.5 text-xs text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+            maxLength={100}
+            onChange={(e) => setTitleValue(e.target.value)}
+            onClick={(e) => e.stopPropagation()}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                handleRename();
+              } else if (e.key === "Escape") {
+                setIsEditing(false);
+                setTitleValue(chat.title);
+              }
+            }}
+            value={titleValue}
+          />
+          <button
+            className="p-1 text-emerald-500 hover:bg-background/80 rounded"
+            onClick={handleRename}
+            title="Enregistrer"
+            type="button"
+          >
+            <CheckIcon className="size-3.5" />
+          </button>
+          <button
+            className="p-1 text-muted-foreground hover:bg-background/80 rounded"
+            onClick={() => {
+              setIsEditing(false);
+              setTitleValue(chat.title);
+            }}
+            title="Annuler"
+            type="button"
+          >
+            <XIcon className="size-3.5" />
+          </button>
+        </div>
+      </SidebarMenuItem>
+    );
+  }
+
   return (
     <SidebarMenuItem>
       <SidebarMenuButton
@@ -139,6 +216,17 @@ const PureChatItem = ({
         </DropdownMenuTrigger>
 
         <DropdownMenuContent align="end" side="bottom">
+          <DropdownMenuItem
+            className="cursor-pointer"
+            onClick={() => {
+              setTitleValue(chat.title);
+              setIsEditing(true);
+            }}
+          >
+            <Edit2Icon className="size-4 mr-2" />
+            <span>Renommer</span>
+          </DropdownMenuItem>
+
           <DropdownMenuSub>
             <DropdownMenuSubTrigger className="cursor-pointer">
               <ShareIcon />
@@ -225,6 +313,8 @@ const PureChatItem = ({
             <span>{(chat as any).isArchived ? "Désarchiver" : "Archiver"}</span>
           </DropdownMenuItem>
 
+          <DropdownMenuSeparator />
+
           <DropdownMenuItem onSelect={handleDelete} variant="destructive">
             <TrashIcon />
             <span>Supprimer</span>
@@ -240,6 +330,9 @@ export const ChatItem = memo(PureChatItem, (prevProps, nextProps) => {
     return false;
   }
   if (prevProps.chat.id !== nextProps.chat.id) {
+    return false;
+  }
+  if (prevProps.chat.title !== nextProps.chat.title) {
     return false;
   }
   if ((prevProps.chat as any).projectId !== (nextProps.chat as any).projectId) {

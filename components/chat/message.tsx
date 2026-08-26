@@ -4,7 +4,7 @@ import { useCallback, useState } from "react";
 import { toast } from "sonner";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatMessage } from "@/lib/types";
-import { cn, copyImageToClipboard, downloadImage, sanitizeText } from "@/lib/utils";
+import { cn, copyImageToClipboard, downloadImage, formatImageSrc, sanitizeText } from "@/lib/utils";
 import { MessageContent, MessageResponse } from "../ai-elements/message";
 import { Shimmer } from "../ai-elements/shimmer";
 import {
@@ -96,14 +96,7 @@ function ImageToolResult({
   toolCallId: string;
 }) {
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
-  const url = output.image_url || "";
-  const isFullUrl =
-    url.startsWith("http://") ||
-    url.startsWith("https://") ||
-    url.startsWith("data:") ||
-    url.startsWith("blob:") ||
-    url.startsWith("/");
-  const imageSrc = isFullUrl ? url : `data:image/png;base64,${url}`;
+  const imageSrc = formatImageSrc(output.image_url);
 
   return (
     <div

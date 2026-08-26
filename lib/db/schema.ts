@@ -24,6 +24,7 @@ export const project = pgTable(
     color: varchar("color", { length: 7 }).default("#6366f1"),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     customInstructions: text("customInstructions"),
+    defaultModel: text("defaultModel"),
     description: text("description").default(""),
     icon: text("icon").default("folder"),
     id: uuid("id").primaryKey().notNull().defaultRandom(),

@@ -722,19 +722,75 @@ export function registerAuthRoutes(app: Hono) {
   app.get("/api-keys", async (c) => {
     try {
       const token = extractToken(c.req.raw);
-      if (!token) {
+      let userId = c.get("userId");
+
+      if (token) {
+        try {
+          const payload = await verifyToken(token);
+          userId = (payload.sub as string) || userId;
+        } catch {}
+      }
+
+      const sql = getDb();
+
+      // Résolution du user_id réel via mprojects_api_keys si clé API transmise
+      if (token) {
+        try {
+          const keyRows = await sql`
+            SELECT k.user_id, u.tier, u.email, u.username
+            FROM mprojects_api_keys k
+            LEFT JOIN users u ON k.user_id = u.id::text OR k.user_id = u.username OR k.user_id = u.email
+            WHERE k.api_key = ${token}::text
+            LIMIT 1
+          `;
+          if (keyRows.length > 0) {
+            userId = keyRows[0].user_id;
+          }
+        } catch {}
+      }
+
+      if (!userId) {
         return c.json({ error: "Non authentifié." }, 401);
       }
 
-      const payload = await verifyToken(token);
-      const userId = payload.sub as string;
+      const [uRows, keyRows] = await Promise.all([
+        sql`SELECT tier FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`,
+        sql`
+          SELECT k.*, u.tier as user_tier
+          FROM mprojects_api_keys k
+          LEFT JOIN users u ON k.user_id = u.id::text OR k.user_id = u.username OR k.user_id = u.email
+          WHERE (
+            k.user_id = ${userId}::text 
+            OR k.user_id IN (SELECT id::text FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text)
+            OR k.user_id IN (SELECT email FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text)
+            OR k.user_id IN (SELECT username FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text)
+          )
+          ORDER BY k.created_at DESC
+        `.catch(() => []),
+      ]);
 
-      const sql = getDb();
-      const keys = await sql`
-        SELECT api_key, plan, request_count, created_at, last_used_at 
-        FROM mprojects_api_keys 
-        WHERE user_id = ${userId}::text
-      `;
+      const userTier = uRows[0]?.tier || "Free";
+      const validTiers = ["free", "plus", "pro", "max"];
+
+      const keys = keyRows.map((k: any) => {
+        const rawPlan = String(k.plan || "").trim();
+        const planLower = rawPlan.toLowerCase();
+        const isPlanTier = validTiers.includes(planLower);
+
+        // Nom personnalisé de la clé
+        const keyName = k.name || (isPlanTier ? `Clé ${rawPlan}` : rawPlan) || "Clé API Principale";
+        // Le forfait est strictement le forfait d'abonnement du compte (free, plus, pro, max)
+        const effectivePlan = k.user_tier || userTier || (isPlanTier ? rawPlan : "Plus");
+
+        return {
+          api_key: k.api_key,
+          name: keyName,
+          plan: effectivePlan,
+          request_count: Number(k.request_count || 0),
+          created_at: k.created_at,
+          last_used_at: k.last_used_at,
+        };
+      });
 
       return c.json({ keys, success: true });
     } catch (err: any) {

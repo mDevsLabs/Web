@@ -4,6 +4,8 @@ import type { UseChatHelpers } from "@ai-sdk/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { RotateCwIcon, SparklesIcon } from "lucide-react";
 import { memo, useCallback, useEffect, useState } from "react";
+import { toast } from "sonner";
+import { useSettings } from "@/hooks/use-settings";
 import { suggestions } from "@/lib/constants";
 import type { ChatMessage } from "@/lib/types";
 import { Suggestion } from "../ai-elements/suggestion";
@@ -25,6 +27,10 @@ function getRandomSuggestions(count = 4, exclude: string[] = []): string[] {
 function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
   const [currentSuggestions, setCurrentSuggestions] = useState<string[]>([]);
   const [isRotating, setIsRotating] = useState(false);
+  const { data: costSettings } = useSettings();
+  const costAiUsed = costSettings?.aiUsage?.tokensUsed ?? 0;
+  const costAiLimit = costSettings?.aiUsage?.limit ?? 2_000_000;
+  const isQuotaExhausted = costAiLimit > 0 && costAiUsed >= costAiLimit;
 
   useEffect(() => {
     setCurrentSuggestions(getRandomSuggestions(4));
@@ -38,6 +44,12 @@ function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
 
   const handleSuggestionClick = useCallback(
     (suggestion: string) => {
+      if (isQuotaExhausted) {
+        toast.error(
+          `Votre quota hebdomadaire mAI est atteint (${costAiUsed.toLocaleString()}/${costAiLimit.toLocaleString()} tokens). Mettez à niveau votre forfait pour continuer !`
+        );
+        return;
+      }
       window.history.pushState(
         {},
         "",
@@ -48,7 +60,7 @@ function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
         role: "user",
       });
     },
-    [chatId, sendMessage]
+    [chatId, sendMessage, isQuotaExhausted, costAiUsed, costAiLimit]
   );
 
   const displayedList =

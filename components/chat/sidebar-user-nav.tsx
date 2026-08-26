@@ -2,7 +2,7 @@
 
 import {
   ChevronUp,
-  FolderArchiveIcon,
+  CloudIcon,
   LogOutIcon,
   MoonIcon,
   SettingsIcon,
@@ -135,7 +135,7 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
                 className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[13px] cursor-pointer hover:bg-sidebar-accent"
                 href="/library"
               >
-                <FolderArchiveIcon className="size-4 text-muted-foreground" />
+                <CloudIcon className="size-4 text-muted-foreground" />
                 <span>Stockage de fichiers</span>
               </Link>
             </DropdownMenuItem>

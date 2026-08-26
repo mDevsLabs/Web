@@ -1,6 +1,6 @@
 import cn from "classnames";
 import { useState } from "react";
-import { downloadImage } from "@/lib/utils";
+import { downloadImage, formatImageSrc } from "@/lib/utils";
 import { DownloadIcon, EyeIcon, LoaderIcon } from "./icons";
 
 type ImageEditorProps = {
@@ -20,13 +20,7 @@ export function ImageEditor({
 }: ImageEditorProps) {
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  const isFullUrl =
-    content?.startsWith("http://") ||
-    content?.startsWith("https://") ||
-    content?.startsWith("data:") ||
-    content?.startsWith("blob:") ||
-    content?.startsWith("/");
-  const imageSrc = isFullUrl ? content : `data:image/png;base64,${content || ""}`;
+  const imageSrc = formatImageSrc(content);
 
   if (status === "streaming" && !content) {
     return (

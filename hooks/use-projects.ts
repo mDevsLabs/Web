@@ -8,6 +8,7 @@ export type ProjectLite = {
   name: string;
   icon: string;
   color: string;
+  defaultModel?: string | null;
   chatCount?: number;
 };
 

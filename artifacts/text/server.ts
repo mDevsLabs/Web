@@ -5,14 +5,17 @@ import { createDocumentHandler } from "@/lib/artifacts/server";
 
 export const textDocumentHandler = createDocumentHandler<"text">({
   kind: "text",
-  onCreateDocument: async ({ title, dataStream, modelId }) => {
+  onCreateDocument: async ({ title, dataStream, modelId, session }) => {
     let draftContent = "";
 
     const { stream } = streamText({
       experimental_transform: smoothStream({ chunking: "word" }),
       instructions:
         "Write about the given topic. Markdown is supported. Use headings wherever appropriate.",
-      model: getLanguageModel(modelId),
+      model: getLanguageModel(modelId, {
+        sessionToken: (session as any)?.token,
+        userId: session?.user?.id,
+      }),
       prompt: title,
     });
 
@@ -29,13 +32,16 @@ export const textDocumentHandler = createDocumentHandler<"text">({
 
     return draftContent;
   },
-  onUpdateDocument: async ({ document, description, dataStream, modelId }) => {
+  onUpdateDocument: async ({ document, description, dataStream, modelId, session }) => {
     let draftContent = "";
 
     const { stream } = streamText({
       experimental_transform: smoothStream({ chunking: "word" }),
       instructions: updateDocumentPrompt(document.content, "text"),
-      model: getLanguageModel(modelId),
+      model: getLanguageModel(modelId, {
+        sessionToken: (session as any)?.token,
+        userId: session?.user?.id,
+      }),
       prompt: description,
     });
 

@@ -2,7 +2,7 @@
 
 import {
   ArrowRightIcon,
-  FolderArchiveIcon,
+  CloudIcon,
   FolderKanbanIcon,
   ImageIcon,
   PanelLeftIcon,
@@ -281,7 +281,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                     tooltip="Stockage"
                   >
                     <Link href="/library" onClick={closeMobile}>
-                      <FolderArchiveIcon className="size-4" />
+                      <CloudIcon className="size-4" />
                       <span>Stockage</span>
                     </Link>
                   </SidebarMenuButton>

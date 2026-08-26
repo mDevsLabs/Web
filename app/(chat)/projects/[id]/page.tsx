@@ -6,6 +6,7 @@ import {
   LightbulbIcon,
   MessageSquareIcon,
   PinIcon,
+  SparklesIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
@@ -38,6 +39,9 @@ export default function ProjectDetailPage() {
   const project = data?.project;
   const recentChats: any[] = data?.recentChats ?? [];
 
+  const { data: modelsData } = useSWR<{ models: any[] }>("/api/models", fetcher);
+  const availableModels: any[] = modelsData?.models || [];
+
   const {
     data: chatsData,
     mutate: mutateChats,
@@ -53,6 +57,7 @@ export default function ProjectDetailPage() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [customInstructions, setCustomInstructions] = useState("");
+  const [defaultModel, setDefaultModel] = useState("");
 
   if (isLoading) {
     return (
@@ -90,6 +95,7 @@ export default function ProjectDetailPage() {
     setName(project.name);
     setDescription(project.description || "");
     setCustomInstructions(project.customInstructions || "");
+    setDefaultModel(project.defaultModel || "");
     setEditOpen(true);
   };
 
@@ -97,6 +103,7 @@ export default function ProjectDetailPage() {
     const res = await fetch(`/api/projects/${id}`, {
       body: JSON.stringify({
         customInstructions: customInstructions.trim() || null,
+        defaultModel: defaultModel.trim() || null,
         description: description.trim(),
         name: name.trim(),
       }),
@@ -158,8 +165,14 @@ export default function ProjectDetailPage() {
                   </span>
                 </div>
               )}
-              <div className="mt-2 flex gap-2">
+              <div className="mt-2 flex flex-wrap gap-2">
                 <Badge variant="secondary">{chats.length} discussions</Badge>
+                {project.defaultModel && (
+                  <Badge className="bg-primary/10 text-primary border-primary/20 gap-1 font-normal" variant="secondary">
+                    <SparklesIcon className="size-3 text-amber-500" />
+                    Modèle IA : {availableModels.find((m) => m.id === project.defaultModel)?.name || project.defaultModel}
+                  </Badge>
+                )}
                 <Badge variant="outline">
                   {project.isArchived ? "Archivé" : "Actif"}
                 </Badge>
@@ -259,6 +272,24 @@ export default function ProjectDetailPage() {
                 rows={3}
                 value={customInstructions}
               />
+            </div>
+            <div className="grid gap-2">
+              <Label>Modèle d'IA par défaut</Label>
+              <select
+                className="w-full rounded-md border border-input bg-background p-2 text-xs text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                onChange={(e) => setDefaultModel(e.target.value)}
+                value={defaultModel}
+              >
+                <option value="">Par défaut / Automatique</option>
+                {availableModels.map((m) => (
+                  <option key={m.id} value={m.id}>
+                    {m.name || m.id} ({m.id})
+                  </option>
+                ))}
+              </select>
+              <span className="text-[11px] text-muted-foreground">
+                Modèle sélectionné par défaut pour les nouvelles discussions de ce projet.
+              </span>
             </div>
           </div>
           <DialogFooter>

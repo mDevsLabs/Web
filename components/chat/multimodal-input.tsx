@@ -303,6 +303,7 @@ function PureMultimodalInput({
   const costAiUsed =
     (costSettings?.aiUsage?.tokensUsed ?? 0) + liveSessionTokens;
   const costAiLimit = costSettings?.aiUsage?.limit ?? 2_000_000;
+  const isQuotaExhausted = costAiLimit > 0 && costAiUsed >= costAiLimit;
   const costPercent =
     costAiLimit > 0
       ? Math.min(100, Math.round((costAiUsed / costAiLimit) * 100))
@@ -310,7 +311,7 @@ function PureMultimodalInput({
   useEffect(() => {
     if (costPercent >= 90 && costAiLimit > 0) {
       toast.error(
-        `Tu as utilisé ${costPercent}% de ton quota mAI (${costAiUsed}/${costAiLimit} tokens) — mise à niveau recommandée.`
+        `Tu as utilisé ${costPercent}% de ton quota mAI (${costAiUsed.toLocaleString()}/${costAiLimit.toLocaleString()} tokens) — mise à niveau recommandée.`
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -633,6 +634,13 @@ function PureMultimodalInput({
   );
 
   const submitForm = useCallback(() => {
+    if (isQuotaExhausted) {
+      toast.error(
+        `Votre quota hebdomadaire mAI est atteint (${costAiUsed.toLocaleString()}/${costAiLimit.toLocaleString()} tokens). Mettez à niveau votre forfait sur https://mai-devs.vercel.app pour continuer !`
+      );
+      return;
+    }
+
     if (attachments.length > 0 && !hasVisionSupport && hasStrictCaps) {
       toast.error(
         "Ce modèle ne prend pas en charge les fichiers. Retirez les pièces jointes ou changez de modèle."
@@ -672,6 +680,9 @@ function PureMultimodalInput({
       textareaRef.current?.focus();
     }
   }, [
+    isQuotaExhausted,
+    costAiUsed,
+    costAiLimit,
     input,
     setInput,
     attachments,
@@ -1275,16 +1286,24 @@ function PureMultimodalInput({
             <PromptInputSubmit
               className={cn(
                 "h-8 w-8 rounded-full transition-all duration-200",
-                input.trim() || attachments.length > 0
-                  ? "bg-foreground text-background hover:opacity-85 active:scale-95"
-                  : "bg-muted text-muted-foreground/25 cursor-not-allowed"
+                isQuotaExhausted
+                  ? "bg-destructive/20 text-destructive cursor-not-allowed opacity-70"
+                  : input.trim() || attachments.length > 0
+                    ? "bg-foreground text-background hover:opacity-85 active:scale-95"
+                    : "bg-muted text-muted-foreground/25 cursor-not-allowed"
               )}
               data-testid="send-button"
               disabled={
                 (!input.trim() && attachments.length === 0) ||
-                uploadQueue.length > 0
+                uploadQueue.length > 0 ||
+                isQuotaExhausted
               }
               status={status}
+              title={
+                isQuotaExhausted
+                  ? "Quota hebdomadaire mAI atteint"
+                  : "Envoyer le message"
+              }
               variant="secondary"
             >
               <ArrowUpIcon className="size-4" />

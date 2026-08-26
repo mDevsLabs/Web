@@ -25,7 +25,9 @@ export async function GET(request: Request) {
   if (!maiUser) {
     return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
   }
-  const userId = maiUser.id || maiUser.email;
+  const userIds = Array.from(
+    new Set([maiUser.id, maiUser.email, maiUser.username].filter(Boolean))
+  ) as string[];
 
   try {
     const db = getDb();
@@ -36,7 +38,7 @@ export async function GET(request: Request) {
       .from(chat)
       .where(
         and(
-          sql`${chat.userId}::text = ${userId}::text`,
+          sql`${chat.userId}::text = ANY(${userIds})`,
           ilike(chat.title, escaped)
         )
       )
@@ -49,7 +51,7 @@ export async function GET(request: Request) {
       .from(project)
       .where(
         and(
-          sql`${project.userId}::text = ${userId}::text`,
+          sql`${project.userId}::text = ANY(${userIds})`,
           or(ilike(project.name, escaped), ilike(project.description, escaped))
         )
       )
@@ -70,7 +72,7 @@ export async function GET(request: Request) {
       .innerJoin(chat, sql`${message.chatId}::text = ${chat.id}::text`)
       .where(
         and(
-          sql`${chat.userId}::text = ${userId}::text`,
+          sql`${chat.userId}::text = ANY(${userIds})`,
           sql`${message.parts}::text ILIKE ${escaped}`
         )
       )
