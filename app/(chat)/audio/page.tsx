@@ -326,31 +326,28 @@ export default function AudioPage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground">
-      {/* En-tête de page */}
-      <header className="sticky top-0 z-30 flex flex-wrap items-center gap-x-3 gap-y-2 justify-between border-b border-border/60 bg-background/80 px-4 py-3 backdrop-blur-md sm:px-6 sm:py-4">
-        <div className="flex min-w-0 items-center gap-3">
+    <div className="flex flex-1 flex-col h-full overflow-y-auto bg-background p-4 sm:p-6 md:p-10 max-w-7xl mx-auto w-full gap-6">
+      {/* En-tête de la page */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-border/50">
+        <div className="flex items-start gap-3 min-w-0">
           <PageBackButton />
-          <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500/20 via-teal-500/20 to-cyan-500/20 text-emerald-400 ring-1 ring-emerald-500/25 shadow-sm">
-            <Volume2Icon className="size-5 text-emerald-400" />
-          </div>
           <div className="min-w-0">
-            <div className="flex items-center gap-2">
-              <h1 className="text-base truncate font-bold tracking-tight text-foreground sm:text-lg">
-                Audio & Voix mAI
-              </h1>
-              <span className="hidden rounded-full border border-emerald-500/30 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 px-2 py-0.5 text-[10px] font-semibold text-emerald-400 md:inline">
-                Synthèse Vocale & Sons
-              </span>
+            <div className="flex items-center gap-2 text-emerald-500 font-semibold text-xs tracking-wider uppercase mb-1">
+              <span className="flex size-2 rounded-full bg-emerald-500 animate-pulse" />
+              <Volume2Icon className="size-4" />
+              Synthèse Vocale & Sons
             </div>
-            <p className="hidden text-xs text-muted-foreground sm:block">
+            <h1 className="text-2xl truncate md:text-3xl font-bold tracking-tight text-foreground">
+              Audio & Voix mAI
+            </h1>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
               Transformez vos textes en voix naturelles et expressives avec l'IA haute fidélité
             </p>
           </div>
         </div>
 
         {/* Badge Quota & Liens */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 shrink-0 flex-wrap">
           <div className="flex items-center gap-2 rounded-xl border border-border/60 bg-card/60 px-3 py-1.5 backdrop-blur-sm">
             <SparklesIcon className="size-4 text-emerald-400" />
             <div className="text-xs">
@@ -374,7 +371,7 @@ export default function AudioPage() {
             </Link>
           )}
         </div>
-      </header>
+      </div>
 
       {/* Onglets Navigation (Créer / Galerie) */}
       <div className="border-b border-border/40 bg-muted/20 px-4 py-2 sm:px-6">
@@ -455,48 +452,6 @@ export default function AudioPage() {
                     )}
                   </div>
                 )}
-              </div>
-
-              {/* Carte Sélection de Voix */}
-              <div className="rounded-2xl border border-border/60 bg-card/60 p-5 shadow-sm backdrop-blur-md flex flex-col gap-3">
-                <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
-                  <MicIcon className="size-3.5 text-teal-400" />
-                  <span>Choix de la voix ({voices.length})</span>
-                </label>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {voices.map((v) => {
-                    const isSelected = selectedVoice === v.id;
-                    return (
-                      <button
-                        className={cn(
-                          "flex flex-col text-left p-3 rounded-xl border transition-all cursor-pointer",
-                          isSelected
-                            ? "bg-emerald-500/10 border-emerald-500/40 ring-1 ring-emerald-500/30 text-foreground"
-                            : "bg-muted/20 border-border/60 hover:bg-muted/40 hover:border-border text-muted-foreground"
-                        )}
-                        key={v.id}
-                        onClick={() => setSelectedVoice(v.id)}
-                        type="button"
-                      >
-                        <div className="flex items-center justify-between w-full">
-                          <span className="font-bold text-[13px] text-foreground flex items-center gap-1.5">
-                            {v.name}
-                            {isSelected && (
-                              <CheckCircle2Icon className="size-3.5 text-emerald-500" />
-                            )}
-                          </span>
-                          <span className="text-[10px] uppercase font-semibold px-1.5 py-0.2 rounded bg-muted/60 text-muted-foreground">
-                            {v.gender || "Voix"}
-                          </span>
-                        </div>
-                        <span className="text-[11px] text-muted-foreground/80 mt-1 line-clamp-2 leading-tight">
-                          {v.description || v.category}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
               </div>
 
               {/* Carte Texte à transformer & Paramètres */}

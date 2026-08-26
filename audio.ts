@@ -575,7 +575,7 @@ export function registerAudioRoutes(app: Hono) {
 
       // Récupération de la clé OpenRouter
       const keyRows = await sql`
-        SELECT api_key FROM mprojects_api_keys WHERE user_id = ${userId}::text LIMIT 1
+        SELECT api_key FROM mprojects_api_keys WHERE user_id::text = ${userId}::text LIMIT 1
       `.catch(() => []);
       const openRouterApiKey = getOpenRouterApiKey(
         keyRows.length > 0 ? keyRows[0].api_key : null

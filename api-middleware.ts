@@ -42,6 +42,10 @@ export function registerMiddleware(app: Hono) {
       path === "/v1beta/models" ||
       path === "/v1/models/images" ||
       path === "/models/images" ||
+      path === "/v1/images/models" ||
+      path === "/images/models" ||
+      path.startsWith("/v1/models/images/") ||
+      path.startsWith("/models/images/") ||
       path === "/v1/models/speech" ||
       path === "/models/speech" ||
       path === "/v1/speech/models" ||
@@ -225,7 +229,7 @@ export function registerMiddleware(app: Hono) {
         await sql`
           UPDATE mprojects_api_keys
           SET request_count = 0
-          WHERE user_id = ${currentUserId}::text
+          WHERE user_id::text = ${currentUserId}::text
             AND last_used_at IS NOT NULL
             AND last_used_at < DATE_TRUNC('month', NOW())
         `;
@@ -236,7 +240,7 @@ export function registerMiddleware(app: Hono) {
         const countRows = await sql`
           SELECT SUM(request_count) as total_requests
           FROM mprojects_api_keys
-          WHERE user_id = ${currentUserId}::text
+          WHERE user_id::text = ${currentUserId}::text
         `;
         const globalRequestCount = countRows[0]?.total_requests || 0;
 
@@ -269,11 +273,13 @@ export function registerMiddleware(app: Hono) {
           VALUES (${effectiveKeyToLog}::text, ${endpoint}::text, ${method}::text, ${status}::integer, ${latency}::integer)
         `;
 
-        await sql`
-          UPDATE mprojects_api_keys
-          SET request_count = request_count + 1, last_used_at = NOW()
-          WHERE api_key = ${effectiveKeyToLog}::text
-        `;
+        if (status === 200) {
+          await sql`
+            UPDATE mprojects_api_keys
+            SET request_count = request_count + 1, last_used_at = NOW()
+            WHERE api_key = ${effectiveKeyToLog}::text
+          `;
+        }
       } catch (err) {
         console.error("Erreur logging API & mise à jour quota:", err);
       }

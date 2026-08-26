@@ -8,10 +8,34 @@ import {
 } from "./config.ts";
 
 export interface ImageModelItem {
+  capabilities?: {
+    image_to_image?: boolean;
+    inpainting?: boolean;
+    text_to_image?: boolean;
+  };
   created: number;
   description: string;
+  features: string[];
   id: string;
   name: string;
+  object: "model";
+  owned_by: string;
+  parent?: string | null;
+  permission?: Array<{
+    allow_create_engine: boolean;
+    allow_fine_tuning: boolean;
+    allow_logprobs: boolean;
+    allow_sampling: boolean;
+    allow_search_indices: boolean;
+    allow_view: boolean;
+    created: number;
+    group: string | null;
+    id: string;
+    is_blocking: boolean;
+    object: "model_permission";
+    organization: string;
+  }>;
+  root?: string;
 }
 
 export function getCometApiKey(): string {
@@ -58,163 +82,483 @@ export function normalizeImageSrc(url?: string | null): string {
 }
 
 /**
- * Modèles de repli d'image de haute qualité
+ * Cache mémoire pour les modèles CometAPI (TTL = 60 secondes)
  */
-const FALLBACK_IMAGE_MODELS = [
+let cachedCometImageModels: ImageModelItem[] = [];
+let lastCometFetchTime = 0;
+const CACHE_TTL_MS = 60_000;
+
+/**
+ * Modèles de repli de haute qualité en cas de défaillance réseau temporaire de CometAPI
+ */
+const FALLBACK_IMAGE_MODELS: ImageModelItem[] = [
   {
-    created: Math.floor(Date.now() / 1000) - 86_400 * 30,
+    capabilities: { image_to_image: false, inpainting: false, text_to_image: true },
+    created: 1722470400,
     description:
       "Modèle de génération d'images ultra-rapide en 4 étapes par Black Forest Labs (Text-to-Image).",
     features: ["text-to-image"],
     id: "black-forest-labs/flux-1-schnell",
-    model_type: "image",
     name: "FLUX.1 Schnell",
+    object: "model",
+    owned_by: "black-forest-labs",
   },
   {
-    created: Math.floor(Date.now() / 1000) - 86_400 * 30,
+    capabilities: { image_to_image: true, inpainting: true, text_to_image: true },
+    created: 1722470400,
     description:
-      "Modèle phare de haute précision pour la synthèse d'images photoréalistes et artistiques (Text-to-Image).",
-    features: ["text-to-image"],
+      "Modèle phare de haute précision pour la synthèse d'images photoréalistes et artistiques (Text-to-Image / Image-to-Image).",
+    features: ["text-to-image", "image-to-image"],
     id: "black-forest-labs/flux-1-dev",
-    model_type: "image",
     name: "FLUX.1 Dev",
+    object: "model",
+    owned_by: "black-forest-labs",
   },
   {
-    created: Math.floor(Date.now() / 1000) - 86_400 * 15,
+    capabilities: { image_to_image: false, inpainting: false, text_to_image: true },
+    created: 1727827200,
     description:
       "Le sommet de la qualité visuelle, cohérence typographique et détails avancés par Black Forest Labs.",
     features: ["text-to-image"],
     id: "black-forest-labs/flux-1.1-pro",
-    model_type: "image",
     name: "FLUX 1.1 Pro",
+    object: "model",
+    owned_by: "black-forest-labs",
   },
   {
-    created: Math.floor(Date.now() / 1000) - 86_400 * 20,
+    capabilities: { image_to_image: false, inpainting: false, text_to_image: true },
+    created: 1730419200,
     description:
-      "Modèle de pointe de 8 milliards de paramètres de Stability AI pour une variété stylistique maximale.",
+      "Version Ultra haute résolution (jusqu'à 4K) avec photoréalisme extrême et rendu de peau ultra-détaillé par Black Forest Labs.",
+    features: ["text-to-image"],
+    id: "black-forest-labs/flux-1.1-pro-ultra",
+    name: "FLUX 1.1 Pro Ultra",
+    object: "model",
+    owned_by: "black-forest-labs",
+  },
+  {
+    capabilities: { image_to_image: true, inpainting: true, text_to_image: true },
+    created: 1729641600,
+    description:
+      "Modèle de pointe de 8 milliards de paramètres de Stability AI pour une variété stylistique maximale et une typographie précise.",
     features: ["text-to-image", "image-to-image"],
     id: "stabilityai/stable-diffusion-3.5-large",
-    model_type: "image",
     name: "Stable Diffusion 3.5 Large",
+    object: "model",
+    owned_by: "stabilityai",
   },
   {
-    created: Math.floor(Date.now() / 1000) - 86_400 * 60,
+    capabilities: { image_to_image: false, inpainting: false, text_to_image: true },
+    created: 1729641600,
     description:
-      "Génération stylisée haut de gamme avec esthétique et prompt comprehension avancée.",
+      "Version accélérée en 4 étapes de Stable Diffusion 3.5 Large par Stability AI.",
     features: ["text-to-image"],
+    id: "stabilityai/stable-diffusion-3.5-large-turbo",
+    name: "Stable Diffusion 3.5 Large Turbo",
+    object: "model",
+    owned_by: "stabilityai",
+  },
+  {
+    capabilities: { image_to_image: true, inpainting: true, text_to_image: true },
+    created: 1690848000,
+    description:
+      "Modèle de base SDXL 1.0 haute résolution de Stability AI pour la création artistique et le rendu réaliste.",
+    features: ["text-to-image", "image-to-image"],
+    id: "stabilityai/sdxl",
+    name: "Stable Diffusion XL 1.0",
+    object: "model",
+    owned_by: "stabilityai",
+  },
+  {
+    capabilities: { image_to_image: true, inpainting: true, text_to_image: true },
+    created: 1718064000,
+    description:
+      "Génération stylisée haut de gamme avec esthétique cinématique et compréhension sémantique de pointe.",
+    features: ["text-to-image", "image-to-image"],
     id: "midjourney/v6",
-    model_type: "image",
     name: "Midjourney v6",
+    object: "model",
+    owned_by: "midjourney",
   },
   {
-    created: Math.floor(Date.now() / 1000) - 86_400 * 10,
+    capabilities: { image_to_image: true, inpainting: true, text_to_image: true },
+    created: 1722384000,
     description:
-      "Génération vectorielle et matricielle spécialisée dans les logos, illustrations et design graphique.",
-    features: ["text-to-image"],
+      "Dernière itération du moteur Midjourney v6.1 avec cohérence accrue des mains, textures et détails fins.",
+    features: ["text-to-image", "image-to-image"],
+    id: "midjourney/v6.1",
+    name: "Midjourney v6.1",
+    object: "model",
+    owned_by: "midjourney",
+  },
+  {
+    capabilities: { image_to_image: true, inpainting: false, text_to_image: true },
+    created: 1730419200,
+    description:
+      "Génération vectorielle et matricielle spécialisée dans les logos, icônes, illustrations et design graphique.",
+    features: ["text-to-image", "image-to-image"],
     id: "recraft-ai/recraft-v3",
-    model_type: "image",
     name: "Recraft V3",
+    object: "model",
+    owned_by: "recraft-ai",
+  },
+  {
+    capabilities: { image_to_image: false, inpainting: false, text_to_image: true },
+    created: 1724284800,
+    description:
+      "Modèle phare de rendu de texte dans l'image et composition graphique par Ideogram AI.",
+    features: ["text-to-image"],
+    id: "ideogram-ai/ideogram-v2",
+    name: "Ideogram V2",
+    object: "model",
+    owned_by: "ideogram-ai",
+  },
+  {
+    capabilities: { image_to_image: false, inpainting: false, text_to_image: true },
+    created: 1724284800,
+    description:
+      "Version ultra-rapide d'Ideogram V2 optimisée pour les flux de production en temps réel.",
+    features: ["text-to-image"],
+    id: "ideogram-ai/ideogram-v2-turbo",
+    name: "Ideogram V2 Turbo",
+    object: "model",
+    owned_by: "ideogram-ai",
+  },
+  {
+    capabilities: { image_to_image: false, inpainting: false, text_to_image: true },
+    created: 1698796800,
+    description:
+      "Modèle DALL-E 3 d'OpenAI pour la synthèse d'images haute fidélité avec reformulation automatique des prompts.",
+    features: ["text-to-image"],
+    id: "openai/dall-e-3",
+    name: "DALL-E 3",
+    object: "model",
+    owned_by: "openai",
+  },
+  {
+    capabilities: { image_to_image: true, inpainting: true, text_to_image: true },
+    created: 1667260800,
+    description:
+      "Modèle classique DALL-E 2 d'OpenAI pour la génération et l'édition rapide d'images.",
+    features: ["text-to-image", "image-to-image"],
+    id: "openai/dall-e-2",
+    name: "DALL-E 2",
+    object: "model",
+    owned_by: "openai",
+  },
+  {
+    capabilities: { image_to_image: false, inpainting: false, text_to_image: true },
+    created: 1723680000,
+    description:
+      "Modèle de synthèse photoréaliste et typographique de Google DeepMind Imagen 3.",
+    features: ["text-to-image"],
+    id: "google/imagen-3",
+    name: "Google Imagen 3",
+    object: "model",
+    owned_by: "google",
+  },
+  {
+    capabilities: { image_to_image: false, inpainting: false, text_to_image: true },
+    created: 1730000000,
+    description:
+      "Modèle ultra-rapide de génération photoréaliste par Luma AI.",
+    features: ["text-to-image"],
+    id: "luma/photon",
+    name: "Luma Photon",
+    object: "model",
+    owned_by: "luma",
   },
 ];
 
+/**
+ * Mapper les alias de modèles vers les identifiants CometAPI standard
+ */
+function resolveImageModel(requestedModel: string): string {
+  if (!requestedModel) return "black-forest-labs/flux-1-schnell";
+  const lower = requestedModel.toLowerCase().trim();
+
+  // DALL-E
+  if (lower === "dall-e-3" || lower === "dalle-3" || lower === "dall-e") {
+    return "openai/dall-e-3";
+  }
+  if (lower === "dall-e-2" || lower === "dalle-2") {
+    return "openai/dall-e-2";
+  }
+
+  // Google Imagen
+  if (lower.includes("imagen-3") || lower === "imagen") {
+    return "google/imagen-3";
+  }
+
+  // Midjourney
+  if (lower === "midjourney" || lower === "mj" || lower === "midjourney-v6" || lower === "midjourney/v6") {
+    return "midjourney/v6";
+  }
+  if (lower === "midjourney-v6.1" || lower === "mj-v6.1" || lower === "midjourney/v6.1") {
+    return "midjourney/v6.1";
+  }
+
+  // Flux
+  if (lower === "flux" || lower === "flux-schnell" || lower === "flux-1-schnell" || lower === "black-forest-labs/flux-1-schnell") {
+    return "black-forest-labs/flux-1-schnell";
+  }
+  if (lower === "flux-dev" || lower === "flux-1-dev" || lower === "black-forest-labs/flux-1-dev") {
+    return "black-forest-labs/flux-1-dev";
+  }
+  if (lower === "flux-pro" || lower === "flux-1.1-pro" || lower === "black-forest-labs/flux-1.1-pro") {
+    return "black-forest-labs/flux-1.1-pro";
+  }
+  if (lower === "flux-ultra" || lower === "flux-1.1-pro-ultra" || lower === "black-forest-labs/flux-1.1-pro-ultra") {
+    return "black-forest-labs/flux-1.1-pro-ultra";
+  }
+
+  // Stable Diffusion
+  if (lower === "sd3.5" || lower === "sd-3.5" || lower === "sd-3.5-large" || lower === "stable-diffusion-3.5-large") {
+    return "stabilityai/stable-diffusion-3.5-large";
+  }
+  if (lower === "sd3.5-turbo" || lower === "stable-diffusion-3.5-large-turbo") {
+    return "stabilityai/stable-diffusion-3.5-large-turbo";
+  }
+  if (lower === "sdxl" || lower === "stable-diffusion-xl") {
+    return "stabilityai/sdxl";
+  }
+
+  // Recraft
+  if (lower === "recraft" || lower === "recraft-v3" || lower === "recraft-ai/recraft-v3") {
+    return "recraft-ai/recraft-v3";
+  }
+
+  // Ideogram
+  if (lower === "ideogram" || lower === "ideogram-v2" || lower === "ideogram-ai/ideogram-v2") {
+    return "ideogram-ai/ideogram-v2";
+  }
+  if (lower === "ideogram-turbo" || lower === "ideogram-v2-turbo" || lower === "ideogram-ai/ideogram-v2-turbo") {
+    return "ideogram-ai/ideogram-v2-turbo";
+  }
+
+  // Luma Photon
+  if (lower === "photon" || lower === "luma-photon" || lower === "luma/photon") {
+    return "luma/photon";
+  }
+
+  // Retourner le modèle tel quel si déjà formaté ou spécifique à CometAPI
+  return requestedModel;
+}
+
+/**
+ * Formatage d'un modèle d'image selon le schéma OpenAI Model Specification
+ */
+function formatOpenAiImageModel(m: any): ImageModelItem {
+  const modelId = m.id || "image-model";
+  const org = m.owned_by || modelId.split("/")[0] || "cometapi";
+  const created = Number(m.created) || Math.floor(Date.now() / 1000) - 86_400 * 30;
+  const features =
+    m.features ||
+    m.supported_features ||
+    (modelId.toLowerCase().includes("diffusion") || modelId.toLowerCase().includes("midjourney")
+      ? ["text-to-image", "image-to-image"]
+      : ["text-to-image"]);
+
+  return {
+    capabilities: {
+      image_to_image: features.includes("image-to-image"),
+      inpainting: features.includes("inpainting") || features.includes("image-to-image"),
+      text_to_image: true,
+    },
+    created,
+    description: m.description || `Modèle de génération d'images haute fidélité ${m.name || modelId}.`,
+    features,
+    id: modelId,
+    name: m.name || modelId,
+    object: "model",
+    owned_by: org,
+    parent: null,
+    permission: [
+      {
+        allow_create_engine: false,
+        allow_fine_tuning: false,
+        allow_logprobs: true,
+        allow_sampling: true,
+        allow_search_indices: false,
+        allow_view: true,
+        created,
+        group: null,
+        id: `modelperm-${modelId.replace(/[^a-zA-Z0-9]/g, "-")}`,
+        is_blocking: false,
+        object: "model_permission",
+        organization: "*",
+      },
+    ],
+    root: modelId,
+  };
+}
+
+/**
+ * Récupération dynamique et filtrage en temps réel des modèles d'images depuis CometAPI
+ */
+async function fetchLiveCometImageModels(): Promise<ImageModelItem[]> {
+  const now = Date.now();
+  if (cachedCometImageModels.length > 0 && now - lastCometFetchTime < CACHE_TTL_MS) {
+    return cachedCometImageModels;
+  }
+
+  const cometApiKey = getCometApiKey();
+  if (!cometApiKey) {
+    return FALLBACK_IMAGE_MODELS;
+  }
+
+  try {
+    const res = await fetch("https://api.cometapi.com/v1/models", {
+      headers: {
+        Authorization: `Bearer ${cometApiKey}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!res.ok) {
+      console.warn(`[CometAPI] /v1/models réponse non-OK (${res.status})`);
+      return cachedCometImageModels.length > 0 ? cachedCometImageModels : FALLBACK_IMAGE_MODELS;
+    }
+
+    const json = await res.json();
+    const rawModels: any[] = json.data || json.models || [];
+
+    // Filtrage dynamique des modèles d'image
+    const imageModels = rawModels.filter((m: any) => {
+      if (!m || !m.id) return false;
+      const mType = String(
+        m.model_type ||
+        m.type ||
+        m.architecture?.modality ||
+        m.object ||
+        ""
+      ).toLowerCase();
+      const outputModalities = (m.architecture?.output_modalities || []).map((o: string) =>
+        String(o).toLowerCase()
+      );
+      const features = (m.features || m.supported_features || []).map((f: string) =>
+        String(f).toLowerCase()
+      );
+      const idLower = String(m.id).toLowerCase();
+
+      const isImageModality =
+        mType.includes("image") ||
+        outputModalities.includes("image") ||
+        mType.endsWith("->image") ||
+        mType.includes("text->image");
+
+      const hasImageFeature =
+        features.includes("text-to-image") ||
+        features.includes("image-to-image") ||
+        features.includes("inpainting") ||
+        features.includes("image");
+
+      const matchesImageKeyword =
+        idLower.includes("flux") ||
+        idLower.includes("diffusion") ||
+        idLower.includes("dall-e") ||
+        idLower.includes("midjourney") ||
+        idLower.includes("recraft") ||
+        idLower.includes("ideogram") ||
+        idLower.includes("imagen") ||
+        idLower.includes("photon") ||
+        idLower.includes("kling") ||
+        idLower.includes("kolors") ||
+        idLower.includes("sdxl") ||
+        idLower.includes("stable-diffusion") ||
+        idLower.startsWith("sd-") ||
+        idLower.includes("/sd");
+
+      return isImageModality || hasImageFeature || matchesImageKeyword;
+    });
+
+    if (imageModels.length > 0) {
+      const formatted = imageModels.map(formatOpenAiImageModel);
+      cachedCometImageModels = formatted;
+      lastCometFetchTime = now;
+      return formatted;
+    }
+
+    return cachedCometImageModels.length > 0 ? cachedCometImageModels : FALLBACK_IMAGE_MODELS;
+  } catch (err) {
+    console.error("[CometAPI] Erreur de récupération des modèles:", err);
+    return cachedCometImageModels.length > 0 ? cachedCometImageModels : FALLBACK_IMAGE_MODELS;
+  }
+}
+
 export function registerImageRoutes(app: Hono) {
   // ─────────────────────────────────────────────
-  // GET /v1/models/images
+  // GET /v1/models/images, /models/images & /v1/images/models (OpenAI Compatible)
   // ─────────────────────────────────────────────
-  app.get("/v1/models/images", async (c) => {
+  const handleGetImageModels = async (c: any) => {
     const userPlan = c.get("userPlan");
-    const _apiKey = c.get("apiKey");
     const planStr = String(userPlan || "Free")
       .toLowerCase()
       .trim();
     const isPaidPlan = ["plus", "pro", "max"].includes(planStr);
     const shouldFilterFreeOnly = !isPaidPlan;
 
-    const cometApiKey = getCometApiKey();
-
     try {
-      let rawModels: any[] = [];
+      let models = await fetchLiveCometImageModels();
 
-      if (cometApiKey) {
-        const cometRes = await fetch("https://api.cometapi.com/v1/models", {
-          headers: {
-            Authorization: `Bearer ${cometApiKey}`,
-            "Content-Type": "application/json",
-          },
-        });
-
-        if (cometRes.ok) {
-          const json = await cometRes.json();
-          rawModels = json.data || json.models || [];
-        }
-      }
-
-      if (rawModels.length === 0) {
-        rawModels = FALLBACK_IMAGE_MODELS;
-      }
-
-      // 1. Premier filtre : model_type === 'image'
-      let imageModels = rawModels.filter((m) => {
-        const mType = (
-          m.model_type ||
-          m.type ||
-          m.architecture?.modality ||
-          ""
-        ).toLowerCase();
-        const features = (m.features || m.supported_features || []).map(
-          (f: string) => f.toLowerCase()
-        );
-        const isImg =
-          mType.includes("image") ||
-          features.includes("text-to-image") ||
-          features.includes("image-to-image") ||
-          m.id.toLowerCase().includes("flux") ||
-          m.id.toLowerCase().includes("diffusion") ||
-          m.id.toLowerCase().includes("dall-e") ||
-          m.id.toLowerCase().includes("midjourney");
-        return isImg;
-      });
-
-      // 2. Si Free : id contenant 'flux' uniquement (règle stricte)
+      // Si Free : filtrer pour les modèles accessibles gratuitement
       if (shouldFilterFreeOnly) {
-        imageModels = imageModels.filter((m) => {
+        models = models.filter((m) => {
           const idLower = (m.id || "").toLowerCase();
-          return idLower.includes("flux");
+          return idLower.includes("flux") || idLower.includes("schnell") || idLower.includes("free");
         });
       }
 
-      // 3. Renvoyer les données : id, description, name, created et features
-      const formatted = imageModels.map((m) => ({
-        created: m.created || Math.floor(Date.now() / 1000),
-        description:
-          m.description || `Modèle de génération d'images ${m.name || m.id}.`,
-        features:
-          m.features ||
-          m.supported_features ||
-          (m.id?.toLowerCase().includes("diffusion")
-            ? ["text-to-image", "image-to-image"]
-            : ["text-to-image"]),
-        id: m.id,
-        name: m.name || m.id,
-      }));
-
-      return c.json({ data: formatted, object: "list" });
+      return c.json({ data: models, object: "list" });
     } catch (_err) {
-      // Fallback gracieux en cas d'erreur
       let fallback = FALLBACK_IMAGE_MODELS;
       if (shouldFilterFreeOnly) {
         fallback = fallback.filter((m) => m.id.toLowerCase().includes("flux"));
       }
-      const formatted = fallback.map((m) => ({
-        created: m.created,
-        description: m.description,
-        features: m.features || ["text-to-image"],
-        id: m.id,
-        name: m.name,
-      }));
-      return c.json({ data: formatted, object: "list" });
+      return c.json({ data: fallback.map(formatOpenAiImageModel), object: "list" });
     }
-  });
+  };
+
+  app.get("/v1/models/images", handleGetImageModels);
+  app.get("/models/images", handleGetImageModels);
+  app.get("/v1/images/models", handleGetImageModels);
+  app.get("/images/models", handleGetImageModels);
+
+  // ─────────────────────────────────────────────
+  // GET /v1/models/images/:id & /models/images/:id (OpenAI Model Detail)
+  // ─────────────────────────────────────────────
+  const handleGetSingleImageModel = async (c: any) => {
+    const rawId = c.req.param("id") || "";
+    const resolvedId = resolveImageModel(rawId);
+
+    const liveModels = await fetchLiveCometImageModels();
+    const found =
+      liveModels.find(
+        (m) =>
+          m.id.toLowerCase() === rawId.toLowerCase() ||
+          m.id.toLowerCase() === resolvedId.toLowerCase() ||
+          m.name.toLowerCase() === rawId.toLowerCase()
+      ) ||
+      FALLBACK_IMAGE_MODELS.find(
+        (m) =>
+          m.id.toLowerCase() === rawId.toLowerCase() ||
+          m.id.toLowerCase() === resolvedId.toLowerCase() ||
+          m.name.toLowerCase() === rawId.toLowerCase()
+      ) || {
+        created: Math.floor(Date.now() / 1000),
+        description: `Modèle d'image ${rawId}.`,
+        features: ["text-to-image"],
+        id: resolvedId,
+        name: rawId,
+        object: "model" as const,
+        owned_by: resolvedId.split("/")[0] || "cometapi",
+      };
+
+    return c.json(formatOpenAiImageModel(found));
+  };
+
+  app.get("/v1/models/images/:id", handleGetSingleImageModel);
+  app.get("/models/images/:id", handleGetSingleImageModel);
 
   // ─────────────────────────────────────────────
   // GET /v1/images/usage
@@ -230,7 +574,9 @@ export function registerImageRoutes(app: Hono) {
           const payload = await verifyToken(token);
           userId = (payload.sub as string) || userId;
           userPlan = (payload.tier as string) || userPlan;
-        } catch {}
+        } catch {
+          // Token non JWT ignoré
+        }
       }
 
       const sql = getDb();
@@ -249,7 +595,9 @@ export function registerImageRoutes(app: Hono) {
             userId = keyRows[0].user_id;
             userPlan = keyRows[0].tier || userPlan;
           }
-        } catch {}
+        } catch {
+          // Erreur DB ignorée
+        }
       }
 
       if (!userId) {
@@ -275,7 +623,6 @@ export function registerImageRoutes(app: Hono) {
       const usedToday = Number(countRows[0]?.images_generated || 0);
       const dailyLimit = getTierDailyImageLimit(effectiveTier);
 
-      // Calculer la prochaine réinitialisation (minuit UTC)
       const now = new Date();
       const tomorrowMidnight = new Date(
         Date.UTC(
@@ -295,10 +642,11 @@ export function registerImageRoutes(app: Hono) {
         usedToday,
         userId,
       });
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Erreur inconnue";
       return c.json(
         {
-          details: err.message,
+          details: msg,
           error: "Erreur lors de la récupération de l'usage image.",
         },
         500
@@ -318,7 +666,9 @@ export function registerImageRoutes(app: Hono) {
         try {
           const payload = await verifyToken(token);
           userId = payload.sub as string;
-        } catch {}
+        } catch {
+          // Token invalide ignoré
+        }
       }
 
       if (!userId) {
@@ -340,16 +690,17 @@ export function registerImageRoutes(app: Hono) {
       }));
 
       return c.json({ data: formattedHistory, success: true });
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Erreur inconnue";
       return c.json(
-        { details: err.message, error: "Erreur historique images." },
+        { details: msg, error: "Erreur historique images." },
         500
       );
     }
   });
 
   // ─────────────────────────────────────────────
-  // POST /v1/images/generations, /v1beta/models/*:generateImages (OpenAI, Google & Anthropic SDK)
+  // POST /v1/images/generations, /images/generations, /v1/images/edits, /v1/models/*:generateImages (OpenAI & Google SDK)
   // ─────────────────────────────────────────────
   const handleImageGeneration = async (c: any) => {
     try {
@@ -372,12 +723,21 @@ export function registerImageRoutes(app: Hono) {
           const payload = await verifyToken(token);
           userId = payload.sub as string;
           userPlan = (payload.tier as string) || userPlan;
-        } catch {}
+        } catch {
+          // Token non JWT ignoré
+        }
       }
 
       if (!userId) {
         return c.json(
-          { error: "Non authentifié. Clé API ou token requis." },
+          {
+            error: {
+              code: "invalid_api_key",
+              message: "Non authentifié. Clé API ou token requis.",
+              param: null,
+              type: "authentication_error",
+            },
+          },
           401
         );
       }
@@ -397,21 +757,14 @@ export function registerImageRoutes(app: Hono) {
         "";
       const prompt = typeof rawPrompt === "string" ? rawPrompt.trim() : "";
 
-      // Extraction du modèle demandé
+      // Extraction et résolution dynamique du modèle demandé
       const pathModel = reqPath
         .replace(/^\/(v1beta|v1)\/models\//, "")
         .replace(/:(generateImages|predict).*$/, "");
       const requestedModel =
         body.model || pathModel || "black-forest-labs/flux-1-schnell";
 
-      // Mapping des alias OpenAI (ex: dall-e-3, dall-e-2) et Google (imagen-3)
-      let model = requestedModel;
-      if (
-        model.toLowerCase().includes("dall-e") ||
-        model.toLowerCase().includes("imagen")
-      ) {
-        model = "black-forest-labs/flux-1-schnell";
-      }
+      const model = resolveImageModel(requestedModel);
 
       // Résolution des dimensions (support aspectRatio Google et size OpenAI)
       let width = 1024;
@@ -431,6 +784,9 @@ export function registerImageRoutes(app: Hono) {
         } else if (ar === "3:4") {
           width = 768;
           height = 1024;
+        } else if (ar === "21:9") {
+          width = 1536;
+          height = 640;
         }
       } else if (body.size) {
         const parts = String(body.size).split("x");
@@ -444,6 +800,10 @@ export function registerImageRoutes(app: Hono) {
       }
 
       const negativePrompt = body.negative_prompt || "";
+      const n = Math.max(1, Math.min(Number(body.n || body.numberOfImages || 1), 4));
+      const responseFormat = body.response_format || "url";
+      const quality = body.quality || "standard";
+      const style = body.style || "vivid";
 
       if (!prompt) {
         return c.json(
@@ -495,7 +855,7 @@ export function registerImageRoutes(app: Hono) {
         WHERE user_id = ${userId}::text AND usage_date = CURRENT_DATE 
         LIMIT 1
       `;
-      const currentDailyUsage = usageRows[0]?.images_generated || 0;
+      const currentDailyUsage = Number(usageRows[0]?.images_generated || 0);
 
       if (currentDailyUsage >= dailyLimit) {
         return c.json(
@@ -515,39 +875,57 @@ export function registerImageRoutes(app: Hono) {
       // Appel de Comet API
       const cometApiKey = getCometApiKey();
       let generatedImageUrl = "";
-      let cometResultData: any[] = [];
+      let cometResultData: Array<{ b64_json?: string; revised_prompt?: string; url?: string }> = [];
 
       if (cometApiKey) {
-        const imagePayload: Record<string, any> = {
+        const imagePayload: Record<string, unknown> = {
           model,
-          n: body.n || body.numberOfImages || 1,
+          n,
           prompt,
-          response_format: body.response_format || "url",
+          quality,
+          response_format: responseFormat,
           size: `${width}x${height}`,
+          style,
         };
+
+        if (negativePrompt) {
+          imagePayload.negative_prompt = negativePrompt;
+        }
+        if (body.seed !== undefined) {
+          imagePayload.seed = body.seed;
+        }
         if (body.image || body.image_url) {
           imagePayload.image = body.image || body.image_url;
         }
+        if (body.mask) {
+          imagePayload.mask = body.mask;
+        }
 
-        const cometRes = await fetch(
-          "https://api.cometapi.com/v1/images/generations",
-          {
-            body: JSON.stringify(imagePayload),
-            headers: {
-              Authorization: `Bearer ${cometApiKey}`,
-              "Content-Type": "application/json",
-            },
-            method: "POST",
-          }
-        );
+        const isEditRequest = reqPath.includes("/edits") || Boolean(body.image || body.image_url);
+        const endpointUrl = isEditRequest
+          ? "https://api.cometapi.com/v1/images/edits"
+          : "https://api.cometapi.com/v1/images/generations";
+
+        const cometRes = await fetch(endpointUrl, {
+          body: JSON.stringify(imagePayload),
+          headers: {
+            Authorization: `Bearer ${cometApiKey}`,
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+        });
 
         if (!cometRes.ok) {
           const errText = await cometRes.text().catch(() => "");
-          console.error("[CometAPI] Erreur génération:", errText);
+          console.error("[CometAPI] Erreur génération:", cometRes.status, errText);
           return c.json(
             {
-              details: errText,
-              error: "Erreur retournée par le fournisseur Comet API.",
+              error: {
+                code: "upstream_comet_error",
+                details: errText,
+                message: "Erreur retournée par le fournisseur Comet API.",
+                type: "api_error",
+              },
             },
             cometRes.status
           );
@@ -559,18 +937,24 @@ export function registerImageRoutes(app: Hono) {
           const b64 = img.b64_json || "";
           const resolved = normalizeImageSrc(rawUrl || b64);
           return {
-            ...img,
-            b64_json: b64,
+            b64_json: b64 || (responseFormat === "b64_json" && resolved.startsWith("data:") ? resolved.split(",")[1] : undefined),
+            revised_prompt: img.revised_prompt || prompt,
             url: resolved || rawUrl,
           };
         });
+
         if (cometResultData.length > 0) {
           generatedImageUrl = cometResultData[0].url || "";
         }
       } else {
-        // Mode simulation / fallback si la clé Comet n'est pas encore renseignée
+        // Mode simulation / fallback si la clé Comet n'est pas configurée dans l'environnement
         generatedImageUrl = `https://picsum.photos/seed/${encodeURIComponent(prompt.slice(0, 20))}/${width}/${height}`;
-        cometResultData = [{ url: generatedImageUrl }];
+        cometResultData = [
+          {
+            revised_prompt: prompt,
+            url: generatedImageUrl,
+          },
+        ];
       }
 
       // Incrémentation du quota journalier
@@ -610,32 +994,33 @@ export function registerImageRoutes(app: Hono) {
         `;
       }
 
-      // Enregistrement d'usage log dans mprojects_api_logs
+      // Enregistrement du log de requête
       try {
         await sql`
           INSERT INTO mprojects_api_logs (api_key, endpoint, method, status_code, latency_ms, created_at)
           VALUES (${apiKey || "anonymous"}::text, ${reqPath || "/v1/images/generations"}::text, 'POST', 200, 1500, NOW())
         `;
-      } catch {}
+      } catch {
+        // Logging non bloquant
+      }
 
       // Formatage de la réponse selon le SDK appelant (Google GenAI vs OpenAI / Anthropic)
       if (isGoogleFormat) {
         return c.json({
-          generatedImages: cometResultData.map((img: any) => ({
+          generatedImages: cometResultData.map((img) => ({
             image: {
               imageBytes: img.b64_json || "",
-              mimeType: "image/jpeg",
+              mimeType: "image/png",
               uri: img.url || generatedImageUrl,
             },
           })),
         });
       }
 
-      // Format OpenAI par défaut (utilisé par OpenAI SDK & Anthropic proxy)
+      // Format OpenAI Standard par défaut
       return c.json({
         created: Math.floor(Date.now() / 1000),
         data: cometResultData,
-        image_url: generatedImageUrl,
         usage: {
           daily_limit: dailyLimit,
           daily_used: currentDailyUsage + 1,
@@ -644,12 +1029,17 @@ export function registerImageRoutes(app: Hono) {
           requests_counted: requestCost,
         },
       });
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Erreur inconnue";
       console.error("[ImagesAPI] Erreur serveur:", err);
       return c.json(
         {
-          details: err.message,
-          error: "Erreur serveur lors de la génération d'image.",
+          error: {
+            code: "internal_server_error",
+            details: msg,
+            message: "Erreur serveur lors de la génération d'image.",
+            type: "server_error",
+          },
         },
         500
       );

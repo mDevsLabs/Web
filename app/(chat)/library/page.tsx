@@ -757,11 +757,11 @@ export default function LibraryPage() {
                   {formatBytes(storage.bytes_used)}
                 </strong>{" "}
                 sur <strong>{formatBytes(storage.bytes_limit)}</strong> (
-                {storage.percent_used}%) •{" "}
+                {storage.percent_used || 0}%) •{" "}
                 <span className="text-foreground font-medium">
-                  {storage.files_count}
+                  {storage.files_count ?? 0}
                 </span>{" "}
-                {storage.files_count > 1 ? "fichiers" : "fichier"}
+                {(storage.files_count ?? 0) > 1 ? "fichiers" : "fichier"}
               </div>
             </div>
 

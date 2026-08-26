@@ -364,32 +364,28 @@ export default function ImagesPage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground">
-      {/* En-tête de page */}
-      <header className="sticky top-0 z-30 flex flex-wrap items-center gap-x-3 gap-y-2 justify-between border-b border-border/60 bg-background/80 px-4 py-3 backdrop-blur-md sm:px-6 sm:py-4">
-        <div className="flex min-w-0 items-center gap-3">
+    <div className="flex flex-1 flex-col h-full overflow-y-auto bg-background p-4 sm:p-6 md:p-10 max-w-7xl mx-auto w-full gap-6">
+      {/* En-tête de la page */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-border/50">
+        <div className="flex items-start gap-3 min-w-0">
           <PageBackButton />
-          <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 text-primary ring-1 ring-primary/25 shadow-sm">
-            <ImageIcon className="size-5 text-indigo-400" />
-          </div>
           <div className="min-w-0">
-            <div className="flex items-center gap-2">
-              <h1 className="text-base truncate font-bold tracking-tight text-foreground sm:text-lg">
-                Images mAI
-              </h1>
-              <span className="hidden rounded-full border border-indigo-500/30 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 px-2 py-0.5 text-[10px] font-semibold text-indigo-400 md:inline">
-                IA Générative
-              </span>
+            <div className="flex items-center gap-2 text-indigo-500 font-semibold text-xs tracking-wider uppercase mb-1">
+              <span className="flex size-2 rounded-full bg-indigo-500 animate-pulse" />
+              <ImageIcon className="size-4" />
+              IA Générative
             </div>
-            <p className="hidden text-xs text-muted-foreground sm:block">
-              Créez, éditez et explorez des images haute définition avec les
-              modèles Flux & Diffusion
+            <h1 className="text-2xl truncate md:text-3xl font-bold tracking-tight text-foreground">
+              Images mAI
+            </h1>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+              Créez, éditez et explorez des images haute définition avec les modèles Flux & Diffusion
             </p>
           </div>
         </div>
 
         {/* Badge Quota & Liens */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 shrink-0 flex-wrap">
           <div className="flex items-center gap-2 rounded-xl border border-border/60 bg-card/60 px-3 py-1.5 backdrop-blur-sm">
             <SparklesIcon className="size-4 text-amber-400" />
             <div className="text-xs">
@@ -413,7 +409,7 @@ export default function ImagesPage() {
             </Link>
           )}
         </div>
-      </header>
+      </div>
 
       {/* Onglets Navigation (Créer / Galerie) */}
       <div className="border-b border-border/40 bg-muted/20 px-4 py-2 sm:px-6">

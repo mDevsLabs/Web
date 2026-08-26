@@ -474,7 +474,7 @@ export async function POST(request: Request) {
 
               // 2. Notification de l'endpoint API mAI log-usage
               try {
-                await fetch(`${MAI_API_URL}/log-usage`, {
+                const logRes = await fetch(`${MAI_API_URL}/log-usage`, {
                   body: JSON.stringify({
                     inputTokens,
                     isGhostMode,
@@ -488,6 +488,11 @@ export async function POST(request: Request) {
                   },
                   method: "POST",
                 });
+                
+                if (!logRes.ok) {
+                  const errText = await logRes.text();
+                  console.error("[API log-usage] Status:", logRes.status, "Response:", errText);
+                }
               } catch (logErr) {
                 console.error("Erreur décompte log-usage:", logErr);
               }
