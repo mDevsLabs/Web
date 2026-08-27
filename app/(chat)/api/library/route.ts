@@ -160,7 +160,7 @@ export async function PATCH(req: NextRequest) {
       method: "PATCH",
     }).catch(() => null);
 
-    if (res && res.ok) {
+    if (res?.ok) {
       const data = await res.json();
       return NextResponse.json(data);
     }

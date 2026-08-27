@@ -37,9 +37,12 @@ export default function ProjectDetailPage() {
     fetcher
   );
   const project = data?.project;
-  const recentChats: any[] = data?.recentChats ?? [];
+  const _recentChats: any[] = data?.recentChats ?? [];
 
-  const { data: modelsData } = useSWR<{ models: any[] }>("/api/models", fetcher);
+  const { data: modelsData } = useSWR<{ models: any[] }>(
+    "/api/models",
+    fetcher
+  );
   const availableModels: any[] = modelsData?.models || [];
 
   const {
@@ -168,9 +171,14 @@ export default function ProjectDetailPage() {
               <div className="mt-2 flex flex-wrap gap-2">
                 <Badge variant="secondary">{chats.length} discussions</Badge>
                 {project.defaultModel && (
-                  <Badge className="bg-primary/10 text-primary border-primary/20 gap-1 font-normal" variant="secondary">
+                  <Badge
+                    className="bg-primary/10 text-primary border-primary/20 gap-1 font-normal"
+                    variant="secondary"
+                  >
                     <SparklesIcon className="size-3 text-amber-500" />
-                    Modèle IA : {availableModels.find((m) => m.id === project.defaultModel)?.name || project.defaultModel}
+                    Modèle IA :{" "}
+                    {availableModels.find((m) => m.id === project.defaultModel)
+                      ?.name || project.defaultModel}
                   </Badge>
                 )}
                 <Badge variant="outline">
@@ -288,7 +296,8 @@ export default function ProjectDetailPage() {
                 ))}
               </select>
               <span className="text-[11px] text-muted-foreground">
-                Modèle sélectionné par défaut pour les nouvelles discussions de ce projet.
+                Modèle sélectionné par défaut pour les nouvelles discussions de
+                ce projet.
               </span>
             </div>
           </div>

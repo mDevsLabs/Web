@@ -78,7 +78,9 @@ export const imageGenerate = ({ session, dataStream }: ImageGenerateProps) =>
             const usageData = await usageRes.json();
             const dailyLimit = Number(usageData.dailyLimit ?? 0);
             const usedToday = Number(usageData.usedToday ?? 0);
-            const remaining = Number(usageData.remaining ?? (dailyLimit - usedToday));
+            const remaining = Number(
+              usageData.remaining ?? dailyLimit - usedToday
+            );
             if (dailyLimit > 0 && (usedToday >= dailyLimit || remaining <= 0)) {
               return {
                 error: `Votre quota journalier de génération d'images est épuisé (${usedToday}/${dailyLimit} images). Réinitialisation à minuit UTC.`,
@@ -88,7 +90,10 @@ export const imageGenerate = ({ session, dataStream }: ImageGenerateProps) =>
             }
           }
         } catch (quotaErr) {
-          console.warn("Avertissement vérification quota tool image:", quotaErr);
+          console.warn(
+            "Avertissement vérification quota tool image:",
+            quotaErr
+          );
         }
         const apiUrl = `${MAI_API_URL}/v1/images/generations`;
         const res = await fetch(apiUrl, {
@@ -109,9 +114,7 @@ export const imageGenerate = ({ session, dataStream }: ImageGenerateProps) =>
           };
         }
         const rawUrl =
-          data?.data?.[0]?.url ||
-          data?.data?.[0]?.b64_json ||
-          data?.image_url;
+          data?.data?.[0]?.url || data?.data?.[0]?.b64_json || data?.image_url;
         if (!rawUrl) {
           return { error: "Aucune image retournée" };
         }

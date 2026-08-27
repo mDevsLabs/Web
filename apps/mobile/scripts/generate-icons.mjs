@@ -72,7 +72,7 @@ async function trySharp(pngBuffer) {
 }
 
 function patchNativeIcons(iconPngPath) {
-  const iconBuf = fs.readFileSync(iconPngPath);
+  const _iconBuf = fs.readFileSync(iconPngPath);
   // Android : patch mipmap si android/ existe
   const androidRes = path.join(
     mobileRoot,

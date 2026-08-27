@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
 
     const model = body.model || "deepgram/flux-tts:free";
     const voice = body.voice || "flux-alexis-en";
-    const speed = body.speed !== undefined ? Number(body.speed) : 1.0;
+    const speed = body.speed === undefined ? 1.0 : Number(body.speed);
     const response_format = body.response_format || "mp3";
 
     // Vérification préalable du quota Speech avant d'envoyer la requête
@@ -56,8 +56,15 @@ export async function POST(req: NextRequest) {
         const usageData = await usageRes.json();
         const weeklyLimit = Number(usageData.weeklyLimit ?? 0);
         const tokensUsed = Number(usageData.tokensUsed ?? 0);
-        const estimatedTokens = Math.max(1, Math.ceil(input.trim().length / 3.5));
-        if (weeklyLimit > 0 && (tokensUsed >= weeklyLimit || tokensUsed + estimatedTokens > weeklyLimit)) {
+        const estimatedTokens = Math.max(
+          1,
+          Math.ceil(input.trim().length / 3.5)
+        );
+        if (
+          weeklyLimit > 0 &&
+          (tokensUsed >= weeklyLimit ||
+            tokensUsed + estimatedTokens > weeklyLimit)
+        ) {
           return NextResponse.json(
             {
               error: `Votre quota hebdomadaire Speech est atteint (${tokensUsed}/${weeklyLimit} tokens). Mettez à niveau votre forfait pour continuer.`,
@@ -97,12 +104,19 @@ export async function POST(req: NextRequest) {
       const json = await maiRes.json();
       if (!maiRes.ok) {
         return NextResponse.json(
-          { error: json.error?.message || json.error || "Erreur de génération audio" },
+          {
+            error:
+              json.error?.message || json.error || "Erreur de génération audio",
+          },
           { status: maiRes.status }
         );
       }
       return NextResponse.json({
-        audio_url: json.audio_url || (json.audioContent ? `data:audio/mp3;base64,${json.audioContent}` : ""),
+        audio_url:
+          json.audio_url ||
+          (json.audioContent
+            ? `data:audio/mp3;base64,${json.audioContent}`
+            : ""),
         character_count: json.character_count || input.length,
         created: json.created || Math.floor(Date.now() / 1000),
         id: json.id || `audio_${Date.now()}`,
@@ -144,7 +158,11 @@ export async function POST(req: NextRequest) {
   } catch (error: any) {
     console.error("Erreur API audio/generations:", error);
     return NextResponse.json(
-      { error: error.message || "Erreur interne du serveur lors de la synthèse vocale." },
+      {
+        error:
+          error.message ||
+          "Erreur interne du serveur lors de la synthèse vocale.",
+      },
       { status: 500 }
     );
   }

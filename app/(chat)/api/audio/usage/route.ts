@@ -27,7 +27,7 @@ export async function GET(_req: NextRequest) {
   return NextResponse.json({
     plan: "Free",
     requestsCount: 0,
-    resetAt: new Date(Date.now() + 7 * 86400000).toISOString(),
+    resetAt: new Date(Date.now() + 7 * 86_400_000).toISOString(),
     tokensUsed: 0,
     weeklyLimit: getTierSpeechLimit("Free"),
   });

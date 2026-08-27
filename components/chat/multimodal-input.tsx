@@ -6,7 +6,7 @@ import equal from "fast-deep-equal";
 import {
   ArrowUpIcon,
   BrainIcon,
-  CloudIcon,
+  CpuIcon,
   EyeIcon,
   FolderArchiveIcon,
   FolderKanbanIcon,
@@ -17,12 +17,13 @@ import {
   MicOffIcon,
   PaperclipIcon,
   PlusIcon,
-  UploadIcon,
+  SparklesIcon,
   TriangleAlertIcon,
   Volume2Icon,
   WrenchIcon,
   XIcon,
 } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import {
@@ -33,13 +34,13 @@ import {
   type SetStateAction,
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { useLocalStorage, useWindowSize } from "usehooks-ts";
-import { formatBytes } from "@/app/(chat)/library/page";
 import {
   ModelSelector,
   ModelSelectorContent,
@@ -62,8 +63,8 @@ import {
   useActiveChat as useActiveChatForTools,
 } from "@/hooks/use-active-chat";
 import { useProjects } from "@/hooks/use-projects";
-import { useSpeechRecognition } from "@/hooks/use-speech";
 import { useSettings } from "@/hooks/use-settings";
+import { useSpeechRecognition } from "@/hooks/use-speech";
 import {
   type ChatModel,
   chatModels,
@@ -71,7 +72,8 @@ import {
   type ModelCapabilities,
 } from "@/lib/ai/models";
 import { AI_MODES } from "@/lib/ai/modes";
-import { TOOL_IDS, TOOLS_META, type ToolId } from "@/lib/ai/tools/config";
+import { TOOLS_META, type ToolId } from "@/lib/ai/tools/config";
+import type { McpServer, Skill } from "@/lib/db/schema";
 import type { Attachment, ChatMessage } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import {
@@ -100,7 +102,7 @@ import {
 import { SuggestedActions } from "./suggested-actions";
 import type { VisibilityType } from "./visibility-selector";
 
-function setCookie(name: string, value: string) {
+function _setCookie(name: string, value: string) {
   const maxAge = 60 * 60 * 24 * 365;
   // biome-ignore lint/suspicious/noDocumentCookie: needed for client-side cookie setting
   document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${maxAge}`;
@@ -199,7 +201,7 @@ function PureMultimodalInput({
       setInput(finalValue);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [localStorageInput, chatId]);
+  }, [localStorageInput, setInput]);
 
   useEffect(() => {
     setLocalStorageInput(input);
@@ -222,6 +224,9 @@ function PureMultimodalInput({
     pendingProject,
     setPendingProject,
     clearPendingProject,
+    activeSkill,
+    setActiveSkill,
+    clearActiveSkill,
     setCurrentModeId,
     pendingTools,
     togglePendingTool,
@@ -230,6 +235,21 @@ function PureMultimodalInput({
     toggleGhostMode,
   } = useActiveChat();
   const { projects, isLoading: isProjectsLoading } = useProjects();
+
+  const { data: userSkills = [] } = useSWR<Skill[]>(
+    "/api/skills",
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 30_000, revalidateOnFocus: false }
+  );
+  const { data: mcpData } = useSWR<{ servers: McpServer[] }>(
+    "/api/mcp",
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 30_000, revalidateOnFocus: false }
+  );
+  const userMcpServers = useMemo(
+    () => (Array.isArray(mcpData?.servers) ? mcpData.servers : []),
+    [mcpData]
+  );
 
   // Enrichir pendingProject avec données fraîches (nom/couleur) quand la liste arrive
   useEffect(() => {
@@ -295,7 +315,7 @@ function PureMultimodalInput({
     if (!dataStream?.length) {
       return;
     }
-    const last = dataStream[dataStream.length - 1] as any;
+    const last = dataStream.at(-1) as any;
     if (last?.type === "data-usage" && last?.data?.tokens) {
       setLiveSessionTokens((prev) => prev + Number(last.data.tokens));
     }
@@ -315,7 +335,7 @@ function PureMultimodalInput({
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [costPercent]);
+  }, [costPercent, costAiUsed.toLocaleString, costAiLimit]);
 
   // Capacités du modèle sélectionné (source unique via /api/models)
   const { data: modelCapsData } = useSWR(
@@ -461,9 +481,7 @@ function PureMultimodalInput({
         }
         case "tool-audio": {
           if (isGhostMode) {
-            toast.error(
-              "La génération audio est indisponible en Mode fantôme"
-            );
+            toast.error("La génération audio est indisponible en Mode fantôme");
             break;
           }
           togglePendingTool("audioGenerate" as any);
@@ -515,6 +533,27 @@ function PureMultimodalInput({
         case "tool-suggest": {
           togglePendingTool("requestSuggestions" as any);
           toast.success("Outil suggestions activé pour le prochain message");
+          break;
+        }
+        case "tool-calc": {
+          togglePendingTool("calculator" as any);
+          toast.success(
+            "Outil Calculatrice + conversions activé pour le prochain message"
+          );
+          break;
+        }
+        case "tool-time": {
+          togglePendingTool("dateTime" as any);
+          toast.success(
+            "Outil Date & heure (fuseaux horaires) activé pour le prochain message"
+          );
+          break;
+        }
+        case "tool-note": {
+          togglePendingTool("note" as any);
+          toast.success(
+            "Outil Note (téléchargeable) activé pour le prochain message"
+          );
           break;
         }
         case "tools-clear": {
@@ -591,8 +630,16 @@ function PureMultimodalInput({
         // Trim extra space if before ends with space and after starts with space?
         newVal = newVal.replace(/\s{2,}/g, " ").trimStart();
         setInput(newVal);
-        // Persist pill / mode
-        if (payload.type === "project") {
+        // Persist pill / mode / skill / mcp
+        if (payload.type === "skill") {
+          setActiveSkill(payload.skill);
+          toast.success(
+            `Compétence appliquée à la discussion : ${payload.skill.name} ✨`
+          );
+        } else if (payload.type === "mcp") {
+          togglePendingTool("mcp" as any);
+          toast.success(`Serveur MCP ciblé : ${payload.server.name} 🔌`);
+        } else if (payload.type === "project") {
           setPendingProject({
             color: payload.project.color,
             icon: payload.project.icon,
@@ -609,7 +656,15 @@ function PureMultimodalInput({
       } else {
         // fallback: just clear input token
         setInput("");
-        if (payload.type === "project") {
+        if (payload.type === "skill") {
+          setActiveSkill(payload.skill);
+          toast.success(
+            `Compétence appliquée à la discussion : ${payload.skill.name} ✨`
+          );
+        } else if (payload.type === "mcp") {
+          togglePendingTool("mcp" as any);
+          toast.success(`Serveur MCP ciblé : ${payload.server.name} 🔌`);
+        } else if (payload.type === "project") {
           setPendingProject({
             color: payload.project.color,
             icon: payload.project.icon,
@@ -630,7 +685,14 @@ function PureMultimodalInput({
       // Refocus
       setTimeout(() => textareaRef.current?.focus(), 50);
     },
-    [input, setInput, setPendingProject, setCurrentModeId]
+    [
+      input,
+      setInput,
+      setPendingProject,
+      setCurrentModeId,
+      setActiveSkill,
+      togglePendingTool,
+    ]
   );
 
   const submitForm = useCallback(() => {
@@ -925,7 +987,12 @@ function PureMultimodalInput({
   const handleTextareaKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
       if (mentionOpen) {
-        const flat = getFilteredMentionItems(mentionQuery, projects as any);
+        const flat = getFilteredMentionItems(
+          mentionQuery,
+          projects as any,
+          userSkills,
+          userMcpServers
+        );
         if (e.key === "ArrowDown") {
           e.preventDefault();
           setMentionIndex((i) => Math.min(i + 1, flat.length - 1));
@@ -940,7 +1007,17 @@ function PureMultimodalInput({
           e.preventDefault();
           if (flat[mentionIndex]) {
             const item = flat[mentionIndex];
-            if (item.kind === "project") {
+            if (item.kind === "skill") {
+              handleMentionSelect({
+                skill: item.skill,
+                type: "skill",
+              });
+            } else if (item.kind === "mcp") {
+              handleMentionSelect({
+                server: item.server,
+                type: "mcp",
+              });
+            } else if (item.kind === "project") {
               handleMentionSelect({
                 project: (item as any).project,
                 type: "project",
@@ -999,6 +1076,8 @@ function PureMultimodalInput({
       mentionQuery,
       mentionIndex,
       projects,
+      userSkills,
+      userMcpServers,
     ]
   );
 
@@ -1057,6 +1136,27 @@ function PureMultimodalInput({
           <span className="text-[11px] text-muted-foreground">
             Session complète — toutes les nouvelles discussions y seront
             enregistrées.
+          </span>
+        </div>
+      ) : null}
+
+      {activeSkill ? (
+        <div className="flex items-center gap-2 px-1 -mb-1">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/10 px-2.5 py-1 text-[11px] font-medium text-foreground">
+            <SparklesIcon className="size-3.5 text-primary" />
+            <span>Compétence active : {activeSkill.name}</span>
+            <button
+              aria-label="Retirer la compétence"
+              className="ml-1 rounded-full p-0.5 hover:bg-primary/20 text-muted-foreground hover:text-foreground"
+              onClick={clearActiveSkill}
+              title="Retirer la compétence"
+              type="button"
+            >
+              <XIcon className="size-3" />
+            </button>
+          </span>
+          <span className="text-[11px] text-muted-foreground">
+            Appliquée à toute la discussion
           </span>
         </div>
       ) : null}
@@ -1174,11 +1274,13 @@ function PureMultimodalInput({
         {mentionOpen ? (
           <MentionMenu
             isLoadingProjects={isProjectsLoading}
+            mcpServers={userMcpServers}
             onClose={handleMentionClose}
             onSelect={handleMentionSelect}
             projects={projects as any}
             query={mentionQuery}
             selectedIndex={mentionIndex}
+            skills={userSkills}
           />
         ) : null}
       </div>
@@ -1376,7 +1478,7 @@ function PureAttachmentPreviewItem({
 
 const AttachmentPreviewItem = memo(PureAttachmentPreviewItem);
 
-function formatTokenCount(n: number) {
+function _formatTokenCount(n: number) {
   if (n >= 1_000_000) {
     return `${(n / 1_000_000).toFixed(1)}M`;
   }
@@ -1412,8 +1514,13 @@ function PurePlusMenuButton({
     : false;
   const isVisionLoading = !hasStrictCapsBtn && !modelsResponse;
 
-  const { pendingTools, togglePendingTool, clearPendingTools, isGhostMode } =
-    useActiveChatForTools();
+  const {
+    pendingTools,
+    togglePendingTool,
+    clearPendingTools,
+    isGhostMode,
+    activeSkill,
+  } = useActiveChatForTools();
   const [open, setOpen] = useState(false);
 
   const handleDeviceUploadClick = () => {
@@ -1460,6 +1567,7 @@ function PurePlusMenuButton({
   const isImageActive = pendingTools.includes("imageGenerate" as ToolId);
   const isAudioActive = pendingTools.includes("audioGenerate" as ToolId);
   const isWebActive = pendingTools.includes("webSearch" as ToolId);
+  const isMcpActive = pendingTools.includes("mcp" as ToolId);
 
   return (
     <Popover onOpenChange={setOpen} open={open}>
@@ -1669,6 +1777,68 @@ function PurePlusMenuButton({
             </span>
           </div>
         </button>
+
+        {/* Option 6: Compétences (Skills) */}
+        <Link
+          className={cn(
+            "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
+            activeSkill
+              ? "bg-primary/10 border border-primary/30 ring-1 ring-primary/20 text-primary"
+              : "hover:bg-muted/70 text-foreground"
+          )}
+          href="/skills"
+          onClick={() => setOpen(false)}
+        >
+          <div className="flex size-7 items-center justify-center rounded-lg text-primary shrink-0">
+            <SparklesIcon className="size-4" />
+          </div>
+          <div className="flex items-center justify-between w-full min-w-0 gap-2">
+            <div className="flex items-center gap-2">
+              <span className="text-[13.5px] font-semibold truncate">
+                Compétences (Skills)
+              </span>
+              {activeSkill && (
+                <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full truncate max-w-[120px]">
+                  {activeSkill.name}
+                </span>
+              )}
+            </div>
+            <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
+              Gérer et configurer
+            </span>
+          </div>
+        </Link>
+
+        {/* Option 7: Serveurs & Outils MCP */}
+        <button
+          className={cn(
+            "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
+            isMcpActive
+              ? "bg-primary/10 border border-primary/30 ring-1 ring-primary/20 text-primary"
+              : "hover:bg-muted/70 text-foreground"
+          )}
+          onClick={() => toggleToolExclusive("mcp" as any, "Outils MCP")}
+          type="button"
+        >
+          <div className="flex size-7 items-center justify-center rounded-lg text-purple-600 dark:text-purple-400 shrink-0">
+            <CpuIcon className="size-4" />
+          </div>
+          <div className="flex items-center justify-between w-full min-w-0 gap-2">
+            <div className="flex items-center gap-2">
+              <span className="text-[13.5px] font-semibold truncate">
+                Outils & Serveurs MCP
+              </span>
+              {isMcpActive && (
+                <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
+                  ACTIF
+                </span>
+              )}
+            </div>
+            <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
+              Connecter bases & APIs
+            </span>
+          </div>
+        </button>
       </PopoverContent>
     </Popover>
   );
@@ -1721,7 +1891,7 @@ function ModelSelectorOption({
         "data-[selected=true]:bg-muted data-[selected=true]:text-foreground hover:bg-muted/50"
       )}
       onSelect={handleSelect}
-      value={model.name + " " + model.id}
+      value={`${model.name} ${model.id}`}
     >
       <ModelSelectorLogo provider={logoProvider} />
       <ModelSelectorName>{model.name}</ModelSelectorName>

@@ -84,6 +84,12 @@ export const createDocument = ({
         .describe(
           "REQUIRED. 'code' for programming/algorithms, 'text' for essays/writing, 'sheet' for spreadsheets, 'html' for HTML pages"
         ),
-      title: z.string().describe("The title of the artifact"),
+      title: z
+        .string()
+        .min(1)
+        .max(200)
+        .describe(
+          "The title of the artifact (1-200 characters). Be concise and descriptive."
+        ),
     }),
   });

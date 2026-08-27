@@ -46,18 +46,24 @@ export function ImageEditor({
 
   return (
     <div
-      className={cn("group relative flex w-full flex-col items-center justify-center p-4", {
-        "h-[200px]": isInline,
-        "min-h-[calc(100dvh-60px)]": !isInline,
-      })}
+      className={cn(
+        "group relative flex w-full flex-col items-center justify-center p-4",
+        {
+          "h-[200px]": isInline,
+          "min-h-[calc(100dvh-60px)]": !isInline,
+        }
+      )}
     >
       <div className="relative flex max-w-[800px] items-center justify-center overflow-hidden rounded-2xl border border-border/60 bg-card/80 shadow-lg">
         <picture>
           <img
             alt={title || "Image générée"}
-            className={cn("h-auto max-h-[80vh] w-full object-contain transition duration-300", {
-              "max-h-[180px]": isInline,
-            })}
+            className={cn(
+              "h-auto max-h-[80vh] w-full object-contain transition duration-300",
+              {
+                "max-h-[180px]": isInline,
+              }
+            )}
             src={imageSrc}
           />
         </picture>
@@ -74,7 +80,9 @@ export function ImageEditor({
             </button>
             <button
               className="rounded-lg p-1.5 text-white/90 transition hover:bg-white/20 hover:text-white"
-              onClick={() => downloadImage(imageSrc, `${title || "mai-image"}.png`)}
+              onClick={() =>
+                downloadImage(imageSrc, `${title || "mai-image"}.png`)
+              }
               title="Télécharger"
               type="button"
             >
@@ -102,7 +110,9 @@ export function ImageEditor({
             <div className="flex items-center gap-3">
               <button
                 className="inline-flex items-center gap-2 rounded-xl bg-white/20 px-4 py-2 text-xs font-semibold text-white backdrop-blur-md transition hover:bg-white/30"
-                onClick={() => downloadImage(imageSrc, `${title || "mai-image"}.png`)}
+                onClick={() =>
+                  downloadImage(imageSrc, `${title || "mai-image"}.png`)
+                }
                 type="button"
               >
                 <DownloadIcon size={16} />

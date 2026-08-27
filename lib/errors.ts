@@ -78,7 +78,7 @@ export class ChatbotError extends Error {
 
 export function getMessageByErrorCode(
   errorCode: ErrorCode,
-  cause?: string | ErrorOptions
+  _cause?: string | ErrorOptions
 ): string {
   if (errorCode.includes("database")) {
     return "Une erreur est survenue lors de l'accès à la base de données.";

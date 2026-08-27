@@ -2,7 +2,9 @@
 
 import {
   ArrowRightIcon,
+  ChevronDownIcon,
   CloudIcon,
+  CpuIcon,
   FolderKanbanIcon,
   ImageIcon,
   PanelLeftIcon,
@@ -10,12 +12,14 @@ import {
   PlusIcon,
   SearchIcon,
   SettingsIcon,
+  SparklesIcon,
   TrashIcon,
   Volume2Icon,
+  WrenchIcon,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
 import { useSWRConfig } from "swr";
@@ -28,6 +32,17 @@ import {
 } from "@/components/chat/sidebar-history";
 import { SidebarUserNav } from "@/components/chat/sidebar-user-nav";
 import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
@@ -37,12 +52,16 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
   SidebarRail,
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
 import { useProjects } from "@/hooks/use-projects";
 import type { MaiUser } from "@/lib/auth/session";
+import { cn } from "@/lib/utils";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -145,6 +164,129 @@ function SidebarProjects() {
         </SidebarMenu>
       </SidebarGroupContent>
     </SidebarGroup>
+  );
+}
+
+function SidebarPlusMenu({ closeMobile }: { closeMobile: () => void }) {
+  const pathname = usePathname();
+  const { state } = useSidebar();
+  const isPlusActive =
+    pathname?.startsWith("/skills") || pathname?.startsWith("/mcp");
+  const [isOpen, setIsOpen] = useState(isPlusActive);
+
+  if (state === "collapsed") {
+    return (
+      <SidebarMenuItem>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <SidebarMenuButton
+              className={cn(
+                "h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground",
+                isPlusActive &&
+                  "bg-sidebar-accent text-sidebar-foreground font-medium"
+              )}
+              tooltip="Plus (Skills & MCP)"
+            >
+              <SparklesIcon className="size-4 text-primary" />
+              <span>Plus</span>
+            </SidebarMenuButton>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent
+            align="start"
+            className="w-44 p-1"
+            side="right"
+            sideOffset={8}
+          >
+            <DropdownMenuItem asChild>
+              <Link
+                className={cn(
+                  "flex items-center gap-2 cursor-pointer text-xs",
+                  pathname?.startsWith("/skills") &&
+                    "font-semibold text-primary"
+                )}
+                href="/skills"
+                onClick={closeMobile}
+              >
+                <WrenchIcon className="size-3.5" />
+                <span>Skills</span>
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link
+                className={cn(
+                  "flex items-center gap-2 cursor-pointer text-xs",
+                  pathname?.startsWith("/mcp") && "font-semibold text-primary"
+                )}
+                href="/mcp"
+                onClick={closeMobile}
+              >
+                <CpuIcon className="size-3.5" />
+                <span>MCP</span>
+              </Link>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </SidebarMenuItem>
+    );
+  }
+
+  return (
+    <Collapsible
+      className="group/collapsible"
+      onOpenChange={setIsOpen}
+      open={isOpen}
+    >
+      <SidebarMenuItem>
+        <CollapsibleTrigger asChild>
+          <SidebarMenuButton
+            className={cn(
+              "h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground justify-between w-full",
+              isPlusActive && "text-sidebar-foreground font-medium"
+            )}
+            tooltip="Plus d'outils (Skills & MCP)"
+          >
+            <div className="flex items-center gap-2">
+              <SparklesIcon className="size-4 text-primary" />
+              <span>Plus</span>
+            </div>
+            <ChevronDownIcon
+              className={cn(
+                "size-3.5 transition-transform duration-200 text-muted-foreground",
+                isOpen && "rotate-180"
+              )}
+            />
+          </SidebarMenuButton>
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <SidebarMenuSub className="my-1">
+            <SidebarMenuSubItem>
+              <SidebarMenuSubButton
+                asChild
+                className="h-7 rounded-md text-[12px] text-sidebar-foreground/80 hover:text-foreground"
+                isActive={pathname?.startsWith("/skills")}
+              >
+                <Link href="/skills" onClick={closeMobile}>
+                  <WrenchIcon className="size-3.5" />
+                  <span>Skills</span>
+                </Link>
+              </SidebarMenuSubButton>
+            </SidebarMenuSubItem>
+            <SidebarMenuSubItem>
+              <SidebarMenuSubButton
+                asChild
+                className="h-7 rounded-md text-[12px] text-sidebar-foreground/80 hover:text-foreground"
+                isActive={pathname?.startsWith("/mcp")}
+              >
+                <Link href="/mcp" onClick={closeMobile}>
+                  <CpuIcon className="size-3.5" />
+                  <span>MCP</span>
+                </Link>
+              </SidebarMenuSubButton>
+            </SidebarMenuSubItem>
+          </SidebarMenuSub>
+        </CollapsibleContent>
+      </SidebarMenuItem>
+    </Collapsible>
   );
 }
 
@@ -325,6 +467,8 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
+
+                <SidebarPlusMenu closeMobile={closeMobile} />
 
                 <SidebarMenuItem>
                   <SidebarMenuButton

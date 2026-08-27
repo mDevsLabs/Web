@@ -23,6 +23,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
+import { PageBackButton } from "@/components/chat/page-back-button";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -35,7 +36,6 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { PageBackButton } from "@/components/chat/page-back-button";
 import {
   resolveImagesUsage,
   resolveSpeechUsage,
@@ -122,7 +122,6 @@ export default function SettingsPage() {
     [router, searchParams]
   );
 
-
   useEffect(() => {
     const t = searchParams.get("tab") as any;
     if (
@@ -133,7 +132,7 @@ export default function SettingsPage() {
       setActiveTab(t);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams]);
+  }, [searchParams, activeTab]);
 
   // Scroll vers ancre usage si tab=usage
   useEffect(() => {
@@ -327,7 +326,9 @@ export default function SettingsPage() {
       if (!res.ok) {
         throw new Error("Erreur lors de l'enregistrement");
       }
-      toast.success("Préférences d'outils Images & Audio enregistrées en BDD ! ✨");
+      toast.success(
+        "Préférences d'outils Images & Audio enregistrées en BDD ! ✨"
+      );
       mutateCustomPref();
     } catch (e: any) {
       toast.error(e.message || "Erreur de sauvegarde des préférences outils.");
@@ -403,7 +404,10 @@ export default function SettingsPage() {
       mutateSettings(
         (current) =>
           current?.user
-            ? { ...current, user: { ...current.user, avatarUrl: data.avatarUrl } }
+            ? {
+                ...current,
+                user: { ...current.user, avatarUrl: data.avatarUrl },
+              }
             : current,
         { revalidate: false }
       );
@@ -441,7 +445,7 @@ export default function SettingsPage() {
         username: username.trim(),
       };
 
-      if (newPassword && newPassword.trim()) {
+      if (newPassword?.trim()) {
         if (newPassword.length < 6) {
           toast.error(
             "Le nouveau mot de passe doit comporter au moins 6 caractères."
@@ -547,8 +551,7 @@ export default function SettingsPage() {
     ? Math.min(
         100,
         Math.round(
-          ((resolvedSpeechUsage.tokensUsed || 0) /
-            resolvedSpeechUsage.limit) *
+          ((resolvedSpeechUsage.tokensUsed || 0) / resolvedSpeechUsage.limit) *
             100
         )
       )
@@ -1065,7 +1068,8 @@ export default function SettingsPage() {
                   Outil Génération d'Images
                 </h3>
                 <p className="text-xs text-muted-foreground">
-                  Configurez le modèle Black Forest / FLUX et la résolution par défaut utilisés par l'outil de génération d'images.
+                  Configurez le modèle Black Forest / FLUX et la résolution par
+                  défaut utilisés par l'outil de génération d'images.
                 </p>
               </div>
             </div>
@@ -1098,7 +1102,8 @@ export default function SettingsPage() {
                   <option value="ideogram-v2">Ideogram V2</option>
                 </select>
                 <span className="text-[11px] text-muted-foreground">
-                  Modèle activé automatiquement quand vous demandez à l'IA d'illustrer ou créer une image.
+                  Modèle activé automatiquement quand vous demandez à l'IA
+                  d'illustrer ou créer une image.
                 </span>
               </div>
 
@@ -1112,8 +1117,12 @@ export default function SettingsPage() {
                   value={defaultImageSize}
                 >
                   <option value="1024x1024">1024x1024 (1:1 Carré)</option>
-                  <option value="1344x768">1344x768 (16:9 Paysage / Bureau)</option>
-                  <option value="768x1344">768x1344 (9:16 Mobile / Story)</option>
+                  <option value="1344x768">
+                    1344x768 (16:9 Paysage / Bureau)
+                  </option>
+                  <option value="768x1344">
+                    768x1344 (9:16 Mobile / Story)
+                  </option>
                   <option value="1152x864">1152x864 (4:3 Standard)</option>
                   <option value="864x1152">864x1152 (3:4 Portrait)</option>
                 </select>
@@ -1135,7 +1144,8 @@ export default function SettingsPage() {
                   Outil Synthèse Vocale & Audio
                 </h3>
                 <p className="text-xs text-muted-foreground">
-                  Configurez le modèle vocal, la voix par défaut et le rythme de lecture audio.
+                  Configurez le modèle vocal, la voix par défaut et le rythme de
+                  lecture audio.
                 </p>
               </div>
             </div>
@@ -1154,7 +1164,9 @@ export default function SettingsPage() {
                     Deepgram Flux TTS (Ultra-rapide & Naturel)
                   </option>
                   <option value="tts-1">OpenAI TTS Standard</option>
-                  <option value="tts-1-hd">OpenAI TTS HD (Haute Définition)</option>
+                  <option value="tts-1-hd">
+                    OpenAI TTS HD (Haute Définition)
+                  </option>
                 </select>
               </div>
 
@@ -1167,9 +1179,15 @@ export default function SettingsPage() {
                   onChange={(e) => setDefaultAudioVoice(e.target.value)}
                   value={defaultAudioVoice}
                 >
-                  <option value="flux-alexis-en">Alexis (Féminin - Naturel & Équilibré)</option>
-                  <option value="flux-michael-en">Michael (Masculin - Posé & Professionnel)</option>
-                  <option value="flux-stacy-en">Stacy (Féminin - Dynamique & Vivant)</option>
+                  <option value="flux-alexis-en">
+                    Alexis (Féminin - Naturel & Équilibré)
+                  </option>
+                  <option value="flux-michael-en">
+                    Michael (Masculin - Posé & Professionnel)
+                  </option>
+                  <option value="flux-stacy-en">
+                    Stacy (Féminin - Dynamique & Vivant)
+                  </option>
                   <option value="alloy">Alloy (Neutre - Polyvalent)</option>
                   <option value="echo">Echo (Masculin - Rond)</option>
                   <option value="nova">Nova (Féminin - Énergique)</option>
@@ -1184,7 +1202,11 @@ export default function SettingsPage() {
                   Vitesse de lecture ({defaultAudioSpeed.toFixed(2)}x)
                 </Label>
                 <span className="text-[11px] text-muted-foreground font-mono">
-                  {defaultAudioSpeed === 1.0 ? "Normal" : defaultAudioSpeed < 1.0 ? "Plus lent" : "Plus rapide"}
+                  {defaultAudioSpeed === 1.0
+                    ? "Normal"
+                    : defaultAudioSpeed < 1.0
+                      ? "Plus lent"
+                      : "Plus rapide"}
                 </span>
               </div>
               <input
@@ -1224,7 +1246,10 @@ export default function SettingsPage() {
                 Comment sont stockées vos préférences ?
               </p>
               <p>
-                Les préférences des outils d'images et d'audio, ainsi que vos instructions personnalisées, sont enregistrées de façon permanente dans votre profil utilisateur en base de données PostgreSQL et synchronisées sur tous vos appareils.
+                Les préférences des outils d'images et d'audio, ainsi que vos
+                instructions personnalisées, sont enregistrées de façon
+                permanente dans votre profil utilisateur en base de données
+                PostgreSQL et synchronisées sur tous vos appareils.
               </p>
             </div>
           </div>
@@ -1383,7 +1408,8 @@ export default function SettingsPage() {
                     Synthèse Vocale (Tokens Speech)
                   </h3>
                   <p className="hidden text-xs text-muted-foreground sm:block">
-                    Tokens consommés pour l'API Speech et Text-to-Speech OpenRouter
+                    Tokens consommés pour l'API Speech et Text-to-Speech
+                    OpenRouter
                   </p>
                 </div>
               </div>

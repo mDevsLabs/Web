@@ -32,7 +32,13 @@ export const textDocumentHandler = createDocumentHandler<"text">({
 
     return draftContent;
   },
-  onUpdateDocument: async ({ document, description, dataStream, modelId, session }) => {
+  onUpdateDocument: async ({
+    document,
+    description,
+    dataStream,
+    modelId,
+    session,
+  }) => {
     let draftContent = "";
 
     const { stream } = streamText({

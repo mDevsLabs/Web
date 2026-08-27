@@ -223,7 +223,7 @@ export default function ImagesPage() {
         throw new Error("Erreur de modification");
       }
       toast.success(
-        !currentPinned ? "Image épinglée en haut 📌" : "Image désépinglée"
+        currentPinned ? "Image désépinglée" : "Image épinglée en haut 📌"
       );
       mutateHistory();
     } catch {
@@ -462,7 +462,8 @@ export default function ImagesPage() {
               Images mAI
             </h1>
             <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-              Créez, éditez et explorez des images haute définition avec les modèles Flux & Diffusion
+              Créez, éditez et explorez des images haute définition avec les
+              modèles Flux & Diffusion
             </p>
           </div>
         </div>
@@ -984,8 +985,8 @@ export default function ImagesPage() {
                     Votre galerie est vide
                   </h3>
                   <p className="text-xs text-muted-foreground mt-1">
-                    Générez des images depuis la page Images pour les
-                    retrouver sauvegardées ici.
+                    Générez des images depuis la page Images pour les retrouver
+                    sauvegardées ici.
                   </p>
                 </div>
                 <button

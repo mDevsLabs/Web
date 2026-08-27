@@ -45,8 +45,10 @@ export async function generateTitleFromConversation({
     ]);
 
     const fallbackTitle =
-      userText.replace(/^[#*"\s]+/, "").slice(0, 60).trim() ||
-      "Nouvelle discussion";
+      userText
+        .replace(/^[#*"\s]+/, "")
+        .slice(0, 60)
+        .trim() || "Nouvelle discussion";
 
     // Si pas de session valide ou si le quota est atteint, repli immédiat sans requête IA
     if (!token || !user || (user.limit > 0 && user.tokensUsed >= user.limit)) {
@@ -74,8 +76,10 @@ export async function generateTitleFromConversation({
   } catch (err) {
     console.error("Erreur génération titre:", err);
     return (
-      userText.replace(/^[#*"\s]+/, "").slice(0, 60).trim() ||
-      "Nouvelle discussion"
+      userText
+        .replace(/^[#*"\s]+/, "")
+        .slice(0, 60)
+        .trim() || "Nouvelle discussion"
     );
   }
 }

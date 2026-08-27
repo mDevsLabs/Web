@@ -2,14 +2,12 @@
 
 import {
   AlertCircleIcon,
-  CheckCircle2Icon,
   CheckIcon,
   CopyIcon,
   DownloadIcon,
   HeadphonesIcon,
   LayersIcon,
   Loader2Icon,
-  MicIcon,
   MusicIcon,
   PencilIcon,
   PinIcon,
@@ -23,7 +21,6 @@ import {
   XIcon,
 } from "lucide-react";
 import Link from "next/link";
-import type React from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
@@ -185,7 +182,10 @@ export default function AudioPage() {
     success: boolean;
     total: number;
   }>("/api/audio/history", fetcher, { revalidateOnFocus: false });
-  const history = useMemo(() => historyData?.data || historyData?.audios || [], [historyData]);
+  const history = useMemo(
+    () => historyData?.data || historyData?.audios || [],
+    [historyData]
+  );
 
   // Formulaire & Options
   const [selectedModelId, setSelectedModelId] = useState<string>("");
@@ -242,7 +242,10 @@ export default function AudioPage() {
   }, [models, selectedModelId, voices, selectedVoice, userPrefData]);
 
   // Basculer l'état épinglé
-  const handleTogglePin = async (id: string | number, currentPinned: boolean) => {
+  const handleTogglePin = async (
+    id: string | number,
+    currentPinned: boolean
+  ) => {
     try {
       const res = await fetch(`/api/audio/history?id=${id}`, {
         body: JSON.stringify({ pinned: !currentPinned }),
@@ -253,7 +256,7 @@ export default function AudioPage() {
         throw new Error("Erreur de modification");
       }
       toast.success(
-        !currentPinned ? "Audio épinglé en haut 📌" : "Audio désépinglé"
+        currentPinned ? "Audio désépinglé" : "Audio épinglé en haut 📌"
       );
       mutateHistory();
     } catch {
@@ -296,7 +299,9 @@ export default function AudioPage() {
   // Lancement de la synthèse vocale
   const handleGenerate = async () => {
     if (!inputText.trim()) {
-      toast.error("Veuillez saisir le texte que vous souhaitez transformer en voix.");
+      toast.error(
+        "Veuillez saisir le texte que vous souhaitez transformer en voix."
+      );
       return;
     }
 
@@ -313,7 +318,9 @@ export default function AudioPage() {
     try {
       // 1. Demande et validation du quota préalable
       try {
-        const usageCheck = await fetch("/api/audio/usage").then((r) => r.json());
+        const usageCheck = await fetch("/api/audio/usage").then((r) =>
+          r.json()
+        );
         const checkLimit = Number(usageCheck.weeklyLimit ?? 0);
         const checkUsed = Number(usageCheck.tokensUsed ?? 0);
         if (checkLimit > 0 && checkUsed >= checkLimit) {
@@ -328,7 +335,7 @@ export default function AudioPage() {
       const payload = {
         input: inputText.trim(),
         model: selectedModelId || "openai/tts-1",
-        speed: speed,
+        speed,
         voice: selectedVoice || "flux-alexis-en",
       };
 
@@ -344,7 +351,9 @@ export default function AudioPage() {
 
       if (!res.ok || !data.success) {
         const errMsg =
-          data?.error?.message || data?.error || "Erreur lors de la synthèse vocale";
+          data?.error?.message ||
+          data?.error ||
+          "Erreur lors de la synthèse vocale";
         throw new Error(errMsg);
       }
 
@@ -360,7 +369,8 @@ export default function AudioPage() {
         id: data.id || `audio_${Date.now()}`,
         input_text: inputText.trim(),
         model: selectedModel?.name || selectedModelId,
-        tokens_count: data.tokens_count || Math.ceil(inputText.trim().length * 1.3),
+        tokens_count:
+          data.tokens_count || Math.ceil(inputText.trim().length * 1.3),
         voice: selectedVoice,
       };
 
@@ -413,7 +423,8 @@ export default function AudioPage() {
               Audio & Voix mAI
             </h1>
             <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-              Transformez vos textes en voix naturelles et expressives avec l'IA haute fidélité
+              Transformez vos textes en voix naturelles et expressives avec l'IA
+              haute fidélité
             </p>
           </div>
         </div>
@@ -588,14 +599,20 @@ export default function AudioPage() {
                           Vitesse de diction ({speed}x)
                         </label>
                         <span className="text-[11px] text-muted-foreground">
-                          {speed < 1 ? "Plus lent" : speed === 1 ? "Normal" : "Plus rapide"}
+                          {speed < 1
+                            ? "Plus lent"
+                            : speed === 1
+                              ? "Normal"
+                              : "Plus rapide"}
                         </span>
                       </div>
                       <input
                         className="w-full accent-emerald-500"
                         max={2.0}
                         min={0.5}
-                        onChange={(e) => setSpeed(Number.parseFloat(e.target.value))}
+                        onChange={(e) =>
+                          setSpeed(Number.parseFloat(e.target.value))
+                        }
                         step={0.1}
                         type="range"
                         value={speed}
@@ -613,7 +630,9 @@ export default function AudioPage() {
                         ? "bg-muted text-muted-foreground cursor-not-allowed"
                         : "bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:opacity-95 hover:shadow-emerald-500/25"
                     )}
-                    disabled={isGenerating || !inputText.trim() || isQuotaExhausted}
+                    disabled={
+                      isGenerating || !inputText.trim() || isQuotaExhausted
+                    }
                     onClick={handleGenerate}
                     type="button"
                   >
@@ -694,9 +713,12 @@ export default function AudioPage() {
                           <span className="font-semibold text-emerald-400">
                             {selectedModel?.name}
                           </span>{" "}
-                          synthétise les harmoniques et l'intonation avec la voix{" "}
+                          synthétise les harmoniques et l'intonation avec la
+                          voix{" "}
                           <span className="font-semibold text-foreground">
-                            {selectedVoice.replace("flux-", "").replace("-en", "")}
+                            {selectedVoice
+                              .replace("flux-", "")
+                              .replace("-en", "")}
                           </span>
                           ...
                         </p>
@@ -731,8 +753,12 @@ export default function AudioPage() {
                           <button
                             className="text-[11px] text-muted-foreground hover:text-foreground flex items-center gap-1 cursor-pointer"
                             onClick={() => {
-                              navigator.clipboard.writeText(currentResult.input_text);
-                              toast.success("Texte copié dans le presse-papier !");
+                              navigator.clipboard.writeText(
+                                currentResult.input_text
+                              );
+                              toast.success(
+                                "Texte copié dans le presse-papier !"
+                              );
                             }}
                             type="button"
                           >
@@ -744,11 +770,12 @@ export default function AudioPage() {
                           "{currentResult.input_text}"
                         </p>
                         <div className="flex items-center justify-between text-[11px] text-muted-foreground/80 pt-1 border-t border-border/30">
+                          <span>Modèle : {currentResult.model}</span>
                           <span>
-                            Modèle : {currentResult.model}
-                          </span>
-                          <span>
-                            Voix : {currentResult.voice?.replace("flux-", "").replace("-en", "")}
+                            Voix :{" "}
+                            {currentResult.voice
+                              ?.replace("flux-", "")
+                              .replace("-en", "")}
                           </span>
                         </div>
                       </div>
@@ -763,7 +790,8 @@ export default function AudioPage() {
                           Aucun audio généré pour l'instant
                         </h4>
                         <p className="text-xs text-muted-foreground mt-1 max-w-sm">
-                          Sélectionnez une voix, saisissez votre texte à gauche et cliquez sur{" "}
+                          Sélectionnez une voix, saisissez votre texte à gauche
+                          et cliquez sur{" "}
                           <span className="font-semibold text-foreground">
                             Générer l'audio
                           </span>
@@ -785,7 +813,8 @@ export default function AudioPage() {
                   Vos générations audio
                 </h2>
                 <p className="text-xs text-muted-foreground">
-                  Retrouvez et réécoutez tous les audios et voix créés précédemment
+                  Retrouvez et réécoutez tous les audios et voix créés
+                  précédemment
                 </p>
               </div>
 
@@ -802,7 +831,9 @@ export default function AudioPage() {
             {isLoadingHistory ? (
               <div className="py-20 flex flex-col items-center justify-center text-muted-foreground gap-3">
                 <Loader2Icon className="size-6 animate-spin text-emerald-500" />
-                <span className="text-sm">Chargement de votre historique audio...</span>
+                <span className="text-sm">
+                  Chargement de votre historique audio...
+                </span>
               </div>
             ) : history.length === 0 ? (
               <div className="py-24 rounded-2xl border border-dashed border-border/60 bg-muted/10 flex flex-col items-center justify-center text-center gap-3">
@@ -813,7 +844,8 @@ export default function AudioPage() {
                   Aucun enregistrement dans votre historique
                 </h3>
                 <p className="text-xs text-muted-foreground max-w-sm">
-                  Toutes vos synthèses vocales générées apparaîtront ici avec possibilité d'écoute et de téléchargement.
+                  Toutes vos synthèses vocales générées apparaîtront ici avec
+                  possibilité d'écoute et de téléchargement.
                 </p>
                 <button
                   className="mt-2 inline-flex items-center gap-1.5 rounded-xl bg-primary text-primary-foreground px-4 py-2 text-xs font-semibold shadow-sm transition hover:opacity-90 cursor-pointer"
@@ -841,7 +873,9 @@ export default function AudioPage() {
                         <div className="flex items-center gap-1.5">
                           <span className="text-[11px] font-semibold uppercase px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                             {item.voice
-                              ? item.voice.replace("flux-", "").replace("-en", "")
+                              ? item.voice
+                                  .replace("flux-", "")
+                                  .replace("-en", "")
                               : "Voix"}
                           </span>
                           {item.pinned && (
@@ -926,9 +960,7 @@ export default function AudioPage() {
                                 id: item.id,
                                 title: item.title || item.input_text,
                               });
-                              setEditTitleInput(
-                                item.title || item.input_text
-                              );
+                              setEditTitleInput(item.title || item.input_text);
                             }}
                             title="Renommer l'audio"
                             type="button"

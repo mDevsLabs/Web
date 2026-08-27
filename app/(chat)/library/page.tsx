@@ -20,15 +20,10 @@ import {
   ImageIcon,
   ListIcon,
   Loader2Icon,
-  MessageSquareIcon,
   MusicIcon,
   PinIcon,
   PinOffIcon,
-  PlusIcon,
-  RefreshCwIcon,
   SearchIcon,
-  Share2Icon,
-  SlidersHorizontalIcon,
   SparklesIcon,
   SquareIcon,
   Trash2Icon,
@@ -705,7 +700,8 @@ export default function LibraryPage() {
                 Stockage de fichiers
               </h1>
               <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-                Importez, prévisualisez et analysez vos documents, médias et codes avec l'IA.
+                Importez, prévisualisez et analysez vos documents, médias et
+                codes avec l'IA.
               </p>
             </div>
           </div>
@@ -775,14 +771,18 @@ export default function LibraryPage() {
                       ? "bg-amber-500"
                       : "bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600"
                 }`}
-                style={{ width: `${Math.min(100, Math.max(1, storage.percent_used))}%` }}
+                style={{
+                  width: `${Math.min(100, Math.max(1, storage.percent_used))}%`,
+                }}
               />
             </div>
 
             {/* Répartition visuelle par types de fichiers */}
             {files.length > 0 && (
               <div className="mt-3 flex flex-wrap items-center gap-3 pt-2.5 border-t border-border/40 text-[11px] text-muted-foreground">
-                <span className="font-medium text-foreground">Répartition :</span>
+                <span className="font-medium text-foreground">
+                  Répartition :
+                </span>
                 {categoryBytes.document > 0 && (
                   <span className="flex items-center gap-1">
                     <span className="size-2 rounded-full bg-red-500" />

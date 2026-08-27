@@ -30,7 +30,7 @@ import {
   isValidAIModeId,
 } from "@/lib/ai/modes";
 import { DEFAULT_ENABLED_TOOLS, type ToolId } from "@/lib/ai/tools/config";
-import type { Vote } from "@/lib/db/schema";
+import type { Skill, Vote } from "@/lib/db/schema";
 import { ChatbotError } from "@/lib/errors";
 import type { ChatMessage } from "@/lib/types";
 import { fetcher, fetchWithErrorHandlers, generateUUID } from "@/lib/utils";
@@ -44,6 +44,7 @@ export type PendingProject = {
 
 type ActiveChatContextValue = {
   chatId: string;
+  currentChatTitle?: string;
   messages: ChatMessage[];
   setMessages: UseChatHelpers<ChatMessage>["setMessages"];
   sendMessage: UseChatHelpers<ChatMessage>["sendMessage"];
@@ -64,6 +65,9 @@ type ActiveChatContextValue = {
   pendingProject: PendingProject;
   setPendingProject: (p: PendingProject) => void;
   clearPendingProject: () => void;
+  activeSkill: Skill | null;
+  setActiveSkill: (skill: Skill | null) => void;
+  clearActiveSkill: () => void;
   pendingTools: ToolId[];
   setPendingTools: (tools: ToolId[]) => void;
   togglePendingTool: (tool: ToolId) => void;
@@ -123,6 +127,24 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   const clearPendingProject = useCallback(() => {
     setPendingProject(null);
   }, [setPendingProject]);
+
+  // Active Skill (persisted for the conversation)
+  const [activeSkill, setActiveSkillState] = useState<Skill | null>(null);
+  const activeSkillRef = useRef<Skill | null>(null);
+  activeSkillRef.current = activeSkill;
+  const activeSkillIdRef = useRef<string | null>(null);
+
+  const setActiveSkill = useCallback((s: Skill | null) => {
+    setActiveSkillState(s);
+    activeSkillRef.current = s;
+    activeSkillIdRef.current = s?.id ?? null;
+  }, []);
+
+  const clearActiveSkill = useCallback(() => {
+    setActiveSkillState(null);
+    activeSkillRef.current = null;
+    activeSkillIdRef.current = null;
+  }, []);
 
   // Ghost mode (ephemeral, no DB recording, imageGenerate disabled)
   const [isGhostMode, setIsGhostMode] = useState<boolean>(false);
@@ -436,6 +458,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
             selectedChatMode: currentModeIdRef.current,
             selectedChatModel: currentModelIdRef.current,
             selectedVisibilityType: visibility,
+            skillId: activeSkillIdRef.current,
             ...(projectIdToSend && isToolApprovalContinuation
               ? { projectId: projectIdToSend }
               : {}),
@@ -464,12 +487,11 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     }
     if (
       chatData?.messages &&
-      (chatData.chatId === chatId || !chatData.chatId)
+      (chatData.chatId === chatId || !chatData.chatId) &&
+      lastLoadedChatIdRef.current !== chatId
     ) {
-      if (lastLoadedChatIdRef.current !== chatId) {
-        lastLoadedChatIdRef.current = chatId;
-        setMessages(chatData.messages);
-      }
+      lastLoadedChatIdRef.current = chatId;
+      setMessages(chatData.messages);
     }
   }, [chatId, isNewChat, chatData, setMessages]);
 
@@ -522,13 +544,16 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo<ActiveChatContextValue>(
     () => ({
+      activeSkill,
       addToolApprovalResponse,
       chatId,
+      clearActiveSkill,
       clearPendingProject,
       clearPendingTools,
       currentModeId,
       currentModelId,
       input,
+      isGhostMode,
       isLoading: !isNewChat && isLoading,
       isReadonly,
       messages,
@@ -536,14 +561,14 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       pendingTools,
       regenerate,
       sendMessage,
+      setActiveSkill,
       setCurrentModeId: handleModeChange,
       setCurrentModelId: handleModelChange,
       setInput,
+      setIsGhostMode,
       setMessages,
       setPendingProject,
       setPendingTools,
-      isGhostMode,
-      setIsGhostMode,
       setShowCreditCardAlert,
       showCreditCardAlert,
       status,
@@ -573,6 +598,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       pendingProject,
       setPendingProject,
       clearPendingProject,
+      activeSkill,
+      setActiveSkill,
+      clearActiveSkill,
       pendingTools,
       setPendingTools,
       togglePendingTool,
@@ -580,6 +608,8 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       showCreditCardAlert,
       isGhostMode,
       toggleGhostMode,
+      handleModelChange,
+      handleModeChange,
     ]
   );
 

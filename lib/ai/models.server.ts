@@ -26,7 +26,7 @@ export async function fetchUserModels(): Promise<ChatModel[]> {
 
     const headers: Record<string, string> = {};
     if (authHeader) {
-      headers["Authorization"] = authHeader;
+      headers.Authorization = authHeader;
     }
     if (user?.id) {
       headers["x-user-id"] = user.id;

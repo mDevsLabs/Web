@@ -51,7 +51,9 @@ export async function GET(request: Request) {
       .where(
         and(
           sql`${chat.userId}::text = ANY(${userIds})`,
-          chatConditions.length > 0 ? and(...chatConditions) : ilike(chat.title, escapedFull)
+          chatConditions.length > 0
+            ? and(...chatConditions)
+            : ilike(chat.title, escapedFull)
         )
       )
       .orderBy(desc(chat.pinned), desc(chat.createdAt))
@@ -68,7 +70,9 @@ export async function GET(request: Request) {
       .where(
         and(
           sql`${project.userId}::text = ANY(${userIds})`,
-          projectConditions.length > 0 ? and(...projectConditions) : ilike(project.name, escapedFull)
+          projectConditions.length > 0
+            ? and(...projectConditions)
+            : ilike(project.name, escapedFull)
         )
       )
       .orderBy(desc(project.updatedAt))
@@ -113,19 +117,24 @@ export async function GET(request: Request) {
       try {
         const parts = Array.isArray(msg.parts) ? msg.parts : [];
         const textParts = parts
-          .filter((p: any) => p && (p.type === "text" || typeof p.text === "string"))
+          .filter(
+            (p: any) => p && (p.type === "text" || typeof p.text === "string")
+          )
           .map((p: any) => p.text || "")
           .join(" ");
 
         if (textParts) {
           const lowerText = textParts.toLowerCase();
-          const matchIdx = lowerText.indexOf(tokens[0]?.toLowerCase() || q.toLowerCase());
-          if (matchIdx !== -1) {
+          const matchIdx = lowerText.indexOf(
+            tokens[0]?.toLowerCase() || q.toLowerCase()
+          );
+          if (matchIdx === -1) {
+            snippet =
+              textParts.slice(0, 100) + (textParts.length > 100 ? "…" : "");
+          } else {
             const start = Math.max(0, matchIdx - 40);
             const end = Math.min(textParts.length, matchIdx + 80);
             snippet = `${start > 0 ? "…" : ""}${textParts.slice(start, end)}${end < textParts.length ? "…" : ""}`;
-          } else {
-            snippet = textParts.slice(0, 100) + (textParts.length > 100 ? "…" : "");
           }
         }
       } catch {
@@ -152,12 +161,16 @@ export async function GET(request: Request) {
         if (res.ok) {
           const data = await res.json();
           const allFiles: any[] = data.files || [];
-          const lower = q.toLowerCase();
+          const _lower = q.toLowerCase();
           files = allFiles
             .filter((f: any) => {
               const name = (f.original_name || "").toLowerCase();
               const mime = (f.mime_type || "").toLowerCase();
-              return tokens.every((tok) => name.includes(tok.toLowerCase()) || mime.includes(tok.toLowerCase()));
+              return tokens.every(
+                (tok) =>
+                  name.includes(tok.toLowerCase()) ||
+                  mime.includes(tok.toLowerCase())
+              );
             })
             .slice(0, limit);
         }

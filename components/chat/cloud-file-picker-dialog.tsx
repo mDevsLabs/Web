@@ -138,9 +138,7 @@ export function CloudFilePickerDialog({
           {isLoading ? (
             <div className="py-16 flex flex-col items-center justify-center text-muted-foreground gap-3">
               <Loader2Icon className="size-6 animate-spin text-primary" />
-              <span className="text-xs">
-                Chargement de votre stockage...
-              </span>
+              <span className="text-xs">Chargement de votre stockage...</span>
             </div>
           ) : filteredFiles.length === 0 ? (
             <div className="py-14 flex flex-col items-center justify-center text-muted-foreground text-center p-6 gap-2">

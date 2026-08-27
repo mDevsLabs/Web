@@ -3,7 +3,7 @@ import { createClient } from "redis";
 import { isProductionEnvironment } from "@/lib/constants";
 import { ChatbotError } from "@/lib/errors";
 
-const MAX_MESSAGES = 10;
+const _MAX_MESSAGES = 10;
 const TTL_SECONDS = 60 * 60;
 
 let client: ReturnType<typeof createClient> | null = null;
@@ -65,7 +65,7 @@ export async function checkIpRateLimit(
   }
 
   try {
-    const multi = redis!.multi();
+    const multi = redis?.multi();
     if (userId) {
       multi.incr(`rate:user:${userId}`);
       multi.expire(`rate:user:${userId}`, TTL_SECONDS, "NX" as any);

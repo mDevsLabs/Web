@@ -32,12 +32,21 @@ export const editDocument = ({ session, dataStream }: EditDocumentProps) =>
       let updated = "";
       const currentContent = document.content ?? "";
 
+      if (!old_string || old_string.trim() === "") {
+        return {
+          error:
+            "old_string est obligatoire et ne peut pas être vide pour un editDocument ciblé. Si vous voulez réécrire tout le document, utilisez updateDocument.",
+        };
+      }
+
       if (!currentContent) {
-        // Document has no content yet, initialize it directly with new_string
-        updated = new_string;
-      } else if (!old_string || old_string === "" || old_string === currentContent) {
-        updated = new_string;
-      } else if (currentContent.includes(old_string)) {
+        return {
+          error:
+            "Le document est vide. Utilisez createDocument pour créer du contenu, ou updateDocument pour initialiser.",
+        };
+      }
+
+      if (currentContent.includes(old_string)) {
         updated = replace_all
           ? currentContent.replaceAll(old_string, new_string)
           : currentContent.replace(old_string, new_string);
@@ -49,7 +58,10 @@ export const editDocument = ({ session, dataStream }: EditDocumentProps) =>
             ? currentContent.replaceAll(trimmedOld, new_string)
             : currentContent.replace(trimmedOld, new_string);
         } else {
-          return { error: "old_string not found in document" };
+          return {
+            error:
+              "old_string introuvable dans le document. Vérifiez l'orthographe exacte ou ajoutez 3-5 lignes de contexte pour garantir l'unicité.",
+          };
         }
       }
 
@@ -107,11 +119,17 @@ export const editDocument = ({ session, dataStream }: EditDocumentProps) =>
     },
     inputSchema: z.object({
       id: z.string().describe("The ID of the artifact to edit"),
-      new_string: z.string().describe("Replacement string"),
+      new_string: z
+        .string()
+        .min(1)
+        .max(100_000)
+        .describe("Replacement string (1-100k chars)"),
       old_string: z
         .string()
+        .min(1)
+        .max(100_000)
         .describe(
-          "Exact string to find. Include 3-5 surrounding lines for uniqueness."
+          "Exact non-empty string to find. Include 3-5 surrounding lines for uniqueness."
         ),
       replace_all: z
         .boolean()

@@ -39,7 +39,11 @@ export const audioGenerate = ({ session, dataStream }: AudioGenerateProps) =>
             const weeklyLimit = Number(usageData.weeklyLimit ?? 0);
             const tokensUsed = Number(usageData.tokensUsed ?? 0);
             const estimatedTokens = Math.max(1, Math.ceil(text.length / 3.5));
-            if (weeklyLimit > 0 && (tokensUsed >= weeklyLimit || tokensUsed + estimatedTokens > weeklyLimit)) {
+            if (
+              weeklyLimit > 0 &&
+              (tokensUsed >= weeklyLimit ||
+                tokensUsed + estimatedTokens > weeklyLimit)
+            ) {
               return {
                 error: `Votre quota hebdomadaire Speech est atteint (${tokensUsed}/${weeklyLimit} tokens). Mettez à niveau votre forfait pour continuer.`,
                 limit: weeklyLimit,
@@ -48,7 +52,10 @@ export const audioGenerate = ({ session, dataStream }: AudioGenerateProps) =>
             }
           }
         } catch (quotaErr) {
-          console.warn("Avertissement vérification quota tool audio:", quotaErr);
+          console.warn(
+            "Avertissement vérification quota tool audio:",
+            quotaErr
+          );
         }
 
         // Récupérer préférences utilisateur pour le modèle, voix et vitesse par défaut
@@ -104,7 +111,9 @@ export const audioGenerate = ({ session, dataStream }: AudioGenerateProps) =>
           if (!res.ok) {
             return {
               error:
-                data?.error?.message || data?.error || "Erreur de génération audio.",
+                data?.error?.message ||
+                data?.error ||
+                "Erreur de génération audio.",
             };
           }
 

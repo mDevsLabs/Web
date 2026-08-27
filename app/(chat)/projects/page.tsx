@@ -27,12 +27,12 @@ import useSWR, { mutate as globalMutate } from "swr";
 import useSWRInfinite from "swr/infinite";
 import { useDebounceValue } from "usehooks-ts";
 import "react-data-grid/lib/styles.css";
+import { PageBackButton } from "@/components/chat/page-back-button";
 import {
   PROJECT_ICON_KEYS,
   PROJECT_ICON_LIST,
   ProjectIcon,
 } from "@/components/chat/project-icon";
-import { PageBackButton } from "@/components/chat/page-back-button";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -107,13 +107,16 @@ const PROJECT_COLORS = [
   "#8b5cf6",
   "#84cc16",
 ];
-const PROJECT_ICONS = PROJECT_ICON_KEYS;
+const _PROJECT_ICONS = PROJECT_ICON_KEYS;
 
 export default function ProjectsPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { resolvedTheme } = useTheme();
-  const { data: modelsData } = useSWR<{ models: any[] }>("/api/models", fetcher);
+  const { data: modelsData } = useSWR<{ models: any[] }>(
+    "/api/models",
+    fetcher
+  );
   const availableModels: any[] = modelsData?.models || [];
 
   const [viewMode, setViewMode] = useState<"grid" | "list">(
@@ -123,7 +126,7 @@ export default function ProjectsPage() {
   const [selectedProjectFilter, setSelectedProjectFilter] = useState<string>(
     searchParams.get("project") || "all"
   );
-  const [includeArchived, setIncludeArchived] = useState(
+  const [includeArchived, _setIncludeArchived] = useState(
     searchParams.get("archived") === "true"
   );
   const [tagFilter, setTagFilter] = useState(searchParams.get("tag") || "");
@@ -185,7 +188,7 @@ export default function ProjectsPage() {
     { dedupingInterval: 5000, keepPreviousData: true }
   );
   const projects: Project[] = projectsData?.projects ?? [];
-  const unassignedCount: number = projectsData?.unassignedCount ?? 0;
+  const _unassignedCount: number = projectsData?.unassignedCount ?? 0;
 
   const getChatKey = useCallback(
     (pageIndex: number, prev: { chats: Chat[]; hasMore: boolean } | null) => {
@@ -319,7 +322,7 @@ export default function ProjectsPage() {
     mutateChats();
   };
 
-  const toggleChatSelection = (id: string) => {
+  const _toggleChatSelection = (id: string) => {
     setSelectedChatIds((prev) => {
       const next = new Set(prev);
       if (next.has(id)) {
@@ -373,7 +376,7 @@ export default function ProjectsPage() {
     );
   };
 
-  const handleSingleAction = useCallback(
+  const _handleSingleAction = useCallback(
     async (chatId: string, patch: Record<string, unknown>) => {
       const res = await fetch(`/api/chats/${chatId}`, {
         body: JSON.stringify(patch),
@@ -596,7 +599,8 @@ export default function ProjectsPage() {
               Projets & Espaces de travail
             </h1>
             <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-              Organisez vos discussions par thématique et configurez des instructions dédiées.
+              Organisez vos discussions par thématique et configurez des
+              instructions dédiées.
             </p>
           </div>
         </div>
@@ -801,9 +805,13 @@ export default function ProjectsPage() {
                   {p.chatCount ?? 0} discussions
                 </Badge>
                 {p.defaultModel && (
-                  <Badge className="text-[11px] bg-primary/10 text-primary border-primary/20 gap-1 font-normal" variant="secondary">
+                  <Badge
+                    className="text-[11px] bg-primary/10 text-primary border-primary/20 gap-1 font-normal"
+                    variant="secondary"
+                  >
                     <SparklesIcon className="size-3 text-amber-500" />
-                    {availableModels.find((m) => m.id === p.defaultModel)?.name || p.defaultModel}
+                    {availableModels.find((m) => m.id === p.defaultModel)
+                      ?.name || p.defaultModel}
                   </Badge>
                 )}
                 {p.isArchived && (
@@ -1041,7 +1049,8 @@ export default function ProjectsPage() {
                 ))}
               </select>
               <span className="text-[11px] text-muted-foreground">
-                Modèle utilisé par défaut pour chaque nouvelle discussion lancée dans ce projet.
+                Modèle utilisé par défaut pour chaque nouvelle discussion lancée
+                dans ce projet.
               </span>
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -1145,7 +1154,8 @@ export default function ProjectsPage() {
                 ))}
               </select>
               <span className="text-[11px] text-muted-foreground">
-                Modèle utilisé par défaut pour chaque nouvelle discussion lancée dans ce projet.
+                Modèle utilisé par défaut pour chaque nouvelle discussion lancée
+                dans ce projet.
               </span>
             </div>
             <div className="grid grid-cols-2 gap-4">

@@ -34,7 +34,9 @@ export const requestSuggestions = ({
         return { error: "Forbidden" };
       }
 
-      const { getMaiSessionToken, getMaiUser } = await import("@/lib/auth/session");
+      const { getMaiSessionToken, getMaiUser } = await import(
+        "@/lib/auth/session"
+      );
       const [token, user] = await Promise.all([
         getMaiSessionToken(),
         getMaiUser(),
@@ -42,7 +44,8 @@ export const requestSuggestions = ({
 
       if (user && user.limit > 0 && user.tokensUsed >= user.limit) {
         return {
-          error: "Votre limite hebdomadaire de tokens est atteinte. Impossible de générer des suggestions.",
+          error:
+            "Votre limite hebdomadaire de tokens est atteinte. Impossible de générer des suggestions.",
         };
       }
 

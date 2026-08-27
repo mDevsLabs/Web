@@ -115,8 +115,6 @@ export function ProjectIcon({
     case "database":
     case "🗄️":
       return <Database className={className} style={style} />;
-    case "folder":
-    case "📁":
     default:
       return <Folder className={className} style={style} />;
   }

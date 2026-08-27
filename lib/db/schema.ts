@@ -44,6 +44,37 @@ export const project = pgTable(
 
 export type Project = InferSelectModel<typeof project>;
 
+export const skill = pgTable(
+  "Skill",
+  {
+    color: varchar("color", { length: 7 }).default("#6366f1"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    description: text("description").default(""),
+    icon: text("icon").default("sparkles"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    instructions: text("instructions").notNull().default(""),
+    isPublic: boolean("isPublic").notNull().default(false),
+    name: text("name").notNull(),
+    parameters: json("parameters").notNull().default([]),
+    pinned: boolean("pinned").notNull().default(false),
+    shareId: text("shareId"),
+    tags: text("tags").array().notNull().default([]),
+    tools: json("tools").notNull().default([]),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    shareIdIdx: index("Skill_shareId_idx").on(table.shareId),
+    userIdIdx: index("Skill_userId_idx").on(table.userId),
+    userPinnedIdx: index("Skill_userId_pinned_idx").on(
+      table.userId,
+      table.pinned
+    ),
+  })
+);
+
+export type Skill = InferSelectModel<typeof skill>;
+
 export const chat = pgTable(
   "Chat",
   {
@@ -55,6 +86,9 @@ export const chat = pgTable(
     modeId: varchar("modeId", { length: 20 }).default("standard"),
     pinned: boolean("pinned").notNull().default(false),
     projectId: uuid("projectId").references(() => project.id, {
+      onDelete: "set null",
+    }),
+    skillId: uuid("skillId").references(() => skill.id, {
       onDelete: "set null",
     }),
     tags: text("tags").array().notNull().default([]),
@@ -214,11 +248,11 @@ export const weeklySpeechUsage = pgTable(
     weekStart: date("week_start").notNull(),
   },
   (table) => ({
+    userIdIdx: index("weekly_speech_usage_user_id_idx").on(table.userId),
     userWeekUnique: uniqueIndex("weekly_speech_usage_user_week_idx").on(
       table.userId,
       table.weekStart
     ),
-    userIdIdx: index("weekly_speech_usage_user_id_idx").on(table.userId),
     weekStartIdx: index("weekly_speech_usage_week_start_idx").on(
       table.weekStart
     ),
@@ -296,3 +330,84 @@ export const mprojectsImageGenerations = pgTable(
 export type MprojectsImageGenerations = InferSelectModel<
   typeof mprojectsImageGenerations
 >;
+
+export const mcpServer = pgTable(
+  "McpServer",
+  {
+    args: json("args").notNull().default([]),
+    authConfig: json("authConfig").notNull().default({}),
+    authType: varchar("authType", {
+      enum: ["none", "bearer", "basic", "oauth2", "custom_headers"],
+    })
+      .notNull()
+      .default("none"),
+    command: text("command"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    description: text("description").default(""),
+    env: json("env").notNull().default({}),
+    headers: json("headers").notNull().default({}),
+    icon: text("icon").default("server"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    isEnabled: boolean("isEnabled").notNull().default(true),
+    name: text("name").notNull(),
+    requireApproval: varchar("requireApproval", {
+      enum: ["always_allow", "ask_permission", "write_only"],
+    })
+      .notNull()
+      .default("write_only"),
+    toolsCache: json("toolsCache").notNull().default([]),
+    transport: varchar("transport", {
+      enum: ["sse", "http", "stdio", "websocket"],
+    })
+      .notNull()
+      .default("sse"),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+    url: text("url"),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    userEnabledIdx: index("McpServer_userId_isEnabled_idx").on(
+      table.userId,
+      table.isEnabled
+    ),
+    userIdIdx: index("McpServer_userId_idx").on(table.userId),
+  })
+);
+
+export type McpServer = InferSelectModel<typeof mcpServer>;
+
+export const mcpLog = pgTable(
+  "McpLog",
+  {
+    actionType: varchar("actionType", {
+      enum: ["read", "write", "delete", "execute", "other"],
+    })
+      .notNull()
+      .default("read"),
+    approvalStatus: varchar("approvalStatus", {
+      enum: ["pending", "approved", "denied", "auto_approved"],
+    })
+      .notNull()
+      .default("auto_approved"),
+    chatId: uuid("chatId"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    durationMs: integer("durationMs").default(0),
+    error: text("error"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    inputPayload: json("inputPayload"),
+    outputPayload: json("outputPayload"),
+    serverId: uuid("serverId").references(() => mcpServer.id, {
+      onDelete: "cascade",
+    }),
+    serverName: text("serverName").notNull(),
+    toolName: text("toolName").notNull(),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    createdAtIdx: index("McpLog_createdAt_idx").on(table.createdAt),
+    serverIdIdx: index("McpLog_serverId_idx").on(table.serverId),
+    userIdIdx: index("McpLog_userId_idx").on(table.userId),
+  })
+);
+
+export type McpLog = InferSelectModel<typeof mcpLog>;

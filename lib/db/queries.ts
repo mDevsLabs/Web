@@ -10,7 +10,6 @@ import {
   gt,
   gte,
   inArray,
-  lt,
   type SQL,
   sql,
 } from "drizzle-orm";
@@ -24,9 +23,12 @@ import {
   chat,
   type DBMessage,
   document,
+  mcpLog,
+  mcpServer,
   message,
   project,
   type Suggestion,
+  skill,
   stream,
   suggestion,
   vote,
@@ -219,6 +221,63 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "default_audio_speed" double precision DEFAULT 1.0`
   );
 
+  // Tables Skills et MCP
+  await run(client`CREATE TABLE IF NOT EXISTS "Skill" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "userId" text NOT NULL,
+    "name" text NOT NULL,
+    "description" text DEFAULT '',
+    "instructions" text NOT NULL DEFAULT '',
+    "icon" text DEFAULT 'sparkles',
+    "color" varchar(7) DEFAULT '#6366f1',
+    "tools" json DEFAULT '[]'::json NOT NULL,
+    "parameters" json DEFAULT '[]'::json NOT NULL,
+    "pinned" boolean DEFAULT false NOT NULL,
+    "isPublic" boolean DEFAULT false NOT NULL,
+    "shareId" text,
+    "tags" text[] DEFAULT '{}'::text[] NOT NULL,
+    "createdAt" timestamp DEFAULT now() NOT NULL,
+    "updatedAt" timestamp DEFAULT now() NOT NULL
+  )`);
+  await run(client`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "skillId" uuid`);
+
+  await run(client`CREATE TABLE IF NOT EXISTS "McpServer" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "userId" text NOT NULL,
+    "name" text NOT NULL,
+    "description" text DEFAULT '',
+    "icon" text DEFAULT 'server',
+    "transport" varchar NOT NULL DEFAULT 'sse',
+    "url" text,
+    "command" text,
+    "args" json DEFAULT '[]'::json NOT NULL,
+    "env" json DEFAULT '{}'::json NOT NULL,
+    "authType" varchar NOT NULL DEFAULT 'none',
+    "authConfig" json DEFAULT '{}'::json NOT NULL,
+    "headers" json DEFAULT '{}'::json NOT NULL,
+    "isEnabled" boolean DEFAULT true NOT NULL,
+    "requireApproval" varchar NOT NULL DEFAULT 'write_only',
+    "toolsCache" json DEFAULT '[]'::json NOT NULL,
+    "createdAt" timestamp DEFAULT now() NOT NULL,
+    "updatedAt" timestamp DEFAULT now() NOT NULL
+  )`);
+
+  await run(client`CREATE TABLE IF NOT EXISTS "McpLog" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "userId" text NOT NULL,
+    "serverId" uuid,
+    "serverName" text NOT NULL,
+    "toolName" text NOT NULL,
+    "chatId" uuid,
+    "actionType" varchar NOT NULL DEFAULT 'read',
+    "approvalStatus" varchar NOT NULL DEFAULT 'auto_approved',
+    "inputPayload" json,
+    "outputPayload" json,
+    "error" text,
+    "durationMs" integer DEFAULT 0,
+    "createdAt" timestamp DEFAULT now() NOT NULL
+  )`);
+
   // Migrations de colonnes (supprimer contraintes FK, caster vers text)
   await run(
     client`ALTER TABLE "Chat" DROP CONSTRAINT IF EXISTS "Chat_userId_fkey" CASCADE`
@@ -405,6 +464,7 @@ export async function saveChat({
   tags,
   customInstructions,
   modeId,
+  skillId,
   temperatureOverride,
 }: {
   id: string;
@@ -415,6 +475,7 @@ export async function saveChat({
   tags?: string[];
   customInstructions?: string | null;
   modeId?: string;
+  skillId?: string | null;
   temperatureOverride?: number | null;
 }) {
   try {
@@ -425,6 +486,7 @@ export async function saveChat({
       id,
       modeId: modeId ?? "standard",
       projectId: projectId ?? null,
+      skillId: skillId ?? null,
       tags: tags ?? [],
       temperatureOverride: temperatureOverride ?? null,
       title,
@@ -619,7 +681,7 @@ export async function getChatById({ id }: { id: string }) {
       return null;
     }
     return selectedChat;
-  } catch (_error) {
+  } catch {
     return null;
   }
 }
@@ -1121,7 +1183,7 @@ export async function getMessagesByChatId({ id }: { id: string }) {
       .from(message)
       .where(eq(message.chatId, id))
       .orderBy(asc(message.createdAt));
-  } catch (_error) {
+  } catch {
     return [];
   }
 }
@@ -1470,7 +1532,11 @@ export async function recordTokenUsage({
       ? totalTokens
       : Math.max(0, (inputTokens || 0) + (outputTokens || 0));
 
-  if (actualTotal <= 0 && (!inputTokens || inputTokens <= 0) && (!outputTokens || outputTokens <= 0)) {
+  if (
+    actualTotal <= 0 &&
+    (!inputTokens || inputTokens <= 0) &&
+    (!outputTokens || outputTokens <= 0)
+  ) {
     return;
   }
 
@@ -1521,3 +1587,427 @@ export async function recordTokenUsage({
   }
 }
 
+// ==========================================
+// SKILLS QUERIES
+// ==========================================
+
+export async function getSkillsByUserId({ userId }: { userId: string }) {
+  const database = await getDb();
+  return database
+    .select()
+    .from(skill)
+    .where(eq(skill.userId, userId))
+    .orderBy(desc(skill.pinned), desc(skill.updatedAt));
+}
+
+export async function getSkillById({
+  id,
+  userId,
+}: {
+  id: string;
+  userId?: string;
+}) {
+  const database = await getDb();
+  const conditions = [eq(skill.id, id)];
+  if (userId) {
+    conditions.push(eq(skill.userId, userId));
+  }
+  const [result] = await database
+    .select()
+    .from(skill)
+    .where(and(...conditions));
+  return result ?? null;
+}
+
+export async function getPublicSkillByShareId({
+  shareId,
+}: {
+  shareId: string;
+}) {
+  const database = await getDb();
+  const [result] = await database
+    .select()
+    .from(skill)
+    .where(and(eq(skill.shareId, shareId), eq(skill.isPublic, true)));
+  return result ?? null;
+}
+
+export async function createSkill(data: {
+  userId: string;
+  name: string;
+  description?: string;
+  instructions: string;
+  icon?: string;
+  color?: string;
+  tools?: string[];
+  parameters?: Array<{
+    name: string;
+    description?: string;
+    type?: string;
+    required?: boolean;
+    defaultValue?: string;
+  }>;
+  pinned?: boolean;
+  isPublic?: boolean;
+  tags?: string[];
+}) {
+  const database = await getDb();
+  const [created] = await database
+    .insert(skill)
+    .values({
+      color: data.color ?? "#6366f1",
+      description: data.description ?? "",
+      icon: data.icon ?? "sparkles",
+      instructions: data.instructions,
+      isPublic: data.isPublic ?? false,
+      name: data.name,
+      parameters: (data.parameters as any) ?? [],
+      pinned: data.pinned ?? false,
+      shareId: data.isPublic
+        ? Math.random().toString(36).substring(2, 10)
+        : null,
+      tags: data.tags ?? [],
+      tools: (data.tools as any) ?? [],
+      userId: data.userId,
+    })
+    .returning();
+  return created;
+}
+
+export async function updateSkill({
+  id,
+  userId,
+  data,
+}: {
+  id: string;
+  userId: string;
+  data: Partial<{
+    name: string;
+    description: string;
+    instructions: string;
+    icon: string;
+    color: string;
+    tools: string[];
+    parameters: any[];
+    pinned: boolean;
+    isPublic: boolean;
+    shareId: string | null;
+    tags: string[];
+  }>;
+}) {
+  const database = await getDb();
+  const [updated] = await database
+    .update(skill)
+    .set({
+      ...data,
+      updatedAt: new Date(),
+    })
+    .where(and(eq(skill.id, id), eq(skill.userId, userId)))
+    .returning();
+  return updated ?? null;
+}
+
+export async function deleteSkill({
+  id,
+  userId,
+}: {
+  id: string;
+  userId: string;
+}) {
+  const database = await getDb();
+  const [deleted] = await database
+    .delete(skill)
+    .where(and(eq(skill.id, id), eq(skill.userId, userId)))
+    .returning();
+  return deleted ?? null;
+}
+
+export async function togglePinSkill({
+  id,
+  userId,
+}: {
+  id: string;
+  userId: string;
+}) {
+  const database = await getDb();
+  const existing = await getSkillById({ id, userId });
+  if (!existing) {
+    return null;
+  }
+
+  const [updated] = await database
+    .update(skill)
+    .set({
+      pinned: !existing.pinned,
+      updatedAt: new Date(),
+    })
+    .where(and(eq(skill.id, id), eq(skill.userId, userId)))
+    .returning();
+  return updated ?? null;
+}
+
+export async function duplicateSkill({
+  id,
+  userId,
+}: {
+  id: string;
+  userId: string;
+}) {
+  const original = await getSkillById({ id, userId });
+  if (!original) {
+    return null;
+  }
+
+  return createSkill({
+    color: original.color ?? "#6366f1",
+    description: original.description ?? "",
+    icon: original.icon ?? "sparkles",
+    instructions: original.instructions,
+    isPublic: false,
+    name: `${original.name} (Copie)`,
+    parameters: (original.parameters as any[]) ?? [],
+    pinned: false,
+    tags: original.tags ?? [],
+    tools: (original.tools as string[]) ?? [],
+    userId,
+  });
+}
+
+// ==========================================
+// MCP SERVER & LOG QUERIES
+// ==========================================
+
+export async function getMcpServersByUserId({ userId }: { userId: string }) {
+  const database = await getDb();
+  return database
+    .select()
+    .from(mcpServer)
+    .where(eq(mcpServer.userId, userId))
+    .orderBy(desc(mcpServer.createdAt));
+}
+
+export async function getMcpServerById({
+  id,
+  userId,
+}: {
+  id: string;
+  userId?: string;
+}) {
+  const database = await getDb();
+  const conditions = [eq(mcpServer.id, id)];
+  if (userId) {
+    conditions.push(eq(mcpServer.userId, userId));
+  }
+  const [result] = await database
+    .select()
+    .from(mcpServer)
+    .where(and(...conditions));
+  return result ?? null;
+}
+
+export async function createMcpServer(data: {
+  userId: string;
+  name: string;
+  description?: string;
+  icon?: string;
+  transport?: "sse" | "http" | "stdio" | "websocket";
+  url?: string;
+  command?: string;
+  args?: string[];
+  env?: Record<string, string>;
+  authType?: "none" | "bearer" | "basic" | "oauth2" | "custom_headers";
+  authConfig?: Record<string, any>;
+  headers?: Record<string, string>;
+  isEnabled?: boolean;
+  requireApproval?: "always_allow" | "ask_permission" | "write_only";
+  toolsCache?: any[];
+}) {
+  const database = await getDb();
+  const [created] = await database
+    .insert(mcpServer)
+    .values({
+      args: (data.args as any) ?? [],
+      authConfig: data.authConfig ?? {},
+      authType: data.authType ?? "none",
+      command: data.command ?? null,
+      description: data.description ?? "",
+      env: data.env ?? {},
+      headers: data.headers ?? {},
+      icon: data.icon ?? "server",
+      isEnabled: data.isEnabled ?? true,
+      name: data.name,
+      requireApproval: data.requireApproval ?? "write_only",
+      toolsCache: (data.toolsCache as any) ?? [],
+      transport: data.transport ?? "sse",
+      url: data.url ?? null,
+      userId: data.userId,
+    })
+    .returning();
+  return created;
+}
+
+export async function updateMcpServer({
+  id,
+  userId,
+  data,
+}: {
+  id: string;
+  userId: string;
+  data: Partial<{
+    name: string;
+    description: string;
+    icon: string;
+    transport: "sse" | "http" | "stdio" | "websocket";
+    url: string | null;
+    command: string | null;
+    args: string[];
+    env: Record<string, string>;
+    authType: "none" | "bearer" | "basic" | "oauth2" | "custom_headers";
+    authConfig: Record<string, any>;
+    headers: Record<string, string>;
+    isEnabled: boolean;
+    requireApproval: "always_allow" | "ask_permission" | "write_only";
+    toolsCache: any[];
+  }>;
+}) {
+  const database = await getDb();
+  const [updated] = await database
+    .update(mcpServer)
+    .set({
+      ...data,
+      updatedAt: new Date(),
+    })
+    .where(and(eq(mcpServer.id, id), eq(mcpServer.userId, userId)))
+    .returning();
+  return updated ?? null;
+}
+
+export async function deleteMcpServer({
+  id,
+  userId,
+}: {
+  id: string;
+  userId: string;
+}) {
+  const database = await getDb();
+  const [deleted] = await database
+    .delete(mcpServer)
+    .where(and(eq(mcpServer.id, id), eq(mcpServer.userId, userId)))
+    .returning();
+  return deleted ?? null;
+}
+
+export async function toggleMcpServer({
+  id,
+  userId,
+}: {
+  id: string;
+  userId: string;
+}) {
+  const database = await getDb();
+  const existing = await getMcpServerById({ id, userId });
+  if (!existing) {
+    return null;
+  }
+
+  const [updated] = await database
+    .update(mcpServer)
+    .set({
+      isEnabled: !existing.isEnabled,
+      updatedAt: new Date(),
+    })
+    .where(and(eq(mcpServer.id, id), eq(mcpServer.userId, userId)))
+    .returning();
+  return updated ?? null;
+}
+
+export async function updateMcpToolsCache({
+  id,
+  userId,
+  toolsCache,
+}: {
+  id: string;
+  toolsCache: any[];
+  userId: string;
+}) {
+  const database = await getDb();
+  const [updated] = await database
+    .update(mcpServer)
+    .set({
+      toolsCache: (toolsCache as any) ?? [],
+      updatedAt: new Date(),
+    })
+    .where(and(eq(mcpServer.id, id), eq(mcpServer.userId, userId)))
+    .returning();
+  return updated ?? null;
+}
+
+export async function logMcpExecution(data: {
+  userId: string;
+  serverId?: string | null;
+  serverName: string;
+  toolName: string;
+  chatId?: string | null;
+  actionType?: "read" | "write" | "delete" | "execute" | "other";
+  approvalStatus?: "pending" | "approved" | "denied" | "auto_approved";
+  inputPayload?: any;
+  outputPayload?: any;
+  error?: string | null;
+  durationMs?: number;
+}) {
+  try {
+    const database = await getDb();
+    const [log] = await database
+      .insert(mcpLog)
+      .values({
+        actionType: data.actionType ?? "read",
+        approvalStatus: data.approvalStatus ?? "auto_approved",
+        chatId: data.chatId ?? null,
+        durationMs: data.durationMs ?? 0,
+        error: data.error ?? null,
+        inputPayload: data.inputPayload ?? null,
+        outputPayload: data.outputPayload ?? null,
+        serverId: data.serverId ?? null,
+        serverName: data.serverName,
+        toolName: data.toolName,
+        userId: data.userId,
+      })
+      .returning();
+    return log;
+  } catch (err) {
+    console.error("Erreur logMcpExecution:", err);
+    return null;
+  }
+}
+
+export async function getMcpLogsByUserId({
+  userId,
+  limit = 50,
+}: {
+  limit?: number;
+  userId: string;
+}) {
+  const database = await getDb();
+  return database
+    .select()
+    .from(mcpLog)
+    .where(eq(mcpLog.userId, userId))
+    .orderBy(desc(mcpLog.createdAt))
+    .limit(limit);
+}
+
+export async function getMcpStats({ userId }: { userId: string }) {
+  const database = await getDb();
+  const [serversCount] = await database
+    .select({ count: count() })
+    .from(mcpServer)
+    .where(eq(mcpServer.userId, userId));
+  const [logsCount] = await database
+    .select({ count: count() })
+    .from(mcpLog)
+    .where(eq(mcpLog.userId, userId));
+  return {
+    servers: Number(serversCount?.count ?? 0),
+    totalCalls: Number(logsCount?.count ?? 0),
+  };
+}

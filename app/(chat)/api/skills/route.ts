@@ -1,0 +1,66 @@
+import { z } from "zod";
+import { getMaiUser } from "@/lib/auth/session";
+import { createSkill, getSkillsByUserId } from "@/lib/db/queries";
+import { ChatbotError } from "@/lib/errors";
+
+const createSkillSchema = z.object({
+  color: z
+    .string()
+    .regex(/^#[0-9a-fA-F]{6}$/)
+    .optional(),
+  description: z.string().max(1000).optional(),
+  icon: z.string().max(50).optional(),
+  instructions: z.string().min(1).max(20_000),
+  isPublic: z.boolean().optional(),
+  name: z.string().min(1).max(100),
+  parameters: z
+    .array(
+      z.object({
+        defaultValue: z.string().optional(),
+        description: z.string().optional(),
+        name: z.string(),
+        required: z.boolean().optional(),
+        type: z.string().optional(),
+      })
+    )
+    .optional(),
+  pinned: z.boolean().optional(),
+  tags: z.array(z.string().max(50)).optional(),
+  tools: z.array(z.string()).optional(),
+});
+
+export async function GET() {
+  const user = await getMaiUser();
+  if (!user) {
+    return new ChatbotError("unauthorized:chat").toResponse();
+  }
+  const userId = user.id || user.email;
+
+  const skills = await getSkillsByUserId({ userId });
+  return Response.json(skills);
+}
+
+export async function POST(request: Request) {
+  const user = await getMaiUser();
+  if (!user) {
+    return new ChatbotError("unauthorized:chat").toResponse();
+  }
+  const userId = user.id || user.email;
+
+  try {
+    const json = await request.json();
+    const parsed = createSkillSchema.parse(json);
+
+    const created = await createSkill({
+      ...parsed,
+      userId,
+    });
+
+    return Response.json(created, { status: 201 });
+  } catch (err: any) {
+    return Response.json(
+      { error: err.message ?? "Données invalides" },
+      { status: 400 }
+    );
+  }
+}

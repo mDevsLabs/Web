@@ -10,18 +10,20 @@ import {
 import { maiModelsList } from "./maiModels.ts";
 
 function getOpenRouterApiKey(userCustomKey?: string | null): string {
-  if (userCustomKey && userCustomKey.trim().startsWith("sk-or-")) {
+  if (userCustomKey?.trim().startsWith("sk-or-")) {
     return userCustomKey.trim();
   }
   return Deno.env.get("OPENROUTER_API_KEY") || "";
 }
 
 export function registerModelRoutes(app: Hono) {
-  // GET /usage
-  app.get("/usage", async (c) => {
+  // ─────────────────────────────────────────────
+  // GET /v1/usage & /usage
+  // ─────────────────────────────────────────────
+  const handleGetUsage = async (c: any) => {
     try {
-      const token = extractToken(c.req.raw);
-      let userId = c.get("userId");
+      const token = extractToken(c.req.raw) || (c as any).get?.("apiKey");
+      let userId = (c as any).get?.("userId");
 
       if (token) {
         try {
@@ -54,7 +56,8 @@ export function registerModelRoutes(app: Hono) {
 
       const { weekStartStr, nextResetIso } = getWeekData();
 
-      const userResult = await sql`SELECT id, tier, email, username, phone, avatar_url FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
+      const userResult =
+        await sql`SELECT id, tier, email, username, phone, avatar_url FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
       const user = userResult[0];
       const resolvedUserId = user ? user.id : userId;
 
@@ -79,7 +82,7 @@ export function registerModelRoutes(app: Hono) {
       const tokensUsed = usageResult[0]?.tokens_used || 0;
       const speechTokensUsed = Number(speechResult?.[0]?.tokens_used || 0);
       const userTier = user?.tier || "Free";
-      const limit = TIER_LIMITS[userTier] || TIER_LIMITS["Free"];
+      const limit = TIER_LIMITS[userTier] || TIER_LIMITS.Free;
       const speechLimit = getTierSpeechLimit(userTier);
 
       return c.json({
@@ -99,13 +102,20 @@ export function registerModelRoutes(app: Hono) {
     } catch {
       return c.json({ error: "Erreur serveur." }, 500);
     }
-  });
+  };
 
-  // POST /log-usage
-  app.post("/log-usage", async (c) => {
+  app.get("/usage", handleGetUsage);
+  app.get("/v1/usage", handleGetUsage);
+  app.get("/usage/", handleGetUsage);
+  app.get("/v1/usage/", handleGetUsage);
+
+  // ─────────────────────────────────────────────
+  // POST /v1/log-usage & /log-usage
+  // ─────────────────────────────────────────────
+  const handleLogUsage = async (c: any) => {
     try {
-      const token = extractToken(c.req.raw);
-      let userId = c.get("userId");
+      const token = extractToken(c.req.raw) || (c as any).get?.("apiKey");
+      let userId = (c as any).get?.("userId");
 
       if (token) {
         try {
@@ -133,7 +143,7 @@ export function registerModelRoutes(app: Hono) {
         await sql`SELECT id, tier FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text LIMIT 1`;
       const tier = userRes.length > 0 ? userRes[0].tier : "Free";
       const resolvedUserId = userRes.length > 0 ? userRes[0].id : userId;
-      const limit = TIER_LIMITS[tier] || TIER_LIMITS["Free"];
+      const limit = TIER_LIMITS[tier] || TIER_LIMITS.Free;
 
       const usageResult = await sql`
         SELECT tokens_used FROM weekly_usage
@@ -159,9 +169,14 @@ export function registerModelRoutes(app: Hono) {
       });
     } catch (err: any) {
       console.error("[log-usage] Error:", err);
-      return c.json({ error: "Erreur serveur.", details: err?.message }, 500);
+      return c.json({ details: err?.message, error: "Erreur serveur." }, 500);
     }
-  });
+  };
+
+  app.post("/log-usage", handleLogUsage);
+  app.post("/v1/log-usage", handleLogUsage);
+  app.post("/log-usage/", handleLogUsage);
+  app.post("/v1/log-usage/", handleLogUsage);
 
   // ─────────────────────────────────────────────
   // GET /v1/models, /models & /v1beta/models
@@ -183,7 +198,7 @@ export function registerModelRoutes(app: Hono) {
       const rawModels: any[] = json.data || [];
 
       let filtered = rawModels
-        .filter((m) => m && m.id && !m.id.startsWith("openrouter/"))
+        .filter((m) => m?.id && !m.id.startsWith("openrouter/"))
         .filter((m) => {
           const modality = m.architecture?.modality || "";
           const outputModalities = m.architecture?.output_modalities || [];
@@ -221,7 +236,7 @@ export function registerModelRoutes(app: Hono) {
       }
 
       return c.json({ data: filtered, object: "list" });
-    } catch (_err) {
+    } catch {
       let fallback = [
         {
           architecture: {
@@ -491,8 +506,7 @@ export function registerModelRoutes(app: Hono) {
         LIMIT 1
       `;
       const currentUsage = usageResult[0]?.tokens_used || 0;
-      const limit =
-        TIER_LIMITS[String(userPlan || "Free")] || TIER_LIMITS["Free"];
+      const limit = TIER_LIMITS[String(userPlan || "Free")] || TIER_LIMITS.Free;
 
       if (currentUsage >= limit) {
         return c.json(
@@ -514,8 +528,12 @@ export function registerModelRoutes(app: Hono) {
 
       // Nettoyer le body : retirer tout champ `api_key` ou `Authorization` injecté par le client
       // pour empêcher tout contournement de la clé serveur.
-      const { api_key: _ck, authorization: _ca, Authorization: _cA, ...safeBody } =
-        body as Record<string, any>;
+      const {
+        api_key: _ck,
+        authorization: _ca,
+        Authorization: _cA,
+        ...safeBody
+      } = body as Record<string, any>;
 
       const openRouterRes = await fetch(
         "https://openrouter.ai/api/v1/chat/completions",
@@ -539,7 +557,7 @@ export function registerModelRoutes(app: Hono) {
             ON CONFLICT (user_id, week_start)
             DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
           `;
-        } catch (_e) {}
+        } catch {}
       }
 
       return new Response(openRouterRes.body, {
@@ -589,7 +607,9 @@ export function registerModelRoutes(app: Hono) {
       }
 
       const modelRequested = body.model;
-      const modelStr = String(modelRequested || "").toLowerCase().trim();
+      const modelStr = String(modelRequested || "")
+        .toLowerCase()
+        .trim();
 
       const planStr = String(userPlan || "Free")
         .toLowerCase()
@@ -636,8 +656,7 @@ export function registerModelRoutes(app: Hono) {
         LIMIT 1
       `;
       const currentUsage = usageResult[0]?.tokens_used || 0;
-      const limit =
-        TIER_LIMITS[String(userPlan || "Free")] || TIER_LIMITS["Free"];
+      const limit = TIER_LIMITS[String(userPlan || "Free")] || TIER_LIMITS.Free;
 
       if (currentUsage >= limit) {
         return c.json(
@@ -658,8 +677,12 @@ export function registerModelRoutes(app: Hono) {
       }
 
       // Nettoyer le body : retirer tout champ `api_key` ou `Authorization` injecté par le client
-      const { api_key: _ck, authorization: _ca, Authorization: _cA, ...safeBody } =
-        body as Record<string, any>;
+      const {
+        api_key: _ck,
+        authorization: _ca,
+        Authorization: _cA,
+        ...safeBody
+      } = body as Record<string, any>;
 
       const openRouterRes = await fetch(
         "https://openrouter.ai/api/v1/chat/completions",
@@ -683,7 +706,7 @@ export function registerModelRoutes(app: Hono) {
             ON CONFLICT (user_id, week_start)
             DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
           `;
-        } catch (_e) {}
+        } catch {}
       }
 
       return new Response(openRouterRes.body, {
@@ -732,7 +755,9 @@ export function registerModelRoutes(app: Hono) {
 
       const paramModel = c.req.param("model");
       const modelRequested = body.model || paramModel || pathModel;
-      const modelStr = String(modelRequested || "").toLowerCase().trim();
+      const modelStr = String(modelRequested || "")
+        .toLowerCase()
+        .trim();
 
       const planStr = String(userPlan || "Free")
         .toLowerCase()
@@ -778,8 +803,7 @@ export function registerModelRoutes(app: Hono) {
         LIMIT 1
       `;
       const currentUsage = usageResult[0]?.tokens_used || 0;
-      const limit =
-        TIER_LIMITS[String(userPlan || "Free")] || TIER_LIMITS["Free"];
+      const limit = TIER_LIMITS[String(userPlan || "Free")] || TIER_LIMITS.Free;
 
       if (currentUsage >= limit) {
         return c.json(
@@ -800,8 +824,12 @@ export function registerModelRoutes(app: Hono) {
       }
 
       // Nettoyer le body : retirer tout champ `api_key` ou `Authorization` injecté par le client
-      const { api_key: _ck, authorization: _ca, Authorization: _cA, ...safeBody } =
-        body as Record<string, any>;
+      const {
+        api_key: _ck,
+        authorization: _ca,
+        Authorization: _cA,
+        ...safeBody
+      } = body as Record<string, any>;
 
       const openRouterPayload = {
         ...safeBody,
@@ -830,7 +858,7 @@ export function registerModelRoutes(app: Hono) {
             ON CONFLICT (user_id, week_start)
             DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
           `;
-        } catch (_e) {}
+        } catch {}
       }
 
       return new Response(openRouterRes.body, {

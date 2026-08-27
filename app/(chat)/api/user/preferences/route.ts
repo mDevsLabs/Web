@@ -38,7 +38,8 @@ export async function GET() {
     }
     return Response.json({
       customInstructions: rows[0].custom_instructions || "",
-      defaultAudioModel: rows[0].default_audio_model || "deepgram/flux-tts:free",
+      defaultAudioModel:
+        rows[0].default_audio_model || "deepgram/flux-tts:free",
       defaultAudioSpeed: rows[0].default_audio_speed ?? 1.0,
       defaultAudioVoice: rows[0].default_audio_voice || "flux-alexis-en",
       defaultImageModel:

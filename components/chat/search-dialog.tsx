@@ -7,8 +7,6 @@ import {
   MessageSquareIcon,
   PinIcon,
   SearchIcon,
-  SparklesIcon,
-  TagIcon,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
@@ -52,7 +50,9 @@ export function SearchDialog() {
     }
     setLoading(true);
     try {
-      const res = await fetch(`/api/search?q=${encodeURIComponent(q)}&limit=12`);
+      const res = await fetch(
+        `/api/search?q=${encodeURIComponent(q)}&limit=12`
+      );
       if (res.ok) {
         const data = await res.json();
         setResults(data);
@@ -150,7 +150,8 @@ export function SearchDialog() {
             type="button"
           >
             <MessageSquareIcon className="size-3" />
-            Discussions {results.chats.length > 0 && `(${results.chats.length})`}
+            Discussions{" "}
+            {results.chats.length > 0 && `(${results.chats.length})`}
           </button>
           <button
             className={cn(
@@ -163,7 +164,8 @@ export function SearchDialog() {
             type="button"
           >
             <ClockIcon className="size-3" />
-            Messages {results.messages.length > 0 && `(${results.messages.length})`}
+            Messages{" "}
+            {results.messages.length > 0 && `(${results.messages.length})`}
           </button>
           <button
             className={cn(
@@ -176,7 +178,8 @@ export function SearchDialog() {
             type="button"
           >
             <FolderKanbanIcon className="size-3" />
-            Projets {results.projects.length > 0 && `(${results.projects.length})`}
+            Projets{" "}
+            {results.projects.length > 0 && `(${results.projects.length})`}
           </button>
           <button
             className={cn(
@@ -201,7 +204,10 @@ export function SearchDialog() {
         {!hasAny && query.trim().length < 2 && (
           <div className="py-8 text-center text-xs text-muted-foreground flex flex-col items-center gap-2">
             <SearchIcon className="size-5 text-muted-foreground/50" />
-            <span>Tapez 2 caractères minimum pour rechercher dans vos discussions, messages et projets.</span>
+            <span>
+              Tapez 2 caractères minimum pour rechercher dans vos discussions,
+              messages et projets.
+            </span>
           </div>
         )}
         {loading && (
@@ -228,7 +234,10 @@ export function SearchDialog() {
                       {c.title}
                     </span>
                     {c.pinned && (
-                      <span className="shrink-0 flex items-center text-amber-500 text-[10px]" title="Épinglée">
+                      <span
+                        className="shrink-0 flex items-center text-amber-500 text-[10px]"
+                        title="Épinglée"
+                      >
                         <PinIcon className="size-3 fill-current" />
                       </span>
                     )}
@@ -236,7 +245,10 @@ export function SearchDialog() {
                   {c.tags && c.tags.length > 0 && (
                     <div className="flex items-center gap-1 mt-0.5">
                       {c.tags.slice(0, 3).map((t: string) => (
-                        <span className="text-[10px] text-muted-foreground bg-muted/50 px-1.5 py-0.2 rounded" key={t}>
+                        <span
+                          className="text-[10px] text-muted-foreground bg-muted/50 px-1.5 py-0.2 rounded"
+                          key={t}
+                        >
                           #{t}
                         </span>
                       ))}
@@ -254,15 +266,17 @@ export function SearchDialog() {
         {showMessages && results.messages.length > 0 && (
           <CommandGroup heading={`Messages (${results.messages.length})`}>
             {results.messages.map((m) => {
-              const snippet = m.snippet || (() => {
-                try {
-                  const parts = m.parts as any[];
-                  const t = parts?.find((p) => p.type === "text")?.text || "";
-                  return t.slice(0, 80);
-                } catch {
-                  return "";
-                }
-              })();
+              const snippet =
+                m.snippet ||
+                (() => {
+                  try {
+                    const parts = m.parts as any[];
+                    const t = parts?.find((p) => p.type === "text")?.text || "";
+                    return t.slice(0, 80);
+                  } catch {
+                    return "";
+                  }
+                })();
               return (
                 <CommandItem
                   className="flex items-start gap-2.5 py-2"
@@ -278,7 +292,10 @@ export function SearchDialog() {
                       {snippet || "Message sans texte"}
                     </span>
                     <span className="text-[11px] text-muted-foreground mt-0.5 truncate">
-                      Dans : <strong className="text-foreground/80 font-medium">{m.chatTitle || "Discussion"}</strong>
+                      Dans :{" "}
+                      <strong className="text-foreground/80 font-medium">
+                        {m.chatTitle || "Discussion"}
+                      </strong>
                     </span>
                   </div>
                   <span className="ml-auto text-[10px] text-muted-foreground shrink-0 mt-0.5">
@@ -303,13 +320,17 @@ export function SearchDialog() {
                   <FolderKanbanIcon className="size-3.5" />
                 </div>
                 <div className="flex flex-col min-w-0 flex-1">
-                  <span className="font-medium text-sm text-foreground truncate">{p.name}</span>
+                  <span className="font-medium text-sm text-foreground truncate">
+                    {p.name}
+                  </span>
                   {p.description && (
-                    <span className="text-[11px] text-muted-foreground truncate">{p.description}</span>
+                    <span className="text-[11px] text-muted-foreground truncate">
+                      {p.description}
+                    </span>
                   )}
                 </div>
                 <span className="ml-auto text-[10px] text-muted-foreground">
-                  {p.chatCount !== undefined ? `${p.chatCount} chats` : ""}
+                  {p.chatCount === undefined ? "" : `${p.chatCount} chats`}
                 </span>
               </CommandItem>
             ))}
@@ -328,7 +349,9 @@ export function SearchDialog() {
                 <span className="shrink-0 size-7 flex items-center justify-center rounded-lg bg-muted/60">
                   {getFileIcon(f.mime_type, f.original_name)}
                 </span>
-                <span className="truncate text-xs font-medium text-foreground">{f.original_name}</span>
+                <span className="truncate text-xs font-medium text-foreground">
+                  {f.original_name}
+                </span>
                 <span className="ml-auto text-[10px] text-muted-foreground">
                   {f.mime_type?.split("/")[1] || ""}
                 </span>

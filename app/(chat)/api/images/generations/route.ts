@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
         const usageData = await usageRes.json();
         const dailyLimit = Number(usageData.dailyLimit ?? 0);
         const usedToday = Number(usageData.usedToday ?? 0);
-        const remaining = Number(usageData.remaining ?? (dailyLimit - usedToday));
+        const remaining = Number(usageData.remaining ?? dailyLimit - usedToday);
         if (dailyLimit > 0 && (usedToday >= dailyLimit || remaining <= 0)) {
           return NextResponse.json(
             {

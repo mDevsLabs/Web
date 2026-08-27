@@ -2,6 +2,8 @@
 
 import {
   BombIcon,
+  CalculatorIcon,
+  CalendarIcon,
   CloudSunIcon,
   Code2Icon,
   FileTextIcon,
@@ -12,6 +14,7 @@ import {
   ImageIcon,
   LightbulbIcon,
   ListIcon,
+  NotebookIcon,
   PaletteIcon,
   PenLineIcon,
   PenSquareIcon,
@@ -45,6 +48,9 @@ export type SlashCommandAction =
   | "tool-weather"
   | "tool-doc"
   | "tool-suggest"
+  | "tool-calc"
+  | "tool-time"
+  | "tool-note"
   | "tools-clear";
 
 export type SlashCommand = {
@@ -125,7 +131,8 @@ export const slashCommands: SlashCommand[] = [
   {
     action: "tool-audio",
     aliases: ["audio", "son", "voice", "speech", "tts", "voix"],
-    description: "Activer génération audio & voix (one-shot, fortement recommandé)",
+    description:
+      "Activer génération audio & voix (one-shot, fortement recommandé)",
     icon: <Volume2Icon className="size-3.5" />,
     name: "audio",
   },
@@ -163,6 +170,29 @@ export const slashCommands: SlashCommand[] = [
     description: "Activer suggestions d'amélioration (one-shot)",
     icon: <LightbulbIcon className="size-3.5" />,
     name: "suggest",
+  },
+  {
+    action: "tool-calc",
+    aliases: ["calc", "calcul", "calculatrice", "convert", "conversion"],
+    description:
+      "Activer calculatrice et conversions d'unités (longueur, masse, température, etc.)",
+    icon: <CalculatorIcon className="size-3.5" />,
+    name: "calc",
+  },
+  {
+    action: "tool-time",
+    aliases: ["time", "date", "heure", "horloge", "fuseau", "timezone"],
+    description:
+      "Activer date/heure, fuseaux horaires, calculs sur dates (one-shot)",
+    icon: <CalendarIcon className="size-3.5" />,
+    name: "time",
+  },
+  {
+    action: "tool-note",
+    aliases: ["note", "notes", "memo", "mémo"],
+    description: "Activer création de note téléchargeable (one-shot)",
+    icon: <NotebookIcon className="size-3.5" />,
+    name: "note",
   },
   {
     action: "tools-clear",
@@ -285,7 +315,7 @@ export function SlashCommandMenu({
     if (selected) {
       selected.scrollIntoView({ block: "nearest" });
     }
-  }, [selectedIndex]);
+  }, []);
 
   if (filtered.length === 0) {
     return null;

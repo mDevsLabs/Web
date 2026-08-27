@@ -16,11 +16,14 @@ import { AI_MODES, DEFAULT_AI_MODE, getAIMode } from "@/lib/ai/modes";
 import { type RequestHints, systemPrompt } from "@/lib/ai/prompts";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { audioGenerate } from "@/lib/ai/tools/audio-generate";
+import { calculator } from "@/lib/ai/tools/calculator";
 import { codeExecution } from "@/lib/ai/tools/code-execution";
 import { createDocument } from "@/lib/ai/tools/create-document";
+import { dateTime } from "@/lib/ai/tools/datetime";
 import { editDocument } from "@/lib/ai/tools/edit-document";
 import { getWeather } from "@/lib/ai/tools/get-weather";
 import { imageGenerate } from "@/lib/ai/tools/image-generate";
+import { note } from "@/lib/ai/tools/note";
 import { requestSuggestions } from "@/lib/ai/tools/request-suggestions";
 import { updateDocument } from "@/lib/ai/tools/update-document";
 import { webSearch } from "@/lib/ai/tools/web-search";
@@ -31,7 +34,9 @@ import {
   createStreamId,
   deleteChatById,
   getChatById,
+  getMcpServersByUserId,
   getMessagesByChatId,
+  getSkillById,
   recordTokenUsage,
   saveChat,
   saveMessages,
@@ -40,6 +45,7 @@ import {
 } from "@/lib/db/queries";
 import type { DBMessage } from "@/lib/db/schema";
 import { ChatbotError } from "@/lib/errors";
+import { createMcpChatTools } from "@/lib/mcp/chat-tools";
 import { checkIpRateLimit } from "@/lib/ratelimit";
 import type { ChatMessage } from "@/lib/types";
 import {
@@ -87,6 +93,7 @@ export async function POST(request: Request) {
       selectedChatMode,
       selectedVisibilityType,
       projectId,
+      skillId,
       tags,
       customInstructions,
       temperatureOverride,
@@ -94,6 +101,7 @@ export async function POST(request: Request) {
       isGhostMode = false,
     } = requestBody as PostRequestBody & {
       projectId?: string | null;
+      skillId?: string | null;
       tags?: string[];
       customInstructions?: string;
       temperatureOverride?: number | null;
@@ -158,13 +166,32 @@ export async function POST(request: Request) {
       } catch {}
     }
 
+    const effectiveSkillId = (chat as any)?.skillId || skillId;
+    let skillInstructions: string | null = null;
+    let skillTools: string[] = [];
+
+    if (effectiveSkillId) {
+      try {
+        const activeSkill = await getSkillById({
+          id: effectiveSkillId,
+          userId,
+        });
+        if (activeSkill) {
+          skillInstructions = activeSkill.instructions;
+          if (Array.isArray(activeSkill.tools)) {
+            skillTools = activeSkill.tools as string[];
+          }
+        }
+      } catch {}
+    }
+
     const chatModel =
       selectedChatModel || projectDefaultModel || DEFAULT_CHAT_MODEL;
     const chatModeId =
       selectedChatMode && AI_MODES[selectedChatMode as keyof typeof AI_MODES]
         ? selectedChatMode
         : DEFAULT_AI_MODE;
-    const chatMode = getAIMode(chatModeId);
+    const _chatMode = getAIMode(chatModeId);
     const isToolApprovalFlow = Boolean(messages);
 
     // Règle: bloquer l'envoi de fichiers si le modèle ne supporte pas vision/file
@@ -219,6 +246,7 @@ export async function POST(request: Request) {
         id,
         modeId: chatModeId,
         projectId: projectId ?? null,
+        skillId: effectiveSkillId ?? null,
         tags: tags ?? [],
         temperatureOverride: temperatureOverride ?? null,
         title: "Nouvelle discussion",
@@ -344,24 +372,37 @@ export async function POST(request: Request) {
     if (chatCustomInstructions) {
       effectiveAddendum = `${effectiveAddendum}\n\nInstructions spécifiques à cette discussion:\n${chatCustomInstructions}`;
     }
+    if (skillInstructions) {
+      effectiveAddendum = `${effectiveAddendum}\n\n🎯 COMPÉTENCE / SKILL ACTIF POUR CETTE DISCUSSION :\n${skillInstructions}`;
+    }
     if (isGhostMode) {
       effectiveAddendum += `\n\n👻 MODE FANTÔME ACTIF : Cette discussion est éphémère et confidentielle (non enregistrée en base de données). L'outil de génération d'image est strictement indisponible dans ce mode.`;
     }
-    // One-shot tools: if enabledTools provided, inject extremely recommended directive
-    const requestedTools: string[] = Array.isArray(enabledTools)
-      ? enabledTools.filter(
-          (t) => !isGhostMode || (t !== "imageGenerate" && t !== "audioGenerate")
-        )
-      : [];
+    // One-shot tools + outils issus du skill actif
+    const combinedEnabledTools = Array.from(
+      new Set([
+        ...(Array.isArray(enabledTools) ? enabledTools : []),
+        ...skillTools,
+      ])
+    );
+    const requestedTools: string[] = combinedEnabledTools.filter(
+      (t) => !isGhostMode || (t !== "imageGenerate" && t !== "audioGenerate")
+    );
     if (requestedTools.length > 0) {
       const toolLabels: Record<string, string> = {
         audioGenerate:
           "audioGenerate (synthèse vocale - exécuter immédiatement avec la voix par défaut 'flux-alexis-en' sans demander à l'utilisateur de choisir la voix)",
+        calculator:
+          "calculator (calculs mathématiques, fonctions trigonométriques, logarithmes, conversions d'unités : longueur, masse, température, temps, volume, données, énergie, pression, vitesse, surface, angle)",
         codeExecution: "codeExecution (exécution Python/JS navigateur)",
         createDocument: "createDocument (créer artifact)",
+        dateTime:
+          "dateTime (date/heure actuelle, conversions entre fuseaux horaires, différences entre dates, calcul de la date de Pâques, formatage)",
         editDocument: "editDocument (éditer artifact)",
-        getWeather: "getWeather (météo)",
+        getWeather:
+          "getWeather (météo actuelle et prévisions 1-7 jours, celsius/fahrenheit)",
         imageGenerate: "imageGenerate (génération d'image)",
+        note: "note (créer une note formatée et téléchargeable en markdown, texte, JSON, CSV, HTML, ou code)",
         requestSuggestions: "requestSuggestions (suggestions)",
         updateDocument: "updateDocument (réécrire artifact)",
         webSearch: "webSearch (recherche sur le Web en temps réel)",
@@ -403,29 +444,40 @@ export async function POST(request: Request) {
           });
         };
 
-        // Tous les outils désactivés par défaut — one-shot via enabledTools
-        const requestedTools2: string[] = Array.isArray(enabledTools)
-          ? enabledTools.filter(
-              (t) => !isGhostMode || (t !== "imageGenerate" && t !== "audioGenerate")
-            )
-          : [];
-        // Filtrer par les outils autorisés par le mode si mode restreint, sinon tous
-        const modeAllowed = effectiveMode.activeTools;
-        const filteredTools =
-          modeAllowed === null && requestedTools2.length === 0
-            ? []
-            : requestedTools2.filter(
-                (t) =>
-                  (!isGhostMode ||
-                    (t !== "imageGenerate" && t !== "audioGenerate")) &&
-                  (modeAllowed === null ||
-                    modeAllowed === undefined ||
-                    modeAllowed.includes(t as any) ||
-                    true)
-              );
-        // If user explicitly enabled tools, allow even if mode is null (override)
-        const activeToolsList: string[] =
-          requestedTools2.length > 0 ? requestedTools2 : [];
+        // Charger les serveurs MCP de l'utilisateur et générer les outils associés
+        const userMcpServers = await getMcpServersByUserId({ userId }).catch(
+          () => []
+        );
+        const mcpTools = createMcpChatTools({
+          chatId: id,
+          servers: userMcpServers,
+          userId,
+        });
+        const mcpToolKeys = Object.keys(mcpTools);
+
+        // Outils activés (demande directe + skill actif + MCP)
+        const combinedRequestedTools = Array.from(
+          new Set([
+            ...(Array.isArray(enabledTools) ? enabledTools : []),
+            ...skillTools,
+          ])
+        );
+        const requestedTools2: string[] = combinedRequestedTools.filter(
+          (t) =>
+            !isGhostMode || (t !== "imageGenerate" && t !== "audioGenerate")
+        );
+
+        const hasMcpEnabled = requestedTools2.some(
+          (t) => t === "mcp" || t.startsWith("mcp_")
+        );
+        const activeToolsList: string[] = [
+          ...requestedTools2.filter(
+            (t) => !t.startsWith("mcp_") && t !== "mcp"
+          ),
+          ...(hasMcpEnabled
+            ? mcpToolKeys
+            : requestedTools2.filter((t) => mcpToolKeys.includes(t))),
+        ];
         const supportsTools = activeToolsList.length > 0;
 
         const result = streamText({
@@ -488,10 +540,15 @@ export async function POST(request: Request) {
                   },
                   method: "POST",
                 });
-                
+
                 if (!logRes.ok) {
                   const errText = await logRes.text();
-                  console.error("[API log-usage] Status:", logRes.status, "Response:", errText);
+                  console.error(
+                    "[API log-usage] Status:",
+                    logRes.status,
+                    "Response:",
+                    errText
+                  );
                 }
               } catch (logErr) {
                 console.error("Erreur décompte log-usage:", logErr);
@@ -527,6 +584,7 @@ export async function POST(request: Request) {
                   : { email: maiUser.email, id: userId, token: sessionToken },
               } as any,
             }),
+            calculator,
             codeExecution,
             createDocument: createDocument({
               dataStream,
@@ -535,6 +593,7 @@ export async function POST(request: Request) {
                 user: isGhostMode ? null : { email: maiUser.email, id: userId },
               } as any,
             }),
+            dateTime,
             editDocument: editDocument({
               dataStream,
               session: {
@@ -557,6 +616,12 @@ export async function POST(request: Request) {
                     } as any,
                   }),
                 }),
+            note: note({
+              dataStream,
+              session: {
+                user: isGhostMode ? null : { email: maiUser.email, id: userId },
+              } as any,
+            }),
             requestSuggestions: requestSuggestions({
               dataStream,
               modelId: chatModel,
@@ -572,6 +637,7 @@ export async function POST(request: Request) {
               } as any,
             }),
             webSearch,
+            ...mcpTools,
           },
         });
 

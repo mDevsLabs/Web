@@ -1,9 +1,12 @@
 import {
+  CalculatorIcon,
+  CalendarIcon,
   CloudSunIcon,
   FileTextIcon,
   GlobeIcon,
   ImageIcon,
   LightbulbIcon,
+  NotebookIcon,
   PencilIcon,
   PlayIcon,
   Volume2Icon,
@@ -20,6 +23,9 @@ export const TOOL_IDS = [
   "audioGenerate",
   "codeExecution",
   "webSearch",
+  "calculator",
+  "dateTime",
+  "note",
 ] as const;
 
 export type ToolId = (typeof TOOL_IDS)[number];
@@ -39,6 +45,13 @@ export const TOOLS_META: Record<ToolId, ToolMeta> = {
     id: "audioGenerate",
     label: "Générer audio",
   },
+  calculator: {
+    description:
+      "Calculs mathématiques, fonctions trigonométriques, conversions d'unités (longueur, masse, température, etc.)",
+    icon: CalculatorIcon as any,
+    id: "calculator",
+    label: "Calculatrice",
+  },
   codeExecution: {
     description: "Générer et exécuter code Python/JS côté navigateur (Pyodide)",
     icon: PlayIcon as any,
@@ -51,6 +64,13 @@ export const TOOLS_META: Record<ToolId, ToolMeta> = {
     id: "createDocument",
     isArtifact: true,
     label: "Créer document",
+  },
+  dateTime: {
+    description:
+      "Date, heure, fuseaux horaires, différences, calculs sur dates",
+    icon: CalendarIcon as any,
+    id: "dateTime",
+    label: "Date & heure",
   },
   editDocument: {
     description: "Modification ciblée d'un artifact existant",
@@ -70,6 +90,13 @@ export const TOOLS_META: Record<ToolId, ToolMeta> = {
     icon: ImageIcon as any,
     id: "imageGenerate",
     label: "Générer image",
+  },
+  note: {
+    description:
+      "Créer une note téléchargeable (markdown, texte, JSON, CSV, HTML, code)",
+    icon: NotebookIcon as any,
+    id: "note",
+    label: "Créer note",
   },
   requestSuggestions: {
     description: "Suggérer des améliorations sur un document",

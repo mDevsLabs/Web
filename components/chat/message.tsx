@@ -4,7 +4,13 @@ import { useCallback, useState } from "react";
 import { toast } from "sonner";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatMessage } from "@/lib/types";
-import { cn, copyImageToClipboard, downloadImage, formatImageSrc, sanitizeText } from "@/lib/utils";
+import {
+  cn,
+  copyImageToClipboard,
+  downloadImage,
+  formatImageSrc,
+  sanitizeText,
+} from "@/lib/utils";
 import { MessageContent, MessageResponse } from "../ai-elements/message";
 import { Shimmer } from "../ai-elements/shimmer";
 import {
@@ -18,12 +24,7 @@ import { CodeExecution } from "./code-execution";
 import { useDataStream } from "./data-stream-provider";
 import { DocumentToolResult } from "./document";
 import { DocumentPreview } from "./document-preview";
-import {
-  CopyIcon,
-  DownloadIcon,
-  EyeIcon,
-  SparklesIcon,
-} from "./icons";
+import { CopyIcon, DownloadIcon, EyeIcon, SparklesIcon } from "./icons";
 import { MessageActions } from "./message-actions";
 import { MessageReasoning } from "./message-reasoning";
 import { PreviewAttachment } from "./preview-attachment";
@@ -578,7 +579,10 @@ const PurePreviewMessage = ({
                 </div>
                 {(part.output as any).voice && (
                   <span className="text-[11px] font-medium bg-muted/60 text-muted-foreground px-2 py-0.5 rounded-full border border-border/30">
-                    Voix : {(part.output as any).voice.replace("flux-", "").replace("-en", "")}
+                    Voix :{" "}
+                    {(part.output as any).voice
+                      .replace("flux-", "")
+                      .replace("-en", "")}
                   </span>
                 )}
               </div>

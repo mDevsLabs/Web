@@ -46,7 +46,8 @@ export async function GET(_req: NextRequest) {
         name: "Stacy",
       },
       {
-        description: "Voix masculine profonde, idéale pour narration & podcast.",
+        description:
+          "Voix masculine profonde, idéale pour narration & podcast.",
         gender: "male",
         id: "flux-sam-en",
         language: "fr/en",

@@ -28,7 +28,7 @@ function ensureBuildDir() {
   fs.mkdirSync(buildDir, { recursive: true });
 }
 
-function createIcoFromPng(pngBuffer) {
+function _createIcoFromPng(pngBuffer) {
   // ICO avec 1 image PNG embed (Windows supporte PNG dans ICO depuis Vista)
   // Header 6 bytes + DirEntry 16 bytes + png
   const count = 1;
@@ -84,7 +84,7 @@ function createIcoMultiFromPng(pngBuffer) {
   return Buffer.concat([header, entries, pngs]);
 }
 
-function createIcnsFromPng(pngBuffer) {
+function _createIcnsFromPng(pngBuffer) {
   // ICNS minimal valide : header 'icns' + 1 entrée 'ic09' (512x512 PNG)
   // macOS >= 10.7 supporte PNG dans ICNS
   const type = "ic09"; // 512x512
