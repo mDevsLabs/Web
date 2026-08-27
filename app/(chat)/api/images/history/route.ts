@@ -84,3 +84,44 @@ export async function DELETE(req: NextRequest) {
     );
   }
 }
+
+export async function PATCH(req: NextRequest) {
+  const token = await getMaiSessionToken();
+  if (!token) {
+    return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+  }
+
+  const { searchParams } = req.nextUrl;
+  const id = searchParams.get("id");
+  const body = await req.json().catch(() => ({}));
+  const targetId = id || body.id;
+
+  if (!targetId) {
+    return NextResponse.json({ error: "ID manquant" }, { status: 400 });
+  }
+
+  try {
+    const res = await fetch(`${MAI_API_URL}/v1/images/history/${targetId}`, {
+      body: JSON.stringify(body),
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      method: "PATCH",
+    });
+
+    const data = await res.json();
+    if (!res.ok) {
+      return NextResponse.json(data, { status: res.status });
+    }
+
+    return NextResponse.json(data);
+  } catch (error) {
+    console.error("Erreur mise à jour image:", error);
+    return NextResponse.json(
+      { error: "Erreur lors de la mise à jour de l'image" },
+      { status: 500 }
+    );
+  }
+}
+

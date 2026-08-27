@@ -211,6 +211,19 @@ export default function SettingsPage() {
   const [customTopP, setCustomTopP] = useState(0.9);
   const [isSavingCustom, setIsSavingCustom] = useState(false);
 
+  // Préférences Outils IA (Génération d'images et Synthèse vocale)
+  const [defaultImageModel, setDefaultImageModel] = useState<string>(
+    "black-forest-labs/flux-schnell"
+  );
+  const [defaultImageSize, setDefaultImageSize] = useState<string>("1024x1024");
+  const [defaultAudioModel, setDefaultAudioModel] = useState<string>(
+    "deepgram/flux-tts:free"
+  );
+  const [defaultAudioVoice, setDefaultAudioVoice] =
+    useState<string>("flux-alexis-en");
+  const [defaultAudioSpeed, setDefaultAudioSpeed] = useState<number>(1.0);
+  const [isSavingToolsPref, setIsSavingToolsPref] = useState<boolean>(false);
+
   const { data: prefModelsData } = useSWR(
     `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models`,
     (url: string) => fetch(url).then((r) => r.json()),
@@ -243,6 +256,21 @@ export default function SettingsPage() {
         isValidAIModeId(customPrefData.defaultMode)
       ) {
         setDefaultModeId(customPrefData.defaultMode);
+      }
+      if (customPrefData.defaultImageModel) {
+        setDefaultImageModel(customPrefData.defaultImageModel);
+      }
+      if (customPrefData.defaultImageSize) {
+        setDefaultImageSize(customPrefData.defaultImageSize);
+      }
+      if (customPrefData.defaultAudioModel) {
+        setDefaultAudioModel(customPrefData.defaultAudioModel);
+      }
+      if (customPrefData.defaultAudioVoice) {
+        setDefaultAudioVoice(customPrefData.defaultAudioVoice);
+      }
+      if (customPrefData.defaultAudioSpeed) {
+        setDefaultAudioSpeed(customPrefData.defaultAudioSpeed);
       }
     }
   }, [customPrefData]);
@@ -281,6 +309,39 @@ export default function SettingsPage() {
     } catch {}
     toast.success("Préférences IA enregistrées !");
   }, [defaultModelId, defaultModeId]);
+
+  const handleSaveToolsPreferences = useCallback(async () => {
+    setIsSavingToolsPref(true);
+    try {
+      const res = await fetch("/api/user/preferences", {
+        body: JSON.stringify({
+          defaultAudioModel,
+          defaultAudioSpeed,
+          defaultAudioVoice,
+          defaultImageModel,
+          defaultImageSize,
+        }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      });
+      if (!res.ok) {
+        throw new Error("Erreur lors de l'enregistrement");
+      }
+      toast.success("Préférences d'outils Images & Audio enregistrées en BDD ! ✨");
+      mutateCustomPref();
+    } catch (e: any) {
+      toast.error(e.message || "Erreur de sauvegarde des préférences outils.");
+    } finally {
+      setIsSavingToolsPref(false);
+    }
+  }, [
+    defaultImageModel,
+    defaultImageSize,
+    defaultAudioModel,
+    defaultAudioVoice,
+    defaultAudioSpeed,
+    mutateCustomPref,
+  ]);
 
   const handleSaveCustomInstructions = useCallback(async () => {
     setIsSavingCustom(true);
@@ -993,23 +1054,177 @@ export default function SettingsPage() {
             </div>
           </div>
 
+          {/* Préférences Outils de Génération (Images & Audio) */}
+          <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6">
+            <div className="flex items-center gap-2.5">
+              <div className="p-2 rounded-xl bg-violet-500/10 text-violet-500 ring-1 ring-violet-500/20">
+                <ImageIcon className="size-5" />
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-foreground">
+                  Outil Génération d'Images
+                </h3>
+                <p className="text-xs text-muted-foreground">
+                  Configurez le modèle Black Forest / FLUX et la résolution par défaut utilisés par l'outil de génération d'images.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+              <div className="flex flex-col gap-2">
+                <Label className="text-xs font-medium text-muted-foreground">
+                  Modèle d'image par défaut
+                </Label>
+                <select
+                  className="h-10 rounded-xl border border-border/60 bg-muted/30 px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary/20"
+                  onChange={(e) => setDefaultImageModel(e.target.value)}
+                  value={defaultImageModel}
+                >
+                  <option value="black-forest-labs/flux-schnell">
+                    Black Forest FLUX.1 Schnell (Rapide & Précis)
+                  </option>
+                  <option value="black-forest-labs/flux-dev">
+                    Black Forest FLUX.1 Dev (Haute Qualité)
+                  </option>
+                  <option value="black-forest-labs/flux-pro">
+                    Black Forest FLUX 1.1 Pro (Ultra Réaliste)
+                  </option>
+                  <option value="dall-e-3">DALL-E 3 (OpenAI)</option>
+                  <option value="stable-diffusion-3.5-large">
+                    Stable Diffusion 3.5 Large
+                  </option>
+                  <option value="midjourney/v6">Midjourney v6</option>
+                  <option value="recraft-v3">Recraft V3</option>
+                  <option value="ideogram-v2">Ideogram V2</option>
+                </select>
+                <span className="text-[11px] text-muted-foreground">
+                  Modèle activé automatiquement quand vous demandez à l'IA d'illustrer ou créer une image.
+                </span>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <Label className="text-xs font-medium text-muted-foreground">
+                  Format et taille par défaut
+                </Label>
+                <select
+                  className="h-10 rounded-xl border border-border/60 bg-muted/30 px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary/20"
+                  onChange={(e) => setDefaultImageSize(e.target.value)}
+                  value={defaultImageSize}
+                >
+                  <option value="1024x1024">1024x1024 (1:1 Carré)</option>
+                  <option value="1344x768">1344x768 (16:9 Paysage / Bureau)</option>
+                  <option value="768x1344">768x1344 (9:16 Mobile / Story)</option>
+                  <option value="1152x864">1152x864 (4:3 Standard)</option>
+                  <option value="864x1152">864x1152 (3:4 Portrait)</option>
+                </select>
+                <span className="text-[11px] text-muted-foreground">
+                  Ratio d'aspect et dimensions par défaut générés.
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Préférences Outil Audio & Synthèse Vocale */}
+          <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6">
+            <div className="flex items-center gap-2.5">
+              <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-500 ring-1 ring-emerald-500/20">
+                <Volume2Icon className="size-5" />
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-foreground">
+                  Outil Synthèse Vocale & Audio
+                </h3>
+                <p className="text-xs text-muted-foreground">
+                  Configurez le modèle vocal, la voix par défaut et le rythme de lecture audio.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+              <div className="flex flex-col gap-2">
+                <Label className="text-xs font-medium text-muted-foreground">
+                  Modèle audio par défaut
+                </Label>
+                <select
+                  className="h-10 rounded-xl border border-border/60 bg-muted/30 px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary/20"
+                  onChange={(e) => setDefaultAudioModel(e.target.value)}
+                  value={defaultAudioModel}
+                >
+                  <option value="deepgram/flux-tts:free">
+                    Deepgram Flux TTS (Ultra-rapide & Naturel)
+                  </option>
+                  <option value="tts-1">OpenAI TTS Standard</option>
+                  <option value="tts-1-hd">OpenAI TTS HD (Haute Définition)</option>
+                </select>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <Label className="text-xs font-medium text-muted-foreground">
+                  Voix par défaut
+                </Label>
+                <select
+                  className="h-10 rounded-xl border border-border/60 bg-muted/30 px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary/20"
+                  onChange={(e) => setDefaultAudioVoice(e.target.value)}
+                  value={defaultAudioVoice}
+                >
+                  <option value="flux-alexis-en">Alexis (Féminin - Naturel & Équilibré)</option>
+                  <option value="flux-michael-en">Michael (Masculin - Posé & Professionnel)</option>
+                  <option value="flux-stacy-en">Stacy (Féminin - Dynamique & Vivant)</option>
+                  <option value="alloy">Alloy (Neutre - Polyvalent)</option>
+                  <option value="echo">Echo (Masculin - Rond)</option>
+                  <option value="nova">Nova (Féminin - Énergique)</option>
+                  <option value="shimmer">Shimmer (Féminin - Doux)</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-1.5 pt-2 border-t border-border/40">
+              <div className="flex items-center justify-between">
+                <Label className="text-xs font-medium text-muted-foreground">
+                  Vitesse de lecture ({defaultAudioSpeed.toFixed(2)}x)
+                </Label>
+                <span className="text-[11px] text-muted-foreground font-mono">
+                  {defaultAudioSpeed === 1.0 ? "Normal" : defaultAudioSpeed < 1.0 ? "Plus lent" : "Plus rapide"}
+                </span>
+              </div>
+              <input
+                className="w-full accent-emerald-500"
+                max={2.0}
+                min={0.5}
+                onChange={(e) =>
+                  setDefaultAudioSpeed(Number.parseFloat(e.target.value))
+                }
+                step={0.05}
+                type="range"
+                value={defaultAudioSpeed}
+              />
+            </div>
+
+            <div className="pt-2 flex justify-end">
+              <button
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer disabled:opacity-50"
+                disabled={isSavingToolsPref}
+                onClick={handleSaveToolsPreferences}
+                type="button"
+              >
+                {isSavingToolsPref ? (
+                  <Loader2Icon className="size-4 animate-spin" />
+                ) : null}
+                {isSavingToolsPref
+                  ? "Enregistrement en BDD..."
+                  : "Enregistrer les outils en base de données"}
+              </button>
+            </div>
+          </div>
+
           <div className="p-5 rounded-2xl border border-border/60 bg-muted/20 flex items-start gap-3">
             <AlertCircleIcon className="size-5 text-primary shrink-0 mt-0.5" />
             <div className="text-xs text-muted-foreground">
               <p className="font-semibold text-foreground mb-1">
-                Comment ça marche ?
+                Comment sont stockées vos préférences ?
               </p>
               <p>
-                Les préférences sont stockées en cookie (
-                <code className="px-1 py-0.5 rounded bg-muted font-mono text-[11px]">
-                  chat-model
-                </code>{" "}
-                &{" "}
-                <code className="px-1 py-0.5 rounded bg-muted font-mono text-[11px]">
-                  ai-mode
-                </code>
-                ) valables 1 an. Elles s'appliquent aux nouvelles discussions,
-                pas aux conversations existantes.
+                Les préférences des outils d'images et d'audio, ainsi que vos instructions personnalisées, sont enregistrées de façon permanente dans votre profil utilisateur en base de données PostgreSQL et synchronisées sur tous vos appareils.
               </p>
             </div>
           </div>

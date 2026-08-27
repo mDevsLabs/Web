@@ -41,6 +41,7 @@ export async function GET(request: Request) {
   const isReadonly = !isOwner;
 
   return Response.json({
+    chatId: chat.id,
     isReadonly,
     messages: convertToUIMessages(messages),
     userId: chat.userId,

@@ -220,3 +220,81 @@ export async function copyImageToClipboard(content: string): Promise<boolean> {
     img.src = src;
   });
 }
+
+export function formatImageModelName(modelId?: string | null): string {
+  if (!modelId) {
+    return "Black Forest FLUX";
+  }
+  const id = modelId.toLowerCase().trim();
+  if (
+    id.includes("flux-schnell") ||
+    id.includes("flux-1-schnell") ||
+    id.includes("black-forest-labs/flux-schnell") ||
+    id.includes("black-forest-labs/flux-1-schnell") ||
+    id === "flux"
+  ) {
+    return "Black Forest FLUX.1 Schnell";
+  }
+  if (
+    id.includes("flux-dev") ||
+    id.includes("flux-1-dev") ||
+    id.includes("black-forest-labs/flux-dev") ||
+    id.includes("black-forest-labs/flux-1-dev")
+  ) {
+    return "Black Forest FLUX.1 Dev";
+  }
+  if (id.includes("flux-pro") || id.includes("flux-1.1-pro")) {
+    return "Black Forest FLUX 1.1 Pro";
+  }
+  if (id.includes("ultra") && id.includes("flux")) {
+    return "Black Forest FLUX 1.1 Pro Ultra";
+  }
+  if (id.includes("gpt-image")) {
+    return "Black Forest FLUX";
+  }
+  if (id.includes("dall-e-3") || id.includes("dalle-3")) {
+    return "DALL-E 3";
+  }
+  if (id.includes("dall-e-2") || id.includes("dalle-2")) {
+    return "DALL-E 2";
+  }
+  if (id.includes("sd3") || id.includes("stable-diffusion-3.5")) {
+    return "Stable Diffusion 3.5";
+  }
+  if (id.includes("sdxl")) {
+    return "Stable Diffusion XL";
+  }
+  if (id.includes("midjourney")) {
+    return "Midjourney v6";
+  }
+  if (id.includes("recraft")) {
+    return "Recraft V3";
+  }
+  if (id.includes("ideogram")) {
+    return "Ideogram V2";
+  }
+  if (id.includes("imagen")) {
+    return "Google Imagen 3";
+  }
+  if (id.includes("photon")) {
+    return "Luma Photon";
+  }
+  return modelId.replace(/^[^/]+\//, "");
+}
+
+export function formatAudioModelName(modelId?: string | null): string {
+  if (!modelId) {
+    return "Flux TTS";
+  }
+  const id = modelId.toLowerCase().trim();
+  if (id.includes("deepgram") || id.includes("flux-tts")) {
+    return "Deepgram Flux TTS";
+  }
+  if (id.includes("tts-1-hd")) {
+    return "OpenAI TTS HD";
+  }
+  if (id.includes("tts-1")) {
+    return "OpenAI TTS";
+  }
+  return modelId.replace(/:free$/i, "").replace(/^[^/]+\//, "");
+}

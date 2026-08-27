@@ -157,6 +157,8 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
     "user_id" text NOT NULL,
     "api_key" text,
+    "title" text,
+    "pinned" boolean DEFAULT false NOT NULL,
     "model" text DEFAULT 'deepgram/flux-tts:free' NOT NULL,
     "voice" text DEFAULT 'flux-alexis-en',
     "input_text" text NOT NULL,
@@ -169,6 +171,52 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
 
   await run(
     client`ALTER TABLE "mprojects_speech_generations" ADD COLUMN IF NOT EXISTS "audio_url" text`
+  );
+  await run(
+    client`ALTER TABLE "mprojects_speech_generations" ADD COLUMN IF NOT EXISTS "title" text`
+  );
+  await run(
+    client`ALTER TABLE "mprojects_speech_generations" ADD COLUMN IF NOT EXISTS "pinned" boolean DEFAULT false NOT NULL`
+  );
+
+  await run(client`CREATE TABLE IF NOT EXISTS "mprojects_image_generations" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "user_id" text NOT NULL,
+    "api_key" text,
+    "title" text,
+    "pinned" boolean DEFAULT false NOT NULL,
+    "model" text NOT NULL DEFAULT 'black-forest-labs/flux-schnell',
+    "prompt" text NOT NULL,
+    "negative_prompt" text,
+    "width" integer DEFAULT 1024 NOT NULL,
+    "height" integer DEFAULT 1024 NOT NULL,
+    "image_url" text NOT NULL,
+    "status" text DEFAULT 'completed' NOT NULL,
+    "created_at" timestamp DEFAULT now() NOT NULL
+  )`);
+
+  await run(
+    client`ALTER TABLE "mprojects_image_generations" ADD COLUMN IF NOT EXISTS "title" text`
+  );
+  await run(
+    client`ALTER TABLE "mprojects_image_generations" ADD COLUMN IF NOT EXISTS "pinned" boolean DEFAULT false NOT NULL`
+  );
+
+  // Colonnes préférences pour table users
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "default_image_model" text DEFAULT 'black-forest-labs/flux-schnell'`
+  );
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "default_image_size" varchar(20) DEFAULT '1024x1024'`
+  );
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "default_audio_model" text DEFAULT 'deepgram/flux-tts:free'`
+  );
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "default_audio_voice" varchar(50) DEFAULT 'flux-alexis-en'`
+  );
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "default_audio_speed" double precision DEFAULT 1.0`
   );
 
   // Migrations de colonnes (supprimer contraintes FK, caster vers text)
@@ -525,7 +573,9 @@ export async function getChatsByUserId({
         );
       }
 
-      filteredChats = await query(gt(chat.createdAt, selectedChat.createdAt));
+      filteredChats = await query(
+        sql`(${chat.pinned}, ${chat.createdAt}) > (${selectedChat.pinned}, ${selectedChat.createdAt})`
+      );
     } else if (endingBefore) {
       const [selectedChat] = await db
         .select()
@@ -540,7 +590,9 @@ export async function getChatsByUserId({
         );
       }
 
-      filteredChats = await query(lt(chat.createdAt, selectedChat.createdAt));
+      filteredChats = await query(
+        sql`(${chat.pinned}, ${chat.createdAt}) < (${selectedChat.pinned}, ${selectedChat.createdAt})`
+      );
     } else {
       filteredChats = await query();
     }

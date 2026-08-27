@@ -20,11 +20,16 @@ export async function GET() {
   try {
     const sql = getPostgres();
     const rows =
-      await sql`SELECT custom_instructions, custom_instructions_enabled, default_temperature, default_top_p, default_ai_mode FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
+      await sql`SELECT custom_instructions, custom_instructions_enabled, default_temperature, default_top_p, default_ai_mode, default_image_model, default_image_size, default_audio_model, default_audio_voice, default_audio_speed FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
     await sql.end();
     if (rows.length === 0) {
       return Response.json({
         customInstructions: "",
+        defaultAudioModel: "deepgram/flux-tts:free",
+        defaultAudioSpeed: 1.0,
+        defaultAudioVoice: "flux-alexis-en",
+        defaultImageModel: "black-forest-labs/flux-schnell",
+        defaultImageSize: "1024x1024",
         defaultMode: "standard",
         enabled: false,
         temperature: 0.7,
@@ -33,6 +38,12 @@ export async function GET() {
     }
     return Response.json({
       customInstructions: rows[0].custom_instructions || "",
+      defaultAudioModel: rows[0].default_audio_model || "deepgram/flux-tts:free",
+      defaultAudioSpeed: rows[0].default_audio_speed ?? 1.0,
+      defaultAudioVoice: rows[0].default_audio_voice || "flux-alexis-en",
+      defaultImageModel:
+        rows[0].default_image_model || "black-forest-labs/flux-schnell",
+      defaultImageSize: rows[0].default_image_size || "1024x1024",
       defaultMode: rows[0].default_ai_mode || "standard",
       enabled: rows[0].custom_instructions_enabled || false,
       temperature: rows[0].default_temperature ?? 0.7,
@@ -46,6 +57,11 @@ export async function GET() {
 
 const schema = z.object({
   customInstructions: z.string().max(4000).optional(),
+  defaultAudioModel: z.string().max(150).optional(),
+  defaultAudioSpeed: z.number().min(0.5).max(2.0).optional(),
+  defaultAudioVoice: z.string().max(100).optional(),
+  defaultImageModel: z.string().max(150).optional(),
+  defaultImageSize: z.string().max(50).optional(),
   defaultMode: z
     .enum(["standard", "creative", "precise", "code", "reasoning"])
     .optional(),
@@ -87,6 +103,26 @@ export async function POST(request: Request) {
     if (parsed.defaultMode !== undefined) {
       sets.push(`default_ai_mode = $${idx++}`);
       values.push(parsed.defaultMode);
+    }
+    if (parsed.defaultImageModel !== undefined) {
+      sets.push(`default_image_model = $${idx++}`);
+      values.push(parsed.defaultImageModel);
+    }
+    if (parsed.defaultImageSize !== undefined) {
+      sets.push(`default_image_size = $${idx++}`);
+      values.push(parsed.defaultImageSize);
+    }
+    if (parsed.defaultAudioModel !== undefined) {
+      sets.push(`default_audio_model = $${idx++}`);
+      values.push(parsed.defaultAudioModel);
+    }
+    if (parsed.defaultAudioVoice !== undefined) {
+      sets.push(`default_audio_voice = $${idx++}`);
+      values.push(parsed.defaultAudioVoice);
+    }
+    if (parsed.defaultAudioSpeed !== undefined) {
+      sets.push(`default_audio_speed = $${idx++}`);
+      values.push(parsed.defaultAudioSpeed);
     }
     if (sets.length === 0) {
       await sql.end();

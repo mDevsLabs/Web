@@ -24,13 +24,40 @@ export const imageGenerate = ({ session, dataStream }: ImageGenerateProps) =>
         if (!token) {
           token = await getMaiSessionToken();
         }
+        // Récupérer préférences utilisateur pour le modèle et format par défaut
+        let targetModel = "black-forest-labs/flux-1-schnell";
+        let targetWidth = width || 1024;
+        let targetHeight = height || 1024;
+
+        try {
+          const prefRes = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`,
+            {
+              headers: token ? { Authorization: `Bearer ${token}` } : {},
+            }
+          );
+          if (prefRes.ok) {
+            const prefs = await prefRes.json();
+            if (prefs.defaultImageModel) {
+              targetModel = prefs.defaultImageModel;
+            }
+            if (!width && !height && prefs.defaultImageSize) {
+              const parts = prefs.defaultImageSize.split("x");
+              if (parts.length === 2) {
+                targetWidth = Number(parts[0]) || 1024;
+                targetHeight = Number(parts[1]) || 1024;
+              }
+            }
+          }
+        } catch {}
+
         // Call MAI API directly for generation
         const payload: any = {
-          height: height || 1024,
-          model: "black-forest-labs/flux-1-schnell",
+          height: targetHeight,
+          model: targetModel,
           negative_prompt: negative_prompt || undefined,
           prompt,
-          width: width || 1024,
+          width: targetWidth,
         };
         if (!token) {
           return {

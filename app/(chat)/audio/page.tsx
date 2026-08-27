@@ -3,6 +3,7 @@
 import {
   AlertCircleIcon,
   CheckCircle2Icon,
+  CheckIcon,
   CopyIcon,
   DownloadIcon,
   HeadphonesIcon,
@@ -10,12 +11,16 @@ import {
   Loader2Icon,
   MicIcon,
   MusicIcon,
+  PencilIcon,
+  PinIcon,
+  PinOffIcon,
   RefreshCwIcon,
   SlidersHorizontalIcon,
   SparklesIcon,
   Trash2Icon,
   Volume2Icon,
   Wand2Icon,
+  XIcon,
 } from "lucide-react";
 import Link from "next/link";
 import type React from "react";
@@ -25,7 +30,7 @@ import useSWR from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { useAudioUsage } from "@/hooks/use-settings";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
-import { cn } from "@/lib/utils";
+import { cn, formatAudioModelName } from "@/lib/utils";
 
 interface SpeechModel {
   created?: number;
@@ -50,7 +55,9 @@ interface GeneratedAudio {
   id: string | number;
   input_text: string;
   model: string;
+  pinned?: boolean;
   status?: string;
+  title?: string | null;
   tokens_count?: number;
   user_id?: string;
   voice?: string;
@@ -197,22 +204,87 @@ export default function AudioPage() {
   // Lecteur audio local
   const audioPlayerRef = useRef<HTMLAudioElement | null>(null);
 
-  // Modèle par défaut au chargement
+  // Préférences utilisateur pour initialiser le modèle, voix et vitesse par défaut
+  const { data: userPrefData } = useSWR<{
+    defaultAudioModel?: string;
+    defaultAudioVoice?: string;
+    defaultAudioSpeed?: number;
+  }>("/api/user/preferences", fetcher, { revalidateOnFocus: false });
+
+  // Renommage audio
+  const [editingAudio, setEditingAudio] = useState<{
+    id: string | number;
+    title: string;
+  } | null>(null);
+  const [editTitleInput, setEditTitleInput] = useState("");
+  const [isSavingRename, setIsSavingRename] = useState(false);
+
+  // Modèle et voix par défaut au chargement
   useEffect(() => {
-    if (models.length > 0 && !selectedModelId) {
+    if (userPrefData?.defaultAudioModel && !selectedModelId) {
+      setSelectedModelId(userPrefData.defaultAudioModel);
+    } else if (models.length > 0 && !selectedModelId) {
       const defaultMod =
         models.find((m) => m.id.includes("speech") || m.id.includes("tts")) ||
         models[0];
       setSelectedModelId(defaultMod.id);
     }
-  }, [models, selectedModelId]);
 
-  // Voix par défaut au chargement (auto-sélection)
-  useEffect(() => {
-    if (voices.length > 0 && !selectedVoice) {
+    if (userPrefData?.defaultAudioVoice && !selectedVoice) {
+      setSelectedVoice(userPrefData.defaultAudioVoice);
+    } else if (voices.length > 0 && !selectedVoice) {
       setSelectedVoice(voices[0].id);
     }
-  }, [voices, selectedVoice]);
+
+    if (userPrefData?.defaultAudioSpeed) {
+      setSpeed(userPrefData.defaultAudioSpeed);
+    }
+  }, [models, selectedModelId, voices, selectedVoice, userPrefData]);
+
+  // Basculer l'état épinglé
+  const handleTogglePin = async (id: string | number, currentPinned: boolean) => {
+    try {
+      const res = await fetch(`/api/audio/history?id=${id}`, {
+        body: JSON.stringify({ pinned: !currentPinned }),
+        headers: { "Content-Type": "application/json" },
+        method: "PATCH",
+      });
+      if (!res.ok) {
+        throw new Error("Erreur de modification");
+      }
+      toast.success(
+        !currentPinned ? "Audio épinglé en haut 📌" : "Audio désépinglé"
+      );
+      mutateHistory();
+    } catch {
+      toast.error("Impossible de modifier l'épinglage");
+    }
+  };
+
+  // Enregistrer le renommage
+  const handleSaveRename = async () => {
+    if (!editingAudio) {
+      return;
+    }
+    setIsSavingRename(true);
+    try {
+      const res = await fetch(`/api/audio/history?id=${editingAudio.id}`, {
+        body: JSON.stringify({ title: editTitleInput.trim() }),
+        headers: { "Content-Type": "application/json" },
+        method: "PATCH",
+      });
+      if (!res.ok) {
+        throw new Error("Erreur de renommage");
+      }
+      toast.success("Audio renommé avec succès ! ✨");
+      setEditingAudio(null);
+      mutateHistory();
+    } catch {
+      toast.error("Impossible de renommer l'enregistrement");
+    } finally {
+      setIsSavingRename(false);
+    }
+  };
 
   const selectedModel = useMemo(
     () => models.find((m) => m.id === selectedModelId),
@@ -756,20 +828,48 @@ export default function AudioPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {history.map((item) => (
                   <div
-                    className="flex flex-col justify-between p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md shadow-xs gap-3 hover:border-emerald-500/30 transition"
+                    className={cn(
+                      "relative flex flex-col justify-between p-4 rounded-2xl border bg-card/60 backdrop-blur-md shadow-xs gap-3 transition",
+                      item.pinned
+                        ? "border-amber-500/50 bg-amber-500/5 dark:bg-amber-500/10 shadow-amber-500/5"
+                        : "border-border/60 hover:border-emerald-500/30"
+                    )}
                     key={item.id}
                   >
                     <div className="flex flex-col gap-2">
                       <div className="flex items-center justify-between gap-2">
-                        <span className="text-[11px] font-semibold uppercase px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                          {item.voice ? item.voice.replace("flux-", "").replace("-en", "") : "Voix"}
-                        </span>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[11px] font-semibold uppercase px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                            {item.voice
+                              ? item.voice.replace("flux-", "").replace("-en", "")
+                              : "Voix"}
+                          </span>
+                          {item.pinned && (
+                            <span className="flex items-center gap-1 text-[10px] font-bold text-amber-500 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full">
+                              <PinIcon className="size-2.5 fill-current" />
+                              Épinglé
+                            </span>
+                          )}
+                        </div>
                         <span className="text-[11px] text-muted-foreground font-mono">
                           {formatDate(item.created_at)}
                         </span>
                       </div>
 
-                      <p className="text-xs text-foreground font-medium line-clamp-3 italic leading-relaxed">
+                      {item.title && (
+                        <p className="text-xs font-semibold text-foreground line-clamp-1">
+                          {item.title}
+                        </p>
+                      )}
+
+                      <p
+                        className={cn(
+                          "line-clamp-3 italic leading-relaxed",
+                          item.title
+                            ? "text-[11px] text-muted-foreground"
+                            : "text-xs text-foreground font-medium"
+                        )}
+                      >
                         "{item.input_text}"
                       </p>
                     </div>
@@ -785,11 +885,57 @@ export default function AudioPage() {
                       </audio>
 
                       <div className="flex items-center justify-between pt-1">
-                        <span className="text-[10px] text-muted-foreground truncate max-w-[140px]">
-                          {item.model}
+                        <span
+                          className="text-[10px] text-muted-foreground font-medium truncate max-w-[120px]"
+                          title={formatAudioModelName(item.model)}
+                        >
+                          {formatAudioModelName(item.model)}
                         </span>
 
-                        <div className="flex items-center gap-1.5">
+                        <div className="flex items-center gap-1">
+                          {/* Bouton Épingler */}
+                          <button
+                            className={cn(
+                              "p-1.5 rounded-lg border transition cursor-pointer",
+                              item.pinned
+                                ? "text-amber-500 border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20"
+                                : "text-muted-foreground border-border/40 hover:text-foreground hover:bg-muted/50"
+                            )}
+                            onClick={() =>
+                              handleTogglePin(item.id, Boolean(item.pinned))
+                            }
+                            title={
+                              item.pinned
+                                ? "Désépingler de l'historique"
+                                : "Épingler en haut 📌"
+                            }
+                            type="button"
+                          >
+                            {item.pinned ? (
+                              <PinOffIcon className="size-3.5" />
+                            ) : (
+                              <PinIcon className="size-3.5" />
+                            )}
+                          </button>
+
+                          {/* Bouton Renommer */}
+                          <button
+                            className="p-1.5 text-muted-foreground hover:text-foreground rounded-lg border border-border/40 hover:bg-muted/50 transition cursor-pointer"
+                            onClick={() => {
+                              setEditingAudio({
+                                id: item.id,
+                                title: item.title || item.input_text,
+                              });
+                              setEditTitleInput(
+                                item.title || item.input_text
+                              );
+                            }}
+                            title="Renommer l'audio"
+                            type="button"
+                          >
+                            <PencilIcon className="size-3.5" />
+                          </button>
+
                           <a
                             className="p-1.5 text-muted-foreground hover:text-foreground rounded-lg border border-border/40 hover:bg-muted/50 transition"
                             download={`mai-speech-${item.id}.mp3`}
@@ -819,6 +965,80 @@ export default function AudioPage() {
           </div>
         )}
       </main>
+
+      {/* Modale Renommer un audio */}
+      {editingAudio && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
+          onClick={() => setEditingAudio(null)}
+        >
+          <div
+            className="w-full max-w-md rounded-2xl border border-border/80 bg-card p-5 shadow-2xl space-y-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="flex size-8 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-500">
+                  <PencilIcon className="size-4" />
+                </div>
+                <h3 className="text-sm font-bold text-foreground">
+                  Renommer l'enregistrement
+                </h3>
+              </div>
+              <button
+                className="p-1 text-muted-foreground hover:text-foreground rounded-lg"
+                onClick={() => setEditingAudio(null)}
+                type="button"
+              >
+                <XIcon className="size-4" />
+              </button>
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-xs font-medium text-muted-foreground">
+                Titre ou étiquette personnalisée
+              </label>
+              <input
+                autoFocus
+                className="w-full rounded-xl border border-border bg-background px-3.5 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-emerald-500 focus:outline-none"
+                onChange={(e) => setEditTitleInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleSaveRename();
+                  } else if (e.key === "Escape") {
+                    setEditingAudio(null);
+                  }
+                }}
+                placeholder="Ex: Narration Chapitre 1..."
+                value={editTitleInput}
+              />
+            </div>
+
+            <div className="flex items-center justify-end gap-2 pt-2">
+              <button
+                className="rounded-xl px-3.5 py-2 text-xs font-medium text-muted-foreground hover:bg-muted/40 transition"
+                onClick={() => setEditingAudio(null)}
+                type="button"
+              >
+                Annuler
+              </button>
+              <button
+                className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-emerald-500 disabled:opacity-50"
+                disabled={isSavingRename}
+                onClick={handleSaveRename}
+                type="button"
+              >
+                {isSavingRename ? (
+                  <Loader2Icon className="size-3.5 animate-spin" />
+                ) : (
+                  <CheckIcon className="size-3.5" />
+                )}
+                <span>Enregistrer</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

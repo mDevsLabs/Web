@@ -2,6 +2,7 @@
 
 import {
   AlertCircleIcon,
+  CheckIcon,
   CopyIcon,
   DownloadIcon,
   EyeIcon,
@@ -10,6 +11,9 @@ import {
   Loader2Icon,
   Maximize2Icon,
   MonitorIcon,
+  PencilIcon,
+  PinIcon,
+  PinOffIcon,
   PlusIcon,
   RectangleVerticalIcon,
   RefreshCwIcon,
@@ -30,7 +34,12 @@ import useSWR from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { useImagesUsage } from "@/hooks/use-settings";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
-import { cn, downloadImage, formatImageSrc } from "@/lib/utils";
+import {
+  cn,
+  downloadImage,
+  formatImageModelName,
+  formatImageSrc,
+} from "@/lib/utils";
 
 interface ImageModel {
   created?: number;
@@ -47,7 +56,9 @@ interface GeneratedImage {
   image_url: string;
   model: string;
   negative_prompt?: string;
+  pinned?: boolean;
   prompt: string;
+  title?: string | null;
   user_id: string;
   width: number;
 }
@@ -162,16 +173,88 @@ export default function ImagesPage() {
   // Modale plein écran
   const [previewImage, setPreviewImage] = useState<string | null>(null);
 
-  // Sélectionner le premier modèle par défaut
+  // Préférences utilisateur pour initialiser le modèle et la taille par défaut
+  const { data: userPrefData } = useSWR<{
+    defaultImageModel?: string;
+    defaultImageSize?: string;
+  }>("/api/user/preferences", fetcher, { revalidateOnFocus: false });
+
+  // Renommage d'image
+  const [editingImage, setEditingImage] = useState<{
+    id: string;
+    title: string;
+  } | null>(null);
+  const [editTitleInput, setEditTitleInput] = useState("");
+  const [isSavingRename, setIsSavingRename] = useState(false);
+
+  // Sélectionner le modèle par défaut ou selon les préférences
   useEffect(() => {
-    if (models.length > 0 && !selectedModelId) {
+    if (userPrefData?.defaultImageModel && !selectedModelId) {
+      setSelectedModelId(userPrefData.defaultImageModel);
+    } else if (models.length > 0 && !selectedModelId) {
       const defaultMod =
         models.find((m) => m.id.includes("schnell")) ||
         models.find((m) => m.id.includes("flux")) ||
         models[0];
       setSelectedModelId(defaultMod.id);
     }
-  }, [models, selectedModelId]);
+
+    if (userPrefData?.defaultImageSize) {
+      const match = ASPECT_RATIOS.find(
+        (r) =>
+          `${r.width}x${r.height}` === userPrefData.defaultImageSize ||
+          r.id === userPrefData.defaultImageSize
+      );
+      if (match) {
+        setAspectRatio(match.id);
+      }
+    }
+  }, [models, selectedModelId, userPrefData]);
+
+  // Basculer l'état épinglé
+  const handleTogglePin = async (id: string, currentPinned: boolean) => {
+    try {
+      const res = await fetch(`/api/images/history?id=${id}`, {
+        body: JSON.stringify({ pinned: !currentPinned }),
+        headers: { "Content-Type": "application/json" },
+        method: "PATCH",
+      });
+      if (!res.ok) {
+        throw new Error("Erreur de modification");
+      }
+      toast.success(
+        !currentPinned ? "Image épinglée en haut 📌" : "Image désépinglée"
+      );
+      mutateHistory();
+    } catch {
+      toast.error("Impossible de modifier l'épinglage");
+    }
+  };
+
+  // Enregistrer le renommage
+  const handleSaveRename = async () => {
+    if (!editingImage) {
+      return;
+    }
+    setIsSavingRename(true);
+    try {
+      const res = await fetch(`/api/images/history?id=${editingImage.id}`, {
+        body: JSON.stringify({ title: editTitleInput.trim() }),
+        headers: { "Content-Type": "application/json" },
+        method: "PATCH",
+      });
+      if (!res.ok) {
+        throw new Error("Erreur de renommage");
+      }
+      toast.success("Image renommée avec succès ! ✨");
+      setEditingImage(null);
+      mutateHistory();
+    } catch {
+      toast.error("Impossible de renommer l'image");
+    } finally {
+      setIsSavingRename(false);
+    }
+  };
 
   const selectedModel = useMemo(
     () => models.find((m) => m.id === selectedModelId),
@@ -917,9 +1000,22 @@ export default function ImagesPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 {history.map((item) => (
                   <div
-                    className="group flex flex-col rounded-2xl border border-border/60 bg-card/60 overflow-hidden shadow-sm hover:shadow-md transition backdrop-blur-md"
+                    className={cn(
+                      "group relative flex flex-col rounded-2xl border bg-card/60 overflow-hidden shadow-sm hover:shadow-md transition backdrop-blur-md",
+                      item.pinned
+                        ? "border-amber-500/50 bg-amber-500/5 dark:bg-amber-500/10 shadow-amber-500/5"
+                        : "border-border/60"
+                    )}
                     key={item.id}
                   >
+                    {/* Badge épinglé */}
+                    {item.pinned && (
+                      <div className="absolute top-2.5 right-2.5 z-10 flex items-center gap-1 rounded-full bg-amber-500/90 text-white px-2 py-0.5 text-[10px] font-bold shadow-md backdrop-blur-sm">
+                        <PinIcon className="size-3 fill-current" />
+                        <span>Épinglé</span>
+                      </div>
+                    )}
+
                     <div
                       className="relative aspect-square cursor-pointer overflow-hidden bg-black/10"
                       onClick={() =>
@@ -937,20 +1033,76 @@ export default function ImagesPage() {
                     </div>
 
                     <div className="p-3.5 flex flex-col gap-2 flex-1 justify-between text-xs">
-                      <p
-                        className="text-foreground font-medium line-clamp-2"
-                        title={item.prompt}
-                      >
-                        {item.prompt}
-                      </p>
+                      <div>
+                        {item.title && (
+                          <p className="text-foreground font-semibold text-xs line-clamp-1">
+                            {item.title}
+                          </p>
+                        )}
+                        <p
+                          className={cn(
+                            "line-clamp-2",
+                            item.title
+                              ? "text-[11px] text-muted-foreground mt-0.5 font-normal"
+                              : "text-foreground font-medium"
+                          )}
+                          title={item.prompt}
+                        >
+                          {item.prompt}
+                        </p>
+                      </div>
 
                       <div className="flex items-center justify-between pt-2 border-t border-border/40 text-[11px] text-muted-foreground">
-                        <span className="truncate max-w-[110px]">
-                          {item.model}
+                        <span
+                          className="truncate max-w-[100px] font-medium text-foreground/80"
+                          title={formatImageModelName(item.model)}
+                        >
+                          {formatImageModelName(item.model)}
                         </span>
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-0.5">
+                          {/* Bouton Épingler */}
                           <button
-                            className="p-1.5 text-muted-foreground hover:text-primary transition"
+                            className={cn(
+                              "p-1.5 rounded-lg transition",
+                              item.pinned
+                                ? "text-amber-500 hover:text-amber-600 bg-amber-500/10"
+                                : "text-muted-foreground hover:text-foreground hover:bg-muted/40"
+                            )}
+                            onClick={() =>
+                              handleTogglePin(item.id, Boolean(item.pinned))
+                            }
+                            title={
+                              item.pinned
+                                ? "Désépingler de la galerie"
+                                : "Épingler en haut de la galerie 📌"
+                            }
+                            type="button"
+                          >
+                            {item.pinned ? (
+                              <PinOffIcon className="size-3.5" />
+                            ) : (
+                              <PinIcon className="size-3.5" />
+                            )}
+                          </button>
+
+                          {/* Bouton Renommer */}
+                          <button
+                            className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/40 transition"
+                            onClick={() => {
+                              setEditingImage({
+                                id: item.id,
+                                title: item.title || item.prompt,
+                              });
+                              setEditTitleInput(item.title || item.prompt);
+                            }}
+                            title="Renommer l'image"
+                            type="button"
+                          >
+                            <PencilIcon className="size-3.5" />
+                          </button>
+
+                          <button
+                            className="p-1.5 rounded-lg text-muted-foreground hover:text-primary hover:bg-muted/40 transition"
                             onClick={() =>
                               handleEditAsSource(
                                 formatImageSrc(item.image_url),
@@ -963,7 +1115,7 @@ export default function ImagesPage() {
                             <Wand2Icon className="size-3.5" />
                           </button>
                           <button
-                            className="p-1.5 text-muted-foreground hover:text-foreground transition"
+                            className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/40 transition"
                             onClick={() =>
                               downloadImage(
                                 formatImageSrc(item.image_url),
@@ -976,7 +1128,7 @@ export default function ImagesPage() {
                             <DownloadIcon className="size-3.5" />
                           </button>
                           <button
-                            className="p-1.5 text-muted-foreground hover:text-destructive transition"
+                            className="p-1.5 rounded-lg text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition"
                             onClick={() => handleDeleteFromHistory(item.id)}
                             title="Supprimer"
                             type="button"
@@ -1040,6 +1192,80 @@ export default function ImagesPage() {
                 type="button"
               >
                 <Wand2Icon className="size-4" /> Éditer dans Images
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modale Renommer une image */}
+      {editingImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
+          onClick={() => setEditingImage(null)}
+        >
+          <div
+            className="w-full max-w-md rounded-2xl border border-border/80 bg-card p-5 shadow-2xl space-y-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <PencilIcon className="size-4" />
+                </div>
+                <h3 className="text-sm font-bold text-foreground">
+                  Renommer l'image
+                </h3>
+              </div>
+              <button
+                className="p-1 text-muted-foreground hover:text-foreground rounded-lg"
+                onClick={() => setEditingImage(null)}
+                type="button"
+              >
+                <XIcon className="size-4" />
+              </button>
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="text-xs font-medium text-muted-foreground">
+                Titre personnalisé
+              </label>
+              <input
+                autoFocus
+                className="w-full rounded-xl border border-border bg-background px-3.5 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
+                onChange={(e) => setEditTitleInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleSaveRename();
+                  } else if (e.key === "Escape") {
+                    setEditingImage(null);
+                  }
+                }}
+                placeholder="Ex: Concept futuriste cyber..."
+                value={editTitleInput}
+              />
+            </div>
+
+            <div className="flex items-center justify-end gap-2 pt-2">
+              <button
+                className="rounded-xl px-3.5 py-2 text-xs font-medium text-muted-foreground hover:bg-muted/40 transition"
+                onClick={() => setEditingImage(null)}
+                type="button"
+              >
+                Annuler
+              </button>
+              <button
+                className="inline-flex items-center gap-1.5 rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 disabled:opacity-50"
+                disabled={isSavingRename}
+                onClick={handleSaveRename}
+                type="button"
+              >
+                {isSavingRename ? (
+                  <Loader2Icon className="size-3.5 animate-spin" />
+                ) : (
+                  <CheckIcon className="size-3.5" />
+                )}
+                <span>Enregistrer</span>
               </button>
             </div>
           </div>

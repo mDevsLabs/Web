@@ -23,6 +23,9 @@ export function registerMiddleware(app: Hono) {
       path === "/images" ||
       path.startsWith("/images/") ||
       path === "/images/generations" ||
+      path === "/mj" ||
+      path.startsWith("/mj/") ||
+      path.startsWith("/v1/mj/") ||
       path === "/audio/speech" ||
       path.startsWith("/audio/") ||
       path === "/usage/speech" ||

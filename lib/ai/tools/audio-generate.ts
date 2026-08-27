@@ -51,14 +51,40 @@ export const audioGenerate = ({ session, dataStream }: AudioGenerateProps) =>
           console.warn("Avertissement vérification quota tool audio:", quotaErr);
         }
 
+        // Récupérer préférences utilisateur pour le modèle, voix et vitesse par défaut
+        let targetModel = "deepgram/flux-tts:free";
+        let targetVoice = voice || "flux-alexis-en";
+        let targetSpeed = speed || 1.0;
+
+        try {
+          const prefRes = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`,
+            {
+              headers: token ? { Authorization: `Bearer ${token}` } : {},
+            }
+          );
+          if (prefRes.ok) {
+            const prefs = await prefRes.json();
+            if (prefs.defaultAudioModel) {
+              targetModel = prefs.defaultAudioModel;
+            }
+            if (!voice && prefs.defaultAudioVoice) {
+              targetVoice = prefs.defaultAudioVoice;
+            }
+            if (!speed && prefs.defaultAudioSpeed) {
+              targetSpeed = prefs.defaultAudioSpeed;
+            }
+          }
+        } catch {}
+
         const payload = {
           format: "json",
           input: text,
-          model: "deepgram/flux-tts:free",
+          model: targetModel,
           response_format: "mp3",
           return_json: true,
-          speed: speed || 1.0,
-          voice: voice || "flux-alexis-en",
+          speed: targetSpeed,
+          voice: targetVoice,
         };
 
         const res = await fetch(`${MAI_API_URL}/v1/audio/speech`, {

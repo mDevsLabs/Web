@@ -237,7 +237,9 @@ export const mprojectsSpeechGenerations = pgTable(
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     inputText: text("input_text").notNull(),
     model: text("model").notNull().default("deepgram/flux-tts:free"),
+    pinned: boolean("pinned").notNull().default(false),
     status: text("status").notNull().default("completed"),
+    title: text("title"),
     tokensCount: integer("tokens_count").notNull().default(0),
     userId: text("user_id").notNull(),
     voice: text("voice").default("flux-alexis-en"),
@@ -245,6 +247,10 @@ export const mprojectsSpeechGenerations = pgTable(
   (table) => ({
     createdAtIdx: index("mprojects_speech_generations_created_at_idx").on(
       table.createdAt
+    ),
+    pinnedIdx: index("mprojects_speech_generations_pinned_idx").on(
+      table.userId,
+      table.pinned
     ),
     userIdIdx: index("mprojects_speech_generations_user_id_idx").on(
       table.userId
@@ -254,4 +260,39 @@ export const mprojectsSpeechGenerations = pgTable(
 
 export type MprojectsSpeechGenerations = InferSelectModel<
   typeof mprojectsSpeechGenerations
+>;
+
+export const mprojectsImageGenerations = pgTable(
+  "mprojects_image_generations",
+  {
+    apiKey: text("api_key"),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    height: integer("height").notNull().default(1024),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    imageUrl: text("image_url").notNull(),
+    model: text("model").notNull().default("black-forest-labs/flux-schnell"),
+    negativePrompt: text("negative_prompt"),
+    pinned: boolean("pinned").notNull().default(false),
+    prompt: text("prompt").notNull(),
+    status: text("status").notNull().default("completed"),
+    title: text("title"),
+    userId: text("user_id").notNull(),
+    width: integer("width").notNull().default(1024),
+  },
+  (table) => ({
+    createdAtIdx: index("mprojects_image_generations_created_at_idx").on(
+      table.createdAt
+    ),
+    pinnedIdx: index("mprojects_image_generations_pinned_idx").on(
+      table.userId,
+      table.pinned
+    ),
+    userIdIdx: index("mprojects_image_generations_user_id_idx").on(
+      table.userId
+    ),
+  })
+);
+
+export type MprojectsImageGenerations = InferSelectModel<
+  typeof mprojectsImageGenerations
 >;
