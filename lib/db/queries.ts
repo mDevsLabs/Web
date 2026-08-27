@@ -242,6 +242,9 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     "updatedAt" timestamp DEFAULT now() NOT NULL
   )`);
   await run(client`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "skillId" uuid`);
+  await run(
+    client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "pinned" boolean DEFAULT false NOT NULL`
+  );
 
   await run(client`CREATE TABLE IF NOT EXISTS "McpServer" (
     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,

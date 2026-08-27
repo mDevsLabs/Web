@@ -45,6 +45,9 @@ const runMigrate = async () => {
   try {
     await connection`ALTER TABLE "Stream" ALTER COLUMN "id" TYPE text USING "id"::text`;
   } catch {}
+  try {
+    await connection`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "pinned" boolean DEFAULT false NOT NULL`;
+  } catch {}
 
   // Notifications & nouveautés — tables idempotentes
   try {
