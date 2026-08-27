@@ -654,6 +654,25 @@ export async function POST(request: Request) {
           // Mode fantôme : ne pas enregistrer la discussion ou les messages en BDD
           return;
         }
+        // Notification IA : à chaque fin de génération (si activé)
+        try {
+          const { createNotification } = await import("@/lib/db/queries");
+          const snippet = (() => {
+            const last = [...finishedMessages].reverse().find((m) => m.role === "assistant");
+            if (!last) return "mAI a répondu à votre message.";
+            const txt = getTextFromMessage(last as any) || "";
+            return txt.slice(0, 180) || "mAI a répondu à votre message.";
+          })();
+          // fire-and-forget, gating inside createNotification respects prefs
+          createNotification({
+            body: snippet,
+            link: `/chat/${id}`,
+            title: "Nouvelle réponse de mAI",
+            type: "ai_response",
+            userId,
+          }).catch(() => {});
+          // Browser push via service? handled client side via polling + Notification API
+        } catch {}
 
         if (isToolApprovalFlow) {
           await Promise.all(

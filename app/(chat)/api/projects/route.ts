@@ -82,6 +82,18 @@ export async function POST(request: Request) {
       userId,
     });
 
+    // Notification projet créé
+    try {
+      const { createNotification } = await import("@/lib/db/queries");
+      createNotification({
+        body: `Le dossier "${project.name}" a été créé.`,
+        link: `/projects/${project.id}`,
+        title: "Nouveau projet créé",
+        type: "project_created",
+        userId,
+      }).catch(() => {});
+    } catch {}
+
     return Response.json({ project, success: true });
   } catch (error) {
     if (error instanceof ChatbotError) {

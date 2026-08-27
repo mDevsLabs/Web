@@ -46,6 +46,7 @@ export const metadata: Metadata = {
 
 export const viewport = {
   maximumScale: 1,
+  viewportFit: "cover",
 };
 
 const fontSans = Plus_Jakarta_Sans({

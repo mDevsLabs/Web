@@ -2,7 +2,6 @@ import { cookies } from "next/headers";
 import { MAI_API_URL, MAI_SESSION_COOKIE } from "@/lib/constants";
 
 export { MAI_SESSION_COOKIE } from "@/lib/constants";
-export { getUserApiKey } from "@/lib/db/api-keys";
 
 export type MaiUser = {
   id?: string;

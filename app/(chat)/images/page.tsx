@@ -223,7 +223,7 @@ export default function ImagesPage() {
         throw new Error("Erreur de modification");
       }
       toast.success(
-        currentPinned ? "Image désépinglée" : "Image épinglée en haut 📌"
+        currentPinned ? "Image désépinglée" : "Image épinglée en haut"
       );
       mutateHistory();
     } catch {
@@ -246,7 +246,7 @@ export default function ImagesPage() {
       if (!res.ok) {
         throw new Error("Erreur de renommage");
       }
-      toast.success("Image renommée avec succès ! ✨");
+      toast.success("Image renommée avec succès !");
       setEditingImage(null);
       mutateHistory();
     } catch {
@@ -1075,7 +1075,7 @@ export default function ImagesPage() {
                             title={
                               item.pinned
                                 ? "Désépingler de la galerie"
-                                : "Épingler en haut de la galerie 📌"
+                                : "Épingler en haut de la galerie"
                             }
                             type="button"
                           >

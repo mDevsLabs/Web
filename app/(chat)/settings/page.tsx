@@ -2,6 +2,7 @@
 
 import {
   AlertCircleIcon,
+  BellIcon,
   BotIcon,
   CameraIcon,
   CheckCircle2Icon,
@@ -102,18 +103,21 @@ export default function SettingsPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialTab =
-    (searchParams.get("tab") as "profile" | "usage" | "preferences") ||
-    "profile";
+    (searchParams.get("tab") as
+      | "profile"
+      | "usage"
+      | "preferences"
+      | "notifications") || "profile";
   const [activeTab, setActiveTab] = useState<
-    "profile" | "usage" | "preferences"
+    "profile" | "usage" | "preferences" | "notifications"
   >(
-    ["profile", "usage", "preferences"].includes(initialTab)
-      ? initialTab
+    ["profile", "usage", "preferences", "notifications"].includes(initialTab)
+      ? (initialTab as any)
       : "profile"
   );
 
   const handleTabChange = useCallback(
-    (tab: "profile" | "usage" | "preferences") => {
+    (tab: "profile" | "usage" | "preferences" | "notifications") => {
       setActiveTab(tab);
       const params = new URLSearchParams(searchParams.toString());
       params.set("tab", tab);
@@ -126,7 +130,7 @@ export default function SettingsPage() {
     const t = searchParams.get("tab") as any;
     if (
       t &&
-      ["profile", "usage", "preferences"].includes(t) &&
+      ["profile", "usage", "preferences", "notifications"].includes(t) &&
       t !== activeTab
     ) {
       setActiveTab(t);
@@ -223,6 +227,21 @@ export default function SettingsPage() {
   const [defaultAudioSpeed, setDefaultAudioSpeed] = useState<number>(1.0);
   const [isSavingToolsPref, setIsSavingToolsPref] = useState<boolean>(false);
 
+  // Notifications prefs
+  const [notifEnabled, setNotifEnabled] = useState(false);
+  const [notifAiResponse, setNotifAiResponse] = useState(true);
+  const [notifProject, setNotifProject] = useState(true);
+  const [notifMcp, setNotifMcp] = useState(true);
+  const [notifMcpAccess, setNotifMcpAccess] = useState(true);
+  const [notifNews, setNotifNews] = useState(true);
+  const [isSavingNotif, setIsSavingNotif] = useState(false);
+  const [regenerateMode, setRegenerateMode] = useState<"truncate" | "fork">(
+    "truncate"
+  );
+  const [browserPerm, setBrowserPerm] = useState<string>(
+    typeof Notification !== "undefined" ? Notification.permission : "default"
+  );
+
   const { data: prefModelsData } = useSWR(
     `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models`,
     (url: string) => fetch(url).then((r) => r.json()),
@@ -273,6 +292,126 @@ export default function SettingsPage() {
       }
     }
   }, [customPrefData]);
+
+  // Notifications prefs fetch
+  const { data: notifPrefsData, mutate: mutateNotifPrefs } = useSWR(
+    "/api/notifications/preferences",
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 10000 }
+  );
+
+  useEffect(() => {
+    if (notifPrefsData) {
+      if (typeof notifPrefsData.enabled === "boolean")
+        setNotifEnabled(notifPrefsData.enabled);
+      if (typeof notifPrefsData.aiResponse === "boolean")
+        setNotifAiResponse(notifPrefsData.aiResponse);
+      if (typeof notifPrefsData.projectCreated === "boolean")
+        setNotifProject(notifPrefsData.projectCreated);
+      if (typeof notifPrefsData.mcpCreated === "boolean")
+        setNotifMcp(notifPrefsData.mcpCreated);
+      if (typeof notifPrefsData.mcpAccessRequest === "boolean")
+        setNotifMcpAccess(notifPrefsData.mcpAccessRequest);
+      if (typeof notifPrefsData.news === "boolean")
+        setNotifNews(notifPrefsData.news);
+      if (
+        notifPrefsData.regenerateMode === "truncate" ||
+        notifPrefsData.regenerateMode === "fork"
+      )
+        setRegenerateMode(notifPrefsData.regenerateMode);
+    }
+  }, [notifPrefsData]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && "Notification" in window) {
+      setBrowserPerm(Notification.permission);
+    }
+  }, [notifEnabled]);
+
+  const handleRequestNotificationPermission = useCallback(async () => {
+    if (typeof window === "undefined" || !("Notification" in window)) {
+      toast.error("Les notifications ne sont pas supportées par ce navigateur.");
+      return;
+    }
+    try {
+      const perm = await Notification.requestPermission();
+      setBrowserPerm(perm);
+      if (perm === "granted") {
+        toast.success("Permission accordée ! Vous recevrez les notifications.");
+        // auto-enable
+        if (!notifEnabled) {
+          setNotifEnabled(true);
+          // persist
+          fetch("/api/notifications/preferences", {
+            body: JSON.stringify({ enabled: true, news: true }),
+            headers: { "Content-Type": "application/json" },
+            method: "POST",
+          })
+            .then(() => mutateNotifPrefs())
+            .catch(() => {});
+        }
+      } else if (perm === "denied") {
+        toast.error(
+          "Permission refusée. Activez-la dans les paramètres du navigateur."
+        );
+      }
+    } catch {
+      toast.error("Impossible de demander la permission.");
+    }
+  }, [notifEnabled, mutateNotifPrefs]);
+
+  const handleSaveNotifPrefs = useCallback(async () => {
+    setIsSavingNotif(true);
+    try {
+      const res = await fetch("/api/notifications/preferences", {
+        body: JSON.stringify({
+          aiResponse: notifAiResponse,
+          enabled: notifEnabled,
+          mcpAccessRequest: notifMcpAccess,
+          mcpCreated: notifMcp,
+          news: notifNews,
+          projectCreated: notifProject,
+          regenerateMode,
+        }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      });
+      if (!res.ok) throw new Error("Erreur sauvegarde");
+      toast.success("Préférences de notifications enregistrées !");
+      mutateNotifPrefs();
+      if (notifEnabled && typeof window !== "undefined" && "Notification" in window && Notification.permission === "default") {
+        handleRequestNotificationPermission();
+      }
+    } catch (e: any) {
+      toast.error(e.message || "Erreur");
+    } finally {
+      setIsSavingNotif(false);
+    }
+  }, [
+    notifEnabled,
+    notifAiResponse,
+    notifProject,
+    notifMcp,
+    notifMcpAccess,
+    notifNews,
+    regenerateMode,
+    mutateNotifPrefs,
+    handleRequestNotificationPermission,
+  ]);
+
+  const handleSaveRegenerateMode = useCallback(async () => {
+    try {
+      await fetch("/api/notifications/preferences", {
+        body: JSON.stringify({ regenerateMode }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      });
+      toast.success("Mode régénération enregistré !");
+      mutateNotifPrefs();
+    } catch {
+      toast.error("Erreur sauvegarde mode régénération");
+    }
+  }, [regenerateMode, mutateNotifPrefs]);
 
   useEffect(() => {
     const cModel = getCookie("chat-model");
@@ -327,7 +466,7 @@ export default function SettingsPage() {
         throw new Error("Erreur lors de l'enregistrement");
       }
       toast.success(
-        "Préférences d'outils Images & Audio enregistrées en BDD ! ✨"
+        "Préférences d'outils Images & Audio enregistrées en BDD !"
       );
       mutateCustomPref();
     } catch (e: any) {
@@ -622,6 +761,18 @@ export default function SettingsPage() {
           >
             <ZapIcon className="size-4" />
             <span>Consommation & Forfait</span>
+          </button>
+
+          <button
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer ${
+              activeTab === "notifications"
+                ? "bg-foreground text-background shadow-sm"
+                : "bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
+            }`}
+            onClick={() => handleTabChange("notifications")}
+          >
+            <BellIcon className="size-4" />
+            <span>Notifications</span>
           </button>
         </div>
       </div>
@@ -1239,6 +1390,69 @@ export default function SettingsPage() {
             </div>
           </div>
 
+          {/* Mode régénération */}
+          <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6">
+            <div className="flex items-center gap-2.5">
+              <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-500 ring-1 ring-indigo-500/20">
+                <SettingsIcon className="size-5" />
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-foreground">
+                  Mode régénération des messages
+                </h3>
+                <p className="text-xs text-muted-foreground">
+                  Choisissez le comportement du bouton « Régénérer » sur les
+                  messages de l'assistant.
+                </p>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+              <button
+                className={`p-3 rounded-xl border text-left flex flex-col gap-1 cursor-pointer transition-all ${
+                  regenerateMode === "truncate"
+                    ? "bg-primary/10 border-primary/30 ring-1 ring-primary/20"
+                    : "bg-muted/20 border-border/50 hover:bg-muted/40"
+                }`}
+                onClick={() => setRegenerateMode("truncate")}
+                type="button"
+              >
+                <span className="text-sm font-semibold text-foreground">
+                  Tronquer
+                </span>
+                <span className="text-xs text-muted-foreground leading-tight">
+                  Supprime les messages suivants et régénère à partir du
+                  message ciblé (historique réécrit).
+                </span>
+              </button>
+              <button
+                className={`p-3 rounded-xl border text-left flex flex-col gap-1 cursor-pointer transition-all ${
+                  regenerateMode === "fork"
+                    ? "bg-primary/10 border-primary/30 ring-1 ring-primary/20"
+                    : "bg-muted/20 border-border/50 hover:bg-muted/40"
+                }`}
+                onClick={() => setRegenerateMode("fork")}
+                type="button"
+              >
+                <span className="text-sm font-semibold text-foreground">
+                  Fork (Brancher)
+                </span>
+                <span className="text-xs text-muted-foreground leading-tight">
+                  Crée une nouvelle conversation branchée, l'historique
+                  original reste intact.
+                </span>
+              </button>
+            </div>
+            <div className="flex justify-end">
+              <button
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-5 py-2 text-sm font-medium hover:opacity-90 cursor-pointer"
+                onClick={handleSaveRegenerateMode}
+                type="button"
+              >
+                Enregistrer le mode
+              </button>
+            </div>
+          </div>
+
           <div className="p-5 rounded-2xl border border-border/60 bg-muted/20 flex items-start gap-3">
             <AlertCircleIcon className="size-5 text-primary shrink-0 mt-0.5" />
             <div className="text-xs text-muted-foreground">
@@ -1250,6 +1464,203 @@ export default function SettingsPage() {
                 instructions personnalisées, sont enregistrées de façon
                 permanente dans votre profil utilisateur en base de données
                 PostgreSQL et synchronisées sur tous vos appareils.
+              </p>
+            </div>
+          </div>
+        </div>
+      ) : activeTab === "notifications" ? (
+        /* ────────────── SECTION NOTIFICATIONS ────────────── */
+        <div className="py-6 flex flex-col gap-6 max-w-3xl">
+          <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6">
+            <div className="flex items-center gap-2.5">
+              <div className="p-2 rounded-xl bg-blue-500/10 text-blue-500 ring-1 ring-blue-500/20">
+                <BellIcon className="size-5" />
+              </div>
+              <div>
+                <h3 className="text-base font-semibold text-foreground">
+                  Notifications
+                </h3>
+                <p className="text-xs text-muted-foreground">
+                  Gérez l'envoi et la personnalisation de vos notifications.
+                  Sauvegardées en base de données.
+                </p>
+              </div>
+              <div className="ml-auto flex items-center gap-2">
+                <span
+                  className={`text-xs px-2 py-1 rounded-full border font-medium ${
+                    notifEnabled
+                      ? "bg-emerald-500/10 text-emerald-600 border-emerald-500/20"
+                      : "bg-muted text-muted-foreground border-border/50"
+                  }`}
+                >
+                  {notifEnabled ? "Activées" : "Désactivées"}
+                </span>
+              </div>
+            </div>
+
+            {/* Demande permission */}
+            <div className="p-3 rounded-xl border border-amber-500/20 bg-amber-500/5 flex flex-col gap-2">
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex flex-col">
+                  <span className="text-sm font-medium text-foreground">
+                    Permission du navigateur
+                  </span>
+                  <span className="text-xs text-muted-foreground">
+                    État actuel :{" "}
+                    <span className="font-mono font-semibold">
+                      {browserPerm}
+                    </span>{" "}
+                    — requise pour les notifications système.
+                  </span>
+                </div>
+                <button
+                  className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-amber-600 text-white px-4 py-2 text-xs font-semibold hover:opacity-90 cursor-pointer shrink-0"
+                  onClick={handleRequestNotificationPermission}
+                  type="button"
+                >
+                  <BellIcon className="size-3.5" />
+                  Demander l'autorisation
+                </button>
+              </div>
+              <p className="text-[11px] text-muted-foreground">
+                En activant, vous acceptez de recevoir des notifications
+                navigateur et in-app. Consultez{" "}
+                <a
+                  className="underline text-primary"
+                  href="https://mai-devs.vercel.app"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  mai-devs.vercel.app
+                </a>{" "}
+                pour la politique RGPD.
+              </p>
+            </div>
+
+            {/* Toggle global */}
+            <label className="flex items-center justify-between p-3 rounded-xl border border-border/50 bg-muted/20 cursor-pointer">
+              <div className="flex flex-col">
+                <span className="text-sm font-semibold text-foreground">
+                  Activer les notifications
+                </span>
+                <span className="text-xs text-muted-foreground">
+                  Maître — désactive tout si off. À l'activation, « Actualités
+                  d'mAI » est activé par défaut.
+                </span>
+              </div>
+              <input
+                checked={notifEnabled}
+                className="size-5 accent-primary"
+                onChange={(e) => {
+                  const v = e.target.checked;
+                  setNotifEnabled(v);
+                  if (v) setNotifNews(true);
+                }}
+                type="checkbox"
+              />
+            </label>
+
+            {/* Granulaires */}
+            <div
+              className={`flex flex-col gap-3 pt-3 border-t border-border/40 ${
+                !notifEnabled ? "opacity-50 pointer-events-none" : ""
+              }`}
+            >
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Personnalisation
+              </p>
+              {[
+                {
+                  desc: "À chaque réponse de l'IA dans vos conversations",
+                  key: "ai",
+                  label: "Réponse de l'IA",
+                  value: notifAiResponse,
+                  setter: setNotifAiResponse,
+                },
+                {
+                  desc: "Lors de la création d'un nouveau dossier/projet",
+                  key: "project",
+                  label: "Nouveau projet",
+                  value: notifProject,
+                  setter: setNotifProject,
+                },
+                {
+                  desc: "Lors de l'ajout d'un nouveau serveur MCP",
+                  key: "mcp",
+                  label: "Nouveau MCP",
+                  value: notifMcp,
+                  setter: setNotifMcp,
+                },
+                {
+                  desc: "Lors d'une demande d'accès / exécution d'outil MCP (write/execute)",
+                  key: "mcpAccess",
+                  label: "Demande d'accès MCP",
+                  value: notifMcpAccess,
+                  setter: setNotifMcpAccess,
+                },
+                {
+                  desc: "Actualités et annonces mAI (via admin, activé par défaut si notifications on)",
+                  key: "news",
+                  label: "Actualités d'mAI",
+                  value: notifNews,
+                  setter: setNotifNews,
+                },
+              ].map((item) => (
+                <label
+                  className="flex items-center justify-between p-2.5 rounded-xl bg-muted/20 border border-border/30 cursor-pointer"
+                  key={item.key}
+                >
+                  <div className="flex flex-col pr-3">
+                    <span className="text-sm font-medium text-foreground">
+                      {item.label}
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      {item.desc}
+                    </span>
+                  </div>
+                  <input
+                    checked={item.value}
+                    className="size-4 accent-primary"
+                    onChange={(e) => (item.setter as any)(e.target.checked)}
+                    type="checkbox"
+                  />
+                </label>
+              ))}
+            </div>
+
+            <div className="flex justify-end pt-2">
+              <button
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-2.5 text-sm font-medium hover:opacity-90 disabled:opacity-50 cursor-pointer"
+                disabled={isSavingNotif}
+                onClick={handleSaveNotifPrefs}
+                type="button"
+              >
+                {isSavingNotif ? (
+                  <Loader2Icon className="size-4 animate-spin" />
+                ) : null}
+                {isSavingNotif ? "Enregistrement..." : "Enregistrer les notifications"}
+              </button>
+            </div>
+          </div>
+
+          <div className="p-4 rounded-xl border border-border/60 bg-muted/20 flex items-start gap-3">
+            <AlertCircleIcon className="size-5 text-primary shrink-0 mt-0.5" />
+            <div className="text-xs text-muted-foreground">
+              <p className="font-semibold text-foreground mb-1">RGPD & Données</p>
+              <p>
+                Les préférences et notifications sont stockées en base PostgreSQL
+                (tables Notification & user_notification_prefs). Les
+                notifications Actualités sont envoyées uniquement aux utilisateurs
+                ayant activé l'option. Plus d'infos sur{" "}
+                <a
+                  className="text-primary underline"
+                  href="https://mai-devs.vercel.app"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  mai-devs.vercel.app
+                </a>
+                .
               </p>
             </div>
           </div>

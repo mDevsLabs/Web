@@ -1,0 +1,23 @@
+app/(chat)/api/mcp/[id]/route.ts(70,22): error TS2339: Property 'user' does not exist on type 'PlanGuardResult'.
+  Property 'user' does not exist on type '{ allowed: false; reason: "unauthorized" | "plan_required"; upgradeUrl: string; }'.
+app/(chat)/api/mcp/[id]/route.ts(150,22): error TS2339: Property 'user' does not exist on type 'PlanGuardResult'.
+  Property 'user' does not exist on type '{ allowed: false; reason: "unauthorized" | "plan_required"; upgradeUrl: string; }'.
+app/(chat)/api/mcp/route.ts(65,22): error TS2339: Property 'user' does not exist on type 'PlanGuardResult'.
+  Property 'user' does not exist on type '{ allowed: false; reason: "unauthorized" | "plan_required"; upgradeUrl: string; }'.
+app/(chat)/api/mcp/templates/route.ts(3,20): error TS2307: Cannot find module '@/lib/db' or its corresponding type declarations.
+app/(chat)/api/mcp/templates/route.ts(13,84): error TS2339: Property 'eq' does not exist on type 'PgColumn<{ name: "isPublic"; tableName: "McpTemplate"; dataType: "boolean"; columnType: "PgBoolean"; data: boolean; driverParam: boolean; notNull: true; hasDefault: true; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, {}>'.
+app/(chat)/api/mcp/templates/route.ts(21,22): error TS2339: Property 'user' does not exist on type 'PlanGuardResult'.
+  Property 'user' does not exist on type '{ allowed: false; reason: "unauthorized" | "plan_required"; upgradeUrl: string; }'.
+app/(chat)/api/mcp/templates/route.ts(26,72): error TS2339: Property 'eq' does not exist on type 'PgColumn<{ name: "id"; tableName: "McpTemplate"; dataType: "string"; columnType: "PgUUID"; data: string; driverParam: string; notNull: true; hasDefault: true; isPrimaryKey: true; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, {}>'.
+app/(chat)/api/skills/[id]/route.ts(65,22): error TS2339: Property 'user' does not exist on type 'PlanGuardResult'.
+  Property 'user' does not exist on type '{ allowed: false; reason: "unauthorized" | "plan_required"; upgradeUrl: string; }'.
+app/(chat)/api/skills/[id]/route.ts(108,22): error TS2339: Property 'user' does not exist on type 'PlanGuardResult'.
+  Property 'user' does not exist on type '{ allowed: false; reason: "unauthorized" | "plan_required"; upgradeUrl: string; }'.
+app/(chat)/api/skills/route.ts(50,22): error TS2339: Property 'user' does not exist on type 'PlanGuardResult'.
+  Property 'user' does not exist on type '{ allowed: false; reason: "unauthorized" | "plan_required"; upgradeUrl: string; }'.
+app/(chat)/api/skills/templates/route.ts(3,20): error TS2307: Cannot find module '@/lib/db' or its corresponding type declarations.
+app/(chat)/api/skills/templates/route.ts(15,88): error TS2339: Property 'eq' does not exist on type 'PgColumn<{ name: "isPublic"; tableName: "SkillTemplate"; dataType: "boolean"; columnType: "PgBoolean"; data: boolean; driverParam: boolean; notNull: true; hasDefault: true; isPrimaryKey: false; isAutoincrement: false; ... 4 more ...; generated: undefined; }, {}, {}>'.
+app/(chat)/mcp/mcp-client.tsx(698,82): error TS2339: Property 'avgLatencyMs' does not exist on type '{ name: string; createdAt: Date; description: string | null; icon: string | null; id: string; updatedAt: Date; userId: string; args: unknown; authConfig: unknown; authType: "none" | "bearer" | "basic" | "oauth2" | "custom_headers"; ... 7 more ...; url: string | null; }'.
+app/(chat)/mcp/mcp-client.tsx(699,83): error TS2339: Property 'callCount' does not exist on type '{ name: string; createdAt: Date; description: string | null; icon: string | null; id: string; updatedAt: Date; userId: string; args: unknown; authConfig: unknown; authType: "none" | "bearer" | "basic" | "oauth2" | "custom_headers"; ... 7 more ...; url: string | null; }'.
+app/(chat)/skills/skills-client.tsx(16,3): error TS2300: Duplicate identifier 'PlayIcon'.
+app/(chat)/skills/skills-client.tsx(18,3): error TS2300: Duplicate identifier 'PlayIcon'.

@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { getMaiUser } from "@/lib/auth/session";
+import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
 import {
   deleteMcpServer,
   getMcpServerById,
@@ -63,10 +64,11 @@ export async function PATCH(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const user = await getMaiUser();
-  if (!user) {
-    return new ChatbotError("unauthorized:chat").toResponse();
+  const guard = await requirePaidPlan("plus");
+  if (!guard.allowed) {
+    return planGuardResponse(guard)!;
   }
+  const user = guard.user;
   const userId = user.id || user.email;
   const { id } = await params;
 
@@ -140,10 +142,11 @@ export async function DELETE(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const user = await getMaiUser();
-  if (!user) {
-    return new ChatbotError("unauthorized:chat").toResponse();
+  const guard = await requirePaidPlan("plus");
+  if (!guard.allowed) {
+    return planGuardResponse(guard)!;
   }
+  const user = guard.user;
   const userId = user.id || user.email;
   const { id } = await params;
 

@@ -41,7 +41,7 @@ function getYouApiKeys(): string[] {
   ];
 
   for (const k of candidateKeys) {
-    if (k?.trim() && !keys.includes(k.trim())) {
+    if (k && k.trim() && !keys.includes(k.trim())) {
       keys.push(k.trim());
     }
   }
@@ -52,10 +52,7 @@ function getYouApiKeys(): string[] {
 /**
  * Fallback Web Universel (Google News RSS, Bing News RSS, Wikipedia & DDG)
  */
-async function fallbackWebSearch(
-  query: string,
-  count = 5
-): Promise<Array<{ title: string; url: string; snippet: string }>> {
+async function fallbackWebSearch(query: string, count = 5): Promise<Array<{ title: string; url: string; snippet: string }>> {
   const results: Array<{ title: string; url: string; snippet: string }> = [];
 
   // 1. Essai Google News RSS (Ultra-rapide, mondial, temps réel, aucune clé requise)
@@ -63,9 +60,8 @@ async function fallbackWebSearch(
     const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=fr&gl=FR&ceid=FR:fr`;
     const res = await fetch(rssUrl, {
       headers: {
-        Accept: "application/rss+xml, text/xml, */*",
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+        "Accept": "application/rss+xml, text/xml, */*",
       },
     });
 
@@ -75,41 +71,23 @@ async function fallbackWebSearch(
       for (let i = 1; i < items.length && results.length < count; i++) {
         const block = items[i].split("</item>")[0];
         const titleMatch = block.match(/<title>([\s\S]*?)<\/title>/i);
-        const linkMatch =
-          block.match(/<link>([\s\S]*?)<\/link>/i) ||
-          block.match(/<guid[^>]*>([\s\S]*?)<\/guid>/i);
-        const descMatch = block.match(
-          /<description>([\s\S]*?)<\/description>/i
-        );
+        const linkMatch = block.match(/<link>([\s\S]*?)<\/link>/i) || block.match(/<guid[^>]*>([\s\S]*?)<\/guid>/i);
+        const descMatch = block.match(/<description>([\s\S]*?)<\/description>/i);
 
-        const title = titleMatch
-          ? titleMatch[1]
-              .replace(/<!\[CDATA\[(.*?)\]\]>/gi, "$1")
-              .replace(/<[^>]+>/g, "")
-              .trim()
-          : "";
-        const link = linkMatch
-          ? linkMatch[1].replace(/<!\[CDATA\[(.*?)\]\]>/gi, "$1").trim()
-          : "";
-        const snippet = descMatch
-          ? descMatch[1]
-              .replace(/<!\[CDATA\[(.*?)\]\]>/gi, "$1")
-              .replace(/<[^>]+>/g, "")
-              .trim()
-          : title;
+        let title = titleMatch ? titleMatch[1].replace(/<!\[CDATA\[(.*?)\]\]>/gi, "$1").replace(/<[^>]+>/g, "").trim() : "";
+        let link = linkMatch ? linkMatch[1].replace(/<!\[CDATA\[(.*?)\]\]>/gi, "$1").trim() : "";
+        let snippet = descMatch ? descMatch[1].replace(/<!\[CDATA\[(.*?)\]\]>/gi, "$1").replace(/<[^>]+>/g, "").trim() : title;
 
         if (title && link) {
           results.push({
-            snippet: snippet || title,
             title,
             url: link,
+            snippet: snippet || title,
           });
         }
       }
 
-      if (results.length > 0) {
-        return results;
-      }
+      if (results.length > 0) return results;
     }
   } catch (err) {
     console.warn("[WebSearch] Fallback Google News RSS failed:", err);
@@ -120,9 +98,8 @@ async function fallbackWebSearch(
     const bingRssUrl = `https://www.bing.com/news/search?q=${encodeURIComponent(query)}&format=rss`;
     const res = await fetch(bingRssUrl, {
       headers: {
-        Accept: "application/rss+xml, text/xml, */*",
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "Accept": "application/rss+xml, text/xml, */*",
       },
     });
 
@@ -133,30 +110,22 @@ async function fallbackWebSearch(
         const block = items[i].split("</item>")[0];
         const titleMatch = block.match(/<title>([\s\S]*?)<\/title>/i);
         const linkMatch = block.match(/<link>([\s\S]*?)<\/link>/i);
-        const descMatch = block.match(
-          /<description>([\s\S]*?)<\/description>/i
-        );
+        const descMatch = block.match(/<description>([\s\S]*?)<\/description>/i);
 
-        const title = titleMatch
-          ? titleMatch[1].replace(/<[^>]+>/g, "").trim()
-          : "";
+        const title = titleMatch ? titleMatch[1].replace(/<[^>]+>/g, "").trim() : "";
         const link = linkMatch ? linkMatch[1].trim() : "";
-        const snippet = descMatch
-          ? descMatch[1].replace(/<[^>]+>/g, "").trim()
-          : title;
+        const snippet = descMatch ? descMatch[1].replace(/<[^>]+>/g, "").trim() : title;
 
         if (title && link) {
           results.push({
-            snippet: snippet || title,
             title,
             url: link,
+            snippet: snippet || title,
           });
         }
       }
 
-      if (results.length > 0) {
-        return results;
-      }
+      if (results.length > 0) return results;
     }
   } catch (err) {
     console.warn("[WebSearch] Fallback Bing RSS failed:", err);
@@ -168,8 +137,7 @@ async function fallbackWebSearch(
     const wikiUrl = `https://${lang}.wikipedia.org/w/api.php?action=opensearch&search=${encodeURIComponent(query)}&limit=${count}&namespace=0&format=json`;
     const res = await fetch(wikiUrl, {
       headers: {
-        "User-Agent":
-          "mAI-WebSearch-Agent/1.0 (https://m-ai.fr; contact@m-ai.fr)",
+        "User-Agent": "mAI-WebSearch-Agent/1.0 (https://m-ai.fr; contact@m-ai.fr)",
       },
     });
     if (res.ok) {
@@ -180,15 +148,13 @@ async function fallbackWebSearch(
       for (let i = 0; i < titles.length && results.length < count; i++) {
         if (urls[i]) {
           results.push({
-            snippet: descriptions[i] || `Article Wikipedia sur ${titles[i]}`,
             title: titles[i],
             url: urls[i],
+            snippet: descriptions[i] || `Article Wikipedia sur ${titles[i]}`,
           });
         }
       }
-      if (results.length > 0) {
-        return results;
-      }
+      if (results.length > 0) return results;
     }
   } catch (err) {
     console.warn("[WebSearch] Fallback Wikipedia failed:", err);
@@ -234,22 +200,22 @@ export async function executeWebSearch(
 
     for (let i = 0; i < keys.length; i++) {
       const key = keys[i];
-      const _keyLabel = `YOU_API_KEY_${i + 1}`;
+      const keyLabel = `YOU_API_KEY_${i + 1}`;
 
       for (const endpointUrl of endpoints) {
         try {
           const res = await fetch(endpointUrl, {
-            body: JSON.stringify({
-              count,
-              query: trimmedQuery,
-            }),
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-              "User-Agent": "mAI-WebSearch/1.0",
-              "X-API-Key": key,
-            },
             method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-API-Key": key,
+              "Accept": "application/json",
+              "User-Agent": "mAI-WebSearch/1.0",
+            },
+            body: JSON.stringify({
+              query: trimmedQuery,
+              count,
+            }),
           });
 
           if (res.ok) {
@@ -264,12 +230,8 @@ export async function executeWebSearch(
                 if (Array.isArray(data.results)) {
                   rawHits = data.results;
                 } else {
-                  if (Array.isArray(data.results.web)) {
-                    rawHits.push(...data.results.web);
-                  }
-                  if (Array.isArray(data.results.news)) {
-                    rawHits.push(...data.results.news);
-                  }
+                  if (Array.isArray(data.results.web)) rawHits.push(...data.results.web);
+                  if (Array.isArray(data.results.news)) rawHits.push(...data.results.news);
                 }
               } else if (Array.isArray(data.hits)) {
                 rawHits = data.hits;
@@ -277,28 +239,22 @@ export async function executeWebSearch(
                 rawHits = data.web.results;
               }
 
-              const formattedResults = rawHits
-                .map((hit: any) => {
-                  let snippet = "";
-                  if (hit.contents?.markdown) {
-                    snippet = hit.contents.markdown.slice(0, 300);
-                  } else if (
-                    hit.snippets &&
-                    Array.isArray(hit.snippets) &&
-                    hit.snippets.length > 0
-                  ) {
-                    snippet = hit.snippets.join(" ... ");
-                  } else {
-                    snippet = hit.description || hit.snippet || hit.text || "";
-                  }
+              const formattedResults = rawHits.map((hit: any) => {
+                let snippet = "";
+                if (hit.contents?.markdown) {
+                  snippet = hit.contents.markdown.slice(0, 300);
+                } else if (hit.snippets && Array.isArray(hit.snippets) && hit.snippets.length > 0) {
+                  snippet = hit.snippets.join(" ... ");
+                } else {
+                  snippet = hit.description || hit.snippet || hit.text || "";
+                }
 
-                  return {
-                    snippet: snippet.trim(),
-                    title: hit.title || hit.name || "Sans titre",
-                    url: hit.url || hit.link || "",
-                  };
-                })
-                .filter((item: any) => item.title && item.url);
+                return {
+                  snippet: snippet.trim(),
+                  title: hit.title || hit.name || "Sans titre",
+                  url: hit.url || hit.link || "",
+                };
+              }).filter((item: any) => item.title && item.url);
 
               if (formattedResults.length > 0) {
                 return {
@@ -333,10 +289,9 @@ export async function executeWebSearch(
   }
 
   return {
-    error:
-      keys.length === 0
-        ? "Aucune clé You.com configurée et les services de fallback sont temporairement inaccessibles."
-        : `Échec de la recherche (${lastError?.message || "Erreur"}).`,
+    error: keys.length === 0
+      ? "Aucune clé You.com configurée et les services de fallback sont temporairement inaccessibles."
+      : `Échec de la recherche (${lastError?.message || "Erreur"}).`,
     provider: "you.com",
     query: trimmedQuery,
     results: [],
@@ -410,13 +365,7 @@ export function registerWebRoutes(app: Hono) {
       const searchResult = await executeWebSearch(query, count);
       return c.json(searchResult, 200);
     } catch (err: any) {
-      return c.json(
-        {
-          details: err?.message,
-          error: "Erreur serveur lors de la recherche Web.",
-        },
-        500
-      );
+      return c.json({ error: "Erreur serveur lors de la recherche Web.", details: err?.message }, 500);
     }
   });
 
@@ -433,17 +382,12 @@ export function registerWebRoutes(app: Hono) {
 
       const searchResult = await executeWebSearch(
         query,
-        Number.isNaN(count) ? 5 : count
+        isNaN(count) ? 5 : count
       );
       return c.json(searchResult, 200);
     } catch (err: any) {
-      return c.json(
-        {
-          details: err?.message,
-          error: "Erreur serveur lors de la recherche Web.",
-        },
-        500
-      );
+      return c.json({ error: "Erreur serveur lors de la recherche Web.", details: err?.message }, 500);
     }
   });
 }
+

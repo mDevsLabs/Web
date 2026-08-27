@@ -28,7 +28,9 @@ import {
   message,
   project,
   type Suggestion,
+  mcpTemplate,
   skill,
+  skillTemplate,
   stream,
   suggestion,
   vote,
@@ -406,6 +408,45 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
   );
   await run(
     client`CREATE INDEX IF NOT EXISTS "mprojects_speech_generations_created_at_idx" ON "mprojects_speech_generations" USING btree ("created_at" DESC)`
+  );
+
+  // Notifications & prefs
+  await run(client`CREATE TABLE IF NOT EXISTS "Notification" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "userId" text NOT NULL,
+    "type" varchar NOT NULL,
+    "title" text NOT NULL,
+    "body" text,
+    "link" text,
+    "isRead" boolean DEFAULT false NOT NULL,
+    "createdAt" timestamp DEFAULT now() NOT NULL
+  )`);
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "Notification_userId_idx" ON "Notification" USING btree ("userId")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "Notification_createdAt_idx" ON "Notification" USING btree ("createdAt" DESC)`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "Notification_userId_isRead_idx" ON "Notification" USING btree ("userId","isRead")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "Notification_userId_type_idx" ON "Notification" USING btree ("userId","type")`
+  );
+  await run(client`CREATE TABLE IF NOT EXISTS "user_notification_prefs" (
+    "userId" text PRIMARY KEY NOT NULL,
+    "enabled" boolean DEFAULT false NOT NULL,
+    "aiResponse" boolean DEFAULT true NOT NULL,
+    "projectCreated" boolean DEFAULT true NOT NULL,
+    "mcpCreated" boolean DEFAULT true NOT NULL,
+    "mcpAccessRequest" boolean DEFAULT true NOT NULL,
+    "news" boolean DEFAULT true NOT NULL,
+    "regenerateMode" varchar DEFAULT 'truncate' NOT NULL,
+    "createdAt" timestamp DEFAULT now() NOT NULL,
+    "updatedAt" timestamp DEFAULT now() NOT NULL
+  )`);
+  await run(
+    client`ALTER TABLE "user_notification_prefs" ADD COLUMN IF NOT EXISTS "regenerateMode" varchar DEFAULT 'truncate' NOT NULL`
   );
 }
 
@@ -2010,4 +2051,251 @@ export async function getMcpStats({ userId }: { userId: string }) {
     servers: Number(serversCount?.count ?? 0),
     totalCalls: Number(logsCount?.count ?? 0),
   };
+}
+
+export async function getSkillTemplates() {
+  const database = await getDb();
+  return database
+    .select()
+    .from(skillTemplate)
+    .where(eq(skillTemplate.isPublic, true))
+    .orderBy(desc(skillTemplate.createdAt));
+}
+
+export async function getMcpTemplates() {
+  const database = await getDb();
+  return database
+    .select()
+    .from(mcpTemplate)
+    .where(eq(mcpTemplate.isPublic, true))
+    .orderBy(desc(mcpTemplate.createdAt));
+}
+
+export async function getMcpTemplateById(id: string) {
+  const database = await getDb();
+  const [result] = await database
+    .select()
+    .from(mcpTemplate)
+    .where(eq(mcpTemplate.id, id))
+    .limit(1);
+  return result ?? null;
+}
+
+// ==========================================
+// NOTIFICATIONS QUERIES
+// ==========================================
+
+export async function getUserNotificationPrefs(userId: string) {
+  const db = await dbReady();
+  const { notification, userNotificationPrefs } = await import("./schema");
+  const [prefs] = await db
+    .select()
+    .from(userNotificationPrefs)
+    .where(eq(userNotificationPrefs.userId, userId))
+    .limit(1);
+  if (prefs) return prefs;
+  // default prefs if not exists
+  return {
+    aiResponse: true,
+    createdAt: new Date(),
+    enabled: false,
+    mcpAccessRequest: true,
+    mcpCreated: true,
+    news: true,
+    projectCreated: true,
+    regenerateMode: "truncate" as const,
+    updatedAt: new Date(),
+    userId,
+  };
+}
+
+export async function upsertUserNotificationPrefs(
+  userId: string,
+  data: Partial<{
+    enabled: boolean;
+    aiResponse: boolean;
+    projectCreated: boolean;
+    mcpCreated: boolean;
+    mcpAccessRequest: boolean;
+    news: boolean;
+    regenerateMode: "truncate" | "fork";
+  }>
+) {
+  const db = await dbReady();
+  const { userNotificationPrefs } = await import("./schema");
+  const existing = await db
+    .select()
+    .from(userNotificationPrefs)
+    .where(eq(userNotificationPrefs.userId, userId))
+    .limit(1);
+  if (existing.length === 0) {
+    const [created] = await db
+      .insert(userNotificationPrefs)
+      .values({
+        aiResponse: data.aiResponse ?? true,
+        enabled: data.enabled ?? false,
+        mcpAccessRequest: data.mcpAccessRequest ?? true,
+        mcpCreated: data.mcpCreated ?? true,
+        news: data.news ?? true,
+        projectCreated: data.projectCreated ?? true,
+        regenerateMode: data.regenerateMode ?? "truncate",
+        userId,
+      })
+      .returning();
+    return created;
+  }
+  const [updated] = await db
+    .update(userNotificationPrefs)
+    .set({ ...data, updatedAt: new Date() } as any)
+    .where(eq(userNotificationPrefs.userId, userId))
+    .returning();
+  return updated;
+}
+
+export async function createNotification(data: {
+  userId: string;
+  type: "ai_response" | "project_created" | "mcp_created" | "mcp_access_request" | "news";
+  title: string;
+  body?: string | null;
+  link?: string | null;
+}) {
+  const db = await dbReady();
+  const { notification } = await import("./schema");
+  // check prefs gating
+  try {
+    const prefs = await getUserNotificationPrefs(data.userId);
+    if (!prefs.enabled) return null;
+    const gate: Record<string, boolean> = {
+      ai_response: prefs.aiResponse,
+      mcp_access_request: prefs.mcpAccessRequest,
+      mcp_created: prefs.mcpCreated,
+      news: prefs.news,
+      project_created: prefs.projectCreated,
+    };
+    if (gate[data.type] === false) return null;
+  } catch {}
+  const [created] = await db
+    .insert(notification)
+    .values({
+      body: data.body ?? null,
+      link: data.link ?? null,
+      title: data.title,
+      type: data.type,
+      userId: data.userId,
+    })
+    .returning();
+  return created;
+}
+
+export async function getNotificationsByUserId({
+  userId,
+  limit = 20,
+  offset = 0,
+  unreadOnly = false,
+}: {
+  userId: string;
+  limit?: number;
+  offset?: number;
+  unreadOnly?: boolean;
+}) {
+  const db = await dbReady();
+  const { notification } = await import("./schema");
+  const conditions = [eq(notification.userId, userId)];
+  if (unreadOnly) conditions.push(eq(notification.isRead, false));
+  const rows = await db
+    .select()
+    .from(notification)
+    .where(and(...conditions))
+    .orderBy(desc(notification.createdAt))
+    .limit(Math.min(limit, 50))
+    .offset(offset);
+  return rows;
+}
+
+export async function getUnreadNotificationCount(userId: string) {
+  const db = await dbReady();
+  const { notification } = await import("./schema");
+  const [row] = await db
+    .select({ count: count() })
+    .from(notification)
+    .where(and(eq(notification.userId, userId), eq(notification.isRead, false)));
+  return Number(row?.count ?? 0);
+}
+
+export async function markNotificationRead({
+  id,
+  userId,
+}: {
+  id: string;
+  userId: string;
+}) {
+  const db = await dbReady();
+  const { notification } = await import("./schema");
+  const [updated] = await db
+    .update(notification)
+    .set({ isRead: true })
+    .where(and(eq(notification.id, id), eq(notification.userId, userId)))
+    .returning();
+  return updated ?? null;
+}
+
+export async function markAllNotificationsRead(userId: string) {
+  const db = await dbReady();
+  const { notification } = await import("./schema");
+  await db
+    .update(notification)
+    .set({ isRead: true })
+    .where(and(eq(notification.userId, userId), eq(notification.isRead, false)));
+  return { success: true };
+}
+
+export async function deleteNotification({
+  id,
+  userId,
+}: {
+  id: string;
+  userId: string;
+}) {
+  const db = await dbReady();
+  const { notification } = await import("./schema");
+  const [deleted] = await db
+    .delete(notification)
+    .where(and(eq(notification.id, id), eq(notification.userId, userId)))
+    .returning();
+  return deleted ?? null;
+}
+
+export async function broadcastNewsNotification(data: {
+  title: string;
+  body?: string | null;
+  link?: string | null;
+}) {
+  const db = await dbReady();
+  const { userNotificationPrefs, notification } = await import("./schema");
+  // get all users with enabled+news
+  const eligible = await db
+    .select({ userId: userNotificationPrefs.userId })
+    .from(userNotificationPrefs)
+    .where(
+      and(
+        eq(userNotificationPrefs.enabled, true),
+        eq(userNotificationPrefs.news, true)
+      )
+    );
+  if (eligible.length === 0) return { sent: 0 };
+  const values = eligible.map((e) => ({
+    body: data.body ?? null,
+    link: data.link ?? null,
+    title: data.title,
+    type: "news" as const,
+    userId: e.userId,
+  }));
+  // batch insert 500 at a time
+  let sent = 0;
+  for (let i = 0; i < values.length; i += 500) {
+    const chunk = values.slice(i, i + 500);
+    await db.insert(notification).values(chunk as any);
+    sent += chunk.length;
+  }
+  return { sent };
 }

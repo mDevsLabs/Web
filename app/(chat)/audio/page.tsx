@@ -256,7 +256,7 @@ export default function AudioPage() {
         throw new Error("Erreur de modification");
       }
       toast.success(
-        currentPinned ? "Audio désépinglé" : "Audio épinglé en haut 📌"
+        currentPinned ? "Audio désépinglé" : "Audio épinglé en haut"
       );
       mutateHistory();
     } catch {
@@ -279,7 +279,7 @@ export default function AudioPage() {
       if (!res.ok) {
         throw new Error("Erreur de renommage");
       }
-      toast.success("Audio renommé avec succès ! ✨");
+      toast.success("Audio renommé avec succès !");
       setEditingAudio(null);
       mutateHistory();
     } catch {
@@ -375,7 +375,7 @@ export default function AudioPage() {
       };
 
       setCurrentResult(generated);
-      toast.success("Synthèse vocale générée avec succès ! ✨");
+      toast.success("Synthèse vocale générée avec succès !");
 
       // Actualiser les quotas et l'historique
       mutateUsage();
@@ -397,7 +397,7 @@ export default function AudioPage() {
       if (!res.ok) {
         throw new Error("Erreur de suppression");
       }
-      toast.success("Audio supprimé de l'historique 🗑️");
+      toast.success("Audio supprimé de l'historique");
       mutateHistory();
       if (currentResult?.id === id) {
         setCurrentResult(null);
@@ -941,7 +941,7 @@ export default function AudioPage() {
                             title={
                               item.pinned
                                 ? "Désépingler de l'historique"
-                                : "Épingler en haut 📌"
+                                : "Épingler en haut"
                             }
                             type="button"
                           >

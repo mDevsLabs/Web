@@ -202,8 +202,8 @@ export function registerAuthRoutes(app: Hono) {
           const knownDevice = pastDevices.some(
             (d) => d.device_name === device_name
           );
-          const knownLocation = pastDevices.some((d) =>
-            d.location?.includes(countryStr)
+          const knownLocation = pastDevices.some(
+            (d) => d.location && d.location.includes(countryStr)
           );
           if (knownDevice && knownLocation) {
             isNewDeviceOrLocation = false;
@@ -348,7 +348,7 @@ export function registerAuthRoutes(app: Hono) {
                 400
               );
             }
-          } catch {
+          } catch (_redErr) {
             // Ignorer si la table de redemptions n'est pas encore créée
           }
 
@@ -500,7 +500,7 @@ export function registerAuthRoutes(app: Hono) {
         return c.json({ error: "Le mot de passe actuel est incorrect." }, 400);
       }
 
-      if (username?.trim()) {
+      if (username && username.trim()) {
         const cleanUsername = username.trim();
         const existing =
           await sql`SELECT id FROM users WHERE username = ${cleanUsername} AND id::text != ${userId}::text LIMIT 1`;
@@ -510,7 +510,7 @@ export function registerAuthRoutes(app: Hono) {
         await sql`UPDATE users SET username = ${cleanUsername} WHERE id::text = ${userId}::text`;
       }
 
-      if (email?.trim()) {
+      if (email && email.trim()) {
         const cleanEmail = email.trim();
         const existing =
           await sql`SELECT id FROM users WHERE email = ${cleanEmail} AND id::text != ${userId}::text LIMIT 1`;
@@ -563,12 +563,12 @@ export function registerAuthRoutes(app: Hono) {
 
       if (auto_logout_minutes !== undefined) {
         const mins = Number.parseInt(auto_logout_minutes, 10);
-        if (!Number.isNaN(mins)) {
+        if (!isNaN(mins)) {
           await sql`UPDATE users SET auto_logout_minutes = ${mins} WHERE id::text = ${userId}::text`;
         }
       }
 
-      if (password?.trim()) {
+      if (password && password.trim()) {
         if (password.length < 6) {
           return c.json(
             { error: "Le mot de passe doit contenir au moins 6 caractères." },
@@ -778,21 +778,17 @@ export function registerAuthRoutes(app: Hono) {
         const isPlanTier = validTiers.includes(planLower);
 
         // Nom personnalisé de la clé
-        const keyName =
-          k.name ||
-          (isPlanTier ? `Clé ${rawPlan}` : rawPlan) ||
-          "Clé API Principale";
+        const keyName = k.name || (isPlanTier ? `Clé ${rawPlan}` : rawPlan) || "Clé API Principale";
         // Le forfait est strictement le forfait d'abonnement du compte (free, plus, pro, max)
-        const effectivePlan =
-          k.user_tier || userTier || (isPlanTier ? rawPlan : "Plus");
+        const effectivePlan = k.user_tier || userTier || (isPlanTier ? rawPlan : "Plus");
 
         return {
           api_key: k.api_key,
-          created_at: k.created_at,
-          last_used_at: k.last_used_at,
           name: keyName,
           plan: effectivePlan,
           request_count: Number(k.request_count || 0),
+          created_at: k.created_at,
+          last_used_at: k.last_used_at,
         };
       });
 

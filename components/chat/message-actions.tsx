@@ -1,17 +1,31 @@
 import equal from "fast-deep-equal";
-import { GitForkIcon, Volume2Icon, VolumeXIcon } from "lucide-react";
+import {
+  GitForkIcon,
+  RefreshCwIcon,
+  Share2Icon,
+  Volume2Icon,
+  VolumeXIcon,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { memo, useCallback, useState } from "react";
 import { toast } from "sonner";
-import { useSWRConfig } from "swr";
+import useSWR, { useSWRConfig } from "swr";
 import { useCopyToClipboard } from "usehooks-ts";
+import { useActiveChat } from "@/hooks/use-active-chat";
 import { speakText, stopSpeaking } from "@/hooks/use-speech";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatMessage } from "@/lib/types";
+import { fetcher } from "@/lib/utils";
 import {
   MessageAction as Action,
   MessageActions as Actions,
 } from "../ai-elements/message";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 import { CopyIcon, PencilEditIcon, ThumbDownIcon, ThumbUpIcon } from "./icons";
 
 export function PureMessageActions({
@@ -30,12 +44,29 @@ export function PureMessageActions({
   const { mutate } = useSWRConfig();
   const router = useRouter();
   const [_, copyToClipboard] = useCopyToClipboard();
+  const { messages, setMessages, regenerate } = useActiveChat() as any;
 
   const textFromParts = message.parts
     ?.filter((part) => part.type === "text")
     .map((part) => part.text)
     .join("\n")
     .trim();
+
+  // prefs for regenerate mode
+  const { data: notifPrefs } = useSWR(
+    "/api/notifications/preferences",
+    fetcher,
+    { dedupingInterval: 30000 }
+  );
+  const regenerateMode: "truncate" | "fork" =
+    notifPrefs?.regenerateMode === "fork" ? "fork" : "truncate";
+
+  const { data: chatData } = useSWR(
+    chatId ? `/api/chats/${chatId}` : null,
+    fetcher,
+    { dedupingInterval: 10000 }
+  );
+  const visibility = (chatData as any)?.visibility ?? "private";
 
   const handleCopy = useCallback(async () => {
     if (!textFromParts) {
@@ -178,6 +209,106 @@ export function PureMessageActions({
     });
   }, [chatId, message.id, mutate]);
 
+  const handleRegenerate = useCallback(async () => {
+    try {
+      // Determine target user message id
+      let targetUserId: string | null = null;
+      let targetIndex = -1;
+      if (message.role === "user") {
+        targetUserId = message.id;
+        targetIndex = messages.findIndex((m: ChatMessage) => m.id === message.id);
+      } else {
+        // assistant: find preceding user
+        const idx = messages.findIndex((m: ChatMessage) => m.id === message.id);
+        for (let i = idx - 1; i >= 0; i--) {
+          if (messages[i].role === "user") {
+            targetUserId = messages[i].id;
+            targetIndex = i;
+            break;
+          }
+        }
+        if (!targetUserId) {
+          toast.error("Aucun message utilisateur précédent à régénérer");
+          return;
+        }
+      }
+
+      if (regenerateMode === "fork") {
+        // Fork branch up to target user message
+        const res = await fetch(`/api/chats/${chatId}/fork`, {
+          body: JSON.stringify({ upToMessageId: targetUserId }),
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Erreur fork");
+        toast.success("Branche créée — régénération dans la nouvelle conversation");
+        router.push(`/chat/${data.id}`);
+        return;
+      }
+
+      // truncate mode: delete trailing and regenerate
+      const { deleteTrailingMessages } = await import("@/app/(chat)/actions");
+      // find first trailing after targetIndex
+      if (targetIndex >= 0) {
+        const trailing = messages[targetIndex];
+        // delete DB trailing after this message (use its timestamp? use API helper)
+        // Use message id based deletion via helper that deletes by timestamp; simpler: just slice UI and regenerate
+        // Attempt DB cleanup via deleteTrailingMessages using target message id
+        try {
+          await deleteTrailingMessages({ id: targetUserId! });
+        } catch {}
+        setMessages((prev: ChatMessage[]) => prev.slice(0, targetIndex + 1));
+        // regenerate will resend last user message with same model
+        setTimeout(() => regenerate(), 50);
+        toast.success("Régénération lancée (mode tronquer)");
+      }
+    } catch (e: any) {
+      toast.error(e.message || "Erreur régénération");
+    }
+  }, [chatId, message, messages, regenerateMode, regenerate, router, setMessages]);
+
+  const handleShare = useCallback(
+    (platform: string) => {
+      if (visibility !== "public") {
+        toast.error(
+          "La conversation doit être publique pour partager. Passez-la en public via le sélecteur de visibilité."
+        );
+        return;
+      }
+      const chatUrl = `${window.location.origin}/chat/${chatId}#${message.id}`;
+      const text = textFromParts
+        ? `${textFromParts.slice(0, 280)} — via mAI`
+        : `Découvrez cette conversation mAI`;
+      const encodedText = encodeURIComponent(text);
+      const encodedUrl = encodeURIComponent(chatUrl);
+      const urls: Record<string, string> = {
+        copy: chatUrl,
+        facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+        linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+        telegram: `https://t.me/share/url?url=${encodedUrl}&text=${encodedText}`,
+        whatsapp: `https://wa.me/?text=${encodedText}%20${encodedUrl}`,
+        x: `https://twitter.com/intent/tweet?text=${encodedText}&url=${encodedUrl}`,
+      };
+      if (platform === "copy") {
+        navigator.clipboard
+          .writeText(`${text}\n${chatUrl}`)
+          .then(() => toast.success("Lien copié !"))
+          .catch(() => toast.error("Échec copie"));
+        return;
+      }
+      if (platform === "native" && (navigator as any).share) {
+        (navigator as any)
+          .share({ text, title: "Partager message mAI", url: chatUrl })
+          .catch(() => {});
+        return;
+      }
+      const url = urls[platform];
+      if (url) window.open(url, "_blank", "noopener,noreferrer");
+    },
+    [chatId, message.id, textFromParts, visibility]
+  );
+
   if (isLoading) {
     return null;
   }
@@ -203,6 +334,49 @@ export function PureMessageActions({
           >
             <CopyIcon />
           </Action>
+          <Action
+            className="size-7 text-muted-foreground/50 hover:text-foreground"
+            onClick={handleRegenerate}
+            tooltip={`Régénérer (${regenerateMode})`}
+          >
+            <RefreshCwIcon className="size-4" />
+          </Action>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button
+                className="size-7 inline-flex items-center justify-center rounded-md text-muted-foreground/50 hover:text-foreground hover:bg-muted/40"
+                aria-label="Partager"
+                type="button"
+              >
+                <Share2Icon className="size-4" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuItem onClick={() => handleShare("copy")}>
+                Copier le texte + lien
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleShare("x")}>
+                Partager sur X
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleShare("facebook")}>
+                Facebook
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleShare("linkedin")}>
+                LinkedIn
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleShare("whatsapp")}>
+                WhatsApp
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleShare("telegram")}>
+                Telegram
+              </DropdownMenuItem>
+              {(navigator as any).share && (
+                <DropdownMenuItem onClick={() => handleShare("native")}>
+                  Partage natif
+                </DropdownMenuItem>
+              )}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </Actions>
     );
@@ -217,6 +391,51 @@ export function PureMessageActions({
       >
         <CopyIcon />
       </Action>
+
+      <Action
+        className="text-muted-foreground/50 hover:text-foreground"
+        onClick={handleRegenerate}
+        tooltip={`Régénérer (${regenerateMode})`}
+      >
+        <RefreshCwIcon className="size-4" />
+      </Action>
+
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <button
+            className="size-7 inline-flex items-center justify-center rounded-md text-muted-foreground/50 hover:text-foreground hover:bg-muted/40"
+            aria-label="Partager"
+            type="button"
+          >
+            <Share2Icon className="size-4" />
+          </button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end" className="w-48">
+          <DropdownMenuItem onClick={() => handleShare("copy")}>
+            Copier le texte + lien
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => handleShare("x")}>
+            Partager sur X
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => handleShare("facebook")}>
+            Facebook
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => handleShare("linkedin")}>
+            LinkedIn
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => handleShare("whatsapp")}>
+            WhatsApp
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => handleShare("telegram")}>
+            Telegram
+          </DropdownMenuItem>
+          {(navigator as any).share && (
+            <DropdownMenuItem onClick={() => handleShare("native")}>
+              Partage natif
+            </DropdownMenuItem>
+          )}
+        </DropdownMenuContent>
+      </DropdownMenu>
 
       <Action
         className="text-muted-foreground/50 hover:text-foreground"
@@ -268,6 +487,12 @@ export const MessageActions = memo(
       return false;
     }
     if (prevProps.isLoading !== nextProps.isLoading) {
+      return false;
+    }
+    if (prevProps.message.id !== nextProps.message.id) {
+      return false;
+    }
+    if (prevProps.chatId !== nextProps.chatId) {
       return false;
     }
 

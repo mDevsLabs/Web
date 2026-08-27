@@ -149,7 +149,7 @@ export function ChatShell() {
               votes={votes}
             />
 
-            <div className="sticky bottom-0 z-1 mx-auto flex w-full max-w-4xl gap-2 border-t-0 bg-background px-2 pb-3 md:px-4 md:pb-4">
+            <div className="sticky bottom-0 z-1 mx-auto flex w-full max-w-4xl gap-2 border-t-0 bg-background px-2 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] md:px-4 md:pb-[calc(env(safe-area-inset-bottom)+1rem)]">
               {!isReadonly && (
                 <MultimodalInput
                   attachments={attachments}

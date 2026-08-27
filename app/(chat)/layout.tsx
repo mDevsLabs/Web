@@ -5,6 +5,7 @@ import { Toaster } from "sonner";
 import { AppSidebar } from "@/components/chat/app-sidebar";
 import { DataStreamProvider } from "@/components/chat/data-stream-provider";
 import { ChatShell } from "@/components/chat/shell";
+import { OnboardingTutorial } from "@/components/onboarding/onboarding-tutorial";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { ActiveChatProvider } from "@/hooks/use-active-chat";
 import { getMaiUser } from "@/lib/auth/session";
@@ -47,6 +48,7 @@ async function SidebarShell({ children }: { children: React.ReactNode }) {
           </ActiveChatProvider>
         </Suspense>
         {children}
+        <OnboardingTutorial />
       </SidebarInset>
     </SidebarProvider>
   );

@@ -1,6 +1,6 @@
 import { tool } from "ai";
 import { z } from "zod";
-import { logMcpExecution } from "@/lib/db/queries";
+import { createNotification, logMcpExecution } from "@/lib/db/queries";
 import type { McpServer } from "@/lib/db/schema";
 import { classifyToolAction, needsApproval } from "./classifier";
 import { callMcpTool } from "./client";
@@ -67,6 +67,15 @@ export function createMcpChatTools({
               toolName: t.name,
               userId,
             });
+            if (["write", "delete", "execute"].includes(actionType)) {
+              createNotification({
+                body: `Outil ${t.name} exécuté sur ${server.name}`,
+                link: chatId ? `/chat/${chatId}` : `/mcp`,
+                title: "Demande d'accès MCP",
+                type: "mcp_access_request",
+                userId,
+              }).catch(() => {});
+            }
 
             return result;
           } catch (err: any) {

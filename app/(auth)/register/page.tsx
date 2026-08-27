@@ -94,6 +94,9 @@ export default function RegisterPage() {
     }
 
     toast.success("Compte mAI Web créé avec succès ! Bienvenue");
+    if (typeof window !== "undefined") {
+      localStorage.setItem("mai_onboarding_pending", "1");
+    }
     router.push("/");
     router.refresh();
   };

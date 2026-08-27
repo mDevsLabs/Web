@@ -1,18 +1,18 @@
 "use client";
 
 import {
+  ArchiveIcon,
   ArrowRightIcon,
-  ChevronDownIcon,
   CloudIcon,
   CpuIcon,
   FolderKanbanIcon,
   ImageIcon,
+  LockIcon,
   PanelLeftIcon,
   PenSquareIcon,
   PlusIcon,
   SearchIcon,
   SettingsIcon,
-  SparklesIcon,
   TrashIcon,
   Volume2Icon,
   WrenchIcon,
@@ -24,6 +24,7 @@ import { useCallback, useState } from "react";
 import { toast } from "sonner";
 import { useSWRConfig } from "swr";
 import { unstable_serialize } from "swr/infinite";
+import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import { ProjectIcon } from "@/components/chat/project-icon";
 import { SearchDialog } from "@/components/chat/search-dialog";
 import {
@@ -31,17 +32,6 @@ import {
   SidebarHistory,
 } from "@/components/chat/sidebar-history";
 import { SidebarUserNav } from "@/components/chat/sidebar-user-nav";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import {
   Sidebar,
   SidebarContent,
@@ -52,14 +42,12 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
   SidebarRail,
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
 import { useProjects } from "@/hooks/use-projects";
+import { useTier } from "@/hooks/use-tier";
 import type { MaiUser } from "@/lib/auth/session";
 import { cn } from "@/lib/utils";
 import {
@@ -167,126 +155,75 @@ function SidebarProjects() {
   );
 }
 
-function SidebarPlusMenu({ closeMobile }: { closeMobile: () => void }) {
+function LockedNavItem({
+  closeMobile,
+  href,
+  icon: Icon,
+  label,
+  lockedFeature,
+  onLockedClick,
+  tooltip,
+}: {
+  closeMobile: () => void;
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  lockedFeature: "skills" | "mcp";
+  onLockedClick: (feature: "skills" | "mcp") => void;
+  tooltip: string;
+}) {
   const pathname = usePathname();
-  const { state } = useSidebar();
-  const isPlusActive =
-    pathname?.startsWith("/skills") || pathname?.startsWith("/mcp");
-  const [isOpen, setIsOpen] = useState(isPlusActive);
+  const { isPaid } = useTier();
+  const isActive = pathname?.startsWith(href);
+  const locked = !isPaid;
 
-  if (state === "collapsed") {
-    return (
-      <SidebarMenuItem>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <SidebarMenuButton
-              className={cn(
-                "h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground",
-                isPlusActive &&
-                  "bg-sidebar-accent text-sidebar-foreground font-medium"
-              )}
-              tooltip="Plus (Skills & MCP)"
-            >
-              <SparklesIcon className="size-4 text-primary" />
-              <span>Plus</span>
-            </SidebarMenuButton>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            align="start"
-            className="w-44 p-1"
-            side="right"
-            sideOffset={8}
-          >
-            <DropdownMenuItem asChild>
-              <Link
-                className={cn(
-                  "flex items-center gap-2 cursor-pointer text-xs",
-                  pathname?.startsWith("/skills") &&
-                    "font-semibold text-primary"
-                )}
-                href="/skills"
-                onClick={closeMobile}
-              >
-                <WrenchIcon className="size-3.5" />
-                <span>Skills</span>
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem asChild>
-              <Link
-                className={cn(
-                  "flex items-center gap-2 cursor-pointer text-xs",
-                  pathname?.startsWith("/mcp") && "font-semibold text-primary"
-                )}
-                href="/mcp"
-                onClick={closeMobile}
-              >
-                <CpuIcon className="size-3.5" />
-                <span>MCP</span>
-              </Link>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </SidebarMenuItem>
-    );
-  }
+  const handleClick = useCallback(
+    (e: React.MouseEvent) => {
+      if (locked) {
+        e.preventDefault();
+        e.stopPropagation();
+        onLockedClick(lockedFeature);
+        toast.info(
+          `« ${label} » est réservé aux forfaits Plus, Pro et Max. Mettez à niveau votre compte pour y accéder.`,
+          {
+            description: "Bouton d'upgrade disponible dans la fenêtre qui s'ouvre.",
+            duration: 5000,
+          }
+        );
+      } else {
+        closeMobile();
+      }
+    },
+    [closeMobile, label, locked, lockedFeature, onLockedClick]
+  );
 
   return (
-    <Collapsible
-      className="group/collapsible"
-      onOpenChange={setIsOpen}
-      open={isOpen}
-    >
-      <SidebarMenuItem>
-        <CollapsibleTrigger asChild>
-          <SidebarMenuButton
-            className={cn(
-              "h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground justify-between w-full",
-              isPlusActive && "text-sidebar-foreground font-medium"
-            )}
-            tooltip="Plus d'outils (Skills & MCP)"
-          >
-            <div className="flex items-center gap-2">
-              <SparklesIcon className="size-4 text-primary" />
-              <span>Plus</span>
-            </div>
-            <ChevronDownIcon
-              className={cn(
-                "size-3.5 transition-transform duration-200 text-muted-foreground",
-                isOpen && "rotate-180"
-              )}
-            />
-          </SidebarMenuButton>
-        </CollapsibleTrigger>
-        <CollapsibleContent>
-          <SidebarMenuSub className="my-1">
-            <SidebarMenuSubItem>
-              <SidebarMenuSubButton
-                asChild
-                className="h-7 rounded-md text-[12px] text-sidebar-foreground/80 hover:text-foreground"
-                isActive={pathname?.startsWith("/skills")}
-              >
-                <Link href="/skills" onClick={closeMobile}>
-                  <WrenchIcon className="size-3.5" />
-                  <span>Skills</span>
-                </Link>
-              </SidebarMenuSubButton>
-            </SidebarMenuSubItem>
-            <SidebarMenuSubItem>
-              <SidebarMenuSubButton
-                asChild
-                className="h-7 rounded-md text-[12px] text-sidebar-foreground/80 hover:text-foreground"
-                isActive={pathname?.startsWith("/mcp")}
-              >
-                <Link href="/mcp" onClick={closeMobile}>
-                  <CpuIcon className="size-3.5" />
-                  <span>MCP</span>
-                </Link>
-              </SidebarMenuSubButton>
-            </SidebarMenuSubItem>
-          </SidebarMenuSub>
-        </CollapsibleContent>
-      </SidebarMenuItem>
-    </Collapsible>
+    <SidebarMenuItem>
+      <SidebarMenuButton
+        asChild
+        aria-disabled={locked}
+        className={cn(
+          "h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground",
+          isActive && "bg-sidebar-accent text-sidebar-foreground font-medium",
+          locked &&
+            "opacity-55 cursor-not-allowed text-sidebar-foreground/50 hover:bg-transparent hover:text-sidebar-foreground/50"
+        )}
+        tooltip={locked ? `${tooltip} — Plus, Pro ou Max requis` : tooltip}
+      >
+        <Link
+          aria-disabled={locked}
+          href={locked ? "#" : href}
+          onClick={handleClick}
+          tabIndex={locked ? -1 : 0}
+        >
+          <Icon className={cn("size-4", isActive && "text-primary")} />
+          <span>{label}</span>
+          {locked && (
+            <LockIcon className="ml-auto size-3 text-amber-500" />
+          )}
+        </Link>
+      </SidebarMenuButton>
+    </SidebarMenuItem>
   );
 }
 
@@ -295,6 +232,9 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
   const { setOpenMobile, toggleSidebar } = useSidebar();
   const { mutate } = useSWRConfig();
   const [showDeleteAllDialog, setShowDeleteAllDialog] = useState(false);
+  const [upgradeFeature, setUpgradeFeature] = useState<
+    "skills" | "mcp" | null
+  >(null);
 
   const closeMobile = useCallback(() => {
     setOpenMobile(false);
@@ -408,6 +348,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     className="h-8 rounded-lg border border-sidebar-border text-[13px] text-sidebar-foreground/80 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                    data-onboarding="new-chat"
                     onClick={handleNewChat}
                     tooltip="Nouvelle discussion"
                   >
@@ -422,7 +363,11 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                     className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
                     tooltip="Stockage"
                   >
-                    <Link href="/library" onClick={closeMobile}>
+                    <Link
+                      data-onboarding="nav-library"
+                      href="/library"
+                      onClick={closeMobile}
+                    >
                       <CloudIcon className="size-4" />
                       <span>Stockage</span>
                     </Link>
@@ -435,7 +380,11 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                     className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
                     tooltip="Projets"
                   >
-                    <Link href="/projects" onClick={closeMobile}>
+                    <Link
+                      data-onboarding="nav-projects"
+                      href="/projects"
+                      onClick={closeMobile}
+                    >
                       <FolderKanbanIcon className="size-4" />
                       <span>Projets</span>
                     </Link>
@@ -448,7 +397,11 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                     className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
                     tooltip="Images"
                   >
-                    <Link href="/images" onClick={closeMobile}>
+                    <Link
+                      data-onboarding="nav-images"
+                      href="/images"
+                      onClick={closeMobile}
+                    >
                       <ImageIcon className="size-4" />
                       <span>Images</span>
                     </Link>
@@ -461,14 +414,36 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                     className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
                     tooltip="Audio"
                   >
-                    <Link href="/audio" onClick={closeMobile}>
+                    <Link
+                      data-onboarding="nav-audio"
+                      href="/audio"
+                      onClick={closeMobile}
+                    >
                       <Volume2Icon className="size-4" />
                       <span>Audio</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
 
-                <SidebarPlusMenu closeMobile={closeMobile} />
+                <LockedNavItem
+                  closeMobile={closeMobile}
+                  href="/skills"
+                  icon={WrenchIcon}
+                  label="Skills"
+                  lockedFeature="skills"
+                  onLockedClick={setUpgradeFeature}
+                  tooltip="Skills IA & Outils"
+                />
+
+                <LockedNavItem
+                  closeMobile={closeMobile}
+                  href="/mcp"
+                  icon={CpuIcon}
+                  label="MCP"
+                  lockedFeature="mcp"
+                  onLockedClick={setUpgradeFeature}
+                  tooltip="Model Context Protocol"
+                />
 
                 <SidebarMenuItem>
                   <SidebarMenuButton
@@ -476,9 +451,26 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                     className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
                     tooltip="Paramètres"
                   >
-                    <Link href="/settings" onClick={closeMobile}>
+                    <Link
+                      data-onboarding="nav-settings"
+                      href="/settings"
+                      onClick={closeMobile}
+                    >
                       <SettingsIcon className="size-4" />
                       <span>Paramètres</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    asChild
+                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                    tooltip="Messages archivés"
+                  >
+                    <Link href="/archived" onClick={closeMobile}>
+                      <ArchiveIcon className="size-4" />
+                      <span>Messages Archivés</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -539,6 +531,12 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+
+      <UpgradeDialog
+        feature={upgradeFeature ?? "generic"}
+        onOpenChange={(open) => !open && setUpgradeFeature(null)}
+        open={Boolean(upgradeFeature)}
+      />
     </>
   );
 }

@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { getMaiUser } from "@/lib/auth/session";
+import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
 import { createSkill, getSkillsByUserId } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 
@@ -41,10 +42,11 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const user = await getMaiUser();
-  if (!user) {
-    return new ChatbotError("unauthorized:chat").toResponse();
+  const guard = await requirePaidPlan("plus");
+  if (!guard.allowed) {
+    return planGuardResponse(guard)!;
   }
+  const user = guard.user;
   const userId = user.id || user.email;
 
   try {

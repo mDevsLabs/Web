@@ -7,13 +7,13 @@ import {
 } from "./config.ts";
 
 export interface StorageNode {
-  accessKeyId: string;
-  bucket: string;
-  endpoint: string;
   id: number;
-  publicUrl: string;
+  endpoint: string;
   region: string;
+  accessKeyId: string;
   secretAccessKey: string;
+  bucket: string;
+  publicUrl: string;
 }
 
 function cleanUrl(url: string, removeDefaultPort = true): string {
@@ -23,10 +23,7 @@ function cleanUrl(url: string, removeDefaultPort = true): string {
   }
   if (removeDefaultPort) {
     // Normalise https://domaine.com:443 -> https://domaine.com pour des URLs publiques propres
-    cleaned = cleaned.replace(
-      /^https:\/\/([^/:]+):443(\/.*)?$/,
-      "https://$1$2"
-    );
+    cleaned = cleaned.replace(/^https:\/\/([^/:]+):443(\/.*)?$/, "https://$1$2");
     cleaned = cleaned.replace(/^http:\/\/([^/:]+):80(\/.*)?$/, "http://$1$2");
   }
   return cleaned;
@@ -60,7 +57,9 @@ export function getStorageNodes(): StorageNode[] {
   const nodes: StorageNode[] = [];
 
   const baseAccessKey =
-    Deno.env.get("S3_ACCESS_KEY_ID") || Deno.env.get("Z1_ACCESS_KEY_ID") || "";
+    Deno.env.get("S3_ACCESS_KEY_ID") ||
+    Deno.env.get("Z1_ACCESS_KEY_ID") ||
+    "";
   const baseSecretKey =
     Deno.env.get("S3_SECRET_ACCESS_KEY") ||
     Deno.env.get("Z1_SECRET_ACCESS_KEY") ||
@@ -71,11 +70,16 @@ export function getStorageNodes(): StorageNode[] {
     "https://s3.z1storage.com";
   const baseEndpoint = cleanUrl(baseRawEndpoint);
   const baseRegion =
-    Deno.env.get("S3_REGION") || Deno.env.get("Z1_REGION") || "auto";
+    Deno.env.get("S3_REGION") ||
+    Deno.env.get("Z1_REGION") ||
+    "auto";
   const baseBucket =
-    Deno.env.get("S3_BUCKET") || Deno.env.get("Z1_BUCKET") || "mai-storage-1";
+    Deno.env.get("S3_BUCKET") ||
+    Deno.env.get("Z1_BUCKET") ||
+    "mai-storage-1";
   const basePublicUrl =
-    Deno.env.get("S3_PUBLIC_URL") || Deno.env.get("Z1_PUBLIC_URL");
+    Deno.env.get("S3_PUBLIC_URL") ||
+    Deno.env.get("Z1_PUBLIC_URL");
 
   // 1. Détection des configurations individuelles S3_BUCKET_1 à S3_BUCKET_10 (ou Z1_BUCKET_1 à 10)
   for (let i = 1; i <= TOTAL_STORAGE_NODES_COUNT; i++) {
@@ -126,13 +130,13 @@ export function getStorageNodes(): StorageNode[] {
 
     if (bucket && accessKeyId && secretAccessKey) {
       nodes.push({
-        accessKeyId,
-        bucket,
-        endpoint,
         id: i,
-        publicUrl: publicUrl || `${endpoint}/${bucket}`,
+        endpoint,
         region,
+        accessKeyId,
         secretAccessKey,
+        bucket,
+        publicUrl: publicUrl || `${endpoint}/${bucket}`,
       });
     }
   }
@@ -140,7 +144,8 @@ export function getStorageNodes(): StorageNode[] {
   // 2. Si S3_BUCKETS ou Z1_BUCKETS (liste séparée par des virgules) est configuré
   if (nodes.length === 0) {
     const bucketsList =
-      Deno.env.get("S3_BUCKETS") || Deno.env.get("Z1_BUCKETS");
+      Deno.env.get("S3_BUCKETS") ||
+      Deno.env.get("Z1_BUCKETS");
     if (bucketsList) {
       const bucketNames = bucketsList
         .split(",")
@@ -157,13 +162,13 @@ export function getStorageNodes(): StorageNode[] {
         }
 
         nodes.push({
-          accessKeyId: baseAccessKey,
-          bucket,
-          endpoint: baseEndpoint,
           id,
-          publicUrl,
+          endpoint: baseEndpoint,
           region: baseRegion,
+          accessKeyId: baseAccessKey,
           secretAccessKey: baseSecretKey,
+          bucket,
+          publicUrl,
         });
       });
     }
@@ -247,13 +252,13 @@ export function getStorageNodes(): StorageNode[] {
         }
 
         nodes.push({
-          accessKeyId,
-          bucket,
-          endpoint,
           id: i,
-          publicUrl,
+          endpoint,
           region,
+          accessKeyId,
           secretAccessKey,
+          bucket,
+          publicUrl,
         });
       }
     }
@@ -270,9 +275,7 @@ export function getStorageNodes(): StorageNode[] {
  */
 export function getFallbackNodes(primaryNode?: StorageNode): StorageNode[] {
   const allNodes = getStorageNodes();
-  if (!primaryNode) {
-    return allNodes;
-  }
+  if (!primaryNode) return allNodes;
   const others = allNodes.filter((n) => n.id !== primaryNode.id);
   return [primaryNode, ...others];
 }
@@ -344,9 +347,7 @@ export async function uploadWithFallback(
  */
 export function selectStorageNode(seed: string): StorageNode {
   const nodes = getStorageNodes();
-  if (nodes.length <= 1) {
-    return nodes[0];
-  }
+  if (nodes.length <= 1) return nodes[0];
 
   let hash = 0;
   for (let i = 0; i < seed.length; i++) {
@@ -367,10 +368,10 @@ export function findStorageNodeForRecord(
   const nodes = getStorageNodes();
 
   // 1. Format explicite taggé : node-1:bucket-name:key-path
-  if (r2Key?.startsWith("node-")) {
+  if (r2Key && r2Key.startsWith("node-")) {
     const parts = r2Key.split(":");
     if (parts.length >= 3) {
-      const nodeId = Number.parseInt(parts[0].replace("node-", ""), 10);
+      const nodeId = parseInt(parts[0].replace("node-", ""), 10);
       const found = nodes.find((n) => n.id === nodeId);
       if (found) {
         return { node: found, rawKey: parts.slice(2).join(":") };
@@ -380,7 +381,7 @@ export function findStorageNodeForRecord(
 
   // 2. Recherche par nom de bucket dans la clé ou l'URL
   for (const node of nodes) {
-    if (r2Key?.startsWith(`${node.bucket}/`)) {
+    if (r2Key && r2Key.startsWith(`${node.bucket}/`)) {
       return { node, rawKey: r2Key.slice(node.bucket.length + 1) };
     }
     if (
@@ -435,7 +436,7 @@ export function registerStorageRoutes(app: Hono) {
       const userId = payload.sub as string;
 
       const body = await c.req.parseBody();
-      const file = body.avatar;
+      const file = body["avatar"];
 
       if (!(file instanceof File)) {
         return c.json({ error: "Fichier invalide ou non fourni." }, 400);
@@ -443,10 +444,7 @@ export function registerStorageRoutes(app: Hono) {
 
       const primaryNode = selectStorageNode(`avatar-${userId}`);
       const ext =
-        file.name
-          .split(".")
-          .pop()
-          ?.replace(/[^a-zA-Z0-9]/g, "") || "jpg";
+        file.name.split(".").pop()?.replace(/[^a-zA-Z0-9]/g, "") || "jpg";
       const filename = `avatars/${userId}-${Date.now()}.${ext}`;
       const arrayBuffer = await file.arrayBuffer();
 
@@ -455,8 +453,8 @@ export function registerStorageRoutes(app: Hono) {
         filename,
         arrayBuffer,
         {
-          acl: "public-read",
           contentType: file.type || "image/jpeg",
+          acl: "public-read",
         }
       );
 
@@ -499,7 +497,7 @@ export function registerStorageRoutes(app: Hono) {
       }
 
       const body = await c.req.parseBody();
-      const file = body.file;
+      const file = body["file"];
 
       if (!(file instanceof File)) {
         return c.json({ error: "Fichier invalide ou non fourni." }, 400);
@@ -544,8 +542,8 @@ export function registerStorageRoutes(app: Hono) {
         filename,
         arrayBuffer,
         {
-          acl: "public-read",
           contentType: file.type || "application/octet-stream",
+          acl: "public-read",
         }
       );
 
@@ -639,7 +637,7 @@ export function registerStorageRoutes(app: Hono) {
         STORAGE_LIMITS_BYTES[
           tier.charAt(0).toUpperCase() + tier.slice(1).toLowerCase()
         ] ||
-        STORAGE_LIMITS_BYTES.Free;
+        STORAGE_LIMITS_BYTES["Free"];
       const percentUsed =
         bytesLimit > 0 ? Math.min(100, (bytesUsed / bytesLimit) * 100) : 0;
 
@@ -738,7 +736,7 @@ export function registerStorageRoutes(app: Hono) {
 
       // Lire le fichier
       const body = await c.req.parseBody();
-      const file = body.file;
+      const file = body["file"];
       if (!(file instanceof File)) {
         return c.json({ error: "Fichier invalide ou non fourni." }, 400);
       }
@@ -788,7 +786,7 @@ export function registerStorageRoutes(app: Hono) {
         STORAGE_LIMITS_BYTES[
           tier.charAt(0).toUpperCase() + tier.slice(1).toLowerCase()
         ] ||
-        STORAGE_LIMITS_BYTES.Free;
+        STORAGE_LIMITS_BYTES["Free"];
 
       if (bytesUsed + fileSize > bytesLimit) {
         const limitMB = Math.round(bytesLimit / (1024 * 1024));
@@ -825,8 +823,8 @@ export function registerStorageRoutes(app: Hono) {
         fileKey,
         arrayBuffer,
         {
-          acl: "public-read",
           contentType: file.type || "application/octet-stream",
+          acl: "public-read",
         }
       );
 
@@ -836,10 +834,7 @@ export function registerStorageRoutes(app: Hono) {
           uploadResult.error
         );
         return c.json(
-          {
-            error:
-              "Erreur lors de l'upload vers le stockage (tous les buckets en échec).",
-          },
+          { error: "Erreur lors de l'upload vers le stockage (tous les buckets en échec)." },
           500
         );
       }
@@ -928,7 +923,7 @@ export function registerStorageRoutes(app: Hono) {
 
       try {
         const delRes = await s3Client.fetch(deleteUrl, { method: "DELETE" });
-        if (!delRes.ok && !r2_key?.startsWith("node-")) {
+        if (!delRes.ok && (!r2_key || !r2_key.startsWith("node-"))) {
           // Si suppression échoue sur nœud par défaut pour un ancien fichier, tenter sur les autres nœuds du pool
           for (const fallbackNode of getFallbackNodes(node).slice(1)) {
             try {

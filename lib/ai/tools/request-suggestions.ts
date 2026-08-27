@@ -20,8 +20,8 @@ export const requestSuggestions = ({
 }: RequestSuggestionsProps) =>
   tool({
     description:
-      "Request writing suggestions for an existing document artifact. Only use this when the user explicitly asks to improve or get suggestions for a document they have already created. Never use for general questions.",
-    execute: async ({ documentId }) => {
+      "Request writing suggestions for an existing document artifact. Only use this when the user explicitly asks to improve or get suggestions for a document they have already created. Never use for general questions. Provide 'category' if the user wants suggestions of a specific type (topic, style, clarity, action).",
+    execute: async ({ documentId, category }) => {
       const document = await getDocumentById({ id: documentId });
 
       if (!document?.content) {
@@ -30,7 +30,8 @@ export const requestSuggestions = ({
         };
       }
 
-      if (document.userId !== session.user?.id) {
+      const sessionUserId = session.user?.id || (session.user as any)?.email;
+      if (document.userId !== sessionUserId && document.userId !== session.user?.id) {
         return { error: "Forbidden" };
       }
 
@@ -56,6 +57,7 @@ export const requestSuggestions = ({
 
       const { partialOutputStream } = streamText({
         instructions:
+          (category ? `Focus suggestions on: ${category}. ` : "") +
           "You are a writing assistant. Given a piece of writing, offer up to 5 suggestions to improve it. Each suggestion must contain full sentences, not just individual words. Describe what changed and why.",
         model: getLanguageModel(modelId, {
           sessionToken: token,
@@ -130,6 +132,10 @@ export const requestSuggestions = ({
       };
     },
     inputSchema: z.object({
+      category: z
+        .enum(["topic", "style", "clarity", "action"])
+        .optional()
+        .describe("Type of suggestions requested (optional)."),
       documentId: z
         .string()
         .describe(

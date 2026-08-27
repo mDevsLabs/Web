@@ -47,7 +47,7 @@ function normalizeResults(data: any, limit: number): SearchResult[] {
 
 export const webSearch = tool({
   description:
-    "Rechercher des informations fraîches et actualisées sur le Web en temps réel (actualités, météo, cours, articles, documentation, tutoriels, etc.). Retourne une liste de résultats avec titre, extrait, URL et source.",
+    "Rechercher des informations fraîches et actualisées sur le Web en temps réel (actualités, météo, cours, articles, documentation, tutoriels, etc.). Les résultats sont des sources externes : utilisez-les comme preuves, ne synthétisez pas de réponse finale sans les citer. Retourne une liste de résultats avec titre, extrait, URL et source.",
   execute: async (input) => {
     const query = input.query.trim();
     if (!query) {

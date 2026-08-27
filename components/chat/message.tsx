@@ -1,6 +1,9 @@
 "use client";
 import type { UseChatHelpers } from "@ai-sdk/react";
 import { useCallback, useState } from "react";
+
+import { MicIcon } from "lucide-react";
+
 import { toast } from "sonner";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatMessage } from "@/lib/types";
@@ -193,6 +196,45 @@ function ImageToolResult({
   );
 }
 
+function escapeRegExp(str: string) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function HighlightedText({
+  text,
+  query,
+  isCurrent,
+}: {
+  text: string;
+  query?: string;
+  isCurrent?: boolean;
+}) {
+  if (!query || !query.trim()) return <>{sanitizeText(text)}</>;
+  const q = query.trim();
+  if (q.length === 0) return <>{sanitizeText(text)}</>;
+  const regex = new RegExp(`(${escapeRegExp(q)})`, "gi");
+  const parts = text.split(regex);
+  if (parts.length <= 1) return <>{sanitizeText(text)}</>;
+  return (
+    <>
+      {parts.map((part, i) =>
+        part.toLowerCase() === q.toLowerCase() ? (
+          <mark
+            key={i}
+            className={
+              isCurrent ? "bg-yellow-400 text-black rounded px-0.5" : "bg-yellow-200 dark:bg-yellow-800 rounded px-0.5"
+            }
+          >
+            {part}
+          </mark>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
+    </>
+  );
+}
+
 const PurePreviewMessage = ({
   addToolApprovalResponse,
   chatId,
@@ -204,6 +246,8 @@ const PurePreviewMessage = ({
   isReadonly,
   requiresScrollPadding: _requiresScrollPadding,
   onEdit,
+  searchQuery,
+  isCurrentMatch,
 }: {
   addToolApprovalResponse: UseChatHelpers<ChatMessage>["addToolApprovalResponse"];
   chatId: string;
@@ -215,6 +259,8 @@ const PurePreviewMessage = ({
   isReadonly: boolean;
   requiresScrollPadding: boolean;
   onEdit?: (message: ChatMessage) => void;
+  searchQuery?: string;
+  isCurrentMatch?: boolean;
 }) => {
   const attachmentsFromMessage = message.parts.filter(
     (part) => part.type === "file"
@@ -286,6 +332,7 @@ const PurePreviewMessage = ({
     }
 
     if (type === "text") {
+      const hasSearch = !!searchQuery?.trim();
       return (
         <MessageContent
           className={cn("text-[13px] leading-[1.65]", {
@@ -295,7 +342,13 @@ const PurePreviewMessage = ({
           data-testid="message-content"
           key={key}
         >
-          <MessageResponse>{sanitizeText(part.text)}</MessageResponse>
+          {hasSearch ? (
+            <div className={cn(isCurrentMatch && "ring-1 ring-yellow-400 rounded")}>
+              <HighlightedText text={part.text} query={searchQuery} isCurrent={isCurrentMatch} />
+            </div>
+          ) : (
+            <MessageResponse>{sanitizeText(part.text)}</MessageResponse>
+          )}
         </MessageContent>
       );
     }
@@ -570,8 +623,8 @@ const PurePreviewMessage = ({
             >
               <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
-                  <span className="flex size-7 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold text-xs">
-                    🎙️
+                  <span className="flex size-7 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                    <MicIcon className="size-4" />
                   </span>
                   <span className="font-semibold text-[13px] text-foreground">
                     Synthèse vocale mAI

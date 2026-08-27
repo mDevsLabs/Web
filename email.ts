@@ -24,7 +24,7 @@ export async function sendVerificationEmail(
   let subject = "Notification - mAI";
   let title = "Notification";
   let textContent = "";
-  let showCode = !!code;
+  let showCode = code ? true : false;
 
   switch (action) {
     case "register":
@@ -125,26 +125,23 @@ export async function sendVerificationEmail(
   `;
 
   // 1. Envoi via Google Apps Script (Recommandé)
-  const googleScriptsUrl =
-    Deno.env.get("GOOGLE_SCRIPTS_URL") || Deno.env.get("GOOGLE_SCRIPT_URL");
-  const googleScriptSecret =
-    Deno.env.get("GOOGLE_SCRIPTS_SECRET") ||
-    Deno.env.get("GOOGLE_SCRIPT_SECRET");
+  const googleScriptsUrl = Deno.env.get("GOOGLE_SCRIPTS_URL") || Deno.env.get("GOOGLE_SCRIPT_URL");
+  const googleScriptSecret = Deno.env.get("GOOGLE_SCRIPTS_SECRET") || Deno.env.get("GOOGLE_SCRIPT_SECRET");
 
   if (googleScriptsUrl && googleScriptSecret) {
     try {
       const res = await fetch(googleScriptsUrl, {
-        body: JSON.stringify({
-          body: "Veuillez activer l'affichage HTML pour lire cet e-mail mAI.",
-          htmlBody: html,
-          secret: googleScriptSecret,
-          subject,
-          to: email,
-        }),
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        method: "POST",
+        body: JSON.stringify({
+          secret: googleScriptSecret,
+          to: email,
+          subject: subject,
+          htmlBody: html,
+          body: "Veuillez activer l'affichage HTML pour lire cet e-mail mAI.",
+        }),
       });
 
       if (res.ok) {
@@ -153,20 +150,14 @@ export async function sendVerificationEmail(
           const maskedTo = email.replace(/(.{2}).*(@.*)/, "$1***$2");
           console.log(`[EMAIL] Google Apps Script OK to=${maskedTo}`);
           return;
+        } else {
+          console.error("Erreur de retour Google Apps Script :", data.error);
         }
-        console.error("Erreur de retour Google Apps Script :", data.error);
       } else {
-        console.error(
-          "Erreur HTTP Google Apps Script :",
-          res.status,
-          res.statusText
-        );
+        console.error("Erreur HTTP Google Apps Script :", res.status, res.statusText);
       }
     } catch (err: any) {
-      console.error(
-        "Erreur envoi via Google Apps Script :",
-        err?.message || err
-      );
+      console.error("Erreur envoi via Google Apps Script :", err?.message || err);
     }
   } else {
     console.warn(
@@ -197,6 +188,7 @@ export async function sendVerificationEmail(
 
       const maskedTo = email.replace(/(.{2}).*(@.*)/, "$1***$2");
       console.log(`[EMAIL] Gmail SMTP OK to=${maskedTo}`);
+      return;
     } catch (err: any) {
       console.error("Erreur envoi Gmail SMTP :", err?.message || err);
     }

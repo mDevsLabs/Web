@@ -411,3 +411,107 @@ export const mcpLog = pgTable(
 );
 
 export type McpLog = InferSelectModel<typeof mcpLog>;
+
+export const notification = pgTable(
+  "Notification",
+  {
+    body: text("body"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    isRead: boolean("isRead").notNull().default(false),
+    link: text("link"),
+    title: text("title").notNull(),
+    type: varchar("type", {
+      enum: [
+        "ai_response",
+        "project_created",
+        "mcp_created",
+        "mcp_access_request",
+        "news",
+      ],
+    }).notNull(),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    createdAtIdx: index("Notification_createdAt_idx").on(table.createdAt),
+    userIdIdx: index("Notification_userId_idx").on(table.userId),
+    userReadIdx: index("Notification_userId_isRead_idx").on(
+      table.userId,
+      table.isRead
+    ),
+    userTypeIdx: index("Notification_userId_type_idx").on(
+      table.userId,
+      table.type
+    ),
+  })
+);
+
+export type Notification = InferSelectModel<typeof notification>;
+
+export const userNotificationPrefs = pgTable("user_notification_prefs", {
+  aiResponse: boolean("aiResponse").notNull().default(true),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+  enabled: boolean("enabled").notNull().default(false),
+  mcpAccessRequest: boolean("mcpAccessRequest").notNull().default(true),
+  mcpCreated: boolean("mcpCreated").notNull().default(true),
+  news: boolean("news").notNull().default(true),
+  projectCreated: boolean("projectCreated").notNull().default(true),
+  regenerateMode: varchar("regenerateMode", {
+    enum: ["truncate", "fork"],
+  })
+    .notNull()
+    .default("truncate"),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+  userId: text("userId").primaryKey().notNull(),
+});
+
+export type UserNotificationPrefs = InferSelectModel<
+  typeof userNotificationPrefs
+>;
+
+export const skillTemplate = pgTable(
+  "SkillTemplate",
+  {
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    name: text("name").notNull(),
+    description: text("description").default(""),
+    instructions: text("instructions").notNull().default(""),
+    icon: text("icon").default("sparkles"),
+    color: varchar("color", { length: 7 }).default("#6366f1"),
+    tags: text("tags").array().notNull().default([]),
+    tools: json("tools").notNull().default([]),
+    parameters: json("parameters").notNull().default([]),
+    isPublic: boolean("isPublic").notNull().default(true),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+  },
+  (table) => ({
+    isPublicIdx: index("SkillTemplate_isPublic_idx").on(table.isPublic),
+    nameIdx: index("SkillTemplate_name_idx").on(table.name),
+  })
+);
+export type SkillTemplate = InferSelectModel<typeof skillTemplate>;
+
+export const mcpTemplate = pgTable(
+  "McpTemplate",
+  {
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    name: text("name").notNull(),
+    description: text("description").default(""),
+    transport: varchar("transport", { enum: ["sse", "http", "stdio", "websocket"] }).default("sse"),
+    url: text("url"),
+    command: text("command"),
+    args: text("args"),
+    authType: varchar("authType", { enum: ["none", "bearer", "basic", "oauth2", "custom_headers"] }).default("none"),
+    icon: text("icon").default("server"),
+    isPublic: boolean("isPublic").notNull().default(true),
+    tags: text("tags").array().notNull().default([]),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+  },
+  (table) => ({
+    isPublicIdx: index("McpTemplate_isPublic_idx").on(table.isPublic),
+    nameIdx: index("McpTemplate_name_idx").on(table.name),
+  })
+);
+export type McpTemplate = InferSelectModel<typeof mcpTemplate>;

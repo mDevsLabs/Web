@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { getMaiUser } from "@/lib/auth/session";
+import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
 import {
   createMcpServer,
   getMcpServersByUserId,
@@ -56,10 +57,11 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const user = await getMaiUser();
-  if (!user) {
-    return new ChatbotError("unauthorized:chat").toResponse();
+  const guard = await requirePaidPlan("plus");
+  if (!guard.allowed) {
+    return planGuardResponse(guard)!;
   }
+  const user = guard.user;
   const userId = user.id || user.email;
 
   try {
@@ -89,6 +91,18 @@ export async function POST(request: Request) {
       toolsCache: discoveredTools,
       userId,
     });
+
+    // Notification MCP créé
+    try {
+      const { createNotification } = await import("@/lib/db/queries");
+      createNotification({
+        body: `Le serveur MCP "${created.name}" a été ajouté.`,
+        link: `/mcp`,
+        title: "Nouveau MCP ajouté",
+        type: "mcp_created",
+        userId,
+      }).catch(() => {});
+    } catch {}
 
     return Response.json(created, { status: 201 });
   } catch (err: any) {

@@ -179,15 +179,17 @@ function PureMultimodalInput({
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { width } = useWindowSize();
   const hasAutoFocused = useRef(false);
+  const isMobileWidth = width ? width < 768 : false;
+
   useEffect(() => {
-    if (!hasAutoFocused.current && width) {
+    if (!hasAutoFocused.current && width && !isMobileWidth) {
       const timer = setTimeout(() => {
         textareaRef.current?.focus();
         hasAutoFocused.current = true;
       }, 100);
       return () => clearTimeout(timer);
     }
-  }, [width]);
+  }, [width, isMobileWidth]);
 
   const [localStorageInput, setLocalStorageInput] = useLocalStorage(
     `input:${chatId}`,
@@ -634,11 +636,11 @@ function PureMultimodalInput({
         if (payload.type === "skill") {
           setActiveSkill(payload.skill);
           toast.success(
-            `Compétence appliquée à la discussion : ${payload.skill.name} ✨`
+            `Compétence appliquée à la discussion : ${payload.skill.name}`
           );
         } else if (payload.type === "mcp") {
           togglePendingTool("mcp" as any);
-          toast.success(`Serveur MCP ciblé : ${payload.server.name} 🔌`);
+          toast.success(`Serveur MCP ciblé : ${payload.server.name}`);
         } else if (payload.type === "project") {
           setPendingProject({
             color: payload.project.color,
@@ -659,11 +661,11 @@ function PureMultimodalInput({
         if (payload.type === "skill") {
           setActiveSkill(payload.skill);
           toast.success(
-            `Compétence appliquée à la discussion : ${payload.skill.name} ✨`
+            `Compétence appliquée à la discussion : ${payload.skill.name}`
           );
         } else if (payload.type === "mcp") {
           togglePendingTool("mcp" as any);
-          toast.success(`Serveur MCP ciblé : ${payload.server.name} 🔌`);
+          toast.success(`Serveur MCP ciblé : ${payload.server.name}`);
         } else if (payload.type === "project") {
           setPendingProject({
             color: payload.project.color,
@@ -1287,6 +1289,7 @@ function PureMultimodalInput({
 
       <PromptInput
         className="[&>div]:rounded-[28px] [&>div]:border [&>div]:border-border/40 [&>div]:bg-card/85 [&>div]:backdrop-blur-xl [&>div]:shadow-[var(--shadow-composer)] [&>div]:transition-all [&>div]:duration-200 [&>div]:focus-within:border-border/70 [&>div]:focus-within:shadow-[var(--shadow-composer-focus)]"
+        data-onboarding="chat-input"
         onSubmit={handlePromptSubmit}
       >
         {(attachments.length > 0 || uploadQueue.length > 0) && (
@@ -1364,7 +1367,7 @@ function PureMultimodalInput({
               status={status}
             />
             <Button
-              className={`h-8 w-8 rounded-full p-1.5 border ${isListening ? "bg-red-500/10 border-red-500/30 text-red-500 animate-pulse" : "border-border/40 hover:bg-muted text-foreground"} ${isSpeechSupported ? "" : "opacity-40"}`}
+              className={`h-9 w-9 sm:h-8 sm:w-8 rounded-full p-1.5 border ${isListening ? "bg-red-500/10 border-red-500/30 text-red-500 animate-pulse" : "border-border/40 hover:bg-muted text-foreground"} ${isSpeechSupported ? "" : "opacity-40"}`}
               onClick={handleMicClick}
               title={isListening ? "Arrêter la dictée" : "Dictée vocale"}
               type="button"
@@ -1387,7 +1390,7 @@ function PureMultimodalInput({
           ) : (
             <PromptInputSubmit
               className={cn(
-                "h-8 w-8 rounded-full transition-all duration-200",
+                "h-9 w-9 sm:h-8 sm:w-8 rounded-full transition-all duration-200",
                 isQuotaExhausted
                   ? "bg-destructive/20 text-destructive cursor-not-allowed opacity-70"
                   : input.trim() || attachments.length > 0
@@ -1574,7 +1577,7 @@ function PurePlusMenuButton({
       <PopoverTrigger asChild>
         <Button
           className={cn(
-            "h-8 w-8 rounded-full border border-border/40 p-1.5 transition-colors hover:bg-muted text-foreground cursor-pointer shrink-0 relative",
+            "h-9 w-9 sm:h-8 sm:w-8 rounded-full border border-border/40 p-1.5 transition-colors hover:bg-muted text-foreground cursor-pointer shrink-0 relative",
             pendingTools.length > 0 &&
               "bg-primary/10 border-primary/30 text-primary"
           )}
@@ -1977,7 +1980,7 @@ function PureModelSelectorCompact({
     <ModelSelector onOpenChange={setOpen} open={open}>
       <ModelSelectorTrigger asChild>
         <Button
-          className="h-7 max-w-[220px] justify-between gap-1.5 rounded-lg px-2 text-[12px] text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
+          className="h-8 sm:h-7 max-w-[220px] justify-between gap-1.5 rounded-lg px-2 text-[12px] text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
           data-testid="model-selector"
           variant="ghost"
         >

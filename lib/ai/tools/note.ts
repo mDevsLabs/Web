@@ -152,12 +152,15 @@ export const note = ({ session: _session, dataStream }: NoteProps) =>
       const mimeType = getMimeType(fmt);
       const safeTags = (tags || []).slice(0, 20).map((t) => t.slice(0, 40));
 
-      // Stream le contenu pour affichage côté client
-      dataStream.write({
-        data: built,
-        transient: true,
-        type: "data-textDelta",
-      });
+      // Stream le contenu pour affichage côté client (chunked if very long)
+      const chunkSize = 5000;
+      for (let i = 0; i < built.length; i += chunkSize) {
+        dataStream.write({
+          data: built.slice(i, i + chunkSize),
+          transient: true,
+          type: "data-textDelta",
+        });
+      }
 
       return {
         contentLength: built.length,
