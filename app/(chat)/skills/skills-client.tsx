@@ -825,8 +825,8 @@ export default function SkillsClient() {
                   </div>
 
                   {/* Aperçu Instructions */}
-                  <div className="flex-1 mb-3">
-                    <p className="text-xs text-muted-foreground/90 line-clamp-3 bg-muted/30 p-2.5 rounded-xl border border-border/30 font-mono">
+                  <div className="flex-1 mb-3 bg-muted/30 p-2.5 rounded-xl border border-border/30 overflow-hidden">
+                    <p className="text-xs text-muted-foreground/90 line-clamp-3 font-mono break-words leading-relaxed">
                       {s.instructions}
                     </p>
                   </div>

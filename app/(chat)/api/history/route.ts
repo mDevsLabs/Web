@@ -43,21 +43,31 @@ export async function GET(request: NextRequest) {
   const pinned =
     pinnedParam === "true" ? true : pinnedParam === "false" ? false : null;
 
-  const chats = await getChatsByUserId({
-    endingBefore,
-    id: userId,
-    includeArchived,
-    isArchived,
-    limit,
-    pinned,
-    projectId: projectId ?? undefined,
-    search: search ?? null,
-    startingAfter,
-    tag: tag ?? null,
-    userEmail: user.email,
-  });
+  try {
+    const chats = await getChatsByUserId({
+      endingBefore,
+      id: userId,
+      includeArchived,
+      isArchived,
+      limit,
+      pinned,
+      projectId: projectId ?? undefined,
+      search: search ?? null,
+      startingAfter,
+      tag: tag ?? null,
+      userEmail: user.email,
+    });
 
-  return Response.json(chats);
+    return Response.json(chats);
+  } catch (error) {
+    console.error("Erreur récupération historique:", error);
+    if (error instanceof ChatbotError) {
+      return error.toResponse();
+    }
+    return new ChatbotError("bad_request:database", {
+      cause: error,
+    }).toResponse();
+  }
 }
 
 export async function DELETE() {

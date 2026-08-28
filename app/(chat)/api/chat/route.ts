@@ -266,6 +266,7 @@ export async function POST(request: Request) {
         }
       }
       await saveChat({
+        agentId: effectiveAgentId ?? null,
         customInstructions: customInstructions ?? null,
         id,
         modeId: selectedChatMode ?? undefined,

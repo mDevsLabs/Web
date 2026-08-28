@@ -359,7 +359,10 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     client`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "temperatureOverride" double precision`
   );
   await run(
-    client`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "modeId" varchar(20) DEFAULT 'standard'`
+    client`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "agentId" uuid`
+  );
+  await run(
+    client`ALTER TABLE "Chat" DROP COLUMN IF EXISTS "modeId"`
   );
 
   // Colonnes étendues pour Project
@@ -555,6 +558,65 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     "createdAt" timestamp DEFAULT now() NOT NULL,
     "updatedAt" timestamp DEFAULT now() NOT NULL
   )`);
+
+  // Agents & AgentTemplate (0007)
+  await run(client`CREATE TABLE IF NOT EXISTS "Agent" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "userId" text NOT NULL,
+    "name" varchar(100) NOT NULL,
+    "description" varchar(500) DEFAULT '',
+    "instructions" text NOT NULL DEFAULT '',
+    "icon" varchar(50) DEFAULT 'sparkles' NOT NULL,
+    "emoji" varchar(10) DEFAULT NULL,
+    "color" varchar(7) DEFAULT '#6366f1' NOT NULL,
+    "defaultModelId" text NOT NULL DEFAULT 'google/gemini-2.5-flash',
+    "skillIds" json DEFAULT '[]'::json NOT NULL,
+    "mcpServerIds" json DEFAULT '[]'::json NOT NULL,
+    "cloudFileUrls" json DEFAULT '[]'::json NOT NULL,
+    "isPublic" boolean DEFAULT false NOT NULL,
+    "shareId" text,
+    "createdAt" timestamp DEFAULT now() NOT NULL,
+    "updatedAt" timestamp DEFAULT now() NOT NULL
+  )`);
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "Agent_userId_idx" ON "Agent" USING btree ("userId")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "Agent_shareId_idx" ON "Agent" USING btree ("shareId")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "Agent_userId_createdAt_idx" ON "Agent" USING btree ("userId", "createdAt" DESC)`
+  );
+
+  await run(client`CREATE TABLE IF NOT EXISTS "AgentTemplate" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "name" varchar(100) NOT NULL,
+    "description" varchar(500) DEFAULT '',
+    "instructions" text NOT NULL DEFAULT '',
+    "icon" varchar(50) DEFAULT 'bot' NOT NULL,
+    "emoji" varchar(10) DEFAULT NULL,
+    "color" varchar(7) DEFAULT '#6366f1' NOT NULL,
+    "defaultModelId" text DEFAULT 'google/gemini-2.5-flash' NOT NULL,
+    "skillIds" json DEFAULT '[]'::json,
+    "mcpServerIds" json DEFAULT '[]'::json,
+    "tags" varchar(50)[] DEFAULT '{}' NOT NULL,
+    "isPublic" boolean DEFAULT true NOT NULL,
+    "createdAt" timestamp DEFAULT now() NOT NULL,
+    "updatedAt" timestamp DEFAULT now() NOT NULL
+  )`);
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "AgentTemplate_isPublic_idx" ON "AgentTemplate" USING btree ("isPublic")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "AgentTemplate_name_idx" ON "AgentTemplate" USING btree ("name")`
+  );
+
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "default_agent_id" uuid`
+  );
+  await run(
+    client`ALTER TABLE "users" DROP COLUMN IF EXISTS "default_ai_mode"`
+  );
 }
 
 let _migrationPromise: Promise<void> | null = null;
@@ -612,6 +674,7 @@ export async function saveChat({
   tags,
   customInstructions,
   modeId,
+  agentId,
   skillId,
   temperatureOverride,
 }: {
@@ -623,12 +686,14 @@ export async function saveChat({
   tags?: string[];
   customInstructions?: string | null;
   modeId?: string;
+  agentId?: string | null;
   skillId?: string | null;
   temperatureOverride?: number | null;
 }) {
   try {
     const db = await dbReady();
     return await db.insert(chat).values({
+      agentId: agentId ?? null,
       customInstructions: customInstructions ?? null,
       id,
       projectId: projectId ?? null,

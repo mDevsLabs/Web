@@ -32,24 +32,24 @@ async function SidebarShell({ children }: { children: React.ReactNode }) {
 
   return (
     <SidebarProvider defaultOpen={!isCollapsed}>
-      <AppSidebar user={user} />
-      <SidebarInset>
-        <Toaster
-          position="top-center"
-          theme="system"
-          toastOptions={{
-            className:
-              "!bg-card !text-foreground !border-border/50 !shadow-[var(--shadow-float)]",
-          }}
-        />
-        <Suspense fallback={<div className="flex h-dvh" />}>
-          <ActiveChatProvider>
+      <ActiveChatProvider>
+        <AppSidebar user={user} />
+        <SidebarInset>
+          <Toaster
+            position="top-center"
+            theme="system"
+            toastOptions={{
+              className:
+                "!bg-card !text-foreground !border-border/50 !shadow-[var(--shadow-float)]",
+            }}
+          />
+          <Suspense fallback={<div className="flex h-dvh" />}>
             <ChatShell />
-          </ActiveChatProvider>
-        </Suspense>
-        {children}
-        <OnboardingTutorial />
-      </SidebarInset>
+          </Suspense>
+          {children}
+          <OnboardingTutorial />
+        </SidebarInset>
+      </ActiveChatProvider>
     </SidebarProvider>
   );
 }

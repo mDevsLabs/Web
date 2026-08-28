@@ -258,7 +258,9 @@ export default function AgentsClient() {
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
-                <p className="text-xs text-muted-foreground/90 line-clamp-3 bg-muted/30 p-2.5 rounded-xl border border-border/30 font-mono flex-1 mb-3">{a.instructions}</p>
+                <div className="flex-1 mb-3 bg-muted/30 p-2.5 rounded-xl border border-border/30 overflow-hidden">
+                  <p className="text-xs text-muted-foreground/90 line-clamp-3 font-mono break-words leading-relaxed">{a.instructions}</p>
+                </div>
                 <div className="flex flex-col gap-2 pt-2 border-t border-border/40 text-[11px]">
                   <div className="flex items-center flex-wrap gap-1.5">
                     <span className="font-mono text-[10px] bg-muted px-1.5 py-0.5 rounded truncate max-w-[180px]">{(a as any).defaultModelId}</span>

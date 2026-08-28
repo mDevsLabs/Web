@@ -37,8 +37,29 @@ export async function setMaiSessionToken(token: string) {
   });
 }
 
+const userCache = new Map<string, { user: MaiUser; expiresAt: number }>();
+const CACHE_TTL_MS = 15_000; // 15 secondes
+
+function decodeJwtPayload(token: string): any | null {
+  try {
+    const parts = token.split(".");
+    if (parts.length === 3) {
+      const payloadStr =
+        typeof Buffer === "undefined"
+          ? atob(parts[1])
+          : Buffer.from(parts[1], "base64").toString("utf-8");
+      return JSON.parse(payloadStr);
+    }
+  } catch {}
+  return null;
+}
+
 export async function removeMaiSessionToken() {
   const cookieStore = await cookies();
+  const token = cookieStore.get(MAI_SESSION_COOKIE)?.value;
+  if (token) {
+    userCache.delete(token);
+  }
   cookieStore.delete(MAI_SESSION_COOKIE);
 }
 
@@ -50,6 +71,12 @@ export async function getMaiUser(
     return null;
   }
 
+  // Vérifier le cache mémoire court
+  const cached = userCache.get(token);
+  if (cached && Date.now() < cached.expiresAt) {
+    return cached.user;
+  }
+
   try {
     const res = await fetch(`${MAI_API_URL}/usage`, {
       cache: "no-store",
@@ -58,45 +85,67 @@ export async function getMaiUser(
       },
     });
 
-    if (!res.ok) {
-      return null;
-    }
-
-    const data = await res.json();
-    if (data.error) {
-      return null;
-    }
-
-    // Récupération de l'id utilisateur (depuis data.id ou payload JWT)
-    let userId: string | undefined = data.id ? String(data.id) : undefined;
-    if (!userId) {
-      try {
-        const parts = token.split(".");
-        if (parts.length === 3) {
-          const payloadStr =
-            typeof Buffer === "undefined"
-              ? atob(parts[1])
-              : Buffer.from(parts[1], "base64").toString("utf-8");
-          const payload = JSON.parse(payloadStr);
-          userId = payload.sub ? String(payload.sub) : undefined;
+    if (res.ok) {
+      const data = await res.json();
+      if (!data.error) {
+        // Récupération de l'id utilisateur (depuis data.id ou payload JWT)
+        let userId: string | undefined = data.id ? String(data.id) : undefined;
+        if (!userId) {
+          const payload = decodeJwtPayload(token);
+          userId = payload?.sub ? String(payload.sub) : undefined;
         }
-      } catch {}
-    }
 
-    return {
-      avatarUrl: data.avatarUrl || null,
-      email: data.email || "",
-      id: userId || data.email,
-      limit: Number(data.limit || 2_000_000),
-      phone: data.phone || "",
-      resetAt: data.resetAt,
-      tier: data.tier || "Free",
-      tokensUsed: Number(data.tokensUsed || 0),
-      username: data.username || "Utilisateur",
-      weekStart: data.weekStart,
-    };
+        const user: MaiUser = {
+          avatarUrl: data.avatarUrl || null,
+          email: data.email || "",
+          id: userId || data.email,
+          limit: Number(data.limit || 2_000_000),
+          phone: data.phone || "",
+          resetAt: data.resetAt,
+          tier: data.tier || "Free",
+          tokensUsed: Number(data.tokensUsed || 0),
+          username: data.username || "Utilisateur",
+          weekStart: data.weekStart,
+        };
+
+        userCache.set(token, { expiresAt: Date.now() + CACHE_TTL_MS, user });
+        return user;
+      }
+    }
   } catch (error) {
     console.error("Erreur récupération utilisateur mAI:", error);
-    return null;
   }
+
+  // Fallback JWT si Val Town est temporairement indisponible ou en rate-limit
+  const fallbackPayload = decodeJwtPayload(token);
+  if (fallbackPayload && (fallbackPayload.email || fallbackPayload.sub)) {
+    // Vérifier l'expiration du JWT si présente
+    if (!fallbackPayload.exp || fallbackPayload.exp * 1000 > Date.now()) {
+      const fallbackUser: MaiUser = {
+        avatarUrl: fallbackPayload.avatarUrl || null,
+        email: fallbackPayload.email || "",
+        id: fallbackPayload.id
+          ? String(fallbackPayload.id)
+          : fallbackPayload.sub
+            ? String(fallbackPayload.sub)
+            : fallbackPayload.email || "",
+        limit: Number(fallbackPayload.limit || 2_000_000),
+        phone: fallbackPayload.phone || "",
+        resetAt: fallbackPayload.resetAt,
+        tier: fallbackPayload.tier || "Free",
+        tokensUsed: Number(fallbackPayload.tokensUsed || 0),
+        username: fallbackPayload.username || fallbackPayload.name || "Utilisateur",
+        weekStart: fallbackPayload.weekStart,
+      };
+
+      // Mettre en cache pour quelques secondes
+      userCache.set(token, {
+        expiresAt: Date.now() + 5_000,
+        user: fallbackUser,
+      });
+      return fallbackUser;
+    }
+  }
+
+  return null;
 }
