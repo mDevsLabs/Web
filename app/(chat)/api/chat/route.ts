@@ -88,7 +88,7 @@ export async function POST(request: Request) {
       id,
       message,
       messages,
-      selectedChatModel,
+
       selectedChatMode,
       selectedVisibilityType,
       projectId,
@@ -186,7 +186,8 @@ export async function POST(request: Request) {
 
     // Agent remplace Mode IA — agentId envoyé par use-active-chat (cookie + DB)
     const bodyAny = requestBody as any;
-    const agentIdFromBody: string | null = bodyAny.agentId ?? bodyAny.selectedAgentId ?? null;
+    const agentIdFromBody: string | null =
+      bodyAny.agentId ?? bodyAny.selectedAgentId ?? null;
     const chatModelFromAgent: string | null = bodyAny.selectedChatModel || null;
     // Si un agent est actif, son modèle par défaut prime (global cookie déjà mis à jour côté client)
     let agentInstructions: string | null = null;
@@ -201,13 +202,20 @@ export async function POST(request: Request) {
         if (ag) {
           agentInstructions = ag.instructions || null;
           agentDefaultModel = ag.defaultModelId || null;
-          if (Array.isArray(ag.skillIds)) agentSkillIds = ag.skillIds as string[];
-          if (Array.isArray(ag.mcpServerIds)) agentMcpIds = ag.mcpServerIds as string[];
+          if (Array.isArray(ag.skillIds)) {
+            agentSkillIds = ag.skillIds as string[];
+          }
+          if (Array.isArray(ag.mcpServerIds)) {
+            agentMcpIds = ag.mcpServerIds as string[];
+          }
         }
       } catch {}
     }
     const chatModel =
-      chatModelFromAgent || agentDefaultModel || projectDefaultModel || DEFAULT_CHAT_MODEL;
+      chatModelFromAgent ||
+      agentDefaultModel ||
+      projectDefaultModel ||
+      DEFAULT_CHAT_MODEL;
     const isToolApprovalFlow = Boolean(messages);
 
     // Règle: bloquer l'envoi de fichiers si le modèle ne supporte pas vision/file
@@ -260,7 +268,7 @@ export async function POST(request: Request) {
       await saveChat({
         customInstructions: customInstructions ?? null,
         id,
-        modeId: chatModeId,
+        modeId: selectedChatMode ?? undefined,
         projectId: projectId ?? null,
         skillId: effectiveSkillId ?? null,
         tags: tags ?? [],
@@ -433,7 +441,8 @@ export async function POST(request: Request) {
     }
 
     // Température effective: chat override > user default > agent default (plus de mode)
-    const effectiveTemperature = chatTempOverride ?? userDefaultTemp ?? undefined;
+    const effectiveTemperature =
+      chatTempOverride ?? userDefaultTemp ?? undefined;
     const effectiveTopP = userDefaultTopP ?? undefined;
 
     // Initialiser le modèle de langage mAI
@@ -678,8 +687,12 @@ export async function POST(request: Request) {
         try {
           const { createNotification } = await import("@/lib/db/queries");
           const snippet = (() => {
-            const last = [...finishedMessages].reverse().find((m) => m.role === "assistant");
-            if (!last) return "mAI a répondu à votre message.";
+            const last = [...finishedMessages]
+              .reverse()
+              .find((m) => m.role === "assistant");
+            if (!last) {
+              return "mAI a répondu à votre message.";
+            }
             const txt = getTextFromMessage(last as any) || "";
             return txt.slice(0, 180) || "mAI a répondu à votre message.";
           })();

@@ -1,5 +1,5 @@
-import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import { PageBackButton } from "@/components/chat/page-back-button";
+import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import { isPaidTier } from "@/lib/auth/plan";
 import { getMaiUser } from "@/lib/auth/session";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
@@ -20,8 +20,12 @@ export default async function AgentsPage() {
                 <span className="text-xs font-bold">A</span>
               </div>
               <div>
-                <h1 className="text-lg font-bold tracking-tight sm:text-xl">Agents IA</h1>
-                <p className="text-xs text-muted-foreground">Forfait Plus, Pro ou Max requis</p>
+                <h1 className="text-lg font-bold tracking-tight sm:text-xl">
+                  Agents IA
+                </h1>
+                <p className="text-xs text-muted-foreground">
+                  Forfait Plus, Pro ou Max requis
+                </p>
               </div>
             </div>
           </div>
@@ -32,17 +36,26 @@ export default async function AgentsPage() {
             <span className="text-2xl">🤖</span>
           </div>
           <div>
-            <h2 className="text-2xl font-bold mb-2">Agents IA réservés aux forfaits payants</h2>
+            <h2 className="text-2xl font-bold mb-2">
+              Agents IA réservés aux forfaits payants
+            </h2>
             <p className="text-sm text-muted-foreground">
-              Créez jusqu'à 10 agents personnalisés avec styles, instructions (5000c), icône/emoji, modèle par défaut, skills, MCP et fichiers cloud. Passez à un forfait Plus, Pro ou Max pour y accéder.
+              Créez jusqu'à 10 agents personnalisés avec styles, instructions
+              (5000c), icône/emoji, modèle par défaut, skills, MCP et fichiers
+              cloud. Passez à un forfait Plus, Pro ou Max pour y accéder.
             </p>
           </div>
-          <a className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:opacity-90" href={MAI_UPGRADE_URL} target="_blank">
+          <a
+            className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:opacity-90"
+            href={MAI_UPGRADE_URL}
+            rel="noopener"
+            target="_blank"
+          >
             Mettre à niveau mon forfait
           </a>
         </main>
 
-        <UpgradeDialog feature="agents" onOpenChange={() => {}} open />
+        <UpgradeDialog feature="agents" onOpenChange={() => undefined} open />
       </div>
     );
   }

@@ -31,11 +31,11 @@ import {
   mcpTemplate,
   message,
   project,
+  type Suggestion,
   skill,
   skillTemplate,
   stream,
   suggestion,
-  type Suggestion,
   userMcpPrefs,
   vote,
 } from "./schema";
@@ -457,14 +457,30 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
   );
 
   // MCP fine-grained control + encrypted vars + Skill binding + global prefs (0006)
-  await run(client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "lastSyncAt" timestamp`);
-  await run(client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "lastCallAt" timestamp`);
-  await run(client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "avgLatencyMs" integer DEFAULT 0 NOT NULL`);
-  await run(client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "callCount" integer DEFAULT 0 NOT NULL`);
-  await run(client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "uptimeStatus" varchar(20) DEFAULT 'unknown' NOT NULL`);
-  await run(client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "timeoutMs" integer DEFAULT 15000 NOT NULL`);
-  await run(client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "rateLimitPerMin" integer DEFAULT 60 NOT NULL`);
-  await run(client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "toolOverrides" json DEFAULT '{}'::json NOT NULL`);
+  await run(
+    client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "lastSyncAt" timestamp`
+  );
+  await run(
+    client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "lastCallAt" timestamp`
+  );
+  await run(
+    client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "avgLatencyMs" integer DEFAULT 0 NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "callCount" integer DEFAULT 0 NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "uptimeStatus" varchar(20) DEFAULT 'unknown' NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "timeoutMs" integer DEFAULT 15000 NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "rateLimitPerMin" integer DEFAULT 60 NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "toolOverrides" json DEFAULT '{}'::json NOT NULL`
+  );
   await run(client`CREATE TABLE IF NOT EXISTS "mcp_server_secret" (
     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
     "serverId" uuid NOT NULL REFERENCES "McpServer"("id") ON DELETE CASCADE,
@@ -475,14 +491,30 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     "createdAt" timestamp DEFAULT now() NOT NULL,
     CONSTRAINT "mcp_server_secret_unique" UNIQUE("serverId","kind","key")
   )`);
-  await run(client`CREATE INDEX IF NOT EXISTS "mcp_server_secret_serverId_idx" ON "mcp_server_secret" USING btree ("serverId")`);
-  await run(client`CREATE INDEX IF NOT EXISTS "mcp_server_secret_userId_idx" ON "mcp_server_secret" USING btree ("userId")`);
-  await run(client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "mcpServerIds" uuid[] DEFAULT '{}' NOT NULL`);
-  await run(client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "mcpToolFilter" json DEFAULT '{}'::json NOT NULL`);
-  await run(client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "version" varchar(20) DEFAULT 'v1' NOT NULL`);
-  await run(client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "usageCount" integer DEFAULT 0 NOT NULL`);
-  await run(client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "lastUsedAt" timestamp`);
-  await run(client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "templateId" uuid`);
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "mcp_server_secret_serverId_idx" ON "mcp_server_secret" USING btree ("serverId")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "mcp_server_secret_userId_idx" ON "mcp_server_secret" USING btree ("userId")`
+  );
+  await run(
+    client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "mcpServerIds" uuid[] DEFAULT '{}' NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "mcpToolFilter" json DEFAULT '{}'::json NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "version" varchar(20) DEFAULT 'v1' NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "usageCount" integer DEFAULT 0 NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "lastUsedAt" timestamp`
+  );
+  await run(
+    client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "templateId" uuid`
+  );
   await run(client`CREATE TABLE IF NOT EXISTS "user_mcp_prefs" (
     "userId" text PRIMARY KEY NOT NULL,
     "globalKillSwitch" boolean DEFAULT false NOT NULL,
@@ -597,10 +629,8 @@ export async function saveChat({
   try {
     const db = await dbReady();
     return await db.insert(chat).values({
-      createdAt: new Date(),
       customInstructions: customInstructions ?? null,
       id,
-      modeId: modeId ?? "standard",
       projectId: projectId ?? null,
       skillId: skillId ?? null,
       tags: tags ?? [],
@@ -1826,7 +1856,9 @@ export async function updateSkill({
 }) {
   const database = await getDb();
   const clean: any = { ...data };
-  if (clean.lastUsedAt && typeof clean.lastUsedAt === "string") clean.lastUsedAt = new Date(clean.lastUsedAt);
+  if (clean.lastUsedAt && typeof clean.lastUsedAt === "string") {
+    clean.lastUsedAt = new Date(clean.lastUsedAt);
+  }
   const [updated] = await database
     .update(skill)
     .set({
@@ -1952,7 +1984,10 @@ export async function createMcpServer(data: {
   isEnabled?: boolean;
   requireApproval?: "always_allow" | "ask_permission" | "write_only";
   toolsCache?: any[];
-  toolOverrides?: Record<string, { enabled: boolean; requireApproval?: string | null }>;
+  toolOverrides?: Record<
+    string,
+    { enabled: boolean; requireApproval?: string | null }
+  >;
   timeoutMs?: number;
   rateLimitPerMin?: number;
 }) {
@@ -1972,7 +2007,7 @@ export async function createMcpServer(data: {
       name: data.name,
       rateLimitPerMin: data.rateLimitPerMin ?? 60,
       requireApproval: data.requireApproval ?? "write_only",
-      timeoutMs: data.timeoutMs ?? 15000,
+      timeoutMs: data.timeoutMs ?? 15_000,
       toolOverrides: (data.toolOverrides as any) ?? {},
       toolsCache: (data.toolsCache as any) ?? [],
       transport: data.transport ?? "sse",
@@ -2005,7 +2040,10 @@ export async function updateMcpServer({
     isEnabled: boolean;
     requireApproval: "always_allow" | "ask_permission" | "write_only";
     toolsCache: any[];
-    toolOverrides: Record<string, { enabled: boolean; requireApproval?: string | null }>;
+    toolOverrides: Record<
+      string,
+      { enabled: boolean; requireApproval?: string | null }
+    >;
     timeoutMs: number;
     rateLimitPerMin: number;
     avgLatencyMs: number;
@@ -2169,18 +2207,28 @@ export async function updateMcpServerStats({
   success: boolean;
 }) {
   const database = await getDb();
-  const [existing] = await database.select().from(mcpServer).where(and(eq(mcpServer.id, id), eq(mcpServer.userId, userId))).limit(1);
-  if (!existing) return null;
+  const [existing] = await database
+    .select()
+    .from(mcpServer)
+    .where(and(eq(mcpServer.id, id), eq(mcpServer.userId, userId)))
+    .limit(1);
+  if (!existing) {
+    return null;
+  }
   const newCount = (existing.callCount ?? 0) + 1;
   const prevAvg = existing.avgLatencyMs ?? 0;
   const newAvg = Math.round((prevAvg * (newCount - 1) + durationMs) / newCount);
-  const [updated] = await database.update(mcpServer).set({
-    avgLatencyMs: newAvg,
-    callCount: newCount,
-    lastCallAt: new Date(),
-    updatedAt: new Date(),
-    uptimeStatus: success ? "online" : "error",
-  }).where(and(eq(mcpServer.id, id), eq(mcpServer.userId, userId))).returning();
+  const [updated] = await database
+    .update(mcpServer)
+    .set({
+      avgLatencyMs: newAvg,
+      callCount: newCount,
+      lastCallAt: new Date(),
+      updatedAt: new Date(),
+      uptimeStatus: success ? "online" : "error",
+    })
+    .where(and(eq(mcpServer.id, id), eq(mcpServer.userId, userId)))
+    .returning();
   return updated ?? null;
 }
 
@@ -2196,9 +2244,19 @@ export async function updateMcpServerSync({
   success: boolean;
 }) {
   const database = await getDb();
-  const data: any = { lastSyncAt: new Date(), updatedAt: new Date(), uptimeStatus: success ? "online" : "error" };
-  if (toolsCache) data.toolsCache = toolsCache as any;
-  const [updated] = await database.update(mcpServer).set(data).where(and(eq(mcpServer.id, id), eq(mcpServer.userId, userId))).returning();
+  const data: any = {
+    lastSyncAt: new Date(),
+    updatedAt: new Date(),
+    uptimeStatus: success ? "online" : "error",
+  };
+  if (toolsCache) {
+    data.toolsCache = toolsCache as any;
+  }
+  const [updated] = await database
+    .update(mcpServer)
+    .set(data)
+    .where(and(eq(mcpServer.id, id), eq(mcpServer.userId, userId)))
+    .returning();
   return updated ?? null;
 }
 
@@ -2234,9 +2292,23 @@ export async function getMcpTemplateById(id: string) {
 // MCP SECRETS (chiffrés) — lib/mcp/encryption
 // ==========================================
 
-export async function getMcpServerSecrets({ serverId, userId }: { serverId: string; userId: string }) {
+export async function getMcpServerSecrets({
+  serverId,
+  userId,
+}: {
+  serverId: string;
+  userId: string;
+}) {
   const db = await dbReady();
-  return db.select().from(mcpServerSecret).where(and(eq(mcpServerSecret.serverId, serverId), eq(mcpServerSecret.userId, userId)));
+  return db
+    .select()
+    .from(mcpServerSecret)
+    .where(
+      and(
+        eq(mcpServerSecret.serverId, serverId),
+        eq(mcpServerSecret.userId, userId)
+      )
+    );
 }
 
 export async function setMcpServerSecrets({
@@ -2246,12 +2318,28 @@ export async function setMcpServerSecrets({
 }: {
   serverId: string;
   userId: string;
-  secrets: Array<{ kind: "env" | "auth" | "header"; key: string; encryptedValue: string }>;
+  secrets: Array<{
+    kind: "env" | "auth" | "header";
+    key: string;
+    encryptedValue: string;
+  }>;
 }) {
   const db = await dbReady();
-  await db.delete(mcpServerSecret).where(and(eq(mcpServerSecret.serverId, serverId), eq(mcpServerSecret.userId, userId)));
-  if (secrets.length === 0) return [];
-  const rows = await db.insert(mcpServerSecret).values(secrets.map((s) => ({ ...s, serverId, userId }))).returning();
+  await db
+    .delete(mcpServerSecret)
+    .where(
+      and(
+        eq(mcpServerSecret.serverId, serverId),
+        eq(mcpServerSecret.userId, userId)
+      )
+    );
+  if (secrets.length === 0) {
+    return [];
+  }
+  const rows = await db
+    .insert(mcpServerSecret)
+    .values(secrets.map((s) => ({ ...s, serverId, userId })))
+    .returning();
   return rows;
 }
 
@@ -2269,12 +2357,29 @@ export async function upsertMcpServerSecret({
   encryptedValue: string;
 }) {
   const db = await dbReady();
-  const existing = await db.select().from(mcpServerSecret).where(and(eq(mcpServerSecret.serverId, serverId), eq(mcpServerSecret.kind, kind), eq(mcpServerSecret.key, key))).limit(1);
+  const existing = await db
+    .select()
+    .from(mcpServerSecret)
+    .where(
+      and(
+        eq(mcpServerSecret.serverId, serverId),
+        eq(mcpServerSecret.kind, kind),
+        eq(mcpServerSecret.key, key)
+      )
+    )
+    .limit(1);
   if (existing.length > 0) {
-    const [updated] = await db.update(mcpServerSecret).set({ encryptedValue }).where(eq(mcpServerSecret.id, existing[0].id)).returning();
+    const [updated] = await db
+      .update(mcpServerSecret)
+      .set({ encryptedValue })
+      .where(eq(mcpServerSecret.id, existing[0].id))
+      .returning();
     return updated;
   }
-  const [created] = await db.insert(mcpServerSecret).values({ encryptedValue, key, kind, serverId, userId }).returning();
+  const [created] = await db
+    .insert(mcpServerSecret)
+    .values({ encryptedValue, key, kind, serverId, userId })
+    .returning();
   return created;
 }
 
@@ -2284,14 +2389,20 @@ export async function upsertMcpServerSecret({
 
 export async function getUserMcpPrefs(userId: string) {
   const db = await dbReady();
-  const [prefs] = await db.select().from(userMcpPrefs).where(eq(userMcpPrefs.userId, userId)).limit(1);
-  if (prefs) return prefs;
+  const [prefs] = await db
+    .select()
+    .from(userMcpPrefs)
+    .where(eq(userMcpPrefs.userId, userId))
+    .limit(1);
+  if (prefs) {
+    return prefs;
+  }
   return {
     allowStdio: true,
     createdAt: new Date(),
     defaultRateLimitPerMin: 60,
     defaultRequireApproval: "write_only" as const,
-    defaultTimeoutMs: 15000,
+    defaultTimeoutMs: 15_000,
     globalKillSwitch: false,
     retentionDays: 30,
     updatedAt: new Date(),
@@ -2311,20 +2422,31 @@ export async function upsertUserMcpPrefs(
   }>
 ) {
   const db = await dbReady();
-  const existing = await db.select().from(userMcpPrefs).where(eq(userMcpPrefs.userId, userId)).limit(1);
+  const existing = await db
+    .select()
+    .from(userMcpPrefs)
+    .where(eq(userMcpPrefs.userId, userId))
+    .limit(1);
   if (existing.length === 0) {
-    const [created] = await db.insert(userMcpPrefs).values({
-      allowStdio: data.allowStdio ?? true,
-      defaultRateLimitPerMin: data.defaultRateLimitPerMin ?? 60,
-      defaultRequireApproval: data.defaultRequireApproval ?? "write_only",
-      defaultTimeoutMs: data.defaultTimeoutMs ?? 15000,
-      globalKillSwitch: data.globalKillSwitch ?? false,
-      retentionDays: data.retentionDays ?? 30,
-      userId,
-    }).returning();
+    const [created] = await db
+      .insert(userMcpPrefs)
+      .values({
+        allowStdio: data.allowStdio ?? true,
+        defaultRateLimitPerMin: data.defaultRateLimitPerMin ?? 60,
+        defaultRequireApproval: data.defaultRequireApproval ?? "write_only",
+        defaultTimeoutMs: data.defaultTimeoutMs ?? 15_000,
+        globalKillSwitch: data.globalKillSwitch ?? false,
+        retentionDays: data.retentionDays ?? 30,
+        userId,
+      })
+      .returning();
     return created;
   }
-  const [updated] = await db.update(userMcpPrefs).set({ ...data, updatedAt: new Date() } as any).where(eq(userMcpPrefs.userId, userId)).returning();
+  const [updated] = await db
+    .update(userMcpPrefs)
+    .set({ ...data, updatedAt: new Date() } as any)
+    .where(eq(userMcpPrefs.userId, userId))
+    .returning();
   return updated;
 }
 
@@ -2343,16 +2465,36 @@ export async function getFilteredMcpLogs({
 }) {
   const db = await dbReady();
   const conditions: any[] = [eq(mcpLog.userId, userId)];
-  if (serverId) conditions.push(eq(mcpLog.serverId, serverId));
-  if (toolName) conditions.push(eq(mcpLog.toolName, toolName));
-  if (actionType) conditions.push(eq(mcpLog.actionType, actionType as any));
-  return db.select().from(mcpLog).where(and(...conditions)).orderBy(desc(mcpLog.createdAt)).limit(Math.min(limit, 200));
+  if (serverId) {
+    conditions.push(eq(mcpLog.serverId, serverId));
+  }
+  if (toolName) {
+    conditions.push(eq(mcpLog.toolName, toolName));
+  }
+  if (actionType) {
+    conditions.push(eq(mcpLog.actionType, actionType as any));
+  }
+  return db
+    .select()
+    .from(mcpLog)
+    .where(and(...conditions))
+    .orderBy(desc(mcpLog.createdAt))
+    .limit(Math.min(limit, 200));
 }
 
-export async function purgeMcpLogs({ userId, olderThanDays }: { userId: string; olderThanDays: number }) {
+export async function purgeMcpLogs({
+  userId,
+  olderThanDays,
+}: {
+  userId: string;
+  olderThanDays: number;
+}) {
   const db = await dbReady();
   const cutoff = new Date(Date.now() - olderThanDays * 24 * 60 * 60 * 1000);
-  const deleted = await db.delete(mcpLog).where(and(eq(mcpLog.userId, userId), sql`${mcpLog.createdAt} < ${cutoff}`)).returning();
+  const deleted = await db
+    .delete(mcpLog)
+    .where(and(eq(mcpLog.userId, userId), sql`${mcpLog.createdAt} < ${cutoff}`))
+    .returning();
   return { deleted: deleted.length };
 }
 
@@ -2368,7 +2510,9 @@ export async function getUserNotificationPrefs(userId: string) {
     .from(userNotificationPrefs)
     .where(eq(userNotificationPrefs.userId, userId))
     .limit(1);
-  if (prefs) return prefs;
+  if (prefs) {
+    return prefs;
+  }
   // default prefs if not exists
   return {
     aiResponse: true,
@@ -2429,7 +2573,12 @@ export async function upsertUserNotificationPrefs(
 
 export async function createNotification(data: {
   userId: string;
-  type: "ai_response" | "project_created" | "mcp_created" | "mcp_access_request" | "news";
+  type:
+    | "ai_response"
+    | "project_created"
+    | "mcp_created"
+    | "mcp_access_request"
+    | "news";
   title: string;
   body?: string | null;
   link?: string | null;
@@ -2439,7 +2588,9 @@ export async function createNotification(data: {
   // check prefs gating
   try {
     const prefs = await getUserNotificationPrefs(data.userId);
-    if (!prefs.enabled) return null;
+    if (!prefs.enabled) {
+      return null;
+    }
     const gate: Record<string, boolean> = {
       ai_response: prefs.aiResponse,
       mcp_access_request: prefs.mcpAccessRequest,
@@ -2447,7 +2598,9 @@ export async function createNotification(data: {
       news: prefs.news,
       project_created: prefs.projectCreated,
     };
-    if (gate[data.type] === false) return null;
+    if (gate[data.type] === false) {
+      return null;
+    }
   } catch {}
   const [created] = await db
     .insert(notification)
@@ -2476,7 +2629,9 @@ export async function getNotificationsByUserId({
   const db = await dbReady();
   const { notification } = await import("./schema");
   const conditions = [eq(notification.userId, userId)];
-  if (unreadOnly) conditions.push(eq(notification.isRead, false));
+  if (unreadOnly) {
+    conditions.push(eq(notification.isRead, false));
+  }
   const rows = await db
     .select()
     .from(notification)
@@ -2493,7 +2648,9 @@ export async function getUnreadNotificationCount(userId: string) {
   const [row] = await db
     .select({ count: count() })
     .from(notification)
-    .where(and(eq(notification.userId, userId), eq(notification.isRead, false)));
+    .where(
+      and(eq(notification.userId, userId), eq(notification.isRead, false))
+    );
   return Number(row?.count ?? 0);
 }
 
@@ -2520,7 +2677,9 @@ export async function markAllNotificationsRead(userId: string) {
   await db
     .update(notification)
     .set({ isRead: true })
-    .where(and(eq(notification.userId, userId), eq(notification.isRead, false)));
+    .where(
+      and(eq(notification.userId, userId), eq(notification.isRead, false))
+    );
   return { success: true };
 }
 
@@ -2546,14 +2705,29 @@ export async function deleteNotification({
 
 export async function getAgentsByUserId({ userId }: { userId: string }) {
   const database = await getDb();
-  return database.select().from(agent).where(eq(agent.userId, userId)).orderBy(desc(agent.updatedAt));
+  return database
+    .select()
+    .from(agent)
+    .where(eq(agent.userId, userId))
+    .orderBy(desc(agent.updatedAt));
 }
 
-export async function getAgentById({ id, userId }: { id: string; userId?: string }) {
+export async function getAgentById({
+  id,
+  userId,
+}: {
+  id: string;
+  userId?: string;
+}) {
   const database = await getDb();
   const conditions = [eq(agent.id, id)];
-  if (userId) conditions.push(eq(agent.userId, userId));
-  const [result] = await database.select().from(agent).where(and(...conditions));
+  if (userId) {
+    conditions.push(eq(agent.userId, userId));
+  }
+  const [result] = await database
+    .select()
+    .from(agent)
+    .where(and(...conditions));
   return result ?? null;
 }
 
@@ -2571,37 +2745,82 @@ export async function createAgent(data: {
   cloudFileUrls?: string[];
 }) {
   const database = await getDb();
-  const [created] = await database.insert(agent).values({
-    cloudFileUrls: (data.cloudFileUrls as any) ?? [],
-    color: data.color ?? "#6366f1",
-    defaultModelId: data.defaultModelId ?? "google/gemini-2.5-flash",
-    description: data.description ?? "",
-    emoji: data.emoji ?? null,
-    icon: data.icon ?? "sparkles",
-    instructions: data.instructions,
-    mcpServerIds: (data.mcpServerIds as any) ?? [],
-    name: data.name,
-    skillIds: (data.skillIds as any) ?? [],
-    userId: data.userId,
-  }).returning();
+  const [created] = await database
+    .insert(agent)
+    .values({
+      cloudFileUrls: (data.cloudFileUrls as any) ?? [],
+      color: data.color ?? "#6366f1",
+      defaultModelId: data.defaultModelId ?? "google/gemini-2.5-flash",
+      description: data.description ?? "",
+      emoji: data.emoji ?? null,
+      icon: data.icon ?? "sparkles",
+      instructions: data.instructions,
+      mcpServerIds: (data.mcpServerIds as any) ?? [],
+      name: data.name,
+      skillIds: (data.skillIds as any) ?? [],
+      userId: data.userId,
+    })
+    .returning();
   return created;
 }
 
-export async function updateAgent({ id, userId, data }: { id: string; userId: string; data: Partial<{ name: string; description: string; instructions: string; icon: string; emoji: string | null; color: string; defaultModelId: string; skillIds: string[]; mcpServerIds: string[]; cloudFileUrls: string[]; isPublic: boolean; shareId: string | null; }> }) {
+export async function updateAgent({
+  id,
+  userId,
+  data,
+}: {
+  id: string;
+  userId: string;
+  data: Partial<{
+    name: string;
+    description: string;
+    instructions: string;
+    icon: string;
+    emoji: string | null;
+    color: string;
+    defaultModelId: string;
+    skillIds: string[];
+    mcpServerIds: string[];
+    cloudFileUrls: string[];
+    isPublic: boolean;
+    shareId: string | null;
+  }>;
+}) {
   const database = await getDb();
-  const [updated] = await database.update(agent).set({ ...data as any, updatedAt: new Date() }).where(and(eq(agent.id, id), eq(agent.userId, userId))).returning();
+  const [updated] = await database
+    .update(agent)
+    .set({ ...(data as any), updatedAt: new Date() })
+    .where(and(eq(agent.id, id), eq(agent.userId, userId)))
+    .returning();
   return updated ?? null;
 }
 
-export async function deleteAgent({ id, userId }: { id: string; userId: string }) {
+export async function deleteAgent({
+  id,
+  userId,
+}: {
+  id: string;
+  userId: string;
+}) {
   const database = await getDb();
-  const [deleted] = await database.delete(agent).where(and(eq(agent.id, id), eq(agent.userId, userId))).returning();
+  const [deleted] = await database
+    .delete(agent)
+    .where(and(eq(agent.id, id), eq(agent.userId, userId)))
+    .returning();
   return deleted ?? null;
 }
 
-export async function duplicateAgent({ id, userId }: { id: string; userId: string }) {
+export async function duplicateAgent({
+  id,
+  userId,
+}: {
+  id: string;
+  userId: string;
+}) {
   const original = await getAgentById({ id, userId });
-  if (!original) return null;
+  if (!original) {
+    return null;
+  }
   return createAgent({
     cloudFileUrls: (original.cloudFileUrls as any) ?? [],
     color: original.color ?? "#6366f1",
@@ -2619,7 +2838,11 @@ export async function duplicateAgent({ id, userId }: { id: string; userId: strin
 
 export async function getAgentTemplates() {
   const database = await getDb();
-  return database.select().from(agentTemplate).where(eq(agentTemplate.isPublic, true)).orderBy(asc(agentTemplate.name));
+  return database
+    .select()
+    .from(agentTemplate)
+    .where(eq(agentTemplate.isPublic, true))
+    .orderBy(asc(agentTemplate.name));
 }
 
 export async function broadcastNewsNotification(data: {
@@ -2639,7 +2862,9 @@ export async function broadcastNewsNotification(data: {
         eq(userNotificationPrefs.news, true)
       )
     );
-  if (eligible.length === 0) return { sent: 0 };
+  if (eligible.length === 0) {
+    return { sent: 0 };
+  }
   const values = eligible.map((e) => ({
     body: data.body ?? null,
     link: data.link ?? null,

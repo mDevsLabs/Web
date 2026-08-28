@@ -25,7 +25,6 @@ import { useCallback, useState } from "react";
 import { toast } from "sonner";
 import { useSWRConfig } from "swr";
 import { unstable_serialize } from "swr/infinite";
-import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import { ProjectIcon } from "@/components/chat/project-icon";
 import { SearchDialog } from "@/components/chat/search-dialog";
 import {
@@ -33,6 +32,7 @@ import {
   SidebarHistory,
 } from "@/components/chat/sidebar-history";
 import { SidebarUserNav } from "@/components/chat/sidebar-user-nav";
+import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import {
   Sidebar,
   SidebarContent,
@@ -169,8 +169,8 @@ function LockedNavItem({
   href: string;
   icon: React.ComponentType<{ className?: string }>;
   label: string;
-  lockedFeature: "skills" | "mcp";
-  onLockedClick: (feature: "skills" | "mcp") => void;
+  lockedFeature: "skills" | "mcp" | "agents";
+  onLockedClick: (feature: "skills" | "mcp" | "agents") => void;
   tooltip: string;
 }) {
   const pathname = usePathname();
@@ -187,7 +187,8 @@ function LockedNavItem({
         toast.info(
           `« ${label} » est réservé aux forfaits Plus, Pro et Max. Mettez à niveau votre compte pour y accéder.`,
           {
-            description: "Bouton d'upgrade disponible dans la fenêtre qui s'ouvre.",
+            description:
+              "Bouton d'upgrade disponible dans la fenêtre qui s'ouvre.",
             duration: 5000,
           }
         );
@@ -201,8 +202,8 @@ function LockedNavItem({
   return (
     <SidebarMenuItem>
       <SidebarMenuButton
-        asChild
         aria-disabled={locked}
+        asChild
         className={cn(
           "h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground",
           isActive && "bg-sidebar-accent text-sidebar-foreground font-medium",
@@ -219,9 +220,7 @@ function LockedNavItem({
         >
           <Icon className={cn("size-4", isActive && "text-primary")} />
           <span>{label}</span>
-          {locked && (
-            <LockIcon className="ml-auto size-3 text-amber-500" />
-          )}
+          {locked && <LockIcon className="ml-auto size-3 text-amber-500" />}
         </Link>
       </SidebarMenuButton>
     </SidebarMenuItem>
@@ -234,7 +233,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
   const { mutate } = useSWRConfig();
   const [showDeleteAllDialog, setShowDeleteAllDialog] = useState(false);
   const [upgradeFeature, setUpgradeFeature] = useState<
-    "skills" | "mcp" | null
+    "skills" | "mcp" | "agents" | null
   >(null);
 
   const closeMobile = useCallback(() => {
