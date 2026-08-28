@@ -34,6 +34,11 @@ export type McpToolDefinition = {
   inputSchema?: McpToolInputSchema;
 };
 
+export type McpToolOverride = {
+  enabled?: boolean;
+  requireApproval?: McpApprovalPolicy | null; // null = inherit from server
+};
+
 export type McpServerConfig = {
   id?: string;
   name: string;
@@ -57,6 +62,14 @@ export type McpServerConfig = {
   isEnabled?: boolean;
   requireApproval?: McpApprovalPolicy;
   toolsCache?: McpToolDefinition[];
+  toolOverrides?: Record<string, McpToolOverride>;
+  timeoutMs?: number;
+  rateLimitPerMin?: number;
+  avgLatencyMs?: number;
+  callCount?: number;
+  uptimeStatus?: string;
+  lastSyncAt?: string | Date | null;
+  lastCallAt?: string | Date | null;
 };
 
 export type McpJsonRpcRequest = {

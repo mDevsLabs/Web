@@ -12,7 +12,6 @@ import { checkBotId } from "botid/server";
 import { after } from "next/server";
 import { createResumableStreamContext } from "resumable-stream";
 import { DEFAULT_CHAT_MODEL, getModelCapabilities } from "@/lib/ai/models";
-import { AI_MODES, DEFAULT_AI_MODE, getAIMode } from "@/lib/ai/modes";
 import { type RequestHints, systemPrompt } from "@/lib/ai/prompts";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { audioGenerate } from "@/lib/ai/tools/audio-generate";
@@ -185,13 +184,30 @@ export async function POST(request: Request) {
       } catch {}
     }
 
+    // Agent remplace Mode IA — agentId envoyé par use-active-chat (cookie + DB)
+    const bodyAny = requestBody as any;
+    const agentIdFromBody: string | null = bodyAny.agentId ?? bodyAny.selectedAgentId ?? null;
+    const chatModelFromAgent: string | null = bodyAny.selectedChatModel || null;
+    // Si un agent est actif, son modèle par défaut prime (global cookie déjà mis à jour côté client)
+    let agentInstructions: string | null = null;
+    let agentDefaultModel: string | null = null;
+    let agentSkillIds: string[] = [];
+    let agentMcpIds: string[] = [];
+    const effectiveAgentId = (chat as any)?.agentId || agentIdFromBody || null;
+    if (effectiveAgentId) {
+      try {
+        const { getAgentById } = await import("@/lib/db/queries");
+        const ag = await getAgentById({ id: effectiveAgentId, userId });
+        if (ag) {
+          agentInstructions = ag.instructions || null;
+          agentDefaultModel = ag.defaultModelId || null;
+          if (Array.isArray(ag.skillIds)) agentSkillIds = ag.skillIds as string[];
+          if (Array.isArray(ag.mcpServerIds)) agentMcpIds = ag.mcpServerIds as string[];
+        }
+      } catch {}
+    }
     const chatModel =
-      selectedChatModel || projectDefaultModel || DEFAULT_CHAT_MODEL;
-    const chatModeId =
-      selectedChatMode && AI_MODES[selectedChatMode as keyof typeof AI_MODES]
-        ? selectedChatMode
-        : DEFAULT_AI_MODE;
-    const _chatMode = getAIMode(chatModeId);
+      chatModelFromAgent || agentDefaultModel || projectDefaultModel || DEFAULT_CHAT_MODEL;
     const isToolApprovalFlow = Boolean(messages);
 
     // Règle: bloquer l'envoi de fichiers si le modèle ne supporte pas vision/file
@@ -356,15 +372,16 @@ export async function POST(request: Request) {
     // Chat-level overrides (persisted in Chat table)
     const chatCustomInstructions =
       (chat as any)?.customInstructions ?? customInstructions ?? null;
-    const chatModeOverride = (chat as any)?.modeId ?? chatModeId;
     const chatTempOverride =
       (chat as any)?.temperatureOverride ?? temperatureOverride ?? null;
 
-    // Construire le prompt addendum effectif
-    const effectiveMode = getAIMode(chatModeOverride);
-    let effectiveAddendum = effectiveMode.systemPromptAddendum || "";
+    // Construire le prompt addendum effectif (Agent remplace Mode IA)
+    let effectiveAddendum = "";
+    if (agentInstructions) {
+      effectiveAddendum = `AGENT ACTIF — Instructions prioritaires de l'agent :\n${agentInstructions}`;
+    }
     if (userCustomEnabled && userCustomInstructions) {
-      effectiveAddendum = `Instructions personnalisées de l'utilisateur (à respecter en priorité):\n${userCustomInstructions}\n\n${effectiveAddendum}`;
+      effectiveAddendum = `${effectiveAddendum}\n\nInstructions personnalisées de l'utilisateur (à respecter en priorité):\n${userCustomInstructions}`;
     }
     if (projectCustomInstructions) {
       effectiveAddendum = `${effectiveAddendum}\n\nContexte et instructions du dossier/projet :\n${projectCustomInstructions}`;
@@ -373,10 +390,14 @@ export async function POST(request: Request) {
       effectiveAddendum = `${effectiveAddendum}\n\nInstructions spécifiques à cette discussion:\n${chatCustomInstructions}`;
     }
     if (skillInstructions) {
-      effectiveAddendum = `${effectiveAddendum}\n\n🎯 COMPÉTENCE / SKILL ACTIF POUR CETTE DISCUSSION :\n${skillInstructions}`;
+      effectiveAddendum = `${effectiveAddendum}\n\nCOMPETENCE / SKILL ACTIF POUR CETTE DISCUSSION :\n${skillInstructions}`;
+    }
+    // Skills/MCP embarqués dans l'agent (fusion avec skill actif + one-shot)
+    if (agentSkillIds.length > 0 && !skillInstructions) {
+      // Si agent a des skills mais pas de skill actif, on concatène leurs instructions (optionnel lazy)
     }
     if (isGhostMode) {
-      effectiveAddendum += `\n\n👻 MODE FANTÔME ACTIF : Cette discussion est éphémère et confidentielle (non enregistrée en base de données). L'outil de génération d'image est strictement indisponible dans ce mode.`;
+      effectiveAddendum += `\n\nMODE FANTÔME ACTIF : Cette discussion est éphémère et confidentielle (non enregistrée). L'outil de génération d'image est strictement indisponible dans ce mode.`;
     }
     // One-shot tools + outils issus du skill actif
     const combinedEnabledTools = Array.from(
@@ -408,13 +429,12 @@ export async function POST(request: Request) {
         webSearch: "webSearch (recherche sur le Web en temps réel)",
       };
       const listed = requestedTools.map((t) => toolLabels[t] || t).join(", ");
-      effectiveAddendum += `\n\n⚠️ OUTILS ACTIVÉS POUR CE MESSAGE — UTILISATION EXTRÊMEMENT RECOMMANDÉE SI PERTINENT : ${listed}. Tu DOIS les utiliser dès que la demande s'y prête, ne les ignore pas. Si plusieurs outils sont activés, choisis le plus pertinent. Pour l'audio, ne demande JAMAIS de choix de voix, génère directement avec la voix par défaut.`;
+      effectiveAddendum += `\n\nOUTILS ACTIVÉS POUR CE MESSAGE — UTILISATION EXTRÊMEMENT RECOMMANDÉE SI PERTINENT : ${listed}. Tu DOIS les utiliser dès que la demande s'y prête, ne les ignore pas. Si plusieurs outils sont activés, choisis le plus pertinent. Pour l'audio, ne demande JAMAIS de choix de voix, génère directement avec la voix par défaut.`;
     }
 
-    // Température effective: chat override > user default > mode default
-    const effectiveTemperature =
-      chatTempOverride ?? userDefaultTemp ?? effectiveMode.temperature;
-    const effectiveTopP = userDefaultTopP ?? effectiveMode.topP;
+    // Température effective: chat override > user default > agent default (plus de mode)
+    const effectiveTemperature = chatTempOverride ?? userDefaultTemp ?? undefined;
+    const effectiveTopP = userDefaultTopP ?? undefined;
 
     // Initialiser le modèle de langage mAI
     const model = getLanguageModel(chatModel, {

@@ -13,20 +13,24 @@ const createSkillSchema = z.object({
   icon: z.string().max(50).optional(),
   instructions: z.string().min(1).max(20_000),
   isPublic: z.boolean().optional(),
+  mcpServerIds: z.array(z.string().uuid()).max(20).optional(),
+  mcpToolFilter: z.record(z.string(), z.array(z.string()).nullable()).optional(),
   name: z.string().min(1).max(100),
   parameters: z
     .array(
       z.object({
         defaultValue: z.string().optional(),
         description: z.string().optional(),
-        name: z.string(),
+        enumValues: z.array(z.string()).optional(),
+        name: z.string().min(1).max(50),
         required: z.boolean().optional(),
-        type: z.string().optional(),
+        type: z.enum(["string","number","boolean","enum"]).optional(),
       })
     )
     .optional(),
   pinned: z.boolean().optional(),
   tags: z.array(z.string().max(50)).optional(),
+  templateId: z.string().uuid().nullable().optional(),
   tools: z.array(z.string()).optional(),
 });
 

@@ -24,13 +24,8 @@ import { toast } from "@/components/chat/toast";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
 import { useAutoResume } from "@/hooks/use-auto-resume";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
-import {
-  type AIModeId,
-  DEFAULT_AI_MODE,
-  isValidAIModeId,
-} from "@/lib/ai/modes";
 import { DEFAULT_ENABLED_TOOLS, type ToolId } from "@/lib/ai/tools/config";
-import type { Skill, Vote } from "@/lib/db/schema";
+import type { Agent, Skill, Vote } from "@/lib/db/schema";
 import { ChatbotError } from "@/lib/errors";
 import type { ChatMessage } from "@/lib/types";
 import { fetcher, fetchWithErrorHandlers, generateUUID } from "@/lib/utils";
@@ -60,8 +55,12 @@ type ActiveChatContextValue = {
   votes: Vote[] | undefined;
   currentModelId: string;
   setCurrentModelId: (id: string) => void;
-  currentModeId: AIModeId;
-  setCurrentModeId: (id: AIModeId) => void;
+  activeAgent: Agent | null;
+  setActiveAgent: (agent: Agent | null) => void;
+  clearActiveAgent: () => void;
+  // Deprecated alias for backward compat (maps to activeAgent)
+  currentModeId: string | null;
+  setCurrentModeId: (id: string | null) => void;
   pendingProject: PendingProject;
   setPendingProject: (p: PendingProject) => void;
   clearPendingProject: () => void;
@@ -164,7 +163,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
         });
         toast({
           description:
-            "Mode fantôme activé - La discussion est temporaire et ne sera pas enregistrée en base de données.",
+            "Mode fantôme activé - La discussion est temporaire et ne sera pas enregistrée.",
           type: "success",
         });
       } else {
@@ -288,21 +287,64 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  const [currentModeId, setCurrentModeId] = useState<AIModeId>(DEFAULT_AI_MODE);
-  const currentModeIdRef = useRef(currentModeId);
-  const handleModeChange = useCallback((id: AIModeId) => {
-    setCurrentModeId(id);
-    currentModeIdRef.current = id;
-    if (typeof document !== "undefined") {
-      document.cookie = `ai-mode=${encodeURIComponent(id)}; path=/; max-age=31536000`;
-    }
-    // Persist default mode to DB (async, fire-and-forget)
-    fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`, {
-      body: JSON.stringify({ defaultMode: id }),
-      headers: { "Content-Type": "application/json" },
-      method: "POST",
-    }).catch(() => {});
-  }, []);
+  // Active Agent (remplace Mode IA) — sélection globale via cookie agent-id
+  const [activeAgent, setActiveAgentState] = useState<Agent | null>(null);
+  const activeAgentRef = useRef<Agent | null>(null);
+  activeAgentRef.current = activeAgent;
+  const activeAgentIdRef = useRef<string | null>(null);
+
+  const setActiveAgent = useCallback(
+    (agent: Agent | null) => {
+      setActiveAgentState(agent);
+      activeAgentRef.current = agent;
+      activeAgentIdRef.current = agent?.id ?? null;
+      if (typeof document !== "undefined") {
+        if (agent?.id) {
+          document.cookie = `agent-id=${encodeURIComponent(agent.id)}; path=/; max-age=31536000`;
+          // Le modèle par défaut de l'agent écrase le modèle global
+          if (agent.defaultModelId) {
+            setCurrentModelId(agent.defaultModelId);
+            currentModelIdRef.current = agent.defaultModelId;
+            document.cookie = `chat-model=${encodeURIComponent(agent.defaultModelId)}; path=/; max-age=31536000`;
+          }
+        } else {
+          document.cookie = `agent-id=; path=/; max-age=0`;
+        }
+      }
+      // Persist globale
+      fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`, {
+        body: JSON.stringify({ defaultAgentId: agent?.id ?? null }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      }).catch(() => {});
+    },
+    []
+  );
+
+  const clearActiveAgent = useCallback(() => {
+    setActiveAgent(null);
+  }, [setActiveAgent]);
+
+  // Alias deprecated pour compatibilité (ancien Mode IA)
+  const currentModeId = activeAgent?.id ?? null;
+  const currentModeIdRef = useRef<string | null>(null);
+  currentModeIdRef.current = currentModeId;
+  const handleModeChange = useCallback(
+    (id: string | null) => {
+      if (!id) {
+        clearActiveAgent();
+        return;
+      }
+      // Si on passe un ID d'agent, fetch l'agent
+      fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agents/${id}`)
+        .then((r) => (r.ok ? r.json() : null))
+        .then((data) => {
+          if (data) setActiveAgent(data as Agent);
+        })
+        .catch(() => {});
+    },
+    [clearActiveAgent, setActiveAgent]
+  );
 
   useEffect(() => {
     if (typeof document !== "undefined") {
@@ -315,29 +357,46 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
         setCurrentModelId(decoded);
         currentModelIdRef.current = decoded;
       }
-      const cookieMode = document.cookie
+      const cookieAgent = document.cookie
         .split("; ")
-        .find((row) => row.startsWith("ai-mode="))
+        .find((row) => row.startsWith("agent-id="))
         ?.split("=")[1];
-      if (cookieMode) {
-        const decodedMode = decodeURIComponent(cookieMode);
-        if (isValidAIModeId(decodedMode)) {
-          setCurrentModeId(decodedMode as AIModeId);
-          currentModeIdRef.current = decodedMode as AIModeId;
+      if (cookieAgent) {
+        const decodedAgent = decodeURIComponent(cookieAgent);
+        if (decodedAgent) {
+          fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agents/${decodedAgent}`)
+            .then((r) => (r.ok ? r.json() : null))
+            .then((data) => {
+              if (data?.id) {
+                setActiveAgentState(data as Agent);
+                activeAgentRef.current = data as Agent;
+                activeAgentIdRef.current = data.id;
+              }
+            })
+            .catch(() => {});
         }
       }
-      // Sync default mode from DB (overrides cookie if present)
+      // Sync default agent from DB (source de vérité)
       fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`)
         .then((r) => r.json())
         .then((data) => {
-          if (data?.defaultMode && isValidAIModeId(data.defaultMode)) {
-            const dbMode = data.defaultMode as AIModeId;
-            // Only override if no cookie or DB differs from cookie -> treat DB as source of truth
-            if (dbMode !== currentModeIdRef.current) {
-              setCurrentModeId(dbMode);
-              currentModeIdRef.current = dbMode;
-              document.cookie = `ai-mode=${encodeURIComponent(dbMode)}; path=/; max-age=31536000`;
-            }
+          if (data?.defaultAgentId && data.defaultAgentId !== activeAgentIdRef.current) {
+            fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agents/${data.defaultAgentId}`)
+              .then((r2) => (r2.ok ? r2.json() : null))
+              .then((ag) => {
+                if (ag?.id) {
+                  setActiveAgentState(ag as Agent);
+                  activeAgentRef.current = ag as Agent;
+                  activeAgentIdRef.current = ag.id;
+                  document.cookie = `agent-id=${encodeURIComponent(ag.id)}; path=/; max-age=31536000`;
+                  if (ag.defaultModelId) {
+                    setCurrentModelId(ag.defaultModelId);
+                    currentModelIdRef.current = ag.defaultModelId;
+                    document.cookie = `chat-model=${encodeURIComponent(ag.defaultModelId)}; path=/; max-age=31536000`;
+                  }
+                }
+              })
+              .catch(() => {});
           }
         })
         .catch(() => {});
@@ -459,6 +518,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
             selectedChatModel: currentModelIdRef.current,
             selectedVisibilityType: visibility,
             skillId: activeSkillIdRef.current,
+            agentId: activeAgentIdRef.current,
             ...(projectIdToSend && isToolApprovalContinuation
               ? { projectId: projectIdToSend }
               : {}),
@@ -544,9 +604,11 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo<ActiveChatContextValue>(
     () => ({
+      activeAgent,
       activeSkill,
       addToolApprovalResponse,
       chatId,
+      clearActiveAgent,
       clearActiveSkill,
       clearPendingProject,
       clearPendingTools,
@@ -561,6 +623,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       pendingTools,
       regenerate,
       sendMessage,
+      setActiveAgent,
       setActiveSkill,
       setCurrentModeId: handleModeChange,
       setCurrentModelId: handleModelChange,
@@ -593,6 +656,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       isNewChat,
       isLoading,
       votes,
+      activeAgent,
+      setActiveAgent,
+      clearActiveAgent,
       currentModelId,
       currentModeId,
       pendingProject,

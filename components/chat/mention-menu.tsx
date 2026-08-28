@@ -1,19 +1,19 @@
 "use client";
 
-import { CpuIcon, PlusIcon, SparklesIcon } from "lucide-react";
+import { BotIcon, CpuIcon, PlusIcon, SparklesIcon } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import type { ProjectLite } from "@/hooks/use-projects";
-import { AI_MODES, type AIModeId } from "@/lib/ai/modes";
-import type { McpServer, Skill } from "@/lib/db/schema";
+import type { Agent, McpServer, Skill } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
+import { AgentIcon } from "@/components/agents/agent-icon";
 import { ProjectIcon } from "./project-icon";
 
 type MentionProject = ProjectLite & { description?: string };
 
 export type MentionSelectPayload =
   | { type: "project"; project: MentionProject }
-  | { type: "mode"; modeId: AIModeId }
+  | { type: "agent"; agent: Agent }
   | { type: "skill"; skill: Skill }
   | { type: "mcp"; server: McpServer };
 
@@ -22,24 +22,26 @@ type MentionMenuProps = {
   projects: MentionProject[];
   skills?: Skill[];
   mcpServers?: McpServer[];
+  agents?: Agent[];
   isLoadingProjects?: boolean;
   onSelect: (payload: MentionSelectPayload) => void;
   onClose: () => void;
   selectedIndex: number;
 };
 
-// Flat item list for keyboard nav: skills then mcp then projects then modes
+// Flat item list for keyboard nav: skills then mcp then projects then agents
 export type FlatMentionItem =
   | { kind: "skill"; id: string; label: string; skill: Skill }
   | { kind: "mcp"; id: string; label: string; server: McpServer }
   | { kind: "project"; id: string; label: string; project: MentionProject }
-  | { kind: "mode"; id: AIModeId; label: string };
+  | { kind: "agent"; id: string; label: string; agent: Agent };
 
 function buildFlatList(
   query: string,
   projects: MentionProject[],
   skills: Skill[] = [],
-  mcpServers: McpServer[] = []
+  mcpServers: McpServer[] = [],
+  agents: Agent[] = []
 ): FlatMentionItem[] {
   const q = query.toLowerCase().trim();
 
@@ -68,16 +70,14 @@ function buildFlatList(
       )
     : projects;
 
-  const modeEntries = Object.values(AI_MODES) as (typeof AI_MODES)[AIModeId][];
-  const filteredModes = q
-    ? modeEntries.filter(
-        (mo) =>
-          mo.label.toLowerCase().includes(q) ||
-          mo.id.toLowerCase().includes(q) ||
-          mo.description.toLowerCase().includes(q) ||
-          mo.shortLabel.toLowerCase().includes(q)
+  const filteredAgents = q
+    ? agents.filter(
+        (a) =>
+          a.name.toLowerCase().includes(q) ||
+          (a.description ?? "").toLowerCase().includes(q) ||
+          (a.instructions ?? "").toLowerCase().includes(q)
       )
-    : modeEntries;
+    : agents;
 
   const skillItems: FlatMentionItem[] = filteredSkills.map((s) => ({
     id: s.id,
@@ -100,22 +100,24 @@ function buildFlatList(
     project: p,
   }));
 
-  const modeItems: FlatMentionItem[] = filteredModes.map((mo) => ({
-    id: mo.id as AIModeId,
-    kind: "mode" as const,
-    label: mo.label,
+  const agentItems: FlatMentionItem[] = filteredAgents.map((a) => ({
+    agent: a,
+    id: a.id,
+    kind: "agent" as const,
+    label: a.name,
   }));
 
-  return [...skillItems, ...mcpItems, ...projectItems, ...modeItems];
+  return [...skillItems, ...mcpItems, ...projectItems, ...agentItems];
 }
 
 export function getFilteredMentionItems(
   query: string,
   projects: MentionProject[],
   skills: Skill[] = [],
-  mcpServers: McpServer[] = []
+  mcpServers: McpServer[] = [],
+  agents: Agent[] = []
 ): FlatMentionItem[] {
-  return buildFlatList(query, projects, skills, mcpServers);
+  return buildFlatList(query, projects, skills, mcpServers, agents);
 }
 
 function MentionItem({
@@ -135,7 +137,7 @@ function MentionItem({
     } else if (item.kind === "project") {
       onSelect({ project: item.project, type: "project" });
     } else {
-      onSelect({ modeId: item.id, type: "mode" });
+      onSelect({ agent: item.agent, type: "agent" });
     }
   }, [item, onSelect]);
 
@@ -249,8 +251,7 @@ function MentionItem({
     );
   }
 
-  const mode = AI_MODES[item.id];
-  const Icon = mode.icon;
+  // Agent
   return (
     <button
       className={cn(
@@ -262,15 +263,25 @@ function MentionItem({
       onMouseDown={handleMouseDown}
       type="button"
     >
-      <div className="flex size-6 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
-        <Icon className="size-3.5" />
+      <div
+        className="flex size-6 shrink-0 items-center justify-center rounded-md text-white text-xs"
+        style={{ backgroundColor: (item as any).agent.color || "#6366f1" }}
+      >
+        <AgentIcon emoji={(item as any).agent.emoji} icon={(item as any).agent.icon} size={14} variant="plain" />
       </div>
-      <span className="text-[13px] font-medium text-foreground">
-        @{mode.label}
-      </span>
-      <span className="text-[11px] text-muted-foreground/60 truncate ml-1">
-        {mode.description}
-      </span>
+      <div className="flex flex-col min-w-0">
+        <span className="text-[13px] font-medium text-foreground truncate flex items-center gap-1.5">
+          @{item.label}
+          <span className="text-[10px] bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-semibold px-1.5 py-0.2 rounded flex items-center gap-1">
+            <BotIcon className="size-3" /> Agent
+          </span>
+        </span>
+        {(item as any).agent.description && (
+          <span className="text-[11px] text-muted-foreground/70 truncate">
+            {(item as any).agent.description}
+          </span>
+        )}
+      </div>
     </button>
   );
 }
@@ -280,6 +291,7 @@ export function MentionMenu({
   projects,
   skills = [],
   mcpServers = [],
+  agents = [],
   isLoadingProjects,
   onSelect,
   onClose: _onClose,
@@ -288,14 +300,14 @@ export function MentionMenu({
   const menuRef = useRef<HTMLDivElement>(null);
 
   const flat = useMemo(
-    () => buildFlatList(query, projects, skills, mcpServers),
-    [query, projects, skills, mcpServers]
+    () => buildFlatList(query, projects, skills, mcpServers, agents),
+    [query, projects, skills, mcpServers, agents]
   );
 
   const skillItems = flat.filter((i) => i.kind === "skill");
   const mcpItems = flat.filter((i) => i.kind === "mcp");
   const projectItems = flat.filter((i) => i.kind === "project");
-  const modeItems = flat.filter((i) => i.kind === "mode");
+  const agentItems = flat.filter((i) => i.kind === "agent");
 
   useEffect(() => {
     const selected = menuRef.current?.querySelector("[data-selected='true']");
@@ -399,27 +411,34 @@ export function MentionMenu({
           })
         )}
 
-        {/* Section Modes */}
-        <div className="px-4 py-2 mt-1 bg-muted/40 border-t border-b border-border/40 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-          Modes IA
-        </div>
-        {modeItems.length === 0 ? (
-          <div className="px-4 py-2.5 text-[12px] text-muted-foreground/60">
-            Aucun mode correspondant
-          </div>
-        ) : (
-          modeItems.map((item) => {
-            const flatIndex = flat.indexOf(item);
-            return (
-              <MentionItem
-                isSelected={flatIndex === selectedIndex}
-                item={item}
-                key={`m-${item.id}`}
-                onSelect={onSelect}
-              />
-            );
-          })
-        )}
+        {/* Section Agents */}
+        {agentItems.length > 0 || query.trim().length === 0 ? (
+          <>
+            <div className="px-4 py-2 mt-1 bg-muted/40 border-t border-b border-border/40 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+              <BotIcon className="size-3.5" /> Agents
+            </div>
+            {agentItems.length === 0 ? (
+              <div className="px-4 py-2.5 text-[12px] text-muted-foreground/60 flex flex-col gap-1">
+                <span>Aucun agent correspondant</span>
+                <Link href="/agents" className="text-primary hover:underline text-xs" onClick={() => _onClose()}>
+                  Créer un agent →
+                </Link>
+              </div>
+            ) : (
+              agentItems.map((item) => {
+                const flatIndex = flat.indexOf(item);
+                return (
+                  <MentionItem
+                    isSelected={flatIndex === selectedIndex}
+                    item={item}
+                    key={`ag-${item.id}`}
+                    onSelect={onSelect}
+                  />
+                );
+              })
+            )}
+          </>
+        ) : null}
       </div>
     </div>
   );

@@ -3,8 +3,7 @@ name: 🚀 Deploy to Vercel
 on:
   push:
     branches:
-      - main
-      - canary
+      - '**'
   pull_request:
     types: [opened, synchronize, reopened]
   workflow_dispatch:

@@ -2,7 +2,12 @@
 
 import {
   BellIcon,
+  Bot,
   CheckCheckIcon,
+  Folder,
+  Lock,
+  Megaphone,
+  Puzzle,
   TrashIcon,
   XIcon,
 } from "lucide-react";
@@ -35,13 +40,22 @@ function formatRelative(dateStr: string) {
   }
 }
 
-const typeEmoji: Record<string, string> = {
-  ai_response: "🤖",
-  mcp_access_request: "🔐",
-  mcp_created: "🧩",
-  news: "📢",
-  project_created: "📁",
-};
+function NotificationIcon({ type }: { type: string }) {
+  switch (type) {
+    case "ai_response":
+      return <Bot className="size-4" />;
+    case "mcp_access_request":
+      return <Lock className="size-4" />;
+    case "mcp_created":
+      return <Puzzle className="size-4" />;
+    case "news":
+      return <Megaphone className="size-4" />;
+    case "project_created":
+      return <Folder className="size-4" />;
+    default:
+      return <BellIcon className="size-4" />;
+  }
+}
 
 export function NotificationBell() {
   const { data, mutate, isLoading } = useNotifications(20);
@@ -233,7 +247,7 @@ export function NotificationBell() {
                   )}
                 >
                   <div className="text-base leading-none mt-0.5 shrink-0">
-                    {typeEmoji[n.type] ?? "🔔"}
+                    <NotificationIcon type={n.type} />
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-start justify-between gap-2">

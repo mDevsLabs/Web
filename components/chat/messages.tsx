@@ -152,7 +152,7 @@ function PureMessages({
             <SearchIcon className="absolute left-2.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
             <input
               autoFocus
-              className="w-full h-8 rounded-xl border border-border/60 bg-muted/30 pl-8 pr-3 text-sm outline-none focus:ring-2 focus:ring-primary/20"
+              className="w-full h-8 rounded-xl border border-border/60 bg-muted/30 pl-8 pr-3 text-[16px] md:text-sm outline-none focus:ring-2 focus:ring-primary/20"
               placeholder="Rechercher dans la conversation..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}

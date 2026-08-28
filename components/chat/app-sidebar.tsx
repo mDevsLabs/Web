@@ -3,6 +3,7 @@
 import {
   ArchiveIcon,
   ArrowRightIcon,
+  BotIcon,
   CloudIcon,
   CpuIcon,
   FolderKanbanIcon,
@@ -443,6 +444,16 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                   lockedFeature="mcp"
                   onLockedClick={setUpgradeFeature}
                   tooltip="Model Context Protocol"
+                />
+
+                <LockedNavItem
+                  closeMobile={closeMobile}
+                  href="/agents"
+                  icon={BotIcon}
+                  label="Agents"
+                  lockedFeature="agents"
+                  onLockedClick={setUpgradeFeature}
+                  tooltip="Agents IA — styles personnalisés"
                 />
 
                 <SidebarMenuItem>

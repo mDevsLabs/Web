@@ -315,7 +315,7 @@ export function PureMessageActions({
 
   if (message.role === "user") {
     return (
-      <Actions className="-mr-0.5 justify-end opacity-0 transition-opacity duration-150 group-hover/message:opacity-100">
+      <Actions className="-mr-0.5 justify-end opacity-100 md:opacity-0 md:transition-opacity md:duration-150 md:group-hover/message:opacity-100">
         <div className="flex items-center gap-0.5">
           {onEdit ? (
             <Action
@@ -383,7 +383,7 @@ export function PureMessageActions({
   }
 
   return (
-    <Actions className="-ml-0.5 opacity-0 transition-opacity duration-150 group-hover/message:opacity-100">
+    <Actions className="-ml-0.5 opacity-100 md:opacity-0 md:transition-opacity md:duration-150 md:group-hover/message:opacity-100">
       <Action
         className="text-muted-foreground/50 hover:text-foreground"
         onClick={handleCopy}

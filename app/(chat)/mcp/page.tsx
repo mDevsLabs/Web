@@ -1,3 +1,4 @@
+import { Star } from "lucide-react";
 import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { isPaidTier } from "@/lib/auth/plan";
@@ -33,7 +34,7 @@ export default async function McpPage() {
 
         <main className="flex-1 flex flex-col items-center justify-center px-4 py-12 max-w-2xl mx-auto text-center gap-6">
           <div className="size-16 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center text-white shadow-md">
-            <span className="text-2xl font-bold">★</span>
+            <Star className="size-8" />
           </div>
           <div>
             <h2 className="text-2xl font-bold mb-2">

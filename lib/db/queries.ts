@@ -19,20 +19,24 @@ import type { ArtifactKind } from "@/components/chat/artifact";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
 import { ChatbotError } from "../errors";
 import {
+  agent,
+  agentTemplate,
   type Chat,
   chat,
   type DBMessage,
   document,
   mcpLog,
   mcpServer,
+  mcpServerSecret,
+  mcpTemplate,
   message,
   project,
-  type Suggestion,
-  mcpTemplate,
   skill,
   skillTemplate,
   stream,
   suggestion,
+  type Suggestion,
+  userMcpPrefs,
   vote,
 } from "./schema";
 
@@ -451,6 +455,74 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
   await run(
     client`ALTER TABLE "user_notification_prefs" ADD COLUMN IF NOT EXISTS "regenerateMode" varchar DEFAULT 'truncate' NOT NULL`
   );
+
+  // MCP fine-grained control + encrypted vars + Skill binding + global prefs (0006)
+  await run(client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "lastSyncAt" timestamp`);
+  await run(client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "lastCallAt" timestamp`);
+  await run(client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "avgLatencyMs" integer DEFAULT 0 NOT NULL`);
+  await run(client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "callCount" integer DEFAULT 0 NOT NULL`);
+  await run(client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "uptimeStatus" varchar(20) DEFAULT 'unknown' NOT NULL`);
+  await run(client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "timeoutMs" integer DEFAULT 15000 NOT NULL`);
+  await run(client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "rateLimitPerMin" integer DEFAULT 60 NOT NULL`);
+  await run(client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "toolOverrides" json DEFAULT '{}'::json NOT NULL`);
+  await run(client`CREATE TABLE IF NOT EXISTS "mcp_server_secret" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "serverId" uuid NOT NULL REFERENCES "McpServer"("id") ON DELETE CASCADE,
+    "userId" text NOT NULL,
+    "kind" varchar(20) NOT NULL CHECK ("kind" IN ('env','auth','header')),
+    "key" text NOT NULL,
+    "encryptedValue" text NOT NULL,
+    "createdAt" timestamp DEFAULT now() NOT NULL,
+    CONSTRAINT "mcp_server_secret_unique" UNIQUE("serverId","kind","key")
+  )`);
+  await run(client`CREATE INDEX IF NOT EXISTS "mcp_server_secret_serverId_idx" ON "mcp_server_secret" USING btree ("serverId")`);
+  await run(client`CREATE INDEX IF NOT EXISTS "mcp_server_secret_userId_idx" ON "mcp_server_secret" USING btree ("userId")`);
+  await run(client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "mcpServerIds" uuid[] DEFAULT '{}' NOT NULL`);
+  await run(client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "mcpToolFilter" json DEFAULT '{}'::json NOT NULL`);
+  await run(client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "version" varchar(20) DEFAULT 'v1' NOT NULL`);
+  await run(client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "usageCount" integer DEFAULT 0 NOT NULL`);
+  await run(client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "lastUsedAt" timestamp`);
+  await run(client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "templateId" uuid`);
+  await run(client`CREATE TABLE IF NOT EXISTS "user_mcp_prefs" (
+    "userId" text PRIMARY KEY NOT NULL,
+    "globalKillSwitch" boolean DEFAULT false NOT NULL,
+    "defaultRequireApproval" varchar(20) DEFAULT 'write_only' NOT NULL CHECK ("defaultRequireApproval" IN ('always_allow','write_only','ask_permission')),
+    "defaultTimeoutMs" integer DEFAULT 15000 NOT NULL,
+    "defaultRateLimitPerMin" integer DEFAULT 60 NOT NULL,
+    "allowStdio" boolean DEFAULT true NOT NULL,
+    "retentionDays" integer DEFAULT 30 NOT NULL,
+    "createdAt" timestamp DEFAULT now() NOT NULL,
+    "updatedAt" timestamp DEFAULT now() NOT NULL
+  )`);
+  await run(client`CREATE TABLE IF NOT EXISTS "SkillTemplate" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "name" text NOT NULL,
+    "description" text DEFAULT '',
+    "instructions" text NOT NULL DEFAULT '',
+    "icon" text DEFAULT 'sparkles',
+    "color" varchar(7) DEFAULT '#6366f1',
+    "tags" text[] DEFAULT '{}'::text[] NOT NULL,
+    "tools" json DEFAULT '[]'::json NOT NULL,
+    "parameters" json DEFAULT '[]'::json NOT NULL,
+    "isPublic" boolean DEFAULT true NOT NULL,
+    "createdAt" timestamp DEFAULT now() NOT NULL,
+    "updatedAt" timestamp DEFAULT now() NOT NULL
+  )`);
+  await run(client`CREATE TABLE IF NOT EXISTS "McpTemplate" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "name" text NOT NULL,
+    "description" text DEFAULT '',
+    "transport" varchar(20) DEFAULT 'sse' NOT NULL,
+    "url" text,
+    "command" text,
+    "args" text,
+    "authType" varchar(20) DEFAULT 'none' NOT NULL,
+    "icon" text DEFAULT 'server',
+    "isPublic" boolean DEFAULT true NOT NULL,
+    "tags" text[] DEFAULT '{}'::text[] NOT NULL,
+    "createdAt" timestamp DEFAULT now() NOT NULL,
+    "updatedAt" timestamp DEFAULT now() NOT NULL
+  )`);
 }
 
 let _migrationPromise: Promise<void> | null = null;
@@ -1690,10 +1762,14 @@ export async function createSkill(data: {
     type?: string;
     required?: boolean;
     defaultValue?: string;
+    enumValues?: string[];
   }>;
   pinned?: boolean;
   isPublic?: boolean;
   tags?: string[];
+  mcpServerIds?: string[];
+  mcpToolFilter?: Record<string, string[] | null>;
+  templateId?: string | null;
 }) {
   const database = await getDb();
   const [created] = await database
@@ -1704,6 +1780,8 @@ export async function createSkill(data: {
       icon: data.icon ?? "sparkles",
       instructions: data.instructions,
       isPublic: data.isPublic ?? false,
+      mcpServerIds: (data.mcpServerIds as any) ?? [],
+      mcpToolFilter: (data.mcpToolFilter as any) ?? {},
       name: data.name,
       parameters: (data.parameters as any) ?? [],
       pinned: data.pinned ?? false,
@@ -1711,6 +1789,7 @@ export async function createSkill(data: {
         ? Math.random().toString(36).substring(2, 10)
         : null,
       tags: data.tags ?? [],
+      templateId: (data.templateId as any) ?? null,
       tools: (data.tools as any) ?? [],
       userId: data.userId,
     })
@@ -1737,13 +1816,21 @@ export async function updateSkill({
     isPublic: boolean;
     shareId: string | null;
     tags: string[];
+    mcpServerIds: string[];
+    mcpToolFilter: Record<string, string[] | null>;
+    version: string;
+    usageCount: number;
+    lastUsedAt: Date | string | null;
+    templateId: string | null;
   }>;
 }) {
   const database = await getDb();
+  const clean: any = { ...data };
+  if (clean.lastUsedAt && typeof clean.lastUsedAt === "string") clean.lastUsedAt = new Date(clean.lastUsedAt);
   const [updated] = await database
     .update(skill)
     .set({
-      ...data,
+      ...clean,
       updatedAt: new Date(),
     })
     .where(and(eq(skill.id, id), eq(skill.userId, userId)))
@@ -1865,6 +1952,9 @@ export async function createMcpServer(data: {
   isEnabled?: boolean;
   requireApproval?: "always_allow" | "ask_permission" | "write_only";
   toolsCache?: any[];
+  toolOverrides?: Record<string, { enabled: boolean; requireApproval?: string | null }>;
+  timeoutMs?: number;
+  rateLimitPerMin?: number;
 }) {
   const database = await getDb();
   const [created] = await database
@@ -1880,7 +1970,10 @@ export async function createMcpServer(data: {
       icon: data.icon ?? "server",
       isEnabled: data.isEnabled ?? true,
       name: data.name,
+      rateLimitPerMin: data.rateLimitPerMin ?? 60,
       requireApproval: data.requireApproval ?? "write_only",
+      timeoutMs: data.timeoutMs ?? 15000,
+      toolOverrides: (data.toolOverrides as any) ?? {},
       toolsCache: (data.toolsCache as any) ?? [],
       transport: data.transport ?? "sse",
       url: data.url ?? null,
@@ -1912,6 +2005,14 @@ export async function updateMcpServer({
     isEnabled: boolean;
     requireApproval: "always_allow" | "ask_permission" | "write_only";
     toolsCache: any[];
+    toolOverrides: Record<string, { enabled: boolean; requireApproval?: string | null }>;
+    timeoutMs: number;
+    rateLimitPerMin: number;
+    avgLatencyMs: number;
+    callCount: number;
+    uptimeStatus: string;
+    lastSyncAt: Date | null;
+    lastCallAt: Date | null;
   }>;
 }) {
   const database = await getDb();
@@ -2056,6 +2157,51 @@ export async function getMcpStats({ userId }: { userId: string }) {
   };
 }
 
+export async function updateMcpServerStats({
+  id,
+  userId,
+  durationMs,
+  success,
+}: {
+  id: string;
+  userId: string;
+  durationMs: number;
+  success: boolean;
+}) {
+  const database = await getDb();
+  const [existing] = await database.select().from(mcpServer).where(and(eq(mcpServer.id, id), eq(mcpServer.userId, userId))).limit(1);
+  if (!existing) return null;
+  const newCount = (existing.callCount ?? 0) + 1;
+  const prevAvg = existing.avgLatencyMs ?? 0;
+  const newAvg = Math.round((prevAvg * (newCount - 1) + durationMs) / newCount);
+  const [updated] = await database.update(mcpServer).set({
+    avgLatencyMs: newAvg,
+    callCount: newCount,
+    lastCallAt: new Date(),
+    updatedAt: new Date(),
+    uptimeStatus: success ? "online" : "error",
+  }).where(and(eq(mcpServer.id, id), eq(mcpServer.userId, userId))).returning();
+  return updated ?? null;
+}
+
+export async function updateMcpServerSync({
+  id,
+  userId,
+  toolsCache,
+  success,
+}: {
+  id: string;
+  userId: string;
+  toolsCache?: any[];
+  success: boolean;
+}) {
+  const database = await getDb();
+  const data: any = { lastSyncAt: new Date(), updatedAt: new Date(), uptimeStatus: success ? "online" : "error" };
+  if (toolsCache) data.toolsCache = toolsCache as any;
+  const [updated] = await database.update(mcpServer).set(data).where(and(eq(mcpServer.id, id), eq(mcpServer.userId, userId))).returning();
+  return updated ?? null;
+}
+
 export async function getSkillTemplates() {
   const database = await getDb();
   return database
@@ -2082,6 +2228,132 @@ export async function getMcpTemplateById(id: string) {
     .where(eq(mcpTemplate.id, id))
     .limit(1);
   return result ?? null;
+}
+
+// ==========================================
+// MCP SECRETS (chiffrés) — lib/mcp/encryption
+// ==========================================
+
+export async function getMcpServerSecrets({ serverId, userId }: { serverId: string; userId: string }) {
+  const db = await dbReady();
+  return db.select().from(mcpServerSecret).where(and(eq(mcpServerSecret.serverId, serverId), eq(mcpServerSecret.userId, userId)));
+}
+
+export async function setMcpServerSecrets({
+  serverId,
+  userId,
+  secrets,
+}: {
+  serverId: string;
+  userId: string;
+  secrets: Array<{ kind: "env" | "auth" | "header"; key: string; encryptedValue: string }>;
+}) {
+  const db = await dbReady();
+  await db.delete(mcpServerSecret).where(and(eq(mcpServerSecret.serverId, serverId), eq(mcpServerSecret.userId, userId)));
+  if (secrets.length === 0) return [];
+  const rows = await db.insert(mcpServerSecret).values(secrets.map((s) => ({ ...s, serverId, userId }))).returning();
+  return rows;
+}
+
+export async function upsertMcpServerSecret({
+  serverId,
+  userId,
+  kind,
+  key,
+  encryptedValue,
+}: {
+  serverId: string;
+  userId: string;
+  kind: "env" | "auth" | "header";
+  key: string;
+  encryptedValue: string;
+}) {
+  const db = await dbReady();
+  const existing = await db.select().from(mcpServerSecret).where(and(eq(mcpServerSecret.serverId, serverId), eq(mcpServerSecret.kind, kind), eq(mcpServerSecret.key, key))).limit(1);
+  if (existing.length > 0) {
+    const [updated] = await db.update(mcpServerSecret).set({ encryptedValue }).where(eq(mcpServerSecret.id, existing[0].id)).returning();
+    return updated;
+  }
+  const [created] = await db.insert(mcpServerSecret).values({ encryptedValue, key, kind, serverId, userId }).returning();
+  return created;
+}
+
+// ==========================================
+// USER MCP PREFS (global kill-switch, defaults)
+// ==========================================
+
+export async function getUserMcpPrefs(userId: string) {
+  const db = await dbReady();
+  const [prefs] = await db.select().from(userMcpPrefs).where(eq(userMcpPrefs.userId, userId)).limit(1);
+  if (prefs) return prefs;
+  return {
+    allowStdio: true,
+    createdAt: new Date(),
+    defaultRateLimitPerMin: 60,
+    defaultRequireApproval: "write_only" as const,
+    defaultTimeoutMs: 15000,
+    globalKillSwitch: false,
+    retentionDays: 30,
+    updatedAt: new Date(),
+    userId,
+  };
+}
+
+export async function upsertUserMcpPrefs(
+  userId: string,
+  data: Partial<{
+    allowStdio: boolean;
+    defaultRateLimitPerMin: number;
+    defaultRequireApproval: "always_allow" | "write_only" | "ask_permission";
+    defaultTimeoutMs: number;
+    globalKillSwitch: boolean;
+    retentionDays: number;
+  }>
+) {
+  const db = await dbReady();
+  const existing = await db.select().from(userMcpPrefs).where(eq(userMcpPrefs.userId, userId)).limit(1);
+  if (existing.length === 0) {
+    const [created] = await db.insert(userMcpPrefs).values({
+      allowStdio: data.allowStdio ?? true,
+      defaultRateLimitPerMin: data.defaultRateLimitPerMin ?? 60,
+      defaultRequireApproval: data.defaultRequireApproval ?? "write_only",
+      defaultTimeoutMs: data.defaultTimeoutMs ?? 15000,
+      globalKillSwitch: data.globalKillSwitch ?? false,
+      retentionDays: data.retentionDays ?? 30,
+      userId,
+    }).returning();
+    return created;
+  }
+  const [updated] = await db.update(userMcpPrefs).set({ ...data, updatedAt: new Date() } as any).where(eq(userMcpPrefs.userId, userId)).returning();
+  return updated;
+}
+
+export async function getFilteredMcpLogs({
+  userId,
+  serverId,
+  toolName,
+  actionType,
+  limit = 50,
+}: {
+  userId: string;
+  serverId?: string;
+  toolName?: string;
+  actionType?: string;
+  limit?: number;
+}) {
+  const db = await dbReady();
+  const conditions: any[] = [eq(mcpLog.userId, userId)];
+  if (serverId) conditions.push(eq(mcpLog.serverId, serverId));
+  if (toolName) conditions.push(eq(mcpLog.toolName, toolName));
+  if (actionType) conditions.push(eq(mcpLog.actionType, actionType as any));
+  return db.select().from(mcpLog).where(and(...conditions)).orderBy(desc(mcpLog.createdAt)).limit(Math.min(limit, 200));
+}
+
+export async function purgeMcpLogs({ userId, olderThanDays }: { userId: string; olderThanDays: number }) {
+  const db = await dbReady();
+  const cutoff = new Date(Date.now() - olderThanDays * 24 * 60 * 60 * 1000);
+  const deleted = await db.delete(mcpLog).where(and(eq(mcpLog.userId, userId), sql`${mcpLog.createdAt} < ${cutoff}`)).returning();
+  return { deleted: deleted.length };
 }
 
 // ==========================================
@@ -2266,6 +2538,88 @@ export async function deleteNotification({
     .where(and(eq(notification.id, id), eq(notification.userId, userId)))
     .returning();
   return deleted ?? null;
+}
+
+// ==========================================
+// AGENT QUERIES (remplace Mode IA)
+// ==========================================
+
+export async function getAgentsByUserId({ userId }: { userId: string }) {
+  const database = await getDb();
+  return database.select().from(agent).where(eq(agent.userId, userId)).orderBy(desc(agent.updatedAt));
+}
+
+export async function getAgentById({ id, userId }: { id: string; userId?: string }) {
+  const database = await getDb();
+  const conditions = [eq(agent.id, id)];
+  if (userId) conditions.push(eq(agent.userId, userId));
+  const [result] = await database.select().from(agent).where(and(...conditions));
+  return result ?? null;
+}
+
+export async function createAgent(data: {
+  userId: string;
+  name: string;
+  description?: string;
+  instructions: string;
+  icon?: string;
+  emoji?: string | null;
+  color?: string;
+  defaultModelId?: string;
+  skillIds?: string[];
+  mcpServerIds?: string[];
+  cloudFileUrls?: string[];
+}) {
+  const database = await getDb();
+  const [created] = await database.insert(agent).values({
+    cloudFileUrls: (data.cloudFileUrls as any) ?? [],
+    color: data.color ?? "#6366f1",
+    defaultModelId: data.defaultModelId ?? "google/gemini-2.5-flash",
+    description: data.description ?? "",
+    emoji: data.emoji ?? null,
+    icon: data.icon ?? "sparkles",
+    instructions: data.instructions,
+    mcpServerIds: (data.mcpServerIds as any) ?? [],
+    name: data.name,
+    skillIds: (data.skillIds as any) ?? [],
+    userId: data.userId,
+  }).returning();
+  return created;
+}
+
+export async function updateAgent({ id, userId, data }: { id: string; userId: string; data: Partial<{ name: string; description: string; instructions: string; icon: string; emoji: string | null; color: string; defaultModelId: string; skillIds: string[]; mcpServerIds: string[]; cloudFileUrls: string[]; isPublic: boolean; shareId: string | null; }> }) {
+  const database = await getDb();
+  const [updated] = await database.update(agent).set({ ...data as any, updatedAt: new Date() }).where(and(eq(agent.id, id), eq(agent.userId, userId))).returning();
+  return updated ?? null;
+}
+
+export async function deleteAgent({ id, userId }: { id: string; userId: string }) {
+  const database = await getDb();
+  const [deleted] = await database.delete(agent).where(and(eq(agent.id, id), eq(agent.userId, userId))).returning();
+  return deleted ?? null;
+}
+
+export async function duplicateAgent({ id, userId }: { id: string; userId: string }) {
+  const original = await getAgentById({ id, userId });
+  if (!original) return null;
+  return createAgent({
+    cloudFileUrls: (original.cloudFileUrls as any) ?? [],
+    color: original.color ?? "#6366f1",
+    defaultModelId: original.defaultModelId ?? "google/gemini-2.5-flash",
+    description: original.description ?? "",
+    emoji: (original as any).emoji ?? null,
+    icon: original.icon ?? "sparkles",
+    instructions: original.instructions,
+    mcpServerIds: (original.mcpServerIds as any) ?? [],
+    name: `${original.name} (Copie)`,
+    skillIds: (original.skillIds as any) ?? [],
+    userId,
+  });
+}
+
+export async function getAgentTemplates() {
+  const database = await getDb();
+  return database.select().from(agentTemplate).where(eq(agentTemplate.isPublic, true)).orderBy(asc(agentTemplate.name));
 }
 
 export async function broadcastNewsNotification(data: {

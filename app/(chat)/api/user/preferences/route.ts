@@ -20,17 +20,17 @@ export async function GET() {
   try {
     const sql = getPostgres();
     const rows =
-      await sql`SELECT custom_instructions, custom_instructions_enabled, default_temperature, default_top_p, default_ai_mode, default_image_model, default_image_size, default_audio_model, default_audio_voice, default_audio_speed FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
+      await sql`SELECT custom_instructions, custom_instructions_enabled, default_temperature, default_top_p, default_agent_id, default_image_model, default_image_size, default_audio_model, default_audio_voice, default_audio_speed FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
     await sql.end();
     if (rows.length === 0) {
       return Response.json({
         customInstructions: "",
+        defaultAgentId: null,
         defaultAudioModel: "deepgram/flux-tts:free",
         defaultAudioSpeed: 1.0,
         defaultAudioVoice: "flux-alexis-en",
         defaultImageModel: "black-forest-labs/flux-schnell",
         defaultImageSize: "1024x1024",
-        defaultMode: "standard",
         enabled: false,
         temperature: 0.7,
         topP: 0.9,
@@ -38,6 +38,7 @@ export async function GET() {
     }
     return Response.json({
       customInstructions: rows[0].custom_instructions || "",
+      defaultAgentId: rows[0].default_agent_id || null,
       defaultAudioModel:
         rows[0].default_audio_model || "deepgram/flux-tts:free",
       defaultAudioSpeed: rows[0].default_audio_speed ?? 1.0,
@@ -45,7 +46,6 @@ export async function GET() {
       defaultImageModel:
         rows[0].default_image_model || "black-forest-labs/flux-schnell",
       defaultImageSize: rows[0].default_image_size || "1024x1024",
-      defaultMode: rows[0].default_ai_mode || "standard",
       enabled: rows[0].custom_instructions_enabled || false,
       temperature: rows[0].default_temperature ?? 0.7,
       topP: rows[0].default_top_p ?? 0.9,
@@ -58,14 +58,12 @@ export async function GET() {
 
 const schema = z.object({
   customInstructions: z.string().max(4000).optional(),
+  defaultAgentId: z.string().uuid().nullable().optional(),
   defaultAudioModel: z.string().max(150).optional(),
   defaultAudioSpeed: z.number().min(0.5).max(2.0).optional(),
   defaultAudioVoice: z.string().max(100).optional(),
   defaultImageModel: z.string().max(150).optional(),
   defaultImageSize: z.string().max(50).optional(),
-  defaultMode: z
-    .enum(["standard", "creative", "precise", "code", "reasoning"])
-    .optional(),
   enabled: z.boolean().optional(),
   temperature: z.number().min(0).max(2).optional(),
   topP: z.number().min(0).max(1).optional(),
@@ -101,9 +99,17 @@ export async function POST(request: Request) {
       sets.push(`default_top_p = $${idx++}`);
       values.push(parsed.topP);
     }
-    if (parsed.defaultMode !== undefined) {
-      sets.push(`default_ai_mode = $${idx++}`);
-      values.push(parsed.defaultMode);
+    if (parsed.defaultAgentId !== undefined) {
+      if (parsed.defaultAgentId === null) {
+        sets.push(`default_agent_id = NULL`);
+      } else {
+        sets.push(`default_agent_id = $${idx++}`);
+        values.push(parsed.defaultAgentId);
+      }
+    }
+    // Legacy defaultMode ignoré (Agents remplacent Mode IA)
+    if ((parsed as any).defaultMode !== undefined) {
+      // noop
     }
     if (parsed.defaultImageModel !== undefined) {
       sets.push(`default_image_model = $${idx++}`);

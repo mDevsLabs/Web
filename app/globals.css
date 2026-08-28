@@ -196,7 +196,8 @@ select:focus-visible,
 [role="button"]:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-  outline: none;
+  outline: 2px solid var(--focus-ring, hsl(var(--ring)));
+  outline-offset: 2px;
 }
 
 @utility text-balance {

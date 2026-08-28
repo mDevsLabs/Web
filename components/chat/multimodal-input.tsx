@@ -5,6 +5,7 @@ import type { UIMessage } from "ai";
 import equal from "fast-deep-equal";
 import {
   ArrowUpIcon,
+  BotIcon,
   BrainIcon,
   CpuIcon,
   EyeIcon,
@@ -71,9 +72,9 @@ import {
   DEFAULT_CHAT_MODEL,
   type ModelCapabilities,
 } from "@/lib/ai/models";
-import { AI_MODES } from "@/lib/ai/modes";
 import { TOOLS_META, type ToolId } from "@/lib/ai/tools/config";
-import type { McpServer, Skill } from "@/lib/db/schema";
+import type { Agent, McpServer, Skill } from "@/lib/db/schema";
+import { AgentSelectorCompact } from "@/components/agents/agent-selector";
 import type { Attachment, ChatMessage } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import {
@@ -229,7 +230,9 @@ function PureMultimodalInput({
     activeSkill,
     setActiveSkill,
     clearActiveSkill,
-    setCurrentModeId,
+    activeAgent,
+    setActiveAgent,
+    clearActiveAgent,
     pendingTools,
     togglePendingTool,
     clearPendingTools,
@@ -251,6 +254,11 @@ function PureMultimodalInput({
   const userMcpServers = useMemo(
     () => (Array.isArray(mcpData?.servers) ? mcpData.servers : []),
     [mcpData]
+  );
+  const { data: userAgents = [] } = useSWR<Agent[]>(
+    "/api/agents",
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
 
   // Enrichir pendingProject avec données fraîches (nom/couleur) quand la liste arrive
@@ -563,6 +571,11 @@ function PureMultimodalInput({
           toast("Tous les outils désactivés");
           break;
         }
+        case "agents": {
+          router.push("/agents");
+          toast("Ouverture de la page Agents");
+          break;
+        }
         case "theme":
           setTheme(resolvedTheme === "dark" ? "light" : "dark");
           break;
@@ -632,7 +645,7 @@ function PureMultimodalInput({
         // Trim extra space if before ends with space and after starts with space?
         newVal = newVal.replace(/\s{2,}/g, " ").trimStart();
         setInput(newVal);
-        // Persist pill / mode / skill / mcp
+        // Persist pill / agent / skill / mcp
         if (payload.type === "skill") {
           setActiveSkill(payload.skill);
           toast.success(
@@ -651,9 +664,11 @@ function PureMultimodalInput({
           toast.success(
             `Conversations enregistrées dans : ${payload.project.name}`
           );
-        } else {
-          setCurrentModeId(payload.modeId);
-          toast.success(`Mode IA : ${AI_MODES[payload.modeId].label}`);
+        } else if (payload.type === "agent") {
+          setActiveAgent(payload.agent);
+          const icon = (payload.agent as any).emoji ? `${(payload.agent as any).emoji} ` : "";
+          toast.success(`Agent activé : ${icon}${payload.agent.name} — modèle ${(payload.agent as any).defaultModelId}`);
+          // onModelChange will be triggered via setActiveAgent side-effect (cookie)
         }
       } else {
         // fallback: just clear input token
@@ -676,9 +691,9 @@ function PureMultimodalInput({
           toast.success(
             `Conversations enregistrées dans : ${payload.project.name}`
           );
-        } else {
-          setCurrentModeId(payload.modeId);
-          toast.success(`Mode IA : ${AI_MODES[payload.modeId].label}`);
+        } else if ((payload as any).type === "agent") {
+          setActiveAgent((payload as any).agent);
+          toast.success(`Agent activé : ${(payload as any).agent.name}`);
         }
       }
       setMentionOpen(false);
@@ -691,7 +706,7 @@ function PureMultimodalInput({
       input,
       setInput,
       setPendingProject,
-      setCurrentModeId,
+      setActiveAgent,
       setActiveSkill,
       togglePendingTool,
     ]
@@ -993,7 +1008,8 @@ function PureMultimodalInput({
           mentionQuery,
           projects as any,
           userSkills,
-          userMcpServers
+          userMcpServers,
+          userAgents as any
         );
         if (e.key === "ArrowDown") {
           e.preventDefault();
@@ -1024,8 +1040,8 @@ function PureMultimodalInput({
                 project: (item as any).project,
                 type: "project",
               });
-            } else {
-              handleMentionSelect({ modeId: item.id as any, type: "mode" });
+            } else if (item.kind === "agent") {
+              handleMentionSelect({ agent: (item as any).agent, type: "agent" });
             }
           }
           return;
@@ -1078,6 +1094,7 @@ function PureMultimodalInput({
       mentionQuery,
       mentionIndex,
       projects,
+      userAgents,
       userSkills,
       userMcpServers,
     ]
@@ -1142,6 +1159,16 @@ function PureMultimodalInput({
         </div>
       ) : null}
 
+      {activeAgent ? (
+        <div className="flex items-center gap-2 px-1 -mb-1">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-500/40 bg-indigo-500/10 px-2.5 py-1 text-[11px] font-medium text-foreground">
+            <span className="size-5 rounded-full flex items-center justify-center text-white text-xs" style={{backgroundColor: activeAgent.color||"#6366f1"}}>{(activeAgent as any).emoji ? (activeAgent as any).emoji : <BotIcon className="size-3.5"/>}</span>
+            <span>Agent actif : {activeAgent.name}</span>
+            <button aria-label="Retirer l'agent" className="ml-1 rounded-full p-0.5 hover:bg-indigo-500/20 text-muted-foreground hover:text-foreground" onClick={clearActiveAgent} title="Retirer l'agent" type="button"><XIcon className="size-3"/></button>
+          </span>
+          <span className="text-[11px] text-muted-foreground">Sélection globale — modèle {activeAgent.defaultModelId}</span>
+        </div>
+      ) : null}
       {activeSkill ? (
         <div className="flex items-center gap-2 px-1 -mb-1">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/10 px-2.5 py-1 text-[11px] font-medium text-foreground">
@@ -1275,6 +1302,7 @@ function PureMultimodalInput({
         ) : null}
         {mentionOpen ? (
           <MentionMenu
+            agents={userAgents as any}
             isLoadingProjects={isProjectsLoading}
             mcpServers={userMcpServers}
             onClose={handleMentionClose}
@@ -1347,7 +1375,7 @@ function PureMultimodalInput({
         ) : null}
 
         <PromptInputTextarea
-          className="min-h-[48px] max-h-36 text-[13.5px] leading-relaxed px-4 pt-3.5 pb-1.5 placeholder:text-muted-foreground/45 resize-none"
+          className="min-h-[48px] max-h-36 text-[16px] md:text-[13.5px] leading-relaxed px-4 pt-3.5 pb-1.5 placeholder:text-muted-foreground/45 resize-none"
           data-testid="multimodal-input"
           onBlur={handleTextareaBlur}
           onChange={handleInput}
@@ -1383,6 +1411,7 @@ function PureMultimodalInput({
               onModelChange={onModelChange}
               selectedModelId={selectedModelId}
             />
+            <AgentSelectorCompact />
           </PromptInputTools>
 
           {status === "submitted" ? (

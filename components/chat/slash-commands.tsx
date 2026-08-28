@@ -2,6 +2,7 @@
 
 import {
   BombIcon,
+  BotIcon,
   CalculatorIcon,
   CalendarIcon,
   CloudSunIcon,
@@ -34,6 +35,7 @@ export type SlashCommandAction =
   | "ghost"
   | "rename"
   | "model"
+  | "agents"
   | "theme"
   | "delete"
   | "purge"
@@ -94,6 +96,13 @@ export const slashCommands: SlashCommand[] = [
     description: "Ouvre le sélecteur de modèles",
     icon: <ListIcon className="size-3.5" />,
     name: "model",
+  },
+  {
+    action: "agents",
+    aliases: ["agent", "agents", "ia-agents"],
+    description: "Ouvre la page Agents — styles IA personnalisés (remplace Mode IA)",
+    icon: <BotIcon className="size-3.5" />,
+    name: "agents",
   },
   {
     action: "usage",
