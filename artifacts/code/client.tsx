@@ -115,10 +115,24 @@ export const codeArtifact = new Artifact<"code", Metadata>({
         }));
 
         try {
-          // @ts-expect-error - loadPyodide is not defined
-          const currentPyodideInstance = await globalThis.loadPyodide({
-            indexURL: "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/",
-          });
+          const pyodideWindow = globalThis as typeof globalThis & {
+            pyodide?: any;
+            loadPyodide?: (options?: { indexURL?: string }) => Promise<any>;
+          };
+          const currentPyodideInstance = pyodideWindow.pyodide
+            ? pyodideWindow.pyodide
+            : pyodideWindow.loadPyodide
+              ? await pyodideWindow.loadPyodide({
+                  indexURL: "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/",
+                })
+              : null;
+
+          if (!currentPyodideInstance) {
+            throw new Error(
+              "Pyodide n'est pas chargé. Rechargez la page puis réessayez."
+            );
+          }
+          pyodideWindow.pyodide = currentPyodideInstance;
 
           currentPyodideInstance.setStdout({
             batched: (output: string) => {

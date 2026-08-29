@@ -122,10 +122,11 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
           </DropdownMenuTrigger>
 
           <DropdownMenuContent
-            align="start"
+            align="end"
             className="w-60 rounded-xl border border-border/60 bg-card/95 backdrop-blur-xl shadow-[var(--shadow-float)] p-1.5"
             data-testid="user-nav-menu"
             side="top"
+            sideOffset={8}
           >
             <DropdownMenuItem asChild>
               <Link

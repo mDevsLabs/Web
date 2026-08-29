@@ -449,6 +449,9 @@ function PureMultimodalInput({
       const cursor = event.target.selectionStart ?? val.length;
       setInput(val);
 
+      // Les sélections de session ne dépendent pas du texte saisi. Une mention peut
+      // être supprimée sans désactiver l'agent ou le serveur sélectionné.
+      /*
       // Si l'utilisateur efface la mention du texte, retirer l'outil/skill/agent correspondant
       // 1. MCP
       for (const tid of pendingTools) {
@@ -474,6 +477,7 @@ function PureMultimodalInput({
       if (activeAgent && !val.includes(`@${activeAgent.name}`)) {
         clearActiveAgent();
       }
+      */
 
       const trigger = detectTrigger(val, cursor);
       if (trigger?.type === "slash") {
