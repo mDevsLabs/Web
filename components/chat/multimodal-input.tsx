@@ -353,10 +353,10 @@ function PureMultimodalInput({
     toggleListening();
   }, [isListening, isSpeechSupported, input, toggleListening]);
 
-  // Live cost: poll settings + dataStream usage via shared useSettings hook
+  // Live cost: fetch settings once + dataStream usage via shared useSettings hook
   const { data: costSettings } = useSettings({
-    refreshInterval: 30_000,
-    revalidateOnFocus: true,
+    dedupingInterval: 60_000,
+    revalidateOnFocus: false,
   });
   const { dataStream } = useDataStream();
   const [liveSessionTokens, setLiveSessionTokens] = useState(0);

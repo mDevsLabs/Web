@@ -77,6 +77,10 @@ function triggerBackgroundUsageRefresh(token: string) {
           cached.user.tokensUsed = Number(data.tokensUsed || cached.user.tokensUsed);
           cached.user.limit = Number(data.limit || cached.user.limit);
           cached.user.tier = data.tier || cached.user.tier;
+          if (data.username) cached.user.username = data.username;
+          if (data.name) cached.user.username = data.name;
+          if (data.avatarUrl) cached.user.avatarUrl = data.avatarUrl;
+          if (data.avatar) cached.user.avatarUrl = data.avatar;
           cached.expiresAt = Date.now() + CACHE_TTL_MS;
         }
       }

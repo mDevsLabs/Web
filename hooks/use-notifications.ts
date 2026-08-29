@@ -41,7 +41,7 @@ export function useNotifications(limit = 20) {
   return useSWR<NotificationsResponse>(
     `/api/notifications?limit=${limit}`,
     fetcher,
-    { refreshInterval: 30_000, revalidateOnFocus: true }
+    { dedupingInterval: 60_000, refreshInterval: 180_000, revalidateOnFocus: false }
   );
 }
 

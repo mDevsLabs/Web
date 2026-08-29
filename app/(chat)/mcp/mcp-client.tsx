@@ -111,10 +111,13 @@ export default function McpClient() {
     servers: McpServer[];
     stats: { servers: number; totalCalls: number };
   }>("/api/mcp", fetcher);
+  const [activeTab, setActiveTab] = useState<
+    "servers" | "library" | "tutorial" | "logs" | "settings"
+  >("servers");
   const { data: logs = [], mutate: mutateLogs } = useSWR<McpLog[]>(
     "/api/mcp/logs",
     fetcher,
-    { refreshInterval: 5000 }
+    { refreshInterval: activeTab === "logs" ? 10_000 : 0, revalidateOnFocus: false }
   );
   const { data: tplData, mutate: mutateTpl } = useSWR<{ templates: any[] }>(
     "/api/mcp/templates",
@@ -123,9 +126,6 @@ export default function McpClient() {
   const templates = tplData?.templates ?? [];
   const servers = data?.servers ?? [];
   const stats = data?.stats ?? { servers: 0, totalCalls: 0 };
-  const [activeTab, setActiveTab] = useState<
-    "servers" | "library" | "tutorial" | "logs" | "settings"
-  >("servers");
   const [searchQuery, setSearchQuery] = useState("");
   const [isServerModalOpen, setIsServerModalOpen] = useState(false);
   const [editingServer, setEditingServer] = useState<McpServer | null>(null);

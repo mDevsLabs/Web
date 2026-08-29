@@ -3,6 +3,7 @@
 import {
   BotIcon,
   CheckIcon,
+  CloudIcon,
   CopyIcon,
   Edit2Icon,
   MessageSquareTextIcon,
@@ -14,12 +15,14 @@ import {
   ThermometerIcon,
   Trash2Icon,
   TriangleAlertIcon,
+  UploadCloudIcon,
   XIcon,
 } from "lucide-react";
 import { useCallback, useMemo, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { AgentIcon, EMOJI_PRESETS } from "@/components/agents/agent-icon";
+import { CloudFilePickerDialog } from "@/components/chat/cloud-file-picker-dialog";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import {
   AlertDialog,
@@ -133,6 +136,9 @@ export default function AgentsClient() {
   const [isSaving, setIsSaving] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
+  const [isCloudPickerOpen, setIsCloudPickerOpen] = useState(false);
+  // Map url -> nom affiché (pour les fichiers sélectionnés via cloud picker)
+  const [cloudFileNames, setCloudFileNames] = useState<Record<string, string>>({});
 
   const filteredAgents = useMemo(
     () =>
@@ -1105,43 +1111,67 @@ export default function AgentsClient() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-xs font-semibold flex items-center gap-2">
-                    Fichiers Cloud (upload dédié, max 5){" "}
-                    {isUploading && (
-                      <span className="text-amber-600 text-[11px]">
-                        Upload...
-                      </span>
-                    )}
-                  </Label>
-                  <div className="flex items-center gap-2">
-                    <Input
-                      className="h-8 text-xs"
-                      disabled={isUploading || formCloudUrls.length >= 5}
-                      multiple
-                      onChange={handleFileUpload}
-                      type="file"
-                    />
-                    <span className="text-[11px] text-muted-foreground">
-                      {formCloudUrls.length}/5
+                  <Label className="text-xs font-semibold flex items-center justify-between gap-2">
+                    <span className="flex items-center gap-1.5">
+                      <CloudIcon className="size-3.5 text-muted-foreground" />
+                      Fichiers (max 5)
                     </span>
+                    <span className="text-[11px] font-normal text-muted-foreground">
+                      {formCloudUrls.length}/5
+                      {isUploading && (
+                        <span className="ml-1 text-amber-600">Upload...</span>
+                      )}
+                    </span>
+                  </Label>
+                  {/* Double bouton : upload depuis l'ordi OU depuis la bibliothèque cloud */}
+                  <div className="flex gap-2">
+                    <label
+                      className={`flex-1 flex items-center justify-center gap-1.5 h-8 rounded-lg border border-dashed border-border/60 bg-muted/40 hover:bg-muted/70 text-[12px] text-muted-foreground cursor-pointer transition-colors ${isUploading || formCloudUrls.length >= 5 ? "opacity-50 pointer-events-none" : ""}`}
+                    >
+                      <UploadCloudIcon className="size-3.5" />
+                      <span>Importer</span>
+                      <Input
+                        className="sr-only"
+                        disabled={isUploading || formCloudUrls.length >= 5}
+                        multiple
+                        onChange={handleFileUpload}
+                        type="file"
+                      />
+                    </label>
+                    <Button
+                      className="flex-1 h-8 text-[12px] border border-dashed border-border/60 bg-muted/40 hover:bg-muted/70 text-muted-foreground"
+                      disabled={isUploading || formCloudUrls.length >= 5}
+                      onClick={() => setIsCloudPickerOpen(true)}
+                      type="button"
+                      variant="ghost"
+                    >
+                      <CloudIcon className="size-3.5 mr-1.5" />
+                      Depuis la bibliothèque
+                    </Button>
                   </div>
                   {formCloudUrls.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="flex flex-wrap gap-1.5 pt-0.5">
                       {formCloudUrls.map((url, i) => (
                         <span
                           className="inline-flex items-center gap-1.5 rounded-full bg-muted px-2.5 py-1 text-[11px] border border-border/40 max-w-[220px]"
                           key={i}
                         >
+                          <CloudIcon className="size-2.5 text-muted-foreground shrink-0" />
                           <span className="truncate">
-                            {url.split("/").pop() || url}
+                            {cloudFileNames[url] || url.split("/").pop() || url}
                           </span>
                           <button
                             className="rounded-full p-0.5 hover:bg-muted-foreground/20"
-                            onClick={() =>
+                            onClick={() => {
                               setFormCloudUrls((prev) =>
                                 prev.filter((_, idx) => idx !== i)
-                              )
-                            }
+                              );
+                              setCloudFileNames((prev) => {
+                                const copy = { ...prev };
+                                delete copy[url];
+                                return copy;
+                              });
+                            }}
                             type="button"
                           >
                             <XIcon className="size-3" />
@@ -1151,6 +1181,31 @@ export default function AgentsClient() {
                     </div>
                   )}
                 </div>
+                {/* Dialog cloud picker */}
+                <CloudFilePickerDialog
+                  onOpenChange={setIsCloudPickerOpen}
+                  onSelectAttachments={(attachments) => {
+                    const toAdd = attachments.filter(
+                      (a) => !formCloudUrls.includes(a.url)
+                    );
+                    const remaining = 5 - formCloudUrls.length;
+                    const slice = toAdd.slice(0, remaining);
+                    if (slice.length > 0) {
+                      setFormCloudUrls((prev) => [
+                        ...prev,
+                        ...slice.map((a) => a.url),
+                      ]);
+                      setCloudFileNames((prev) => {
+                        const copy = { ...prev };
+                        for (const a of slice) {
+                          copy[a.url] = a.name;
+                        }
+                        return copy;
+                      });
+                    }
+                  }}
+                  open={isCloudPickerOpen}
+                />
               </div>
 
               {/* Colonne aperçu en direct */}

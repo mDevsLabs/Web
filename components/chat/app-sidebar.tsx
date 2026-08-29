@@ -69,7 +69,6 @@ import {
 import { useProjects } from "@/hooks/use-projects";
 import { useTier } from "@/hooks/use-tier";
 import type { MaiUser } from "@/lib/auth/session";
-import { APP_VERSION, LEGAL_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import {
   AlertDialog,
@@ -808,26 +807,8 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
           />
         </SidebarContent>
 
-        <SidebarFooter className="border-t border-sidebar-border pt-2 pb-3 flex flex-col gap-2">
+        <SidebarFooter className="border-t border-sidebar-border p-2">
           {user ? <SidebarUserNav user={user} /> : null}
-          <div className="px-2 pt-1 flex flex-col gap-1 group-data-[collapsible=icon]:hidden">
-            <div className="flex items-center justify-between text-[10px] text-muted-foreground/70">
-              <span className="font-mono">v{APP_VERSION}</span>
-            </div>
-            <div className="flex items-center gap-2 text-[10px]">
-              {LEGAL_LINKS.map((link) => (
-                <a
-                  className="text-muted-foreground/60 hover:text-foreground transition-colors hover:underline"
-                  href={link.href}
-                  key={link.href}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </div>
         </SidebarFooter>
         <SidebarRail />
       </Sidebar>
