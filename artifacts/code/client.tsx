@@ -95,9 +95,9 @@ const codeArtifactContent: Artifact<"code", Metadata>["content"] =
 export const codeArtifact = new Artifact<"code", Metadata>({
   actions: [
     {
-      description: "Execute code",
+      description: "Exécuter le code",
       icon: <PlayIcon size={18} />,
-      label: "Run",
+      label: "Exécuter",
       onClick: async ({ content, setMetadata }) => {
         const runId = generateUUID();
         const outputContent: ConsoleOutputContent[] = [];
@@ -218,7 +218,7 @@ export const codeArtifact = new Artifact<"code", Metadata>({
       },
     },
     {
-      description: "View Previous version",
+      description: "Voir la version précédente",
       icon: <UndoIcon size={18} />,
       isDisabled: ({ currentVersionIndex }) => {
         if (currentVersionIndex === 0) {
@@ -232,7 +232,7 @@ export const codeArtifact = new Artifact<"code", Metadata>({
       },
     },
     {
-      description: "View Next version",
+      description: "Voir la version suivante",
       icon: <RedoIcon size={18} />,
       isDisabled: ({ isCurrentVersion }) => {
         if (isCurrentVersion) {
@@ -246,17 +246,17 @@ export const codeArtifact = new Artifact<"code", Metadata>({
       },
     },
     {
-      description: "Copy code to clipboard",
+      description: "Copier le code dans le presse-papiers",
       icon: <CopyIcon size={18} />,
       onClick: ({ content }) => {
         navigator.clipboard.writeText(content);
-        toast.success("Copied to clipboard!");
+        toast.success("Code copié dans le presse-papiers !");
       },
     },
   ],
   content: codeArtifactContent,
   description:
-    "Useful for code generation; Code execution is only available for python code.",
+    "Utile pour générer du code ; l'exécution est disponible uniquement pour Python.",
   initialize: ({ setMetadata }) => {
     setMetadata({
       outputs: [],
@@ -280,13 +280,13 @@ export const codeArtifact = new Artifact<"code", Metadata>({
   },
   toolbar: [
     {
-      description: "Add comments",
+      description: "Ajouter des commentaires",
       icon: <MessageIcon />,
       onClick: ({ sendMessage }) => {
         sendMessage({
           parts: [
             {
-              text: "Add comments to the code snippet for understanding",
+              text: "Ajoute des commentaires à cet extrait de code pour faciliter sa compréhension",
               type: "text",
             },
           ],
@@ -295,13 +295,13 @@ export const codeArtifact = new Artifact<"code", Metadata>({
       },
     },
     {
-      description: "Add logs",
+      description: "Ajouter des journaux",
       icon: <LogsIcon />,
       onClick: ({ sendMessage }) => {
         sendMessage({
           parts: [
             {
-              text: "Add logs to the code snippet for debugging",
+              text: "Ajoute des journaux à cet extrait de code pour faciliter le débogage",
               type: "text",
             },
           ],

@@ -89,6 +89,16 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { setDataStream, setWaitingStatus } = useDataStream();
+
+  const getAiErrorMessage = useCallback((error: unknown) => {
+    const candidate = error as { status?: number; statusCode?: number; message?: string };
+    const message = candidate?.message ?? String(error ?? "");
+    const code = candidate?.status ?? candidate?.statusCode ?? Number(message.match(/\b(403|429|5\d\d|4\d\d)\b/)?.[1]);
+    if (code === 403) return "Code 403 : Quota atteint !";
+    if (code === 429) return "Code 429 : Serveurs surchargés, réessayer plus tard !";
+    if (Number.isInteger(code) && code > 0) return `Code ${code} : Une erreur est survenue !`;
+    return "Une erreur est survenue lors de la génération de la réponse.";
+  }, []);
   const { mutate } = useSWRConfig();
   const pendingProjectIdRef = useRef<string | null>(null);
 
@@ -450,11 +460,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     onError: (error) => {
       if (error.message?.includes("AI Gateway requires a valid credit card")) {
         setShowCreditCardAlert(true);
-      } else if (error instanceof ChatbotError) {
-        toast({ description: error.message, type: "error" });
       } else {
         toast({
-          description: error.message || "Oops, an error occurred!",
+          description: getAiErrorMessage(error),
           type: "error",
         });
       }

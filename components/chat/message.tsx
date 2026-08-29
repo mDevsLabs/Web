@@ -34,7 +34,7 @@ import { Weather } from "./weather";
 
 function WaitingText() {
   const { waitingStatus } = useDataStream();
-  const waitingText = waitingStatus?.message ?? "Waiting...";
+  const waitingText = waitingStatus?.message ?? "En attente...";
 
   return (
     <div className="flex min-h-[calc(13px*1.65)] min-w-0 items-center text-[13px] leading-[1.65]">
@@ -60,7 +60,7 @@ function ToolApprovalActions({
     addToolApprovalResponse({
       approved: false,
       id: approvalId,
-      reason: "User denied weather lookup",
+      reason: "L'utilisateur a refusé la recherche météo",
     });
   }, [addToolApprovalResponse, approvalId]);
 
@@ -78,14 +78,14 @@ function ToolApprovalActions({
         onClick={handleDeny}
         type="button"
       >
-        Deny
+        Refuser
       </button>
       <button
         className="rounded-md bg-primary px-3 py-1.5 text-primary-foreground text-sm transition-colors hover:bg-primary/90"
         onClick={handleAllow}
         type="button"
       >
-        Allow
+        Autoriser
       </button>
     </div>
   );
@@ -391,7 +391,7 @@ const PurePreviewMessage = ({
               <ToolHeader state="output-denied" type="tool-getWeather" />
               <ToolContent>
                 <div className="px-4 py-3 text-muted-foreground text-sm">
-                  Weather lookup was denied.
+                  La recherche météo a été refusée.
                 </div>
               </ToolContent>
             </Tool>
@@ -442,7 +442,7 @@ const PurePreviewMessage = ({
             className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-500 dark:bg-red-950/50"
             key={toolCallId}
           >
-            Error creating document: {String(part.output.error)}
+            Erreur lors de la création du document : {String(part.output.error)}
           </div>
         );
       }
@@ -465,7 +465,7 @@ const PurePreviewMessage = ({
             className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-500 dark:bg-red-950/50"
             key={toolCallId}
           >
-            Error updating document: {String(part.output.error)}
+            Erreur lors de la mise à jour du document : {String(part.output.error)}
           </div>
         );
       }
@@ -494,7 +494,7 @@ const PurePreviewMessage = ({
             className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-500 dark:bg-red-950/50"
             key={toolCallId}
           >
-            Error editing document: {String(part.output.error)}
+            Erreur lors de la modification du document : {String(part.output.error)}
           </div>
         );
       }
@@ -558,7 +558,7 @@ const PurePreviewMessage = ({
                 output={
                   "error" in part.output ? (
                     <div className="rounded border p-2 text-red-500">
-                      Error: {String(part.output.error)}
+                      Erreur : {String(part.output.error)}
                     </div>
                   ) : (
                     <DocumentToolResult
