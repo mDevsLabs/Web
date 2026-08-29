@@ -812,7 +812,6 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
           {user ? <SidebarUserNav user={user} /> : null}
           <div className="px-2 pt-1 flex flex-col gap-1 group-data-[collapsible=icon]:hidden">
             <div className="flex items-center justify-between text-[10px] text-muted-foreground/70">
-              <span>© {new Date().getFullYear()} mAI</span>
               <span className="font-mono">v{APP_VERSION}</span>
             </div>
             <div className="flex items-center gap-2 text-[10px]">

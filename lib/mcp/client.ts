@@ -124,6 +124,47 @@ function buildHeaders(config: McpServerConfig): HeadersInit {
   return headers;
 }
 
+function parseMcpResponse<T>(rawText: string): McpJsonRpcResponse<T> {
+  const trimmed = rawText.trim();
+  if (trimmed.startsWith("{") || trimmed.startsWith("[")) {
+    return JSON.parse(trimmed);
+  }
+
+  // Support SSE (Server-Sent Events) : 'event: message\ndata: {...}\n\n'
+  const lines = trimmed.split(/\r?\n/);
+  let lastData = "";
+  for (const line of lines) {
+    const trimmedLine = line.trim();
+    if (trimmedLine.startsWith("data:")) {
+      const dataContent = trimmedLine.slice(5).trim();
+      if (dataContent) {
+        lastData = dataContent;
+        try {
+          const parsed = JSON.parse(dataContent);
+          if (
+            parsed &&
+            (parsed.jsonrpc === "2.0" ||
+              parsed.result !== undefined ||
+              parsed.error !== undefined)
+          ) {
+            return parsed;
+          }
+        } catch {}
+      }
+    }
+  }
+
+  if (lastData) {
+    try {
+      return JSON.parse(lastData);
+    } catch {}
+  }
+
+  throw new Error(
+    `Réponse MCP non reconnue (ni JSON standard ni SSE avec data) : ${trimmed.slice(0, 200)}`
+  );
+}
+
 async function sendHttpJsonRpc<T = unknown>(
   url: string,
   request: McpJsonRpcRequest,
@@ -148,7 +189,8 @@ async function sendHttpJsonRpc<T = unknown>(
       );
     }
 
-    const data = (await res.json()) as McpJsonRpcResponse<T>;
+    const rawText = await res.text();
+    const data = parseMcpResponse<T>(rawText);
     if (data.error) {
       throw new Error(`MCP Error ${data.error.code}: ${data.error.message}`);
     }
@@ -277,19 +319,55 @@ export async function fetchMcpTools(
     return (result?.tools as McpToolDefinition[]) ?? [];
   }
 
-  if (!config.url) {
+  let targetUrl = config.url;
+  if (targetUrl === "https://mcp-github-server.example.com/sse") {
+    targetUrl = "https://api.githubcopilot.com/mcp/";
+  }
+  if (!targetUrl) {
     throw new Error("URL manquante pour le serveur MCP");
   }
 
   const headers = buildHeaders(config);
-  const result = await sendHttpJsonRpc<{ tools: McpToolDefinition[] }>(
-    config.url,
-    req,
-    headers,
-    timeout
-  );
-
-  return result?.tools ?? [];
+  try {
+    const result = await sendHttpJsonRpc<{ tools: McpToolDefinition[] }>(
+      targetUrl,
+      req,
+      headers,
+      timeout
+    );
+    return result?.tools ?? [];
+  } catch (err: any) {
+    const errMsg = String(err.message || "").toLowerCase();
+    if (errMsg.includes("initializ") || errMsg.includes("-32002")) {
+      // Tentative d'initialisation MCP officielle
+      try {
+        await sendHttpJsonRpc(
+          targetUrl,
+          {
+            id: `init-${Date.now()}`,
+            jsonrpc: "2.0",
+            method: "initialize",
+            params: {
+              capabilities: {},
+              clientInfo: { name: "mAI-Web", version: "1.0.0" },
+              protocolVersion: "2024-11-05",
+            },
+          },
+          headers,
+          timeout
+        );
+        // Retry tools/list
+        const retryResult = await sendHttpJsonRpc<{ tools: McpToolDefinition[] }>(
+          targetUrl,
+          req,
+          headers,
+          timeout
+        );
+        return retryResult?.tools ?? [];
+      } catch {}
+    }
+    throw err;
+  }
 }
 
 /**
@@ -334,13 +412,17 @@ export async function callMcpTool(
     return result as McpToolCallResult;
   }
 
-  if (!config.url) {
+  let targetUrl = config.url;
+  if (targetUrl === "https://mcp-github-server.example.com/sse") {
+    targetUrl = "https://api.githubcopilot.com/mcp/";
+  }
+  if (!targetUrl) {
     throw new Error("URL du serveur MCP manquante");
   }
 
   const headers = buildHeaders(config);
   return await sendHttpJsonRpc<McpToolCallResult>(
-    config.url,
+    targetUrl,
     req,
     headers,
     timeout

@@ -895,7 +895,7 @@ export default function SkillsClient() {
                             <PinIcon className="size-3 text-amber-500 shrink-0 fill-amber-500" />
                           )}
                         </div>
-                        <p className="text-[12px] text-muted-foreground truncate">
+                        <p className="text-[12px] text-muted-foreground line-clamp-2">
                           {s.description || "Aucune description"}
                         </p>
                       </div>
@@ -972,8 +972,8 @@ export default function SkillsClient() {
                   </div>
 
                   {/* Aperçu Instructions */}
-                  <div className="flex-1 mb-3 bg-muted/30 p-2.5 rounded-xl border border-border/30 overflow-hidden">
-                    <p className="text-xs text-muted-foreground/90 line-clamp-3 font-mono break-words leading-relaxed">
+                  <div className="flex-1 mb-3 bg-muted/30 p-2.5 rounded-xl border border-border/30 overflow-y-auto max-h-28 min-h-[68px] no-scrollbar">
+                    <p className="text-xs text-muted-foreground/90 font-mono break-words leading-relaxed whitespace-pre-wrap">
                       {s.instructions}
                     </p>
                   </div>

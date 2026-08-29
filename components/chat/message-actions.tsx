@@ -253,21 +253,20 @@ export function PureMessageActions({
         return;
       }
 
-      // truncate mode: delete trailing and regenerate
-      const { deleteTrailingMessages } = await import("@/app/(chat)/actions");
-      // find first trailing after targetIndex
+      // truncate mode: delete trailing and regenerate immediately
       if (targetIndex >= 0) {
-        const _trailing = messages[targetIndex];
-        // delete DB trailing after this message (use its timestamp? use API helper)
-        // Use message id based deletion via helper that deletes by timestamp; simpler: just slice UI and regenerate
-        // Attempt DB cleanup via deleteTrailingMessages using target message id
-        try {
-          await deleteTrailingMessages({ id: targetUserId! });
-        } catch {}
         setMessages((prev: ChatMessage[]) => prev.slice(0, targetIndex + 1));
-        // regenerate will resend last user message with same model
-        setTimeout(() => regenerate(), 50);
-        toast.success("Régénération lancée (mode tronquer)");
+        regenerate();
+        toast.success("Régénération lancée");
+
+        // Nettoyage asynchrone non-bloquant en base de données
+        if (targetUserId) {
+          import("@/app/(chat)/actions")
+            .then(({ deleteTrailingMessages }) =>
+              deleteTrailingMessages({ id: targetUserId })
+            )
+            .catch(() => {});
+        }
       }
     } catch (e: any) {
       toast.error(e.message || "Erreur régénération");

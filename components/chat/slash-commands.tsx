@@ -27,6 +27,7 @@ import {
   ZapIcon,
 } from "lucide-react";
 import { type ReactNode, useCallback, useEffect, useRef } from "react";
+import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
 export type SlashCommandAction =
@@ -236,6 +237,7 @@ type SlashCommandMenuProps = {
   onSelect: (command: SlashCommand) => void;
   onClose: () => void;
   selectedIndex: number;
+  supportsTools?: boolean;
 };
 
 function SlashCommandMenuItem({
@@ -243,15 +245,26 @@ function SlashCommandMenuItem({
   index,
   onSelect,
   selectedIndex,
+  supportsTools = true,
 }: {
   cmd: SlashCommand;
   index: number;
   onSelect: (command: SlashCommand) => void;
   selectedIndex: number;
+  supportsTools?: boolean;
 }) {
+  const isTool = cmd.action.startsWith("tool-");
+  const isDisabled = isTool && !supportsTools;
+
   const handleClick = useCallback(() => {
+    if (isDisabled) {
+      toast.warning(
+        "Ce modèle ne prend pas en charge les outils (tools). Cette commande est indisponible pour ce modèle."
+      );
+      return;
+    }
     onSelect(cmd);
-  }, [cmd, onSelect]);
+  }, [cmd, isDisabled, onSelect]);
 
   const handleMouseDown = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -264,9 +277,13 @@ function SlashCommandMenuItem({
     <button
       className={cn(
         "flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors",
-        index === selectedIndex ? "bg-muted/70" : "hover:bg-muted/40"
+        isDisabled
+          ? "opacity-40 cursor-not-allowed"
+          : index === selectedIndex
+            ? "bg-muted/70"
+            : "hover:bg-muted/40"
       )}
-      data-selected={index === selectedIndex}
+      data-selected={index === selectedIndex && !isDisabled}
       onClick={handleClick}
       onMouseDown={handleMouseDown}
       type="button"
@@ -278,7 +295,11 @@ function SlashCommandMenuItem({
       <span className="text-[12px] text-muted-foreground/50">
         {cmd.description}
       </span>
-      {cmd.shortcut ? (
+      {isDisabled ? (
+        <span className="ml-auto text-[9px] bg-destructive/10 text-destructive font-semibold px-1.5 py-0.2 rounded">
+          Sans tools
+        </span>
+      ) : cmd.shortcut ? (
         <span className="ml-auto text-[11px] text-muted-foreground/30">
           {cmd.shortcut}
         </span>
@@ -316,6 +337,7 @@ export function SlashCommandMenu({
   onSelect,
   onClose: _onClose,
   selectedIndex,
+  supportsTools = true,
 }: SlashCommandMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
   const filtered = getFilteredSlashCommands(query);
@@ -333,7 +355,7 @@ export function SlashCommandMenu({
 
   return (
     <div
-      className="absolute bottom-full left-0 right-0 z-50 mb-3 overflow-hidden rounded-2xl border border-border/80 bg-popover text-popover-foreground shadow-2xl ring-1 ring-black/10 dark:ring-white/10"
+      className="absolute bottom-full left-0 right-0 z-50 mb-3 overflow-hidden rounded-2xl border border-border/80 bg-white dark:bg-zinc-900 text-foreground shadow-2xl ring-1 ring-black/10 dark:ring-white/10"
       ref={menuRef}
     >
       <div className="px-4 py-2.5 bg-muted/40 border-b border-border/40 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground flex items-center justify-between">
@@ -350,6 +372,7 @@ export function SlashCommandMenu({
             key={cmd.name}
             onSelect={onSelect}
             selectedIndex={selectedIndex}
+            supportsTools={supportsTools}
           />
         ))}
       </div>

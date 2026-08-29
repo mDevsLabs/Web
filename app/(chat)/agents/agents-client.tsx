@@ -13,6 +13,7 @@ import {
   SlidersHorizontalIcon,
   ThermometerIcon,
   Trash2Icon,
+  TriangleAlertIcon,
   XIcon,
 } from "lucide-react";
 import { useCallback, useMemo, useState } from "react";
@@ -131,6 +132,7 @@ export default function AgentsClient() {
   const [formPinned, setFormPinned] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
 
   const filteredAgents = useMemo(
     () =>
@@ -170,6 +172,7 @@ export default function AgentsClient() {
     setFormStarterPrompts([]);
     setFormWelcomeMessage("");
     setFormPinned(false);
+    setSaveError(null);
     setIsEditorOpen(true);
   }, []);
 
@@ -192,21 +195,29 @@ export default function AgentsClient() {
     setFormStarterPrompts((a as any).starterPrompts || []);
     setFormWelcomeMessage((a as any).welcomeMessage || "");
     setFormPinned(Boolean((a as any).pinned));
+    setSaveError(null);
     setIsEditorOpen(true);
   };
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSaveError(null);
     if (!formName.trim()) {
-      toast.error("Nom requis");
+      const msg = "Nom de l'agent requis";
+      setSaveError(msg);
+      toast.error(msg);
       return;
     }
     if (!formInstructions.trim()) {
-      toast.error("Instructions requises");
+      const msg = "Instructions requises pour définir le comportement de l'agent";
+      setSaveError(msg);
+      toast.error(msg);
       return;
     }
     if (formInstructions.length > 5000) {
-      toast.error("Instructions limitées à 5000 caractères");
+      const msg = "Instructions limitées à 5000 caractères";
+      setSaveError(msg);
+      toast.error(msg);
       return;
     }
     setIsSaving(true);
@@ -243,13 +254,15 @@ export default function AgentsClient() {
       });
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || "Erreur sauvegarde");
+        throw new Error(data.error || "Erreur lors de la sauvegarde de l'agent");
       }
-      toast.success(editingAgent ? "Agent mis à jour !" : "Agent créé !");
+      toast.success(editingAgent ? "Agent mis à jour avec succès !" : "Agent créé avec succès !");
       await mutate();
       setIsEditorOpen(false);
     } catch (err: any) {
-      toast.error(err.message || "Erreur");
+      const errMsg = err.message || "Erreur inconnue lors de l'enregistrement";
+      setSaveError(errMsg);
+      toast.error(errMsg);
     } finally {
       setIsSaving(false);
     }
@@ -641,7 +654,7 @@ export default function AgentsClient() {
 
       {/* Dialog éditeur */}
       <Dialog onOpenChange={setIsEditorOpen} open={isEditorOpen}>
-        <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-5xl sm:max-w-4xl lg:max-w-6xl w-[95vw] max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>
               {editingAgent ? "Modifier l'agent" : "Créer un agent"}
@@ -653,6 +666,12 @@ export default function AgentsClient() {
             </DialogDescription>
           </DialogHeader>
           <form className="flex flex-col gap-4 py-2" onSubmit={handleSave}>
+            {saveError && (
+              <div className="p-3 rounded-xl bg-destructive/10 border border-destructive/30 text-destructive text-xs font-medium flex items-center gap-2">
+                <TriangleAlertIcon className="size-4 shrink-0" />
+                <span>{saveError}</span>
+              </div>
+            )}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
               {/* Colonne formulaire */}
               <div className="lg:col-span-2 flex flex-col gap-4">

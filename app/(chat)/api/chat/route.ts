@@ -481,10 +481,39 @@ export async function POST(request: Request) {
           });
         };
 
-        // Charger les serveurs MCP de l'utilisateur et générer les outils associés
+        // Charger les serveurs MCP de l'utilisateur et auto-découvrir les outils si toolsCache est vide
         const userMcpServers = await getMcpServersByUserId({ userId }).catch(
           () => []
         );
+
+        // Auto-découverte à chaud si un serveur activé n'a pas encore son toolsCache
+        for (const server of userMcpServers) {
+          if (
+            server.isEnabled &&
+            (!server.toolsCache || (server.toolsCache as any[]).length === 0)
+          ) {
+            try {
+              const { fetchMcpTools } = await import("@/lib/mcp/client");
+              const discoveredTools = await fetchMcpTools(server as any);
+              if (discoveredTools && discoveredTools.length > 0) {
+                server.toolsCache = discoveredTools as any;
+                const { updateMcpServerSync } = await import("@/lib/db/queries");
+                await updateMcpServerSync({
+                  id: server.id,
+                  success: true,
+                  toolsCache: discoveredTools,
+                  userId,
+                }).catch(() => {});
+              }
+            } catch (syncErr) {
+              console.error(
+                `Auto-découverte outils MCP échouée pour ${server.name}:`,
+                syncErr
+              );
+            }
+          }
+        }
+
         const mcpTools = createMcpChatTools({
           chatId: id,
           servers: userMcpServers,
@@ -505,11 +534,11 @@ export async function POST(request: Request) {
         );
 
         const hasMcpEnabled = requestedTools2.some(
-          (t) => t === "mcp" || t.startsWith("mcp_")
+          (t) => t === "mcp" || t.startsWith("mcp_") || t.startsWith("mcp:")
         );
         const activeToolsList: string[] = [
           ...requestedTools2.filter(
-            (t) => !t.startsWith("mcp_") && t !== "mcp"
+            (t) => !t.startsWith("mcp_") && t !== "mcp" && !t.startsWith("mcp:")
           ),
           ...(hasMcpEnabled
             ? mcpToolKeys
@@ -517,10 +546,20 @@ export async function POST(request: Request) {
         ];
         const supportsTools = activeToolsList.length > 0;
 
+        // Consigne explicite pour le modèle lorsque des outils MCP sont actifs
+        let finalEffectiveAddendum = effectiveAddendum;
+        if (hasMcpEnabled && mcpToolKeys.length > 0) {
+          const activeServerNames = userMcpServers
+            .filter((s) => s.isEnabled)
+            .map((s) => s.name)
+            .join(", ");
+          finalEffectiveAddendum = `${finalEffectiveAddendum ? `${finalEffectiveAddendum}\n\n` : ""}Tu as accès à des outils externes connectés via le protocole MCP (${activeServerNames}). Outils MCP disponibles: ${mcpToolKeys.join(", ")}. Lorsque l'utilisateur demande une action ou une recherche (par exemple lister des commits, dépôts, pull requests GitHub, fichiers, etc.), tu DOIS appeler directement les outils MCP correspondants et ne JAMAIS affirmer que tu n'as pas accès à Git ou aux outils MCP.`;
+        }
+
         const result = streamText({
           activeTools: supportsTools ? (activeToolsList as any) : undefined,
           instructions: systemPrompt({
-            modeAddendum: effectiveAddendum,
+            modeAddendum: finalEffectiveAddendum,
             requestHints,
             supportsTools,
           }),

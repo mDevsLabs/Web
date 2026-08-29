@@ -584,6 +584,26 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     client`CREATE INDEX IF NOT EXISTS "Agent_userId_createdAt_idx" ON "Agent" USING btree ("userId", "createdAt" DESC)`
   );
 
+  // Colonnes enrichies de Agent (0008)
+  await run(
+    client`ALTER TABLE "Agent" ADD COLUMN IF NOT EXISTS "temperature" double precision DEFAULT 0.7`
+  );
+  await run(
+    client`ALTER TABLE "Agent" ADD COLUMN IF NOT EXISTS "topP" double precision DEFAULT 0.9`
+  );
+  await run(
+    client`ALTER TABLE "Agent" ADD COLUMN IF NOT EXISTS "maxTokens" integer`
+  );
+  await run(
+    client`ALTER TABLE "Agent" ADD COLUMN IF NOT EXISTS "starterPrompts" json DEFAULT '[]'::json NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "Agent" ADD COLUMN IF NOT EXISTS "welcomeMessage" text`
+  );
+  await run(
+    client`ALTER TABLE "Agent" ADD COLUMN IF NOT EXISTS "pinned" boolean DEFAULT false NOT NULL`
+  );
+
   await run(client`CREATE TABLE IF NOT EXISTS "AgentTemplate" (
     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
     "name" varchar(100) NOT NULL,

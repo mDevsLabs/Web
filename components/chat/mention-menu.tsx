@@ -7,6 +7,7 @@ import { AgentIcon } from "@/components/agents/agent-icon";
 import type { ProjectLite } from "@/hooks/use-projects";
 import type { Agent, McpServer, Skill } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 import { ProjectIcon } from "./project-icon";
 
 type MentionProject = ProjectLite & { description?: string };
@@ -27,6 +28,7 @@ type MentionMenuProps = {
   onSelect: (payload: MentionSelectPayload) => void;
   onClose: () => void;
   selectedIndex: number;
+  supportsTools?: boolean;
 };
 
 // Flat item list for keyboard nav: skills then mcp then projects then agents
@@ -124,12 +126,23 @@ function MentionItem({
   item,
   isSelected,
   onSelect,
+  supportsTools = true,
 }: {
   item: FlatMentionItem;
   isSelected: boolean;
   onSelect: (payload: MentionSelectPayload) => void;
+  supportsTools?: boolean;
 }) {
+  const isToolFeature = item.kind === "skill" || item.kind === "mcp";
+  const isDisabled = isToolFeature && !supportsTools;
+
   const handleClick = useCallback(() => {
+    if (isDisabled) {
+      toast.warning(
+        "Ce modèle ne prend pas en charge les outils (tools). Les compétences et serveurs MCP sont désactivés."
+      );
+      return;
+    }
     if (item.kind === "skill") {
       onSelect({ skill: item.skill, type: "skill" });
     } else if (item.kind === "mcp") {
@@ -139,7 +152,7 @@ function MentionItem({
     } else {
       onSelect({ agent: item.agent, type: "agent" });
     }
-  }, [item, onSelect]);
+  }, [isDisabled, item, onSelect]);
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -150,9 +163,13 @@ function MentionItem({
       <button
         className={cn(
           "flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors",
-          isSelected ? "bg-muted/70" : "hover:bg-muted/40"
+          isDisabled
+            ? "opacity-40 cursor-not-allowed"
+            : isSelected
+              ? "bg-muted/70"
+              : "hover:bg-muted/40"
         )}
-        data-selected={isSelected}
+        data-selected={isSelected && !isDisabled}
         onClick={handleClick}
         onMouseDown={handleMouseDown}
         type="button"
@@ -171,6 +188,11 @@ function MentionItem({
             <span className="text-[10px] bg-primary/10 text-primary font-semibold px-1.5 py-0.2 rounded">
               Skill
             </span>
+            {isDisabled && (
+              <span className="text-[9px] bg-destructive/10 text-destructive font-semibold px-1.5 py-0.2 rounded">
+                Non supporté
+              </span>
+            )}
           </div>
           {item.skill.description && (
             <span className="text-[11px] text-muted-foreground/70 truncate">
@@ -187,9 +209,13 @@ function MentionItem({
       <button
         className={cn(
           "flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors",
-          isSelected ? "bg-muted/70" : "hover:bg-muted/40"
+          isDisabled
+            ? "opacity-40 cursor-not-allowed"
+            : isSelected
+              ? "bg-muted/70"
+              : "hover:bg-muted/40"
         )}
-        data-selected={isSelected}
+        data-selected={isSelected && !isDisabled}
         onClick={handleClick}
         onMouseDown={handleMouseDown}
         type="button"
@@ -205,6 +231,11 @@ function MentionItem({
             <span className="text-[10px] bg-purple-500/10 text-purple-600 dark:text-purple-400 font-semibold px-1.5 py-0.2 rounded uppercase">
               {item.server.transport}
             </span>
+            {isDisabled && (
+              <span className="text-[9px] bg-destructive/10 text-destructive font-semibold px-1.5 py-0.2 rounded">
+                Non supporté
+              </span>
+            )}
           </div>
           {item.server.description && (
             <span className="text-[11px] text-muted-foreground/70 truncate">
@@ -301,6 +332,7 @@ export function MentionMenu({
   onSelect,
   onClose: _onClose,
   selectedIndex,
+  supportsTools = true,
 }: MentionMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -329,7 +361,7 @@ export function MentionMenu({
 
   return (
     <div
-      className="absolute bottom-full left-0 right-0 z-50 mb-3 overflow-hidden rounded-2xl border border-border/80 bg-popover text-popover-foreground shadow-2xl ring-1 ring-black/10 dark:ring-white/10"
+      className="absolute bottom-full left-0 right-0 z-50 mb-3 overflow-hidden rounded-2xl border border-border/80 bg-white dark:bg-zinc-900 text-foreground shadow-2xl ring-1 ring-black/10 dark:ring-white/10"
       ref={menuRef}
     >
       <div className="max-h-80 overflow-y-auto pb-1 no-scrollbar">
@@ -338,8 +370,8 @@ export function MentionMenu({
           <>
             <div className="px-4 py-2 bg-muted/40 border-b border-border/40 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground flex items-center justify-between">
               <span>Compétences / Skills</span>
-              <span className="text-[10px] text-primary normal-case">
-                Appliquer à la discussion
+              <span className={cn("text-[10px] normal-case", supportsTools ? "text-primary" : "text-amber-600 dark:text-amber-400 font-medium")}>
+                {supportsTools ? "Appliquer à la discussion" : "Indisponible avec ce modèle"}
               </span>
             </div>
             {skillItems.map((item) => {
@@ -350,6 +382,7 @@ export function MentionMenu({
                   item={item}
                   key={`s-${item.id}`}
                   onSelect={onSelect}
+                  supportsTools={supportsTools}
                 />
               );
             })}
@@ -359,8 +392,13 @@ export function MentionMenu({
         {/* Section MCP */}
         {mcpItems.length > 0 && (
           <>
-            <div className="px-4 py-2 bg-muted/40 border-t border-b border-border/40 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-              Serveurs MCP
+            <div className="px-4 py-2 bg-muted/40 border-t border-b border-border/40 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground flex items-center justify-between">
+              <span>Serveurs MCP</span>
+              {!supportsTools && (
+                <span className="text-[10px] normal-case text-amber-600 dark:text-amber-400 font-medium">
+                  Indisponible avec ce modèle
+                </span>
+              )}
             </div>
             {mcpItems.map((item) => {
               const flatIndex = flat.indexOf(item);
@@ -370,6 +408,7 @@ export function MentionMenu({
                   item={item}
                   key={`mcp-${item.id}`}
                   onSelect={onSelect}
+                  supportsTools={supportsTools}
                 />
               );
             })}

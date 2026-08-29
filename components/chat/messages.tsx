@@ -227,7 +227,7 @@ function PureMessages({
         </div>
       )}
       {messages.length === 0 && !isLoading && (
-        <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
+        <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
           <Greeting />
         </div>
       )}

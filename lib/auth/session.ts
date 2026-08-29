@@ -38,7 +38,7 @@ export async function setMaiSessionToken(token: string) {
 }
 
 const userCache = new Map<string, { user: MaiUser; expiresAt: number }>();
-const CACHE_TTL_MS = 15_000; // 15 secondes
+const CACHE_TTL_MS = 120_000; // 2 minutes de cache en mémoire
 
 function decodeJwtPayload(token: string): any | null {
   try {
@@ -63,6 +63,27 @@ export async function removeMaiSessionToken() {
   cookieStore.delete(MAI_SESSION_COOKIE);
 }
 
+// Rafraîchissement asynchrone non-bloquant des quotas mAI
+function triggerBackgroundUsageRefresh(token: string) {
+  fetch(`${MAI_API_URL}/usage`, {
+    cache: "no-store",
+    headers: { Authorization: `Bearer ${token}` },
+  })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((data) => {
+      if (data && !data.error) {
+        const cached = userCache.get(token);
+        if (cached) {
+          cached.user.tokensUsed = Number(data.tokensUsed || cached.user.tokensUsed);
+          cached.user.limit = Number(data.limit || cached.user.limit);
+          cached.user.tier = data.tier || cached.user.tier;
+          cached.expiresAt = Date.now() + CACHE_TTL_MS;
+        }
+      }
+    })
+    .catch(() => {});
+}
+
 export async function getMaiUser(
   tokenInput?: string | null
 ): Promise<MaiUser | null> {
@@ -71,27 +92,52 @@ export async function getMaiUser(
     return null;
   }
 
-  // Vérifier le cache mémoire court
+  // 1. Cache mémoire valide
   const cached = userCache.get(token);
   if (cached && Date.now() < cached.expiresAt) {
     return cached.user;
   }
 
+  // 2. Décodage immédiat depuis le JWT local (instantané < 1ms)
+  const payload = decodeJwtPayload(token);
+  if (payload && (payload.email || payload.sub)) {
+    // Vérifier l'expiration du JWT si présente
+    if (!payload.exp || payload.exp * 1000 > Date.now()) {
+      const user: MaiUser = {
+        avatarUrl: payload.avatarUrl || null,
+        email: payload.email || "",
+        id: payload.id ? String(payload.id) : payload.sub ? String(payload.sub) : payload.email || "",
+        limit: Number(payload.limit || 2_000_000),
+        phone: payload.phone || "",
+        resetAt: payload.resetAt,
+        tier: payload.tier || "Free",
+        tokensUsed: Number(payload.tokensUsed || 0),
+        username: payload.username || payload.name || "Utilisateur",
+        weekStart: payload.weekStart,
+      };
+
+      userCache.set(token, { expiresAt: Date.now() + CACHE_TTL_MS, user });
+      // Lancer le rafraîchissement d'usage en arrière-plan sans bloquer la requête
+      triggerBackgroundUsageRefresh(token);
+      return user;
+    }
+  }
+
+  // 3. Fallback réseau si JWT non présent
   try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 1500);
     const res = await fetch(`${MAI_API_URL}/usage`, {
       cache: "no-store",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+      headers: { Authorization: `Bearer ${token}` },
+      signal: controller.signal,
+    }).finally(() => clearTimeout(timeout));
 
     if (res.ok) {
       const data = await res.json();
       if (!data.error) {
-        // Récupération de l'id utilisateur (depuis data.id ou payload JWT)
         let userId: string | undefined = data.id ? String(data.id) : undefined;
-        if (!userId) {
-          const payload = decodeJwtPayload(token);
+        if (!userId && payload) {
           userId = payload?.sub ? String(payload.sub) : undefined;
         }
 
@@ -114,38 +160,6 @@ export async function getMaiUser(
     }
   } catch (error) {
     console.error("Erreur récupération utilisateur mAI:", error);
-  }
-
-  // Fallback JWT si Val Town est temporairement indisponible ou en rate-limit
-  const fallbackPayload = decodeJwtPayload(token);
-  if (fallbackPayload && (fallbackPayload.email || fallbackPayload.sub)) {
-    // Vérifier l'expiration du JWT si présente
-    if (!fallbackPayload.exp || fallbackPayload.exp * 1000 > Date.now()) {
-      const fallbackUser: MaiUser = {
-        avatarUrl: fallbackPayload.avatarUrl || null,
-        email: fallbackPayload.email || "",
-        id: fallbackPayload.id
-          ? String(fallbackPayload.id)
-          : fallbackPayload.sub
-            ? String(fallbackPayload.sub)
-            : fallbackPayload.email || "",
-        limit: Number(fallbackPayload.limit || 2_000_000),
-        phone: fallbackPayload.phone || "",
-        resetAt: fallbackPayload.resetAt,
-        tier: fallbackPayload.tier || "Free",
-        tokensUsed: Number(fallbackPayload.tokensUsed || 0),
-        username:
-          fallbackPayload.username || fallbackPayload.name || "Utilisateur",
-        weekStart: fallbackPayload.weekStart,
-      };
-
-      // Mettre en cache pour quelques secondes
-      userCache.set(token, {
-        expiresAt: Date.now() + 5000,
-        user: fallbackUser,
-      });
-      return fallbackUser;
-    }
   }
 
   return null;

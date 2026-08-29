@@ -70,7 +70,7 @@ const PRESET_TEMPLATES = [
     name: "GitHub MCP",
     requireApproval: "write_only",
     transport: "sse",
-    url: "https://mcp-github-server.example.com/sse",
+    url: "https://api.githubcopilot.com/mcp/",
   },
   {
     authType: "none",
@@ -906,36 +906,32 @@ export default function McpClient() {
                           </DropdownMenuContent>
                         </DropdownMenu>
                       </div>
-                      <div className="flex items-center gap-1.5 flex-wrap mb-2">
-                        <span className="text-[10px] text-muted-foreground">
-                          ⏱ {(s as any).avgLatencyMs ?? 0}ms
-                        </span>
-                        <span className="text-[10px] text-muted-foreground">
-                          📞 {(s as any).callCount ?? 0} appel(s)
-                        </span>
+                      <div className="flex items-center gap-1.5 flex-wrap mb-2 text-[10.5px] text-muted-foreground">
+                        <span>⏱ {(s as any).avgLatencyMs ?? 0}ms</span>
+                        <span>·</span>
+                        <span>📞 {(s as any).callCount ?? 0} appel(s)</span>
+                        <span>·</span>
                         <span
                           className={cn(
-                            "text-[10px]",
                             (s as any).uptimeStatus === "online"
-                              ? "text-emerald-600"
-                              : "text-amber-600"
+                              ? "text-emerald-600 dark:text-emerald-400"
+                              : "text-amber-600 dark:text-amber-400"
                           )}
                         >
                           ● {(s as any).uptimeStatus ?? "unknown"}
                         </span>
-                        <span className="text-[10px] text-muted-foreground">
-                          · {enabledCount}/{toolsCount} actifs
-                        </span>
+                        <span>·</span>
+                        <span>{enabledCount}/{toolsCount} actifs</span>
                       </div>
                       <div className="flex items-center gap-1.5 flex-wrap mb-3">
                         <Badge
-                          className="text-[10px] uppercase font-semibold"
+                          className="text-[10px] uppercase font-semibold px-2 py-0.5"
                           variant="outline"
                         >
                           {s.transport}
                         </Badge>
                         <Badge
-                          className="text-[10px]"
+                          className="text-[10px] px-2 py-0.5"
                           variant={
                             s.authType === "none" ? "outline" : "secondary"
                           }
@@ -946,7 +942,7 @@ export default function McpClient() {
                         </Badge>
                         <Badge
                           className={cn(
-                            "text-[10px]",
+                            "text-[10px] px-2 py-0.5",
                             s.requireApproval === "ask_permission"
                               ? "bg-amber-500/10 text-amber-600 border-amber-500/30"
                               : s.requireApproval === "write_only"
@@ -962,7 +958,7 @@ export default function McpClient() {
                               ? "Accord écriture"
                               : "Auto-approuvé"}
                         </Badge>
-                        <Badge className="text-[10px]" variant="outline">
+                        <Badge className="text-[10px] px-2 py-0.5" variant="outline">
                           ⏱ {(s as any).timeoutMs ?? 15_000}ms ·{" "}
                           {(s as any).rateLimitPerMin ?? 60}/min
                         </Badge>

@@ -71,6 +71,7 @@ import {
   type ChatModel,
   chatModels,
   DEFAULT_CHAT_MODEL,
+  getModelCapabilities,
   type ModelCapabilities,
 } from "@/lib/ai/models";
 import { TOOLS_META, type ToolId } from "@/lib/ai/tools/config";
@@ -133,6 +134,45 @@ function detectTrigger(
     return { query: mentionMatch[2], start: atIndex, type: "mention" };
   }
   return null;
+}
+
+function renderHighlightedMentions(
+  text: string,
+  mcpServers: McpServer[] = [],
+  skills: Skill[] = [],
+  agents: Agent[] = []
+) {
+  if (!text) return null;
+  const mentionNames = [
+    ...mcpServers.map((s) => s.name),
+    ...skills.map((s) => s.name),
+    ...agents.map((a) => a.name),
+  ].filter(Boolean);
+
+  mentionNames.sort((a, b) => b.length - a.length);
+
+  const escapedNames = mentionNames.map((n) =>
+    n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+  );
+  const pattern =
+    escapedNames.length > 0
+      ? `(@(?:${escapedNames.join("|")}|[a-zA-Z0-9_\\u00C0-\\u017F-]+))`
+      : `(@[a-zA-Z0-9_\\u00C0-\\u017F-]+)`;
+  const regex = new RegExp(pattern, "g");
+  const parts = text.split(regex);
+
+  return parts.map((part, i) =>
+    part.startsWith("@") ? (
+      <span
+        className="text-blue-600 dark:text-blue-400 font-semibold bg-blue-500/15 px-1 py-0.5 rounded"
+        key={i}
+      >
+        {part}
+      </span>
+    ) : (
+      <span key={i}>{part}</span>
+    )
+  );
 }
 
 function PureMultimodalInput({
@@ -354,13 +394,25 @@ function PureMultimodalInput({
   );
   const capsMap: Record<string, ModelCapabilities> | undefined =
     modelCapsData?.capabilities;
-  const currentCapabilities = capsMap?.[selectedModelId];
+  const currentCapabilities =
+    capsMap?.[selectedModelId] || getModelCapabilities(selectedModelId);
   const hasVisionSupport = Boolean(
     currentCapabilities?.vision ||
       currentCapabilities?.image ||
       currentCapabilities?.file
   );
+  const supportsTools = currentCapabilities?.tools !== false;
   const hasStrictCaps = Boolean(capsMap && currentCapabilities !== undefined);
+
+  // Vider les outils si le modèle ne supporte pas les tools
+  useEffect(() => {
+    if (!supportsTools && pendingTools.length > 0) {
+      clearPendingTools();
+      toast.warning(
+        "Outils désactivés : ce modèle ne prend pas en charge les outils (tools)."
+      );
+    }
+  }, [supportsTools, pendingTools.length, clearPendingTools]);
 
   // Vider les pièces jointes si le modèle ne supporte plus la vision/fichiers
   useEffect(() => {
@@ -397,6 +449,32 @@ function PureMultimodalInput({
       const cursor = event.target.selectionStart ?? val.length;
       setInput(val);
 
+      // Si l'utilisateur efface la mention du texte, retirer l'outil/skill/agent correspondant
+      // 1. MCP
+      for (const tid of pendingTools) {
+        const tidStr = tid as string;
+        if (tidStr.startsWith("mcp:") || tidStr === "mcp") {
+          const srvId = tidStr.replace(/^mcp:/, "");
+          const srv = userMcpServers.find(
+            (s) => s.id === srvId || s.name.toLowerCase() === srvId.toLowerCase()
+          );
+          const srvName = srv ? srv.name : "MCP";
+          if (!val.includes(`@${srvName}`)) {
+            togglePendingTool(tid as any);
+          }
+        }
+      }
+
+      // 2. Skill
+      if (activeSkill && !val.includes(`@${activeSkill.name}`)) {
+        clearActiveSkill();
+      }
+
+      // 3. Agent
+      if (activeAgent && !val.includes(`@${activeAgent.name}`)) {
+        clearActiveAgent();
+      }
+
       const trigger = detectTrigger(val, cursor);
       if (trigger?.type === "slash") {
         setSlashOpen(true);
@@ -416,7 +494,16 @@ function PureMultimodalInput({
         mentionTriggerPosRef.current = null;
       }
     },
-    [setInput]
+    [
+      setInput,
+      pendingTools,
+      userMcpServers,
+      togglePendingTool,
+      activeSkill,
+      clearActiveSkill,
+      activeAgent,
+      clearActiveAgent,
+    ]
   );
 
   const handleSlashSelect = useCallback(
@@ -631,74 +718,62 @@ function PureMultimodalInput({
 
   const handleMentionSelect = useCallback(
     (payload: MentionSelectPayload) => {
+      // Bloquer si le modèle ne supporte pas les tools
+      if ((payload.type === "skill" || payload.type === "mcp") && !supportsTools) {
+        toast.warning(
+          "Ce modèle ne prend pas en charge les outils (tools). Les compétences et MCP sont indisponibles."
+        );
+        setMentionOpen(false);
+        setMentionQuery("");
+        mentionTriggerPosRef.current = null;
+        return;
+      }
+
       const textarea = textareaRef.current;
       const cursor = textarea?.selectionStart ?? input.length;
-      // Replace @query token with empty (remove trigger)
-      let newVal = input;
+      let mentionTag = "";
+      if (payload.type === "skill") {
+        mentionTag = `@${payload.skill.name} `;
+        setActiveSkill(payload.skill);
+        toast.success(`Compétence appliquée à la discussion : ${payload.skill.name}`);
+      } else if (payload.type === "mcp") {
+        mentionTag = `@${payload.server.name} `;
+        const mcpKey = `mcp:${payload.server.id}`;
+        if (!pendingTools.includes(mcpKey as any) && !pendingTools.includes("mcp" as any)) {
+          togglePendingTool(mcpKey as any);
+        }
+        toast.success(`Serveur MCP ciblé : ${payload.server.name}`);
+      } else if (payload.type === "project") {
+        mentionTag = `@${payload.project.name} `;
+        setPendingProject({
+          color: payload.project.color,
+          icon: payload.project.icon,
+          id: payload.project.id,
+          name: payload.project.name,
+        });
+        toast.success(`Conversations enregistrées dans : ${payload.project.name}`);
+      } else if (payload.type === "agent") {
+        mentionTag = `@${payload.agent.name} `;
+        setActiveAgent(payload.agent);
+        const icon = (payload.agent as any).emoji
+          ? `${(payload.agent as any).emoji} `
+          : "";
+        toast.success(
+          `Agent activé : ${icon}${payload.agent.name} — modèle ${(payload.agent as any).defaultModelId}`
+        );
+      }
+
       const atPos = mentionTriggerPosRef.current;
+      let newVal = input;
       if (atPos !== null && atPos >= 0) {
-        // Find end of @token (cursor)
         const before = input.slice(0, atPos);
         const after = input.slice(cursor);
-        newVal = before + after;
-        // Trim extra space if before ends with space and after starts with space?
-        newVal = newVal.replace(/\s{2,}/g, " ").trimStart();
-        setInput(newVal);
-        // Persist pill / agent / skill / mcp
-        if (payload.type === "skill") {
-          setActiveSkill(payload.skill);
-          toast.success(
-            `Compétence appliquée à la discussion : ${payload.skill.name}`
-          );
-        } else if (payload.type === "mcp") {
-          togglePendingTool("mcp" as any);
-          toast.success(`Serveur MCP ciblé : ${payload.server.name}`);
-        } else if (payload.type === "project") {
-          setPendingProject({
-            color: payload.project.color,
-            icon: payload.project.icon,
-            id: payload.project.id,
-            name: payload.project.name,
-          });
-          toast.success(
-            `Conversations enregistrées dans : ${payload.project.name}`
-          );
-        } else if (payload.type === "agent") {
-          setActiveAgent(payload.agent);
-          const icon = (payload.agent as any).emoji
-            ? `${(payload.agent as any).emoji} `
-            : "";
-          toast.success(
-            `Agent activé : ${icon}${payload.agent.name} — modèle ${(payload.agent as any).defaultModelId}`
-          );
-          // onModelChange will be triggered via setActiveAgent side-effect (cookie)
-        }
+        newVal = `${before}${mentionTag}${after.trimStart()}`;
       } else {
-        // fallback: just clear input token
-        setInput("");
-        if (payload.type === "skill") {
-          setActiveSkill(payload.skill);
-          toast.success(
-            `Compétence appliquée à la discussion : ${payload.skill.name}`
-          );
-        } else if (payload.type === "mcp") {
-          togglePendingTool("mcp" as any);
-          toast.success(`Serveur MCP ciblé : ${payload.server.name}`);
-        } else if (payload.type === "project") {
-          setPendingProject({
-            color: payload.project.color,
-            icon: payload.project.icon,
-            id: payload.project.id,
-            name: payload.project.name,
-          });
-          toast.success(
-            `Conversations enregistrées dans : ${payload.project.name}`
-          );
-        } else if ((payload as any).type === "agent") {
-          setActiveAgent((payload as any).agent);
-          toast.success(`Agent activé : ${(payload as any).agent.name}`);
-        }
+        newVal = `${input.trimEnd()} ${mentionTag}`.trimStart();
       }
+
+      setInput(newVal);
       setMentionOpen(false);
       setMentionQuery("");
       mentionTriggerPosRef.current = null;
@@ -708,6 +783,8 @@ function PureMultimodalInput({
     [
       input,
       setInput,
+      supportsTools,
+      pendingTools,
       setPendingProject,
       setActiveAgent,
       setActiveSkill,
@@ -1323,6 +1400,7 @@ function PureMultimodalInput({
             onSelect={handleSlashSelect}
             query={slashQuery}
             selectedIndex={slashIndex}
+            supportsTools={supportsTools}
           />
         ) : null}
         {mentionOpen ? (
@@ -1336,9 +1414,19 @@ function PureMultimodalInput({
             query={mentionQuery}
             selectedIndex={mentionIndex}
             skills={userSkills}
+            supportsTools={supportsTools}
           />
         ) : null}
       </div>
+
+      {!supportsTools && (
+        <div className="mb-2 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center gap-2 text-[11.5px] text-amber-700 dark:text-amber-400">
+          <TriangleAlertIcon className="size-3.5 shrink-0" />
+          <span>
+            Ce modèle ne prend pas en charge les outils (tools). Les MCP, compétences et outils système sont désactivés.
+          </span>
+        </div>
+      )}
 
       <PromptInput
         className="[&>div]:rounded-[28px] [&>div]:border [&>div]:border-border/40 [&>div]:bg-card/85 [&>div]:backdrop-blur-xl [&>div]:shadow-[var(--shadow-composer)] [&>div]:transition-all [&>div]:duration-200 [&>div]:focus-within:border-border/70 [&>div]:focus-within:shadow-[var(--shadow-composer-focus)]"
@@ -1376,19 +1464,37 @@ function PureMultimodalInput({
         {pendingTools.length > 0 ? (
           <div className="flex flex-wrap items-center gap-1.5 px-4 pt-2.5">
             {pendingTools.map((tid) => {
-              const meta = TOOLS_META[tid as ToolId];
-              const Icon = meta?.icon as any;
+              const tidStr = tid as string;
+              let label = tidStr;
+              let IconComponent: any = null;
+              if (tidStr.startsWith("mcp:") || tidStr === "mcp") {
+                const srvId = tidStr.replace(/^mcp:/, "");
+                const srv = userMcpServers.find(
+                  (s) => s.id === srvId || s.name.toLowerCase() === srvId.toLowerCase()
+                );
+                label = srv ? srv.name : "GitHub MCP";
+                IconComponent = CpuIcon;
+              } else {
+                const meta = TOOLS_META[tid as ToolId];
+                label = meta?.label || tidStr;
+                IconComponent = meta?.icon;
+              }
               return (
                 <span
-                  className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 border border-primary/25 px-2.5 py-0.5 text-[11px] font-medium text-primary shadow-xs"
-                  key={tid}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 px-2.5 py-0.5 text-[11px] font-medium text-blue-600 dark:text-blue-400 shadow-xs"
+                  key={tidStr}
                 >
-                  {Icon && <Icon className="size-3" />}
-                  <span>{meta?.label || tid}</span>
+                  {IconComponent && <IconComponent className="size-3" />}
+                  <span>{label}</span>
                   <button
                     aria-label="Désactiver l'outil"
-                    className="ml-0.5 rounded-full p-0.5 hover:bg-primary/20 cursor-pointer"
-                    onClick={() => togglePendingTool(tid as ToolId)}
+                    className="ml-0.5 rounded-full p-0.5 hover:bg-blue-500/20 cursor-pointer"
+                    onClick={() => {
+                      togglePendingTool(tid as any);
+                      const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+                      const cleanInput = input.replace(new RegExp(`@${escaped}\\s*`, "g"), "").trim();
+                      setInput(cleanInput);
+                    }}
                     type="button"
                   >
                     <XIcon className="size-3" />
@@ -1399,18 +1505,31 @@ function PureMultimodalInput({
           </div>
         ) : null}
 
-        <PromptInputTextarea
-          className="min-h-[48px] max-h-36 text-[16px] md:text-[13.5px] leading-relaxed px-4 pt-3.5 pb-1.5 placeholder:text-muted-foreground/45 resize-none"
-          data-testid="multimodal-input"
-          onBlur={handleTextareaBlur}
-          onChange={handleInput}
-          onKeyDown={handleTextareaKeyDown}
-          placeholder={
-            editingMessage ? "Modifier votre message..." : "Poser une question"
-          }
-          ref={textareaRef}
-          value={input}
-        />
+        <div className="relative w-full">
+          {input ? (
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 overflow-hidden min-h-[48px] max-h-36 px-4 pt-3.5 pb-1.5 text-[16px] md:text-[13.5px] leading-relaxed whitespace-pre-wrap break-words text-foreground select-none font-sans"
+            >
+              {renderHighlightedMentions(input, userMcpServers, userSkills, userAgents)}
+            </div>
+          ) : null}
+          <PromptInputTextarea
+            className={cn(
+              "min-h-[48px] max-h-36 text-[16px] md:text-[13.5px] leading-relaxed px-4 pt-3.5 pb-1.5 placeholder:text-muted-foreground/45 resize-none relative z-10 font-sans",
+              input ? "bg-transparent text-transparent caret-foreground selection:bg-blue-500/30 selection:text-transparent" : ""
+            )}
+            data-testid="multimodal-input"
+            onBlur={handleTextareaBlur}
+            onChange={handleInput}
+            onKeyDown={handleTextareaKeyDown}
+            placeholder={
+              editingMessage ? "Modifier votre message..." : "Poser une question"
+            }
+            ref={textareaRef}
+            value={input}
+          />
+        </div>
         <PromptInputFooter className="px-3 pb-2.5 pt-0">
           <PromptInputTools>
             <PlusMenuButton
@@ -1418,6 +1537,7 @@ function PureMultimodalInput({
               onOpenCloudPicker={() => setCloudPickerOpen(true)}
               selectedModelId={selectedModelId}
               status={status}
+              supportsTools={supportsTools}
             />
             <Button
               className={`h-9 w-9 sm:h-8 sm:w-8 rounded-full p-1.5 border ${isListening ? "bg-red-500/10 border-red-500/30 text-red-500 animate-pulse" : "border-border/40 hover:bg-muted text-foreground"} ${isSpeechSupported ? "" : "opacity-40"}`}
@@ -1550,11 +1670,13 @@ function PurePlusMenuButton({
   status,
   selectedModelId,
   onOpenCloudPicker,
+  supportsTools = true,
 }: {
   fileInputRef: React.MutableRefObject<HTMLInputElement | null>;
   status: UseChatHelpers<ChatMessage>["status"];
   selectedModelId: string;
   onOpenCloudPicker: () => void;
+  supportsTools?: boolean;
 }) {
   const { data: modelsResponse } = useSWR(
     `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models`,
@@ -1611,6 +1733,10 @@ function PurePlusMenuButton({
   };
 
   const toggleToolExclusive = (toolId: ToolId, label: string) => {
+    if (!supportsTools) {
+      toast.warning("Ce modèle ne prend pas en charge les outils (tools).");
+      return;
+    }
     const isCurrentlyEnabled = pendingTools.includes(toolId);
     togglePendingTool(toolId);
     toast(
@@ -1624,7 +1750,7 @@ function PurePlusMenuButton({
   const isImageActive = pendingTools.includes("imageGenerate" as ToolId);
   const isAudioActive = pendingTools.includes("audioGenerate" as ToolId);
   const isWebActive = pendingTools.includes("webSearch" as ToolId);
-  const isMcpActive = pendingTools.includes("mcp" as ToolId);
+  const isMcpActive = pendingTools.some((t) => (t as string) === "mcp" || (t as string).startsWith("mcp:"));
 
   return (
     <Popover onOpenChange={setOpen} open={open}>
@@ -1710,17 +1836,23 @@ function PurePlusMenuButton({
         <button
           className={cn(
             "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
-            isGhostMode
+            isGhostMode || !supportsTools
               ? "opacity-50 cursor-not-allowed bg-muted/20"
               : isImageActive
                 ? "bg-primary/10 border border-primary/30 ring-1 ring-primary/20 text-primary"
                 : "hover:bg-muted/70 text-foreground"
           )}
-          disabled={isGhostMode}
+          disabled={isGhostMode || !supportsTools}
           onClick={() => {
             if (isGhostMode) {
               toast.error(
                 "La génération d'image est indisponible en Mode fantôme"
+              );
+              return;
+            }
+            if (!supportsTools) {
+              toast.warning(
+                "La génération d'image nécessite un modèle avec support des outils."
               );
               return;
             }
@@ -1740,6 +1872,10 @@ function PurePlusMenuButton({
                 <span className="text-[10px] bg-purple-500/20 text-purple-400 font-medium px-1.5 py-0.5 rounded-full">
                   INDISPONIBLE EN FANTÔME
                 </span>
+              ) : !supportsTools ? (
+                <span className="text-[10px] bg-destructive/15 text-destructive font-medium px-1.5 py-0.5 rounded-full">
+                  SANS TOOLS
+                </span>
               ) : isImageActive ? (
                 <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
                   ACTIF
@@ -1749,7 +1885,9 @@ function PurePlusMenuButton({
             <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
               {isGhostMode
                 ? "Indisponible dans ce mode"
-                : "Transformez vos idées en images"}
+                : !supportsTools
+                  ? "Non supporté par ce modèle"
+                  : "Transformez vos idées en images"}
             </span>
           </div>
         </button>
@@ -1758,17 +1896,23 @@ function PurePlusMenuButton({
         <button
           className={cn(
             "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
-            isGhostMode
+            isGhostMode || !supportsTools
               ? "opacity-50 cursor-not-allowed bg-muted/20"
               : isAudioActive
                 ? "bg-primary/10 border border-primary/30 ring-1 ring-primary/20 text-primary"
                 : "hover:bg-muted/70 text-foreground"
           )}
-          disabled={isGhostMode}
+          disabled={isGhostMode || !supportsTools}
           onClick={() => {
             if (isGhostMode) {
               toast.error(
                 "La génération audio est indisponible en Mode fantôme"
+              );
+              return;
+            }
+            if (!supportsTools) {
+              toast.warning(
+                "La génération audio nécessite un modèle avec support des outils."
               );
               return;
             }
@@ -1788,6 +1932,10 @@ function PurePlusMenuButton({
                 <span className="text-[10px] bg-purple-500/20 text-purple-400 font-medium px-1.5 py-0.5 rounded-full">
                   INDISPONIBLE EN FANTÔME
                 </span>
+              ) : !supportsTools ? (
+                <span className="text-[10px] bg-destructive/15 text-destructive font-medium px-1.5 py-0.5 rounded-full">
+                  SANS TOOLS
+                </span>
               ) : isAudioActive ? (
                 <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
                   ACTIF
@@ -1797,7 +1945,9 @@ function PurePlusMenuButton({
             <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
               {isGhostMode
                 ? "Indisponible dans ce mode"
-                : "Synthèse vocale et audio IA"}
+                : !supportsTools
+                  ? "Non supporté par ce modèle"
+                  : "Synthèse vocale et audio IA"}
             </span>
           </div>
         </button>
@@ -1806,13 +1956,22 @@ function PurePlusMenuButton({
         <button
           className={cn(
             "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
-            isWebActive
-              ? "bg-primary/10 border border-primary/30 ring-1 ring-primary/20 text-primary"
-              : "hover:bg-muted/70 text-foreground"
+            !supportsTools
+              ? "opacity-50 cursor-not-allowed bg-muted/20"
+              : isWebActive
+                ? "bg-primary/10 border border-primary/30 ring-1 ring-primary/20 text-primary"
+                : "hover:bg-muted/70 text-foreground"
           )}
-          onClick={() =>
-            toggleToolExclusive("webSearch", "Recherche sur le Web")
-          }
+          disabled={!supportsTools}
+          onClick={() => {
+            if (!supportsTools) {
+              toast.warning(
+                "La recherche Web nécessite un modèle avec support des outils."
+              );
+              return;
+            }
+            toggleToolExclusive("webSearch", "Recherche sur le Web");
+          }}
           type="button"
         >
           <div className="flex size-7 items-center justify-center rounded-lg text-sky-500 shrink-0">
@@ -1823,58 +1982,104 @@ function PurePlusMenuButton({
               <span className="text-[13.5px] font-semibold truncate">
                 Recherche sur le Web
               </span>
-              {isWebActive && (
+              {!supportsTools ? (
+                <span className="text-[10px] bg-destructive/15 text-destructive font-medium px-1.5 py-0.5 rounded-full">
+                  SANS TOOLS
+                </span>
+              ) : isWebActive ? (
                 <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
                   ACTIF
                 </span>
-              )}
+              ) : null}
             </div>
             <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
-              Trouvez des infos en temps réel
+              {!supportsTools
+                ? "Non supporté par ce modèle"
+                : "Trouvez des infos en temps réel"}
             </span>
           </div>
         </button>
 
         {/* Option 6: Compétences (Skills) */}
-        <Link
-          className={cn(
-            "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
-            activeSkill
-              ? "bg-primary/10 border border-primary/30 ring-1 ring-primary/20 text-primary"
-              : "hover:bg-muted/70 text-foreground"
-          )}
-          href="/skills"
-          onClick={() => setOpen(false)}
-        >
-          <div className="flex size-7 items-center justify-center rounded-lg text-primary shrink-0">
-            <SparklesIcon className="size-4" />
-          </div>
-          <div className="flex items-center justify-between w-full min-w-0 gap-2">
-            <div className="flex items-center gap-2">
-              <span className="text-[13.5px] font-semibold truncate">
-                Compétences (Skills)
-              </span>
-              {activeSkill && (
-                <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full truncate max-w-[120px]">
-                  {activeSkill.name}
-                </span>
-              )}
+        {supportsTools ? (
+          <Link
+            className={cn(
+              "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
+              activeSkill
+                ? "bg-primary/10 border border-primary/30 ring-1 ring-primary/20 text-primary"
+                : "hover:bg-muted/70 text-foreground"
+            )}
+            href="/skills"
+            onClick={() => setOpen(false)}
+          >
+            <div className="flex size-7 items-center justify-center rounded-lg text-primary shrink-0">
+              <SparklesIcon className="size-4" />
             </div>
-            <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
-              Gérer et configurer
-            </span>
-          </div>
-        </Link>
+            <div className="flex items-center justify-between w-full min-w-0 gap-2">
+              <div className="flex items-center gap-2">
+                <span className="text-[13.5px] font-semibold truncate">
+                  Compétences (Skills)
+                </span>
+                {activeSkill && (
+                  <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full truncate max-w-[120px]">
+                    {activeSkill.name}
+                  </span>
+                )}
+              </div>
+              <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
+                Gérer et configurer
+              </span>
+            </div>
+          </Link>
+        ) : (
+          <button
+            className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-not-allowed opacity-50 bg-muted/20"
+            onClick={() => {
+              toast.warning(
+                "Les compétences (skills) nécessitent un modèle supportant les outils."
+              );
+            }}
+            type="button"
+          >
+            <div className="flex size-7 items-center justify-center rounded-lg text-muted-foreground shrink-0">
+              <SparklesIcon className="size-4" />
+            </div>
+            <div className="flex items-center justify-between w-full min-w-0 gap-2">
+              <div className="flex items-center gap-2">
+                <span className="text-[13.5px] font-semibold truncate">
+                  Compétences (Skills)
+                </span>
+                <span className="text-[10px] bg-destructive/15 text-destructive font-medium px-1.5 py-0.5 rounded-full">
+                  SANS TOOLS
+                </span>
+              </div>
+              <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
+                Non supporté par ce modèle
+              </span>
+            </div>
+          </button>
+        )}
 
         {/* Option 7: Serveurs & Outils MCP */}
         <button
           className={cn(
             "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
-            isMcpActive
-              ? "bg-primary/10 border border-primary/30 ring-1 ring-primary/20 text-primary"
-              : "hover:bg-muted/70 text-foreground"
+            !supportsTools
+              ? "opacity-50 cursor-not-allowed bg-muted/20"
+              : isMcpActive
+                ? "bg-primary/10 border border-primary/30 ring-1 ring-primary/20 text-primary"
+                : "hover:bg-muted/70 text-foreground"
           )}
-          onClick={() => toggleToolExclusive("mcp" as any, "Outils MCP")}
+          disabled={!supportsTools}
+          onClick={() => {
+            if (!supportsTools) {
+              toast.warning(
+                "Les serveurs et outils MCP nécessitent un modèle avec support des outils."
+              );
+              return;
+            }
+            toggleToolExclusive("mcp" as any, "Outils MCP");
+          }}
           type="button"
         >
           <div className="flex size-7 items-center justify-center rounded-lg text-purple-600 dark:text-purple-400 shrink-0">
@@ -1885,14 +2090,20 @@ function PurePlusMenuButton({
               <span className="text-[13.5px] font-semibold truncate">
                 Outils & Serveurs MCP
               </span>
-              {isMcpActive && (
+              {!supportsTools ? (
+                <span className="text-[10px] bg-destructive/15 text-destructive font-medium px-1.5 py-0.5 rounded-full">
+                  SANS TOOLS
+                </span>
+              ) : isMcpActive ? (
                 <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
                   ACTIF
                 </span>
-              )}
+              ) : null}
             </div>
             <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
-              Connecter bases & APIs
+              {!supportsTools
+                ? "Non supporté par ce modèle"
+                : "Connecter bases & APIs"}
             </span>
           </div>
         </button>

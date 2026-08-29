@@ -19,10 +19,10 @@ const createAgentSchema = z.object({
   icon: z.string().max(50).optional(),
   instructions: z.string().min(1).max(5000),
   maxTokens: z.number().int().min(1).max(1_000_000).nullable().optional(),
-  mcpServerIds: z.array(z.string().uuid()).max(10).optional(),
+  mcpServerIds: z.array(z.string().min(1)).max(10).optional(),
   name: z.string().min(1).max(100),
   pinned: z.boolean().optional(),
-  skillIds: z.array(z.string().uuid()).max(10).optional(),
+  skillIds: z.array(z.string().min(1)).max(10).optional(),
   starterPrompts: z.array(z.string().min(1).max(500)).max(10).optional(),
   temperature: z.number().min(0).max(2).nullable().optional(),
   topP: z.number().min(0).max(1).nullable().optional(),
@@ -78,9 +78,19 @@ export async function POST(request: Request) {
     });
     return Response.json(created, { status: 201 });
   } catch (err: any) {
+    console.error("Erreur création agent:", err);
+    if (err instanceof z.ZodError) {
+      const issues = err.issues
+        .map((e: any) => `${e.path.join(".") || "champ"}: ${e.message}`)
+        .join(" • ");
+      return Response.json(
+        { error: `Données invalides : ${issues}` },
+        { status: 400 }
+      );
+    }
     return Response.json(
-      { error: err.message ?? "Données invalides" },
-      { status: 400 }
+      { error: err.message ?? "Erreur lors de la création de l'agent" },
+      { status: 500 }
     );
   }
 }
