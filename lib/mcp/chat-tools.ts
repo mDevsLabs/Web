@@ -70,7 +70,7 @@ export function createMcpChatTools({
             if (["write", "delete", "execute"].includes(actionType)) {
               createNotification({
                 body: `Outil ${t.name} exécuté sur ${server.name}`,
-                link: chatId ? `/chat/${chatId}` : `/mcp`,
+                link: chatId ? `/chat/${chatId}` : "/mcp",
                 title: "Demande d'accès MCP",
                 type: "mcp_access_request",
                 userId,

@@ -56,7 +56,7 @@ export function PureMessageActions({
   const { data: notifPrefs } = useSWR(
     "/api/notifications/preferences",
     fetcher,
-    { dedupingInterval: 30000 }
+    { dedupingInterval: 30_000 }
   );
   const regenerateMode: "truncate" | "fork" =
     notifPrefs?.regenerateMode === "fork" ? "fork" : "truncate";
@@ -64,7 +64,7 @@ export function PureMessageActions({
   const { data: chatData } = useSWR(
     chatId ? `/api/chats/${chatId}` : null,
     fetcher,
-    { dedupingInterval: 10000 }
+    { dedupingInterval: 10_000 }
   );
   const visibility = (chatData as any)?.visibility ?? "private";
 
@@ -216,7 +216,9 @@ export function PureMessageActions({
       let targetIndex = -1;
       if (message.role === "user") {
         targetUserId = message.id;
-        targetIndex = messages.findIndex((m: ChatMessage) => m.id === message.id);
+        targetIndex = messages.findIndex(
+          (m: ChatMessage) => m.id === message.id
+        );
       } else {
         // assistant: find preceding user
         const idx = messages.findIndex((m: ChatMessage) => m.id === message.id);
@@ -241,8 +243,12 @@ export function PureMessageActions({
           method: "POST",
         });
         const data = await res.json();
-        if (!res.ok) throw new Error(data.error || "Erreur fork");
-        toast.success("Branche créée — régénération dans la nouvelle conversation");
+        if (!res.ok) {
+          throw new Error(data.error || "Erreur fork");
+        }
+        toast.success(
+          "Branche créée — régénération dans la nouvelle conversation"
+        );
         router.push(`/chat/${data.id}`);
         return;
       }
@@ -251,7 +257,7 @@ export function PureMessageActions({
       const { deleteTrailingMessages } = await import("@/app/(chat)/actions");
       // find first trailing after targetIndex
       if (targetIndex >= 0) {
-        const trailing = messages[targetIndex];
+        const _trailing = messages[targetIndex];
         // delete DB trailing after this message (use its timestamp? use API helper)
         // Use message id based deletion via helper that deletes by timestamp; simpler: just slice UI and regenerate
         // Attempt DB cleanup via deleteTrailingMessages using target message id
@@ -266,7 +272,15 @@ export function PureMessageActions({
     } catch (e: any) {
       toast.error(e.message || "Erreur régénération");
     }
-  }, [chatId, message, messages, regenerateMode, regenerate, router, setMessages]);
+  }, [
+    chatId,
+    message,
+    messages,
+    regenerateMode,
+    regenerate,
+    router,
+    setMessages,
+  ]);
 
   const handleShare = useCallback(
     (platform: string) => {
@@ -279,7 +293,7 @@ export function PureMessageActions({
       const chatUrl = `${window.location.origin}/chat/${chatId}#${message.id}`;
       const text = textFromParts
         ? `${textFromParts.slice(0, 280)} — via mAI`
-        : `Découvrez cette conversation mAI`;
+        : "Découvrez cette conversation mAI";
       const encodedText = encodeURIComponent(text);
       const encodedUrl = encodeURIComponent(chatUrl);
       const urls: Record<string, string> = {
@@ -304,7 +318,9 @@ export function PureMessageActions({
         return;
       }
       const url = urls[platform];
-      if (url) window.open(url, "_blank", "noopener,noreferrer");
+      if (url) {
+        window.open(url, "_blank", "noopener,noreferrer");
+      }
     },
     [chatId, message.id, textFromParts, visibility]
   );
@@ -344,8 +360,8 @@ export function PureMessageActions({
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button
-                className="size-7 inline-flex items-center justify-center rounded-md text-muted-foreground/50 hover:text-foreground hover:bg-muted/40"
                 aria-label="Partager"
+                className="size-7 inline-flex items-center justify-center rounded-md text-muted-foreground/50 hover:text-foreground hover:bg-muted/40"
                 type="button"
               >
                 <Share2Icon className="size-4" />
@@ -403,8 +419,8 @@ export function PureMessageActions({
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <button
-            className="size-7 inline-flex items-center justify-center rounded-md text-muted-foreground/50 hover:text-foreground hover:bg-muted/40"
             aria-label="Partager"
+            className="size-7 inline-flex items-center justify-center rounded-md text-muted-foreground/50 hover:text-foreground hover:bg-muted/40"
             type="button"
           >
             <Share2Icon className="size-4" />

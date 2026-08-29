@@ -4,7 +4,10 @@ export async function GET() {
   try {
     const templates = await getAgentTemplates();
     return Response.json(templates);
-  } catch (e) {
-    return Response.json({ error: "Erreur chargement templates" }, { status: 500 });
+  } catch {
+    return Response.json(
+      { error: "Erreur chargement templates" },
+      { status: 500 }
+    );
   }
 }

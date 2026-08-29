@@ -621,11 +621,11 @@ function safeEvalExpression(expression: string): {
       error: `Expression trop longue (max ${MAX_EXPR_LENGTH} caractères)`,
     };
   }
-    if (
-      /[;`\\]|=>|\beval\b|\bnew\b|\bwindow\b|\bdocument\b|\bimport\b|\brequire\b|\bprocess\b|\bString\(|\bFunction\(/i.test(
-        expr
-      )
-    ) {
+  if (
+    /[;`\\]|=>|\beval\b|\bnew\b|\bwindow\b|\bdocument\b|\bimport\b|\brequire\b|\bprocess\b|\bString\(|\bFunction\(/i.test(
+      expr
+    )
+  ) {
     return {
       error: "Caractères ou mots-clés non autorisés dans l'expression.",
     };
@@ -785,8 +785,11 @@ export const calculator = tool({
     ) {
       const result = safeEvalExpression(input.expression);
       return {
+        explanation:
+          result.result === undefined
+            ? undefined
+            : `Résultat du calcul : ${result.formatted}`,
         expression: input.expression,
-        explanation: result.result !== undefined ? `Résultat du calcul : ${result.formatted}` : undefined,
         ...result,
       };
     }

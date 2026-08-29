@@ -11,6 +11,19 @@ export const MAI_API_URL =
   process.env.NEXT_PUBLIC_MAI_API_URL || "https://mai.val.run";
 export const MAI_UPGRADE_URL = "https://mai-devs.vercel.app";
 
+// ─────────────────────────────────────────────
+// App version & legal — SSOT: version from package.json ("0.5.5")
+// ─────────────────────────────────────────────
+export const APP_VERSION = "0.5.5";
+export const APP_NAME = "mAI";
+export const APP_COPYRIGHT = `© ${new Date().getFullYear()} mAI — Tous droits réservés`;
+export const APP_SUPPORT_URL = "https://mai-devs.vercel.app/support";
+export const LEGAL_LINKS = [
+  { href: "https://mai-devs.vercel.app/legal", label: "Mentions légales" },
+  { href: "https://mai-devs.vercel.app/privacy", label: "Confidentialité" },
+  { href: "https://mai-devs.vercel.app/terms", label: "CGU" },
+] as const;
+
 // Limites quotidiennes de génération d'images par tier
 // (miroir de TIER_DAILY_IMAGE_LIMITS / getTierDailyImageLimit côté backend Val
 // Town, config.ts — non importable car code Deno)

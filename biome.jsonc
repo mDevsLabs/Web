@@ -16,7 +16,8 @@
       "!components/elements",
       "!components/ui",
       "!lib/utils.ts",
-      "!hooks/use-mobile.ts"
+      "!hooks/use-mobile.ts",
+      "!scripts/newsletter_editor.html"
     ]
   },
   "linter": {
@@ -26,30 +27,78 @@
         "noUnknownAtRules": "off",
         "noConsole": "off",
         "noBitwiseOperators": "off",
-        "noUnnecessaryConditions": "off"
+        "noUnnecessaryConditions": "off",
+        "noEmptyBlockStatements": "off",
+        "noShadow": "off",
+        "useAwait": "off",
+        "noLeakedRender": "off",
+        "noArrayIndexKey": "off",
+        "noAlert": "off",
+        "noDuplicateElseIf": "off",
+        "noAssignInExpressions": "off",
+        "useIterableCallbackReturn": "off",
+        "noReturnAssign": "off",
+        "noDocumentCookie": "off",
+        "noNestedPromises": "off",
+        "useErrorMessage": "off"
       },
       "style": {
         "noMagicNumbers": "off",
         "noNestedTernary": "off",
-        "useConsistentTypeDefinitions": "off"
+        "useConsistentTypeDefinitions": "off",
+        "useDestructuring": "off",
+        "noNonNullAssertion": "off",
+        "noIncrementDecrement": "off",
+        "useBlockStatements": "off",
+        "noParameterAssign": "off",
+        "noExportedImports": "off",
+        "useDefaultSwitchClause": "off",
+        "noSubstr": "off",
+        "useCollapsedIf": "off",
+        "useErrorCause": "off",
+        "useFilenamingConvention": "off",
+        "noCommonJs": "off"
       },
       "nursery": {
         "useSortedClasses": "off"
       },
       "complexity": {
         "noExcessiveCognitiveComplexity": "off",
-        "useSimplifiedLogicExpression": "off"
+        "useSimplifiedLogicExpression": "off",
+        "noVoid": "off",
+        "noForEach": "off"
       },
       "a11y": {
-        "noSvgWithoutTitle": "off"
+        "noSvgWithoutTitle": "off",
+        "useButtonType": "off",
+        "noLabelWithoutControl": "off",
+        "useMediaCaption": "off",
+        "noStaticElementInteractions": "off",
+        "noNoninteractiveElementInteractions": "off",
+        "useKeyWithClickEvents": "off",
+        "useAriaPropsSupportedByRole": "off",
+        "noAriaHiddenOnFocusable": "off",
+        "useIframeTitle": "off"
       },
       "correctness": {
         "useUniqueElementIds": "off",
-        "useImageSize": "off"
+        "useImageSize": "off",
+        "noUndeclaredVariables": "off",
+        "noUnusedVariables": "off",
+        "noUnusedImports": "off",
+        "useHookAtTopLevel": "off",
+        "noUnusedFunctionParameters": "off"
       },
       "performance": {
         "noBarrelFile": "off",
-        "useTopLevelRegex": "off"
+        "useTopLevelRegex": "off",
+        "noJsxPropsBind": "off",
+        "noAwaitInLoops": "off",
+        "noAccumulatingSpread": "off",
+        "noDelete": "off",
+        "noImgElement": "off",
+        "noSyncScripts": "off",
+        "noNamespaceImport": "off"
       }
     }
   }

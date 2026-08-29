@@ -9,31 +9,38 @@ import {
   Megaphone,
   Puzzle,
   TrashIcon,
-  XIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
-import { useNotifications } from "@/hooks/use-notifications";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useNotifications } from "@/hooks/use-notifications";
 import { cn } from "@/lib/utils";
 
 function formatRelative(dateStr: string) {
   try {
     const d = new Date(dateStr);
     const diff = Date.now() - d.getTime();
-    const mins = Math.floor(diff / 60000);
-    if (mins < 1) return "À l'instant";
-    if (mins < 60) return `Il y a ${mins} min`;
+    const mins = Math.floor(diff / 60_000);
+    if (mins < 1) {
+      return "À l'instant";
+    }
+    if (mins < 60) {
+      return `Il y a ${mins} min`;
+    }
     const hours = Math.floor(mins / 60);
-    if (hours < 24) return `Il y a ${hours} h`;
+    if (hours < 24) {
+      return `Il y a ${hours} h`;
+    }
     const days = Math.floor(hours / 24);
-    if (days === 1) return "Hier";
+    if (days === 1) {
+      return "Hier";
+    }
     return `Il y a ${days} j`;
   } catch {
     return "";
@@ -87,7 +94,9 @@ export function NotificationBell() {
         });
         n.onclick = () => {
           window.focus();
-          if (latest.link) window.location.href = latest.link;
+          if (latest.link) {
+            window.location.href = latest.link;
+          }
           n.close();
         };
         setTimeout(() => n.close(), 6000);
@@ -155,7 +164,9 @@ export function NotificationBell() {
             ? {
                 ...prev,
                 notifications: prev.notifications.filter((n) => n.id !== id),
-                unreadCount: prev.notifications.find((n) => n.id === id && !n.isRead)
+                unreadCount: prev.notifications.find(
+                  (n) => n.id === id && !n.isRead
+                )
                   ? Math.max(0, (prev.unreadCount ?? 1) - 1)
                   : prev.unreadCount,
               }
@@ -169,10 +180,10 @@ export function NotificationBell() {
     <DropdownMenu onOpenChange={setOpen} open={open}>
       <DropdownMenuTrigger asChild>
         <Button
+          aria-label="Notifications"
           className="relative h-8 w-8 rounded-xl border border-border/60 hover:bg-muted"
           size="icon-sm"
           variant="ghost"
-          aria-label="Notifications"
         >
           <BellIcon className="size-4" />
           {unread > 0 && (
@@ -240,11 +251,11 @@ export function NotificationBell() {
             <div className="flex flex-col divide-y divide-border/40">
               {notifications.map((n) => (
                 <div
-                  key={n.id}
                   className={cn(
                     "group flex gap-3 px-3 py-3 hover:bg-muted/30 transition-colors relative",
                     !n.isRead && "bg-primary/5"
                   )}
+                  key={n.id}
                 >
                   <div className="text-base leading-none mt-0.5 shrink-0">
                     <NotificationIcon type={n.type} />

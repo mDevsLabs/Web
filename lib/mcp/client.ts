@@ -13,8 +13,12 @@ export function isToolEnabled(
   config: McpServerConfig,
   toolName: string
 ): boolean {
-  const override = config.toolOverrides?.[toolName] as McpToolOverride | undefined;
-  if (override && typeof override.enabled === "boolean") return override.enabled;
+  const override = config.toolOverrides?.[toolName] as
+    | McpToolOverride
+    | undefined;
+  if (override && typeof override.enabled === "boolean") {
+    return override.enabled;
+  }
   return true; // par défaut tous activés
 }
 
@@ -22,17 +26,32 @@ export function resolveRequireApproval(
   config: McpServerConfig,
   toolName: string
 ): McpApprovalPolicy {
-  const override = config.toolOverrides?.[toolName] as McpToolOverride | undefined;
-  if (override?.requireApproval) return override.requireApproval as McpApprovalPolicy;
+  const override = config.toolOverrides?.[toolName] as
+    | McpToolOverride
+    | undefined;
+  if (override?.requireApproval) {
+    return override.requireApproval as McpApprovalPolicy;
+  }
   return (config.requireApproval as McpApprovalPolicy) ?? "write_only";
 }
 
-export function getEffectiveTimeout(config: McpServerConfig, fallbackMs = 15000): number {
-  return config.timeoutMs && config.timeoutMs >= 1000 ? config.timeoutMs : fallbackMs;
+export function getEffectiveTimeout(
+  config: McpServerConfig,
+  fallbackMs = 15_000
+): number {
+  return config.timeoutMs && config.timeoutMs >= 1000
+    ? config.timeoutMs
+    : fallbackMs;
 }
 
-export function checkGlobalKillSwitch(prefs: { globalKillSwitch?: boolean } | null): void {
-  if (prefs?.globalKillSwitch) throw new Error("MCP désactivé globalement (kill-switch activé dans les paramètres).");
+export function checkGlobalKillSwitch(
+  prefs: { globalKillSwitch?: boolean } | null
+): void {
+  if (prefs?.globalKillSwitch) {
+    throw new Error(
+      "MCP désactivé globalement (kill-switch activé dans les paramètres)."
+    );
+  }
 }
 
 export function checkAllowStdio(
@@ -40,20 +59,26 @@ export function checkAllowStdio(
   prefs: { allowStdio?: boolean } | null
 ): void {
   if (config.transport === "stdio" && prefs && prefs.allowStdio === false) {
-    throw new Error("Le transport stdio est désactivé dans les paramètres globaux MCP.");
+    throw new Error(
+      "Le transport stdio est désactivé dans les paramètres globaux MCP."
+    );
   }
 }
 
 // Rate-limit in-memory (par process) — fallback si pas de Redis
 const _rateMap = new Map<string, number[]>();
 export function checkRateLimit(serverId: string, limitPerMin: number): void {
-  if (!limitPerMin || limitPerMin <= 0) return;
+  if (!limitPerMin || limitPerMin <= 0) {
+    return;
+  }
   const now = Date.now();
   const windowMs = 60_000;
   const arr = _rateMap.get(serverId) ?? [];
   const recent = arr.filter((t) => now - t < windowMs);
   if (recent.length >= limitPerMin) {
-    throw new Error(`Rate limit dépassé (${limitPerMin}/min) pour ce serveur MCP.`);
+    throw new Error(
+      `Rate limit dépassé (${limitPerMin}/min) pour ce serveur MCP.`
+    );
   }
   recent.push(now);
   _rateMap.set(serverId, recent);
@@ -280,7 +305,9 @@ export async function callMcpTool(
     throw new Error(`Outil "${toolName}" désactivé pour ce serveur MCP.`);
   }
   // rate-limit (si serverId dispo, sinon skip)
-  if (config.id) checkRateLimit(config.id, config.rateLimitPerMin ?? 60);
+  if (config.id) {
+    checkRateLimit(config.id, config.rateLimitPerMin ?? 60);
+  }
 
   const req: McpJsonRpcRequest = {
     id: `call-${Date.now()}`,
@@ -312,7 +339,12 @@ export async function callMcpTool(
   }
 
   const headers = buildHeaders(config);
-  return await sendHttpJsonRpc<McpToolCallResult>(config.url, req, headers, timeout);
+  return await sendHttpJsonRpc<McpToolCallResult>(
+    config.url,
+    req,
+    headers,
+    timeout
+  );
 }
 
 /**

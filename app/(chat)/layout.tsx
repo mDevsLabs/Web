@@ -5,6 +5,7 @@ import { Toaster } from "sonner";
 import { AppSidebar } from "@/components/chat/app-sidebar";
 import { DataStreamProvider } from "@/components/chat/data-stream-provider";
 import { ChatShell } from "@/components/chat/shell";
+import { SiteFooter } from "@/components/common/site-footer";
 import { OnboardingTutorial } from "@/components/onboarding/onboarding-tutorial";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { ActiveChatProvider } from "@/hooks/use-active-chat";
@@ -34,7 +35,7 @@ async function SidebarShell({ children }: { children: React.ReactNode }) {
     <SidebarProvider defaultOpen={!isCollapsed}>
       <ActiveChatProvider>
         <AppSidebar user={user} />
-        <SidebarInset>
+        <SidebarInset className="flex flex-col">
           <Toaster
             position="top-center"
             theme="system"
@@ -46,7 +47,10 @@ async function SidebarShell({ children }: { children: React.ReactNode }) {
           <Suspense fallback={<div className="flex h-dvh" />}>
             <ChatShell />
           </Suspense>
-          {children}
+          <div className="flex flex-1 flex-col">
+            <div className="flex-1">{children}</div>
+            <SiteFooter />
+          </div>
           <OnboardingTutorial />
         </SidebarInset>
       </ActiveChatProvider>

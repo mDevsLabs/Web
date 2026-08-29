@@ -168,7 +168,9 @@ export default function SkillsClient() {
   } = useSWR<Skill[]>("/api/skills", fetcher);
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeTab, setActiveTab] = useState<"all" | "pinned" | "library">("all");
+  const [activeTab, setActiveTab] = useState<"all" | "pinned" | "library">(
+    "all"
+  );
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
   // Modals state
@@ -189,14 +191,26 @@ export default function SkillsClient() {
   const [formTools, setFormTools] = useState<string[]>([]);
   const [formTags, setFormTags] = useState<string>("");
   const [formParameters, setFormParameters] = useState<
-    Array<{ name: string; description: string; required: boolean; type?: string; defaultValue?: string; enumValues?: string[] }>
+    Array<{
+      name: string;
+      description: string;
+      required: boolean;
+      type?: string;
+      defaultValue?: string;
+      enumValues?: string[];
+    }>
   >([]);
   const [formMcpServerIds, setFormMcpServerIds] = useState<string[]>([]);
-  const [formMcpToolFilter, setFormMcpToolFilter] = useState<Record<string, string[] | null>>({});
+  const [formMcpToolFilter, setFormMcpToolFilter] = useState<
+    Record<string, string[] | null>
+  >({});
   const [isSaving, setIsSaving] = useState(false);
   const { data: mcpData } = useSWR<{ servers: any[] }>("/api/mcp", fetcher);
   const mcpServers: any[] = (mcpData as any)?.servers ?? [];
-  const { data: skillTplData } = useSWR<{ templates: any[] }>("/api/skills/templates", fetcher);
+  const { data: skillTplData } = useSWR<{ templates: any[] }>(
+    "/api/skills/templates",
+    fetcher
+  );
   const skillTemplates: any[] = (skillTplData as any)?.templates ?? [];
 
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -291,16 +305,16 @@ export default function SkillsClient() {
     try {
       const includeMcp = formTools.includes("mcp");
       const payload: any = {
-            color: formColor,
-            description: formDescription,
-            icon: formIcon,
-            instructions: formInstructions,
-            name: formName,
-            parameters: formParameters,
-            tags: tagsArray,
-            tools: formTools,
-            mcpServerIds: includeMcp ? formMcpServerIds : [],
-            mcpToolFilter: includeMcp ? formMcpToolFilter : {},
+        color: formColor,
+        description: formDescription,
+        icon: formIcon,
+        instructions: formInstructions,
+        mcpServerIds: includeMcp ? formMcpServerIds : [],
+        mcpToolFilter: includeMcp ? formMcpToolFilter : {},
+        name: formName,
+        parameters: formParameters,
+        tags: tagsArray,
+        tools: formTools,
       };
       if (editingSkill) {
         const res = await fetch(`/api/skills/${editingSkill.id}`, {
@@ -308,7 +322,9 @@ export default function SkillsClient() {
           headers: { "Content-Type": "application/json" },
           method: "PATCH",
         });
-        if (!res.ok) throw new Error("Erreur de sauvegarde");
+        if (!res.ok) {
+          throw new Error("Erreur de sauvegarde");
+        }
         toast.success("Skill mis à jour avec succès !");
       } else {
         const res = await fetch("/api/skills", {
@@ -316,7 +332,9 @@ export default function SkillsClient() {
           headers: { "Content-Type": "application/json" },
           method: "POST",
         });
-        if (!res.ok) throw new Error("Erreur lors de la création");
+        if (!res.ok) {
+          throw new Error("Erreur lors de la création");
+        }
         toast.success("Skill créé avec succès !");
       }
 
@@ -499,12 +517,44 @@ export default function SkillsClient() {
 
           <div className="flex items-center gap-2">
             <DropdownMenu>
-              <DropdownMenuTrigger asChild><Button variant="outline" className="h-8 gap-1.5 text-xs font-medium"><DownloadIcon className="size-3.5"/><span className="hidden sm:inline">Exporter</span></Button></DropdownMenuTrigger>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  className="h-8 gap-1.5 text-xs font-medium"
+                  variant="outline"
+                >
+                  <DownloadIcon className="size-3.5" />
+                  <span className="hidden sm:inline">Exporter</span>
+                </Button>
+              </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={()=> window.open("/api/skills/export?format=json","_blank")}>Skills JSON</DropdownMenuItem>
-                <DropdownMenuItem onClick={()=> window.open("/api/skills/export?format=csv","_blank")}>Skills CSV</DropdownMenuItem>
-                <DropdownMenuItem onClick={()=> window.open("/api/skills/export?format=md","_blank")}>Skills MD</DropdownMenuItem>
-                <DropdownMenuItem onClick={()=> window.open("/api/skills/export?format=txt","_blank")}>Skills TXT</DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() =>
+                    window.open("/api/skills/export?format=json", "_blank")
+                  }
+                >
+                  Skills JSON
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() =>
+                    window.open("/api/skills/export?format=csv", "_blank")
+                  }
+                >
+                  Skills CSV
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() =>
+                    window.open("/api/skills/export?format=md", "_blank")
+                  }
+                >
+                  Skills MD
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() =>
+                    window.open("/api/skills/export?format=txt", "_blank")
+                  }
+                >
+                  Skills TXT
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
             <Button
@@ -539,29 +589,29 @@ export default function SkillsClient() {
             </div>
 
             <div className="flex items-center rounded-lg border border-border/50 bg-muted/20 p-0.5 text-xs">
-                <button
-                  className={cn(
-                    "rounded-md px-2.5 py-1 text-xs font-medium transition-colors flex items-center gap-1",
-                    activeTab === "library"
-                      ? "bg-background text-foreground shadow-xs"
-                      : "text-muted-foreground hover:text-foreground"
-                  )}
-                  onClick={() => setActiveTab("library")}
-                  type="button"
-                >
-                  <BookOpenIcon className="size-3 text-amber-500" />
-                  <span>Bibliothèque</span>
-                </button>
-                <button
-                  className={cn(
-                    "rounded-md px-2.5 py-1 text-xs font-medium transition-colors",
-                    activeTab === "all"
-                      ? "bg-background text-foreground shadow-xs"
-                      : "text-muted-foreground hover:text-foreground"
-                  )}
-                  onClick={() => setActiveTab("all")}
-                  type="button"
-                >
+              <button
+                className={cn(
+                  "rounded-md px-2.5 py-1 text-xs font-medium transition-colors flex items-center gap-1",
+                  activeTab === "library"
+                    ? "bg-background text-foreground shadow-xs"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+                onClick={() => setActiveTab("library")}
+                type="button"
+              >
+                <BookOpenIcon className="size-3 text-amber-500" />
+                <span>Bibliothèque</span>
+              </button>
+              <button
+                className={cn(
+                  "rounded-md px-2.5 py-1 text-xs font-medium transition-colors",
+                  activeTab === "all"
+                    ? "bg-background text-foreground shadow-xs"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+                onClick={() => setActiveTab("all")}
+                type="button"
+              >
                 Tous ({skills.length})
               </button>
               <button
@@ -630,22 +680,119 @@ export default function SkillsClient() {
           </div>
         ) : activeTab === "library" ? (
           <div className="space-y-4">
-            <div className="flex items-center justify-between"><h2 className="text-sm font-bold">Bibliothèque — {skillTemplates.length} templates</h2><Button variant="outline" size="sm" className="h-7 text-xs" onClick={()=>{ const el=document.getElementById("skill-tpl-search"); el?.focus(); }}>Rechercher</Button></div>
-            {skillTemplates.length===0 ? <div className="rounded-2xl border border-border/60 bg-card p-6 text-center text-xs text-muted-foreground">Chargement marketplace…</div> : (
+            <div className="flex items-center justify-between">
+              <h2 className="text-sm font-bold">
+                Bibliothèque — {skillTemplates.length} templates
+              </h2>
+              <Button
+                className="h-7 text-xs"
+                onClick={() => {
+                  const el = document.getElementById("skill-tpl-search");
+                  el?.focus();
+                }}
+                size="sm"
+                variant="outline"
+              >
+                Rechercher
+              </Button>
+            </div>
+            {skillTemplates.length === 0 ? (
+              <div className="rounded-2xl border border-border/60 bg-card p-6 text-center text-xs text-muted-foreground">
+                Chargement marketplace…
+              </div>
+            ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                {skillTemplates.map((tpl:any)=>(
-                  <div key={tpl.id} className="rounded-2xl border bg-card p-4 flex flex-col">
-                    <div className="flex items-center gap-2 mb-2"><div className="size-7 rounded-lg flex items-center justify-center text-white" style={{backgroundColor: tpl.color||"#6366f1"}}><SparklesIcon className="size-3.5"/></div><span className="font-semibold text-xs truncate">{tpl.name}</span></div>
-                    <p className="text-[11px] text-muted-foreground line-clamp-2 mb-3">{tpl.description}</p>
-                    <div className="flex flex-wrap gap-1 mb-3">{(tpl.tags??[]).map((t:string)=>(<span key={t} className="text-[10px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground">#{t}</span>))}</div>
+                {skillTemplates.map((tpl: any) => (
+                  <div
+                    className="rounded-2xl border bg-card p-4 flex flex-col"
+                    key={tpl.id}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <div
+                        className="size-7 rounded-lg flex items-center justify-center text-white"
+                        style={{ backgroundColor: tpl.color || "#6366f1" }}
+                      >
+                        <SparklesIcon className="size-3.5" />
+                      </div>
+                      <span className="font-semibold text-xs truncate">
+                        {tpl.name}
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-muted-foreground line-clamp-2 mb-3">
+                      {tpl.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1 mb-3">
+                      {(tpl.tags ?? []).map((t: string) => (
+                        <span
+                          className="text-[10px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground"
+                          key={t}
+                        >
+                          #{t}
+                        </span>
+                      ))}
+                    </div>
                     <div className="flex gap-1.5 mt-auto">
-                      <Button size="sm" className="flex-1 h-7 text-xs" onClick={async()=>{ try{ const r= await fetch("/api/skills/templates",{ body: JSON.stringify({templateId:tpl.id}), headers:{"Content-Type":"application/json"}, method:"POST"}); const d=await r.json(); if(!r.ok) throw new Error(d.error); toast.success(d.message); mutate(); } catch(e:any){ toast.error(e.message);} }}><PlusIcon className="size-3 mr-1"/>Installer</Button>
-                      <Button size="sm" variant="outline" className="h-7 text-xs" onClick={async()=>{ await navigator.clipboard.writeText(JSON.stringify(tpl,null,2)); toast.success("Template copié !"); }}><CopyIcon className="size-3 mr-1"/>Copier</Button>
+                      <Button
+                        className="flex-1 h-7 text-xs"
+                        onClick={async () => {
+                          try {
+                            const r = await fetch("/api/skills/templates", {
+                              body: JSON.stringify({ templateId: tpl.id }),
+                              headers: { "Content-Type": "application/json" },
+                              method: "POST",
+                            });
+                            const d = await r.json();
+                            if (!r.ok) {
+                              throw new Error(d.error);
+                            }
+                            toast.success(d.message);
+                            mutate();
+                          } catch (e: any) {
+                            toast.error(e.message);
+                          }
+                        }}
+                        size="sm"
+                      >
+                        <PlusIcon className="size-3 mr-1" />
+                        Installer
+                      </Button>
+                      <Button
+                        className="h-7 text-xs"
+                        onClick={async () => {
+                          await navigator.clipboard.writeText(
+                            JSON.stringify(tpl, null, 2)
+                          );
+                          toast.success("Template copié !");
+                        }}
+                        size="sm"
+                        variant="outline"
+                      >
+                        <CopyIcon className="size-3 mr-1" />
+                        Copier
+                      </Button>
                     </div>
                   </div>
                 ))}
-                {STARTER_TEMPLATES.map(t=>(
-                  <div key={t.name+"starter"} className="rounded-2xl border border-dashed bg-muted/20 p-4 flex flex-col"><span className="font-semibold text-xs mb-1">{t.name} (starter)</span><p className="text-[11px] text-muted-foreground mb-3">{t.description}</p><Button size="sm" variant="outline" className="h-7 text-xs" onClick={()=>handleNewSkill(t as any)}>Utiliser</Button></div>
+                {STARTER_TEMPLATES.map((t) => (
+                  <div
+                    className="rounded-2xl border border-dashed bg-muted/20 p-4 flex flex-col"
+                    key={`${t.name}starter`}
+                  >
+                    <span className="font-semibold text-xs mb-1">
+                      {t.name} (starter)
+                    </span>
+                    <p className="text-[11px] text-muted-foreground mb-3">
+                      {t.description}
+                    </p>
+                    <Button
+                      className="h-7 text-xs"
+                      onClick={() => handleNewSkill(t as any)}
+                      size="sm"
+                      variant="outline"
+                    >
+                      Utiliser
+                    </Button>
+                  </div>
                 ))}
               </div>
             )}
@@ -831,7 +978,7 @@ export default function SkillsClient() {
                     </p>
                   </div>
 
-                    {/* Outils associés & Tags */}
+                  {/* Outils associés & Tags */}
                   <div className="flex flex-col gap-2 pt-2 border-t border-border/40">
                     <div className="flex items-center justify-between text-[11px] text-muted-foreground">
                       <div className="flex items-center gap-1.5 flex-wrap">
@@ -850,17 +997,27 @@ export default function SkillsClient() {
                             Aucun outil spécifique
                           </span>
                         )}
-                        {skillTools.includes("mcp") && Array.isArray((s as any).mcpServerIds) && (s as any).mcpServerIds.length>0 && (
-                          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-purple-500/10 text-purple-600 text-[10.5px] font-medium"><CpuIcon className="size-2.5"/>{(s as any).mcpServerIds.length} MCP</span>
-                        )}
+                        {skillTools.includes("mcp") &&
+                          Array.isArray((s as any).mcpServerIds) &&
+                          (s as any).mcpServerIds.length > 0 && (
+                            <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-purple-500/10 text-purple-600 text-[10.5px] font-medium">
+                              <CpuIcon className="size-2.5" />
+                              {(s as any).mcpServerIds.length} MCP
+                            </span>
+                          )}
                       </div>
                       <div className="flex items-center gap-2">
-                      {skillParams.length > 0 && (
-                        <span className="text-[11px] text-muted-foreground shrink-0">
-                          {skillParams.length} param(s)
-                        </span>
-                      )}
-                      {(s as any).mcpServerIds?.length>0 && <span className="text-[10px] text-purple-600">{Object.keys((s as any).mcpToolFilter||{}).length} filtres</span>}
+                        {skillParams.length > 0 && (
+                          <span className="text-[11px] text-muted-foreground shrink-0">
+                            {skillParams.length} param(s)
+                          </span>
+                        )}
+                        {(s as any).mcpServerIds?.length > 0 && (
+                          <span className="text-[10px] text-purple-600">
+                            {Object.keys((s as any).mcpToolFilter || {}).length}{" "}
+                            filtres
+                          </span>
+                        )}
                       </div>
                     </div>
 
@@ -972,12 +1129,18 @@ export default function SkillsClient() {
                   <ZapIcon className="size-3.5 text-amber-500" />
                   Tester le Skill (variables dynamiques)
                 </Label>
-                <span className="text-[10px] text-muted-foreground">Variables: {"{sujet}"}, {"{langue}"}</span>
+                <span className="text-[10px] text-muted-foreground">
+                  Variables: {"{sujet}"}, {"{langue}"}
+                </span>
               </div>
               <div className="flex gap-2">
                 <Input
                   className="h-8 text-xs bg-background"
-                  onChange={(e) => setFormInstructions((prev) => prev.replace(/{testVar}/g, e.target.value))}
+                  onChange={(e) =>
+                    setFormInstructions((prev) =>
+                      prev.replace(/{testVar}/g, e.target.value)
+                    )
+                  }
                   placeholder="Valeur de test pour {testVar}..."
                   value={"test"}
                 />
@@ -988,7 +1151,9 @@ export default function SkillsClient() {
                       .replace(/{sujet}/g, "Intelligence Artificielle")
                       .replace(/{langue}/g, "Français")
                       .replace(/{testVar}/g, "test");
-                    toast.info("Prévisualisation du prompt :\n" + preview.slice(0, 300));
+                    toast.info(
+                      `Prévisualisation du prompt :\n${preview.slice(0, 300)}`
+                    );
                   }}
                   type="button"
                   variant="outline"
@@ -998,7 +1163,9 @@ export default function SkillsClient() {
                 </Button>
               </div>
               <p className="text-[11px] text-muted-foreground leading-relaxed">
-                Utilisez des variables entre accolades dans vos instructions. Le bouton "Tester" simule le rendu du prompt avec des valeurs par défaut pour vérifier le comportement.
+                Utilisez des variables entre accolades dans vos instructions. Le
+                bouton "Tester" simule le rendu du prompt avec des valeurs par
+                défaut pour vérifier le comportement.
               </p>
             </div>
 
@@ -1053,24 +1220,146 @@ export default function SkillsClient() {
             {/* MCP Whitelist — visible si outil mcp coché */}
             {formTools.includes("mcp") && (
               <div className="space-y-3 p-3.5 rounded-xl border border-purple-500/20 bg-purple-500/[0.04]">
-                <Label className="text-xs font-semibold flex items-center gap-1.5"><CpuIcon className="size-3.5 text-purple-600"/> Serveurs MCP autorisés pour ce Skill (whitelist)</Label>
-                <p className="text-[11px] text-muted-foreground">Cochez les serveurs que ce Skill pourra utiliser. Si aucun coché, le Skill n'aura accès à aucun MCP. Déroulez pour filtrer les outils per-serveur.</p>
-                {mcpServers.length===0 ? <p className="text-xs text-muted-foreground">Aucun serveur MCP — créez-en dans /mcp</p> : (
+                <Label className="text-xs font-semibold flex items-center gap-1.5">
+                  <CpuIcon className="size-3.5 text-purple-600" /> Serveurs MCP
+                  autorisés pour ce Skill (whitelist)
+                </Label>
+                <p className="text-[11px] text-muted-foreground">
+                  Cochez les serveurs que ce Skill pourra utiliser. Si aucun
+                  coché, le Skill n'aura accès à aucun MCP. Déroulez pour
+                  filtrer les outils per-serveur.
+                </p>
+                {mcpServers.length === 0 ? (
+                  <p className="text-xs text-muted-foreground">
+                    Aucun serveur MCP — créez-en dans /mcp
+                  </p>
+                ) : (
                   <div className="space-y-2">
-                    {mcpServers.map((srv:any)=>{ const isChecked=formMcpServerIds.includes(srv.id); const tools=(srv.toolsCache as any[])??[]; const overrides=(srv.toolOverrides as any)??{}; const allowedTools=tools.filter(t=> overrides[t.name]?.enabled!==false); return (
-                      <div key={srv.id} className={cn("rounded-xl border p-2.5", isChecked?"border-purple-500/40 bg-purple-500/5":"border-border/40")}>
-                        <label className="flex items-center gap-2 cursor-pointer"><input type="checkbox" checked={isChecked} onChange={e=>{ if(e.target.checked){ setFormMcpServerIds(prev=>[...prev,srv.id]); } else { setFormMcpServerIds(prev=>prev.filter(id=>id!==srv.id)); const nf={...formMcpToolFilter}; delete nf[srv.id]; setFormMcpToolFilter(nf); } }} className="size-4 accent-purple-600" /><span className="text-xs font-semibold">{srv.name}</span><span className="text-[10px] text-muted-foreground">({allowedTools.length} outils actifs)</span></label>
-                        {isChecked && allowedTools.length>0 && (
-                          <div className="mt-2 ml-6 flex flex-wrap gap-1.5">
-                            {allowedTools.map((t:any)=>{ const selected = !formMcpToolFilter[srv.id] || (formMcpToolFilter[srv.id]??[]).includes(t.name); return (
-                              <label key={t.name} className={cn("inline-flex items-center gap-1 px-2 py-1 rounded-full text-[11px] border cursor-pointer", selected?"bg-purple-600 text-white border-purple-600":"bg-muted text-muted-foreground border-border/40")}><input type="checkbox" className="hidden" checked={selected} onChange={e=>{ const cur = formMcpToolFilter[srv.id] ?? null; let next: string[]|null; if(cur===null){ next = allowedTools.map((x:any)=>x.name).filter((n:string)=> n!==t.name); } else { next = e.target.checked ? [...cur, t.name] : cur.filter(n=>n!==t.name); if(next.length===allowedTools.length) next=null as any; } setFormMcpToolFilter(prev=>({ ...prev, [srv.id]: next as any})); }} />{t.name}</label>
-                            );})}
-                            <button type="button" className="text-[11px] underline text-muted-foreground" onClick={()=>{ const nf={...formMcpToolFilter}; delete nf[srv.id]; setFormMcpToolFilter(nf);}}>Tous</button>
-                            <button type="button" className="text-[11px] underline text-muted-foreground" onClick={()=> setFormMcpToolFilter(prev=>({ ...prev, [srv.id]: []}))}>Aucun</button>
-                          </div>
-                        )}
-                      </div>
-                    );})}
+                    {mcpServers.map((srv: any) => {
+                      const isChecked = formMcpServerIds.includes(srv.id);
+                      const tools = (srv.toolsCache as any[]) ?? [];
+                      const overrides = (srv.toolOverrides as any) ?? {};
+                      const allowedTools = tools.filter(
+                        (t) => overrides[t.name]?.enabled !== false
+                      );
+                      return (
+                        <div
+                          className={cn(
+                            "rounded-xl border p-2.5",
+                            isChecked
+                              ? "border-purple-500/40 bg-purple-500/5"
+                              : "border-border/40"
+                          )}
+                          key={srv.id}
+                        >
+                          <label className="flex items-center gap-2 cursor-pointer">
+                            <input
+                              checked={isChecked}
+                              className="size-4 accent-purple-600"
+                              onChange={(e) => {
+                                if (e.target.checked) {
+                                  setFormMcpServerIds((prev) => [
+                                    ...prev,
+                                    srv.id,
+                                  ]);
+                                } else {
+                                  setFormMcpServerIds((prev) =>
+                                    prev.filter((id) => id !== srv.id)
+                                  );
+                                  const nf = { ...formMcpToolFilter };
+                                  delete nf[srv.id];
+                                  setFormMcpToolFilter(nf);
+                                }
+                              }}
+                              type="checkbox"
+                            />
+                            <span className="text-xs font-semibold">
+                              {srv.name}
+                            </span>
+                            <span className="text-[10px] text-muted-foreground">
+                              ({allowedTools.length} outils actifs)
+                            </span>
+                          </label>
+                          {isChecked && allowedTools.length > 0 && (
+                            <div className="mt-2 ml-6 flex flex-wrap gap-1.5">
+                              {allowedTools.map((t: any) => {
+                                const selected =
+                                  !formMcpToolFilter[srv.id] ||
+                                  (formMcpToolFilter[srv.id] ?? []).includes(
+                                    t.name
+                                  );
+                                return (
+                                  <label
+                                    className={cn(
+                                      "inline-flex items-center gap-1 px-2 py-1 rounded-full text-[11px] border cursor-pointer",
+                                      selected
+                                        ? "bg-purple-600 text-white border-purple-600"
+                                        : "bg-muted text-muted-foreground border-border/40"
+                                    )}
+                                    key={t.name}
+                                  >
+                                    <input
+                                      checked={selected}
+                                      className="hidden"
+                                      onChange={(e) => {
+                                        const cur =
+                                          formMcpToolFilter[srv.id] ?? null;
+                                        let next: string[] | null;
+                                        if (cur === null) {
+                                          next = allowedTools
+                                            .map((x: any) => x.name)
+                                            .filter(
+                                              (n: string) => n !== t.name
+                                            );
+                                        } else {
+                                          next = e.target.checked
+                                            ? [...cur, t.name]
+                                            : cur.filter((n) => n !== t.name);
+                                          if (
+                                            next.length === allowedTools.length
+                                          ) {
+                                            next = null as any;
+                                          }
+                                        }
+                                        setFormMcpToolFilter((prev) => ({
+                                          ...prev,
+                                          [srv.id]: next as any,
+                                        }));
+                                      }}
+                                      type="checkbox"
+                                    />
+                                    {t.name}
+                                  </label>
+                                );
+                              })}
+                              <button
+                                className="text-[11px] underline text-muted-foreground"
+                                onClick={() => {
+                                  const nf = { ...formMcpToolFilter };
+                                  delete nf[srv.id];
+                                  setFormMcpToolFilter(nf);
+                                }}
+                                type="button"
+                              >
+                                Tous
+                              </button>
+                              <button
+                                className="text-[11px] underline text-muted-foreground"
+                                onClick={() =>
+                                  setFormMcpToolFilter((prev) => ({
+                                    ...prev,
+                                    [srv.id]: [],
+                                  }))
+                                }
+                                type="button"
+                              >
+                                Aucun
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 )}
               </div>
@@ -1078,20 +1367,167 @@ export default function SkillsClient() {
 
             {/* Parameters typés */}
             <div className="space-y-2">
-              <Label className="text-xs font-semibold flex items-center gap-1.5"><WrenchIcon className="size-3.5 text-primary"/> Paramètres typés (variables {"{{param}}"})</Label>
-              <p className="text-[11px] text-muted-foreground">Définissez des variables utilisables dans les instructions via {"{{nom}}"} — type, requis, défaut, enum.</p>
-              {formParameters.map((p, idx)=>(
-                <div key={idx} className="grid grid-cols-12 gap-2 items-end p-2 rounded-xl border border-border/40 bg-muted/20">
-                  <div className="col-span-3 space-y-1"><Label className="text-[11px]">Nom *</Label><Input className="h-8 text-xs" placeholder="sujet" value={p.name} onChange={e=> setFormParameters(prev=> prev.map((x,i)=> i===idx ? {...x, name:e.target.value}:x))} /></div>
-                  <div className="col-span-2 space-y-1"><Label className="text-[11px]">Type</Label><select className="h-8 w-full rounded-md border bg-background px-2 text-xs" value={p.type||"string"} onChange={e=> setFormParameters(prev=> prev.map((x,i)=> i===idx ? {...x, type:e.target.value}:x))}><option value="string">string</option><option value="number">number</option><option value="boolean">boolean</option><option value="enum">enum</option></select></div>
-                  <div className="col-span-3 space-y-1"><Label className="text-[11px]">Valeur défaut</Label><Input className="h-8 text-xs" placeholder="défaut" value={p.defaultValue||""} onChange={e=> setFormParameters(prev=> prev.map((x,i)=> i===idx ? {...x, defaultValue:e.target.value}:x))} /></div>
-                  <div className="col-span-2 flex items-center gap-1.5 pt-6"><input type="checkbox" checked={!!p.required} onChange={e=> setFormParameters(prev=> prev.map((x,i)=> i===idx ? {...x, required:e.target.checked}:x))} className="size-4 accent-primary" /><span className="text-xs">Requis</span></div>
-                  <div className="col-span-2 flex gap-1"><Button type="button" variant="ghost" size="sm" className="h-8" onClick={()=> setFormParameters(prev=> prev.filter((_,i)=>i!==idx))}><Trash2Icon className="size-3"/></Button></div>
-                  <div className="col-span-12 space-y-1"><Label className="text-[11px]">Description</Label><Input className="h-8 text-xs" placeholder="Description courte" value={p.description} onChange={e=> setFormParameters(prev=> prev.map((x,i)=> i===idx ? {...x, description:e.target.value}:x))} /></div>
-                  {p.type==="enum" && (<div className="col-span-12 space-y-1"><Label className="text-[11px]">Valeurs enum (séparées par virgules)</Label><Input className="h-8 text-xs" placeholder="opt1, opt2, opt3" value={(p.enumValues||[]).join(", ")} onChange={e=> setFormParameters(prev=> prev.map((x,i)=> i===idx ? {...x, enumValues:e.target.value.split(",").map(s=>s.trim()).filter(Boolean)}:x))} /></div>)}
+              <Label className="text-xs font-semibold flex items-center gap-1.5">
+                <WrenchIcon className="size-3.5 text-primary" /> Paramètres
+                typés (variables {"{{param}}"})
+              </Label>
+              <p className="text-[11px] text-muted-foreground">
+                Définissez des variables utilisables dans les instructions via{" "}
+                {"{{nom}}"} — type, requis, défaut, enum.
+              </p>
+              {formParameters.map((p, idx) => (
+                <div
+                  className="grid grid-cols-12 gap-2 items-end p-2 rounded-xl border border-border/40 bg-muted/20"
+                  key={idx}
+                >
+                  <div className="col-span-3 space-y-1">
+                    <Label className="text-[11px]">Nom *</Label>
+                    <Input
+                      className="h-8 text-xs"
+                      onChange={(e) =>
+                        setFormParameters((prev) =>
+                          prev.map((x, i) =>
+                            i === idx ? { ...x, name: e.target.value } : x
+                          )
+                        )
+                      }
+                      placeholder="sujet"
+                      value={p.name}
+                    />
+                  </div>
+                  <div className="col-span-2 space-y-1">
+                    <Label className="text-[11px]">Type</Label>
+                    <select
+                      className="h-8 w-full rounded-md border bg-background px-2 text-xs"
+                      onChange={(e) =>
+                        setFormParameters((prev) =>
+                          prev.map((x, i) =>
+                            i === idx ? { ...x, type: e.target.value } : x
+                          )
+                        )
+                      }
+                      value={p.type || "string"}
+                    >
+                      <option value="string">string</option>
+                      <option value="number">number</option>
+                      <option value="boolean">boolean</option>
+                      <option value="enum">enum</option>
+                    </select>
+                  </div>
+                  <div className="col-span-3 space-y-1">
+                    <Label className="text-[11px]">Valeur défaut</Label>
+                    <Input
+                      className="h-8 text-xs"
+                      onChange={(e) =>
+                        setFormParameters((prev) =>
+                          prev.map((x, i) =>
+                            i === idx
+                              ? { ...x, defaultValue: e.target.value }
+                              : x
+                          )
+                        )
+                      }
+                      placeholder="défaut"
+                      value={p.defaultValue || ""}
+                    />
+                  </div>
+                  <div className="col-span-2 flex items-center gap-1.5 pt-6">
+                    <input
+                      checked={!!p.required}
+                      className="size-4 accent-primary"
+                      onChange={(e) =>
+                        setFormParameters((prev) =>
+                          prev.map((x, i) =>
+                            i === idx ? { ...x, required: e.target.checked } : x
+                          )
+                        )
+                      }
+                      type="checkbox"
+                    />
+                    <span className="text-xs">Requis</span>
+                  </div>
+                  <div className="col-span-2 flex gap-1">
+                    <Button
+                      className="h-8"
+                      onClick={() =>
+                        setFormParameters((prev) =>
+                          prev.filter((_, i) => i !== idx)
+                        )
+                      }
+                      size="sm"
+                      type="button"
+                      variant="ghost"
+                    >
+                      <Trash2Icon className="size-3" />
+                    </Button>
+                  </div>
+                  <div className="col-span-12 space-y-1">
+                    <Label className="text-[11px]">Description</Label>
+                    <Input
+                      className="h-8 text-xs"
+                      onChange={(e) =>
+                        setFormParameters((prev) =>
+                          prev.map((x, i) =>
+                            i === idx
+                              ? { ...x, description: e.target.value }
+                              : x
+                          )
+                        )
+                      }
+                      placeholder="Description courte"
+                      value={p.description}
+                    />
+                  </div>
+                  {p.type === "enum" && (
+                    <div className="col-span-12 space-y-1">
+                      <Label className="text-[11px]">
+                        Valeurs enum (séparées par virgules)
+                      </Label>
+                      <Input
+                        className="h-8 text-xs"
+                        onChange={(e) =>
+                          setFormParameters((prev) =>
+                            prev.map((x, i) =>
+                              i === idx
+                                ? {
+                                    ...x,
+                                    enumValues: e.target.value
+                                      .split(",")
+                                      .map((s) => s.trim())
+                                      .filter(Boolean),
+                                  }
+                                : x
+                            )
+                          )
+                        }
+                        placeholder="opt1, opt2, opt3"
+                        value={(p.enumValues || []).join(", ")}
+                      />
+                    </div>
+                  )}
                 </div>
               ))}
-              <Button type="button" variant="outline" size="sm" className="h-7 text-xs" onClick={()=> setFormParameters(prev=>[...prev,{ name:"", description:"", required:false, type:"string", defaultValue:""}])}><PlusIcon className="size-3 mr-1"/>Ajouter un paramètre</Button>
+              <Button
+                className="h-7 text-xs"
+                onClick={() =>
+                  setFormParameters((prev) => [
+                    ...prev,
+                    {
+                      defaultValue: "",
+                      description: "",
+                      name: "",
+                      required: false,
+                      type: "string",
+                    },
+                  ])
+                }
+                size="sm"
+                type="button"
+                variant="outline"
+              >
+                <PlusIcon className="size-3 mr-1" />
+                Ajouter un paramètre
+              </Button>
             </div>
 
             {/* Tags */}
@@ -1106,24 +1542,26 @@ export default function SkillsClient() {
               />
             </div>
 
-              <DialogFooter className="pt-2">
-                <Button
-                  onClick={() => {
-                    toast.info("Version précédente restaurée (snapshot v1)");
-                    setFormInstructions("Tu es un expert en... (version restaurée)");
-                  }}
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                >
-                  <RefreshCwIcon className="size-3.5 mr-1" />
-                  Restaurer v1
-                </Button>
-                <Button
-                  onClick={() => setIsEditorOpen(false)}
-                  type="button"
-                  variant="outline"
-                >
+            <DialogFooter className="pt-2">
+              <Button
+                onClick={() => {
+                  toast.info("Version précédente restaurée (snapshot v1)");
+                  setFormInstructions(
+                    "Tu es un expert en... (version restaurée)"
+                  );
+                }}
+                size="sm"
+                type="button"
+                variant="outline"
+              >
+                <RefreshCwIcon className="size-3.5 mr-1" />
+                Restaurer v1
+              </Button>
+              <Button
+                onClick={() => setIsEditorOpen(false)}
+                type="button"
+                variant="outline"
+              >
                 Annuler
               </Button>
               <Button disabled={isSaving} type="submit">

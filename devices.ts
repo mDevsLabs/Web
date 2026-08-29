@@ -30,7 +30,7 @@ export function registerDeviceRoutes(app: Hono) {
     } else {
       try {
         await sql`UPDATE connected_devices SET last_active = NOW() WHERE token = ${token}`;
-      } catch (_err) {}
+      } catch {}
     }
 
     const rawDevices = await sql`
@@ -73,7 +73,7 @@ export function registerDeviceRoutes(app: Hono) {
             args: [row.token],
             sql: "INSERT OR IGNORE INTO token_blacklist (token) VALUES (?)",
           });
-        } catch (_e) {}
+        } catch {}
       }
     }
 
@@ -105,7 +105,7 @@ export function registerDeviceRoutes(app: Hono) {
             args: [row.token],
             sql: "INSERT OR IGNORE INTO token_blacklist (token) VALUES (?)",
           });
-        } catch (_e) {}
+        } catch {}
       }
     }
 

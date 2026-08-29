@@ -1,6 +1,6 @@
 import { Star } from "lucide-react";
-import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import { PageBackButton } from "@/components/chat/page-back-button";
+import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import { isPaidTier } from "@/lib/auth/plan";
 import { getMaiUser } from "@/lib/auth/session";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
@@ -42,13 +42,14 @@ export default async function McpPage() {
             </h2>
             <p className="text-sm text-muted-foreground">
               Connectez vos bases de données, APIs et outils locaux directement
-              à l'IA avec contrôle strict des autorisations. Passez à un
-              forfait Plus, Pro ou Max.
+              à l'IA avec contrôle strict des autorisations. Passez à un forfait
+              Plus, Pro ou Max.
             </p>
           </div>
           <a
             className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:opacity-90"
             href={MAI_UPGRADE_URL}
+            rel="noopener"
             target="_blank"
           >
             Mettre à niveau mon forfait

@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { getMaiUser } from "@/lib/auth/session";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
+import { getMaiUser } from "@/lib/auth/session";
 import { createSkill, getSkillsByUserId } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 
@@ -14,7 +14,9 @@ const createSkillSchema = z.object({
   instructions: z.string().min(1).max(20_000),
   isPublic: z.boolean().optional(),
   mcpServerIds: z.array(z.string().uuid()).max(20).optional(),
-  mcpToolFilter: z.record(z.string(), z.array(z.string()).nullable()).optional(),
+  mcpToolFilter: z
+    .record(z.string(), z.array(z.string()).nullable())
+    .optional(),
   name: z.string().min(1).max(100),
   parameters: z
     .array(
@@ -24,7 +26,7 @@ const createSkillSchema = z.object({
         enumValues: z.array(z.string()).optional(),
         name: z.string().min(1).max(50),
         required: z.boolean().optional(),
-        type: z.enum(["string","number","boolean","enum"]).optional(),
+        type: z.enum(["string", "number", "boolean", "enum"]).optional(),
       })
     )
     .optional(),

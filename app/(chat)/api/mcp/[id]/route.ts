@@ -1,19 +1,21 @@
 import { z } from "zod";
-import { getMaiUser } from "@/lib/auth/session";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
+import { getMaiUser } from "@/lib/auth/session";
 import {
   deleteMcpServer,
   getMcpServerById,
   toggleMcpServer,
   updateMcpServer,
-  updateMcpToolsCache,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import { fetchMcpTools } from "@/lib/mcp/client";
 
 const toolOverrideSchema = z.object({
   enabled: z.boolean(),
-  requireApproval: z.enum(["always_allow", "write_only", "ask_permission"]).nullable().optional(),
+  requireApproval: z
+    .enum(["always_allow", "write_only", "ask_permission"])
+    .nullable()
+    .optional(),
 });
 
 const updateMcpSchema = z.object({
@@ -42,7 +44,7 @@ const updateMcpSchema = z.object({
   requireApproval: z
     .enum(["always_allow", "ask_permission", "write_only"])
     .optional(),
-  timeoutMs: z.number().int().min(1000).max(120000).optional(),
+  timeoutMs: z.number().int().min(1000).max(120_000).optional(),
   toolOverrides: z.record(z.string(), toolOverrideSchema).optional(),
   toolsCache: z.array(z.any()).optional(),
   transport: z.enum(["sse", "http", "stdio", "websocket"]).optional(),
@@ -92,11 +94,26 @@ export async function PATCH(
     // 1b. Toggle per-tool
     if (json.toggleTool) {
       const server = await getMcpServerById({ id, userId });
-      if (!server) return Response.json({ error: "Serveur MCP introuvable" }, { status: 404 });
+      if (!server) {
+        return Response.json(
+          { error: "Serveur MCP introuvable" },
+          { status: 404 }
+        );
+      }
       const overrides = (server.toolOverrides as Record<string, any>) ?? {};
       const current = overrides[json.toggleTool]?.enabled ?? true;
-      const next = { ...overrides, [json.toggleTool]: { enabled: !current, requireApproval: overrides[json.toggleTool]?.requireApproval ?? null } };
-      const updated = await updateMcpServer({ id, userId, data: { toolOverrides: next } as any });
+      const next = {
+        ...overrides,
+        [json.toggleTool]: {
+          enabled: !current,
+          requireApproval: overrides[json.toggleTool]?.requireApproval ?? null,
+        },
+      };
+      const updated = await updateMcpServer({
+        data: { toolOverrides: next } as any,
+        id,
+        userId,
+      });
       return Response.json(updated);
     }
 
@@ -104,10 +121,25 @@ export async function PATCH(
     if (json.setToolApproval) {
       const { toolName, requireApproval } = json.setToolApproval;
       const server = await getMcpServerById({ id, userId });
-      if (!server) return Response.json({ error: "Serveur MCP introuvable" }, { status: 404 });
+      if (!server) {
+        return Response.json(
+          { error: "Serveur MCP introuvable" },
+          { status: 404 }
+        );
+      }
       const overrides = (server.toolOverrides as Record<string, any>) ?? {};
-      const next = { ...overrides, [toolName]: { enabled: overrides[toolName]?.enabled ?? true, requireApproval: requireApproval ?? null } };
-      const updated = await updateMcpServer({ id, userId, data: { toolOverrides: next } as any });
+      const next = {
+        ...overrides,
+        [toolName]: {
+          enabled: overrides[toolName]?.enabled ?? true,
+          requireApproval: requireApproval ?? null,
+        },
+      };
+      const updated = await updateMcpServer({
+        data: { toolOverrides: next } as any,
+        id,
+        userId,
+      });
       return Response.json(updated);
     }
 
@@ -124,12 +156,18 @@ export async function PATCH(
       try {
         const { getUserMcpPrefs } = await import("@/lib/db/queries");
         const prefs = await getUserMcpPrefs(userId);
-        if (prefs.globalKillSwitch) throw new Error("MCP désactivé globalement");
-        if (server.transport === "stdio" && !prefs.allowStdio) throw new Error("Transport stdio désactivé");
+        if (prefs.globalKillSwitch) {
+          throw new Error("MCP désactivé globalement");
+        }
+        if (server.transport === "stdio" && !prefs.allowStdio) {
+          throw new Error("Transport stdio désactivé");
+        }
       } catch (e: any) {
-        if (e.message?.includes("désactivé")) return Response.json({ error: e.message }, { status: 403 });
+        if (e.message?.includes("désactivé")) {
+          return Response.json({ error: e.message }, { status: 403 });
+        }
       }
-      const timeoutMs = (server as any).timeoutMs ?? 15000;
+      const timeoutMs = (server as any).timeoutMs ?? 15_000;
       const tools = await fetchMcpTools({
         args: server.args as string[],
         authConfig: server.authConfig as any,
@@ -144,7 +182,15 @@ export async function PATCH(
       });
 
       // decrypt env/auth if needed via secrets table
-      const updated = await updateMcpServer({ id, userId, data: { lastSyncAt: new Date(), toolsCache: tools, uptimeStatus: "online" } as any });
+      const updated = await updateMcpServer({
+        data: {
+          lastSyncAt: new Date(),
+          toolsCache: tools,
+          uptimeStatus: "online",
+        } as any,
+        id,
+        userId,
+      });
 
       return Response.json({
         message: `${tools.length} outil(s) synchronisé(s)`,
@@ -157,13 +203,25 @@ export async function PATCH(
     if (json.encryptedSecrets) {
       const { encrypt } = await import("@/lib/mcp/encryption");
       const { setMcpServerSecrets } = await import("@/lib/db/queries");
-      const secrets: Array<{ kind: "env" | "auth" | "header"; key: string; encryptedValue: string }> = [];
-      for (const [k, v] of Object.entries((json.encryptedSecrets as Record<string, string>) || {})) {
-        if (!v) continue;
-        secrets.push({ encryptedValue: encrypt(v as string), key: k, kind: "env" });
+      const secrets: Array<{
+        kind: "env" | "auth" | "header";
+        key: string;
+        encryptedValue: string;
+      }> = [];
+      for (const [k, v] of Object.entries(
+        (json.encryptedSecrets as Record<string, string>) || {}
+      )) {
+        if (!v) {
+          continue;
+        }
+        secrets.push({
+          encryptedValue: encrypt(v as string),
+          key: k,
+          kind: "env",
+        });
       }
       await setMcpServerSecrets({ secrets, serverId: id, userId });
-      return Response.json({ success: true, count: secrets.length });
+      return Response.json({ count: secrets.length, success: true });
     }
 
     const parsed = updateMcpSchema.parse(json);

@@ -358,12 +358,8 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
   await run(
     client`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "temperatureOverride" double precision`
   );
-  await run(
-    client`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "agentId" uuid`
-  );
-  await run(
-    client`ALTER TABLE "Chat" DROP COLUMN IF EXISTS "modeId"`
-  );
+  await run(client`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "agentId" uuid`);
+  await run(client`ALTER TABLE "Chat" DROP COLUMN IF EXISTS "modeId"`);
 
   // Colonnes étendues pour Project
   await run(
@@ -2808,6 +2804,12 @@ export async function createAgent(data: {
   skillIds?: string[];
   mcpServerIds?: string[];
   cloudFileUrls?: string[];
+  temperature?: number | null;
+  topP?: number | null;
+  maxTokens?: number | null;
+  starterPrompts?: string[];
+  welcomeMessage?: string | null;
+  pinned?: boolean;
 }) {
   const database = await getDb();
   const [created] = await database
@@ -2820,10 +2822,16 @@ export async function createAgent(data: {
       emoji: data.emoji ?? null,
       icon: data.icon ?? "sparkles",
       instructions: data.instructions,
+      maxTokens: data.maxTokens ?? null,
       mcpServerIds: (data.mcpServerIds as any) ?? [],
       name: data.name,
+      pinned: data.pinned ?? false,
       skillIds: (data.skillIds as any) ?? [],
+      starterPrompts: (data.starterPrompts as any) ?? [],
+      temperature: data.temperature ?? null,
+      topP: data.topP ?? null,
       userId: data.userId,
+      welcomeMessage: data.welcomeMessage ?? null,
     })
     .returning();
   return created;
@@ -2847,6 +2855,12 @@ export async function updateAgent({
     skillIds: string[];
     mcpServerIds: string[];
     cloudFileUrls: string[];
+    temperature: number | null;
+    topP: number | null;
+    maxTokens: number | null;
+    starterPrompts: string[];
+    welcomeMessage: string | null;
+    pinned: boolean;
     isPublic: boolean;
     shareId: string | null;
   }>;
@@ -2894,10 +2908,16 @@ export async function duplicateAgent({
     emoji: (original as any).emoji ?? null,
     icon: original.icon ?? "sparkles",
     instructions: original.instructions,
+    maxTokens: (original as any).maxTokens ?? null,
     mcpServerIds: (original.mcpServerIds as any) ?? [],
     name: `${original.name} (Copie)`,
+    pinned: (original as any).pinned ?? false,
     skillIds: (original.skillIds as any) ?? [],
+    starterPrompts: (original as any).starterPrompts ?? [],
+    temperature: (original as any).temperature ?? null,
+    topP: (original as any).topP ?? null,
     userId,
+    welcomeMessage: (original as any).welcomeMessage ?? null,
   });
 }
 

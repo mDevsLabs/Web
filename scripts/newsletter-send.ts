@@ -1,11 +1,11 @@
-import { neon } from "@neondatabase/serverless";
-import * as readline from "node:readline/promises";
-import { stdin as input, stdout as output } from "node:process";
-import nodemailer from "nodemailer";
 import { exec } from "node:child_process";
 import fs from "node:fs";
-import path from "node:path";
 import http from "node:http";
+import path from "node:path";
+import { stdin as input, stdout as output } from "node:process";
+import * as readline from "node:readline/promises";
+import { neon } from "@neondatabase/serverless";
+import nodemailer from "nodemailer";
 
 const sql = neon(process.env.DATABASE_URL!);
 
@@ -13,86 +13,92 @@ const sql = neon(process.env.DATABASE_URL!);
 // Styles & Palette ANSI CLI
 // ─────────────────────────────────────────────
 const c = {
-  reset: "\x1b[0m",
-  bold: "\x1b[1m",
-  dim: "\x1b[2m",
-  italic: "\x1b[3m",
-  underline: "\x1b[4m",
-  
-  // Couleurs texte
-  cyan: "\x1b[36m",
-  brightCyan: "\x1b[96m",
-  green: "\x1b[32m",
-  brightGreen: "\x1b[92m",
-  yellow: "\x1b[33m",
-  brightYellow: "\x1b[93m",
-  red: "\x1b[31m",
-  brightRed: "\x1b[91m",
-  magenta: "\x1b[35m",
-  brightMagenta: "\x1b[95m",
-  white: "\x1b[37m",
-  brightWhite: "\x1b[97m",
-  
-  // Fonds
-  bgPurple: "\x1b[48;5;55m",
   bgCyan: "\x1b[48;5;24m",
   bgDark: "\x1b[48;5;236m",
+
+  // Fonds
+  bgPurple: "\x1b[48;5;55m",
+  bold: "\x1b[1m",
+  brightCyan: "\x1b[96m",
+  brightGreen: "\x1b[92m",
+  brightMagenta: "\x1b[95m",
+  brightRed: "\x1b[91m",
+  brightWhite: "\x1b[97m",
+  brightYellow: "\x1b[93m",
+
+  // Couleurs texte
+  cyan: "\x1b[36m",
+  dim: "\x1b[2m",
+  green: "\x1b[32m",
+  italic: "\x1b[3m",
+  magenta: "\x1b[35m",
+  red: "\x1b[31m",
+  reset: "\x1b[0m",
+  underline: "\x1b[4m",
+  white: "\x1b[37m",
+  yellow: "\x1b[33m",
 };
 
 // ─────────────────────────────────────────────
 // Modèles HTML Pré-conçus
 // ─────────────────────────────────────────────
 interface EmailTemplate {
+  badge: string;
+  badgeBg: string;
+  badgeColor: string;
+  defaultContent: string;
+  defaultSubject: string;
+  hasCta?: boolean;
   id: string;
   name: string;
-  badge: string;
-  badgeColor: string;
-  badgeBg: string;
-  defaultSubject: string;
-  defaultContent: string;
-  hasCta?: boolean;
 }
 
 const TEMPLATES: Record<string, EmailTemplate> = {
   "1": {
+    badge: "NOUVEAUTÉ PRODUIT",
+    badgeBg: "rgba(168, 85, 247, 0.15)",
+    badgeColor: "#c084fc",
+    defaultContent:
+      "Nous sommes ravis de vous présenter les dernières avancées de l'écosystème mAI : nouvelles architectures de modèles, vision multimodale et studio de requêtes interactif.",
+    defaultSubject:
+      "🚀 Découvrez les nouvelles fonctionnalités de la plateforme mAI !",
+    hasCta: true,
     id: "feature",
     name: "🚀 Nouveauté Produit / Mise à jour Majeure",
-    badge: "NOUVEAUTÉ PRODUIT",
-    badgeColor: "#c084fc",
-    badgeBg: "rgba(168, 85, 247, 0.15)",
-    defaultSubject: "🚀 Découvrez les nouvelles fonctionnalités de la plateforme mAI !",
-    defaultContent: "Nous sommes ravis de vous présenter les dernières avancées de l'écosystème mAI : nouvelles architectures de modèles, vision multimodale et studio de requêtes interactif.",
-    hasCta: true,
   },
   "2": {
+    badge: "ANNONCE OFFICIELLE",
+    badgeBg: "rgba(59, 130, 246, 0.15)",
+    badgeColor: "#60a5fa",
+    defaultContent:
+      "Bonjour {{username}},\n\nToute l'équipe mDevsLabs tenait à partager avec vous une mise à jour stratégique sur l'évolution de nos infrastructures souveraines et de nos offres.",
+    defaultSubject:
+      "📣 Des nouvelles importantes concernant mAI et nos services",
+    hasCta: false,
     id: "announcement",
     name: "📣 Annonce Officielle & Communauté",
-    badge: "ANNONCE OFFICIELLE",
-    badgeColor: "#60a5fa",
-    badgeBg: "rgba(59, 130, 246, 0.15)",
-    defaultSubject: "📣 Des nouvelles importantes concernant mAI et nos services",
-    defaultContent: "Bonjour {{username}},\n\nToute l'équipe mDevsLabs tenait à partager avec vous une mise à jour stratégique sur l'évolution de nos infrastructures souveraines et de nos offres.",
-    hasCta: false,
   },
   "3": {
+    badge: "INFOS SYSTÈME",
+    badgeBg: "rgba(245, 158, 11, 0.15)",
+    badgeColor: "#fbbf24",
+    defaultContent:
+      "Une mise à niveau de nos passerelles de routage est programmée afin de réduire la latence d'inférence et d'accroître la résilience de notre réseau. L'ensemble de vos accès reste opérationnel.",
+    defaultSubject: "⚡ Maintenance et optimisation des infrastructures mAI",
+    hasCta: false,
     id: "system",
     name: "⚡ Info Système & Maintenance Programmée",
-    badge: "INFOS SYSTÈME",
-    badgeColor: "#fbbf24",
-    badgeBg: "rgba(245, 158, 11, 0.15)",
-    defaultSubject: "⚡ Maintenance et optimisation des infrastructures mAI",
-    defaultContent: "Une mise à niveau de nos passerelles de routage est programmée afin de réduire la latence d'inférence et d'accroître la résilience de notre réseau. L'ensemble de vos accès reste opérationnel.",
-    hasCta: false,
   },
   "4": {
+    badge: "NEWSLETTER",
+    badgeBg: "rgba(16, 185, 129, 0.15)",
+    badgeColor: "#34d399",
+    defaultContent:
+      "Bonjour {{username}},\n\nVoici le récapitulatif des faits marquants et des nouveautés de la communauté mAI.",
+    defaultSubject: "L'actualité technologique de l'écosystème mAI",
+    hasCta: false,
     id: "custom",
     name: "✏️ Newsletter Libre / HTML Sur-Mesure",
-    badge: "NEWSLETTER",
-    badgeColor: "#34d399",
-    badgeBg: "rgba(16, 185, 129, 0.15)",
-    defaultSubject: "L'actualité technologique de l'écosystème mAI",
-    defaultContent: "Bonjour {{username}},\n\nVoici le récapitulatif des faits marquants et des nouveautés de la communauté mAI.",
-    hasCta: false,
   },
 };
 
@@ -105,16 +111,28 @@ function clearConsole() {
 
 function printHeader() {
   console.log("");
-  console.log(`${c.bgPurple}${c.bold}${c.brightWhite}  ╔══════════════════════════════════════════════════════════════════════╗  ${c.reset}`);
-  console.log(`${c.bgPurple}${c.bold}${c.brightWhite}  ║                📧  mAI — STUDIO NEWSLETTER INTERACTIF                ║  ${c.reset}`);
-  console.log(`${c.bgPurple}${c.bold}${c.brightWhite}  ╚══════════════════════════════════════════════════════════════════════╝  ${c.reset}`);
+  console.log(
+    `${c.bgPurple}${c.bold}${c.brightWhite}  ╔══════════════════════════════════════════════════════════════════════╗  ${c.reset}`
+  );
+  console.log(
+    `${c.bgPurple}${c.bold}${c.brightWhite}  ║                📧  mAI — STUDIO NEWSLETTER INTERACTIF                ║  ${c.reset}`
+  );
+  console.log(
+    `${c.bgPurple}${c.bold}${c.brightWhite}  ╚══════════════════════════════════════════════════════════════════════╝  ${c.reset}`
+  );
   console.log("");
 }
 
 function printStep(step: number, title: string) {
-  console.log(`${c.brightCyan}${c.bold}┌── [Étape ${step}] ─────────────────────────────────────────────────────────┐${c.reset}`);
-  console.log(`${c.brightCyan}│${c.reset} ${c.bold}${c.brightWhite}${title}${c.reset}`);
-  console.log(`${c.brightCyan}└──────────────────────────────────────────────────────────────────┘${c.reset}`);
+  console.log(
+    `${c.brightCyan}${c.bold}┌── [Étape ${step}] ─────────────────────────────────────────────────────────┐${c.reset}`
+  );
+  console.log(
+    `${c.brightCyan}│${c.reset} ${c.bold}${c.brightWhite}${title}${c.reset}`
+  );
+  console.log(
+    `${c.brightCyan}└──────────────────────────────────────────────────────────────────┘${c.reset}`
+  );
   console.log("");
 }
 
@@ -131,7 +149,9 @@ function printInfo(msg: string) {
 }
 
 function printDivider() {
-  console.log(`${c.dim}──────────────────────────────────────────────────────────────────────${c.reset}`);
+  console.log(
+    `${c.dim}──────────────────────────────────────────────────────────────────────${c.reset}`
+  );
 }
 
 function printProgressBar(current: number, total: number, label: string) {
@@ -141,46 +161,67 @@ function printProgressBar(current: number, total: number, label: string) {
   const empty = width - filled;
 
   const bar = `${c.brightMagenta}${"█".repeat(filled)}${c.dim}${"░".repeat(empty)}${c.reset}`;
-  output.write(`\r  ${bar} ${c.bold}${percentage}%${c.reset} (${current}/${total}) | ${c.dim}${label}${c.reset}   `);
-  if (current === total) console.log("");
+  output.write(
+    `\r  ${bar} ${c.bold}${percentage}%${c.reset} (${current}/${total}) | ${c.dim}${label}${c.reset}   `
+  );
+  if (current === total) {
+    console.log("");
+  }
 }
 
 // ─────────────────────────────────────────────
 // Fonction Générale d'envoi d'e-mail (Google Apps Script + SMTP Fallback)
 // ─────────────────────────────────────────────
-export async function sendEmail({ to, subject, html }: { to: string; subject: string; html: string }): Promise<boolean> {
-  const googleScriptsUrl = process.env.GOOGLE_SCRIPTS_URL || process.env.GOOGLE_SCRIPT_URL;
-  const googleScriptSecret = process.env.GOOGLE_SCRIPTS_SECRET || process.env.GOOGLE_SCRIPT_SECRET;
+export async function sendEmail({
+  to,
+  subject,
+  html,
+}: {
+  to: string;
+  subject: string;
+  html: string;
+}): Promise<boolean> {
+  const googleScriptsUrl =
+    process.env.GOOGLE_SCRIPTS_URL || process.env.GOOGLE_SCRIPT_URL;
+  const googleScriptSecret =
+    process.env.GOOGLE_SCRIPTS_SECRET || process.env.GOOGLE_SCRIPT_SECRET;
 
   // 1. Google Apps Script
   if (googleScriptsUrl && googleScriptSecret) {
     try {
       const res = await fetch(googleScriptsUrl, {
-        method: "POST",
+        body: JSON.stringify({
+          body: "Veuillez activer l'affichage HTML pour lire cet e-mail mAI.",
+          htmlBody: html,
+          secret: googleScriptSecret,
+          subject,
+          to,
+        }),
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          secret: googleScriptSecret,
-          to,
-          subject,
-          htmlBody: html,
-          body: "Veuillez activer l'affichage HTML pour lire cet e-mail mAI.",
-        }),
+        method: "POST",
       });
 
       if (res.ok) {
         const data = await res.json();
         if (data.success) {
           return true;
-        } else {
-          console.error(`[EMAIL] Google Apps Script error for ${to}:`, data.error);
         }
+        console.error(
+          `[EMAIL] Google Apps Script error for ${to}:`,
+          data.error
+        );
       } else {
-        console.error(`[EMAIL] Google Apps Script HTTP ${res.status} for ${to}`);
+        console.error(
+          `[EMAIL] Google Apps Script HTTP ${res.status} for ${to}`
+        );
       }
     } catch (err: any) {
-      console.error(`[EMAIL] Google Apps Script exception for ${to}:`, err?.message || err);
+      console.error(
+        `[EMAIL] Google Apps Script exception for ${to}:`,
+        err?.message || err
+      );
     }
   }
 
@@ -191,15 +232,15 @@ export async function sendEmail({ to, subject, html }: { to: string; subject: st
   if (gmailUser && gmailAppPass) {
     try {
       const transporter = nodemailer.createTransport({
+        auth: { pass: gmailAppPass, user: gmailUser },
         service: "gmail",
-        auth: { user: gmailUser, pass: gmailAppPass },
       });
 
       await transporter.sendMail({
         from: `"mAI" <${gmailUser}>`,
-        to,
-        subject,
         html,
+        subject,
+        to,
       });
       return true;
     } catch (err: any) {
@@ -216,43 +257,66 @@ export async function sendEmail({ to, subject, html }: { to: string; subject: st
 export async function runVisualEditorServer() {
   const port = 3333;
   const server = http.createServer(async (req, res) => {
-    const htmlPath = path.join(process.cwd(), "scripts", "newsletter_editor.html");
+    const htmlPath = path.join(
+      process.cwd(),
+      "scripts",
+      "newsletter_editor.html"
+    );
 
     if (req.method === "GET" && req.url === "/") {
       res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
       if (fs.existsSync(htmlPath)) {
         res.end(fs.readFileSync(htmlPath, "utf-8"));
       } else {
-        res.end("<h3>Erreur : newsletter_editor.html introuvable dans le dossier scripts.</h3>");
+        res.end(
+          "<h3>Erreur : newsletter_editor.html introuvable dans le dossier scripts.</h3>"
+        );
       }
     } else if (req.method === "POST" && req.url === "/send-test") {
       let body = "";
-      req.on("data", chunk => body += chunk);
+      req.on("data", (chunk) => (body += chunk));
       req.on("end", async () => {
         try {
           const { email, subject, html } = JSON.parse(body);
           console.log(`\n[STUDIO] Envoi d'un mail de test à ${email}...`);
-          const success = await sendEmail({ to: email, subject: `[TEST] ${subject}`, html });
+          const success = await sendEmail({
+            html,
+            subject: `[TEST] ${subject}`,
+            to: email,
+          });
           if (success) {
             res.writeHead(200, { "Content-Type": "application/json" });
-            res.end(JSON.stringify({ success: true, message: `Mail de test envoyé à ${email} !` }));
+            res.end(
+              JSON.stringify({
+                message: `Mail de test envoyé à ${email} !`,
+                success: true,
+              })
+            );
           } else {
             res.writeHead(200, { "Content-Type": "application/json" });
-            res.end(JSON.stringify({ success: false, error: "L'envoi a échoué. Vérifiez vos variables d'environnement." }));
+            res.end(
+              JSON.stringify({
+                error:
+                  "L'envoi a échoué. Vérifiez vos variables d'environnement.",
+                success: false,
+              })
+            );
           }
         } catch (e: any) {
           res.writeHead(400, { "Content-Type": "application/json" });
-          res.end(JSON.stringify({ success: false, error: e.message }));
+          res.end(JSON.stringify({ error: e.message, success: false }));
         }
       });
     } else if (req.method === "POST" && req.url === "/send-all") {
       let body = "";
-      req.on("data", chunk => body += chunk);
+      req.on("data", (chunk) => (body += chunk));
       req.on("end", async () => {
         try {
           const { subject, html } = JSON.parse(body);
-          console.log(`\n[STUDIO] Début de la newsletter globale pour le sujet : "${subject}"`);
-          
+          console.log(
+            `\n[STUDIO] Début de la newsletter globale pour le sujet : "${subject}"`
+          );
+
           const targetUsers = (await sql`
             SELECT email, username 
             FROM users 
@@ -261,17 +325,30 @@ export async function runVisualEditorServer() {
 
           if (targetUsers.length === 0) {
             res.writeHead(200, { "Content-Type": "application/json" });
-            res.end(JSON.stringify({ success: false, error: "Aucun abonné trouvé dans la base de données." }));
+            res.end(
+              JSON.stringify({
+                error: "Aucun abonné trouvé dans la base de données.",
+                success: false,
+              })
+            );
             return;
           }
 
-          console.log(`[STUDIO] Envoi en cours à ${targetUsers.length} destinataire(s)...`);
+          console.log(
+            `[STUDIO] Envoi en cours à ${targetUsers.length} destinataire(s)...`
+          );
           let successCount = 0;
           let errorCount = 0;
 
           for (const u of targetUsers) {
-            const personalizedHtml = html.replace(/{{username}}/g, u.username).replace(/Bonjour Administrateur/g, `Bonjour ${u.username}`);
-            const success = await sendEmail({ to: u.email, subject, html: personalizedHtml });
+            const personalizedHtml = html
+              .replace(/{{username}}/g, u.username)
+              .replace(/Bonjour Administrateur/g, `Bonjour ${u.username}`);
+            const success = await sendEmail({
+              html: personalizedHtml,
+              subject,
+              to: u.email,
+            });
             if (success) {
               successCount++;
             } else {
@@ -280,15 +357,19 @@ export async function runVisualEditorServer() {
             await new Promise((resolve) => setTimeout(resolve, 100));
           }
 
-          console.log(`[STUDIO] Newsletter envoyée. Succès : ${successCount}, Échecs : ${errorCount}`);
+          console.log(
+            `[STUDIO] Newsletter envoyée. Succès : ${successCount}, Échecs : ${errorCount}`
+          );
           res.writeHead(200, { "Content-Type": "application/json" });
-          res.end(JSON.stringify({ 
-            success: true, 
-            message: `Newsletter envoyée avec succès à ${successCount} abonnés ! (${errorCount} échec(s))` 
-          }));
+          res.end(
+            JSON.stringify({
+              message: `Newsletter envoyée avec succès à ${successCount} abonnés ! (${errorCount} échec(s))`,
+              success: true,
+            })
+          );
         } catch (e: any) {
           res.writeHead(400, { "Content-Type": "application/json" });
-          res.end(JSON.stringify({ success: false, error: e.message }));
+          res.end(JSON.stringify({ error: e.message, success: false }));
         }
       });
     } else if (req.method === "POST" && req.url === "/quit") {
@@ -305,8 +386,10 @@ export async function runVisualEditorServer() {
   });
 
   server.listen(port, () => {
-    console.log(`\n${c.brightGreen}✔ Éditeur visuel démarré sur http://localhost:${port}/${c.reset}`);
-    
+    console.log(
+      `\n${c.brightGreen}✔ Éditeur visuel démarré sur http://localhost:${port}/${c.reset}`
+    );
+
     // Ouvrir le navigateur
     const platform = process.platform;
     let command = "";
@@ -348,13 +431,16 @@ function buildNewsletterHtml(
     .replace(/\n\n/g, "</p><p style='margin-bottom:18px;'>")
     .replace(/\n/g, "<br>");
 
-  const ctaSection = ctaText && ctaUrl ? `
+  const ctaSection =
+    ctaText && ctaUrl
+      ? `
     <div style="text-align:center; margin:36px 0 20px 0;">
       <a href="${ctaUrl}" target="_blank" style="display:inline-block; background:linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%); color:#ffffff; font-weight:800; font-size:15px; text-decoration:none; padding:16px 36px; border-radius:14px; box-shadow:0 10px 25px -5px rgba(124, 58, 237, 0.45); letter-spacing:0.3px;">
         ${ctaText} →
       </a>
     </div>
-  ` : "";
+  `
+      : "";
 
   return `
     <!DOCTYPE html>
@@ -443,11 +529,20 @@ export async function runNewsletterStudio() {
 
   try {
     printStep(1, "Menu de démarrage du Studio");
-    console.log(`  ${c.cyan}[1]${c.reset} ${c.bold}Lancer l'Éditeur Visuel (Navigateur Web)${c.reset} ${c.brightGreen}[Recommandé]${c.reset}`);
-    console.log(`  ${c.cyan}[2]${c.reset} ${c.bold}Continuer dans le Terminal (CLI)${c.reset}`);
+    console.log(
+      `  ${c.cyan}[1]${c.reset} ${c.bold}Lancer l'Éditeur Visuel (Navigateur Web)${c.reset} ${c.brightGreen}[Recommandé]${c.reset}`
+    );
+    console.log(
+      `  ${c.cyan}[2]${c.reset} ${c.bold}Continuer dans le Terminal (CLI)${c.reset}`
+    );
     console.log("");
-    
-    const studioChoice = (await rl.question(`  ${c.brightYellow}➔ Choix [1-2] (défaut: 1) : ${c.reset}`)).trim() || "1";
+
+    const studioChoice =
+      (
+        await rl.question(
+          `  ${c.brightYellow}➔ Choix [1-2] (défaut: 1) : ${c.reset}`
+        )
+      ).trim() || "1";
 
     if (studioChoice === "1") {
       rl.close();
@@ -457,24 +552,43 @@ export async function runNewsletterStudio() {
 
     // ──────── ÉTAPE 1: Choix de la cible ────────
     printStep(1, "Sélection des destinataires");
-    console.log(`  ${c.cyan}1.${c.reset} ${c.bold}Tous les abonnés Newsletter${c.reset} ${c.dim}(newsletter = TRUE dans la DB)${c.reset}`);
-    console.log(`  ${c.cyan}2.${c.reset} ${c.bold}Email de test uniquement${c.reset} ${c.dim}(Pour tester la réception)${c.reset}`);
-    console.log(`  ${c.cyan}3.${c.reset} ${c.bold}Utilisateurs par Forfait${c.reset} ${c.dim}(Free, Plus, Pro, Max)${c.reset}`);
+    console.log(
+      `  ${c.cyan}1.${c.reset} ${c.bold}Tous les abonnés Newsletter${c.reset} ${c.dim}(newsletter = TRUE dans la DB)${c.reset}`
+    );
+    console.log(
+      `  ${c.cyan}2.${c.reset} ${c.bold}Email de test uniquement${c.reset} ${c.dim}(Pour tester la réception)${c.reset}`
+    );
+    console.log(
+      `  ${c.cyan}3.${c.reset} ${c.bold}Utilisateurs par Forfait${c.reset} ${c.dim}(Free, Plus, Pro, Max)${c.reset}`
+    );
     console.log("");
 
-    const targetChoice = (await rl.question(`  ${c.brightYellow}➔ Choix [1-3] (défaut: 1) : ${c.reset}`)).trim() || "1";
+    const targetChoice =
+      (
+        await rl.question(
+          `  ${c.brightYellow}➔ Choix [1-3] (défaut: 1) : ${c.reset}`
+        )
+      ).trim() || "1";
 
     let targetUsers: { email: string; username: string }[] = [];
 
     if (targetChoice === "2") {
-      const testEmail = (await rl.question(`  ${c.brightYellow}➔ Saisissez l'adresse e-mail de test : ${c.reset}`)).trim();
-      if (!testEmail || !testEmail.includes("@")) {
+      const testEmail = (
+        await rl.question(
+          `  ${c.brightYellow}➔ Saisissez l'adresse e-mail de test : ${c.reset}`
+        )
+      ).trim();
+      if (!testEmail?.includes("@")) {
         printError("Adresse e-mail invalide.");
         return;
       }
       targetUsers = [{ email: testEmail, username: testEmail.split("@")[0] }];
     } else if (targetChoice === "3") {
-      const tier = (await rl.question(`  ${c.brightYellow}➔ Saisissez le forfait visé (Free/Plus/Pro/Max) : ${c.reset}`)).trim();
+      const tier = (
+        await rl.question(
+          `  ${c.brightYellow}➔ Saisissez le forfait visé (Free/Plus/Pro/Max) : ${c.reset}`
+        )
+      ).trim();
       printInfo(`Recherche des utilisateurs avec le forfait ${tier}...`);
       targetUsers = (await sql`
         SELECT u.email, u.username 
@@ -506,7 +620,12 @@ export async function runNewsletterStudio() {
     });
     console.log("");
 
-    const templateChoice = (await rl.question(`  ${c.brightYellow}➔ Sélectionner un modèle [1-4] (défaut: 1) : ${c.reset}`)).trim() || "1";
+    const templateChoice =
+      (
+        await rl.question(
+          `  ${c.brightYellow}➔ Sélectionner un modèle [1-4] (défaut: 1) : ${c.reset}`
+        )
+      ).trim() || "1";
     const selectedTemplate = TEMPLATES[templateChoice] || TEMPLATES["1"];
 
     printSuccess(`Modèle sélectionné : ${selectedTemplate.name}`);
@@ -516,8 +635,12 @@ export async function runNewsletterStudio() {
     // ──────── ÉTAPE 3: Contenu & Paramètres ────────
     printStep(3, "Personnalisation du contenu");
 
-    console.log(`  ${c.dim}Objet par défaut : "${selectedTemplate.defaultSubject}"${c.reset}`);
-    const inputSubject = await rl.question(`  ${c.brightYellow}➔ Objet du mail (Entrée pour garder par défaut) : ${c.reset}`);
+    console.log(
+      `  ${c.dim}Objet par défaut : "${selectedTemplate.defaultSubject}"${c.reset}`
+    );
+    const inputSubject = await rl.question(
+      `  ${c.brightYellow}➔ Objet du mail (Entrée pour garder par défaut) : ${c.reset}`
+    );
     const subject = inputSubject.trim() || selectedTemplate.defaultSubject;
 
     console.log("");
@@ -534,8 +657,12 @@ export async function runNewsletterStudio() {
       const lines: string[] = [];
       let lineNum = 1;
       while (true) {
-        const line = await rl.question(`  ${c.dim}${String(lineNum).padStart(3)}│${c.reset} `);
-        if (line.trim() === "FIN") break;
+        const line = await rl.question(
+          `  ${c.dim}${String(lineNum).padStart(3)}│${c.reset} `
+        );
+        if (line.trim() === "FIN") {
+          break;
+        }
         lines.push(line);
         lineNum++;
       }
@@ -546,28 +673,52 @@ export async function runNewsletterStudio() {
         textContent = rawInput || selectedTemplate.defaultContent;
       }
     } else {
-      console.log(`  ${c.dim}Texte par défaut :${c.reset}\n  ${c.italic}"${selectedTemplate.defaultContent.replace(/\n/g, "\n  ")}"${c.reset}\n`);
-      const changeText = await rl.question(`  ${c.brightYellow}➔ Saisir un texte personnalisé ? (o/N) : ${c.reset}`);
+      console.log(
+        `  ${c.dim}Texte par défaut :${c.reset}\n  ${c.italic}"${selectedTemplate.defaultContent.replace(/\n/g, "\n  ")}"${c.reset}\n`
+      );
+      const changeText = await rl.question(
+        `  ${c.brightYellow}➔ Saisir un texte personnalisé ? (o/N) : ${c.reset}`
+      );
 
-      if (changeText.toLowerCase() === "o" || changeText.toLowerCase() === "y") {
+      if (
+        changeText.toLowerCase() === "o" ||
+        changeText.toLowerCase() === "y"
+      ) {
         printInfo("Tapez 'FIN' sur une ligne seule pour valider :");
         const lines: string[] = [];
         let lineNum = 1;
         while (true) {
-          const line = await rl.question(`  ${c.dim}${String(lineNum).padStart(3)}│${c.reset} `);
-          if (line.trim() === "FIN") break;
+          const line = await rl.question(
+            `  ${c.dim}${String(lineNum).padStart(3)}│${c.reset} `
+          );
+          if (line.trim() === "FIN") {
+            break;
+          }
           lines.push(line);
           lineNum++;
         }
-        textContent = lines.join("\n").trim() || selectedTemplate.defaultContent;
+        textContent =
+          lines.join("\n").trim() || selectedTemplate.defaultContent;
       }
 
       if (selectedTemplate.hasCta) {
         console.log("");
-        const wantCta = await rl.question(`  ${c.brightYellow}➔ Ajouter un bouton d'action (CTA) ? (O/n) : ${c.reset}`);
+        const wantCta = await rl.question(
+          `  ${c.brightYellow}➔ Ajouter un bouton d'action (CTA) ? (O/n) : ${c.reset}`
+        );
         if (wantCta.toLowerCase() !== "n") {
-          ctaText = (await rl.question(`  ${c.cyan}→${c.reset} Texte du bouton (ex: Découvrir mAI 1.5) : `)).trim() || "Découvrir mAI";
-          ctaUrl = (await rl.question(`  ${c.cyan}→${c.reset} Lien URL du bouton (ex: https://mai.val.run) : `)).trim() || "https://mai.val.run";
+          ctaText =
+            (
+              await rl.question(
+                `  ${c.cyan}→${c.reset} Texte du bouton (ex: Découvrir mAI 1.5) : `
+              )
+            ).trim() || "Découvrir mAI";
+          ctaUrl =
+            (
+              await rl.question(
+                `  ${c.cyan}→${c.reset} Lien URL du bouton (ex: https://mai.val.run) : `
+              )
+            ).trim() || "https://mai.val.run";
         }
       }
     }
@@ -584,45 +735,96 @@ export async function runNewsletterStudio() {
       printHeader();
       printStep(4, "Récapitulatif & Actions");
 
-      console.log(`  ${c.bold}📌 Objet :${c.reset} ${c.brightCyan}${subject}${c.reset}`);
-      console.log(`  ${c.bold}👥 Destinataires :${c.reset} ${c.brightGreen}${targetUsers.length} personne(s)${c.reset}`);
+      console.log(
+        `  ${c.bold}📌 Objet :${c.reset} ${c.brightCyan}${subject}${c.reset}`
+      );
+      console.log(
+        `  ${c.bold}👥 Destinataires :${c.reset} ${c.brightGreen}${targetUsers.length} personne(s)${c.reset}`
+      );
       console.log(`  ${c.bold}🎨 Modèle :${c.reset} ${selectedTemplate.name}`);
       if (ctaText && ctaUrl) {
-        console.log(`  ${c.bold}🔗 Bouton CTA :${c.reset} "${ctaText}" → ${ctaUrl}`);
+        console.log(
+          `  ${c.bold}🔗 Bouton CTA :${c.reset} "${ctaText}" → ${ctaUrl}`
+        );
       }
       console.log("");
       printDivider();
       console.log("");
 
       console.log(`  ${c.bold}${c.brightWhite}MENU D'ACTION :${c.reset}`);
-      console.log(`  ${c.brightGreen}[1] 🚀 Lancer l'envoi global de la newsletter${c.reset}`);
-      console.log(`  ${c.brightCyan}[2] 📧 S'envoyer un mail de test rapide${c.reset}`);
-      console.log(`  ${c.brightYellow}[3] 🌐 Ouvrir un aperçu HTML dans le navigateur${c.reset}`);
+      console.log(
+        `  ${c.brightGreen}[1] 🚀 Lancer l'envoi global de la newsletter${c.reset}`
+      );
+      console.log(
+        `  ${c.brightCyan}[2] 📧 S'envoyer un mail de test rapide${c.reset}`
+      );
+      console.log(
+        `  ${c.brightYellow}[3] 🌐 Ouvrir un aperçu HTML dans le navigateur${c.reset}`
+      );
       console.log(`  ${c.white}[4] ❌ Annuler et quitter${c.reset}`);
       console.log("");
 
-      const action = (await rl.question(`  ${c.brightYellow}➔ Votre choix [1-4] : ${c.reset}`)).trim();
+      const action = (
+        await rl.question(`  ${c.brightYellow}➔ Votre choix [1-4] : ${c.reset}`)
+      ).trim();
 
       if (action === "3") {
         const sampleUsername = targetUsers[0]?.username || "Développeur";
-        const html = buildNewsletterHtml(subject, sampleUsername, textContent, selectedTemplate, customHtml, ctaText, ctaUrl);
+        const html = buildNewsletterHtml(
+          subject,
+          sampleUsername,
+          textContent,
+          selectedTemplate,
+          customHtml,
+          ctaText,
+          ctaUrl
+        );
         openPreviewInBrowser(html);
-        await rl.question(`\n  ${c.dim}Appuyez sur Entrée pour revenir au menu...${c.reset}`);
+        await rl.question(
+          `\n  ${c.dim}Appuyez sur Entrée pour revenir au menu...${c.reset}`
+        );
       } else if (action === "2") {
-        const testTarget = (await rl.question(`\n  ${c.brightYellow}➔ Saisissez l'adresse e-mail pour le test (défaut: ${defaultEmail}) : ${c.reset}`)).trim() || defaultEmail;
+        const testTarget =
+          (
+            await rl.question(
+              `\n  ${c.brightYellow}➔ Saisissez l'adresse e-mail pour le test (défaut: ${defaultEmail}) : ${c.reset}`
+            )
+          ).trim() || defaultEmail;
         printInfo(`Envoi du mail de test à ${testTarget}...`);
 
-        const html = buildNewsletterHtml(`[TEST] ${subject}`, "TestUser", textContent, selectedTemplate, customHtml, ctaText, ctaUrl);
-        const success = await sendEmail({ to: testTarget, subject: `[TEST] ${subject}`, html });
+        const html = buildNewsletterHtml(
+          `[TEST] ${subject}`,
+          "TestUser",
+          textContent,
+          selectedTemplate,
+          customHtml,
+          ctaText,
+          ctaUrl
+        );
+        const success = await sendEmail({
+          html,
+          subject: `[TEST] ${subject}`,
+          to: testTarget,
+        });
         if (success) {
           printSuccess(`E-mail de test envoyé avec succès à ${testTarget} !`);
         } else {
           printError(`Échec de l'envoi de test à ${testTarget}.`);
         }
-        await rl.question(`\n  ${c.dim}Appuyez sur Entrée pour revenir au menu...${c.reset}`);
+        await rl.question(
+          `\n  ${c.dim}Appuyez sur Entrée pour revenir au menu...${c.reset}`
+        );
       } else if (action === "1") {
-        const confirm = (await rl.question(`\n  ${c.bold}${c.brightRed}⚠️  Êtes-vous SÛR de vouloir envoyer à ${targetUsers.length} destinataire(s) ? (O/n) : ${c.reset}`)).trim();
-        if (confirm.toLowerCase() === "o" || confirm.toLowerCase() === "y" || confirm === "") {
+        const confirm = (
+          await rl.question(
+            `\n  ${c.bold}${c.brightRed}⚠️  Êtes-vous SÛR de vouloir envoyer à ${targetUsers.length} destinataire(s) ? (O/n) : ${c.reset}`
+          )
+        ).trim();
+        if (
+          confirm.toLowerCase() === "o" ||
+          confirm.toLowerCase() === "y" ||
+          confirm === ""
+        ) {
           break; // Sort du menu et lance l'envoi
         }
       } else if (action === "4") {
@@ -645,8 +847,16 @@ export async function runNewsletterStudio() {
       const u = targetUsers[i];
       printProgressBar(i + 1, targetUsers.length, u.email);
 
-      const html = buildNewsletterHtml(subject, u.username, textContent, selectedTemplate, customHtml, ctaText, ctaUrl);
-      const success = await sendEmail({ to: u.email, subject, html });
+      const html = buildNewsletterHtml(
+        subject,
+        u.username,
+        textContent,
+        selectedTemplate,
+        customHtml,
+        ctaText,
+        ctaUrl
+      );
+      const success = await sendEmail({ html, subject, to: u.email });
       if (success) {
         successCount++;
       } else {
@@ -662,23 +872,29 @@ export async function runNewsletterStudio() {
     console.log("");
     console.log("");
     printDivider();
-    console.log(`  ${c.bold}${c.brightWhite}📊 RÉSULTAT DU DÉPLOIEMENT${c.reset}`);
+    console.log(
+      `  ${c.bold}${c.brightWhite}📊 RÉSULTAT DU DÉPLOIEMENT${c.reset}`
+    );
     printDivider();
-    console.log(`  ${c.brightGreen}✔ ${successCount} mail(s) envoyé(s) avec succès${c.reset}`);
+    console.log(
+      `  ${c.brightGreen}✔ ${successCount} mail(s) envoyé(s) avec succès${c.reset}`
+    );
     if (errorCount > 0) {
       console.log(`  ${c.brightRed}✖ ${errorCount} échec(s)${c.reset}`);
     }
     console.log(`  ${c.dim}⏱ Temps total : ${duration}s${c.reset}`);
     printDivider();
     console.log("");
-
   } finally {
     rl.close();
   }
 }
 
 // Permettre l'exécution directe si appelé en script
-if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith('newsletter-send.ts')) {
+if (
+  import.meta.url === `file://${process.argv[1]}` ||
+  process.argv[1]?.endsWith("newsletter-send.ts")
+) {
   runNewsletterStudio().catch((err) => {
     printError(`Erreur fatale : ${err.message || err}`);
     process.exit(1);

@@ -293,33 +293,30 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   activeAgentRef.current = activeAgent;
   const activeAgentIdRef = useRef<string | null>(null);
 
-  const setActiveAgent = useCallback(
-    (agent: Agent | null) => {
-      setActiveAgentState(agent);
-      activeAgentRef.current = agent;
-      activeAgentIdRef.current = agent?.id ?? null;
-      if (typeof document !== "undefined") {
-        if (agent?.id) {
-          document.cookie = `agent-id=${encodeURIComponent(agent.id)}; path=/; max-age=31536000`;
-          // Le modèle par défaut de l'agent écrase le modèle global
-          if (agent.defaultModelId) {
-            setCurrentModelId(agent.defaultModelId);
-            currentModelIdRef.current = agent.defaultModelId;
-            document.cookie = `chat-model=${encodeURIComponent(agent.defaultModelId)}; path=/; max-age=31536000`;
-          }
-        } else {
-          document.cookie = `agent-id=; path=/; max-age=0`;
+  const setActiveAgent = useCallback((agent: Agent | null) => {
+    setActiveAgentState(agent);
+    activeAgentRef.current = agent;
+    activeAgentIdRef.current = agent?.id ?? null;
+    if (typeof document !== "undefined") {
+      if (agent?.id) {
+        document.cookie = `agent-id=${encodeURIComponent(agent.id)}; path=/; max-age=31536000`;
+        // Le modèle par défaut de l'agent écrase le modèle global
+        if (agent.defaultModelId) {
+          setCurrentModelId(agent.defaultModelId);
+          currentModelIdRef.current = agent.defaultModelId;
+          document.cookie = `chat-model=${encodeURIComponent(agent.defaultModelId)}; path=/; max-age=31536000`;
         }
+      } else {
+        document.cookie = "agent-id=; path=/; max-age=0";
       }
-      // Persist globale
-      fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`, {
-        body: JSON.stringify({ defaultAgentId: agent?.id ?? null }),
-        headers: { "Content-Type": "application/json" },
-        method: "POST",
-      }).catch(() => {});
-    },
-    []
-  );
+    }
+    // Persist globale
+    fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`, {
+      body: JSON.stringify({ defaultAgentId: agent?.id ?? null }),
+      headers: { "Content-Type": "application/json" },
+      method: "POST",
+    }).catch(() => {});
+  }, []);
 
   const clearActiveAgent = useCallback(() => {
     setActiveAgent(null);
@@ -339,7 +336,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agents/${id}`)
         .then((r) => (r.ok ? r.json() : null))
         .then((data) => {
-          if (data) setActiveAgent(data as Agent);
+          if (data) {
+            setActiveAgent(data as Agent);
+          }
         })
         .catch(() => {});
     },
@@ -364,7 +363,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       if (cookieAgent) {
         const decodedAgent = decodeURIComponent(cookieAgent);
         if (decodedAgent) {
-          fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agents/${decodedAgent}`)
+          fetch(
+            `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agents/${decodedAgent}`
+          )
             .then((r) => (r.ok ? r.json() : null))
             .then((data) => {
               if (data?.id) {
@@ -380,8 +381,13 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`)
         .then((r) => r.json())
         .then((data) => {
-          if (data?.defaultAgentId && data.defaultAgentId !== activeAgentIdRef.current) {
-            fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agents/${data.defaultAgentId}`)
+          if (
+            data?.defaultAgentId &&
+            data.defaultAgentId !== activeAgentIdRef.current
+          ) {
+            fetch(
+              `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agents/${data.defaultAgentId}`
+            )
               .then((r2) => (r2.ok ? r2.json() : null))
               .then((ag) => {
                 if (ag?.id) {
@@ -512,13 +518,13 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
                   message: lastMessage,
                   ...(projectIdToSend ? { projectId: projectIdToSend } : {}),
                 }),
+            agentId: activeAgentIdRef.current,
             enabledTools: toolsToSend,
             isGhostMode: isGhostModeRef.current,
             selectedChatMode: currentModeIdRef.current,
             selectedChatModel: currentModelIdRef.current,
             selectedVisibilityType: visibility,
             skillId: activeSkillIdRef.current,
-            agentId: activeAgentIdRef.current,
             ...(projectIdToSend && isToolApprovalContinuation
               ? { projectId: projectIdToSend }
               : {}),

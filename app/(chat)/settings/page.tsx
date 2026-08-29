@@ -5,9 +5,7 @@ import {
   BellIcon,
   BotIcon,
   CameraIcon,
-  CheckCircle2Icon,
   CloudIcon,
-  CpuIcon,
   ExternalLinkIcon,
   ImageIcon,
   KeyRoundIcon,
@@ -15,7 +13,6 @@ import {
   SettingsIcon,
   ShieldCheckIcon,
   SparklesIcon,
-  Trash2Icon,
   UserIcon,
   Volume2Icon,
   ZapIcon,
@@ -37,7 +34,6 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -104,18 +100,17 @@ export default function SettingsPage() {
       | "profile"
       | "usage"
       | "preferences"
-      | "notifications"
-      | "mcp") || "profile";
+      | "notifications") || "profile";
   const [activeTab, setActiveTab] = useState<
-    "profile" | "usage" | "preferences" | "notifications" | "mcp"
+    "profile" | "usage" | "preferences" | "notifications"
   >(
-    ["profile", "usage", "preferences", "notifications", "mcp"].includes(initialTab)
+    ["profile", "usage", "preferences", "notifications"].includes(initialTab)
       ? (initialTab as any)
       : "profile"
   );
 
   const handleTabChange = useCallback(
-    (tab: "profile" | "usage" | "preferences" | "notifications" | "mcp") => {
+    (tab: "profile" | "usage" | "preferences" | "notifications") => {
       setActiveTab(tab);
       const params = new URLSearchParams(searchParams.toString());
       params.set("tab", tab);
@@ -128,7 +123,7 @@ export default function SettingsPage() {
     const t = searchParams.get("tab") as any;
     if (
       t &&
-      ["profile", "usage", "preferences", "notifications", "mcp"].includes(t) &&
+      ["profile", "usage", "preferences", "notifications"].includes(t) &&
       t !== activeTab
     ) {
       setActiveTab(t);
@@ -236,16 +231,8 @@ export default function SettingsPage() {
     "truncate"
   );
   const [browserPerm, setBrowserPerm] = useState<string>(
-    typeof Notification !== "undefined" ? Notification.permission : "default"
+    typeof Notification === "undefined" ? "default" : Notification.permission
   );
-  // MCP global prefs
-  const [mcpKillSwitch, setMcpKillSwitch] = useState(false);
-  const [mcpDefaultApproval, setMcpDefaultApproval] = useState<"always_allow"|"write_only"|"ask_permission">("write_only");
-  const [mcpDefaultTimeout, setMcpDefaultTimeout] = useState(15000);
-  const [mcpDefaultRateLimit, setMcpDefaultRateLimit] = useState(60);
-  const [mcpAllowStdio, setMcpAllowStdio] = useState(true);
-  const [mcpRetention, setMcpRetention] = useState(30);
-  const [isSavingMcpPrefs, setIsSavingMcpPrefs] = useState(false);
 
   const { data: prefModelsData } = useSWR(
     `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models`,
@@ -296,28 +283,35 @@ export default function SettingsPage() {
   const { data: notifPrefsData, mutate: mutateNotifPrefs } = useSWR(
     "/api/notifications/preferences",
     (url: string) => fetch(url).then((r) => r.json()),
-    { dedupingInterval: 10000 }
+    { dedupingInterval: 10_000 }
   );
 
   useEffect(() => {
     if (notifPrefsData) {
-      if (typeof notifPrefsData.enabled === "boolean")
+      if (typeof notifPrefsData.enabled === "boolean") {
         setNotifEnabled(notifPrefsData.enabled);
-      if (typeof notifPrefsData.aiResponse === "boolean")
+      }
+      if (typeof notifPrefsData.aiResponse === "boolean") {
         setNotifAiResponse(notifPrefsData.aiResponse);
-      if (typeof notifPrefsData.projectCreated === "boolean")
+      }
+      if (typeof notifPrefsData.projectCreated === "boolean") {
         setNotifProject(notifPrefsData.projectCreated);
-      if (typeof notifPrefsData.mcpCreated === "boolean")
+      }
+      if (typeof notifPrefsData.mcpCreated === "boolean") {
         setNotifMcp(notifPrefsData.mcpCreated);
-      if (typeof notifPrefsData.mcpAccessRequest === "boolean")
+      }
+      if (typeof notifPrefsData.mcpAccessRequest === "boolean") {
         setNotifMcpAccess(notifPrefsData.mcpAccessRequest);
-      if (typeof notifPrefsData.news === "boolean")
+      }
+      if (typeof notifPrefsData.news === "boolean") {
         setNotifNews(notifPrefsData.news);
+      }
       if (
         notifPrefsData.regenerateMode === "truncate" ||
         notifPrefsData.regenerateMode === "fork"
-      )
+      ) {
         setRegenerateMode(notifPrefsData.regenerateMode);
+      }
     }
   }, [notifPrefsData]);
 
@@ -325,24 +319,13 @@ export default function SettingsPage() {
     if (typeof window !== "undefined" && "Notification" in window) {
       setBrowserPerm(Notification.permission);
     }
-  }, [notifEnabled]);
-
-  // MCP prefs fetch
-  const { data: mcpPrefsData, mutate: mutateMcpPrefs } = useSWR("/api/user/mcp-preferences", (url:string)=>fetch(url).then(r=>r.json()), { dedupingInterval: 10000 });
-  useEffect(()=>{ if(mcpPrefsData){ if(typeof mcpPrefsData.globalKillSwitch==="boolean") setMcpKillSwitch(mcpPrefsData.globalKillSwitch); if(mcpPrefsData.defaultRequireApproval) setMcpDefaultApproval(mcpPrefsData.defaultRequireApproval); if(mcpPrefsData.defaultTimeoutMs) setMcpDefaultTimeout(mcpPrefsData.defaultTimeoutMs); if(mcpPrefsData.defaultRateLimitPerMin) setMcpDefaultRateLimit(mcpPrefsData.defaultRateLimitPerMin); if(typeof mcpPrefsData.allowStdio==="boolean") setMcpAllowStdio(mcpPrefsData.allowStdio); if(mcpPrefsData.retentionDays) setMcpRetention(mcpPrefsData.retentionDays); } }, [mcpPrefsData]);
-  const handleSaveMcpPrefs = useCallback(async()=>{
-    setIsSavingMcpPrefs(true);
-    try{
-      const res= await fetch("/api/user/mcp-preferences",{ body: JSON.stringify({ allowStdio:mcpAllowStdio, defaultRateLimitPerMin:mcpDefaultRateLimit, defaultRequireApproval:mcpDefaultApproval, defaultTimeoutMs:mcpDefaultTimeout, globalKillSwitch:mcpKillSwitch, retentionDays:mcpRetention }), headers:{ "Content-Type":"application/json"}, method:"POST"});
-      if(!res.ok) throw new Error("Erreur sauvegarde");
-      toast.success("Préférences MCP enregistrées !"); mutateMcpPrefs();
-    } catch(e:any){ toast.error(e.message||"Erreur"); } finally{ setIsSavingMcpPrefs(false); }
-  }, [mcpKillSwitch,mcpDefaultApproval,mcpDefaultTimeout,mcpDefaultRateLimit,mcpAllowStdio,mcpRetention,mutateMcpPrefs]);
-  const handlePurgeMcp = async()=>{ try{ const r=await fetch("/api/mcp/purge",{ body: JSON.stringify({ retentionDays:0}), headers:{"Content-Type":"application/json"}, method:"POST"}); const d=await r.json(); toast.success(`${d.deleted} logs purgés`);}catch{ toast.error("Erreur purge");} };
+  }, []);
 
   const handleRequestNotificationPermission = useCallback(async () => {
     if (typeof window === "undefined" || !("Notification" in window)) {
-      toast.error("Les notifications ne sont pas supportées par ce navigateur.");
+      toast.error(
+        "Les notifications ne sont pas supportées par ce navigateur."
+      );
       return;
     }
     try {
@@ -388,10 +371,17 @@ export default function SettingsPage() {
         headers: { "Content-Type": "application/json" },
         method: "POST",
       });
-      if (!res.ok) throw new Error("Erreur sauvegarde");
+      if (!res.ok) {
+        throw new Error("Erreur sauvegarde");
+      }
       toast.success("Préférences de notifications enregistrées !");
       mutateNotifPrefs();
-      if (notifEnabled && typeof window !== "undefined" && "Notification" in window && Notification.permission === "default") {
+      if (
+        notifEnabled &&
+        typeof window !== "undefined" &&
+        "Notification" in window &&
+        Notification.permission === "default"
+      ) {
         handleRequestNotificationPermission();
       }
     } catch (e: any) {
@@ -430,7 +420,7 @@ export default function SettingsPage() {
     if (cModel) {
       setDefaultModelId(cModel);
     }
-  }, [customPrefData]);
+  }, []);
 
   const handleSavePreferences = useCallback(async () => {
     setCookie("chat-model", defaultModelId);
@@ -462,9 +452,7 @@ export default function SettingsPage() {
       if (!res.ok) {
         throw new Error("Erreur lors de l'enregistrement");
       }
-      toast.success(
-        "Préférences d'outils Images & Audio enregistrées en BDD !"
-      );
+      toast.success("Préférences d'outils Images & Audio enregistrées !");
       mutateCustomPref();
     } catch (e: any) {
       toast.error(e.message || "Erreur de sauvegarde des préférences outils.");
@@ -771,18 +759,6 @@ export default function SettingsPage() {
             <BellIcon className="size-4" />
             <span>Notifications</span>
           </button>
-
-          <button
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer ${
-              activeTab === "mcp"
-                ? "bg-foreground text-background shadow-sm"
-                : "bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
-            }`}
-            onClick={() => handleTabChange("mcp")}
-          >
-            <CpuIcon className="size-4" />
-            <span>MCP Global</span>
-          </button>
         </div>
       </div>
 
@@ -1016,7 +992,11 @@ export default function SettingsPage() {
                   Préférences IA
                 </h3>
                 <p className="text-xs text-muted-foreground">
-                  Modèle par défaut (cookie <code className="px-1 py-0.5 rounded bg-muted text-[10px]">chat-model</code>) et Agents — styles IA personnalisés remplaçant les Modes.
+                  Modèle par défaut (cookie{" "}
+                  <code className="px-1 py-0.5 rounded bg-muted text-[10px]">
+                    chat-model
+                  </code>
+                  ) et Agents — styles IA personnalisés remplaçant les Modes.
                 </p>
               </div>
             </div>
@@ -1052,13 +1032,31 @@ export default function SettingsPage() {
             <div className="flex flex-col gap-2 p-3 rounded-xl border border-border/40 bg-muted/20">
               <div className="flex items-center gap-2">
                 <BotIcon className="size-4 text-primary" />
-                <span className="text-xs font-semibold text-foreground">Agents IA</span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-primary/10 text-primary font-bold">Nouveau</span>
+                <span className="text-xs font-semibold text-foreground">
+                  Agents IA
+                </span>
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-primary/10 text-primary font-bold">
+                  Nouveau
+                </span>
               </div>
               <p className="text-[11px] text-muted-foreground leading-relaxed">
-                Les <strong>Agents</strong> remplacent les Modes IA. Crée jusqu'à 10 agents personnalisés (instructions 5000c, emoji/icône, modèle par défaut, skills, MCP et fichiers). Sélection globale via le menu à côté du modèle ou <code className="px-1 py-0.5 rounded bg-muted text-[10px]">@</code> / <code className="px-1 py-0.5 rounded bg-muted text-[10px]">/agents</code>.
+                Les <strong>Agents</strong> remplacent les Modes IA. Crée
+                jusqu'à 10 agents personnalisés (instructions 5000c,
+                emoji/icône, modèle par défaut, skills, MCP et fichiers).
+                Sélection globale via le menu à côté du modèle ou{" "}
+                <code className="px-1 py-0.5 rounded bg-muted text-[10px]">
+                  @
+                </code>{" "}
+                /{" "}
+                <code className="px-1 py-0.5 rounded bg-muted text-[10px]">
+                  /agents
+                </code>
+                .
               </p>
-              <Link href="/agents" className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline w-fit">
+              <Link
+                className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline w-fit"
+                href="/agents"
+              >
                 <BotIcon className="size-3.5" /> Gérer mes agents →
               </Link>
             </div>
@@ -1086,7 +1084,7 @@ export default function SettingsPage() {
                 </h3>
                 <p className="text-xs text-muted-foreground">
                   Personnalisez le comportement de mAI — ton, langue, contexte
-                  métier. Stocké en base, synchronisé sur tous vos appareils.
+                  métier. Synchronisé sur tous vos appareils.
                 </p>
               </div>
               <label className="flex items-center gap-2 cursor-pointer">
@@ -1384,8 +1382,8 @@ export default function SettingsPage() {
                   Tronquer
                 </span>
                 <span className="text-xs text-muted-foreground leading-tight">
-                  Supprime les messages suivants et régénère à partir du
-                  message ciblé (historique réécrit).
+                  Supprime les messages suivants et régénère à partir du message
+                  ciblé (historique réécrit).
                 </span>
               </button>
               <button
@@ -1401,8 +1399,8 @@ export default function SettingsPage() {
                   Fork (Brancher)
                 </span>
                 <span className="text-xs text-muted-foreground leading-tight">
-                  Crée une nouvelle conversation branchée, l'historique
-                  original reste intact.
+                  Crée une nouvelle conversation branchée, l'historique original
+                  reste intact.
                 </span>
               </button>
             </div>
@@ -1414,21 +1412,6 @@ export default function SettingsPage() {
               >
                 Enregistrer le mode
               </button>
-            </div>
-          </div>
-
-          <div className="p-5 rounded-2xl border border-border/60 bg-muted/20 flex items-start gap-3">
-            <AlertCircleIcon className="size-5 text-primary shrink-0 mt-0.5" />
-            <div className="text-xs text-muted-foreground">
-              <p className="font-semibold text-foreground mb-1">
-                Comment sont stockées vos préférences ?
-              </p>
-              <p>
-                Les préférences des outils d'images et d'audio, ainsi que vos
-                instructions personnalisées, sont enregistrées de façon
-                permanente dans votre profil utilisateur et synchronisées
-                sur tous vos appareils.
-              </p>
             </div>
           </div>
         </div>
@@ -1446,7 +1429,6 @@ export default function SettingsPage() {
                 </h3>
                 <p className="text-xs text-muted-foreground">
                   Gérez l'envoi et la personnalisation de vos notifications.
-                  Sauvegardées dans votre profil.
                 </p>
               </div>
               <div className="ml-auto flex items-center gap-2">
@@ -1518,7 +1500,9 @@ export default function SettingsPage() {
                 onChange={(e) => {
                   const v = e.target.checked;
                   setNotifEnabled(v);
-                  if (v) setNotifNews(true);
+                  if (v) {
+                    setNotifNews(true);
+                  }
                 }}
                 type="checkbox"
               />
@@ -1527,7 +1511,7 @@ export default function SettingsPage() {
             {/* Granulaires */}
             <div
               className={`flex flex-col gap-3 pt-3 border-t border-border/40 ${
-                !notifEnabled ? "opacity-50 pointer-events-none" : ""
+                notifEnabled ? "" : "opacity-50 pointer-events-none"
               }`}
             >
               <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
@@ -1538,36 +1522,36 @@ export default function SettingsPage() {
                   desc: "À chaque réponse de l'IA dans vos conversations",
                   key: "ai",
                   label: "Réponse de l'IA",
-                  value: notifAiResponse,
                   setter: setNotifAiResponse,
+                  value: notifAiResponse,
                 },
                 {
                   desc: "Lors de la création d'un nouveau dossier/projet",
                   key: "project",
                   label: "Nouveau projet",
-                  value: notifProject,
                   setter: setNotifProject,
+                  value: notifProject,
                 },
                 {
                   desc: "Lors de l'ajout d'un nouveau serveur MCP",
                   key: "mcp",
                   label: "Nouveau MCP",
-                  value: notifMcp,
                   setter: setNotifMcp,
+                  value: notifMcp,
                 },
                 {
                   desc: "Lors d'une demande d'accès / exécution d'outil MCP (write/execute)",
                   key: "mcpAccess",
                   label: "Demande d'accès MCP",
-                  value: notifMcpAccess,
                   setter: setNotifMcpAccess,
+                  value: notifMcpAccess,
                 },
                 {
                   desc: "Actualités et annonces mAI (via admin, activé par défaut si notifications on)",
                   key: "news",
                   label: "Actualités d'mAI",
-                  value: notifNews,
                   setter: setNotifNews,
+                  value: notifNews,
                 },
               ].map((item) => (
                 <label
@@ -1602,7 +1586,9 @@ export default function SettingsPage() {
                 {isSavingNotif ? (
                   <Loader2Icon className="size-4 animate-spin" />
                 ) : null}
-                {isSavingNotif ? "Enregistrement..." : "Enregistrer les notifications"}
+                {isSavingNotif
+                  ? "Enregistrement..."
+                  : "Enregistrer les notifications"}
               </button>
             </div>
           </div>
@@ -1610,12 +1596,14 @@ export default function SettingsPage() {
           <div className="p-4 rounded-xl border border-border/60 bg-muted/20 flex items-start gap-3">
             <AlertCircleIcon className="size-5 text-primary shrink-0 mt-0.5" />
             <div className="text-xs text-muted-foreground">
-              <p className="font-semibold text-foreground mb-1">RGPD & Données</p>
+              <p className="font-semibold text-foreground mb-1">
+                RGPD & Données
+              </p>
               <p>
                 Vos préférences et notifications sont sécurisées dans votre
-                profil et synchronisées sur vos appareils. Les
-                notifications Actualités sont envoyées uniquement aux utilisateurs
-                ayant activé l'option. Plus d'infos sur{" "}
+                profil et synchronisées sur vos appareils. Les notifications
+                Actualités sont envoyées uniquement aux utilisateurs ayant
+                activé l'option. Plus d'infos sur{" "}
                 <a
                   className="text-primary underline"
                   href="https://mai-devs.vercel.app"
@@ -1627,36 +1615,6 @@ export default function SettingsPage() {
                 .
               </p>
             </div>
-          </div>
-        </div>
-      ) : activeTab === "mcp" ? (
-        /* ────────────── SECTION MCP GLOBAL ────────────── */
-        <div className="py-6 flex flex-col gap-6 max-w-3xl">
-          <div className="p-5 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6">
-            <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-xl bg-purple-500/10 text-purple-600 ring-1 ring-purple-500/20"><CpuIcon className="size-5" /></div>
-              <div><h3 className="text-base font-semibold">Contrôle global MCP</h3><p className="text-xs text-muted-foreground">Kill-switch, timeout, rate-limit et permissions par défaut. Variables chiffrées AES-256-GCM en BDD.</p></div>
-              <span className={`ml-auto text-xs px-2 py-1 rounded-full border font-medium ${mcpKillSwitch ? "bg-red-500/10 text-red-600 border-red-500/20" : "bg-emerald-500/10 text-emerald-600 border-emerald-500/20"}`}>{mcpKillSwitch ? "MCP OFF" : "MCP ON"}</span>
-            </div>
-            <label className="flex items-center justify-between p-3 rounded-xl border border-red-500/20 bg-red-500/5 cursor-pointer">
-              <div className="flex flex-col"><span className="text-sm font-semibold text-red-600">Kill-switch global</span><span className="text-xs text-muted-foreground">Désactive tous les appels MCP instantanément</span></div>
-              <input type="checkbox" checked={mcpKillSwitch} onChange={e=>setMcpKillSwitch(e.target.checked)} className="size-5 accent-red-600" />
-            </label>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="flex flex-col gap-1.5"><Label className="text-xs font-medium">Permission par défaut</Label><select className="h-10 rounded-xl border border-border/60 bg-muted/30 px-3 text-sm" value={mcpDefaultApproval} onChange={e=>setMcpDefaultApproval(e.target.value as any)}><option value="always_allow">always_allow (auto)</option><option value="write_only">write_only (recommandé)</option><option value="ask_permission">ask_permission (strict)</option></select></div>
-              <div className="flex flex-col gap-1.5"><Label className="text-xs font-medium">Timeout par défaut (ms)</Label><Input type="number" min={1000} max={120000} step={1000} value={mcpDefaultTimeout} onChange={e=>setMcpDefaultTimeout(Number(e.target.value))} /></div>
-              <div className="flex flex-col gap-1.5"><Label className="text-xs font-medium">Rate limit par défaut (/min)</Label><Input type="number" min={1} max={1000} value={mcpDefaultRateLimit} onChange={e=>setMcpDefaultRateLimit(Number(e.target.value))} /></div>
-              <div className="flex flex-col gap-1.5"><Label className="text-xs font-medium">Rétention logs (jours)</Label><Input type="number" min={1} max={365} value={mcpRetention} onChange={e=>setMcpRetention(Number(e.target.value))} /></div>
-            </div>
-            <label className="flex items-center justify-between p-3 rounded-xl border border-border/50 bg-muted/20 cursor-pointer">
-              <div className="flex flex-col"><span className="text-sm font-medium">Autoriser transport stdio (local)</span><span className="text-xs text-muted-foreground">Si désactivé, toute création stdio sera bloquée (403)</span></div>
-              <input type="checkbox" checked={mcpAllowStdio} onChange={e=>setMcpAllowStdio(e.target.checked)} className="size-5 accent-primary" />
-            </label>
-            <div className="flex items-center gap-2 justify-end">
-              <Button variant="destructive" size="sm" className="h-8 text-xs" onClick={handlePurgeMcp}><Trash2Icon className="size-3 mr-1"/>Purger tous les logs</Button>
-              <Button size="sm" className="h-8 text-xs" disabled={isSavingMcpPrefs} onClick={handleSaveMcpPrefs}>{isSavingMcpPrefs ? <><Loader2Icon className="size-3 mr-1 animate-spin"/>Enregistrement...</> : "Enregistrer préférences MCP"}</Button>
-            </div>
-            <div className="p-3 rounded-xl border border-border/40 bg-muted/20 text-[11px] text-muted-foreground">Variables env/auth chiffrées dans <code className="font-mono bg-muted px-1 py-0.5 rounded">mcp_server_secret</code> (AES-256-GCM, clé <code>MCP_ENCRYPTION_KEY</code>). Exports disponibles en JSON/CSV/MD/TXT depuis /mcp et /skills.</div>
           </div>
         </div>
       ) : (

@@ -1,27 +1,30 @@
-import { neon } from '@neondatabase/serverless';
-import crypto from 'crypto';
-import * as readline from 'readline/promises';
-import { stdin as input, stdout as output } from 'process';
-import fs from 'fs';
-import path from 'path';
-import { sendEmail, runNewsletterStudio } from './newsletter-send';
+import crypto from "node:crypto";
+import fs from "node:fs";
+import path from "node:path";
+import { stdin as input, stdout as output } from "node:process";
+import * as readline from "node:readline/promises";
+import { neon } from "@neondatabase/serverless";
+import { runNewsletterStudio, sendEmail } from "./newsletter-send";
 
 // ─────────────────────────────────────────────
 // Chargement automatique des variables d'environnement
 // ─────────────────────────────────────────────
 function loadEnv() {
   if (!process.env.DATABASE_URL) {
-    const envPaths = ['.env', '.env.local'];
+    const envPaths = [".env", ".env.local"];
     for (const envPath of envPaths) {
       const fullPath = path.resolve(process.cwd(), envPath);
       if (fs.existsSync(fullPath)) {
-        const content = fs.readFileSync(fullPath, 'utf8');
-        for (const line of content.split('\n')) {
+        const content = fs.readFileSync(fullPath, "utf8");
+        for (const line of content.split("\n")) {
           const trimmed = line.trim();
-          if (trimmed && !trimmed.startsWith('#') && trimmed.includes('=')) {
-            const [key, ...vals] = trimmed.split('=');
-            let val = vals.join('=').trim();
-            if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+          if (trimmed && !trimmed.startsWith("#") && trimmed.includes("=")) {
+            const [key, ...vals] = trimmed.split("=");
+            let val = vals.join("=").trim();
+            if (
+              (val.startsWith('"') && val.endsWith('"')) ||
+              (val.startsWith("'") && val.endsWith("'"))
+            ) {
               val = val.slice(1, -1);
             }
             if (!process.env[key.trim()]) {
@@ -38,7 +41,9 @@ loadEnv();
 
 const dbUrl = process.env.DATABASE_URL;
 if (!dbUrl) {
-  console.error("❌ Erreur : DATABASE_URL est introuvable dans votre environnement ou vos fichiers .env.");
+  console.error(
+    "❌ Erreur : DATABASE_URL est introuvable dans votre environnement ou vos fichiers .env."
+  );
   process.exit(1);
 }
 
@@ -48,30 +53,35 @@ const sql = neon(dbUrl);
 // Styles & Palette ANSI CLI
 // ─────────────────────────────────────────────
 const c = {
-  reset: "\x1b[0m",
-  bold: "\x1b[1m",
-  dim: "\x1b[2m",
-  italic: "\x1b[3m",
-  underline: "\x1b[4m",
-  cyan: "\x1b[36m",
-  brightCyan: "\x1b[96m",
-  green: "\x1b[32m",
-  brightGreen: "\x1b[92m",
-  yellow: "\x1b[33m",
-  brightYellow: "\x1b[93m",
-  red: "\x1b[31m",
-  brightRed: "\x1b[91m",
-  magenta: "\x1b[35m",
-  brightMagenta: "\x1b[95m",
-  white: "\x1b[37m",
-  brightWhite: "\x1b[97m",
   bgPurple: "\x1b[48;5;55m",
+  bold: "\x1b[1m",
+  brightCyan: "\x1b[96m",
+  brightGreen: "\x1b[92m",
+  brightMagenta: "\x1b[95m",
+  brightRed: "\x1b[91m",
+  brightWhite: "\x1b[97m",
+  brightYellow: "\x1b[93m",
+  cyan: "\x1b[36m",
+  dim: "\x1b[2m",
+  green: "\x1b[32m",
+  italic: "\x1b[3m",
+  magenta: "\x1b[35m",
+  red: "\x1b[31m",
+  reset: "\x1b[0m",
+  underline: "\x1b[4m",
+  white: "\x1b[37m",
+  yellow: "\x1b[33m",
 };
 
 // ─────────────────────────────────────────────
 // Template d'E-mail de Réinitialisation de Quotas
 // ─────────────────────────────────────────────
-function buildQuotaEmailHtml(title: string, username: string, messageText: string, badgeLabel: string) {
+function buildQuotaEmailHtml(
+  title: string,
+  username: string,
+  messageText: string,
+  badgeLabel: string
+) {
   return `
     <!DOCTYPE html>
     <html lang="fr">
@@ -120,19 +130,33 @@ function buildQuotaEmailHtml(title: string, username: string, messageText: strin
 // 1. RÉINITIALISATION DES USAGES API
 // ─────────────────────────────────────────────
 export async function resetApiUsage(notifyUsers = true) {
-  console.log(`\n${c.cyan}⏳ Réinitialisation des usages des clés d'API (mprojects_api_keys)...${c.reset}`);
+  console.log(
+    `\n${c.cyan}⏳ Réinitialisation des usages des clés d'API (mprojects_api_keys)...${c.reset}`
+  );
   await sql`UPDATE mprojects_api_keys SET request_count = 0`;
-  console.log(`${c.brightGreen}✔ Succès : Tous les compteurs de requêtes d'API ont été remis à 0 !${c.reset}`);
+  console.log(
+    `${c.brightGreen}✔ Succès : Tous les compteurs de requêtes d'API ont été remis à 0 !${c.reset}`
+  );
 
-  if (!notifyUsers) return;
-
-  const users = (await sql`SELECT email, username FROM users WHERE notify_limits = TRUE`) as unknown as { email: string; username: string }[];
-  if (users.length === 0) {
-    console.log(`  ${c.dim}ℹ Aucun utilisateur inscrit aux notifications de limites.${c.reset}`);
+  if (!notifyUsers) {
     return;
   }
 
-  console.log(`  ${c.brightYellow}➔ Envoi des e-mails de notification à ${users.length} utilisateur(s)...${c.reset}`);
+  const users =
+    (await sql`SELECT email, username FROM users WHERE notify_limits = TRUE`) as unknown as {
+      email: string;
+      username: string;
+    }[];
+  if (users.length === 0) {
+    console.log(
+      `  ${c.dim}ℹ Aucun utilisateur inscrit aux notifications de limites.${c.reset}`
+    );
+    return;
+  }
+
+  console.log(
+    `  ${c.brightYellow}➔ Envoi des e-mails de notification à ${users.length} utilisateur(s)...${c.reset}`
+  );
   let success = 0;
   for (const user of users) {
     const html = buildQuotaEmailHtml(
@@ -144,37 +168,57 @@ export async function resetApiUsage(notifyUsers = true) {
 
     try {
       const sent = await sendEmail({
-        to: user.email,
-        subject: "Vos quotas API mAI ont été réinitialisés",
         html,
+        subject: "Vos quotas API mAI ont été réinitialisés",
+        to: user.email,
       });
-      if (sent) success++;
+      if (sent) {
+        success++;
+      }
       await new Promise((r) => setTimeout(r, 100));
     } catch (err: any) {
-      console.error(`  ${c.red}✖ Erreur d'envoi pour ${user.email} : ${err?.message || err}${c.reset}`);
+      console.error(
+        `  ${c.red}✖ Erreur d'envoi pour ${user.email} : ${err?.message || err}${c.reset}`
+      );
     }
   }
 
-  console.log(`  ${c.brightGreen}✔ ${success} notification(s) e-mail envoyée(s) avec succès !${c.reset}`);
+  console.log(
+    `  ${c.brightGreen}✔ ${success} notification(s) e-mail envoyée(s) avec succès !${c.reset}`
+  );
 }
 
 // ─────────────────────────────────────────────
 // 2. RÉINITIALISATION DES USAGES mAI (TOKENS HEBDOMADAIRES)
 // ─────────────────────────────────────────────
 export async function resetMaiUsage(notifyUsers = true) {
-  console.log(`\n${c.cyan}⏳ Réinitialisation des tokens hebdomadaires mAI (weekly_usage)...${c.reset}`);
+  console.log(
+    `\n${c.cyan}⏳ Réinitialisation des tokens hebdomadaires mAI (weekly_usage)...${c.reset}`
+  );
   await sql`UPDATE weekly_usage SET tokens_used = 0`;
-  console.log(`${c.brightGreen}✔ Succès : Tous les compteurs de tokens mAI ont été remis à 0 !${c.reset}`);
+  console.log(
+    `${c.brightGreen}✔ Succès : Tous les compteurs de tokens mAI ont été remis à 0 !${c.reset}`
+  );
 
-  if (!notifyUsers) return;
-
-  const users = (await sql`SELECT email, username FROM users WHERE notify_limits = TRUE`) as unknown as { email: string; username: string }[];
-  if (users.length === 0) {
-    console.log(`  ${c.dim}ℹ Aucun utilisateur inscrit aux notifications de limites.${c.reset}`);
+  if (!notifyUsers) {
     return;
   }
 
-  console.log(`  ${c.brightYellow}➔ Envoi des e-mails de notification à ${users.length} utilisateur(s)...${c.reset}`);
+  const users =
+    (await sql`SELECT email, username FROM users WHERE notify_limits = TRUE`) as unknown as {
+      email: string;
+      username: string;
+    }[];
+  if (users.length === 0) {
+    console.log(
+      `  ${c.dim}ℹ Aucun utilisateur inscrit aux notifications de limites.${c.reset}`
+    );
+    return;
+  }
+
+  console.log(
+    `  ${c.brightYellow}➔ Envoi des e-mails de notification à ${users.length} utilisateur(s)...${c.reset}`
+  );
   let success = 0;
   for (const user of users) {
     const html = buildQuotaEmailHtml(
@@ -186,46 +230,70 @@ export async function resetMaiUsage(notifyUsers = true) {
 
     try {
       const sent = await sendEmail({
-        to: user.email,
-        subject: "Vos quotas mAI ont été réinitialisés",
         html,
+        subject: "Vos quotas mAI ont été réinitialisés",
+        to: user.email,
       });
-      if (sent) success++;
+      if (sent) {
+        success++;
+      }
       await new Promise((r) => setTimeout(r, 100));
     } catch (err: any) {
-      console.error(`  ${c.red}✖ Erreur d'envoi pour ${user.email} : ${err?.message || err}${c.reset}`);
+      console.error(
+        `  ${c.red}✖ Erreur d'envoi pour ${user.email} : ${err?.message || err}${c.reset}`
+      );
     }
   }
 
-  console.log(`  ${c.brightGreen}✔ ${success} notification(s) e-mail envoyée(s) avec succès !${c.reset}`);
+  console.log(
+    `  ${c.brightGreen}✔ ${success} notification(s) e-mail envoyée(s) avec succès !${c.reset}`
+  );
 }
 
 // ─────────────────────────────────────────────
 // 3. RÉINITIALISATION DES USAGES IMAGES
 // ─────────────────────────────────────────────
 export async function resetImageUsage() {
-  console.log(`\n${c.cyan}⏳ Réinitialisation des quotas journaliers de génération d'images...${c.reset}`);
+  console.log(
+    `\n${c.cyan}⏳ Réinitialisation des quotas journaliers de génération d'images...${c.reset}`
+  );
   await sql`UPDATE mprojects_daily_image_usage SET images_generated = 0, updated_at = NOW() WHERE usage_date = CURRENT_DATE`;
-  console.log(`${c.brightGreen}✔ Succès : Les quotas journaliers d'images ont été réinitialisés pour aujourd'hui !${c.reset}`);
+  console.log(
+    `${c.brightGreen}✔ Succès : Les quotas journaliers d'images ont été réinitialisés pour aujourd'hui !${c.reset}`
+  );
 }
 
 // ─────────────────────────────────────────────
 // 3b. RÉINITIALISATION DES USAGES AUDIO
 // ─────────────────────────────────────────────
 export async function resetAudioUsage(notifyUsers = true) {
-  console.log(`\n${c.cyan}⏳ Réinitialisation des quotas audio (weekly_speech_usage)...${c.reset}`);
+  console.log(
+    `\n${c.cyan}⏳ Réinitialisation des quotas audio (weekly_speech_usage)...${c.reset}`
+  );
   await sql`UPDATE weekly_speech_usage SET tokens_used = 0, requests_count = 0`;
-  console.log(`${c.brightGreen}✔ Succès : Tous les compteurs de quotas audio ont été remis à 0 !${c.reset}`);
+  console.log(
+    `${c.brightGreen}✔ Succès : Tous les compteurs de quotas audio ont été remis à 0 !${c.reset}`
+  );
 
-  if (!notifyUsers) return;
-
-  const users = (await sql`SELECT email, username FROM users WHERE notify_limits = TRUE`) as unknown as { email: string; username: string }[];
-  if (users.length === 0) {
-    console.log(`  ${c.dim}ℹ Aucun utilisateur inscrit aux notifications de limites.${c.reset}`);
+  if (!notifyUsers) {
     return;
   }
 
-  console.log(`  ${c.brightYellow}➔ Envoi des e-mails de notification à ${users.length} utilisateur(s)...${c.reset}`);
+  const users =
+    (await sql`SELECT email, username FROM users WHERE notify_limits = TRUE`) as unknown as {
+      email: string;
+      username: string;
+    }[];
+  if (users.length === 0) {
+    console.log(
+      `  ${c.dim}ℹ Aucun utilisateur inscrit aux notifications de limites.${c.reset}`
+    );
+    return;
+  }
+
+  console.log(
+    `  ${c.brightYellow}➔ Envoi des e-mails de notification à ${users.length} utilisateur(s)...${c.reset}`
+  );
   let success = 0;
   for (const user of users) {
     const html = buildQuotaEmailHtml(
@@ -237,34 +305,48 @@ export async function resetAudioUsage(notifyUsers = true) {
 
     try {
       const sent = await sendEmail({
-        to: user.email,
-        subject: "Vos quotas Audio mAI ont été réinitialisés",
         html,
+        subject: "Vos quotas Audio mAI ont été réinitialisés",
+        to: user.email,
       });
-      if (sent) success++;
+      if (sent) {
+        success++;
+      }
       await new Promise((r) => setTimeout(r, 100));
     } catch (err: any) {
-      console.error(`  ${c.red}✖ Erreur d'envoi pour ${user.email} : ${err?.message || err}${c.reset}`);
+      console.error(
+        `  ${c.red}✖ Erreur d'envoi pour ${user.email} : ${err?.message || err}${c.reset}`
+      );
     }
   }
 
-  console.log(`  ${c.brightGreen}✔ ${success} notification(s) e-mail envoyée(s) avec succès !${c.reset}`);
+  console.log(
+    `  ${c.brightGreen}✔ ${success} notification(s) e-mail envoyée(s) avec succès !${c.reset}`
+  );
 }
 
 // ─────────────────────────────────────────────
 // 4. RÉINITIALISATION GLOBALE (API + mAI + IMAGES + AUDIO)
 // ─────────────────────────────────────────────
 export async function resetAllUsage(notifyUsers = true) {
-  console.log(`\n${c.bgPurple}${c.bold}${c.brightWhite} ⚡ RÉINITIALISATION GLOBALE DE TOUS LES QUOTAS (API + mAI + IMAGES + AUDIO) ⚡ ${c.reset}`);
+  console.log(
+    `\n${c.bgPurple}${c.bold}${c.brightWhite} ⚡ RÉINITIALISATION GLOBALE DE TOUS LES QUOTAS (API + mAI + IMAGES + AUDIO) ⚡ ${c.reset}`
+  );
   await resetApiUsage(false);
   await resetMaiUsage(false);
   await resetImageUsage();
   await resetAudioUsage(false);
 
   if (notifyUsers) {
-    const users = (await sql`SELECT email, username FROM users WHERE notify_limits = TRUE`) as unknown as { email: string; username: string }[];
+    const users =
+      (await sql`SELECT email, username FROM users WHERE notify_limits = TRUE`) as unknown as {
+        email: string;
+        username: string;
+      }[];
     if (users.length > 0) {
-      console.log(`\n  ${c.brightYellow}➔ Envoi d'une notification globale unifiée à ${users.length} utilisateur(s)...${c.reset}`);
+      console.log(
+        `\n  ${c.brightYellow}➔ Envoi d'une notification globale unifiée à ${users.length} utilisateur(s)...${c.reset}`
+      );
       let success = 0;
       for (const user of users) {
         const html = buildQuotaEmailHtml(
@@ -276,21 +358,29 @@ export async function resetAllUsage(notifyUsers = true) {
 
         try {
           const sent = await sendEmail({
-            to: user.email,
-            subject: "Tous vos quotas mAI ont été réinitialisés",
             html,
+            subject: "Tous vos quotas mAI ont été réinitialisés",
+            to: user.email,
           });
-          if (sent) success++;
+          if (sent) {
+            success++;
+          }
           await new Promise((r) => setTimeout(r, 100));
         } catch (err: any) {
-          console.error(`  ${c.red}✖ Erreur pour ${user.email} : ${err?.message || err}${c.reset}`);
+          console.error(
+            `  ${c.red}✖ Erreur pour ${user.email} : ${err?.message || err}${c.reset}`
+          );
         }
       }
-      console.log(`  ${c.brightGreen}✔ ${success} e-mail(s) de réinitialisation globale envoyé(s) !${c.reset}`);
+      console.log(
+        `  ${c.brightGreen}✔ ${success} e-mail(s) de réinitialisation globale envoyé(s) !${c.reset}`
+      );
     }
   }
 
-  console.log(`\n${c.brightGreen}${c.bold}🎉 Tous les quotas ont été remis à zéro avec succès !${c.reset}\n`);
+  console.log(
+    `\n${c.brightGreen}${c.bold}🎉 Tous les quotas ont été remis à zéro avec succès !${c.reset}\n`
+  );
 }
 
 // ─────────────────────────────────────────────
@@ -322,17 +412,23 @@ export async function initSubscriptionTables() {
 }
 
 export function generateRandomCode(tier: string): string {
-  const randomChars = crypto.randomBytes(4).toString('hex').toUpperCase().slice(0, 6);
+  const randomChars = crypto
+    .randomBytes(4)
+    .toString("hex")
+    .toUpperCase()
+    .slice(0, 6);
   return `MAI-${tier.toUpperCase()}-${randomChars}`;
 }
 
 function renderCodesTable(codes: any[]) {
   if (codes.length === 0) {
-    console.log(`\n${c.brightYellow}⚠️  Aucun code d'abonnement trouvé en base de données.${c.reset}\n`);
+    console.log(
+      `\n${c.brightYellow}⚠️  Aucun code d'abonnement trouvé en base de données.${c.reset}\n`
+    );
     return;
   }
 
-  console.log("\n" + "=".repeat(95));
+  console.log(`\n${"=".repeat(95)}`);
   console.log(
     `| ${"ID".padEnd(4)} | ${"CODE".padEnd(24)} | ${"TIER".padEnd(6)} | ${"UTILISATIONS".padEnd(14)} | ${"STATUT".padEnd(10)} | ${"EXPIRATION".padEnd(20)} |`
   );
@@ -344,36 +440,53 @@ function renderCodesTable(codes: any[]) {
     const tier = String(item.tier).padEnd(6);
     const uses = `${item.uses_count}/${item.max_uses}`.padEnd(14);
     const status = (item.is_active ? "🟢 Actif" : "🔴 Inactif").padEnd(10);
-    const exp = item.expires_at ? new Date(item.expires_at).toLocaleDateString('fr-FR') : "Illimitée";
+    const exp = item.expires_at
+      ? new Date(item.expires_at).toLocaleDateString("fr-FR")
+      : "Illimitée";
     const expiration = exp.padEnd(20);
 
-    console.log(`| ${id} | ${code} | ${tier} | ${uses} | ${status} | ${expiration} |`);
+    console.log(
+      `| ${id} | ${code} | ${tier} | ${uses} | ${status} | ${expiration} |`
+    );
   }
-  console.log("=".repeat(95) + "\n");
+  console.log(`${"=".repeat(95)}\n`);
 }
 
 async function handleCreateCode(rl: readline.Interface) {
-  console.log(`\n${c.bold}--- ➕ CRÉATION D'UN NOUVEAU CODE D'ABONNEMENT ---${c.reset}`);
+  console.log(
+    `\n${c.bold}--- ➕ CRÉATION D'UN NOUVEAU CODE D'ABONNEMENT ---${c.reset}`
+  );
 
   console.log("\nChoisissez le forfait à débloquer :");
   console.log("  1. Plus");
   console.log("  2. Pro");
   console.log("  3. Max");
-  const tierChoice = (await rl.question("👉 Votre choix [1-3] (défaut: 2 - Pro) : ")).trim();
-  
-  let tier: 'Plus' | 'Pro' | 'Max' = 'Pro';
-  if (tierChoice === '1') tier = 'Plus';
-  else if (tierChoice === '3') tier = 'Max';
+  const tierChoice = (
+    await rl.question("👉 Votre choix [1-3] (défaut: 2 - Pro) : ")
+  ).trim();
+
+  let tier: "Plus" | "Pro" | "Max" = "Pro";
+  if (tierChoice === "1") {
+    tier = "Plus";
+  } else if (tierChoice === "3") {
+    tier = "Max";
+  }
 
   console.log("\nMode de génération du code :");
-  console.log(`  1. Génération intelligente automatique (ex: MAI-${tier.toUpperCase()}-XXXXXX)`);
+  console.log(
+    `  1. Génération intelligente automatique (ex: MAI-${tier.toUpperCase()}-XXXXXX)`
+  );
   console.log("  2. Saisie manuelle d'un code personnalisé");
-  const modeChoice = (await rl.question("👉 Votre choix [1-2] (défaut: 1) : ")).trim();
+  const modeChoice = (
+    await rl.question("👉 Votre choix [1-2] (défaut: 1) : ")
+  ).trim();
 
   let finalCode = "";
-  if (modeChoice === '2') {
+  if (modeChoice === "2") {
     while (!finalCode) {
-      const custom = (await rl.question("👉 Entrez votre code personnalisé : ")).trim().toUpperCase();
+      const custom = (await rl.question("👉 Entrez votre code personnalisé : "))
+        .trim()
+        .toUpperCase();
       if (custom.length >= 3) {
         finalCode = custom;
       } else {
@@ -384,11 +497,19 @@ async function handleCreateCode(rl: readline.Interface) {
     finalCode = generateRandomCode(tier);
   }
 
-  const usesInput = (await rl.question("👉 Nombre maximal d'utilisations (défaut: 1) : ")).trim();
-  const maxUses = parseInt(usesInput, 10) > 0 ? parseInt(usesInput, 10) : 1;
+  const usesInput = (
+    await rl.question("👉 Nombre maximal d'utilisations (défaut: 1) : ")
+  ).trim();
+  const maxUses =
+    Number.parseInt(usesInput, 10) > 0 ? Number.parseInt(usesInput, 10) : 1;
 
-  const daysInput = (await rl.question("👉 Durée de validité en jours (laisser vide pour illimité) : ")).trim();
-  const expiresInDays = parseInt(daysInput, 10) > 0 ? parseInt(daysInput, 10) : null;
+  const daysInput = (
+    await rl.question(
+      "👉 Durée de validité en jours (laisser vide pour illimité) : "
+    )
+  ).trim();
+  const expiresInDays =
+    Number.parseInt(daysInput, 10) > 0 ? Number.parseInt(daysInput, 10) : null;
 
   let expiresAt: Date | null = null;
   if (expiresInDays) {
@@ -404,11 +525,17 @@ async function handleCreateCode(rl: readline.Interface) {
     `;
 
     const item = result[0];
-    console.log(`\n${c.brightGreen}${c.bold}🎉 CODE CRÉÉ ET ENREGISTRÉ AVEC SUCCÈS !${c.reset}`);
-    console.log(`🔑 Code         : ${c.brightGreen}${c.bold}${item.code}${c.reset}`);
+    console.log(
+      `\n${c.brightGreen}${c.bold}🎉 CODE CRÉÉ ET ENREGISTRÉ AVEC SUCCÈS !${c.reset}`
+    );
+    console.log(
+      `🔑 Code         : ${c.brightGreen}${c.bold}${item.code}${c.reset}`
+    );
     console.log(`⭐ Forfait      : ${item.tier}`);
     console.log(`👥 Utilisations : 0 / ${item.max_uses}`);
-    console.log(`📅 Expiration   : ${item.expires_at ? new Date(item.expires_at).toLocaleString('fr-FR') : 'Illimitée'}\n`);
+    console.log(
+      `📅 Expiration   : ${item.expires_at ? new Date(item.expires_at).toLocaleString("fr-FR") : "Illimitée"}\n`
+    );
   } catch (err: any) {
     console.error("❌ Erreur lors de la création :", err.message || err);
   }
@@ -416,14 +543,19 @@ async function handleCreateCode(rl: readline.Interface) {
 
 async function handleListCodes() {
   console.log(`\n${c.bold}--- 📋 LISTE DES CODES D'ABONNEMENT ---${c.reset}`);
-  const codes = await sql`SELECT * FROM subscription_codes ORDER BY created_at DESC;`;
+  const codes =
+    await sql`SELECT * FROM subscription_codes ORDER BY created_at DESC;`;
   renderCodesTable(codes);
 }
 
 async function handleToggleCode(rl: readline.Interface) {
   console.log(`\n${c.bold}--- 🔄 ACTIVER / DÉSACTIVER UN CODE ---${c.reset}`);
-  const search = (await rl.question("👉 Entrez le Code ou l'ID du code à basculer : ")).trim();
-  if (!search) return;
+  const search = (
+    await rl.question("👉 Entrez le Code ou l'ID du code à basculer : ")
+  ).trim();
+  if (!search) {
+    return;
+  }
 
   const found = await sql`
     SELECT * FROM subscription_codes 
@@ -445,13 +577,19 @@ async function handleToggleCode(rl: readline.Interface) {
     WHERE id = ${current.id};
   `;
 
-  console.log(`\n${c.brightGreen}✔ Le statut du code ${c.bold}${current.code}${c.reset} est désormais : ${newStatus ? '🟢 ACTIF' : '🔴 INACTIF'}\n`);
+  console.log(
+    `\n${c.brightGreen}✔ Le statut du code ${c.bold}${current.code}${c.reset} est désormais : ${newStatus ? "🟢 ACTIF" : "🔴 INACTIF"}\n`
+  );
 }
 
 async function handleEditCode(rl: readline.Interface) {
   console.log(`\n${c.bold}--- ✏️ MODIFIER UN CODE D'ABONNEMENT ---${c.reset}`);
-  const search = (await rl.question("👉 Entrez le Code ou l'ID à modifier : ")).trim();
-  if (!search) return;
+  const search = (
+    await rl.question("👉 Entrez le Code ou l'ID à modifier : ")
+  ).trim();
+  if (!search) {
+    return;
+  }
 
   const found = await sql`
     SELECT * FROM subscription_codes 
@@ -465,23 +603,51 @@ async function handleEditCode(rl: readline.Interface) {
   }
 
   const current = found[0];
-  console.log(`\nCode actuel : ${c.brightGreen}${current.code}${c.reset} (Tier: ${current.tier}, Max: ${current.max_uses}, Actif: ${current.is_active})`);
+  console.log(
+    `\nCode actuel : ${c.brightGreen}${current.code}${c.reset} (Tier: ${current.tier}, Max: ${current.max_uses}, Actif: ${current.is_active})`
+  );
 
-  console.log("\nModifier le forfait (laisser vide pour conserver '" + current.tier + "') :");
+  console.log(
+    "\nModifier le forfait (laisser vide pour conserver '" +
+      current.tier +
+      "') :"
+  );
   console.log("  1. Plus | 2. Pro | 3. Max");
   const tierInput = (await rl.question("👉 Choix [1-3] : ")).trim();
   let newTier = current.tier;
-  if (tierInput === '1') newTier = 'Plus';
-  if (tierInput === '2') newTier = 'Pro';
-  if (tierInput === '3') newTier = 'Max';
+  if (tierInput === "1") {
+    newTier = "Plus";
+  }
+  if (tierInput === "2") {
+    newTier = "Pro";
+  }
+  if (tierInput === "3") {
+    newTier = "Max";
+  }
 
-  const usesInput = (await rl.question(`👉 Nouveau quota maximal (actuel: ${current.max_uses}) : `)).trim();
-  const newMaxUses = parseInt(usesInput, 10) > 0 ? parseInt(usesInput, 10) : current.max_uses;
+  const usesInput = (
+    await rl.question(
+      `👉 Nouveau quota maximal (actuel: ${current.max_uses}) : `
+    )
+  ).trim();
+  const newMaxUses =
+    Number.parseInt(usesInput, 10) > 0
+      ? Number.parseInt(usesInput, 10)
+      : current.max_uses;
 
-  const statusInput = (await rl.question(`👉 Rendre actif ? (o/n, actuel: ${current.is_active ? 'Oui' : 'Non'}) : `)).trim().toLowerCase();
+  const statusInput = (
+    await rl.question(
+      `👉 Rendre actif ? (o/n, actuel: ${current.is_active ? "Oui" : "Non"}) : `
+    )
+  )
+    .trim()
+    .toLowerCase();
   let newActive = current.is_active;
-  if (statusInput === 'o' || statusInput === 'oui' || statusInput === 'y') newActive = true;
-  else if (statusInput === 'n' || statusInput === 'non') newActive = false;
+  if (statusInput === "o" || statusInput === "oui" || statusInput === "y") {
+    newActive = true;
+  } else if (statusInput === "n" || statusInput === "non") {
+    newActive = false;
+  }
 
   await sql`
     UPDATE subscription_codes
@@ -491,13 +657,21 @@ async function handleEditCode(rl: readline.Interface) {
     WHERE id = ${current.id};
   `;
 
-  console.log(`\n${c.brightGreen}✔ Code ${c.bold}${current.code}${c.reset} mis à jour avec succès !\n`);
+  console.log(
+    `\n${c.brightGreen}✔ Code ${c.bold}${current.code}${c.reset} mis à jour avec succès !\n`
+  );
 }
 
 async function handleDeleteCode(rl: readline.Interface) {
-  console.log(`\n${c.bold}--- 🗑️ SUPPRESSION D'UN CODE D'ABONNEMENT ---${c.reset}`);
-  const search = (await rl.question("👉 Entrez le Code ou l'ID du code à supprimer : ")).trim();
-  if (!search) return;
+  console.log(
+    `\n${c.bold}--- 🗑️ SUPPRESSION D'UN CODE D'ABONNEMENT ---${c.reset}`
+  );
+  const search = (
+    await rl.question("👉 Entrez le Code ou l'ID du code à supprimer : ")
+  ).trim();
+  if (!search) {
+    return;
+  }
 
   const found = await sql`
     SELECT * FROM subscription_codes 
@@ -511,11 +685,19 @@ async function handleDeleteCode(rl: readline.Interface) {
   }
 
   const current = found[0];
-  const confirm = (await rl.question(`⚠️ Êtes-vous sûr de vouloir supprimer définitivement le code "${current.code}" ? (o/N) : `)).trim().toLowerCase();
+  const confirm = (
+    await rl.question(
+      `⚠️ Êtes-vous sûr de vouloir supprimer définitivement le code "${current.code}" ? (o/N) : `
+    )
+  )
+    .trim()
+    .toLowerCase();
 
-  if (confirm === 'o' || confirm === 'oui' || confirm === 'y') {
+  if (confirm === "o" || confirm === "oui" || confirm === "y") {
     await sql`DELETE FROM subscription_codes WHERE id = ${current.id};`;
-    console.log(`\n${c.brightGreen}🗑️ Le code ${current.code} a été supprimé définitivement.${c.reset}\n`);
+    console.log(
+      `\n${c.brightGreen}🗑️ Le code ${current.code} a été supprimé définitivement.${c.reset}\n`
+    );
   } else {
     console.log("\n❌ Suppression annulée.\n");
   }
@@ -539,27 +721,29 @@ export async function runSubscriptionCodeManager() {
     console.log("  5. 🗑️  Supprimer un code");
     console.log("  0. ↩️  Retour / Quitter");
 
-    const choice = (await rl.question("\n👉 Entrez votre choix [0-5] : ")).trim();
+    const choice = (
+      await rl.question("\n👉 Entrez votre choix [0-5] : ")
+    ).trim();
 
     switch (choice) {
-      case '1':
+      case "1":
         await handleCreateCode(rl);
         break;
-      case '2':
+      case "2":
         await handleListCodes();
         break;
-      case '3':
+      case "3":
         await handleToggleCode(rl);
         break;
-      case '4':
+      case "4":
         await handleEditCode(rl);
         break;
-      case '5':
+      case "5":
         await handleDeleteCode(rl);
         break;
-      case '0':
-      case 'exit':
-      case 'quit':
+      case "0":
+      case "exit":
+      case "quit":
         running = false;
         break;
       default:
@@ -577,17 +761,22 @@ export async function initCustomersTable() {
   try {
     await sql`ALTER TABLE users ADD COLUMN IF NOT EXISTS is_blocked BOOLEAN DEFAULT FALSE;`;
   } catch (err: any) {
-    console.error("ℹ Note lors de la vérification de la colonne is_blocked dans users :", err.message || err);
+    console.error(
+      "ℹ Note lors de la vérification de la colonne is_blocked dans users :",
+      err.message || err
+    );
   }
 }
 
 function renderCustomersTable(customers: any[]) {
   if (customers.length === 0) {
-    console.log(`\n${c.brightYellow}⚠️  Aucun compte client trouvé en base de données.${c.reset}\n`);
+    console.log(
+      `\n${c.brightYellow}⚠️  Aucun compte client trouvé en base de données.${c.reset}\n`
+    );
     return;
   }
 
-  console.log("\n" + "═".repeat(110));
+  console.log(`\n${"═".repeat(110)}`);
   console.log(
     `║ ${"ID/UUID".padEnd(36)} ║ ${"USERNAME".padEnd(20)} ║ ${"EMAIL".padEnd(25)} ║ ${"TIER".padEnd(6)} ║ ${"STATUT".padEnd(10)} ║`
   );
@@ -602,7 +791,7 @@ function renderCustomersTable(customers: any[]) {
 
     console.log(`║ ${id} ║ ${username} ║ ${email} ║ ${tier} ║ ${status} ║`);
   }
-  console.log("═".repeat(110) + "\n");
+  console.log(`${"═".repeat(110)}\n`);
 }
 
 async function handleListCustomers() {
@@ -615,14 +804,25 @@ async function handleListCustomers() {
     `;
     renderCustomersTable(customers);
   } catch (err: any) {
-    console.error("❌ Erreur lors de la récupération des clients :", err.message || err);
+    console.error(
+      "❌ Erreur lors de la récupération des clients :",
+      err.message || err
+    );
   }
 }
 
 async function handleToggleBlockCustomer(rl: readline.Interface) {
-  console.log(`\n${c.bold}--- 🚫 BLOQUER / DÉBLOQUER UN COMPTE CLIENT ---${c.reset}`);
-  const search = (await rl.question("👉 Entrez l'E-mail, le Username ou l'ID du client à bloquer/débloquer : ")).trim();
-  if (!search) return;
+  console.log(
+    `\n${c.bold}--- 🚫 BLOQUER / DÉBLOQUER UN COMPTE CLIENT ---${c.reset}`
+  );
+  const search = (
+    await rl.question(
+      "👉 Entrez l'E-mail, le Username ou l'ID du client à bloquer/débloquer : "
+    )
+  ).trim();
+  if (!search) {
+    return;
+  }
 
   try {
     const found = await sql`
@@ -650,19 +850,32 @@ async function handleToggleBlockCustomer(rl: readline.Interface) {
         DELETE FROM connected_devices 
         WHERE user_id = ${current.id}::text;
       `;
-      console.log(`\n${c.brightGreen}✔ Le client ${c.bold}${current.username}${c.reset} (${current.email}) a été ${c.bold}🚫 BLOQUÉ${c.reset} et toutes ses sessions actives ont été révoquées.\n`);
+      console.log(
+        `\n${c.brightGreen}✔ Le client ${c.bold}${current.username}${c.reset} (${current.email}) a été ${c.bold}🚫 BLOQUÉ${c.reset} et toutes ses sessions actives ont été révoquées.\n`
+      );
     } else {
-      console.log(`\n${c.brightGreen}✔ Le client ${c.bold}${current.username}${c.reset} (${current.email}) a été ${c.bold}🟢 DÉBLOQUÉ${c.reset}.\n`);
+      console.log(
+        `\n${c.brightGreen}✔ Le client ${c.bold}${current.username}${c.reset} (${current.email}) a été ${c.bold}🟢 DÉBLOQUÉ${c.reset}.\n`
+      );
     }
   } catch (err: any) {
-    console.error("❌ Erreur lors de la modification du statut :", err.message || err);
+    console.error(
+      "❌ Erreur lors de la modification du statut :",
+      err.message || err
+    );
   }
 }
 
 async function handleDeleteCustomer(rl: readline.Interface) {
   console.log(`\n${c.bold}--- 🗑️ SUPPRESSION D'UN COMPTE CLIENT ---${c.reset}`);
-  const search = (await rl.question("👉 Entrez l'E-mail, le Username ou l'ID du client à supprimer : ")).trim();
-  if (!search) return;
+  const search = (
+    await rl.question(
+      "👉 Entrez l'E-mail, le Username ou l'ID du client à supprimer : "
+    )
+  ).trim();
+  if (!search) {
+    return;
+  }
 
   try {
     const found = await sql`
@@ -677,15 +890,23 @@ async function handleDeleteCustomer(rl: readline.Interface) {
     }
 
     const current = found[0];
-    const confirm = (await rl.question(`⚠️ Êtes-vous sûr de vouloir supprimer définitivement le client "${current.username}" (${current.email}) ?\nToutes ses clés API, appareils et données associés seront impactés. (o/N) : `)).trim().toLowerCase();
+    const confirm = (
+      await rl.question(
+        `⚠️ Êtes-vous sûr de vouloir supprimer définitivement le client "${current.username}" (${current.email}) ?\nToutes ses clés API, appareils et données associés seront impactés. (o/N) : `
+      )
+    )
+      .trim()
+      .toLowerCase();
 
-    if (confirm === 'o' || confirm === 'oui' || confirm === 'y') {
+    if (confirm === "o" || confirm === "oui" || confirm === "y") {
       await sql`DELETE FROM connected_devices WHERE user_id = ${current.id}::text;`;
       await sql`DELETE FROM mprojects_api_keys WHERE user_id = ${current.id}::text OR user_id = ${current.username} OR user_id = ${current.email};`;
       await sql`DELETE FROM weekly_usage WHERE user_id = ${current.id}::text;`;
       await sql`DELETE FROM users WHERE id = ${current.id};`;
 
-      console.log(`\n${c.brightGreen}🗑️ Le compte de ${current.username} (${current.email}) a été supprimé définitivement.${c.reset}\n`);
+      console.log(
+        `\n${c.brightGreen}🗑️ Le compte de ${current.username} (${current.email}) a été supprimé définitivement.${c.reset}\n`
+      );
     } else {
       console.log("\n❌ Suppression annulée.\n");
     }
@@ -710,21 +931,23 @@ export async function runCustomerAccountManager() {
     console.log("  3. 🗑️  Supprimer un compte client");
     console.log("  0. ↩️  Retour / Quitter");
 
-    const choice = (await rl.question("\n👉 Entrez votre choix [0-3] : ")).trim();
+    const choice = (
+      await rl.question("\n👉 Entrez votre choix [0-3] : ")
+    ).trim();
 
     switch (choice) {
-      case '1':
+      case "1":
         await handleListCustomers();
         break;
-      case '2':
+      case "2":
         await handleToggleBlockCustomer(rl);
         break;
-      case '3':
+      case "3":
         await handleDeleteCustomer(rl);
         break;
-      case '0':
-      case 'exit':
-      case 'quit':
+      case "0":
+      case "exit":
+      case "quit":
         running = false;
         break;
       default:
@@ -786,15 +1009,19 @@ export async function sendNewsNotificationToEligibleUsers(
     WHERE "enabled" = true AND "news" = true
   `) as unknown as { userId: string }[];
   if (eligible.length === 0) {
-    console.log(`  ${c.yellow}⚠ Aucun utilisateur éligible (enabled=true & news=true).${c.reset}`);
+    console.log(
+      `  ${c.yellow}⚠ Aucun utilisateur éligible (enabled=true & news=true).${c.reset}`
+    );
     // Fallback: si aucun prefs, essayer users avec notify_limits? Non, on informe
-    return { sent: 0, eligible: 0 };
+    return { eligible: 0, sent: 0 };
   }
-  console.log(`  ${c.cyan}➔ Envoi à ${eligible.length} utilisateur(s) éligible(s)...${c.reset}`);
+  console.log(
+    `  ${c.cyan}➔ Envoi à ${eligible.length} utilisateur(s) éligible(s)...${c.reset}`
+  );
   let sent = 0;
   for (let i = 0; i < eligible.length; i += 500) {
     const chunk = eligible.slice(i, i + 500);
-    const values = chunk.map((u) => ({ userId: u.userId }));
+    const _values = chunk.map((u) => ({ userId: u.userId }));
     // Insert par batch via sql template
     for (const u of chunk) {
       try {
@@ -804,26 +1031,51 @@ export async function sendNewsNotificationToEligibleUsers(
         `;
         sent++;
       } catch (err: any) {
-        console.error(`  ${c.red}✖ Erreur pour ${u.userId}: ${err.message}${c.reset}`);
+        console.error(
+          `  ${c.red}✖ Erreur pour ${u.userId}: ${err.message}${c.reset}`
+        );
       }
     }
   }
-  console.log(`  ${c.brightGreen}✔ ${sent} notification(s) "Actualités" créée(s) en BDD !${c.reset}`);
-  return { sent, eligible: eligible.length };
+  console.log(
+    `  ${c.brightGreen}✔ ${sent} notification(s) "Actualités" créée(s) en BDD !${c.reset}`
+  );
+  return { eligible: eligible.length, sent };
 }
 
 async function handleSendNewsInteractive(rl: readline.Interface) {
-  console.log(`\n${c.bold}--- 📢 ENVOI NOTIFICATION ACTUALITÉS mAI ---${c.reset}`);
-  console.log(`${c.dim}Cette notification sera enregistrée en BDD pour chaque utilisateur ayant activé Notifications > Actualités d'mAI (activé par défaut à l'acceptation).${c.reset}`);
-  const title = (await rl.question("👉 Titre de la notification (ex: Nouveautés mAI - Juin 2026) : ")).trim();
+  console.log(
+    `\n${c.bold}--- 📢 ENVOI NOTIFICATION ACTUALITÉS mAI ---${c.reset}`
+  );
+  console.log(
+    `${c.dim}Cette notification sera enregistrée en BDD pour chaque utilisateur ayant activé Notifications > Actualités d'mAI (activé par défaut à l'acceptation).${c.reset}`
+  );
+  const title = (
+    await rl.question(
+      "👉 Titre de la notification (ex: Nouveautés mAI - Juin 2026) : "
+    )
+  ).trim();
   if (!title) {
     console.log("❌ Titre requis.");
     return;
   }
   const body = (await rl.question("👉 Corps (facultatif, max 500c) : ")).trim();
-  const link = (await rl.question("👉 Lien (facultatif, ex: /settings ou https://mai-devs.vercel.app) : ")).trim();
-  const confirm = (await rl.question(`\n⚠️ Confirmer l'envoi "${title}" ? (o/N) : `)).trim().toLowerCase();
-  if (confirm !== "o" && confirm !== "oui" && confirm !== "y" && confirm !== "yes") {
+  const link = (
+    await rl.question(
+      "👉 Lien (facultatif, ex: /settings ou https://mai-devs.vercel.app) : "
+    )
+  ).trim();
+  const confirm = (
+    await rl.question(`\n⚠️ Confirmer l'envoi "${title}" ? (o/N) : `)
+  )
+    .trim()
+    .toLowerCase();
+  if (
+    confirm !== "o" &&
+    confirm !== "oui" &&
+    confirm !== "y" &&
+    confirm !== "yes"
+  ) {
     console.log("Annulé.");
     return;
   }
@@ -832,16 +1084,21 @@ async function handleSendNewsInteractive(rl: readline.Interface) {
 
 async function handleListRecentNotifications(rl: readline.Interface) {
   console.log(`\n${c.bold}--- 📋 NOTIFICATIONS RÉCENTES ---${c.reset}`);
-  const limitIn = (await rl.question("👉 Nombre à afficher (défaut 10) : ")).trim();
-  const limit = Math.min(Math.max(parseInt(limitIn, 10) || 10, 1), 50);
+  const limitIn = (
+    await rl.question("👉 Nombre à afficher (défaut 10) : ")
+  ).trim();
+  const limit = Math.min(Math.max(Number.parseInt(limitIn, 10) || 10, 1), 50);
   try {
-    const rows = await sql`SELECT "id", "userId", "type", "title", "isRead", "createdAt" FROM "Notification" ORDER BY "createdAt" DESC LIMIT ${limit}`;
+    const rows =
+      await sql`SELECT "id", "userId", "type", "title", "isRead", "createdAt" FROM "Notification" ORDER BY "createdAt" DESC LIMIT ${limit}`;
     if (rows.length === 0) {
       console.log(`${c.dim}Aucune notification en BDD.${c.reset}`);
       return;
     }
-    console.log("\n" + "─".repeat(110));
-    console.log(`| ${"type".padEnd(18)} | ${"title".padEnd(30)} | ${"userId".padEnd(20)} | ${"lu".padEnd(4)} | ${"date".padEnd(20)} |`);
+    console.log(`\n${"─".repeat(110)}`);
+    console.log(
+      `| ${"type".padEnd(18)} | ${"title".padEnd(30)} | ${"userId".padEnd(20)} | ${"lu".padEnd(4)} | ${"date".padEnd(20)} |`
+    );
     console.log("─".repeat(110));
     for (const r of rows as any[]) {
       const t = String(r.type).padEnd(18);
@@ -851,7 +1108,7 @@ async function handleListRecentNotifications(rl: readline.Interface) {
       const d = new Date(r.createdAt).toLocaleString("fr-FR").padEnd(20);
       console.log(`| ${t} | ${ttl} | ${uid} | ${lu} | ${d} |`);
     }
-    console.log("─".repeat(110) + "\n");
+    console.log(`${"─".repeat(110)}\n`);
   } catch (e: any) {
     console.error("Erreur listing", e.message);
   }
@@ -879,11 +1136,22 @@ export async function runNotificationManager() {
         await handleListRecentNotifications(rl);
         break;
       case "3": {
-        const confirm = (await rl.question("⚠️ Supprimer les notifications lues de plus de 30 jours ? (o/N) : ")).trim().toLowerCase();
+        const confirm = (
+          await rl.question(
+            "⚠️ Supprimer les notifications lues de plus de 30 jours ? (o/N) : "
+          )
+        )
+          .trim()
+          .toLowerCase();
         if (confirm === "o" || confirm === "oui" || confirm === "y") {
-          const res = await sql`DELETE FROM "Notification" WHERE "isRead" = true AND "createdAt" < NOW() - INTERVAL '30 days' RETURNING "id"`;
-          console.log(`${c.brightGreen}✔ ${res.length} notifications purgées.${c.reset}`);
-        } else console.log("Annulé.");
+          const res =
+            await sql`DELETE FROM "Notification" WHERE "isRead" = true AND "createdAt" < NOW() - INTERVAL '30 days' RETURNING "id"`;
+          console.log(
+            `${c.brightGreen}✔ ${res.length} notifications purgées.${c.reset}`
+          );
+        } else {
+          console.log("Annulé.");
+        }
         break;
       }
       case "0":
@@ -904,59 +1172,65 @@ export async function runNotificationManager() {
 export async function runAdminCli() {
   // Support des flags en ligne de commande pour exécution non interactive / crons
   const args = process.argv.slice(2);
-  if (args.includes('--reset-api')) {
+  if (args.includes("--reset-api")) {
     await resetApiUsage(true);
     process.exit(0);
   }
-  if (args.includes('--reset-mai')) {
+  if (args.includes("--reset-mai")) {
     await resetMaiUsage(true);
     process.exit(0);
   }
-  if (args.includes('--reset-images')) {
+  if (args.includes("--reset-images")) {
     await resetImageUsage();
     process.exit(0);
   }
-  if (args.includes('--reset-audio')) {
+  if (args.includes("--reset-audio")) {
     await resetAudioUsage(true);
     process.exit(0);
   }
-  if (args.includes('--reset-all')) {
+  if (args.includes("--reset-all")) {
     await resetAllUsage(true);
     process.exit(0);
   }
-  if (args.includes('--codes')) {
+  if (args.includes("--codes")) {
     await runSubscriptionCodeManager();
     process.exit(0);
   }
-  if (args.includes('--customers')) {
+  if (args.includes("--customers")) {
     await runCustomerAccountManager();
     process.exit(0);
   }
-  if (args.includes('--newsletter')) {
+  if (args.includes("--newsletter")) {
     await runNewsletterStudio();
     process.exit(0);
   }
-  if (args.includes('--notify-news')) {
-    const idx = args.indexOf('--notify-news');
+  if (args.includes("--notify-news")) {
+    const idx = args.indexOf("--notify-news");
     const title = args[idx + 1];
     const body = args[idx + 2] || null;
     const link = args[idx + 3] || null;
     if (!title) {
-      console.error("Usage: --notify-news \"Titre\" [\"Body\"] [\"Link\"]");
+      console.error('Usage: --notify-news "Titre" ["Body"] ["Link"]');
       process.exit(1);
     }
     await sendNewsNotificationToEligibleUsers(title, body, link);
     process.exit(0);
   }
-  if (args.includes('--notifications')) {
+  if (args.includes("--notifications")) {
     await runNotificationManager();
     process.exit(0);
   }
 
   console.log("");
-  console.log(`${c.bgPurple}${c.bold}${c.brightWhite}  ╔══════════════════════════════════════════════════════════════════════╗  ${c.reset}`);
-  console.log(`${c.bgPurple}${c.bold}${c.brightWhite}  ║             🛠️  mAI — CONSOLE D'ADMINISTRATION & MAINTENANCE         ║  ${c.reset}`);
-  console.log(`${c.bgPurple}${c.bold}${c.brightWhite}  ╚══════════════════════════════════════════════════════════════════════╝  ${c.reset}`);
+  console.log(
+    `${c.bgPurple}${c.bold}${c.brightWhite}  ╔══════════════════════════════════════════════════════════════════════╗  ${c.reset}`
+  );
+  console.log(
+    `${c.bgPurple}${c.bold}${c.brightWhite}  ║             🛠️  mAI — CONSOLE D'ADMINISTRATION & MAINTENANCE         ║  ${c.reset}`
+  );
+  console.log(
+    `${c.bgPurple}${c.bold}${c.brightWhite}  ╚══════════════════════════════════════════════════════════════════════╝  ${c.reset}`
+  );
   console.log("");
 
   const rl = readline.createInterface({ input, output });
@@ -964,57 +1238,79 @@ export async function runAdminCli() {
 
   while (running) {
     console.log(`\n${c.bold}ACTIONS DISPONIBLES :${c.reset}`);
-    console.log(`  ${c.brightCyan}[1]${c.reset} 🔄 Réinitialiser les quotas d'usage API (mprojects_api_keys)`);
-    console.log(`  ${c.brightCyan}[2]${c.reset} 🔄 Réinitialiser les quotas d'usage mAI (weekly_usage)`);
-    console.log(`  ${c.brightCyan}[3]${c.reset} 🔄 Réinitialiser les quotas journaliers d'Images`);
-    console.log(`  ${c.brightCyan}[4]${c.reset} 🔄 Réinitialiser les quotas de synthèse vocale Audio (weekly_speech_usage)`);
-    console.log(`  ${c.brightGreen}[5]${c.reset} ⚡ ${c.bold}Réinitialiser TOUS les quotas en 1 clic (API + mAI + Images + Audio)${c.reset}`);
-    console.log(`  ${c.brightMagenta}[6]${c.reset} 🎟️  Gérer les codes d'abonnement (Créer, Lister, Activer, Modifier)`);
-    console.log(`  ${c.brightYellow}[7]${c.reset} 📧 Lancer le Studio de Newsletter (Éditeur HTML & CLI)`);
-    console.log(`  ${c.brightWhite}[8]${c.reset} 👥 Gérer les comptes clients (Lister, Bloquer, Supprimer)`);
-    console.log(`  ${c.brightCyan}[9]${c.reset} 🔔 Gérer les Notifications & Actualités (Broadcast)`);
+    console.log(
+      `  ${c.brightCyan}[1]${c.reset} 🔄 Réinitialiser les quotas d'usage API (mprojects_api_keys)`
+    );
+    console.log(
+      `  ${c.brightCyan}[2]${c.reset} 🔄 Réinitialiser les quotas d'usage mAI (weekly_usage)`
+    );
+    console.log(
+      `  ${c.brightCyan}[3]${c.reset} 🔄 Réinitialiser les quotas journaliers d'Images`
+    );
+    console.log(
+      `  ${c.brightCyan}[4]${c.reset} 🔄 Réinitialiser les quotas de synthèse vocale Audio (weekly_speech_usage)`
+    );
+    console.log(
+      `  ${c.brightGreen}[5]${c.reset} ⚡ ${c.bold}Réinitialiser TOUS les quotas en 1 clic (API + mAI + Images + Audio)${c.reset}`
+    );
+    console.log(
+      `  ${c.brightMagenta}[6]${c.reset} 🎟️  Gérer les codes d'abonnement (Créer, Lister, Activer, Modifier)`
+    );
+    console.log(
+      `  ${c.brightYellow}[7]${c.reset} 📧 Lancer le Studio de Newsletter (Éditeur HTML & CLI)`
+    );
+    console.log(
+      `  ${c.brightWhite}[8]${c.reset} 👥 Gérer les comptes clients (Lister, Bloquer, Supprimer)`
+    );
+    console.log(
+      `  ${c.brightCyan}[9]${c.reset} 🔔 Gérer les Notifications & Actualités (Broadcast)`
+    );
     console.log(`  ${c.white}[0]${c.reset} 🚪 Quitter`);
     console.log("");
 
-    const choice = (await rl.question(`  ${c.brightYellow}➔ Votre choix [0-9] : ${c.reset}`)).trim();
+    const choice = (
+      await rl.question(`  ${c.brightYellow}➔ Votre choix [0-9] : ${c.reset}`)
+    ).trim();
 
     switch (choice) {
-      case '1':
+      case "1":
         await resetApiUsage(true);
         break;
-      case '2':
+      case "2":
         await resetMaiUsage(true);
         break;
-      case '3':
+      case "3":
         await resetImageUsage();
         break;
-      case '4':
+      case "4":
         await resetAudioUsage(true);
         break;
-      case '5':
+      case "5":
         await resetAllUsage(true);
         break;
-      case '6':
+      case "6":
         rl.close();
         await runSubscriptionCodeManager();
         return;
-      case '7':
+      case "7":
         rl.close();
         await runNewsletterStudio();
         return;
-      case '8':
+      case "8":
         rl.close();
         await runCustomerAccountManager();
         return;
-      case '9':
+      case "9":
         rl.close();
         await runNotificationManager();
         return;
-      case '0':
-      case 'exit':
-      case 'quit':
+      case "0":
+      case "exit":
+      case "quit":
         running = false;
-        console.log(`\n${c.dim}👋 Fermeture de la console d'administration.${c.reset}\n`);
+        console.log(
+          `\n${c.dim}👋 Fermeture de la console d'administration.${c.reset}\n`
+        );
         break;
       default:
         console.log("⚠️ Choix invalide.");
@@ -1025,7 +1321,10 @@ export async function runAdminCli() {
 }
 
 // Exécution si appelé directement
-if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith('admin.ts')) {
+if (
+  import.meta.url === `file://${process.argv[1]}` ||
+  process.argv[1]?.endsWith("admin.ts")
+) {
   runAdminCli().catch((err) => {
     console.error("❌ Erreur fatale :", err?.message || err);
     process.exit(1);

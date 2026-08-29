@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { getMaiUser } from "@/lib/auth/session";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
+import { getMaiUser } from "@/lib/auth/session";
 import {
   deleteSkill,
   getSkillById,
@@ -20,7 +20,9 @@ const updateSkillSchema = z.object({
   isPublic: z.boolean().optional(),
   lastUsedAt: z.string().nullable().optional(),
   mcpServerIds: z.array(z.string().uuid()).max(20).optional(),
-  mcpToolFilter: z.record(z.string(), z.array(z.string()).nullable()).optional(),
+  mcpToolFilter: z
+    .record(z.string(), z.array(z.string()).nullable())
+    .optional(),
   name: z.string().min(1).max(100).optional(),
   parameters: z
     .array(
@@ -30,7 +32,7 @@ const updateSkillSchema = z.object({
         enumValues: z.array(z.string()).optional(),
         name: z.string().min(1).max(50),
         required: z.boolean().optional(),
-        type: z.enum(["string","number","boolean","enum"]).optional(),
+        type: z.enum(["string", "number", "boolean", "enum"]).optional(),
       })
     )
     .optional(),

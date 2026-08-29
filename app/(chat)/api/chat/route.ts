@@ -193,7 +193,10 @@ export async function POST(request: Request) {
     let agentInstructions: string | null = null;
     let agentDefaultModel: string | null = null;
     let agentSkillIds: string[] = [];
-    let agentMcpIds: string[] = [];
+    let _agentMcpIds: string[] = [];
+    let agentTemperature: number | null = null;
+    let agentTopP: number | null = null;
+    let agentMaxTokens: number | null = null;
     const effectiveAgentId = (chat as any)?.agentId || agentIdFromBody || null;
     if (effectiveAgentId) {
       try {
@@ -202,11 +205,14 @@ export async function POST(request: Request) {
         if (ag) {
           agentInstructions = ag.instructions || null;
           agentDefaultModel = ag.defaultModelId || null;
+          agentTemperature = (ag as any).temperature ?? null;
+          agentTopP = (ag as any).topP ?? null;
+          agentMaxTokens = (ag as any).maxTokens ?? null;
           if (Array.isArray(ag.skillIds)) {
             agentSkillIds = ag.skillIds as string[];
           }
           if (Array.isArray(ag.mcpServerIds)) {
-            agentMcpIds = ag.mcpServerIds as string[];
+            _agentMcpIds = ag.mcpServerIds as string[];
           }
         }
       } catch {}
@@ -441,10 +447,11 @@ export async function POST(request: Request) {
       effectiveAddendum += `\n\nOUTILS ACTIVÉS POUR CE MESSAGE — UTILISATION EXTRÊMEMENT RECOMMANDÉE SI PERTINENT : ${listed}. Tu DOIS les utiliser dès que la demande s'y prête, ne les ignore pas. Si plusieurs outils sont activés, choisis le plus pertinent. Pour l'audio, ne demande JAMAIS de choix de voix, génère directement avec la voix par défaut.`;
     }
 
-    // Température effective: chat override > user default > agent default (plus de mode)
+    // Température effective: chat override > agent > user default (plus de mode)
     const effectiveTemperature =
-      chatTempOverride ?? userDefaultTemp ?? undefined;
-    const effectiveTopP = userDefaultTopP ?? undefined;
+      chatTempOverride ?? agentTemperature ?? userDefaultTemp ?? undefined;
+    const effectiveTopP = agentTopP ?? userDefaultTopP ?? undefined;
+    const effectiveMaxTokens = agentMaxTokens ?? undefined;
 
     // Initialiser le modèle de langage mAI
     const model = getLanguageModel(chatModel, {
@@ -525,6 +532,9 @@ export async function POST(request: Request) {
             : {}),
           ...(effectiveTopP !== undefined && effectiveTopP !== null
             ? { topP: effectiveTopP }
+            : {}),
+          ...(effectiveMaxTokens !== undefined && effectiveMaxTokens !== null
+            ? { maxOutputTokens: effectiveMaxTokens }
             : {}),
           onChunk({ chunk }) {
             if (isModelStreamActivity(chunk)) {

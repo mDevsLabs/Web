@@ -134,13 +134,14 @@ export async function getMaiUser(
         resetAt: fallbackPayload.resetAt,
         tier: fallbackPayload.tier || "Free",
         tokensUsed: Number(fallbackPayload.tokensUsed || 0),
-        username: fallbackPayload.username || fallbackPayload.name || "Utilisateur",
+        username:
+          fallbackPayload.username || fallbackPayload.name || "Utilisateur",
         weekStart: fallbackPayload.weekStart,
       };
 
       // Mettre en cache pour quelques secondes
       userCache.set(token, {
-        expiresAt: Date.now() + 5_000,
+        expiresAt: Date.now() + 5000,
         user: fallbackUser,
       });
       return fallbackUser;

@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { getMaiUser } from "@/lib/auth/session";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
+import { getMaiUser } from "@/lib/auth/session";
 import {
   createMcpServer,
   getMcpServersByUserId,
@@ -35,8 +35,19 @@ const createMcpSchema = z.object({
   requireApproval: z
     .enum(["always_allow", "ask_permission", "write_only"])
     .default("write_only"),
-  timeoutMs: z.number().int().min(1000).max(120000).optional(),
-  toolOverrides: z.record(z.string(), z.object({ enabled: z.boolean(), requireApproval: z.enum(["always_allow","write_only","ask_permission"]).nullable().optional() })).optional(),
+  timeoutMs: z.number().int().min(1000).max(120_000).optional(),
+  toolOverrides: z
+    .record(
+      z.string(),
+      z.object({
+        enabled: z.boolean(),
+        requireApproval: z
+          .enum(["always_allow", "write_only", "ask_permission"])
+          .nullable()
+          .optional(),
+      })
+    )
+    .optional(),
   transport: z.enum(["sse", "http", "stdio", "websocket"]).default("sse"),
   url: z.string().optional(),
 });
@@ -75,14 +86,28 @@ export async function POST(request: Request) {
     try {
       const { getUserMcpPrefs } = await import("@/lib/db/queries");
       const prefs = await getUserMcpPrefs(userId);
-      if (prefs.globalKillSwitch) return Response.json({ error: "MCP désactivé globalement (kill-switch)" }, { status: 403 });
-      if (parsed.transport === "stdio" && !prefs.allowStdio) return Response.json({ error: "Transport stdio désactivé dans les paramètres" }, { status: 403 });
-    } catch (e:any) { if (e.status===403) throw e; }
+      if (prefs.globalKillSwitch) {
+        return Response.json(
+          { error: "MCP désactivé globalement (kill-switch)" },
+          { status: 403 }
+        );
+      }
+      if (parsed.transport === "stdio" && !prefs.allowStdio) {
+        return Response.json(
+          { error: "Transport stdio désactivé dans les paramètres" },
+          { status: 403 }
+        );
+      }
+    } catch (e: any) {
+      if (e.status === 403) {
+        throw e;
+      }
+    }
 
     // Chiffrage des secrets env/auth/headers en BDD (stockage sécurisé)
-    let envPlain = parsed.env ?? {};
-    let headersPlain = parsed.headers ?? {};
-    let authPlain = parsed.authConfig ?? {};
+    const envPlain = parsed.env ?? {};
+    const headersPlain = parsed.headers ?? {};
+    const authPlain = parsed.authConfig ?? {};
     // On conserve une copie non chiffrée minimale dans colonnes json pour compat, mais secrets réels vont en mcp_server_secret
 
     // Tentative de découverte automatique des outils à la création
@@ -114,11 +139,41 @@ export async function POST(request: Request) {
     try {
       const { encrypt } = await import("@/lib/mcp/encryption");
       const { setMcpServerSecrets } = await import("@/lib/db/queries");
-      const secrets: Array<{ kind: "env"|"auth"|"header"; key: string; encryptedValue: string }> = [];
-      for (const [k,v] of Object.entries(envPlain)) if(v) secrets.push({ kind:"env", key:k, encryptedValue: encrypt(v as string) });
-      for (const [k,v] of Object.entries(headersPlain)) if(v) secrets.push({ kind:"header", key:k, encryptedValue: encrypt(v as string) });
-      for (const [k,v] of Object.entries(authPlain)) if(v) secrets.push({ kind:"auth", key:k, encryptedValue: encrypt(v as string) });
-      if (secrets.length) await setMcpServerSecrets({ secrets, serverId: created.id, userId });
+      const secrets: Array<{
+        kind: "env" | "auth" | "header";
+        key: string;
+        encryptedValue: string;
+      }> = [];
+      for (const [k, v] of Object.entries(envPlain)) {
+        if (v) {
+          secrets.push({
+            encryptedValue: encrypt(v as string),
+            key: k,
+            kind: "env",
+          });
+        }
+      }
+      for (const [k, v] of Object.entries(headersPlain)) {
+        if (v) {
+          secrets.push({
+            encryptedValue: encrypt(v as string),
+            key: k,
+            kind: "header",
+          });
+        }
+      }
+      for (const [k, v] of Object.entries(authPlain)) {
+        if (v) {
+          secrets.push({
+            encryptedValue: encrypt(v as string),
+            key: k,
+            kind: "auth",
+          });
+        }
+      }
+      if (secrets.length) {
+        await setMcpServerSecrets({ secrets, serverId: created.id, userId });
+      }
     } catch {}
 
     // Notification MCP créé
@@ -126,7 +181,7 @@ export async function POST(request: Request) {
       const { createNotification } = await import("@/lib/db/queries");
       createNotification({
         body: `Le serveur MCP "${created.name}" a été ajouté.`,
-        link: `/mcp`,
+        link: "/mcp",
         title: "Nouveau MCP ajouté",
         type: "mcp_created",
         userId,

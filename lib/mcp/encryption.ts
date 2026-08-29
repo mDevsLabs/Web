@@ -1,4 +1,9 @@
-import { createCipheriv, createDecipheriv, createHash, randomBytes } from "node:crypto";
+import {
+  createCipheriv,
+  createDecipheriv,
+  createHash,
+  randomBytes,
+} from "node:crypto";
 
 /**
  * Chiffrage AES-256-GCM pour les secrets MCP (env, auth, headers).
@@ -21,20 +26,20 @@ function getKey(): Buffer {
     process.env.POSTGRES_URL ||
     "";
   const source = raw?.trim() || "mAI-Web-MCP-Default-Dev-Key-2026-not-for-prod";
-  if (!raw?.trim()) {
-    if (!(globalThis as any).__mcpKeyWarned) {
-      (globalThis as any).__mcpKeyWarned = true;
-      console.warn(
-        "[mcp/encryption] MCP_ENCRYPTION_KEY manquante — clé dérivée automatiquement en SHA-256 depuis fallback dev (non sécurisé). Définir MCP_ENCRYPTION_KEY en prod."
-      );
-    }
+  if (!raw?.trim() && !(globalThis as any).__mcpKeyWarned) {
+    (globalThis as any).__mcpKeyWarned = true;
+    console.warn(
+      "[mcp/encryption] MCP_ENCRYPTION_KEY manquante — clé dérivée automatiquement en SHA-256 depuis fallback dev (non sécurisé). Définir MCP_ENCRYPTION_KEY en prod."
+    );
   }
   // Dérivation automatique SHA-256 → 32 bytes systématiques
   return createHash("sha256").update(source, "utf8").digest();
 }
 
 export function encrypt(plain: string): string {
-  if (!plain) return "";
+  if (!plain) {
+    return "";
+  }
   const key = getKey();
   const iv = randomBytes(IV_LEN);
   const cipher = createCipheriv(ALGO, key, iv);
@@ -44,11 +49,15 @@ export function encrypt(plain: string): string {
 }
 
 export function decrypt(cipherB64: string): string {
-  if (!cipherB64) return "";
+  if (!cipherB64) {
+    return "";
+  }
   try {
     const key = getKey();
     const data = Buffer.from(cipherB64, "base64");
-    if (data.length < IV_LEN + TAG_LEN) return "";
+    if (data.length < IV_LEN + TAG_LEN) {
+      return "";
+    }
     const iv = data.subarray(0, IV_LEN);
     const tag = data.subarray(IV_LEN, IV_LEN + TAG_LEN);
     const enc = data.subarray(IV_LEN + TAG_LEN);
@@ -62,9 +71,13 @@ export function decrypt(cipherB64: string): string {
 }
 
 export function isEncrypted(value: string): boolean {
-  if (!value) return false;
+  if (!value) {
+    return false;
+  }
   // heuristique: base64 et longueur > 30
-  if (value.length < 30) return false;
+  if (value.length < 30) {
+    return false;
+  }
   try {
     const b = Buffer.from(value, "base64");
     return b.length > IV_LEN + TAG_LEN;

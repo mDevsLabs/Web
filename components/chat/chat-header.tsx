@@ -38,10 +38,9 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useActiveChat } from "@/hooks/use-active-chat";
-import { cn } from "@/lib/utils";
-import { fetcher } from "@/lib/utils";
-import { VisibilitySelector, type VisibilityType } from "./visibility-selector";
+import { cn, fetcher } from "@/lib/utils";
 import { NotificationBell } from "./notification-bell";
+import { VisibilitySelector, type VisibilityType } from "./visibility-selector";
 
 function PureChatHeader({
   chatId,
@@ -67,7 +66,7 @@ function PureChatHeader({
   const isArchived = (chatData as any)?.isArchived ?? false;
   const isPinned = (chatData as any)?.pinned ?? false;
 
-  const [isRenaming, setIsRenaming] = useState(false);
+  const [_isRenaming, _setIsRenaming] = useState(false);
 
   const handleExport = useCallback(
     async (format: "md" | "json" | "txt") => {
@@ -104,17 +103,26 @@ function PureChatHeader({
 
   const handleRename = useCallback(async () => {
     const currentTitle = (chatData as any)?.title ?? "";
-    const next = window.prompt("Nouveau titre de la conversation :", currentTitle);
-    if (next === null) return;
+    const next = window.prompt(
+      "Nouveau titre de la conversation :",
+      currentTitle
+    );
+    if (next === null) {
+      return;
+    }
     const trimmed = next.trim();
-    if (!trimmed || trimmed === currentTitle) return;
+    if (!trimmed || trimmed === currentTitle) {
+      return;
+    }
     try {
       const res = await fetch(`/api/chats/${chatId}`, {
         body: JSON.stringify({ title: trimmed }),
         headers: { "Content-Type": "application/json" },
         method: "PATCH",
       });
-      if (!res.ok) throw new Error("Erreur");
+      if (!res.ok) {
+        throw new Error("Erreur");
+      }
       toast.success("Conversation renommée");
     } catch {
       toast.error("Erreur lors du renommage");
@@ -128,7 +136,9 @@ function PureChatHeader({
         headers: { "Content-Type": "application/json" },
         method: "PATCH",
       });
-      if (!res.ok) throw new Error();
+      if (!res.ok) {
+        throw new Error();
+      }
       toast.success(isArchived ? "Désarchivée" : "Archivée");
     } catch {
       toast.error("Erreur archivage");
@@ -142,7 +152,9 @@ function PureChatHeader({
         headers: { "Content-Type": "application/json" },
         method: "PATCH",
       });
-      if (!res.ok) throw new Error();
+      if (!res.ok) {
+        throw new Error();
+      }
       toast.success(isPinned ? "Désépinglée" : "Épinglée");
     } catch {
       toast.error("Erreur épinglage");
@@ -150,10 +162,14 @@ function PureChatHeader({
   }, [chatId, isPinned]);
 
   const handleDelete = useCallback(async () => {
-    if (!confirm("Supprimer définitivement cette conversation ?")) return;
+    if (!confirm("Supprimer définitivement cette conversation ?")) {
+      return;
+    }
     try {
       const res = await fetch(`/api/chat?id=${chatId}`, { method: "DELETE" });
-      if (!res.ok) throw new Error();
+      if (!res.ok) {
+        throw new Error();
+      }
       toast.success("Conversation supprimée");
       router.push("/");
     } catch {
@@ -223,7 +239,9 @@ function PureChatHeader({
           <DropdownMenuContent align="start" className="w-56">
             <DropdownMenuItem
               onClick={() =>
-                window.dispatchEvent(new CustomEvent("open-conversation-search"))
+                window.dispatchEvent(
+                  new CustomEvent("open-conversation-search")
+                )
               }
             >
               <SearchIcon className="size-4" />
@@ -241,7 +259,9 @@ function PureChatHeader({
             <DropdownMenuItem
               onClick={() => {
                 const url = `${window.location.origin}/chat/${chatId}`;
-                navigator.clipboard.writeText(url).then(() => toast.success("Lien copié"));
+                navigator.clipboard
+                  .writeText(url)
+                  .then(() => toast.success("Lien copié"));
               }}
             >
               <CopyIcon className="size-4" />
@@ -284,8 +304,8 @@ function PureChatHeader({
             </DropdownMenuSub>
             <DropdownMenuSeparator />
             <DropdownMenuItem
-              onClick={handleDelete}
               className="text-destructive focus:text-destructive"
+              onClick={handleDelete}
             >
               <TrashIcon className="size-4" />
               <span>Supprimer</span>
@@ -327,7 +347,7 @@ function PureChatHeader({
           <TooltipContent side="bottom">
             {isGhostMode
               ? "Mode fantôme actif : discussion éphémère, non sauvegardée, sans génération d'image"
-              : "Activer le Mode fantôme : temporaire, non sauvegardé en BDD, sans génération d'image"}
+              : "Activer le Mode fantôme : temporaire, non sauvegardé, sans génération d'image"}
           </TooltipContent>
         </Tooltip>
       )}
@@ -337,10 +357,10 @@ function PureChatHeader({
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
+              aria-label="Exporter"
               className="sm:hidden rounded-xl text-xs h-8 w-8 p-0 border-border/60 hover:bg-muted"
               size="sm"
               variant="outline"
-              aria-label="Exporter"
             >
               <DownloadIcon className="size-4" />
             </Button>

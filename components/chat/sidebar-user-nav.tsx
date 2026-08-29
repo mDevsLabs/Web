@@ -3,6 +3,7 @@
 import {
   ChevronUp,
   CloudIcon,
+  HelpCircleIcon,
   LogOutIcon,
   MoonIcon,
   SettingsIcon,
@@ -157,6 +158,20 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
                   <span>Mode clair</span>
                 </>
               )}
+            </DropdownMenuItem>
+
+            <DropdownMenuSeparator className="my-1 bg-border/50" />
+
+            <DropdownMenuItem asChild>
+              <a
+                className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[13px] cursor-pointer hover:bg-sidebar-accent"
+                href="https://mai-devs.vercel.app/support"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <HelpCircleIcon className="size-4 text-muted-foreground" />
+                <span>Support</span>
+              </a>
             </DropdownMenuItem>
 
             <DropdownMenuSeparator className="my-1 bg-border/50" />

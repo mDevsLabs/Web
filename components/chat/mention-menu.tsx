@@ -3,10 +3,10 @@
 import { BotIcon, CpuIcon, PlusIcon, SparklesIcon } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef } from "react";
+import { AgentIcon } from "@/components/agents/agent-icon";
 import type { ProjectLite } from "@/hooks/use-projects";
 import type { Agent, McpServer, Skill } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
-import { AgentIcon } from "@/components/agents/agent-icon";
 import { ProjectIcon } from "./project-icon";
 
 type MentionProject = ProjectLite & { description?: string };
@@ -267,7 +267,12 @@ function MentionItem({
         className="flex size-6 shrink-0 items-center justify-center rounded-md text-white text-xs"
         style={{ backgroundColor: (item as any).agent.color || "#6366f1" }}
       >
-        <AgentIcon emoji={(item as any).agent.emoji} icon={(item as any).agent.icon} size={14} variant="plain" />
+        <AgentIcon
+          emoji={(item as any).agent.emoji}
+          icon={(item as any).agent.icon}
+          size={14}
+          variant="plain"
+        />
       </div>
       <div className="flex flex-col min-w-0">
         <span className="text-[13px] font-medium text-foreground truncate flex items-center gap-1.5">
@@ -420,7 +425,11 @@ export function MentionMenu({
             {agentItems.length === 0 ? (
               <div className="px-4 py-2.5 text-[12px] text-muted-foreground/60 flex flex-col gap-1">
                 <span>Aucun agent correspondant</span>
-                <Link href="/agents" className="text-primary hover:underline text-xs" onClick={() => _onClose()}>
+                <Link
+                  className="text-primary hover:underline text-xs"
+                  href="/agents"
+                  onClick={() => _onClose()}
+                >
                   Créer un agent →
                 </Link>
               </div>

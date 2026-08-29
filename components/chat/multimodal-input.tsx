@@ -42,6 +42,7 @@ import {
 import { toast } from "sonner";
 import useSWR from "swr";
 import { useLocalStorage, useWindowSize } from "usehooks-ts";
+import { AgentSelectorCompact } from "@/components/agents/agent-selector";
 import {
   ModelSelector,
   ModelSelectorContent,
@@ -74,7 +75,6 @@ import {
 } from "@/lib/ai/models";
 import { TOOLS_META, type ToolId } from "@/lib/ai/tools/config";
 import type { Agent, McpServer, Skill } from "@/lib/db/schema";
-import { AgentSelectorCompact } from "@/components/agents/agent-selector";
 import type { Attachment, ChatMessage } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import {
@@ -105,7 +105,6 @@ import type { VisibilityType } from "./visibility-selector";
 
 function _setCookie(name: string, value: string) {
   const maxAge = 60 * 60 * 24 * 365;
-  // biome-ignore lint/suspicious/noDocumentCookie: needed for client-side cookie setting
   document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${maxAge}`;
 }
 
@@ -666,8 +665,12 @@ function PureMultimodalInput({
           );
         } else if (payload.type === "agent") {
           setActiveAgent(payload.agent);
-          const icon = (payload.agent as any).emoji ? `${(payload.agent as any).emoji} ` : "";
-          toast.success(`Agent activé : ${icon}${payload.agent.name} — modèle ${(payload.agent as any).defaultModelId}`);
+          const icon = (payload.agent as any).emoji
+            ? `${(payload.agent as any).emoji} `
+            : "";
+          toast.success(
+            `Agent activé : ${icon}${payload.agent.name} — modèle ${(payload.agent as any).defaultModelId}`
+          );
           // onModelChange will be triggered via setActiveAgent side-effect (cookie)
         }
       } else {
@@ -1041,7 +1044,10 @@ function PureMultimodalInput({
                 type: "project",
               });
             } else if (item.kind === "agent") {
-              handleMentionSelect({ agent: (item as any).agent, type: "agent" });
+              handleMentionSelect({
+                agent: (item as any).agent,
+                type: "agent",
+              });
             }
           }
           return;
@@ -1118,7 +1124,7 @@ function PureMultimodalInput({
               Mode fantôme actif
             </span>
             <span className="hidden sm:inline text-muted-foreground truncate">
-              — Discussion temporaire non enregistrée en BDD. Génération d'image
+              — Discussion temporaire non enregistrée. Génération d'image
               indisponible.
             </span>
           </div>
@@ -1162,11 +1168,30 @@ function PureMultimodalInput({
       {activeAgent ? (
         <div className="flex items-center gap-2 px-1 -mb-1">
           <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-500/40 bg-indigo-500/10 px-2.5 py-1 text-[11px] font-medium text-foreground">
-            <span className="size-5 rounded-full flex items-center justify-center text-white text-xs" style={{backgroundColor: activeAgent.color||"#6366f1"}}>{(activeAgent as any).emoji ? (activeAgent as any).emoji : <BotIcon className="size-3.5"/>}</span>
+            <span
+              className="size-5 rounded-full flex items-center justify-center text-white text-xs"
+              style={{ backgroundColor: activeAgent.color || "#6366f1" }}
+            >
+              {(activeAgent as any).emoji ? (
+                (activeAgent as any).emoji
+              ) : (
+                <BotIcon className="size-3.5" />
+              )}
+            </span>
             <span>Agent actif : {activeAgent.name}</span>
-            <button aria-label="Retirer l'agent" className="ml-1 rounded-full p-0.5 hover:bg-indigo-500/20 text-muted-foreground hover:text-foreground" onClick={clearActiveAgent} title="Retirer l'agent" type="button"><XIcon className="size-3"/></button>
+            <button
+              aria-label="Retirer l'agent"
+              className="ml-1 rounded-full p-0.5 hover:bg-indigo-500/20 text-muted-foreground hover:text-foreground"
+              onClick={clearActiveAgent}
+              title="Retirer l'agent"
+              type="button"
+            >
+              <XIcon className="size-3" />
+            </button>
           </span>
-          <span className="text-[11px] text-muted-foreground">Sélection globale — modèle {activeAgent.defaultModelId}</span>
+          <span className="text-[11px] text-muted-foreground">
+            Sélection globale — modèle {activeAgent.defaultModelId}
+          </span>
         </div>
       ) : null}
       {activeSkill ? (

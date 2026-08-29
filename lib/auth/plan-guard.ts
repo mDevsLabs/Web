@@ -14,10 +14,18 @@ export async function requirePaidPlan(
 ): Promise<PlanGuardResult> {
   const user = await getMaiUser();
   if (!user) {
-    return { allowed: false, reason: "unauthorized", upgradeUrl: MAI_UPGRADE_URL };
+    return {
+      allowed: false,
+      reason: "unauthorized",
+      upgradeUrl: MAI_UPGRADE_URL,
+    };
   }
   if (!tierAtLeast(user.tier, minimum)) {
-    return { allowed: false, reason: "plan_required", upgradeUrl: MAI_UPGRADE_URL };
+    return {
+      allowed: false,
+      reason: "plan_required",
+      upgradeUrl: MAI_UPGRADE_URL,
+    };
   }
   return { allowed: true, tier: user.tier, user };
 }

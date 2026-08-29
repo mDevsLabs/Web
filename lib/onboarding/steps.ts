@@ -1,5 +1,5 @@
-import type { ComponentType } from "react";
 import {
+  CloudIcon,
   FolderKanbanIcon,
   ImageIcon,
   MessagesSquareIcon,
@@ -7,8 +7,8 @@ import {
   SettingsIcon,
   SparklesIcon,
   Volume2Icon,
-  CloudIcon,
 } from "lucide-react";
+import type { ComponentType } from "react";
 
 export type OnboardingStep = {
   id: string;
@@ -21,80 +21,80 @@ export type OnboardingStep = {
 
 export const ONBOARDING_STEPS: OnboardingStep[] = [
   {
-    id: "welcome",
-    title: "Bienvenue sur mAI Web",
     content:
       "Félicitations, votre compte est confirmé ! Parcourons ensemble les fonctionnalités principales. Ce guide vous accompagne pas à pas.",
     icon: SparklesIcon,
+    id: "welcome",
+    title: "Bienvenue sur mAI Web",
   },
   {
-    id: "new-chat",
-    title: "Démarrez une discussion",
     content:
       "Cliquez ici pour ouvrir une nouvelle conversation à tout moment. Votre historique est ensuite conservé dans la barre latérale.",
+    icon: PenSquareIcon,
+    id: "new-chat",
     route: "/",
     selector: '[data-onboarding="new-chat"]',
-    icon: PenSquareIcon,
+    title: "Démarrez une discussion",
   },
   {
-    id: "chat-input",
-    title: "Posez votre question à l'IA",
     content:
       "Tapez votre message ici, ajoutez des fichiers ou utilisez les options (modèles, pièces jointes…). Appuyez sur Entrée pour lancer la réponse.",
+    icon: MessagesSquareIcon,
+    id: "chat-input",
     route: "/",
     selector: '[data-onboarding="chat-input"]',
-    icon: MessagesSquareIcon,
+    title: "Posez votre question à l'IA",
   },
   {
-    id: "library",
-    title: "Votre stockage cloud",
     content:
       "Retrouvez ici tous vos fichiers, documents et ressources générés. Le stockage centralise vos contenus pour les réutiliser dans vos discussions.",
+    icon: CloudIcon,
+    id: "library",
     route: "/library",
     selector: '[data-onboarding="nav-library"]',
-    icon: CloudIcon,
+    title: "Votre stockage cloud",
   },
   {
-    id: "projects",
-    title: "Organisez avec les Projets",
     content:
       "Créez des projets pour regrouper vos conversations par thématique. Idéal pour structurer vos travaux et y accéder rapidement.",
+    icon: FolderKanbanIcon,
+    id: "projects",
     route: "/projects",
     selector: '[data-onboarding="nav-projects"]',
-    icon: FolderKanbanIcon,
+    title: "Organisez avec les Projets",
   },
   {
-    id: "images",
-    title: "Générez des images",
     content:
       "Accédez à la génération d'images par intelligence artificielle. Décrivez ce que vous voulez créer et laissez l'IA le visualiser.",
+    icon: ImageIcon,
+    id: "images",
     route: "/images",
     selector: '[data-onboarding="nav-images"]',
-    icon: ImageIcon,
+    title: "Générez des images",
   },
   {
-    id: "audio",
-    title: "Créez du contenu audio",
     content:
       "Transformez du texte en audio ou exploitez les outils vocaux. Parfait pour générer des lectures ou des contenus sonores.",
+    icon: Volume2Icon,
+    id: "audio",
     route: "/audio",
     selector: '[data-onboarding="nav-audio"]',
-    icon: Volume2Icon,
+    title: "Créez du contenu audio",
   },
   {
-    id: "settings",
-    title: "Personnalisez vos paramètres",
     content:
       "Gérez votre compte, vos préférences, votre abonnement et la confidentialité. Tout se configure depuis cette page.",
+    icon: SettingsIcon,
+    id: "settings",
     route: "/settings",
     selector: '[data-onboarding="nav-settings"]',
-    icon: SettingsIcon,
+    title: "Personnalisez vos paramètres",
   },
   {
-    id: "finish",
-    title: "Vous êtes prêt !",
     content:
       "Voilà, vous connaissez les bases de mAI Web. Amusez-vous bien, et n'hésitez pas à explorer davantage par vous-même !",
     icon: SparklesIcon,
+    id: "finish",
+    title: "Vous êtes prêt !",
   },
 ];

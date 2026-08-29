@@ -84,7 +84,9 @@ export type Skill = InferSelectModel<typeof skill>;
 export const chat = pgTable(
   "Chat",
   {
-    agentId: uuid("agentId").references(() => agent.id, { onDelete: "set null" }),
+    agentId: uuid("agentId").references(() => agent.id, {
+      onDelete: "set null",
+    }),
     archivedAt: timestamp("archivedAt"),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     customInstructions: text("customInstructions"),
@@ -366,7 +368,7 @@ export const mcpServer = pgTable(
     })
       .notNull()
       .default("write_only"),
-    timeoutMs: integer("timeoutMs").notNull().default(15000),
+    timeoutMs: integer("timeoutMs").notNull().default(15_000),
     toolOverrides: json("toolOverrides").notNull().default({}),
     toolsCache: json("toolsCache").notNull().default([]),
     transport: varchar("transport", {
@@ -375,7 +377,9 @@ export const mcpServer = pgTable(
       .notNull()
       .default("sse"),
     updatedAt: timestamp("updatedAt").notNull().defaultNow(),
-    uptimeStatus: varchar("uptimeStatus", { length: 20 }).notNull().default("unknown"),
+    uptimeStatus: varchar("uptimeStatus", { length: 20 })
+      .notNull()
+      .default("unknown"),
     url: text("url"),
     userId: text("userId").notNull(),
   },
@@ -486,17 +490,17 @@ export type UserNotificationPrefs = InferSelectModel<
 export const skillTemplate = pgTable(
   "SkillTemplate",
   {
-    id: uuid("id").primaryKey().notNull().defaultRandom(),
-    name: text("name").notNull(),
-    description: text("description").default(""),
-    instructions: text("instructions").notNull().default(""),
-    icon: text("icon").default("sparkles"),
     color: varchar("color", { length: 7 }).default("#6366f1"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    description: text("description").default(""),
+    icon: text("icon").default("sparkles"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    instructions: text("instructions").notNull().default(""),
+    isPublic: boolean("isPublic").notNull().default(true),
+    name: text("name").notNull(),
+    parameters: json("parameters").notNull().default([]),
     tags: text("tags").array().notNull().default([]),
     tools: json("tools").notNull().default([]),
-    parameters: json("parameters").notNull().default([]),
-    isPublic: boolean("isPublic").notNull().default(true),
-    createdAt: timestamp("createdAt").notNull().defaultNow(),
     updatedAt: timestamp("updatedAt").notNull().defaultNow(),
   },
   (table) => ({
@@ -509,19 +513,23 @@ export type SkillTemplate = InferSelectModel<typeof skillTemplate>;
 export const mcpTemplate = pgTable(
   "McpTemplate",
   {
-    id: uuid("id").primaryKey().notNull().defaultRandom(),
-    name: text("name").notNull(),
-    description: text("description").default(""),
-    transport: varchar("transport", { enum: ["sse", "http", "stdio", "websocket"] }).default("sse"),
-    url: text("url"),
-    command: text("command"),
     args: text("args"),
-    authType: varchar("authType", { enum: ["none", "bearer", "basic", "oauth2", "custom_headers"] }).default("none"),
-    icon: text("icon").default("server"),
-    isPublic: boolean("isPublic").notNull().default(true),
-    tags: text("tags").array().notNull().default([]),
+    authType: varchar("authType", {
+      enum: ["none", "bearer", "basic", "oauth2", "custom_headers"],
+    }).default("none"),
+    command: text("command"),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
+    description: text("description").default(""),
+    icon: text("icon").default("server"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    isPublic: boolean("isPublic").notNull().default(true),
+    name: text("name").notNull(),
+    tags: text("tags").array().notNull().default([]),
+    transport: varchar("transport", {
+      enum: ["sse", "http", "stdio", "websocket"],
+    }).default("sse"),
     updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+    url: text("url"),
   },
   (table) => ({
     isPublicIdx: index("McpTemplate_isPublic_idx").on(table.isPublic),
@@ -559,13 +567,15 @@ export type McpServerSecret = InferSelectModel<typeof mcpServerSecret>;
 export const userMcpPrefs = pgTable("user_mcp_prefs", {
   allowStdio: boolean("allowStdio").notNull().default(true),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
-  defaultRateLimitPerMin: integer("defaultRateLimitPerMin").notNull().default(60),
+  defaultRateLimitPerMin: integer("defaultRateLimitPerMin")
+    .notNull()
+    .default(60),
   defaultRequireApproval: varchar("defaultRequireApproval", {
     enum: ["always_allow", "write_only", "ask_permission"],
   })
     .notNull()
     .default("write_only"),
-  defaultTimeoutMs: integer("defaultTimeoutMs").notNull().default(15000),
+  defaultTimeoutMs: integer("defaultTimeoutMs").notNull().default(15_000),
   globalKillSwitch: boolean("globalKillSwitch").notNull().default(false),
   retentionDays: integer("retentionDays").notNull().default(30),
   updatedAt: timestamp("updatedAt").notNull().defaultNow(),
@@ -576,26 +586,37 @@ export type UserMcpPrefs = InferSelectModel<typeof userMcpPrefs>;
 export const agent = pgTable(
   "Agent",
   {
-    id: uuid("id").primaryKey().notNull().defaultRandom(),
-    userId: text("userId").notNull(),
-    name: varchar("name", { length: 100 }).notNull(),
-    description: varchar("description", { length: 500 }).default(""),
-    instructions: text("instructions").notNull().default(""),
-    icon: varchar("icon", { length: 50 }).default("sparkles").notNull(),
-    emoji: varchar("emoji", { length: 10 }),
-    color: varchar("color", { length: 7 }).default("#6366f1").notNull(),
-    defaultModelId: text("defaultModelId").notNull().default("google/gemini-2.5-flash"),
-    skillIds: json("skillIds").notNull().default([]),
-    mcpServerIds: json("mcpServerIds").notNull().default([]),
     cloudFileUrls: json("cloudFileUrls").notNull().default([]),
-    isPublic: boolean("isPublic").notNull().default(false),
-    shareId: text("shareId"),
+    color: varchar("color", { length: 7 }).default("#6366f1").notNull(),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
+    defaultModelId: text("defaultModelId")
+      .notNull()
+      .default("google/gemini-2.5-flash"),
+    description: varchar("description", { length: 500 }).default(""),
+    emoji: varchar("emoji", { length: 10 }),
+    icon: varchar("icon", { length: 50 }).default("sparkles").notNull(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    instructions: text("instructions").notNull().default(""),
+    isPublic: boolean("isPublic").notNull().default(false),
+    maxTokens: integer("maxTokens"),
+    mcpServerIds: json("mcpServerIds").notNull().default([]),
+    name: varchar("name", { length: 100 }).notNull(),
+    pinned: boolean("pinned").notNull().default(false),
+    shareId: text("shareId"),
+    skillIds: json("skillIds").notNull().default([]),
+    starterPrompts: json("starterPrompts").notNull().default([]),
+    temperature: doublePrecision("temperature"),
+    topP: doublePrecision("topP"),
     updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+    userId: text("userId").notNull(),
+    welcomeMessage: text("welcomeMessage"),
   },
   (table) => ({
     shareIdIdx: index("Agent_shareId_idx").on(table.shareId),
-    userCreatedIdx: index("Agent_userId_createdAt_idx").on(table.userId, table.createdAt),
+    userCreatedIdx: index("Agent_userId_createdAt_idx").on(
+      table.userId,
+      table.createdAt
+    ),
     userIdIdx: index("Agent_userId_idx").on(table.userId),
   })
 );
@@ -604,19 +625,21 @@ export type Agent = InferSelectModel<typeof agent>;
 export const agentTemplate = pgTable(
   "AgentTemplate",
   {
-    id: uuid("id").primaryKey().notNull().defaultRandom(),
-    name: varchar("name", { length: 100 }).notNull(),
-    description: varchar("description", { length: 500 }).default(""),
-    instructions: text("instructions").notNull().default(""),
-    icon: varchar("icon", { length: 50 }).default("bot").notNull(),
-    emoji: varchar("emoji", { length: 10 }),
     color: varchar("color", { length: 7 }).default("#6366f1").notNull(),
-    defaultModelId: text("defaultModelId").default("google/gemini-2.5-flash").notNull(),
-    skillIds: json("skillIds").default([]),
-    mcpServerIds: json("mcpServerIds").default([]),
-    tags: text("tags").array().notNull().default([]),
-    isPublic: boolean("isPublic").notNull().default(true),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
+    defaultModelId: text("defaultModelId")
+      .default("google/gemini-2.5-flash")
+      .notNull(),
+    description: varchar("description", { length: 500 }).default(""),
+    emoji: varchar("emoji", { length: 10 }),
+    icon: varchar("icon", { length: 50 }).default("bot").notNull(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    instructions: text("instructions").notNull().default(""),
+    isPublic: boolean("isPublic").notNull().default(true),
+    mcpServerIds: json("mcpServerIds").default([]),
+    name: varchar("name", { length: 100 }).notNull(),
+    skillIds: json("skillIds").default([]),
+    tags: text("tags").array().notNull().default([]),
     updatedAt: timestamp("updatedAt").notNull().defaultNow(),
   },
   (table) => ({

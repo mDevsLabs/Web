@@ -1,8 +1,7 @@
 "use client";
 import type { UseChatHelpers } from "@ai-sdk/react";
-import { useCallback, useState } from "react";
-
 import { MicIcon } from "lucide-react";
+import { useCallback, useState } from "react";
 
 import { toast } from "sonner";
 import type { Vote } from "@/lib/db/schema";
@@ -209,21 +208,29 @@ function HighlightedText({
   query?: string;
   isCurrent?: boolean;
 }) {
-  if (!query || !query.trim()) return <>{sanitizeText(text)}</>;
+  if (!query?.trim()) {
+    return <>{sanitizeText(text)}</>;
+  }
   const q = query.trim();
-  if (q.length === 0) return <>{sanitizeText(text)}</>;
+  if (q.length === 0) {
+    return <>{sanitizeText(text)}</>;
+  }
   const regex = new RegExp(`(${escapeRegExp(q)})`, "gi");
   const parts = text.split(regex);
-  if (parts.length <= 1) return <>{sanitizeText(text)}</>;
+  if (parts.length <= 1) {
+    return <>{sanitizeText(text)}</>;
+  }
   return (
     <>
       {parts.map((part, i) =>
         part.toLowerCase() === q.toLowerCase() ? (
           <mark
-            key={i}
             className={
-              isCurrent ? "bg-yellow-400 text-black rounded px-0.5" : "bg-yellow-200 dark:bg-yellow-800 rounded px-0.5"
+              isCurrent
+                ? "bg-yellow-400 text-black rounded px-0.5"
+                : "bg-yellow-200 dark:bg-yellow-800 rounded px-0.5"
             }
+            key={i}
           >
             {part}
           </mark>
@@ -343,8 +350,14 @@ const PurePreviewMessage = ({
           key={key}
         >
           {hasSearch ? (
-            <div className={cn(isCurrentMatch && "ring-1 ring-yellow-400 rounded")}>
-              <HighlightedText text={part.text} query={searchQuery} isCurrent={isCurrentMatch} />
+            <div
+              className={cn(isCurrentMatch && "ring-1 ring-yellow-400 rounded")}
+            >
+              <HighlightedText
+                isCurrent={isCurrentMatch}
+                query={searchQuery}
+                text={part.text}
+              />
             </div>
           ) : (
             <MessageResponse>{sanitizeText(part.text)}</MessageResponse>

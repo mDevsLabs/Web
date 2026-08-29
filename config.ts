@@ -25,8 +25,8 @@ export const TIER_SPEECH_LIMITS: Record<string, number> = {
   Max: 200_000_000,
   max: 200_000_000,
   Plus: 50_000_000,
-  plus: 50_000_000,
   Pro: 100_000_000,
+  plus: 50_000_000,
   pro: 100_000_000,
 };
 

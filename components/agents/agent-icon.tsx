@@ -22,29 +22,48 @@ import {
 import { cn } from "@/lib/utils";
 
 const ICON_MAP: Record<string, any> = {
-  bot: BotIcon,
-  sparkles: SparklesIcon,
-  code: Code2Icon,
   book: BookOpenIcon,
-  target: TargetIcon,
-  lightbulb: LightbulbIcon,
-  globe: GlobeIcon,
-  zap: ZapIcon,
-  database: DatabaseIcon,
-  wallet: WalletIcon,
-  headset: HeadsetIcon,
+  bot: BotIcon,
   brain: BrainIcon,
-  cpu: CpuIcon,
-  scale: ScaleIcon,
-  pen: PenLineIcon,
-  file: FileTextIcon,
   briefcase: BriefcaseIcon,
+  code: Code2Icon,
+  cpu: CpuIcon,
+  database: DatabaseIcon,
+  file: FileTextIcon,
+  globe: GlobeIcon,
+  headset: HeadsetIcon,
+  lightbulb: LightbulbIcon,
+  pen: PenLineIcon,
+  scale: ScaleIcon,
+  sparkles: SparklesIcon,
+  target: TargetIcon,
+  wallet: WalletIcon,
+  zap: ZapIcon,
 };
 
-export const EMOJI_PRESETS = ["🤖","🧑‍💻","✍️","📈","⚖️","📊","💡","🎧","📚","🔍","⚡","💰","🧠","🎨","🚀","🛠️"];
+export const EMOJI_PRESETS = [
+  "🤖",
+  "🧑‍💻",
+  "✍️",
+  "📈",
+  "⚖️",
+  "📊",
+  "💡",
+  "🎧",
+  "📚",
+  "🔍",
+  "⚡",
+  "💰",
+  "🧠",
+  "🎨",
+  "🚀",
+  "🛠️",
+];
 
 export function isEmoji(value?: string | null) {
-  if (!value) return false;
+  if (!value) {
+    return false;
+  }
   return /\p{Emoji}/u.test(value);
 }
 
@@ -67,12 +86,31 @@ export function AgentIcon({
 }) {
   if (emoji) {
     if (variant === "plain") {
-      return <span className={cn("inline-flex items-center justify-center leading-none", className)} style={{ fontSize: size, ...style }}>{emoji}</span>;
+      return (
+        <span
+          className={cn(
+            "inline-flex items-center justify-center leading-none",
+            className
+          )}
+          style={{ fontSize: size, ...style }}
+        >
+          {emoji}
+        </span>
+      );
     }
     return (
       <span
-        className={cn("inline-flex items-center justify-center rounded-lg leading-none", className)}
-        style={{ backgroundColor: color || "#6366f1", fontSize: size, width: size + 16, height: size + 16, ...style }}
+        className={cn(
+          "inline-flex items-center justify-center rounded-lg leading-none",
+          className
+        )}
+        style={{
+          backgroundColor: color || "#6366f1",
+          fontSize: size,
+          height: size + 16,
+          width: size + 16,
+          ...style,
+        }}
       >
         {emoji}
       </span>

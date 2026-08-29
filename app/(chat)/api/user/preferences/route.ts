@@ -101,7 +101,7 @@ export async function POST(request: Request) {
     }
     if (parsed.defaultAgentId !== undefined) {
       if (parsed.defaultAgentId === null) {
-        sets.push(`default_agent_id = NULL`);
+        sets.push("default_agent_id = NULL");
       } else {
         sets.push(`default_agent_id = $${idx++}`);
         values.push(parsed.defaultAgentId);
