@@ -25,6 +25,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
+import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { useAudioUsage } from "@/hooks/use-settings";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
 import { cn, formatAudioModelName } from "@/lib/utils";
@@ -35,6 +36,7 @@ interface SpeechModel {
   id: string;
   name: string;
   provider?: string;
+  voices?: string[];
 }
 
 interface SpeechVoice {
@@ -294,6 +296,25 @@ export default function AudioPage() {
     [models, selectedModelId]
   );
 
+  // Voix proposées par le modèle sélectionné (fallback : liste globale)
+  const modelVoices = useMemo<SpeechVoice[]>(() => {
+    const raw = selectedModel?.voices;
+    if (raw && raw.length > 0) {
+      return raw.map((voiceId) => {
+        const preset = voices.find((v) => v.id === voiceId);
+        return preset ?? { id: voiceId, name: voiceId };
+      });
+    }
+    return voices;
+  }, [selectedModel, voices]);
+
+  // Réinitialiser la voix si elle n'est pas disponible pour le modèle
+  useEffect(() => {
+    if (selectedVoice && !modelVoices.some((v) => v.id === selectedVoice)) {
+      setSelectedVoice(modelVoices[0]?.id ?? "");
+    }
+  }, [modelVoices, selectedVoice]);
+
   const isQuotaExhausted = limit > 0 && tokensUsed >= limit;
 
   // Lancement de la synthèse vocale
@@ -516,23 +537,47 @@ export default function AudioPage() {
                   </div>
                 ) : (
                   <div className="flex flex-col gap-2">
-                    <select
-                      className="w-full rounded-xl border border-border/80 bg-background/90 px-3.5 py-2.5 text-sm font-medium text-foreground transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                      onChange={(e) => setSelectedModelId(e.target.value)}
-                      value={selectedModelId}
-                    >
-                      {models.map((mod) => (
-                        <option key={mod.id} value={mod.id}>
-                          {mod.name || mod.id}
-                        </option>
-                      ))}
-                    </select>
+                    <ModelSelectorCompact
+                      models={models}
+                      onModelChange={setSelectedModelId}
+                      placeholder="Modèle audio"
+                      selectedModelId={selectedModelId}
+                      variant="block"
+                    />
 
                     {selectedModel && (
                       <p className="text-xs text-muted-foreground leading-relaxed mt-1">
                         {selectedModel.description}
                       </p>
                     )}
+
+                    {/* Voix IA disponibles pour le modèle sélectionné */}
+                    <div className="flex flex-col gap-2 mt-2">
+                      <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+                        <Volume2Icon className="size-3.5 text-emerald-400" />
+                        <span>Voix IA</span>
+                      </label>
+                      <select
+                        className="w-full rounded-xl border border-border/80 bg-background/90 px-3.5 py-2.5 text-sm font-medium text-foreground transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                        onChange={(e) => setSelectedVoice(e.target.value)}
+                        value={selectedVoice}
+                      >
+                        {modelVoices.length === 0 ? (
+                          <option value="">Aucune voix disponible</option>
+                        ) : (
+                          modelVoices.map((voice) => (
+                            <option key={voice.id} value={voice.id}>
+                              {voice.id === voice.name
+                                ? voice.name
+                                : `${voice.name} — ${voice.id}`}
+                            </option>
+                          ))
+                        )}
+                      </select>
+                      <span className="text-[11px] text-muted-foreground">
+                        Voix proposées dynamiquement par le modèle sélectionné.
+                      </span>
+                    </div>
                   </div>
                 )}
               </div>

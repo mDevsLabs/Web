@@ -3,6 +3,7 @@ import {
   extractToken,
   getDb,
   getTierSpeechLimit,
+  getUserQuotaBoost,
   getWeekData,
   TIER_LIMITS,
   verifyToken,
@@ -10,7 +11,7 @@ import {
 import { maiModelsList } from "./maiModels.ts";
 
 function getOpenRouterApiKey(userCustomKey?: string | null): string {
-  if (userCustomKey?.trim().startsWith("sk-or-")) {
+  if (userCustomKey && userCustomKey.trim().startsWith("sk-or-")) {
     return userCustomKey.trim();
   }
   return Deno.env.get("OPENROUTER_API_KEY") || "";
@@ -56,8 +57,7 @@ export function registerModelRoutes(app: Hono) {
 
       const { weekStartStr, nextResetIso } = getWeekData();
 
-      const userResult =
-        await sql`SELECT id, tier, email, username, phone, avatar_url FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
+      const userResult = await sql`SELECT id, tier, email, username, phone, avatar_url FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
       const user = userResult[0];
       const resolvedUserId = user ? user.id : userId;
 
@@ -82,8 +82,10 @@ export function registerModelRoutes(app: Hono) {
       const tokensUsed = usageResult[0]?.tokens_used || 0;
       const speechTokensUsed = Number(speechResult?.[0]?.tokens_used || 0);
       const userTier = user?.tier || "Free";
-      const limit = TIER_LIMITS[userTier] || TIER_LIMITS.Free;
-      const speechLimit = getTierSpeechLimit(userTier);
+      const maiBoost = await getUserQuotaBoost(sql, resolvedUserId, "mai");
+      const audioBoost = await getUserQuotaBoost(sql, resolvedUserId, "audio");
+      const limit = (TIER_LIMITS[userTier] || TIER_LIMITS["Free"]) + maiBoost;
+      const speechLimit = getTierSpeechLimit(userTier) + audioBoost;
 
       return c.json({
         avatarUrl: user?.avatar_url,
@@ -143,7 +145,8 @@ export function registerModelRoutes(app: Hono) {
         await sql`SELECT id, tier FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text LIMIT 1`;
       const tier = userRes.length > 0 ? userRes[0].tier : "Free";
       const resolvedUserId = userRes.length > 0 ? userRes[0].id : userId;
-      const limit = TIER_LIMITS[tier] || TIER_LIMITS.Free;
+      const maiBoost = await getUserQuotaBoost(sql, resolvedUserId, "mai");
+      const limit = (TIER_LIMITS[tier] || TIER_LIMITS["Free"]) + maiBoost;
 
       const usageResult = await sql`
         SELECT tokens_used FROM weekly_usage
@@ -169,7 +172,7 @@ export function registerModelRoutes(app: Hono) {
       });
     } catch (err: any) {
       console.error("[log-usage] Error:", err);
-      return c.json({ details: err?.message, error: "Erreur serveur." }, 500);
+      return c.json({ error: "Erreur serveur.", details: err?.message }, 500);
     }
   };
 
@@ -198,7 +201,7 @@ export function registerModelRoutes(app: Hono) {
       const rawModels: any[] = json.data || [];
 
       let filtered = rawModels
-        .filter((m) => m?.id && !m.id.startsWith("openrouter/"))
+        .filter((m) => m && m.id && !m.id.startsWith("openrouter/"))
         .filter((m) => {
           const modality = m.architecture?.modality || "";
           const outputModalities = m.architecture?.output_modalities || [];
@@ -236,7 +239,7 @@ export function registerModelRoutes(app: Hono) {
       }
 
       return c.json({ data: filtered, object: "list" });
-    } catch {
+    } catch (_err) {
       let fallback = [
         {
           architecture: {
@@ -506,7 +509,9 @@ export function registerModelRoutes(app: Hono) {
         LIMIT 1
       `;
       const currentUsage = usageResult[0]?.tokens_used || 0;
-      const limit = TIER_LIMITS[String(userPlan || "Free")] || TIER_LIMITS.Free;
+      const maiBoost = await getUserQuotaBoost(sql, userId, "mai");
+      const limit =
+        (TIER_LIMITS[String(userPlan || "Free")] || TIER_LIMITS["Free"]) + maiBoost;
 
       if (currentUsage >= limit) {
         return c.json(
@@ -528,12 +533,8 @@ export function registerModelRoutes(app: Hono) {
 
       // Nettoyer le body : retirer tout champ `api_key` ou `Authorization` injecté par le client
       // pour empêcher tout contournement de la clé serveur.
-      const {
-        api_key: _ck,
-        authorization: _ca,
-        Authorization: _cA,
-        ...safeBody
-      } = body as Record<string, any>;
+      const { api_key: _ck, authorization: _ca, Authorization: _cA, ...safeBody } =
+        body as Record<string, any>;
 
       const openRouterRes = await fetch(
         "https://openrouter.ai/api/v1/chat/completions",
@@ -557,7 +558,7 @@ export function registerModelRoutes(app: Hono) {
             ON CONFLICT (user_id, week_start)
             DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
           `;
-        } catch {}
+        } catch (_e) {}
       }
 
       return new Response(openRouterRes.body, {
@@ -607,9 +608,7 @@ export function registerModelRoutes(app: Hono) {
       }
 
       const modelRequested = body.model;
-      const modelStr = String(modelRequested || "")
-        .toLowerCase()
-        .trim();
+      const modelStr = String(modelRequested || "").toLowerCase().trim();
 
       const planStr = String(userPlan || "Free")
         .toLowerCase()
@@ -656,7 +655,9 @@ export function registerModelRoutes(app: Hono) {
         LIMIT 1
       `;
       const currentUsage = usageResult[0]?.tokens_used || 0;
-      const limit = TIER_LIMITS[String(userPlan || "Free")] || TIER_LIMITS.Free;
+      const maiBoost = await getUserQuotaBoost(sql, userId, "mai");
+      const limit =
+        (TIER_LIMITS[String(userPlan || "Free")] || TIER_LIMITS["Free"]) + maiBoost;
 
       if (currentUsage >= limit) {
         return c.json(
@@ -677,12 +678,8 @@ export function registerModelRoutes(app: Hono) {
       }
 
       // Nettoyer le body : retirer tout champ `api_key` ou `Authorization` injecté par le client
-      const {
-        api_key: _ck,
-        authorization: _ca,
-        Authorization: _cA,
-        ...safeBody
-      } = body as Record<string, any>;
+      const { api_key: _ck, authorization: _ca, Authorization: _cA, ...safeBody } =
+        body as Record<string, any>;
 
       const openRouterRes = await fetch(
         "https://openrouter.ai/api/v1/chat/completions",
@@ -706,7 +703,7 @@ export function registerModelRoutes(app: Hono) {
             ON CONFLICT (user_id, week_start)
             DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
           `;
-        } catch {}
+        } catch (_e) {}
       }
 
       return new Response(openRouterRes.body, {
@@ -755,9 +752,7 @@ export function registerModelRoutes(app: Hono) {
 
       const paramModel = c.req.param("model");
       const modelRequested = body.model || paramModel || pathModel;
-      const modelStr = String(modelRequested || "")
-        .toLowerCase()
-        .trim();
+      const modelStr = String(modelRequested || "").toLowerCase().trim();
 
       const planStr = String(userPlan || "Free")
         .toLowerCase()
@@ -803,7 +798,9 @@ export function registerModelRoutes(app: Hono) {
         LIMIT 1
       `;
       const currentUsage = usageResult[0]?.tokens_used || 0;
-      const limit = TIER_LIMITS[String(userPlan || "Free")] || TIER_LIMITS.Free;
+      const maiBoost = await getUserQuotaBoost(sql, userId, "mai");
+      const limit =
+        (TIER_LIMITS[String(userPlan || "Free")] || TIER_LIMITS["Free"]) + maiBoost;
 
       if (currentUsage >= limit) {
         return c.json(
@@ -824,12 +821,8 @@ export function registerModelRoutes(app: Hono) {
       }
 
       // Nettoyer le body : retirer tout champ `api_key` ou `Authorization` injecté par le client
-      const {
-        api_key: _ck,
-        authorization: _ca,
-        Authorization: _cA,
-        ...safeBody
-      } = body as Record<string, any>;
+      const { api_key: _ck, authorization: _ca, Authorization: _cA, ...safeBody } =
+        body as Record<string, any>;
 
       const openRouterPayload = {
         ...safeBody,
@@ -858,7 +851,7 @@ export function registerModelRoutes(app: Hono) {
             ON CONFLICT (user_id, week_start)
             DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
           `;
-        } catch {}
+        } catch (_e) {}
       }
 
       return new Response(openRouterRes.body, {

@@ -13,11 +13,12 @@ function getEnv(key: string): string | undefined {
   if (typeof process !== "undefined" && process.env && process.env[key]) {
     return process.env[key];
   }
-  // @ts-expect-error
+  // @ts-expect-error Nodemailer transport typing is incompatible with the configured transport.
   if (typeof Deno !== "undefined" && Deno.env && Deno.env.get) {
-    // @ts-expect-error
+    // @ts-expect-error Nodemailer transport typing is incompatible with the configured transport.
     return Deno.env.get(key);
   }
+  return undefined;
 }
 
 export async function sendVerificationEmail(
@@ -35,7 +36,7 @@ export async function sendVerificationEmail(
   let subject = "Notification - mAI";
   let title = "Notification";
   let textContent = "";
-  let showCode = !!code;
+  let showCode = code ? true : false;
 
   switch (action) {
     case "register":
@@ -141,31 +142,25 @@ export async function sendVerificationEmail(
 // ─────────────────────────────────────────────
 // Envoi d'e-mail générique avec fallback
 // ─────────────────────────────────────────────
-export async function sendHtmlEmail(
-  to: string,
-  subject: string,
-  html: string
-): Promise<boolean> {
+export async function sendHtmlEmail(to: string, subject: string, html: string): Promise<boolean> {
   // 1. Google Apps Script (Recommandé)
-  const googleScriptsUrl =
-    getEnv("GOOGLE_SCRIPTS_URL") || getEnv("GOOGLE_SCRIPT_URL");
-  const googleScriptSecret =
-    getEnv("GOOGLE_SCRIPTS_SECRET") || getEnv("GOOGLE_SCRIPT_SECRET");
+  const googleScriptsUrl = getEnv("GOOGLE_SCRIPTS_URL") || getEnv("GOOGLE_SCRIPT_URL");
+  const googleScriptSecret = getEnv("GOOGLE_SCRIPTS_SECRET") || getEnv("GOOGLE_SCRIPT_SECRET");
 
   if (googleScriptsUrl && googleScriptSecret) {
     try {
       const res = await fetch(googleScriptsUrl, {
-        body: JSON.stringify({
-          body: "Veuillez activer l'affichage HTML pour lire cet e-mail mAI.",
-          htmlBody: html,
-          secret: googleScriptSecret,
-          subject,
-          to,
-        }),
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        method: "POST",
+        body: JSON.stringify({
+          secret: googleScriptSecret,
+          to,
+          subject,
+          htmlBody: html,
+          body: "Veuillez activer l'affichage HTML pour lire cet e-mail mAI.",
+        }),
       });
 
       if (res.ok) {
@@ -174,20 +169,14 @@ export async function sendHtmlEmail(
           const maskedTo = to.replace(/(.{2}).*(@.*)/, "$1***$2");
           console.log(`[EMAIL] Google Apps Script OK to=${maskedTo}`);
           return true;
+        } else {
+          console.error("Erreur de retour Google Apps Script :", data.error);
         }
-        console.error("Erreur de retour Google Apps Script :", data.error);
       } else {
-        console.error(
-          "Erreur HTTP Google Apps Script :",
-          res.status,
-          res.statusText
-        );
+        console.error("Erreur HTTP Google Apps Script :", res.status, res.statusText);
       }
     } catch (err: any) {
-      console.error(
-        "Erreur envoi via Google Apps Script :",
-        err?.message || err
-      );
+      console.error("Erreur envoi via Google Apps Script :", err?.message || err);
     }
   }
 
@@ -231,49 +220,27 @@ export async function sendHtmlEmail(
 // Notifications pour le Support & Signalement de bugs
 // ─────────────────────────────────────────────
 export interface SupportTicketEmailPayload {
-  category: string;
-  created_at?: string;
-  description: string;
   id: string;
-  priority: string;
-  project: string;
-  status?: string;
   ticket_number?: number | string;
-  title: string;
-  user_email: string;
   user_id: string;
+  user_email: string;
   user_name: string;
   user_tier?: string;
+  title: string;
+  description: string;
+  category: string;
+  project: string;
+  priority: string;
+  status?: string;
+  created_at?: string;
+  isAiGenerated?: boolean;
 }
 
-const PRIORITY_COLORS: Record<
-  string,
-  { label: string; bg: string; text: string; border: string }
-> = {
-  high: {
-    bg: "rgba(249, 115, 22, 0.15)",
-    border: "rgba(249, 115, 22, 0.4)",
-    label: "Haute",
-    text: "#f97316",
-  },
-  low: {
-    bg: "rgba(59, 130, 246, 0.15)",
-    border: "rgba(59, 130, 246, 0.4)",
-    label: "Faible",
-    text: "#3b82f6",
-  },
-  medium: {
-    bg: "rgba(16, 185, 129, 0.15)",
-    border: "rgba(16, 185, 129, 0.4)",
-    label: "Normale",
-    text: "#10b981",
-  },
-  urgent: {
-    bg: "rgba(239, 68, 68, 0.15)",
-    border: "rgba(239, 68, 68, 0.4)",
-    label: "Critique / Urgent",
-    text: "#ef4444",
-  },
+const PRIORITY_COLORS: Record<string, { label: string; bg: string; text: string; border: string }> = {
+  urgent: { label: "Critique / Urgent", bg: "rgba(239, 68, 68, 0.15)", text: "#ef4444", border: "rgba(239, 68, 68, 0.4)" },
+  high: { label: "Haute", bg: "rgba(249, 115, 22, 0.15)", text: "#f97316", border: "rgba(249, 115, 22, 0.4)" },
+  medium: { label: "Normale", bg: "rgba(16, 185, 129, 0.15)", text: "#10b981", border: "rgba(16, 185, 129, 0.4)" },
+  low: { label: "Faible", bg: "rgba(59, 130, 246, 0.15)", text: "#3b82f6", border: "rgba(59, 130, 246, 0.4)" },
 };
 
 /**
@@ -287,13 +254,10 @@ export async function sendSupportTicketCreatedEmail({
   appUrl?: string;
 }) {
   const adminEmail = "mathias.tss2012@gmail.com";
-  const ticketRef = ticket.ticket_number
-    ? `#TICK-${ticket.ticket_number}`
-    : `#${ticket.id.slice(0, 8)}`;
+  const ticketRef = ticket.ticket_number ? `#TICK-${ticket.ticket_number}` : `#${ticket.id.slice(0, 8)}`;
   const subject = `[Support mAI] Nouveau ticket ${ticketRef} : ${ticket.title}`;
-
-  const priorityInfo =
-    PRIORITY_COLORS[ticket.priority.toLowerCase()] || PRIORITY_COLORS.medium;
+  
+  const priorityInfo = PRIORITY_COLORS[ticket.priority.toLowerCase()] || PRIORITY_COLORS.medium;
   const directLink = `${appUrl.replace(/\/$/, "")}/support/tickets/${ticket.id}`;
   const safeDescription = escapeHtml(ticket.description).replace(/\n/g, "<br>");
 
@@ -361,7 +325,7 @@ export async function sendSupportTicketCreatedEmail({
           <!-- CTA Button -->
           <div style="text-align:center; margin:36px 0 20px 0;">
             <a href="${directLink}" style="display:inline-block; background:linear-gradient(135deg, #9333ea 0%, #4f46e5 100%); color:#ffffff; text-decoration:none; font-weight:700; font-size:15px; padding:14px 32px; border-radius:14px; box-shadow:0 10px 25px -5px rgba(147,51,234,0.5);">
-              👉 Répondre au ticket #${ticket.ticket_number || ticket.id.slice(0, 6)}
+              → Répondre au ticket #${ticket.ticket_number || ticket.id.slice(0, 6)}
             </a>
           </div>
 
@@ -398,6 +362,7 @@ export async function sendSupportTicketUpdateEmail({
   newStatus,
   authorRole,
   appUrl = "https://m-ai.fr",
+  isAiGenerated,
 }: {
   ticket: SupportTicketEmailPayload;
   recipientEmail: string;
@@ -406,10 +371,9 @@ export async function sendSupportTicketUpdateEmail({
   newStatus?: string;
   authorRole: "admin" | "user" | "system";
   appUrl?: string;
+  isAiGenerated?: boolean;
 }) {
-  const ticketRef = ticket.ticket_number
-    ? `#TICK-${ticket.ticket_number}`
-    : `#${ticket.id.slice(0, 8)}`;
+  const ticketRef = ticket.ticket_number ? `#TICK-${ticket.ticket_number}` : `#${ticket.id.slice(0, 8)}`;
   const isFromAdmin = authorRole === "admin";
   const subject = isFromAdmin
     ? `[Support mAI] Réponse à votre ticket ${ticketRef} : ${ticket.title}`
@@ -443,17 +407,26 @@ export async function sendSupportTicketUpdateEmail({
           <p style="margin-top:0;">Bonjour <strong>${escapeHtml(recipientName)}</strong>,</p>
           
           <p>
-            ${
-              isFromAdmin
-                ? "Un membre de l'équipe technique de <strong>mAI</strong> a répondu à votre demande :"
-                : "Un nouveau message a été posté sur le ticket :"
-            }
+            ${isFromAdmin 
+              ? "Un membre de l'équipe technique de <strong>mAI</strong> a répondu à votre demande :" 
+              : "Un nouveau message a été posté sur le ticket :"}
           </p>
           
           <!-- Message Bubble -->
-          <div style="background:#131d31; border:1px solid #1e293b; border-left:4px solid ${isFromAdmin ? "#10b981" : "#a855f7"}; border-radius:14px; padding:20px; margin:24px 0; color:#f1f5f9; font-size:14px; line-height:1.7;">
+          <div style="background:#131d31; border:1px solid #1e293b; border-left:4px solid ${isFromAdmin ? '#10b981' : '#a855f7'}; border-radius:14px; padding:20px; margin:24px 0; color:#f1f5f9; font-size:14px; line-height:1.7;">
             ${safeMessage}
           </div>
+
+          ${
+            isAiGenerated || ticket.isAiGenerated
+              ? `
+          <div style="background:rgba(251,191,36,0.12); border:1px solid rgba(251,191,36,0.35); border-radius:12px; padding:12px 16px; margin:16px 0; font-size:12px; color:#fcd34d; display:flex; gap:8px; align-items:center;">
+            <span style="font-size:14px;">IA</span>
+            <span><strong>Contenu créé avec l'assistance de l'IA</strong> — ce message a été généré avec l'aide de l'IA et relu par l'équipe <strong>mAI</strong>.</span>
+          </div>
+          `
+              : ""
+          }
 
           ${
             newStatus

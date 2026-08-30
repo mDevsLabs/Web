@@ -1,6 +1,7 @@
 import { z } from "zod";
-import { getMaiUser } from "@/lib/auth/session";
+import { getMaiUser, type MaiUser } from "@/lib/auth/session";
 import { getChatById, getVotesByChatId, voteMessage } from "@/lib/db/queries";
+import type { Chat } from "@/lib/db/schema";
 import { ChatbotError } from "@/lib/errors";
 
 const voteSchema = z.object({
@@ -8,6 +9,16 @@ const voteSchema = z.object({
   messageId: z.string(),
   type: z.enum(["up", "down"]),
 });
+
+// chat.userId peut contenir user.id, user.email ou username selon la création
+function isChatOwner(chat: Chat, maiUser: MaiUser): boolean {
+  return Boolean(
+    chat.userId === (maiUser.id || maiUser.email) ||
+      chat.userId === maiUser.id ||
+      chat.userId === maiUser.email ||
+      chat.userId === maiUser.username
+  );
+}
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -32,8 +43,7 @@ export async function GET(request: Request) {
     return new ChatbotError("not_found:chat").toResponse();
   }
 
-  const currentUserId = maiUser.id || maiUser.email;
-  if (chat.userId !== currentUserId && chat.userId !== maiUser.email) {
+  if (!isChatOwner(chat, maiUser)) {
     return new ChatbotError("forbidden:vote").toResponse();
   }
 
@@ -68,8 +78,7 @@ export async function PATCH(request: Request) {
     return new ChatbotError("not_found:vote").toResponse();
   }
 
-  const currentUserId = maiUser.id || maiUser.email;
-  if (chat.userId !== currentUserId && chat.userId !== maiUser.email) {
+  if (!isChatOwner(chat, maiUser)) {
     return new ChatbotError("forbidden:vote").toResponse();
   }
 

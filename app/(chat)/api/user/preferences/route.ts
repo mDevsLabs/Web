@@ -20,7 +20,7 @@ export async function GET() {
   try {
     const sql = getPostgres();
     const rows =
-      await sql`SELECT custom_instructions, custom_instructions_enabled, default_temperature, default_top_p, default_agent_id, default_image_model, default_image_size, default_audio_model, default_audio_voice, default_audio_speed FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
+      await sql`SELECT custom_instructions, custom_instructions_enabled, default_temperature, default_top_p, default_agent_id, default_chat_model, default_chat_visibility, default_image_model, default_image_size, default_audio_model, default_audio_voice, default_audio_speed FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
     await sql.end();
     if (rows.length === 0) {
       return Response.json({
@@ -29,6 +29,8 @@ export async function GET() {
         defaultAudioModel: "deepgram/flux-tts:free",
         defaultAudioSpeed: 1.0,
         defaultAudioVoice: "flux-alexis-en",
+        defaultChatModel: null,
+        defaultChatVisibility: "private",
         defaultImageModel: "black-forest-labs/flux-schnell",
         defaultImageSize: "1024x1024",
         enabled: false,
@@ -43,6 +45,8 @@ export async function GET() {
         rows[0].default_audio_model || "deepgram/flux-tts:free",
       defaultAudioSpeed: rows[0].default_audio_speed ?? 1.0,
       defaultAudioVoice: rows[0].default_audio_voice || "flux-alexis-en",
+      defaultChatModel: rows[0].default_chat_model || null,
+      defaultChatVisibility: rows[0].default_chat_visibility || "private",
       defaultImageModel:
         rows[0].default_image_model || "black-forest-labs/flux-schnell",
       defaultImageSize: rows[0].default_image_size || "1024x1024",
@@ -62,6 +66,8 @@ const schema = z.object({
   defaultAudioModel: z.string().max(150).optional(),
   defaultAudioSpeed: z.number().min(0.5).max(2.0).optional(),
   defaultAudioVoice: z.string().max(100).optional(),
+  defaultChatModel: z.string().max(200).nullable().optional(),
+  defaultChatVisibility: z.enum(["private", "public"]).optional(),
   defaultImageModel: z.string().max(150).optional(),
   defaultImageSize: z.string().max(50).optional(),
   enabled: z.boolean().optional(),
@@ -110,6 +116,18 @@ export async function POST(request: Request) {
     // Legacy defaultMode ignoré (Agents remplacent Mode IA)
     if ((parsed as any).defaultMode !== undefined) {
       // noop
+    }
+    if (parsed.defaultChatModel !== undefined) {
+      if (parsed.defaultChatModel === null) {
+        sets.push("default_chat_model = NULL");
+      } else {
+        sets.push(`default_chat_model = $${idx++}`);
+        values.push(parsed.defaultChatModel);
+      }
+    }
+    if (parsed.defaultChatVisibility !== undefined) {
+      sets.push(`default_chat_visibility = $${idx++}`);
+      values.push(parsed.defaultChatVisibility);
     }
     if (parsed.defaultImageModel !== undefined) {
       sets.push(`default_image_model = $${idx++}`);

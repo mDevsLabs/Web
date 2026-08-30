@@ -6,9 +6,7 @@ import equal from "fast-deep-equal";
 import {
   ArrowUpIcon,
   BotIcon,
-  BrainIcon,
   CpuIcon,
-  EyeIcon,
   FolderArchiveIcon,
   FolderKanbanIcon,
   GhostIcon,
@@ -21,17 +19,16 @@ import {
   SparklesIcon,
   TriangleAlertIcon,
   Volume2Icon,
-  WrenchIcon,
   XIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import {
   type ChangeEvent,
   type Dispatch,
   memo,
-  type ReactNode,
   type SetStateAction,
   useCallback,
   useEffect,
@@ -43,18 +40,8 @@ import { toast } from "sonner";
 import useSWR from "swr";
 import { useLocalStorage, useWindowSize } from "usehooks-ts";
 import { AgentSelectorCompact } from "@/components/agents/agent-selector";
-import {
-  ModelSelector,
-  ModelSelectorContent,
-  ModelSelectorGroup,
-  ModelSelectorInput,
-  ModelSelectorItem,
-  ModelSelectorList,
-  ModelSelectorLogo,
-  ModelSelectorName,
-  ModelSelectorTrigger,
-} from "@/components/ai-elements/model-selector";
 import { useDataStream } from "@/components/chat/data-stream-provider";
+import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import {
   Popover,
   PopoverContent,
@@ -68,13 +55,12 @@ import { useProjects } from "@/hooks/use-projects";
 import { useSettings } from "@/hooks/use-settings";
 import { useSpeechRecognition } from "@/hooks/use-speech";
 import {
-  type ChatModel,
   chatModels,
-  DEFAULT_CHAT_MODEL,
   getModelCapabilities,
   type ModelCapabilities,
 } from "@/lib/ai/models";
 import { TOOLS_META, type ToolId } from "@/lib/ai/tools/config";
+import { MAI_PENDING_ATTACHMENT_KEY } from "@/lib/constants";
 import type { Agent, McpServer, Skill } from "@/lib/db/schema";
 import type { Attachment, ChatMessage } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -86,7 +72,6 @@ import {
   PromptInputTools,
 } from "../ai-elements/prompt-input";
 import { Button } from "../ui/button";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import { CloudFilePickerDialog } from "./cloud-file-picker-dialog";
 import { StopIcon } from "./icons";
 import {
@@ -135,6 +120,11 @@ function detectTrigger(
   }
   return null;
 }
+
+const DRAFT_COOKIE = "mai-draft";
+const DRAFT_MAX_AGE = 60 * 60 * 24 * 30; // 30 jours
+const MAX_FILES_PER_MESSAGE = 4;
+const MAX_TOTAL_SIZE_BYTES = 50 * 1024 * 1024; // 50 Mo / message
 
 function renderHighlightedMentions(
   text: string,
@@ -215,6 +205,8 @@ function PureMultimodalInput({
   isLoading?: boolean;
 }) {
   const router = useRouter();
+  const pathname = usePathname();
+  const isNewChatInput = !pathname?.includes("/chat/");
   const { setTheme, resolvedTheme } = useTheme();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { width } = useWindowSize();
@@ -239,17 +231,77 @@ function PureMultimodalInput({
   useEffect(() => {
     if (textareaRef.current) {
       const domValue = textareaRef.current.value;
-      const finalValue = domValue || localStorageInput || "";
+      let finalValue = domValue || localStorageInput || "";
+      if (!finalValue && isNewChatInput) {
+        const draft = document.cookie
+          .split("; ")
+          .find((row) => row.startsWith(`${DRAFT_COOKIE}=`))
+          ?.split("=")[1];
+        if (draft) {
+          finalValue = decodeURIComponent(draft);
+        }
+      }
       setInput(finalValue);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [localStorageInput, setInput]);
+  }, [localStorageInput, setInput, isNewChatInput]);
 
+  // Brouillon global persisté 30 jours (cookie) pour les nouvelles conversations
+  useEffect(() => {
+    if (!isNewChatInput) {
+      return;
+    }
+    const timer = setTimeout(() => {
+      if (typeof document !== "undefined") {
+        if (input.trim()) {
+          document.cookie = `${DRAFT_COOKIE}=${encodeURIComponent(input)}; path=/; max-age=${DRAFT_MAX_AGE}`;
+        } else {
+          document.cookie = `${DRAFT_COOKIE}=; path=/; max-age=0`;
+        }
+      }
+    }, 600);
+    return () => clearTimeout(timer);
+  }, [input, isNewChatInput]);
+
+  // Handoff Cloud -> chat : consommer la pièce jointe en attente
+  useEffect(() => {
+    if (!isNewChatInput || typeof window === "undefined") {
+      return;
+    }
+    try {
+      const raw = sessionStorage.getItem(MAI_PENDING_ATTACHMENT_KEY);
+      if (!raw) {
+        return;
+      }
+      sessionStorage.removeItem(MAI_PENDING_ATTACHMENT_KEY);
+      const pending = JSON.parse(raw) as {
+        mediaType?: string;
+        name?: string;
+        prompt?: string;
+        url?: string;
+      };
+      if (pending.url && pending.name) {
+        setAttachments((prev) => [
+          ...prev,
+          {
+            contentType: pending.mediaType,
+            name: pending.name,
+            url: pending.url,
+          } as Attachment,
+        ]);
+      }
+      if (pending.prompt) {
+        setInput(pending.prompt);
+      }
+    } catch {}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isNewChatInput]);
   useEffect(() => {
     setLocalStorageInput(input);
   }, [input, setLocalStorageInput]);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const uploadedBytesRef = useRef(0);
   const [uploadQueue, setUploadQueue] = useState<string[]>([]);
   const [cloudPickerOpen, setCloudPickerOpen] = useState(false);
   const [slashOpen, setSlashOpen] = useState(false);
@@ -811,6 +863,13 @@ function PureMultimodalInput({
       return;
     }
 
+    if (attachments.length > MAX_FILES_PER_MESSAGE) {
+      toast.error(
+        `Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message. Retirez des pièces jointes.`
+      );
+      return;
+    }
+
     if (!isGhostMode) {
       window.history.pushState(
         {},
@@ -838,6 +897,10 @@ function PureMultimodalInput({
     setAttachments([]);
     setLocalStorageInput("");
     setInput("");
+    uploadedBytesRef.current = 0;
+    if (typeof document !== "undefined") {
+      document.cookie = `${DRAFT_COOKIE}=; path=/; max-age=0`;
+    }
 
     if (width && width > 768) {
       textareaRef.current?.focus();
@@ -902,6 +965,37 @@ function PureMultimodalInput({
       }
       const files = Array.from(event.target.files || []);
 
+      if (files.length > 0) {
+        const remainingSlots = MAX_FILES_PER_MESSAGE - attachments.length;
+        if (remainingSlots <= 0) {
+          toast.error(
+            `Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message.`
+          );
+          if (fileInputRef.current) {
+            fileInputRef.current.value = "";
+          }
+          return;
+        }
+        if (files.length > remainingSlots) {
+          toast.error(
+            `Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message. Seuls ${remainingSlots} fichier(s) ont été ajoutés.`
+          );
+        }
+        const accepted = files.slice(0, Math.max(remainingSlots, 0));
+        const oversized = accepted.find(
+          (file) => uploadedBytesRef.current + file.size > MAX_TOTAL_SIZE_BYTES
+        );
+        if (oversized) {
+          toast.error(
+            "Limite de 50 Mo par message dépassée. Retirez des pièces jointes ou choisissez des fichiers plus légers."
+          );
+          if (fileInputRef.current) {
+            fileInputRef.current.value = "";
+          }
+          return;
+        }
+      }
+
       setUploadQueue(files.map((file) => file.name));
 
       try {
@@ -909,6 +1003,11 @@ function PureMultimodalInput({
         const uploadedAttachments = await Promise.all(uploadPromises);
         const successfullyUploadedAttachments = uploadedAttachments.filter(
           (attachment) => attachment !== undefined
+        );
+        uploadedBytesRef.current += uploadedAttachments.reduce(
+          (total, attachment, index) =>
+            attachment !== undefined ? total + (files[index]?.size ?? 0) : total,
+          0
         );
 
         setAttachments((currentAttachments) => [
@@ -921,7 +1020,7 @@ function PureMultimodalInput({
         setUploadQueue([]);
       }
     },
-    [setAttachments, uploadFile, hasVisionSupport, hasStrictCaps]
+    [setAttachments, uploadFile, hasVisionSupport, hasStrictCaps, attachments.length]
   );
 
   const handlePaste = useCallback(
@@ -1557,13 +1656,15 @@ function PureMultimodalInput({
               )}
             </Button>
             <ModelSelectorCompact
+              fallbackModels={chatModels}
+              focusInputAfterSelect
               onModelChange={onModelChange}
               selectedModelId={selectedModelId}
             />
             <AgentSelectorCompact />
           </PromptInputTools>
 
-          {status === "submitted" ? (
+          {status === "submitted" || status === "streaming" ? (
             <StopButton setMessages={setMessages} stop={stop} />
           ) : (
             <PromptInputSubmit
@@ -2117,177 +2218,6 @@ function PurePlusMenuButton({
 }
 
 const PlusMenuButton = memo(PurePlusMenuButton);
-
-function ModelSelectorOption({
-  capabilities,
-  model,
-  onModelChange,
-  selectedModelId,
-  setOpen,
-}: {
-  capabilities: Record<string, ModelCapabilities> | undefined;
-  model: ChatModel;
-  onModelChange?: (modelId: string) => void;
-  selectedModelId: string;
-  setOpen: Dispatch<SetStateAction<boolean>>;
-}) {
-  const [logoProvider] = model.id.split("/");
-  const maybeWithTooltip = (icon: ReactNode, label: string) => (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <span className="inline-flex">{icon}</span>
-      </TooltipTrigger>
-      <TooltipContent side="top" sideOffset={8}>
-        {label}
-      </TooltipContent>
-    </Tooltip>
-  );
-
-  const handleSelect = useCallback(() => {
-    onModelChange?.(model.id);
-    document.cookie = `chat-model=${encodeURIComponent(model.id)}; path=/; max-age=31536000`;
-    setOpen(false);
-    setTimeout(() => {
-      document
-        .querySelector<HTMLTextAreaElement>("[data-testid='multimodal-input']")
-        ?.focus();
-    }, 50);
-  }, [model.id, onModelChange, setOpen]);
-
-  return (
-    <ModelSelectorItem
-      className={cn(
-        "flex w-full cursor-pointer transition-colors text-[13px] py-2 px-2.5 rounded-lg",
-        model.id === selectedModelId &&
-          "bg-muted/80 font-medium text-foreground",
-        "data-[selected=true]:bg-muted data-[selected=true]:text-foreground hover:bg-muted/50"
-      )}
-      onSelect={handleSelect}
-      value={`${model.name} ${model.id}`}
-    >
-      <ModelSelectorLogo provider={logoProvider} />
-      <ModelSelectorName>{model.name}</ModelSelectorName>
-      <div className="ml-auto flex items-center gap-2 text-foreground/70">
-        {capabilities?.[model.id]?.tools
-          ? maybeWithTooltip(
-              <WrenchIcon className="size-3.5" />,
-              "Outils supportés"
-            )
-          : null}
-        {capabilities?.[model.id]?.image ||
-        capabilities?.[model.id]?.file ||
-        capabilities?.[model.id]?.vision
-          ? maybeWithTooltip(
-              <EyeIcon className="size-3.5" />,
-              "Fichiers & Images supportés"
-            )
-          : null}
-        {capabilities?.[model.id]?.reasoning
-          ? maybeWithTooltip(
-              <BrainIcon className="size-3.5" />,
-              "Raisonnement avancé"
-            )
-          : null}
-      </div>
-    </ModelSelectorItem>
-  );
-}
-
-function PureModelSelectorCompact({
-  selectedModelId,
-  onModelChange,
-}: {
-  selectedModelId: string;
-  onModelChange?: (modelId: string) => void;
-}) {
-  const [open, setOpen] = useState(false);
-  const { data: modelsData } = useSWR(
-    `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models`,
-    (url: string) => fetch(url).then((r) => r.json()),
-    { dedupingInterval: 60_000, revalidateOnFocus: true }
-  );
-
-  const capabilities: Record<string, ModelCapabilities> | undefined =
-    modelsData?.capabilities;
-  const models: ChatModel[] =
-    modelsData?.models && modelsData.models.length > 0
-      ? modelsData.models
-      : chatModels;
-
-  const selectedModel =
-    models.find((m: ChatModel) => m.id === selectedModelId) ??
-    models.find((m: ChatModel) => m.id === DEFAULT_CHAT_MODEL) ??
-    models[0];
-  const [provider] = (selectedModel?.id || DEFAULT_CHAT_MODEL).split("/");
-
-  // Regrouper par fournisseur
-  const grouped: Record<string, ChatModel[]> = {};
-  for (const m of models) {
-    const p = m.provider || "mAI";
-    if (!grouped[p]) {
-      grouped[p] = [];
-    }
-    grouped[p].push(m);
-  }
-
-  const providerNames: Record<string, string> = {
-    anthropic: "Anthropic",
-    cohere: "Cohere",
-    deepseek: "DeepSeek",
-    google: "Google",
-    mai: "mAI",
-    mdevslabs: "mAI Exclusif",
-    "meta-llama": "Meta Llama",
-    mistral: "Mistral AI",
-    mistralai: "Mistral AI",
-    openai: "OpenAI",
-    qwen: "Qwen / Alibaba",
-    xai: "xAI",
-  };
-
-  return (
-    <ModelSelector onOpenChange={setOpen} open={open}>
-      <ModelSelectorTrigger asChild>
-        <Button
-          className="h-8 sm:h-7 max-w-[220px] justify-between gap-1.5 rounded-lg px-2 text-[12px] text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
-          data-testid="model-selector"
-          variant="ghost"
-        >
-          {provider ? <ModelSelectorLogo provider={provider} /> : null}
-          <ModelSelectorName>
-            {selectedModel?.name || "Modèle IA"}
-          </ModelSelectorName>
-        </Button>
-      </ModelSelectorTrigger>
-      <ModelSelectorContent commandDefaultValue={selectedModel?.id}>
-        <ModelSelectorInput placeholder="Rechercher un modèle..." />
-        <ModelSelectorList>
-          {Object.entries(grouped).map(([groupKey, groupModels]) => (
-            <ModelSelectorGroup
-              heading={
-                providerNames[groupKey.toLowerCase()] || groupKey.toUpperCase()
-              }
-              key={groupKey}
-            >
-              {groupModels.map((model) => (
-                <ModelSelectorOption
-                  capabilities={capabilities}
-                  key={model.id}
-                  model={model}
-                  onModelChange={onModelChange}
-                  selectedModelId={selectedModel?.id}
-                  setOpen={setOpen}
-                />
-              ))}
-            </ModelSelectorGroup>
-          ))}
-        </ModelSelectorList>
-      </ModelSelectorContent>
-    </ModelSelector>
-  );
-}
-
-const ModelSelectorCompact = memo(PureModelSelectorCompact);
 
 function PureStopButton({
   stop,

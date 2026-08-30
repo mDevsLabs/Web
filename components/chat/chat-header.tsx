@@ -19,7 +19,8 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { memo, useCallback, useState } from "react";
 import { toast } from "sonner";
-import useSWR from "swr";
+import useSWR, { useSWRConfig } from "swr";
+import { unstable_serialize } from "swr/infinite";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -40,6 +41,7 @@ import {
 import { useActiveChat } from "@/hooks/use-active-chat";
 import { cn, fetcher } from "@/lib/utils";
 import { NotificationBell } from "./notification-bell";
+import { getChatHistoryPaginationKey } from "./sidebar-history";
 import { VisibilitySelector, type VisibilityType } from "./visibility-selector";
 
 function PureChatHeader({
@@ -63,6 +65,7 @@ function PureChatHeader({
     !isHome && chatId ? `/api/chats/${chatId}` : null,
     fetcher
   );
+  const { mutate } = useSWRConfig();
   const isArchived = (chatData as any)?.isArchived ?? false;
   const isPinned = (chatData as any)?.pinned ?? false;
 
@@ -140,10 +143,11 @@ function PureChatHeader({
         throw new Error();
       }
       toast.success(isArchived ? "Désarchivée" : "Archivée");
+      mutate(unstable_serialize(getChatHistoryPaginationKey));
     } catch {
       toast.error("Erreur archivage");
     }
-  }, [chatId, isArchived]);
+  }, [chatId, isArchived, mutate]);
 
   const handleTogglePin = useCallback(async () => {
     try {
@@ -156,10 +160,11 @@ function PureChatHeader({
         throw new Error();
       }
       toast.success(isPinned ? "Désépinglée" : "Épinglée");
+      mutate(unstable_serialize(getChatHistoryPaginationKey));
     } catch {
       toast.error("Erreur épinglage");
     }
-  }, [chatId, isPinned]);
+  }, [chatId, isPinned, mutate]);
 
   const handleDelete = useCallback(async () => {
     if (!confirm("Supprimer définitivement cette conversation ?")) {
@@ -354,6 +359,7 @@ function PureChatHeader({
 
       <div className="ml-auto flex items-center gap-2">
         {/* Export compact (mobile) */}
+        {!isHome && (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
@@ -377,6 +383,8 @@ function PureChatHeader({
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+        )}
+        {!isHome && (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
@@ -400,6 +408,7 @@ function PureChatHeader({
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+        )}
         <NotificationBell />
       </div>
     </header>

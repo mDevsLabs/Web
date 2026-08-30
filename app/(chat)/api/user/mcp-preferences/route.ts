@@ -11,7 +11,7 @@ const schema = z.object({
     .optional(),
   defaultTimeoutMs: z.number().int().min(1000).max(120_000).optional(),
   globalKillSwitch: z.boolean().optional(),
-  retentionDays: z.number().int().min(1).max(365).optional(),
+  retentionDays: z.number().int().min(1).max(50).optional(),
 });
 
 export async function GET() {

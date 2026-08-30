@@ -32,6 +32,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
+import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { useImagesUsage } from "@/hooks/use-settings";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
 import {
@@ -555,17 +556,13 @@ export default function ImagesPage() {
                   </div>
                 ) : (
                   <div className="flex flex-col gap-2">
-                    <select
-                      className="w-full rounded-xl border border-border/80 bg-background/90 px-3.5 py-2.5 text-sm font-medium text-foreground transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                      onChange={(e) => setSelectedModelId(e.target.value)}
-                      value={selectedModelId}
-                    >
-                      {models.map((mod) => (
-                        <option key={mod.id} value={mod.id}>
-                          {mod.name || mod.id}
-                        </option>
-                      ))}
-                    </select>
+                    <ModelSelectorCompact
+                      models={models}
+                      onModelChange={setSelectedModelId}
+                      placeholder="Modèle d'image"
+                      selectedModelId={selectedModelId}
+                      variant="block"
+                    />
 
                     {selectedModel && (
                       <p className="text-xs text-muted-foreground leading-relaxed mt-1">

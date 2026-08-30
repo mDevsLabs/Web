@@ -116,6 +116,21 @@ export const FALLBACK_MODELS: ChatModel[] = [
 export const chatModels = FALLBACK_MODELS;
 export const allowedModelIds = new Set(FALLBACK_MODELS.map((m) => m.id));
 
+// Nom affichable : retire le préfixe fournisseur ("Poolside: Laguna xs 2.1" ->
+// "Laguna xs 2.1") et suffixe "(Free)" dérivé de l'id uniquement (idempotent).
+export function normalizeModelDisplayName(id: string, rawName?: string): string {
+  let name =
+    rawName && rawName.trim() && rawName.trim() !== id
+      ? rawName.trim()
+      : formatModelName(id).name;
+  name = name
+    .replace(/^[^:]{1,30}:\s+/, "")
+    .replace(/\s*\((free|gratuit|free tier)\)/gi, "")
+    .replace(/:free/gi, "")
+    .trim();
+  return id.toLowerCase().includes("free") ? `${name} (Free)` : name;
+}
+
 export function formatModelName(modelId: string): {
   name: string;
   provider: string;

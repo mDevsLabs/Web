@@ -176,8 +176,23 @@ export function NotificationBell() {
     } catch {}
   };
 
+  // Demande la permission système au premier clic sur la cloche (geste
+  // utilisateur requis par les navigateurs) pour recevoir les notifications
+  // sur l'appareil, pas seulement dans l'app.
+  const handleOpenChange = (nextOpen: boolean) => {
+    setOpen(nextOpen);
+    if (
+      nextOpen &&
+      typeof window !== "undefined" &&
+      "Notification" in window &&
+      Notification.permission === "default"
+    ) {
+      Notification.requestPermission().catch(() => {});
+    }
+  };
+
   return (
-    <DropdownMenu onOpenChange={setOpen} open={open}>
+    <DropdownMenu onOpenChange={handleOpenChange} open={open}>
       <DropdownMenuTrigger asChild>
         <Button
           aria-label="Notifications"

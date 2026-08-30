@@ -16,13 +16,13 @@ const ALLOWED_UPLOAD_TYPES = [
   "application/json",
 ];
 
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB aligné bibliothèque Cloud
+const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50 Mo / fichier (limite par message imposée côté client)
 
 const FileSchema = z.object({
   file: z
     .instanceof(Blob)
     .refine((file) => file.size <= MAX_FILE_SIZE, {
-      message: "File size should be less than 10MB",
+      message: "La taille du fichier doit être inférieure à 50 Mo",
     })
     .refine(
       (file) => {

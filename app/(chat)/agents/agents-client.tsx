@@ -24,6 +24,7 @@ import useSWR from "swr";
 import { AgentIcon, EMOJI_PRESETS } from "@/components/agents/agent-icon";
 import { CloudFilePickerDialog } from "@/components/chat/cloud-file-picker-dialog";
 import { PageBackButton } from "@/components/chat/page-back-button";
+import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -864,23 +865,13 @@ export default function AgentsClient() {
                     Modèle IA par défaut — à l'activation, le modèle switch
                     automatiquement
                   </Label>
-                  <select
-                    className="h-10 rounded-xl border border-border/60 bg-muted/30 px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary/20 w-full"
-                    onChange={(e) => setFormModelId(e.target.value)}
-                    value={formModelId}
-                  >
-                    {models.length === 0 ? (
-                      <option value={DEFAULT_CHAT_MODEL}>
-                        {DEFAULT_CHAT_MODEL}
-                      </option>
-                    ) : (
-                      models.map((m: any) => (
-                        <option key={m.id} value={m.id}>
-                          {m.name} ({m.id})
-                        </option>
-                      ))
-                    )}
-                  </select>
+                  <ModelSelectorCompact
+                    capabilities={modelsData?.capabilities}
+                    fallbackModels={models}
+                    onModelChange={setFormModelId}
+                    selectedModelId={formModelId}
+                    variant="block"
+                  />
                   <span className="text-[11px] text-muted-foreground">
                     Ce modèle sera appliqué automatiquement dès que l'agent est
                     activé.

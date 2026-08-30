@@ -292,6 +292,7 @@ export async function POST(request: Request) {
       try {
         await updateChatProjectById({
           chatId: id,
+          email: maiUser.email,
           projectId: projectId ?? null,
           userId,
         });

@@ -199,7 +199,7 @@ export default function McpClient() {
         setMcpAllowStdio(mcpPrefsData.allowStdio);
       }
       if (mcpPrefsData.retentionDays) {
-        setMcpRetention(mcpPrefsData.retentionDays);
+        setMcpRetention(Math.min(mcpPrefsData.retentionDays, 50));
       }
     }
   }, [mcpPrefsData]);
@@ -213,7 +213,7 @@ export default function McpClient() {
           defaultRequireApproval: mcpDefaultApproval,
           defaultTimeoutMs: mcpDefaultTimeout,
           globalKillSwitch: mcpKillSwitch,
-          retentionDays: mcpRetention,
+          retentionDays: Math.min(Math.max(Math.round(mcpRetention), 1), 50),
         }),
         headers: { "Content-Type": "application/json" },
         method: "POST",
@@ -230,6 +230,13 @@ export default function McpClient() {
     }
   };
   const handlePurgeMcp = async () => {
+    if (
+      !window.confirm(
+        "Purger TOUS les journaux d'appels MCP ? Cette action est irréversible."
+      )
+    ) {
+      return;
+    }
     try {
       const r = await fetch("/api/mcp/purge", {
         body: JSON.stringify({ retentionDays: 0 }),
@@ -539,6 +546,13 @@ export default function McpClient() {
     window.open(url, "_blank");
   };
   const handlePurgeLogs = async () => {
+    if (
+      !window.confirm(
+        "Purger TOUS les journaux d'appels MCP ? Cette action est irréversible."
+      )
+    ) {
+      return;
+    }
     try {
       const res = await fetch("/api/mcp/purge", {
         body: JSON.stringify({ retentionDays: 0 }),
@@ -1423,12 +1437,15 @@ export default function McpClient() {
                     Rétention logs (jours)
                   </Label>
                   <Input
-                    max={365}
+                    max={50}
                     min={1}
                     onChange={(e) => setMcpRetention(Number(e.target.value))}
                     type="number"
                     value={mcpRetention}
                   />
+                  <span className="text-[11px] text-muted-foreground">
+                    Maximum 50 jours (entre 1 et 50).
+                  </span>
                 </div>
               </div>
               <label className="flex items-center justify-between p-3 rounded-xl border border-border/50 bg-muted/20 cursor-pointer">

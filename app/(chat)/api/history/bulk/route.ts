@@ -31,6 +31,7 @@ export async function POST(request: Request) {
     const result = await bulkUpdateChats({
       action: parsed.action,
       chatIds: parsed.chatIds,
+      email: user.email,
       projectId: parsed.projectId ?? null,
       tags: parsed.tags,
       userId,
@@ -83,7 +84,12 @@ export async function DELETE(request: Request) {
       return Response.json({ deletedCount: 0 });
     }
     const { bulkUpdateChats } = await import("@/lib/db/queries");
-    await bulkUpdateChats({ action: "delete", chatIds: ids, userId });
+    await bulkUpdateChats({
+      action: "delete",
+      chatIds: ids,
+      email: user.email,
+      userId,
+    });
     return Response.json({ deletedCount: ids.length });
   }
 

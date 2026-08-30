@@ -35,6 +35,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
+import useSWR from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import {
   AlertDialog,
@@ -56,7 +57,11 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { MAI_UPGRADE_URL } from "@/lib/constants";
+import {
+  DEFAULT_CHAT_MODEL,
+  getModelCapabilities,
+} from "@/lib/ai/models";
+import { MAI_PENDING_ATTACHMENT_KEY, MAI_UPGRADE_URL } from "@/lib/constants";
 
 export type CloudFile = {
   id: string;
@@ -197,20 +202,76 @@ export default function LibraryPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
 
+  // Le modèle actuel (cookie chat-model) accepte-t-il les fichiers ?
+  const { data: modelsCapData } = useSWR(
+    `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models`,
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 60_000, revalidateOnFocus: false }
+  );
+  const currentModelSupportsFiles = useMemo(() => {
+    if (typeof document === "undefined") {
+      return false;
+    }
+    const cookieModel = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("chat-model="))
+      ?.split("=")[1];
+    const modelId = cookieModel
+      ? decodeURIComponent(cookieModel)
+      : DEFAULT_CHAT_MODEL;
+    const caps =
+      modelsCapData?.capabilities?.[modelId] || getModelCapabilities(modelId);
+    return Boolean(caps?.file || caps?.vision || caps?.image);
+  }, [modelsCapData]);
+
   const handleAskAIWithFile = useCallback(
     (file: CloudFile) => {
-      const prompt = `Voici mon fichier hébergé sur le Stockage Cloud mAI : ${file.original_name} (${file.url}). Analyse son contenu, donne un aperçu clair et réponds à mes questions.`;
-      router.push(`/?query=${encodeURIComponent(prompt)}`);
+      if (!currentModelSupportsFiles) {
+        toast.error(
+          "Le modèle actuel ne prend pas en charge les fichiers. Changez de modèle dans la barre de chat."
+        );
+        return;
+      }
+      const prompt = `Voici mon fichier hébergé sur le Stockage Cloud mAI : ${file.original_name}. Analyse son contenu, donne un aperçu clair et réponds à mes questions.`;
+      try {
+        sessionStorage.setItem(
+          MAI_PENDING_ATTACHMENT_KEY,
+          JSON.stringify({
+            mediaType: file.mime_type,
+            name: file.original_name,
+            prompt,
+            url: file.url,
+          })
+        );
+      } catch {}
+      router.push("/");
     },
-    [router]
+    [router, currentModelSupportsFiles]
   );
 
   const handleSummarizeFile = useCallback(
     (file: CloudFile) => {
-      const prompt = `Fais un résumé structuré, clair et synthétique du document ${file.original_name} (${file.url}) avec les points clés essentiels.`;
-      router.push(`/?query=${encodeURIComponent(prompt)}`);
+      if (!currentModelSupportsFiles) {
+        toast.error(
+          "Le modèle actuel ne prend pas en charge les fichiers. Changez de modèle dans la barre de chat."
+        );
+        return;
+      }
+      const prompt = `Fais un résumé structuré, clair et synthétique du document ${file.original_name} avec les points clés essentiels.`;
+      try {
+        sessionStorage.setItem(
+          MAI_PENDING_ATTACHMENT_KEY,
+          JSON.stringify({
+            mediaType: file.mime_type,
+            name: file.original_name,
+            prompt,
+            url: file.url,
+          })
+        );
+      } catch {}
+      router.push("/");
     },
-    [router]
+    [router, currentModelSupportsFiles]
   );
 
   // Épinglage (persistance dans le stockage local)
@@ -1224,9 +1285,18 @@ export default function LibraryPage() {
                           <div className="flex items-center justify-end gap-1">
                             {/* Analyser avec l'IA */}
                             <button
-                              className="p-1.5 rounded-lg text-primary hover:bg-primary/10 transition-colors cursor-pointer"
+                              className={`p-1.5 rounded-lg transition-colors ${
+                                currentModelSupportsFiles
+                                  ? "text-primary hover:bg-primary/10 cursor-pointer"
+                                  : "text-muted-foreground/40 bg-muted/30 cursor-not-allowed opacity-60"
+                              }`}
+                              disabled={!currentModelSupportsFiles}
                               onClick={() => handleAskAIWithFile(file)}
-                              title="Analyser avec l'IA"
+                              title={
+                                currentModelSupportsFiles
+                                  ? "Analyser avec l'IA"
+                                  : "Ce modèle ne prend pas en charge les fichiers"
+                              }
                             >
                               <SparklesIcon className="size-3.5" />
                             </button>
@@ -1388,9 +1458,18 @@ export default function LibraryPage() {
 
                     <div className="flex items-center gap-1">
                       <button
-                        className="p-1.5 rounded-lg text-primary hover:bg-primary/10 transition-colors cursor-pointer"
+                        className={`p-1.5 rounded-lg transition-colors ${
+                          currentModelSupportsFiles
+                            ? "text-primary hover:bg-primary/10 cursor-pointer"
+                            : "text-muted-foreground/40 bg-muted/30 cursor-not-allowed opacity-60"
+                        }`}
+                        disabled={!currentModelSupportsFiles}
                         onClick={() => handleAskAIWithFile(file)}
-                        title="Analyser avec l'IA"
+                        title={
+                          currentModelSupportsFiles
+                            ? "Analyser avec l'IA"
+                            : "Ce modèle ne prend pas en charge les fichiers"
+                        }
                       >
                         <SparklesIcon className="size-3.5" />
                       </button>
@@ -1548,6 +1627,7 @@ export default function LibraryPage() {
             <div className="flex items-center gap-2 flex-wrap">
               <Button
                 className="gap-1.5 text-xs rounded-xl"
+                disabled={!currentModelSupportsFiles}
                 onClick={() => previewFile && handleAskAIWithFile(previewFile)}
                 size="sm"
                 type="button"
@@ -1559,7 +1639,10 @@ export default function LibraryPage() {
 
               <Button
                 className="gap-1.5 text-xs rounded-xl"
-                onClick={() => previewFile && handleSummarizeFile(previewFile)}
+                disabled={!currentModelSupportsFiles}
+                onClick={() =>
+                  previewFile && handleSummarizeFile(previewFile)
+                }
                 size="sm"
                 type="button"
                 variant="secondary"

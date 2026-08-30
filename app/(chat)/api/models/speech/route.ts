@@ -2,6 +2,7 @@ import { type NextRequest, NextResponse } from "next/server";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
 import { getUserApiKey } from "@/lib/db/api-keys";
+import { normalizeModelDisplayName } from "@/lib/ai/models";
 
 export async function GET(_req: NextRequest) {
   try {
@@ -37,13 +38,10 @@ export async function GET(_req: NextRequest) {
       return NextResponse.json(data, { status: res.status });
     }
 
-    // Nettoyer les noms de modèles sans mentions (Free)
+    // Noms de modèles normalisés (préfixe fournisseur retiré, suffixe (Free))
     const models = (data.data || []).map((m: any) => ({
       ...m,
-      name: (m.name || m.id)
-        .replace(/\s*\((free|gratuit|free tier)\)/gi, "")
-        .replace(/:free/gi, "")
-        .trim(),
+      name: normalizeModelDisplayName(m.id, m.name || m.id),
     }));
 
     return NextResponse.json({

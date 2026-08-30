@@ -78,6 +78,7 @@ export async function PATCH(
     if (parsed.projectId !== undefined) {
       await updateChatProjectById({
         chatId: id,
+        email: user.email,
         projectId: parsed.projectId,
         userId,
       });
@@ -85,15 +86,26 @@ export async function PATCH(
     if (parsed.isArchived !== undefined) {
       await updateChatArchivedById({
         chatId: id,
+        email: user.email,
         isArchived: parsed.isArchived,
         userId,
       });
     }
     if (parsed.pinned !== undefined) {
-      await updateChatPinnedById({ chatId: id, pinned: parsed.pinned, userId });
+      await updateChatPinnedById({
+        chatId: id,
+        email: user.email,
+        pinned: parsed.pinned,
+        userId,
+      });
     }
     if (parsed.tags !== undefined) {
-      await updateChatTagsById({ chatId: id, tags: parsed.tags, userId });
+      await updateChatTagsById({
+        chatId: id,
+        email: user.email,
+        tags: parsed.tags,
+        userId,
+      });
     }
     if (
       parsed.customInstructions !== undefined ||
@@ -103,6 +115,7 @@ export async function PATCH(
       await updateChatCustomInstructionsById({
         chatId: id,
         customInstructions: parsed.customInstructions ?? undefined,
+        email: user.email,
         modeId: parsed.modeId ?? undefined,
         temperatureOverride: parsed.temperatureOverride ?? undefined,
         userId,

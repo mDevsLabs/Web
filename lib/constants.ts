@@ -11,6 +11,9 @@ export const MAI_API_URL =
   process.env.NEXT_PUBLIC_MAI_API_URL || "https://mai.val.run";
 export const MAI_UPGRADE_URL = "https://mai-devs.vercel.app";
 
+// Handoff Cloud -> chat : pièce jointe en attente (sessionStorage)
+export const MAI_PENDING_ATTACHMENT_KEY = "mai-pending-attachment";
+
 // ─────────────────────────────────────────────
 // App version & legal — SSOT: version from package.json ("0.5.5")
 // ─────────────────────────────────────────────

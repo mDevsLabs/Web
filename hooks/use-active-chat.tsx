@@ -288,6 +288,8 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
 
   const [currentModelId, setCurrentModelId] = useState(DEFAULT_CHAT_MODEL);
   const currentModelIdRef = useRef(currentModelId);
+  const [defaultVisibility, setDefaultVisibility] =
+    useState<VisibilityType>("private");
 
   const handleModelChange = useCallback((id: string) => {
     setCurrentModelId(id);
@@ -361,6 +363,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
         .split("; ")
         .find((row) => row.startsWith("chat-model="))
         ?.split("=")[1];
+      const hasCookieModel = Boolean(cookieModel);
       if (cookieModel) {
         const decoded = decodeURIComponent(cookieModel);
         setCurrentModelId(decoded);
@@ -387,10 +390,26 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
             .catch(() => {});
         }
       }
-      // Sync default agent from DB (source de vérité)
+      // Sync préférences depuis la DB (source de vérité)
       fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`)
         .then((r) => r.json())
         .then((data) => {
+          // Modèle par défaut persisté en BDD : appliqué seulement sans cookie
+          if (
+            !hasCookieModel &&
+            data?.defaultChatModel &&
+            typeof data.defaultChatModel === "string" &&
+            !activeAgentIdRef.current
+          ) {
+            setCurrentModelId(data.defaultChatModel);
+            currentModelIdRef.current = data.defaultChatModel;
+          }
+          if (
+            data?.defaultChatVisibility === "public" ||
+            data?.defaultChatVisibility === "private"
+          ) {
+            setDefaultVisibility(data.defaultChatVisibility);
+          }
           if (
             data?.defaultAgentId &&
             data.defaultAgentId !== activeAgentIdRef.current
@@ -434,8 +453,8 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     ? []
     : (chatData?.messages ?? []);
   const visibility: VisibilityType = isNewChat
-    ? "private"
-    : (chatData?.visibility ?? "private");
+    ? defaultVisibility
+    : (chatData?.visibility ?? defaultVisibility);
 
   const {
     messages,

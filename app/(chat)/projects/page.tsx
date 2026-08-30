@@ -28,6 +28,7 @@ import useSWRInfinite from "swr/infinite";
 import { useDebounceValue } from "usehooks-ts";
 import "react-data-grid/lib/styles.css";
 import { PageBackButton } from "@/components/chat/page-back-button";
+import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import {
   PROJECT_ICON_KEYS,
   PROJECT_ICON_LIST,
@@ -561,7 +562,22 @@ export default function ProjectsPage() {
                 <DropdownMenuItem
                   className="text-destructive"
                   onClick={async () => {
-                    await fetch(`/api/chats/${row.id}`, { method: "DELETE" });
+                    if (!confirm("Supprimer définitivement cette conversation ?")) {
+                      return;
+                    }
+                    const res = await fetch(`/api/chat?id=${row.id}`, {
+                      method: "DELETE",
+                    });
+                    if (res.ok) {
+                      toast.success("Conversation supprimée");
+                      setSelectedChatIds((prev) => {
+                        const next = new Set(prev);
+                        next.delete(row.id);
+                        return next;
+                      });
+                    } else {
+                      toast.error("Erreur lors de la suppression");
+                    }
                     mutateChats();
                   }}
                 >
@@ -1036,18 +1052,15 @@ export default function ProjectsPage() {
             </div>
             <div className="grid gap-2">
               <Label>Modèle d'IA par défaut (optionnel)</Label>
-              <select
-                className="w-full rounded-md border border-input bg-background p-2 text-xs text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                onChange={(e) => setNewDefaultModel(e.target.value)}
-                value={newDefaultModel}
-              >
-                <option value="">Par défaut / Automatique</option>
-                {availableModels.map((m) => (
-                  <option key={m.id} value={m.id}>
-                    {m.name || m.id} ({m.id})
-                  </option>
-                ))}
-              </select>
+              <ModelSelectorCompact
+                allowEmpty
+                capabilities={modelsData?.capabilities}
+                fallbackModels={availableModels}
+                models={availableModels.length > 0 ? availableModels : undefined}
+                onModelChange={setNewDefaultModel}
+                selectedModelId={newDefaultModel}
+                variant="block"
+              />
               <span className="text-[11px] text-muted-foreground">
                 Modèle utilisé par défaut pour chaque nouvelle discussion lancée
                 dans ce projet.
@@ -1141,18 +1154,15 @@ export default function ProjectsPage() {
             </div>
             <div className="grid gap-2">
               <Label>Modèle d'IA par défaut</Label>
-              <select
-                className="w-full rounded-md border border-input bg-background p-2 text-xs text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                onChange={(e) => setNewDefaultModel(e.target.value)}
-                value={newDefaultModel}
-              >
-                <option value="">Par défaut / Automatique</option>
-                {availableModels.map((m) => (
-                  <option key={m.id} value={m.id}>
-                    {m.name || m.id} ({m.id})
-                  </option>
-                ))}
-              </select>
+              <ModelSelectorCompact
+                allowEmpty
+                capabilities={modelsData?.capabilities}
+                fallbackModels={availableModels}
+                models={availableModels.length > 0 ? availableModels : undefined}
+                onModelChange={setNewDefaultModel}
+                selectedModelId={newDefaultModel}
+                variant="block"
+              />
               <span className="text-[11px] text-muted-foreground">
                 Modèle utilisé par défaut pour chaque nouvelle discussion lancée
                 dans ce projet.

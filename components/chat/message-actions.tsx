@@ -87,6 +87,7 @@ export function PureMessageActions({
           messageId: message.id,
           type: "up",
         }),
+        headers: { "Content-Type": "application/json" },
         method: "PATCH",
       }
     );
@@ -173,6 +174,7 @@ export function PureMessageActions({
           messageId: message.id,
           type: "down",
         }),
+        headers: { "Content-Type": "application/json" },
         method: "PATCH",
       }
     );

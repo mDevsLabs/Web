@@ -631,6 +631,12 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "default_agent_id" uuid`
   );
   await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "default_chat_model" text`
+  );
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "default_chat_visibility" varchar(10) DEFAULT 'private'`
+  );
+  await run(
     client`ALTER TABLE "users" DROP COLUMN IF EXISTS "default_ai_mode"`
   );
 }
@@ -1157,13 +1163,24 @@ export async function getProjectChatCounts({
 // ─────────────────────────────────────────────
 // Chat extended: pin / archive / tags / project / bulk
 // ─────────────────────────────────────────────
+// chat.userId peut contenir indifféremment user.id, user.email ou username
+// selon la création : le filtre doit couvrir les variantes (fallback email).
+function chatUserFilter(userId: string, email?: string | null) {
+  if (email && email !== userId) {
+    return sql`(${chat.userId}::text = ${userId}::text OR ${chat.userId}::text = ${email}::text)`;
+  }
+  return sql`${chat.userId}::text = ${userId}::text`;
+}
+
 export async function updateChatProjectById({
   chatId,
   userId,
+  email,
   projectId,
 }: {
   chatId: string;
   userId: string;
+  email?: string | null;
   projectId: string | null;
 }) {
   try {
@@ -1177,9 +1194,7 @@ export async function updateChatProjectById({
     const [updated] = await db
       .update(chat)
       .set({ projectId })
-      .where(
-        and(eq(chat.id, chatId), sql`${chat.userId}::text = ${userId}::text`)
-      )
+      .where(and(eq(chat.id, chatId), chatUserFilter(userId, email)))
       .returning();
     return updated;
   } catch (error) {
@@ -1193,48 +1208,50 @@ export async function updateChatProjectById({
 export async function updateChatArchivedById({
   chatId,
   userId,
+  email,
   isArchived,
 }: {
   chatId: string;
   userId: string;
+  email?: string | null;
   isArchived: boolean;
 }) {
   const db = await dbReady();
   return db
     .update(chat)
     .set({ archivedAt: isArchived ? new Date() : null, isArchived })
-    .where(
-      and(eq(chat.id, chatId), sql`${chat.userId}::text = ${userId}::text`)
-    )
+    .where(and(eq(chat.id, chatId), chatUserFilter(userId, email)))
     .returning();
 }
 
 export async function updateChatPinnedById({
   chatId,
   userId,
+  email,
   pinned,
 }: {
   chatId: string;
   userId: string;
+  email?: string | null;
   pinned: boolean;
 }) {
   const db = await dbReady();
   return db
     .update(chat)
     .set({ pinned })
-    .where(
-      and(eq(chat.id, chatId), sql`${chat.userId}::text = ${userId}::text`)
-    )
+    .where(and(eq(chat.id, chatId), chatUserFilter(userId, email)))
     .returning();
 }
 
 export async function updateChatTagsById({
   chatId,
   userId,
+  email,
   tags,
 }: {
   chatId: string;
   userId: string;
+  email?: string | null;
   tags: string[];
 }) {
   const sanitized = tags
@@ -1245,21 +1262,21 @@ export async function updateChatTagsById({
   return db
     .update(chat)
     .set({ tags: sanitized })
-    .where(
-      and(eq(chat.id, chatId), sql`${chat.userId}::text = ${userId}::text`)
-    )
+    .where(and(eq(chat.id, chatId), chatUserFilter(userId, email)))
     .returning();
 }
 
 export async function updateChatCustomInstructionsById({
   chatId,
   userId,
+  email,
   customInstructions,
   modeId,
   temperatureOverride,
 }: {
   chatId: string;
   userId: string;
+  email?: string | null;
   customInstructions?: string | null;
   modeId?: string | null;
   temperatureOverride?: number | null;
@@ -1278,14 +1295,13 @@ export async function updateChatCustomInstructionsById({
   return db
     .update(chat)
     .set(data as any)
-    .where(
-      and(eq(chat.id, chatId), sql`${chat.userId}::text = ${userId}::text`)
-    )
+    .where(and(eq(chat.id, chatId), chatUserFilter(userId, email)))
     .returning();
 }
 
 export async function bulkUpdateChats({
   userId,
+  email,
   chatIds,
   action,
   projectId,
@@ -1293,6 +1309,7 @@ export async function bulkUpdateChats({
   isArchived,
 }: {
   userId: string;
+  email?: string | null;
   chatIds: string[];
   action: "move" | "archive" | "unarchive" | "pin" | "unpin" | "tag" | "delete";
   projectId?: string | null;
@@ -1305,7 +1322,7 @@ export async function bulkUpdateChats({
   }
   const where = and(
     inArray(chat.id, chatIds),
-    sql`${chat.userId}::text = ${userId}::text`
+    chatUserFilter(userId, email)
   );
   if (action === "delete") {
     await db.delete(vote).where(inArray(vote.chatId, chatIds));
@@ -1426,10 +1443,12 @@ export async function voteMessage({
 }) {
   try {
     const db = await dbReady();
+    // Le vote existant doit être recherché par (chatId, messageId) — la
+    // recherche par messageId seul peut remonter une ligne d'un autre chat.
     const [existingVote] = await db
       .select()
       .from(vote)
-      .where(and(eq(vote.messageId, messageId)));
+      .where(and(eq(vote.messageId, messageId), eq(vote.chatId, chatId)));
 
     if (existingVote) {
       return await db
@@ -2568,9 +2587,17 @@ export async function purgeMcpLogs({
   olderThanDays,
 }: {
   userId: string;
+  // 0 = tout purger
   olderThanDays: number;
 }) {
   const db = await dbReady();
+  if (olderThanDays <= 0) {
+    const deleted = await db
+      .delete(mcpLog)
+      .where(eq(mcpLog.userId, userId))
+      .returning();
+    return { deleted: deleted.length };
+  }
   const cutoff = new Date(Date.now() - olderThanDays * 24 * 60 * 60 * 1000);
   const deleted = await db
     .delete(mcpLog)

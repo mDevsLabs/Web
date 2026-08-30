@@ -24,6 +24,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
+import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -197,9 +198,12 @@ export default function SettingsPage() {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Préférences IA (cookie + serveur)
+  // Préférences IA (BDD + cookie)
   const [defaultModelId, setDefaultModelId] =
     useState<string>(DEFAULT_CHAT_MODEL);
+  const [defaultChatVisibility, setDefaultChatVisibility] = useState<
+    "private" | "public"
+  >("private");
   const [customInstructions, setCustomInstructions] = useState("");
   const [customEnabled, setCustomEnabled] = useState(false);
   const [customTemp, setCustomTemp] = useState(0.7);
@@ -251,6 +255,12 @@ export default function SettingsPage() {
     if (customPrefData) {
       if (customPrefData.customInstructions !== undefined) {
         setCustomInstructions(customPrefData.customInstructions || "");
+      }
+      if (customPrefData.defaultChatVisibility === "public") {
+        setDefaultChatVisibility("public");
+      }
+      if (customPrefData.defaultChatModel && !getCookie("chat-model")) {
+        setDefaultModelId(customPrefData.defaultChatModel);
       }
       if (customPrefData.enabled !== undefined) {
         setCustomEnabled(!!customPrefData.enabled);
@@ -425,15 +435,25 @@ export default function SettingsPage() {
   const handleSavePreferences = useCallback(async () => {
     setCookie("chat-model", defaultModelId);
     try {
-      // Préférences IA désormais gérées via Agents, on ne persiste que le modèle texte global
-      await fetch("/api/user/preferences", {
-        body: JSON.stringify({}),
+      // Modèle par défaut et visibilité par défaut persistés en BDD
+      const res = await fetch("/api/user/preferences", {
+        body: JSON.stringify({
+          defaultChatModel: defaultModelId,
+          defaultChatVisibility,
+        }),
         headers: { "Content-Type": "application/json" },
         method: "POST",
       });
-    } catch {}
+      if (!res.ok) {
+        throw new Error("Erreur lors de l'enregistrement");
+      }
+      mutateCustomPref();
+    } catch (e: any) {
+      toast.error(e.message || "Erreur de sauvegarde des préférences IA.");
+      return;
+    }
     toast.success("Préférences IA enregistrées !");
-  }, [defaultModelId]);
+  }, [defaultModelId, defaultChatVisibility, mutateCustomPref]);
 
   const handleSaveToolsPreferences = useCallback(async () => {
     setIsSavingToolsPref(true);
@@ -992,11 +1012,8 @@ export default function SettingsPage() {
                   Préférences IA
                 </h3>
                 <p className="text-xs text-muted-foreground">
-                  Modèle par défaut (cookie{" "}
-                  <code className="px-1 py-0.5 rounded bg-muted text-[10px]">
-                    chat-model
-                  </code>
-                  ) et Agents — styles IA personnalisés remplaçant les Modes.
+                  Modèle par défaut (enregistré dans votre compte) et Agents —
+                  styles IA personnalisés remplaçant les Modes.
                 </p>
               </div>
             </div>
@@ -1005,27 +1022,39 @@ export default function SettingsPage() {
               <Label className="text-xs font-medium text-muted-foreground">
                 Modèle par défaut
               </Label>
-              <select
-                className="h-10 rounded-xl border border-border/60 bg-muted/30 px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary/20"
-                onChange={(e) => setDefaultModelId(e.target.value)}
-                value={defaultModelId}
-              >
-                {prefModels.length === 0 ? (
-                  <option value={DEFAULT_CHAT_MODEL}>
-                    {DEFAULT_CHAT_MODEL}
-                  </option>
-                ) : (
-                  prefModels.map((m) => (
-                    <option key={m.id} value={m.id}>
-                      {m.name} ({m.id})
-                    </option>
-                  ))
-                )}
-              </select>
+              <ModelSelectorCompact
+                capabilities={prefModelsData?.capabilities}
+                models={prefModels.length > 0 ? prefModels : undefined}
+                onModelChange={setDefaultModelId}
+                selectedModelId={defaultModelId}
+                variant="block"
+              />
               <span className="text-[11px] text-muted-foreground">
                 Ce modèle sera pré-sélectionné pour chaque nouvelle
                 conversation. Vous pouvez le changer à la volée dans la barre de
                 saisie.
+              </span>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <Label className="text-xs font-medium text-muted-foreground">
+                Visibilité par défaut des conversations
+              </Label>
+              <select
+                className="h-10 rounded-xl border border-border/60 bg-muted/30 px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary/20"
+                onChange={(e) =>
+                  setDefaultChatVisibility(
+                    e.target.value === "public" ? "public" : "private"
+                  )
+                }
+                value={defaultChatVisibility}
+              >
+                <option value="private">Privée (recommandé)</option>
+                <option value="public">Publique</option>
+              </select>
+              <span className="text-[11px] text-muted-foreground">
+                Visibilité appliquée aux nouvelles conversations. Vous pourrez
+                toujours la modifier par conversation.
               </span>
             </div>
 
