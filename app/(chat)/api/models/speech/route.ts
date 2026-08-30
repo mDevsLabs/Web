@@ -4,6 +4,35 @@ import { MAI_API_URL } from "@/lib/constants";
 import { getUserApiKey } from "@/lib/db/api-keys";
 import { normalizeModelDisplayName } from "@/lib/ai/models";
 
+// Voix Flux par défaut collées par l'API amont à tous les modèles sans voix
+// déclarées : elles ne sont valides que pour la famille flux/deepgram.
+const FLUX_FALLBACK_VOICES = [
+  "flux-alexis-en",
+  "flux-michael-en",
+  "flux-stacy-en",
+  "flux-sam-en",
+  "flux-asteria-en",
+  "flux-orion-en",
+];
+
+function resolveModelVoices(modelId: string, declaredVoices: unknown) {
+  const id = (modelId || "").toLowerCase();
+  const isFluxFamily = id.includes("flux") || id.includes("deepgram");
+  const declared = Array.isArray(declaredVoices) ? declaredVoices : [];
+  if (declared.length === 0) {
+    return isFluxFamily ? FLUX_FALLBACK_VOICES : undefined;
+  }
+  if (
+    !isFluxFamily &&
+    declared.length === FLUX_FALLBACK_VOICES.length &&
+    [...declared].sort().join(",") ===
+      [...FLUX_FALLBACK_VOICES].sort().join(",")
+  ) {
+    return undefined;
+  }
+  return declared;
+}
+
 export async function GET(_req: NextRequest) {
   try {
     const user = await getMaiUser();
@@ -38,10 +67,12 @@ export async function GET(_req: NextRequest) {
       return NextResponse.json(data, { status: res.status });
     }
 
-    // Noms de modèles normalisés (préfixe fournisseur retiré, suffixe (Free))
+    // Noms normalisés (préfixe fournisseur retiré, suffixe (Free)) et voix
+    // filtrées : seules les voix propres au modèle sont exposées.
     const models = (data.data || []).map((m: any) => ({
       ...m,
       name: normalizeModelDisplayName(m.id, m.name || m.id),
+      voices: resolveModelVoices(m.id, m.voices),
     }));
 
     return NextResponse.json({

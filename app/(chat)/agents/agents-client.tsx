@@ -868,6 +868,7 @@ export default function AgentsClient() {
                   <ModelSelectorCompact
                     capabilities={modelsData?.capabilities}
                     fallbackModels={models}
+                    modal
                     onModelChange={setFormModelId}
                     selectedModelId={formModelId}
                     variant="block"

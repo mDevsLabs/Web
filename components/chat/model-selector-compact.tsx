@@ -88,6 +88,10 @@ type ModelSelectorCompactProps = {
   focusInputAfterSelect?: boolean;
   allowEmpty?: boolean;
   emptyLabel?: string;
+  // Requis quand le sélecteur est rendu dans une Dialog modale : sans cela,
+  // le popover portallé hérite du pointer-events:none du body (inerte).
+  modal?: boolean;
+  side?: "top" | "bottom";
 };
 
 const DEFAULT_EMPTY_LABEL = "Par défaut / Automatique";
@@ -182,6 +186,8 @@ function PureModelSelectorCompact({
   focusInputAfterSelect,
   allowEmpty,
   emptyLabel = DEFAULT_EMPTY_LABEL,
+  modal,
+  side,
 }: ModelSelectorCompactProps) {
   const [open, setOpen] = useState(false);
 
@@ -223,7 +229,7 @@ function PureModelSelectorCompact({
   }
 
   return (
-    <ModelSelector onOpenChange={setOpen} open={open}>
+    <ModelSelector modal={modal} onOpenChange={setOpen} open={open}>
       <ModelSelectorTrigger asChild>
         {variant === "compact" ? (
           <Button
@@ -252,7 +258,10 @@ function PureModelSelectorCompact({
           </Button>
         )}
       </ModelSelectorTrigger>
-      <ModelSelectorContent commandDefaultValue={selectedModel?.id}>
+      <ModelSelectorContent
+        commandDefaultValue={selectedModel?.id}
+        side={side ?? (variant === "compact" ? "top" : "bottom")}
+      >
         <ModelSelectorInput placeholder="Rechercher un modèle..." />
         <ModelSelectorList>
           {allowEmpty ? (

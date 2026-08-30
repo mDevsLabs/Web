@@ -287,6 +287,7 @@ export default function ProjectDetailPage() {
               <ModelSelectorCompact
                 allowEmpty
                 fallbackModels={availableModels}
+                modal
                 models={availableModels.length > 0 ? availableModels : undefined}
                 onModelChange={setDefaultModel}
                 selectedModelId={defaultModel}

@@ -1057,6 +1057,7 @@ export default function ProjectsPage() {
                 allowEmpty
                 capabilities={modelsData?.capabilities}
                 fallbackModels={availableModels}
+                modal
                 models={availableModels.length > 0 ? availableModels : undefined}
                 onModelChange={setNewDefaultModel}
                 selectedModelId={newDefaultModel}
@@ -1159,6 +1160,7 @@ export default function ProjectsPage() {
                 allowEmpty
                 capabilities={modelsData?.capabilities}
                 fallbackModels={availableModels}
+                modal
                 models={availableModels.length > 0 ? availableModels : undefined}
                 onModelChange={setNewDefaultModel}
                 selectedModelId={newDefaultModel}

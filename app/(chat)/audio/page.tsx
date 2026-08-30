@@ -232,16 +232,12 @@ export default function AudioPage() {
       setSelectedModelId(defaultMod.id);
     }
 
-    if (userPrefData?.defaultAudioVoice && !selectedVoice) {
-      setSelectedVoice(userPrefData.defaultAudioVoice);
-    } else if (voices.length > 0 && !selectedVoice) {
-      setSelectedVoice(voices[0].id);
-    }
+    // La sélection de voix est gérée par l'effet dédié (après modelVoices)
 
     if (userPrefData?.defaultAudioSpeed) {
       setSpeed(userPrefData.defaultAudioSpeed);
     }
-  }, [models, selectedModelId, voices, selectedVoice, userPrefData]);
+  }, [models, selectedModelId, userPrefData]);
 
   // Basculer l'état épinglé
   const handleTogglePin = async (
@@ -296,24 +292,38 @@ export default function AudioPage() {
     [models, selectedModelId]
   );
 
-  // Voix proposées par le modèle sélectionné (fallback : liste globale)
+  // Voix proposées par le modèle sélectionné — aucune voix étrangère n'est
+  // affichée : si le modèle ne déclare pas de voix, la liste reste vide.
   const modelVoices = useMemo<SpeechVoice[]>(() => {
     const raw = selectedModel?.voices;
-    if (raw && raw.length > 0) {
-      return raw.map((voiceId) => {
-        const preset = voices.find((v) => v.id === voiceId);
-        return preset ?? { id: voiceId, name: voiceId };
-      });
+    if (!raw || raw.length === 0) {
+      return [];
     }
-    return voices;
+    return raw.map((voiceId) => {
+      const preset = voices.find((v) => v.id === voiceId);
+      return preset ?? { id: voiceId, name: voiceId };
+    });
   }, [selectedModel, voices]);
 
-  // Réinitialiser la voix si elle n'est pas disponible pour le modèle
+  // Sélection de voix : voix par défaut des préférences si disponible, sinon
+  // la première du modèle ; vidée si le modèle n'expose aucune voix. La voix
+  // choisie manuellement n'est jamais écrasée tant qu'elle reste valide.
   useEffect(() => {
-    if (selectedVoice && !modelVoices.some((v) => v.id === selectedVoice)) {
-      setSelectedVoice(modelVoices[0]?.id ?? "");
+    if (modelVoices.length === 0) {
+      if (selectedVoice) {
+        setSelectedVoice("");
+      }
+      return;
     }
-  }, [modelVoices, selectedVoice]);
+    const preferredDefault = userPrefData?.defaultAudioVoice;
+    const preferred =
+      preferredDefault && modelVoices.some((v) => v.id === preferredDefault)
+        ? preferredDefault
+        : modelVoices[0].id;
+    if (!selectedVoice || !modelVoices.some((v) => v.id === selectedVoice)) {
+      setSelectedVoice(preferred);
+    }
+  }, [modelVoices, selectedVoice, userPrefData]);
 
   const isQuotaExhausted = limit > 0 && tokensUsed >= limit;
 
@@ -557,25 +567,33 @@ export default function AudioPage() {
                         <Volume2Icon className="size-3.5 text-emerald-400" />
                         <span>Voix IA</span>
                       </label>
-                      <select
-                        className="w-full rounded-xl border border-border/80 bg-background/90 px-3.5 py-2.5 text-sm font-medium text-foreground transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                        onChange={(e) => setSelectedVoice(e.target.value)}
-                        value={selectedVoice}
-                      >
-                        {modelVoices.length === 0 ? (
-                          <option value="">Aucune voix disponible</option>
-                        ) : (
-                          modelVoices.map((voice) => (
+                      {modelVoices.length === 0 ? (
+                        <select
+                          className="w-full rounded-xl border border-border/80 bg-muted/30 px-3.5 py-2.5 text-sm font-medium text-muted-foreground cursor-not-allowed"
+                          disabled
+                          value=""
+                        >
+                          <option value="">Voix par défaut du modèle</option>
+                        </select>
+                      ) : (
+                        <select
+                          className="w-full rounded-xl border border-border/80 bg-background/90 px-3.5 py-2.5 text-sm font-medium text-foreground transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                          onChange={(e) => setSelectedVoice(e.target.value)}
+                          value={selectedVoice}
+                        >
+                          {modelVoices.map((voice) => (
                             <option key={voice.id} value={voice.id}>
                               {voice.id === voice.name
                                 ? voice.name
                                 : `${voice.name} — ${voice.id}`}
                             </option>
-                          ))
-                        )}
-                      </select>
+                          ))}
+                        </select>
+                      )}
                       <span className="text-[11px] text-muted-foreground">
-                        Voix proposées dynamiquement par le modèle sélectionné.
+                        {modelVoices.length === 0
+                          ? "Ce modèle n'expose pas de voix prédéfinies : la voix par défaut du service sera utilisée."
+                          : "Voix proposées dynamiquement par le modèle sélectionné."}
                       </span>
                     </div>
                   </div>
