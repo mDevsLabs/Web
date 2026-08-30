@@ -29,6 +29,7 @@ import { useDebounceValue } from "usehooks-ts";
 import "react-data-grid/lib/styles.css";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
+import type { ModelCapabilities } from "@/lib/ai/models";
 import {
   PROJECT_ICON_KEYS,
   PROJECT_ICON_LIST,
@@ -114,10 +115,10 @@ export default function ProjectsPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { resolvedTheme } = useTheme();
-  const { data: modelsData } = useSWR<{ models: any[] }>(
-    "/api/models",
-    fetcher
-  );
+  const { data: modelsData } = useSWR<{
+    capabilities?: Record<string, ModelCapabilities>;
+    models: any[];
+  }>("/api/models", fetcher);
   const availableModels: any[] = modelsData?.models || [];
 
   const [viewMode, setViewMode] = useState<"grid" | "list">(

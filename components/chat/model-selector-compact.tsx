@@ -34,7 +34,21 @@ import {
 } from "@/lib/ai/models";
 import { cn } from "@/lib/utils";
 
-export type SharedModel = ChatModel & { voices?: string[] };
+// Forme minimale acceptée par le sélecteur : ChatModel (chat), SpeechModel
+// (audio, provider optionnel) et ImageModel (images) sont tous compatibles.
+// Le provider manquant est dérivé de l'id au rendu.
+export type SharedModel = {
+  id: string;
+  name: string;
+  architecture?: ChatModel["architecture"];
+  description?: string;
+  isFree?: boolean;
+  maxContext?: number;
+  maxOutput?: number;
+  provider?: string;
+  supported_parameters?: string[];
+  voices?: string[];
+};
 
 export type ModelSelectorSource = "chat" | "images" | "speech";
 
@@ -64,7 +78,7 @@ const ENDPOINTS: Record<ModelSelectorSource, string> = {
 
 type ModelSelectorCompactProps = {
   selectedModelId: string;
-  onModelChange: (modelId: string) => void;
+  onModelChange?: (modelId: string) => void;
   source?: ModelSelectorSource;
   models?: SharedModel[];
   fallbackModels?: SharedModel[];
@@ -88,7 +102,7 @@ function SharedModelSelectorOption({
 }: {
   capabilities?: Record<string, ModelCapabilities>;
   model: SharedModel;
-  onModelChange: (modelId: string) => void;
+  onModelChange?: (modelId: string) => void;
   selectedModelId: string;
   setOpen: Dispatch<SetStateAction<boolean>>;
   focusInputAfterSelect?: boolean;
@@ -106,7 +120,7 @@ function SharedModelSelectorOption({
   );
 
   const handleSelect = useCallback(() => {
-    onModelChange(model.id);
+    onModelChange?.(model.id);
     setOpen(false);
     if (focusInputAfterSelect) {
       setTimeout(() => {
@@ -249,7 +263,7 @@ function PureModelSelectorCompact({
                 "data-[selected=true]:bg-muted data-[selected=true]:text-foreground hover:bg-muted/50"
               )}
               onSelect={() => {
-                onModelChange("");
+                onModelChange?.("");
                 setOpen(false);
               }}
               value={emptyLabel}
