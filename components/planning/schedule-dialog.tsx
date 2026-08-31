@@ -25,7 +25,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { chatModels } from "@/lib/ai/models";
-import { TOOLS_META, type ToolId } from "@/lib/ai/tools/config";
+import { TOOLS_META, TOOL_IDS, type ToolId } from "@/lib/ai/tools/config";
 import type { Agent, ScheduledMessage } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
 
@@ -320,7 +320,7 @@ export function ScheduleDialog({
               Outils activés pour l'exécution
             </Label>
             <div className="mt-1.5 flex flex-wrap gap-1.5">
-              {(["webSearch", "calculator", "dateTime", "codeExecution", "getWeather"] as ToolId[]).map((tid) => {
+              {TOOL_IDS.map((tid) => {
                 const meta = TOOLS_META[tid];
                 const active = enabledTools.includes(tid);
                 return (

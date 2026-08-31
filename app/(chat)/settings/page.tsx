@@ -275,6 +275,20 @@ export default function SettingsPage() {
   );
   const prefModels: ChatModel[] = prefModelsData?.models || [];
 
+  const { data: imageModelsData } = useSWR(
+    `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models/images`,
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 60_000 }
+  );
+  const imageModels: SharedModel[] = imageModelsData?.data || imageModelsData?.models || [];
+
+  const { data: audioModelsData } = useSWR(
+    `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models/speech`,
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 60_000 }
+  );
+  const audioModels: SharedModel[] = audioModelsData?.data || audioModelsData?.models || [];
+
   const { data: customPrefData, mutate: mutateCustomPref } = useSWR(
     "/api/user/preferences",
     (url: string) => fetch(url).then((r) => r.json()),
@@ -1471,26 +1485,22 @@ export default function SettingsPage() {
                   onChange={(e) => setDefaultImageModel(e.target.value)}
                   value={defaultImageModel}
                 >
-                  <option value="black-forest-labs/flux-schnell">
-                    Black Forest FLUX.1 Schnell (Rapide & Précis)
-                  </option>
-                  <option value="black-forest-labs/flux-dev">
-                    Black Forest FLUX.1 Dev (Haute Qualité)
-                  </option>
-                  <option value="black-forest-labs/flux-pro">
-                    Black Forest FLUX 1.1 Pro (Ultra Réaliste)
-                  </option>
-                  <option value="dall-e-3">DALL-E 3 (OpenAI)</option>
-                  <option value="stable-diffusion-3.5-large">
-                    Stable Diffusion 3.5 Large
-                  </option>
-                  <option value="midjourney/v6">Midjourney v6</option>
-                  <option value="recraft-v3">Recraft V3</option>
-                  <option value="ideogram-v2">Ideogram V2</option>
+                  {imageModels.length > 0
+                    ? imageModels.map((m) => (
+                        <option key={m.id} value={m.id}>
+                          {m.name || m.id}
+                        </option>
+                      ))
+                    : (
+                      <option value="black-forest-labs/flux-schnell">
+                        Black Forest FLUX.1 Schnell (Rapide & Précis)
+                      </option>
+                    )}
                 </select>
                 <span className="text-[11px] text-muted-foreground">
-                  Modèle activé automatiquement quand vous demandez à l'IA
-                  d'illustrer ou créer une image.
+                  {imageModels.length > 0
+                    ? `${imageModels.length} modèles disponibles (récupérés dynamiquement de l'API).`
+                    : "Modèle activé automatiquement quand vous demandez à l'IA d'illustrer ou créer une image."}
                 </span>
               </div>
 
@@ -1547,13 +1557,23 @@ export default function SettingsPage() {
                   onChange={(e) => setDefaultAudioModel(e.target.value)}
                   value={defaultAudioModel}
                 >
-                  <option value="deepgram/flux-tts:free">
-                    Deepgram Flux TTS (Ultra-rapide & Naturel)
-                  </option>
-                  <option value="tts-1">OpenAI TTS Standard</option>
-                  <option value="tts-1-hd">
-                    OpenAI TTS HD (Haute Définition)
-                  </option>
+                  {audioModels.length > 0
+                    ? audioModels.map((m) => (
+                        <option key={m.id} value={m.id}>
+                          {m.name || m.id}
+                        </option>
+                      ))
+                    : (
+                      <>
+                        <option value="deepgram/flux-tts:free">
+                          Deepgram Flux TTS (Ultra-rapide & Naturel)
+                        </option>
+                        <option value="tts-1">OpenAI TTS Standard</option>
+                        <option value="tts-1-hd">
+                          OpenAI TTS HD (Haute Définition)
+                        </option>
+                      </>
+                    )}
                 </select>
               </div>
 
@@ -1566,19 +1586,18 @@ export default function SettingsPage() {
                   onChange={(e) => setDefaultAudioVoice(e.target.value)}
                   value={defaultAudioVoice}
                 >
-                  <option value="flux-alexis-en">
-                    Alexis (Féminin - Naturel & Équilibré)
-                  </option>
-                  <option value="flux-michael-en">
-                    Michael (Masculin - Posé & Professionnel)
-                  </option>
-                  <option value="flux-stacy-en">
-                    Stacy (Féminin - Dynamique & Vivant)
-                  </option>
-                  <option value="alloy">Alloy (Neutre - Polyvalent)</option>
-                  <option value="echo">Echo (Masculin - Rond)</option>
-                  <option value="nova">Nova (Féminin - Énergique)</option>
-                  <option value="shimmer">Shimmer (Féminin - Doux)</option>
+                  {(() => {
+                    const selected = audioModels.find((m) => m.id === defaultAudioModel);
+                    const voices: string[] = Array.isArray(selected?.voices)
+                      ? selected!.voices as string[]
+                      : [];
+                    const list = voices.length > 0
+                      ? voices
+                      : ["flux-alexis-en", "flux-michael-en", "flux-stacy-en", "alloy", "echo", "nova", "shimmer"];
+                    return list.map((v) => (
+                      <option key={v} value={v}>{v}</option>
+                    ));
+                  })()}
                 </select>
               </div>
             </div>
