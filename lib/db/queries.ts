@@ -10,6 +10,7 @@ import {
   gt,
   gte,
   inArray,
+  isNull,
   type SQL,
   sql,
 } from "drizzle-orm";
@@ -37,6 +38,7 @@ import {
   stream,
   suggestion,
   userMcpPrefs,
+  userMemory,
   vote,
 } from "./schema";
 
@@ -638,6 +640,39 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
   );
   await run(
     client`ALTER TABLE "users" DROP COLUMN IF EXISTS "default_ai_mode"`
+  );
+
+  // UserMemory — mémoire personnalisée globale / agent / projet (0010)
+  await run(client`CREATE TABLE IF NOT EXISTS "UserMemory" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "userId" text NOT NULL,
+    "agentId" uuid REFERENCES "Agent"("id") ON DELETE CASCADE,
+    "projectId" uuid REFERENCES "Project"("id") ON DELETE CASCADE,
+    "content" text NOT NULL CHECK (char_length("content") > 0 AND char_length("content") <= 2000),
+    "createdAt" timestamp DEFAULT now() NOT NULL,
+    "updatedAt" timestamp DEFAULT now() NOT NULL,
+    CONSTRAINT "UserMemory_scope_check" CHECK (NOT ("agentId" IS NOT NULL AND "projectId" IS NOT NULL))
+  )`);
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "UserMemory_userId_idx" ON "UserMemory" USING btree ("userId")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "UserMemory_agentId_idx" ON "UserMemory" USING btree ("agentId")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "UserMemory_projectId_idx" ON "UserMemory" USING btree ("projectId")`
+  );
+  await run(
+    client`ALTER TABLE "Agent" ADD COLUMN IF NOT EXISTS "memoryMode" varchar(10) DEFAULT 'global' NOT NULL`
+  );
+  await run(
+    client`DO $$ BEGIN
+  IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name='users') THEN
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='users' AND column_name='ghost_memory_enabled') THEN
+      ALTER TABLE "users" ADD COLUMN "ghost_memory_enabled" boolean DEFAULT false NOT NULL;
+    END IF;
+  END IF;
+END $$;`
   );
 }
 
@@ -2765,15 +2800,17 @@ export async function getUnreadNotificationCount(userId: string) {
 export async function markNotificationRead({
   id,
   userId,
+  isRead = true,
 }: {
   id: string;
   userId: string;
+  isRead?: boolean;
 }) {
   const db = await dbReady();
   const { notification } = await import("./schema");
   const [updated] = await db
     .update(notification)
-    .set({ isRead: true })
+    .set({ isRead })
     .where(and(eq(notification.id, id), eq(notification.userId, userId)))
     .returning();
   return updated ?? null;
@@ -2805,6 +2842,15 @@ export async function deleteNotification({
     .where(and(eq(notification.id, id), eq(notification.userId, userId)))
     .returning();
   return deleted ?? null;
+}
+
+export async function deleteAllNotifications(userId: string) {
+  const db = await dbReady();
+  const { notification } = await import("./schema");
+  await db
+    .delete(notification)
+    .where(eq(notification.userId, userId));
+  return { success: true };
 }
 
 // ==========================================
@@ -2857,6 +2903,7 @@ export async function createAgent(data: {
   starterPrompts?: string[];
   welcomeMessage?: string | null;
   pinned?: boolean;
+  memoryMode?: "global" | "custom";
 }) {
   const database = await getDb();
   const [created] = await database
@@ -2871,6 +2918,7 @@ export async function createAgent(data: {
       instructions: data.instructions,
       maxTokens: data.maxTokens ?? null,
       mcpServerIds: (data.mcpServerIds as any) ?? [],
+      memoryMode: data.memoryMode ?? "global",
       name: data.name,
       pinned: data.pinned ?? false,
       skillIds: (data.skillIds as any) ?? [],
@@ -2910,6 +2958,7 @@ export async function updateAgent({
     pinned: boolean;
     isPublic: boolean;
     shareId: string | null;
+    memoryMode: "global" | "custom";
   }>;
 }) {
   const database = await getDb();
@@ -2965,7 +3014,211 @@ export async function duplicateAgent({
     topP: (original as any).topP ?? null,
     userId,
     welcomeMessage: (original as any).welcomeMessage ?? null,
+    memoryMode:
+      (original as any).memoryMode === "custom" ? "custom" : "global",
   });
+}
+
+export async function getGlobalMemories({
+  userId,
+  limit = 200,
+}: {
+  userId: string;
+  limit?: number;
+}) {
+  const database = await getDb();
+  return database
+    .select()
+    .from(userMemory)
+    .where(
+      and(
+        eq(userMemory.userId, userId),
+        isNull(userMemory.agentId),
+        isNull(userMemory.projectId)
+      )
+    )
+    .orderBy(asc(userMemory.createdAt))
+    .limit(limit);
+}
+
+export async function getAgentMemories({
+  agentId,
+  userId,
+  limit = 200,
+}: {
+  agentId: string;
+  userId: string;
+  limit?: number;
+}) {
+  const database = await getDb();
+  return database
+    .select()
+    .from(userMemory)
+    .where(
+      and(eq(userMemory.userId, userId), eq(userMemory.agentId, agentId))
+    )
+    .orderBy(asc(userMemory.createdAt))
+    .limit(limit);
+}
+
+export async function getProjectMemories({
+  projectId,
+  userId,
+  limit = 200,
+}: {
+  projectId: string;
+  userId: string;
+  limit?: number;
+}) {
+  const database = await getDb();
+  return database
+    .select()
+    .from(userMemory)
+    .where(
+      and(
+        eq(userMemory.userId, userId),
+        eq(userMemory.projectId, projectId)
+      )
+    )
+    .orderBy(asc(userMemory.createdAt))
+    .limit(limit);
+}
+
+export async function countMemories({
+  userId,
+  agentId,
+  projectId,
+}: {
+  userId: string;
+  agentId?: string | null;
+  projectId?: string | null;
+}) {
+  const database = await getDb();
+  const conditions = [eq(userMemory.userId, userId)];
+  if (agentId) {
+    conditions.push(eq(userMemory.agentId, agentId));
+  } else if (projectId) {
+    conditions.push(eq(userMemory.projectId, projectId));
+  } else {
+    conditions.push(isNull(userMemory.agentId));
+    conditions.push(isNull(userMemory.projectId));
+  }
+  const [result] = await database
+    .select({ value: count() })
+    .from(userMemory)
+    .where(and(...conditions));
+  return result?.value ?? 0;
+}
+
+export async function getUserScopeMemoriesForChat({
+  userId,
+  agentId,
+}: {
+  userId: string;
+  agentId?: string | null;
+}) {
+  if (agentId) {
+    const ag = await getAgentById({ id: agentId, userId });
+    if (ag && (ag as any).memoryMode === "custom") {
+      return {
+        mode: "custom" as const,
+        memories: await getAgentMemories({ agentId, userId, limit: 50 }),
+      };
+    }
+  }
+  return {
+    mode: "global" as const,
+    memories: await getGlobalMemories({ userId, limit: 50 }),
+  };
+}
+
+export async function getGhostMemoryEnabled(userId: string): Promise<boolean> {
+  try {
+    await dbReady();
+    if (!_rawClient) {
+      return false;
+    }
+    const rows = await _rawClient`
+      SELECT ghost_memory_enabled FROM users
+      WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text
+      LIMIT 1`;
+    return Boolean((rows as any[])[0]?.ghost_memory_enabled);
+  } catch (e) {
+    console.error("getGhostMemoryEnabled error", e);
+    return false;
+  }
+}
+
+export async function createMemory({
+  userId,
+  content,
+  agentId = null,
+  projectId = null,
+}: {
+  userId: string;
+  content: string;
+  agentId?: string | null;
+  projectId?: string | null;
+}) {
+  const database = await getDb();
+  const [created] = await database
+    .insert(userMemory)
+    .values({
+      agentId: agentId ?? null,
+      projectId: projectId ?? null,
+      content: content.replace(/\u0000/g, "").trim().slice(0, 2000),
+      userId,
+    })
+    .returning();
+  return created;
+}
+
+export async function deleteMemory({
+  id,
+  userId,
+}: {
+  id: string;
+  userId: string;
+}) {
+  const database = await getDb();
+  const [deleted] = await database
+    .delete(userMemory)
+    .where(and(eq(userMemory.id, id), eq(userMemory.userId, userId)))
+    .returning();
+  return deleted ?? null;
+}
+
+export async function searchMemories({
+  userId,
+  query,
+  agentId = null,
+  projectId = null,
+  limit = 20,
+}: {
+  userId: string;
+  query: string;
+  agentId?: string | null;
+  projectId?: string | null;
+  limit?: number;
+}) {
+  const database = await getDb();
+  const safe = query.replace(/[%_\\]/g, "\\$&");
+  const conditions = [eq(userMemory.userId, userId)];
+  if (agentId) {
+    conditions.push(eq(userMemory.agentId, agentId));
+  } else if (projectId) {
+    conditions.push(eq(userMemory.projectId, projectId));
+  } else {
+    conditions.push(isNull(userMemory.agentId));
+    conditions.push(isNull(userMemory.projectId));
+  }
+  conditions.push(sql`${userMemory.content} ILIKE ${"%" + safe + "%"}`);
+  return database
+    .select()
+    .from(userMemory)
+    .where(and(...conditions))
+    .orderBy(desc(userMemory.createdAt))
+    .limit(limit);
 }
 
 export async function getAgentTemplates() {

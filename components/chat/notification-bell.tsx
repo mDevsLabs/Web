@@ -4,10 +4,12 @@ import {
   BellIcon,
   Bot,
   CheckCheckIcon,
+  CheckIcon,
   Folder,
   Lock,
   Megaphone,
   Puzzle,
+  Trash2Icon,
   TrashIcon,
 } from "lucide-react";
 import Link from "next/link";
@@ -132,24 +134,57 @@ export function NotificationBell() {
     }
   };
 
-  const handleMarkOne = async (id: string) => {
+  const handleDeleteAll = async () => {
+    if (!notifications.length) {
+      return;
+    }
+    if (!confirm("Voulez-vous vraiment supprimer toutes vos notifications ?")) {
+      return;
+    }
     try {
-      await fetch(`/api/notifications/${id}`, {
-        body: JSON.stringify({ action: "read" }),
-        headers: { "Content-Type": "application/json" },
-        method: "PATCH",
-      });
+      await fetch("/api/notifications?all=true", { method: "DELETE" });
       mutate(
         (prev) =>
           prev
             ? {
                 ...prev,
-                notifications: prev.notifications.map((n) =>
-                  n.id === id ? { ...n, isRead: true } : n
-                ),
-                unreadCount: Math.max(0, (prev.unreadCount ?? 1) - 1),
+                notifications: [],
+                unreadCount: 0,
               }
             : prev,
+        false
+      );
+      toast.success("Toutes les notifications ont été supprimées");
+    } catch {
+      toast.error("Erreur lors de la suppression des notifications");
+    }
+  };
+
+  const handleMarkOne = async (id: string, isRead = true) => {
+    try {
+      await fetch(`/api/notifications/${id}`, {
+        body: JSON.stringify({ action: isRead ? "read" : "unread", isRead }),
+        headers: { "Content-Type": "application/json" },
+        method: "PATCH",
+      });
+      mutate(
+        (prev) => {
+          if (!prev) {
+            return prev;
+          }
+          const target = prev.notifications.find((n) => n.id === id);
+          if (!target || target.isRead === isRead) {
+            return prev;
+          }
+          const diff = isRead ? -1 : 1;
+          return {
+            ...prev,
+            notifications: prev.notifications.map((n) =>
+              n.id === id ? { ...n, isRead } : n
+            ),
+            unreadCount: Math.max(0, (prev.unreadCount ?? 0) + diff),
+          };
+        },
         false
       );
     } catch {}
@@ -226,12 +261,22 @@ export function NotificationBell() {
           <div className="flex items-center gap-1">
             {unread > 0 && (
               <button
-                className="rounded-lg p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground"
+                className="rounded-lg p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
                 onClick={handleMarkAllRead}
                 title="Tout marquer comme lu"
                 type="button"
               >
                 <CheckCheckIcon className="size-3.5" />
+              </button>
+            )}
+            {notifications.length > 0 && (
+              <button
+                className="rounded-lg p-1.5 text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-colors"
+                onClick={handleDeleteAll}
+                title="Tout supprimer"
+                type="button"
+              >
+                <Trash2Icon className="size-3.5" />
               </button>
             )}
             <Link
@@ -298,7 +343,9 @@ export function NotificationBell() {
                           className="text-[11px] font-medium text-primary hover:underline"
                           href={n.link}
                           onClick={() => {
-                            handleMarkOne(n.id);
+                            if (!n.isRead) {
+                              handleMarkOne(n.id, true);
+                            }
                             setOpen(false);
                           }}
                         >
@@ -307,19 +354,22 @@ export function NotificationBell() {
                       )}
                     </div>
                   </div>
-                  <div className="flex flex-col gap-1 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
-                    {!n.isRead && (
-                      <button
-                        className="rounded-md p-1 hover:bg-muted text-muted-foreground hover:text-foreground"
-                        onClick={() => handleMarkOne(n.id)}
-                        title="Marquer comme lu"
-                        type="button"
-                      >
-                        <CheckCheckIcon className="size-3.5" />
-                      </button>
-                    )}
+                  <div className="flex flex-col gap-1 shrink-0">
                     <button
-                      className="rounded-md p-1 hover:bg-destructive/10 text-muted-foreground hover:text-destructive"
+                      className={cn(
+                        "rounded-md p-1 transition-colors",
+                        n.isRead
+                          ? "text-muted-foreground/50 hover:bg-muted hover:text-muted-foreground"
+                          : "text-primary hover:bg-primary/10 hover:text-primary font-medium"
+                      )}
+                      onClick={() => handleMarkOne(n.id, !n.isRead)}
+                      title={n.isRead ? "Marquer comme non lu" : "Marquer comme lu"}
+                      type="button"
+                    >
+                      <CheckCheckIcon className={cn("size-3.5", !n.isRead && "text-primary")} />
+                    </button>
+                    <button
+                      className="rounded-md p-1 hover:bg-destructive/10 text-muted-foreground hover:text-destructive transition-colors opacity-70 group-hover:opacity-100"
                       onClick={() => handleDelete(n.id)}
                       title="Supprimer"
                       type="button"

@@ -878,7 +878,13 @@ export default function McpClient() {
                               <MoreVerticalIcon className="size-4" />
                             </Button>
                           </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end" className="w-48">
+                          <DropdownMenuContent
+                            align="end"
+                            className="w-48"
+                            collisionPadding={12}
+                            side="bottom"
+                            sideOffset={6}
+                          >
                             <DropdownMenuItem
                               className="gap-2 cursor-pointer text-xs"
                               onClick={() => handleToggleEnabled(s)}
@@ -921,10 +927,6 @@ export default function McpClient() {
                         </DropdownMenu>
                       </div>
                       <div className="flex items-center gap-1.5 flex-wrap mb-2 text-[10.5px] text-muted-foreground">
-                        <span>⏱ {(s as any).avgLatencyMs ?? 0}ms</span>
-                        <span>·</span>
-                        <span>📞 {(s as any).callCount ?? 0} appel(s)</span>
-                        <span>·</span>
                         <span
                           className={cn(
                             (s as any).uptimeStatus === "online"
@@ -989,13 +991,14 @@ export default function McpClient() {
                           </span>
                         </button>
                         <Button
-                          className="h-6 px-2 text-[10.5px]"
+                          aria-label="Synchroniser les outils"
+                          className="h-6 w-6 p-0"
                           onClick={() => handleRefreshTools(s)}
                           size="sm"
+                          title="Synchroniser les outils"
                           variant="ghost"
                         >
-                          <RefreshCwIcon className="size-2.5 mr-1" />
-                          Synchro
+                          <RefreshCwIcon className="size-3" />
                         </Button>
                       </div>
                     </div>

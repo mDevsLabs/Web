@@ -22,11 +22,13 @@ import { dateTime } from "@/lib/ai/tools/datetime";
 import { editDocument } from "@/lib/ai/tools/edit-document";
 import { getWeather } from "@/lib/ai/tools/get-weather";
 import { imageGenerate } from "@/lib/ai/tools/image-generate";
+import { memory } from "@/lib/ai/tools/memory";
 import { note } from "@/lib/ai/tools/note";
 import { requestSuggestions } from "@/lib/ai/tools/request-suggestions";
 import { updateDocument } from "@/lib/ai/tools/update-document";
 import { webSearch } from "@/lib/ai/tools/web-search";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
+import { isPaidTier, memoryLimitForTier } from "@/lib/auth/plan";
 import { isProductionEnvironment, MAI_API_URL } from "@/lib/constants";
 import { getUserApiKey } from "@/lib/db/api-keys";
 import {
@@ -124,6 +126,8 @@ export async function POST(request: Request) {
 
     // 1. Vérification du quota hebdomadaire
     const userId = maiUser.id || maiUser.email;
+    // Blocage Free : ignorer agent/skill transmis dans le body (pas d'injection, pas de switch modèle)
+    const isFreeUser = !isPaidTier(maiUser.tier);
 
     if (maiUser.tokensUsed >= maiUser.limit) {
       return new Response(
@@ -165,7 +169,9 @@ export async function POST(request: Request) {
       } catch {}
     }
 
-    const effectiveSkillId = (chat as any)?.skillId || skillId;
+    const effectiveSkillId = isFreeUser
+      ? null
+      : (chat as any)?.skillId || skillId;
     let skillInstructions: string | null = null;
     let skillTools: string[] = [];
 
@@ -186,9 +192,13 @@ export async function POST(request: Request) {
 
     // Agent remplace Mode IA — agentId envoyé par use-active-chat (cookie + DB)
     const bodyAny = requestBody as any;
-    const agentIdFromBody: string | null =
-      bodyAny.agentId ?? bodyAny.selectedAgentId ?? null;
-    const chatModelFromAgent: string | null = bodyAny.selectedChatModel || null;
+    const agentIdFromBody: string | null = isFreeUser
+      ? null
+      : (bodyAny.agentId ?? bodyAny.selectedAgentId ?? null);
+    const chatModelFromAgent: string | null =
+      !isFreeUser && bodyAny.selectedChatModel
+        ? bodyAny.selectedChatModel
+        : null;
     // Si un agent est actif, son modèle par défaut prime (global cookie déjà mis à jour côté client)
     let agentInstructions: string | null = null;
     let agentDefaultModel: string | null = null;
@@ -197,7 +207,9 @@ export async function POST(request: Request) {
     let agentTemperature: number | null = null;
     let agentTopP: number | null = null;
     let agentMaxTokens: number | null = null;
-    const effectiveAgentId = (chat as any)?.agentId || agentIdFromBody || null;
+    const effectiveAgentId = isFreeUser
+      ? null
+      : (chat as any)?.agentId || agentIdFromBody || null;
     if (effectiveAgentId) {
       try {
         const { getAgentById } = await import("@/lib/db/queries");
@@ -385,6 +397,53 @@ export async function POST(request: Request) {
       }
     } catch {}
 
+    // Mémoire personnalisée (globale ou spécifique agent + projet)
+    // Désactivée en mode fantôme sauf si la préférence utilisateur "mémoire fantôme" est active
+    let ghostMemoryEnabled = false;
+    if (isGhostMode) {
+      try {
+        const { getGhostMemoryEnabled } = await import("@/lib/db/queries");
+        ghostMemoryEnabled = await getGhostMemoryEnabled(userId);
+      } catch {}
+    }
+    const memoryActive = !isGhostMode || ghostMemoryEnabled;
+    let userMemoryBlock = "";
+    let projectMemoryBlock = "";
+    if (memoryActive) {
+      try {
+        const { getUserScopeMemoriesForChat, getProjectMemories } =
+          await import("@/lib/db/queries");
+        const { memories } = await getUserScopeMemoriesForChat({
+          agentId: effectiveAgentId,
+          userId,
+        });
+        if (memories.length > 0) {
+          const lines = memories
+            .map(
+              (m, i) => `${i + 1}. ${m.content.replace(/\s+/g, " ").trim()}`
+            )
+            .join("\n")
+            .slice(0, 6000);
+          userMemoryBlock = `MÉMOIRE — Informations retenues sur l'utilisateur :\n${lines}\nUtilise ces informations pour personnaliser tes réponses sans les répéter verbatim.`;
+        }
+        if (effectiveProjectId) {
+          const projectMemories = await getProjectMemories({
+            projectId: effectiveProjectId,
+            userId,
+          });
+          if (projectMemories.length > 0) {
+            const lines = projectMemories
+              .map(
+                (m, i) => `${i + 1}. ${m.content.replace(/\s+/g, " ").trim()}`
+              )
+              .join("\n")
+              .slice(0, 6000);
+            projectMemoryBlock = `MÉMOIRE DU PROJET — Informations retenues sur ce projet :\n${lines}`;
+          }
+        }
+      } catch {}
+    }
+
     // Chat-level overrides (persisted in Chat table)
     const chatCustomInstructions =
       (chat as any)?.customInstructions ?? customInstructions ?? null;
@@ -399,8 +458,14 @@ export async function POST(request: Request) {
     if (userCustomEnabled && userCustomInstructions) {
       effectiveAddendum = `${effectiveAddendum}\n\nInstructions personnalisées de l'utilisateur (à respecter en priorité):\n${userCustomInstructions}`;
     }
+    if (userMemoryBlock) {
+      effectiveAddendum = `${effectiveAddendum}\n\n${userMemoryBlock}`;
+    }
     if (projectCustomInstructions) {
       effectiveAddendum = `${effectiveAddendum}\n\nContexte et instructions du dossier/projet :\n${projectCustomInstructions}`;
+    }
+    if (projectMemoryBlock) {
+      effectiveAddendum = `${effectiveAddendum}\n\n${projectMemoryBlock}`;
     }
     if (chatCustomInstructions) {
       effectiveAddendum = `${effectiveAddendum}\n\nInstructions spécifiques à cette discussion:\n${chatCustomInstructions}`;
@@ -423,7 +488,11 @@ export async function POST(request: Request) {
       ])
     );
     const requestedTools: string[] = combinedEnabledTools.filter(
-      (t) => !isGhostMode || (t !== "imageGenerate" && t !== "audioGenerate")
+      (t) =>
+        !isGhostMode ||
+        (t !== "imageGenerate" &&
+          t !== "audioGenerate" &&
+          (t !== "memory" || ghostMemoryEnabled))
     );
     if (requestedTools.length > 0) {
       const toolLabels: Record<string, string> = {
@@ -439,6 +508,8 @@ export async function POST(request: Request) {
         getWeather:
           "getWeather (météo actuelle et prévisions 1-7 jours, celsius/fahrenheit)",
         imageGenerate: "imageGenerate (génération d'image)",
+        memory:
+          "memory (mémoire personnalisée — retenir, oublier, lister ou retrouver des informations sur l'utilisateur)",
         note: "note (créer une note formatée et téléchargeable en markdown, texte, JSON, CSV, HTML, ou code)",
         requestSuggestions: "requestSuggestions (suggestions)",
         updateDocument: "updateDocument (réécrire artifact)",
@@ -531,7 +602,10 @@ export async function POST(request: Request) {
         );
         const requestedTools2: string[] = combinedRequestedTools.filter(
           (t) =>
-            !isGhostMode || (t !== "imageGenerate" && t !== "audioGenerate")
+            !isGhostMode ||
+            (t !== "imageGenerate" &&
+              t !== "audioGenerate" &&
+              (t !== "memory" || ghostMemoryEnabled))
         );
 
         const hasMcpEnabled = requestedTools2.some(
@@ -696,6 +770,15 @@ export async function POST(request: Request) {
                     } as any,
                   }),
                 }),
+            ...(memoryActive
+              ? {
+                  memory: memory({
+                    agentId: effectiveAgentId,
+                    memoryLimit: memoryLimitForTier(maiUser.tier),
+                    userId,
+                  }),
+                }
+              : {}),
             note: note({
               dataStream,
               session: {

@@ -20,7 +20,7 @@ export async function GET() {
   try {
     const sql = getPostgres();
     const rows =
-      await sql`SELECT custom_instructions, custom_instructions_enabled, default_temperature, default_top_p, default_agent_id, default_chat_model, default_chat_visibility, default_image_model, default_image_size, default_audio_model, default_audio_voice, default_audio_speed FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
+      await sql`SELECT custom_instructions, custom_instructions_enabled, default_temperature, default_top_p, default_agent_id, default_chat_model, default_chat_visibility, default_image_model, default_image_size, default_audio_model, default_audio_voice, default_audio_speed, ghost_memory_enabled FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
     await sql.end();
     if (rows.length === 0) {
       return Response.json({
@@ -51,6 +51,7 @@ export async function GET() {
         rows[0].default_image_model || "black-forest-labs/flux-schnell",
       defaultImageSize: rows[0].default_image_size || "1024x1024",
       enabled: rows[0].custom_instructions_enabled || false,
+      ghostMemoryEnabled: rows[0].ghost_memory_enabled || false,
       temperature: rows[0].default_temperature ?? 0.7,
       topP: rows[0].default_top_p ?? 0.9,
     });
@@ -71,6 +72,7 @@ const schema = z.object({
   defaultImageModel: z.string().max(150).optional(),
   defaultImageSize: z.string().max(50).optional(),
   enabled: z.boolean().optional(),
+  ghostMemoryEnabled: z.boolean().optional(),
   temperature: z.number().min(0).max(2).optional(),
   topP: z.number().min(0).max(1).optional(),
 });
@@ -96,6 +98,10 @@ export async function POST(request: Request) {
     if (parsed.enabled !== undefined) {
       sets.push(`custom_instructions_enabled = $${idx++}`);
       values.push(parsed.enabled);
+    }
+    if (parsed.ghostMemoryEnabled !== undefined) {
+      sets.push(`ghost_memory_enabled = $${idx++}`);
+      values.push(parsed.ghostMemoryEnabled);
     }
     if (parsed.temperature !== undefined) {
       sets.push(`default_temperature = $${idx++}`);

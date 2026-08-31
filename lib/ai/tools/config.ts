@@ -1,4 +1,5 @@
 import {
+  BrainIcon,
   CalculatorIcon,
   CalendarIcon,
   CloudSunIcon,
@@ -26,6 +27,7 @@ export const TOOL_IDS = [
   "calculator",
   "dateTime",
   "note",
+  "memory",
 ] as const;
 
 export type ToolId = (typeof TOOL_IDS)[number];
@@ -90,6 +92,13 @@ export const TOOLS_META: Record<ToolId, ToolMeta> = {
     icon: ImageIcon as any,
     id: "imageGenerate",
     label: "Générer image",
+  },
+  memory: {
+    description:
+      "Mémoire personnalisée : informations retenues sur vous (gérables dans Préférences IA)",
+    icon: BrainIcon as any,
+    id: "memory",
+    label: "Mémoire",
   },
   note: {
     description:

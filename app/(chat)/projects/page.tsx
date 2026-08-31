@@ -29,6 +29,7 @@ import { useDebounceValue } from "usehooks-ts";
 import "react-data-grid/lib/styles.css";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
+import { MemoryCard } from "@/components/settings/memory-card";
 import type { ModelCapabilities } from "@/lib/ai/models";
 import {
   PROJECT_ICON_KEYS,
@@ -1154,6 +1155,12 @@ export default function ProjectsPage() {
                 ce projet.
               </span>
             </div>
+            {editingProject && (
+              <div className="grid gap-2">
+                <Label>Mémoire du projet</Label>
+                <MemoryCard projectId={editingProject.id} />
+              </div>
+            )}
             <div className="grid gap-2">
               <Label>Modèle d'IA par défaut</Label>
               <ModelSelectorCompact

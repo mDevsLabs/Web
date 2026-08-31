@@ -10,6 +10,8 @@ import {
   ImageIcon,
   KeyRoundIcon,
   Loader2Icon,
+  LockIcon,
+  RefreshCwIcon,
   SettingsIcon,
   ShieldCheckIcon,
   SparklesIcon,
@@ -37,6 +39,9 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { MemoryCard } from "@/components/settings/memory-card";
+import { UpgradeDialog } from "@/components/common/upgrade-dialog";
+import { useTier } from "@/hooks/use-tier";
 import {
   resolveImagesUsage,
   resolveSpeechUsage,
@@ -251,6 +256,52 @@ export default function SettingsPage() {
     { dedupingInterval: 30_000 }
   );
 
+  const { isFree } = useTier();
+  const [defaultAgentId, setDefaultAgentId] = useState<string>("none");
+  const [isSavingDefaultAgent, setIsSavingDefaultAgent] = useState(false);
+  const [agentsUpgradeOpen, setAgentsUpgradeOpen] = useState(false);
+  const { data: prefAgentsData } = useSWR(
+    !isFree ? "/api/agents" : null,
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 30_000 }
+  );
+  const prefAgents: any[] = Array.isArray(prefAgentsData) ? prefAgentsData : [];
+
+  const handleSaveDefaultAgent = useCallback(
+    async (next: string) => {
+      if (isFree) {
+        return;
+      }
+      const previous = defaultAgentId;
+      setDefaultAgentId(next);
+      setIsSavingDefaultAgent(true);
+      try {
+        const res = await fetch("/api/user/preferences", {
+          body: JSON.stringify({
+            defaultAgentId: next === "none" ? null : next,
+          }),
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+        });
+        if (!res.ok) {
+          throw new Error("Erreur de sauvegarde de l'agent par défaut");
+        }
+        toast.success(
+          next === "none"
+            ? "Agent par défaut désactivé — modèle standard utilisé"
+            : "Agent par défaut enregistré — appliqué aux nouvelles discussions"
+        );
+        await mutateCustomPref();
+      } catch (e: any) {
+        setDefaultAgentId(previous);
+        toast.error(e.message || "Erreur de sauvegarde de l'agent par défaut");
+      } finally {
+        setIsSavingDefaultAgent(false);
+      }
+    },
+    [defaultAgentId, isFree, mutateCustomPref]
+  );
+
   useEffect(() => {
     if (customPrefData) {
       if (customPrefData.customInstructions !== undefined) {
@@ -261,6 +312,9 @@ export default function SettingsPage() {
       }
       if (customPrefData.defaultChatModel && !getCookie("chat-model")) {
         setDefaultModelId(customPrefData.defaultChatModel);
+      }
+      if (customPrefData.defaultAgentId !== undefined) {
+        setDefaultAgentId(customPrefData.defaultAgentId || "none");
       }
       if (customPrefData.enabled !== undefined) {
         setCustomEnabled(!!customPrefData.enabled);
@@ -329,6 +383,32 @@ export default function SettingsPage() {
     if (typeof window !== "undefined" && "Notification" in window) {
       setBrowserPerm(Notification.permission);
     }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !navigator.permissions?.query) {
+      return;
+    }
+    let permStatus: PermissionStatus | null = null;
+    const syncPerm = () => setBrowserPerm(Notification.permission);
+    navigator.permissions
+      .query({ name: "notifications" as PermissionName })
+      .then((p) => {
+        permStatus = p;
+        syncPerm();
+        p.addEventListener("change", syncPerm);
+      })
+      .catch(() => {});
+    const onFocus = () => {
+      if ("Notification" in window) {
+        setBrowserPerm(Notification.permission);
+      }
+    };
+    window.addEventListener("focus", onFocus);
+    return () => {
+      permStatus?.removeEventListener("change", syncPerm);
+      window.removeEventListener("focus", onFocus);
+    };
   }, []);
 
   const handleRequestNotificationPermission = useCallback(async () => {
@@ -1199,6 +1279,80 @@ export default function SettingsPage() {
             </div>
           </div>
 
+          {/* Agent par défaut */}
+          <div
+            className={`p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6 ${isFree ? "cursor-pointer" : ""}`}
+            onClick={
+              isFree
+                ? () => {
+                    toast.error(
+                      "Sélection d'agents réservée aux forfaits Plus, Pro et Max"
+                    );
+                    setAgentsUpgradeOpen(true);
+                  }
+                : undefined
+            }
+          >
+            <div className="flex items-center gap-2.5">
+              <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 ring-1 ring-indigo-500/20">
+                <BotIcon className="size-5" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-base font-semibold text-foreground">
+                  Agent par défaut
+                </h3>
+                <p className="text-xs text-muted-foreground">
+                  Agent activé automatiquement au lancement de chaque nouvelle
+                  discussion.
+                </p>
+              </div>
+              {isSavingDefaultAgent && (
+                <Loader2Icon className="size-4 animate-spin text-muted-foreground" />
+              )}
+            </div>
+            {isFree ? (
+              <div className="flex items-center gap-2 p-3 rounded-xl border border-dashed border-amber-500/40 bg-amber-500/5 text-xs text-amber-700 dark:text-amber-400">
+                <LockIcon className="size-4 shrink-0" />
+                <span>
+                  Réservé aux forfaits Plus, Pro et Max — passez à un forfait
+                  supérieur pour choisir un agent par défaut.
+                </span>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-1.5">
+                <Label className="text-xs font-medium text-muted-foreground">
+                  Agent activé au lancement d'une nouvelle conversation
+                </Label>
+                <select
+                  className="w-full rounded-xl border border-border/60 bg-muted/20 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer"
+                  disabled={isSavingDefaultAgent}
+                  onChange={(e) => handleSaveDefaultAgent(e.target.value)}
+                  value={defaultAgentId}
+                >
+                  <option value="none">Aucun (modèle standard)</option>
+                  {prefAgents.map((a) => (
+                    <option key={a.id} value={a.id}>
+                      {a.emoji ? `${a.emoji} ` : ""}
+                      {a.name}
+                    </option>
+                  ))}
+                </select>
+                <span className="text-[11px] text-muted-foreground">
+                  S'applique au prochain chargement du chat. Modifiable à tout
+                  moment via la mention @agent.
+                </span>
+              </div>
+            )}
+          </div>
+          <UpgradeDialog
+            feature="agents"
+            onOpenChange={setAgentsUpgradeOpen}
+            open={agentsUpgradeOpen}
+          />
+
+          {/* Mémoire personnalisée */}
+          <MemoryCard />
+
           {/* Préférences Outils de Génération (Images & Audio) */}
           <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6">
             <div className="flex items-center gap-2.5">
@@ -1474,43 +1628,61 @@ export default function SettingsPage() {
             </div>
 
             {/* Demande permission */}
-            <div className="p-3 rounded-xl border border-amber-500/20 bg-amber-500/5 flex flex-col gap-2">
-              <div className="flex items-center justify-between gap-3">
-                <div className="flex flex-col">
-                  <span className="text-sm font-medium text-foreground">
-                    Permission du navigateur
-                  </span>
-                  <span className="text-xs text-muted-foreground">
-                    État actuel :{" "}
-                    <span className="font-mono font-semibold">
-                      {browserPerm}
-                    </span>{" "}
-                    — requise pour les notifications système.
-                  </span>
-                </div>
+            {browserPerm === "granted" ? (
+              <div className="p-3 rounded-xl border border-emerald-500/20 bg-emerald-500/5 flex items-center justify-between gap-3">
+                <span className="text-sm font-medium text-foreground flex items-center gap-2">
+                  <ShieldCheckIcon className="size-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                  Permission accordée
+                </span>
                 <button
-                  className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-amber-600 text-white px-4 py-2 text-xs font-semibold hover:opacity-90 cursor-pointer shrink-0"
+                  aria-label="Redemander l'autorisation"
+                  className="inline-flex items-center justify-center rounded-lg p-1.5 text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors cursor-pointer shrink-0"
                   onClick={handleRequestNotificationPermission}
+                  title="Redemander l'autorisation"
                   type="button"
                 >
-                  <BellIcon className="size-3.5" />
-                  Demander l'autorisation
+                  <RefreshCwIcon className="size-3.5" />
                 </button>
               </div>
-              <p className="text-[11px] text-muted-foreground">
-                En activant, vous acceptez de recevoir des notifications
-                navigateur et in-app. Consultez{" "}
-                <a
-                  className="underline text-primary"
-                  href="https://mai-devs.vercel.app"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  mai-devs.vercel.app
-                </a>{" "}
-                pour la politique RGPD.
-              </p>
-            </div>
+            ) : (
+              <div className="p-3 rounded-xl border border-amber-500/20 bg-amber-500/5 flex flex-col gap-2">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex flex-col">
+                    <span className="text-sm font-medium text-foreground">
+                      Permission du navigateur
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      État actuel :{" "}
+                      <span className="font-mono font-semibold">
+                        {browserPerm}
+                      </span>{" "}
+                      — requise pour les notifications système.
+                    </span>
+                  </div>
+                  <button
+                    className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-amber-600 text-white px-4 py-2 text-xs font-semibold hover:opacity-90 cursor-pointer shrink-0"
+                    onClick={handleRequestNotificationPermission}
+                    type="button"
+                  >
+                    <BellIcon className="size-3.5" />
+                    Demander l'autorisation
+                  </button>
+                </div>
+                <p className="text-[11px] text-muted-foreground">
+                  En activant, vous acceptez de recevoir des notifications
+                  navigateur et in-app. Consultez{" "}
+                  <a
+                    className="underline text-primary"
+                    href="https://mai-devs.vercel.app"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    mai-devs.vercel.app
+                  </a>{" "}
+                  pour la politique RGPD.
+                </p>
+              </div>
+            )}
 
             {/* Toggle global */}
             <label className="flex items-center justify-between p-3 rounded-xl border border-border/50 bg-muted/20 cursor-pointer">
@@ -1696,7 +1868,7 @@ export default function SettingsPage() {
                 </div>
                 <div>
                   <h3 className="text-base font-semibold text-foreground">
-                    Utilisation de l'IA (Tokens mAI)
+                    Utilisation de l'IA
                   </h3>
                   <p className="text-xs text-muted-foreground">
                     Consommation calculée sur vos invites et réponses générées
@@ -1797,11 +1969,10 @@ export default function SettingsPage() {
                 </div>
                 <div className="min-w-0">
                   <h3 className="text-base font-semibold text-foreground truncate">
-                    Synthèse Vocale (Tokens Speech)
+                    Synthèse Vocale
                   </h3>
                   <p className="hidden text-xs text-muted-foreground sm:block">
                     Tokens consommés pour l'API Speech et Text-to-Speech
-                    OpenRouter
                   </p>
                 </div>
               </div>
@@ -1848,7 +2019,7 @@ export default function SettingsPage() {
                 </div>
                 <div>
                   <h3 className="text-base font-semibold text-foreground">
-                    Stockage Cloud mAI (Documents & Fichiers)
+                    Stockage Cloud mAI
                   </h3>
                   <p className="text-xs text-muted-foreground">
                     Espace utilisé pour vos documents, pièces jointes et médias

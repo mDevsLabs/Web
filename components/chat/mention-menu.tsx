@@ -1,6 +1,12 @@
 "use client";
 
-import { BotIcon, CpuIcon, PlusIcon, SparklesIcon } from "lucide-react";
+import {
+  BotIcon,
+  BrainIcon,
+  CpuIcon,
+  PlusIcon,
+  SparklesIcon,
+} from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { AgentIcon } from "@/components/agents/agent-icon";
@@ -16,7 +22,8 @@ export type MentionSelectPayload =
   | { type: "project"; project: MentionProject }
   | { type: "agent"; agent: Agent }
   | { type: "skill"; skill: Skill }
-  | { type: "mcp"; server: McpServer };
+  | { type: "mcp"; server: McpServer }
+  | { type: "memory" };
 
 type MentionMenuProps = {
   query: string;
@@ -31,8 +38,9 @@ type MentionMenuProps = {
   supportsTools?: boolean;
 };
 
-// Flat item list for keyboard nav: skills then mcp then projects then agents
+// Flat item list for keyboard nav: memory then skills then mcp then projects then agents
 export type FlatMentionItem =
+  | { kind: "memory"; id: string; label: string }
   | { kind: "skill"; id: string; label: string; skill: Skill }
   | { kind: "mcp"; id: string; label: string; server: McpServer }
   | { kind: "project"; id: string; label: string; project: MentionProject }
@@ -46,6 +54,14 @@ function buildFlatList(
   agents: Agent[] = []
 ): FlatMentionItem[] {
   const q = query.toLowerCase().trim();
+
+  const memoryItems: FlatMentionItem[] =
+    !q ||
+    "memory".includes(q) ||
+    "mémoire".includes(q) ||
+    "memoire".includes(q)
+      ? [{ id: "memory", kind: "memory" as const, label: "Memory" }]
+      : [];
 
   const filteredSkills = q
     ? skills.filter(
@@ -109,7 +125,13 @@ function buildFlatList(
     label: a.name,
   }));
 
-  return [...skillItems, ...mcpItems, ...projectItems, ...agentItems];
+  return [
+    ...memoryItems,
+    ...skillItems,
+    ...mcpItems,
+    ...projectItems,
+    ...agentItems,
+  ];
 }
 
 export function getFilteredMentionItems(
@@ -149,6 +171,8 @@ function MentionItem({
       onSelect({ server: item.server, type: "mcp" });
     } else if (item.kind === "project") {
       onSelect({ project: item.project, type: "project" });
+    } else if (item.kind === "memory") {
+      onSelect({ type: "memory" });
     } else {
       onSelect({ agent: item.agent, type: "agent" });
     }
@@ -157,6 +181,38 @@ function MentionItem({
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
   }, []);
+
+  if (item.kind === "memory") {
+    return (
+      <button
+        className={cn(
+          "flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors",
+          isSelected ? "bg-muted/70" : "hover:bg-muted/40"
+        )}
+        data-selected={isSelected}
+        onClick={handleClick}
+        onMouseDown={handleMouseDown}
+        type="button"
+      >
+        <div className="flex size-6 shrink-0 items-center justify-center rounded-md bg-sky-500/10 text-sky-600 dark:text-sky-400">
+          <BrainIcon className="size-3.5" />
+        </div>
+        <div className="flex flex-col min-w-0">
+          <div className="flex items-center gap-1.5">
+            <span className="text-[13px] font-medium text-foreground truncate">
+              @{item.label}
+            </span>
+            <span className="text-[10px] bg-sky-500/10 text-sky-600 dark:text-sky-400 font-semibold px-1.5 py-0.2 rounded">
+              Mémoire
+            </span>
+          </div>
+          <span className="text-[11px] text-muted-foreground/70 truncate">
+            L'IA pourra retenir, retrouver ou oublier des informations
+          </span>
+        </div>
+      </button>
+    );
+  }
 
   if (item.kind === "skill") {
     return (
@@ -341,6 +397,7 @@ export function MentionMenu({
     [query, projects, skills, mcpServers, agents]
   );
 
+  const memoryItems = flat.filter((i) => i.kind === "memory");
   const skillItems = flat.filter((i) => i.kind === "skill");
   const mcpItems = flat.filter((i) => i.kind === "mcp");
   const projectItems = flat.filter((i) => i.kind === "project");
@@ -365,6 +422,28 @@ export function MentionMenu({
       ref={menuRef}
     >
       <div className="max-h-80 overflow-y-auto pb-1 no-scrollbar">
+        {/* Section Mémoire (@Memory) */}
+        {memoryItems.length > 0 && (
+          <>
+            <div className="px-4 py-2 bg-muted/40 border-b border-border/40 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground flex items-center justify-between">
+              <span className="flex items-center gap-1.5">
+                <BrainIcon className="size-3.5" /> Mémoire
+              </span>
+            </div>
+            {memoryItems.map((item) => {
+              const flatIndex = flat.indexOf(item);
+              return (
+                <MentionItem
+                  isSelected={flatIndex === selectedIndex}
+                  item={item}
+                  key={`mem-${item.id}`}
+                  onSelect={onSelect}
+                />
+              );
+            })}
+          </>
+        )}
+
         {/* Section Skills */}
         {skillItems.length > 0 && (
           <>

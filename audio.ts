@@ -67,40 +67,6 @@ const FALLBACK_SPEECH_MODELS = [
 ];
 
 let speechTablesInitialized = false;
-
-// Voix Flux par défaut : uniquement valides pour la famille flux/deepgram.
-// Les coller à tous les modèles ferait croire que des voix étrangères
-// (ex. Alexis sur S2.1) sont disponibles.
-const FLUX_FALLBACK_VOICES = [
-  "flux-alexis-en",
-  "flux-michael-en",
-  "flux-stacy-en",
-  "flux-sam-en",
-  "flux-asteria-en",
-  "flux-orion-en",
-];
-
-function isFluxFallbackVoices(voices: unknown): boolean {
-  return (
-    Array.isArray(voices) &&
-    voices.length === FLUX_FALLBACK_VOICES.length &&
-    [...voices].sort().join(",") === [...FLUX_FALLBACK_VOICES].sort().join(",")
-  );
-}
-
-function resolveModelVoices(modelId: string, declaredVoices: unknown) {
-  const id = (modelId || "").toLowerCase();
-  const isFluxFamily = id.includes("flux") || id.includes("deepgram");
-  const declared = Array.isArray(declaredVoices) ? declaredVoices : [];
-  if (declared.length === 0) {
-    return isFluxFamily ? FLUX_FALLBACK_VOICES : undefined;
-  }
-  if (!isFluxFamily && isFluxFallbackVoices(declared)) {
-    // Fallback amont collé à tous les modèles : voix non propres au modèle
-    return undefined;
-  }
-  return declared;
-}
 async function ensureSpeechTables(sql: any) {
   if (speechTablesInitialized) return;
   try {
@@ -185,7 +151,14 @@ export function registerAudioRoutes(app: Hono) {
               "speed",
               "response_format",
             ],
-            voices: resolveModelVoices(m.id, m.voices),
+            voices: m.voices || [
+              "flux-alexis-en",
+              "flux-michael-en",
+              "flux-stacy-en",
+              "flux-sam-en",
+              "flux-asteria-en",
+              "flux-orion-en",
+            ],
           };
         });
 
@@ -642,6 +615,7 @@ export function registerAudioRoutes(app: Hono) {
         LIMIT 1
       `.catch(() => []);
       const keyTier = extractTierFromApiKey(token);
+      const effectiveTier = keyTier || uRows[0]?.tier || userPlan || "Free";
       const audioBoost = await getUserQuotaBoost(sql, userId, "audio");
       const weeklyLimit = getTierSpeechLimit(effectiveTier) + audioBoost;
 

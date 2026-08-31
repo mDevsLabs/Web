@@ -53,10 +53,11 @@ const createMcpSchema = z.object({
 });
 
 export async function GET() {
-  const user = await getMaiUser();
-  if (!user) {
-    return new ChatbotError("unauthorized:chat").toResponse();
+  const guard = await requirePaidPlan("plus");
+  if (!guard.allowed) {
+    return planGuardResponse(guard)!;
   }
+  const user = guard.user;
   const userId = user.id || user.email;
 
   const [servers, stats] = await Promise.all([

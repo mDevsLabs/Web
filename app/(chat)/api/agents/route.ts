@@ -20,6 +20,7 @@ const createAgentSchema = z.object({
   instructions: z.string().min(1).max(5000),
   maxTokens: z.number().int().min(1).max(1_000_000).nullable().optional(),
   mcpServerIds: z.array(z.string().min(1)).max(10).optional(),
+  memoryMode: z.enum(["global", "custom"]).optional(),
   name: z.string().min(1).max(100),
   pinned: z.boolean().optional(),
   skillIds: z.array(z.string().min(1)).max(10).optional(),
@@ -30,10 +31,11 @@ const createAgentSchema = z.object({
 });
 
 export async function GET() {
-  const user = await getMaiUser();
-  if (!user) {
-    return new ChatbotError("unauthorized:chat").toResponse();
+  const guard = await requirePaidPlan("plus");
+  if (!guard.allowed) {
+    return planGuardResponse(guard)!;
   }
+  const user = guard.user;
   const userId = user.id || user.email;
   const agents = await getAgentsByUserId({ userId });
   return Response.json(agents);

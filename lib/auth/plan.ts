@@ -38,6 +38,20 @@ export function isSkillMcpEligible(tier?: string | null): boolean {
   return isPaidTier(tier);
 }
 
+export function memoryLimitForTier(tier?: string | null): number {
+  const t = normalizeTier(tier);
+  if (t === "plus") {
+    return 75;
+  }
+  if (t === "pro") {
+    return 100;
+  }
+  if (t === "max") {
+    return 150;
+  }
+  return 50;
+}
+
 export type PlanGuardResult =
   | { allowed: true; user: MaiUser; tier: string }
   | {

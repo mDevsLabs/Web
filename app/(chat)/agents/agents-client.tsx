@@ -2,6 +2,7 @@
 
 import {
   BotIcon,
+  BrainIcon,
   CheckIcon,
   CloudIcon,
   CopyIcon,
@@ -15,7 +16,6 @@ import {
   ThermometerIcon,
   Trash2Icon,
   TriangleAlertIcon,
-  UploadCloudIcon,
   XIcon,
 } from "lucide-react";
 import { useCallback, useMemo, useState } from "react";
@@ -25,6 +25,7 @@ import { AgentIcon, EMOJI_PRESETS } from "@/components/agents/agent-icon";
 import { CloudFilePickerDialog } from "@/components/chat/cloud-file-picker-dialog";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
+import { MemoryCard } from "@/components/settings/memory-card";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -134,8 +135,10 @@ export default function AgentsClient() {
   const [formStarterPrompts, setFormStarterPrompts] = useState<string[]>([]);
   const [formWelcomeMessage, setFormWelcomeMessage] = useState("");
   const [formPinned, setFormPinned] = useState(false);
+  const [formMemoryMode, setFormMemoryMode] = useState<"global" | "custom">(
+    "global"
+  );
   const [isSaving, setIsSaving] = useState(false);
-  const [isUploading, setIsUploading] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
   const [isCloudPickerOpen, setIsCloudPickerOpen] = useState(false);
   // Map url -> nom affiché (pour les fichiers sélectionnés via cloud picker)
@@ -179,6 +182,7 @@ export default function AgentsClient() {
     setFormStarterPrompts([]);
     setFormWelcomeMessage("");
     setFormPinned(false);
+    setFormMemoryMode("global");
     setSaveError(null);
     setIsEditorOpen(true);
   }, []);
@@ -202,6 +206,7 @@ export default function AgentsClient() {
     setFormStarterPrompts((a as any).starterPrompts || []);
     setFormWelcomeMessage((a as any).welcomeMessage || "");
     setFormPinned(Boolean((a as any).pinned));
+    setFormMemoryMode((a as any).memoryMode === "custom" ? "custom" : "global");
     setSaveError(null);
     setIsEditorOpen(true);
   };
@@ -239,6 +244,7 @@ export default function AgentsClient() {
         instructions: formInstructions.slice(0, 5000),
         maxTokens: formMaxTokens ? Number(formMaxTokens) : null,
         mcpServerIds: formMcpIds,
+        memoryMode: formMemoryMode,
         name: formName,
         pinned: formPinned,
         skillIds: formSkillIds,
@@ -331,39 +337,6 @@ export default function AgentsClient() {
       await mutate();
     } catch (err: any) {
       toast.error(err.message || "Erreur");
-    }
-  };
-
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files || []);
-    if (files.length === 0) {
-      return;
-    }
-    if (formCloudUrls.length + files.length > 5) {
-      toast.error("Max 5 fichiers par agent");
-      return;
-    }
-    setIsUploading(true);
-    try {
-      for (const file of files) {
-        const fd = new FormData();
-        fd.append("file", file);
-        const res = await fetch("/api/files/upload", {
-          body: fd,
-          method: "POST",
-        });
-        const data = await res.json();
-        if (res.ok && data.url) {
-          setFormCloudUrls((prev) => [...prev, data.url]);
-        } else {
-          toast.error(data.error || "Upload échoué");
-        }
-      }
-    } finally {
-      setIsUploading(false);
-      if (e.target) {
-        e.target.value = "";
-      }
     }
   };
 
@@ -860,6 +833,68 @@ export default function AgentsClient() {
                   />
                 </div>
 
+                {/* Mémoire de l'agent */}
+                <div className="space-y-2 p-3 rounded-xl border border-sky-500/30 bg-sky-500/5">
+                  <Label className="text-xs font-semibold flex items-center gap-1.5">
+                    <BrainIcon className="size-3.5 text-sky-600 dark:text-sky-400" />
+                    Mémoire de l'agent
+                  </Label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <label
+                      className={cn(
+                        "flex items-start gap-2 p-2.5 rounded-lg border cursor-pointer text-xs",
+                        formMemoryMode === "global"
+                          ? "border-sky-500/50 bg-sky-500/10"
+                          : "border-border/40 hover:bg-muted/30"
+                      )}
+                    >
+                      <input
+                        checked={formMemoryMode === "global"}
+                        className="mt-0.5 size-3.5 accent-sky-600"
+                        name="agent-memory-mode"
+                        onChange={() => setFormMemoryMode("global")}
+                        type="radio"
+                      />
+                      <span className="flex flex-col">
+                        <span className="font-semibold">Mémoire globale</span>
+                        <span className="text-[11px] text-muted-foreground">
+                          Partage la mémoire de vos Préférences IA
+                        </span>
+                      </span>
+                    </label>
+                    <label
+                      className={cn(
+                        "flex items-start gap-2 p-2.5 rounded-lg border cursor-pointer text-xs",
+                        formMemoryMode === "custom"
+                          ? "border-sky-500/50 bg-sky-500/10"
+                          : "border-border/40 hover:bg-muted/30"
+                      )}
+                    >
+                      <input
+                        checked={formMemoryMode === "custom"}
+                        className="mt-0.5 size-3.5 accent-sky-600"
+                        name="agent-memory-mode"
+                        onChange={() => setFormMemoryMode("custom")}
+                        type="radio"
+                      />
+                      <span className="flex flex-col">
+                        <span className="font-semibold">Mémoire dédiée</span>
+                        <span className="text-[11px] text-muted-foreground">
+                          Mémoire propre à cet agent uniquement
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                  {formMemoryMode === "custom" &&
+                    (editingAgent ? (
+                      <MemoryCard agentId={editingAgent.id} />
+                    ) : (
+                      <p className="text-[11px] text-muted-foreground">
+                        Enregistrez d'abord l'agent pour gérer sa mémoire dédiée.
+                      </p>
+                    ))}
+                </div>
+
                 <div className="space-y-1.5">
                   <Label className="text-xs font-semibold">
                     Modèle IA par défaut — à l'activation, le modèle switch
@@ -1106,41 +1141,22 @@ export default function AgentsClient() {
                   <Label className="text-xs font-semibold flex items-center justify-between gap-2">
                     <span className="flex items-center gap-1.5">
                       <CloudIcon className="size-3.5 text-muted-foreground" />
-                      Fichiers (max 5)
+                      Fichiers (max 10)
                     </span>
                     <span className="text-[11px] font-normal text-muted-foreground">
-                      {formCloudUrls.length}/5
-                      {isUploading && (
-                        <span className="ml-1 text-amber-600">Upload...</span>
-                      )}
+                      {formCloudUrls.length}/10
                     </span>
                   </Label>
-                  {/* Double bouton : upload depuis l'ordi OU depuis la bibliothèque cloud */}
-                  <div className="flex gap-2">
-                    <label
-                      className={`flex-1 flex items-center justify-center gap-1.5 h-8 rounded-lg border border-dashed border-border/60 bg-muted/40 hover:bg-muted/70 text-[12px] text-muted-foreground cursor-pointer transition-colors ${isUploading || formCloudUrls.length >= 5 ? "opacity-50 pointer-events-none" : ""}`}
-                    >
-                      <UploadCloudIcon className="size-3.5" />
-                      <span>Importer</span>
-                      <Input
-                        className="sr-only"
-                        disabled={isUploading || formCloudUrls.length >= 5}
-                        multiple
-                        onChange={handleFileUpload}
-                        type="file"
-                      />
-                    </label>
-                    <Button
-                      className="flex-1 h-8 text-[12px] border border-dashed border-border/60 bg-muted/40 hover:bg-muted/70 text-muted-foreground"
-                      disabled={isUploading || formCloudUrls.length >= 5}
-                      onClick={() => setIsCloudPickerOpen(true)}
-                      type="button"
-                      variant="ghost"
-                    >
-                      <CloudIcon className="size-3.5 mr-1.5" />
-                      Depuis la bibliothèque
-                    </Button>
-                  </div>
+                  <Button
+                    className="w-full h-8 text-[12px] border border-dashed border-border/60 bg-muted/40 hover:bg-muted/70 text-muted-foreground"
+                    disabled={formCloudUrls.length >= 10}
+                    onClick={() => setIsCloudPickerOpen(true)}
+                    type="button"
+                    variant="ghost"
+                  >
+                    <CloudIcon className="size-3.5 mr-1.5" />
+                    Depuis la bibliothèque
+                  </Button>
                   {formCloudUrls.length > 0 && (
                     <div className="flex flex-wrap gap-1.5 pt-0.5">
                       {formCloudUrls.map((url, i) => (
@@ -1180,7 +1196,7 @@ export default function AgentsClient() {
                     const toAdd = attachments.filter(
                       (a) => !formCloudUrls.includes(a.url)
                     );
-                    const remaining = 5 - formCloudUrls.length;
+                    const remaining = 10 - formCloudUrls.length;
                     const slice = toAdd.slice(0, remaining);
                     if (slice.length > 0) {
                       setFormCloudUrls((prev) => [

@@ -600,6 +600,9 @@ export const agent = pgTable(
     isPublic: boolean("isPublic").notNull().default(false),
     maxTokens: integer("maxTokens"),
     mcpServerIds: json("mcpServerIds").notNull().default([]),
+    memoryMode: varchar("memoryMode", { length: 10 })
+      .notNull()
+      .default("global"),
     name: varchar("name", { length: 100 }).notNull(),
     pinned: boolean("pinned").notNull().default(false),
     shareId: text("shareId"),
@@ -648,3 +651,22 @@ export const agentTemplate = pgTable(
   })
 );
 export type AgentTemplate = InferSelectModel<typeof agentTemplate>;
+
+export const userMemory = pgTable(
+  "UserMemory",
+  {
+    agentId: uuid("agentId"),
+    content: text("content").notNull(),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    projectId: uuid("projectId"),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    agentIdIdx: index("UserMemory_agentId_idx").on(table.agentId),
+    projectIdIdx: index("UserMemory_projectId_idx").on(table.projectId),
+    userIdIdx: index("UserMemory_userId_idx").on(table.userId),
+  })
+);
+export type UserMemory = InferSelectModel<typeof userMemory>;

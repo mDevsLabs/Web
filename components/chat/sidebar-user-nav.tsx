@@ -36,7 +36,7 @@ import {
 } from "@/components/ui/sidebar";
 import { useSettings } from "@/hooks/use-settings";
 import type { MaiUser } from "@/lib/auth/session";
-import { APP_VERSION } from "@/lib/constants";
+import { APP_SUPPORT_URL, APP_VERSION } from "@/lib/constants";
 
 export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
   const router = useRouter();
@@ -188,7 +188,7 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
                 <DropdownMenuItem asChild>
                   <a
                     className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[13px] cursor-pointer"
-                    href="https://mai-devs.vercel.app"
+                    href={APP_SUPPORT_URL}
                     rel="noopener noreferrer"
                     target="_blank"
                   >

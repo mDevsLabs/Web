@@ -54,6 +54,7 @@ import {
 import { useProjects } from "@/hooks/use-projects";
 import { useSettings } from "@/hooks/use-settings";
 import { useSpeechRecognition } from "@/hooks/use-speech";
+import { useTier } from "@/hooks/use-tier";
 import {
   chatModels,
   getModelCapabilities,
@@ -154,7 +155,7 @@ function renderHighlightedMentions(
   return parts.map((part, i) =>
     part.startsWith("@") ? (
       <span
-        className="text-blue-600 dark:text-blue-400 font-semibold bg-blue-500/15 px-1 py-0.5 rounded"
+        className="text-blue-600 dark:text-blue-400 bg-blue-500/15 rounded-xs"
         key={i}
       >
         {part}
@@ -209,6 +210,7 @@ function PureMultimodalInput({
   const isNewChatInput = !pathname?.includes("/chat/");
   const { setTheme, resolvedTheme } = useTheme();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
   const { width } = useWindowSize();
   const hasAutoFocused = useRef(false);
   const isMobileWidth = width ? width < 768 : false;
@@ -330,15 +332,16 @@ function PureMultimodalInput({
     isGhostMode,
     toggleGhostMode,
   } = useActiveChat();
+  const { isFree } = useTier();
   const { projects, isLoading: isProjectsLoading } = useProjects();
 
   const { data: userSkills = [] } = useSWR<Skill[]>(
-    "/api/skills",
+    !isFree ? "/api/skills" : null,
     (url: string) => fetch(url).then((r) => r.json()),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
   const { data: mcpData } = useSWR<{ servers: McpServer[] }>(
-    "/api/mcp",
+    !isFree ? "/api/mcp" : null,
     (url: string) => fetch(url).then((r) => r.json()),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
@@ -347,7 +350,7 @@ function PureMultimodalInput({
     [mcpData]
   );
   const { data: userAgents = [] } = useSWR<Agent[]>(
-    "/api/agents",
+    !isFree ? "/api/agents" : null,
     (url: string) => fetch(url).then((r) => r.json()),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
@@ -563,7 +566,7 @@ function PureMultimodalInput({
   );
 
   const handleSlashSelect = useCallback(
-    (cmd: SlashCommand) => {
+    async (cmd: SlashCommand) => {
       setSlashOpen(false);
       setInput("");
       switch (cmd.action) {
@@ -714,8 +717,37 @@ function PureMultimodalInput({
           break;
         }
         case "agents": {
-          router.push("/agents");
-          toast("Ouverture de la page Agents");
+          const agentBtn = document.querySelector<HTMLButtonElement>(
+            "[data-testid='agent-selector']"
+          );
+          if (agentBtn) {
+            agentBtn.click();
+          } else {
+            router.push("/agents");
+          }
+          break;
+        }
+        case "export": {
+          try {
+            const res = await fetch(
+              `/api/chats/${chatId}/export?format=md`
+            );
+            if (!res.ok) {
+              throw new Error("Export échoué");
+            }
+            const blob = await res.blob();
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `chat-${chatId}.md`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+            toast.success("Export Markdown téléchargé");
+          } catch (e: any) {
+            toast.error(e.message || "Erreur export");
+          }
           break;
         }
         case "theme":
@@ -817,24 +849,43 @@ function PureMultimodalInput({
         toast.success(
           `Agent activé : ${icon}${payload.agent.name} — modèle ${(payload.agent as any).defaultModelId}`
         );
+      } else if (payload.type === "memory") {
+        mentionTag = `@Memory `;
+        if (!pendingTools.includes("memory")) {
+          togglePendingTool("memory");
+        }
+        toast.success(
+          "Mémoire activée pour le prochain message — l'IA pourra retenir ou retrouver des informations"
+        );
       }
 
       const atPos = mentionTriggerPosRef.current;
       let newVal = input;
+      let targetCursorPos = cursor;
       if (atPos !== null && atPos >= 0) {
         const before = input.slice(0, atPos);
         const after = input.slice(cursor);
         newVal = `${before}${mentionTag}${after.trimStart()}`;
+        targetCursorPos = before.length + mentionTag.length;
       } else {
-        newVal = `${input.trimEnd()} ${mentionTag}`.trimStart();
+        const before = input.trimEnd();
+        newVal = `${before ? `${before} ` : ""}${mentionTag}`;
+        targetCursorPos = newVal.length;
       }
 
       setInput(newVal);
       setMentionOpen(false);
       setMentionQuery("");
       mentionTriggerPosRef.current = null;
-      // Refocus
-      setTimeout(() => textareaRef.current?.focus(), 50);
+      // Refocus & positionner le curseur exactement après la mention
+      setTimeout(() => {
+        if (textareaRef.current) {
+          textareaRef.current.focus();
+          try {
+            textareaRef.current.setSelectionRange(targetCursorPos, targetCursorPos);
+          } catch {}
+        }
+      }, 50);
     },
     [
       input,
@@ -1143,7 +1194,10 @@ function PureMultimodalInput({
     }
     if (input.startsWith("/")) {
       const query = input.slice(1).trim().split(/\s/)[0] ?? "";
-      const cmd = getFilteredSlashCommands(query)[0];
+      const cmd = getFilteredSlashCommands(query, {
+        isFree,
+        isHome: isNewChatInput,
+      })[0];
       // fallback exact match
       if (
         cmd &&
@@ -1178,6 +1232,8 @@ function PureMultimodalInput({
     hasVisionSupport,
     hasStrictCaps,
     input,
+    isFree,
+    isNewChatInput,
     status,
     submitForm,
     slashOpen,
@@ -1228,6 +1284,8 @@ function PureMultimodalInput({
                 agent: (item as any).agent,
                 type: "agent",
               });
+            } else if (item.kind === "memory") {
+              handleMentionSelect({ type: "memory" });
             }
           }
           return;
@@ -1239,7 +1297,10 @@ function PureMultimodalInput({
         }
       }
       if (slashOpen) {
-        const filtered = getFilteredSlashCommands(slashQuery);
+        const filtered = getFilteredSlashCommands(slashQuery, {
+          isFree,
+          isHome: isNewChatInput,
+        });
         if (e.key === "ArrowDown") {
           e.preventDefault();
           setSlashIndex((i) => Math.min(i + 1, filtered.length - 1));
@@ -1272,6 +1333,8 @@ function PureMultimodalInput({
       editingMessage,
       handleSlashSelect,
       handleMentionSelect,
+      isFree,
+      isNewChatInput,
       onCancelEdit,
       slashIndex,
       slashOpen,
@@ -1308,13 +1371,15 @@ function PureMultimodalInput({
               indisponible.
             </span>
           </div>
-          <button
-            className="text-xs font-medium text-purple-400 hover:text-purple-300 underline shrink-0 ml-auto cursor-pointer"
-            onClick={toggleGhostMode}
-            type="button"
-          >
-            Désactiver
-          </button>
+          {isNewChatInput ? (
+            <button
+              className="text-xs font-medium text-purple-400 hover:text-purple-300 underline shrink-0 ml-auto cursor-pointer"
+              onClick={toggleGhostMode}
+              type="button"
+            >
+              Désactiver
+            </button>
+          ) : null}
         </div>
       ) : null}
 
@@ -1398,16 +1463,27 @@ function PureMultimodalInput({
       {pendingTools.length > 0 ? (
         <div className="flex flex-wrap items-center gap-1.5 px-1 -mb-1">
           <span className="text-[11px] font-semibold text-muted-foreground">
-            Outils actifs (one-shot):
+            Outils actifs :
           </span>
           {pendingTools.map((tid) => {
-            const meta = TOOLS_META[tid as ToolId];
+            const tidStr = tid as string;
+            let label = tidStr;
+            if (tidStr.startsWith("mcp:") || tidStr === "mcp") {
+              const srvId = tidStr.replace(/^mcp:/, "");
+              const srv = userMcpServers.find(
+                (s) => s.id === srvId || s.name.toLowerCase() === srvId.toLowerCase()
+              );
+              label = srv ? srv.name : (srvId || "Outil MCP");
+            } else {
+              const meta = TOOLS_META[tid as ToolId];
+              label = meta?.label || tidStr;
+            }
             return (
               <span
                 className="inline-flex items-center gap-1 rounded-full bg-primary/10 border border-primary/30 px-2 py-0.5 text-[11px] font-medium text-primary"
                 key={tid}
               >
-                {meta?.label || tid}
+                {label}
                 <button
                   className="ml-0.5 rounded-full p-0.5 hover:bg-primary/20"
                   onClick={() => togglePendingTool(tid as ToolId)}
@@ -1426,7 +1502,7 @@ function PureMultimodalInput({
             Tout désactiver
           </button>
           <span className="text-[10px] text-muted-foreground">
-            — fortement recommandé pour le prochain message
+            — pour le prochain message
           </span>
         </div>
       ) : null}
@@ -1499,6 +1575,7 @@ function PureMultimodalInput({
       <div className="relative">
         {slashOpen ? (
           <SlashCommandMenu
+            context={{ isFree, isHome: isNewChatInput }}
             onClose={handleSlashClose}
             onSelect={handleSlashSelect}
             query={slashQuery}
@@ -1565,7 +1642,7 @@ function PureMultimodalInput({
         )}
 
         {pendingTools.length > 0 ? (
-          <div className="flex flex-wrap items-center gap-1.5 px-4 pt-2.5">
+          <div className="flex w-full self-start flex-wrap items-center gap-1.5 px-4 pt-2.5">
             {pendingTools.map((tid) => {
               const tidStr = tid as string;
               let label = tidStr;
@@ -1575,7 +1652,7 @@ function PureMultimodalInput({
                 const srv = userMcpServers.find(
                   (s) => s.id === srvId || s.name.toLowerCase() === srvId.toLowerCase()
                 );
-                label = srv ? srv.name : "GitHub MCP";
+                label = srv ? srv.name : (srvId || "Outil MCP");
                 IconComponent = CpuIcon;
               } else {
                 const meta = TOOLS_META[tid as ToolId];
@@ -1612,20 +1689,30 @@ function PureMultimodalInput({
           {input ? (
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-0 overflow-hidden min-h-[48px] max-h-36 px-4 pt-3.5 pb-1.5 text-[16px] md:text-[13.5px] leading-relaxed whitespace-pre-wrap break-words text-foreground select-none font-sans"
+              className={cn(
+                "pointer-events-none absolute inset-0 overflow-hidden min-h-[48px] max-h-36 px-4 pb-1.5 text-[16px] md:text-[13.5px] leading-relaxed whitespace-pre-wrap break-words text-foreground select-none font-sans",
+                pendingTools.length > 0 || attachments.length > 0 || uploadQueue.length > 0 ? "pt-1.5" : "pt-3.5"
+              )}
+              ref={overlayRef}
             >
               {renderHighlightedMentions(input, userMcpServers, userSkills, userAgents)}
             </div>
           ) : null}
           <PromptInputTextarea
             className={cn(
-              "min-h-[48px] max-h-36 text-[16px] md:text-[13.5px] leading-relaxed px-4 pt-3.5 pb-1.5 placeholder:text-muted-foreground/45 resize-none relative z-10 font-sans",
+              "min-h-[48px] max-h-36 text-[16px] md:text-[13.5px] leading-relaxed px-4 pb-1.5 placeholder:text-muted-foreground/45 resize-none relative z-10 font-sans",
+              pendingTools.length > 0 || attachments.length > 0 || uploadQueue.length > 0 ? "pt-1.5" : "pt-3.5",
               input ? "bg-transparent text-transparent caret-foreground selection:bg-blue-500/30 selection:text-transparent" : ""
             )}
             data-testid="multimodal-input"
             onBlur={handleTextareaBlur}
             onChange={handleInput}
             onKeyDown={handleTextareaKeyDown}
+            onScroll={(e) => {
+              if (overlayRef.current) {
+                overlayRef.current.scrollTop = e.currentTarget.scrollTop;
+              }
+            }}
             placeholder={
               editingMessage ? "Modifier votre message..." : "Poser une question"
             }

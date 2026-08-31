@@ -7,6 +7,7 @@ import {
   CalendarIcon,
   CloudSunIcon,
   Code2Icon,
+  DownloadIcon,
   FileTextIcon,
   FolderArchiveIcon,
   FolderKanbanIcon,
@@ -37,6 +38,7 @@ export type SlashCommandAction =
   | "rename"
   | "model"
   | "agents"
+  | "export"
   | "theme"
   | "delete"
   | "purge"
@@ -101,10 +103,16 @@ export const slashCommands: SlashCommand[] = [
   {
     action: "agents",
     aliases: ["agent", "agents", "ia-agents"],
-    description:
-      "Ouvre la page Agents — styles IA personnalisés (remplace Mode IA)",
+    description: "Ouvrir le menu de choix des agents",
     icon: <BotIcon className="size-3.5" />,
     name: "agents",
+  },
+  {
+    action: "export",
+    aliases: ["exporter", "download", "telecharger"],
+    description: "Exporter la conversation en cours (Markdown)",
+    icon: <DownloadIcon className="size-3.5" />,
+    name: "export",
   },
   {
     action: "usage",
@@ -238,6 +246,7 @@ type SlashCommandMenuProps = {
   onClose: () => void;
   selectedIndex: number;
   supportsTools?: boolean;
+  context?: SlashCommandContext;
 };
 
 function SlashCommandMenuItem({
@@ -308,12 +317,33 @@ function SlashCommandMenuItem({
   );
 }
 
-export function getFilteredSlashCommands(query: string): SlashCommand[] {
+export type SlashCommandContext = {
+  // Page d'accueil = aucune conversation en cours
+  isHome?: boolean;
+  // Plans gratuits : /agents masquée
+  isFree?: boolean;
+};
+
+export function getFilteredSlashCommands(
+  query: string,
+  context?: SlashCommandContext
+): SlashCommand[] {
+  let list = slashCommands;
+  if (context?.isHome) {
+    // Pas de conversation à exporter sur l'accueil
+    list = list.filter((cmd) => cmd.action !== "export");
+  } else if (context?.isHome === false) {
+    // Conversation commencée : /agents masquée
+    list = list.filter((cmd) => cmd.action !== "agents");
+  }
+  if (context?.isFree) {
+    list = list.filter((cmd) => cmd.action !== "agents");
+  }
   const q = query.toLowerCase().trim();
   if (!q) {
-    return slashCommands;
+    return list;
   }
-  return slashCommands.filter((cmd) => {
+  return list.filter((cmd) => {
     const name = cmd.name.toLowerCase();
     if (name.startsWith(q) || name.includes(q)) {
       return true;
@@ -338,9 +368,10 @@ export function SlashCommandMenu({
   onClose: _onClose,
   selectedIndex,
   supportsTools = true,
+  context,
 }: SlashCommandMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
-  const filtered = getFilteredSlashCommands(query);
+  const filtered = getFilteredSlashCommands(query, context);
 
   useEffect(() => {
     const selected = menuRef.current?.querySelector("[data-selected='true']");

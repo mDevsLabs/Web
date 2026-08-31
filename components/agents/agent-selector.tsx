@@ -11,6 +11,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { useActiveChat } from "@/hooks/use-active-chat";
+import { useTier } from "@/hooks/use-tier";
 import type { Agent } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
 
@@ -18,8 +19,16 @@ const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 export function AgentSelectorCompact() {
   const { activeAgent, setActiveAgent, clearActiveAgent } = useActiveChat();
-  const { data: agents = [] } = useSWR<Agent[]>("/api/agents", fetcher);
+  const { isFree } = useTier();
+  const { data: agents = [] } = useSWR<Agent[]>(
+    !isFree ? "/api/agents" : null,
+    fetcher
+  );
   const [open, setOpen] = useState(false);
+
+  if (isFree) {
+    return null;
+  }
 
   const handleSelect = (agent: Agent | null) => {
     if (agent) {

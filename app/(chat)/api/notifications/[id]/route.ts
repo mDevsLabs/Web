@@ -14,8 +14,16 @@ export async function PATCH(
   }
   const userId = user.id || user.email;
   const body = await request.json().catch(() => ({}));
-  if (body.action === "read" || body.isRead === true) {
-    const updated = await markNotificationRead({ id, userId });
+  if (
+    body.action === "read" ||
+    body.action === "unread" ||
+    typeof body.isRead === "boolean"
+  ) {
+    const isRead =
+      typeof body.isRead === "boolean"
+        ? body.isRead
+        : body.action === "read";
+    const updated = await markNotificationRead({ id, userId, isRead });
     if (!updated) {
       return NextResponse.json({ error: "not found" }, { status: 404 });
     }

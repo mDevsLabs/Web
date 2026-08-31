@@ -3,6 +3,7 @@
 import {
   ArchiveIcon,
   ArchiveRestoreIcon,
+  BrainIcon,
   CopyIcon,
   DownloadIcon,
   Edit2Icon,
@@ -33,11 +34,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useSidebar } from "@/components/ui/sidebar";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { useActiveChat } from "@/hooks/use-active-chat";
 import { cn, fetcher } from "@/lib/utils";
 import { NotificationBell } from "./notification-bell";
@@ -70,6 +66,49 @@ function PureChatHeader({
   const isPinned = (chatData as any)?.pinned ?? false;
 
   const [_isRenaming, _setIsRenaming] = useState(false);
+
+  // Préférence « mémoire en mode fantôme » (persistée en base via /api/user/preferences)
+  const { data: ghostPrefsData, mutate: mutateGhostPrefs } = useSWR(
+    showGhost ? "/api/user/preferences" : null,
+    fetcher
+  );
+  const ghostMemoryEnabled = Boolean(ghostPrefsData?.ghostMemoryEnabled);
+  const [isGhostMemSaving, setIsGhostMemSaving] = useState(false);
+
+  const handleToggleGhostMemory = useCallback(
+    async (next: boolean) => {
+      setIsGhostMemSaving(true);
+      try {
+        await mutateGhostPrefs(
+          { ...ghostPrefsData, ghostMemoryEnabled: next },
+          {
+            revalidate: false,
+            rollbackOnError: true,
+          }
+        );
+        const res = await fetch("/api/user/preferences", {
+          body: JSON.stringify({ ghostMemoryEnabled: next }),
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+        });
+        if (!res.ok) {
+          throw new Error("Erreur de sauvegarde de la préférence");
+        }
+        await mutateGhostPrefs();
+        toast.success(
+          next
+            ? "Mémoire activée pour les discussions fantômes"
+            : "Mémoire désactivée pour les discussions fantômes"
+        );
+      } catch (e: any) {
+        await mutateGhostPrefs();
+        toast.error(e.message || "Erreur de sauvegarde de la préférence");
+      } finally {
+        setIsGhostMemSaving(false);
+      }
+    },
+    [ghostPrefsData, mutateGhostPrefs]
+  );
 
   const handleExport = useCallback(
     async (format: "md" | "json" | "txt") => {
@@ -320,41 +359,74 @@ function PureChatHeader({
       )}
 
       {showGhost && (
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button
-              aria-label={
-                isGhostMode
-                  ? "Désactiver le Mode fantôme"
-                  : "Activer le Mode fantôme"
-              }
+        <div className="relative group/ghost flex items-center">
+          <Button
+            aria-label={
+              isGhostMode
+                ? "Désactiver le Mode fantôme"
+                : "Activer le Mode fantôme"
+            }
+            className={cn(
+              "h-8 rounded-xl text-xs gap-1.5 px-2.5 transition-all border cursor-pointer",
+              isGhostMode
+                ? "bg-purple-500/15 border-purple-500/40 text-purple-400 font-medium shadow-xs ring-1 ring-purple-500/30 hover:bg-purple-500/25"
+                : "border-border/60 hover:bg-muted text-muted-foreground hover:text-foreground"
+            )}
+            onClick={toggleGhostMode}
+            size="sm"
+            variant="ghost"
+          >
+            <GhostIcon
               className={cn(
-                "h-8 rounded-xl text-xs gap-1.5 px-2.5 transition-all border cursor-pointer",
+                "size-3.5 shrink-0",
                 isGhostMode
-                  ? "bg-purple-500/15 border-purple-500/40 text-purple-400 font-medium shadow-xs ring-1 ring-purple-500/30 hover:bg-purple-500/25"
-                  : "border-border/60 hover:bg-muted text-muted-foreground hover:text-foreground"
+                  ? "text-purple-400 animate-pulse"
+                  : "text-muted-foreground"
               )}
-              onClick={toggleGhostMode}
-              size="sm"
-              variant="ghost"
+            />
+            <span>{isGhostMode ? "Fantôme actif" : "Fantôme"}</span>
+          </Button>
+          {/* Panneau options au survol : personnalisation mémoire */}
+          <div
+            className="absolute left-0 top-full z-50 mt-2 w-72 rounded-2xl border border-border/70 bg-popover p-3.5 text-popover-foreground shadow-2xl ring-1 ring-foreground/5 opacity-0 invisible translate-y-1 pointer-events-none transition-all duration-150 group-hover/ghost:opacity-100 group-hover/ghost:visible group-hover/ghost:translate-y-0 group-hover/ghost:pointer-events-auto group-focus-within/ghost:opacity-100 group-focus-within/ghost:visible group-focus-within/ghost:pointer-events-auto"
+            onMouseDown={(e) => e.preventDefault()}
+          >
+            <div className="flex items-center gap-2 mb-2">
+              <GhostIcon className="size-3.5 text-purple-400 shrink-0" />
+              <span className="text-xs font-semibold">Mode fantôme</span>
+              <span className="text-[10px] text-muted-foreground ml-auto">
+                Discussion éphémère
+              </span>
+            </div>
+            <label
+              className={cn(
+                "flex items-start gap-2.5 p-2.5 rounded-xl border cursor-pointer transition-colors",
+                ghostMemoryEnabled
+                  ? "border-sky-500/50 bg-sky-500/10"
+                  : "border-border/50 hover:bg-muted/40"
+              )}
             >
-              <GhostIcon
-                className={cn(
-                  "size-3.5 shrink-0",
-                  isGhostMode
-                    ? "text-purple-400 animate-pulse"
-                    : "text-muted-foreground"
-                )}
+              <input
+                checked={ghostMemoryEnabled}
+                className="mt-0.5 size-3.5 accent-sky-600 cursor-pointer"
+                disabled={isGhostMemSaving}
+                onChange={(e) => handleToggleGhostMemory(e.target.checked)}
+                type="checkbox"
               />
-              <span>{isGhostMode ? "Fantôme actif" : "Fantôme"}</span>
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent side="bottom">
-            {isGhostMode
-              ? "Mode fantôme actif : discussion éphémère, non sauvegardée, sans génération d'image"
-              : "Activer le Mode fantôme : temporaire, non sauvegardé, sans génération d'image"}
-          </TooltipContent>
-        </Tooltip>
+              <span className="flex flex-col gap-0.5">
+                <span className="flex items-center gap-1.5 text-xs font-medium text-foreground">
+                  <BrainIcon className="size-3.5 text-sky-600 dark:text-sky-400" />
+                  Personnaliser avec la mémoire
+                </span>
+                <span className="text-[11px] text-muted-foreground leading-snug">
+                  L'IA pourra utiliser votre mémoire personnalisée dans les
+                  discussions fantômes (la discussion elle-même reste non
+                  enregistrée). Choix mémorisé pour vos prochaines sessions.
+                </span>
+              </span>
+            </label>
+          </div>
+        </div>
       )}
 
       <div className="ml-auto flex items-center gap-2">
