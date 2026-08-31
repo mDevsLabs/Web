@@ -26,7 +26,7 @@ DO $$ BEGIN IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_
 END IF; END $$;
 
 --> statement-breakpoint
-DO $$ BEGIN IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname='Agent_memoryMode_check' AND conrelid='Agent'::regclass) THEN
+DO $$ BEGIN IF NOT EXISTS (SELECT 1 FROM information_schema.table_constraints WHERE constraint_name='Agent_memoryMode_check' AND table_name='Agent') THEN
   ALTER TABLE "Agent" ADD CONSTRAINT "Agent_memoryMode_check" CHECK ("memoryMode" IN ('global','custom'));
 END IF; END $$;
 
