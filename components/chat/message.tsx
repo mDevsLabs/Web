@@ -1,7 +1,7 @@
 "use client";
 import type { UseChatHelpers } from "@ai-sdk/react";
-import { MicIcon } from "lucide-react";
-import { useCallback, useState } from "react";
+import { GlobeIcon, MicIcon } from "lucide-react";
+import { useCallback, useMemo, useState } from "react";
 
 import { toast } from "sonner";
 import type { Vote } from "@/lib/db/schema";
@@ -22,6 +22,7 @@ import {
   ToolInput,
   ToolOutput,
 } from "../ai-elements/tool";
+import { AskUserCard } from "./ask-user-card";
 import { CodeExecution } from "./code-execution";
 import { useDataStream } from "./data-stream-provider";
 import { DocumentToolResult } from "./document";
@@ -30,6 +31,7 @@ import { CopyIcon, DownloadIcon, EyeIcon, SparklesIcon } from "./icons";
 import { MessageActions } from "./message-actions";
 import { MessageReasoning } from "./message-reasoning";
 import { PreviewAttachment } from "./preview-attachment";
+import { QuizCard } from "./quiz-card";
 import { Weather } from "./weather";
 
 function WaitingText() {
@@ -249,7 +251,7 @@ const PurePreviewMessage = ({
   vote,
   isLoading,
   setMessages: _setMessages,
-  regenerate: _regenerate,
+  regenerate,
   isReadonly,
   requiresScrollPadding: _requiresScrollPadding,
   onEdit,
@@ -320,6 +322,29 @@ const PurePreviewMessage = ({
     { isStreaming: false, rendered: false, text: "" }
   ) ?? { isStreaming: false, rendered: false, text: "" };
 
+  // Fin prématurée : le stream s'est arrêté juste après l'appel d'un outil,
+  // sans résultat ni continuation (ex. le modèle annonce une recherche puis plus rien).
+  const interruptedAfterToolCall = useMemo(() => {
+    if (!isAssistant || isLoading) {
+      return false;
+    }
+    const parts = message.parts ?? [];
+    const last = parts.at(-1);
+    if (!last) {
+      return false;
+    }
+    const lastType = last.type as string;
+    if (!lastType.startsWith("tool-") && lastType !== "dynamic-tool") {
+      return false;
+    }
+    const state = (last as { state?: string }).state;
+    return (
+      state === "input-available" ||
+      state === "input-streaming" ||
+      state === "approval-responded"
+    );
+  }, [isAssistant, isLoading, message.parts]);
+
   const parts = message.parts?.map((part, index) => {
     const { type } = part;
     const key = `message-${message.id}-part-${index}`;
@@ -342,8 +367,8 @@ const PurePreviewMessage = ({
       const hasSearch = !!searchQuery?.trim();
       return (
         <MessageContent
-          className={cn("text-[13px] leading-[1.65]", {
-            "w-fit max-w-[min(80%,56ch)] overflow-hidden break-words rounded-2xl rounded-br-lg border border-border/30 bg-gradient-to-br from-secondary to-muted px-3.5 py-2 shadow-[var(--shadow-card)]":
+          className={cn("text-[14px] sm:text-[13px] leading-[1.65]", {
+            "w-fit max-w-[85%] sm:max-w-[min(80%,56ch)] overflow-hidden break-words rounded-2xl rounded-br-lg border border-border/30 bg-gradient-to-br from-secondary to-muted dark:from-zinc-800 dark:to-zinc-800/80 px-3.5 py-2 sm:py-2 shadow-[var(--shadow-card)]":
               message.role === "user",
           })}
           data-testid="message-content"
@@ -363,6 +388,29 @@ const PurePreviewMessage = ({
             <MessageResponse>{sanitizeText(part.text)}</MessageResponse>
           )}
         </MessageContent>
+      );
+    }
+
+    if ((type as string) === "error") {
+      const errorText =
+        (part as { errorText?: string }).errorText ||
+        "Une erreur est survenue lors de la génération de la réponse.";
+      return (
+        <div
+          className="flex items-start justify-between gap-3 rounded-lg border border-red-200 bg-red-50 p-3 text-[13px] text-red-600 dark:border-red-900 dark:bg-red-950/40 dark:text-red-400"
+          key={key}
+        >
+          <span className="min-w-0 break-words">{errorText}</span>
+          {!isReadonly && (
+            <button
+              className="shrink-0 font-semibold underline underline-offset-2 hover:opacity-80"
+              onClick={() => regenerate()}
+              type="button"
+            >
+              Régénérer
+            </button>
+          )}
+        </div>
       );
     }
 
@@ -465,7 +513,8 @@ const PurePreviewMessage = ({
             className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-500 dark:bg-red-950/50"
             key={toolCallId}
           >
-            Erreur lors de la mise à jour du document : {String(part.output.error)}
+            Erreur lors de la mise à jour du document :{" "}
+            {String(part.output.error)}
           </div>
         );
       }
@@ -494,7 +543,8 @@ const PurePreviewMessage = ({
             className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-500 dark:bg-red-950/50"
             key={toolCallId}
           >
-            Erreur lors de la modification du document : {String(part.output.error)}
+            Erreur lors de la modification du document :{" "}
+            {String(part.output.error)}
           </div>
         );
       }
@@ -733,6 +783,143 @@ const PurePreviewMessage = ({
       );
     }
 
+    if (type === "tool-webSearch") {
+      const { toolCallId, state } = part;
+
+      if (state === "output-available" && part.output) {
+        if ("error" in part.output) {
+          return (
+            <div
+              className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600"
+              key={toolCallId}
+            >
+              Recherche Web : {part.output.error}
+            </div>
+          );
+        }
+        return (
+          <div
+            className="w-[min(100%,480px)] overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm"
+            key={toolCallId}
+          >
+            <div className="flex items-center gap-2 border-b border-border/40 bg-muted/30 px-3.5 py-2.5">
+              <span className="flex size-7 items-center justify-center rounded-lg bg-sky-500/10 text-sky-600">
+                <GlobeIcon className="size-4" />
+              </span>
+              <span className="font-semibold text-[13px] text-foreground">
+                Recherche Web
+              </span>
+              <span className="ml-auto min-w-0 truncate text-[11px] font-medium text-muted-foreground">
+                {part.output.query}
+              </span>
+            </div>
+            <ul className="divide-y divide-border/40">
+              {part.output.results.map((result) => (
+                <li className="px-3.5 py-2.5" key={result.url}>
+                  <a
+                    className="font-medium text-[13px] text-foreground hover:underline"
+                    href={result.url}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {result.title}
+                  </a>
+                  <div className="text-[11px] text-muted-foreground">
+                    {result.source}
+                  </div>
+                  {result.snippet && (
+                    <p className="mt-0.5 text-[12px] leading-relaxed text-muted-foreground/90">
+                      {result.snippet}
+                    </p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      }
+
+      return (
+        <div className="w-[min(100%,450px)]" key={toolCallId}>
+          <Tool className="w-full" defaultOpen={true}>
+            <ToolHeader state={state} type="tool-webSearch" />
+            <ToolContent>
+              {(state === "input-available" || state === "input-streaming") && (
+                <ToolInput input={part.input} />
+              )}
+            </ToolContent>
+          </Tool>
+        </div>
+      );
+    }
+
+    if (type === "tool-askUser") {
+      const toolPart = part as any;
+      return (
+        <AskUserCard
+          args={toolPart.input || toolPart.args}
+          key={toolPart.toolCallId ?? key}
+          output={toolPart.output}
+          state={toolPart.state}
+          toolCallId={toolPart.toolCallId}
+        />
+      );
+    }
+
+    if (type === "tool-quizzly") {
+      const toolPart = part as any;
+      return (
+        <QuizCard
+          args={toolPart.input || toolPart.args}
+          key={toolPart.toolCallId ?? key}
+          output={toolPart.output}
+        />
+      );
+    }
+
+    if (type.startsWith("tool-") || type === "dynamic-tool") {
+      const toolPart = part as any;
+      const { state, toolCallId } = toolPart;
+      const approvalId = toolPart.approval?.id;
+
+      return (
+        <Tool
+          className="w-[min(100%,450px)]"
+          defaultOpen={state !== "output-available"}
+          key={toolCallId ?? key}
+        >
+          {type === "dynamic-tool" ? (
+            <ToolHeader
+              state={state}
+              toolName={toolPart.toolName ?? "Outil MCP"}
+              type={type}
+            />
+          ) : (
+            <ToolHeader state={state} type={type as any} />
+          )}
+          <ToolContent>
+            {(state === "input-available" ||
+              state === "input-streaming" ||
+              state === "approval-requested") && (
+              <ToolInput input={toolPart.input} />
+            )}
+            {state === "output-available" && (
+              <ToolOutput errorText={undefined} output={toolPart.output} />
+            )}
+            {state === "output-error" && (
+              <ToolOutput errorText={toolPart.errorText} output={undefined} />
+            )}
+            {state === "approval-requested" && approvalId && (
+              <ToolApprovalActions
+                addToolApprovalResponse={addToolApprovalResponse}
+                approvalId={approvalId}
+              />
+            )}
+          </ToolContent>
+        </Tool>
+      );
+    }
+
     return null;
   });
 
@@ -753,6 +940,20 @@ const PurePreviewMessage = ({
     <>
       {attachments}
       {parts}
+      {interruptedAfterToolCall && !isReadonly && (
+        <div className="flex items-center gap-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-[12px] text-amber-700 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-400">
+          <span className="min-w-0 flex-1">
+            La réponse s'est interrompue avant le résultat de l'outil.
+          </span>
+          <button
+            className="shrink-0 font-semibold underline underline-offset-2 hover:opacity-80"
+            onClick={() => regenerate()}
+            type="button"
+          >
+            Régénérer
+          </button>
+        </div>
+      )}
       {actions}
     </>
   );

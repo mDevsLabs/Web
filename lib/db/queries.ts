@@ -11,6 +11,7 @@ import {
   gte,
   inArray,
   isNull,
+  lte,
   type SQL,
   sql,
 } from "drizzle-orm";
@@ -18,12 +19,14 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import type { ArtifactKind } from "@/components/chat/artifact";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
+import { MEMORY_CONTENT_MAX_LENGTH } from "../constants";
 import { ChatbotError } from "../errors";
 import {
   agent,
   agentTemplate,
   type Chat,
   chat,
+  customCommand,
   type DBMessage,
   document,
   mcpLog,
@@ -34,11 +37,16 @@ import {
   project,
   type Suggestion,
   skill,
+  type Skill,
   skillTemplate,
+  skillUsage,
+  skillVersion,
   stream,
   suggestion,
   userMcpPrefs,
   userMemory,
+  scheduledMessage,
+  type ScheduledMessage,
   vote,
 } from "./schema";
 
@@ -639,6 +647,9 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "default_chat_visibility" varchar(10) DEFAULT 'private'`
   );
   await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "show_agent_chat_icons" boolean DEFAULT true NOT NULL`
+  );
+  await run(
     client`ALTER TABLE "users" DROP COLUMN IF EXISTS "default_ai_mode"`
   );
 
@@ -673,6 +684,37 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     END IF;
   END IF;
 END $$;`
+  );
+
+  // Table ScheduledMessage (Planification)
+  await run(client`CREATE TABLE IF NOT EXISTS "ScheduledMessage" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "userId" text NOT NULL,
+    "title" text DEFAULT 'Envoi planifié' NOT NULL,
+    "prompt" text NOT NULL,
+    "scheduledAt" timestamp NOT NULL,
+    "status" varchar(20) DEFAULT 'pending' NOT NULL,
+    "createMode" varchar(20) DEFAULT 'new_chat' NOT NULL,
+    "chatId" uuid REFERENCES "Chat"("id") ON DELETE SET NULL,
+    "resultChatId" uuid,
+    "agentId" uuid REFERENCES "Agent"("id") ON DELETE SET NULL,
+    "modelId" text DEFAULT 'google/gemini-2.5-flash' NOT NULL,
+    "enabledTools" json DEFAULT '[]'::json NOT NULL,
+    "customInstructions" text,
+    "temperature" double precision,
+    "lastError" text,
+    "executedAt" timestamp,
+    "createdAt" timestamp DEFAULT now() NOT NULL,
+    "updatedAt" timestamp DEFAULT now() NOT NULL
+  )`);
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "ScheduledMessage_userId_idx" ON "ScheduledMessage" USING btree ("userId")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "ScheduledMessage_scheduledAt_idx" ON "ScheduledMessage" USING btree ("scheduledAt")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "ScheduledMessage_status_idx" ON "ScheduledMessage" USING btree ("status")`
   );
 }
 
@@ -880,14 +922,34 @@ export async function getChatsByUserId({
       const where = whereCondition ? and(whereCondition, baseWhere) : baseWhere;
       // Pinned first, then createdAt desc
       return db
-        .select()
+        .select({
+          agentColor: agent.color,
+          agentEmoji: agent.emoji,
+          agentIcon: agent.icon,
+          agentId: chat.agentId,
+          agentName: agent.name,
+          archivedAt: chat.archivedAt,
+          createdAt: chat.createdAt,
+          customInstructions: chat.customInstructions,
+          id: chat.id,
+          isArchived: chat.isArchived,
+          pinned: chat.pinned,
+          projectId: chat.projectId,
+          skillId: chat.skillId,
+          tags: chat.tags,
+          temperatureOverride: chat.temperatureOverride,
+          title: chat.title,
+          userId: chat.userId,
+          visibility: chat.visibility,
+        })
         .from(chat)
+        .leftJoin(agent, eq(chat.agentId, agent.id))
         .where(where)
         .orderBy(desc(chat.pinned), desc(chat.createdAt))
         .limit(extendedLimit);
     };
 
-    let filteredChats: Chat[] = [];
+    let filteredChats: any[] = [];
 
     if (startingAfter) {
       const [selectedChat] = await db
@@ -1355,10 +1417,7 @@ export async function bulkUpdateChats({
   if (chatIds.length === 0) {
     return { updated: 0 };
   }
-  const where = and(
-    inArray(chat.id, chatIds),
-    chatUserFilter(userId, email)
-  );
+  const where = and(inArray(chat.id, chatIds), chatUserFilter(userId, email));
   if (action === "delete") {
     await db.delete(vote).where(inArray(vote.chatId, chatIds));
     await db.delete(message).where(inArray(message.chatId, chatIds));
@@ -1962,6 +2021,32 @@ export async function createSkill(data: {
   return created;
 }
 
+const SKILL_SNAPSHOT_FIELDS = [
+  "name",
+  "description",
+  "instructions",
+  "icon",
+  "color",
+  "tools",
+  "parameters",
+  "mcpServerIds",
+  "mcpToolFilter",
+] as const;
+
+function skillSnapshotChanged(
+  current: Skill,
+  data: Record<string, unknown>
+): boolean {
+  return SKILL_SNAPSHOT_FIELDS.some((field) => {
+    const next = data[field];
+    if (next === undefined) {
+      return false;
+    }
+    const prev = (current as any)[field];
+    return JSON.stringify(prev ?? null) !== JSON.stringify(next ?? null);
+  });
+}
+
 export async function updateSkill({
   id,
   userId,
@@ -1994,6 +2079,32 @@ export async function updateSkill({
   if (clean.lastUsedAt && typeof clean.lastUsedAt === "string") {
     clean.lastUsedAt = new Date(clean.lastUsedAt);
   }
+
+  // Snapshot de la version courante si le contenu éditable change
+  const current = await getSkillById({ id, userId });
+  if (current && skillSnapshotChanged(current, clean)) {
+    await database.insert(skillVersion).values({
+      color: current.color ?? "#6366f1",
+      description: current.description ?? "",
+      icon: current.icon ?? "sparkles",
+      instructions: current.instructions ?? "",
+      mcpServerIds: (current.mcpServerIds as any) ?? [],
+      mcpToolFilter: (current.mcpToolFilter as any) ?? {},
+      name: current.name,
+      parameters: (current.parameters as any) ?? [],
+      skillId: current.id,
+      tags: current.tags ?? [],
+      tools: (current.tools as any) ?? [],
+      userId,
+      versionLabel: current.version ?? "v1",
+    });
+    if (!clean.version) {
+      const match = /^v(\d+)$/.exec(current.version ?? "v1");
+      const nextNumber = match ? Number(match[1]) + 1 : 1;
+      clean.version = `v${nextNumber}`;
+    }
+  }
+
   const [updated] = await database
     .update(skill)
     .set({
@@ -2003,6 +2114,95 @@ export async function updateSkill({
     .where(and(eq(skill.id, id), eq(skill.userId, userId)))
     .returning();
   return updated ?? null;
+}
+
+export async function getSkillVersions({
+  skillId,
+  userId,
+}: {
+  skillId: string;
+  userId: string;
+}) {
+  const database = await getDb();
+  const owns = await getSkillById({ id: skillId, userId });
+  if (!owns) {
+    return [];
+  }
+  return database
+    .select()
+    .from(skillVersion)
+    .where(eq(skillVersion.skillId, skillId))
+    .orderBy(desc(skillVersion.createdAt));
+}
+
+export async function restoreSkillVersion({
+  versionId,
+  userId,
+}: {
+  versionId: string;
+  userId: string;
+}) {
+  const database = await getDb();
+  const [version] = await database
+    .select()
+    .from(skillVersion)
+    .where(
+      and(eq(skillVersion.id, versionId), eq(skillVersion.userId, userId))
+    );
+  if (!version) {
+    return null;
+  }
+  return updateSkill({
+    data: {
+      color: version.color ?? "#6366f1",
+      description: version.description ?? "",
+      icon: version.icon ?? "sparkles",
+      instructions: version.instructions ?? "",
+      mcpServerIds: (version.mcpServerIds as string[]) ?? [],
+      mcpToolFilter:
+        (version.mcpToolFilter as Record<string, string[] | null>) ?? {},
+      name: version.name,
+      parameters: (version.parameters as any[]) ?? [],
+      tags: version.tags ?? [],
+      tools: (version.tools as string[]) ?? [],
+    },
+    id: version.skillId,
+    userId,
+  });
+}
+
+export async function trackSkillUsage({
+  skillId,
+  userId,
+}: {
+  skillId: string;
+  userId: string;
+}) {
+  const database = await getDb();
+  const [existing] = await database
+    .select()
+    .from(skillUsage)
+    .where(and(eq(skillUsage.skillId, skillId), eq(skillUsage.userId, userId)));
+  if (existing) {
+    await database
+      .update(skillUsage)
+      .set({
+        invocationCount: (existing.invocationCount ?? 0) + 1,
+        lastInvokedAt: new Date(),
+      })
+      .where(eq(skillUsage.id, existing.id));
+  } else {
+    await database.insert(skillUsage).values({
+      invocationCount: 1,
+      lastInvokedAt: new Date(),
+      skillId,
+      userId,
+    });
+  }
+  await database
+    .update(skill)
+    .set({ lastUsedAt: new Date() })
+    .where(eq(skill.id, skillId));
 }
 
 export async function deleteSkill({
@@ -2847,9 +3047,7 @@ export async function deleteNotification({
 export async function deleteAllNotifications(userId: string) {
   const db = await dbReady();
   const { notification } = await import("./schema");
-  await db
-    .delete(notification)
-    .where(eq(notification.userId, userId));
+  await db.delete(notification).where(eq(notification.userId, userId));
   return { success: true };
 }
 
@@ -3006,6 +3204,7 @@ export async function duplicateAgent({
     instructions: original.instructions,
     maxTokens: (original as any).maxTokens ?? null,
     mcpServerIds: (original.mcpServerIds as any) ?? [],
+    memoryMode: (original as any).memoryMode === "custom" ? "custom" : "global",
     name: `${original.name} (Copie)`,
     pinned: (original as any).pinned ?? false,
     skillIds: (original.skillIds as any) ?? [],
@@ -3014,8 +3213,6 @@ export async function duplicateAgent({
     topP: (original as any).topP ?? null,
     userId,
     welcomeMessage: (original as any).welcomeMessage ?? null,
-    memoryMode:
-      (original as any).memoryMode === "custom" ? "custom" : "global",
   });
 }
 
@@ -3054,9 +3251,7 @@ export async function getAgentMemories({
   return database
     .select()
     .from(userMemory)
-    .where(
-      and(eq(userMemory.userId, userId), eq(userMemory.agentId, agentId))
-    )
+    .where(and(eq(userMemory.userId, userId), eq(userMemory.agentId, agentId)))
     .orderBy(asc(userMemory.createdAt))
     .limit(limit);
 }
@@ -3075,10 +3270,7 @@ export async function getProjectMemories({
     .select()
     .from(userMemory)
     .where(
-      and(
-        eq(userMemory.userId, userId),
-        eq(userMemory.projectId, projectId)
-      )
+      and(eq(userMemory.userId, userId), eq(userMemory.projectId, projectId))
     )
     .orderBy(asc(userMemory.createdAt))
     .limit(limit);
@@ -3121,14 +3313,14 @@ export async function getUserScopeMemoriesForChat({
     const ag = await getAgentById({ id: agentId, userId });
     if (ag && (ag as any).memoryMode === "custom") {
       return {
+        memories: await getAgentMemories({ agentId, limit: 50, userId }),
         mode: "custom" as const,
-        memories: await getAgentMemories({ agentId, userId, limit: 50 }),
       };
     }
   }
   return {
+    memories: await getGlobalMemories({ limit: 50, userId }),
     mode: "global" as const,
-    memories: await getGlobalMemories({ userId, limit: 50 }),
   };
 }
 
@@ -3165,8 +3357,8 @@ export async function createMemory({
     .insert(userMemory)
     .values({
       agentId: agentId ?? null,
+      content: sanitizeMemoryContent(content),
       projectId: projectId ?? null,
-      content: content.replace(/\u0000/g, "").trim().slice(0, 2000),
       userId,
     })
     .returning();
@@ -3186,6 +3378,67 @@ export async function deleteMemory({
     .where(and(eq(userMemory.id, id), eq(userMemory.userId, userId)))
     .returning();
   return deleted ?? null;
+}
+
+function sanitizeMemoryContent(content: string): string {
+  return content
+    .replace(/\u0000/g, "")
+    .trim()
+    .slice(0, MEMORY_CONTENT_MAX_LENGTH);
+}
+
+export async function updateMemory({
+  content,
+  id,
+  userId,
+}: {
+  content: string;
+  id: string;
+  userId: string;
+}) {
+  const safe = sanitizeMemoryContent(content);
+  if (!safe) {
+    return null;
+  }
+  const database = await getDb();
+  const [updated] = await database
+    .update(userMemory)
+    .set({ content: safe, updatedAt: new Date() })
+    .where(and(eq(userMemory.id, id), eq(userMemory.userId, userId)))
+    .returning();
+  return updated ?? null;
+}
+
+/**
+ * Toutes les mémoires de l'utilisateur, tous scopes confondus, avec le nom de
+ * l'agent ou du projet auquel chacune est rattachée (null pour une mémoire
+ * globale). Utilisé par l'onglet Mémoire des paramètres.
+ */
+export async function getUserMemoriesWithScope({
+  limit = 500,
+  userId,
+}: {
+  limit?: number;
+  userId: string;
+}) {
+  const database = await getDb();
+  return database
+    .select({
+      agentId: userMemory.agentId,
+      agentName: agent.name,
+      content: userMemory.content,
+      createdAt: userMemory.createdAt,
+      id: userMemory.id,
+      projectId: userMemory.projectId,
+      projectName: project.name,
+      updatedAt: userMemory.updatedAt,
+    })
+    .from(userMemory)
+    .leftJoin(agent, eq(userMemory.agentId, agent.id))
+    .leftJoin(project, eq(userMemory.projectId, project.id))
+    .where(eq(userMemory.userId, userId))
+    .orderBy(desc(userMemory.createdAt))
+    .limit(limit);
 }
 
 export async function searchMemories({
@@ -3266,3 +3519,394 @@ export async function broadcastNewsNotification(data: {
   }
   return { sent };
 }
+
+// ==========================================
+// CUSTOM COMMANDS (section Configuration)
+// ==========================================
+
+export async function createCustomCommand({
+  userId,
+  ...data
+}: {
+  userId: string;
+  kind: "slash" | "mention";
+  trigger: string;
+  name: string;
+  description?: string;
+  icon?: string;
+  color?: string;
+  actionType: "mcp" | "agent" | "skill" | "prompt" | "tools" | "navigation";
+  payload?: Record<string, unknown>;
+  enabled?: boolean;
+  pinned?: boolean;
+}) {
+  try {
+    const database = await getDb();
+    const [created] = await database
+      .insert(customCommand)
+      .values({
+        actionType: data.actionType,
+        color: data.color ?? "#6366f1",
+        description: data.description ?? "",
+        enabled: data.enabled ?? true,
+        icon: data.icon ?? "zap",
+        kind: data.kind,
+        name: data.name,
+        payload: (data.payload ?? {}) as any,
+        pinned: data.pinned ?? false,
+        trigger: data.trigger,
+        userId,
+      })
+      .returning();
+    return created ?? null;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function getCustomCommandsByUserId({
+  userId,
+  kind,
+}: {
+  userId: string;
+  kind?: "slash" | "mention";
+}) {
+  try {
+    const database = await getDb();
+    const conditions = kind
+      ? and(eq(customCommand.userId, userId), eq(customCommand.kind, kind))
+      : eq(customCommand.userId, userId);
+    return database
+      .select()
+      .from(customCommand)
+      .where(conditions)
+      .orderBy(desc(customCommand.pinned), asc(customCommand.trigger));
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function getCustomCommandById({
+  id,
+  userId,
+}: {
+  id: string;
+  userId: string;
+}) {
+  try {
+    const database = await getDb();
+    const [found] = await database
+      .select()
+      .from(customCommand)
+      .where(and(eq(customCommand.id, id), eq(customCommand.userId, userId)));
+    return found ?? null;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function updateCustomCommand({
+  id,
+  userId,
+  data,
+}: {
+  id: string;
+  userId: string;
+  data: Partial<{
+    name: string;
+    description: string;
+    icon: string;
+    color: string;
+    trigger: string;
+    actionType: "mcp" | "agent" | "skill" | "prompt" | "tools" | "navigation";
+    payload: Record<string, unknown>;
+    enabled: boolean;
+    pinned: boolean;
+  }>;
+}) {
+  try {
+    const database = await getDb();
+    const [updated] = await database
+      .update(customCommand)
+      .set({
+        ...data,
+        ...(data.payload === undefined ? {} : { payload: data.payload as any }),
+        updatedAt: new Date(),
+      })
+      .where(and(eq(customCommand.id, id), eq(customCommand.userId, userId)))
+      .returning();
+    return updated ?? null;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function deleteCustomCommand({
+  id,
+  userId,
+}: {
+  id: string;
+  userId: string;
+}) {
+  try {
+    const database = await getDb();
+    const [deleted] = await database
+      .delete(customCommand)
+      .where(and(eq(customCommand.id, id), eq(customCommand.userId, userId)))
+      .returning();
+    return deleted ?? null;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function incrementCustomCommandUsage({
+  id,
+  userId,
+}: {
+  id: string;
+  userId: string;
+}) {
+  try {
+    const database = await getDb();
+    await database
+      .update(customCommand)
+      .set({ usageCount: sql`${customCommand.usageCount} + 1` })
+      .where(and(eq(customCommand.id, id), eq(customCommand.userId, userId)));
+  } catch {
+    /* non critique */
+  }
+}
+
+export async function getAgentStatsByUserId({ userId }: { userId: string }) {
+  const database = await getDb();
+
+  // Liste des agents de l'utilisateur
+  const userAgents = await database
+    .select()
+    .from(agent)
+    .where(eq(agent.userId, userId))
+    .orderBy(desc(agent.createdAt));
+
+  // Compte des chats par agentId
+  const chatCounts = await database
+    .select({
+      agentId: chat.agentId,
+      count: sql<number>`count(*)::int`,
+      lastUsedAt: sql<string | null>`max(${chat.createdAt})::text`,
+    })
+    .from(chat)
+    .where(eq(chat.userId, userId))
+    .groupBy(chat.agentId);
+
+  const countsMap = new Map<string, { count: number; lastUsedAt: string | null }>();
+  let totalStandardChats = 0;
+  let totalAgentChats = 0;
+
+  for (const c of chatCounts) {
+    if (c.agentId) {
+      countsMap.set(c.agentId, { count: c.count, lastUsedAt: c.lastUsedAt });
+      totalAgentChats += c.count;
+    } else {
+      totalStandardChats += c.count;
+    }
+  }
+
+  const agentsWithStats = userAgents.map((ag) => {
+    const stats = countsMap.get(ag.id) || { count: 0, lastUsedAt: null };
+    return {
+      color: ag.color,
+      defaultModelId: ag.defaultModelId,
+      description: ag.description,
+      emoji: ag.emoji,
+      icon: ag.icon,
+      id: ag.id,
+      lastUsedAt: stats.lastUsedAt,
+      name: ag.name,
+      pinned: ag.pinned,
+      usageCount: stats.count,
+    };
+  });
+
+  // Trier par nombre d'utilisations décroissant
+  agentsWithStats.sort((a, b) => b.usageCount - a.usageCount);
+
+  return {
+    agents: agentsWithStats,
+    totalAgentChats,
+    totalAgents: userAgents.length,
+    totalChats: totalStandardChats + totalAgentChats,
+    totalStandardChats,
+  };
+}
+
+// ============================================================================
+// Planification (ScheduledMessage)
+// ============================================================================
+
+export async function createScheduledMessage(params: {
+  userId: string;
+  title: string;
+  prompt: string;
+  scheduledAt: Date;
+  createMode?: "new_chat" | "existing_chat";
+  chatId?: string | null;
+  agentId?: string | null;
+  modelId?: string;
+  enabledTools?: string[];
+  customInstructions?: string | null;
+  temperature?: number | null;
+}): Promise<ScheduledMessage> {
+  const database = await getDb();
+  const [created] = await database
+    .insert(scheduledMessage)
+    .values({
+      agentId: params.agentId || null,
+      chatId: params.chatId || null,
+      createMode: params.createMode || "new_chat",
+      customInstructions: params.customInstructions || null,
+      enabledTools: params.enabledTools || [],
+      modelId: params.modelId || "google/gemini-2.5-flash",
+      prompt: params.prompt,
+      scheduledAt: params.scheduledAt,
+      status: "pending",
+      temperature: params.temperature ?? null,
+      title: params.title || "Envoi planifié",
+      userId: params.userId,
+    })
+    .returning();
+  return created;
+}
+
+export async function getScheduledMessagesByUserId(params: {
+  userId: string;
+  status?: string;
+}): Promise<ScheduledMessage[]> {
+  const database = await getDb();
+  const conditions = [eq(scheduledMessage.userId, params.userId)];
+  if (params.status && params.status !== "all") {
+    conditions.push(eq(scheduledMessage.status, params.status as any));
+  }
+  return await database
+    .select()
+    .from(scheduledMessage)
+    .where(and(...conditions))
+    .orderBy(desc(scheduledMessage.scheduledAt));
+}
+
+export async function getScheduledMessageById(params: {
+  id: string;
+  userId?: string;
+}): Promise<ScheduledMessage | null> {
+  const database = await getDb();
+  const conditions = [eq(scheduledMessage.id, params.id)];
+  if (params.userId) {
+    conditions.push(eq(scheduledMessage.userId, params.userId));
+  }
+  const [res] = await database
+    .select()
+    .from(scheduledMessage)
+    .where(and(...conditions))
+    .limit(1);
+  return res ?? null;
+}
+
+export async function updateScheduledMessage(params: {
+  id: string;
+  userId: string;
+  title?: string;
+  prompt?: string;
+  scheduledAt?: Date;
+  createMode?: "new_chat" | "existing_chat";
+  chatId?: string | null;
+  agentId?: string | null;
+  modelId?: string;
+  enabledTools?: string[];
+  customInstructions?: string | null;
+  temperature?: number | null;
+  status?: "pending" | "processing" | "completed" | "failed" | "cancelled";
+}): Promise<ScheduledMessage | null> {
+  const database = await getDb();
+  const { id, userId, ...updates } = params;
+  const updateData: Record<string, any> = {
+    updatedAt: new Date(),
+  };
+
+  if (updates.title !== undefined) updateData.title = updates.title;
+  if (updates.prompt !== undefined) updateData.prompt = updates.prompt;
+  if (updates.scheduledAt !== undefined) updateData.scheduledAt = updates.scheduledAt;
+  if (updates.createMode !== undefined) updateData.createMode = updates.createMode;
+  if (updates.chatId !== undefined) updateData.chatId = updates.chatId;
+  if (updates.agentId !== undefined) updateData.agentId = updates.agentId;
+  if (updates.modelId !== undefined) updateData.modelId = updates.modelId;
+  if (updates.enabledTools !== undefined) updateData.enabledTools = updates.enabledTools;
+  if (updates.customInstructions !== undefined) updateData.customInstructions = updates.customInstructions;
+  if (updates.temperature !== undefined) updateData.temperature = updates.temperature;
+  if (updates.status !== undefined) updateData.status = updates.status;
+
+  const [updated] = await database
+    .update(scheduledMessage)
+    .set(updateData)
+    .where(
+      and(
+        eq(scheduledMessage.id, id),
+        eq(scheduledMessage.userId, userId)
+      )
+    )
+    .returning();
+  return updated ?? null;
+}
+
+export async function deleteScheduledMessage(params: {
+  id: string;
+  userId: string;
+}): Promise<boolean> {
+  const database = await getDb();
+  const res = await database
+    .delete(scheduledMessage)
+    .where(
+      and(
+        eq(scheduledMessage.id, params.id),
+        eq(scheduledMessage.userId, params.userId)
+      )
+    )
+    .returning();
+  return res.length > 0;
+}
+
+export async function getDueScheduledMessages(): Promise<ScheduledMessage[]> {
+  const database = await getDb();
+  return await database
+    .select()
+    .from(scheduledMessage)
+    .where(
+      and(
+        eq(scheduledMessage.status, "pending"),
+        lte(scheduledMessage.scheduledAt, new Date())
+      )
+    )
+    .orderBy(asc(scheduledMessage.scheduledAt))
+    .limit(20);
+}
+
+export async function setScheduledMessageStatus(params: {
+  id: string;
+  status: "pending" | "processing" | "completed" | "failed" | "cancelled";
+  resultChatId?: string | null;
+  lastError?: string | null;
+  executedAt?: Date | null;
+}): Promise<void> {
+  const database = await getDb();
+  await database
+    .update(scheduledMessage)
+    .set({
+      executedAt: params.executedAt !== undefined ? params.executedAt : undefined,
+      lastError: params.lastError !== undefined ? params.lastError : undefined,
+      resultChatId: params.resultChatId !== undefined ? params.resultChatId : undefined,
+      status: params.status,
+      updatedAt: new Date(),
+    })
+    .where(eq(scheduledMessage.id, params.id));
+}
+
+

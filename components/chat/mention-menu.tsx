@@ -6,14 +6,15 @@ import {
   CpuIcon,
   PlusIcon,
   SparklesIcon,
+  SquareSlashIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef } from "react";
+import { toast } from "sonner";
 import { AgentIcon } from "@/components/agents/agent-icon";
 import type { ProjectLite } from "@/hooks/use-projects";
-import type { Agent, McpServer, Skill } from "@/lib/db/schema";
+import type { Agent, CustomCommand, McpServer, Skill } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
-import { toast } from "sonner";
 import { ProjectIcon } from "./project-icon";
 
 type MentionProject = ProjectLite & { description?: string };
@@ -23,6 +24,7 @@ export type MentionSelectPayload =
   | { type: "agent"; agent: Agent }
   | { type: "skill"; skill: Skill }
   | { type: "mcp"; server: McpServer }
+  | { type: "customCommand"; command: CustomCommand }
   | { type: "memory" };
 
 type MentionMenuProps = {
@@ -31,35 +33,44 @@ type MentionMenuProps = {
   skills?: Skill[];
   mcpServers?: McpServer[];
   agents?: Agent[];
+  customCommands?: CustomCommand[];
   isLoadingProjects?: boolean;
+  /** Quota de mémoire atteint pour la portée courante : `add` n'est plus possible. */
+  memoryAtLimit?: boolean;
+  memoryCount?: number;
+  memoryLimit?: number;
   onSelect: (payload: MentionSelectPayload) => void;
   onClose: () => void;
   selectedIndex: number;
   supportsTools?: boolean;
 };
 
-// Flat item list for keyboard nav: memory then skills then mcp then projects then agents
+// Flat item list for keyboard nav: memory then skills then mcp then projects then agents then custom commands
 export type FlatMentionItem =
   | { kind: "memory"; id: string; label: string }
   | { kind: "skill"; id: string; label: string; skill: Skill }
   | { kind: "mcp"; id: string; label: string; server: McpServer }
   | { kind: "project"; id: string; label: string; project: MentionProject }
-  | { kind: "agent"; id: string; label: string; agent: Agent };
+  | { kind: "agent"; id: string; label: string; agent: Agent }
+  | {
+      kind: "custom-command";
+      id: string;
+      label: string;
+      command: CustomCommand;
+    };
 
 function buildFlatList(
   query: string,
   projects: MentionProject[],
   skills: Skill[] = [],
   mcpServers: McpServer[] = [],
-  agents: Agent[] = []
+  agents: Agent[] = [],
+  customCommands: CustomCommand[] = []
 ): FlatMentionItem[] {
   const q = query.toLowerCase().trim();
 
   const memoryItems: FlatMentionItem[] =
-    !q ||
-    "memory".includes(q) ||
-    "mémoire".includes(q) ||
-    "memoire".includes(q)
+    !q || "memory".includes(q) || "mémoire".includes(q) || "memoire".includes(q)
       ? [{ id: "memory", kind: "memory" as const, label: "Memory" }]
       : [];
 
@@ -125,12 +136,29 @@ function buildFlatList(
     label: a.name,
   }));
 
+  const filteredCustom = q
+    ? customCommands.filter(
+        (c) =>
+          c.trigger.toLowerCase().includes(q) ||
+          c.name.toLowerCase().includes(q) ||
+          (c.description ?? "").toLowerCase().includes(q)
+      )
+    : customCommands;
+
+  const customItems: FlatMentionItem[] = filteredCustom.map((c) => ({
+    command: c,
+    id: c.id,
+    kind: "custom-command" as const,
+    label: c.trigger,
+  }));
+
   return [
     ...memoryItems,
     ...skillItems,
     ...mcpItems,
     ...projectItems,
     ...agentItems,
+    ...customItems,
   ];
 }
 
@@ -139,26 +167,47 @@ export function getFilteredMentionItems(
   projects: MentionProject[],
   skills: Skill[] = [],
   mcpServers: McpServer[] = [],
-  agents: Agent[] = []
+  agents: Agent[] = [],
+  customCommands: CustomCommand[] = []
 ): FlatMentionItem[] {
-  return buildFlatList(query, projects, skills, mcpServers, agents);
+  return buildFlatList(
+    query,
+    projects,
+    skills,
+    mcpServers,
+    agents,
+    customCommands
+  );
 }
 
 function MentionItem({
   item,
   isSelected,
+  memoryAtLimit,
+  memoryCount,
+  memoryLimit,
   onSelect,
   supportsTools = true,
 }: {
   item: FlatMentionItem;
   isSelected: boolean;
+  memoryAtLimit?: boolean;
+  memoryCount?: number;
+  memoryLimit?: number;
   onSelect: (payload: MentionSelectPayload) => void;
   supportsTools?: boolean;
 }) {
   const isToolFeature = item.kind === "skill" || item.kind === "mcp";
-  const isDisabled = isToolFeature && !supportsTools;
+  const isMemoryBlocked = item.kind === "memory" && Boolean(memoryAtLimit);
+  const isDisabled = (isToolFeature && !supportsTools) || isMemoryBlocked;
 
   const handleClick = useCallback(() => {
+    if (isMemoryBlocked) {
+      toast.warning(
+        `Limite de mémoires atteinte (${memoryCount ?? memoryLimit ?? 0}/${memoryLimit ?? 0}) — libérez de l'espace dans l'onglet Mémoire des paramètres.`
+      );
+      return;
+    }
     if (isDisabled) {
       toast.warning(
         "Ce modèle ne prend pas en charge les outils (tools). Les compétences et serveurs MCP sont désactivés."
@@ -173,10 +222,12 @@ function MentionItem({
       onSelect({ project: item.project, type: "project" });
     } else if (item.kind === "memory") {
       onSelect({ type: "memory" });
+    } else if (item.kind === "custom-command") {
+      onSelect({ command: item.command, type: "customCommand" });
     } else {
       onSelect({ agent: item.agent, type: "agent" });
     }
-  }, [isDisabled, item, onSelect]);
+  }, [isDisabled, isMemoryBlocked, item, memoryCount, memoryLimit, onSelect]);
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -187,9 +238,13 @@ function MentionItem({
       <button
         className={cn(
           "flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors",
-          isSelected ? "bg-muted/70" : "hover:bg-muted/40"
+          isDisabled
+            ? "opacity-40 cursor-not-allowed"
+            : isSelected
+              ? "bg-muted/70"
+              : "hover:bg-muted/40"
         )}
-        data-selected={isSelected}
+        data-selected={isSelected && !isDisabled}
         onClick={handleClick}
         onMouseDown={handleMouseDown}
         type="button"
@@ -205,9 +260,16 @@ function MentionItem({
             <span className="text-[10px] bg-sky-500/10 text-sky-600 dark:text-sky-400 font-semibold px-1.5 py-0.2 rounded">
               Mémoire
             </span>
+            {isDisabled && (
+              <span className="text-[9px] bg-destructive/10 text-destructive font-semibold px-1.5 py-0.2 rounded">
+                Limite atteinte ({memoryCount ?? 0}/{memoryLimit ?? 0})
+              </span>
+            )}
           </div>
           <span className="text-[11px] text-muted-foreground/70 truncate">
-            L'IA pourra retenir, retrouver ou oublier des informations
+            {isDisabled
+              ? "Libérez de l'espace dans l'onglet Mémoire des paramètres"
+              : "L'IA pourra retenir, retrouver ou oublier des informations"}
           </span>
         </div>
       </button>
@@ -338,6 +400,43 @@ function MentionItem({
     );
   }
 
+  if (item.kind === "custom-command") {
+    return (
+      <button
+        className={cn(
+          "flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors",
+          isSelected ? "bg-muted/70" : "hover:bg-muted/40"
+        )}
+        data-selected={isSelected}
+        onClick={handleClick}
+        onMouseDown={handleMouseDown}
+        type="button"
+      >
+        <div
+          className="flex size-6 shrink-0 items-center justify-center rounded-md text-white"
+          style={{ backgroundColor: item.command.color || "#6366f1" }}
+        >
+          <AgentIcon icon={item.command.icon} size={14} variant="plain" />
+        </div>
+        <div className="flex flex-col min-w-0">
+          <div className="flex items-center gap-1.5">
+            <span className="text-[13px] font-medium text-foreground truncate">
+              @{item.label}
+            </span>
+            <span className="text-[10px] bg-primary/10 text-primary font-semibold px-1.5 py-0.2 rounded flex items-center gap-1">
+              <SquareSlashIcon className="size-3" /> Commande
+            </span>
+          </div>
+          {item.command.description && (
+            <span className="text-[11px] text-muted-foreground/70 truncate">
+              {item.command.description}
+            </span>
+          )}
+        </div>
+      </button>
+    );
+  }
+
   // Agent
   return (
     <button
@@ -384,7 +483,11 @@ export function MentionMenu({
   skills = [],
   mcpServers = [],
   agents = [],
+  customCommands = [],
   isLoadingProjects,
+  memoryAtLimit,
+  memoryCount,
+  memoryLimit,
   onSelect,
   onClose: _onClose,
   selectedIndex,
@@ -393,8 +496,16 @@ export function MentionMenu({
   const menuRef = useRef<HTMLDivElement>(null);
 
   const flat = useMemo(
-    () => buildFlatList(query, projects, skills, mcpServers, agents),
-    [query, projects, skills, mcpServers, agents]
+    () =>
+      buildFlatList(
+        query,
+        projects,
+        skills,
+        mcpServers,
+        agents,
+        customCommands
+      ),
+    [query, projects, skills, mcpServers, agents, customCommands]
   );
 
   const memoryItems = flat.filter((i) => i.kind === "memory");
@@ -402,6 +513,7 @@ export function MentionMenu({
   const mcpItems = flat.filter((i) => i.kind === "mcp");
   const projectItems = flat.filter((i) => i.kind === "project");
   const agentItems = flat.filter((i) => i.kind === "agent");
+  const customCommandItems = flat.filter((i) => i.kind === "custom-command");
 
   useEffect(() => {
     const selected = menuRef.current?.querySelector("[data-selected='true']");
@@ -437,6 +549,9 @@ export function MentionMenu({
                   isSelected={flatIndex === selectedIndex}
                   item={item}
                   key={`mem-${item.id}`}
+                  memoryAtLimit={memoryAtLimit}
+                  memoryCount={memoryCount}
+                  memoryLimit={memoryLimit}
                   onSelect={onSelect}
                 />
               );
@@ -449,8 +564,17 @@ export function MentionMenu({
           <>
             <div className="px-4 py-2 bg-muted/40 border-b border-border/40 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground flex items-center justify-between">
               <span>Compétences / Skills</span>
-              <span className={cn("text-[10px] normal-case", supportsTools ? "text-primary" : "text-amber-600 dark:text-amber-400 font-medium")}>
-                {supportsTools ? "Appliquer à la discussion" : "Indisponible avec ce modèle"}
+              <span
+                className={cn(
+                  "text-[10px] normal-case",
+                  supportsTools
+                    ? "text-primary"
+                    : "text-amber-600 dark:text-amber-400 font-medium"
+                )}
+              >
+                {supportsTools
+                  ? "Appliquer à la discussion"
+                  : "Indisponible avec ce modèle"}
               </span>
             </div>
             {skillItems.map((item) => {
@@ -566,6 +690,26 @@ export function MentionMenu({
             )}
           </>
         ) : null}
+
+        {/* Section Commandes personnalisées */}
+        {customCommandItems.length > 0 && (
+          <>
+            <div className="px-4 py-2 mt-1 bg-muted/40 border-t border-b border-border/40 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+              <SquareSlashIcon className="size-3.5" /> Commandes personnalisées
+            </div>
+            {customCommandItems.map((item) => {
+              const flatIndex = flat.indexOf(item);
+              return (
+                <MentionItem
+                  isSelected={flatIndex === selectedIndex}
+                  item={item}
+                  key={`cmd-${item.id}`}
+                  onSelect={onSelect}
+                />
+              );
+            })}
+          </>
+        )}
       </div>
     </div>
   );

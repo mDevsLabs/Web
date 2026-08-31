@@ -15,6 +15,7 @@ import {
   SettingsIcon,
   ShieldCheckIcon,
   SparklesIcon,
+  SquareSlashIcon,
   UserIcon,
   Volume2Icon,
   ZapIcon,
@@ -22,11 +23,17 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
+import {
+  ModelSelectorCompact,
+  type SharedModel,
+} from "@/components/chat/model-selector-compact";
 import { PageBackButton } from "@/components/chat/page-back-button";
-import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
+import { UpgradeDialog } from "@/components/common/upgrade-dialog";
+import { ConfigurationSection } from "@/components/settings/configuration-client";
+import { MemoryCard } from "@/components/settings/memory-card";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -39,14 +46,12 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { MemoryCard } from "@/components/settings/memory-card";
-import { UpgradeDialog } from "@/components/common/upgrade-dialog";
-import { useTier } from "@/hooks/use-tier";
 import {
   resolveImagesUsage,
   resolveSpeechUsage,
   useSettings,
 } from "@/hooks/use-settings";
+import { useTier } from "@/hooks/use-tier";
 import type { ChatModel } from "@/lib/ai/models";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
@@ -106,17 +111,31 @@ export default function SettingsPage() {
       | "profile"
       | "usage"
       | "preferences"
-      | "notifications") || "profile";
+      | "notifications"
+      | "configuration") || "profile";
   const [activeTab, setActiveTab] = useState<
-    "profile" | "usage" | "preferences" | "notifications"
+    "profile" | "usage" | "preferences" | "notifications" | "configuration"
   >(
-    ["profile", "usage", "preferences", "notifications"].includes(initialTab)
+    [
+      "profile",
+      "usage",
+      "preferences",
+      "notifications",
+      "configuration",
+    ].includes(initialTab)
       ? (initialTab as any)
       : "profile"
   );
 
   const handleTabChange = useCallback(
-    (tab: "profile" | "usage" | "preferences" | "notifications") => {
+    (
+      tab:
+        | "profile"
+        | "usage"
+        | "preferences"
+        | "notifications"
+        | "configuration"
+    ) => {
       setActiveTab(tab);
       const params = new URLSearchParams(searchParams.toString());
       params.set("tab", tab);
@@ -129,7 +148,13 @@ export default function SettingsPage() {
     const t = searchParams.get("tab") as any;
     if (
       t &&
-      ["profile", "usage", "preferences", "notifications"].includes(t) &&
+      [
+        "profile",
+        "usage",
+        "preferences",
+        "notifications",
+        "configuration",
+      ].includes(t) &&
       t !== activeTab
     ) {
       setActiveTab(t);
@@ -260,8 +285,10 @@ export default function SettingsPage() {
   const [defaultAgentId, setDefaultAgentId] = useState<string>("none");
   const [isSavingDefaultAgent, setIsSavingDefaultAgent] = useState(false);
   const [agentsUpgradeOpen, setAgentsUpgradeOpen] = useState(false);
+  const [showAgentChatIcons, setShowAgentChatIcons] = useState<boolean>(true);
+  const [isSavingAgentIconsPref, setIsSavingAgentIconsPref] = useState(false);
   const { data: prefAgentsData } = useSWR(
-    !isFree ? "/api/agents" : null,
+    isFree ? null : "/api/agents",
     (url: string) => fetch(url).then((r) => r.json()),
     { dedupingInterval: 30_000 }
   );
@@ -302,6 +329,32 @@ export default function SettingsPage() {
     [defaultAgentId, isFree, mutateCustomPref]
   );
 
+  const handleToggleShowAgentChatIcons = useCallback(
+    async (checked: boolean) => {
+      const prev = showAgentChatIcons;
+      setShowAgentChatIcons(checked);
+      setIsSavingAgentIconsPref(true);
+      try {
+        const res = await fetch("/api/user/preferences", {
+          body: JSON.stringify({ showAgentChatIcons: checked }),
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+        });
+        if (!res.ok) {
+          throw new Error("Erreur de sauvegarde de la préférence");
+        }
+        toast.success("Préférence d'icônes d'agent enregistrée !");
+        await mutateCustomPref();
+      } catch (e: any) {
+        setShowAgentChatIcons(prev);
+        toast.error(e.message || "Erreur de sauvegarde");
+      } finally {
+        setIsSavingAgentIconsPref(false);
+      }
+    },
+    [showAgentChatIcons, mutateCustomPref]
+  );
+
   useEffect(() => {
     if (customPrefData) {
       if (customPrefData.customInstructions !== undefined) {
@@ -315,6 +368,9 @@ export default function SettingsPage() {
       }
       if (customPrefData.defaultAgentId !== undefined) {
         setDefaultAgentId(customPrefData.defaultAgentId || "none");
+      }
+      if (typeof customPrefData.showAgentChatIcons === "boolean") {
+        setShowAgentChatIcons(customPrefData.showAgentChatIcons);
       }
       if (customPrefData.enabled !== undefined) {
         setCustomEnabled(!!customPrefData.enabled);
@@ -859,6 +915,18 @@ export default function SettingsPage() {
             <BellIcon className="size-4" />
             <span>Notifications</span>
           </button>
+
+          <button
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer ${
+              activeTab === "configuration"
+                ? "bg-foreground text-background shadow-sm"
+                : "bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
+            }`}
+            onClick={() => handleTabChange("configuration")}
+          >
+            <SquareSlashIcon className="size-4" />
+            <span>Configuration</span>
+          </button>
         </div>
       </div>
 
@@ -1343,6 +1411,29 @@ export default function SettingsPage() {
                 </span>
               </div>
             )}
+
+            <div className="pt-2 border-t border-border/40 flex items-center justify-between gap-3">
+              <div className="flex flex-col">
+                <span className="text-xs font-semibold text-foreground">
+                  Icônes des agents sur les conversations
+                </span>
+                <span className="text-[11px] text-muted-foreground">
+                  Affiche l'icône et la couleur de l'agent configuré pour chaque conversation dans l'historique latéral.
+                </span>
+              </div>
+              <label className="flex items-center gap-2 cursor-pointer shrink-0">
+                <input
+                  checked={showAgentChatIcons}
+                  className="size-4 rounded border-border accent-primary cursor-pointer"
+                  disabled={isSavingAgentIconsPref}
+                  onChange={(e) => handleToggleShowAgentChatIcons(e.target.checked)}
+                  type="checkbox"
+                />
+                <span className="text-xs font-medium">
+                  {showAgentChatIcons ? "Activé" : "Désactivé"}
+                </span>
+              </label>
+            </div>
           </div>
           <UpgradeDialog
             feature="agents"
@@ -1818,6 +1909,9 @@ export default function SettingsPage() {
             </div>
           </div>
         </div>
+      ) : activeTab === "configuration" ? (
+        /* ────────────── SECTION CONFIGURATION ────────────── */
+        <ConfigurationSection />
       ) : (
         /* ────────────── SECTION CONSOMMATION & QUOTAS ────────────── */
         <div

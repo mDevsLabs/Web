@@ -14,24 +14,33 @@ import { createResumableStreamContext } from "resumable-stream";
 import { DEFAULT_CHAT_MODEL, getModelCapabilities } from "@/lib/ai/models";
 import { type RequestHints, systemPrompt } from "@/lib/ai/prompts";
 import { getLanguageModel } from "@/lib/ai/providers";
+import { substituteSkillParams } from "@/lib/ai/skill-params";
+import { askUser } from "@/lib/ai/tools/ask-user";
 import { audioGenerate } from "@/lib/ai/tools/audio-generate";
 import { calculator } from "@/lib/ai/tools/calculator";
 import { codeExecution } from "@/lib/ai/tools/code-execution";
+import { TOOL_SYSTEM_HINTS } from "@/lib/ai/tools/config";
 import { createDocument } from "@/lib/ai/tools/create-document";
+import { currencyConverter } from "@/lib/ai/tools/currency-converter";
 import { dateTime } from "@/lib/ai/tools/datetime";
 import { editDocument } from "@/lib/ai/tools/edit-document";
+import { generateChart } from "@/lib/ai/tools/generate-chart";
 import { getWeather } from "@/lib/ai/tools/get-weather";
 import { imageGenerate } from "@/lib/ai/tools/image-generate";
 import { memory } from "@/lib/ai/tools/memory";
 import { note } from "@/lib/ai/tools/note";
+import { qrCodeGenerator } from "@/lib/ai/tools/qr-code-generator";
+import { quizzly } from "@/lib/ai/tools/quizzly";
+import { readUrl } from "@/lib/ai/tools/read-url";
 import { requestSuggestions } from "@/lib/ai/tools/request-suggestions";
 import { updateDocument } from "@/lib/ai/tools/update-document";
 import { webSearch } from "@/lib/ai/tools/web-search";
-import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import { isPaidTier, memoryLimitForTier } from "@/lib/auth/plan";
+import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import { isProductionEnvironment, MAI_API_URL } from "@/lib/constants";
 import { getUserApiKey } from "@/lib/db/api-keys";
 import {
+  countMemories,
   createStreamId,
   deleteChatById,
   getChatById,
@@ -41,6 +50,7 @@ import {
   recordTokenUsage,
   saveChat,
   saveMessages,
+  trackSkillUsage,
   updateChatTitleById,
   updateMessage,
 } from "@/lib/db/queries";
@@ -57,7 +67,7 @@ import {
 import { generateTitleFromConversation } from "../../actions";
 import { type PostRequestBody, postRequestBodySchema } from "./schema";
 
-export const maxDuration = 60;
+export const maxDuration = 300;
 
 function isModelStreamActivity(chunk: { type: string }) {
   return !["start", "start-step", "finish-step", "finish", "raw"].includes(
@@ -95,6 +105,8 @@ export async function POST(request: Request) {
       selectedVisibilityType,
       projectId,
       skillId,
+      skillParams,
+      pendingPrompt,
       tags,
       customInstructions,
       temperatureOverride,
@@ -103,6 +115,8 @@ export async function POST(request: Request) {
     } = requestBody as PostRequestBody & {
       projectId?: string | null;
       skillId?: string | null;
+      skillParams?: Record<string, string> | null;
+      pendingPrompt?: { commandId?: string; text: string } | null;
       tags?: string[];
       customInstructions?: string;
       temperatureOverride?: number | null;
@@ -174,6 +188,8 @@ export async function POST(request: Request) {
       : (chat as any)?.skillId || skillId;
     let skillInstructions: string | null = null;
     let skillTools: string[] = [];
+    let skillMcpServerIds: string[] = [];
+    let skillMcpToolFilter: Record<string, string[] | null> | null = null;
 
     if (effectiveSkillId) {
       try {
@@ -182,10 +198,26 @@ export async function POST(request: Request) {
           userId,
         });
         if (activeSkill) {
-          skillInstructions = activeSkill.instructions;
+          skillInstructions = substituteSkillParams(
+            activeSkill.instructions,
+            skillParams
+          );
           if (Array.isArray(activeSkill.tools)) {
             skillTools = activeSkill.tools as string[];
           }
+          if (Array.isArray(activeSkill.mcpServerIds)) {
+            skillMcpServerIds = activeSkill.mcpServerIds as string[];
+          }
+          if (
+            activeSkill.mcpToolFilter &&
+            typeof activeSkill.mcpToolFilter === "object"
+          ) {
+            skillMcpToolFilter = activeSkill.mcpToolFilter as Record<
+              string,
+              string[] | null
+            >;
+          }
+          trackSkillUsage({ skillId: activeSkill.id, userId }).catch(() => {});
         }
       } catch {}
     }
@@ -315,14 +347,15 @@ export async function POST(request: Request) {
 
     if (isToolApprovalFlow && messages) {
       const dbMessages = convertToUIMessages(messagesFromDb);
-      const approvalStates = new Map(
+      const toolUpdates = new Map(
         messages.flatMap(
           (m) =>
             m.parts
               ?.filter(
                 (p: Record<string, unknown>) =>
                   p.state === "approval-responded" ||
-                  p.state === "output-denied"
+                  p.state === "output-denied" ||
+                  p.state === "output-available"
               )
               .map((p: Record<string, unknown>) => [
                 String(p.toolCallId ?? ""),
@@ -335,9 +368,9 @@ export async function POST(request: Request) {
         parts: msg.parts.map((part) => {
           if (
             "toolCallId" in part &&
-            approvalStates.has(String(part.toolCallId))
+            toolUpdates.has(String(part.toolCallId))
           ) {
-            return { ...part, ...approvalStates.get(String(part.toolCallId)) };
+            return { ...part, ...toolUpdates.get(String(part.toolCallId)) };
           }
           return part;
         }),
@@ -407,6 +440,15 @@ export async function POST(request: Request) {
       } catch {}
     }
     const memoryActive = !isGhostMode || ghostMemoryEnabled;
+    const memoryLimit = memoryLimitForTier(maiUser.tier);
+    // Même portée que celle où l'outil écrit (agent sinon globale) : une seule
+    // requête ici, réutilisée à l'enregistrement du tool.
+    const memoryAllowAdd = memoryActive
+      ? (await countMemories({
+          agentId: effectiveAgentId ?? null,
+          userId,
+        })) < memoryLimit
+      : false;
     let userMemoryBlock = "";
     let projectMemoryBlock = "";
     if (memoryActive) {
@@ -419,9 +461,7 @@ export async function POST(request: Request) {
         });
         if (memories.length > 0) {
           const lines = memories
-            .map(
-              (m, i) => `${i + 1}. ${m.content.replace(/\s+/g, " ").trim()}`
-            )
+            .map((m, i) => `${i + 1}. ${m.content.replace(/\s+/g, " ").trim()}`)
             .join("\n")
             .slice(0, 6000);
           userMemoryBlock = `MÉMOIRE — Informations retenues sur l'utilisateur :\n${lines}\nUtilise ces informations pour personnaliser tes réponses sans les répéter verbatim.`;
@@ -495,28 +535,26 @@ export async function POST(request: Request) {
           (t !== "memory" || ghostMemoryEnabled))
     );
     if (requestedTools.length > 0) {
-      const toolLabels: Record<string, string> = {
-        audioGenerate:
-          "audioGenerate (synthèse vocale - exécuter immédiatement avec la voix par défaut 'flux-alexis-en' sans demander à l'utilisateur de choisir la voix)",
-        calculator:
-          "calculator (calculs mathématiques, fonctions trigonométriques, logarithmes, conversions d'unités : longueur, masse, température, temps, volume, données, énergie, pression, vitesse, surface, angle)",
-        codeExecution: "codeExecution (exécution Python/JS navigateur)",
-        createDocument: "createDocument (créer artifact)",
-        dateTime:
-          "dateTime (date/heure actuelle, conversions entre fuseaux horaires, différences entre dates, calcul de la date de Pâques, formatage)",
-        editDocument: "editDocument (éditer artifact)",
-        getWeather:
-          "getWeather (météo actuelle et prévisions 1-7 jours, celsius/fahrenheit)",
-        imageGenerate: "imageGenerate (génération d'image)",
-        memory:
-          "memory (mémoire personnalisée — retenir, oublier, lister ou retrouver des informations sur l'utilisateur)",
-        note: "note (créer une note formatée et téléchargeable en markdown, texte, JSON, CSV, HTML, ou code)",
-        requestSuggestions: "requestSuggestions (suggestions)",
-        updateDocument: "updateDocument (réécrire artifact)",
-        webSearch: "webSearch (recherche sur le Web en temps réel)",
-      };
-      const listed = requestedTools.map((t) => toolLabels[t] || t).join(", ");
+      const listed = requestedTools
+        .map((t) => (TOOL_SYSTEM_HINTS as Record<string, string>)[t] || t)
+        .join(", ");
       effectiveAddendum += `\n\nOUTILS ACTIVÉS POUR CE MESSAGE — UTILISATION EXTRÊMEMENT RECOMMANDÉE SI PERTINENT : ${listed}. Tu DOIS les utiliser dès que la demande s'y prête, ne les ignore pas. Si plusieurs outils sont activés, choisis le plus pertinent. Pour l'audio, ne demande JAMAIS de choix de voix, génère directement avec la voix par défaut.`;
+    }
+
+    // Commande personnalisée : consignes à appliquer à CE message uniquement
+    if (pendingPrompt?.text && pendingPrompt.text.trim().length > 0) {
+      let commandName: string | null = null;
+      if (pendingPrompt.commandId && !isFreeUser) {
+        try {
+          const { getCustomCommandById } = await import("@/lib/db/queries");
+          const cmd = await getCustomCommandById({
+            id: pendingPrompt.commandId,
+            userId,
+          });
+          commandName = cmd?.name ?? null;
+        } catch {}
+      }
+      effectiveAddendum += `\n\nCOMMANDE PERSONNALISÉE${commandName ? ` « ${commandName} »` : ""} — CONSIGNES À APPLIQUER À CE MESSAGE :\n${pendingPrompt.text.trim()}`;
     }
 
     // Température effective: chat override > agent > user default (plus de mode)
@@ -569,7 +607,9 @@ export async function POST(request: Request) {
               const discoveredTools = await fetchMcpTools(server as any);
               if (discoveredTools && discoveredTools.length > 0) {
                 server.toolsCache = discoveredTools as any;
-                const { updateMcpServerSync } = await import("@/lib/db/queries");
+                const { updateMcpServerSync } = await import(
+                  "@/lib/db/queries"
+                );
                 await updateMcpServerSync({
                   id: server.id,
                   success: true,
@@ -586,9 +626,29 @@ export async function POST(request: Request) {
           }
         }
 
+        // Filtrage MCP par le skill actif : serveurs restreints à ses IDs +
+        // whitelist d'outils par serveur (mcpToolFilter)
+        const skillMcpActive = skillMcpServerIds.length > 0;
+        let scopedMcpServers = userMcpServers;
+        if (skillMcpActive) {
+          scopedMcpServers = userMcpServers.filter(
+            (s) => s.isEnabled && skillMcpServerIds.includes(s.id)
+          );
+          for (const server of scopedMcpServers) {
+            const filter = skillMcpToolFilter?.[server.id] ?? null;
+            if (Array.isArray(filter) && filter.length > 0) {
+              const { getFilteredTools } = await import("@/lib/mcp/client");
+              server.toolsCache = getFilteredTools(
+                server as any,
+                filter
+              ) as any;
+            }
+          }
+        }
+
         const mcpTools = createMcpChatTools({
           chatId: id,
-          servers: userMcpServers,
+          servers: scopedMcpServers,
           userId,
         });
         const mcpToolKeys = Object.keys(mcpTools);
@@ -608,9 +668,11 @@ export async function POST(request: Request) {
               (t !== "memory" || ghostMemoryEnabled))
         );
 
-        const hasMcpEnabled = requestedTools2.some(
-          (t) => t === "mcp" || t.startsWith("mcp_") || t.startsWith("mcp:")
-        );
+        const hasMcpEnabled =
+          skillMcpActive ||
+          requestedTools2.some(
+            (t) => t === "mcp" || t.startsWith("mcp_") || t.startsWith("mcp:")
+          );
         const activeToolsList: string[] = [
           ...requestedTools2.filter(
             (t) => !t.startsWith("mcp_") && t !== "mcp" && !t.startsWith("mcp:")
@@ -723,12 +785,13 @@ export async function POST(request: Request) {
               } catch {}
             }
           },
-          stopWhen: isStepCount(5),
+          stopWhen: isStepCount(12),
           telemetry: {
             functionId: "stream-text",
             isEnabled: isProductionEnvironment,
           },
           tools: {
+            askUser,
             audioGenerate: audioGenerate({
               dataStream,
               session: {
@@ -747,6 +810,7 @@ export async function POST(request: Request) {
                 user: isGhostMode ? null : { email: maiUser.email, id: userId },
               } as any,
             }),
+            currencyConverter,
             dateTime,
             editDocument: editDocument({
               dataStream,
@@ -754,6 +818,7 @@ export async function POST(request: Request) {
                 user: isGhostMode ? null : { email: maiUser.email, id: userId },
               } as any,
             }),
+            generateChart,
             getWeather,
             ...(isGhostMode
               ? {}
@@ -774,7 +839,8 @@ export async function POST(request: Request) {
               ? {
                   memory: memory({
                     agentId: effectiveAgentId,
-                    memoryLimit: memoryLimitForTier(maiUser.tier),
+                    allowAdd: memoryAllowAdd,
+                    memoryLimit,
                     userId,
                   }),
                 }
@@ -785,6 +851,9 @@ export async function POST(request: Request) {
                 user: isGhostMode ? null : { email: maiUser.email, id: userId },
               } as any,
             }),
+            qrCodeGenerator,
+            quizzly,
+            readUrl,
             requestSuggestions: requestSuggestions({
               dataStream,
               modelId: chatModel,

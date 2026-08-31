@@ -14,6 +14,11 @@ export const MAI_UPGRADE_URL = "https://mai-devs.vercel.app";
 // Handoff Cloud -> chat : pièce jointe en attente (sessionStorage)
 export const MAI_PENDING_ATTACHMENT_KEY = "mai-pending-attachment";
 
+// Plafond de caractères d'une entrée de mémoire — aligné sur la contrainte
+// CHECK `char_length(content) <= 2000` de la table UserMemory (migration 0010).
+// Partagé client/serveur (lib/db/queries est server-only), d'où sa place ici.
+export const MEMORY_CONTENT_MAX_LENGTH = 2000;
+
 // ─────────────────────────────────────────────
 // App version & legal — SSOT: version from package.json ("0.5.5")
 // ─────────────────────────────────────────────

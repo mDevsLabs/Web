@@ -179,7 +179,7 @@ function Sidebar({
           data-sidebar="sidebar"
           data-slot="sidebar"
           data-mobile="true"
-          className="inset-x-0 bottom-0 top-auto h-[70dvh] w-full rounded-t-2xl border-t border-border/30 bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
+          className="inset-x-0 bottom-0 top-auto h-[82dvh] max-h-[85dvh] w-full rounded-t-[20px] border-t border-border/30 bg-sidebar p-0 text-sidebar-foreground shadow-2xl [&>button]:hidden"
           showCloseButton={false}
           side="bottom"
         >
@@ -187,8 +187,8 @@ function Sidebar({
             <SheetTitle>Sidebar</SheetTitle>
             <SheetDescription>Displays the mobile sidebar.</SheetDescription>
           </SheetHeader>
-          <div className="mx-auto mt-2 h-1 w-10 rounded-full bg-sidebar-foreground/20" />
-          <div className="flex h-full w-full flex-col overflow-y-auto pt-2 pb-[env(safe-area-inset-bottom)]">{children}</div>
+          <div className="mx-auto mt-3 h-1.5 w-10 rounded-full bg-sidebar-foreground/20" />
+          <div className="flex h-full w-full flex-col overflow-y-auto overscroll-contain pt-2 pb-[calc(env(safe-area-inset-bottom)+12px)] -webkit-overflow-scrolling-touch">{children}</div>
         </SheetContent>
       </Sheet>
     )

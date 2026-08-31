@@ -81,6 +81,90 @@ export const skill = pgTable(
 
 export type Skill = InferSelectModel<typeof skill>;
 
+export const skillVersion = pgTable(
+  "SkillVersion",
+  {
+    color: varchar("color", { length: 7 }).default("#6366f1"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    description: text("description").default(""),
+    icon: text("icon").default("sparkles"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    instructions: text("instructions").notNull().default(""),
+    mcpServerIds: json("mcpServerIds").notNull().default([]),
+    mcpToolFilter: json("mcpToolFilter").notNull().default({}),
+    name: text("name").notNull(),
+    parameters: json("parameters").notNull().default([]),
+    skillId: uuid("skillId")
+      .notNull()
+      .references(() => skill.id, { onDelete: "cascade" }),
+    tags: text("tags").array().notNull().default([]),
+    tools: json("tools").notNull().default([]),
+    userId: text("userId").notNull(),
+    versionLabel: varchar("versionLabel", { length: 20 }).default("v1"),
+  },
+  (table) => ({
+    skillIdIdx: index("SkillVersion_skillId_idx").on(table.skillId),
+    userIdIdx: index("SkillVersion_userId_idx").on(table.userId),
+  })
+);
+
+export type SkillVersion = InferSelectModel<typeof skillVersion>;
+
+export const skillUsage = pgTable(
+  "SkillUsage",
+  {
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    invocationCount: integer("invocationCount").notNull().default(0),
+    lastInvokedAt: timestamp("lastInvokedAt"),
+    skillId: uuid("skillId")
+      .notNull()
+      .references(() => skill.id, { onDelete: "cascade" }),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    skillIdIdx: index("SkillUsage_skillId_idx").on(table.skillId),
+    userIdIdx: index("SkillUsage_userId_idx").on(table.userId),
+  })
+);
+
+export type SkillUsage = InferSelectModel<typeof skillUsage>;
+
+export const customCommand = pgTable(
+  "CustomCommand",
+  {
+    actionType: varchar("actionType", {
+      enum: ["mcp", "agent", "skill", "prompt", "tools", "navigation"],
+    }).notNull(),
+    color: varchar("color", { length: 7 }).default("#6366f1"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    description: text("description").default(""),
+    enabled: boolean("enabled").notNull().default(true),
+    icon: text("icon").default("zap"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    kind: varchar("kind", { enum: ["slash", "mention"] }).notNull(),
+    name: text("name").notNull(),
+    payload: json("payload").notNull().default({}),
+    pinned: boolean("pinned").notNull().default(false),
+    trigger: varchar("trigger", { length: 32 }).notNull(),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+    usageCount: integer("usageCount").notNull().default(0),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    userIdIdx: index("CustomCommand_userId_idx").on(table.userId),
+    userIdKindIdx: index("CustomCommand_userId_kind_idx").on(
+      table.userId,
+      table.kind
+    ),
+    userIdKindTriggerIdx: uniqueIndex(
+      "CustomCommand_userId_kind_trigger_key"
+    ).on(table.userId, table.kind, table.trigger),
+  })
+);
+
+export type CustomCommand = InferSelectModel<typeof customCommand>;
+
 export const chat = pgTable(
   "Chat",
   {
@@ -670,3 +754,48 @@ export const userMemory = pgTable(
   })
 );
 export type UserMemory = InferSelectModel<typeof userMemory>;
+
+export const scheduledMessage = pgTable(
+  "ScheduledMessage",
+  {
+    agentId: uuid("agentId").references(() => agent.id, {
+      onDelete: "set null",
+    }),
+    chatId: uuid("chatId").references(() => chat.id, {
+      onDelete: "set null",
+    }),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    createMode: varchar("createMode", {
+      enum: ["new_chat", "existing_chat"],
+    })
+      .notNull()
+      .default("new_chat"),
+    customInstructions: text("customInstructions"),
+    enabledTools: json("enabledTools").notNull().default([]),
+    executedAt: timestamp("executedAt"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    lastError: text("lastError"),
+    modelId: text("modelId").notNull().default("google/gemini-2.5-flash"),
+    prompt: text("prompt").notNull(),
+    resultChatId: uuid("resultChatId"),
+    scheduledAt: timestamp("scheduledAt").notNull(),
+    status: varchar("status", {
+      enum: ["pending", "processing", "completed", "failed", "cancelled"],
+    })
+      .notNull()
+      .default("pending"),
+    temperature: doublePrecision("temperature"),
+    title: text("title").notNull().default("Envoi planifié"),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    scheduledAtIdx: index("ScheduledMessage_scheduledAt_idx").on(
+      table.scheduledAt
+    ),
+    statusIdx: index("ScheduledMessage_status_idx").on(table.status),
+    userIdIdx: index("ScheduledMessage_userId_idx").on(table.userId),
+  })
+);
+export type ScheduledMessage = InferSelectModel<typeof scheduledMessage>;
+

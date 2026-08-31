@@ -2,14 +2,11 @@
 
 import {
   BookOpenIcon,
-  BotIcon,
   CopyIcon,
   CpuIcon,
   DownloadIcon,
   Edit2Icon,
-  FileCodeIcon,
-  GlobeIcon,
-  ImageIcon,
+  HistoryIcon,
   MoreVerticalIcon,
   PinIcon,
   PinOffIcon,
@@ -22,7 +19,6 @@ import {
   TagIcon,
   Trash2Icon,
   UploadIcon,
-  Volume2Icon,
   WrenchIcon,
   ZapIcon,
 } from "lucide-react";
@@ -30,6 +26,7 @@ import { useRouter } from "next/navigation";
 import { useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
+import { AGENT_COLORS } from "@/components/agents/agent-presets";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import {
   AlertDialog,
@@ -60,66 +57,25 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import type { Skill } from "@/lib/db/schema";
+import { TOOL_IDS, TOOLS_META } from "@/lib/ai/tools/config";
+import type { Skill, SkillVersion } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const AVAILABLE_TOOLS = [
-  {
-    description: "Recherche sur le web en direct",
-    icon: GlobeIcon,
-    id: "webSearch",
-    label: "Recherche Web",
-  },
-  {
-    description: "Génération d'images haute résolution",
-    icon: ImageIcon,
-    id: "imageGenerate",
-    label: "Création d'images",
-  },
-  {
-    description: "Synthèse vocale et audio IA",
-    icon: Volume2Icon,
-    id: "audioGenerate",
-    label: "Audio Studio",
-  },
-  {
-    description: "Exécution de code Python / JS sandbox",
-    icon: PlayIcon,
-    id: "codeExecution",
-    label: "Exécution Code",
-  },
-  {
-    description: "Création et édition d'artefacts / documents",
-    icon: FileCodeIcon,
-    id: "createDocument",
-    label: "Artefacts & Docs",
-  },
+  ...TOOL_IDS.map((id) => ({
+    description: TOOLS_META[id].description,
+    icon: TOOLS_META[id].icon as any,
+    id,
+    label: TOOLS_META[id].label,
+  })),
   {
     description: "Autoriser l'utilisation de tous les serveurs MCP configurés",
-    icon: CpuIcon,
+    icon: CpuIcon as any,
     id: "mcp",
     label: "Outils MCP",
   },
-];
-
-const _PRESET_ICONS = [
-  { icon: SparklesIcon, id: "sparkles", label: "Étincelles" },
-  { icon: BotIcon, id: "bot", label: "Robot" },
-  { icon: WrenchIcon, id: "wrench", label: "Outil" },
-  { icon: CpuIcon, id: "cpu", label: "Processeur" },
-  { icon: GlobeIcon, id: "globe", label: "Web" },
-  { icon: BookOpenIcon, id: "book", label: "Livre" },
-];
-
-const PRESET_COLORS = [
-  "#6366f1", // Indigo
-  "#06b6d4", // Cyan
-  "#10b981", // Emerald
-  "#a855f7", // Purple
-  "#f43f5e", // Rose
-  "#f59e0b", // Amber
 ];
 
 const STARTER_TEMPLATES = [
@@ -158,6 +114,87 @@ const STARTER_TEMPLATES = [
   },
 ];
 
+function VersionHistoryList({
+  skill,
+  onRestored,
+}: {
+  skill: Skill;
+  onRestored: () => void;
+}) {
+  const { data: versions = [], isLoading } = useSWR<SkillVersion[]>(
+    `/api/skills/${skill.id}/versions`,
+    fetcher
+  );
+  const [restoringId, setRestoringId] = useState<string | null>(null);
+
+  const handleRestore = async (versionId: string) => {
+    setRestoringId(versionId);
+    try {
+      const res = await fetch(`/api/skills/${skill.id}/versions`, {
+        body: JSON.stringify({ versionId }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error ?? "Erreur lors de la restauration");
+      }
+      toast.success("Version restaurée : un nouveau snapshot a été créé.");
+      onRestored();
+    } catch (err: any) {
+      toast.error(err.message ?? "Erreur lors de la restauration");
+    } finally {
+      setRestoringId(null);
+    }
+  };
+
+  return (
+    <div className="flex flex-col gap-2 max-h-80 overflow-y-auto py-2">
+      {isLoading && (
+        <p className="text-xs text-muted-foreground">Chargement…</p>
+      )}
+      {!isLoading && versions.length === 0 && (
+        <p className="text-xs text-muted-foreground">
+          Aucune version précédente. Modifiez le contenu du skill (nom,
+          instructions, outils, paramètres…) puis enregistrez pour créer un
+          premier snapshot.
+        </p>
+      )}
+      {versions.map((v) => (
+        <div
+          className="flex items-center justify-between gap-3 rounded-xl border border-border/40 bg-muted/20 p-2.5"
+          key={v.id}
+        >
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              <span className="font-semibold text-xs text-foreground">
+                {v.versionLabel}
+              </span>
+              <span className="text-[11px] text-muted-foreground">
+                {new Date(v.createdAt).toLocaleString("fr-FR")}
+              </span>
+            </div>
+            <p className="truncate text-[11px] text-muted-foreground/80">
+              {v.name}
+              {v.description ? ` — ${v.description}` : ""}
+            </p>
+          </div>
+          <Button
+            disabled={restoringId === v.id}
+            onClick={() => handleRestore(v.id)}
+            size="sm"
+            type="button"
+            variant="outline"
+          >
+            <RefreshCwIcon className="size-3 mr-1" />
+            {restoringId === v.id ? "Restauration…" : "Restaurer"}
+          </Button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function SkillsClient() {
   const _router = useRouter();
   const {
@@ -181,6 +218,9 @@ export default function SkillsClient() {
   const [isShareOpen, setIsShareOpen] = useState(false);
   const [sharingSkill, setSharingSkill] = useState<Skill | null>(null);
   const [skillToDelete, setSkillToDelete] = useState<Skill | null>(null);
+  const [versionHistorySkill, setVersionHistorySkill] = useState<Skill | null>(
+    null
+  );
 
   // Editor Form State
   const [formName, setFormName] = useState("");
@@ -944,6 +984,13 @@ export default function SkillsClient() {
                         </DropdownMenuItem>
                         <DropdownMenuItem
                           className="gap-2 cursor-pointer text-xs"
+                          onClick={() => setVersionHistorySkill(s)}
+                        >
+                          <HistoryIcon className="size-3.5" />
+                          <span>Historique des versions</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          className="gap-2 cursor-pointer text-xs"
                           onClick={() => {
                             setSharingSkill(s);
                             setIsShareOpen(true);
@@ -1074,8 +1121,8 @@ export default function SkillsClient() {
                 <Label className="text-xs font-semibold">
                   Couleur du badge
                 </Label>
-                <div className="flex items-center gap-1.5 pt-1">
-                  {PRESET_COLORS.map((c) => (
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {AGENT_COLORS.map((c) => (
                     <button
                       className={cn(
                         "size-6 rounded-full transition-transform",
@@ -1543,20 +1590,17 @@ export default function SkillsClient() {
             </div>
 
             <DialogFooter className="pt-2">
-              <Button
-                onClick={() => {
-                  toast.info("Version précédente restaurée (snapshot v1)");
-                  setFormInstructions(
-                    "Tu es un expert en... (version restaurée)"
-                  );
-                }}
-                size="sm"
-                type="button"
-                variant="outline"
-              >
-                <RefreshCwIcon className="size-3.5 mr-1" />
-                Restaurer v1
-              </Button>
+              {editingSkill && (
+                <Button
+                  onClick={() => setVersionHistorySkill(editingSkill)}
+                  size="sm"
+                  type="button"
+                  variant="outline"
+                >
+                  <HistoryIcon className="size-3.5 mr-1" />
+                  Historique
+                </Button>
+              )}
               <Button
                 onClick={() => setIsEditorOpen(false)}
                 type="button"
@@ -1569,6 +1613,36 @@ export default function SkillsClient() {
               </Button>
             </DialogFooter>
           </form>
+        </DialogContent>
+      </Dialog>
+
+      {/* Modal Historique des versions */}
+      <Dialog
+        onOpenChange={(open) => {
+          if (!open) {
+            setVersionHistorySkill(null);
+          }
+        }}
+        open={!!versionHistorySkill}
+      >
+        <DialogContent className="max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Historique des versions</DialogTitle>
+            <DialogDescription>
+              {versionHistorySkill?.name} — un snapshot est créé à chaque
+              enregistrement qui change le contenu du skill. Restaurer crée une
+              nouvelle version à partir de l'ancienne.
+            </DialogDescription>
+          </DialogHeader>
+          {versionHistorySkill && (
+            <VersionHistoryList
+              onRestored={() => {
+                mutate();
+                setVersionHistorySkill(null);
+              }}
+              skill={versionHistorySkill}
+            />
+          )}
         </DialogContent>
       </Dialog>
 

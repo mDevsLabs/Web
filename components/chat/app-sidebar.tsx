@@ -4,6 +4,7 @@ import {
   ArchiveIcon,
   ArrowRightIcon,
   BotIcon,
+  CalendarClockIcon,
   ChevronDownIcon,
   CloudIcon,
   CpuIcon,
@@ -25,7 +26,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useSWRConfig } from "swr";
 import { unstable_serialize } from "swr/infinite";
@@ -415,6 +416,10 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
     setOpenMobile(false);
   }, [setOpenMobile]);
 
+  useEffect(() => {
+    setOpenMobile(false);
+  }, [pathname, setOpenMobile]);
+
   const handleToggleSidebar = useCallback(() => {
     toggleSidebar();
   }, [toggleSidebar]);
@@ -562,6 +567,22 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                     >
                       <FolderKanbanIcon className="size-4" />
                       <span>Projets</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    asChild
+                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                    tooltip="Planification"
+                  >
+                    <Link
+                      href="/planning"
+                      onClick={closeMobile}
+                    >
+                      <CalendarClockIcon className="size-4" />
+                      <span>Planification</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

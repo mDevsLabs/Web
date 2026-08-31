@@ -1,30 +1,38 @@
 "use client";
 
 import {
+  BarChart3Icon,
   BotIcon,
   BrainIcon,
   CheckIcon,
   CloudIcon,
   CopyIcon,
   Edit2Icon,
+  MessageSquareIcon,
   MessageSquareTextIcon,
   MoreVerticalIcon,
   PinIcon,
+  PlayIcon,
   PlusIcon,
   SearchIcon,
+  SendIcon,
   SlidersHorizontalIcon,
+  SparklesIcon,
   ThermometerIcon,
   Trash2Icon,
   TriangleAlertIcon,
   XIcon,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { AgentIcon, EMOJI_PRESETS } from "@/components/agents/agent-icon";
+import { AGENT_COLORS, AGENT_ICONS } from "@/components/agents/agent-presets";
+import { AgentsStats } from "@/components/agents/agents-stats";
 import { CloudFilePickerDialog } from "@/components/chat/cloud-file-picker-dialog";
-import { PageBackButton } from "@/components/chat/page-back-button";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
+import { PageBackButton } from "@/components/chat/page-back-button";
 import { MemoryCard } from "@/components/settings/memory-card";
 import {
   AlertDialog,
@@ -62,30 +70,6 @@ import { cn } from "@/lib/utils";
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
-const PRESET_ICONS = [
-  { id: "sparkles", label: "Étincelles" },
-  { id: "bot", label: "Robot" },
-  { id: "code", label: "Code" },
-  { id: "book", label: "Livre" },
-  { id: "target", label: "Cible" },
-  { id: "lightbulb", label: "Idée" },
-  { id: "globe", label: "Web" },
-  { id: "zap", label: "Rapide" },
-  { id: "database", label: "Données" },
-  { id: "wallet", label: "Wallet" },
-];
-
-const PRESET_COLORS = [
-  "#6366f1",
-  "#06b6d4",
-  "#10b981",
-  "#a855f7",
-  "#f43f5e",
-  "#f59e0b",
-  "#14b8a6",
-  "#f97316",
-];
-
 export default function AgentsClient() {
   const {
     data: agents = [],
@@ -109,11 +93,21 @@ export default function AgentsClient() {
   const models: any[] = modelsData?.models || [];
 
   const { activeAgent, setActiveAgent, clearActiveAgent } = useActiveChat();
+  const router = useRouter();
 
+  const [activeTab, setActiveTab] = useState<"agents" | "stats">("agents");
+  const [editorTab, setEditorTab] = useState<"config" | "playground">("config");
   const [searchQuery, setSearchQuery] = useState("");
   const [isEditorOpen, setIsEditorOpen] = useState(false);
   const [editingAgent, setEditingAgent] = useState<Agent | null>(null);
   const [agentToDelete, setAgentToDelete] = useState<Agent | null>(null);
+
+  // Playground state
+  const [playgroundMessages, setPlaygroundMessages] = useState<
+    Array<{ id: string; role: "user" | "assistant"; content: string }>
+  >([]);
+  const [playgroundInput, setPlaygroundInput] = useState("");
+  const [isPlaygroundLoading, setIsPlaygroundLoading] = useState(false);
 
   // form state
   const [formName, setFormName] = useState("");
@@ -142,7 +136,119 @@ export default function AgentsClient() {
   const [saveError, setSaveError] = useState<string | null>(null);
   const [isCloudPickerOpen, setIsCloudPickerOpen] = useState(false);
   // Map url -> nom affiché (pour les fichiers sélectionnés via cloud picker)
-  const [cloudFileNames, setCloudFileNames] = useState<Record<string, string>>({});
+  const [cloudFileNames, setCloudFileNames] = useState<Record<string, string>>(
+    {}
+  );
+
+  const handleStartChatWithAgent = useCallback(
+    (a: Agent) => {
+      setActiveAgent(a);
+      toast.success(`Agent activé : ${a.name}`);
+      router.push("/");
+    },
+    [router, setActiveAgent]
+  );
+
+  const handleSendPlaygroundMessage = async () => {
+    const text = playgroundInput.trim();
+    if (!text || isPlaygroundLoading) {
+      return;
+    }
+
+    const userMsg = {
+      content: text,
+      id: `user-${Date.now()}`,
+      role: "user" as const,
+    };
+    const newMessages = [...playgroundMessages, userMsg];
+    setPlaygroundMessages(newMessages);
+    setPlaygroundInput("");
+    setIsPlaygroundLoading(true);
+
+    try {
+      // Envoyer au endpoint chat avec les instructions en direct
+      const res = await fetch("/api/chat", {
+        body: JSON.stringify({
+          agentId: editingAgent?.id || null,
+          customInstructions: formInstructions,
+          id: `playground-${Date.now()}`,
+          isGhostMode: true,
+          message: {
+            content: text,
+            id: `msg-${Date.now()}`,
+            role: "user",
+          },
+          selectedChatModel: formModelId,
+          selectedVisibilityType: "private",
+          temperatureOverride: formTemperature,
+        }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      });
+
+      if (!res.ok) {
+        throw new Error(`Erreur ${res.status}: réponse du serveur`);
+      }
+
+      // Lecture du stream de réponse (format text/stream)
+      const reader = res.body?.getReader();
+      const decoder = new TextDecoder();
+      let assistantText = "";
+      const assistantId = `assistant-${Date.now()}`;
+
+      setPlaygroundMessages((prev) => [
+        ...prev,
+        { content: "", id: assistantId, role: "assistant" },
+      ]);
+
+      if (reader) {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) {
+            break;
+          }
+          const chunk = decoder.decode(value, { stream: true });
+          // Filtrer et accumuler le texte (les chunks de stream ai-sdk commencent souvent par 0:"texte")
+          const lines = chunk.split("\n");
+          for (const line of lines) {
+            if (line.startsWith('0:"')) {
+              try {
+                const parsed = JSON.parse(line.slice(2));
+                assistantText += parsed;
+              } catch {
+                // simple concaténation brute si échec de parsing
+                assistantText += line.slice(3, -1);
+              }
+            } else if (!line.startsWith("d:") && !line.startsWith("e:") && !line.startsWith("2:") && line.trim()) {
+              // Nettoyage basique pour formats directs
+              const clean = line.replace(/^[0-9]+:/, "").replace(/^"/, "").replace(/"$/, "");
+              if (clean) {
+                assistantText += clean;
+              }
+            }
+          }
+
+          setPlaygroundMessages((prev) =>
+            prev.map((m) =>
+              m.id === assistantId ? { ...m, content: assistantText || "..." } : m
+            )
+          );
+        }
+      }
+    } catch (err: any) {
+      toast.error(err.message || "Erreur dans le playground");
+      setPlaygroundMessages((prev) => [
+        ...prev,
+        {
+          content: `⚠️ Erreur lors du test de l'agent : ${err.message || "inconnue"}`,
+          id: `err-${Date.now()}`,
+          role: "assistant",
+        },
+      ]);
+    } finally {
+      setIsPlaygroundLoading(false);
+    }
+  };
 
   const filteredAgents = useMemo(
     () =>
@@ -184,6 +290,9 @@ export default function AgentsClient() {
     setFormPinned(false);
     setFormMemoryMode("global");
     setSaveError(null);
+    setEditorTab("config");
+    setPlaygroundMessages([]);
+    setPlaygroundInput("");
     setIsEditorOpen(true);
   }, []);
 
@@ -208,6 +317,9 @@ export default function AgentsClient() {
     setFormPinned(Boolean((a as any).pinned));
     setFormMemoryMode((a as any).memoryMode === "custom" ? "custom" : "global");
     setSaveError(null);
+    setEditorTab("config");
+    setPlaygroundMessages([]);
+    setPlaygroundInput("");
     setIsEditorOpen(true);
   };
 
@@ -221,7 +333,8 @@ export default function AgentsClient() {
       return;
     }
     if (!formInstructions.trim()) {
-      const msg = "Instructions requises pour définir le comportement de l'agent";
+      const msg =
+        "Instructions requises pour définir le comportement de l'agent";
       setSaveError(msg);
       toast.error(msg);
       return;
@@ -267,9 +380,15 @@ export default function AgentsClient() {
       });
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || "Erreur lors de la sauvegarde de l'agent");
+        throw new Error(
+          data.error || "Erreur lors de la sauvegarde de l'agent"
+        );
       }
-      toast.success(editingAgent ? "Agent mis à jour avec succès !" : "Agent créé avec succès !");
+      toast.success(
+        editingAgent
+          ? "Agent mis à jour avec succès !"
+          : "Agent créé avec succès !"
+      );
       await mutate();
       setIsEditorOpen(false);
     } catch (err: any) {
@@ -382,43 +501,80 @@ export default function AgentsClient() {
             <span>Créer un agent</span>
           </Button>
         </div>
-        <div className="flex items-center gap-2">
-          <div className="relative w-full max-w-sm">
-            <SearchIcon className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground" />
-            <Input
-              className="h-8 pl-8 text-xs bg-muted/40"
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Rechercher un agent..."
-              value={searchQuery}
-            />
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
+          <div className="flex items-center gap-2 border-b border-border/40 sm:border-0 pb-2 sm:pb-0">
+            <button
+              className={cn(
+                "flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer",
+                activeTab === "agents"
+                  ? "bg-primary text-primary-foreground shadow-xs"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+              )}
+              onClick={() => setActiveTab("agents")}
+              type="button"
+            >
+              <BotIcon className="size-3.5" />
+              <span>Mes agents ({agents.length})</span>
+            </button>
+            <button
+              className={cn(
+                "flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer",
+                activeTab === "stats"
+                  ? "bg-primary text-primary-foreground shadow-xs"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+              )}
+              onClick={() => setActiveTab("stats")}
+              type="button"
+            >
+              <BarChart3Icon className="size-3.5" />
+              <span>Statistiques d'utilisation</span>
+            </button>
           </div>
-          {activeAgent && (
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-xs font-medium">
-              <AgentIcon
-                color={activeAgent.color}
-                emoji={activeAgent.emoji}
-                icon={activeAgent.icon}
-                size={14}
-                variant="plain"
-              />{" "}
-              Actif : {activeAgent.name}
-              <button
-                className="ml-1 rounded-full p-0.5 hover:bg-primary/20"
-                onClick={() => clearActiveAgent()}
-              >
-                <XIcon className="size-3" />
-              </button>
-            </span>
+
+          {activeTab === "agents" && (
+            <div className="flex items-center gap-2">
+              <div className="relative w-full sm:w-64">
+                <SearchIcon className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground" />
+                <Input
+                  className="h-8 pl-8 text-xs bg-muted/40"
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Rechercher un agent..."
+                  value={searchQuery}
+                />
+              </div>
+              {activeAgent && (
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-xs font-medium shrink-0">
+                  <AgentIcon
+                    color={activeAgent.color}
+                    emoji={activeAgent.emoji}
+                    icon={activeAgent.icon}
+                    size={14}
+                    variant="plain"
+                  />{" "}
+                  Actif : {activeAgent.name}
+                  <button
+                    className="ml-1 rounded-full p-0.5 hover:bg-primary/20"
+                    onClick={() => clearActiveAgent()}
+                  >
+                    <XIcon className="size-3" />
+                  </button>
+                </span>
+              )}
+            </div>
           )}
         </div>
       </header>
 
       <main className="flex-1 p-4 sm:p-6 max-w-7xl mx-auto w-full flex flex-col gap-8">
-        {/* Templates */}
-        <div>
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-            Modèles d'agents — choisir pour démarrer
-          </h3>
+        {activeTab === "stats" ? (
+          <AgentsStats />
+        ) : (
+          <>
+            {/* Templates */}
+            <div>
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+                Modèles d'agents — choisir pour démarrer
+              </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
             {templates.map((t) => (
               <button
@@ -617,18 +773,31 @@ export default function AgentsClient() {
                       </span>
                     ) : null}
                   </div>
-                  <Button
-                    className="h-7 text-xs"
-                    onClick={() => handleActivate(a)}
-                    size="sm"
-                    variant={activeAgent?.id === a.id ? "secondary" : "outline"}
-                  >
-                    {activeAgent?.id === a.id ? "Activé" : "Activer"}
-                  </Button>
+                  <div className="flex items-center gap-2">
+                    <Button
+                      className="h-7 text-xs flex-1 gap-1.5"
+                      onClick={() => handleStartChatWithAgent(a)}
+                      size="sm"
+                      variant="default"
+                    >
+                      <MessageSquareTextIcon className="size-3.5" />
+                      <span>Discuter</span>
+                    </Button>
+                    <Button
+                      className="h-7 text-xs"
+                      onClick={() => handleActivate(a)}
+                      size="sm"
+                      variant={activeAgent?.id === a.id ? "secondary" : "outline"}
+                    >
+                      {activeAgent?.id === a.id ? "Activé" : "Activer"}
+                    </Button>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
+        )}
+          </>
         )}
       </main>
 
@@ -636,15 +805,188 @@ export default function AgentsClient() {
       <Dialog onOpenChange={setIsEditorOpen} open={isEditorOpen}>
         <DialogContent className="max-w-5xl sm:max-w-4xl lg:max-w-6xl w-[95vw] max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle>
-              {editingAgent ? "Modifier l'agent" : "Créer un agent"}
-            </DialogTitle>
-            <DialogDescription>
-              Instructions ≤5000c, icône/emoji + couleur, modèle par défaut
-              (switch auto), paramètres du modèle, skills, MCP, fichiers (max
-              5), messages de démarrage et épinglage.
-            </DialogDescription>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <DialogTitle>
+                  {editingAgent ? "Modifier l'agent" : "Créer un agent"}
+                </DialogTitle>
+                <DialogDescription>
+                  Instructions ≤5000c, icône/emoji, paramètres du modèle, skills, MCP et fichiers.
+                </DialogDescription>
+              </div>
+              <div className="flex items-center rounded-lg border border-border/50 bg-muted/30 p-0.5 text-xs self-start sm:self-auto shrink-0">
+                <button
+                  className={cn(
+                    "flex items-center gap-1.5 px-3 py-1.5 rounded-md font-medium transition-all cursor-pointer",
+                    editorTab === "config"
+                      ? "bg-background text-foreground shadow-xs font-semibold"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                  onClick={() => setEditorTab("config")}
+                  type="button"
+                >
+                  <SlidersHorizontalIcon className="size-3.5" />
+                  <span>Configuration</span>
+                </button>
+                <button
+                  className={cn(
+                    "flex items-center gap-1.5 px-3 py-1.5 rounded-md font-medium transition-all cursor-pointer",
+                    editorTab === "playground"
+                      ? "bg-background text-foreground shadow-xs font-semibold"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                  onClick={() => setEditorTab("playground")}
+                  type="button"
+                >
+                  <PlayIcon className="size-3.5 text-indigo-500" />
+                  <span>Test en direct (Chat)</span>
+                </button>
+              </div>
+            </div>
           </DialogHeader>
+
+          {editorTab === "playground" ? (
+            <div className="flex flex-col h-[520px] rounded-2xl border border-border/60 bg-muted/10 overflow-hidden my-2">
+              {/* Header du playground */}
+              <div className="p-3 bg-card border-b border-border/50 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div
+                    className="size-7 rounded-lg flex items-center justify-center text-white text-xs shrink-0 shadow-xs"
+                    style={{ backgroundColor: formColor }}
+                  >
+                    <AgentIcon
+                      emoji={formIconType === "emoji" ? formEmoji : null}
+                      icon={formIconType === "lucide" ? formIcon : "sparkles"}
+                      size={14}
+                      variant="plain"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-bold text-foreground">
+                      {formName || "Agent en cours de configuration"}
+                    </h4>
+                    <span className="text-[10px] text-muted-foreground font-mono">
+                      Modèle : {formModelId} • Temp : {formTemperature}
+                    </span>
+                  </div>
+                </div>
+                <Button
+                  className="h-6 text-[10px]"
+                  onClick={() => setPlaygroundMessages([])}
+                  size="sm"
+                  variant="ghost"
+                >
+                  Effacer
+                </Button>
+              </div>
+
+              {/* Messages du playground */}
+              <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-3">
+                {playgroundMessages.length === 0 ? (
+                  <div className="my-auto flex flex-col items-center justify-center text-center max-w-sm mx-auto gap-2">
+                    <div className="size-10 rounded-xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center">
+                      <SparklesIcon className="size-5" />
+                    </div>
+                    <span className="text-xs font-semibold text-foreground">
+                      Testez votre agent en conditions réelles
+                    </span>
+                    <p className="text-[11px] text-muted-foreground">
+                      Discutez avec lui pour vérifier qu'il suit fidèlement vos instructions système et réglages avant d'enregistrer.
+                    </p>
+                    {formStarterPrompts.filter(Boolean).length > 0 && (
+                      <div className="flex flex-wrap gap-1.5 mt-2 justify-center">
+                        {formStarterPrompts.filter(Boolean).map((p, i) => (
+                          <button
+                            className="text-[11px] bg-card border border-border/50 hover:border-primary/50 text-foreground px-2.5 py-1 rounded-lg transition-colors cursor-pointer"
+                            key={i}
+                            onClick={() => {
+                              setPlaygroundInput(p);
+                            }}
+                            type="button"
+                          >
+                            {p}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  playgroundMessages.map((m) => (
+                    <div
+                      className={cn(
+                        "flex gap-2.5 max-w-[85%]",
+                        m.role === "user" ? "ml-auto flex-row-reverse" : "mr-auto"
+                      )}
+                      key={m.id}
+                    >
+                      <div
+                        className={cn(
+                          "size-6 rounded-md flex items-center justify-center text-[10px] shrink-0",
+                          m.role === "user"
+                            ? "bg-primary text-primary-foreground"
+                            : "text-white"
+                        )}
+                        style={m.role === "assistant" ? { backgroundColor: formColor } : undefined}
+                      >
+                        {m.role === "user" ? (
+                          "Vous"
+                        ) : (
+                          <AgentIcon
+                            emoji={formIconType === "emoji" ? formEmoji : null}
+                            icon={formIconType === "lucide" ? formIcon : "sparkles"}
+                            size={12}
+                            variant="plain"
+                          />
+                        )}
+                      </div>
+                      <div
+                        className={cn(
+                          "p-2.5 rounded-2xl text-xs leading-relaxed whitespace-pre-wrap break-words",
+                          m.role === "user"
+                            ? "bg-primary text-primary-foreground rounded-tr-xs"
+                            : "bg-card border border-border/50 text-foreground rounded-tl-xs shadow-xs"
+                        )}
+                      >
+                        {m.content}
+                      </div>
+                    </div>
+                  ))
+                )}
+                {isPlaygroundLoading && (
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground italic">
+                    <span className="size-2 rounded-full bg-primary animate-ping" />
+                    L'agent formule sa réponse...
+                  </div>
+                )}
+              </div>
+
+              {/* Saisie du playground */}
+              <div className="p-2.5 bg-card border-t border-border/50 flex items-center gap-2">
+                <Input
+                  className="h-9 text-xs"
+                  disabled={isPlaygroundLoading}
+                  onChange={(e) => setPlaygroundInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && !e.shiftKey) {
+                      e.preventDefault();
+                      handleSendPlaygroundMessage();
+                    }
+                  }}
+                  placeholder="Posez une question de test à votre agent..."
+                  value={playgroundInput}
+                />
+                <Button
+                  className="h-9 px-3 gap-1.5 text-xs"
+                  disabled={!playgroundInput.trim() || isPlaygroundLoading}
+                  onClick={handleSendPlaygroundMessage}
+                  type="button"
+                >
+                  <SendIcon className="size-3.5" />
+                  <span>Tester</span>
+                </Button>
+              </div>
+            </div>
+          ) : (
           <form className="flex flex-col gap-4 py-2" onSubmit={handleSave}>
             {saveError && (
               <div className="p-3 rounded-xl bg-destructive/10 border border-destructive/30 text-destructive text-xs font-medium flex items-center gap-2">
@@ -670,8 +1012,8 @@ export default function AgentsClient() {
                     <Label className="text-xs font-semibold">
                       Couleur du badge
                     </Label>
-                    <div className="flex items-center gap-1.5 pt-1">
-                      {PRESET_COLORS.map((c) => (
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {AGENT_COLORS.map((c) => (
                         <button
                           className={cn(
                             "size-6 rounded-full transition-transform",
@@ -734,11 +1076,11 @@ export default function AgentsClient() {
                     </div>
                   </div>
                   {formIconType === "lucide" ? (
-                    <div className="flex flex-wrap gap-2">
-                      {PRESET_ICONS.map((o) => (
+                    <div className="grid grid-cols-5 gap-2">
+                      {AGENT_ICONS.map((o) => (
                         <button
                           className={cn(
-                            "flex flex-col items-center gap-1 p-2 rounded-xl border text-xs min-w-[64px]",
+                            "flex w-full flex-col items-center gap-1 p-2 rounded-xl border text-xs",
                             formIcon === o.id
                               ? "border-primary bg-primary/10"
                               : "border-border/50 hover:bg-muted"
@@ -890,7 +1232,8 @@ export default function AgentsClient() {
                       <MemoryCard agentId={editingAgent.id} />
                     ) : (
                       <p className="text-[11px] text-muted-foreground">
-                        Enregistrez d'abord l'agent pour gérer sa mémoire dédiée.
+                        Enregistrez d'abord l'agent pour gérer sa mémoire
+                        dédiée.
                       </p>
                     ))}
                 </div>
@@ -1334,6 +1677,7 @@ export default function AgentsClient() {
               </Button>
             </DialogFooter>
           </form>
+          )}
         </DialogContent>
       </Dialog>
 

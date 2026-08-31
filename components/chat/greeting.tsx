@@ -2,14 +2,47 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useMemo, useState } from "react";
 import { AgentIcon } from "@/components/agents/agent-icon";
 import { useActiveChat } from "@/hooks/use-active-chat";
+import { useSettings } from "@/hooks/use-settings";
+import {
+  FALLBACK_GREETING,
+  formatGreeting,
+  GREETINGS_WITH_USERNAME,
+  isValidUsername,
+} from "@/lib/greetings";
 
 export const Greeting = () => {
   const { activeAgent, sendMessage } = useActiveChat();
+  const { data: settingsData } = useSettings({
+    dedupingInterval: 30_000,
+    revalidateOnFocus: false,
+  });
   const starterPrompts: string[] = (activeAgent as any)?.starterPrompts || [];
   const welcomeMessage: string = (activeAgent as any)?.welcomeMessage || "";
   const visiblePrompts = starterPrompts.filter(Boolean).slice(0, 4);
+
+  const username: string | null =
+    settingsData?.user?.username?.trim() ||
+    settingsData?.user?.email?.split("@")[0]?.trim() ||
+    null;
+
+  const [randomIndex] = useState(
+    () => Math.floor(Math.random() * GREETINGS_WITH_USERNAME.length)
+  );
+
+  const personalizedGreeting = useMemo(() => {
+    if (activeAgent) {
+      return `Bonjour, je suis ${activeAgent.name}`;
+    }
+    if (isValidUsername(username)) {
+      const template =
+        GREETINGS_WITH_USERNAME[randomIndex] ?? FALLBACK_GREETING;
+      return formatGreeting(template, username as string);
+    }
+    return FALLBACK_GREETING;
+  }, [activeAgent, username, randomIndex]);
 
   return (
     <div className="flex flex-col items-center px-4" key="overview">
@@ -45,13 +78,11 @@ export const Greeting = () => {
 
       <motion.div
         animate={{ opacity: 1, y: 0 }}
-        className="text-center font-bold text-2xl tracking-tight text-foreground md:text-3xl"
+        className="text-center font-bold text-2xl tracking-tight text-foreground md:text-3xl text-balance px-2"
         initial={{ opacity: 0, y: 10 }}
         transition={{ delay: 0.35, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >
-        {activeAgent
-          ? `Bonjour, je suis ${activeAgent.name} 👋`
-          : "Comment puis-je vous aider aujourd'hui ?"}
+        {personalizedGreeting}
       </motion.div>
       <motion.div
         animate={{ opacity: 1, y: 0 }}

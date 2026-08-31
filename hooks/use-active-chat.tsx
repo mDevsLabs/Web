@@ -25,6 +25,7 @@ import type { VisibilityType } from "@/components/chat/visibility-selector";
 import { useAutoResume } from "@/hooks/use-auto-resume";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { DEFAULT_ENABLED_TOOLS, type ToolId } from "@/lib/ai/tools/config";
+import type { PendingCommand } from "@/lib/commands/exec";
 import type { Agent, Skill, Vote } from "@/lib/db/schema";
 import { ChatbotError } from "@/lib/errors";
 import type { ChatMessage } from "@/lib/types";
@@ -47,6 +48,7 @@ type ActiveChatContextValue = {
   stop: UseChatHelpers<ChatMessage>["stop"];
   regenerate: UseChatHelpers<ChatMessage>["regenerate"];
   addToolApprovalResponse: UseChatHelpers<ChatMessage>["addToolApprovalResponse"];
+  addToolOutput: UseChatHelpers<ChatMessage>["addToolOutput"];
   input: string;
   setInput: Dispatch<SetStateAction<string>>;
   visibilityType: VisibilityType;
@@ -71,6 +73,12 @@ type ActiveChatContextValue = {
   setPendingTools: (tools: ToolId[]) => void;
   togglePendingTool: (tool: ToolId) => void;
   clearPendingTools: () => void;
+  skillParamValues: Record<string, string> | null;
+  setSkillParamValues: (values: Record<string, string> | null) => void;
+  clearSkillParamValues: () => void;
+  pendingCommand: PendingCommand;
+  setPendingCommand: (command: PendingCommand) => void;
+  clearPendingCommand: () => void;
   showCreditCardAlert: boolean;
   setShowCreditCardAlert: Dispatch<SetStateAction<boolean>>;
   isGhostMode: boolean;
@@ -91,12 +99,21 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   const { setDataStream, setWaitingStatus } = useDataStream();
 
   const getAiErrorMessage = useCallback((error: unknown) => {
-    const candidate = error as { status?: number; statusCode?: number; message?: string };
+    const candidate = error as {
+      status?: number;
+      statusCode?: number;
+      message?: string;
+    };
     const message = candidate?.message ?? String(error ?? "");
-    const code = candidate?.status ?? candidate?.statusCode ?? Number(message.match(/\b(403|429|5\d\d|4\d\d)\b/)?.[1]);
+    const code =
+      candidate?.status ??
+      candidate?.statusCode ??
+      Number(message.match(/\b(403|429|5\d\d|4\d\d)\b/)?.[1]);
     if (code === 403) return "Code 403 : Quota atteint !";
-    if (code === 429) return "Code 429 : Serveurs surchargés, réessayer plus tard !";
-    if (Number.isInteger(code) && code > 0) return `Code ${code} : Une erreur est survenue !`;
+    if (code === 429)
+      return "Code 429 : Serveurs surchargés, réessayer plus tard !";
+    if (Number.isInteger(code) && code > 0)
+      return `Code ${code} : Une erreur est survenue !`;
     return "Une erreur est survenue lors de la génération de la réponse.";
   }, []);
   const { mutate } = useSWRConfig();
@@ -215,6 +232,39 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   const clearPendingTools = useCallback(() => {
     setPendingToolsState([]);
     pendingToolsRef.current = [];
+  }, []);
+
+  // Skill params one-shot (saisis à l'envoi pour les {{param}} du skill actif)
+  const [skillParamValues, setSkillParamValuesState] = useState<Record<
+    string,
+    string
+  > | null>(null);
+  const skillParamValuesRef = useRef<Record<string, string> | null>(null);
+  skillParamValuesRef.current = skillParamValues;
+  const setSkillParamValues = useCallback(
+    (values: Record<string, string> | null) => {
+      setSkillParamValuesState(values);
+      skillParamValuesRef.current = values;
+    },
+    []
+  );
+  const clearSkillParamValues = useCallback(() => {
+    setSkillParamValuesState(null);
+    skillParamValuesRef.current = null;
+  }, []);
+
+  // Commande personnalisée one-shot (prompt prédéfini injecté côté serveur)
+  const [pendingCommand, setPendingCommandState] =
+    useState<PendingCommand>(null);
+  const pendingCommandRef = useRef<PendingCommand>(null);
+  pendingCommandRef.current = pendingCommand;
+  const setPendingCommand = useCallback((command: PendingCommand) => {
+    setPendingCommandState(command);
+    pendingCommandRef.current = command;
+  }, []);
+  const clearPendingCommand = useCallback(() => {
+    setPendingCommandState(null);
+    pendingCommandRef.current = null;
   }, []);
 
   // Lire projectId depuis query ?projectId= ou sessionStorage legacy ou localStorage sticky
@@ -465,6 +515,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     regenerate,
     resumeStream,
     addToolApprovalResponse,
+    addToolOutput,
   } = useChat<ChatMessage>({
     generateId: generateUUID,
     id: chatId,
@@ -493,15 +544,24 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     },
     sendAutomaticallyWhen: ({ messages: currentMessages }) => {
       const lastMessage = currentMessages.at(-1);
-      return (
-        lastMessage?.parts?.some(
-          (part) =>
-            "state" in part &&
-            part.state === "approval-responded" &&
-            "approval" in part &&
-            (part.approval as { approved?: boolean })?.approved === true
-        ) ?? false
+      if (!lastMessage) return false;
+
+      const hasApprovedTool = lastMessage.parts?.some(
+        (part) =>
+          "state" in part &&
+          part.state === "approval-responded" &&
+          "approval" in part &&
+          (part.approval as { approved?: boolean })?.approved === true
       );
+      if (hasApprovedTool) return true;
+
+      const hasToolOutput = lastMessage.parts?.some(
+        (part) =>
+          "state" in part &&
+          part.state === "output-available" &&
+          "toolCallId" in part
+      );
+      return hasToolOutput ?? false;
     },
     transport: new DefaultChatTransport({
       api: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chat`,
@@ -514,7 +574,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
             msg.parts?.some((part) => {
               const { state } = part as { state?: string };
               return (
-                state === "approval-responded" || state === "output-denied"
+                state === "approval-responded" ||
+                state === "output-denied" ||
+                state === "output-available"
               );
             })
           );
@@ -536,6 +598,22 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
           setTimeout(() => clearPendingTools(), 0);
         }
 
+        // One-shot skill params: capture and clear after send
+        const skillParamsToSend = isToolApprovalContinuation
+          ? null
+          : skillParamValuesRef.current;
+        if (!isToolApprovalContinuation && skillParamsToSend) {
+          setTimeout(() => clearSkillParamValues(), 0);
+        }
+
+        // One-shot pending command (prompt personnalisé)
+        const pendingPromptToSend = isToolApprovalContinuation
+          ? null
+          : pendingCommandRef.current;
+        if (!isToolApprovalContinuation && pendingPromptToSend) {
+          setTimeout(() => clearPendingCommand(), 0);
+        }
+
         return {
           body: {
             id: request.id,
@@ -548,10 +626,12 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
             agentId: activeAgentIdRef.current,
             enabledTools: toolsToSend,
             isGhostMode: isGhostModeRef.current,
+            pendingPrompt: pendingPromptToSend,
             selectedChatMode: currentModeIdRef.current,
             selectedChatModel: currentModelIdRef.current,
             selectedVisibilityType: visibility,
             skillId: activeSkillIdRef.current,
+            skillParams: skillParamsToSend,
             ...(projectIdToSend && isToolApprovalContinuation
               ? { projectId: projectIdToSend }
               : {}),
@@ -640,11 +720,14 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       activeAgent,
       activeSkill,
       addToolApprovalResponse,
+      addToolOutput,
       chatId,
       clearActiveAgent,
       clearActiveSkill,
+      clearPendingCommand,
       clearPendingProject,
       clearPendingTools,
+      clearSkillParamValues,
       currentModeId,
       currentModelId,
       input,
@@ -652,6 +735,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       isLoading: !isNewChat && isLoading,
       isReadonly,
       messages,
+      pendingCommand,
       pendingProject,
       pendingTools,
       regenerate,
@@ -663,10 +747,13 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       setInput,
       setIsGhostMode,
       setMessages,
+      setPendingCommand,
       setPendingProject,
       setPendingTools,
       setShowCreditCardAlert,
+      setSkillParamValues,
       showCreditCardAlert,
+      skillParamValues,
       status,
       stop,
       toggleGhostMode,
@@ -683,6 +770,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       stop,
       regenerate,
       addToolApprovalResponse,
+      addToolOutput,
       input,
       visibility,
       isReadonly,
@@ -704,6 +792,12 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       setPendingTools,
       togglePendingTool,
       clearPendingTools,
+      skillParamValues,
+      setSkillParamValues,
+      clearSkillParamValues,
+      pendingCommand,
+      setPendingCommand,
+      clearPendingCommand,
       showCreditCardAlert,
       isGhostMode,
       toggleGhostMode,

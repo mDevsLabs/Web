@@ -10,18 +10,26 @@ import {
   getGlobalMemories,
   getProjectById,
   getProjectMemories,
+  getUserMemoriesWithScope,
+  updateMemory,
 } from "@/lib/db/queries";
+import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
 import { z } from "zod";
 
 const createSchema = z
   .object({
     agentId: z.string().uuid().nullable().optional(),
-    content: z.string().min(1).max(2000),
+    content: z.string().min(1).max(MEMORY_CONTENT_MAX_LENGTH),
     projectId: z.string().uuid().nullable().optional(),
   })
   .refine((data) => !(data.agentId && data.projectId), {
     message: "Un seul scope autorisé (agent ou projet)",
   });
+
+const updateSchema = z.object({
+  content: z.string().min(1).max(MEMORY_CONTENT_MAX_LENGTH),
+  id: z.string().uuid(),
+});
 
 async function resolveScope(
   userId: string,
@@ -60,6 +68,13 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const agentId = searchParams.get("agentId");
     const projectId = searchParams.get("projectId");
+    if (searchParams.get("scope") === "all") {
+      const memories = await getUserMemoriesWithScope({ userId });
+      return Response.json({
+        limit: memoryLimitForTier(user.tier),
+        memories,
+      });
+    }
     const scope = await resolveScope(
       userId,
       user.email,
@@ -159,6 +174,33 @@ export async function DELETE(request: Request) {
     return Response.json({ success: true });
   } catch (e) {
     console.error("DELETE memory error", e);
+    return new ChatbotError("bad_request:database").toResponse();
+  }
+}
+
+export async function PATCH(request: Request) {
+  const user = await getMaiUser();
+  if (!user) {
+    return new ChatbotError("unauthorized:chat").toResponse();
+  }
+  const userId = user.id || user.email;
+  try {
+    const body = await request.json();
+    const parsed = updateSchema.parse(body);
+    const updated = await updateMemory({
+      content: parsed.content,
+      id: parsed.id,
+      userId,
+    });
+    if (!updated) {
+      return new ChatbotError("not_found:database").toResponse();
+    }
+    return Response.json({ memory: updated });
+  } catch (e) {
+    console.error("PATCH memory error", e);
+    if (e instanceof z.ZodError) {
+      return new ChatbotError("bad_request:api", e.message).toResponse();
+    }
     return new ChatbotError("bad_request:database").toResponse();
   }
 }

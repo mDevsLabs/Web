@@ -35,8 +35,8 @@ import {
 import { cn } from "@/lib/utils";
 
 // Forme minimale acceptée par le sélecteur : ChatModel (chat), SpeechModel
-// (audio, provider optionnel) et ImageModel (images) sont tous compatibles.
-// Le provider manquant est dérivé de l'id au rendu.
+// (audio, provider optionnel) et ImageModel (images, qui expose owned_by) sont
+// tous compatibles. Le provider est résolu à l'affichage par resolveProviderKey.
 export type SharedModel = {
   id: string;
   name: string;
@@ -45,6 +45,7 @@ export type SharedModel = {
   isFree?: boolean;
   maxContext?: number;
   maxOutput?: number;
+  owned_by?: string;
   provider?: string;
   supported_parameters?: string[];
   voices?: string[];
@@ -59,16 +60,29 @@ export const PROVIDER_NAMES: Record<string, string> = {
   deepgram: "Deepgram",
   deepseek: "DeepSeek",
   google: "Google",
+  "ideogram-ai": "Ideogram",
+  luma: "Luma AI",
   mai: "mAI",
   mdevslabs: "mAI Exclusif",
   "meta-llama": "Meta Llama",
+  midjourney: "Midjourney",
   mistral: "Mistral AI",
   mistralai: "Mistral AI",
   openai: "OpenAI",
   qwen: "Qwen / Alibaba",
+  "recraft-ai": "Recraft",
   "stability-ai": "Stability AI",
+  stabilityai: "Stability AI",
   xai: "xAI",
 };
+
+// Les modèles d'image/audio du gateway n'ont pas de champ `provider` : leur
+// laboratoire est porté par `owned_by`, et certains ids ne contiennent pas de
+// préfixe. Une seule fonction de résolution pour que groupe, titre et logo
+// restent d'accord entre eux.
+export function resolveProviderKey(model: SharedModel): string {
+  return model.provider || model.owned_by || model.id.split("/")[0] || "mai";
+}
 
 const ENDPOINTS: Record<ModelSelectorSource, string> = {
   chat: "/api/models",
@@ -111,7 +125,7 @@ function SharedModelSelectorOption({
   setOpen: Dispatch<SetStateAction<boolean>>;
   focusInputAfterSelect?: boolean;
 }) {
-  const [logoProvider] = model.id.split("/");
+  const logoProvider = resolveProviderKey(model);
   const maybeWithTooltip = (icon: ReactNode, label: string) => (
     <Tooltip>
       <TooltipTrigger asChild>
@@ -213,7 +227,7 @@ function PureModelSelectorCompact({
     models.find((m) => m.id === selectedModelId) ??
     models.find((m) => m.id === DEFAULT_CHAT_MODEL) ??
     models[0];
-  const [provider] = (selectedModel?.id || DEFAULT_CHAT_MODEL).split("/");
+  const provider = selectedModel ? resolveProviderKey(selectedModel) : null;
   const isEmptySelection = allowEmpty && !selectedModelId;
   const triggerLabel = isEmptySelection
     ? emptyLabel
@@ -221,7 +235,7 @@ function PureModelSelectorCompact({
 
   const grouped: Record<string, SharedModel[]> = {};
   for (const m of models) {
-    const p = m.provider || m.id.split("/")[0] || "mAI";
+    const p = resolveProviderKey(m);
     if (!grouped[p]) {
       grouped[p] = [];
     }

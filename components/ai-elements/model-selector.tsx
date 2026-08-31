@@ -173,6 +173,15 @@ export type ModelSelectorLogoProps = Omit<
     | (string & {});
 };
 
+// models.dev n'a pas d'effigie pour tous les laboratoires du gateway image/audio :
+// sans repli, la ligne affiche un image cassée. Fabrique un badge d'initiale.
+function letterLogoDataUri(provider: string): string {
+  const letter =
+    (provider.match(/[a-zA-Z0-9]/)?.[0] ?? "?").toUpperCase();
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><rect width="16" height="16" rx="8" fill="#64748b"/><text x="8" y="11.5" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#ffffff" text-anchor="middle">${letter}</text></svg>`;
+  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+}
+
 export const ModelSelectorLogo = ({
   provider,
   className,
@@ -183,6 +192,15 @@ export const ModelSelectorLogo = ({
     alt={`${provider} logo`}
     className={cn("size-4 dark:invert", className)}
     height={16}
+    onError={(event) => {
+      const img = event.currentTarget;
+      if (img.dataset.logoFallbackApplied) {
+        return;
+      }
+      img.dataset.logoFallbackApplied = "true";
+      img.src = letterLogoDataUri(String(provider));
+      img.style.filter = "none";
+    }}
     src={`https://models.dev/logos/${provider}.svg`}
     width={16}
   />

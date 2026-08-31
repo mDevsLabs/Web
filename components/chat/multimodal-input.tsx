@@ -18,12 +18,12 @@ import {
   PlusIcon,
   SparklesIcon,
   TriangleAlertIcon,
+  TrophyIcon,
   Volume2Icon,
   XIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import {
   type ChangeEvent,
@@ -47,6 +47,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { QuizConfigDialog } from "@/components/chat/quiz-config-dialog";
 import {
   useActiveChat,
   useActiveChat as useActiveChatForTools,
@@ -61,8 +62,9 @@ import {
   type ModelCapabilities,
 } from "@/lib/ai/models";
 import { TOOLS_META, type ToolId } from "@/lib/ai/tools/config";
+import { executeCustomCommand } from "@/lib/commands/exec";
 import { MAI_PENDING_ATTACHMENT_KEY } from "@/lib/constants";
-import type { Agent, McpServer, Skill } from "@/lib/db/schema";
+import type { Agent, CustomCommand, McpServer, Skill } from "@/lib/db/schema";
 import type { Attachment, ChatMessage } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import {
@@ -82,7 +84,9 @@ import {
 } from "./mention-menu";
 import { PreviewAttachment } from "./preview-attachment";
 import { ProjectIcon } from "./project-icon";
+import { SkillParamsDialog } from "./skill-params-dialog";
 import {
+  customCommandsToSlashCommands,
   getFilteredSlashCommands,
   type SlashCommand,
   SlashCommandMenu,
@@ -127,6 +131,28 @@ const DRAFT_MAX_AGE = 60 * 60 * 24 * 30; // 30 jours
 const MAX_FILES_PER_MESSAGE = 4;
 const MAX_TOTAL_SIZE_BYTES = 50 * 1024 * 1024; // 50 Mo / message
 
+const MENTION_TOKEN_RE = /(@[a-zA-Z0-9_\u00C0-\u017F-]+)( |\u00A0)?$/;
+
+// Le texte réellement inséré dans le textarea lors de l'activation d'un outil.
+// Ne correspond pas au libellé affiché sur la pastille ("Mémoire"), d'où cette
+// résolution unique partagée par Backspace atomique et le bouton X.
+function tokenForPendingTool(
+  toolId: string,
+  servers: McpServer[]
+): string | null {
+  if (toolId === "memory") {
+    return "Memory";
+  }
+  if (toolId.startsWith("mcp:") || toolId === "mcp") {
+    const srvId = toolId.replace(/^mcp:/, "");
+    const srv = servers.find(
+      (s) => s.id === srvId || s.name.toLowerCase() === srvId.toLowerCase()
+    );
+    return srv?.name ?? null;
+  }
+  return null;
+}
+
 function renderHighlightedMentions(
   text: string,
   mcpServers: McpServer[] = [],
@@ -148,7 +174,7 @@ function renderHighlightedMentions(
   const pattern =
     escapedNames.length > 0
       ? `(@(?:${escapedNames.join("|")}|[a-zA-Z0-9_\\u00C0-\\u017F-]+))`
-      : `(@[a-zA-Z0-9_\\u00C0-\\u017F-]+)`;
+      : "(@[a-zA-Z0-9_\\u00C0-\\u017F-]+)";
   const regex = new RegExp(pattern, "g");
   const parts = text.split(regex);
 
@@ -230,23 +256,32 @@ function PureMultimodalInput({
     ""
   );
 
+  const didRestoreDraftRef = useRef(false);
+
   useEffect(() => {
-    if (textareaRef.current) {
-      const domValue = textareaRef.current.value;
-      let finalValue = domValue || localStorageInput || "";
-      if (!finalValue && isNewChatInput) {
-        const draft = document.cookie
-          .split("; ")
-          .find((row) => row.startsWith(`${DRAFT_COOKIE}=`))
-          ?.split("=")[1];
-        if (draft) {
-          finalValue = decodeURIComponent(draft);
-        }
+    if (didRestoreDraftRef.current || !textareaRef.current) {
+      return;
+    }
+    didRestoreDraftRef.current = true;
+
+    let finalValue = textareaRef.current.value;
+    if (!finalValue && localStorageInput) {
+      finalValue = localStorageInput;
+    }
+    if (!finalValue && isNewChatInput) {
+      const draft = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith(`${DRAFT_COOKIE}=`))
+        ?.split("=")[1];
+      if (draft) {
+        finalValue = decodeURIComponent(draft);
       }
+    }
+    if (finalValue) {
       setInput(finalValue);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [localStorageInput, setInput, isNewChatInput]);
+  }, [setInput, isNewChatInput]);
 
   // Brouillon global persisté 30 jours (cookie) pour les nouvelles conversations
   useEffect(() => {
@@ -306,6 +341,7 @@ function PureMultimodalInput({
   const uploadedBytesRef = useRef(0);
   const [uploadQueue, setUploadQueue] = useState<string[]>([]);
   const [cloudPickerOpen, setCloudPickerOpen] = useState(false);
+  const [quizDialogOpen, setQuizDialogOpen] = useState(false);
   const [slashOpen, setSlashOpen] = useState(false);
   const [slashQuery, setSlashQuery] = useState("");
   const [slashIndex, setSlashIndex] = useState(0);
@@ -329,6 +365,8 @@ function PureMultimodalInput({
     pendingTools,
     togglePendingTool,
     clearPendingTools,
+    setPendingCommand,
+    setSkillParamValues,
     isGhostMode,
     toggleGhostMode,
   } = useActiveChat();
@@ -336,12 +374,12 @@ function PureMultimodalInput({
   const { projects, isLoading: isProjectsLoading } = useProjects();
 
   const { data: userSkills = [] } = useSWR<Skill[]>(
-    !isFree ? "/api/skills" : null,
+    isFree ? null : "/api/skills",
     (url: string) => fetch(url).then((r) => r.json()),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
   const { data: mcpData } = useSWR<{ servers: McpServer[] }>(
-    !isFree ? "/api/mcp" : null,
+    isFree ? null : "/api/mcp",
     (url: string) => fetch(url).then((r) => r.json()),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
@@ -350,10 +388,41 @@ function PureMultimodalInput({
     [mcpData]
   );
   const { data: userAgents = [] } = useSWR<Agent[]>(
-    !isFree ? "/api/agents" : null,
+    isFree ? null : "/api/agents",
     (url: string) => fetch(url).then((r) => r.json()),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
+  const { data: customCommandsData = [] } = useSWR<CustomCommand[]>(
+    isFree ? null : "/api/commands?kind=slash",
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 30_000, revalidateOnFocus: false }
+  );
+  const customSlashCommands = useMemo(
+    () => customCommandsToSlashCommands(customCommandsData),
+    [customCommandsData]
+  );
+  const { data: customMentionCommands = [] } = useSWR<CustomCommand[]>(
+    isFree ? null : "/api/commands?kind=mention",
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 30_000, revalidateOnFocus: false }
+  );
+
+  // Quota de mémoire de la portée du prochain message. Le serveur ignore
+  // l'agent en Free : même règle ici, sinon on jugerait le quota d'un scope
+  // que la requête n'écrira jamais.
+  const { data: memoryQuotaData } = useSWR<{
+    limit: number;
+    memories: unknown[];
+  }>(
+    !isFree && activeAgent?.id
+      ? `/api/memory?agentId=${activeAgent.id}`
+      : "/api/memory",
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 15_000, revalidateOnFocus: false }
+  );
+  const memoryCount = memoryQuotaData?.memories?.length ?? 0;
+  const memoryLimit = memoryQuotaData?.limit ?? 0;
+  const memoryAtLimit = Boolean(memoryQuotaData && memoryCount >= memoryLimit);
 
   // Enrichir pendingProject avec données fraîches (nom/couleur) quand la liste arrive
   useEffect(() => {
@@ -569,6 +638,25 @@ function PureMultimodalInput({
     async (cmd: SlashCommand) => {
       setSlashOpen(false);
       setInput("");
+      if (cmd.action === "custom" && cmd.custom) {
+        executeCustomCommand(cmd.custom, {
+          agents: userAgents,
+          router,
+          setActiveAgent: setActiveAgent as any,
+          setActiveSkill: setActiveSkill as any,
+          setPendingCommand,
+          skills: userSkills,
+          toast: (opts) => {
+            if (opts.type === "error") {
+              toast.error(opts.description);
+            } else {
+              toast.success(opts.description);
+            }
+          },
+          togglePendingTool: togglePendingTool as any,
+        });
+        return;
+      }
       switch (cmd.action) {
         case "ghost": {
           toggleGhostMode();
@@ -711,6 +799,10 @@ function PureMultimodalInput({
           );
           break;
         }
+        case "quiz": {
+          setQuizDialogOpen(true);
+          break;
+        }
         case "tools-clear": {
           clearPendingTools();
           toast("Tous les outils désactivés");
@@ -729,9 +821,7 @@ function PureMultimodalInput({
         }
         case "export": {
           try {
-            const res = await fetch(
-              `/api/chats/${chatId}/export?format=md`
-            );
+            const res = await fetch(`/api/chats/${chatId}/export?format=md`);
             if (!res.ok) {
               throw new Error("Export échoué");
             }
@@ -801,15 +891,34 @@ function PureMultimodalInput({
       clearPendingTools,
       toggleGhostMode,
       isGhostMode,
+      userAgents,
+      userSkills,
+      setActiveAgent,
+      setActiveSkill,
+      setPendingCommand,
     ]
   );
 
   const handleMentionSelect = useCallback(
     (payload: MentionSelectPayload) => {
       // Bloquer si le modèle ne supporte pas les tools
-      if ((payload.type === "skill" || payload.type === "mcp") && !supportsTools) {
+      if (
+        (payload.type === "skill" || payload.type === "mcp") &&
+        !supportsTools
+      ) {
         toast.warning(
           "Ce modèle ne prend pas en charge les outils (tools). Les compétences et MCP sont indisponibles."
+        );
+        setMentionOpen(false);
+        setMentionQuery("");
+        mentionTriggerPosRef.current = null;
+        return;
+      }
+
+      // Bloquer si le quota de mémoire de cette portée est atteint
+      if (payload.type === "memory" && memoryAtLimit) {
+        toast.warning(
+          `Limite de mémoires atteinte (${memoryCount}/${memoryLimit}) — libérez de l'espace dans l'onglet Mémoire des paramètres.`
         );
         setMentionOpen(false);
         setMentionQuery("");
@@ -823,11 +932,16 @@ function PureMultimodalInput({
       if (payload.type === "skill") {
         mentionTag = `@${payload.skill.name} `;
         setActiveSkill(payload.skill);
-        toast.success(`Compétence appliquée à la discussion : ${payload.skill.name}`);
+        toast.success(
+          `Compétence appliquée à la discussion : ${payload.skill.name}`
+        );
       } else if (payload.type === "mcp") {
         mentionTag = `@${payload.server.name} `;
         const mcpKey = `mcp:${payload.server.id}`;
-        if (!pendingTools.includes(mcpKey as any) && !pendingTools.includes("mcp" as any)) {
+        if (
+          !pendingTools.includes(mcpKey as any) &&
+          !pendingTools.includes("mcp" as any)
+        ) {
           togglePendingTool(mcpKey as any);
         }
         toast.success(`Serveur MCP ciblé : ${payload.server.name}`);
@@ -839,7 +953,9 @@ function PureMultimodalInput({
           id: payload.project.id,
           name: payload.project.name,
         });
-        toast.success(`Conversations enregistrées dans : ${payload.project.name}`);
+        toast.success(
+          `Conversations enregistrées dans : ${payload.project.name}`
+        );
       } else if (payload.type === "agent") {
         mentionTag = `@${payload.agent.name} `;
         setActiveAgent(payload.agent);
@@ -850,13 +966,40 @@ function PureMultimodalInput({
           `Agent activé : ${icon}${payload.agent.name} — modèle ${(payload.agent as any).defaultModelId}`
         );
       } else if (payload.type === "memory") {
-        mentionTag = `@Memory `;
+        mentionTag = "@Memory ";
         if (!pendingTools.includes("memory")) {
           togglePendingTool("memory");
         }
         toast.success(
           "Mémoire activée pour le prochain message — l'IA pourra retenir ou retrouver des informations"
         );
+      } else if (payload.type === "customCommand") {
+        const command = payload.command;
+        executeCustomCommand(command, {
+          agents: userAgents,
+          router,
+          setActiveAgent: setActiveAgent as any,
+          setActiveSkill: setActiveSkill as any,
+          setPendingCommand,
+          skills: userSkills,
+          toast: (opts) => {
+            if (opts.type === "error") {
+              toast.error(opts.description);
+            } else {
+              toast.success(opts.description);
+            }
+          },
+          togglePendingTool: togglePendingTool as any,
+        });
+        // Tag indicatif uniquement pour les actions qui se combinent au message
+        if (
+          command.actionType === "mcp" ||
+          command.actionType === "tools" ||
+          command.actionType === "agent" ||
+          command.actionType === "skill"
+        ) {
+          mentionTag = `@${command.trigger} `;
+        }
       }
 
       const atPos = mentionTriggerPosRef.current;
@@ -882,45 +1025,45 @@ function PureMultimodalInput({
         if (textareaRef.current) {
           textareaRef.current.focus();
           try {
-            textareaRef.current.setSelectionRange(targetCursorPos, targetCursorPos);
+            textareaRef.current.setSelectionRange(
+              targetCursorPos,
+              targetCursorPos
+            );
           } catch {}
         }
       }, 50);
     },
     [
       input,
+      memoryAtLimit,
+      memoryCount,
+      memoryLimit,
       setInput,
       supportsTools,
       pendingTools,
+      setPendingCommand,
       setPendingProject,
       setActiveAgent,
       setActiveSkill,
       togglePendingTool,
+      userAgents,
+      userSkills,
     ]
   );
 
-  const submitForm = useCallback(() => {
-    if (isQuotaExhausted) {
-      toast.error(
-        `Votre quota hebdomadaire mAI est atteint (${costAiUsed.toLocaleString()}/${costAiLimit.toLocaleString()} tokens). Mettez à niveau votre forfait sur https://mai-devs.vercel.app pour continuer !`
-      );
-      return;
-    }
+  const [skillParamsDialogOpen, setSkillParamsDialogOpen] = useState(false);
 
-    if (attachments.length > 0 && !hasVisionSupport && hasStrictCaps) {
-      toast.error(
-        "Ce modèle ne prend pas en charge les fichiers. Retirez les pièces jointes ou changez de modèle."
-      );
-      return;
-    }
+  const skillParamsList = useMemo(
+    () =>
+      Array.isArray((activeSkill as any)?.parameters)
+        ? ((activeSkill as any).parameters as Array<{ name?: string }>).filter(
+            (p) => p?.name
+          )
+        : [],
+    [activeSkill]
+  );
 
-    if (attachments.length > MAX_FILES_PER_MESSAGE) {
-      toast.error(
-        `Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message. Retirez des pièces jointes.`
-      );
-      return;
-    }
-
+  const doSendCurrentMessage = useCallback(() => {
     if (!isGhostMode) {
       window.history.pushState(
         {},
@@ -957,20 +1100,63 @@ function PureMultimodalInput({
       textareaRef.current?.focus();
     }
   }, [
-    isQuotaExhausted,
-    costAiUsed,
-    costAiLimit,
     input,
     setInput,
     attachments,
-    hasVisionSupport,
-    hasStrictCaps,
     sendMessage,
     setAttachments,
     setLocalStorageInput,
     width,
     chatId,
     isGhostMode,
+  ]);
+
+  const handleSkillParamsSubmit = useCallback(
+    (values: Record<string, string>) => {
+      setSkillParamValues(values);
+      doSendCurrentMessage();
+    },
+    [doSendCurrentMessage, setSkillParamValues]
+  );
+
+  const submitForm = useCallback(() => {
+    if (isQuotaExhausted) {
+      toast.error(
+        `Votre quota hebdomadaire mAI est atteint (${costAiUsed.toLocaleString()}/${costAiLimit.toLocaleString()} tokens). Mettez à niveau votre forfait sur https://mai-devs.vercel.app pour continuer !`
+      );
+      return;
+    }
+
+    if (attachments.length > 0 && !hasVisionSupport && hasStrictCaps) {
+      toast.error(
+        "Ce modèle ne prend pas en charge les fichiers. Retirez les pièces jointes ou changez de modèle."
+      );
+      return;
+    }
+
+    if (attachments.length > MAX_FILES_PER_MESSAGE) {
+      toast.error(
+        `Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message. Retirez des pièces jointes.`
+      );
+      return;
+    }
+
+    // Paramètres dynamiques du skill actif : saisie avant envoi (one-shot)
+    if (skillParamsList.length > 0) {
+      setSkillParamsDialogOpen(true);
+      return;
+    }
+
+    doSendCurrentMessage();
+  }, [
+    isQuotaExhausted,
+    costAiUsed,
+    costAiLimit,
+    attachments,
+    hasVisionSupport,
+    hasStrictCaps,
+    skillParamsList,
+    doSendCurrentMessage,
   ]);
 
   const uploadFile = useCallback(async (file: File) => {
@@ -1019,9 +1205,7 @@ function PureMultimodalInput({
       if (files.length > 0) {
         const remainingSlots = MAX_FILES_PER_MESSAGE - attachments.length;
         if (remainingSlots <= 0) {
-          toast.error(
-            `Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message.`
-          );
+          toast.error(`Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message.`);
           if (fileInputRef.current) {
             fileInputRef.current.value = "";
           }
@@ -1057,7 +1241,9 @@ function PureMultimodalInput({
         );
         uploadedBytesRef.current += uploadedAttachments.reduce(
           (total, attachment, index) =>
-            attachment !== undefined ? total + (files[index]?.size ?? 0) : total,
+            attachment === undefined
+              ? total
+              : total + (files[index]?.size ?? 0),
           0
         );
 
@@ -1071,7 +1257,13 @@ function PureMultimodalInput({
         setUploadQueue([]);
       }
     },
-    [setAttachments, uploadFile, hasVisionSupport, hasStrictCaps, attachments.length]
+    [
+      setAttachments,
+      uploadFile,
+      hasVisionSupport,
+      hasStrictCaps,
+      attachments.length,
+    ]
   );
 
   const handlePaste = useCallback(
@@ -1194,10 +1386,14 @@ function PureMultimodalInput({
     }
     if (input.startsWith("/")) {
       const query = input.slice(1).trim().split(/\s/)[0] ?? "";
-      const cmd = getFilteredSlashCommands(query, {
-        isFree,
-        isHome: isNewChatInput,
-      })[0];
+      const cmd = getFilteredSlashCommands(
+        query,
+        {
+          isFree,
+          isHome: isNewChatInput,
+        },
+        customSlashCommands
+      )[0];
       // fallback exact match
       if (
         cmd &&
@@ -1228,6 +1424,7 @@ function PureMultimodalInput({
     }
   }, [
     attachments.length,
+    customSlashCommands,
     handleSlashSelect,
     hasVisionSupport,
     hasStrictCaps,
@@ -1248,7 +1445,8 @@ function PureMultimodalInput({
           projects as any,
           userSkills,
           userMcpServers,
-          userAgents as any
+          userAgents as any,
+          customMentionCommands
         );
         if (e.key === "ArrowDown") {
           e.preventDefault();
@@ -1284,6 +1482,11 @@ function PureMultimodalInput({
                 agent: (item as any).agent,
                 type: "agent",
               });
+            } else if (item.kind === "custom-command") {
+              handleMentionSelect({
+                command: (item as any).command,
+                type: "customCommand",
+              });
             } else if (item.kind === "memory") {
               handleMentionSelect({ type: "memory" });
             }
@@ -1297,10 +1500,14 @@ function PureMultimodalInput({
         }
       }
       if (slashOpen) {
-        const filtered = getFilteredSlashCommands(slashQuery, {
-          isFree,
-          isHome: isNewChatInput,
-        });
+        const filtered = getFilteredSlashCommands(
+          slashQuery,
+          {
+            isFree,
+            isHome: isNewChatInput,
+          },
+          customSlashCommands
+        );
         if (e.key === "ArrowDown") {
           e.preventDefault();
           setSlashIndex((i) => Math.min(i + 1, filtered.length - 1));
@@ -1324,18 +1531,79 @@ function PureMultimodalInput({
           return;
         }
       }
+      if (e.key === "Backspace" && !e.metaKey && !e.ctrlKey && !e.altKey) {
+        const target = e.currentTarget;
+        const { value, selectionStart } = target;
+        if (
+          selectionStart === target.selectionEnd &&
+          selectionStart !== null &&
+          selectionStart > 0
+        ) {
+          const before = value.slice(0, selectionStart);
+          const match = before.match(MENTION_TOKEN_RE);
+          if (match) {
+            e.preventDefault();
+            const token = match[1];
+            const deleteFrom = selectionStart - match[0].length;
+            setInput(
+              `${before.slice(0, deleteFrom)}${value.slice(selectionStart)}`
+            );
+            requestAnimationFrame(() => {
+              try {
+                target.setSelectionRange(deleteFrom, deleteFrom);
+              } catch {}
+            });
+
+            const skillName = activeSkill ? `@${activeSkill.name}` : null;
+            const agentName = activeAgent ? `@${activeAgent.name}` : null;
+            const projectName = pendingProject
+              ? `@${pendingProject.name}`
+              : null;
+
+            if (token === "@Memory") {
+              if (pendingTools.includes("memory")) {
+                togglePendingTool("memory");
+              }
+            } else if (skillName && token === skillName) {
+              clearActiveSkill();
+            } else if (agentName && token === agentName) {
+              clearActiveAgent();
+            } else if (projectName && token === projectName) {
+              clearPendingProject();
+            } else {
+              const srv = userMcpServers.find((s) => `@${s.name}` === token);
+              if (srv) {
+                const toolId = `mcp:${srv.id}` as ToolId;
+                if (pendingTools.includes(toolId)) {
+                  togglePendingTool(toolId);
+                }
+              }
+            }
+          }
+        }
+      }
       if (e.key === "Escape" && editingMessage && onCancelEdit) {
         e.preventDefault();
         onCancelEdit();
       }
     },
     [
+      activeAgent,
+      activeSkill,
+      clearActiveAgent,
+      clearActiveSkill,
+      clearPendingProject,
+      customMentionCommands,
+      customSlashCommands,
       editingMessage,
       handleSlashSelect,
       handleMentionSelect,
       isFree,
       isNewChatInput,
       onCancelEdit,
+      pendingProject,
+      pendingTools,
+      setInput,
       slashIndex,
       slashOpen,
       slashQuery,
@@ -1346,6 +1614,7 @@ function PureMultimodalInput({
       userAgents,
       userSkills,
       userMcpServers,
+      togglePendingTool,
     ]
   );
 
@@ -1358,7 +1627,9 @@ function PureMultimodalInput({
   }, []);
 
   return (
-    <div className={cn("relative flex w-full flex-col gap-4", className)}>
+    <div
+      className={cn("relative flex w-full flex-col gap-3 md:gap-4", className)}
+    >
       {isGhostMode ? (
         <div className="flex items-center justify-between gap-2 px-3 py-2 rounded-xl border border-purple-500/30 bg-purple-500/10 text-purple-300 text-xs shadow-xs">
           <div className="flex items-center gap-2 min-w-0">
@@ -1471,9 +1742,10 @@ function PureMultimodalInput({
             if (tidStr.startsWith("mcp:") || tidStr === "mcp") {
               const srvId = tidStr.replace(/^mcp:/, "");
               const srv = userMcpServers.find(
-                (s) => s.id === srvId || s.name.toLowerCase() === srvId.toLowerCase()
+                (s) =>
+                  s.id === srvId || s.name.toLowerCase() === srvId.toLowerCase()
               );
-              label = srv ? srv.name : (srvId || "Outil MCP");
+              label = srv ? srv.name : srvId || "Outil MCP";
             } else {
               const meta = TOOLS_META[tid as ToolId];
               label = meta?.label || tidStr;
@@ -1486,7 +1758,24 @@ function PureMultimodalInput({
                 {label}
                 <button
                   className="ml-0.5 rounded-full p-0.5 hover:bg-primary/20"
-                  onClick={() => togglePendingTool(tid as ToolId)}
+                  onClick={() => {
+                    togglePendingTool(tid as ToolId);
+                    const token = tokenForPendingTool(tidStr, userMcpServers);
+                    if (token) {
+                      const escaped = token.replace(
+                        /[.*+?^${}()|[\]\\]/g,
+                        "\\$&"
+                      );
+                      setInput(
+                        input
+                          .replace(
+                            new RegExp(`@${escaped}( |\u00A0)?`, "g"),
+                            ""
+                          )
+                          .trim()
+                      );
+                    }
+                  }}
                   type="button"
                 >
                   <XIcon className="size-3" />
@@ -1576,6 +1865,7 @@ function PureMultimodalInput({
         {slashOpen ? (
           <SlashCommandMenu
             context={{ isFree, isHome: isNewChatInput }}
+            customCommands={customSlashCommands}
             onClose={handleSlashClose}
             onSelect={handleSlashSelect}
             query={slashQuery}
@@ -1586,8 +1876,12 @@ function PureMultimodalInput({
         {mentionOpen ? (
           <MentionMenu
             agents={userAgents as any}
+            customCommands={customMentionCommands}
             isLoadingProjects={isProjectsLoading}
             mcpServers={userMcpServers}
+            memoryAtLimit={memoryAtLimit}
+            memoryCount={memoryCount}
+            memoryLimit={memoryLimit}
             onClose={handleMentionClose}
             onSelect={handleMentionSelect}
             projects={projects as any}
@@ -1603,7 +1897,8 @@ function PureMultimodalInput({
         <div className="mb-2 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center gap-2 text-[11.5px] text-amber-700 dark:text-amber-400">
           <TriangleAlertIcon className="size-3.5 shrink-0" />
           <span>
-            Ce modèle ne prend pas en charge les outils (tools). Les MCP, compétences et outils système sont désactivés.
+            Ce modèle ne prend pas en charge les outils (tools). Les MCP,
+            compétences et outils système sont désactivés.
           </span>
         </div>
       )}
@@ -1650,9 +1945,11 @@ function PureMultimodalInput({
               if (tidStr.startsWith("mcp:") || tidStr === "mcp") {
                 const srvId = tidStr.replace(/^mcp:/, "");
                 const srv = userMcpServers.find(
-                  (s) => s.id === srvId || s.name.toLowerCase() === srvId.toLowerCase()
+                  (s) =>
+                    s.id === srvId ||
+                    s.name.toLowerCase() === srvId.toLowerCase()
                 );
-                label = srv ? srv.name : (srvId || "Outil MCP");
+                label = srv ? srv.name : srvId || "Outil MCP";
                 IconComponent = CpuIcon;
               } else {
                 const meta = TOOLS_META[tid as ToolId];
@@ -1670,10 +1967,22 @@ function PureMultimodalInput({
                     aria-label="Désactiver l'outil"
                     className="ml-0.5 rounded-full p-0.5 hover:bg-blue-500/20 cursor-pointer"
                     onClick={() => {
-                      togglePendingTool(tid as any);
-                      const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-                      const cleanInput = input.replace(new RegExp(`@${escaped}\\s*`, "g"), "").trim();
-                      setInput(cleanInput);
+                      togglePendingTool(tid);
+                      const token = tokenForPendingTool(tidStr, userMcpServers);
+                      if (token) {
+                        const escaped = token.replace(
+                          /[.*+?^${}()|[\]\\]/g,
+                          "\\$&"
+                        );
+                        setInput(
+                          input
+                            .replace(
+                              new RegExp(`@${escaped}( |\u00A0)?`, "g"),
+                              ""
+                            )
+                            .trim()
+                        );
+                      }
                     }}
                     type="button"
                   >
@@ -1691,18 +2000,33 @@ function PureMultimodalInput({
               aria-hidden="true"
               className={cn(
                 "pointer-events-none absolute inset-0 overflow-hidden min-h-[48px] max-h-36 px-4 pb-1.5 text-[16px] md:text-[13.5px] leading-relaxed whitespace-pre-wrap break-words text-foreground select-none font-sans",
-                pendingTools.length > 0 || attachments.length > 0 || uploadQueue.length > 0 ? "pt-1.5" : "pt-3.5"
+                pendingTools.length > 0 ||
+                  attachments.length > 0 ||
+                  uploadQueue.length > 0
+                  ? "pt-1.5"
+                  : "pt-3.5"
               )}
               ref={overlayRef}
             >
-              {renderHighlightedMentions(input, userMcpServers, userSkills, userAgents)}
+              {renderHighlightedMentions(
+                input,
+                userMcpServers,
+                userSkills,
+                userAgents
+              )}
             </div>
           ) : null}
           <PromptInputTextarea
             className={cn(
               "min-h-[48px] max-h-36 text-[16px] md:text-[13.5px] leading-relaxed px-4 pb-1.5 placeholder:text-muted-foreground/45 resize-none relative z-10 font-sans",
-              pendingTools.length > 0 || attachments.length > 0 || uploadQueue.length > 0 ? "pt-1.5" : "pt-3.5",
-              input ? "bg-transparent text-transparent caret-foreground selection:bg-blue-500/30 selection:text-transparent" : ""
+              pendingTools.length > 0 ||
+                attachments.length > 0 ||
+                uploadQueue.length > 0
+                ? "pt-1.5"
+                : "pt-3.5",
+              input
+                ? "bg-transparent text-transparent caret-foreground selection:bg-blue-500/30 selection:text-transparent"
+                : ""
             )}
             data-testid="multimodal-input"
             onBlur={handleTextareaBlur}
@@ -1714,7 +2038,9 @@ function PureMultimodalInput({
               }
             }}
             placeholder={
-              editingMessage ? "Modifier votre message..." : "Poser une question"
+              editingMessage
+                ? "Modifier votre message..."
+                : "Poser une question"
             }
             ref={textareaRef}
             value={input}
@@ -1725,6 +2051,7 @@ function PureMultimodalInput({
             <PlusMenuButton
               fileInputRef={fileInputRef}
               onOpenCloudPicker={() => setCloudPickerOpen(true)}
+              onOpenQuizConfig={() => setQuizDialogOpen(true)}
               selectedModelId={selectedModelId}
               status={status}
               supportsTools={supportsTools}
@@ -1787,6 +2114,18 @@ function PureMultimodalInput({
         onOpenChange={setCloudPickerOpen}
         onSelectAttachments={handleCloudAttachments}
         open={cloudPickerOpen}
+      />
+
+      <SkillParamsDialog
+        onOpenChange={setSkillParamsDialogOpen}
+        onSubmit={handleSkillParamsSubmit}
+        open={skillParamsDialogOpen}
+        skill={activeSkill}
+      />
+
+      <QuizConfigDialog
+        isOpen={quizDialogOpen}
+        onClose={() => setQuizDialogOpen(false)}
       />
     </div>
   );
@@ -1862,12 +2201,14 @@ function PurePlusMenuButton({
   status,
   selectedModelId,
   onOpenCloudPicker,
+  onOpenQuizConfig,
   supportsTools = true,
 }: {
   fileInputRef: React.MutableRefObject<HTMLInputElement | null>;
   status: UseChatHelpers<ChatMessage>["status"];
   selectedModelId: string;
   onOpenCloudPicker: () => void;
+  onOpenQuizConfig: () => void;
   supportsTools?: boolean;
 }) {
   const { data: modelsResponse } = useSWR(
@@ -1942,7 +2283,9 @@ function PurePlusMenuButton({
   const isImageActive = pendingTools.includes("imageGenerate" as ToolId);
   const isAudioActive = pendingTools.includes("audioGenerate" as ToolId);
   const isWebActive = pendingTools.includes("webSearch" as ToolId);
-  const isMcpActive = pendingTools.some((t) => (t as string) === "mcp" || (t as string).startsWith("mcp:"));
+  const isMcpActive = pendingTools.some(
+    (t) => (t as string) === "mcp" || (t as string).startsWith("mcp:")
+  );
 
   return (
     <Popover onOpenChange={setOpen} open={open}>
@@ -2064,22 +2407,24 @@ function PurePlusMenuButton({
                 <span className="text-[10px] bg-purple-500/20 text-purple-400 font-medium px-1.5 py-0.5 rounded-full">
                   INDISPONIBLE EN FANTÔME
                 </span>
-              ) : !supportsTools ? (
+              ) : supportsTools ? (
+                isImageActive ? (
+                  <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
+                    ACTIF
+                  </span>
+                ) : null
+              ) : (
                 <span className="text-[10px] bg-destructive/15 text-destructive font-medium px-1.5 py-0.5 rounded-full">
                   SANS TOOLS
                 </span>
-              ) : isImageActive ? (
-                <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
-                  ACTIF
-                </span>
-              ) : null}
+              )}
             </div>
             <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
               {isGhostMode
                 ? "Indisponible dans ce mode"
-                : !supportsTools
-                  ? "Non supporté par ce modèle"
-                  : "Transformez vos idées en images"}
+                : supportsTools
+                  ? "Transformez vos idées en images"
+                  : "Non supporté par ce modèle"}
             </span>
           </div>
         </button>
@@ -2124,22 +2469,24 @@ function PurePlusMenuButton({
                 <span className="text-[10px] bg-purple-500/20 text-purple-400 font-medium px-1.5 py-0.5 rounded-full">
                   INDISPONIBLE EN FANTÔME
                 </span>
-              ) : !supportsTools ? (
+              ) : supportsTools ? (
+                isAudioActive ? (
+                  <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
+                    ACTIF
+                  </span>
+                ) : null
+              ) : (
                 <span className="text-[10px] bg-destructive/15 text-destructive font-medium px-1.5 py-0.5 rounded-full">
                   SANS TOOLS
                 </span>
-              ) : isAudioActive ? (
-                <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
-                  ACTIF
-                </span>
-              ) : null}
+              )}
             </div>
             <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
               {isGhostMode
                 ? "Indisponible dans ce mode"
-                : !supportsTools
-                  ? "Non supporté par ce modèle"
-                  : "Synthèse vocale et audio IA"}
+                : supportsTools
+                  ? "Synthèse vocale et audio IA"
+                  : "Non supporté par ce modèle"}
             </span>
           </div>
         </button>
@@ -2148,11 +2495,11 @@ function PurePlusMenuButton({
         <button
           className={cn(
             "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
-            !supportsTools
-              ? "opacity-50 cursor-not-allowed bg-muted/20"
-              : isWebActive
+            supportsTools
+              ? isWebActive
                 ? "bg-primary/10 border border-primary/30 ring-1 ring-primary/20 text-primary"
                 : "hover:bg-muted/70 text-foreground"
+              : "opacity-50 cursor-not-allowed bg-muted/20"
           )}
           disabled={!supportsTools}
           onClick={() => {
@@ -2174,20 +2521,51 @@ function PurePlusMenuButton({
               <span className="text-[13.5px] font-semibold truncate">
                 Recherche sur le Web
               </span>
-              {!supportsTools ? (
+              {supportsTools ? (
+                isWebActive ? (
+                  <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
+                    ACTIF
+                  </span>
+                ) : null
+              ) : (
                 <span className="text-[10px] bg-destructive/15 text-destructive font-medium px-1.5 py-0.5 rounded-full">
                   SANS TOOLS
                 </span>
-              ) : isWebActive ? (
-                <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
-                  ACTIF
-                </span>
-              ) : null}
+              )}
             </div>
             <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
-              {!supportsTools
-                ? "Non supporté par ce modèle"
-                : "Trouvez des infos en temps réel"}
+              {supportsTools
+                ? "Trouvez des infos en temps réel"
+                : "Non supporté par ce modèle"}
+            </span>
+          </div>
+        </button>
+
+        {/* Option Quizzly : Disponible même en mode fantôme */}
+        <button
+          className={cn(
+            "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer hover:bg-muted/70 text-foreground"
+          )}
+          onClick={() => {
+            onOpenQuizConfig();
+            setOpen(false);
+          }}
+          type="button"
+        >
+          <div className="flex size-7 items-center justify-center rounded-lg text-amber-500 shrink-0">
+            <TrophyIcon className="size-4" />
+          </div>
+          <div className="flex items-center justify-between w-full min-w-0 gap-2">
+            <div className="flex items-center gap-2">
+              <span className="text-[13.5px] font-semibold truncate">
+                Quizzly — Quiz interactif
+              </span>
+              <span className="text-[10px] bg-amber-500/15 text-amber-600 dark:text-amber-400 font-medium px-1.5 py-0.5 rounded-full">
+                QUIZ
+              </span>
+            </div>
+            <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
+              1 à 50 questions avec score
             </span>
           </div>
         </button>
@@ -2256,11 +2634,11 @@ function PurePlusMenuButton({
         <button
           className={cn(
             "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
-            !supportsTools
-              ? "opacity-50 cursor-not-allowed bg-muted/20"
-              : isMcpActive
+            supportsTools
+              ? isMcpActive
                 ? "bg-primary/10 border border-primary/30 ring-1 ring-primary/20 text-primary"
                 : "hover:bg-muted/70 text-foreground"
+              : "opacity-50 cursor-not-allowed bg-muted/20"
           )}
           disabled={!supportsTools}
           onClick={() => {
@@ -2282,20 +2660,22 @@ function PurePlusMenuButton({
               <span className="text-[13.5px] font-semibold truncate">
                 Outils & Serveurs MCP
               </span>
-              {!supportsTools ? (
+              {supportsTools ? (
+                isMcpActive ? (
+                  <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
+                    ACTIF
+                  </span>
+                ) : null
+              ) : (
                 <span className="text-[10px] bg-destructive/15 text-destructive font-medium px-1.5 py-0.5 rounded-full">
                   SANS TOOLS
                 </span>
-              ) : isMcpActive ? (
-                <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
-                  ACTIF
-                </span>
-              ) : null}
+              )}
             </div>
             <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
-              {!supportsTools
-                ? "Non supporté par ce modèle"
-                : "Connecter bases & APIs"}
+              {supportsTools
+                ? "Connecter bases & APIs"
+                : "Non supporté par ce modèle"}
             </span>
           </div>
         </button>

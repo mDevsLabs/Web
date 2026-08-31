@@ -1,0 +1,376 @@
+﻿"use client";
+
+import {
+  CalendarIcon,
+  CheckCircle2Icon,
+  ClockIcon,
+  Loader2Icon,
+  PlusIcon,
+  SparklesIcon,
+  WrenchIcon,
+  XCircleIcon,
+} from "lucide-react";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { chatModels } from "@/lib/ai/models";
+import { TOOLS_META, type ToolId } from "@/lib/ai/tools/config";
+import type { Agent, ScheduledMessage } from "@/lib/db/schema";
+import { cn } from "@/lib/utils";
+
+interface ScheduleDialogProps {
+  agents: Agent[];
+  initialData?: ScheduledMessage | null;
+  isOpen: boolean;
+  onClose: () => void;
+  onSuccess: () => void;
+}
+
+export function ScheduleDialog({
+  agents,
+  initialData,
+  isOpen,
+  onClose,
+  onSuccess,
+}: ScheduleDialogProps) {
+  const [title, setTitle] = useState("Envoi planifié");
+  const [prompt, setPrompt] = useState("");
+  const [scheduledAt, setScheduledAt] = useState("");
+  const [selectedAgentId, setSelectedAgentId] = useState<string | null>(null);
+  const [selectedModel, setSelectedModel] = useState("google/gemini-2.5-flash");
+  const [createMode, setCreateMode] = useState<"new_chat" | "existing_chat">("new_chat");
+  const [enabledTools, setEnabledTools] = useState<string[]>([]);
+  const [customInstructions, setCustomInstructions] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (initialData) {
+      setTitle(initialData.title);
+      setPrompt(initialData.prompt);
+      const d = new Date(initialData.scheduledAt);
+      // format to datetime-local (YYYY-MM-DDTHH:mm)
+      const pad = (n: number) => n.toString().padStart(2, "0");
+      const localIso = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+      setScheduledAt(localIso);
+      setSelectedAgentId(initialData.agentId ?? null);
+      setSelectedModel(initialData.modelId);
+      setCreateMode((initialData.createMode as any) || "new_chat");
+      setEnabledTools((initialData.enabledTools as string[]) || []);
+      setCustomInstructions(initialData.customInstructions || "");
+    } else {
+      setTitle("Rapport matinal");
+      setPrompt("Génère un résumé complet des actualités technologiques et IA d'aujourd'hui.");
+      const inOneHour = new Date(Date.now() + 60 * 60 * 1000);
+      const pad = (n: number) => n.toString().padStart(2, "0");
+      const localIso = `${inOneHour.getFullYear()}-${pad(inOneHour.getMonth() + 1)}-${pad(inOneHour.getDate())}T${pad(inOneHour.getHours())}:${pad(inOneHour.getMinutes())}`;
+      setScheduledAt(localIso);
+      setSelectedAgentId(null);
+      setSelectedModel("google/gemini-2.5-flash");
+      setCreateMode("new_chat");
+      setEnabledTools(["webSearch"]);
+      setCustomInstructions("");
+    }
+  }, [initialData, isOpen]);
+
+  const toggleTool = (toolKey: string) => {
+    setEnabledTools((prev) =>
+      prev.includes(toolKey)
+        ? prev.filter((t) => t !== toolKey)
+        : [...prev, toolKey]
+    );
+  };
+
+  const setPresetTime = (minutesFromNow: number) => {
+    const d = new Date(Date.now() + minutesFromNow * 60 * 1000);
+    const pad = (n: number) => n.toString().padStart(2, "0");
+    setScheduledAt(
+      `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`
+    );
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!prompt.trim()) {
+      toast.error("Veuillez saisir le message à envoyer.");
+      return;
+    }
+    if (!scheduledAt) {
+      toast.error("Veuillez définir une date et heure d'exécution.");
+      return;
+    }
+
+    const scheduledDate = new Date(scheduledAt);
+    if (scheduledDate.getTime() <= Date.now() && !initialData) {
+      toast.warning("L'heure programmée est déjà passée ou très proche.");
+    }
+
+    setIsSubmitting(true);
+    try {
+      const payload = {
+        agentId: selectedAgentId,
+        createMode,
+        customInstructions: customInstructions.trim() || null,
+        enabledTools,
+        modelId: selectedModel,
+        prompt: prompt.trim(),
+        scheduledAt: scheduledDate.toISOString(),
+        title: title.trim() || "Envoi planifié",
+      };
+
+      const url = initialData
+        ? `/api/planning/${initialData.id}`
+        : "/api/planning";
+      const method = initialData ? "PATCH" : "POST";
+
+      const res = await fetch(url, {
+        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/json" },
+        method,
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Erreur lors de l'enregistrement");
+      }
+
+      toast.success(
+        initialData
+          ? "Planification modifiée avec succès"
+          : "Message planifié avec succès !"
+      );
+      onSuccess();
+      onClose();
+    } catch (err: any) {
+      toast.error(err?.message || "Une erreur est survenue");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <Dialog onOpenChange={(open) => !open && onClose()} open={isOpen}>
+      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-[620px]">
+        <DialogHeader>
+          <div className="flex items-center gap-2">
+            <span className="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
+              <CalendarIcon className="size-4" />
+            </span>
+            <DialogTitle>
+              {initialData ? "Modifier la planification" : "Nouvelle planification"}
+            </DialogTitle>
+          </div>
+          <DialogDescription>
+            Définissez la date, l'heure et les paramètres de votre message automatique à l'IA.
+          </DialogDescription>
+        </DialogHeader>
+
+        <form className="space-y-4 pt-2" onSubmit={handleSubmit}>
+          <div>
+            <Label className="text-xs font-semibold text-muted-foreground">
+              Titre du rappel
+            </Label>
+            <Input
+              className="mt-1"
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Ex: Veille IA du matin"
+              value={title}
+            />
+          </div>
+
+          <div>
+            <div className="flex items-center justify-between">
+              <Label className="text-xs font-semibold text-muted-foreground">
+                Date & Heure d'exécution
+              </Label>
+              <div className="flex items-center gap-1">
+                <button
+                  className="rounded px-2 py-0.5 text-[11px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                  onClick={() => setPresetTime(60)}
+                  type="button"
+                >
+                  +1h
+                </button>
+                <button
+                  className="rounded px-2 py-0.5 text-[11px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                  onClick={() => setPresetTime(60 * 12)}
+                  type="button"
+                >
+                  +12h
+                </button>
+                <button
+                  className="rounded px-2 py-0.5 text-[11px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                  onClick={() => setPresetTime(60 * 24)}
+                  type="button"
+                >
+                  Demain
+                </button>
+              </div>
+            </div>
+            <Input
+              className="mt-1 font-mono text-sm"
+              onChange={(e) => setScheduledAt(e.target.value)}
+              required
+              type="datetime-local"
+              value={scheduledAt}
+            />
+          </div>
+
+          <div>
+            <Label className="text-xs font-semibold text-muted-foreground">
+              Message / Prompt à envoyer à l'IA
+            </Label>
+            <Textarea
+              className="mt-1 min-h-[90px] text-sm"
+              onChange={(e) => setPrompt(e.target.value)}
+              placeholder="Que voulez-vous demander à l'IA à cette date ?"
+              required
+              value={prompt}
+            />
+          </div>
+
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div>
+              <Label className="text-xs font-semibold text-muted-foreground">
+                Agent associé (optionnel)
+              </Label>
+              <select
+                className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-xs focus:outline-none focus:ring-1 focus:ring-ring"
+                onChange={(e) => setSelectedAgentId(e.target.value || null)}
+                value={selectedAgentId || ""}
+              >
+                <option value="">Aucun (mAI Standard)</option>
+                {agents.map((ag) => (
+                  <option key={ag.id} value={ag.id}>
+                    {ag.emoji ? `${ag.emoji} ` : ""}
+                    {ag.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <Label className="text-xs font-semibold text-muted-foreground">
+                Modèle de langage
+              </Label>
+              <select
+                className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-xs focus:outline-none focus:ring-1 focus:ring-ring"
+                onChange={(e) => setSelectedModel(e.target.value)}
+                value={selectedModel}
+              >
+                {chatModels.map((m) => (
+                  <option key={m.id} value={m.id}>
+                    {m.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <Label className="text-xs font-semibold text-muted-foreground">
+              Mode de discussion
+            </Label>
+            <div className="mt-1 flex gap-2">
+              <button
+                className={cn(
+                  "flex-1 rounded-lg border px-3 py-2 text-left text-xs transition",
+                  createMode === "new_chat"
+                    ? "border-primary bg-primary/10 text-primary font-medium"
+                    : "border-border/60 text-muted-foreground hover:bg-muted/50"
+                )}
+                onClick={() => setCreateMode("new_chat")}
+                type="button"
+              >
+                <div className="font-semibold">Nouvelle discussion</div>
+                <div className="text-[11px] opacity-80">
+                  Crée une discussion dédiée pour cette exécution
+                </div>
+              </button>
+              <button
+                className={cn(
+                  "flex-1 rounded-lg border px-3 py-2 text-left text-xs transition",
+                  createMode === "existing_chat"
+                    ? "border-primary bg-primary/10 text-primary font-medium"
+                    : "border-border/60 text-muted-foreground hover:bg-muted/50"
+                )}
+                onClick={() => setCreateMode("existing_chat")}
+                type="button"
+              >
+                <div className="font-semibold">Continuer un fil existant</div>
+                <div className="text-[11px] opacity-80">
+                  Ajoute les réponses dans la discussion sélectionnée
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <Label className="text-xs font-semibold text-muted-foreground">
+              Outils activés pour l'exécution
+            </Label>
+            <div className="mt-1.5 flex flex-wrap gap-1.5">
+              {(["webSearch", "calculator", "dateTime", "codeExecution", "getWeather"] as ToolId[]).map((tid) => {
+                const meta = TOOLS_META[tid];
+                const active = enabledTools.includes(tid);
+                return (
+                  <button
+                    className={cn(
+                      "flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs transition cursor-pointer",
+                      active
+                        ? "border-primary bg-primary/10 text-primary font-medium"
+                        : "border-border/50 bg-background text-muted-foreground hover:bg-muted"
+                    )}
+                    key={tid}
+                    onClick={() => toggleTool(tid)}
+                    type="button"
+                  >
+                    {active ? (
+                      <CheckCircle2Icon className="size-3 text-primary" />
+                    ) : (
+                      <PlusIcon className="size-3 opacity-50" />
+                    )}
+                    <span>{meta?.label || tid}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <DialogFooter className="pt-2">
+            <Button
+              disabled={isSubmitting}
+              onClick={onClose}
+              type="button"
+              variant="outline"
+            >
+              Annuler
+            </Button>
+            <Button disabled={isSubmitting} type="submit">
+              {isSubmitting ? (
+                <>
+                  <Loader2Icon className="mr-2 size-4 animate-spin" />
+                  Enregistrement...
+                </>
+              ) : initialData ? (
+                "Sauvegarder"
+              ) : (
+                "Planifier l'envoi"
+              )}
+            </Button>
+          </DialogFooter>
+        </form>
+      </DialogContent>
+    </Dialog>
+  );
+}

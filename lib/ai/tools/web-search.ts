@@ -66,6 +66,7 @@ export const webSearch = tool({
           `${MAI_API_URL}/v1/web/search?q=${encodeURIComponent(query)}&count=${count}&language=${encodeURIComponent(language)}`,
           {
             headers: { Accept: "application/json" },
+            signal: AbortSignal.timeout(6_000),
           }
         );
         if (!res.ok) {
@@ -82,7 +83,7 @@ export const webSearch = tool({
     const tryDuckDuckGo = async (): Promise<SearchResult[]> => {
       try {
         const url = `https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json&no_html=1&skip_disambig=1&t=mai-web`;
-        const res = await fetch(url);
+        const res = await fetch(url, { signal: AbortSignal.timeout(5_000) });
         if (!res.ok) {
           return [];
         }
@@ -173,6 +174,7 @@ export const webSearch = tool({
               Accept: "application/json",
               "User-Agent": "mAI-Web/1.0",
             },
+            signal: AbortSignal.timeout(10_000),
           }
         );
         if (!res.ok) {

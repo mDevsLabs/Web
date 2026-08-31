@@ -1,22 +1,56 @@
 "use client";
 
-import { BrainIcon, Loader2Icon, Trash2Icon } from "lucide-react";
+import {
+  BotIcon,
+  BrainIcon,
+  CheckIcon,
+  FolderKanbanIcon,
+  GlobeIcon,
+  Loader2Icon,
+  PencilIcon,
+  Trash2Icon,
+  XIcon,
+} from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
 
 type MemoryEntry = {
   agentId: string | null;
+  agentName?: string | null;
   content: string;
   createdAt: string;
   id: string;
   projectId: string | null;
+  projectName?: string | null;
 };
 
 type MemoryCardProps = {
   agentId?: string;
+  /** Onglet Mémoire : liste toutes les portées avec un filtre. */
+  allScopes?: boolean;
   projectId?: string;
 };
+
+type ScopeFilter = "agent" | "all" | "global" | "project";
+
+const SCOPE_FILTERS: { id: ScopeFilter; label: string }[] = [
+  { id: "all", label: "Toutes" },
+  { id: "global", label: "Globales" },
+  { id: "agent", label: "Agents" },
+  { id: "project", label: "Projets" },
+];
 
 function formatMemoryDate(value: string): string {
   try {
@@ -30,24 +64,66 @@ function formatMemoryDate(value: string): string {
   }
 }
 
-export function MemoryCard({ agentId, projectId }: MemoryCardProps) {
+function isGlobalScope(entry: MemoryEntry): boolean {
+  return !entry.agentId && !entry.projectId;
+}
+
+function matchesFilter(entry: MemoryEntry, filter: ScopeFilter): boolean {
+  if (filter === "all") {
+    return true;
+  }
+  if (filter === "global") {
+    return isGlobalScope(entry);
+  }
+  if (filter === "agent") {
+    return Boolean(entry.agentId);
+  }
+  return Boolean(entry.projectId);
+}
+
+function scopeLabel(entry: MemoryEntry): string {
+  if (entry.agentId) {
+    return entry.agentName ? `Agent · ${entry.agentName}` : "Agent";
+  }
+  if (entry.projectId) {
+    return entry.projectName ? `Projet · ${entry.projectName}` : "Projet";
+  }
+  return "Globale";
+}
+
+export function MemoryCard({
+  agentId,
+  allScopes,
+  projectId,
+}: MemoryCardProps) {
   const scopeQuery = agentId
     ? `?agentId=${agentId}`
     : projectId
       ? `?projectId=${projectId}`
       : "";
   const { data, mutate, isLoading } = useSWR(
-    `/api/memory${scopeQuery}`,
+    allScopes ? "/api/memory?scope=all" : `/api/memory${scopeQuery}`,
     (url: string) => fetch(url).then((r) => r.json()),
     { dedupingInterval: 10_000 }
   );
   const memories: MemoryEntry[] = data?.memories || [];
   const limit: number = typeof data?.limit === "number" ? data.limit : 50;
-  const isAtLimit = memories.length >= limit;
 
+  // L'ajout se fait toujours dans la portée de la carte : globale quand toutes
+  // les portées sont affichées. Le quota se juge sur cette portée uniquement.
+  const scopeCount = allScopes
+    ? memories.filter(isGlobalScope).length
+    : memories.length;
+  const isAtLimit = scopeCount >= limit;
+
+  const [scopeFilter, setScopeFilter] = useState<ScopeFilter>("all");
   const [newContent, setNewContent] = useState("");
   const [isSaving, setIsSaving] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [pendingDelete, setPendingDelete] = useState<MemoryEntry | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editContent, setEditContent] = useState("");
+  const [isUpdating, setIsUpdating] = useState(false);
 
   const handleAdd = async () => {
     const content = newContent.trim();
@@ -80,6 +156,34 @@ export function MemoryCard({ agentId, projectId }: MemoryCardProps) {
     }
   };
 
+  const handleUpdate = async () => {
+    const content = editContent.trim();
+    if (!editingId || !content) {
+      return;
+    }
+    setIsUpdating(true);
+    try {
+      const res = await fetch("/api/memory", {
+        body: JSON.stringify({ content, id: editingId }),
+        headers: { "Content-Type": "application/json" },
+        method: "PATCH",
+      });
+      const resp = await res.json();
+      if (!res.ok) {
+        toast.error(resp.message || resp.cause || "Erreur de modification");
+        return;
+      }
+      toast.success("Mémoire mise à jour");
+      setEditingId(null);
+      setEditContent("");
+      await mutate();
+    } catch {
+      toast.error("Erreur de modification");
+    } finally {
+      setIsUpdating(false);
+    }
+  };
+
   const handleDelete = async (id: string) => {
     setDeletingId(id);
     try {
@@ -95,10 +199,18 @@ export function MemoryCard({ agentId, projectId }: MemoryCardProps) {
       toast.error("Erreur de suppression");
     } finally {
       setDeletingId(null);
+      setPendingDelete(null);
     }
   };
 
-  const scopeLabel = agentId
+  const visibleMemories = allScopes
+    ? memories.filter((m) => matchesFilter(m, scopeFilter))
+    : memories;
+
+  const title = allScopes
+    ? "Mémoire"
+    : `Mémoire ${agentId ? "de l'agent" : projectId ? "du projet" : "personnalisée"}`;
+  const scopeLabelHeader = agentId
     ? "mémoires de cet agent"
     : projectId
       ? "mémoires de ce projet"
@@ -111,23 +223,47 @@ export function MemoryCard({ agentId, projectId }: MemoryCardProps) {
           <BrainIcon className="size-5" />
         </div>
         <div className="flex-1">
-          <h3 className="text-base font-semibold text-foreground">
-            Mémoire {agentId ? "de l'agent" : projectId ? "du projet" : "personnalisée"}
-          </h3>
+          <h3 className="text-base font-semibold text-foreground">{title}</h3>
           <p className="text-xs text-muted-foreground">
-            {scopeLabel.charAt(0).toUpperCase() + scopeLabel.slice(1)} —
-            injectées automatiquement dans les réponses de l'IA.
+            {scopeLabelHeader.charAt(0).toUpperCase() +
+              scopeLabelHeader.slice(1)}{" "}
+            — injectées automatiquement dans les réponses de l'IA.
           </p>
         </div>
         <span className="text-[11px] text-muted-foreground font-medium">
-          {memories.length}/{limit}
+          {scopeCount}/{limit}
         </span>
       </div>
+
+      {allScopes ? (
+        <div className="flex items-center gap-1.5 flex-wrap">
+          {SCOPE_FILTERS.map((filter) => {
+            const count = memories.filter((m) =>
+              matchesFilter(m, filter.id)
+            ).length;
+            return (
+              <button
+                className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11.5px] font-medium transition-colors cursor-pointer ${
+                  scopeFilter === filter.id
+                    ? "bg-sky-600 text-white"
+                    : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground"
+                }`}
+                key={filter.id}
+                onClick={() => setScopeFilter(filter.id)}
+                type="button"
+              >
+                {filter.label}
+                <span className="opacity-70">{count}</span>
+              </button>
+            );
+          })}
+        </div>
+      ) : null}
 
       <div className="flex flex-col gap-2">
         <textarea
           className="w-full rounded-xl border border-border/60 bg-muted/20 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary/20 resize-y"
-          maxLength={2000}
+          maxLength={MEMORY_CONTENT_MAX_LENGTH}
           onChange={(e) => setNewContent(e.target.value)}
           onKeyDown={(e) => {
             if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
@@ -140,13 +276,19 @@ export function MemoryCard({ agentId, projectId }: MemoryCardProps) {
         />
         <div className="flex items-center justify-between gap-3">
           <span className="text-[11px] text-muted-foreground text-left">
-            {newContent.length}/2000 — Ctrl+Entrée pour enregistrer
+            {newContent.length}/{MEMORY_CONTENT_MAX_LENGTH}
+            {allScopes ? " — enregistré en mémoire globale" : ""} — Ctrl+Entrée
+            pour enregistrer
           </span>
           <button
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-sky-600 text-white px-4 py-2 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer disabled:opacity-50"
             disabled={isSaving || !newContent.trim() || isAtLimit}
             onClick={handleAdd}
-            title={isAtLimit ? `Limite de ${limit} mémoires atteinte pour ce scope` : undefined}
+            title={
+              isAtLimit
+                ? `Limite de ${limit} mémoires atteinte pour ce scope`
+                : undefined
+            }
             type="button"
           >
             {isAtLimit
@@ -162,45 +304,158 @@ export function MemoryCard({ agentId, projectId }: MemoryCardProps) {
         <div className="flex items-center justify-center py-4 text-muted-foreground">
           <Loader2Icon className="size-4 animate-spin" />
         </div>
-      ) : memories.length === 0 ? (
+      ) : visibleMemories.length === 0 ? (
         <p className="text-xs text-muted-foreground py-2">
-          Aucune mémoire pour le moment. Vous pouvez aussi demander à l'IA dans
-          le chat via la mention @Memory (« retiens que... »).
+          {memories.length === 0
+            ? "Aucune mémoire pour le moment. Vous pouvez aussi demander à l'IA dans le chat via la mention @Memory (« retiens que... »)."
+            : "Aucune mémoire dans cette portée."}
         </p>
       ) : (
         <div className="flex flex-col gap-2">
-          {memories.map((m) => (
-            <div
-              className="flex items-start gap-3 rounded-xl border border-border/40 bg-muted/20 px-3 py-2.5"
-              key={m.id}
-            >
-              <BrainIcon className="size-3.5 text-sky-600 mt-0.5 shrink-0" />
-              <div className="flex-1 min-w-0">
-                <p className="text-[13px] text-foreground break-words">
-                  {m.content}
-                </p>
-                <span className="text-[10.5px] text-muted-foreground">
-                  {formatMemoryDate(m.createdAt)}
-                </span>
-              </div>
-              <button
-                aria-label="Supprimer cette mémoire"
-                className="rounded-lg p-1.5 text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors cursor-pointer"
-                disabled={deletingId === m.id}
-                onClick={() => handleDelete(m.id)}
-                title="Supprimer"
-                type="button"
+          {visibleMemories.map((m) => {
+            const isEditing = editingId === m.id;
+            return (
+              <div
+                className="rounded-xl border border-border/40 bg-muted/20 px-3 py-2.5"
+                key={m.id}
               >
-                {deletingId === m.id ? (
-                  <Loader2Icon className="size-3.5 animate-spin" />
+                {isEditing ? (
+                  <div className="flex flex-col gap-2">
+                    <textarea
+                      className="w-full rounded-lg border border-border/60 bg-background px-2.5 py-2 text-[13px] outline-none focus:ring-2 focus:ring-primary/20 resize-y"
+                      maxLength={MEMORY_CONTENT_MAX_LENGTH}
+                      onChange={(e) => setEditContent(e.target.value)}
+                      onKeyDown={(e) => {
+                        if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
+                          handleUpdate();
+                        }
+                        if (e.key === "Escape") {
+                          setEditingId(null);
+                        }
+                      }}
+                      rows={3}
+                      value={editContent}
+                    />
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="text-[10.5px] text-muted-foreground">
+                        {editContent.length}/{MEMORY_CONTENT_MAX_LENGTH}
+                      </span>
+                      <div className="flex items-center gap-2">
+                        <button
+                          aria-label="Annuler la modification"
+                          className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-[12px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors cursor-pointer"
+                          onClick={() => setEditingId(null)}
+                          type="button"
+                        >
+                          <XIcon className="size-3.5" />
+                          Annuler
+                        </button>
+                        <button
+                          className="inline-flex items-center gap-1.5 rounded-lg bg-sky-600 text-white px-3 py-1.5 text-[12px] font-medium transition-all hover:opacity-90 cursor-pointer disabled:opacity-50"
+                          disabled={isUpdating || !editContent.trim()}
+                          onClick={handleUpdate}
+                          type="button"
+                        >
+                          {isUpdating ? (
+                            <Loader2Icon className="size-3.5 animate-spin" />
+                          ) : (
+                            <CheckIcon className="size-3.5" />
+                          )}
+                          Enregistrer
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
-                  <Trash2Icon className="size-3.5" />
+                  <div className="flex items-start gap-3">
+                    <BrainIcon className="size-3.5 text-sky-600 mt-0.5 shrink-0" />
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[13px] text-foreground break-words">
+                        {m.content}
+                      </p>
+                      <span className="text-[10.5px] text-muted-foreground">
+                        {allScopes ? (
+                          <>
+                            {m.agentId ? (
+                              <BotIcon className="size-3 inline -mt-0.5 mr-0.5" />
+                            ) : m.projectId ? (
+                              <FolderKanbanIcon className="size-3 inline -mt-0.5 mr-0.5" />
+                            ) : (
+                              <GlobeIcon className="size-3 inline -mt-0.5 mr-0.5" />
+                            )}
+                            {scopeLabel(m)} ·{" "}
+                          </>
+                        ) : null}
+                        {formatMemoryDate(m.createdAt)}
+                      </span>
+                    </div>
+                    <button
+                      aria-label="Modifier cette mémoire"
+                      className="rounded-lg p-1.5 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
+                      onClick={() => {
+                        setEditingId(m.id);
+                        setEditContent(m.content);
+                      }}
+                      title="Modifier"
+                      type="button"
+                    >
+                      <PencilIcon className="size-3.5" />
+                    </button>
+                    <button
+                      aria-label="Supprimer cette mémoire"
+                      className="rounded-lg p-1.5 text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-colors cursor-pointer"
+                      disabled={deletingId === m.id}
+                      onClick={() => setPendingDelete(m)}
+                      title="Supprimer"
+                      type="button"
+                    >
+                      {deletingId === m.id ? (
+                        <Loader2Icon className="size-3.5 animate-spin" />
+                      ) : (
+                        <Trash2Icon className="size-3.5" />
+                      )}
+                    </button>
+                  </div>
                 )}
-              </button>
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </div>
       )}
+
+      <AlertDialog
+        onOpenChange={(open) => {
+          if (!open) {
+            setPendingDelete(null);
+          }
+        }}
+        open={Boolean(pendingDelete)}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Supprimer cette mémoire ?</AlertDialogTitle>
+            <AlertDialogDescription>
+              {pendingDelete
+                ? `« ${pendingDelete.content.slice(0, 160)}${
+                    pendingDelete.content.length > 160 ? "…" : ""
+                  } » ne sera plus injectée dans les réponses de l'IA.`
+                : ""}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Annuler</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={() => {
+                if (pendingDelete) {
+                  handleDelete(pendingDelete.id);
+                }
+              }}
+            >
+              Supprimer
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

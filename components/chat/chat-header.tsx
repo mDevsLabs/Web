@@ -225,7 +225,7 @@ function PureChatHeader({
 
   return (
     <header
-      className={`sticky top-0 z-10 flex items-center gap-2 bg-sidebar/80 backdrop-blur-md px-4 border-b border-border/40 ${isCollapsedDesktop ? "h-[calc(env(safe-area-inset-top)+2.5rem)]" : "h-[calc(env(safe-area-inset-top)+3.5rem)]"}`}
+      className={`sticky top-0 z-10 flex items-center gap-1.5 sm:gap-2 bg-sidebar/90 supports-[backdrop-filter]:bg-sidebar/80 backdrop-blur-sm sm:backdrop-blur-md px-2 sm:px-4 border-b border-border/40 ${isCollapsedDesktop ? "h-[calc(env(safe-area-inset-top)+2.5rem)] pt-[env(safe-area-inset-top)]" : "h-[calc(env(safe-area-inset-top)+3.5rem)] pt-[env(safe-area-inset-top)]"}`}
     >
       {isCollapsedDesktop && (
         <Button
@@ -238,16 +238,16 @@ function PureChatHeader({
         </Button>
       )}
       <Button
-        className="md:hidden"
+        className="md:hidden min-h-[44px] min-w-[44px] h-11 w-11 -ml-1"
         onClick={toggleSidebar}
         size="icon-sm"
         variant="ghost"
       >
-        <PanelLeftIcon className="size-4" />
+        <PanelLeftIcon className="size-5" />
       </Button>
 
       <Link
-        className="flex size-7 items-center justify-center rounded-lg md:hidden overflow-hidden"
+        className="flex size-8 items-center justify-center rounded-lg md:hidden overflow-hidden shrink-0"
         href="/"
       >
         <Image

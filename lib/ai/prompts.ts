@@ -71,11 +71,11 @@ export const systemPrompt = ({
   supportsTools,
   modeAddendum,
 }: {
-  requestHints: RequestHints;
+  requestHints?: RequestHints;
   supportsTools: boolean;
   modeAddendum?: string;
 }) => {
-  const requestPrompt = getRequestPromptFromHints(requestHints);
+  const requestPrompt = requestHints ? getRequestPromptFromHints(requestHints) : "";
   const modePrompt = modeAddendum ? `\n\nMode IA actif:\n${modeAddendum}` : "";
 
   if (!supportsTools) {
