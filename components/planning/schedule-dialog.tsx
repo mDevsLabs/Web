@@ -1,17 +1,21 @@
-﻿"use client";
+"use client";
 
 import {
   CalendarIcon,
   CheckCircle2Icon,
   ClockIcon,
+  CloudIcon,
   Loader2Icon,
   PlusIcon,
   SparklesIcon,
   WrenchIcon,
   XCircleIcon,
+  XIcon,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { CloudFilePickerDialog } from "@/components/chat/cloud-file-picker-dialog";
+import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -24,7 +28,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { chatModels } from "@/lib/ai/models";
+import { DEFAULT_CHAT_MODEL, FALLBACK_MODELS } from "@/lib/ai/models";
 import { TOOLS_META, TOOL_IDS, type ToolId } from "@/lib/ai/tools/config";
 import type { Agent, ScheduledMessage } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
@@ -48,9 +52,12 @@ export function ScheduleDialog({
   const [prompt, setPrompt] = useState("");
   const [scheduledAt, setScheduledAt] = useState("");
   const [selectedAgentId, setSelectedAgentId] = useState<string | null>(null);
-  const [selectedModel, setSelectedModel] = useState("google/gemini-2.5-flash");
+  const [selectedModel, setSelectedModel] = useState(DEFAULT_CHAT_MODEL);
   const [createMode, setCreateMode] = useState<"new_chat" | "existing_chat">("new_chat");
   const [enabledTools, setEnabledTools] = useState<string[]>([]);
+  const [cloudFileUrls, setCloudFileUrls] = useState<string[]>([]);
+  const [cloudFileNames, setCloudFileNames] = useState<Record<string, string>>({});
+  const [isCloudPickerOpen, setIsCloudPickerOpen] = useState(false);
   const [customInstructions, setCustomInstructions] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -64,9 +71,10 @@ export function ScheduleDialog({
       const localIso = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
       setScheduledAt(localIso);
       setSelectedAgentId(initialData.agentId ?? null);
-      setSelectedModel(initialData.modelId);
+      setSelectedModel(initialData.modelId || DEFAULT_CHAT_MODEL);
       setCreateMode((initialData.createMode as any) || "new_chat");
       setEnabledTools((initialData.enabledTools as string[]) || []);
+      setCloudFileUrls((initialData.cloudFileUrls as string[]) || []);
       setCustomInstructions(initialData.customInstructions || "");
     } else {
       setTitle("Rapport matinal");
@@ -76,9 +84,10 @@ export function ScheduleDialog({
       const localIso = `${inOneHour.getFullYear()}-${pad(inOneHour.getMonth() + 1)}-${pad(inOneHour.getDate())}T${pad(inOneHour.getHours())}:${pad(inOneHour.getMinutes())}`;
       setScheduledAt(localIso);
       setSelectedAgentId(null);
-      setSelectedModel("google/gemini-2.5-flash");
+      setSelectedModel(DEFAULT_CHAT_MODEL);
       setCreateMode("new_chat");
       setEnabledTools(["webSearch"]);
+      setCloudFileUrls([]);
       setCustomInstructions("");
     }
   }, [initialData, isOpen]);
@@ -119,6 +128,7 @@ export function ScheduleDialog({
     try {
       const payload = {
         agentId: selectedAgentId,
+        cloudFileUrls,
         createMode,
         customInstructions: customInstructions.trim() || null,
         enabledTools,
@@ -195,21 +205,21 @@ export function ScheduleDialog({
               </Label>
               <div className="flex items-center gap-1">
                 <button
-                  className="rounded px-2 py-0.5 text-[11px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                  className="rounded px-2 py-0.5 text-[11px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer"
                   onClick={() => setPresetTime(60)}
                   type="button"
                 >
                   +1h
                 </button>
                 <button
-                  className="rounded px-2 py-0.5 text-[11px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                  className="rounded px-2 py-0.5 text-[11px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer"
                   onClick={() => setPresetTime(60 * 12)}
                   type="button"
                 >
                   +12h
                 </button>
                 <button
-                  className="rounded px-2 py-0.5 text-[11px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                  className="rounded px-2 py-0.5 text-[11px] font-medium text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer"
                   onClick={() => setPresetTime(60 * 24)}
                   type="button"
                 >
@@ -246,7 +256,16 @@ export function ScheduleDialog({
               </Label>
               <select
                 className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-xs focus:outline-none focus:ring-1 focus:ring-ring"
-                onChange={(e) => setSelectedAgentId(e.target.value || null)}
+                onChange={(e) => {
+                  const agId = e.target.value || null;
+                  setSelectedAgentId(agId);
+                  if (agId) {
+                    const ag = agents.find((a) => a.id === agId);
+                    if (ag?.defaultModelId) {
+                      setSelectedModel(ag.defaultModelId);
+                    }
+                  }
+                }}
                 value={selectedAgentId || ""}
               >
                 <option value="">Aucun (mAI Standard)</option>
@@ -263,17 +282,15 @@ export function ScheduleDialog({
               <Label className="text-xs font-semibold text-muted-foreground">
                 Modèle de langage
               </Label>
-              <select
-                className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-xs focus:outline-none focus:ring-1 focus:ring-ring"
-                onChange={(e) => setSelectedModel(e.target.value)}
-                value={selectedModel}
-              >
-                {chatModels.map((m) => (
-                  <option key={m.id} value={m.id}>
-                    {m.name}
-                  </option>
-                ))}
-              </select>
+              <div className="mt-1">
+                <ModelSelectorCompact
+                  fallbackModels={FALLBACK_MODELS}
+                  modal
+                  onModelChange={setSelectedModel}
+                  selectedModelId={selectedModel}
+                  variant="block"
+                />
+              </div>
             </div>
           </div>
 
@@ -284,7 +301,7 @@ export function ScheduleDialog({
             <div className="mt-1 flex gap-2">
               <button
                 className={cn(
-                  "flex-1 rounded-lg border px-3 py-2 text-left text-xs transition",
+                  "flex-1 rounded-lg border px-3 py-2 text-left text-xs transition cursor-pointer",
                   createMode === "new_chat"
                     ? "border-primary bg-primary/10 text-primary font-medium"
                     : "border-border/60 text-muted-foreground hover:bg-muted/50"
@@ -299,7 +316,7 @@ export function ScheduleDialog({
               </button>
               <button
                 className={cn(
-                  "flex-1 rounded-lg border px-3 py-2 text-left text-xs transition",
+                  "flex-1 rounded-lg border px-3 py-2 text-left text-xs transition cursor-pointer",
                   createMode === "existing_chat"
                     ? "border-primary bg-primary/10 text-primary font-medium"
                     : "border-border/60 text-muted-foreground hover:bg-muted/50"
@@ -313,6 +330,58 @@ export function ScheduleDialog({
                 </div>
               </button>
             </div>
+          </div>
+
+          {/* Section Fichiers Cloud / Bibliothèque */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <Label className="text-xs font-semibold text-muted-foreground flex items-center gap-1.5">
+                <CloudIcon className="size-3.5" />
+                Fichiers de la bibliothèque (optionnel)
+              </Label>
+              <span className="text-[11px] text-muted-foreground">
+                {cloudFileUrls.length}/10
+              </span>
+            </div>
+            <Button
+              className="w-full h-8 text-[12px] border border-dashed border-border/60 bg-muted/40 hover:bg-muted/70 text-muted-foreground cursor-pointer"
+              disabled={cloudFileUrls.length >= 10}
+              onClick={() => setIsCloudPickerOpen(true)}
+              type="button"
+              variant="ghost"
+            >
+              <CloudIcon className="size-3.5 mr-1.5" />
+              Depuis la bibliothèque
+            </Button>
+            {cloudFileUrls.length > 0 && (
+              <div className="flex flex-wrap gap-1.5 pt-0.5">
+                {cloudFileUrls.map((url, i) => (
+                  <span
+                    className="inline-flex items-center gap-1.5 rounded-full bg-muted px-2.5 py-1 text-[11px] border border-border/40 max-w-[240px]"
+                    key={i}
+                  >
+                    <CloudIcon className="size-2.5 text-muted-foreground shrink-0" />
+                    <span className="truncate">
+                      {cloudFileNames[url] || url.split("/").pop() || url}
+                    </span>
+                    <button
+                      className="rounded-full p-0.5 hover:bg-muted-foreground/20 cursor-pointer"
+                      onClick={() => {
+                        setCloudFileUrls((prev) => prev.filter((_, idx) => idx !== i));
+                        setCloudFileNames((prev) => {
+                          const copy = { ...prev };
+                          delete copy[url];
+                          return copy;
+                        });
+                      }}
+                      type="button"
+                    >
+                      <XIcon className="size-3" />
+                    </button>
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
 
           <div>
@@ -370,6 +439,27 @@ export function ScheduleDialog({
             </Button>
           </DialogFooter>
         </form>
+
+        {/* Dialog cloud picker */}
+        <CloudFilePickerDialog
+          onOpenChange={setIsCloudPickerOpen}
+          onSelectAttachments={(attachments) => {
+            const toAdd = attachments.filter((a) => !cloudFileUrls.includes(a.url));
+            const remaining = 10 - cloudFileUrls.length;
+            const slice = toAdd.slice(0, remaining);
+            if (slice.length > 0) {
+              setCloudFileUrls((prev) => [...prev, ...slice.map((a) => a.url)]);
+              setCloudFileNames((prev) => {
+                const copy = { ...prev };
+                for (const a of slice) {
+                  copy[a.url] = a.name;
+                }
+                return copy;
+              });
+            }
+          }}
+          open={isCloudPickerOpen}
+        />
       </DialogContent>
     </Dialog>
   );

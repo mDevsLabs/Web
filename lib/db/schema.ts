@@ -764,6 +764,7 @@ export const scheduledMessage = pgTable(
     chatId: uuid("chatId").references(() => chat.id, {
       onDelete: "set null",
     }),
+    cloudFileUrls: json("cloudFileUrls").notNull().default([]),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     createMode: varchar("createMode", {
       enum: ["new_chat", "existing_chat"],

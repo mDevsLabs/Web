@@ -81,11 +81,25 @@ export async function executeScheduledMessage(scheduledId: string) {
     const userMessageId = generateUUID();
     const assistantMessageId = generateUUID();
 
-    // Enregistrer le message de l'utilisateur
+    // Fichiers cloud / bibliothèque attachés
+    const planningCloudUrls: string[] = Array.isArray(item.cloudFileUrls)
+      ? (item.cloudFileUrls as string[])
+      : [];
+
+    const userAttachments = planningCloudUrls.map((url) => {
+      const fileName = decodeURIComponent(url.split("/").pop() || "fichier");
+      return {
+        contentType: "application/octet-stream",
+        name: fileName,
+        url,
+      };
+    });
+
+    // Enregistrer le message de l'utilisateur avec ses pièces jointes
     await saveMessages({
       messages: [
         {
-          attachments: [],
+          attachments: userAttachments,
           chatId: targetChatId,
           createdAt: new Date(),
           id: userMessageId,
@@ -102,12 +116,16 @@ export async function executeScheduledMessage(scheduledId: string) {
     let agentInstructions: string | null = null;
     let agentModel: string | null = null;
     let agentTemp: number | null = null;
+    let agentCloudUrls: string[] = [];
     if (item.agentId) {
       const ag = await getAgentById({ id: item.agentId, userId });
       if (ag) {
         agentInstructions = ag.instructions || null;
         agentModel = ag.defaultModelId || null;
         agentTemp = ag.temperature ?? null;
+        agentCloudUrls = Array.isArray(ag.cloudFileUrls)
+          ? (ag.cloudFileUrls as string[])
+          : [];
       }
     }
 
@@ -121,6 +139,19 @@ export async function executeScheduledMessage(scheduledId: string) {
     if (item.customInstructions) {
       modeAddendum += `INSTRUCTIONS PARTICULIÈRES :\n${item.customInstructions}\n\n`;
     }
+
+    const allAttachedUrls = Array.from(
+      new Set([...planningCloudUrls, ...agentCloudUrls])
+    );
+    if (allAttachedUrls.length > 0) {
+      modeAddendum += `FICHIERS JOINTS DE LA BIBLIOTHÈQUE / CLOUD :\n`;
+      for (const url of allAttachedUrls) {
+        const name = decodeURIComponent(url.split("/").pop() || "fichier");
+        modeAddendum += `- ${name} (${url})\n`;
+      }
+      modeAddendum += `\n`;
+    }
+
     modeAddendum += `Ce message a été envoyé automatiquement à la date et heure planifiée (${new Date().toLocaleString("fr-FR")}). Réponds de manière complète et structurée.`;
 
     const modelInstance = getLanguageModel(effectiveModel, {

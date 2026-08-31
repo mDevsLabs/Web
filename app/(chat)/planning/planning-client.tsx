@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import {
   AlertCircleIcon,
@@ -8,6 +8,7 @@ import {
   CalendarIcon,
   CheckCircle2Icon,
   ClockIcon,
+  CloudIcon,
   Edit2Icon,
   ExternalLinkIcon,
   Loader2Icon,
@@ -38,6 +39,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { normalizeModelDisplayName } from "@/lib/ai/models";
 import type { Agent, ScheduledMessage } from "@/lib/db/schema";
 import { cn, fetcher } from "@/lib/utils";
 
@@ -362,9 +364,15 @@ export function PlanningClient({
                           {agentLabel}
                         </div>
                       )}
-                      <div className="rounded-md border border-border/40 bg-background px-2 py-1 text-muted-foreground font-mono text-[11px]">
-                        {item.modelId.replace("google/", "").replace("black-forest-labs/", "")}
+                      <div className="rounded-md border border-border/40 bg-background px-2 py-1 text-muted-foreground font-medium text-[11px]">
+                        {normalizeModelDisplayName(item.modelId)}
                       </div>
+                      {Array.isArray(item.cloudFileUrls) && (item.cloudFileUrls as string[]).length > 0 && (
+                        <span className="flex items-center gap-1 rounded-md bg-blue-500/10 px-2 py-0.5 text-[11px] font-medium text-blue-600 dark:text-blue-400">
+                          <CloudIcon className="size-3" />
+                          <span>{(item.cloudFileUrls as string[]).length} fichier(s)</span>
+                        </span>
+                      )}
                       {Array.isArray(item.enabledTools) && (item.enabledTools as string[]).map((t) => (
                         <span
                           className="rounded-md bg-primary/10 px-2 py-0.5 text-[11px] font-medium text-primary"

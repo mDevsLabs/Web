@@ -700,6 +700,7 @@ END $$;`
     "agentId" uuid REFERENCES "Agent"("id") ON DELETE SET NULL,
     "modelId" text DEFAULT 'google/gemini-2.5-flash' NOT NULL,
     "enabledTools" json DEFAULT '[]'::json NOT NULL,
+    "cloudFileUrls" json DEFAULT '[]'::json NOT NULL,
     "customInstructions" text,
     "temperature" double precision,
     "lastError" text,
@@ -707,6 +708,13 @@ END $$;`
     "createdAt" timestamp DEFAULT now() NOT NULL,
     "updatedAt" timestamp DEFAULT now() NOT NULL
   )`);
+  await run(client`DO $$ BEGIN
+    IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name='ScheduledMessage') THEN
+      IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='ScheduledMessage' AND column_name='cloudFileUrls') THEN
+        ALTER TABLE "ScheduledMessage" ADD COLUMN "cloudFileUrls" json DEFAULT '[]'::json NOT NULL;
+      END IF;
+    END IF;
+  END $$;`);
   await run(
     client`CREATE INDEX IF NOT EXISTS "ScheduledMessage_userId_idx" ON "ScheduledMessage" USING btree ("userId")`
   );
@@ -3754,6 +3762,7 @@ export async function createScheduledMessage(params: {
   agentId?: string | null;
   modelId?: string;
   enabledTools?: string[];
+  cloudFileUrls?: string[];
   customInstructions?: string | null;
   temperature?: number | null;
 }): Promise<ScheduledMessage> {
@@ -3763,6 +3772,7 @@ export async function createScheduledMessage(params: {
     .values({
       agentId: params.agentId || null,
       chatId: params.chatId || null,
+      cloudFileUrls: params.cloudFileUrls || [],
       createMode: params.createMode || "new_chat",
       customInstructions: params.customInstructions || null,
       enabledTools: params.enabledTools || [],
@@ -3822,6 +3832,7 @@ export async function updateScheduledMessage(params: {
   agentId?: string | null;
   modelId?: string;
   enabledTools?: string[];
+  cloudFileUrls?: string[];
   customInstructions?: string | null;
   temperature?: number | null;
   status?: "pending" | "processing" | "completed" | "failed" | "cancelled";
@@ -3840,6 +3851,7 @@ export async function updateScheduledMessage(params: {
   if (updates.agentId !== undefined) updateData.agentId = updates.agentId;
   if (updates.modelId !== undefined) updateData.modelId = updates.modelId;
   if (updates.enabledTools !== undefined) updateData.enabledTools = updates.enabledTools;
+  if (updates.cloudFileUrls !== undefined) updateData.cloudFileUrls = updates.cloudFileUrls;
   if (updates.customInstructions !== undefined) updateData.customInstructions = updates.customInstructions;
   if (updates.temperature !== undefined) updateData.temperature = updates.temperature;
   if (updates.status !== undefined) updateData.status = updates.status;

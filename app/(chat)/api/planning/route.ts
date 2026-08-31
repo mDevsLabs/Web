@@ -9,6 +9,7 @@ import {
 const createSchema = z.object({
   agentId: z.string().uuid().nullable().optional(),
   chatId: z.string().uuid().nullable().optional(),
+  cloudFileUrls: z.array(z.string()).default([]),
   createMode: z.enum(["new_chat", "existing_chat"]).default("new_chat"),
   customInstructions: z.string().max(4000).nullable().optional(),
   enabledTools: z.array(z.string()).default([]),
@@ -59,6 +60,7 @@ export async function POST(request: Request) {
     const created = await createScheduledMessage({
       agentId: parsed.agentId,
       chatId: parsed.chatId,
+      cloudFileUrls: parsed.cloudFileUrls,
       createMode: parsed.createMode,
       customInstructions: parsed.customInstructions,
       enabledTools: parsed.enabledTools,
