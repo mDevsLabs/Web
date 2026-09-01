@@ -4,10 +4,12 @@ import {
   BotIcon,
   BrainIcon,
   CheckIcon,
+  CopyIcon,
   FolderKanbanIcon,
   GlobeIcon,
   Loader2Icon,
   PencilIcon,
+  SparklesIcon,
   Trash2Icon,
   XIcon,
 } from "lucide-react";
@@ -24,6 +26,15 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
 
 type MemoryEntry = {
@@ -124,6 +135,40 @@ export function MemoryCard({
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editContent, setEditContent] = useState("");
   const [isUpdating, setIsUpdating] = useState(false);
+
+  // Résumé IA de la mémoire
+  const [isSummarizing, setIsSummarizing] = useState(false);
+  const [summaryModalOpen, setSummaryModalOpen] = useState(false);
+  const [summaryText, setSummaryText] = useState("");
+  const [summaryCount, setSummaryCount] = useState(0);
+
+  const handleSummarize = async () => {
+    setIsSummarizing(true);
+    try {
+      const res = await fetch("/api/memory/summary", {
+        body: JSON.stringify({
+          ...(agentId ? { agentId } : {}),
+          ...(projectId ? { projectId } : {}),
+          scope: allScopes ? scopeFilter : undefined,
+        }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        toast.error(data.error || "Erreur lors de la génération du résumé");
+        return;
+      }
+      setSummaryText(data.summary || "");
+      setSummaryCount(data.count || 0);
+      setSummaryModalOpen(true);
+      toast.success("Résumé de mémoire généré avec succès !");
+    } catch {
+      toast.error("Erreur de communication avec le serveur");
+    } finally {
+      setIsSummarizing(false);
+    }
+  };
 
   const handleAdd = async () => {
     const content = newContent.trim();
@@ -230,9 +275,25 @@ export function MemoryCard({
             — injectées automatiquement dans les réponses de l'IA.
           </p>
         </div>
-        <span className="text-[11px] text-muted-foreground font-medium">
-          {scopeCount}/{limit}
-        </span>
+        <div className="flex items-center gap-2">
+          <Button
+            className="gap-1.5 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-xs hover:from-sky-600 hover:to-indigo-700 text-xs h-8 px-3"
+            disabled={isSummarizing || memories.length === 0}
+            onClick={handleSummarize}
+            size="sm"
+            type="button"
+          >
+            {isSummarizing ? (
+              <Loader2Icon className="size-3.5 animate-spin" />
+            ) : (
+              <SparklesIcon className="size-3.5" />
+            )}
+            <span>Résumer</span>
+          </Button>
+          <span className="text-[11px] text-muted-foreground font-medium">
+            {scopeCount}/{limit}
+          </span>
+        </div>
       </div>
 
       {allScopes ? (
@@ -456,6 +517,50 @@ export function MemoryCard({
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
+
+      {/* Modal interactif de résumé IA de la mémoire */}
+      <Dialog onOpenChange={setSummaryModalOpen} open={summaryModalOpen}>
+        <DialogContent className="sm:max-w-[620px] max-h-[85vh] flex flex-col">
+          <DialogHeader>
+            <div className="flex items-center gap-2">
+              <span className="flex size-8 items-center justify-center rounded-lg bg-sky-500/10 text-sky-600">
+                <BrainIcon className="size-4" />
+              </span>
+              <DialogTitle>Synthèse de votre Mémoire 🧠</DialogTitle>
+            </div>
+            <DialogDescription>
+              Synthèse structurée de vos {summaryCount} informations mémorisées, organisée par sections par l'IA.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="flex-1 overflow-y-auto max-h-[50vh] rounded-xl border border-border/50 bg-muted/20 p-4 text-xs leading-relaxed text-foreground space-y-3 whitespace-pre-wrap font-sans">
+            {summaryText}
+          </div>
+
+          <DialogFooter className="flex items-center justify-between sm:justify-between pt-2">
+            <Button
+              className="gap-1.5"
+              onClick={() => {
+                navigator.clipboard.writeText(summaryText);
+                toast.success("Synthèse copiée dans le presse-papiers !");
+              }}
+              size="sm"
+              type="button"
+              variant="outline"
+            >
+              <CopyIcon className="size-3.5" />
+              <span>Copier la synthèse</span>
+            </Button>
+            <Button
+              onClick={() => setSummaryModalOpen(false)}
+              size="sm"
+              type="button"
+            >
+              Fermer
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

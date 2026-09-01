@@ -530,6 +530,8 @@ export const notification = pgTable(
         "mcp_created",
         "mcp_access_request",
         "news",
+        "planning_task_completed",
+        "quota_warning",
       ],
     }).notNull(),
     userId: text("userId").notNull(),
@@ -557,7 +559,11 @@ export const userNotificationPrefs = pgTable("user_notification_prefs", {
   mcpAccessRequest: boolean("mcpAccessRequest").notNull().default(true),
   mcpCreated: boolean("mcpCreated").notNull().default(true),
   news: boolean("news").notNull().default(true),
+  planningTaskCompleted: boolean("planningTaskCompleted")
+    .notNull()
+    .default(true),
   projectCreated: boolean("projectCreated").notNull().default(true),
+  quotaWarning: boolean("quotaWarning").notNull().default(true),
   regenerateMode: varchar("regenerateMode", {
     enum: ["truncate", "fork"],
   })

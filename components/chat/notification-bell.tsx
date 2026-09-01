@@ -1,8 +1,10 @@
 "use client";
 
 import {
+  AlertTriangle,
   BellIcon,
   Bot,
+  CalendarClock,
   CheckCheckIcon,
   CheckIcon,
   Folder,
@@ -61,6 +63,10 @@ function NotificationIcon({ type }: { type: string }) {
       return <Megaphone className="size-4" />;
     case "project_created":
       return <Folder className="size-4" />;
+    case "planning_task_completed":
+      return <CalendarClock className="size-4 text-emerald-500" />;
+    case "quota_warning":
+      return <AlertTriangle className="size-4 text-amber-500" />;
     default:
       return <BellIcon className="size-4" />;
   }

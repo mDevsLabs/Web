@@ -79,6 +79,7 @@ type ActiveChatContextValue = {
   pendingCommand: PendingCommand;
   setPendingCommand: (command: PendingCommand) => void;
   clearPendingCommand: () => void;
+  resetChat: () => void;
   showCreditCardAlert: boolean;
   setShowCreditCardAlert: Dispatch<SetStateAction<boolean>>;
   isGhostMode: boolean;
@@ -650,11 +651,33 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
 
   const lastLoadedChatIdRef = useRef<string | null>(null);
 
+  const resetChat = useCallback(() => {
+    const newId = generateUUID();
+    newChatIdRef.current = newId;
+    lastLoadedChatIdRef.current = newId;
+    setMessages([]);
+    setInput("");
+    setActiveSkill(null);
+    setSkillParamValues(null);
+    setWaitingStatus(undefined);
+    setDataStream([]);
+    stop();
+  }, [
+    setMessages,
+    setInput,
+    setActiveSkill,
+    setSkillParamValues,
+    setWaitingStatus,
+    setDataStream,
+    stop,
+  ]);
+
   useEffect(() => {
     if (isNewChat) {
       if (lastLoadedChatIdRef.current !== chatId) {
         lastLoadedChatIdRef.current = chatId;
         setMessages([]);
+        setInput("");
       }
       return;
     }
@@ -666,7 +689,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       lastLoadedChatIdRef.current = chatId;
       setMessages(chatData.messages);
     }
-  }, [chatId, isNewChat, chatData, setMessages]);
+  }, [chatId, isNewChat, chatData, setMessages, setInput]);
 
   useEffect(() => {
     if (chatData && !isNewChat) {
@@ -739,6 +762,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       pendingProject,
       pendingTools,
       regenerate,
+      resetChat,
       sendMessage,
       setActiveAgent,
       setActiveSkill,
@@ -798,6 +822,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       pendingCommand,
       setPendingCommand,
       clearPendingCommand,
+      resetChat,
       showCreditCardAlert,
       isGhostMode,
       toggleGhostMode,

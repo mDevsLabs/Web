@@ -1,6 +1,12 @@
 "use client";
 
-import { BrainIcon, EyeIcon, WrenchIcon } from "lucide-react";
+import {
+  BrainIcon,
+  EyeIcon,
+  ImageIcon,
+  Volume2Icon,
+  WrenchIcon,
+} from "lucide-react";
 import {
   type Dispatch,
   memo,
@@ -117,6 +123,7 @@ function SharedModelSelectorOption({
   selectedModelId,
   setOpen,
   focusInputAfterSelect,
+  source,
 }: {
   capabilities?: Record<string, ModelCapabilities>;
   model: SharedModel;
@@ -124,6 +131,7 @@ function SharedModelSelectorOption({
   selectedModelId: string;
   setOpen: Dispatch<SetStateAction<boolean>>;
   focusInputAfterSelect?: boolean;
+  source?: ModelSelectorSource;
 }) {
   const logoProvider = resolveProviderKey(model);
   const maybeWithTooltip = (icon: ReactNode, label: string) => (
@@ -158,31 +166,59 @@ function SharedModelSelectorOption({
         "data-[selected=true]:bg-muted data-[selected=true]:text-foreground hover:bg-muted/50"
       )}
       onSelect={handleSelect}
-      value={`${model.name} ${model.id}`}
+      value={`${model.name} ${model.id} ${model.description ?? ""}`}
     >
       <ModelSelectorLogo provider={logoProvider} />
-      <ModelSelectorName>{model.name}</ModelSelectorName>
-      <div className="ml-auto flex items-center gap-2 text-foreground/70">
-        {capabilities?.[model.id]?.tools
-          ? maybeWithTooltip(
-              <WrenchIcon className="size-3.5" />,
-              "Outils supportés"
-            )
-          : null}
-        {capabilities?.[model.id]?.image ||
-        capabilities?.[model.id]?.file ||
-        capabilities?.[model.id]?.vision
-          ? maybeWithTooltip(
-              <EyeIcon className="size-3.5" />,
-              "Fichiers & Images supportés"
-            )
-          : null}
-        {capabilities?.[model.id]?.reasoning
-          ? maybeWithTooltip(
-              <BrainIcon className="size-3.5" />,
-              "Raisonnement avancé"
-            )
-          : null}
+      <div className="flex flex-col min-w-0 pr-2">
+        <ModelSelectorName>{model.name}</ModelSelectorName>
+        {model.description ? (
+          <span className="text-[11px] text-muted-foreground line-clamp-1">
+            {model.description}
+          </span>
+        ) : null}
+      </div>
+      <div className="ml-auto flex items-center gap-2 text-foreground/70 shrink-0">
+        {model.isFree ? (
+          <span className="text-[10px] bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold px-1.5 py-0.5 rounded">
+            Gratuit
+          </span>
+        ) : null}
+        {source === "images" ? (
+          maybeWithTooltip(
+            <ImageIcon className="size-3.5 text-violet-500" />,
+            "Génération d'images"
+          )
+        ) : source === "speech" ? (
+          maybeWithTooltip(
+            <Volume2Icon className="size-3.5 text-emerald-500" />,
+            model.voices && model.voices.length > 0
+              ? `${model.voices.length} voix disponibles`
+              : "Synthèse vocale"
+          )
+        ) : (
+          <>
+            {capabilities?.[model.id]?.tools
+              ? maybeWithTooltip(
+                  <WrenchIcon className="size-3.5" />,
+                  "Outils supportés"
+                )
+              : null}
+            {capabilities?.[model.id]?.image ||
+            capabilities?.[model.id]?.file ||
+            capabilities?.[model.id]?.vision
+              ? maybeWithTooltip(
+                  <EyeIcon className="size-3.5" />,
+                  "Fichiers & Images supportés"
+                )
+              : null}
+            {capabilities?.[model.id]?.reasoning
+              ? maybeWithTooltip(
+                  <BrainIcon className="size-3.5 text-amber-500" />,
+                  "Raisonnement avancé"
+                )
+              : null}
+          </>
+        )}
       </div>
     </ModelSelectorItem>
   );
@@ -276,7 +312,15 @@ function PureModelSelectorCompact({
         commandDefaultValue={selectedModel?.id}
         side={side ?? (variant === "compact" ? "top" : "bottom")}
       >
-        <ModelSelectorInput placeholder="Rechercher un modèle..." />
+        <ModelSelectorInput
+          placeholder={
+            source === "images"
+              ? "Rechercher un modèle d'image..."
+              : source === "speech"
+                ? "Rechercher un modèle audio..."
+                : "Rechercher un modèle IA..."
+          }
+        />
         <ModelSelectorList>
           {allowEmpty ? (
             <ModelSelectorItem
@@ -310,6 +354,7 @@ function PureModelSelectorCompact({
                   onModelChange={onModelChange}
                   selectedModelId={selectedModel?.id}
                   setOpen={setOpen}
+                  source={source}
                 />
               ))}
             </ModelSelectorGroup>

@@ -785,7 +785,14 @@ export async function POST(request: Request) {
               } catch {}
             }
           },
-          stopWhen: isStepCount(12),
+          stopWhen: ({ steps }) => {
+            if (steps.length >= 12) return true;
+            // Ne pas appeler l'IA après la génération d'un quiz interactif
+            const hasQuizzly = steps.some((step) =>
+              step.toolCalls?.some((tc) => (tc as any)?.toolName === "quizzly")
+            );
+            return hasQuizzly;
+          },
           telemetry: {
             functionId: "stream-text",
             isEnabled: isProductionEnvironment,

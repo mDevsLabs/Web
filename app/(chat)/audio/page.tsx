@@ -552,6 +552,7 @@ export default function AudioPage() {
                       onModelChange={setSelectedModelId}
                       placeholder="Modèle audio"
                       selectedModelId={selectedModelId}
+                      source="speech"
                       variant="block"
                     />
 

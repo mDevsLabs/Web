@@ -28,21 +28,9 @@ interface QuizConfigDialogProps {
   onClose: () => void;
 }
 
-const PRESET_DOMAINS = [
-  "Technologies & IA",
-  "Histoire & Géographie",
-  "Culture générale",
-  "Sciences & Nature",
-  "Cinéma & Séries",
-  "Musique & Arts",
-  "Langues & Littérature",
-  "Jeux vidéo & Pop culture",
-];
-
 export function QuizConfigDialog({ isOpen, onClose }: QuizConfigDialogProps) {
   const { sendMessage, togglePendingTool, pendingTools } = useActiveChat();
   const [theme, setTheme] = useState("");
-  const [domain, setDomain] = useState("Technologies & IA");
   const [questionCount, setQuestionCount] = useState<number>(5);
   const [questionType, setQuestionType] = useState<"single" | "multiple" | "mixed">("single");
   const [difficulty, setDifficulty] = useState<"facile" | "moyen" | "difficile" | "expert">("moyen");
@@ -50,12 +38,16 @@ export function QuizConfigDialog({ isOpen, onClose }: QuizConfigDialogProps) {
 
   const handleLaunchQuiz = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!theme.trim()) {
-      toast.error("Veuillez saisir un thème pour votre quiz.");
+    const cleanTheme = theme.trim();
+    if (cleanTheme.length < 20) {
+      toast.error("Veuillez saisir un thème d'au moins 20 caractères pour le quiz.");
       return;
     }
 
     setIsGenerating(true);
+    // Fermer immédiatement la modale dès que la génération est lancée
+    onClose();
+
     try {
       if (!pendingTools.includes("quizzly" as any)) {
         togglePendingTool("quizzly" as any);
@@ -68,8 +60,7 @@ export function QuizConfigDialog({ isOpen, onClose }: QuizConfigDialogProps) {
           ? "à choix multiples"
           : "un mélange de choix uniques et de choix multiples";
 
-      const promptMessage = `Génère immédiatement un quiz interactif avec l'outil quizzly sur le thème « ${theme.trim()} ».
-Domaine : ${domain}
+      const promptMessage = `Génère immédiatement un quiz interactif avec l'outil quizzly sur le thème « ${cleanTheme} ».
 Nombre de questions : ${questionCount}
 Niveau de difficulté : ${difficulty}
 Format : ${typeDescription}
@@ -81,7 +72,6 @@ Exécute l'outil quizzly avec toutes les questions rédigées, leurs explication
       });
 
       toast.success("Génération de votre Quiz en cours ! 🎯");
-      onClose();
     } catch (err: any) {
       toast.error(err?.message || "Erreur lors du lancement du quiz");
     } finally {
@@ -105,42 +95,38 @@ Exécute l'outil quizzly avec toutes les questions rédigées, leurs explication
         </DialogHeader>
 
         <form className="space-y-4 pt-2" onSubmit={handleLaunchQuiz}>
-          {/* Thème */}
+          {/* Thème avec minimum 20 caractères */}
           <div>
-            <Label className="text-xs font-semibold text-muted-foreground">
-              Thème du quiz *
-            </Label>
+            <div className="flex items-center justify-between">
+              <Label className="text-xs font-semibold text-muted-foreground">
+                Thème ou sujet du quiz * (20 caractères min.)
+              </Label>
+              <span
+                className={cn(
+                  "text-[10.5px] font-medium",
+                  theme.trim().length >= 20
+                    ? "text-emerald-600 dark:text-emerald-400"
+                    : "text-amber-500"
+                )}
+              >
+                {theme.trim().length}/20 min
+              </span>
+            </div>
             <Input
-              className="mt-1"
+              className={cn(
+                "mt-1",
+                theme.trim().length > 0 && theme.trim().length < 20 && "border-amber-500/60 focus-visible:ring-amber-500/30"
+              )}
               onChange={(e) => setTheme(e.target.value)}
-              placeholder="Ex: La conquête spatiale, Les bases de React, Harry Potter..."
+              placeholder="Ex: Les principes clés de l'architecture logicielle en TypeScript..."
               required
               value={theme}
             />
-          </div>
-
-          {/* Domaine */}
-          <div>
-            <Label className="text-xs font-semibold text-muted-foreground">
-              Domaine
-            </Label>
-            <div className="mt-1.5 flex flex-wrap gap-1.5">
-              {PRESET_DOMAINS.map((d) => (
-                <button
-                  className={cn(
-                    "rounded-full border px-2.5 py-1 text-xs transition cursor-pointer",
-                    domain === d
-                      ? "border-primary bg-primary/10 font-medium text-primary shadow-2xs"
-                      : "border-border/60 bg-background text-muted-foreground hover:bg-muted"
-                  )}
-                  key={d}
-                  onClick={() => setDomain(d)}
-                  type="button"
-                >
-                  {d}
-                </button>
-              ))}
-            </div>
+            {theme.trim().length > 0 && theme.trim().length < 20 && (
+              <p className="mt-1 text-[11px] text-amber-500">
+                Encore {20 - theme.trim().length} caractère{20 - theme.trim().length > 1 ? "s" : ""} requis.
+              </p>
+            )}
           </div>
 
           {/* Nombre de questions (1 à 50) */}

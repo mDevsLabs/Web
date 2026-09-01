@@ -3,7 +3,11 @@
 import {
   BotIcon,
   BrainIcon,
+  CalendarClockIcon,
   CpuIcon,
+  FolderArchiveIcon,
+  GlobeIcon,
+  NotebookIcon,
   PlusIcon,
   SparklesIcon,
   SquareSlashIcon,
@@ -25,6 +29,7 @@ export type MentionSelectPayload =
   | { type: "skill"; skill: Skill }
   | { type: "mcp"; server: McpServer }
   | { type: "customCommand"; command: CustomCommand }
+  | { type: "system"; action: "web" | "library" | "planning" | "notes"; label: string }
   | { type: "memory" };
 
 type MentionMenuProps = {
@@ -45,9 +50,16 @@ type MentionMenuProps = {
   supportsTools?: boolean;
 };
 
-// Flat item list for keyboard nav: memory then skills then mcp then projects then agents then custom commands
+// Flat item list for keyboard nav: memory then system then skills then mcp then projects then agents then custom commands
 export type FlatMentionItem =
   | { kind: "memory"; id: string; label: string }
+  | {
+      kind: "system";
+      id: string;
+      label: string;
+      action: "web" | "library" | "planning" | "notes";
+      description: string;
+    }
   | { kind: "skill"; id: string; label: string; skill: Skill }
   | { kind: "mcp"; id: string; label: string; server: McpServer }
   | { kind: "project"; id: string; label: string; project: MentionProject }
@@ -73,6 +85,54 @@ function buildFlatList(
     !q || "memory".includes(q) || "mémoire".includes(q) || "memoire".includes(q)
       ? [{ id: "memory", kind: "memory" as const, label: "Memory" }]
       : [];
+
+  const systemCandidates: Array<{
+    action: "web" | "library" | "planning" | "notes";
+    description: string;
+    id: string;
+    label: string;
+  }> = [
+    {
+      action: "web",
+      description: "Recherche Web en temps réel",
+      id: "sys-web",
+      label: "Web",
+    },
+    {
+      action: "library",
+      description: "Stockage, fichiers et documents",
+      id: "sys-library",
+      label: "Library",
+    },
+    {
+      action: "planning",
+      description: "Tâches planifiées et automatisées",
+      id: "sys-planning",
+      label: "Planning",
+    },
+    {
+      action: "notes",
+      description: "Notes rapides et mémos",
+      id: "sys-notes",
+      label: "Notes",
+    },
+  ];
+
+  const systemItems: FlatMentionItem[] = systemCandidates
+    .filter(
+      (s) =>
+        !q ||
+        s.label.toLowerCase().includes(q) ||
+        s.description.toLowerCase().includes(q) ||
+        s.action.includes(q)
+    )
+    .map((s) => ({
+      action: s.action,
+      description: s.description,
+      id: s.id,
+      kind: "system" as const,
+      label: s.label,
+    }));
 
   const filteredSkills = q
     ? skills.filter(
@@ -154,6 +214,7 @@ function buildFlatList(
 
   return [
     ...memoryItems,
+    ...systemItems,
     ...skillItems,
     ...mcpItems,
     ...projectItems,
@@ -220,6 +281,8 @@ function MentionItem({
       onSelect({ server: item.server, type: "mcp" });
     } else if (item.kind === "project") {
       onSelect({ project: item.project, type: "project" });
+    } else if (item.kind === "system") {
+      onSelect({ action: item.action, label: item.label, type: "system" });
     } else if (item.kind === "memory") {
       onSelect({ type: "memory" });
     } else if (item.kind === "custom-command") {
@@ -232,6 +295,45 @@ function MentionItem({
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
   }, []);
+
+  if (item.kind === "system") {
+    const iconMap = {
+      library: <FolderArchiveIcon className="size-3.5" />,
+      notes: <NotebookIcon className="size-3.5" />,
+      planning: <CalendarClockIcon className="size-3.5" />,
+      web: <GlobeIcon className="size-3.5" />,
+    };
+
+    return (
+      <button
+        className={cn(
+          "flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors cursor-pointer",
+          isSelected ? "bg-muted/70" : "hover:bg-muted/40"
+        )}
+        data-selected={isSelected}
+        onClick={handleClick}
+        onMouseDown={handleMouseDown}
+        type="button"
+      >
+        <div className="flex size-6 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+          {iconMap[item.action]}
+        </div>
+        <div className="flex flex-col min-w-0">
+          <div className="flex items-center gap-1.5">
+            <span className="text-[13px] font-medium text-foreground truncate">
+              @{item.label}
+            </span>
+            <span className="text-[10px] bg-primary/10 text-primary font-semibold px-1.5 py-0.2 rounded">
+              Contenu
+            </span>
+          </div>
+          <span className="text-[11px] text-muted-foreground/70 truncate">
+            {item.description}
+          </span>
+        </div>
+      </button>
+    );
+  }
 
   if (item.kind === "memory") {
     return (

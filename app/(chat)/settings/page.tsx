@@ -260,6 +260,8 @@ export default function SettingsPage() {
   const [notifMcp, setNotifMcp] = useState(true);
   const [notifMcpAccess, setNotifMcpAccess] = useState(true);
   const [notifNews, setNotifNews] = useState(true);
+  const [notifPlanningTaskCompleted, setNotifPlanningTaskCompleted] = useState(true);
+  const [notifQuotaWarning, setNotifQuotaWarning] = useState(true);
   const [isSavingNotif, setIsSavingNotif] = useState(false);
   const [regenerateMode, setRegenerateMode] = useState<"truncate" | "fork">(
     "truncate"
@@ -440,6 +442,12 @@ export default function SettingsPage() {
       if (typeof notifPrefsData.news === "boolean") {
         setNotifNews(notifPrefsData.news);
       }
+      if (typeof notifPrefsData.planningTaskCompleted === "boolean") {
+        setNotifPlanningTaskCompleted(notifPrefsData.planningTaskCompleted);
+      }
+      if (typeof notifPrefsData.quotaWarning === "boolean") {
+        setNotifQuotaWarning(notifPrefsData.quotaWarning);
+      }
       if (
         notifPrefsData.regenerateMode === "truncate" ||
         notifPrefsData.regenerateMode === "fork"
@@ -525,7 +533,9 @@ export default function SettingsPage() {
           mcpAccessRequest: notifMcpAccess,
           mcpCreated: notifMcp,
           news: notifNews,
+          planningTaskCompleted: notifPlanningTaskCompleted,
           projectCreated: notifProject,
+          quotaWarning: notifQuotaWarning,
           regenerateMode,
         }),
         headers: { "Content-Type": "application/json" },
@@ -556,6 +566,8 @@ export default function SettingsPage() {
     notifMcp,
     notifMcpAccess,
     notifNews,
+    notifPlanningTaskCompleted,
+    notifQuotaWarning,
     regenerateMode,
     mutateNotifPrefs,
     handleRequestNotificationPermission,
@@ -1480,26 +1492,17 @@ export default function SettingsPage() {
                 <Label className="text-xs font-medium text-muted-foreground">
                   Modèle d'image par défaut
                 </Label>
-                <select
-                  className="h-10 rounded-xl border border-border/60 bg-muted/30 px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary/20"
-                  onChange={(e) => setDefaultImageModel(e.target.value)}
-                  value={defaultImageModel}
-                >
-                  {imageModels.length > 0
-                    ? imageModels.map((m) => (
-                        <option key={m.id} value={m.id}>
-                          {m.name || m.id}
-                        </option>
-                      ))
-                    : (
-                      <option value="black-forest-labs/flux-schnell">
-                        Black Forest FLUX.1 Schnell (Rapide & Précis)
-                      </option>
-                    )}
-                </select>
+                <ModelSelectorCompact
+                  models={imageModels.length > 0 ? imageModels : undefined}
+                  onModelChange={setDefaultImageModel}
+                  placeholder="Modèle d'image par défaut"
+                  selectedModelId={defaultImageModel}
+                  source="images"
+                  variant="block"
+                />
                 <span className="text-[11px] text-muted-foreground">
                   {imageModels.length > 0
-                    ? `${imageModels.length} modèles disponibles (récupérés dynamiquement de l'API).`
+                    ? `${imageModels.length} modèles disponibles (synchronisés via l'API).`
                     : "Modèle activé automatiquement quand vous demandez à l'IA d'illustrer ou créer une image."}
                 </span>
               </div>
@@ -1552,29 +1555,25 @@ export default function SettingsPage() {
                 <Label className="text-xs font-medium text-muted-foreground">
                   Modèle audio par défaut
                 </Label>
-                <select
-                  className="h-10 rounded-xl border border-border/60 bg-muted/30 px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary/20"
-                  onChange={(e) => setDefaultAudioModel(e.target.value)}
-                  value={defaultAudioModel}
-                >
+                <ModelSelectorCompact
+                  models={audioModels.length > 0 ? audioModels : undefined}
+                  onModelChange={(val) => {
+                    setDefaultAudioModel(val);
+                    const m = audioModels.find((am) => am.id === val);
+                    if (m?.voices && Array.isArray(m.voices) && m.voices.length > 0) {
+                      setDefaultAudioVoice(m.voices[0]);
+                    }
+                  }}
+                  placeholder="Modèle audio par défaut"
+                  selectedModelId={defaultAudioModel}
+                  source="speech"
+                  variant="block"
+                />
+                <span className="text-[11px] text-muted-foreground">
                   {audioModels.length > 0
-                    ? audioModels.map((m) => (
-                        <option key={m.id} value={m.id}>
-                          {m.name || m.id}
-                        </option>
-                      ))
-                    : (
-                      <>
-                        <option value="deepgram/flux-tts:free">
-                          Deepgram Flux TTS (Ultra-rapide & Naturel)
-                        </option>
-                        <option value="tts-1">OpenAI TTS Standard</option>
-                        <option value="tts-1-hd">
-                          OpenAI TTS HD (Haute Définition)
-                        </option>
-                      </>
-                    )}
-                </select>
+                    ? `${audioModels.length} modèles audio synchronisés via l'API.`
+                    : "Modèle de synthèse vocale par défaut."}
+                </span>
               </div>
 
               <div className="flex flex-col gap-2">
@@ -1863,6 +1862,20 @@ export default function SettingsPage() {
                   label: "Actualités d'mAI",
                   setter: setNotifNews,
                   value: notifNews,
+                },
+                {
+                  desc: "Lorsqu'une tâche de planification automatique se termine avec succès",
+                  key: "planningTaskCompleted",
+                  label: "Tâche planifiée terminée",
+                  setter: setNotifPlanningTaskCompleted,
+                  value: notifPlanningTaskCompleted,
+                },
+                {
+                  desc: "Alerte en cas d'atteinte de 90% ou 100% de votre quota mAI",
+                  key: "quotaWarning",
+                  label: "Alerte de quota",
+                  setter: setNotifQuotaWarning,
+                  value: notifQuotaWarning,
                 },
               ].map((item) => (
                 <label

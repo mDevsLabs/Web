@@ -1,6 +1,14 @@
 "use client";
 import type { UseChatHelpers } from "@ai-sdk/react";
-import { GlobeIcon, MicIcon } from "lucide-react";
+import {
+  BrainIcon,
+  CheckCircle2Icon,
+  CpuIcon,
+  ExternalLinkIcon,
+  GlobeIcon,
+  MicIcon,
+  QrCodeIcon,
+} from "lucide-react";
 import { useCallback, useMemo, useState } from "react";
 
 import { toast } from "sonner";
@@ -790,45 +798,67 @@ const PurePreviewMessage = ({
         if ("error" in part.output) {
           return (
             <div
-              className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600"
+              className="rounded-xl border border-red-200 bg-red-50 p-3.5 text-sm text-red-600 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-400"
               key={toolCallId}
             >
               Recherche Web : {part.output.error}
             </div>
           );
         }
+        const results = part.output.results || [];
         return (
           <div
-            className="w-[min(100%,480px)] overflow-hidden rounded-2xl border border-border/60 bg-card shadow-sm"
+            className="w-[min(100%,520px)] overflow-hidden rounded-2xl border border-sky-500/30 bg-card shadow-sm backdrop-blur-xs transition"
             key={toolCallId}
           >
-            <div className="flex items-center gap-2 border-b border-border/40 bg-muted/30 px-3.5 py-2.5">
-              <span className="flex size-7 items-center justify-center rounded-lg bg-sky-500/10 text-sky-600">
-                <GlobeIcon className="size-4" />
-              </span>
-              <span className="font-semibold text-[13px] text-foreground">
-                Recherche Web
-              </span>
-              <span className="ml-auto min-w-0 truncate text-[11px] font-medium text-muted-foreground">
-                {part.output.query}
-              </span>
+            <div className="flex items-center justify-between gap-2 border-b border-sky-500/20 bg-sky-500/10 px-3.5 py-2.5">
+              <div className="flex items-center gap-2">
+                <span className="flex size-7 items-center justify-center rounded-lg bg-sky-500/20 text-sky-600 dark:text-sky-400">
+                  <GlobeIcon className="size-4" />
+                </span>
+                <span className="font-semibold text-[13px] text-foreground">
+                  Recherche Web
+                </span>
+              </div>
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="rounded-full bg-sky-500/15 px-2 py-0.5 text-[10.5px] font-semibold text-sky-700 dark:text-sky-300">
+                  {results.length} source{results.length > 1 ? "s" : ""}
+                </span>
+                <span className="max-w-[140px] sm:max-w-[200px] truncate text-[11px] font-medium text-muted-foreground">
+                  « {part.output.query} »
+                </span>
+              </div>
             </div>
-            <ul className="divide-y divide-border/40">
-              {part.output.results.map((result) => (
-                <li className="px-3.5 py-2.5" key={result.url}>
-                  <a
-                    className="font-medium text-[13px] text-foreground hover:underline"
-                    href={result.url}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    {result.title}
-                  </a>
-                  <div className="text-[11px] text-muted-foreground">
-                    {result.source}
+            <ul className="divide-y divide-border/30 max-h-72 overflow-y-auto">
+              {results.map((result: any, idx: number) => (
+                <li className="p-3 hover:bg-muted/30 transition-colors" key={result.url || idx}>
+                  <div className="flex items-start justify-between gap-2">
+                    <a
+                      className="font-semibold text-[13px] text-foreground hover:text-sky-600 dark:hover:text-sky-400 transition-colors line-clamp-1"
+                      href={result.url}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      {result.title}
+                    </a>
+                    <a
+                      aria-label="Ouvrir le lien"
+                      className="text-muted-foreground hover:text-foreground shrink-0 p-0.5"
+                      href={result.url}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <ExternalLinkIcon className="size-3.5" />
+                    </a>
                   </div>
+                  {result.source && (
+                    <div className="mt-0.5 inline-flex items-center gap-1 rounded bg-muted/60 px-1.5 py-0.2 text-[10.5px] font-medium text-muted-foreground">
+                      <GlobeIcon className="size-2.5" />
+                      <span>{result.source}</span>
+                    </div>
+                  )}
                   {result.snippet && (
-                    <p className="mt-0.5 text-[12px] leading-relaxed text-muted-foreground/90">
+                    <p className="mt-1 text-[12px] leading-relaxed text-muted-foreground/90 line-clamp-2">
                       {result.snippet}
                     </p>
                   )}
@@ -849,6 +879,158 @@ const PurePreviewMessage = ({
               )}
             </ToolContent>
           </Tool>
+        </div>
+      );
+    }
+
+    if (type === "tool-memory") {
+      const toolPart = part as any;
+      const { state, toolCallId, input, output } = toolPart;
+      const action = input?.action || output?.action || "add";
+      const isAvailable = state === "output-available";
+      const isError = state === "output-error" || (output && "error" in output);
+
+      return (
+        <div
+          className="w-[min(100%,480px)] overflow-hidden rounded-2xl border border-sky-500/30 bg-card shadow-xs backdrop-blur-xs transition"
+          key={toolCallId || key}
+        >
+          <div className="flex items-center justify-between gap-2 border-b border-sky-500/20 bg-sky-500/10 px-3.5 py-2.5">
+            <div className="flex items-center gap-2">
+              <span className="flex size-7 items-center justify-center rounded-lg bg-sky-500/20 text-sky-600 dark:text-sky-400">
+                <BrainIcon className="size-4" />
+              </span>
+              <span className="font-semibold text-[13px] text-foreground">
+                {action === "add"
+                  ? "💾 Mémorisation utilisateur"
+                  : action === "delete"
+                  ? "🗑️ Oubli de mémoire"
+                  : "🧠 Consultation de la mémoire"}
+              </span>
+            </div>
+            <span
+              className={cn(
+                "rounded-full px-2 py-0.5 text-[10.5px] font-semibold",
+                isError
+                  ? "bg-red-500/15 text-red-600 dark:text-red-400"
+                  : isAvailable
+                  ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
+                  : "bg-sky-500/20 text-sky-600 dark:text-sky-400 animate-pulse"
+              )}
+            >
+              {isError ? "Erreur" : isAvailable ? "Enregistré" : "En cours..."}
+            </span>
+          </div>
+          <div className="p-3 text-[12.5px] space-y-1.5">
+            {action === "add" && (
+              <p className="text-foreground italic bg-muted/40 p-2.5 rounded-xl border border-border/40">
+                « {input?.content || output?.memory?.content || "Enregistrement d'une information..."} »
+              </p>
+            )}
+            {action === "delete" && (
+              <p className="text-muted-foreground">
+                {isAvailable
+                  ? "L'information a été retirée de votre mémoire avec succès."
+                  : "Suppression de l'entrée en mémoire..."}
+              </p>
+            )}
+            {(action === "list" || action === "search") && (
+              <div className="space-y-1.5">
+                <span className="text-xs text-muted-foreground font-medium">
+                  {output?.count !== undefined
+                    ? `${output.count} information(s) trouvée(s) :`
+                    : "Recherche dans la mémoire..."}
+                </span>
+                {output?.memories && output.memories.length > 0 && (
+                  <ul className="divide-y divide-border/30 rounded-lg border border-border/40 bg-muted/20 max-h-36 overflow-y-auto">
+                    {output.memories.map((m: any, idx: number) => (
+                      <li key={m.id || idx} className="p-2 text-[12px] text-foreground">
+                        • {m.content}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
+            {isError && (
+              <div className="text-red-500 text-xs mt-1">
+                {String(output?.error || "Une erreur est survenue lors de l'opération de mémoire.")}
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    if (type.startsWith("tool-mcp_") || (type === "dynamic-tool" && (part as any).toolName?.startsWith("mcp_"))) {
+      const toolPart = part as any;
+      const { state, toolCallId, input, output } = toolPart;
+      const rawName = (toolPart.toolName || type).replace(/^tool-/, "").replace(/^mcp_/, "");
+      const nameParts = rawName.split("_");
+      const serverName = nameParts.length > 1 ? nameParts[0].toUpperCase() : "MCP";
+      const methodName = nameParts.length > 1 ? nameParts.slice(1).join("_") : rawName;
+      const isAvailable = state === "output-available";
+      const isError = state === "output-error" || (output && "error" in output);
+
+      return (
+        <div
+          className="w-[min(100%,480px)] overflow-hidden rounded-2xl border border-purple-500/30 bg-card shadow-xs backdrop-blur-xs transition"
+          key={toolCallId || key}
+        >
+          <div className="flex items-center justify-between gap-2 border-b border-purple-500/20 bg-purple-500/10 px-3.5 py-2.5">
+            <div className="flex items-center gap-2">
+              <span className="flex size-7 items-center justify-center rounded-lg bg-purple-500/20 text-purple-600 dark:text-purple-400">
+                <CpuIcon className="size-4" />
+              </span>
+              <div className="flex items-center gap-1.5">
+                <span className="font-bold text-[10.5px] bg-purple-500/15 text-purple-700 dark:text-purple-300 px-1.5 py-0.5 rounded uppercase tracking-wider">
+                  {serverName}
+                </span>
+                <span className="font-semibold text-[13px] text-foreground">
+                  {methodName}
+                </span>
+              </div>
+            </div>
+            <span
+              className={cn(
+                "rounded-full px-2 py-0.5 text-[10.5px] font-semibold",
+                isError
+                  ? "bg-red-500/15 text-red-600"
+                  : isAvailable
+                  ? "bg-emerald-500/15 text-emerald-600"
+                  : "bg-purple-500/20 text-purple-600 animate-pulse"
+              )}
+            >
+              {isError ? "Erreur" : isAvailable ? "Terminé" : "Exécution..."}
+            </span>
+          </div>
+          <div className="p-3 text-xs space-y-2">
+            {input && Object.keys(input).length > 0 && (
+              <div>
+                <span className="text-[10.5px] font-semibold text-muted-foreground uppercase tracking-wide">
+                  Paramètres
+                </span>
+                <div className="mt-1 rounded-lg bg-muted/40 p-2 overflow-x-auto max-h-28 text-[11.5px] font-mono border border-border/30">
+                  {JSON.stringify(input, null, 2)}
+                </div>
+              </div>
+            )}
+            {isAvailable && output && (
+              <div>
+                <span className="text-[10.5px] font-semibold text-muted-foreground uppercase tracking-wide">
+                  Résultat
+                </span>
+                <div className="mt-1 rounded-lg bg-muted/40 p-2 overflow-x-auto max-h-40 text-[11.5px] font-mono border border-border/30">
+                  {typeof output === "string" ? output : JSON.stringify(output, null, 2)}
+                </div>
+              </div>
+            )}
+            {isError && (
+              <div className="rounded-lg bg-red-500/10 border border-red-500/20 p-2 text-red-600 text-xs">
+                {output?.error || "Erreur lors de l'exécution de l'outil MCP."}
+              </div>
+            )}
+          </div>
         </div>
       );
     }

@@ -799,6 +799,37 @@ function PureMultimodalInput({
           );
           break;
         }
+        case "planning": {
+          router.push("/planning");
+          break;
+        }
+        case "notes": {
+          router.push("/library");
+          break;
+        }
+        case "home": {
+          router.push("/");
+          break;
+        }
+        case "tool-chart": {
+          togglePendingTool("generateChart" as any);
+          toast.success("Outil Graphique activé pour le prochain message");
+          break;
+        }
+        case "tool-memory": {
+          togglePendingTool("memory" as any);
+          toast.success("Outil Mémoire activé pour le prochain message");
+          break;
+        }
+        case "tool-qr": {
+          togglePendingTool("qrCodeGenerator" as any);
+          toast.success("Outil QR Code activé pour le prochain message");
+          break;
+        }
+        case "tool-summary": {
+          setInput("Fais-moi un résumé clair et structuré par sections de notre échange.");
+          break;
+        }
         case "quiz": {
           setQuizDialogOpen(true);
           break;
@@ -965,6 +996,18 @@ function PureMultimodalInput({
         toast.success(
           `Agent activé : ${icon}${payload.agent.name} — modèle ${(payload.agent as any).defaultModelId}`
         );
+      } else if (payload.type === "system") {
+        mentionTag = `@${payload.label} `;
+        if (payload.action === "web") {
+          togglePendingTool("webSearch" as any);
+          toast.success("Outil Recherche Web activé !");
+        } else if (payload.action === "planning") {
+          toast.success("Référence à la planification ajoutée !");
+        } else if (payload.action === "library") {
+          toast.success("Référence au stockage ajoutée !");
+        } else if (payload.action === "notes") {
+          toast.success("Référence aux notes ajoutée !");
+        }
       } else if (payload.type === "memory") {
         mentionTag = "@Memory ";
         if (!pendingTools.includes("memory")) {
@@ -2559,9 +2602,6 @@ function PurePlusMenuButton({
             <div className="flex items-center gap-2">
               <span className="text-[13.5px] font-semibold truncate">
                 Quizzly — Quiz interactif
-              </span>
-              <span className="text-[10px] bg-amber-500/15 text-amber-600 dark:text-amber-400 font-medium px-1.5 py-0.5 rounded-full">
-                QUIZ
               </span>
             </div>
             <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">

@@ -1,9 +1,12 @@
 "use client";
 
 import {
+  BarChart3Icon,
   BombIcon,
   BotIcon,
+  BrainIcon,
   CalculatorIcon,
+  CalendarClockIcon,
   CalendarIcon,
   CloudSunIcon,
   Code2Icon,
@@ -13,6 +16,7 @@ import {
   FolderKanbanIcon,
   GhostIcon,
   GlobeIcon,
+  HomeIcon,
   ImageIcon,
   LightbulbIcon,
   ListIcon,
@@ -20,6 +24,7 @@ import {
   PaletteIcon,
   PenLineIcon,
   PenSquareIcon,
+  QrCodeIcon,
   SearchIcon,
   SlidersHorizontalIcon,
   Trash2Icon,
@@ -47,7 +52,10 @@ export type SlashCommandAction =
   | "usage"
   | "library"
   | "projects"
+  | "planning"
+  | "notes"
   | "search"
+  | "home"
   | "tool-image"
   | "tool-audio"
   | "tool-web"
@@ -58,6 +66,10 @@ export type SlashCommandAction =
   | "tool-calc"
   | "tool-time"
   | "tool-note"
+  | "tool-chart"
+  | "tool-memory"
+  | "tool-qr"
+  | "tool-summary"
   | "quiz"
   | "tools-clear"
   | "custom";
@@ -217,6 +229,55 @@ export const slashCommands: SlashCommand[] = [
     description: "Activer création de note téléchargeable (one-shot)",
     icon: <NotebookIcon className="size-3.5" />,
     name: "note",
+  },
+  {
+    action: "planning",
+    aliases: ["plan", "planification", "schedule"],
+    description: "Ouvrir la planification de tâches (/planning)",
+    icon: <CalendarClockIcon className="size-3.5" />,
+    name: "planning",
+  },
+  {
+    action: "notes",
+    aliases: ["notes", "mes-notes", "fichiers"],
+    description: "Accéder à vos documents et stockage (/library)",
+    icon: <NotebookIcon className="size-3.5" />,
+    name: "notes",
+  },
+  {
+    action: "home",
+    aliases: ["accueil", "racine"],
+    description: "Revenir à l'accueil et démarrer une nouvelle session",
+    icon: <HomeIcon className="size-3.5" />,
+    name: "home",
+  },
+  {
+    action: "tool-chart",
+    aliases: ["chart", "graphique", "diagramme", "plot"],
+    description: "Activer le générateur de graphiques interactifs (one-shot)",
+    icon: <BarChart3Icon className="size-3.5" />,
+    name: "chart",
+  },
+  {
+    action: "tool-memory",
+    aliases: ["memory", "memoire", "souvenir"],
+    description: "Activer l'outil de gestion de la mémoire utilisateur (one-shot)",
+    icon: <BrainIcon className="size-3.5" />,
+    name: "memory",
+  },
+  {
+    action: "tool-qr",
+    aliases: ["qr", "qrcode"],
+    description: "Activer le générateur de QR Code (one-shot)",
+    icon: <QrCodeIcon className="size-3.5" />,
+    name: "qr",
+  },
+  {
+    action: "tool-summary",
+    aliases: ["summary", "resume", "synthese"],
+    description: "Demander une synthèse structurée par sections",
+    icon: <FileTextIcon className="size-3.5" />,
+    name: "summary",
   },
   {
     action: "quiz",

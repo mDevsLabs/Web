@@ -2929,7 +2929,9 @@ export async function createNotification(data: {
     | "project_created"
     | "mcp_created"
     | "mcp_access_request"
-    | "news";
+    | "news"
+    | "planning_task_completed"
+    | "quota_warning";
   title: string;
   body?: string | null;
   link?: string | null;
@@ -2947,7 +2949,9 @@ export async function createNotification(data: {
       mcp_access_request: prefs.mcpAccessRequest,
       mcp_created: prefs.mcpCreated,
       news: prefs.news,
+      planning_task_completed: (prefs as any).planningTaskCompleted ?? true,
       project_created: prefs.projectCreated,
+      quota_warning: (prefs as any).quotaWarning ?? true,
     };
     if (gate[data.type] === false) {
       return null;

@@ -561,6 +561,7 @@ export default function ImagesPage() {
                       onModelChange={setSelectedModelId}
                       placeholder="Modèle d'image"
                       selectedModelId={selectedModelId}
+                      source="images"
                       variant="block"
                     />
 

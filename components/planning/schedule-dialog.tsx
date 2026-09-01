@@ -287,7 +287,9 @@ export function ScheduleDialog({
                   fallbackModels={FALLBACK_MODELS}
                   modal
                   onModelChange={setSelectedModel}
+                  placeholder="Modèle de langage"
                   selectedModelId={selectedModel}
+                  source="chat"
                   variant="block"
                 />
               </div>

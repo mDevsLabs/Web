@@ -72,6 +72,27 @@ export const getStatusBadge = (status: ToolPart["state"]) => (
   </Badge>
 );
 
+const TOOL_FRIENDLY_NAMES: Record<string, string> = {
+  audioGenerate: "Synthèse vocale",
+  calculator: "Calculateur",
+  codeExecution: "Exécution de code",
+  createDocument: "Création de document",
+  currencyConverter: "Convertisseur de devises",
+  dateTime: "Date & Fuseau horaire",
+  editDocument: "Modification de document",
+  generateChart: "Génération de graphique",
+  getWeather: "Météo en direct",
+  imageGenerate: "Génération d'image",
+  memory: "Mémoire utilisateur",
+  note: "Bloc-notes",
+  qrCodeGenerator: "Générateur de QR Code",
+  quizzly: "Quiz interactif",
+  readUrl: "Lecture de page Web",
+  requestSuggestions: "Suggestions de modifications",
+  updateDocument: "Mise à jour du document",
+  webSearch: "Recherche Web",
+};
+
 export const ToolHeader = ({
   className,
   title,
@@ -80,20 +101,21 @@ export const ToolHeader = ({
   toolName,
   ...props
 }: ToolHeaderProps) => {
-  const derivedName =
-    type === "dynamic-tool" ? toolName : type.split("-").slice(1).join("-");
+  const rawKey = type === "dynamic-tool" ? (toolName ?? "") : type.replace(/^tool-/, "");
+  const friendlyName = TOOL_FRIENDLY_NAMES[rawKey] || (rawKey.startsWith("mcp_") ? `MCP : ${rawKey.replace(/^mcp_/, "").replace(/_/g, " ")}` : rawKey);
+  const derivedName = title ?? (type === "dynamic-tool" ? (toolName ?? "Outil") : friendlyName);
 
   return (
     <CollapsibleTrigger
       className={cn(
-        "flex w-full items-center justify-between gap-4 p-3",
+        "flex w-full items-center justify-between gap-4 p-3 cursor-pointer",
         className
       )}
       {...props}
     >
       <div className="flex items-center gap-2">
         <WrenchIcon className="size-4 text-muted-foreground" />
-        <span className="font-medium text-sm">{title ?? derivedName}</span>
+        <span className="font-medium text-sm">{derivedName}</span>
         {getStatusBadge(state)}
       </div>
       <ChevronDownIcon className="size-4 text-muted-foreground transition-transform group-data-[state=open]:rotate-180" />

@@ -25,13 +25,13 @@ export const memory = ({
   userId,
 }: MemoryProps) => {
   const actions = allowAdd
-    ? (["add", "delete", "list", "search"] as const)
-    : (["delete", "list", "search"] as const);
+    ? (["add", "delete", "list", "search", "summary"] as const)
+    : (["delete", "list", "search", "summary"] as const);
 
   return tool({
     description: allowAdd
-      ? "Gérer la mémoire personnalisée de l'utilisateur : ajouter (add), supprimer (delete), lister (list) ou rechercher (search) des informations durables le concernant (préférences, faits, contexte). Utilise cet outil quand l'utilisateur demande de retenir ou d'oublier une information, ou pour retrouver une information mémorisée."
-      : "Gérer la mémoire personnalisée de l'utilisateur : supprimer (delete), lister (list) ou rechercher (search) des informations durables le concernant. L'ajout (add) est indisponible : l'utilisateur a atteint le nombre maximal de mémoires autorisées et doit en supprimer avant d'en enregistrer une nouvelle.",
+      ? "Gérer la mémoire personnalisée de l'utilisateur : ajouter (add), supprimer (delete), lister (list), rechercher (search) ou résumer (summary) des informations durables le concernant (préférences, faits, contexte). Utilise cet outil quand l'utilisateur demande de retenir, d'oublier ou de résumer ses informations mémorisées."
+      : "Gérer la mémoire personnalisée de l'utilisateur : supprimer (delete), lister (list), rechercher (search) ou résumer (summary) des informations durables le concernant.",
     execute: async ({ action, content, id, query }) => {
       if (action === "add" && !allowAdd) {
         return {
@@ -102,6 +102,17 @@ export const memory = ({
             action: "search",
             count: found.length,
             memories: found.map((m) => ({ content: m.content, id: m.id })),
+          };
+        }
+        case "summary": {
+          const memories = agentId
+            ? await getAgentMemories({ agentId, userId })
+            : await getGlobalMemories({ userId });
+          return {
+            action: "summary",
+            count: memories.length,
+            memories: memories.map((m) => ({ content: m.content, id: m.id })),
+            message: `Synthèse de ${memories.length} mémoires disponibles.`,
           };
         }
       }

@@ -9,6 +9,7 @@ import {
   CloudIcon,
   CpuIcon,
   FolderKanbanIcon,
+  HomeIcon,
   ImageIcon,
   LockIcon,
   MoreHorizontalIcon,
@@ -38,6 +39,7 @@ import {
 } from "@/components/chat/sidebar-history";
 import { SidebarUserNav } from "@/components/chat/sidebar-user-nav";
 import { UpgradeDialog } from "@/components/common/upgrade-dialog";
+import { useActiveChat } from "@/hooks/use-active-chat";
 import {
   Collapsible,
   CollapsibleContent,
@@ -412,6 +414,8 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
     pathname?.startsWith("/settings") || pathname?.startsWith("/archived")
   );
 
+  const { resetChat } = useActiveChat();
+
   const closeMobile = useCallback(() => {
     setOpenMobile(false);
   }, [setOpenMobile]);
@@ -424,10 +428,17 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
     toggleSidebar();
   }, [toggleSidebar]);
 
+  const handleGoHome = useCallback(() => {
+    setOpenMobile(false);
+    resetChat();
+    router.push("/");
+  }, [resetChat, router, setOpenMobile]);
+
   const handleNewChat = useCallback(() => {
     setOpenMobile(false);
+    resetChat();
     router.push("/");
-  }, [router, setOpenMobile]);
+  }, [resetChat, router, setOpenMobile]);
 
   const handleShowDeleteAllDialog = useCallback(() => {
     setShowDeleteAllDialog(true);
@@ -435,6 +446,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
 
   const handleDeleteAll = useCallback(() => {
     setShowDeleteAllDialog(false);
+    resetChat();
     router.replace("/");
     mutate(unstable_serialize(getChatHistoryPaginationKey), [], {
       revalidate: false,
@@ -445,7 +457,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
     });
 
     toast.success("Toutes les discussions ont été supprimées");
-  }, [mutate, router]);
+  }, [mutate, resetChat, router]);
 
   return (
     <>
@@ -457,12 +469,15 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                 <SidebarMenuButton
                   asChild
                   className="size-8 !px-0 items-center justify-center group-data-[collapsible=icon]:group-hover/logo:opacity-0"
-                  tooltip="mAI Web"
+                  tooltip="mAI Web — Accueil"
                 >
                   <Link
                     className="flex items-center justify-center"
                     href="/"
-                    onClick={closeMobile}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleGoHome();
+                    }}
                   >
                     <Image
                       alt="mAI"
@@ -487,14 +502,19 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                   </TooltipContent>
                 </Tooltip>
               </div>
-              <div className="group-data-[collapsible=icon]:hidden flex items-center gap-1.5">
-                <span className="font-bold text-sm tracking-tight text-foreground">
+              <button
+                className="group-data-[collapsible=icon]:hidden flex items-center gap-1.5 cursor-pointer text-left focus:outline-hidden"
+                onClick={handleGoHome}
+                title="Aller à l'accueil"
+                type="button"
+              >
+                <span className="font-bold text-sm tracking-tight text-foreground hover:text-primary transition-colors">
                   mAI
                 </span>
-                <span className="text-[10px] uppercase font-semibold px-1.5 py-0.2 rounded bg-muted text-muted-foreground">
+                <span className="text-[10px] uppercase font-semibold px-1.5 py-0.2 rounded bg-muted text-muted-foreground hover:bg-primary/15 hover:text-primary transition-colors">
                   Web
                 </span>
-              </div>
+              </button>
               <div className="group-data-[collapsible=icon]:hidden">
                 <SidebarTrigger className="text-sidebar-foreground/60 transition-colors duration-150 hover:text-sidebar-foreground" />
               </div>
@@ -507,6 +527,21 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
           <SidebarGroup className="pt-2">
             <SidebarGroupContent>
               <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    className={cn(
+                      "h-8 rounded-lg text-[13px] transition-colors duration-150",
+                      pathname === "/"
+                        ? "bg-sidebar-accent font-semibold text-sidebar-foreground"
+                        : "text-sidebar-foreground/80 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                    )}
+                    onClick={handleGoHome}
+                    tooltip="Accueil"
+                  >
+                    <HomeIcon className="size-4" />
+                    <span className="font-medium">Accueil</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     className="h-8 rounded-lg border border-sidebar-border text-[13px] text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
