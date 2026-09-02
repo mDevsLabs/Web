@@ -24,8 +24,9 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
-import { PageBackButton } from "@/components/chat/page-back-button";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
+import { PageBackButton } from "@/components/chat/page-back-button";
+import { VoiceOptionSelector } from "@/components/settings/option-selectors";
 import { useAudioUsage } from "@/hooks/use-settings";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
 import { cn, formatAudioModelName } from "@/lib/utils";
@@ -61,51 +62,6 @@ interface GeneratedAudio {
   user_id?: string;
   voice?: string;
 }
-
-const VOICES_PRESETS: SpeechVoice[] = [
-  {
-    category: "Naturel & Équilibré",
-    description: "Voix féminine claire, chaleureuse et polyvalente.",
-    gender: "Féminin",
-    id: "flux-alexis-en",
-    name: "Alexis",
-  },
-  {
-    category: "Professionnel & Posé",
-    description: "Voix masculine profonde, idéale pour narration et tutoriels.",
-    gender: "Masculin",
-    id: "flux-michael-en",
-    name: "Michael",
-  },
-  {
-    category: "Dynamique & Enthousiaste",
-    description: "Voix féminine énergique, parfaite pour podcasts et spots.",
-    gender: "Féminin",
-    id: "flux-stacy-en",
-    name: "Stacy",
-  },
-  {
-    category: "Calme & Convivial",
-    description: "Voix masculine moderne, fluide et décontractée.",
-    gender: "Masculin",
-    id: "flux-sam-en",
-    name: "Sam",
-  },
-  {
-    category: "Élégant & Narratif",
-    description: "Voix féminine expressive, idéale pour le storytelling.",
-    gender: "Féminin",
-    id: "flux-asteria-en",
-    name: "Asteria",
-  },
-  {
-    category: "Puissant & Engageant",
-    description: "Voix masculine captivante pour annonces et présentations.",
-    gender: "Masculin",
-    id: "flux-orion-en",
-    name: "Orion",
-  },
-];
 
 const TEXT_SUGGESTIONS = [
   "Bienvenue sur mAI Web ! Votre assistant d'intelligence artificielle nouvelle génération pour transformer vos idées en réalité.",
@@ -155,17 +111,15 @@ export default function AudioPage() {
   });
   const models = useMemo(() => modelsData?.data || [], [modelsData]);
 
-  // 2. Voix disponibles via /api/audio/voices
+  // 2. Voix disponibles via /api/audio/voices — source unique (l'API
+  // renvoie toujours des données : catalogue upstream ou repli serveur)
   const { data: voicesData } = useSWR<{
     data: SpeechVoice[];
   }>("/api/audio/voices", fetcher, {
     dedupingInterval: 60_000,
     revalidateOnFocus: false,
   });
-  const voices = useMemo(
-    () => voicesData?.data || VOICES_PRESETS,
-    [voicesData]
-  );
+  const voices = useMemo(() => voicesData?.data || [], [voicesData]);
 
   // 3. Quota Speech hebdomadaire via hook useAudioUsage
   const {
@@ -569,27 +523,15 @@ export default function AudioPage() {
                         <span>Voix IA</span>
                       </label>
                       {modelVoices.length === 0 ? (
-                        <select
-                          className="w-full rounded-xl border border-border/80 bg-muted/30 px-3.5 py-2.5 text-sm font-medium text-muted-foreground cursor-not-allowed"
-                          disabled
-                          value=""
-                        >
-                          <option value="">Voix par défaut du modèle</option>
-                        </select>
+                        <div className="w-full rounded-xl border border-border/80 bg-muted/30 px-3.5 py-2.5 text-sm font-medium text-muted-foreground cursor-not-allowed">
+                          Voix par défaut du modèle
+                        </div>
                       ) : (
-                        <select
-                          className="w-full rounded-xl border border-border/80 bg-background/90 px-3.5 py-2.5 text-sm font-medium text-foreground transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                          onChange={(e) => setSelectedVoice(e.target.value)}
+                        <VoiceOptionSelector
+                          onChange={setSelectedVoice}
                           value={selectedVoice}
-                        >
-                          {modelVoices.map((voice) => (
-                            <option key={voice.id} value={voice.id}>
-                              {voice.id === voice.name
-                                ? voice.name
-                                : `${voice.name} — ${voice.id}`}
-                            </option>
-                          ))}
-                        </select>
+                          voices={modelVoices}
+                        />
                       )}
                       <span className="text-[11px] text-muted-foreground">
                         {modelVoices.length === 0

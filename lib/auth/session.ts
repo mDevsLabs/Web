@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import { jwtVerify } from "jose";
 import { MAI_API_URL, MAI_SESSION_COOKIE } from "@/lib/constants";
 
 export { MAI_SESSION_COOKIE } from "@/lib/constants";
@@ -40,18 +41,31 @@ export async function setMaiSessionToken(token: string) {
 const userCache = new Map<string, { user: MaiUser; expiresAt: number }>();
 const CACHE_TTL_MS = 120_000; // 2 minutes de cache en mémoire
 
-function decodeJwtPayload(token: string): any | null {
+let _jwtSecret: Uint8Array | null | undefined;
+
+function getJwtSecret(): Uint8Array | null {
+  if (_jwtSecret === undefined) {
+    const secret = process.env.MAI_JWT_SECRET || process.env.JWT_SECRET || "";
+    _jwtSecret = secret ? new TextEncoder().encode(secret) : null;
+  }
+  return _jwtSecret;
+}
+
+// Vérifie la signature HS256 du JWT — un payload décodé sans vérification
+// serait forgeable par n'importe quel client (élévation de tier, IDOR).
+async function verifyJwtPayload(token: string): Promise<any | null> {
+  const secret = getJwtSecret();
+  if (!secret) {
+    return null;
+  }
   try {
-    const parts = token.split(".");
-    if (parts.length === 3) {
-      const payloadStr =
-        typeof Buffer === "undefined"
-          ? atob(parts[1])
-          : Buffer.from(parts[1], "base64").toString("utf-8");
-      return JSON.parse(payloadStr);
-    }
-  } catch {}
-  return null;
+    const { payload } = await jwtVerify(token, secret, {
+      algorithms: ["HS256"],
+    });
+    return payload;
+  } catch {
+    return null;
+  }
 }
 
 export async function removeMaiSessionToken() {
@@ -102,8 +116,14 @@ export async function getMaiUser(
     return cached.user;
   }
 
-  // 2. Décodage immédiat depuis le JWT local (instantané < 1ms)
-  const payload = decodeJwtPayload(token);
+  // 2. Vérification cryptographique du JWT local (signature HS256 + expiration)
+  const hasSecret = getJwtSecret() !== null;
+  const payload = hasSecret ? await verifyJwtPayload(token) : null;
+  if (hasSecret && !payload) {
+    // Signature invalide, token expiré ou secret absent : refus immédiat,
+    // pas de repli sur un payload non vérifié.
+    return null;
+  }
   if (payload && (payload.email || payload.sub)) {
     // Vérifier l'expiration du JWT si présente
     if (!payload.exp || payload.exp * 1000 > Date.now()) {

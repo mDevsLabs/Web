@@ -27,15 +27,14 @@ import useSWR, { mutate as globalMutate } from "swr";
 import useSWRInfinite from "swr/infinite";
 import { useDebounceValue } from "usehooks-ts";
 import "react-data-grid/lib/styles.css";
-import { PageBackButton } from "@/components/chat/page-back-button";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
-import { MemoryCard } from "@/components/settings/memory-card";
-import type { ModelCapabilities } from "@/lib/ai/models";
+import { PageBackButton } from "@/components/chat/page-back-button";
 import {
   PROJECT_ICON_KEYS,
   PROJECT_ICON_LIST,
   ProjectIcon,
 } from "@/components/chat/project-icon";
+import { MemoryCard } from "@/components/settings/memory-card";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -72,6 +71,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import type { ModelCapabilities } from "@/lib/ai/models";
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
@@ -564,7 +564,9 @@ export default function ProjectsPage() {
                 <DropdownMenuItem
                   className="text-destructive"
                   onClick={async () => {
-                    if (!confirm("Supprimer définitivement cette conversation ?")) {
+                    if (
+                      !confirm("Supprimer définitivement cette conversation ?")
+                    ) {
                       return;
                     }
                     const res = await fetch(`/api/chat?id=${row.id}`, {
@@ -602,41 +604,87 @@ export default function ProjectsPage() {
   }, [selectedChatIds]);
 
   return (
-    <div className="flex flex-1 flex-col h-full overflow-y-auto bg-background p-4 sm:p-6 md:p-10 max-w-7xl mx-auto w-full gap-6">
-      {/* En-tête Studio Projets */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-border/50">
-        <div className="flex items-start gap-3 min-w-0">
-          <PageBackButton />
-          <div className="min-w-0">
-            <div className="flex items-center gap-2 text-primary font-semibold text-xs tracking-wider uppercase mb-1">
-              <span className="flex size-2 rounded-full bg-primary animate-pulse" />
-              <FolderKanbanIcon className="size-4" />
-              mAI Projects Workspace
+    <div className="flex h-full flex-col overflow-y-auto bg-background">
+      {/* En-tête Studio Projets — même design que Planification / Audio / Images */}
+      <div className="border-b border-border/40 px-6 py-6 sm:px-8">
+        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+          <div className="flex items-start gap-3 min-w-0">
+            <PageBackButton />
+            <div className="min-w-0">
+              <div className="flex items-center gap-2.5">
+                <span className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-primary shadow-xs">
+                  <FolderKanbanIcon className="size-5" />
+                </span>
+                <h1 className="text-xl font-bold tracking-tight sm:text-2xl">
+                  Projets & Espaces de travail
+                </h1>
+              </div>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Organisez vos discussions par thématique et configurez des
+                instructions dédiées.
+              </p>
             </div>
-            <h1 className="text-2xl truncate md:text-3xl font-bold tracking-tight text-foreground">
-              Projets & Espaces de travail
-            </h1>
-            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-              Organisez vos discussions par thématique et configurez des
-              instructions dédiées.
-            </p>
+          </div>
+          <div className="flex items-center gap-2 flex-wrap shrink-0">
+            <Button
+              className="gap-2 shadow-xs"
+              onClick={() => {
+                setNewName("");
+                setNewDesc("");
+                setNewIcon("folder");
+                setNewColor("#6366f1");
+                setCreateOpen(true);
+              }}
+              size="sm"
+            >
+              <PlusIcon className="size-4" /> Nouveau projet
+            </Button>
+            <div className="flex border rounded-md">
+              <Button
+                className="h-8 w-8 rounded-r-none"
+                onClick={() => setViewMode("grid")}
+                size="icon"
+                variant={viewMode === "grid" ? "secondary" : "ghost"}
+              >
+                <LayoutGridIcon className="size-4" />
+              </Button>
+              <Button
+                className="h-8 w-8 rounded-l-none"
+                onClick={() => setViewMode("list")}
+                size="icon"
+                variant={viewMode === "list" ? "secondary" : "ghost"}
+              >
+                <ListIcon className="size-4" />
+              </Button>
+            </div>
           </div>
         </div>
-        <div className="flex items-center gap-2 flex-wrap shrink-0">
-          <div className="relative">
-            <SearchIcon className="absolute left-2.5 top-2.5 size-4 text-muted-foreground" />
+
+        {/* Filtres & Recherche — même rangée que Planification */}
+        <div className="mt-6 flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="relative">
+              <SearchIcon className="absolute left-2.5 top-2.5 size-4 text-muted-foreground" />
+              <Input
+                className="h-8 w-[200px] pl-8 text-xs"
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Rechercher..."
+                value={search}
+              />
+            </div>
             <Input
-              className="pl-8 h-8 w-[220px]"
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Rechercher..."
-              value={search}
+              className="h-8 w-[120px] text-xs"
+              onChange={(e) => setTagFilter(e.target.value)}
+              placeholder="Tag..."
+              value={tagFilter}
             />
           </div>
+
           <Select
             onValueChange={setSelectedProjectFilter}
             value={selectedProjectFilter}
           >
-            <SelectTrigger className="h-8 w-[180px]">
+            <SelectTrigger className="h-8 w-[200px] text-xs">
               <SelectValue placeholder="Filtrer projet" />
             </SelectTrigger>
             <SelectContent>
@@ -656,631 +704,611 @@ export default function ProjectsPage() {
               ))}
             </SelectContent>
           </Select>
-          <Input
-            className="h-8 w-[120px]"
-            onChange={(e) => setTagFilter(e.target.value)}
-            placeholder="Tag..."
-            value={tagFilter}
-          />
-          <Button
-            className="h-8"
-            onClick={() => {
-              setNewName("");
-              setNewDesc("");
-              setNewIcon("folder");
-              setNewColor("#6366f1");
-              setCreateOpen(true);
-            }}
-            size="sm"
-          >
-            <PlusIcon className="size-4 mr-1" /> Nouveau projet
-          </Button>
-          <div className="flex border rounded-md ml-1">
-            <Button
-              className="h-8 w-8 rounded-r-none"
-              onClick={() => setViewMode("grid")}
-              size="icon"
-              variant={viewMode === "grid" ? "secondary" : "ghost"}
-            >
-              <LayoutGridIcon className="size-4" />
-            </Button>
-            <Button
-              className="h-8 w-8 rounded-l-none"
-              onClick={() => setViewMode("list")}
-              size="icon"
-              variant={viewMode === "list" ? "secondary" : "ghost"}
-            >
-              <ListIcon className="size-4" />
-            </Button>
-          </div>
         </div>
       </div>
 
-      {/* Projects Grid/List */}
-      {isProjectsLoading ? (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {[1, 2, 3].map((i) => (
-            <div
-              className="h-28 rounded-xl border bg-card p-4 animate-pulse flex flex-col justify-between"
-              key={i}
-            >
-              <div className="flex items-center gap-3">
-                <div className="size-9 rounded-lg bg-muted" />
-                <div className="flex flex-col gap-1.5 flex-1">
-                  <div className="h-4 w-28 bg-muted rounded" />
-                  <div className="h-3 w-40 bg-muted/60 rounded" />
-                </div>
-              </div>
-              <div className="h-4 w-20 bg-muted/40 rounded" />
-            </div>
-          ))}
-        </div>
-      ) : projectsError ? (
-        <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-8 text-center">
-          <p className="text-sm text-destructive font-medium mb-3">
-            Impossible de charger les projets.
-          </p>
-          <Button onClick={() => mutateProjects()} size="sm" variant="outline">
-            Réessayer
-          </Button>
-        </div>
-      ) : projects.length === 0 ? (
-        <div className="rounded-xl border border-dashed p-10 text-center">
-          <FolderIcon className="mx-auto size-8 text-muted-foreground mb-3" />
-          <h3 className="font-semibold">Aucun projet</h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            Créez votre premier dossier pour ranger vos discussions.
-          </p>
-          <Button onClick={() => setCreateOpen(true)}>
-            <PlusIcon className="size-4 mr-2" /> Créer un projet
-          </Button>
-        </div>
-      ) : viewMode === "grid" ? (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((p) => (
-            <div
-              className="group relative rounded-xl border bg-card p-4 hover:shadow-md transition-shadow"
-              key={p.id}
-              style={{ borderLeft: `4px solid ${p.color}` }}
-            >
-              <Link className="absolute inset-0" href={`/projects/${p.id}`} />
-              <div className="flex items-start justify-between gap-2 relative z-10">
-                <div className="flex items-center gap-3 min-w-0">
-                  <div
-                    className="size-9 rounded-lg flex items-center justify-center shrink-0"
-                    style={{ background: `${p.color}15` }}
-                  >
-                    <ProjectIcon
-                      className="size-5"
-                      name={p.icon}
-                      style={{ color: p.color }}
-                    />
-                  </div>
-                  <div className="min-w-0">
-                    <h3 className="font-semibold text-sm truncate">{p.name}</h3>
-                    <p className="text-xs text-muted-foreground truncate">
-                      {p.description || "—"}
-                    </p>
-                  </div>
-                </div>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button
-                      className="h-7 w-7 shrink-0 relative z-20"
-                      onClick={(e) => e.preventDefault()}
-                      size="icon"
-                      variant="ghost"
-                    >
-                      <MoreHorizontalIcon className="size-4" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent
-                    align="end"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <DropdownMenuItem
-                      onClick={() => {
-                        setEditingProject(p);
-                        setNewName(p.name);
-                        setNewDesc(p.description);
-                        setNewIcon(p.icon || "folder");
-                        setNewColor(p.color);
-                        setNewInstructions(p.customInstructions || "");
-                        setNewDefaultModel(p.defaultModel || "");
-                      }}
-                    >
-                      <Edit2Icon className="size-3.5 mr-2" /> Modifier
-                    </DropdownMenuItem>
-                    <DropdownMenuItem
-                      onClick={async () => {
-                        await fetch(`/api/projects/${p.id}`, {
-                          body: JSON.stringify({ isArchived: !p.isArchived }),
-                          headers: { "Content-Type": "application/json" },
-                          method: "PATCH",
-                        });
-                        mutateProjects();
-                      }}
-                    >
-                      {p.isArchived ? (
-                        <ArchiveRestoreIcon className="size-3.5 mr-2" />
-                      ) : (
-                        <ArchiveIcon className="size-3.5 mr-2" />
-                      )}{" "}
-                      {p.isArchived ? "Désarchiver" : "Archiver"}
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem
-                      className="text-destructive"
-                      onClick={() => setDeleteProjectId(p.id)}
-                    >
-                      <Trash2Icon className="size-3.5 mr-2" /> Supprimer
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </div>
-              <div className="mt-3 flex flex-wrap items-center gap-2 relative z-10">
-                <Badge className="text-xs" variant="secondary">
-                  {p.chatCount ?? 0} discussions
-                </Badge>
-                {p.defaultModel && (
-                  <Badge
-                    className="text-[11px] bg-primary/10 text-primary border-primary/20 gap-1 font-normal"
-                    variant="secondary"
-                  >
-                    <SparklesIcon className="size-3 text-amber-500" />
-                    {availableModels.find((m) => m.id === p.defaultModel)
-                      ?.name || p.defaultModel}
-                  </Badge>
-                )}
-                {p.isArchived && (
-                  <Badge className="text-xs" variant="outline">
-                    Archivé
-                  </Badge>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="rounded-xl border overflow-hidden">
-          <div className="divide-y">
-            {projects.map((p) => (
-              <Link
-                className="flex items-center justify-between p-4 hover:bg-muted/50"
-                href={`/projects/${p.id}`}
-                key={p.id}
+      {/* Contenu principal */}
+      <div className="flex-1 p-6 sm:p-8 flex flex-col gap-6">
+        {/* Projects Grid/List */}
+        {isProjectsLoading ? (
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[1, 2, 3].map((i) => (
+              <div
+                className="h-28 rounded-xl border bg-card p-4 animate-pulse flex flex-col justify-between"
+                key={i}
               >
                 <div className="flex items-center gap-3">
-                  <div
-                    className="size-8 rounded-lg flex items-center justify-center shrink-0"
-                    style={{ background: `${p.color}15` }}
-                  >
-                    <ProjectIcon
-                      className="size-4"
-                      name={p.icon}
-                      style={{ color: p.color }}
-                    />
-                  </div>
-                  <div>
-                    <div className="font-medium text-sm">{p.name}</div>
-                    <div className="text-xs text-muted-foreground">
-                      {p.description}
-                    </div>
+                  <div className="size-9 rounded-lg bg-muted" />
+                  <div className="flex flex-col gap-1.5 flex-1">
+                    <div className="h-4 w-28 bg-muted rounded" />
+                    <div className="h-3 w-40 bg-muted/60 rounded" />
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Badge variant="secondary">{p.chatCount ?? 0}</Badge>
-                  <div
-                    className="size-3 rounded-full"
-                    style={{ background: p.color }}
-                  />
-                </div>
-              </Link>
+                <div className="h-4 w-20 bg-muted/40 rounded" />
+              </div>
             ))}
           </div>
-        </div>
-      )}
-
-      {/* Bulk bar */}
-      {selectedChatIds.size > 0 && (
-        <div className="sticky bottom-4 z-30 mx-auto flex flex-wrap items-center gap-2 rounded-xl border bg-background/95 backdrop-blur p-2 shadow-xl">
-          <span className="text-sm font-medium px-2">
-            {selectedChatIds.size} sélectionnée(s)
-          </span>
-          <div className="h-4 w-px bg-border" />
-          <Select
-            onValueChange={(v) =>
-              handleBulkAction("move", v === "none" ? null : v)
-            }
-          >
-            <SelectTrigger className="h-8 w-[160px]">
-              <SelectValue placeholder="Déplacer vers..." />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="none">Sans dossier</SelectItem>
-              {projects.map((p) => (
-                <SelectItem key={p.id} value={p.id}>
-                  <div className="flex items-center gap-2">
-                    <ProjectIcon
-                      className="size-3.5 shrink-0"
-                      name={p.icon}
-                      style={{ color: p.color }}
-                    />
-                    <span>{p.name}</span>
-                  </div>
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          <Button
-            onClick={() => handleBulkAction("archive")}
-            size="sm"
-            variant="outline"
-          >
-            <ArchiveIcon className="size-3.5 mr-1" /> Archiver
-          </Button>
-          <Button
-            onClick={() => handleBulkAction("unarchive")}
-            size="sm"
-            variant="outline"
-          >
-            <ArchiveRestoreIcon className="size-3.5 mr-1" /> Désarchiver
-          </Button>
-          <Button
-            onClick={() => handleBulkAction("pin")}
-            size="sm"
-            variant="outline"
-          >
-            <PinIcon className="size-3.5 mr-1" /> Épingler
-          </Button>
-          <Button
-            onClick={() => setShowBulkTagDialog(true)}
-            size="sm"
-            variant="outline"
-          >
-            <TagIcon className="size-3.5 mr-1" /> Tags
-          </Button>
-          <Button
-            onClick={() => handleBulkAction("delete")}
-            size="sm"
-            variant="destructive"
-          >
-            <Trash2Icon className="size-3.5 mr-1" /> Supprimer
-          </Button>
-          <Button
-            onClick={() => setSelectedChatIds(new Set())}
-            size="sm"
-            variant="ghost"
-          >
-            Effacer
-          </Button>
-        </div>
-      )}
-
-      {/* Chats DataGrid */}
-      <div className="rounded-xl border overflow-hidden">
-        <div className="flex items-center justify-between px-4 py-3 border-b bg-muted/20">
-          <h2 className="font-semibold text-sm">Discussions</h2>
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-muted-foreground">
-              {chats.length} {hasMore ? "+" : ""} affichées
-            </span>
-            {hasMore && (
-              <Button
-                className="h-7"
-                onClick={() => setSize(size + 1)}
-                size="sm"
-                variant="outline"
-              >
-                Charger plus
-              </Button>
-            )}
-          </div>
-        </div>
-        <div className="min-h-[300px]">
-          {chatsLoading ? (
-            <div className="p-8 text-center text-sm text-muted-foreground">
-              Chargement...
-            </div>
-          ) : chatsError ? (
-            <div className="p-8 text-center text-sm text-destructive flex flex-col items-center gap-2">
-              <span>Impossible de charger les discussions.</span>
-              <Button onClick={() => mutateChats()} size="sm" variant="outline">
-                Réessayer
-              </Button>
-            </div>
-          ) : chats.length === 0 ? (
-            <div className="p-8 text-center text-sm text-muted-foreground">
-              Aucune discussion ne correspond aux filtres.
-            </div>
-          ) : (
-            <DataGrid
-              className={resolvedTheme === "dark" ? "rdg-dark" : "rdg-light"}
-              columns={columns}
-              defaultColumnOptions={{ resizable: true }}
-              enableVirtualization={true}
-              onSelectedRowsChange={setSelectedChatIds as any}
-              rowKeyGetter={(row: Chat) => row.id}
-              rows={chats}
-              selectedRows={selectedRows}
-              style={{ height: 500 } as any}
-            />
-          )}
-        </div>
-      </div>
-
-      {/* Dialogs */}
-      <Dialog onOpenChange={setCreateOpen} open={createOpen}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Nouveau projet</DialogTitle>
-            <DialogDescription>
-              Créez un dossier pour organiser vos discussions.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="grid gap-4">
-            <div className="grid gap-2">
-              <Label>Nom</Label>
-              <Input
-                maxLength={100}
-                onChange={(e) => setNewName(e.target.value)}
-                placeholder="Ex: Travail, Études..."
-                value={newName}
-              />
-            </div>
-            <div className="grid gap-2">
-              <Label>Description</Label>
-              <Input
-                maxLength={500}
-                onChange={(e) => setNewDesc(e.target.value)}
-                placeholder="Optionnel"
-                value={newDesc}
-              />
-            </div>
-            <div className="grid gap-2">
-              <Label>Instructions personnalisées (optionnel)</Label>
-              <textarea
-                className="w-full rounded-md border border-input bg-background p-2 text-xs placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                maxLength={4000}
-                onChange={(e) => setNewInstructions(e.target.value)}
-                placeholder="Ex: Répondre toujours en tant qu'expert TypeScript senior..."
-                rows={3}
-                value={newInstructions}
-              />
-              <span className="text-[11px] text-muted-foreground">
-                Ces instructions seront appliquées à toutes les discussions
-                créées dans ce dossier.
-              </span>
-            </div>
-            <div className="grid gap-2">
-              <Label>Modèle d'IA par défaut (optionnel)</Label>
-              <ModelSelectorCompact
-                allowEmpty
-                capabilities={modelsData?.capabilities}
-                fallbackModels={availableModels}
-                modal
-                models={availableModels.length > 0 ? availableModels : undefined}
-                onModelChange={setNewDefaultModel}
-                selectedModelId={newDefaultModel}
-                variant="block"
-              />
-              <span className="text-[11px] text-muted-foreground">
-                Modèle utilisé par défaut pour chaque nouvelle discussion lancée
-                dans ce projet.
-              </span>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="grid gap-2">
-                <Label>Icône</Label>
-                <div className="grid grid-cols-4 gap-1.5 max-h-36 overflow-y-auto p-1 rounded-lg border bg-muted/20">
-                  {PROJECT_ICON_LIST.map(({ id, label, icon: IconComp }) => (
-                    <button
-                      className={`h-8 rounded flex items-center justify-center gap-1.5 text-xs transition-all border ${newIcon === id ? "bg-primary text-primary-foreground border-primary shadow-xs font-semibold" : "bg-card border-border/50 hover:bg-muted text-muted-foreground hover:text-foreground"}`}
-                      key={id}
-                      onClick={() => setNewIcon(id)}
-                      title={label}
-                      type="button"
-                    >
-                      <IconComp className="size-3.5 shrink-0" />
-                      <span className="truncate">{label}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-              <div className="grid gap-2">
-                <Label>Couleur</Label>
-                <div className="flex flex-wrap gap-1.5">
-                  {PROJECT_COLORS.map((c) => (
-                    <button
-                      className={`size-8 rounded-full border-2 ${newColor === c ? "border-foreground scale-110" : "border-transparent"}`}
-                      key={c}
-                      onClick={() => setNewColor(c)}
-                      style={{ background: c }}
-                    />
-                  ))}
-                </div>
-                <Input
-                  className="h-9 p-1"
-                  onChange={(e) => setNewColor(e.target.value)}
-                  type="color"
-                  value={newColor}
-                />
-              </div>
-            </div>
-          </div>
-          <DialogFooter>
-            <Button onClick={() => setCreateOpen(false)} variant="outline">
-              Annuler
-            </Button>
-            <Button onClick={handleCreateProject}>Créer</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      <Dialog
-        onOpenChange={(o) => !o && setEditingProject(null)}
-        open={!!editingProject}
-      >
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Modifier projet</DialogTitle>
-          </DialogHeader>
-          <div className="grid gap-4">
-            <div className="grid gap-2">
-              <Label>Nom</Label>
-              <Input
-                onChange={(e) => setNewName(e.target.value)}
-                value={newName}
-              />
-            </div>
-            <div className="grid gap-2">
-              <Label>Description</Label>
-              <Input
-                onChange={(e) => setNewDesc(e.target.value)}
-                value={newDesc}
-              />
-            </div>
-            <div className="grid gap-2">
-              <Label>Instructions personnalisées du dossier</Label>
-              <textarea
-                className="w-full rounded-md border border-input bg-background p-2 text-xs placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                maxLength={4000}
-                onChange={(e) => setNewInstructions(e.target.value)}
-                placeholder="Ex: Contexte, rôle IA, règles spécifiques..."
-                rows={3}
-                value={newInstructions}
-              />
-              <span className="text-[11px] text-muted-foreground">
-                Injectées automatiquement comme contexte pour les échanges dans
-                ce projet.
-              </span>
-            </div>
-            {editingProject && (
-              <div className="grid gap-2">
-                <Label>Mémoire du projet</Label>
-                <MemoryCard projectId={editingProject.id} />
-              </div>
-            )}
-            <div className="grid gap-2">
-              <Label>Modèle d'IA par défaut</Label>
-              <ModelSelectorCompact
-                allowEmpty
-                capabilities={modelsData?.capabilities}
-                fallbackModels={availableModels}
-                modal
-                models={availableModels.length > 0 ? availableModels : undefined}
-                onModelChange={setNewDefaultModel}
-                selectedModelId={newDefaultModel}
-                variant="block"
-              />
-              <span className="text-[11px] text-muted-foreground">
-                Modèle utilisé par défaut pour chaque nouvelle discussion lancée
-                dans ce projet.
-              </span>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="grid gap-2">
-                <Label>Icône</Label>
-                <div className="grid grid-cols-4 gap-1.5 max-h-36 overflow-y-auto p-1 rounded-lg border bg-muted/20">
-                  {PROJECT_ICON_LIST.map(({ id, label, icon: IconComp }) => (
-                    <button
-                      className={`h-8 rounded flex items-center justify-center gap-1.5 text-xs transition-all border ${newIcon === id ? "bg-primary text-primary-foreground border-primary shadow-xs font-semibold" : "bg-card border-border/50 hover:bg-muted text-muted-foreground hover:text-foreground"}`}
-                      key={id}
-                      onClick={() => setNewIcon(id)}
-                      title={label}
-                      type="button"
-                    >
-                      <IconComp className="size-3.5 shrink-0" />
-                      <span className="truncate">{label}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-              <div className="grid gap-2">
-                <Label>Couleur</Label>
-                <div className="flex flex-wrap gap-1.5">
-                  {PROJECT_COLORS.map((c) => (
-                    <button
-                      className={`size-8 rounded-full border-2 ${newColor === c ? "border-foreground" : "border-transparent"}`}
-                      key={c}
-                      onClick={() => setNewColor(c)}
-                      style={{ background: c }}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-          <DialogFooter>
-            <Button onClick={() => setEditingProject(null)} variant="outline">
-              Annuler
-            </Button>
-            <Button onClick={handleUpdateProject}>Enregistrer</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      <AlertDialog
-        onOpenChange={(o) => !o && setDeleteProjectId(null)}
-        open={!!deleteProjectId}
-      >
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Supprimer le projet ?</AlertDialogTitle>
-            <AlertDialogDescription>
-              Les discussions ne seront pas supprimées sauf si vous cochez
-              l&apos;option. Elles redeviendront &quot;Sans dossier&quot;.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <div className="flex items-center gap-2 py-2">
-            <input
-              checked={deleteWithChats}
-              id="deleteChats"
-              onChange={(e) => setDeleteWithChats(e.target.checked)}
-              type="checkbox"
-            />
-            <label className="text-sm" htmlFor="deleteChats">
-              Supprimer aussi les{" "}
-              {projects.find((p) => p.id === deleteProjectId)?.chatCount ?? 0}{" "}
-              discussions du projet
-            </label>
-          </div>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Annuler</AlertDialogCancel>
-            <AlertDialogAction
-              className="bg-destructive text-destructive-foreground"
-              onClick={handleDeleteProject}
-            >
-              Supprimer
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-
-      <Dialog onOpenChange={setShowBulkTagDialog} open={showBulkTagDialog}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Étiqueter les discussions</DialogTitle>
-            <DialogDescription>
-              Séparez les tags par des virgules (max 10, 30 caractères).
-            </DialogDescription>
-          </DialogHeader>
-          <Input
-            onChange={(e) => setBulkTagInput(e.target.value)}
-            placeholder="ex: urgent, travail, perso"
-            value={bulkTagInput}
-          />
-          <DialogFooter>
+        ) : projectsError ? (
+          <div className="rounded-xl border border-destructive/30 bg-destructive/5 p-8 text-center">
+            <p className="text-sm text-destructive font-medium mb-3">
+              Impossible de charger les projets.
+            </p>
             <Button
-              onClick={() => setShowBulkTagDialog(false)}
+              onClick={() => mutateProjects()}
+              size="sm"
               variant="outline"
             >
-              Annuler
+              Réessayer
             </Button>
-            <Button onClick={handleTagSelected}>Appliquer</Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+          </div>
+        ) : projects.length === 0 ? (
+          <div className="rounded-xl border border-dashed p-10 text-center">
+            <FolderIcon className="mx-auto size-8 text-muted-foreground mb-3" />
+            <h3 className="font-semibold">Aucun projet</h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              Créez votre premier dossier pour ranger vos discussions.
+            </p>
+            <Button onClick={() => setCreateOpen(true)}>
+              <PlusIcon className="size-4 mr-2" /> Créer un projet
+            </Button>
+          </div>
+        ) : viewMode === "grid" ? (
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {projects.map((p) => (
+              <div
+                className="group relative rounded-2xl border border-border/60 bg-card p-5 shadow-xs transition hover:border-border hover:shadow-sm"
+                key={p.id}
+                style={{ borderLeft: `4px solid ${p.color}` }}
+              >
+                <Link className="absolute inset-0" href={`/projects/${p.id}`} />
+                <div className="flex items-start justify-between gap-2 relative z-10">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div
+                      className="size-9 rounded-lg flex items-center justify-center shrink-0"
+                      style={{ background: `${p.color}15` }}
+                    >
+                      <ProjectIcon
+                        className="size-5"
+                        name={p.icon}
+                        style={{ color: p.color }}
+                      />
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="font-semibold text-sm truncate">
+                        {p.name}
+                      </h3>
+                      <p className="text-xs text-muted-foreground truncate">
+                        {p.description || "—"}
+                      </p>
+                    </div>
+                  </div>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        className="h-7 w-7 shrink-0 relative z-20"
+                        onClick={(e) => e.preventDefault()}
+                        size="icon"
+                        variant="ghost"
+                      >
+                        <MoreHorizontalIcon className="size-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent
+                      align="end"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <DropdownMenuItem
+                        onClick={() => {
+                          setEditingProject(p);
+                          setNewName(p.name);
+                          setNewDesc(p.description);
+                          setNewIcon(p.icon || "folder");
+                          setNewColor(p.color);
+                          setNewInstructions(p.customInstructions || "");
+                          setNewDefaultModel(p.defaultModel || "");
+                        }}
+                      >
+                        <Edit2Icon className="size-3.5 mr-2" /> Modifier
+                      </DropdownMenuItem>
+                      <DropdownMenuItem
+                        onClick={async () => {
+                          await fetch(`/api/projects/${p.id}`, {
+                            body: JSON.stringify({ isArchived: !p.isArchived }),
+                            headers: { "Content-Type": "application/json" },
+                            method: "PATCH",
+                          });
+                          mutateProjects();
+                        }}
+                      >
+                        {p.isArchived ? (
+                          <ArchiveRestoreIcon className="size-3.5 mr-2" />
+                        ) : (
+                          <ArchiveIcon className="size-3.5 mr-2" />
+                        )}{" "}
+                        {p.isArchived ? "Désarchiver" : "Archiver"}
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem
+                        className="text-destructive"
+                        onClick={() => setDeleteProjectId(p.id)}
+                      >
+                        <Trash2Icon className="size-3.5 mr-2" /> Supprimer
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
+                <div className="mt-3 flex flex-wrap items-center gap-2 relative z-10">
+                  <Badge className="text-xs" variant="secondary">
+                    {p.chatCount ?? 0} discussions
+                  </Badge>
+                  {p.defaultModel && (
+                    <Badge
+                      className="text-[11px] bg-primary/10 text-primary border-primary/20 gap-1 font-normal"
+                      variant="secondary"
+                    >
+                      <SparklesIcon className="size-3 text-amber-500" />
+                      {availableModels.find((m) => m.id === p.defaultModel)
+                        ?.name || p.defaultModel}
+                    </Badge>
+                  )}
+                  {p.isArchived && (
+                    <Badge className="text-xs" variant="outline">
+                      Archivé
+                    </Badge>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="rounded-xl border overflow-hidden">
+            <div className="divide-y">
+              {projects.map((p) => (
+                <Link
+                  className="flex items-center justify-between p-4 hover:bg-muted/50"
+                  href={`/projects/${p.id}`}
+                  key={p.id}
+                >
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="size-8 rounded-lg flex items-center justify-center shrink-0"
+                      style={{ background: `${p.color}15` }}
+                    >
+                      <ProjectIcon
+                        className="size-4"
+                        name={p.icon}
+                        style={{ color: p.color }}
+                      />
+                    </div>
+                    <div>
+                      <div className="font-medium text-sm">{p.name}</div>
+                      <div className="text-xs text-muted-foreground">
+                        {p.description}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Badge variant="secondary">{p.chatCount ?? 0}</Badge>
+                    <div
+                      className="size-3 rounded-full"
+                      style={{ background: p.color }}
+                    />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Bulk bar */}
+        {selectedChatIds.size > 0 && (
+          <div className="sticky bottom-4 z-30 mx-auto flex flex-wrap items-center gap-2 rounded-2xl border border-border/60 bg-background/95 backdrop-blur p-2 shadow-xl">
+            <span className="text-sm font-medium px-2">
+              {selectedChatIds.size} sélectionnée(s)
+            </span>
+            <div className="h-4 w-px bg-border" />
+            <Select
+              onValueChange={(v) =>
+                handleBulkAction("move", v === "none" ? null : v)
+              }
+            >
+              <SelectTrigger className="h-8 w-[160px]">
+                <SelectValue placeholder="Déplacer vers..." />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="none">Sans dossier</SelectItem>
+                {projects.map((p) => (
+                  <SelectItem key={p.id} value={p.id}>
+                    <div className="flex items-center gap-2">
+                      <ProjectIcon
+                        className="size-3.5 shrink-0"
+                        name={p.icon}
+                        style={{ color: p.color }}
+                      />
+                      <span>{p.name}</span>
+                    </div>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Button
+              onClick={() => handleBulkAction("archive")}
+              size="sm"
+              variant="outline"
+            >
+              <ArchiveIcon className="size-3.5 mr-1" /> Archiver
+            </Button>
+            <Button
+              onClick={() => handleBulkAction("unarchive")}
+              size="sm"
+              variant="outline"
+            >
+              <ArchiveRestoreIcon className="size-3.5 mr-1" /> Désarchiver
+            </Button>
+            <Button
+              onClick={() => handleBulkAction("pin")}
+              size="sm"
+              variant="outline"
+            >
+              <PinIcon className="size-3.5 mr-1" /> Épingler
+            </Button>
+            <Button
+              onClick={() => setShowBulkTagDialog(true)}
+              size="sm"
+              variant="outline"
+            >
+              <TagIcon className="size-3.5 mr-1" /> Tags
+            </Button>
+            <Button
+              onClick={() => handleBulkAction("delete")}
+              size="sm"
+              variant="destructive"
+            >
+              <Trash2Icon className="size-3.5 mr-1" /> Supprimer
+            </Button>
+            <Button
+              onClick={() => setSelectedChatIds(new Set())}
+              size="sm"
+              variant="ghost"
+            >
+              Effacer
+            </Button>
+          </div>
+        )}
+
+        {/* Chats DataGrid */}
+        <div className="rounded-2xl border border-border/60 shadow-xs overflow-hidden">
+          <div className="flex items-center justify-between px-4 py-3 border-b border-border/60 bg-muted/20">
+            <h2 className="font-semibold text-sm">Discussions</h2>
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-muted-foreground">
+                {chats.length} {hasMore ? "+" : ""} affichées
+              </span>
+              {hasMore && (
+                <Button
+                  className="h-7"
+                  onClick={() => setSize(size + 1)}
+                  size="sm"
+                  variant="outline"
+                >
+                  Charger plus
+                </Button>
+              )}
+            </div>
+          </div>
+          <div className="min-h-[300px]">
+            {chatsLoading ? (
+              <div className="p-8 text-center text-sm text-muted-foreground">
+                Chargement...
+              </div>
+            ) : chatsError ? (
+              <div className="p-8 text-center text-sm text-destructive flex flex-col items-center gap-2">
+                <span>Impossible de charger les discussions.</span>
+                <Button
+                  onClick={() => mutateChats()}
+                  size="sm"
+                  variant="outline"
+                >
+                  Réessayer
+                </Button>
+              </div>
+            ) : chats.length === 0 ? (
+              <div className="p-8 text-center text-sm text-muted-foreground">
+                Aucune discussion ne correspond aux filtres.
+              </div>
+            ) : (
+              <DataGrid
+                className={resolvedTheme === "dark" ? "rdg-dark" : "rdg-light"}
+                columns={columns}
+                defaultColumnOptions={{ resizable: true }}
+                enableVirtualization={true}
+                onSelectedRowsChange={setSelectedChatIds as any}
+                rowKeyGetter={(row: Chat) => row.id}
+                rows={chats}
+                selectedRows={selectedRows}
+                style={{ height: 500 } as any}
+              />
+            )}
+          </div>
+        </div>
+
+        {/* Dialogs */}
+        <Dialog onOpenChange={setCreateOpen} open={createOpen}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Nouveau projet</DialogTitle>
+              <DialogDescription>
+                Créez un dossier pour organiser vos discussions.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="grid gap-4">
+              <div className="grid gap-2">
+                <Label>Nom</Label>
+                <Input
+                  maxLength={100}
+                  onChange={(e) => setNewName(e.target.value)}
+                  placeholder="Ex: Travail, Études..."
+                  value={newName}
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label>Description</Label>
+                <Input
+                  maxLength={500}
+                  onChange={(e) => setNewDesc(e.target.value)}
+                  placeholder="Optionnel"
+                  value={newDesc}
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label>Instructions personnalisées (optionnel)</Label>
+                <textarea
+                  className="w-full rounded-md border border-input bg-background p-2 text-xs placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                  maxLength={4000}
+                  onChange={(e) => setNewInstructions(e.target.value)}
+                  placeholder="Ex: Répondre toujours en tant qu'expert TypeScript senior..."
+                  rows={3}
+                  value={newInstructions}
+                />
+                <span className="text-[11px] text-muted-foreground">
+                  Ces instructions seront appliquées à toutes les discussions
+                  créées dans ce dossier.
+                </span>
+              </div>
+              <div className="grid gap-2">
+                <Label>Modèle d'IA par défaut (optionnel)</Label>
+                <ModelSelectorCompact
+                  allowEmpty
+                  capabilities={modelsData?.capabilities}
+                  fallbackModels={availableModels}
+                  modal
+                  models={
+                    availableModels.length > 0 ? availableModels : undefined
+                  }
+                  onModelChange={setNewDefaultModel}
+                  selectedModelId={newDefaultModel}
+                  variant="block"
+                />
+                <span className="text-[11px] text-muted-foreground">
+                  Modèle utilisé par défaut pour chaque nouvelle discussion
+                  lancée dans ce projet.
+                </span>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="grid gap-2">
+                  <Label>Icône</Label>
+                  <div className="grid grid-cols-4 gap-1.5 max-h-36 overflow-y-auto p-1 rounded-lg border bg-muted/20">
+                    {PROJECT_ICON_LIST.map(({ id, label, icon: IconComp }) => (
+                      <button
+                        className={`h-8 rounded flex items-center justify-center gap-1.5 text-xs transition-all border ${newIcon === id ? "bg-primary text-primary-foreground border-primary shadow-xs font-semibold" : "bg-card border-border/50 hover:bg-muted text-muted-foreground hover:text-foreground"}`}
+                        key={id}
+                        onClick={() => setNewIcon(id)}
+                        title={label}
+                        type="button"
+                      >
+                        <IconComp className="size-3.5 shrink-0" />
+                        <span className="truncate">{label}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="grid gap-2">
+                  <Label>Couleur</Label>
+                  <div className="flex flex-wrap gap-1.5">
+                    {PROJECT_COLORS.map((c) => (
+                      <button
+                        className={`size-8 rounded-full border-2 ${newColor === c ? "border-foreground scale-110" : "border-transparent"}`}
+                        key={c}
+                        onClick={() => setNewColor(c)}
+                        style={{ background: c }}
+                      />
+                    ))}
+                  </div>
+                  <Input
+                    className="h-9 p-1"
+                    onChange={(e) => setNewColor(e.target.value)}
+                    type="color"
+                    value={newColor}
+                  />
+                </div>
+              </div>
+            </div>
+            <DialogFooter>
+              <Button onClick={() => setCreateOpen(false)} variant="outline">
+                Annuler
+              </Button>
+              <Button onClick={handleCreateProject}>Créer</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+
+        <Dialog
+          onOpenChange={(o) => !o && setEditingProject(null)}
+          open={!!editingProject}
+        >
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Modifier projet</DialogTitle>
+            </DialogHeader>
+            <div className="grid gap-4">
+              <div className="grid gap-2">
+                <Label>Nom</Label>
+                <Input
+                  onChange={(e) => setNewName(e.target.value)}
+                  value={newName}
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label>Description</Label>
+                <Input
+                  onChange={(e) => setNewDesc(e.target.value)}
+                  value={newDesc}
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label>Instructions personnalisées du dossier</Label>
+                <textarea
+                  className="w-full rounded-md border border-input bg-background p-2 text-xs placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                  maxLength={4000}
+                  onChange={(e) => setNewInstructions(e.target.value)}
+                  placeholder="Ex: Contexte, rôle IA, règles spécifiques..."
+                  rows={3}
+                  value={newInstructions}
+                />
+                <span className="text-[11px] text-muted-foreground">
+                  Injectées automatiquement comme contexte pour les échanges
+                  dans ce projet.
+                </span>
+              </div>
+              {editingProject && (
+                <div className="grid gap-2">
+                  <Label>Mémoire du projet</Label>
+                  <MemoryCard projectId={editingProject.id} />
+                </div>
+              )}
+              <div className="grid gap-2">
+                <Label>Modèle d'IA par défaut</Label>
+                <ModelSelectorCompact
+                  allowEmpty
+                  capabilities={modelsData?.capabilities}
+                  fallbackModels={availableModels}
+                  modal
+                  models={
+                    availableModels.length > 0 ? availableModels : undefined
+                  }
+                  onModelChange={setNewDefaultModel}
+                  selectedModelId={newDefaultModel}
+                  variant="block"
+                />
+                <span className="text-[11px] text-muted-foreground">
+                  Modèle utilisé par défaut pour chaque nouvelle discussion
+                  lancée dans ce projet.
+                </span>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="grid gap-2">
+                  <Label>Icône</Label>
+                  <div className="grid grid-cols-4 gap-1.5 max-h-36 overflow-y-auto p-1 rounded-lg border bg-muted/20">
+                    {PROJECT_ICON_LIST.map(({ id, label, icon: IconComp }) => (
+                      <button
+                        className={`h-8 rounded flex items-center justify-center gap-1.5 text-xs transition-all border ${newIcon === id ? "bg-primary text-primary-foreground border-primary shadow-xs font-semibold" : "bg-card border-border/50 hover:bg-muted text-muted-foreground hover:text-foreground"}`}
+                        key={id}
+                        onClick={() => setNewIcon(id)}
+                        title={label}
+                        type="button"
+                      >
+                        <IconComp className="size-3.5 shrink-0" />
+                        <span className="truncate">{label}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="grid gap-2">
+                  <Label>Couleur</Label>
+                  <div className="flex flex-wrap gap-1.5">
+                    {PROJECT_COLORS.map((c) => (
+                      <button
+                        className={`size-8 rounded-full border-2 ${newColor === c ? "border-foreground" : "border-transparent"}`}
+                        key={c}
+                        onClick={() => setNewColor(c)}
+                        style={{ background: c }}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <DialogFooter>
+              <Button onClick={() => setEditingProject(null)} variant="outline">
+                Annuler
+              </Button>
+              <Button onClick={handleUpdateProject}>Enregistrer</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+
+        <AlertDialog
+          onOpenChange={(o) => !o && setDeleteProjectId(null)}
+          open={!!deleteProjectId}
+        >
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Supprimer le projet ?</AlertDialogTitle>
+              <AlertDialogDescription>
+                Les discussions ne seront pas supprimées sauf si vous cochez
+                l&apos;option. Elles redeviendront &quot;Sans dossier&quot;.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <div className="flex items-center gap-2 py-2">
+              <input
+                checked={deleteWithChats}
+                id="deleteChats"
+                onChange={(e) => setDeleteWithChats(e.target.checked)}
+                type="checkbox"
+              />
+              <label className="text-sm" htmlFor="deleteChats">
+                Supprimer aussi les{" "}
+                {projects.find((p) => p.id === deleteProjectId)?.chatCount ?? 0}{" "}
+                discussions du projet
+              </label>
+            </div>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Annuler</AlertDialogCancel>
+              <AlertDialogAction
+                className="bg-destructive text-destructive-foreground"
+                onClick={handleDeleteProject}
+              >
+                Supprimer
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+
+        <Dialog onOpenChange={setShowBulkTagDialog} open={showBulkTagDialog}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Étiqueter les discussions</DialogTitle>
+              <DialogDescription>
+                Séparez les tags par des virgules (max 10, 30 caractères).
+              </DialogDescription>
+            </DialogHeader>
+            <Input
+              onChange={(e) => setBulkTagInput(e.target.value)}
+              placeholder="ex: urgent, travail, perso"
+              value={bulkTagInput}
+            />
+            <DialogFooter>
+              <Button
+                onClick={() => setShowBulkTagDialog(false)}
+                variant="outline"
+              >
+                Annuler
+              </Button>
+              <Button onClick={handleTagSelected}>Appliquer</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      </div>
     </div>
   );
 }

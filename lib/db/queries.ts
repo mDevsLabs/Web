@@ -12,6 +12,7 @@ import {
   inArray,
   isNull,
   lte,
+  or,
   type SQL,
   sql,
 } from "drizzle-orm";
@@ -698,6 +699,7 @@ END $$;`
     "chatId" uuid REFERENCES "Chat"("id") ON DELETE SET NULL,
     "resultChatId" uuid,
     "agentId" uuid REFERENCES "Agent"("id") ON DELETE SET NULL,
+    "recurrence" varchar(20) DEFAULT 'none' NOT NULL,
     "modelId" text DEFAULT 'google/gemini-2.5-flash' NOT NULL,
     "enabledTools" json DEFAULT '[]'::json NOT NULL,
     "cloudFileUrls" json DEFAULT '[]'::json NOT NULL,
@@ -712,6 +714,9 @@ END $$;`
     IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name='ScheduledMessage') THEN
       IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='ScheduledMessage' AND column_name='cloudFileUrls') THEN
         ALTER TABLE "ScheduledMessage" ADD COLUMN "cloudFileUrls" json DEFAULT '[]'::json NOT NULL;
+      END IF;
+      IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='ScheduledMessage' AND column_name='recurrence') THEN
+        ALTER TABLE "ScheduledMessage" ADD COLUMN "recurrence" varchar(20) DEFAULT 'none' NOT NULL;
       END IF;
     END IF;
   END $$;`);
@@ -2872,7 +2877,9 @@ export async function getUserNotificationPrefs(userId: string) {
     mcpAccessRequest: true,
     mcpCreated: true,
     news: true,
+    planningTaskCompleted: true,
     projectCreated: true,
+    quotaWarning: true,
     regenerateMode: "truncate" as const,
     updatedAt: new Date(),
     userId,
@@ -2888,6 +2895,8 @@ export async function upsertUserNotificationPrefs(
     mcpCreated: boolean;
     mcpAccessRequest: boolean;
     news: boolean;
+    planningTaskCompleted: boolean;
+    quotaWarning: boolean;
     regenerateMode: "truncate" | "fork";
   }>
 ) {
@@ -2907,7 +2916,9 @@ export async function upsertUserNotificationPrefs(
         mcpAccessRequest: data.mcpAccessRequest ?? true,
         mcpCreated: data.mcpCreated ?? true,
         news: data.news ?? true,
+        planningTaskCompleted: data.planningTaskCompleted ?? true,
         projectCreated: data.projectCreated ?? true,
+        quotaWarning: data.quotaWarning ?? true,
         regenerateMode: data.regenerateMode ?? "truncate",
         userId,
       })
@@ -3769,6 +3780,7 @@ export async function createScheduledMessage(params: {
   cloudFileUrls?: string[];
   customInstructions?: string | null;
   temperature?: number | null;
+  recurrence?: "none" | "daily" | "weekly" | "monthly";
 }): Promise<ScheduledMessage> {
   const database = await getDb();
   const [created] = await database
@@ -3782,6 +3794,7 @@ export async function createScheduledMessage(params: {
       enabledTools: params.enabledTools || [],
       modelId: params.modelId || "google/gemini-2.5-flash",
       prompt: params.prompt,
+      recurrence: params.recurrence || "none",
       scheduledAt: params.scheduledAt,
       status: "pending",
       temperature: params.temperature ?? null,
@@ -3839,6 +3852,10 @@ export async function updateScheduledMessage(params: {
   cloudFileUrls?: string[];
   customInstructions?: string | null;
   temperature?: number | null;
+  recurrence?: "none" | "daily" | "weekly" | "monthly";
+  executedAt?: Date | null;
+  lastError?: string | null;
+  resultChatId?: string | null;
   status?: "pending" | "processing" | "completed" | "failed" | "cancelled";
 }): Promise<ScheduledMessage | null> {
   const database = await getDb();
@@ -3858,6 +3875,10 @@ export async function updateScheduledMessage(params: {
   if (updates.cloudFileUrls !== undefined) updateData.cloudFileUrls = updates.cloudFileUrls;
   if (updates.customInstructions !== undefined) updateData.customInstructions = updates.customInstructions;
   if (updates.temperature !== undefined) updateData.temperature = updates.temperature;
+  if (updates.recurrence !== undefined) updateData.recurrence = updates.recurrence;
+  if (updates.executedAt !== undefined) updateData.executedAt = updates.executedAt;
+  if (updates.lastError !== undefined) updateData.lastError = updates.lastError;
+  if (updates.resultChatId !== undefined) updateData.resultChatId = updates.resultChatId;
   if (updates.status !== undefined) updateData.status = updates.status;
 
   const [updated] = await database
@@ -3892,17 +3913,44 @@ export async function deleteScheduledMessage(params: {
 
 export async function getDueScheduledMessages(): Promise<ScheduledMessage[]> {
   const database = await getDb();
+  // Les items "processing" bloqués depuis plus de 10 minutes (ex: crash serveur)
+  // sont repris automatiquement pour ne jamais rester coincés.
+  const stuckThreshold = new Date(Date.now() - 10 * 60 * 1000);
   return await database
     .select()
     .from(scheduledMessage)
     .where(
-      and(
-        eq(scheduledMessage.status, "pending"),
-        lte(scheduledMessage.scheduledAt, new Date())
+      or(
+        and(
+          eq(scheduledMessage.status, "pending"),
+          lte(scheduledMessage.scheduledAt, new Date())
+        ),
+        and(
+          eq(scheduledMessage.status, "processing"),
+          lte(scheduledMessage.updatedAt, stuckThreshold)
+        )
       )
     )
     .orderBy(asc(scheduledMessage.scheduledAt))
     .limit(20);
+}
+
+export async function rescheduleRecurringMessage(params: {
+  id: string;
+  nextScheduledAt: Date;
+}): Promise<void> {
+  const database = await getDb();
+  await database
+    .update(scheduledMessage)
+    .set({
+      executedAt: null,
+      lastError: null,
+      resultChatId: null,
+      scheduledAt: params.nextScheduledAt,
+      status: "pending",
+      updatedAt: new Date(),
+    })
+    .where(eq(scheduledMessage.id, params.id));
 }
 
 export async function setScheduledMessageStatus(params: {

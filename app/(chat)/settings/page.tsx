@@ -4,6 +4,7 @@ import {
   AlertCircleIcon,
   BellIcon,
   BotIcon,
+  BrainIcon,
   CameraIcon,
   CloudIcon,
   ExternalLinkIcon,
@@ -23,7 +24,14 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  type ComponentType,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
 import {
@@ -34,6 +42,17 @@ import { PageBackButton } from "@/components/chat/page-back-button";
 import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import { ConfigurationSection } from "@/components/settings/configuration-client";
 import { MemoryCard } from "@/components/settings/memory-card";
+import { OptionSelector } from "@/components/settings/option-selector";
+import {
+  ImageSizeOptionSelector,
+  mapVoicesForModel,
+  useVoicePresets,
+  VoiceOptionSelector,
+} from "@/components/settings/option-selectors";
+import {
+  type AnchorItem,
+  SettingsAnchorNav,
+} from "@/components/settings/settings-anchor-nav";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -55,6 +74,7 @@ import { useTier } from "@/hooks/use-tier";
 import type { ChatModel } from "@/lib/ai/models";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
 function formatTokens(n: number) {
   return new Intl.NumberFormat("fr-FR").format(n);
@@ -103,39 +123,39 @@ function setCookie(name: string, value: string) {
   document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${maxAge}`;
 }
 
+type SettingsTab =
+  | "configuration"
+  | "memory"
+  | "notifications"
+  | "preferences"
+  | "profile"
+  | "usage";
+
+const SETTINGS_TABS: {
+  id: SettingsTab;
+  label: string;
+  icon: ComponentType<{ className?: string }>;
+}[] = [
+  { icon: UserIcon, id: "profile", label: "Mon Profil" },
+  { icon: SparklesIcon, id: "preferences", label: "Préférences IA" },
+  { icon: BrainIcon, id: "memory", label: "Mémoire" },
+  { icon: ZapIcon, id: "usage", label: "Consommation & Forfait" },
+  { icon: BellIcon, id: "notifications", label: "Notifications" },
+  { icon: SquareSlashIcon, id: "configuration", label: "Configuration" },
+];
+
 export default function SettingsPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const initialTab =
-    (searchParams.get("tab") as
-      | "profile"
-      | "usage"
-      | "preferences"
-      | "notifications"
-      | "configuration") || "profile";
-  const [activeTab, setActiveTab] = useState<
-    "profile" | "usage" | "preferences" | "notifications" | "configuration"
-  >(
-    [
-      "profile",
-      "usage",
-      "preferences",
-      "notifications",
-      "configuration",
-    ].includes(initialTab)
-      ? (initialTab as any)
+  const initialTab = searchParams.get("tab") as SettingsTab | null;
+  const [activeTab, setActiveTab] = useState<SettingsTab>(
+    initialTab && SETTINGS_TABS.some((t) => t.id === initialTab)
+      ? initialTab
       : "profile"
   );
 
   const handleTabChange = useCallback(
-    (
-      tab:
-        | "profile"
-        | "usage"
-        | "preferences"
-        | "notifications"
-        | "configuration"
-    ) => {
+    (tab: SettingsTab) => {
       setActiveTab(tab);
       const params = new URLSearchParams(searchParams.toString());
       params.set("tab", tab);
@@ -145,18 +165,8 @@ export default function SettingsPage() {
   );
 
   useEffect(() => {
-    const t = searchParams.get("tab") as any;
-    if (
-      t &&
-      [
-        "profile",
-        "usage",
-        "preferences",
-        "notifications",
-        "configuration",
-      ].includes(t) &&
-      t !== activeTab
-    ) {
+    const t = searchParams.get("tab") as SettingsTab | null;
+    if (t && SETTINGS_TABS.some((tab) => tab.id === t) && t !== activeTab) {
       setActiveTab(t);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -248,8 +258,9 @@ export default function SettingsPage() {
   const [defaultAudioModel, setDefaultAudioModel] = useState<string>(
     "deepgram/flux-tts:free"
   );
-  const [defaultAudioVoice, setDefaultAudioVoice] =
-    useState<string>("flux-alexis-en");
+  // Voix par défaut : résolue dynamiquement depuis l'API (voix du modèle
+  // sélectionné) — aucune valeur codée en dur dans le client.
+  const [defaultAudioVoice, setDefaultAudioVoice] = useState<string>("");
   const [defaultAudioSpeed, setDefaultAudioSpeed] = useState<number>(1.0);
   const [isSavingToolsPref, setIsSavingToolsPref] = useState<boolean>(false);
 
@@ -260,7 +271,8 @@ export default function SettingsPage() {
   const [notifMcp, setNotifMcp] = useState(true);
   const [notifMcpAccess, setNotifMcpAccess] = useState(true);
   const [notifNews, setNotifNews] = useState(true);
-  const [notifPlanningTaskCompleted, setNotifPlanningTaskCompleted] = useState(true);
+  const [notifPlanningTaskCompleted, setNotifPlanningTaskCompleted] =
+    useState(true);
   const [notifQuotaWarning, setNotifQuotaWarning] = useState(true);
   const [isSavingNotif, setIsSavingNotif] = useState(false);
   const [regenerateMode, setRegenerateMode] = useState<"truncate" | "fork">(
@@ -282,14 +294,44 @@ export default function SettingsPage() {
     (url: string) => fetch(url).then((r) => r.json()),
     { dedupingInterval: 60_000 }
   );
-  const imageModels: SharedModel[] = imageModelsData?.data || imageModelsData?.models || [];
+  const imageModels: SharedModel[] =
+    imageModelsData?.data || imageModelsData?.models || [];
 
   const { data: audioModelsData } = useSWR(
     `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models/speech`,
     (url: string) => fetch(url).then((r) => r.json()),
     { dedupingInterval: 60_000 }
   );
-  const audioModels: SharedModel[] = audioModelsData?.data || audioModelsData?.models || [];
+  const audioModels: SharedModel[] =
+    audioModelsData?.data || audioModelsData?.models || [];
+
+  // Catalogue de voix partagé avec la page Audio (noms, genres, catégories)
+  const voicePresets = useVoicePresets();
+  const audioModelVoices = useMemo(
+    () =>
+      mapVoicesForModel(
+        defaultAudioModel
+          ? audioModels.find((m) => m.id === defaultAudioModel)?.voices
+          : undefined,
+        voicePresets
+      ),
+    [audioModels, defaultAudioModel, voicePresets]
+  );
+
+  // Validation de la voix : la préférence enregistrée est conservée si elle
+  // existe toujours dans le catalogue API du modèle ; sinon on retombe sur la
+  // première voix du modèle (ou aucune si le modèle n'en déclare pas).
+  useEffect(() => {
+    if (audioModelVoices.length === 0) {
+      if (defaultAudioVoice) {
+        setDefaultAudioVoice("");
+      }
+      return;
+    }
+    if (!audioModelVoices.some((v) => v.id === defaultAudioVoice)) {
+      setDefaultAudioVoice(audioModelVoices[0].id);
+    }
+  }, [audioModelVoices, defaultAudioVoice]);
 
   const { data: customPrefData, mutate: mutateCustomPref } = useSWR(
     "/api/user/preferences",
@@ -575,11 +617,14 @@ export default function SettingsPage() {
 
   const handleSaveRegenerateMode = useCallback(async () => {
     try {
-      await fetch("/api/notifications/preferences", {
+      const res = await fetch("/api/notifications/preferences", {
         body: JSON.stringify({ regenerateMode }),
         headers: { "Content-Type": "application/json" },
         method: "POST",
       });
+      if (!res.ok) {
+        throw new Error("Erreur sauvegarde mode régénération");
+      }
       toast.success("Mode régénération enregistré !");
       mutateNotifPrefs();
     } catch {
@@ -870,1347 +915,1434 @@ export default function SettingsPage() {
       )
     : 0;
 
+  // Ancres de la barre latérale pour l'onglet actif (défilement + surlignage)
+  const anchorItems: AnchorItem[] = useMemo(() => {
+    switch (activeTab) {
+      case "profile":
+        return [
+          { id: "profile-avatar", label: "Photo de profil" },
+          { id: "profile-form", label: "Informations personnelles" },
+          { id: "profile-security", label: "Sécurité & mot de passe" },
+        ];
+      case "preferences":
+        return [
+          { id: "prefs-defaults", label: "Modèle & visibilité" },
+          { id: "prefs-instructions", label: "Instructions personnalisées" },
+          { id: "prefs-agent", label: "Agent par défaut" },
+          { id: "prefs-tools", label: "Génération d'images" },
+          { id: "prefs-audio", label: "Synthèse vocale" },
+          { id: "prefs-regenerate", label: "Mode régénération" },
+        ];
+      case "memory":
+        return [
+          { id: "memory-card", label: "Ma mémoire" },
+          { id: "memory-info", label: "Comment ça marche" },
+        ];
+      case "usage":
+        return [
+          { id: "usage-plan", label: "Forfait actuel" },
+          { id: "usage", label: "Utilisation de l'IA" },
+          { id: "usage-images", label: "Générations d'images" },
+          { id: "usage-speech", label: "Synthèse vocale" },
+          { id: "usage-cloud", label: "Stockage cloud" },
+        ];
+      case "notifications":
+        return [
+          { id: "notif-main", label: "Préférences" },
+          { id: "notif-rgpd", label: "RGPD & Données" },
+        ];
+      case "configuration":
+        return [{ id: "config-commands", label: "Commandes personnalisées" }];
+      default:
+        return [];
+    }
+  }, [activeTab]);
+
   return (
-    <div className="flex flex-1 flex-col h-full overflow-y-auto bg-background p-4 sm:p-6 md:p-10 max-w-5xl mx-auto w-full">
-      {/* En-tête de la page */}
-      <div className="pb-6 border-b border-border/50">
-        <div className="flex items-start gap-3">
-          <PageBackButton />
-          <div className="min-w-0">
-            <div className="flex items-center gap-2 text-primary font-semibold text-xs tracking-wider uppercase mb-1">
-              <span className="flex size-2 rounded-full bg-primary animate-pulse" />
-              <SettingsIcon className="size-4" />
-              mAI Account & Preferences
+    <div
+      className="flex flex-1 flex-col h-full overflow-y-auto bg-background"
+      data-scroll-root=""
+    >
+      <div className="max-w-7xl mx-auto w-full p-4 sm:p-6 md:p-10 pb-0">
+        {/* En-tête de la page */}
+        <div className="pb-6 border-b border-border/50">
+          <div className="flex items-start gap-3">
+            <PageBackButton />
+            <div className="min-w-0">
+              <div className="flex items-center gap-2 text-primary font-semibold text-xs tracking-wider uppercase mb-1">
+                <span className="flex size-2 rounded-full bg-primary animate-pulse" />
+                <SettingsIcon className="size-4" />
+                mAI Account & Preferences
+              </div>
+              <h1 className="text-2xl truncate md:text-3xl font-bold tracking-tight text-foreground">
+                Paramètres du compte
+              </h1>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+                Gérez votre profil, vos informations personnelles et visualisez
+                votre consommation IA.
+              </p>
             </div>
-            <h1 className="text-2xl truncate md:text-3xl font-bold tracking-tight text-foreground">
-              Paramètres du compte
-            </h1>
-            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-              Gérez votre profil, vos informations personnelles et visualisez
-              votre consommation IA.
-            </p>
           </div>
-        </div>
-
-        {/* Onglets */}
-        <div className="flex items-center gap-2 mt-6 flex-wrap">
-          <button
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer ${
-              activeTab === "profile"
-                ? "bg-foreground text-background shadow-sm"
-                : "bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
-            }`}
-            onClick={() => handleTabChange("profile")}
-          >
-            <UserIcon className="size-4" />
-            <span>Mon Profil</span>
-          </button>
-
-          <button
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer ${
-              activeTab === "preferences"
-                ? "bg-foreground text-background shadow-sm"
-                : "bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
-            }`}
-            onClick={() => handleTabChange("preferences")}
-          >
-            <SparklesIcon className="size-4" />
-            <span>Préférences IA</span>
-          </button>
-
-          <button
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer ${
-              activeTab === "usage"
-                ? "bg-foreground text-background shadow-sm"
-                : "bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
-            }`}
-            onClick={() => handleTabChange("usage")}
-          >
-            <ZapIcon className="size-4" />
-            <span>Consommation & Forfait</span>
-          </button>
-
-          <button
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer ${
-              activeTab === "notifications"
-                ? "bg-foreground text-background shadow-sm"
-                : "bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
-            }`}
-            onClick={() => handleTabChange("notifications")}
-          >
-            <BellIcon className="size-4" />
-            <span>Notifications</span>
-          </button>
-
-          <button
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer ${
-              activeTab === "configuration"
-                ? "bg-foreground text-background shadow-sm"
-                : "bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
-            }`}
-            onClick={() => handleTabChange("configuration")}
-          >
-            <SquareSlashIcon className="size-4" />
-            <span>Configuration</span>
-          </button>
         </div>
       </div>
 
-      {isLoading ? (
-        <div className="py-20 flex flex-col items-center justify-center text-muted-foreground gap-3">
-          <Loader2Icon className="size-6 animate-spin text-primary" />
-          <span className="text-sm">Chargement de vos informations...</span>
-        </div>
-      ) : activeTab === "profile" ? (
-        /* ────────────── SECTION PROFIL ────────────── */
-        <div className="py-6 flex flex-col gap-8 max-w-2xl">
-          {/* Avatar */}
-          <div className="flex items-center gap-5 p-5 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md">
-            <div className="relative group">
-              <div className="size-20 rounded-full ring-2 ring-border/80 overflow-hidden bg-muted flex items-center justify-center shadow-md">
-                {profile?.avatarUrl ? (
-                  <Image
-                    alt={username}
-                    className="size-full object-cover"
-                    height={80}
-                    src={profile.avatarUrl}
-                    unoptimized
-                    width={80}
-                  />
-                ) : (
-                  <div className="size-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-2xl font-bold text-white">
-                    {username.charAt(0).toUpperCase()}
-                  </div>
-                )}
-              </div>
-
-              <button
-                className="absolute inset-0 rounded-full bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white cursor-pointer"
-                disabled={isUploadingAvatar}
-                onClick={() => fileInputRef.current?.click()}
-                title="Changer la photo"
-                type="button"
-              >
-                {isUploadingAvatar ? (
-                  <Loader2Icon className="size-6 animate-spin" />
-                ) : (
-                  <CameraIcon className="size-6" />
-                )}
-              </button>
-
-              <input
-                accept="image/*"
-                className="hidden"
-                onChange={handleAvatarChange}
-                ref={fileInputRef}
-                type="file"
-              />
-            </div>
-
-            <div className="flex flex-col">
-              <div className="flex items-center gap-2">
-                <h3 className="font-semibold text-foreground text-base">
-                  {username}
-                </h3>
-                <span className="text-xs px-2 py-0.5 rounded-full font-bold uppercase bg-primary/10 text-primary border border-primary/20">
-                  {profile?.tier || "Free"}
-                </span>
-              </div>
-              <p className="text-xs text-muted-foreground mt-0.5">{email}</p>
-              <button
-                className="mt-2 text-xs font-medium text-primary hover:underline cursor-pointer flex items-center gap-1"
-                disabled={isUploadingAvatar}
-                onClick={() => fileInputRef.current?.click()}
-                type="button"
-              >
-                <CameraIcon className="size-3.5" />
-                Changer la photo de profil
-              </button>
-            </div>
-          </div>
-
-          {/* Formulaire des informations personnelles */}
-          <form className="flex flex-col gap-5" onSubmit={handleProfileSubmit}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="flex flex-col gap-2">
-                <Label
-                  className="text-xs font-medium text-muted-foreground"
-                  htmlFor="settings-username"
-                >
-                  Nom d'utilisateur
-                </Label>
-                <Input
-                  className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
-                  id="settings-username"
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
-                  value={username}
-                />
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <Label
-                  className="text-xs font-medium text-muted-foreground"
-                  htmlFor="settings-email"
-                >
-                  Adresse e-mail
-                </Label>
-                <Input
-                  className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
-                  id="settings-email"
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  type="email"
-                  value={email}
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <Label
-                className="text-xs font-medium text-muted-foreground"
-                htmlFor="settings-phone"
-              >
-                Numéro de téléphone (optionnel)
-              </Label>
-              <Input
-                className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
-                id="settings-phone"
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="+33 6 12 34 56 78"
-                type="tel"
-                value={phone}
-              />
-            </div>
-
-            {/* Changement de mot de passe */}
-            <div className="pt-4 border-t border-border/50 flex flex-col gap-4">
-              <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
-                <KeyRoundIcon className="size-4 text-primary" />
-                Sécurité & Mot de passe
-              </h3>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex flex-col gap-2">
-                  <Label
-                    className="text-xs font-medium text-muted-foreground"
-                    htmlFor="settings-current-password"
-                  >
-                    Mot de passe actuel{" "}
-                    <strong className="text-red-500">*</strong>
-                  </Label>
-                  <Input
-                    className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
-                    id="settings-current-password"
-                    onChange={(e) => setCurrentPassword(e.target.value)}
-                    placeholder="Obligatoire pour valider"
-                    required
-                    type="password"
-                    value={currentPassword}
-                  />
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <Label
-                    className="text-xs font-medium text-muted-foreground"
-                    htmlFor="settings-new-password"
-                  >
-                    Nouveau mot de passe (optionnel)
-                  </Label>
-                  <Input
-                    className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
-                    id="settings-new-password"
-                    onChange={(e) => setNewPassword(e.target.value)}
-                    placeholder="Laisser vide si inchangé"
-                    type="password"
-                    value={newPassword}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Préférences */}
-            <div className="pt-4 border-t border-border/50 flex flex-col gap-3">
-              <label className="flex items-center gap-3 text-xs text-foreground cursor-pointer">
-                <input
-                  checked={newsletter}
-                  className="rounded border-border size-4 accent-primary"
-                  onChange={(e) => setNewsletter(e.target.checked)}
-                  type="checkbox"
-                />
-                <span>Recevoir les actualités et annonces mAI par e-mail</span>
-              </label>
-
-              <label className="flex items-center gap-3 text-xs text-foreground cursor-pointer">
-                <input
-                  checked={notifyLimits}
-                  className="rounded border-border size-4 accent-primary"
-                  onChange={(e) => setNotifyLimits(e.target.checked)}
-                  type="checkbox"
-                />
-                <span>
-                  M'alerter par e-mail lorsque j'atteins 90% de mes limites de
-                  tokens ou stockage
-                </span>
-              </label>
-            </div>
-
-            <div className="pt-4">
-              <button
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 disabled:opacity-50 cursor-pointer shadow-sm"
-                disabled={isSaving}
-                type="submit"
-              >
-                {isSaving ? (
-                  <>
-                    <Loader2Icon className="size-4 animate-spin" />
-                    Enregistrement...
-                  </>
-                ) : (
-                  "Enregistrer les modifications"
-                )}
-              </button>
-            </div>
-          </form>
-        </div>
-      ) : activeTab === "preferences" ? (
-        /* ────────────── SECTION PRÉFÉRENCES IA ────────────── */
-        <div className="py-6 flex flex-col gap-6 max-w-3xl">
-          <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6">
-            <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
-                <SparklesIcon className="size-5" />
-              </div>
-              <div>
-                <h3 className="text-base font-semibold text-foreground">
-                  Préférences IA
-                </h3>
-                <p className="text-xs text-muted-foreground">
-                  Modèle par défaut (enregistré dans votre compte) et Agents —
-                  styles IA personnalisés remplaçant les Modes.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-2 pt-2">
-              <Label className="text-xs font-medium text-muted-foreground">
-                Modèle par défaut
-              </Label>
-              <ModelSelectorCompact
-                capabilities={prefModelsData?.capabilities}
-                models={prefModels.length > 0 ? prefModels : undefined}
-                onModelChange={setDefaultModelId}
-                selectedModelId={defaultModelId}
-                variant="block"
-              />
-              <span className="text-[11px] text-muted-foreground">
-                Ce modèle sera pré-sélectionné pour chaque nouvelle
-                conversation. Vous pouvez le changer à la volée dans la barre de
-                saisie.
-              </span>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <Label className="text-xs font-medium text-muted-foreground">
-                Visibilité par défaut des conversations
-              </Label>
-              <select
-                className="h-10 rounded-xl border border-border/60 bg-muted/30 px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary/20"
-                onChange={(e) =>
-                  setDefaultChatVisibility(
-                    e.target.value === "public" ? "public" : "private"
-                  )
-                }
-                value={defaultChatVisibility}
-              >
-                <option value="private">Privée (recommandé)</option>
-                <option value="public">Publique</option>
-              </select>
-              <span className="text-[11px] text-muted-foreground">
-                Visibilité appliquée aux nouvelles conversations. Vous pourrez
-                toujours la modifier par conversation.
-              </span>
-            </div>
-
-            <div className="flex flex-col gap-2 p-3 rounded-xl border border-border/40 bg-muted/20">
-              <div className="flex items-center gap-2">
-                <BotIcon className="size-4 text-primary" />
-                <span className="text-xs font-semibold text-foreground">
-                  Agents IA
-                </span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-primary/10 text-primary font-bold">
-                  Nouveau
-                </span>
-              </div>
-              <p className="text-[11px] text-muted-foreground leading-relaxed">
-                Les <strong>Agents</strong> remplacent les Modes IA. Crée
-                jusqu'à 10 agents personnalisés (instructions 5000c,
-                emoji/icône, modèle par défaut, skills, MCP et fichiers).
-                Sélection globale via le menu à côté du modèle ou{" "}
-                <code className="px-1 py-0.5 rounded bg-muted text-[10px]">
-                  @
-                </code>{" "}
-                /{" "}
-                <code className="px-1 py-0.5 rounded bg-muted text-[10px]">
-                  /agents
-                </code>
-                .
-              </p>
-              <Link
-                className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline w-fit"
-                href="/agents"
-              >
-                <BotIcon className="size-3.5" /> Gérer mes agents →
-              </Link>
-            </div>
-
-            <div className="pt-2 flex justify-end">
-              <button
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer"
-                onClick={handleSavePreferences}
-                type="button"
-              >
-                Enregistrer les préférences
-              </button>
-            </div>
-          </div>
-
-          {/* Instructions personnalisées */}
-          <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6">
-            <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-xl bg-amber-500/10 text-amber-600 ring-1 ring-amber-500/20">
-                <BotIcon className="size-5" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-base font-semibold text-foreground">
-                  Instructions personnalisées
-                </h3>
-                <p className="text-xs text-muted-foreground">
-                  Personnalisez le comportement de mAI — ton, langue, contexte
-                  métier. Synchronisé sur tous vos appareils.
-                </p>
-              </div>
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input
-                  checked={customEnabled}
-                  className="size-4 rounded border-border accent-primary"
-                  onChange={(e) => setCustomEnabled(e.target.checked)}
-                  type="checkbox"
-                />
-                <span className="text-xs font-medium">Activé</span>
-              </label>
-            </div>
-            <div className="flex flex-col gap-2">
-              <Label className="text-xs font-medium text-muted-foreground">
-                Qui êtes-vous ? Que doit savoir mAI sur vous ? (max 4000c)
-              </Label>
-              <textarea
-                className="w-full rounded-xl border border-border/60 bg-muted/20 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary/20 resize-y"
-                maxLength={4000}
-                onChange={(e) => setCustomInstructions(e.target.value)}
-                placeholder="Ex: Je suis développeur full-stack à Paris. Réponds toujours en français, tutoie, sois concis, privilégie TypeScript avec exemples exécutables. Mon projet principal est mAI Web..."
-                rows={5}
-                value={customInstructions}
-              />
-              <span className="text-[11px] text-muted-foreground text-right">
-                {customInstructions.length}/4000
-              </span>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="flex flex-col gap-1.5">
-                <Label className="text-xs font-medium text-muted-foreground">
-                  Température ({customTemp})
-                </Label>
-                <input
-                  className="w-full accent-primary"
-                  max={2}
-                  min={0}
-                  onChange={(e) =>
-                    setCustomTemp(Number.parseFloat(e.target.value))
-                  }
-                  step={0.1}
-                  type="range"
-                  value={customTemp}
-                />
-                <span className="text-[11px] text-muted-foreground">
-                  0 = Précis, 2 = Créatif
-                </span>
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <Label className="text-xs font-medium text-muted-foreground">
-                  Top P ({customTopP})
-                </Label>
-                <input
-                  className="w-full accent-primary"
-                  max={1}
-                  min={0}
-                  onChange={(e) =>
-                    setCustomTopP(Number.parseFloat(e.target.value))
-                  }
-                  step={0.05}
-                  type="range"
-                  value={customTopP}
-                />
-                <span className="text-[11px] text-muted-foreground">
-                  Contrôle diversité
-                </span>
-              </div>
-            </div>
-            <div className="flex justify-end">
-              <button
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-600 text-white px-6 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer disabled:opacity-50"
-                disabled={isSavingCustom}
-                onClick={handleSaveCustomInstructions}
-                type="button"
-              >
-                {isSavingCustom ? (
-                  <Loader2Icon className="size-4 animate-spin" />
-                ) : null}
-                {isSavingCustom
-                  ? "Enregistrement..."
-                  : "Enregistrer instructions"}
-              </button>
-            </div>
-          </div>
-
-          {/* Agent par défaut */}
-          <div
-            className={`p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6 ${isFree ? "cursor-pointer" : ""}`}
-            onClick={
-              isFree
-                ? () => {
-                    toast.error(
-                      "Sélection d'agents réservée aux forfaits Plus, Pro et Max"
-                    );
-                    setAgentsUpgradeOpen(true);
-                  }
-                : undefined
-            }
-          >
-            <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 ring-1 ring-indigo-500/20">
-                <BotIcon className="size-5" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-base font-semibold text-foreground">
-                  Agent par défaut
-                </h3>
-                <p className="text-xs text-muted-foreground">
-                  Agent activé automatiquement au lancement de chaque nouvelle
-                  discussion.
-                </p>
-              </div>
-              {isSavingDefaultAgent && (
-                <Loader2Icon className="size-4 animate-spin text-muted-foreground" />
+      {/* Onglets — même design que les pages Audio / Images */}
+      <div className="border-b border-border/40 bg-muted/20 px-4 py-2 sm:px-6">
+        <div className="max-w-7xl mx-auto w-full flex items-center gap-2 overflow-x-auto">
+          {SETTINGS_TABS.map((tab) => (
+            <button
+              className={cn(
+                "flex shrink-0 items-center gap-2 rounded-lg px-3.5 py-1.5 text-xs font-semibold transition-all cursor-pointer",
+                activeTab === tab.id
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
               )}
-            </div>
-            {isFree ? (
-              <div className="flex items-center gap-2 p-3 rounded-xl border border-dashed border-amber-500/40 bg-amber-500/5 text-xs text-amber-700 dark:text-amber-400">
-                <LockIcon className="size-4 shrink-0" />
-                <span>
-                  Réservé aux forfaits Plus, Pro et Max — passez à un forfait
-                  supérieur pour choisir un agent par défaut.
-                </span>
-              </div>
-            ) : (
-              <div className="flex flex-col gap-1.5">
-                <Label className="text-xs font-medium text-muted-foreground">
-                  Agent activé au lancement d'une nouvelle conversation
-                </Label>
-                <select
-                  className="w-full rounded-xl border border-border/60 bg-muted/20 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer"
-                  disabled={isSavingDefaultAgent}
-                  onChange={(e) => handleSaveDefaultAgent(e.target.value)}
-                  value={defaultAgentId}
-                >
-                  <option value="none">Aucun (modèle standard)</option>
-                  {prefAgents.map((a) => (
-                    <option key={a.id} value={a.id}>
-                      {a.emoji ? `${a.emoji} ` : ""}
-                      {a.name}
-                    </option>
-                  ))}
-                </select>
-                <span className="text-[11px] text-muted-foreground">
-                  S'applique au prochain chargement du chat. Modifiable à tout
-                  moment via la mention @agent.
-                </span>
-              </div>
-            )}
-
-            <div className="pt-2 border-t border-border/40 flex items-center justify-between gap-3">
-              <div className="flex flex-col">
-                <span className="text-xs font-semibold text-foreground">
-                  Icônes des agents sur les conversations
-                </span>
-                <span className="text-[11px] text-muted-foreground">
-                  Affiche l'icône et la couleur de l'agent configuré pour chaque conversation dans l'historique latéral.
-                </span>
-              </div>
-              <label className="flex items-center gap-2 cursor-pointer shrink-0">
-                <input
-                  checked={showAgentChatIcons}
-                  className="size-4 rounded border-border accent-primary cursor-pointer"
-                  disabled={isSavingAgentIconsPref}
-                  onChange={(e) => handleToggleShowAgentChatIcons(e.target.checked)}
-                  type="checkbox"
-                />
-                <span className="text-xs font-medium">
-                  {showAgentChatIcons ? "Activé" : "Désactivé"}
-                </span>
-              </label>
-            </div>
-          </div>
-          <UpgradeDialog
-            feature="agents"
-            onOpenChange={setAgentsUpgradeOpen}
-            open={agentsUpgradeOpen}
-          />
-
-          {/* Mémoire personnalisée */}
-          <MemoryCard />
-
-          {/* Préférences Outils de Génération (Images & Audio) */}
-          <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6">
-            <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-xl bg-violet-500/10 text-violet-500 ring-1 ring-violet-500/20">
-                <ImageIcon className="size-5" />
-              </div>
-              <div>
-                <h3 className="text-base font-semibold text-foreground">
-                  Outil Génération d'Images
-                </h3>
-                <p className="text-xs text-muted-foreground">
-                  Configurez le modèle Black Forest / FLUX et la résolution par
-                  défaut utilisés par l'outil de génération d'images.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-              <div className="flex flex-col gap-2">
-                <Label className="text-xs font-medium text-muted-foreground">
-                  Modèle d'image par défaut
-                </Label>
-                <ModelSelectorCompact
-                  models={imageModels.length > 0 ? imageModels : undefined}
-                  onModelChange={setDefaultImageModel}
-                  placeholder="Modèle d'image par défaut"
-                  selectedModelId={defaultImageModel}
-                  source="images"
-                  variant="block"
-                />
-                <span className="text-[11px] text-muted-foreground">
-                  {imageModels.length > 0
-                    ? `${imageModels.length} modèles disponibles (synchronisés via l'API).`
-                    : "Modèle activé automatiquement quand vous demandez à l'IA d'illustrer ou créer une image."}
-                </span>
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <Label className="text-xs font-medium text-muted-foreground">
-                  Format et taille par défaut
-                </Label>
-                <select
-                  className="h-10 rounded-xl border border-border/60 bg-muted/30 px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary/20"
-                  onChange={(e) => setDefaultImageSize(e.target.value)}
-                  value={defaultImageSize}
-                >
-                  <option value="1024x1024">1024x1024 (1:1 Carré)</option>
-                  <option value="1344x768">
-                    1344x768 (16:9 Paysage / Bureau)
-                  </option>
-                  <option value="768x1344">
-                    768x1344 (9:16 Mobile / Story)
-                  </option>
-                  <option value="1152x864">1152x864 (4:3 Standard)</option>
-                  <option value="864x1152">864x1152 (3:4 Portrait)</option>
-                </select>
-                <span className="text-[11px] text-muted-foreground">
-                  Ratio d'aspect et dimensions par défaut générés.
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Préférences Outil Audio & Synthèse Vocale */}
-          <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6">
-            <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-500 ring-1 ring-emerald-500/20">
-                <Volume2Icon className="size-5" />
-              </div>
-              <div>
-                <h3 className="text-base font-semibold text-foreground">
-                  Outil Synthèse Vocale & Audio
-                </h3>
-                <p className="text-xs text-muted-foreground">
-                  Configurez le modèle vocal, la voix par défaut et le rythme de
-                  lecture audio.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-              <div className="flex flex-col gap-2">
-                <Label className="text-xs font-medium text-muted-foreground">
-                  Modèle audio par défaut
-                </Label>
-                <ModelSelectorCompact
-                  models={audioModels.length > 0 ? audioModels : undefined}
-                  onModelChange={(val) => {
-                    setDefaultAudioModel(val);
-                    const m = audioModels.find((am) => am.id === val);
-                    if (m?.voices && Array.isArray(m.voices) && m.voices.length > 0) {
-                      setDefaultAudioVoice(m.voices[0]);
-                    }
-                  }}
-                  placeholder="Modèle audio par défaut"
-                  selectedModelId={defaultAudioModel}
-                  source="speech"
-                  variant="block"
-                />
-                <span className="text-[11px] text-muted-foreground">
-                  {audioModels.length > 0
-                    ? `${audioModels.length} modèles audio synchronisés via l'API.`
-                    : "Modèle de synthèse vocale par défaut."}
-                </span>
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <Label className="text-xs font-medium text-muted-foreground">
-                  Voix par défaut
-                </Label>
-                <select
-                  className="h-10 rounded-xl border border-border/60 bg-muted/30 px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-primary/20"
-                  onChange={(e) => setDefaultAudioVoice(e.target.value)}
-                  value={defaultAudioVoice}
-                >
-                  {(() => {
-                    const selected = audioModels.find((m) => m.id === defaultAudioModel);
-                    const voices: string[] = Array.isArray(selected?.voices)
-                      ? selected!.voices as string[]
-                      : [];
-                    const list = voices.length > 0
-                      ? voices
-                      : ["flux-alexis-en", "flux-michael-en", "flux-stacy-en", "alloy", "echo", "nova", "shimmer"];
-                    return list.map((v) => (
-                      <option key={v} value={v}>{v}</option>
-                    ));
-                  })()}
-                </select>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-1.5 pt-2 border-t border-border/40">
-              <div className="flex items-center justify-between">
-                <Label className="text-xs font-medium text-muted-foreground">
-                  Vitesse de lecture ({defaultAudioSpeed.toFixed(2)}x)
-                </Label>
-                <span className="text-[11px] text-muted-foreground font-mono">
-                  {defaultAudioSpeed === 1.0
-                    ? "Normal"
-                    : defaultAudioSpeed < 1.0
-                      ? "Plus lent"
-                      : "Plus rapide"}
-                </span>
-              </div>
-              <input
-                className="w-full accent-emerald-500"
-                max={2.0}
-                min={0.5}
-                onChange={(e) =>
-                  setDefaultAudioSpeed(Number.parseFloat(e.target.value))
-                }
-                step={0.05}
-                type="range"
-                value={defaultAudioSpeed}
-              />
-            </div>
-
-            <div className="pt-2 flex justify-end">
-              <button
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer disabled:opacity-50"
-                disabled={isSavingToolsPref}
-                onClick={handleSaveToolsPreferences}
-                type="button"
-              >
-                {isSavingToolsPref ? (
-                  <Loader2Icon className="size-4 animate-spin" />
-                ) : null}
-                {isSavingToolsPref
-                  ? "Enregistrement..."
-                  : "Enregistrer les outils dans votre profil"}
-              </button>
-            </div>
-          </div>
-
-          {/* Mode régénération */}
-          <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6">
-            <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-500 ring-1 ring-indigo-500/20">
-                <SettingsIcon className="size-5" />
-              </div>
-              <div>
-                <h3 className="text-base font-semibold text-foreground">
-                  Mode régénération des messages
-                </h3>
-                <p className="text-xs text-muted-foreground">
-                  Choisissez le comportement du bouton « Régénérer » sur les
-                  messages de l'assistant.
-                </p>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-              <button
-                className={`p-3 rounded-xl border text-left flex flex-col gap-1 cursor-pointer transition-all ${
-                  regenerateMode === "truncate"
-                    ? "bg-primary/10 border-primary/30 ring-1 ring-primary/20"
-                    : "bg-muted/20 border-border/50 hover:bg-muted/40"
-                }`}
-                onClick={() => setRegenerateMode("truncate")}
-                type="button"
-              >
-                <span className="text-sm font-semibold text-foreground">
-                  Tronquer
-                </span>
-                <span className="text-xs text-muted-foreground leading-tight">
-                  Supprime les messages suivants et régénère à partir du message
-                  ciblé (historique réécrit).
-                </span>
-              </button>
-              <button
-                className={`p-3 rounded-xl border text-left flex flex-col gap-1 cursor-pointer transition-all ${
-                  regenerateMode === "fork"
-                    ? "bg-primary/10 border-primary/30 ring-1 ring-primary/20"
-                    : "bg-muted/20 border-border/50 hover:bg-muted/40"
-                }`}
-                onClick={() => setRegenerateMode("fork")}
-                type="button"
-              >
-                <span className="text-sm font-semibold text-foreground">
-                  Fork (Brancher)
-                </span>
-                <span className="text-xs text-muted-foreground leading-tight">
-                  Crée une nouvelle conversation branchée, l'historique original
-                  reste intact.
-                </span>
-              </button>
-            </div>
-            <div className="flex justify-end">
-              <button
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-5 py-2 text-sm font-medium hover:opacity-90 cursor-pointer"
-                onClick={handleSaveRegenerateMode}
-                type="button"
-              >
-                Enregistrer le mode
-              </button>
-            </div>
-          </div>
+              key={tab.id}
+              onClick={() => handleTabChange(tab.id)}
+              type="button"
+            >
+              <tab.icon className="size-3.5" />
+              <span>{tab.label}</span>
+            </button>
+          ))}
         </div>
-      ) : activeTab === "notifications" ? (
-        /* ────────────── SECTION NOTIFICATIONS ────────────── */
-        <div className="py-6 flex flex-col gap-6 max-w-3xl">
-          <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6">
-            <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-xl bg-blue-500/10 text-blue-500 ring-1 ring-blue-500/20">
-                <BellIcon className="size-5" />
-              </div>
-              <div>
-                <h3 className="text-base font-semibold text-foreground">
-                  Notifications
-                </h3>
-                <p className="text-xs text-muted-foreground">
-                  Gérez l'envoi et la personnalisation de vos notifications.
-                </p>
-              </div>
-              <div className="ml-auto flex items-center gap-2">
-                <span
-                  className={`text-xs px-2 py-1 rounded-full border font-medium ${
-                    notifEnabled
-                      ? "bg-emerald-500/10 text-emerald-600 border-emerald-500/20"
-                      : "bg-muted text-muted-foreground border-border/50"
-                  }`}
-                >
-                  {notifEnabled ? "Activées" : "Désactivées"}
-                </span>
-              </div>
-            </div>
+      </div>
 
-            {/* Demande permission */}
-            {browserPerm === "granted" ? (
-              <div className="p-3 rounded-xl border border-emerald-500/20 bg-emerald-500/5 flex items-center justify-between gap-3">
-                <span className="text-sm font-medium text-foreground flex items-center gap-2">
-                  <ShieldCheckIcon className="size-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                  Permission accordée
-                </span>
-                <button
-                  aria-label="Redemander l'autorisation"
-                  className="inline-flex items-center justify-center rounded-lg p-1.5 text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors cursor-pointer shrink-0"
-                  onClick={handleRequestNotificationPermission}
-                  title="Redemander l'autorisation"
-                  type="button"
-                >
-                  <RefreshCwIcon className="size-3.5" />
-                </button>
-              </div>
-            ) : (
-              <div className="p-3 rounded-xl border border-amber-500/20 bg-amber-500/5 flex flex-col gap-2">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex flex-col">
-                    <span className="text-sm font-medium text-foreground">
-                      Permission du navigateur
-                    </span>
-                    <span className="text-xs text-muted-foreground">
-                      État actuel :{" "}
-                      <span className="font-mono font-semibold">
-                        {browserPerm}
-                      </span>{" "}
-                      — requise pour les notifications système.
-                    </span>
+      <div className="max-w-7xl mx-auto w-full p-4 sm:p-6 md:p-10 flex gap-8 items-start">
+        <SettingsAnchorNav items={anchorItems} />
+        <div className="flex-1 min-w-0">
+          {isLoading ? (
+            <div className="py-20 flex flex-col items-center justify-center text-muted-foreground gap-3">
+              <Loader2Icon className="size-6 animate-spin text-primary" />
+              <span className="text-sm">Chargement de vos informations...</span>
+            </div>
+          ) : activeTab === "profile" ? (
+            /* ────────────── SECTION PROFIL ────────────── */
+            <div className="py-6 flex flex-col gap-8 max-w-4xl">
+              {/* Avatar */}
+              <div
+                className="flex items-center gap-5 p-5 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md scroll-mt-6"
+                id="profile-avatar"
+              >
+                <div className="relative group">
+                  <div className="size-20 rounded-full ring-2 ring-border/80 overflow-hidden bg-muted flex items-center justify-center shadow-md">
+                    {profile?.avatarUrl ? (
+                      <Image
+                        alt={username}
+                        className="size-full object-cover"
+                        height={80}
+                        src={profile.avatarUrl}
+                        unoptimized
+                        width={80}
+                      />
+                    ) : (
+                      <div className="size-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-2xl font-bold text-white">
+                        {username.charAt(0).toUpperCase()}
+                      </div>
+                    )}
                   </div>
+
                   <button
-                    className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-amber-600 text-white px-4 py-2 text-xs font-semibold hover:opacity-90 cursor-pointer shrink-0"
-                    onClick={handleRequestNotificationPermission}
+                    className="absolute inset-0 rounded-full bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white cursor-pointer"
+                    disabled={isUploadingAvatar}
+                    onClick={() => fileInputRef.current?.click()}
+                    title="Changer la photo"
                     type="button"
                   >
-                    <BellIcon className="size-3.5" />
-                    Demander l'autorisation
+                    {isUploadingAvatar ? (
+                      <Loader2Icon className="size-6 animate-spin" />
+                    ) : (
+                      <CameraIcon className="size-6" />
+                    )}
+                  </button>
+
+                  <input
+                    accept="image/*"
+                    className="hidden"
+                    onChange={handleAvatarChange}
+                    ref={fileInputRef}
+                    type="file"
+                  />
+                </div>
+
+                <div className="flex flex-col">
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-semibold text-foreground text-base">
+                      {username}
+                    </h3>
+                    <span className="text-xs px-2 py-0.5 rounded-full font-bold uppercase bg-primary/10 text-primary border border-primary/20">
+                      {profile?.tier || "Free"}
+                    </span>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-0.5">
+                    {email}
+                  </p>
+                  <button
+                    className="mt-2 text-xs font-medium text-primary hover:underline cursor-pointer flex items-center gap-1"
+                    disabled={isUploadingAvatar}
+                    onClick={() => fileInputRef.current?.click()}
+                    type="button"
+                  >
+                    <CameraIcon className="size-3.5" />
+                    Changer la photo de profil
                   </button>
                 </div>
-                <p className="text-[11px] text-muted-foreground">
-                  En activant, vous acceptez de recevoir des notifications
-                  navigateur et in-app. Consultez{" "}
-                  <a
-                    className="underline text-primary"
-                    href="https://mai-devs.vercel.app"
-                    rel="noopener noreferrer"
-                    target="_blank"
+              </div>
+
+              {/* Formulaire des informations personnelles */}
+              <form
+                className="flex flex-col gap-5 scroll-mt-6"
+                id="profile-form"
+                onSubmit={handleProfileSubmit}
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-2">
+                    <Label
+                      className="text-xs font-medium text-muted-foreground"
+                      htmlFor="settings-username"
+                    >
+                      Nom d'utilisateur
+                    </Label>
+                    <Input
+                      className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
+                      id="settings-username"
+                      onChange={(e) => setUsername(e.target.value)}
+                      required
+                      value={username}
+                    />
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    <Label
+                      className="text-xs font-medium text-muted-foreground"
+                      htmlFor="settings-email"
+                    >
+                      Adresse e-mail
+                    </Label>
+                    <Input
+                      className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
+                      id="settings-email"
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      type="email"
+                      value={email}
+                    />
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <Label
+                    className="text-xs font-medium text-muted-foreground"
+                    htmlFor="settings-phone"
                   >
-                    mai-devs.vercel.app
-                  </a>{" "}
-                  pour la politique RGPD.
-                </p>
-              </div>
-            )}
+                    Numéro de téléphone (optionnel)
+                  </Label>
+                  <Input
+                    className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
+                    id="settings-phone"
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="+33 6 12 34 56 78"
+                    type="tel"
+                    value={phone}
+                  />
+                </div>
 
-            {/* Toggle global */}
-            <label className="flex items-center justify-between p-3 rounded-xl border border-border/50 bg-muted/20 cursor-pointer">
-              <div className="flex flex-col">
-                <span className="text-sm font-semibold text-foreground">
-                  Activer les notifications
-                </span>
-                <span className="text-xs text-muted-foreground">
-                  Maître — désactive tout si off. À l'activation, « Actualités
-                  d'mAI » est activé par défaut.
-                </span>
-              </div>
-              <input
-                checked={notifEnabled}
-                className="size-5 accent-primary"
-                onChange={(e) => {
-                  const v = e.target.checked;
-                  setNotifEnabled(v);
-                  if (v) {
-                    setNotifNews(true);
-                  }
-                }}
-                type="checkbox"
-              />
-            </label>
-
-            {/* Granulaires */}
-            <div
-              className={`flex flex-col gap-3 pt-3 border-t border-border/40 ${
-                notifEnabled ? "" : "opacity-50 pointer-events-none"
-              }`}
-            >
-              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Personnalisation
-              </p>
-              {[
-                {
-                  desc: "À chaque réponse de l'IA dans vos conversations",
-                  key: "ai",
-                  label: "Réponse de l'IA",
-                  setter: setNotifAiResponse,
-                  value: notifAiResponse,
-                },
-                {
-                  desc: "Lors de la création d'un nouveau dossier/projet",
-                  key: "project",
-                  label: "Nouveau projet",
-                  setter: setNotifProject,
-                  value: notifProject,
-                },
-                {
-                  desc: "Lors de l'ajout d'un nouveau serveur MCP",
-                  key: "mcp",
-                  label: "Nouveau MCP",
-                  setter: setNotifMcp,
-                  value: notifMcp,
-                },
-                {
-                  desc: "Lors d'une demande d'accès / exécution d'outil MCP (write/execute)",
-                  key: "mcpAccess",
-                  label: "Demande d'accès MCP",
-                  setter: setNotifMcpAccess,
-                  value: notifMcpAccess,
-                },
-                {
-                  desc: "Actualités et annonces mAI (via admin, activé par défaut si notifications on)",
-                  key: "news",
-                  label: "Actualités d'mAI",
-                  setter: setNotifNews,
-                  value: notifNews,
-                },
-                {
-                  desc: "Lorsqu'une tâche de planification automatique se termine avec succès",
-                  key: "planningTaskCompleted",
-                  label: "Tâche planifiée terminée",
-                  setter: setNotifPlanningTaskCompleted,
-                  value: notifPlanningTaskCompleted,
-                },
-                {
-                  desc: "Alerte en cas d'atteinte de 90% ou 100% de votre quota mAI",
-                  key: "quotaWarning",
-                  label: "Alerte de quota",
-                  setter: setNotifQuotaWarning,
-                  value: notifQuotaWarning,
-                },
-              ].map((item) => (
-                <label
-                  className="flex items-center justify-between p-2.5 rounded-xl bg-muted/20 border border-border/30 cursor-pointer"
-                  key={item.key}
+                {/* Changement de mot de passe */}
+                <div
+                  className="pt-4 border-t border-border/50 flex flex-col gap-4 scroll-mt-6"
+                  id="profile-security"
                 >
-                  <div className="flex flex-col pr-3">
-                    <span className="text-sm font-medium text-foreground">
-                      {item.label}
+                  <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
+                    <KeyRoundIcon className="size-4 text-primary" />
+                    Sécurité & Mot de passe
+                  </h3>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="flex flex-col gap-2">
+                      <Label
+                        className="text-xs font-medium text-muted-foreground"
+                        htmlFor="settings-current-password"
+                      >
+                        Mot de passe actuel{" "}
+                        <strong className="text-red-500">*</strong>
+                      </Label>
+                      <Input
+                        className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
+                        id="settings-current-password"
+                        onChange={(e) => setCurrentPassword(e.target.value)}
+                        placeholder="Obligatoire pour valider"
+                        required
+                        type="password"
+                        value={currentPassword}
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                      <Label
+                        className="text-xs font-medium text-muted-foreground"
+                        htmlFor="settings-new-password"
+                      >
+                        Nouveau mot de passe (optionnel)
+                      </Label>
+                      <Input
+                        className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
+                        id="settings-new-password"
+                        onChange={(e) => setNewPassword(e.target.value)}
+                        placeholder="Laisser vide si inchangé"
+                        type="password"
+                        value={newPassword}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Préférences */}
+                <div className="pt-4 border-t border-border/50 flex flex-col gap-3">
+                  <label className="flex items-center gap-3 text-xs text-foreground cursor-pointer">
+                    <input
+                      checked={newsletter}
+                      className="rounded border-border size-4 accent-primary"
+                      onChange={(e) => setNewsletter(e.target.checked)}
+                      type="checkbox"
+                    />
+                    <span>
+                      Recevoir les actualités et annonces mAI par e-mail
                     </span>
-                    <span className="text-xs text-muted-foreground">
-                      {item.desc}
+                  </label>
+
+                  <label className="flex items-center gap-3 text-xs text-foreground cursor-pointer">
+                    <input
+                      checked={notifyLimits}
+                      className="rounded border-border size-4 accent-primary"
+                      onChange={(e) => setNotifyLimits(e.target.checked)}
+                      type="checkbox"
+                    />
+                    <span>
+                      M'alerter par e-mail lorsque j'atteins 90% de mes limites
+                      de tokens ou stockage
+                    </span>
+                  </label>
+                </div>
+
+                <div className="pt-4">
+                  <button
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 disabled:opacity-50 cursor-pointer shadow-sm"
+                    disabled={isSaving}
+                    type="submit"
+                  >
+                    {isSaving ? (
+                      <>
+                        <Loader2Icon className="size-4 animate-spin" />
+                        Enregistrement...
+                      </>
+                    ) : (
+                      "Enregistrer les modifications"
+                    )}
+                  </button>
+                </div>
+              </form>
+            </div>
+          ) : activeTab === "preferences" ? (
+            /* ────────────── SECTION PRÉFÉRENCES IA ────────────── */
+            <div className="py-6 flex flex-col gap-6 max-w-4xl">
+              <div
+                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6 scroll-mt-6"
+                id="prefs-defaults"
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="p-2 rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
+                    <SparklesIcon className="size-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-semibold text-foreground">
+                      Préférences IA
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Modèle par défaut (enregistré dans votre compte) et Agents
+                      — styles IA personnalisés remplaçant les Modes.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-2 pt-2">
+                  <Label className="text-xs font-medium text-muted-foreground">
+                    Modèle par défaut
+                  </Label>
+                  <ModelSelectorCompact
+                    capabilities={prefModelsData?.capabilities}
+                    models={prefModels.length > 0 ? prefModels : undefined}
+                    onModelChange={setDefaultModelId}
+                    selectedModelId={defaultModelId}
+                    variant="block"
+                  />
+                  <span className="text-[11px] text-muted-foreground">
+                    Ce modèle sera pré-sélectionné pour chaque nouvelle
+                    conversation. Vous pouvez le changer à la volée dans la
+                    barre de saisie.
+                  </span>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <Label className="text-xs font-medium text-muted-foreground">
+                    Visibilité par défaut des conversations
+                  </Label>
+                  <OptionSelector
+                    items={[
+                      { id: "private", label: "Privée (recommandé)" },
+                      { id: "public", label: "Publique" },
+                    ]}
+                    onChange={(id) =>
+                      setDefaultChatVisibility(
+                        id === "public" ? "public" : "private"
+                      )
+                    }
+                    placeholder="Visibilité"
+                    value={defaultChatVisibility}
+                  />
+                  <span className="text-[11px] text-muted-foreground">
+                    Visibilité appliquée aux nouvelles conversations. Vous
+                    pourrez toujours la modifier par conversation.
+                  </span>
+                </div>
+
+                <div className="flex flex-col gap-2 p-3 rounded-xl border border-border/40 bg-muted/20">
+                  <div className="flex items-center gap-2">
+                    <BotIcon className="size-4 text-primary" />
+                    <span className="text-xs font-semibold text-foreground">
+                      Agents IA
+                    </span>
+                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-primary/10 text-primary font-bold">
+                      Nouveau
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-muted-foreground leading-relaxed">
+                    Les <strong>Agents</strong> remplacent les Modes IA. Crée
+                    jusqu'à 10 agents personnalisés (instructions 5000c,
+                    emoji/icône, modèle par défaut, skills, MCP et fichiers).
+                    Sélection globale via le menu à côté du modèle ou{" "}
+                    <code className="px-1 py-0.5 rounded bg-muted text-[10px]">
+                      @
+                    </code>{" "}
+                    /{" "}
+                    <code className="px-1 py-0.5 rounded bg-muted text-[10px]">
+                      /agents
+                    </code>
+                    .
+                  </p>
+                  <Link
+                    className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline w-fit"
+                    href="/agents"
+                  >
+                    <BotIcon className="size-3.5" /> Gérer mes agents →
+                  </Link>
+                </div>
+
+                <div className="pt-2 flex justify-end">
+                  <button
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer"
+                    onClick={handleSavePreferences}
+                    type="button"
+                  >
+                    Enregistrer les préférences
+                  </button>
+                </div>
+              </div>
+
+              {/* Instructions personnalisées */}
+              <div
+                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6 scroll-mt-6"
+                id="prefs-instructions"
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="p-2 rounded-xl bg-amber-500/10 text-amber-600 ring-1 ring-amber-500/20">
+                    <BotIcon className="size-5" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-base font-semibold text-foreground">
+                      Instructions personnalisées
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Personnalisez le comportement de mAI — ton, langue,
+                      contexte métier. Synchronisé sur tous vos appareils.
+                    </p>
+                  </div>
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      checked={customEnabled}
+                      className="size-4 rounded border-border accent-primary"
+                      onChange={(e) => setCustomEnabled(e.target.checked)}
+                      type="checkbox"
+                    />
+                    <span className="text-xs font-medium">Activé</span>
+                  </label>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <Label className="text-xs font-medium text-muted-foreground">
+                    Qui êtes-vous ? Que doit savoir mAI sur vous ? (max 4000c)
+                  </Label>
+                  <textarea
+                    className="w-full rounded-xl border border-border/60 bg-muted/20 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary/20 resize-y"
+                    maxLength={4000}
+                    onChange={(e) => setCustomInstructions(e.target.value)}
+                    placeholder="Ex: Je suis développeur full-stack à Paris. Réponds toujours en français, tutoie, sois concis, privilégie TypeScript avec exemples exécutables. Mon projet principal est mAI Web..."
+                    rows={5}
+                    value={customInstructions}
+                  />
+                  <span className="text-[11px] text-muted-foreground text-right">
+                    {customInstructions.length}/4000
+                  </span>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <Label className="text-xs font-medium text-muted-foreground">
+                      Température ({customTemp})
+                    </Label>
+                    <input
+                      className="w-full accent-primary"
+                      max={2}
+                      min={0}
+                      onChange={(e) =>
+                        setCustomTemp(Number.parseFloat(e.target.value))
+                      }
+                      step={0.1}
+                      type="range"
+                      value={customTemp}
+                    />
+                    <span className="text-[11px] text-muted-foreground">
+                      0 = Précis, 2 = Créatif
+                    </span>
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <Label className="text-xs font-medium text-muted-foreground">
+                      Top P ({customTopP})
+                    </Label>
+                    <input
+                      className="w-full accent-primary"
+                      max={1}
+                      min={0}
+                      onChange={(e) =>
+                        setCustomTopP(Number.parseFloat(e.target.value))
+                      }
+                      step={0.05}
+                      type="range"
+                      value={customTopP}
+                    />
+                    <span className="text-[11px] text-muted-foreground">
+                      Contrôle diversité
+                    </span>
+                  </div>
+                </div>
+                <div className="flex justify-end">
+                  <button
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-600 text-white px-6 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer disabled:opacity-50"
+                    disabled={isSavingCustom}
+                    onClick={handleSaveCustomInstructions}
+                    type="button"
+                  >
+                    {isSavingCustom ? (
+                      <Loader2Icon className="size-4 animate-spin" />
+                    ) : null}
+                    {isSavingCustom
+                      ? "Enregistrement..."
+                      : "Enregistrer instructions"}
+                  </button>
+                </div>
+              </div>
+
+              {/* Agent par défaut */}
+              <div
+                className={`p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6 scroll-mt-6 ${isFree ? "cursor-pointer" : ""}`}
+                id="prefs-agent"
+                onClick={
+                  isFree
+                    ? () => {
+                        toast.error(
+                          "Sélection d'agents réservée aux forfaits Plus, Pro et Max"
+                        );
+                        setAgentsUpgradeOpen(true);
+                      }
+                    : undefined
+                }
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 ring-1 ring-indigo-500/20">
+                    <BotIcon className="size-5" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-base font-semibold text-foreground">
+                      Agent par défaut
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Agent activé automatiquement au lancement de chaque
+                      nouvelle discussion.
+                    </p>
+                  </div>
+                  {isSavingDefaultAgent && (
+                    <Loader2Icon className="size-4 animate-spin text-muted-foreground" />
+                  )}
+                </div>
+                {isFree ? (
+                  <div className="flex items-center gap-2 p-3 rounded-xl border border-dashed border-amber-500/40 bg-amber-500/5 text-xs text-amber-700 dark:text-amber-400">
+                    <LockIcon className="size-4 shrink-0" />
+                    <span>
+                      Réservé aux forfaits Plus, Pro et Max — passez à un
+                      forfait supérieur pour choisir un agent par défaut.
+                    </span>
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-1.5">
+                    <Label className="text-xs font-medium text-muted-foreground">
+                      Agent activé au lancement d'une nouvelle conversation
+                    </Label>
+                    <OptionSelector
+                      disabled={isSavingDefaultAgent}
+                      items={[
+                        { id: "none", label: "Aucun (modèle standard)" },
+                        ...prefAgents.map((a) => ({
+                          icon: a.emoji ? (
+                            <span>{a.emoji}</span>
+                          ) : (
+                            <BotIcon className="size-3.5" />
+                          ),
+                          id: a.id,
+                          label: a.name,
+                        })),
+                      ]}
+                      onChange={handleSaveDefaultAgent}
+                      placeholder="Choisir un agent"
+                      value={defaultAgentId}
+                    />
+                    <span className="text-[11px] text-muted-foreground">
+                      S'applique au prochain chargement du chat. Modifiable à
+                      tout moment via la mention @agent.
+                    </span>
+                  </div>
+                )}
+
+                <div className="pt-2 border-t border-border/40 flex items-center justify-between gap-3">
+                  <div className="flex flex-col">
+                    <span className="text-xs font-semibold text-foreground">
+                      Icônes des agents sur les conversations
+                    </span>
+                    <span className="text-[11px] text-muted-foreground">
+                      Affiche l'icône et la couleur de l'agent configuré pour
+                      chaque conversation dans l'historique latéral.
+                    </span>
+                  </div>
+                  <label className="flex items-center gap-2 cursor-pointer shrink-0">
+                    <input
+                      checked={showAgentChatIcons}
+                      className="size-4 rounded border-border accent-primary cursor-pointer"
+                      disabled={isSavingAgentIconsPref}
+                      onChange={(e) =>
+                        handleToggleShowAgentChatIcons(e.target.checked)
+                      }
+                      type="checkbox"
+                    />
+                    <span className="text-xs font-medium">
+                      {showAgentChatIcons ? "Activé" : "Désactivé"}
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <UpgradeDialog
+                feature="agents"
+                onOpenChange={setAgentsUpgradeOpen}
+                open={agentsUpgradeOpen}
+              />
+
+              {/* Préférences Outils de Génération (Images & Audio) */}
+              <div
+                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6 scroll-mt-6"
+                id="prefs-tools"
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="p-2 rounded-xl bg-violet-500/10 text-violet-500 ring-1 ring-violet-500/20">
+                    <ImageIcon className="size-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-semibold text-foreground">
+                      Outil Génération d'Images
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Configurez le modèle Black Forest / FLUX et la résolution
+                      par défaut utilisés par l'outil de génération d'images.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                  <div className="flex flex-col gap-2">
+                    <Label className="text-xs font-medium text-muted-foreground">
+                      Modèle d'image par défaut
+                    </Label>
+                    <ModelSelectorCompact
+                      models={imageModels.length > 0 ? imageModels : undefined}
+                      onModelChange={setDefaultImageModel}
+                      placeholder="Modèle d'image par défaut"
+                      selectedModelId={defaultImageModel}
+                      source="images"
+                      variant="block"
+                    />
+                    <span className="text-[11px] text-muted-foreground">
+                      {imageModels.length > 0
+                        ? `${imageModels.length} modèles disponibles (synchronisés via l'API).`
+                        : "Modèle activé automatiquement quand vous demandez à l'IA d'illustrer ou créer une image."}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    <Label className="text-xs font-medium text-muted-foreground">
+                      Format et taille par défaut
+                    </Label>
+                    <ImageSizeOptionSelector
+                      onChange={setDefaultImageSize}
+                      value={defaultImageSize}
+                    />
+                    <span className="text-[11px] text-muted-foreground">
+                      Ratio d'aspect et dimensions par défaut générés.
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Préférences Outil Audio & Synthèse Vocale */}
+              <div
+                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6 scroll-mt-6"
+                id="prefs-audio"
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-500 ring-1 ring-emerald-500/20">
+                    <Volume2Icon className="size-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-semibold text-foreground">
+                      Outil Synthèse Vocale & Audio
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Configurez le modèle vocal, la voix par défaut et le
+                      rythme de lecture audio.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                  <div className="flex flex-col gap-2">
+                    <Label className="text-xs font-medium text-muted-foreground">
+                      Modèle audio par défaut
+                    </Label>
+                    <ModelSelectorCompact
+                      models={audioModels.length > 0 ? audioModels : undefined}
+                      onModelChange={(val) => {
+                        setDefaultAudioModel(val);
+                        const m = audioModels.find((am) => am.id === val);
+                        if (
+                          m?.voices &&
+                          Array.isArray(m.voices) &&
+                          m.voices.length > 0
+                        ) {
+                          setDefaultAudioVoice(m.voices[0]);
+                        }
+                      }}
+                      placeholder="Modèle audio par défaut"
+                      selectedModelId={defaultAudioModel}
+                      source="speech"
+                      variant="block"
+                    />
+                    <span className="text-[11px] text-muted-foreground">
+                      {audioModels.length > 0
+                        ? `${audioModels.length} modèles audio synchronisés via l'API.`
+                        : "Modèle de synthèse vocale par défaut."}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    <Label className="text-xs font-medium text-muted-foreground">
+                      Voix par défaut
+                    </Label>
+                    {audioModelVoices.length === 0 ? (
+                      <div className="h-10 flex items-center rounded-xl border border-border/60 bg-muted/30 px-3 text-sm text-muted-foreground">
+                        Voix par défaut du modèle
+                      </div>
+                    ) : (
+                      <VoiceOptionSelector
+                        onChange={setDefaultAudioVoice}
+                        value={defaultAudioVoice}
+                        voices={audioModelVoices}
+                      />
+                    )}
+                    <span className="text-[11px] text-muted-foreground">
+                      Voix récupérées dynamiquement via l'API pour le modèle
+                      sélectionné.
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-1.5 pt-2 border-t border-border/40">
+                  <div className="flex items-center justify-between">
+                    <Label className="text-xs font-medium text-muted-foreground">
+                      Vitesse de lecture ({defaultAudioSpeed.toFixed(2)}x)
+                    </Label>
+                    <span className="text-[11px] text-muted-foreground font-mono">
+                      {defaultAudioSpeed === 1.0
+                        ? "Normal"
+                        : defaultAudioSpeed < 1.0
+                          ? "Plus lent"
+                          : "Plus rapide"}
                     </span>
                   </div>
                   <input
-                    checked={item.value}
-                    className="size-4 accent-primary"
-                    onChange={(e) => (item.setter as any)(e.target.checked)}
+                    className="w-full accent-emerald-500"
+                    max={2.0}
+                    min={0.5}
+                    onChange={(e) =>
+                      setDefaultAudioSpeed(Number.parseFloat(e.target.value))
+                    }
+                    step={0.05}
+                    type="range"
+                    value={defaultAudioSpeed}
+                  />
+                </div>
+
+                <div className="pt-2 flex justify-end">
+                  <button
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer disabled:opacity-50"
+                    disabled={isSavingToolsPref}
+                    onClick={handleSaveToolsPreferences}
+                    type="button"
+                  >
+                    {isSavingToolsPref ? (
+                      <Loader2Icon className="size-4 animate-spin" />
+                    ) : null}
+                    {isSavingToolsPref
+                      ? "Enregistrement..."
+                      : "Enregistrer les outils dans votre profil"}
+                  </button>
+                </div>
+              </div>
+
+              {/* Mode régénération */}
+              <div
+                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6 scroll-mt-6"
+                id="prefs-regenerate"
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-500 ring-1 ring-indigo-500/20">
+                    <SettingsIcon className="size-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-semibold text-foreground">
+                      Mode régénération des messages
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Choisissez le comportement du bouton « Régénérer » sur les
+                      messages de l'assistant.
+                    </p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                  <button
+                    className={`p-3 rounded-xl border text-left flex flex-col gap-1 cursor-pointer transition-all ${
+                      regenerateMode === "truncate"
+                        ? "bg-primary/10 border-primary/30 ring-1 ring-primary/20"
+                        : "bg-muted/20 border-border/50 hover:bg-muted/40"
+                    }`}
+                    onClick={() => setRegenerateMode("truncate")}
+                    type="button"
+                  >
+                    <span className="text-sm font-semibold text-foreground">
+                      Tronquer
+                    </span>
+                    <span className="text-xs text-muted-foreground leading-tight">
+                      Supprime les messages suivants et régénère à partir du
+                      message ciblé (historique réécrit).
+                    </span>
+                  </button>
+                  <button
+                    className={`p-3 rounded-xl border text-left flex flex-col gap-1 cursor-pointer transition-all ${
+                      regenerateMode === "fork"
+                        ? "bg-primary/10 border-primary/30 ring-1 ring-primary/20"
+                        : "bg-muted/20 border-border/50 hover:bg-muted/40"
+                    }`}
+                    onClick={() => setRegenerateMode("fork")}
+                    type="button"
+                  >
+                    <span className="text-sm font-semibold text-foreground">
+                      Fork (Brancher)
+                    </span>
+                    <span className="text-xs text-muted-foreground leading-tight">
+                      Crée une nouvelle conversation branchée, l'historique
+                      original reste intact.
+                    </span>
+                  </button>
+                </div>
+                <div className="flex justify-end">
+                  <button
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-5 py-2 text-sm font-medium hover:opacity-90 cursor-pointer"
+                    onClick={handleSaveRegenerateMode}
+                    type="button"
+                  >
+                    Enregistrer le mode
+                  </button>
+                </div>
+              </div>
+            </div>
+          ) : activeTab === "notifications" ? (
+            /* ────────────── SECTION NOTIFICATIONS ────────────── */
+            <div className="py-6 flex flex-col gap-6 max-w-4xl">
+              <div
+                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6 scroll-mt-6"
+                id="notif-main"
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="p-2 rounded-xl bg-blue-500/10 text-blue-500 ring-1 ring-blue-500/20">
+                    <BellIcon className="size-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-semibold text-foreground">
+                      Notifications
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Gérez l'envoi et la personnalisation de vos notifications.
+                    </p>
+                  </div>
+                  <div className="ml-auto flex items-center gap-2">
+                    <span
+                      className={`text-xs px-2 py-1 rounded-full border font-medium ${
+                        notifEnabled
+                          ? "bg-emerald-500/10 text-emerald-600 border-emerald-500/20"
+                          : "bg-muted text-muted-foreground border-border/50"
+                      }`}
+                    >
+                      {notifEnabled ? "Activées" : "Désactivées"}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Demande permission */}
+                {browserPerm === "granted" ? (
+                  <div className="p-3 rounded-xl border border-emerald-500/20 bg-emerald-500/5 flex items-center justify-between gap-3">
+                    <span className="text-sm font-medium text-foreground flex items-center gap-2">
+                      <ShieldCheckIcon className="size-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                      Permission accordée
+                    </span>
+                    <button
+                      aria-label="Redemander l'autorisation"
+                      className="inline-flex items-center justify-center rounded-lg p-1.5 text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors cursor-pointer shrink-0"
+                      onClick={handleRequestNotificationPermission}
+                      title="Redemander l'autorisation"
+                      type="button"
+                    >
+                      <RefreshCwIcon className="size-3.5" />
+                    </button>
+                  </div>
+                ) : (
+                  <div className="p-3 rounded-xl border border-amber-500/20 bg-amber-500/5 flex flex-col gap-2">
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex flex-col">
+                        <span className="text-sm font-medium text-foreground">
+                          Permission du navigateur
+                        </span>
+                        <span className="text-xs text-muted-foreground">
+                          État actuel :{" "}
+                          <span className="font-mono font-semibold">
+                            {browserPerm}
+                          </span>{" "}
+                          — requise pour les notifications système.
+                        </span>
+                      </div>
+                      <button
+                        className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-amber-600 text-white px-4 py-2 text-xs font-semibold hover:opacity-90 cursor-pointer shrink-0"
+                        onClick={handleRequestNotificationPermission}
+                        type="button"
+                      >
+                        <BellIcon className="size-3.5" />
+                        Demander l'autorisation
+                      </button>
+                    </div>
+                    <p className="text-[11px] text-muted-foreground">
+                      En activant, vous acceptez de recevoir des notifications
+                      navigateur et in-app. Consultez{" "}
+                      <a
+                        className="underline text-primary"
+                        href="https://mai-devs.vercel.app"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        mai-devs.vercel.app
+                      </a>{" "}
+                      pour la politique RGPD.
+                    </p>
+                  </div>
+                )}
+
+                {/* Toggle global */}
+                <label className="flex items-center justify-between p-3 rounded-xl border border-border/50 bg-muted/20 cursor-pointer">
+                  <div className="flex flex-col">
+                    <span className="text-sm font-semibold text-foreground">
+                      Activer les notifications
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      Maître — désactive tout si off. À l'activation, «
+                      Actualités d'mAI » est activé par défaut.
+                    </span>
+                  </div>
+                  <input
+                    checked={notifEnabled}
+                    className="size-5 accent-primary"
+                    onChange={(e) => {
+                      const v = e.target.checked;
+                      setNotifEnabled(v);
+                      if (v) {
+                        setNotifNews(true);
+                      }
+                    }}
                     type="checkbox"
                   />
                 </label>
-              ))}
-            </div>
 
-            <div className="flex justify-end pt-2">
-              <button
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-2.5 text-sm font-medium hover:opacity-90 disabled:opacity-50 cursor-pointer"
-                disabled={isSavingNotif}
-                onClick={handleSaveNotifPrefs}
-                type="button"
-              >
-                {isSavingNotif ? (
-                  <Loader2Icon className="size-4 animate-spin" />
-                ) : null}
-                {isSavingNotif
-                  ? "Enregistrement..."
-                  : "Enregistrer les notifications"}
-              </button>
-            </div>
-          </div>
-
-          <div className="p-4 rounded-xl border border-border/60 bg-muted/20 flex items-start gap-3">
-            <AlertCircleIcon className="size-5 text-primary shrink-0 mt-0.5" />
-            <div className="text-xs text-muted-foreground">
-              <p className="font-semibold text-foreground mb-1">
-                RGPD & Données
-              </p>
-              <p>
-                Vos préférences et notifications sont sécurisées dans votre
-                profil et synchronisées sur vos appareils. Les notifications
-                Actualités sont envoyées uniquement aux utilisateurs ayant
-                activé l'option. Plus d'infos sur{" "}
-                <a
-                  className="text-primary underline"
-                  href="https://mai-devs.vercel.app"
-                  rel="noopener noreferrer"
-                  target="_blank"
+                {/* Granulaires */}
+                <div
+                  className={`flex flex-col gap-3 pt-3 border-t border-border/40 ${
+                    notifEnabled ? "" : "opacity-50 pointer-events-none"
+                  }`}
                 >
-                  mai-devs.vercel.app
-                </a>
-                .
-              </p>
-            </div>
-          </div>
-        </div>
-      ) : activeTab === "configuration" ? (
-        /* ────────────── SECTION CONFIGURATION ────────────── */
-        <ConfigurationSection />
-      ) : (
-        /* ────────────── SECTION CONSOMMATION & QUOTAS ────────────── */
-        <div
-          className="py-6 flex flex-col gap-6 max-w-3xl scroll-mt-6"
-          id="usage-mAI"
-        >
-          {/* Forfait actuel */}
-          <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col md:flex-row md:items-center justify-between gap-4 sm:p-6">
-            <div>
-              <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                Forfait Actuel
-              </span>
-              <div className="flex items-center gap-3 mt-1">
-                <h2 className="text-2xl font-bold text-foreground">
-                  mAI {profile?.tier || "Free"}
-                </h2>
-                <span className="text-xs px-2.5 py-0.5 rounded-full font-bold uppercase bg-primary/10 text-primary border border-primary/20">
-                  Actif
-                </span>
-              </div>
-              <p className="text-xs text-muted-foreground mt-1">
-                {profile?.tier === "Free"
-                  ? `Accès gratuit avec ${formatTokens(aiUsage?.limit || 2_000_000)} tokens hebdomadaires et ${formatBytes(cloudUsage?.bytesLimit || 524_288_000)} de stockage cloud.`
-                  : "Forfait premium débloqué avec quotas étendus et modèles avancés."}
-              </p>
-            </div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Personnalisation
+                  </p>
+                  {[
+                    {
+                      desc: "À chaque réponse de l'IA dans vos conversations",
+                      key: "ai",
+                      label: "Réponse de l'IA",
+                      setter: setNotifAiResponse,
+                      value: notifAiResponse,
+                    },
+                    {
+                      desc: "Lors de la création d'un nouveau dossier/projet",
+                      key: "project",
+                      label: "Nouveau projet",
+                      setter: setNotifProject,
+                      value: notifProject,
+                    },
+                    {
+                      desc: "Lors de l'ajout d'un nouveau serveur MCP",
+                      key: "mcp",
+                      label: "Nouveau MCP",
+                      setter: setNotifMcp,
+                      value: notifMcp,
+                    },
+                    {
+                      desc: "Lors d'une demande d'accès / exécution d'outil MCP (write/execute)",
+                      key: "mcpAccess",
+                      label: "Demande d'accès MCP",
+                      setter: setNotifMcpAccess,
+                      value: notifMcpAccess,
+                    },
+                    {
+                      desc: "Actualités et annonces mAI (via admin, activé par défaut si notifications on)",
+                      key: "news",
+                      label: "Actualités d'mAI",
+                      setter: setNotifNews,
+                      value: notifNews,
+                    },
+                    {
+                      desc: "Lorsqu'une tâche de planification automatique se termine avec succès",
+                      key: "planningTaskCompleted",
+                      label: "Tâche planifiée terminée",
+                      setter: setNotifPlanningTaskCompleted,
+                      value: notifPlanningTaskCompleted,
+                    },
+                    {
+                      desc: "Alerte en cas d'atteinte de 90% ou 100% de votre quota mAI",
+                      key: "quotaWarning",
+                      label: "Alerte de quota",
+                      setter: setNotifQuotaWarning,
+                      value: notifQuotaWarning,
+                    },
+                  ].map((item) => (
+                    <label
+                      className="flex items-center justify-between p-2.5 rounded-xl bg-muted/20 border border-border/30 cursor-pointer"
+                      key={item.key}
+                    >
+                      <div className="flex flex-col pr-3">
+                        <span className="text-sm font-medium text-foreground">
+                          {item.label}
+                        </span>
+                        <span className="text-xs text-muted-foreground">
+                          {item.desc}
+                        </span>
+                      </div>
+                      <input
+                        checked={item.value}
+                        className="size-4 accent-primary"
+                        onChange={(e) => (item.setter as any)(e.target.checked)}
+                        type="checkbox"
+                      />
+                    </label>
+                  ))}
+                </div>
 
-            <Link
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2.5 text-sm font-semibold transition-all hover:opacity-90 active:scale-95 shadow-md shrink-0"
-              href={MAI_UPGRADE_URL}
-              target="_blank"
+                <div className="flex justify-end pt-2">
+                  <button
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-2.5 text-sm font-medium hover:opacity-90 disabled:opacity-50 cursor-pointer"
+                    disabled={isSavingNotif}
+                    onClick={handleSaveNotifPrefs}
+                    type="button"
+                  >
+                    {isSavingNotif ? (
+                      <Loader2Icon className="size-4 animate-spin" />
+                    ) : null}
+                    {isSavingNotif
+                      ? "Enregistrement..."
+                      : "Enregistrer les notifications"}
+                  </button>
+                </div>
+              </div>
+
+              <div
+                className="p-4 rounded-xl border border-border/60 bg-muted/20 flex items-start gap-3 scroll-mt-6"
+                id="notif-rgpd"
+              >
+                <AlertCircleIcon className="size-5 text-primary shrink-0 mt-0.5" />
+                <div className="text-xs text-muted-foreground">
+                  <p className="font-semibold text-foreground mb-1">
+                    RGPD & Données
+                  </p>
+                  <p>
+                    Vos préférences et notifications sont sécurisées dans votre
+                    profil et synchronisées sur vos appareils. Les notifications
+                    Actualités sont envoyées uniquement aux utilisateurs ayant
+                    activé l'option. Plus d'infos sur{" "}
+                    <a
+                      className="text-primary underline"
+                      href="https://mai-devs.vercel.app"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      mai-devs.vercel.app
+                    </a>
+                    .
+                  </p>
+                </div>
+              </div>
+            </div>
+          ) : activeTab === "memory" ? (
+            /* ────────────── SECTION MÉMOIRE ────────────── */
+            <div className="py-6 flex flex-col gap-6 max-w-4xl">
+              <div className="scroll-mt-6" id="memory-card">
+                <MemoryCard allScopes />
+              </div>
+              <div
+                className="p-4 rounded-xl border border-border/60 bg-muted/20 flex items-start gap-3 scroll-mt-6"
+                id="memory-info"
+              >
+                <BrainIcon className="size-5 text-primary shrink-0 mt-0.5" />
+                <div className="text-xs text-muted-foreground">
+                  <p className="font-semibold text-foreground mb-1">
+                    Comment fonctionne la mémoire ?
+                  </p>
+                  <p>
+                    Les informations enregistrées ici sont injectées
+                    automatiquement dans le contexte des réponses de l'IA, selon
+                    leur portée : globales (toutes les conversations), par agent
+                    ou par projet. Vous pouvez aussi demander à l'IA de retenir
+                    une information via la mention <code>@Memory</code> dans le
+                    chat.
+                  </p>
+                </div>
+              </div>
+            </div>
+          ) : activeTab === "configuration" ? (
+            /* ────────────── SECTION CONFIGURATION ────────────── */
+            <div className="scroll-mt-6" id="config-commands">
+              <ConfigurationSection />
+            </div>
+          ) : (
+            /* ────────────── SECTION CONSOMMATION & QUOTAS ────────────── */
+            <div
+              className="py-6 flex flex-col gap-6 max-w-4xl scroll-mt-6"
+              id="usage-mAI"
             >
-              <SparklesIcon className="size-4" />
-              <span>Gérer / Mettre à niveau</span>
-              <ExternalLinkIcon className="size-3.5" />
-            </Link>
-          </div>
-
-          {/* Consommation mAI (Tokens hebdomadaires) */}
-          <div
-            className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6"
-            id="usage"
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <div className="p-2 rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
-                  <BotIcon className="size-5" />
-                </div>
+              {/* Forfait actuel */}
+              <div
+                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col md:flex-row md:items-center justify-between gap-4 sm:p-6 scroll-mt-6"
+                id="usage-plan"
+              >
                 <div>
-                  <h3 className="text-base font-semibold text-foreground">
-                    Utilisation de l'IA
-                  </h3>
-                  <p className="text-xs text-muted-foreground">
-                    Consommation calculée sur vos invites et réponses générées
+                  <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                    Forfait Actuel
+                  </span>
+                  <div className="flex items-center gap-3 mt-1">
+                    <h2 className="text-2xl font-bold text-foreground">
+                      mAI {profile?.tier || "Free"}
+                    </h2>
+                    <span className="text-xs px-2.5 py-0.5 rounded-full font-bold uppercase bg-primary/10 text-primary border border-primary/20">
+                      Actif
+                    </span>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    {profile?.tier === "Free"
+                      ? `Accès gratuit avec ${formatTokens(aiUsage?.limit || 2_000_000)} tokens hebdomadaires et ${formatBytes(cloudUsage?.bytesLimit || 524_288_000)} de stockage cloud.`
+                      : "Forfait premium débloqué avec quotas étendus et modèles avancés."}
                   </p>
                 </div>
-              </div>
 
-              <div className="text-right">
-                <span className="text-sm font-bold text-foreground">
-                  {formatTokens(aiUsage?.tokensUsed || 0)} /{" "}
-                  {formatTokens(aiUsage?.limit || 2_000_000)}
-                </span>
-                <span className="text-xs text-muted-foreground block">
-                  tokens ({aiPercent}%)
-                </span>
-              </div>
-            </div>
-
-            {/* Jauge */}
-            <div className="h-3 w-full rounded-full bg-muted/60 overflow-hidden relative">
-              <div
-                className={`h-full transition-all duration-500 rounded-full ${
-                  aiPercent > 90
-                    ? "bg-red-500"
-                    : aiPercent > 75
-                      ? "bg-amber-500"
-                      : "bg-gradient-to-r from-indigo-500 to-purple-600"
-                }`}
-                style={{ width: `${aiPercent}%` }}
-              />
-            </div>
-
-            <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
-              <span>Renouvellement hebdomadaire :</span>
-              <span className="font-medium text-foreground">
-                {formatDate(aiUsage?.resetAt)}
-              </span>
-            </div>
-          </div>
-
-          {/* Consommation Images (Quota journalier) */}
-          <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6">
-            <div className="flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2.5 min-w-0">
-                <div className="p-2 rounded-xl bg-purple-500/10 text-purple-500 ring-1 ring-purple-500/20 shrink-0">
-                  <ImageIcon className="size-5" />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="text-base font-semibold text-foreground truncate">
-                    Générations d'Images
-                  </h3>
-                  <p className="hidden text-xs text-muted-foreground sm:block">
-                    Images générées aujourd'hui (quota réinitialisé à minuit
-                    UTC)
-                  </p>
-                </div>
-              </div>
-
-              <div className="text-right shrink-0">
-                <span className="text-sm font-bold text-foreground">
-                  {resolvedImagesUsage.usedToday} /{" "}
-                  {resolvedImagesUsage.dailyLimit}
-                </span>
-                <span className="text-xs text-muted-foreground block">
-                  images ({imagesPercent}%)
-                </span>
-              </div>
-            </div>
-
-            {/* Jauge */}
-            <div className="h-3 w-full rounded-full bg-muted/60 overflow-hidden relative">
-              <div
-                className={`h-full transition-all duration-500 rounded-full ${
-                  imagesPercent >= 100
-                    ? "bg-red-500"
-                    : imagesPercent > 75
-                      ? "bg-amber-500"
-                      : "bg-gradient-to-r from-purple-500 to-pink-600"
-                }`}
-                style={{ width: `${imagesPercent}%` }}
-              />
-            </div>
-
-            <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
-              <span>Réinitialisation du quota :</span>
-              <span className="font-medium text-foreground">
-                {formatDate(resolvedImagesUsage.resetAt)} (Minuit UTC)
-              </span>
-            </div>
-          </div>
-
-          {/* Consommation Synthèse Vocale (Tokens Speech) */}
-          <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6">
-            <div className="flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2.5 min-w-0">
-                <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-500 ring-1 ring-emerald-500/20 shrink-0">
-                  <Volume2Icon className="size-5" />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="text-base font-semibold text-foreground truncate">
-                    Synthèse Vocale
-                  </h3>
-                  <p className="hidden text-xs text-muted-foreground sm:block">
-                    Tokens consommés pour l'API Speech et Text-to-Speech
-                  </p>
-                </div>
-              </div>
-
-              <div className="text-right shrink-0">
-                <span className="text-sm font-bold text-foreground">
-                  {formatTokens(resolvedSpeechUsage.tokensUsed)} /{" "}
-                  {formatTokens(resolvedSpeechUsage.limit)}
-                </span>
-                <span className="text-xs text-muted-foreground block">
-                  tokens ({speechPercent}%)
-                </span>
-              </div>
-            </div>
-
-            {/* Jauge */}
-            <div className="h-3 w-full rounded-full bg-muted/60 overflow-hidden relative">
-              <div
-                className={`h-full transition-all duration-500 rounded-full ${
-                  speechPercent >= 100
-                    ? "bg-red-500"
-                    : speechPercent > 75
-                      ? "bg-amber-500"
-                      : "bg-gradient-to-r from-emerald-500 to-teal-600"
-                }`}
-                style={{ width: `${speechPercent}%` }}
-              />
-            </div>
-
-            <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
-              <span>Renouvellement hebdomadaire :</span>
-              <span className="font-medium text-foreground">
-                {formatDate(resolvedSpeechUsage.resetAt || aiUsage?.resetAt)}
-              </span>
-            </div>
-          </div>
-
-          {/* Consommation Cloud Storage */}
-          <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <div className="p-2 rounded-xl bg-blue-500/10 text-blue-500 ring-1 ring-blue-500/20">
-                  <CloudIcon className="size-5" />
-                </div>
-                <div>
-                  <h3 className="text-base font-semibold text-foreground">
-                    Stockage Cloud mAI
-                  </h3>
-                  <p className="text-xs text-muted-foreground">
-                    Espace utilisé pour vos documents, pièces jointes et médias
-                  </p>
-                </div>
-              </div>
-
-              <div className="text-right">
-                <span className="text-sm font-bold text-foreground">
-                  {formatBytes(cloudUsage?.bytesUsed || 0)} /{" "}
-                  {formatBytes(cloudUsage?.bytesLimit || 524_288_000)}
-                </span>
-                <span className="text-xs text-muted-foreground block">
-                  utilisés ({cloudPercent}%)
-                </span>
-              </div>
-            </div>
-
-            {/* Jauge */}
-            <div className="h-3 w-full rounded-full bg-muted/60 overflow-hidden relative">
-              <div
-                className={`h-full transition-all duration-500 rounded-full ${
-                  cloudPercent > 90
-                    ? "bg-red-500"
-                    : cloudPercent > 75
-                      ? "bg-amber-500"
-                      : "bg-gradient-to-r from-blue-500 to-cyan-600"
-                }`}
-                style={{ width: `${cloudPercent}%` }}
-              />
-            </div>
-
-            <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
-              <span>Fichiers hébergés :</span>
-              <span className="font-medium text-foreground">
-                {cloudUsage?.filesCount || 0} fichier(s)
-              </span>
-            </div>
-          </div>
-
-          {/* Encadré d'information pour la mise à niveau */}
-          <div className="p-5 rounded-2xl border border-border/60 bg-muted/20 flex items-start gap-3">
-            <AlertCircleIcon className="size-5 text-primary shrink-0 mt-0.5" />
-            <div className="text-xs text-muted-foreground">
-              <p className="font-semibold text-foreground mb-1">
-                Besoin de plus de tokens ou d'espace de stockage ?
-              </p>
-              <p>
-                Les mises à niveau de forfait (Plus, Pro, Max) et l'activation
-                des codes promotionnels s'effectuent directement sur le portail
-                officiel{" "}
                 <Link
-                  className="text-primary font-medium underline inline-flex items-center gap-0.5"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2.5 text-sm font-semibold transition-all hover:opacity-90 active:scale-95 shadow-md shrink-0"
                   href={MAI_UPGRADE_URL}
                   target="_blank"
                 >
-                  mai-devs.vercel.app
-                  <ExternalLinkIcon className="size-3" />
+                  <SparklesIcon className="size-4" />
+                  <span>Gérer / Mettre à niveau</span>
+                  <ExternalLinkIcon className="size-3.5" />
                 </Link>
-                .
-              </p>
+              </div>
+
+              {/* Consommation mAI (Tokens hebdomadaires) */}
+              <div
+                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6"
+                id="usage"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <div className="p-2 rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
+                      <BotIcon className="size-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-semibold text-foreground">
+                        Utilisation de l'IA
+                      </h3>
+                      <p className="text-xs text-muted-foreground">
+                        Consommation calculée sur vos invites et réponses
+                        générées
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="text-right">
+                    <span className="text-sm font-bold text-foreground">
+                      {formatTokens(aiUsage?.tokensUsed || 0)} /{" "}
+                      {formatTokens(aiUsage?.limit || 2_000_000)}
+                    </span>
+                    <span className="text-xs text-muted-foreground block">
+                      tokens ({aiPercent}%)
+                    </span>
+                  </div>
+                </div>
+
+                {/* Jauge */}
+                <div className="h-3 w-full rounded-full bg-muted/60 overflow-hidden relative">
+                  <div
+                    className={`h-full transition-all duration-500 rounded-full ${
+                      aiPercent > 90
+                        ? "bg-red-500"
+                        : aiPercent > 75
+                          ? "bg-amber-500"
+                          : "bg-gradient-to-r from-indigo-500 to-purple-600"
+                    }`}
+                    style={{ width: `${aiPercent}%` }}
+                  />
+                </div>
+
+                <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
+                  <span>Renouvellement hebdomadaire :</span>
+                  <span className="font-medium text-foreground">
+                    {formatDate(aiUsage?.resetAt)}
+                  </span>
+                </div>
+              </div>
+
+              {/* Consommation Images (Quota journalier) */}
+              <div
+                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6 scroll-mt-6"
+                id="usage-images"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="p-2 rounded-xl bg-purple-500/10 text-purple-500 ring-1 ring-purple-500/20 shrink-0">
+                      <ImageIcon className="size-5" />
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="text-base font-semibold text-foreground truncate">
+                        Générations d'Images
+                      </h3>
+                      <p className="hidden text-xs text-muted-foreground sm:block">
+                        Images générées aujourd'hui (quota réinitialisé à minuit
+                        UTC)
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="text-right shrink-0">
+                    <span className="text-sm font-bold text-foreground">
+                      {resolvedImagesUsage.usedToday} /{" "}
+                      {resolvedImagesUsage.dailyLimit}
+                    </span>
+                    <span className="text-xs text-muted-foreground block">
+                      images ({imagesPercent}%)
+                    </span>
+                  </div>
+                </div>
+
+                {/* Jauge */}
+                <div className="h-3 w-full rounded-full bg-muted/60 overflow-hidden relative">
+                  <div
+                    className={`h-full transition-all duration-500 rounded-full ${
+                      imagesPercent >= 100
+                        ? "bg-red-500"
+                        : imagesPercent > 75
+                          ? "bg-amber-500"
+                          : "bg-gradient-to-r from-purple-500 to-pink-600"
+                    }`}
+                    style={{ width: `${imagesPercent}%` }}
+                  />
+                </div>
+
+                <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
+                  <span>Réinitialisation du quota :</span>
+                  <span className="font-medium text-foreground">
+                    {formatDate(resolvedImagesUsage.resetAt)} (Minuit UTC)
+                  </span>
+                </div>
+              </div>
+
+              {/* Consommation Synthèse Vocale (Tokens Speech) */}
+              <div
+                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6 scroll-mt-6"
+                id="usage-speech"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-500 ring-1 ring-emerald-500/20 shrink-0">
+                      <Volume2Icon className="size-5" />
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="text-base font-semibold text-foreground truncate">
+                        Synthèse Vocale
+                      </h3>
+                      <p className="hidden text-xs text-muted-foreground sm:block">
+                        Tokens consommés pour l'API Speech et Text-to-Speech
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="text-right shrink-0">
+                    <span className="text-sm font-bold text-foreground">
+                      {formatTokens(resolvedSpeechUsage.tokensUsed)} /{" "}
+                      {formatTokens(resolvedSpeechUsage.limit)}
+                    </span>
+                    <span className="text-xs text-muted-foreground block">
+                      tokens ({speechPercent}%)
+                    </span>
+                  </div>
+                </div>
+
+                {/* Jauge */}
+                <div className="h-3 w-full rounded-full bg-muted/60 overflow-hidden relative">
+                  <div
+                    className={`h-full transition-all duration-500 rounded-full ${
+                      speechPercent >= 100
+                        ? "bg-red-500"
+                        : speechPercent > 75
+                          ? "bg-amber-500"
+                          : "bg-gradient-to-r from-emerald-500 to-teal-600"
+                    }`}
+                    style={{ width: `${speechPercent}%` }}
+                  />
+                </div>
+
+                <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
+                  <span>Renouvellement hebdomadaire :</span>
+                  <span className="font-medium text-foreground">
+                    {formatDate(
+                      resolvedSpeechUsage.resetAt || aiUsage?.resetAt
+                    )}
+                  </span>
+                </div>
+              </div>
+
+              {/* Consommation Cloud Storage */}
+              <div
+                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6 scroll-mt-6"
+                id="usage-cloud"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <div className="p-2 rounded-xl bg-blue-500/10 text-blue-500 ring-1 ring-blue-500/20">
+                      <CloudIcon className="size-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-semibold text-foreground">
+                        Stockage Cloud mAI
+                      </h3>
+                      <p className="text-xs text-muted-foreground">
+                        Espace utilisé pour vos documents, pièces jointes et
+                        médias
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="text-right">
+                    <span className="text-sm font-bold text-foreground">
+                      {formatBytes(cloudUsage?.bytesUsed || 0)} /{" "}
+                      {formatBytes(cloudUsage?.bytesLimit || 524_288_000)}
+                    </span>
+                    <span className="text-xs text-muted-foreground block">
+                      utilisés ({cloudPercent}%)
+                    </span>
+                  </div>
+                </div>
+
+                {/* Jauge */}
+                <div className="h-3 w-full rounded-full bg-muted/60 overflow-hidden relative">
+                  <div
+                    className={`h-full transition-all duration-500 rounded-full ${
+                      cloudPercent > 90
+                        ? "bg-red-500"
+                        : cloudPercent > 75
+                          ? "bg-amber-500"
+                          : "bg-gradient-to-r from-blue-500 to-cyan-600"
+                    }`}
+                    style={{ width: `${cloudPercent}%` }}
+                  />
+                </div>
+
+                <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
+                  <span>Fichiers hébergés :</span>
+                  <span className="font-medium text-foreground">
+                    {cloudUsage?.filesCount || 0} fichier(s)
+                  </span>
+                </div>
+              </div>
+
+              {/* Encadré d'information pour la mise à niveau */}
+              <div className="p-5 rounded-2xl border border-border/60 bg-muted/20 flex items-start gap-3">
+                <AlertCircleIcon className="size-5 text-primary shrink-0 mt-0.5" />
+                <div className="text-xs text-muted-foreground">
+                  <p className="font-semibold text-foreground mb-1">
+                    Besoin de plus de tokens ou d'espace de stockage ?
+                  </p>
+                  <p>
+                    Les mises à niveau de forfait (Plus, Pro, Max) et
+                    l'activation des codes promotionnels s'effectuent
+                    directement sur le portail officiel{" "}
+                    <Link
+                      className="text-primary font-medium underline inline-flex items-center gap-0.5"
+                      href={MAI_UPGRADE_URL}
+                      target="_blank"
+                    >
+                      mai-devs.vercel.app
+                      <ExternalLinkIcon className="size-3" />
+                    </Link>
+                    .
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
         </div>
-      )}
+      </div>
 
       {/* Modale de validation OTP du nouvel e-mail */}
       <AlertDialog onOpenChange={setShowEmailOtpModal} open={showEmailOtpModal}>

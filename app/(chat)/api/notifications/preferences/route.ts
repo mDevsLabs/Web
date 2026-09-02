@@ -13,7 +13,9 @@ const prefsSchema = z.object({
   mcpAccessRequest: z.boolean().optional(),
   mcpCreated: z.boolean().optional(),
   news: z.boolean().optional(),
+  planningTaskCompleted: z.boolean().optional(),
   projectCreated: z.boolean().optional(),
+  quotaWarning: z.boolean().optional(),
   regenerateMode: z.enum(["truncate", "fork"]).optional(),
 });
 

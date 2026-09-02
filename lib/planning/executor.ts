@@ -16,11 +16,34 @@ import {
   getMessagesByChatId,
   getScheduledMessageById,
   recordTokenUsage,
+  rescheduleRecurringMessage,
   saveChat,
   saveMessages,
   setScheduledMessageStatus,
 } from "@/lib/db/queries";
 import { generateUUID } from "@/lib/utils";
+
+export type PlanningRecurrence = "none" | "daily" | "weekly" | "monthly";
+
+export function computeNextOccurrence(
+  from: Date,
+  recurrence: PlanningRecurrence
+): Date | null {
+  const next = new Date(from.getTime());
+  switch (recurrence) {
+    case "daily":
+      next.setDate(next.getDate() + 1);
+      return next;
+    case "weekly":
+      next.setDate(next.getDate() + 7);
+      return next;
+    case "monthly":
+      next.setMonth(next.getMonth() + 1);
+      return next;
+    default:
+      return null;
+  }
+}
 
 export async function executeScheduledMessage(scheduledId: string) {
   const item = await getScheduledMessageById({ id: scheduledId });
@@ -237,9 +260,39 @@ export async function executeScheduledMessage(scheduledId: string) {
       status: "completed",
     });
 
+    // Planification récurrente : reprogrammer la prochaine occurrence au lieu
+    // de terminer définitivement.
+    const recurrence = (item.recurrence as PlanningRecurrence) || "none";
+    if (recurrence !== "none") {
+      const nextDate = computeNextOccurrence(
+        // Si l'exécution a eu lieu en retard, la suivante part de l'heure
+        // planifiée pour conserver le rythme, sinon de maintenant.
+        new Date(item.scheduledAt) > new Date(Date.now() - 60 * 60 * 1000)
+          ? new Date(item.scheduledAt)
+          : new Date(),
+        recurrence
+      );
+      if (nextDate) {
+        await rescheduleRecurringMessage({
+          id: item.id,
+          nextScheduledAt: nextDate,
+        });
+      }
+    }
+
     // Notification in-app
+    const recurrenceLabel: Record<string, string> = {
+      daily: "quotidien",
+      monthly: "mensuel",
+      none: "",
+      weekly: "hebdomadaire",
+    };
     await createNotification({
-      body: `Votre message planifié « ${item.title} » a été exécuté avec succès.`,
+      body:
+        `Votre message planifié « ${item.title} » a été exécuté avec succès.` +
+        (recurrence !== "none"
+          ? ` Prochaine exécution automatique (${recurrenceLabel[recurrence]}) reprogrammée.`
+          : ""),
       link: `/chat/${targetChatId}`,
       title: "⏰ Message planifié exécuté",
       type: "ai_response",

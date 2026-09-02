@@ -8,8 +8,20 @@ export async function GET(request: Request) {
   const authHeader = request.headers.get("authorization");
   const cronSecret = process.env.CRON_SECRET;
 
-  if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
-    // Si CRON_SECRET est configuré, on le vérifie
+  // Échouer fermé : sans CRON_SECRET en production, exécuter des messages
+  // planifiés sans authentification permettrait à quiconque de consommer
+  // les quotas des utilisateurs en appelant cet endpoint.
+  if (!cronSecret) {
+    if (process.env.NODE_ENV === "production") {
+      return NextResponse.json(
+        { error: "CRON_SECRET non configuré" },
+        { status: 503 }
+      );
+    }
+    console.warn(
+      "[cron/planning] CRON_SECRET manquant — endpoint non protégé (dev uniquement)"
+    );
+  } else if (authHeader !== `Bearer ${cronSecret}`) {
     return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
   }
 

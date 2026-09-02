@@ -11,7 +11,7 @@ import {
   TrophyIcon,
   XCircleIcon,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -54,6 +54,26 @@ export function QuizCard({ args, output }: QuizCardProps) {
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number[]>>({});
   const [isAnswered, setIsAnswered] = useState<Record<number, boolean>>({});
   const [isFinished, setIsFinished] = useState(false);
+  const [showRecap, setShowRecap] = useState(false);
+  const [elapsedSeconds, setElapsedSeconds] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    if (!isFinished) {
+      timerRef.current = setInterval(() => {
+        setElapsedSeconds((prev) => prev + 1);
+      }, 1000);
+    }
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [isFinished]);
+
+  const formatTime = (totalSeconds: number) => {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+  };
 
   if (questions.length === 0) {
     return null;
@@ -118,11 +138,19 @@ export function QuizCard({ args, output }: QuizCardProps) {
     }
   };
 
+  const handlePrevious = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex((prev) => prev - 1);
+    }
+  };
+
   const handleRestart = () => {
     setCurrentIndex(0);
     setSelectedAnswers({});
     setIsAnswered({});
     setIsFinished(false);
+    setShowRecap(false);
+    setElapsedSeconds(0);
   };
 
   const totalScore = calculateScore();
@@ -146,6 +174,9 @@ export function QuizCard({ args, output }: QuizCardProps) {
           </div>
 
           <div className="flex items-center gap-2">
+            <span className="rounded-full border border-border/60 bg-background/80 px-2.5 py-0.5 font-mono text-[10px] font-semibold text-muted-foreground">
+              {formatTime(elapsedSeconds)}
+            </span>
             {difficulty && (
               <span className="rounded-full border border-border/60 bg-background/80 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
                 {difficulty}
@@ -283,7 +314,16 @@ export function QuizCard({ args, output }: QuizCardProps) {
                 <p className="opacity-95">{currentQ.explanation}</p>
               </div>
 
-              <div className="flex justify-end">
+              <div className="flex items-center justify-between">
+                <Button
+                  className="gap-2 shadow-xs"
+                  disabled={currentIndex === 0}
+                  onClick={handlePrevious}
+                  size="sm"
+                  variant="outline"
+                >
+                  Question précédente
+                </Button>
                 <Button
                   className="gap-2 shadow-xs"
                   onClick={handleNext}
@@ -309,7 +349,7 @@ export function QuizCard({ args, output }: QuizCardProps) {
 
           <div>
             <h4 className="font-bold text-xl text-foreground">
-              Quiz Terminé ! 🎉
+              Quiz terminé
             </h4>
             <p className="mt-1 text-xs text-muted-foreground">
               {percentage >= 80
@@ -327,9 +367,67 @@ export function QuizCard({ args, output }: QuizCardProps) {
             <span className="mt-1 font-semibold text-xs text-primary">
               {percentage}% de réussite
             </span>
+            <span className="mt-1 font-mono text-[11px] text-muted-foreground">
+              Temps : {formatTime(elapsedSeconds)}
+            </span>
           </div>
 
-          <div className="pt-2">
+          {/* Récapitulatif détaillé des réponses */}
+          {showRecap && (
+            <div className="mx-auto w-full max-w-md space-y-2 text-left">
+              {questions.map((q, idx) => {
+                const userSel = selectedAnswers[idx] || [];
+                const isCorrect =
+                  userSel.length === q.correctAnswers.length &&
+                  userSel.every((val) => q.correctAnswers.includes(val));
+                return (
+                  <div
+                    className={cn(
+                      "rounded-xl border p-3 text-xs",
+                      isCorrect
+                        ? "border-emerald-500/30 bg-emerald-500/5"
+                        : "border-destructive/30 bg-destructive/5"
+                    )}
+                    key={q.id || idx}
+                  >
+                    <div className="mb-1 flex items-start gap-1.5 font-semibold">
+                      {isCorrect ? (
+                        <CheckCircle2Icon className="mt-0.5 size-3.5 shrink-0 text-emerald-600 dark:text-emerald-400" />
+                      ) : (
+                        <XCircleIcon className="mt-0.5 size-3.5 shrink-0 text-destructive" />
+                      )}
+                      <span>
+                        {idx + 1}. {q.question}
+                      </span>
+                    </div>
+                    {!isCorrect && (
+                      <div className="space-y-0.5 pl-5 text-muted-foreground">
+                        <p>
+                          Votre réponse :{" "}
+                          {userSel.length > 0
+                            ? userSel.map((i) => q.options[i]).join(", ")
+                            : "Aucune réponse"}
+                        </p>
+                        <p>
+                          Bonne réponse :{" "}
+                          {q.correctAnswers.map((i) => q.options[i]).join(", ")}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
+            <Button
+              className="gap-2 shadow-xs"
+              onClick={() => setShowRecap((prev) => !prev)}
+              variant="outline"
+            >
+              {showRecap ? "Masquer le détail" : "Voir le détail des réponses"}
+            </Button>
             <Button
               className="gap-2 shadow-xs"
               onClick={handleRestart}

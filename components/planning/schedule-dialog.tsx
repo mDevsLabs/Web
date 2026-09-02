@@ -6,7 +6,9 @@ import {
   ClockIcon,
   CloudIcon,
   Loader2Icon,
+  MessagesSquareIcon,
   PlusIcon,
+  RepeatIcon,
   SparklesIcon,
   WrenchIcon,
   XCircleIcon,
@@ -14,6 +16,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import useSWR from "swr";
 import { CloudFilePickerDialog } from "@/components/chat/cloud-file-picker-dialog";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { Button } from "@/components/ui/button";
@@ -31,7 +34,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { DEFAULT_CHAT_MODEL, FALLBACK_MODELS } from "@/lib/ai/models";
 import { TOOLS_META, TOOL_IDS, type ToolId } from "@/lib/ai/tools/config";
 import type { Agent, ScheduledMessage } from "@/lib/db/schema";
-import { cn } from "@/lib/utils";
+import { cn, fetcher } from "@/lib/utils";
 
 interface ScheduleDialogProps {
   agents: Agent[];
@@ -54,6 +57,8 @@ export function ScheduleDialog({
   const [selectedAgentId, setSelectedAgentId] = useState<string | null>(null);
   const [selectedModel, setSelectedModel] = useState(DEFAULT_CHAT_MODEL);
   const [createMode, setCreateMode] = useState<"new_chat" | "existing_chat">("new_chat");
+  const [selectedChatId, setSelectedChatId] = useState<string>("");
+  const [recurrence, setRecurrence] = useState<"none" | "daily" | "weekly" | "monthly">("none");
   const [enabledTools, setEnabledTools] = useState<string[]>([]);
   const [cloudFileUrls, setCloudFileUrls] = useState<string[]>([]);
   const [cloudFileNames, setCloudFileNames] = useState<Record<string, string>>({});
@@ -73,6 +78,8 @@ export function ScheduleDialog({
       setSelectedAgentId(initialData.agentId ?? null);
       setSelectedModel(initialData.modelId || DEFAULT_CHAT_MODEL);
       setCreateMode((initialData.createMode as any) || "new_chat");
+      setSelectedChatId(initialData.chatId || "");
+      setRecurrence((initialData.recurrence as any) || "none");
       setEnabledTools((initialData.enabledTools as string[]) || []);
       setCloudFileUrls((initialData.cloudFileUrls as string[]) || []);
       setCustomInstructions(initialData.customInstructions || "");
@@ -86,6 +93,8 @@ export function ScheduleDialog({
       setSelectedAgentId(null);
       setSelectedModel(DEFAULT_CHAT_MODEL);
       setCreateMode("new_chat");
+      setSelectedChatId("");
+      setRecurrence("none");
       setEnabledTools(["webSearch"]);
       setCloudFileUrls([]);
       setCustomInstructions("");
@@ -99,6 +108,13 @@ export function ScheduleDialog({
         : [...prev, toolKey]
     );
   };
+
+  // Liste des discussions pour le mode "Continuer un fil existant"
+  const { data: availableChats } = useSWR<
+    { id: string; title: string; createdAt: string | Date }[]
+  >(isOpen && createMode === "existing_chat" ? "/api/planning/chats" : null, fetcher, {
+    revalidateOnFocus: false,
+  });
 
   const setPresetTime = (minutesFromNow: number) => {
     const d = new Date(Date.now() + minutesFromNow * 60 * 1000);
@@ -118,6 +134,10 @@ export function ScheduleDialog({
       toast.error("Veuillez définir une date et heure d'exécution.");
       return;
     }
+    if (createMode === "existing_chat" && !selectedChatId) {
+      toast.error("Veuillez sélectionner la discussion à continuer.");
+      return;
+    }
 
     const scheduledDate = new Date(scheduledAt);
     if (scheduledDate.getTime() <= Date.now() && !initialData) {
@@ -134,8 +154,10 @@ export function ScheduleDialog({
         enabledTools,
         modelId: selectedModel,
         prompt: prompt.trim(),
+        recurrence,
         scheduledAt: scheduledDate.toISOString(),
         title: title.trim() || "Envoi planifié",
+        ...(createMode === "existing_chat" ? { chatId: selectedChatId } : {}),
       };
 
       const url = initialData
@@ -332,6 +354,71 @@ export function ScheduleDialog({
                 </div>
               </button>
             </div>
+            {createMode === "existing_chat" && (
+              <div className="mt-2">
+                <select
+                  className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm shadow-xs focus:outline-none focus:ring-1 focus:ring-ring"
+                  onChange={(e) => setSelectedChatId(e.target.value)}
+                  required
+                  value={selectedChatId}
+                >
+                  <option value="">
+                    {availableChats
+                      ? "Sélectionnez une discussion..."
+                      : "Chargement des discussions..."}
+                  </option>
+                  {(availableChats || []).map((c) => (
+                    <option key={c.id} value={c.id}>
+                      {c.title || "Sans titre"}
+                    </option>
+                  ))}
+                </select>
+                {availableChats && availableChats.length === 0 && (
+                  <p className="mt-1 flex items-center gap-1 text-[11px] text-muted-foreground">
+                    <MessagesSquareIcon className="size-3" />
+                    Aucune discussion existante. Créez-en une d'abord ou choisissez
+                    « Nouvelle discussion ».
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
+
+          <div>
+            <Label className="text-xs font-semibold text-muted-foreground flex items-center gap-1.5">
+              <RepeatIcon className="size-3.5" />
+              Répétition
+            </Label>
+            <div className="mt-1 grid grid-cols-4 gap-1.5">
+              {(
+                [
+                  { id: "none", label: "Une fois" },
+                  { id: "daily", label: "Quotidien" },
+                  { id: "weekly", label: "Hebdo" },
+                  { id: "monthly", label: "Mensuel" },
+                ] as const
+              ).map((r) => (
+                <button
+                  className={cn(
+                    "rounded-lg border px-2 py-1.5 text-[11px] font-medium transition cursor-pointer",
+                    recurrence === r.id
+                      ? "border-primary bg-primary/10 text-primary"
+                      : "border-border/60 text-muted-foreground hover:bg-muted/50"
+                  )}
+                  key={r.id}
+                  onClick={() => setRecurrence(r.id)}
+                  type="button"
+                >
+                  {r.label}
+                </button>
+              ))}
+            </div>
+            {recurrence !== "none" && (
+              <p className="mt-1.5 text-[11px] text-muted-foreground">
+                Le message sera réexécuté automatiquement {recurrence === "daily" ? "chaque jour" : recurrence === "weekly" ? "chaque semaine" : "chaque mois"} à
+                la même heure, et une notification vous informera à chaque exécution.
+              </p>
+            )}
           </div>
 
           {/* Section Fichiers Cloud / Bibliothèque */}

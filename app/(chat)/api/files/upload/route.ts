@@ -1,4 +1,5 @@
 import { put } from "@vercel/blob";
+import { nanoid } from "nanoid";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -18,6 +19,9 @@ const ALLOWED_UPLOAD_TYPES = [
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50 Mo / fichier (limite par message imposée côté client)
 
+// Types exécutables par le navigateur — refusés même s'ils passent le filtre text/*|image/*
+const BLOCKED_UPLOAD_TYPES = ["text/html", "text/javascript", "image/svg+xml"];
+
 const FileSchema = z.object({
   file: z
     .instanceof(Blob)
@@ -28,6 +32,9 @@ const FileSchema = z.object({
       (file) => {
         if (!file.type) {
           return true; // fallback si mime manquant (certains navigateurs)
+        }
+        if (BLOCKED_UPLOAD_TYPES.includes(file.type)) {
+          return false;
         }
         return (
           ALLOWED_UPLOAD_TYPES.includes(file.type) ||
@@ -74,10 +81,13 @@ export async function POST(request: Request) {
 
     const filename = (formData.get("file") as File).name;
     const safeName = filename.replace(/[^a-zA-Z0-9._-]/g, "_");
+    // Namespace par utilisateur + suffixe unique : deux utilisateurs ne peuvent
+    // pas s'écraser mutuellement les fichiers sur le blob public.
+    const blobKey = `uploads/${session.user.id}/${nanoid()}-${safeName}`;
     const fileBuffer = await file.arrayBuffer();
 
     try {
-      const data = await put(`${safeName}`, fileBuffer, {
+      const data = await put(blobKey, fileBuffer, {
         access: "public",
       });
 

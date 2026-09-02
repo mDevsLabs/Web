@@ -783,6 +783,11 @@ export const scheduledMessage = pgTable(
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     lastError: text("lastError"),
     modelId: text("modelId").notNull().default("google/gemini-2.5-flash"),
+    recurrence: varchar("recurrence", {
+      enum: ["none", "daily", "weekly", "monthly"],
+    })
+      .notNull()
+      .default("none"),
     prompt: text("prompt").notNull(),
     resultChatId: uuid("resultChatId"),
     scheduledAt: timestamp("scheduledAt").notNull(),

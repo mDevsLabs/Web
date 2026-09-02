@@ -1,11 +1,8 @@
 "use client";
 
 import {
-  BookOpenIcon,
-  HelpCircleIcon,
-  SparklesIcon,
+  ShuffleIcon,
   TrophyIcon,
-  ZapIcon,
 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -34,6 +31,8 @@ export function QuizConfigDialog({ isOpen, onClose }: QuizConfigDialogProps) {
   const [questionCount, setQuestionCount] = useState<number>(5);
   const [questionType, setQuestionType] = useState<"single" | "multiple" | "mixed">("single");
   const [difficulty, setDifficulty] = useState<"facile" | "moyen" | "difficile" | "expert">("moyen");
+  const [shuffleQuestions, setShuffleQuestions] = useState(false);
+  const [showExplanations, setShowExplanations] = useState(true);
   const [isGenerating, setIsGenerating] = useState(false);
 
   const handleLaunchQuiz = async (e: React.FormEvent) => {
@@ -64,14 +63,14 @@ export function QuizConfigDialog({ isOpen, onClose }: QuizConfigDialogProps) {
 Nombre de questions : ${questionCount}
 Niveau de difficulté : ${difficulty}
 Format : ${typeDescription}
-Exécute l'outil quizzly avec toutes les questions rédigées, leurs explications et les bonnes réponses associées.`;
+${shuffleQuestions ? "Mélangez l'ordre des questions et l'ordre des options de réponse.\n" : ""}${showExplanations ? "" : "Ne fournissez pas d'explications après les réponses.\n"}Exécute l'outil quizzly avec toutes les questions rédigées, leurs explications et les bonnes réponses associées.`;
 
       await sendMessage({
         parts: [{ text: promptMessage, type: "text" }],
         role: "user",
       });
 
-      toast.success("Génération de votre Quiz en cours ! 🎯");
+      toast.success("Génération de votre Quiz en cours !");
     } catch (err: any) {
       toast.error(err?.message || "Erreur lors du lancement du quiz");
     } finally {
@@ -87,7 +86,7 @@ Exécute l'outil quizzly avec toutes les questions rédigées, leurs explication
             <span className="flex size-8 items-center justify-center rounded-lg bg-amber-500/10 text-amber-500">
               <TrophyIcon className="size-4" />
             </span>
-            <DialogTitle>Créer un Quiz Quizzly 🎯</DialogTitle>
+            <DialogTitle>Créer un Quiz Quizzly</DialogTitle>
           </div>
           <DialogDescription>
             Configurez votre quiz interactif sur mesure généré par l'IA avec correction instantanée et calcul de score.
@@ -180,12 +179,39 @@ Exécute l'outil quizzly avec toutes les questions rédigées, leurs explication
                 onChange={(e) => setDifficulty(e.target.value as any)}
                 value={difficulty}
               >
-                <option value="facile">Facile 🌱</option>
-                <option value="moyen">Moyen ⚡</option>
-                <option value="difficile">Difficile 🔥</option>
-                <option value="expert">Expert 🧠</option>
+                <option value="facile">Facile</option>
+                <option value="moyen">Moyen</option>
+                <option value="difficile">Difficile</option>
+                <option value="expert">Expert</option>
               </select>
             </div>
+          </div>
+
+          {/* Options supplémentaires */}
+          <div className="space-y-2 rounded-xl border border-border/50 bg-muted/20 p-3">
+            <label className="flex cursor-pointer items-center justify-between gap-3 text-xs">
+              <span className="flex items-center gap-2 font-semibold text-muted-foreground">
+                <ShuffleIcon className="size-3.5" />
+                Mélanger les questions et les options
+              </span>
+              <input
+                checked={shuffleQuestions}
+                className="size-4 accent-amber-500"
+                onChange={(e) => setShuffleQuestions(e.target.checked)}
+                type="checkbox"
+              />
+            </label>
+            <label className="flex cursor-pointer items-center justify-between gap-3 text-xs">
+              <span className="flex items-center gap-2 font-semibold text-muted-foreground">
+                Afficher les explications après chaque réponse
+              </span>
+              <input
+                checked={showExplanations}
+                className="size-4 accent-amber-500"
+                onChange={(e) => setShowExplanations(e.target.checked)}
+                type="checkbox"
+              />
+            </label>
           </div>
 
           <DialogFooter className="pt-2">

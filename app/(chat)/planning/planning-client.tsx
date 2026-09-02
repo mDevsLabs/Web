@@ -15,6 +15,7 @@ import {
   PlayIcon,
   PlusIcon,
   RefreshCwIcon,
+  RepeatIcon,
   SearchIcon,
   SparklesIcon,
   Trash2Icon,
@@ -120,6 +121,37 @@ export function PlanningClient({
     }
   };
 
+  const handleStatusChange = async (
+    id: string,
+    status: "pending" | "cancelled"
+  ) => {
+    try {
+      const res = await fetch(`/api/planning/${id}`, {
+        body: JSON.stringify({ status }),
+        headers: { "Content-Type": "application/json" },
+        method: "PATCH",
+      });
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Erreur lors de la mise à jour");
+      }
+      toast.success(
+        status === "cancelled"
+          ? "Planification annulée"
+          : "Planification réactivée"
+      );
+      mutate();
+    } catch (err: any) {
+      toast.error(err?.message || "Échec de la mise à jour");
+    }
+  };
+
+  const RECURRENCE_LABELS: Record<string, string> = {
+    daily: "Quotidien",
+    monthly: "Mensuel",
+    weekly: "Hebdomadaire",
+  };
+
   const formatDateTime = (dateStr: string | Date) => {
     const d = new Date(dateStr);
     return d.toLocaleString("fr-FR", {
@@ -223,8 +255,10 @@ export function PlanningClient({
             {[
               { id: "all", label: "Tous" },
               { id: "pending", label: "En attente" },
+              { id: "processing", label: "En cours" },
               { id: "completed", label: "Terminés" },
               { id: "failed", label: "Échecs" },
+              { id: "cancelled", label: "Annulés" },
             ].map((st) => (
               <button
                 className={cn(
@@ -294,15 +328,29 @@ export function PlanningClient({
                   <div>
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <div className="flex items-center gap-2">
+                        <div className="flex flex-wrap items-center gap-2">
                           <h4 className="font-semibold text-[15px] text-foreground">
                             {item.title}
                           </h4>
                           {getStatusBadge(item.status)}
+                          {item.recurrence && item.recurrence !== "none" && (
+                            <Badge
+                              className="bg-violet-500/10 text-violet-600 dark:text-violet-400 border-violet-500/20"
+                              variant="outline"
+                            >
+                              <RepeatIcon className="mr-1 size-3" />
+                              {RECURRENCE_LABELS[item.recurrence] || item.recurrence}
+                            </Badge>
+                          )}
                         </div>
                         <div className="mt-1 flex items-center gap-1.5 text-xs text-muted-foreground">
                           <CalendarIcon className="size-3.5" />
-                          <span>Prévu le {formatDateTime(item.scheduledAt)}</span>
+                          <span>
+                            {item.recurrence && item.recurrence !== "none"
+                              ? "Prochain envoi le"
+                              : "Prévu le"}{" "}
+                            {formatDateTime(item.scheduledAt)}
+                          </span>
                           {item.status === "pending" && isDue && (
                             <span className="font-medium text-amber-500">
                               (Échéance atteinte)
@@ -313,19 +361,41 @@ export function PlanningClient({
 
                       <div className="flex items-center gap-1">
                         {item.status === "pending" && (
+                          <>
+                            <Button
+                              className="size-8"
+                              disabled={isExec}
+                              onClick={() => handleExecuteNow(item.id)}
+                              size="icon"
+                              title="Exécuter maintenant"
+                              variant="outline"
+                            >
+                              {isExec ? (
+                                <Loader2Icon className="size-3.5 animate-spin" />
+                              ) : (
+                                <PlayIcon className="size-3.5 text-emerald-600 dark:text-emerald-400" />
+                              )}
+                            </Button>
+                            <Button
+                              className="size-8"
+                              onClick={() => handleStatusChange(item.id, "cancelled")}
+                              size="icon"
+                              title="Annuler"
+                              variant="ghost"
+                            >
+                              <XCircleIcon className="size-3.5 text-muted-foreground" />
+                            </Button>
+                          </>
+                        )}
+                        {(item.status === "failed" || item.status === "cancelled") && (
                           <Button
                             className="size-8"
-                            disabled={isExec}
-                            onClick={() => handleExecuteNow(item.id)}
+                            onClick={() => handleStatusChange(item.id, "pending")}
                             size="icon"
-                            title="Exécuter maintenant"
+                            title="Réactiver"
                             variant="outline"
                           >
-                            {isExec ? (
-                              <Loader2Icon className="size-3.5 animate-spin" />
-                            ) : (
-                              <PlayIcon className="size-3.5 text-emerald-600 dark:text-emerald-400" />
-                            )}
+                            <RefreshCwIcon className="size-3.5 text-amber-600 dark:text-amber-400" />
                           </Button>
                         )}
                         <Button

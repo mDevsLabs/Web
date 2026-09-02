@@ -404,6 +404,7 @@ export async function generateVerificationCode(
     .padStart(length, "0");
   const expiresAt = new Date(Date.now() + 10 * 60_000).toISOString(); // 10 minutes
 
+  codeAttempts.delete(`${action}:${email.toLowerCase()}`);
   await sqlite.execute({
     args: [email, code, action, expiresAt],
     sql: "INSERT OR REPLACE INTO verification_codes (email, code, action, expires_at) VALUES (?, ?, ?, ?)",
@@ -411,6 +412,11 @@ export async function generateVerificationCode(
 
   return code;
 }
+
+// Anti brute-force : après MAX_CODE_ATTEMPTS échecs pour un couple
+// (email, action), le code actif est supprimé — il faut en redemander un.
+const MAX_CODE_ATTEMPTS = 5;
+const codeAttempts = new Map<string, number>();
 
 export async function verifyVerificationCode(
   email: string,
@@ -426,6 +432,15 @@ export async function verifyVerificationCode(
     return false;
   }
 
+  const attemptKey = `${action}:${email.toLowerCase()}`;
+  if ((codeAttempts.get(attemptKey) || 0) >= MAX_CODE_ATTEMPTS) {
+    await sqlite.execute({
+      args: [email, action],
+      sql: "DELETE FROM verification_codes WHERE email = ? AND action = ?",
+    });
+    return false;
+  }
+
   const storedCode = result.rows[0][0] as string;
   const expiresAt = new Date(result.rows[0][1] as string);
 
@@ -434,6 +449,7 @@ export async function verifyVerificationCode(
       args: [email, action],
       sql: "DELETE FROM verification_codes WHERE email = ? AND action = ?",
     });
+    codeAttempts.delete(attemptKey);
     return false;
   }
 
@@ -442,9 +458,17 @@ export async function verifyVerificationCode(
       args: [email, action],
       sql: "DELETE FROM verification_codes WHERE email = ? AND action = ?",
     });
+    codeAttempts.delete(attemptKey);
     return true;
   }
 
+  codeAttempts.set(attemptKey, (codeAttempts.get(attemptKey) || 0) + 1);
+  if ((codeAttempts.get(attemptKey) || 0) >= MAX_CODE_ATTEMPTS) {
+    await sqlite.execute({
+      args: [email, action],
+      sql: "DELETE FROM verification_codes WHERE email = ? AND action = ?",
+    });
+  }
   return false;
 }
 
