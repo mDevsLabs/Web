@@ -136,9 +136,10 @@ export function formatModelName(modelId: string): {
   provider: string;
   isFree: boolean;
 } {
-  const parts = modelId.split("/");
+  const cleanId = modelId.replace(/^~+/, "");
+  const parts = cleanId.split("/");
   const provider = parts.length > 1 ? parts[0] : "mAI";
-  const rawName = parts.length > 1 ? parts.slice(1).join("/") : modelId;
+  const rawName = parts.length > 1 ? parts.slice(1).join("/") : cleanId;
   const isFree = modelId.toLowerCase().includes("free");
 
   let cleanName = rawName.replace(/:free/gi, "").trim();

@@ -56,25 +56,65 @@ function PureOptionSelector({
   groupBy,
 }: OptionSelectorProps) {
   const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState("");
+
+  const handleOpenChange = (nextOpen: boolean) => {
+    setOpen(nextOpen);
+    if (!nextOpen) {
+      setSearch("");
+    }
+  };
 
   const selected = items.find((i) => i.id === value);
 
+  const filteredItems = useMemo(() => {
+    const q = search
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .trim();
+    if (!q) {
+      return items;
+    }
+    return items.filter((item) => {
+      const label = (item.label || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+      const id = (item.id || "").toLowerCase();
+      const desc = (item.description || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+      const meta = (item.meta || "")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+      return (
+        label.includes(q) ||
+        id.includes(q) ||
+        desc.includes(q) ||
+        meta.includes(q)
+      );
+    });
+  }, [items, search]);
+
   const grouped = useMemo(() => {
     const map = new Map<string, OptionSelectorItem[]>();
-    for (const item of items) {
+    for (const item of filteredItems) {
       const key = groupBy ? groupBy(item) : "";
       const list = map.get(key) ?? [];
       list.push(item);
       map.set(key, list);
     }
     return [...map.entries()];
-  }, [groupBy, items]);
+  }, [groupBy, filteredItems]);
 
   const groupLabel = (key: string) =>
     key.charAt(0).toUpperCase() + key.slice(1);
 
   return (
-    <ModelSelector modal onOpenChange={setOpen} open={open}>
+    <ModelSelector modal onOpenChange={handleOpenChange} open={open}>
       <ModelSelectorTrigger asChild>
         <button
           className="flex h-10 w-full items-center justify-between gap-2 rounded-xl border border-border/60 bg-muted/30 px-3 text-sm font-normal text-foreground transition hover:bg-muted/50 focus:outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer disabled:cursor-not-allowed disabled:opacity-60"
@@ -97,16 +137,22 @@ function PureOptionSelector({
           <ChevronDownIcon className="size-4 shrink-0 text-muted-foreground" />
         </button>
       </ModelSelectorTrigger>
-      <ModelSelectorContent side="bottom">
-        <ModelSelectorInput placeholder={searchPlaceholder} />
+      <ModelSelectorContent shouldFilter={false} side="bottom">
+        <ModelSelectorInput
+          onValueChange={setSearch}
+          placeholder={searchPlaceholder}
+          value={search}
+        />
         <ModelSelectorList>
-          {items.length === 0 ? (
+          {filteredItems.length === 0 ? (
             <div className="px-3 py-4 text-center text-xs text-muted-foreground">
-              Aucune option disponible
+              {items.length === 0
+                ? "Aucune option disponible"
+                : `Aucun résultat pour « ${search} »`}
             </div>
           ) : (
             <>
-              {allowEmpty ? (
+              {allowEmpty && !search.trim() ? (
                 <ModelSelectorItem
                   className="flex w-full cursor-pointer transition-colors text-[13px] py-2 px-2.5 rounded-lg text-muted-foreground data-[selected=true]:bg-muted data-[selected=true]:text-foreground hover:bg-muted/50"
                   onSelect={() => {

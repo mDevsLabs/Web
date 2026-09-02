@@ -19,16 +19,24 @@ import { z } from "zod";
 const createSchema = z
   .object({
     agentId: z.string().uuid().nullable().optional(),
+    category: z.string().max(50).optional(),
     content: z.string().min(1).max(MEMORY_CONTENT_MAX_LENGTH),
+    isEnabled: z.boolean().optional(),
+    isImportant: z.boolean().optional(),
     projectId: z.string().uuid().nullable().optional(),
+    tags: z.array(z.string().max(30)).optional(),
   })
   .refine((data) => !(data.agentId && data.projectId), {
     message: "Un seul scope autorisé (agent ou projet)",
   });
 
 const updateSchema = z.object({
-  content: z.string().min(1).max(MEMORY_CONTENT_MAX_LENGTH),
+  category: z.string().max(50).optional(),
+  content: z.string().min(1).max(MEMORY_CONTENT_MAX_LENGTH).optional(),
   id: z.string().uuid(),
+  isEnabled: z.boolean().optional(),
+  isImportant: z.boolean().optional(),
+  tags: z.array(z.string().max(30)).optional(),
 });
 
 async function resolveScope(
@@ -141,8 +149,12 @@ export async function POST(request: Request) {
     }
     const memory = await createMemory({
       agentId: scope.agentId,
+      category: parsed.category ?? "general",
       content,
+      isEnabled: parsed.isEnabled ?? true,
+      isImportant: parsed.isImportant ?? false,
       projectId: scope.projectId,
+      tags: parsed.tags ?? [],
       userId,
     });
     return Response.json({ memory });
@@ -188,8 +200,12 @@ export async function PATCH(request: Request) {
     const body = await request.json();
     const parsed = updateSchema.parse(body);
     const updated = await updateMemory({
+      category: parsed.category,
       content: parsed.content,
       id: parsed.id,
+      isEnabled: parsed.isEnabled,
+      isImportant: parsed.isImportant,
+      tags: parsed.tags,
       userId,
     });
     if (!updated) {

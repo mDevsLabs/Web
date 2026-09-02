@@ -3372,22 +3372,26 @@ export async function duplicateAgent({
 export async function getGlobalMemories({
   userId,
   limit = 200,
+  includeDisabled = false,
 }: {
   userId: string;
   limit?: number;
+  includeDisabled?: boolean;
 }) {
   const database = await getDb();
+  const conditions = [
+    eq(userMemory.userId, userId),
+    isNull(userMemory.agentId),
+    isNull(userMemory.projectId),
+  ];
+  if (!includeDisabled) {
+    conditions.push(eq(userMemory.isEnabled, true));
+  }
   return database
     .select()
     .from(userMemory)
-    .where(
-      and(
-        eq(userMemory.userId, userId),
-        isNull(userMemory.agentId),
-        isNull(userMemory.projectId)
-      )
-    )
-    .orderBy(asc(userMemory.createdAt))
+    .where(and(...conditions))
+    .orderBy(desc(userMemory.isImportant), desc(userMemory.createdAt))
     .limit(limit);
 }
 
@@ -3395,17 +3399,26 @@ export async function getAgentMemories({
   agentId,
   userId,
   limit = 200,
+  includeDisabled = false,
 }: {
   agentId: string;
   userId: string;
   limit?: number;
+  includeDisabled?: boolean;
 }) {
   const database = await getDb();
+  const conditions = [
+    eq(userMemory.userId, userId),
+    eq(userMemory.agentId, agentId),
+  ];
+  if (!includeDisabled) {
+    conditions.push(eq(userMemory.isEnabled, true));
+  }
   return database
     .select()
     .from(userMemory)
-    .where(and(eq(userMemory.userId, userId), eq(userMemory.agentId, agentId)))
-    .orderBy(asc(userMemory.createdAt))
+    .where(and(...conditions))
+    .orderBy(desc(userMemory.isImportant), desc(userMemory.createdAt))
     .limit(limit);
 }
 
@@ -3413,19 +3426,26 @@ export async function getProjectMemories({
   projectId,
   userId,
   limit = 200,
+  includeDisabled = false,
 }: {
   projectId: string;
   userId: string;
   limit?: number;
+  includeDisabled?: boolean;
 }) {
   const database = await getDb();
+  const conditions = [
+    eq(userMemory.userId, userId),
+    eq(userMemory.projectId, projectId),
+  ];
+  if (!includeDisabled) {
+    conditions.push(eq(userMemory.isEnabled, true));
+  }
   return database
     .select()
     .from(userMemory)
-    .where(
-      and(eq(userMemory.userId, userId), eq(userMemory.projectId, projectId))
-    )
-    .orderBy(asc(userMemory.createdAt))
+    .where(and(...conditions))
+    .orderBy(desc(userMemory.isImportant), desc(userMemory.createdAt))
     .limit(limit);
 }
 
@@ -3499,19 +3519,31 @@ export async function createMemory({
   content,
   agentId = null,
   projectId = null,
+  category = "general",
+  tags = [],
+  isImportant = false,
+  isEnabled = true,
 }: {
   userId: string;
   content: string;
   agentId?: string | null;
   projectId?: string | null;
+  category?: string;
+  tags?: string[];
+  isImportant?: boolean;
+  isEnabled?: boolean;
 }) {
   const database = await getDb();
   const [created] = await database
     .insert(userMemory)
     .values({
       agentId: agentId ?? null,
+      category: category ?? "general",
       content: sanitizeMemoryContent(content),
+      isEnabled: isEnabled ?? true,
+      isImportant: isImportant ?? false,
       projectId: projectId ?? null,
+      tags: tags ?? [],
       userId,
     })
     .returning();
@@ -3541,22 +3573,37 @@ function sanitizeMemoryContent(content: string): string {
 }
 
 export async function updateMemory({
+  category,
   content,
   id,
+  isEnabled,
+  isImportant,
+  tags,
   userId,
 }: {
-  content: string;
+  category?: string;
+  content?: string;
   id: string;
+  isEnabled?: boolean;
+  isImportant?: boolean;
+  tags?: string[];
   userId: string;
 }) {
-  const safe = sanitizeMemoryContent(content);
-  if (!safe) {
-    return null;
+  const setFields: Record<string, any> = { updatedAt: new Date() };
+  if (content !== undefined) {
+    const safe = sanitizeMemoryContent(content);
+    if (!safe) return null;
+    setFields.content = safe;
   }
+  if (category !== undefined) setFields.category = category;
+  if (isEnabled !== undefined) setFields.isEnabled = isEnabled;
+  if (isImportant !== undefined) setFields.isImportant = isImportant;
+  if (tags !== undefined) setFields.tags = tags;
+
   const database = await getDb();
   const [updated] = await database
     .update(userMemory)
-    .set({ content: safe, updatedAt: new Date() })
+    .set(setFields)
     .where(and(eq(userMemory.id, id), eq(userMemory.userId, userId)))
     .returning();
   return updated ?? null;
@@ -3579,18 +3626,22 @@ export async function getUserMemoriesWithScope({
     .select({
       agentId: userMemory.agentId,
       agentName: agent.name,
+      category: userMemory.category,
       content: userMemory.content,
       createdAt: userMemory.createdAt,
       id: userMemory.id,
+      isEnabled: userMemory.isEnabled,
+      isImportant: userMemory.isImportant,
       projectId: userMemory.projectId,
       projectName: project.name,
+      tags: userMemory.tags,
       updatedAt: userMemory.updatedAt,
     })
     .from(userMemory)
     .leftJoin(agent, eq(userMemory.agentId, agent.id))
     .leftJoin(project, eq(userMemory.projectId, project.id))
     .where(eq(userMemory.userId, userId))
-    .orderBy(desc(userMemory.createdAt))
+    .orderBy(desc(userMemory.isImportant), desc(userMemory.createdAt))
     .limit(limit);
 }
 
