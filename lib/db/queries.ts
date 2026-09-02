@@ -221,7 +221,67 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     client`ALTER TABLE "mprojects_image_generations" ADD COLUMN IF NOT EXISTS "pinned" boolean DEFAULT false NOT NULL`
   );
 
+  // Table users pour les préférences et profil utilisateur
+  await run(client`CREATE TABLE IF NOT EXISTS "users" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "email" varchar(255),
+    "username" varchar(255),
+    "password_hash" text,
+    "phone" varchar(50),
+    "avatar_url" text,
+    "tier" varchar(50) DEFAULT 'Free',
+    "custom_instructions" text DEFAULT '',
+    "custom_instructions_enabled" boolean DEFAULT false NOT NULL,
+    "default_temperature" double precision DEFAULT 0.7,
+    "default_top_p" double precision DEFAULT 0.9,
+    "default_agent_id" uuid,
+    "default_chat_model" text,
+    "default_chat_visibility" varchar(10) DEFAULT 'private',
+    "default_image_model" text DEFAULT 'black-forest-labs/flux-schnell',
+    "default_image_size" varchar(20) DEFAULT '1024x1024',
+    "default_audio_model" text DEFAULT 'deepgram/flux-tts:free',
+    "default_audio_voice" varchar(50) DEFAULT 'flux-alexis-en',
+    "default_audio_speed" double precision DEFAULT 1.0,
+    "ghost_memory_enabled" boolean DEFAULT false NOT NULL,
+    "show_agent_chat_icons" boolean DEFAULT true NOT NULL,
+    "newsletter" boolean DEFAULT false NOT NULL,
+    "notify_limits" boolean DEFAULT true NOT NULL,
+    "is_blocked" boolean DEFAULT false NOT NULL,
+    "created_at" timestamp DEFAULT now() NOT NULL,
+    "updated_at" timestamp DEFAULT now() NOT NULL
+  )`);
+
   // Colonnes préférences pour table users
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "email" varchar(255)`
+  );
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "username" varchar(255)`
+  );
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "password_hash" text`
+  );
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "phone" varchar(50)`
+  );
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "avatar_url" text`
+  );
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "tier" varchar(50) DEFAULT 'Free'`
+  );
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "custom_instructions" text DEFAULT ''`
+  );
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "custom_instructions_enabled" boolean DEFAULT false NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "default_temperature" double precision DEFAULT 0.7`
+  );
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "default_top_p" double precision DEFAULT 0.9`
+  );
   await run(
     client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "default_image_model" text DEFAULT 'black-forest-labs/flux-schnell'`
   );
@@ -458,10 +518,18 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     "mcpCreated" boolean DEFAULT true NOT NULL,
     "mcpAccessRequest" boolean DEFAULT true NOT NULL,
     "news" boolean DEFAULT true NOT NULL,
+    "planningTaskCompleted" boolean DEFAULT true NOT NULL,
+    "quotaWarning" boolean DEFAULT true NOT NULL,
     "regenerateMode" varchar DEFAULT 'truncate' NOT NULL,
     "createdAt" timestamp DEFAULT now() NOT NULL,
     "updatedAt" timestamp DEFAULT now() NOT NULL
   )`);
+  await run(
+    client`ALTER TABLE "user_notification_prefs" ADD COLUMN IF NOT EXISTS "planningTaskCompleted" boolean DEFAULT true NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "user_notification_prefs" ADD COLUMN IF NOT EXISTS "quotaWarning" boolean DEFAULT true NOT NULL`
+  );
   await run(
     client`ALTER TABLE "user_notification_prefs" ADD COLUMN IF NOT EXISTS "regenerateMode" varchar DEFAULT 'truncate' NOT NULL`
   );
@@ -728,6 +796,68 @@ END $$;`
   );
   await run(
     client`CREATE INDEX IF NOT EXISTS "ScheduledMessage_status_idx" ON "ScheduledMessage" USING btree ("status")`
+  );
+
+  // CustomCommand (Commandes personnalisées)
+  await run(client`CREATE TABLE IF NOT EXISTS "CustomCommand" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "userId" text NOT NULL,
+    "name" text NOT NULL,
+    "trigger" varchar(32) NOT NULL,
+    "kind" varchar NOT NULL,
+    "actionType" varchar NOT NULL,
+    "payload" json DEFAULT '{}'::json NOT NULL,
+    "icon" text DEFAULT 'zap',
+    "color" varchar(7) DEFAULT '#6366f1',
+    "description" text DEFAULT '',
+    "enabled" boolean DEFAULT true NOT NULL,
+    "pinned" boolean DEFAULT false NOT NULL,
+    "usageCount" integer DEFAULT 0 NOT NULL,
+    "createdAt" timestamp DEFAULT now() NOT NULL,
+    "updatedAt" timestamp DEFAULT now() NOT NULL
+  )`);
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "CustomCommand_userId_idx" ON "CustomCommand" USING btree ("userId")`
+  );
+
+  // SkillVersion et SkillUsage
+  await run(client`CREATE TABLE IF NOT EXISTS "SkillVersion" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "skillId" uuid NOT NULL,
+    "userId" text NOT NULL,
+    "versionLabel" varchar(20) DEFAULT 'v1',
+    "name" text NOT NULL,
+    "description" text DEFAULT '',
+    "instructions" text NOT NULL DEFAULT '',
+    "icon" text DEFAULT 'sparkles',
+    "color" varchar(7) DEFAULT '#6366f1',
+    "tags" text[] DEFAULT '{}'::text[] NOT NULL,
+    "tools" json DEFAULT '[]'::json NOT NULL,
+    "parameters" json DEFAULT '[]'::json NOT NULL,
+    "mcpServerIds" json DEFAULT '[]'::json NOT NULL,
+    "mcpToolFilter" json DEFAULT '{}'::json NOT NULL,
+    "createdAt" timestamp DEFAULT now() NOT NULL
+  )`);
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "SkillVersion_skillId_idx" ON "SkillVersion" USING btree ("skillId")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "SkillVersion_userId_idx" ON "SkillVersion" USING btree ("userId")`
+  );
+
+  await run(client`CREATE TABLE IF NOT EXISTS "SkillUsage" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "skillId" uuid NOT NULL,
+    "userId" text NOT NULL,
+    "invocationCount" integer DEFAULT 0 NOT NULL,
+    "lastInvokedAt" timestamp,
+    "createdAt" timestamp DEFAULT now() NOT NULL
+  )`);
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "SkillUsage_skillId_idx" ON "SkillUsage" USING btree ("skillId")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "SkillUsage_userId_idx" ON "SkillUsage" USING btree ("userId")`
   );
 }
 

@@ -8,6 +8,8 @@ import {
   CameraIcon,
   CloudIcon,
   ExternalLinkIcon,
+  EyeIcon,
+  EyeOffIcon,
   ImageIcon,
   KeyRoundIcon,
   Loader2Icon,
@@ -19,6 +21,7 @@ import {
   SquareSlashIcon,
   UserIcon,
   Volume2Icon,
+  WrenchIcon,
   ZapIcon,
 } from "lucide-react";
 import Image from "next/image";
@@ -141,7 +144,7 @@ const SETTINGS_TABS: {
   { icon: BrainIcon, id: "memory", label: "Mémoire" },
   { icon: ZapIcon, id: "usage", label: "Consommation & Forfait" },
   { icon: BellIcon, id: "notifications", label: "Notifications" },
-  { icon: SquareSlashIcon, id: "configuration", label: "Configuration" },
+  { icon: WrenchIcon, id: "configuration", label: "Outils" },
 ];
 
 export default function SettingsPage() {
@@ -222,7 +225,9 @@ export default function SettingsPage() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [newPassword, setNewPassword] = useState("");
+  const [showNewPassword, setShowNewPassword] = useState(false);
   const [newsletter, setNewsletter] = useState(false);
   const [notifyLimits, setNotifyLimits] = useState(true);
 
@@ -1166,15 +1171,34 @@ export default function SettingsPage() {
                         Mot de passe actuel{" "}
                         <strong className="text-red-500">*</strong>
                       </Label>
-                      <Input
-                        className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
-                        id="settings-current-password"
-                        onChange={(e) => setCurrentPassword(e.target.value)}
-                        placeholder="Obligatoire pour valider"
-                        required
-                        type="password"
-                        value={currentPassword}
-                      />
+                      <div className="relative">
+                        <Input
+                          className="h-10 pr-10 rounded-xl border-border/60 bg-muted/30 text-sm"
+                          id="settings-current-password"
+                          onChange={(e) => setCurrentPassword(e.target.value)}
+                          placeholder="Obligatoire pour valider"
+                          required
+                          type={showCurrentPassword ? "text" : "password"}
+                          value={currentPassword}
+                        />
+                        <button
+                          aria-label={
+                            showCurrentPassword
+                              ? "Masquer le mot de passe"
+                              : "Afficher le mot de passe"
+                          }
+                          className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground transition-colors cursor-pointer rounded"
+                          onClick={() => setShowCurrentPassword((prev) => !prev)}
+                          tabIndex={-1}
+                          type="button"
+                        >
+                          {showCurrentPassword ? (
+                            <EyeOffIcon className="size-4" />
+                          ) : (
+                            <EyeIcon className="size-4" />
+                          )}
+                        </button>
+                      </div>
                     </div>
 
                     <div className="flex flex-col gap-2">
@@ -1184,14 +1208,33 @@ export default function SettingsPage() {
                       >
                         Nouveau mot de passe (optionnel)
                       </Label>
-                      <Input
-                        className="h-10 rounded-xl border-border/60 bg-muted/30 text-sm"
-                        id="settings-new-password"
-                        onChange={(e) => setNewPassword(e.target.value)}
-                        placeholder="Laisser vide si inchangé"
-                        type="password"
-                        value={newPassword}
-                      />
+                      <div className="relative">
+                        <Input
+                          className="h-10 pr-10 rounded-xl border-border/60 bg-muted/30 text-sm"
+                          id="settings-new-password"
+                          onChange={(e) => setNewPassword(e.target.value)}
+                          placeholder="Laisser vide si inchangé"
+                          type={showNewPassword ? "text" : "password"}
+                          value={newPassword}
+                        />
+                        <button
+                          aria-label={
+                            showNewPassword
+                              ? "Masquer le mot de passe"
+                              : "Afficher le mot de passe"
+                          }
+                          className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground transition-colors cursor-pointer rounded"
+                          onClick={() => setShowNewPassword((prev) => !prev)}
+                          tabIndex={-1}
+                          type="button"
+                        >
+                          {showNewPassword ? (
+                            <EyeOffIcon className="size-4" />
+                          ) : (
+                            <EyeIcon className="size-4" />
+                          )}
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

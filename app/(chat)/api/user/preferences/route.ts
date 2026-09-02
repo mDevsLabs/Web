@@ -1,10 +1,14 @@
 import postgres from "postgres";
 import { z } from "zod";
 import { getMaiUser } from "@/lib/auth/session";
+import { getDb } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 
 function getPostgres() {
-  const url = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+  const url =
+    process.env.DATABASE_URL ||
+    process.env.POSTGRES_URL ||
+    process.env.POSTGRES_PRISMA_URL;
   if (!url) {
     throw new Error("DATABASE_URL missing");
   }
@@ -18,6 +22,8 @@ export async function GET() {
   }
   const userId = user.id || user.email;
   try {
+    // S'assure que la DB et les migrations sont initialisées
+    getDb();
     const sql = getPostgres();
     const rows =
       await sql`SELECT custom_instructions, custom_instructions_enabled, default_temperature, default_top_p, default_agent_id, default_chat_model, default_chat_visibility, default_image_model, default_image_size, default_audio_model, default_audio_voice, default_audio_speed, ghost_memory_enabled, show_agent_chat_icons FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
@@ -34,6 +40,7 @@ export async function GET() {
         defaultImageModel: "black-forest-labs/flux-schnell",
         defaultImageSize: "1024x1024",
         enabled: false,
+        ghostMemoryEnabled: false,
         showAgentChatIcons: true,
         temperature: 0.7,
         topP: 0.9,
@@ -51,15 +58,31 @@ export async function GET() {
       defaultImageModel:
         rows[0].default_image_model || "black-forest-labs/flux-schnell",
       defaultImageSize: rows[0].default_image_size || "1024x1024",
-      enabled: rows[0].custom_instructions_enabled || false,
-      ghostMemoryEnabled: rows[0].ghost_memory_enabled || false,
+      enabled: Boolean(rows[0].custom_instructions_enabled),
+      ghostMemoryEnabled: Boolean(rows[0].ghost_memory_enabled),
       showAgentChatIcons: rows[0].show_agent_chat_icons ?? true,
       temperature: rows[0].default_temperature ?? 0.7,
       topP: rows[0].default_top_p ?? 0.9,
     });
   } catch (e) {
     console.error("GET preferences error", e);
-    return new ChatbotError("bad_request:database").toResponse();
+    // Fallback gracieux en cas de table vide
+    return Response.json({
+      customInstructions: "",
+      defaultAgentId: null,
+      defaultAudioModel: "deepgram/flux-tts:free",
+      defaultAudioSpeed: 1.0,
+      defaultAudioVoice: "flux-alexis-en",
+      defaultChatModel: null,
+      defaultChatVisibility: "private",
+      defaultImageModel: "black-forest-labs/flux-schnell",
+      defaultImageSize: "1024x1024",
+      enabled: false,
+      ghostMemoryEnabled: false,
+      showAgentChatIcons: true,
+      temperature: 0.7,
+      topP: 0.9,
+    });
   }
 }
 
@@ -89,8 +112,104 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const parsed = schema.parse(body);
+
+    getDb();
     const sql = getPostgres();
-    // Build dynamic update
+
+    // Vérifier si l'utilisateur existe dans la table users
+    const existing =
+      await sql`SELECT id FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
+
+    if (existing.length === 0) {
+      // Utilisateur non présent dans la table : insertion avec préférences
+      const isUuid =
+        /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+          userId
+        );
+      if (isUuid) {
+        await sql`
+          INSERT INTO users (
+            id,
+            email,
+            username,
+            custom_instructions,
+            custom_instructions_enabled,
+            default_temperature,
+            default_top_p,
+            default_agent_id,
+            default_chat_model,
+            default_chat_visibility,
+            default_image_model,
+            default_image_size,
+            default_audio_model,
+            default_audio_voice,
+            default_audio_speed,
+            ghost_memory_enabled,
+            show_agent_chat_icons
+          ) VALUES (
+            ${userId},
+            ${user.email || userId},
+            ${user.username || "Utilisateur"},
+            ${parsed.customInstructions ?? ""},
+            ${parsed.enabled ?? false},
+            ${parsed.temperature ?? 0.7},
+            ${parsed.topP ?? 0.9},
+            ${parsed.defaultAgentId ?? null},
+            ${parsed.defaultChatModel ?? null},
+            ${parsed.defaultChatVisibility ?? "private"},
+            ${parsed.defaultImageModel ?? "black-forest-labs/flux-schnell"},
+            ${parsed.defaultImageSize ?? "1024x1024"},
+            ${parsed.defaultAudioModel ?? "deepgram/flux-tts:free"},
+            ${parsed.defaultAudioVoice ?? "flux-alexis-en"},
+            ${parsed.defaultAudioSpeed ?? 1.0},
+            ${parsed.ghostMemoryEnabled ?? false},
+            ${parsed.showAgentChatIcons ?? true}
+          )
+        `;
+      } else {
+        await sql`
+          INSERT INTO users (
+            email,
+            username,
+            custom_instructions,
+            custom_instructions_enabled,
+            default_temperature,
+            default_top_p,
+            default_agent_id,
+            default_chat_model,
+            default_chat_visibility,
+            default_image_model,
+            default_image_size,
+            default_audio_model,
+            default_audio_voice,
+            default_audio_speed,
+            ghost_memory_enabled,
+            show_agent_chat_icons
+          ) VALUES (
+            ${user.email || userId},
+            ${user.username || "Utilisateur"},
+            ${parsed.customInstructions ?? ""},
+            ${parsed.enabled ?? false},
+            ${parsed.temperature ?? 0.7},
+            ${parsed.topP ?? 0.9},
+            ${parsed.defaultAgentId ?? null},
+            ${parsed.defaultChatModel ?? null},
+            ${parsed.defaultChatVisibility ?? "private"},
+            ${parsed.defaultImageModel ?? "black-forest-labs/flux-schnell"},
+            ${parsed.defaultImageSize ?? "1024x1024"},
+            ${parsed.defaultAudioModel ?? "deepgram/flux-tts:free"},
+            ${parsed.defaultAudioVoice ?? "flux-alexis-en"},
+            ${parsed.defaultAudioSpeed ?? 1.0},
+            ${parsed.ghostMemoryEnabled ?? false},
+            ${parsed.showAgentChatIcons ?? true}
+          )
+        `;
+      }
+      await sql.end();
+      return Response.json({ success: true });
+    }
+
+    // Mise à jour dynamique
     const sets: string[] = [];
     const values: any[] = [];
     let idx = 1;
@@ -125,10 +244,6 @@ export async function POST(request: Request) {
         sets.push(`default_agent_id = $${idx++}`);
         values.push(parsed.defaultAgentId);
       }
-    }
-    // Legacy defaultMode ignoré (Agents remplacent Mode IA)
-    if ((parsed as any).defaultMode !== undefined) {
-      // noop
     }
     if (parsed.defaultChatModel !== undefined) {
       if (parsed.defaultChatModel === null) {
@@ -166,7 +281,6 @@ export async function POST(request: Request) {
       await sql.end();
       return Response.json({ success: true });
     }
-    // Use raw query with postgres
     const query = `UPDATE users SET ${sets.join(", ")} WHERE id::text = $${idx}::text OR username = $${idx}::text OR email = $${idx}::text`;
     values.push(userId);
     await sql.unsafe(query, values);

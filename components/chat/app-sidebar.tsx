@@ -309,24 +309,25 @@ function LockedDropdownItem({
 
 function SidebarNavCollapsible({
   children,
-  defaultOpen = false,
   dropdownItems,
   icon: Icon,
   isActive = false,
+  isOpen = false,
   label,
+  onOpenChange,
   tooltip,
 }: {
   children: React.ReactNode;
-  defaultOpen?: boolean;
   dropdownItems?: React.ReactNode;
   icon: React.ComponentType<{ className?: string }>;
   isActive?: boolean;
+  isOpen?: boolean;
   label: string;
+  onOpenChange?: (open: boolean) => void;
   tooltip: string;
 }) {
   const { state, isMobile } = useSidebar();
   const isIconMode = state === "collapsed" && !isMobile;
-  const [isOpen, setIsOpen] = useState(defaultOpen || isActive);
 
   if (isIconMode) {
     return (
@@ -362,7 +363,7 @@ function SidebarNavCollapsible({
   return (
     <Collapsible
       className="group/collapsible"
-      onOpenChange={setIsOpen}
+      onOpenChange={onOpenChange}
       open={isOpen}
     >
       <SidebarMenuItem>
@@ -402,6 +403,9 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
     "skills" | "mcp" | "agents" | null
   >(null);
 
+  type NavMenuKey = "creation" | "config" | "plus";
+  const [openMenu, setOpenMenu] = useState<NavMenuKey | null>(null);
+
   const isCreationActive = Boolean(
     pathname?.startsWith("/images") || pathname?.startsWith("/audio")
   );
@@ -416,12 +420,18 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
 
   const { resetChat } = useActiveChat();
 
+  const handleNavClick = useCallback(() => {
+    setOpenMobile(false);
+    setOpenMenu(null);
+  }, [setOpenMobile]);
+
   const closeMobile = useCallback(() => {
     setOpenMobile(false);
   }, [setOpenMobile]);
 
   useEffect(() => {
     setOpenMobile(false);
+    setOpenMenu(null);
   }, [pathname, setOpenMobile]);
 
   const handleToggleSidebar = useCallback(() => {
@@ -429,16 +439,16 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
   }, [toggleSidebar]);
 
   const handleGoHome = useCallback(() => {
-    setOpenMobile(false);
+    handleNavClick();
     resetChat();
     router.push("/");
-  }, [resetChat, router, setOpenMobile]);
+  }, [handleNavClick, resetChat, router]);
 
   const handleNewChat = useCallback(() => {
-    setOpenMobile(false);
+    handleNavClick();
     resetChat();
     router.push("/");
-  }, [resetChat, router, setOpenMobile]);
+  }, [handleNavClick, resetChat, router]);
 
   const handleShowDeleteAllDialog = useCallback(() => {
     setShowDeleteAllDialog(true);
@@ -581,7 +591,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                     <Link
                       data-onboarding="nav-library"
                       href="/library"
-                      onClick={closeMobile}
+                      onClick={handleNavClick}
                     >
                       <CloudIcon className="size-4" />
                       <span>Stockage</span>
@@ -598,7 +608,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                     <Link
                       data-onboarding="nav-projects"
                       href="/projects"
-                      onClick={closeMobile}
+                      onClick={handleNavClick}
                     >
                       <FolderKanbanIcon className="size-4" />
                       <span>Projets</span>
@@ -614,7 +624,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                   >
                     <Link
                       href="/planning"
-                      onClick={closeMobile}
+                      onClick={handleNavClick}
                     >
                       <CalendarClockIcon className="size-4" />
                       <span>Planification</span>
@@ -624,7 +634,6 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
 
                 {/* 1. Création : Images & Audio */}
                 <SidebarNavCollapsible
-                  defaultOpen={isCreationActive}
                   dropdownItems={
                     <>
                       <DropdownMenuItem
@@ -634,7 +643,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                         <Link
                           className="flex items-center gap-2"
                           href="/images"
-                          onClick={closeMobile}
+                          onClick={handleNavClick}
                         >
                           <ImageIcon className="size-4" />
                           <span>Images</span>
@@ -647,7 +656,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                         <Link
                           className="flex items-center gap-2"
                           href="/audio"
-                          onClick={closeMobile}
+                          onClick={handleNavClick}
                         >
                           <Volume2Icon className="size-4" />
                           <span>Audio</span>
@@ -657,7 +666,9 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                   }
                   icon={SparklesIcon}
                   isActive={isCreationActive}
+                  isOpen={openMenu === "creation"}
                   label="Création"
+                  onOpenChange={(open) => setOpenMenu(open ? "creation" : null)}
                   tooltip="Création (Images & Audio)"
                 >
                   <SidebarMenuSubItem>
@@ -669,7 +680,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                       <Link
                         data-onboarding="nav-images"
                         href="/images"
-                        onClick={closeMobile}
+                        onClick={handleNavClick}
                       >
                         <ImageIcon className="size-3.5" />
                         <span>Images</span>
@@ -685,7 +696,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                       <Link
                         data-onboarding="nav-audio"
                         href="/audio"
-                        onClick={closeMobile}
+                        onClick={handleNavClick}
                       >
                         <Volume2Icon className="size-3.5" />
                         <span>Audio</span>
@@ -694,13 +705,12 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                   </SidebarMenuSubItem>
                 </SidebarNavCollapsible>
 
-                {/* 2. Configuration : Skills, MCP & Agents */}
+                {/* 2. Outils : Skills, MCP & Agents */}
                 <SidebarNavCollapsible
-                  defaultOpen={isConfigActive}
                   dropdownItems={
                     <>
                       <LockedDropdownItem
-                        closeMobile={closeMobile}
+                        closeMobile={handleNavClick}
                         href="/skills"
                         icon={WrenchIcon}
                         label="Skills"
@@ -708,7 +718,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                         onLockedClick={setUpgradeFeature}
                       />
                       <LockedDropdownItem
-                        closeMobile={closeMobile}
+                        closeMobile={handleNavClick}
                         href="/mcp"
                         icon={CpuIcon}
                         label="MCP"
@@ -716,7 +726,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                         onLockedClick={setUpgradeFeature}
                       />
                       <LockedDropdownItem
-                        closeMobile={closeMobile}
+                        closeMobile={handleNavClick}
                         href="/agents"
                         icon={BotIcon}
                         label="Agents"
@@ -725,13 +735,15 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                       />
                     </>
                   }
-                  icon={SlidersHorizontalIcon}
+                  icon={WrenchIcon}
                   isActive={isConfigActive}
-                  label="Configuration"
-                  tooltip="Configuration (Skills, MCP & Agents)"
+                  isOpen={openMenu === "config"}
+                  label="Outils"
+                  onOpenChange={(open) => setOpenMenu(open ? "config" : null)}
+                  tooltip="Outils (Skills, MCP & Agents)"
                 >
                   <LockedNavSubItem
-                    closeMobile={closeMobile}
+                    closeMobile={handleNavClick}
                     href="/skills"
                     icon={WrenchIcon}
                     label="Skills"
@@ -739,7 +751,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                     onLockedClick={setUpgradeFeature}
                   />
                   <LockedNavSubItem
-                    closeMobile={closeMobile}
+                    closeMobile={handleNavClick}
                     href="/mcp"
                     icon={CpuIcon}
                     label="MCP"
@@ -747,7 +759,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                     onLockedClick={setUpgradeFeature}
                   />
                   <LockedNavSubItem
-                    closeMobile={closeMobile}
+                    closeMobile={handleNavClick}
                     href="/agents"
                     icon={BotIcon}
                     label="Agents"
@@ -758,7 +770,6 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
 
                 {/* 3. Plus : Paramètres, Messages Archivés, Supprimer l'historique */}
                 <SidebarNavCollapsible
-                  defaultOpen={isPlusActive}
                   dropdownItems={
                     <>
                       <DropdownMenuItem
@@ -768,7 +779,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                         <Link
                           className="flex items-center gap-2"
                           href="/settings"
-                          onClick={closeMobile}
+                          onClick={handleNavClick}
                         >
                           <SettingsIcon className="size-4" />
                           <span>Paramètres</span>
@@ -781,7 +792,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                         <Link
                           className="flex items-center gap-2"
                           href="/archived"
-                          onClick={closeMobile}
+                          onClick={handleNavClick}
                         >
                           <ArchiveIcon className="size-4" />
                           <span>Messages Archivés</span>
@@ -793,7 +804,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                           <DropdownMenuItem
                             className="flex items-center gap-2 text-destructive focus:text-destructive cursor-pointer text-xs py-1.5"
                             onClick={() => {
-                              closeMobile();
+                              handleNavClick();
                               handleShowDeleteAllDialog();
                             }}
                           >
@@ -806,7 +817,9 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                   }
                   icon={MoreHorizontalIcon}
                   isActive={isPlusActive}
+                  isOpen={openMenu === "plus"}
                   label="Plus"
+                  onOpenChange={(open) => setOpenMenu(open ? "plus" : null)}
                   tooltip="Plus (Paramètres, Archives, Historique)"
                 >
                   <SidebarMenuSubItem>
@@ -818,7 +831,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                       <Link
                         data-onboarding="nav-settings"
                         href="/settings"
-                        onClick={closeMobile}
+                        onClick={handleNavClick}
                       >
                         <SettingsIcon className="size-3.5" />
                         <span>Paramètres</span>
@@ -831,7 +844,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                       className="h-7 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
                       isActive={pathname?.startsWith("/archived")}
                     >
-                      <Link href="/archived" onClick={closeMobile}>
+                      <Link href="/archived" onClick={handleNavClick}>
                         <ArchiveIcon className="size-3.5" />
                         <span>Messages Archivés</span>
                       </Link>
@@ -842,7 +855,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                       <SidebarMenuSubButton
                         className="h-7 rounded-lg text-[13px] text-sidebar-foreground/50 transition-colors duration-150 hover:bg-destructive/10 hover:text-destructive cursor-pointer"
                         onClick={() => {
-                          closeMobile();
+                          handleNavClick();
                           handleShowDeleteAllDialog();
                         }}
                       >
