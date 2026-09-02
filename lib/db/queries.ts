@@ -297,6 +297,87 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
   await run(
     client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "default_audio_speed" double precision DEFAULT 1.0`
   );
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "default_chat_model" text`
+  );
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "default_chat_visibility" varchar(20) DEFAULT 'private'`
+  );
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "default_agent_id" uuid`
+  );
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "ghost_memory_enabled" boolean DEFAULT false NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "show_agent_chat_icons" boolean DEFAULT true NOT NULL`
+  );
+
+  // Table dédiée ultra-robuste pour les préférences IA utilisateur (clé primaire text userId)
+  await run(client`CREATE TABLE IF NOT EXISTS "user_preferences" (
+    "userId" text PRIMARY KEY NOT NULL,
+    "customInstructions" text DEFAULT '' NOT NULL,
+    "customInstructionsEnabled" boolean DEFAULT false NOT NULL,
+    "defaultTemperature" double precision DEFAULT 0.7 NOT NULL,
+    "defaultTopP" double precision DEFAULT 0.9 NOT NULL,
+    "defaultAgentId" uuid,
+    "defaultChatModel" text,
+    "defaultChatVisibility" varchar(20) DEFAULT 'private' NOT NULL,
+    "defaultImageModel" text DEFAULT 'black-forest-labs/flux-schnell' NOT NULL,
+    "defaultImageSize" varchar(50) DEFAULT '1024x1024' NOT NULL,
+    "defaultAudioModel" text DEFAULT 'deepgram/flux-tts:free' NOT NULL,
+    "defaultAudioVoice" varchar(100) DEFAULT 'flux-alexis-en' NOT NULL,
+    "defaultAudioSpeed" double precision DEFAULT 1.0 NOT NULL,
+    "ghostMemoryEnabled" boolean DEFAULT false NOT NULL,
+    "showAgentChatIcons" boolean DEFAULT true NOT NULL,
+    "updatedAt" timestamp DEFAULT now() NOT NULL
+  )`);
+
+  await run(
+    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "customInstructions" text DEFAULT '' NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "customInstructionsEnabled" boolean DEFAULT false NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "defaultTemperature" double precision DEFAULT 0.7 NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "defaultTopP" double precision DEFAULT 0.9 NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "defaultAgentId" uuid`
+  );
+  await run(
+    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "defaultChatModel" text`
+  );
+  await run(
+    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "defaultChatVisibility" varchar(20) DEFAULT 'private' NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "defaultImageModel" text DEFAULT 'black-forest-labs/flux-schnell' NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "defaultImageSize" varchar(50) DEFAULT '1024x1024' NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "defaultAudioModel" text DEFAULT 'deepgram/flux-tts:free' NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "defaultAudioVoice" varchar(100) DEFAULT 'flux-alexis-en' NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "defaultAudioSpeed" double precision DEFAULT 1.0 NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "ghostMemoryEnabled" boolean DEFAULT false NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "showAgentChatIcons" boolean DEFAULT true NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "user_preferences" ADD COLUMN IF NOT EXISTS "updatedAt" timestamp DEFAULT now() NOT NULL`
+  );
 
   // Tables Skills et MCP
   await run(client`CREATE TABLE IF NOT EXISTS "Skill" (
@@ -3060,6 +3141,139 @@ export async function upsertUserNotificationPrefs(
     .set({ ...data, updatedAt: new Date() } as any)
     .where(eq(userNotificationPrefs.userId, userId))
     .returning();
+  return updated;
+}
+
+// ==========================================
+// USER AI PREFERENCES QUERIES
+// ==========================================
+
+export async function getUserPreferences(userId: string) {
+  const db = await dbReady();
+  const { userPreferences } = await import("./schema");
+  try {
+    const [row] = await db
+      .select()
+      .from(userPreferences)
+      .where(eq(userPreferences.userId, userId))
+      .limit(1);
+
+    if (row) {
+      return {
+        customInstructions: row.customInstructions || "",
+        defaultAgentId: row.defaultAgentId || null,
+        defaultAudioModel: row.defaultAudioModel || "deepgram/flux-tts:free",
+        defaultAudioSpeed: row.defaultAudioSpeed ?? 1.0,
+        defaultAudioVoice: row.defaultAudioVoice || "flux-alexis-en",
+        defaultChatModel: row.defaultChatModel || null,
+        defaultChatVisibility: (row.defaultChatVisibility as "private" | "public") || "private",
+        defaultImageModel: row.defaultImageModel || "black-forest-labs/flux-schnell",
+        defaultImageSize: row.defaultImageSize || "1024x1024",
+        enabled: Boolean(row.customInstructionsEnabled),
+        ghostMemoryEnabled: Boolean(row.ghostMemoryEnabled),
+        showAgentChatIcons: row.showAgentChatIcons ?? true,
+        temperature: row.defaultTemperature ?? 0.7,
+        topP: row.defaultTopP ?? 0.9,
+      };
+    }
+  } catch (e) {
+    console.error("getUserPreferences query error:", e);
+  }
+
+  return {
+    customInstructions: "",
+    defaultAgentId: null,
+    defaultAudioModel: "deepgram/flux-tts:free",
+    defaultAudioSpeed: 1.0,
+    defaultAudioVoice: "flux-alexis-en",
+    defaultChatModel: null,
+    defaultChatVisibility: "private" as const,
+    defaultImageModel: "black-forest-labs/flux-schnell",
+    defaultImageSize: "1024x1024",
+    enabled: false,
+    ghostMemoryEnabled: false,
+    showAgentChatIcons: true,
+    temperature: 0.7,
+    topP: 0.9,
+  };
+}
+
+export async function upsertUserPreferences(
+  userId: string,
+  data: Partial<{
+    customInstructions: string;
+    enabled: boolean;
+    temperature: number;
+    topP: number;
+    defaultAgentId: string | null;
+    defaultChatModel: string | null;
+    defaultChatVisibility: "private" | "public";
+    defaultImageModel: string;
+    defaultImageSize: string;
+    defaultAudioModel: string;
+    defaultAudioVoice: string;
+    defaultAudioSpeed: number;
+    ghostMemoryEnabled: boolean;
+    showAgentChatIcons: boolean;
+  }>
+) {
+  const db = await dbReady();
+  const { userPreferences } = await import("./schema");
+
+  const [existing] = await db
+    .select()
+    .from(userPreferences)
+    .where(eq(userPreferences.userId, userId))
+    .limit(1);
+
+  if (!existing) {
+    const [created] = await db
+      .insert(userPreferences)
+      .values({
+        customInstructions: data.customInstructions ?? "",
+        customInstructionsEnabled: data.enabled ?? false,
+        defaultAgentId: data.defaultAgentId ? (data.defaultAgentId as any) : null,
+        defaultAudioModel: data.defaultAudioModel ?? "deepgram/flux-tts:free",
+        defaultAudioSpeed: data.defaultAudioSpeed ?? 1.0,
+        defaultAudioVoice: data.defaultAudioVoice ?? "flux-alexis-en",
+        defaultChatModel: data.defaultChatModel ?? null,
+        defaultChatVisibility: data.defaultChatVisibility ?? "private",
+        defaultImageModel: data.defaultImageModel ?? "black-forest-labs/flux-schnell",
+        defaultImageSize: data.defaultImageSize ?? "1024x1024",
+        defaultTemperature: data.temperature ?? 0.7,
+        defaultTopP: data.topP ?? 0.9,
+        ghostMemoryEnabled: data.ghostMemoryEnabled ?? false,
+        showAgentChatIcons: data.showAgentChatIcons ?? true,
+        userId,
+      })
+      .returning();
+    return created;
+  }
+
+  const updatePayload: Record<string, any> = {
+    updatedAt: new Date(),
+  };
+  if (data.customInstructions !== undefined) updatePayload.customInstructions = data.customInstructions;
+  if (data.enabled !== undefined) updatePayload.customInstructionsEnabled = data.enabled;
+  if (data.temperature !== undefined) updatePayload.defaultTemperature = data.temperature;
+  if (data.topP !== undefined) updatePayload.defaultTopP = data.topP;
+  if (data.defaultAgentId !== undefined) updatePayload.defaultAgentId = data.defaultAgentId;
+  if (data.defaultChatModel !== undefined) updatePayload.defaultChatModel = data.defaultChatModel;
+  if (data.defaultChatVisibility !== undefined) updatePayload.defaultChatVisibility = data.defaultChatVisibility;
+  if (data.defaultImageModel !== undefined) updatePayload.defaultImageModel = data.defaultImageModel;
+  if (data.defaultImageSize !== undefined) updatePayload.defaultImageSize = data.defaultImageSize;
+  if (data.defaultAudioModel !== undefined) updatePayload.defaultAudioModel = data.defaultAudioModel;
+  if (data.defaultAudioVoice !== undefined) updatePayload.defaultAudioVoice = data.defaultAudioVoice;
+  if (data.defaultAudioSpeed !== undefined) updatePayload.defaultAudioSpeed = data.defaultAudioSpeed;
+  if (data.ghostMemoryEnabled !== undefined) updatePayload.ghostMemoryEnabled = data.ghostMemoryEnabled;
+  if (data.showAgentChatIcons !== undefined) updatePayload.showAgentChatIcons = data.showAgentChatIcons;
+
+  const [updated] = await db
+    .update(userPreferences)
+    .set(updatePayload)
+    .where(eq(userPreferences.userId, userId))
+    .returning();
+
   return updated;
 }
 

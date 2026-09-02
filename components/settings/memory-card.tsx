@@ -5,20 +5,25 @@ import {
   BotIcon,
   BrainIcon,
   CheckIcon,
+  CodeIcon,
   CopyIcon,
   DownloadIcon,
   FileJsonIcon,
   FolderKanbanIcon,
   GlobeIcon,
+  LightbulbIcon,
   Loader2Icon,
   PencilIcon,
   PowerIcon,
+  ScrollTextIcon,
   SearchIcon,
+  Settings2Icon,
   SparklesIcon,
   StarIcon,
   TagIcon,
   Trash2Icon,
   UploadIcon,
+  UserIcon,
   XIcon,
 } from "lucide-react";
 import { type ChangeEvent, useMemo, useRef, useState } from "react";
@@ -79,12 +84,12 @@ const SCOPE_FILTERS: { id: ScopeFilter; label: string }[] = [
 ];
 
 export const MEMORY_CATEGORIES = [
-  { id: "general", icon: "💡", label: "Général" },
-  { id: "preferences", icon: "⚙️", label: "Préférences" },
-  { id: "dev", icon: "💻", label: "Code & Dev" },
-  { id: "projects", icon: "📁", label: "Projets" },
-  { id: "personal", icon: "👤", label: "Personnel" },
-  { id: "rules", icon: "📜", label: "Règles" },
+  { icon: LightbulbIcon, id: "general", label: "Général" },
+  { icon: Settings2Icon, id: "preferences", label: "Préférences" },
+  { icon: CodeIcon, id: "dev", label: "Code & Dev" },
+  { icon: FolderKanbanIcon, id: "projects", label: "Projets" },
+  { icon: UserIcon, id: "personal", label: "Personnel" },
+  { icon: ScrollTextIcon, id: "rules", label: "Règles" },
 ] as const;
 
 function formatMemoryDate(value: string): string {
@@ -682,7 +687,7 @@ export function MemoryCard({
           </span>
           <button
             className={cn(
-              "inline-flex items-center gap-1 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-colors cursor-pointer",
+              "inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-colors cursor-pointer",
               categoryFilter === "all"
                 ? "bg-primary text-primary-foreground"
                 : "bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
@@ -690,11 +695,12 @@ export function MemoryCard({
             onClick={() => setCategoryFilter("all")}
             type="button"
           >
-            🌐 Toutes
+            <GlobeIcon className="size-3" />
+            <span>Toutes</span>
           </button>
           <button
             className={cn(
-              "inline-flex items-center gap-1 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-colors cursor-pointer",
+              "inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-colors cursor-pointer",
               categoryFilter === "important"
                 ? "bg-amber-500 text-white"
                 : "bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500/20"
@@ -702,24 +708,28 @@ export function MemoryCard({
             onClick={() => setCategoryFilter("important")}
             type="button"
           >
-            <StarIcon className="size-3 fill-current" /> Important
+            <StarIcon className="size-3 fill-current" />
+            <span>Important</span>
           </button>
-          {MEMORY_CATEGORIES.map((cat) => (
-            <button
-              className={cn(
-                "inline-flex items-center gap-1 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-colors cursor-pointer",
-                categoryFilter === cat.id
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
-              )}
-              key={cat.id}
-              onClick={() => setCategoryFilter(cat.id)}
-              type="button"
-            >
-              <span>{cat.icon}</span>
-              <span>{cat.label}</span>
-            </button>
-          ))}
+          {MEMORY_CATEGORIES.map((cat) => {
+            const CatIcon = cat.icon;
+            return (
+              <button
+                className={cn(
+                  "inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-colors cursor-pointer",
+                  categoryFilter === cat.id
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
+                )}
+                key={cat.id}
+                onClick={() => setCategoryFilter(cat.id)}
+                type="button"
+              >
+                <CatIcon className="size-3" />
+                <span>{cat.label}</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
@@ -751,7 +761,7 @@ export function MemoryCard({
             >
               {MEMORY_CATEGORIES.map((cat) => (
                 <option key={cat.id} value={cat.id}>
-                  {cat.icon} {cat.label}
+                  {cat.label}
                 </option>
               ))}
             </select>
@@ -866,13 +876,13 @@ export function MemoryCard({
                       <div className="flex items-center gap-2">
                         <select
                           aria-label="Modifier la catégorie"
-                          className="h-7 rounded-lg border border-border/60 bg-background px-2 text-[11px] outline-none"
+                          className="h-7 rounded-lg border border-border/60 bg-background px-2 text-[11px] outline-none cursor-pointer"
                           onChange={(e) => setEditCategory(e.target.value)}
                           value={editCategory}
                         >
                           {MEMORY_CATEGORIES.map((cat) => (
                             <option key={cat.id} value={cat.id}>
-                              {cat.icon} {cat.label}
+                              {cat.label}
                             </option>
                           ))}
                         </select>
@@ -926,7 +936,7 @@ export function MemoryCard({
                       title={
                         isImportant
                           ? "Mémoire Importante (injectée en priorité)"
-                          : "Marquer comme importante ⭐"
+                          : "Marquer comme importante"
                       }
                       type="button"
                     >
@@ -950,8 +960,8 @@ export function MemoryCard({
                       <div className="flex items-center gap-1.5 flex-wrap mt-1.5 text-[10.5px]">
                         {/* Badge Catégorie */}
                         {catObj ? (
-                          <span className="inline-flex items-center gap-0.5 bg-muted/60 text-muted-foreground px-1.5 py-0.5 rounded font-medium">
-                            <span>{catObj.icon}</span>
+                          <span className="inline-flex items-center gap-1 bg-muted/60 text-muted-foreground px-1.5 py-0.5 rounded font-medium">
+                            <catObj.icon className="size-3 text-muted-foreground" />
                             <span>{catObj.label}</span>
                           </span>
                         ) : null}
@@ -1096,7 +1106,7 @@ export function MemoryCard({
               <span className="flex size-8 items-center justify-center rounded-lg bg-sky-500/10 text-sky-600">
                 <BrainIcon className="size-4" />
               </span>
-              <DialogTitle>Synthèse de votre Mémoire 🧠</DialogTitle>
+              <DialogTitle>Synthèse de votre Mémoire</DialogTitle>
             </div>
             <DialogDescription>
               Synthèse structurée de vos {summaryCount} informations mémorisées, organisée par sections.

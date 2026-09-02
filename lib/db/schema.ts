@@ -577,6 +577,43 @@ export type UserNotificationPrefs = InferSelectModel<
   typeof userNotificationPrefs
 >;
 
+export const userPreferences = pgTable("user_preferences", {
+  customInstructions: text("customInstructions").notNull().default(""),
+  customInstructionsEnabled: boolean("customInstructionsEnabled")
+    .notNull()
+    .default(false),
+  defaultAgentId: uuid("defaultAgentId"),
+  defaultAudioModel: text("defaultAudioModel")
+    .notNull()
+    .default("deepgram/flux-tts:free"),
+  defaultAudioSpeed: doublePrecision("defaultAudioSpeed")
+    .notNull()
+    .default(1.0),
+  defaultAudioVoice: varchar("defaultAudioVoice", { length: 100 })
+    .notNull()
+    .default("flux-alexis-en"),
+  defaultChatModel: text("defaultChatModel"),
+  defaultChatVisibility: varchar("defaultChatVisibility", { length: 20 })
+    .notNull()
+    .default("private"),
+  defaultImageModel: text("defaultImageModel")
+    .notNull()
+    .default("black-forest-labs/flux-schnell"),
+  defaultImageSize: varchar("defaultImageSize", { length: 50 })
+    .notNull()
+    .default("1024x1024"),
+  defaultTemperature: doublePrecision("defaultTemperature")
+    .notNull()
+    .default(0.7),
+  defaultTopP: doublePrecision("defaultTopP").notNull().default(0.9),
+  ghostMemoryEnabled: boolean("ghostMemoryEnabled").notNull().default(false),
+  showAgentChatIcons: boolean("showAgentChatIcons").notNull().default(true),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+  userId: text("userId").primaryKey().notNull(),
+});
+
+export type UserPreferences = InferSelectModel<typeof userPreferences>;
+
 export const skillTemplate = pgTable(
   "SkillTemplate",
   {
