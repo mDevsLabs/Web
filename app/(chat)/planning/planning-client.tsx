@@ -61,6 +61,7 @@ export function PlanningClient({
   const [editingItem, setEditingItem] = useState<ScheduledMessage | null>(null);
   const [executingId, setExecutingId] = useState<string | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [isTriggeringDue, setIsTriggeringDue] = useState(false);
 
   const {
     data: schedules,
@@ -74,6 +75,35 @@ export function PlanningClient({
       refreshInterval: 15000,
     }
   );
+
+  const dueItems = (schedules || []).filter(
+    (item) =>
+      item.status === "pending" &&
+      new Date(item.scheduledAt).getTime() <= Date.now()
+  );
+
+  const handleExecuteAllDue = async () => {
+    setIsTriggeringDue(true);
+    try {
+      const res = await fetch("/api/cron/planning", { method: "POST" });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Erreur lors de l'exécution");
+      }
+      if (data.executedCount > 0) {
+        toast.success(
+          `${data.executedCount} message(s) planifié(s) exécuté(s) avec succès !`
+        );
+      } else {
+        toast.info("Aucun message planifié n'était en attente d'exécution.");
+      }
+      mutate();
+    } catch (err: any) {
+      toast.error(err?.message || "Échec de l'exécution des tâches en attente");
+    } finally {
+      setIsTriggeringDue(false);
+    }
+  };
 
   const filteredList = (schedules || []).filter((item) => {
     if (!searchQuery.trim()) return true;
@@ -236,6 +266,25 @@ export function PlanningClient({
           </div>
 
           <div className="flex items-center gap-2">
+            {dueItems.length > 0 && (
+              <Button
+                className="gap-2 border-amber-500/30 bg-amber-500/10 text-amber-600 hover:bg-amber-500/20 dark:text-amber-400 shadow-xs text-xs"
+                disabled={isTriggeringDue}
+                onClick={handleExecuteAllDue}
+                size="sm"
+                variant="outline"
+              >
+                {isTriggeringDue ? (
+                  <Loader2Icon className="size-3.5 animate-spin" />
+                ) : (
+                  <PlayIcon className="size-3.5 fill-current" />
+                )}
+                <span>
+                  Exécuter {dueItems.length} tâche{dueItems.length > 1 ? "s" : ""} échue{dueItems.length > 1 ? "s" : ""}
+                </span>
+              </Button>
+            )}
+
             <Button
               className="gap-2 shadow-xs"
               onClick={() => {
