@@ -15,7 +15,7 @@ import {
 import { MAI_UPGRADE_URL } from "@/lib/constants";
 
 export type UpgradeDialogProps = {
-  feature?: "skills" | "mcp" | "generic";
+  feature?: "skills" | "mcp" | "agents" | "generic";
   open: boolean;
   onOpenChange: (open: boolean) => void;
 };
@@ -24,6 +24,11 @@ const FEATURE_COPY: Record<
   NonNullable<UpgradeDialogProps["feature"]>,
   { description: string; title: string }
 > = {
+  agents: {
+    description:
+      "Créez des agents IA personnalisés avec instructions, modèles, skills et connexions MCP. Réservé aux forfaits Plus, Pro et Max.",
+    title: "Agents IA — Plan requis",
+  },
   generic: {
     description:
       "Cette fonctionnalité avancée est réservée aux forfaits payants. Passez à un forfait supérieur pour continuer.",
@@ -41,7 +46,11 @@ const FEATURE_COPY: Record<
   },
 };
 
-export function UpgradeDialog({ feature = "generic", open, onOpenChange }: UpgradeDialogProps) {
+export function UpgradeDialog({
+  feature = "generic",
+  open,
+  onOpenChange,
+}: UpgradeDialogProps) {
   const copy = FEATURE_COPY[feature];
   const [isMounted, setIsMounted] = useState(false);
 
@@ -75,13 +84,30 @@ export function UpgradeDialog({ feature = "generic", open, onOpenChange }: Upgra
         </div>
 
         <div className="grid grid-cols-3 gap-2 py-1">
-          <PlanBadge color="from-sky-400 to-blue-500" icon={ZapIcon} label="Plus" />
-          <PlanBadge color="from-violet-500 to-purple-600" icon={SparklesIcon} label="Pro" highlight />
-          <PlanBadge color="from-amber-400 to-orange-500" icon={CrownIcon} label="Max" />
+          <PlanBadge
+            color="from-sky-400 to-blue-500"
+            icon={ZapIcon}
+            label="Plus"
+          />
+          <PlanBadge
+            color="from-violet-500 to-purple-600"
+            highlight
+            icon={SparklesIcon}
+            label="Pro"
+          />
+          <PlanBadge
+            color="from-amber-400 to-orange-500"
+            icon={CrownIcon}
+            label="Max"
+          />
         </div>
 
         <DialogFooter className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-between">
-          <Button onClick={() => onOpenChange(false)} type="button" variant="ghost">
+          <Button
+            onClick={() => onOpenChange(false)}
+            type="button"
+            variant="ghost"
+          >
             Plus tard
           </Button>
           <Button asChild className="gap-2" type="button">
@@ -110,11 +136,15 @@ function PlanBadge({
   return (
     <div
       className={`flex flex-col items-center gap-1 rounded-xl border bg-gradient-to-br ${color} p-3 text-white shadow-sm ${
-        highlight ? "ring-2 ring-primary/50 ring-offset-2 ring-offset-background" : "opacity-90"
+        highlight
+          ? "ring-2 ring-primary/50 ring-offset-2 ring-offset-background"
+          : "opacity-90"
       }`}
     >
       <Icon className="size-4" />
-      <span className="text-[11px] font-bold uppercase tracking-wider">{label}</span>
+      <span className="text-[11px] font-bold uppercase tracking-wider">
+        {label}
+      </span>
     </div>
   );
 }

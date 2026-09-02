@@ -1,7 +1,10 @@
 import crypto from "node:crypto";
 
-const API_BASE = "https://mdevslabs--01a039924d3771569d4cc6b63181d1f4.web.val.run";
-const JWT_SECRET = process.env.MAI_JWT_SECRET || "4a8f9c2d1e3b5a7f9e0c2b4d6a8f1c3e5b7a9f0e2d4c6b8a1f3e5d7c9b0a2f4e";
+const API_BASE =
+  "https://mdevslabs--01a039924d3771569d4cc6b63181d1f4.web.val.run";
+const JWT_SECRET =
+  process.env.MAI_JWT_SECRET ||
+  "4a8f9c2d1e3b5a7f9e0c2b4d6a8f1c3e5b7a9f0e2d4c6b8a1f3e5d7c9b0a2f4e";
 
 function base64Url(str) {
   return Buffer.from(str).toString("base64url");
@@ -11,10 +14,10 @@ function generateTestToken(userId, tier) {
   const header = { alg: "HS256", typ: "JWT" };
   const now = Math.floor(Date.now() / 1000);
   const payload = {
+    exp: now + 7200,
+    iat: now,
     sub: userId,
     tier: tier || "Free",
-    iat: now,
-    exp: now + 7200,
   };
 
   const headerB64 = base64Url(JSON.stringify(header));
@@ -28,35 +31,43 @@ function generateTestToken(userId, tier) {
 }
 
 async function runTests() {
-  console.log("==================================================================");
+  console.log(
+    "=================================================================="
+  );
   console.log("🧪 DÉMARRAGE DE LA SUITE DE TESTS SUR L'API BETA VAL TOWN");
   console.log(`🌐 Endpoint : ${API_BASE}`);
-  console.log("==================================================================\n");
+  console.log(
+    "==================================================================\n"
+  );
 
   // ---------------------------------------------------------------------------
   // TEST 1 : Vérification du blocage Image Generation pour le Tier Free
   // ---------------------------------------------------------------------------
-  console.log("🔹 TEST 1 : Blocage des requêtes API de génération d'images (Tier Free)");
+  console.log(
+    "🔹 TEST 1 : Blocage des requêtes API de génération d'images (Tier Free)"
+  );
   const freeToken = generateTestToken("test-free-user-id", "Free");
 
   const freeImgRes = await fetch(`${API_BASE}/v1/images/generations`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${freeToken}`,
-    },
     body: JSON.stringify({
-      prompt: "A beautiful sunset over the mountains",
       model: "black-forest-labs/flux-1-schnell",
+      prompt: "A beautiful sunset over the mountains",
     }),
+    headers: {
+      Authorization: `Bearer ${freeToken}`,
+      "Content-Type": "application/json",
+    },
+    method: "POST",
   });
 
   const freeImgJson = await freeImgRes.json().catch(() => ({}));
   console.log(`- Statut HTTP : ${freeImgRes.status} (Attendu: 403 Forbidden)`);
-  console.log(`- Réponse JSON :`, JSON.stringify(freeImgJson, null, 2));
+  console.log("- Réponse JSON :", JSON.stringify(freeImgJson, null, 2));
 
   if (freeImgRes.status === 403) {
-    console.log("✅ TEST 1 VALIDÉ : Les utilisateurs Free sont bien bloqués en 403 avec le message approprié !\n");
+    console.log(
+      "✅ TEST 1 VALIDÉ : Les utilisateurs Free sont bien bloqués en 403 avec le message approprié !\n"
+    );
   } else {
     console.log("❌ TEST 1 ÉCHOUÉ : Statut inattendu\n");
   }
@@ -64,17 +75,19 @@ async function runTests() {
   // ---------------------------------------------------------------------------
   // TEST 2 : Consultation du stockage Cloud (/cloud/storage)
   // ---------------------------------------------------------------------------
-  console.log("🔹 TEST 2 : Récupération du statut de stockage (/cloud/storage)");
+  console.log(
+    "🔹 TEST 2 : Récupération du statut de stockage (/cloud/storage)"
+  );
   const plusToken = generateTestToken("test-storage-user-1", "Plus");
 
   const storageRes = await fetch(`${API_BASE}/cloud/storage`, {
     headers: {
-      "Authorization": `Bearer ${plusToken}`,
+      Authorization: `Bearer ${plusToken}`,
     },
   });
   const storageJson = await storageRes.json().catch(() => ({}));
   console.log(`- Statut HTTP : ${storageRes.status}`);
-  console.log(`- Réponse Stockage :`, JSON.stringify(storageJson, null, 2));
+  console.log("- Réponse Stockage :", JSON.stringify(storageJson, null, 2));
 
   if (storageRes.ok) {
     console.log("✅ TEST 2 VALIDÉ : Endpoint /cloud/storage fonctionnel !\n");
@@ -99,36 +112,42 @@ async function runTests() {
 
     console.log(`\n📤 [Upload #${i}] Utilisateur : ${userTestId}`);
     const uploadRes = await fetch(`${API_BASE}/cloud/upload`, {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${userToken}`,
-      },
       body: formData,
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+      method: "POST",
     });
 
     const uploadJson = await uploadRes.json().catch(() => ({}));
     console.log(`- Statut HTTP : ${uploadRes.status}`);
-    console.log(`- Résultat :`, JSON.stringify(uploadJson, null, 2));
+    console.log("- Résultat :", JSON.stringify(uploadJson, null, 2));
 
     if (uploadRes.ok && uploadJson.file?.url) {
       uploadedFiles.push({
         id: uploadJson.file.id,
+        token: userToken,
         url: uploadJson.file.url,
         userId: userTestId,
-        token: userToken,
       });
 
       // Test de lecture publique HTTP GET sur l'URL Z1 Storage
-      console.log(`🔍 Vérification accessibilité URL publique : ${uploadJson.file.url}`);
+      console.log(
+        `🔍 Vérification accessibilité URL publique : ${uploadJson.file.url}`
+      );
       try {
         const publicGetRes = await fetch(uploadJson.file.url);
         console.log(`- Statut HTTP GET : ${publicGetRes.status}`);
         if (publicGetRes.ok) {
           const text = await publicGetRes.text();
           console.log(`- Contenu lu depuis Z1 : "${text.slice(0, 45)}..."`);
-          console.log(`✅ Fichier #${i} accessible publiquement avec succès ! 🎉`);
+          console.log(
+            `✅ Fichier #${i} accessible publiquement avec succès ! 🎉`
+          );
         } else {
-          console.log(`⚠️ Statut public ${publicGetRes.status} (Vérifiez les permissions Public Read si 403).`);
+          console.log(
+            `⚠️ Statut public ${publicGetRes.status} (Vérifiez les permissions Public Read si 403).`
+          );
         }
       } catch (err) {
         console.log(`⚠️ Erreur fetch URL publique : ${err.message}`);
@@ -140,25 +159,33 @@ async function runTests() {
   // TEST 4 : Nettoyage / Suppression d'un fichier (/cloud/files/:id)
   // ---------------------------------------------------------------------------
   if (uploadedFiles.length > 0) {
-    console.log("\n🔹 TEST 4 : Suppression d'un fichier de test (/cloud/files/:id)");
+    console.log(
+      "\n🔹 TEST 4 : Suppression d'un fichier de test (/cloud/files/:id)"
+    );
     const fileToDelete = uploadedFiles[0];
     const delRes = await fetch(`${API_BASE}/cloud/files/${fileToDelete.id}`, {
-      method: "DELETE",
       headers: {
-        "Authorization": `Bearer ${fileToDelete.token}`,
+        Authorization: `Bearer ${fileToDelete.token}`,
       },
+      method: "DELETE",
     });
     const delJson = await delRes.json().catch(() => ({}));
     console.log(`- Statut HTTP : ${delRes.status}`);
-    console.log(`- Résultat suppression :`, JSON.stringify(delJson, null, 2));
+    console.log("- Résultat suppression :", JSON.stringify(delJson, null, 2));
     if (delRes.ok && delJson.success) {
-      console.log("✅ TEST 4 VALIDÉ : Fichier supprimé avec succès de la DB et de Z1 Storage !");
+      console.log(
+        "✅ TEST 4 VALIDÉ : Fichier supprimé avec succès de la DB et de Z1 Storage !"
+      );
     }
   }
 
-  console.log("\n==================================================================");
+  console.log(
+    "\n=================================================================="
+  );
   console.log("🏁 BILAN GLOBAL DES TESTS TERMINÉ");
-  console.log("==================================================================");
+  console.log(
+    "=================================================================="
+  );
 }
 
 runTests().catch(console.error);

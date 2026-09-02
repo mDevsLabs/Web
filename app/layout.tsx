@@ -45,8 +45,11 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  maximumScale: 1,
+  initialScale: 1,
+  interactiveWidget: "resizes-visual",
+  maximumScale: 5,
   viewportFit: "cover",
+  width: "device-width",
 };
 
 const fontSans = Plus_Jakarta_Sans({

@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { getMaiUser } from "@/lib/auth/session";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
+import { getMaiUser } from "@/lib/auth/session";
 import {
   deleteSkill,
   getSkillById,
@@ -18,22 +18,31 @@ const updateSkillSchema = z.object({
   icon: z.string().max(50).optional(),
   instructions: z.string().min(1).max(20_000).optional(),
   isPublic: z.boolean().optional(),
+  lastUsedAt: z.string().nullable().optional(),
+  mcpServerIds: z.array(z.string().uuid()).max(20).optional(),
+  mcpToolFilter: z
+    .record(z.string(), z.array(z.string()).nullable())
+    .optional(),
   name: z.string().min(1).max(100).optional(),
   parameters: z
     .array(
       z.object({
         defaultValue: z.string().optional(),
         description: z.string().optional(),
-        name: z.string(),
+        enumValues: z.array(z.string()).optional(),
+        name: z.string().min(1).max(50),
         required: z.boolean().optional(),
-        type: z.string().optional(),
+        type: z.enum(["string", "number", "boolean", "enum"]).optional(),
       })
     )
     .optional(),
   pinned: z.boolean().optional(),
   shareId: z.string().nullable().optional(),
   tags: z.array(z.string().max(50)).optional(),
+  templateId: z.string().uuid().nullable().optional(),
   tools: z.array(z.string()).optional(),
+  usageCount: z.number().int().min(0).optional(),
+  version: z.string().max(20).optional(),
 });
 
 export async function GET(

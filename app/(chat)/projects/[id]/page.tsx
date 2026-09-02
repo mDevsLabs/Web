@@ -13,6 +13,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
+import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { ProjectIcon } from "@/components/chat/project-icon";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -283,18 +284,15 @@ export default function ProjectDetailPage() {
             </div>
             <div className="grid gap-2">
               <Label>Modèle d'IA par défaut</Label>
-              <select
-                className="w-full rounded-md border border-input bg-background p-2 text-xs text-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                onChange={(e) => setDefaultModel(e.target.value)}
-                value={defaultModel}
-              >
-                <option value="">Par défaut / Automatique</option>
-                {availableModels.map((m) => (
-                  <option key={m.id} value={m.id}>
-                    {m.name || m.id} ({m.id})
-                  </option>
-                ))}
-              </select>
+              <ModelSelectorCompact
+                allowEmpty
+                fallbackModels={availableModels}
+                modal
+                models={availableModels.length > 0 ? availableModels : undefined}
+                onModelChange={setDefaultModel}
+                selectedModelId={defaultModel}
+                variant="block"
+              />
               <span className="text-[11px] text-muted-foreground">
                 Modèle sélectionné par défaut pour les nouvelles discussions de
                 ce projet.

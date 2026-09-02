@@ -3,6 +3,9 @@
 import {
   ChevronUp,
   CloudIcon,
+  ExternalLinkIcon,
+  HelpCircleIcon,
+  InfoIcon,
   LogOutIcon,
   MoonIcon,
   SettingsIcon,
@@ -21,6 +24,9 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -28,12 +34,15 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { useSettings } from "@/hooks/use-settings";
 import type { MaiUser } from "@/lib/auth/session";
+import { APP_SUPPORT_URL, APP_VERSION } from "@/lib/constants";
 
 export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
   const router = useRouter();
   const { setTheme, resolvedTheme } = useTheme();
   const [isLoggingOut, setIsLoggingOut] = useState(false);
+  const { data: settingsData } = useSettings();
 
   const handleThemeSelect = useCallback(() => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
@@ -52,10 +61,18 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
     }
   }, [router]);
 
-  const username = user?.username || "Mon Compte";
-  const email = user?.email || "";
-  const tier = user?.tier || "Free";
-  const avatarUrl = user?.avatarUrl;
+  // settingsData.user vient de l'API /usage et peut avoir des champs supplémentaires (name, avatar)
+  // par rapport au type statique MaiUser (issu du JWT). On le type en `any` pour y accéder.
+  const apiUser: any = settingsData?.user;
+  const username =
+    apiUser?.username ||
+    apiUser?.name ||
+    user?.username ||
+    "Mon Compte";
+  const email = apiUser?.email || user?.email || "";
+  const tier = apiUser?.tier || user?.tier || "Free";
+  const avatarUrl =
+    apiUser?.avatarUrl || apiUser?.avatar || user?.avatarUrl;
 
   return (
     <SidebarMenu>
@@ -105,10 +122,11 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
           </DropdownMenuTrigger>
 
           <DropdownMenuContent
-            align="start"
+            align="end"
             className="w-60 rounded-xl border border-border/60 bg-card/95 backdrop-blur-xl shadow-[var(--shadow-float)] p-1.5"
             data-testid="user-nav-menu"
             side="top"
+            sideOffset={8}
           >
             <DropdownMenuItem asChild>
               <Link
@@ -158,6 +176,37 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
                 </>
               )}
             </DropdownMenuItem>
+
+            <DropdownMenuSeparator className="my-1 bg-border/50" />
+
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[13px] cursor-pointer hover:bg-sidebar-accent">
+                <HelpCircleIcon className="size-4 text-muted-foreground" />
+                <span>Support</span>
+              </DropdownMenuSubTrigger>
+              <DropdownMenuSubContent className="w-52 p-1.5 rounded-xl">
+                <DropdownMenuItem asChild>
+                  <a
+                    className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[13px] cursor-pointer"
+                    href={APP_SUPPORT_URL}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <ExternalLinkIcon className="size-3.5 text-muted-foreground" />
+                    <span>Centre d'aide</span>
+                  </a>
+                </DropdownMenuItem>
+                <DropdownMenuItem className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[13px] cursor-default text-muted-foreground select-none">
+                  <span className="flex items-center gap-2">
+                    <InfoIcon className="size-3.5 text-muted-foreground" />
+                    <span>Version</span>
+                  </span>
+                  <span className="font-mono text-[11px] font-semibold text-foreground bg-muted px-2 py-0.5 rounded-md">
+                    v{APP_VERSION}
+                  </span>
+                </DropdownMenuItem>
+              </DropdownMenuSubContent>
+            </DropdownMenuSub>
 
             <DropdownMenuSeparator className="my-1 bg-border/50" />
 

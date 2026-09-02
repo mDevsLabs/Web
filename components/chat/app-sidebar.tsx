@@ -3,16 +3,23 @@
 import {
   ArchiveIcon,
   ArrowRightIcon,
+  BotIcon,
+  CalendarClockIcon,
+  ChevronDownIcon,
   CloudIcon,
   CpuIcon,
   FolderKanbanIcon,
+  HomeIcon,
   ImageIcon,
   LockIcon,
+  MoreHorizontalIcon,
   PanelLeftIcon,
   PenSquareIcon,
   PlusIcon,
   SearchIcon,
   SettingsIcon,
+  SlidersHorizontalIcon,
+  SparklesIcon,
   TrashIcon,
   Volume2Icon,
   WrenchIcon,
@@ -20,11 +27,10 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useSWRConfig } from "swr";
 import { unstable_serialize } from "swr/infinite";
-import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import { ProjectIcon } from "@/components/chat/project-icon";
 import { SearchDialog } from "@/components/chat/search-dialog";
 import {
@@ -32,6 +38,20 @@ import {
   SidebarHistory,
 } from "@/components/chat/sidebar-history";
 import { SidebarUserNav } from "@/components/chat/sidebar-user-nav";
+import { UpgradeDialog } from "@/components/common/upgrade-dialog";
+import { useActiveChat } from "@/hooks/use-active-chat";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   Sidebar,
   SidebarContent,
@@ -42,6 +62,9 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
   SidebarRail,
   SidebarTrigger,
   useSidebar,
@@ -155,22 +178,20 @@ function SidebarProjects() {
   );
 }
 
-function LockedNavItem({
+function LockedNavSubItem({
   closeMobile,
   href,
   icon: Icon,
   label,
   lockedFeature,
   onLockedClick,
-  tooltip,
 }: {
   closeMobile: () => void;
   href: string;
   icon: React.ComponentType<{ className?: string }>;
   label: string;
-  lockedFeature: "skills" | "mcp";
-  onLockedClick: (feature: "skills" | "mcp") => void;
-  tooltip: string;
+  lockedFeature: "skills" | "mcp" | "agents";
+  onLockedClick: (feature: "skills" | "mcp" | "agents") => void;
 }) {
   const pathname = usePathname();
   const { isPaid } = useTier();
@@ -182,11 +203,13 @@ function LockedNavItem({
       if (locked) {
         e.preventDefault();
         e.stopPropagation();
+        closeMobile();
         onLockedClick(lockedFeature);
         toast.info(
           `« ${label} » est réservé aux forfaits Plus, Pro et Max. Mettez à niveau votre compte pour y accéder.`,
           {
-            description: "Bouton d'upgrade disponible dans la fenêtre qui s'ouvre.",
+            description:
+              "Bouton d'upgrade disponible dans la fenêtre qui s'ouvre.",
             duration: 5000,
           }
         );
@@ -198,17 +221,17 @@ function LockedNavItem({
   );
 
   return (
-    <SidebarMenuItem>
-      <SidebarMenuButton
-        asChild
+    <SidebarMenuSubItem>
+      <SidebarMenuSubButton
         aria-disabled={locked}
+        asChild
         className={cn(
-          "h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground",
+          "h-7 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground",
           isActive && "bg-sidebar-accent text-sidebar-foreground font-medium",
           locked &&
             "opacity-55 cursor-not-allowed text-sidebar-foreground/50 hover:bg-transparent hover:text-sidebar-foreground/50"
         )}
-        tooltip={locked ? `${tooltip} — Plus, Pro ou Max requis` : tooltip}
+        isActive={isActive}
       >
         <Link
           aria-disabled={locked}
@@ -216,38 +239,216 @@ function LockedNavItem({
           onClick={handleClick}
           tabIndex={locked ? -1 : 0}
         >
-          <Icon className={cn("size-4", isActive && "text-primary")} />
-          <span>{label}</span>
-          {locked && (
-            <LockIcon className="ml-auto size-3 text-amber-500" />
-          )}
+          <Icon className={cn("size-3.5", isActive && "text-primary")} />
+          <span className="truncate">{label}</span>
+          {locked && <LockIcon className="ml-auto size-3 text-amber-500" />}
         </Link>
-      </SidebarMenuButton>
-    </SidebarMenuItem>
+      </SidebarMenuSubButton>
+    </SidebarMenuSubItem>
+  );
+}
+
+function LockedDropdownItem({
+  closeMobile,
+  href,
+  icon: Icon,
+  label,
+  lockedFeature,
+  onLockedClick,
+}: {
+  closeMobile: () => void;
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  lockedFeature: "skills" | "mcp" | "agents";
+  onLockedClick: (feature: "skills" | "mcp" | "agents") => void;
+}) {
+  const pathname = usePathname();
+  const { isPaid } = useTier();
+  const isActive = pathname?.startsWith(href);
+  const locked = !isPaid;
+
+  const handleClick = useCallback(
+    (e: React.MouseEvent) => {
+      if (locked) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeMobile();
+        onLockedClick(lockedFeature);
+        toast.info(
+          `« ${label} » est réservé aux forfaits Plus, Pro et Max. Mettez à niveau votre compte pour y accéder.`,
+          {
+            description:
+              "Bouton d'upgrade disponible dans la fenêtre qui s'ouvre.",
+            duration: 5000,
+          }
+        );
+      } else {
+        closeMobile();
+      }
+    },
+    [closeMobile, label, locked, lockedFeature, onLockedClick]
+  );
+
+  return (
+    <DropdownMenuItem
+      asChild
+      className={cn(
+        "flex items-center gap-2 cursor-pointer text-xs py-1.5",
+        locked && "opacity-60 cursor-not-allowed"
+      )}
+    >
+      <Link href={locked ? "#" : href} onClick={handleClick}>
+        <Icon className={cn("size-4", isActive && "text-primary")} />
+        <span className="flex-1">{label}</span>
+        {locked && <LockIcon className="size-3 text-amber-500" />}
+      </Link>
+    </DropdownMenuItem>
+  );
+}
+
+function SidebarNavCollapsible({
+  children,
+  dropdownItems,
+  icon: Icon,
+  isActive = false,
+  isOpen = false,
+  label,
+  onOpenChange,
+  tooltip,
+}: {
+  children: React.ReactNode;
+  dropdownItems?: React.ReactNode;
+  icon: React.ComponentType<{ className?: string }>;
+  isActive?: boolean;
+  isOpen?: boolean;
+  label: string;
+  onOpenChange?: (open: boolean) => void;
+  tooltip: string;
+}) {
+  const { state, isMobile } = useSidebar();
+  const isIconMode = state === "collapsed" && !isMobile;
+
+  if (isIconMode) {
+    return (
+      <SidebarMenuItem>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <SidebarMenuButton
+              className={cn(
+                "h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-foreground",
+                isActive && "text-sidebar-foreground font-medium"
+              )}
+              tooltip={tooltip}
+            >
+              <Icon className={cn("size-4", isActive && "text-primary")} />
+            </SidebarMenuButton>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent
+            align="start"
+            className="w-52 p-1.5 shadow-xl border border-sidebar-border bg-sidebar"
+            side="right"
+          >
+            <div className="px-2 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+              {label}
+            </div>
+            <DropdownMenuSeparator />
+            {dropdownItems}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </SidebarMenuItem>
+    );
+  }
+
+  return (
+    <Collapsible
+      className="group/collapsible"
+      onOpenChange={onOpenChange}
+      open={isOpen}
+    >
+      <SidebarMenuItem>
+        <CollapsibleTrigger asChild>
+          <SidebarMenuButton
+            className={cn(
+              "h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground w-full justify-between",
+              isActive &&
+                "font-medium text-sidebar-foreground bg-sidebar-accent/30"
+            )}
+            tooltip={tooltip}
+          >
+            <div className="flex items-center gap-2">
+              <Icon className={cn("size-4", isActive && "text-primary")} />
+              <span>{label}</span>
+            </div>
+            <ChevronDownIcon className="size-3.5 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-180 text-sidebar-foreground/50" />
+          </SidebarMenuButton>
+        </CollapsibleTrigger>
+        <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
+          <SidebarMenuSub className="mx-3 flex min-w-0 flex-col gap-1 border-l border-sidebar-border px-2 py-1 my-0.5">
+            {children}
+          </SidebarMenuSub>
+        </CollapsibleContent>
+      </SidebarMenuItem>
+    </Collapsible>
   );
 }
 
 export function AppSidebar({ user }: { user?: MaiUser | null }) {
   const router = useRouter();
+  const pathname = usePathname();
   const { setOpenMobile, toggleSidebar } = useSidebar();
   const { mutate } = useSWRConfig();
   const [showDeleteAllDialog, setShowDeleteAllDialog] = useState(false);
   const [upgradeFeature, setUpgradeFeature] = useState<
-    "skills" | "mcp" | null
+    "skills" | "mcp" | "agents" | null
   >(null);
+
+  type NavMenuKey = "creation" | "config" | "plus";
+  const [openMenu, setOpenMenu] = useState<NavMenuKey | null>(null);
+
+  const isCreationActive = Boolean(
+    pathname?.startsWith("/images") || pathname?.startsWith("/audio")
+  );
+  const isConfigActive = Boolean(
+    pathname?.startsWith("/skills") ||
+      pathname?.startsWith("/mcp") ||
+      pathname?.startsWith("/agents")
+  );
+  const isPlusActive = Boolean(
+    pathname?.startsWith("/settings") || pathname?.startsWith("/archived")
+  );
+
+  const { resetChat } = useActiveChat();
+
+  const handleNavClick = useCallback(() => {
+    setOpenMobile(false);
+    setOpenMenu(null);
+  }, [setOpenMobile]);
 
   const closeMobile = useCallback(() => {
     setOpenMobile(false);
   }, [setOpenMobile]);
 
+  useEffect(() => {
+    setOpenMobile(false);
+    setOpenMenu(null);
+  }, [pathname, setOpenMobile]);
+
   const handleToggleSidebar = useCallback(() => {
     toggleSidebar();
   }, [toggleSidebar]);
 
-  const handleNewChat = useCallback(() => {
-    setOpenMobile(false);
+  const handleGoHome = useCallback(() => {
+    handleNavClick();
+    resetChat();
     router.push("/");
-  }, [router, setOpenMobile]);
+  }, [handleNavClick, resetChat, router]);
+
+  const handleNewChat = useCallback(() => {
+    handleNavClick();
+    resetChat();
+    router.push("/");
+  }, [handleNavClick, resetChat, router]);
 
   const handleShowDeleteAllDialog = useCallback(() => {
     setShowDeleteAllDialog(true);
@@ -255,6 +456,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
 
   const handleDeleteAll = useCallback(() => {
     setShowDeleteAllDialog(false);
+    resetChat();
     router.replace("/");
     mutate(unstable_serialize(getChatHistoryPaginationKey), [], {
       revalidate: false,
@@ -265,7 +467,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
     });
 
     toast.success("Toutes les discussions ont été supprimées");
-  }, [mutate, router]);
+  }, [mutate, resetChat, router]);
 
   return (
     <>
@@ -277,12 +479,15 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                 <SidebarMenuButton
                   asChild
                   className="size-8 !px-0 items-center justify-center group-data-[collapsible=icon]:group-hover/logo:opacity-0"
-                  tooltip="mAI Web"
+                  tooltip="mAI Web — Accueil"
                 >
                   <Link
                     className="flex items-center justify-center"
                     href="/"
-                    onClick={closeMobile}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleGoHome();
+                    }}
                   >
                     <Image
                       alt="mAI"
@@ -307,14 +512,19 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                   </TooltipContent>
                 </Tooltip>
               </div>
-              <div className="group-data-[collapsible=icon]:hidden flex items-center gap-1.5">
-                <span className="font-bold text-sm tracking-tight text-foreground">
+              <button
+                className="group-data-[collapsible=icon]:hidden flex items-center gap-1.5 cursor-pointer text-left focus:outline-hidden"
+                onClick={handleGoHome}
+                title="Aller à l'accueil"
+                type="button"
+              >
+                <span className="font-bold text-sm tracking-tight text-foreground hover:text-primary transition-colors">
                   mAI
                 </span>
-                <span className="text-[10px] uppercase font-semibold px-1.5 py-0.2 rounded bg-muted text-muted-foreground">
+                <span className="text-[10px] uppercase font-semibold px-1.5 py-0.2 rounded bg-muted text-muted-foreground hover:bg-primary/15 hover:text-primary transition-colors">
                   Web
                 </span>
-              </div>
+              </button>
               <div className="group-data-[collapsible=icon]:hidden">
                 <SidebarTrigger className="text-sidebar-foreground/60 transition-colors duration-150 hover:text-sidebar-foreground" />
               </div>
@@ -327,6 +537,21 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
           <SidebarGroup className="pt-2">
             <SidebarGroupContent>
               <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    className={cn(
+                      "h-8 rounded-lg text-[13px] transition-colors duration-150",
+                      pathname === "/"
+                        ? "bg-sidebar-accent font-semibold text-sidebar-foreground"
+                        : "text-sidebar-foreground/80 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                    )}
+                    onClick={handleGoHome}
+                    tooltip="Accueil"
+                  >
+                    <HomeIcon className="size-4" />
+                    <span className="font-medium">Accueil</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     className="h-8 rounded-lg border border-sidebar-border text-[13px] text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
@@ -366,7 +591,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                     <Link
                       data-onboarding="nav-library"
                       href="/library"
-                      onClick={closeMobile}
+                      onClick={handleNavClick}
                     >
                       <CloudIcon className="size-4" />
                       <span>Stockage</span>
@@ -383,7 +608,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                     <Link
                       data-onboarding="nav-projects"
                       href="/projects"
-                      onClick={closeMobile}
+                      onClick={handleNavClick}
                     >
                       <FolderKanbanIcon className="size-4" />
                       <span>Projets</span>
@@ -395,100 +620,251 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                   <SidebarMenuButton
                     asChild
                     className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
-                    tooltip="Images"
+                    tooltip="Planification"
                   >
                     <Link
-                      data-onboarding="nav-images"
-                      href="/images"
-                      onClick={closeMobile}
+                      href="/planning"
+                      onClick={handleNavClick}
                     >
-                      <ImageIcon className="size-4" />
-                      <span>Images</span>
+                      <CalendarClockIcon className="size-4" />
+                      <span>Planification</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
 
-                <SidebarMenuItem>
-                  <SidebarMenuButton
-                    asChild
-                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
-                    tooltip="Audio"
-                  >
-                    <Link
-                      data-onboarding="nav-audio"
-                      href="/audio"
-                      onClick={closeMobile}
+                {/* 1. Création : Images & Audio */}
+                <SidebarNavCollapsible
+                  dropdownItems={
+                    <>
+                      <DropdownMenuItem
+                        asChild
+                        className="cursor-pointer text-xs py-1.5"
+                      >
+                        <Link
+                          className="flex items-center gap-2"
+                          href="/images"
+                          onClick={handleNavClick}
+                        >
+                          <ImageIcon className="size-4" />
+                          <span>Images</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem
+                        asChild
+                        className="cursor-pointer text-xs py-1.5"
+                      >
+                        <Link
+                          className="flex items-center gap-2"
+                          href="/audio"
+                          onClick={handleNavClick}
+                        >
+                          <Volume2Icon className="size-4" />
+                          <span>Audio</span>
+                        </Link>
+                      </DropdownMenuItem>
+                    </>
+                  }
+                  icon={SparklesIcon}
+                  isActive={isCreationActive}
+                  isOpen={openMenu === "creation"}
+                  label="Création"
+                  onOpenChange={(open) => setOpenMenu(open ? "creation" : null)}
+                  tooltip="Création (Images & Audio)"
+                >
+                  <SidebarMenuSubItem>
+                    <SidebarMenuSubButton
+                      asChild
+                      className="h-7 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                      isActive={pathname?.startsWith("/images")}
                     >
-                      <Volume2Icon className="size-4" />
-                      <span>Audio</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
+                      <Link
+                        data-onboarding="nav-images"
+                        href="/images"
+                        onClick={handleNavClick}
+                      >
+                        <ImageIcon className="size-3.5" />
+                        <span>Images</span>
+                      </Link>
+                    </SidebarMenuSubButton>
+                  </SidebarMenuSubItem>
+                  <SidebarMenuSubItem>
+                    <SidebarMenuSubButton
+                      asChild
+                      className="h-7 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                      isActive={pathname?.startsWith("/audio")}
+                    >
+                      <Link
+                        data-onboarding="nav-audio"
+                        href="/audio"
+                        onClick={handleNavClick}
+                      >
+                        <Volume2Icon className="size-3.5" />
+                        <span>Audio</span>
+                      </Link>
+                    </SidebarMenuSubButton>
+                  </SidebarMenuSubItem>
+                </SidebarNavCollapsible>
 
-                <LockedNavItem
-                  closeMobile={closeMobile}
-                  href="/skills"
+                {/* 2. Outils : Skills, MCP & Agents */}
+                <SidebarNavCollapsible
+                  dropdownItems={
+                    <>
+                      <LockedDropdownItem
+                        closeMobile={handleNavClick}
+                        href="/skills"
+                        icon={WrenchIcon}
+                        label="Skills"
+                        lockedFeature="skills"
+                        onLockedClick={setUpgradeFeature}
+                      />
+                      <LockedDropdownItem
+                        closeMobile={handleNavClick}
+                        href="/mcp"
+                        icon={CpuIcon}
+                        label="MCP"
+                        lockedFeature="mcp"
+                        onLockedClick={setUpgradeFeature}
+                      />
+                      <LockedDropdownItem
+                        closeMobile={handleNavClick}
+                        href="/agents"
+                        icon={BotIcon}
+                        label="Agents"
+                        lockedFeature="agents"
+                        onLockedClick={setUpgradeFeature}
+                      />
+                    </>
+                  }
                   icon={WrenchIcon}
-                  label="Skills"
-                  lockedFeature="skills"
-                  onLockedClick={setUpgradeFeature}
-                  tooltip="Skills IA & Outils"
-                />
+                  isActive={isConfigActive}
+                  isOpen={openMenu === "config"}
+                  label="Outils"
+                  onOpenChange={(open) => setOpenMenu(open ? "config" : null)}
+                  tooltip="Outils (Skills, MCP & Agents)"
+                >
+                  <LockedNavSubItem
+                    closeMobile={handleNavClick}
+                    href="/skills"
+                    icon={WrenchIcon}
+                    label="Skills"
+                    lockedFeature="skills"
+                    onLockedClick={setUpgradeFeature}
+                  />
+                  <LockedNavSubItem
+                    closeMobile={handleNavClick}
+                    href="/mcp"
+                    icon={CpuIcon}
+                    label="MCP"
+                    lockedFeature="mcp"
+                    onLockedClick={setUpgradeFeature}
+                  />
+                  <LockedNavSubItem
+                    closeMobile={handleNavClick}
+                    href="/agents"
+                    icon={BotIcon}
+                    label="Agents"
+                    lockedFeature="agents"
+                    onLockedClick={setUpgradeFeature}
+                  />
+                </SidebarNavCollapsible>
 
-                <LockedNavItem
-                  closeMobile={closeMobile}
-                  href="/mcp"
-                  icon={CpuIcon}
-                  label="MCP"
-                  lockedFeature="mcp"
-                  onLockedClick={setUpgradeFeature}
-                  tooltip="Model Context Protocol"
-                />
-
-                <SidebarMenuItem>
-                  <SidebarMenuButton
-                    asChild
-                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
-                    tooltip="Paramètres"
-                  >
-                    <Link
-                      data-onboarding="nav-settings"
-                      href="/settings"
-                      onClick={closeMobile}
+                {/* 3. Plus : Paramètres, Messages Archivés, Supprimer l'historique */}
+                <SidebarNavCollapsible
+                  dropdownItems={
+                    <>
+                      <DropdownMenuItem
+                        asChild
+                        className="cursor-pointer text-xs py-1.5"
+                      >
+                        <Link
+                          className="flex items-center gap-2"
+                          href="/settings"
+                          onClick={handleNavClick}
+                        >
+                          <SettingsIcon className="size-4" />
+                          <span>Paramètres</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem
+                        asChild
+                        className="cursor-pointer text-xs py-1.5"
+                      >
+                        <Link
+                          className="flex items-center gap-2"
+                          href="/archived"
+                          onClick={handleNavClick}
+                        >
+                          <ArchiveIcon className="size-4" />
+                          <span>Messages Archivés</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      {user ? (
+                        <>
+                          <DropdownMenuSeparator />
+                          <DropdownMenuItem
+                            className="flex items-center gap-2 text-destructive focus:text-destructive cursor-pointer text-xs py-1.5"
+                            onClick={() => {
+                              handleNavClick();
+                              handleShowDeleteAllDialog();
+                            }}
+                          >
+                            <TrashIcon className="size-4" />
+                            <span>Supprimer l'historique</span>
+                          </DropdownMenuItem>
+                        </>
+                      ) : null}
+                    </>
+                  }
+                  icon={MoreHorizontalIcon}
+                  isActive={isPlusActive}
+                  isOpen={openMenu === "plus"}
+                  label="Plus"
+                  onOpenChange={(open) => setOpenMenu(open ? "plus" : null)}
+                  tooltip="Plus (Paramètres, Archives, Historique)"
+                >
+                  <SidebarMenuSubItem>
+                    <SidebarMenuSubButton
+                      asChild
+                      className="h-7 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                      isActive={pathname?.startsWith("/settings")}
                     >
-                      <SettingsIcon className="size-4" />
-                      <span>Paramètres</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-
-                <SidebarMenuItem>
-                  <SidebarMenuButton
-                    asChild
-                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
-                    tooltip="Messages archivés"
-                  >
-                    <Link href="/archived" onClick={closeMobile}>
-                      <ArchiveIcon className="size-4" />
-                      <span>Messages Archivés</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-
-                {user ? (
-                  <SidebarMenuItem>
-                    <SidebarMenuButton
-                      className="rounded-lg text-sidebar-foreground/40 transition-colors duration-150 hover:bg-destructive/10 hover:text-destructive"
-                      onClick={handleShowDeleteAllDialog}
-                      tooltip="Supprimer toutes les discussions"
+                      <Link
+                        data-onboarding="nav-settings"
+                        href="/settings"
+                        onClick={handleNavClick}
+                      >
+                        <SettingsIcon className="size-3.5" />
+                        <span>Paramètres</span>
+                      </Link>
+                    </SidebarMenuSubButton>
+                  </SidebarMenuSubItem>
+                  <SidebarMenuSubItem>
+                    <SidebarMenuSubButton
+                      asChild
+                      className="h-7 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                      isActive={pathname?.startsWith("/archived")}
                     >
-                      <TrashIcon className="size-4" />
-                      <span className="text-[13px]">
-                        Supprimer l'historique
-                      </span>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ) : null}
+                      <Link href="/archived" onClick={handleNavClick}>
+                        <ArchiveIcon className="size-3.5" />
+                        <span>Messages Archivés</span>
+                      </Link>
+                    </SidebarMenuSubButton>
+                  </SidebarMenuSubItem>
+                  {user ? (
+                    <SidebarMenuSubItem>
+                      <SidebarMenuSubButton
+                        className="h-7 rounded-lg text-[13px] text-sidebar-foreground/50 transition-colors duration-150 hover:bg-destructive/10 hover:text-destructive cursor-pointer"
+                        onClick={() => {
+                          handleNavClick();
+                          handleShowDeleteAllDialog();
+                        }}
+                      >
+                        <TrashIcon className="size-3.5" />
+                        <span>Supprimer l'historique</span>
+                      </SidebarMenuSubButton>
+                    </SidebarMenuSubItem>
+                  ) : null}
+                </SidebarNavCollapsible>
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
@@ -500,7 +876,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
           />
         </SidebarContent>
 
-        <SidebarFooter className="border-t border-sidebar-border pt-2 pb-3">
+        <SidebarFooter className="border-t border-sidebar-border p-2">
           {user ? <SidebarUserNav user={user} /> : null}
         </SidebarFooter>
         <SidebarRail />

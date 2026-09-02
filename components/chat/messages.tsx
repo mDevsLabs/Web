@@ -63,19 +63,21 @@ function PureMessages({
   const [currentMatch, setCurrentMatch] = useState(0);
 
   const matches = useMemo(() => {
-    if (!searchQuery.trim()) return [];
+    if (!searchQuery.trim()) {
+      return [];
+    }
     const q = searchQuery.trim().toLowerCase();
     const res: { messageId: string; index: number }[] = [];
     let globalIdx = 0;
     for (const m of messages) {
-      let countInMsg = 0;
+      let _countInMsg = 0;
       for (const part of m.parts as any[]) {
         if (part.type === "text" && typeof part.text === "string") {
           const txt = part.text.toLowerCase();
           let pos = txt.indexOf(q);
           while (pos !== -1) {
-            res.push({ messageId: m.id, index: globalIdx });
-            countInMsg++;
+            res.push({ index: globalIdx, messageId: m.id });
+            _countInMsg++;
             globalIdx++;
             pos = txt.indexOf(q, pos + q.length);
           }
@@ -106,16 +108,17 @@ function PureMessages({
         }
       }
     }
-  }, [currentMatch, currentMatchData, totalMatches]);
+  }, [currentMatchData, totalMatches]);
 
   useEffect(() => {
     setCurrentMatch(0);
-  }, [searchQuery]);
+  }, []);
 
   useEffect(() => {
     const handler = () => setSearchOpen((prev) => !prev);
     window.addEventListener("open-conversation-search", handler as any);
-    return () => window.removeEventListener("open-conversation-search", handler as any);
+    return () =>
+      window.removeEventListener("open-conversation-search", handler as any);
   }, []);
 
   const prevChatIdRef = useRef(chatId);
@@ -134,12 +137,16 @@ function PureMessages({
   }, [scrollToBottom]);
 
   const handleNext = useCallback(() => {
-    if (totalMatches === 0) return;
+    if (totalMatches === 0) {
+      return;
+    }
     setCurrentMatch((i) => (i + 1) % totalMatches);
   }, [totalMatches]);
 
   const handlePrev = useCallback(() => {
-    if (totalMatches === 0) return;
+    if (totalMatches === 0) {
+      return;
+    }
     setCurrentMatch((i) => (i - 1 + totalMatches) % totalMatches);
   }, [totalMatches]);
 
@@ -152,18 +159,23 @@ function PureMessages({
             <SearchIcon className="absolute left-2.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
             <input
               autoFocus
-              className="w-full h-8 rounded-xl border border-border/60 bg-muted/30 pl-8 pr-3 text-sm outline-none focus:ring-2 focus:ring-primary/20"
-              placeholder="Rechercher dans la conversation..."
-              value={searchQuery}
+              className="w-full h-8 rounded-xl border border-border/60 bg-muted/30 pl-8 pr-3 text-[16px] md:text-sm outline-none focus:ring-2 focus:ring-primary/20"
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   e.preventDefault();
-                  if (e.shiftKey) handlePrev();
-                  else handleNext();
+                  if (e.shiftKey) {
+                    handlePrev();
+                  } else {
+                    handleNext();
+                  }
                 }
-                if (e.key === "Escape") setSearchOpen(false);
+                if (e.key === "Escape") {
+                  setSearchOpen(false);
+                }
               }}
+              placeholder="Rechercher dans la conversation..."
+              value={searchQuery}
             />
           </div>
           <div className="flex items-center gap-1 text-xs">
@@ -184,19 +196,19 @@ function PureMessages({
             )}
             <button
               className="p-1.5 rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground disabled:opacity-40 cursor-pointer"
-              onClick={handlePrev}
               disabled={totalMatches === 0}
-              type="button"
+              onClick={handlePrev}
               title="Précédent (Shift+Enter)"
+              type="button"
             >
               <ChevronUpIcon className="size-4" />
             </button>
             <button
               className="p-1.5 rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground disabled:opacity-40 cursor-pointer"
-              onClick={handleNext}
               disabled={totalMatches === 0}
-              type="button"
+              onClick={handleNext}
               title="Suivant (Enter)"
+              type="button"
             >
               <ChevronDownIcon className="size-4" />
             </button>
@@ -206,8 +218,8 @@ function PureMessages({
                 setSearchOpen(false);
                 setSearchQuery("");
               }}
-              type="button"
               title="Fermer (Esc)"
+              type="button"
             >
               <XIcon className="size-4" />
             </button>
@@ -215,19 +227,19 @@ function PureMessages({
         </div>
       )}
       {messages.length === 0 && !isLoading && (
-        <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
+        <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center p-4 overflow-y-auto">
           <Greeting />
         </div>
       )}
       <div
         className={cn(
-          "absolute inset-0 touch-pan-y overflow-y-auto",
+          "absolute inset-0 touch-pan-y overflow-y-auto overscroll-contain",
           messages.length > 0 ? "bg-background" : "bg-transparent"
         )}
         ref={messagesContainerRef}
         style={isArtifactVisible ? { scrollbarWidth: "none" } : undefined}
       >
-        <div className="mx-auto flex min-h-full min-w-0 max-w-4xl flex-col gap-5 px-2 py-6 md:gap-7 md:px-4">
+        <div className="mx-auto flex min-h-full min-w-0 max-w-4xl flex-col gap-5 px-3 py-6 md:gap-7 md:px-4">
           {messages.map((message, index) => {
             // determine if this message is the current match target
             const isCurrentMatchMsg =
@@ -235,13 +247,14 @@ function PureMessages({
               currentMatchData?.messageId === message.id;
             return (
               <div
-                key={message.id}
-                id={`msg-${message.id}`}
                 className={isCurrentMatchMsg ? "scroll-mt-20" : ""}
+                id={`msg-${message.id}`}
+                key={message.id}
               >
                 <PreviewMessage
                   addToolApprovalResponse={addToolApprovalResponse}
                   chatId={chatId}
+                  isCurrentMatch={isCurrentMatchMsg}
                   isLoading={
                     status === "streaming" && messages.length - 1 === index
                   }
@@ -253,7 +266,6 @@ function PureMessages({
                     hasSentMessage && index === messages.length - 1
                   }
                   searchQuery={searchQuery}
-                  isCurrentMatch={isCurrentMatchMsg}
                   setMessages={setMessages}
                   vote={
                     votes
@@ -278,7 +290,7 @@ function PureMessages({
 
       <button
         aria-label="Scroll to bottom"
-        className={`absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 items-center rounded-full border border-border/50 bg-card/90 px-3.5 shadow-[var(--shadow-float)] backdrop-blur-lg transition-all duration-200 h-7 text-[10px] ${
+        className={`absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 items-center rounded-full border border-border/50 bg-card/90 px-3.5 shadow-[var(--shadow-float)] backdrop-blur-lg transition-all duration-200 h-8 min-h-[32px] sm:h-7 text-[11px] sm:text-[10px] ${
           isAtBottom
             ? "pointer-events-none scale-90 opacity-0"
             : "pointer-events-auto scale-100 opacity-100"
@@ -286,7 +298,7 @@ function PureMessages({
         onClick={handleScrollToBottom}
         type="button"
       >
-        <ArrowDownIcon className="size-3 text-muted-foreground" />
+        <ArrowDownIcon className="size-3.5 sm:size-3 text-muted-foreground" />
       </button>
     </div>
   );

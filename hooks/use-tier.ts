@@ -17,8 +17,8 @@ export type TierInfo = {
 
 export function useTier(): TierInfo {
   const { data, isLoading } = useSettings({
-    revalidateOnFocus: false,
     revalidateIfStale: false,
+    revalidateOnFocus: false,
   });
 
   return useMemo(() => {

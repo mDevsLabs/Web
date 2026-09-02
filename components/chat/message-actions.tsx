@@ -56,7 +56,7 @@ export function PureMessageActions({
   const { data: notifPrefs } = useSWR(
     "/api/notifications/preferences",
     fetcher,
-    { dedupingInterval: 30000 }
+    { dedupingInterval: 30_000 }
   );
   const regenerateMode: "truncate" | "fork" =
     notifPrefs?.regenerateMode === "fork" ? "fork" : "truncate";
@@ -64,7 +64,7 @@ export function PureMessageActions({
   const { data: chatData } = useSWR(
     chatId ? `/api/chats/${chatId}` : null,
     fetcher,
-    { dedupingInterval: 10000 }
+    { dedupingInterval: 10_000 }
   );
   const visibility = (chatData as any)?.visibility ?? "private";
 
@@ -87,6 +87,7 @@ export function PureMessageActions({
           messageId: message.id,
           type: "up",
         }),
+        headers: { "Content-Type": "application/json" },
         method: "PATCH",
       }
     );
@@ -173,6 +174,7 @@ export function PureMessageActions({
           messageId: message.id,
           type: "down",
         }),
+        headers: { "Content-Type": "application/json" },
         method: "PATCH",
       }
     );
@@ -216,7 +218,9 @@ export function PureMessageActions({
       let targetIndex = -1;
       if (message.role === "user") {
         targetUserId = message.id;
-        targetIndex = messages.findIndex((m: ChatMessage) => m.id === message.id);
+        targetIndex = messages.findIndex(
+          (m: ChatMessage) => m.id === message.id
+        );
       } else {
         // assistant: find preceding user
         const idx = messages.findIndex((m: ChatMessage) => m.id === message.id);
@@ -241,32 +245,43 @@ export function PureMessageActions({
           method: "POST",
         });
         const data = await res.json();
-        if (!res.ok) throw new Error(data.error || "Erreur fork");
-        toast.success("Branche créée — régénération dans la nouvelle conversation");
+        if (!res.ok) {
+          throw new Error(data.error || "Erreur fork");
+        }
+        toast.success(
+          "Branche créée — régénération dans la nouvelle conversation"
+        );
         router.push(`/chat/${data.id}`);
         return;
       }
 
-      // truncate mode: delete trailing and regenerate
-      const { deleteTrailingMessages } = await import("@/app/(chat)/actions");
-      // find first trailing after targetIndex
+      // truncate mode: delete trailing and regenerate immediately
       if (targetIndex >= 0) {
-        const trailing = messages[targetIndex];
-        // delete DB trailing after this message (use its timestamp? use API helper)
-        // Use message id based deletion via helper that deletes by timestamp; simpler: just slice UI and regenerate
-        // Attempt DB cleanup via deleteTrailingMessages using target message id
-        try {
-          await deleteTrailingMessages({ id: targetUserId! });
-        } catch {}
         setMessages((prev: ChatMessage[]) => prev.slice(0, targetIndex + 1));
-        // regenerate will resend last user message with same model
-        setTimeout(() => regenerate(), 50);
-        toast.success("Régénération lancée (mode tronquer)");
+        regenerate();
+        toast.success("Régénération lancée");
+
+        // Nettoyage asynchrone non-bloquant en base de données
+        if (targetUserId) {
+          import("@/app/(chat)/actions")
+            .then(({ deleteTrailingMessages }) =>
+              deleteTrailingMessages({ id: targetUserId })
+            )
+            .catch(() => {});
+        }
       }
     } catch (e: any) {
       toast.error(e.message || "Erreur régénération");
     }
-  }, [chatId, message, messages, regenerateMode, regenerate, router, setMessages]);
+  }, [
+    chatId,
+    message,
+    messages,
+    regenerateMode,
+    regenerate,
+    router,
+    setMessages,
+  ]);
 
   const handleShare = useCallback(
     (platform: string) => {
@@ -279,7 +294,7 @@ export function PureMessageActions({
       const chatUrl = `${window.location.origin}/chat/${chatId}#${message.id}`;
       const text = textFromParts
         ? `${textFromParts.slice(0, 280)} — via mAI`
-        : `Découvrez cette conversation mAI`;
+        : "Découvrez cette conversation mAI";
       const encodedText = encodeURIComponent(text);
       const encodedUrl = encodeURIComponent(chatUrl);
       const urls: Record<string, string> = {
@@ -304,7 +319,9 @@ export function PureMessageActions({
         return;
       }
       const url = urls[platform];
-      if (url) window.open(url, "_blank", "noopener,noreferrer");
+      if (url) {
+        window.open(url, "_blank", "noopener,noreferrer");
+      }
     },
     [chatId, message.id, textFromParts, visibility]
   );
@@ -315,7 +332,7 @@ export function PureMessageActions({
 
   if (message.role === "user") {
     return (
-      <Actions className="-mr-0.5 justify-end opacity-0 transition-opacity duration-150 group-hover/message:opacity-100">
+      <Actions className="-mr-0.5 justify-end opacity-100 md:opacity-0 md:transition-opacity md:duration-150 md:group-hover/message:opacity-100">
         <div className="flex items-center gap-0.5">
           {onEdit ? (
             <Action
@@ -344,8 +361,8 @@ export function PureMessageActions({
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button
-                className="size-7 inline-flex items-center justify-center rounded-md text-muted-foreground/50 hover:text-foreground hover:bg-muted/40"
                 aria-label="Partager"
+                className="size-7 inline-flex items-center justify-center rounded-md text-muted-foreground/50 hover:text-foreground hover:bg-muted/40"
                 type="button"
               >
                 <Share2Icon className="size-4" />
@@ -383,7 +400,7 @@ export function PureMessageActions({
   }
 
   return (
-    <Actions className="-ml-0.5 opacity-0 transition-opacity duration-150 group-hover/message:opacity-100">
+    <Actions className="-ml-0.5 opacity-100 md:opacity-0 md:transition-opacity md:duration-150 md:group-hover/message:opacity-100">
       <Action
         className="text-muted-foreground/50 hover:text-foreground"
         onClick={handleCopy}
@@ -403,8 +420,8 @@ export function PureMessageActions({
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <button
-            className="size-7 inline-flex items-center justify-center rounded-md text-muted-foreground/50 hover:text-foreground hover:bg-muted/40"
             aria-label="Partager"
+            className="size-7 inline-flex items-center justify-center rounded-md text-muted-foreground/50 hover:text-foreground hover:bg-muted/40"
             type="button"
           >
             <Share2Icon className="size-4" />

@@ -6,7 +6,12 @@ import { fetcher } from "@/lib/utils";
 export type NotificationItem = {
   id: string;
   userId: string;
-  type: "ai_response" | "project_created" | "mcp_created" | "mcp_access_request" | "news";
+  type:
+    | "ai_response"
+    | "project_created"
+    | "mcp_created"
+    | "mcp_access_request"
+    | "news";
   title: string;
   body: string | null;
   link: string | null;
@@ -36,12 +41,12 @@ export function useNotifications(limit = 20) {
   return useSWR<NotificationsResponse>(
     `/api/notifications?limit=${limit}`,
     fetcher,
-    { refreshInterval: 30000, revalidateOnFocus: true }
+    { dedupingInterval: 60_000, refreshInterval: 180_000, revalidateOnFocus: false }
   );
 }
 
 export function useNotificationPrefs() {
   return useSWR<NotificationPrefs>("/api/notifications/preferences", fetcher, {
-    dedupingInterval: 10000,
+    dedupingInterval: 10_000,
   });
 }

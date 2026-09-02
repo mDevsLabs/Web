@@ -36,5 +36,5 @@ export function useOnboarding() {
     localStorage.setItem(PENDING_KEY, "1");
   }, []);
 
-  return { active, step, setStep, next, finish, saveStep, markPending };
+  return { active, finish, markPending, next, saveStep, setStep, step };
 }

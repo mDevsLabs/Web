@@ -24,13 +24,9 @@ import { toast } from "@/components/chat/toast";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
 import { useAutoResume } from "@/hooks/use-auto-resume";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
-import {
-  type AIModeId,
-  DEFAULT_AI_MODE,
-  isValidAIModeId,
-} from "@/lib/ai/modes";
 import { DEFAULT_ENABLED_TOOLS, type ToolId } from "@/lib/ai/tools/config";
-import type { Skill, Vote } from "@/lib/db/schema";
+import type { PendingCommand } from "@/lib/commands/exec";
+import type { Agent, Skill, Vote } from "@/lib/db/schema";
 import { ChatbotError } from "@/lib/errors";
 import type { ChatMessage } from "@/lib/types";
 import { fetcher, fetchWithErrorHandlers, generateUUID } from "@/lib/utils";
@@ -52,6 +48,7 @@ type ActiveChatContextValue = {
   stop: UseChatHelpers<ChatMessage>["stop"];
   regenerate: UseChatHelpers<ChatMessage>["regenerate"];
   addToolApprovalResponse: UseChatHelpers<ChatMessage>["addToolApprovalResponse"];
+  addToolOutput: UseChatHelpers<ChatMessage>["addToolOutput"];
   input: string;
   setInput: Dispatch<SetStateAction<string>>;
   visibilityType: VisibilityType;
@@ -60,8 +57,12 @@ type ActiveChatContextValue = {
   votes: Vote[] | undefined;
   currentModelId: string;
   setCurrentModelId: (id: string) => void;
-  currentModeId: AIModeId;
-  setCurrentModeId: (id: AIModeId) => void;
+  activeAgent: Agent | null;
+  setActiveAgent: (agent: Agent | null) => void;
+  clearActiveAgent: () => void;
+  // Deprecated alias for backward compat (maps to activeAgent)
+  currentModeId: string | null;
+  setCurrentModeId: (id: string | null) => void;
   pendingProject: PendingProject;
   setPendingProject: (p: PendingProject) => void;
   clearPendingProject: () => void;
@@ -72,6 +73,13 @@ type ActiveChatContextValue = {
   setPendingTools: (tools: ToolId[]) => void;
   togglePendingTool: (tool: ToolId) => void;
   clearPendingTools: () => void;
+  skillParamValues: Record<string, string> | null;
+  setSkillParamValues: (values: Record<string, string> | null) => void;
+  clearSkillParamValues: () => void;
+  pendingCommand: PendingCommand;
+  setPendingCommand: (command: PendingCommand) => void;
+  clearPendingCommand: () => void;
+  resetChat: () => void;
   showCreditCardAlert: boolean;
   setShowCreditCardAlert: Dispatch<SetStateAction<boolean>>;
   isGhostMode: boolean;
@@ -90,6 +98,25 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { setDataStream, setWaitingStatus } = useDataStream();
+
+  const getAiErrorMessage = useCallback((error: unknown) => {
+    const candidate = error as {
+      status?: number;
+      statusCode?: number;
+      message?: string;
+    };
+    const message = candidate?.message ?? String(error ?? "");
+    const code =
+      candidate?.status ??
+      candidate?.statusCode ??
+      Number(message.match(/\b(403|429|5\d\d|4\d\d)\b/)?.[1]);
+    if (code === 403) return "Code 403 : Quota atteint !";
+    if (code === 429)
+      return "Code 429 : Serveurs surchargés, réessayer plus tard !";
+    if (Number.isInteger(code) && code > 0)
+      return `Code ${code} : Une erreur est survenue !`;
+    return "Une erreur est survenue lors de la génération de la réponse.";
+  }, []);
   const { mutate } = useSWRConfig();
   const pendingProjectIdRef = useRef<string | null>(null);
 
@@ -164,7 +191,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
         });
         toast({
           description:
-            "Mode fantôme activé - La discussion est temporaire et ne sera pas enregistrée en base de données.",
+            "Mode fantôme activé - La discussion est temporaire et ne sera pas enregistrée.",
           type: "success",
         });
       } else {
@@ -206,6 +233,39 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   const clearPendingTools = useCallback(() => {
     setPendingToolsState([]);
     pendingToolsRef.current = [];
+  }, []);
+
+  // Skill params one-shot (saisis à l'envoi pour les {{param}} du skill actif)
+  const [skillParamValues, setSkillParamValuesState] = useState<Record<
+    string,
+    string
+  > | null>(null);
+  const skillParamValuesRef = useRef<Record<string, string> | null>(null);
+  skillParamValuesRef.current = skillParamValues;
+  const setSkillParamValues = useCallback(
+    (values: Record<string, string> | null) => {
+      setSkillParamValuesState(values);
+      skillParamValuesRef.current = values;
+    },
+    []
+  );
+  const clearSkillParamValues = useCallback(() => {
+    setSkillParamValuesState(null);
+    skillParamValuesRef.current = null;
+  }, []);
+
+  // Commande personnalisée one-shot (prompt prédéfini injecté côté serveur)
+  const [pendingCommand, setPendingCommandState] =
+    useState<PendingCommand>(null);
+  const pendingCommandRef = useRef<PendingCommand>(null);
+  pendingCommandRef.current = pendingCommand;
+  const setPendingCommand = useCallback((command: PendingCommand) => {
+    setPendingCommandState(command);
+    pendingCommandRef.current = command;
+  }, []);
+  const clearPendingCommand = useCallback(() => {
+    setPendingCommandState(null);
+    pendingCommandRef.current = null;
   }, []);
 
   // Lire projectId depuis query ?projectId= ou sessionStorage legacy ou localStorage sticky
@@ -279,6 +339,8 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
 
   const [currentModelId, setCurrentModelId] = useState(DEFAULT_CHAT_MODEL);
   const currentModelIdRef = useRef(currentModelId);
+  const [defaultVisibility, setDefaultVisibility] =
+    useState<VisibilityType>("private");
 
   const handleModelChange = useCallback((id: string) => {
     setCurrentModelId(id);
@@ -288,21 +350,63 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  const [currentModeId, setCurrentModeId] = useState<AIModeId>(DEFAULT_AI_MODE);
-  const currentModeIdRef = useRef(currentModeId);
-  const handleModeChange = useCallback((id: AIModeId) => {
-    setCurrentModeId(id);
-    currentModeIdRef.current = id;
+  // Active Agent (remplace Mode IA) — sélection globale via cookie agent-id
+  const [activeAgent, setActiveAgentState] = useState<Agent | null>(null);
+  const activeAgentRef = useRef<Agent | null>(null);
+  activeAgentRef.current = activeAgent;
+  const activeAgentIdRef = useRef<string | null>(null);
+
+  const setActiveAgent = useCallback((agent: Agent | null) => {
+    setActiveAgentState(agent);
+    activeAgentRef.current = agent;
+    activeAgentIdRef.current = agent?.id ?? null;
     if (typeof document !== "undefined") {
-      document.cookie = `ai-mode=${encodeURIComponent(id)}; path=/; max-age=31536000`;
+      if (agent?.id) {
+        document.cookie = `agent-id=${encodeURIComponent(agent.id)}; path=/; max-age=31536000`;
+        // Le modèle par défaut de l'agent écrase le modèle global
+        if (agent.defaultModelId) {
+          setCurrentModelId(agent.defaultModelId);
+          currentModelIdRef.current = agent.defaultModelId;
+          document.cookie = `chat-model=${encodeURIComponent(agent.defaultModelId)}; path=/; max-age=31536000`;
+        }
+      } else {
+        document.cookie = "agent-id=; path=/; max-age=0";
+      }
     }
-    // Persist default mode to DB (async, fire-and-forget)
+    // Persist globale
     fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`, {
-      body: JSON.stringify({ defaultMode: id }),
+      body: JSON.stringify({ defaultAgentId: agent?.id ?? null }),
       headers: { "Content-Type": "application/json" },
       method: "POST",
     }).catch(() => {});
   }, []);
+
+  const clearActiveAgent = useCallback(() => {
+    setActiveAgent(null);
+  }, [setActiveAgent]);
+
+  // Alias deprecated pour compatibilité (ancien Mode IA)
+  const currentModeId = activeAgent?.id ?? null;
+  const currentModeIdRef = useRef<string | null>(null);
+  currentModeIdRef.current = currentModeId;
+  const handleModeChange = useCallback(
+    (id: string | null) => {
+      if (!id) {
+        clearActiveAgent();
+        return;
+      }
+      // Si on passe un ID d'agent, fetch l'agent
+      fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agents/${id}`)
+        .then((r) => (r.ok ? r.json() : null))
+        .then((data) => {
+          if (data) {
+            setActiveAgent(data as Agent);
+          }
+        })
+        .catch(() => {});
+    },
+    [clearActiveAgent, setActiveAgent]
+  );
 
   useEffect(() => {
     if (typeof document !== "undefined") {
@@ -310,34 +414,75 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
         .split("; ")
         .find((row) => row.startsWith("chat-model="))
         ?.split("=")[1];
+      const hasCookieModel = Boolean(cookieModel);
       if (cookieModel) {
         const decoded = decodeURIComponent(cookieModel);
         setCurrentModelId(decoded);
         currentModelIdRef.current = decoded;
       }
-      const cookieMode = document.cookie
+      const cookieAgent = document.cookie
         .split("; ")
-        .find((row) => row.startsWith("ai-mode="))
+        .find((row) => row.startsWith("agent-id="))
         ?.split("=")[1];
-      if (cookieMode) {
-        const decodedMode = decodeURIComponent(cookieMode);
-        if (isValidAIModeId(decodedMode)) {
-          setCurrentModeId(decodedMode as AIModeId);
-          currentModeIdRef.current = decodedMode as AIModeId;
+      if (cookieAgent) {
+        const decodedAgent = decodeURIComponent(cookieAgent);
+        if (decodedAgent) {
+          fetch(
+            `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agents/${decodedAgent}`
+          )
+            .then((r) => (r.ok ? r.json() : null))
+            .then((data) => {
+              if (data?.id) {
+                setActiveAgentState(data as Agent);
+                activeAgentRef.current = data as Agent;
+                activeAgentIdRef.current = data.id;
+              }
+            })
+            .catch(() => {});
         }
       }
-      // Sync default mode from DB (overrides cookie if present)
+      // Sync préférences depuis la DB (source de vérité)
       fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`)
         .then((r) => r.json())
         .then((data) => {
-          if (data?.defaultMode && isValidAIModeId(data.defaultMode)) {
-            const dbMode = data.defaultMode as AIModeId;
-            // Only override if no cookie or DB differs from cookie -> treat DB as source of truth
-            if (dbMode !== currentModeIdRef.current) {
-              setCurrentModeId(dbMode);
-              currentModeIdRef.current = dbMode;
-              document.cookie = `ai-mode=${encodeURIComponent(dbMode)}; path=/; max-age=31536000`;
-            }
+          // Modèle par défaut persisté en BDD : appliqué seulement sans cookie
+          if (
+            !hasCookieModel &&
+            data?.defaultChatModel &&
+            typeof data.defaultChatModel === "string" &&
+            !activeAgentIdRef.current
+          ) {
+            setCurrentModelId(data.defaultChatModel);
+            currentModelIdRef.current = data.defaultChatModel;
+          }
+          if (
+            data?.defaultChatVisibility === "public" ||
+            data?.defaultChatVisibility === "private"
+          ) {
+            setDefaultVisibility(data.defaultChatVisibility);
+          }
+          if (
+            data?.defaultAgentId &&
+            data.defaultAgentId !== activeAgentIdRef.current
+          ) {
+            fetch(
+              `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agents/${data.defaultAgentId}`
+            )
+              .then((r2) => (r2.ok ? r2.json() : null))
+              .then((ag) => {
+                if (ag?.id) {
+                  setActiveAgentState(ag as Agent);
+                  activeAgentRef.current = ag as Agent;
+                  activeAgentIdRef.current = ag.id;
+                  document.cookie = `agent-id=${encodeURIComponent(ag.id)}; path=/; max-age=31536000`;
+                  if (ag.defaultModelId) {
+                    setCurrentModelId(ag.defaultModelId);
+                    currentModelIdRef.current = ag.defaultModelId;
+                    document.cookie = `chat-model=${encodeURIComponent(ag.defaultModelId)}; path=/; max-age=31536000`;
+                  }
+                }
+              })
+              .catch(() => {});
           }
         })
         .catch(() => {});
@@ -359,8 +504,8 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     ? []
     : (chatData?.messages ?? []);
   const visibility: VisibilityType = isNewChat
-    ? "private"
-    : (chatData?.visibility ?? "private");
+    ? defaultVisibility
+    : (chatData?.visibility ?? defaultVisibility);
 
   const {
     messages,
@@ -371,6 +516,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     regenerate,
     resumeStream,
     addToolApprovalResponse,
+    addToolOutput,
   } = useChat<ChatMessage>({
     generateId: generateUUID,
     id: chatId,
@@ -385,11 +531,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     onError: (error) => {
       if (error.message?.includes("AI Gateway requires a valid credit card")) {
         setShowCreditCardAlert(true);
-      } else if (error instanceof ChatbotError) {
-        toast({ description: error.message, type: "error" });
       } else {
         toast({
-          description: error.message || "Oops, an error occurred!",
+          description: getAiErrorMessage(error),
           type: "error",
         });
       }
@@ -401,15 +545,24 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     },
     sendAutomaticallyWhen: ({ messages: currentMessages }) => {
       const lastMessage = currentMessages.at(-1);
-      return (
-        lastMessage?.parts?.some(
-          (part) =>
-            "state" in part &&
-            part.state === "approval-responded" &&
-            "approval" in part &&
-            (part.approval as { approved?: boolean })?.approved === true
-        ) ?? false
+      if (!lastMessage) return false;
+
+      const hasApprovedTool = lastMessage.parts?.some(
+        (part) =>
+          "state" in part &&
+          part.state === "approval-responded" &&
+          "approval" in part &&
+          (part.approval as { approved?: boolean })?.approved === true
       );
+      if (hasApprovedTool) return true;
+
+      const hasToolOutput = lastMessage.parts?.some(
+        (part) =>
+          "state" in part &&
+          part.state === "output-available" &&
+          "toolCallId" in part
+      );
+      return hasToolOutput ?? false;
     },
     transport: new DefaultChatTransport({
       api: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chat`,
@@ -422,7 +575,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
             msg.parts?.some((part) => {
               const { state } = part as { state?: string };
               return (
-                state === "approval-responded" || state === "output-denied"
+                state === "approval-responded" ||
+                state === "output-denied" ||
+                state === "output-available"
               );
             })
           );
@@ -444,6 +599,22 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
           setTimeout(() => clearPendingTools(), 0);
         }
 
+        // One-shot skill params: capture and clear after send
+        const skillParamsToSend = isToolApprovalContinuation
+          ? null
+          : skillParamValuesRef.current;
+        if (!isToolApprovalContinuation && skillParamsToSend) {
+          setTimeout(() => clearSkillParamValues(), 0);
+        }
+
+        // One-shot pending command (prompt personnalisé)
+        const pendingPromptToSend = isToolApprovalContinuation
+          ? null
+          : pendingCommandRef.current;
+        if (!isToolApprovalContinuation && pendingPromptToSend) {
+          setTimeout(() => clearPendingCommand(), 0);
+        }
+
         return {
           body: {
             id: request.id,
@@ -453,12 +624,15 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
                   message: lastMessage,
                   ...(projectIdToSend ? { projectId: projectIdToSend } : {}),
                 }),
+            agentId: activeAgentIdRef.current,
             enabledTools: toolsToSend,
             isGhostMode: isGhostModeRef.current,
+            pendingPrompt: pendingPromptToSend,
             selectedChatMode: currentModeIdRef.current,
             selectedChatModel: currentModelIdRef.current,
             selectedVisibilityType: visibility,
             skillId: activeSkillIdRef.current,
+            skillParams: skillParamsToSend,
             ...(projectIdToSend && isToolApprovalContinuation
               ? { projectId: projectIdToSend }
               : {}),
@@ -477,11 +651,33 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
 
   const lastLoadedChatIdRef = useRef<string | null>(null);
 
+  const resetChat = useCallback(() => {
+    const newId = generateUUID();
+    newChatIdRef.current = newId;
+    lastLoadedChatIdRef.current = newId;
+    setMessages([]);
+    setInput("");
+    setActiveSkill(null);
+    setSkillParamValues(null);
+    setWaitingStatus(undefined);
+    setDataStream([]);
+    stop();
+  }, [
+    setMessages,
+    setInput,
+    setActiveSkill,
+    setSkillParamValues,
+    setWaitingStatus,
+    setDataStream,
+    stop,
+  ]);
+
   useEffect(() => {
     if (isNewChat) {
       if (lastLoadedChatIdRef.current !== chatId) {
         lastLoadedChatIdRef.current = chatId;
         setMessages([]);
+        setInput("");
       }
       return;
     }
@@ -493,7 +689,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       lastLoadedChatIdRef.current = chatId;
       setMessages(chatData.messages);
     }
-  }, [chatId, isNewChat, chatData, setMessages]);
+  }, [chatId, isNewChat, chatData, setMessages, setInput]);
 
   useEffect(() => {
     if (chatData && !isNewChat) {
@@ -544,12 +740,17 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo<ActiveChatContextValue>(
     () => ({
+      activeAgent,
       activeSkill,
       addToolApprovalResponse,
+      addToolOutput,
       chatId,
+      clearActiveAgent,
       clearActiveSkill,
+      clearPendingCommand,
       clearPendingProject,
       clearPendingTools,
+      clearSkillParamValues,
       currentModeId,
       currentModelId,
       input,
@@ -557,20 +758,26 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       isLoading: !isNewChat && isLoading,
       isReadonly,
       messages,
+      pendingCommand,
       pendingProject,
       pendingTools,
       regenerate,
+      resetChat,
       sendMessage,
+      setActiveAgent,
       setActiveSkill,
       setCurrentModeId: handleModeChange,
       setCurrentModelId: handleModelChange,
       setInput,
       setIsGhostMode,
       setMessages,
+      setPendingCommand,
       setPendingProject,
       setPendingTools,
       setShowCreditCardAlert,
+      setSkillParamValues,
       showCreditCardAlert,
+      skillParamValues,
       status,
       stop,
       toggleGhostMode,
@@ -587,12 +794,16 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       stop,
       regenerate,
       addToolApprovalResponse,
+      addToolOutput,
       input,
       visibility,
       isReadonly,
       isNewChat,
       isLoading,
       votes,
+      activeAgent,
+      setActiveAgent,
+      clearActiveAgent,
       currentModelId,
       currentModeId,
       pendingProject,
@@ -605,6 +816,13 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       setPendingTools,
       togglePendingTool,
       clearPendingTools,
+      skillParamValues,
+      setSkillParamValues,
+      clearSkillParamValues,
+      pendingCommand,
+      setPendingCommand,
+      clearPendingCommand,
+      resetChat,
       showCreditCardAlert,
       isGhostMode,
       toggleGhostMode,

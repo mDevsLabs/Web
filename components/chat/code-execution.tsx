@@ -15,29 +15,49 @@ export function CodeExecution({ code, language = "python" }: Props) {
   const [error, setError] = useState<string>("");
   const [isRunning, setIsRunning] = useState(false);
   const [pyodideReady, setPyodideReady] = useState(false);
+  const [pyodideError, setPyodideError] = useState("");
+  const [isPyodideLoading, setIsPyodideLoading] = useState(false);
 
   useEffect(() => {
-    // Check pyodide readiness
-    const check = setInterval(() => {
-      if ((window as any).pyodide) {
-        setPyodideReady(true);
-        clearInterval(check);
+    let cancelled = false;
+    const win = window as Window & {
+      pyodide?: any;
+      loadPyodide?: (options?: { indexURL?: string }) => Promise<any>;
+    };
+
+    const load = async () => {
+      try {
+        if (win.pyodide) {
+          if (!cancelled) setPyodideReady(true);
+          return;
+        }
+        if (!win.loadPyodide) {
+          if (!cancelled) {
+            setPyodideError("Le moteur Python n'est pas disponible.");
+          }
+          return;
+        }
+        if (!cancelled) setIsPyodideLoading(true);
+        const py = await win.loadPyodide({
+          indexURL: "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/",
+        });
+        if (!cancelled) {
+          win.pyodide = py;
+          setPyodideReady(true);
+        }
+      } catch (e) {
+        if (!cancelled) setPyodideError(e instanceof Error ? e.message : String(e));
+      } finally {
+        if (!cancelled) setIsPyodideLoading(false);
       }
-      if ((window as any).loadPyodide) {
-        // load if not loaded
-        (window as any)
-          .loadPyodide?.()
-          .then((py: any) => {
-            (window as any).pyodide = py;
-            setPyodideReady(true);
-          })
-          .catch(() => {
-            /* CDN indisponible */
-          });
-        clearInterval(check);
-      }
-    }, 800);
-    return () => clearInterval(check);
+    };
+
+    void load();
+    const check = window.setInterval(() => void load(), 500);
+    return () => {
+      cancelled = true;
+      window.clearInterval(check);
+    };
   }, []);
 
   const run = async () => {
@@ -47,11 +67,13 @@ export function CodeExecution({ code, language = "python" }: Props) {
     try {
       if (language === "python") {
         const py = (window as any).pyodide;
-        if (!py) {
+        if (!py || !pyodideReady) {
           setError(
-            "Pyodide non chargé. Réessayez dans quelques secondes (chargement CDN)."
+            pyodideError ||
+              (isPyodideLoading
+                ? "Le moteur Python est encore en cours de chargement."
+                : "Le moteur Python n'est pas disponible. Rechargez la page puis réessayez.")
           );
-          setIsRunning(false);
           return;
         }
         // Capture stdout
@@ -66,16 +88,25 @@ export function CodeExecution({ code, language = "python" }: Props) {
             stdout += `${msg}\n`;
           },
         });
+        let timeoutId: number | undefined;
         try {
-          const result = await py.runPythonAsync(code);
+          const result = await Promise.race([
+            py.runPythonAsync(code),
+            new Promise<never>((_, reject) => {
+              timeoutId = window.setTimeout(
+                () => reject(new Error("L'exécution a dépassé le délai autorisé.")),
+                60_000
+              );
+            }),
+          ]);
+          if (timeoutId !== undefined) window.clearTimeout(timeoutId);
           if (result !== undefined && result !== null) {
             const str = String(result);
-            if (str !== "undefined" && str !== "None") {
-              stdout += str;
-            }
+            if (str !== "undefined" && str !== "None") stdout += str;
           }
           setOutput(stdout.trim() || "(exécution réussie — pas de sortie)");
         } catch (e: any) {
+          if (timeoutId !== undefined) window.clearTimeout(timeoutId);
           setError(e.message || String(e));
         }
       } else {
@@ -116,7 +147,15 @@ export function CodeExecution({ code, language = "python" }: Props) {
           {language === "python"
             ? "Python (Pyodide, navigateur)"
             : "JavaScript"}{" "}
-          {pyodideReady ? "• prêt" : "• chargement..."}
+          {language !== "python"
+            ? "• prêt"
+            : pyodideReady
+              ? "• prêt"
+              : pyodideError
+                ? "• erreur de chargement"
+                : isPyodideLoading
+                  ? "• chargement..."
+                  : "• indisponible"}
         </span>
         <div className="flex items-center gap-1">
           <Button
@@ -129,7 +168,7 @@ export function CodeExecution({ code, language = "python" }: Props) {
           </Button>
           <Button
             className="h-7 text-xs gap-1"
-            disabled={isRunning}
+            disabled={isRunning || (language === "python" && (!pyodideReady || isPyodideLoading))}
             onClick={run}
             size="sm"
           >

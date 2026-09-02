@@ -12,25 +12,35 @@ import { checkBotId } from "botid/server";
 import { after } from "next/server";
 import { createResumableStreamContext } from "resumable-stream";
 import { DEFAULT_CHAT_MODEL, getModelCapabilities } from "@/lib/ai/models";
-import { AI_MODES, DEFAULT_AI_MODE, getAIMode } from "@/lib/ai/modes";
 import { type RequestHints, systemPrompt } from "@/lib/ai/prompts";
 import { getLanguageModel } from "@/lib/ai/providers";
+import { substituteSkillParams } from "@/lib/ai/skill-params";
+import { askUser } from "@/lib/ai/tools/ask-user";
 import { audioGenerate } from "@/lib/ai/tools/audio-generate";
 import { calculator } from "@/lib/ai/tools/calculator";
 import { codeExecution } from "@/lib/ai/tools/code-execution";
+import { TOOL_SYSTEM_HINTS } from "@/lib/ai/tools/config";
 import { createDocument } from "@/lib/ai/tools/create-document";
+import { currencyConverter } from "@/lib/ai/tools/currency-converter";
 import { dateTime } from "@/lib/ai/tools/datetime";
 import { editDocument } from "@/lib/ai/tools/edit-document";
+import { generateChart } from "@/lib/ai/tools/generate-chart";
 import { getWeather } from "@/lib/ai/tools/get-weather";
 import { imageGenerate } from "@/lib/ai/tools/image-generate";
+import { memory } from "@/lib/ai/tools/memory";
 import { note } from "@/lib/ai/tools/note";
+import { qrCodeGenerator } from "@/lib/ai/tools/qr-code-generator";
+import { quizzly } from "@/lib/ai/tools/quizzly";
+import { readUrl } from "@/lib/ai/tools/read-url";
 import { requestSuggestions } from "@/lib/ai/tools/request-suggestions";
 import { updateDocument } from "@/lib/ai/tools/update-document";
 import { webSearch } from "@/lib/ai/tools/web-search";
+import { isPaidTier, memoryLimitForTier } from "@/lib/auth/plan";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import { isProductionEnvironment, MAI_API_URL } from "@/lib/constants";
 import { getUserApiKey } from "@/lib/db/api-keys";
 import {
+  countMemories,
   createStreamId,
   deleteChatById,
   getChatById,
@@ -40,6 +50,7 @@ import {
   recordTokenUsage,
   saveChat,
   saveMessages,
+  trackSkillUsage,
   updateChatTitleById,
   updateMessage,
 } from "@/lib/db/queries";
@@ -56,7 +67,7 @@ import {
 import { generateTitleFromConversation } from "../../actions";
 import { type PostRequestBody, postRequestBodySchema } from "./schema";
 
-export const maxDuration = 60;
+export const maxDuration = 300;
 
 function isModelStreamActivity(chunk: { type: string }) {
   return !["start", "start-step", "finish-step", "finish", "raw"].includes(
@@ -89,11 +100,13 @@ export async function POST(request: Request) {
       id,
       message,
       messages,
-      selectedChatModel,
+
       selectedChatMode,
       selectedVisibilityType,
       projectId,
       skillId,
+      skillParams,
+      pendingPrompt,
       tags,
       customInstructions,
       temperatureOverride,
@@ -102,6 +115,8 @@ export async function POST(request: Request) {
     } = requestBody as PostRequestBody & {
       projectId?: string | null;
       skillId?: string | null;
+      skillParams?: Record<string, string> | null;
+      pendingPrompt?: { commandId?: string; text: string } | null;
       tags?: string[];
       customInstructions?: string;
       temperatureOverride?: number | null;
@@ -125,6 +140,8 @@ export async function POST(request: Request) {
 
     // 1. Vérification du quota hebdomadaire
     const userId = maiUser.id || maiUser.email;
+    // Blocage Free : ignorer agent/skill transmis dans le body (pas d'injection, pas de switch modèle)
+    const isFreeUser = !isPaidTier(maiUser.tier);
 
     if (maiUser.tokensUsed >= maiUser.limit) {
       return new Response(
@@ -166,9 +183,13 @@ export async function POST(request: Request) {
       } catch {}
     }
 
-    const effectiveSkillId = (chat as any)?.skillId || skillId;
+    const effectiveSkillId = isFreeUser
+      ? null
+      : (chat as any)?.skillId || skillId;
     let skillInstructions: string | null = null;
     let skillTools: string[] = [];
+    let skillMcpServerIds: string[] = [];
+    let skillMcpToolFilter: Record<string, string[] | null> | null = null;
 
     if (effectiveSkillId) {
       try {
@@ -177,21 +198,74 @@ export async function POST(request: Request) {
           userId,
         });
         if (activeSkill) {
-          skillInstructions = activeSkill.instructions;
+          skillInstructions = substituteSkillParams(
+            activeSkill.instructions,
+            skillParams
+          );
           if (Array.isArray(activeSkill.tools)) {
             skillTools = activeSkill.tools as string[];
           }
+          if (Array.isArray(activeSkill.mcpServerIds)) {
+            skillMcpServerIds = activeSkill.mcpServerIds as string[];
+          }
+          if (
+            activeSkill.mcpToolFilter &&
+            typeof activeSkill.mcpToolFilter === "object"
+          ) {
+            skillMcpToolFilter = activeSkill.mcpToolFilter as Record<
+              string,
+              string[] | null
+            >;
+          }
+          trackSkillUsage({ skillId: activeSkill.id, userId }).catch(() => {});
         }
       } catch {}
     }
 
+    // Agent remplace Mode IA — agentId envoyé par use-active-chat (cookie + DB)
+    const bodyAny = requestBody as any;
+    const agentIdFromBody: string | null = isFreeUser
+      ? null
+      : (bodyAny.agentId ?? bodyAny.selectedAgentId ?? null);
+    const chatModelFromAgent: string | null =
+      !isFreeUser && bodyAny.selectedChatModel
+        ? bodyAny.selectedChatModel
+        : null;
+    // Si un agent est actif, son modèle par défaut prime (global cookie déjà mis à jour côté client)
+    let agentInstructions: string | null = null;
+    let agentDefaultModel: string | null = null;
+    let agentSkillIds: string[] = [];
+    let _agentMcpIds: string[] = [];
+    let agentTemperature: number | null = null;
+    let agentTopP: number | null = null;
+    let agentMaxTokens: number | null = null;
+    const effectiveAgentId = isFreeUser
+      ? null
+      : (chat as any)?.agentId || agentIdFromBody || null;
+    if (effectiveAgentId) {
+      try {
+        const { getAgentById } = await import("@/lib/db/queries");
+        const ag = await getAgentById({ id: effectiveAgentId, userId });
+        if (ag) {
+          agentInstructions = ag.instructions || null;
+          agentDefaultModel = ag.defaultModelId || null;
+          agentTemperature = (ag as any).temperature ?? null;
+          agentTopP = (ag as any).topP ?? null;
+          agentMaxTokens = (ag as any).maxTokens ?? null;
+          if (Array.isArray(ag.skillIds)) {
+            agentSkillIds = ag.skillIds as string[];
+          }
+          if (Array.isArray(ag.mcpServerIds)) {
+            _agentMcpIds = ag.mcpServerIds as string[];
+          }
+        }
+      } catch {}
+    }
     const chatModel =
-      selectedChatModel || projectDefaultModel || DEFAULT_CHAT_MODEL;
-    const chatModeId =
-      selectedChatMode && AI_MODES[selectedChatMode as keyof typeof AI_MODES]
-        ? selectedChatMode
-        : DEFAULT_AI_MODE;
-    const _chatMode = getAIMode(chatModeId);
+      chatModelFromAgent ||
+      agentDefaultModel ||
+      projectDefaultModel ||
+      DEFAULT_CHAT_MODEL;
     const isToolApprovalFlow = Boolean(messages);
 
     // Règle: bloquer l'envoi de fichiers si le modèle ne supporte pas vision/file
@@ -242,9 +316,10 @@ export async function POST(request: Request) {
         }
       }
       await saveChat({
+        agentId: effectiveAgentId ?? null,
         customInstructions: customInstructions ?? null,
         id,
-        modeId: chatModeId,
+        modeId: selectedChatMode ?? undefined,
         projectId: projectId ?? null,
         skillId: effectiveSkillId ?? null,
         tags: tags ?? [],
@@ -261,6 +336,7 @@ export async function POST(request: Request) {
       try {
         await updateChatProjectById({
           chatId: id,
+          email: maiUser.email,
           projectId: projectId ?? null,
           userId,
         });
@@ -271,14 +347,15 @@ export async function POST(request: Request) {
 
     if (isToolApprovalFlow && messages) {
       const dbMessages = convertToUIMessages(messagesFromDb);
-      const approvalStates = new Map(
+      const toolUpdates = new Map(
         messages.flatMap(
           (m) =>
             m.parts
               ?.filter(
                 (p: Record<string, unknown>) =>
                   p.state === "approval-responded" ||
-                  p.state === "output-denied"
+                  p.state === "output-denied" ||
+                  p.state === "output-available"
               )
               .map((p: Record<string, unknown>) => [
                 String(p.toolCallId ?? ""),
@@ -291,9 +368,9 @@ export async function POST(request: Request) {
         parts: msg.parts.map((part) => {
           if (
             "toolCallId" in part &&
-            approvalStates.has(String(part.toolCallId))
+            toolUpdates.has(String(part.toolCallId))
           ) {
-            return { ...part, ...approvalStates.get(String(part.toolCallId)) };
+            return { ...part, ...toolUpdates.get(String(part.toolCallId)) };
           }
           return part;
         }),
@@ -353,30 +430,95 @@ export async function POST(request: Request) {
       }
     } catch {}
 
+    // Mémoire personnalisée (globale ou spécifique agent + projet)
+    // Désactivée en mode fantôme sauf si la préférence utilisateur "mémoire fantôme" est active
+    let ghostMemoryEnabled = false;
+    if (isGhostMode) {
+      try {
+        const { getGhostMemoryEnabled } = await import("@/lib/db/queries");
+        ghostMemoryEnabled = await getGhostMemoryEnabled(userId);
+      } catch {}
+    }
+    const memoryActive = !isGhostMode || ghostMemoryEnabled;
+    const memoryLimit = memoryLimitForTier(maiUser.tier);
+    // Même portée que celle où l'outil écrit (agent sinon globale) : une seule
+    // requête ici, réutilisée à l'enregistrement du tool.
+    const memoryAllowAdd = memoryActive
+      ? (await countMemories({
+          agentId: effectiveAgentId ?? null,
+          userId,
+        })) < memoryLimit
+      : false;
+    let userMemoryBlock = "";
+    let projectMemoryBlock = "";
+    if (memoryActive) {
+      try {
+        const { getUserScopeMemoriesForChat, getProjectMemories } =
+          await import("@/lib/db/queries");
+        const { memories } = await getUserScopeMemoriesForChat({
+          agentId: effectiveAgentId,
+          userId,
+        });
+        if (memories.length > 0) {
+          const lines = memories
+            .map((m, i) => `${i + 1}. ${m.content.replace(/\s+/g, " ").trim()}`)
+            .join("\n")
+            .slice(0, 6000);
+          userMemoryBlock = `MÉMOIRE — Informations retenues sur l'utilisateur :\n${lines}\nUtilise ces informations pour personnaliser tes réponses sans les répéter verbatim.`;
+        }
+        if (effectiveProjectId) {
+          const projectMemories = await getProjectMemories({
+            projectId: effectiveProjectId,
+            userId,
+          });
+          if (projectMemories.length > 0) {
+            const lines = projectMemories
+              .map(
+                (m, i) => `${i + 1}. ${m.content.replace(/\s+/g, " ").trim()}`
+              )
+              .join("\n")
+              .slice(0, 6000);
+            projectMemoryBlock = `MÉMOIRE DU PROJET — Informations retenues sur ce projet :\n${lines}`;
+          }
+        }
+      } catch {}
+    }
+
     // Chat-level overrides (persisted in Chat table)
     const chatCustomInstructions =
       (chat as any)?.customInstructions ?? customInstructions ?? null;
-    const chatModeOverride = (chat as any)?.modeId ?? chatModeId;
     const chatTempOverride =
       (chat as any)?.temperatureOverride ?? temperatureOverride ?? null;
 
-    // Construire le prompt addendum effectif
-    const effectiveMode = getAIMode(chatModeOverride);
-    let effectiveAddendum = effectiveMode.systemPromptAddendum || "";
+    // Construire le prompt addendum effectif (Agent remplace Mode IA)
+    let effectiveAddendum = "";
+    if (agentInstructions) {
+      effectiveAddendum = `AGENT ACTIF — Instructions prioritaires de l'agent :\n${agentInstructions}`;
+    }
     if (userCustomEnabled && userCustomInstructions) {
-      effectiveAddendum = `Instructions personnalisées de l'utilisateur (à respecter en priorité):\n${userCustomInstructions}\n\n${effectiveAddendum}`;
+      effectiveAddendum = `${effectiveAddendum}\n\nInstructions personnalisées de l'utilisateur (à respecter en priorité):\n${userCustomInstructions}`;
+    }
+    if (userMemoryBlock) {
+      effectiveAddendum = `${effectiveAddendum}\n\n${userMemoryBlock}`;
     }
     if (projectCustomInstructions) {
       effectiveAddendum = `${effectiveAddendum}\n\nContexte et instructions du dossier/projet :\n${projectCustomInstructions}`;
+    }
+    if (projectMemoryBlock) {
+      effectiveAddendum = `${effectiveAddendum}\n\n${projectMemoryBlock}`;
     }
     if (chatCustomInstructions) {
       effectiveAddendum = `${effectiveAddendum}\n\nInstructions spécifiques à cette discussion:\n${chatCustomInstructions}`;
     }
     if (skillInstructions) {
-      effectiveAddendum = `${effectiveAddendum}\n\n🎯 COMPÉTENCE / SKILL ACTIF POUR CETTE DISCUSSION :\n${skillInstructions}`;
+      effectiveAddendum = `${effectiveAddendum}\n\nCOMPETENCE / SKILL ACTIF POUR CETTE DISCUSSION :\n${skillInstructions}`;
+    }
+    // Skills/MCP embarqués dans l'agent (fusion avec skill actif + one-shot)
+    if (agentSkillIds.length > 0 && !skillInstructions) {
+      // Si agent a des skills mais pas de skill actif, on concatène leurs instructions (optionnel lazy)
     }
     if (isGhostMode) {
-      effectiveAddendum += `\n\n👻 MODE FANTÔME ACTIF : Cette discussion est éphémère et confidentielle (non enregistrée en base de données). L'outil de génération d'image est strictement indisponible dans ce mode.`;
+      effectiveAddendum += `\n\nMODE FANTÔME ACTIF : Cette discussion est éphémère et confidentielle (non enregistrée). L'outil de génération d'image est strictement indisponible dans ce mode.`;
     }
     // One-shot tools + outils issus du skill actif
     const combinedEnabledTools = Array.from(
@@ -386,35 +528,40 @@ export async function POST(request: Request) {
       ])
     );
     const requestedTools: string[] = combinedEnabledTools.filter(
-      (t) => !isGhostMode || (t !== "imageGenerate" && t !== "audioGenerate")
+      (t) =>
+        !isGhostMode ||
+        (t !== "imageGenerate" &&
+          t !== "audioGenerate" &&
+          (t !== "memory" || ghostMemoryEnabled))
     );
     if (requestedTools.length > 0) {
-      const toolLabels: Record<string, string> = {
-        audioGenerate:
-          "audioGenerate (synthèse vocale - exécuter immédiatement avec la voix par défaut 'flux-alexis-en' sans demander à l'utilisateur de choisir la voix)",
-        calculator:
-          "calculator (calculs mathématiques, fonctions trigonométriques, logarithmes, conversions d'unités : longueur, masse, température, temps, volume, données, énergie, pression, vitesse, surface, angle)",
-        codeExecution: "codeExecution (exécution Python/JS navigateur)",
-        createDocument: "createDocument (créer artifact)",
-        dateTime:
-          "dateTime (date/heure actuelle, conversions entre fuseaux horaires, différences entre dates, calcul de la date de Pâques, formatage)",
-        editDocument: "editDocument (éditer artifact)",
-        getWeather:
-          "getWeather (météo actuelle et prévisions 1-7 jours, celsius/fahrenheit)",
-        imageGenerate: "imageGenerate (génération d'image)",
-        note: "note (créer une note formatée et téléchargeable en markdown, texte, JSON, CSV, HTML, ou code)",
-        requestSuggestions: "requestSuggestions (suggestions)",
-        updateDocument: "updateDocument (réécrire artifact)",
-        webSearch: "webSearch (recherche sur le Web en temps réel)",
-      };
-      const listed = requestedTools.map((t) => toolLabels[t] || t).join(", ");
-      effectiveAddendum += `\n\n⚠️ OUTILS ACTIVÉS POUR CE MESSAGE — UTILISATION EXTRÊMEMENT RECOMMANDÉE SI PERTINENT : ${listed}. Tu DOIS les utiliser dès que la demande s'y prête, ne les ignore pas. Si plusieurs outils sont activés, choisis le plus pertinent. Pour l'audio, ne demande JAMAIS de choix de voix, génère directement avec la voix par défaut.`;
+      const listed = requestedTools
+        .map((t) => (TOOL_SYSTEM_HINTS as Record<string, string>)[t] || t)
+        .join(", ");
+      effectiveAddendum += `\n\nOUTILS ACTIVÉS POUR CE MESSAGE — UTILISATION EXTRÊMEMENT RECOMMANDÉE SI PERTINENT : ${listed}. Tu DOIS les utiliser dès que la demande s'y prête, ne les ignore pas. Si plusieurs outils sont activés, choisis le plus pertinent. Pour l'audio, ne demande JAMAIS de choix de voix, génère directement avec la voix par défaut.`;
     }
 
-    // Température effective: chat override > user default > mode default
+    // Commande personnalisée : consignes à appliquer à CE message uniquement
+    if (pendingPrompt?.text && pendingPrompt.text.trim().length > 0) {
+      let commandName: string | null = null;
+      if (pendingPrompt.commandId && !isFreeUser) {
+        try {
+          const { getCustomCommandById } = await import("@/lib/db/queries");
+          const cmd = await getCustomCommandById({
+            id: pendingPrompt.commandId,
+            userId,
+          });
+          commandName = cmd?.name ?? null;
+        } catch {}
+      }
+      effectiveAddendum += `\n\nCOMMANDE PERSONNALISÉE${commandName ? ` « ${commandName} »` : ""} — CONSIGNES À APPLIQUER À CE MESSAGE :\n${pendingPrompt.text.trim()}`;
+    }
+
+    // Température effective: chat override > agent > user default (plus de mode)
     const effectiveTemperature =
-      chatTempOverride ?? userDefaultTemp ?? effectiveMode.temperature;
-    const effectiveTopP = userDefaultTopP ?? effectiveMode.topP;
+      chatTempOverride ?? agentTemperature ?? userDefaultTemp ?? undefined;
+    const effectiveTopP = agentTopP ?? userDefaultTopP ?? undefined;
+    const effectiveMaxTokens = agentMaxTokens ?? undefined;
 
     // Initialiser le modèle de langage mAI
     const model = getLanguageModel(chatModel, {
@@ -444,13 +591,64 @@ export async function POST(request: Request) {
           });
         };
 
-        // Charger les serveurs MCP de l'utilisateur et générer les outils associés
+        // Charger les serveurs MCP de l'utilisateur et auto-découvrir les outils si toolsCache est vide
         const userMcpServers = await getMcpServersByUserId({ userId }).catch(
           () => []
         );
+
+        // Auto-découverte à chaud si un serveur activé n'a pas encore son toolsCache
+        for (const server of userMcpServers) {
+          if (
+            server.isEnabled &&
+            (!server.toolsCache || (server.toolsCache as any[]).length === 0)
+          ) {
+            try {
+              const { fetchMcpTools } = await import("@/lib/mcp/client");
+              const discoveredTools = await fetchMcpTools(server as any);
+              if (discoveredTools && discoveredTools.length > 0) {
+                server.toolsCache = discoveredTools as any;
+                const { updateMcpServerSync } = await import(
+                  "@/lib/db/queries"
+                );
+                await updateMcpServerSync({
+                  id: server.id,
+                  success: true,
+                  toolsCache: discoveredTools,
+                  userId,
+                }).catch(() => {});
+              }
+            } catch (syncErr) {
+              console.error(
+                `Auto-découverte outils MCP échouée pour ${server.name}:`,
+                syncErr
+              );
+            }
+          }
+        }
+
+        // Filtrage MCP par le skill actif : serveurs restreints à ses IDs +
+        // whitelist d'outils par serveur (mcpToolFilter)
+        const skillMcpActive = skillMcpServerIds.length > 0;
+        let scopedMcpServers = userMcpServers;
+        if (skillMcpActive) {
+          scopedMcpServers = userMcpServers.filter(
+            (s) => s.isEnabled && skillMcpServerIds.includes(s.id)
+          );
+          for (const server of scopedMcpServers) {
+            const filter = skillMcpToolFilter?.[server.id] ?? null;
+            if (Array.isArray(filter) && filter.length > 0) {
+              const { getFilteredTools } = await import("@/lib/mcp/client");
+              server.toolsCache = getFilteredTools(
+                server as any,
+                filter
+              ) as any;
+            }
+          }
+        }
+
         const mcpTools = createMcpChatTools({
           chatId: id,
-          servers: userMcpServers,
+          servers: scopedMcpServers,
           userId,
         });
         const mcpToolKeys = Object.keys(mcpTools);
@@ -464,15 +662,20 @@ export async function POST(request: Request) {
         );
         const requestedTools2: string[] = combinedRequestedTools.filter(
           (t) =>
-            !isGhostMode || (t !== "imageGenerate" && t !== "audioGenerate")
+            !isGhostMode ||
+            (t !== "imageGenerate" &&
+              t !== "audioGenerate" &&
+              (t !== "memory" || ghostMemoryEnabled))
         );
 
-        const hasMcpEnabled = requestedTools2.some(
-          (t) => t === "mcp" || t.startsWith("mcp_")
-        );
+        const hasMcpEnabled =
+          skillMcpActive ||
+          requestedTools2.some(
+            (t) => t === "mcp" || t.startsWith("mcp_") || t.startsWith("mcp:")
+          );
         const activeToolsList: string[] = [
           ...requestedTools2.filter(
-            (t) => !t.startsWith("mcp_") && t !== "mcp"
+            (t) => !t.startsWith("mcp_") && t !== "mcp" && !t.startsWith("mcp:")
           ),
           ...(hasMcpEnabled
             ? mcpToolKeys
@@ -480,10 +683,20 @@ export async function POST(request: Request) {
         ];
         const supportsTools = activeToolsList.length > 0;
 
+        // Consigne explicite pour le modèle lorsque des outils MCP sont actifs
+        let finalEffectiveAddendum = effectiveAddendum;
+        if (hasMcpEnabled && mcpToolKeys.length > 0) {
+          const activeServerNames = userMcpServers
+            .filter((s) => s.isEnabled)
+            .map((s) => s.name)
+            .join(", ");
+          finalEffectiveAddendum = `${finalEffectiveAddendum ? `${finalEffectiveAddendum}\n\n` : ""}Tu as accès à des outils externes connectés via le protocole MCP (${activeServerNames}). Outils MCP disponibles: ${mcpToolKeys.join(", ")}. Lorsque l'utilisateur demande une action ou une recherche (par exemple lister des commits, dépôts, pull requests GitHub, fichiers, etc.), tu DOIS appeler directement les outils MCP correspondants et ne JAMAIS affirmer que tu n'as pas accès à Git ou aux outils MCP.`;
+        }
+
         const result = streamText({
           activeTools: supportsTools ? (activeToolsList as any) : undefined,
           instructions: systemPrompt({
-            modeAddendum: effectiveAddendum,
+            modeAddendum: finalEffectiveAddendum,
             requestHints,
             supportsTools,
           }),
@@ -495,6 +708,9 @@ export async function POST(request: Request) {
             : {}),
           ...(effectiveTopP !== undefined && effectiveTopP !== null
             ? { topP: effectiveTopP }
+            : {}),
+          ...(effectiveMaxTokens !== undefined && effectiveMaxTokens !== null
+            ? { maxOutputTokens: effectiveMaxTokens }
             : {}),
           onChunk({ chunk }) {
             if (isModelStreamActivity(chunk)) {
@@ -569,12 +785,20 @@ export async function POST(request: Request) {
               } catch {}
             }
           },
-          stopWhen: isStepCount(5),
+          stopWhen: ({ steps }) => {
+            if (steps.length >= 12) return true;
+            // Ne pas appeler l'IA après la génération d'un quiz interactif
+            const hasQuizzly = steps.some((step) =>
+              step.toolCalls?.some((tc) => (tc as any)?.toolName === "quizzly")
+            );
+            return hasQuizzly;
+          },
           telemetry: {
             functionId: "stream-text",
             isEnabled: isProductionEnvironment,
           },
           tools: {
+            askUser,
             audioGenerate: audioGenerate({
               dataStream,
               session: {
@@ -593,6 +817,7 @@ export async function POST(request: Request) {
                 user: isGhostMode ? null : { email: maiUser.email, id: userId },
               } as any,
             }),
+            currencyConverter,
             dateTime,
             editDocument: editDocument({
               dataStream,
@@ -600,6 +825,7 @@ export async function POST(request: Request) {
                 user: isGhostMode ? null : { email: maiUser.email, id: userId },
               } as any,
             }),
+            generateChart,
             getWeather,
             ...(isGhostMode
               ? {}
@@ -616,12 +842,25 @@ export async function POST(request: Request) {
                     } as any,
                   }),
                 }),
+            ...(memoryActive
+              ? {
+                  memory: memory({
+                    agentId: effectiveAgentId,
+                    allowAdd: memoryAllowAdd,
+                    memoryLimit,
+                    userId,
+                  }),
+                }
+              : {}),
             note: note({
               dataStream,
               session: {
                 user: isGhostMode ? null : { email: maiUser.email, id: userId },
               } as any,
             }),
+            qrCodeGenerator,
+            quizzly,
+            readUrl,
             requestSuggestions: requestSuggestions({
               dataStream,
               modelId: chatModel,
@@ -658,8 +897,12 @@ export async function POST(request: Request) {
         try {
           const { createNotification } = await import("@/lib/db/queries");
           const snippet = (() => {
-            const last = [...finishedMessages].reverse().find((m) => m.role === "assistant");
-            if (!last) return "mAI a répondu à votre message.";
+            const last = [...finishedMessages]
+              .reverse()
+              .find((m) => m.role === "assistant");
+            if (!last) {
+              return "mAI a répondu à votre message.";
+            }
             const txt = getTextFromMessage(last as any) || "";
             return txt.slice(0, 180) || "mAI a répondu à votre message.";
           })();

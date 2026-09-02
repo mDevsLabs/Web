@@ -11,6 +11,27 @@ export const MAI_API_URL =
   process.env.NEXT_PUBLIC_MAI_API_URL || "https://mai.val.run";
 export const MAI_UPGRADE_URL = "https://mai-devs.vercel.app";
 
+// Handoff Cloud -> chat : pièce jointe en attente (sessionStorage)
+export const MAI_PENDING_ATTACHMENT_KEY = "mai-pending-attachment";
+
+// Plafond de caractères d'une entrée de mémoire — aligné sur la contrainte
+// CHECK `char_length(content) <= 2000` de la table UserMemory (migration 0010).
+// Partagé client/serveur (lib/db/queries est server-only), d'où sa place ici.
+export const MEMORY_CONTENT_MAX_LENGTH = 2000;
+
+// ─────────────────────────────────────────────
+// App version & legal — SSOT: version from package.json ("0.5.5")
+// ─────────────────────────────────────────────
+export const APP_VERSION = "0.5.5";
+export const APP_NAME = "mAI";
+export const APP_COPYRIGHT = `© ${new Date().getFullYear()} mAI — Tous droits réservés`;
+export const APP_SUPPORT_URL = "https://mai-devs.vercel.app/support";
+export const LEGAL_LINKS = [
+  { href: "https://mai-devs.vercel.app/legal", label: "Mentions légales" },
+  { href: "https://mai-devs.vercel.app/privacy", label: "Confidentialité" },
+  { href: "https://mai-devs.vercel.app/terms", label: "CGU" },
+] as const;
+
 // Limites quotidiennes de génération d'images par tier
 // (miroir de TIER_DAILY_IMAGE_LIMITS / getTierDailyImageLimit côté backend Val
 // Town, config.ts — non importable car code Deno)

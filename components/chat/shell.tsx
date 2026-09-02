@@ -120,11 +120,12 @@ export function ChatShell() {
 
   return (
     <>
-      <div className="flex h-dvh w-full flex-row overflow-hidden">
+      <div className="flex h-[100dvh] w-full flex-row overflow-hidden supports-[height:100dvh]:h-[100dvh]">
         <div
           className={cn(
-            "flex min-w-0 flex-col bg-sidebar transition-[width] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]",
-            isArtifactVisible ? "w-[40%]" : "w-full"
+            "flex min-w-0 flex-col bg-sidebar transition-[width] duration-300 ease-[cubic-bezier(0.32,0.72,1)]",
+            isArtifactVisible ? "w-full md:w-[40%]" : "w-full",
+            isArtifactVisible && "hidden md:flex"
           )}
         >
           <ChatHeader
@@ -149,7 +150,7 @@ export function ChatShell() {
               votes={votes}
             />
 
-            <div className="sticky bottom-0 z-1 mx-auto flex w-full max-w-4xl gap-2 border-t-0 bg-background px-2 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] md:px-4 md:pb-[calc(env(safe-area-inset-bottom)+1rem)]">
+            <div className="sticky bottom-0 z-30 mx-auto flex w-full max-w-4xl gap-2 border-t border-border/10 bg-background px-2 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-2 md:px-4 md:pb-[calc(env(safe-area-inset-bottom)+1rem)] md:pt-3 supports-[padding:env(safe-area-inset-bottom)]:pb-[calc(env(safe-area-inset-bottom)+0.75rem)]">
               {!isReadonly && (
                 <MultimodalInput
                   attachments={attachments}

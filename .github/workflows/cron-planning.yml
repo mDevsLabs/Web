@@ -1,0 +1,43 @@
+name: Planning Cron Trigger
+
+on:
+  schedule:
+    # S'exécute automatiquement toutes les 10 minutes (gratuit avec GitHub Actions)
+    - cron: '*/10 * * * *'
+  workflow_dispatch: # Permet aussi un déclenchement manuel depuis GitHub
+
+jobs:
+  run-planning-cron:
+    name: Déclencher les messages planifiés
+    runs-on: ubuntu-latest
+    steps:
+      - name: Appeler l'endpoint Cron Vercel
+        env:
+          APP_URL: ${{ secrets.APP_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          if [ -z "$APP_URL" ]; then
+            echo "::warning ::Le secret APP_URL n'est pas configuré dans GitHub Secrets."
+            exit 0
+          fi
+          
+          # Nettoyer l'URL
+          CLEAN_URL="${APP_URL%/}"
+          
+          echo "Appel de $CLEAN_URL/api/cron/planning..."
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST "$CLEAN_URL/api/cron/planning" \
+            -H "Authorization: Bearer $CRON_SECRET" \
+            -H "Content-Type: application/json")
+          
+          HTTP_STATUS=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | sed '$d')
+          
+          echo "Code HTTP: $HTTP_STATUS"
+          echo "Réponse: $BODY"
+          
+          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 300 ]; then
+            echo "Cron exécuté avec succès !"
+          else
+            echo "::error ::Échec de l'appel cron (HTTP $HTTP_STATUS)"
+            exit 1
+          fi

@@ -13,13 +13,17 @@ const prefsSchema = z.object({
   mcpAccessRequest: z.boolean().optional(),
   mcpCreated: z.boolean().optional(),
   news: z.boolean().optional(),
+  planningTaskCompleted: z.boolean().optional(),
   projectCreated: z.boolean().optional(),
+  quotaWarning: z.boolean().optional(),
   regenerateMode: z.enum(["truncate", "fork"]).optional(),
 });
 
 export async function GET() {
   const user = await getMaiUser();
-  if (!user) return new ChatbotError("unauthorized:chat").toResponse();
+  if (!user) {
+    return new ChatbotError("unauthorized:chat").toResponse();
+  }
   const userId = user.id || user.email;
   const prefs = await getUserNotificationPrefs(userId);
   return NextResponse.json(prefs);
@@ -27,7 +31,9 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const user = await getMaiUser();
-  if (!user) return new ChatbotError("unauthorized:chat").toResponse();
+  if (!user) {
+    return new ChatbotError("unauthorized:chat").toResponse();
+  }
   const userId = user.id || user.email;
   const body = await request.json().catch(() => ({}));
   const parsed = prefsSchema.safeParse(body);

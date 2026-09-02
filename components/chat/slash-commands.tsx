@@ -1,16 +1,22 @@
 "use client";
 
 import {
+  BarChart3Icon,
   BombIcon,
+  BotIcon,
+  BrainIcon,
   CalculatorIcon,
+  CalendarClockIcon,
   CalendarIcon,
   CloudSunIcon,
   Code2Icon,
+  DownloadIcon,
   FileTextIcon,
   FolderArchiveIcon,
   FolderKanbanIcon,
   GhostIcon,
   GlobeIcon,
+  HomeIcon,
   ImageIcon,
   LightbulbIcon,
   ListIcon,
@@ -18,14 +24,18 @@ import {
   PaletteIcon,
   PenLineIcon,
   PenSquareIcon,
+  QrCodeIcon,
   SearchIcon,
   SlidersHorizontalIcon,
   Trash2Icon,
+  TrophyIcon,
   Volume2Icon,
   XIcon,
   ZapIcon,
 } from "lucide-react";
 import { type ReactNode, useCallback, useEffect, useRef } from "react";
+import { toast } from "sonner";
+import type { CustomCommand } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
 
 export type SlashCommandAction =
@@ -34,13 +44,18 @@ export type SlashCommandAction =
   | "ghost"
   | "rename"
   | "model"
+  | "agents"
+  | "export"
   | "theme"
   | "delete"
   | "purge"
   | "usage"
   | "library"
   | "projects"
+  | "planning"
+  | "notes"
   | "search"
+  | "home"
   | "tool-image"
   | "tool-audio"
   | "tool-web"
@@ -51,7 +66,13 @@ export type SlashCommandAction =
   | "tool-calc"
   | "tool-time"
   | "tool-note"
-  | "tools-clear";
+  | "tool-chart"
+  | "tool-memory"
+  | "tool-qr"
+  | "tool-summary"
+  | "quiz"
+  | "tools-clear"
+  | "custom";
 
 export type SlashCommand = {
   name: string;
@@ -60,6 +81,7 @@ export type SlashCommand = {
   action: SlashCommandAction;
   shortcut?: string;
   aliases?: string[];
+  custom?: CustomCommand;
 };
 
 export const slashCommands: SlashCommand[] = [
@@ -94,6 +116,20 @@ export const slashCommands: SlashCommand[] = [
     description: "Ouvre le sélecteur de modèles",
     icon: <ListIcon className="size-3.5" />,
     name: "model",
+  },
+  {
+    action: "agents",
+    aliases: ["agent", "agents", "ia-agents"],
+    description: "Ouvrir le menu de choix des agents",
+    icon: <BotIcon className="size-3.5" />,
+    name: "agents",
+  },
+  {
+    action: "export",
+    aliases: ["exporter", "download", "telecharger"],
+    description: "Exporter la conversation en cours (Markdown)",
+    icon: <DownloadIcon className="size-3.5" />,
+    name: "export",
   },
   {
     action: "usage",
@@ -195,6 +231,62 @@ export const slashCommands: SlashCommand[] = [
     name: "note",
   },
   {
+    action: "planning",
+    aliases: ["plan", "planification", "schedule"],
+    description: "Ouvrir la planification de tâches (/planning)",
+    icon: <CalendarClockIcon className="size-3.5" />,
+    name: "planning",
+  },
+  {
+    action: "notes",
+    aliases: ["notes", "mes-notes", "fichiers"],
+    description: "Accéder à vos documents et stockage (/library)",
+    icon: <NotebookIcon className="size-3.5" />,
+    name: "notes",
+  },
+  {
+    action: "home",
+    aliases: ["accueil", "racine"],
+    description: "Revenir à l'accueil et démarrer une nouvelle session",
+    icon: <HomeIcon className="size-3.5" />,
+    name: "home",
+  },
+  {
+    action: "tool-chart",
+    aliases: ["chart", "graphique", "diagramme", "plot"],
+    description: "Activer le générateur de graphiques interactifs (one-shot)",
+    icon: <BarChart3Icon className="size-3.5" />,
+    name: "chart",
+  },
+  {
+    action: "tool-memory",
+    aliases: ["memory", "memoire", "souvenir"],
+    description: "Activer l'outil de gestion de la mémoire utilisateur (one-shot)",
+    icon: <BrainIcon className="size-3.5" />,
+    name: "memory",
+  },
+  {
+    action: "tool-qr",
+    aliases: ["qr", "qrcode"],
+    description: "Activer le générateur de QR Code (one-shot)",
+    icon: <QrCodeIcon className="size-3.5" />,
+    name: "qr",
+  },
+  {
+    action: "tool-summary",
+    aliases: ["summary", "resume", "synthese"],
+    description: "Demander une synthèse structurée par sections",
+    icon: <FileTextIcon className="size-3.5" />,
+    name: "summary",
+  },
+  {
+    action: "quiz",
+    aliases: ["quizz", "quizzly", "test"],
+    description: "Créer un quiz interactif Quizzly (1 à 50 questions avec score)",
+    icon: <TrophyIcon className="size-3.5" />,
+    name: "quiz",
+  },
+  {
     action: "tools-clear",
     aliases: ["tools-off", "clear-tools"],
     description: "Désactiver tous les outils",
@@ -226,6 +318,9 @@ type SlashCommandMenuProps = {
   onSelect: (command: SlashCommand) => void;
   onClose: () => void;
   selectedIndex: number;
+  supportsTools?: boolean;
+  context?: SlashCommandContext;
+  customCommands?: SlashCommand[];
 };
 
 function SlashCommandMenuItem({
@@ -233,15 +328,26 @@ function SlashCommandMenuItem({
   index,
   onSelect,
   selectedIndex,
+  supportsTools = true,
 }: {
   cmd: SlashCommand;
   index: number;
   onSelect: (command: SlashCommand) => void;
   selectedIndex: number;
+  supportsTools?: boolean;
 }) {
+  const isTool = cmd.action.startsWith("tool-");
+  const isDisabled = isTool && !supportsTools;
+
   const handleClick = useCallback(() => {
+    if (isDisabled) {
+      toast.warning(
+        "Ce modèle ne prend pas en charge les outils (tools). Cette commande est indisponible pour ce modèle."
+      );
+      return;
+    }
     onSelect(cmd);
-  }, [cmd, onSelect]);
+  }, [cmd, isDisabled, onSelect]);
 
   const handleMouseDown = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -254,9 +360,13 @@ function SlashCommandMenuItem({
     <button
       className={cn(
         "flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors",
-        index === selectedIndex ? "bg-muted/70" : "hover:bg-muted/40"
+        isDisabled
+          ? "opacity-40 cursor-not-allowed"
+          : index === selectedIndex
+            ? "bg-muted/70"
+            : "hover:bg-muted/40"
       )}
-      data-selected={index === selectedIndex}
+      data-selected={index === selectedIndex && !isDisabled}
       onClick={handleClick}
       onMouseDown={handleMouseDown}
       type="button"
@@ -268,7 +378,15 @@ function SlashCommandMenuItem({
       <span className="text-[12px] text-muted-foreground/50">
         {cmd.description}
       </span>
-      {cmd.shortcut ? (
+      {isDisabled ? (
+        <span className="ml-auto text-[9px] bg-destructive/10 text-destructive font-semibold px-1.5 py-0.2 rounded">
+          Sans tools
+        </span>
+      ) : cmd.action === "custom" ? (
+        <span className="ml-auto text-[9px] bg-primary/10 text-primary font-semibold px-1.5 py-0.5 rounded shrink-0">
+          Perso
+        </span>
+      ) : cmd.shortcut ? (
         <span className="ml-auto text-[11px] text-muted-foreground/30">
           {cmd.shortcut}
         </span>
@@ -277,12 +395,60 @@ function SlashCommandMenuItem({
   );
 }
 
-export function getFilteredSlashCommands(query: string): SlashCommand[] {
+export type SlashCommandContext = {
+  // Page d'accueil = aucune conversation en cours
+  isHome?: boolean;
+  // Plans gratuits : /agents masquée
+  isFree?: boolean;
+};
+
+export function customCommandsToSlashCommands(
+  commands: CustomCommand[]
+): SlashCommand[] {
+  return commands
+    .filter((c) => c.enabled)
+    .map((c) => ({
+      action: "custom" as const,
+      custom: c,
+      description:
+        c.description ||
+        `Commande personnalisée (${c.actionType})${
+          c.usageCount > 0 ? ` — ${c.usageCount} usage(s)` : ""
+        }`,
+      icon: (
+        <span
+          className="block size-2.5 rounded-full"
+          style={{ backgroundColor: c.color ?? "#6366f1" }}
+        />
+      ),
+      name: c.trigger,
+    }));
+}
+
+export function getFilteredSlashCommands(
+  query: string,
+  context?: SlashCommandContext,
+  customCommands: SlashCommand[] = []
+): SlashCommand[] {
+  // Commandes personnalisées en tête de liste
+  let list = [...customCommands, ...slashCommands];
+  if (context?.isHome) {
+    // Pas de conversation à exporter sur l'accueil
+    list = list.filter((cmd) => cmd.action !== "export");
+  } else if (context?.isHome === false) {
+    // Conversation commencée : /agents masquée
+    list = list.filter((cmd) => cmd.action !== "agents");
+  }
+  if (context?.isFree) {
+    list = list.filter(
+      (cmd) => cmd.action !== "agents" && cmd.action !== "custom"
+    );
+  }
   const q = query.toLowerCase().trim();
   if (!q) {
-    return slashCommands;
+    return list;
   }
-  return slashCommands.filter((cmd) => {
+  return list.filter((cmd) => {
     const name = cmd.name.toLowerCase();
     if (name.startsWith(q) || name.includes(q)) {
       return true;
@@ -306,9 +472,12 @@ export function SlashCommandMenu({
   onSelect,
   onClose: _onClose,
   selectedIndex,
+  supportsTools = true,
+  context,
+  customCommands = [],
 }: SlashCommandMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
-  const filtered = getFilteredSlashCommands(query);
+  const filtered = getFilteredSlashCommands(query, context, customCommands);
 
   useEffect(() => {
     const selected = menuRef.current?.querySelector("[data-selected='true']");
@@ -323,7 +492,7 @@ export function SlashCommandMenu({
 
   return (
     <div
-      className="absolute bottom-full left-0 right-0 z-50 mb-3 overflow-hidden rounded-2xl border border-border/80 bg-popover text-popover-foreground shadow-2xl ring-1 ring-black/10 dark:ring-white/10"
+      className="absolute bottom-full left-0 right-0 z-50 mb-3 overflow-hidden rounded-2xl border border-border/80 bg-white dark:bg-zinc-900 text-foreground shadow-2xl ring-1 ring-black/10 dark:ring-white/10"
       ref={menuRef}
     >
       <div className="px-4 py-2.5 bg-muted/40 border-b border-border/40 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground flex items-center justify-between">
@@ -340,6 +509,7 @@ export function SlashCommandMenu({
             key={cmd.name}
             onSelect={onSelect}
             selectedIndex={selectedIndex}
+            supportsTools={supportsTools}
           />
         ))}
       </div>

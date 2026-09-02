@@ -1,5 +1,4 @@
 import type { MaiUser } from "@/lib/auth/session";
-import { MAI_UPGRADE_URL } from "@/lib/constants";
 
 export const PAID_TIERS = ["plus", "pro", "max"] as const;
 export type PaidTier = (typeof PAID_TIERS)[number];
@@ -26,7 +25,10 @@ export function getPaidTierRank(tier?: string | null): number {
   return 0;
 }
 
-export function tierAtLeast(tier: string | null | undefined, minimum: PaidTier): boolean {
+export function tierAtLeast(
+  tier: string | null | undefined,
+  minimum: PaidTier
+): boolean {
   const min = getPaidTierRank(minimum);
   const cur = getPaidTierRank(tier);
   return cur >= min;
@@ -34,6 +36,20 @@ export function tierAtLeast(tier: string | null | undefined, minimum: PaidTier):
 
 export function isSkillMcpEligible(tier?: string | null): boolean {
   return isPaidTier(tier);
+}
+
+export function memoryLimitForTier(tier?: string | null): number {
+  const t = normalizeTier(tier);
+  if (t === "plus") {
+    return 75;
+  }
+  if (t === "pro") {
+    return 100;
+  }
+  if (t === "max") {
+    return 150;
+  }
+  return 50;
 }
 
 export type PlanGuardResult =
@@ -52,7 +68,7 @@ export function planGuardResponse(guard: PlanGuardResult): Response | null {
   }
   if (guard.reason === "unauthorized") {
     return new Response(
-      JSON.stringify({ error: "unauthorized", code: "auth_required" }),
+      JSON.stringify({ code: "auth_required", error: "unauthorized" }),
       { headers: { "Content-Type": "application/json" }, status: 401 }
     );
   }

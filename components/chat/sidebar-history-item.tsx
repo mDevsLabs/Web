@@ -41,6 +41,8 @@ import {
 } from "./icons";
 import { ProjectIcon } from "./project-icon";
 import { getChatHistoryPaginationKey } from "./sidebar-history";
+import { ChatAgentIcon } from "./chat-agent-icon";
+import useSWR from "swr";
 
 const PureChatItem = ({
   chat,
@@ -49,7 +51,12 @@ const PureChatItem = ({
   setOpenMobile,
   projects,
 }: {
-  chat: Chat;
+  chat: Chat & {
+    agentIcon?: string | null;
+    agentEmoji?: string | null;
+    agentColor?: string | null;
+    agentName?: string | null;
+  };
   isActive: boolean;
   onDelete: (chatId: string) => void;
   setOpenMobile: (open: boolean) => void;
@@ -192,6 +199,13 @@ const PureChatItem = ({
     );
   }
 
+  const { data: userPref } = useSWR<{ showAgentChatIcons?: boolean }>(
+    "/api/user/preferences",
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 60_000 }
+  );
+  const showIcon = userPref?.showAgentChatIcons ?? true;
+
   return (
     <SidebarMenuItem>
       <SidebarMenuButton
@@ -199,7 +213,19 @@ const PureChatItem = ({
         className="h-8 rounded-none text-[13px] text-sidebar-foreground/50 transition-all duration-150 hover:bg-transparent hover:text-sidebar-foreground data-active:bg-transparent data-active:font-normal data-active:text-sidebar-foreground/50 data-[active=true]:text-sidebar-foreground data-[active=true]:font-medium data-[active=true]:border-b data-[active=true]:border-dashed data-[active=true]:border-sidebar-foreground/50"
         isActive={isActive}
       >
-        <Link href={`/chat/${chat.id}`} onClick={closeMobile}>
+        <Link
+          className="flex items-center gap-2 overflow-hidden w-full"
+          href={`/chat/${chat.id}`}
+          onClick={closeMobile}
+        >
+          {showIcon && (
+            <ChatAgentIcon
+              agentColor={chat.agentColor}
+              agentEmoji={chat.agentEmoji}
+              agentIcon={chat.agentIcon}
+              size={14}
+            />
+          )}
           <span className="truncate">{chat.title}</span>
         </Link>
       </SidebarMenuButton>
@@ -208,7 +234,7 @@ const PureChatItem = ({
         <DropdownMenuTrigger asChild>
           <SidebarMenuAction
             className="mr-0.5 rounded-md text-sidebar-foreground/50 ring-0 transition-colors duration-150 focus-visible:ring-0 hover:text-sidebar-foreground data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-            showOnHover={!isActive}
+            showOnHover={false}
           >
             <MoreHorizontalIcon />
             <span className="sr-only">Plus d'options</span>
@@ -341,9 +367,13 @@ export const ChatItem = memo(PureChatItem, (prevProps, nextProps) => {
   if ((prevProps.chat as any).pinned !== (nextProps.chat as any).pinned) {
     return false;
   }
-  if (
-    (prevProps.chat as any).isArchived !== (nextProps.chat as any).isArchived
-  ) {
+  if ((prevProps.chat as any).agentId !== (nextProps.chat as any).agentId) {
+    return false;
+  }
+  if ((prevProps.chat as any).agentIcon !== (nextProps.chat as any).agentIcon) {
+    return false;
+  }
+  if ((prevProps.chat as any).agentColor !== (nextProps.chat as any).agentColor) {
     return false;
   }
   if (prevProps.projects !== nextProps.projects) {

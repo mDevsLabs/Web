@@ -35,7 +35,7 @@ export default function ArchivedPage() {
 
   const query = search.trim()
     ? `/api/history?isArchived=true&limit=50&search=${encodeURIComponent(search.trim())}`
-    : `/api/history?isArchived=true&limit=50`;
+    : "/api/history?isArchived=true&limit=50";
 
   const { data, isLoading, mutate } = useSWR<{ chats: ArchivedChat[] }>(
     query,
@@ -55,21 +55,27 @@ export default function ArchivedPage() {
       if (res.ok) {
         toast.success("Conversation désarchivée");
         mutate();
-      } else toast.error("Erreur désarchivage");
+      } else {
+        toast.error("Erreur désarchivage");
+      }
     },
     [mutate]
   );
 
   const handleDelete = useCallback(
     async (id: string) => {
-      if (!confirm("Supprimer définitivement cette conversation archivée ?")) return;
+      if (!confirm("Supprimer définitivement cette conversation archivée ?")) {
+        return;
+      }
       setLoadingId(id);
       const res = await fetch(`/api/chat?id=${id}`, { method: "DELETE" });
       setLoadingId(null);
       if (res.ok) {
         toast.success("Supprimée");
         mutate();
-      } else toast.error("Erreur suppression");
+      } else {
+        toast.error("Erreur suppression");
+      }
     },
     [mutate]
   );
@@ -77,7 +83,7 @@ export default function ArchivedPage() {
   const handleCopyId = useCallback(async (id: string) => {
     try {
       await navigator.clipboard.writeText(id);
-      toast.success("ID copié : " + id);
+      toast.success(`ID copié : ${id}`);
     } catch {
       toast.error("Impossible de copier");
     }
@@ -101,7 +107,9 @@ export default function ArchivedPage() {
         toast.success("Renommée");
         setEditingId(null);
         mutate();
-      } else toast.error("Erreur renommage");
+      } else {
+        toast.error("Erreur renommage");
+      }
     },
     [editValue, mutate]
   );
@@ -132,9 +140,9 @@ export default function ArchivedPage() {
             <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
             <Input
               className="pl-9 h-9 rounded-xl border-border/60 bg-muted/20 text-sm"
+              onChange={(e) => setSearch(e.target.value)}
               placeholder="Rechercher dans les archivés..."
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
             />
           </div>
           <span className="text-xs text-muted-foreground hidden sm:inline">
@@ -160,8 +168,8 @@ export default function ArchivedPage() {
               conversation pour la retrouver ici.
             </p>
             <Link
-              href="/"
               className="mt-4 inline-flex items-center justify-center rounded-xl bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:opacity-90"
+              href="/"
             >
               Nouvelle discussion
             </Link>
@@ -170,8 +178,8 @@ export default function ArchivedPage() {
           <div className="grid grid-cols-1 gap-2">
             {chats.map((c) => (
               <div
-                key={c.id}
                 className="group flex items-center gap-3 p-3 rounded-2xl border border-border/60 bg-card/60 hover:bg-card hover:shadow-sm transition-all"
+                key={c.id}
               >
                 <div className="flex-1 min-w-0">
                   {editingId === c.id ? (
@@ -179,27 +187,31 @@ export default function ArchivedPage() {
                       <Input
                         autoFocus
                         className="h-8 text-sm"
-                        value={editValue}
+                        maxLength={100}
                         onChange={(e) => setEditValue(e.target.value)}
                         onKeyDown={(e) => {
-                          if (e.key === "Enter") handleRename(c.id);
-                          if (e.key === "Escape") setEditingId(null);
+                          if (e.key === "Enter") {
+                            handleRename(c.id);
+                          }
+                          if (e.key === "Escape") {
+                            setEditingId(null);
+                          }
                         }}
-                        maxLength={100}
+                        value={editValue}
                       />
                       <Button
-                        size="sm"
                         className="h-8 px-3"
-                        onClick={() => handleRename(c.id)}
                         disabled={loadingId === c.id}
+                        onClick={() => handleRename(c.id)}
+                        size="sm"
                       >
                         OK
                       </Button>
                       <Button
-                        size="sm"
-                        variant="ghost"
                         className="h-8"
                         onClick={() => setEditingId(null)}
+                        size="sm"
+                        variant="ghost"
                       >
                         Annuler
                       </Button>
@@ -207,8 +219,8 @@ export default function ArchivedPage() {
                   ) : (
                     <>
                       <Link
-                        href={`/chat/${c.id}`}
                         className="block truncate text-sm font-semibold text-foreground hover:text-primary"
+                        href={`/chat/${c.id}`}
                       >
                         {c.title || "Sans titre"}
                       </Link>
@@ -234,33 +246,33 @@ export default function ArchivedPage() {
 
                 <div className="flex items-center gap-1 shrink-0">
                   <Button
-                    size="icon-sm"
-                    variant="ghost"
                     className="size-8 rounded-lg"
                     onClick={() => handleCopyId(c.id)}
+                    size="icon-sm"
                     title="Copier l'ID"
+                    variant="ghost"
                   >
                     <CopyIcon className="size-4" />
                   </Button>
                   <Button
-                    size="icon-sm"
-                    variant="ghost"
                     className="size-8 rounded-lg"
                     onClick={() => {
                       setEditingId(c.id);
                       setEditValue(c.title);
                     }}
+                    size="icon-sm"
                     title="Renommer"
+                    variant="ghost"
                   >
                     <Edit2Icon className="size-4" />
                   </Button>
                   <Button
-                    size="icon-sm"
-                    variant="ghost"
                     className="size-8 rounded-lg"
-                    onClick={() => handleUnarchive(c.id)}
                     disabled={loadingId === c.id}
+                    onClick={() => handleUnarchive(c.id)}
+                    size="icon-sm"
                     title="Désarchiver"
+                    variant="ghost"
                   >
                     {loadingId === c.id ? (
                       <Loader2Icon className="size-4 animate-spin" />
@@ -269,11 +281,11 @@ export default function ArchivedPage() {
                     )}
                   </Button>
                   <Button
-                    size="icon-sm"
-                    variant="ghost"
                     className="size-8 rounded-lg text-destructive hover:bg-destructive/10 hover:text-destructive"
                     onClick={() => handleDelete(c.id)}
+                    size="icon-sm"
                     title="Supprimer"
+                    variant="ghost"
                   >
                     <TrashIcon className="size-4" />
                   </Button>

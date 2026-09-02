@@ -11,7 +11,9 @@ import { ChatbotError } from "@/lib/errors";
 
 export async function GET(request: Request) {
   const user = await getMaiUser();
-  if (!user) return new ChatbotError("unauthorized:chat").toResponse();
+  if (!user) {
+    return new ChatbotError("unauthorized:chat").toResponse();
+  }
   const userId = user.id || user.email;
   const { searchParams } = new URL(request.url);
   const limit = Math.min(
@@ -35,9 +37,17 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   const user = await getMaiUser();
-  if (!user) return new ChatbotError("unauthorized:chat").toResponse();
+  if (!user) {
+    return new ChatbotError("unauthorized:chat").toResponse();
+  }
   const body = await request.json().catch(() => ({}));
-  const { type, title, body: notifBody, link, broadcast } = body as {
+  const {
+    type,
+    title,
+    body: notifBody,
+    link,
+    broadcast,
+  } = body as {
     type?: string;
     title?: string;
     body?: string;
@@ -90,7 +100,9 @@ export async function POST(request: Request) {
 
 export async function PATCH(request: Request) {
   const user = await getMaiUser();
-  if (!user) return new ChatbotError("unauthorized:chat").toResponse();
+  if (!user) {
+    return new ChatbotError("unauthorized:chat").toResponse();
+  }
   const userId = user.id || user.email;
   const body = await request.json().catch(() => ({}));
   if (body.action === "markAllRead") {
@@ -102,29 +114,42 @@ export async function PATCH(request: Request) {
 
 export async function DELETE(request: Request) {
   const user = await getMaiUser();
-  if (!user) return new ChatbotError("unauthorized:chat").toResponse();
+  if (!user) {
+    return new ChatbotError("unauthorized:chat").toResponse();
+  }
   const userId = user.id || user.email;
-  // delete all read? For now not implemented
   const { searchParams } = new URL(request.url);
   const clearRead = searchParams.get("clearRead") === "true";
+  const all = searchParams.get("all") === "true";
+
+  if (all) {
+    const { deleteAllNotifications } = await import("@/lib/db/queries");
+    await deleteAllNotifications(userId);
+    return NextResponse.json({ success: true });
+  }
+
   if (clearRead) {
-    const { getDb } = await import("@/lib/db/queries");
-    // use raw? simpler via queries
-    const { notification } = await import("@/lib/db/schema");
-    const { eq, and } = await import("drizzle-orm");
-    // dynamic import getDb not exported? use dbReady via hack - do direct sql via queries
-    const { getNotificationsByUserId } = await import("@/lib/db/queries");
-    // for simplicity, iterate
+    const { getNotificationsByUserId, deleteNotification } = await import("@/lib/db/queries");
     const notifs = await getNotificationsByUserId({
       limit: 50,
       userId,
     });
     const toDelete = notifs.filter((n) => n.isRead);
-    const { deleteNotification } = await import("@/lib/db/queries");
     for (const n of toDelete) {
       await deleteNotification({ id: n.id, userId });
     }
     return NextResponse.json({ deleted: toDelete.length });
   }
+
+  // Also check if body has action: 'deleteAll'
+  try {
+    const body = await request.json();
+    if (body?.action === "deleteAll") {
+      const { deleteAllNotifications } = await import("@/lib/db/queries");
+      await deleteAllNotifications(userId);
+      return NextResponse.json({ success: true });
+    }
+  } catch {}
+
   return NextResponse.json({ error: "invalid" }, { status: 400 });
 }

@@ -1,10 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
 import { XIcon } from "lucide-react";
-import { ONBOARDING_STEPS } from "@/lib/onboarding/steps";
+import { usePathname, useRouter } from "next/navigation";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useOnboarding } from "@/hooks/use-onboarding";
+import { ONBOARDING_STEPS } from "@/lib/onboarding/steps";
 import { cn } from "@/lib/utils";
 
 type Rect = { top: number; left: number; width: number; height: number };
@@ -39,7 +39,7 @@ export function OnboardingTutorial() {
       return;
     }
     const r = el.getBoundingClientRect();
-    setRect({ top: r.top, left: r.left, width: r.width, height: r.height });
+    setRect({ height: r.height, left: r.left, top: r.top, width: r.width });
   }, [current]);
 
   // Navigue vers la page de l'étape si nécessaire, puis mesure la cible.
@@ -98,8 +98,8 @@ export function OnboardingTutorial() {
       window.innerWidth - tooltipWidth - margin
     );
 
-    setTooltipPos({ top, left });
-  }, [rect, step]);
+    setTooltipPos({ left, top });
+  }, [rect]);
 
   if (!active || !current) {
     return null;
@@ -119,11 +119,11 @@ export function OnboardingTutorial() {
         <div
           className="pointer-events-none fixed rounded-xl ring-2 ring-primary ring-offset-2 ring-offset-background transition-all duration-300"
           style={{
-            top: rect.top - 4,
-            left: rect.left - 4,
-            width: rect.width + 8,
-            height: rect.height + 8,
             boxShadow: "0 0 0 9999px rgba(0,0,0,0.55)",
+            height: rect.height + 8,
+            left: rect.left - 4,
+            top: rect.top - 4,
+            width: rect.width + 8,
           }}
         />
       ) : (
@@ -131,12 +131,16 @@ export function OnboardingTutorial() {
       )}
 
       <div
-        ref={tooltipRef}
         className={cn(
           "fixed z-[70] w-[330px] max-w-[calc(100vw-24px)] rounded-2xl border border-border/60 bg-card p-4 text-card-foreground shadow-[var(--shadow-float)]",
           !rect && "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
         )}
-        style={tooltipPos ? { top: tooltipPos.top, left: tooltipPos.left } : undefined}
+        ref={tooltipRef}
+        style={
+          tooltipPos
+            ? { left: tooltipPos.left, top: tooltipPos.top }
+            : undefined
+        }
       >
         <button
           aria-label="Terminer le tutoriel"

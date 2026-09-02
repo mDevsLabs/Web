@@ -1,4 +1,4 @@
-import { resetMaiUsage } from './admin';
+import { resetMaiUsage } from "./admin";
 
 resetMaiUsage(true).catch((err) => {
   console.error("❌ Erreur inattendue :", err);

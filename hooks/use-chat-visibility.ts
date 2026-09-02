@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+import { toast } from "sonner";
 import useSWR, { useSWRConfig } from "swr";
 import { unstable_serialize } from "swr/infinite";
 import { updateChatVisibility } from "@/app/(chat)/actions";
@@ -48,6 +49,10 @@ export function useChatVisibility({
     updateChatVisibility({
       chatId,
       visibility: updatedVisibilityType,
+    }).catch(() => {
+      setLocalVisibility(initialVisibilityType);
+      mutate(unstable_serialize(getChatHistoryPaginationKey));
+      toast.error("Impossible de changer la visibilité de la conversation.");
     });
   };
 

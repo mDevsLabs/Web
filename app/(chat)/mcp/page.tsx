@@ -1,5 +1,6 @@
-import { UpgradeDialog } from "@/components/common/upgrade-dialog";
+import { Star } from "lucide-react";
 import { PageBackButton } from "@/components/chat/page-back-button";
+import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import { isPaidTier } from "@/lib/auth/plan";
 import { getMaiUser } from "@/lib/auth/session";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
@@ -33,7 +34,7 @@ export default async function McpPage() {
 
         <main className="flex-1 flex flex-col items-center justify-center px-4 py-12 max-w-2xl mx-auto text-center gap-6">
           <div className="size-16 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center text-white shadow-md">
-            <span className="text-2xl font-bold">★</span>
+            <Star className="size-8" />
           </div>
           <div>
             <h2 className="text-2xl font-bold mb-2">
@@ -41,13 +42,14 @@ export default async function McpPage() {
             </h2>
             <p className="text-sm text-muted-foreground">
               Connectez vos bases de données, APIs et outils locaux directement
-              à l'IA avec contrôle strict des autorisations. Passez à un
-              forfait Plus, Pro ou Max.
+              à l'IA avec contrôle strict des autorisations. Passez à un forfait
+              Plus, Pro ou Max.
             </p>
           </div>
           <a
             className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:opacity-90"
             href={MAI_UPGRADE_URL}
+            rel="noopener"
             target="_blank"
           >
             Mettre à niveau mon forfait

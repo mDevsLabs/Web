@@ -5,9 +5,9 @@ import {
   artifactKinds,
   documentHandlersByArtifactKind,
 } from "@/lib/artifacts/server";
+import { saveDocument } from "@/lib/db/queries";
 import type { ChatMessage } from "@/lib/types";
 import { generateUUID } from "@/lib/utils";
-import { saveDocument } from "@/lib/db/queries";
 
 type CreateDocumentProps = {
   session: Session;
@@ -126,6 +126,14 @@ export const createDocument = ({
       };
     },
     inputSchema: z.object({
+      content: z
+        .string()
+        .min(1)
+        .max(200_000)
+        .optional()
+        .describe(
+          "OPTIONAL. If you already wrote the full text/code/content for this artifact in your response, provide it here directly. The document will be created with this content immediately instead of asking the model to regenerate it."
+        ),
       kind: z
         .enum(artifactKinds)
         .describe(
@@ -137,14 +145,6 @@ export const createDocument = ({
         .max(200)
         .describe(
           "The title of the artifact (1-200 characters). Be concise and descriptive."
-        ),
-      content: z
-        .string()
-        .min(1)
-        .max(200_000)
-        .optional()
-        .describe(
-          "OPTIONAL. If you already wrote the full text/code/content for this artifact in your response, provide it here directly. The document will be created with this content immediately instead of asking the model to regenerate it."
         ),
     }),
   });

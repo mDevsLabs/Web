@@ -1,4 +1,8 @@
+"use client";
+
+import { EyeIcon, EyeOffIcon } from "lucide-react";
 import Form from "next/form";
+import { useState } from "react";
 
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
@@ -14,6 +18,8 @@ export function AuthForm({
   children: React.ReactNode;
   defaultEmail?: string;
 }) {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <Form action={action} className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
@@ -37,14 +43,33 @@ export function AuthForm({
         <Label className="font-normal text-muted-foreground" htmlFor="password">
           Password
         </Label>
-        <Input
-          className="h-10 rounded-lg border-border/50 bg-muted/50 text-sm transition-colors focus:border-foreground/20 focus:bg-muted"
-          id="password"
-          name="password"
-          placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
-          required
-          type="password"
-        />
+        <div className="relative">
+          <Input
+            className="h-10 pr-10 rounded-lg border-border/50 bg-muted/50 text-sm transition-colors focus:border-foreground/20 focus:bg-muted"
+            id="password"
+            name="password"
+            placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
+            required
+            type={showPassword ? "text" : "password"}
+          />
+          <button
+            aria-label={
+              showPassword
+                ? "Masquer le mot de passe"
+                : "Afficher le mot de passe"
+            }
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground transition-colors cursor-pointer rounded"
+            onClick={() => setShowPassword((prev) => !prev)}
+            tabIndex={-1}
+            type="button"
+          >
+            {showPassword ? (
+              <EyeOffIcon className="size-4" />
+            ) : (
+              <EyeIcon className="size-4" />
+            )}
+          </button>
+        </div>
       </div>
 
       {children}

@@ -2,11 +2,22 @@ import { type NextRequest, NextResponse } from "next/server";
 import { getMaiSessionToken } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
 
+const settingsCache = new Map<string, { data: any; expiresAt: number }>();
+const SETTINGS_CACHE_TTL_MS = 180_000; // 3 minutes de cache
+
 // GET /api/settings : récupère le profil utilisateur et la consommation IA/images/cloud
-export async function GET() {
+export async function GET(req: NextRequest) {
   const token = await getMaiSessionToken();
   if (!token) {
     return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+  }
+
+  const url = new URL(req.url);
+  const force = url.searchParams.get("force") === "true";
+
+  const cached = settingsCache.get(token);
+  if (cached && Date.now() < cached.expiresAt && !force) {
+    return NextResponse.json(cached.data);
   }
 
   try {
@@ -35,8 +46,7 @@ export async function GET() {
     const speechData = speechRes.ok ? await speechRes.json() : null;
 
     const userTier = usageData?.tier || "Free";
-
-    return NextResponse.json({
+    const result = {
       aiUsage: {
         limit: Number(usageData?.limit || 2_000_000),
         resetAt: usageData?.resetAt,
@@ -53,9 +63,6 @@ export async function GET() {
             tier: cloudData.tier || userTier,
           }
         : null,
-      // Passer les valeurs brutes : la normalisation/fallback par tier est
-      // appliquée côté client (resolveImagesUsage), de manière identique sur
-      // toutes les vues
       imagesUsage: imagesData
         ? {
             dailyLimit: imagesData.dailyLimit ?? null,
@@ -89,7 +96,14 @@ export async function GET() {
               tokensUsed: Number(usageData?.speechTokensUsed || 0),
             },
       user: usageData,
+    };
+
+    settingsCache.set(token, {
+      data: result,
+      expiresAt: Date.now() + SETTINGS_CACHE_TTL_MS,
     });
+
+    return NextResponse.json(result);
   } catch (error) {
     console.error("Erreur Settings GET:", error);
     return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
@@ -102,6 +116,9 @@ export async function POST(req: NextRequest) {
   if (!token) {
     return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
   }
+
+  // Invalider le cache lors d'une mutation
+  settingsCache.delete(token);
 
   const contentType = req.headers.get("content-type") || "";
 

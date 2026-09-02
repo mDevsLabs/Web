@@ -96,7 +96,9 @@ export async function deleteTrailingMessages({ id }: { id: string }) {
   }
 
   const chat = await getChatById({ id: message.chatId });
-  if (!chat || chat.userId !== session.user.id) {
+  // chat.userId peut contenir user.id ou user.email selon la création
+  const ownerVariants = [session.user.id, session.user.email].filter(Boolean);
+  if (!chat || !ownerVariants.includes(chat.userId)) {
     throw new Error("Unauthorized");
   }
 
@@ -119,7 +121,9 @@ export async function updateChatVisibility({
   }
 
   const chat = await getChatById({ id: chatId });
-  if (!chat || chat.userId !== session.user.id) {
+  // chat.userId peut contenir user.id ou user.email selon la création
+  const ownerVariants = [session.user.id, session.user.email].filter(Boolean);
+  if (!chat || !ownerVariants.includes(chat.userId)) {
     throw new Error("Unauthorized");
   }
 

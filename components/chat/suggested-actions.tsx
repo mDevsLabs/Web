@@ -79,7 +79,7 @@ function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
           <span>Suggestions</span>
         </div>
         <button
-          className="flex items-center gap-1 text-[11px] text-muted-foreground/60 hover:text-foreground transition-colors p-1 rounded-md hover:bg-muted/40 cursor-pointer"
+          className="flex items-center gap-1 text-[11px] text-muted-foreground/60 hover:text-foreground transition-colors p-1.5 -mr-1 rounded-md hover:bg-muted/40 cursor-pointer min-h-[32px]"
           onClick={handleRefresh}
           title="Nouvelles suggestions"
           type="button"
@@ -91,12 +91,12 @@ function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
         </button>
       </div>
 
-      <div className="flex w-full gap-2.5 overflow-x-auto pb-1 sm:grid sm:grid-cols-2 sm:overflow-visible no-scrollbar">
+      <div className="flex w-full gap-2.5 overflow-x-auto pb-2 sm:grid sm:grid-cols-2 sm:overflow-visible no-scrollbar snap-x snap-mandatory sm:snap-none scroll-px-2">
         <AnimatePresence mode="popLayout">
           {displayedList.map((suggestedAction, index) => (
             <motion.div
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              className="min-w-[220px] shrink-0 sm:min-w-0 sm:shrink"
+              className="min-w-[200px] max-w-[280px] shrink-0 snap-start sm:min-w-0 sm:max-w-none sm:shrink"
               exit={{ opacity: 0, scale: 0.95, y: 8 }}
               initial={{ opacity: 0, scale: 0.98, y: 8 }}
               key={suggestedAction}
@@ -107,7 +107,7 @@ function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
               }}
             >
               <Suggestion
-                className="h-full w-full whitespace-nowrap rounded-xl border border-border/40 bg-card/40 backdrop-blur-xs px-4 py-3 text-left text-[12px] leading-relaxed text-muted-foreground transition-all duration-200 sm:whitespace-normal sm:p-3.5 sm:text-[13px] hover:-translate-y-0.5 hover:bg-card/80 hover:text-foreground hover:border-border/80 hover:shadow-[var(--shadow-card)]"
+                className="h-full w-full min-h-[56px] flex items-center whitespace-normal rounded-xl border border-border/40 bg-card/50 backdrop-blur-xs px-3.5 py-3 text-left text-[12.5px] leading-snug text-muted-foreground transition-all duration-200 sm:min-h-0 sm:p-3.5 sm:text-[13px] hover:-translate-y-0.5 hover:bg-card/80 hover:text-foreground hover:border-border/80 hover:shadow-[var(--shadow-card)] active:scale-[0.98]"
                 onClick={handleSuggestionClick}
                 suggestion={suggestedAction}
               >

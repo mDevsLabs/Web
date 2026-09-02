@@ -131,21 +131,21 @@ export function useSettings(swrConfig?: SWRConfiguration) {
   return useSWR<SettingsPayload>("/api/settings", fetcher, swrConfig);
 }
 
-// Variante pratique dédiée au quota d'images (polling léger activé).
+// Variante pratique dédiée au quota d'images.
 export function useImagesUsage() {
   const { data, error, isLoading, mutate } = useSettings({
-    refreshInterval: 30_000,
-    revalidateOnFocus: true,
+    dedupingInterval: 60_000,
+    revalidateOnFocus: false,
   });
   const usage = resolveImagesUsage(data);
   return { error, isLoading, mutate, usage };
 }
 
-// Variante pratique dédiée au quota audio/synthèse vocale (polling léger activé).
+// Variante pratique dédiée au quota audio/synthèse vocale.
 export function useAudioUsage() {
   const { data, error, isLoading, mutate } = useSettings({
-    refreshInterval: 30_000,
-    revalidateOnFocus: true,
+    dedupingInterval: 60_000,
+    revalidateOnFocus: false,
   });
   const usage = resolveSpeechUsage(data);
   return { error, isLoading, mutate, usage };

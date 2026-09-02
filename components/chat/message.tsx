@@ -1,8 +1,15 @@
 "use client";
 import type { UseChatHelpers } from "@ai-sdk/react";
-import { useCallback, useState } from "react";
-
-import { MicIcon } from "lucide-react";
+import {
+  BrainIcon,
+  CheckCircle2Icon,
+  CpuIcon,
+  ExternalLinkIcon,
+  GlobeIcon,
+  MicIcon,
+  QrCodeIcon,
+} from "lucide-react";
+import { useCallback, useMemo, useState } from "react";
 
 import { toast } from "sonner";
 import type { Vote } from "@/lib/db/schema";
@@ -23,6 +30,7 @@ import {
   ToolInput,
   ToolOutput,
 } from "../ai-elements/tool";
+import { AskUserCard } from "./ask-user-card";
 import { CodeExecution } from "./code-execution";
 import { useDataStream } from "./data-stream-provider";
 import { DocumentToolResult } from "./document";
@@ -31,11 +39,12 @@ import { CopyIcon, DownloadIcon, EyeIcon, SparklesIcon } from "./icons";
 import { MessageActions } from "./message-actions";
 import { MessageReasoning } from "./message-reasoning";
 import { PreviewAttachment } from "./preview-attachment";
+import { QuizCard } from "./quiz-card";
 import { Weather } from "./weather";
 
 function WaitingText() {
   const { waitingStatus } = useDataStream();
-  const waitingText = waitingStatus?.message ?? "Waiting...";
+  const waitingText = waitingStatus?.message ?? "En attente...";
 
   return (
     <div className="flex min-h-[calc(13px*1.65)] min-w-0 items-center text-[13px] leading-[1.65]">
@@ -61,7 +70,7 @@ function ToolApprovalActions({
     addToolApprovalResponse({
       approved: false,
       id: approvalId,
-      reason: "User denied weather lookup",
+      reason: "L'utilisateur a refusé la recherche météo",
     });
   }, [addToolApprovalResponse, approvalId]);
 
@@ -79,14 +88,14 @@ function ToolApprovalActions({
         onClick={handleDeny}
         type="button"
       >
-        Deny
+        Refuser
       </button>
       <button
         className="rounded-md bg-primary px-3 py-1.5 text-primary-foreground text-sm transition-colors hover:bg-primary/90"
         onClick={handleAllow}
         type="button"
       >
-        Allow
+        Autoriser
       </button>
     </div>
   );
@@ -209,21 +218,29 @@ function HighlightedText({
   query?: string;
   isCurrent?: boolean;
 }) {
-  if (!query || !query.trim()) return <>{sanitizeText(text)}</>;
+  if (!query?.trim()) {
+    return <>{sanitizeText(text)}</>;
+  }
   const q = query.trim();
-  if (q.length === 0) return <>{sanitizeText(text)}</>;
+  if (q.length === 0) {
+    return <>{sanitizeText(text)}</>;
+  }
   const regex = new RegExp(`(${escapeRegExp(q)})`, "gi");
   const parts = text.split(regex);
-  if (parts.length <= 1) return <>{sanitizeText(text)}</>;
+  if (parts.length <= 1) {
+    return <>{sanitizeText(text)}</>;
+  }
   return (
     <>
       {parts.map((part, i) =>
         part.toLowerCase() === q.toLowerCase() ? (
           <mark
-            key={i}
             className={
-              isCurrent ? "bg-yellow-400 text-black rounded px-0.5" : "bg-yellow-200 dark:bg-yellow-800 rounded px-0.5"
+              isCurrent
+                ? "bg-yellow-400 text-black rounded px-0.5"
+                : "bg-yellow-200 dark:bg-yellow-800 rounded px-0.5"
             }
+            key={i}
           >
             {part}
           </mark>
@@ -242,7 +259,7 @@ const PurePreviewMessage = ({
   vote,
   isLoading,
   setMessages: _setMessages,
-  regenerate: _regenerate,
+  regenerate,
   isReadonly,
   requiresScrollPadding: _requiresScrollPadding,
   onEdit,
@@ -313,6 +330,29 @@ const PurePreviewMessage = ({
     { isStreaming: false, rendered: false, text: "" }
   ) ?? { isStreaming: false, rendered: false, text: "" };
 
+  // Fin prématurée : le stream s'est arrêté juste après l'appel d'un outil,
+  // sans résultat ni continuation (ex. le modèle annonce une recherche puis plus rien).
+  const interruptedAfterToolCall = useMemo(() => {
+    if (!isAssistant || isLoading) {
+      return false;
+    }
+    const parts = message.parts ?? [];
+    const last = parts.at(-1);
+    if (!last) {
+      return false;
+    }
+    const lastType = last.type as string;
+    if (!lastType.startsWith("tool-") && lastType !== "dynamic-tool") {
+      return false;
+    }
+    const state = (last as { state?: string }).state;
+    return (
+      state === "input-available" ||
+      state === "input-streaming" ||
+      state === "approval-responded"
+    );
+  }, [isAssistant, isLoading, message.parts]);
+
   const parts = message.parts?.map((part, index) => {
     const { type } = part;
     const key = `message-${message.id}-part-${index}`;
@@ -335,21 +375,50 @@ const PurePreviewMessage = ({
       const hasSearch = !!searchQuery?.trim();
       return (
         <MessageContent
-          className={cn("text-[13px] leading-[1.65]", {
-            "w-fit max-w-[min(80%,56ch)] overflow-hidden break-words rounded-2xl rounded-br-lg border border-border/30 bg-gradient-to-br from-secondary to-muted px-3.5 py-2 shadow-[var(--shadow-card)]":
+          className={cn("text-[14px] sm:text-[13px] leading-[1.65]", {
+            "w-fit max-w-[85%] sm:max-w-[min(80%,56ch)] overflow-hidden break-words rounded-2xl rounded-br-lg border border-border/30 bg-gradient-to-br from-secondary to-muted dark:from-zinc-800 dark:to-zinc-800/80 px-3.5 py-2 sm:py-2 shadow-[var(--shadow-card)]":
               message.role === "user",
           })}
           data-testid="message-content"
           key={key}
         >
           {hasSearch ? (
-            <div className={cn(isCurrentMatch && "ring-1 ring-yellow-400 rounded")}>
-              <HighlightedText text={part.text} query={searchQuery} isCurrent={isCurrentMatch} />
+            <div
+              className={cn(isCurrentMatch && "ring-1 ring-yellow-400 rounded")}
+            >
+              <HighlightedText
+                isCurrent={isCurrentMatch}
+                query={searchQuery}
+                text={part.text}
+              />
             </div>
           ) : (
             <MessageResponse>{sanitizeText(part.text)}</MessageResponse>
           )}
         </MessageContent>
+      );
+    }
+
+    if ((type as string) === "error") {
+      const errorText =
+        (part as { errorText?: string }).errorText ||
+        "Une erreur est survenue lors de la génération de la réponse.";
+      return (
+        <div
+          className="flex items-start justify-between gap-3 rounded-lg border border-red-200 bg-red-50 p-3 text-[13px] text-red-600 dark:border-red-900 dark:bg-red-950/40 dark:text-red-400"
+          key={key}
+        >
+          <span className="min-w-0 break-words">{errorText}</span>
+          {!isReadonly && (
+            <button
+              className="shrink-0 font-semibold underline underline-offset-2 hover:opacity-80"
+              onClick={() => regenerate()}
+              type="button"
+            >
+              Régénérer
+            </button>
+          )}
+        </div>
       );
     }
 
@@ -378,7 +447,7 @@ const PurePreviewMessage = ({
               <ToolHeader state="output-denied" type="tool-getWeather" />
               <ToolContent>
                 <div className="px-4 py-3 text-muted-foreground text-sm">
-                  Weather lookup was denied.
+                  La recherche météo a été refusée.
                 </div>
               </ToolContent>
             </Tool>
@@ -429,7 +498,7 @@ const PurePreviewMessage = ({
             className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-500 dark:bg-red-950/50"
             key={toolCallId}
           >
-            Error creating document: {String(part.output.error)}
+            Erreur lors de la création du document : {String(part.output.error)}
           </div>
         );
       }
@@ -452,7 +521,8 @@ const PurePreviewMessage = ({
             className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-500 dark:bg-red-950/50"
             key={toolCallId}
           >
-            Error updating document: {String(part.output.error)}
+            Erreur lors de la mise à jour du document :{" "}
+            {String(part.output.error)}
           </div>
         );
       }
@@ -481,7 +551,8 @@ const PurePreviewMessage = ({
             className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-500 dark:bg-red-950/50"
             key={toolCallId}
           >
-            Error editing document: {String(part.output.error)}
+            Erreur lors de la modification du document :{" "}
+            {String(part.output.error)}
           </div>
         );
       }
@@ -545,7 +616,7 @@ const PurePreviewMessage = ({
                 output={
                   "error" in part.output ? (
                     <div className="rounded border p-2 text-red-500">
-                      Error: {String(part.output.error)}
+                      Erreur : {String(part.output.error)}
                     </div>
                   ) : (
                     <DocumentToolResult
@@ -720,6 +791,317 @@ const PurePreviewMessage = ({
       );
     }
 
+    if (type === "tool-webSearch") {
+      const { toolCallId, state } = part;
+
+      if (state === "output-available" && part.output) {
+        if ("error" in part.output) {
+          return (
+            <div
+              className="rounded-xl border border-red-200 bg-red-50 p-3.5 text-sm text-red-600 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-400"
+              key={toolCallId}
+            >
+              Recherche Web : {part.output.error}
+            </div>
+          );
+        }
+        const results = part.output.results || [];
+        return (
+          <div
+            className="w-[min(100%,520px)] overflow-hidden rounded-2xl border border-sky-500/30 bg-card shadow-sm backdrop-blur-xs transition"
+            key={toolCallId}
+          >
+            <div className="flex items-center justify-between gap-2 border-b border-sky-500/20 bg-sky-500/10 px-3.5 py-2.5">
+              <div className="flex items-center gap-2">
+                <span className="flex size-7 items-center justify-center rounded-lg bg-sky-500/20 text-sky-600 dark:text-sky-400">
+                  <GlobeIcon className="size-4" />
+                </span>
+                <span className="font-semibold text-[13px] text-foreground">
+                  Recherche Web
+                </span>
+              </div>
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="rounded-full bg-sky-500/15 px-2 py-0.5 text-[10.5px] font-semibold text-sky-700 dark:text-sky-300">
+                  {results.length} source{results.length > 1 ? "s" : ""}
+                </span>
+                <span className="max-w-[140px] sm:max-w-[200px] truncate text-[11px] font-medium text-muted-foreground">
+                  « {part.output.query} »
+                </span>
+              </div>
+            </div>
+            <ul className="divide-y divide-border/30 max-h-72 overflow-y-auto">
+              {results.map((result: any, idx: number) => (
+                <li className="p-3 hover:bg-muted/30 transition-colors" key={result.url || idx}>
+                  <div className="flex items-start justify-between gap-2">
+                    <a
+                      className="font-semibold text-[13px] text-foreground hover:text-sky-600 dark:hover:text-sky-400 transition-colors line-clamp-1"
+                      href={result.url}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      {result.title}
+                    </a>
+                    <a
+                      aria-label="Ouvrir le lien"
+                      className="text-muted-foreground hover:text-foreground shrink-0 p-0.5"
+                      href={result.url}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <ExternalLinkIcon className="size-3.5" />
+                    </a>
+                  </div>
+                  {result.source && (
+                    <div className="mt-0.5 inline-flex items-center gap-1 rounded bg-muted/60 px-1.5 py-0.2 text-[10.5px] font-medium text-muted-foreground">
+                      <GlobeIcon className="size-2.5" />
+                      <span>{result.source}</span>
+                    </div>
+                  )}
+                  {result.snippet && (
+                    <p className="mt-1 text-[12px] leading-relaxed text-muted-foreground/90 line-clamp-2">
+                      {result.snippet}
+                    </p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      }
+
+      return (
+        <div className="w-[min(100%,450px)]" key={toolCallId}>
+          <Tool className="w-full" defaultOpen={true}>
+            <ToolHeader state={state} type="tool-webSearch" />
+            <ToolContent>
+              {(state === "input-available" || state === "input-streaming") && (
+                <ToolInput input={part.input} />
+              )}
+            </ToolContent>
+          </Tool>
+        </div>
+      );
+    }
+
+    if (type === "tool-memory") {
+      const toolPart = part as any;
+      const { state, toolCallId, input, output } = toolPart;
+      const action = input?.action || output?.action || "add";
+      const isAvailable = state === "output-available";
+      const isError = state === "output-error" || (output && "error" in output);
+
+      return (
+        <div
+          className="w-[min(100%,480px)] overflow-hidden rounded-2xl border border-sky-500/30 bg-card shadow-xs backdrop-blur-xs transition"
+          key={toolCallId || key}
+        >
+          <div className="flex items-center justify-between gap-2 border-b border-sky-500/20 bg-sky-500/10 px-3.5 py-2.5">
+            <div className="flex items-center gap-2">
+              <span className="flex size-7 items-center justify-center rounded-lg bg-sky-500/20 text-sky-600 dark:text-sky-400">
+                <BrainIcon className="size-4" />
+              </span>
+              <span className="font-semibold text-[13px] text-foreground">
+                {action === "add"
+                  ? "💾 Mémorisation utilisateur"
+                  : action === "delete"
+                  ? "🗑️ Oubli de mémoire"
+                  : "🧠 Consultation de la mémoire"}
+              </span>
+            </div>
+            <span
+              className={cn(
+                "rounded-full px-2 py-0.5 text-[10.5px] font-semibold",
+                isError
+                  ? "bg-red-500/15 text-red-600 dark:text-red-400"
+                  : isAvailable
+                  ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
+                  : "bg-sky-500/20 text-sky-600 dark:text-sky-400 animate-pulse"
+              )}
+            >
+              {isError ? "Erreur" : isAvailable ? "Enregistré" : "En cours..."}
+            </span>
+          </div>
+          <div className="p-3 text-[12.5px] space-y-1.5">
+            {action === "add" && (
+              <p className="text-foreground italic bg-muted/40 p-2.5 rounded-xl border border-border/40">
+                « {input?.content || output?.memory?.content || "Enregistrement d'une information..."} »
+              </p>
+            )}
+            {action === "delete" && (
+              <p className="text-muted-foreground">
+                {isAvailable
+                  ? "L'information a été retirée de votre mémoire avec succès."
+                  : "Suppression de l'entrée en mémoire..."}
+              </p>
+            )}
+            {(action === "list" || action === "search") && (
+              <div className="space-y-1.5">
+                <span className="text-xs text-muted-foreground font-medium">
+                  {output?.count !== undefined
+                    ? `${output.count} information(s) trouvée(s) :`
+                    : "Recherche dans la mémoire..."}
+                </span>
+                {output?.memories && output.memories.length > 0 && (
+                  <ul className="divide-y divide-border/30 rounded-lg border border-border/40 bg-muted/20 max-h-36 overflow-y-auto">
+                    {output.memories.map((m: any, idx: number) => (
+                      <li key={m.id || idx} className="p-2 text-[12px] text-foreground">
+                        • {m.content}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
+            {isError && (
+              <div className="text-red-500 text-xs mt-1">
+                {String(output?.error || "Une erreur est survenue lors de l'opération de mémoire.")}
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    if (type.startsWith("tool-mcp_") || (type === "dynamic-tool" && (part as any).toolName?.startsWith("mcp_"))) {
+      const toolPart = part as any;
+      const { state, toolCallId, input, output } = toolPart;
+      const rawName = (toolPart.toolName || type).replace(/^tool-/, "").replace(/^mcp_/, "");
+      const nameParts = rawName.split("_");
+      const serverName = nameParts.length > 1 ? nameParts[0].toUpperCase() : "MCP";
+      const methodName = nameParts.length > 1 ? nameParts.slice(1).join("_") : rawName;
+      const isAvailable = state === "output-available";
+      const isError = state === "output-error" || (output && "error" in output);
+
+      return (
+        <div
+          className="w-[min(100%,480px)] overflow-hidden rounded-2xl border border-purple-500/30 bg-card shadow-xs backdrop-blur-xs transition"
+          key={toolCallId || key}
+        >
+          <div className="flex items-center justify-between gap-2 border-b border-purple-500/20 bg-purple-500/10 px-3.5 py-2.5">
+            <div className="flex items-center gap-2">
+              <span className="flex size-7 items-center justify-center rounded-lg bg-purple-500/20 text-purple-600 dark:text-purple-400">
+                <CpuIcon className="size-4" />
+              </span>
+              <div className="flex items-center gap-1.5">
+                <span className="font-bold text-[10.5px] bg-purple-500/15 text-purple-700 dark:text-purple-300 px-1.5 py-0.5 rounded uppercase tracking-wider">
+                  {serverName}
+                </span>
+                <span className="font-semibold text-[13px] text-foreground">
+                  {methodName}
+                </span>
+              </div>
+            </div>
+            <span
+              className={cn(
+                "rounded-full px-2 py-0.5 text-[10.5px] font-semibold",
+                isError
+                  ? "bg-red-500/15 text-red-600"
+                  : isAvailable
+                  ? "bg-emerald-500/15 text-emerald-600"
+                  : "bg-purple-500/20 text-purple-600 animate-pulse"
+              )}
+            >
+              {isError ? "Erreur" : isAvailable ? "Terminé" : "Exécution..."}
+            </span>
+          </div>
+          <div className="p-3 text-xs space-y-2">
+            {input && Object.keys(input).length > 0 && (
+              <div>
+                <span className="text-[10.5px] font-semibold text-muted-foreground uppercase tracking-wide">
+                  Paramètres
+                </span>
+                <div className="mt-1 rounded-lg bg-muted/40 p-2 overflow-x-auto max-h-28 text-[11.5px] font-mono border border-border/30">
+                  {JSON.stringify(input, null, 2)}
+                </div>
+              </div>
+            )}
+            {isAvailable && output && (
+              <div>
+                <span className="text-[10.5px] font-semibold text-muted-foreground uppercase tracking-wide">
+                  Résultat
+                </span>
+                <div className="mt-1 rounded-lg bg-muted/40 p-2 overflow-x-auto max-h-40 text-[11.5px] font-mono border border-border/30">
+                  {typeof output === "string" ? output : JSON.stringify(output, null, 2)}
+                </div>
+              </div>
+            )}
+            {isError && (
+              <div className="rounded-lg bg-red-500/10 border border-red-500/20 p-2 text-red-600 text-xs">
+                {output?.error || "Erreur lors de l'exécution de l'outil MCP."}
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    if (type === "tool-askUser") {
+      const toolPart = part as any;
+      return (
+        <AskUserCard
+          args={toolPart.input || toolPart.args}
+          key={toolPart.toolCallId ?? key}
+          output={toolPart.output}
+          state={toolPart.state}
+          toolCallId={toolPart.toolCallId}
+        />
+      );
+    }
+
+    if (type === "tool-quizzly") {
+      const toolPart = part as any;
+      return (
+        <QuizCard
+          args={toolPart.input || toolPart.args}
+          key={toolPart.toolCallId ?? key}
+          output={toolPart.output}
+        />
+      );
+    }
+
+    if (type.startsWith("tool-") || type === "dynamic-tool") {
+      const toolPart = part as any;
+      const { state, toolCallId } = toolPart;
+      const approvalId = toolPart.approval?.id;
+
+      return (
+        <Tool
+          className="w-[min(100%,450px)]"
+          defaultOpen={state !== "output-available"}
+          key={toolCallId ?? key}
+        >
+          {type === "dynamic-tool" ? (
+            <ToolHeader
+              state={state}
+              toolName={toolPart.toolName ?? "Outil MCP"}
+              type={type}
+            />
+          ) : (
+            <ToolHeader state={state} type={type as any} />
+          )}
+          <ToolContent>
+            {(state === "input-available" ||
+              state === "input-streaming" ||
+              state === "approval-requested") && (
+              <ToolInput input={toolPart.input} />
+            )}
+            {state === "output-available" && (
+              <ToolOutput errorText={undefined} output={toolPart.output} />
+            )}
+            {state === "output-error" && (
+              <ToolOutput errorText={toolPart.errorText} output={undefined} />
+            )}
+            {state === "approval-requested" && approvalId && (
+              <ToolApprovalActions
+                addToolApprovalResponse={addToolApprovalResponse}
+                approvalId={approvalId}
+              />
+            )}
+          </ToolContent>
+        </Tool>
+      );
+    }
+
     return null;
   });
 
@@ -740,6 +1122,20 @@ const PurePreviewMessage = ({
     <>
       {attachments}
       {parts}
+      {interruptedAfterToolCall && !isReadonly && (
+        <div className="flex items-center gap-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-[12px] text-amber-700 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-400">
+          <span className="min-w-0 flex-1">
+            La réponse s'est interrompue avant le résultat de l'outil.
+          </span>
+          <button
+            className="shrink-0 font-semibold underline underline-offset-2 hover:opacity-80"
+            onClick={() => regenerate()}
+            type="button"
+          >
+            Régénérer
+          </button>
+        </div>
+      )}
       {actions}
     </>
   );
@@ -748,7 +1144,9 @@ const PurePreviewMessage = ({
     <div
       className={cn(
         "group/message w-full",
-        !isAssistant && "animate-[fade-up_0.25s_cubic-bezier(0.22,1,0.36,1)]"
+        isAssistant
+          ? "message-fade-in"
+          : "animate-[fade-up_0.25s_cubic-bezier(0.22,1,0.36,1)]"
       )}
       data-role={message.role}
       data-testid={`message-${message.role}`}

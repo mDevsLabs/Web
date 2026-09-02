@@ -24,7 +24,9 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
+import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { PageBackButton } from "@/components/chat/page-back-button";
+import { VoiceOptionSelector } from "@/components/settings/option-selectors";
 import { useAudioUsage } from "@/hooks/use-settings";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
 import { cn, formatAudioModelName } from "@/lib/utils";
@@ -35,6 +37,7 @@ interface SpeechModel {
   id: string;
   name: string;
   provider?: string;
+  voices?: string[];
 }
 
 interface SpeechVoice {
@@ -59,51 +62,6 @@ interface GeneratedAudio {
   user_id?: string;
   voice?: string;
 }
-
-const VOICES_PRESETS: SpeechVoice[] = [
-  {
-    category: "Naturel & Équilibré",
-    description: "Voix féminine claire, chaleureuse et polyvalente.",
-    gender: "Féminin",
-    id: "flux-alexis-en",
-    name: "Alexis",
-  },
-  {
-    category: "Professionnel & Posé",
-    description: "Voix masculine profonde, idéale pour narration et tutoriels.",
-    gender: "Masculin",
-    id: "flux-michael-en",
-    name: "Michael",
-  },
-  {
-    category: "Dynamique & Enthousiaste",
-    description: "Voix féminine énergique, parfaite pour podcasts et spots.",
-    gender: "Féminin",
-    id: "flux-stacy-en",
-    name: "Stacy",
-  },
-  {
-    category: "Calme & Convivial",
-    description: "Voix masculine moderne, fluide et décontractée.",
-    gender: "Masculin",
-    id: "flux-sam-en",
-    name: "Sam",
-  },
-  {
-    category: "Élégant & Narratif",
-    description: "Voix féminine expressive, idéale pour le storytelling.",
-    gender: "Féminin",
-    id: "flux-asteria-en",
-    name: "Asteria",
-  },
-  {
-    category: "Puissant & Engageant",
-    description: "Voix masculine captivante pour annonces et présentations.",
-    gender: "Masculin",
-    id: "flux-orion-en",
-    name: "Orion",
-  },
-];
 
 const TEXT_SUGGESTIONS = [
   "Bienvenue sur mAI Web ! Votre assistant d'intelligence artificielle nouvelle génération pour transformer vos idées en réalité.",
@@ -153,17 +111,15 @@ export default function AudioPage() {
   });
   const models = useMemo(() => modelsData?.data || [], [modelsData]);
 
-  // 2. Voix disponibles via /api/audio/voices
+  // 2. Voix disponibles via /api/audio/voices — source unique (l'API
+  // renvoie toujours des données : catalogue upstream ou repli serveur)
   const { data: voicesData } = useSWR<{
     data: SpeechVoice[];
   }>("/api/audio/voices", fetcher, {
     dedupingInterval: 60_000,
     revalidateOnFocus: false,
   });
-  const voices = useMemo(
-    () => voicesData?.data || VOICES_PRESETS,
-    [voicesData]
-  );
+  const voices = useMemo(() => voicesData?.data || [], [voicesData]);
 
   // 3. Quota Speech hebdomadaire via hook useAudioUsage
   const {
@@ -230,16 +186,12 @@ export default function AudioPage() {
       setSelectedModelId(defaultMod.id);
     }
 
-    if (userPrefData?.defaultAudioVoice && !selectedVoice) {
-      setSelectedVoice(userPrefData.defaultAudioVoice);
-    } else if (voices.length > 0 && !selectedVoice) {
-      setSelectedVoice(voices[0].id);
-    }
+    // La sélection de voix est gérée par l'effet dédié (après modelVoices)
 
     if (userPrefData?.defaultAudioSpeed) {
       setSpeed(userPrefData.defaultAudioSpeed);
     }
-  }, [models, selectedModelId, voices, selectedVoice, userPrefData]);
+  }, [models, selectedModelId, userPrefData]);
 
   // Basculer l'état épinglé
   const handleTogglePin = async (
@@ -293,6 +245,39 @@ export default function AudioPage() {
     () => models.find((m) => m.id === selectedModelId),
     [models, selectedModelId]
   );
+
+  // Voix proposées par le modèle sélectionné — aucune voix étrangère n'est
+  // affichée : si le modèle ne déclare pas de voix, la liste reste vide.
+  const modelVoices = useMemo<SpeechVoice[]>(() => {
+    const raw = selectedModel?.voices;
+    if (!raw || raw.length === 0) {
+      return [];
+    }
+    return raw.map((voiceId) => {
+      const preset = voices.find((v) => v.id === voiceId);
+      return preset ?? { id: voiceId, name: voiceId };
+    });
+  }, [selectedModel, voices]);
+
+  // Sélection de voix : voix par défaut des préférences si disponible, sinon
+  // la première du modèle ; vidée si le modèle n'expose aucune voix. La voix
+  // choisie manuellement n'est jamais écrasée tant qu'elle reste valide.
+  useEffect(() => {
+    if (modelVoices.length === 0) {
+      if (selectedVoice) {
+        setSelectedVoice("");
+      }
+      return;
+    }
+    const preferredDefault = userPrefData?.defaultAudioVoice;
+    const preferred =
+      preferredDefault && modelVoices.some((v) => v.id === preferredDefault)
+        ? preferredDefault
+        : modelVoices[0].id;
+    if (!selectedVoice || !modelVoices.some((v) => v.id === selectedVoice)) {
+      setSelectedVoice(preferred);
+    }
+  }, [modelVoices, selectedVoice, userPrefData]);
 
   const isQuotaExhausted = limit > 0 && tokensUsed >= limit;
 
@@ -516,23 +501,44 @@ export default function AudioPage() {
                   </div>
                 ) : (
                   <div className="flex flex-col gap-2">
-                    <select
-                      className="w-full rounded-xl border border-border/80 bg-background/90 px-3.5 py-2.5 text-sm font-medium text-foreground transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                      onChange={(e) => setSelectedModelId(e.target.value)}
-                      value={selectedModelId}
-                    >
-                      {models.map((mod) => (
-                        <option key={mod.id} value={mod.id}>
-                          {mod.name || mod.id}
-                        </option>
-                      ))}
-                    </select>
+                    <ModelSelectorCompact
+                      models={models}
+                      onModelChange={setSelectedModelId}
+                      placeholder="Modèle audio"
+                      selectedModelId={selectedModelId}
+                      source="speech"
+                      variant="block"
+                    />
 
                     {selectedModel && (
                       <p className="text-xs text-muted-foreground leading-relaxed mt-1">
                         {selectedModel.description}
                       </p>
                     )}
+
+                    {/* Voix IA disponibles pour le modèle sélectionné */}
+                    <div className="flex flex-col gap-2 mt-2">
+                      <label className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+                        <Volume2Icon className="size-3.5 text-emerald-400" />
+                        <span>Voix IA</span>
+                      </label>
+                      {modelVoices.length === 0 ? (
+                        <div className="w-full rounded-xl border border-border/80 bg-muted/30 px-3.5 py-2.5 text-sm font-medium text-muted-foreground cursor-not-allowed">
+                          Voix par défaut du modèle
+                        </div>
+                      ) : (
+                        <VoiceOptionSelector
+                          onChange={setSelectedVoice}
+                          value={selectedVoice}
+                          voices={modelVoices}
+                        />
+                      )}
+                      <span className="text-[11px] text-muted-foreground">
+                        {modelVoices.length === 0
+                          ? "Ce modèle n'expose pas de voix prédéfinies : la voix par défaut du service sera utilisée."
+                          : "Voix proposées dynamiquement par le modèle sélectionné."}
+                      </span>
+                    </div>
                   </div>
                 )}
               </div>

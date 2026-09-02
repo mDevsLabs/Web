@@ -1,6 +1,12 @@
 "use client";
 
-import { ArrowLeftIcon, Loader2Icon, ShieldCheckIcon } from "lucide-react";
+import {
+  ArrowLeftIcon,
+  EyeIcon,
+  EyeOffIcon,
+  Loader2Icon,
+  ShieldCheckIcon,
+} from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -16,6 +22,7 @@ export default function LoginPage() {
   const [step, setStep] = useState<"credentials" | "otp">("credentials");
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [targetEmail, setTargetEmail] = useState("");
   const [otpCode, setOtpCode] = useState("");
 
@@ -151,14 +158,31 @@ export default function LoginPage() {
               <div className="relative">
                 <Input
                   autoComplete="current-password"
-                  className="h-10 pl-3 rounded-lg border-border/60 bg-muted/40 text-sm focus:bg-background"
+                  className="h-10 pl-3 pr-10 rounded-lg border-border/60 bg-muted/40 text-sm focus:bg-background"
                   id="password"
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••••••"
                   required
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   value={password}
                 />
+                <button
+                  aria-label={
+                    showPassword
+                      ? "Masquer le mot de passe"
+                      : "Afficher le mot de passe"
+                  }
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground transition-colors cursor-pointer rounded"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  tabIndex={-1}
+                  type="button"
+                >
+                  {showPassword ? (
+                    <EyeOffIcon className="size-4" />
+                  ) : (
+                    <EyeIcon className="size-4" />
+                  )}
+                </button>
               </div>
             </div>
 

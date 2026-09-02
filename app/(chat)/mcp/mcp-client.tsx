@@ -1,10 +1,11 @@
 "use client";
-
 import {
   ActivityIcon,
   AlertCircleIcon,
   BookOpenIcon,
   CheckCircle2Icon,
+  CircleIcon,
+  CopyIcon,
   CpuIcon,
   DownloadIcon,
   Edit2Icon,
@@ -15,15 +16,15 @@ import {
   RefreshCwIcon,
   SearchIcon,
   ServerIcon,
+  SettingsIcon,
   ShieldAlertIcon,
   ShieldCheckIcon,
   TerminalIcon,
   Trash2Icon,
   WrenchIcon,
   ZapIcon,
-  CircleIcon,
 } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
@@ -61,7 +62,6 @@ import type { McpLog, McpServer } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
-
 const PRESET_TEMPLATES = [
   {
     authType: "bearer",
@@ -70,15 +70,14 @@ const PRESET_TEMPLATES = [
     name: "GitHub MCP",
     requireApproval: "write_only",
     transport: "sse",
-    url: "https://mcp-github-server.example.com/sse",
+    url: "https://api.githubcopilot.com/mcp/",
   },
   {
     authType: "none",
     command: "npx",
-    description:
-      "Interroger et manipuler une base de données PostgreSQL en toute sécurité",
+    description: "Interroger et manipuler des données en toute sécurité",
     icon: "database",
-    name: "PostgreSQL Database",
+    name: "Base de données",
     requireApproval: "write_only",
     transport: "stdio",
   },
@@ -103,41 +102,37 @@ const PRESET_TEMPLATES = [
     url: "https://mcp-fetch.example.com/api",
   },
 ];
-
 export default function McpClient() {
   const {
     data,
-    error,
     isLoading,
     mutate: mutateServers,
   } = useSWR<{
     servers: McpServer[];
     stats: { servers: number; totalCalls: number };
   }>("/api/mcp", fetcher);
-
+  const [activeTab, setActiveTab] = useState<
+    "servers" | "library" | "tutorial" | "logs" | "settings"
+  >("servers");
   const { data: logs = [], mutate: mutateLogs } = useSWR<McpLog[]>(
     "/api/mcp/logs",
     fetcher,
-    { refreshInterval: 5000 }
+    { refreshInterval: activeTab === "logs" ? 10_000 : 0, revalidateOnFocus: false }
   );
-
+  const { data: tplData, mutate: mutateTpl } = useSWR<{ templates: any[] }>(
+    "/api/mcp/templates",
+    fetcher
+  );
+  const templates = tplData?.templates ?? [];
   const servers = data?.servers ?? [];
   const stats = data?.stats ?? { servers: 0, totalCalls: 0 };
-
-  const [activeTab, setActiveTab] = useState<"servers" | "tutorial" | "logs">(
-    "servers"
-  );
   const [searchQuery, setSearchQuery] = useState("");
-
-  // Modals state
   const [isServerModalOpen, setIsServerModalOpen] = useState(false);
   const [editingServer, setEditingServer] = useState<McpServer | null>(null);
   const [serverToDelete, setSkillToDelete] = useState<McpServer | null>(null);
   const [isInspectingTools, setIsInspectingTools] = useState<McpServer | null>(
     null
   );
-
-  // Form State
   const [formName, setFormName] = useState("");
   const [formDescription, setFormDescription] = useState("");
   const [formTransport, setFormTransport] = useState<
@@ -156,7 +151,14 @@ export default function McpClient() {
   const [formRequireApproval, setFormRequireApproval] = useState<
     "always_allow" | "ask_permission" | "write_only"
   >("write_only");
-
+  const [formTimeoutMs, setFormTimeoutMs] = useState(15_000);
+  const [formRateLimit, setFormRateLimit] = useState(60);
+  const [formEnvPairs, setFormEnvPairs] = useState<
+    Array<{ k: string; v: string }>
+  >([]);
+  const [logServerFilter, setLogServerFilter] = useState("");
+  const [logToolFilter, setLogToolFilter] = useState("");
+  const [logActionFilter, setLogActionFilter] = useState("");
   const [isTesting, setIsTesting] = useState(false);
   const [testResult, setTestResult] = useState<{
     message: string;
@@ -164,9 +166,91 @@ export default function McpClient() {
     toolsCount: number;
   } | null>(null);
   const [isSaving, setIsSaving] = useState(false);
-
-  // Ouvrir modal pour nouveau serveur
-  const handleNewServer = (template?: (typeof PRESET_TEMPLATES)[0]) => {
+  // Préférences globales MCP (onglet Paramètres)
+  const [mcpKillSwitch, setMcpKillSwitch] = useState(false);
+  const [mcpDefaultApproval, setMcpDefaultApproval] = useState<
+    "always_allow" | "write_only" | "ask_permission"
+  >("write_only");
+  const [mcpDefaultTimeout, setMcpDefaultTimeout] = useState(15_000);
+  const [mcpDefaultRateLimit, setMcpDefaultRateLimit] = useState(60);
+  const [mcpAllowStdio, setMcpAllowStdio] = useState(true);
+  const [mcpRetention, setMcpRetention] = useState(30);
+  const [isSavingMcpPrefs, setIsSavingMcpPrefs] = useState(false);
+  const { data: mcpPrefsData, mutate: mutateMcpPrefs } = useSWR(
+    "/api/user/mcp-preferences",
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 10_000 }
+  );
+  useEffect(() => {
+    if (mcpPrefsData) {
+      if (typeof mcpPrefsData.globalKillSwitch === "boolean") {
+        setMcpKillSwitch(mcpPrefsData.globalKillSwitch);
+      }
+      if (mcpPrefsData.defaultRequireApproval) {
+        setMcpDefaultApproval(mcpPrefsData.defaultRequireApproval);
+      }
+      if (mcpPrefsData.defaultTimeoutMs) {
+        setMcpDefaultTimeout(mcpPrefsData.defaultTimeoutMs);
+      }
+      if (mcpPrefsData.defaultRateLimitPerMin) {
+        setMcpDefaultRateLimit(mcpPrefsData.defaultRateLimitPerMin);
+      }
+      if (typeof mcpPrefsData.allowStdio === "boolean") {
+        setMcpAllowStdio(mcpPrefsData.allowStdio);
+      }
+      if (mcpPrefsData.retentionDays) {
+        setMcpRetention(Math.min(mcpPrefsData.retentionDays, 50));
+      }
+    }
+  }, [mcpPrefsData]);
+  const handleSaveMcpPrefs = async () => {
+    setIsSavingMcpPrefs(true);
+    try {
+      const res = await fetch("/api/user/mcp-preferences", {
+        body: JSON.stringify({
+          allowStdio: mcpAllowStdio,
+          defaultRateLimitPerMin: mcpDefaultRateLimit,
+          defaultRequireApproval: mcpDefaultApproval,
+          defaultTimeoutMs: mcpDefaultTimeout,
+          globalKillSwitch: mcpKillSwitch,
+          retentionDays: Math.min(Math.max(Math.round(mcpRetention), 1), 50),
+        }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      });
+      if (!res.ok) {
+        throw new Error("Erreur sauvegarde");
+      }
+      toast.success("Préférences MCP enregistrées !");
+      mutateMcpPrefs();
+    } catch (e: any) {
+      toast.error(e.message || "Erreur");
+    } finally {
+      setIsSavingMcpPrefs(false);
+    }
+  };
+  const handlePurgeMcp = async () => {
+    if (
+      !window.confirm(
+        "Purger TOUS les journaux d'appels MCP ? Cette action est irréversible."
+      )
+    ) {
+      return;
+    }
+    try {
+      const r = await fetch("/api/mcp/purge", {
+        body: JSON.stringify({ retentionDays: 0 }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      });
+      const d = await r.json();
+      toast.success(`${d.deleted} logs purgés`);
+      await mutateLogs();
+    } catch {
+      toast.error("Erreur purge");
+    }
+  };
+  const handleNewServer = (template?: (typeof PRESET_TEMPLATES)[0] | any) => {
     setEditingServer(null);
     setTestResult(null);
     setFormName(template?.name ?? "");
@@ -174,17 +258,18 @@ export default function McpClient() {
     setFormTransport((template?.transport as any) ?? "sse");
     setFormUrl(template?.url ?? "");
     setFormCommand(template?.command ?? "");
-    setFormArgs("");
+    setFormArgs(template?.args ?? "");
     setFormAuthType((template?.authType as any) ?? "none");
     setFormToken("");
     setFormUsername("");
     setFormPassword("");
     setFormHeaders("");
     setFormRequireApproval((template?.requireApproval as any) ?? "write_only");
+    setFormTimeoutMs(15_000);
+    setFormRateLimit(60);
+    setFormEnvPairs([]);
     setIsServerModalOpen(true);
   };
-
-  // Ouvrir modal pour modifier serveur
   const handleEditServer = (s: McpServer) => {
     setEditingServer(s);
     setTestResult(null);
@@ -204,14 +289,15 @@ export default function McpClient() {
         : ""
     );
     setFormRequireApproval((s.requireApproval as any) ?? "write_only");
+    setFormTimeoutMs((s as any).timeoutMs ?? 15_000);
+    setFormRateLimit((s as any).rateLimitPerMin ?? 60);
+    const env = (s.env as Record<string, string>) ?? {};
+    setFormEnvPairs(Object.entries(env).map(([k, v]) => ({ k, v: String(v) })));
     setIsServerModalOpen(true);
   };
-
-  // Tester la connexion
   const handleTestConnection = async () => {
     setIsTesting(true);
     setTestResult(null);
-
     let parsedHeaders = {};
     if (formHeaders.trim()) {
       try {
@@ -222,7 +308,6 @@ export default function McpClient() {
         return;
       }
     }
-
     try {
       const res = await fetch("/api/mcp/test", {
         body: JSON.stringify({
@@ -242,7 +327,6 @@ export default function McpClient() {
         headers: { "Content-Type": "application/json" },
         method: "POST",
       });
-
       const data = await res.json();
       setTestResult(data);
       if (data.success) {
@@ -261,8 +345,6 @@ export default function McpClient() {
       setIsTesting(false);
     }
   };
-
-  // Enregistrer le serveur
   const handleSaveServer = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formName.trim()) {
@@ -277,7 +359,6 @@ export default function McpClient() {
       toast.error("La commande stdio est requise");
       return;
     }
-
     let parsedHeaders = {};
     if (formHeaders.trim()) {
       try {
@@ -287,9 +368,14 @@ export default function McpClient() {
         return;
       }
     }
-
+    const envObj: Record<string, string> = {};
+    for (const p of formEnvPairs) {
+      if (p.k.trim()) {
+        envObj[p.k.trim()] = p.v;
+      }
+    }
     setIsSaving(true);
-    const payload = {
+    const payload: any = {
       args: formArgs ? formArgs.split(" ").filter(Boolean) : [],
       authConfig: {
         password: formPassword,
@@ -299,13 +385,15 @@ export default function McpClient() {
       authType: formAuthType,
       command: formCommand,
       description: formDescription,
+      env: envObj,
       headers: parsedHeaders,
       name: formName,
+      rateLimitPerMin: formRateLimit,
       requireApproval: formRequireApproval,
+      timeoutMs: formTimeoutMs,
       transport: formTransport,
       url: formUrl,
     };
-
     try {
       if (editingServer) {
         const res = await fetch(`/api/mcp/${editingServer.id}`, {
@@ -328,7 +416,6 @@ export default function McpClient() {
         }
         toast.success("Serveur MCP connecté et enregistré !");
       }
-
       await mutateServers();
       setIsServerModalOpen(false);
     } catch (err: any) {
@@ -337,8 +424,6 @@ export default function McpClient() {
       setIsSaving(false);
     }
   };
-
-  // Bascule activation rapide
   const handleToggleEnabled = async (s: McpServer) => {
     try {
       await fetch(`/api/mcp/${s.id}`, {
@@ -356,8 +441,6 @@ export default function McpClient() {
       toast.error("Impossible de basculer l'état du serveur");
     }
   };
-
-  // Rafraîchir les outils
   const handleRefreshTools = async (s: McpServer) => {
     try {
       toast.info(`Synchronisation des outils pour ${s.name}...`);
@@ -376,8 +459,46 @@ export default function McpClient() {
       toast.error(err.message ?? "Impossible de rafraîchir les outils");
     }
   };
-
-  // Suppression
+  const handleToggleTool = async (s: McpServer, toolName: string) => {
+    try {
+      await fetch(`/api/mcp/${s.id}`, {
+        body: JSON.stringify({ toggleTool: toolName }),
+        headers: { "Content-Type": "application/json" },
+        method: "PATCH",
+      });
+      toast.success(`Outil ${toolName} basculé`);
+      await mutateServers();
+      const upd = await fetch(`/api/mcp/${s.id}`).then((r) => r.json());
+      if (isInspectingTools && isInspectingTools.id === s.id) {
+        setIsInspectingTools(upd);
+      }
+    } catch {
+      toast.error("Erreur toggle outil");
+    }
+  };
+  const handleSetToolApproval = async (
+    s: McpServer,
+    toolName: string,
+    val: string | null
+  ) => {
+    try {
+      await fetch(`/api/mcp/${s.id}`, {
+        body: JSON.stringify({
+          setToolApproval: { requireApproval: val, toolName },
+        }),
+        headers: { "Content-Type": "application/json" },
+        method: "PATCH",
+      });
+      toast.success("Permission outil mise à jour");
+      await mutateServers();
+      const upd = await fetch(`/api/mcp/${s.id}`).then((r) => r.json());
+      if (isInspectingTools && isInspectingTools.id === s.id) {
+        setIsInspectingTools(upd);
+      }
+    } catch {
+      toast.error("Erreur maj approval");
+    }
+  };
   const handleDeleteServer = async () => {
     if (!serverToDelete) {
       return;
@@ -396,8 +517,55 @@ export default function McpClient() {
       toast.error(err.message ?? "Impossible de supprimer le serveur");
     }
   };
-
-  // Filtrage des serveurs
+  const handleInstallTemplate = async (tpl: any) => {
+    try {
+      const res = await fetch("/api/mcp/templates", {
+        body: JSON.stringify({ templateId: tpl.id }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error);
+      }
+      toast.success(data.message);
+      await mutateServers();
+    } catch (e: any) {
+      toast.error(e.message ?? "Erreur installation");
+    }
+  };
+  const handleCopyTemplate = async (tpl: any) => {
+    await navigator.clipboard.writeText(JSON.stringify(tpl, null, 2));
+    toast.success("Template copié !");
+  };
+  const handleExport = (fmt: string, scope: "servers" | "logs") => {
+    const url =
+      scope === "servers"
+        ? `/api/mcp/export?format=${fmt}`
+        : `/api/mcp/logs/export?format=${fmt}`;
+    window.open(url, "_blank");
+  };
+  const handlePurgeLogs = async () => {
+    if (
+      !window.confirm(
+        "Purger TOUS les journaux d'appels MCP ? Cette action est irréversible."
+      )
+    ) {
+      return;
+    }
+    try {
+      const res = await fetch("/api/mcp/purge", {
+        body: JSON.stringify({ retentionDays: 0 }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      });
+      const d = await res.json();
+      toast.success(`${d.deleted} logs purgés`);
+      mutateLogs();
+    } catch {
+      toast.error("Erreur purge");
+    }
+  };
   const filteredServers = useMemo(
     () =>
       servers.filter(
@@ -410,10 +578,22 @@ export default function McpClient() {
       ),
     [servers, searchQuery]
   );
-
+  const filteredLogs = useMemo(
+    () =>
+      logs.filter(
+        (l) =>
+          (!logServerFilter ||
+            l.serverName
+              .toLowerCase()
+              .includes(logServerFilter.toLowerCase())) &&
+          (!logToolFilter ||
+            l.toolName.toLowerCase().includes(logToolFilter.toLowerCase())) &&
+          (!logActionFilter || l.actionType === logActionFilter)
+      ),
+    [logs, logServerFilter, logToolFilter, logActionFilter]
+  );
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
-      {/* Header */}
       <header className="sticky top-0 z-20 flex flex-col gap-4 border-b border-border/40 bg-background/95 backdrop-blur-md px-4 py-3 sm:px-6">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
@@ -441,23 +621,51 @@ export default function McpClient() {
               </div>
             </div>
           </div>
-
           <div className="flex items-center gap-2">
-            <Button
-              className="h-8 gap-1.5 text-xs font-medium shadow-xs"
-              onClick={() => {
-                const data = JSON.stringify(servers.map((s) => ({ id: s.id, name: s.name, transport: s.transport, url: s.url, isEnabled: s.isEnabled })), null, 2);
-                const blob = new Blob([data], { type: "application/json" });
-                const a = document.createElement("a");
-                a.href = URL.createObjectURL(blob);
-                a.download = "mcp-servers-export.json";
-                a.click();
-              }}
-              variant="outline"
-            >
-              <DownloadIcon className="size-3.5" />
-              <span>Exporter</span>
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  className="h-8 gap-1.5 text-xs font-medium shadow-xs"
+                  variant="outline"
+                >
+                  <DownloadIcon className="size-3.5" />
+                  <span>Exporter</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem
+                  onClick={() => handleExport("json", "servers")}
+                >
+                  Serveurs JSON
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => handleExport("csv", "servers")}
+                >
+                  Serveurs CSV
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleExport("md", "servers")}>
+                  Serveurs MD
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => handleExport("txt", "servers")}
+                >
+                  Serveurs TXT
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => handleExport("json", "logs")}>
+                  Logs JSON
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleExport("csv", "logs")}>
+                  Logs CSV
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleExport("md", "logs")}>
+                  Logs MD
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleExport("txt", "logs")}>
+                  Logs TXT
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
             <Button
               className="h-8 gap-1.5 text-xs font-medium shadow-xs"
               onClick={() => handleNewServer()}
@@ -467,8 +675,6 @@ export default function McpClient() {
             </Button>
           </div>
         </div>
-
-        {/* Barre d'onglets & Recherche */}
         <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
           <div className="flex items-center rounded-lg border border-border/50 bg-muted/20 p-0.5 text-xs">
             <button
@@ -482,7 +688,20 @@ export default function McpClient() {
               type="button"
             >
               <ServerIcon className="size-3.5" />
-              <span>Serveurs connectés ({servers.length})</span>
+              <span>Serveurs ({servers.length})</span>
+            </button>
+            <button
+              className={cn(
+                "rounded-md px-3 py-1.5 text-xs font-medium transition-colors flex items-center gap-1.5",
+                activeTab === "library"
+                  ? "bg-background text-foreground shadow-xs"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+              onClick={() => setActiveTab("library")}
+              type="button"
+            >
+              <WrenchIcon className="size-3.5 text-amber-500" />
+              <span>Bibliothèque ({templates.length})</span>
             </button>
             <button
               className={cn(
@@ -495,7 +714,7 @@ export default function McpClient() {
               type="button"
             >
               <BookOpenIcon className="size-3.5 text-sky-500" />
-              <span>Tutoriel & Guide</span>
+              <span>Tutoriel</span>
             </button>
             <button
               className={cn(
@@ -508,10 +727,22 @@ export default function McpClient() {
               type="button"
             >
               <ActivityIcon className="size-3.5 text-emerald-500" />
-              <span>Journal & Audit IA ({stats.totalCalls})</span>
+              <span>Journal ({stats.totalCalls})</span>
+            </button>
+            <button
+              className={cn(
+                "rounded-md px-3 py-1.5 text-xs font-medium transition-colors flex items-center gap-1.5",
+                activeTab === "settings"
+                  ? "bg-background text-foreground shadow-xs"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+              onClick={() => setActiveTab("settings")}
+              type="button"
+            >
+              <SettingsIcon className="size-3.5 text-slate-500" />
+              <span>Paramètres</span>
             </button>
           </div>
-
           {activeTab === "servers" && (
             <div className="relative w-64">
               <SearchIcon className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground" />
@@ -525,10 +756,7 @@ export default function McpClient() {
           )}
         </div>
       </header>
-
-      {/* Contenu principal */}
       <main className="flex-1 p-4 sm:p-6 max-w-7xl mx-auto w-full">
-        {/* Onglet 1: Serveurs connectés */}
         {activeTab === "servers" && (
           <div>
             {isLoading ? (
@@ -541,7 +769,6 @@ export default function McpClient() {
                 ))}
               </div>
             ) : servers.length === 0 ? (
-              /* Empty state avec presets */
               <div className="flex flex-col items-center justify-center py-12 text-center max-w-2xl mx-auto">
                 <div className="size-16 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-600 dark:text-purple-400 mb-4">
                   <CpuIcon className="size-8" />
@@ -554,10 +781,9 @@ export default function McpClient() {
                   vos outils, fichiers et bases de données, avec un contrôle
                   strict des autorisations.
                 </p>
-
                 <div className="w-full text-left mb-6">
                   <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-                    Modèles préconfigurés prêts à l'emploi :
+                    Modèles préconfigurés :
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {PRESET_TEMPLATES.map((tmpl) => (
@@ -585,7 +811,6 @@ export default function McpClient() {
                     ))}
                   </div>
                 </div>
-
                 <Button
                   className="gap-2 text-xs font-medium"
                   onClick={() => handleNewServer()}
@@ -602,7 +827,11 @@ export default function McpClient() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filteredServers.map((s) => {
                   const toolsCount = (s.toolsCache as any[])?.length || 0;
-
+                  const overrides =
+                    ((s as any).toolOverrides as Record<string, any>) ?? {};
+                  const enabledCount = ((s.toolsCache as any[]) || []).filter(
+                    (t) => overrides[t.name]?.enabled !== false
+                  ).length;
                   return (
                     <div
                       className={cn(
@@ -640,7 +869,6 @@ export default function McpClient() {
                             </p>
                           </div>
                         </div>
-
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
                             <Button
@@ -650,7 +878,13 @@ export default function McpClient() {
                               <MoreVerticalIcon className="size-4" />
                             </Button>
                           </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end" className="w-48">
+                          <DropdownMenuContent
+                            align="end"
+                            className="w-48"
+                            collisionPadding={12}
+                            side="bottom"
+                            sideOffset={6}
+                          >
                             <DropdownMenuItem
                               className="gap-2 cursor-pointer text-xs"
                               onClick={() => handleToggleEnabled(s)}
@@ -672,14 +906,14 @@ export default function McpClient() {
                               onClick={() => setIsInspectingTools(s)}
                             >
                               <WrenchIcon className="size-3.5" />
-                              <span>Voir les outils ({toolsCount})</span>
+                              <span>Gérer les outils ({toolsCount})</span>
                             </DropdownMenuItem>
                             <DropdownMenuItem
                               className="gap-2 cursor-pointer text-xs"
                               onClick={() => handleEditServer(s)}
                             >
                               <Edit2Icon className="size-3.5" />
-                              <span>Modifier la configuration</span>
+                              <span>Modifier</span>
                             </DropdownMenuItem>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem
@@ -692,24 +926,28 @@ export default function McpClient() {
                           </DropdownMenuContent>
                         </DropdownMenu>
                       </div>
-
-                      {/* Monitoring */}
-                      <div className="flex items-center gap-1.5 flex-wrap mb-2">
-                        <span className="text-[10px] text-muted-foreground">⏱ {(s as any).avgLatencyMs ?? 0}ms</span>
-                        <span className="text-[10px] text-muted-foreground">📞 {(s as any).callCount ?? 0} appel(s)</span>
-                        <span className="text-[10px] text-emerald-600">● En ligne</span>
+                      <div className="flex items-center gap-1.5 flex-wrap mb-2 text-[10.5px] text-muted-foreground">
+                        <span
+                          className={cn(
+                            (s as any).uptimeStatus === "online"
+                              ? "text-emerald-600 dark:text-emerald-400"
+                              : "text-amber-600 dark:text-amber-400"
+                          )}
+                        >
+                          ● {(s as any).uptimeStatus ?? "unknown"}
+                        </span>
+                        <span>·</span>
+                        <span>{enabledCount}/{toolsCount} actifs</span>
                       </div>
-
-                      {/* Métadonnées Transport & Sécurité */}
                       <div className="flex items-center gap-1.5 flex-wrap mb-3">
                         <Badge
-                          className="text-[10px] uppercase font-semibold"
+                          className="text-[10px] uppercase font-semibold px-2 py-0.5"
                           variant="outline"
                         >
                           {s.transport}
                         </Badge>
                         <Badge
-                          className="text-[10px]"
+                          className="text-[10px] px-2 py-0.5"
                           variant={
                             s.authType === "none" ? "outline" : "secondary"
                           }
@@ -720,7 +958,7 @@ export default function McpClient() {
                         </Badge>
                         <Badge
                           className={cn(
-                            "text-[10px]",
+                            "text-[10px] px-2 py-0.5",
                             s.requireApproval === "ask_permission"
                               ? "bg-amber-500/10 text-amber-600 border-amber-500/30"
                               : s.requireApproval === "write_only"
@@ -731,14 +969,16 @@ export default function McpClient() {
                         >
                           <ShieldCheckIcon className="size-2.5 mr-1" />
                           {s.requireApproval === "ask_permission"
-                            ? "Toujours demander accord"
+                            ? "Toujours demander"
                             : s.requireApproval === "write_only"
-                              ? "Accord pour écriture"
+                              ? "Accord écriture"
                               : "Auto-approuvé"}
                         </Badge>
+                        <Badge className="text-[10px] px-2 py-0.5" variant="outline">
+                          ⏱ {(s as any).timeoutMs ?? 15_000}ms ·{" "}
+                          {(s as any).rateLimitPerMin ?? 60}/min
+                        </Badge>
                       </div>
-
-                      {/* Outils découverts */}
                       <div className="pt-2 border-t border-border/40 mt-auto flex items-center justify-between text-xs text-muted-foreground">
                         <button
                           className="hover:underline flex items-center gap-1 text-[11px] font-medium text-foreground"
@@ -746,16 +986,19 @@ export default function McpClient() {
                           type="button"
                         >
                           <WrenchIcon className="size-3 text-primary" />
-                          <span>{toolsCount} outil(s) disponible(s)</span>
+                          <span>
+                            {enabledCount}/{toolsCount} outil(s) actif(s)
+                          </span>
                         </button>
                         <Button
-                          className="h-6 px-2 text-[10.5px]"
+                          aria-label="Synchroniser les outils"
+                          className="h-6 w-6 p-0"
                           onClick={() => handleRefreshTools(s)}
                           size="sm"
+                          title="Synchroniser les outils"
                           variant="ghost"
                         >
-                          <RefreshCwIcon className="size-2.5 mr-1" />
-                          Synchro
+                          <RefreshCwIcon className="size-3" />
                         </Button>
                       </div>
                     </div>
@@ -765,8 +1008,82 @@ export default function McpClient() {
             )}
           </div>
         )}
-
-        {/* Onglet 2: Tutoriel & Guide MCP */}
+        {activeTab === "library" && (
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <h2 className="text-sm font-bold">
+                Bibliothèque MCP — Templates installables (50+)
+              </h2>
+              <Button onClick={() => mutateTpl()} size="sm" variant="outline">
+                Actualiser
+              </Button>
+            </div>
+            {templates.length === 0 ? (
+              <div className="text-xs text-muted-foreground p-8 border rounded-xl text-center">
+                Chargement marketplace...
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                {templates.map((tpl: any) => (
+                  <div
+                    className="rounded-2xl border bg-card p-4 flex flex-col"
+                    key={tpl.id}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-semibold text-xs">{tpl.name}</span>
+                      <Badge className="text-[10px]" variant="outline">
+                        {tpl.transport}
+                      </Badge>
+                    </div>
+                    <p className="text-[11px] text-muted-foreground line-clamp-2 mb-3">
+                      {tpl.description}
+                    </p>
+                    <div className="flex gap-1.5 mt-auto">
+                      <Button
+                        className="flex-1 h-7 text-xs"
+                        onClick={() => handleInstallTemplate(tpl)}
+                        size="sm"
+                      >
+                        <PlusIcon className="size-3 mr-1" />
+                        Installer
+                      </Button>
+                      <Button
+                        className="h-7 text-xs"
+                        onClick={() => handleCopyTemplate(tpl)}
+                        size="sm"
+                        variant="outline"
+                      >
+                        <CopyIcon className="size-3 mr-1" />
+                        Copier
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+                {PRESET_TEMPLATES.map((t) => (
+                  <div
+                    className="rounded-2xl border border-dashed bg-muted/20 p-4 flex flex-col"
+                    key={`${t.name}preset`}
+                  >
+                    <span className="font-semibold text-xs mb-1">
+                      {t.name} (preset)
+                    </span>
+                    <p className="text-[11px] text-muted-foreground mb-3">
+                      {t.description}
+                    </p>
+                    <Button
+                      className="h-7 text-xs"
+                      onClick={() => handleNewServer(t as any)}
+                      size="sm"
+                      variant="outline"
+                    >
+                      Utiliser
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
         {activeTab === "tutorial" && (
           <div className="max-w-4xl mx-auto space-y-6">
             <div className="rounded-2xl border border-border/60 bg-card p-6">
@@ -786,122 +1103,164 @@ export default function McpClient() {
               </div>
               <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                 Le <strong>Model Context Protocol (MCP)</strong> est un
-                protocole standardisé (développé initialement par Anthropic)
-                fonctionnant via JSON-RPC 2.0. Il permet aux modèles de langage
-                d'interagir de manière unifiée et sécurisée avec des serveurs
-                d'outils, qu'ils soient distants (APIs cloud via SSE / HTTP) ou
-                locaux (scripts Node/Python via Stdio).
+                protocole standardisé via JSON-RPC 2.0. Ajoutez un serveur,
+                cochez les outils autorisés, liez-le à un Skill, et contrôlez
+                chaque appel via les permissions per-tool.
               </p>
             </div>
-
-            {/* Étapes clés */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="rounded-2xl border border-border/50 bg-card p-4">
                 <div className="flex items-center gap-2 mb-2 text-primary font-semibold text-xs">
                   <span className="size-5 rounded-full bg-primary/10 flex items-center justify-center text-xs">
                     1
                   </span>
-                  <span>Connectez un serveur</span>
+                  <span>Connectez</span>
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Renseignez l'URL d'un serveur SSE/HTTP distant ou la commande
-                  d'un outil local. Configurez les en-têtes ou clés d'API
-                  requises.
+                <p className="text-xs text-muted-foreground">
+                  URL SSE/HTTP ou commande stdio + timeout/rate-limit.
                 </p>
               </div>
-
               <div className="rounded-2xl border border-border/50 bg-card p-4">
                 <div className="flex items-center gap-2 mb-2 text-sky-500 font-semibold text-xs">
                   <span className="size-5 rounded-full bg-sky-500/10 flex items-center justify-center text-xs">
                     2
                   </span>
-                  <span>Définissez les permissions</span>
+                  <span>Autorisez per-tool</span>
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Activez la politique "Accord pour écriture" pour que l'IA vous
-                  demande votre consentement explicite avant toute action
-                  modifiant des données.
+                <p className="text-xs text-muted-foreground">
+                  Activez/désactivez chaque outil + son niveau d'approbation.
                 </p>
               </div>
-
               <div className="rounded-2xl border border-border/50 bg-card p-4">
                 <div className="flex items-center gap-2 mb-2 text-purple-500 font-semibold text-xs">
                   <span className="size-5 rounded-full bg-purple-500/10 flex items-center justify-center text-xs">
                     3
                   </span>
-                  <span>Invoquez dans le Chat</span>
+                  <span>Liez à un Skill</span>
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Utilisez la commande{" "}
-                  <span className="font-semibold text-foreground">@</span> ou le
-                  menu{" "}
-                  <span className="font-semibold text-foreground">Plus</span>{" "}
-                  pour cibler vos outils MCP directement dans la conversation.
+                <p className="text-xs text-muted-foreground">
+                  Dans Skills, whitelist les serveurs/outils pour ce Skill.
                 </p>
               </div>
             </div>
-
-            {/* Exemples de configuration */}
             <div className="rounded-2xl border border-border/60 bg-card p-6">
               <h3 className="font-bold text-sm mb-3 flex items-center gap-2">
                 <TerminalIcon className="size-4 text-purple-500" />
-                <span>Exemples de configurations prêtes à l'emploi</span>
+                <span>Exemples</span>
               </h3>
-
               <div className="space-y-4 text-xs">
                 <div className="p-3.5 rounded-xl bg-muted/40 border border-border/40 font-mono">
                   <span className="text-muted-foreground block mb-1">
-                    # 1. GitHub MCP distant (SSE)
+                    # SSE GitHub
                   </span>
                   <span className="text-primary block font-semibold">
                     URL: https://github-mcp.company.com/sse
                   </span>
                   <span className="text-muted-foreground block">
-                    Authentification: Bearer Token (votre jeton GitHub PAT)
+                    Auth: bearer • timeout 15000ms • rate 60/min
                   </span>
                 </div>
-
                 <div className="p-3.5 rounded-xl bg-muted/40 border border-border/40 font-mono">
                   <span className="text-muted-foreground block mb-1">
-                    # 2. Serveur PostgreSQL local (Stdio)
+                    # Stdio Postgres (vars chiffrées)
                   </span>
                   <span className="text-primary block font-semibold">
                     Commande: npx -y @modelcontextprotocol/server-postgres
-                    postgresql://user:pass@localhost:5432/mabase
+                  </span>
+                  <span className="text-muted-foreground block">
+                    Env: PGPASSWORD=••••
                   </span>
                 </div>
               </div>
             </div>
           </div>
         )}
-
-        {/* Onglet 3: Journal & Audit IA */}
         {activeTab === "logs" && (
           <div className="space-y-4">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <div>
-                <h2 className="text-sm font-bold">
-                  Historique d'audit des appels MCP
-                </h2>
+                <h2 className="text-sm font-bold">Historique d'audit</h2>
                 <p className="text-xs text-muted-foreground">
-                  Suivez en temps réel chaque utilisation des outils MCP par
-                  l'IA
+                  Filtres + export 4 formats
                 </p>
               </div>
-              <Button
-                className="h-7 text-xs"
-                onClick={() => mutateLogs()}
-                size="sm"
-                variant="outline"
-              >
-                <RefreshCwIcon className="size-3 mr-1" />
-                Actualiser
-              </Button>
+              <div className="flex items-center gap-1.5">
+                <Input
+                  className="h-7 text-xs w-28"
+                  onChange={(e) => setLogServerFilter(e.target.value)}
+                  placeholder="Serveur"
+                  value={logServerFilter}
+                />
+                <Input
+                  className="h-7 text-xs w-28"
+                  onChange={(e) => setLogToolFilter(e.target.value)}
+                  placeholder="Outil"
+                  value={logToolFilter}
+                />
+                <select
+                  className="h-7 rounded-md border bg-background px-2 text-xs"
+                  onChange={(e) => setLogActionFilter(e.target.value)}
+                  value={logActionFilter}
+                >
+                  <option value="">Tous actions</option>
+                  <option value="read">read</option>
+                  <option value="write">write</option>
+                  <option value="delete">delete</option>
+                  <option value="execute">execute</option>
+                </select>
+                <Button
+                  className="h-7 text-xs"
+                  onClick={() => mutateLogs()}
+                  size="sm"
+                  variant="outline"
+                >
+                  <RefreshCwIcon className="size-3 mr-1" />
+                  Actualiser
+                </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button className="h-7 text-xs" size="sm" variant="outline">
+                      <DownloadIcon className="size-3 mr-1" />
+                      Exporter
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    <DropdownMenuItem
+                      onClick={() => handleExport("json", "logs")}
+                    >
+                      JSON
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => handleExport("csv", "logs")}
+                    >
+                      CSV
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => handleExport("md", "logs")}
+                    >
+                      MD
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      onClick={() => handleExport("txt", "logs")}
+                    >
+                      TXT
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+                <Button
+                  className="h-7 text-xs"
+                  onClick={handlePurgeLogs}
+                  size="sm"
+                  variant="destructive"
+                >
+                  <Trash2Icon className="size-3 mr-1" />
+                  Purger
+                </Button>
+              </div>
             </div>
-
-            {logs.length === 0 ? (
+            {filteredLogs.length === 0 ? (
               <div className="rounded-2xl border border-dashed border-border/80 p-12 text-center text-muted-foreground text-xs">
-                Aucun appel d'outil MCP enregistré pour le moment.
+                Aucun log correspondant.
               </div>
             ) : (
               <div className="rounded-2xl border border-border/60 bg-card overflow-hidden">
@@ -909,7 +1268,7 @@ export default function McpClient() {
                   <table className="w-full text-left text-xs">
                     <thead className="border-b border-border/40 bg-muted/40 text-muted-foreground font-medium">
                       <tr>
-                        <th className="py-2.5 px-3">Date / Heure</th>
+                        <th className="py-2.5 px-3">Date</th>
                         <th className="py-2.5 px-3">Serveur</th>
                         <th className="py-2.5 px-3">Outil</th>
                         <th className="py-2.5 px-3">Action</th>
@@ -919,7 +1278,7 @@ export default function McpClient() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-border/30">
-                      {logs.map((log) => (
+                      {filteredLogs.map((log) => (
                         <tr className="hover:bg-muted/30" key={log.id}>
                           <td className="py-2.5 px-3 whitespace-nowrap text-muted-foreground font-mono text-[11px]">
                             {new Date(log.createdAt).toLocaleTimeString(
@@ -991,9 +1350,157 @@ export default function McpClient() {
             )}
           </div>
         )}
+        {activeTab === "settings" && (
+          <div className="py-2 max-w-3xl">
+            <div className="p-5 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6">
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 ring-1 ring-purple-500/20">
+                  <SettingsIcon className="size-5" />
+                </div>
+                <div>
+                  <h3 className="text-base font-semibold">
+                    Contrôle global MCP
+                  </h3>
+                  <p className="text-xs text-muted-foreground">
+                    Kill-switch, timeout, rate-limit et permissions par défaut.
+                  </p>
+                </div>
+                <span
+                  className={`ml-auto text-xs px-2 py-1 rounded-full border font-medium ${mcpKillSwitch ? "bg-red-500/10 text-red-600 border-red-500/20" : "bg-emerald-500/10 text-emerald-600 border-emerald-500/20"}`}
+                >
+                  {mcpKillSwitch ? "MCP OFF" : "MCP ON"}
+                </span>
+              </div>
+              <label className="flex items-center justify-between p-3 rounded-xl border border-red-500/20 bg-red-500/5 cursor-pointer">
+                <div className="flex flex-col">
+                  <span className="text-sm font-semibold text-red-600">
+                    Kill-switch global
+                  </span>
+                  <span className="text-xs text-muted-foreground">
+                    Désactive tous les appels MCP instantanément
+                  </span>
+                </div>
+                <input
+                  checked={mcpKillSwitch}
+                  className="size-5 accent-red-600"
+                  onChange={(e) => setMcpKillSwitch(e.target.checked)}
+                  type="checkbox"
+                />
+              </label>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="flex flex-col gap-1.5">
+                  <Label className="text-xs font-medium">
+                    Permission par défaut
+                  </Label>
+                  <select
+                    className="h-10 rounded-xl border border-border/60 bg-muted/30 px-3 text-sm"
+                    onChange={(e) =>
+                      setMcpDefaultApproval(e.target.value as any)
+                    }
+                    value={mcpDefaultApproval}
+                  >
+                    <option value="always_allow">always_allow (auto)</option>
+                    <option value="write_only">write_only (recommandé)</option>
+                    <option value="ask_permission">
+                      ask_permission (strict)
+                    </option>
+                  </select>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <Label className="text-xs font-medium">
+                    Timeout par défaut (ms)
+                  </Label>
+                  <Input
+                    max={120_000}
+                    min={1000}
+                    onChange={(e) =>
+                      setMcpDefaultTimeout(Number(e.target.value))
+                    }
+                    step={1000}
+                    type="number"
+                    value={mcpDefaultTimeout}
+                  />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <Label className="text-xs font-medium">
+                    Rate limit par défaut (/min)
+                  </Label>
+                  <Input
+                    max={1000}
+                    min={1}
+                    onChange={(e) =>
+                      setMcpDefaultRateLimit(Number(e.target.value))
+                    }
+                    type="number"
+                    value={mcpDefaultRateLimit}
+                  />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <Label className="text-xs font-medium">
+                    Rétention logs (jours)
+                  </Label>
+                  <Input
+                    max={50}
+                    min={1}
+                    onChange={(e) => setMcpRetention(Number(e.target.value))}
+                    type="number"
+                    value={mcpRetention}
+                  />
+                  <span className="text-[11px] text-muted-foreground">
+                    Maximum 50 jours (entre 1 et 50).
+                  </span>
+                </div>
+              </div>
+              <label className="flex items-center justify-between p-3 rounded-xl border border-border/50 bg-muted/20 cursor-pointer">
+                <div className="flex flex-col">
+                  <span className="text-sm font-medium">
+                    Autoriser transport stdio (local)
+                  </span>
+                  <span className="text-xs text-muted-foreground">
+                    Si désactivé, toute création stdio sera bloquée (403)
+                  </span>
+                </div>
+                <input
+                  checked={mcpAllowStdio}
+                  className="size-5 accent-primary"
+                  onChange={(e) => setMcpAllowStdio(e.target.checked)}
+                  type="checkbox"
+                />
+              </label>
+              <div className="flex items-center gap-2 justify-end">
+                <Button
+                  className="h-8 text-xs"
+                  onClick={handlePurgeMcp}
+                  size="sm"
+                  variant="destructive"
+                >
+                  <Trash2Icon className="size-3 mr-1" />
+                  Purger tous les logs
+                </Button>
+                <Button
+                  className="h-8 text-xs"
+                  disabled={isSavingMcpPrefs}
+                  onClick={handleSaveMcpPrefs}
+                  size="sm"
+                >
+                  {isSavingMcpPrefs ? (
+                    <>
+                      <Loader2Icon className="size-3 mr-1 animate-spin" />
+                      Enregistrement...
+                    </>
+                  ) : (
+                    "Enregistrer préférences MCP"
+                  )}
+                </Button>
+              </div>
+              <div className="p-3 rounded-xl border border-border/40 bg-muted/20 text-[11px] text-muted-foreground">
+                Ces réglages s'appliquent à tous les serveurs. Exports
+                disponibles en JSON/CSV/MD/TXT depuis /mcp et /skills.
+              </div>
+            </div>
+          </div>
+        )}
       </main>
-
-      {/* Modal Ajout / Modification Serveur MCP */}
       <Dialog onOpenChange={setIsServerModalOpen} open={isServerModalOpen}>
         <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
@@ -1003,11 +1510,10 @@ export default function McpClient() {
                 : "Connecter un nouveau serveur MCP"}
             </DialogTitle>
             <DialogDescription>
-              Configurez le moyen d'appel (transport), l'authentification et les
-              règles de permission.
+              Configurez transport, auth, timeout, rate-limit, variables
+              d'environnement et permissions.
             </DialogDescription>
           </DialogHeader>
-
           <form
             className="flex flex-col gap-4 py-2"
             onSubmit={handleSaveServer}
@@ -1019,12 +1525,11 @@ export default function McpClient() {
                 </Label>
                 <Input
                   onChange={(e) => setFormName(e.target.value)}
-                  placeholder="Ex: GitHub MCP, Postgres DB, Notion..."
+                  placeholder="Ex: GitHub MCP"
                   required
                   value={formName}
                 />
               </div>
-
               <div className="space-y-1.5">
                 <Label className="text-xs font-semibold">Moyen d'appel *</Label>
                 <select
@@ -1032,24 +1537,21 @@ export default function McpClient() {
                   onChange={(e) => setFormTransport(e.target.value as any)}
                   value={formTransport}
                 >
-                  <option value="sse">Distant SSE (Server-Sent Events)</option>
-                  <option value="http">Distant HTTP (JSON-RPC POST)</option>
-                  <option value="stdio">Local Stdio (CLI Node/Python)</option>
-                  <option value="websocket">WebSocket (WSS)</option>
+                  <option value="sse">Distant SSE</option>
+                  <option value="http">Distant HTTP</option>
+                  <option value="stdio">Local Stdio</option>
+                  <option value="websocket">WebSocket</option>
                 </select>
               </div>
             </div>
-
             <div className="space-y-1.5">
               <Label className="text-xs font-semibold">Description</Label>
               <Input
                 onChange={(e) => setFormDescription(e.target.value)}
-                placeholder="Rôle ou données exposées par ce serveur..."
+                placeholder="Rôle ou données exposées..."
                 value={formDescription}
               />
             </div>
-
-            {/* Transport details */}
             {formTransport === "stdio" ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-3 rounded-xl bg-muted/30 border border-border/50">
                 <div className="space-y-1.5">
@@ -1064,14 +1566,69 @@ export default function McpClient() {
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <Label className="text-xs font-semibold">
-                    Arguments (séparés par des espaces)
-                  </Label>
+                  <Label className="text-xs font-semibold">Arguments</Label>
                   <Input
                     onChange={(e) => setFormArgs(e.target.value)}
                     placeholder="-y @modelcontextprotocol/server-postgres ..."
                     value={formArgs}
                   />
+                </div>
+                <div className="sm:col-span-2 space-y-1.5">
+                  <Label className="text-xs font-semibold">
+                    Variables d'environnement
+                  </Label>
+                  {formEnvPairs.map((p, idx) => (
+                    <div className="flex gap-2" key={idx}>
+                      <Input
+                        className="h-8 text-xs flex-1"
+                        onChange={(e) =>
+                          setFormEnvPairs((prev) =>
+                            prev.map((x, i) =>
+                              i === idx ? { ...x, k: e.target.value } : x
+                            )
+                          )
+                        }
+                        placeholder="CLÉ"
+                        value={p.k}
+                      />
+                      <Input
+                        className="h-8 text-xs flex-1"
+                        onChange={(e) =>
+                          setFormEnvPairs((prev) =>
+                            prev.map((x, i) =>
+                              i === idx ? { ...x, v: e.target.value } : x
+                            )
+                          )
+                        }
+                        placeholder="valeur (chiffrée)"
+                        value={p.v}
+                      />
+                      <Button
+                        onClick={() =>
+                          setFormEnvPairs((prev) =>
+                            prev.filter((_, i) => i !== idx)
+                          )
+                        }
+                        size="sm"
+                        type="button"
+                        variant="ghost"
+                      >
+                        <Trash2Icon className="size-3" />
+                      </Button>
+                    </div>
+                  ))}
+                  <Button
+                    className="h-7 text-xs"
+                    onClick={() =>
+                      setFormEnvPairs((prev) => [...prev, { k: "", v: "" }])
+                    }
+                    size="sm"
+                    type="button"
+                    variant="outline"
+                  >
+                    <PlusIcon className="size-3 mr-1" />
+                    Ajouter variable
+                  </Button>
                 </div>
               </div>
             ) : (
@@ -1087,14 +1644,35 @@ export default function McpClient() {
                 />
               </div>
             )}
-
-            {/* Authentification */}
+            <div className="grid grid-cols-2 gap-3">
+              <div className="space-y-1.5">
+                <Label className="text-xs font-semibold">Timeout (ms)</Label>
+                <Input
+                  max={120_000}
+                  min={1000}
+                  onChange={(e) => setFormTimeoutMs(Number(e.target.value))}
+                  step={1000}
+                  type="number"
+                  value={formTimeoutMs}
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label className="text-xs font-semibold">Rate limit /min</Label>
+                <Input
+                  max={1000}
+                  min={1}
+                  onChange={(e) => setFormRateLimit(Number(e.target.value))}
+                  type="number"
+                  value={formRateLimit}
+                />
+              </div>
+            </div>
             <div className="space-y-3 p-3.5 rounded-xl border border-border/60 bg-muted/20">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <KeyIcon className="size-4 text-primary" />
                   <Label className="text-xs font-semibold">
-                    Méthode d'authentification
+                    Authentification
                   </Label>
                 </div>
                 <select
@@ -1102,36 +1680,29 @@ export default function McpClient() {
                   onChange={(e) => setFormAuthType(e.target.value as any)}
                   value={formAuthType}
                 >
-                  <option value="none">Aucune (Public)</option>
-                  <option value="bearer">Bearer Token / API Key</option>
-                  <option value="basic">
-                    Basic Auth (Utilisateur / Mot de passe)
-                  </option>
-                  <option value="custom_headers">
-                    En-têtes personnalisés (JSON)
-                  </option>
+                  <option value="none">Aucune</option>
+                  <option value="bearer">Bearer</option>
+                  <option value="basic">Basic</option>
+                  <option value="custom_headers">En-têtes JSON</option>
                 </select>
               </div>
-
               {formAuthType === "bearer" && (
                 <div className="space-y-1.5">
-                  <Label className="text-xs">Jeton / Clé API (Bearer)</Label>
+                  <Label className="text-xs">Jeton Bearer</Label>
                   <Input
                     onChange={(e) => setFormToken(e.target.value)}
-                    placeholder="eyJhbGciOi..."
+                    placeholder="eyJ..."
                     type="password"
                     value={formToken}
                   />
                 </div>
               )}
-
               {formAuthType === "basic" && (
                 <div className="grid grid-cols-2 gap-2">
                   <div className="space-y-1.5">
-                    <Label className="text-xs">Nom d'utilisateur</Label>
+                    <Label className="text-xs">Utilisateur</Label>
                     <Input
                       onChange={(e) => setFormUsername(e.target.value)}
-                      placeholder="admin"
                       value={formUsername}
                     />
                   </div>
@@ -1139,42 +1710,31 @@ export default function McpClient() {
                     <Label className="text-xs">Mot de passe</Label>
                     <Input
                       onChange={(e) => setFormPassword(e.target.value)}
-                      placeholder="••••••••"
                       type="password"
                       value={formPassword}
                     />
                   </div>
                 </div>
               )}
-
               {formAuthType === "custom_headers" && (
                 <div className="space-y-1.5">
-                  <Label className="text-xs">
-                    En-têtes HTTP additionnels (format JSON)
-                  </Label>
+                  <Label className="text-xs">En-têtes JSON</Label>
                   <Textarea
                     className="font-mono text-xs h-20"
                     onChange={(e) => setFormHeaders(e.target.value)}
-                    placeholder='{"X-API-Key": "...", "X-Custom": "..."}'
+                    placeholder='{"X-API-Key":"..."}'
                     value={formHeaders}
                   />
                 </div>
               )}
             </div>
-
-            {/* Politique de Permissions & Données (Human in the loop) */}
             <div className="space-y-2 p-3.5 rounded-xl border border-primary/20 bg-primary/[0.02]">
               <div className="flex items-center gap-2">
                 <ShieldAlertIcon className="size-4 text-primary" />
                 <Label className="text-xs font-semibold">
-                  Politique de confirmation des données (Human-in-the-loop)
+                  Politique globale (héritée par les outils)
                 </Label>
               </div>
-              <p className="text-[11px] text-muted-foreground">
-                Contrôlez si l'IA peut lire, modifier ou supprimer des données
-                en toute autonomie ou avec votre accord préalable.
-              </p>
-
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
                 <button
                   className={cn(
@@ -1186,15 +1746,14 @@ export default function McpClient() {
                   onClick={() => setFormRequireApproval("always_allow")}
                   type="button"
                 >
-                  <span className="font-semibold text-xs text-foreground mb-0.5 flex items-center gap-1.5">
+                  <span className="font-semibold text-xs flex items-center gap-1.5">
                     <CircleIcon className="size-2.5 fill-emerald-500 text-emerald-500" />
                     Automatique
                   </span>
                   <span className="text-[10px] text-muted-foreground">
-                    Exécution directe sans confirmation
+                    Sans confirmation
                   </span>
                 </button>
-
                 <button
                   className={cn(
                     "flex flex-col text-left p-2.5 rounded-xl border transition-colors cursor-pointer",
@@ -1205,15 +1764,14 @@ export default function McpClient() {
                   onClick={() => setFormRequireApproval("write_only")}
                   type="button"
                 >
-                  <span className="font-semibold text-xs text-foreground mb-0.5 flex items-center gap-1.5">
+                  <span className="font-semibold text-xs flex items-center gap-1.5">
                     <CircleIcon className="size-2.5 fill-sky-500 text-sky-500" />
-                    Accord pour écriture
+                    Écriture
                   </span>
                   <span className="text-[10px] text-muted-foreground">
-                    Lecture directe, confirmation pour modifier
+                    Lecture directe
                   </span>
                 </button>
-
                 <button
                   className={cn(
                     "flex flex-col text-left p-2.5 rounded-xl border transition-colors cursor-pointer",
@@ -1224,18 +1782,16 @@ export default function McpClient() {
                   onClick={() => setFormRequireApproval("ask_permission")}
                   type="button"
                 >
-                  <span className="font-semibold text-xs text-foreground mb-0.5 flex items-center gap-1.5">
+                  <span className="font-semibold text-xs flex items-center gap-1.5">
                     <CircleIcon className="size-2.5 fill-amber-500 text-amber-500" />
-                    Accord systématique
+                    Systématique
                   </span>
                   <span className="text-[10px] text-muted-foreground">
-                    Confirmation demandée pour chaque appel
+                    Toujours demander
                   </span>
                 </button>
               </div>
             </div>
-
-            {/* Résultat du test de connexion */}
             {testResult && (
               <div
                 className={cn(
@@ -1253,7 +1809,6 @@ export default function McpClient() {
                 <span>{testResult.message}</span>
               </div>
             )}
-
             <DialogFooter className="pt-2 flex items-center justify-between sm:justify-between w-full">
               <Button
                 disabled={isTesting}
@@ -1264,16 +1819,15 @@ export default function McpClient() {
                 {isTesting ? (
                   <>
                     <Loader2Icon className="size-3.5 mr-1.5 animate-spin" />
-                    Test en cours...
+                    Test...
                   </>
                 ) : (
                   <>
                     <RefreshCwIcon className="size-3.5 mr-1.5" />
-                    Tester la connexion
+                    Tester
                   </>
                 )}
               </Button>
-
               <div className="flex items-center gap-2">
                 <Button
                   onClick={() => setIsServerModalOpen(false)}
@@ -1283,83 +1837,142 @@ export default function McpClient() {
                   Annuler
                 </Button>
                 <Button disabled={isSaving} type="submit">
-                  {isSaving ? "Enregistrement..." : "Sauvegarder le serveur"}
+                  {isSaving ? "Enregistrement..." : "Sauvegarder"}
                 </Button>
               </div>
             </DialogFooter>
           </form>
         </DialogContent>
       </Dialog>
-
-      {/* Modal Inspection des outils d'un serveur */}
       <Dialog
         onOpenChange={(open) => !open && setIsInspectingTools(null)}
         open={Boolean(isInspectingTools)}
       >
-        <DialogContent className="max-w-xl max-h-[80vh] overflow-y-auto">
+        <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle>
-              Outils exposés : {isInspectingTools?.name}
-            </DialogTitle>
+            <DialogTitle>Outils : {isInspectingTools?.name}</DialogTitle>
             <DialogDescription>
-              {(isInspectingTools?.toolsCache as any[])?.length || 0} outil(s)
-              détecté(s) sur ce serveur MCP.
+              {((isInspectingTools?.toolsCache as any[]) || []).length} outil(s)
+              — cochez per-tool + permission.
             </DialogDescription>
           </DialogHeader>
-
           <div className="space-y-3 py-2">
-            {((isInspectingTools?.toolsCache as any[]) || []).map((t, idx) => (
-              <div
-                className="p-3 rounded-xl border border-border/50 bg-muted/20"
-                key={idx}
-              >
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-mono text-xs font-semibold text-primary">
-                    {t.name}
-                  </span>
-                </div>
-                <p className="text-xs text-muted-foreground mb-2">
-                  {t.description || "Aucune description fournie"}
-                </p>
-                {t.inputSchema?.properties && (
-                  <div className="pt-2 border-t border-border/30 text-[11px] text-muted-foreground font-mono">
-                    <span className="block font-sans font-medium text-[10px] text-foreground uppercase mb-1">
-                      Paramètres acceptés :
-                    </span>
-                    {Object.entries(t.inputSchema.properties).map(
-                      ([key, prop]: [string, any]) => (
-                        <div className="flex items-center gap-1.5" key={key}>
-                          <span className="text-foreground">{key}</span>
-                          <span className="text-muted-foreground/60">
-                            ({prop.type || "any"})
-                          </span>
-                          {prop.description && (
-                            <span className="truncate">
-                              - {prop.description}
-                            </span>
-                          )}
-                        </div>
-                      )
+            {((isInspectingTools?.toolsCache as any[]) || []).length === 0 && (
+              <div className="text-xs text-muted-foreground text-center p-4">
+                Aucun outil — synchronisez.
+              </div>
+            )}
+            {((isInspectingTools?.toolsCache as any[]) || []).map(
+              (t: any, idx: number) => {
+                const overrides =
+                  ((isInspectingTools as any)?.toolOverrides as Record<
+                    string,
+                    any
+                  >) ?? {};
+                const ov = overrides[t.name];
+                const enabled = ov?.enabled !== false;
+                const approval = ov?.requireApproval ?? null;
+                return (
+                  <div
+                    className={cn(
+                      "p-3 rounded-xl border",
+                      enabled
+                        ? "border-border/50 bg-muted/10"
+                        : "border-border/30 bg-muted/5 opacity-60"
+                    )}
+                    key={idx}
+                  >
+                    <div className="flex items-center justify-between gap-2 mb-1">
+                      <span className="font-mono text-xs font-semibold text-primary">
+                        {t.name}
+                      </span>
+                      <label className="flex items-center gap-1.5 text-xs cursor-pointer">
+                        <input
+                          checked={enabled}
+                          className="size-4 accent-primary"
+                          onChange={() =>
+                            handleToggleTool(isInspectingTools!, t.name)
+                          }
+                          type="checkbox"
+                        />
+                        <span>{enabled ? "Activé" : "Désactivé"}</span>
+                      </label>
+                    </div>
+                    <p className="text-xs text-muted-foreground mb-2">
+                      {t.description || "Aucune description"}
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <Label className="text-[11px]">Permission outil:</Label>
+                      <select
+                        className="h-7 rounded-md border bg-background px-2 text-xs"
+                        onChange={(e) =>
+                          handleSetToolApproval(
+                            isInspectingTools!,
+                            t.name,
+                            e.target.value || null
+                          )
+                        }
+                        value={approval ?? ""}
+                      >
+                        <option value="">
+                          Hérite (
+                          {(isInspectingTools as any)?.requireApproval ??
+                            "write_only"}
+                          )
+                        </option>
+                        <option value="always_allow">always_allow</option>
+                        <option value="write_only">write_only</option>
+                        <option value="ask_permission">ask_permission</option>
+                      </select>
+                    </div>
+                    {t.inputSchema?.properties && (
+                      <div className="pt-2 border-t border-border/30 text-[11px] font-mono">
+                        <span className="block font-sans font-medium text-[10px] uppercase mb-1">
+                          Params:
+                        </span>
+                        {Object.entries(t.inputSchema.properties).map(
+                          ([k, p]: [string, any]) => (
+                            <div className="flex gap-1.5" key={k}>
+                              <span className="text-foreground">{k}</span>
+                              <span className="text-muted-foreground/60">
+                                ({p.type})
+                              </span>
+                              <span className="truncate">{p.description}</span>
+                            </div>
+                          )
+                        )}
+                      </div>
                     )}
                   </div>
-                )}
-              </div>
-            ))}
+                );
+              }
+            )}
           </div>
+          <DialogFooter>
+            <Button
+              onClick={() =>
+                isInspectingTools && handleRefreshTools(isInspectingTools)
+              }
+              size="sm"
+              variant="outline"
+            >
+              Resynchroniser
+            </Button>
+            <Button onClick={() => setIsInspectingTools(null)} size="sm">
+              Fermer
+            </Button>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
-
-      {/* Confirmation Suppression Serveur */}
       <AlertDialog
         onOpenChange={(open) => !open && setSkillToDelete(null)}
         open={Boolean(serverToDelete)}
       >
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Supprimer ce serveur MCP ?</AlertDialogTitle>
+            <AlertDialogTitle>Supprimer ce serveur ?</AlertDialogTitle>
             <AlertDialogDescription>
-              Êtes-vous sûr de vouloir supprimer "{serverToDelete?.name}" ? L'IA
-              ne pourra plus appeler ses outils.
+              Êtes-vous sûr de vouloir supprimer "{serverToDelete?.name}" ?
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

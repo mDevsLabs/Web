@@ -31,7 +31,10 @@ export const requestSuggestions = ({
       }
 
       const sessionUserId = session.user?.id || (session.user as any)?.email;
-      if (document.userId !== sessionUserId && document.userId !== session.user?.id) {
+      if (
+        document.userId !== sessionUserId &&
+        document.userId !== session.user?.id
+      ) {
         return { error: "Forbidden" };
       }
 

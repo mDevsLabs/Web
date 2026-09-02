@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { AI_MODE_IDS } from "@/lib/ai/modes";
 
 const textPartSchema = z.object({
   text: z.string().min(1).max(2000),
@@ -52,17 +51,27 @@ const toolApprovalMessageSchema = z.object({
 });
 
 export const postRequestBodySchema = z.object({
+  agentId: z.string().uuid().nullable().optional(),
   customInstructions: z.string().max(4000).optional(),
   enabledTools: z.array(z.string()).optional().default([]),
   id: z.uuid(),
   isGhostMode: z.boolean().optional().default(false),
   message: userMessageSchema.optional(),
   messages: z.array(toolApprovalMessageSchema).optional(),
+  pendingPrompt: z
+    .object({
+      commandId: z.string().uuid().optional(),
+      text: z.string().min(1).max(4000),
+    })
+    .nullable()
+    .optional(),
   projectId: z.string().uuid().nullable().optional(),
-  selectedChatMode: z.enum(AI_MODE_IDS as [string, ...string[]]).optional(),
+  selectedAgentId: z.string().uuid().nullable().optional(),
+  selectedChatMode: z.string().nullable().optional(),
   selectedChatModel: z.string(),
   selectedVisibilityType: z.enum(["public", "private"]),
   skillId: z.string().uuid().nullable().optional(),
+  skillParams: z.record(z.string(), z.string().max(2000)).nullable().optional(),
   tags: z.array(z.string().min(1).max(30)).max(10).optional(),
   temperatureOverride: z.number().min(0).max(2).nullable().optional(),
 });

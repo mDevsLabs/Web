@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getMaiSessionToken } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
+import { normalizeModelDisplayName } from "@/lib/ai/models";
 
 export async function GET() {
   const token = await getMaiSessionToken();
@@ -27,10 +28,7 @@ export async function GET() {
     if (Array.isArray(data?.data)) {
       data.data = data.data.map((m: any) => ({
         ...m,
-        name: (m.name || m.id)
-          .replace(/\s*\((Free|free|Gratuit|gratuit)\)/gi, "")
-          .replace(/:free$/i, "")
-          .trim(),
+        name: normalizeModelDisplayName(m.id, m.name || m.id),
       }));
     }
     return NextResponse.json(data);
