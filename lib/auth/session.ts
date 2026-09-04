@@ -1,5 +1,5 @@
-import { cookies } from "next/headers";
 import { jwtVerify } from "jose";
+import { cookies } from "next/headers";
 import { MAI_API_URL, MAI_SESSION_COOKIE } from "@/lib/constants";
 
 export { MAI_SESSION_COOKIE } from "@/lib/constants";
@@ -88,7 +88,9 @@ function triggerBackgroundUsageRefresh(token: string) {
       if (data && !data.error) {
         const cached = userCache.get(token);
         if (cached) {
-          cached.user.tokensUsed = Number(data.tokensUsed || cached.user.tokensUsed);
+          cached.user.tokensUsed = Number(
+            data.tokensUsed || cached.user.tokensUsed
+          );
           cached.user.limit = Number(data.limit || cached.user.limit);
           cached.user.tier = data.tier || cached.user.tier;
           if (data.username) cached.user.username = data.username;
@@ -130,7 +132,11 @@ export async function getMaiUser(
       const user: MaiUser = {
         avatarUrl: payload.avatarUrl || null,
         email: payload.email || "",
-        id: payload.id ? String(payload.id) : payload.sub ? String(payload.sub) : payload.email || "",
+        id: payload.id
+          ? String(payload.id)
+          : payload.sub
+            ? String(payload.sub)
+            : payload.email || "",
         limit: Number(payload.limit || 2_000_000),
         phone: payload.phone || "",
         resetAt: payload.resetAt,

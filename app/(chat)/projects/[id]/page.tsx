@@ -288,7 +288,9 @@ export default function ProjectDetailPage() {
                 allowEmpty
                 fallbackModels={availableModels}
                 modal
-                models={availableModels.length > 0 ? availableModels : undefined}
+                models={
+                  availableModels.length > 0 ? availableModels : undefined
+                }
                 onModelChange={setDefaultModel}
                 selectedModelId={defaultModel}
                 variant="block"

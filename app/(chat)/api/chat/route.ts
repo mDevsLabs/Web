@@ -646,7 +646,27 @@ export async function POST(request: Request) {
           }
         }
 
+        const approvedToolIds = new Set<string>();
+        if (isToolApprovalFlow && messages) {
+          for (const m of messages) {
+            for (const p of (m.parts as any[]) ?? []) {
+              if (
+                (p.state === "approval-responded" ||
+                  p.state === "output-available") &&
+                p.approval?.approved !== false
+              ) {
+                if (p.toolName) approvedToolIds.add(String(p.toolName));
+                if (p.toolCallId) approvedToolIds.add(String(p.toolCallId));
+                if (typeof p.type === "string" && p.type.startsWith("tool-")) {
+                  approvedToolIds.add(p.type.replace(/^tool-/, ""));
+                }
+              }
+            }
+          }
+        }
+
         const mcpTools = createMcpChatTools({
+          approvedToolIds,
           chatId: id,
           servers: scopedMcpServers,
           userId,
@@ -1035,9 +1055,12 @@ export async function DELETE(request: Request) {
   }
 
   const chat = await getChatById({ id });
-  const userId = maiUser.id || maiUser.email;
+  if (!chat) {
+    return new ChatbotError("not_found:chat").toResponse();
+  }
 
-  if (chat?.userId !== userId && chat?.userId !== maiUser.email) {
+  const userId = maiUser.id || maiUser.email;
+  if (chat.userId !== userId && chat.userId !== maiUser.email) {
     return new ChatbotError("forbidden:chat").toResponse();
   }
 

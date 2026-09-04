@@ -1,6 +1,6 @@
 import { generateText } from "ai";
-import { getLanguageModel } from "@/lib/ai/providers";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { getLanguageModel } from "@/lib/ai/providers";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import {
   getAgentMemories,

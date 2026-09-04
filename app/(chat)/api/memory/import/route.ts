@@ -1,13 +1,13 @@
-import { getMaiUser } from "@/lib/auth/session";
+import { z } from "zod";
 import { memoryLimitForTier } from "@/lib/auth/plan";
-import { ChatbotError } from "@/lib/errors";
+import { getMaiUser } from "@/lib/auth/session";
+import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
 import {
   countMemories,
   createMemory,
   getUserMemoriesWithScope,
 } from "@/lib/db/queries";
-import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
-import { z } from "zod";
+import { ChatbotError } from "@/lib/errors";
 
 const memoryImportItemSchema = z.object({
   agentId: z.string().uuid().nullable().optional(),
@@ -21,7 +21,10 @@ const memoryImportItemSchema = z.object({
 
 const importSchema = z.object({
   memories: z.array(memoryImportItemSchema).min(1),
-  scope: z.enum(["all", "global", "agent", "project"]).optional().default("all"),
+  scope: z
+    .enum(["all", "global", "agent", "project"])
+    .optional()
+    .default("all"),
 });
 
 export async function POST(request: Request) {

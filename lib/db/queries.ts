@@ -36,9 +36,11 @@ import {
   mcpTemplate,
   message,
   project,
-  type Suggestion,
-  skill,
+  type ScheduledMessage,
   type Skill,
+  type Suggestion,
+  scheduledMessage,
+  skill,
   skillTemplate,
   skillUsage,
   skillVersion,
@@ -46,8 +48,6 @@ import {
   suggestion,
   userMcpPrefs,
   userMemory,
-  scheduledMessage,
-  type ScheduledMessage,
   vote,
 } from "./schema";
 
@@ -3166,8 +3166,10 @@ export async function getUserPreferences(userId: string) {
         defaultAudioSpeed: row.defaultAudioSpeed ?? 1.0,
         defaultAudioVoice: row.defaultAudioVoice || "flux-alexis-en",
         defaultChatModel: row.defaultChatModel || null,
-        defaultChatVisibility: (row.defaultChatVisibility as "private" | "public") || "private",
-        defaultImageModel: row.defaultImageModel || "black-forest-labs/flux-schnell",
+        defaultChatVisibility:
+          (row.defaultChatVisibility as "private" | "public") || "private",
+        defaultImageModel:
+          row.defaultImageModel || "black-forest-labs/flux-schnell",
         defaultImageSize: row.defaultImageSize || "1024x1024",
         enabled: Boolean(row.customInstructionsEnabled),
         ghostMemoryEnabled: Boolean(row.ghostMemoryEnabled),
@@ -3232,13 +3234,16 @@ export async function upsertUserPreferences(
       .values({
         customInstructions: data.customInstructions ?? "",
         customInstructionsEnabled: data.enabled ?? false,
-        defaultAgentId: data.defaultAgentId ? (data.defaultAgentId as any) : null,
+        defaultAgentId: data.defaultAgentId
+          ? (data.defaultAgentId as any)
+          : null,
         defaultAudioModel: data.defaultAudioModel ?? "deepgram/flux-tts:free",
         defaultAudioSpeed: data.defaultAudioSpeed ?? 1.0,
         defaultAudioVoice: data.defaultAudioVoice ?? "flux-alexis-en",
         defaultChatModel: data.defaultChatModel ?? null,
         defaultChatVisibility: data.defaultChatVisibility ?? "private",
-        defaultImageModel: data.defaultImageModel ?? "black-forest-labs/flux-schnell",
+        defaultImageModel:
+          data.defaultImageModel ?? "black-forest-labs/flux-schnell",
         defaultImageSize: data.defaultImageSize ?? "1024x1024",
         defaultTemperature: data.temperature ?? 0.7,
         defaultTopP: data.topP ?? 0.9,
@@ -3253,20 +3258,33 @@ export async function upsertUserPreferences(
   const updatePayload: Record<string, any> = {
     updatedAt: new Date(),
   };
-  if (data.customInstructions !== undefined) updatePayload.customInstructions = data.customInstructions;
-  if (data.enabled !== undefined) updatePayload.customInstructionsEnabled = data.enabled;
-  if (data.temperature !== undefined) updatePayload.defaultTemperature = data.temperature;
+  if (data.customInstructions !== undefined)
+    updatePayload.customInstructions = data.customInstructions;
+  if (data.enabled !== undefined)
+    updatePayload.customInstructionsEnabled = data.enabled;
+  if (data.temperature !== undefined)
+    updatePayload.defaultTemperature = data.temperature;
   if (data.topP !== undefined) updatePayload.defaultTopP = data.topP;
-  if (data.defaultAgentId !== undefined) updatePayload.defaultAgentId = data.defaultAgentId;
-  if (data.defaultChatModel !== undefined) updatePayload.defaultChatModel = data.defaultChatModel;
-  if (data.defaultChatVisibility !== undefined) updatePayload.defaultChatVisibility = data.defaultChatVisibility;
-  if (data.defaultImageModel !== undefined) updatePayload.defaultImageModel = data.defaultImageModel;
-  if (data.defaultImageSize !== undefined) updatePayload.defaultImageSize = data.defaultImageSize;
-  if (data.defaultAudioModel !== undefined) updatePayload.defaultAudioModel = data.defaultAudioModel;
-  if (data.defaultAudioVoice !== undefined) updatePayload.defaultAudioVoice = data.defaultAudioVoice;
-  if (data.defaultAudioSpeed !== undefined) updatePayload.defaultAudioSpeed = data.defaultAudioSpeed;
-  if (data.ghostMemoryEnabled !== undefined) updatePayload.ghostMemoryEnabled = data.ghostMemoryEnabled;
-  if (data.showAgentChatIcons !== undefined) updatePayload.showAgentChatIcons = data.showAgentChatIcons;
+  if (data.defaultAgentId !== undefined)
+    updatePayload.defaultAgentId = data.defaultAgentId;
+  if (data.defaultChatModel !== undefined)
+    updatePayload.defaultChatModel = data.defaultChatModel;
+  if (data.defaultChatVisibility !== undefined)
+    updatePayload.defaultChatVisibility = data.defaultChatVisibility;
+  if (data.defaultImageModel !== undefined)
+    updatePayload.defaultImageModel = data.defaultImageModel;
+  if (data.defaultImageSize !== undefined)
+    updatePayload.defaultImageSize = data.defaultImageSize;
+  if (data.defaultAudioModel !== undefined)
+    updatePayload.defaultAudioModel = data.defaultAudioModel;
+  if (data.defaultAudioVoice !== undefined)
+    updatePayload.defaultAudioVoice = data.defaultAudioVoice;
+  if (data.defaultAudioSpeed !== undefined)
+    updatePayload.defaultAudioSpeed = data.defaultAudioSpeed;
+  if (data.ghostMemoryEnabled !== undefined)
+    updatePayload.ghostMemoryEnabled = data.ghostMemoryEnabled;
+  if (data.showAgentChatIcons !== undefined)
+    updatePayload.showAgentChatIcons = data.showAgentChatIcons;
 
   const [updated] = await db
     .update(userPreferences)
@@ -4117,7 +4135,10 @@ export async function getAgentStatsByUserId({ userId }: { userId: string }) {
     .where(eq(chat.userId, userId))
     .groupBy(chat.agentId);
 
-  const countsMap = new Map<string, { count: number; lastUsedAt: string | null }>();
+  const countsMap = new Map<
+    string,
+    { count: number; lastUsedAt: string | null }
+  >();
   let totalStandardChats = 0;
   let totalAgentChats = 0;
 
@@ -4261,29 +4282,35 @@ export async function updateScheduledMessage(params: {
 
   if (updates.title !== undefined) updateData.title = updates.title;
   if (updates.prompt !== undefined) updateData.prompt = updates.prompt;
-  if (updates.scheduledAt !== undefined) updateData.scheduledAt = updates.scheduledAt;
-  if (updates.createMode !== undefined) updateData.createMode = updates.createMode;
+  if (updates.scheduledAt !== undefined)
+    updateData.scheduledAt = updates.scheduledAt;
+  if (updates.createMode !== undefined)
+    updateData.createMode = updates.createMode;
   if (updates.chatId !== undefined) updateData.chatId = updates.chatId;
   if (updates.agentId !== undefined) updateData.agentId = updates.agentId;
   if (updates.modelId !== undefined) updateData.modelId = updates.modelId;
-  if (updates.enabledTools !== undefined) updateData.enabledTools = updates.enabledTools;
-  if (updates.cloudFileUrls !== undefined) updateData.cloudFileUrls = updates.cloudFileUrls;
-  if (updates.customInstructions !== undefined) updateData.customInstructions = updates.customInstructions;
-  if (updates.temperature !== undefined) updateData.temperature = updates.temperature;
-  if (updates.recurrence !== undefined) updateData.recurrence = updates.recurrence;
-  if (updates.executedAt !== undefined) updateData.executedAt = updates.executedAt;
+  if (updates.enabledTools !== undefined)
+    updateData.enabledTools = updates.enabledTools;
+  if (updates.cloudFileUrls !== undefined)
+    updateData.cloudFileUrls = updates.cloudFileUrls;
+  if (updates.customInstructions !== undefined)
+    updateData.customInstructions = updates.customInstructions;
+  if (updates.temperature !== undefined)
+    updateData.temperature = updates.temperature;
+  if (updates.recurrence !== undefined)
+    updateData.recurrence = updates.recurrence;
+  if (updates.executedAt !== undefined)
+    updateData.executedAt = updates.executedAt;
   if (updates.lastError !== undefined) updateData.lastError = updates.lastError;
-  if (updates.resultChatId !== undefined) updateData.resultChatId = updates.resultChatId;
+  if (updates.resultChatId !== undefined)
+    updateData.resultChatId = updates.resultChatId;
   if (updates.status !== undefined) updateData.status = updates.status;
 
   const [updated] = await database
     .update(scheduledMessage)
     .set(updateData)
     .where(
-      and(
-        eq(scheduledMessage.id, id),
-        eq(scheduledMessage.userId, userId)
-      )
+      and(eq(scheduledMessage.id, id), eq(scheduledMessage.userId, userId))
     )
     .returning();
   return updated ?? null;
@@ -4359,13 +4386,13 @@ export async function setScheduledMessageStatus(params: {
   await database
     .update(scheduledMessage)
     .set({
-      executedAt: params.executedAt !== undefined ? params.executedAt : undefined,
-      lastError: params.lastError !== undefined ? params.lastError : undefined,
-      resultChatId: params.resultChatId !== undefined ? params.resultChatId : undefined,
+      executedAt:
+        params.executedAt === undefined ? undefined : params.executedAt,
+      lastError: params.lastError === undefined ? undefined : params.lastError,
+      resultChatId:
+        params.resultChatId === undefined ? undefined : params.resultChatId,
       status: params.status,
       updatedAt: new Date(),
     })
     .where(eq(scheduledMessage.id, params.id));
 }
-
-

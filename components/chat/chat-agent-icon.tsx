@@ -1,7 +1,7 @@
 "use client";
 
-import { memo } from "react";
 import { BotIcon } from "lucide-react";
+import { memo } from "react";
 import { resolveAgentIcon } from "@/components/agents/agent-registry";
 
 /**
@@ -46,11 +46,13 @@ export const ChatAgentIcon = memo(function ChatAgentIcon({
           width: size + 2,
         }}
       >
-        <Icon size={size - 2} color="#fff" />
+        <Icon color="#fff" size={size - 2} />
       </span>
     );
   }
 
   // Standard (no custom agent): neutral bot glyph
-  return <BotIcon className="shrink-0 text-sidebar-foreground/50" size={size} />;
+  return (
+    <BotIcon className="shrink-0 text-sidebar-foreground/50" size={size} />
+  );
 });

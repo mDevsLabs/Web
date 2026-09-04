@@ -4,8 +4,8 @@ import {
   BrainIcon,
   CalculatorIcon,
   CalendarIcon,
-  CoinsIcon,
   CloudSunIcon,
+  CoinsIcon,
   FileTextIcon,
   GlobeIcon,
   HelpCircleIcon,
@@ -53,6 +53,13 @@ export type ToolMeta = {
 };
 
 export const TOOLS_META: Record<ToolId, ToolMeta> = {
+  askUser: {
+    description:
+      "Formulaire interactif de questions (1 à 10 questions, choix unique ou multiple avec saisie personnalisée) pour préciser un besoin ou recueillir les préférences de l'utilisateur.",
+    icon: HelpCircleIcon as any,
+    id: "askUser",
+    label: "Questions à l'utilisateur",
+  },
   audioGenerate: {
     description:
       "Transforme un texte en voix ou extrait audio, avec choix de la voix et du style. À activer pour écouter un contenu, créer une narration, un podcast ou un doublage.",
@@ -146,6 +153,13 @@ export const TOOLS_META: Record<ToolId, ToolMeta> = {
     id: "qrCodeGenerator",
     label: "Générer QR Code",
   },
+  quizzly: {
+    description:
+      "Générateur de quiz interactifs sur mesure avec correction dynamique vert/rouge, explications détaillées et score final.",
+    icon: TrophyIcon as any,
+    id: "quizzly",
+    label: "Quizzly",
+  },
   readUrl: {
     description:
       "Extrait et lit le contenu textuel propre d'une page Web ou d'une documentation technique à partir de son URL en ignorant les menus et éléments parasites.",
@@ -175,25 +189,13 @@ export const TOOLS_META: Record<ToolId, ToolMeta> = {
     id: "webSearch",
     label: "Recherche Web",
   },
-  askUser: {
-    description:
-      "Formulaire interactif de questions (1 à 10 questions, choix unique ou multiple avec saisie personnalisée) pour préciser un besoin ou recueillir les préférences de l'utilisateur.",
-    icon: HelpCircleIcon as any,
-    id: "askUser",
-    label: "Questions à l'utilisateur",
-  },
-  quizzly: {
-    description:
-      "Générateur de quiz interactifs sur mesure avec correction dynamique vert/rouge, explications détaillées et score final.",
-    icon: TrophyIcon as any,
-    id: "quizzly",
-    label: "Quizzly",
-  },
 };
 
 // Hints injectés dans le prompt système (côté modèle) — source unique,
 // importée par app/(chat)/api/chat/route.ts.
 export const TOOL_SYSTEM_HINTS: Record<ToolId, string> = {
+  askUser:
+    "askUser (pose de 1 à 10 questions précises et structurées à l'utilisateur avec choix uniques/multiples et option champ libre lorsqu'une demande est incomplète, nécessite des éclaircissements, ou des préférences avant de poursuivre)",
   audioGenerate:
     "audioGenerate (synthèse vocale : transforme un texte en voix. Exécuter immédiatement avec la voix par défaut 'flux-alexis-en' sans demander le choix de la voix)",
   calculator:
@@ -219,6 +221,8 @@ export const TOOL_SYSTEM_HINTS: Record<ToolId, string> = {
   note: "note (crée une note formatée et téléchargeable : markdown, texte, JSON, CSV, HTML, code)",
   qrCodeGenerator:
     "qrCodeGenerator (génère un QR code vectoriel SVG/PNG scannable pour un lien, texte, contact ou Wi-Fi)",
+  quizzly:
+    "quizzly (génère un quiz interactif complet de 1 à 50 questions avec choix unique/multiple, réponses correctes, explications et calcul de score pour tester l'utilisateur de manière ludique)",
   readUrl:
     "readUrl (extrait et lit le texte propre et structuré d'une page Web ou d'une documentation en ligne via son URL)",
   requestSuggestions:
@@ -227,10 +231,6 @@ export const TOOL_SYSTEM_HINTS: Record<ToolId, string> = {
     "updateDocument (réécriture complète d'un artefact : pour une refonte ; préférer editDocument pour des ajustements)",
   webSearch:
     "webSearch (recherche sur le Web en temps réel : actualités, documentation, faits vérifiables — citer les sources retournées)",
-  askUser:
-    "askUser (pose de 1 à 10 questions précises et structurées à l'utilisateur avec choix uniques/multiples et option champ libre lorsqu'une demande est incomplète, nécessite des éclaircissements, ou des préférences avant de poursuivre)",
-  quizzly:
-    "quizzly (génère un quiz interactif complet de 1 à 50 questions avec choix unique/multiple, réponses correctes, explications et calcul de score pour tester l'utilisateur de manière ludique)",
 };
 
 export const DEFAULT_ENABLED_TOOLS: ToolId[] = []; // tous désactivés par défaut

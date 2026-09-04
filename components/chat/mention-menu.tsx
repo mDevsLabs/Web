@@ -29,7 +29,11 @@ export type MentionSelectPayload =
   | { type: "skill"; skill: Skill }
   | { type: "mcp"; server: McpServer }
   | { type: "customCommand"; command: CustomCommand }
-  | { type: "system"; action: "web" | "library" | "planning" | "notes"; label: string }
+  | {
+      type: "system";
+      action: "web" | "library" | "planning" | "notes";
+      label: string;
+    }
   | { type: "memory" };
 
 type MentionMenuProps = {

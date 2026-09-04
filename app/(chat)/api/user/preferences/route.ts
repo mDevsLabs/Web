@@ -1,10 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getMaiUser } from "@/lib/auth/session";
-import {
-  getUserPreferences,
-  upsertUserPreferences,
-} from "@/lib/db/queries";
+import { getUserPreferences, upsertUserPreferences } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 
 const schema = z.object({
@@ -64,11 +61,14 @@ export async function POST(request: Request) {
     const body = await request.json().catch(() => ({}));
     const parsed = schema.safeParse(body);
     if (!parsed.success) {
-      return NextResponse.json({ error: parsed.error.message }, { status: 400 });
+      return NextResponse.json(
+        { error: parsed.error.message },
+        { status: 400 }
+      );
     }
 
     const updated = await upsertUserPreferences(userId, parsed.data);
-    return NextResponse.json({ success: true, preferences: updated });
+    return NextResponse.json({ preferences: updated, success: true });
   } catch (e) {
     console.error("POST user preferences error", e);
     return new ChatbotError("bad_request:database").toResponse();

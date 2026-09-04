@@ -39,7 +39,6 @@ import {
 } from "@/components/chat/sidebar-history";
 import { SidebarUserNav } from "@/components/chat/sidebar-user-nav";
 import { UpgradeDialog } from "@/components/common/upgrade-dialog";
-import { useActiveChat } from "@/hooks/use-active-chat";
 import {
   Collapsible,
   CollapsibleContent,
@@ -69,6 +68,7 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { useActiveChat } from "@/hooks/use-active-chat";
 import { useProjects } from "@/hooks/use-projects";
 import { useTier } from "@/hooks/use-tier";
 import type { MaiUser } from "@/lib/auth/session";
@@ -622,10 +622,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                     className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
                     tooltip="Planification"
                   >
-                    <Link
-                      href="/planning"
-                      onClick={handleNavClick}
-                    >
+                    <Link href="/planning" onClick={handleNavClick}>
                       <CalendarClockIcon className="size-4" />
                       <span>Planification</span>
                     </Link>

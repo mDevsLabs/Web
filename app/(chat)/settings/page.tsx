@@ -1188,7 +1188,9 @@ export default function SettingsPage() {
                               : "Afficher le mot de passe"
                           }
                           className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground transition-colors cursor-pointer rounded"
-                          onClick={() => setShowCurrentPassword((prev) => !prev)}
+                          onClick={() =>
+                            setShowCurrentPassword((prev) => !prev)
+                          }
                           tabIndex={-1}
                           type="button"
                         >

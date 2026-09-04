@@ -12,8 +12,8 @@ import {
   UsersIcon,
 } from "lucide-react";
 import useSWR from "swr";
-import { AgentIcon } from "./agent-icon";
 import { cn } from "@/lib/utils";
+import { AgentIcon } from "./agent-icon";
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
@@ -78,9 +78,16 @@ export function AgentsStats() {
     );
   }
 
-  const { agents = [], totalAgentChats, totalChats, totalStandardChats, totalAgents } = data;
+  const {
+    agents = [],
+    totalAgentChats,
+    totalChats,
+    totalStandardChats,
+    totalAgents,
+  } = data;
   const topAgent = agents[0]?.usageCount > 0 ? agents[0] : null;
-  const agentSharePercent = totalChats > 0 ? Math.round((totalAgentChats / totalChats) * 100) : 0;
+  const agentSharePercent =
+    totalChats > 0 ? Math.round((totalAgentChats / totalChats) * 100) : 0;
   const maxAgentUsage = Math.max(...agents.map((a) => a.usageCount), 1);
 
   return (
@@ -90,13 +97,17 @@ export function AgentsStats() {
         {/* Total Conversations */}
         <div className="rounded-2xl border border-border/60 bg-card p-4 flex flex-col justify-between shadow-xs">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-muted-foreground">Total discussions</span>
+            <span className="text-xs font-medium text-muted-foreground">
+              Total discussions
+            </span>
             <div className="size-8 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
               <MessageSquareIcon className="size-4" />
             </div>
           </div>
           <div className="mt-3">
-            <span className="text-2xl font-bold text-foreground">{totalChats}</span>
+            <span className="text-2xl font-bold text-foreground">
+              {totalChats}
+            </span>
             <p className="text-[11px] text-muted-foreground mt-0.5">
               {totalAgentChats} avec agent • {totalStandardChats} standard
             </p>
@@ -106,13 +117,17 @@ export function AgentsStats() {
         {/* Part des agents */}
         <div className="rounded-2xl border border-border/60 bg-card p-4 flex flex-col justify-between shadow-xs">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-muted-foreground">Taux d'adoption des agents</span>
+            <span className="text-xs font-medium text-muted-foreground">
+              Taux d'adoption des agents
+            </span>
             <div className="size-8 rounded-xl bg-indigo-500/10 text-indigo-600 flex items-center justify-center">
               <TrendingUpIcon className="size-4" />
             </div>
           </div>
           <div className="mt-3">
-            <span className="text-2xl font-bold text-foreground">{agentSharePercent}%</span>
+            <span className="text-2xl font-bold text-foreground">
+              {agentSharePercent}%
+            </span>
             <p className="text-[11px] text-muted-foreground mt-0.5">
               des conversations utilisent un agent personnalisé
             </p>
@@ -122,7 +137,9 @@ export function AgentsStats() {
         {/* Agent le plus actif */}
         <div className="rounded-2xl border border-border/60 bg-card p-4 flex flex-col justify-between shadow-xs">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-muted-foreground">Agent le plus utilisé</span>
+            <span className="text-xs font-medium text-muted-foreground">
+              Agent le plus utilisé
+            </span>
             <div className="size-8 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center">
               <SparklesIcon className="size-4" />
             </div>
@@ -142,16 +159,23 @@ export function AgentsStats() {
                       variant="plain"
                     />
                   </div>
-                  <span className="text-base font-bold text-foreground truncate">{topAgent.name}</span>
+                  <span className="text-base font-bold text-foreground truncate">
+                    {topAgent.name}
+                  </span>
                 </div>
                 <p className="text-[11px] text-muted-foreground mt-0.5">
-                  {topAgent.usageCount} conversation{topAgent.usageCount > 1 ? "s" : ""}
+                  {topAgent.usageCount} conversation
+                  {topAgent.usageCount > 1 ? "s" : ""}
                 </p>
               </>
             ) : (
               <>
-                <span className="text-base font-bold text-foreground">Aucun pour l'instant</span>
-                <p className="text-[11px] text-muted-foreground mt-0.5">Lancez une discussion avec un agent</p>
+                <span className="text-base font-bold text-foreground">
+                  Aucun pour l'instant
+                </span>
+                <p className="text-[11px] text-muted-foreground mt-0.5">
+                  Lancez une discussion avec un agent
+                </p>
               </>
             )}
           </div>
@@ -160,13 +184,17 @@ export function AgentsStats() {
         {/* Total agents configurés */}
         <div className="rounded-2xl border border-border/60 bg-card p-4 flex flex-col justify-between shadow-xs">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-muted-foreground">Agents configurés</span>
+            <span className="text-xs font-medium text-muted-foreground">
+              Agents configurés
+            </span>
             <div className="size-8 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center">
               <BotIcon className="size-4" />
             </div>
           </div>
           <div className="mt-3">
-            <span className="text-2xl font-bold text-foreground">{totalAgents}/10</span>
+            <span className="text-2xl font-bold text-foreground">
+              {totalAgents}/10
+            </span>
             <p className="text-[11px] text-muted-foreground mt-0.5">
               agents personnalisés prêts à l'emploi
             </p>
@@ -197,7 +225,9 @@ export function AgentsStats() {
           ) : (
             <div className="flex flex-col gap-3 pt-2">
               {agents.map((ag) => {
-                const percent = Math.round((ag.usageCount / maxAgentUsage) * 100);
+                const percent = Math.round(
+                  (ag.usageCount / maxAgentUsage) * 100
+                );
                 return (
                   <div className="flex flex-col gap-1.5" key={ag.id}>
                     <div className="flex items-center justify-between text-xs">
@@ -213,7 +243,9 @@ export function AgentsStats() {
                             variant="plain"
                           />
                         </div>
-                        <span className="font-medium text-foreground truncate">{ag.name}</span>
+                        <span className="font-medium text-foreground truncate">
+                          {ag.name}
+                        </span>
                         <span className="text-[10px] font-mono text-muted-foreground hidden sm:inline truncate max-w-[140px]">
                           ({ag.defaultModelId})
                         </span>
@@ -243,7 +275,9 @@ export function AgentsStats() {
         <div className="lg:col-span-1 rounded-2xl border border-border/60 bg-card p-5 flex flex-col justify-between shadow-xs">
           <div className="flex items-center gap-2 mb-4">
             <PieChartIcon className="size-4 text-indigo-500" />
-            <h4 className="text-sm font-semibold text-foreground">Répartition des discussions</h4>
+            <h4 className="text-sm font-semibold text-foreground">
+              Répartition des discussions
+            </h4>
           </div>
 
           <div className="flex flex-col items-center justify-center my-auto py-2">
@@ -270,8 +304,12 @@ export function AgentsStats() {
                 />
               </svg>
               <div className="absolute flex flex-col items-center justify-center text-center">
-                <span className="text-xl font-extrabold text-foreground">{agentSharePercent}%</span>
-                <span className="text-[10px] text-muted-foreground font-medium">Agents</span>
+                <span className="text-xl font-extrabold text-foreground">
+                  {agentSharePercent}%
+                </span>
+                <span className="text-[10px] text-muted-foreground font-medium">
+                  Agents
+                </span>
               </div>
             </div>
 
@@ -281,14 +319,20 @@ export function AgentsStats() {
                   <span className="size-2.5 rounded-full bg-indigo-500" />
                   <span className="text-muted-foreground">Avec agent</span>
                 </div>
-                <span className="font-semibold text-foreground font-mono">{totalAgentChats}</span>
+                <span className="font-semibold text-foreground font-mono">
+                  {totalAgentChats}
+                </span>
               </div>
               <div className="flex items-center justify-between p-2 rounded-xl bg-muted/20 border border-border/30">
                 <div className="flex items-center gap-2">
                   <span className="size-2.5 rounded-full bg-muted-foreground/40" />
-                  <span className="text-muted-foreground">Standard (sans agent)</span>
+                  <span className="text-muted-foreground">
+                    Standard (sans agent)
+                  </span>
                 </div>
-                <span className="font-semibold text-foreground font-mono">{totalStandardChats}</span>
+                <span className="font-semibold text-foreground font-mono">
+                  {totalStandardChats}
+                </span>
               </div>
             </div>
           </div>
@@ -299,7 +343,9 @@ export function AgentsStats() {
       <div className="rounded-2xl border border-border/60 bg-card overflow-hidden shadow-xs">
         <div className="p-4 sm:px-6 border-b border-border/40 flex items-center justify-between">
           <div>
-            <h4 className="text-sm font-semibold text-foreground">Détail de l'activité par agent</h4>
+            <h4 className="text-sm font-semibold text-foreground">
+              Détail de l'activité par agent
+            </h4>
             <p className="text-xs text-muted-foreground">
               Historique des sollicitations et dernière utilisation
             </p>
@@ -317,13 +363,18 @@ export function AgentsStats() {
                 <tr>
                   <th className="py-3 px-4 font-semibold">Agent</th>
                   <th className="py-3 px-4 font-semibold">Modèle IA</th>
-                  <th className="py-3 px-4 font-semibold text-center">Discussions</th>
+                  <th className="py-3 px-4 font-semibold text-center">
+                    Discussions
+                  </th>
                   <th className="py-3 px-4 font-semibold">Dernière activité</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border/30">
                 {agents.map((ag) => (
-                  <tr className="hover:bg-muted/20 transition-colors" key={ag.id}>
+                  <tr
+                    className="hover:bg-muted/20 transition-colors"
+                    key={ag.id}
+                  >
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-2.5">
                         <div
@@ -359,10 +410,22 @@ export function AgentsStats() {
                       {ag.lastUsedAt ? (
                         <div className="flex items-center gap-1.5">
                           <ClockIcon className="size-3 text-muted-foreground/70" />
-                          <span>{new Date(ag.lastUsedAt).toLocaleDateString("fr-FR", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}</span>
+                          <span>
+                            {new Date(ag.lastUsedAt).toLocaleDateString(
+                              "fr-FR",
+                              {
+                                day: "numeric",
+                                hour: "2-digit",
+                                minute: "2-digit",
+                                month: "short",
+                              }
+                            )}
+                          </span>
                         </div>
                       ) : (
-                        <span className="text-muted-foreground/60 italic">Jamais utilisé</span>
+                        <span className="text-muted-foreground/60 italic">
+                          Jamais utilisé
+                        </span>
                       )}
                     </td>
                   </tr>

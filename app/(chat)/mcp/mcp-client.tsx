@@ -117,7 +117,10 @@ export default function McpClient() {
   const { data: logs = [], mutate: mutateLogs } = useSWR<McpLog[]>(
     "/api/mcp/logs",
     fetcher,
-    { refreshInterval: activeTab === "logs" ? 10_000 : 0, revalidateOnFocus: false }
+    {
+      refreshInterval: activeTab === "logs" ? 10_000 : 0,
+      revalidateOnFocus: false,
+    }
   );
   const { data: tplData, mutate: mutateTpl } = useSWR<{ templates: any[] }>(
     "/api/mcp/templates",
@@ -937,7 +940,9 @@ export default function McpClient() {
                           ● {(s as any).uptimeStatus ?? "unknown"}
                         </span>
                         <span>·</span>
-                        <span>{enabledCount}/{toolsCount} actifs</span>
+                        <span>
+                          {enabledCount}/{toolsCount} actifs
+                        </span>
                       </div>
                       <div className="flex items-center gap-1.5 flex-wrap mb-3">
                         <Badge
@@ -974,7 +979,10 @@ export default function McpClient() {
                               ? "Accord écriture"
                               : "Auto-approuvé"}
                         </Badge>
-                        <Badge className="text-[10px] px-2 py-0.5" variant="outline">
+                        <Badge
+                          className="text-[10px] px-2 py-0.5"
+                          variant="outline"
+                        >
                           ⏱ {(s as any).timeoutMs ?? 15_000}ms ·{" "}
                           {(s as any).rateLimitPerMin ?? 60}/min
                         </Badge>

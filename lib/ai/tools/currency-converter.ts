@@ -52,7 +52,9 @@ export const currencyConverter = tool({
         const fiatKey = cryptoIds[from] ? to.toLowerCase() : from.toLowerCase();
 
         const url = `https://api.coingecko.com/api/v3/simple/price?ids=${cryptoKey}&vs_currencies=${fiatKey}`;
-        const resp = await fetch(url, { headers: { Accept: "application/json" } });
+        const resp = await fetch(url, {
+          headers: { Accept: "application/json" },
+        });
 
         if (resp.ok) {
           const data = await resp.json();
@@ -90,7 +92,9 @@ export const currencyConverter = tool({
     // Devises fiduciaires via Frankfurter (BCE European Central Bank)
     try {
       const url = `https://api.frankfurter.app/latest?amount=${amount}&from=${from}&to=${to}`;
-      const response = await fetch(url, { headers: { Accept: "application/json" } });
+      const response = await fetch(url, {
+        headers: { Accept: "application/json" },
+      });
 
       if (!response.ok) {
         return {
@@ -117,7 +121,9 @@ export const currencyConverter = tool({
         to,
       };
     } catch (err: any) {
-      return { error: `Erreur lors de la conversion de devise : ${err.message || "inconnue"}` };
+      return {
+        error: `Erreur lors de la conversion de devise : ${err.message || "inconnue"}`,
+      };
     }
   },
   inputSchema: z.object({
@@ -130,11 +136,15 @@ export const currencyConverter = tool({
       .string()
       .min(3)
       .max(5)
-      .describe("Code devise source ISO 4217 (ex: EUR, USD, GBP, JPY, CHF, CAD) ou crypto (BTC, ETH, SOL)"),
+      .describe(
+        "Code devise source ISO 4217 (ex: EUR, USD, GBP, JPY, CHF, CAD) ou crypto (BTC, ETH, SOL)"
+      ),
     to: z
       .string()
       .min(3)
       .max(5)
-      .describe("Code devise cible ISO 4217 (ex: USD, EUR, GBP, JPY) ou crypto (BTC, ETH, SOL)"),
+      .describe(
+        "Code devise cible ISO 4217 (ex: USD, EUR, GBP, JPY) ou crypto (BTC, ETH, SOL)"
+      ),
   }),
 });

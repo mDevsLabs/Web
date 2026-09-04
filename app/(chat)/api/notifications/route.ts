@@ -129,7 +129,9 @@ export async function DELETE(request: Request) {
   }
 
   if (clearRead) {
-    const { getNotificationsByUserId, deleteNotification } = await import("@/lib/db/queries");
+    const { getNotificationsByUserId, deleteNotification } = await import(
+      "@/lib/db/queries"
+    );
     const notifs = await getNotificationsByUserId({
       limit: 50,
       userId,

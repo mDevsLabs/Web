@@ -128,7 +128,9 @@ export function registerAudioRoutes(app: Hono) {
 
       // Règle stricte : filtrer par l'ID contenant ':free' quel que soit le forfait
       const freeSpeechModels = rawModels
-        .filter((m) => m && m.id && (m.id || "").toLowerCase().includes(":free"))
+        .filter(
+          (m) => m && m.id && (m.id || "").toLowerCase().includes(":free")
+        )
         .map((m) => {
           const rawName = m.name || m.id;
           const cleanedName = cleanModelName(rawName) || cleanModelName(m.id);
@@ -181,8 +183,8 @@ export function registerAudioRoutes(app: Hono) {
   // ─────────────────────────────────────────────
   // GET /v1/speech/voices & /v1/audio/voices
   // ─────────────────────────────────────────────
-  const handleGetSpeechVoices = (c: any) => {
-    return c.json({
+  const handleGetSpeechVoices = (c: any) =>
+    c.json({
       data: [
         {
           description: "Voix féminine chaleureuse, naturelle et claire.",
@@ -206,7 +208,8 @@ export function registerAudioRoutes(app: Hono) {
           name: "Stacy",
         },
         {
-          description: "Voix masculine profonde, idéale pour narration & podcast.",
+          description:
+            "Voix masculine profonde, idéale pour narration & podcast.",
           gender: "male",
           id: "flux-sam-en",
           language: "fr/en",
@@ -229,7 +232,6 @@ export function registerAudioRoutes(app: Hono) {
       ],
       object: "list",
     });
-  };
 
   app.get("/v1/speech/voices", handleGetSpeechVoices);
   app.get("/speech/voices", handleGetSpeechVoices);
@@ -305,8 +307,8 @@ export function registerAudioRoutes(app: Hono) {
         resetAt: nextResetIso,
         tokensUsed,
         userId,
-        weekStart: weekStartStr,
         weeklyLimit,
+        weekStart: weekStartStr,
       });
     } catch (err: any) {
       return c.json(
@@ -397,7 +399,9 @@ export function registerAudioRoutes(app: Hono) {
 
       if (body.title !== undefined) {
         sets.push(`title = $${idx++}`);
-        values.push(body.title ? String(body.title).trim().slice(0, 200) : null);
+        values.push(
+          body.title ? String(body.title).trim().slice(0, 200) : null
+        );
       }
       if (body.pinned !== undefined) {
         sets.push(`pinned = $${idx++}`);
@@ -569,18 +573,19 @@ export function registerAudioRoutes(app: Hono) {
         body.response_format ||
         (body.audioConfig?.audioEncoding === "OGG_OPUS" ? "opus" : "mp3");
       const speed =
-        body.speed !== undefined
-          ? body.speed
-          : body.audioConfig?.speakingRate !== undefined
-            ? body.audioConfig.speakingRate
-            : 1.0;
+        body.speed === undefined
+          ? body.audioConfig?.speakingRate === undefined
+            ? 1.0
+            : body.audioConfig.speakingRate
+          : body.speed;
 
       if (!input) {
         return c.json(
           {
             error: {
               code: "missing_input",
-              message: "Le paramètre 'input' ou 'prompt' est obligatoire pour la synthèse vocale.",
+              message:
+                "Le paramètre 'input' ou 'prompt' est obligatoire pour la synthèse vocale.",
               param: "input",
               type: "invalid_request_error",
             },
@@ -689,7 +694,8 @@ export function registerAudioRoutes(app: Hono) {
         return c.json(
           {
             details: errText,
-            error: "Erreur retournée par le fournisseur OpenRouter pour Speech.",
+            error:
+              "Erreur retournée par le fournisseur OpenRouter pour Speech.",
           },
           openRouterRes.status
         );

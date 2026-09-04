@@ -1,7 +1,6 @@
+import { getStreamContext } from "@/app/(chat)/api/chat/route";
 import { getMaiUser } from "@/lib/auth/session";
 import { getChatById, getStreamIdsByChatId } from "@/lib/db/queries";
-
-import { getStreamContext } from "@/app/(chat)/api/chat/route";
 
 export async function GET(
   _request: Request,

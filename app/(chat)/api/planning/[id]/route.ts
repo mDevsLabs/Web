@@ -78,7 +78,8 @@ export async function PATCH(
     const effectiveStatus =
       parsed.status ??
       (terminalStatuses.includes(existing.status) ? "pending" : undefined);
-    const isReset = effectiveStatus === "pending" && existing.status !== "pending";
+    const isReset =
+      effectiveStatus === "pending" && existing.status !== "pending";
 
     const updated = await updateScheduledMessage({
       agentId: parsed.agentId,
@@ -134,10 +135,7 @@ export async function DELETE(
 
   const success = await deleteScheduledMessage({ id, userId });
   if (!success) {
-    return NextResponse.json(
-      { error: "Message introuvable" },
-      { status: 404 }
-    );
+    return NextResponse.json({ error: "Message introuvable" }, { status: 404 });
   }
 
   return NextResponse.json({ success: true });

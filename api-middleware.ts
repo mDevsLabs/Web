@@ -1,5 +1,12 @@
 import type { Hono } from "npm:hono@4";
-import { extractTierFromApiKey, getDb, getTierRequestLimit, getUserQuotaBoost, getWeekData, verifyToken } from "./config.ts";
+import {
+  extractTierFromApiKey,
+  getDb,
+  getTierRequestLimit,
+  getUserQuotaBoost,
+  getWeekData,
+  verifyToken,
+} from "./config.ts";
 
 export function registerMiddleware(app: Hono) {
   // Middleware global pour Auth, Rate limiting & Logging sur toutes les routes d'API
@@ -43,6 +50,25 @@ export function registerMiddleware(app: Hono) {
     }
 
     const isPublicRoute =
+      path === "/" ||
+      path === "/api" ||
+      path === "/api/" ||
+      path === "/v1" ||
+      path === "/v1/" ||
+      path === "/vibe" ||
+      path === "/vibe/" ||
+      path === "/api/vibe" ||
+      path === "/api/vibe/" ||
+      path.startsWith("/v1/feed") ||
+      path.startsWith("/api/vibe/feed") ||
+      path.startsWith("/vibe/feed") ||
+      path === "/feed" ||
+      path.startsWith("/v1/posts") ||
+      path.startsWith("/api/vibe/posts") ||
+      path.startsWith("/v1/trends") ||
+      path.startsWith("/api/vibe/trends") ||
+      path.startsWith("/v1/profiles") ||
+      path.startsWith("/api/vibe/profiles") ||
       path === "/v1/models" ||
       path === "/models" ||
       path === "/v1beta/models" ||
@@ -76,9 +102,7 @@ export function registerMiddleware(app: Hono) {
       c.req.header("X-API-Key") ||
       c.req.header("x-goog-api-key") ||
       c.req.header("X-Goog-Api-Key");
-    const queryApiKey =
-      c.req.query("api_key") ||
-      c.req.query("key");
+    const queryApiKey = c.req.query("api_key") || c.req.query("key");
 
     let rawApiKey =
       (authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : authHeader) ||
@@ -144,14 +168,21 @@ export function registerMiddleware(app: Hono) {
           const apiKeyData = rows[0];
           // Si le TIER_USER a été extrait de la clé fournie, il fait foi en priorité
           if (!keyTier) {
-            const rawPlan = String(apiKeyData.plan || "").trim().toLowerCase();
+            const rawPlan = String(apiKeyData.plan || "")
+              .trim()
+              .toLowerCase();
             const validTiers = ["free", "plus", "pro", "max"];
-            userPlan = apiKeyData.user_tier || (validTiers.includes(rawPlan) ? apiKeyData.plan : "Plus");
+            userPlan =
+              apiKeyData.user_tier ||
+              (validTiers.includes(rawPlan) ? apiKeyData.plan : "Plus");
           }
           currentUserId = apiKeyData.user_id;
           matchedApiKey = apiKeyData.api_key || apiKey;
           isRegisteredApiKey = true;
-        } else if (systemMaiApiKey && timingSafeEqual(apiKey, systemMaiApiKey)) {
+        } else if (
+          systemMaiApiKey &&
+          timingSafeEqual(apiKey, systemMaiApiKey)
+        ) {
           userPlan = "Plus";
           currentUserId = "system-mai";
         } else {
@@ -257,21 +288,29 @@ export function registerMiddleware(app: Hono) {
         const used = Number(countRows[0]?.total_requests || 0);
         const remaining = Math.max(0, limit - used);
 
-        (c as any).set("requestQuota", { apiKey: matchedApiKey, limit, remaining, used });
+        (c as any).set("requestQuota", {
+          apiKey: matchedApiKey,
+          limit,
+          remaining,
+          used,
+        });
 
         if (remaining < 1) {
           if (isPublicRoute) {
             await next();
             return;
           }
-          return c.json({
-            code: "quota_exceeded",
-            error: "Quota exceeded for your account.",
-            limit,
-            remaining,
-            resetAt: nextResetIso,
-            used,
-          }, 429);
+          return c.json(
+            {
+              code: "quota_exceeded",
+              error: "Quota exceeded for your account.",
+              limit,
+              remaining,
+              resetAt: nextResetIso,
+              used,
+            },
+            429
+          );
         }
       } catch {}
     }
@@ -287,7 +326,10 @@ export function registerMiddleware(app: Hono) {
     // Uniquement pour les clés API enregistrées : +1 requête au solde hebdomadaire du
     // propriétaire de la clé. Les requêtes authentifiées par JWT de session sont
     // exécutées directement, sans log-usage ni débit ensuite.
-    const isExcludedRoute = path.startsWith("/v1/devices") || path === "/v1/status" || path === "/status";
+    const isExcludedRoute =
+      path.startsWith("/v1/devices") ||
+      path === "/v1/status" ||
+      path === "/status";
     if (!isExcludedRoute && isRegisteredApiKey) {
       try {
         const sql = getDb();

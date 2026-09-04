@@ -133,11 +133,7 @@ function normalizeStr(text: string): string {
     .trim();
 }
 
-export function MemoryCard({
-  agentId,
-  allScopes,
-  projectId,
-}: MemoryCardProps) {
+export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
   const scopeQuery = agentId
     ? `?agentId=${agentId}`
     : projectId
@@ -188,7 +184,9 @@ export function MemoryCard({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isImporting, setIsImporting] = useState(false);
   const [importModalOpen, setImportModalOpen] = useState(false);
-  const [pendingImportData, setPendingImportData] = useState<MemoryEntry[] | null>(null);
+  const [pendingImportData, setPendingImportData] = useState<
+    MemoryEntry[] | null
+  >(null);
 
   // Filtrage avancé
   const filteredMemories = useMemo(() => {
@@ -208,10 +206,22 @@ export function MemoryCard({
         const q = normalizeStr(searchQuery);
         const contentMatch = normalizeStr(m.content).includes(q);
         const catMatch = normalizeStr(m.category || "").includes(q);
-        const tagsMatch = (m.tags || []).some((t) => normalizeStr(t).includes(q));
-        const agentMatch = m.agentName ? normalizeStr(m.agentName).includes(q) : false;
-        const projMatch = m.projectName ? normalizeStr(m.projectName).includes(q) : false;
-        if (!contentMatch && !catMatch && !tagsMatch && !agentMatch && !projMatch) {
+        const tagsMatch = (m.tags || []).some((t) =>
+          normalizeStr(t).includes(q)
+        );
+        const agentMatch = m.agentName
+          ? normalizeStr(m.agentName).includes(q)
+          : false;
+        const projMatch = m.projectName
+          ? normalizeStr(m.projectName).includes(q)
+          : false;
+        if (
+          !contentMatch &&
+          !catMatch &&
+          !tagsMatch &&
+          !agentMatch &&
+          !projMatch
+        ) {
           return false;
         }
       }
@@ -300,18 +310,15 @@ export function MemoryCard({
   const handleToggleImportant = async (m: MemoryEntry) => {
     const nextVal = !m.isImportant;
     // Mise à jour optimiste
-    mutate(
-      (curr: any) => {
-        if (!curr?.memories) return curr;
-        return {
-          ...curr,
-          memories: curr.memories.map((item: MemoryEntry) =>
-            item.id === m.id ? { ...item, isImportant: nextVal } : item
-          ),
-        };
-      },
-      false
-    );
+    mutate((curr: any) => {
+      if (!curr?.memories) return curr;
+      return {
+        ...curr,
+        memories: curr.memories.map((item: MemoryEntry) =>
+          item.id === m.id ? { ...item, isImportant: nextVal } : item
+        ),
+      };
+    }, false);
 
     try {
       const res = await fetch("/api/memory", {
@@ -340,18 +347,15 @@ export function MemoryCard({
   const handleToggleEnabled = async (m: MemoryEntry) => {
     const nextVal = !(m.isEnabled ?? true);
     // Mise à jour optimiste
-    mutate(
-      (curr: any) => {
-        if (!curr?.memories) return curr;
-        return {
-          ...curr,
-          memories: curr.memories.map((item: MemoryEntry) =>
-            item.id === m.id ? { ...item, isEnabled: nextVal } : item
-          ),
-        };
-      },
-      false
-    );
+    mutate((curr: any) => {
+      if (!curr?.memories) return curr;
+      return {
+        ...curr,
+        memories: curr.memories.map((item: MemoryEntry) =>
+          item.id === m.id ? { ...item, isEnabled: nextVal } : item
+        ),
+      };
+    }, false);
 
     try {
       const res = await fetch("/api/memory", {
@@ -464,7 +468,9 @@ export function MemoryCard({
     if (!file) return;
 
     if (!file.name.endsWith(".json")) {
-      toast.error("Seuls les fichiers JSON (.json) sont autorisés pour l'import.");
+      toast.error(
+        "Seuls les fichiers JSON (.json) sont autorisés pour l'import."
+      );
       return;
     }
 
@@ -488,7 +494,8 @@ export function MemoryCard({
           .map((item: any, idx: number) => ({
             agentId: item.agentId || null,
             category: item.category || "general",
-            content: typeof item === "string" ? item : String(item.content || ""),
+            content:
+              typeof item === "string" ? item : String(item.content || ""),
             createdAt: item.createdAt || new Date().toISOString(),
             id: `temp-${idx}`,
             isEnabled: item.isEnabled !== false,
@@ -562,7 +569,8 @@ export function MemoryCard({
         <div className="flex-1 min-w-[200px]">
           <h3 className="text-base font-semibold text-foreground">{title}</h3>
           <p className="text-xs text-muted-foreground">
-            {scopeLabelHeader.charAt(0).toUpperCase() + scopeLabelHeader.slice(1)}{" "}
+            {scopeLabelHeader.charAt(0).toUpperCase() +
+              scopeLabelHeader.slice(1)}{" "}
             — injectées intelligemment dans les réponses de l'IA.
           </p>
         </div>
@@ -839,7 +847,9 @@ export function MemoryCard({
             const isEditing = editingId === m.id;
             const isEnabled = m.isEnabled !== false;
             const isImportant = Boolean(m.isImportant);
-            const catObj = MEMORY_CATEGORIES.find((c) => c.id === (m.category || "general"));
+            const catObj = MEMORY_CATEGORIES.find(
+              (c) => c.id === (m.category || "general")
+            );
 
             return (
               <div
@@ -998,11 +1008,11 @@ export function MemoryCard({
                         </span>
 
                         {/* Badge statut Suspendue */}
-                        {!isEnabled ? (
+                        {isEnabled ? null : (
                           <span className="bg-amber-500/10 text-amber-600 dark:text-amber-400 font-semibold px-1.5 py-0.5 rounded">
                             Suspendue
                           </span>
-                        ) : null}
+                        )}
                       </div>
                     </div>
 
@@ -1109,7 +1119,8 @@ export function MemoryCard({
               <DialogTitle>Synthèse de votre Mémoire</DialogTitle>
             </div>
             <DialogDescription>
-              Synthèse structurée de vos {summaryCount} informations mémorisées, organisée par sections.
+              Synthèse structurée de vos {summaryCount} informations mémorisées,
+              organisée par sections.
             </DialogDescription>
           </DialogHeader>
 
@@ -1165,7 +1176,8 @@ export function MemoryCard({
                     {pendingImportData.length} élément(s) détecté(s)
                   </p>
                   <p className="text-[11px] text-muted-foreground">
-                    Quota actuel : {scopeCount}/{limit} ({remainingSlots} place(s) restante(s))
+                    Quota actuel : {scopeCount}/{limit} ({remainingSlots}{" "}
+                    place(s) restante(s))
                   </p>
                 </div>
                 {pendingImportData.length > remainingSlots ? (
@@ -1183,7 +1195,9 @@ export function MemoryCard({
                 <div className="flex items-start gap-2 rounded-xl bg-destructive/10 p-3 text-xs text-destructive">
                   <AlertCircleIcon className="size-4 shrink-0 mt-0.5" />
                   <p>
-                    Le fichier contient plus de mémoires que votre quota disponible. Veuillez passer à un forfait supérieur (Plus, Pro ou Max) ou réduire le fichier JSON.
+                    Le fichier contient plus de mémoires que votre quota
+                    disponible. Veuillez passer à un forfait supérieur (Plus,
+                    Pro ou Max) ou réduire le fichier JSON.
                   </p>
                 </div>
               ) : null}
@@ -1195,7 +1209,9 @@ export function MemoryCard({
                     className="rounded-lg bg-muted/20 p-2 text-[11.5px] text-foreground border border-border/30 flex items-start gap-2"
                     key={i}
                   >
-                    <span className="text-muted-foreground font-mono">{i + 1}.</span>
+                    <span className="text-muted-foreground font-mono">
+                      {i + 1}.
+                    </span>
                     <span className="flex-1 line-clamp-2">{item.content}</span>
                     {item.isImportant ? (
                       <StarIcon className="size-3 fill-amber-500 text-amber-500 shrink-0 mt-0.5" />

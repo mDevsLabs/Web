@@ -152,7 +152,8 @@ export async function executeScheduledMessage(scheduledId: string) {
       }
     }
 
-    const effectiveModel = item.modelId || agentModel || "google/gemini-2.5-flash";
+    const effectiveModel =
+      item.modelId || agentModel || "google/gemini-2.5-flash";
     const effectiveTemp = item.temperature ?? agentTemp ?? undefined;
 
     let modeAddendum = "";
@@ -167,12 +168,12 @@ export async function executeScheduledMessage(scheduledId: string) {
       new Set([...planningCloudUrls, ...agentCloudUrls])
     );
     if (allAttachedUrls.length > 0) {
-      modeAddendum += `FICHIERS JOINTS DE LA BIBLIOTHÈQUE / CLOUD :\n`;
+      modeAddendum += "FICHIERS JOINTS DE LA BIBLIOTHÈQUE / CLOUD :\n";
       for (const url of allAttachedUrls) {
         const name = decodeURIComponent(url.split("/").pop() || "fichier");
         modeAddendum += `- ${name} (${url})\n`;
       }
-      modeAddendum += `\n`;
+      modeAddendum += "\n";
     }
 
     modeAddendum += `Ce message a été envoyé automatiquement à la date et heure planifiée (${new Date().toLocaleString("fr-FR")}). Réponds de manière complète et structurée.`;
@@ -195,7 +196,9 @@ export async function executeScheduledMessage(scheduledId: string) {
       webSearch,
     };
 
-    const activeTools = enabledToolsList.filter((t) => Boolean(availableTools[t]));
+    const activeTools = enabledToolsList.filter((t) =>
+      Boolean(availableTools[t])
+    );
 
     // Générer la réponse
     const result = await generateText({
@@ -216,7 +219,7 @@ export async function executeScheduledMessage(scheduledId: string) {
         { content: item.prompt, role: "user" },
       ],
       model: modelInstance,
-      ...(effectiveTemp !== undefined ? { temperature: effectiveTemp } : {}),
+      ...(effectiveTemp === undefined ? {} : { temperature: effectiveTemp }),
       stopWhen: (step: any) => (step.steps?.length ?? 0) >= 6,
       tools: availableTools,
     });
@@ -229,7 +232,12 @@ export async function executeScheduledMessage(scheduledId: string) {
           chatId: targetChatId,
           createdAt: new Date(),
           id: assistantMessageId,
-          parts: [{ text: result.text || "Message exécuté avec succès.", type: "text" }],
+          parts: [
+            {
+              text: result.text || "Message exécuté avec succès.",
+              type: "text",
+            },
+          ],
           role: "assistant",
         },
       ],
@@ -237,8 +245,10 @@ export async function executeScheduledMessage(scheduledId: string) {
 
     // Décompte tokens
     const usage = result.usage;
-    const inputTokens = (usage as any)?.promptTokens ?? (usage as any)?.inputTokens ?? 0;
-    const outputTokens = (usage as any)?.completionTokens ?? (usage as any)?.outputTokens ?? 0;
+    const inputTokens =
+      (usage as any)?.promptTokens ?? (usage as any)?.inputTokens ?? 0;
+    const outputTokens =
+      (usage as any)?.completionTokens ?? (usage as any)?.outputTokens ?? 0;
     const totalTokens = inputTokens + outputTokens;
 
     if (totalTokens > 0) {
@@ -290,9 +300,9 @@ export async function executeScheduledMessage(scheduledId: string) {
     await createNotification({
       body:
         `Votre message planifié « ${item.title} » a été exécuté avec succès.` +
-        (recurrence !== "none"
-          ? ` Prochaine exécution automatique (${recurrenceLabel[recurrence]}) reprogrammée.`
-          : ""),
+        (recurrence === "none"
+          ? ""
+          : ` Prochaine exécution automatique (${recurrenceLabel[recurrence]}) reprogrammée.`),
       link: `/chat/${targetChatId}`,
       title: "⏰ Message planifié exécuté",
       type: "ai_response",
@@ -314,7 +324,7 @@ export async function executeScheduledMessage(scheduledId: string) {
 
     await createNotification({
       body: `Échec de l'envoi planifié « ${item.title} » : ${errorMsg.slice(0, 100)}`,
-      link: `/planning`,
+      link: "/planning",
       title: "⚠️ Échec du message planifié",
       type: "ai_response",
       userId: item.userId,

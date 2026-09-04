@@ -28,8 +28,8 @@ export const Greeting = () => {
     settingsData?.user?.email?.split("@")[0]?.trim() ||
     null;
 
-  const [randomIndex] = useState(
-    () => Math.floor(Math.random() * GREETINGS_WITH_USERNAME.length)
+  const [randomIndex] = useState(() =>
+    Math.floor(Math.random() * GREETINGS_WITH_USERNAME.length)
   );
 
   const personalizedGreeting = useMemo(() => {

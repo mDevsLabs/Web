@@ -65,14 +65,10 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
   // par rapport au type statique MaiUser (issu du JWT). On le type en `any` pour y accéder.
   const apiUser: any = settingsData?.user;
   const username =
-    apiUser?.username ||
-    apiUser?.name ||
-    user?.username ||
-    "Mon Compte";
+    apiUser?.username || apiUser?.name || user?.username || "Mon Compte";
   const email = apiUser?.email || user?.email || "";
   const tier = apiUser?.tier || user?.tier || "Free";
-  const avatarUrl =
-    apiUser?.avatarUrl || apiUser?.avatar || user?.avatarUrl;
+  const avatarUrl = apiUser?.avatarUrl || apiUser?.avatar || user?.avatarUrl;
 
   return (
     <SidebarMenu>

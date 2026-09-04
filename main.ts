@@ -1,6 +1,6 @@
 /**
- * mAI — Val Town HTTP Proxy & Auth Backend
- * URL : https://mai.val.run/
+ * mAI — Backend & API Routes
+ * Base URL : https://mai.val.run
  */
 
 import { cors } from "npm:hono/cors";
@@ -14,6 +14,7 @@ import { registerMiddleware } from "./api-middleware.ts";
 import { registerModelRoutes } from "./models.ts";
 import { registerProjectRoutes } from "./projects.ts";
 import { registerStorageRoutes } from "./storage.ts";
+import { registerVibeRoutes } from "./vibe.ts";
 import { registerWebRoutes } from "./web.ts";
 
 // ─────────────────────────────────────────────
@@ -26,16 +27,19 @@ initSQLite().catch(console.error);
 // ─────────────────────────────────────────────
 const app = new Hono();
 
-const ALLOWED_ORIGINS = [
-  "https://mai-officiel.vercel.app",
-  "https://mai-devs.vercel.app",
-  "https://mai.val.run",
-  "https://mdevslabs.github.io",
-  "https://m-ai.fr",
-  "https://www.m-ai.fr",
+// ─────────────────────────────────────────────
+// CORS strict par allowlist + headers de sécurité
+// ─────────────────────────────────────────────
+const ALLOWED_ORIGINS = new Set([
+  "https://mai-vibe.vercel.app",
+  "https://mai-vibe-git-main-mcompany.vercel.app",
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
   "http://localhost:3000",
-  "http://localhost:3001",
-];
+  "http://127.0.0.1:3000",
+  "capacitor://localhost",
+  "https://localhost",
+]);
 
 app.use(
   "*",
@@ -59,21 +63,38 @@ app.use(
     allowMethods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     exposeHeaders: ["Content-Type", "Authorization", "x-user-id"],
     maxAge: 86_400,
+    // Rejette toute origine non autorisée (au lieu de la refléter avec credentials)
     origin: (origin) => {
-      if (!origin) return "*"; // allow curl / mobile
-      if (ALLOWED_ORIGINS.includes(origin)) return origin;
-      // Allow vercel preview deployments
-      if (origin.endsWith(".vercel.app")) return origin;
-      return ALLOWED_ORIGINS[0];
+      if (!origin) return null;
+      if (ALLOWED_ORIGINS.has(origin)) return origin;
+      if (/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) return origin;
+      if (/^https:\/\/mai-vibe[a-z0-9-]*\.vercel\.app$/.test(origin)) return origin;
+      return null;
     },
     credentials: true,
   })
 );
 
+app.use("*", async (c, next) => {
+  await next();
+  c.header("X-Content-Type-Options", "nosniff");
+  c.header("Referrer-Policy", "strict-origin-when-cross-origin");
+  c.header("X-Frame-Options", "DENY");
+  c.header("Permissions-Policy", "camera=(), geolocation=(), microphone=(self)");
+});
+
 // ─────────────────────────────────────────────
-// ROUTE PAR DÉFAUT (Pour éviter le 404 en preview)
+// ROUTE RACINE : mAI UNIQUEMENT (URL de base de l'API)
 // ─────────────────────────────────────────────
 app.get("/", (c) => c.text("mAI"));
+app.get("/api", (c) => c.text("mAI"));
+app.get("/api/", (c) => c.text("mAI"));
+app.get("/v1", (c) => c.text("mAI"));
+app.get("/v1/", (c) => c.text("mAI"));
+app.get("/vibe", (c) => c.text("mAI"));
+app.get("/vibe/", (c) => c.text("mAI"));
+app.get("/api/vibe", (c) => c.text("mAI"));
+app.get("/api/vibe/", (c) => c.text("mAI"));
 
 // ─────────────────────────────────────────────
 // Middleware & Routes modulaires
@@ -87,5 +108,6 @@ registerAudioRoutes(app);
 registerWebRoutes(app);
 registerProjectRoutes(app);
 registerDeviceRoutes(app);
+registerVibeRoutes(app);
 
 export default app.fetch;

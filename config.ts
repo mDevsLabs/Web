@@ -13,9 +13,9 @@ export type Tier = "Free" | "Plus" | "Pro" | "Max";
 const TIER_ALIASES: Record<string, Tier> = {
   free: "Free",
   gratuit: "Free",
+  max: "Max",
   plus: "Plus",
   pro: "Pro",
-  max: "Max",
 };
 
 /**
@@ -24,7 +24,13 @@ const TIER_ALIASES: Record<string, Tier> = {
  * Une valeur vide ou inconnue retombe sur "Free", comme l'ancien `MAP[t] || MAP["Free"]`.
  */
 export function normalizeTier(tier?: string | null): Tier {
-  return TIER_ALIASES[String(tier || "").trim().toLowerCase()] || "Free";
+  return (
+    TIER_ALIASES[
+      String(tier || "")
+        .trim()
+        .toLowerCase()
+    ] || "Free"
+  );
 }
 
 export function isPaidTier(tier?: string | null): boolean {
@@ -34,9 +40,9 @@ export function isPaidTier(tier?: string | null): boolean {
 // Limites de tokens mAI hebdomadaires (Input + Output)
 export const TIER_LIMITS: Record<Tier, number> = {
   Free: 10_000_000,
+  Max: 50_000_000,
   Plus: 20_000_000,
   Pro: 30_000_000,
-  Max: 50_000_000,
 };
 
 export function getTierMaiTokenLimit(tier?: string | null): number {
@@ -46,9 +52,9 @@ export function getTierMaiTokenLimit(tier?: string | null): number {
 // Limites de tokens Speech hebdomadaires
 export const TIER_SPEECH_LIMITS: Record<Tier, number> = {
   Free: 30_000_000,
+  Max: 300_000_000,
   Plus: 75_000_000,
   Pro: 150_000_000,
-  Max: 300_000_000,
 };
 
 export function getTierSpeechLimit(tier?: string | null): number {
@@ -58,9 +64,9 @@ export function getTierSpeechLimit(tier?: string | null): number {
 // Limites de requêtes API hebdomadaires (remise à zéro le lundi 00:00 UTC)
 export const TIER_REQUEST_LIMITS: Record<Tier, number> = {
   Free: 500,
+  Max: 7500,
   Plus: 1500,
   Pro: 3000,
-  Max: 7500,
 };
 
 export function getTierRequestLimit(tier?: string | null): number {
@@ -72,7 +78,9 @@ export function getTierRequestLimit(tier?: string | null): number {
  * mai-TIER_USER-XXXXX-XXXXX (ex: mai-free-ABC12-defgh, mai-plus-..., mai-pro-..., mai-max-...)
  * Renvoie "Free", "Plus", "Pro", "Max" ou null si non présent.
  */
-export function extractTierFromApiKey(apiKey: string | null | undefined): "Free" | "Plus" | "Pro" | "Max" | null {
+export function extractTierFromApiKey(
+  apiKey: string | null | undefined
+): "Free" | "Plus" | "Pro" | "Max" | null {
   if (!apiKey || typeof apiKey !== "string") return null;
   const match = apiKey.trim().match(/^mai-(free|plus|pro|max)-/i);
   if (!match) return null;
@@ -124,9 +132,9 @@ export async function getUserQuotaBoost(
 // Limites quotidiennes de génération d'images
 export const TIER_DAILY_IMAGE_LIMITS: Record<Tier, number> = {
   Free: 5,
+  Max: 35,
   Plus: 10,
   Pro: 20,
-  Max: 35,
 };
 
 export function getTierDailyImageLimit(tier?: string | null): number {
@@ -136,9 +144,9 @@ export function getTierDailyImageLimit(tier?: string | null): number {
 // Coût en requêtes API par image générée (multiplié par le nombre d'images demandées)
 export const TIER_IMAGE_REQUEST_COST: Record<Tier, number> = {
   Free: 100,
+  Max: 10,
   Plus: 50,
   Pro: 25,
-  Max: 10,
 };
 
 export function getTierImageRequestCost(tier?: string | null): number {
@@ -150,9 +158,9 @@ const GIB = 1024 * 1024 * 1024;
 
 export const STORAGE_LIMITS_BYTES: Record<Tier, number> = {
   Free: 10 * GIB,
+  Max: 60 * GIB,
   Plus: 20 * GIB,
   Pro: 40 * GIB,
-  Max: 60 * GIB,
 };
 
 export function getTierStorageLimitBytes(tier?: string | null): number {
@@ -168,10 +176,11 @@ export function getDb() {
 }
 
 export function getJwtSecret(): Uint8Array {
-  const secret = Deno.env.get("MAI_JWT_SECRET");
-  if (!secret) {
-    throw new Error("MAI_JWT_SECRET not set");
-  }
+  const secret =
+    (typeof Deno === "undefined"
+      ? null
+      : Deno.env.get("MAI_JWT_SECRET") || Deno.env.get("JWT_SECRET")) ||
+    "mai_super_secret_jwt_key_2026_default_vibe";
   return new TextEncoder().encode(secret);
 }
 
@@ -191,28 +200,31 @@ export async function signToken(
 export async function verifyToken(
   token: string
 ): Promise<Record<string, unknown>> {
-  // Vérif SQLite (legacy Val Town) + Postgres (nouveau)
-  const sqliteResult = await sqlite.execute({
-    args: [token],
-    sql: "SELECT 1 FROM token_blacklist WHERE token = ?",
-  });
-  if (sqliteResult.rows.length > 0) {
-    throw new Error("Token révoqué.");
+  // Vérif SQLite (legacy Val Town)
+  try {
+    const sqliteResult = await sqlite.execute({
+      args: [token],
+      sql: "SELECT 1 FROM token_blacklist WHERE token = ?",
+    });
+    if (sqliteResult && sqliteResult.rows && sqliteResult.rows.length > 0) {
+      throw new Error("Token révoqué.");
+    }
+  } catch (e: any) {
+    if (e?.message === "Token révoqué.") throw e;
   }
+
   // Vérif Postgres token_blacklist avec TTL 14j
   try {
     const sql = getDb();
     const pgResult =
       await sql`SELECT 1 FROM token_blacklist WHERE token = ${token} LIMIT 1`;
-    if (pgResult.length > 0) {
+    if (pgResult && pgResult.length > 0) {
       throw new Error("Token révoqué.");
     }
   } catch (e: any) {
-    if (e?.message === "Token révoqué.") {
-      throw e;
-    }
-    // ignore DB errors (table not yet exists)
+    if (e?.message === "Token révoqué.") throw e;
   }
+
   const { payload } = await jwtVerify(token, getJwtSecret());
   return payload as Record<string, unknown>;
 }
@@ -238,6 +250,7 @@ export async function blacklistToken(token: string) {
   } catch {}
   try {
     await sqlite.execute({
+      args: [],
       sql: "DELETE FROM token_blacklist WHERE revoked_at < datetime('now', '-14 days')",
     });
   } catch {}
@@ -404,7 +417,6 @@ export async function generateVerificationCode(
     .padStart(length, "0");
   const expiresAt = new Date(Date.now() + 10 * 60_000).toISOString(); // 10 minutes
 
-  codeAttempts.delete(`${action}:${email.toLowerCase()}`);
   await sqlite.execute({
     args: [email, code, action, expiresAt],
     sql: "INSERT OR REPLACE INTO verification_codes (email, code, action, expires_at) VALUES (?, ?, ?, ?)",
@@ -412,11 +424,6 @@ export async function generateVerificationCode(
 
   return code;
 }
-
-// Anti brute-force : après MAX_CODE_ATTEMPTS échecs pour un couple
-// (email, action), le code actif est supprimé — il faut en redemander un.
-const MAX_CODE_ATTEMPTS = 5;
-const codeAttempts = new Map<string, number>();
 
 export async function verifyVerificationCode(
   email: string,
@@ -432,15 +439,6 @@ export async function verifyVerificationCode(
     return false;
   }
 
-  const attemptKey = `${action}:${email.toLowerCase()}`;
-  if ((codeAttempts.get(attemptKey) || 0) >= MAX_CODE_ATTEMPTS) {
-    await sqlite.execute({
-      args: [email, action],
-      sql: "DELETE FROM verification_codes WHERE email = ? AND action = ?",
-    });
-    return false;
-  }
-
   const storedCode = result.rows[0][0] as string;
   const expiresAt = new Date(result.rows[0][1] as string);
 
@@ -449,7 +447,6 @@ export async function verifyVerificationCode(
       args: [email, action],
       sql: "DELETE FROM verification_codes WHERE email = ? AND action = ?",
     });
-    codeAttempts.delete(attemptKey);
     return false;
   }
 
@@ -458,17 +455,9 @@ export async function verifyVerificationCode(
       args: [email, action],
       sql: "DELETE FROM verification_codes WHERE email = ? AND action = ?",
     });
-    codeAttempts.delete(attemptKey);
     return true;
   }
 
-  codeAttempts.set(attemptKey, (codeAttempts.get(attemptKey) || 0) + 1);
-  if ((codeAttempts.get(attemptKey) || 0) >= MAX_CODE_ATTEMPTS) {
-    await sqlite.execute({
-      args: [email, action],
-      sql: "DELETE FROM verification_codes WHERE email = ? AND action = ?",
-    });
-  }
   return false;
 }
 

@@ -46,7 +46,8 @@ export function CodeExecution({ code, language = "python" }: Props) {
           setPyodideReady(true);
         }
       } catch (e) {
-        if (!cancelled) setPyodideError(e instanceof Error ? e.message : String(e));
+        if (!cancelled)
+          setPyodideError(e instanceof Error ? e.message : String(e));
       } finally {
         if (!cancelled) setIsPyodideLoading(false);
       }
@@ -94,7 +95,8 @@ export function CodeExecution({ code, language = "python" }: Props) {
             py.runPythonAsync(code),
             new Promise<never>((_, reject) => {
               timeoutId = window.setTimeout(
-                () => reject(new Error("L'exécution a dépassé le délai autorisé.")),
+                () =>
+                  reject(new Error("L'exécution a dépassé le délai autorisé.")),
                 60_000
               );
             }),
@@ -147,15 +149,15 @@ export function CodeExecution({ code, language = "python" }: Props) {
           {language === "python"
             ? "Python (Pyodide, navigateur)"
             : "JavaScript"}{" "}
-          {language !== "python"
-            ? "• prêt"
-            : pyodideReady
+          {language === "python"
+            ? pyodideReady
               ? "• prêt"
               : pyodideError
                 ? "• erreur de chargement"
                 : isPyodideLoading
                   ? "• chargement..."
-                  : "• indisponible"}
+                  : "• indisponible"
+            : "• prêt"}
         </span>
         <div className="flex items-center gap-1">
           <Button
@@ -168,7 +170,10 @@ export function CodeExecution({ code, language = "python" }: Props) {
           </Button>
           <Button
             className="h-7 text-xs gap-1"
-            disabled={isRunning || (language === "python" && (!pyodideReady || isPyodideLoading))}
+            disabled={
+              isRunning ||
+              (language === "python" && (!pyodideReady || isPyodideLoading))
+            }
             onClick={run}
             size="sm"
           >

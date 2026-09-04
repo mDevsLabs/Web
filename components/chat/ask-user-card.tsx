@@ -179,7 +179,9 @@ export function AskUserCard({
               </div>
 
               {/* 1. Type Single Choice & Multiple Choice */}
-              {(q.type === "single_choice" || q.type === "multiple_choice" || (!q.type && options.length > 0)) && (
+              {(q.type === "single_choice" ||
+                q.type === "multiple_choice" ||
+                (!q.type && options.length > 0)) && (
                 <>
                   <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
                     {options.map((opt) => {
@@ -232,19 +234,17 @@ export function AskUserCard({
               {/* 2. Type Text */}
               {q.type === "text" && (
                 <div>
-                  {!isCompleted ? (
-                    <Input
-                      className="h-8 text-xs"
-                      onChange={(e) =>
-                        handleValueChange(q.id, e.target.value)
-                      }
-                      placeholder="Saisissez votre réponse..."
-                      value={answers[q.id] || ""}
-                    />
-                  ) : (
+                  {isCompleted ? (
                     <div className="rounded-lg border border-primary/20 bg-primary/5 px-3 py-1.5 text-xs text-primary font-medium">
                       {String(currentAns || "Aucune saisie")}
                     </div>
+                  ) : (
+                    <Input
+                      className="h-8 text-xs"
+                      onChange={(e) => handleValueChange(q.id, e.target.value)}
+                      placeholder="Saisissez votre réponse..."
+                      value={answers[q.id] || ""}
+                    />
                   )}
                 </div>
               )}
@@ -288,7 +288,11 @@ export function AskUserCard({
                     </span>
                     <span>Max: {q.max ?? 100}</span>
                   </div>
-                  {!isCompleted ? (
+                  {isCompleted ? (
+                    <div className="rounded-lg border border-primary/20 bg-primary/5 px-3 py-1.5 text-xs text-primary font-medium">
+                      Sélectionné : {currentAns}
+                    </div>
+                  ) : (
                     <input
                       className="w-full accent-primary h-2 bg-muted rounded-lg appearance-none cursor-pointer"
                       max={q.max ?? 100}
@@ -300,10 +304,6 @@ export function AskUserCard({
                       type="range"
                       value={answers[q.id] ?? q.defaultValue ?? q.min ?? 0}
                     />
-                  ) : (
-                    <div className="rounded-lg border border-primary/20 bg-primary/5 px-3 py-1.5 text-xs text-primary font-medium">
-                      Sélectionné : {currentAns}
-                    </div>
                   )}
                 </div>
               )}
@@ -311,19 +311,17 @@ export function AskUserCard({
               {/* 5. Type Date */}
               {q.type === "date" && (
                 <div>
-                  {!isCompleted ? (
-                    <Input
-                      className="h-8 text-xs"
-                      onChange={(e) =>
-                        handleValueChange(q.id, e.target.value)
-                      }
-                      type="date"
-                      value={answers[q.id] || ""}
-                    />
-                  ) : (
+                  {isCompleted ? (
                     <div className="rounded-lg border border-primary/20 bg-primary/5 px-3 py-1.5 text-xs text-primary font-medium">
                       Date choisie : {String(currentAns)}
                     </div>
+                  ) : (
+                    <Input
+                      className="h-8 text-xs"
+                      onChange={(e) => handleValueChange(q.id, e.target.value)}
+                      type="date"
+                      value={answers[q.id] || ""}
+                    />
                   )}
                 </div>
               )}
@@ -343,23 +341,19 @@ export function AskUserCard({
       </div>
 
       {/* Footer / Bouton de soumission */}
-      {!isCompleted ? (
-        <div className="border-t border-border/40 bg-muted/20 px-4 py-3 text-right sm:px-5">
-          <Button
-            className="gap-2 shadow-xs"
-            onClick={handleSubmit}
-            size="sm"
-          >
-            <SendIcon className="size-3.5" />
-            <span>Valider et envoyer mes réponses</span>
-          </Button>
-        </div>
-      ) : (
+      {isCompleted ? (
         <div className="flex items-center justify-between border-t border-border/40 bg-muted/20 px-4 py-2.5 text-xs text-muted-foreground sm:px-5">
           <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-medium">
             <CheckCircle2Icon className="size-3.5" />
             <span>Réponses transmises à l'assistant</span>
           </div>
+        </div>
+      ) : (
+        <div className="border-t border-border/40 bg-muted/20 px-4 py-3 text-right sm:px-5">
+          <Button className="gap-2 shadow-xs" onClick={handleSubmit} size="sm">
+            <SendIcon className="size-3.5" />
+            <span>Valider et envoyer mes réponses</span>
+          </Button>
         </div>
       )}
     </div>

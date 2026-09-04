@@ -72,7 +72,7 @@ export function PlanningClient({
     fetcher,
     {
       fallbackData: initialSchedules,
-      refreshInterval: 15000,
+      refreshInterval: 15_000,
     }
   );
 
@@ -197,35 +197,50 @@ export function PlanningClient({
     switch (status) {
       case "pending":
         return (
-          <Badge className="bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20" variant="outline">
+          <Badge
+            className="bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20"
+            variant="outline"
+          >
             <ClockIcon className="mr-1 size-3" />
             En attente
           </Badge>
         );
       case "processing":
         return (
-          <Badge className="bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20" variant="outline">
+          <Badge
+            className="bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20"
+            variant="outline"
+          >
             <Loader2Icon className="mr-1 size-3 animate-spin" />
             En cours
           </Badge>
         );
       case "completed":
         return (
-          <Badge className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20" variant="outline">
+          <Badge
+            className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20"
+            variant="outline"
+          >
             <CheckCircle2Icon className="mr-1 size-3" />
             Terminé
           </Badge>
         );
       case "failed":
         return (
-          <Badge className="bg-destructive/10 text-destructive border-destructive/20" variant="outline">
+          <Badge
+            className="bg-destructive/10 text-destructive border-destructive/20"
+            variant="outline"
+          >
             <AlertCircleIcon className="mr-1 size-3" />
             Échoué
           </Badge>
         );
       case "cancelled":
         return (
-          <Badge className="bg-muted text-muted-foreground border-border" variant="outline">
+          <Badge
+            className="bg-muted text-muted-foreground border-border"
+            variant="outline"
+          >
             <XCircleIcon className="mr-1 size-3" />
             Annulé
           </Badge>
@@ -261,7 +276,8 @@ export function PlanningClient({
               </h1>
             </div>
             <p className="mt-1 text-sm text-muted-foreground">
-              Programmez l'envoi de messages automatiques à l'IA à des dates et heures précises.
+              Programmez l'envoi de messages automatiques à l'IA à des dates et
+              heures précises.
             </p>
           </div>
 
@@ -280,7 +296,9 @@ export function PlanningClient({
                   <PlayIcon className="size-3.5 fill-current" />
                 )}
                 <span>
-                  Exécuter {dueItems.length} tâche{dueItems.length > 1 ? "s" : ""} échue{dueItems.length > 1 ? "s" : ""}
+                  Exécuter {dueItems.length} tâche
+                  {dueItems.length > 1 ? "s" : ""} échue
+                  {dueItems.length > 1 ? "s" : ""}
                 </span>
               </Button>
             )}
@@ -348,7 +366,8 @@ export function PlanningClient({
               Aucun message planifié
             </h3>
             <p className="mt-1 max-w-sm text-xs text-muted-foreground">
-              Planifiez dès maintenant un envoi automatique pour automatiser vos résumés, veilles d'actualité ou rappels IA.
+              Planifiez dès maintenant un envoi automatique pour automatiser vos
+              résumés, veilles d'actualité ou rappels IA.
             </p>
             <Button
               className="mt-5 gap-2"
@@ -388,7 +407,8 @@ export function PlanningClient({
                               variant="outline"
                             >
                               <RepeatIcon className="mr-1 size-3" />
-                              {RECURRENCE_LABELS[item.recurrence] || item.recurrence}
+                              {RECURRENCE_LABELS[item.recurrence] ||
+                                item.recurrence}
                             </Badge>
                           )}
                         </div>
@@ -427,7 +447,9 @@ export function PlanningClient({
                             </Button>
                             <Button
                               className="size-8"
-                              onClick={() => handleStatusChange(item.id, "cancelled")}
+                              onClick={() =>
+                                handleStatusChange(item.id, "cancelled")
+                              }
                               size="icon"
                               title="Annuler"
                               variant="ghost"
@@ -436,10 +458,13 @@ export function PlanningClient({
                             </Button>
                           </>
                         )}
-                        {(item.status === "failed" || item.status === "cancelled") && (
+                        {(item.status === "failed" ||
+                          item.status === "cancelled") && (
                           <Button
                             className="size-8"
-                            onClick={() => handleStatusChange(item.id, "pending")}
+                            onClick={() =>
+                              handleStatusChange(item.id, "pending")
+                            }
                             size="icon"
                             title="Réactiver"
                             variant="outline"
@@ -486,20 +511,25 @@ export function PlanningClient({
                       <div className="rounded-md border border-border/40 bg-background px-2 py-1 text-muted-foreground font-medium text-[11px]">
                         {normalizeModelDisplayName(item.modelId)}
                       </div>
-                      {Array.isArray(item.cloudFileUrls) && (item.cloudFileUrls as string[]).length > 0 && (
-                        <span className="flex items-center gap-1 rounded-md bg-blue-500/10 px-2 py-0.5 text-[11px] font-medium text-blue-600 dark:text-blue-400">
-                          <CloudIcon className="size-3" />
-                          <span>{(item.cloudFileUrls as string[]).length} fichier(s)</span>
-                        </span>
-                      )}
-                      {Array.isArray(item.enabledTools) && (item.enabledTools as string[]).map((t) => (
-                        <span
-                          className="rounded-md bg-primary/10 px-2 py-0.5 text-[11px] font-medium text-primary"
-                          key={t}
-                        >
-                          {t}
-                        </span>
-                      ))}
+                      {Array.isArray(item.cloudFileUrls) &&
+                        (item.cloudFileUrls as string[]).length > 0 && (
+                          <span className="flex items-center gap-1 rounded-md bg-blue-500/10 px-2 py-0.5 text-[11px] font-medium text-blue-600 dark:text-blue-400">
+                            <CloudIcon className="size-3" />
+                            <span>
+                              {(item.cloudFileUrls as string[]).length}{" "}
+                              fichier(s)
+                            </span>
+                          </span>
+                        )}
+                      {Array.isArray(item.enabledTools) &&
+                        (item.enabledTools as string[]).map((t) => (
+                          <span
+                            className="rounded-md bg-primary/10 px-2 py-0.5 text-[11px] font-medium text-primary"
+                            key={t}
+                          >
+                            {t}
+                          </span>
+                        ))}
                     </div>
 
                     {item.lastError && (
@@ -513,7 +543,9 @@ export function PlanningClient({
                   <div className="mt-4 flex items-center justify-between border-t border-border/30 pt-3 text-xs text-muted-foreground">
                     <div>
                       {item.executedAt ? (
-                        <span>Exécuté le {formatDateTime(item.executedAt)}</span>
+                        <span>
+                          Exécuté le {formatDateTime(item.executedAt)}
+                        </span>
                       ) : (
                         <span>Créé le {formatDateTime(item.createdAt)}</span>
                       )}
@@ -546,12 +578,16 @@ export function PlanningClient({
       />
 
       {/* Dialog Confirmation de suppression */}
-      <AlertDialog onOpenChange={(open) => !open && setDeletingId(null)} open={Boolean(deletingId)}>
+      <AlertDialog
+        onOpenChange={(open) => !open && setDeletingId(null)}
+        open={Boolean(deletingId)}
+      >
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Supprimer cette planification ?</AlertDialogTitle>
             <AlertDialogDescription>
-              Cette action est irréversible. Le message ne sera plus envoyé automatiquement.
+              Cette action est irréversible. Le message ne sera plus envoyé
+              automatiquement.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

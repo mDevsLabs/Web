@@ -57,10 +57,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import {
-  DEFAULT_CHAT_MODEL,
-  getModelCapabilities,
-} from "@/lib/ai/models";
+import { DEFAULT_CHAT_MODEL, getModelCapabilities } from "@/lib/ai/models";
 import { MAI_PENDING_ATTACHMENT_KEY, MAI_UPGRADE_URL } from "@/lib/constants";
 
 export type CloudFile = {
@@ -1640,9 +1637,7 @@ export default function LibraryPage() {
               <Button
                 className="gap-1.5 text-xs rounded-xl"
                 disabled={!currentModelSupportsFiles}
-                onClick={() =>
-                  previewFile && handleSummarizeFile(previewFile)
-                }
+                onClick={() => previewFile && handleSummarizeFile(previewFile)}
                 size="sm"
                 type="button"
                 variant="secondary"

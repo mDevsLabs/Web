@@ -10,9 +10,9 @@ export async function GET() {
 
   const userId = user.id || user.email;
   const { chats } = await getChatsByUserId({
+    endingBefore: null,
     id: userId,
     limit: 50,
-    endingBefore: null,
     startingAfter: null,
   });
 

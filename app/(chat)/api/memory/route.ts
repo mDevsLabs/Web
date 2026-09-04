@@ -1,6 +1,7 @@
-import { getMaiUser } from "@/lib/auth/session";
+import { z } from "zod";
 import { memoryLimitForTier } from "@/lib/auth/plan";
-import { ChatbotError } from "@/lib/errors";
+import { getMaiUser } from "@/lib/auth/session";
+import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
 import {
   countMemories,
   createMemory,
@@ -13,8 +14,7 @@ import {
   getUserMemoriesWithScope,
   updateMemory,
 } from "@/lib/db/queries";
-import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
-import { z } from "zod";
+import { ChatbotError } from "@/lib/errors";
 
 const createSchema = z
   .object({
@@ -55,8 +55,8 @@ async function resolveScope(
   if (projectId) {
     const project = await getProjectById({
       id: projectId,
-      userId,
       userEmail,
+      userId,
     });
     if (!project) {
       return null;
@@ -83,12 +83,7 @@ export async function GET(request: Request) {
         memories,
       });
     }
-    const scope = await resolveScope(
-      userId,
-      user.email,
-      agentId,
-      projectId
-    );
+    const scope = await resolveScope(userId, user.email, agentId, projectId);
     if (!scope) {
       return new ChatbotError("not_found:database").toResponse();
     }

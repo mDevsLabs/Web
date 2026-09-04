@@ -12,8 +12,6 @@ import {
   GhostIcon,
   GlobeIcon,
   ImageIcon,
-  MicIcon,
-  MicOffIcon,
   PaperclipIcon,
   PlusIcon,
   SparklesIcon,
@@ -41,20 +39,21 @@ import useSWR from "swr";
 import { useLocalStorage, useWindowSize } from "usehooks-ts";
 import { AgentSelectorCompact } from "@/components/agents/agent-selector";
 import { useDataStream } from "@/components/chat/data-stream-provider";
+import { VoiceRecorderButton } from "@/components/chat/input/voice-recorder-button";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
+import { QuizConfigDialog } from "@/components/chat/quiz-config-dialog";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { QuizConfigDialog } from "@/components/chat/quiz-config-dialog";
 import {
   useActiveChat,
   useActiveChat as useActiveChatForTools,
 } from "@/hooks/use-active-chat";
+import { useChatAttachments } from "@/hooks/use-chat-attachments";
 import { useProjects } from "@/hooks/use-projects";
 import { useSettings } from "@/hooks/use-settings";
-import { useSpeechRecognition } from "@/hooks/use-speech";
 import { useTier } from "@/hooks/use-tier";
 import {
   chatModels,
@@ -337,9 +336,6 @@ function PureMultimodalInput({
     setLocalStorageInput(input);
   }, [input, setLocalStorageInput]);
 
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const uploadedBytesRef = useRef(0);
-  const [uploadQueue, setUploadQueue] = useState<string[]>([]);
   const [cloudPickerOpen, setCloudPickerOpen] = useState(false);
   const [quizDialogOpen, setQuizDialogOpen] = useState(false);
   const [slashOpen, setSlashOpen] = useState(false);
@@ -445,38 +441,6 @@ function PureMultimodalInput({
     }
   }, [projects, pendingProject, setPendingProject]);
 
-  // Voice STT toggle (mic)
-  const speechBaseRef = useRef<string>("");
-  const handleSpeechTranscript = useCallback(
-    (text: string, isFinal: boolean) => {
-      const base = speechBaseRef.current;
-      if (isFinal) {
-        const next = base ? `${base} ${text}` : text;
-        speechBaseRef.current = next;
-        setInput(next);
-      } else {
-        const next = base ? `${base} ${text}` : text;
-        setInput(next);
-      }
-    },
-    [setInput]
-  );
-  const {
-    isListening,
-    isSupported: isSpeechSupported,
-    toggle: toggleListening,
-  } = useSpeechRecognition(handleSpeechTranscript);
-  const handleMicClick = useCallback(() => {
-    if (!isSpeechSupported) {
-      toast.error("Reconnaissance vocale non supportée par ce navigateur.");
-      return;
-    }
-    if (!isListening) {
-      speechBaseRef.current = input;
-    }
-    toggleListening();
-  }, [isListening, isSpeechSupported, input, toggleListening]);
-
   // Live cost: fetch settings once + dataStream usage via shared useSettings hook
   const { data: costSettings } = useSettings({
     dedupingInterval: 60_000,
@@ -538,34 +502,19 @@ function PureMultimodalInput({
     }
   }, [supportsTools, pendingTools.length, clearPendingTools]);
 
-  // Vider les pièces jointes si le modèle ne supporte plus la vision/fichiers
-  useEffect(() => {
-    if (!hasStrictCaps) {
-      return;
-    }
-    if (!hasVisionSupport && attachments.length > 0) {
-      setAttachments([]);
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
-      }
-      toast.error(
-        "Pièces jointes retirées : ce modèle ne prend pas en charge les fichiers/images."
-      );
-    }
-  }, [hasVisionSupport, hasStrictCaps, attachments.length, setAttachments]);
-
-  const handleCloudAttachments = useCallback(
-    (newAttachments: Attachment[]) => {
-      if (!hasVisionSupport && hasStrictCaps) {
-        toast.error(
-          "Ce modèle ne prend pas en charge l'importation de fichiers."
-        );
-        return;
-      }
-      setAttachments((curr) => [...curr, ...newAttachments]);
-    },
-    [setAttachments, hasVisionSupport, hasStrictCaps]
-  );
+  const {
+    fileInputRef,
+    uploadQueue,
+    handleFileChange,
+    handleCloudAttachments,
+    resetUploadedBytes,
+  } = useChatAttachments({
+    attachments,
+    hasStrictCaps,
+    hasVisionSupport,
+    setAttachments,
+    textareaRef,
+  });
 
   const handleInput = useCallback(
     (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -827,7 +776,9 @@ function PureMultimodalInput({
           break;
         }
         case "tool-summary": {
-          setInput("Fais-moi un résumé clair et structuré par sections de notre échange.");
+          setInput(
+            "Fais-moi un résumé clair et structuré par sections de notre échange."
+          );
           break;
         }
         case "quiz": {
@@ -1134,7 +1085,7 @@ function PureMultimodalInput({
     setAttachments([]);
     setLocalStorageInput("");
     setInput("");
-    uploadedBytesRef.current = 0;
+    resetUploadedBytes();
     if (typeof document !== "undefined") {
       document.cookie = `${DRAFT_COOKIE}=; path=/; max-age=0`;
     }
@@ -1152,6 +1103,7 @@ function PureMultimodalInput({
     width,
     chatId,
     isGhostMode,
+    resetUploadedBytes,
   ]);
 
   const handleSkillParamsSubmit = useCallback(
@@ -1201,185 +1153,6 @@ function PureMultimodalInput({
     skillParamsList,
     doSendCurrentMessage,
   ]);
-
-  const uploadFile = useCallback(async (file: File) => {
-    const formData = new FormData();
-    formData.append("file", file);
-
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/files/upload`,
-        {
-          body: formData,
-          method: "POST",
-        }
-      );
-
-      if (response.ok) {
-        const data = await response.json();
-        const { url, pathname, contentType } = data;
-
-        return {
-          contentType,
-          name: pathname,
-          url,
-        };
-      }
-      const { error } = await response.json();
-      toast.error(error);
-    } catch {
-      toast.error("Failed to upload file, please try again!");
-    }
-  }, []);
-
-  const handleFileChange = useCallback(
-    async (event: ChangeEvent<HTMLInputElement>) => {
-      if (!hasVisionSupport && hasStrictCaps) {
-        toast.error(
-          "Ce modèle ne prend pas en charge l'importation de fichiers."
-        );
-        if (fileInputRef.current) {
-          fileInputRef.current.value = "";
-        }
-        return;
-      }
-      const files = Array.from(event.target.files || []);
-
-      if (files.length > 0) {
-        const remainingSlots = MAX_FILES_PER_MESSAGE - attachments.length;
-        if (remainingSlots <= 0) {
-          toast.error(`Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message.`);
-          if (fileInputRef.current) {
-            fileInputRef.current.value = "";
-          }
-          return;
-        }
-        if (files.length > remainingSlots) {
-          toast.error(
-            `Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message. Seuls ${remainingSlots} fichier(s) ont été ajoutés.`
-          );
-        }
-        const accepted = files.slice(0, Math.max(remainingSlots, 0));
-        const oversized = accepted.find(
-          (file) => uploadedBytesRef.current + file.size > MAX_TOTAL_SIZE_BYTES
-        );
-        if (oversized) {
-          toast.error(
-            "Limite de 50 Mo par message dépassée. Retirez des pièces jointes ou choisissez des fichiers plus légers."
-          );
-          if (fileInputRef.current) {
-            fileInputRef.current.value = "";
-          }
-          return;
-        }
-      }
-
-      setUploadQueue(files.map((file) => file.name));
-
-      try {
-        const uploadPromises = files.map((file) => uploadFile(file));
-        const uploadedAttachments = await Promise.all(uploadPromises);
-        const successfullyUploadedAttachments = uploadedAttachments.filter(
-          (attachment) => attachment !== undefined
-        );
-        uploadedBytesRef.current += uploadedAttachments.reduce(
-          (total, attachment, index) =>
-            attachment === undefined
-              ? total
-              : total + (files[index]?.size ?? 0),
-          0
-        );
-
-        setAttachments((currentAttachments) => [
-          ...currentAttachments,
-          ...successfullyUploadedAttachments,
-        ]);
-      } catch {
-        toast.error("Failed to upload files");
-      } finally {
-        setUploadQueue([]);
-      }
-    },
-    [
-      setAttachments,
-      uploadFile,
-      hasVisionSupport,
-      hasStrictCaps,
-      attachments.length,
-    ]
-  );
-
-  const handlePaste = useCallback(
-    async (event: ClipboardEvent) => {
-      if (!hasVisionSupport && hasStrictCaps) {
-        const itemsCheck = event.clipboardData?.items;
-        if (itemsCheck) {
-          const hasImages = Array.from(itemsCheck).some((i) =>
-            i.type.startsWith("image/")
-          );
-          if (hasImages) {
-            event.preventDefault();
-            toast.error(
-              "Ce modèle ne prend pas en charge les images. Changez de modèle pour coller des fichiers."
-            );
-            return;
-          }
-        }
-        return;
-      }
-      const items = event.clipboardData?.items;
-      if (!items) {
-        return;
-      }
-
-      const imageItems = Array.from(items).filter((item) =>
-        item.type.startsWith("image/")
-      );
-
-      if (imageItems.length === 0) {
-        return;
-      }
-
-      event.preventDefault();
-
-      setUploadQueue((prev) => [...prev, "Pasted image"]);
-
-      try {
-        const uploadPromises = imageItems
-          .map((item) => item.getAsFile())
-          .filter((file): file is File => file !== null)
-          .map((file) => uploadFile(file));
-
-        const uploadedAttachments = await Promise.all(uploadPromises);
-        const successfullyUploadedAttachments = uploadedAttachments.filter(
-          (attachment) =>
-            attachment !== undefined &&
-            attachment.url !== undefined &&
-            attachment.contentType !== undefined
-        );
-
-        setAttachments((curr) => [
-          ...curr,
-          ...(successfullyUploadedAttachments as Attachment[]),
-        ]);
-      } catch {
-        toast.error("Failed to upload pasted image(s)");
-      } finally {
-        setUploadQueue([]);
-      }
-    },
-    [setAttachments, uploadFile, hasVisionSupport, hasStrictCaps]
-  );
-
-  useEffect(() => {
-    const textarea = textareaRef.current;
-    if (!textarea) {
-      return;
-    }
-
-    textarea.addEventListener("paste", handlePaste);
-    return () => textarea.removeEventListener("paste", handlePaste);
-  }, [handlePaste]);
 
   // Bloquer le drag & drop si le modèle ne supporte pas vision/fichiers
   useEffect(() => {
@@ -2099,19 +1872,7 @@ function PureMultimodalInput({
               status={status}
               supportsTools={supportsTools}
             />
-            <Button
-              className={`h-9 w-9 sm:h-8 sm:w-8 rounded-full p-1.5 border ${isListening ? "bg-red-500/10 border-red-500/30 text-red-500 animate-pulse" : "border-border/40 hover:bg-muted text-foreground"} ${isSpeechSupported ? "" : "opacity-40"}`}
-              onClick={handleMicClick}
-              title={isListening ? "Arrêter la dictée" : "Dictée vocale"}
-              type="button"
-              variant="ghost"
-            >
-              {isListening ? (
-                <MicOffIcon className="size-4" />
-              ) : (
-                <MicIcon className="size-4" />
-              )}
-            </Button>
+            <VoiceRecorderButton input={input} setInput={setInput} />
             <ModelSelectorCompact
               fallbackModels={chatModels}
               focusInputAfterSelect

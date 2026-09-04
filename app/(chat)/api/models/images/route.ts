@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
+import { normalizeModelDisplayName } from "@/lib/ai/models";
 import { getMaiSessionToken } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
-import { normalizeModelDisplayName } from "@/lib/ai/models";
 
 export async function GET() {
   const token = await getMaiSessionToken();

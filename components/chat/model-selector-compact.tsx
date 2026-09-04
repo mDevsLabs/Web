@@ -153,32 +153,68 @@ export function resolveProviderKey(model: SharedModel): string {
   const p = raw.replace(/^~+/, "");
 
   if (p === "granite" || p === "ibm" || p.includes("granite")) return "ibm";
-  if (p === "tencent" || p === "hunyuan" || p.startsWith("hy3") || p.startsWith("hy4")) return "tencent";
+  if (
+    p === "tencent" ||
+    p === "hunyuan" ||
+    p.startsWith("hy3") ||
+    p.startsWith("hy4")
+  )
+    return "tencent";
   if (p === "qwen" || p === "alibaba" || p === "alibaba-cn") return "qwen";
-  if (p === "zhipu" || p === "zhipuai" || p === "zai" || p === "z-ai" || p === "glm" || p === "bigmodel") return "zhipuai";
-  if (p === "inclusion" || p === "inclusion-ai" || p === "inclusionai") return "inclusion-ai";
-  if (p === "dots" || p === "dots-studio" || p === "dotsstudio") return "dots-studio";
-  if (p === "bytedance" || p === "doubao" || p === "volcengine") return "bytedance";
+  if (
+    p === "zhipu" ||
+    p === "zhipuai" ||
+    p === "zai" ||
+    p === "z-ai" ||
+    p === "glm" ||
+    p === "bigmodel"
+  )
+    return "zhipuai";
+  if (p === "inclusion" || p === "inclusion-ai" || p === "inclusionai")
+    return "inclusion-ai";
+  if (p === "dots" || p === "dots-studio" || p === "dotsstudio")
+    return "dots-studio";
+  if (p === "bytedance" || p === "doubao" || p === "volcengine")
+    return "bytedance";
   if (p === "xai" || p === "x-ai" || p === "grok") return "xai";
-  if (p === "liquid" || p === "liquid-ai" || p === "liquidai" || p === "lfm") return "liquid-ai";
+  if (p === "liquid" || p === "liquid-ai" || p === "liquidai" || p === "lfm")
+    return "liquid-ai";
   if (p === "meituan" || p === "longcat") return "meituan";
-  if (p === "kwaipilot" || p === "kuaishou" || p === "kwai" || p === "kolors") return "kwaipilot";
+  if (p === "kwaipilot" || p === "kuaishou" || p === "kwai" || p === "kolors")
+    return "kwaipilot";
   if (p === "next-agi" || p === "nextagi") return "nextagi";
   if (p === "aion" || p === "aion-labs" || p === "aionlabs") return "aionlabs";
   if (p === "perceptron" || p === "perceptron-ai") return "perceptron";
-  if (p === "mistral" || p === "mistralai" || p === "mistral-ai" || p === "codestral" || p === "pixtral" || p === "ministral") return "mistral";
+  if (
+    p === "mistral" ||
+    p === "mistralai" ||
+    p === "mistral-ai" ||
+    p === "codestral" ||
+    p === "pixtral" ||
+    p === "ministral"
+  )
+    return "mistral";
   if (p === "arcee" || p === "arcee-ai" || p === "arceeai") return "arceeai";
   if (p === "reka" || p === "reka-ai" || p === "rekaai") return "rekaai";
   if (p === "writer" || p === "palmyra") return "writer";
-  if (p === "amazon" || p === "amazon-bedrock" || p === "aws" || p === "nova" || p === "titan") return "amazon";
+  if (
+    p === "amazon" ||
+    p === "amazon-bedrock" ||
+    p === "aws" ||
+    p === "nova" ||
+    p === "titan"
+  )
+    return "amazon";
   if (p === "meta" || p === "meta-llama" || p === "llama") return "meta-llama";
   if (p === "poolside" || p === "laguna") return "poolside";
-  if (p === "kimi" || p === "moonshot" || p === "moonshotai") return "moonshotai";
+  if (p === "kimi" || p === "moonshot" || p === "moonshotai")
+    return "moonshotai";
   if (p === "01-ai" || p === "yi") return "01-ai";
   if (p === "microsoft" || p === "azure") return "azure";
   if (p === "together" || p === "togetherai") return "togetherai";
   if (p === "fireworks" || p === "fireworks-ai") return "fireworks-ai";
-  if (p === "stability" || p === "stability-ai" || p === "stabilityai") return "stability-ai";
+  if (p === "stability" || p === "stability-ai" || p === "stabilityai")
+    return "stability-ai";
   if (p === "recraft" || p === "recraft-ai") return "recraft-ai";
   if (p === "google-vertex" || p === "google") return "google";
 
@@ -246,7 +282,9 @@ function SharedModelSelectorOption({
     if (focusInputAfterSelect) {
       setTimeout(() => {
         document
-          .querySelector<HTMLTextAreaElement>("[data-testid='multimodal-input']")
+          .querySelector<HTMLTextAreaElement>(
+            "[data-testid='multimodal-input']"
+          )
           ?.focus();
       }, 50);
     }
@@ -345,7 +383,9 @@ function PureModelSelectorCompact({
   }, []);
 
   const { data: modelsData } = useSWR(
-    modelsProp ? null : `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${ENDPOINTS[source]}`,
+    modelsProp
+      ? null
+      : `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${ENDPOINTS[source]}`,
     (url: string) => fetch(url).then((r) => r.json()),
     { dedupingInterval: 60_000, revalidateOnFocus: true }
   );
@@ -370,7 +410,7 @@ function PureModelSelectorCompact({
   const isEmptySelection = allowEmpty && !selectedModelId;
   const triggerLabel = isEmptySelection
     ? emptyLabel
-    : (selectedModel?.name || placeholder);
+    : selectedModel?.name || placeholder;
 
   // Filtrage intelligent insensible aux accents et à la casse
   const filteredModels = useMemo(() => {
@@ -488,7 +528,8 @@ function PureModelSelectorCompact({
             Object.entries(grouped).map(([groupKey, groupModels]) => (
               <ModelSelectorGroup
                 heading={
-                  PROVIDER_NAMES[groupKey.toLowerCase()] || groupKey.toUpperCase()
+                  PROVIDER_NAMES[groupKey.toLowerCase()] ||
+                  groupKey.toUpperCase()
                 }
                 key={groupKey}
               >

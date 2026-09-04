@@ -33,36 +33,35 @@ export const LEGAL_LINKS = [
 ] as const;
 
 // Limites quotidiennes de génération d'images par tier
-// (miroir de TIER_DAILY_IMAGE_LIMITS / getTierDailyImageLimit côté backend Val
-// Town, config.ts — non importable car code Deno)
+// (miroir de TIER_DAILY_IMAGE_LIMITS / getTierDailyImageLimit côté backend Val Town, config.ts)
 export function getTierImageDailyLimit(tier?: string | null): number {
   const t = (tier || "Free").toLowerCase().trim();
   if (t === "max") {
-    return 20;
+    return 35;
   }
   if (t === "pro") {
-    return 10;
+    return 20;
   }
   if (t === "plus") {
-    return 5;
+    return 10;
   }
-  return 3;
+  return 5;
 }
 
 // Limites hebdomadaires de tokens Speech par tier
-// Free: 20M, Plus: 50M, Pro: 100M, Max: 200M
+// Free: 30M, Plus: 75M, Pro: 150M, Max: 300M (miroir de TIER_SPEECH_LIMITS dans config.ts)
 export function getTierSpeechLimit(tier?: string | null): number {
   const t = (tier || "Free").toLowerCase().trim();
   if (t === "max") {
-    return 200_000_000;
+    return 300_000_000;
   }
   if (t === "pro") {
-    return 100_000_000;
+    return 150_000_000;
   }
   if (t === "plus") {
-    return 50_000_000;
+    return 75_000_000;
   }
-  return 20_000_000;
+  return 30_000_000;
 }
 
 export const suggestions = [

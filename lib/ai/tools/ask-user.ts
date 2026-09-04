@@ -20,7 +20,9 @@ export const askUserQuestionSchema = z.object({
     .min(1)
     .max(12)
     .optional()
-    .describe("Liste des choix proposés (pour single_choice ou multiple_choice)"),
+    .describe(
+      "Liste des choix proposés (pour single_choice ou multiple_choice)"
+    ),
   question: z
     .string()
     .describe("La question claire et précise posée à l'utilisateur"),
@@ -45,7 +47,9 @@ export const askUserSchema = z.object({
   description: z
     .string()
     .optional()
-    .describe("Contexte ou explication courte de pourquoi ces questions sont posées"),
+    .describe(
+      "Contexte ou explication courte de pourquoi ces questions sont posées"
+    ),
   questions: z
     .array(askUserQuestionSchema)
     .min(1)
@@ -59,7 +63,6 @@ export const askUserSchema = z.object({
 export const askUser = tool({
   description:
     "Permet de poser entre 1 et 10 questions interactives et ciblées à l'utilisateur (choix unique, choix multiples, champ libre, slider numérique, confirmation Oui/Non, sélecteur de date) lorsqu'une demande manque de précision ou nécessite des préférences avant d'agir.",
-  inputSchema: askUserSchema,
   execute: async ({
     title,
     description,
@@ -68,12 +71,11 @@ export const askUser = tool({
     title: string;
     description?: string;
     questions: any[];
-  }) => {
-    return {
-      description,
-      questions,
-      status: "waiting_for_user",
-      title,
-    };
-  },
+  }) => ({
+    description,
+    questions,
+    status: "waiting_for_user",
+    title,
+  }),
+  inputSchema: askUserSchema,
 });

@@ -41,6 +41,7 @@ import { MessageReasoning } from "./message-reasoning";
 import { PreviewAttachment } from "./preview-attachment";
 import { QuizCard } from "./quiz-card";
 import { Weather } from "./weather";
+import { WebSearchResults } from "./web-search-results";
 
 function WaitingText() {
   const { waitingStatus } = useDataStream();
@@ -70,7 +71,7 @@ function ToolApprovalActions({
     addToolApprovalResponse({
       approved: false,
       id: approvalId,
-      reason: "L'utilisateur a refusé la recherche météo",
+      reason: "L'action a été refusée par l'utilisateur.",
     });
   }, [addToolApprovalResponse, approvalId]);
 
@@ -805,67 +806,12 @@ const PurePreviewMessage = ({
             </div>
           );
         }
-        const results = part.output.results || [];
         return (
-          <div
-            className="w-[min(100%,520px)] overflow-hidden rounded-2xl border border-sky-500/30 bg-card shadow-sm backdrop-blur-xs transition"
+          <WebSearchResults
             key={toolCallId}
-          >
-            <div className="flex items-center justify-between gap-2 border-b border-sky-500/20 bg-sky-500/10 px-3.5 py-2.5">
-              <div className="flex items-center gap-2">
-                <span className="flex size-7 items-center justify-center rounded-lg bg-sky-500/20 text-sky-600 dark:text-sky-400">
-                  <GlobeIcon className="size-4" />
-                </span>
-                <span className="font-semibold text-[13px] text-foreground">
-                  Recherche Web
-                </span>
-              </div>
-              <div className="flex items-center gap-2 min-w-0">
-                <span className="rounded-full bg-sky-500/15 px-2 py-0.5 text-[10.5px] font-semibold text-sky-700 dark:text-sky-300">
-                  {results.length} source{results.length > 1 ? "s" : ""}
-                </span>
-                <span className="max-w-[140px] sm:max-w-[200px] truncate text-[11px] font-medium text-muted-foreground">
-                  « {part.output.query} »
-                </span>
-              </div>
-            </div>
-            <ul className="divide-y divide-border/30 max-h-72 overflow-y-auto">
-              {results.map((result: any, idx: number) => (
-                <li className="p-3 hover:bg-muted/30 transition-colors" key={result.url || idx}>
-                  <div className="flex items-start justify-between gap-2">
-                    <a
-                      className="font-semibold text-[13px] text-foreground hover:text-sky-600 dark:hover:text-sky-400 transition-colors line-clamp-1"
-                      href={result.url}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      {result.title}
-                    </a>
-                    <a
-                      aria-label="Ouvrir le lien"
-                      className="text-muted-foreground hover:text-foreground shrink-0 p-0.5"
-                      href={result.url}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      <ExternalLinkIcon className="size-3.5" />
-                    </a>
-                  </div>
-                  {result.source && (
-                    <div className="mt-0.5 inline-flex items-center gap-1 rounded bg-muted/60 px-1.5 py-0.2 text-[10.5px] font-medium text-muted-foreground">
-                      <GlobeIcon className="size-2.5" />
-                      <span>{result.source}</span>
-                    </div>
-                  )}
-                  {result.snippet && (
-                    <p className="mt-1 text-[12px] leading-relaxed text-muted-foreground/90 line-clamp-2">
-                      {result.snippet}
-                    </p>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
+            query={part.output.query}
+            results={part.output.results || []}
+          />
         );
       }
 
@@ -904,8 +850,8 @@ const PurePreviewMessage = ({
                 {action === "add"
                   ? "💾 Mémorisation utilisateur"
                   : action === "delete"
-                  ? "🗑️ Oubli de mémoire"
-                  : "🧠 Consultation de la mémoire"}
+                    ? "🗑️ Oubli de mémoire"
+                    : "🧠 Consultation de la mémoire"}
               </span>
             </div>
             <span
@@ -914,8 +860,8 @@ const PurePreviewMessage = ({
                 isError
                   ? "bg-red-500/15 text-red-600 dark:text-red-400"
                   : isAvailable
-                  ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
-                  : "bg-sky-500/20 text-sky-600 dark:text-sky-400 animate-pulse"
+                    ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
+                    : "bg-sky-500/20 text-sky-600 dark:text-sky-400 animate-pulse"
               )}
             >
               {isError ? "Erreur" : isAvailable ? "Enregistré" : "En cours..."}
@@ -924,7 +870,11 @@ const PurePreviewMessage = ({
           <div className="p-3 text-[12.5px] space-y-1.5">
             {action === "add" && (
               <p className="text-foreground italic bg-muted/40 p-2.5 rounded-xl border border-border/40">
-                « {input?.content || output?.memory?.content || "Enregistrement d'une information..."} »
+                «{" "}
+                {input?.content ||
+                  output?.memory?.content ||
+                  "Enregistrement d'une information..."}{" "}
+                »
               </p>
             )}
             {action === "delete" && (
@@ -937,14 +887,17 @@ const PurePreviewMessage = ({
             {(action === "list" || action === "search") && (
               <div className="space-y-1.5">
                 <span className="text-xs text-muted-foreground font-medium">
-                  {output?.count !== undefined
-                    ? `${output.count} information(s) trouvée(s) :`
-                    : "Recherche dans la mémoire..."}
+                  {output?.count === undefined
+                    ? "Recherche dans la mémoire..."
+                    : `${output.count} information(s) trouvée(s) :`}
                 </span>
                 {output?.memories && output.memories.length > 0 && (
                   <ul className="divide-y divide-border/30 rounded-lg border border-border/40 bg-muted/20 max-h-36 overflow-y-auto">
                     {output.memories.map((m: any, idx: number) => (
-                      <li key={m.id || idx} className="p-2 text-[12px] text-foreground">
+                      <li
+                        className="p-2 text-[12px] text-foreground"
+                        key={m.id || idx}
+                      >
                         • {m.content}
                       </li>
                     ))}
@@ -954,7 +907,10 @@ const PurePreviewMessage = ({
             )}
             {isError && (
               <div className="text-red-500 text-xs mt-1">
-                {String(output?.error || "Une erreur est survenue lors de l'opération de mémoire.")}
+                {String(
+                  output?.error ||
+                    "Une erreur est survenue lors de l'opération de mémoire."
+                )}
               </div>
             )}
           </div>
@@ -962,13 +918,20 @@ const PurePreviewMessage = ({
       );
     }
 
-    if (type.startsWith("tool-mcp_") || (type === "dynamic-tool" && (part as any).toolName?.startsWith("mcp_"))) {
+    if (
+      type.startsWith("tool-mcp_") ||
+      (type === "dynamic-tool" && (part as any).toolName?.startsWith("mcp_"))
+    ) {
       const toolPart = part as any;
       const { state, toolCallId, input, output } = toolPart;
-      const rawName = (toolPart.toolName || type).replace(/^tool-/, "").replace(/^mcp_/, "");
+      const rawName = (toolPart.toolName || type)
+        .replace(/^tool-/, "")
+        .replace(/^mcp_/, "");
       const nameParts = rawName.split("_");
-      const serverName = nameParts.length > 1 ? nameParts[0].toUpperCase() : "MCP";
-      const methodName = nameParts.length > 1 ? nameParts.slice(1).join("_") : rawName;
+      const serverName =
+        nameParts.length > 1 ? nameParts[0].toUpperCase() : "MCP";
+      const methodName =
+        nameParts.length > 1 ? nameParts.slice(1).join("_") : rawName;
       const isAvailable = state === "output-available";
       const isError = state === "output-error" || (output && "error" in output);
 
@@ -997,8 +960,8 @@ const PurePreviewMessage = ({
                 isError
                   ? "bg-red-500/15 text-red-600"
                   : isAvailable
-                  ? "bg-emerald-500/15 text-emerald-600"
-                  : "bg-purple-500/20 text-purple-600 animate-pulse"
+                    ? "bg-emerald-500/15 text-emerald-600"
+                    : "bg-purple-500/20 text-purple-600 animate-pulse"
               )}
             >
               {isError ? "Erreur" : isAvailable ? "Terminé" : "Exécution..."}
@@ -1021,7 +984,9 @@ const PurePreviewMessage = ({
                   Résultat
                 </span>
                 <div className="mt-1 rounded-lg bg-muted/40 p-2 overflow-x-auto max-h-40 text-[11.5px] font-mono border border-border/30">
-                  {typeof output === "string" ? output : JSON.stringify(output, null, 2)}
+                  {typeof output === "string"
+                    ? output
+                    : JSON.stringify(output, null, 2)}
                 </div>
               </div>
             )}
@@ -1062,7 +1027,7 @@ const PurePreviewMessage = ({
     if (type.startsWith("tool-") || type === "dynamic-tool") {
       const toolPart = part as any;
       const { state, toolCallId } = toolPart;
-      const approvalId = toolPart.approval?.id;
+      const approvalId = toolPart.approval?.id || toolCallId;
 
       return (
         <Tool

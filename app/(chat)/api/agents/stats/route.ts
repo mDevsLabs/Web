@@ -15,7 +15,10 @@ export async function GET() {
   } catch (err: any) {
     console.error("Erreur récupération stats agents:", err);
     return Response.json(
-      { error: err.message || "Erreur lors de la récupération des statistiques." },
+      {
+        error:
+          err.message || "Erreur lors de la récupération des statistiques.",
+      },
       { status: 500 }
     );
   }

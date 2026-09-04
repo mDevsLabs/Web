@@ -5,7 +5,9 @@ export const quizQuestionSchema = z.object({
   correctAnswers: z
     .array(z.number())
     .min(1)
-    .describe("Index (base 0) de la ou des bonnes réponses dans le tableau options"),
+    .describe(
+      "Index (base 0) de la ou des bonnes réponses dans le tableau options"
+    ),
   explanation: z
     .string()
     .describe("Explication didactique et détaillée de la bonne réponse"),
@@ -30,7 +32,9 @@ export const quizzlySchema = z.object({
   domain: z
     .string()
     .default("Général")
-    .describe("Domaine du quiz (ex: Informatique, Histoire, Sciences, Cinéma, Culture générale...)"),
+    .describe(
+      "Domaine du quiz (ex: Informatique, Histoire, Sciences, Cinéma, Culture générale...)"
+    ),
   questions: z
     .array(quizQuestionSchema)
     .min(1)
@@ -43,15 +47,13 @@ export const quizzlySchema = z.object({
 export const quizzly = tool({
   description:
     "Génère un quiz interactif complet (1 à 50 questions, choix unique ou multiple) avec correction immédiate (vert/rouge), explications pédagogiques et score final. Utiliser dès que l'utilisateur demande un quiz, teste ses connaissances, ou via /quiz.",
+  execute: async (quizData: any) => ({
+    difficulty: quizData.difficulty,
+    domain: quizData.domain,
+    questions: quizData.questions,
+    theme: quizData.theme,
+    title: quizData.title,
+    totalQuestions: quizData.questions.length,
+  }),
   inputSchema: quizzlySchema,
-  execute: async (quizData: any) => {
-    return {
-      difficulty: quizData.difficulty,
-      domain: quizData.domain,
-      questions: quizData.questions,
-      theme: quizData.theme,
-      title: quizData.title,
-      totalQuestions: quizData.questions.length,
-    };
-  },
 });

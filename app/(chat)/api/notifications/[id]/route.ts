@@ -20,10 +20,8 @@ export async function PATCH(
     typeof body.isRead === "boolean"
   ) {
     const isRead =
-      typeof body.isRead === "boolean"
-        ? body.isRead
-        : body.action === "read";
-    const updated = await markNotificationRead({ id, userId, isRead });
+      typeof body.isRead === "boolean" ? body.isRead : body.action === "read";
+    const updated = await markNotificationRead({ id, isRead, userId });
     if (!updated) {
       return NextResponse.json({ error: "not found" }, { status: 404 });
     }

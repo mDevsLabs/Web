@@ -137,12 +137,7 @@ export const textArtifact = new Artifact<"text", TextArtifactMetadata>({
       setArtifact((draftArtifact) => ({
         ...draftArtifact,
         content: draftArtifact.content + streamPart.data,
-        isVisible:
-          draftArtifact.status === "streaming" &&
-          draftArtifact.content.length > 400 &&
-          draftArtifact.content.length < 450
-            ? true
-            : draftArtifact.isVisible,
+        isVisible: true,
         status: "streaming",
       }));
     }
