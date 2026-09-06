@@ -7,8 +7,12 @@ import {
   CircleIcon,
   CopyIcon,
   CpuIcon,
+  DatabaseIcon,
   DownloadIcon,
   Edit2Icon,
+  FileTextIcon,
+  GithubIcon,
+  HardDriveIcon,
   KeyIcon,
   Loader2Icon,
   MoreVerticalIcon,
@@ -19,6 +23,8 @@ import {
   SettingsIcon,
   ShieldAlertIcon,
   ShieldCheckIcon,
+  SlackIcon,
+  StoreIcon,
   TerminalIcon,
   Trash2Icon,
   WrenchIcon,
@@ -102,6 +108,58 @@ const PRESET_TEMPLATES = [
     url: "https://mcp-fetch.example.com/api",
   },
 ];
+
+// Connecteurs populaires du Store : mappés sur les templates seedés (lib/db/seeds/mcp-templates.json)
+const STORE_CONNECTORS = [
+  {
+    color: "text-foreground dark:text-foreground",
+    highlight: "Store populaires",
+    icon: GithubIcon,
+    name: "GitHub",
+    templateName: "GitHub MCP",
+    tint: "bg-foreground/10",
+  },
+  {
+    color: "text-violet-600 dark:text-violet-400",
+    highlight: "Docs & bases Notion",
+    icon: FileTextIcon,
+    name: "Notion",
+    templateName: "Notion MCP",
+    tint: "bg-violet-500/10",
+  },
+  {
+    color: "text-orange-600 dark:text-orange-400",
+    highlight: "Recherche web privée",
+    icon: SearchIcon,
+    name: "Brave Search",
+    templateName: "Brave Search MCP",
+    tint: "bg-orange-500/10",
+  },
+  {
+    color: "text-sky-600 dark:text-sky-400",
+    highlight: "Fichiers Google Drive",
+    icon: HardDriveIcon,
+    name: "Google Drive",
+    templateName: "Google Drive MCP",
+    tint: "bg-sky-500/10",
+  },
+  {
+    color: "text-cyan-600 dark:text-cyan-400",
+    highlight: "Requêtes SQL directes",
+    icon: DatabaseIcon,
+    name: "PostgreSQL",
+    templateName: "PostgreSQL Database",
+    tint: "bg-cyan-500/10",
+  },
+  {
+    color: "text-emerald-600 dark:text-emerald-400",
+    highlight: "Canaux & messages Slack",
+    icon: SlackIcon,
+    name: "Slack",
+    templateName: "Slack MCP",
+    tint: "bg-emerald-500/10",
+  },
+] as const;
 export default function McpClient() {
   const {
     data,
@@ -112,8 +170,8 @@ export default function McpClient() {
     stats: { servers: number; totalCalls: number };
   }>("/api/mcp", fetcher);
   const [activeTab, setActiveTab] = useState<
-    "servers" | "library" | "tutorial" | "logs" | "settings"
-  >("servers");
+    "store" | "servers" | "library" | "tutorial" | "logs" | "settings"
+  >("store");
   const { data: logs = [], mutate: mutateLogs } = useSWR<McpLog[]>(
     "/api/mcp/logs",
     fetcher,
@@ -130,6 +188,10 @@ export default function McpClient() {
   const servers = data?.servers ?? [];
   const stats = data?.stats ?? { servers: 0, totalCalls: 0 };
   const [searchQuery, setSearchQuery] = useState("");
+  const [storeQuery, setStoreQuery] = useState("");
+  const [installingConnector, setInstallingConnector] = useState<string | null>(
+    null
+  );
   const [isServerModalOpen, setIsServerModalOpen] = useState(false);
   const [editingServer, setEditingServer] = useState<McpServer | null>(null);
   const [serverToDelete, setSkillToDelete] = useState<McpServer | null>(null);
@@ -541,6 +603,32 @@ export default function McpClient() {
     await navigator.clipboard.writeText(JSON.stringify(tpl, null, 2));
     toast.success("Template copié !");
   };
+  // Store : activation en un clic — installe le template, ou active/désactive si déjà connecté
+  const handleStoreConnector = async (
+    connector: (typeof STORE_CONNECTORS)[number],
+    installed: McpServer | undefined
+  ) => {
+    if (installed) {
+      if (installingConnector) {
+        return;
+      }
+      setInstallingConnector(connector.name);
+      await handleToggleEnabled(installed);
+      setInstallingConnector(null);
+      return;
+    }
+    const tpl = templates.find((t: any) => t.name === connector.templateName);
+    if (!tpl) {
+      toast.error("Template introuvable pour ce connecteur");
+      return;
+    }
+    setInstallingConnector(connector.name);
+    try {
+      await handleInstallTemplate(tpl);
+    } finally {
+      setInstallingConnector(null);
+    }
+  };
   const handleExport = (fmt: string, scope: "servers" | "logs") => {
     const url =
       scope === "servers"
@@ -683,6 +771,19 @@ export default function McpClient() {
             <button
               className={cn(
                 "rounded-md px-3 py-1.5 text-xs font-medium transition-colors flex items-center gap-1.5",
+                activeTab === "store"
+                  ? "bg-background text-foreground shadow-xs"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+              onClick={() => setActiveTab("store")}
+              type="button"
+            >
+              <StoreIcon className="size-3.5 text-primary" />
+              <span>Store ({STORE_CONNECTORS.length})</span>
+            </button>
+            <button
+              className={cn(
+                "rounded-md px-3 py-1.5 text-xs font-medium transition-colors flex items-center gap-1.5",
                 activeTab === "servers"
                   ? "bg-background text-foreground shadow-xs"
                   : "text-muted-foreground hover:text-foreground"
@@ -757,9 +858,170 @@ export default function McpClient() {
               />
             </div>
           )}
+          {activeTab === "store" && (
+            <div className="relative w-64">
+              <SearchIcon className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground" />
+              <Input
+                className="h-8 pl-8 text-xs bg-muted/40"
+                onChange={(e) => setStoreQuery(e.target.value)}
+                placeholder="Rechercher un connecteur..."
+                value={storeQuery}
+              />
+            </div>
+          )}
         </div>
       </header>
       <main className="flex-1 p-4 sm:p-6 max-w-7xl mx-auto w-full">
+        {activeTab === "store" && (
+          <div className="space-y-5">
+            <div className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/[0.04] to-transparent p-5">
+              <div className="flex items-center gap-3 mb-1.5">
+                <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <StoreIcon className="size-5" />
+                </div>
+                <div>
+                  <h2 className="text-base font-bold">Store de connecteurs</h2>
+                  <p className="text-xs text-muted-foreground">
+                    Activez vos outils favoris en un clic — configuration
+                    automatique depuis les templates MCP.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {STORE_CONNECTORS.filter((c) =>
+                c.name.toLowerCase().includes(storeQuery.toLowerCase())
+              ).map((connector) => {
+                const Icon = connector.icon;
+                const tpl = templates.find(
+                  (t: any) => t.name === connector.templateName
+                );
+                const installed = servers.find(
+                  (s) => s.name === connector.templateName
+                );
+                const isBusy = installingConnector === connector.name;
+                return (
+                  <div
+                    className={cn(
+                      "flex flex-col rounded-2xl border bg-card p-4 transition-all duration-200 hover:shadow-md",
+                      installed?.isEnabled
+                        ? "border-emerald-500/40"
+                        : "border-border/60"
+                    )}
+                    key={connector.name}
+                  >
+                    <div className="flex items-start gap-3 mb-3">
+                      <div
+                        className={cn(
+                          "flex size-11 shrink-0 items-center justify-center rounded-xl",
+                          connector.tint,
+                          connector.color
+                        )}
+                      >
+                        <Icon className="size-5.5" />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2">
+                          <h3 className="font-semibold text-sm">
+                            {connector.name}
+                          </h3>
+                          {installed && (
+                            <span
+                              className={cn(
+                                "inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[10px] font-semibold",
+                                installed.isEnabled
+                                  ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                                  : "bg-muted text-muted-foreground"
+                              )}
+                            >
+                              <span
+                                className={cn(
+                                  "size-1.5 rounded-full",
+                                  installed.isEnabled
+                                    ? "bg-emerald-500"
+                                    : "bg-muted-foreground/50"
+                                )}
+                              />
+                              {installed.isEnabled ? "Actif" : "Inactif"}
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-[11px] text-muted-foreground line-clamp-2">
+                          {tpl?.description ?? connector.highlight}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1.5 flex-wrap mb-3">
+                      {tpl && (
+                        <Badge
+                          className="text-[10px] uppercase font-semibold px-2 py-0.5"
+                          variant="outline"
+                        >
+                          {tpl.transport}
+                        </Badge>
+                      )}
+                      {tpl?.authType && tpl.authType !== "none" && (
+                        <Badge
+                          className="text-[10px] px-2 py-0.5"
+                          variant="secondary"
+                        >
+                          {tpl.authType}
+                        </Badge>
+                      )}
+                    </div>
+                    <div className="mt-auto">
+                      <Button
+                        className={cn(
+                          "w-full gap-2 text-xs font-medium",
+                          installed?.isEnabled &&
+                            "border-emerald-500/40 text-emerald-600 dark:text-emerald-400"
+                        )}
+                        disabled={Boolean(installingConnector) || !tpl}
+                        onClick={() =>
+                          handleStoreConnector(connector, installed)
+                        }
+                        variant={installed?.isEnabled ? "outline" : "default"}
+                      >
+                        {isBusy ? (
+                          <>
+                            <Loader2Icon className="size-3.5 animate-spin" />
+                            {installed
+                              ? installed.isEnabled
+                                ? "Désactivation..."
+                                : "Activation..."
+                              : "Connexion..."}
+                          </>
+                        ) : installed ? (
+                          <>
+                            <ZapIcon className="size-3.5" />
+                            {installed.isEnabled ? "Désactiver" : "Activer"}
+                          </>
+                        ) : (
+                          <>
+                            <PlusIcon className="size-3.5" />
+                            Connecter en 1 clic
+                          </>
+                        )}
+                      </Button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <p className="text-[11px] text-muted-foreground text-center">
+              Un connecteur manquant ? Retrouvez les {templates.length}{" "}
+              templates complets dans l'onglet{" "}
+              <button
+                className="font-medium text-primary hover:underline"
+                onClick={() => setActiveTab("library")}
+                type="button"
+              >
+                Bibliothèque
+              </button>
+              .
+            </p>
+          </div>
+        )}
         {activeTab === "servers" && (
           <div>
             {isLoading ? (

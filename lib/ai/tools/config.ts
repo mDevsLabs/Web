@@ -4,19 +4,25 @@ import {
   BrainIcon,
   CalculatorIcon,
   CalendarIcon,
+  CalendarPlusIcon,
+  CameraIcon,
   CloudSunIcon,
   CoinsIcon,
+  FileSearchIcon,
   FileTextIcon,
   GlobeIcon,
   HelpCircleIcon,
   ImageIcon,
+  KeyRoundIcon,
   LightbulbIcon,
   NotebookIcon,
   PencilIcon,
   PlayIcon,
+  PodcastIcon,
   QrCodeIcon,
   TrophyIcon,
   Volume2Icon,
+  WaypointsIcon,
 } from "lucide-react";
 import type { ComponentType } from "react";
 
@@ -28,14 +34,20 @@ export const TOOL_IDS = [
   "requestSuggestions",
   "imageGenerate",
   "audioGenerate",
+  "audioPodcast",
   "codeExecution",
   "webSearch",
+  "webCapture",
   "calculator",
   "dateTime",
+  "calendarReminder",
   "note",
   "memory",
   "readUrl",
+  "documentParser",
   "generateChart",
+  "generateDiagram",
+  "cryptoTools",
   "currencyConverter",
   "qrCodeGenerator",
   "askUser",
@@ -67,12 +79,26 @@ export const TOOLS_META: Record<ToolId, ToolMeta> = {
     id: "audioGenerate",
     label: "Générer audio",
   },
+  audioPodcast: {
+    description:
+      "Transforme un document, un projet ou un sujet en débat audio animé entre deux intervenants virtuels (format podcast NotebookLM), joué dans un lecteur dédié.",
+    icon: PodcastIcon as any,
+    id: "audioPodcast",
+    label: "Podcast dual-voice",
+  },
   calculator: {
     description:
       "Calcule avec précision : arithmétique, trigonométrie, logarithmes, pourcentages et conversions d'unités (longueur, masse, température…). À activer dès qu'un calcul exact est requis.",
     icon: CalculatorIcon as any,
     id: "calculator",
     label: "Calculatrice",
+  },
+  calendarReminder: {
+    description:
+      "Détecte une date, une réunion ou une échéance dans la discussion et crée un événement téléchargeable (.ics) avec liens Google Calendar et Outlook pré-remplis.",
+    icon: CalendarPlusIcon as any,
+    id: "calendarReminder",
+    label: "Rappel d'agenda",
   },
   codeExecution: {
     description:
@@ -89,6 +115,13 @@ export const TOOLS_META: Record<ToolId, ToolMeta> = {
     isArtifact: true,
     label: "Créer document",
   },
+  cryptoTools: {
+    description:
+      "Boîte à outils développeur sécurisée : hashage SHA-256/384/512 et bcrypt, décodage et vérification de JWT, génération de secrets aléatoires, test de regex et formatage SQL.",
+    icon: KeyRoundIcon as any,
+    id: "cryptoTools",
+    label: "Outils crypto & dev",
+  },
   currencyConverter: {
     description:
       "Convertit des devises (EUR, USD, GBP, JPY, etc.) et cryptomonnaies (BTC, ETH, SOL) en temps réel avec les taux de change actualisés.",
@@ -102,6 +135,13 @@ export const TOOLS_META: Record<ToolId, ToolMeta> = {
     icon: CalendarIcon as any,
     id: "dateTime",
     label: "Date & heure",
+  },
+  documentParser: {
+    description:
+      "Analyse avancée d'un document joint (PDF, DOCX, CSV) : extraction sémantique du texte par pages/chapitres et détection des tableaux, exportables vers le tableur interactif.",
+    icon: FileSearchIcon as any,
+    id: "documentParser",
+    label: "Analyser document",
   },
   editDocument: {
     description:
@@ -117,6 +157,13 @@ export const TOOLS_META: Record<ToolId, ToolMeta> = {
     icon: BarChart3Icon as any,
     id: "generateChart",
     label: "Générer graphique",
+  },
+  generateDiagram: {
+    description:
+      "Génère un diagramme interactif (architecture, séquence, flowchart, mindmap, gantt…) en syntaxe Mermaid ou PlantUML, rendu dans le chat avec zoom, pan et export PNG/SVG.",
+    icon: WaypointsIcon as any,
+    id: "generateDiagram",
+    label: "Générer diagramme",
   },
   getWeather: {
     description:
@@ -182,6 +229,13 @@ export const TOOLS_META: Record<ToolId, ToolMeta> = {
     isArtifact: true,
     label: "Réécrire document",
   },
+  webCapture: {
+    description:
+      "Capture une page web réelle : screenshot de l'URL, métadonnées OpenGraph, informations SEO et technologies détectées. À activer pour critiquer un design, auditer une landing page ou analyser le SEO d'un site.",
+    icon: CameraIcon as any,
+    id: "webCapture",
+    label: "Capture d'écran Web",
+  },
   webSearch: {
     description:
       "Recherche sur le Web en temps réel : actualités, documentation, prix, vérifications factuelles. À activer pour toute question portant sur des informations récentes ou vérifiables.",
@@ -198,20 +252,30 @@ export const TOOL_SYSTEM_HINTS: Record<ToolId, string> = {
     "askUser (pose de 1 à 10 questions précises et structurées à l'utilisateur avec choix uniques/multiples et option champ libre lorsqu'une demande est incomplète, nécessite des éclaircissements, ou des préférences avant de poursuivre)",
   audioGenerate:
     "audioGenerate (synthèse vocale : transforme un texte en voix. Exécuter immédiatement avec la voix par défaut 'flux-alexis-en' sans demander le choix de la voix)",
+  audioPodcast:
+    "audioPodcast (crée un podcast-débat entre un animateur et une experte : écrire le dialogue en segments vivants de 2 à 4 phrases, accroche à conclusion, puis les synthétiser avec 2 voix distinctes — ne jamais demander de choix de voix)",
   calculator:
     "calculator (calculs exacts : arithmétique, trigonométrie, logarithmes, conversions d'unités — longueur, masse, température, temps, volume, données, énergie, pression, vitesse, surface, angle)",
+  calendarReminder:
+    "calendarReminder (détecte une date/échéance/réunion dans la conversation et génère un événement téléchargeable .ics + liens Google Calendar/Outlook — demander la zone horaire en cas d'ambiguïté)",
   codeExecution:
     "codeExecution (exécute du Python/JS dans le navigateur : tester un algorithme, traiter des données, vérifier un résultat)",
   createDocument:
     "createDocument (crée un artefact texte/code/sheet/html : tout contenu long ou structuré que l'utilisateur pourra ouvrir et éditer)",
+  cryptoTools:
+    "cryptoTools (boîte à outils dev : hash SHA-256/384/512, bcrypt hash/compare, décodage et vérification de JWT, génération de secrets aléatoires, test de regex détaillé, formatage SQL multi-dialectes)",
   currencyConverter:
     "currencyConverter (conversion de devises EUR, USD, GBP, JPY, CHF, etc. et cryptos BTC, ETH, SOL en temps réel avec taux de change)",
   dateTime:
     "dateTime (date/heure actuelle, conversions entre fuseaux horaires, différences entre dates, calcul de la date de Pâques, formatage)",
+  documentParser:
+    "documentParser (analyse avancée d'un document joint PDF/DOCX/CSV : extraction du texte par pages/chapitres, détection des titres, extraction des tableaux — renvoyer ensuite les tableaux via createDocument kind='sheet')",
   editDocument:
     "editDocument (modification ciblée d'un artefact existant : à privilégier pour de petits changements)",
   generateChart:
     "generateChart (crée des graphiques SVG vectoriels de type barres, camembert ou anneau à partir de séries de données)",
+  generateDiagram:
+    "generateDiagram (génère un diagramme visuel interactif en Mermaid ou PlantUML : architecture, séquence, flowchart, mindmap, gantt, timeline — code propre sans balises ```)",
   getWeather:
     "getWeather (météo actuelle et prévisions 1 à 7 jours, celsius/fahrenheit, par ville ou coordonnées)",
   imageGenerate:
@@ -229,6 +293,8 @@ export const TOOL_SYSTEM_HINTS: Record<ToolId, string> = {
     "requestSuggestions (propose des améliorations sur un artefact existant : structure, clarté, style)",
   updateDocument:
     "updateDocument (réécriture complète d'un artefact : pour une refonte ; préférer editDocument pour des ajustements)",
+  webCapture:
+    "webCapture (capture d'écran réelle d'une URL + métadonnées OpenGraph/SEO et technologies détectées — pour critiquer un design, auditer une page ou montrer un site)",
   webSearch:
     "webSearch (recherche sur le Web en temps réel : actualités, documentation, faits vérifiables — citer les sources retournées)",
 };

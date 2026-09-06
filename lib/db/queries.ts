@@ -3746,6 +3746,42 @@ export async function getGhostMemoryEnabled(userId: string): Promise<boolean> {
   }
 }
 
+export async function getUserModelPreferences(userId: string): Promise<{
+  customInstructions: string | null;
+  customInstructionsEnabled: boolean;
+  defaultTemperature: number | null;
+  defaultTopP: number | null;
+}> {
+  const empty = {
+    customInstructions: null,
+    customInstructionsEnabled: false,
+    defaultTemperature: null,
+    defaultTopP: null,
+  };
+  try {
+    await dbReady();
+    if (!_rawClient) {
+      return empty;
+    }
+    const rows = await _rawClient`
+      SELECT custom_instructions, custom_instructions_enabled, default_temperature, default_top_p FROM users
+      WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text
+      LIMIT 1`;
+    const row = (rows as any[])[0];
+    if (!row) {
+      return empty;
+    }
+    return {
+      customInstructions: row.custom_instructions || null,
+      customInstructionsEnabled: Boolean(row.custom_instructions_enabled),
+      defaultTemperature: row.default_temperature ?? null,
+      defaultTopP: row.default_top_p ?? null,
+    };
+  } catch {
+    return empty;
+  }
+}
+
 export async function createMemory({
   userId,
   content,

@@ -31,16 +31,21 @@ import {
   ToolOutput,
 } from "../ai-elements/tool";
 import { AskUserCard } from "./ask-user-card";
+import { CalendarReminderCard } from "./calendar-reminder-card";
 import { CodeExecution } from "./code-execution";
 import { useDataStream } from "./data-stream-provider";
+import { DiagramCard } from "./diagram-card";
 import { DocumentToolResult } from "./document";
+import { DocumentParserCard } from "./document-parser-card";
 import { DocumentPreview } from "./document-preview";
 import { CopyIcon, DownloadIcon, EyeIcon, SparklesIcon } from "./icons";
 import { MessageActions } from "./message-actions";
 import { MessageReasoning } from "./message-reasoning";
+import { PodcastCard } from "./podcast-card";
 import { PreviewAttachment } from "./preview-attachment";
 import { QuizCard } from "./quiz-card";
 import { Weather } from "./weather";
+import { WebCaptureCard } from "./web-capture-card";
 import { WebSearchResults } from "./web-search-results";
 
 function WaitingText() {
@@ -1020,6 +1025,61 @@ const PurePreviewMessage = ({
           args={toolPart.input || toolPart.args}
           key={toolPart.toolCallId ?? key}
           output={toolPart.output}
+        />
+      );
+    }
+
+    if (type === "tool-generateDiagram") {
+      const toolPart = part as any;
+      return (
+        <DiagramCard
+          key={toolPart.toolCallId ?? key}
+          output={toolPart.output}
+          state={toolPart.state}
+        />
+      );
+    }
+
+    if (type === "tool-audioPodcast") {
+      const toolPart = part as any;
+      return (
+        <PodcastCard
+          key={toolPart.toolCallId ?? key}
+          output={toolPart.output}
+          state={toolPart.state}
+        />
+      );
+    }
+
+    if (type === "tool-webCapture") {
+      const toolPart = part as any;
+      return (
+        <WebCaptureCard
+          key={toolPart.toolCallId ?? key}
+          output={toolPart.output}
+          state={toolPart.state}
+        />
+      );
+    }
+
+    if (type === "tool-documentParser") {
+      const toolPart = part as any;
+      return (
+        <DocumentParserCard
+          key={toolPart.toolCallId ?? key}
+          output={toolPart.output}
+          state={toolPart.state}
+        />
+      );
+    }
+
+    if (type === "tool-calendarReminder") {
+      const toolPart = part as any;
+      return (
+        <CalendarReminderCard
+          key={toolPart.toolCallId ?? key}
+          output={toolPart.output}
+          state={toolPart.state}
         />
       );
     }
