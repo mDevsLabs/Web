@@ -78,6 +78,7 @@ import {
 } from "@/hooks/use-chat-attachments";
 import { useProjects } from "@/hooks/use-projects";
 import { useTier } from "@/hooks/use-tier";
+import { memoryLimitForTier } from "@/lib/auth/plan";
 import { chatModels } from "@/lib/ai/models";
 import type { ToolId } from "@/lib/ai/tools/config";
 import { runSlashCommand } from "@/lib/chat/slash-commands";
@@ -184,7 +185,7 @@ function PureMultimodalInput({
     isGhostMode,
     toggleGhostMode,
   } = useActiveChat();
-  const { isFree } = useTier();
+  const { isFree, raw: tierRaw } = useTier();
   const { projects, isLoading: isProjectsLoading } = useProjects();
 
   const { data: userSkills = [] } = useSWR<Skill[]>(
@@ -231,12 +232,25 @@ function PureMultimodalInput({
     !isFree && activeAgent?.id
       ? `/api/memory?agentId=${activeAgent.id}`
       : "/api/memory",
-    (url: string) => fetch(url).then((r) => r.json()),
+    (url: string) =>
+      fetch(url)
+        .then((r) => (r.ok ? r.json() : null))
+        .catch(() => null),
     { dedupingInterval: 15_000, revalidateOnFocus: false }
   );
-  const memoryCount = memoryQuotaData?.memories?.length ?? 0;
-  const memoryLimit = memoryQuotaData?.limit ?? 0;
-  const memoryAtLimit = Boolean(memoryQuotaData && memoryCount >= memoryLimit);
+  const fallbackLimit = memoryLimitForTier(tierRaw);
+  const memoryLimit =
+    typeof memoryQuotaData?.limit === "number" && memoryQuotaData.limit > 0
+      ? memoryQuotaData.limit
+      : fallbackLimit;
+  const memoryCount = Array.isArray(memoryQuotaData?.memories)
+    ? memoryQuotaData.memories.length
+    : 0;
+  const memoryAtLimit = Boolean(
+    memoryLimit > 0 &&
+      Array.isArray(memoryQuotaData?.memories) &&
+      memoryCount >= memoryLimit
+  );
 
   // Enrichir pendingProject avec données fraîches (nom/couleur) quand la liste arrive
   useEffect(() => {

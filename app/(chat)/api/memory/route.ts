@@ -46,22 +46,30 @@ async function resolveScope(
   projectId: string | null
 ) {
   if (agentId) {
-    const agent = await getAgentById({ id: agentId, userId });
-    if (!agent) {
+    try {
+      const agent = await getAgentById({ id: agentId, userId });
+      if (!agent) {
+        return null;
+      }
+      return { agentId, projectId: null } as const;
+    } catch {
       return null;
     }
-    return { agentId, projectId: null } as const;
   }
   if (projectId) {
-    const project = await getProjectById({
-      id: projectId,
-      userEmail,
-      userId,
-    });
-    if (!project) {
+    try {
+      const project = await getProjectById({
+        id: projectId,
+        userEmail,
+        userId,
+      });
+      if (!project) {
+        return null;
+      }
+      return { agentId: null, projectId } as const;
+    } catch {
       return null;
     }
-    return { agentId: null, projectId } as const;
   }
   return { agentId: null, projectId: null } as const;
 }
@@ -83,10 +91,14 @@ export async function GET(request: Request) {
         memories,
       });
     }
-    const scope = await resolveScope(userId, user.email, agentId, projectId);
-    if (!scope) {
-      return new ChatbotError("not_found:database").toResponse();
-    }
+    const resolvedScope = await resolveScope(
+      userId,
+      user.email,
+      agentId,
+      projectId
+    );
+    // Pour GET, si l'agent ou projet n'existe pas, repli sur le scope global pour ne pas bloquer le chat
+    const scope = resolvedScope ?? { agentId: null, projectId: null };
     const memories = scope.agentId
       ? await getAgentMemories({ agentId: scope.agentId, userId })
       : scope.projectId

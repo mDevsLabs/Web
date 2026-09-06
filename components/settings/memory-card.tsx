@@ -49,6 +49,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { useTier } from "@/hooks/use-tier";
+import { memoryLimitForTier } from "@/lib/auth/plan";
 import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -134,6 +136,8 @@ function normalizeStr(text: string): string {
 }
 
 export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
+  const { raw: tierRaw } = useTier();
+  const fallbackLimit = memoryLimitForTier(tierRaw);
   const scopeQuery = agentId
     ? `?agentId=${agentId}`
     : projectId
@@ -141,17 +145,25 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
       : "";
   const { data, mutate, isLoading } = useSWR(
     allScopes ? "/api/memory?scope=all" : `/api/memory${scopeQuery}`,
-    (url: string) => fetch(url).then((r) => r.json()),
+    (url: string) =>
+      fetch(url)
+        .then((r) => (r.ok ? r.json() : null))
+        .catch(() => null),
     { dedupingInterval: 10_000 }
   );
 
-  const memories: MemoryEntry[] = data?.memories || [];
-  const limit: number = typeof data?.limit === "number" ? data.limit : 50;
+  const memories: MemoryEntry[] = Array.isArray(data?.memories)
+    ? data.memories
+    : [];
+  const limit: number =
+    typeof data?.limit === "number" && data.limit > 0
+      ? data.limit
+      : fallbackLimit;
 
   const scopeCount = allScopes
     ? memories.filter(isGlobalScope).length
     : memories.length;
-  const isAtLimit = scopeCount >= limit;
+  const isAtLimit = limit > 0 && scopeCount >= limit;
 
   // Filtres & Recherche
   const [scopeFilter, setScopeFilter] = useState<ScopeFilter>("all");

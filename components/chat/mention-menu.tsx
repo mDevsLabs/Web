@@ -263,13 +263,17 @@ function MentionItem({
   supportsTools?: boolean;
 }) {
   const isToolFeature = item.kind === "skill" || item.kind === "mcp";
-  const isMemoryBlocked = item.kind === "memory" && Boolean(memoryAtLimit);
+  const isMemoryBlocked =
+    item.kind === "memory" &&
+    Boolean(memoryAtLimit) &&
+    typeof memoryLimit === "number" &&
+    memoryLimit > 0;
   const isDisabled = (isToolFeature && !supportsTools) || isMemoryBlocked;
 
   const handleClick = useCallback(() => {
     if (isMemoryBlocked) {
       toast.warning(
-        `Limite de mémoires atteinte (${memoryCount ?? memoryLimit ?? 0}/${memoryLimit ?? 0}) — libérez de l'espace dans l'onglet Mémoire des paramètres.`
+        `Limite de mémoires atteinte (${memoryCount ?? memoryLimit ?? 0}/${memoryLimit}) — libérez de l'espace dans l'onglet Mémoire des paramètres.`
       );
       return;
     }
@@ -366,14 +370,14 @@ function MentionItem({
             <span className="text-[10px] bg-sky-500/10 text-sky-600 dark:text-sky-400 font-semibold px-1.5 py-0.2 rounded">
               Mémoire
             </span>
-            {isDisabled && (
+            {isMemoryBlocked && typeof memoryLimit === "number" && memoryLimit > 0 && (
               <span className="text-[9px] bg-destructive/10 text-destructive font-semibold px-1.5 py-0.2 rounded">
-                Limite atteinte ({memoryCount ?? 0}/{memoryLimit ?? 0})
+                Limite atteinte ({memoryCount ?? 0}/{memoryLimit})
               </span>
             )}
           </div>
           <span className="text-[11px] text-muted-foreground/70 truncate">
-            {isDisabled
+            {isMemoryBlocked
               ? "Libérez de l'espace dans l'onglet Mémoire des paramètres"
               : "L'IA pourra retenir, retrouver ou oublier des informations"}
           </span>
