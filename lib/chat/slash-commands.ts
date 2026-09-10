@@ -90,7 +90,9 @@ export async function runSlashCommand(
       setMessages(() => []);
       break;
     case "rename":
-      toast("Rename is available from the sidebar chat menu.");
+      toast.info(
+        "Le renommage est disponible depuis le menu de la discussion."
+      );
       break;
     case "model": {
       const modelBtn = document.querySelector<HTMLButtonElement>(
@@ -183,7 +185,7 @@ export async function runSlashCommand(
             togglePendingTool(t as any);
           }
         });
-        toast("Outils documents désactivés");
+        toast.success("Outils documents désactivés");
       } else {
         docTools.forEach((t) => togglePendingTool(t as any));
         toast.success(
@@ -257,7 +259,7 @@ export async function runSlashCommand(
     }
     case "tools-clear": {
       clearPendingTools();
-      toast("Tous les outils désactivés");
+      toast.success("Tous les outils désactivés");
       break;
     }
     case "agents": {

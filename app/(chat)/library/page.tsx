@@ -59,6 +59,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { DEFAULT_CHAT_MODEL, getModelCapabilities } from "@/lib/ai/models";
 import { MAI_PENDING_ATTACHMENT_KEY, MAI_UPGRADE_URL } from "@/lib/constants";
+import { fetcher } from "@/lib/utils";
 
 export type CloudFile = {
   id: string;
@@ -202,7 +203,7 @@ export default function LibraryPage() {
   // Le modèle actuel (cookie chat-model) accepte-t-il les fichiers ?
   const { data: modelsCapData } = useSWR(
     `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models`,
-    (url: string) => fetch(url).then((r) => r.json()),
+    fetcher,
     { dedupingInterval: 60_000, revalidateOnFocus: false }
   );
   const currentModelSupportsFiles = useMemo(() => {

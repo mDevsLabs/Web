@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { z } from "zod";
 import { getMaiUser } from "@/lib/auth/session";
 import {
   getChatById,
@@ -13,6 +14,10 @@ export async function POST(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
+  const idParsed = z.string().uuid().safeParse(id);
+  if (!idParsed.success) {
+    return NextResponse.json({ error: "Chat id invalide" }, { status: 400 });
+  }
   const maiUser = await getMaiUser();
   if (!maiUser) {
     return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
@@ -20,7 +25,17 @@ export async function POST(
   const userId = maiUser.id || maiUser.email;
 
   const body = await request.json().catch(() => ({}));
-  const upToMessageId: string | null = body.upToMessageId ?? null;
+  const bodySchema = z.object({
+    upToMessageId: z.string().uuid().nullish(),
+  });
+  const parsed = bodySchema.safeParse(body);
+  if (!parsed.success) {
+    return NextResponse.json(
+      { error: "upToMessageId invalide" },
+      { status: 400 }
+    );
+  }
+  const upToMessageId: string | null = parsed.data.upToMessageId ?? null;
 
   const chat = await getChatById({ id });
   if (!chat) {

@@ -201,8 +201,8 @@ export function registerVibeSettingsRoutes(
         profileRows,
         postRows,
         settingsRows,
-        followersRows,
         followingRows,
+        followersRows,
       ] = await Promise.all([
         sql`SELECT id, username, email, tier, created_at FROM users WHERE id = ${userId} LIMIT 1`,
         sql`SELECT display_name, bio, avatar_url, banner_url, interests, followers_count, following_count, posts_count FROM profiles WHERE user_id = ${userId} LIMIT 1`,

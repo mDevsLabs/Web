@@ -17,8 +17,12 @@ jobs:
           CRON_SECRET: ${{ secrets.CRON_SECRET }}
         run: |
           if [ -z "$APP_URL" ]; then
-            echo "::warning ::Le secret APP_URL n'est pas configuré dans GitHub Secrets."
-            exit 0
+            echo "::error ::Le secret APP_URL n'est pas configuré dans GitHub Secrets."
+            exit 1
+          fi
+          if [ -z "$CRON_SECRET" ]; then
+            echo "::error ::Le secret CRON_SECRET n'est pas configuré dans GitHub Secrets."
+            exit 1
           fi
           
           # Nettoyer l'URL

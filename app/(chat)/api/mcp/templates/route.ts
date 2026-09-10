@@ -1,3 +1,4 @@
+import { z } from "zod";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
 import { getMaiUser } from "@/lib/auth/session";
 import { getMcpTemplateById, getMcpTemplates } from "@/lib/db/queries";
@@ -26,8 +27,14 @@ export async function POST(request: Request) {
   const user = guard.user;
   const userId = user.id || user.email;
 
-  const json = await request.json();
-  const tpl = await getMcpTemplateById(json.templateId);
+  const json = await request.json().catch(() => ({}));
+  const parsed = z
+    .object({ templateId: z.string().uuid() })
+    .safeParse(json);
+  if (!parsed.success) {
+    return Response.json({ error: "templateId invalide" }, { status: 400 });
+  }
+  const tpl = await getMcpTemplateById(parsed.data.templateId);
   if (!tpl) {
     return Response.json({ error: "Template not found" }, { status: 404 });
   }

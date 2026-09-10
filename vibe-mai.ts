@@ -353,21 +353,36 @@ export function registerVibeMAIRoutes(
       }
 
       let toolResult: any = null;
+      let toolFailed = false;
       if (toolToRun) {
         toolResult = await MAIAgentFleet.executeTool(
           toolToRun,
           toolArgs,
           userId
         );
+        toolFailed = Boolean(toolResult && toolResult.success === false);
       }
 
-      const { weekStartStr } = getWeekData();
-      await sql`
+      // Facturation au coût réel estimé (pas +250 aveugle, pas en cas d'échec outil)
+      const estimatedTokens = Math.max(
+        10,
+        Math.ceil(
+          ((typeof message === "string" ? message.length : 0) +
+            JSON.stringify(toolResult ?? "").length) /
+            4
+        )
+      );
+      if (!toolFailed) {
+        const { weekStartStr } = getWeekData();
+        await sql`
         INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-        VALUES (${userId}, ${weekStartStr}::date, 250)
+        VALUES (${userId}, ${weekStartStr}::date, ${estimatedTokens})
         ON CONFLICT (user_id, week_start)
-        DO UPDATE SET tokens_used = weekly_usage.tokens_used + 250
-      `.catch(() => {});
+        DO UPDATE SET tokens_used = weekly_usage.tokens_used + ${estimatedTokens}
+      `.catch((err: unknown) =>
+          console.warn("[mai] weekly_usage failed:", err)
+        );
+      }
 
       let reply = `Bonjour @${username} ! Je suis mAI (modèle ${model}). Comment puis-je vous aider ?`;
 

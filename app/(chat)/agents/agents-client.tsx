@@ -66,9 +66,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useActiveChat } from "@/hooks/use-active-chat";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import type { Agent, AgentTemplate, McpServer, Skill } from "@/lib/db/schema";
-import { cn } from "@/lib/utils";
-
-const fetcher = (url: string) => fetch(url).then((r) => r.json());
+import { cn, fetcher } from "@/lib/utils";
 
 export default function AgentsClient() {
   const {

@@ -12,6 +12,7 @@ import {
   XIcon,
 } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import DOMPurify from "dompurify";
 import { cn } from "@/lib/utils";
 
 type DiagramOutput = {
@@ -34,7 +35,8 @@ async function getMermaid() {
         document.documentElement.classList.contains("dark");
       mermaid.initialize({
         fontFamily: "var(--font-sans, ui-sans-serif, system-ui)",
-        securityLevel: "loose",
+        // strict bloque <foreignObject>/scripts dans le SVG généré
+        securityLevel: "strict",
         startOnLoad: false,
         theme: isDark ? "dark" : "default",
       });
@@ -80,6 +82,18 @@ function slugify(value: string) {
       .replace(/(^-|-$)/g, "")
       .slice(0, 60) || "diagramme"
   );
+}
+
+// Purifie le SVG (mermaid/kroki) : supprime scripts, event-handlers,
+// foreignObject — indispensable avant dangerouslySetInnerHTML.
+export function sanitizeSvg(svg: string): string {
+  if (!svg) return "";
+  return DOMPurify.sanitize(svg, {
+    ADD_TAGS: ["foreignObject"],
+    FORBID_ATTR: ["onerror", "onload", "onclick", "onmouseover", "onfocus"],
+    FORBID_TAGS: ["script", "iframe", "object", "embed", "form", "a"],
+    USE_PROFILES: { svg: true },
+  });
 }
 
 async function exportSvg(svg: string, title: string) {
@@ -351,8 +365,7 @@ export function DiagramCard({
     >
       <div
         className="flex h-full w-full items-center justify-center p-2 [&_svg]:max-h-full [&_svg]:max-w-full"
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: SVG généré par mermaid (rendu local, pas d'HTML utilisateur brut)
-        dangerouslySetInnerHTML={{ __html: svg }}
+        dangerouslySetInnerHTML={{ __html: sanitizeSvg(svg) }}
         style={{
           transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
           transformOrigin: "center",
@@ -408,8 +421,7 @@ export function DiagramCard({
           >
             <div
               className="flex h-full w-full items-center justify-center p-4 [&_svg]:h-full [&_svg]:w-full [&_svg]:max-h-full [&_svg]:max-w-full"
-              // biome-ignore lint/security/noDangerouslySetInnerHtml: SVG généré par mermaid (rendu local, pas d'HTML utilisateur brut)
-              dangerouslySetInnerHTML={{ __html: svg as string }}
+              dangerouslySetInnerHTML={{ __html: sanitizeSvg(svg as string) }}
               style={{
                 transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
                 transformOrigin: "center",

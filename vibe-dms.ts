@@ -79,13 +79,18 @@ export function registerVibeDMsRoutes(
   app: Hono,
   registerMulti: RegisterMultiFn
 ) {
-  ensureDMTables();
+  // Fire-and-forget avec log (évite la race silencieuse du premier appel)
+  ensureDMTables().catch((err) =>
+    console.warn("[dms] ensureDMTables failed:", err)
+  );
   // 1. SEARCH USERS FOR DM
   const handleDMUsers = async (c: any) => {
     try {
       const q = (c.req.query("q") || "").trim().toLowerCase();
       if (!q) return c.json({ users: [] });
 
+      // Échappe % _ \ pour LIKE (évite wildcard injection)
+      const safe = q.replace(/[\\%_]/g, (m) => `\\${m}`).slice(0, 50);
       const sql = getDb();
       const users = await sql`
         SELECT u.id, u.username, u.tier,
@@ -93,7 +98,7 @@ export function registerVibeDMsRoutes(
                pr.display_name, pr.avatar_url
         FROM users u
         LEFT JOIN profiles pr ON pr.user_id = u.id
-        WHERE LOWER(u.username) LIKE ('%' || ${q} || '%') OR LOWER(pr.display_name) LIKE ('%' || ${q} || '%')
+        WHERE LOWER(u.username) LIKE ('%' || ${safe} || '%') ESCAPE '\\' OR LOWER(pr.display_name) LIKE ('%' || ${safe} || '%') ESCAPE '\\'
         LIMIT 10
       `;
       return c.json({ users });

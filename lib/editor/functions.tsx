@@ -4,6 +4,7 @@ import { defaultMarkdownSerializer } from "prosemirror-markdown";
 import { DOMParser, type Node } from "prosemirror-model";
 import { Decoration, DecorationSet, type EditorView } from "prosemirror-view";
 import { renderToString } from "react-dom/server";
+import DOMPurify from "dompurify";
 
 import { MessageResponse } from "@/components/ai-elements/message";
 
@@ -15,8 +16,13 @@ export const buildDocumentFromContent = (content: string) => {
   const stringFromMarkdown = renderToString(
     <MessageResponse>{content}</MessageResponse>
   );
+  // Purifie le HTML issu du markdown LLM avant parsing ProseMirror
+  const clean = DOMPurify.sanitize(stringFromMarkdown, {
+    FORBID_ATTR: ["onerror", "onload", "onclick", "onmouseover", "onfocus"],
+    FORBID_TAGS: ["script", "iframe", "object", "embed", "form"],
+  });
   const tempContainer = document.createElement("div");
-  tempContainer.innerHTML = stringFromMarkdown;
+  tempContainer.innerHTML = clean;
   return parser.parse(tempContainer);
 };
 

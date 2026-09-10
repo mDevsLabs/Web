@@ -1,7 +1,6 @@
 import { cookies } from "next/headers";
 import Script from "next/script";
 import { Suspense } from "react";
-import { Toaster } from "sonner";
 import { AppSidebar } from "@/components/chat/app-sidebar";
 import { DataStreamProvider } from "@/components/chat/data-stream-provider";
 import { ChatShell } from "@/components/chat/shell";
@@ -35,14 +34,6 @@ async function SidebarShell({ children }: { children: React.ReactNode }) {
       <ActiveChatProvider>
         <AppSidebar user={user} />
         <SidebarInset className="flex flex-col">
-          <Toaster
-            position="top-center"
-            theme="system"
-            toastOptions={{
-              className:
-                "!bg-card !text-foreground !border-border/50 !shadow-[var(--shadow-float)]",
-            }}
-          />
           <Suspense fallback={<div className="flex h-dvh" />}>
             <ChatShell />
           </Suspense>

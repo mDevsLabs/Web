@@ -16,11 +16,11 @@ import {
   useRef,
   useState,
 } from "react";
+import { toast } from "sonner";
 import useSWR, { useSWRConfig } from "swr";
 import { unstable_serialize } from "swr/infinite";
 import { useDataStream } from "@/components/chat/data-stream-provider";
 import { getChatHistoryPaginationKey } from "@/components/chat/sidebar-history";
-import { toast } from "@/components/chat/toast";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
 import { useAutoResume } from "@/hooks/use-auto-resume";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
@@ -189,16 +189,11 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
           pendingToolsRef.current = filtered;
           return filtered;
         });
-        toast({
-          description:
-            "Mode fantôme activé - La discussion est temporaire et ne sera pas enregistrée.",
-          type: "success",
-        });
+        toast.success(
+          "Mode fantôme activé - La discussion est temporaire et ne sera pas enregistrée."
+        );
       } else {
-        toast({
-          description: "Mode fantôme désactivé",
-          type: "success",
-        });
+        toast.success("Mode fantôme désactivé");
       }
       return next;
     });
@@ -216,10 +211,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   }, []);
   const togglePendingTool = useCallback((tool: ToolId) => {
     if (tool === "imageGenerate" && isGhostModeRef.current) {
-      toast({
-        description: "La génération d'image est indisponible en Mode fantôme",
-        type: "error",
-      });
+      toast.error("La génération d'image est indisponible en Mode fantôme");
       return;
     }
     setPendingToolsState((prev) => {
@@ -532,10 +524,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       if (error.message?.includes("AI Gateway requires a valid credit card")) {
         setShowCreditCardAlert(true);
       } else {
-        toast({
-          description: getAiErrorMessage(error),
-          type: "error",
-        });
+        toast.error(getAiErrorMessage(error));
       }
     },
     onFinish: () => {
@@ -664,7 +653,6 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     stop();
   }, [
     setMessages,
-    setInput,
     setActiveSkill,
     setSkillParamValues,
     setWaitingStatus,
@@ -689,7 +677,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       lastLoadedChatIdRef.current = chatId;
       setMessages(chatData.messages);
     }
-  }, [chatId, isNewChat, chatData, setMessages, setInput]);
+  }, [chatId, isNewChat, chatData, setMessages]);
 
   useEffect(() => {
     if (chatData && !isNewChat) {

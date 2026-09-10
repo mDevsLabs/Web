@@ -213,10 +213,10 @@ export function registerVibeUsersRoutes(
       }
 
       const userRows = await sql`
-        SELECT u.id, u.username, u.email, u.tier, u.avatar_url,
-               COALESCE(u.created_at, NOW()) as created_at,
-               (COALESCE(u.is_verified, FALSE) OR LOWER(COALESCE(u.tier, '')) IN ('plus', 'pro', 'max')) as is_verified,
-               pr.display_name, pr.bio, pr.banner_url, pr.interests, pr.followers_count, pr.following_count, pr.posts_count
+        SELECT u.id, u.username, u.tier, u.avatar_url,
+                COALESCE(u.created_at, NOW()) as created_at,
+                (COALESCE(u.is_verified, FALSE) OR LOWER(COALESCE(u.tier, '')) IN ('plus', 'pro', 'max')) as is_verified,
+                pr.display_name, pr.bio, pr.banner_url, pr.interests, pr.followers_count, pr.following_count, pr.posts_count
         FROM users u
         LEFT JOIN profiles pr ON pr.user_id = u.id
         WHERE LOWER(u.username) = ${username}

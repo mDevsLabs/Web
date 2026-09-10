@@ -60,7 +60,7 @@ function PurePlusMenuButton({
       return;
     }
     if (isVisionLoading) {
-      toast("Chargement des capacités du modèle...");
+      toast.info("Chargement des capacités du modèle...");
       return;
     }
     fileInputRef.current?.click();
@@ -75,7 +75,7 @@ function PurePlusMenuButton({
       return;
     }
     if (isVisionLoading) {
-      toast("Chargement des capacités du modèle...");
+      toast.info("Chargement des capacités du modèle...");
       return;
     }
     onOpenCloudPicker();
@@ -89,7 +89,7 @@ function PurePlusMenuButton({
     }
     const isCurrentlyEnabled = pendingTools.includes(toolId);
     togglePendingTool(toolId);
-    toast(
+    toast.success(
       isCurrentlyEnabled
         ? `${label} désactivé`
         : `${label} activé pour le prochain message`

@@ -2,6 +2,7 @@ import type { Hono } from "npm:hono@4";
 import {
   extractTierFromApiKey,
   getDb,
+  getEnv,
   getTierRequestLimit,
   getUserQuotaBoost,
   getWeekData,
@@ -126,7 +127,7 @@ export function registerMiddleware(app: Hono) {
     const reqUserId = c.req.header("x-user-id") || c.req.header("X-User-Id");
     const startTime = Date.now();
 
-    const systemMaiApiKey = Deno.env.get("MAI_API_KEY");
+    const systemMaiApiKey = getEnv("MAI_API_KEY");
 
     let userPlan = "Free";
     let currentUserId: string | null = null;

@@ -15,6 +15,7 @@ import { EditorState } from "prosemirror-state";
 import { EditorView } from "prosemirror-view";
 import { useEffect, useRef, useState } from "react";
 import { renderToString } from "react-dom/server";
+import DOMPurify from "dompurify";
 
 import { MessageResponse } from "@/components/ai-elements/message";
 import { DiffType, diffEditor } from "@/lib/editor/diff";
@@ -88,11 +89,19 @@ export const DiffView = ({ oldContent, newContent }: DiffEditorProps) => {
   useEffect(() => {
     const parser = DOMParser.fromSchema(diffSchema);
 
-    const oldHtmlContent = renderToString(
-      <MessageResponse>{oldContent}</MessageResponse>
+    const oldHtmlContent = DOMPurify.sanitize(
+      renderToString(<MessageResponse>{oldContent}</MessageResponse>),
+      {
+        FORBID_ATTR: ["onerror", "onload", "onclick", "onmouseover", "onfocus"],
+        FORBID_TAGS: ["script", "iframe", "object", "embed", "form"],
+      }
     );
-    const newHtmlContent = renderToString(
-      <MessageResponse>{newContent}</MessageResponse>
+    const newHtmlContent = DOMPurify.sanitize(
+      renderToString(<MessageResponse>{newContent}</MessageResponse>),
+      {
+        FORBID_ATTR: ["onerror", "onload", "onclick", "onmouseover", "onfocus"],
+        FORBID_TAGS: ["script", "iframe", "object", "embed", "form"],
+      }
     );
 
     const oldContainer = document.createElement("div");

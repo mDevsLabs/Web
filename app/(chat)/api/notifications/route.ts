@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { z } from "zod";
 import { getMaiUser } from "@/lib/auth/session";
 import {
   broadcastNewsNotification,
@@ -8,6 +9,25 @@ import {
   markAllNotificationsRead,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
+
+const notificationSchema = z.object({
+  body: z.string().max(500).nullish(),
+  broadcast: z.boolean().optional(),
+  link: z.string().max(500).nullish(),
+  title: z.string().min(1).max(120),
+  type: z.string().max(50).nullish(),
+});
+
+function isAdminEmail(email?: string | null): boolean {
+  if (!email) return false;
+  const raw =
+    process.env.MAI_ADMIN_EMAILS || process.env.ADMIN_EMAILS || "";
+  const allow = raw
+    .split(",")
+    .map((s) => s.trim().toLowerCase())
+    .filter(Boolean);
+  return allow.includes(email.toLowerCase());
+}
 
 export async function GET(request: Request) {
   const user = await getMaiUser();
@@ -41,26 +61,19 @@ export async function POST(request: Request) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
   const body = await request.json().catch(() => ({}));
-  const {
-    type,
-    title,
-    body: notifBody,
-    link,
-    broadcast,
-  } = body as {
-    type?: string;
-    title?: string;
-    body?: string;
-    link?: string;
-    broadcast?: boolean;
-  };
+  const parsed = notificationSchema.safeParse(body);
+  if (!parsed.success) {
+    return NextResponse.json(
+      { error: "Payload invalide (titre 1-120, corps/lien ≤500)" },
+      { status: 400 }
+    );
+  }
+  const { type, title, body: notifBody, link, broadcast } = parsed.data;
 
   if (broadcast) {
-    // broadcast news - only for authenticated users (admin via session)
-    // In production, check tier or isAdmin; for now allow any authenticated to broadcast news? Restrict to manual via admin script direct DB
-    // We allow but log
-    if (!title) {
-      return NextResponse.json({ error: "title required" }, { status: 400 });
+    // Broadcast réservé aux admins (corrige : tout authentifié pouvait spammer)
+    if (!isAdminEmail(user.email)) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
     const result = await broadcastNewsNotification({
       body: notifBody ?? null,

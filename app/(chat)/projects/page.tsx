@@ -20,7 +20,7 @@ import {
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTheme } from "next-themes";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState, Suspense } from "react";
 import DataGrid, { SelectColumn } from "react-data-grid";
 import { toast } from "sonner";
 import useSWR, { mutate as globalMutate } from "swr";
@@ -72,8 +72,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import type { ModelCapabilities } from "@/lib/ai/models";
-
-const fetcher = (url: string) => fetch(url).then((r) => r.json());
+import { fetcher } from "@/lib/utils";
 
 type Project = {
   id: string;
@@ -113,6 +112,14 @@ const PROJECT_COLORS = [
 const _PROJECT_ICONS = PROJECT_ICON_KEYS;
 
 export default function ProjectsPage() {
+  return (
+    <Suspense fallback={<div className="p-6 text-sm text-muted-foreground">Chargement…</div>}>
+      <ProjectsPageInner />
+    </Suspense>
+  );
+}
+
+function ProjectsPageInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { resolvedTheme } = useTheme();

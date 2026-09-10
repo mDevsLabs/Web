@@ -29,6 +29,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   type ComponentType,
+  Suspense,
   useCallback,
   useEffect,
   useMemo,
@@ -77,7 +78,7 @@ import { useTier } from "@/hooks/use-tier";
 import type { ChatModel } from "@/lib/ai/models";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
-import { cn } from "@/lib/utils";
+import { cn, fetcher } from "@/lib/utils";
 
 function formatTokens(n: number) {
   return new Intl.NumberFormat("fr-FR").format(n);
@@ -148,6 +149,14 @@ const SETTINGS_TABS: {
 ];
 
 export default function SettingsPage() {
+  return (
+    <Suspense fallback={<div className="p-6 text-sm text-muted-foreground">Chargement…</div>}>
+      <SettingsPageInner />
+    </Suspense>
+  );
+}
+
+function SettingsPageInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialTab = searchParams.get("tab") as SettingsTab | null;
@@ -289,14 +298,14 @@ export default function SettingsPage() {
 
   const { data: prefModelsData } = useSWR(
     `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models`,
-    (url: string) => fetch(url).then((r) => r.json()),
+    fetcher,
     { dedupingInterval: 60_000 }
   );
   const prefModels: ChatModel[] = prefModelsData?.models || [];
 
   const { data: imageModelsData } = useSWR(
     `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models/images`,
-    (url: string) => fetch(url).then((r) => r.json()),
+    fetcher,
     { dedupingInterval: 60_000 }
   );
   const imageModels: SharedModel[] =
@@ -304,7 +313,7 @@ export default function SettingsPage() {
 
   const { data: audioModelsData } = useSWR(
     `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models/speech`,
-    (url: string) => fetch(url).then((r) => r.json()),
+    fetcher,
     { dedupingInterval: 60_000 }
   );
   const audioModels: SharedModel[] =
@@ -340,7 +349,7 @@ export default function SettingsPage() {
 
   const { data: customPrefData, mutate: mutateCustomPref } = useSWR(
     "/api/user/preferences",
-    (url: string) => fetch(url).then((r) => r.json()),
+    fetcher,
     { dedupingInterval: 30_000 }
   );
 
@@ -352,7 +361,7 @@ export default function SettingsPage() {
   const [isSavingAgentIconsPref, setIsSavingAgentIconsPref] = useState(false);
   const { data: prefAgentsData } = useSWR(
     isFree ? null : "/api/agents",
-    (url: string) => fetch(url).then((r) => r.json()),
+    fetcher,
     { dedupingInterval: 30_000 }
   );
   const prefAgents: any[] = Array.isArray(prefAgentsData) ? prefAgentsData : [];
@@ -465,7 +474,7 @@ export default function SettingsPage() {
   // Notifications prefs fetch
   const { data: notifPrefsData, mutate: mutateNotifPrefs } = useSWR(
     "/api/notifications/preferences",
-    (url: string) => fetch(url).then((r) => r.json()),
+    fetcher,
     { dedupingInterval: 10_000 }
   );
 

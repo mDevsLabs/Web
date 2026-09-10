@@ -65,9 +65,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import type { McpLog, McpServer } from "@/lib/db/schema";
-import { cn } from "@/lib/utils";
+import { cn, fetcher } from "@/lib/utils";
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const PRESET_TEMPLATES = [
   {
     authType: "bearer",
@@ -243,7 +242,7 @@ export default function McpClient() {
   const [isSavingMcpPrefs, setIsSavingMcpPrefs] = useState(false);
   const { data: mcpPrefsData, mutate: mutateMcpPrefs } = useSWR(
     "/api/user/mcp-preferences",
-    (url: string) => fetch(url).then((r) => r.json()),
+    fetcher,
     { dedupingInterval: 10_000 }
   );
   useEffect(() => {

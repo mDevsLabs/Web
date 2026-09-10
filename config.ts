@@ -3,8 +3,77 @@ import { neon } from "npm:@neondatabase/serverless";
 import { jwtVerify, SignJWT } from "npm:jose";
 
 // ─────────────────────────────────────────────
-// Config & Données
+// Env helper compatible Deno / Node (corrige ReferenceError hors Deno)
 // ─────────────────────────────────────────────
+export function getEnv(name: string): string | undefined {
+  try {
+    const denoVal =
+      typeof Deno !== "undefined" ? Deno.env.get(name) : undefined;
+    if (denoVal) return denoVal;
+  } catch {
+    // ignore — Deno non disponible ou permission refusée
+  }
+  try {
+    if (
+      typeof process !== "undefined" &&
+      process.env &&
+      process.env[name]
+    ) {
+      return process.env[name];
+    }
+  } catch {
+    // ignore
+  }
+  return undefined;
+}
+
+// ─────────────────────────────────────────────
+// Rate-limit en mémoire + IP client (corrige imports fantômes
+// `rateLimit` / `clientIp` depuis auth.ts et vibe-posts.ts)
+// ─────────────────────────────────────────────
+const __rateBuckets = new Map<string, { count: number; resetAt: number }>();
+
+export function clientIp(c: any): string {
+  try {
+    const h =
+      c?.req?.header?.("x-forwarded-for") ||
+      c?.req?.header?.("x-real-ip") ||
+      c?.req?.header?.("cf-connecting-ip");
+    if (typeof h === "string" && h.length > 0) return h.split(",")[0].trim();
+    // Hono / Deno fallback
+    const raw =
+      c?.req?.raw?.headers?.get?.("x-forwarded-for") ||
+      c?.env?.ip ||
+      c?.ip;
+    if (typeof raw === "string" && raw.length > 0)
+      return raw.split(",")[0].trim();
+  } catch {
+    // ignore
+  }
+  return "unknown";
+}
+
+export async function rateLimit(
+  c: any,
+  opts: { limit?: number; windowSec?: number; keyPrefix?: string } = {}
+): Promise<boolean> {
+  const limit = opts.limit ?? 60;
+  const windowMs = (opts.windowSec ?? 60) * 1000;
+  const key = `${opts.keyPrefix ?? "rl"}:${clientIp(c)}:${c?.req?.path ?? c?.req?.url ?? "global"}`;
+  const now = Date.now();
+  const entry = __rateBuckets.get(key);
+  if (!entry || entry.resetAt <= now) {
+    __rateBuckets.set(key, { count: 1, resetAt: now + windowMs });
+    return true;
+  }
+  entry.count += 1;
+  if (entry.count > limit) return false;
+  return true;
+}
+
+export function rateLimitResponse(c: any) {
+  return c.json({ error: "Trop de requêtes, réessayez plus tard." }, 429);
+}
 export const JWT_EXPIRY = "14d";
 export const BCRYPT_ROUNDS = 12;
 
@@ -124,7 +193,8 @@ export async function getUserQuotaBoost(
         AND expires_at >= NOW()
     `;
     return Number(rows[0]?.total_boost || 0);
-  } catch {
+  } catch (err) {
+    console.warn("[quotas] getUserQuotaBoost failed:", err);
     return 0;
   }
 }
@@ -168,7 +238,7 @@ export function getTierStorageLimitBytes(tier?: string | null): number {
 }
 
 export function getDb() {
-  const url = Deno.env.get("DATABASE_URL");
+  const url = getEnv("DATABASE_URL");
   if (!url) {
     throw new Error("DATABASE_URL not set");
   }
@@ -176,11 +246,12 @@ export function getDb() {
 }
 
 export function getJwtSecret(): Uint8Array {
-  const secret =
-    (typeof Deno === "undefined"
-      ? null
-      : Deno.env.get("MAI_JWT_SECRET") || Deno.env.get("JWT_SECRET")) ||
-    "mai_super_secret_jwt_key_2026_default_vibe";
+  const secret = getEnv("MAI_JWT_SECRET") || getEnv("JWT_SECRET");
+  if (!secret) {
+    throw new Error(
+      "MAI_JWT_SECRET (ou JWT_SECRET) manquant — définissez la variable d'environnement."
+    );
+  }
   return new TextEncoder().encode(secret);
 }
 
@@ -238,22 +309,30 @@ export async function blacklistToken(token: string) {
       args: [token],
       sql: "INSERT OR IGNORE INTO token_blacklist (token) VALUES (?)",
     });
-  } catch {}
+  } catch (err) {
+    console.warn("[auth] blacklistToken sqlite failed:", err);
+  }
   try {
     const sql = getDb();
     await sql`INSERT INTO token_blacklist (token, revoked_at, expires_at) VALUES (${token}, NOW(), ${expiresAt}::timestamp) ON CONFLICT (token) DO NOTHING`;
-  } catch {}
+  } catch (err) {
+    console.warn("[auth] blacklistToken postgres failed:", err);
+  }
   // Nettoyage opportuniste des vieux tokens
   try {
     const sql = getDb();
     await sql`DELETE FROM token_blacklist WHERE expires_at < NOW() OR revoked_at < NOW() - INTERVAL '14 days'`;
-  } catch {}
+  } catch (err) {
+    console.warn("[auth] blacklistToken cleanup pg failed:", err);
+  }
   try {
     await sqlite.execute({
       args: [],
       sql: "DELETE FROM token_blacklist WHERE revoked_at < datetime('now', '-14 days')",
     });
-  } catch {}
+  } catch (err) {
+    console.warn("[auth] blacklistToken cleanup sqlite failed:", err);
+  }
 }
 
 export function extractToken(req: Request): string | null {

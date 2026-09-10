@@ -6,6 +6,7 @@ import {
   extractToken,
   generateVerificationCode,
   getDb,
+  getEnv,
   parseUserAgent,
   rateLimit,
   signToken,
@@ -409,19 +410,19 @@ export function registerAuthRoutes(app: Hono) {
         const upgradeCodes: Record<string, string> = {};
 
         const plusCode =
-          Deno.env.get("MAI_PLUS_CODE") || Deno.env.get("PLUS_CODE");
+        const plusCode = getEnv("MAI_PLUS_CODE") || getEnv("PLUS_CODE");
         if (plusCode) {
           upgradeCodes[plusCode.trim().toUpperCase()] = "Plus";
         }
 
         const proCode =
-          Deno.env.get("MAI_PRO_CODE") || Deno.env.get("PRO_CODE");
+        const proCode = getEnv("MAI_PRO_CODE") || getEnv("PRO_CODE");
         if (proCode) {
           upgradeCodes[proCode.trim().toUpperCase()] = "Pro";
         }
 
         const maxCode =
-          Deno.env.get("MAI_MAX_CODE") || Deno.env.get("MAX_CODE");
+        const maxCode = getEnv("MAI_MAX_CODE") || getEnv("MAX_CODE");
         if (maxCode) {
           upgradeCodes[maxCode.trim().toUpperCase()] = "Max";
         }

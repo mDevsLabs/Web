@@ -723,21 +723,21 @@ export function registerVibePostsRoutes(
         await sql`SELECT author_id, content FROM posts WHERE id = ${postId}::uuid LIMIT 1`;
       if (postAuthor.length > 0) {
         const recipientId = Number(postAuthor[0].author_id);
-        const rawContent = (postAuthor[0].content || "").trim();
-        const snippet = rawContent
-          ? ` : « ${rawContent.slice(0, 45)}${rawContent.length > 45 ? "…" : ""} »`
-          : "";
-        const msg =
-          recipientId === userId
-            ? `Vous avez aimé votre publication${snippet}`
-            : `a aimé votre publication${snippet}`;
-        try {
-          await sql`
-              INSERT INTO notifications (recipient_id, actor_id, type, post_id, message)
-              VALUES (${recipientId}, ${userId}, 'like', ${postId}::uuid, ${msg})
-            `;
-        } catch (err) {
-          console.error("[Like Notification Error]:", err);
+        // Pas de notif pour un auto-like
+        if (recipientId !== userId) {
+          const rawContent = (postAuthor[0].content || "").trim();
+          const snippet = rawContent
+            ? ` : « ${rawContent.slice(0, 45)}${rawContent.length > 45 ? "…" : ""} »`
+            : "";
+          const msg = `a aimé votre publication${snippet}`;
+          try {
+            await sql`
+                INSERT INTO notifications (recipient_id, actor_id, type, post_id, message)
+                VALUES (${recipientId}, ${userId}, 'like', ${postId}::uuid, ${msg})
+              `;
+          } catch (err) {
+            console.error("[Like Notification Error]:", err);
+          }
         }
       }
 

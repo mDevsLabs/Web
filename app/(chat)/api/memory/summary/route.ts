@@ -1,4 +1,5 @@
 import { generateText } from "ai";
+import { z } from "zod";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
@@ -25,12 +26,21 @@ export async function POST(request: Request) {
 
   try {
     const json = await request.json().catch(() => ({}));
-    const { agentId, projectId, scope, modelId } = json as {
-      agentId?: string | null;
-      projectId?: string | null;
-      scope?: string;
-      modelId?: string;
-    };
+    const schema = z.object({
+      agentId: z.string().uuid().nullish(),
+      modelId: z
+        .string()
+        .max(100)
+        .regex(/^[A-Za-z0-9/._:-]+$/)
+        .nullish(),
+      projectId: z.string().uuid().nullish(),
+      scope: z.enum(["all", "global"]).nullish(),
+    });
+    const parsed = schema.safeParse(json);
+    if (!parsed.success) {
+      return Response.json({ error: "Payload invalide." }, { status: 400 });
+    }
+    const { agentId, projectId, scope, modelId } = parsed.data;
 
     // Récupérer les mémoires selon le scope demandé
     let memories: Array<{ content: string; createdAt: Date | string }> = [];

@@ -2,6 +2,7 @@ import type { Hono } from "npm:hono@4";
 import {
   extractToken,
   getDb,
+  getEnv,
   getTierMaiTokenLimit,
   getTierSpeechLimit,
   getUserQuotaBoost,
@@ -15,7 +16,7 @@ function getOpenRouterApiKey(userCustomKey?: string | null): string {
   if (userCustomKey && userCustomKey.trim().startsWith("sk-or-")) {
     return userCustomKey.trim();
   }
-  return Deno.env.get("OPENROUTER_API_KEY") || "";
+  return getEnv("OPENROUTER_API_KEY") || "";
 }
 
 export function registerModelRoutes(app: Hono) {
