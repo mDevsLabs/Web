@@ -1,4 +1,9 @@
 import { type NextRequest, NextResponse } from "next/server";
+import {
+  errorResponse,
+  logError,
+  normalizeUpstreamError,
+} from "@/lib/api/error-response";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
 import { getUserApiKey } from "@/lib/db/api-keys";
@@ -23,20 +28,18 @@ export async function POST(req: NextRequest) {
     }
 
     if (!authHeader) {
-      return NextResponse.json(
-        { error: "Non authentifié. Veuillez vous connecter." },
-        { status: 401 }
-      );
+      return errorResponse("auth_required", {
+        message: "Non authentifié. Veuillez vous connecter.",
+      });
     }
 
     const body = await req.json().catch(() => ({}));
     const input = body.input || body.prompt || body.text || "";
 
     if (!input || typeof input !== "string" || !input.trim()) {
-      return NextResponse.json(
-        { error: "Le texte à synthétiser est obligatoire." },
-        { status: 400 }
-      );
+      return errorResponse("invalid_request", {
+        message: "Le texte à synthétiser est obligatoire.",
+      });
     }
 
     const model = body.model || "deepgram/flux-tts:free";
@@ -65,15 +68,10 @@ export async function POST(req: NextRequest) {
           (tokensUsed >= weeklyLimit ||
             tokensUsed + estimatedTokens > weeklyLimit)
         ) {
-          return NextResponse.json(
-            {
-              error: `Votre quota hebdomadaire Speech est atteint (${tokensUsed}/${weeklyLimit} tokens). Mettez à niveau votre forfait pour continuer.`,
-              limit: weeklyLimit,
-              over_limit: true,
-              used: tokensUsed,
-            },
-            { status: 429 }
-          );
+          return errorResponse("quota_exceeded", {
+            details: { limit: weeklyLimit, used: tokensUsed },
+            message: `Votre quota hebdomadaire Speech est atteint (${tokensUsed}/${weeklyLimit} tokens). Mettez à niveau votre forfait pour continuer.`,
+          });
         }
       }
     } catch (quotaErr) {
@@ -103,13 +101,8 @@ export async function POST(req: NextRequest) {
     if (contentType.includes("application/json")) {
       const json = await maiRes.json();
       if (!maiRes.ok) {
-        return NextResponse.json(
-          {
-            error:
-              json.error?.message || json.error || "Erreur de génération audio",
-          },
-          { status: maiRes.status }
-        );
+        const payload = normalizeUpstreamError(json, maiRes.status);
+        return NextResponse.json(payload, { status: payload.status });
       }
       return NextResponse.json({
         audio_url:
@@ -151,19 +144,16 @@ export async function POST(req: NextRequest) {
     }
 
     const errText = await maiRes.text().catch(() => "");
-    return NextResponse.json(
-      { error: errText || "Erreur lors de la synthèse vocale." },
-      { status: maiRes.status }
+    const payload = normalizeUpstreamError(
+      errText ? { error: errText } : null,
+      maiRes.status,
+      { message: "Erreur lors de la synthèse vocale." }
     );
-  } catch (error: any) {
-    console.error("Erreur API audio/generations:", error);
-    return NextResponse.json(
-      {
-        error:
-          error.message ||
-          "Erreur interne du serveur lors de la synthèse vocale.",
-      },
-      { status: 500 }
-    );
+    return NextResponse.json(payload, { status: payload.status });
+  } catch (error: unknown) {
+    logError("Erreur API audio/generations", error);
+    return errorResponse("internal_error", {
+      message: "Erreur interne du serveur lors de la synthèse vocale.",
+    });
   }
 }

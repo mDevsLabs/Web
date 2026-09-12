@@ -1,4 +1,5 @@
 import { getLanguageModel } from "@/lib/ai/providers";
+import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import {
   authenticateChatRequest,
@@ -52,19 +53,15 @@ export async function POST(request: Request) {
 
     // 1. Vérification du quota hebdomadaire
     if (weeklyQuotaExceeded(auth.maiUser)) {
-      return new Response(
-        JSON.stringify({
-          error:
-            "Votre limite hebdomadaire de tokens est atteinte. Veuillez mettre à niveau votre forfait sur https://mai-devs.vercel.app pour continuer.",
+      return errorResponse("quota_exceeded", {
+        details: {
           limit: auth.maiUser.limit,
-          over_limit: true,
+          resetAt: auth.maiUser.resetAt,
           used: auth.maiUser.tokensUsed,
-        }),
-        {
-          headers: { "Content-Type": "application/json" },
-          status: 429,
-        }
-      );
+        },
+        message:
+          "Votre limite hebdomadaire de tokens est atteinte. Veuillez mettre à niveau votre forfait sur https://mai-devs.vercel.app pour continuer.",
+      });
     }
 
     await enforceChatRateLimit(request, auth.userId);

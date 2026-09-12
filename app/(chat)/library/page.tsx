@@ -58,6 +58,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { DEFAULT_CHAT_MODEL, getModelCapabilities } from "@/lib/ai/models";
+import { extractApiErrorMessage } from "@/lib/api/client-error";
 import { MAI_PENDING_ATTACHMENT_KEY, MAI_UPGRADE_URL } from "@/lib/constants";
 import { fetcher } from "@/lib/utils";
 
@@ -393,7 +394,10 @@ export default function LibraryPage() {
       const data = await res.json();
 
       if (!res.ok || !data.success) {
-        toast.error(data.error || `Échec de l'importation de ${file.name}`);
+        toast.error(
+          extractApiErrorMessage(data) ||
+            `Échec de l'importation de ${file.name}`
+        );
         setUploadingFiles((prev) => prev.filter((f) => f.name !== file.name));
         return;
       }
@@ -451,7 +455,9 @@ export default function LibraryPage() {
 
       const data = await res.json();
       if (!res.ok || !data.success) {
-        toast.error(data.error || "Erreur lors de la suppression.");
+        toast.error(
+          extractApiErrorMessage(data) || "Erreur lors de la suppression."
+        );
         return;
       }
 

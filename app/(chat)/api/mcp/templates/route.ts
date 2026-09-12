@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { errorResponse } from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
 import { getMaiUser } from "@/lib/auth/session";
 import { getMcpTemplateById, getMcpTemplates } from "@/lib/db/queries";
@@ -6,9 +7,7 @@ import { getMcpTemplateById, getMcpTemplates } from "@/lib/db/queries";
 export async function GET() {
   const user = await getMaiUser();
   if (!user) {
-    return new Response(JSON.stringify({ error: "unauthorized" }), {
-      status: 401,
-    });
+    return errorResponse("auth_required");
   }
   const guard = await requirePaidPlan("plus");
   if (!guard.allowed) {
@@ -28,15 +27,17 @@ export async function POST(request: Request) {
   const userId = user.id || user.email;
 
   const json = await request.json().catch(() => ({}));
-  const parsed = z
-    .object({ templateId: z.string().uuid() })
-    .safeParse(json);
+  const parsed = z.object({ templateId: z.string().uuid() }).safeParse(json);
   if (!parsed.success) {
-    return Response.json({ error: "templateId invalide" }, { status: 400 });
+    return errorResponse("invalid_request", {
+      message: "Identifiant de template invalide.",
+    });
   }
   const tpl = await getMcpTemplateById(parsed.data.templateId);
   if (!tpl) {
-    return Response.json({ error: "Template not found" }, { status: 404 });
+    return errorResponse("not_found", {
+      message: "Template introuvable.",
+    });
   }
 
   // prefs check
@@ -44,16 +45,14 @@ export async function POST(request: Request) {
     const { getUserMcpPrefs } = await import("@/lib/db/queries");
     const prefs = await getUserMcpPrefs(userId);
     if (prefs.globalKillSwitch) {
-      return Response.json(
-        { error: "MCP désactivé globalement" },
-        { status: 403 }
-      );
+      return errorResponse("access_denied", {
+        message: "MCP désactivé globalement par l'administrateur.",
+      });
     }
     if ((tpl.transport as string) === "stdio" && !prefs.allowStdio) {
-      return Response.json(
-        { error: "Transport stdio désactivé" },
-        { status: 403 }
-      );
+      return errorResponse("access_denied", {
+        message: "Transport stdio désactivé dans les paramètres.",
+      });
     }
   } catch (e: any) {
     if (e.status === 403) {

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { errorResponse, logError } from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
 import { getMaiUser } from "@/lib/auth/session";
 import {
@@ -64,7 +65,9 @@ export async function GET(
 
   const found = await getMcpServerById({ id, userId });
   if (!found) {
-    return Response.json({ error: "Serveur MCP introuvable" }, { status: 404 });
+    return errorResponse("not_found", {
+      message: "Serveur MCP introuvable.",
+    });
   }
 
   return Response.json(found);
@@ -95,10 +98,9 @@ export async function PATCH(
     if (json.toggleTool) {
       const server = await getMcpServerById({ id, userId });
       if (!server) {
-        return Response.json(
-          { error: "Serveur MCP introuvable" },
-          { status: 404 }
-        );
+        return errorResponse("not_found", {
+          message: "Serveur MCP introuvable.",
+        });
       }
       const overrides = (server.toolOverrides as Record<string, any>) ?? {};
       const current = overrides[json.toggleTool]?.enabled ?? true;
@@ -122,10 +124,9 @@ export async function PATCH(
       const { toolName, requireApproval } = json.setToolApproval;
       const server = await getMcpServerById({ id, userId });
       if (!server) {
-        return Response.json(
-          { error: "Serveur MCP introuvable" },
-          { status: 404 }
-        );
+        return errorResponse("not_found", {
+          message: "Serveur MCP introuvable.",
+        });
       }
       const overrides = (server.toolOverrides as Record<string, any>) ?? {};
       const next = {
@@ -147,25 +148,26 @@ export async function PATCH(
     if (json.refreshTools) {
       const server = await getMcpServerById({ id, userId });
       if (!server) {
-        return Response.json(
-          { error: "Serveur MCP introuvable" },
-          { status: 404 }
-        );
+        return errorResponse("not_found", {
+          message: "Serveur MCP introuvable.",
+        });
       }
       // check global kill-switch / allowStdio
       try {
         const { getUserMcpPrefs } = await import("@/lib/db/queries");
         const prefs = await getUserMcpPrefs(userId);
         if (prefs.globalKillSwitch) {
-          throw new Error("MCP désactivé globalement");
+          return errorResponse("access_denied", {
+            message: "MCP désactivé globalement par l'administrateur.",
+          });
         }
         if (server.transport === "stdio" && !prefs.allowStdio) {
-          throw new Error("Transport stdio désactivé");
+          return errorResponse("access_denied", {
+            message: "Transport stdio désactivé dans les paramètres.",
+          });
         }
-      } catch (e: any) {
-        if (e.message?.includes("désactivé")) {
-          return Response.json({ error: e.message }, { status: 403 });
-        }
+      } catch (prefsErr) {
+        logError("Erreur vérification préférences MCP", prefsErr);
       }
       const timeoutMs = (server as any).timeoutMs ?? 15_000;
       const tools = await fetchMcpTools({
@@ -232,18 +234,25 @@ export async function PATCH(
     });
 
     if (!updated) {
-      return Response.json(
-        { error: "Serveur MCP introuvable" },
-        { status: 404 }
-      );
+      return errorResponse("not_found", {
+        message: "Serveur MCP introuvable.",
+      });
     }
 
     return Response.json(updated);
-  } catch (err: any) {
-    return Response.json(
-      { error: err.message ?? "Erreur lors de la mise à jour" },
-      { status: 400 }
-    );
+  } catch (err: unknown) {
+    if (err instanceof z.ZodError) {
+      const issues = err.issues
+        .map((e) => `${e.path.join(".") || "champ"}: ${e.message}`)
+        .join(" • ");
+      return errorResponse("invalid_request", {
+        message: `Données invalides : ${issues}`,
+      });
+    }
+    logError("Erreur mise à jour serveur MCP", err);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de la mise à jour du serveur MCP.",
+    });
   }
 }
 
@@ -261,7 +270,9 @@ export async function DELETE(
 
   const deleted = await deleteMcpServer({ id, userId });
   if (!deleted) {
-    return Response.json({ error: "Serveur MCP introuvable" }, { status: 404 });
+    return errorResponse("not_found", {
+      message: "Serveur MCP introuvable.",
+    });
   }
 
   return Response.json({

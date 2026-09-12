@@ -1,4 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { API_ERROR_STATUS } from "./lib/api/error-codes";
+import { DEFAULT_MESSAGES_FR } from "./lib/api/error-messages";
 import { MAI_SESSION_COOKIE } from "./lib/constants";
 
 export async function proxy(request: NextRequest) {
@@ -37,9 +39,17 @@ export async function proxy(request: NextRequest) {
     if (isAuthRoute) {
       return NextResponse.next();
     }
-    // Les API doivent répondre 401 JSON, pas un redirect HTML
+    // Les API doivent répondre 401 JSON (enveloppe d'erreur unifiée), pas un
+    // redirect HTML
     if (isApiRoute) {
-      return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+      return NextResponse.json(
+        {
+          code: "auth_required",
+          message: DEFAULT_MESSAGES_FR.auth_required,
+          status: API_ERROR_STATUS.auth_required,
+        },
+        { status: API_ERROR_STATUS.auth_required }
+      );
     }
     // Conserve le chemin + la query pour retour après login
     const nextUrl = request.nextUrl.clone();

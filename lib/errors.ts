@@ -1,3 +1,6 @@
+import { type ApiErrorCode, legacyCodeToApi } from "@/lib/api/error-codes";
+import { isDevelopmentEnvironment } from "@/lib/constants";
+
 export type ErrorType =
   | "bad_request"
   | "unauthorized"
@@ -35,13 +38,25 @@ export const visibilityBySurface: Record<Surface, ErrorVisibility> = {
   vote: "response",
 };
 
+export type ChatbotErrorMeta = {
+  apiCode?: ApiErrorCode;
+  messageOverride?: string;
+  statusCode?: number;
+};
+
 export class ChatbotError extends Error {
   type: ErrorType;
   surface: Surface;
   statusCode: number;
+  apiCode?: ApiErrorCode;
 
-  constructor(errorCode: ErrorCode, cause?: string | ErrorOptions) {
-    const message = getMessageByErrorCode(errorCode, cause);
+  constructor(
+    errorCode: ErrorCode,
+    cause?: string | ErrorOptions,
+    meta?: ChatbotErrorMeta
+  ) {
+    const message =
+      meta?.messageOverride ?? getMessageByErrorCode(errorCode, cause);
     const options = typeof cause === "string" ? undefined : cause;
 
     super(message, options);
@@ -53,25 +68,33 @@ export class ChatbotError extends Error {
       this.cause = cause;
     }
     this.surface = surface as Surface;
-    this.statusCode = getStatusCodeByType(this.type);
+    this.statusCode = meta?.statusCode ?? getStatusCodeByType(this.type);
+    this.apiCode = meta?.apiCode;
   }
 
   toResponse() {
-    const code: ErrorCode = `${this.type}:${this.surface}`;
-    const { message, cause, statusCode } = this;
+    const legacyCode: ErrorCode = `${this.type}:${this.surface}`;
+    const code = this.apiCode ?? legacyCodeToApi(legacyCode);
 
     const causeMsg =
-      typeof cause === "string"
-        ? cause
-        : (cause as any)?.message || (cause as any)?.error || undefined;
+      typeof this.cause === "string"
+        ? this.cause
+        : (this.cause as any)?.message ||
+          (this.cause as any)?.error ||
+          undefined;
+
+    // La cause technique n'est exposée qu'en développement.
+    const details =
+      isDevelopmentEnvironment && causeMsg ? { cause: causeMsg } : undefined;
 
     return Response.json(
       {
-        cause: causeMsg,
         code,
-        message: causeMsg ? `${message} (${causeMsg})` : message,
+        message: this.message,
+        status: this.statusCode,
+        ...(details === undefined ? {} : { details }),
       },
-      { status: statusCode }
+      { status: this.statusCode }
     );
   }
 }

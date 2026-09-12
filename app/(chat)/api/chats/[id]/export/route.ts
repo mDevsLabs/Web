@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { getChatById, getMessagesByChatId } from "@/lib/db/queries";
 import { getTextFromMessage } from "@/lib/utils";
@@ -314,20 +315,22 @@ export async function GET(
 
   const maiUser = await getMaiUser();
   if (!maiUser) {
-    return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non authentifié." });
   }
   const userId = maiUser.id || maiUser.email;
 
   const chat = await getChatById({ id });
   if (!chat) {
-    return NextResponse.json({ error: "Chat introuvable" }, { status: 404 });
+    return errorResponse("not_found", {
+      message: "Discussion introuvable.",
+    });
   }
   if (
     chat.userId !== userId &&
     chat.userId !== maiUser.email &&
     chat.visibility !== "public"
   ) {
-    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    return errorResponse("access_denied");
   }
 
   const messages = await getMessagesByChatId({ id });

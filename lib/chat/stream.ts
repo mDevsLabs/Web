@@ -222,7 +222,10 @@ async function handleTokenAccounting(params: {
         transient: true,
         type: "data-usage" as any,
       });
-    } catch {}
+    } catch (streamErr) {
+      // Repli volontaire : flux déjà fermé côté client — tracé pour diagnostic.
+      console.warn("Écriture data-usage impossible (flux fermé ?):", streamErr);
+    }
   }
 }
 
@@ -253,9 +256,13 @@ async function persistStreamEnd(
       title: "Nouvelle réponse de mAI",
       type: "ai_response",
       userId: ctx.userId,
-    }).catch(() => {});
+    }).catch((notifErr) =>
+      console.warn("Notification de réponse non enregistrée:", notifErr)
+    );
     // Browser push via service? handled client side via polling + Notification API
-  } catch {}
+  } catch (notifErr) {
+    console.warn("Notification de réponse non enregistrée:", notifErr);
+  }
 
   if (ctx.isToolApprovalFlow) {
     await Promise.all(

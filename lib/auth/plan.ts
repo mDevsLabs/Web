@@ -1,4 +1,7 @@
+import { API_ERROR_STATUS } from "@/lib/api/error-codes";
+import { DEFAULT_MESSAGES_FR } from "@/lib/api/error-messages";
 import type { MaiUser } from "@/lib/auth/session";
+import { getTierMemoryEntries } from "@/lib/plans/tier-limits";
 
 export const PAID_TIERS = ["plus", "pro", "max"] as const;
 export type PaidTier = (typeof PAID_TIERS)[number];
@@ -39,17 +42,7 @@ export function isSkillMcpEligible(tier?: string | null): boolean {
 }
 
 export function memoryLimitForTier(tier?: string | null): number {
-  const t = normalizeTier(tier);
-  if (t === "plus") {
-    return 75;
-  }
-  if (t === "pro") {
-    return 100;
-  }
-  if (t === "max") {
-    return 150;
-  }
-  return 50;
+  return getTierMemoryEntries(tier);
 }
 
 export type PlanGuardResult =
@@ -66,18 +59,21 @@ export function planGuardResponse(guard: PlanGuardResult): Response | null {
   if (guard.allowed) {
     return null;
   }
-  if (guard.reason === "unauthorized") {
-    return new Response(
-      JSON.stringify({ code: "auth_required", error: "unauthorized" }),
-      { headers: { "Content-Type": "application/json" }, status: 401 }
-    );
-  }
-  return new Response(
-    JSON.stringify({
-      code: "plan_required",
-      error: "Cette fonctionnalité nécessite un forfait Plus, Pro ou Max.",
-      upgradeUrl: guard.upgradeUrl,
-    }),
-    { headers: { "Content-Type": "application/json" }, status: 403 }
-  );
+  const body =
+    guard.reason === "unauthorized"
+      ? {
+          code: "auth_required" as const,
+          message: DEFAULT_MESSAGES_FR.auth_required,
+          status: API_ERROR_STATUS.auth_required,
+        }
+      : {
+          code: "plan_required" as const,
+          details: { upgradeUrl: guard.upgradeUrl },
+          message: DEFAULT_MESSAGES_FR.plan_required,
+          status: API_ERROR_STATUS.plan_required,
+        };
+  return new Response(JSON.stringify(body), {
+    headers: { "Content-Type": "application/json" },
+    status: body.status,
+  });
 }

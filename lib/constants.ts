@@ -1,3 +1,8 @@
+import {
+  getTierImageDailyLimit as getTierImageDailyLimitFromPlan,
+  getTierSpeechWeeklyLimit,
+} from "@/lib/plans/tier-limits";
+
 export const isProductionEnvironment = process.env.NODE_ENV === "production";
 export const isDevelopmentEnvironment = process.env.NODE_ENV === "development";
 export const isTestEnvironment = Boolean(
@@ -32,36 +37,16 @@ export const LEGAL_LINKS = [
   { href: "https://mai-devs.vercel.app/terms", label: "CGU" },
 ] as const;
 
-// Limites quotidiennes de génération d'images par tier
-// (miroir de TIER_DAILY_IMAGE_LIMITS / getTierDailyImageLimit côté backend Val Town, config.ts)
+// Limites quotidiennes de génération d'images par tier.
+// Source unique de vérité : lib/plans/tier-limits.ts (miroir du backend Val Town).
 export function getTierImageDailyLimit(tier?: string | null): number {
-  const t = (tier || "Free").toLowerCase().trim();
-  if (t === "max") {
-    return 35;
-  }
-  if (t === "pro") {
-    return 20;
-  }
-  if (t === "plus") {
-    return 10;
-  }
-  return 5;
+  return getTierImageDailyLimitFromPlan(tier);
 }
 
-// Limites hebdomadaires de tokens Speech par tier
-// Free: 30M, Plus: 75M, Pro: 150M, Max: 300M (miroir de TIER_SPEECH_LIMITS dans config.ts)
+// Limites hebdomadaires de tokens Speech par tier.
+// Source unique de vérité : lib/plans/tier-limits.ts (miroir du backend Val Town).
 export function getTierSpeechLimit(tier?: string | null): number {
-  const t = (tier || "Free").toLowerCase().trim();
-  if (t === "max") {
-    return 300_000_000;
-  }
-  if (t === "pro") {
-    return 150_000_000;
-  }
-  if (t === "plus") {
-    return 75_000_000;
-  }
-  return 30_000_000;
+  return getTierSpeechWeeklyLimit(tier);
 }
 
 export const suggestions = [

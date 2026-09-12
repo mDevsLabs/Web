@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
+import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { getChatsByUserId } from "@/lib/db/queries";
 
 export async function GET() {
   const user = await getMaiUser();
   if (!user) {
-    return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non autorisé." });
   }
 
   const userId = user.id || user.email;

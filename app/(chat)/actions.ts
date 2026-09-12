@@ -12,6 +12,7 @@ import {
   getMessageById,
   updateChatVisibilityById,
 } from "@/lib/db/queries";
+import { ChatbotError } from "@/lib/errors";
 import { getTextFromMessage } from "@/lib/utils";
 
 export async function saveChatModelAsCookie(model: string) {
@@ -87,19 +88,21 @@ export async function generateTitleFromConversation({
 export async function deleteTrailingMessages({ id }: { id: string }) {
   const session = await auth();
   if (!session?.user?.id) {
-    throw new Error("Unauthorized");
+    throw new ChatbotError("unauthorized:chat");
   }
 
   const [message] = await getMessageById({ id });
   if (!message) {
-    throw new Error("Message not found");
+    throw new ChatbotError("not_found:chat", undefined, {
+      messageOverride: "Le message demandé est introuvable.",
+    });
   }
 
   const chat = await getChatById({ id: message.chatId });
   // chat.userId peut contenir user.id ou user.email selon la création
   const ownerVariants = [session.user.id, session.user.email].filter(Boolean);
   if (!chat || !ownerVariants.includes(chat.userId)) {
-    throw new Error("Unauthorized");
+    throw new ChatbotError("unauthorized:chat");
   }
 
   await deleteMessagesByChatIdAfterTimestamp({
@@ -117,14 +120,14 @@ export async function updateChatVisibility({
 }) {
   const session = await auth();
   if (!session?.user?.id) {
-    throw new Error("Unauthorized");
+    throw new ChatbotError("unauthorized:chat");
   }
 
   const chat = await getChatById({ id: chatId });
   // chat.userId peut contenir user.id ou user.email selon la création
   const ownerVariants = [session.user.id, session.user.email].filter(Boolean);
   if (!chat || !ownerVariants.includes(chat.userId)) {
-    throw new Error("Unauthorized");
+    throw new ChatbotError("unauthorized:chat");
   }
 
   await updateChatVisibilityById({ chatId, visibility });

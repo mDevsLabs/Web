@@ -41,6 +41,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { normalizeModelDisplayName } from "@/lib/ai/models";
+import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { Agent, ScheduledMessage } from "@/lib/db/schema";
 import { cn, fetcher } from "@/lib/utils";
 
@@ -88,7 +89,9 @@ export function PlanningClient({
       const res = await fetch("/api/cron/planning", { method: "POST" });
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || "Erreur lors de l'exécution");
+        throw new Error(
+          extractApiErrorMessage(data) || "Erreur lors de l'exécution"
+        );
       }
       if (data.executedCount > 0) {
         toast.success(
@@ -123,7 +126,9 @@ export function PlanningClient({
       });
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || "Erreur lors de l'exécution");
+        throw new Error(
+          extractApiErrorMessage(data) || "Erreur lors de l'exécution"
+        );
       }
       toast.success("Message planifié exécuté avec succès !");
       mutate();
@@ -163,7 +168,9 @@ export function PlanningClient({
       });
       if (!res.ok) {
         const data = await res.json();
-        throw new Error(data.error || "Erreur lors de la mise à jour");
+        throw new Error(
+          extractApiErrorMessage(data) || "Erreur lors de la mise à jour"
+        );
       }
       toast.success(
         status === "cancelled"

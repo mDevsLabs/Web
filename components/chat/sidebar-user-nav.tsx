@@ -77,6 +77,7 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton
               className="h-11 px-2.5 rounded-xl bg-transparent text-sidebar-foreground/80 transition-all hover:bg-sidebar-accent/50 hover:text-sidebar-foreground data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground cursor-pointer"
+              data-onboarding="user-nav"
               data-testid="user-nav-button"
             >
               <div className="relative size-7 shrink-0 overflow-hidden rounded-full ring-1 ring-border/60 bg-muted flex items-center justify-center">

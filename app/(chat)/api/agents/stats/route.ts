@@ -1,3 +1,4 @@
+import { errorResponse, logError } from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
 import { getAgentStatsByUserId } from "@/lib/db/queries";
 
@@ -12,14 +13,10 @@ export async function GET() {
   try {
     const stats = await getAgentStatsByUserId({ userId });
     return Response.json(stats);
-  } catch (err: any) {
-    console.error("Erreur récupération stats agents:", err);
-    return Response.json(
-      {
-        error:
-          err.message || "Erreur lors de la récupération des statistiques.",
-      },
-      { status: 500 }
-    );
+  } catch (err) {
+    logError("Erreur récupération stats agents", err);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de la récupération des statistiques.",
+    });
   }
 }

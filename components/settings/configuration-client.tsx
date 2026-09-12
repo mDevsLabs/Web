@@ -29,6 +29,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { useTier } from "@/hooks/use-tier";
 import { TOOL_IDS, TOOLS_META } from "@/lib/ai/tools/config";
+import { extractApiErrorMessage } from "@/lib/api/client-error";
 import {
   COMMAND_ACTION_LABELS,
   COMMAND_ACTION_TYPES,
@@ -156,7 +157,9 @@ export function ConfigurationSection() {
           });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        throw new Error(data.error ?? "Erreur lors de l'enregistrement");
+        throw new Error(
+          extractApiErrorMessage(data) || "Erreur lors de l'enregistrement"
+        );
       }
       toast.success(
         editingId ? "Commande mise à jour." : "Commande créée avec succès."

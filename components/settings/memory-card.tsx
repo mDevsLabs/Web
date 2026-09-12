@@ -50,6 +50,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { useTier } from "@/hooks/use-tier";
+import { extractApiErrorMessage } from "@/lib/api/client-error";
 import { memoryLimitForTier } from "@/lib/auth/plan";
 import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -425,7 +426,10 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
       });
       const data = await res.json();
       if (!res.ok) {
-        toast.error(data.error || "Erreur lors de la génération du résumé");
+        toast.error(
+          extractApiErrorMessage(data) ||
+            "Erreur lors de la génération du résumé"
+        );
         return;
       }
       setSummaryText(data.summary || "");
@@ -544,7 +548,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
       });
       const data = await res.json();
       if (!res.ok) {
-        toast.error(data.error || "Erreur lors de l'import");
+        toast.error(extractApiErrorMessage(data) || "Erreur lors de l'import");
         return;
       }
       toast.success(

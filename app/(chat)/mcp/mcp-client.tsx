@@ -64,6 +64,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { McpLog, McpServer } from "@/lib/db/schema";
 import { cn, fetcher } from "@/lib/utils";
 
@@ -515,7 +516,9 @@ export default function McpClient() {
       });
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error ?? "Erreur lors du rafraîchissement");
+        throw new Error(
+          extractApiErrorMessage(data) || "Erreur lors du rafraîchissement"
+        );
       }
       toast.success(data.message ?? "Outils synchronisés avec succès !");
       await mutateServers();
@@ -590,7 +593,7 @@ export default function McpClient() {
       });
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error);
+        throw new Error(extractApiErrorMessage(data) || "Erreur installation");
       }
       toast.success(data.message);
       await mutateServers();

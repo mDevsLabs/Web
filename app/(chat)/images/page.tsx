@@ -34,6 +34,7 @@ import useSWR from "swr";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { useImagesUsage } from "@/hooks/use-settings";
+import { extractApiErrorMessage } from "@/lib/api/client-error";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
 import {
   cn,
@@ -377,7 +378,7 @@ export default function ImagesPage() {
 
       if (!res.ok) {
         const errMsg =
-          data?.error?.message || data?.error || "Erreur lors de la génération";
+          extractApiErrorMessage(data) || "Erreur lors de la génération";
         throw new Error(errMsg);
       }
 

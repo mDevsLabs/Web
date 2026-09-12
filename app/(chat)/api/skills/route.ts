@@ -1,8 +1,11 @@
 import { z } from "zod";
+import {
+  errorResponse,
+  logError,
+  zodIssuesMessage,
+} from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
-import { getMaiUser } from "@/lib/auth/session";
 import { createSkill, getSkillsByUserId } from "@/lib/db/queries";
-import { ChatbotError } from "@/lib/errors";
 
 const createSkillSchema = z.object({
   color: z
@@ -66,10 +69,15 @@ export async function POST(request: Request) {
     });
 
     return Response.json(created, { status: 201 });
-  } catch (err: any) {
-    return Response.json(
-      { error: err.message ?? "Données invalides" },
-      { status: 400 }
-    );
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return errorResponse("invalid_request", {
+        message: zodIssuesMessage(err),
+      });
+    }
+    logError("Erreur création skill", err);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de la création du skill.",
+    });
   }
 }

@@ -1,6 +1,7 @@
 import { jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { MAI_API_URL, MAI_SESSION_COOKIE } from "@/lib/constants";
+import { getTierChatWeeklyLimit } from "@/lib/plans/tier-limits";
 
 export { MAI_SESSION_COOKIE } from "@/lib/constants";
 
@@ -137,7 +138,7 @@ export async function getMaiUser(
           : payload.sub
             ? String(payload.sub)
             : payload.email || "",
-        limit: Number(payload.limit || 2_000_000),
+        limit: Number(payload.limit || getTierChatWeeklyLimit(payload.tier)),
         phone: payload.phone || "",
         resetAt: payload.resetAt,
         tier: payload.tier || "Free",
@@ -175,7 +176,7 @@ export async function getMaiUser(
           avatarUrl: data.avatarUrl || null,
           email: data.email || "",
           id: userId || data.email,
-          limit: Number(data.limit || 2_000_000),
+          limit: Number(data.limit || getTierChatWeeklyLimit(data.tier)),
           phone: data.phone || "",
           resetAt: data.resetAt,
           tier: data.tier || "Free",

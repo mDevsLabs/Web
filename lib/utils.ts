@@ -5,6 +5,9 @@ import type {
 import { type ClassValue, clsx } from 'clsx';
 import { formatISO } from 'date-fns';
 import { twMerge } from 'tailwind-merge';
+import { API_TO_LEGACY, isApiErrorCode } from '@/lib/api/error-codes';
+import { extractApiErrorMessage } from '@/lib/api/client-error';
+import { isDevelopmentEnvironment } from '@/lib/constants';
 import type { DBMessage, Document } from '@/lib/db/schema';
 import { ChatbotError, type ErrorCode } from './errors';
 import type { ChatMessage, ChatTools, CustomUIDataTypes } from './types';
@@ -13,17 +16,36 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+function throwResponseError(errData: unknown, response: Response): never {
+  const msg = extractApiErrorMessage(errData) || response.statusText;
+  const code = (errData as { code?: unknown } | null)?.code;
+
+  if (isApiErrorCode(code)) {
+    throw new ChatbotError(API_TO_LEGACY[code], undefined, {
+      apiCode: code,
+      messageOverride: msg || undefined,
+      statusCode: response.status,
+    });
+  }
+
+  const legacyCode =
+    typeof code === 'string' && code.includes(':') ? code : 'bad_request:api';
+  throw new ChatbotError(legacyCode as ErrorCode, msg);
+}
+
 export const fetcher = async (url: string) => {
   const response = await fetch(url);
 
   if (!response.ok) {
-    let errData: any = {};
+    let errData: unknown = {};
     try {
       errData = await response.json();
-    } catch {}
-    const msg = errData.message || errData.error || response.statusText;
-    const code = errData.code || "bad_request:api";
-    throw new ChatbotError(code as ErrorCode, msg);
+    } catch (error) {
+      if (isDevelopmentEnvironment) {
+        console.warn('Réponse d\'erreur non-JSON pour', url, error);
+      }
+    }
+    throwResponseError(errData, response);
   }
 
   return response.json();
@@ -37,13 +59,15 @@ export async function fetchWithErrorHandlers(
     const response = await fetch(input, init);
 
     if (!response.ok) {
-      let errData: any = {};
+      let errData: unknown = {};
       try {
         errData = await response.json();
-      } catch {}
-      const msg = errData.message || errData.error || response.statusText;
-      const code = errData.code || "bad_request:api";
-      throw new ChatbotError(code as ErrorCode, msg);
+      } catch (error) {
+        if (isDevelopmentEnvironment) {
+          console.warn('Réponse d\'erreur non-JSON pour', input, error);
+        }
+      }
+      throwResponseError(errData, response);
     }
 
     return response;

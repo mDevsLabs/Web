@@ -82,7 +82,10 @@ export const audioGenerate = ({ session, dataStream }: AudioGenerateProps) =>
               targetSpeed = prefs.defaultAudioSpeed;
             }
           }
-        } catch {}
+        } catch (prefErr) {
+          // Repli volontaire : préférences indisponibles → valeurs par défaut.
+          console.warn("Préférences audio illisibles:", prefErr);
+        }
 
         const payload = {
           format: "json",
@@ -167,9 +170,13 @@ export const audioGenerate = ({ session, dataStream }: AudioGenerateProps) =>
         }
 
         const errText = await res.text().catch(() => "");
-        return { error: errText || "Erreur lors de la génération audio." };
-      } catch (e: any) {
-        return { error: e.message || "Erreur de génération audio." };
+        // Jamais de contenu amont brut renvoyé à l'utilisateur (fuite) —
+        // tracé côté serveur uniquement.
+        console.warn("Erreur TTS amont:", res.status, errText.slice(0, 300));
+        return { error: "Erreur lors de la génération audio." };
+      } catch (e: unknown) {
+        console.warn("Erreur outil de génération audio:", e);
+        return { error: "Erreur de génération audio." };
       }
     },
     inputSchema: z.object({

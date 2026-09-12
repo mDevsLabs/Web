@@ -101,15 +101,35 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
 
   const getAiErrorMessage = useCallback((error: unknown) => {
     const candidate = error as {
+      apiCode?: string;
       status?: number;
       statusCode?: number;
       message?: string;
     };
     const message = candidate?.message ?? String(error ?? "");
+    const apiCode = candidate?.apiCode ?? null;
     const code =
       candidate?.status ??
       candidate?.statusCode ??
       Number(message.match(/\b(403|429|5\d\d|4\d\d)\b/)?.[1]);
+
+    if (apiCode === "quota_exceeded") {
+      return "Quota atteint : mettez à niveau votre forfait pour continuer.";
+    }
+    if (apiCode === "rate_limited") {
+      return "Trop de requêtes, réessayez dans quelques instants !";
+    }
+    if (
+      apiCode === "plan_required" ||
+      apiCode === "access_denied" ||
+      apiCode === "model_access_denied" ||
+      apiCode === "bot_detected"
+    ) {
+      return "Accès refusé pour cette requête.";
+    }
+    if (apiCode === "service_unavailable" || apiCode === "upstream_error") {
+      return "Le service mAI est momentanément indisponible, réessayez plus tard !";
+    }
     if (code === 403) return "Code 403 : Quota atteint !";
     if (code === 429)
       return "Code 429 : Serveurs surchargés, réessayer plus tard !";

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { deleteNotification, markNotificationRead } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
@@ -23,11 +24,15 @@ export async function PATCH(
       typeof body.isRead === "boolean" ? body.isRead : body.action === "read";
     const updated = await markNotificationRead({ id, isRead, userId });
     if (!updated) {
-      return NextResponse.json({ error: "not found" }, { status: 404 });
+      return errorResponse("not_found", {
+        message: "Notification introuvable.",
+      });
     }
     return NextResponse.json(updated);
   }
-  return NextResponse.json({ error: "invalid action" }, { status: 400 });
+  return errorResponse("invalid_request", {
+    message: "Action invalide pour cette notification.",
+  });
 }
 
 export async function DELETE(
@@ -42,7 +47,9 @@ export async function DELETE(
   const userId = user.id || user.email;
   const deleted = await deleteNotification({ id, userId });
   if (!deleted) {
-    return NextResponse.json({ error: "not found" }, { status: 404 });
+    return errorResponse("not_found", {
+      message: "Notification introuvable.",
+    });
   }
   return NextResponse.json({ success: true });
 }

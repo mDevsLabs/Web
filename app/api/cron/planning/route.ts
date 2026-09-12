@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { getDueScheduledMessages } from "@/lib/db/queries";
 import { executeScheduledMessage } from "@/lib/planning/executor";
@@ -45,12 +46,11 @@ async function handleCronExecution(request: Request) {
   if (!authorized) {
     const cronSecret = process.env.CRON_SECRET;
     if (!cronSecret && process.env.NODE_ENV === "production") {
-      return NextResponse.json(
-        { error: "CRON_SECRET non configuré et utilisateur non authentifié" },
-        { status: 503 }
-      );
+      return errorResponse("service_unavailable", {
+        message: "CRON_SECRET non configuré et utilisateur non authentifié.",
+      });
     }
-    return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non autorisé." });
   }
 
   const dueItems = await getDueScheduledMessages();

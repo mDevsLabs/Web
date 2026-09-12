@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useDataStream } from "@/components/chat/data-stream-provider";
 import { useSettings } from "@/hooks/use-settings";
+import { getTierChatWeeklyLimit } from "@/lib/plans/tier-limits";
 
 // Live cost: fetch settings once + dataStream usage
 export function useQuotaMeter() {
@@ -24,7 +25,9 @@ export function useQuotaMeter() {
   }, [dataStream]);
   const costAiUsed =
     (costSettings?.aiUsage?.tokensUsed ?? 0) + liveSessionTokens;
-  const costAiLimit = costSettings?.aiUsage?.limit ?? 2_000_000;
+  const costAiLimit =
+    costSettings?.aiUsage?.limit ??
+    getTierChatWeeklyLimit(costSettings?.aiUsage?.tier);
   const isQuotaExhausted = costAiLimit > 0 && costAiUsed >= costAiLimit;
   const costPercent =
     costAiLimit > 0

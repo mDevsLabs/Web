@@ -65,6 +65,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useActiveChat } from "@/hooks/use-active-chat";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { Agent, AgentTemplate, McpServer, Skill } from "@/lib/db/schema";
 import { cn, fetcher } from "@/lib/utils";
 
@@ -389,7 +390,8 @@ export default function AgentsClient() {
       const data = await res.json();
       if (!res.ok) {
         throw new Error(
-          data.error || "Erreur lors de la sauvegarde de l'agent"
+          extractApiErrorMessage(data) ||
+            "Erreur lors de la sauvegarde de l'agent"
         );
       }
       toast.success(
@@ -433,7 +435,7 @@ export default function AgentsClient() {
     });
     if (!res.ok) {
       const d = await res.json();
-      toast.error(d.error || "Duplication échouée");
+      toast.error(extractApiErrorMessage(d) || "Duplication échouée");
       return;
     }
     toast.success(`Copie créée pour "${a.name}"`);

@@ -1,6 +1,16 @@
 import { type NextRequest, NextResponse } from "next/server";
+import {
+  errorResponse,
+  logError,
+  normalizeUpstreamError,
+} from "@/lib/api/error-response";
 import { getMaiSessionToken } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
+import {
+  getTierChatWeeklyLimit,
+  getTierSpeechWeeklyLimit,
+  getTierStorageBytes,
+} from "@/lib/plans/tier-limits";
 
 const settingsCache = new Map<string, { data: any; expiresAt: number }>();
 const SETTINGS_CACHE_TTL_MS = 180_000; // 3 minutes de cache
@@ -9,7 +19,7 @@ const SETTINGS_CACHE_TTL_MS = 180_000; // 3 minutes de cache
 export async function GET(req: NextRequest) {
   const token = await getMaiSessionToken();
   if (!token) {
-    return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non authentifié." });
   }
 
   const url = new URL(req.url);
@@ -48,14 +58,16 @@ export async function GET(req: NextRequest) {
     const userTier = usageData?.tier || "Free";
     const result = {
       aiUsage: {
-        limit: Number(usageData?.limit || 2_000_000),
+        limit: Number(usageData?.limit || getTierChatWeeklyLimit(userTier)),
         resetAt: usageData?.resetAt,
         tier: userTier,
         tokensUsed: Number(usageData?.tokensUsed || 0),
       },
       cloudUsage: cloudData
         ? {
-            bytesLimit: Number(cloudData.bytes_limit || 524_288_000),
+            bytesLimit: Number(
+              cloudData.bytes_limit || getTierStorageBytes(userTier)
+            ),
             bytesUsed: Number(cloudData.bytes_used || 0),
             filesCount: Number(cloudData.files_count || 0),
             overLimit: Boolean(cloudData.over_limit),
@@ -77,7 +89,7 @@ export async function GET(req: NextRequest) {
               speechData.limit ||
                 speechData.weeklyLimit ||
                 usageData?.speechLimit ||
-                20_000_000
+                getTierSpeechWeeklyLimit(speechData.plan || userTier)
             ),
             requestsCount: Number(speechData.requestsCount || 0),
             resetAt: speechData.resetAt || usageData?.resetAt,
@@ -89,7 +101,9 @@ export async function GET(req: NextRequest) {
         : usageData?.speechTokensUsed === undefined
           ? null
           : {
-              limit: Number(usageData?.speechLimit || 20_000_000),
+              limit: Number(
+                usageData?.speechLimit || getTierSpeechWeeklyLimit(userTier)
+              ),
               requestsCount: 0,
               resetAt: usageData?.resetAt,
               tier: userTier,
@@ -105,8 +119,8 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json(result);
   } catch (error) {
-    console.error("Erreur Settings GET:", error);
-    return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
+    logError("Erreur Settings GET", error);
+    return errorResponse("internal_error", { message: "Erreur serveur." });
   }
 }
 
@@ -114,7 +128,7 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   const token = await getMaiSessionToken();
   if (!token) {
-    return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non authentifié." });
   }
 
   // Invalider le cache lors d'une mutation
@@ -128,10 +142,9 @@ export async function POST(req: NextRequest) {
       const formData = await req.formData();
       const avatarFile = formData.get("avatar");
       if (!avatarFile || !(avatarFile instanceof File)) {
-        return NextResponse.json(
-          { error: "Fichier d'avatar manquant" },
-          { status: 400 }
-        );
+        return errorResponse("invalid_request", {
+          message: "Fichier d'avatar manquant.",
+        });
       }
 
       const uploadFormData = new FormData();
@@ -144,13 +157,16 @@ export async function POST(req: NextRequest) {
       });
 
       const data = await res.json();
-      return NextResponse.json(data, { status: res.status });
+      if (!res.ok) {
+        const payload = normalizeUpstreamError(data, res.status);
+        return NextResponse.json(payload, { status: payload.status });
+      }
+      return NextResponse.json(data);
     } catch (err) {
-      console.error("Erreur upload avatar:", err);
-      return NextResponse.json(
-        { error: "Erreur lors de l'upload de l'avatar" },
-        { status: 500 }
-      );
+      logError("Erreur upload avatar", err);
+      return errorResponse("internal_error", {
+        message: "Erreur lors de l'upload de l'avatar.",
+      });
     }
   }
 
@@ -169,7 +185,11 @@ export async function POST(req: NextRequest) {
         method: "POST",
       });
       const data = await res.json();
-      return NextResponse.json(data, { status: res.status });
+      if (!res.ok) {
+        const payload = normalizeUpstreamError(data, res.status);
+        return NextResponse.json(payload, { status: payload.status });
+      }
+      return NextResponse.json(data);
     }
 
     // Mise à jour classique du profil
@@ -183,12 +203,15 @@ export async function POST(req: NextRequest) {
     });
 
     const data = await res.json();
-    return NextResponse.json(data, { status: res.status });
+    if (!res.ok) {
+      const payload = normalizeUpstreamError(data, res.status);
+      return NextResponse.json(payload, { status: payload.status });
+    }
+    return NextResponse.json(data);
   } catch (err) {
-    console.error("Erreur update profil:", err);
-    return NextResponse.json(
-      { error: "Erreur serveur lors de la mise à jour" },
-      { status: 500 }
-    );
+    logError("Erreur update profil", err);
+    return errorResponse("internal_error", {
+      message: "Erreur serveur lors de la mise à jour du profil.",
+    });
   }
 }

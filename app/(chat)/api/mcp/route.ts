@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { errorResponse, logError } from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
 import { getMaiUser } from "@/lib/auth/session";
 import {
@@ -88,21 +89,17 @@ export async function POST(request: Request) {
       const { getUserMcpPrefs } = await import("@/lib/db/queries");
       const prefs = await getUserMcpPrefs(userId);
       if (prefs.globalKillSwitch) {
-        return Response.json(
-          { error: "MCP désactivé globalement (kill-switch)" },
-          { status: 403 }
-        );
+        return errorResponse("access_denied", {
+          message: "MCP désactivé globalement (kill-switch).",
+        });
       }
       if (parsed.transport === "stdio" && !prefs.allowStdio) {
-        return Response.json(
-          { error: "Transport stdio désactivé dans les paramètres" },
-          { status: 403 }
-        );
+        return errorResponse("access_denied", {
+          message: "Transport stdio désactivé dans les paramètres.",
+        });
       }
-    } catch (e: any) {
-      if (e.status === 403) {
-        throw e;
-      }
+    } catch (prefsErr) {
+      logError("Erreur vérification préférences MCP", prefsErr);
     }
 
     // Chiffrage des secrets env/auth/headers en BDD (stockage sécurisé)
@@ -126,8 +123,10 @@ export async function POST(request: Request) {
         transport: parsed.transport,
         url: parsed.url,
       });
-    } catch {
-      // Ignorer l'erreur pour ne pas bloquer l'enregistrement si le serveur n'est pas encore en ligne
+    } catch (discoveryErr) {
+      // Repli volontaire : ne pas bloquer l'enregistrement si le serveur MCP
+      // n'est pas encore en ligne (les outils seront synchronisés plus tard).
+      console.warn("Découverte des outils MCP impossible :", discoveryErr);
     }
 
     const created = await createMcpServer({
@@ -175,7 +174,9 @@ export async function POST(request: Request) {
       if (secrets.length) {
         await setMcpServerSecrets({ secrets, serverId: created.id, userId });
       }
-    } catch {}
+    } catch (secretsErr) {
+      logError("Échec persistance secrets MCP", secretsErr);
+    }
 
     // Notification MCP créé
     try {
@@ -186,14 +187,24 @@ export async function POST(request: Request) {
         title: "Nouveau MCP ajouté",
         type: "mcp_created",
         userId,
-      }).catch(() => {});
-    } catch {}
+      }).catch((notifErr) => logError("Échec notification MCP", notifErr));
+    } catch (notifImportErr) {
+      logError("Échec notification MCP", notifImportErr);
+    }
 
     return Response.json(created, { status: 201 });
-  } catch (err: any) {
-    return Response.json(
-      { error: err.message ?? "Paramètres de serveur MCP invalides" },
-      { status: 400 }
-    );
+  } catch (err: unknown) {
+    if (err instanceof z.ZodError) {
+      const issues = err.issues
+        .map((e) => `${e.path.join(".") || "champ"}: ${e.message}`)
+        .join(" • ");
+      return errorResponse("invalid_request", {
+        message: `Données invalides : ${issues}`,
+      });
+    }
+    logError("Erreur création serveur MCP", err);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de la création du serveur MCP.",
+    });
   }
 }

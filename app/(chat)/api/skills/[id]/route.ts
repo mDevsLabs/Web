@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { errorResponse, logError } from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
 import { getMaiUser } from "@/lib/auth/session";
 import {
@@ -58,7 +59,7 @@ export async function GET(
 
   const found = await getSkillById({ id, userId });
   if (!found) {
-    return Response.json({ error: "Skill introuvable" }, { status: 404 });
+    return errorResponse("not_found", { message: "Skill introuvable." });
   }
 
   return Response.json(found);
@@ -93,15 +94,23 @@ export async function PATCH(
     });
 
     if (!updated) {
-      return Response.json({ error: "Skill introuvable" }, { status: 404 });
+      return errorResponse("not_found", { message: "Skill introuvable." });
     }
 
     return Response.json(updated);
-  } catch (err: any) {
-    return Response.json(
-      { error: err.message ?? "Erreur lors de la mise à jour" },
-      { status: 400 }
-    );
+  } catch (err: unknown) {
+    if (err instanceof z.ZodError) {
+      const issues = err.issues
+        .map((e) => `${e.path.join(".") || "champ"}: ${e.message}`)
+        .join(" • ");
+      return errorResponse("invalid_request", {
+        message: `Données invalides : ${issues}`,
+      });
+    }
+    logError("Erreur mise à jour skill", err);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de la mise à jour du skill.",
+    });
   }
 }
 
@@ -119,7 +128,7 @@ export async function DELETE(
 
   const deleted = await deleteSkill({ id, userId });
   if (!deleted) {
-    return Response.json({ error: "Skill introuvable" }, { status: 404 });
+    return errorResponse("not_found", { message: "Skill introuvable." });
   }
 
   return Response.json({

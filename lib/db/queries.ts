@@ -2145,7 +2145,10 @@ export async function recordTokenUsage({
           NOW()
         )
       `;
-    } catch {}
+    } catch (logErr) {
+      // Repli volontaire (l'usage a déjà été débité) — tracé pour audit.
+      console.warn("Insertion mprojects_api_logs impossible:", logErr);
+    }
   } catch (err) {
     console.error("Erreur recordTokenUsage direct en BDD:", err);
   }
@@ -3329,7 +3332,11 @@ export async function createNotification(data: {
     if (gate[data.type] === false) {
       return null;
     }
-  } catch {}
+  } catch (prefsErr) {
+    // Repli volontaire : préférences illisibles → notification envoyée par
+    // défaut, mais l'incident est tracé.
+    console.warn("Préférences de notification illisibles:", prefsErr);
+  }
   const [created] = await db
     .insert(notification)
     .values({

@@ -1,3 +1,4 @@
+import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { getChatById, getMessagesByChatId } from "@/lib/db/queries";
 import { convertToUIMessages } from "@/lib/utils";
@@ -7,7 +8,9 @@ export async function GET(request: Request) {
   const chatId = searchParams.get("chatId");
 
   if (!chatId) {
-    return Response.json({ error: "chatId required" }, { status: 400 });
+    return errorResponse("invalid_request", {
+      message: "Le paramètre 'chatId' est obligatoire.",
+    });
   }
 
   const [maiUser, chat, messages] = await Promise.all([
@@ -35,7 +38,7 @@ export async function GET(request: Request) {
   );
 
   if (chat.visibility === "private" && !isOwner) {
-    return Response.json({ error: "forbidden" }, { status: 403 });
+    return errorResponse("access_denied");
   }
 
   const isReadonly = !isOwner;

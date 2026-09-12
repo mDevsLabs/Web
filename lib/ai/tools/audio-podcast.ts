@@ -113,7 +113,9 @@ async function pickVoices(
       names.find((n) => n !== host) ??
       host;
     return { expert, host };
-  } catch {
+  } catch (voicesErr) {
+    // Repli volontaire : liste des voix indisponible → voix par défaut.
+    console.warn("Liste des voix podcast indisponible:", voicesErr);
     return defaults;
   }
 }
@@ -157,7 +159,11 @@ export const audioPodcast = ({ session, dataStream }: AudioPodcastProps) =>
             };
           }
         }
-      } catch {}
+      } catch (quotaErr) {
+        // Repli volontaire : vérification amont indisponible — le backend
+        // appliquera son propre quota à la synthèse.
+        console.warn("Vérification quota podcast impossible:", quotaErr);
+      }
 
       const voices = await pickVoices(token);
       const hostVoice = voices.host;
@@ -200,7 +206,10 @@ export const audioPodcast = ({ session, dataStream }: AudioPodcastProps) =>
             transient: true,
             type: "data-podcastProgress" as any,
           });
-        } catch {}
+        } catch (streamErr) {
+          // Repli volontaire : flux déjà fermé côté client.
+          console.warn("Progression podcast non transmise:", streamErr);
+        }
       }
 
       const success = rendered.filter((s) => s.audio_url);

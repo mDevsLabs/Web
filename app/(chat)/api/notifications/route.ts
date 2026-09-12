@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import {
   broadcastNewsNotification,
@@ -20,8 +21,7 @@ const notificationSchema = z.object({
 
 function isAdminEmail(email?: string | null): boolean {
   if (!email) return false;
-  const raw =
-    process.env.MAI_ADMIN_EMAILS || process.env.ADMIN_EMAILS || "";
+  const raw = process.env.MAI_ADMIN_EMAILS || process.env.ADMIN_EMAILS || "";
   const allow = raw
     .split(",")
     .map((s) => s.trim().toLowerCase())
@@ -63,17 +63,16 @@ export async function POST(request: Request) {
   const body = await request.json().catch(() => ({}));
   const parsed = notificationSchema.safeParse(body);
   if (!parsed.success) {
-    return NextResponse.json(
-      { error: "Payload invalide (titre 1-120, corps/lien ≤500)" },
-      { status: 400 }
-    );
+    return errorResponse("invalid_request", {
+      message: "Payload invalide (titre 1-120, corps/lien ≤500).",
+    });
   }
   const { type, title, body: notifBody, link, broadcast } = parsed.data;
 
   if (broadcast) {
     // Broadcast réservé aux admins (corrige : tout authentifié pouvait spammer)
     if (!isAdminEmail(user.email)) {
-      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+      return errorResponse("access_denied");
     }
     const result = await broadcastNewsNotification({
       body: notifBody ?? null,
@@ -85,10 +84,9 @@ export async function POST(request: Request) {
 
   // single notification - for system triggers, not direct user creation; but allow manual test
   if (!title || !type) {
-    return NextResponse.json(
-      { error: "type and title required" },
-      { status: 400 }
-    );
+    return errorResponse("invalid_request", {
+      message: "Les champs 'type' et 'titre' sont obligatoires.",
+    });
   }
   const allowed = [
     "ai_response",
@@ -98,7 +96,9 @@ export async function POST(request: Request) {
     "news",
   ];
   if (!allowed.includes(type)) {
-    return NextResponse.json({ error: "invalid type" }, { status: 400 });
+    return errorResponse("invalid_request", {
+      message: "Type de notification invalide.",
+    });
   }
   const userId = user.id || user.email;
   const created = await createNotification({
@@ -122,7 +122,9 @@ export async function PATCH(request: Request) {
     await markAllNotificationsRead(userId);
     return NextResponse.json({ success: true });
   }
-  return NextResponse.json({ error: "invalid action" }, { status: 400 });
+  return errorResponse("invalid_request", {
+    message: "Action invalide.",
+  });
 }
 
 export async function DELETE(request: Request) {
@@ -157,14 +159,21 @@ export async function DELETE(request: Request) {
   }
 
   // Also check if body has action: 'deleteAll'
-  try {
-    const body = await request.json();
-    if (body?.action === "deleteAll") {
-      const { deleteAllNotifications } = await import("@/lib/db/queries");
-      await deleteAllNotifications(userId);
-      return NextResponse.json({ success: true });
+  const contentType = request.headers.get("content-type") || "";
+  if (contentType.includes("application/json")) {
+    try {
+      const body = await request.json();
+      if (body?.action === "deleteAll") {
+        const { deleteAllNotifications } = await import("@/lib/db/queries");
+        await deleteAllNotifications(userId);
+        return NextResponse.json({ success: true });
+      }
+    } catch (error) {
+      console.warn("Corps JSON invalide pour DELETE notifications:", error);
     }
-  } catch {}
+  }
 
-  return NextResponse.json({ error: "invalid" }, { status: 400 });
+  return errorResponse("invalid_request", {
+    message: "Action de suppression invalide.",
+  });
 }

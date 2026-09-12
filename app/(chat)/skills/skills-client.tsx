@@ -58,6 +58,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { TOOL_IDS, TOOLS_META } from "@/lib/ai/tools/config";
+import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { Skill, SkillVersion } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
 
@@ -137,7 +138,9 @@ function VersionHistoryList({
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        throw new Error(data.error ?? "Erreur lors de la restauration");
+        throw new Error(
+          extractApiErrorMessage(data) || "Erreur lors de la restauration"
+        );
       }
       toast.success("Version restaurée : un nouveau snapshot a été créé.");
       onRestored();
@@ -783,7 +786,10 @@ export default function SkillsClient() {
                             });
                             const d = await r.json();
                             if (!r.ok) {
-                              throw new Error(d.error);
+                              throw new Error(
+                                extractApiErrorMessage(d) ||
+                                  "Erreur lors de l'installation du template."
+                              );
                             }
                             toast.success(d.message);
                             mutate();

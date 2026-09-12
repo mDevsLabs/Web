@@ -33,6 +33,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { DEFAULT_CHAT_MODEL, FALLBACK_MODELS } from "@/lib/ai/models";
 import { TOOL_IDS, TOOLS_META, type ToolId } from "@/lib/ai/tools/config";
+import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { Agent, ScheduledMessage } from "@/lib/db/schema";
 import { cn, fetcher } from "@/lib/utils";
 
@@ -185,7 +186,9 @@ export function ScheduleDialog({
 
       if (!res.ok) {
         const data = await res.json();
-        throw new Error(data.error || "Erreur lors de l'enregistrement");
+        throw new Error(
+          extractApiErrorMessage(data) || "Erreur lors de l'enregistrement"
+        );
       }
 
       toast.success(

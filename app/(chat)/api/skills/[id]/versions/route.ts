@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { errorResponse, logError } from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
 import { getSkillVersions, restoreSkillVersion } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
@@ -42,13 +43,23 @@ export async function POST(
       versionId: parsed.versionId,
     });
     if (!restored || restored.id !== id) {
-      return Response.json({ error: "Version introuvable" }, { status: 404 });
+      return errorResponse("not_found", {
+        message: "Version introuvable.",
+      });
     }
     return Response.json(restored);
-  } catch (err: any) {
-    return Response.json(
-      { error: err.message ?? "Erreur lors de la restauration" },
-      { status: 400 }
-    );
+  } catch (err: unknown) {
+    if (err instanceof z.ZodError) {
+      const issues = err.issues
+        .map((e) => `${e.path.join(".") || "champ"}: ${e.message}`)
+        .join(" • ");
+      return errorResponse("invalid_request", {
+        message: `Données invalides : ${issues}`,
+      });
+    }
+    logError("Erreur restauration version skill", err);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de la restauration de la version.",
+    });
   }
 }

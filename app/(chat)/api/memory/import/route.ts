@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { errorResponse } from "@/lib/api/error-response";
 import { memoryLimitForTier } from "@/lib/auth/plan";
 import { getMaiUser } from "@/lib/auth/session";
 import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
@@ -45,25 +46,19 @@ export async function POST(request: Request) {
     const remainingSlots = Math.max(0, limit - currentCount);
 
     if (remainingSlots === 0) {
-      return Response.json(
-        {
-          error: `Limite de forfait atteinte (${limit} mémoires max pour le forfait ${user.tier}). Passez à un forfait supérieur pour en ajouter davantage.`,
-          limit,
-          remaining: 0,
-        },
-        { status: 400 }
-      );
+      return errorResponse("quota_exceeded", {
+        details: { limit, remaining: 0 },
+        message: `Limite de forfait atteinte (${limit} mémoires max pour le forfait ${user.tier}). Passez à un forfait supérieur pour en ajouter davantage.`,
+        status: 400,
+      });
     }
 
     if (parsed.memories.length > remainingSlots) {
-      return Response.json(
-        {
-          error: `Impossible d'importer ${parsed.memories.length} mémoires : votre forfait (${user.tier}) n'a que ${remainingSlots} place(s) disponible(s) (limite : ${limit}).`,
-          limit,
-          remaining: remainingSlots,
-        },
-        { status: 400 }
-      );
+      return errorResponse("quota_exceeded", {
+        details: { limit, remaining: remainingSlots },
+        message: `Impossible d'importer ${parsed.memories.length} mémoires : votre forfait (${user.tier}) n'a que ${remainingSlots} place(s) disponible(s) (limite : ${limit}).`,
+        status: 400,
+      });
     }
 
     const existingContents = new Set(
@@ -112,10 +107,9 @@ export async function POST(request: Request) {
   } catch (e) {
     console.error("POST /api/memory/import error", e);
     if (e instanceof z.ZodError) {
-      return Response.json(
-        { error: "Format JSON invalide pour l'import de mémoire." },
-        { status: 400 }
-      );
+      return errorResponse("invalid_request", {
+        message: "Format JSON invalide pour l'import de mémoire.",
+      });
     }
     return new ChatbotError("bad_request:database").toResponse();
   }

@@ -20,7 +20,7 @@ import {
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTheme } from "next-themes";
-import { useCallback, useEffect, useMemo, useState, Suspense } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import DataGrid, { SelectColumn } from "react-data-grid";
 import { toast } from "sonner";
 import useSWR, { mutate as globalMutate } from "swr";
@@ -72,6 +72,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import type { ModelCapabilities } from "@/lib/ai/models";
+import { extractApiErrorMessage } from "@/lib/api/client-error";
 import { fetcher } from "@/lib/utils";
 
 type Project = {
@@ -113,7 +114,11 @@ const _PROJECT_ICONS = PROJECT_ICON_KEYS;
 
 export default function ProjectsPage() {
   return (
-    <Suspense fallback={<div className="p-6 text-sm text-muted-foreground">Chargement…</div>}>
+    <Suspense
+      fallback={
+        <div className="p-6 text-sm text-muted-foreground">Chargement…</div>
+      }
+    >
       <ProjectsPageInner />
     </Suspense>
   );
@@ -273,7 +278,7 @@ function ProjectsPageInner() {
     });
     const data = await res.json();
     if (!res.ok) {
-      toast.error(data.error || "Erreur création");
+      toast.error(extractApiErrorMessage(data) || "Erreur création");
       return;
     }
     toast.success("Projet créé");
@@ -303,7 +308,7 @@ function ProjectsPageInner() {
     });
     if (!res.ok) {
       const d = await res.json();
-      toast.error(d.error || "Erreur");
+      toast.error(extractApiErrorMessage(d) || "Erreur");
       return;
     }
     toast.success("Projet mis à jour");
@@ -373,7 +378,7 @@ function ProjectsPageInner() {
     });
     if (!res.ok) {
       const d = await res.json();
-      toast.error(d.error || "Erreur bulk");
+      toast.error(extractApiErrorMessage(d) || "Erreur bulk");
       return;
     }
     toast.success(`${chatIds.length} discussion(s) mise(s) à jour`);
@@ -395,7 +400,7 @@ function ProjectsPageInner() {
       });
       if (!res.ok) {
         const d = await res.json().catch(() => ({}));
-        toast.error(d.error || "Erreur");
+        toast.error(extractApiErrorMessage(d) || "Erreur");
         return;
       }
       toast.success("Mis à jour");

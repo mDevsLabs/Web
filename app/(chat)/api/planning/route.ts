@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { errorResponse, logError } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import {
   createScheduledMessage,
@@ -24,7 +25,7 @@ const createSchema = z.object({
 export async function GET(request: Request) {
   const user = await getMaiUser();
   if (!user) {
-    return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non autorisé." });
   }
 
   const { searchParams } = new URL(request.url);
@@ -42,7 +43,7 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   const user = await getMaiUser();
   if (!user) {
-    return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non autorisé." });
   }
 
   try {
@@ -51,11 +52,10 @@ export async function POST(request: Request) {
     const userId = user.id || user.email;
 
     const scheduledDate = new Date(parsed.scheduledAt);
-    if (isNaN(scheduledDate.getTime())) {
-      return NextResponse.json(
-        { error: "Date de planification invalide" },
-        { status: 400 }
-      );
+    if (Number.isNaN(scheduledDate.getTime())) {
+      return errorResponse("invalid_request", {
+        message: "Date de planification invalide.",
+      });
     }
 
     const created = await createScheduledMessage({
@@ -75,10 +75,18 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json(created, { status: 201 });
-  } catch (error: any) {
-    return NextResponse.json(
-      { error: error?.message || "Données invalides" },
-      { status: 400 }
-    );
+  } catch (error: unknown) {
+    if (error instanceof z.ZodError) {
+      const issues = error.issues
+        .map((e) => `${e.path.join(".") || "champ"}: ${e.message}`)
+        .join(" • ");
+      return errorResponse("invalid_request", {
+        message: `Données invalides : ${issues}`,
+      });
+    }
+    logError("Erreur création message planifié", error);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de la planification du message.",
+    });
   }
 }

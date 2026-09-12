@@ -2,6 +2,7 @@ import { generateText } from "ai";
 import { z } from "zod";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { getLanguageModel } from "@/lib/ai/providers";
+import { errorResponse, logError } from "@/lib/api/error-response";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import {
   getAgentMemories,
@@ -19,7 +20,7 @@ export async function POST(request: Request) {
   ]);
 
   if (!sessionToken || !maiUser) {
-    return Response.json({ error: "Non authentifié." }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non authentifié." });
   }
 
   const userId = maiUser.id || maiUser.email;
@@ -38,7 +39,7 @@ export async function POST(request: Request) {
     });
     const parsed = schema.safeParse(json);
     if (!parsed.success) {
-      return Response.json({ error: "Payload invalide." }, { status: 400 });
+      return errorResponse("invalid_request", { message: "Payload invalide." });
     }
     const { agentId, projectId, scope, modelId } = parsed.data;
 
@@ -100,15 +101,10 @@ Rédige une synthèse fluide, concise et valorisante sans inventer d'information
       model: effectiveModel,
       summary: result.text,
     });
-  } catch (error: any) {
-    console.error("Erreur génération résumé de mémoire:", error);
-    return Response.json(
-      {
-        error:
-          error?.message ||
-          "Erreur lors de la génération du résumé de la mémoire.",
-      },
-      { status: 500 }
-    );
+  } catch (error: unknown) {
+    logError("Erreur génération résumé de mémoire", error);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de la génération du résumé de la mémoire.",
+    });
   }
 }

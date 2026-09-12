@@ -14,6 +14,7 @@ import {
   KeyRoundIcon,
   Loader2Icon,
   LockIcon,
+  MonitorSmartphoneIcon,
   RefreshCwIcon,
   SettingsIcon,
   ShieldCheckIcon,
@@ -69,6 +70,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { requestOnboardingReplay } from "@/hooks/use-onboarding";
 import {
   resolveImagesUsage,
   resolveSpeechUsage,
@@ -77,7 +79,13 @@ import {
 import { useTier } from "@/hooks/use-tier";
 import type { ChatModel } from "@/lib/ai/models";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { extractApiErrorMessage } from "@/lib/api/client-error";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
+import {
+  getTierChatWeeklyLimit,
+  getTierStorageBytes,
+} from "@/lib/plans/tier-limits";
+import { usePlatform } from "@/lib/platform";
 import { cn, fetcher } from "@/lib/utils";
 
 function formatTokens(n: number) {
@@ -150,7 +158,11 @@ const SETTINGS_TABS: {
 
 export default function SettingsPage() {
   return (
-    <Suspense fallback={<div className="p-6 text-sm text-muted-foreground">Chargement…</div>}>
+    <Suspense
+      fallback={
+        <div className="p-6 text-sm text-muted-foreground">Chargement…</div>
+      }
+    >
       <SettingsPageInner />
     </Suspense>
   );
@@ -159,12 +171,18 @@ export default function SettingsPage() {
 function SettingsPageInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const platformInfo = usePlatform();
   const initialTab = searchParams.get("tab") as SettingsTab | null;
   const [activeTab, setActiveTab] = useState<SettingsTab>(
     initialTab && SETTINGS_TABS.some((t) => t.id === initialTab)
       ? initialTab
       : "profile"
   );
+
+  const handleReplayTutorial = useCallback(() => {
+    requestOnboardingReplay();
+    router.push("/");
+  }, [router]);
 
   const handleTabChange = useCallback(
     (tab: SettingsTab) => {
@@ -724,7 +742,7 @@ function SettingsPageInner() {
       });
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || "Erreur");
+        throw new Error(extractApiErrorMessage(data) || "Erreur");
       }
       toast.success("Instructions personnalisées enregistrées !");
       mutateCustomPref();
@@ -761,7 +779,10 @@ function SettingsPageInner() {
       const data = await res.json();
 
       if (!res.ok || !data.success) {
-        toast.error(data.error || "Erreur lors du téléversement de l'avatar.");
+        toast.error(
+          extractApiErrorMessage(data) ||
+            "Erreur lors du téléversement de l'avatar."
+        );
         return;
       }
 
@@ -830,7 +851,10 @@ function SettingsPageInner() {
       const data = await res.json();
 
       if (!res.ok || data.error) {
-        toast.error(data.error || "Erreur lors de la mise à jour du profil.");
+        toast.error(
+          extractApiErrorMessage(data) ||
+            "Erreur lors de la mise à jour du profil."
+        );
         return;
       }
 
@@ -876,7 +900,7 @@ function SettingsPageInner() {
 
       const data = await res.json();
       if (!res.ok || !data.success) {
-        toast.error(data.error || "Code invalide ou expiré.");
+        toast.error(extractApiErrorMessage(data) || "Code invalide ou expiré.");
         return;
       }
 
@@ -928,6 +952,10 @@ function SettingsPageInner() {
         Math.round(((cloudUsage.bytesUsed || 0) / cloudUsage.bytesLimit) * 100)
       )
     : 0;
+
+  // Repli aligné sur le SSOT des quotas (lib/plans/tier-limits.ts)
+  const aiLimitFallback = getTierChatWeeklyLimit(profile?.tier);
+  const storageLimitFallback = getTierStorageBytes(profile?.tier);
 
   // Ancres de la barre latérale pour l'onglet actif (défilement + surlignage)
   const anchorItems: AnchorItem[] = useMemo(() => {
@@ -1091,6 +1119,24 @@ function SettingsPageInner() {
                   <p className="text-xs text-muted-foreground mt-0.5">
                     {email}
                   </p>
+                  <div className="mt-1.5 flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
+                    <span className="inline-flex items-center gap-1">
+                      <MonitorSmartphoneIcon className="size-3" />
+                      {platformInfo.desktopVersion
+                        ? `${platformInfo.label} v${platformInfo.desktopVersion}`
+                        : platformInfo.label}
+                    </span>
+                    <span aria-hidden="true" className="text-border">
+                      •
+                    </span>
+                    <button
+                      className="font-medium text-primary hover:underline cursor-pointer"
+                      onClick={handleReplayTutorial}
+                      type="button"
+                    >
+                      Revoir le tutoriel
+                    </button>
+                  </div>
                   <button
                     className="mt-2 text-xs font-medium text-primary hover:underline cursor-pointer flex items-center gap-1"
                     disabled={isUploadingAvatar}
@@ -2137,7 +2183,7 @@ function SettingsPageInner() {
                   </div>
                   <p className="text-xs text-muted-foreground mt-1">
                     {profile?.tier === "Free"
-                      ? `Accès gratuit avec ${formatTokens(aiUsage?.limit || 2_000_000)} tokens hebdomadaires et ${formatBytes(cloudUsage?.bytesLimit || 524_288_000)} de stockage cloud.`
+                      ? `Accès gratuit avec ${formatTokens(aiUsage?.limit || aiLimitFallback)} tokens hebdomadaires et ${formatBytes(cloudUsage?.bytesLimit || storageLimitFallback)} de stockage cloud.`
                       : "Forfait premium débloqué avec quotas étendus et modèles avancés."}
                   </p>
                 </div>
@@ -2177,7 +2223,7 @@ function SettingsPageInner() {
                   <div className="text-right">
                     <span className="text-sm font-bold text-foreground">
                       {formatTokens(aiUsage?.tokensUsed || 0)} /{" "}
-                      {formatTokens(aiUsage?.limit || 2_000_000)}
+                      {formatTokens(aiUsage?.limit || aiLimitFallback)}
                     </span>
                     <span className="text-xs text-muted-foreground block">
                       tokens ({aiPercent}%)
@@ -2340,7 +2386,9 @@ function SettingsPageInner() {
                   <div className="text-right">
                     <span className="text-sm font-bold text-foreground">
                       {formatBytes(cloudUsage?.bytesUsed || 0)} /{" "}
-                      {formatBytes(cloudUsage?.bytesLimit || 524_288_000)}
+                      {formatBytes(
+                        cloudUsage?.bytesLimit || storageLimitFallback
+                      )}
                     </span>
                     <span className="text-xs text-muted-foreground block">
                       utilisés ({cloudPercent}%)

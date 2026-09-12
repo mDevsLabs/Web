@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 
 import { auth } from "@/app/(auth)/auth";
+import { errorResponse, logError } from "@/lib/api/error-response";
 
 const ALLOWED_UPLOAD_TYPES = [
   "image/jpeg",
@@ -26,7 +27,7 @@ const FileSchema = z.object({
   file: z
     .instanceof(Blob)
     .refine((file) => file.size <= MAX_FILE_SIZE, {
-      message: "La taille du fichier doit être inférieure à 50 Mo",
+      message: "La taille du fichier ne doit pas dépasser 50 Mo",
     })
     .refine(
       (file) => {
@@ -45,7 +46,8 @@ const FileSchema = z.object({
         );
       },
       {
-        message: "File type should be image, PDF or text",
+        message:
+          "Type de fichier non pris en charge (image, PDF ou texte uniquement)",
       }
     ),
 });
@@ -54,11 +56,13 @@ export async function POST(request: Request) {
   const session = await auth();
 
   if (!session) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return errorResponse("auth_required");
   }
 
   if (request.body === null) {
-    return new Response("Request body is empty", { status: 400 });
+    return errorResponse("invalid_request", {
+      message: "Le corps de la requête est vide.",
+    });
   }
 
   try {
@@ -66,7 +70,13 @@ export async function POST(request: Request) {
     const file = formData.get("file") as Blob;
 
     if (!file) {
-      return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
+      return errorResponse("invalid_request", {
+        message: "Aucun fichier n'a été fourni.",
+      });
+    }
+
+    if (file.size > MAX_FILE_SIZE) {
+      return errorResponse("payload_too_large");
     }
 
     const validatedFile = FileSchema.safeParse({ file });
@@ -76,7 +86,9 @@ export async function POST(request: Request) {
         .map((error) => error.message)
         .join(", ");
 
-      return NextResponse.json({ error: errorMessage }, { status: 400 });
+      return errorResponse("unsupported_media_type", {
+        message: errorMessage,
+      });
     }
 
     const filename = (formData.get("file") as File).name;
@@ -92,13 +104,16 @@ export async function POST(request: Request) {
       });
 
       return NextResponse.json(data);
-    } catch {
-      return NextResponse.json({ error: "Upload failed" }, { status: 500 });
+    } catch (error) {
+      logError("Échec upload blob", error);
+      return errorResponse("internal_error", {
+        message: "L'envoi du fichier a échoué. Veuillez réessayer.",
+      });
     }
-  } catch {
-    return NextResponse.json(
-      { error: "Failed to process request" },
-      { status: 500 }
-    );
+  } catch (error) {
+    logError("Échec traitement upload", error);
+    return errorResponse("internal_error", {
+      message: "Impossible de traiter la requête d'envoi.",
+    });
   }
 }

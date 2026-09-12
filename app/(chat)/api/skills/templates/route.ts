@@ -1,3 +1,4 @@
+import { errorResponse } from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
 import { getMaiUser } from "@/lib/auth/session";
 import { getSkillTemplates } from "@/lib/db/queries";
@@ -5,9 +6,7 @@ import { getSkillTemplates } from "@/lib/db/queries";
 export async function GET() {
   const user = await getMaiUser();
   if (!user) {
-    return new Response(JSON.stringify({ error: "unauthorized" }), {
-      status: 401,
-    });
+    return errorResponse("auth_required");
   }
   const guard = await requirePaidPlan("plus");
   if (!guard.allowed) {
@@ -30,7 +29,9 @@ export async function POST(request: Request) {
   const templates = await getSkillTemplates();
   const tpl: any = templates.find((t: any) => t.id === json.templateId) ?? null;
   if (!tpl) {
-    return Response.json({ error: "Template not found" }, { status: 404 });
+    return errorResponse("not_found", {
+      message: "Template introuvable.",
+    });
   }
   const created = await createSkill({
     color: tpl.color ?? "#6366f1",

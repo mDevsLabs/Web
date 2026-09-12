@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { getUserPreferences, upsertUserPreferences } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
@@ -61,10 +62,9 @@ export async function POST(request: Request) {
     const body = await request.json().catch(() => ({}));
     const parsed = schema.safeParse(body);
     if (!parsed.success) {
-      return NextResponse.json(
-        { error: parsed.error.message },
-        { status: 400 }
-      );
+      return errorResponse("invalid_request", {
+        message: zodIssuesMessage(parsed.error),
+      });
     }
 
     const updated = await upsertUserPreferences(userId, parsed.data);
