@@ -2,10 +2,8 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { toast } from "sonner";
 import { AgentModeSwitcher } from "@/components/agent/agent-mode-switcher";
 import { AgentShell } from "@/components/agent/agent-shell";
-import { AgentUpgradeDialog } from "@/components/agent/agent-upgrade-dialog";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -17,7 +15,6 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { useActiveChat } from "@/hooks/use-active-chat";
-import { useAgentFlags } from "@/hooks/use-agent-flags";
 import { useAgentMode } from "@/hooks/use-agent-mode";
 import {
   initialArtifactData,
@@ -38,8 +35,6 @@ export function ChatShell() {
   const router = useRouter();
   const isChatRoute = pathname === "/" || pathname?.startsWith("/chat");
   const { mode, setMode } = useAgentMode();
-  const { flags } = useAgentFlags();
-  const [agentUpgradeOpen, setAgentUpgradeOpen] = useState(false);
 
   // Le sélecteur est visible pour tout le monde, mais un utilisateur Free ne
   // peut pas activer Agent : la garde réelle reste côté serveur (plan_required),
@@ -132,10 +127,8 @@ export function ChatShell() {
     return null;
   }
 
-  // Agent est désormais disponible pour tous les forfaits ; seul le flag
-  // global permet de désactiver temporairement le service.
-  const agentAvailable = flags["agent.enabled"];
-  const effectiveMode = agentAvailable ? mode : "chat";
+  // Agent est disponible pour tous les forfaits.
+  const effectiveMode = mode;
 
   const handleModeChange = (next: "chat" | "agent") => {
     if (next === "agent") {
@@ -148,22 +141,10 @@ export function ChatShell() {
     setMode("chat");
   };
 
-  const handleBlockedAgentSelect = () => {
-    if (!flags["agent.enabled"]) {
-      toast.error("Agent est momentanément indisponible.");
-      return;
-    }
-    setAgentUpgradeOpen(true);
-  };
-
   if (effectiveMode === "agent") {
     return (
       <>
         <AgentShell />
-        <AgentUpgradeDialog
-          onOpenChange={setAgentUpgradeOpen}
-          open={agentUpgradeOpen}
-        />
       </>
     );
   }
@@ -189,7 +170,6 @@ export function ChatShell() {
               <div className="relative z-20 flex shrink-0 justify-center px-3 pt-5 pb-1">
                 <AgentModeSwitcher
                   mode={effectiveMode}
-                  onBlockedAgentSelect={handleBlockedAgentSelect}
                   onModeChange={handleModeChange}
                 />
               </div>
@@ -257,11 +237,6 @@ export function ChatShell() {
       </div>
 
       <DataStreamHandler />
-
-      <AgentUpgradeDialog
-        onOpenChange={setAgentUpgradeOpen}
-        open={agentUpgradeOpen}
-      />
 
       <AlertDialog
         onOpenChange={setShowCreditCardAlert}

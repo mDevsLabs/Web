@@ -34,15 +34,6 @@ export type AgentAccess =
 export function checkAgentAccess(auth: ChatAuth): AgentAccess {
   const flags = getAgentFlags();
 
-  if (!flags["agent.enabled"]) {
-    return {
-      allowed: false,
-      response: errorResponse("service_unavailable", {
-        message: "L'espace Agent est momentanément indisponible.",
-      }),
-    };
-  }
-
   if (weeklyQuotaExceeded(auth.maiUser)) {
     return {
       allowed: false,
