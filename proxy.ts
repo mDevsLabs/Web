@@ -10,6 +10,21 @@ export async function proxy(request: NextRequest) {
     return new Response("pong", { status: 200 });
   }
 
+  // BotID (Vercel) : le script de vérification du SDK client est servi sous ce
+  // préfixe fixe via les rewrites `beforeFiles` de withBotId. Le middleware
+  // s'exécutant AVANT les rewrites, toute interception ici (redirect /login)
+  // casse le chargement du script et fait rejeter les Server Actions protégées
+  // (POST /login, /register) avant même l'appel à l'API.
+  const BOTID_PREFIX = "/149e9513-01fa-4fb0-aad4-566afd725d1b/";
+  if (
+    pathname.startsWith(BOTID_PREFIX) ||
+    pathname.startsWith(
+      `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${BOTID_PREFIX}`
+    )
+  ) {
+    return NextResponse.next();
+  }
+
   // Routes publiques autorisées
   const isAuthRoute =
     pathname.startsWith("/login") || pathname.startsWith("/register");

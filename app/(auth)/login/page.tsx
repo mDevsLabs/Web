@@ -64,8 +64,15 @@ export default function LoginPage() {
     formData.append("password", password);
     formData.append("acceptedTerms", String(acceptedTerms));
 
-    const res = await loginAction(formData);
-    setIsLoading(false);
+    let res;
+    try {
+      res = await loginAction(formData);
+    } catch {
+      toast.error("Impossible de contacter le serveur. Réessayez.");
+      return;
+    } finally {
+      setIsLoading(false);
+    }
 
     if (!res.success) {
       toast.error(res.error || "Identifiants invalides.");
@@ -88,8 +95,15 @@ export default function LoginPage() {
     }
 
     setIsLoading(true);
-    const res = await verifyLoginAction(targetEmail, otpCode.trim());
-    setIsLoading(false);
+    let res;
+    try {
+      res = await verifyLoginAction(targetEmail, otpCode.trim());
+    } catch {
+      toast.error("Impossible de contacter le serveur. Réessayez.");
+      return;
+    } finally {
+      setIsLoading(false);
+    }
 
     if (!res.success) {
       toast.error(res.error || "Code invalide ou expiré.");
@@ -107,8 +121,15 @@ export default function LoginPage() {
       return;
     }
     setIsLoading(true);
-    const res = await resendCodeAction(targetEmail, "login");
-    setIsLoading(false);
+    let res;
+    try {
+      res = await resendCodeAction(targetEmail, "login");
+    } catch {
+      toast.error("Impossible de contacter le serveur. Réessayez.");
+      return;
+    } finally {
+      setIsLoading(false);
+    }
 
     if (res.success) {
       setCountdown(60);

@@ -74,8 +74,15 @@ export default function RegisterPage() {
     formData.append("password", password);
     formData.append("acceptedTerms", String(acceptedTerms));
 
-    const res = await registerAction(formData);
-    setIsLoading(false);
+    let res;
+    try {
+      res = await registerAction(formData);
+    } catch {
+      toast.error("Impossible de contacter le serveur. Réessayez.");
+      return;
+    } finally {
+      setIsLoading(false);
+    }
 
     if (!res.success) {
       toast.error(res.error || "Erreur lors de l'inscription.");
@@ -97,13 +104,20 @@ export default function RegisterPage() {
     }
 
     setIsLoading(true);
-    const res = await verifyRegisterAction(
-      email.trim(),
-      username.trim(),
-      password,
-      otpCode.trim()
-    );
-    setIsLoading(false);
+    let res;
+    try {
+      res = await verifyRegisterAction(
+        email.trim(),
+        username.trim(),
+        password,
+        otpCode.trim()
+      );
+    } catch {
+      toast.error("Impossible de contacter le serveur. Réessayez.");
+      return;
+    } finally {
+      setIsLoading(false);
+    }
 
     if (!res.success) {
       toast.error(res.error || "Code invalide ou expiré.");
@@ -124,8 +138,15 @@ export default function RegisterPage() {
       return;
     }
     setIsLoading(true);
-    const res = await resendCodeAction(email.trim(), "register");
-    setIsLoading(false);
+    let res;
+    try {
+      res = await resendCodeAction(email.trim(), "register");
+    } catch {
+      toast.error("Impossible de contacter le serveur. Réessayez.");
+      return;
+    } finally {
+      setIsLoading(false);
+    }
 
     if (res.success) {
       setCountdown(60);
