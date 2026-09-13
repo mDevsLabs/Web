@@ -195,7 +195,8 @@ function PureMultimodalInput({
     (url: string) => fetch(url).then((r) => r.json()),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
-  // Plugins installés et activés (payants) — proposés dans la mention @.
+  // Plugins installés et activés (payants) — proposés uniquement dans la
+  // mention @ (le menu « + » ne liste plus les plugins).
   const { data: pluginsData } = useSWR<{ plugins: PluginCatalogEntry[] }>(
     isFree ? null : "/api/plugins",
     (url: string) => fetch(url).then((r) => r.json()),
@@ -1180,8 +1181,6 @@ function PureMultimodalInput({
             <PlusMenuButton
               fileInputRef={fileInputRef}
               onOpenCloudPicker={() => setCloudPickerOpen(true)}
-              onOpenQuizConfig={() => setQuizDialogOpen(true)}
-              plugins={installedPlugins}
               selectedModelId={selectedModelId}
               status={status}
               supportsTools={supportsTools}

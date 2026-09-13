@@ -49,6 +49,16 @@ const runMigrate = async () => {
     await connection`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "pinned" boolean DEFAULT false NOT NULL`;
   } catch {}
 
+  // Espace Agent — mode de conversation (migration 0016). Répété ici pour que
+  // les environnements dont le journal de migrations est incomplet disposent
+  // malgré tout de la colonne, sans casser l'exécution.
+  try {
+    await connection`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "mode" VARCHAR(10) DEFAULT 'chat' NOT NULL`;
+  } catch {}
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "Chat_userId_mode_idx" ON "Chat" ("userId", "mode")`;
+  } catch {}
+
   // Notifications & nouveautés — tables idempotentes
   try {
     await connection`

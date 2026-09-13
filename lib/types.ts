@@ -1,6 +1,14 @@
 import type { InferUITool, UIMessage } from "ai";
 import { z } from "zod";
 import type { ArtifactKind } from "@/components/chat/artifact";
+import type {
+  AgentArtifactRef,
+  AgentPlan,
+  AgentRunEvent,
+  AgentSource,
+  AgentStepEvent,
+  AgentToolActivity,
+} from "./agent/types";
 import type { askUser } from "./ai/tools/ask-user";
 import type { audioGenerate } from "./ai/tools/audio-generate";
 import type { audioPodcast } from "./ai/tools/audio-podcast";
@@ -105,7 +113,15 @@ export type WaitingStatusData = {
   modelName: string;
 };
 
+// Événements Agent diffusés dans le flux AI SDK existant (data parts natifs) :
+// mêmes garanties de reprise que le Chat, aucun protocole parallèle.
 export type CustomUIDataTypes = {
+  "agent-artifact": AgentArtifactRef;
+  "agent-plan": AgentPlan;
+  "agent-run": AgentRunEvent;
+  "agent-sources": AgentSource[];
+  "agent-step": AgentStepEvent;
+  "agent-tool": AgentToolActivity;
   textDelta: string;
   imageDelta: string;
   audioDelta: string;

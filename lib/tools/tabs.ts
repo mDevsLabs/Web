@@ -21,3 +21,10 @@ export function isToolsTab(
 export function normalizeToolsTab(value: string | null | undefined): ToolsTab {
   return isToolsTab(value) ? value : "plugins";
 }
+
+// Point d'ancrage de la rangée d'actions de l'en-tête Outils : chaque panneau
+// (Plugins, MCP, Skills) y porte ses boutons (Nouveau, Importer, Exporter…)
+// via un portail, pour qu'ils se placent sur la même rangée que la barre de
+// recherche globale — sur toute la largeur de la page. Défini dans ce module
+// neutre pour éviter les imports circulaires entre le shell et les panneaux.
+export const TOOLS_ACTIONS_ID = "tools-actions-slot";

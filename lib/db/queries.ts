@@ -991,8 +991,10 @@ export function getDb() {
   return _db;
 }
 
-// Helper utilisé dans toutes les fonctions de requêtes
-async function dbReady() {
+// Helper utilisé dans toutes les fonctions de requêtes. Exporté pour les
+// modules de requêtes voisins (agent-queries.ts), qui doivent bénéficier du
+// même init paresseux et de la même attente des migrations de types.
+export async function dbReady() {
   if (!_db) {
     initDb();
   }
@@ -1018,6 +1020,7 @@ export async function saveChat({
   agentId,
   skillId,
   temperatureOverride,
+  mode,
 }: {
   id: string;
   userId: string;
@@ -1030,6 +1033,7 @@ export async function saveChat({
   agentId?: string | null;
   skillId?: string | null;
   temperatureOverride?: number | null;
+  mode?: "chat" | "agent";
 }) {
   try {
     const db = await dbReady();
@@ -1037,6 +1041,7 @@ export async function saveChat({
       agentId: agentId ?? null,
       customInstructions: customInstructions ?? null,
       id,
+      mode: mode ?? "chat",
       projectId: projectId ?? null,
       skillId: skillId ?? null,
       tags: tags ?? [],

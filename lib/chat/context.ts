@@ -40,6 +40,8 @@ export type ChatRequestBodyShape = {
   temperatureOverride?: number | null;
   enabledTools?: string[];
   isGhostMode: boolean;
+  // Mode de la conversation créée : « chat » (défaut) ou « agent ».
+  mode?: "chat" | "agent";
 };
 
 export type ChatRequestContext = {
@@ -121,6 +123,7 @@ export async function buildChatContext(
     customInstructions,
     temperatureOverride,
     isGhostMode,
+    mode,
   } = body;
   const { maiUser, sessionToken, userId, isFreeUser } = auth;
 
@@ -270,6 +273,7 @@ export async function buildChatContext(
       agentId: effectiveAgentId ?? null,
       customInstructions: customInstructions ?? null,
       id,
+      mode: mode ?? "chat",
       modeId: selectedChatMode ?? undefined,
       projectId: projectId ?? null,
       skillId: effectiveSkillId ?? null,

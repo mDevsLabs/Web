@@ -32,6 +32,47 @@ export function createRegisterMulti(app: Hono): RegisterMultiFn {
 }
 
 /**
+ * Blocage bidirectionnel : true si userA a bloqué userB ou inversement.
+ */
+export async function isBlockEitherWay(userA: number, userB: number): Promise<boolean> {
+  if (!userA || !userB) return false;
+  try {
+    const sql = getDb();
+    const rows = await sql`
+      SELECT 1 FROM blocked_users
+      WHERE (user_id = ${userA} AND blocked_user_id = ${userB})
+         OR (user_id = ${userB} AND blocked_user_id = ${userA})
+      LIMIT 1
+    `;
+    return rows.length > 0;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * IDs à exclure des feeds : comptes masqués (mute) + blocages (bidirectionnel).
+ */
+export async function resolveHiddenUserIds(
+  currentUserId: number | null
+): Promise<{ mutedIds: number[]; blockedIds: number[] }> {
+  if (!currentUserId) return { mutedIds: [], blockedIds: [] };
+  const sql = getDb();
+  const [mutedRows, blockedRows] = await Promise.all([
+    sql`SELECT muted_user_id FROM muted_users WHERE user_id = ${currentUserId}`.catch(() => []),
+    sql`
+      SELECT CASE WHEN user_id = ${currentUserId} THEN blocked_user_id ELSE user_id END AS other_id
+      FROM blocked_users
+      WHERE user_id = ${currentUserId} OR blocked_user_id = ${currentUserId}
+    `.catch(() => []),
+  ]);
+  return {
+    mutedIds: mutedRows.map((r: any) => Number(r.muted_user_id)),
+    blockedIds: blockedRows.map((r: any) => Number(r.other_id)),
+  };
+}
+
+/**
  * Extracts and verifies the JWT user ID from request headers
  */
 export async function getAuthUserId(c: any): Promise<number | null> {

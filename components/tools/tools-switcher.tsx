@@ -20,7 +20,7 @@ export function ToolsSwitcher({
   return (
     <div
       aria-label="Sections d'outils"
-      className="relative grid w-full max-w-xl grid-cols-3 rounded-full bg-muted/60 p-1 ring-1 ring-border/50"
+      className="relative grid w-full max-w-md grid-cols-3 rounded-full bg-muted/60 p-1 ring-1 ring-border/50"
       role="tablist"
     >
       <span

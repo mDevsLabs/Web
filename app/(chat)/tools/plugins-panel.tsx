@@ -1,24 +1,12 @@
 "use client";
 
-import {
-  CheckIcon,
-  Loader2Icon,
-  PlusIcon,
-  SearchIcon,
-  Trash2Icon,
-} from "lucide-react";
-import { useMemo, useState } from "react";
+import { CheckIcon, Loader2Icon, PlusIcon, Trash2Icon } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import {
   filterPlugins,
@@ -27,20 +15,31 @@ import {
 } from "@/lib/plugins/catalog";
 import { PluginIcon } from "@/lib/plugins/icon";
 import type { PluginCatalogEntry } from "@/lib/plugins/types";
+import { matchesQuery, sortByRelevance } from "@/lib/tools/search";
+import { TOOLS_ACTIONS_ID } from "@/lib/tools/tabs";
 import { cn, fetcher } from "@/lib/utils";
 
 type PluginsResponse = { plugins: PluginCatalogEntry[] };
 
-export default function PluginsPanel() {
+export default function PluginsPanel({
+  searchQuery = "",
+}: {
+  searchQuery?: string;
+}) {
+  const router = useRouter();
   const { data, isLoading, mutate } = useSWR<PluginsResponse>(
     "/api/plugins",
     fetcher
   );
   const plugins = useMemo(() => data?.plugins ?? [], [data]);
-  const [search, setSearch] = useState("");
   const [category, setCategory] = useState<string | null>(null);
   const [busyPluginId, setBusyPluginId] = useState<string | null>(null);
-  const [details, setDetails] = useState<PluginCatalogEntry | null>(null);
+  // Rangée d'actions globale : on y porte le bouton « Gérer le catalogue ».
+  const [actionsAnchor, setActionsAnchor] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    setActionsAnchor(document.getElementById(TOOLS_ACTIONS_ID));
+  }, []);
 
   // Le catalogue de la page est le manifeste statique enrichi de l'état
   // d'installation renvoyé par l'API.
@@ -60,7 +59,6 @@ export default function PluginsPanel() {
   }, [plugins]);
 
   const installed = merged.filter((p) => p.installed);
-  const filtered = filterPlugins(merged, search, category);
 
   async function runAction(
     pluginId: string,
@@ -122,28 +120,58 @@ export default function PluginsPanel() {
     );
   };
 
+  // Le clic sur une vignette ouvre la page dédiée du plugin (version,
+  // description, actions) — plus aucune fenêtre contextuelle ici.
+  const openPluginPage = (plugin: PluginCatalogEntry) => {
+    router.push(`/tools/plugins/${plugin.id}`);
+  };
+
+  // Recherche globale : filtrage par catégorie + correspondance, puis tri par
+  // pertinence (nom > description > tags) et alphabétiquement.
+  const filtered = useMemo(() => {
+    const matching = merged.filter(
+      (plugin) =>
+        (!category || plugin.category === category) &&
+        matchesQuery(searchQuery, {
+          primary: plugin.name,
+          secondary: [plugin.description, plugin.tool.label],
+          tags: plugin.tags,
+        })
+    );
+    return sortByRelevance(matching, searchQuery, (plugin) => ({
+      primary: plugin.name,
+      secondary: [plugin.description, plugin.tool.label],
+      tags: plugin.tags,
+    }));
+  }, [merged, searchQuery, category]);
+
+  const sortedInstalled = useMemo(
+    () =>
+      sortByRelevance(installed, searchQuery, (plugin) => ({
+        primary: plugin.name,
+        secondary: [plugin.description, plugin.tool.label],
+        tags: plugin.tags,
+      })),
+    [installed, searchQuery]
+  );
+
   return (
-    <div className="flex flex-col gap-8">
-      {/* En-tête */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-            Plugins
-          </h2>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Utilisez mAI dans vos outils préférés.
-          </p>
-        </div>
-        <div className="relative w-full sm:w-80">
-          <SearchIcon className="absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
-          <Input
-            className="h-10 rounded-full border-border/60 bg-muted/30 pl-9 text-sm"
-            onChange={(event) => setSearch(event.target.value)}
-            placeholder="Rechercher des plugins"
-            value={search}
-          />
-        </div>
-      </div>
+    <div className="flex w-full flex-col gap-8">
+      {/* Rangée d'actions globale (recherche dans l'en-tête de la page). */}
+      {actionsAnchor
+        ? createPortal(
+            <div className="flex items-center gap-2">
+              <Button
+                className="h-8 gap-1.5 text-xs font-medium"
+                onClick={() => router.push("/tools/plugins")}
+                variant="outline"
+              >
+                Gérer le catalogue
+              </Button>
+            </div>,
+            actionsAnchor
+          )
+        : null}
 
       {isLoading ? (
         <div className="py-16 text-center text-sm text-muted-foreground">
@@ -156,20 +184,42 @@ export default function PluginsPanel() {
         <section className="flex flex-col gap-3">
           <h3 className="text-sm font-semibold text-foreground">Installés</h3>
           <div className="flex flex-wrap items-center gap-3">
-            {installed.map((plugin) => (
-              <button
-                className={cn(
-                  "flex size-12 items-center justify-center rounded-2xl border border-border/50 bg-card shadow-sm transition hover:scale-105 cursor-pointer",
-                  !plugin.enabled && "opacity-45"
-                )}
-                key={plugin.id}
-                onClick={() => setDetails(plugin)}
-                title={`${plugin.name} — ${plugin.enabled ? "activé" : "désactivé"}`}
-                type="button"
-              >
-                <PluginIcon className="size-6" icon={plugin.icon} />
-              </button>
-            ))}
+            {sortedInstalled.map((plugin) => {
+              const isBusy = busyPluginId === plugin.id;
+              return (
+                <div className="group relative" key={plugin.id}>
+                  <button
+                    className={cn(
+                      "flex size-12 items-center justify-center rounded-2xl border border-border/50 bg-card shadow-sm transition hover:scale-105 cursor-pointer",
+                      !plugin.enabled && "opacity-45"
+                    )}
+                    onClick={() => openPluginPage(plugin)}
+                    title={`${plugin.name} — voir la page du plugin`}
+                    type="button"
+                  >
+                    <PluginIcon className="size-6" icon={plugin.icon} />
+                  </button>
+                  {/* Désinstallation rapide au survol de la vignette */}
+                  <button
+                    aria-label={`Désinstaller ${plugin.name}`}
+                    className="absolute -top-1.5 -right-1.5 z-10 hidden size-5 items-center justify-center rounded-full border border-border/60 bg-background text-muted-foreground shadow-sm transition hover:border-destructive/40 hover:bg-destructive/10 hover:text-destructive group-hover:flex cursor-pointer"
+                    disabled={isBusy}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      handleUninstall(plugin);
+                    }}
+                    title={`Désinstaller ${plugin.name}`}
+                    type="button"
+                  >
+                    {isBusy ? (
+                      <Loader2Icon className="size-3 animate-spin" />
+                    ) : (
+                      <Trash2Icon className="size-3" />
+                    )}
+                  </button>
+                </div>
+              );
+            })}
           </div>
         </section>
       ) : null}
@@ -229,7 +279,8 @@ export default function PluginsPanel() {
                 >
                   <button
                     className="flex size-11 shrink-0 items-center justify-center rounded-2xl border border-border/50 bg-card shadow-sm cursor-pointer"
-                    onClick={() => setDetails(plugin)}
+                    onClick={() => openPluginPage(plugin)}
+                    title={`${plugin.name} — voir la page du plugin`}
                     type="button"
                   >
                     <PluginIcon className="size-5" icon={plugin.icon} />
@@ -284,80 +335,6 @@ export default function PluginsPanel() {
           </div>
         )}
       </section>
-
-      {/* Détails d'un plugin */}
-      <Dialog
-        onOpenChange={(open) => !open && setDetails(null)}
-        open={Boolean(details)}
-      >
-        <DialogContent className="sm:max-w-[460px]">
-          {details ? (
-            <>
-              <DialogHeader>
-                <div className="flex items-center gap-3">
-                  <span className="flex size-10 items-center justify-center rounded-2xl border border-border/50 bg-card shadow-sm">
-                    <PluginIcon className="size-5" icon={details.icon} />
-                  </span>
-                  <div>
-                    <DialogTitle>{details.name}</DialogTitle>
-                    <DialogDescription>
-                      v{details.version} · {details.tool.label}
-                    </DialogDescription>
-                  </div>
-                </div>
-              </DialogHeader>
-              <p className="text-sm text-muted-foreground">
-                {details.description}
-              </p>
-              <div className="flex flex-wrap gap-1.5">
-                {details.tags.map((tag) => (
-                  <span
-                    className="rounded-full bg-muted px-2 py-0.5 text-[11px] text-muted-foreground"
-                    key={tag}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              {details.installed ? (
-                <p className="text-xs text-muted-foreground">
-                  Mentionnez ce plugin dans le chat avec{" "}
-                  <span className="font-medium text-foreground">
-                    @{details.name}
-                  </span>{" "}
-                  pour l'utiliser au prochain message.
-                </p>
-              ) : null}
-              <DialogFooter className="gap-2">
-                {details.installed ? (
-                  <Button
-                    disabled={busyPluginId === details.id}
-                    onClick={() => {
-                      handleUninstall(details);
-                      setDetails(null);
-                    }}
-                    variant="destructive"
-                  >
-                    <Trash2Icon className="size-4" />
-                    Désinstaller
-                  </Button>
-                ) : (
-                  <Button
-                    disabled={busyPluginId === details.id}
-                    onClick={() => {
-                      handleInstall(details);
-                      setDetails(null);
-                    }}
-                  >
-                    <PlusIcon className="size-4" />
-                    Installer
-                  </Button>
-                )}
-              </DialogFooter>
-            </>
-          ) : null}
-        </DialogContent>
-      </Dialog>
     </div>
   );
 }

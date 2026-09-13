@@ -17,6 +17,13 @@ import {
   uuid,
   varchar,
 } from "drizzle-orm/pg-core";
+import type {
+  AgentExecutionBudget,
+  AgentPlan,
+  AgentRunUsage,
+  ToolCategory,
+  ToolPermission,
+} from "@/lib/agent/types";
 
 export const project = pgTable(
   "Project",
@@ -176,6 +183,11 @@ export const chat = pgTable(
     customInstructions: text("customInstructions"),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     isArchived: boolean("isArchived").notNull().default(false),
+    // Conversation classique (chat) ou exécutée par Agent : évite de dupliquer
+    // l'historique, la sidebar et les projets pour le mode Agent.
+    mode: varchar("mode", { enum: ["chat", "agent"] })
+      .notNull()
+      .default("chat"),
     pinned: boolean("pinned").notNull().default(false),
     projectId: uuid("projectId").references(() => project.id, {
       onDelete: "set null",
@@ -202,6 +214,7 @@ export const chat = pgTable(
       table.userId,
       table.createdAt
     ),
+    userModeIdx: index("Chat_userId_mode_idx").on(table.userId, table.mode),
     userPinnedIdx: index("Chat_userId_pinned_idx").on(
       table.userId,
       table.pinned
@@ -723,16 +736,15 @@ export const pluginInstallation = pgTable(
     version: varchar("version", { length: 20 }).notNull().default("1.0.0"),
   },
   (table) => ({
-    userPluginUnique: uniqueIndex(
-      "PluginInstallation_userId_pluginId_key"
-    ).on(table.userId, table.pluginId),
     userIdIdx: index("PluginInstallation_userId_idx").on(table.userId),
+    userPluginUnique: uniqueIndex("PluginInstallation_userId_pluginId_key").on(
+      table.userId,
+      table.pluginId
+    ),
   })
 );
 
-export type PluginInstallation = InferSelectModel<
-  typeof pluginInstallation
->;
+export type PluginInstallation = InferSelectModel<typeof pluginInstallation>;
 
 export const agent = pgTable(
   "Agent",
@@ -875,3 +887,198 @@ export const scheduledMessage = pgTable(
   })
 );
 export type ScheduledMessage = InferSelectModel<typeof scheduledMessage>;
+
+// ─────────────────────────────────────────────
+// Espace Agent : runs, steps, exécutions d'outils et réglages
+// ─────────────────────────────────────────────
+
+// Un run = une requête utilisateur exécutée par Agent. Une conversation peut en
+// contenir plusieurs. Le run est la source de vérité de l'exécution côté serveur
+// (le frontend ne fait que consommer le flux et restaurer l'état).
+export const agentRun = pgTable(
+  "AgentRun",
+  {
+    autonomy: varchar("autonomy", {
+      enum: ["careful", "standard", "high"],
+    })
+      .notNull()
+      .default("standard"),
+    budget: json("budget").$type<AgentExecutionBudget>().notNull().default({
+      maxDurationMs: 0,
+      maxRetries: 0,
+      maxSteps: 0,
+      maxToolCalls: 0,
+    }),
+    chatId: uuid("chatId")
+      .notNull()
+      .references(() => chat.id, { onDelete: "cascade" }),
+    completedAt: timestamp("completedAt"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    error: text("error"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    messageId: text("messageId"),
+    model: text("model").notNull(),
+    plan: json("plan").$type<AgentPlan | null>(),
+    reasoningLevel: varchar("reasoningLevel", {
+      enum: ["low", "medium", "high"],
+    })
+      .notNull()
+      .default("medium"),
+    startedAt: timestamp("startedAt"),
+    status: varchar("status", {
+      enum: [
+        "queued",
+        "running",
+        "waiting_for_tool",
+        "waiting_for_approval",
+        "waiting_for_user",
+        "completed",
+        "failed",
+        "cancelled",
+      ],
+    })
+      .notNull()
+      .default("queued"),
+    stepCount: integer("stepCount").notNull().default(0),
+    toolCallCount: integer("toolCallCount").notNull().default(0),
+    toolPolicySnapshot: json("toolPolicySnapshot")
+      .$type<Record<string, ToolPermission>>()
+      .notNull()
+      .default({}),
+    usage: json("usage").$type<AgentRunUsage>().notNull().default({}),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    chatIdIdx: index("AgentRun_chatId_idx").on(table.chatId),
+    createdAtIdx: index("AgentRun_createdAt_idx").on(table.createdAt),
+    userStatusIdx: index("AgentRun_userId_status_idx").on(
+      table.userId,
+      table.status
+    ),
+  })
+);
+
+export type AgentRun = InferSelectModel<typeof agentRun>;
+
+// Chaque action importante du run devient un step visible (jamais de
+// chain-of-thought : uniquement action, outil, progression, résultat utile).
+export const agentStep = pgTable(
+  "AgentStep",
+  {
+    completedAt: timestamp("completedAt"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    index: integer("index").notNull().default(0),
+    runId: uuid("runId")
+      .notNull()
+      .references(() => agentRun.id, { onDelete: "cascade" }),
+    status: varchar("status", {
+      enum: ["pending", "running", "completed", "failed", "skipped"],
+    })
+      .notNull()
+      .default("pending"),
+    summary: text("summary"),
+    title: text("title").notNull(),
+    toolExecutionId: uuid("toolExecutionId"),
+    type: varchar("type", {
+      enum: [
+        "planning",
+        "tool_call",
+        "tool_result",
+        "artifact",
+        "message",
+        "verification",
+        "error",
+      ],
+    }).notNull(),
+  },
+  (table) => ({
+    runIndexIdx: index("AgentStep_runId_index_idx").on(
+      table.runId,
+      table.index
+    ),
+  })
+);
+
+export type AgentStep = InferSelectModel<typeof agentStep>;
+
+// Appels d'outils : entrée, sortie, statut, durée. Les secrets et identifiants
+// ne sont jamais journalisés ici.
+export const toolExecution = pgTable(
+  "ToolExecution",
+  {
+    approvalStatus: varchar("approvalStatus", {
+      enum: ["not_required", "pending", "approved", "denied"],
+    })
+      .notNull()
+      .default("not_required"),
+    category: varchar("category", {
+      enum: [
+        "web",
+        "files",
+        "library",
+        "project",
+        "internal",
+        "artifact",
+        "plugins",
+        "mcp",
+        "skills",
+      ],
+    })
+      .notNull()
+      .default("internal"),
+    completedAt: timestamp("completedAt"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    durationMs: integer("durationMs"),
+    error: text("error"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    input: json("input").$type<unknown>(),
+    output: json("output").$type<unknown>(),
+    runId: uuid("runId")
+      .notNull()
+      .references(() => agentRun.id, { onDelete: "cascade" }),
+    startedAt: timestamp("startedAt"),
+    status: varchar("status", {
+      enum: ["running", "completed", "failed", "denied", "cancelled"],
+    })
+      .notNull()
+      .default("running"),
+    stepId: uuid("stepId"),
+    toolId: text("toolId").notNull(),
+  },
+  (table) => ({
+    runIdIdx: index("ToolExecution_runId_idx").on(table.runId),
+    toolIdIdx: index("ToolExecution_toolId_idx").on(table.toolId),
+  })
+);
+
+export type ToolExecution = InferSelectModel<typeof toolExecution>;
+
+// Paramètres Agent (1 ligne par utilisateur), page /settings/agent.
+export const agentSettings = pgTable("AgentSettings", {
+  autonomy: varchar("autonomy", {
+    enum: ["careful", "standard", "high"],
+  })
+    .notNull()
+    .default("standard"),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+  defaultModel: text("defaultModel"),
+  defaultProjectId: uuid("defaultProjectId"),
+  enabledCategories: json("enabledCategories")
+    .$type<ToolCategory[]>()
+    .notNull()
+    .default([]),
+  reasoningLevel: varchar("reasoningLevel", {
+    enum: ["low", "medium", "high"],
+  })
+    .notNull()
+    .default("medium"),
+  toolPolicies: json("toolPolicies")
+    .$type<Record<string, ToolPermission>>()
+    .notNull()
+    .default({}),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+  userId: text("userId").primaryKey().notNull(),
+});
+
+export type AgentSettings = InferSelectModel<typeof agentSettings>;

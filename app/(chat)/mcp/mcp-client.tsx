@@ -31,6 +31,7 @@ import {
   ZapIcon,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
@@ -66,6 +67,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { McpLog, McpServer } from "@/lib/db/schema";
+import { matchesQuery, sortByRelevance } from "@/lib/tools/search";
+import { TOOLS_ACTIONS_ID } from "@/lib/tools/tabs";
 import { cn, fetcher } from "@/lib/utils";
 
 const PRESET_TEMPLATES = [
@@ -162,8 +165,10 @@ const STORE_CONNECTORS = [
 ] as const;
 export default function McpClient({
   embedded = false,
+  searchQuery = "",
 }: {
   embedded?: boolean;
+  searchQuery?: string;
 } = {}) {
   const {
     data,
@@ -191,8 +196,8 @@ export default function McpClient({
   const templates = tplData?.templates ?? [];
   const servers = data?.servers ?? [];
   const stats = data?.stats ?? { servers: 0, totalCalls: 0 };
-  const [searchQuery, setSearchQuery] = useState("");
-  const [storeQuery, setStoreQuery] = useState("");
+  // Recherche fournie par la barre globale de la page Outils ; l'ancienne
+  // recherche « serveurs » et « store » locale a été supprimée.
   const [installingConnector, setInstallingConnector] = useState<string | null>(
     null
   );
@@ -663,15 +668,22 @@ export default function McpClient({
       toast.error("Erreur purge");
     }
   };
+  // Recherche globale : filtrage puis tri par pertinence (nom > description >
+  // transport) et alphabétiquement.
   const filteredServers = useMemo(
     () =>
-      servers.filter(
-        (s) =>
-          s.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          (s.description ?? "")
-            .toLowerCase()
-            .includes(searchQuery.toLowerCase()) ||
-          s.transport.toLowerCase().includes(searchQuery.toLowerCase())
+      sortByRelevance(
+        servers.filter((s) =>
+          matchesQuery(searchQuery, {
+            primary: s.name,
+            secondary: [s.description ?? "", s.transport],
+          })
+        ),
+        searchQuery,
+        (s) => ({
+          primary: s.name,
+          secondary: [s.description ?? "", s.transport],
+        })
       ),
     [servers, searchQuery]
   );
@@ -689,18 +701,89 @@ export default function McpClient({
       ),
     [logs, logServerFilter, logToolFilter, logActionFilter]
   );
+  // Rangée d'actions globale de la page Outils : on y porte les boutons
+  // Exporter / Ajouter un serveur quand le panneau est intégré.
+  const [actionsAnchor, setActionsAnchor] = useState<HTMLElement | null>(null);
+  useEffect(() => {
+    if (embedded) {
+      setActionsAnchor(document.getElementById(TOOLS_ACTIONS_ID));
+    }
+  }, [embedded]);
+
   return (
     <div
       className={
         embedded
-          ? "flex flex-col text-foreground"
+          ? "flex w-full flex-col text-foreground"
           : "flex flex-col min-h-screen bg-background text-foreground"
       }
     >
+      {embedded && actionsAnchor
+        ? createPortal(
+            <div className="flex items-center gap-2">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    className="h-8 gap-1.5 text-xs font-medium"
+                    variant="outline"
+                  >
+                    <DownloadIcon className="size-3.5" />
+                    <span>Exporter</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem
+                    onClick={() => handleExport("json", "servers")}
+                  >
+                    Serveurs JSON
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => handleExport("csv", "servers")}
+                  >
+                    Serveurs CSV
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => handleExport("md", "servers")}
+                  >
+                    Serveurs MD
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => handleExport("txt", "servers")}
+                  >
+                    Serveurs TXT
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem
+                    onClick={() => handleExport("json", "logs")}
+                  >
+                    Logs JSON
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => handleExport("csv", "logs")}>
+                    Logs CSV
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => handleExport("md", "logs")}>
+                    Logs MD
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => handleExport("txt", "logs")}>
+                    Logs TXT
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <Button
+                className="h-8 gap-1.5 text-xs font-medium shadow-xs"
+                onClick={() => handleNewServer()}
+              >
+                <PlusIcon className="size-3.5" />
+                <span>Ajouter un serveur MCP</span>
+              </Button>
+            </div>,
+            actionsAnchor
+          )
+        : null}
       <header
         className={
           embedded
-            ? "z-20 flex flex-col gap-3"
+            ? "hidden"
             : "sticky top-0 z-20 flex flex-col gap-4 border-b border-border/40 bg-background/95 backdrop-blur-md px-4 py-3 sm:px-6"
         }
       >
@@ -734,59 +817,6 @@ export default function McpClient({
               </div>
             </div>
           )}
-          <div className="flex items-center gap-2">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  className="h-8 gap-1.5 text-xs font-medium shadow-xs"
-                  variant="outline"
-                >
-                  <DownloadIcon className="size-3.5" />
-                  <span>Exporter</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem
-                  onClick={() => handleExport("json", "servers")}
-                >
-                  Serveurs JSON
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => handleExport("csv", "servers")}
-                >
-                  Serveurs CSV
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleExport("md", "servers")}>
-                  Serveurs MD
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => handleExport("txt", "servers")}
-                >
-                  Serveurs TXT
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => handleExport("json", "logs")}>
-                  Logs JSON
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleExport("csv", "logs")}>
-                  Logs CSV
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleExport("md", "logs")}>
-                  Logs MD
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleExport("txt", "logs")}>
-                  Logs TXT
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <Button
-              className="h-8 gap-1.5 text-xs font-medium shadow-xs"
-              onClick={() => handleNewServer()}
-            >
-              <PlusIcon className="size-3.5" />
-              <span>Ajouter un serveur MCP</span>
-            </Button>
-          </div>
         </div>
         <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
           <div className="flex items-center rounded-lg border border-border/50 bg-muted/20 p-0.5 text-xs">
@@ -869,28 +899,8 @@ export default function McpClient({
               <span>Paramètres</span>
             </button>
           </div>
-          {activeTab === "servers" && (
-            <div className="relative w-64">
-              <SearchIcon className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground" />
-              <Input
-                className="h-8 pl-8 text-xs bg-muted/40"
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Filtrer les serveurs..."
-                value={searchQuery}
-              />
-            </div>
-          )}
-          {activeTab === "store" && (
-            <div className="relative w-64">
-              <SearchIcon className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground" />
-              <Input
-                className="h-8 pl-8 text-xs bg-muted/40"
-                onChange={(e) => setStoreQuery(e.target.value)}
-                placeholder="Rechercher un connecteur..."
-                value={storeQuery}
-              />
-            </div>
-          )}
+          {/* Recherche locale supprimée : la barre globale de la page Outils
+              filtre le Store et la liste des serveurs. */}
         </div>
       </header>
       <main className="flex-1 p-4 sm:p-6 max-w-7xl mx-auto w-full">
@@ -911,8 +921,26 @@ export default function McpClient({
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {STORE_CONNECTORS.filter((c) =>
-                c.name.toLowerCase().includes(storeQuery.toLowerCase())
+              {sortByRelevance(
+                STORE_CONNECTORS.filter((c) =>
+                  matchesQuery(searchQuery, {
+                    primary: c.name,
+                    secondary: [
+                      c.highlight,
+                      templates.find((t: any) => t.name === c.templateName)
+                        ?.description ?? "",
+                    ],
+                  })
+                ),
+                searchQuery,
+                (c) => ({
+                  primary: c.name,
+                  secondary: [
+                    c.highlight,
+                    templates.find((t: any) => t.name === c.templateName)
+                      ?.description ?? "",
+                  ],
+                })
               ).map((connector) => {
                 const Icon = connector.icon;
                 const tpl = templates.find(

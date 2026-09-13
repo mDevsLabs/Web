@@ -2,16 +2,13 @@
 
 import type { UseChatHelpers } from "@ai-sdk/react";
 import {
-  CpuIcon,
   FolderArchiveIcon,
   GlobeIcon,
   ImageIcon,
   PaperclipIcon,
   PlusIcon,
-  SparklesIcon,
   Volume2Icon,
 } from "lucide-react";
-import Link from "next/link";
 import { memo, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -22,27 +19,24 @@ import {
 } from "@/components/ui/popover";
 import { useActiveChat as useActiveChatForTools } from "@/hooks/use-active-chat";
 import type { ToolId } from "@/lib/ai/tools/config";
-import { PluginIcon } from "@/lib/plugins/icon";
-import type { PluginCatalogEntry } from "@/lib/plugins/types";
 import type { ChatMessage } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { useModelCapabilities } from "./use-model-capabilities";
 
+// Menu « + » du chat : uniquement les actions de composition (fichiers, image,
+// audio, recherche Web). Les plugins et compétences se sélectionnent désormais
+// exclusivement via la mention @ dans le champ de saisie.
 function PurePlusMenuButton({
   fileInputRef,
   status,
   selectedModelId,
   onOpenCloudPicker,
-  onOpenQuizConfig,
-  plugins = [],
   supportsTools = true,
 }: {
   fileInputRef: React.MutableRefObject<HTMLInputElement | null>;
   status: UseChatHelpers<ChatMessage>["status"];
   selectedModelId: string;
   onOpenCloudPicker: () => void;
-  onOpenQuizConfig: () => void;
-  plugins?: PluginCatalogEntry[];
   supportsTools?: boolean;
 }) {
   const {
@@ -51,7 +45,7 @@ function PurePlusMenuButton({
     isVisionLoading,
   } = useModelCapabilities(selectedModelId);
 
-  const { pendingTools, togglePendingTool, isGhostMode, activeSkill } =
+  const { pendingTools, togglePendingTool, isGhostMode } =
     useActiveChatForTools();
   const [open, setOpen] = useState(false);
 
@@ -100,16 +94,9 @@ function PurePlusMenuButton({
     setOpen(false);
   };
 
-  const installedPlugins = plugins.filter(
-    (plugin) => plugin.installed && plugin.enabled
-  );
-
   const isImageActive = pendingTools.includes("imageGenerate" as ToolId);
   const isAudioActive = pendingTools.includes("audioGenerate" as ToolId);
   const isWebActive = pendingTools.includes("webSearch" as ToolId);
-  const isMcpActive = pendingTools.some(
-    (t) => (t as string) === "mcp" || (t as string).startsWith("mcp:")
-  );
 
   return (
     <Popover onOpenChange={setOpen} open={open}>
@@ -122,7 +109,7 @@ function PurePlusMenuButton({
           )}
           data-testid="plus-menu-button"
           disabled={status !== "ready" && status !== "error"}
-          title="Ajouter des options & outils"
+          title="Ajouter des options"
           variant="ghost"
         >
           <PlusIcon className="size-4" />
@@ -133,14 +120,14 @@ function PurePlusMenuButton({
       </PopoverTrigger>
       <PopoverContent
         align="start"
-        className="w-[320px] sm:w-[480px] p-2 rounded-2xl border border-border/50 bg-popover/95 backdrop-blur-xl shadow-2xl flex flex-col gap-1 z-50"
+        className="w-[240px] sm:w-[260px] p-1.5 rounded-2xl border border-border/50 bg-popover/95 backdrop-blur-xl shadow-2xl flex flex-col gap-0.5 z-50"
         side="top"
         sideOffset={10}
       >
-        {/* Option 1: Ajouter des photos et fichiers */}
+        {/* Ajouter des photos et fichiers */}
         <button
           className={cn(
-            "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
+            "flex items-center gap-2.5 px-2.5 py-2 rounded-xl text-left transition-colors w-full cursor-pointer",
             hasFileOrImage || isVisionLoading || !hasStrictCapsBtn
               ? "hover:bg-muted/70 text-foreground"
               : "opacity-45 cursor-not-allowed bg-muted/30"
@@ -149,27 +136,21 @@ function PurePlusMenuButton({
           onClick={handleDeviceUploadClick}
           type="button"
         >
-          <div className="flex size-7 items-center justify-center rounded-lg text-foreground/80 shrink-0">
-            <PaperclipIcon className="size-4" />
-          </div>
-          <div className="flex items-center justify-between w-full min-w-0 gap-2">
-            <span className="text-[13.5px] font-semibold text-foreground truncate">
-              Ajouter des photos et fichiers
+          <PaperclipIcon className="size-4 shrink-0 text-foreground/80" />
+          <span className="text-[13px] font-medium text-foreground truncate flex-1">
+            Photos et fichiers
+          </span>
+          {(isVisionLoading || (!hasFileOrImage && hasStrictCapsBtn)) && (
+            <span className="text-[10px] font-semibold text-muted-foreground shrink-0">
+              {isVisionLoading ? "…" : "Non supporté"}
             </span>
-            <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
-              {isVisionLoading
-                ? "Vérification..."
-                : hasFileOrImage || !hasStrictCapsBtn
-                  ? "Importer depuis l’ordinateur"
-                  : "Non supporté"}
-            </span>
-          </div>
+          )}
         </button>
 
-        {/* Option 2: Ajouter depuis la bibliothèque */}
+        {/* Ajouter depuis la bibliothèque */}
         <button
           className={cn(
-            "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
+            "flex items-center gap-2.5 px-2.5 py-2 rounded-xl text-left transition-colors w-full cursor-pointer",
             hasFileOrImage || isVisionLoading || !hasStrictCapsBtn
               ? "hover:bg-muted/70 text-foreground"
               : "opacity-45 cursor-not-allowed bg-muted/30"
@@ -178,23 +159,21 @@ function PurePlusMenuButton({
           onClick={handleCloudImportClick}
           type="button"
         >
-          <div className="flex size-7 items-center justify-center rounded-lg text-foreground/80 shrink-0">
-            <FolderArchiveIcon className="size-4" />
-          </div>
-          <div className="flex items-center justify-between w-full min-w-0 gap-2">
-            <span className="text-[13.5px] font-semibold text-foreground truncate">
-              Ajouter depuis la bibliothèque
+          <FolderArchiveIcon className="size-4 shrink-0 text-foreground/80" />
+          <span className="text-[13px] font-medium text-foreground truncate flex-1">
+            Bibliothèque
+          </span>
+          {(isVisionLoading || (!hasFileOrImage && hasStrictCapsBtn)) && (
+            <span className="text-[10px] font-semibold text-muted-foreground shrink-0">
+              {isVisionLoading ? "…" : "Non supporté"}
             </span>
-            <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
-              Parcourez et recherchez vos fichiers
-            </span>
-          </div>
+          )}
         </button>
 
-        {/* Option 3: Créer une image */}
+        {/* Créer une image */}
         <button
           className={cn(
-            "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
+            "flex items-center gap-2.5 px-2.5 py-2 rounded-xl text-left transition-colors w-full cursor-pointer",
             isGhostMode || !supportsTools
               ? "opacity-50 cursor-not-allowed bg-muted/20"
               : isImageActive
@@ -219,44 +198,31 @@ function PurePlusMenuButton({
           }}
           type="button"
         >
-          <div className="flex size-7 items-center justify-center rounded-lg text-cyan-500 shrink-0">
-            <ImageIcon className="size-4" />
-          </div>
-          <div className="flex items-center justify-between w-full min-w-0 gap-2">
-            <div className="flex items-center gap-2">
-              <span className="text-[13.5px] font-semibold truncate">
-                Créer une image
-              </span>
-              {isGhostMode ? (
-                <span className="text-[10px] bg-purple-500/20 text-purple-400 font-medium px-1.5 py-0.5 rounded-full">
-                  INDISPONIBLE EN FANTÔME
-                </span>
-              ) : supportsTools ? (
-                isImageActive ? (
-                  <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
-                    ACTIF
-                  </span>
-                ) : null
-              ) : (
-                <span className="text-[10px] bg-destructive/15 text-destructive font-medium px-1.5 py-0.5 rounded-full">
-                  SANS TOOLS
-                </span>
-              )}
-            </div>
-            <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
-              {isGhostMode
-                ? "Indisponible dans ce mode"
-                : supportsTools
-                  ? "Transformez vos idées en images"
-                  : "Non supporté par ce modèle"}
+          <ImageIcon className="size-4 shrink-0 text-cyan-500" />
+          <span className="text-[13px] font-medium truncate flex-1">
+            Créer une image
+          </span>
+          {isGhostMode ? (
+            <span className="text-[9px] bg-purple-500/20 text-purple-400 font-semibold px-1.5 py-0.5 rounded-full shrink-0">
+              FANTÔME
             </span>
-          </div>
+          ) : supportsTools ? (
+            isImageActive ? (
+              <span className="text-[9px] bg-primary text-primary-foreground font-semibold px-1.5 py-0.5 rounded-full shrink-0">
+                ACTIF
+              </span>
+            ) : null
+          ) : (
+            <span className="text-[9px] bg-destructive/15 text-destructive font-semibold px-1.5 py-0.5 rounded-full shrink-0">
+              SANS TOOLS
+            </span>
+          )}
         </button>
 
-        {/* Option 4: Créer un audio ou son */}
+        {/* Créer un audio ou son */}
         <button
           className={cn(
-            "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
+            "flex items-center gap-2.5 px-2.5 py-2 rounded-xl text-left transition-colors w-full cursor-pointer",
             isGhostMode || !supportsTools
               ? "opacity-50 cursor-not-allowed bg-muted/20"
               : isAudioActive
@@ -281,44 +247,31 @@ function PurePlusMenuButton({
           }}
           type="button"
         >
-          <div className="flex size-7 items-center justify-center rounded-lg text-emerald-500 shrink-0">
-            <Volume2Icon className="size-4" />
-          </div>
-          <div className="flex items-center justify-between w-full min-w-0 gap-2">
-            <div className="flex items-center gap-2">
-              <span className="text-[13.5px] font-semibold truncate">
-                Créer un audio ou son
-              </span>
-              {isGhostMode ? (
-                <span className="text-[10px] bg-purple-500/20 text-purple-400 font-medium px-1.5 py-0.5 rounded-full">
-                  INDISPONIBLE EN FANTÔME
-                </span>
-              ) : supportsTools ? (
-                isAudioActive ? (
-                  <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
-                    ACTIF
-                  </span>
-                ) : null
-              ) : (
-                <span className="text-[10px] bg-destructive/15 text-destructive font-medium px-1.5 py-0.5 rounded-full">
-                  SANS TOOLS
-                </span>
-              )}
-            </div>
-            <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
-              {isGhostMode
-                ? "Indisponible dans ce mode"
-                : supportsTools
-                  ? "Synthèse vocale et audio IA"
-                  : "Non supporté par ce modèle"}
+          <Volume2Icon className="size-4 shrink-0 text-emerald-500" />
+          <span className="text-[13px] font-medium truncate flex-1">
+            Créer un audio
+          </span>
+          {isGhostMode ? (
+            <span className="text-[9px] bg-purple-500/20 text-purple-400 font-semibold px-1.5 py-0.5 rounded-full shrink-0">
+              FANTÔME
             </span>
-          </div>
+          ) : supportsTools ? (
+            isAudioActive ? (
+              <span className="text-[9px] bg-primary text-primary-foreground font-semibold px-1.5 py-0.5 rounded-full shrink-0">
+                ACTIF
+              </span>
+            ) : null
+          ) : (
+            <span className="text-[9px] bg-destructive/15 text-destructive font-semibold px-1.5 py-0.5 rounded-full shrink-0">
+              SANS TOOLS
+            </span>
+          )}
         </button>
 
-        {/* Option 5: Recherche sur le Web */}
+        {/* Recherche sur le Web */}
         <button
           className={cn(
-            "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
+            "flex items-center gap-2.5 px-2.5 py-2 rounded-xl text-left transition-colors w-full cursor-pointer",
             supportsTools
               ? isWebActive
                 ? "bg-primary/10 border border-primary/30 ring-1 ring-primary/20 text-primary"
@@ -337,226 +290,21 @@ function PurePlusMenuButton({
           }}
           type="button"
         >
-          <div className="flex size-7 items-center justify-center rounded-lg text-sky-500 shrink-0">
-            <GlobeIcon className="size-4" />
-          </div>
-          <div className="flex items-center justify-between w-full min-w-0 gap-2">
-            <div className="flex items-center gap-2">
-              <span className="text-[13.5px] font-semibold truncate">
-                Recherche sur le Web
+          <GlobeIcon className="size-4 shrink-0 text-sky-500" />
+          <span className="text-[13px] font-medium truncate flex-1">
+            Recherche sur le Web
+          </span>
+          {supportsTools ? (
+            isWebActive ? (
+              <span className="text-[9px] bg-primary text-primary-foreground font-semibold px-1.5 py-0.5 rounded-full shrink-0">
+                ACTIF
               </span>
-              {supportsTools ? (
-                isWebActive ? (
-                  <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
-                    ACTIF
-                  </span>
-                ) : null
-              ) : (
-                <span className="text-[10px] bg-destructive/15 text-destructive font-medium px-1.5 py-0.5 rounded-full">
-                  SANS TOOLS
-                </span>
-              )}
-            </div>
-            <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
-              {supportsTools
-                ? "Trouvez des infos en temps réel"
-                : "Non supporté par ce modèle"}
+            ) : null
+          ) : (
+            <span className="text-[9px] bg-destructive/15 text-destructive font-semibold px-1.5 py-0.5 rounded-full shrink-0">
+              SANS TOOLS
             </span>
-          </div>
-        </button>
-
-        {/* Plugins installés : repris du catalogue de la page Outils */}
-        {supportsTools ? (
-          <div className="mt-1 border-t border-border/40 pt-1.5">
-            <div className="flex items-center justify-between px-3.5 py-1">
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                Plugins installés
-              </span>
-              <Link
-                className="text-[11px] font-medium text-primary hover:underline"
-                href="/tools?tab=plugins"
-                onClick={() => setOpen(false)}
-              >
-                Gérer
-              </Link>
-            </div>
-            {installedPlugins.length === 0 ? (
-              <Link
-                className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer hover:bg-muted/70 text-muted-foreground"
-                href="/tools?tab=plugins"
-                onClick={() => setOpen(false)}
-              >
-                <div className="flex size-7 items-center justify-center rounded-lg shrink-0">
-                  <PlusIcon className="size-4" />
-                </div>
-                <span className="text-[13px] font-medium">
-                  Installer des plugins
-                </span>
-              </Link>
-            ) : (
-              installedPlugins.map((plugin) => {
-                const isActive = pendingTools.includes(plugin.tool.id as any);
-                const needsConfig = plugin.id === "quizzly";
-                return (
-                  <button
-                    className={cn(
-                      "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
-                      isActive
-                        ? "bg-primary/10 border border-primary/30 ring-1 ring-primary/20 text-primary"
-                        : "hover:bg-muted/70 text-foreground"
-                    )}
-                    key={plugin.id}
-                    onClick={() => {
-                      if (needsConfig) {
-                        onOpenQuizConfig();
-                        setOpen(false);
-                        return;
-                      }
-                      togglePendingTool(plugin.tool.id as any);
-                      toast.success(
-                        isActive
-                          ? `${plugin.name} désactivé`
-                          : `${plugin.name} activé pour le prochain message`
-                      );
-                      setOpen(false);
-                    }}
-                    type="button"
-                  >
-                    <div className="flex size-7 items-center justify-center rounded-lg text-emerald-500 shrink-0">
-                      <PluginIcon className="size-4" icon={plugin.icon} />
-                    </div>
-                    <div className="flex items-center justify-between w-full min-w-0 gap-2">
-                      <div className="flex items-center gap-2 min-w-0">
-                        <span className="text-[13.5px] font-semibold truncate">
-                          {plugin.name}
-                        </span>
-                        {isActive && (
-                          <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
-                            ACTIF
-                          </span>
-                        )}
-                      </div>
-                      <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
-                        {needsConfig
-                          ? "1 à 50 questions avec score"
-                          : plugin.tool.label}
-                      </span>
-                    </div>
-                  </button>
-                );
-              })
-            )}
-          </div>
-        ) : null}
-
-        {/* Option 6: Compétences (Skills) */}
-        {supportsTools ? (
-          <Link
-            className={cn(
-              "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
-              activeSkill
-                ? "bg-primary/10 border border-primary/30 ring-1 ring-primary/20 text-primary"
-                : "hover:bg-muted/70 text-foreground"
-            )}
-            href="/skills"
-            onClick={() => setOpen(false)}
-          >
-            <div className="flex size-7 items-center justify-center rounded-lg text-primary shrink-0">
-              <SparklesIcon className="size-4" />
-            </div>
-            <div className="flex items-center justify-between w-full min-w-0 gap-2">
-              <div className="flex items-center gap-2">
-                <span className="text-[13.5px] font-semibold truncate">
-                  Compétences (Skills)
-                </span>
-                {activeSkill && (
-                  <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full truncate max-w-[120px]">
-                    {activeSkill.name}
-                  </span>
-                )}
-              </div>
-              <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
-                Gérer et configurer
-              </span>
-            </div>
-          </Link>
-        ) : (
-          <button
-            className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-not-allowed opacity-50 bg-muted/20"
-            onClick={() => {
-              toast.warning(
-                "Les compétences (skills) nécessitent un modèle supportant les outils."
-              );
-            }}
-            type="button"
-          >
-            <div className="flex size-7 items-center justify-center rounded-lg text-muted-foreground shrink-0">
-              <SparklesIcon className="size-4" />
-            </div>
-            <div className="flex items-center justify-between w-full min-w-0 gap-2">
-              <div className="flex items-center gap-2">
-                <span className="text-[13.5px] font-semibold truncate">
-                  Compétences (Skills)
-                </span>
-                <span className="text-[10px] bg-destructive/15 text-destructive font-medium px-1.5 py-0.5 rounded-full">
-                  SANS TOOLS
-                </span>
-              </div>
-              <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
-                Non supporté par ce modèle
-              </span>
-            </div>
-          </button>
-        )}
-
-        {/* Option 7: Serveurs & Outils MCP */}
-        <button
-          className={cn(
-            "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
-            supportsTools
-              ? isMcpActive
-                ? "bg-primary/10 border border-primary/30 ring-1 ring-primary/20 text-primary"
-                : "hover:bg-muted/70 text-foreground"
-              : "opacity-50 cursor-not-allowed bg-muted/20"
           )}
-          disabled={!supportsTools}
-          onClick={() => {
-            if (!supportsTools) {
-              toast.warning(
-                "Les serveurs et outils MCP nécessitent un modèle avec support des outils."
-              );
-              return;
-            }
-            toggleToolExclusive("mcp" as any, "Outils MCP");
-          }}
-          type="button"
-        >
-          <div className="flex size-7 items-center justify-center rounded-lg text-purple-600 dark:text-purple-400 shrink-0">
-            <CpuIcon className="size-4" />
-          </div>
-          <div className="flex items-center justify-between w-full min-w-0 gap-2">
-            <div className="flex items-center gap-2">
-              <span className="text-[13.5px] font-semibold truncate">
-                Outils & Serveurs MCP
-              </span>
-              {supportsTools ? (
-                isMcpActive ? (
-                  <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
-                    ACTIF
-                  </span>
-                ) : null
-              ) : (
-                <span className="text-[10px] bg-destructive/15 text-destructive font-medium px-1.5 py-0.5 rounded-full">
-                  SANS TOOLS
-                </span>
-              )}
-            </div>
-            <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
-              {supportsTools
-                ? "Connecter bases & APIs"
-                : "Non supporté par ce modèle"}
-            </span>
-          </div>
         </button>
       </PopoverContent>
     </Popover>

@@ -1,7 +1,11 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { toast } from "sonner";
+import { AgentModeSwitcher } from "@/components/agent/agent-mode-switcher";
+import { AgentShell } from "@/components/agent/agent-shell";
+import { AgentUpgradeDialog } from "@/components/agent/agent-upgrade-dialog";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,6 +17,8 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { useActiveChat } from "@/hooks/use-active-chat";
+import { useAgentFlags } from "@/hooks/use-agent-flags";
+import { useAgentMode } from "@/hooks/use-agent-mode";
 import {
   initialArtifactData,
   useArtifact,
@@ -29,7 +35,15 @@ import { MultimodalInput } from "./multimodal-input";
 
 export function ChatShell() {
   const pathname = usePathname();
+  const router = useRouter();
   const isChatRoute = pathname === "/" || pathname?.startsWith("/chat");
+  const { mode, setMode } = useAgentMode();
+  const { flags, tier } = useAgentFlags();
+  const [agentUpgradeOpen, setAgentUpgradeOpen] = useState(false);
+
+  // Le sélecteur est visible pour tout le monde, mais un utilisateur Free ne
+  // peut pas activer Agent : la garde réelle reste côté serveur (plan_required),
+  // ceci n'est que l'explication affichée.
 
   const {
     chatId,
@@ -118,6 +132,40 @@ export function ChatShell() {
     return null;
   }
 
+  const agentAvailable = flags["agent.enabled"] && tier !== "free";
+  const effectiveMode = agentAvailable ? mode : "chat";
+
+  const handleModeChange = (next: "chat" | "agent") => {
+    if (next === "agent") {
+      setMode("agent");
+      if (pathname !== "/") {
+        router.push("/");
+      }
+      return;
+    }
+    setMode("chat");
+  };
+
+  const handleBlockedAgentSelect = () => {
+    if (!flags["agent.enabled"]) {
+      toast.error("Agent est momentanément indisponible.");
+      return;
+    }
+    setAgentUpgradeOpen(true);
+  };
+
+  if (effectiveMode === "agent") {
+    return (
+      <>
+        <AgentShell />
+        <AgentUpgradeDialog
+          onOpenChange={setAgentUpgradeOpen}
+          open={agentUpgradeOpen}
+        />
+      </>
+    );
+  }
+
   return (
     <>
       <div className="flex h-[100dvh] w-full flex-row overflow-hidden supports-[height:100dvh]:h-[100dvh]">
@@ -135,6 +183,15 @@ export function ChatShell() {
           />
 
           <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden bg-background md:rounded-tl-[12px] md:border-t md:border-l md:border-border/40">
+            {messages.length === 0 && !isLoading ? (
+              <div className="relative z-20 flex shrink-0 justify-center px-3 pt-5 pb-1">
+                <AgentModeSwitcher
+                  mode={effectiveMode}
+                  onBlockedAgentSelect={handleBlockedAgentSelect}
+                  onModeChange={handleModeChange}
+                />
+              </div>
+            ) : null}
             <Messages
               addToolApprovalResponse={addToolApprovalResponse}
               chatId={chatId}
@@ -198,6 +255,11 @@ export function ChatShell() {
       </div>
 
       <DataStreamHandler />
+
+      <AgentUpgradeDialog
+        onOpenChange={setAgentUpgradeOpen}
+        open={agentUpgradeOpen}
+      />
 
       <AlertDialog
         onOpenChange={setShowCreditCardAlert}

@@ -3,19 +3,18 @@ import {
   extractTierFromApiKey,
   extractToken,
   getDb,
-  getEnv,
   getTierStorageLimitBytes,
   verifyToken,
 } from "./config.ts";
 
 export interface StorageNode {
-  accessKeyId: string;
-  bucket: string;
-  endpoint: string;
   id: number;
-  publicUrl: string;
+  endpoint: string;
   region: string;
+  accessKeyId: string;
   secretAccessKey: string;
+  bucket: string;
+  publicUrl: string;
 }
 
 function cleanUrl(url: string, removeDefaultPort = true): string {
@@ -25,10 +24,7 @@ function cleanUrl(url: string, removeDefaultPort = true): string {
   }
   if (removeDefaultPort) {
     // Normalise https://domaine.com:443 -> https://domaine.com pour des URLs publiques propres
-    cleaned = cleaned.replace(
-      /^https:\/\/([^/:]+):443(\/.*)?$/,
-      "https://$1$2"
-    );
+    cleaned = cleaned.replace(/^https:\/\/([^/:]+):443(\/.*)?$/, "https://$1$2");
     cleaned = cleaned.replace(/^http:\/\/([^/:]+):80(\/.*)?$/, "http://$1$2");
   }
   return cleaned;
@@ -62,60 +58,67 @@ export function getStorageNodes(): StorageNode[] {
   const nodes: StorageNode[] = [];
 
   const baseAccessKey =
-    getEnv("S3_ACCESS_KEY_ID") || getEnv("Z1_ACCESS_KEY_ID") || "";
+    Deno.env.get("S3_ACCESS_KEY_ID") ||
+    Deno.env.get("Z1_ACCESS_KEY_ID") ||
+    "";
   const baseSecretKey =
-    getEnv("S3_SECRET_ACCESS_KEY") ||
-    getEnv("Z1_SECRET_ACCESS_KEY") ||
+    Deno.env.get("S3_SECRET_ACCESS_KEY") ||
+    Deno.env.get("Z1_SECRET_ACCESS_KEY") ||
     "";
   const baseRawEndpoint =
-    getEnv("S3_ENDPOINT") ||
-    getEnv("Z1_ENDPOINT") ||
+    Deno.env.get("S3_ENDPOINT") ||
+    Deno.env.get("Z1_ENDPOINT") ||
     "https://s3.z1storage.com";
   const baseEndpoint = cleanUrl(baseRawEndpoint);
   const baseRegion =
-    getEnv("S3_REGION") || getEnv("Z1_REGION") || "auto";
+    Deno.env.get("S3_REGION") ||
+    Deno.env.get("Z1_REGION") ||
+    "auto";
   const baseBucket =
-    getEnv("S3_BUCKET") || getEnv("Z1_BUCKET") || "mai-storage-1";
+    Deno.env.get("S3_BUCKET") ||
+    Deno.env.get("Z1_BUCKET") ||
+    "mai-storage-1";
   const basePublicUrl =
-    getEnv("S3_PUBLIC_URL") || getEnv("Z1_PUBLIC_URL");
+    Deno.env.get("S3_PUBLIC_URL") ||
+    Deno.env.get("Z1_PUBLIC_URL");
 
   // 1. Détection des configurations individuelles S3_BUCKET_1 à S3_BUCKET_10 (ou Z1_BUCKET_1 à 10)
   for (let i = 1; i <= TOTAL_STORAGE_NODES_COUNT; i++) {
     const bucket =
-      getEnv(`S3_BUCKET_${i}`) ||
-      getEnv(`S3_BUCKET${i}`) ||
-      getEnv(`Z1_BUCKET_${i}`) ||
-      getEnv(`Z1_BUCKET${i}`);
+      Deno.env.get(`S3_BUCKET_${i}`) ||
+      Deno.env.get(`S3_BUCKET${i}`) ||
+      Deno.env.get(`Z1_BUCKET_${i}`) ||
+      Deno.env.get(`Z1_BUCKET${i}`);
     const accessKeyId =
-      getEnv(`S3_ACCESS_KEY_ID_${i}`) ||
-      getEnv(`S3_ACCESS_KEY_ID${i}`) ||
-      getEnv(`Z1_ACCESS_KEY_ID_${i}`) ||
-      getEnv(`Z1_ACCESS_KEY_ID${i}`) ||
+      Deno.env.get(`S3_ACCESS_KEY_ID_${i}`) ||
+      Deno.env.get(`S3_ACCESS_KEY_ID${i}`) ||
+      Deno.env.get(`Z1_ACCESS_KEY_ID_${i}`) ||
+      Deno.env.get(`Z1_ACCESS_KEY_ID${i}`) ||
       baseAccessKey;
     const secretAccessKey =
-      getEnv(`S3_SECRET_ACCESS_KEY_${i}`) ||
-      getEnv(`S3_SECRET_ACCESS_KEY${i}`) ||
-      getEnv(`Z1_SECRET_ACCESS_KEY_${i}`) ||
-      getEnv(`Z1_SECRET_ACCESS_KEY${i}`) ||
+      Deno.env.get(`S3_SECRET_ACCESS_KEY_${i}`) ||
+      Deno.env.get(`S3_SECRET_ACCESS_KEY${i}`) ||
+      Deno.env.get(`Z1_SECRET_ACCESS_KEY_${i}`) ||
+      Deno.env.get(`Z1_SECRET_ACCESS_KEY${i}`) ||
       baseSecretKey;
     const rawEndpoint =
-      getEnv(`S3_ENDPOINT_${i}`) ||
-      getEnv(`S3_ENDPOINT${i}`) ||
-      getEnv(`Z1_ENDPOINT_${i}`) ||
-      getEnv(`Z1_ENDPOINT${i}`) ||
+      Deno.env.get(`S3_ENDPOINT_${i}`) ||
+      Deno.env.get(`S3_ENDPOINT${i}`) ||
+      Deno.env.get(`Z1_ENDPOINT_${i}`) ||
+      Deno.env.get(`Z1_ENDPOINT${i}`) ||
       baseEndpoint;
     const endpoint = cleanUrl(rawEndpoint);
     const region =
-      getEnv(`S3_REGION_${i}`) ||
-      getEnv(`S3_REGION${i}`) ||
-      getEnv(`Z1_REGION_${i}`) ||
-      getEnv(`Z1_REGION${i}`) ||
+      Deno.env.get(`S3_REGION_${i}`) ||
+      Deno.env.get(`S3_REGION${i}`) ||
+      Deno.env.get(`Z1_REGION_${i}`) ||
+      Deno.env.get(`Z1_REGION${i}`) ||
       baseRegion;
     const rawPublicUrl =
-      getEnv(`S3_PUBLIC_URL_${i}`) ||
-      getEnv(`S3_PUBLIC_URL${i}`) ||
-      getEnv(`Z1_PUBLIC_URL_${i}`) ||
-      getEnv(`Z1_PUBLIC_URL${i}`);
+      Deno.env.get(`S3_PUBLIC_URL_${i}`) ||
+      Deno.env.get(`S3_PUBLIC_URL${i}`) ||
+      Deno.env.get(`Z1_PUBLIC_URL_${i}`) ||
+      Deno.env.get(`Z1_PUBLIC_URL${i}`);
 
     let publicUrl = "";
     if (rawPublicUrl) {
@@ -128,13 +131,13 @@ export function getStorageNodes(): StorageNode[] {
 
     if (bucket && accessKeyId && secretAccessKey) {
       nodes.push({
-        accessKeyId,
-        bucket,
-        endpoint,
         id: i,
-        publicUrl: publicUrl || `${endpoint}/${bucket}`,
+        endpoint,
         region,
+        accessKeyId,
         secretAccessKey,
+        bucket,
+        publicUrl: publicUrl || `${endpoint}/${bucket}`,
       });
     }
   }
@@ -142,7 +145,8 @@ export function getStorageNodes(): StorageNode[] {
   // 2. Si S3_BUCKETS ou Z1_BUCKETS (liste séparée par des virgules) est configuré
   if (nodes.length === 0) {
     const bucketsList =
-      getEnv("S3_BUCKETS") || getEnv("Z1_BUCKETS");
+      Deno.env.get("S3_BUCKETS") ||
+      Deno.env.get("Z1_BUCKETS");
     if (bucketsList) {
       const bucketNames = bucketsList
         .split(",")
@@ -159,13 +163,13 @@ export function getStorageNodes(): StorageNode[] {
         }
 
         nodes.push({
-          accessKeyId: baseAccessKey,
-          bucket,
-          endpoint: baseEndpoint,
           id,
-          publicUrl,
+          endpoint: baseEndpoint,
           region: baseRegion,
+          accessKeyId: baseAccessKey,
           secretAccessKey: baseSecretKey,
+          bucket,
+          publicUrl,
         });
       });
     }
@@ -175,8 +179,8 @@ export function getStorageNodes(): StorageNode[] {
   // Si moins de 10 nœuds sont configurés, on complète avec les 10 buckets Z1 Storage en fallback
   if (nodes.length < TOTAL_STORAGE_NODES_COUNT) {
     const fallbackEnvList = (
-      getEnv("Z1_FALLBACK_BUCKETS") ||
-      getEnv("S3_FALLBACK_BUCKETS") ||
+      Deno.env.get("Z1_FALLBACK_BUCKETS") ||
+      Deno.env.get("S3_FALLBACK_BUCKETS") ||
       ""
     )
       .split(",")
@@ -198,46 +202,46 @@ export function getStorageNodes(): StorageNode[] {
         }
 
         const bucket =
-          getEnv(`S3_BUCKET_${i}`) ||
-          getEnv(`S3_BUCKET${i}`) ||
-          getEnv(`Z1_BUCKET_${i}`) ||
-          getEnv(`Z1_BUCKET${i}`) ||
+          Deno.env.get(`S3_BUCKET_${i}`) ||
+          Deno.env.get(`S3_BUCKET${i}`) ||
+          Deno.env.get(`Z1_BUCKET_${i}`) ||
+          Deno.env.get(`Z1_BUCKET${i}`) ||
           fallbackBucketName;
 
         const accessKeyId =
-          getEnv(`S3_ACCESS_KEY_ID_${i}`) ||
-          getEnv(`S3_ACCESS_KEY_ID${i}`) ||
-          getEnv(`Z1_ACCESS_KEY_ID_${i}`) ||
-          getEnv(`Z1_ACCESS_KEY_ID${i}`) ||
+          Deno.env.get(`S3_ACCESS_KEY_ID_${i}`) ||
+          Deno.env.get(`S3_ACCESS_KEY_ID${i}`) ||
+          Deno.env.get(`Z1_ACCESS_KEY_ID_${i}`) ||
+          Deno.env.get(`Z1_ACCESS_KEY_ID${i}`) ||
           baseAccessKey;
 
         const secretAccessKey =
-          getEnv(`S3_SECRET_ACCESS_KEY_${i}`) ||
-          getEnv(`S3_SECRET_ACCESS_KEY${i}`) ||
-          getEnv(`Z1_SECRET_ACCESS_KEY_${i}`) ||
-          getEnv(`Z1_SECRET_ACCESS_KEY${i}`) ||
+          Deno.env.get(`S3_SECRET_ACCESS_KEY_${i}`) ||
+          Deno.env.get(`S3_SECRET_ACCESS_KEY${i}`) ||
+          Deno.env.get(`Z1_SECRET_ACCESS_KEY_${i}`) ||
+          Deno.env.get(`Z1_SECRET_ACCESS_KEY${i}`) ||
           baseSecretKey;
 
         const rawEndpoint =
-          getEnv(`S3_ENDPOINT_${i}`) ||
-          getEnv(`S3_ENDPOINT${i}`) ||
-          getEnv(`Z1_ENDPOINT_${i}`) ||
-          getEnv(`Z1_ENDPOINT${i}`) ||
+          Deno.env.get(`S3_ENDPOINT_${i}`) ||
+          Deno.env.get(`S3_ENDPOINT${i}`) ||
+          Deno.env.get(`Z1_ENDPOINT_${i}`) ||
+          Deno.env.get(`Z1_ENDPOINT${i}`) ||
           baseEndpoint;
         const endpoint = cleanUrl(rawEndpoint);
 
         const region =
-          getEnv(`S3_REGION_${i}`) ||
-          getEnv(`S3_REGION${i}`) ||
-          getEnv(`Z1_REGION_${i}`) ||
-          getEnv(`Z1_REGION${i}`) ||
+          Deno.env.get(`S3_REGION_${i}`) ||
+          Deno.env.get(`S3_REGION${i}`) ||
+          Deno.env.get(`Z1_REGION_${i}`) ||
+          Deno.env.get(`Z1_REGION${i}`) ||
           baseRegion;
 
         const rawPublicUrl =
-          getEnv(`S3_PUBLIC_URL_${i}`) ||
-          getEnv(`S3_PUBLIC_URL${i}`) ||
-          getEnv(`Z1_PUBLIC_URL_${i}`) ||
-          getEnv(`Z1_PUBLIC_URL${i}`);
+          Deno.env.get(`S3_PUBLIC_URL_${i}`) ||
+          Deno.env.get(`S3_PUBLIC_URL${i}`) ||
+          Deno.env.get(`Z1_PUBLIC_URL_${i}`) ||
+          Deno.env.get(`Z1_PUBLIC_URL${i}`);
 
         let publicUrl = "";
         if (rawPublicUrl) {
@@ -249,13 +253,13 @@ export function getStorageNodes(): StorageNode[] {
         }
 
         nodes.push({
-          accessKeyId,
-          bucket,
-          endpoint,
           id: i,
-          publicUrl,
+          endpoint,
           region,
+          accessKeyId,
           secretAccessKey,
+          bucket,
+          publicUrl,
         });
       }
     }
@@ -344,9 +348,6 @@ export async function uploadWithFallback(
  */
 export function selectStorageNode(seed: string): StorageNode {
   const nodes = getStorageNodes();
-  if (nodes.length === 0) {
-    throw new Error("Aucun nœud de stockage configuré (S3/Z1).");
-  }
   if (nodes.length <= 1) return nodes[0];
 
   let hash = 0;
@@ -371,7 +372,7 @@ export function findStorageNodeForRecord(
   if (r2Key && r2Key.startsWith("node-")) {
     const parts = r2Key.split(":");
     if (parts.length >= 3) {
-      const nodeId = Number.parseInt(parts[0].replace("node-", ""), 10);
+      const nodeId = parseInt(parts[0].replace("node-", ""), 10);
       const found = nodes.find((n) => n.id === nodeId);
       if (found) {
         return { node: found, rawKey: parts.slice(2).join(":") };
@@ -394,11 +395,7 @@ export function findStorageNodeForRecord(
   }
 
   // 3. Fallback sur le premier nœud
-  const fallback = nodes[0];
-  if (!fallback) {
-    throw new Error("Aucun nœud de stockage configuré (S3/Z1).");
-  }
-  return { node: fallback, rawKey: r2Key };
+  return { node: nodes[0], rawKey: r2Key };
 }
 
 /**
@@ -406,9 +403,6 @@ export function findStorageNodeForRecord(
  */
 export async function buildS3Client(node?: StorageNode) {
   const targetNode = node || getStorageNodes()[0];
-  if (!targetNode) {
-    throw new Error("Aucun nœud de stockage configuré (S3/Z1).");
-  }
   const { AwsClient } = await import("npm:aws4fetch");
   return new AwsClient({
     accessKeyId: targetNode.accessKeyId,
@@ -453,18 +447,24 @@ export function registerStorageRoutes(app: Hono) {
       const userId = payload.sub as string;
 
       const body = await c.req.parseBody();
-      const file = body["avatar"];
+      const file = body["avatar"] || body["file"];
 
-      if (!(file instanceof File)) {
+      if (!(file instanceof File) || file.size === 0) {
         return c.json({ error: "Fichier invalide ou non fourni." }, 400);
+      }
+
+      const MAX_AVATAR_SIZE = 10 * 1024 * 1024;
+      if (file.size > MAX_AVATAR_SIZE) {
+        return c.json({ error: "Image trop volumineuse (max 10 MB)." }, 413);
+      }
+      const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
+      if (file.type && !ALLOWED_IMAGE_TYPES.includes(file.type)) {
+        return c.json({ error: "Format d'image non supporté (JPEG, PNG, WebP ou GIF requis)." }, 400);
       }
 
       const primaryNode = selectStorageNode(`avatar-${userId}`);
       const ext =
-        file.name
-          .split(".")
-          .pop()
-          ?.replace(/[^a-zA-Z0-9]/g, "") || "jpg";
+        file.name.split(".").pop()?.replace(/[^a-zA-Z0-9]/g, "") || "jpg";
       const filename = `avatars/${userId}-${Date.now()}.${ext}`;
       const arrayBuffer = await file.arrayBuffer();
 
@@ -473,17 +473,24 @@ export function registerStorageRoutes(app: Hono) {
         filename,
         arrayBuffer,
         {
-          acl: "public-read",
           contentType: file.type || "image/jpeg",
+          acl: "public-read",
         }
       );
 
       if (!uploadResult.success) {
         console.error(
-          "Erreur Z1 Storage S3 (avatar fallback épuisé):",
+          "Erreur Z1 Storage S3 (avatar, fallback épuisé):",
           uploadResult.error
         );
-        return c.json({ error: "Erreur lors de l'upload de l'image." }, 500);
+        return c.json(
+          {
+            error:
+              "L'upload a échoué sur tous les buckets de stockage. Vérifiez la configuration Z1 Storage (credentials S3) ou réessayez plus tard.",
+            details: uploadResult.error?.slice(0, 300),
+          },
+          503
+        );
       }
 
       const publicUrl = uploadResult.publicUrl;
@@ -544,7 +551,13 @@ export function registerStorageRoutes(app: Hono) {
         file.type.startsWith("audio/") ||
         file.type.startsWith("text/") ||
         file.type === "application/pdf" ||
-        file.type === "application/json";
+        file.type === "application/json" ||
+        file.type === "application/msword" ||
+        file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+        file.type === "application/vnd.ms-excel" ||
+        file.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
+        file.type === "application/vnd.ms-powerpoint" ||
+        file.type === "application/vnd.openxmlformats-officedocument.presentationml.presentation";
       if (file.type && !isAllowed) {
         return c.json({ error: "Type de fichier non autorisé." }, 400);
       }
@@ -560,17 +573,24 @@ export function registerStorageRoutes(app: Hono) {
         filename,
         arrayBuffer,
         {
-          acl: "public-read",
           contentType: file.type || "application/octet-stream",
+          acl: "public-read",
         }
       );
 
       if (!uploadResult.success) {
         console.error(
-          "Erreur Z1 Storage S3 (file fallback épuisé):",
+          "Erreur Z1 Storage S3 (file, fallback épuisé):",
           uploadResult.error
         );
-        return c.json({ error: "Erreur lors de l'upload vers S3." }, 500);
+        return c.json(
+          {
+            error:
+              "L'upload a échoué sur tous les buckets de stockage. Vérifiez la configuration Z1 Storage (credentials S3) ou réessayez plus tard.",
+            details: uploadResult.error?.slice(0, 300),
+          },
+          503
+        );
       }
 
       const publicUrl = uploadResult.publicUrl;
@@ -828,8 +848,8 @@ export function registerStorageRoutes(app: Hono) {
         fileKey,
         arrayBuffer,
         {
-          acl: "public-read",
           contentType: file.type || "application/octet-stream",
+          acl: "public-read",
         }
       );
 
@@ -839,10 +859,7 @@ export function registerStorageRoutes(app: Hono) {
           uploadResult.error
         );
         return c.json(
-          {
-            error:
-              "Erreur lors de l'upload vers le stockage (tous les buckets en échec).",
-          },
+          { error: "Erreur lors de l'upload vers le stockage (tous les buckets en échec)." },
           500
         );
       }

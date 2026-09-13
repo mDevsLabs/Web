@@ -1,16 +1,18 @@
 "use client";
 
-import { CpuIcon, PuzzleIcon, Star } from "lucide-react";
+import { CpuIcon, PuzzleIcon, SearchIcon, Star } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-import McpClient from "@/app/(chat)/mcp/mcp-client";
-import SkillsClient from "@/app/(chat)/skills/skills-client";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import { ToolsSwitcher } from "@/components/tools/tools-switcher";
+import { Input } from "@/components/ui/input";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
-import type { ToolsTab } from "@/lib/tools/tabs";
+import { TOOLS_ACTIONS_ID, type ToolsTab } from "@/lib/tools/tabs";
+import McpPanel from "./mcp-panel";
 import PluginsPanel from "./plugins-panel";
+import SkillsPanel from "./skills-panel";
 
 function LockedTabPanel({
   label,
@@ -67,6 +69,13 @@ export default function ToolsClient({
 }) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<ToolsTab>(initialTab);
+  const [searchQuery, setSearchQuery] = useState("");
+  // Le portail des boutons d'action n'existe qu'après montage (côté client).
+  const [actionsAnchor, setActionsAnchor] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    setActionsAnchor(document.getElementById(TOOLS_ACTIONS_ID));
+  }, []);
 
   const handleTabChange = (tab: ToolsTab) => {
     setActiveTab(tab);
@@ -98,12 +107,30 @@ export default function ToolsClient({
           isPaid={isPaid}
           onChange={handleTabChange}
         />
+        {/* Rangée unique pleine largeur : recherche globale + boutons d'action
+            de l'onglet actif (portés par le panneau actif). */}
+        <div className="flex w-full flex-wrap items-center gap-2">
+          <div className="relative min-w-[220px] flex-1 sm:max-w-md">
+            <SearchIcon className="absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              className="h-9 rounded-full border-border/60 bg-muted/30 pr-3 pl-9 text-sm"
+              data-testid="tools-global-search"
+              onChange={(event) => setSearchQuery(event.target.value)}
+              placeholder="Rechercher dans les outils…"
+              value={searchQuery}
+            />
+          </div>
+          <div
+            className="flex flex-1 flex-wrap items-center justify-end gap-2"
+            id={TOOLS_ACTIONS_ID}
+          />
+        </div>
       </header>
 
-      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6 sm:px-6">
+      <main className="mx-auto w-full max-w-full flex-1 px-4 pt-4 pb-6 sm:px-6">
         {activeTab === "plugins" ? (
           isPaid ? (
-            <PluginsPanel />
+            <PluginsPanel searchQuery={searchQuery} />
           ) : (
             <LockedTabPanel label="Plugins" tab="plugins" />
           )
@@ -111,13 +138,15 @@ export default function ToolsClient({
 
         {activeTab === "mcp" ? (
           isPaid ? (
-            <McpClient embedded />
+            <McpPanel searchQuery={searchQuery} />
           ) : (
             <LockedTabPanel label="MCP" tab="mcp" />
           )
         ) : null}
 
-        {activeTab === "skills" ? <SkillsClient embedded /> : null}
+        {activeTab === "skills" ? (
+          <SkillsPanel searchQuery={searchQuery} />
+        ) : null}
       </main>
     </div>
   );
