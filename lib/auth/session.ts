@@ -106,8 +106,10 @@ function triggerBackgroundUsageRefresh(token: string) {
 }
 
 export async function getMaiUser(
-  tokenInput?: string | null
+  tokenInput?: string | null,
+  options?: { forceRefresh?: boolean }
 ): Promise<MaiUser | null> {
+  const forceRefresh = options?.forceRefresh === true;
   const token = tokenInput || (await getMaiSessionToken());
   if (!token) {
     return null;
@@ -115,7 +117,7 @@ export async function getMaiUser(
 
   // 1. Cache mémoire valide
   const cached = userCache.get(token);
-  if (cached && Date.now() < cached.expiresAt) {
+  if (!forceRefresh && cached && Date.now() < cached.expiresAt) {
     return cached.user;
   }
 
@@ -127,8 +129,10 @@ export async function getMaiUser(
     // pas de repli sur un payload non vérifié.
     return null;
   }
-  if (payload && (payload.email || payload.sub)) {
-    // Vérifier l'expiration du JWT si présente
+  if (!forceRefresh && payload && (payload.email || payload.sub)) {
+    // Vérifier l'expiration du JWT si présente. En mode forceRefresh, le JWT
+    // sert uniquement à authentifier : le tier doit venir de l'API d'usage,
+    // qui est la source de vérité de l'abonnement.
     if (!payload.exp || payload.exp * 1000 > Date.now()) {
       const user: MaiUser = {
         avatarUrl: payload.avatarUrl || null,

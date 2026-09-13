@@ -77,7 +77,10 @@ export async function POST(request: Request) {
 
   try {
     // 1. Authentification et limitation de débit, identiques au Chat.
-    const { auth, error } = await authenticateChatRequest();
+    const { auth, error } = await authenticateChatRequest({
+      // Le tier n'est pas une propriété fiable du JWT après un upgrade.
+      forceRefreshUser: true,
+    });
     if (error === "forbidden") {
       return errorResponse("access_denied");
     }

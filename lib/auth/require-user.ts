@@ -6,11 +6,13 @@ import { ChatbotError } from "@/lib/errors";
 
 // Garde d'authentification seule, sans contrainte de forfait : utilisée par
 // les fonctionnalités ouvertes à tous (ex. Skills depuis le forfait Free).
-export async function requireUser(): Promise<{
+export async function requireUser(
+  forceRefresh = false
+): Promise<{
   userId: string;
   user: MaiUser;
 } | null> {
-  const user = await getMaiUser();
+  const user = await getMaiUser(null, { forceRefresh });
   if (!user) {
     return null;
   }

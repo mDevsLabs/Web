@@ -12,14 +12,16 @@ export type ChatAuth = {
   isFreeUser: boolean;
 };
 
-export async function authenticateChatRequest(): Promise<{
+export async function authenticateChatRequest(
+  options?: { forceRefreshUser?: boolean }
+): Promise<{
   auth?: ChatAuth;
   error?: "forbidden" | "unauthorized";
 }> {
   const [botIdResult, sessionToken, maiUser] = await Promise.all([
     checkBotId().catch(() => null),
     getMaiSessionToken(),
-    getMaiUser(),
+    getMaiUser(null, { forceRefresh: options?.forceRefreshUser === true }),
   ]);
 
   if (botIdResult?.isBot) {

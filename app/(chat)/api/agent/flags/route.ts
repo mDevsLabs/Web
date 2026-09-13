@@ -7,7 +7,9 @@ import { requireUser, unauthorizedResponse } from "@/lib/auth/require-user";
 // (Agent activé, plugins, MCP, artifacts, approbations, réflexion) et le canal
 // de diffusion, pour adapter l'interface sans jamais décider de l'accès.
 export async function GET() {
-  const session = await requireUser();
+  // Le statut d'abonnement peut changer sans que le JWT soit renouvelé
+  // (upgrade Plus notamment). Toujours lire la source d'abonnement distante.
+  const session = await requireUser(true);
   if (!session) {
     return unauthorizedResponse();
   }
