@@ -93,7 +93,8 @@ function triggerBackgroundUsageRefresh(token: string) {
             data.tokensUsed || cached.user.tokensUsed
           );
           cached.user.limit = Number(data.limit || cached.user.limit);
-          cached.user.tier = data.tier || cached.user.tier;
+          cached.user.tier =
+            data.tier || data.plan || data.subscription?.tier || cached.user.tier;
           if (data.username) cached.user.username = data.username;
           if (data.name) cached.user.username = data.name;
           if (data.avatarUrl) cached.user.avatarUrl = data.avatarUrl;
@@ -183,7 +184,7 @@ export async function getMaiUser(
           limit: Number(data.limit || getTierChatWeeklyLimit(data.tier)),
           phone: data.phone || "",
           resetAt: data.resetAt,
-          tier: data.tier || "Free",
+          tier: data.tier || data.plan || data.subscription?.tier || "Free",
           tokensUsed: Number(data.tokensUsed || 0),
           username: data.username || "Utilisateur",
           weekStart: data.weekStart,
