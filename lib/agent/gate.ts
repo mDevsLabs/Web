@@ -7,7 +7,6 @@ import {
   type ModelCapabilities,
 } from "@/lib/ai/registry";
 import { errorResponse } from "@/lib/api/error-response";
-import { isPaidTier } from "@/lib/auth/plan";
 import type { ChatAuth } from "@/lib/chat/auth";
 import { weeklyQuotaExceeded } from "@/lib/chat/auth";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
@@ -40,16 +39,6 @@ export function checkAgentAccess(auth: ChatAuth): AgentAccess {
       allowed: false,
       response: errorResponse("service_unavailable", {
         message: "L'espace Agent est momentanément indisponible.",
-      }),
-    };
-  }
-
-  if (!isPaidTier(auth.maiUser.tier)) {
-    return {
-      allowed: false,
-      response: errorResponse("plan_required", {
-        details: buildAgentUpgradeDetails(),
-        message: AGENT_PLAN_REQUIRED_MESSAGE,
       }),
     };
   }

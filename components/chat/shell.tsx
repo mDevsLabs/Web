@@ -38,7 +38,7 @@ export function ChatShell() {
   const router = useRouter();
   const isChatRoute = pathname === "/" || pathname?.startsWith("/chat");
   const { mode, setMode } = useAgentMode();
-  const { flags, tier } = useAgentFlags();
+  const { flags } = useAgentFlags();
   const [agentUpgradeOpen, setAgentUpgradeOpen] = useState(false);
 
   // Le sélecteur est visible pour tout le monde, mais un utilisateur Free ne
@@ -132,7 +132,9 @@ export function ChatShell() {
     return null;
   }
 
-  const agentAvailable = flags["agent.enabled"] && tier !== "free";
+  // Agent est désormais disponible pour tous les forfaits ; seul le flag
+  // global permet de désactiver temporairement le service.
+  const agentAvailable = flags["agent.enabled"];
   const effectiveMode = agentAvailable ? mode : "chat";
 
   const handleModeChange = (next: "chat" | "agent") => {

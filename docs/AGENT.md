@@ -29,11 +29,9 @@ Le moteur s'appuie sur les primitives déjà installées (`ai@7`) :
 
 - Sélecteur **Chat | Agent** sur la page principale (`AgentModeSwitcher`),
   visible par tous, animé, accessible au clavier.
-- **Free** : voit Agent, ne peut pas l'utiliser → `AgentUpgradeDialog`
-  (« Agent est disponible avec mAI Plus, Pro et Max. » → page de forfaits).
-- **Plus / Pro / Max** : Agent disponible.
-- La garde réelle est **serveur** : `checkAgentAccess` (flag `agent.enabled`,
-  forfait payant, quota) dans `lib/agent/gate.ts`.
+- **Tous les forfaits** : Agent est disponible.
+- La garde réelle est **serveur** : `checkAgentAccess` (flag `agent.enabled`
+  et quota) dans `lib/agent/gate.ts`.
 - Le **mode Fantôme** n'est pas disponible dans Agent (la persistance des runs
   est nécessaire) : l'API refuse `isGhostMode`.
 - Le canal est diffusé par `lib/agent/channel.ts` (`AGENT_CHANNEL = "alpha"`).
