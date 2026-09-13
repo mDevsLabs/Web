@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { errorResponse, logError } from "@/lib/api/error-response";
-import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
+import { requireUser, unauthorizedResponse } from "@/lib/auth/require-user";
 import { getSkillVersions, restoreSkillVersion } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 
@@ -8,12 +8,11 @@ export async function GET(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const guard = await requirePaidPlan("plus");
-  if (!guard.allowed) {
-    return planGuardResponse(guard)!;
+  const session = await requireUser();
+  if (!session) {
+    return unauthorizedResponse();
   }
-  const user = guard.user;
-  const userId = user.id || user.email;
+  const { userId } = session;
   const { id } = await params;
 
   const versions = await getSkillVersions({ skillId: id, userId });
@@ -28,12 +27,11 @@ export async function POST(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const guard = await requirePaidPlan("plus");
-  if (!guard.allowed) {
-    return planGuardResponse(guard)!;
+  const session = await requireUser();
+  if (!session) {
+    return unauthorizedResponse();
   }
-  const user = guard.user;
-  const userId = user.id || user.email;
+  const { userId } = session;
   const { id } = await params;
 
   try {

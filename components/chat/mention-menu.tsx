@@ -18,6 +18,8 @@ import { toast } from "sonner";
 import { AgentIcon } from "@/components/agents/agent-icon";
 import type { ProjectLite } from "@/hooks/use-projects";
 import type { Agent, CustomCommand, McpServer, Skill } from "@/lib/db/schema";
+import { PluginIcon } from "@/lib/plugins/icon";
+import type { PluginManifest } from "@/lib/plugins/types";
 import { cn } from "@/lib/utils";
 import { ProjectIcon } from "./project-icon";
 
@@ -27,6 +29,7 @@ export type MentionSelectPayload =
   | { type: "project"; project: MentionProject }
   | { type: "agent"; agent: Agent }
   | { type: "skill"; skill: Skill }
+  | { type: "plugin"; plugin: PluginManifest }
   | { type: "mcp"; server: McpServer }
   | { type: "customCommand"; command: CustomCommand }
   | {
@@ -40,6 +43,7 @@ type MentionMenuProps = {
   query: string;
   projects: MentionProject[];
   skills?: Skill[];
+  plugins?: PluginManifest[];
   mcpServers?: McpServer[];
   agents?: Agent[];
   customCommands?: CustomCommand[];
@@ -65,6 +69,12 @@ export type FlatMentionItem =
       description: string;
     }
   | { kind: "skill"; id: string; label: string; skill: Skill }
+  | {
+      kind: "plugin";
+      id: string;
+      label: string;
+      plugin: PluginManifest;
+    }
   | { kind: "mcp"; id: string; label: string; server: McpServer }
   | { kind: "project"; id: string; label: string; project: MentionProject }
   | { kind: "agent"; id: string; label: string; agent: Agent }
@@ -81,7 +91,8 @@ function buildFlatList(
   skills: Skill[] = [],
   mcpServers: McpServer[] = [],
   agents: Agent[] = [],
-  customCommands: CustomCommand[] = []
+  customCommands: CustomCommand[] = [],
+  plugins: PluginManifest[] = []
 ): FlatMentionItem[] {
   const q = query.toLowerCase().trim();
 
@@ -148,6 +159,16 @@ function buildFlatList(
       )
     : skills;
 
+  const filteredPlugins = q
+    ? plugins.filter(
+        (p) =>
+          p.name.toLowerCase().includes(q) ||
+          p.description.toLowerCase().includes(q) ||
+          p.tags.some((t) => t.toLowerCase().includes(q)) ||
+          p.tool.label.toLowerCase().includes(q)
+      )
+    : plugins;
+
   const filteredMcp = q
     ? mcpServers.filter(
         (m) =>
@@ -177,6 +198,13 @@ function buildFlatList(
     kind: "skill" as const,
     label: s.name,
     skill: s,
+  }));
+
+  const pluginItems: FlatMentionItem[] = filteredPlugins.map((p) => ({
+    id: p.id,
+    kind: "plugin" as const,
+    label: p.name,
+    plugin: p,
   }));
 
   const mcpItems: FlatMentionItem[] = filteredMcp.map((m) => ({
@@ -220,6 +248,7 @@ function buildFlatList(
     ...memoryItems,
     ...systemItems,
     ...skillItems,
+    ...pluginItems,
     ...mcpItems,
     ...projectItems,
     ...agentItems,
@@ -233,7 +262,8 @@ export function getFilteredMentionItems(
   skills: Skill[] = [],
   mcpServers: McpServer[] = [],
   agents: Agent[] = [],
-  customCommands: CustomCommand[] = []
+  customCommands: CustomCommand[] = [],
+  plugins: PluginManifest[] = []
 ): FlatMentionItem[] {
   return buildFlatList(
     query,
@@ -241,7 +271,8 @@ export function getFilteredMentionItems(
     skills,
     mcpServers,
     agents,
-    customCommands
+    customCommands,
+    plugins
   );
 }
 
@@ -262,7 +293,8 @@ function MentionItem({
   onSelect: (payload: MentionSelectPayload) => void;
   supportsTools?: boolean;
 }) {
-  const isToolFeature = item.kind === "skill" || item.kind === "mcp";
+  const isToolFeature =
+    item.kind === "skill" || item.kind === "mcp" || item.kind === "plugin";
   const isMemoryBlocked =
     item.kind === "memory" &&
     Boolean(memoryAtLimit) &&
@@ -285,6 +317,8 @@ function MentionItem({
     }
     if (item.kind === "skill") {
       onSelect({ skill: item.skill, type: "skill" });
+    } else if (item.kind === "plugin") {
+      onSelect({ plugin: item.plugin, type: "plugin" });
     } else if (item.kind === "mcp") {
       onSelect({ server: item.server, type: "mcp" });
     } else if (item.kind === "project") {
@@ -370,11 +404,13 @@ function MentionItem({
             <span className="text-[10px] bg-sky-500/10 text-sky-600 dark:text-sky-400 font-semibold px-1.5 py-0.2 rounded">
               Mémoire
             </span>
-            {isMemoryBlocked && typeof memoryLimit === "number" && memoryLimit > 0 && (
-              <span className="text-[9px] bg-destructive/10 text-destructive font-semibold px-1.5 py-0.2 rounded">
-                Limite atteinte ({memoryCount ?? 0}/{memoryLimit})
-              </span>
-            )}
+            {isMemoryBlocked &&
+              typeof memoryLimit === "number" &&
+              memoryLimit > 0 && (
+                <span className="text-[9px] bg-destructive/10 text-destructive font-semibold px-1.5 py-0.2 rounded">
+                  Limite atteinte ({memoryCount ?? 0}/{memoryLimit})
+                </span>
+              )}
           </div>
           <span className="text-[11px] text-muted-foreground/70 truncate">
             {isMemoryBlocked
@@ -427,6 +463,47 @@ function MentionItem({
               {item.skill.description}
             </span>
           )}
+        </div>
+      </button>
+    );
+  }
+
+  if (item.kind === "plugin") {
+    return (
+      <button
+        className={cn(
+          "flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors",
+          isDisabled
+            ? "opacity-40 cursor-not-allowed"
+            : isSelected
+              ? "bg-muted/70"
+              : "hover:bg-muted/40"
+        )}
+        data-selected={isSelected && !isDisabled}
+        onClick={handleClick}
+        onMouseDown={handleMouseDown}
+        type="button"
+      >
+        <div className="flex size-6 shrink-0 items-center justify-center rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+          <PluginIcon className="size-3.5" icon={item.plugin.icon} />
+        </div>
+        <div className="flex flex-col min-w-0">
+          <div className="flex items-center gap-1.5">
+            <span className="text-[13px] font-medium text-foreground truncate">
+              @{item.label}
+            </span>
+            <span className="text-[10px] bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold px-1.5 py-0.2 rounded">
+              Plugin
+            </span>
+            {isDisabled && (
+              <span className="text-[9px] bg-destructive/10 text-destructive font-semibold px-1.5 py-0.2 rounded">
+                Non supporté
+              </span>
+            )}
+          </div>
+          <span className="text-[11px] text-muted-foreground/70 truncate">
+            {item.plugin.description}
+          </span>
         </div>
       </button>
     );
@@ -591,6 +668,7 @@ export function MentionMenu({
   query,
   projects,
   skills = [],
+  plugins = [],
   mcpServers = [],
   agents = [],
   customCommands = [],
@@ -613,13 +691,15 @@ export function MentionMenu({
         skills,
         mcpServers,
         agents,
-        customCommands
+        customCommands,
+        plugins
       ),
-    [query, projects, skills, mcpServers, agents, customCommands]
+    [query, projects, skills, mcpServers, agents, customCommands, plugins]
   );
 
   const memoryItems = flat.filter((i) => i.kind === "memory");
   const skillItems = flat.filter((i) => i.kind === "skill");
+  const pluginItems = flat.filter((i) => i.kind === "plugin");
   const mcpItems = flat.filter((i) => i.kind === "mcp");
   const projectItems = flat.filter((i) => i.kind === "project");
   const agentItems = flat.filter((i) => i.kind === "agent");
@@ -694,6 +774,32 @@ export function MentionMenu({
                   isSelected={flatIndex === selectedIndex}
                   item={item}
                   key={`s-${item.id}`}
+                  onSelect={onSelect}
+                  supportsTools={supportsTools}
+                />
+              );
+            })}
+          </>
+        )}
+
+        {/* Section Plugins installés */}
+        {pluginItems.length > 0 && (
+          <>
+            <div className="px-4 py-2 bg-muted/40 border-t border-b border-border/40 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground flex items-center justify-between">
+              <span>Plugins</span>
+              {!supportsTools && (
+                <span className="text-[10px] normal-case text-amber-600 dark:text-amber-400 font-medium">
+                  Indisponible avec ce modèle
+                </span>
+              )}
+            </div>
+            {pluginItems.map((item) => {
+              const flatIndex = flat.indexOf(item);
+              return (
+                <MentionItem
+                  isSelected={flatIndex === selectedIndex}
+                  item={item}
+                  key={`plugin-${item.id}`}
                   onSelect={onSelect}
                   supportsTools={supportsTools}
                 />

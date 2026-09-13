@@ -9,7 +9,6 @@ import {
   PaperclipIcon,
   PlusIcon,
   SparklesIcon,
-  TrophyIcon,
   Volume2Icon,
 } from "lucide-react";
 import Link from "next/link";
@@ -23,6 +22,8 @@ import {
 } from "@/components/ui/popover";
 import { useActiveChat as useActiveChatForTools } from "@/hooks/use-active-chat";
 import type { ToolId } from "@/lib/ai/tools/config";
+import { PluginIcon } from "@/lib/plugins/icon";
+import type { PluginCatalogEntry } from "@/lib/plugins/types";
 import type { ChatMessage } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { useModelCapabilities } from "./use-model-capabilities";
@@ -33,6 +34,7 @@ function PurePlusMenuButton({
   selectedModelId,
   onOpenCloudPicker,
   onOpenQuizConfig,
+  plugins = [],
   supportsTools = true,
 }: {
   fileInputRef: React.MutableRefObject<HTMLInputElement | null>;
@@ -40,6 +42,7 @@ function PurePlusMenuButton({
   selectedModelId: string;
   onOpenCloudPicker: () => void;
   onOpenQuizConfig: () => void;
+  plugins?: PluginCatalogEntry[];
   supportsTools?: boolean;
 }) {
   const {
@@ -96,6 +99,10 @@ function PurePlusMenuButton({
     );
     setOpen(false);
   };
+
+  const installedPlugins = plugins.filter(
+    (plugin) => plugin.installed && plugin.enabled
+  );
 
   const isImageActive = pendingTools.includes("imageGenerate" as ToolId);
   const isAudioActive = pendingTools.includes("audioGenerate" as ToolId);
@@ -358,31 +365,89 @@ function PurePlusMenuButton({
           </div>
         </button>
 
-        {/* Option Quizzly : Disponible même en mode fantôme */}
-        <button
-          className={cn(
-            "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer hover:bg-muted/70 text-foreground"
-          )}
-          onClick={() => {
-            onOpenQuizConfig();
-            setOpen(false);
-          }}
-          type="button"
-        >
-          <div className="flex size-7 items-center justify-center rounded-lg text-amber-500 shrink-0">
-            <TrophyIcon className="size-4" />
-          </div>
-          <div className="flex items-center justify-between w-full min-w-0 gap-2">
-            <div className="flex items-center gap-2">
-              <span className="text-[13.5px] font-semibold truncate">
-                Quizzly — Quiz interactif
+        {/* Plugins installés : repris du catalogue de la page Outils */}
+        {supportsTools ? (
+          <div className="mt-1 border-t border-border/40 pt-1.5">
+            <div className="flex items-center justify-between px-3.5 py-1">
+              <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                Plugins installés
               </span>
+              <Link
+                className="text-[11px] font-medium text-primary hover:underline"
+                href="/tools?tab=plugins"
+                onClick={() => setOpen(false)}
+              >
+                Gérer
+              </Link>
             </div>
-            <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
-              1 à 50 questions avec score
-            </span>
+            {installedPlugins.length === 0 ? (
+              <Link
+                className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer hover:bg-muted/70 text-muted-foreground"
+                href="/tools?tab=plugins"
+                onClick={() => setOpen(false)}
+              >
+                <div className="flex size-7 items-center justify-center rounded-lg shrink-0">
+                  <PlusIcon className="size-4" />
+                </div>
+                <span className="text-[13px] font-medium">
+                  Installer des plugins
+                </span>
+              </Link>
+            ) : (
+              installedPlugins.map((plugin) => {
+                const isActive = pendingTools.includes(plugin.tool.id as any);
+                const needsConfig = plugin.id === "quizzly";
+                return (
+                  <button
+                    className={cn(
+                      "flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors w-full cursor-pointer",
+                      isActive
+                        ? "bg-primary/10 border border-primary/30 ring-1 ring-primary/20 text-primary"
+                        : "hover:bg-muted/70 text-foreground"
+                    )}
+                    key={plugin.id}
+                    onClick={() => {
+                      if (needsConfig) {
+                        onOpenQuizConfig();
+                        setOpen(false);
+                        return;
+                      }
+                      togglePendingTool(plugin.tool.id as any);
+                      toast.success(
+                        isActive
+                          ? `${plugin.name} désactivé`
+                          : `${plugin.name} activé pour le prochain message`
+                      );
+                      setOpen(false);
+                    }}
+                    type="button"
+                  >
+                    <div className="flex size-7 items-center justify-center rounded-lg text-emerald-500 shrink-0">
+                      <PluginIcon className="size-4" icon={plugin.icon} />
+                    </div>
+                    <div className="flex items-center justify-between w-full min-w-0 gap-2">
+                      <div className="flex items-center gap-2 min-w-0">
+                        <span className="text-[13.5px] font-semibold truncate">
+                          {plugin.name}
+                        </span>
+                        {isActive && (
+                          <span className="text-[10px] bg-primary text-primary-foreground font-medium px-1.5 py-0.5 rounded-full">
+                            ACTIF
+                          </span>
+                        )}
+                      </div>
+                      <span className="text-[12px] text-muted-foreground shrink-0 hidden sm:inline">
+                        {needsConfig
+                          ? "1 à 50 questions avec score"
+                          : plugin.tool.label}
+                      </span>
+                    </div>
+                  </button>
+                );
+              })
+            )}
           </div>
-        </button>
+        ) : null}
 
         {/* Option 6: Compétences (Skills) */}
         {supportsTools ? (

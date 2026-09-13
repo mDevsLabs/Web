@@ -1,16 +1,11 @@
 import { errorResponse } from "@/lib/api/error-response";
-import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
-import { getMaiUser } from "@/lib/auth/session";
+import { requireUser, unauthorizedResponse } from "@/lib/auth/require-user";
 import { getSkillTemplates } from "@/lib/db/queries";
 
 export async function GET() {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return errorResponse("auth_required");
-  }
-  const guard = await requirePaidPlan("plus");
-  if (!guard.allowed) {
-    return planGuardResponse(guard)!;
   }
 
   const templates = await getSkillTemplates();
@@ -18,12 +13,11 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const guard = await requirePaidPlan("plus");
-  if (!guard.allowed) {
-    return planGuardResponse(guard)!;
+  const session = await requireUser();
+  if (!session) {
+    return unauthorizedResponse();
   }
-  const user = guard.user;
-  const userId = user.id || user.email;
+  const { userId } = session;
   const json = await request.json();
   const { getSkillTemplates, createSkill } = await import("@/lib/db/queries");
   const templates = await getSkillTemplates();

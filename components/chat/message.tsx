@@ -30,6 +30,8 @@ import {
   ToolInput,
   ToolOutput,
 } from "../ai-elements/tool";
+import { AccountProfileCard } from "./account-profile-card";
+import { AccountUsageCard } from "./account-usage-card";
 import { AskUserCard } from "./ask-user-card";
 import { CalendarReminderCard } from "./calendar-reminder-card";
 import { CodeExecution } from "./code-execution";
@@ -1014,6 +1016,31 @@ const PurePreviewMessage = ({
           output={toolPart.output}
           state={toolPart.state}
           toolCallId={toolPart.toolCallId}
+        />
+      );
+    }
+
+    if (type === "tool-updateAccountProfile") {
+      const toolPart = part as any;
+      return (
+        <AccountProfileCard
+          args={toolPart.input || toolPart.args}
+          isReadonly={isReadonly}
+          key={toolPart.toolCallId ?? key}
+          output={toolPart.output}
+          state={toolPart.state}
+          toolCallId={toolPart.toolCallId}
+        />
+      );
+    }
+
+    if (type === "tool-getAccountUsage") {
+      const toolPart = part as any;
+      return (
+        <AccountUsageCard
+          key={toolPart.toolCallId ?? key}
+          output={toolPart.output}
+          state={toolPart.state}
         />
       );
     }

@@ -504,7 +504,12 @@ export function ScheduleDialog({
               Outils activés pour l'exécution
             </Label>
             <div className="mt-1.5 flex flex-wrap gap-1.5">
-              {TOOL_IDS.map((tid) => {
+              {/* Les outils de compte ne sont pas exécutables dans une tâche
+                  planifiée (pas de carte interactive, pas de contexte live). */}
+              {TOOL_IDS.filter(
+                (tid) =>
+                  tid !== "updateAccountProfile" && tid !== "getAccountUsage"
+              ).map((tid) => {
                 const meta = TOOLS_META[tid];
                 const active = enabledTools.includes(tid);
                 return (

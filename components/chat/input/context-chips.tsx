@@ -11,6 +11,8 @@ import type { Dispatch, SetStateAction } from "react";
 import { ProjectIcon } from "@/components/chat/project-icon";
 import { TOOLS_META, type ToolId } from "@/lib/ai/tools/config";
 import type { Agent, McpServer, Skill } from "@/lib/db/schema";
+import { getPluginByToolId } from "@/lib/plugins/catalog";
+import { PluginIcon } from "@/lib/plugins/icon";
 import { tokenForPendingTool } from "./mention-utils";
 
 export function ProjectChip({
@@ -166,8 +168,13 @@ export function PendingToolsChips({
             );
             label = srv ? srv.name : srvId || "Outil MCP";
           } else {
-            const meta = TOOLS_META[tid as ToolId];
-            label = meta?.label || tidStr;
+            const plugin = getPluginByToolId(tidStr);
+            if (plugin) {
+              label = plugin.name;
+            } else {
+              const meta = TOOLS_META[tid as ToolId];
+              label = meta?.label || tidStr;
+            }
           }
           return (
             <span
@@ -208,6 +215,7 @@ export function PendingToolsChips({
         const tidStr = tid as string;
         let label = tidStr;
         let IconComponent: any = null;
+        const plugin = getPluginByToolId(tidStr);
         if (tidStr.startsWith("mcp:") || tidStr === "mcp") {
           const srvId = tidStr.replace(/^mcp:/, "");
           const srv = userMcpServers.find(
@@ -218,15 +226,19 @@ export function PendingToolsChips({
           IconComponent = CpuIcon;
         } else {
           const meta = TOOLS_META[tid as ToolId];
-          label = meta?.label || tidStr;
-          IconComponent = meta?.icon;
+          label = plugin?.name ?? meta?.label ?? tidStr;
+          IconComponent = plugin ? null : meta?.icon;
         }
         return (
           <span
             className="inline-flex items-center gap-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 px-2.5 py-0.5 text-[11px] font-medium text-blue-600 dark:text-blue-400 shadow-xs"
             key={tidStr}
           >
-            {IconComponent && <IconComponent className="size-3" />}
+            {plugin ? (
+              <PluginIcon className="size-3" icon={plugin.icon} />
+            ) : IconComponent ? (
+              <IconComponent className="size-3" />
+            ) : null}
             <span>{label}</span>
             <button
               aria-label="Désactiver l'outil"

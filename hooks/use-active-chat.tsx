@@ -24,6 +24,10 @@ import { getChatHistoryPaginationKey } from "@/components/chat/sidebar-history";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
 import { useAutoResume } from "@/hooks/use-auto-resume";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import {
+  ACCOUNT_PROFILE_TOOL,
+  isProfileAwaiting,
+} from "@/lib/ai/tools/account-status";
 import { DEFAULT_ENABLED_TOOLS, type ToolId } from "@/lib/ai/tools/config";
 import type { PendingCommand } from "@/lib/commands/exec";
 import type { Agent, Skill, Vote } from "@/lib/db/schema";
@@ -203,9 +207,11 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       const next = !prev;
       isGhostModeRef.current = next;
       if (next) {
-        // Auto-disable imageGenerate tool if pending
+        // Auto-disable les outils indisponibles en fantôme s'ils sont actifs
         setPendingToolsState((tools) => {
-          const filtered = tools.filter((t) => t !== "imageGenerate");
+          const filtered = tools.filter(
+            (t) => t !== "imageGenerate" && t !== "updateAccountProfile"
+          );
           pendingToolsRef.current = filtered;
           return filtered;
         });
@@ -232,6 +238,10 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   const togglePendingTool = useCallback((tool: ToolId) => {
     if (tool === "imageGenerate" && isGhostModeRef.current) {
       toast.error("La génération d'image est indisponible en Mode fantôme");
+      return;
+    }
+    if (tool === "updateAccountProfile" && isGhostModeRef.current) {
+      toast.error("La modification de profil est indisponible en Mode fantôme");
       return;
     }
     setPendingToolsState((prev) => {
@@ -556,6 +566,16 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       const lastMessage = currentMessages.at(-1);
       if (!lastMessage) return false;
 
+      // Confirmation de profil en attente : le flux ne doit PAS reprendre tant
+      // que l'utilisateur n'a pas confirmé/annulé dans AccountProfileCard —
+      // sinon chaque fin de stream relance un round LLM parasite.
+      const hasAwaitingProfileConfirmation = lastMessage.parts?.some(
+        (part) =>
+          (part as { type?: string }).type === `tool-${ACCOUNT_PROFILE_TOOL}` &&
+          isProfileAwaiting((part as { output?: unknown }).output)
+      );
+      if (hasAwaitingProfileConfirmation) return false;
+
       const hasApprovedTool = lastMessage.parts?.some(
         (part) =>
           "state" in part &&
@@ -601,7 +621,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
         const toolsToSend = isToolApprovalContinuation
           ? []
           : isGhostModeRef.current
-            ? pendingToolsRef.current.filter((t) => t !== "imageGenerate")
+            ? pendingToolsRef.current.filter(
+                (t) => t !== "imageGenerate" && t !== "updateAccountProfile"
+              )
             : [...pendingToolsRef.current];
         if (!isToolApprovalContinuation && pendingToolsRef.current.length > 0) {
           // Clear after capturing — one-shot

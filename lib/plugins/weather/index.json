@@ -1,0 +1,16 @@
+{
+  "id": "weather",
+  "name": "Météo",
+  "version": "1.0.0",
+  "description": "Météo actuelle et prévisions de 1 à 7 jours pour une ville ou des coordonnées, en Celsius ou Fahrenheit.",
+  "author": "mAI",
+  "category": "meteo",
+  "tags": ["météo", "prévisions", "climat", "température", "vent"],
+  "icon": { "type": "lucide", "name": "CloudSun" },
+  "minTier": "plus",
+  "tool": {
+    "id": "getWeather",
+    "label": "Météo",
+    "systemHint": "getWeather (météo actuelle et prévisions 1 à 7 jours, celsius/fahrenheit, par ville ou coordonnées)"
+  }
+}

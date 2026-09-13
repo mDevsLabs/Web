@@ -78,12 +78,13 @@ import {
 } from "@/hooks/use-chat-attachments";
 import { useProjects } from "@/hooks/use-projects";
 import { useTier } from "@/hooks/use-tier";
-import { memoryLimitForTier } from "@/lib/auth/plan";
 import { chatModels } from "@/lib/ai/models";
 import type { ToolId } from "@/lib/ai/tools/config";
+import { memoryLimitForTier } from "@/lib/auth/plan";
 import { runSlashCommand } from "@/lib/chat/slash-commands";
 import { executeCustomCommand } from "@/lib/commands/exec";
 import type { Agent, CustomCommand, McpServer, Skill } from "@/lib/db/schema";
+import type { PluginCatalogEntry } from "@/lib/plugins/types";
 import type { Attachment, ChatMessage } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -188,10 +189,26 @@ function PureMultimodalInput({
   const { isFree, raw: tierRaw } = useTier();
   const { projects, isLoading: isProjectsLoading } = useProjects();
 
+  // Les Skills sont disponibles pour tous les forfaits (y compris Free).
   const { data: userSkills = [] } = useSWR<Skill[]>(
-    isFree ? null : "/api/skills",
+    "/api/skills",
     (url: string) => fetch(url).then((r) => r.json()),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
+  );
+  // Plugins installés et activés (payants) — proposés dans la mention @.
+  const { data: pluginsData } = useSWR<{ plugins: PluginCatalogEntry[] }>(
+    isFree ? null : "/api/plugins",
+    (url: string) => fetch(url).then((r) => r.json()),
+    { dedupingInterval: 30_000, revalidateOnFocus: false }
+  );
+  const installedPlugins = useMemo(
+    () =>
+      Array.isArray(pluginsData?.plugins)
+        ? pluginsData.plugins.filter(
+            (plugin) => plugin.installed && plugin.enabled
+          )
+        : [],
+    [pluginsData]
   );
   const { data: mcpData } = useSWR<{ servers: McpServer[] }>(
     isFree ? null : "/api/mcp",
@@ -387,7 +404,9 @@ function PureMultimodalInput({
     (payload: MentionSelectPayload) => {
       // Bloquer si le modèle ne supporte pas les tools
       if (
-        (payload.type === "skill" || payload.type === "mcp") &&
+        (payload.type === "skill" ||
+          payload.type === "mcp" ||
+          payload.type === "plugin") &&
         !supportsTools
       ) {
         toast.warning(
@@ -418,6 +437,15 @@ function PureMultimodalInput({
         setActiveSkill(payload.skill);
         toast.success(
           `Compétence appliquée à la discussion : ${payload.skill.name}`
+        );
+      } else if (payload.type === "plugin") {
+        mentionTag = `@${payload.plugin.name} `;
+        const pluginToolId = payload.plugin.tool.id;
+        if (!pendingTools.includes(pluginToolId as any)) {
+          togglePendingTool(pluginToolId as any);
+        }
+        toast.success(
+          `Plugin activé pour le prochain message : ${payload.plugin.name}`
         );
       } else if (payload.type === "mcp") {
         mentionTag = `@${payload.server.name} `;
@@ -756,7 +784,8 @@ function PureMultimodalInput({
           userSkills,
           userMcpServers,
           userAgents as any,
-          customMentionCommands
+          customMentionCommands,
+          installedPlugins
         );
         if (e.key === "ArrowDown") {
           e.preventDefault();
@@ -776,6 +805,11 @@ function PureMultimodalInput({
               handleMentionSelect({
                 skill: item.skill,
                 type: "skill",
+              });
+            } else if (item.kind === "plugin") {
+              handleMentionSelect({
+                plugin: item.plugin,
+                type: "plugin",
               });
             } else if (item.kind === "mcp") {
               handleMentionSelect({
@@ -872,6 +906,7 @@ function PureMultimodalInput({
               clearPendingProject,
               pendingProject,
               pendingTools,
+              plugins: installedPlugins,
               togglePendingTool,
               token,
               userMcpServers,
@@ -895,6 +930,7 @@ function PureMultimodalInput({
       editingMessage,
       handleSlashSelect,
       handleMentionSelect,
+      installedPlugins,
       isFree,
       isNewChatInput,
       onCancelEdit,
@@ -1029,6 +1065,7 @@ function PureMultimodalInput({
             memoryLimit={memoryLimit}
             onClose={handleMentionClose}
             onSelect={handleMentionSelect}
+            plugins={installedPlugins}
             projects={projects as any}
             query={mentionQuery}
             selectedIndex={mentionIndex}
@@ -1103,7 +1140,8 @@ function PureMultimodalInput({
                 input,
                 userMcpServers,
                 userSkills,
-                userAgents
+                userAgents,
+                installedPlugins
               )}
             </div>
           ) : null}
@@ -1143,6 +1181,7 @@ function PureMultimodalInput({
               fileInputRef={fileInputRef}
               onOpenCloudPicker={() => setCloudPickerOpen(true)}
               onOpenQuizConfig={() => setQuizDialogOpen(true)}
+              plugins={installedPlugins}
               selectedModelId={selectedModelId}
               status={status}
               supportsTools={supportsTools}

@@ -145,9 +145,9 @@ export async function buildChatContext(
     } catch {}
   }
 
-  const effectiveSkillId = isFreeUser
-    ? null
-    : (chat as any)?.skillId || skillId;
+  // Les Skills sont ouverts à tous les forfaits, y compris Free. En revanche,
+  // les serveurs MCP intégrés à un skill restent réservés aux forfaits payants.
+  const effectiveSkillId = (chat as any)?.skillId || skillId;
   let skillInstructions: string | null = null;
   let skillTools: string[] = [];
   let skillMcpServerIds: string[] = [];
@@ -167,10 +167,11 @@ export async function buildChatContext(
         if (Array.isArray(activeSkill.tools)) {
           skillTools = activeSkill.tools as string[];
         }
-        if (Array.isArray(activeSkill.mcpServerIds)) {
+        if (!isFreeUser && Array.isArray(activeSkill.mcpServerIds)) {
           skillMcpServerIds = activeSkill.mcpServerIds as string[];
         }
         if (
+          !isFreeUser &&
           activeSkill.mcpToolFilter &&
           typeof activeSkill.mcpToolFilter === "object"
         ) {

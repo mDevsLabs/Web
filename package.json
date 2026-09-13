@@ -16,6 +16,8 @@
     "db:pull": "drizzle-kit pull",
     "db:check": "drizzle-kit check",
     "db:up": "drizzle-kit up",
+    "plugins:gen": "tsx scripts/gen-plugin-catalog.ts",
+    "plugins:check": "tsx scripts/validate-plugins.ts",
     "typecheck": "tsc --noEmit",
     "test": "cross-env PLAYWRIGHT=True playwright test"
   },

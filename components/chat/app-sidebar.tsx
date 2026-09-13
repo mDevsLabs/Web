@@ -7,7 +7,6 @@ import {
   CalendarClockIcon,
   ChevronDownIcon,
   CloudIcon,
-  CpuIcon,
   FolderKanbanIcon,
   HomeIcon,
   ImageIcon,
@@ -178,20 +177,20 @@ function SidebarProjects() {
   );
 }
 
-function LockedNavSubItem({
+function LockedSidebarNavItem({
   closeMobile,
   href,
   icon: Icon,
   label,
-  lockedFeature,
   onLockedClick,
+  tooltip,
 }: {
   closeMobile: () => void;
   href: string;
   icon: React.ComponentType<{ className?: string }>;
   label: string;
-  lockedFeature: "skills" | "mcp" | "agents";
-  onLockedClick: (feature: "skills" | "mcp" | "agents") => void;
+  onLockedClick: () => void;
+  tooltip: string;
 }) {
   const pathname = usePathname();
   const { isPaid } = useTier();
@@ -204,7 +203,7 @@ function LockedNavSubItem({
         e.preventDefault();
         e.stopPropagation();
         closeMobile();
-        onLockedClick(lockedFeature);
+        onLockedClick();
         toast.info(
           `« ${label} » est réservé aux forfaits Plus, Pro et Max. Mettez à niveau votre compte pour y accéder.`,
           {
@@ -217,93 +216,30 @@ function LockedNavSubItem({
         closeMobile();
       }
     },
-    [closeMobile, label, locked, lockedFeature, onLockedClick]
+    [closeMobile, label, locked, onLockedClick]
   );
 
   return (
-    <SidebarMenuSubItem>
-      <SidebarMenuSubButton
-        aria-disabled={locked}
-        asChild
-        className={cn(
-          "h-7 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground",
-          isActive && "bg-sidebar-accent text-sidebar-foreground font-medium",
-          locked &&
-            "opacity-55 cursor-not-allowed text-sidebar-foreground/50 hover:bg-transparent hover:text-sidebar-foreground/50"
-        )}
-        isActive={isActive}
-      >
-        <Link
-          aria-disabled={locked}
-          href={locked ? "#" : href}
-          onClick={handleClick}
-          tabIndex={locked ? -1 : 0}
-        >
-          <Icon className={cn("size-3.5", isActive && "text-primary")} />
-          <span className="truncate">{label}</span>
-          {locked && <LockIcon className="ml-auto size-3 text-amber-500" />}
-        </Link>
-      </SidebarMenuSubButton>
-    </SidebarMenuSubItem>
-  );
-}
-
-function LockedDropdownItem({
-  closeMobile,
-  href,
-  icon: Icon,
-  label,
-  lockedFeature,
-  onLockedClick,
-}: {
-  closeMobile: () => void;
-  href: string;
-  icon: React.ComponentType<{ className?: string }>;
-  label: string;
-  lockedFeature: "skills" | "mcp" | "agents";
-  onLockedClick: (feature: "skills" | "mcp" | "agents") => void;
-}) {
-  const pathname = usePathname();
-  const { isPaid } = useTier();
-  const isActive = pathname?.startsWith(href);
-  const locked = !isPaid;
-
-  const handleClick = useCallback(
-    (e: React.MouseEvent) => {
-      if (locked) {
-        e.preventDefault();
-        e.stopPropagation();
-        closeMobile();
-        onLockedClick(lockedFeature);
-        toast.info(
-          `« ${label} » est réservé aux forfaits Plus, Pro et Max. Mettez à niveau votre compte pour y accéder.`,
-          {
-            description:
-              "Bouton d'upgrade disponible dans la fenêtre qui s'ouvre.",
-            duration: 5000,
-          }
-        );
-      } else {
-        closeMobile();
-      }
-    },
-    [closeMobile, label, locked, lockedFeature, onLockedClick]
-  );
-
-  return (
-    <DropdownMenuItem
+    <SidebarMenuButton
       asChild
       className={cn(
-        "flex items-center gap-2 cursor-pointer text-xs py-1.5",
-        locked && "opacity-60 cursor-not-allowed"
+        "h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground",
+        isActive && "bg-sidebar-accent font-semibold text-sidebar-foreground",
+        locked && "opacity-55 cursor-not-allowed"
       )}
+      tooltip={tooltip}
     >
-      <Link href={locked ? "#" : href} onClick={handleClick}>
+      <Link
+        aria-disabled={locked}
+        href={locked ? "#" : href}
+        onClick={handleClick}
+        tabIndex={locked ? -1 : 0}
+      >
         <Icon className={cn("size-4", isActive && "text-primary")} />
-        <span className="flex-1">{label}</span>
-        {locked && <LockIcon className="size-3 text-amber-500" />}
+        <span>{label}</span>
+        {locked && <LockIcon className="ml-auto size-3 text-amber-500" />}
       </Link>
-    </DropdownMenuItem>
+    </SidebarMenuButton>
   );
 }
 
@@ -403,16 +339,16 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
     "skills" | "mcp" | "agents" | null
   >(null);
 
-  type NavMenuKey = "creation" | "config" | "plus";
+  type NavMenuKey = "creation" | "plus";
   const [openMenu, setOpenMenu] = useState<NavMenuKey | null>(null);
 
   const isCreationActive = Boolean(
     pathname?.startsWith("/images") || pathname?.startsWith("/audio")
   );
-  const isConfigActive = Boolean(
-    pathname?.startsWith("/skills") ||
-      pathname?.startsWith("/mcp") ||
-      pathname?.startsWith("/agents")
+  const isToolsActive = Boolean(
+    pathname?.startsWith("/tools") ||
+      pathname?.startsWith("/skills") ||
+      pathname?.startsWith("/mcp")
   );
   const isPlusActive = Boolean(
     pathname?.startsWith("/settings") || pathname?.startsWith("/archived")
@@ -702,68 +638,39 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                   </SidebarMenuSubItem>
                 </SidebarNavCollapsible>
 
-                {/* 2. Outils : Skills, MCP & Agents */}
-                <SidebarNavCollapsible
-                  dropdownItems={
-                    <>
-                      <LockedDropdownItem
-                        closeMobile={handleNavClick}
-                        href="/skills"
-                        icon={WrenchIcon}
-                        label="Skills"
-                        lockedFeature="skills"
-                        onLockedClick={setUpgradeFeature}
-                      />
-                      <LockedDropdownItem
-                        closeMobile={handleNavClick}
-                        href="/mcp"
-                        icon={CpuIcon}
-                        label="MCP"
-                        lockedFeature="mcp"
-                        onLockedClick={setUpgradeFeature}
-                      />
-                      <LockedDropdownItem
-                        closeMobile={handleNavClick}
-                        href="/agents"
-                        icon={BotIcon}
-                        label="Agents"
-                        lockedFeature="agents"
-                        onLockedClick={setUpgradeFeature}
-                      />
-                    </>
-                  }
-                  icon={WrenchIcon}
-                  isActive={isConfigActive}
-                  isOpen={openMenu === "config"}
-                  label="Outils"
-                  onOpenChange={(open) => setOpenMenu(open ? "config" : null)}
-                  tooltip="Outils (Skills, MCP & Agents)"
-                >
-                  <LockedNavSubItem
-                    closeMobile={handleNavClick}
-                    href="/skills"
-                    icon={WrenchIcon}
-                    label="Skills"
-                    lockedFeature="skills"
-                    onLockedClick={setUpgradeFeature}
-                  />
-                  <LockedNavSubItem
-                    closeMobile={handleNavClick}
-                    href="/mcp"
-                    icon={CpuIcon}
-                    label="MCP"
-                    lockedFeature="mcp"
-                    onLockedClick={setUpgradeFeature}
-                  />
-                  <LockedNavSubItem
+                {/* 2. Outils : Plugins, MCP & Skills sur une page unifiée */}
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    asChild
+                    className={cn(
+                      "h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground",
+                      isToolsActive &&
+                        "bg-sidebar-accent font-semibold text-sidebar-foreground"
+                    )}
+                    tooltip="Outils (Plugins, MCP & Skills)"
+                  >
+                    <Link
+                      data-onboarding="nav-tools"
+                      href="/tools"
+                      onClick={handleNavClick}
+                    >
+                      <WrenchIcon className="size-4" />
+                      <span>Outils</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+
+                {/* Agents — réservés aux forfaits payants */}
+                <SidebarMenuItem>
+                  <LockedSidebarNavItem
                     closeMobile={handleNavClick}
                     href="/agents"
                     icon={BotIcon}
                     label="Agents"
-                    lockedFeature="agents"
-                    onLockedClick={setUpgradeFeature}
+                    onLockedClick={() => setUpgradeFeature("agents")}
+                    tooltip="Agents IA"
                   />
-                </SidebarNavCollapsible>
+                </SidebarMenuItem>
 
                 {/* 3. Plus : Paramètres, Messages Archivés, Supprimer l'historique */}
                 <SidebarNavCollapsible

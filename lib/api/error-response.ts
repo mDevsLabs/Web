@@ -48,7 +48,7 @@ export function errorResponse(
   return Response.json(body, { headers: options.headers, status });
 }
 
-function extractUpstreamMessage(body: unknown): string | undefined {
+export function extractUpstreamMessage(body: unknown): string | undefined {
   if (!body || typeof body !== "object") {
     return;
   }

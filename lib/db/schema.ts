@@ -710,6 +710,30 @@ export const userMcpPrefs = pgTable("user_mcp_prefs", {
 });
 export type UserMcpPrefs = InferSelectModel<typeof userMcpPrefs>;
 
+export const pluginInstallation = pgTable(
+  "PluginInstallation",
+  {
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    installedAt: timestamp("installedAt").notNull().defaultNow(),
+    isEnabled: boolean("isEnabled").notNull().default(true),
+    pluginId: varchar("pluginId", { length: 64 }).notNull(),
+    settings: json("settings").notNull().default({}),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+    userId: text("userId").notNull(),
+    version: varchar("version", { length: 20 }).notNull().default("1.0.0"),
+  },
+  (table) => ({
+    userPluginUnique: uniqueIndex(
+      "PluginInstallation_userId_pluginId_key"
+    ).on(table.userId, table.pluginId),
+    userIdIdx: index("PluginInstallation_userId_idx").on(table.userId),
+  })
+);
+
+export type PluginInstallation = InferSelectModel<
+  typeof pluginInstallation
+>;
+
 export const agent = pgTable(
   "Agent",
   {

@@ -10,6 +10,7 @@ import {
   CoinsIcon,
   FileSearchIcon,
   FileTextIcon,
+  GaugeIcon,
   GlobeIcon,
   HelpCircleIcon,
   ImageIcon,
@@ -21,6 +22,7 @@ import {
   PodcastIcon,
   QrCodeIcon,
   TrophyIcon,
+  UserRoundIcon,
   Volume2Icon,
   WaypointsIcon,
 } from "lucide-react";
@@ -52,9 +54,17 @@ export const TOOL_IDS = [
   "qrCodeGenerator",
   "askUser",
   "quizzly",
+  "updateAccountProfile",
+  "getAccountUsage",
 ] as const;
 
-export type ToolId = (typeof TOOL_IDS)[number];
+export type NativeToolId = (typeof TOOL_IDS)[number];
+
+// Un identifiant d'outil sélectionnable : outil natif (menu +, skills,
+// planification) ou outil fourni par un plugin installé. Le `string & {}`
+// préserve l'autocomplétion des identifiants natifs tout en acceptant les
+// identifiants dynamiques des plugins.
+export type ToolId = NativeToolId | (string & {});
 
 export type ToolMeta = {
   id: ToolId;
@@ -165,6 +175,13 @@ export const TOOLS_META: Record<ToolId, ToolMeta> = {
     id: "generateDiagram",
     label: "Générer diagramme",
   },
+  getAccountUsage: {
+    description:
+      "Affiche votre forfait (Free/Plus/Pro/Max) et votre consommation : tokens IA hebdomadaires, images générées du jour, synthèse vocale et stockage cloud, avec jauges et dates de réinitialisation.",
+    icon: GaugeIcon as any,
+    id: "getAccountUsage",
+    label: "Consommation & forfait",
+  },
   getWeather: {
     description:
       "Fournit la météo actuelle et les prévisions de 1 à 7 jours pour une ville ou des coordonnées. À activer pour toute question sur le climat ou les conditions du jour.",
@@ -221,6 +238,13 @@ export const TOOLS_META: Record<ToolId, ToolMeta> = {
     id: "requestSuggestions",
     label: "Suggestions",
   },
+  updateAccountProfile: {
+    description:
+      "Prépare la modification de votre nom d'utilisateur et/ou de votre numéro de téléphone. Rien n'est appliqué sans votre accord : une carte de confirmation affiche les valeurs avant → après et vous y saisissez vous-même votre mot de passe, qui n'est jamais transmis à l'IA.",
+    icon: UserRoundIcon as any,
+    id: "updateAccountProfile",
+    label: "Modifier mon profil",
+  },
   updateDocument: {
     description:
       "Réécrit intégralement un artefact existant en conservant son titre. À activer pour une refonte complète ; préférer « Éditer document » pour des ajustements ponctuels.",
@@ -276,6 +300,8 @@ export const TOOL_SYSTEM_HINTS: Record<ToolId, string> = {
     "generateChart (crée des graphiques SVG vectoriels de type barres, camembert ou anneau à partir de séries de données)",
   generateDiagram:
     "generateDiagram (génère un diagramme visuel interactif en Mermaid ou PlantUML : architecture, séquence, flowchart, mindmap, gantt, timeline — code propre sans balises ```)",
+  getAccountUsage:
+    "getAccountUsage (affiche le forfait Free/Plus/Pro/Max, les tokens IA consommés/limite, les images du jour, la synthèse vocale et le stockage cloud sous forme de carte — commente ensuite brièvement les points notables : taux supérieur à 80 %, quota épuisé, réinitialisation proche)",
   getWeather:
     "getWeather (météo actuelle et prévisions 1 à 7 jours, celsius/fahrenheit, par ville ou coordonnées)",
   imageGenerate:
@@ -291,6 +317,8 @@ export const TOOL_SYSTEM_HINTS: Record<ToolId, string> = {
     "readUrl (extrait et lit le texte propre et structuré d'une page Web ou d'une documentation en ligne via son URL)",
   requestSuggestions:
     "requestSuggestions (propose des améliorations sur un artefact existant : structure, clarté, style)",
+  updateAccountProfile:
+    "updateAccountProfile (prépare la modification du nom d'utilisateur et/ou du téléphone via une carte de confirmation sécurisée : à n'appeler que sur demande explicite de l'utilisateur, ne demande JAMAIS le mot de passe, n'exécute rien toi-même et attends le résultat (submitted ou cancelled) renvoyé par la carte avant de confirmer ; les erreurs de validation restent affichées dans la carte)",
   updateDocument:
     "updateDocument (réécriture complète d'un artefact : pour une refonte ; préférer editDocument pour des ajustements)",
   webCapture:

@@ -4,7 +4,7 @@ import {
   logError,
   zodIssuesMessage,
 } from "@/lib/api/error-response";
-import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
+import { requireUser, unauthorizedResponse } from "@/lib/auth/require-user";
 import { createSkill, getSkillsByUserId } from "@/lib/db/queries";
 
 const createSkillSchema = z.object({
@@ -40,24 +40,23 @@ const createSkillSchema = z.object({
 });
 
 export async function GET() {
-  const guard = await requirePaidPlan("plus");
-  if (!guard.allowed) {
-    return planGuardResponse(guard)!;
+  // Skills ouverts à tous les forfaits, y compris Free.
+  const session = await requireUser();
+  if (!session) {
+    return unauthorizedResponse();
   }
-  const user = guard.user;
-  const userId = user.id || user.email;
+  const { userId } = session;
 
   const skills = await getSkillsByUserId({ userId });
   return Response.json(skills);
 }
 
 export async function POST(request: Request) {
-  const guard = await requirePaidPlan("plus");
-  if (!guard.allowed) {
-    return planGuardResponse(guard)!;
+  const session = await requireUser();
+  if (!session) {
+    return unauthorizedResponse();
   }
-  const user = guard.user;
-  const userId = user.id || user.email;
+  const { userId } = session;
 
   try {
     const json = await request.json();

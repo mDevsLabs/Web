@@ -13,17 +13,18 @@ import { documentParser } from "@/lib/ai/tools/document-parser";
 import { editDocument } from "@/lib/ai/tools/edit-document";
 import { generateChart } from "@/lib/ai/tools/generate-chart";
 import { generateDiagram } from "@/lib/ai/tools/generate-diagram";
-import { getWeather } from "@/lib/ai/tools/get-weather";
+import { getAccountUsage } from "@/lib/ai/tools/get-account-usage";
 import { imageGenerate } from "@/lib/ai/tools/image-generate";
 import { memory } from "@/lib/ai/tools/memory";
 import { note } from "@/lib/ai/tools/note";
 import { qrCodeGenerator } from "@/lib/ai/tools/qr-code-generator";
-import { quizzly } from "@/lib/ai/tools/quizzly";
 import { readUrl } from "@/lib/ai/tools/read-url";
 import { requestSuggestions } from "@/lib/ai/tools/request-suggestions";
+import { updateAccountProfile } from "@/lib/ai/tools/update-account-profile";
 import { updateDocument } from "@/lib/ai/tools/update-document";
 import { webCapture } from "@/lib/ai/tools/web-capture";
 import { webSearch } from "@/lib/ai/tools/web-search";
+import type { MaiUser } from "@/lib/auth/session";
 import type { ChatMessage } from "@/lib/types";
 
 export type ChatToolDeps = {
@@ -33,6 +34,7 @@ export type ChatToolDeps = {
   userEmail: string;
   isGhostMode: boolean;
   chatModel: string;
+  maiUser: MaiUser;
   memoryActive: boolean;
   memoryAllowAdd: boolean;
   memoryLimit: number;
@@ -41,7 +43,8 @@ export type ChatToolDeps = {
 
 export function createChatTools(
   deps: ChatToolDeps,
-  mcpTools: Record<string, any>
+  mcpTools: Record<string, any>,
+  pluginTools: Record<string, any> = {}
 ) {
   const {
     dataStream,
@@ -50,6 +53,7 @@ export function createChatTools(
     userEmail,
     isGhostMode,
     chatModel,
+    maiUser,
     memoryActive,
     memoryAllowAdd,
     memoryLimit,
@@ -95,7 +99,7 @@ export function createChatTools(
     }),
     generateChart,
     generateDiagram,
-    getWeather,
+    getAccountUsage: getAccountUsage({ maiUser, sessionToken }),
     ...(isGhostMode
       ? {}
       : {
@@ -103,6 +107,7 @@ export function createChatTools(
             dataStream,
             session: userSessionWithToken,
           }),
+          updateAccountProfile: updateAccountProfile({ maiUser }),
         }),
     ...(memoryActive
       ? {
@@ -119,7 +124,6 @@ export function createChatTools(
       session: userSession,
     }),
     qrCodeGenerator,
-    quizzly,
     readUrl,
     requestSuggestions: requestSuggestions({
       dataStream,
@@ -133,6 +137,8 @@ export function createChatTools(
     }),
     webCapture,
     webSearch,
+    // Outils fournis par les plugins installés et activés pour l'utilisateur.
+    ...pluginTools,
     ...mcpTools,
   };
 }

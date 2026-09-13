@@ -82,6 +82,7 @@ const TOOL_FRIENDLY_NAMES: Record<string, string> = {
   editDocument: "Modification de document",
   generateChart: "Génération de graphique",
   getWeather: "Météo en direct",
+  getAccountUsage: "Consommation & forfait",
   imageGenerate: "Génération d'image",
   memory: "Mémoire utilisateur",
   note: "Bloc-notes",
@@ -89,6 +90,7 @@ const TOOL_FRIENDLY_NAMES: Record<string, string> = {
   quizzly: "Quiz interactif",
   readUrl: "Lecture de page Web",
   requestSuggestions: "Suggestions de modifications",
+  updateAccountProfile: "Modification du profil",
   updateDocument: "Mise à jour du document",
   webSearch: "Recherche Web",
 };

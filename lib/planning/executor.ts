@@ -6,7 +6,6 @@ import { getLanguageModel } from "@/lib/ai/providers";
 import { calculator } from "@/lib/ai/tools/calculator";
 import { codeExecution } from "@/lib/ai/tools/code-execution";
 import { dateTime } from "@/lib/ai/tools/datetime";
-import { getWeather } from "@/lib/ai/tools/get-weather";
 import { webSearch } from "@/lib/ai/tools/web-search";
 import { getUserApiKey } from "@/lib/db/api-keys";
 import {
@@ -14,6 +13,7 @@ import {
   getAgentById,
   getChatById,
   getMessagesByChatId,
+  getPluginInstallationsByUserId,
   getScheduledMessageById,
   recordTokenUsage,
   rescheduleRecurringMessage,
@@ -21,6 +21,7 @@ import {
   saveMessages,
   setScheduledMessageStatus,
 } from "@/lib/db/queries";
+import { createPluginTools } from "@/lib/plugins/server";
 import { generateUUID } from "@/lib/utils";
 
 export type PlanningRecurrence = "none" | "daily" | "weekly" | "monthly";
@@ -187,13 +188,26 @@ export async function executeScheduledMessage(scheduledId: string) {
       ? (item.enabledTools as string[])
       : [];
 
+    // Outils de plugins autorisés : mêmes règles que dans le chat, seuls les
+    // plugins installés et activés par l'utilisateur sont disponibles.
+    const pluginInstallations = await getPluginInstallationsByUserId({
+      userId,
+    });
+    const enabledPluginIds = pluginInstallations
+      .filter((installation) => installation.isEnabled)
+      .map((installation) => installation.pluginId);
+    const pluginTools = createPluginTools(
+      { chatModel: effectiveModel, isGhostMode: false },
+      enabledPluginIds
+    );
+
     // Outils serveur disponibles
     const availableTools: Record<string, any> = {
       calculator,
       codeExecution,
       dateTime,
-      getWeather,
       webSearch,
+      ...pluginTools,
     };
 
     const activeTools = enabledToolsList.filter((t) =>

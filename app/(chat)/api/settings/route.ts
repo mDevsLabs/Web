@@ -1,16 +1,13 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { fetchUsageBundle } from "@/lib/account/usage";
 import {
   errorResponse,
+  extractUpstreamMessage,
   logError,
   normalizeUpstreamError,
 } from "@/lib/api/error-response";
-import { getMaiSessionToken } from "@/lib/auth/session";
+import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
-import {
-  getTierChatWeeklyLimit,
-  getTierSpeechWeeklyLimit,
-  getTierStorageBytes,
-} from "@/lib/plans/tier-limits";
 
 const settingsCache = new Map<string, { data: any; expiresAt: number }>();
 const SETTINGS_CACHE_TTL_MS = 180_000; // 3 minutes de cache
@@ -31,86 +28,11 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const [usageRes, imagesRes, cloudRes, speechRes] = await Promise.all([
-      fetch(`${MAI_API_URL}/usage`, {
-        cache: "no-store",
-        headers: { Authorization: `Bearer ${token}` },
-      }),
-      fetch(`${MAI_API_URL}/v1/images/usage`, {
-        cache: "no-store",
-        headers: { Authorization: `Bearer ${token}` },
-      }),
-      fetch(`${MAI_API_URL}/cloud/storage`, {
-        cache: "no-store",
-        headers: { Authorization: `Bearer ${token}` },
-      }),
-      fetch(`${MAI_API_URL}/v1/speech/usage`, {
-        cache: "no-store",
-        headers: { Authorization: `Bearer ${token}` },
-      }),
-    ]);
-
-    const usageData = usageRes.ok ? await usageRes.json() : null;
-    const imagesData = imagesRes.ok ? await imagesRes.json() : null;
-    const cloudData = cloudRes.ok ? await cloudRes.json() : null;
-    const speechData = speechRes.ok ? await speechRes.json() : null;
-
-    const userTier = usageData?.tier || "Free";
-    const result = {
-      aiUsage: {
-        limit: Number(usageData?.limit || getTierChatWeeklyLimit(userTier)),
-        resetAt: usageData?.resetAt,
-        tier: userTier,
-        tokensUsed: Number(usageData?.tokensUsed || 0),
-      },
-      cloudUsage: cloudData
-        ? {
-            bytesLimit: Number(
-              cloudData.bytes_limit || getTierStorageBytes(userTier)
-            ),
-            bytesUsed: Number(cloudData.bytes_used || 0),
-            filesCount: Number(cloudData.files_count || 0),
-            overLimit: Boolean(cloudData.over_limit),
-            percentUsed: Number(cloudData.percent_used || 0),
-            tier: cloudData.tier || userTier,
-          }
-        : null,
-      imagesUsage: imagesData
-        ? {
-            dailyLimit: imagesData.dailyLimit ?? null,
-            plan: imagesData.plan || userTier,
-            resetAt: imagesData.resetAt,
-            usedToday: imagesData.usedToday ?? null,
-          }
-        : null,
-      speechUsage: speechData
-        ? {
-            limit: Number(
-              speechData.limit ||
-                speechData.weeklyLimit ||
-                usageData?.speechLimit ||
-                getTierSpeechWeeklyLimit(speechData.plan || userTier)
-            ),
-            requestsCount: Number(speechData.requestsCount || 0),
-            resetAt: speechData.resetAt || usageData?.resetAt,
-            tier: speechData.plan || userTier,
-            tokensUsed: Number(
-              speechData.tokensUsed ?? usageData?.speechTokensUsed ?? 0
-            ),
-          }
-        : usageData?.speechTokensUsed === undefined
-          ? null
-          : {
-              limit: Number(
-                usageData?.speechLimit || getTierSpeechWeeklyLimit(userTier)
-              ),
-              requestsCount: 0,
-              resetAt: usageData?.resetAt,
-              tier: userTier,
-              tokensUsed: Number(usageData?.speechTokensUsed || 0),
-            },
-      user: usageData,
-    };
+    const fallbackUser = (await getMaiUser(token)) ?? undefined;
+    const result = await fetchUsageBundle({
+      fallbackUser,
+      sessionToken: token,
+    });
 
     settingsCache.set(token, {
       data: result,
@@ -204,7 +126,14 @@ export async function POST(req: NextRequest) {
 
     const data = await res.json();
     if (!res.ok) {
-      const payload = normalizeUpstreamError(data, res.status);
+      // Préserver le message précis du backend (mot de passe incorrect,
+      // username/téléphone pris…) sinon normalizeUpstreamError le génériqueise.
+      const upstreamMessage = extractUpstreamMessage(data);
+      const payload = normalizeUpstreamError(
+        data,
+        res.status,
+        upstreamMessage ? { message: upstreamMessage } : {}
+      );
       return NextResponse.json(payload, { status: payload.status });
     }
     return NextResponse.json(data);

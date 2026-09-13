@@ -1,4 +1,6 @@
 import type { Agent, McpServer, Skill } from "@/lib/db/schema";
+import { getPluginByToolId } from "@/lib/plugins/catalog";
+import type { PluginManifest } from "@/lib/plugins/types";
 
 export const MENTION_TOKEN_RE = /(@[a-zA-Z0-9_\u00C0-\u017F-]+)( |\u00A0)?$/;
 
@@ -46,6 +48,11 @@ export function tokenForPendingTool(
     );
     return srv?.name ?? null;
   }
+  // Outil fourni par un plugin : le token inséré correspond au nom du plugin.
+  const plugin = getPluginByToolId(toolId);
+  if (plugin) {
+    return plugin.name;
+  }
   return null;
 }
 
@@ -53,13 +60,15 @@ export function renderHighlightedMentions(
   text: string,
   mcpServers: McpServer[] = [],
   skills: Skill[] = [],
-  agents: Agent[] = []
+  agents: Agent[] = [],
+  plugins: PluginManifest[] = []
 ) {
   if (!text) return null;
   const mentionNames = [
     ...mcpServers.map((s) => s.name),
     ...skills.map((s) => s.name),
     ...agents.map((a) => a.name),
+    ...plugins.map((p) => p.name),
   ].filter(Boolean);
 
   mentionNames.sort((a, b) => b.length - a.length);
@@ -97,6 +106,7 @@ export function deactivateMentionToken(params: {
   pendingProject: { name: string } | null;
   pendingTools: readonly unknown[];
   userMcpServers: McpServer[];
+  plugins?: PluginManifest[];
   togglePendingTool: (toolId: any) => void;
   clearActiveSkill: () => void;
   clearActiveAgent: () => void;
@@ -109,6 +119,7 @@ export function deactivateMentionToken(params: {
     pendingProject,
     pendingTools,
     userMcpServers,
+    plugins = [],
     togglePendingTool,
     clearActiveSkill,
     clearActiveAgent,
@@ -136,6 +147,11 @@ export function deactivateMentionToken(params: {
       if (pendingTools.includes(toolId)) {
         togglePendingTool(toolId);
       }
+      return;
+    }
+    const plugin = plugins.find((p) => `@${p.name}` === token);
+    if (plugin && pendingTools.includes(plugin.tool.id)) {
+      togglePendingTool(plugin.tool.id);
     }
   }
 }

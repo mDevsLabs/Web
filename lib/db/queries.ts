@@ -35,6 +35,7 @@ import {
   mcpServerSecret,
   mcpTemplate,
   message,
+  pluginInstallation,
   project,
   type ScheduledMessage,
   type Skill,
@@ -939,6 +940,23 @@ END $$;`
   );
   await run(
     client`CREATE INDEX IF NOT EXISTS "SkillUsage_userId_idx" ON "SkillUsage" USING btree ("userId")`
+  );
+
+  await run(client`CREATE TABLE IF NOT EXISTS "PluginInstallation" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "userId" text NOT NULL,
+    "pluginId" varchar(64) NOT NULL,
+    "version" varchar(20) DEFAULT '1.0.0' NOT NULL,
+    "isEnabled" boolean DEFAULT true NOT NULL,
+    "settings" json DEFAULT '{}'::json NOT NULL,
+    "installedAt" timestamp DEFAULT now() NOT NULL,
+    "updatedAt" timestamp DEFAULT now() NOT NULL
+  )`);
+  await run(
+    client`CREATE UNIQUE INDEX IF NOT EXISTS "PluginInstallation_userId_pluginId_key" ON "PluginInstallation" USING btree ("userId","pluginId")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "PluginInstallation_userId_idx" ON "PluginInstallation" USING btree ("userId")`
   );
 }
 
@@ -4438,4 +4456,83 @@ export async function setScheduledMessageStatus(params: {
       updatedAt: new Date(),
     })
     .where(eq(scheduledMessage.id, params.id));
+}
+
+// ─────────────────────────────────────────────────────────────
+// Plugins installés par utilisateur
+// ─────────────────────────────────────────────────────────────
+
+export async function getPluginInstallationsByUserId(params: {
+  userId: string;
+}) {
+  const database = await getDb();
+  const rows = await database
+    .select()
+    .from(pluginInstallation)
+    .where(eq(pluginInstallation.userId, params.userId))
+    .orderBy(desc(pluginInstallation.installedAt));
+  return rows;
+}
+
+export async function installPlugin(params: {
+  userId: string;
+  pluginId: string;
+  version: string;
+}) {
+  const database = await getDb();
+  const now = new Date();
+  const [row] = await database
+    .insert(pluginInstallation)
+    .values({
+      installedAt: now,
+      isEnabled: true,
+      pluginId: params.pluginId,
+      updatedAt: now,
+      userId: params.userId,
+      version: params.version,
+    })
+    .onConflictDoUpdate({
+      set: {
+        isEnabled: true,
+        updatedAt: now,
+        version: params.version,
+      },
+      target: [pluginInstallation.userId, pluginInstallation.pluginId],
+    })
+    .returning();
+  return row;
+}
+
+export async function setPluginEnabled(params: {
+  userId: string;
+  pluginId: string;
+  isEnabled: boolean;
+}) {
+  const database = await getDb();
+  const [row] = await database
+    .update(pluginInstallation)
+    .set({ isEnabled: params.isEnabled, updatedAt: new Date() })
+    .where(
+      and(
+        eq(pluginInstallation.userId, params.userId),
+        eq(pluginInstallation.pluginId, params.pluginId)
+      )
+    )
+    .returning();
+  return row;
+}
+
+export async function uninstallPlugin(params: {
+  userId: string;
+  pluginId: string;
+}) {
+  const database = await getDb();
+  await database
+    .delete(pluginInstallation)
+    .where(
+      and(
+        eq(pluginInstallation.userId, params.userId),
+        eq(pluginInstallation.pluginId, params.pluginId)
+      )
+    );
 }

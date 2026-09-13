@@ -1,5 +1,6 @@
 import { getLanguageModel } from "@/lib/ai/providers";
 import { errorResponse } from "@/lib/api/error-response";
+import { isPaidTier } from "@/lib/auth/plan";
 import { getMaiUser } from "@/lib/auth/session";
 import {
   authenticateChatRequest,
@@ -12,7 +13,16 @@ import { buildMemoryContext } from "@/lib/chat/memory";
 import { buildPromptAddendum } from "@/lib/chat/prompt";
 import { createChatStream, createChatStreamResponse } from "@/lib/chat/stream";
 import { createChatTools } from "@/lib/chat/tools";
-import { deleteChatById, getChatById } from "@/lib/db/queries";
+import {
+  deleteChatById,
+  getChatById,
+  getPluginInstallationsByUserId,
+} from "@/lib/db/queries";
+import {
+  createPluginTools,
+  getToolIdsForPluginIds,
+  isKnownPluginToolId,
+} from "@/lib/plugins/server";
 import { ChatbotError } from "@/lib/errors";
 import { type PostRequestBody, postRequestBodySchema } from "./schema";
 
@@ -96,10 +106,25 @@ export async function POST(request: Request) {
       userId: ctx.userId,
     });
 
-    // 4. Addendum de prompt (instructions, mémoire, outils, commande)
+    // 4. Plugins installés et activés pour l'utilisateur : seuls leurs outils
+    // peuvent être instanciés, même si le client les mentionne. Les plugins
+    // sont réservés aux forfaits payants : la vérification du forfait est
+    // refaite ici, indépendamment de l'état d'installation.
+    const pluginsAllowed = isPaidTier(ctx.maiUser.tier);
+    const pluginInstallations =
+      ctx.isGhostMode || !pluginsAllowed
+        ? []
+        : await getPluginInstallationsByUserId({ userId: ctx.userId });
+    const enabledPluginIds = pluginInstallations
+      .filter((installation) => installation.isEnabled)
+      .map((installation) => installation.pluginId);
+    const installedPluginToolIds = getToolIdsForPluginIds(enabledPluginIds);
+
+    // 5. Addendum de prompt (instructions, mémoire, outils, commande)
     const { effectiveAddendum, requestedTools } = await buildPromptAddendum(
       ctx,
-      memoryCtx
+      memoryCtx,
+      { availablePluginToolIds: installedPluginToolIds }
     );
 
     // 5. Température effective: chat override > agent > user default (plus de mode)
@@ -118,7 +143,7 @@ export async function POST(request: Request) {
       userId: ctx.maiUser.id,
     });
 
-    // 7. Flux : MCP + outils + streamText (préparés à l'intérieur du stream)
+    // 6. Flux : MCP + outils + streamText (préparés à l'intérieur du stream)
     const stream = createChatStream({
       ctx,
       effectiveMaxTokens,
@@ -136,11 +161,22 @@ export async function POST(request: Request) {
           userId: ctx.userId,
         });
 
-        // Outils actifs : statiques demandés + clés MCP
+        // Outils actifs : statiques demandés + outils de plugins installés +
+        // clés MCP. Un outil de plugin demandé mais non installé/activé est
+        // ignoré (garde serveur, le client ne fait pas autorité).
+        const activePluginToolIds = requestedTools.filter(
+          (t) =>
+            isKnownPluginToolId(t) && installedPluginToolIds.includes(t)
+        );
         const activeToolsList: string[] = [
           ...requestedTools.filter(
-            (t) => !t.startsWith("mcp_") && t !== "mcp" && !t.startsWith("mcp:")
+            (t) =>
+              !isKnownPluginToolId(t) &&
+              !t.startsWith("mcp_") &&
+              t !== "mcp" &&
+              !t.startsWith("mcp:")
           ),
+          ...activePluginToolIds,
           ...(mcpCtx.hasMcpEnabled
             ? mcpCtx.mcpToolKeys
             : requestedTools.filter((t) => mcpCtx.mcpToolKeys.includes(t))),
@@ -150,12 +186,28 @@ export async function POST(request: Request) {
           ? `${effectiveAddendum ? `${effectiveAddendum}\n\n` : ""}${mcpCtx.mcpAddendum}`
           : effectiveAddendum;
 
+        const pluginTools = createPluginTools(
+          {
+            chatModel: ctx.chatModel,
+            dataStream,
+            isGhostMode: ctx.isGhostMode,
+            session: {
+              token: ctx.sessionToken,
+              user: ctx.isGhostMode
+                ? null
+                : { email: ctx.userEmail, id: ctx.userId },
+            },
+          },
+          enabledPluginIds
+        );
+
         const tools = createChatTools(
           {
             chatModel: ctx.chatModel,
             dataStream,
             effectiveAgentId: ctx.effectiveAgentId,
             isGhostMode: ctx.isGhostMode,
+            maiUser: ctx.maiUser,
             memoryActive: memoryCtx.memoryActive,
             memoryAllowAdd: memoryCtx.memoryAllowAdd,
             memoryLimit: memoryCtx.memoryLimit,
@@ -163,7 +215,8 @@ export async function POST(request: Request) {
             userEmail: ctx.userEmail,
             userId: ctx.userId,
           },
-          mcpCtx.mcpTools
+          mcpCtx.mcpTools,
+          pluginTools
         );
 
         return {

@@ -198,7 +198,11 @@ function VersionHistoryList({
   );
 }
 
-export default function SkillsClient() {
+export default function SkillsClient({
+  embedded = false,
+}: {
+  embedded?: boolean;
+} = {}) {
   const _router = useRouter();
   const {
     data: skills = [],
@@ -536,27 +540,43 @@ export default function SkillsClient() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground">
+    <div
+      className={
+        embedded
+          ? "flex flex-col text-foreground"
+          : "flex flex-col min-h-screen bg-background text-foreground"
+      }
+    >
       {/* Header */}
-      <header className="sticky top-0 z-20 flex flex-col gap-4 border-b border-border/40 bg-background/95 backdrop-blur-md px-4 py-3 sm:px-6">
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <PageBackButton fallbackHref="/" label="Retour au chat" />
-            <div className="flex items-center gap-2.5">
-              <div className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                <WrenchIcon className="size-5" />
-              </div>
-              <div>
-                <h1 className="text-lg font-bold tracking-tight sm:text-xl">
-                  Skills IA & Outils
-                </h1>
-                <p className="text-xs text-muted-foreground">
-                  Concevez des compétences personnalisées avec paramètres et
-                  outils
-                </p>
+      <header
+        className={
+          embedded
+            ? "z-20 flex flex-col gap-3"
+            : "sticky top-0 z-20 flex flex-col gap-4 border-b border-border/40 bg-background/95 backdrop-blur-md px-4 py-3 sm:px-6"
+        }
+      >
+        <div
+          className={`flex items-center gap-3 ${embedded ? "justify-end" : "justify-between"}`}
+        >
+          {embedded ? null : (
+            <div className="flex items-center gap-3">
+              <PageBackButton fallbackHref="/" label="Retour au chat" />
+              <div className="flex items-center gap-2.5">
+                <div className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <WrenchIcon className="size-5" />
+                </div>
+                <div>
+                  <h1 className="text-lg font-bold tracking-tight sm:text-xl">
+                    Skills IA & Outils
+                  </h1>
+                  <p className="text-xs text-muted-foreground">
+                    Concevez des compétences personnalisées avec paramètres et
+                    outils
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
 
           <div className="flex items-center gap-2">
             <DropdownMenu>

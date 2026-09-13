@@ -15,6 +15,7 @@ import type { documentParser } from "./ai/tools/document-parser";
 import type { editDocument } from "./ai/tools/edit-document";
 import type { generateChart } from "./ai/tools/generate-chart";
 import type { generateDiagram } from "./ai/tools/generate-diagram";
+import type { getAccountUsage } from "./ai/tools/get-account-usage";
 import type { getWeather } from "./ai/tools/get-weather";
 import type { imageGenerate } from "./ai/tools/image-generate";
 import type { memory } from "./ai/tools/memory";
@@ -23,6 +24,7 @@ import type { qrCodeGenerator } from "./ai/tools/qr-code-generator";
 import type { quizzly } from "./ai/tools/quizzly";
 import type { readUrl } from "./ai/tools/read-url";
 import type { requestSuggestions } from "./ai/tools/request-suggestions";
+import type { updateAccountProfile } from "./ai/tools/update-account-profile";
 import type { updateDocument } from "./ai/tools/update-document";
 import type { webCapture } from "./ai/tools/web-capture";
 import type { webSearch } from "./ai/tools/web-search";
@@ -61,6 +63,10 @@ type currencyConverterTool = InferUITool<typeof currencyConverter>;
 type qrCodeGeneratorTool = InferUITool<typeof qrCodeGenerator>;
 type askUserTool = InferUITool<typeof askUser>;
 type quizzlyTool = InferUITool<typeof quizzly>;
+type updateAccountProfileTool = InferUITool<
+  ReturnType<typeof updateAccountProfile>
+>;
+type getAccountUsageTool = InferUITool<ReturnType<typeof getAccountUsage>>;
 
 export type ChatTools = {
   getWeather: weatherTool;
@@ -88,6 +94,8 @@ export type ChatTools = {
   qrCodeGenerator: qrCodeGeneratorTool;
   askUser: askUserTool;
   quizzly: quizzlyTool;
+  updateAccountProfile: updateAccountProfileTool;
+  getAccountUsage: getAccountUsageTool;
 };
 
 export type WaitingStatusData = {

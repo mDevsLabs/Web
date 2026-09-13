@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { errorResponse, logError } from "@/lib/api/error-response";
-import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
+import { requireUser, unauthorizedResponse } from "@/lib/auth/require-user";
 import { getMaiUser } from "@/lib/auth/session";
 import {
   deleteSkill,
@@ -69,12 +69,11 @@ export async function PATCH(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const guard = await requirePaidPlan("plus");
-  if (!guard.allowed) {
-    return planGuardResponse(guard)!;
+  const session = await requireUser();
+  if (!session) {
+    return unauthorizedResponse();
   }
-  const user = guard.user;
-  const userId = user.id || user.email;
+  const { userId } = session;
   const { id } = await params;
 
   try {
@@ -118,12 +117,11 @@ export async function DELETE(
   _request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const guard = await requirePaidPlan("plus");
-  if (!guard.allowed) {
-    return planGuardResponse(guard)!;
+  const session = await requireUser();
+  if (!session) {
+    return unauthorizedResponse();
   }
-  const user = guard.user;
-  const userId = user.id || user.email;
+  const { userId } = session;
   const { id } = await params;
 
   const deleted = await deleteSkill({ id, userId });
