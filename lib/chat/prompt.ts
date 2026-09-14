@@ -2,15 +2,16 @@ import { TOOL_SYSTEM_HINTS } from "@/lib/ai/tools/config";
 import type { ChatRequestContext } from "@/lib/chat/context";
 import type { MemoryContext } from "@/lib/chat/memory";
 import { getCustomCommandById } from "@/lib/db/queries";
-import {
-  getPluginSystemHints,
-  isKnownPluginToolId,
-} from "@/lib/plugins/server";
+import { isPluginOnlyToolId } from "@/lib/plugins/catalog";
+import { getPluginSystemHints } from "@/lib/plugins/server";
 
 export type PromptAddendumResult = {
   effectiveAddendum: string;
   // Liste des outils demandés (one-shot + skill), filtrée selon le mode fantôme
   requestedTools: string[];
+  // Outils fournis par un plugin non installé/activé : signalés au modèle pour
+  // qu'il oriente l'utilisateur au lieu de simuler un résultat.
+  unavailableTools: string[];
 };
 
 export async function buildPromptAddendum(
@@ -59,8 +60,13 @@ export async function buildPromptAddendum(
       ...ctx.skillTools,
     ])
   );
+  // Seuls les identifiants fournis par un plugin peuvent être retirés : un
+  // outil implémenté nativement reste disponible quel que soit l'état des
+  // plugins (une validation interdit d'ailleurs toute collision d'id).
+  const unavailableTools: string[] = [];
   const requestedTools: string[] = combinedEnabledTools.filter((t) => {
-    if (isKnownPluginToolId(t) && !availablePluginToolIds.has(t)) {
+    if (isPluginOnlyToolId(t) && !availablePluginToolIds.has(t)) {
+      unavailableTools.push(t);
       return false;
     }
     return (
@@ -99,5 +105,11 @@ export async function buildPromptAddendum(
     effectiveAddendum += `\n\nCOMMANDE PERSONNALISÉE${commandName ? ` « ${commandName} »` : ""} — CONSIGNES À APPLIQUER À CE MESSAGE :\n${pendingPrompt.text.trim()}`;
   }
 
-  return { effectiveAddendum, requestedTools };
+  if (unavailableTools.length > 0) {
+    effectiveAddendum += `\n\nOUTILS DEMANDÉS MAIS INDISPONIBLES : ${unavailableTools.join(
+      ", "
+    )}. Le plugin correspondant n'est pas installé ou activé pour ce compte (page Applications → Plugins, réservée aux forfaits payants). Ne simule jamais leur résultat : indique brièvement à l'utilisateur comment les activer.`;
+  }
+
+  return { effectiveAddendum, requestedTools, unavailableTools };
 }

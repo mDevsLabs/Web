@@ -10,12 +10,26 @@
 import type { Hono } from "npm:hono@4";
 import { extractToken, getDb, verifyToken } from "./config.ts";
 import { pushRealtimeEvent } from "./realtime.ts";
-import { stripHtmlTags } from "./vibe-posts-core.ts";
-import type { RegisterMultiFn } from "./vibe-common.ts";
 import { ensureBooksTables } from "./vibe-books.ts";
-import { dmPlainLength, getDmMessageCharLimit, ensureDMTables, generateMAIDMReply, publishScheduledDMs, resolveConversationId, fetchPinnedMessages, deriveForwardedFrom, fetchDMAttachedPost, attachDMAttachedPosts } from "./vibe-dms-core.ts";
+import type { RegisterMultiFn } from "./vibe-common.ts";
+import {
+  attachDMAttachedPosts,
+  deriveForwardedFrom,
+  dmPlainLength,
+  ensureDMTables,
+  fetchDMAttachedPost,
+  fetchPinnedMessages,
+  generateMAIDMReply,
+  getDmMessageCharLimit,
+  publishScheduledDMs,
+  resolveConversationId,
+} from "./vibe-dms-core.ts";
+import { stripHtmlTags } from "./vibe-posts-core.ts";
 
-export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn) {
+export function registerDMDirectRoutes(
+  app: Hono,
+  registerMulti: RegisterMultiFn
+) {
   // 1. SEARCH USERS FOR DM
   const handleDMUsers = async (c: any) => {
     try {
@@ -38,7 +52,11 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
     }
   };
 
-  registerMulti("get", ["/api/vibe/dms/users", "/vibe/dms/users", "/v1/dms/users"], handleDMUsers);
+  registerMulti(
+    "get",
+    ["/api/vibe/dms/users", "/vibe/dms/users", "/v1/dms/users"],
+    handleDMUsers
+  );
 
   // 2. DM CONVERSATIONS
   const handleDMConversations = async (c: any) => {
@@ -114,11 +132,19 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
         `,
       ]);
       // Livres : métadonnées (titre, icône) pour distinguer la conversation de groupe
-      const bookIds = Array.from(new Set(((groups || []) as any[]).map((g) => g.book_id).filter(Boolean).map(String)));
+      const bookIds = Array.from(
+        new Set(
+          ((groups || []) as any[])
+            .map((g) => g.book_id)
+            .filter(Boolean)
+            .map(String)
+        )
+      );
       let bookMeta = new Map<string, any>();
       if (bookIds.length > 0) {
         try {
-          const rows = await sql`SELECT id, title, icon FROM vibe_books WHERE id = ANY(${bookIds}::uuid[])`;
+          const rows =
+            await sql`SELECT id, title, icon FROM vibe_books WHERE id = ANY(${bookIds}::uuid[])`;
           bookMeta = new Map((rows as any[]).map((b) => [String(b.id), b]));
         } catch {
           // vibe_books absent : conversations affichées comme des groupes classiques
@@ -126,22 +152,26 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
       }
       // Normalisation des groupes au format DMConversation (partner_id = id de conversation)
       const groupConvs = ((groups || []) as any[]).map((g) => ({
+        book_icon: g.book_id
+          ? bookMeta.get(String(g.book_id))?.icon || null
+          : null,
+        book_id: g.book_id ? String(g.book_id) : null,
+        book_title: g.book_id
+          ? bookMeta.get(String(g.book_id))?.title || g.group_name || null
+          : null,
         id: String(g.conversation_id),
-        partner_id: `group:${g.conversation_id}`,
-        partner_username: g.group_name || 'Groupe',
-        partner_display_name: g.group_name || 'Groupe',
-        partner_avatar_url: g.group_avatar_url || null,
-        last_message_preview: g.last_message_preview || '',
-        last_message_content: g.last_message_preview || '',
-        last_message_at: g.last_message_at,
-        unread_count: Number(g.unread_count || 0),
-        is_group: true,
         is_admin: Boolean(g.is_admin) && !g.book_id,
         is_book: Boolean(g.book_id),
-        book_id: g.book_id ? String(g.book_id) : null,
-        book_title: g.book_id ? (bookMeta.get(String(g.book_id))?.title || g.group_name || null) : null,
-        book_icon: g.book_id ? (bookMeta.get(String(g.book_id))?.icon || null) : null,
+        is_group: true,
+        last_message_at: g.last_message_at,
+        last_message_content: g.last_message_preview || "",
+        last_message_preview: g.last_message_preview || "",
         members: g.members || [],
+        partner_avatar_url: g.group_avatar_url || null,
+        partner_display_name: g.group_name || "Groupe",
+        partner_id: `group:${g.conversation_id}`,
+        partner_username: g.group_name || "Groupe",
+        unread_count: Number(g.unread_count || 0),
       }));
       return c.json({ conversations: [...convs, ...groupConvs] });
     } catch (err: any) {
@@ -149,7 +179,15 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
     }
   };
 
-  registerMulti("get", ["/api/vibe/dms/conversations", "/vibe/dms/conversations", "/v1/dms/conversations"], handleDMConversations);
+  registerMulti(
+    "get",
+    [
+      "/api/vibe/dms/conversations",
+      "/vibe/dms/conversations",
+      "/v1/dms/conversations",
+    ],
+    handleDMConversations
+  );
 
   // 3. DM MESSAGES (1-1 et groupes : les groupes utilisent conversationId "group:<uuid>")
   const handleDMMessages = async (c: any) => {
@@ -169,13 +207,19 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
 
       if (isGroupKey) {
         // ── Conversation de GROUPE ──
-        if (!groupId || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(groupId)) {
+        if (
+          !groupId ||
+          !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+            groupId
+          )
+        ) {
           return c.json({ error: "Conversation introuvable." }, 404);
         }
         const memberRows = await sql`
           SELECT 1 FROM dm_group_members WHERE conversation_id = ${groupId}::uuid AND user_id = ${userId} LIMIT 1
         `;
-        if (memberRows.length === 0) return c.json({ error: "Conversation introuvable." }, 404);
+        if (memberRows.length === 0)
+          return c.json({ error: "Conversation introuvable." }, 404);
 
         const messages = await sql`
           SELECT m.*, u.username as sender_username,
@@ -199,22 +243,32 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
               SELECT message_id, emoji, user_id FROM dm_reactions
               WHERE message_id = ANY(${msgIds}::uuid[])
             `;
-            const byMsg = new Map<string, { emoji: string; user_id: number }[]>();
+            const byMsg = new Map<
+              string,
+              { emoji: string; user_id: number }[]
+            >();
             for (const r of reactions) {
               const key = String(r.message_id);
               if (!byMsg.has(key)) byMsg.set(key, []);
-              byMsg.get(key)!.push({ emoji: r.emoji, user_id: Number(r.user_id) });
+              byMsg
+                .get(key)!
+                .push({ emoji: r.emoji, user_id: Number(r.user_id) });
             }
             for (const m of messages) {
               const list = byMsg.get(String(m.id)) || [];
-              const grouped: { emoji: string; count: number; mine: boolean }[] = [];
+              const grouped: { emoji: string; count: number; mine: boolean }[] =
+                [];
               for (const r of list) {
                 const g = grouped.find((x) => x.emoji === r.emoji);
                 if (g) {
                   g.count += 1;
                   g.mine = g.mine || r.user_id === userId;
                 } else {
-                  grouped.push({ emoji: r.emoji, count: 1, mine: r.user_id === userId });
+                  grouped.push({
+                    count: 1,
+                    emoji: r.emoji,
+                    mine: r.user_id === userId,
+                  });
                 }
               }
               m.reactions = grouped;
@@ -228,16 +282,25 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
         // Marquer comme lu : ajoute mon id dans read_by des messages des autres
         try {
           const unreadRows = messages.filter(
-            (m: any) => Number(m.sender_id) !== userId && !((m.read_by || []) as string[]).map(String).includes(String(userId))
+            (m: any) =>
+              Number(m.sender_id) !== userId &&
+              !((m.read_by || []) as string[])
+                .map(String)
+                .includes(String(userId))
           );
           for (const m of unreadRows as any[]) {
-            const readers = Array.isArray(m.read_by) ? m.read_by.map(String) : [];
+            const readers = Array.isArray(m.read_by)
+              ? m.read_by.map(String)
+              : [];
             readers.push(String(userId));
             await sql`UPDATE direct_messages SET read_by = ${JSON.stringify(readers)}::jsonb WHERE id = ${m.id}::uuid`;
           }
         } catch {}
 
-        return c.json({ messages, pinned_messages: await fetchPinnedMessages(sql, groupId!, userId) });
+        return c.json({
+          messages,
+          pinned_messages: await fetchPinnedMessages(sql, groupId!, userId),
+        });
       }
 
       // ── Conversation 1-1 (flux historique) ──
@@ -268,18 +331,25 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
           for (const r of reactions) {
             const key = String(r.message_id);
             if (!byMsg.has(key)) byMsg.set(key, []);
-            byMsg.get(key)!.push({ emoji: r.emoji, user_id: Number(r.user_id) });
+            byMsg
+              .get(key)!
+              .push({ emoji: r.emoji, user_id: Number(r.user_id) });
           }
           for (const m of messages) {
             const list = byMsg.get(String(m.id)) || [];
-            const grouped: { emoji: string; count: number; mine: boolean }[] = [];
+            const grouped: { emoji: string; count: number; mine: boolean }[] =
+              [];
             for (const r of list) {
               const g = grouped.find((x) => x.emoji === r.emoji);
               if (g) {
                 g.count += 1;
                 g.mine = g.mine || r.user_id === userId;
               } else {
-                grouped.push({ emoji: r.emoji, count: 1, mine: r.user_id === userId });
+                grouped.push({
+                  count: 1,
+                  emoji: r.emoji,
+                  mine: r.user_id === userId,
+                });
               }
             }
             m.reactions = grouped;
@@ -295,9 +365,17 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
       // Messages épinglés de la conversation (aperçus, max 3, masqués exclus)
       let pinned_messages: any[] = [];
       try {
-        const conversationId = await resolveConversationId(sql, userId, partnerId);
+        const conversationId = await resolveConversationId(
+          sql,
+          userId,
+          partnerId
+        );
         if (conversationId) {
-          pinned_messages = await fetchPinnedMessages(sql, conversationId, userId);
+          pinned_messages = await fetchPinnedMessages(
+            sql,
+            conversationId,
+            userId
+          );
         }
       } catch {}
       return c.json({ messages, pinned_messages });
@@ -306,7 +384,15 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
     }
   };
 
-  registerMulti("get", ["/api/vibe/dms/messages/:partnerId", "/vibe/dms/messages/:partnerId", "/v1/dms/messages/:partnerId"], handleDMMessages);
+  registerMulti(
+    "get",
+    [
+      "/api/vibe/dms/messages/:partnerId",
+      "/vibe/dms/messages/:partnerId",
+      "/v1/dms/messages/:partnerId",
+    ],
+    handleDMMessages
+  );
 
   // 4. SEND DM (1-1 ou groupe)
   const handleSendDM = async (c: any) => {
@@ -316,53 +402,104 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
 
-      const { recipient_id, content, reply_to_id, send_at, conversation_id, forwarded_from, attached_post_id } = await c.req.json();
+      const {
+        recipient_id,
+        content,
+        reply_to_id,
+        send_at,
+        conversation_id,
+        forwarded_from,
+        attached_post_id,
+      } = await c.req.json();
 
       // ── GROUPE : conversation_id "group:<uuid>" → diffusion à tous les membres ──
-      if (typeof conversation_id === "string" && conversation_id.startsWith("group:")) {
+      if (
+        typeof conversation_id === "string" &&
+        conversation_id.startsWith("group:")
+      ) {
         const groupId = conversation_id.slice(6);
-        if (!content || !content.trim()) return c.json({ error: "Contenu requis." }, 400);
-        if (send_at) return c.json({ error: "La programmation d'envoi n'est pas disponible dans les groupes." }, 400);
+        if (!content || !content.trim())
+          return c.json({ error: "Contenu requis." }, 400);
+        if (send_at)
+          return c.json(
+            {
+              error:
+                "La programmation d'envoi n'est pas disponible dans les groupes.",
+            },
+            400
+          );
         const sql = getDb();
         await ensureDMTables().catch(() => {});
         const dmCharLimit = await getDmMessageCharLimit(sql, userId);
-        if (dmPlainLength(content) > dmCharLimit) return c.json({ error: `Message trop long (${dmCharLimit.toLocaleString("fr-FR")} caractères max).` }, 400);
+        if (dmPlainLength(content) > dmCharLimit)
+          return c.json(
+            {
+              error: `Message trop long (${dmCharLimit.toLocaleString("fr-FR")} caractères max).`,
+            },
+            400
+          );
         const memberRows = await sql`
           SELECT user_id FROM dm_group_members WHERE conversation_id = ${groupId}::uuid
         `;
         const memberIds = (memberRows as any[]).map((r) => Number(r.user_id));
-        if (!memberIds.includes(userId)) return c.json({ error: "Conversation introuvable." }, 404);
+        if (!memberIds.includes(userId))
+          return c.json({ error: "Conversation introuvable." }, 404);
 
         // Conversation de Livre ? (book_id non nul → publication jointe autorisée)
         const convRows = await sql`
           SELECT book_id, group_name FROM dm_conversations WHERE id = ${groupId}::uuid LIMIT 1
         `.catch(() => []);
-        const bookId = convRows[0]?.book_id ? String(convRows[0].book_id) : null;
+        const bookId = convRows[0]?.book_id
+          ? String(convRows[0].book_id)
+          : null;
         const convName = String(convRows[0]?.group_name || "Groupe");
 
         // Publication jointe (carte cliquable) : réservée aux conversations de Livre,
         // et le post doit appartenir au Livre concerné.
         let validAttachedPostId: string | null = null;
-        const rawAttached = typeof attached_post_id === "string" ? attached_post_id : "";
+        const rawAttached =
+          typeof attached_post_id === "string" ? attached_post_id : "";
         if (rawAttached) {
           if (!bookId) {
-            return c.json({ error: "Les publications jointes ne sont disponibles que dans les conversations de Livre." }, 400);
+            return c.json(
+              {
+                error:
+                  "Les publications jointes ne sont disponibles que dans les conversations de Livre.",
+              },
+              400
+            );
           }
-          if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(rawAttached)) {
+          if (
+            !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+              rawAttached
+            )
+          ) {
             return c.json({ error: "Publication invalide." }, 400);
           }
           await ensureBooksTables(sql).catch(() => {});
           const okPost = await sql`
             SELECT 1 FROM vibe_book_items WHERE book_id = ${bookId}::uuid AND post_id = ${rawAttached}::uuid LIMIT 1
           `.catch(() => []);
-          if (okPost.length === 0) return c.json({ error: "Cette publication ne fait pas partie du Livre." }, 400);
+          if (okPost.length === 0)
+            return c.json(
+              { error: "Cette publication ne fait pas partie du Livre." },
+              400
+            );
           validAttachedPostId = rawAttached;
         }
 
         // Réponse à un message du même groupe (validation d'appartenance)
         let validReplyTo: string | null = null;
-        let replyPreview: { reply_to_content: string; reply_to_username: string } | null = null;
-        if (typeof reply_to_id === "string" && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(reply_to_id)) {
+        let replyPreview: {
+          reply_to_content: string;
+          reply_to_username: string;
+        } | null = null;
+        if (
+          typeof reply_to_id === "string" &&
+          /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+            reply_to_id
+          )
+        ) {
           const rRows = await sql`
             SELECT r.content AS reply_to_content, u.username AS reply_to_username
             FROM direct_messages r JOIN users u ON u.id = r.sender_id
@@ -371,7 +508,10 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
           `;
           if (rRows.length > 0) {
             validReplyTo = reply_to_id;
-            replyPreview = { reply_to_content: String(rRows[0].reply_to_content), reply_to_username: String(rRows[0].reply_to_username) };
+            replyPreview = {
+              reply_to_content: String(rRows[0].reply_to_content),
+              reply_to_username: String(rRows[0].reply_to_username),
+            };
           }
         }
 
@@ -380,14 +520,22 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
 
         // Extraction des mentions : @tous (urgent, tout le groupe) + @username urgents
         const plain = stripHtmlTags(String(content));
-        const mentionMatches = Array.from(new Set(plain.match(/@([a-zA-Z0-9_]{1,30})/g) || [])).map((m: string) => m.slice(1));
-        const isUrgentAll = mentionMatches.some((m) => m.toLowerCase() === "tous");
+        const mentionMatches = Array.from(
+          new Set(plain.match(/@([a-zA-Z0-9_]{1,30})/g) || [])
+        ).map((m: string) => m.slice(1));
+        const isUrgentAll = mentionMatches.some(
+          (m) => m.toLowerCase() === "tous"
+        );
         const memberUsernames = memberIds.length
           ? await sql`SELECT id, username FROM users WHERE id = ANY(${memberIds})`
           : [];
         const urgentUsernames = isUrgentAll
           ? []
-          : memberUsernames.filter((u: any) => mentionMatches.some((m) => m.toLowerCase() === String(u.username).toLowerCase()));
+          : memberUsernames.filter((u: any) =>
+              mentionMatches.some(
+                (m) => m.toLowerCase() === String(u.username).toLowerCase()
+              )
+            );
 
         const msg = await sql`
           INSERT INTO direct_messages (conversation_id, sender_id, content, mentions, urgent_mentions, reply_to_id, forwarded_from, attached_post_id)
@@ -399,22 +547,26 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
           WHERE id = ${groupId}::uuid
         `;
         // Infos de la publication jointe (diffusées aux membres pour la carte cliquable)
-        const attachedPost = validAttachedPostId ? await fetchDMAttachedPost(sql, validAttachedPostId) : null;
+        const attachedPost = validAttachedPostId
+          ? await fetchDMAttachedPost(sql, validAttachedPostId)
+          : null;
         // Notification : urgente pour @tous / @user, normale sinon (hors expéditeur)
         const senderInfo = await sql`
           SELECT u.username, p.display_name FROM users u LEFT JOIN profiles p ON p.user_id = u.id WHERE u.id = ${userId} LIMIT 1
         `;
         for (const mid of memberIds) {
           if (mid === userId) continue;
-          const mentioned = isUrgentAll || urgentUsernames.some((u: any) => Number(u.id) === mid);
-          const notifType = mentioned ? 'mention' : 'dm';
+          const mentioned =
+            isUrgentAll ||
+            urgentUsernames.some((u: any) => Number(u.id) === mid);
+          const notifType = mentioned ? "mention" : "dm";
           const notifMsg = isUrgentAll
-            ? '🚨 vous a mentionné (urgent @tous) dans le groupe'
+            ? "🚨 vous a mentionné (urgent @tous) dans le groupe"
             : mentioned
-            ? '🚨 vous a mentionné en urgence dans le groupe'
-            : bookId
-            ? `a envoyé un message dans le Livre « ${convName} »`
-            : 'a envoyé un message dans le groupe';
+              ? "🚨 vous a mentionné en urgence dans le groupe"
+              : bookId
+                ? `a envoyé un message dans le Livre « ${convName} »`
+                : "a envoyé un message dans le groupe";
           await sql`
             INSERT INTO notifications (recipient_id, actor_id, type, message)
             VALUES (${mid}, ${userId}, ${notifType}, ${notifMsg})
@@ -423,14 +575,20 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
             await pushRealtimeEvent(mid, "dm_message", {
               ...msg[0],
               ...(replyPreview || {}),
-              sender_username: senderInfo[0]?.username || null,
-              sender_display_name: senderInfo[0]?.display_name || null,
-              conversation_id: groupId,
               attached_post: attachedPost,
+              conversation_id: groupId,
+              sender_display_name: senderInfo[0]?.display_name || null,
+              sender_username: senderInfo[0]?.username || null,
             });
           } catch {}
         }
-        return c.json({ success: true, message: { ...msg[0], attached_post: attachedPost } }, 201);
+        return c.json(
+          {
+            message: { ...msg[0], attached_post: attachedPost },
+            success: true,
+          },
+          201
+        );
       }
 
       const recId = Number(recipient_id);
@@ -439,14 +597,22 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
         return c.json({ error: "Destinataire et contenu requis." }, 400);
       }
       if (recId === userId) {
-        return c.json({ error: "Impossible de s'envoyer un message à soi-même." }, 400);
+        return c.json(
+          { error: "Impossible de s'envoyer un message à soi-même." },
+          400
+        );
       }
 
       const sql = getDb();
       await ensureDMTables().catch(() => {});
       const dmCharLimit = await getDmMessageCharLimit(sql, userId);
       if (dmPlainLength(content) > dmCharLimit) {
-        return c.json({ error: `Message trop long (${dmCharLimit.toLocaleString("fr-FR")} caractères max).` }, 400);
+        return c.json(
+          {
+            error: `Message trop long (${dmCharLimit.toLocaleString("fr-FR")} caractères max).`,
+          },
+          400
+        );
       }
 
       // Envoi programmé : date future → status 'scheduled', pas de SSE immédiat
@@ -467,7 +633,10 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
         LIMIT 1
       `;
       if (blockCheck.length > 0) {
-        return c.json({ error: "Impossible d'envoyer un message : utilisateur bloqué." }, 403);
+        return c.json(
+          { error: "Impossible d'envoyer un message : utilisateur bloqué." },
+          403
+        );
       }
 
       // Vérifier les paramètres de messages du destinataire
@@ -480,22 +649,34 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
           LIMIT 1
         `;
       } catch (settingsErr) {
-        console.warn("[vibe-dms] Note: user_settings check skipped or table incomplete:", settingsErr);
+        console.warn(
+          "[vibe-dms] Note: user_settings check skipped or table incomplete:",
+          settingsErr
+        );
       }
 
       if (recipientSettings.length > 0) {
         const s = recipientSettings[0];
-        const dmPolicy = s.allow_dms || 'everyone';
+        const dmPolicy = s.allow_dms || "everyone";
         const dmsEnabled = s.dms_enabled !== false;
-        if (!dmsEnabled || dmPolicy === 'nobody') {
-          return c.json({ error: "Cet utilisateur n'accepte pas les messages privés." }, 403);
+        if (!dmsEnabled || dmPolicy === "nobody") {
+          return c.json(
+            { error: "Cet utilisateur n'accepte pas les messages privés." },
+            403
+          );
         }
-        if (dmPolicy === 'following') {
+        if (dmPolicy === "following") {
           const isFollowing = await sql`
             SELECT 1 FROM follows WHERE follower_id = ${recId} AND following_id = ${userId} LIMIT 1
           `;
           if (isFollowing.length === 0) {
-            return c.json({ error: "Cet utilisateur n'accepte les messages que de ses abonnements." }, 403);
+            return c.json(
+              {
+                error:
+                  "Cet utilisateur n'accepte les messages que de ses abonnements.",
+              },
+              403
+            );
           }
         }
       }
@@ -512,13 +693,21 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
       `;
 
       const conversationId = convRows[0].id;
-      const validReplyTo = typeof reply_to_id === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(reply_to_id) ? reply_to_id : null;
+      const validReplyTo =
+        typeof reply_to_id === "string" &&
+        /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+          reply_to_id
+        )
+          ? reply_to_id
+          : null;
       const forwardedFrom = await deriveForwardedFrom(sql, forwarded_from);
-      const msg = scheduledAt ? await sql`
+      const msg = scheduledAt
+        ? await sql`
         INSERT INTO direct_messages (conversation_id, sender_id, recipient_id, content, reply_to_id, status, send_at, forwarded_from)
         VALUES (${conversationId}::uuid, ${userId}, ${recId}, ${content.trim()}, ${validReplyTo}, 'scheduled', ${scheduledAt}::timestamptz, ${forwardedFrom ? JSON.stringify(forwardedFrom) : null}::jsonb)
         RETURNING *
-      ` : await sql`
+      `
+        : await sql`
         INSERT INTO direct_messages (conversation_id, sender_id, recipient_id, content, reply_to_id, forwarded_from)
         VALUES (${conversationId}::uuid, ${userId}, ${recId}, ${content.trim()}, ${validReplyTo}, ${forwardedFrom ? JSON.stringify(forwardedFrom) : null}::jsonb)
         RETURNING *
@@ -526,7 +715,7 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
 
       // Message programmé : réponse immédiate, pas de notification ni SSE
       if (scheduledAt) {
-        return c.json({ success: true, message: msg[0], scheduled: true }, 201);
+        return c.json({ message: msg[0], scheduled: true, success: true }, 201);
       }
 
       try {
@@ -545,17 +734,18 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
         `;
         await pushRealtimeEvent(recId, "dm_message", {
           ...msg[0],
-          sender_username: senderInfo[0]?.username || null,
-          sender_display_name: senderInfo[0]?.display_name || null,
           sender_avatar_url: senderInfo[0]?.avatar_url || null,
+          sender_display_name: senderInfo[0]?.display_name || null,
+          sender_username: senderInfo[0]?.username || null,
         });
       } catch (rtErr) {
         console.warn("[vibe-dms] realtime dm_message push failed:", rtErr);
       }
 
       // Réponse automatique pour le compte @bot de test
-      const recipientUser = await sql`SELECT username FROM users WHERE id = ${recId} LIMIT 1`;
-      if (recipientUser.length > 0 && recipientUser[0].username === 'bot') {
+      const recipientUser =
+        await sql`SELECT username FROM users WHERE id = ${recId} LIMIT 1`;
+      if (recipientUser.length > 0 && recipientUser[0].username === "bot") {
         setTimeout(async () => {
           try {
             const botMsg = await sql`
@@ -567,31 +757,53 @@ export function registerDMDirectRoutes(app: Hono, registerMulti: RegisterMultiFn
               UPDATE dm_conversations SET last_message_preview = 'Bot', last_message_at = NOW()
               WHERE id = ${conversationId}::uuid
             `;
-            await pushRealtimeEvent(userId, "dm_message", botMsg[0] || { conversation_id: conversationId, sender_id: recId, recipient_id: userId, content: 'Bot' });
+            await pushRealtimeEvent(
+              userId,
+              "dm_message",
+              botMsg[0] || {
+                content: "Bot",
+                conversation_id: conversationId,
+                recipient_id: userId,
+                sender_id: recId,
+              }
+            );
           } catch {}
         }, 100);
       }
 
       // Réponse automatique du compte officiel mAI (conversation avec historique,
       // usage hebdomadaire débité à l'expéditeur)
-      if (recipientUser.length > 0 && recipientUser[0].username === 'mai') {
+      if (recipientUser.length > 0 && recipientUser[0].username === "mai") {
         const maiUserId = recId;
         const senderMessage = String(content).trim().slice(0, 4000);
-        setTimeout(async () => {
-          try {
-            await generateMAIDMReply(sql, conversationId, userId, maiUserId, senderMessage);
-          } catch (maiErr) {
-            console.warn("[vibe-dms] mAI DM reply failed:", maiErr);
-          }
-        }, 1200 + Math.floor(Math.random() * 1800));
+        setTimeout(
+          async () => {
+            try {
+              await generateMAIDMReply(
+                sql,
+                conversationId,
+                userId,
+                maiUserId,
+                senderMessage
+              );
+            } catch (maiErr) {
+              console.warn("[vibe-dms] mAI DM reply failed:", maiErr);
+            }
+          },
+          1200 + Math.floor(Math.random() * 1800)
+        );
       }
 
-      return c.json({ success: true, message: msg[0] }, 201);
+      return c.json({ message: msg[0], success: true }, 201);
     } catch (err: any) {
       console.error("[vibe-dms] Error in handleSendDM:", err);
       return c.json({ error: err.message || "Erreur envoi message." }, 500);
     }
   };
 
-  registerMulti("post", ["/api/vibe/dms/messages", "/vibe/dms/messages", "/v1/dms/messages"], handleSendDM);
+  registerMulti(
+    "post",
+    ["/api/vibe/dms/messages", "/vibe/dms/messages", "/v1/dms/messages"],
+    handleSendDM
+  );
 }

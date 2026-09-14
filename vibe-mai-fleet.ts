@@ -5,7 +5,12 @@
  * ============================================================================
  */
 
-import { getDb, getWeekData, getTierMaiTokenLimit, getTierDailyImageLimit } from "./config.ts";
+import {
+  getDb,
+  getTierDailyImageLimit,
+  getTierMaiTokenLimit,
+  getWeekData,
+} from "./config.ts";
 import { executeWebSearch } from "./web.ts";
 
 /**
@@ -13,46 +18,93 @@ import { executeWebSearch } from "./web.ts";
  * l'utilisateur. Ils exigent une approbation explicite sauf si le réglage
  * `mai_auto_approve_tools` a été activé dans les paramètres.
  */
-export const SENSITIVE_TOOLS = ["create_post", "delete_post", "update_profile", "follow_user", "send_message", "update_settings", "repost_post", "comment_post"];
+export const SENSITIVE_TOOLS = [
+  "create_post",
+  "delete_post",
+  "update_profile",
+  "follow_user",
+  "send_message",
+  "update_settings",
+  "repost_post",
+  "comment_post",
+];
 
 /** Clamp de période partagé par les outils d'analyse (défaut 30 jours). */
 function parsePeriodDays(period: unknown): number {
-  return period === "7d" ? 7 : period === "90d" ? 90 : period === "12m" ? 365 : 30;
+  return period === "7d"
+    ? 7
+    : period === "90d"
+      ? 90
+      : period === "12m"
+        ? 365
+        : 30;
 }
 
-const WEEKDAY_NAMES = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
+const WEEKDAY_NAMES = [
+  "dimanche",
+  "lundi",
+  "mardi",
+  "mercredi",
+  "jeudi",
+  "vendredi",
+  "samedi",
+];
 
 export class MAIAgentFleet {
-  public static assessContentSafety(content: string): { isSafe: boolean; toxicityScore: number; flagReason?: string } {
-    const prohibitedKeywords = ["haine", "violence explicite", "terrorisme", "terrorist", "cp_illegal", "doxx"];
+  public static assessContentSafety(content: string): {
+    isSafe: boolean;
+    toxicityScore: number;
+    flagReason?: string;
+  } {
+    const prohibitedKeywords = [
+      "haine",
+      "violence explicite",
+      "terrorisme",
+      "terrorist",
+      "cp_illegal",
+      "doxx",
+    ];
     const lower = content.toLowerCase();
 
     for (const kw of prohibitedKeywords) {
       if (lower.includes(kw)) {
-        return { isSafe: false, toxicityScore: 0.95, flagReason: `Terme prohibé détecté (${kw})` };
+        return {
+          flagReason: `Terme prohibé détecté (${kw})`,
+          isSafe: false,
+          toxicityScore: 0.95,
+        };
       }
     }
 
     return { isSafe: true, toxicityScore: 0.02 };
   }
 
-  public static async modulateText(opts: { text: string; tone?: string; format?: string }): Promise<string> {
+  public static async modulateText(opts: {
+    text: string;
+    tone?: string;
+    format?: string;
+  }): Promise<string> {
     const { text, tone = "executive" } = opts;
     const tonePrefixes: Record<string, string> = {
       executive: "⚡ ",
-      viral: "🔥 ",
-      poetic: "✨ ",
       minimal: "✦ ",
+      poetic: "✨ ",
+      viral: "🔥 ",
     };
 
     const prefix = tonePrefixes[tone] || "";
     return `${prefix}${text.trim()}`;
   }
 
-  public static synthesizeThread(comments: Array<{ author: string; content: string }>): string {
-    if (!comments || comments.length === 0) return "Aucun commentaire pour le moment.";
+  public static synthesizeThread(
+    comments: Array<{ author: string; content: string }>
+  ): string {
+    if (!comments || comments.length === 0)
+      return "Aucun commentaire pour le moment.";
     const count = comments.length;
-    const authors = [...new Set(comments.map((c) => c.author))].slice(0, 3).join(", ");
+    const authors = [...new Set(comments.map((c) => c.author))]
+      .slice(0, 3)
+      .join(", ");
     return `Synthèse (${count} réponses) : Échanges autour des points partagés par @${authors}.`;
   }
 
@@ -60,7 +112,10 @@ export class MAIAgentFleet {
    * Récupère une clé OpenRouter (variable d'environnement ou table mprojects_api_keys).
    */
   public static async getOpenRouterKey(userId: number): Promise<string> {
-    if (typeof (globalThis as any).Deno !== "undefined" && (globalThis as any).Deno.env?.get("OPENROUTER_API_KEY")) {
+    if (
+      typeof (globalThis as any).Deno !== "undefined" &&
+      (globalThis as any).Deno.env?.get("OPENROUTER_API_KEY")
+    ) {
       return (globalThis as any).Deno.env.get("OPENROUTER_API_KEY");
     }
     if (typeof process !== "undefined" && process.env?.OPENROUTER_API_KEY) {
@@ -68,7 +123,8 @@ export class MAIAgentFleet {
     }
     try {
       const sql = getDb();
-      const keyRows = await sql`SELECT api_key FROM mprojects_api_keys WHERE user_id::text = ${String(userId)}::text LIMIT 1`;
+      const keyRows =
+        await sql`SELECT api_key FROM mprojects_api_keys WHERE user_id::text = ${String(userId)}::text LIMIT 1`;
       return keyRows[0]?.api_key || "";
     } catch {
       return "";
@@ -79,20 +135,29 @@ export class MAIAgentFleet {
    * Modèle mAI par défaut de l'utilisateur (réglage user_settings.mai_default_model,
    * choisi dans les paramètres ou directement dans mAI). Cache mémoire 60 s.
    */
-  static userModelCache = new Map<string, { model: string; expiresAt: number }>();
+  static userModelCache = new Map<
+    string,
+    { model: string; expiresAt: number }
+  >();
 
-  public static async getUserDefaultModel(userId: number | string): Promise<string> {
+  public static async getUserDefaultModel(
+    userId: number | string
+  ): Promise<string> {
     const key = String(userId);
-    const cached = this.userModelCache.get(key);
+    const cached = MAIAgentFleet.userModelCache.get(key);
     if (cached && cached.expiresAt > Date.now()) return cached.model;
     let model = "poolside/laguna-xs-2.1:free";
     try {
       const sql = getDb();
-      const rows = await sql`SELECT mai_default_model FROM user_settings WHERE user_id = ${Number(key)} LIMIT 1`;
+      const rows =
+        await sql`SELECT mai_default_model FROM user_settings WHERE user_id = ${Number(key)} LIMIT 1`;
       const saved = String(rows[0]?.mai_default_model || "").trim();
       if (saved) model = saved;
     } catch {}
-    this.userModelCache.set(key, { model, expiresAt: Date.now() + 60_000 });
+    MAIAgentFleet.userModelCache.set(key, {
+      expiresAt: Date.now() + 60_000,
+      model,
+    });
     return model;
   }
 
@@ -100,27 +165,36 @@ export class MAIAgentFleet {
    * Appel générique OpenRouter pour les outils textuels (traduction, reformulation...).
    * Sans `model`, utilise le modèle par défaut de l'utilisateur.
    */
-  public static async callOpenRouter(userId: number, system: string, user: string, model?: string): Promise<string | null> {
-    const apiKey = await this.getOpenRouterKey(userId);
+  public static async callOpenRouter(
+    userId: number,
+    system: string,
+    user: string,
+    model?: string
+  ): Promise<string | null> {
+    const apiKey = await MAIAgentFleet.getOpenRouterKey(userId);
     if (!apiKey) return null;
-    const resolvedModel = model || (await this.getUserDefaultModel(userId));
+    const resolvedModel =
+      model || (await MAIAgentFleet.getUserDefaultModel(userId));
     try {
-      const aiRes = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-          "HTTP-Referer": "https://mai.val.run",
-          "X-Title": "mAI Social Assistant",
-        },
-        body: JSON.stringify({
-          model: resolvedModel,
-          messages: [
-            { role: "system", content: system },
-            { role: "user", content: user },
-          ],
-        }),
-      });
+      const aiRes = await fetch(
+        "https://openrouter.ai/api/v1/chat/completions",
+        {
+          body: JSON.stringify({
+            messages: [
+              { content: system, role: "system" },
+              { content: user, role: "user" },
+            ],
+            model: resolvedModel,
+          }),
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            "Content-Type": "application/json",
+            "HTTP-Referer": "https://mai.val.run",
+            "X-Title": "mAI Social Assistant",
+          },
+          method: "POST",
+        }
+      );
       if (!aiRes.ok) return null;
       const aiData = await aiRes.json();
       return aiData.choices?.[0]?.message?.content || null;
@@ -149,19 +223,23 @@ export class MAIAgentFleet {
             sql`SELECT COUNT(*) as count FROM posts WHERE author_id = ${uid}`,
           ]);
           resultData = {
-            user: uRows[0],
             profile: prRows[0],
             totalPosts: Number(pCount[0]?.count || 0),
+            user: uRows[0],
           };
           break;
         }
 
         case "create_post": {
           const { content, format = "micro_text", media_url } = args;
-          if (!content || !content.trim()) throw new Error("Le contenu du post est obligatoire.");
+          if (!content || !content.trim())
+            throw new Error("Le contenu du post est obligatoire.");
 
-          const safety = this.assessContentSafety(content);
-          if (!safety.isSafe) throw new Error(`Publication refusée par mAI : ${safety.flagReason}`);
+          const safety = MAIAgentFleet.assessContentSafety(content);
+          if (!safety.isSafe)
+            throw new Error(
+              `Publication refusée par mAI : ${safety.flagReason}`
+            );
 
           const inserted = await sql`
             INSERT INTO posts (author_id, content, format, created_via, toxicity_score, ai_generated)
@@ -173,7 +251,16 @@ export class MAIAgentFleet {
           if (media_url) {
             const cleanUrl = String(media_url).split("?")[0].split("#")[0];
             const ext = cleanUrl.split(".").pop()?.toLowerCase();
-            const mediaType = (ext === "png" ? "image/png" : ext === "webp" ? "image/webp" : ext === "gif" ? "image/gif" : ext === "mp4" ? "video/mp4" : "image/jpeg");
+            const mediaType =
+              ext === "png"
+                ? "image/png"
+                : ext === "webp"
+                  ? "image/webp"
+                  : ext === "gif"
+                    ? "image/gif"
+                    : ext === "mp4"
+                      ? "video/mp4"
+                      : "image/jpeg";
             await sql`
               INSERT INTO media_assets (owner_id, post_id, url, media_type, file_size_bytes, alt_text)
               VALUES (${uid}, ${newPost.id}::uuid, ${media_url}, ${mediaType}, 0, '')
@@ -181,7 +268,10 @@ export class MAIAgentFleet {
           }
 
           await sql`UPDATE profiles SET posts_count = posts_count + 1 WHERE user_id = ${uid}`;
-          resultData = { post: newPost, message: "Post publié avec succès sur Vibe !" };
+          resultData = {
+            message: "Post publié avec succès sur Vibe !",
+            post: newPost,
+          };
           break;
         }
 
@@ -193,10 +283,15 @@ export class MAIAgentFleet {
             DELETE FROM posts WHERE id = ${post_id}::uuid AND author_id = ${uid} RETURNING id
           `;
           if (del.length === 0) {
-            throw new Error("Publication introuvable ou vous n'êtes pas l'auteur.");
+            throw new Error(
+              "Publication introuvable ou vous n'êtes pas l'auteur."
+            );
           }
           await sql`UPDATE profiles SET posts_count = GREATEST(0, posts_count - 1) WHERE user_id = ${uid}`;
-          resultData = { deletedPostId: post_id, message: "Publication supprimée avec succès." };
+          resultData = {
+            deletedPostId: post_id,
+            message: "Publication supprimée avec succès.",
+          };
           break;
         }
 
@@ -211,13 +306,14 @@ export class MAIAgentFleet {
             ORDER BY p.published_at DESC
             LIMIT ${limit}
           `;
-          resultData = { query, resultsCount: rows.length, posts: rows };
+          resultData = { posts: rows, query, resultsCount: rows.length };
           break;
         }
 
         case "generate_vibe_image": {
           const { prompt, aspect_ratio = "1:1" } = args;
-          const uRows = await sql`SELECT tier FROM users WHERE id = ${uid} LIMIT 1`;
+          const uRows =
+            await sql`SELECT tier FROM users WHERE id = ${uid} LIMIT 1`;
           const tier = uRows[0]?.tier || "Free";
           const maxImages = getTierDailyImageLimit(tier);
 
@@ -228,7 +324,9 @@ export class MAIAgentFleet {
           const currentCount = todayRows[0]?.images_generated || 0;
 
           if (currentCount >= maxImages) {
-            throw new Error(`Quota journalier d'images atteint (${currentCount}/${maxImages} pour le forfait ${tier}).`);
+            throw new Error(
+              `Quota journalier d'images atteint (${currentCount}/${maxImages} pour le forfait ${tier}).`
+            );
           }
 
           await sql`
@@ -244,20 +342,22 @@ export class MAIAgentFleet {
             "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=1200&q=80",
             "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=1200&q=80",
           ];
-          const chosen = sampleImages[Math.floor(Math.random() * sampleImages.length)];
+          const chosen =
+            sampleImages[Math.floor(Math.random() * sampleImages.length)];
 
           resultData = {
-            prompt,
             aspect_ratio,
             imageUrl: chosen,
-            quotaRemaining: Math.max(0, maxImages - (currentCount + 1)),
             message: "Image générée avec succès via mAI !",
+            prompt,
+            quotaRemaining: Math.max(0, maxImages - (currentCount + 1)),
           };
           break;
         }
 
         case "check_quotas": {
-          const uRows = await sql`SELECT tier FROM users WHERE id = ${uid} LIMIT 1`;
+          const uRows =
+            await sql`SELECT tier FROM users WHERE id = ${uid} LIMIT 1`;
           const tier = uRows[0]?.tier || "Free";
           const { weekStartStr, nextResetIso } = getWeekData();
 
@@ -272,10 +372,24 @@ export class MAIAgentFleet {
           const imagesUsed = Number(imgRows[0]?.images || 0);
 
           resultData = {
-            tier,
-            weeklyTokens: { used: tokensUsed, limit: tokenLimit, percent: Math.min(100, Math.round((tokensUsed / tokenLimit) * 100)) },
-            dailyImages: { used: imagesUsed, limit: imageLimit, percent: Math.min(100, Math.round((imagesUsed / imageLimit) * 100)) },
+            dailyImages: {
+              limit: imageLimit,
+              percent: Math.min(
+                100,
+                Math.round((imagesUsed / imageLimit) * 100)
+              ),
+              used: imagesUsed,
+            },
             resetAt: nextResetIso,
+            tier,
+            weeklyTokens: {
+              limit: tokenLimit,
+              percent: Math.min(
+                100,
+                Math.round((tokensUsed / tokenLimit) * 100)
+              ),
+              used: tokensUsed,
+            },
           };
           break;
         }
@@ -290,63 +404,96 @@ export class MAIAgentFleet {
             .slice(0, 3)
             .map((r) => `• **${r.title}** — ${r.snippet}\n  ${r.url}`)
             .join("\n");
-          resultData = { query, snippet, provider: search.provider, results: search.results };
+          resultData = {
+            provider: search.provider,
+            query,
+            results: search.results,
+            snippet,
+          };
           break;
         }
 
         case "fact_check": {
           const { statement } = args;
-          const search = await executeWebSearch(String(statement || ""), 5).catch(() => null);
+          const search = await executeWebSearch(
+            String(statement || ""),
+            5
+          ).catch(() => null);
           const sources = search?.success ? search.results.slice(0, 3) : [];
-          const llm = await this.callOpenRouter(
+          const llm = await MAIAgentFleet.callOpenRouter(
             uid,
             "Tu es un vérificateur de faits rigoureux. Réponds en 3 phrases maximum en français : verdict (Vrai / Faux / Plausible / À vérifier) puis justification brève en t'appuyant sur les sources fournies.",
             `Affirmation : « ${statement} »\n\nSources trouvées :\n${sources.map((s) => `- ${s.title} : ${s.snippet}`).join("\n") || "(aucune)"}`
           );
           resultData = {
-            statement,
-            verdict: llm ? "Analyse mAI" : sources.length > 0 ? "À vérifier" : "Sources insuffisantes",
+            analysis:
+              llm ||
+              (sources.length > 0
+                ? "Des sources web ont été trouvées, croisez-les pour vous forger un avis."
+                : "Aucune source fiable trouvée sur le web pour cette affirmation."),
             confidence: sources.length > 0 ? "Moyen" : "Faible",
-            analysis: llm || (sources.length > 0 ? "Des sources web ont été trouvées, croisez-les pour vous forger un avis." : "Aucune source fiable trouvée sur le web pour cette affirmation."),
             sources,
+            statement,
+            verdict: llm
+              ? "Analyse mAI"
+              : sources.length > 0
+                ? "À vérifier"
+                : "Sources insuffisantes",
           };
           break;
         }
 
         case "rewrite_post": {
           const { text, style = "viral" } = args;
-          const tones: Record<string, string> = { viral: "viral", pro: "executive", humour: "viral", concis: "minimal", poétique: "poetic" };
-          const llm = await this.callOpenRouter(
+          const tones: Record<string, string> = {
+            concis: "minimal",
+            humour: "viral",
+            poétique: "poetic",
+            pro: "executive",
+            viral: "viral",
+          };
+          const llm = await MAIAgentFleet.callOpenRouter(
             uid,
             `Reformule le texte suivant en français dans un style « ${style} », percutant et adapté à un réseau social. Réponds UNIQUEMENT par le texte reformulé, sans commentaire.`,
             String(text || "")
           );
-          const rewritten = llm || (await this.modulateText({ text: String(text || ""), tone: tones[style] || "viral" }));
+          const rewritten =
+            llm ||
+            (await MAIAgentFleet.modulateText({
+              text: String(text || ""),
+              tone: tones[style] || "viral",
+            }));
           resultData = { rewritten, style };
           break;
         }
 
         case "suggest_post": {
           const { topic, style = "viral" } = args;
-          const llm = await this.callOpenRouter(
+          const llm = await MAIAgentFleet.callOpenRouter(
             uid,
             `Propose 3 idées de publications courtes pour le réseau social Vibe sur le thème « ${topic} », dans un style « ${style} ». Format : une liste numérotée, chaque post fait 1 à 2 phrases, avec des hashtags pertinents. Réponds UNIQUEMENT par la liste.`,
             String(topic || "sujets d'actualité")
           );
-          if (!llm) throw new Error("Génération indisponible : aucune clé IA configurée sur le serveur.");
-          resultData = { suggestions: llm, topic, style };
+          if (!llm)
+            throw new Error(
+              "Génération indisponible : aucune clé IA configurée sur le serveur."
+            );
+          resultData = { style, suggestions: llm, topic };
           break;
         }
 
         case "translate": {
           const { text, target_language = "anglais" } = args;
-          const llm = await this.callOpenRouter(
+          const llm = await MAIAgentFleet.callOpenRouter(
             uid,
             `Traduis le texte suivant en ${target_language}. Réponds UNIQUEMENT par la traduction, sans commentaire.`,
             String(text || "")
           );
-          if (!llm) throw new Error("Traduction indisponible : aucune clé IA configurée sur le serveur.");
-          resultData = { translated: llm, targetLanguage: target_language };
+          if (!llm)
+            throw new Error(
+              "Traduction indisponible : aucune clé IA configurée sur le serveur."
+            );
+          resultData = { targetLanguage: target_language, translated: llm };
           break;
         }
 
@@ -356,7 +503,9 @@ export class MAIAgentFleet {
           `;
           const tags: Record<string, number> = {};
           for (const r of recent) {
-            for (const m of String(r.content).matchAll(/#([\p{L}\p{N}_]{2,30})/gu)) {
+            for (const m of String(r.content).matchAll(
+              /#([\p{L}\p{N}_]{2,30})/gu
+            )) {
               const tag = m[1].toLowerCase();
               tags[tag] = (tags[tag] || 0) + 1;
             }
@@ -364,16 +513,29 @@ export class MAIAgentFleet {
           const trendingTopics = Object.entries(tags)
             .sort((a, b) => b[1] - a[1])
             .slice(0, 8)
-            .map(([name, postsCount]) => ({ name: `#${name}`, postsCount, sentiment: postsCount >= 5 ? "Très actif 🔥" : "Actif 📈" }));
+            .map(([name, postsCount]) => ({
+              name: `#${name}`,
+              postsCount,
+              sentiment: postsCount >= 5 ? "Très actif 🔥" : "Actif 📈",
+            }));
           resultData = { trendingTopics };
           break;
         }
 
         case "update_profile": {
           const { display_name, bio } = args;
-          if (!display_name && !bio) throw new Error("Fournissez au moins un champ (display_name ou bio).");
-          if (display_name !== undefined && (String(display_name).length < 2 || String(display_name).length > 40)) {
-            throw new Error("Le nom affiché doit contenir entre 2 et 40 caractères.");
+          if (!display_name && !bio)
+            throw new Error(
+              "Fournissez au moins un champ (display_name ou bio)."
+            );
+          if (
+            display_name !== undefined &&
+            (String(display_name).length < 2 ||
+              String(display_name).length > 40)
+          ) {
+            throw new Error(
+              "Le nom affiché doit contenir entre 2 et 40 caractères."
+            );
           }
           if (bio !== undefined && String(bio).length > 200) {
             throw new Error("La bio ne doit pas dépasser 200 caractères.");
@@ -387,23 +549,37 @@ export class MAIAgentFleet {
             RETURNING display_name, bio
           `;
           if (updated.length === 0) throw new Error("Profil introuvable.");
-          resultData = { profile: updated[0], message: "Profil mis à jour avec succès." };
+          resultData = {
+            message: "Profil mis à jour avec succès.",
+            profile: updated[0],
+          };
           break;
         }
 
         case "follow_user": {
           const { username, follow = true } = args;
-          const cleanUsername = String(username || "").replace(/^@/, "").trim().toLowerCase();
+          const cleanUsername = String(username || "")
+            .replace(/^@/, "")
+            .trim()
+            .toLowerCase();
           if (!cleanUsername) throw new Error("username est requis.");
-          const target = await sql`SELECT id FROM users WHERE LOWER(username) = ${cleanUsername} LIMIT 1`;
-          if (target.length === 0) throw new Error(`Compte @${cleanUsername} introuvable sur Vibe.`);
+          const target =
+            await sql`SELECT id FROM users WHERE LOWER(username) = ${cleanUsername} LIMIT 1`;
+          if (target.length === 0)
+            throw new Error(`Compte @${cleanUsername} introuvable sur Vibe.`);
           const targetId = Number(target[0].id);
-          if (targetId === uid) throw new Error("Vous ne pouvez pas vous suivre vous-même.");
+          if (targetId === uid)
+            throw new Error("Vous ne pouvez pas vous suivre vous-même.");
 
           if (follow) {
-            const existing = await sql`SELECT 1 FROM follows WHERE follower_id = ${uid} AND following_id = ${targetId} LIMIT 1`;
+            const existing =
+              await sql`SELECT 1 FROM follows WHERE follower_id = ${uid} AND following_id = ${targetId} LIMIT 1`;
             if (existing.length > 0) {
-              resultData = { followed: true, username: cleanUsername, message: `Vous suivez déjà @${cleanUsername}.` };
+              resultData = {
+                followed: true,
+                message: `Vous suivez déjà @${cleanUsername}.`,
+                username: cleanUsername,
+              };
               break;
             }
             await sql`INSERT INTO follows (follower_id, following_id) VALUES (${uid}, ${targetId}) ON CONFLICT DO NOTHING`;
@@ -411,16 +587,25 @@ export class MAIAgentFleet {
               sql`UPDATE profiles SET following_count = following_count + 1 WHERE user_id = ${uid}`,
               sql`UPDATE profiles SET followers_count = followers_count + 1 WHERE user_id = ${targetId}`,
             ]);
-            resultData = { followed: true, username: cleanUsername, message: `Vous suivez désormais @${cleanUsername} !` };
+            resultData = {
+              followed: true,
+              message: `Vous suivez désormais @${cleanUsername} !`,
+              username: cleanUsername,
+            };
           } else {
-            const del = await sql`DELETE FROM follows WHERE follower_id = ${uid} AND following_id = ${targetId} RETURNING 1`;
+            const del =
+              await sql`DELETE FROM follows WHERE follower_id = ${uid} AND following_id = ${targetId} RETURNING 1`;
             if (del.length > 0) {
               await Promise.all([
                 sql`UPDATE profiles SET following_count = GREATEST(0, following_count - 1) WHERE user_id = ${uid}`,
                 sql`UPDATE profiles SET followers_count = GREATEST(0, followers_count - 1) WHERE user_id = ${targetId}`,
               ]);
             }
-            resultData = { followed: false, username: cleanUsername, message: `Vous ne suivez plus @${cleanUsername}.` };
+            resultData = {
+              followed: false,
+              message: `Vous ne suivez plus @${cleanUsername}.`,
+              username: cleanUsername,
+            };
           }
           break;
         }
@@ -439,11 +624,18 @@ export class MAIAgentFleet {
 
         case "like_post": {
           const { post_id, like = true } = args;
-          if (!post_id || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(String(post_id))) {
+          if (
+            !post_id ||
+            !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+              String(post_id)
+            )
+          ) {
             throw new Error("post_id UUID valide est requis.");
           }
-          const postRows = await sql`SELECT id, author_id FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
-          if (postRows.length === 0) throw new Error("Publication introuvable.");
+          const postRows =
+            await sql`SELECT id, author_id FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
+          if (postRows.length === 0)
+            throw new Error("Publication introuvable.");
           const authorId = Number(postRows[0].author_id);
           if (like) {
             const existing = await sql`
@@ -451,8 +643,14 @@ export class MAIAgentFleet {
               WHERE user_id = ${uid} AND post_id = ${String(post_id)}::uuid AND interaction_type = 'like' LIMIT 1
             `;
             if (existing.length > 0) {
-              const c = await sql`SELECT likes_count FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
-              resultData = { liked: true, post_id, likes_count: Number(c[0]?.likes_count || 0), message: "Vous aimez déjà cette publication." };
+              const c =
+                await sql`SELECT likes_count FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
+              resultData = {
+                liked: true,
+                likes_count: Number(c[0]?.likes_count || 0),
+                message: "Vous aimez déjà cette publication.",
+                post_id,
+              };
               break;
             }
             await sql`
@@ -469,8 +667,14 @@ export class MAIAgentFleet {
                 `;
               } catch {}
             }
-            const c = await sql`SELECT likes_count FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
-            resultData = { liked: true, post_id, likes_count: Number(c[0]?.likes_count || 0), message: "Publication likée avec succès !" };
+            const c =
+              await sql`SELECT likes_count FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
+            resultData = {
+              liked: true,
+              likes_count: Number(c[0]?.likes_count || 0),
+              message: "Publication likée avec succès !",
+              post_id,
+            };
           } else {
             const existing = await sql`
               SELECT id FROM post_interactions
@@ -480,25 +684,42 @@ export class MAIAgentFleet {
               await sql`DELETE FROM post_interactions WHERE id = ${existing[0].id}::uuid`;
               await sql`UPDATE posts SET likes_count = GREATEST(0, COALESCE(likes_count,0) - 1) WHERE id = ${String(post_id)}::uuid`;
             }
-            const c = await sql`SELECT likes_count FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
-            resultData = { liked: false, post_id, likes_count: Number(c[0]?.likes_count || 0), message: "Like retiré." };
+            const c =
+              await sql`SELECT likes_count FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
+            resultData = {
+              liked: false,
+              likes_count: Number(c[0]?.likes_count || 0),
+              message: "Like retiré.",
+              post_id,
+            };
           }
           break;
         }
 
         case "send_message": {
           const { username, content } = args;
-          const cleanUsername = String(username || "").replace(/^@/, "").trim().toLowerCase();
+          const cleanUsername = String(username || "")
+            .replace(/^@/, "")
+            .trim()
+            .toLowerCase();
           const text = String(content || "").trim();
-          if (!cleanUsername) throw new Error("username destinataire est requis.");
+          if (!cleanUsername)
+            throw new Error("username destinataire est requis.");
           if (!text) throw new Error("Le contenu du message est obligatoire.");
-          if (text.length > 2000) throw new Error("Message trop long (max 2000 caractères).");
-          const safety = this.assessContentSafety(text);
-          if (!safety.isSafe) throw new Error(`Message refusé par mAI : ${safety.flagReason}`);
-          const target = await sql`SELECT id FROM users WHERE LOWER(username) = ${cleanUsername} LIMIT 1`;
-          if (target.length === 0) throw new Error(`Compte @${cleanUsername} introuvable sur Vibe.`);
+          if (text.length > 2000)
+            throw new Error("Message trop long (max 2000 caractères).");
+          const safety = MAIAgentFleet.assessContentSafety(text);
+          if (!safety.isSafe)
+            throw new Error(`Message refusé par mAI : ${safety.flagReason}`);
+          const target =
+            await sql`SELECT id FROM users WHERE LOWER(username) = ${cleanUsername} LIMIT 1`;
+          if (target.length === 0)
+            throw new Error(`Compte @${cleanUsername} introuvable sur Vibe.`);
           const recId = Number(target[0].id);
-          if (recId === uid) throw new Error("Vous ne pouvez pas vous envoyer un message à vous-même.");
+          if (recId === uid)
+            throw new Error(
+              "Vous ne pouvez pas vous envoyer un message à vous-même."
+            );
           const p1 = uid < recId ? uid : recId;
           const p2 = uid < recId ? recId : uid;
           const convRows = await sql`
@@ -520,29 +741,76 @@ export class MAIAgentFleet {
               VALUES (${recId}, ${uid}, 'dm', 'vous a envoyé un message via mAI')
             `;
           } catch {}
-          resultData = { sent: true, username: cleanUsername, conversation_id: conversationId, message_id: String(msg[0]?.id || ""), preview: text.slice(0, 80), message: `Message envoyé à @${cleanUsername} !` };
+          resultData = {
+            conversation_id: conversationId,
+            message: `Message envoyé à @${cleanUsername} !`,
+            message_id: String(msg[0]?.id || ""),
+            preview: text.slice(0, 80),
+            sent: true,
+            username: cleanUsername,
+          };
           break;
         }
 
         case "update_settings": {
-          const ALLOWED = ["theme_preference","ui_language","feed_default_mode","hide_reposts","blocked_keywords","accent_color","font_size","mai_auto_approve_tools","mai_default_model","mai_context_posts","mai_context_dms","mai_context_books","email_notifications","push_notifications","notify_on_like","notify_on_reply","notify_on_dm","dm_auto_translate","dm_translate_lang"];
+          const ALLOWED = [
+            "theme_preference",
+            "ui_language",
+            "feed_default_mode",
+            "hide_reposts",
+            "blocked_keywords",
+            "accent_color",
+            "font_size",
+            "mai_auto_approve_tools",
+            "mai_default_model",
+            "mai_context_posts",
+            "mai_context_dms",
+            "mai_context_books",
+            "email_notifications",
+            "push_notifications",
+            "notify_on_like",
+            "notify_on_reply",
+            "notify_on_dm",
+            "dm_auto_translate",
+            "dm_translate_lang",
+          ];
           const patch: Record<string, any> = {};
           for (const k of ALLOWED) {
             if (args[k] !== undefined) patch[k] = args[k];
           }
-          if (Object.keys(patch).length === 0) throw new Error("Aucun paramètre autorisé fourni.");
-          if (patch.feed_default_mode && !["for_you","following","trending"].includes(String(patch.feed_default_mode))) {
-            throw new Error("feed_default_mode invalide (for_you | following | trending).");
+          if (Object.keys(patch).length === 0)
+            throw new Error("Aucun paramètre autorisé fourni.");
+          if (
+            patch.feed_default_mode &&
+            !["for_you", "following", "trending"].includes(
+              String(patch.feed_default_mode)
+            )
+          ) {
+            throw new Error(
+              "feed_default_mode invalide (for_you | following | trending)."
+            );
           }
-          if (patch.theme_preference && !["light","dark","auto"].includes(String(patch.theme_preference))) {
+          if (
+            patch.theme_preference &&
+            !["light", "dark", "auto"].includes(String(patch.theme_preference))
+          ) {
             throw new Error("theme_preference invalide (light | dark | auto).");
           }
-          if (patch.blocked_keywords && !Array.isArray(patch.blocked_keywords)) {
+          if (
+            patch.blocked_keywords &&
+            !Array.isArray(patch.blocked_keywords)
+          ) {
             throw new Error("blocked_keywords doit être un tableau de mots.");
           }
-          await sql`ALTER TABLE user_settings ADD COLUMN IF NOT EXISTS mai_auto_approve_tools BOOLEAN DEFAULT FALSE`.catch(() => {});
-          await sql`ALTER TABLE user_settings ADD COLUMN IF NOT EXISTS dm_auto_translate BOOLEAN DEFAULT FALSE`.catch(() => {});
-          await sql`ALTER TABLE user_settings ADD COLUMN IF NOT EXISTS dm_translate_lang TEXT`.catch(() => {});
+          await sql`ALTER TABLE user_settings ADD COLUMN IF NOT EXISTS mai_auto_approve_tools BOOLEAN DEFAULT FALSE`.catch(
+            () => {}
+          );
+          await sql`ALTER TABLE user_settings ADD COLUMN IF NOT EXISTS dm_auto_translate BOOLEAN DEFAULT FALSE`.catch(
+            () => {}
+          );
+          await sql`ALTER TABLE user_settings ADD COLUMN IF NOT EXISTS dm_translate_lang TEXT`.catch(
+            () => {}
+          );
           const cols = Object.keys(patch);
           // Upsert générique : INSERT puis UPDATE ciblé colonne par colonne
           await sql`
@@ -555,39 +823,69 @@ export class MAIAgentFleet {
             if (jsonVal !== null) {
               await sql`UPDATE user_settings SET blocked_keywords = ${jsonVal} WHERE user_id = ${uid}`;
             } else if (typeof val === "boolean") {
-              if (col === "hide_reposts") await sql`UPDATE user_settings SET hide_reposts = ${val} WHERE user_id = ${uid}`;
-              else if (col === "mai_auto_approve_tools") await sql`UPDATE user_settings SET mai_auto_approve_tools = ${val} WHERE user_id = ${uid}`;
-              else if (col === "mai_context_posts") await sql`UPDATE user_settings SET mai_context_posts = ${val} WHERE user_id = ${uid}`;
-              else if (col === "mai_context_dms") await sql`UPDATE user_settings SET mai_context_dms = ${val} WHERE user_id = ${uid}`;
-              else if (col === "mai_context_books") await sql`UPDATE user_settings SET mai_context_books = ${val} WHERE user_id = ${uid}`;
-              else if (col === "email_notifications") await sql`UPDATE user_settings SET email_notifications = ${val} WHERE user_id = ${uid}`;
-              else if (col === "push_notifications") await sql`UPDATE user_settings SET push_notifications = ${val} WHERE user_id = ${uid}`;
-              else if (col === "notify_on_like") await sql`UPDATE user_settings SET notify_on_like = ${val} WHERE user_id = ${uid}`;
-              else if (col === "notify_on_reply") await sql`UPDATE user_settings SET notify_on_reply = ${val} WHERE user_id = ${uid}`;
-              else if (col === "notify_on_dm") await sql`UPDATE user_settings SET notify_on_dm = ${val} WHERE user_id = ${uid}`;
-              else if (col === "dm_auto_translate") await sql`UPDATE user_settings SET dm_auto_translate = ${val} WHERE user_id = ${uid}`;
+              if (col === "hide_reposts")
+                await sql`UPDATE user_settings SET hide_reposts = ${val} WHERE user_id = ${uid}`;
+              else if (col === "mai_auto_approve_tools")
+                await sql`UPDATE user_settings SET mai_auto_approve_tools = ${val} WHERE user_id = ${uid}`;
+              else if (col === "mai_context_posts")
+                await sql`UPDATE user_settings SET mai_context_posts = ${val} WHERE user_id = ${uid}`;
+              else if (col === "mai_context_dms")
+                await sql`UPDATE user_settings SET mai_context_dms = ${val} WHERE user_id = ${uid}`;
+              else if (col === "mai_context_books")
+                await sql`UPDATE user_settings SET mai_context_books = ${val} WHERE user_id = ${uid}`;
+              else if (col === "email_notifications")
+                await sql`UPDATE user_settings SET email_notifications = ${val} WHERE user_id = ${uid}`;
+              else if (col === "push_notifications")
+                await sql`UPDATE user_settings SET push_notifications = ${val} WHERE user_id = ${uid}`;
+              else if (col === "notify_on_like")
+                await sql`UPDATE user_settings SET notify_on_like = ${val} WHERE user_id = ${uid}`;
+              else if (col === "notify_on_reply")
+                await sql`UPDATE user_settings SET notify_on_reply = ${val} WHERE user_id = ${uid}`;
+              else if (col === "notify_on_dm")
+                await sql`UPDATE user_settings SET notify_on_dm = ${val} WHERE user_id = ${uid}`;
+              else if (col === "dm_auto_translate")
+                await sql`UPDATE user_settings SET dm_auto_translate = ${val} WHERE user_id = ${uid}`;
             } else {
               const s = String(val).slice(0, 100);
-              if (col === "theme_preference") await sql`UPDATE user_settings SET theme_preference = ${s} WHERE user_id = ${uid}`;
-              else if (col === "ui_language") await sql`UPDATE user_settings SET ui_language = ${s} WHERE user_id = ${uid}`;
-              else if (col === "feed_default_mode") await sql`UPDATE user_settings SET feed_default_mode = ${s} WHERE user_id = ${uid}`;
-              else if (col === "accent_color") await sql`UPDATE user_settings SET accent_color = ${s} WHERE user_id = ${uid}`;
-              else if (col === "font_size") await sql`UPDATE user_settings SET font_size = ${s} WHERE user_id = ${uid}`;
-              else if (col === "mai_default_model") await sql`UPDATE user_settings SET mai_default_model = ${s} WHERE user_id = ${uid}`;
-              else if (col === "dm_translate_lang") await sql`UPDATE user_settings SET dm_translate_lang = ${s} WHERE user_id = ${uid}`;
+              if (col === "theme_preference")
+                await sql`UPDATE user_settings SET theme_preference = ${s} WHERE user_id = ${uid}`;
+              else if (col === "ui_language")
+                await sql`UPDATE user_settings SET ui_language = ${s} WHERE user_id = ${uid}`;
+              else if (col === "feed_default_mode")
+                await sql`UPDATE user_settings SET feed_default_mode = ${s} WHERE user_id = ${uid}`;
+              else if (col === "accent_color")
+                await sql`UPDATE user_settings SET accent_color = ${s} WHERE user_id = ${uid}`;
+              else if (col === "font_size")
+                await sql`UPDATE user_settings SET font_size = ${s} WHERE user_id = ${uid}`;
+              else if (col === "mai_default_model")
+                await sql`UPDATE user_settings SET mai_default_model = ${s} WHERE user_id = ${uid}`;
+              else if (col === "dm_translate_lang")
+                await sql`UPDATE user_settings SET dm_translate_lang = ${s} WHERE user_id = ${uid}`;
             }
           }
-          try { this.userModelCache.delete(String(uid)); } catch {}
-          resultData = { updated: true, patched: patch, message: "Paramètres mis à jour avec succès via mAI." };
+          try {
+            MAIAgentFleet.userModelCache.delete(String(uid));
+          } catch {}
+          resultData = {
+            message: "Paramètres mis à jour avec succès via mAI.",
+            patched: patch,
+            updated: true,
+          };
           break;
         }
 
         case "bookmark_post": {
           const { post_id, bookmark = true } = args;
-          if (!post_id || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(String(post_id))) {
+          if (
+            !post_id ||
+            !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+              String(post_id)
+            )
+          ) {
             throw new Error("post_id UUID valide est requis.");
           }
-          const exists = await sql`SELECT id FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
+          const exists =
+            await sql`SELECT id FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
           if (exists.length === 0) throw new Error("Publication introuvable.");
           if (bookmark) {
             await sql`
@@ -595,21 +893,35 @@ export class MAIAgentFleet {
               ON CONFLICT (user_id, post_id) DO NOTHING
             `;
             await sql`UPDATE posts SET bookmarks_count = COALESCE(bookmarks_count,0) + 1 WHERE id = ${String(post_id)}::uuid`;
-            resultData = { bookmarked: true, post_id, message: "Post ajouté à vos favoris !" };
+            resultData = {
+              bookmarked: true,
+              message: "Post ajouté à vos favoris !",
+              post_id,
+            };
           } else {
             await sql`DELETE FROM bookmarks WHERE user_id = ${uid} AND post_id = ${String(post_id)}::uuid`;
             await sql`UPDATE posts SET bookmarks_count = GREATEST(0, COALESCE(bookmarks_count,0) - 1) WHERE id = ${String(post_id)}::uuid`;
-            resultData = { bookmarked: false, post_id, message: "Post retiré de vos favoris." };
+            resultData = {
+              bookmarked: false,
+              message: "Post retiré de vos favoris.",
+              post_id,
+            };
           }
           break;
         }
 
         case "repost_post": {
           const { post_id, repost = true } = args;
-          if (!post_id || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(String(post_id))) {
+          if (
+            !post_id ||
+            !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+              String(post_id)
+            )
+          ) {
             throw new Error("post_id UUID valide est requis.");
           }
-          const prow = await sql`SELECT id, author_id FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
+          const prow =
+            await sql`SELECT id, author_id FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
           if (prow.length === 0) throw new Error("Publication introuvable.");
           if (repost) {
             const existing = await sql`
@@ -617,7 +929,11 @@ export class MAIAgentFleet {
               WHERE user_id = ${uid} AND post_id = ${String(post_id)}::uuid AND interaction_type = 'repost' LIMIT 1
             `;
             if (existing.length > 0) {
-              resultData = { reposted: true, post_id, message: "Vous avez déjà reposté cette publication." };
+              resultData = {
+                message: "Vous avez déjà reposté cette publication.",
+                post_id,
+                reposted: true,
+              };
               break;
             }
             await sql`
@@ -626,11 +942,19 @@ export class MAIAgentFleet {
               ON CONFLICT (user_id, post_id, interaction_type) DO NOTHING
             `;
             await sql`UPDATE posts SET reposts_count = COALESCE(reposts_count,0) + 1 WHERE id = ${String(post_id)}::uuid`;
-            resultData = { reposted: true, post_id, message: "Publication repostée avec succès !" };
+            resultData = {
+              message: "Publication repostée avec succès !",
+              post_id,
+              reposted: true,
+            };
           } else {
             await sql`DELETE FROM post_interactions WHERE user_id = ${uid} AND post_id = ${String(post_id)}::uuid AND interaction_type = 'repost'`;
             await sql`UPDATE posts SET reposts_count = GREATEST(0, COALESCE(reposts_count,0) - 1) WHERE id = ${String(post_id)}::uuid`;
-            resultData = { reposted: false, post_id, message: "Repost annulé." };
+            resultData = {
+              message: "Repost annulé.",
+              post_id,
+              reposted: false,
+            };
           }
           break;
         }
@@ -638,14 +962,25 @@ export class MAIAgentFleet {
         case "comment_post": {
           const { post_id, content } = args;
           const text = String(content || "").trim();
-          if (!post_id || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(String(post_id))) {
+          if (
+            !post_id ||
+            !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+              String(post_id)
+            )
+          ) {
             throw new Error("post_id UUID valide est requis.");
           }
-          if (!text) throw new Error("Le contenu du commentaire est obligatoire.");
-          if (text.length > 2000) throw new Error("Commentaire trop long (max 2000 caractères).");
-          const safety = this.assessContentSafety(text);
-          if (!safety.isSafe) throw new Error(`Commentaire refusé par mAI : ${safety.flagReason}`);
-          const prow = await sql`SELECT id, author_id FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
+          if (!text)
+            throw new Error("Le contenu du commentaire est obligatoire.");
+          if (text.length > 2000)
+            throw new Error("Commentaire trop long (max 2000 caractères).");
+          const safety = MAIAgentFleet.assessContentSafety(text);
+          if (!safety.isSafe)
+            throw new Error(
+              `Commentaire refusé par mAI : ${safety.flagReason}`
+            );
+          const prow =
+            await sql`SELECT id, author_id FROM posts WHERE id = ${String(post_id)}::uuid LIMIT 1`;
           if (prow.length === 0) throw new Error("Publication introuvable.");
           const inserted = await sql`
             INSERT INTO comments (post_id, author_id, content, depth)
@@ -662,13 +997,23 @@ export class MAIAgentFleet {
               `;
             } catch {}
           }
-          resultData = { commented: true, post_id, comment_id: String(inserted[0].id), message: "Commentaire publié avec succès !" };
+          resultData = {
+            comment_id: String(inserted[0].id),
+            commented: true,
+            message: "Commentaire publié avec succès !",
+            post_id,
+          };
           break;
         }
 
         case "get_post_stats": {
           const { post_id } = args;
-          if (!post_id || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(String(post_id))) {
+          if (
+            !post_id ||
+            !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+              String(post_id)
+            )
+          ) {
             throw new Error("post_id UUID valide est requis.");
           }
           const rows = await sql`
@@ -682,42 +1027,57 @@ export class MAIAgentFleet {
           `;
           if (rows.length === 0) throw new Error("Publication introuvable.");
           const p = rows[0];
-          const likes = Number(p.likes_count || 0), reposts = Number(p.reposts_count || 0);
-          const replies = Number(p.replies_count || 0), views = Number(p.views_count || 0);
+          const likes = Number(p.likes_count || 0),
+            reposts = Number(p.reposts_count || 0);
+          const replies = Number(p.replies_count || 0),
+            views = Number(p.views_count || 0);
           const engagement = likes + reposts * 2.5 + replies * 2 + views * 0.1;
-          const rate = views > 0 ? Math.round(((likes + reposts + replies) / views) * 1000) / 10 : 0;
+          const rate =
+            views > 0
+              ? Math.round(((likes + reposts + replies) / views) * 1000) / 10
+              : 0;
           resultData = {
-            post_id, author: p.username, content: String(p.content || "").slice(0, 300),
-            likes, reposts, replies, views, bookmarks: Number(p.bookmarks_count || 0),
-            engagement: Math.round(engagement * 10) / 10, engagement_rate_percent: rate,
-            published_at: p.published_at,
+            author: p.username,
+            bookmarks: Number(p.bookmarks_count || 0),
+            content: String(p.content || "").slice(0, 300),
+            engagement: Math.round(engagement * 10) / 10,
+            engagement_rate_percent: rate,
+            likes,
             message: "Analyse du post récupérée.",
+            post_id,
+            published_at: p.published_at,
+            replies,
+            reposts,
+            views,
           };
           break;
         }
 
         case "analyze_audience": {
           const days = parsePeriodDays(args.period);
-          const sinceIso = new Date(Date.now() - days * 86400000).toISOString();
-          const [sourcesRows, uniqueRows, hoursRows, followerRows] = await Promise.all([
-            sql`
+          const sinceIso = new Date(
+            Date.now() - days * 86_400_000
+          ).toISOString();
+          const [sourcesRows, uniqueRows, hoursRows, followerRows] =
+            await Promise.all([
+              sql`
               SELECT COALESCE(pv.source, 'feed') AS source, COUNT(*) AS views
               FROM post_views pv JOIN posts p ON p.id = pv.post_id
               WHERE p.author_id = ${uid} AND pv.created_at >= ${sinceIso}::timestamptz
               GROUP BY 1 ORDER BY views DESC LIMIT 8
             `,
-            sql`
+              sql`
               SELECT COUNT(DISTINCT pv.user_id) AS unique_viewers
               FROM post_views pv JOIN posts p ON p.id = pv.post_id
               WHERE p.author_id = ${uid} AND pv.created_at >= ${sinceIso}::timestamptz AND pv.user_id IS NOT NULL
             `,
-            sql`
+              sql`
               SELECT EXTRACT(HOUR FROM pv.created_at) AS hour, COUNT(*) AS views
               FROM post_views pv JOIN posts p ON p.id = pv.post_id
               WHERE p.author_id = ${uid} AND pv.created_at >= ${sinceIso}::timestamptz
               GROUP BY 1 ORDER BY views DESC LIMIT 5
             `,
-            sql`
+              sql`
               SELECT u.username, pr.display_name, COUNT(*) AS views
               FROM post_views pv
               JOIN posts p ON p.id = pv.post_id
@@ -727,31 +1087,42 @@ export class MAIAgentFleet {
               WHERE p.author_id = ${uid} AND pv.created_at >= ${sinceIso}::timestamptz
               GROUP BY u.username, pr.display_name ORDER BY views DESC LIMIT 5
             `,
-          ]);
-          const totalViews = (sourcesRows as any[]).reduce((s, r) => s + Number(r.views || 0), 0);
+            ]);
+          const totalViews = (sourcesRows as any[]).reduce(
+            (s, r) => s + Number(r.views || 0),
+            0
+          );
           resultData = {
+            message: `Audience analysée sur ${days} jours.`,
+            peak_hours: (hoursRows as any[]).map((r) => ({
+              hour: Number(r.hour),
+              views: Number(r.views || 0),
+            })),
             period_days: days,
-            total_views: totalViews,
             sources: (sourcesRows as any[]).map((r) => ({
+              percent:
+                totalViews > 0
+                  ? Math.round((Number(r.views || 0) / totalViews) * 100)
+                  : 0,
               source: String(r.source),
               views: Number(r.views || 0),
-              percent: totalViews > 0 ? Math.round((Number(r.views || 0) / totalViews) * 100) : 0,
             })),
-            unique_viewers: Number(uniqueRows[0]?.unique_viewers || 0),
-            peak_hours: (hoursRows as any[]).map((r) => ({ hour: Number(r.hour), views: Number(r.views || 0) })),
             top_engaged_followers: (followerRows as any[]).map((r) => ({
-              username: r.username,
               display_name: r.display_name,
+              username: r.username,
               views: Number(r.views || 0),
             })),
-            message: `Audience analysée sur ${days} jours.`,
+            total_views: totalViews,
+            unique_viewers: Number(uniqueRows[0]?.unique_viewers || 0),
           };
           break;
         }
 
         case "best_time_to_post": {
           const days = parsePeriodDays(args.period);
-          const sinceIso = new Date(Date.now() - days * 86400000).toISOString();
+          const sinceIso = new Date(
+            Date.now() - days * 86_400_000
+          ).toISOString();
           const [slotRows, hourRows, totalRows] = await Promise.all([
             sql`
               SELECT EXTRACT(DOW FROM p.published_at) AS dow, EXTRACT(HOUR FROM p.published_at) AS hour,
@@ -771,24 +1142,37 @@ export class MAIAgentFleet {
           const analyzedPosts = Number(totalRows[0]?.n || 0);
           const bestSlots = (slotRows as any[])
             .map((r) => ({
-              weekday: WEEKDAY_NAMES[Number(r.dow)] || String(r.dow),
+              avg_engagement:
+                Math.round(Number(r.avg_engagement || 0) * 10) / 10,
+              avg_views: Math.round(Number(r.avg_views || 0)),
               hour: Number(r.hour),
               posts_count: Number(r.posts_count || 0),
-              avg_views: Math.round(Number(r.avg_views || 0)),
-              avg_engagement: Math.round(Number(r.avg_engagement || 0) * 10) / 10,
+              weekday: WEEKDAY_NAMES[Number(r.dow)] || String(r.dow),
             }))
             .sort((a, b) => b.avg_engagement - a.avg_engagement)
             .slice(0, 3);
           resultData = {
-            period_days: days,
             analyzed_posts: analyzedPosts,
+            audience_peak_hours: (hourRows as any[]).map((r) => ({
+              hour: Number(r.hour),
+              views: Number(r.views || 0),
+            })),
             best_slots: bestSlots,
-            audience_peak_hours: (hourRows as any[]).map((r) => ({ hour: Number(r.hour), views: Number(r.views || 0) })),
-            confidence: analyzedPosts >= 10 ? "high" : analyzedPosts >= 4 ? "medium" : "low",
-            note: analyzedPosts === 0 ? "Aucune publication sur la période — publiez quelques posts pour obtenir des recommandations." : undefined,
-            message: bestSlots.length > 0
-              ? `Meilleur créneau : ${bestSlots[0].weekday} à ${bestSlots[0].hour}h (${bestSlots[0].avg_views} vues moyennes).`
-              : "Pas encore assez de données de publication.",
+            confidence:
+              analyzedPosts >= 10
+                ? "high"
+                : analyzedPosts >= 4
+                  ? "medium"
+                  : "low",
+            message:
+              bestSlots.length > 0
+                ? `Meilleur créneau : ${bestSlots[0].weekday} à ${bestSlots[0].hour}h (${bestSlots[0].avg_views} vues moyennes).`
+                : "Pas encore assez de données de publication.",
+            note:
+              analyzedPosts === 0
+                ? "Aucune publication sur la période — publiez quelques posts pour obtenir des recommandations."
+                : undefined,
+            period_days: days,
           };
           break;
         }
@@ -797,49 +1181,64 @@ export class MAIAgentFleet {
           const days = parsePeriodDays(args.period);
           const nowMs = Date.now();
           const nowIso = new Date(nowMs).toISOString();
-          const curSince = new Date(nowMs - days * 86400000).toISOString();
-          const prevSince = new Date(nowMs - 2 * days * 86400000).toISOString();
+          const curSince = new Date(nowMs - days * 86_400_000).toISOString();
+          const prevSince = new Date(
+            nowMs - 2 * days * 86_400_000
+          ).toISOString();
           const postAgg = (since: string, until: string) => sql`
             SELECT COALESCE(SUM(views_count),0) AS views, COALESCE(SUM(likes_count),0) AS likes,
                    COALESCE(SUM(reposts_count),0) AS reposts, COALESCE(SUM(replies_count),0) AS replies,
                    COUNT(*) AS posts
             FROM posts WHERE author_id = ${uid} AND published_at >= ${since}::timestamptz AND published_at < ${until}::timestamptz
           `;
-          const [curRows, prevRows, fCur, fPrev, pvCur, pvPrev] = await Promise.all([
-            postAgg(curSince, nowIso),
-            postAgg(prevSince, curSince),
-            sql`SELECT COUNT(*) AS n FROM follows WHERE following_id = ${uid} AND created_at >= ${curSince}::timestamptz`,
-            sql`SELECT COUNT(*) AS n FROM follows WHERE following_id = ${uid} AND created_at >= ${prevSince}::timestamptz AND created_at < ${curSince}::timestamptz`,
-            sql`SELECT COUNT(*) AS n FROM profile_views WHERE profile_user_id = ${uid} AND created_at >= ${curSince}::timestamptz`,
-            sql`SELECT COUNT(*) AS n FROM profile_views WHERE profile_user_id = ${uid} AND created_at >= ${prevSince}::timestamptz AND created_at < ${curSince}::timestamptz`,
-          ]);
+          const [curRows, prevRows, fCur, fPrev, pvCur, pvPrev] =
+            await Promise.all([
+              postAgg(curSince, nowIso),
+              postAgg(prevSince, curSince),
+              sql`SELECT COUNT(*) AS n FROM follows WHERE following_id = ${uid} AND created_at >= ${curSince}::timestamptz`,
+              sql`SELECT COUNT(*) AS n FROM follows WHERE following_id = ${uid} AND created_at >= ${prevSince}::timestamptz AND created_at < ${curSince}::timestamptz`,
+              sql`SELECT COUNT(*) AS n FROM profile_views WHERE profile_user_id = ${uid} AND created_at >= ${curSince}::timestamptz`,
+              sql`SELECT COUNT(*) AS n FROM profile_views WHERE profile_user_id = ${uid} AND created_at >= ${prevSince}::timestamptz AND created_at < ${curSince}::timestamptz`,
+            ]);
           const metric = (current: number, previous: number) => ({
             current,
-            previous,
             delta: current - previous,
-            percent: previous > 0 ? Math.round(((current - previous) / previous) * 1000) / 10 : current > 0 ? 100 : 0,
+            percent:
+              previous > 0
+                ? Math.round(((current - previous) / previous) * 1000) / 10
+                : current > 0
+                  ? 100
+                  : 0,
+            previous,
           });
           const c = curRows[0] || {};
           const p = prevRows[0] || {};
           resultData = {
-            period_days: days,
-            views: metric(Number(c.views || 0), Number(p.views || 0)),
+            followers_gained: metric(
+              Number(fCur[0]?.n || 0),
+              Number(fPrev[0]?.n || 0)
+            ),
             likes: metric(Number(c.likes || 0), Number(p.likes || 0)),
-            reposts: metric(Number(c.reposts || 0), Number(p.reposts || 0)),
-            replies: metric(Number(c.replies || 0), Number(p.replies || 0)),
-            posts: metric(Number(c.posts || 0), Number(p.posts || 0)),
-            followers_gained: metric(Number(fCur[0]?.n || 0), Number(fPrev[0]?.n || 0)),
-            profile_views: metric(Number(pvCur[0]?.n || 0), Number(pvPrev[0]?.n || 0)),
             message: `Comparaison des ${days} derniers jours vs les ${days} jours précédents.`,
+            period_days: days,
+            posts: metric(Number(c.posts || 0), Number(p.posts || 0)),
+            profile_views: metric(
+              Number(pvCur[0]?.n || 0),
+              Number(pvPrev[0]?.n || 0)
+            ),
+            replies: metric(Number(c.replies || 0), Number(p.replies || 0)),
+            reposts: metric(Number(c.reposts || 0), Number(p.reposts || 0)),
+            views: metric(Number(c.views || 0), Number(p.views || 0)),
           };
           break;
         }
 
         case "predict_post_performance": {
           const content = String(args.content || "").trim();
-          if (!content) throw new Error("Le contenu du brouillon est obligatoire.");
+          if (!content)
+            throw new Error("Le contenu du brouillon est obligatoire.");
           const plannedFormat = String(args.format || "").trim() || null;
-          const sinceIso = new Date(Date.now() - 90 * 86400000).toISOString();
+          const sinceIso = new Date(Date.now() - 90 * 86_400_000).toISOString();
           const [globalRows, formatRows, hourRows] = await Promise.all([
             sql`
               SELECT COUNT(*) AS n, AVG(COALESCE(views_count,0)) AS avg_views,
@@ -863,52 +1262,98 @@ export class MAIAgentFleet {
           const avgEngagement = Number(hist.avg_engagement || 0);
           const avgLength = Number(hist.avg_length || 0);
 
-          const breakdown: Array<{ factor: string; impact: number; tip?: string }> = [];
+          const breakdown: Array<{
+            factor: string;
+            impact: number;
+            tip?: string;
+          }> = [];
           let score = 50;
 
           if (sampleSize >= 3 && avgLength > 0) {
             const ratio = content.length / avgLength;
             if (ratio >= 0.5 && ratio <= 1.7) {
               score += 6;
-              breakdown.push({ factor: "Longueur proche de vos habitudes", impact: 6 });
+              breakdown.push({
+                factor: "Longueur proche de vos habitudes",
+                impact: 6,
+              });
             } else if (ratio > 1.7) {
               score -= 6;
-              breakdown.push({ factor: "Texte plus long que d'habitude", impact: -6, tip: "Raccourcis ou structure en paragraphes courts." });
+              breakdown.push({
+                factor: "Texte plus long que d'habitude",
+                impact: -6,
+                tip: "Raccourcis ou structure en paragraphes courts.",
+              });
             } else {
               score += 2;
-              breakdown.push({ factor: "Texte plus court que d'habitude", impact: 2 });
+              breakdown.push({
+                factor: "Texte plus court que d'habitude",
+                impact: 2,
+              });
             }
           }
 
-          const hashtagCount = (content.match(/#[\p{L}\p{N}_]{2,30}/gu) || []).length;
+          const hashtagCount = (content.match(/#[\p{L}\p{N}_]{2,30}/gu) || [])
+            .length;
           if (hashtagCount >= 1 && hashtagCount <= 3) {
             score += 8;
-            breakdown.push({ factor: `${hashtagCount} hashtag(s) — dosage optimal`, impact: 8 });
+            breakdown.push({
+              factor: `${hashtagCount} hashtag(s) — dosage optimal`,
+              impact: 8,
+            });
           } else if (hashtagCount === 0) {
-            breakdown.push({ factor: "Aucun hashtag", impact: 0, tip: "Ajoutez 1 à 3 hashtags pertinents pour élargir la portée." });
+            breakdown.push({
+              factor: "Aucun hashtag",
+              impact: 0,
+              tip: "Ajoutez 1 à 3 hashtags pertinents pour élargir la portée.",
+            });
           } else {
             score -= 6;
-            breakdown.push({ factor: "Trop de hashtags", impact: -6, tip: "Limitez-vous à 1-3 hashtags pour éviter l'effet spam." });
+            breakdown.push({
+              factor: "Trop de hashtags",
+              impact: -6,
+              tip: "Limitez-vous à 1-3 hashtags pour éviter l'effet spam.",
+            });
           }
 
-          if (/\?|commentez|partagez|votre avis|selon vous|dites-moi|votez/i.test(content)) {
+          if (
+            /\?|commentez|partagez|votre avis|selon vous|dites-moi|votez/i.test(
+              content
+            )
+          ) {
             score += 6;
-            breakdown.push({ factor: "Question / appel à l'action présent", impact: 6 });
+            breakdown.push({
+              factor: "Question / appel à l'action présent",
+              impact: 6,
+            });
           } else {
-            breakdown.push({ factor: "Pas de question ni d'appel à l'action", impact: 0, tip: "Une question en fin de post stimule les réponses." });
+            breakdown.push({
+              factor: "Pas de question ni d'appel à l'action",
+              impact: 0,
+              tip: "Une question en fin de post stimule les réponses.",
+            });
           }
 
           if (sampleSize >= 3) {
             const fmt = plannedFormat || "micro_text";
-            const fmtRow = (formatRows as any[]).find((r) => String(r.format) === fmt);
+            const fmtRow = (formatRows as any[]).find(
+              (r) => String(r.format) === fmt
+            );
             if (fmtRow) {
               const fmtEng = Number(fmtRow.avg_engagement || 0);
               if (fmtEng > avgEngagement * 1.15) {
                 score += 10;
-                breakdown.push({ factor: `Format « ${fmt} » au-dessus de votre moyenne`, impact: 10 });
+                breakdown.push({
+                  factor: `Format « ${fmt} » au-dessus de votre moyenne`,
+                  impact: 10,
+                });
               } else if (fmtEng < avgEngagement * 0.85) {
                 score -= 8;
-                breakdown.push({ factor: `Format « ${fmt} » sous votre moyenne`, impact: -8, tip: "Testez un autre format plus performant." });
+                breakdown.push({
+                  factor: `Format « ${fmt} » sous votre moyenne`,
+                  impact: -8,
+                  tip: "Testez un autre format plus performant.",
+                });
               }
             }
           }
@@ -916,45 +1361,57 @@ export class MAIAgentFleet {
           let plannedHour: number | null = null;
           if (args.scheduled_time) {
             const d = new Date(String(args.scheduled_time));
-            if (!isNaN(d.getTime())) plannedHour = d.getHours();
-            else {
+            if (isNaN(d.getTime())) {
               const hm = String(args.scheduled_time).match(/^(\d{1,2})/);
               if (hm) plannedHour = Number(hm[1]);
-            }
+            } else plannedHour = d.getHours();
           }
           if (plannedHour !== null && sampleSize >= 3) {
-            const hourRow = (hourRows as any[]).find((r) => Number(r.hour) === plannedHour);
+            const hourRow = (hourRows as any[]).find(
+              (r) => Number(r.hour) === plannedHour
+            );
             if (hourRow) {
               const hourViews = Number(hourRow.avg_views || 0);
               const hourLabel = `${String(plannedHour).padStart(2, "0")}h`;
               if (hourViews > avgViews * 1.15) {
                 score += 8;
-                breakdown.push({ factor: `Créneau ${hourLabel} au-dessus de votre moyenne`, impact: 8 });
+                breakdown.push({
+                  factor: `Créneau ${hourLabel} au-dessus de votre moyenne`,
+                  impact: 8,
+                });
               } else if (hourViews < avgViews * 0.85) {
                 score -= 6;
-                breakdown.push({ factor: `Créneau ${hourLabel} sous votre moyenne`, impact: -6, tip: "Utilisez /besttime pour trouver vos meilleurs créneaux." });
+                breakdown.push({
+                  factor: `Créneau ${hourLabel} sous votre moyenne`,
+                  impact: -6,
+                  tip: "Utilisez /besttime pour trouver vos meilleurs créneaux.",
+                });
               }
             }
           }
 
           score = Math.max(0, Math.min(100, score));
           resultData = {
-            score,
-            estimated_reach: Math.round(avgViews * (0.6 + score / 100)),
-            estimated_engagement: Math.round(avgEngagement * (0.6 + score / 100) * 10) / 10,
             based_on_posts: sampleSize,
             breakdown,
             cold_start: sampleSize < 3,
-            message: sampleSize < 3
-              ? "Pas assez d'historique (moins de 3 posts sur 90 jours) — estimation neutre."
-              : `Score ${score}/100 basé sur ${sampleSize} posts récents.`,
+            estimated_engagement:
+              Math.round(avgEngagement * (0.6 + score / 100) * 10) / 10,
+            estimated_reach: Math.round(avgViews * (0.6 + score / 100)),
+            message:
+              sampleSize < 3
+                ? "Pas assez d'historique (moins de 3 posts sur 90 jours) — estimation neutre."
+                : `Score ${score}/100 basé sur ${sampleSize} posts récents.`,
+            score,
           };
           break;
         }
 
         case "analyze_content_performance": {
           const days = parsePeriodDays(args.period);
-          const sinceIso = new Date(Date.now() - days * 86400000).toISOString();
+          const sinceIso = new Date(
+            Date.now() - days * 86_400_000
+          ).toISOString();
           const rows = await sql`
             SELECT COALESCE(format,'micro_text') AS format, content,
                    COALESCE(views_count,0) AS views, COALESCE(likes_count,0) AS likes,
@@ -962,18 +1419,27 @@ export class MAIAgentFleet {
             FROM posts WHERE author_id = ${uid} AND published_at >= ${sinceIso}::timestamptz
             ORDER BY published_at DESC LIMIT 500
           `;
-          const byFormat: Record<string, { posts: number; views: number; engagement: number }> = {};
-          const byTag: Record<string, { posts: number; views: number; likes: number }> = {};
+          const byFormat: Record<
+            string,
+            { posts: number; views: number; engagement: number }
+          > = {};
+          const byTag: Record<
+            string,
+            { posts: number; views: number; likes: number }
+          > = {};
           for (const r of rows as any[]) {
-            const engagement = Number(r.likes) + Number(r.reposts) * 2 + Number(r.replies) * 2;
+            const engagement =
+              Number(r.likes) + Number(r.reposts) * 2 + Number(r.replies) * 2;
             const f = String(r.format || "micro_text");
-            byFormat[f] = byFormat[f] || { posts: 0, views: 0, engagement: 0 };
+            byFormat[f] = byFormat[f] || { engagement: 0, posts: 0, views: 0 };
             byFormat[f].posts += 1;
             byFormat[f].views += Number(r.views);
             byFormat[f].engagement += engagement;
-            for (const m of String(r.content || "").matchAll(/#([\p{L}\p{N}_]{2,30})/gu)) {
+            for (const m of String(r.content || "").matchAll(
+              /#([\p{L}\p{N}_]{2,30})/gu
+            )) {
               const tag = m[1].toLowerCase();
-              byTag[tag] = byTag[tag] || { posts: 0, views: 0, likes: 0 };
+              byTag[tag] = byTag[tag] || { likes: 0, posts: 0, views: 0 };
               byTag[tag].posts += 1;
               byTag[tag].views += Number(r.views);
               byTag[tag].likes += Number(r.likes);
@@ -981,37 +1447,44 @@ export class MAIAgentFleet {
           }
           const formats = Object.entries(byFormat)
             .map(([format, s]) => ({
+              avg_engagement:
+                Math.round((s.engagement / Math.max(1, s.posts)) * 10) / 10,
+              avg_views: Math.round(s.views / Math.max(1, s.posts)),
+              engagement_rate_percent:
+                s.views > 0
+                  ? Math.round((s.engagement / s.views) * 1000) / 10
+                  : 0,
               format,
               posts: s.posts,
-              avg_views: Math.round(s.views / Math.max(1, s.posts)),
-              avg_engagement: Math.round((s.engagement / Math.max(1, s.posts)) * 10) / 10,
-              engagement_rate_percent: s.views > 0 ? Math.round((s.engagement / s.views) * 1000) / 10 : 0,
             }))
             .sort((a, b) => b.avg_engagement - a.avg_engagement);
           const top_hashtags = Object.entries(byTag)
             .map(([tag, s]) => ({
-              tag: `#${tag}`,
-              posts: s.posts,
-              avg_views: Math.round(s.views / Math.max(1, s.posts)),
               avg_likes: Math.round((s.likes / Math.max(1, s.posts)) * 10) / 10,
+              avg_views: Math.round(s.views / Math.max(1, s.posts)),
+              posts: s.posts,
+              tag: `#${tag}`,
             }))
             .sort((a, b) => b.avg_views - a.avg_views)
             .slice(0, 10);
           resultData = {
+            formats,
+            message:
+              formats.length > 0
+                ? `Format le plus engageant : ${formats[0].format} (${formats[0].avg_engagement} engagement moyen).`
+                : "Aucun post publié sur la période.",
             period_days: days,
             posts_analyzed: (rows as any[]).length,
-            formats,
             top_hashtags,
-            message: formats.length > 0
-              ? `Format le plus engageant : ${formats[0].format} (${formats[0].avg_engagement} engagement moyen).`
-              : "Aucun post publié sur la période.",
           };
           break;
         }
 
         case "analyze_dm_activity": {
           const days = parsePeriodDays(args.period);
-          const sinceIso = new Date(Date.now() - days * 86400000).toISOString();
+          const sinceIso = new Date(
+            Date.now() - days * 86_400_000
+          ).toISOString();
           const msgs = await sql`
             SELECT dm.id, dm.conversation_id, dm.sender_id, dm.recipient_id, dm.created_at
             FROM direct_messages dm
@@ -1021,15 +1494,25 @@ export class MAIAgentFleet {
             LIMIT 1000
           `;
           const rowsArr = msgs as any[];
-          const sent = rowsArr.filter((m) => Number(m.sender_id) === uid).length;
+          const sent = rowsArr.filter(
+            (m) => Number(m.sender_id) === uid
+          ).length;
           const received = rowsArr.length - sent;
-          const convIds = new Set<string>(rowsArr.map((m) => String(m.conversation_id)));
+          const convIds = new Set<string>(
+            rowsArr.map((m) => String(m.conversation_id))
+          );
           let replyDeltas = 0;
           let replyCount = 0;
           let prev: any = null;
           for (const m of rowsArr) {
-            if (prev && String(prev.conversation_id) === String(m.conversation_id) && Number(prev.sender_id) !== Number(m.sender_id)) {
-              const delta = new Date(m.created_at).getTime() - new Date(prev.created_at).getTime();
+            if (
+              prev &&
+              String(prev.conversation_id) === String(m.conversation_id) &&
+              Number(prev.sender_id) !== Number(m.sender_id)
+            ) {
+              const delta =
+                new Date(m.created_at).getTime() -
+                new Date(prev.created_at).getTime();
               if (delta > 0 && delta < 24 * 3600 * 1000) {
                 replyDeltas += delta;
                 replyCount += 1;
@@ -1039,8 +1522,12 @@ export class MAIAgentFleet {
           }
           const perOther: Record<string, number> = {};
           for (const m of rowsArr) {
-            const other = Number(m.sender_id) === uid ? Number(m.recipient_id || 0) : Number(m.sender_id);
-            if (other && other !== uid) perOther[other] = (perOther[other] || 0) + 1;
+            const other =
+              Number(m.sender_id) === uid
+                ? Number(m.recipient_id || 0)
+                : Number(m.sender_id);
+            if (other && other !== uid)
+              perOther[other] = (perOther[other] || 0) + 1;
           }
           const topIds = Object.entries(perOther)
             .sort((a, b) => b[1] - a[1])
@@ -1053,33 +1540,44 @@ export class MAIAgentFleet {
               LEFT JOIN profiles pr ON pr.user_id = u.id
               WHERE u.id = ANY(${topIds})
             `;
-            const byId = new Map((users as any[]).map((u) => [Number(u.id), u]));
+            const byId = new Map(
+              (users as any[]).map((u) => [Number(u.id), u])
+            );
             topCorrespondents = topIds.map((id) => ({
-              username: byId.get(id)?.username || null,
               display_name: byId.get(id)?.display_name || null,
               messages: perOther[id],
+              username: byId.get(id)?.username || null,
             }));
           }
-          const groupsRows = await sql`SELECT COUNT(*) AS n FROM dm_group_members WHERE user_id = ${uid}`;
+          const groupsRows =
+            await sql`SELECT COUNT(*) AS n FROM dm_group_members WHERE user_id = ${uid}`;
           resultData = {
-            period_days: days,
-            messages_total: rowsArr.length,
-            sent,
-            received,
             active_conversations: convIds.size,
+            avg_reply_minutes:
+              replyCount > 0
+                ? Math.round((replyDeltas / replyCount / 60_000) * 10) / 10
+                : null,
             groups: Number(groupsRows[0]?.n || 0),
-            avg_reply_minutes: replyCount > 0 ? Math.round((replyDeltas / replyCount / 60000) * 10) / 10 : null,
-            replies_measured: replyCount,
-            top_correspondents: topCorrespondents,
-            note: rowsArr.length >= 1000 ? "Analyse limitée aux 1000 derniers messages de la période." : undefined,
             message: `${rowsArr.length} messages sur ${days} jours (${sent} envoyés, ${received} reçus).`,
+            messages_total: rowsArr.length,
+            note:
+              rowsArr.length >= 1000
+                ? "Analyse limitée aux 1000 derniers messages de la période."
+                : undefined,
+            period_days: days,
+            received,
+            replies_measured: replyCount,
+            sent,
+            top_correspondents: topCorrespondents,
           };
           break;
         }
 
         case "analyze_book_stats": {
           const days = parsePeriodDays(args.period);
-          const sinceIso = new Date(Date.now() - days * 86400000).toISOString();
+          const sinceIso = new Date(
+            Date.now() - days * 86_400_000
+          ).toISOString();
           const books = await sql`
             SELECT b.id, b.title, b.icon,
                    (SELECT COUNT(*) FROM vibe_book_items bi WHERE bi.book_id = b.id) AS items_count,
@@ -1095,37 +1593,37 @@ export class MAIAgentFleet {
           const bookIds = (books as any[]).map((b) => String(b.id));
           let topPosts: any[] = [];
           if (bookIds.length > 0) {
-            topPosts = await sql`
+            topPosts = (await sql`
               SELECT bi.book_id, p.id AS post_id, p.content, COALESCE(p.views_count,0) AS views, COALESCE(p.likes_count,0) AS likes
               FROM vibe_book_items bi
               JOIN posts p ON p.id = bi.post_id
               WHERE bi.book_id = ANY(${bookIds}::uuid[])
               ORDER BY COALESCE(p.views_count,0) DESC
               LIMIT 60
-            ` as any[];
+            `) as any[];
           }
           const topPerBook = new Map<string, any>();
           for (const r of topPosts) {
             const key = String(r.book_id);
             if (!topPerBook.has(key)) {
               topPerBook.set(key, {
-                post_id: r.post_id,
                 excerpt: String(r.content || "").slice(0, 120),
-                views: Number(r.views || 0),
                 likes: Number(r.likes || 0),
+                post_id: r.post_id,
+                views: Number(r.views || 0),
               });
             }
           }
           resultData = {
             books: (books as any[]).map((b) => ({
-              id: b.id,
-              title: b.title,
-              icon: b.icon,
-              items_count: Number(b.items_count || 0),
-              members_count: Number(b.members_count || 0),
               contributors_count: Number(b.contributors_count || 0),
-              recent_items: Number(b.recent_items || 0),
+              icon: b.icon,
+              id: b.id,
+              items_count: Number(b.items_count || 0),
               last_added_at: b.last_added_at,
+              members_count: Number(b.members_count || 0),
+              recent_items: Number(b.recent_items || 0),
+              title: b.title,
               top_post: topPerBook.get(String(b.id)) || null,
             })),
             books_count: (books as any[]).length,
@@ -1136,7 +1634,9 @@ export class MAIAgentFleet {
 
         case "analyze_hashtags": {
           const days = parsePeriodDays(args.period);
-          const sinceIso = new Date(Date.now() - days * 86400000).toISOString();
+          const sinceIso = new Date(
+            Date.now() - days * 86_400_000
+          ).toISOString();
           const [mine, trending] = await Promise.all([
             sql`
               SELECT content, COALESCE(views_count,0) AS views, COALESCE(likes_count,0) AS likes,
@@ -1146,12 +1646,23 @@ export class MAIAgentFleet {
             `,
             sql`SELECT content FROM posts WHERE published_at > NOW() - INTERVAL '7 days' ORDER BY published_at DESC LIMIT 200`,
           ]);
-          const tagStats: Record<string, { posts: number; views: number; likes: number; engagement: number }> = {};
+          const tagStats: Record<
+            string,
+            { posts: number; views: number; likes: number; engagement: number }
+          > = {};
           for (const r of mine as any[]) {
-            const eng = Number(r.likes) + Number(r.reposts) * 2 + Number(r.replies) * 2;
-            for (const m of String(r.content || "").matchAll(/#([\p{L}\p{N}_]{2,30})/gu)) {
+            const eng =
+              Number(r.likes) + Number(r.reposts) * 2 + Number(r.replies) * 2;
+            for (const m of String(r.content || "").matchAll(
+              /#([\p{L}\p{N}_]{2,30})/gu
+            )) {
               const tag = m[1].toLowerCase();
-              tagStats[tag] = tagStats[tag] || { posts: 0, views: 0, likes: 0, engagement: 0 };
+              tagStats[tag] = tagStats[tag] || {
+                engagement: 0,
+                likes: 0,
+                posts: 0,
+                views: 0,
+              };
               tagStats[tag].posts += 1;
               tagStats[tag].views += Number(r.views);
               tagStats[tag].likes += Number(r.likes);
@@ -1160,17 +1671,22 @@ export class MAIAgentFleet {
           }
           const hashtags = Object.entries(tagStats)
             .map(([tag, s]) => ({
-              tag: `#${tag}`,
-              posts: s.posts,
-              avg_views: Math.round(s.views / Math.max(1, s.posts)),
               avg_likes: Math.round((s.likes / Math.max(1, s.posts)) * 10) / 10,
-              engagement_rate_percent: s.views > 0 ? Math.round((s.engagement / s.views) * 1000) / 10 : 0,
+              avg_views: Math.round(s.views / Math.max(1, s.posts)),
+              engagement_rate_percent:
+                s.views > 0
+                  ? Math.round((s.engagement / s.views) * 1000) / 10
+                  : 0,
+              posts: s.posts,
+              tag: `#${tag}`,
             }))
             .sort((a, b) => b.avg_views - a.avg_views);
           const used = new Set(hashtags.map((h) => h.tag.slice(1)));
           const trendCounts: Record<string, number> = {};
           for (const r of trending as any[]) {
-            for (const m of String(r.content || "").matchAll(/#([\p{L}\p{N}_]{2,30})/gu)) {
+            for (const m of String(r.content || "").matchAll(
+              /#([\p{L}\p{N}_]{2,30})/gu
+            )) {
               const tag = m[1].toLowerCase();
               trendCounts[tag] = (trendCounts[tag] || 0) + 1;
             }
@@ -1179,15 +1695,19 @@ export class MAIAgentFleet {
             .filter(([tag]) => !used.has(tag))
             .sort((a, b) => b[1] - a[1])
             .slice(0, 6)
-            .map(([tag, count]) => ({ tag: `#${tag}`, platform_posts_7d: count }));
+            .map(([tag, count]) => ({
+              platform_posts_7d: count,
+              tag: `#${tag}`,
+            }));
           resultData = {
-            period_days: days,
-            hashtags: hashtags.slice(0, 10),
             best_hashtag: hashtags[0] || null,
+            hashtags: hashtags.slice(0, 10),
+            message:
+              hashtags.length === 0
+                ? "Aucun hashtag utilisé sur la période."
+                : `Top hashtag : ${hashtags[0].tag} (${hashtags[0].avg_views} vues moyennes).`,
+            period_days: days,
             suggestions,
-            message: hashtags.length === 0
-              ? "Aucun hashtag utilisé sur la période."
-              : `Top hashtag : ${hashtags[0].tag} (${hashtags[0].avg_views} vues moyennes).`,
           };
           break;
         }
@@ -1202,7 +1722,7 @@ export class MAIAgentFleet {
         VALUES (${uid}, ${toolName}, ${JSON.stringify(args)}::jsonb, ${JSON.stringify(resultData)}::jsonb, 'success', ${duration})
       `;
 
-      return { success: true, result: resultData };
+      return { result: resultData, success: true };
     } catch (err: any) {
       console.error(`[MAIAgentFleet] Error executing tool ${toolName}:`, err);
       const duration = Date.now() - startTime;
@@ -1210,7 +1730,7 @@ export class MAIAgentFleet {
         INSERT INTO mai_tool_executions (user_id, tool_name, parameters, result, status, execution_time_ms)
         VALUES (${uid}, ${toolName}, ${JSON.stringify(args)}::jsonb, ${JSON.stringify({ error: err.message })}::jsonb, 'failed', ${duration})
       `.catch(() => {});
-      return { success: false, result: null, error: err.message };
+      return { error: err.message, result: null, success: false };
     }
   }
 }

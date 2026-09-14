@@ -1,5 +1,6 @@
 "use client";
 
+import DOMPurify from "dompurify";
 import {
   CodeIcon,
   DownloadIcon,
@@ -12,7 +13,6 @@ import {
   XIcon,
 } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import DOMPurify from "dompurify";
 import { cn } from "@/lib/utils";
 
 type DiagramOutput = {

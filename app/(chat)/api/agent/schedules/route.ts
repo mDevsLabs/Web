@@ -3,7 +3,6 @@ import {
   isValidIanaTimezone,
   scheduleIntentSchema,
 } from "@/lib/agent/contracts";
-import { emitAgentBusinessEvent } from "@/lib/agent/events/business";
 import { checkAgentAccess } from "@/lib/agent/gate";
 import { nextOccurrenceFromRule } from "@/lib/agent/scheduler/occurrence";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
@@ -108,12 +107,10 @@ export async function POST(request: Request) {
     userId: auth.userId,
   });
 
-  emitAgentBusinessEvent({
-    chatId: schedule.id,
-    model: schedule.modelId,
-    runId: schedule.id,
-    type: "run_started",
-  });
+  // Aucun événement run_started émis ici : la création d'un schedule n'est
+  // PAS un run. run_started est émis par le runtime quand un vrai run
+  // démarre — un événement avec runId = schedule.id fabriquait des
+  // notifications mensongères (lien vers un run qui n'existe pas).
 
   return Response.json({ schedule }, { status: 201 });
 }

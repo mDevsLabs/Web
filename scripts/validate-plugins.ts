@@ -1,8 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
+import { isLucideIconName } from "../lib/plugins/icon-allowlist";
 import {
   buildGeneratedFiles,
   CATALOG_GENERATED_FILE,
+  entryExportsPluginDefinition,
+  importName,
   listTsEntries,
   PLUGINS_DIR,
   type PluginManifestData,
@@ -19,6 +22,16 @@ function fail(message: string) {
 
 const root = readRootCatalog();
 const categoryIds = new Set(root.categories.map((c) => c.id));
+
+// Les catégories du catalogue racine sont affichées dans l'interface : leur
+// icône doit exister dans la liste blanche partagée.
+for (const category of root.categories) {
+  if (!isLucideIconName(category.icon)) {
+    fail(
+      `Icône inconnue « ${category.icon} » pour la catégorie ${category.id} (voir lib/plugins/icon-allowlist.ts)`
+    );
+  }
+}
 
 const seenPluginIds = new Set<string>();
 const seenToolIds = new Set<string>();
@@ -75,11 +88,19 @@ for (const entry of root.plugins) {
   }
 
   // Le point d'entrée du catalogue (ex. "./weather") doit résoudre vers un
-  // module `index.ts` / `index.tsx` présent dans le dossier.
+  // module `index.ts` / `index.tsx` présent dans le dossier, qui exporte
+  // nommément `<dir>Plugin` (contrat de `server.generated.ts`).
   const hasIndexEntry = ["index.ts", "index.tsx"].some((f) =>
     fs.existsSync(path.join(dirPath, f))
   );
-  if (!hasIndexEntry) {
+  if (hasIndexEntry) {
+    const exportName = importName(entry.dir);
+    if (!entryExportsPluginDefinition(entry.dir, exportName)) {
+      fail(
+        `Le plugin ${manifest.id} doit exporter « export const ${exportName} » depuis ${entry.dir}/index.ts`
+      );
+    }
+  } else {
     fail(
       `Point d'entrée introuvable pour ${manifest.id} : ${entry.entry} doit résoudre vers index.ts`
     );

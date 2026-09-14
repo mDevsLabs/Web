@@ -1,0 +1,22 @@
+{
+  "id": "fr-holidays",
+  "name": "Jours fériés FR",
+  "version": "1.0.0",
+  "description": "Jours fériés légaux français, ponts et jours ouvrés calculés localement, pour planifier sans erreur de calendrier.",
+  "author": "mAI",
+  "category": "productivite",
+  "tags": ["calendrier", "jours fériés", "ponts", "planification", "france"],
+  "icon": { "type": "lucide", "name": "Calendar" },
+  "minTier": "plus",
+  "permissions": {
+    "network": "none",
+    "readsUserData": false,
+    "writesUserData": false,
+    "requiresApproval": false
+  },
+  "tool": {
+    "id": "frHolidays",
+    "label": "Jours fériés FR",
+    "systemHint": "frHolidays (liste des 11 jours fériés légaux français d'une année avec jour de la semaine, détection des ponts à prendre et compte de jours ouvrés entre deux dates — calcul local, aucune source externe)"
+  }
+}

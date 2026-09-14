@@ -1,6 +1,12 @@
 "use client";
 
-import { CheckIcon, Loader2Icon, PlusIcon, Trash2Icon } from "lucide-react";
+import {
+  CheckIcon,
+  Loader2Icon,
+  LockIcon,
+  PlusIcon,
+  Trash2Icon,
+} from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { PageBackButton } from "@/components/chat/page-back-button";
@@ -13,15 +19,36 @@ import { cn } from "@/lib/utils";
 // Vue dédiée d'un plugin (page, pas de fenêtre contextuelle) : toutes les
 // informations du manifeste avec les actions installer / activer-désactiver /
 // désinstaller.
+// Libellés lisibles des permissions déclarées par le manifeste.
+function permissionLabels(manifest: PluginManifest): string[] {
+  const { permissions } = manifest;
+  return [
+    permissions.network === "none"
+      ? "Aucun accès réseau"
+      : "Accès réseau en lecture seule",
+    permissions.readsUserData
+      ? "Lit des données de votre compte"
+      : "Ne lit aucune donnée de votre compte",
+    permissions.writesUserData
+      ? "Modifie des données de votre compte"
+      : "N'écrit aucune donnée de votre compte",
+    permissions.requiresApproval
+      ? "Approbation explicite requise à chaque exécution"
+      : "Aucune approbation nécessaire (lecture ou calcul local)",
+  ];
+}
+
 export default function PluginDetailClient({
   enabled,
   installed,
   installedVersion,
+  locked,
   manifest,
 }: {
   enabled: boolean;
   installed: boolean;
   installedVersion: string | null;
+  locked: boolean;
   manifest: PluginManifest;
 }) {
   const [isBusy, setIsBusy] = useState(false);
@@ -161,11 +188,23 @@ export default function PluginDetailClient({
                 Non installé
               </span>
             )}
-            {manifest.minTier !== "free" && (
-              <span className="rounded-full bg-primary/10 px-2.5 py-1 text-[11px] font-semibold text-primary uppercase">
-                {manifest.minTier}
+            <span
+              className={cn(
+                "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase",
+                locked
+                  ? "bg-amber-500/10 text-amber-700 dark:text-amber-400"
+                  : "bg-primary/10 text-primary"
+              )}
+            >
+              {locked ? <LockIcon className="size-3" /> : null}
+              {manifest.minTier}
+            </span>
+            {locked ? (
+              <span className="text-[11px] text-muted-foreground">
+                Installation réservée au forfait {manifest.minTier} — le serveur
+                refuse toute autre installation.
               </span>
-            )}
+            ) : null}
           </div>
 
           {/* Description */}
@@ -204,6 +243,24 @@ export default function PluginDetailClient({
             </dl>
           </section>
 
+          {/* Permissions déclarées */}
+          <section className="flex flex-col gap-2">
+            <h2 className="text-sm font-semibold text-foreground">
+              Permissions
+            </h2>
+            <ul className="flex flex-col gap-1.5">
+              {permissionLabels(manifest).map((label) => (
+                <li
+                  className="flex items-start gap-2 text-sm text-muted-foreground"
+                  key={label}
+                >
+                  <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-muted-foreground/60" />
+                  {label}
+                </li>
+              ))}
+            </ul>
+          </section>
+
           {/* Tags */}
           {manifest.tags.length > 0 ? (
             <section className="flex flex-col gap-2">
@@ -237,8 +294,13 @@ export default function PluginDetailClient({
             {state.installed ? (
               <>
                 <Button
-                  disabled={isBusy}
+                  disabled={isBusy || (locked && !state.enabled)}
                   onClick={handleToggleEnabled}
+                  title={
+                    locked && !state.enabled
+                      ? `Forfait ${manifest.minTier} requis pour réactiver ce plugin.`
+                      : undefined
+                  }
                   variant="outline"
                 >
                   {isBusy ? (
@@ -269,9 +331,19 @@ export default function PluginDetailClient({
                 </Button>
               </>
             ) : (
-              <Button disabled={isBusy} onClick={handleInstall}>
+              <Button
+                disabled={isBusy || locked}
+                onClick={handleInstall}
+                title={
+                  locked
+                    ? `Forfait ${manifest.minTier} requis pour installer ce plugin.`
+                    : undefined
+                }
+              >
                 {isBusy ? (
                   <Loader2Icon className="size-4 animate-spin" />
+                ) : locked ? (
+                  <LockIcon className="size-4" />
                 ) : (
                   <PlusIcon className="size-4" />
                 )}

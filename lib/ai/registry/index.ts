@@ -4,10 +4,10 @@ import {
   FALLBACK_MODELS,
 } from "@/lib/ai/models";
 import {
+  type AgentModelCompatibility,
+  agentCompatibilityFor,
   getMemoizedCapabilities,
   type ModelCapabilities,
-  agentCompatibilityFor,
-  type AgentModelCompatibility,
 } from "@/lib/ai/registry/capabilities";
 import type { ReasoningLevel } from "@/lib/ai/registry/reasoning";
 import {
@@ -157,9 +157,7 @@ export function pickAgentFallbackModel(
   models: ChatModel[] = FALLBACK_MODELS,
   tier?: string | null
 ): string | null {
-  const candidates = getAgentModelEntries(
-    filterModelsForTier(models, tier)
-  );
+  const candidates = getAgentModelEntries(filterModelsForTier(models, tier));
   return candidates[0]?.id ?? null;
 }
 

@@ -76,4 +76,56 @@ test.describe("Agent", () => {
     await page.keyboard.press("ArrowLeft");
     await expect(chatTab).toBeVisible();
   });
+
+  test("un seul sélecteur, au même endroit sur les deux accueils", async ({
+    page,
+  }) => {
+    await page.goto("/");
+
+    const switchers = page.getByTestId("home-mode-switcher");
+    await expect(switchers).toHaveCount(1);
+    await expect(page.getByRole("tablist")).toHaveCount(1);
+
+    const chatBox = await switchers.boundingBox();
+    expect(chatBox).not.toBeNull();
+
+    await page.getByRole("tab", { name: "Agent" }).click();
+
+    const agentHome = page.getByText("Sur quoi travaille-t-on ?");
+    if (!(await agentHome.isVisible().catch(() => false))) {
+      // Utilisateur Free : l'accueil Agent n'est pas accessible, on s'assure
+      // seulement qu'aucun second sélecteur n'est apparu.
+      await expect(switchers).toHaveCount(1);
+      return;
+    }
+
+    await expect(switchers).toHaveCount(1);
+    const agentBox = await switchers.boundingBox();
+    expect(agentBox).not.toBeNull();
+
+    // Même position horizontale (tolérance de rendu 2 px) et même largeur.
+    const chatCenter = chatBox!.x + chatBox!.width / 2;
+    const agentCenter = agentBox!.x + agentBox!.width / 2;
+    expect(Math.abs(chatCenter - agentCenter)).toBeLessThanOrEqual(2);
+    expect(Math.abs(chatBox!.width - agentBox!.width)).toBeLessThanOrEqual(2);
+  });
+
+  test("le sélecteur reste accessible et centré en mobile", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ height: 740, width: 390 });
+    await page.goto("/");
+
+    const switchers = page.getByTestId("home-mode-switcher");
+    await expect(switchers).toHaveCount(1);
+    await expect(page.getByRole("tablist")).toHaveCount(1);
+
+    const box = await switchers.boundingBox();
+    expect(box).not.toBeNull();
+
+    // Le sélecteur tient dans la largeur du viewport et reste centré.
+    expect(box!.width).toBeLessThanOrEqual(390);
+    const center = box!.x + box!.width / 2;
+    expect(Math.abs(center - 195)).toBeLessThanOrEqual(8);
+  });
 });

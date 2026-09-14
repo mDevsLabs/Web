@@ -14,10 +14,12 @@ import {
   HelpCircleIcon,
   LibraryIcon,
   Loader2Icon,
+  MessageSquareIcon,
   PackageIcon,
   PlugIcon,
   PuzzleIcon,
   SearchIcon,
+  ShieldCheckIcon,
   SparklesIcon,
   TimerIcon,
   TriangleAlertIcon,
@@ -51,12 +53,15 @@ import { cn } from "@/lib/utils";
 // éventuelle et des détails développables. Les retries d'un même outil sont
 // regroupés visuellement (chaque tentative reste persistée et consultable).
 const STEP_ICONS: Record<AgentStepType, typeof HammerIcon> = {
+  approval_request: ShieldCheckIcon,
   artifact: PackageIcon,
   error: TriangleAlertIcon,
   message: CheckCircle2Icon,
   planning: CircleDashedIcon,
   tool_call: HammerIcon,
   tool_result: HammerIcon,
+  user_input_answer: MessageSquareIcon,
+  user_input_request: HelpCircleIcon,
   verification: CheckCircle2Icon,
 };
 

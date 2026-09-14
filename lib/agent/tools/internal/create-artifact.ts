@@ -50,12 +50,22 @@ export const createArtifactTool = defineTool({
       );
     }
 
-    return toolSuccess({
-      documentId,
-      kind: input.kind,
-      length: input.content.length,
-      title: input.title,
-    });
+    return toolSuccess(
+      {
+        documentId,
+        kind: input.kind,
+        length: input.content.length,
+        title: input.title,
+      },
+      undefined,
+      {
+        artifact: { documentId, kind: input.kind, title: input.title },
+      }
+    );
   },
   schema: createArtifactInputSchema,
+  summarize: (data) => {
+    const value = (data ?? {}) as { title?: string };
+    return `Livrable « ${(value.title ?? "livrable").slice(0, 60)} » créé`;
+  },
 });

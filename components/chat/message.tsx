@@ -12,6 +12,10 @@ import {
 import { useCallback, useMemo, useState } from "react";
 
 import { toast } from "sonner";
+import {
+  AgentUserInputCard,
+  type AgentUserInputSubmit,
+} from "@/components/agent/agent-user-input-card";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatMessage } from "@/lib/types";
 import {
@@ -47,7 +51,7 @@ import { PodcastCard } from "./podcast-card";
 import { PreviewAttachment } from "./preview-attachment";
 import { ProfilePictureCard } from "./profile-picture-card";
 import { QuizCard } from "./quiz-card";
-import { Weather } from "./weather";
+import { isWeatherAtLocation, isWeatherErrorOutput, Weather } from "./weather";
 import { WebCaptureCard } from "./web-capture-card";
 import { WebSearchResults } from "./web-search-results";
 
@@ -274,8 +278,12 @@ const PurePreviewMessage = ({
   onEdit,
   searchQuery,
   isCurrentMatch,
+  submitUserInputAnswer,
 }: {
   addToolApprovalResponse: UseChatHelpers<ChatMessage>["addToolApprovalResponse"];
+  // Réponse à une question Agent : le serveur valide, persiste puis relance le
+  // MÊME run. Absent côté Chat, où la clarification reste locale au message.
+  submitUserInputAnswer?: AgentUserInputSubmit;
   chatId: string;
   message: ChatMessage;
   vote: Vote | undefined;
@@ -442,11 +450,31 @@ const PurePreviewMessage = ({
       const widthClass = "w-[min(100%,450px)]";
 
       if (state === "output-available") {
-        return (
-          <div className={widthClass} key={toolCallId}>
-            <Weather weatherAtLocation={part.output} />
-          </div>
-        );
+        // Le plugin peut renvoyer une erreur structurée (ville introuvable,
+        // service indisponible) : on l'affiche au lieu de dérouler une carte
+        // météo sur des données incomplètes.
+        if (isWeatherErrorOutput(part.output)) {
+          return (
+            <div className={widthClass} key={toolCallId}>
+              <Tool className="w-full" defaultOpen={true}>
+                <ToolHeader state="output-available" type="tool-getWeather" />
+                <ToolContent>
+                  <div className="px-4 py-3 text-muted-foreground text-sm">
+                    {part.output.error}
+                  </div>
+                </ToolContent>
+              </Tool>
+            </div>
+          );
+        }
+        if (isWeatherAtLocation(part.output)) {
+          return (
+            <div className={widthClass} key={toolCallId}>
+              <Weather weatherAtLocation={part.output} />
+            </div>
+          );
+        }
+        return null;
       }
 
       if (isDenied) {
@@ -1016,6 +1044,25 @@ const PurePreviewMessage = ({
           key={toolPart.toolCallId ?? key}
           output={toolPart.output}
           state={toolPart.state}
+          toolCallId={toolPart.toolCallId}
+        />
+      );
+    }
+
+    // Clarification Agent : identifiant d'outil snake_case du registre Agent.
+    // La carte enregistre la réponse côté serveur (jamais localement) et
+    // s'appuie sur la sortie persistée de l'outil : la question reste posée
+    // après un refresh, jusqu'à ce qu'une réponse soit enregistrée.
+    // Les identifiants d'outils Agent viennent du registre serveur : le type
+    // union du Chat ne peut pas les énumérer (même convention que "error").
+    if ((type as string) === "tool-ask_user") {
+      const toolPart = part as any;
+      return (
+        <AgentUserInputCard
+          input={toolPart.input ?? toolPart.args}
+          key={toolPart.toolCallId ?? key}
+          onSubmit={submitUserInputAnswer}
+          output={toolPart.output}
           toolCallId={toolPart.toolCallId}
         />
       );

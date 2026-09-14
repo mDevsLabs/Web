@@ -6,14 +6,14 @@ import useSWR from "swr";
 import type { AgentComposerSubmit } from "@/components/agent/agent-composer";
 import { AgentComposer } from "@/components/agent/agent-composer";
 import { AgentHome } from "@/components/agent/agent-home";
-import { AgentModeSwitcher } from "@/components/agent/agent-mode-switcher";
 import { AgentRunTimeline } from "@/components/agent/agent-run-timeline";
-import { AgentSuggestedActions } from "@/components/agent/agent-suggested-actions";
 import {
   AgentStreamProvider,
   useAgentStream,
 } from "@/components/agent/agent-stream-provider";
+import { AgentSuggestedActions } from "@/components/agent/agent-suggested-actions";
 import { AgentChannelBadge } from "@/components/agent/alpha-badge";
+import { HomeModeSwitcher } from "@/components/chat/home-mode-switcher";
 import { useModelCapabilities } from "@/components/chat/input/use-model-capabilities";
 import { PreviewMessage } from "@/components/chat/message";
 import { useActiveChat } from "@/hooks/use-active-chat";
@@ -22,7 +22,7 @@ import { type AgentRequestOptions, useAgentChat } from "@/hooks/use-agent-chat";
 import { useAgentFlags } from "@/hooks/use-agent-flags";
 import { extractChatIdFromPath, useAgentMode } from "@/hooks/use-agent-mode";
 import { useAgentModels } from "@/hooks/use-agent-models";
-import { useProjects, type ProjectLite } from "@/hooks/use-projects";
+import { type ProjectLite, useProjects } from "@/hooks/use-projects";
 import { AGENT_COMPOSER_ARIA_LABEL } from "@/lib/agent/channel";
 import type {
   AgentRunRecord,
@@ -127,14 +127,11 @@ function AgentShellInner() {
       setProject(known);
       setOptions((current) => ({ ...current, projectId: known.id }));
     } else if (allProjects.length > 0) {
-      fetch(
-        `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chats/${chatId}`,
-        {
-          body: JSON.stringify({ projectId: null }),
-          headers: { "Content-Type": "application/json" },
-          method: "PATCH",
-        }
-      ).catch(() => {});
+      fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chats/${chatId}`, {
+        body: JSON.stringify({ projectId: null }),
+        headers: { "Content-Type": "application/json" },
+        method: "PATCH",
+      }).catch(() => {});
     }
   }, [allProjects, chatRecord, chatId]);
 
@@ -147,6 +144,7 @@ function AgentShellInner() {
     setMessages,
     status,
     stopRun,
+    submitUserInputAnswer,
   } = useAgentChat({
     chatId,
     isNewChat,
@@ -159,14 +157,17 @@ function AgentShellInner() {
   // La clé SWR est aussi revalidée en fin de run : les actions suggérées
   // persistées côté serveur apparaissent après la fin du flux.
   const runsHistoryKey = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agent/runs?chatId=${chatId}`;
-  const { data: history, mutate: mutateHistory } = useSWR<AgentRunHistoryPayload>(
-    isNewChat ? null : runsHistoryKey,
-    fetcher,
-    { revalidateOnFocus: false }
-  );
+  const { data: history, mutate: mutateHistory } =
+    useSWR<AgentRunHistoryPayload>(isNewChat ? null : runsHistoryKey, fetcher, {
+      revalidateOnFocus: false,
+    });
   const suggestedActions = useMemo(() => {
     if (!history?.suggestedActions) {
-      return [] as { id: string; label: string; payload: Record<string, unknown> }[];
+      return [] as {
+        id: string;
+        label: string;
+        payload: Record<string, unknown>;
+      }[];
     }
     const runs = (history.runs ?? []) as { id: string }[];
     const lastRun = runs.at(-1);
@@ -174,9 +175,8 @@ function AgentShellInner() {
       return [];
     }
     return (
-      history.suggestedActions[lastRun.id] ?? (
-        [] as { id: string; label: string; payload: Record<string, unknown> }[]
-      )
+      history.suggestedActions[lastRun.id] ??
+      ([] as { id: string; label: string; payload: Record<string, unknown> }[])
     );
   }, [history]);
 
@@ -306,17 +306,11 @@ function AgentShellInner() {
 
   return (
     <div className="flex h-[100dvh] w-full flex-col overflow-hidden bg-background">
-      <header className="flex shrink-0 items-center justify-between gap-2 border-b border-border/40 px-3 py-2 md:px-5">
-        <AgentModeSwitcher
-          mode="agent"
-          onModeChange={(next) => {
-            setMode(next);
-            if (next === "chat" && !isNewChat) {
-              router.push("/");
-            }
-          }}
-          size="sm"
-        />
+      {/* Le sélecteur Chat | Agent n'est plus dans l'en-tête Agent : il vit
+          désormais dans la pile d'accueil (HomeModeSwitcher), au même endroit
+          exactement que sur l'accueil Chat. L'en-tête ne porte plus que
+          l'identité de canal. */}
+      <header className="flex shrink-0 items-center justify-end gap-2 border-b border-border/40 px-3 py-2 md:px-5">
         <div className="flex items-center gap-2">
           <AgentChannelBadge channel={channelInfo.channel} />
         </div>
@@ -352,6 +346,7 @@ function AgentShellInner() {
                     regenerate={regenerate}
                     requiresScrollPadding={false}
                     setMessages={setMessages}
+                    submitUserInputAnswer={submitUserInputAnswer}
                     vote={undefined}
                   />
                 ))}
@@ -372,6 +367,17 @@ function AgentShellInner() {
                 isRunning={isRunning}
                 modelId={currentModelId}
                 models={models}
+                modeSwitcher={
+                  <HomeModeSwitcher
+                    mode="agent"
+                    onModeChange={(next) => {
+                      setMode(next);
+                      if (next === "chat" && !isNewChat) {
+                        router.push("/");
+                      }
+                    }}
+                  />
+                }
                 onModelChange={setCurrentModelId}
                 onOptionsChange={handleOptionsChange}
                 onProjectChange={(next) => {

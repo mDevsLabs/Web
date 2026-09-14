@@ -127,21 +127,12 @@ export function applyToolPermissions(params: {
 
 // Statut d'approbation attendu par le SDK AI : "user-approval" suspend l'appel
 // et remonte une demande au client, "not-applicable" exécute directement.
-export function approvalStatusForPermission(
-  permission: ToolPermission
-): "not-applicable" | "user-approval" {
-  return permission === "ask" ? "user-approval" : "not-applicable";
-}
-
-export function buildToolApprovalConfig(params: {
+// Un outil n'est suspendu que si le serveur l'a décidé (permissions) : la
+// prédication est branchée dans l'adaptateur provider (needsApproval), jamais
+// dans le runtime, et elle ne connaît pas le nom des outils.
+export function requiresApproval(params: {
   approvalRequiredToolIds: string[];
-  enabledTools: RegisteredAgentTool[];
-}): Record<string, "not-applicable" | "user-approval"> {
-  const config: Record<string, "not-applicable" | "user-approval"> = {};
-  for (const tool of params.enabledTools) {
-    config[tool.id] = approvalStatusForPermission(
-      params.approvalRequiredToolIds.includes(tool.id) ? "ask" : "auto"
-    );
-  }
-  return config;
+  toolId: string;
+}): boolean {
+  return params.approvalRequiredToolIds.includes(params.toolId);
 }

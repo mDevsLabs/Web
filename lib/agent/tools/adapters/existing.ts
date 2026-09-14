@@ -19,8 +19,13 @@ import {
 export function fromExistingTool<Input>(params: {
   metadata: AgentToolMetadata;
   schema: ZodType<Input>;
+  // Le schéma Agent est plus resserré que celui du Chat : `toInput` traduit
+  // l'entrée validée vers la forme attendue par l'outil existant. Sans lui, la
+  // logique métier du Chat est réutilisée telle quelle, sans duplication.
+  toInput?: (input: Input) => unknown;
   toResult?: (output: unknown) => ToolResult;
   tool: Tool;
+  summarize?: (data: unknown) => string;
 }): AgentTool<Input> {
   return defineTool<Input>({
     ...params.metadata,
@@ -35,12 +40,15 @@ export function fromExistingTool<Input>(params: {
 
       // Les outils du Chat ne dépendent pas du contexte d'exécution du SDK :
       // on leur fournit un contexte vide mais explicite.
-      const rawOutput: unknown = await run(input, {
-        abortSignal: context.signal,
-        context: undefined,
-        messages: [],
-        toolCallId: context.toolExecutionId,
-      });
+      const rawOutput: unknown = await run(
+        params.toInput ? params.toInput(input) : input,
+        {
+          abortSignal: context.signal,
+          context: undefined,
+          messages: [],
+          toolCallId: context.toolCallId,
+        }
+      );
 
       return params.toResult
         ? params.toResult(rawOutput)
@@ -48,6 +56,7 @@ export function fromExistingTool<Input>(params: {
     },
     schema: params.schema,
     source: "existing",
+    ...(params.summarize ? { summarize: params.summarize } : {}),
   });
 }
 

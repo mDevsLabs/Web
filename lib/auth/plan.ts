@@ -62,6 +62,24 @@ export function tierAtLeast(
   return cur >= min;
 }
 
+// Rang du forfait sur l'échelle canonique (free = 0). Un tier absent ou inconnu
+// vaut 0 : aucun privilège implicite.
+export function getTierRank(tier?: string | null): number {
+  const normalized = normalizeTier(tier);
+  const index = (CANONICAL_TIERS as readonly string[]).indexOf(normalized);
+  return index < 0 ? 0 : index;
+}
+
+// Comparaison générale (free inclus) utilisée par les manifestes de plugins, de
+// modèles MCP et de Skills, qui déclarent un niveau minimal parmi les quatre
+// forfaits canoniques.
+export function tierMeetsMinimum(
+  tier: string | null | undefined,
+  minimum: CanonicalTier
+): boolean {
+  return getTierRank(tier) >= getTierRank(minimum);
+}
+
 export function isSkillMcpEligible(tier?: string | null): boolean {
   return isPaidTier(tier);
 }

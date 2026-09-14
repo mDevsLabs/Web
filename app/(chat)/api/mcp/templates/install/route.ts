@@ -1,12 +1,12 @@
-// Installation d'un modèle MCP statique (lib/mcp-templates) : crée le serveur
-// via l'API MCP existante. La correspondance se fait par identifiant du
-// template ; les credentials (tokens) restent à renseigner ensuite par
-// l'utilisateur, guidé par les instructions affichées sur la fiche.
+// Installation d'un modèle MCP du catalogue statique (lib/mcp-templates).
+// La logique vit dans `lib/mcp-templates/install.ts`, partagée avec
+// `/api/mcp/templates` : aucun secret n'est accepté ni créé ici, les tokens
+// sont saisis ensuite dans la fiche du serveur (stockage chiffré).
 
 import { z } from "zod";
 import { errorResponse } from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
-import { getMcpTemplate } from "@/lib/mcp-templates/catalog";
+import { installMcpTemplate } from "@/lib/mcp-templates/install";
 
 export async function POST(request: Request) {
   const guard = await requirePaidPlan("plus");
@@ -24,53 +24,24 @@ export async function POST(request: Request) {
     });
   }
 
-  const template = getMcpTemplate(parsed.data.templateId);
-  if (!template) {
-    return errorResponse("not_found", {
-      message: "Modèle MCP introuvable.",
-    });
-  }
-
-  const { getUserMcpPrefs, createMcpServer } = await import("@/lib/db/queries");
-  try {
-    const prefs = await getUserMcpPrefs(userId);
-    if (prefs.globalKillSwitch) {
-      return errorResponse("access_denied", {
-        message: "MCP désactivé globalement par l'administrateur.",
-      });
-    }
-    if (template.transport === "stdio" && !prefs.allowStdio) {
-      return errorResponse("access_denied", {
-        message: "Transport stdio désactivé dans les paramètres.",
-      });
-    }
-  } catch {
-    // Préférences indisponibles : on laisse la création se poursuivre.
-  }
-
-  // Les tokens ne sont pas encore connus au moment de l'installation : on
-  // installe la configuration (transport/URL/commande) et l'utilisateur
-  // complète auth/env ensuite depuis l'écran avancé /mcp.
-  const created = await createMcpServer({
-    args: template.args ? template.args.split(" ").filter(Boolean) : [],
-    authType: template.authType,
-    command: template.command ?? undefined,
-    description: `${template.description}`,
-    env: template.env ?? undefined,
-    icon: template.icon.name.toLowerCase(),
-    name: template.name,
-    requireApproval: template.requireApproval,
-    transport: template.transport,
-    url: template.url ?? undefined,
+  const result = await installMcpTemplate({
+    templateId: parsed.data.templateId,
+    tier: user.tier,
     userId,
   });
 
+  if (!result.ok) {
+    return errorResponse(result.code, { message: result.message });
+  }
+
   return Response.json(
     {
-      message: `Serveur "${template.name}" installé depuis le modèle. Renseignez les tokens indiqués sur la fiche du modèle.`,
-      server: created,
-      template: template.name,
+      alreadyInstalled: result.alreadyInstalled,
+      message: result.message,
+      requiresConfiguration: result.requiresConfiguration,
+      server: result.server,
+      template: result.template.name,
     },
-    { status: 201 }
+    { status: result.alreadyInstalled ? 200 : 201 }
   );
 }

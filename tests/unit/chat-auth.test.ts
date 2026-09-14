@@ -79,17 +79,62 @@ describe("authenticateChatRequest (tier = users.tier, jamais le JWT)", () => {
 
     expect(auth?.maiUser.tier).toBe("pro");
   });
-  it("un utilisateur absent de users est refusé (aucun repli silencieux)", async () => {
+  it("un utilisateur absent de users garde le tier de sa session vérifiée (bug Agent corrigé)", async () => {
+    unsafeMock.mockResolvedValue([]);
+
+    const { auth, error, tierFailure } = await authenticateChatRequest();
+
+    // Le JWT mocké porte tier=Free : l'authentification passe avec ce tier,
+    // sans échec ferme — un abonné sans ligne users locale ne doit plus être
+    // bloqué (« L'accès à Agent requiert un forfait valide »).
+    expect(error).toBeUndefined();
+    expect(tierFailure).toBeUndefined();
+    expect(auth?.maiUser.tier).toBe("free");
+    expect(auth?.isFreeUser).toBe(true);
+  });
+
+  it("un abonné Plus absent de users est autorisé avec le tier de sa session", async () => {
+    const { getMaiUser } = await import("@/lib/auth/session");
+    (getMaiUser as ReturnType<typeof vi.fn>).mockResolvedValue({
+      avatarUrl: null,
+      email: "user@example.com",
+      id: "u-1",
+      limit: 20_000_000,
+      tier: "Plus",
+      tokensUsed: 0,
+      username: "user",
+    });
+    unsafeMock.mockResolvedValue([]);
+
+    const { auth, error, tierFailure } = await authenticateChatRequest();
+
+    expect(error).toBeUndefined();
+    expect(tierFailure).toBeUndefined();
+    expect(auth?.maiUser.tier).toBe("plus");
+    expect(auth?.isFreeUser).toBe(false);
+  });
+
+  it("un utilisateur absent de users avec un tier de session inconnu est refusé", async () => {
+    const { getMaiUser } = await import("@/lib/auth/session");
+    (getMaiUser as ReturnType<typeof vi.fn>).mockResolvedValue({
+      avatarUrl: null,
+      email: "user@example.com",
+      id: "u-1",
+      limit: 1_000_000,
+      tier: "Enterprise",
+      tokensUsed: 0,
+      username: "user",
+    });
     unsafeMock.mockResolvedValue([]);
 
     const { auth, error, tierFailure } = await authenticateChatRequest();
 
     expect(auth).toBeUndefined();
     expect(error).toBe("unauthorized");
-    expect(tierFailure).toBe("missing");
+    expect(tierFailure).toBe("invalid");
   });
 
-  it("un tier inconnu est refusé (invalid) — aucun privilège implicite", async () => {
+  it("un tier inconnu dans users est refusé (invalid) — aucun privilège implicite", async () => {
     unsafeMock.mockResolvedValue(row("Enterprise"));
 
     const { auth, tierFailure } = await authenticateChatRequest();

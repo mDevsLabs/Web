@@ -101,10 +101,41 @@ Ce qui est automatique ensuite : JSON Schema envoyé au modèle, validation zod 
 l'appel, exécution, persistance (`ToolExecution`), diffusion des événements,
 réinjection du résultat, permissions et budget.
 
-Outils internes livrés en Alpha : `search_web`, `read_file`, `create_artifact`,
-`ask_user`. Les outils existants du Chat (plugins, MCP) sont branchés via
-`lib/agent/tools/adapters/`. `ask_user` conduit à `waiting_for_user` : Agent pose
-une question précise et **reprend le même run**.
+Outils internes livrés en Alpha : `search_web`, `read_url`, `read_file`,
+`create_artifact`, `export_deliverable`, `attach_to_project`, `ask_user`.
+Les outils existants du Chat (plugins, MCP) sont branchés via
+`lib/agent/tools/adapters/`.
+
+### Clarification interactive (`ask_user`)
+
+Le questionnaire est un **contrat structuré** (`lib/agent/contracts.ts`) : de 1
+à 6 questions typées (choix unique/multiple, texte, curseur, booléen, date),
+identifiants stables uniques, au moins une question obligatoire. Le serveur
+**refuse** un questionnaire incohérent (doublons, choix sans options, bornes
+incohérentes) au lieu de le corriger.
+
+Cycle de vie : l'outil persiste une `AgentUserInputRequest` (liée au ToolCall
+exact, empreinte canonique des questions, TTL 24 h) → le run passe à
+`waiting_for_user` → la carte (`components/agent/agent-user-input-card.tsx`)
+reste posée après refresh → la réponse est validée **côté serveur** contre les
+questions persistées (`POST /api/agent/runs/[id]/user-input`, écriture atomique
+conditionnée par statut + révision + empreinte : double clic, question expirée,
+questionnaire modifié après affichage ou réponse d'un autre utilisateur sont
+refusés) → la réponse relue en base est **réinjectée dans le MÊME run**
+(`lib/agent/user-input/inject.ts`) au POST suivant, avec une étape timeline
+« Réponse reçue ».
+
+### Approbations persistantes
+
+Une écriture soumise à approbation crée une `ApprovalRequest` persistée (params
+exactes + hash SHA-256 canonique + TTL 24 h) et une étape timeline
+« Approbation requise » ; le run passe à `waiting_for_approval`. La décision
+arrive par la reprise : les messages entrants portent la réponse, le serveur la
+rattache à la demande persistée du run (`lib/agent/approvals/incoming.ts`) et
+n'applique l'accord que si les paramètres présentés n'ont pas changé — toute
+modification du ToolCall invalide l'accord. Le contrôleur relit ensuite la base
+à chaque appel (`needsApproval` par outil) : fail-closed, aucun fallback, retry
+ou MCP ne contourne une permission.
 
 > Note : les tools natifs à carte de confirmation du Chat (`updateAccountProfile`,
 > `updateProfilePicture`) ne sont pas exposés au registre Agent : leur contrat
@@ -127,16 +158,18 @@ une question précise et **reprend le même run**.
 | Table            | Rôle                                                        |
 | ---------------- | ----------------------------------------------------------- |
 | `AgentRun`       | une requête utilisateur exécutée (modèle, plan, statuts)     |
-| `AgentStep`      | actions visibles (tool_call, tool_result, artifact, message) |
+| `AgentStep`      | actions visibles (tool_call, tool_result, artifact, message, user_input_request, user_input_answer, approval_request) |
 | `ToolExecution`  | appels d'outils (entrée, sortie, statut, durée, erreur)       |
+| `AgentUserInputRequest` | questionnaire posé par `ask_user` : questions, empreinte, statut, révision, réponse |
+| `ApprovalRequest` | accord attendu sur des paramètres exacts (hash, décision, TTL) |
 | `AgentSettings`  | modèle, réflexion, autonomie, catégories, permissions        |
 | `Chat.mode`      | `chat` ou `agent`                                            |
 
 Statuts de run : `queued`, `running`, `waiting_for_tool`,
 `waiting_for_approval`, `waiting_for_user`, `completed`, `failed`, `cancelled`.
 
-Migration : `lib/db/migrations/0016_agent.sql` (+ entrée journal + bloc
-idempotent dans `lib/db/migrate.ts`).
+Migration : `lib/db/migrations/0016_agent.sql` puis `0018_agent_user_input.sql`
+(+ entrées journal + blocs idempotents dans `lib/db/migrate.ts`).
 
 Rien de sensible n'est journalisé : pas de secrets, pas de clés API, pas de
 chaîne de raisonnement.

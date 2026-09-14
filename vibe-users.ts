@@ -9,16 +9,22 @@ import type { Hono } from "npm:hono@4";
 import {
   extractToken,
   getDb,
-  verifyToken,
-  getWeekData,
-  getTierMaiTokenLimit,
   getTierDailyImageLimit,
+  getTierMaiTokenLimit,
+  getWeekData,
   rateLimit,
+  verifyToken,
 } from "./config.ts";
-import type { RegisterMultiFn } from "./vibe-common.ts";
 import { selectStorageNode, uploadWithFallback } from "./storage.ts";
-import { attachBookRefs, attachPollsAndCollabs, attachQuotedPosts, ensureProfilePinnedPostsTable, publishDuePosts } from "./vibe-posts-core.ts";
 import { ensureCircleTable } from "./vibe-circle.ts";
+import type { RegisterMultiFn } from "./vibe-common.ts";
+import {
+  attachBookRefs,
+  attachPollsAndCollabs,
+  attachQuotedPosts,
+  ensureProfilePinnedPostsTable,
+  publishDuePosts,
+} from "./vibe-posts-core.ts";
 
 const MAX_INTERESTS = 5;
 const MAX_INTEREST_LENGTH = 30;
@@ -26,14 +32,19 @@ const MAX_BIO_LENGTH = 2000;
 const MAX_WEBSITE_LENGTH = 255;
 const MAX_LOCATION_LENGTH = 100;
 
-export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiFn) {
+export function registerVibeUsersRoutes(
+  app: Hono,
+  registerMulti: RegisterMultiFn
+) {
   // 1. CURRENT USER PROFILE & QUOTAS VIA JWT
   const handleMe = async (c: any) => {
     try {
       const token = extractToken(c.req.raw);
       if (!token) return c.json({ error: "Non authentifié." }, 401);
       const payload = await verifyToken(token);
-      const userId = Number(payload.sub || (payload as any).id || (payload as any).userId);
+      const userId = Number(
+        payload.sub || (payload as any).id || (payload as any).userId
+      );
 
       if (!userId || isNaN(userId)) {
         return c.json({ error: "Jeton JWT invalide." }, 401);
@@ -69,42 +80,53 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
       const imagesUsed = Number(imgRows[0]?.images || 0);
 
       const quotas = {
-        tier,
-        weeklyTokens: { used: tokensUsed, limit: tokenLimit, percent: Math.min(100, Math.round((tokensUsed / tokenLimit) * 100)) },
-        dailyImages: { used: imagesUsed, limit: imageLimit, percent: Math.min(100, Math.round((imagesUsed / imageLimit) * 100)) },
+        dailyImages: {
+          limit: imageLimit,
+          percent: Math.min(100, Math.round((imagesUsed / imageLimit) * 100)),
+          used: imagesUsed,
+        },
         resetAt: nextResetIso,
+        tier,
+        weeklyTokens: {
+          limit: tokenLimit,
+          percent: Math.min(100, Math.round((tokensUsed / tokenLimit) * 100)),
+          used: tokensUsed,
+        },
       };
 
       return c.json({
-        user: {
-          id: row.id,
-          username: row.username,
-          email: row.email,
-          tier: row.tier,
-          avatar_url: row.avatar_url,
-          is_verified: Boolean(row.is_verified),
-          created_at: row.created_at,
-        },
         profile: {
-          id: row.id,
-          username: row.username,
-          displayName: row.display_name || row.username,
-          bio: row.bio || "",
           avatarUrl: row.avatar_url,
           bannerUrl: row.banner_url,
-          website: row.website || "",
-          location: row.location || "",
-          interests: row.interests || [],
+          bio: row.bio || "",
+          displayName: row.display_name || row.username,
           followersCount: row.followers_count || 0,
           followingCount: row.following_count || 0,
-          postsCount: row.posts_count || 0,
+          id: row.id,
+          interests: row.interests || [],
           is_verified: Boolean(row.is_verified),
+          location: row.location || "",
+          postsCount: row.posts_count || 0,
+          username: row.username,
+          website: row.website || "",
         },
         quotas,
+        user: {
+          avatar_url: row.avatar_url,
+          created_at: row.created_at,
+          email: row.email,
+          id: row.id,
+          is_verified: Boolean(row.is_verified),
+          tier: row.tier,
+          username: row.username,
+        },
       });
     } catch (err: any) {
       console.error("[Me Handler Error]:", err);
-      return c.json({ error: err.message || "Session expirée ou invalide." }, 401);
+      return c.json(
+        { error: err.message || "Session expirée ou invalide." },
+        401
+      );
     }
   };
 
@@ -143,7 +165,16 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
     }
   };
 
-  registerMulti("get", ["/api/vibe/users/suggested", "/vibe/users/suggested", "/v1/users/suggested", "/users/suggested"], handleSuggestedUsers);
+  registerMulti(
+    "get",
+    [
+      "/api/vibe/users/suggested",
+      "/vibe/users/suggested",
+      "/v1/users/suggested",
+      "/users/suggested",
+    ],
+    handleSuggestedUsers
+  );
 
   // 2bis. TOP VIBERS — meilleurs comptes par abonnés (Explorer)
   const handleTopVibers = async (c: any) => {
@@ -157,7 +188,10 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
         } catch {}
       }
 
-      const limit = Math.min(20, Math.max(1, Number(c.req.query("limit") || 5)));
+      const limit = Math.min(
+        20,
+        Math.max(1, Number(c.req.query("limit") || 5))
+      );
 
       const sql = getDb();
       const rows = await sql`
@@ -182,13 +216,20 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
     }
   };
 
-  registerMulti("get", ["/api/vibe/users/top", "/vibe/users/top", "/v1/users/top", "/users/top"], handleTopVibers);
+  registerMulti(
+    "get",
+    ["/api/vibe/users/top", "/vibe/users/top", "/v1/users/top", "/users/top"],
+    handleTopVibers
+  );
 
   // 2ter. ABONNÉS / ABONNEMENTS D'UN PROFIL (listes paginées, boutons Suivre)
   const handleFollowList = async (c: any, kind: "followers" | "following") => {
     try {
-      const username = (c.req.param("username") || "").replace(/^@/, "").toLowerCase().trim();
-      if (!username) return c.json({ users: [], has_more: false });
+      const username = (c.req.param("username") || "")
+        .replace(/^@/, "")
+        .toLowerCase()
+        .trim();
+      if (!username) return c.json({ has_more: false, users: [] });
       let currentUserId: number | null = null;
       const token = extractToken(c.req.raw);
       if (token) {
@@ -197,16 +238,22 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
           currentUserId = Number(payload.sub || (payload as any).id);
         } catch {}
       }
-      const limit = Math.min(100, Math.max(1, Number(c.req.query("limit") || 20)));
+      const limit = Math.min(
+        100,
+        Math.max(1, Number(c.req.query("limit") || 20))
+      );
       const offset = Math.max(0, Number(c.req.query("offset") || 0));
 
       const sql = getDb();
-      const target = await sql`SELECT id FROM users WHERE LOWER(username) = ${username} LIMIT 1`;
-      if (target.length === 0) return c.json({ error: "Profil introuvable." }, 404);
+      const target =
+        await sql`SELECT id FROM users WHERE LOWER(username) = ${username} LIMIT 1`;
+      if (target.length === 0)
+        return c.json({ error: "Profil introuvable." }, 404);
       const targetId = Number(target[0].id);
 
-      const users = kind === "followers"
-        ? await sql`
+      const users =
+        kind === "followers"
+          ? await sql`
             SELECT u.id, u.username, u.tier,
                    (COALESCE(u.is_verified, FALSE) OR LOWER(COALESCE(u.tier, '')) IN ('plus', 'pro', 'max')) as is_verified,
                    COALESCE(pr.display_name, u.username) as display_name,
@@ -220,7 +267,7 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
             ORDER BY f.created_at DESC
             LIMIT ${limit + 1} OFFSET ${offset}
           `
-        : await sql`
+          : await sql`
             SELECT u.id, u.username, u.tier,
                    (COALESCE(u.is_verified, FALSE) OR LOWER(COALESCE(u.tier, '')) IN ('plus', 'pro', 'max')) as is_verified,
                    COALESCE(pr.display_name, u.username) as display_name,
@@ -236,17 +283,35 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
           `;
 
       const hasMore = users.length > limit;
-      return c.json({ users: users.slice(0, limit), has_more: hasMore });
+      return c.json({ has_more: hasMore, users: users.slice(0, limit) });
     } catch {
-      return c.json({ users: [], has_more: false });
+      return c.json({ has_more: false, users: [] });
     }
   };
 
   const handleProfileFollowers = (c: any) => handleFollowList(c, "followers");
   const handleProfileFollowing = (c: any) => handleFollowList(c, "following");
 
-  registerMulti("get", ["/api/vibe/profiles/:username/followers", "/vibe/profiles/:username/followers", "/v1/profiles/:username/followers", "/profiles/:username/followers"], handleProfileFollowers);
-  registerMulti("get", ["/api/vibe/profiles/:username/following", "/vibe/profiles/:username/following", "/v1/profiles/:username/following", "/profiles/:username/following"], handleProfileFollowing);
+  registerMulti(
+    "get",
+    [
+      "/api/vibe/profiles/:username/followers",
+      "/vibe/profiles/:username/followers",
+      "/v1/profiles/:username/followers",
+      "/profiles/:username/followers",
+    ],
+    handleProfileFollowers
+  );
+  registerMulti(
+    "get",
+    [
+      "/api/vibe/profiles/:username/following",
+      "/vibe/profiles/:username/following",
+      "/v1/profiles/:username/following",
+      "/profiles/:username/following",
+    ],
+    handleProfileFollowing
+  );
 
   // 3. SEARCH USERS
   const handleSearchUsers = async (c: any) => {
@@ -279,7 +344,11 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
     }
   };
 
-  registerMulti("get", ["/api/vibe/search/users", "/vibe/search/users", "/v1/search/users"], handleSearchUsers);
+  registerMulti(
+    "get",
+    ["/api/vibe/search/users", "/vibe/search/users", "/v1/search/users"],
+    handleSearchUsers
+  );
 
   // 3b. ONBOARDING SUGGESTIONS (10 comptes populaires non suivis)
   const handleOnboardingSuggestions = async (c: any) => {
@@ -307,7 +376,16 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
     }
   };
 
-  registerMulti("get", ["/api/vibe/onboarding/suggestions", "/vibe/onboarding/suggestions", "/v1/onboarding/suggestions", "/onboarding/suggestions"], handleOnboardingSuggestions);
+  registerMulti(
+    "get",
+    [
+      "/api/vibe/onboarding/suggestions",
+      "/vibe/onboarding/suggestions",
+      "/v1/onboarding/suggestions",
+      "/onboarding/suggestions",
+    ],
+    handleOnboardingSuggestions
+  );
 
   // 3c. ONBOARDING COMPLETE
   const handleOnboardingComplete = async (c: any) => {
@@ -317,7 +395,9 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
       const sql = getDb();
-      await sql`ALTER TABLE user_settings ADD COLUMN IF NOT EXISTS onboarding_completed BOOLEAN DEFAULT FALSE`.catch(() => {});
+      await sql`ALTER TABLE user_settings ADD COLUMN IF NOT EXISTS onboarding_completed BOOLEAN DEFAULT FALSE`.catch(
+        () => {}
+      );
       await sql`
         INSERT INTO user_settings (user_id, onboarding_completed)
         VALUES (${userId}, TRUE)
@@ -329,7 +409,16 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
     }
   };
 
-  registerMulti("post", ["/api/vibe/onboarding/complete", "/vibe/onboarding/complete", "/v1/onboarding/complete", "/onboarding/complete"], handleOnboardingComplete);
+  registerMulti(
+    "post",
+    [
+      "/api/vibe/onboarding/complete",
+      "/vibe/onboarding/complete",
+      "/v1/onboarding/complete",
+      "/onboarding/complete",
+    ],
+    handleOnboardingComplete
+  );
 
   // 4. GET PROFILE
   const handleGetProfile = async (c: any) => {
@@ -415,9 +504,13 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
             AND (COALESCE(p.status, 'published') = 'published' OR ${currentUserId}::bigint = p.author_id)
             AND (
               p.visibility = 'public'
-              OR ${currentUserId ? sql`p.author_id = ${currentUserId}
+              OR ${
+                currentUserId
+                  ? sql`p.author_id = ${currentUserId}
                 OR (p.visibility = 'followers' AND EXISTS (SELECT 1 FROM follows f3 WHERE f3.follower_id = ${currentUserId} AND f3.following_id = p.author_id))
-                OR (p.visibility = 'circle' AND EXISTS (SELECT 1 FROM circle_members cm3 WHERE cm3.user_id = p.author_id AND cm3.member_user_id = ${currentUserId}))` : sql`FALSE`}
+                OR (p.visibility = 'circle' AND EXISTS (SELECT 1 FROM circle_members cm3 WHERE cm3.user_id = p.author_id AND cm3.member_user_id = ${currentUserId}))`
+                  : sql`FALSE`
+              }
             )
           ORDER BY p.is_pinned DESC, p.published_at DESC
           LIMIT 40
@@ -465,7 +558,11 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
           for (const m of allMedia) {
             const key = String(m.post_id);
             if (!mediaByPost.has(key)) mediaByPost.set(key, []);
-            mediaByPost.get(key)!.push({ url: m.url, media_type: m.media_type, alt_text: m.alt_text });
+            mediaByPost.get(key)!.push({
+              alt_text: m.alt_text,
+              media_type: m.media_type,
+              url: m.url,
+            });
           }
           for (const p of posts) {
             p.media_assets = mediaByPost.get(String(p.id)) || [];
@@ -480,35 +577,45 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
       }
 
       return c.json({
+        posts,
         profile: {
-          id: row.id,
-          username: row.username,
-          tier: row.tier || 'Free',
-          displayName: row.display_name || row.username,
-          bio: row.bio || "",
           avatarUrl: row.avatar_url,
           bannerUrl: row.banner_url,
-          website: row.website || "",
-          location: row.location || "",
-          interests: row.interests || [],
-          followersCount: row.followers_count || 0,
-          followingCount: row.following_count || 0,
-          postsCount: row.posts_count || posts.length,
-          is_verified: Boolean(row.is_verified),
-          hide_verified_badge: hideVerifiedBadge,
-          isFollowing,
+          bio: row.bio || "",
           blocked_by_me: blockedByMe,
           blocked_me: blockedMe,
+          displayName: row.display_name || row.username,
+          followersCount: row.followers_count || 0,
+          followingCount: row.following_count || 0,
+          hide_verified_badge: hideVerifiedBadge,
+          id: row.id,
+          interests: row.interests || [],
+          is_verified: Boolean(row.is_verified),
+          isFollowing,
+          location: row.location || "",
           muted_by_me: mutedByMe,
+          postsCount: row.posts_count || posts.length,
+          tier: row.tier || "Free",
+          username: row.username,
+          website: row.website || "",
         },
-        posts,
       });
     } catch {
       return c.json({ error: "Erreur profil." }, 500);
     }
   };
 
-  registerMulti("get", ["/api/vibe/profiles/:username", "/vibe/profiles/:username", "/v1/profiles/:username", "/profiles/:username", "/profile/:username"], handleGetProfile);
+  registerMulti(
+    "get",
+    [
+      "/api/vibe/profiles/:username",
+      "/vibe/profiles/:username",
+      "/v1/profiles/:username",
+      "/profiles/:username",
+      "/profile/:username",
+    ],
+    handleGetProfile
+  );
 
   // 4b. GET USER LIKED POSTS
   const handleGetUserLikedPosts = async (c: any) => {
@@ -560,7 +667,11 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
         for (const m of allMedia) {
           const key = String(m.post_id);
           if (!mediaByPost.has(key)) mediaByPost.set(key, []);
-          mediaByPost.get(key)!.push({ url: m.url, media_type: m.media_type, alt_text: m.alt_text });
+          mediaByPost.get(key)!.push({
+            alt_text: m.alt_text,
+            media_type: m.media_type,
+            url: m.url,
+          });
         }
         for (const p of posts) {
           p.media_assets = mediaByPost.get(String(p.id)) || [];
@@ -577,12 +688,16 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
     }
   };
 
-  registerMulti("get", [
-    "/api/vibe/profiles/:username/likes",
-    "/vibe/profiles/:username/likes",
-    "/v1/profiles/:username/likes",
-    "/profiles/:username/likes",
-  ], handleGetUserLikedPosts);
+  registerMulti(
+    "get",
+    [
+      "/api/vibe/profiles/:username/likes",
+      "/vibe/profiles/:username/likes",
+      "/v1/profiles/:username/likes",
+      "/profiles/:username/likes",
+    ],
+    handleGetUserLikedPosts
+  );
 
   // 5. UPDATE PROFILE
   const handleUpdateProfile = async (c: any) => {
@@ -593,7 +708,16 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
       const userId = Number(payload.sub || (payload as any).id);
 
       const body = await c.req.json();
-      const { username, displayName, bio, interests, avatarUrl, bannerUrl, website, location } = body;
+      const {
+        username,
+        displayName,
+        bio,
+        interests,
+        avatarUrl,
+        bannerUrl,
+        website,
+        location,
+      } = body;
       const sql = getDb();
 
       // Vérifier et mettre à jour le nom d'utilisateur avec vérification stricte de non-duplication
@@ -603,7 +727,10 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
           const cleanUser = rawUser.toLowerCase().replace(/^@/, "").trim();
           if (!/^[a-z0-9_]{2,30}$/.test(cleanUser)) {
             return c.json(
-              { error: "Le nom d'utilisateur doit comporter entre 2 et 30 caractères (lettres minuscules, chiffres, _)." },
+              {
+                error:
+                  "Le nom d'utilisateur doit comporter entre 2 et 30 caractères (lettres minuscules, chiffres, _).",
+              },
               400
             );
           }
@@ -614,7 +741,13 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
             LIMIT 1
           `;
           if (taken.length > 0) {
-            return c.json({ error: "Ce nom d'utilisateur est déjà pris par un autre compte." }, 400);
+            return c.json(
+              {
+                error:
+                  "Ce nom d'utilisateur est déjà pris par un autre compte.",
+              },
+              400
+            );
           }
           await sql`UPDATE users SET username = ${cleanUser} WHERE id::text = ${String(userId)}`;
         }
@@ -626,19 +759,28 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
 
       // Écriture réelle des champs fournis (les champs vides sont bien enregistrés
       // comme vides au lieu d'être ignorés par l'ancien COALESCE).
-      const nextDisplayName = displayName !== undefined ? (displayName || null) : undefined;
-      const rawBio = bio !== undefined ? String(bio) : undefined;
+      const nextDisplayName =
+        displayName === undefined ? undefined : displayName || null;
+      const rawBio = bio === undefined ? undefined : String(bio);
       if (rawBio !== undefined && rawBio.length > MAX_BIO_LENGTH) {
-        return c.json({ error: `La biographie est limitée à ${MAX_BIO_LENGTH} caractères.` }, 400);
+        return c.json(
+          {
+            error: `La biographie est limitée à ${MAX_BIO_LENGTH} caractères.`,
+          },
+          400
+        );
       }
-      const nextBio = rawBio !== undefined ? (rawBio || null) : undefined;
+      const nextBio = rawBio === undefined ? undefined : rawBio || null;
 
       // Centres d'intérêt : tags normalisés (trim, sans #, dédupliqués, max 5×30).
       // Un format invalide renvoie 400 au lieu d'écraser silencieusement la liste.
       let nextInterests: string[] | undefined;
       if (interests !== undefined) {
         if (!Array.isArray(interests)) {
-          return c.json({ error: "Format des centres d'intérêt invalide." }, 400);
+          return c.json(
+            { error: "Format des centres d'intérêt invalide." },
+            400
+          );
         }
         const cleaned: string[] = [];
         const seen = new Set<string>();
@@ -648,7 +790,9 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
           if (!tag) continue;
           if (tag.length > MAX_INTEREST_LENGTH) {
             return c.json(
-              { error: `Chaque centre d'intérêt est limité à ${MAX_INTEREST_LENGTH} caractères.` },
+              {
+                error: `Chaque centre d'intérêt est limité à ${MAX_INTEREST_LENGTH} caractères.`,
+              },
               400
             );
           }
@@ -658,31 +802,41 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
           cleaned.push(tag);
         }
         if (cleaned.length > MAX_INTERESTS) {
-          return c.json({ error: `Maximum ${MAX_INTERESTS} centres d'intérêt.` }, 400);
+          return c.json(
+            { error: `Maximum ${MAX_INTERESTS} centres d'intérêt.` },
+            400
+          );
         }
         nextInterests = cleaned;
       }
 
-      const nextAvatarUrl = avatarUrl !== undefined ? (avatarUrl || null) : undefined;
-      const nextBannerUrl = bannerUrl !== undefined ? (bannerUrl || null) : undefined;
+      const nextAvatarUrl =
+        avatarUrl === undefined ? undefined : avatarUrl || null;
+      const nextBannerUrl =
+        bannerUrl === undefined ? undefined : bannerUrl || null;
 
       // Site web : « https:// » ajouté si absent, validé par URL, vide → null
       let nextWebsite: string | null | undefined;
       if (website !== undefined) {
         const rawWebsite = String(website).trim();
-        if (!rawWebsite) {
-          nextWebsite = null;
-        } else {
-          const withScheme = /^https?:\/\//i.test(rawWebsite) ? rawWebsite : `https://${rawWebsite}`;
+        if (rawWebsite) {
+          const withScheme = /^https?:\/\//i.test(rawWebsite)
+            ? rawWebsite
+            : `https://${rawWebsite}`;
           let valid = false;
           try {
             const parsed = new URL(withScheme);
             valid = Boolean(parsed.hostname && parsed.hostname.includes("."));
           } catch {}
           if (!valid || withScheme.length > MAX_WEBSITE_LENGTH) {
-            return c.json({ error: "Lien de site invalide (ex. https://exemple.com)." }, 400);
+            return c.json(
+              { error: "Lien de site invalide (ex. https://exemple.com)." },
+              400
+            );
           }
           nextWebsite = withScheme;
+        } else {
+          nextWebsite = null;
         }
       }
 
@@ -691,7 +845,12 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
       if (location !== undefined) {
         const rawLocation = String(location).trim();
         if (rawLocation.length > MAX_LOCATION_LENGTH) {
-          return c.json({ error: `La localisation est limitée à ${MAX_LOCATION_LENGTH} caractères.` }, 400);
+          return c.json(
+            {
+              error: `La localisation est limitée à ${MAX_LOCATION_LENGTH} caractères.`,
+            },
+            400
+          );
         }
         nextLocation = rawLocation || null;
       }
@@ -700,23 +859,23 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
         INSERT INTO profiles (user_id, display_name, bio, interests, avatar_url, banner_url, website, location)
         VALUES (
           ${userId},
-          ${nextDisplayName !== undefined ? nextDisplayName : null},
-          ${nextBio !== undefined ? nextBio : null},
-          ${nextInterests !== undefined ? (nextInterests as string[]) : []},
-          ${nextAvatarUrl !== undefined ? nextAvatarUrl : null},
-          ${nextBannerUrl !== undefined ? nextBannerUrl : null},
-          ${nextWebsite !== undefined ? nextWebsite : null},
-          ${nextLocation !== undefined ? nextLocation : null}
+          ${nextDisplayName === undefined ? null : nextDisplayName},
+          ${nextBio === undefined ? null : nextBio},
+          ${nextInterests === undefined ? [] : (nextInterests as string[])},
+          ${nextAvatarUrl === undefined ? null : nextAvatarUrl},
+          ${nextBannerUrl === undefined ? null : nextBannerUrl},
+          ${nextWebsite === undefined ? null : nextWebsite},
+          ${nextLocation === undefined ? null : nextLocation}
         )
         ON CONFLICT (user_id)
         DO UPDATE SET
-          display_name = ${nextDisplayName !== undefined ? nextDisplayName : sql`profiles.display_name`},
-          bio = ${nextBio !== undefined ? nextBio : sql`profiles.bio`},
-          interests = ${nextInterests !== undefined ? (nextInterests as string[]) : sql`profiles.interests`},
-          avatar_url = ${nextAvatarUrl !== undefined ? nextAvatarUrl : sql`profiles.avatar_url`},
-          banner_url = ${nextBannerUrl !== undefined ? nextBannerUrl : sql`profiles.banner_url`},
-          website = ${nextWebsite !== undefined ? nextWebsite : sql`profiles.website`},
-          location = ${nextLocation !== undefined ? nextLocation : sql`profiles.location`},
+          display_name = ${nextDisplayName === undefined ? sql`profiles.display_name` : nextDisplayName},
+          bio = ${nextBio === undefined ? sql`profiles.bio` : nextBio},
+          interests = ${nextInterests === undefined ? sql`profiles.interests` : (nextInterests as string[])},
+          avatar_url = ${nextAvatarUrl === undefined ? sql`profiles.avatar_url` : nextAvatarUrl},
+          banner_url = ${nextBannerUrl === undefined ? sql`profiles.banner_url` : nextBannerUrl},
+          website = ${nextWebsite === undefined ? sql`profiles.website` : nextWebsite},
+          location = ${nextLocation === undefined ? sql`profiles.location` : nextLocation},
           updated_at = NOW()
       `;
 
@@ -733,22 +892,22 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
       const r = updated[0] || {};
 
       return c.json({
-        success: true,
         message: "Profil mis à jour.",
         profile: {
-          username: r.username,
-          displayName: r.display_name || r.username,
-          bio: r.bio || "",
           avatarUrl: r.avatar_url,
           bannerUrl: r.banner_url,
-          website: r.website || "",
-          location: r.location || "",
-          interests: r.interests || [],
+          bio: r.bio || "",
+          displayName: r.display_name || r.username,
           followersCount: r.followers_count || 0,
           followingCount: r.following_count || 0,
-          postsCount: r.posts_count || 0,
+          interests: r.interests || [],
           is_verified: Boolean(r.is_verified),
+          location: r.location || "",
+          postsCount: r.posts_count || 0,
+          username: r.username,
+          website: r.website || "",
         },
+        success: true,
       });
     } catch (err: any) {
       console.error("[Update Profile Error]:", err);
@@ -756,7 +915,11 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
     }
   };
 
-  registerMulti("post", ["/api/vibe/profile/update", "/vibe/profile/update", "/v1/profile/update"], handleUpdateProfile);
+  registerMulti(
+    "post",
+    ["/api/vibe/profile/update", "/vibe/profile/update", "/v1/profile/update"],
+    handleUpdateProfile
+  );
 
   // 6. UPDATE AVATAR
   const handleUpdateAvatar = async (c: any) => {
@@ -781,7 +944,7 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
             primaryNode,
             filename,
             arrayBuffer,
-            { contentType: file.type || "image/jpeg", acl: "public-read" }
+            { acl: "public-read", contentType: file.type || "image/jpeg" }
           );
           if (uploadResult.success) {
             avatarUrl = uploadResult.publicUrl;
@@ -808,17 +971,28 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
         DO UPDATE SET avatar_url = ${avatarUrl}, updated_at = NOW()
       `;
 
-      return c.json({ success: true, avatarUrl, message: "Avatar synchronisé avec succès." });
+      return c.json({
+        avatarUrl,
+        message: "Avatar synchronisé avec succès.",
+        success: true,
+      });
     } catch (err: any) {
       console.error("[Update Avatar Error]:", err);
-      return c.json({ error: "Erreur lors de la mise à jour de l'avatar." }, 500);
+      return c.json(
+        { error: "Erreur lors de la mise à jour de l'avatar." },
+        500
+      );
     }
   };
 
   // NB : /upload-avatar et /v1/upload-avatar sont gérés par registerStorageRoutes (storage.ts),
   // seule source de vérité pour l'upload d'avatar. Ici on ne garde que /profile/avatar
   // pour la mise à jour via URL JSON (multipart accepté aussi pour compat).
-  registerMulti("post", ["/api/vibe/profile/avatar", "/vibe/profile/avatar", "/v1/profile/avatar"], handleUpdateAvatar);
+  registerMulti(
+    "post",
+    ["/api/vibe/profile/avatar", "/vibe/profile/avatar", "/v1/profile/avatar"],
+    handleUpdateAvatar
+  );
 
   // 7. FOLLOW / UNFOLLOW
   const handleFollow = async (c: any) => {
@@ -831,11 +1005,14 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
       const targetUsername = rawParam.toLowerCase().trim().replace(/^@/, "");
 
       const sql = getDb();
-      const targetUser = await sql`SELECT id FROM users WHERE LOWER(username) = ${targetUsername} LIMIT 1`;
-      if (targetUser.length === 0) return c.json({ error: "Utilisateur introuvable." }, 404);
+      const targetUser =
+        await sql`SELECT id FROM users WHERE LOWER(username) = ${targetUsername} LIMIT 1`;
+      if (targetUser.length === 0)
+        return c.json({ error: "Utilisateur introuvable." }, 404);
       const targetId = Number(targetUser[0].id);
 
-      if (targetId === currentUserId) return c.json({ error: "Impossible de se suivre soi-même." }, 400);
+      if (targetId === currentUserId)
+        return c.json({ error: "Impossible de se suivre soi-même." }, 400);
 
       const existing = await sql`
         SELECT 1 FROM follows WHERE follower_id = ${currentUserId} AND following_id = ${targetId}
@@ -845,40 +1022,53 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
         await sql`DELETE FROM follows WHERE follower_id = ${currentUserId} AND following_id = ${targetId}`;
         await sql`UPDATE profiles SET following_count = GREATEST(0, following_count - 1) WHERE user_id = ${currentUserId}`;
         await sql`UPDATE profiles SET followers_count = GREATEST(0, followers_count - 1) WHERE user_id = ${targetId}`;
-        return c.json({ success: true, following: false });
-      } else {
-        // Blocage (dans un sens ou l'autre) : interdit de s'abonner
-        try {
-          const blockRows = await sql`
+        return c.json({ following: false, success: true });
+      }
+      // Blocage (dans un sens ou l'autre) : interdit de s'abonner
+      try {
+        const blockRows = await sql`
             SELECT 1 FROM blocked_users
             WHERE (user_id = ${currentUserId} AND blocked_user_id = ${targetId})
                OR (user_id = ${targetId} AND blocked_user_id = ${currentUserId})
             LIMIT 1
           `;
-          if (blockRows.length > 0) {
-            return c.json({ error: "Impossible de suivre ce compte : un blocage est actif.", blocked: true }, 403);
-          }
-        } catch {}
+        if (blockRows.length > 0) {
+          return c.json(
+            {
+              blocked: true,
+              error: "Impossible de suivre ce compte : un blocage est actif.",
+            },
+            403
+          );
+        }
+      } catch {}
 
-        await sql`INSERT INTO follows (follower_id, following_id) VALUES (${currentUserId}, ${targetId})`;
-        await sql`UPDATE profiles SET following_count = following_count + 1 WHERE user_id = ${currentUserId}`;
-        await sql`UPDATE profiles SET followers_count = followers_count + 1 WHERE user_id = ${targetId}`;
+      await sql`INSERT INTO follows (follower_id, following_id) VALUES (${currentUserId}, ${targetId})`;
+      await sql`UPDATE profiles SET following_count = following_count + 1 WHERE user_id = ${currentUserId}`;
+      await sql`UPDATE profiles SET followers_count = followers_count + 1 WHERE user_id = ${targetId}`;
 
-        try {
-          await sql`
+      try {
+        await sql`
             INSERT INTO notifications (recipient_id, actor_id, type, message)
             VALUES (${targetId}, ${currentUserId}, 'follow', 'a commencé à vous suivre')
           `;
-        } catch {}
+      } catch {}
 
-        return c.json({ success: true, following: true });
-      }
+      return c.json({ following: true, success: true });
     } catch {
       return c.json({ error: "Erreur follow." }, 500);
     }
   };
 
-  registerMulti("post", ["/api/vibe/profiles/:username/follow", "/vibe/profiles/:username/follow", "/v1/profiles/:username/follow"], handleFollow);
+  registerMulti(
+    "post",
+    [
+      "/api/vibe/profiles/:username/follow",
+      "/vibe/profiles/:username/follow",
+      "/v1/profiles/:username/follow",
+    ],
+    handleFollow
+  );
 
   // 7b. POST NOTIFICATIONS SUBSCRIPTION — être notifié des posts d'un compte
   const ensurePostSubscriptionsTable = async (sql: any) => {
@@ -904,20 +1094,30 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
 
       const sql = getDb();
       await ensurePostSubscriptionsTable(sql);
-      const targetUser = await sql`SELECT id FROM users WHERE LOWER(username) = ${targetUsername} LIMIT 1`;
-      if (targetUser.length === 0) return c.json({ error: "Utilisateur introuvable." }, 404);
+      const targetUser =
+        await sql`SELECT id FROM users WHERE LOWER(username) = ${targetUsername} LIMIT 1`;
+      if (targetUser.length === 0)
+        return c.json({ error: "Utilisateur introuvable." }, 404);
 
       const rows = await sql`
         SELECT 1 FROM post_subscriptions
         WHERE subscriber_id = ${currentUserId} AND author_id = ${Number(targetUser[0].id)}
       `;
-      return c.json({ success: true, subscribed: rows.length > 0 });
+      return c.json({ subscribed: rows.length > 0, success: true });
     } catch (err: any) {
       console.error("[vibe-users] Get subscription error:", err);
       return c.json({ error: "Erreur lecture abonnement." }, 500);
     }
   };
-  registerMulti("get", ["/api/vibe/profiles/:username/subscribe", "/vibe/profiles/:username/subscribe", "/v1/profiles/:username/subscribe"], handleGetSubscription);
+  registerMulti(
+    "get",
+    [
+      "/api/vibe/profiles/:username/subscribe",
+      "/vibe/profiles/:username/subscribe",
+      "/v1/profiles/:username/subscribe",
+    ],
+    handleGetSubscription
+  );
 
   // Toggle : s'abonner / se désabonner aux notifications de posts
   const handleToggleSubscription = async (c: any) => {
@@ -931,12 +1131,17 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
 
       const sql = getDb();
       await ensurePostSubscriptionsTable(sql);
-      const targetUser = await sql`SELECT id FROM users WHERE LOWER(username) = ${targetUsername} LIMIT 1`;
-      if (targetUser.length === 0) return c.json({ error: "Utilisateur introuvable." }, 404);
+      const targetUser =
+        await sql`SELECT id FROM users WHERE LOWER(username) = ${targetUsername} LIMIT 1`;
+      if (targetUser.length === 0)
+        return c.json({ error: "Utilisateur introuvable." }, 404);
       const targetId = Number(targetUser[0].id);
 
       if (targetId === currentUserId) {
-        return c.json({ error: "Impossible de s'abonner à ses propres posts." }, 400);
+        return c.json(
+          { error: "Impossible de s'abonner à ses propres posts." },
+          400
+        );
       }
 
       const existing = await sql`
@@ -945,17 +1150,24 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
 
       if (existing.length > 0) {
         await sql`DELETE FROM post_subscriptions WHERE subscriber_id = ${currentUserId} AND author_id = ${targetId}`;
-        return c.json({ success: true, subscribed: false });
-      } else {
-        await sql`INSERT INTO post_subscriptions (subscriber_id, author_id) VALUES (${currentUserId}, ${targetId}) ON CONFLICT DO NOTHING`;
-        return c.json({ success: true, subscribed: true });
+        return c.json({ subscribed: false, success: true });
       }
+      await sql`INSERT INTO post_subscriptions (subscriber_id, author_id) VALUES (${currentUserId}, ${targetId}) ON CONFLICT DO NOTHING`;
+      return c.json({ subscribed: true, success: true });
     } catch (err: any) {
       console.error("[vibe-users] Toggle subscription error:", err);
       return c.json({ error: "Erreur abonnement." }, 500);
     }
   };
-  registerMulti("post", ["/api/vibe/profiles/:username/subscribe", "/vibe/profiles/:username/subscribe", "/v1/profiles/:username/subscribe"], handleToggleSubscription);
+  registerMulti(
+    "post",
+    [
+      "/api/vibe/profiles/:username/subscribe",
+      "/vibe/profiles/:username/subscribe",
+      "/v1/profiles/:username/subscribe",
+    ],
+    handleToggleSubscription
+  );
 
   // 8. MUTE / UNMUTE — masquage silencieux (l'autre compte n'est pas informé)
   // Table créée paresseusement ici + en migration 009 (idempotent).
@@ -975,7 +1187,10 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
       `;
       socialTablesReady = true;
     } catch (err) {
-      console.warn("[vibe-users] ensureSocialTables skipped:", (err as any)?.message);
+      console.warn(
+        "[vibe-users] ensureSocialTables skipped:",
+        (err as any)?.message
+      );
     }
   };
 
@@ -988,13 +1203,15 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
 
       const rawParam = c.req.param("username") || "";
       const targetUsername = rawParam.toLowerCase().trim().replace(/^@/, "");
-      const body = await c.req.json().catch(() => ({} as any));
+      const body = await c.req.json().catch(() => ({}) as any);
       const muted = body.muted !== false; // défaut : masquer
 
       await ensureSocialTables();
       const sql = getDb();
-      const targetUser = await sql`SELECT id FROM users WHERE LOWER(username) = ${targetUsername} LIMIT 1`;
-      if (targetUser.length === 0) return c.json({ error: "Utilisateur introuvable." }, 404);
+      const targetUser =
+        await sql`SELECT id FROM users WHERE LOWER(username) = ${targetUsername} LIMIT 1`;
+      if (targetUser.length === 0)
+        return c.json({ error: "Utilisateur introuvable." }, 404);
       const targetId = Number(targetUser[0].id);
       if (targetId === currentUserId) {
         return c.json({ error: "Impossible de se masquer soi-même." }, 400);
@@ -1009,14 +1226,22 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
       } else {
         await sql`DELETE FROM muted_users WHERE user_id = ${currentUserId} AND muted_user_id = ${targetId}`;
       }
-      return c.json({ success: true, muted });
+      return c.json({ muted, success: true });
     } catch (err: any) {
       console.error("[Mute User Error]:", err);
       return c.json({ error: "Erreur lors du masquage du compte." }, 500);
     }
   };
 
-  registerMulti("post", ["/api/vibe/users/:username/mute", "/vibe/users/:username/mute", "/v1/users/:username/mute"], handleMuteUser);
+  registerMulti(
+    "post",
+    [
+      "/api/vibe/users/:username/mute",
+      "/vibe/users/:username/mute",
+      "/v1/users/:username/mute",
+    ],
+    handleMuteUser
+  );
 
   const handleListMuted = async (c: any) => {
     try {
@@ -1045,7 +1270,11 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
     }
   };
 
-  registerMulti("get", ["/api/vibe/users/muted", "/vibe/users/muted", "/v1/users/muted"], handleListMuted);
+  registerMulti(
+    "get",
+    ["/api/vibe/users/muted", "/vibe/users/muted", "/v1/users/muted"],
+    handleListMuted
+  );
 
   // 9. VISITES PROFIL — tracking + série (isSelf uniquement pour la lecture)
   // Table créée paresseusement ici + migration 017 (idempotent).
@@ -1067,7 +1296,10 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
       await sql`CREATE INDEX IF NOT EXISTS idx_profile_views_viewer ON profile_views(viewer_id, created_at DESC)`;
       profileViewsReady = true;
     } catch (err) {
-      console.warn("[vibe-users] ensureProfileViewsTable skipped:", (err as any)?.message);
+      console.warn(
+        "[vibe-users] ensureProfileViewsTable skipped:",
+        (err as any)?.message
+      );
     }
   };
 
@@ -1075,11 +1307,14 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
     try {
       const rawParam = c.req.param("username") || "";
       const targetUsername = rawParam.toLowerCase().trim().replace(/^@/, "");
-      if (!targetUsername) return c.json({ error: "Utilisateur introuvable." }, 404);
+      if (!targetUsername)
+        return c.json({ error: "Utilisateur introuvable." }, 404);
       await ensureProfileViewsTable();
       const sql = getDb();
-      const targetUser = await sql`SELECT id FROM users WHERE LOWER(username) = ${targetUsername} LIMIT 1`;
-      if (targetUser.length === 0) return c.json({ error: "Utilisateur introuvable." }, 404);
+      const targetUser =
+        await sql`SELECT id FROM users WHERE LOWER(username) = ${targetUsername} LIMIT 1`;
+      if (targetUser.length === 0)
+        return c.json({ error: "Utilisateur introuvable." }, 404);
       const targetId = Number(targetUser[0].id);
       let viewerId: number | null = null;
       try {
@@ -1090,26 +1325,38 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
         }
       } catch {}
       // Pas d'auto-comptage
-      if (viewerId && viewerId === targetId) return c.json({ success: true, counted: false });
+      if (viewerId && viewerId === targetId)
+        return c.json({ counted: false, success: true });
       if (viewerId && !rateLimit(`pv:${viewerId}:${targetId}`, 1, 60_000)) {
-        return c.json({ success: true, counted: false });
+        return c.json({ counted: false, success: true });
       }
-      const body = await c.req.json().catch(() => ({} as any));
-      const source = String(body?.source || "profile").toLowerCase().slice(0, 20);
+      const body = await c.req.json().catch(() => ({}) as any);
+      const source = String(body?.source || "profile")
+        .toLowerCase()
+        .slice(0, 20);
       // Anti-spam : 1 visite / viewer / 24h (anonymes toujours comptés, dédoublonnés côté client)
       if (viewerId) {
-        const recent = await sql`SELECT 1 FROM profile_views WHERE profile_user_id = ${targetId} AND viewer_id = ${viewerId} AND created_at >= NOW() - INTERVAL '24 hours' LIMIT 1`;
-        if (recent.length > 0) return c.json({ success: true, counted: false });
+        const recent =
+          await sql`SELECT 1 FROM profile_views WHERE profile_user_id = ${targetId} AND viewer_id = ${viewerId} AND created_at >= NOW() - INTERVAL '24 hours' LIMIT 1`;
+        if (recent.length > 0) return c.json({ counted: false, success: true });
       }
       await sql`INSERT INTO profile_views (profile_user_id, viewer_id, source) VALUES (${targetId}, ${viewerId}, ${source})`;
-      return c.json({ success: true, counted: true });
+      return c.json({ counted: true, success: true });
     } catch (err: any) {
       console.warn("[Profile View Error]:", err);
       return c.json({ success: false });
     }
   };
 
-  registerMulti("post", ["/api/vibe/profiles/:username/view", "/vibe/profiles/:username/view", "/v1/profiles/:username/view"], handleTrackProfileView);
+  registerMulti(
+    "post",
+    [
+      "/api/vibe/profiles/:username/view",
+      "/vibe/profiles/:username/view",
+      "/v1/profiles/:username/view",
+    ],
+    handleTrackProfileView
+  );
 
   const handleProfileViewsStats = async (c: any) => {
     try {
@@ -1118,24 +1365,50 @@ export function registerVibeUsersRoutes(app: Hono, registerMulti: RegisterMultiF
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
       const periodParam = String(c.req.query("period") || "30d").toLowerCase();
-      const periodDays = periodParam === "7d" ? 7 : periodParam === "90d" ? 90 : periodParam === "12m" ? 365 : 30;
-      const sinceIso = new Date(Date.now() - periodDays * 86400000).toISOString();
+      const periodDays =
+        periodParam === "7d"
+          ? 7
+          : periodParam === "90d"
+            ? 90
+            : periodParam === "12m"
+              ? 365
+              : 30;
+      const sinceIso = new Date(
+        Date.now() - periodDays * 86_400_000
+      ).toISOString();
       await ensureProfileViewsTable();
       const sql = getDb();
-      const total = await sql`SELECT COUNT(*) AS n FROM profile_views WHERE profile_user_id = ${userId} AND created_at >= ${sinceIso}::timestamptz`;
-      const rows = await sql`SELECT created_at::date AS day, COUNT(*) AS n FROM profile_views WHERE profile_user_id = ${userId} AND created_at >= ${sinceIso}::timestamptz GROUP BY created_at::date ORDER BY day ASC`;
+      const total =
+        await sql`SELECT COUNT(*) AS n FROM profile_views WHERE profile_user_id = ${userId} AND created_at >= ${sinceIso}::timestamptz`;
+      const rows =
+        await sql`SELECT created_at::date AS day, COUNT(*) AS n FROM profile_views WHERE profile_user_id = ${userId} AND created_at >= ${sinceIso}::timestamptz GROUP BY created_at::date ORDER BY day ASC`;
       const byDay = new Map<string, number>();
-      for (const r of rows as any[]) byDay.set(String(r.day).slice(0, 10), Number(r.n || 0));
+      for (const r of rows as any[])
+        byDay.set(String(r.day).slice(0, 10), Number(r.n || 0));
       const series: Array<{ day: string; views: number }> = [];
       for (let i = periodDays - 1; i >= 0; i--) {
-        const d = new Date(Date.now() - i * 86400000).toISOString().slice(0, 10);
+        const d = new Date(Date.now() - i * 86_400_000)
+          .toISOString()
+          .slice(0, 10);
         series.push({ day: d, views: byDay.get(d) || 0 });
       }
-      return c.json({ period: periodParam, total: Number((total[0] as any)?.n || 0), series });
+      return c.json({
+        period: periodParam,
+        series,
+        total: Number((total[0] as any)?.n || 0),
+      });
     } catch (err: any) {
       return c.json({ error: "Erreur visites profil." }, 500);
     }
   };
 
-  registerMulti("get", ["/api/vibe/users/me/profile-views", "/vibe/users/me/profile-views", "/v1/users/me/profile-views"], handleProfileViewsStats);
+  registerMulti(
+    "get",
+    [
+      "/api/vibe/users/me/profile-views",
+      "/vibe/users/me/profile-views",
+      "/v1/users/me/profile-views",
+    ],
+    handleProfileViewsStats
+  );
 }

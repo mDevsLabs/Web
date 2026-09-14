@@ -18,7 +18,10 @@ export const FRESHNESS_HALF_LIFE_HOURS = 18;
 /** Poids des impressions (vues) dans l'engagement brut — faible mais réel. */
 export const VIEW_WEIGHT = 0.1;
 
-export function ageInHours(publishedAt: Date, now: number = Date.now()): number {
+export function ageInHours(
+  publishedAt: Date,
+  now: number = Date.now()
+): number {
   return Math.max(0.05, (now - publishedAt.getTime()) / (1000 * 60 * 60));
 }
 
@@ -34,12 +37,7 @@ export function rawEngagement(
   replies: number,
   views: number
 ): number {
-  return (
-    likes * 1.0 +
-    reposts * 2.5 +
-    replies * 2.0 +
-    views * VIEW_WEIGHT
-  );
+  return likes * 1.0 + reposts * 2.5 + replies * 2.0 + views * VIEW_WEIGHT;
 }
 
 /** Compression logarithmique de l'engagement brut vers [0, 1]. */
@@ -48,7 +46,10 @@ export function engagementScore(rawEngagements: number): number {
 }
 
 /** Vélocité virale : engagement par heure écoulée, saturé à 1. */
-export function velocityScore(rawEngagements: number, ageHours: number): number {
+export function velocityScore(
+  rawEngagements: number,
+  ageHours: number
+): number {
   return Math.min(1.0, rawEngagements / Math.max(0.5, ageHours) / 8.0);
 }
 
@@ -66,7 +67,9 @@ export function graphProximityScore(
   affinity: number | undefined
 ): number {
   const clampedAffinity = Math.max(0, Math.min(1, affinity || 0));
-  return isFollowedAuthor ? 0.7 + 0.3 * clampedAffinity : 0.2 + 0.5 * clampedAffinity;
+  return isFollowedAuthor
+    ? 0.7 + 0.3 * clampedAffinity
+    : 0.2 + 0.5 * clampedAffinity;
 }
 
 /** Affinement utilisateur : ×0.65 (pas intéressé) .. ×1.35 (intéressé). */
@@ -82,17 +85,23 @@ export function dwellScore(ms?: number): number {
 }
 
 /** Boost contexte temporel : +10% si même partie de journée (matin/midi/soir/nuit). */
-export function dayPartBoost(publishedAt: Date, now: number = Date.now()): number {
+export function dayPartBoost(
+  publishedAt: Date,
+  now: number = Date.now()
+): number {
   const h = (t: Date) => t.getHours();
   const part = (hh: number) => (hh < 6 ? 0 : hh < 12 ? 1 : hh < 18 ? 2 : 3);
   return part(h(publishedAt)) === part(h(new Date(now))) ? 0.1 : 0;
 }
 
 /** Multiplicateurs de qualité : comptes vérifiés ×1.15, médias ×1.10. */
-export function qualityBoost(isVerifiedAuthor?: boolean, hasMedia?: boolean): number {
+export function qualityBoost(
+  isVerifiedAuthor?: boolean,
+  hasMedia?: boolean
+): number {
   let boost = 1.0;
   if (isVerifiedAuthor) boost *= 1.15;
-  if (hasMedia) boost *= 1.10;
+  if (hasMedia) boost *= 1.1;
   return boost;
 }
 
@@ -101,45 +110,42 @@ export function qualityBoost(isVerifiedAuthor?: boolean, hasMedia?: boolean): nu
 // ─────────────────────────────────────────────
 
 export interface FeedTunerWeights {
+  dwell: number;
   freshness: number;
   novelty: number;
   popularity: number;
-  serendipity: number;
   proximity: number;
-  dwell: number;
+  serendipity: number;
 }
 
 export interface PostCandidate {
-  postId: string;
-  authorId?: number;
-  publishedAt: Date;
-  likes: number;
-  reposts: number;
-  replies: number;
-  views?: number;
-  hasMedia?: boolean;
-  isVerifiedAuthor?: boolean;
-  semanticSimilarity?: number;
-  isFollowedAuthor?: boolean;
   /** Affinité mesurée 0..1 : interactions passées de l'utilisateur avec cet auteur. */
   affinity?: number;
-  candidateTopic?: string;
+  authorId?: number;
+  /** Temps moyen passé par tous sur ce post (ms). */
+  avgDwellMs?: number;
   candidateSentiment?: number;
-  toxicityScore?: number;
+  candidateTopic?: string;
+  hasMedia?: boolean;
   /** Signal d'affinement -1..1 issu des retours « Cela m'intéresse / pas » + intérêts. */
   interestSignal?: number;
+  isFollowedAuthor?: boolean;
+  isVerifiedAuthor?: boolean;
+  likes: number;
   matchedInterestTags?: string[];
+  postId: string;
+  publishedAt: Date;
+  replies: number;
+  reposts: number;
+  semanticSimilarity?: number;
+  toxicityScore?: number;
   tuner?: FeedTunerWeights;
   /** Temps passé utilisateur sur ce post (ms) — profil temporel. */
   userDwellMs?: number;
-  /** Temps moyen passé par tous sur ce post (ms). */
-  avgDwellMs?: number;
+  views?: number;
 }
 
 export interface RecommendationSignal {
-  totalScore: number;
-  explanationText: string;
-  matchedInterests: string[];
   breakdown: {
     freshnessScore: number;
     engagementScore: number;
@@ -152,6 +158,9 @@ export interface RecommendationSignal {
     dwellScore: number;
     timeContextBoost: number;
   };
+  explanationText: string;
+  matchedInterests: string[];
+  totalScore: number;
 }
 
 // ─────────────────────────────────────────────
@@ -160,16 +169,16 @@ export interface RecommendationSignal {
 
 export class HybridRecommender {
   private static readonly DEFAULT_TUNER: FeedTunerWeights = {
-    freshness: 0.30,
+    dwell: 0.13,
+    freshness: 0.3,
     novelty: 0.18,
     popularity: 0.22,
-    serendipity: 0.08,
     proximity: 0.09,
-    dwell: 0.13,
+    serendipity: 0.08,
   };
 
   public static scorePost(candidate: PostCandidate): RecommendationSignal {
-    const tuner = candidate.tuner || this.DEFAULT_TUNER;
+    const tuner = candidate.tuner || HybridRecommender.DEFAULT_TUNER;
     const dwellW = (tuner as any).dwell ?? 0.13;
     const ageHours = ageInHours(candidate.publishedAt);
 
@@ -178,16 +187,29 @@ export class HybridRecommender {
 
     // Engagement pondéré (vues incluses) compressé logarithmiquement.
     const engagement = engagementScore(
-      rawEngagement(candidate.likes, candidate.reposts, candidate.replies, candidate.views || 0)
+      rawEngagement(
+        candidate.likes,
+        candidate.reposts,
+        candidate.replies,
+        candidate.views || 0
+      )
     );
 
     // Vélocité : engagement par heure depuis la publication (effet viral).
     const velocity = velocityScore(
-      rawEngagement(candidate.likes, candidate.reposts, candidate.replies, candidate.views || 0),
+      rawEngagement(
+        candidate.likes,
+        candidate.reposts,
+        candidate.replies,
+        candidate.views || 0
+      ),
       ageHours
     );
     const semanticScore = candidate.semanticSimilarity ?? 0.6;
-    const proximity = graphProximityScore(candidate.isFollowedAuthor, candidate.affinity);
+    const proximity = graphProximityScore(
+      candidate.isFollowedAuthor,
+      candidate.affinity
+    );
     const safety = safetyFactor(candidate.toxicityScore);
     const boost = qualityBoost(candidate.isVerifiedAuthor, candidate.hasMedia);
     const interest = interestFactor(candidate.interestSignal);
@@ -208,11 +230,13 @@ export class HybridRecommender {
       Math.min(100, Math.round(rawScore * safety * boost * interest * 100))
     );
 
-    let explanationText = "Recommandé selon vos centres d'intérêt et l'engagement.";
+    let explanationText =
+      "Recommandé selon vos centres d'intérêt et l'engagement.";
     if ((candidate.interestSignal || 0) >= 0.4) {
       explanationText = "🎯 Affiné d'après vos retours « Cela m'intéresse ».";
     } else if ((candidate.interestSignal || 0) <= -0.4) {
-      explanationText = "📉 Moins mis en avant : retour « Cela ne m'intéresse pas ».";
+      explanationText =
+        "📉 Moins mis en avant : retour « Cela ne m'intéresse pas ».";
     } else if ((candidate.userDwellMs || 0) >= 8000) {
       explanationText = "⏱️ Vous passez du temps sur ce type de contenu.";
     } else if (candidate.isFollowedAuthor) {
@@ -226,26 +250,27 @@ export class HybridRecommender {
     }
 
     return {
-      totalScore,
+      breakdown: {
+        boostFactor: Number(boost.toFixed(2)),
+        dwellScore: Math.round(dwell * 100),
+        engagementScore: Math.round(engagement * 100),
+        freshnessScore: Math.round(freshness * 100),
+        graphProximityScore: Math.round(proximity * 100),
+        interestFactor: Number(interest.toFixed(2)),
+        safetyFactor: Number(safety.toFixed(2)),
+        semanticScore: Math.round(semanticScore * 100),
+        timeContextBoost: Math.round(timeBoost * 100),
+        velocityScore: Math.round(velocity * 100),
+      },
       explanationText,
       matchedInterests:
-        candidate.matchedInterestTags && candidate.matchedInterestTags.length > 0
+        candidate.matchedInterestTags &&
+        candidate.matchedInterestTags.length > 0
           ? candidate.matchedInterestTags
           : candidate.candidateTopic
-          ? [candidate.candidateTopic]
-          : ["Général"],
-      breakdown: {
-        freshnessScore: Math.round(freshness * 100),
-        engagementScore: Math.round(engagement * 100),
-        velocityScore: Math.round(velocity * 100),
-        semanticScore: Math.round(semanticScore * 100),
-        graphProximityScore: Math.round(proximity * 100),
-        safetyFactor: Number(safety.toFixed(2)),
-        boostFactor: Number(boost.toFixed(2)),
-        interestFactor: Number(interest.toFixed(2)),
-        dwellScore: Math.round(dwell * 100),
-        timeContextBoost: Math.round(timeBoost * 100),
-      },
+            ? [candidate.candidateTopic]
+            : ["Général"],
+      totalScore,
     };
   }
 }

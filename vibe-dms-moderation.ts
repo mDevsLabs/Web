@@ -9,11 +9,18 @@
 import type { Hono } from "npm:hono@4";
 import { extractToken, getDb, verifyToken } from "./config.ts";
 import { pushRealtimeEvent } from "./realtime.ts";
-import { stripHtmlTags } from "./vibe-posts-core.ts";
 import type { RegisterMultiFn } from "./vibe-common.ts";
-import { dmPlainLength, getDmMessageCharLimit, pushToUsers } from "./vibe-dms-core.ts";
+import {
+  dmPlainLength,
+  getDmMessageCharLimit,
+  pushToUsers,
+} from "./vibe-dms-core.ts";
+import { stripHtmlTags } from "./vibe-posts-core.ts";
 
-export function registerDMModerationRoutes(app: Hono, registerMulti: RegisterMultiFn) {
+export function registerDMModerationRoutes(
+  app: Hono,
+  registerMulti: RegisterMultiFn
+) {
   // 4d. BLOCK / UNBLOCK / LIST BLOCKED USERS
   const handleBlock = async (c: any) => {
     try {
@@ -23,7 +30,8 @@ export function registerDMModerationRoutes(app: Hono, registerMulti: RegisterMul
       const userId = Number(payload.sub || (payload as any).id);
       const { user_id } = await c.req.json();
       const targetId = Number(user_id);
-      if (!targetId || targetId === userId) return c.json({ error: "Utilisateur invalide." }, 400);
+      if (!targetId || targetId === userId)
+        return c.json({ error: "Utilisateur invalide." }, 400);
 
       const sql = getDb();
       await sql`
@@ -38,7 +46,11 @@ export function registerDMModerationRoutes(app: Hono, registerMulti: RegisterMul
     }
   };
 
-  registerMulti("post", ["/api/vibe/dms/block", "/vibe/dms/block", "/v1/dms/block"], handleBlock);
+  registerMulti(
+    "post",
+    ["/api/vibe/dms/block", "/vibe/dms/block", "/v1/dms/block"],
+    handleBlock
+  );
 
   const handleUnblock = async (c: any) => {
     try {
@@ -58,7 +70,11 @@ export function registerDMModerationRoutes(app: Hono, registerMulti: RegisterMul
     }
   };
 
-  registerMulti("post", ["/api/vibe/dms/unblock", "/vibe/dms/unblock", "/v1/dms/unblock"], handleUnblock);
+  registerMulti(
+    "post",
+    ["/api/vibe/dms/unblock", "/vibe/dms/unblock", "/v1/dms/unblock"],
+    handleUnblock
+  );
 
   const handleListBlocked = async (c: any) => {
     try {
@@ -85,7 +101,11 @@ export function registerDMModerationRoutes(app: Hono, registerMulti: RegisterMul
     }
   };
 
-  registerMulti("get", ["/api/vibe/dms/blocked", "/vibe/dms/blocked", "/v1/dms/blocked"], handleListBlocked);
+  registerMulti(
+    "get",
+    ["/api/vibe/dms/blocked", "/vibe/dms/blocked", "/v1/dms/blocked"],
+    handleListBlocked
+  );
 
   // 4e. REPORT A CONVERSATION / MESSAGE
   const handleReport = async (c: any) => {
@@ -96,21 +116,29 @@ export function registerDMModerationRoutes(app: Hono, registerMulti: RegisterMul
       const userId = Number(payload.sub || (payload as any).id);
       const { reported_user_id, reason, message_id } = await c.req.json();
       const targetId = Number(reported_user_id);
-      if (!targetId) return c.json({ error: "Utilisateur à signaler requis." }, 400);
+      if (!targetId)
+        return c.json({ error: "Utilisateur à signaler requis." }, 400);
 
       const sql = getDb();
       await sql`
         INSERT INTO dm_reports (reporter_id, reported_user_id, message_id, reason)
-        VALUES (${userId}, ${targetId}, ${message_id || null}, ${String(reason || 'non précisé').slice(0, 500)})
+        VALUES (${userId}, ${targetId}, ${message_id || null}, ${String(reason || "non précisé").slice(0, 500)})
       `;
-      return c.json({ success: true, message: "Signalement transmis à la modération." });
+      return c.json({
+        message: "Signalement transmis à la modération.",
+        success: true,
+      });
     } catch (err: any) {
       console.error("[vibe-dms] Report error:", err);
       return c.json({ error: "Erreur signalement." }, 500);
     }
   };
 
-  registerMulti("post", ["/api/vibe/dms/report", "/vibe/dms/report", "/v1/dms/report"], handleReport);
+  registerMulti(
+    "post",
+    ["/api/vibe/dms/report", "/vibe/dms/report", "/v1/dms/report"],
+    handleReport
+  );
 
   // 4f. RENAME A CONVERSATION (nom local en 1-à-1, nom du groupe en admin)
   const handleRenameConversation = async (c: any) => {
@@ -121,7 +149,7 @@ export function registerDMModerationRoutes(app: Hono, registerMulti: RegisterMul
       const userId = Number(payload.sub || (payload as any).id);
       const rawKey = String(c.req.param("partnerId") || "");
       const { name } = await c.req.json();
-      const customName = String(name || '').trim();
+      const customName = String(name || "").trim();
 
       const sql = getDb();
 
@@ -129,39 +157,58 @@ export function registerDMModerationRoutes(app: Hono, registerMulti: RegisterMul
       if (rawKey.startsWith("group:")) {
         const groupId = rawKey.slice(6);
         const groupName = customName.slice(0, 100);
-        if (!groupName) return c.json({ error: "Le nom du groupe est requis." }, 400);
-        const convRows = await sql`SELECT created_by FROM dm_conversations WHERE id = ${groupId}::uuid AND is_group = TRUE LIMIT 1`;
-        if (convRows.length === 0) return c.json({ error: "Groupe introuvable." }, 404);
+        if (!groupName)
+          return c.json({ error: "Le nom du groupe est requis." }, 400);
+        const convRows =
+          await sql`SELECT created_by FROM dm_conversations WHERE id = ${groupId}::uuid AND is_group = TRUE LIMIT 1`;
+        if (convRows.length === 0)
+          return c.json({ error: "Groupe introuvable." }, 404);
         if (Number(convRows[0].created_by) !== userId) {
-          return c.json({ error: "Seul l'administrateur du groupe peut le renommer." }, 403);
+          return c.json(
+            { error: "Seul l'administrateur du groupe peut le renommer." },
+            403
+          );
         }
         await sql`UPDATE dm_conversations SET group_name = ${groupName} WHERE id = ${groupId}::uuid`;
-        const memberRows = await sql`SELECT user_id FROM dm_group_members WHERE conversation_id = ${groupId}::uuid`;
-        await pushToUsers((memberRows as any[]).map((r) => Number(r.user_id)), "group_updated", { conversation_id: groupId, action: "renamed" });
-        return c.json({ success: true, group_name: groupName });
+        const memberRows =
+          await sql`SELECT user_id FROM dm_group_members WHERE conversation_id = ${groupId}::uuid`;
+        await pushToUsers(
+          (memberRows as any[]).map((r) => Number(r.user_id)),
+          "group_updated",
+          { action: "renamed", conversation_id: groupId }
+        );
+        return c.json({ group_name: groupName, success: true });
       }
 
       const partnerId = Number(rawKey);
       if (!partnerId) return c.json({ error: "Conversation invalide." }, 400);
       const trimmed = customName.slice(0, 50);
-      if (!trimmed) {
-        await sql`DELETE FROM dm_conv_meta WHERE user_id = ${userId} AND partner_id = ${partnerId}`;
-      } else {
+      if (trimmed) {
         await sql`
           INSERT INTO dm_conv_meta (user_id, partner_id, custom_name)
           VALUES (${userId}, ${partnerId}, ${trimmed})
           ON CONFLICT (user_id, partner_id)
           DO UPDATE SET custom_name = ${trimmed}
         `;
+      } else {
+        await sql`DELETE FROM dm_conv_meta WHERE user_id = ${userId} AND partner_id = ${partnerId}`;
       }
-      return c.json({ success: true, custom_name: trimmed || null });
+      return c.json({ custom_name: trimmed || null, success: true });
     } catch (err: any) {
       console.error("[vibe-dms] Rename error:", err);
       return c.json({ error: "Erreur renommage." }, 500);
     }
   };
 
-  registerMulti("post", ["/api/vibe/dms/conversations/:partnerId/rename", "/vibe/dms/conversations/:partnerId/rename", "/v1/dms/conversations/:partnerId/rename"], handleRenameConversation);
+  registerMulti(
+    "post",
+    [
+      "/api/vibe/dms/conversations/:partnerId/rename",
+      "/vibe/dms/conversations/:partnerId/rename",
+      "/v1/dms/conversations/:partnerId/rename",
+    ],
+    handleRenameConversation
+  );
 
   // 4g. DELETE A CONVERSATION (côté compte courant : messages reçus/envoyés + conversation)
   const handleDeleteConversation = async (c: any) => {
@@ -192,7 +239,15 @@ export function registerDMModerationRoutes(app: Hono, registerMulti: RegisterMul
     }
   };
 
-  registerMulti("delete", ["/api/vibe/dms/conversations/:partnerId", "/vibe/dms/conversations/:partnerId", "/v1/dms/conversations/:partnerId"], handleDeleteConversation);
+  registerMulti(
+    "delete",
+    [
+      "/api/vibe/dms/conversations/:partnerId",
+      "/vibe/dms/conversations/:partnerId",
+      "/v1/dms/conversations/:partnerId",
+    ],
+    handleDeleteConversation
+  );
 
   // 4h. DELETE A SINGLE MESSAGE (seulement ses propres messages)
   const handleDeleteMessage = async (c: any) => {
@@ -205,26 +260,46 @@ export function registerDMModerationRoutes(app: Hono, registerMulti: RegisterMul
       if (!messageId) return c.json({ error: "Message invalide." }, 400);
 
       const sql = getDb();
-      const rows = await sql`SELECT sender_id, recipient_id, conversation_id FROM direct_messages WHERE id = ${messageId}::uuid LIMIT 1`;
-      if (rows.length === 0) return c.json({ error: "Message introuvable." }, 404);
+      const rows =
+        await sql`SELECT sender_id, recipient_id, conversation_id FROM direct_messages WHERE id = ${messageId}::uuid LIMIT 1`;
+      if (rows.length === 0)
+        return c.json({ error: "Message introuvable." }, 404);
       if (Number(rows[0].sender_id) !== userId) {
-        return c.json({ error: "Vous ne pouvez supprimer que vos propres messages." }, 403);
+        return c.json(
+          { error: "Vous ne pouvez supprimer que vos propres messages." },
+          403
+        );
       }
       const conversationId = rows[0].conversation_id;
       const recipientId = rows[0].recipient_id;
-      await sql`DELETE FROM dm_reactions WHERE message_id = ${messageId}::uuid`.catch(() => {});
+      await sql`DELETE FROM dm_reactions WHERE message_id = ${messageId}::uuid`.catch(
+        () => {}
+      );
       await sql`DELETE FROM direct_messages WHERE id = ${messageId}::uuid`;
       // Diffusion temps réel aux autres membres (« supprimé pour tout le monde »)
       try {
         const convInfo = conversationId
           ? await sql`SELECT is_group FROM dm_conversations WHERE id = ${conversationId}::uuid LIMIT 1`
           : [];
-        const payload = { id: messageId, conversation_id: conversationId ? String(conversationId) : null };
+        const payload = {
+          conversation_id: conversationId ? String(conversationId) : null,
+          id: messageId,
+        };
         if (convInfo[0]?.is_group) {
-          const memberRows = await sql`SELECT user_id FROM dm_group_members WHERE conversation_id = ${conversationId}::uuid`;
-          await pushToUsers((memberRows as any[]).map((r) => Number(r.user_id)), "dm_message_deleted", payload, userId);
+          const memberRows =
+            await sql`SELECT user_id FROM dm_group_members WHERE conversation_id = ${conversationId}::uuid`;
+          await pushToUsers(
+            (memberRows as any[]).map((r) => Number(r.user_id)),
+            "dm_message_deleted",
+            payload,
+            userId
+          );
         } else if (recipientId) {
-          await pushRealtimeEvent(Number(recipientId), "dm_message_deleted", payload);
+          await pushRealtimeEvent(
+            Number(recipientId),
+            "dm_message_deleted",
+            payload
+          );
         }
       } catch {}
       return c.json({ success: true });
@@ -234,7 +309,15 @@ export function registerDMModerationRoutes(app: Hono, registerMulti: RegisterMul
     }
   };
 
-  registerMulti("delete", ["/api/vibe/dms/messages/:messageId", "/vibe/dms/messages/:messageId", "/v1/dms/messages/:messageId"], handleDeleteMessage);
+  registerMulti(
+    "delete",
+    [
+      "/api/vibe/dms/messages/:messageId",
+      "/vibe/dms/messages/:messageId",
+      "/v1/dms/messages/:messageId",
+    ],
+    handleDeleteMessage
+  );
 
   // 4d. EDIT DM MESSAGE (avec limite de 60 minutes)
   const handleEditMessage = async (c: any) => {
@@ -249,12 +332,20 @@ export function registerDMModerationRoutes(app: Hono, registerMulti: RegisterMul
 
       const { content } = await c.req.json();
       if (!content || !content.trim()) {
-        return c.json({ error: "Le contenu du message ne peut pas être vide." }, 400);
+        return c.json(
+          { error: "Le contenu du message ne peut pas être vide." },
+          400
+        );
       }
       const sql = getDb();
       const dmCharLimit = await getDmMessageCharLimit(sql, userId);
       if (dmPlainLength(content) > dmCharLimit) {
-        return c.json({ error: `Message trop long (${dmCharLimit.toLocaleString("fr-FR")} caractères max).` }, 400);
+        return c.json(
+          {
+            error: `Message trop long (${dmCharLimit.toLocaleString("fr-FR")} caractères max).`,
+          },
+          400
+        );
       }
 
       const rows = await sql`
@@ -265,7 +356,10 @@ export function registerDMModerationRoutes(app: Hono, registerMulti: RegisterMul
       }
       const msg = rows[0];
       if (Number(msg.sender_id) !== userId) {
-        return c.json({ error: "Vous ne pouvez modifier que vos propres messages." }, 403);
+        return c.json(
+          { error: "Vous ne pouvez modifier que vos propres messages." },
+          403
+        );
       }
 
       // Vérifier la limite de 60 minutes
@@ -273,7 +367,13 @@ export function registerDMModerationRoutes(app: Hono, registerMulti: RegisterMul
       const now = Date.now();
       const diffMinutes = (now - createdAt) / (1000 * 60);
       if (diffMinutes > 60) {
-        return c.json({ error: "Ce message a été envoyé il y a plus de 60 minutes et ne peut plus être modifié." }, 403);
+        return c.json(
+          {
+            error:
+              "Ce message a été envoyé il y a plus de 60 minutes et ne peut plus être modifié.",
+          },
+          403
+        );
       }
 
       const updated = await sql`
@@ -296,9 +396,11 @@ export function registerDMModerationRoutes(app: Hono, registerMulti: RegisterMul
 
       // Informer les autres membres en temps réel via SSE (destinataire ou groupe)
       try {
-        const convInfo = await sql`SELECT is_group FROM dm_conversations WHERE id = ${msg.conversation_id}::uuid LIMIT 1`;
+        const convInfo =
+          await sql`SELECT is_group FROM dm_conversations WHERE id = ${msg.conversation_id}::uuid LIMIT 1`;
         if (convInfo[0]?.is_group) {
-          const memberRows = await sql`SELECT user_id FROM dm_group_members WHERE conversation_id = ${msg.conversation_id}::uuid`;
+          const memberRows =
+            await sql`SELECT user_id FROM dm_group_members WHERE conversation_id = ${msg.conversation_id}::uuid`;
           await pushToUsers(
             (memberRows as any[]).map((r) => Number(r.user_id)),
             "dm_message_edited",
@@ -306,17 +408,40 @@ export function registerDMModerationRoutes(app: Hono, registerMulti: RegisterMul
             userId
           );
         } else if (msg.recipient_id) {
-          await pushRealtimeEvent(Number(msg.recipient_id), "dm_message_edited", updated[0]);
+          await pushRealtimeEvent(
+            Number(msg.recipient_id),
+            "dm_message_edited",
+            updated[0]
+          );
         }
       } catch {}
 
-      return c.json({ success: true, message: updated[0] });
+      return c.json({ message: updated[0], success: true });
     } catch (err: any) {
       console.error("[vibe-dms] Edit message error:", err);
-      return c.json({ error: "Erreur lors de la modification du message." }, 500);
+      return c.json(
+        { error: "Erreur lors de la modification du message." },
+        500
+      );
     }
   };
 
-  registerMulti("patch", ["/api/vibe/dms/messages/:messageId", "/vibe/dms/messages/:messageId", "/v1/dms/messages/:messageId"], handleEditMessage);
-  registerMulti("put", ["/api/vibe/dms/messages/:messageId", "/vibe/dms/messages/:messageId", "/v1/dms/messages/:messageId"], handleEditMessage);
+  registerMulti(
+    "patch",
+    [
+      "/api/vibe/dms/messages/:messageId",
+      "/vibe/dms/messages/:messageId",
+      "/v1/dms/messages/:messageId",
+    ],
+    handleEditMessage
+  );
+  registerMulti(
+    "put",
+    [
+      "/api/vibe/dms/messages/:messageId",
+      "/vibe/dms/messages/:messageId",
+      "/v1/dms/messages/:messageId",
+    ],
+    handleEditMessage
+  );
 }

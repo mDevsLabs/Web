@@ -1,4 +1,5 @@
 "use client";
+import type { LucideIcon } from "lucide-react";
 import {
   ActivityIcon,
   AlertCircleIcon,
@@ -7,12 +8,12 @@ import {
   CircleIcon,
   CopyIcon,
   CpuIcon,
+  CreditCardIcon,
   DatabaseIcon,
   DownloadIcon,
   Edit2Icon,
   FileTextIcon,
   GithubIcon,
-  HardDriveIcon,
   KeyIcon,
   Loader2Icon,
   MoreVerticalIcon,
@@ -23,7 +24,6 @@ import {
   SettingsIcon,
   ShieldAlertIcon,
   ShieldCheckIcon,
-  SlackIcon,
   StoreIcon,
   TerminalIcon,
   Trash2Icon,
@@ -71,98 +71,93 @@ import { matchesQuery, sortByRelevance } from "@/lib/tools/search";
 import { TOOLS_ACTIONS_ID } from "@/lib/tools/tabs";
 import { cn, fetcher } from "@/lib/utils";
 
-const PRESET_TEMPLATES = [
-  {
-    authType: "bearer",
-    description: "Interagir avec les dépôts, issues, pull requests et commits",
-    icon: "github",
-    name: "GitHub MCP",
-    requireApproval: "write_only",
-    transport: "sse",
-    url: "https://api.githubcopilot.com/mcp/",
-  },
-  {
-    authType: "none",
-    command: "npx",
-    description: "Interroger et manipuler des données en toute sécurité",
-    icon: "database",
-    name: "Base de données",
-    requireApproval: "write_only",
-    transport: "stdio",
-  },
-  {
-    authType: "none",
-    command: "npx",
-    description:
-      "Lecture et écriture sécurisée dans un répertoire de fichiers local",
-    icon: "folder",
-    name: "Filesystem Local",
-    requireApproval: "write_only",
-    transport: "stdio",
-  },
-  {
-    authType: "none",
-    description:
-      "Effectuer des requêtes HTTP GET et POST vers des API externes",
-    icon: "globe",
-    name: "Fetch Web Server",
-    requireApproval: "always_allow",
-    transport: "http",
-    url: "https://mcp-fetch.example.com/api",
-  },
-];
+// Catalogue MCP servi par /api/mcp/templates : il provient du catalogue statique
+// (lib/mcp-templates), source de vérité unique. Aucune liste locale de modèles
+// n'est maintenue ici, sinon elle diverge (c'était le cas des presets et du
+// Store, dont 5 connecteurs sur 6 ne résolvaient aucun template).
+type McpTemplateRow = {
+  activation: "ready" | "requires_oauth_flow";
+  args: string;
+  authType: string;
+  command: string;
+  description: string;
+  icon: string;
+  id: string;
+  minTier: string;
+  name: string;
+  readOnly: boolean;
+  requireApproval: string;
+  tags: string[];
+  transport: string;
+  url: string;
+};
 
-// Connecteurs populaires du Store : mappés sur les templates seedés (lib/db/seeds/mcp-templates.json)
-const STORE_CONNECTORS = [
+// Visuel des connecteurs mis en avant dans le Store : appariement par
+// identifiant de catalogue (et non par nom, qui n'était pas stable).
+const STORE_CONNECTORS: ReadonlyArray<{
+  color: string;
+  highlight: string;
+  icon: LucideIcon;
+  templateId: string;
+  tint: string;
+}> = [
   {
     color: "text-foreground dark:text-foreground",
-    highlight: "Store populaires",
+    highlight: "Dépôts, issues & PR",
     icon: GithubIcon,
-    name: "GitHub",
-    templateName: "GitHub MCP",
+    templateId: "github",
     tint: "bg-foreground/10",
   },
   {
     color: "text-violet-600 dark:text-violet-400",
     highlight: "Docs & bases Notion",
     icon: FileTextIcon,
-    name: "Notion",
-    templateName: "Notion MCP",
+    templateId: "notion",
     tint: "bg-violet-500/10",
   },
   {
     color: "text-orange-600 dark:text-orange-400",
     highlight: "Recherche web privée",
     icon: SearchIcon,
-    name: "Brave Search",
-    templateName: "Brave Search MCP",
+    templateId: "brave-search",
     tint: "bg-orange-500/10",
   },
   {
-    color: "text-sky-600 dark:text-sky-400",
-    highlight: "Fichiers Google Drive",
-    icon: HardDriveIcon,
-    name: "Google Drive",
-    templateName: "Google Drive MCP",
-    tint: "bg-sky-500/10",
-  },
-  {
     color: "text-cyan-600 dark:text-cyan-400",
-    highlight: "Requêtes SQL directes",
+    highlight: "PostgreSQL hébergé",
     icon: DatabaseIcon,
-    name: "PostgreSQL",
-    templateName: "PostgreSQL Database",
+    templateId: "supabase",
     tint: "bg-cyan-500/10",
   },
   {
-    color: "text-emerald-600 dark:text-emerald-400",
-    highlight: "Canaux & messages Slack",
-    icon: SlackIcon,
-    name: "Slack",
-    templateName: "Slack MCP",
-    tint: "bg-emerald-500/10",
+    color: "text-sky-600 dark:text-sky-400",
+    highlight: "Paiements & factures",
+    icon: CreditCardIcon,
+    templateId: "stripe",
+    tint: "bg-sky-500/10",
   },
+];
+
+// Garde-fous de typage pour les valeurs libres du catalogue (aucun `any`).
+const MCP_TRANSPORTS = ["sse", "http", "stdio", "websocket"] as const;
+const MCP_AUTH_TYPES = [
+  "none",
+  "bearer",
+  "basic",
+  "oauth2",
+  "custom_headers",
 ] as const;
+const MCP_APPROVALS = ["always_allow", "ask_permission", "write_only"] as const;
+
+function pickOption<T extends readonly string[]>(
+  options: T,
+  value: unknown,
+  fallback: T[number]
+): T[number] {
+  return typeof value === "string" && options.includes(value as T[number])
+    ? (value as T[number])
+    : fallback;
+}
 export default function McpClient({
   embedded = false,
   searchQuery = "",
@@ -189,11 +184,29 @@ export default function McpClient({
       revalidateOnFocus: false,
     }
   );
-  const { data: tplData, mutate: mutateTpl } = useSWR<{ templates: any[] }>(
-    "/api/mcp/templates",
-    fetcher
+  const { data: tplData, mutate: mutateTpl } = useSWR<{
+    templates: McpTemplateRow[];
+  }>("/api/mcp/templates", fetcher);
+  const templates = useMemo(() => tplData?.templates ?? [], [tplData]);
+  // Modèles réellement installables : les autres (OAuth interactif) restent
+  // visibles avec leur badge, sans bouton actif. Le serveur refuse de toute
+  // façon leur installation.
+  const installableTemplates = useMemo(
+    () => templates.filter((tpl) => tpl.activation === "ready"),
+    [templates]
   );
-  const templates = tplData?.templates ?? [];
+  // Store : uniquement les connecteurs dont le modèle existe réellement dans le
+  // catalogue (sinon la carte n'est pas affichée du tout).
+  const storeConnectors = useMemo(
+    () =>
+      STORE_CONNECTORS.flatMap((connector) => {
+        const tpl = templates.find(
+          (candidate) => candidate.id === connector.templateId
+        );
+        return tpl && tpl.activation === "ready" ? [{ connector, tpl }] : [];
+      }),
+    [templates]
+  );
   const servers = data?.servers ?? [];
   const stats = data?.stats ?? { servers: 0, totalCalls: 0 };
   // Recherche fournie par la barre globale de la page Outils ; l'ancienne
@@ -324,21 +337,23 @@ export default function McpClient({
       toast.error("Erreur purge");
     }
   };
-  const handleNewServer = (template?: (typeof PRESET_TEMPLATES)[0] | any) => {
+  const handleNewServer = (template?: McpTemplateRow | null) => {
     setEditingServer(null);
     setTestResult(null);
     setFormName(template?.name ?? "");
     setFormDescription(template?.description ?? "");
-    setFormTransport((template?.transport as any) ?? "sse");
+    setFormTransport(pickOption(MCP_TRANSPORTS, template?.transport, "http"));
     setFormUrl(template?.url ?? "");
     setFormCommand(template?.command ?? "");
     setFormArgs(template?.args ?? "");
-    setFormAuthType((template?.authType as any) ?? "none");
+    setFormAuthType(pickOption(MCP_AUTH_TYPES, template?.authType, "none"));
     setFormToken("");
     setFormUsername("");
     setFormPassword("");
     setFormHeaders("");
-    setFormRequireApproval((template?.requireApproval as any) ?? "write_only");
+    setFormRequireApproval(
+      pickOption(MCP_APPROVALS, template?.requireApproval, "write_only")
+    );
     setFormTimeoutMs(15_000);
     setFormRateLimit(60);
     setFormEnvPairs([]);
@@ -593,7 +608,13 @@ export default function McpClient({
       toast.error(err.message ?? "Impossible de supprimer le serveur");
     }
   };
-  const handleInstallTemplate = async (tpl: any) => {
+  const handleInstallTemplate = async (tpl: McpTemplateRow) => {
+    if (tpl.activation !== "ready") {
+      toast.error(
+        `${tpl.name} utilise un flux OAuth interactif non pris en charge pour le moment.`
+      );
+      return;
+    }
     try {
       const res = await fetch("/api/mcp/templates", {
         body: JSON.stringify({ templateId: tpl.id }),
@@ -606,11 +627,11 @@ export default function McpClient({
       }
       toast.success(data.message);
       await mutateServers();
-    } catch (e: any) {
-      toast.error(e.message ?? "Erreur installation");
+    } catch (e: unknown) {
+      toast.error(e instanceof Error ? e.message : "Erreur installation");
     }
   };
-  const handleCopyTemplate = async (tpl: any) => {
+  const handleCopyTemplate = async (tpl: McpTemplateRow) => {
     await navigator.clipboard.writeText(JSON.stringify(tpl, null, 2));
     toast.success("Template copié !");
   };
@@ -619,21 +640,27 @@ export default function McpClient({
     connector: (typeof STORE_CONNECTORS)[number],
     installed: McpServer | undefined
   ) => {
+    const tpl = templates.find(
+      (candidate) => candidate.id === connector.templateId
+    );
     if (installed) {
       if (installingConnector) {
         return;
       }
-      setInstallingConnector(connector.name);
+      setInstallingConnector(tpl?.name ?? connector.templateId);
       await handleToggleEnabled(installed);
       setInstallingConnector(null);
       return;
     }
-    const tpl = templates.find((t: any) => t.name === connector.templateName);
     if (!tpl) {
-      toast.error("Template introuvable pour ce connecteur");
+      // Le catalogue ne propose plus ce modèle : on ne laisse pas un bouton
+      // inerte, on explique pourquoi.
+      toast.error(
+        `Le modèle « ${connector.templateId} » n'est plus proposé par le catalogue MCP.`
+      );
       return;
     }
-    setInstallingConnector(connector.name);
+    setInstallingConnector(tpl.name);
     try {
       await handleInstallTemplate(tpl);
     } finally {
@@ -922,34 +949,24 @@ export default function McpClient({
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {sortByRelevance(
-                STORE_CONNECTORS.filter((c) =>
+                storeConnectors.filter(({ connector, tpl }) =>
                   matchesQuery(searchQuery, {
-                    primary: c.name,
-                    secondary: [
-                      c.highlight,
-                      templates.find((t: any) => t.name === c.templateName)
-                        ?.description ?? "",
-                    ],
+                    primary: tpl.name,
+                    secondary: [connector.highlight, tpl.description],
                   })
                 ),
                 searchQuery,
-                (c) => ({
-                  primary: c.name,
-                  secondary: [
-                    c.highlight,
-                    templates.find((t: any) => t.name === c.templateName)
-                      ?.description ?? "",
-                  ],
+                ({ connector, tpl }) => ({
+                  primary: tpl.name,
+                  secondary: [connector.highlight, tpl.description],
                 })
-              ).map((connector) => {
+              ).map(({ connector, tpl }) => {
                 const Icon = connector.icon;
-                const tpl = templates.find(
-                  (t: any) => t.name === connector.templateName
-                );
                 const installed = servers.find(
-                  (s) => s.name === connector.templateName
+                  (s) =>
+                    (s.templateId ?? null) === tpl.id || s.name === tpl.name
                 );
-                const isBusy = installingConnector === connector.name;
+                const isBusy = installingConnector === tpl.name;
                 return (
                   <div
                     className={cn(
@@ -958,7 +975,7 @@ export default function McpClient({
                         ? "border-emerald-500/40"
                         : "border-border/60"
                     )}
-                    key={connector.name}
+                    key={connector.templateId}
                   >
                     <div className="flex items-start gap-3 mb-3">
                       <div
@@ -972,9 +989,7 @@ export default function McpClient({
                       </div>
                       <div className="min-w-0">
                         <div className="flex items-center gap-2">
-                          <h3 className="font-semibold text-sm">
-                            {connector.name}
-                          </h3>
+                          <h3 className="font-semibold text-sm">{tpl.name}</h3>
                           {installed && (
                             <span
                               className={cn(
@@ -997,20 +1012,18 @@ export default function McpClient({
                           )}
                         </div>
                         <p className="text-[11px] text-muted-foreground line-clamp-2">
-                          {tpl?.description ?? connector.highlight}
+                          {tpl.description}
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center gap-1.5 flex-wrap mb-3">
-                      {tpl && (
-                        <Badge
-                          className="text-[10px] uppercase font-semibold px-2 py-0.5"
-                          variant="outline"
-                        >
-                          {tpl.transport}
-                        </Badge>
-                      )}
-                      {tpl?.authType && tpl.authType !== "none" && (
+                      <Badge
+                        className="text-[10px] uppercase font-semibold px-2 py-0.5"
+                        variant="outline"
+                      >
+                        {tpl.transport}
+                      </Badge>
+                      {tpl.authType !== "none" && (
                         <Badge
                           className="text-[10px] px-2 py-0.5"
                           variant="secondary"
@@ -1018,6 +1031,12 @@ export default function McpClient({
                           {tpl.authType}
                         </Badge>
                       )}
+                      <Badge
+                        className="text-[10px] px-2 py-0.5"
+                        variant="outline"
+                      >
+                        {tpl.minTier.toUpperCase()}
+                      </Badge>
                     </div>
                     <div className="mt-auto">
                       <Button
@@ -1026,7 +1045,7 @@ export default function McpClient({
                           installed?.isEnabled &&
                             "border-emerald-500/40 text-emerald-600 dark:text-emerald-400"
                         )}
-                        disabled={Boolean(installingConnector) || !tpl}
+                        disabled={Boolean(installingConnector)}
                         onClick={() =>
                           handleStoreConnector(connector, installed)
                         }
@@ -1059,8 +1078,9 @@ export default function McpClient({
               })}
             </div>
             <p className="text-[11px] text-muted-foreground text-center">
-              Un connecteur manquant ? Retrouvez les {templates.length}{" "}
-              templates complets dans l'onglet{" "}
+              Un connecteur manquant ? Retrouvez les {templates.length} modèles
+              du catalogue (dont les intégrations OAuth documentées) dans
+              l'onglet{" "}
               <button
                 className="font-medium text-primary hover:underline"
                 onClick={() => setActiveTab("library")}
@@ -1101,10 +1121,10 @@ export default function McpClient({
                     Modèles préconfigurés :
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {PRESET_TEMPLATES.map((tmpl) => (
+                    {installableTemplates.map((tmpl) => (
                       <button
                         className="flex flex-col text-left p-3.5 rounded-xl border border-border/60 bg-card hover:bg-muted/40 transition-colors group cursor-pointer"
-                        key={tmpl.name}
+                        key={tmpl.id}
                         onClick={() => handleNewServer(tmpl)}
                         type="button"
                       >
@@ -1120,7 +1140,7 @@ export default function McpClient({
                           {tmpl.description}
                         </span>
                         <span className="text-[11px] font-semibold text-primary">
-                          Connecter +
+                          Pré-remplir la configuration →
                         </span>
                       </button>
                     ))}
@@ -1332,7 +1352,8 @@ export default function McpClient({
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <h2 className="text-sm font-bold">
-                Bibliothèque MCP — Templates installables (50+)
+                Bibliothèque MCP — {installableTemplates.length} modèles
+                installables sur {templates.length}
               </h2>
               <Button onClick={() => mutateTpl()} size="sm" variant="outline">
                 Actualiser
@@ -1344,16 +1365,26 @@ export default function McpClient({
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                {templates.map((tpl: any) => (
+                {templates.map((tpl) => (
                   <div
                     className="rounded-2xl border bg-card p-4 flex flex-col"
                     key={tpl.id}
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className="font-semibold text-xs">{tpl.name}</span>
-                      <Badge className="text-[10px]" variant="outline">
-                        {tpl.transport}
-                      </Badge>
+                      <div className="flex items-center gap-1.5">
+                        <Badge className="text-[10px]" variant="outline">
+                          {tpl.transport}
+                        </Badge>
+                        {tpl.activation === "requires_oauth_flow" ? (
+                          <Badge
+                            className="border-amber-500/30 bg-amber-500/10 text-[10px] text-amber-700 dark:text-amber-400"
+                            variant="outline"
+                          >
+                            OAuth requise
+                          </Badge>
+                        ) : null}
+                      </div>
                     </div>
                     <p className="text-[11px] text-muted-foreground line-clamp-2 mb-3">
                       {tpl.description}
@@ -1361,8 +1392,14 @@ export default function McpClient({
                     <div className="flex gap-1.5 mt-auto">
                       <Button
                         className="flex-1 h-7 text-xs"
+                        disabled={tpl.activation !== "ready"}
                         onClick={() => handleInstallTemplate(tpl)}
                         size="sm"
+                        title={
+                          tpl.activation === "ready"
+                            ? undefined
+                            : "Flux OAuth interactif non pris en charge : installation indisponible pour le moment."
+                        }
                       >
                         <PlusIcon className="size-3 mr-1" />
                         Installer
@@ -1379,20 +1416,20 @@ export default function McpClient({
                     </div>
                   </div>
                 ))}
-                {PRESET_TEMPLATES.map((t) => (
+                {installableTemplates.map((t) => (
                   <div
                     className="rounded-2xl border border-dashed bg-muted/20 p-4 flex flex-col"
-                    key={`${t.name}preset`}
+                    key={`${t.id}preset`}
                   >
                     <span className="font-semibold text-xs mb-1">
-                      {t.name} (preset)
+                      {t.name} (pré-remplissage)
                     </span>
                     <p className="text-[11px] text-muted-foreground mb-3">
                       {t.description}
                     </p>
                     <Button
                       className="h-7 text-xs"
-                      onClick={() => handleNewServer(t as any)}
+                      onClick={() => handleNewServer(t)}
                       size="sm"
                       variant="outline"
                     >

@@ -99,7 +99,7 @@ export default function AgentSettingsPage() {
 
   return (
     <div className="flex h-full flex-1 flex-col overflow-y-auto bg-background">
-      <div className="mx-auto w-full max-w-3xl p-4 pb-16 sm:p-6 md:p-10">
+      <div className="mx-auto w-full max-w-6xl p-4 pb-16 sm:p-6 md:p-10">
         <div className="flex items-start gap-3 border-b border-border/50 pb-6">
           <PageBackButton />
           <div className="min-w-0">

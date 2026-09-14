@@ -1,15 +1,36 @@
 import type { AgentExecutionBudget } from "@/lib/agent/types";
 import { getPaidTierRank } from "@/lib/auth/plan";
+import {
+  TECHNICAL_TIMEOUTS_MS,
+  tierRunLimit,
+} from "@/lib/plans/tier-capabilities";
 
-// Budget d'exécution : garde-fou anti-boucle infinie. Les valeurs sont uniques
-// en Alpha (décision de plan) ; la résolution reste centralisée ici pour que
-// l'affinage par forfait/modèle en Beta ne touche qu'un seul fichier.
+// Budget d'exécution d'un AgentRun. DEUX notions de durée, volontairement
+// séparées dans le type pour qu'aucune ne masque l'autre :
+//
+//  - `maxDurationMs` : plafond TECHNIQUE d'UNE invocation (identique pour tous
+//    les forfaits). Il protège l'hébergement : au-delà, on force une réponse
+//    finale puis on rend la main, checkpoint persisté.
+//  - `productLimitMs` : limite PRODUIT cumulée du run, par forfait (Plus 1 h,
+//    Pro 3 h, Max aucune). Elle est appliquée par `lib/agent/limits.ts` sur le
+//    temps d'ACTIVITÉ cumulé, checkpoint après checkpoint — le run peut donc
+//    être avancé par plusieurs invocations sans perdre son compteur.
+//
+// La limite produit n'écrase jamais le plafond technique (et réciproquement) :
+// seul le forfait décide de la première, seul l'hébergement de la seconde.
+// Source unique des valeurs : lib/plans/tier-capabilities.ts.
+
+// Compat : le contrôleur d'outils importe encore ce nom. La VALEUR reste
+// définie une seule fois (source unique : lib/plans/tier-capabilities.ts) —
+// aucun timeout n'est dupliqué ici.
+export const AGENT_TOOL_TIMEOUT_MS = TECHNICAL_TIMEOUTS_MS.toolExecution;
 
 export const AGENT_BUDGET_DEFAULT: AgentExecutionBudget = {
-  maxDurationMs: 240_000,
+  maxDurationMs: TECHNICAL_TIMEOUTS_MS.invocation,
   maxRetries: 2,
   maxSteps: 12,
   maxToolCalls: 24,
+  productLimitMs: null,
 };
 
 // Plancher défensif : si un forfait non payant atteignait malgré tout le
@@ -19,53 +40,8 @@ export const AGENT_BUDGET_RESTRICTED: AgentExecutionBudget = {
   maxRetries: 1,
   maxSteps: 3,
   maxToolCalls: 4,
+  productLimitMs: null,
 };
-
-export const AGENT_TOOL_TIMEOUT_MS = 45_000;
-
-// ─────────────────────────────────────────────
-// Limites produit de durée d'un AgentRun, par forfait. Source unique partagée
-// par l'accès Agent et les budgets d'exécution : un utilisateur ne peut pas
-// être « Plus pour le quota » et « Free pour l'accès Agent ». Le plafond
-// produit est un MAXIMUM commercial ; en Alpha le budget technique reste plus
-// court (les timeouts individuels par appel modèle/réseau/tool conservent la
-// limitation effective). maxDurationMs = null : aucune limite produit globale.
-// ─────────────────────────────────────────────
-export type AgentRunDurationLimit = {
-  /** Plafond produit en millisecondes, ou null = illimité (Max). */
-  maxRunDurationMs: number | null;
-  label: string;
-};
-
-export const AGENT_RUN_DURATION_LIMITS: Record<
-  "plus" | "pro" | "max",
-  AgentRunDurationLimit
-> = {
-  max: { label: "Max", maxRunDurationMs: null },
-  plus: { label: "Plus", maxRunDurationMs: 60 * 60 * 1000 }, // 1 heure
-  pro: { label: "Pro", maxRunDurationMs: 3 * 60 * 60 * 1000 }, // 3 heures
-};
-
-export function resolveAgentRunDurationLimit(
-  tier?: string | null
-): AgentRunDurationLimit | null {
-  const rank = getPaidTierRank(tier);
-  if (rank <= 0) {
-    // Free / tier inconnu : pas de run Agent de toute façon (garde amont).
-    return null;
-  }
-  const key =
-    getPaidTierRank(tier) === 1
-      ? "plus"
-      : getPaidTierRank(tier) === 2
-        ? "pro"
-        : "max";
-  return { ...AGENT_RUN_DURATION_LIMITS[key] };
-}
-
-function productCapMs(tier?: string | null): number | null {
-  return resolveAgentRunDurationLimit(tier)?.maxRunDurationMs ?? null;
-}
 
 export function resolveAgentExecutionBudget(params: {
   tier?: string | null;
@@ -74,14 +50,9 @@ export function resolveAgentExecutionBudget(params: {
   if (rank === 0) {
     return { ...AGENT_BUDGET_RESTRICTED };
   }
-  const technical = AGENT_BUDGET_DEFAULT.maxDurationMs;
-  const cap = productCapMs(params.tier);
-  // Le plafond produit borne le budget technique (jamais l'inverse en Alpha) :
-  // un utilisateur Plus ne peut pas dépasser son plafond commercial, mais le
-  // run reste en pratique stoppé plus tôt par les timeouts par appel.
   return {
     ...AGENT_BUDGET_DEFAULT,
-    maxDurationMs: cap === null ? technical : Math.min(technical, cap),
+    productLimitMs: tierRunLimit(params.tier).limitMs,
   };
 }
 

@@ -9,13 +9,13 @@ import {
   AgentToolsPicker,
 } from "@/components/agent/composer/agent-option-pickers";
 import { AgentPlusMenu } from "@/components/agent/composer/agent-plus-menu";
+import { CloudFilePickerDialog } from "@/components/chat/cloud-file-picker-dialog";
 import {
   ComposerActionsRow,
   ComposerSendButton,
   ComposerShell,
   composerTextareaClass,
 } from "@/components/chat/composer-primitives";
-import { CloudFilePickerDialog } from "@/components/chat/cloud-file-picker-dialog";
 import { VoiceRecorderButton } from "@/components/chat/input/voice-recorder-button";
 import {
   ModelSelectorCompact,
@@ -242,12 +242,12 @@ export function AgentComposer({
               canSend={canSend}
               loading={uploadQueue.length > 0}
               onSend={submit}
+              onStop={onStop}
               running={isRunning}
               sendLabel="Confier la tâche à Agent"
               sendTestId="agent-send-button"
               sendTitle="Confier la tâche à Agent"
               stopLabel="Arrêter Agent"
-              onStop={onStop}
               stopTestId="agent-stop-button"
               stopTitle="Arrêter Agent"
               type="button"

@@ -56,13 +56,16 @@ export async function POST(
   });
 
   if (!outcome.ok) {
+    const messages: Record<string, string> = {
+      invalid_payload: "Paramètres d'action invalides.",
+      no_result:
+        "Cette action a besoin d'un livrable produit par le run : aucun n'a été trouvé.",
+      not_found: "Run, projet ou livrable introuvable.",
+      not_permitted: "Action non permise avec les outils de ce run.",
+      unknown_action: "Action suggérée inconnue.",
+    };
     return errorResponse("invalid_request", {
-      message:
-        outcome.reason === "unknown_action"
-          ? "Action suggérée inconnue."
-          : outcome.reason === "invalid_payload"
-            ? "Paramètres d'action invalides."
-            : "Action non permise avec les outils de ce run.",
+      message: messages[outcome.reason] ?? "Action suggérée indisponible.",
     });
   }
 

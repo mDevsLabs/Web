@@ -3,8 +3,11 @@ import "server-only";
 import { AGENT_TOOL_CATALOG } from "@/lib/agent/tools/catalog";
 import { toRegisteredTool } from "@/lib/agent/tools/define-tool";
 import { askUserTool } from "@/lib/agent/tools/internal/ask-user";
+import { attachToProjectTool } from "@/lib/agent/tools/internal/attach-to-project";
 import { createArtifactTool } from "@/lib/agent/tools/internal/create-artifact";
+import { exportDeliverableTool } from "@/lib/agent/tools/internal/export-deliverable";
 import { readFileTool } from "@/lib/agent/tools/internal/read-file";
+import { readUrlTool } from "@/lib/agent/tools/internal/read-url";
 import { searchWebTool } from "@/lib/agent/tools/internal/search-web";
 import type { AgentTool, RegisteredAgentTool } from "@/lib/agent/types";
 
@@ -29,8 +32,11 @@ export function registerBuiltinAgentTools(): void {
 
   registerAgentTool(askUserTool);
   registerAgentTool(searchWebTool);
+  registerAgentTool(readUrlTool);
   registerAgentTool(readFileTool);
   registerAgentTool(createArtifactTool);
+  registerAgentTool(exportDeliverableTool);
+  registerAgentTool(attachToProjectTool);
 }
 
 export function getRegisteredAgentTool(

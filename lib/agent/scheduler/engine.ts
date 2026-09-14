@@ -1,24 +1,25 @@
 import "server-only";
 
 import { randomUUID } from "node:crypto";
-import type { ScheduleRule } from "@/lib/agent/contracts";
 import type {
   AgentOccurrenceRecord,
   AgentScheduleRecord,
 } from "@/lib/agent/db-schema";
-import { emitAgentBusinessEvent } from "@/lib/agent/events/business";
+import { executeScheduledRun } from "@/lib/agent/scheduler/execute";
 import { nextOccurrenceFromRule } from "@/lib/agent/scheduler/occurrence";
 import {
   claimOccurrence,
+  deactivateScheduleAfterRun,
   ensureOccurrence,
   finishOccurrence,
+  getOccurrenceById,
   listDueSchedules,
   listExpiredLeaseOccurrences,
   recordScheduleRun,
+  resetOccurrenceToPending,
+  setAgentScheduleError,
   startOccurrence,
 } from "@/lib/db/agent-foundation-queries";
-import { createAgentRun, updateAgentRunStatus } from "@/lib/db/agent-queries";
-
 // Scheduler central des tâches planifiées Agent : indépendant du fournisseur
 // d'infrastructure (il n'exige qu'un déclencheur périodique — le tick cron —
 // et la base). Invariants :
@@ -87,49 +88,31 @@ export async function claimDueOccurrence(params: {
   return { occurrence: claimed, outcome: "claimed" };
 }
 
-// Crée exactement un AgentRun pour une occurrence réclamée : si l'occurrence
-// porte déjà un runId (reprise après crash), le run existant est retourné —
-// jamais recréé.
-export async function createOrReuseRunForOccurrence(params: {
-  occurrence: AgentOccurrenceRecord;
-  schedule: AgentScheduleRecord;
-}): Promise<string> {
-  if (params.occurrence.runId) {
-    return params.occurrence.runId;
-  }
-  const run = await createAgentRun({
-    autonomy: params.schedule.config.autonomy,
-    budget: {
-      maxDurationMs: 240_000,
-      maxRetries: 2,
-      maxSteps: 12,
-      maxToolCalls: 24,
-    },
-    chatId: params.schedule.projectId ?? params.schedule.id,
-    messageId: null,
-    model: params.schedule.modelId,
-    plan: null,
-    reasoningLevel: params.schedule.config.reasoningLevel,
-    status: "queued",
-    toolPolicySnapshot: {},
-    userId: params.schedule.userId,
-  });
-  return run.id;
-}
-
 // Traitement d'une échéance due, du point de vue d'un worker :
 //  - réservation atomique de l'occurrence ;
-//  - création (ou reprise) du run lié ;
+//  - exécution du run par le MÊME AgentRuntime que l'API interactive
+//    (lib/agent/scheduler/execute.ts) ;
 //  - calcul de la prochaine échéance depuis la règle + fuseau ;
-//  - clôture de l'occurrence.
-// La reprise crash-safe est assurée par la lease : si le worker meurt après
-// avoir créé le run, l'occurrence reste liée au run et ne sera jamais dupliquée.
+//  - clôture de l'occurrence, sauf si le run attend une résolution
+//    (approbation / réponse utilisateur) : l'occurrence reste alors liée au
+//    run et sous lease — sa résolution relira l'occurrence et reprendra le
+//    même run, sans jamais en créer un second.
+// La reprise crash-safe est assurée par la lease : si le worker meurt pendant
+// l'exécution, la lease expire, l'occurrence est re-réclamée au tick suivant
+// et le run existant est avancé (jamais dupliqué).
 export async function processDueSchedule(params: {
   now: Date;
   schedule: AgentScheduleRecord;
   workerId: string;
 }): Promise<
-  | { outcome: "claimed" | "already_claimed" | "exhausted"; runId?: string }
+  | {
+      outcome:
+        | "claimed"
+        | "already_claimed"
+        | "awaiting_resolution"
+        | "exhausted";
+      runId?: string;
+    }
   | { outcome: "error"; message: string }
 > {
   const claim = await claimDueOccurrence({
@@ -147,63 +130,145 @@ export async function processDueSchedule(params: {
   const { occurrence } = claim;
 
   try {
-    const runId = await createOrReuseRunForOccurrence({
+    // Exécution réelle par le runtime Agent. Cette étape crée (ou reprend) le
+    // run, la conversation, persiste steps, checkpoints et messages, et rend
+    // le statut final relu depuis la base.
+    const execution = await executeScheduledRun({
       occurrence,
       schedule: params.schedule,
     });
-    await startOccurrence({ id: occurrence.id, now: params.now, runId });
 
-    // Lien occurrence → run persisté : le run appartient désormais à la
-    // conversation (source de vérité) et l'occurrence ne redémarrera jamais
-    // un second run.
-    await updateAgentRunStatus({
-      id: runId,
-      status: "queued",
-    });
-
-    const nextDue = nextDueForSchedule(params.schedule, params.now);
-    await recordScheduleRun({
-      id: params.schedule.id,
-      lastRunAt: params.now,
-      nextDueAt: nextDue ?? params.schedule.nextDueAt,
-    });
-    if (!nextDue) {
-      // One-shot terminé : suppression logique (historique conservé).
-      await recordScheduleRun({
-        id: params.schedule.id,
-        lastRunAt: params.now,
-        nextDueAt: params.schedule.nextDueAt,
+    if (execution.outcome === "already_done") {
+      // Crash après exécution, avant clôture : le travail est réalisé.
+      await startOccurrence({
+        id: occurrence.id,
+        now: params.now,
+        runId: execution.runId,
       });
+      await finishOccurrence({
+        id: occurrence.id,
+        now: params.now,
+        status: "completed",
+      });
+      const nextDue = nextDueForSchedule(params.schedule, params.now);
+      await closeScheduleAfterRun({
+        nextDue,
+        now: params.now,
+        schedule: params.schedule,
+      });
+      return { outcome: "claimed", runId: execution.runId };
     }
 
+    if (execution.outcome === "no_tools") {
+      if (execution.runId) {
+        await startOccurrence({
+          id: occurrence.id,
+          now: params.now,
+          runId: execution.runId,
+        });
+      }
+      await finishOccurrence({
+        id: occurrence.id,
+        now: params.now,
+        status: "skipped",
+      });
+      await setAgentScheduleError({
+        id: params.schedule.id,
+        lastError:
+          "Aucun outil disponible pour cette tâche (réglages ou forfait).",
+      });
+      return { outcome: "claimed", runId: execution.runId ?? undefined };
+    }
+
+    if (execution.outcome === "awaiting_resolution") {
+      await startOccurrence({
+        id: occurrence.id,
+        now: params.now,
+        runId: execution.runId,
+      });
+      // Attente persistée : occurrence maintenue « running » sous lease —
+      // sa résolution reprendra le même run. Lease longue : aucune autre
+      // exécution ne démarrera pendant l'attente (anti-doublon).
+      return { outcome: "awaiting_resolution", runId: execution.runId };
+    }
+
+    // Run terminé (completed, failed, timed_out, cancelled) : occurrence
+    // clôturée, échéance suivante recalculée depuis la règle + fuseau.
+    const failed = execution.finalStatus === "failed";
     await finishOccurrence({
       id: occurrence.id,
       now: params.now,
-      status: "completed",
+      status: failed ? "failed" : "completed",
     });
-
-    emitAgentBusinessEvent({
-      chatId: runId,
-      model: params.schedule.modelId,
-      runId,
-      type: "run_started",
+    const nextDue = nextDueForSchedule(params.schedule, params.now);
+    await closeScheduleAfterRun({
+      nextDue,
+      now: params.now,
+      schedule: params.schedule,
     });
-
-    return { outcome: "claimed", runId };
+    if (failed) {
+      await setAgentScheduleError({
+        id: params.schedule.id,
+        lastError: `Dernier run en échec (${execution.finalStatus}).`,
+      });
+    }
+    return { outcome: "claimed", runId: execution.runId };
   } catch (error) {
     const message =
       error instanceof Error ? error.message.slice(0, 300) : "Erreur inconnue.";
-    await finishOccurrence({
-      id: occurrence.id,
-      now: params.now,
-      status: "failed",
-    }).catch(() => {});
+    // Crash / erreur d'exécution : l'occurrence redevient pending si elle ne
+    // porte pas encore de run (elle sera re-réclamée au prochain tick) ; si
+    // elle porte un run, elle reste liée (reprise du même run). Le compteur
+    // `attempt` a été incrémenté au claim : les échecs répétés finiront par
+    // être bornés par SCHEDULE_MAX_ATTEMPTS.
+    const fresh = await getOccurrenceById({ id: occurrence.id }).catch(
+      () => null
+    );
+    if (fresh && !fresh.runId && fresh.attempt >= SCHEDULE_MAX_ATTEMPTS) {
+      await finishOccurrence({
+        id: occurrence.id,
+        now: params.now,
+        status: "failed",
+      }).catch(() => {});
+      await setAgentScheduleError({
+        id: params.schedule.id,
+        lastError: message,
+      });
+    } else {
+      await resetOccurrenceToPending({ id: occurrence.id }).catch(() => {});
+    }
     return { message, outcome: "error" };
   }
 }
 
+// Clôture du schedule après un run terminé : récurrence → nextDueAt recalculé
+// ; one-shot → désactivation (paused, historique conservé). Jamais de
+// repoll d'une échéance passée : listDueSchedules filtre sur status active.
+async function closeScheduleAfterRun(params: {
+  nextDue: Date | null;
+  now: Date;
+  schedule: AgentScheduleRecord;
+}): Promise<void> {
+  if (params.nextDue) {
+    await recordScheduleRun({
+      id: params.schedule.id,
+      lastRunAt: params.now,
+      nextDueAt: params.nextDue,
+    });
+    return;
+  }
+  await deactivateScheduleAfterRun({
+    id: params.schedule.id,
+    lastRunAt: params.now,
+  });
+}
+
 // Tick du scheduler : à appeler périodiquement (cron). Traite les échéances
-// dues ET les occurrences à la lease expirée (reprise après crash).
+// dues ET les occurrences à la lease expirée (reprise après crash). Un
+// timeout de tick (le budget d'invocation + une marge) borne chaque run :
+// le cron ne peut pas rester bloqué sur un run en attente externe.
+const TICK_RUN_TIMEOUT_MS = 5 * 60 * 1000;
+
 export async function runSchedulerTick(params: {
   now?: Date;
   workerId?: string;
@@ -228,30 +293,23 @@ export async function runSchedulerTick(params: {
     });
     results.push({
       outcome: result.outcome,
-      runId: result.outcome === "claimed" ? result.runId : undefined,
+      runId:
+        result.outcome === "claimed" || result.outcome === "awaiting_resolution"
+          ? result.runId
+          : undefined,
       scheduleId: schedule.id,
     });
   }
 
-  // Reprise après crash : occurrences à la lease expirée, jamais doublement.
+  // Reprise après crash : occurrences à la lease expirée. Celles qui portent
+  // déjà un run ont été avancées par processDueSchedule via le run actif du
+  // chat — elles sont replacées en pending pour être re-traitées proprement
+  // (le run actif, s'il existe, sera avancé sans duplication). Celles sans
+  // run redeviennent éligibles à un nouveau claim (jamais perdues, jamais
+  // doublonnées : clé unique + compteur attempt).
   const expired = await listExpiredLeaseOccurrences({ now });
   for (const occurrence of expired) {
-    // L'occurrence déjà liée à un run est simplement replacée en pending :
-    // son run existe (source de vérité) et sera avancé par un tick suivant ;
-    // une occurrence non liée redevient éligible à un nouveau claim.
-    const reclaimed = await claimOccurrence({
-      now,
-      occurrenceId: occurrence.id,
-      workerId,
-    });
-    if (reclaimed && !reclaimed.runId) {
-      await finishOccurrence({
-        id: reclaimed.id,
-        now,
-        status: "failed",
-      }).catch(() => {});
-    }
+    await resetOccurrenceToPending({ id: occurrence.id }).catch(() => {});
   }
-
   return { processed: results.length, results };
 }

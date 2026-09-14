@@ -1,4 +1,5 @@
-import { AGENT_ERROR_CODES, toToolFailure } from "@/lib/agent/errors";
+import { AGENT_ERROR_CODES, AgentRuntimeError } from "@/lib/agent/errors";
+import { toAgentToolError } from "@/lib/agent/tool-errors";
 import type {
   AgentTool,
   AgentToolDefinition,
@@ -6,7 +7,7 @@ import type {
   ToolExecutionContext,
   ToolResult,
 } from "@/lib/agent/types";
-import { isToolSuccess, toolFailure } from "@/lib/agent/types";
+import { toolFailure } from "@/lib/agent/types";
 
 // Point d'entrée unique pour créer un outil Agent. Objectif : ajouter une
 // capacité se limite à écrire une fonction serveur avec un schéma d'entrée,
@@ -19,8 +20,8 @@ export function defineTool<Input>(
 }
 
 // Enveloppe de sûreté : un outil ne doit jamais faire échouer le run en levant.
-// Toute exception devient un ToolFailure structuré que le modèle peut exploiter
-// (réessayer, changer d'outil, demander une information, conclure).
+// Toute exception devient un ToolFailure structuré, normalisé (catégorie,
+// caractère retryable) et sûr — jamais de stack trace ni de détail interne.
 export async function runToolSafely(params: {
   context: ToolExecutionContext;
   execute: (
@@ -34,12 +35,27 @@ export async function runToolSafely(params: {
     if (!result || typeof result !== "object" || !("success" in result)) {
       return toolFailure(
         AGENT_ERROR_CODES.toolFailed,
-        "L'outil n'a pas renvoyé de résultat exploitable."
+        "L'outil n'a pas renvoyé de résultat exploitable.",
+        { category: "permanent", retryable: false }
       );
     }
-    return isToolSuccess(result) ? result : result;
+    return result;
   } catch (error) {
-    return toToolFailure(error);
+    if (error instanceof AgentRuntimeError) {
+      return toolFailure(error.code, error.message, {
+        category: "permanent",
+        retryable: false,
+      });
+    }
+    const normalized = toAgentToolError(error);
+    const safe = normalized.toSafeShape();
+    return toolFailure(safe.code, safe.message, {
+      category: safe.category,
+      ...(safe.retryAfterMs === undefined
+        ? {}
+        : { retryAfterMs: safe.retryAfterMs }),
+      retryable: safe.retryable,
+    });
   }
 }
 

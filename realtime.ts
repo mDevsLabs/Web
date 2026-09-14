@@ -11,8 +11,8 @@
  * ============================================================================
  */
 
-import type { Hono } from "npm:hono@4";
 import { streamSSE } from "npm:hono/streaming";
+import type { Hono } from "npm:hono@4";
 import { extractToken, getDb, verifyToken } from "./config.ts";
 import { createRegisterMulti } from "./vibe-common.ts";
 
@@ -37,7 +37,10 @@ export async function ensureRealtimeTables() {
     await sql`CREATE INDEX IF NOT EXISTS idx_realtime_user ON realtime_events(user_id, id)`;
     realtimeTablesReady = true;
   } catch (err) {
-    console.warn("[realtime] ensureRealtimeTables skipped:", (err as any)?.message);
+    console.warn(
+      "[realtime] ensureRealtimeTables skipped:",
+      (err as any)?.message
+    );
   }
 }
 
@@ -46,7 +49,11 @@ export async function ensureRealtimeTables() {
  * Jamais bloquant pour l'appelant : un échec de push ne doit pas faire échouer
  * l'action métier (like, message...).
  */
-export async function pushRealtimeEvent(userId: number | string | null | undefined, type: string, payload: any) {
+export async function pushRealtimeEvent(
+  userId: number | string | null | undefined,
+  type: string,
+  payload: any
+) {
   const target = Number(userId);
   if (!target || isNaN(target)) return;
   try {
@@ -57,7 +64,9 @@ export async function pushRealtimeEvent(userId: number | string | null | undefin
       VALUES (${target}, ${type}, ${JSON.stringify(payload || {})}::jsonb)
     `;
     // Purge opportuniste : les clients connectés lisent ces événements en <2 s
-    await sql`DELETE FROM realtime_events WHERE created_at < NOW() - INTERVAL '2 minutes'`.catch(() => {});
+    await sql`DELETE FROM realtime_events WHERE created_at < NOW() - INTERVAL '2 minutes'`.catch(
+      () => {}
+    );
   } catch (err) {
     console.warn("[realtime] pushRealtimeEvent failed:", (err as any)?.message);
   }
@@ -69,7 +78,7 @@ export async function pushRealtimeEvent(userId: number | string | null | undefin
 const openConnections = new Map<string, number>();
 
 const MAX_CONNECTIONS_PER_USER = 2;
-const TICK_MS = 1_000;
+const TICK_MS = 1000;
 const HEARTBEAT_TICKS = 15;
 const UNREAD_TICKS = 30;
 const NOTIF_POLL_TICKS = 2;
@@ -95,7 +104,10 @@ export function registerRealtimeRoutes(app: Hono) {
     const key = String(userId);
     const current = openConnections.get(key) || 0;
     if (current >= MAX_CONNECTIONS_PER_USER) {
-      return c.json({ error: "Trop de connexions temps réel pour ce compte." }, 429);
+      return c.json(
+        { error: "Trop de connexions temps réel pour ce compte." },
+        429
+      );
     }
     openConnections.set(key, current + 1);
 
@@ -105,8 +117,8 @@ export function registerRealtimeRoutes(app: Hono) {
     // connexion (le client déduplique par id côté UI).
     const seenNotificationIds = new Set<string>();
     const seenMessageIds = new Set<string>();
-    let notifCursor = new Date(Date.now() - 3_000).toISOString();
-    let dmCursor = new Date(Date.now() - 3_000).toISOString();
+    let notifCursor = new Date(Date.now() - 3000).toISOString();
+    const dmCursor = new Date(Date.now() - 3000).toISOString();
     let lastEventId = 0;
     let tick = 0;
 
@@ -131,19 +143,24 @@ export function registerRealtimeRoutes(app: Hono) {
                 ) AS unread_messages
             `;
             await sse.writeSSE({
-              event: "unread_counts",
               data: JSON.stringify({
-                unread_notifications: Number(counts[0]?.unread_notifications || 0),
                 unread_messages: Number(counts[0]?.unread_messages || 0),
+                unread_notifications: Number(
+                  counts[0]?.unread_notifications || 0
+                ),
               }),
+              event: "unread_counts",
             });
           } catch {}
         };
 
         try {
           await sse.writeSSE({
+            data: JSON.stringify({
+              at: new Date().toISOString(),
+              user_id: userId,
+            }),
             event: "connected",
-            data: JSON.stringify({ user_id: userId, at: new Date().toISOString() }),
           });
           await pushUnreadCounts();
         } catch {
@@ -164,10 +181,16 @@ export function registerRealtimeRoutes(app: Hono) {
             `;
             for (const ev of events) {
               lastEventId = Number(ev.id);
-              await sse.writeSSE({ event: ev.type, data: JSON.stringify(ev.payload ?? {}) });
+              await sse.writeSSE({
+                data: JSON.stringify(ev.payload ?? {}),
+                event: ev.type,
+              });
             }
           } catch (pollErr) {
-            console.warn("[realtime] events poll error:", (pollErr as any)?.message);
+            console.warn(
+              "[realtime] events poll error:",
+              (pollErr as any)?.message
+            );
           }
 
           // 2. Nouvelles notifications (toutes types : like, repost, mention, follow, dm...)
@@ -186,12 +209,19 @@ export function registerRealtimeRoutes(app: Hono) {
               for (const n of notifs) {
                 if (seenNotificationIds.has(String(n.id))) continue;
                 seenNotificationIds.add(String(n.id));
-                if (!maxNotifAt || String(n.created_at) > maxNotifAt) maxNotifAt = String(n.created_at);
-                await sse.writeSSE({ event: "notification", data: JSON.stringify(n) });
+                if (!maxNotifAt || String(n.created_at) > maxNotifAt)
+                  maxNotifAt = String(n.created_at);
+                await sse.writeSSE({
+                  data: JSON.stringify(n),
+                  event: "notification",
+                });
               }
               if (maxNotifAt) notifCursor = maxNotifAt;
             } catch (notifErr) {
-              console.warn("[realtime] notifications poll error:", (notifErr as any)?.message);
+              console.warn(
+                "[realtime] notifications poll error:",
+                (notifErr as any)?.message
+              );
             }
           }
 
@@ -203,7 +233,7 @@ export function registerRealtimeRoutes(app: Hono) {
           // 4. Heartbeat (keep-alive proxies)
           if (tick % HEARTBEAT_TICKS === 0) {
             try {
-              await sse.writeSSE({ event: "ping", data: String(Date.now()) });
+              await sse.writeSSE({ data: String(Date.now()), event: "ping" });
             } catch {
               break;
             }
@@ -211,11 +241,23 @@ export function registerRealtimeRoutes(app: Hono) {
         }
       });
     } finally {
-      openConnections.set(key, Math.max(0, (openConnections.get(key) || 1) - 1));
+      openConnections.set(
+        key,
+        Math.max(0, (openConnections.get(key) || 1) - 1)
+      );
     }
   };
 
-  registerMulti("get", ["/api/vibe/realtime/stream", "/vibe/realtime/stream", "/v1/realtime/stream", "/realtime/stream"], handleStream);
+  registerMulti(
+    "get",
+    [
+      "/api/vibe/realtime/stream",
+      "/vibe/realtime/stream",
+      "/v1/realtime/stream",
+      "/realtime/stream",
+    ],
+    handleStream
+  );
 
   // Indicateur de frappe : le client l'émet (throttlé) pendant la saisie d'un DM
   const handleTyping = async (c: any) => {
@@ -225,7 +267,7 @@ export function registerRealtimeRoutes(app: Hono) {
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
 
-      const body = await c.req.json().catch(() => ({} as any));
+      const body = await c.req.json().catch(() => ({}) as any);
       const partnerId = Number(body?.partner_id);
       const typing = body?.typing !== false;
       if (!partnerId || isNaN(partnerId) || partnerId === userId) {
@@ -244,17 +286,24 @@ export function registerRealtimeRoutes(app: Hono) {
       } catch {}
 
       await pushRealtimeEvent(partnerId, "dm_typing", {
-        user_id: userId,
-        username: actor.username || null,
         display_name: actor.display_name || null,
         typing,
+        user_id: userId,
+        username: actor.username || null,
       });
 
       return c.json({ success: true });
     } catch (err: any) {
-      return c.json({ error: err?.message || "Erreur indicateur de frappe." }, 500);
+      return c.json(
+        { error: err?.message || "Erreur indicateur de frappe." },
+        500
+      );
     }
   };
 
-  registerMulti("post", ["/api/vibe/dms/typing", "/vibe/dms/typing", "/v1/dms/typing"], handleTyping);
+  registerMulti(
+    "post",
+    ["/api/vibe/dms/typing", "/vibe/dms/typing", "/v1/dms/typing"],
+    handleTyping
+  );
 }

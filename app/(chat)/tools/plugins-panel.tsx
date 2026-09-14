@@ -1,6 +1,12 @@
 "use client";
 
-import { CheckIcon, Loader2Icon, PlusIcon, Trash2Icon } from "lucide-react";
+import {
+  CheckIcon,
+  Loader2Icon,
+  LockIcon,
+  PlusIcon,
+  Trash2Icon,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
@@ -8,11 +14,7 @@ import { toast } from "sonner";
 import useSWR from "swr";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  filterPlugins,
-  PLUGIN_CATEGORIES,
-  PLUGIN_MANIFEST_LIST,
-} from "@/lib/plugins/catalog";
+import { PLUGIN_CATEGORIES } from "@/lib/plugins/catalog";
 import { PluginIcon } from "@/lib/plugins/icon";
 import type { PluginCatalogEntry } from "@/lib/plugins/types";
 import { matchesQuery, sortByRelevance } from "@/lib/tools/search";
@@ -41,24 +43,12 @@ export default function PluginsPanel({
     setActionsAnchor(document.getElementById(TOOLS_ACTIONS_ID));
   }, []);
 
-  // Le catalogue de la page est le manifeste statique enrichi de l'état
-  // d'installation renvoyé par l'API.
-  const merged = useMemo(() => {
-    const byId = new Map(plugins.map((p) => [p.id, p]));
-    return PLUGIN_MANIFEST_LIST.map(
-      (manifest): PluginCatalogEntry => ({
-        ...(byId.get(manifest.id) ?? {
-          ...manifest,
-          enabled: false,
-          installed: false,
-          installedVersion: null,
-          updateAvailable: false,
-        }),
-      })
-    );
-  }, [plugins]);
+  // `GET /api/plugins` renvoie déjà le catalogue complet (manifestes + état
+  // d'installation + verrou de forfait) : aucune fusion locale à refaire, une
+  // seule logique de catalogue.
+  const entries: PluginCatalogEntry[] = plugins;
 
-  const installed = merged.filter((p) => p.installed);
+  const installed = entries.filter((p) => p.installed);
 
   async function runAction(
     pluginId: string,
@@ -129,7 +119,7 @@ export default function PluginsPanel({
   // Recherche globale : filtrage par catégorie + correspondance, puis tri par
   // pertinence (nom > description > tags) et alphabétiquement.
   const filtered = useMemo(() => {
-    const matching = merged.filter(
+    const matching = entries.filter(
       (plugin) =>
         (!category || plugin.category === category) &&
         matchesQuery(searchQuery, {
@@ -143,7 +133,7 @@ export default function PluginsPanel({
       secondary: [plugin.description, plugin.tool.label],
       tags: plugin.tags,
     }));
-  }, [merged, searchQuery, category]);
+  }, [entries, searchQuery, category]);
 
   const sortedInstalled = useMemo(
     () =>
@@ -293,7 +283,15 @@ export default function PluginsPanel({
                       {plugin.description}
                     </span>
                   </div>
-                  {plugin.installed ? (
+                  {plugin.locked ? (
+                    <span
+                      className="flex shrink-0 items-center gap-1 rounded-full border border-amber-500/40 bg-amber-500/10 px-2.5 py-1 text-[11px] font-semibold text-amber-700 dark:text-amber-400"
+                      title={`Réservé au forfait ${plugin.minTier} : l'installation est refusée par le serveur.`}
+                    >
+                      <LockIcon className="size-3" />
+                      {plugin.minTier.toUpperCase()}
+                    </span>
+                  ) : plugin.installed ? (
                     <Button
                       className="size-9 shrink-0 rounded-full"
                       disabled={isBusy}

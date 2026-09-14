@@ -35,7 +35,10 @@ export async function ensureCircleTable(): Promise<void> {
 /**
  * Enregistre les routes de gestion du cercle privé.
  */
-export function registerVibeCircleRoutes(app: Hono, registerMulti: RegisterMultiFn) {
+export function registerVibeCircleRoutes(
+  app: Hono,
+  registerMulti: RegisterMultiFn
+) {
   const authenticate = async (c: any): Promise<number | null> => {
     const token = extractToken(c.req.raw);
     if (!token) return null;
@@ -52,7 +55,8 @@ export function registerVibeCircleRoutes(app: Hono, registerMulti: RegisterMulti
     const rawParam = c.req.param("username") || "";
     const targetUsername = rawParam.toLowerCase().trim().replace(/^@/, "");
     if (!targetUsername) return null;
-    const rows = await sql`SELECT id FROM users WHERE LOWER(username) = ${targetUsername} LIMIT 1`;
+    const rows =
+      await sql`SELECT id FROM users WHERE LOWER(username) = ${targetUsername} LIMIT 1`;
     return rows.length > 0 ? Number(rows[0].id) : null;
   };
 
@@ -75,21 +79,25 @@ export function registerVibeCircleRoutes(app: Hono, registerMulti: RegisterMulti
         WHERE cm.user_id = ${currentUserId}
         ORDER BY cm.created_at DESC
       `;
-      return c.json({ success: true, circle: rows });
+      return c.json({ circle: rows, success: true });
     } catch (err: any) {
       console.error("[List Circle Error]:", err);
-      return c.json({ success: true, circle: [] });
+      return c.json({ circle: [], success: true });
     }
   };
 
-  registerMulti("get", [
-    "/api/vibe/users/circle",
-    "/vibe/users/circle",
-    "/v1/users/circle",
-    "/api/vibe/circle",
-    "/vibe/circle",
-    "/v1/circle",
-  ], handleListCircle);
+  registerMulti(
+    "get",
+    [
+      "/api/vibe/users/circle",
+      "/vibe/users/circle",
+      "/v1/users/circle",
+      "/api/vibe/circle",
+      "/vibe/circle",
+      "/v1/circle",
+    ],
+    handleListCircle
+  );
 
   // 2. STATUT : ce compte est-il dans mon cercle ?
   const handleGetCircleStatus = async (c: any) => {
@@ -100,25 +108,30 @@ export function registerVibeCircleRoutes(app: Hono, registerMulti: RegisterMulti
       await ensureCircleTable().catch(() => {});
       const sql = getDb();
       const targetId = await resolveTargetId(sql, c);
-      if (targetId === null) return c.json({ error: "Utilisateur introuvable." }, 404);
+      if (targetId === null)
+        return c.json({ error: "Utilisateur introuvable." }, 404);
 
       const rows = await sql`
         SELECT 1 FROM circle_members
         WHERE user_id = ${currentUserId} AND member_user_id = ${targetId}
         LIMIT 1
       `;
-      return c.json({ success: true, in_circle: rows.length > 0 });
+      return c.json({ in_circle: rows.length > 0, success: true });
     } catch (err: any) {
       console.error("[Circle Status Error]:", err);
       return c.json({ error: "Erreur lecture du cercle." }, 500);
     }
   };
 
-  registerMulti("get", [
-    "/api/vibe/users/:username/circle",
-    "/vibe/users/:username/circle",
-    "/v1/users/:username/circle",
-  ], handleGetCircleStatus);
+  registerMulti(
+    "get",
+    [
+      "/api/vibe/users/:username/circle",
+      "/vibe/users/:username/circle",
+      "/v1/users/:username/circle",
+    ],
+    handleGetCircleStatus
+  );
 
   // 3. AJOUT / RETRAIT d'un membre (toggle si in_circle absent du body)
   const handleToggleCircleMember = async (c: any) => {
@@ -129,9 +142,13 @@ export function registerVibeCircleRoutes(app: Hono, registerMulti: RegisterMulti
       await ensureCircleTable().catch(() => {});
       const sql = getDb();
       const targetId = await resolveTargetId(sql, c);
-      if (targetId === null) return c.json({ error: "Utilisateur introuvable." }, 404);
+      if (targetId === null)
+        return c.json({ error: "Utilisateur introuvable." }, 404);
       if (targetId === currentUserId) {
-        return c.json({ error: "Impossible de s'ajouter soi-même à son cercle." }, 400);
+        return c.json(
+          { error: "Impossible de s'ajouter soi-même à son cercle." },
+          400
+        );
       }
 
       const existing = await sql`
@@ -140,13 +157,23 @@ export function registerVibeCircleRoutes(app: Hono, registerMulti: RegisterMulti
         LIMIT 1
       `;
 
-      const body = await c.req.json().catch(() => ({} as any));
-      const inCircle = body.in_circle === undefined ? existing.length === 0 : Boolean(body.in_circle);
+      const body = await c.req.json().catch(() => ({}) as any);
+      const inCircle =
+        body.in_circle === undefined
+          ? existing.length === 0
+          : Boolean(body.in_circle);
 
       if (inCircle) {
         // Blocage (dans un sens ou l'autre) : interdit d'ajouter au cercle
         if (await isBlockEitherWay(currentUserId, targetId)) {
-          return c.json({ error: "Impossible d'ajouter ce compte à votre cercle : un blocage est actif.", blocked: true }, 403);
+          return c.json(
+            {
+              blocked: true,
+              error:
+                "Impossible d'ajouter ce compte à votre cercle : un blocage est actif.",
+            },
+            403
+          );
         }
         await sql`
           INSERT INTO circle_members (user_id, member_user_id)
@@ -160,16 +187,20 @@ export function registerVibeCircleRoutes(app: Hono, registerMulti: RegisterMulti
         `;
       }
 
-      return c.json({ success: true, in_circle: inCircle });
+      return c.json({ in_circle: inCircle, success: true });
     } catch (err: any) {
       console.error("[Toggle Circle Member Error]:", err);
       return c.json({ error: "Erreur lors de la mise à jour du cercle." }, 500);
     }
   };
 
-  registerMulti("post", [
-    "/api/vibe/users/:username/circle",
-    "/vibe/users/:username/circle",
-    "/v1/users/:username/circle",
-  ], handleToggleCircleMember);
+  registerMulti(
+    "post",
+    [
+      "/api/vibe/users/:username/circle",
+      "/vibe/users/:username/circle",
+      "/v1/users/:username/circle",
+    ],
+    handleToggleCircleMember
+  );
 }

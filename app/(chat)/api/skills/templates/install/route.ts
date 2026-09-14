@@ -1,19 +1,17 @@
-// Installation d'un modèle de Skill statique (lib/skill-templates) : crée le
-// skill via la couche d'accès existante (createSkill) avec les instructions,
-// outils et liaisons MCP définis par le template.
+// Installation d'un modèle de Skill statique (lib/skill-templates).
+// Toute la logique vit dans `lib/skill-templates/install.ts`, partagée avec
+// `/api/skills/templates` : application réelle du forfait, idempotence par
+// (utilisateur, modèle), résolution des serveurs MCP installés et vérification
+// en base avant de répondre.
 
 import { z } from "zod";
 import { errorResponse } from "@/lib/api/error-response";
 import { requireUser, unauthorizedResponse } from "@/lib/auth/require-user";
-import { getSkillTemplate } from "@/lib/skill-templates/catalog";
+import { installSkillTemplate } from "@/lib/skill-templates/install";
 
 export async function POST(request: Request) {
   const session = await requireUser();
   if (!session) {
-    return errorResponse("auth_required");
-  }
-  const { userId } = session;
-  if (!userId) {
     return unauthorizedResponse();
   }
 
@@ -25,32 +23,23 @@ export async function POST(request: Request) {
     });
   }
 
-  const template = getSkillTemplate(parsed.data.templateId);
-  if (!template) {
-    return errorResponse("not_found", {
-      message: "Modèle de skill introuvable.",
-    });
-  }
-
-  const { createSkill } = await import("@/lib/db/queries");
-  const created = await createSkill({
-    color: template.color,
-    description: template.description,
-    icon: template.icon.name.toLowerCase(),
-    instructions: template.instructions,
-    mcpServerIds: [],
-    name: template.name,
-    parameters: template.parameters,
-    tags: template.tags,
-    tools: template.tools,
-    userId,
+  const result = await installSkillTemplate({
+    templateId: parsed.data.templateId,
+    tier: session.user.tier,
+    userId: session.userId,
   });
+
+  if (!result.ok) {
+    return errorResponse(result.code, { message: result.message });
+  }
 
   return Response.json(
     {
-      message: `Skill "${template.name}" installé`,
-      skill: created,
+      alreadyInstalled: result.alreadyInstalled,
+      message: result.message,
+      skill: result.skill,
+      unresolvedMcpServerNames: result.unresolvedMcpServerNames,
     },
-    { status: 201 }
+    { status: result.alreadyInstalled ? 200 : 201 }
   );
 }

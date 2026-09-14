@@ -9,24 +9,24 @@
  */
 
 import type { Hono } from "npm:hono@4";
-import { extractToken, getDb, verifyToken, getWeekData } from "./config.ts";
+import { extractToken, getDb, getWeekData, verifyToken } from "./config.ts";
 import type { RegisterMultiFn } from "./vibe-common.ts";
-import { MAIAgentFleet, SENSITIVE_TOOLS } from "./vibe-mai-fleet.ts";
-import { TOOL_EXECUTORS, isToolEnabledForUser } from "./vibe-tools.ts";
 import {
-  ensureMAIConversations,
-  getOrCreateConversation,
-  resolveOwnedConversation,
-  maybeAutoTitleConversation,
-  saveMAIMessage,
-  makeToolCallRecord,
-  detectTool,
-  getUserAutoApprove,
-  formatToolReply,
   buildPostContext,
+  detectTool,
+  ensureMAIConversations,
+  formatToolReply,
   getOpenRouterKey,
+  getOrCreateConversation,
+  getUserAutoApprove,
+  makeToolCallRecord,
+  maybeAutoTitleConversation,
+  resolveOwnedConversation,
+  saveMAIMessage,
   VISION_CAPABLE_MODELS,
 } from "./vibe-mai-core.ts";
+import { MAIAgentFleet, SENSITIVE_TOOLS } from "./vibe-mai-fleet.ts";
+import { isToolEnabledForUser, TOOL_EXECUTORS } from "./vibe-tools.ts";
 
 /**
  * Réponse mAI à la commande /mai en commentaire : génération à partir du
@@ -53,28 +53,34 @@ export async function generateMAICommentAnswer(
     const userText = `${opts.question}\n\n${context.text}`;
 
     let answer: string | null = null;
-    for (const candidate of ["poolside/laguna-xs-2.1:free", "nvidia/nemotron-3.5-lightning:free"]) {
+    for (const candidate of [
+      "poolside/laguna-xs-2.1:free",
+      "nvidia/nemotron-3.5-lightning:free",
+    ]) {
       try {
         const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 20000);
+        const timeout = setTimeout(() => controller.abort(), 20_000);
         try {
-          const aiRes = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${openRouterApiKey}`,
-              "Content-Type": "application/json",
-              "HTTP-Referer": "https://mai.val.run",
-              "X-Title": "mAI Social Assistant",
-            },
-            body: JSON.stringify({
-              model: candidate,
-              messages: [
-                { role: "system", content: systemContent },
-                { role: "user", content: userText },
-              ],
-            }),
-            signal: controller.signal,
-          });
+          const aiRes = await fetch(
+            "https://openrouter.ai/api/v1/chat/completions",
+            {
+              body: JSON.stringify({
+                messages: [
+                  { content: systemContent, role: "system" },
+                  { content: userText, role: "user" },
+                ],
+                model: candidate,
+              }),
+              headers: {
+                Authorization: `Bearer ${openRouterApiKey}`,
+                "Content-Type": "application/json",
+                "HTTP-Referer": "https://mai.val.run",
+                "X-Title": "mAI Social Assistant",
+              },
+              method: "POST",
+              signal: controller.signal,
+            }
+          );
           if (aiRes.ok) {
             const aiData = await aiRes.json();
             const textOutput = aiData.choices?.[0]?.message?.content;
@@ -87,7 +93,10 @@ export async function generateMAICommentAnswer(
           clearTimeout(timeout);
         }
       } catch (e) {
-        console.warn(`[mAI /mai] Erreur sur ${candidate}, essai du suivant...`, e);
+        console.warn(
+          `[mAI /mai] Erreur sur ${candidate}, essai du suivant...`,
+          e
+        );
       }
     }
     if (!answer) return null;
@@ -110,7 +119,10 @@ export async function generateMAICommentAnswer(
   }
 }
 
-export function registerVibeMAIChatRoutes(app: Hono, registerMulti: RegisterMultiFn) {
+export function registerVibeMAIChatRoutes(
+  app: Hono,
+  registerMulti: RegisterMultiFn
+) {
   // 1. mAI CHAT & TOOL EXECUTION
   const handleMAIChat = async (c: any) => {
     try {
@@ -119,35 +131,58 @@ export function registerVibeMAIChatRoutes(app: Hono, registerMulti: RegisterMult
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
 
-      const { message, execute_tool, model, context, conversation_id } = await c.req.json();
-      if (!message || !message.trim()) return c.json({ error: "Message requis." }, 400);
+      const { message, execute_tool, model, context, conversation_id } =
+        await c.req.json();
+      if (!message || !message.trim())
+        return c.json({ error: "Message requis." }, 400);
 
       // Modèle demandé par le client (sélecteur mAI), sinon réglage utilisateur
-      const effectiveModel = model || (await MAIAgentFleet.getUserDefaultModel(userId));
+      const effectiveModel =
+        model || (await MAIAgentFleet.getUserDefaultModel(userId));
 
       const sql = getDb();
-      const userRows = await sql`SELECT username, tier FROM users WHERE id = ${userId} LIMIT 1`;
+      const userRows =
+        await sql`SELECT username, tier FROM users WHERE id = ${userId} LIMIT 1`;
       const username = userRows[0]?.username || "Ami";
 
       // ── Conversation persistée : contexte complet pour chaque message ──
       await ensureMAIConversations();
-      const requestedConv = await resolveOwnedConversation(sql, userId, conversation_id);
-      if (requestedConv.invalid) return c.json({ error: "Conversation introuvable." }, 404);
-      const conversationId = requestedConv.id || await getOrCreateConversation(sql, userId);
+      const requestedConv = await resolveOwnedConversation(
+        sql,
+        userId,
+        conversation_id
+      );
+      if (requestedConv.invalid)
+        return c.json({ error: "Conversation introuvable." }, 404);
+      const conversationId =
+        requestedConv.id || (await getOrCreateConversation(sql, userId));
       let savedUser: any = null;
       if (conversationId) {
-        savedUser = await saveMAIMessage(sql, conversationId, "user", String(message).trim());
+        savedUser = await saveMAIMessage(
+          sql,
+          conversationId,
+          "user",
+          String(message).trim()
+        );
         // Titre automatique de la conversation au premier message utilisateur
         try {
           const cnt = await sql`
             SELECT COUNT(*) AS n FROM mai_messages
             WHERE conversation_id = ${conversationId}::uuid AND sender_role = 'user'
           `;
-          if (Number(cnt[0]?.n || 0) === 1) await maybeAutoTitleConversation(sql, conversationId, String(message));
+          if (Number(cnt[0]?.n || 0) === 1)
+            await maybeAutoTitleConversation(
+              sql,
+              conversationId,
+              String(message)
+            );
         } catch {}
       }
       // Historique récent (20 derniers échanges, sans le message courant)
-      let historyMessages: Array<{ role: "user" | "assistant"; content: string }> = [];
+      let historyMessages: Array<{
+        role: "user" | "assistant";
+        content: string;
+      }> = [];
       if (conversationId) {
         try {
           const historyRows = await sql`
@@ -161,8 +196,8 @@ export function registerVibeMAIChatRoutes(app: Hono, registerMulti: RegisterMult
             .slice(1) // le message courant vient d'être inséré
             .reverse()
             .map((r: any) => ({
-              role: r.sender_role === "assistant" ? "assistant" : "user",
               content: String(r.content).slice(0, 4000),
+              role: r.sender_role === "assistant" ? "assistant" : "user",
             }));
         } catch (historyErr) {
           console.warn("[vibe-mai] Historique non chargé:", historyErr);
@@ -183,9 +218,16 @@ export function registerVibeMAIChatRoutes(app: Hono, registerMulti: RegisterMult
       // Personnalisation du contexte (opt-in granulaire via user_settings)
       let personalContextBlock = "";
       try {
-        const ctxRows = await sql`SELECT mai_context_posts, mai_context_dms, mai_context_books FROM user_settings WHERE user_id = ${userId} LIMIT 1`.catch(() => []);
+        const ctxRows =
+          await sql`SELECT mai_context_posts, mai_context_dms, mai_context_books FROM user_settings WHERE user_id = ${userId} LIMIT 1`.catch(
+            () => []
+          );
         const flags = ctxRows[0] || {};
-        const trunc = (s: any, n: number) => String(s || "").replace(/\s+/g, " ").trim().slice(0, n);
+        const trunc = (s: any, n: number) =>
+          String(s || "")
+            .replace(/\s+/g, " ")
+            .trim()
+            .slice(0, n);
         if (flags.mai_context_posts) {
           const recentPosts = await sql`
             SELECT content, published_at FROM posts
@@ -193,12 +235,18 @@ export function registerVibeMAIChatRoutes(app: Hono, registerMulti: RegisterMult
             ORDER BY published_at DESC LIMIT 20
           `.catch(() => []);
           if (recentPosts.length > 0) {
-            const list = recentPosts.map((p: any, i: number) => `${i + 1}. « ${trunc(p.content, 500)} »`).join("\n");
+            const list = recentPosts
+              .map(
+                (p: any, i: number) => `${i + 1}. « ${trunc(p.content, 500)} »`
+              )
+              .join("\n");
             personalContextBlock += `\n\nContexte : voici les publications récentes de l'utilisateur :\n${list}`;
           }
         }
         if (flags.mai_context_dms) {
-          console.warn(`[vibe-mai] Contexte DM inclus pour user ${userId} (opt-in mai_context_dms=TRUE) — données confidentielles.`);
+          console.warn(
+            `[vibe-mai] Contexte DM inclus pour user ${userId} (opt-in mai_context_dms=TRUE) — données confidentielles.`
+          );
           const recentDMs = await sql`
             SELECT content, created_at FROM direct_messages
             WHERE (sender_id = ${userId} OR recipient_id = ${userId})
@@ -206,14 +254,22 @@ export function registerVibeMAIChatRoutes(app: Hono, registerMulti: RegisterMult
             ORDER BY created_at DESC LIMIT 10
           `.catch(() => []);
           if (recentDMs.length > 0) {
-            const excerpt = recentDMs.map((m: any) => `— « ${trunc(m.content, 200)} »`).join("\n").slice(0, 2000);
+            const excerpt = recentDMs
+              .map((m: any) => `— « ${trunc(m.content, 200)} »`)
+              .join("\n")
+              .slice(0, 2000);
             personalContextBlock += `\n\nContexte : extraits récents des messages privés de l'utilisateur (confidentiel, ne pas citer verbatim) :\n${excerpt}`;
           }
         }
         if (flags.mai_context_books) {
-          const books = await sql`SELECT id, title FROM vibe_books WHERE user_id = ${userId} ORDER BY created_at ASC LIMIT 10`.catch(() => []);
+          const books =
+            await sql`SELECT id, title FROM vibe_books WHERE user_id = ${userId} ORDER BY created_at ASC LIMIT 10`.catch(
+              () => []
+            );
           if (books.length > 0) {
-            const titles = books.map((b: any) => `— ${trunc(b.title, 80)}`).join("\n");
+            const titles = books
+              .map((b: any) => `— ${trunc(b.title, 80)}`)
+              .join("\n");
             personalContextBlock += `\n\nContexte : Vibe Books de l'utilisateur :\n${titles}`;
             try {
               const bookIds = books.map((b: any) => b.id);
@@ -224,14 +280,20 @@ export function registerVibeMAIChatRoutes(app: Hono, registerMulti: RegisterMult
                 LIMIT 20
               `.catch(() => []);
               if (items.length > 0) {
-                const itemList = items.map((it: any) => `— « ${trunc(it.content, 200)} »`).join("\n").slice(0, 2000);
+                const itemList = items
+                  .map((it: any) => `— « ${trunc(it.content, 200)} »`)
+                  .join("\n")
+                  .slice(0, 2000);
                 personalContextBlock += `\nPublications épinglées dans ces livres :\n${itemList}`;
               }
             } catch {}
           }
         }
       } catch (ctxErr) {
-        console.warn("[vibe-mai] Contexte personnalisé ignoré:", (ctxErr as any)?.message);
+        console.warn(
+          "[vibe-mai] Contexte personnalisé ignoré:",
+          (ctxErr as any)?.message
+        );
       }
 
       let toolToRun: string | null = execute_tool?.name || null;
@@ -249,17 +311,29 @@ export function registerVibeMAIChatRoutes(app: Hono, registerMulti: RegisterMult
       // Un outil désactivé n'est ni détecté ni exécutable pour cet utilisateur.
       if (toolToRun && !(await isToolEnabledForUser(userId, toolToRun))) {
         const reply = `🚫 L'outil « ${toolToRun} » est désactivé dans vos Paramètres → Outils mAI. Activez-le pour l'utiliser.`;
-        const record = makeToolCallRecord({ name: toolToRun, args: toolArgs, status: "disabled", model: effectiveModel });
+        const record = makeToolCallRecord({
+          args: toolArgs,
+          model: effectiveModel,
+          name: toolToRun,
+          status: "disabled",
+        });
         let savedAssistant: any = null;
-        if (conversationId) savedAssistant = await saveMAIMessage(sql, conversationId, "assistant", reply, { toolCalls: [record] });
+        if (conversationId)
+          savedAssistant = await saveMAIMessage(
+            sql,
+            conversationId,
+            "assistant",
+            reply,
+            { toolCalls: [record] }
+          );
         return c.json({
-          reply,
-          toolExecuted: null,
-          toolCalls: [record],
-          modelUsed: effectiveModel,
-          conversation_id: conversationId || null,
-          user_message_id: savedUser?.id || null,
           assistant_message_id: savedAssistant?.id || null,
+          conversation_id: conversationId || null,
+          modelUsed: effectiveModel,
+          reply,
+          toolCalls: [record],
+          toolExecuted: null,
+          user_message_id: savedUser?.id || null,
         });
       }
 
@@ -270,19 +344,31 @@ export function registerVibeMAIChatRoutes(app: Hono, registerMulti: RegisterMult
         const autoApprove = await getUserAutoApprove(sql, userId);
         if (!autoApprove) {
           const reply = `🔐 **Approbation requise** : mAI souhaite exécuter l'outil « ${toolToRun} » sur votre compte. Confirmez ou refusez dans le panneau ci-dessus.`;
-          const record = makeToolCallRecord({ name: toolToRun, args: toolArgs, status: "pending_approval", model: effectiveModel });
+          const record = makeToolCallRecord({
+            args: toolArgs,
+            model: effectiveModel,
+            name: toolToRun,
+            status: "pending_approval",
+          });
           let savedAssistant: any = null;
-          if (conversationId) savedAssistant = await saveMAIMessage(sql, conversationId, "assistant", reply, { toolCalls: [record] });
+          if (conversationId)
+            savedAssistant = await saveMAIMessage(
+              sql,
+              conversationId,
+              "assistant",
+              reply,
+              { toolCalls: [record] }
+            );
           return c.json({
+            assistant_message_id: savedAssistant?.id || null,
+            conversation_id: conversationId || null,
+            modelUsed: effectiveModel,
+            pendingTool: { args: toolArgs, name: toolToRun },
             reply,
             requiresApproval: true,
-            pendingTool: { name: toolToRun, args: toolArgs },
-            toolExecuted: null,
             toolCalls: [record],
-            modelUsed: effectiveModel,
-            conversation_id: conversationId || null,
+            toolExecuted: null,
             user_message_id: savedUser?.id || null,
-            assistant_message_id: savedAssistant?.id || null,
           });
         }
       }
@@ -311,7 +397,13 @@ export function registerVibeMAIChatRoutes(app: Hono, registerMulti: RegisterMult
         const openRouterApiKey = await getOpenRouterKey(sql, userId);
 
         const resolveModel = (m: string) => {
-          if (!m || m === "default" || m === "mai-1.5-light" || m === "openrouter/free") return "poolside/laguna-xs-2.1:free";
+          if (
+            !m ||
+            m === "default" ||
+            m === "mai-1.5-light" ||
+            m === "openrouter/free"
+          )
+            return "poolside/laguna-xs-2.1:free";
           if (m === "mai-1.5-apex") return "openai/gpt-4o";
           return m;
         };
@@ -324,45 +416,55 @@ export function registerVibeMAIChatRoutes(app: Hono, registerMulti: RegisterMult
         }
         const modelsToTry = [primaryModel];
         if (hasImages) {
-          if (!modelsToTry.includes("google/gemini-2.5-flash")) modelsToTry.push("google/gemini-2.5-flash");
+          if (!modelsToTry.includes("google/gemini-2.5-flash"))
+            modelsToTry.push("google/gemini-2.5-flash");
         } else {
-          if (!modelsToTry.includes("poolside/laguna-xs-2.1:free")) modelsToTry.push("poolside/laguna-xs-2.1:free");
-          if (!modelsToTry.includes("nvidia/nemotron-3.5-lightning:free")) modelsToTry.push("nvidia/nemotron-3.5-lightning:free");
+          if (!modelsToTry.includes("poolside/laguna-xs-2.1:free"))
+            modelsToTry.push("poolside/laguna-xs-2.1:free");
+          if (!modelsToTry.includes("nvidia/nemotron-3.5-lightning:free"))
+            modelsToTry.push("nvidia/nemotron-3.5-lightning:free");
         }
 
         const userText = `${message.trim()}${postContextBlock}${personalContextBlock}`;
         const userContent: any = hasImages
-          ? [{ type: "text", text: userText }, ...postImageParts]
+          ? [{ text: userText, type: "text" }, ...postImageParts]
           : userText;
         const systemContent =
           "Tu es mAI, l'intelligence artificielle intégrée au réseau social Vibe. Tu es concis, créatif, pertinent et tu réponds en français avec des émojis." +
           " Tu connais l'historique de la conversation en cours : apporte ta réponse en continuité naturelle avec les échanges précédents, sans redemander des informations déjà données." +
-          (hasImages ? " Des images sont jointes à la publication mentionnée : analyse-les directement." : "") +
-          (postContextBlock ? " Une publication Vibe est jointe à la fin du message : base ta réponse sur son contenu, ses statistiques et ses commentaires." : "");
+          (hasImages
+            ? " Des images sont jointes à la publication mentionnée : analyse-les directement."
+            : "") +
+          (postContextBlock
+            ? " Une publication Vibe est jointe à la fin du message : base ta réponse sur son contenu, ses statistiques et ses commentaires."
+            : "");
 
         if (openRouterApiKey) {
           for (const candidate of modelsToTry) {
             try {
-              const aiRes = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-                method: "POST",
-                headers: {
-                  Authorization: `Bearer ${openRouterApiKey}`,
-                  "Content-Type": "application/json",
-                  "HTTP-Referer": "https://mai.val.run",
-                  "X-Title": "mAI Social Assistant",
-                },
-                body: JSON.stringify({
-                  model: candidate,
-                  messages: [
-                    {
-                      role: "system",
-                      content: systemContent,
-                    },
-                    ...historyMessages,
-                    { role: "user", content: userContent },
-                  ],
-                }),
-              });
+              const aiRes = await fetch(
+                "https://openrouter.ai/api/v1/chat/completions",
+                {
+                  body: JSON.stringify({
+                    messages: [
+                      {
+                        content: systemContent,
+                        role: "system",
+                      },
+                      ...historyMessages,
+                      { content: userContent, role: "user" },
+                    ],
+                    model: candidate,
+                  }),
+                  headers: {
+                    Authorization: `Bearer ${openRouterApiKey}`,
+                    "Content-Type": "application/json",
+                    "HTTP-Referer": "https://mai.val.run",
+                    "X-Title": "mAI Social Assistant",
+                  },
+                  method: "POST",
+                }
+              );
 
               if (aiRes.ok) {
                 const aiData = await aiRes.json();
@@ -373,7 +475,10 @@ export function registerVibeMAIChatRoutes(app: Hono, registerMulti: RegisterMult
                 }
               }
             } catch (e) {
-              console.warn(`[mAI Chat] Erreur sur ${candidate}, essai du suivant...`, e);
+              console.warn(
+                `[mAI Chat] Erreur sur ${candidate}, essai du suivant...`,
+                e
+              );
             }
           }
         }
@@ -385,28 +490,41 @@ export function registerVibeMAIChatRoutes(app: Hono, registerMulti: RegisterMult
 
       // Persistance de la réponse mAI (avec les outils utilisés — chips du chat)
       const toolCallRecords = toolToRun
-        ? [makeToolCallRecord({
-            name: toolToRun,
-            args: toolArgs,
-            status: toolResult?.success ? "executed" : "error",
-            result: toolResult,
-            error: toolResult && !toolResult.success ? (toolResult.error || "Erreur d'exécution") : null,
-            model: effectiveModel,
-          })]
+        ? [
+            makeToolCallRecord({
+              args: toolArgs,
+              error:
+                toolResult && !toolResult.success
+                  ? toolResult.error || "Erreur d'exécution"
+                  : null,
+              model: effectiveModel,
+              name: toolToRun,
+              result: toolResult,
+              status: toolResult?.success ? "executed" : "error",
+            }),
+          ]
         : [];
       let savedAssistant: any = null;
       if (conversationId) {
-        savedAssistant = await saveMAIMessage(sql, conversationId, "assistant", reply, { toolCalls: toolCallRecords });
+        savedAssistant = await saveMAIMessage(
+          sql,
+          conversationId,
+          "assistant",
+          reply,
+          { toolCalls: toolCallRecords }
+        );
       }
 
       return c.json({
-        reply,
-        toolExecuted: toolToRun ? { name: toolToRun, result: toolResult } : null,
-        toolCalls: toolCallRecords,
-        modelUsed: effectiveModel,
-        conversation_id: conversationId || null,
-        user_message_id: savedUser?.id || null,
         assistant_message_id: savedAssistant?.id || null,
+        conversation_id: conversationId || null,
+        modelUsed: effectiveModel,
+        reply,
+        toolCalls: toolCallRecords,
+        toolExecuted: toolToRun
+          ? { name: toolToRun, result: toolResult }
+          : null,
+        user_message_id: savedUser?.id || null,
       });
     } catch (err: any) {
       console.error("[Vibe API] mAI Chat Error:", err);
@@ -414,5 +532,9 @@ export function registerVibeMAIChatRoutes(app: Hono, registerMulti: RegisterMult
     }
   };
 
-  registerMulti("post", ["/api/vibe/mai/chat", "/vibe/mai/chat", "/v1/mai/chat"], handleMAIChat);
+  registerMulti(
+    "post",
+    ["/api/vibe/mai/chat", "/vibe/mai/chat", "/v1/mai/chat"],
+    handleMAIChat
+  );
 }

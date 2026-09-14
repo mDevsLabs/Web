@@ -10,7 +10,10 @@ import type { Hono } from "npm:hono@4";
 import { extractToken, getDb, verifyToken } from "./config.ts";
 import type { RegisterMultiFn } from "./vibe-common.ts";
 
-export function registerDMNotificationRoutes(app: Hono, registerMulti: RegisterMultiFn) {
+export function registerDMNotificationRoutes(
+  app: Hono,
+  registerMulti: RegisterMultiFn
+) {
   // 5. NOTIFICATIONS
   const handleNotifications = async (c: any) => {
     try {
@@ -44,7 +47,11 @@ export function registerDMNotificationRoutes(app: Hono, registerMulti: RegisterM
     }
   };
 
-  registerMulti("get", ["/api/vibe/notifications", "/vibe/notifications", "/v1/notifications"], handleNotifications);
+  registerMulti(
+    "get",
+    ["/api/vibe/notifications", "/vibe/notifications", "/v1/notifications"],
+    handleNotifications
+  );
 
   const handleMarkNotificationsRead = async (c: any) => {
     try {
@@ -61,9 +68,16 @@ export function registerDMNotificationRoutes(app: Hono, registerMulti: RegisterM
       const rawId = c.req.param?.("id") || body?.id || body?.notification_id;
       const notifId = rawId ? String(rawId).trim() : null;
       const sql = getDb();
-      const isReadVal = body?.is_read !== undefined ? Boolean(body.is_read) : true;
+      const isReadVal =
+        body?.is_read === undefined ? true : Boolean(body.is_read);
 
-      if (notifId && notifId !== "all" && notifId !== "undefined" && notifId !== "null" && notifId !== "") {
+      if (
+        notifId &&
+        notifId !== "all" &&
+        notifId !== "undefined" &&
+        notifId !== "null" &&
+        notifId !== ""
+      ) {
         await sql`
           UPDATE notifications
           SET is_read = ${isReadVal}
@@ -76,26 +90,37 @@ export function registerDMNotificationRoutes(app: Hono, registerMulti: RegisterM
           WHERE recipient_id = ${userId}
         `;
       }
-      return c.json({ success: true, is_read: isReadVal, id: notifId });
+      return c.json({ id: notifId, is_read: isReadVal, success: true });
     } catch (err: any) {
       console.error("[vibe-dms] Error in handleMarkNotificationsRead:", err);
-      return c.json({ error: "Erreur marquage notification.", details: err?.message }, 500);
+      return c.json(
+        { details: err?.message, error: "Erreur marquage notification." },
+        500
+      );
     }
   };
 
-  registerMulti("post", [
-    "/api/vibe/notifications/read",
-    "/vibe/notifications/read",
-    "/v1/notifications/read",
-    "/v1/notifications/:id/read",
-    "/api/vibe/notifications/:id/read"
-  ], handleMarkNotificationsRead);
-  registerMulti("patch", [
-    "/api/vibe/notifications/read",
-    "/v1/notifications/read",
-    "/v1/notifications/:id/read",
-    "/api/vibe/notifications/:id/read"
-  ], handleMarkNotificationsRead);
+  registerMulti(
+    "post",
+    [
+      "/api/vibe/notifications/read",
+      "/vibe/notifications/read",
+      "/v1/notifications/read",
+      "/v1/notifications/:id/read",
+      "/api/vibe/notifications/:id/read",
+    ],
+    handleMarkNotificationsRead
+  );
+  registerMulti(
+    "patch",
+    [
+      "/api/vibe/notifications/read",
+      "/v1/notifications/read",
+      "/v1/notifications/:id/read",
+      "/api/vibe/notifications/:id/read",
+    ],
+    handleMarkNotificationsRead
+  );
 
   const handleDeleteNotification = async (c: any) => {
     try {
@@ -113,7 +138,14 @@ export function registerDMNotificationRoutes(app: Hono, registerMulti: RegisterM
       const notifId = rawId ? String(rawId).trim() : null;
       const sql = getDb();
 
-      if (notifId && notifId !== "all" && notifId !== "clear" && notifId !== "undefined" && notifId !== "null" && notifId !== "") {
+      if (
+        notifId &&
+        notifId !== "all" &&
+        notifId !== "clear" &&
+        notifId !== "undefined" &&
+        notifId !== "null" &&
+        notifId !== ""
+      ) {
         await sql`
           DELETE FROM notifications
           WHERE id::text = ${notifId} AND recipient_id = ${userId}
@@ -124,27 +156,38 @@ export function registerDMNotificationRoutes(app: Hono, registerMulti: RegisterM
           WHERE recipient_id = ${userId}
         `;
       }
-      return c.json({ success: true, deleted_id: notifId || "all" });
+      return c.json({ deleted_id: notifId || "all", success: true });
     } catch (err: any) {
       console.error("[vibe-dms] Error in handleDeleteNotification:", err);
-      return c.json({ error: "Erreur suppression notification.", details: err?.message }, 500);
+      return c.json(
+        { details: err?.message, error: "Erreur suppression notification." },
+        500
+      );
     }
   };
 
-  registerMulti("delete", [
-    "/api/vibe/notifications/:id",
-    "/v1/notifications/:id",
-    "/api/vibe/notifications",
-    "/v1/notifications"
-  ], handleDeleteNotification);
-  registerMulti("post", [
-    "/api/vibe/notifications/:id/delete",
-    "/v1/notifications/:id/delete",
-    "/api/vibe/notifications/delete",
-    "/v1/notifications/delete",
-    "/api/vibe/notifications/clear",
-    "/v1/notifications/clear"
-  ], handleDeleteNotification);
+  registerMulti(
+    "delete",
+    [
+      "/api/vibe/notifications/:id",
+      "/v1/notifications/:id",
+      "/api/vibe/notifications",
+      "/v1/notifications",
+    ],
+    handleDeleteNotification
+  );
+  registerMulti(
+    "post",
+    [
+      "/api/vibe/notifications/:id/delete",
+      "/v1/notifications/:id/delete",
+      "/api/vibe/notifications/delete",
+      "/v1/notifications/delete",
+      "/api/vibe/notifications/clear",
+      "/v1/notifications/clear",
+    ],
+    handleDeleteNotification
+  );
 
   // Compteur léger pour les badges — évite de charger toutes les notifications
   const handleUnreadCount = async (c: any) => {
@@ -169,13 +212,21 @@ export function registerDMNotificationRoutes(app: Hono, registerMulti: RegisterM
         )::int AS unread_messages
       `;
       return c.json({
-        unread_notifications: Number(notifRow?.unread_notifications || 0),
         unread_messages: Number(dmRow?.unread_messages || 0),
+        unread_notifications: Number(notifRow?.unread_notifications || 0),
       });
     } catch (err: any) {
       return c.json({ error: "Erreur." }, 500);
     }
   };
 
-  registerMulti("get", ["/api/vibe/notifications/unread_count", "/vibe/notifications/unread_count", "/v1/notifications/unread_count"], handleUnreadCount);
+  registerMulti(
+    "get",
+    [
+      "/api/vibe/notifications/unread_count",
+      "/vibe/notifications/unread_count",
+      "/v1/notifications/unread_count",
+    ],
+    handleUnreadCount
+  );
 }

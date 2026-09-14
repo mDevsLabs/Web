@@ -1,5 +1,6 @@
 import type { ZodType } from "zod";
 import type { AgentMode } from "@/lib/agent/channel";
+import type { ToolErrorCategory } from "@/lib/agent/tool-errors";
 import type { ReasoningLevel } from "@/lib/ai/registry/reasoning";
 
 // Types du domaine Agent. Aucun `any` : unions discriminées aux frontières
@@ -48,7 +49,14 @@ export type AgentStepType =
   | "artifact"
   | "message"
   | "verification"
-  | "error";
+  | "error"
+  // Demande d'information utilisateur puis réponse reçue : la timeline
+  // distingue explicitement l'attente, la réponse et la reprise.
+  | "user_input_request"
+  | "user_input_answer"
+  // Attente d'approbation : l'étape porte la décision réellement appliquée
+  // (accordée, refusée ou devenue caduque).
+  | "approval_request";
 
 export type AgentStepStatus =
   | "pending"
@@ -152,17 +160,42 @@ export type AgentSource = {
   url?: string;
 };
 
+// Effets génériques déclarés par un outil : le runtime et la timeline les
+// exploitent sans jamais connaître le nom de l'outil (aucune branche dédiée).
+export type ToolArtifactRef = {
+  documentId: string;
+  kind: string;
+  title: string;
+};
+
+export type ToolAwaitingUserRef = {
+  expiresAt: string;
+  requestId: string;
+};
+
+export type ToolOutcome = {
+  artifact?: ToolArtifactRef;
+  awaitingUser?: ToolAwaitingUserRef;
+};
+
 export type ToolSuccess = {
   data: unknown;
+  outcome?: ToolOutcome;
   sources?: AgentSource[];
   success: true;
+};
+
+type ToolFailureDetail = {
+  category?: ToolErrorCategory;
+  retryAfterMs?: number;
+  retryable?: boolean;
 };
 
 export type ToolFailure = {
   error: {
     code: string;
     message: string;
-  };
+  } & ToolFailureDetail;
   success: false;
 };
 
@@ -170,13 +203,39 @@ export type ToolResult = ToolSuccess | ToolFailure;
 
 export function toolSuccess(
   data: unknown,
-  sources?: AgentSource[]
+  sources?: AgentSource[],
+  outcome?: ToolOutcome
 ): ToolSuccess {
-  return sources ? { data, sources, success: true } : { data, success: true };
+  return {
+    data,
+    ...(outcome ? { outcome } : {}),
+    ...(sources && sources.length > 0 ? { sources } : {}),
+    success: true,
+  };
 }
 
-export function toolFailure(code: string, message: string): ToolFailure {
-  return { error: { code, message }, success: false };
+// Erreur normalisée : seuls `code`, `message`, `category`, `retryable` et
+// `retryAfterMs` franchissent la frontière (vers le modèle et l'interface).
+// Les détails internes restent côté serveur (voir AgentToolError).
+export function toolFailure(
+  code: string,
+  message: string,
+  detail: ToolFailureDetail = {}
+): ToolFailure {
+  return {
+    error: {
+      code,
+      message: message.slice(0, 400),
+      ...(detail.category === undefined ? {} : { category: detail.category }),
+      ...(detail.retryAfterMs === undefined
+        ? {}
+        : { retryAfterMs: detail.retryAfterMs }),
+      ...(detail.retryable === undefined
+        ? {}
+        : { retryable: detail.retryable }),
+    },
+    success: false,
+  };
 }
 
 export function isToolSuccess(result: ToolResult): result is ToolSuccess {
@@ -192,6 +251,9 @@ export type ToolExecutionContext = {
   sessionToken: string;
   signal?: AbortSignal;
   stepId: string;
+  // Identifiant de l'appel d'outil côté fournisseur : clé stable pour
+  // rattacher une approbation ou une réponse utilisateur au tool call exact.
+  toolCallId: string;
   toolExecutionId: string;
   userEmail: string;
   userId: string;
@@ -210,15 +272,23 @@ export type AgentToolBaseContext = {
 };
 
 // Contrat entre le runtime (qui persiste et diffuse) et l'adaptateur provider
-// (qui exécute). Le runtime décide comment matérialiser un appel d'outil.
+// (qui exécute). Le contrôleur matérialise chaque appel : step, ligne
+// ToolExecution, permissions, retries bornés, événements. Le provider ne fait
+// qu'appeler `runToolCall` et exposer la prédication d'approbation.
 export type ToolCallController = {
-  beginToolCall: (params: {
+  // Appelée par le SDK avant toute exécution (needsApproval) : crée ou relit une
+  // ApprovalRequest persistante et décide s'il faut suspendre le run.
+  onApprovalRequired: (params: {
+    input: unknown;
+    toolId: string;
+    toolCallId: string;
+  }) => Promise<boolean>;
+  runToolCall: (params: {
+    execute: (context: ToolExecutionContext) => Promise<ToolResult>;
     input: unknown;
     tool: RegisteredAgentTool;
-  }) => Promise<{
-    context: ToolExecutionContext;
-    finishToolCall: (result: ToolResult) => Promise<void>;
-  }>;
+    toolCallId: string;
+  }) => Promise<ToolResult>;
 };
 
 export type AgentToolDefinition<Input> = {
@@ -234,6 +304,9 @@ export type AgentToolDefinition<Input> = {
   permissions: AgentToolPermissions;
   schema: ZodType<Input>;
   source?: AgentToolSource;
+  // Résumé humain affiché dans la timeline. Déclaré par l'outil lui-même :
+  // aucune couche générique n'a besoin de connaître son identifiant.
+  summarize?: (data: unknown) => string;
 };
 
 export type AgentTool<Input = unknown> = AgentToolDefinition<Input> & {
@@ -255,10 +328,14 @@ export type RegisteredAgentTool = Omit<
 };
 
 export type AgentExecutionBudget = {
+  // Plafond TECHNIQUE d'une invocation (tous forfaits).
   maxDurationMs: number;
   maxRetries: number;
   maxSteps: number;
   maxToolCalls: number;
+  // Limite PRODUIT cumulée du run (Plus 1 h, Pro 3 h, Max null = aucune).
+  // Appliquée sur le temps d'activité checkpointé, pas sur une invocation.
+  productLimitMs?: number | null;
 };
 
 export type AgentPlanItem = {

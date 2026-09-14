@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Settings2Icon } from "lucide-react";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import type { AgentComposerSubmit } from "@/components/agent/agent-composer";
 import { AgentComposer } from "@/components/agent/agent-composer";
 import { AgentChannelNotice } from "@/components/agent/alpha-badge";
@@ -20,6 +21,7 @@ export function AgentHome({
   capabilities,
   flags,
   isRunning,
+  modeSwitcher,
   modelId,
   models,
   onModelChange,
@@ -33,6 +35,11 @@ export function AgentHome({
   capabilities: ModelCapabilities;
   flags: AgentFlags;
   isRunning: boolean;
+  /**
+   * Sélecteur Chat | Agent (HomeModeSwitcher), rendu en tête de la pile
+   * centrée : même contrôle et même position que sur l'accueil Chat.
+   */
+  modeSwitcher?: ReactNode;
   modelId: string;
   models: SharedModel[];
   onModelChange: (id: string) => void;
@@ -45,6 +52,11 @@ export function AgentHome({
 }) {
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center gap-6 px-3 py-8">
+      {/* Premier élément de la pile : l'écart avec le titre vaut gap-6 (24 px)
+          + mb-2 (8 px) = 32 px, soit exactement la marge utilisée par la pile
+          d'accueil du Chat (mb-8). */}
+      {modeSwitcher ? <div className="mb-2">{modeSwitcher}</div> : null}
+
       <motion.h1
         animate={{ opacity: 1, y: 0 }}
         className="text-center text-2xl font-semibold tracking-tight text-balance sm:text-3xl"

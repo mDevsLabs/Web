@@ -1,5 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { NextResponse } from "next/server";
+import { ensureAgentNotificationsInstalled } from "@/lib/agent/notifications/install";
 import { runSchedulerTick } from "@/lib/agent/scheduler/engine";
 import { errorResponse } from "@/lib/api/error-response";
 
@@ -38,6 +39,7 @@ async function handleTick(request: Request) {
   }
 
   try {
+    ensureAgentNotificationsInstalled();
     const result = await runSchedulerTick({
       now: new Date(),
       workerId: `cron-${randomUUID().slice(0, 8)}`,

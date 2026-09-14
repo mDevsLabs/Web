@@ -1,3 +1,4 @@
+import { applyIncomingApprovalDecisions } from "@/lib/agent/approvals/incoming";
 import { resolveAgentExecutionBudget } from "@/lib/agent/budget";
 import { buildAgentContext } from "@/lib/agent/context/build";
 import { collectAttachments } from "@/lib/agent/context/files";
@@ -9,28 +10,34 @@ import {
   checkAgentModelAccess,
   normalizeAgentReasoningLevel,
 } from "@/lib/agent/gate";
+import { ensureAgentNotificationsInstalled } from "@/lib/agent/notifications/install";
 import { generateTaskPlan, shouldGeneratePlan } from "@/lib/agent/plan";
 import {
   createAgentStream,
   createAgentStreamResponse,
 } from "@/lib/agent/runtime";
 import { loadAgentSettings, toToolCategories } from "@/lib/agent/settings";
+import { listMcpAgentTools } from "@/lib/agent/tools/adapters/mcp";
 import { applyToolPermissions } from "@/lib/agent/tools/permissions";
 import { listRegisteredAgentTools } from "@/lib/agent/tools/registry";
 import { selectAgentTools } from "@/lib/agent/tools/selector";
 import { familyForCategory } from "@/lib/agent/tools/selector/families";
 import type { RegisteredAgentTool, ToolPermission } from "@/lib/agent/types";
+import { injectUserInputAnswers } from "@/lib/agent/user-input/inject";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { getModelEntry, pickDefaultAgentModel } from "@/lib/ai/registry";
 import { errorResponse } from "@/lib/api/error-response";
 import { authenticateChatRequest, enforceChatRateLimit } from "@/lib/chat/auth";
 import { buildChatContext } from "@/lib/chat/context";
+import { loadMcpContext } from "@/lib/chat/mcp";
 import {
   createAgentRun,
+  createAgentStep,
   getActiveAgentRunByChatId,
   updateAgentRunStatus,
 } from "@/lib/db/agent-queries";
+import { getAnsweredAgentUserInputsForRun } from "@/lib/db/agent-user-input-queries";
 import { ChatbotError } from "@/lib/errors";
 import type { ChatMessage } from "@/lib/types";
 import { getTextFromMessage } from "@/lib/utils";
@@ -78,6 +85,10 @@ export async function POST(request: Request) {
   }
 
   try {
+    // Les notifications Agent (attente de réponse, approbation, fin de run)
+    // sont branchées ici, une seule fois, avant tout run.
+    ensureAgentNotificationsInstalled();
+
     // 1. Authentification et limitation de débit, identiques au Chat. Le tier
     // vient de users.tier (source de vérité) : un compte Plus doit passer ici
     // même si son JWT porte encore un ancien forfait.
@@ -212,7 +223,29 @@ export async function POST(request: Request) {
 
     // 9. Outils : sélection puis permissions. Sur une reprise, on réutilise
     // exactement les outils du run pour ne pas invalider un appel en attente.
-    const baselineTools = listRegisteredAgentTools();
+    // Outils MCP : les serveurs installés et activés deviennent des outils
+    // réellement exécutables (source "mcp"), sous le drapeau agent.mcp.
+    const baselineTools = flags["agent.mcp"]
+      ? [
+          ...listRegisteredAgentTools(),
+          ...(await loadMcpContext({
+            chatId: ctx.id,
+            isToolApprovalFlow: false,
+            messages: null,
+            requestedTools: [],
+            skillMcpServerIds: [],
+            skillMcpToolFilter: null,
+            userId: ctx.userId,
+          })
+            .then((mcp) =>
+              listMcpAgentTools({
+                servers: mcp.userMcpServers,
+                userId: ctx.userId,
+              })
+            )
+            .catch(() => [])),
+        ]
+      : listRegisteredAgentTools();
     const continuationSnapshot = activeRun
       ? (activeRun.toolPolicySnapshot as Record<string, ToolPermission>)
       : null;
@@ -299,7 +332,45 @@ export async function POST(request: Request) {
       await updateAgentRunStatus({ id: activeRun.id, status: "running" });
     }
 
-    // 12. Contexte projet ciblé puis construction du contexte envoyé au modèle.
+    // 12a. Décisions d'approbation portées par les messages entrants : elles
+    // sont appliquées À LA DEMANDE PERSISTÉE du run (rattachée au ToolCall
+    // exact) avant toute exécution. `needsApproval` relira ensuite la base : un
+    // accord sans décision persistée n'exécute rien, et une décision refusée
+    // reste définitive.
+    if (activeRun) {
+      await applyIncomingApprovalDecisions({
+        messages: ctx.uiMessages,
+        runId: activeRun.id,
+      });
+    }
+
+    // 12b. Reprise après réponse : la réponse enregistrée (relue en base, jamais
+    // depuis ce que transmet le client) remplace la sortie de la question dans
+    // le contexte du modèle. Le run reste le MÊME : aucun nouveau run, aucune
+    // nouvelle conversation, les étapes déjà réalisées restent visibles.
+    const answeredUserInputs = activeRun
+      ? await getAnsweredAgentUserInputsForRun({ runId: activeRun.id })
+      : [];
+    const injectedAnswers = injectUserInputAnswers({
+      messages: ctx.modelMessages,
+      requests: answeredUserInputs,
+    });
+    if (activeRun && injectedAnswers.length > 0) {
+      await createAgentStep({
+        index: activeRun.stepCount,
+        runId: activeRun.id,
+        status: "completed",
+        summary: `${
+          injectedAnswers.length
+        } réponse${injectedAnswers.length > 1 ? "s" : ""} prise${
+          injectedAnswers.length > 1 ? "s" : ""
+        } en compte`,
+        title: "Reprise après réponse",
+        type: "message",
+      }).catch(() => {});
+    }
+
+    // 13. Contexte projet ciblé puis construction du contexte envoyé au modèle.
     const projectContext = await loadAgentProjectContext({
       projectId: ctx.effectiveProjectId ?? null,
       userEmail: ctx.userEmail,
@@ -327,7 +398,7 @@ export async function POST(request: Request) {
         : null,
     });
 
-    // 13. Flux d'exécution Agent (mêmes garanties de reprise que le Chat).
+    // 14. Flux d'exécution Agent (mêmes garanties de reprise que le Chat).
     const model = getLanguageModel(resolvedModel, {
       apiKey: ctx.userApiKey,
       sessionToken: ctx.sessionToken,
@@ -354,6 +425,9 @@ export async function POST(request: Request) {
       sessionToken: ctx.sessionToken,
       shouldRenameAfterFirst: ctx.shouldRenameAfterFirst,
       startedAt: Date.now(),
+      // Reprise : les étapes continuent là où le run s'était arrêté au lieu de
+      // repartir de l'indice 0 dans la timeline.
+      startStepIndex: activeRun?.stepCount ?? 0,
       task,
       tools: enabledTools,
       userEmail: ctx.userEmail,

@@ -1,3 +1,4 @@
+import { isNativeToolId } from "@/lib/ai/tools/ids";
 import {
   PLUGIN_CATALOG_VERSION,
   PLUGIN_CATEGORIES,
@@ -18,6 +19,22 @@ export const PLUGIN_MANIFEST_LIST: PluginManifest[] = [
 export const PLUGIN_TOOL_IDS: string[] = PLUGIN_MANIFEST_LIST.map(
   (p) => p.tool.id
 );
+
+// Ids fournis par un plugin et absents du registre natif : eux seuls peuvent
+// être retirés quand le plugin n'est pas installé/activé. Un identifiant
+// implémenté nativement n'est jamais filtré, et la validation interdit à un
+// plugin de réutiliser un tel identifiant (scripts/validate-plugins.ts).
+export const PLUGIN_ONLY_TOOL_IDS: string[] = PLUGIN_TOOL_IDS.filter(
+  (toolId) => !isNativeToolId(toolId)
+);
+
+const PLUGIN_ONLY_TOOL_ID_SET: ReadonlySet<string> = new Set(
+  PLUGIN_ONLY_TOOL_IDS
+);
+
+export function isPluginOnlyToolId(toolId: string): boolean {
+  return PLUGIN_ONLY_TOOL_ID_SET.has(toolId);
+}
 
 export function getPluginManifest(
   pluginId: string

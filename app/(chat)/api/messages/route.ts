@@ -1,5 +1,5 @@
-import { errorResponse } from "@/lib/api/error-response";
 import { chatOwnerMatches } from "@/lib/agent/channel";
+import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { getChatById, getMessagesByChatId } from "@/lib/db/queries";
 import { convertToUIMessages } from "@/lib/utils";

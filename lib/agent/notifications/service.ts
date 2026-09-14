@@ -147,7 +147,11 @@ function describeEvent(
 // réussis trop courts pour mériter une interruption.
 export function notificationForEvent(
   event: AgentBusinessEvent,
-  context: { durationMs?: number; isScheduledResult: boolean }
+  context: {
+    chatId?: string | null;
+    durationMs?: number;
+    isScheduledResult: boolean;
+  }
 ): AgentNotificationPayload | null {
   if (!NOTIFIABLE_EVENT_TYPES.includes(event.type as NotifiableEvent["type"])) {
     return null;
@@ -176,7 +180,10 @@ export function notificationForEvent(
           : "agent_run_finished";
   return {
     body: described.body,
-    link: linkFor(notifiable),
+    // Lien RÉELLEMENT ouvert : la conversation qui contient le run
+    // (/chat/<chatId>). Aucun lien vers une route page inexistante — sans
+    // chatId connu, repli sur la liste des runs de l'espace Agent.
+    link: context.chatId ? `/chat/${context.chatId}` : linkFor(notifiable),
     title:
       context.isScheduledResult && notifiable.type === "run_finished"
         ? `Tâche planifiée : ${described.title}`
@@ -186,6 +193,8 @@ export function notificationForEvent(
 }
 
 export type AgentNotificationTarget = {
+  // Conversation du run : utilisée pour un lien réellement ouvert.
+  chatId?: string | null;
   email: string;
   isScheduledResult: boolean;
   prefs: AgentNotificationPrefs;
@@ -211,6 +220,7 @@ export function installAgentNotificationListener(params: {
           return;
         }
         const notification = notificationForEvent(event, {
+          chatId: target.chatId,
           isScheduledResult: target.isScheduledResult,
         });
         if (!notification) {
@@ -232,7 +242,16 @@ export function installAgentNotificationListener(params: {
 
         // In-app persisté (table Notification) via l'application hôte : le
         // service ne dépend d'aucun provider — la persistance est injectée.
-        if (target.prefs.agentEmailEnabled) {
+        // C'est le canal par défaut : l'utilisateur retrouve l'attente même
+        // après avoir fermé l'application.
+        await persistInAppNotification({
+          payload: notification,
+          userId: target.userId,
+        }).catch(() => {});
+
+        // Email système mAI : seulement si un canal email est activé ET qu'une
+        // adresse est connue (jamais de repli sur un identifiant interne).
+        if (target.prefs.agentEmailEnabled && target.email) {
           await emailTransport({
             body: notification.body,
             link: notification.link,

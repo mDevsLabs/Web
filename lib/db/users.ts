@@ -41,16 +41,19 @@ type TierRow = { id: string | null; tier: string | null };
 
 // Une seule lecture SQL, ordonnée par priorité d'identité (id d'abord). Les
 // alias email/username ne sont consultés que si aucun users.id ne correspond.
+// La comparaison email/username est insensible à la casse : le backend mAI
+// normalise les siennes en minuscules, mais les jetons legacy peuvent porter
+// l'identité avec une casse différente.
 const TIER_LOOKUP_SQL = `
   SELECT id::text AS id, tier
   FROM users
   WHERE id::text = $1::text
-     OR (email IS NOT NULL AND email = $1::text)
-     OR (username IS NOT NULL AND username = $1::text)
+     OR (email IS NOT NULL AND LOWER(email) = LOWER($1::text))
+     OR (username IS NOT NULL AND LOWER(username) = LOWER($1::text))
   ORDER BY
     (id::text = $1::text) DESC,
-    (email IS NOT NULL AND email = $1::text) DESC,
-    (username IS NOT NULL AND username = $1::text) DESC
+    (email IS NOT NULL AND LOWER(email) = LOWER($1::text)) DESC,
+    (username IS NOT NULL AND LOWER(username) = LOWER($1::text)) DESC
   LIMIT 1
 `;
 

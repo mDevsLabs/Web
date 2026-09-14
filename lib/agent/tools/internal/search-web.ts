@@ -46,6 +46,13 @@ type SearchWebOutput = {
 export const searchWebTool = fromExistingTool({
   metadata: requireAgentToolMetadata("search_web"),
   schema: searchWebInputSchema,
+  summarize: (data) => {
+    const value = (data ?? {}) as { count?: number };
+    const count = value.count ?? 0;
+    return count > 0
+      ? `${count} résultat${count > 1 ? "s" : ""} trouvé${count > 1 ? "s" : ""}`
+      : "Aucun résultat";
+  },
   tool: webSearch,
   toResult: (output) => {
     const result = output as SearchWebOutput;

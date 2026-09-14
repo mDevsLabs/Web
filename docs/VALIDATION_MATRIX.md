@@ -61,19 +61,53 @@ workflow Vercel. Chaque ligne indique où le comportement est vérifié
 | 32 | `DATABASE_URL`/`POSTGRES_URL` uniquement dans l'étape migration/build | Revue | `.github/workflows/deploy-vercel.yml` |
 | 33 | Distinction production (`main`) / preview conservée ; pas de `--prebuilt` mélangé | Revue | `.github/workflows/deploy-vercel.yml` |
 
+## Catalogues (Plugins, MCP, Skills) et accueil unifié
+
+| # | Interaction critique | Vérification | Où |
+|---|----------------------|--------------|----|
+| 34 | Trois plugins réels ajoutés (qualité de l'air, boîte à outils JSON/YAML, jours fériés FR) avec outil typé, schéma Zod et permissions explicites | Unitaire | `tests/unit/plugins-catalog.test.ts` |
+| 35 | `minTier` d'un plugin réellement appliqué côté serveur (install et activation), pas seulement affiché | Unitaire | `tests/unit/plugins-catalog.test.ts`, `lib/plugins/tier-lock.ts` |
+| 36 | Aucun outil de plugin ne masque un outil natif (`PLUGIN_PROVIDED_TOOL_IDS` vs `NATIVE_TOOL_IDS`) | Unitaire + `plugins:check` | `tests/unit/plugins-catalog.test.ts`, `scripts/validate-plugins.ts` |
+| 37 | Météo et Quizzly restent disponibles pour un compte Free ou en mode Fantôme (plus de désactivation silencieuse) | Unitaire | `tests/unit/plugins-catalog.test.ts` |
+| 38 | Icône de plugin hors liste blanche → échec, jamais de repli silencieux | Unitaire + `plugins:check` | `tests/unit/plugins-catalog.test.ts`, `lib/plugins/icon-allowlist.ts` |
+| 39 | Catalogue MCP unique et statique : plus de lecture des tables/fichiers de seed supprimés | Unitaire | `tests/unit/mcp-templates.test.ts` |
+| 40 | Chaque modèle MCP est réellement documenté (URL éditeur, date de vérification, aucun hôte d'exemple) | Unitaire | `tests/unit/mcp-templates.test.ts` |
+| 41 | Aucun secret en clair dans `args`/`env` ; chaque credential déclare sa destination (`kind`) et sa documentation | Unitaire | `tests/unit/mcp-templates.test.ts` |
+| 42 | Modèle exigeant un OAuth interactif non pris en charge → installable refusée (pas de bouton inerte) | Unitaire + Revue | `tests/unit/mcp-templates.test.ts`, `lib/mcp-templates/install.ts` |
+| 43 | Secrets MCP chiffrés injectés à l'appel dans le bon emplacement (env/auth/en-tête), jamais de placeholder | Unitaire | `tests/unit/mcp-templates.test.ts` |
+| 44 | Installation MCP idempotente et appariement par `templateId` (repli par nom pour l'existant) | Unitaire | `tests/unit/mcp-templates.test.ts`, migration `0019_template_links.sql` |
+| 45 | Écritures externes soumises à approbation (`write_only`/`ask_permission`), lectures seules automatiques | Unitaire | `tests/unit/mcp-templates.test.ts` |
+| 46 | Catalogue de Skills unique (statique), identifiants et noms uniques, catégories connues | Unitaire | `tests/unit/skill-templates.test.ts` |
+| 47 | Outils déclarés par un Skill connus des registres Chat et Agent, aucun identifiant inventé | Unitaire | `tests/unit/skill-templates.test.ts`, `lib/ai/tools/ids.ts` |
+| 48 | `mcpServerNames` résolus contre les serveurs réellement installés ; serveurs manquants signalés | Unitaire | `tests/unit/skill-templates.test.ts`, `lib/skill-templates/install.ts` |
+| 49 | Skill exploitant MCP jamais offert au forfait gratuit (`minTier` réellement appliqué) | Unitaire | `tests/unit/skill-templates.test.ts` |
+| 50 | Installation d'un Skill idempotente, persistée (`templateId`) et vérifiée en base ; désinstallation réversible | Unitaire + Revue | `lib/skill-templates/install.ts`, `app/(chat)/api/skills/templates/route.ts` |
+| 51 | Un seul sélecteur Chat | Agent à l'écran, construit par un composant partagé unique | Unitaire + e2e | `tests/unit/home-mode-switcher.test.ts`, `tests/e2e/agent.test.ts` |
+| 52 | Sélecteur retiré de l'en-tête Agent et placé au même endroit sur les deux accueils | Unitaire + e2e | `tests/unit/home-mode-switcher.test.ts`, `tests/e2e/agent.test.ts` |
+| 53 | Écart sélecteur → titre identique (32 px) et même largeur de pile d'accueil | Unitaire + e2e | `tests/unit/home-mode-switcher.test.ts`, `tests/e2e/agent.test.ts` |
+| 54 | Rôles ARIA (tablist/tab), navigation clavier (flèches, Origine/Fin) et responsive mobile conservés | e2e + Revue | `tests/e2e/agent.test.ts`, `components/ui/pill-switcher.tsx` |
+| 55 | Fonctions propres à chaque mode conservées (timeline, plan, autonomie côté Agent ; mentions, pièces jointes, dictée, plugins, MCP, Skills côté Chat) | Revue | `components/agent/agent-shell.tsx`, `components/chat/shell.tsx` |
+| 56 | Migrations `0019` idempotentes (colonnes `templateId` texte + index uniques partiels) | Revue | `lib/db/migrations/0019_template_links.sql`, `lib/db/migrate.ts` |
+
 ## Commandes de validation réelles
 
 ```bash
 pnpm check          # Ultracite/Biome : lint + format (diagnostics préexistants exclus)
 pnpm typecheck      # tsc --noEmit
-pnpm test:unit      # Vitest : 18 fichiers, 141 tests
+pnpm test:unit      # Vitest : 24 fichiers, 204 tests
+pnpm plugins:gen    # régénération des catalogues de plugins dérivés
 pnpm plugins:check  # validation des catalogues de plugins générés
 pnpm build          # Next build (équivalent reproductible du build Vercel)
 ```
 
-Résultat au 2026-09-14 : typecheck ✅ · tests unitaires ✅ (141 passés, 2
-skippés préexistants) · plugins:check ✅ · build ✅ · lint des fichiers modifiés
-✅ (3 diagnostics préexistants non liés aux lots, listés ci-dessous).
+Résultat au 2026-09-14 : typecheck ✅ · tests unitaires ✅ (202 passés, 2
+skippés préexistants, 24 fichiers) · plugins:gen ✅ · plugins:check ✅ (5 plugins
+valides) · lint des fichiers modifiés ✅ (Biome ciblé sur les fichiers du lot ;
+`pnpm check` à l'échelle du dépôt reste rouge sur des diagnostics préexistants,
+listés ci-dessous) · `pnpm build` non relancé dans cet atelier. Les tests e2e
+d'accueil (`tests/e2e/agent.test.ts`) exigent un environnement authentifié
+standard et n'ont pas été relancés ici : leur valeur est structurelle et
+documentaire tant qu'ils ne tournent pas en CI.
 
 ## Diagnostics préexistants (non introduits par ces lots)
 

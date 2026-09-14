@@ -1,7 +1,17 @@
+import { normalizeToolIds } from "@/lib/ai/tools/ids";
+import { isLucideIconName } from "@/lib/plugins/icon-allowlist";
 import type { SkillTemplateDefinition } from "./types";
 
-// Modèles de Skills (format aligné sur lib/plugins). Les trois premiers
-// reprennent les starters existants ; les suivants exploitent les serveurs MCP.
+// Modèles de Skills — SOURCE DE VÉRITÉ UNIQUE (format aligné sur lib/plugins).
+//
+// Règles appliquées par le contrôle d'intégrité en bas de fichier et par
+// tests/unit/skill-templates.test.ts :
+//   • icône présente dans la liste blanche lucide (jamais de repli silencieux) ;
+//   • identifiants d'outils connus du registre Chat ou du registre Agent
+//     (lib/ai/tools/ids.ts) — aucun identifiant inventé ;
+//   • `mcpServerNames` ne cite que des serveurs réellement présents dans le
+//     catalogue MCP (lib/mcp-templates) ; un modèle qui exploite MCP n'est
+//     jamais accessible depuis le forfait gratuit.
 export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
   {
     manifest: {
@@ -70,8 +80,8 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
       icon: { name: "Database", type: "lucide" },
       id: "sql-data-analyst",
       instructions:
-        "Tu es un analyste de données expert SQL. Interroge la base via les outils MCP PostgreSQL/MongoDB disponibles, vérifie les schémas avant toute requête, propose des requêtes lisibles et commentées, puis présente les résultats avec des chiffres clés et des recommandations fondées sur les données.",
-      mcpServerNames: ["PostgreSQL", "MongoDB"],
+        "Tu es un analyste de données expert SQL. Interroge la base via le serveur MCP Supabase installé, vérifie les schémas et les tables avant toute requête, propose des requêtes SQL lisibles et commentées, puis présente les résultats avec des chiffres clés et des recommandations fondées sur les données. Toute écriture (INSERT/UPDATE/DELETE/migration) doit être présentée puis approuvée par l'utilisateur avant exécution.",
+      mcpServerNames: ["Supabase"],
       minTier: "plus",
       name: "Analyste SQL & Données",
       parameters: [
@@ -147,22 +157,22 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
       color: "#8b5cf6",
       description:
         "Retrouver, résumer et ranger les documents Google Drive par thème.",
-      icon: { name: "Folder", type: "lucide" },
-      id: "drive-organizer",
+      icon: { name: "FileText", type: "lucide" },
+      id: "notion-organizer",
       instructions:
-        "Tu es un assistant documentaire. Recherche dans Google Drive via les outils MCP disponibles les fichiers correspondant à la demande, résume leur contenu, suggère un plan de classement (dossiers, renommage) et rédige un inventaire clair des documents trouvés.",
-      mcpServerNames: ["Google Drive"],
+        "Tu es un assistant documentaire. Recherche dans Notion via le serveur MCP Notion installé les pages et bases correspondant à la demande, résume leur contenu, signale les pages orphelines ou obsolètes, propose un plan de classement (bases, propriétés, renommage) et rédige un inventaire clair. Toute modification de page doit être proposée puis approuvée avant écriture.",
+      mcpServerNames: ["Notion"],
       minTier: "plus",
-      name: "Organisateur Google Drive",
+      name: "Organisateur Notion",
       parameters: [
         {
-          description: "Dossier Drive de départ",
-          name: "dossier",
+          description: "Espace ou base Notion de départ",
+          name: "espace",
           required: false,
           type: "string",
         },
       ],
-      tags: ["Google Drive", "Documents", "Organisation"],
+      tags: ["Notion", "Documents", "Organisation"],
       tools: ["mcp", "createDocument"],
     },
   },
@@ -174,23 +184,29 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
       description:
         "Zones de chalandise, temps de trajet et comparaison de lieux via Maps.",
       icon: { name: "Map", type: "lucide" },
-      id: "geo-reporter",
+      id: "brave-tech-watch",
       instructions:
-        "Tu es un analyste géospatial. Utilise les outils MCP Google Maps pour géocoder des adresses, comparer des temps de trajet, estimer des distances et décrire les zones. Présente un tableau comparatif clair et recommande les meilleurs emplacements ou itinéraires.",
-      mcpServerNames: ["Google Maps"],
+        "Tu es un veilleur technologique. Interroge le serveur MCP Brave Search installé pour collecter des résultats récents et indépendants, croise au moins trois sources, écarte les contenus promotionnels, puis rédige une note de veille datée : faits marquants, incertitudes et sources citées avec leur URL.",
+      mcpServerNames: ["Brave Search"],
       minTier: "plus",
-      name: "Analyste Geo & Itinéraires",
+      name: "Veille technologique Brave",
       parameters: [
         {
-          description:
-            "Adresses ou villes à comparer (séparées par des virgules)",
-          name: "lieux",
+          description: "Sujet ou périmètre à surveiller",
+          name: "sujet",
           required: true,
           type: "string",
         },
+        {
+          defaultValue: "7",
+          description: "Fenêtre d'actualité en jours",
+          name: "fenetre_jours",
+          required: false,
+          type: "string",
+        },
       ],
-      tags: ["Maps", "Géolocalisation", "Logistique"],
-      tools: ["mcp", "generateChart"],
+      tags: ["Veille", "Brave", "Sources"],
+      tools: ["mcp", "readUrl", "createDocument"],
     },
   },
   {
@@ -305,4 +321,113 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
       tools: ["webSearch", "createDocument"],
     },
   },
+  {
+    manifest: {
+      author: "mAI",
+      category: "dev",
+      color: "#1f2937",
+      description:
+        "Triage des issues et revues de pull requests GitHub avec plan de test.",
+      icon: { name: "Code", type: "lucide" },
+      id: "github-maintainer",
+      instructions:
+        "Tu es mainteneur d'un dépôt GitHub. Via le serveur MCP GitHub installé, liste les issues et pull requests ouvertes, déduplique, priorise selon l'impact et l'ancienneté, puis pour chaque sujet retenu : résume le contexte, liste les fichiers concernés, propose un plan de test et une réponse prête à publier. Toute écriture (commentaire, label, fermeture, création de branche) est proposée puis attend une approbation explicite avant exécution.",
+      mcpServerNames: ["GitHub"],
+      minTier: "plus",
+      name: "Mainteneur GitHub",
+      parameters: [
+        {
+          description: "Dépôt au format propriétaire/nom",
+          name: "depot",
+          required: true,
+          type: "string",
+        },
+        {
+          defaultValue: "issues",
+          description: "Périmètre : issues, pull requests ou les deux",
+          name: "perimetre",
+          required: false,
+          type: "string",
+        },
+      ],
+      tags: ["GitHub", "Revue", "Triage"],
+      tools: ["mcp", "documentParser", "createDocument"],
+    },
+  },
+  {
+    manifest: {
+      author: "mAI",
+      category: "business",
+      color: "#a855f7",
+      description:
+        "Revenus récurrents, échecs de paiement et abonnements à risque (Stripe).",
+      icon: { name: "Wallet", type: "lucide" },
+      id: "stripe-billing-analyst",
+      instructions:
+        "Tu es analyste facturation. Via le serveur MCP Stripe installé, agrège les abonnements, les factures et les tentatives de paiement échouées ; calcule le taux d'échec, identifie les comptes à risque et les revenus concernés ; présente un tableau chiffré et des actions concrètes (relance, mise à jour de moyen de paiement). N'effectue aucune opération financière : toute action de facturation reste manuelle et proposée à l'utilisateur.",
+      mcpServerNames: ["Stripe"],
+      minTier: "pro",
+      name: "Analyste facturation Stripe",
+      parameters: [
+        {
+          defaultValue: "30",
+          description: "Nombre de derniers jours à analyser",
+          name: "periode_jours",
+          required: false,
+          type: "string",
+        },
+      ],
+      tags: ["Stripe", "Abonnements", "Finance"],
+      tools: ["mcp", "generateChart", "createDocument"],
+    },
+  },
+  {
+    manifest: {
+      author: "mAI",
+      category: "business",
+      color: "#6366f1",
+      description:
+        "Priorisation des cycles et suivi de roadmap Linear en notes d'équipe.",
+      icon: { name: "Target", type: "lucide" },
+      id: "linear-roadmap-pilot",
+      instructions:
+        "Tu es responsable produit. Via le serveur MCP Linear installé, liste les cycles et projets en cours, repère les tickets bloqués ou sans responsable, calcule la charge par équipe et propose un ordre de priorité argumenté. Rédige ensuite une note de revue hebdomadaire (état, risques, décisions attendues). Toute modification de ticket (statut, assignation, estimation) est proposée puis soumise à approbation.",
+      mcpServerNames: ["Linear"],
+      minTier: "plus",
+      name: "Pilote roadmap Linear",
+      parameters: [
+        {
+          description: "Équipe ou projet Linear à couvrir",
+          name: "equipe",
+          required: false,
+          type: "string",
+        },
+      ],
+      tags: ["Linear", "Roadmap", "Produit"],
+      tools: ["mcp", "createDocument"],
+    },
+  },
 ];
+
+// Contrôle d'intégrité au chargement : une icône inconnue ou un identifiant
+// d'outil inventé doit faire échouer le build/les tests plutôt que de produire
+// un modèle qui ne fonctionne pas.
+for (const template of SKILL_TEMPLATES) {
+  const { manifest } = template;
+  if (!isLucideIconName(manifest.icon.name)) {
+    throw new Error(
+      `Modèle de skill ${manifest.id} : icône inconnue « ${manifest.icon.name} » (voir lib/plugins/icon-allowlist.ts).`
+    );
+  }
+  const { unknown } = normalizeToolIds(manifest.tools);
+  if (unknown.length > 0) {
+    throw new Error(
+      `Modèle de skill ${manifest.id} : outils inconnus ${unknown.join(", ")} (voir lib/ai/tools/ids.ts).`
+    );
+  }
+  if (manifest.mcpServerNames.length > 0 && manifest.minTier === "free") {
+    throw new Error(
+      `Modèle de skill ${manifest.id} : un modèle qui exploite MCP ne peut pas être accessible au forfait gratuit.`
+    );
+  }
+}

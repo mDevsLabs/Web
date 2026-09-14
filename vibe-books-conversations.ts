@@ -18,20 +18,35 @@ export async function ensureBookConversationTables(sql: any): Promise<void> {
   if (bookConvTablesReady) return;
   try {
     await ensureDMTables().catch(() => {});
-    await sql`ALTER TABLE dm_conversations ADD COLUMN IF NOT EXISTS book_id UUID`.catch(() => {});
-    await sql`CREATE UNIQUE INDEX IF NOT EXISTS idx_dm_conversations_book ON dm_conversations(book_id) WHERE book_id IS NOT NULL`.catch(() => {});
-    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS attached_post_id UUID`.catch(() => {});
-    await sql`CREATE INDEX IF NOT EXISTS idx_dm_attached_post ON direct_messages(attached_post_id) WHERE attached_post_id IS NOT NULL`.catch(() => {});
+    await sql`ALTER TABLE dm_conversations ADD COLUMN IF NOT EXISTS book_id UUID`.catch(
+      () => {}
+    );
+    await sql`CREATE UNIQUE INDEX IF NOT EXISTS idx_dm_conversations_book ON dm_conversations(book_id) WHERE book_id IS NOT NULL`.catch(
+      () => {}
+    );
+    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS attached_post_id UUID`.catch(
+      () => {}
+    );
+    await sql`CREATE INDEX IF NOT EXISTS idx_dm_attached_post ON direct_messages(attached_post_id) WHERE attached_post_id IS NOT NULL`.catch(
+      () => {}
+    );
     bookConvTablesReady = true;
   } catch (err) {
-    console.warn("[vibe-books-conversations] ensure tables skipped:", (err as any)?.message);
+    console.warn(
+      "[vibe-books-conversations] ensure tables skipped:",
+      (err as any)?.message
+    );
   }
 }
 
 /** Id de la conversation Messages d'un Livre (null si absente). */
-export async function getBookConversationId(sql: any, bookId: string): Promise<string | null> {
+export async function getBookConversationId(
+  sql: any,
+  bookId: string
+): Promise<string | null> {
   try {
-    const rows = await sql`SELECT id FROM dm_conversations WHERE book_id = ${bookId}::uuid LIMIT 1`;
+    const rows =
+      await sql`SELECT id FROM dm_conversations WHERE book_id = ${bookId}::uuid LIMIT 1`;
     return rows[0] ? String(rows[0].id) : null;
   } catch {
     return null;
@@ -39,10 +54,16 @@ export async function getBookConversationId(sql: any, bookId: string): Promise<s
 }
 
 /** Membres de la conversation d'un Livre (depuis dm_group_members). */
-async function fetchConversationMemberIds(sql: any, conversationId: string): Promise<number[]> {
+async function fetchConversationMemberIds(
+  sql: any,
+  conversationId: string
+): Promise<number[]> {
   try {
-    const rows = await sql`SELECT user_id FROM dm_group_members WHERE conversation_id = ${conversationId}::uuid`;
-    return (rows as any[]).map((r) => Number(r.user_id)).filter((n) => Number.isFinite(n));
+    const rows =
+      await sql`SELECT user_id FROM dm_group_members WHERE conversation_id = ${conversationId}::uuid`;
+    return (rows as any[])
+      .map((r) => Number(r.user_id))
+      .filter((n) => Number.isFinite(n));
   } catch {
     return [];
   }
@@ -77,7 +98,10 @@ export async function syncBookConversationMembers(
         )
     `.catch(() => {});
   } catch (err) {
-    console.warn("[vibe-books-conversations] sync members failed:", (err as any)?.message);
+    console.warn(
+      "[vibe-books-conversations] sync members failed:",
+      (err as any)?.message
+    );
   }
   const memberIds = await fetchConversationMemberIds(sql, conversationId);
   return { conversationId, memberIds };
@@ -114,13 +138,20 @@ export async function ensureBookConversation(
     await syncBookConversationMembers(sql, book.id);
     return conversationId;
   } catch (err) {
-    console.warn("[vibe-books-conversations] ensure failed:", (err as any)?.message);
+    console.warn(
+      "[vibe-books-conversations] ensure failed:",
+      (err as any)?.message
+    );
     return null;
   }
 }
 
 /** Retire un membre (leave/kick) et prévient le membre retiré + les restants. */
-export async function removeBookConversationMember(sql: any, bookId: string, userId: number): Promise<void> {
+export async function removeBookConversationMember(
+  sql: any,
+  bookId: string,
+  userId: number
+): Promise<void> {
   try {
     const conversationId = await getBookConversationId(sql, bookId);
     if (!conversationId) return;
@@ -128,15 +159,30 @@ export async function removeBookConversationMember(sql: any, bookId: string, use
       DELETE FROM dm_group_members WHERE conversation_id = ${conversationId}::uuid AND user_id = ${userId}
     `.catch(() => {});
     const memberIds = await fetchConversationMemberIds(sql, conversationId);
-    await pushToUsers([userId], "group_updated", { conversation_id: conversationId, action: "removed", book_id: bookId });
-    await pushToUsers(memberIds, "group_updated", { conversation_id: conversationId, action: "updated", book_id: bookId });
+    await pushToUsers([userId], "group_updated", {
+      action: "removed",
+      book_id: bookId,
+      conversation_id: conversationId,
+    });
+    await pushToUsers(memberIds, "group_updated", {
+      action: "updated",
+      book_id: bookId,
+      conversation_id: conversationId,
+    });
   } catch (err) {
-    console.warn("[vibe-books-conversations] remove member failed:", (err as any)?.message);
+    console.warn(
+      "[vibe-books-conversations] remove member failed:",
+      (err as any)?.message
+    );
   }
 }
 
 /** Renomme la conversation (synchro du titre du Livre). */
-export async function renameBookConversation(sql: any, bookId: string, title: string): Promise<void> {
+export async function renameBookConversation(
+  sql: any,
+  bookId: string,
+  title: string
+): Promise<void> {
   try {
     const conversationId = await getBookConversationId(sql, bookId);
     if (!conversationId) return;
@@ -144,9 +190,16 @@ export async function renameBookConversation(sql: any, bookId: string, title: st
       UPDATE dm_conversations SET group_name = ${title.slice(0, 100)} WHERE id = ${conversationId}::uuid
     `.catch(() => {});
     const memberIds = await fetchConversationMemberIds(sql, conversationId);
-    await pushToUsers(memberIds, "group_updated", { conversation_id: conversationId, action: "renamed", book_id: bookId });
+    await pushToUsers(memberIds, "group_updated", {
+      action: "renamed",
+      book_id: bookId,
+      conversation_id: conversationId,
+    });
   } catch (err) {
-    console.warn("[vibe-books-conversations] rename failed:", (err as any)?.message);
+    console.warn(
+      "[vibe-books-conversations] rename failed:",
+      (err as any)?.message
+    );
   }
 }
 
@@ -172,25 +225,48 @@ export async function transferBookConversationOwnership(
       WHERE conversation_id = ${conversationId}::uuid AND user_id = ${fromUserId}
     `.catch(() => {});
     const memberIds = await fetchConversationMemberIds(sql, conversationId);
-    await pushToUsers(memberIds, "group_updated", { conversation_id: conversationId, action: "admin_transferred", book_id: bookId });
+    await pushToUsers(memberIds, "group_updated", {
+      action: "admin_transferred",
+      book_id: bookId,
+      conversation_id: conversationId,
+    });
   } catch (err) {
-    console.warn("[vibe-books-conversations] transfer failed:", (err as any)?.message);
+    console.warn(
+      "[vibe-books-conversations] transfer failed:",
+      (err as any)?.message
+    );
   }
 }
 
 /** Supprime la conversation, ses messages et prévient les membres. */
-export async function deleteBookConversation(sql: any, bookId: string): Promise<void> {
+export async function deleteBookConversation(
+  sql: any,
+  bookId: string
+): Promise<void> {
   try {
     const conversationId = await getBookConversationId(sql, bookId);
     if (!conversationId) return;
     const memberIds = await fetchConversationMemberIds(sql, conversationId);
     // dm_reactions n'a pas de FK sur direct_messages : purge explicite (comme les groupes)
-    await sql`DELETE FROM dm_reactions WHERE message_id IN (SELECT id FROM direct_messages WHERE conversation_id = ${conversationId}::uuid)`.catch(() => {});
-    await sql`DELETE FROM direct_messages WHERE conversation_id = ${conversationId}::uuid`.catch(() => {});
-    await sql`DELETE FROM dm_conversations WHERE id = ${conversationId}::uuid`.catch(() => {});
-    await pushToUsers(memberIds, "group_updated", { conversation_id: conversationId, action: "deleted", book_id: bookId });
+    await sql`DELETE FROM dm_reactions WHERE message_id IN (SELECT id FROM direct_messages WHERE conversation_id = ${conversationId}::uuid)`.catch(
+      () => {}
+    );
+    await sql`DELETE FROM direct_messages WHERE conversation_id = ${conversationId}::uuid`.catch(
+      () => {}
+    );
+    await sql`DELETE FROM dm_conversations WHERE id = ${conversationId}::uuid`.catch(
+      () => {}
+    );
+    await pushToUsers(memberIds, "group_updated", {
+      action: "deleted",
+      book_id: bookId,
+      conversation_id: conversationId,
+    });
   } catch (err) {
-    console.warn("[vibe-books-conversations] delete failed:", (err as any)?.message);
+    console.warn(
+      "[vibe-books-conversations] delete failed:",
+      (err as any)?.message
+    );
   }
 }
 
@@ -225,6 +301,9 @@ export async function backfillBookConversations(sql: any): Promise<void> {
         )
     `.catch(() => {});
   } catch (err) {
-    console.warn("[vibe-books-conversations] backfill failed:", (err as any)?.message);
+    console.warn(
+      "[vibe-books-conversations] backfill failed:",
+      (err as any)?.message
+    );
   }
 }

@@ -7,12 +7,26 @@
  */
 
 import type { Hono } from "npm:hono@4";
-import { extractToken, getDb, verifyToken, getWeekData, getUserQuotaBoost, getTierMaiTokenLimit } from "./config.ts";
-import { MAIAgentFleet } from "./vibe-mai-fleet.ts";
+import {
+  extractToken,
+  getDb,
+  getTierMaiTokenLimit,
+  getUserQuotaBoost,
+  getWeekData,
+  verifyToken,
+} from "./config.ts";
 import type { RegisterMultiFn } from "./vibe-common.ts";
-import { ensureDMTables, resolveConversationTarget, pushToUsers } from "./vibe-dms-core.ts";
+import {
+  ensureDMTables,
+  pushToUsers,
+  resolveConversationTarget,
+} from "./vibe-dms-core.ts";
+import { MAIAgentFleet } from "./vibe-mai-fleet.ts";
 
-export function registerDMMessageActionRoutes(app: Hono, registerMulti: RegisterMultiFn) {
+export function registerDMMessageActionRoutes(
+  app: Hono,
+  registerMulti: RegisterMultiFn
+) {
   // 4c. PIN / UNPIN MESSAGE (max 3 par conversation, adressage partnerId)
   const handlePinMessage = async (c: any) => {
     try {
@@ -23,7 +37,11 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
       const rawKey = String(c.req.param("partnerId") || "");
       const body = await c.req.json().catch(() => ({}));
       const messageId = String(body?.message_id || "");
-      if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(messageId)) {
+      if (
+        !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+          messageId
+        )
+      ) {
         return c.json({ error: "Message invalide." }, 400);
       }
       const sql = getDb();
@@ -31,25 +49,50 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
       const target = await resolveConversationTarget(sql, userId, rawKey);
       if (!target) return c.json({ error: "Conversation introuvable." }, 404);
       const conversationId = target.conversationId;
-      const msgRows = await sql`SELECT id FROM direct_messages WHERE id = ${messageId}::uuid AND conversation_id = ${conversationId}::uuid LIMIT 1`;
-      if (msgRows.length === 0) return c.json({ error: "Message introuvable dans cette conversation." }, 404);
-      const countRows = await sql`SELECT COUNT(*) AS n FROM dm_pinned_messages WHERE conversation_id = ${conversationId}::uuid`;
+      const msgRows =
+        await sql`SELECT id FROM direct_messages WHERE id = ${messageId}::uuid AND conversation_id = ${conversationId}::uuid LIMIT 1`;
+      if (msgRows.length === 0)
+        return c.json(
+          { error: "Message introuvable dans cette conversation." },
+          404
+        );
+      const countRows =
+        await sql`SELECT COUNT(*) AS n FROM dm_pinned_messages WHERE conversation_id = ${conversationId}::uuid`;
       if (Number(countRows[0]?.n || 0) >= 3) {
-        return c.json({ error: "Maximum 3 messages épinglés par conversation.", code: "PIN_LIMIT" }, 403);
+        return c.json(
+          {
+            code: "PIN_LIMIT",
+            error: "Maximum 3 messages épinglés par conversation.",
+          },
+          403
+        );
       }
       await sql`
         INSERT INTO dm_pinned_messages (conversation_id, message_id, pinned_by)
         VALUES (${conversationId}::uuid, ${messageId}::uuid, ${userId})
         ON CONFLICT (conversation_id, message_id) DO NOTHING
       `;
-      await pushToUsers(target.memberIds, "dm_pin_updated", { conversation_id: conversationId, message_id: messageId, pinned: true });
-      return c.json({ success: true, pinned: true });
+      await pushToUsers(target.memberIds, "dm_pin_updated", {
+        conversation_id: conversationId,
+        message_id: messageId,
+        pinned: true,
+      });
+      return c.json({ pinned: true, success: true });
     } catch (err: any) {
       return c.json({ error: "Erreur épinglage." }, 500);
     }
   };
 
-  registerMulti("post", ["/api/vibe/dms/conversations/:partnerId/pin", "/vibe/dms/conversations/:partnerId/pin", "/v1/dms/conversations/:partnerId/pin", "/dms/conversations/:partnerId/pin"], handlePinMessage);
+  registerMulti(
+    "post",
+    [
+      "/api/vibe/dms/conversations/:partnerId/pin",
+      "/vibe/dms/conversations/:partnerId/pin",
+      "/v1/dms/conversations/:partnerId/pin",
+      "/dms/conversations/:partnerId/pin",
+    ],
+    handlePinMessage
+  );
 
   const handleUnpinMessage = async (c: any) => {
     try {
@@ -59,21 +102,38 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
       const userId = Number(payload.sub || (payload as any).id);
       const rawKey = String(c.req.param("partnerId") || "");
       const messageId = String(c.req.param("messageId") || "");
-      if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(messageId)) {
+      if (
+        !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+          messageId
+        )
+      ) {
         return c.json({ error: "Paramètres invalides." }, 400);
       }
       const sql = getDb();
       const target = await resolveConversationTarget(sql, userId, rawKey);
       if (!target) return c.json({ error: "Conversation introuvable." }, 404);
       await sql`DELETE FROM dm_pinned_messages WHERE conversation_id = ${target.conversationId}::uuid AND message_id = ${messageId}::uuid`;
-      await pushToUsers(target.memberIds, "dm_pin_updated", { conversation_id: target.conversationId, message_id: messageId, pinned: false });
-      return c.json({ success: true, pinned: false });
+      await pushToUsers(target.memberIds, "dm_pin_updated", {
+        conversation_id: target.conversationId,
+        message_id: messageId,
+        pinned: false,
+      });
+      return c.json({ pinned: false, success: true });
     } catch (err: any) {
       return c.json({ error: "Erreur désépinglage." }, 500);
     }
   };
 
-  registerMulti("delete", ["/api/vibe/dms/conversations/:partnerId/pin/:messageId", "/vibe/dms/conversations/:partnerId/pin/:messageId", "/v1/dms/conversations/:partnerId/pin/:messageId", "/dms/conversations/:partnerId/pin/:messageId"], handleUnpinMessage);
+  registerMulti(
+    "delete",
+    [
+      "/api/vibe/dms/conversations/:partnerId/pin/:messageId",
+      "/vibe/dms/conversations/:partnerId/pin/:messageId",
+      "/v1/dms/conversations/:partnerId/pin/:messageId",
+      "/dms/conversations/:partnerId/pin/:messageId",
+    ],
+    handleUnpinMessage
+  );
 
   // 4d. SEARCH IN CONVERSATION (ILIKE sur content, paire user/partner)
   const handleSearchDMMessages = async (c: any) => {
@@ -88,13 +148,18 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
       const sql = getDb();
       if (rawKey.startsWith("group:")) {
         const groupId = rawKey.slice(6);
-        if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(groupId)) {
+        if (
+          !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+            groupId
+          )
+        ) {
           return c.json({ messages: [] });
         }
         const memberRows = await sql`
           SELECT 1 FROM dm_group_members WHERE conversation_id = ${groupId}::uuid AND user_id = ${userId} LIMIT 1
         `;
-        if (memberRows.length === 0) return c.json({ error: "Accès refusé." }, 403);
+        if (memberRows.length === 0)
+          return c.json({ error: "Accès refusé." }, 403);
         const messages = await sql`
           SELECT m.id, m.conversation_id, m.sender_id, m.recipient_id, m.content, u.username as sender_username, m.created_at
           FROM direct_messages m
@@ -127,7 +192,16 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
     }
   };
 
-  registerMulti("get", ["/api/vibe/dms/messages/:partnerId/search", "/vibe/dms/messages/:partnerId/search", "/v1/dms/messages/:partnerId/search", "/dms/messages/:partnerId/search"], handleSearchDMMessages);
+  registerMulti(
+    "get",
+    [
+      "/api/vibe/dms/messages/:partnerId/search",
+      "/vibe/dms/messages/:partnerId/search",
+      "/v1/dms/messages/:partnerId/search",
+      "/dms/messages/:partnerId/search",
+    ],
+    handleSearchDMMessages
+  );
 
   // 4e. MARK CONVERSATION UNREAD (re-passe le dernier message reçu en non lu)
   const handleMarkUnread = async (c: any) => {
@@ -140,13 +214,18 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
       const sql = getDb();
       if (rawKey.startsWith("group:")) {
         const groupId = rawKey.slice(6);
-        if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(groupId)) {
+        if (
+          !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+            groupId
+          )
+        ) {
           return c.json({ error: "Conversation introuvable." }, 404);
         }
         const memberRows = await sql`
           SELECT 1 FROM dm_group_members WHERE conversation_id = ${groupId}::uuid AND user_id = ${userId} LIMIT 1
         `;
-        if (memberRows.length === 0) return c.json({ error: "Conversation introuvable." }, 404);
+        if (memberRows.length === 0)
+          return c.json({ error: "Conversation introuvable." }, 404);
         const last = await sql`
           SELECT id, read_by FROM direct_messages
           WHERE conversation_id = ${groupId}::uuid AND sender_id <> ${userId}
@@ -154,9 +233,12 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
           ORDER BY created_at DESC
           LIMIT 1
         `;
-        if (last.length === 0) return c.json({ error: "Conversation introuvable." }, 404);
+        if (last.length === 0)
+          return c.json({ error: "Conversation introuvable." }, 404);
         const readers = Array.isArray(last[0].read_by)
-          ? (last[0].read_by as any[]).map(String).filter((x) => x !== String(userId))
+          ? (last[0].read_by as any[])
+              .map(String)
+              .filter((x) => x !== String(userId))
           : [];
         await sql`UPDATE direct_messages SET read_by = ${JSON.stringify(readers)}::jsonb WHERE id = ${last[0].id}::uuid`;
         return c.json({ success: true, unread: true });
@@ -179,7 +261,8 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
           WHERE sender_id = ${userId} AND recipient_id = ${partnerId}
           ORDER BY created_at DESC LIMIT 1
         `;
-        if (own.length === 0) return c.json({ error: "Conversation introuvable." }, 404);
+        if (own.length === 0)
+          return c.json({ error: "Conversation introuvable." }, 404);
       }
       return c.json({ success: true, unread: true });
     } catch (err: any) {
@@ -187,7 +270,16 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
     }
   };
 
-  registerMulti("post", ["/api/vibe/dms/conversations/:partnerId/mark-unread", "/vibe/dms/conversations/:partnerId/mark-unread", "/v1/dms/conversations/:partnerId/mark-unread", "/dms/conversations/:partnerId/mark-unread"], handleMarkUnread);
+  registerMulti(
+    "post",
+    [
+      "/api/vibe/dms/conversations/:partnerId/mark-unread",
+      "/vibe/dms/conversations/:partnerId/mark-unread",
+      "/v1/dms/conversations/:partnerId/mark-unread",
+      "/dms/conversations/:partnerId/mark-unread",
+    ],
+    handleMarkUnread
+  );
 
   // 4b. REACT TO A DM MESSAGE (toggle emoji)
   const handleReactDM = async (c: any) => {
@@ -199,7 +291,12 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
       const messageId = c.req.param("messageId");
       const { emoji } = await c.req.json();
 
-      if (!messageId || !emoji || typeof emoji !== 'string' || emoji.length > 16) {
+      if (
+        !messageId ||
+        !emoji ||
+        typeof emoji !== "string" ||
+        emoji.length > 16
+      ) {
         return c.json({ error: "Message et emoji requis." }, 400);
       }
 
@@ -210,9 +307,13 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
       const msgRows = await sql`
         SELECT id, sender_id, recipient_id, conversation_id FROM direct_messages WHERE id = ${messageId}::uuid LIMIT 1
       `;
-      if (msgRows.length === 0) return c.json({ error: "Message introuvable." }, 404);
+      if (msgRows.length === 0)
+        return c.json({ error: "Message introuvable." }, 404);
       const msg = msgRows[0];
-      if (Number(msg.sender_id) !== userId && Number(msg.recipient_id) !== userId) {
+      if (
+        Number(msg.sender_id) !== userId &&
+        Number(msg.recipient_id) !== userId
+      ) {
         const memberRows = await sql`
           SELECT 1 FROM dm_group_members
           WHERE conversation_id = ${msg.conversation_id}::uuid AND user_id = ${userId}
@@ -250,18 +351,30 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
           g.count += 1;
           g.mine = g.mine || Number(r.user_id) === userId;
         } else {
-          grouped.push({ emoji: r.emoji, count: 1, mine: Number(r.user_id) === userId });
+          grouped.push({
+            count: 1,
+            emoji: r.emoji,
+            mine: Number(r.user_id) === userId,
+          });
         }
       }
 
-      return c.json({ success: true, reacted, reactions: grouped });
+      return c.json({ reacted, reactions: grouped, success: true });
     } catch (err: any) {
       console.error("[vibe-dms] React error:", err);
       return c.json({ error: "Erreur réaction." }, 500);
     }
   };
 
-  registerMulti("post", ["/api/vibe/dms/messages/:messageId/react", "/vibe/dms/messages/:messageId/react", "/v1/dms/messages/:messageId/react"], handleReactDM);
+  registerMulti(
+    "post",
+    [
+      "/api/vibe/dms/messages/:messageId/react",
+      "/vibe/dms/messages/:messageId/react",
+      "/v1/dms/messages/:messageId/react",
+    ],
+    handleReactDM
+  );
 
   // 4c. AI-GENERATED REPLY SUGGESTION (mAI dans les DMs)
   const handleDMGenerateReply = async (c: any) => {
@@ -302,7 +415,7 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
       // Cible : conversation 1-1 (id numérique) ou groupe (« group:<uuid> »)
       const isGroup = partnerRaw.startsWith("group:");
       const groupId = isGroup ? partnerRaw.slice(6) : "";
-      const partnerId = isGroup ? NaN : Number(partnerRaw);
+      const partnerId = isGroup ? Number.NaN : Number(partnerRaw);
 
       if (!isGroup && !partnerId) {
         return c.json({ error: "Identifiant du destinataire manquant." }, 400);
@@ -311,7 +424,10 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
       // Refuser l'appel si aucun texte n'est présent dans la bulle de message
       if (!draft || !draft.trim()) {
         return c.json(
-          { error: "Veuillez d'abord écrire un texte dans la bulle de message pour que mAI puisse l'améliorer." },
+          {
+            error:
+              "Veuillez d'abord écrire un texte dans la bulle de message pour que mAI puisse l'améliorer.",
+          },
           400
         );
       }
@@ -331,7 +447,8 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
         const memberRows = await sql`
           SELECT 1 FROM dm_group_members WHERE conversation_id = ${groupId}::uuid AND user_id = ${userId} LIMIT 1
         `;
-        if (memberRows.length === 0) return c.json({ error: "Conversation introuvable." }, 404);
+        if (memberRows.length === 0)
+          return c.json({ error: "Conversation introuvable." }, 404);
         const groupRows = await sql`
           SELECT group_name FROM dm_conversations WHERE id = ${groupId}::uuid LIMIT 1
         `;
@@ -364,20 +481,34 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
 
       // Presets d'écriture : Réduire, Allonger, Changer le ton, Améliorer, Personnalisé
       const PRESETS: Record<string, string> = {
-        shorten: "Réduis ce message : rends-le plus court et percutant tout en conservant son sens essentiel. Ne perds aucune information importante, supprime les fioritures.",
-        extend: "Allonge ce message : développe-le avec plus de détails, de contexte et de naturel, sans le rendre verbeux ni artificiel.",
-        tone: `Change le ton de ce message : réécris-le avec un ton ${toneValue ? `« ${toneValue} »` : "plus amical et naturel"}, en gardant strictement le même fond et la même intention.`,
-        improve: `Améliore, enrichis et perfectionne ce message pour qu'il s'intègre harmonieusement à la discussion ${partnerLabel}. Préserve fidèlement l'intention de l'utilisateur, améliore la formulation et le naturel en français.`,
         custom: customPrompt
           ? `Applique exactement cette consigne de l'utilisateur à ce message : « ${customPrompt} ».`
           : "",
+        extend:
+          "Allonge ce message : développe-le avec plus de détails, de contexte et de naturel, sans le rendre verbeux ni artificiel.",
+        improve: `Améliore, enrichis et perfectionne ce message pour qu'il s'intègre harmonieusement à la discussion ${partnerLabel}. Préserve fidèlement l'intention de l'utilisateur, améliore la formulation et le naturel en français.`,
+        shorten:
+          "Réduis ce message : rends-le plus court et percutant tout en conservant son sens essentiel. Ne perds aucune information importante, supprime les fioritures.",
+        tone: `Change le ton de ce message : réécris-le avec un ton ${toneValue ? `« ${toneValue} »` : "plus amical et naturel"}, en gardant strictement le même fond et la même intention.`,
       };
       const presetInstruction = PRESETS[preset];
       if (!presetInstruction) {
-        return c.json({ error: "Preset inconnu. Presets disponibles : shorten, extend, tone, improve, custom." }, 400);
+        return c.json(
+          {
+            error:
+              "Preset inconnu. Presets disponibles : shorten, extend, tone, improve, custom.",
+          },
+          400
+        );
       }
       if (preset === "custom" && !customPrompt) {
-        return c.json({ error: "Veuillez fournir une consigne personnalisée pour le preset Personnalisé." }, 400);
+        return c.json(
+          {
+            error:
+              "Veuillez fournir une consigne personnalisée pour le preset Personnalisé.",
+          },
+          400
+        );
       }
 
       // Vérification des quotas hebdomadaires mAI
@@ -393,13 +524,19 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
 
       if (currentUsage >= tokenLimit) {
         return c.json(
-          { error: "Votre quota hebdomadaire de tokens mAI est atteint. Réessayez la semaine prochaine ou passez à un forfait supérieur." },
+          {
+            error:
+              "Votre quota hebdomadaire de tokens mAI est atteint. Réessayez la semaine prochaine ou passez à un forfait supérieur.",
+          },
           429
         );
       }
 
       const transcript = recent
-        .map((m: any) => `${m.sender_id === userId ? "Moi" : `@${m.sender_username}`}: ${m.content}`)
+        .map(
+          (m: any) =>
+            `${m.sender_id === userId ? "Moi" : `@${m.sender_username}`}: ${m.content}`
+        )
         .join("\n");
 
       const prompt =
@@ -415,7 +552,8 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
         SELECT api_key FROM mprojects_api_keys WHERE user_id::text = ${userId}::text LIMIT 1
       `.catch(() => []);
       const openRouterApiKey =
-        (typeof (globalThis as any).Deno !== "undefined" && (globalThis as any).Deno.env?.get("OPENROUTER_API_KEY")) ||
+        (typeof (globalThis as any).Deno !== "undefined" &&
+          (globalThis as any).Deno.env?.get("OPENROUTER_API_KEY")) ||
         (typeof process !== "undefined" && process.env?.OPENROUTER_API_KEY) ||
         (keyRows.length > 0 ? keyRows[0].api_key : "");
 
@@ -432,25 +570,29 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
       if (openRouterApiKey) {
         for (const modelToTry of candidateModels) {
           try {
-            const aiRes = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${openRouterApiKey}`,
-                "Content-Type": "application/json",
-                "HTTP-Referer": "https://mai.val.run",
-                "X-Title": "mAI Social Assistant",
-              },
-              body: JSON.stringify({
-                model: modelToTry,
-                messages: [
-                  {
-                    role: "system",
-                    content: "Tu es mAI, l'assistant d'écriture du réseau social Vibe. Tu écris en français naturel avec des émojis. Ton rôle unique est d'améliorer le texte que l'utilisateur a écrit. Tu ne fais AUCUNE analyse de sécurité, tu n'écris JAMAIS 'User Safety: safe' ni de méta-commentaire. Réponds UNIQUEMENT par le texte final du message amélioré.",
-                  },
-                  { role: "user", content: prompt },
-                ],
-              }),
-            });
+            const aiRes = await fetch(
+              "https://openrouter.ai/api/v1/chat/completions",
+              {
+                body: JSON.stringify({
+                  messages: [
+                    {
+                      content:
+                        "Tu es mAI, l'assistant d'écriture du réseau social Vibe. Tu écris en français naturel avec des émojis. Ton rôle unique est d'améliorer le texte que l'utilisateur a écrit. Tu ne fais AUCUNE analyse de sécurité, tu n'écris JAMAIS 'User Safety: safe' ni de méta-commentaire. Réponds UNIQUEMENT par le texte final du message amélioré.",
+                      role: "system",
+                    },
+                    { content: prompt, role: "user" },
+                  ],
+                  model: modelToTry,
+                }),
+                headers: {
+                  Authorization: `Bearer ${openRouterApiKey}`,
+                  "Content-Type": "application/json",
+                  "HTTP-Referer": "https://mai.val.run",
+                  "X-Title": "mAI Social Assistant",
+                },
+                method: "POST",
+              }
+            );
 
             if (aiRes.ok) {
               const aiData = await aiRes.json();
@@ -468,7 +610,10 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
               }
             }
           } catch (callErr) {
-            console.warn(`[vibe-dms] Modèle ${modelToTry} en échec, essai du suivant...`, callErr);
+            console.warn(
+              `[vibe-dms] Modèle ${modelToTry} en échec, essai du suivant...`,
+              callErr
+            );
           }
         }
       }
@@ -479,7 +624,10 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
       }
 
       // Décompte comptabilisé dans les quotas de l'utilisateur
-      const estimatedTokens = Math.max(75, Math.ceil((prompt.length + suggestion.length) / 3));
+      const estimatedTokens = Math.max(
+        75,
+        Math.ceil((prompt.length + suggestion.length) / 3)
+      );
       try {
         await sql`
           INSERT INTO weekly_usage (user_id, week_start, tokens_used)
@@ -498,16 +646,23 @@ export function registerDMMessageActionRoutes(app: Hono, registerMulti: Register
       });
     } catch (err: any) {
       console.error("[vibe-dms] Generate reply error:", err);
-      return c.json({ error: err?.message || "Erreur génération de réponse." }, 500);
+      return c.json(
+        { error: err?.message || "Erreur génération de réponse." },
+        500
+      );
     }
   };
 
-  registerMulti("post", [
-    "/api/vibe/dms/generate-reply/:partnerId",
-    "/vibe/dms/generate-reply/:partnerId",
-    "/v1/dms/generate-reply/:partnerId",
-    "/api/vibe/dms/suggest-reply",
-    "/vibe/dms/suggest-reply",
-    "/v1/dms/suggest-reply",
-  ], handleDMGenerateReply);
+  registerMulti(
+    "post",
+    [
+      "/api/vibe/dms/generate-reply/:partnerId",
+      "/vibe/dms/generate-reply/:partnerId",
+      "/v1/dms/generate-reply/:partnerId",
+      "/api/vibe/dms/suggest-reply",
+      "/vibe/dms/suggest-reply",
+      "/v1/dms/suggest-reply",
+    ],
+    handleDMGenerateReply
+  );
 }

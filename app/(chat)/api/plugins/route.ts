@@ -10,6 +10,11 @@ import {
   installPlugin,
 } from "@/lib/db/queries";
 import { buildCatalogEntries, getPluginManifest } from "@/lib/plugins/catalog";
+import {
+  canUsePlugin,
+  pluginTierMessage,
+  withTierLock,
+} from "@/lib/plugins/tier-lock";
 
 const installPluginSchema = z.object({
   pluginId: z.string().min(1).max(64),
@@ -25,12 +30,15 @@ export async function GET() {
 
   try {
     const installations = await getPluginInstallationsByUserId({ userId });
-    const plugins = buildCatalogEntries(
-      installations.map((i) => ({
-        isEnabled: i.isEnabled,
-        pluginId: i.pluginId,
-        version: i.version,
-      }))
+    const plugins = withTierLock(
+      buildCatalogEntries(
+        installations.map((i) => ({
+          isEnabled: i.isEnabled,
+          pluginId: i.pluginId,
+          version: i.version,
+        }))
+      ),
+      user.tier
     );
     return Response.json({ plugins });
   } catch (error) {
@@ -58,6 +66,14 @@ export async function POST(request: Request) {
       });
     }
 
+    // Le niveau d'abonnement déclaré par le manifeste est appliqué ici : le
+    // forfait payant générique ne suffit pas pour un plugin réservé à Pro/Max.
+    if (!canUsePlugin(manifest, user.tier)) {
+      return errorResponse("plan_required", {
+        message: pluginTierMessage(manifest),
+      });
+    }
+
     await installPlugin({
       pluginId: manifest.id,
       userId,
@@ -65,12 +81,15 @@ export async function POST(request: Request) {
     });
 
     const installations = await getPluginInstallationsByUserId({ userId });
-    const plugins = buildCatalogEntries(
-      installations.map((i) => ({
-        isEnabled: i.isEnabled,
-        pluginId: i.pluginId,
-        version: i.version,
-      }))
+    const plugins = withTierLock(
+      buildCatalogEntries(
+        installations.map((i) => ({
+          isEnabled: i.isEnabled,
+          pluginId: i.pluginId,
+          version: i.version,
+        }))
+      ),
+      user.tier
     );
     return Response.json({
       plugin: plugins.find((p) => p.id === manifest.id) ?? null,

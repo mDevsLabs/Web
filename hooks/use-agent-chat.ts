@@ -46,6 +46,37 @@ export type AgentRunHistoryPayload = {
   >;
 };
 
+// Une partie de message déclenche la reprise si l'utilisateur a accordé une
+// approbation, ou s'il a répondu à une question (marqueur posé par la carte
+// après validation serveur). Aucune autre sortie d'outil ne déclenche.
+function isResumeTriggerPart(part: unknown): boolean {
+  if (!part || typeof part !== "object") {
+    return false;
+  }
+  const candidate = part as {
+    approval?: { approved?: boolean };
+    output?: { answered?: boolean };
+    state?: string;
+  };
+  const output = candidate.output;
+  const answered =
+    output !== null && typeof output === "object"
+      ? (output as { answered?: boolean }).answered
+      : undefined;
+  if (candidate.state === "approval-responded") {
+    return candidate.approval?.approved === true;
+  }
+  return candidate.state === "output-available" && answered === true;
+}
+
+export type SubmitUserInputResult =
+  | { message?: string; ok: true }
+  | { message: string; ok: false };
+
+// Partie de message Agent telle que produite par le transport : sert
+// uniquement à marquer localement une réponse déjà validée par le serveur.
+type AgentMessagePart = NonNullable<ChatMessage["parts"]>[number];
+
 const EMPTY_OPTIONS: AgentRequestOptions = {
   autonomy: "standard",
   enabledCategories: null,
@@ -140,31 +171,16 @@ export function useAgentChat({
         `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agent/runs?chatId=${chatId}`
       );
     },
+    // Reprise du MÊME run, uniquement sur une action explicite de
+    // l'utilisateur : une approbation accordée, ou une réponse enregistrée par
+    // la carte de clarification. Une simple sortie d'outil ne relance JAMAIS
+    // le run : un run qui attend une réponse ne doit pas avancer sans elle.
     sendAutomaticallyWhen: ({ messages: currentMessages }) => {
       const lastMessage = currentMessages.at(-1);
       if (!lastMessage) {
         return false;
       }
-      const hasApprovedTool = lastMessage.parts?.some(
-        (part) =>
-          "state" in part &&
-          part.state === "approval-responded" &&
-          "approval" in part &&
-          (part.approval as { approved?: boolean })?.approved === true
-      );
-      if (hasApprovedTool) {
-        return true;
-      }
-      // Reprise du même run : Agent a rendu la main (question, approbation) et
-      // l'utilisateur vient de répondre.
-      return Boolean(
-        lastMessage.parts?.some(
-          (part) =>
-            "state" in part &&
-            part.state === "output-available" &&
-            "toolCallId" in part
-        )
-      );
+      return Boolean(lastMessage.parts?.some(isResumeTriggerPart));
     },
     transport: new DefaultChatTransport({
       api: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agent`,
@@ -276,6 +292,94 @@ export function useAgentChat({
 
   const runId = streamState.run?.runId ?? null;
 
+  // Enregistrement d'une réponse à un questionnaire : le serveur valide et
+  // persiste (autorité unique), puis le message local est marqué « répondu »
+  // pour que la reprise du même run soit déclenchée. Le contenu transmis au
+  // modèle est toujours relu depuis la base, jamais depuis ce marqueur.
+  const submitUserInputAnswer = useCallback(
+    async ({
+      answers,
+      requestId,
+      revision,
+      runId: answeredRunId,
+      toolCallId,
+    }: {
+      answers: { questionId: string; value: unknown }[];
+      requestId: string;
+      revision: number;
+      runId?: string;
+      toolCallId: string;
+    }): Promise<SubmitUserInputResult> => {
+      // Le run vient de l'état de flux quand il existe, sinon de la sortie
+      // persistée de la question (après un refresh) : jamais d'un identifiant
+      // fabriqué côté client.
+      const targetRunId = runId ?? answeredRunId ?? "";
+      if (!targetRunId) {
+        return {
+          message:
+            "Ce run n'est plus joignable : rechargez la conversation avant de répondre.",
+          ok: false,
+        };
+      }
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agent/runs/${targetRunId}/user-input`,
+          {
+            body: JSON.stringify({ answers, requestId, revision }),
+            headers: { "Content-Type": "application/json" },
+            method: "POST",
+          }
+        );
+        const payload = (await response.json().catch(() => null)) as {
+          error?: string;
+          message?: string;
+          ok?: boolean;
+        } | null;
+        if (!response.ok || !payload?.ok) {
+          return {
+            message:
+              payload?.message ??
+              "Votre réponse n'a pas pu être enregistrée. Réessayez.",
+            ok: false,
+          };
+        }
+        setMessages((current) =>
+          current.map((message) => ({
+            ...message,
+            parts: (message.parts ?? []).map((part) => {
+              const candidate = part as { toolCallId?: string };
+              if (candidate.toolCallId !== toolCallId) {
+                return part;
+              }
+              // Marqueur local : la réponse faisant autorité est relue depuis
+              // la base par le serveur à la reprise, jamais depuis ce champ. Les
+              // données du questionnaire sont conservées pour que la carte
+              // reste lisible (question + réponse) après l'envoi.
+              const current = (part as { output?: unknown }).output;
+              return {
+                ...part,
+                output: {
+                  ...(current && typeof current === "object" ? current : {}),
+                  answered: true,
+                  answers,
+                  status: "answered",
+                },
+                state: "output-available",
+              } as unknown as AgentMessagePart;
+            }),
+          }))
+        );
+        return { ok: true };
+      } catch {
+        return {
+          message: "Connexion impossible : votre réponse n'a pas été envoyée.",
+          ok: false,
+        };
+      }
+    },
+    [runId, setMessages]
+  );
+
   // Stop : on annule le flux côté client, puis on confirme côté serveur pour
   // que le run soit marqué « cancelled » et que les étapes déjà réalisées
   // restent intactes.
@@ -309,6 +413,7 @@ export function useAgentChat({
     },
     status,
     stopRun,
+    submitUserInputAnswer,
   };
 }
 

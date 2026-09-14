@@ -266,7 +266,9 @@ export async function listDueSchedules(params: {
 
 // Réservation atomique : UPDATE conditionnel ... RETURNING. Si aucun worker
 // ne détient l'occurrence (pending, ou lease expirée), elle est réclamée ;
-// le second worker concurrent obtient zéro ligne.
+// le second worker concurrent obtient zéro ligne. Chaque claim incrémente
+// `attempt` : le compteur de tentatives est donc porté par la base et borne
+// les reprises après échec (SCHEDULE_MAX_ATTEMPTS).
 export async function claimOccurrence(params: {
   now: Date;
   occurrenceId: string;
@@ -277,6 +279,7 @@ export async function claimOccurrence(params: {
     const rows = await db
       .update(agentScheduleOccurrence)
       .set({
+        attempt: sql`${agentScheduleOccurrence.attempt} + 1`,
         claimedAt: params.now,
         claimedBy: params.workerId,
         leaseUntil: new Date(params.now.getTime() + OCCURRENCE_LEASE_MS),
@@ -365,6 +368,86 @@ export async function listExpiredLeaseOccurrences(params: {
   }
 }
 
+// Occurrence liée à un run : sert à la fois au résolveur de notifications
+// (le run vient-il d'une tâche planifiée ?) et à la reprise après crash
+// (retrouver l'occurrence mère d'un run interrompu).
+export async function getOccurrenceByRunId(params: {
+  runId: string;
+}): Promise<AgentOccurrenceRecord | null> {
+  try {
+    const db = await dbReady();
+    const [row] = await db
+      .select()
+      .from(agentScheduleOccurrence)
+      .where(eq(agentScheduleOccurrence.runId, params.runId))
+      .orderBy(desc(agentScheduleOccurrence.dueAt))
+      .limit(1);
+    return row ?? null;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+// Retour d'une occurrence réclamée sans run vers l'état pending : après un
+// crash entre claim et création du run, elle redevient éligible au tick
+// suivant au lieu d'être perdue (ni doublonnée : la clé unique tient).
+export async function resetOccurrenceToPending(params: {
+  id: string;
+}): Promise<void> {
+  try {
+    const db = await dbReady();
+    await db
+      .update(agentScheduleOccurrence)
+      .set({
+        claimedAt: null,
+        claimedBy: null,
+        leaseUntil: null,
+        status: "pending",
+      })
+      .where(eq(agentScheduleOccurrence.id, params.id));
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+// One-shot terminé : la tâche n'a plus d'échéance future. Passage en paused
+// (et non deleted) : l'historique reste visible dans l'interface et le run
+// produit reste rattachable. listDueSchedules filtre sur status active, donc
+// le schedule ne sera plus repris par les ticks — plus jamais de repoll d'une
+// échéance passée.
+export async function deactivateScheduleAfterRun(params: {
+  id: string;
+  lastRunAt: Date;
+}): Promise<void> {
+  try {
+    const db = await dbReady();
+    await db
+      .update(agentSchedule)
+      .set({ lastRunAt: params.lastRunAt, status: "paused" })
+      .where(eq(agentSchedule.id, params.id));
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+// Lecture par id (sans filtre utilisateur) : usage serveur uniquement —
+// reprise après crash, diagnostics du scheduler.
+export async function getOccurrenceById(params: {
+  id: string;
+}): Promise<AgentOccurrenceRecord | null> {
+  try {
+    const db = await dbReady();
+    const [row] = await db
+      .select()
+      .from(agentScheduleOccurrence)
+      .where(eq(agentScheduleOccurrence.id, params.id))
+      .limit(1);
+    return row ?? null;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
 export async function listOccurrencesByScheduleId(params: {
   limit?: number;
   scheduleId: string;
@@ -391,8 +474,9 @@ export async function createApprovalRequest(params: {
   params: Record<string, unknown>;
   paramsHash: string;
   runId: string;
-  stepId: string;
-  toolExecutionId: string;
+  stepId?: string | null;
+  toolCallId: string;
+  toolExecutionId?: string | null;
   toolId: string;
 }): Promise<ApprovalRequestRecord> {
   try {
@@ -404,12 +488,38 @@ export async function createApprovalRequest(params: {
         params: params.params,
         paramsHash: params.paramsHash,
         runId: params.runId,
-        stepId: params.stepId,
-        toolExecutionId: params.toolExecutionId,
+        stepId: params.stepId ?? null,
+        toolCallId: params.toolCallId,
+        toolExecutionId: params.toolExecutionId ?? null,
         toolId: params.toolId,
       })
       .returning();
     return row;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+// Une demande par appel d'outil : la reprise relit TOUJOURS la décision
+// persistée de cet appel précis, jamais un état transmis par le client.
+export async function getApprovalRequestByToolCall(params: {
+  runId: string;
+  toolCallId: string;
+}): Promise<ApprovalRequestRecord | null> {
+  try {
+    const db = await dbReady();
+    const [row] = await db
+      .select()
+      .from(approvalRequest)
+      .where(
+        and(
+          eq(approvalRequest.runId, params.runId),
+          eq(approvalRequest.toolCallId, params.toolCallId)
+        )
+      )
+      .orderBy(desc(approvalRequest.createdAt))
+      .limit(1);
+    return row ?? null;
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -480,6 +590,29 @@ export async function decideApprovalRequest(params: {
     return any
       ? { ok: false, reason: "hash_mismatch" }
       : { ok: false, reason: "not_found" };
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+// Caducité d'une demande : les paramètres présentés ne correspondent plus à
+// l'appel d'outil en cours, l'accord ne doit donc plus pouvoir s'appliquer. Le
+// passage à « expired » est conditionné au statut « pending » : une demande
+// déjà décidée n'est jamais écrasée.
+export async function expireApprovalRequestById(params: {
+  id: string;
+}): Promise<void> {
+  try {
+    const db = await dbReady();
+    await db
+      .update(approvalRequest)
+      .set({ status: "expired" })
+      .where(
+        and(
+          eq(approvalRequest.id, params.id),
+          eq(approvalRequest.status, "pending")
+        )
+      );
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }

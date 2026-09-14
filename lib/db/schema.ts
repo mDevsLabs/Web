@@ -17,6 +17,16 @@ import {
   uuid,
   varchar,
 } from "drizzle-orm/pg-core";
+import type { ScheduleRule } from "@/lib/agent/contracts";
+import type {
+  AgentOccurrenceRecord,
+  AgentRunCheckpoint,
+  AgentRunInstructionRecord,
+  AgentRunUsageNormalized,
+  AgentScheduleRecord,
+  ApprovalRequestRecord,
+  ToolExecutionAttemptFields,
+} from "@/lib/agent/db-schema";
 import type {
   AgentExecutionBudget,
   AgentPlan,
@@ -24,16 +34,6 @@ import type {
   ToolCategory,
   ToolPermission,
 } from "@/lib/agent/types";
-import type {
-  AgentRunCheckpoint,
-  AgentRunUsageNormalized,
-  ApprovalRequestRecord,
-  AgentOccurrenceRecord,
-  AgentRunInstructionRecord,
-  AgentScheduleRecord,
-  ToolExecutionAttemptFields,
-} from "@/lib/agent/db-schema";
-import type { ScheduleRule } from "@/lib/agent/contracts";
 
 export const project = pgTable(
   "Project",
@@ -79,7 +79,10 @@ export const skill = pgTable(
     pinned: boolean("pinned").notNull().default(false),
     shareId: text("shareId"),
     tags: text("tags").array().notNull().default([]),
-    templateId: uuid("templateId"),
+    // Slug du modèle de skill d'origine (ex : « sql-data-analyst »). Unique par
+    // utilisateur : l'installation d'un modèle est idempotente. Voir
+    // lib/skill-templates (source de vérité) et la migration 0019.
+    templateId: text("templateId"),
     tools: json("tools").notNull().default([]),
     updatedAt: timestamp("updatedAt").notNull().defaultNow(),
     usageCount: integer("usageCount").notNull().default(0),
@@ -279,11 +282,17 @@ export const document = pgTable(
     })
       .notNull()
       .default("text"),
+    // Rattachement facultatif d'un livrable à un projet : un résultat Agent
+    // peut être conservé dans le projet sélectionné, sans changer de table.
+    projectId: uuid("projectId").references(() => project.id, {
+      onDelete: "set null",
+    }),
     title: text("title").notNull(),
     userId: text("userId").notNull(),
   },
   (table) => ({
     pk: primaryKey({ columns: [table.id, table.createdAt] }),
+    projectIdx: index("Document_projectId_idx").on(table.projectId),
   })
 );
 
@@ -475,6 +484,10 @@ export const mcpServer = pgTable(
     })
       .notNull()
       .default("write_only"),
+    // Slug du modèle MCP d'origine (ex : « github »), vide pour un serveur
+    // ajouté à la main. Unique par utilisateur : installer deux fois le même
+    // modèle réutilise le serveur existant (voir lib/mcp-templates/install).
+    templateId: text("templateId"),
     timeoutMs: integer("timeoutMs").notNull().default(15_000),
     toolOverrides: json("toolOverrides").notNull().default({}),
     toolsCache: json("toolsCache").notNull().default([]),
@@ -580,7 +593,6 @@ export const notification = pgTable(
 export type Notification = InferSelectModel<typeof notification>;
 
 export const userNotificationPrefs = pgTable("user_notification_prefs", {
-  aiResponse: boolean("aiResponse").notNull().default(true),
   // Canaux Agent : in-app est toujours actif pour les événements importants ;
   // email et push restent désactivés tant que l'infrastructure mAI n'est pas
   // confirmée (aucune clé utilisateur, jamais les connexions Gmail).
@@ -594,6 +606,7 @@ export const userNotificationPrefs = pgTable("user_notification_prefs", {
   agentUserInputRequired: boolean("agentUserInputRequired")
     .notNull()
     .default(true),
+  aiResponse: boolean("aiResponse").notNull().default(true),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
   enabled: boolean("enabled").notNull().default(false),
   mcpAccessRequest: boolean("mcpAccessRequest").notNull().default(true),
@@ -654,6 +667,11 @@ export const userPreferences = pgTable("user_preferences", {
 
 export type UserPreferences = InferSelectModel<typeof userPreferences>;
 
+// Tables historiques des catalogues de modèles, alimentées par d'anciens
+// fichiers de seed supprimés. Les catalogues sont désormais statiques et
+// versionnés (lib/skill-templates, lib/mcp-templates) : ces tables ne sont plus
+// lues ni écrites, et sont conservées uniquement pour ne pas casser les
+// environnements existants (voir migration 0019).
 export const skillTemplate = pgTable(
   "SkillTemplate",
   {
@@ -939,6 +957,7 @@ export const agentRun = pgTable(
     chatId: uuid("chatId")
       .notNull()
       .references(() => chat.id, { onDelete: "cascade" }),
+    checkpoint: json("checkpoint").$type<AgentRunCheckpoint>(),
     completedAt: timestamp("completedAt"),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     error: text("error"),
@@ -951,6 +970,7 @@ export const agentRun = pgTable(
     })
       .notNull()
       .default("medium"),
+    revision: integer("revision").notNull().default(0),
     startedAt: timestamp("startedAt"),
     status: varchar("status", {
       enum: [
@@ -967,14 +987,18 @@ export const agentRun = pgTable(
     })
       .notNull()
       .default("queued"),
-    checkpoint: json("checkpoint").$type<AgentRunCheckpoint>(),
-    revision: integer("revision").notNull().default(0),
-    suggestedActions: json("suggestedActions").$type<unknown[]>().notNull().default([]),
-    usage: json("usage").$type<AgentRunUsage | AgentRunUsageNormalized>().notNull().default({}),
     stepCount: integer("stepCount").notNull().default(0),
+    suggestedActions: json("suggestedActions")
+      .$type<unknown[]>()
+      .notNull()
+      .default([]),
     toolCallCount: integer("toolCallCount").notNull().default(0),
     toolPolicySnapshot: json("toolPolicySnapshot")
       .$type<Record<string, ToolPermission>>()
+      .notNull()
+      .default({}),
+    usage: json("usage")
+      .$type<AgentRunUsage | AgentRunUsageNormalized>()
       .notNull()
       .default({}),
     userId: text("userId").notNull(),
@@ -1020,6 +1044,9 @@ export const agentStep = pgTable(
         "message",
         "verification",
         "error",
+        "user_input_request",
+        "user_input_answer",
+        "approval_request",
       ],
     }).notNull(),
   },
@@ -1043,6 +1070,8 @@ export const toolExecution = pgTable(
     })
       .notNull()
       .default("not_required"),
+    // Tentatives : chaque retry est une ligne liée à sa tentative parente.
+    attempt: integer("attempt").notNull().default(1),
     category: varchar("category", {
       enum: [
         "web",
@@ -1062,12 +1091,10 @@ export const toolExecution = pgTable(
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     durationMs: integer("durationMs"),
     error: text("error"),
+    errorCategory: varchar("errorCategory", { length: 32 }),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     input: json("input").$type<unknown>(),
     output: json("output").$type<unknown>(),
-    // Tentatives : chaque retry est une ligne liée à sa tentative parente.
-    attempt: integer("attempt").notNull().default(1),
-    errorCategory: varchar("errorCategory", { length: 32 }),
     parentExecutionId: uuid("parentExecutionId"),
     retryAfterMs: integer("retryAfterMs"),
     retryable: boolean("retryable").notNull().default(false),
@@ -1179,7 +1206,9 @@ export const agentScheduleOccurrence = pgTable(
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     // Lease anti-double-exécution : expirée => reprise après crash.
     leaseUntil: timestamp("leaseUntil"),
-    runId: uuid("runId").references(() => agentRun.id, { onDelete: "set null" }),
+    runId: uuid("runId").references(() => agentRun.id, {
+      onDelete: "set null",
+    }),
     scheduleId: uuid("scheduleId")
       .notNull()
       .references(() => agentSchedule.id, { onDelete: "cascade" }),
@@ -1190,19 +1219,20 @@ export const agentScheduleOccurrence = pgTable(
       .default("pending"),
   },
   (table) => ({
-    occurrenceUnique: uniqueIndex(
-      "AgentScheduleOccurrence_scheduleId_dueAt_key"
-    ).on(table.scheduleId, table.dueAt),
     claimIdx: index("AgentScheduleOccurrence_status_leaseUntil_idx").on(
       table.status,
       table.leaseUntil
     ),
+    occurrenceUnique: uniqueIndex(
+      "AgentScheduleOccurrence_scheduleId_dueAt_key"
+    ).on(table.scheduleId, table.dueAt),
     runIdIdx: index("AgentScheduleOccurrence_runId_idx").on(table.runId),
   })
 );
 
-export type AgentScheduleOccurrence =
-  InferSelectModel<typeof agentScheduleOccurrence>;
+export type AgentScheduleOccurrence = InferSelectModel<
+  typeof agentScheduleOccurrence
+>;
 
 // Approbation persistante liée à un appel d'outil et à SES paramètres exacts
 // (hash sha256 canonique) : toute modification de paramètres l'invalide.
@@ -1225,6 +1255,9 @@ export const approvalRequest = pgTable(
       .notNull()
       .default("pending"),
     stepId: uuid("stepId"),
+    // Identifiant de l'appel d'outil côté fournisseur : une demande par appel,
+    // relue à la reprise sans dépendre de ce que transmet le client.
+    toolCallId: text("toolCallId"),
     toolExecutionId: uuid("toolExecutionId"),
     toolId: text("toolId").notNull(),
   },
@@ -1232,6 +1265,10 @@ export const approvalRequest = pgTable(
     pendingIdx: index("ApprovalRequest_runId_status_idx").on(
       table.runId,
       table.status
+    ),
+    toolCallIdx: uniqueIndex("ApprovalRequest_runId_toolCallId_key").on(
+      table.runId,
+      table.toolCallId
     ),
   })
 );
@@ -1251,13 +1288,13 @@ export const agentRunInstruction = pgTable(
       .notNull()
       .references(() => agentRun.id, { onDelete: "cascade" }),
     seq: integer("seq").notNull(),
-    stopRequested: boolean("stopRequested").notNull().default(false),
-    text: text("text").notNull(),
     status: varchar("status", {
       enum: ["pending", "applied", "discarded"],
     })
       .notNull()
       .default("pending"),
+    stopRequested: boolean("stopRequested").notNull().default(false),
+    text: text("text").notNull(),
   },
   (table) => ({
     pendingIdx: index("AgentRunInstruction_runId_status_seq_idx").on(
@@ -1269,3 +1306,57 @@ export const agentRunInstruction = pgTable(
 );
 
 export type AgentRunInstruction = InferSelectModel<typeof agentRunInstruction>;
+
+// Questionnaire posé par un outil d'attente utilisateur (ask_user) : les
+// questions servent de contrat validé côté serveur, et la réponse est liée au
+// ToolCall exact. Après refresh ou fermeture de l'application, la demande et sa
+// réponse restent lisibles ; la réponse est validée puis réinjectée dans le
+// même AgentRun.
+export const agentUserInputRequest = pgTable(
+  "AgentUserInputRequest",
+  {
+    answeredAt: timestamp("answeredAt"),
+    answeredBy: text("answeredBy"),
+    answers: json("answers").$type<unknown>(),
+    chatId: uuid("chatId").notNull(),
+    context: text("context"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    expiresAt: timestamp("expiresAt").notNull(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    questions: json("questions").$type<unknown>().notNull(),
+    // Empreinte canonique des questions affichées : le questionnaire ne peut
+    // pas être modifié après présentation sans invalider la réponse.
+    questionsHash: varchar("questionsHash", { length: 64 }).notNull(),
+    revision: integer("revision").notNull().default(0),
+    runId: uuid("runId")
+      .notNull()
+      .references(() => agentRun.id, { onDelete: "cascade" }),
+    status: varchar("status", {
+      enum: ["pending", "answered", "expired", "cancelled"],
+    })
+      .notNull()
+      .default("pending"),
+    stepId: uuid("stepId"),
+    title: text("title").notNull(),
+    toolCallId: text("toolCallId").notNull(),
+    toolExecutionId: uuid("toolExecutionId"),
+    toolId: text("toolId").notNull(),
+  },
+  (table) => ({
+    chatStatusIdx: index("AgentUserInputRequest_chatId_status_idx").on(
+      table.chatId,
+      table.status
+    ),
+    runStatusIdx: index("AgentUserInputRequest_runId_status_idx").on(
+      table.runId,
+      table.status
+    ),
+    toolExecutionKey: uniqueIndex(
+      "AgentUserInputRequest_toolExecutionId_key"
+    ).on(table.toolExecutionId),
+  })
+);
+
+export type AgentUserInputRequest = InferSelectModel<
+  typeof agentUserInputRequest
+>;

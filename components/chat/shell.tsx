@@ -3,7 +3,6 @@
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
-import { AgentModeSwitcher } from "@/components/agent/agent-mode-switcher";
 import { AgentShell } from "@/components/agent/agent-shell";
 import { AgentUpgradeDialog } from "@/components/agent/agent-upgrade-dialog";
 import {
@@ -29,6 +28,7 @@ import { cn } from "@/lib/utils";
 import { Artifact } from "./artifact";
 import { ChatHeader } from "./chat-header";
 import { DataStreamHandler } from "./data-stream-handler";
+import { HomeModeSwitcher } from "./home-mode-switcher";
 import { submitEditedMessage } from "./message-editor";
 import { Messages } from "./messages";
 import { MultimodalInput } from "./multimodal-input";
@@ -183,15 +183,10 @@ export function ChatShell() {
           />
 
           <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden bg-background md:rounded-tl-[12px] md:border-t md:border-l md:border-border/40">
-            {messages.length === 0 && !isLoading ? (
-              <div className="relative z-20 flex shrink-0 justify-center px-3 pt-5 pb-1">
-                <AgentModeSwitcher
-                  mode={effectiveMode}
-                  onBlockedAgentSelect={handleBlockedAgentSelect}
-                  onModeChange={handleModeChange}
-                />
-              </div>
-            ) : null}
+            {/* Le sélecteur Chat | Agent n'est plus une rangée autonome : il
+                est rendu par la pile d'accueil (via `modeSwitcher`), à la
+                même place que sur l'accueil Agent, et seulement quand
+                l'accueil est affiché (aucune conversation). */}
             <Messages
               addToolApprovalResponse={addToolApprovalResponse}
               chatId={chatId}
@@ -199,6 +194,15 @@ export function ChatShell() {
               isLoading={isLoading}
               isReadonly={isReadonly}
               messages={messages}
+              modeSwitcher={
+                messages.length === 0 && !isLoading ? (
+                  <HomeModeSwitcher
+                    mode={effectiveMode}
+                    onBlockedAgentSelect={handleBlockedAgentSelect}
+                    onModeChange={handleModeChange}
+                  />
+                ) : null
+              }
               onEditMessage={handleEditMessage}
               regenerate={regenerate}
               selectedModelId={currentModelId}
@@ -207,7 +211,10 @@ export function ChatShell() {
               votes={votes}
             />
 
-            <div className="sticky bottom-0 z-30 mx-auto flex w-full max-w-4xl gap-2 border-t border-border/10 bg-background px-2 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-2 md:px-4 md:pb-[calc(env(safe-area-inset-bottom)+1rem)] md:pt-3 supports-[padding:env(safe-area-inset-bottom)]:pb-[calc(env(safe-area-inset-bottom)+0.75rem)]">
+            {/* Barre de message collante en bas : mêmes largeur (max-w-3xl),
+                paddings et bordure supérieure que la barre d'Agent, pour que
+                l'accueil des deux modes partage le même gabarit. */}
+            <div className="sticky bottom-0 z-30 mx-auto flex w-full max-w-3xl gap-2 border-t border-border/10 bg-background px-2 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-2 md:px-4 md:pb-[calc(env(safe-area-inset-bottom)+1rem)] md:pt-3 supports-[padding:env(safe-area-inset-bottom)]:pb-[calc(env(safe-area-inset-bottom)+0.75rem)]">
               {!isReadonly && (
                 <MultimodalInput
                   attachments={attachments}

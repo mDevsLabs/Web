@@ -1,5 +1,6 @@
 "use client";
 
+import DOMPurify from "dompurify";
 import { Columns2Icon, Rows2Icon } from "lucide-react";
 import OrderedMap from "orderedmap";
 import {
@@ -15,7 +16,6 @@ import { EditorState } from "prosemirror-state";
 import { EditorView } from "prosemirror-view";
 import { useEffect, useRef, useState } from "react";
 import { renderToString } from "react-dom/server";
-import DOMPurify from "dompurify";
 
 import { MessageResponse } from "@/components/ai-elements/message";
 import { DiffType, diffEditor } from "@/lib/editor/diff";

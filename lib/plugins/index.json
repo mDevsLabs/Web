@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": "2026.09.13",
+  "catalogVersion": "2026.09.14",
   "categories": [
     {
       "id": "meteo",
@@ -40,6 +40,24 @@
       "dir": "quizzly",
       "entry": "./quizzly",
       "manifest": "./quizzly/index.json"
+    },
+    {
+      "id": "air-quality",
+      "dir": "air-quality",
+      "entry": "./air-quality",
+      "manifest": "./air-quality/index.json"
+    },
+    {
+      "id": "json-toolbox",
+      "dir": "json-toolbox",
+      "entry": "./json-toolbox",
+      "manifest": "./json-toolbox/index.json"
+    },
+    {
+      "id": "fr-holidays",
+      "dir": "fr-holidays",
+      "entry": "./fr-holidays",
+      "manifest": "./fr-holidays/index.json"
     }
   ]
 }

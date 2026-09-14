@@ -29,38 +29,15 @@ import {
 } from "lucide-react";
 import type { ComponentType } from "react";
 
-export const TOOL_IDS = [
-  "getWeather",
-  "createDocument",
-  "editDocument",
-  "updateDocument",
-  "requestSuggestions",
-  "imageGenerate",
-  "audioGenerate",
-  "audioPodcast",
-  "codeExecution",
-  "webSearch",
-  "webCapture",
-  "calculator",
-  "dateTime",
-  "calendarReminder",
-  "note",
-  "memory",
-  "readUrl",
-  "documentParser",
-  "generateChart",
-  "generateDiagram",
-  "cryptoTools",
-  "currencyConverter",
-  "qrCodeGenerator",
-  "askUser",
-  "quizzly",
-  "updateAccountProfile",
-  "getAccountUsage",
-  "updateProfilePicture",
-] as const;
+// Source unique : `lib/ai/tools/ids.ts` distingue les outils réellement
+// implémentés par `createChatTools` (NATIVE_TOOL_IDS) de ceux livrés par un
+// plugin (PLUGIN_PROVIDED_TOOL_IDS), tout en exposant la liste complète des
+// identifiants sélectionnables dans l'interface.
+import { type ChatToolId, TOOL_IDS } from "./ids";
 
-export type NativeToolId = (typeof TOOL_IDS)[number];
+export { TOOL_IDS };
+
+export type NativeToolId = ChatToolId;
 
 // Un identifiant d'outil sélectionnable : outil natif (menu +, skills,
 // planification) ou outil fourni par un plugin installé. Le `string & {}`
@@ -74,6 +51,9 @@ export type ToolMeta = {
   description: string;
   icon: ComponentType<{ className?: string }>;
   isArtifact?: boolean;
+  // « plugin » : l'outil n'est pas instancié par `createChatTools` mais fourni
+  // par un plugin installable (réservé aux forfaits payants).
+  providedBy?: "native" | "plugin";
 };
 
 export const TOOLS_META: Record<ToolId, ToolMeta> = {
@@ -190,6 +170,7 @@ export const TOOLS_META: Record<ToolId, ToolMeta> = {
     icon: CloudSunIcon as any,
     id: "getWeather",
     label: "Météo",
+    providedBy: "plugin",
   },
   imageGenerate: {
     description:
@@ -225,6 +206,7 @@ export const TOOLS_META: Record<ToolId, ToolMeta> = {
     icon: TrophyIcon as any,
     id: "quizzly",
     label: "Quizzly",
+    providedBy: "plugin",
   },
   readUrl: {
     description:

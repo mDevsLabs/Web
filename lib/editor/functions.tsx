@@ -1,10 +1,10 @@
 "use client";
 
+import DOMPurify from "dompurify";
 import { defaultMarkdownSerializer } from "prosemirror-markdown";
 import { DOMParser, type Node } from "prosemirror-model";
 import { Decoration, DecorationSet, type EditorView } from "prosemirror-view";
 import { renderToString } from "react-dom/server";
-import DOMPurify from "dompurify";
 
 import { MessageResponse } from "@/components/ai-elements/message";
 

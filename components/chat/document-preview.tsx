@@ -107,6 +107,7 @@ export function DocumentPreview({
           createdAt: new Date(),
           id: artifact.documentId,
           kind: artifact.kind,
+          projectId: null,
           title: artifact.title,
           userId: "noop",
         }

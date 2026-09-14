@@ -33,7 +33,6 @@ import {
   mcpLog,
   mcpServer,
   mcpServerSecret,
-  mcpTemplate,
   message,
   pluginInstallation,
   project,
@@ -42,7 +41,6 @@ import {
   type Suggestion,
   scheduledMessage,
   skill,
-  skillTemplate,
   skillUsage,
   skillVersion,
   stream,
@@ -673,7 +671,25 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "lastUsedAt" timestamp`
   );
   await run(
-    client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "templateId" uuid`
+    client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "templateId" text`
+  );
+  // Les modèles de Skills sont identifiés par un slug (et non plus par un uuid
+  // de la table SkillTemplate) : la colonne historique est convertie une fois
+  // pour toutes, puis rendue unique par utilisateur (installation idempotente).
+  await run(
+    client`ALTER TABLE "Skill" DROP CONSTRAINT IF EXISTS "Skill_templateId_fkey"`
+  );
+  await run(
+    client`ALTER TABLE "Skill" ALTER COLUMN "templateId" TYPE text USING "templateId"::text`
+  );
+  await run(
+    client`CREATE UNIQUE INDEX IF NOT EXISTS "Skill_userId_templateId_key" ON "Skill" ("userId", "templateId") WHERE "templateId" IS NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "templateId" text`
+  );
+  await run(
+    client`CREATE UNIQUE INDEX IF NOT EXISTS "McpServer_userId_templateId_key" ON "McpServer" ("userId", "templateId") WHERE "templateId" IS NOT NULL`
   );
   await run(client`CREATE TABLE IF NOT EXISTS "user_mcp_prefs" (
     "userId" text PRIMARY KEY NOT NULL,
@@ -1907,6 +1923,48 @@ export async function getDocumentById({ id }: { id: string }) {
   }
 }
 
+// Rattache (ou retire) un livrable à un projet. Le filtrage par userId est
+// appliqué ici : un livrable d'un autre utilisateur ne peut jamais être
+// rattaché à un projet, même si l'identifiant est deviné.
+export async function attachDocumentToProject({
+  documentId,
+  projectId,
+  userId,
+}: {
+  documentId: string;
+  projectId: string | null;
+  userId: string;
+}) {
+  try {
+    const db = await dbReady();
+    const rows = await db
+      .update(document)
+      .set({ projectId })
+      .where(and(eq(document.id, documentId), eq(document.userId, userId)))
+      .returning();
+    return rows.at(-1) ?? null;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function getDocumentsByProject({
+  projectId,
+}: {
+  projectId: string;
+}) {
+  try {
+    const db = await dbReady();
+    return await db
+      .select()
+      .from(document)
+      .where(eq(document.projectId, projectId))
+      .orderBy(desc(document.createdAt));
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
 export async function deleteDocumentsByIdAfterTimestamp({
   id,
   timestamp,
@@ -2194,6 +2252,24 @@ export async function getSkillsByUserId({ userId }: { userId: string }) {
     .from(skill)
     .where(eq(skill.userId, userId))
     .orderBy(desc(skill.pinned), desc(skill.updatedAt));
+}
+
+// Skill installé depuis un modèle donné : sert à rendre l'installation d'un
+// modèle idempotente (un seul skill par utilisateur et par slug de modèle).
+export async function getSkillByTemplateId({
+  userId,
+  templateId,
+}: {
+  userId: string;
+  templateId: string;
+}) {
+  const database = await getDb();
+  const [result] = await database
+    .select()
+    .from(skill)
+    .where(and(eq(skill.userId, userId), eq(skill.templateId, templateId)))
+    .limit(1);
+  return result ?? null;
 }
 
 export async function getSkillById({
@@ -2559,6 +2635,26 @@ export async function getMcpServerById({
   return result ?? null;
 }
 
+// Serveur MCP installé depuis un modèle donné : l'installation d'un modèle MCP
+// est idempotente (un seul serveur par utilisateur et par slug de modèle).
+export async function getMcpServerByTemplateId({
+  userId,
+  templateId,
+}: {
+  userId: string;
+  templateId: string;
+}) {
+  const database = await getDb();
+  const [result] = await database
+    .select()
+    .from(mcpServer)
+    .where(
+      and(eq(mcpServer.userId, userId), eq(mcpServer.templateId, templateId))
+    )
+    .limit(1);
+  return result ?? null;
+}
+
 export async function createMcpServer(data: {
   userId: string;
   name: string;
@@ -2581,6 +2677,8 @@ export async function createMcpServer(data: {
   >;
   timeoutMs?: number;
   rateLimitPerMin?: number;
+  /** Slug du modèle MCP d'origine (voir lib/mcp-templates). */
+  templateId?: string | null;
 }) {
   const database = await getDb();
   const [created] = await database
@@ -2598,6 +2696,7 @@ export async function createMcpServer(data: {
       name: data.name,
       rateLimitPerMin: data.rateLimitPerMin ?? 60,
       requireApproval: data.requireApproval ?? "write_only",
+      templateId: data.templateId ?? null,
       timeoutMs: data.timeoutMs ?? 15_000,
       toolOverrides: (data.toolOverrides as any) ?? {},
       toolsCache: (data.toolsCache as any) ?? [],
@@ -2851,33 +2950,11 @@ export async function updateMcpServerSync({
   return updated ?? null;
 }
 
-export async function getSkillTemplates() {
-  const database = await getDb();
-  return database
-    .select()
-    .from(skillTemplate)
-    .where(eq(skillTemplate.isPublic, true))
-    .orderBy(desc(skillTemplate.createdAt));
-}
-
-export async function getMcpTemplates() {
-  const database = await getDb();
-  return database
-    .select()
-    .from(mcpTemplate)
-    .where(eq(mcpTemplate.isPublic, true))
-    .orderBy(desc(mcpTemplate.createdAt));
-}
-
-export async function getMcpTemplateById(id: string) {
-  const database = await getDb();
-  const [result] = await database
-    .select()
-    .from(mcpTemplate)
-    .where(eq(mcpTemplate.id, id))
-    .limit(1);
-  return result ?? null;
-}
+// Les catalogues de modèles (Skills / MCP) ne sont plus lus en base : la
+// source de vérité est statique et versionnée (lib/skill-templates,
+// lib/mcp-templates). Les tables SkillTemplate / McpTemplate sont conservées
+// pour ne pas casser les environnements existants mais ne sont plus alimentées
+// ni interrogées ; aucune requête concurrente des catalogues ne subsiste.
 
 // ==========================================
 // MCP SECRETS (chiffrés) — lib/mcp/encryption
@@ -3336,7 +3413,12 @@ export async function createNotification(data: {
     | "mcp_access_request"
     | "news"
     | "planning_task_completed"
-    | "quota_warning";
+    | "quota_warning"
+    // Notifications Agent (types autorisés par la contrainte 0017).
+    | "agent_approval_required"
+    | "agent_run_failed"
+    | "agent_run_finished"
+    | "agent_user_input_required";
   title: string;
   body?: string | null;
   link?: string | null;

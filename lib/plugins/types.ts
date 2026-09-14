@@ -21,6 +21,20 @@ export type PluginToolManifest = {
   systemHint: string;
 };
 
+// Permissions déclarées par un plugin : explicites, vérifiées par
+// `scripts/validate-plugins.ts` et rappelées telles quelles à l'utilisateur.
+// Un plugin qui écrit des données utilisateur DOIT exiger une approbation.
+export type PluginPermissions = {
+  /** Accès réseau : aucun, ou strictement en lecture. */
+  network: "none" | "read-only";
+  /** Le plugin lit des données rattachées à l'utilisateur. */
+  readsUserData: boolean;
+  /** Le plugin écrit/modifie des données rattachées à l'utilisateur. */
+  writesUserData: boolean;
+  /** Approbation explicite requise avant toute exécution sensible. */
+  requiresApproval: boolean;
+};
+
 export type PluginManifest = {
   id: string;
   name: string;
@@ -31,6 +45,7 @@ export type PluginManifest = {
   tags: string[];
   icon: PluginIconRef;
   minTier: "free" | "plus" | "pro" | "max";
+  permissions: PluginPermissions;
   tool: PluginToolManifest;
 };
 
@@ -56,4 +71,6 @@ export type PluginCatalogEntry = PluginManifest & {
   enabled: boolean;
   installedVersion: string | null;
   updateAvailable: boolean;
+  /** Le forfait courant est insuffisant : l'installation est refusée par le serveur. */
+  locked?: boolean;
 };

@@ -40,7 +40,7 @@ const updateSkillSchema = z.object({
   pinned: z.boolean().optional(),
   shareId: z.string().nullable().optional(),
   tags: z.array(z.string().max(50)).optional(),
-  templateId: z.string().uuid().nullable().optional(),
+  templateId: z.string().min(1).max(64).nullable().optional(),
   tools: z.array(z.string()).optional(),
   usageCount: z.number().int().min(0).optional(),
   version: z.string().max(20).optional(),

@@ -1,412 +1,24 @@
+import { isLucideIconName } from "@/lib/plugins/icon-allowlist";
 import type { McpTemplateDefinition } from "./types";
 
-// Modèles MCP configurés (format aligné sur lib/plugins). Chaque template
-// embarque des instructions détaillées pour trouver les tokens / clés d'API.
+// Catalogue des modèles MCP — SOURCE DE VÉRITÉ UNIQUE.
+//
+// Chaque entrée correspond à une intégration réellement documentée par son
+// éditeur (voir `docsUrl`) et vérifiée à la date `verifiedAt`. Les règles
+// suivantes sont contrôlées par `scripts/validate-mcp-templates.ts` :
+//   • aucune URL d'exemple (*.example.com) ni hôte de test ;
+//   • aucun secret dans `args` ni dans `env` (les tokens se saisissent dans la
+//     fiche du serveur, sont chiffrés puis injectés à l'appel) ;
+//   • aucune commande d'exécution dangereuse (shell, docker, kubectl, aws…) ;
+//   • chaque credential déclare sa destination (`kind`) et sa documentation.
+//
+// `activation: "requires_oauth_flow"` marque une intégration réelle mais non
+// installable tant que le flux OAuth interactif n'est pas implémenté : le
+// serveur refuse l'installation au lieu de laisser un bouton inerte.
 export const MCP_TEMPLATES: McpTemplateDefinition[] = [
   {
     manifest: {
-      args: "-y @modelcontextprotocol/server-gdrive",
-      author: "mAI",
-      authType: "oauth2",
-      category: "cloud",
-      command: "npx",
-      credentials: [
-        {
-          docsUrl: "https://console.cloud.google.com/apis/credentials",
-          instructions:
-            "Google Cloud Console → APIs & Services → Identifiants → « Créer des identifiants » → « ID client OAuth ». Type d'application : « Application de bureau ». Ajoutez https://developers.google.com/drive comme URI de redirection autorisée si demandé.",
-          key: "GOOGLE_CLIENT_ID",
-          label: "ID client OAuth 2.0",
-          required: true,
-        },
-        {
-          docsUrl: "https://console.cloud.google.com/apis/credentials",
-          instructions:
-            "Sur la même page Google Cloud Console, copiez le secret du client OAuth créé à l'étape précédente (bouton « Afficher »).",
-          key: "GOOGLE_CLIENT_SECRET",
-          label: "Secret client OAuth 2.0",
-          required: true,
-        },
-      ],
-      description:
-        "Rechercher, lire et modifier les fichiers et dossiers Google Drive de l'utilisateur.",
-      env: {
-        GOOGLE_CLIENT_ID: "votre-client-id.apps.googleusercontent.com",
-        GOOGLE_CLIENT_SECRET: "votre-secret-oauth",
-      },
-      icon: { name: "Folder", type: "lucide" },
-      id: "google-drive",
-      minTier: "plus",
-      name: "Google Drive",
-      requireApproval: "write_only",
-      setupInstructions: [
-        "1. Ouvrez https://console.cloud.google.com et créez (ou sélectionnez) un projet.",
-        "2. Dans « APIs & Services → Bibliothèque », activez l'API « Google Drive API ».",
-        "3. Dans « Identifiants », créez un ID client OAuth de type « Application de bureau ».",
-        "4. Activez l'écran de consentement OAuth (mode « Interne » ou « Test » suffit).",
-        "5. Collez l'ID client et le secret dans les variables d'environnement du serveur : GOOGLE_CLIENT_ID et GOOGLE_CLIENT_SECRET.",
-        "6. Installez, puis synchronisez les outils : la première recherche de fichiers ouvrira l'écran d'autorisation Google.",
-      ],
-      tags: ["Google", "Drive", "Fichiers", "Cloud"],
-      transport: "stdio",
-    },
-  },
-  {
-    manifest: {
-      args: "-y slack-mcp-server@latest --transport stdio",
-      author: "mAI",
-      authType: "bearer",
-      category: "collab",
-      command: "npx",
-      credentials: [
-        {
-          docsUrl: "https://api.slack.com/apps",
-          instructions:
-            "Sur api.slack.com, créez une application (option « From scratch »), puis dans « OAuth & Permissions » faites défiler jusqu'à « Bot Token Scopes » : ajoutez chat:write, channels:history, channels:read et im:history. Cliquez ensuite sur « Install to Workspace » : le token xoxb… s'affiche sur la page « OAuth & Permissions ».",
-          key: "SLACK_BOT_TOKEN",
-          label: "Token Bot (xoxb…)",
-          required: true,
-        },
-      ],
-      description:
-        "Lire, envoyer et organiser les messages des canaux Slack de votre espace de travail.",
-      env: { SLACK_BOT_TOKEN: "xoxb-votre-token-bot" },
-      icon: { name: "MessageSquare", type: "lucide" },
-      id: "slack",
-      minTier: "plus",
-      name: "Slack",
-      requireApproval: "write_only",
-      setupInstructions: [
-        "1. Ouvrez https://api.slack.com/apps → « Create New App » → « From scratch », choisissez votre espace de travail.",
-        "2. Onglet « OAuth & Permissions » → section « Bot Token Scopes » → « Add an OAuth Scope » : chat:write, channels:history, channels:read, im:history.",
-        "3. Cliquez « Install to Workspace » (ou « Reinstall » si l'app existait).",
-        "4. Copiez le « Bot User OAuth Token » (commence par xoxb-) affiché juste après l'installation.",
-        "5. Collez-le dans la variable d'environnement SLACK_BOT_TOKEN du serveur.",
-        "6. Invitez le bot dans les canaux concernés : /invite @VotreApp dans chaque canal.",
-      ],
-      tags: ["Slack", "Messages", "Équipe"],
-      transport: "stdio",
-    },
-  },
-  {
-    manifest: {
-      args: "-y @modelcontextprotocol/server-postgres postgresql://utilisateur:motdepasse@hote:5432/base",
-      author: "mAI",
-      authType: "none",
-      category: "data",
-      command: "npx",
-      credentials: [
-        {
-          docsUrl: "https://neon.com/docs/introduction/connect-neon",
-          instructions:
-            "Format : postgresql://user:password@host:5432/dbname. Chez Neon : tableau de bord du projet → « Connection string ». Chez Supabase : Settings → Database → « Connection string (URI) ». En local : pgAdmin ou psql « conninfo ». Remplacez les accolades <…> de l'argument par vos valeurs réelles après installation.",
-          key: "connectionString",
-          label: "Chaîne de connexion PostgreSQL",
-          required: true,
-        },
-      ],
-      description:
-        "Interroger et analyser une base PostgreSQL en lecture (requêtes SQL sécurisées).",
-      icon: { name: "Database", type: "lucide" },
-      id: "postgresql",
-      minTier: "plus",
-      name: "PostgreSQL",
-      requireApproval: "write_only",
-      setupInstructions: [
-        "1. Créez un utilisateur PostgreSQL dédié en lecture seule : CREATE USER mai_reader WITH PASSWORD '…'; GRANT CONNECT ON DATABASE mabase TO mai_reader;",
-        "2. Récupérez la chaîne de connexion chez votre hébergeur (Neon, Supabase, Railway) ou dans pgAdmin pour un serveur local.",
-        "3. Si votre mot de passe contient des caractères spéciaux, encodez-les en URL (ex : @ → %40).",
-        "4. Remplacez l'argument du template par votre chaîne réelle après installation (bouton Modifier).",
-        "5. Pour Supabase, préférez le « Pooler » (port 6543) afin d'éviter d'épuiser les connexions.",
-      ],
-      tags: ["SQL", "Base de données", "PostgreSQL"],
-      transport: "stdio",
-    },
-  },
-  {
-    manifest: {
-      args: "-y @sentry/mcp-server@latest",
-      author: "mAI",
-      authType: "bearer",
-      category: "devtools",
-      command: "npx",
-      credentials: [
-        {
-          docsUrl: "https://sentry.io/settings/account/api/auth-tokens/",
-          instructions:
-            "Connectez-vous sur sentry.io → icône profil en bas à gauche → « Settings » → « Auth Tokens » (ou directement Settings → Organization → Auth Tokens pour un token d'organisation). Cliquez « Create New Token », choisissez les portées « org:read », « project:read », « event:read », « event:write », puis copiez le token affiché (commence par sntrys_).",
-          key: "SENTRY_AUTH_TOKEN",
-          label: "Token d'authentification Sentry",
-          required: true,
-        },
-      ],
-      description:
-        "Consulter les erreurs, issues et releases Sentry pour déboguer plus vite.",
-      env: { SENTRY_AUTH_TOKEN: "sntrys_votre-token" },
-      icon: { name: "Bug", type: "lucide" },
-      id: "sentry",
-      minTier: "plus",
-      name: "Sentry",
-      requireApproval: "write_only",
-      setupInstructions: [
-        "1. Connectez-vous à https://sentry.io puis ouvrez Settings → Auth Tokens (token utilisateur) ou Settings → [Votre organisation] → Auth Tokens (token d'organisation, recommandé).",
-        "2. « Create New Token » avec les portées org:read, project:read, event:read et event:write.",
-        "3. Copiez immédiatement le token (sntrys_…) : il ne sera plus affiché ensuite.",
-        "4. Collez-le dans la variable d'environnement SENTRY_AUTH_TOKEN du serveur.",
-        "5. Indiquez ensuite à l'IA votre organisation et vos projets Sentry pour cibler les requêtes.",
-      ],
-      tags: ["Sentry", "Erreurs", "Monitoring"],
-      transport: "stdio",
-    },
-  },
-  {
-    manifest: {
-      args: "-y @modelcontextprotocol/server-redis redis://default:motdepasse@hote:6379",
-      author: "mAI",
-      authType: "none",
-      category: "data",
-      command: "npx",
-      credentials: [
-        {
-          docsUrl: "https://console.upstash.com",
-          instructions:
-            "Format : redis://[:motdepasse@]hote:port (ou rediss:// en TLS). Redis Cloud : base → « Connection » → endpoint et mot de passe par défaut de l'utilisateur « default ». Upstash : console → votre base → « REST & Redis » → copiez « Redis URL ». AWS ElastiCache : utilisez le endpoint primaire et activez AUTH. Remplacez l'argument du template par votre URL réelle après installation.",
-          key: "connectionUrl",
-          label: "URL de connexion Redis",
-          required: true,
-        },
-      ],
-      description:
-        "Inspecter et manipuler les clés, listes et structures de données Redis.",
-      icon: { name: "Zap", type: "lucide" },
-      id: "redis",
-      minTier: "plus",
-      name: "Redis",
-      requireApproval: "write_only",
-      setupInstructions: [
-        "1. Récupérez l'URL de connexion de votre instance Redis (Redis Cloud, Upstash, ElastiCache ou local).",
-        "2. En TLS (Upstash, Redis Cloud), utilisez le préfixe rediss:// au lieu de redis://.",
-        "3. Encodez le mot de passe en URL s'il contient des caractères spéciaux (ex : # → %23).",
-        "4. Remplacez l'argument du template par votre URL réelle après installation (bouton Modifier).",
-        "5. Limitez l'utilisateur Redis aux commandes nécessaires (ACL Redis) pour un périmètre minimal.",
-      ],
-      tags: ["Redis", "Cache", "Base de données"],
-      transport: "stdio",
-    },
-  },
-  {
-    manifest: {
-      args: "-y @modelcontextprotocol/server-google-maps",
-      author: "mAI",
-      authType: "custom_headers",
-      category: "maps",
-      command: "npx",
-      credentials: [
-        {
-          docsUrl:
-            "https://console.cloud.google.com/google/maps-apis/credentials",
-          instructions:
-            "Google Cloud Console → « APIs & Services » → « Identifiants » → « Créer des identifiants » → « Clé API ». Activez ensuite les API nécessaires dans la bibliothèque : Geocoding API, Directions API, Places API et Distance Matrix API. Restreignez la clé à ces API depuis « Restrictions d'API ».",
-          key: "GOOGLE_MAPS_API_KEY",
-          label: "Clé API Maps Platform",
-          required: true,
-        },
-      ],
-      description:
-        "Géocodage, itinéraires, lieux et calcul de distances via l'API Google Maps.",
-      env: { GOOGLE_MAPS_API_KEY: "votre-cle-api" },
-      icon: { name: "Map", type: "lucide" },
-      id: "google-maps",
-      minTier: "plus",
-      name: "Google Maps",
-      requireApproval: "always_allow",
-      setupInstructions: [
-        "1. Dans Google Cloud Console, activez « Maps Platform » pour votre projet (https://console.cloud.google.com/google/maps-apis).",
-        "2. Ouvrez « APIs & Services → Bibliothèque » et activez : Geocoding API, Directions API, Places API, Distance Matrix API.",
-        "3. Dans « Identifiants », créez une « Clé API » et copiez-la.",
-        "4. Recommandé : appliquez une restriction d'API sur la clé (uniquement les API Maps citées).",
-        "5. Collez la clé dans la variable d'environnement GOOGLE_MAPS_API_KEY du serveur.",
-      ],
-      tags: ["Maps", "Géolocalisation", "Google"],
-      transport: "stdio",
-    },
-  },
-  {
-    manifest: {
-      author: "mAI",
-      authType: "bearer",
-      category: "devtools",
-      credentials: [
-        {
-          docsUrl: "https://github.com/settings/personal-access-tokens/new",
-          instructions:
-            "GitHub → paramètres → « Developer settings » (en bas de la page des paramètres) → « Personal access tokens » → « Fine-grained tokens » → « Generate new token ». Sélectionnez le ou les dépôts, puis les permissions Repository : Contents, Issues, Pull requests en Read/Write. Copiez le token (github_pat_…) : il ne sera plus affiché.",
-          key: "token",
-          label: "Token d'accès personnel (PAT)",
-          required: true,
-        },
-      ],
-      description:
-        "Dépôts, issues, pull requests et commits GitHub directement depuis le chat.",
-      icon: { name: "Github", type: "lucide" },
-      id: "github",
-      minTier: "plus",
-      name: "GitHub",
-      requireApproval: "write_only",
-      setupInstructions: [
-        "1. Ouvrez https://github.com/settings/personal-access-tokens/new (Fine-grained PAT).",
-        "2. Nommez le token, définissez une expiration courte (30-90 jours).",
-        "3. « Repository access » : sélectionnez les dépôts à exposer (évitez « All repositories »).",
-        "4. Permissions : Contents / Issues / Pull requests en Read and Write, Metadata en Read-only.",
-        "5. Générez, copiez le token (github_pat_…) et collez-le dans le champ Token Bearer du serveur.",
-      ],
-      tags: ["GitHub", "DevOps", "Code"],
-      transport: "sse",
-      url: "https://api.githubcopilot.com/mcp/",
-    },
-  },
-  {
-    manifest: {
-      args: "-y @notionhq/notion-mcp-server",
-      author: "mAI",
-      authType: "bearer",
-      category: "collab",
-      command: "npx",
-      credentials: [
-        {
-          docsUrl: "https://www.notion.so/profile/integrations",
-          instructions:
-            "Sur notion.so/profile/integrations (ou Settings → Connections → « Develop or manage integrations »), cliquez « New integration », type « Internal », sélectionnez l'espace de travail, puis dans l'onglet « Secrets » copiez le token (ntn_…). N'oubliez pas de connecter ensuite les pages concernées à l'intégration (bouton « ••• » sur la page → Connexions).",
-          key: "NOTION_TOKEN",
-          label: "Token d'intégration interne",
-          required: true,
-        },
-      ],
-      description:
-        "Rechercher, lire et mettre à jour les pages et bases de données Notion.",
-      env: { NOTION_TOKEN: "ntn_votre-token-integration" },
-      icon: { name: "FileText", type: "lucide" },
-      id: "notion",
-      minTier: "plus",
-      name: "Notion",
-      requireApproval: "write_only",
-      setupInstructions: [
-        "1. Ouvrez https://www.notion.so/profile/integrations → « New integration ».",
-        "2. Choisissez le type « Internal » et l'espace de travail, créez l'intégration.",
-        "3. Onglet « Secrets » → copiez le « Internal Integration Secret » (ntn_…).",
-        "4. Dans l'onglet « Capabilities », gardez « Read content », « Update content » (et « Insert content » si besoin).",
-        "5. Collez le token dans la variable d'environnement NOTION_TOKEN du serveur.",
-        "6. Partagez les pages/bases visées avec l'intégration : page → « ••• » → « Connections » → votre intégration.",
-      ],
-      tags: ["Notion", "Wiki", "Docs"],
-      transport: "stdio",
-    },
-  },
-  {
-    manifest: {
-      author: "mAI",
-      authType: "bearer",
-      category: "web",
-      credentials: [
-        {
-          docsUrl: "https://dashboard.stripe.com/apikeys",
-          instructions:
-            "Dashboard Stripe → « Developers » → « API keys » (dashboard.stripe.com/apikeys). Copiez la « Secret key » de test (sk_test_…) ou de production (sk_live_…). Pour un périmètre réduit, créez plutôt une « Restricted API key » avec seulement les accès Customers, Payments et Invoices en lecture/écriture.",
-          key: "token",
-          label: "Clé secrète Stripe",
-          required: true,
-        },
-      ],
-      description:
-        "Clients, paiements, abonnements et factures Stripe pour vos opérations.",
-      icon: { name: "CreditCard", type: "lucide" },
-      id: "stripe",
-      minTier: "plus",
-      name: "Stripe",
-      requireApproval: "write_only",
-      setupInstructions: [
-        "1. Ouvrez https://dashboard.stripe.com/apikeys (mode test ou production selon le besoin).",
-        "2. Copiez la « Secret key » (sk_test_… / sk_live_…) — elle ne s'affiche qu'une fois par session.",
-        "3. Recommandé : « + Create restricted key » et limitez-la aux ressources nécessaires (Customers, PaymentIntents, Invoices).",
-        "4. Collez la clé dans le champ Token Bearer du serveur MCP.",
-        "5. Ne commitez jamais la clé : elle est stockée chiffrée dans mAI, mais évitez de la recopier ailleurs.",
-      ],
-      tags: ["Stripe", "Paiements", "Finance"],
-      transport: "http",
-      url: "https://mcp.stripe.com",
-    },
-  },
-  {
-    manifest: {
-      author: "mAI",
-      authType: "oauth2",
-      category: "data",
-      credentials: [
-        {
-          docsUrl: "https://supabase.com/dashboard/account/tokens",
-          instructions:
-            "Compte Supabase → « Account » → « Access Tokens » (supabase.com/dashboard/account/tokens) → « Generate new token », donnez un nom (ex : mAI) et copiez le token (sbp_…). Alternative OAuth : laissez le champ vide et connectez-vous via la fenêtre d'autorisation Supabase au premier appel.",
-          key: "token",
-          label: "Token d'accès personnel Supabase",
-          required: false,
-        },
-      ],
-      description:
-        "Projets Supabase : bases PostgreSQL, auth, storage et edge functions.",
-      icon: { name: "Database", type: "lucide" },
-      id: "supabase",
-      minTier: "plus",
-      name: "Supabase",
-      requireApproval: "write_only",
-      setupInstructions: [
-        "1. Ouvrez https://supabase.com/dashboard/account/tokens.",
-        "2. « Generate new token », nommez-le (ex : mAI MCP) et copiez la valeur (sbp_…).",
-        "3. Collez le token dans le champ Token du serveur, ou laissez vide pour l'OAuth interactif.",
-        "4. Au premier appel, une fenêtre d'autorisation Supabase peut s'ouvrir : validez le projet concerné.",
-        "5. Précisez ensuite à l'IA l'ID du projet Supabase (réf. à 20 caractères, visible dans l'URL du dashboard).",
-      ],
-      tags: ["Supabase", "PostgreSQL", "BaaS"],
-      transport: "http",
-      url: "https://mcp.supabase.com/mcp",
-    },
-  },
-  {
-    manifest: {
-      args: "-y @modelcontextprotocol/server-mongodb mongodb+srv://utilisateur:motdepasse@cluster.mongodb.net/base",
-      author: "mAI",
-      authType: "none",
-      category: "data",
-      command: "npx",
-      credentials: [
-        {
-          docsUrl: "https://www.mongodb.com/docs/atlas/connect-from-your-app/",
-          instructions:
-            "Atlas : onglet « Database » → « Connect » → « Drivers » → copiez la chaîne mongodb+srv://… et remplacez <password> par votre mot de passe. Créez l'utilisateur dans « Database Access » avec le rôle read (ou readWrite si nécessaire) et ajoutez votre IP dans « Network Access ». En local : mongodb://localhost:27017/mabase.",
-          key: "connectionString",
-          label: "Chaîne de connexion MongoDB",
-          required: true,
-        },
-      ],
-      description:
-        "Interroger collections et documents MongoDB (agrégations, lectures, écritures).",
-      icon: { name: "Database", type: "lucide" },
-      id: "mongodb",
-      minTier: "plus",
-      name: "MongoDB",
-      requireApproval: "write_only",
-      setupInstructions: [
-        "1. Atlas → « Database Access » → « Add New Database User » avec le rôle read (lecture seule recommandé).",
-        "2. Atlas → « Network Access » → ajoutez votre adresse IP (ou 0.0.0.0/0 en test uniquement).",
-        "3. Onglet « Database » → « Connect » → « Drivers » → copiez la chaîne mongodb+srv://.",
-        "4. Remplacez <password> par le mot de passe (encodé en URL si caractères spéciaux).",
-        "5. Remplacez l'argument du template par votre chaîne réelle après installation (bouton Modifier).",
-      ],
-      tags: ["MongoDB", "NoSQL", "Base de données"],
-      transport: "stdio",
-    },
-  },
-  {
-    manifest: {
+      activation: "ready",
       args: "-y @modelcontextprotocol/server-brave-search",
       author: "mAI",
       authType: "bearer",
@@ -416,109 +28,283 @@ export const MCP_TEMPLATES: McpTemplateDefinition[] = [
         {
           docsUrl: "https://api-dashboard.search.brave.com/api-keys",
           instructions:
-            "Inscrivez-vous sur https://api-dashboard.search.brave.com, choisissez le plan « Data for Search » (offre gratuite : 2 000 requêtes/mois), ouvrez « API Keys » → « Create Key », nommez-la et copiez la clé affichée. Elle ne sera plus visible ensuite : conservez-la immédiatement.",
+            "Inscrivez-vous sur le tableau de bord Brave Search, choisissez l'offre « Data for Search » (palier gratuit disponible), puis « API Keys » → « Create Key » et copiez la clé. Renseignez-la dans le champ « Clé API Brave Search » de la fiche du serveur : elle est chiffrée côté serveur et injectée uniquement au moment de l'appel.",
           key: "BRAVE_API_KEY",
+          kind: "env",
           label: "Clé API Brave Search",
           required: true,
         },
       ],
       description:
-        "Recherche web indépendante et privée avec citations (sans tracker publicitaire).",
-      env: { BRAVE_API_KEY: "votre-cle-api" },
+        "Recherche web indépendante et privée (titres, extraits, citations) via l'API Brave Search.",
+      docsUrl: "https://api-dashboard.search.brave.com/app/documentation",
       icon: { name: "Search", type: "lucide" },
       id: "brave-search",
       minTier: "plus",
       name: "Brave Search",
+      readOnly: true,
       requireApproval: "always_allow",
       setupInstructions: [
-        "1. Créez un compte sur https://api-dashboard.search.brave.com (plan gratuit disponible).",
-        "2. Menu « API Keys » → « Create Key », donnez un nom explicite.",
-        "3. Copiez la clé affichée (elle ne sera plus visible).",
-        "4. Collez-la dans la variable d'environnement BRAVE_API_KEY du serveur.",
+        "1. Créez un compte sur https://api-dashboard.search.brave.com (palier gratuit disponible).",
+        "2. Menu « API Keys » → « Create Key », nommez la clé (ex : mAI Web).",
+        "3. Copiez la valeur affichée : elle ne sera plus visible ensuite.",
+        "4. Installez ce modèle, puis renseignez la clé dans la fiche du serveur (champ « Clé API Brave Search »).",
+        "5. La clé est chiffrée côté serveur (AES-256-GCM) et n'est jamais exposée au navigateur.",
       ],
       tags: ["Recherche", "Web", "Brave"],
       transport: "stdio",
+      verifiedAt: "2026-09-14",
     },
   },
   {
     manifest: {
+      activation: "ready",
+      author: "mAI",
+      authType: "bearer",
+      category: "devtools",
+      credentials: [
+        {
+          docsUrl: "https://github.com/settings/personal-access-tokens/new",
+          instructions:
+            "GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens → « Generate new token ». Limitez le token aux dépôts concernés, puis accordez en lecture (et écriture si nécessaire) les permissions « Contents », « Issues » et « Pull requests ». Collez le token (github_pat_…) dans le champ « Token personnel GitHub » de la fiche du serveur.",
+          key: "token",
+          kind: "auth",
+          label: "Token personnel GitHub (fine-grained)",
+          required: true,
+        },
+      ],
+      description:
+        "Dépôts, issues, pull requests et code hébergés sur GitHub, via le serveur MCP distant officiel de GitHub.",
+      docsUrl:
+        "https://docs.github.com/en/copilot/how-tos/provide-context/use-mcp-in-your-ide/set-up-the-github-mcp-server",
+      icon: { name: "Terminal", type: "lucide" },
+      id: "github",
+      minTier: "plus",
+      name: "GitHub",
+      readOnly: false,
+      requireApproval: "write_only",
+      setupInstructions: [
+        "1. Ouvrez https://github.com/settings/personal-access-tokens/new pour créer un token fine-grained.",
+        "2. Nommez le token, choisissez une expiration courte (30 à 90 jours).",
+        "3. « Repository access » : sélectionnez uniquement les dépôts à exposer.",
+        "4. Permissions : Contents / Issues / Pull requests en Read and Write, Metadata en Read-only.",
+        "5. Installez ce modèle puis collez le token (github_pat_…) dans la fiche du serveur — jamais dans une variable d'environnement du service.",
+        "6. Les lectures sont automatiques ; toute écriture (création d'issue, de branche, de PR) demande votre approbation dans la conversation.",
+      ],
+      tags: ["GitHub", "Code", "DevOps"],
+      transport: "http",
+      url: "https://api.githubcopilot.com/mcp/",
+      verifiedAt: "2026-09-14",
+    },
+  },
+  {
+    manifest: {
+      activation: "requires_oauth_flow",
       author: "mAI",
       authType: "oauth2",
       category: "collab",
-      credentials: [
-        {
-          docsUrl: "https://linear.app/settings/security-access",
-          instructions:
-            "Linear → Paramètres (icône engrenage) → « Security & access » → section « Personal API keys » → « New API key », donnez un label (ex : mAI) et copiez la clé (lin_api_…). Alternative OAuth : laissez le champ vide et validez la fenêtre d'autorisation Linear au premier appel.",
-          key: "token",
-          label: "Clé API Linear",
-          required: false,
-        },
-      ],
+      credentials: [],
       description:
-        "Issues, cycles et projets Linear pour le suivi de votre roadmap produit.",
-      icon: { name: "Trophy", type: "lucide" },
-      id: "linear",
+        "Rechercher dans Slack, lire les canaux et envoyer des messages via le serveur MCP distant officiel de Slack.",
+      docsUrl: "https://docs.slack.dev/ai/slack-mcp-server",
+      icon: { name: "MessageSquare", type: "lucide" },
+      id: "slack",
       minTier: "plus",
-      name: "Linear",
+      name: "Slack",
+      readOnly: false,
       requireApproval: "write_only",
       setupInstructions: [
-        "1. Ouvrez Linear → Paramètres → « Security & access » (https://linear.app/settings/security-access).",
-        "2. Section « Personal API keys » → « New API key ».",
-        "3. Copiez la clé (lin_api_…) immédiatement : elle n'est plus affichée ensuite.",
-        "4. Collez-la dans le champ Token du serveur, ou laissez vide pour l'OAuth interactif.",
-        "5. Au premier appel, validez la fenêtre d'autorisation OAuth Linear si elle s'ouvre.",
+        "1. Le serveur MCP officiel de Slack (https://mcp.slack.com/mcp) authentifie les clients via OAuth 2.0, avec validation par un administrateur de l'espace de travail.",
+        "2. mAI Web n'implémente pas encore de flux OAuth interactif : ce modèle est documenté mais son installation est refusée pour le moment.",
+        "3. En attendant, utilisez les serveurs MCP de votre choix via l'écran avancé /mcp, ou les Skills et plugins natifs.",
       ],
-      tags: ["Linear", "Tickets", "Gestion de projet"],
+      tags: ["Slack", "Messages", "Équipe"],
       transport: "http",
-      url: "https://mcp.linear.app/mcp",
+      url: "https://mcp.slack.com/mcp",
+      verifiedAt: "2026-09-14",
     },
   },
   {
     manifest: {
-      args: "-y gcal-mcp",
+      activation: "requires_oauth_flow",
       author: "mAI",
       authType: "oauth2",
-      category: "cloud",
+      category: "collab",
+      credentials: [],
+      description:
+        "Issues, cycles et projets Linear pour le suivi de roadmap, via le serveur MCP authentifié de Linear.",
+      docsUrl: "https://linear.app/docs/mcp",
+      icon: { name: "Target", type: "lucide" },
+      id: "linear",
+      minTier: "plus",
+      name: "Linear",
+      readOnly: false,
+      requireApproval: "write_only",
+      setupInstructions: [
+        "1. Linear expose un serveur MCP distant authentifié (https://mcp.linear.app/mcp), documenté sur https://linear.app/docs/mcp.",
+        "2. L'accès requiert l'authentification OAuth côté client Linear : le flux interactif n'est pas encore pris en charge par mAI Web, l'installation est donc refusée.",
+        "3. Aucun token personnel n'est demandé ici : ne collez jamais une clé API Linear dans un champ non vérifié.",
+      ],
+      tags: ["Linear", "Projets", "Tickets"],
+      transport: "http",
+      url: "https://mcp.linear.app/mcp",
+      verifiedAt: "2026-09-14",
+    },
+  },
+  {
+    manifest: {
+      activation: "ready",
+      args: "-y @notionhq/notion-mcp-server",
+      author: "mAI",
+      authType: "bearer",
+      category: "collab",
       command: "npx",
       credentials: [
         {
-          docsUrl: "https://console.cloud.google.com/apis/credentials",
+          docsUrl: "https://www.notion.so/profile/integrations",
           instructions:
-            "Google Cloud Console → APIs & Services → Identifiants → « Créer des identifiants » → « ID client OAuth », type « Application de bureau ». Activez au préalable l'API « Google Calendar API » dans la bibliothèque.",
-          key: "GOOGLE_CLIENT_ID",
-          label: "ID client OAuth 2.0",
-          required: true,
-        },
-        {
-          docsUrl: "https://console.cloud.google.com/apis/credentials",
-          instructions:
-            "Copiez le secret du client OAuth créé (bouton « Afficher » dans la liste des identifiants OAuth de Google Cloud Console).",
-          key: "GOOGLE_CLIENT_SECRET",
-          label: "Secret client OAuth 2.0",
+            "Sur notion.so/profile/integrations, cliquez « New integration », choisissez le type « Internal », sélectionnez l'espace de travail, puis copiez le « Internal Integration Secret » (ntn_…) dans le champ « Token d'intégration Notion » de la fiche du serveur. Pensez ensuite à partager les pages concernées avec l'intégration (page → « ••• » → « Connections »).",
+          key: "NOTION_TOKEN",
+          kind: "env",
+          label: "Token d'intégration Notion",
           required: true,
         },
       ],
       description:
-        "Consulter, créer et modifier les événements de vos agendas Google Calendar.",
-      env: {
-        GOOGLE_CLIENT_ID: "votre-client-id.apps.googleusercontent.com",
-        GOOGLE_CLIENT_SECRET: "votre-secret-oauth",
-      },
-      icon: { name: "Calendar", type: "lucide" },
-      id: "google-calendar",
+        "Rechercher, lire et mettre à jour les pages et bases de données Notion via le serveur MCP officiel de Notion.",
+      docsUrl: "https://developers.notion.com/docs/mcp",
+      icon: { name: "FileText", type: "lucide" },
+      id: "notion",
       minTier: "plus",
-      name: "Google Calendar",
+      name: "Notion",
+      readOnly: false,
       requireApproval: "write_only",
       setupInstructions: [
-        "1. Google Cloud Console : activez « Google Calendar API » (APIs & Services → Bibliothèque).",
-        "2. Créez un ID client OAuth « Application de bureau » dans Identifiants.",
-        "3. Configurez l'écran de consentement (scope calendar requis).",
-        "4. Collez l'ID client et le secret dans GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET du serveur.",
-        "5. Au premier appel, l'écran d'autorisation Google s'ouvre pour accepter l'accès à l'agenda.",
+        "1. Ouvrez https://www.notion.so/profile/integrations → « New integration » → type « Internal ».",
+        "2. Onglet « Secrets » → copiez le jeton d'intégration (ntn_…).",
+        "3. Installez ce modèle, puis renseignez le jeton dans la fiche du serveur (champ « Token d'intégration Notion »).",
+        "4. Partagez les pages/bases à exposer avec l'intégration (page → « ••• » → « Connections »).",
+        "5. Les lectures sont automatiques ; toute modification de contenu vous est présentée pour approbation.",
       ],
-      tags: ["Google", "Agenda", "Calendar"],
+      tags: ["Notion", "Docs", "Collaboration"],
       transport: "stdio",
+      verifiedAt: "2026-09-14",
+    },
+  },
+  {
+    manifest: {
+      activation: "requires_oauth_flow",
+      author: "mAI",
+      authType: "oauth2",
+      category: "devtools",
+      credentials: [],
+      description:
+        "Consulter les erreurs, issues et traces Sentry pour déboguer plus vite, via le serveur MCP distant officiel de Sentry.",
+      docsUrl: "https://mcp.sentry.dev/",
+      icon: { name: "Bug", type: "lucide" },
+      id: "sentry",
+      minTier: "plus",
+      name: "Sentry",
+      readOnly: true,
+      requireApproval: "always_allow",
+      setupInstructions: [
+        "1. Sentry héberge son serveur MCP sur https://mcp.sentry.dev/mcp (OAuth 2.0 uniquement).",
+        "2. Ce point d'accès n'accepte pas d'authentification par token personnel : l'installation est donc refusée tant que le flux OAuth interactif n'est pas disponible dans mAI Web.",
+        "3. Pour un usage local, l'équipe Sentry documente aussi une exécution via son CLI (voir la documentation officielle).",
+      ],
+      tags: ["Sentry", "Erreurs", "Monitoring"],
+      transport: "http",
+      url: "https://mcp.sentry.dev/mcp",
+      verifiedAt: "2026-09-14",
+    },
+  },
+  {
+    manifest: {
+      activation: "ready",
+      args: "-y @stripe/mcp",
+      author: "mAI",
+      authType: "bearer",
+      category: "web",
+      command: "npx",
+      credentials: [
+        {
+          docsUrl: "https://dashboard.stripe.com/apikeys",
+          instructions:
+            "Dashboard Stripe → « Developers » → « API keys ». Copiez la clé secrète (sk_test_… ou sk_live_…) — ou, mieux, créez une « Restricted API key » limitée aux ressources nécessaires — puis renseignez-la dans le champ « Clé secrète Stripe » de la fiche du serveur.",
+          key: "STRIPE_SECRET_KEY",
+          kind: "env",
+          label: "Clé secrète Stripe (restricted recommandée)",
+          required: true,
+        },
+      ],
+      description:
+        "Clients, paiements, abonnements et factures Stripe, via l'outil officiel Stripe Agent Toolkit.",
+      docsUrl: "https://docs.stripe.com/mcp",
+      icon: { name: "Wallet", type: "lucide" },
+      id: "stripe",
+      minTier: "pro",
+      name: "Stripe",
+      readOnly: false,
+      requireApproval: "ask_permission",
+      setupInstructions: [
+        "1. Ouvrez https://dashboard.stripe.com/apikeys (mode test de préférence pour commencer).",
+        "2. Créez une clé restreinte (« + Create restricted key ») limitée aux ressources utiles (Customers, PaymentIntents, Invoices).",
+        "3. Installez ce modèle, puis renseignez la clé dans la fiche du serveur : la variable STRIPE_SECRET_KEY est injectée côté serveur, chiffrée au repos.",
+        "4. Toute opération financière demande votre approbation explicite dans la conversation (politique « ask_permission »).",
+        "5. Ne recopiez jamais cette clé ailleurs : elle ne transite jamais par le navigateur après la saisie.",
+      ],
+      tags: ["Stripe", "Paiements", "Finance"],
+      transport: "stdio",
+      verifiedAt: "2026-09-14",
+    },
+  },
+  {
+    manifest: {
+      activation: "ready",
+      author: "mAI",
+      authType: "bearer",
+      category: "data",
+      credentials: [
+        {
+          docsUrl: "https://supabase.com/dashboard/account/tokens",
+          instructions:
+            "Compte Supabase → « Account » → « Access Tokens » → « Generate new token », nommez-le (ex : mAI Web) et copiez la valeur (sbp_…). Renseignez-la dans le champ « Token d'accès Supabase » de la fiche du serveur. Pour limiter la portée, préférez un token d'organisation dédié à la lecture.",
+          key: "token",
+          kind: "auth",
+          label: "Token d'accès personnel Supabase",
+          required: true,
+        },
+      ],
+      description:
+        "Projets Supabase : schéma PostgreSQL, migrations et journaux, via le serveur MCP distant officiel de Supabase.",
+      docsUrl: "https://supabase.com/docs/guides/ai-tools/mcp",
+      icon: { name: "Database", type: "lucide" },
+      id: "supabase",
+      minTier: "pro",
+      name: "Supabase",
+      readOnly: false,
+      requireApproval: "write_only",
+      setupInstructions: [
+        "1. Ouvrez https://supabase.com/docs/guides/ai-tools/mcp et lisez les recommandations de sécurité officielles.",
+        "2. Créez un token d'accès personnel : https://supabase.com/dashboard/account/tokens.",
+        "3. Installez ce modèle, puis renseignez le token dans la fiche du serveur.",
+        "4. Indiquez à l'IA la référence du projet (20 caractères, visible dans l'URL du tableau de bord).",
+        "5. Les requêtes en lecture sont automatiques ; les écritures (SQL, migrations) demandent une approbation.",
+      ],
+      tags: ["Supabase", "PostgreSQL", "BaaS"],
+      transport: "http",
+      url: "https://mcp.supabase.com/mcp",
+      verifiedAt: "2026-09-14",
     },
   },
 ];
+
+// Contrôle d'intégrité au chargement : une icône inconnue retomberait
+// silencieusement sur une icône de repli dans l'interface.
+for (const template of MCP_TEMPLATES) {
+  if (!isLucideIconName(template.manifest.icon.name)) {
+    throw new Error(
+      `Modèle MCP ${template.manifest.id} : icône inconnue « ${template.manifest.icon.name} » (voir lib/plugins/icon-allowlist.ts).`
+    );
+  }
+}

@@ -1,6 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import { z } from "zod";
+import {
+  isChatToolId,
+  isNativeToolId,
+  isPluginProvidedToolId,
+} from "../../lib/ai/tools/ids";
+import { isLucideIconName } from "../../lib/plugins/icon-allowlist";
 
 export const PLUGINS_DIR = path.resolve(process.cwd(), "lib", "plugins");
 
@@ -13,10 +19,38 @@ export const SERVER_GENERATED_FILE = path.join(
   "server.generated.ts"
 );
 
+// L'icône doit appartenir à la liste blanche partagée : une icône inconnue
+// retomberait silencieusement sur une icône de repli dans l'interface.
 const iconSchema = z.union([
-  z.object({ name: z.string().min(1), type: z.literal("lucide") }),
+  z.object({
+    name: z.string().refine(isLucideIconName, {
+      message:
+        "Icône inconnue : ajoutez le nom dans lib/plugins/icon-allowlist.ts et son implémentation dans lib/plugins/icon.tsx.",
+    }),
+    type: z.literal("lucide"),
+  }),
   z.object({ src: z.string().min(1), type: z.literal("image") }),
 ]);
+
+// Permissions déclaratives obligatoires : elles sont affichées à l'utilisateur
+// et vérifiées ici. Un plugin qui écrit des données utilisateur DOIT exiger une
+// approbation explicite, sinon la validation échoue.
+export const permissionsSchema = z
+  .object({
+    network: z.enum(["none", "read-only"]),
+    readsUserData: z.boolean(),
+    requiresApproval: z.boolean(),
+    writesUserData: z.boolean(),
+  })
+  .refine(
+    (permissions) =>
+      !permissions.writesUserData || permissions.requiresApproval,
+    {
+      message:
+        "writesUserData: true exige requiresApproval: true (toute écriture de données utilisateur doit être approuvée).",
+      path: ["requiresApproval"],
+    }
+  );
 
 export const manifestSchema = z.object({
   author: z.string().min(1).default("mAI"),
@@ -24,11 +58,28 @@ export const manifestSchema = z.object({
   description: z.string().min(1),
   icon: iconSchema,
   id: z.string().regex(/^[a-z0-9][a-z0-9-]*$/),
-  minTier: z.enum(["free", "plus", "pro", "max"]).default("plus"),
+  // Les plugins sont réservés aux forfaits payants : le plancher est « plus ».
+  minTier: z.enum(["plus", "pro", "max"], {
+    message: "minTier doit valoir plus, pro ou max (les plugins sont payants).",
+  }),
   name: z.string().min(1),
+  permissions: permissionsSchema,
   tags: z.array(z.string().min(1)).default([]),
   tool: z.object({
-    id: z.string().min(1),
+    id: z
+      .string()
+      .min(1)
+      .refine((toolId) => !isNativeToolId(toolId), {
+        message:
+          "Un identifiant d'outil implémenté nativement ne peut pas être réutilisé par un plugin.",
+      })
+      .refine(
+        (toolId) => !isChatToolId(toolId) || isPluginProvidedToolId(toolId),
+        {
+          message:
+            "Un identifiant d'outil sélectionnable doit être déclaré dans PLUGIN_PROVIDED_TOOL_IDS (lib/ai/tools/ids.ts).",
+        }
+      ),
     label: z.string().min(1),
     systemHint: z.string().min(1),
   }),
@@ -77,9 +128,36 @@ export function listTsEntries(dir: string): string[] {
     .filter((f) => f.endsWith(".ts") || f.endsWith(".tsx"));
 }
 
-function importName(dir: string): string {
-  const safe = dir.replace(/[^a-zA-Z0-9_$]/g, "_");
-  return `${safe}Plugin`;
+// Convention du catalogue généré : chaque `index.ts` doit exporter nommément
+// `<dir>Plugin`, sinon `server.generated.ts` ne compile pas.
+export function entryExportsPluginDefinition(
+  dir: string,
+  exportName: string
+): boolean {
+  const candidates = ["index.ts", "index.tsx"];
+  for (const candidate of candidates) {
+    const filePath = path.join(PLUGINS_DIR, dir, candidate);
+    if (!fs.existsSync(filePath)) {
+      continue;
+    }
+    const content = fs.readFileSync(filePath, "utf8");
+    return new RegExp(`export\\s+const\\s+${exportName}\\b`).test(content);
+  }
+  return false;
+}
+
+// Nom d'export conventionnel dérivé du dossier : `weather` → `weatherPlugin`,
+// `air-quality` → `airQualityPlugin`. Les imports générés restent camelCase
+// lisibles quelle que soit la forme (kebab-case) du dossier.
+export function importName(dir: string): string {
+  const camel = dir
+    .split(/[^a-zA-Z0-9_$]+/)
+    .filter(Boolean)
+    .map((part, index) =>
+      index === 0 ? part : `${part.charAt(0).toUpperCase()}${part.slice(1)}`
+    )
+    .join("");
+  return `${camel || "plugin"}Plugin`;
 }
 
 // Génère le contenu des deux fichiers dérivés du catalogue.

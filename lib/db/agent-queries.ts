@@ -16,10 +16,10 @@ import type {
 import { ACTIVE_AGENT_RUN_STATUSES } from "@/lib/agent/types";
 import { dbReady } from "@/lib/db/queries";
 import {
+  type AgentRun,
   agentRun,
   agentSettings,
   agentStep,
-  type AgentRun,
   type ToolExecution,
   toolExecution,
 } from "@/lib/db/schema";
@@ -175,7 +175,9 @@ export async function bumpAgentRunCounters({
           : { stepCount: sql`${agentRun.stepCount} + ${stepDelta}` }),
         ...(toolCallDelta === 0
           ? {}
-          : { toolCallCount: sql`${agentRun.toolCallCount} + ${toolCallDelta}` }),
+          : {
+              toolCallCount: sql`${agentRun.toolCallCount} + ${toolCallDelta}`,
+            }),
       })
       .where(eq(agentRun.id, id));
   } catch (error) {
@@ -308,8 +310,11 @@ export async function getAgentStepsByRunId({ runId }: { runId: string }) {
 }
 
 export async function createToolExecution(params: {
+  attempt?: number;
   category: ToolCategory;
   input: unknown;
+  parentExecutionId?: string | null;
+  retryable?: boolean;
   runId: string;
   stepId?: string | null;
   toolId: string;
@@ -319,8 +324,11 @@ export async function createToolExecution(params: {
     const [row] = await db
       .insert(toolExecution)
       .values({
+        attempt: params.attempt ?? 1,
         category: params.category,
         input: params.input as never,
+        parentExecutionId: params.parentExecutionId ?? null,
+        retryable: params.retryable ?? false,
         runId: params.runId,
         startedAt: new Date(),
         status: "running",
@@ -341,6 +349,7 @@ export async function completeToolExecution({
   errorCategory,
   id,
   output,
+  retryable,
   status,
 }: {
   approvalStatus?: "not_required" | "pending" | "approved" | "denied";
@@ -349,6 +358,7 @@ export async function completeToolExecution({
   errorCategory?: string | null;
   id: string;
   output?: unknown;
+  retryable?: boolean;
   status: "running" | "completed" | "failed" | "denied" | "cancelled";
 }): Promise<void> {
   try {
@@ -361,6 +371,7 @@ export async function completeToolExecution({
         ...(error === undefined ? {} : { error }),
         ...(errorCategory === undefined ? {} : { errorCategory }),
         ...(output === undefined ? {} : { output: output as never }),
+        ...(retryable === undefined ? {} : { retryable }),
         completedAt: new Date(),
         status,
       })

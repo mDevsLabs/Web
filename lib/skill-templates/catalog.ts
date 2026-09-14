@@ -13,6 +13,12 @@ export const SKILL_TEMPLATE_LIST: SkillTemplateManifest[] = [
   ...SKILL_TEMPLATES.map((d: SkillTemplateDefinition) => d.manifest),
 ].sort((a, b) => a.name.localeCompare(b.name, "fr"));
 
+// Identifiants stables du catalogue (source unique pour les routes, l'interface
+// et les tests d'unicité).
+export const SKILL_TEMPLATE_IDS: string[] = SKILL_TEMPLATE_LIST.map(
+  (template) => template.id
+);
+
 export function getSkillTemplate(
   skillTemplateId: string
 ): SkillTemplateManifest | undefined {
@@ -68,16 +74,30 @@ export function filterSkillTemplates<T extends SkillTemplateManifest>(
 export type SkillInstallationLite = {
   name: string;
   id: string;
+  /** Slug du modèle d'origine (Skill.templateId) — appariement exact. */
+  templateId?: string | null;
 };
 
-// Fusionne le catalogue statique avec les skills réellement installés
-// (correspondance par nom, convention existante des skills mAI).
+// Fusionne le catalogue statique avec les skills réellement installés.
+// L'appariement se fait d'abord par `templateId` (lien persisté et stable) ;
+// le nom ne sert que de repli pour les skills créés avant la migration 0019 ou
+// dupliqués à la main par l'utilisateur.
 export function buildSkillTemplateEntries(
   installations: SkillInstallationLite[]
 ): SkillTemplateCatalogEntry[] {
-  const byName = new Map(installations.map((i) => [i.name, i]));
+  const byTemplateId = new Map<string, SkillInstallationLite>();
+  const byName = new Map<string, SkillInstallationLite>();
+  for (const installation of installations) {
+    if (installation.templateId) {
+      byTemplateId.set(installation.templateId, installation);
+    }
+    if (!byName.has(installation.name)) {
+      byName.set(installation.name, installation);
+    }
+  }
   return SKILL_TEMPLATE_LIST.map((manifest) => {
-    const installation = byName.get(manifest.name);
+    const installation =
+      byTemplateId.get(manifest.id) ?? byName.get(manifest.name);
     return {
       ...manifest,
       installed: Boolean(installation),

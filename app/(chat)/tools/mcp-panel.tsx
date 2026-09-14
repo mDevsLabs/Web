@@ -29,6 +29,7 @@ import {
   MCP_CATEGORIES,
 } from "@/lib/mcp-templates/catalog";
 import { McpTemplateIcon } from "@/lib/mcp-templates/icon";
+import { McpTemplateLogo } from "@/lib/mcp-templates/logo";
 import type { McpTemplateCatalogEntry } from "@/lib/mcp-templates/types";
 import { matchesQuery, sortByRelevance } from "@/lib/tools/search";
 import { TOOLS_ACTIONS_ID } from "@/lib/tools/tabs";
@@ -39,6 +40,8 @@ type McpServersResponse = {
     id: string;
     name: string;
     isEnabled: boolean;
+    /** Slug du modèle MCP d'origine (null pour un serveur ajouté à la main). */
+    templateId?: string | null;
   }>;
 };
 
@@ -65,7 +68,8 @@ export default function McpPanel({
   }, []);
 
   // Le catalogue de la page est le manifeste statique enrichi de l'état
-  // d'installation renvoyé par l'API (correspondance par nom de serveur).
+  // d'installation renvoyé par l'API (appariement par identifiant de modèle
+  // persisté, avec repli par nom pour les serveurs antérieurs à la migration).
   const merged = useMemo(() => buildMcpTemplateEntries(servers), [servers]);
   const installed = merged.filter((t) => t.installed);
 
@@ -183,18 +187,20 @@ export default function McpPanel({
           <h3 className="text-sm font-semibold text-foreground">Connectés</h3>
           <div className="flex flex-wrap items-center gap-3">
             {sortedInstalled.map((template) => (
-              <button
+              <a
                 className={cn(
-                  "flex size-12 items-center justify-center rounded-2xl border border-border/50 bg-card shadow-sm transition hover:scale-105 cursor-pointer",
+                  "flex size-12 items-center justify-center rounded-2xl border border-border/50 bg-card p-2 shadow-sm transition hover:scale-105 cursor-pointer",
                   !template.enabled && "opacity-45"
                 )}
+                href={`/tools/mcp/${template.id}`}
                 key={template.id}
-                onClick={() => setDetails(template)}
-                title={`${template.name} — ${template.enabled ? "actif" : "inactif"}`}
-                type="button"
+                title={`${template.name} — ${template.enabled ? "actif" : "inactif"} — voir la fiche`}
               >
-                <McpTemplateIcon className="size-6" icon={template.icon} />
-              </button>
+                <McpTemplateLogo
+                  className="size-full object-contain dark:invert"
+                  manifest={template}
+                />
+              </a>
             ))}
           </div>
         </section>
@@ -253,14 +259,16 @@ export default function McpPanel({
                   className="group flex items-center gap-3 rounded-2xl border border-transparent p-3 transition-colors hover:border-border/50 hover:bg-muted/30"
                   key={template.id}
                 >
-                  <button
-                    className="flex size-11 shrink-0 items-center justify-center rounded-2xl border border-border/50 bg-card shadow-sm cursor-pointer"
-                    onClick={() => setDetails(template)}
-                    title={`${template.name} — voir la fiche`}
-                    type="button"
+                  <a
+                    className="flex size-11 shrink-0 items-center justify-center rounded-2xl border border-border/50 bg-card p-1.5 shadow-sm cursor-pointer"
+                    href={`/tools/mcp/${template.id}`}
+                    title={`${template.name} — voir la fiche détaillée`}
                   >
-                    <McpTemplateIcon className="size-5" icon={template.icon} />
-                  </button>
+                    <McpTemplateLogo
+                      className="size-full object-contain dark:invert"
+                      manifest={template}
+                    />
+                  </a>
                   <div className="flex min-w-0 flex-1 flex-col">
                     <span className="truncate text-sm font-semibold text-foreground">
                       {template.name}
@@ -322,8 +330,11 @@ export default function McpPanel({
             <>
               <DialogHeader>
                 <div className="flex items-center gap-3">
-                  <span className="flex size-10 items-center justify-center rounded-2xl border border-border/50 bg-card shadow-sm">
-                    <McpTemplateIcon className="size-5" icon={details.icon} />
+                  <span className="flex size-10 items-center justify-center rounded-2xl border border-border/50 bg-card p-1.5 shadow-sm">
+                    <McpTemplateLogo
+                      className="size-full object-contain dark:invert"
+                      manifest={details}
+                    />
                   </span>
                   <div>
                     <DialogTitle>{details.name}</DialogTitle>

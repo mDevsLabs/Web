@@ -37,6 +37,8 @@ import { cn, fetcher } from "@/lib/utils";
 type SkillLite = {
   id: string;
   name: string;
+  /** Slug du modèle d'origine — appariement exact catalogue ↔ installation. */
+  templateId?: string | null;
 };
 
 function SkillGlyph({ color }: { color: string }) {
@@ -193,15 +195,14 @@ export default function SkillsPanel({
           <h3 className="text-sm font-semibold text-foreground">Installés</h3>
           <div className="flex flex-wrap items-center gap-3">
             {sortedInstalled.map((template) => (
-              <button
+              <a
                 className="flex size-12 items-center justify-center rounded-2xl border border-border/50 bg-card shadow-sm transition hover:scale-105 cursor-pointer"
+                href={`/tools/skills/${template.id}`}
                 key={template.id}
-                onClick={() => setDetails(template)}
-                title={template.name}
-                type="button"
+                title={`${template.name} — voir la fiche`}
               >
                 <SkillGlyph color={template.color} />
-              </button>
+              </a>
             ))}
           </div>
         </section>
@@ -260,14 +261,13 @@ export default function SkillsPanel({
                   className="group flex items-center gap-3 rounded-2xl border border-transparent p-3 transition-colors hover:border-border/50 hover:bg-muted/30"
                   key={template.id}
                 >
-                  <button
+                  <a
                     className="flex size-11 shrink-0 items-center justify-center rounded-2xl border border-border/50 bg-card shadow-sm cursor-pointer"
-                    onClick={() => setDetails(template)}
-                    title={`${template.name} — voir la fiche`}
-                    type="button"
+                    href={`/tools/skills/${template.id}`}
+                    title={`${template.name} — voir la fiche détaillée`}
                   >
                     <SkillGlyph color={template.color} />
-                  </button>
+                  </a>
                   <div className="flex min-w-0 flex-1 flex-col">
                     <span className="truncate text-sm font-semibold text-foreground">
                       {template.name}

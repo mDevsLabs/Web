@@ -27,10 +27,23 @@ export const AGENT_TOOL_CATALOG: Record<string, AgentToolMetadata> = {
     },
     category: "internal",
     description:
-      "Pose une question précise à l'utilisateur (choix unique, choix multiples, texte, curseur, oui/non, date) lorsqu'une information manque et qu'aucune hypothèse raisonnable n'est possible.",
+      "Pose de 1 à 6 questions précises à l'utilisateur (choix unique, choix multiples, texte, curseur numérique, oui/non, date) lorsqu'une information manque et qu'aucune hypothèse raisonnable n'est possible. Chaque question porte un identifiant unique, un type de réponse, des choix éventuels (obligatoires pour les types à choix), une valeur par défaut facultative et son caractère obligatoire. Le run se suspend jusqu'à la réponse de l'utilisateur, puis reprend au même endroit.",
     id: "ask_user",
     name: "Question à l'utilisateur",
     permissions: { default: "auto", readOnly: true },
+  },
+  attach_to_project: {
+    availability: {
+      categories: ["project"],
+      requires: { tools: true },
+      tiers: "all",
+    },
+    category: "project",
+    description:
+      "Enregistre un livrable déjà créé dans un projet de l'utilisateur, pour que le résultat reste consultable avec le reste du projet. Exige un accord explicite : la demande précise le livrable et le projet.",
+    id: "attach_to_project",
+    name: "Ajouter un résultat au projet",
+    permissions: { default: "ask", destructive: true, readOnly: false },
   },
   create_artifact: {
     availability: {
@@ -45,6 +58,19 @@ export const AGENT_TOOL_CATALOG: Record<string, AgentToolMetadata> = {
     name: "Créer un livrable",
     permissions: { default: "auto" },
   },
+  export_deliverable: {
+    availability: {
+      categories: ["artifact"],
+      requires: { tools: true },
+      tiers: "all",
+    },
+    category: "artifact",
+    description:
+      "Crée un livrable tabulaire consultable et téléchargeable (CSV, tableau Markdown ou page HTML) à partir de données structurées. À utiliser pour un export, un tableau de synthèse ou un comparatif plutôt que de déverser les lignes dans la réponse.",
+    id: "export_deliverable",
+    name: "Exporter un livrable",
+    permissions: { default: "auto", readOnly: false },
+  },
   read_file: {
     availability: {
       categories: ["files", "library"],
@@ -56,6 +82,19 @@ export const AGENT_TOOL_CATALOG: Record<string, AgentToolMetadata> = {
       "Lit un document (PDF, DOCX, CSV, texte, JSON) depuis la bibliothèque de l'utilisateur ou depuis une URL publique, et renvoie son texte par pages ou sections. À utiliser avant d'analyser un fichier, jamais en devinant son contenu.",
     id: "read_file",
     name: "Lire un fichier",
+    permissions: { default: "auto", readOnly: true },
+  },
+  read_url: {
+    availability: {
+      categories: ["web"],
+      requires: { tools: true },
+      tiers: "all",
+    },
+    category: "web",
+    description:
+      "Lit et extrait le texte propre d'une page Web ou d'une documentation technique à partir de son URL http(s), en retirant scripts, styles et menus. À utiliser pour analyser une source précise repérée par recherche, jamais en devinant son contenu.",
+    id: "read_url",
+    name: "Lire une page web",
     permissions: { default: "auto", readOnly: true },
   },
   search_web: {

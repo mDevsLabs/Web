@@ -35,7 +35,7 @@ const createSkillSchema = z.object({
     .optional(),
   pinned: z.boolean().optional(),
   tags: z.array(z.string().max(50)).optional(),
-  templateId: z.string().uuid().nullable().optional(),
+  templateId: z.string().min(1).max(64).nullable().optional(),
   tools: z.array(z.string()).optional(),
 });
 

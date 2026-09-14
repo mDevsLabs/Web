@@ -18,12 +18,12 @@ import {
   getChatById,
   getPluginInstallationsByUserId,
 } from "@/lib/db/queries";
+import { ChatbotError } from "@/lib/errors";
+import { isPluginOnlyToolId } from "@/lib/plugins/catalog";
 import {
   createPluginTools,
   getToolIdsForPluginIds,
-  isKnownPluginToolId,
 } from "@/lib/plugins/server";
-import { ChatbotError } from "@/lib/errors";
 import { type PostRequestBody, postRequestBodySchema } from "./schema";
 
 export const maxDuration = 300;
@@ -121,11 +121,15 @@ export async function POST(request: Request) {
     const installedPluginToolIds = getToolIdsForPluginIds(enabledPluginIds);
 
     // 5. Addendum de prompt (instructions, mémoire, outils, commande)
-    const { effectiveAddendum, requestedTools } = await buildPromptAddendum(
-      ctx,
-      memoryCtx,
-      { availablePluginToolIds: installedPluginToolIds }
-    );
+    const { effectiveAddendum, requestedTools, unavailableTools } =
+      await buildPromptAddendum(ctx, memoryCtx, {
+        availablePluginToolIds: installedPluginToolIds,
+      });
+    if (unavailableTools.length > 0) {
+      console.info(
+        `[plugins] outils demandés indisponibles (plugin non installé/activé) : ${unavailableTools.join(", ")}`
+      );
+    }
 
     // 5. Température effective: chat override > agent > user default (plus de mode)
     const effectiveTemperature =
@@ -165,13 +169,12 @@ export async function POST(request: Request) {
         // clés MCP. Un outil de plugin demandé mais non installé/activé est
         // ignoré (garde serveur, le client ne fait pas autorité).
         const activePluginToolIds = requestedTools.filter(
-          (t) =>
-            isKnownPluginToolId(t) && installedPluginToolIds.includes(t)
+          (t) => isPluginOnlyToolId(t) && installedPluginToolIds.includes(t)
         );
         const activeToolsList: string[] = [
           ...requestedTools.filter(
             (t) =>
-              !isKnownPluginToolId(t) &&
+              !isPluginOnlyToolId(t) &&
               !t.startsWith("mcp_") &&
               t !== "mcp" &&
               !t.startsWith("mcp:")

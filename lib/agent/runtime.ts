@@ -15,9 +15,24 @@ import {
   emitAgentPlan,
   emitAgentRun,
 } from "@/lib/agent/events";
+import {
+  type AgentBusinessEvent,
+  emitAgentBusinessEvent,
+} from "@/lib/agent/events/business";
 import type { AgentFlags } from "@/lib/agent/flags";
+import {
+  type AgentRunClock,
+  accumulatedActiveMs,
+  closeActivity,
+  type DurationCheckpoint,
+  emptyDurationCheckpoint,
+  openActivity,
+  shouldStopAtSafePoint,
+  systemClock,
+} from "@/lib/agent/limits";
 import { persistAgentRunMessages } from "@/lib/agent/persist";
 import { applyPlanProgress } from "@/lib/agent/plan";
+import { takePendingReorientations } from "@/lib/agent/reorientation/service";
 import {
   deriveSuggestedActions,
   validateDerivedActions,
@@ -27,7 +42,6 @@ import {
   createAgentToolController,
 } from "@/lib/agent/tool-controller";
 import { toProviderTools } from "@/lib/agent/tools/adapters/provider";
-import { buildToolApprovalConfig } from "@/lib/agent/tools/permissions";
 import type {
   AgentExecutionBudget,
   AgentPlan,
@@ -40,6 +54,7 @@ import {
   getStreamContext,
   isModelStreamActivity,
 } from "@/lib/chat/stream-context";
+import { saveAgentRunCheckpoint } from "@/lib/db/agent-foundation-queries";
 import {
   bumpAgentRunCounters,
   createAgentStep,
@@ -48,6 +63,7 @@ import {
   setAgentRunUsage,
   updateAgentRunStatus,
 } from "@/lib/db/agent-queries";
+import { expireAgentUserInputsForRun } from "@/lib/db/agent-user-input-queries";
 import type { ChatMessage } from "@/lib/types";
 import { generateUUID } from "@/lib/utils";
 
@@ -62,6 +78,9 @@ export type AgentStreamParams = {
   approvalRequiredToolIds: string[];
   budget: AgentExecutionBudget;
   chatId: string;
+  // Checkpoint persisté du run (reprise / ticks successifs) : la limite
+  // produit s'appuie dessus, jamais sur un compteur local remis à zéro.
+  checkpoint?: DurationCheckpoint | null;
   context: AgentContextResult;
   existingMessages: ChatMessage[];
   firstUserMessageForTitle: ChatMessage | null;
@@ -72,6 +91,7 @@ export type AgentStreamParams = {
   plan: AgentPlan | null;
   projectId: string | null;
   reasoningLevel: ReasoningLevel;
+  revision?: number;
   runId: string;
   sessionToken: string;
   shouldRenameAfterFirst: boolean;
@@ -80,23 +100,15 @@ export type AgentStreamParams = {
   // chain-of-thought : seuls les parts explicitement fournis par le provider
   // pour affichage transitent — le même protocole que le Chat.
   sendReasoning: boolean;
+  // Indice de départ des étapes : sur une reprise (réponse, approbation), les
+  // nouvelles étapes s'ajoutent à la suite au lieu de repartir de 0.
+  startStepIndex?: number;
   startedAt: number;
   task: string;
   tools: RegisteredAgentTool[];
   userEmail: string;
   userId: string;
 };
-
-function approvalSecret(flags: AgentFlags): string | undefined {
-  if (!flags["agent.approvals"]) {
-    return;
-  }
-  return (
-    process.env.AGENT_TOOL_APPROVAL_SECRET ??
-    process.env.MAI_JWT_SECRET ??
-    undefined
-  );
-}
 
 export function createAgentStream(params: AgentStreamParams) {
   return createUIMessageStream({
@@ -106,19 +118,56 @@ export function createAgentStream(params: AgentStreamParams) {
         lastErrorCategory: null,
         producedArtifact: false,
         sources: [],
-        stepIndex: 0,
+        stepIndex: params.startStepIndex ?? 0,
         toolCallCount: 0,
+        waitingForApproval: false,
         waitingForUser: false,
       };
       let plan = params.plan;
       let aborted = false;
       let failure: string | null = null;
       let accountingStarted = false;
+      let productLimitReached = false;
+      // Horloge injectable + checkpoint persisté : la limite produit s'appuie
+      // sur le temps d'ACTIVITÉ cumulé du run, à travers toutes ses invocations.
+      const clock: AgentRunClock = systemClock();
+      let revision = params.revision ?? 0;
+      let duration = openActivity(
+        params.checkpoint ?? emptyDurationCheckpoint(),
+        clock
+      );
       let usageTotals: {
         inputTokens?: number;
         outputTokens?: number;
         totalTokens?: number;
       } = {};
+      // Réorientations appliquées aux points sûrs : réinjectées au modèle via
+      // le contexte du prochain appel (message système de fin).
+      const pendingReorientations: string[] = [];
+
+      // Persistance du checkpoint (révision optimiste). Un échec n'interrompt
+      // jamais le run : au pire, la limite est réévaluée depuis le dernier
+      // checkpoint connu.
+      const persistCheckpoint = async () => {
+        const saved = await saveAgentRunCheckpoint({
+          checkpoint: {
+            duration,
+            instructionsPending: 0,
+            lastStepIndex: state.stepIndex,
+            toolSelectionSignature: null,
+          },
+          expectedRevision: revision,
+          id: params.runId,
+        }).catch(() => false);
+        if (saved) {
+          revision += 1;
+        }
+        return saved;
+      };
+
+      const emitBusiness = (event: AgentBusinessEvent) => {
+        emitAgentBusinessEvent(event);
+      };
 
       const emitRun = (
         status: AgentRunStatus,
@@ -159,6 +208,17 @@ export function createAgentStream(params: AgentStreamParams) {
       if (plan) {
         emitAgentPlan(writer, plan);
       }
+      // Un run n'est annoncé qu'une fois : une reprise (approbation, question)
+      // avance le MÊME run et ne redéclenche pas l'événement de démarrage.
+      if (!params.isContinuation) {
+        emitBusiness({
+          chatId: params.chatId,
+          model: params.modelId,
+          runId: params.runId,
+          type: "run_started",
+        });
+      }
+      await persistCheckpoint();
 
       const controller = createAgentToolController({
         approvalRequiredToolIds: params.approvalRequiredToolIds,
@@ -170,6 +230,7 @@ export function createAgentStream(params: AgentStreamParams) {
           userEmail: params.userEmail,
           userId: params.userId,
         },
+        maxToolAttempts: Math.max(1, params.budget.maxRetries + 1),
         onPlanProgress: ({ status, title }) => {
           if (!plan) {
             return;
@@ -183,12 +244,14 @@ export function createAgentStream(params: AgentStreamParams) {
         writer,
       });
 
-      const tools = toProviderTools({ controller, tools: params.tools });
-      const approvalConfig = buildToolApprovalConfig({
+      // L'approbation est une décision serveur persistée : elle est branchée
+      // par outil via `needsApproval` dans l'adaptateur, jamais par un secret
+      // d'approbation côté SDK (qui ne survivrait pas à un refresh).
+      const tools = toProviderTools({
         approvalRequiredToolIds: params.approvalRequiredToolIds,
-        enabledTools: params.tools,
+        controller,
+        tools: params.tools,
       });
-      const secret = approvalSecret(params.flags);
       const providerOptions = resolveReasoningProviderOptions(
         params.modelId,
         params.reasoningLevel
@@ -197,7 +260,10 @@ export function createAgentStream(params: AgentStreamParams) {
       const result = streamText({
         abortSignal: params.abortSignal,
         activeTools: params.tools.map((tool) => tool.id),
-        instructions: params.context.instructions,
+        instructions:
+          pendingReorientations.length > 0
+            ? `${params.context.instructions}\n\nCONSIGNES DE RÉORIENTATION DE L'UTILISATEUR (à prendre en compte maintenant, par ordre d'arrivée) :\n${pendingReorientations.map((t) => `- ${t}`).join("\n")}`
+            : params.context.instructions,
         maxRetries: params.budget.maxRetries,
         messages: params.context.messages,
         model: params.model,
@@ -265,20 +331,56 @@ export function createAgentStream(params: AgentStreamParams) {
             stepDelta: 1,
             toolCallDelta: 0,
           }).catch(() => {});
+          // Fin d'étape = point sûr : la tranche d'activité est refermée puis
+          // persistée (un crash ne perd donc pas le temps déjà consommé), et
+          // une nouvelle tranche est ouverte pour la suite.
+          duration = closeActivity(duration, clock);
+          await persistCheckpoint();
+          duration = openActivity(duration, clock);
+          // Réorientations en attente : appliquées UNIQUEMENT à ce point sûr
+          // (jamais au milieu d'un appel d'outil). Les instructions sont
+          // ordonnées (seq), marquées appliquées côté base, et le texte est
+          // réinjecté comme message système du contexte au prochain appel —
+          // le flux streaming reste un reflet, jamais la source d'état.
+          try {
+            const reorientation = await takePendingReorientations({
+              appliedStepIndex: state.stepIndex,
+              runId: params.runId,
+            });
+            if (reorientation) {
+              pendingReorientations.push(reorientation.text);
+              if (reorientation.stopRequested) {
+                aborted = true;
+              }
+            }
+          } catch {
+            // Une réorientation jamais appliquée reste « pending » en base :
+            // elle sera retentée au point sûr suivant, sans perte.
+          }
           const text = (step.text ?? "").trim();
           if (text) {
             emitRun("running");
           }
         },
         prepareStep: ({ steps }) => {
-          const elapsed = Date.now() - params.startedAt;
+          const elapsed = clock.now() - params.startedAt;
           const toolCalls = steps.reduce(
             (total, step) => total + (step.toolCalls?.length ?? 0),
             0
           );
-          // Budget épuisé : on interdit les outils restants pour forcer une
-          // réponse finale au lieu d'une coupure brutale.
+          const stop = shouldStopAtSafePoint({
+            checkpoint: duration,
+            clock,
+            productLimitMs: params.budget.productLimitMs ?? null,
+          });
+          if (stop.stop) {
+            productLimitReached = true;
+          }
+          // Budget d'invocation ou limite produit atteinte : on interdit les
+          // outils restants pour forcer une réponse finale au lieu d'une
+          // coupure brutale, sans perdre les résultats déjà produits.
           if (
+            stop.stop ||
             elapsed >= params.budget.maxDurationMs ||
             toolCalls >= params.budget.maxToolCalls
           ) {
@@ -286,13 +388,14 @@ export function createAgentStream(params: AgentStreamParams) {
           }
         },
         ...(providerOptions ? { providerOptions } : {}),
-        ...(secret && params.flags["agent.approvals"]
-          ? { experimental_toolApprovalSecret: secret }
-          : {}),
         stopWhen: ({ steps }) =>
           steps.length >= params.budget.maxSteps ||
-          Date.now() - params.startedAt >= params.budget.maxDurationMs,
-        toolApproval: approvalConfig,
+          clock.now() - params.startedAt >= params.budget.maxDurationMs ||
+          shouldStopAtSafePoint({
+            checkpoint: duration,
+            clock,
+            productLimitMs: params.budget.productLimitMs ?? null,
+          }).stop,
         tools,
       });
 
@@ -315,15 +418,21 @@ export function createAgentStream(params: AgentStreamParams) {
         // L'erreur a déjà été captée par onError ; on poursuit la finalisation.
       }
 
-      const finalStatus: AgentRunStatus = state.waitingForUser
-        ? "waiting_for_user"
-        : aborted
-          ? "cancelled"
-          : failure
-            ? state.lastErrorCategory === "timeout"
-              ? "timed_out"
-              : "failed"
-            : "completed";
+      // Une suspension n'est ni un échec ni une fin : le run reste actif et
+      // reprendra sur la décision ou la réponse enregistrée.
+      const finalStatus: AgentRunStatus = state.waitingForApproval
+        ? "waiting_for_approval"
+        : state.waitingForUser
+          ? "waiting_for_user"
+          : aborted
+            ? "cancelled"
+            : failure
+              ? state.lastErrorCategory === "timeout"
+                ? "timed_out"
+                : "failed"
+              : productLimitReached
+                ? "timed_out"
+                : "completed";
 
       if (finalStatus === "completed") {
         try {
@@ -340,14 +449,45 @@ export function createAgentStream(params: AgentStreamParams) {
         }
       }
 
+      // Le run se termine toujours sur un point sûr : la tranche d'activité est
+      // refermée et le checkpoint final persisté avant l'écriture du statut.
+      duration = closeActivity(duration, clock);
+      await persistCheckpoint();
+      const runActiveMs = accumulatedActiveMs(duration, clock);
+
       await updateAgentRunStatus({
-        ...(finalStatus === "waiting_for_user"
+        ...(finalStatus === "waiting_for_user" ||
+        finalStatus === "waiting_for_approval"
           ? {}
           : { completedAt: new Date() }),
-        error: failure,
+        error:
+          failure ??
+          (finalStatus === "timed_out" && productLimitReached
+            ? "Limite de durée du forfait atteinte : le travail réalisé est conservé."
+            : null),
         id: params.runId,
         status: finalStatus,
       }).catch(() => {});
+
+      if (productLimitReached) {
+        emitBusiness({
+          limitKind: "tier",
+          runId: params.runId,
+          type: "duration_limit_reached",
+        });
+      }
+      // `waiting_for_user` est déjà émis par le contrôleur au moment où l'outil
+      // le déclare (une seule fois) : ne pas le dupliquer ici.
+      const failureForEvent = failure as string | null;
+      emitBusiness({
+        chatId: params.chatId,
+        ...(failureForEvent ? { error: failureForEvent.slice(0, 200) } : {}),
+        runId: params.runId,
+        status: finalStatus,
+        type: "run_finished",
+      });
+      // Durée d'activité cumulée (pas la latence entre invocations) : c'est la
+      // valeur qui décide du filtre « run long » des notifications.
 
       // SuggestedActions : dérivées côté serveur à partir de ce qui s'est
       // réellement passé (outils activés, livrable, projet), validées par le
@@ -399,7 +539,7 @@ export function createAgentStream(params: AgentStreamParams) {
       const failureText = currentFailure();
       emitRun(finalStatus, {
         ...(failureText ? { error: failureText.slice(0, 200) } : {}),
-        durationMs: Date.now() - params.startedAt,
+        durationMs: runActiveMs,
         ...usageTotals,
       });
     },

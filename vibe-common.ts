@@ -34,7 +34,10 @@ export function createRegisterMulti(app: Hono): RegisterMultiFn {
 /**
  * Blocage bidirectionnel : true si userA a bloqué userB ou inversement.
  */
-export async function isBlockEitherWay(userA: number, userB: number): Promise<boolean> {
+export async function isBlockEitherWay(
+  userA: number,
+  userB: number
+): Promise<boolean> {
   if (!userA || !userB) return false;
   try {
     const sql = getDb();
@@ -56,10 +59,12 @@ export async function isBlockEitherWay(userA: number, userB: number): Promise<bo
 export async function resolveHiddenUserIds(
   currentUserId: number | null
 ): Promise<{ mutedIds: number[]; blockedIds: number[] }> {
-  if (!currentUserId) return { mutedIds: [], blockedIds: [] };
+  if (!currentUserId) return { blockedIds: [], mutedIds: [] };
   const sql = getDb();
   const [mutedRows, blockedRows] = await Promise.all([
-    sql`SELECT muted_user_id FROM muted_users WHERE user_id = ${currentUserId}`.catch(() => []),
+    sql`SELECT muted_user_id FROM muted_users WHERE user_id = ${currentUserId}`.catch(
+      () => []
+    ),
     sql`
       SELECT CASE WHEN user_id = ${currentUserId} THEN blocked_user_id ELSE user_id END AS other_id
       FROM blocked_users
@@ -67,8 +72,8 @@ export async function resolveHiddenUserIds(
     `.catch(() => []),
   ]);
   return {
-    mutedIds: mutedRows.map((r: any) => Number(r.muted_user_id)),
     blockedIds: blockedRows.map((r: any) => Number(r.other_id)),
+    mutedIds: mutedRows.map((r: any) => Number(r.muted_user_id)),
   };
 }
 

@@ -7,9 +7,12 @@
 
 import type { Hono } from "npm:hono@4";
 import { extractToken, getDb, verifyToken } from "./config.ts";
-import { isBlockEitherWay, resolveHiddenUserIds, type RegisterMultiFn } from "./vibe-common.ts";
-import { HybridRecommender } from "./vibe-recommender.ts";
 import { ensureCircleTable } from "./vibe-circle.ts";
+import {
+  isBlockEitherWay,
+  type RegisterMultiFn,
+  resolveHiddenUserIds,
+} from "./vibe-common.ts";
 import {
   attachBookRefs,
   attachPollsAndCollabs,
@@ -18,26 +21,60 @@ import {
   fetchPostMedia,
   publishDuePosts,
 } from "./vibe-posts-core.ts";
+import { HybridRecommender } from "./vibe-recommender.ts";
 
 // ── Signaux d'affinement d'algorithme (« Cela m'intéresse / pas ») ──
 export const FEEDBACK_STOP_WORDS = new Set([
-  "avec", "dans", "cette", "pour", "plus", "moins", "tout", "tous", "être", "fait",
-  "comme", "mais", "vous", "nous", "elle", "ils", "quoi", "ainsi", "alors", "très",
-  "this", "that", "with", "from", "your", "have", "will", "about", "just", "they",
-  "http", "https", "www",
+  "avec",
+  "dans",
+  "cette",
+  "pour",
+  "plus",
+  "moins",
+  "tout",
+  "tous",
+  "être",
+  "fait",
+  "comme",
+  "mais",
+  "vous",
+  "nous",
+  "elle",
+  "ils",
+  "quoi",
+  "ainsi",
+  "alors",
+  "très",
+  "this",
+  "that",
+  "with",
+  "from",
+  "your",
+  "have",
+  "will",
+  "about",
+  "just",
+  "they",
+  "http",
+  "https",
+  "www",
 ]);
 
 export const extractFeedbackTokens = (content: string): string[] => {
   const lower = (content || "").toLowerCase();
   const tokens: string[] = [];
-  for (const m of lower.matchAll(/#([\p{L}\p{N}_]{2,30})/gu)) tokens.push(`#${m[1]}`);
+  for (const m of lower.matchAll(/#([\p{L}\p{N}_]{2,30})/gu))
+    tokens.push(`#${m[1]}`);
   for (const w of lower.split(/[^\p{L}\p{N}#']+/u)) {
     if (w.length >= 4 && !FEEDBACK_STOP_WORDS.has(w)) tokens.push(w);
   }
   return Array.from(new Set(tokens));
 };
 
-export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn) {
+export function registerVibeFeedRoutes(
+  app: Hono,
+  registerMulti: RegisterMultiFn
+) {
   // Protection contre le double enregistrement (idempotence)
   if ((app as any).__vibe_feed_registered) return;
   (app as any).__vibe_feed_registered = true;
@@ -63,9 +100,11 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
 
       // Comptes masqués (mute) et bloqués : exclus de tous les modes de feed
       // (le blocage est bidirectionnel — cf. resolveHiddenUserIds).
-      const { mutedIds, blockedIds } = await resolveHiddenUserIds(currentUserId);
+      const { mutedIds, blockedIds } =
+        await resolveHiddenUserIds(currentUserId);
       const hiddenAuthorIds = new Set<number>([...mutedIds, ...blockedIds]);
-      const isHiddenAuthor = (authorId: any) => hiddenAuthorIds.has(Number(authorId));
+      const isHiddenAuthor = (authorId: any) =>
+        hiddenAuthorIds.has(Number(authorId));
 
       // Publication paresseuse des vibes planifiées arrivées à échéance
       await publishDuePosts();
@@ -77,7 +116,7 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
       const parseKeyset = (cur: string): { ts: string; id: string } | null => {
         const [ts, id] = cur.split("|");
         if (!ts || !id || Number.isNaN(Date.parse(ts))) return null;
-        return { ts, id };
+        return { id, ts };
       };
       const parseRank = (cur: string): number | null => {
         const m = cur.match(/^rank:(\d+)$/);
@@ -88,7 +127,7 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
 
       if (type === "trending") {
         const tag = (c.req.query("tag") || "").trim();
-        const rankOffset = rawCursor ? parseRank(rawCursor) ?? 0 : 0;
+        const rankOffset = rawCursor ? (parseRank(rawCursor) ?? 0) : 0;
         let posts;
         if (tag) {
           posts = await sql`
@@ -129,14 +168,19 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
 
         // Filtrage mute/block (après pagination OFFSET — les trous éventuels
         // sont acceptables pour un classement de tendances).
-        const visibleTrending = posts.filter((p: any) => !isHiddenAuthor(p.author_id));
+        const visibleTrending = posts.filter(
+          (p: any) => !isHiddenAuthor(p.author_id)
+        );
 
         return c.json({
-          mode: "trending",
-          title: tag ? `Tendances : ${tag}` : "Tendances Populaires",
           count: visibleTrending.length,
-          nextCursor: posts.length === PAGE_SIZE ? `rank:${rankOffset + PAGE_SIZE}` : null,
+          mode: "trending",
+          nextCursor:
+            posts.length === PAGE_SIZE
+              ? `rank:${rankOffset + PAGE_SIZE}`
+              : null,
           posts: visibleTrending,
+          title: tag ? `Tendances : ${tag}` : "Tendances Populaires",
         });
       }
 
@@ -184,24 +228,26 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
         await attachPollsAndCollabs(posts, currentUserId).catch(() => {});
 
         // Filtrage mute/block dans le flux Abonnements
-        const visibleStream = posts.filter((p: any) => !isHiddenAuthor(p.author_id));
+        const visibleStream = posts.filter(
+          (p: any) => !isHiddenAuthor(p.author_id)
+        );
 
         const last = visibleStream[visibleStream.length - 1];
         return c.json({
-          mode: "stream",
-          title: "Abonnements",
           count: visibleStream.length,
+          mode: "stream",
           nextCursor:
             posts.length === PAGE_SIZE && last
               ? `${new Date(last.published_at).toISOString()}|${last.id}`
               : null,
           posts: visibleStream,
+          title: "Abonnements",
         });
       }
 
       // "Pour Vous" — Algorithme de recommandation sophistiqué
       let followedAuthorIds = new Set<number>();
-      let affinityByAuthor = new Map<number, number>();
+      const affinityByAuthor = new Map<number, number>();
       let blockedKeywords: string[] = [];
       let shouldHideReposts = false;
 
@@ -222,12 +268,19 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
               LIMIT 50
             `,
           ]);
-          followedAuthorIds = new Set(followsRows.map((f: any) => Number(f.following_id)));
+          followedAuthorIds = new Set(
+            followsRows.map((f: any) => Number(f.following_id))
+          );
           for (const row of affinityRows) {
-            affinityByAuthor.set(Number(row.author_id), Math.min(1, Number(row.n) / 5));
+            affinityByAuthor.set(
+              Number(row.author_id),
+              Math.min(1, Number(row.n) / 5)
+            );
           }
           if (settingsRows[0]) {
-            blockedKeywords = (settingsRows[0].blocked_keywords || []).map((k: string) => k.toLowerCase().trim());
+            blockedKeywords = (settingsRows[0].blocked_keywords || []).map(
+              (k: string) => k.toLowerCase().trim()
+            );
             shouldHideReposts = Boolean(settingsRows[0].hide_reposts);
           }
         } catch {}
@@ -253,29 +306,33 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
       // Filtrage selon les paramètres utilisateur
       const filteredCandidates = rawCandidates.filter((post: any) => {
         if (shouldHideReposts && post.is_repost) return false;
-        if (currentUserId && Number(post.author_id) === currentUserId) return true;
+        if (currentUserId && Number(post.author_id) === currentUserId)
+          return true;
         if (isHiddenAuthor(post.author_id)) return false;
         if (blockedKeywords.length > 0) {
-          const contentLc = (post.content || '').toLowerCase();
-          const hasBlocked = blockedKeywords.some((kw: string) => kw && contentLc.includes(kw));
+          const contentLc = (post.content || "").toLowerCase();
+          const hasBlocked = blockedKeywords.some(
+            (kw: string) => kw && contentLc.includes(kw)
+          );
           if (hasBlocked) return false;
         }
         return true;
       });
 
       // Signaux d'affinement : retours « Cela m'intéresse / pas » + centres d'intérêt
-      let moreAuthorWeights = new Map<number, number>();
-      let lessAuthorWeights = new Map<number, number>();
-      let moreTokenWeights = new Map<string, number>();
-      let lessTokenWeights = new Map<string, number>();
+      const moreAuthorWeights = new Map<number, number>();
+      const lessAuthorWeights = new Map<number, number>();
+      const moreTokenWeights = new Map<string, number>();
+      const lessTokenWeights = new Map<string, number>();
       let interestTags: string[] = [];
-      let dwellByPost = new Map<string, number>();
-      let topicAffinity = new Map<string, number>();
+      const dwellByPost = new Map<string, number>();
+      const topicAffinity = new Map<string, number>();
 
       if (currentUserId) {
         try {
-          const [feedbackRows, interestRows, dwellRows, affinityRows] = await Promise.all([
-            sql`
+          const [feedbackRows, interestRows, dwellRows, affinityRows] =
+            await Promise.all([
+              sql`
               SELECT pi.interaction_type, p.author_id, p.content
               FROM post_interactions pi
               JOIN posts p ON p.id = pi.post_id
@@ -284,48 +341,68 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
               ORDER BY pi.created_at DESC
               LIMIT 200
             `,
-            sql`SELECT interests FROM profiles WHERE user_id = ${currentUserId} LIMIT 1`,
-            sql`
+              sql`SELECT interests FROM profiles WHERE user_id = ${currentUserId} LIMIT 1`,
+              sql`
               SELECT post_id, SUM(duration_ms)::int AS total_ms
               FROM post_views WHERE user_id = ${currentUserId} AND created_at > NOW() - INTERVAL '30 days'
               GROUP BY post_id
             `.catch(() => []),
-            sql`SELECT topic, score FROM user_topic_affinity WHERE user_id = ${currentUserId} ORDER BY score DESC LIMIT 20`.catch(() => []),
-          ]);
+              sql`SELECT topic, score FROM user_topic_affinity WHERE user_id = ${currentUserId} ORDER BY score DESC LIMIT 20`.catch(
+                () => []
+              ),
+            ]);
           for (const row of feedbackRows) {
             const authorId = Number(row.author_id);
-            const isMore = row.interaction_type === 'interest_more';
+            const isMore = row.interaction_type === "interest_more";
             const authorMap = isMore ? moreAuthorWeights : lessAuthorWeights;
             const tokenMap = isMore ? moreTokenWeights : lessTokenWeights;
-            authorMap.set(authorId, Math.min(3, (authorMap.get(authorId) || 0) + 1));
+            authorMap.set(
+              authorId,
+              Math.min(3, (authorMap.get(authorId) || 0) + 1)
+            );
             for (const token of extractFeedbackTokens(row.content)) {
               tokenMap.set(token, Math.min(3, (tokenMap.get(token) || 0) + 1));
             }
           }
           const rawInterests = interestRows[0]?.interests;
           if (Array.isArray(rawInterests)) {
-            interestTags = rawInterests.map((t: any) => String(t).toLowerCase().trim()).filter(Boolean);
-          } else if (typeof rawInterests === 'string') {
-            interestTags = rawInterests.split(',').map((t) => t.toLowerCase().trim()).filter(Boolean);
+            interestTags = rawInterests
+              .map((t: any) => String(t).toLowerCase().trim())
+              .filter(Boolean);
+          } else if (typeof rawInterests === "string") {
+            interestTags = rawInterests
+              .split(",")
+              .map((t) => t.toLowerCase().trim())
+              .filter(Boolean);
           }
           for (const d of (dwellRows as any[]) || []) {
-            dwellByPost.set(String((d as any).post_id), Number((d as any).total_ms || 0));
+            dwellByPost.set(
+              String((d as any).post_id),
+              Number((d as any).total_ms || 0)
+            );
           }
           for (const a of (affinityRows as any[]) || []) {
-            topicAffinity.set(String((a as any).topic).toLowerCase(), Number((a as any).score || 0));
+            topicAffinity.set(
+              String((a as any).topic).toLowerCase(),
+              Number((a as any).score || 0)
+            );
           }
         } catch (feedbackErr) {
           console.warn("[Vibe API] Erreur signaux feedback:", feedbackErr);
         }
       }
 
-      const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v));
+      const clamp = (v: number, lo: number, hi: number) =>
+        Math.max(lo, Math.min(hi, v));
 
-      const computeInterestSignal = (post: any): { signal: number; matched: string[] } => {
-        if (!currentUserId) return { signal: 0, matched: [] };
+      const computeInterestSignal = (
+        post: any
+      ): { signal: number; matched: string[] } => {
+        if (!currentUserId) return { matched: [], signal: 0 };
         const authorId = Number(post.author_id);
         const authorDelta =
-          (moreAuthorWeights.get(authorId) || 0) - (lessAuthorWeights.get(authorId) || 0);
+          (moreAuthorWeights.get(authorId) || 0) -
+          (lessAuthorWeights.get(authorId) || 0);
         const tokens = extractFeedbackTokens(post.content);
         let topicDelta = 0;
         let interestMatches = 0;
@@ -343,22 +420,23 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
           const aff = topicAffinity.get(bare) ?? topicAffinity.get(token) ?? 0;
           if (aff > 0) {
             affinityBoost += aff;
-            if (matched.length < 3 && !matched.includes(bare)) matched.push(bare);
+            if (matched.length < 3 && !matched.includes(bare))
+              matched.push(bare);
           }
         }
         // Dwell : temps passé sur ce post précis → boost implicite (vrai profil)
         const dwellMs = dwellByPost.get(String(post.id)) || 0;
-        const dwellBoost = Math.min(1, dwellMs / 30000);
+        const dwellBoost = Math.min(1, dwellMs / 30_000);
         const signal = clamp(
           0.35 * (authorDelta / 3) +
-            0.3 * clamp(topicDelta / 3, -3, 3) / 3 +
+            (0.3 * clamp(topicDelta / 3, -3, 3)) / 3 +
             0.15 * (Math.min(2, interestMatches) / 2) +
             0.1 * Math.min(1, affinityBoost) +
             0.1 * dwellBoost,
           -1,
           1
         );
-        return { signal, matched };
+        return { matched, signal };
       };
 
       const scoredPosts = filteredCandidates.map((post: any) => {
@@ -366,34 +444,37 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
         // Affinité topic → similarité sémantique (remplace le 0.75 en dur)
         const topicScore = interest.matched.length > 0 ? 0.85 : 0.6;
         const signal = HybridRecommender.scorePost({
-          postId: post.id,
-          authorId: Number(post.author_id),
-          publishedAt: new Date(post.published_at),
-          likes: Number(post.likes_count || 0),
-          reposts: Number(post.reposts_count || 0),
-          replies: Number(post.replies_count || 0),
-          views: Number(post.views_count || 0),
-          hasMedia: Array.isArray(post.media_assets) && post.media_assets.length > 0,
-          isVerifiedAuthor: Boolean(post.is_verified),
-          isFollowedAuthor: followedAuthorIds.has(Number(post.author_id)),
           affinity: affinityByAuthor.get(Number(post.author_id)) || 0,
-          semanticSimilarity: topicScore,
+          authorId: Number(post.author_id),
           candidateSentiment: Number(post.sentiment_score || 0.5),
-          toxicityScore: Number(post.toxicity_score || 0),
+          hasMedia:
+            Array.isArray(post.media_assets) && post.media_assets.length > 0,
           interestSignal: interest.signal,
+          isFollowedAuthor: followedAuthorIds.has(Number(post.author_id)),
+          isVerifiedAuthor: Boolean(post.is_verified),
+          likes: Number(post.likes_count || 0),
           matchedInterestTags: interest.matched,
+          postId: post.id,
+          publishedAt: new Date(post.published_at),
+          replies: Number(post.replies_count || 0),
+          reposts: Number(post.reposts_count || 0),
+          semanticSimilarity: topicScore,
+          toxicityScore: Number(post.toxicity_score || 0),
           userDwellMs: dwellByPost.get(String(post.id)) || 0,
+          views: Number(post.views_count || 0),
         });
 
         return {
           ...post,
-          recommendationScore: signal.totalScore,
           explanation: signal.explanationText,
+          recommendationScore: signal.totalScore,
           scoreBreakdown: signal.breakdown,
         };
       });
 
-      scoredPosts.sort((a: any, b: any) => b.recommendationScore - a.recommendationScore);
+      scoredPosts.sort(
+        (a: any, b: any) => b.recommendationScore - a.recommendationScore
+      );
 
       // Diversification : max 3 posts consécutifs du même auteur
       const diversified: any[] = [];
@@ -415,18 +496,21 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
       }
       const ranked = diversified.concat(deferred);
 
-      const rankOffset = rawCursor ? parseRank(rawCursor) ?? 0 : 0;
+      const rankOffset = rawCursor ? (parseRank(rawCursor) ?? 0) : 0;
       const page = ranked.slice(rankOffset, rankOffset + PAGE_SIZE);
       await attachQuotedPosts(page);
       await attachBookRefs(page, currentUserId).catch(() => {});
       await attachPollsAndCollabs(page, currentUserId).catch(() => {});
 
       return c.json({
-        mode: "for_you",
-        title: "Pour Vous",
         count: page.length,
-        nextCursor: page.length === PAGE_SIZE && rankOffset + PAGE_SIZE < ranked.length ? `rank:${rankOffset + PAGE_SIZE}` : null,
+        mode: "for_you",
+        nextCursor:
+          page.length === PAGE_SIZE && rankOffset + PAGE_SIZE < ranked.length
+            ? `rank:${rankOffset + PAGE_SIZE}`
+            : null,
         posts: page,
+        title: "Pour Vous",
       });
     } catch (err: any) {
       console.error("[Vibe API] Error fetching feed:", err);
@@ -434,7 +518,11 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
     }
   };
 
-  registerMulti("get", ["/api/vibe/feed", "/vibe/feed", "/v1/feed", "/feed"], handleFeed);
+  registerMulti(
+    "get",
+    ["/api/vibe/feed", "/vibe/feed", "/v1/feed", "/feed"],
+    handleFeed
+  );
 
   // 2. REAL TRENDS & HASHTAGS
   const handleGetTrends = async (c: any) => {
@@ -462,27 +550,33 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
         `;
       }
 
-      const tagMap: Record<string, { count: number; engagement: number; recencyBoost: number }> = {};
+      const tagMap: Record<
+        string,
+        { count: number; engagement: number; recencyBoost: number }
+      > = {};
       const now = Date.now();
 
       for (const p of recentPosts) {
         const text = p.content || "";
         const matches = text.match(/#[\p{L}\p{N}_]+/gu) || [];
 
-        const eng = Number(p.likes_count || 0) * 2
-          + Number(p.reposts_count || 0) * 3
-          + Number(p.replies_count || 0) * 2
-          + Number(p.views_count || 0) * 0.1
-          + 1;
+        const eng =
+          Number(p.likes_count || 0) * 2 +
+          Number(p.reposts_count || 0) * 3 +
+          Number(p.replies_count || 0) * 2 +
+          Number(p.views_count || 0) * 0.1 +
+          1;
 
-        const ageHours = (now - new Date(p.published_at).getTime()) / (1000 * 3600);
+        const ageHours =
+          (now - new Date(p.published_at).getTime()) / (1000 * 3600);
         const recency = ageHours < 6 ? 3 : ageHours < 24 ? 1.5 : 1;
 
         for (const rawTag of matches) {
           const normalized = rawTag.toLowerCase().trim();
           if (normalized.length <= 1 || normalized.length > 35) continue;
 
-          if (!tagMap[rawTag]) tagMap[rawTag] = { count: 0, engagement: 0, recencyBoost: 0 };
+          if (!tagMap[rawTag])
+            tagMap[rawTag] = { count: 0, engagement: 0, recencyBoost: 0 };
           tagMap[rawTag].count += 1;
           tagMap[rawTag].engagement += eng;
           tagMap[rawTag].recencyBoost += recency;
@@ -492,20 +586,40 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
       const sortedTrends = Object.entries(tagMap)
         .map(([tag, data]) => {
           const score = data.engagement * data.recencyBoost + data.count * 5;
-          const formatted = data.count > 1000
-            ? `${(data.count / 1000).toFixed(1)}k`
-            : `${data.count}`;
+          const formatted =
+            data.count > 1000
+              ? `${(data.count / 1000).toFixed(1)}k`
+              : `${data.count}`;
           const lc = tag.toLowerCase();
-          const category = lc.includes('mai') || lc.includes('ia') || lc.includes('ai') || lc.includes('llm') || lc.includes('gpt')
-            ? 'Intelligence Artificielle'
-            : lc.includes('tech') || lc.includes('dev') || lc.includes('code') || lc.includes('web')
-            ? 'Technologie'
-            : lc.includes('design') || lc.includes('art') || lc.includes('photo') || lc.includes('ux')
-            ? 'Design & Création'
-            : lc.includes('vibe') || lc.includes('social') || lc.includes('community')
-            ? 'Communauté'
-            : 'Tendances';
-          return { tag, category, posts: `${formatted} publications`, post_count: data.count, score };
+          const category =
+            lc.includes("mai") ||
+            lc.includes("ia") ||
+            lc.includes("ai") ||
+            lc.includes("llm") ||
+            lc.includes("gpt")
+              ? "Intelligence Artificielle"
+              : lc.includes("tech") ||
+                  lc.includes("dev") ||
+                  lc.includes("code") ||
+                  lc.includes("web")
+                ? "Technologie"
+                : lc.includes("design") ||
+                    lc.includes("art") ||
+                    lc.includes("photo") ||
+                    lc.includes("ux")
+                  ? "Design & Création"
+                  : lc.includes("vibe") ||
+                      lc.includes("social") ||
+                      lc.includes("community")
+                    ? "Communauté"
+                    : "Tendances";
+          return {
+            category,
+            post_count: data.count,
+            posts: `${formatted} publications`,
+            score,
+            tag,
+          };
         })
         .sort((a, b) => b.score - a.score)
         .slice(0, 10);
@@ -517,7 +631,11 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
     }
   };
 
-  registerMulti("get", ["/api/vibe/trends", "/vibe/trends", "/v1/trends", "/trends"], handleGetTrends);
+  registerMulti(
+    "get",
+    ["/api/vibe/trends", "/vibe/trends", "/v1/trends", "/trends"],
+    handleGetTrends
+  );
 
   // 2bis. TOP VIBE — meilleures publications des N derniers jours (Explorer)
   // Score d'engagement : likes×1 + reposts×2.5 + réponses×2 + vues×0.1
@@ -534,7 +652,10 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
         } catch {}
       }
 
-      const limit = Math.min(10, Math.max(1, Number(c.req.query("limit") || 5)));
+      const limit = Math.min(
+        10,
+        Math.max(1, Number(c.req.query("limit") || 5))
+      );
       const days = Math.min(90, Math.max(1, Number(c.req.query("days") || 30)));
 
       const sql = getDb();
@@ -566,18 +687,25 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
       await attachPollsAndCollabs(posts, currentUserId).catch(() => {});
 
       // Filtrage mute/block
-      const { mutedIds, blockedIds } = await resolveHiddenUserIds(currentUserId);
+      const { mutedIds, blockedIds } =
+        await resolveHiddenUserIds(currentUserId);
       const hiddenAuthorIds = new Set<number>([...mutedIds, ...blockedIds]);
-      const visible = posts.filter((p: any) => !hiddenAuthorIds.has(Number(p.author_id)));
+      const visible = posts.filter(
+        (p: any) => !hiddenAuthorIds.has(Number(p.author_id))
+      );
 
-      return c.json({ success: true, posts: visible });
+      return c.json({ posts: visible, success: true });
     } catch (err: any) {
       console.error("[Top Posts Error]:", err);
-      return c.json({ success: true, posts: [] });
+      return c.json({ posts: [], success: true });
     }
   };
 
-  registerMulti("get", ["/api/vibe/posts/top", "/vibe/posts/top", "/v1/posts/top"], handleTopPosts);
+  registerMulti(
+    "get",
+    ["/api/vibe/posts/top", "/vibe/posts/top", "/v1/posts/top"],
+    handleTopPosts
+  );
 
   // 3. SEARCH POSTS
   const handleSearchPosts = async (c: any) => {
@@ -585,7 +713,7 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
       await ensurePostColumns().catch(() => {});
       const q = (c.req.query("q") || c.req.query("query") || "").trim();
       if (!q) {
-        return c.json({ posts: [], count: 0 });
+        return c.json({ count: 0, posts: [] });
       }
       const token = extractToken(c.req.raw);
       let currentUserId: number | null = null;
@@ -597,7 +725,10 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
       }
 
       const sql = getDb();
-      const limit = Math.min(50, Math.max(1, Number(c.req.query("limit") || 20)));
+      const limit = Math.min(
+        50,
+        Math.max(1, Number(c.req.query("limit") || 20))
+      );
       const offset = Math.max(0, Number(c.req.query("offset") || 0));
 
       const cleanQ = q.startsWith("#") ? q.slice(1) : q;
@@ -627,14 +758,17 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
       await attachPollsAndCollabs(posts, currentUserId).catch(() => {});
 
       // Filtrage mute/block des résultats de recherche
-      const { mutedIds: searchMuted, blockedIds: searchBlocked } = await resolveHiddenUserIds(currentUserId);
+      const { mutedIds: searchMuted, blockedIds: searchBlocked } =
+        await resolveHiddenUserIds(currentUserId);
       const searchHidden = new Set<number>([...searchMuted, ...searchBlocked]);
-      const visiblePosts = posts.filter((p: any) => !searchHidden.has(Number(p.author_id)));
+      const visiblePosts = posts.filter(
+        (p: any) => !searchHidden.has(Number(p.author_id))
+      );
 
       return c.json({
-        query: q,
         count: visiblePosts.length,
         posts: visiblePosts,
+        query: q,
       });
     } catch (err: any) {
       console.error("[Search Posts Error]:", err);
@@ -642,12 +776,16 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
     }
   };
 
-  registerMulti("get", [
-    "/api/vibe/search/posts",
-    "/vibe/search/posts",
-    "/v1/search/posts",
-    "/search/posts",
-  ], handleSearchPosts);
+  registerMulti(
+    "get",
+    [
+      "/api/vibe/search/posts",
+      "/vibe/search/posts",
+      "/v1/search/posts",
+      "/search/posts",
+    ],
+    handleSearchPosts
+  );
 
   // 4. UNIFIED GLOBAL SEARCH (posts + users + books + DMs, limit/section)
   const handleSearchUnified = async (c: any) => {
@@ -655,7 +793,13 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
       await ensurePostColumns().catch(() => {});
       const q = (c.req.query("q") || c.req.query("query") || "").trim();
       if (!q) {
-        return c.json({ posts: [], users: [], books: [], messages: [], total: 0 });
+        return c.json({
+          books: [],
+          messages: [],
+          posts: [],
+          total: 0,
+          users: [],
+        });
       }
       const token = extractToken(c.req.raw);
       let currentUserId: number | null = null;
@@ -666,7 +810,10 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
         } catch {}
       }
       const sql = getDb();
-      const limit = Math.min(10, Math.max(1, Number(c.req.query("limit") || 5)));
+      const limit = Math.min(
+        10,
+        Math.max(1, Number(c.req.query("limit") || 5))
+      );
       const cleanQ = q.startsWith("#") ? q.slice(1) : q;
 
       const postsPromise = sql`
@@ -697,16 +844,19 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
         LIMIT ${limit}
       `.catch(() => []);
 
-      const booksPromise = currentUserId ? sql`
+      const booksPromise = currentUserId
+        ? sql`
         SELECT b.id, b.title, b.icon, b.created_at,
                (SELECT COUNT(*) FROM vibe_book_items bi WHERE bi.book_id = b.id) AS items_count
         FROM vibe_books b
         WHERE b.user_id = ${currentUserId} AND b.title ILIKE ('%' || ${q} || '%')
         ORDER BY b.created_at DESC
         LIMIT ${limit}
-      `.catch(() => []) : Promise.resolve([]);
+      `.catch(() => [])
+        : Promise.resolve([]);
 
-      const messagesPromise = currentUserId ? sql`
+      const messagesPromise = currentUserId
+        ? sql`
         SELECT m.id, m.conversation_id, m.sender_id, m.recipient_id, m.content, m.is_read, m.created_at
         FROM direct_messages m
         WHERE m.content ILIKE ('%' || ${q} || '%')
@@ -717,19 +867,34 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
           AND (m.status IS NULL OR m.status = 'sent')
         ORDER BY m.created_at DESC
         LIMIT ${limit}
-      `.catch(() => []) : Promise.resolve([]);
+      `.catch(() => [])
+        : Promise.resolve([]);
 
       const [posts, users, books, messages] = await Promise.all([
-        postsPromise, usersPromise, booksPromise, messagesPromise,
+        postsPromise,
+        usersPromise,
+        booksPromise,
+        messagesPromise,
       ]);
-      try { await fetchPostMedia(posts); } catch {}
-      try { await attachQuotedPosts(posts); } catch {}
-      try { await attachBookRefs(posts, currentUserId); } catch {}
-      try { await attachPollsAndCollabs(posts, currentUserId); } catch {}
+      try {
+        await fetchPostMedia(posts);
+      } catch {}
+      try {
+        await attachQuotedPosts(posts);
+      } catch {}
+      try {
+        await attachBookRefs(posts, currentUserId);
+      } catch {}
+      try {
+        await attachPollsAndCollabs(posts, currentUserId);
+      } catch {}
 
       return c.json({
-        posts, users, books, messages,
+        books,
+        messages,
+        posts,
         total: posts.length + users.length + books.length + messages.length,
+        users,
       });
     } catch (err: any) {
       console.error("[Search Unified Error]:", err);
@@ -737,10 +902,14 @@ export function registerVibeFeedRoutes(app: Hono, registerMulti: RegisterMultiFn
     }
   };
 
-  registerMulti("get", [
-    "/api/vibe/search/unified",
-    "/vibe/search/unified",
-    "/v1/search/unified",
-    "/search/unified",
-  ], handleSearchUnified);
+  registerMulti(
+    "get",
+    [
+      "/api/vibe/search/unified",
+      "/vibe/search/unified",
+      "/v1/search/unified",
+      "/search/unified",
+    ],
+    handleSearchUnified
+  );
 }

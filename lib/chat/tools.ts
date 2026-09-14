@@ -72,7 +72,13 @@ export function createChatTools(
       : { email: userEmail, id: userId, token: sessionToken },
   } as any;
 
+  // Ordre de fusion : les outils de plugins et de serveurs MCP sont injectés EN
+  // PREMIER, les outils natifs ensuite. Un outil natif ne peut donc jamais être
+  // masqué par un plugin (la validation interdit déjà toute collision
+  // d'identifiant ; cet ordre rend l'invariant explicite et testable).
   return {
+    ...pluginTools,
+    ...mcpTools,
     askUser,
     audioGenerate: audioGenerate({
       dataStream,
@@ -139,8 +145,5 @@ export function createChatTools(
     }),
     webCapture,
     webSearch,
-    // Outils fournis par les plugins installés et activés pour l'utilisateur.
-    ...pluginTools,
-    ...mcpTools,
   };
 }

@@ -1,6 +1,10 @@
 import { getMcpServersByUserId, updateMcpServerSync } from "@/lib/db/queries";
 import { createMcpChatTools } from "@/lib/mcp/chat-tools";
 import { fetchMcpTools, getFilteredTools } from "@/lib/mcp/client";
+import {
+  loadMcpSecretDescriptors,
+  mergeMcpSecrets,
+} from "@/lib/mcp/secrets-config";
 
 export type McpContext = {
   userMcpServers: Awaited<ReturnType<typeof getMcpServersByUserId>>;
@@ -58,6 +62,32 @@ export async function loadMcpContext(params: {
         );
       }
     }
+  }
+
+  // Secrets chiffrés : déchiffrés ici (serveur uniquement) et fusionnés dans la
+  // configuration d'appel. C'est le seul chemin par lequel un token atteint le
+  // serveur MCP : jamais depuis le client, jamais depuis la ligne McpServer.
+  for (const server of userMcpServers) {
+    if (!server.isEnabled) {
+      continue;
+    }
+    const secrets = await loadMcpSecretDescriptors({
+      serverId: server.id,
+      userId,
+    });
+    if (secrets.length === 0) {
+      continue;
+    }
+    const merged = mergeMcpSecrets({
+      authConfig: server.authConfig,
+      authType: server.authType,
+      env: server.env,
+      headers: server.headers,
+      secrets,
+    });
+    server.authConfig = merged.authConfig;
+    server.env = merged.env;
+    server.headers = merged.headers;
   }
 
   // Filtrage MCP par le skill actif : serveurs restreints à ses IDs +

@@ -1,5 +1,5 @@
-import { errorResponse } from "@/lib/api/error-response";
 import { chatOwnerMatches } from "@/lib/agent/channel";
+import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import {
   getAgentRunsByChatId,
@@ -68,8 +68,8 @@ export async function GET(request: Request) {
       executions: executions.flat(),
       mode: chat.mode,
       runs,
-      suggestedActions: runActions,
       steps: steps.flat(),
+      suggestedActions: runActions,
     },
     {
       headers: {

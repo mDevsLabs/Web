@@ -185,4 +185,15 @@ export const readFileTool = defineTool({
     );
   },
   schema: readFileInputSchema,
+  summarize: (data) => {
+    const value = (data ?? {}) as {
+      isTruncated?: boolean;
+      length?: number;
+      name?: string;
+    };
+    const length = value.length ?? 0;
+    return `${(value.name ?? "document").slice(0, 60)} · ${length.toLocaleString(
+      "fr-FR"
+    )} caractères${value.isTruncated ? " (tronqué)" : ""}`;
+  },
 });

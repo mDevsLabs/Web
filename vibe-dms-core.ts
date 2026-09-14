@@ -6,20 +6,32 @@
  * ============================================================================
  */
 
-import { getDb, isPaidTier, getWeekData, getUserQuotaBoost, getTierMaiTokenLimit } from "./config.ts";
+import {
+  getDb,
+  getTierMaiTokenLimit,
+  getUserQuotaBoost,
+  getWeekData,
+  isPaidTier,
+} from "./config.ts";
 import { pushRealtimeEvent } from "./realtime.ts";
 import { stripHtmlTags } from "./vibe-posts-core.ts";
 
 /** Longueurs maximales d'un message privé (texte brut, HTML décompté) par forfait. */
 export const DM_MESSAGE_CHARS_FREE = 3000;
-export const DM_MESSAGE_CHARS_PAID = 10000;
-export const dmPlainLength = (content: unknown): number => stripHtmlTags(String(content ?? "")).length;
+export const DM_MESSAGE_CHARS_PAID = 10_000;
+export const dmPlainLength = (content: unknown): number =>
+  stripHtmlTags(String(content ?? "")).length;
 
 /** Limite du compte : 10 000 caractères pour Plus/Pro/Max, 3 000 sinon. */
-export const getDmMessageCharLimit = async (sql: any, userId: number): Promise<number> => {
+export const getDmMessageCharLimit = async (
+  sql: any,
+  userId: number
+): Promise<number> => {
   try {
     const rows = await sql`SELECT tier FROM users WHERE id = ${userId} LIMIT 1`;
-    return isPaidTier(rows[0]?.tier) ? DM_MESSAGE_CHARS_PAID : DM_MESSAGE_CHARS_FREE;
+    return isPaidTier(rows[0]?.tier)
+      ? DM_MESSAGE_CHARS_PAID
+      : DM_MESSAGE_CHARS_FREE;
   } catch {
     return DM_MESSAGE_CHARS_FREE;
   }
@@ -84,19 +96,37 @@ export async function ensureDMTables() {
         UNIQUE (message_id, user_id, emoji)
       )
     `;
-    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS reply_to_id UUID`.catch(() => {});
-    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS is_edited BOOLEAN DEFAULT FALSE`.catch(() => {});
-    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS edited_at TIMESTAMPTZ`.catch(() => {});
+    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS reply_to_id UUID`.catch(
+      () => {}
+    );
+    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS is_edited BOOLEAN DEFAULT FALSE`.catch(
+      () => {}
+    );
+    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS edited_at TIMESTAMPTZ`.catch(
+      () => {}
+    );
     // Messages de groupe (migration 019) : conversations multi-participants
-    await sql`ALTER TABLE dm_conversations ADD COLUMN IF NOT EXISTS is_group BOOLEAN DEFAULT FALSE`.catch(() => {});
+    await sql`ALTER TABLE dm_conversations ADD COLUMN IF NOT EXISTS is_group BOOLEAN DEFAULT FALSE`.catch(
+      () => {}
+    );
     // Les groupes utilisent participant_two_id = NULL (plusieurs groupes par compte
     // malgré UNIQUE(participant_one_id, participant_two_id) — les NULL sont distincts)
-    await sql`ALTER TABLE dm_conversations ALTER COLUMN participant_two_id DROP NOT NULL`.catch(() => {});
+    await sql`ALTER TABLE dm_conversations ALTER COLUMN participant_two_id DROP NOT NULL`.catch(
+      () => {}
+    );
     // Les messages de groupe n'ont pas de destinataire unique (lecture via read_by)
-    await sql`ALTER TABLE direct_messages ALTER COLUMN recipient_id DROP NOT NULL`.catch(() => {});
-    await sql`ALTER TABLE dm_conversations ADD COLUMN IF NOT EXISTS group_name VARCHAR(100)`.catch(() => {});
-    await sql`ALTER TABLE dm_conversations ADD COLUMN IF NOT EXISTS group_avatar_url TEXT`.catch(() => {});
-    await sql`ALTER TABLE dm_conversations ADD COLUMN IF NOT EXISTS created_by BIGINT`.catch(() => {});
+    await sql`ALTER TABLE direct_messages ALTER COLUMN recipient_id DROP NOT NULL`.catch(
+      () => {}
+    );
+    await sql`ALTER TABLE dm_conversations ADD COLUMN IF NOT EXISTS group_name VARCHAR(100)`.catch(
+      () => {}
+    );
+    await sql`ALTER TABLE dm_conversations ADD COLUMN IF NOT EXISTS group_avatar_url TEXT`.catch(
+      () => {}
+    );
+    await sql`ALTER TABLE dm_conversations ADD COLUMN IF NOT EXISTS created_by BIGINT`.catch(
+      () => {}
+    );
     await sql`
       CREATE TABLE IF NOT EXISTS dm_group_members (
         id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -108,20 +138,42 @@ export async function ensureDMTables() {
         UNIQUE (conversation_id, user_id)
       )
     `.catch(() => {});
-    await sql`CREATE INDEX IF NOT EXISTS idx_group_members_conv ON dm_group_members(conversation_id)`.catch(() => {});
-    await sql`CREATE INDEX IF NOT EXISTS idx_group_members_user ON dm_group_members(user_id)`.catch(() => {});
+    await sql`CREATE INDEX IF NOT EXISTS idx_group_members_conv ON dm_group_members(conversation_id)`.catch(
+      () => {}
+    );
+    await sql`CREATE INDEX IF NOT EXISTS idx_group_members_user ON dm_group_members(user_id)`.catch(
+      () => {}
+    );
     // Mentions urgentes (@tous / @utilisateur) + lecture multi-membres (groupes)
-    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS mentions JSONB DEFAULT '[]'`.catch(() => {});
-    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS urgent_mentions JSONB DEFAULT '[]'`.catch(() => {});
-    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS read_by JSONB DEFAULT '[]'`.catch(() => {});
+    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS mentions JSONB DEFAULT '[]'`.catch(
+      () => {}
+    );
+    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS urgent_mentions JSONB DEFAULT '[]'`.catch(
+      () => {}
+    );
+    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS read_by JSONB DEFAULT '[]'`.catch(
+      () => {}
+    );
     // Messages programmés (même mécanique que les posts planifiés)
-    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS status VARCHAR(20) DEFAULT 'sent'`.catch(() => {});
-    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS send_at TIMESTAMPTZ`.catch(() => {});
-    await sql`UPDATE direct_messages SET status = 'sent' WHERE status IS NULL`.catch(() => {});
-    await sql`CREATE INDEX IF NOT EXISTS idx_dm_scheduled ON direct_messages(status, send_at) WHERE status = 'scheduled'`.catch(() => {});
+    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS status VARCHAR(20) DEFAULT 'sent'`.catch(
+      () => {}
+    );
+    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS send_at TIMESTAMPTZ`.catch(
+      () => {}
+    );
+    await sql`UPDATE direct_messages SET status = 'sent' WHERE status IS NULL`.catch(
+      () => {}
+    );
+    await sql`CREATE INDEX IF NOT EXISTS idx_dm_scheduled ON direct_messages(status, send_at) WHERE status = 'scheduled'`.catch(
+      () => {}
+    );
     // Traduction mémorisée, transfert (attribution) et masquage local (« pour moi »)
-    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS translations JSONB DEFAULT '{}'`.catch(() => {});
-    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS forwarded_from JSONB`.catch(() => {});
+    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS translations JSONB DEFAULT '{}'`.catch(
+      () => {}
+    );
+    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS forwarded_from JSONB`.catch(
+      () => {}
+    );
     await sql`
       CREATE TABLE IF NOT EXISTS dm_hidden_messages (
         user_id BIGINT NOT NULL,
@@ -130,7 +182,9 @@ export async function ensureDMTables() {
         PRIMARY KEY (user_id, message_id)
       )
     `.catch(() => {});
-    await sql`CREATE INDEX IF NOT EXISTS idx_dm_hidden_user ON dm_hidden_messages(user_id)`.catch(() => {});
+    await sql`CREATE INDEX IF NOT EXISTS idx_dm_hidden_user ON dm_hidden_messages(user_id)`.catch(
+      () => {}
+    );
     // Messages épinglés (max 3 par conversation, visibles des deux participants)
     await sql`
       CREATE TABLE IF NOT EXISTS dm_pinned_messages (
@@ -144,11 +198,19 @@ export async function ensureDMTables() {
     // Conversations de Livre (chantier « Livres dans Messages ») : rattachement
     // d'une conversation de groupe à un Livre. Pas de FK : vibe_books peut ne
     // pas encore exister au démarrage.
-    await sql`ALTER TABLE dm_conversations ADD COLUMN IF NOT EXISTS book_id UUID`.catch(() => {});
-    await sql`CREATE UNIQUE INDEX IF NOT EXISTS idx_dm_conversations_book ON dm_conversations(book_id) WHERE book_id IS NOT NULL`.catch(() => {});
+    await sql`ALTER TABLE dm_conversations ADD COLUMN IF NOT EXISTS book_id UUID`.catch(
+      () => {}
+    );
+    await sql`CREATE UNIQUE INDEX IF NOT EXISTS idx_dm_conversations_book ON dm_conversations(book_id) WHERE book_id IS NOT NULL`.catch(
+      () => {}
+    );
     // Publication jointe à un message (carte cliquable dans les conversations de Livre)
-    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS attached_post_id UUID`.catch(() => {});
-    await sql`CREATE INDEX IF NOT EXISTS idx_dm_attached_post ON direct_messages(attached_post_id) WHERE attached_post_id IS NOT NULL`.catch(() => {});
+    await sql`ALTER TABLE direct_messages ADD COLUMN IF NOT EXISTS attached_post_id UUID`.catch(
+      () => {}
+    );
+    await sql`CREATE INDEX IF NOT EXISTS idx_dm_attached_post ON direct_messages(attached_post_id) WHERE attached_post_id IS NOT NULL`.catch(
+      () => {}
+    );
     dmTablesReady = true;
   } catch (err) {
     console.warn("[vibe-dms] ensureDMTables skipped:", (err as any)?.message);
@@ -203,7 +265,8 @@ export async function ensureMAIAccount() {
 /** Identifiant du compte système @mai (auteur des réponses IA), ou null. */
 export async function getMAIUserId(sql: any): Promise<number | null> {
   try {
-    const rows = await sql`SELECT id FROM users WHERE LOWER(username) = 'mai' LIMIT 1`;
+    const rows =
+      await sql`SELECT id FROM users WHERE LOWER(username) = 'mai' LIMIT 1`;
     return rows.length > 0 ? Number(rows[0].id) : null;
   } catch {
     return null;
@@ -215,7 +278,13 @@ export async function getMAIUserId(sql: any): Promise<number | null> {
  * OpenRouter en tenant compte de l'historique de la conversation, puis
  * débite l'usage hebdomadaire de l'expéditeur.
  */
-export async function generateMAIDMReply(sql: any, conversationId: string, senderId: number, maiUserId: number, senderMessage: string) {
+export async function generateMAIDMReply(
+  sql: any,
+  conversationId: string,
+  senderId: number,
+  maiUserId: number,
+  senderMessage: string
+) {
   try {
     // Historique de la conversation DM (contexte complet pour mAI)
     const historyRows = await sql`
@@ -228,14 +297,21 @@ export async function generateMAIDMReply(sql: any, conversationId: string, sende
     `.catch(() => []);
     const transcript = historyRows
       .reverse()
-      .map((m: any) => `${m.sender_id === maiUserId ? "mAI" : `@${m.sender_username}`}: ${m.content}`)
+      .map(
+        (m: any) =>
+          `${m.sender_id === maiUserId ? "mAI" : `@${m.sender_username}`}: ${m.content}`
+      )
       .join("\n");
 
     // Quota hebdomadaire mAI de l'expéditeur
     const { weekStartStr } = getWeekData();
     const [usageRow, senderRow] = await Promise.all([
-      sql`SELECT tokens_used FROM weekly_usage WHERE user_id = ${senderId} AND week_start = ${weekStartStr}::date LIMIT 1`.catch(() => []),
-      sql`SELECT tier FROM users WHERE id = ${senderId} LIMIT 1`.catch(() => []),
+      sql`SELECT tokens_used FROM weekly_usage WHERE user_id = ${senderId} AND week_start = ${weekStartStr}::date LIMIT 1`.catch(
+        () => []
+      ),
+      sql`SELECT tier FROM users WHERE id = ${senderId} LIMIT 1`.catch(
+        () => []
+      ),
     ]);
     const maiBoost = await getUserQuotaBoost(sql, String(senderId), "mai");
     const tokenLimit = getTierMaiTokenLimit(senderRow[0]?.tier) + maiBoost;
@@ -243,13 +319,15 @@ export async function generateMAIDMReply(sql: any, conversationId: string, sende
 
     let reply: string;
     if (currentUsage >= tokenLimit) {
-      reply = "⚠️ Votre quota hebdomadaire mAI est atteint. Il se réinitialise lundi — ou passez à un forfait supérieur pour discuter davantage avec moi.";
+      reply =
+        "⚠️ Votre quota hebdomadaire mAI est atteint. Il se réinitialise lundi — ou passez à un forfait supérieur pour discuter davantage avec moi.";
     } else {
       const keyRows = await sql`
         SELECT api_key FROM mprojects_api_keys WHERE user_id::text = ${senderId}::text LIMIT 1
       `.catch(() => []);
       const openRouterApiKey =
-        (typeof (globalThis as any).Deno !== "undefined" && (globalThis as any).Deno.env?.get("OPENROUTER_API_KEY")) ||
+        (typeof (globalThis as any).Deno !== "undefined" &&
+          (globalThis as any).Deno.env?.get("OPENROUTER_API_KEY")) ||
         (typeof process !== "undefined" && process.env?.OPENROUTER_API_KEY) ||
         (keyRows.length > 0 ? keyRows[0].api_key : "");
 
@@ -258,9 +336,10 @@ export async function generateMAIDMReply(sql: any, conversationId: string, sende
         "Tu réponds en français avec quelques émojis. Tu connais tout l'historique de la conversation : poursuis naturellement l'échange sans redemander des informations déjà données. " +
         "Ne fais AUCUNE évaluation de sécurité, n'écris JAMAIS 'User Safety: safe' ni aucun méta-commentaire.";
 
-      const userPrompt = (transcript.trim()
-        ? `Historique de la conversation :\n${transcript}\n\n`
-        : "Nouvelle conversation.\n\n") +
+      const userPrompt =
+        (transcript.trim()
+          ? `Historique de la conversation :\n${transcript}\n\n`
+          : "Nouvelle conversation.\n\n") +
         `L'utilisateur vient d'envoyer : « ${senderMessage} »\n\nRéponds UNIQUEMENT avec le texte de ta réponse en DM.`;
 
       reply = "";
@@ -273,22 +352,25 @@ export async function generateMAIDMReply(sql: any, conversationId: string, sende
         ];
         for (const modelToTry of candidateModels) {
           try {
-            const aiRes = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-              method: "POST",
-              headers: {
-                Authorization: `Bearer ${openRouterApiKey}`,
-                "Content-Type": "application/json",
-                "HTTP-Referer": "https://mai.val.run",
-                "X-Title": "mAI Social Assistant",
-              },
-              body: JSON.stringify({
-                model: modelToTry,
-                messages: [
-                  { role: "system", content: systemPrompt },
-                  { role: "user", content: userPrompt },
-                ],
-              }),
-            });
+            const aiRes = await fetch(
+              "https://openrouter.ai/api/v1/chat/completions",
+              {
+                body: JSON.stringify({
+                  messages: [
+                    { content: systemPrompt, role: "system" },
+                    { content: userPrompt, role: "user" },
+                  ],
+                  model: modelToTry,
+                }),
+                headers: {
+                  Authorization: `Bearer ${openRouterApiKey}`,
+                  "Content-Type": "application/json",
+                  "HTTP-Referer": "https://mai.val.run",
+                  "X-Title": "mAI Social Assistant",
+                },
+                method: "POST",
+              }
+            );
             if (aiRes.ok) {
               const aiData = await aiRes.json();
               const text = aiData.choices?.[0]?.message?.content;
@@ -301,16 +383,23 @@ export async function generateMAIDMReply(sql: any, conversationId: string, sende
               }
             }
           } catch (callErr) {
-            console.warn(`[vibe-dms] mAI DM modèle ${modelToTry} en échec:`, callErr);
+            console.warn(
+              `[vibe-dms] mAI DM modèle ${modelToTry} en échec:`,
+              callErr
+            );
           }
         }
       }
       if (!reply) {
-        reply = "Je n'arrive pas à générer ma réponse pour le moment (service IA momentanément indisponible). Réessayez dans un instant ✨";
+        reply =
+          "Je n'arrive pas à générer ma réponse pour le moment (service IA momentanément indisponible). Réessayez dans un instant ✨";
       }
 
       // Débit de l'usage hebdomadaire de l'expéditeur (chaque message compte)
-      const estimatedTokens = Math.max(75, Math.ceil((userPrompt.length + reply.length) / 3));
+      const estimatedTokens = Math.max(
+        75,
+        Math.ceil((userPrompt.length + reply.length) / 3)
+      );
       await sql`
         INSERT INTO weekly_usage (user_id, week_start, tokens_used)
         VALUES (${senderId}, ${weekStartStr}::date, ${estimatedTokens})
@@ -336,15 +425,22 @@ export async function generateMAIDMReply(sql: any, conversationId: string, sende
 
     // Temps réel : pousse la réponse mAI à l'expéditeur (flux SSE)
     try {
-      await pushRealtimeEvent(senderId, "dm_message", maiMsg[0] || {
-        conversation_id: conversationId,
-        sender_id: maiUserId,
-        recipient_id: senderId,
-        content: reply,
-      });
+      await pushRealtimeEvent(
+        senderId,
+        "dm_message",
+        maiMsg[0] || {
+          content: reply,
+          conversation_id: conversationId,
+          recipient_id: senderId,
+          sender_id: maiUserId,
+        }
+      );
     } catch {}
   } catch (err) {
-    console.warn("[vibe-dms] generateMAIDMReply failed:", (err as any)?.message);
+    console.warn(
+      "[vibe-dms] generateMAIDMReply failed:",
+      (err as any)?.message
+    );
   }
 }
 
@@ -375,12 +471,19 @@ export async function publishScheduledDMs(): Promise<void> {
       } catch {}
     }
   } catch (err) {
-    console.warn("[vibe-dms] publishScheduledDMs skipped:", (err as any)?.message);
+    console.warn(
+      "[vibe-dms] publishScheduledDMs skipped:",
+      (err as any)?.message
+    );
   }
 }
 
 /** Résout l'UUID de conversation dm_conversations depuis (userId, partnerId). */
-export async function resolveConversationId(sql: any, userId: number, partnerId: number): Promise<string | null> {
+export async function resolveConversationId(
+  sql: any,
+  userId: number,
+  partnerId: number
+): Promise<string | null> {
   try {
     const p1 = userId < partnerId ? userId : partnerId;
     const p2 = userId < partnerId ? partnerId : userId;
@@ -404,12 +507,22 @@ export async function resolveConversationTarget(
   sql: any,
   userId: number,
   raw: string
-): Promise<{ conversationId: string; isGroup: boolean; memberIds: number[] } | null> {
+): Promise<{
+  conversationId: string;
+  isGroup: boolean;
+  memberIds: number[];
+} | null> {
   try {
     if (raw.startsWith("group:")) {
       const groupId = raw.slice(6);
-      if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(groupId)) return null;
-      const memberRows = await sql`SELECT user_id FROM dm_group_members WHERE conversation_id = ${groupId}::uuid`;
+      if (
+        !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+          groupId
+        )
+      )
+        return null;
+      const memberRows =
+        await sql`SELECT user_id FROM dm_group_members WHERE conversation_id = ${groupId}::uuid`;
       const memberIds = (memberRows as any[]).map((r) => Number(r.user_id));
       if (!memberIds.includes(userId)) return null;
       return { conversationId: groupId, isGroup: true, memberIds };
@@ -425,7 +538,12 @@ export async function resolveConversationTarget(
 }
 
 /** Diffuse un événement SSE à plusieurs utilisateurs (fan-out groupe). */
-export async function pushToUsers(ids: number[], type: string, payload: any, exclude?: number): Promise<void> {
+export async function pushToUsers(
+  ids: number[],
+  type: string,
+  payload: any,
+  exclude?: number
+): Promise<void> {
   for (const id of ids) {
     if (exclude && id === exclude) continue;
     try {
@@ -435,7 +553,11 @@ export async function pushToUsers(ids: number[], type: string, payload: any, exc
 }
 
 /** Messages épinglés d'une conversation (aperçus, max 3), masqués exclus. */
-export async function fetchPinnedMessages(sql: any, conversationId: string, userId: number): Promise<any[]> {
+export async function fetchPinnedMessages(
+  sql: any,
+  conversationId: string,
+  userId: number
+): Promise<any[]> {
   try {
     return await sql`
       SELECT m.*, u.username as sender_username
@@ -453,7 +575,16 @@ export async function fetchPinnedMessages(sql: any, conversationId: string, user
 }
 
 /** Infos publiques de la publication jointe à un message (carte cliquable). */
-export async function fetchDMAttachedPost(sql: any, postId: string): Promise<{ id: string; username: string; display_name: string | null; avatar_url: string | null; excerpt: string } | null> {
+export async function fetchDMAttachedPost(
+  sql: any,
+  postId: string
+): Promise<{
+  id: string;
+  username: string;
+  display_name: string | null;
+  avatar_url: string | null;
+  excerpt: string;
+} | null> {
   try {
     const rows = await sql`
       SELECT p.id, p.content, u.username, pr.display_name, pr.avatar_url
@@ -466,11 +597,14 @@ export async function fetchDMAttachedPost(sql: any, postId: string): Promise<{ i
     if (rows.length === 0) return null;
     const r = rows[0];
     return {
+      avatar_url: r.avatar_url || null,
+      display_name: r.display_name || null,
+      excerpt: stripHtmlTags(String(r.content || ""))
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, 140),
       id: String(r.id),
       username: String(r.username),
-      display_name: r.display_name || null,
-      avatar_url: r.avatar_url || null,
-      excerpt: stripHtmlTags(String(r.content || "")).replace(/\s+/g, " ").trim().slice(0, 140),
     };
   } catch {
     return null;
@@ -478,9 +612,18 @@ export async function fetchDMAttachedPost(sql: any, postId: string): Promise<{ i
 }
 
 /** Enrichit des messages lus avec leur publication jointe (1 requête batch). */
-export async function attachDMAttachedPosts(sql: any, messages: any[]): Promise<void> {
+export async function attachDMAttachedPosts(
+  sql: any,
+  messages: any[]
+): Promise<void> {
   if (!Array.isArray(messages) || messages.length === 0) return;
-  const ids = Array.from(new Set(messages.filter((m) => m?.attached_post_id).map((m) => String(m.attached_post_id))));
+  const ids = Array.from(
+    new Set(
+      messages
+        .filter((m) => m?.attached_post_id)
+        .map((m) => String(m.attached_post_id))
+    )
+  );
   if (ids.length === 0) return;
   try {
     const rows = await sql`
@@ -491,16 +634,23 @@ export async function attachDMAttachedPosts(sql: any, messages: any[]): Promise<
       WHERE p.id = ANY(${ids}::uuid[])
     `;
     const byId = new Map<string, any>(
-      (rows as any[]).map((r) => [String(r.id), {
-        id: String(r.id),
-        username: String(r.username),
-        display_name: r.display_name || null,
-        avatar_url: r.avatar_url || null,
-        excerpt: stripHtmlTags(String(r.content || "")).replace(/\s+/g, " ").trim().slice(0, 140),
-      }])
+      (rows as any[]).map((r) => [
+        String(r.id),
+        {
+          avatar_url: r.avatar_url || null,
+          display_name: r.display_name || null,
+          excerpt: stripHtmlTags(String(r.content || ""))
+            .replace(/\s+/g, " ")
+            .trim()
+            .slice(0, 140),
+          id: String(r.id),
+          username: String(r.username),
+        },
+      ])
     );
     for (const m of messages) {
-      if (m?.attached_post_id) m.attached_post = byId.get(String(m.attached_post_id)) || null;
+      if (m?.attached_post_id)
+        m.attached_post = byId.get(String(m.attached_post_id)) || null;
     }
   } catch {}
 }
@@ -509,11 +659,23 @@ export async function attachDMAttachedPosts(sql: any, messages: any[]): Promise<
  * Normalise l'attribution d'un message transféré : seul l'id du message
  * d'origine est accepté, l'auteur est re-dérivé depuis la base (anti-usurpation).
  */
-export async function deriveForwardedFrom(sql: any, raw: any): Promise<{ message_id: string; username: string; display_name: string | null } | null> {
+export async function deriveForwardedFrom(
+  sql: any,
+  raw: any
+): Promise<{
+  message_id: string;
+  username: string;
+  display_name: string | null;
+} | null> {
   try {
     if (!raw || typeof raw !== "object" || !raw.message_id) return null;
     const id = String(raw.message_id);
-    if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) return null;
+    if (
+      !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+        id
+      )
+    )
+      return null;
     const rows = await sql`
       SELECT m.id AS message_id, u.username, pr.display_name
       FROM direct_messages m
@@ -523,21 +685,33 @@ export async function deriveForwardedFrom(sql: any, raw: any): Promise<{ message
       LIMIT 1
     `;
     if (rows.length === 0) return null;
-    return { message_id: String(rows[0].message_id), username: String(rows[0].username), display_name: rows[0].display_name || null };
+    return {
+      display_name: rows[0].display_name || null,
+      message_id: String(rows[0].message_id),
+      username: String(rows[0].username),
+    };
   } catch {
     return null;
   }
 }
 
 /** Vérifie qu'un utilisateur peut agir sur un message (expéditeur, destinataire ou membre du groupe). */
-export const assertMessageAccess = async (sql: any, userId: number, messageId: string): Promise<{ ok: boolean; message?: any; error?: string; code?: number }> => {
-  const rows = await sql`SELECT id, sender_id, recipient_id, conversation_id FROM direct_messages WHERE id = ${messageId}::uuid LIMIT 1`;
-  if (rows.length === 0) return { ok: false, error: "Message introuvable.", code: 404 };
+export const assertMessageAccess = async (
+  sql: any,
+  userId: number,
+  messageId: string
+): Promise<{ ok: boolean; message?: any; error?: string; code?: number }> => {
+  const rows =
+    await sql`SELECT id, sender_id, recipient_id, conversation_id FROM direct_messages WHERE id = ${messageId}::uuid LIMIT 1`;
+  if (rows.length === 0)
+    return { code: 404, error: "Message introuvable.", ok: false };
   const m = rows[0];
-  if (Number(m.sender_id) === userId || Number(m.recipient_id) === userId) return { ok: true, message: m };
+  if (Number(m.sender_id) === userId || Number(m.recipient_id) === userId)
+    return { message: m, ok: true };
   const memberRows = await sql`
     SELECT 1 FROM dm_group_members WHERE conversation_id = ${m.conversation_id}::uuid AND user_id = ${userId} LIMIT 1
   `;
-  if (memberRows.length === 0) return { ok: false, error: "Accès refusé.", code: 403 };
-  return { ok: true, message: m };
+  if (memberRows.length === 0)
+    return { code: 403, error: "Accès refusé.", ok: false };
+  return { message: m, ok: true };
 };

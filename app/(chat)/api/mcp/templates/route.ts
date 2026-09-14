@@ -1,21 +1,36 @@
 import { z } from "zod";
 import { errorResponse } from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
-import { getMaiUser } from "@/lib/auth/session";
-import { getMcpTemplateById, getMcpTemplates } from "@/lib/db/queries";
+import { MCP_TEMPLATE_LIST } from "@/lib/mcp-templates/catalog";
+import { installMcpTemplate } from "@/lib/mcp-templates/install";
 
+// Catalogue MCP de l'écran /mcp : il expose désormais le catalogue statique
+// (source de vérité unique) et plus les lignes de la table McpTemplate, qui
+// pouvaient diverger. Le format de réponse reste compatible avec le client.
 export async function GET() {
-  const user = await getMaiUser();
-  if (!user) {
-    return errorResponse("auth_required");
-  }
   const guard = await requirePaidPlan("plus");
   if (!guard.allowed) {
     return planGuardResponse(guard)!;
   }
 
-  const templates = await getMcpTemplates();
-  return Response.json({ templates });
+  return Response.json({
+    templates: MCP_TEMPLATE_LIST.map((template) => ({
+      activation: template.activation,
+      args: template.args ?? "",
+      authType: template.authType,
+      command: template.command ?? "",
+      description: template.description,
+      icon: template.icon.name.toLowerCase(),
+      id: template.id,
+      minTier: template.minTier,
+      name: template.name,
+      readOnly: template.readOnly,
+      requireApproval: template.requireApproval,
+      tags: template.tags,
+      transport: template.transport,
+      url: template.url ?? "",
+    })),
+  });
 }
 
 export async function POST(request: Request) {
@@ -27,79 +42,31 @@ export async function POST(request: Request) {
   const userId = user.id || user.email;
 
   const json = await request.json().catch(() => ({}));
-  const parsed = z.object({ templateId: z.string().uuid() }).safeParse(json);
+  const parsed = z.object({ templateId: z.string().min(1) }).safeParse(json);
   if (!parsed.success) {
     return errorResponse("invalid_request", {
-      message: "Identifiant de template invalide.",
-    });
-  }
-  const tpl = await getMcpTemplateById(parsed.data.templateId);
-  if (!tpl) {
-    return errorResponse("not_found", {
-      message: "Template introuvable.",
+      message: "Identifiant de modèle invalide.",
     });
   }
 
-  // prefs check
-  try {
-    const { getUserMcpPrefs } = await import("@/lib/db/queries");
-    const prefs = await getUserMcpPrefs(userId);
-    if (prefs.globalKillSwitch) {
-      return errorResponse("access_denied", {
-        message: "MCP désactivé globalement par l'administrateur.",
-      });
-    }
-    if ((tpl.transport as string) === "stdio" && !prefs.allowStdio) {
-      return errorResponse("access_denied", {
-        message: "Transport stdio désactivé dans les paramètres.",
-      });
-    }
-  } catch (e: any) {
-    if (e.status === 403) {
-      throw e;
-    }
-  }
-
-  const { createMcpServer, fetchMcpTools } = (await import(
-    "@/lib/db/queries"
-  )) as any;
-  // Fallback direct import for fetch
-  const { fetchMcpTools: doFetch } = await import("@/lib/mcp/client");
-  const args = (
-    tpl.args ? String(tpl.args).split(" ").filter(Boolean) : []
-  ) as string[];
-  let tools: any[] = [];
-  try {
-    tools = await doFetch({
-      args,
-      authType: (tpl.authType as any) ?? "none",
-      command: tpl.command ?? undefined,
-      name: tpl.name,
-      transport: (tpl.transport as any) ?? "sse",
-      url: tpl.url ?? undefined,
-    });
-  } catch {}
-
-  const { createMcpServer: create } = await import("@/lib/db/queries");
-  const created = await create({
-    args,
-    authType: (tpl.authType as any) ?? "none",
-    command: tpl.command ?? undefined,
-    description: tpl.description ?? "",
-    icon: tpl.icon ?? "server",
-    name: tpl.name,
-    toolsCache: tools,
-    transport: (tpl.transport as any) ?? "sse",
-    url: tpl.url ?? undefined,
+  const result = await installMcpTemplate({
+    templateId: parsed.data.templateId,
+    tier: user.tier,
     userId,
   });
 
+  if (!result.ok) {
+    return errorResponse(result.code, { message: result.message });
+  }
+
   return Response.json(
     {
-      message: `Serveur "${tpl.name}" installé depuis le template`,
-      server: created,
-      template: tpl.name,
+      alreadyInstalled: result.alreadyInstalled,
+      message: result.message,
+      requiresConfiguration: result.requiresConfiguration,
+      server: result.server,
+      template: result.template.name,
     },
-    { status: 201 }
+    { status: result.alreadyInstalled ? 200 : 201 }
   );
 }

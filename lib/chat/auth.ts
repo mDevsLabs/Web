@@ -1,6 +1,6 @@
 import { ipAddress } from "@vercel/functions";
 import { checkBotId } from "botid/server";
-import { isPaidTier } from "@/lib/auth/plan";
+import { isPaidTier, parseCanonicalTier } from "@/lib/auth/plan";
 import type { MaiUser } from "@/lib/auth/session";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import { getPersistedTier } from "@/lib/db/users";
@@ -16,8 +16,13 @@ export type ChatAuth = {
 // Résolution du tier : la valeur persistée dans users.tier (ligne dont
 // users.id correspond à l'identifiant canonique de l'utilisateur authentifié)
 // fait autorité et écrase tout tier obsolète porté par le JWT ou un cache.
-// En cas d'échec de lecture (base indisponible), l'échec est ferme : le tier
-// du jeton n'est PAS utilisé à la place (il pourrait être périmé).
+// Exception : ligne users ABSENTE (compte créé côté plateforme sans miroir
+// local — connexion API/CLI, compte antérieur à la table). Le JWT est vérifié
+// cryptographiquement et son tier est rafraîchi depuis /usage : il reste la
+// meilleure source disponible, et un refus ferme bloquerait des abonnés
+// payants légitimes (bug « L'accès à Agent requiert un forfait valide »).
+// En revanche, tier inconnu (invalid) ou base injoignable (unavailable)
+// restent des échecs fermes : le tier du jeton ne les compense pas.
 export async function resolveAuthoritativeTier(params: {
   userId: string | null | undefined;
 }): Promise<
@@ -63,21 +68,34 @@ export async function authenticateChatRequest(): Promise<{
 
   const userId = maiUser.id || maiUser.email;
   const tierResult = await resolveAuthoritativeTier({ userId });
-  if (!tierResult.ok) {
-    // Utilisateur introuvable dans users ou tier inconnu/invalide/base
-    // injoignable : refus ferme remonté à l'appelant (plan_required explicite,
-    // jamais de privilèges implicites).
+
+  let authoritativeTier: string;
+  if (tierResult.ok) {
+    authoritativeTier = tierResult.tier;
+  } else if (tierResult.reason === "missing") {
+    // Ligne users absente : repli sur le tier de la session vérifiée. Un tier
+    // de session non canonique reste un refus ferme (jamais de privilège
+    // implicite dérivé d'une valeur inconnue).
+    const sessionTier = parseCanonicalTier(maiUser.tier);
+    if (!sessionTier) {
+      return { error: "unauthorized", tierFailure: "invalid" };
+    }
+    console.warn("[chat-auth] tier_source=session code=users_row_missing");
+    authoritativeTier = sessionTier;
+  } else {
+    // Tier inconnu/invalide ou base injoignable : refus ferme remonté à
+    // l'appelant (plan_required explicite, jamais de privilèges implicites).
     return { error: "unauthorized", tierFailure: tierResult.reason };
   }
 
   const maiUserWithAuthoritativeTier: MaiUser = {
     ...maiUser,
-    tier: tierResult.tier,
+    tier: authoritativeTier,
   };
 
   return {
     auth: {
-      isFreeUser: !isPaidTier(tierResult.tier),
+      isFreeUser: !isPaidTier(authoritativeTier),
       maiUser: maiUserWithAuthoritativeTier,
       sessionToken,
       userId,

@@ -2,6 +2,7 @@ import {
   Atom,
   BarChart3,
   Bot,
+  Braces,
   Brain,
   Briefcase,
   Bug,
@@ -49,65 +50,75 @@ import {
   Zap,
 } from "lucide-react";
 import type { ComponentType } from "react";
+import type { LucideIconName } from "./icon-allowlist";
 import type { PluginIconRef } from "./types";
 
 // Liste blanche statique : garantit le tree-shaking et évite tout import
-// dynamique impossible à bundler côté Next.
-const LUCIDE_ICONS: Record<string, ComponentType<{ className?: string }>> = {
-  Atom: Atom as any,
-  BarChart3: BarChart3 as any,
-  Bot: Bot as any,
-  Brain: Brain as any,
-  Briefcase: Briefcase as any,
-  Bug: Bug as any,
-  Calculator: Calculator as any,
-  Calendar: Calendar as any,
-  Camera: Camera as any,
-  Cloud: Cloud as any,
-  CloudSun: CloudSun as any,
-  Code: Code as any,
-  Compass: Compass as any,
-  Cpu: Cpu as any,
-  Database: Database as any,
-  FileText: FileText as any,
-  Flame: Flame as any,
-  Gamepad2: Gamepad2 as any,
-  Globe: Globe as any,
-  GraduationCap: GraduationCap as any,
-  HeartPulse: HeartPulse as any,
-  Image: ImageIcon as any,
-  Languages: Languages as any,
-  Leaf: Leaf as any,
-  Lightbulb: Lightbulb as any,
-  Map: MapIcon as any,
-  MessageSquare: MessageSquare as any,
-  Mic: Mic as any,
-  Music: Music as any,
-  Newspaper: Newspaper as any,
-  Palette: Palette as any,
-  Puzzle: Puzzle as any,
-  Rocket: Rocket as any,
-  Rss: Rss as any,
-  Search: Search as any,
-  Shield: Shield as any,
-  ShoppingCart: ShoppingCart as any,
-  Sparkles: Sparkles as any,
-  Star: Star as any,
-  Target: Target as any,
-  Terminal: Terminal as any,
-  TrendingUp: TrendingUp as any,
-  Trophy: Trophy as any,
-  Users: Users as any,
-  Video: Video as any,
-  Wallet: Wallet as any,
-  Wrench: Wrench as any,
-  Zap: Zap as any,
+// dynamique impossible à bundler côté Next. Le type `Record<LucideIconName, …>`
+// rend la correspondance exhaustive : ajouter un nom dans
+// `icon-allowlist.ts` sans l'implémenter ici est une erreur de compilation.
+const LUCIDE_ICONS: Record<
+  LucideIconName,
+  ComponentType<{ className?: string }>
+> = {
+  Atom: Atom as ComponentType<{ className?: string }>,
+  BarChart3: BarChart3 as ComponentType<{ className?: string }>,
+  Bot: Bot as ComponentType<{ className?: string }>,
+  Braces: Braces as ComponentType<{ className?: string }>,
+  Brain: Brain as ComponentType<{ className?: string }>,
+  Briefcase: Briefcase as ComponentType<{ className?: string }>,
+  Bug: Bug as ComponentType<{ className?: string }>,
+  Calculator: Calculator as ComponentType<{ className?: string }>,
+  Calendar: Calendar as ComponentType<{ className?: string }>,
+  Camera: Camera as ComponentType<{ className?: string }>,
+  Cloud: Cloud as ComponentType<{ className?: string }>,
+  CloudSun: CloudSun as ComponentType<{ className?: string }>,
+  Code: Code as ComponentType<{ className?: string }>,
+  Compass: Compass as ComponentType<{ className?: string }>,
+  Cpu: Cpu as ComponentType<{ className?: string }>,
+  Database: Database as ComponentType<{ className?: string }>,
+  FileText: FileText as ComponentType<{ className?: string }>,
+  Flame: Flame as ComponentType<{ className?: string }>,
+  Gamepad2: Gamepad2 as ComponentType<{ className?: string }>,
+  Globe: Globe as ComponentType<{ className?: string }>,
+  GraduationCap: GraduationCap as ComponentType<{ className?: string }>,
+  HeartPulse: HeartPulse as ComponentType<{ className?: string }>,
+  Image: ImageIcon as ComponentType<{ className?: string }>,
+  Languages: Languages as ComponentType<{ className?: string }>,
+  Leaf: Leaf as ComponentType<{ className?: string }>,
+  Lightbulb: Lightbulb as ComponentType<{ className?: string }>,
+  Map: MapIcon as ComponentType<{ className?: string }>,
+  MessageSquare: MessageSquare as ComponentType<{ className?: string }>,
+  Mic: Mic as ComponentType<{ className?: string }>,
+  Music: Music as ComponentType<{ className?: string }>,
+  Newspaper: Newspaper as ComponentType<{ className?: string }>,
+  Palette: Palette as ComponentType<{ className?: string }>,
+  Puzzle: Puzzle as ComponentType<{ className?: string }>,
+  Rocket: Rocket as ComponentType<{ className?: string }>,
+  Rss: Rss as ComponentType<{ className?: string }>,
+  Search: Search as ComponentType<{ className?: string }>,
+  Shield: Shield as ComponentType<{ className?: string }>,
+  ShoppingCart: ShoppingCart as ComponentType<{ className?: string }>,
+  Sparkles: Sparkles as ComponentType<{ className?: string }>,
+  Star: Star as ComponentType<{ className?: string }>,
+  Target: Target as ComponentType<{ className?: string }>,
+  Terminal: Terminal as ComponentType<{ className?: string }>,
+  TrendingUp: TrendingUp as ComponentType<{ className?: string }>,
+  Trophy: Trophy as ComponentType<{ className?: string }>,
+  Users: Users as ComponentType<{ className?: string }>,
+  Video: Video as ComponentType<{ className?: string }>,
+  Wallet: Wallet as ComponentType<{ className?: string }>,
+  Wrench: Wrench as ComponentType<{ className?: string }>,
+  Zap: Zap as ComponentType<{ className?: string }>,
 };
 
 export function resolveLucideIcon(
   name: string
 ): ComponentType<{ className?: string }> {
-  return LUCIDE_ICONS[name] ?? (Puzzle as any);
+  return (
+    LUCIDE_ICONS[name as LucideIconName] ??
+    (Puzzle as ComponentType<{ className?: string }>)
+  );
 }
 
 export function PluginIcon({

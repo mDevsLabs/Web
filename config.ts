@@ -8,23 +8,18 @@ import { jwtVerify, SignJWT } from "npm:jose";
 export function getEnv(name: string): string | undefined {
   try {
     const denoVal =
-      typeof Deno !== "undefined" ? Deno.env.get(name) : undefined;
+      typeof Deno === "undefined" ? undefined : Deno.env.get(name);
     if (denoVal) return denoVal;
   } catch {
     // ignore — Deno non disponible ou permission refusée
   }
   try {
-    if (
-      typeof process !== "undefined" &&
-      process.env &&
-      process.env[name]
-    ) {
+    if (typeof process !== "undefined" && process.env && process.env[name]) {
       return process.env[name];
     }
   } catch {
     // ignore
   }
-  return undefined;
 }
 
 // ─────────────────────────────────────────────
@@ -42,9 +37,7 @@ export function clientIp(c: any): string {
     if (typeof h === "string" && h.length > 0) return h.split(",")[0].trim();
     // Hono / Deno fallback
     const raw =
-      c?.req?.raw?.headers?.get?.("x-forwarded-for") ||
-      c?.env?.ip ||
-      c?.ip;
+      c?.req?.raw?.headers?.get?.("x-forwarded-for") || c?.env?.ip || c?.ip;
     if (typeof raw === "string" && raw.length > 0)
       return raw.split(",")[0].trim();
   } catch {

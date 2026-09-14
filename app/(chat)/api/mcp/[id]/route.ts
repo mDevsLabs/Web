@@ -201,10 +201,20 @@ export async function PATCH(
       });
     }
 
-    // 2b. Bulk env chiffré
+    // 2b. Bulk secrets chiffrés. Le kind (env/auth/header) vient du modèle
+    // d'origine (templateId) : chaque credential déclare sa destination à
+    // l'appel. Le secret est chiffré ici (AES-256-GCM) et JAMAIS renvoyé,
+    // journalisé ni stocké en clair dans la ligne McpServer.
     if (json.encryptedSecrets) {
       const { encrypt } = await import("@/lib/mcp/encryption");
-      const { setMcpServerSecrets } = await import("@/lib/db/queries");
+      const { setMcpServerSecrets, getMcpServerById } = await import(
+        "@/lib/db/queries"
+      );
+      const { getMcpTemplate } = await import("@/lib/mcp-templates/catalog");
+      const current = await getMcpServerById({ id, userId });
+      const template = current?.templateId
+        ? getMcpTemplate(current.templateId)
+        : undefined;
       const secrets: Array<{
         kind: "env" | "auth" | "header";
         key: string;
@@ -216,13 +226,29 @@ export async function PATCH(
         if (!v) {
           continue;
         }
+        const declared = template?.credentials.find((c) => c.key === k);
+        // Sans modèle déclaré (serveur créé à la main), repli "env" :
+        // comportement historique conservé.
         secrets.push({
           encryptedValue: encrypt(v as string),
           key: k,
-          kind: "env",
+          kind: declared?.kind ?? "env",
         });
       }
       await setMcpServerSecrets({ secrets, serverId: id, userId });
+      // Un serveur qui reçoit son credential requis devient activable : on
+      // n'active pas à la place de l'utilisateur, on lève juste le verrou
+      // d'incomplétude posé à l'installation.
+      if (current && !current.isEnabled && template) {
+        const required = template.credentials.filter((c) => c.required);
+        const nowConfigured = required.every((c) =>
+          secrets.some((s) => s.key === c.key)
+        );
+        if (required.length > 0 && nowConfigured) {
+          const { updateMcpServer } = await import("@/lib/db/queries");
+          await updateMcpServer({ data: { isEnabled: true }, id, userId });
+        }
+      }
       return Response.json({ count: secrets.length, success: true });
     }
 
