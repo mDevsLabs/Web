@@ -45,6 +45,7 @@ import { MessageActions } from "./message-actions";
 import { MessageReasoning } from "./message-reasoning";
 import { PodcastCard } from "./podcast-card";
 import { PreviewAttachment } from "./preview-attachment";
+import { ProfilePictureCard } from "./profile-picture-card";
 import { QuizCard } from "./quiz-card";
 import { Weather } from "./weather";
 import { WebCaptureCard } from "./web-capture-card";
@@ -1024,6 +1025,20 @@ const PurePreviewMessage = ({
       const toolPart = part as any;
       return (
         <AccountProfileCard
+          args={toolPart.input || toolPart.args}
+          isReadonly={isReadonly}
+          key={toolPart.toolCallId ?? key}
+          output={toolPart.output}
+          state={toolPart.state}
+          toolCallId={toolPart.toolCallId}
+        />
+      );
+    }
+
+    if (type === "tool-updateProfilePicture") {
+      const toolPart = part as any;
+      return (
+        <ProfilePictureCard
           args={toolPart.input || toolPart.args}
           isReadonly={isReadonly}
           key={toolPart.toolCallId ?? key}

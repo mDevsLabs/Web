@@ -6,6 +6,31 @@ import { getTierMemoryEntries } from "@/lib/plans/tier-limits";
 export const PAID_TIERS = ["plus", "pro", "max"] as const;
 export type PaidTier = (typeof PAID_TIERS)[number];
 
+// Tiers canoniques réellement écrits dans la colonne users.tier (backend mAI :
+// config.ts Tier = "Free" | "Plus" | "Pro" | "Max"). La comparaison est
+// insensible à la casse ; toute autre valeur est INVALIDE et ne doit jamais
+// retomber silencieusement sur Free avec des privilèges implicites.
+export const CANONICAL_TIERS = ["free", "plus", "pro", "max"] as const;
+export type CanonicalTier = (typeof CANONICAL_TIERS)[number];
+
+// Normalise une valeur de tier persistée vers sa forme canonique minuscule.
+// Renvoie null si la valeur est absente, vide ou inconnue : l'appelant décide
+// du refus explicite (jamais de privilège par défaut).
+export function parseCanonicalTier(
+  tier: string | null | undefined
+): CanonicalTier | null {
+  if (typeof tier !== "string") {
+    return null;
+  }
+  const normalized = tier.trim().toLowerCase();
+  if (!normalized) {
+    return null;
+  }
+  return (CANONICAL_TIERS as readonly string[]).includes(normalized)
+    ? (normalized as CanonicalTier)
+    : null;
+}
+
 export function normalizeTier(tier?: string | null): string {
   return (tier || "Free").toLowerCase().trim();
 }

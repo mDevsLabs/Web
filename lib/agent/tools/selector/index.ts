@@ -1,6 +1,6 @@
 import "server-only";
 
-import { routeFamiliesWithModel } from "@/lib/agent/tools/selector/llm-router";
+import { selectFamiliesWithModel } from "@/lib/agent/tools/selector/model-select";
 import {
   availableTools,
   selectToolsByRules,
@@ -10,9 +10,11 @@ import {
   uniqueFamilies,
 } from "@/lib/agent/tools/selector/rules";
 
-// Façade du ToolSelector : règles d'abord, escalade LLM seulement si la
-// première passe juge la demande ambiguë. Objectif constant : ne jamais envoyer
-// des dizaines d'outils sans rapport (tokens, coût, confusion du modèle).
+// Façade du ToolSelector : sortie structurée du modèle d'abord (JSON validé
+// zod, jamais un parsing de texte libre), fallback déterministe ensuite.
+// Objectif constant : ne jamais envoyer des dizaines d'outils sans rapport
+// (tokens, coût, confusion du modèle) et ne jamais exécuter une sélection
+// invalide.
 export type AgentToolSelectionInput = ToolSelectionContext & {
   sessionToken?: string;
   userId?: string;
@@ -33,25 +35,28 @@ export async function selectAgentTools(
     return rulesResult;
   }
 
-  const routed = await routeFamiliesWithModel({
+  const routed = await selectFamiliesWithModel({
     availableFamilies,
     sessionToken: input.sessionToken,
     task: input.task,
     userId: input.userId,
   });
 
-  if (!routed || routed.length === 0) {
+  if (routed.kind !== "ok") {
     return rulesResult;
   }
 
-  const tools = toolsForFamilies({ families: routed, tools: candidates });
+  const tools = toolsForFamilies({
+    families: routed.families,
+    tools: candidates,
+  });
   if (tools.length === 0) {
     return rulesResult;
   }
 
   return {
-    families: routed,
-    reason: `Familles affinées par routage : ${routed.join(", ")}.`,
+    families: routed.families,
+    reason: `Familles sélectionnées par le modèle : ${routed.families.join(", ")}.`,
     tools,
     uncertain: false,
   };

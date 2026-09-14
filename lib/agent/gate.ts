@@ -32,6 +32,27 @@ export type AgentAccess =
   | { allowed: true; flags: AgentFlags; tier: string }
   | { allowed: false; response: Response };
 
+// Tier impossible à résoudre côté users.tier : refus explicite (utilisateur
+// absent de la table, valeur inconnue, base injoignable). Jamais de repli
+// implicite : ces cas ne doivent accorder aucun privilège.
+export type AgentTierFailure = "missing" | "invalid" | "unavailable";
+
+export function agentTierFailureResponse(reason: AgentTierFailure): Response {
+  const details =
+    reason === "missing"
+      ? "Aucun compte correspondant n'a été trouvé."
+      : reason === "invalid"
+        ? "Le forfait enregistré pour ce compte est inconnu ou invalide."
+        : "Le forfait n'a pas pu être vérifié pour le moment.";
+  return errorResponse("plan_required", {
+    details: {
+      reason,
+      ...buildAgentUpgradeDetails(),
+    },
+    message: `L'accès à Agent requiert un forfait valide. ${details}`,
+  });
+}
+
 export function checkAgentAccess(auth: ChatAuth): AgentAccess {
   const flags = getAgentFlags();
 
@@ -82,29 +103,34 @@ export type AgentModelAccess = {
 // Validation du modèle : disponibilité pour le forfait, support des outils
 // (indispensable à Agent) et niveau de réflexion réellement accepté.
 export function checkAgentModelAccess(params: {
+  // Capacités évaluées par l'appelant sur le catalogue réel de l'utilisateur
+  // (fetchUserModels). Sans override, repli sur le catalogue de secours —
+  // comportement conservé pour les autres appelants éventuels.
+  capabilitiesOverride?: ModelCapabilities;
   flags: AgentFlags;
   modelId: string;
   tier: string;
 }): AgentModelAccess {
   const entry = getModelEntry(params.modelId);
+  const capabilities = params.capabilitiesOverride ?? entry.capabilities;
 
   if (!isModelAllowedForUser(entry.id, params.tier)) {
     return {
-      capabilities: entry.capabilities,
+      capabilities,
       error: `Le modèle « ${entry.name} » n'est pas disponible avec votre forfait.`,
       model: entry.id,
     };
   }
 
-  if (!entry.capabilities.tools) {
+  if (!capabilities.tools) {
     return {
-      capabilities: entry.capabilities,
+      capabilities,
       error: `Le modèle « ${entry.name} » ne prend pas en charge les outils : Agent ne peut pas fonctionner avec lui. Choisissez un autre modèle.`,
       model: entry.id,
     };
   }
 
-  return { capabilities: entry.capabilities, model: entry.id };
+  return { capabilities, model: entry.id };
 }
 
 export function normalizeAgentReasoningLevel(params: {

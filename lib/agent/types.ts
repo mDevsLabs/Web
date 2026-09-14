@@ -17,7 +17,8 @@ export type AgentRunStatus =
   | "waiting_for_user"
   | "completed"
   | "failed"
-  | "cancelled";
+  | "cancelled"
+  | "timed_out";
 
 export const ACTIVE_AGENT_RUN_STATUSES: AgentRunStatus[] = [
   "queued",
@@ -30,6 +31,15 @@ export const ACTIVE_AGENT_RUN_STATUSES: AgentRunStatus[] = [
 export function isActiveRunStatus(status: AgentRunStatus): boolean {
   return ACTIVE_AGENT_RUN_STATUSES.includes(status);
 }
+
+// Statuts « terminés » incluant timed_out : le travail réalisé reste consultable
+// et peut être repris dans un nouveau run.
+export const TERMINAL_AGENT_RUN_STATUSES: AgentRunStatus[] = [
+  "completed",
+  "failed",
+  "cancelled",
+  "timed_out",
+];
 
 export type AgentStepType =
   | "planning"
@@ -271,6 +281,13 @@ export type AgentRunEvent = {
   status: AgentRunStatus;
   stepCount?: number;
   toolCallCount?: number;
+  // Synthèse d'observabilité utilisateur : renseignée en fin de run (flux) et
+  // à la reconstruction après refresh (API). Distincte des traces techniques.
+  durationMs?: number;
+  error?: string | null;
+  inputTokens?: number;
+  outputTokens?: number;
+  totalTokens?: number;
 };
 
 export type AgentStepEvent = {
@@ -284,7 +301,12 @@ export type AgentStepEvent = {
 };
 
 export type AgentToolActivity = {
+  // Tentative : > 1 quand l'exécution a fait l'objet d'un retry persisté.
+  attempt?: number;
   category: ToolCategory;
+  // Catégorie d'erreur normalisée (rate_limit, timeout, network, provider).
+  errorCategory?: string | null;
+  durationMs?: number;
   label: string;
   runId: string;
   status: "running" | "completed" | "failed" | "waiting_approval";
@@ -358,13 +380,18 @@ export type AgentStepRecord = {
 
 export type ToolExecutionRecord = {
   approvalStatus: string;
+  // Chaque tentative est une ligne : regroupement UI par stepId (parent).
+  attempt: number;
   category: ToolCategory;
   completedAt: Date | null;
   durationMs: number | null;
   error: string | null;
+  errorCategory: string | null;
   id: string;
   input: unknown;
   output: unknown;
+  parentExecutionId: string | null;
+  retryable: boolean;
   runId: string;
   startedAt: Date | null;
   status: string;

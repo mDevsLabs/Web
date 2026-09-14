@@ -22,6 +22,7 @@ import { readUrl } from "@/lib/ai/tools/read-url";
 import { requestSuggestions } from "@/lib/ai/tools/request-suggestions";
 import { updateAccountProfile } from "@/lib/ai/tools/update-account-profile";
 import { updateDocument } from "@/lib/ai/tools/update-document";
+import { updateProfilePicture } from "@/lib/ai/tools/update-profile-picture";
 import { webCapture } from "@/lib/ai/tools/web-capture";
 import { webSearch } from "@/lib/ai/tools/web-search";
 import type { MaiUser } from "@/lib/auth/session";
@@ -108,6 +109,7 @@ export function createChatTools(
             session: userSessionWithToken,
           }),
           updateAccountProfile: updateAccountProfile({ maiUser }),
+          updateProfilePicture: updateProfilePicture(),
         }),
     ...(memoryActive
       ? {

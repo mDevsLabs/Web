@@ -3,6 +3,8 @@ import { buildAgentContext } from "@/lib/agent/context/build";
 import { collectAttachments } from "@/lib/agent/context/files";
 import { loadAgentProjectContext } from "@/lib/agent/context/project";
 import {
+  type AgentTierFailure,
+  agentTierFailureResponse,
   checkAgentAccess,
   checkAgentModelAccess,
   normalizeAgentReasoningLevel,
@@ -76,12 +78,23 @@ export async function POST(request: Request) {
   }
 
   try {
-    // 1. Authentification et limitation de débit, identiques au Chat.
-    const { auth, error } = await authenticateChatRequest();
+    // 1. Authentification et limitation de débit, identiques au Chat. Le tier
+    // vient de users.tier (source de vérité) : un compte Plus doit passer ici
+    // même si son JWT porte encore un ancien forfait.
+    const { auth, error, tierFailure } = await authenticateChatRequest();
     if (error === "forbidden") {
+      // Instrumentation : botid renvoie isBot (ou a échoué silencieusement via
+      // son catch interne). Sans secret ni payload, juste la garde franchie.
+      console.warn("[agent-access] rejected guard=botid code=access_denied");
       return errorResponse("access_denied");
     }
-    if (error === "unauthorized" || !auth) {
+    if (error === "unauthorized") {
+      if (tierFailure) {
+        return agentTierFailureResponse(tierFailure as AgentTierFailure);
+      }
+      return errorResponse("auth_required");
+    }
+    if (!auth) {
       return errorResponse("auth_required");
     }
     await enforceChatRateLimit(request, auth.userId);
@@ -121,6 +134,11 @@ export async function POST(request: Request) {
     });
 
     // 5. Registre de modèles : forfait, capacités, modèle réellement utilisable.
+    // Le registre évalué est celui de l'utilisateur (fetchUserModels) — le
+    // même catalogue que le sélecteur client. checkAgentModelAccess ne doit
+    // jamais rejuger le modèle sur un autre catalogue (FALLBACK_MODELS) : un
+    // modèle réel de l'utilisateur serait sinon classé « sans outils » et
+    // refusé (model_access_denied) alors qu'il est sélectionnable dans l'UI.
     const models = await fetchUserModels();
     const settings = await loadAgentSettings({ userId: ctx.userId });
     const requested = getModelEntry(body.modelId, models);
@@ -129,11 +147,16 @@ export async function POST(request: Request) {
       : pickDefaultAgentModel(models, settings.defaultModel, tier);
 
     const modelAccess = checkAgentModelAccess({
+      capabilitiesOverride: requested.capabilities,
       flags,
       modelId: resolvedModel,
       tier,
     });
     if (modelAccess.error) {
+      // Instrumentation sans secret : quel garde a refusé et sur quel catalogue.
+      console.warn(
+        `[agent-access] rejected guard=model code=model_access_denied requestedInUserCatalog=${requested.id === body.modelId}`
+      );
       return errorResponse("model_access_denied", {
         message: modelAccess.error,
       });
@@ -327,6 +350,7 @@ export async function POST(request: Request) {
       projectId: ctx.effectiveProjectId ?? null,
       reasoningLevel,
       runId: run.id,
+      sendReasoning: capabilities.reasoning === true,
       sessionToken: ctx.sessionToken,
       shouldRenameAfterFirst: ctx.shouldRenameAfterFirst,
       startedAt: Date.now(),

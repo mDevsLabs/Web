@@ -7,7 +7,7 @@ import ToolsClient from "./tools-client";
 export const metadata: Metadata = {
   description:
     "Gérez vos plugins, vos serveurs MCP et vos Skills au même endroit.",
-  title: "Outils — Plugins, MCP & Skills | mAI",
+  title: "Applications — Plugins, MCP & Skills | mAI",
 };
 
 export default async function ToolsPage({

@@ -508,7 +508,9 @@ export function ScheduleDialog({
                   planifiée (pas de carte interactive, pas de contexte live). */}
               {TOOL_IDS.filter(
                 (tid) =>
-                  tid !== "updateAccountProfile" && tid !== "getAccountUsage"
+                  tid !== "updateAccountProfile" &&
+                  tid !== "getAccountUsage" &&
+                  tid !== "updateProfilePicture"
               ).map((tid) => {
                 const meta = TOOLS_META[tid];
                 const active = enabledTools.includes(tid);

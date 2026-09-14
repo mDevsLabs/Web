@@ -32,10 +32,15 @@ import {
 
 export type AgentToolControllerState = {
   approvalRequiredToolIds: string[];
+  // Un livrable a été produit pendant le run (dérivation des actions suggérées).
+  producedArtifact: boolean;
   sources: AgentSource[];
   stepIndex: number;
   toolCallCount: number;
   waitingForUser: boolean;
+  // Dernière catégorie d'erreur normalisée vue sur un outil (pour le statut
+  // « timed_out » du run : timeout réseau, dépassement, 429…).
+  lastErrorCategory: string | null;
 };
 
 function readString(value: unknown, key: string): string | undefined {
@@ -89,6 +94,7 @@ export function createAgentToolController(params: {
         type: "tool_call",
       });
       emitAgentTool(params.writer, {
+        attempt: 1,
         category: tool.category,
         label: tool.name,
         runId: params.runId,
@@ -115,11 +121,18 @@ export function createAgentToolController(params: {
           const summary = summarizeToolResult({ result, toolId: tool.id });
           const requiresApproval =
             params.state.approvalRequiredToolIds.includes(tool.id);
+          const errorCategory = result.success
+            ? null
+            : categorizeToolError(result.error.code, result.error.message);
+          if (errorCategory) {
+            params.state.lastErrorCategory = errorCategory;
+          }
 
           await completeToolExecution({
             approvalStatus: requiresApproval ? "approved" : "not_required",
             durationMs,
             error: result.success ? null : result.error.message,
+            errorCategory,
             id: execution.id,
             output: result.success ? result.data : { error: result.error },
             status: result.success ? "completed" : "failed",
@@ -143,7 +156,10 @@ export function createAgentToolController(params: {
             type: status === "completed" ? "tool_result" : "error",
           });
           emitAgentTool(params.writer, {
+            attempt: 1,
             category: tool.category,
+            durationMs,
+            errorCategory,
             label: tool.name,
             runId: params.runId,
             status: result.success ? "completed" : "failed",
@@ -163,6 +179,7 @@ export function createAgentToolController(params: {
             ? readString(result.data, "documentId")
             : undefined;
           if (result.success && documentId) {
+            params.state.producedArtifact = true;
             const artifactTitle =
               readString(result.data, "title") ?? "Livrable";
             const artifactKind = readString(result.data, "kind") ?? "text";
@@ -227,4 +244,46 @@ export function findToolById(
   toolId: string
 ): RegisteredAgentTool | null {
   return tools.find((tool) => tool.id === toolId) ?? null;
+}
+
+// Catégorie d'erreur normalisée, affichable sans exposer de détail interne.
+export function categorizeToolError(
+  code: string,
+  message: string
+): string | null {
+  const haystack = `${code} ${message}`.toLowerCase();
+  if (
+    haystack.includes("timeout") ||
+    haystack.includes("abort") ||
+    haystack.includes("délai") ||
+    haystack.includes("delai")
+  ) {
+    return "timeout";
+  }
+  if (
+    haystack.includes("rate") ||
+    haystack.includes("429") ||
+    haystack.includes("quota") ||
+    haystack.includes("limite")
+  ) {
+    return "rate_limit";
+  }
+  if (
+    haystack.includes("network") ||
+    haystack.includes("fetch") ||
+    haystack.includes("econn") ||
+    haystack.includes("réseau") ||
+    haystack.includes("reseau")
+  ) {
+    return "network";
+  }
+  if (
+    haystack.includes("permission") ||
+    haystack.includes("denied") ||
+    haystack.includes("forbidden") ||
+    haystack.includes("403")
+  ) {
+    return "permission";
+  }
+  return "provider";
 }

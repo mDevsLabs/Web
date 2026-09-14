@@ -1,5 +1,6 @@
 import { geolocation } from "@vercel/functions";
 import { convertToModelMessages, type ModelMessage } from "ai";
+import { chatOwnerMatches } from "@/lib/agent/channel";
 import { DEFAULT_CHAT_MODEL, getModelCapabilities } from "@/lib/ai/models";
 import type { RequestHints } from "@/lib/ai/prompts";
 import { substituteSkillParams } from "@/lib/ai/skill-params";
@@ -116,7 +117,7 @@ export async function buildChatContext(
     messages,
     selectedChatMode,
     selectedVisibilityType,
-    projectId,
+    projectId: projectIdInput,
     skillId,
     skillParams,
     tags,
@@ -127,8 +128,29 @@ export async function buildChatContext(
   } = body;
   const { maiUser, sessionToken, userId, isFreeUser } = auth;
 
+  // projectId est réassignable : un projet périmé côté client est neutralisé
+  // (voir plus bas) au lieu de faire échouer toute la requête.
+  let projectId: string | null | undefined = projectIdInput;
+
   const chat = await getChatById({ id });
+  // Borne d'accès au projet rattaché à la conversation : un chat stocké avec
+  // un projet supprimé ou transféré ne doit pas faire échouer la requête — le
+  // contexte projet est simplement neutralisé (garde stricte conservée pour la
+  // création et le déplacement explicites plus bas).
   const effectiveProjectId = (chat as any)?.projectId || projectId;
+  if (effectiveProjectId) {
+    const projectOwned = await getProjectById({
+      id: effectiveProjectId,
+      userEmail: maiUser.email,
+      userId,
+    }).catch(() => null);
+    if (!projectOwned) {
+      console.warn(
+        `[chat-access] project_context_unavailable mode=${mode ?? "chat"} action=skip_project_context`
+      );
+      projectId = null;
+    }
+  }
   let projectCustomInstructions: string | null = null;
   let projectDefaultModel: string | null = null;
 
@@ -248,7 +270,28 @@ export async function buildChatContext(
   let firstUserMessageForTitle: ChatMessage | null = null;
 
   if (chat) {
-    if (chat.userId !== userId && chat.userId !== maiUser.email) {
+    // Identité canonique : chat.userId peut avoir été enregistré avec l'id,
+    // l'email ou le username (créations historiques). Le contrôle d'écriture
+    // passe par la garde partagée chatOwnerMatches (lib/agent/channel.ts), en
+    // cohérence avec le chemin de lecture (/api/messages).
+    const ownerMatches = chatOwnerMatches({
+      chatUserId: chat.userId,
+      email: maiUser.email,
+      userId,
+      username: maiUser.username,
+    });
+    if (!ownerMatches) {
+      // Journal structuré sans donnée sensible : variante d'identité et état,
+      // pour distinguer une conversation étrangère d'un décalage d'identité.
+      const ownerVariant =
+        chat.userId === maiUser.email
+          ? "email"
+          : chat.userId === maiUser.username
+            ? "username"
+            : "other";
+      console.warn(
+        `[chat-access] chat_ownership_mismatch mode=${mode ?? "chat"} ownerVariant=${ownerVariant} canonicalIsEmail=${userId === maiUser.email}`
+      );
       throw new ChatbotError("forbidden:chat");
     }
     messagesFromDb = await getMessagesByChatId({ id });
@@ -264,9 +307,20 @@ export async function buildChatContext(
     }
   } else if (message?.role === "user" && !isGhostMode) {
     if (projectId) {
-      const proj = await getProjectById({ id: projectId, userId });
+      // Le client ne fait pas autorité : un projectId périmé (supprimé ou
+      // inaccessible) ne doit pas bloquer l'envoi. La conversation part sans
+      // projet ; la borne d'accès au projet reste stricte pour les usages
+      // réels (contexte projet, déplacement de conversations existantes).
+      const proj = await getProjectById({
+        id: projectId,
+        userEmail: maiUser.email,
+        userId,
+      }).catch(() => null);
       if (!proj) {
-        throw new ChatbotError("not_found:database", "Projet introuvable");
+        console.warn(
+          `[chat-access] project_not_found mode=${mode ?? "chat"} action=fallback_no_project`
+        );
+        projectId = null;
       }
     }
     await saveChat({

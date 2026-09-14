@@ -33,6 +33,23 @@ export const AGENT_UPGRADE_CTA = "Améliorer mon forfait";
 export const AGENT_MODES = ["chat", "agent"] as const;
 export type AgentMode = (typeof AGENT_MODES)[number];
 
+// Garde partagée « identité propriétaire de la conversation » : chat.userId a
+// été enregistré selon des variantes historiques (id, email, username). Une
+// seule définition pour le contrôle d'envoi (lib/chat/context.ts) et le
+// contrôle de lecture (/api/messages), sinon les deux chemins divergent.
+export function chatOwnerMatches(params: {
+  chatUserId: string;
+  email?: string | null;
+  userId?: string | null;
+  username?: string | null;
+}): boolean {
+  const { chatUserId, email, userId, username } = params;
+  return Boolean(
+    chatUserId &&
+      (chatUserId === userId || chatUserId === email || chatUserId === username)
+  );
+}
+
 export const AGENT_MODE_LABELS: Record<AgentMode, string> = {
   agent: "Agent",
   chat: "Chat",

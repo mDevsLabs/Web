@@ -991,6 +991,12 @@ export function getDb() {
   return _db;
 }
 
+// Client Postgres brut, pour les modules voisins (lib/db/users.ts) qui ont
+// besoin de SQL paramétré direct. Toujours appeler après dbReady().
+export function getRawClient() {
+  return _rawClient;
+}
+
 // Helper utilisé dans toutes les fonctions de requêtes. Exporté pour les
 // modules de requêtes voisins (agent-queries.ts), qui doivent bénéficier du
 // même init paresseux et de la même attente des migrations de types.

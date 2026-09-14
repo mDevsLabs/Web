@@ -7,7 +7,6 @@ import {
   KeyIcon,
   Loader2Icon,
   PlusIcon,
-  SettingsIcon,
   Trash2Icon,
   ZapIcon,
 } from "lucide-react";
@@ -172,21 +171,6 @@ export default function McpPanel({
 
   return (
     <div className="flex w-full flex-col gap-8">
-      {/* Boutons portés dans la rangée globale (recherche dans l'en-tête). */}
-      {actionsAnchor
-        ? createPortal(
-            <Button
-              className="h-8 shrink-0 gap-1.5 text-xs font-medium"
-              onClick={() => window.open("/mcp", "_blank")}
-              variant="outline"
-            >
-              <SettingsIcon className="size-3.5" />
-              Avancé
-            </Button>,
-            actionsAnchor
-          )
-        : null}
-
       {isLoading ? (
         <div className="py-16 text-center text-sm text-muted-foreground">
           Chargement du catalogue…

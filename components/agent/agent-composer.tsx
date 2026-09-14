@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  ArrowUpIcon,
-  Loader2Icon,
-  PaperclipIcon,
-  SquareIcon,
-} from "lucide-react";
+import { PaperclipIcon } from "lucide-react";
 import { useCallback, useRef, useState } from "react";
 import { toast } from "sonner";
 import {
@@ -14,6 +9,12 @@ import {
   AgentToolsPicker,
 } from "@/components/agent/composer/agent-option-pickers";
 import { AgentPlusMenu } from "@/components/agent/composer/agent-plus-menu";
+import {
+  ComposerActionsRow,
+  ComposerSendButton,
+  ComposerShell,
+  composerTextareaClass,
+} from "@/components/chat/composer-primitives";
 import { CloudFilePickerDialog } from "@/components/chat/cloud-file-picker-dialog";
 import { VoiceRecorderButton } from "@/components/chat/input/voice-recorder-button";
 import {
@@ -180,7 +181,7 @@ export function AgentComposer({
         type="file"
       />
 
-      <div className="rounded-[26px] border border-border/50 bg-card/80 p-2 shadow-sm backdrop-blur-sm transition-shadow focus-within:border-border focus-within:shadow-md">
+      <ComposerShell className="p-2">
         {attachments.length > 0 || uploadQueue.length > 0 ? (
           <div className="flex flex-wrap gap-2 px-2 pt-2">
             {attachments.map((attachment, index) => (
@@ -195,7 +196,7 @@ export function AgentComposer({
 
         <textarea
           aria-label="Décrire la tâche à confier à Agent"
-          className="max-h-80 min-h-[52px] w-full resize-none bg-transparent px-3 py-2.5 text-[15px] leading-relaxed outline-none placeholder:text-muted-foreground/70"
+          className={composerTextareaClass}
           data-testid="agent-composer-input"
           disabled={isRunning}
           onChange={(event) => setInput(event.target.value)}
@@ -216,7 +217,7 @@ export function AgentComposer({
           value={input}
         />
 
-        <div className="flex items-center justify-between gap-2 px-1">
+        <ComposerActionsRow className="px-1 pb-1">
           <div className="flex min-w-0 items-center gap-1">
             <AgentPlusMenu
               availability={{
@@ -237,40 +238,23 @@ export function AgentComposer({
               selectedModelId={modelId}
             />
             <VoiceRecorderButton input={input} setInput={setInput} />
-            {isRunning ? (
-              <button
-                aria-label="Arrêter Agent"
-                className="flex size-9 cursor-pointer items-center justify-center rounded-full bg-foreground text-background transition-opacity hover:opacity-90"
-                data-testid="agent-stop-button"
-                onClick={onStop}
-                type="button"
-              >
-                <SquareIcon className="size-3.5 fill-current" />
-              </button>
-            ) : (
-              <button
-                aria-label="Confier la tâche à Agent"
-                className={cn(
-                  "flex size-9 items-center justify-center rounded-full transition-all",
-                  canSend
-                    ? "cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90"
-                    : "cursor-not-allowed bg-muted text-muted-foreground/60"
-                )}
-                data-testid="agent-send-button"
-                disabled={!canSend}
-                onClick={submit}
-                type="button"
-              >
-                {uploadQueue.length > 0 ? (
-                  <Loader2Icon className="size-4 animate-spin" />
-                ) : (
-                  <ArrowUpIcon className="size-4" />
-                )}
-              </button>
-            )}
+            <ComposerSendButton
+              canSend={canSend}
+              loading={uploadQueue.length > 0}
+              onSend={submit}
+              running={isRunning}
+              sendLabel="Confier la tâche à Agent"
+              sendTestId="agent-send-button"
+              sendTitle="Confier la tâche à Agent"
+              stopLabel="Arrêter Agent"
+              onStop={onStop}
+              stopTestId="agent-stop-button"
+              stopTitle="Arrêter Agent"
+              type="button"
+            />
           </div>
-        </div>
-      </div>
+        </ComposerActionsRow>
+      </ComposerShell>
 
       <div className="flex flex-wrap items-center gap-1.5 px-1">
         {flags["agent.projects"] ? (

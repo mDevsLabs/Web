@@ -106,6 +106,12 @@ Outils internes livrés en Alpha : `search_web`, `read_file`, `create_artifact`,
 `lib/agent/tools/adapters/`. `ask_user` conduit à `waiting_for_user` : Agent pose
 une question précise et **reprend le même run**.
 
+> Note : les tools natifs à carte de confirmation du Chat (`updateAccountProfile`,
+> `updateProfilePicture`) ne sont pas exposés au registre Agent : leur contrat
+> `awaiting_user` exige une carte interactive rendable dans le fil de messages,
+> sans équivalent dans la timeline Agent. Exposition reportée à un lot dédié
+> (adaptateur + carte timeline), sans exception dans `AgentRuntime`.
+
 ## 6. Sélection et permissions
 
 - `ToolSelector` hybride : règles d'intention (`families.ts`, `rules.ts`) puis

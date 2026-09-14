@@ -91,6 +91,7 @@ const TOOL_FRIENDLY_NAMES: Record<string, string> = {
   readUrl: "Lecture de page Web",
   requestSuggestions: "Suggestions de modifications",
   updateAccountProfile: "Modification du profil",
+  updateProfilePicture: "Photo de profil",
   updateDocument: "Mise à jour du document",
   webSearch: "Recherche Web",
 };

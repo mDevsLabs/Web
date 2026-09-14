@@ -1,4 +1,5 @@
 import { errorResponse } from "@/lib/api/error-response";
+import { chatOwnerMatches } from "@/lib/agent/channel";
 import { getMaiUser } from "@/lib/auth/session";
 import { getChatById, getMessagesByChatId } from "@/lib/db/queries";
 import { convertToUIMessages } from "@/lib/utils";
@@ -32,9 +33,12 @@ export async function GET(request: Request) {
   const isOwner = Boolean(
     currentUserId &&
       (chat.userId === currentUserId ||
-        chat.userId === maiUser?.id ||
-        chat.userId === maiUser?.email ||
-        chat.userId === maiUser?.username)
+        chatOwnerMatches({
+          chatUserId: chat.userId,
+          email: maiUser?.email,
+          userId: maiUser?.id,
+          username: maiUser?.username,
+        }))
   );
 
   if (chat.visibility === "private" && !isOwner) {

@@ -1,4 +1,5 @@
 import { errorResponse } from "@/lib/api/error-response";
+import { chatOwnerMatches } from "@/lib/agent/channel";
 import { getMaiUser } from "@/lib/auth/session";
 import {
   getAgentRunsByChatId,
@@ -32,7 +33,14 @@ export async function GET(request: Request) {
       message: "La conversation demandée est introuvable.",
     });
   }
-  if (chat.userId !== userId && chat.userId !== user.email) {
+  if (
+    !chatOwnerMatches({
+      chatUserId: chat.userId,
+      email: user.email,
+      userId,
+      username: user.username,
+    })
+  ) {
     return errorResponse("access_denied");
   }
 
@@ -42,11 +50,25 @@ export async function GET(request: Request) {
     Promise.all(runs.map((run) => getToolExecutionsByRunId({ runId: run.id }))),
   ]);
 
+  // Actions suggérées validées côté serveur, persistées en fin de run : le
+  // client les affiche telles quelles et n'exécute que via la route dédiée.
+  const runActions = Object.fromEntries(
+    runs.map((run) => [
+      run.id,
+      (run.suggestedActions ?? []) as {
+        id: string;
+        label: string;
+        payload: Record<string, unknown>;
+      }[],
+    ])
+  );
+
   return Response.json(
     {
       executions: executions.flat(),
       mode: chat.mode,
       runs,
+      suggestedActions: runActions,
       steps: steps.flat(),
     },
     {

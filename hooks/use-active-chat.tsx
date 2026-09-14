@@ -210,7 +210,10 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
         // Auto-disable les outils indisponibles en fantôme s'ils sont actifs
         setPendingToolsState((tools) => {
           const filtered = tools.filter(
-            (t) => t !== "imageGenerate" && t !== "updateAccountProfile"
+            (t) =>
+              t !== "imageGenerate" &&
+              t !== "updateAccountProfile" &&
+              t !== "updateProfilePicture"
           );
           pendingToolsRef.current = filtered;
           return filtered;
@@ -242,6 +245,12 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     }
     if (tool === "updateAccountProfile" && isGhostModeRef.current) {
       toast.error("La modification de profil est indisponible en Mode fantôme");
+      return;
+    }
+    if (tool === "updateProfilePicture" && isGhostModeRef.current) {
+      toast.error(
+        "Le changement de photo de profil est indisponible en Mode fantôme"
+      );
       return;
     }
     setPendingToolsState((prev) => {

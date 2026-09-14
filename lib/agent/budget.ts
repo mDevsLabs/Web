@@ -23,6 +23,50 @@ export const AGENT_BUDGET_RESTRICTED: AgentExecutionBudget = {
 
 export const AGENT_TOOL_TIMEOUT_MS = 45_000;
 
+// ─────────────────────────────────────────────
+// Limites produit de durée d'un AgentRun, par forfait. Source unique partagée
+// par l'accès Agent et les budgets d'exécution : un utilisateur ne peut pas
+// être « Plus pour le quota » et « Free pour l'accès Agent ». Le plafond
+// produit est un MAXIMUM commercial ; en Alpha le budget technique reste plus
+// court (les timeouts individuels par appel modèle/réseau/tool conservent la
+// limitation effective). maxDurationMs = null : aucune limite produit globale.
+// ─────────────────────────────────────────────
+export type AgentRunDurationLimit = {
+  /** Plafond produit en millisecondes, ou null = illimité (Max). */
+  maxRunDurationMs: number | null;
+  label: string;
+};
+
+export const AGENT_RUN_DURATION_LIMITS: Record<
+  "plus" | "pro" | "max",
+  AgentRunDurationLimit
+> = {
+  max: { label: "Max", maxRunDurationMs: null },
+  plus: { label: "Plus", maxRunDurationMs: 60 * 60 * 1000 }, // 1 heure
+  pro: { label: "Pro", maxRunDurationMs: 3 * 60 * 60 * 1000 }, // 3 heures
+};
+
+export function resolveAgentRunDurationLimit(
+  tier?: string | null
+): AgentRunDurationLimit | null {
+  const rank = getPaidTierRank(tier);
+  if (rank <= 0) {
+    // Free / tier inconnu : pas de run Agent de toute façon (garde amont).
+    return null;
+  }
+  const key =
+    getPaidTierRank(tier) === 1
+      ? "plus"
+      : getPaidTierRank(tier) === 2
+        ? "pro"
+        : "max";
+  return { ...AGENT_RUN_DURATION_LIMITS[key] };
+}
+
+function productCapMs(tier?: string | null): number | null {
+  return resolveAgentRunDurationLimit(tier)?.maxRunDurationMs ?? null;
+}
+
 export function resolveAgentExecutionBudget(params: {
   tier?: string | null;
 }): AgentExecutionBudget {
@@ -30,7 +74,15 @@ export function resolveAgentExecutionBudget(params: {
   if (rank === 0) {
     return { ...AGENT_BUDGET_RESTRICTED };
   }
-  return { ...AGENT_BUDGET_DEFAULT };
+  const technical = AGENT_BUDGET_DEFAULT.maxDurationMs;
+  const cap = productCapMs(params.tier);
+  // Le plafond produit borne le budget technique (jamais l'inverse en Alpha) :
+  // un utilisateur Plus ne peut pas dépasser son plafond commercial, mais le
+  // run reste en pratique stoppé plus tôt par les timeouts par appel.
+  return {
+    ...AGENT_BUDGET_DEFAULT,
+    maxDurationMs: cap === null ? technical : Math.min(technical, cap),
+  };
 }
 
 export function remainingBudget(params: {

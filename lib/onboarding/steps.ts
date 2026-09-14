@@ -6,6 +6,7 @@ import {
   ImageIcon,
   MessagesSquareIcon,
   PenSquareIcon,
+  PuzzleIcon,
   SettingsIcon,
   SparklesIcon,
   Volume2Icon,
@@ -138,6 +139,15 @@ export const ONBOARDING_STEPS: OnboardingStep[] = [
     route: "/settings",
     selector: '[data-onboarding="nav-settings"]',
     title: "Personnalisez vos paramètres",
+  },
+  {
+    content:
+      "Les Applications regroupent vos Plugins, vos serveurs MCP et vos Skills au même endroit, pour étendre l'IA en un clic.",
+    icon: PuzzleIcon,
+    id: "applications",
+    route: "/tools",
+    selector: '[data-onboarding="nav-tools"]',
+    title: "Étendez l'IA avec les Applications",
   },
   {
     content:

@@ -15,13 +15,13 @@ import {
   PanelLeftIcon,
   PenSquareIcon,
   PlusIcon,
+  PuzzleIcon,
   SearchIcon,
   SettingsIcon,
   SlidersHorizontalIcon,
   SparklesIcon,
   TrashIcon,
   Volume2Icon,
-  WrenchIcon,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -638,7 +638,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                   </SidebarMenuSubItem>
                 </SidebarNavCollapsible>
 
-                {/* 2. Outils : Plugins, MCP & Skills sur une page unifiée */}
+                {/* 2. Applications : Plugins, MCP & Skills sur une page unifiée */}
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     asChild
@@ -647,15 +647,16 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                       isToolsActive &&
                         "bg-sidebar-accent font-semibold text-sidebar-foreground"
                     )}
-                    tooltip="Outils (Plugins, MCP & Skills)"
+                    tooltip="Applications (Plugins, MCP & Skills)"
                   >
                     <Link
+                      aria-label="Applications (Plugins, MCP & Skills)"
                       data-onboarding="nav-tools"
                       href="/tools"
                       onClick={handleNavClick}
                     >
-                      <WrenchIcon className="size-4" />
-                      <span>Outils</span>
+                      <PuzzleIcon className="size-4" />
+                      <span>Applications</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

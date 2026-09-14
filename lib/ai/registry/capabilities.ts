@@ -28,6 +28,49 @@ export type ModelCapabilities = {
 
 export const DEFAULT_MAX_FILES = 10;
 
+// Compatibilité Agent évaluée modèle par modèle (et adapter par adapter) :
+// un simple booléen provider global ne suffit pas — un modèle peut exposer des
+// définitions d'outils sans produire de ToolCalls structurés exploitables, ou
+// sans pouvoir continuer après un ToolResult. Toute correction s'écrit dans
+// MODEL_CAPABILITY_OVERRIDES ou AGENT_COMPATIBILITY_OVERRIDES, jamais dans un
+// `if (model === "...")` dispersé.
+export type AgentModelCompatibility = {
+  // ToolResults acceptés après un appel (format de sortie exploitable).
+  continuationAfterToolResult: boolean;
+  // ToolCalls structurés réellement émis (et non du texte à parser).
+  structuredToolCalls: boolean;
+  // Définitions d'outils acceptées (tools/functions dans la requête).
+  toolDefinitions: boolean;
+};
+
+export const DEFAULT_AGENT_COMPATIBILITY: AgentModelCompatibility = {
+  continuationAfterToolResult: true,
+  structuredToolCalls: true,
+  toolDefinitions: true,
+};
+
+export const AGENT_COMPATIBILITY_OVERRIDES: Record<
+  string,
+  Partial<AgentModelCompatibility>
+> = {};
+
+export function agentCompatibilityFor(
+  modelId: string,
+  baseTools: boolean
+): AgentModelCompatibility {
+  if (!baseTools) {
+    return {
+      continuationAfterToolResult: false,
+      structuredToolCalls: false,
+      toolDefinitions: false,
+    };
+  }
+  return {
+    ...DEFAULT_AGENT_COMPATIBILITY,
+    ...AGENT_COMPATIBILITY_OVERRIDES[modelId],
+  };
+}
+
 // Surcharges explicites, par identifiant de modèle. Seule source autorisée pour
 // corriger une capacité : aucun composant ne doit écrire `if (model === "...")`.
 export const MODEL_CAPABILITY_OVERRIDES: Record<

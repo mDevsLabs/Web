@@ -19,6 +19,10 @@ import type { AgentFlags } from "@/lib/agent/flags";
 import { persistAgentRunMessages } from "@/lib/agent/persist";
 import { applyPlanProgress } from "@/lib/agent/plan";
 import {
+  deriveSuggestedActions,
+  validateDerivedActions,
+} from "@/lib/agent/suggested-actions/derive";
+import {
   type AgentToolControllerState,
   createAgentToolController,
 } from "@/lib/agent/tool-controller";
@@ -40,6 +44,7 @@ import {
   bumpAgentRunCounters,
   createAgentStep,
   setAgentRunPlan,
+  setAgentRunSuggestedActions,
   setAgentRunUsage,
   updateAgentRunStatus,
 } from "@/lib/db/agent-queries";
@@ -70,6 +75,11 @@ export type AgentStreamParams = {
   runId: string;
   sessionToken: string;
   shouldRenameAfterFirst: boolean;
+  // Transport des parts de raisonnement : activé uniquement quand le modèle
+  // déclare la capacité (capabilities.reasoning). Le SDK ne fabrique jamais de
+  // chain-of-thought : seuls les parts explicitement fournis par le provider
+  // pour affichage transitent — le même protocole que le Chat.
+  sendReasoning: boolean;
   startedAt: number;
   task: string;
   tools: RegisteredAgentTool[];
@@ -93,6 +103,8 @@ export function createAgentStream(params: AgentStreamParams) {
     execute: async ({ writer }) => {
       const state: AgentToolControllerState = {
         approvalRequiredToolIds: params.approvalRequiredToolIds,
+        lastErrorCategory: null,
+        producedArtifact: false,
         sources: [],
         stepIndex: 0,
         toolCallCount: 0,
@@ -102,10 +114,23 @@ export function createAgentStream(params: AgentStreamParams) {
       let aborted = false;
       let failure: string | null = null;
       let accountingStarted = false;
+      let usageTotals: {
+        inputTokens?: number;
+        outputTokens?: number;
+        totalTokens?: number;
+      } = {};
 
       const emitRun = (
         status: AgentRunStatus,
-        extra: { stepCount?: number; toolCallCount?: number } = {}
+        extra: {
+          durationMs?: number;
+          error?: string;
+          inputTokens?: number;
+          outputTokens?: number;
+          stepCount?: number;
+          toolCallCount?: number;
+          totalTokens?: number;
+        } = {}
       ) => {
         emitAgentRun(writer, {
           model: params.modelId,
@@ -114,6 +139,19 @@ export function createAgentStream(params: AgentStreamParams) {
           status,
           stepCount: extra.stepCount ?? state.stepIndex,
           toolCallCount: extra.toolCallCount ?? state.toolCallCount,
+          ...(extra.durationMs === undefined
+            ? {}
+            : { durationMs: extra.durationMs }),
+          ...(extra.error === undefined ? {} : { error: extra.error }),
+          ...(extra.inputTokens === undefined
+            ? {}
+            : { inputTokens: extra.inputTokens }),
+          ...(extra.outputTokens === undefined
+            ? {}
+            : { outputTokens: extra.outputTokens }),
+          ...(extra.totalTokens === undefined
+            ? {}
+            : { totalTokens: extra.totalTokens }),
         });
       };
 
@@ -206,6 +244,11 @@ export function createAgentStream(params: AgentStreamParams) {
               type: "data-usage",
             });
           }
+          usageTotals = {
+            inputTokens: totals.inputTokens,
+            outputTokens: totals.outputTokens,
+            totalTokens: totals.totalTokens,
+          };
           await setAgentRunUsage({
             id: params.runId,
             usage: {
@@ -255,9 +298,13 @@ export function createAgentStream(params: AgentStreamParams) {
 
       writer.merge(
         toUIMessageStream({
-          // Agent n'affiche jamais de raisonnement privé : seules les actions,
-          // les outils, la progression et les résultats utiles sont visibles.
-          sendReasoning: false,
+          // Protocole aligné sur le Chat : les parts de raisonnement fournis
+          // par le provider (jamais fabriqués) transitent quand le modèle les
+          // déclare. Sans part, l'UI n'affiche aucun panneau vide : le rendu
+          // partagé (components/chat/message.tsx) ne rend que du texte
+          // reasoning non vide. Les actions, outils, progression et résultats
+          // restent le cœur visible d'Agent.
+          sendReasoning: params.sendReasoning,
           stream: result.stream,
         })
       );
@@ -273,7 +320,9 @@ export function createAgentStream(params: AgentStreamParams) {
         : aborted
           ? "cancelled"
           : failure
-            ? "failed"
+            ? state.lastErrorCategory === "timeout"
+              ? "timed_out"
+              : "failed"
             : "completed";
 
       if (finalStatus === "completed") {
@@ -300,7 +349,59 @@ export function createAgentStream(params: AgentStreamParams) {
         status: finalStatus,
       }).catch(() => {});
 
-      emitRun(finalStatus);
+      // SuggestedActions : dérivées côté serveur à partir de ce qui s'est
+      // réellement passé (outils activés, livrable, projet), validées par le
+      // registre puis persistées. Le client n'affiche que des actions du
+      // registre et les exécute via la route dédiée — jamais localement.
+      try {
+        const hasArtifact = state.producedArtifact;
+        const derived = deriveSuggestedActions({
+          enabledToolCategories: [
+            ...new Set(params.tools.map((tool) => tool.category)),
+          ],
+          hasArtifact:
+            hasArtifact ||
+            state.sources.some((source) => source.kind === "web"),
+          projectId: params.projectId,
+          taskTitle: params.task,
+        });
+        const validated = validateDerivedActions({
+          actions: derived,
+          enabledToolCategories: [
+            ...new Set(params.tools.map((tool) => tool.category)),
+          ],
+        });
+        if (validated.length > 0) {
+          const displayActions = validated.map((candidate) => ({
+            id: candidate.id,
+            label: candidate.action.label,
+            payload: (candidate.action.payload ?? {}) as Record<
+              string,
+              unknown
+            >,
+          }));
+          await setAgentRunSuggestedActions({
+            actions: displayActions,
+            id: params.runId,
+          }).catch(() => {});
+        }
+      } catch {
+        // Les actions suggérées sont un confort : un échec ne touche jamais
+        // au run lui-même.
+      }
+
+      // Synthèse d'observabilité en fin de run : le client affiche durée,
+      // tokens et erreur éventuelle sans jamais lire les traces techniques.
+      // Lecture via fermeture : `failure` n'est assigné que dans le rappel
+      // onError (asynchrone), donc le flux de contrôle ne le suit pas — la
+      // fonction restitue le type déclaré plutôt que le narrowing local.
+      const currentFailure = (): string | null => failure;
+      const failureText = currentFailure();
+      emitRun(finalStatus, {
+        ...(failureText ? { error: failureText.slice(0, 200) } : {}),
+        durationMs: Date.now() - params.startedAt,
+        ...usageTotals,
+      });
     },
     generateId: generateUUID,
     onEnd: async ({ messages: finishedMessages }) => {

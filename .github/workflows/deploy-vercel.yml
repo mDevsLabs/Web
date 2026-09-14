@@ -50,14 +50,9 @@ jobs:
       - name: 📥 Installation des dépendances
         run: pnpm install --frozen-lockfile
 
-      - name: 🔍 Typecheck
-        run: pnpm exec tsc --noEmit
-
-      - name: 🗄️ Exécution des migrations base de données
-        run: pnpm exec tsx lib/db/migrate.ts
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          POSTGRES_URL: ${{ secrets.DATABASE_URL }}
+      # Le typecheck n'appartient plus au déploiement : `pnpm typecheck`
+      # (tsc --noEmit) reste disponible en local/CI et est exécuté lors de la
+      # validation finale du travail de développement.
 
       - name: 🌍 Pull Vercel Environment Information
         run: |
@@ -67,13 +62,20 @@ jobs:
             vercel pull --yes --environment=preview --token=${{ env.VERCEL_TOKEN }}
           fi
 
-      - name: 🏗️ Build Project Artifacts
+      # Étape unique : migration PUIS build Vercel (environnement récupéré au
+      # pull ci-dessus). Le && stoppe immédiatement le build si la migration
+      # échoue. DATABASE_URL / POSTGRES_URL ne sont exposés que sur cette
+      # étape, qui est la seule à en avoir besoin.
+      - name: 🗄️ Migration puis Build Project Artifacts
         run: |
           if [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            vercel build --prod --token=${{ env.VERCEL_TOKEN }}
+            pnpm exec tsx lib/db/migrate.ts && vercel build --prod --token=${{ env.VERCEL_TOKEN }}
           else
-            vercel build --token=${{ env.VERCEL_TOKEN }}
+            pnpm exec tsx lib/db/migrate.ts && vercel build --token=${{ env.VERCEL_TOKEN }}
           fi
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          POSTGRES_URL: ${{ secrets.DATABASE_URL }}
 
       - name: 🌐 Deploy Project Artifacts to Vercel
         run: |

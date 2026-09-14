@@ -12,6 +12,11 @@ import type {
 //   3. valeur déclarée par l'outil lui-même (permissions.default).
 // La décision est toujours prise côté serveur.
 
+// Décision tri-états du PermissionEngine : le contrat central. `allow` exécute,
+// `deny` interdit (l'outil est retiré du plateau), `require_approval` crée une
+// ApprovalRequest persistante avant toute exécution.
+export type PermissionDecision = "allow" | "deny" | "require_approval";
+
 // Lecture seule : rien à confirmer. Tout le reste dépend de l'autonomie.
 const READ_ONLY_DEFAULT: ToolPermission = "auto";
 const WRITE_DEFAULT: ToolPermission = "ask";
@@ -65,6 +70,26 @@ export function resolveToolPermission(params: {
   }
 
   return declared;
+}
+
+// Conversion permission → décision tri-états. Point unique de mapping : les
+// nouvelles granularités (préparation / action irréversible) n'ont qu'à
+// affiner `permissionForTool` pour être prises en compte partout.
+export function permissionToDecision(
+  permission: ToolPermission
+): PermissionDecision {
+  if (permission === "off") {
+    return "deny";
+  }
+  return permission === "ask" ? "require_approval" : "allow";
+}
+
+export function decideToolPermission(params: {
+  autonomy: AgentAutonomy;
+  overrides?: Record<string, ToolPermission>;
+  tool: Pick<RegisteredAgentTool, "id" | "permissions">;
+}): PermissionDecision {
+  return permissionToDecision(resolveToolPermission(params));
 }
 
 export function applyToolPermissions(params: {

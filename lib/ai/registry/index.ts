@@ -6,6 +6,8 @@ import {
 import {
   getMemoizedCapabilities,
   type ModelCapabilities,
+  agentCompatibilityFor,
+  type AgentModelCompatibility,
 } from "@/lib/ai/registry/capabilities";
 import type { ReasoningLevel } from "@/lib/ai/registry/reasoning";
 import {
@@ -20,6 +22,7 @@ import {
 // ni relire les heuristiques de lib/ai/models.ts : tout passe par ici.
 
 export type AgentModelEntry = {
+  agentCompatibility: AgentModelCompatibility;
   capabilities: ModelCapabilities;
   description: string;
   id: string;
@@ -34,6 +37,7 @@ export function buildModelEntry(model: ChatModel | string): AgentModelEntry {
   const modelId = typeof model === "string" ? model : model.id;
   const capabilities = getMemoizedCapabilities(model);
   return {
+    agentCompatibility: agentCompatibilityFor(modelId, capabilities.tools),
     capabilities,
     description: typeof model === "string" ? "" : (model.description ?? ""),
     id: modelId,
@@ -129,11 +133,34 @@ export function contextWindowFor(
   return getModelEntry(modelId, models).capabilities.contextWindow;
 }
 
-// Modèles utilisables par Agent : les outils sont la seule dépendance dure.
+// Modèles utilisables par Agent : compatibilité complète outillage requise
+// (définitions, ToolCalls structurés, continuation après ToolResult).
+export function isAgentCompatible(entry: AgentModelEntry): boolean {
+  return (
+    entry.agentCompatibility.toolDefinitions &&
+    entry.agentCompatibility.structuredToolCalls &&
+    entry.agentCompatibility.continuationAfterToolResult
+  );
+}
+
 export function getAgentModelEntries(
   models: ChatModel[] = FALLBACK_MODELS
 ): AgentModelEntry[] {
-  return getModelEntries(models).filter((entry) => entry.capabilities.tools);
+  return getModelEntries(models).filter(isAgentCompatible);
+}
+
+// Fallback déterministe quand le modèle Agent demandé (ou par défaut) devient
+// incompatible : premier modèle compatible dans l'ordre du catalogue — jamais
+// une saisie utilisateur, jamais un choix aléatoire. Retourne null si aucun
+// modèle compatible n'existe pour ce forfait.
+export function pickAgentFallbackModel(
+  models: ChatModel[] = FALLBACK_MODELS,
+  tier?: string | null
+): string | null {
+  const candidates = getAgentModelEntries(
+    filterModelsForTier(models, tier)
+  );
+  return candidates[0]?.id ?? null;
 }
 
 export function getAgentModelsForTier(

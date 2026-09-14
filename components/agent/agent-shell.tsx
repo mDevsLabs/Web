@@ -8,6 +8,7 @@ import { AgentComposer } from "@/components/agent/agent-composer";
 import { AgentHome } from "@/components/agent/agent-home";
 import { AgentModeSwitcher } from "@/components/agent/agent-mode-switcher";
 import { AgentRunTimeline } from "@/components/agent/agent-run-timeline";
+import { AgentSuggestedActions } from "@/components/agent/agent-suggested-actions";
 import {
   AgentStreamProvider,
   useAgentStream,
@@ -21,10 +22,11 @@ import { type AgentRequestOptions, useAgentChat } from "@/hooks/use-agent-chat";
 import { useAgentFlags } from "@/hooks/use-agent-flags";
 import { extractChatIdFromPath, useAgentMode } from "@/hooks/use-agent-mode";
 import { useAgentModels } from "@/hooks/use-agent-models";
-import type { ProjectLite } from "@/hooks/use-projects";
+import { useProjects, type ProjectLite } from "@/hooks/use-projects";
 import { AGENT_COMPOSER_ARIA_LABEL } from "@/lib/agent/channel";
 import type {
   AgentRunRecord,
+  AgentRunUsage,
   AgentStepEvent,
   AgentStepRecord,
   AgentToolActivity,
@@ -57,7 +59,10 @@ function toStepEvent(step: AgentStepRecord): AgentStepEvent {
 
 function toToolActivity(execution: ToolExecutionRecord): AgentToolActivity {
   return {
+    attempt: execution.attempt ?? 1,
     category: execution.category,
+    durationMs: execution.durationMs ?? undefined,
+    errorCategory: execution.errorCategory ?? null,
     label: execution.toolId,
     runId: execution.runId,
     status:
@@ -93,6 +98,46 @@ function AgentShellInner() {
     toolMode: "auto",
   });
 
+  // Hydratation du projet depuis la conversation persistée : la vérité est en
+  // base (chat.projectId), jamais dans un état React initialisé à null. Le
+  // premier envoi transmet projectId ; les suivants ne perdent jamais une
+  // association déjà enregistrée ni un changement explicite de l'utilisateur.
+  const { data: chatRecord } = useSWR<{ projectId: string | null }>(
+    isNewChat
+      ? null
+      : `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chats/${chatId}`,
+    fetcher,
+    { revalidateOnFocus: false }
+  );
+  const hydratedProjectIdRef = useRef<string | null | undefined>(undefined);
+  const { projects: allProjects } = useProjects();
+  useEffect(() => {
+    if (!chatRecord || hydratedProjectIdRef.current !== undefined) {
+      return;
+    }
+    const storedProjectId = chatRecord.projectId ?? null;
+    hydratedProjectIdRef.current = storedProjectId;
+    if (!storedProjectId) {
+      return;
+    }
+    // Ne pas conserver silencieusement un projet supprimé ou inaccessible :
+    // si la liste ne le connaît pas, l'association est retirée côté serveur.
+    const known = allProjects.find((p) => p.id === storedProjectId);
+    if (known) {
+      setProject(known);
+      setOptions((current) => ({ ...current, projectId: known.id }));
+    } else if (allProjects.length > 0) {
+      fetch(
+        `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chats/${chatId}`,
+        {
+          body: JSON.stringify({ projectId: null }),
+          headers: { "Content-Type": "application/json" },
+          method: "PATCH",
+        }
+      ).catch(() => {});
+    }
+  }, [allProjects, chatRecord, chatId]);
+
   const {
     addToolApprovalResponse,
     isLoading,
@@ -111,13 +156,29 @@ function AgentShellInner() {
 
   // Reprise après refresh : la vérité est côté serveur (AgentRun / AgentStep /
   // ToolExecution). On hydrate la timeline depuis l'API, jamais depuis le flux.
-  const { data: history } = useSWR<AgentRunHistoryPayload>(
-    isNewChat
-      ? null
-      : `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agent/runs?chatId=${chatId}`,
+  // La clé SWR est aussi revalidée en fin de run : les actions suggérées
+  // persistées côté serveur apparaissent après la fin du flux.
+  const runsHistoryKey = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agent/runs?chatId=${chatId}`;
+  const { data: history, mutate: mutateHistory } = useSWR<AgentRunHistoryPayload>(
+    isNewChat ? null : runsHistoryKey,
     fetcher,
     { revalidateOnFocus: false }
   );
+  const suggestedActions = useMemo(() => {
+    if (!history?.suggestedActions) {
+      return [] as { id: string; label: string; payload: Record<string, unknown> }[];
+    }
+    const runs = (history.runs ?? []) as { id: string }[];
+    const lastRun = runs.at(-1);
+    if (!lastRun) {
+      return [];
+    }
+    return (
+      history.suggestedActions[lastRun.id] ?? (
+        [] as { id: string; label: string; payload: Record<string, unknown> }[]
+      )
+    );
+  }, [history]);
 
   const hydratedRunIdRef = useRef<string | null>(null);
   useEffect(() => {
@@ -130,16 +191,27 @@ function AgentShellInner() {
       return;
     }
     hydratedRunIdRef.current = lastRun.id;
+    const runUsage = (lastRun as { usage?: AgentRunUsage }).usage ?? {};
     reset({
       artifacts: [],
       plan: lastRun.plan ?? null,
       run: {
+        durationMs:
+          runUsage.durationMs ??
+          (lastRun.startedAt && lastRun.completedAt
+            ? new Date(lastRun.completedAt).getTime() -
+              new Date(lastRun.startedAt).getTime()
+            : undefined),
+        error: lastRun.error,
+        inputTokens: runUsage.inputTokens,
         model: lastRun.model,
+        outputTokens: runUsage.outputTokens,
         reasoningLevel: lastRun.reasoningLevel,
         runId: lastRun.id,
         status: lastRun.status,
         stepCount: lastRun.stepCount,
         toolCallCount: lastRun.toolCallCount,
+        totalTokens: runUsage.totalTokens,
       },
       sources: [],
       steps: (history.steps ?? [])
@@ -200,6 +272,27 @@ function AgentShellInner() {
       onProjectChange={(next) => {
         setProject(next);
         handleOptionsChange({ projectId: next?.id ?? null });
+        // Changement explicite : persisté immédiatement sur une conversation
+        // existante, pour survivre à un envoi raté, un refresh ou un retour.
+        if (!isNewChat) {
+          fetch(
+            `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chats/${chatId}`,
+            {
+              body: JSON.stringify({ projectId: next?.id ?? null }),
+              headers: { "Content-Type": "application/json" },
+              method: "PATCH",
+            }
+          )
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(String(response.status));
+              }
+            })
+            .catch(() => {
+              // L'association reste appliquée localement ; le prochain envoi
+              // retransmettra projectId et rattrapera l'état serveur.
+            });
+        }
       }}
       onStop={stopRun}
       onSubmit={handleSubmit}
@@ -240,6 +333,12 @@ function AgentShellInner() {
             {showHome ? null : (
               <>
                 <AgentRunTimeline state={state} />
+                {!isRunning && suggestedActions.length > 0 ? (
+                  <AgentSuggestedActions
+                    actions={suggestedActions}
+                    runId={state.run?.runId ?? ""}
+                  />
+                ) : null}
                 {messages.map((message, index) => (
                   <PreviewMessage
                     addToolApprovalResponse={addToolApprovalResponse}

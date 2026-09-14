@@ -78,6 +78,13 @@ export async function removeMaiSessionToken() {
   cookieStore.delete(MAI_SESSION_COOKIE);
 }
 
+// Invalidation ciblée du cache utilisateur après une mutation de profil
+// (avatar, username, téléphone…) : la session reste valide, seule la copie en
+// mémoire est jetée pour que la prochaine requête relise l'amont.
+export function invalidateMaiUserCache(token: string): void {
+  userCache.delete(token);
+}
+
 // Rafraîchissement asynchrone non-bloquant des quotas mAI
 function triggerBackgroundUsageRefresh(token: string) {
   fetch(`${MAI_API_URL}/usage`, {

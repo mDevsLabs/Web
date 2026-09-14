@@ -213,6 +213,26 @@ export async function setAgentRunUsage({
   }
 }
 
+// Actions suggérées validées par le registre, persistées en fin de run et
+// relues par l'API runs après refresh (le flux ne sert qu'aux mises à jour).
+export async function setAgentRunSuggestedActions({
+  actions,
+  id,
+}: {
+  actions: { id: string; label: string; payload: Record<string, unknown> }[];
+  id: string;
+}): Promise<void> {
+  try {
+    const db = await dbReady();
+    await db
+      .update(agentRun)
+      .set({ suggestedActions: actions })
+      .where(eq(agentRun.id, id));
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
 export async function createAgentStep(params: {
   index: number;
   runId: string;
@@ -318,6 +338,7 @@ export async function completeToolExecution({
   approvalStatus,
   durationMs,
   error,
+  errorCategory,
   id,
   output,
   status,
@@ -325,6 +346,7 @@ export async function completeToolExecution({
   approvalStatus?: "not_required" | "pending" | "approved" | "denied";
   durationMs?: number;
   error?: string | null;
+  errorCategory?: string | null;
   id: string;
   output?: unknown;
   status: "running" | "completed" | "failed" | "denied" | "cancelled";
@@ -337,6 +359,7 @@ export async function completeToolExecution({
         ...(approvalStatus === undefined ? {} : { approvalStatus }),
         ...(durationMs === undefined ? {} : { durationMs }),
         ...(error === undefined ? {} : { error }),
+        ...(errorCategory === undefined ? {} : { errorCategory }),
         ...(output === undefined ? {} : { output: output as never }),
         completedAt: new Date(),
         status,

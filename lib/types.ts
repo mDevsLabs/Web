@@ -34,6 +34,7 @@ import type { readUrl } from "./ai/tools/read-url";
 import type { requestSuggestions } from "./ai/tools/request-suggestions";
 import type { updateAccountProfile } from "./ai/tools/update-account-profile";
 import type { updateDocument } from "./ai/tools/update-document";
+import type { updateProfilePicture } from "./ai/tools/update-profile-picture";
 import type { webCapture } from "./ai/tools/web-capture";
 import type { webSearch } from "./ai/tools/web-search";
 import type { Suggestion } from "./db/schema";
@@ -74,6 +75,9 @@ type quizzlyTool = InferUITool<typeof quizzly>;
 type updateAccountProfileTool = InferUITool<
   ReturnType<typeof updateAccountProfile>
 >;
+type updateProfilePictureTool = InferUITool<
+  ReturnType<typeof updateProfilePicture>
+>;
 type getAccountUsageTool = InferUITool<ReturnType<typeof getAccountUsage>>;
 
 export type ChatTools = {
@@ -103,6 +107,7 @@ export type ChatTools = {
   askUser: askUserTool;
   quizzly: quizzlyTool;
   updateAccountProfile: updateAccountProfileTool;
+  updateProfilePicture: updateProfilePictureTool;
   getAccountUsage: getAccountUsageTool;
 };
 

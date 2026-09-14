@@ -40,6 +40,10 @@ export type AgentRunHistoryPayload = {
   mode?: string;
   runs?: { id: string; status: string }[];
   steps?: AgentStepRecord[];
+  suggestedActions?: Record<
+    string,
+    { id: string; label: string; payload: Record<string, unknown> }[]
+  >;
 };
 
 const EMPTY_OPTIONS: AgentRequestOptions = {
@@ -130,6 +134,11 @@ export function useAgentChat({
     },
     onFinish: () => {
       mutate(unstable_serialize(getChatHistoryPaginationKey));
+      // Fin de run : l'historique persisté (timeline, usage, actions
+      // suggérées) est revalidé — le flux ne sert qu'aux mises à jour live.
+      mutate(
+        `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agent/runs?chatId=${chatId}`
+      );
     },
     sendAutomaticallyWhen: ({ messages: currentMessages }) => {
       const lastMessage = currentMessages.at(-1);

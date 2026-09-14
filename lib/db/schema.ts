@@ -24,6 +24,16 @@ import type {
   ToolCategory,
   ToolPermission,
 } from "@/lib/agent/types";
+import type {
+  AgentRunCheckpoint,
+  AgentRunUsageNormalized,
+  ApprovalRequestRecord,
+  AgentOccurrenceRecord,
+  AgentRunInstructionRecord,
+  AgentScheduleRecord,
+  ToolExecutionAttemptFields,
+} from "@/lib/agent/db-schema";
+import type { ScheduleRule } from "@/lib/agent/contracts";
 
 export const project = pgTable(
   "Project",
@@ -545,6 +555,10 @@ export const notification = pgTable(
         "news",
         "planning_task_completed",
         "quota_warning",
+        "agent_run_finished",
+        "agent_run_failed",
+        "agent_approval_required",
+        "agent_user_input_required",
       ],
     }).notNull(),
     userId: text("userId").notNull(),
@@ -567,6 +581,19 @@ export type Notification = InferSelectModel<typeof notification>;
 
 export const userNotificationPrefs = pgTable("user_notification_prefs", {
   aiResponse: boolean("aiResponse").notNull().default(true),
+  // Canaux Agent : in-app est toujours actif pour les événements importants ;
+  // email et push restent désactivés tant que l'infrastructure mAI n'est pas
+  // confirmée (aucune clé utilisateur, jamais les connexions Gmail).
+  agentApprovalRequired: boolean("agentApprovalRequired")
+    .notNull()
+    .default(true),
+  agentEmailEnabled: boolean("agentEmailEnabled").notNull().default(false),
+  agentPushEnabled: boolean("agentPushEnabled").notNull().default(false),
+  agentRunFailed: boolean("agentRunFailed").notNull().default(true),
+  agentRunFinished: boolean("agentRunFinished").notNull().default(true),
+  agentUserInputRequired: boolean("agentUserInputRequired")
+    .notNull()
+    .default(true),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
   enabled: boolean("enabled").notNull().default(false),
   mcpAccessRequest: boolean("mcpAccessRequest").notNull().default(true),
@@ -935,17 +962,21 @@ export const agentRun = pgTable(
         "completed",
         "failed",
         "cancelled",
+        "timed_out",
       ],
     })
       .notNull()
       .default("queued"),
+    checkpoint: json("checkpoint").$type<AgentRunCheckpoint>(),
+    revision: integer("revision").notNull().default(0),
+    suggestedActions: json("suggestedActions").$type<unknown[]>().notNull().default([]),
+    usage: json("usage").$type<AgentRunUsage | AgentRunUsageNormalized>().notNull().default({}),
     stepCount: integer("stepCount").notNull().default(0),
     toolCallCount: integer("toolCallCount").notNull().default(0),
     toolPolicySnapshot: json("toolPolicySnapshot")
       .$type<Record<string, ToolPermission>>()
       .notNull()
       .default({}),
-    usage: json("usage").$type<AgentRunUsage>().notNull().default({}),
     userId: text("userId").notNull(),
   },
   (table) => ({
@@ -1034,6 +1065,12 @@ export const toolExecution = pgTable(
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     input: json("input").$type<unknown>(),
     output: json("output").$type<unknown>(),
+    // Tentatives : chaque retry est une ligne liée à sa tentative parente.
+    attempt: integer("attempt").notNull().default(1),
+    errorCategory: varchar("errorCategory", { length: 32 }),
+    parentExecutionId: uuid("parentExecutionId"),
+    retryAfterMs: integer("retryAfterMs"),
+    retryable: boolean("retryable").notNull().default(false),
     runId: uuid("runId")
       .notNull()
       .references(() => agentRun.id, { onDelete: "cascade" }),
@@ -1082,3 +1119,153 @@ export const agentSettings = pgTable("AgentSettings", {
 });
 
 export type AgentSettings = InferSelectModel<typeof agentSettings>;
+
+// ---------------------------------------------------------------------------
+// Fondations Agent (migration 0017) : tâches planifiées, occurrences,
+// approbations persistantes, instructions de réorientation.
+// ---------------------------------------------------------------------------
+
+// Tâche planifiée Agent : règle en heure LOCALE + fuseau IANA. La prochaine
+// échéance est recalculée depuis la règle et le fuseau (jamais une suite de
+// dates UTC). Suppression LOGIQUE : les runs passés restent consultables.
+export const agentSchedule = pgTable(
+  "AgentSchedule",
+  {
+    agentId: uuid("agentId"),
+    config: json("config").$type<AgentScheduleRecord["config"]>().notNull(),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    deletedAt: timestamp("deletedAt"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    instructions: text("instructions").notNull(),
+    lastError: text("lastError"),
+    lastRunAt: timestamp("lastRunAt"),
+    modelId: text("modelId").notNull(),
+    nextDueAt: timestamp("nextDueAt").notNull(),
+    projectId: uuid("projectId"),
+    revision: integer("revision").notNull().default(0),
+    rule: json("rule").$type<ScheduleRule>().notNull(),
+    status: varchar("status", {
+      enum: ["active", "paused", "deleted"],
+    })
+      .notNull()
+      .default("active"),
+    timezone: varchar("timezone", { length: 64 }).notNull(),
+    title: text("title").notNull(),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    // File d'attente du scheduler : échéances dues, par worker.
+    dueIdx: index("AgentSchedule_status_nextDueAt_idx").on(
+      table.status,
+      table.nextDueAt
+    ),
+    userIdIdx: index("AgentSchedule_userId_idx").on(table.userId),
+  })
+);
+
+export type AgentSchedule = InferSelectModel<typeof agentSchedule>;
+
+// Une exécution prévue. UNIQUE(scheduleId, dueAt) garantit l'idempotence : un
+// tick rejoué ou deux workers concurrents ne créent jamais deux occurrences.
+export const agentScheduleOccurrence = pgTable(
+  "AgentScheduleOccurrence",
+  {
+    attempt: integer("attempt").notNull().default(0),
+    claimedAt: timestamp("claimedAt"),
+    claimedBy: varchar("claimedBy", { length: 128 }),
+    dueAt: timestamp("dueAt").notNull(),
+    finishedAt: timestamp("finishedAt"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    // Lease anti-double-exécution : expirée => reprise après crash.
+    leaseUntil: timestamp("leaseUntil"),
+    runId: uuid("runId").references(() => agentRun.id, { onDelete: "set null" }),
+    scheduleId: uuid("scheduleId")
+      .notNull()
+      .references(() => agentSchedule.id, { onDelete: "cascade" }),
+    status: varchar("status", {
+      enum: ["pending", "claimed", "running", "completed", "failed", "skipped"],
+    })
+      .notNull()
+      .default("pending"),
+  },
+  (table) => ({
+    occurrenceUnique: uniqueIndex(
+      "AgentScheduleOccurrence_scheduleId_dueAt_key"
+    ).on(table.scheduleId, table.dueAt),
+    claimIdx: index("AgentScheduleOccurrence_status_leaseUntil_idx").on(
+      table.status,
+      table.leaseUntil
+    ),
+    runIdIdx: index("AgentScheduleOccurrence_runId_idx").on(table.runId),
+  })
+);
+
+export type AgentScheduleOccurrence =
+  InferSelectModel<typeof agentScheduleOccurrence>;
+
+// Approbation persistante liée à un appel d'outil et à SES paramètres exacts
+// (hash sha256 canonique) : toute modification de paramètres l'invalide.
+export const approvalRequest = pgTable(
+  "ApprovalRequest",
+  {
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    decidedAt: timestamp("decidedAt"),
+    denyReason: text("denyReason"),
+    expiresAt: timestamp("expiresAt").notNull(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    params: json("params").$type<Record<string, unknown>>().notNull(),
+    paramsHash: varchar("paramsHash", { length: 64 }).notNull(),
+    runId: uuid("runId")
+      .notNull()
+      .references(() => agentRun.id, { onDelete: "cascade" }),
+    status: varchar("status", {
+      enum: ["pending", "approved", "denied", "expired"],
+    })
+      .notNull()
+      .default("pending"),
+    stepId: uuid("stepId"),
+    toolExecutionId: uuid("toolExecutionId"),
+    toolId: text("toolId").notNull(),
+  },
+  (table) => ({
+    pendingIdx: index("ApprovalRequest_runId_status_idx").on(
+      table.runId,
+      table.status
+    ),
+  })
+);
+
+export type ApprovalRequest = InferSelectModel<typeof approvalRequest>;
+
+// Réorientations utilisateur : file ORDONNÉE (seq) appliquée au prochain
+// point sûr, protégée par la révision optimiste du run.
+export const agentRunInstruction = pgTable(
+  "AgentRunInstruction",
+  {
+    appliedAt: timestamp("appliedAt"),
+    appliedStepIndex: integer("appliedStepIndex"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    runId: uuid("runId")
+      .notNull()
+      .references(() => agentRun.id, { onDelete: "cascade" }),
+    seq: integer("seq").notNull(),
+    stopRequested: boolean("stopRequested").notNull().default(false),
+    text: text("text").notNull(),
+    status: varchar("status", {
+      enum: ["pending", "applied", "discarded"],
+    })
+      .notNull()
+      .default("pending"),
+  },
+  (table) => ({
+    pendingIdx: index("AgentRunInstruction_runId_status_seq_idx").on(
+      table.runId,
+      table.status,
+      table.seq
+    ),
+  })
+);
+
+export type AgentRunInstruction = InferSelectModel<typeof agentRunInstruction>;

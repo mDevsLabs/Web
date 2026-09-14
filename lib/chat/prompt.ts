@@ -68,6 +68,7 @@ export async function buildPromptAddendum(
       (t !== "imageGenerate" &&
         t !== "audioGenerate" &&
         t !== "updateAccountProfile" &&
+        t !== "updateProfilePicture" &&
         (t !== "memory" || memoryCtx.ghostMemoryEnabled))
     );
   });

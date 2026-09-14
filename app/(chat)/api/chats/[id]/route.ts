@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { chatOwnerMatches } from "@/lib/agent/channel";
 import { getMaiUser } from "@/lib/auth/session";
 import {
   getChatById,
@@ -38,7 +39,14 @@ export async function GET(
     return new ChatbotError("not_found:database").toResponse();
   }
   const userId = user.id || user.email;
-  if (chat.userId !== userId && chat.userId !== user.email) {
+  if (
+    !chatOwnerMatches({
+      chatUserId: chat.userId,
+      email: user.email,
+      userId,
+      username: user.username,
+    })
+  ) {
     return new ChatbotError("forbidden:chat").toResponse();
   }
   return Response.json(chat);
@@ -58,7 +66,14 @@ export async function PATCH(
   if (!chat) {
     return new ChatbotError("not_found:database").toResponse();
   }
-  if (chat.userId !== userId && chat.userId !== user.email) {
+  if (
+    !chatOwnerMatches({
+      chatUserId: chat.userId,
+      email: user.email,
+      userId,
+      username: user.username,
+    })
+  ) {
     return new ChatbotError("forbidden:chat").toResponse();
   }
 

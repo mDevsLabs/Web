@@ -1,6 +1,6 @@
 "use client";
 
-import { CpuIcon, PuzzleIcon, SearchIcon, Star } from "lucide-react";
+import { PuzzleIcon, SearchIcon, Star } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
@@ -84,17 +84,17 @@ export default function ToolsClient({
 
   return (
     <div className="flex flex-1 flex-col bg-background text-foreground">
-      {/* En-tête de la page Outils */}
+      {/* En-tête de la page Applications */}
       <header className="z-20 flex flex-col gap-4 border-b border-border/40 bg-background/95 px-4 py-4 backdrop-blur-md sm:px-6">
         <div className="flex items-center gap-3">
           <PageBackButton fallbackHref="/" label="Retour au chat" />
           <div className="flex items-center gap-2.5">
             <div className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
-              <CpuIcon className="size-5" />
+              <PuzzleIcon className="size-5" />
             </div>
             <div>
               <h1 className="text-lg font-bold tracking-tight sm:text-xl">
-                Outils
+                Applications
               </h1>
               <p className="text-xs text-muted-foreground">
                 Plugins, MCP et Skills réunis au même endroit

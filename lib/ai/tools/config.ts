@@ -14,6 +14,7 @@ import {
   GlobeIcon,
   HelpCircleIcon,
   ImageIcon,
+  ImagePlusIcon,
   KeyRoundIcon,
   LightbulbIcon,
   NotebookIcon,
@@ -56,6 +57,7 @@ export const TOOL_IDS = [
   "quizzly",
   "updateAccountProfile",
   "getAccountUsage",
+  "updateProfilePicture",
 ] as const;
 
 export type NativeToolId = (typeof TOOL_IDS)[number];
@@ -253,6 +255,13 @@ export const TOOLS_META: Record<ToolId, ToolMeta> = {
     isArtifact: true,
     label: "Réécrire document",
   },
+  updateProfilePicture: {
+    description:
+      "Prépare le changement de votre photo de profil à partir d'une image jointe ou d'une URL HTTPS. Rien n'est appliqué sans votre accord : une carte affiche l'aperçu de l'image, son origine et l'action ; confirmez-y le changement (valable uniquement pour cette image exacte).",
+    icon: ImagePlusIcon as any,
+    id: "updateProfilePicture",
+    label: "Changer ma photo",
+  },
   webCapture: {
     description:
       "Capture une page web réelle : screenshot de l'URL, métadonnées OpenGraph, informations SEO et technologies détectées. À activer pour critiquer un design, auditer une landing page ou analyser le SEO d'un site.",
@@ -321,6 +330,8 @@ export const TOOL_SYSTEM_HINTS: Record<ToolId, string> = {
     "updateAccountProfile (prépare la modification du nom d'utilisateur et/ou du téléphone via une carte de confirmation sécurisée : à n'appeler que sur demande explicite de l'utilisateur, ne demande JAMAIS le mot de passe, n'exécute rien toi-même et attends le résultat (submitted ou cancelled) renvoyé par la carte avant de confirmer ; les erreurs de validation restent affichées dans la carte)",
   updateDocument:
     "updateDocument (réécriture complète d'un artefact : pour une refonte ; préférer editDocument pour des ajustements)",
+  updateProfilePicture:
+    "updateProfilePicture (prépare le changement de la photo de profil via une carte de confirmation : source = image jointe à la conversation OU URL HTTPS fournie par l'utilisateur ; à n'appeler QUE sur demande explicite de changer la photo de profil, n'exécute rien toi-même et attends le résultat (submitted, cancelled ou failed) renvoyé par la carte avant de confirmer ; une confirmation ne vaut que pour l'image exacte affichée)",
   webCapture:
     "webCapture (capture d'écran réelle d'une URL + métadonnées OpenGraph/SEO et technologies détectées — pour critiquer un design, auditer une page ou montrer un site)",
   webSearch:
