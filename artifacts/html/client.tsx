@@ -4,36 +4,12 @@ import { CodeEditor } from "@/components/chat/code-editor";
 import { Artifact } from "@/components/chat/create-artifact";
 import {
   CopyIcon,
+  DownloadIcon,
   PlayIcon,
   RedoIcon,
   UndoIcon,
 } from "@/components/chat/icons";
-
-const HtmlPreview = ({ content }: { content: string }) => {
-  const [key, setKey] = useState(0);
-  return (
-    <div className="flex flex-col gap-2 h-full">
-      <div className="flex items-center justify-between px-1">
-        <span className="text-xs font-medium text-muted-foreground">
-          Aperçu Live
-        </span>
-        <button
-          className="text-xs px-2 py-1 rounded border hover:bg-muted"
-          onClick={() => setKey((k) => k + 1)}
-        >
-          Recharger
-        </button>
-      </div>
-      <iframe
-        className="w-full flex-1 min-h-[300px] rounded border bg-white"
-        key={key}
-        sandbox="allow-scripts allow-same-origin"
-        srcDoc={content}
-        title="HTML Preview"
-      />
-    </div>
-  );
-};
+import { SandboxPreview } from "@/components/chat/sandbox-preview";
 
 export const htmlArtifact = new Artifact<"html">({
   actions: [
@@ -44,6 +20,23 @@ export const htmlArtifact = new Artifact<"html">({
       onClick: ({ content }) => {
         navigator.clipboard.writeText(content);
         toast.success("Copié !");
+      },
+    },
+    {
+      description: "Télécharger le fichier HTML",
+      icon: <DownloadIcon size={18} />,
+      label: "Télécharger",
+      onClick: ({ content }) => {
+        const blob = new Blob([content], { type: "text/html;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "mai-sandbox.html";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+        toast.success("Fichier HTML téléchargé");
       },
     },
     {
@@ -104,7 +97,7 @@ export const htmlArtifact = new Artifact<"html">({
             className={`px-3 py-1 text-xs rounded ${view === "preview" ? "bg-primary text-primary-foreground" : "bg-muted"}`}
             onClick={() => setView("preview")}
           >
-            Preview
+            Preview Live
           </button>
         </div>
         <div
@@ -123,8 +116,8 @@ export const htmlArtifact = new Artifact<"html">({
             </div>
           )}
           {(view === "split" || view === "preview") && (
-            <div className="border rounded p-2 bg-white overflow-hidden flex flex-col">
-              <HtmlPreview
+            <div className="border rounded p-2 bg-background overflow-hidden flex flex-col">
+              <SandboxPreview
                 content={
                   isCurrentVersion
                     ? content
@@ -137,7 +130,8 @@ export const htmlArtifact = new Artifact<"html">({
       </div>
     );
   },
-  description: "Génération de pages HTML interactives avec aperçu live.",
+  description:
+    "Pages HTML/Tailwind/React interactives avec sandbox live (console, responsive, export).",
   kind: "html",
   onStreamPart: ({ streamPart, setArtifact }: any) => {
     if ((streamPart as any).type === "data-htmlDelta") {

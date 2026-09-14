@@ -1,5 +1,6 @@
 import { tool } from "ai";
 import { z } from "zod";
+import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
 import {
   countMemories,
   createMemory,
@@ -8,7 +9,6 @@ import {
   getGlobalMemories,
   searchMemories,
 } from "@/lib/db/queries";
-import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
 
 type MemoryProps = {
   userId: string;

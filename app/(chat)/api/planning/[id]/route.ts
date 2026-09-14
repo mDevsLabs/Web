@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { errorResponse, logError } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import {
   deleteScheduledMessage,
@@ -31,7 +32,7 @@ export async function GET(
 ) {
   const user = await getMaiUser();
   if (!user) {
-    return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non autorisé." });
   }
 
   const { id } = await params;
@@ -39,10 +40,9 @@ export async function GET(
   const message = await getScheduledMessageById({ id, userId });
 
   if (!message) {
-    return NextResponse.json(
-      { error: "Message planifié introuvable" },
-      { status: 404 }
-    );
+    return errorResponse("not_found", {
+      message: "Message planifié introuvable.",
+    });
   }
 
   return NextResponse.json(message);
@@ -54,7 +54,7 @@ export async function PATCH(
 ) {
   const user = await getMaiUser();
   if (!user) {
-    return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non autorisé." });
   }
 
   const { id } = await params;
@@ -66,10 +66,9 @@ export async function PATCH(
 
     const existing = await getScheduledMessageById({ id, userId });
     if (!existing) {
-      return NextResponse.json(
-        { error: "Message planifié introuvable" },
-        { status: 404 }
-      );
+      return errorResponse("not_found", {
+        message: "Message planifié introuvable.",
+      });
     }
 
     // Une planification terminée, échouée ou annulée qui est modifiée (ou
@@ -78,7 +77,8 @@ export async function PATCH(
     const effectiveStatus =
       parsed.status ??
       (terminalStatuses.includes(existing.status) ? "pending" : undefined);
-    const isReset = effectiveStatus === "pending" && existing.status !== "pending";
+    const isReset =
+      effectiveStatus === "pending" && existing.status !== "pending";
 
     const updated = await updateScheduledMessage({
       agentId: parsed.agentId,
@@ -105,18 +105,25 @@ export async function PATCH(
     });
 
     if (!updated) {
-      return NextResponse.json(
-        { error: "Message planifié introuvable ou échec de mise à jour" },
-        { status: 404 }
-      );
+      return errorResponse("not_found", {
+        message: "Message planifié introuvable ou échec de la mise à jour.",
+      });
     }
 
     return NextResponse.json(updated);
-  } catch (error: any) {
-    return NextResponse.json(
-      { error: error?.message || "Erreur de mise à jour" },
-      { status: 400 }
-    );
+  } catch (error: unknown) {
+    if (error instanceof z.ZodError) {
+      const issues = error.issues
+        .map((e) => `${e.path.join(".") || "champ"}: ${e.message}`)
+        .join(" • ");
+      return errorResponse("invalid_request", {
+        message: `Données invalides : ${issues}`,
+      });
+    }
+    logError("Erreur mise à jour message planifié", error);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de la mise à jour du message planifié.",
+    });
   }
 }
 
@@ -126,7 +133,7 @@ export async function DELETE(
 ) {
   const user = await getMaiUser();
   if (!user) {
-    return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non autorisé." });
   }
 
   const { id } = await params;
@@ -134,10 +141,7 @@ export async function DELETE(
 
   const success = await deleteScheduledMessage({ id, userId });
   if (!success) {
-    return NextResponse.json(
-      { error: "Message introuvable" },
-      { status: 404 }
-    );
+    return errorResponse("not_found", { message: "Message introuvable." });
   }
 
   return NextResponse.json({ success: true });

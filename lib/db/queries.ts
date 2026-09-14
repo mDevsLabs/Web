@@ -33,21 +33,20 @@ import {
   mcpLog,
   mcpServer,
   mcpServerSecret,
-  mcpTemplate,
   message,
+  pluginInstallation,
   project,
-  type Suggestion,
-  skill,
+  type ScheduledMessage,
   type Skill,
-  skillTemplate,
+  type Suggestion,
+  scheduledMessage,
+  skill,
   skillUsage,
   skillVersion,
   stream,
   suggestion,
   userMcpPrefs,
   userMemory,
-  scheduledMessage,
-  type ScheduledMessage,
   vote,
 } from "./schema";
 
@@ -672,7 +671,25 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "lastUsedAt" timestamp`
   );
   await run(
-    client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "templateId" uuid`
+    client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "templateId" text`
+  );
+  // Les modèles de Skills sont identifiés par un slug (et non plus par un uuid
+  // de la table SkillTemplate) : la colonne historique est convertie une fois
+  // pour toutes, puis rendue unique par utilisateur (installation idempotente).
+  await run(
+    client`ALTER TABLE "Skill" DROP CONSTRAINT IF EXISTS "Skill_templateId_fkey"`
+  );
+  await run(
+    client`ALTER TABLE "Skill" ALTER COLUMN "templateId" TYPE text USING "templateId"::text`
+  );
+  await run(
+    client`CREATE UNIQUE INDEX IF NOT EXISTS "Skill_userId_templateId_key" ON "Skill" ("userId", "templateId") WHERE "templateId" IS NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "templateId" text`
+  );
+  await run(
+    client`CREATE UNIQUE INDEX IF NOT EXISTS "McpServer_userId_templateId_key" ON "McpServer" ("userId", "templateId") WHERE "templateId" IS NOT NULL`
   );
   await run(client`CREATE TABLE IF NOT EXISTS "user_mcp_prefs" (
     "userId" text PRIMARY KEY NOT NULL,
@@ -940,6 +957,23 @@ END $$;`
   await run(
     client`CREATE INDEX IF NOT EXISTS "SkillUsage_userId_idx" ON "SkillUsage" USING btree ("userId")`
   );
+
+  await run(client`CREATE TABLE IF NOT EXISTS "PluginInstallation" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "userId" text NOT NULL,
+    "pluginId" varchar(64) NOT NULL,
+    "version" varchar(20) DEFAULT '1.0.0' NOT NULL,
+    "isEnabled" boolean DEFAULT true NOT NULL,
+    "settings" json DEFAULT '{}'::json NOT NULL,
+    "installedAt" timestamp DEFAULT now() NOT NULL,
+    "updatedAt" timestamp DEFAULT now() NOT NULL
+  )`);
+  await run(
+    client`CREATE UNIQUE INDEX IF NOT EXISTS "PluginInstallation_userId_pluginId_key" ON "PluginInstallation" USING btree ("userId","pluginId")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "PluginInstallation_userId_idx" ON "PluginInstallation" USING btree ("userId")`
+  );
 }
 
 let _migrationPromise: Promise<void> | null = null;
@@ -973,8 +1007,16 @@ export function getDb() {
   return _db;
 }
 
-// Helper utilisé dans toutes les fonctions de requêtes
-async function dbReady() {
+// Client Postgres brut, pour les modules voisins (lib/db/users.ts) qui ont
+// besoin de SQL paramétré direct. Toujours appeler après dbReady().
+export function getRawClient() {
+  return _rawClient;
+}
+
+// Helper utilisé dans toutes les fonctions de requêtes. Exporté pour les
+// modules de requêtes voisins (agent-queries.ts), qui doivent bénéficier du
+// même init paresseux et de la même attente des migrations de types.
+export async function dbReady() {
   if (!_db) {
     initDb();
   }
@@ -1000,6 +1042,7 @@ export async function saveChat({
   agentId,
   skillId,
   temperatureOverride,
+  mode,
 }: {
   id: string;
   userId: string;
@@ -1012,6 +1055,7 @@ export async function saveChat({
   agentId?: string | null;
   skillId?: string | null;
   temperatureOverride?: number | null;
+  mode?: "chat" | "agent";
 }) {
   try {
     const db = await dbReady();
@@ -1019,6 +1063,7 @@ export async function saveChat({
       agentId: agentId ?? null,
       customInstructions: customInstructions ?? null,
       id,
+      mode: mode ?? "chat",
       projectId: projectId ?? null,
       skillId: skillId ?? null,
       tags: tags ?? [],
@@ -1878,6 +1923,48 @@ export async function getDocumentById({ id }: { id: string }) {
   }
 }
 
+// Rattache (ou retire) un livrable à un projet. Le filtrage par userId est
+// appliqué ici : un livrable d'un autre utilisateur ne peut jamais être
+// rattaché à un projet, même si l'identifiant est deviné.
+export async function attachDocumentToProject({
+  documentId,
+  projectId,
+  userId,
+}: {
+  documentId: string;
+  projectId: string | null;
+  userId: string;
+}) {
+  try {
+    const db = await dbReady();
+    const rows = await db
+      .update(document)
+      .set({ projectId })
+      .where(and(eq(document.id, documentId), eq(document.userId, userId)))
+      .returning();
+    return rows.at(-1) ?? null;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function getDocumentsByProject({
+  projectId,
+}: {
+  projectId: string;
+}) {
+  try {
+    const db = await dbReady();
+    return await db
+      .select()
+      .from(document)
+      .where(eq(document.projectId, projectId))
+      .orderBy(desc(document.createdAt));
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
 export async function deleteDocumentsByIdAfterTimestamp({
   id,
   timestamp,
@@ -2145,7 +2232,10 @@ export async function recordTokenUsage({
           NOW()
         )
       `;
-    } catch {}
+    } catch (logErr) {
+      // Repli volontaire (l'usage a déjà été débité) — tracé pour audit.
+      console.warn("Insertion mprojects_api_logs impossible:", logErr);
+    }
   } catch (err) {
     console.error("Erreur recordTokenUsage direct en BDD:", err);
   }
@@ -2162,6 +2252,24 @@ export async function getSkillsByUserId({ userId }: { userId: string }) {
     .from(skill)
     .where(eq(skill.userId, userId))
     .orderBy(desc(skill.pinned), desc(skill.updatedAt));
+}
+
+// Skill installé depuis un modèle donné : sert à rendre l'installation d'un
+// modèle idempotente (un seul skill par utilisateur et par slug de modèle).
+export async function getSkillByTemplateId({
+  userId,
+  templateId,
+}: {
+  userId: string;
+  templateId: string;
+}) {
+  const database = await getDb();
+  const [result] = await database
+    .select()
+    .from(skill)
+    .where(and(eq(skill.userId, userId), eq(skill.templateId, templateId)))
+    .limit(1);
+  return result ?? null;
 }
 
 export async function getSkillById({
@@ -2527,6 +2635,26 @@ export async function getMcpServerById({
   return result ?? null;
 }
 
+// Serveur MCP installé depuis un modèle donné : l'installation d'un modèle MCP
+// est idempotente (un seul serveur par utilisateur et par slug de modèle).
+export async function getMcpServerByTemplateId({
+  userId,
+  templateId,
+}: {
+  userId: string;
+  templateId: string;
+}) {
+  const database = await getDb();
+  const [result] = await database
+    .select()
+    .from(mcpServer)
+    .where(
+      and(eq(mcpServer.userId, userId), eq(mcpServer.templateId, templateId))
+    )
+    .limit(1);
+  return result ?? null;
+}
+
 export async function createMcpServer(data: {
   userId: string;
   name: string;
@@ -2549,6 +2677,8 @@ export async function createMcpServer(data: {
   >;
   timeoutMs?: number;
   rateLimitPerMin?: number;
+  /** Slug du modèle MCP d'origine (voir lib/mcp-templates). */
+  templateId?: string | null;
 }) {
   const database = await getDb();
   const [created] = await database
@@ -2566,6 +2696,7 @@ export async function createMcpServer(data: {
       name: data.name,
       rateLimitPerMin: data.rateLimitPerMin ?? 60,
       requireApproval: data.requireApproval ?? "write_only",
+      templateId: data.templateId ?? null,
       timeoutMs: data.timeoutMs ?? 15_000,
       toolOverrides: (data.toolOverrides as any) ?? {},
       toolsCache: (data.toolsCache as any) ?? [],
@@ -2819,33 +2950,11 @@ export async function updateMcpServerSync({
   return updated ?? null;
 }
 
-export async function getSkillTemplates() {
-  const database = await getDb();
-  return database
-    .select()
-    .from(skillTemplate)
-    .where(eq(skillTemplate.isPublic, true))
-    .orderBy(desc(skillTemplate.createdAt));
-}
-
-export async function getMcpTemplates() {
-  const database = await getDb();
-  return database
-    .select()
-    .from(mcpTemplate)
-    .where(eq(mcpTemplate.isPublic, true))
-    .orderBy(desc(mcpTemplate.createdAt));
-}
-
-export async function getMcpTemplateById(id: string) {
-  const database = await getDb();
-  const [result] = await database
-    .select()
-    .from(mcpTemplate)
-    .where(eq(mcpTemplate.id, id))
-    .limit(1);
-  return result ?? null;
-}
+// Les catalogues de modèles (Skills / MCP) ne sont plus lus en base : la
+// source de vérité est statique et versionnée (lib/skill-templates,
+// lib/mcp-templates). Les tables SkillTemplate / McpTemplate sont conservées
+// pour ne pas casser les environnements existants mais ne sont plus alimentées
+// ni interrogées ; aucune requête concurrente des catalogues ne subsiste.
 
 // ==========================================
 // MCP SECRETS (chiffrés) — lib/mcp/encryption
@@ -3166,8 +3275,10 @@ export async function getUserPreferences(userId: string) {
         defaultAudioSpeed: row.defaultAudioSpeed ?? 1.0,
         defaultAudioVoice: row.defaultAudioVoice || "flux-alexis-en",
         defaultChatModel: row.defaultChatModel || null,
-        defaultChatVisibility: (row.defaultChatVisibility as "private" | "public") || "private",
-        defaultImageModel: row.defaultImageModel || "black-forest-labs/flux-schnell",
+        defaultChatVisibility:
+          (row.defaultChatVisibility as "private" | "public") || "private",
+        defaultImageModel:
+          row.defaultImageModel || "black-forest-labs/flux-schnell",
         defaultImageSize: row.defaultImageSize || "1024x1024",
         enabled: Boolean(row.customInstructionsEnabled),
         ghostMemoryEnabled: Boolean(row.ghostMemoryEnabled),
@@ -3232,13 +3343,16 @@ export async function upsertUserPreferences(
       .values({
         customInstructions: data.customInstructions ?? "",
         customInstructionsEnabled: data.enabled ?? false,
-        defaultAgentId: data.defaultAgentId ? (data.defaultAgentId as any) : null,
+        defaultAgentId: data.defaultAgentId
+          ? (data.defaultAgentId as any)
+          : null,
         defaultAudioModel: data.defaultAudioModel ?? "deepgram/flux-tts:free",
         defaultAudioSpeed: data.defaultAudioSpeed ?? 1.0,
         defaultAudioVoice: data.defaultAudioVoice ?? "flux-alexis-en",
         defaultChatModel: data.defaultChatModel ?? null,
         defaultChatVisibility: data.defaultChatVisibility ?? "private",
-        defaultImageModel: data.defaultImageModel ?? "black-forest-labs/flux-schnell",
+        defaultImageModel:
+          data.defaultImageModel ?? "black-forest-labs/flux-schnell",
         defaultImageSize: data.defaultImageSize ?? "1024x1024",
         defaultTemperature: data.temperature ?? 0.7,
         defaultTopP: data.topP ?? 0.9,
@@ -3253,20 +3367,33 @@ export async function upsertUserPreferences(
   const updatePayload: Record<string, any> = {
     updatedAt: new Date(),
   };
-  if (data.customInstructions !== undefined) updatePayload.customInstructions = data.customInstructions;
-  if (data.enabled !== undefined) updatePayload.customInstructionsEnabled = data.enabled;
-  if (data.temperature !== undefined) updatePayload.defaultTemperature = data.temperature;
+  if (data.customInstructions !== undefined)
+    updatePayload.customInstructions = data.customInstructions;
+  if (data.enabled !== undefined)
+    updatePayload.customInstructionsEnabled = data.enabled;
+  if (data.temperature !== undefined)
+    updatePayload.defaultTemperature = data.temperature;
   if (data.topP !== undefined) updatePayload.defaultTopP = data.topP;
-  if (data.defaultAgentId !== undefined) updatePayload.defaultAgentId = data.defaultAgentId;
-  if (data.defaultChatModel !== undefined) updatePayload.defaultChatModel = data.defaultChatModel;
-  if (data.defaultChatVisibility !== undefined) updatePayload.defaultChatVisibility = data.defaultChatVisibility;
-  if (data.defaultImageModel !== undefined) updatePayload.defaultImageModel = data.defaultImageModel;
-  if (data.defaultImageSize !== undefined) updatePayload.defaultImageSize = data.defaultImageSize;
-  if (data.defaultAudioModel !== undefined) updatePayload.defaultAudioModel = data.defaultAudioModel;
-  if (data.defaultAudioVoice !== undefined) updatePayload.defaultAudioVoice = data.defaultAudioVoice;
-  if (data.defaultAudioSpeed !== undefined) updatePayload.defaultAudioSpeed = data.defaultAudioSpeed;
-  if (data.ghostMemoryEnabled !== undefined) updatePayload.ghostMemoryEnabled = data.ghostMemoryEnabled;
-  if (data.showAgentChatIcons !== undefined) updatePayload.showAgentChatIcons = data.showAgentChatIcons;
+  if (data.defaultAgentId !== undefined)
+    updatePayload.defaultAgentId = data.defaultAgentId;
+  if (data.defaultChatModel !== undefined)
+    updatePayload.defaultChatModel = data.defaultChatModel;
+  if (data.defaultChatVisibility !== undefined)
+    updatePayload.defaultChatVisibility = data.defaultChatVisibility;
+  if (data.defaultImageModel !== undefined)
+    updatePayload.defaultImageModel = data.defaultImageModel;
+  if (data.defaultImageSize !== undefined)
+    updatePayload.defaultImageSize = data.defaultImageSize;
+  if (data.defaultAudioModel !== undefined)
+    updatePayload.defaultAudioModel = data.defaultAudioModel;
+  if (data.defaultAudioVoice !== undefined)
+    updatePayload.defaultAudioVoice = data.defaultAudioVoice;
+  if (data.defaultAudioSpeed !== undefined)
+    updatePayload.defaultAudioSpeed = data.defaultAudioSpeed;
+  if (data.ghostMemoryEnabled !== undefined)
+    updatePayload.ghostMemoryEnabled = data.ghostMemoryEnabled;
+  if (data.showAgentChatIcons !== undefined)
+    updatePayload.showAgentChatIcons = data.showAgentChatIcons;
 
   const [updated] = await db
     .update(userPreferences)
@@ -3286,7 +3413,12 @@ export async function createNotification(data: {
     | "mcp_access_request"
     | "news"
     | "planning_task_completed"
-    | "quota_warning";
+    | "quota_warning"
+    // Notifications Agent (types autorisés par la contrainte 0017).
+    | "agent_approval_required"
+    | "agent_run_failed"
+    | "agent_run_finished"
+    | "agent_user_input_required";
   title: string;
   body?: string | null;
   link?: string | null;
@@ -3311,7 +3443,11 @@ export async function createNotification(data: {
     if (gate[data.type] === false) {
       return null;
     }
-  } catch {}
+  } catch (prefsErr) {
+    // Repli volontaire : préférences illisibles → notification envoyée par
+    // défaut, mais l'incident est tracé.
+    console.warn("Préférences de notification illisibles:", prefsErr);
+  }
   const [created] = await db
     .insert(notification)
     .values({
@@ -3728,6 +3864,42 @@ export async function getGhostMemoryEnabled(userId: string): Promise<boolean> {
   }
 }
 
+export async function getUserModelPreferences(userId: string): Promise<{
+  customInstructions: string | null;
+  customInstructionsEnabled: boolean;
+  defaultTemperature: number | null;
+  defaultTopP: number | null;
+}> {
+  const empty = {
+    customInstructions: null,
+    customInstructionsEnabled: false,
+    defaultTemperature: null,
+    defaultTopP: null,
+  };
+  try {
+    await dbReady();
+    if (!_rawClient) {
+      return empty;
+    }
+    const rows = await _rawClient`
+      SELECT custom_instructions, custom_instructions_enabled, default_temperature, default_top_p FROM users
+      WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text
+      LIMIT 1`;
+    const row = (rows as any[])[0];
+    if (!row) {
+      return empty;
+    }
+    return {
+      customInstructions: row.custom_instructions || null,
+      customInstructionsEnabled: Boolean(row.custom_instructions_enabled),
+      defaultTemperature: row.default_temperature ?? null,
+      defaultTopP: row.default_top_p ?? null,
+    };
+  } catch {
+    return empty;
+  }
+}
+
 export async function createMemory({
   userId,
   content,
@@ -4117,7 +4289,10 @@ export async function getAgentStatsByUserId({ userId }: { userId: string }) {
     .where(eq(chat.userId, userId))
     .groupBy(chat.agentId);
 
-  const countsMap = new Map<string, { count: number; lastUsedAt: string | null }>();
+  const countsMap = new Map<
+    string,
+    { count: number; lastUsedAt: string | null }
+  >();
   let totalStandardChats = 0;
   let totalAgentChats = 0;
 
@@ -4261,29 +4436,35 @@ export async function updateScheduledMessage(params: {
 
   if (updates.title !== undefined) updateData.title = updates.title;
   if (updates.prompt !== undefined) updateData.prompt = updates.prompt;
-  if (updates.scheduledAt !== undefined) updateData.scheduledAt = updates.scheduledAt;
-  if (updates.createMode !== undefined) updateData.createMode = updates.createMode;
+  if (updates.scheduledAt !== undefined)
+    updateData.scheduledAt = updates.scheduledAt;
+  if (updates.createMode !== undefined)
+    updateData.createMode = updates.createMode;
   if (updates.chatId !== undefined) updateData.chatId = updates.chatId;
   if (updates.agentId !== undefined) updateData.agentId = updates.agentId;
   if (updates.modelId !== undefined) updateData.modelId = updates.modelId;
-  if (updates.enabledTools !== undefined) updateData.enabledTools = updates.enabledTools;
-  if (updates.cloudFileUrls !== undefined) updateData.cloudFileUrls = updates.cloudFileUrls;
-  if (updates.customInstructions !== undefined) updateData.customInstructions = updates.customInstructions;
-  if (updates.temperature !== undefined) updateData.temperature = updates.temperature;
-  if (updates.recurrence !== undefined) updateData.recurrence = updates.recurrence;
-  if (updates.executedAt !== undefined) updateData.executedAt = updates.executedAt;
+  if (updates.enabledTools !== undefined)
+    updateData.enabledTools = updates.enabledTools;
+  if (updates.cloudFileUrls !== undefined)
+    updateData.cloudFileUrls = updates.cloudFileUrls;
+  if (updates.customInstructions !== undefined)
+    updateData.customInstructions = updates.customInstructions;
+  if (updates.temperature !== undefined)
+    updateData.temperature = updates.temperature;
+  if (updates.recurrence !== undefined)
+    updateData.recurrence = updates.recurrence;
+  if (updates.executedAt !== undefined)
+    updateData.executedAt = updates.executedAt;
   if (updates.lastError !== undefined) updateData.lastError = updates.lastError;
-  if (updates.resultChatId !== undefined) updateData.resultChatId = updates.resultChatId;
+  if (updates.resultChatId !== undefined)
+    updateData.resultChatId = updates.resultChatId;
   if (updates.status !== undefined) updateData.status = updates.status;
 
   const [updated] = await database
     .update(scheduledMessage)
     .set(updateData)
     .where(
-      and(
-        eq(scheduledMessage.id, id),
-        eq(scheduledMessage.userId, userId)
-      )
+      and(eq(scheduledMessage.id, id), eq(scheduledMessage.userId, userId))
     )
     .returning();
   return updated ?? null;
@@ -4359,13 +4540,92 @@ export async function setScheduledMessageStatus(params: {
   await database
     .update(scheduledMessage)
     .set({
-      executedAt: params.executedAt !== undefined ? params.executedAt : undefined,
-      lastError: params.lastError !== undefined ? params.lastError : undefined,
-      resultChatId: params.resultChatId !== undefined ? params.resultChatId : undefined,
+      executedAt:
+        params.executedAt === undefined ? undefined : params.executedAt,
+      lastError: params.lastError === undefined ? undefined : params.lastError,
+      resultChatId:
+        params.resultChatId === undefined ? undefined : params.resultChatId,
       status: params.status,
       updatedAt: new Date(),
     })
     .where(eq(scheduledMessage.id, params.id));
 }
 
+// ─────────────────────────────────────────────────────────────
+// Plugins installés par utilisateur
+// ─────────────────────────────────────────────────────────────
 
+export async function getPluginInstallationsByUserId(params: {
+  userId: string;
+}) {
+  const database = await getDb();
+  const rows = await database
+    .select()
+    .from(pluginInstallation)
+    .where(eq(pluginInstallation.userId, params.userId))
+    .orderBy(desc(pluginInstallation.installedAt));
+  return rows;
+}
+
+export async function installPlugin(params: {
+  userId: string;
+  pluginId: string;
+  version: string;
+}) {
+  const database = await getDb();
+  const now = new Date();
+  const [row] = await database
+    .insert(pluginInstallation)
+    .values({
+      installedAt: now,
+      isEnabled: true,
+      pluginId: params.pluginId,
+      updatedAt: now,
+      userId: params.userId,
+      version: params.version,
+    })
+    .onConflictDoUpdate({
+      set: {
+        isEnabled: true,
+        updatedAt: now,
+        version: params.version,
+      },
+      target: [pluginInstallation.userId, pluginInstallation.pluginId],
+    })
+    .returning();
+  return row;
+}
+
+export async function setPluginEnabled(params: {
+  userId: string;
+  pluginId: string;
+  isEnabled: boolean;
+}) {
+  const database = await getDb();
+  const [row] = await database
+    .update(pluginInstallation)
+    .set({ isEnabled: params.isEnabled, updatedAt: new Date() })
+    .where(
+      and(
+        eq(pluginInstallation.userId, params.userId),
+        eq(pluginInstallation.pluginId, params.pluginId)
+      )
+    )
+    .returning();
+  return row;
+}
+
+export async function uninstallPlugin(params: {
+  userId: string;
+  pluginId: string;
+}) {
+  const database = await getDb();
+  await database
+    .delete(pluginInstallation)
+    .where(
+      and(
+        eq(pluginInstallation.userId, params.userId),
+        eq(pluginInstallation.pluginId, params.pluginId)
+      )
+    );
+}

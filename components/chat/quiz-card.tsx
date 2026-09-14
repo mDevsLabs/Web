@@ -51,7 +51,9 @@ export function QuizCard({ args, output }: QuizCardProps) {
   const difficulty = quizData?.difficulty;
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number[]>>({});
+  const [selectedAnswers, setSelectedAnswers] = useState<
+    Record<number, number[]>
+  >({});
   const [isAnswered, setIsAnswered] = useState<Record<number, boolean>>({});
   const [isFinished, setIsFinished] = useState(false);
   const [showRecap, setShowRecap] = useState(false);
@@ -200,7 +202,103 @@ export function QuizCard({ args, output }: QuizCardProps) {
       </div>
 
       {/* Contenu principal du Quiz */}
-      {!isFinished ? (
+      {isFinished ? (
+        /* Écran récapitulatif de fin */
+        <div className="space-y-5 p-6 text-center sm:p-8">
+          <div className="mx-auto flex size-16 items-center justify-center rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white shadow-lg">
+            <AwardIcon className="size-8" />
+          </div>
+
+          <div>
+            <h4 className="font-bold text-xl text-foreground">Quiz terminé</h4>
+            <p className="mt-1 text-xs text-muted-foreground">
+              {percentage >= 80
+                ? "Impressionnant ! Vous maîtrisez parfaitement le sujet !"
+                : percentage >= 50
+                  ? "Beau travail ! Vos bases sont solides."
+                  : "Ne baissez pas les bras, réessayez pour vous perfectionner !"}
+            </p>
+          </div>
+
+          <div className="mx-auto flex max-w-[200px] flex-col items-center justify-center rounded-2xl border border-border/60 bg-muted/30 p-4">
+            <span className="text-3xl font-black text-foreground">
+              {totalScore} / {questions.length}
+            </span>
+            <span className="mt-1 font-semibold text-xs text-primary">
+              {percentage}% de réussite
+            </span>
+            <span className="mt-1 font-mono text-[11px] text-muted-foreground">
+              Temps : {formatTime(elapsedSeconds)}
+            </span>
+          </div>
+
+          {/* Récapitulatif détaillé des réponses */}
+          {showRecap && (
+            <div className="mx-auto w-full max-w-md space-y-2 text-left">
+              {questions.map((q, idx) => {
+                const userSel = selectedAnswers[idx] || [];
+                const isCorrect =
+                  userSel.length === q.correctAnswers.length &&
+                  userSel.every((val) => q.correctAnswers.includes(val));
+                return (
+                  <div
+                    className={cn(
+                      "rounded-xl border p-3 text-xs",
+                      isCorrect
+                        ? "border-emerald-500/30 bg-emerald-500/5"
+                        : "border-destructive/30 bg-destructive/5"
+                    )}
+                    key={q.id || idx}
+                  >
+                    <div className="mb-1 flex items-start gap-1.5 font-semibold">
+                      {isCorrect ? (
+                        <CheckCircle2Icon className="mt-0.5 size-3.5 shrink-0 text-emerald-600 dark:text-emerald-400" />
+                      ) : (
+                        <XCircleIcon className="mt-0.5 size-3.5 shrink-0 text-destructive" />
+                      )}
+                      <span>
+                        {idx + 1}. {q.question}
+                      </span>
+                    </div>
+                    {!isCorrect && (
+                      <div className="space-y-0.5 pl-5 text-muted-foreground">
+                        <p>
+                          Votre réponse :{" "}
+                          {userSel.length > 0
+                            ? userSel.map((i) => q.options[i]).join(", ")
+                            : "Aucune réponse"}
+                        </p>
+                        <p>
+                          Bonne réponse :{" "}
+                          {q.correctAnswers.map((i) => q.options[i]).join(", ")}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
+            <Button
+              className="gap-2 shadow-xs"
+              onClick={() => setShowRecap((prev) => !prev)}
+              variant="outline"
+            >
+              {showRecap ? "Masquer le détail" : "Voir le détail des réponses"}
+            </Button>
+            <Button
+              className="gap-2 shadow-xs"
+              onClick={handleRestart}
+              variant="outline"
+            >
+              <RotateCcwIcon className="size-4" />
+              <span>Rejouer ce Quiz</span>
+            </Button>
+          </div>
+        </div>
+      ) : (
         <div className="space-y-4 p-4 sm:p-5">
           {/* Question */}
           <div className="space-y-1">
@@ -296,7 +394,8 @@ export function QuizCard({ args, output }: QuizCardProps) {
                 )}
               >
                 <div className="font-semibold mb-1 flex items-center gap-1.5">
-                  {currentSelections.length === currentQ.correctAnswers.length &&
+                  {currentSelections.length ===
+                    currentQ.correctAnswers.length &&
                   currentSelections.every((val) =>
                     currentQ.correctAnswers.includes(val)
                   ) ? (
@@ -339,104 +438,6 @@ export function QuizCard({ args, output }: QuizCardProps) {
               </div>
             </div>
           )}
-        </div>
-      ) : (
-        /* Écran récapitulatif de fin */
-        <div className="space-y-5 p-6 text-center sm:p-8">
-          <div className="mx-auto flex size-16 items-center justify-center rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white shadow-lg">
-            <AwardIcon className="size-8" />
-          </div>
-
-          <div>
-            <h4 className="font-bold text-xl text-foreground">
-              Quiz terminé
-            </h4>
-            <p className="mt-1 text-xs text-muted-foreground">
-              {percentage >= 80
-                ? "Impressionnant ! Vous maîtrisez parfaitement le sujet !"
-                : percentage >= 50
-                ? "Beau travail ! Vos bases sont solides."
-                : "Ne baissez pas les bras, réessayez pour vous perfectionner !"}
-            </p>
-          </div>
-
-          <div className="mx-auto flex max-w-[200px] flex-col items-center justify-center rounded-2xl border border-border/60 bg-muted/30 p-4">
-            <span className="text-3xl font-black text-foreground">
-              {totalScore} / {questions.length}
-            </span>
-            <span className="mt-1 font-semibold text-xs text-primary">
-              {percentage}% de réussite
-            </span>
-            <span className="mt-1 font-mono text-[11px] text-muted-foreground">
-              Temps : {formatTime(elapsedSeconds)}
-            </span>
-          </div>
-
-          {/* Récapitulatif détaillé des réponses */}
-          {showRecap && (
-            <div className="mx-auto w-full max-w-md space-y-2 text-left">
-              {questions.map((q, idx) => {
-                const userSel = selectedAnswers[idx] || [];
-                const isCorrect =
-                  userSel.length === q.correctAnswers.length &&
-                  userSel.every((val) => q.correctAnswers.includes(val));
-                return (
-                  <div
-                    className={cn(
-                      "rounded-xl border p-3 text-xs",
-                      isCorrect
-                        ? "border-emerald-500/30 bg-emerald-500/5"
-                        : "border-destructive/30 bg-destructive/5"
-                    )}
-                    key={q.id || idx}
-                  >
-                    <div className="mb-1 flex items-start gap-1.5 font-semibold">
-                      {isCorrect ? (
-                        <CheckCircle2Icon className="mt-0.5 size-3.5 shrink-0 text-emerald-600 dark:text-emerald-400" />
-                      ) : (
-                        <XCircleIcon className="mt-0.5 size-3.5 shrink-0 text-destructive" />
-                      )}
-                      <span>
-                        {idx + 1}. {q.question}
-                      </span>
-                    </div>
-                    {!isCorrect && (
-                      <div className="space-y-0.5 pl-5 text-muted-foreground">
-                        <p>
-                          Votre réponse :{" "}
-                          {userSel.length > 0
-                            ? userSel.map((i) => q.options[i]).join(", ")
-                            : "Aucune réponse"}
-                        </p>
-                        <p>
-                          Bonne réponse :{" "}
-                          {q.correctAnswers.map((i) => q.options[i]).join(", ")}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          )}
-
-          <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
-            <Button
-              className="gap-2 shadow-xs"
-              onClick={() => setShowRecap((prev) => !prev)}
-              variant="outline"
-            >
-              {showRecap ? "Masquer le détail" : "Voir le détail des réponses"}
-            </Button>
-            <Button
-              className="gap-2 shadow-xs"
-              onClick={handleRestart}
-              variant="outline"
-            >
-              <RotateCcwIcon className="size-4" />
-              <span>Rejouer ce Quiz</span>
-            </Button>
-          </div>
         </div>
       )}
     </div>

@@ -1,4 +1,9 @@
 import { z } from "zod";
+import {
+  errorResponse,
+  logError,
+  zodIssuesMessage,
+} from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
 import { commandPayloadSchema } from "@/lib/commands/types";
 import {
@@ -61,11 +66,21 @@ export async function POST(request: Request) {
       userId,
     });
     return Response.json(created, { status: 201 });
-  } catch (err: any) {
-    const message = err.message ?? "Données invalides";
-    const status = /duplicate|unique/i.test(String(err.cause ?? message))
-      ? 409
-      : 400;
-    return Response.json({ error: message }, { status });
+  } catch (err: unknown) {
+    if (err instanceof z.ZodError) {
+      return errorResponse("invalid_request", {
+        message: zodIssuesMessage(err),
+      });
+    }
+    const message = String((err as any)?.message ?? "");
+    if (/duplicate|unique/i.test(String((err as any)?.cause ?? message))) {
+      return errorResponse("conflict", {
+        message: "Cette commande existe déjà (déclencheur ou nom identique).",
+      });
+    }
+    logError("Erreur création commande", err);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de la création de la commande.",
+    });
   }
 }

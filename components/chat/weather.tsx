@@ -80,7 +80,7 @@ const CloudIcon = ({ size = 24 }: { size?: number }) => (
   </svg>
 );
 
-type WeatherAtLocation = {
+export type WeatherAtLocation = {
   latitude: number;
   longitude: number;
   generationtime_ms: number;
@@ -118,6 +118,34 @@ type WeatherAtLocation = {
     sunset: string[];
   };
 };
+
+// Le plugin météo peut renvoyer une erreur structurée (ville introuvable,
+// service indisponible) : la carte doit être capable de distinguer les deux
+// formes au lieu de supposer un objet météo complet.
+export function isWeatherErrorOutput(
+  value: unknown
+): value is { error: string } {
+  return Boolean(
+    value &&
+      typeof value === "object" &&
+      typeof (value as { error?: unknown }).error === "string"
+  );
+}
+
+export function isWeatherAtLocation(
+  value: unknown
+): value is WeatherAtLocation {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+  const candidate = value as { current?: unknown; daily?: unknown };
+  return (
+    typeof candidate.current === "object" &&
+    candidate.current !== null &&
+    typeof candidate.daily === "object" &&
+    candidate.daily !== null
+  );
+}
 
 const SAMPLE = {
   current: { interval: 900, temperature_2m: 29.3, time: "2024-10-07T19:30" },

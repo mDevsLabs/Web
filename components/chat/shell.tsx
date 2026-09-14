@@ -1,7 +1,10 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { toast } from "sonner";
+import { AgentShell } from "@/components/agent/agent-shell";
+import { AgentUpgradeDialog } from "@/components/agent/agent-upgrade-dialog";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,6 +16,8 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { useActiveChat } from "@/hooks/use-active-chat";
+import { useAgentFlags } from "@/hooks/use-agent-flags";
+import { useAgentMode } from "@/hooks/use-agent-mode";
 import {
   initialArtifactData,
   useArtifact,
@@ -23,13 +28,22 @@ import { cn } from "@/lib/utils";
 import { Artifact } from "./artifact";
 import { ChatHeader } from "./chat-header";
 import { DataStreamHandler } from "./data-stream-handler";
+import { HomeModeSwitcher } from "./home-mode-switcher";
 import { submitEditedMessage } from "./message-editor";
 import { Messages } from "./messages";
 import { MultimodalInput } from "./multimodal-input";
 
 export function ChatShell() {
   const pathname = usePathname();
+  const router = useRouter();
   const isChatRoute = pathname === "/" || pathname?.startsWith("/chat");
+  const { mode, setMode } = useAgentMode();
+  const { flags, tier } = useAgentFlags();
+  const [agentUpgradeOpen, setAgentUpgradeOpen] = useState(false);
+
+  // Le sélecteur est visible pour tout le monde, mais un utilisateur Free ne
+  // peut pas activer Agent : la garde réelle reste côté serveur (plan_required),
+  // ceci n'est que l'explication affichée.
 
   const {
     chatId,
@@ -118,6 +132,40 @@ export function ChatShell() {
     return null;
   }
 
+  const agentAvailable = flags["agent.enabled"] && tier !== "free";
+  const effectiveMode = agentAvailable ? mode : "chat";
+
+  const handleModeChange = (next: "chat" | "agent") => {
+    if (next === "agent") {
+      setMode("agent");
+      if (pathname !== "/") {
+        router.push("/");
+      }
+      return;
+    }
+    setMode("chat");
+  };
+
+  const handleBlockedAgentSelect = () => {
+    if (!flags["agent.enabled"]) {
+      toast.error("Agent est momentanément indisponible.");
+      return;
+    }
+    setAgentUpgradeOpen(true);
+  };
+
+  if (effectiveMode === "agent") {
+    return (
+      <>
+        <AgentShell />
+        <AgentUpgradeDialog
+          onOpenChange={setAgentUpgradeOpen}
+          open={agentUpgradeOpen}
+        />
+      </>
+    );
+  }
+
   return (
     <>
       <div className="flex h-[100dvh] w-full flex-row overflow-hidden supports-[height:100dvh]:h-[100dvh]">
@@ -135,6 +183,10 @@ export function ChatShell() {
           />
 
           <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden bg-background md:rounded-tl-[12px] md:border-t md:border-l md:border-border/40">
+            {/* Le sélecteur Chat | Agent n'est plus une rangée autonome : il
+                est rendu par la pile d'accueil (via `modeSwitcher`), à la
+                même place que sur l'accueil Agent, et seulement quand
+                l'accueil est affiché (aucune conversation). */}
             <Messages
               addToolApprovalResponse={addToolApprovalResponse}
               chatId={chatId}
@@ -142,6 +194,15 @@ export function ChatShell() {
               isLoading={isLoading}
               isReadonly={isReadonly}
               messages={messages}
+              modeSwitcher={
+                messages.length === 0 && !isLoading ? (
+                  <HomeModeSwitcher
+                    mode={effectiveMode}
+                    onBlockedAgentSelect={handleBlockedAgentSelect}
+                    onModeChange={handleModeChange}
+                  />
+                ) : null
+              }
               onEditMessage={handleEditMessage}
               regenerate={regenerate}
               selectedModelId={currentModelId}
@@ -150,7 +211,10 @@ export function ChatShell() {
               votes={votes}
             />
 
-            <div className="sticky bottom-0 z-30 mx-auto flex w-full max-w-4xl gap-2 border-t border-border/10 bg-background px-2 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-2 md:px-4 md:pb-[calc(env(safe-area-inset-bottom)+1rem)] md:pt-3 supports-[padding:env(safe-area-inset-bottom)]:pb-[calc(env(safe-area-inset-bottom)+0.75rem)]">
+            {/* Barre de message collante en bas : mêmes largeur (max-w-3xl),
+                paddings et bordure supérieure que la barre d'Agent, pour que
+                l'accueil des deux modes partage le même gabarit. */}
+            <div className="sticky bottom-0 z-30 mx-auto flex w-full max-w-3xl gap-2 border-t border-border/10 bg-background px-2 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-2 md:px-4 md:pb-[calc(env(safe-area-inset-bottom)+1rem)] md:pt-3 supports-[padding:env(safe-area-inset-bottom)]:pb-[calc(env(safe-area-inset-bottom)+0.75rem)]">
               {!isReadonly && (
                 <MultimodalInput
                   attachments={attachments}
@@ -198,6 +262,11 @@ export function ChatShell() {
       </div>
 
       <DataStreamHandler />
+
+      <AgentUpgradeDialog
+        onOpenChange={setAgentUpgradeOpen}
+        open={agentUpgradeOpen}
+      />
 
       <AlertDialog
         onOpenChange={setShowCreditCardAlert}

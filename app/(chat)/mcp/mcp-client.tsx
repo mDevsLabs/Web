@@ -1,4 +1,5 @@
 "use client";
+import type { LucideIcon } from "lucide-react";
 import {
   ActivityIcon,
   AlertCircleIcon,
@@ -7,8 +8,12 @@ import {
   CircleIcon,
   CopyIcon,
   CpuIcon,
+  CreditCardIcon,
+  DatabaseIcon,
   DownloadIcon,
   Edit2Icon,
+  FileTextIcon,
+  GithubIcon,
   KeyIcon,
   Loader2Icon,
   MoreVerticalIcon,
@@ -19,12 +24,14 @@ import {
   SettingsIcon,
   ShieldAlertIcon,
   ShieldCheckIcon,
+  StoreIcon,
   TerminalIcon,
   Trash2Icon,
   WrenchIcon,
   ZapIcon,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
@@ -58,51 +65,106 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { McpLog, McpServer } from "@/lib/db/schema";
-import { cn } from "@/lib/utils";
+import { matchesQuery, sortByRelevance } from "@/lib/tools/search";
+import { TOOLS_ACTIONS_ID } from "@/lib/tools/tabs";
+import { cn, fetcher } from "@/lib/utils";
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
-const PRESET_TEMPLATES = [
+// Catalogue MCP servi par /api/mcp/templates : il provient du catalogue statique
+// (lib/mcp-templates), source de vérité unique. Aucune liste locale de modèles
+// n'est maintenue ici, sinon elle diverge (c'était le cas des presets et du
+// Store, dont 5 connecteurs sur 6 ne résolvaient aucun template).
+type McpTemplateRow = {
+  activation: "ready" | "requires_oauth_flow";
+  args: string;
+  authType: string;
+  command: string;
+  description: string;
+  icon: string;
+  id: string;
+  minTier: string;
+  name: string;
+  readOnly: boolean;
+  requireApproval: string;
+  tags: string[];
+  transport: string;
+  url: string;
+};
+
+// Visuel des connecteurs mis en avant dans le Store : appariement par
+// identifiant de catalogue (et non par nom, qui n'était pas stable).
+const STORE_CONNECTORS: ReadonlyArray<{
+  color: string;
+  highlight: string;
+  icon: LucideIcon;
+  templateId: string;
+  tint: string;
+}> = [
   {
-    authType: "bearer",
-    description: "Interagir avec les dépôts, issues, pull requests et commits",
-    icon: "github",
-    name: "GitHub MCP",
-    requireApproval: "write_only",
-    transport: "sse",
-    url: "https://api.githubcopilot.com/mcp/",
+    color: "text-foreground dark:text-foreground",
+    highlight: "Dépôts, issues & PR",
+    icon: GithubIcon,
+    templateId: "github",
+    tint: "bg-foreground/10",
   },
   {
-    authType: "none",
-    command: "npx",
-    description: "Interroger et manipuler des données en toute sécurité",
-    icon: "database",
-    name: "Base de données",
-    requireApproval: "write_only",
-    transport: "stdio",
+    color: "text-violet-600 dark:text-violet-400",
+    highlight: "Docs & bases Notion",
+    icon: FileTextIcon,
+    templateId: "notion",
+    tint: "bg-violet-500/10",
   },
   {
-    authType: "none",
-    command: "npx",
-    description:
-      "Lecture et écriture sécurisée dans un répertoire de fichiers local",
-    icon: "folder",
-    name: "Filesystem Local",
-    requireApproval: "write_only",
-    transport: "stdio",
+    color: "text-orange-600 dark:text-orange-400",
+    highlight: "Recherche web privée",
+    icon: SearchIcon,
+    templateId: "brave-search",
+    tint: "bg-orange-500/10",
   },
   {
-    authType: "none",
-    description:
-      "Effectuer des requêtes HTTP GET et POST vers des API externes",
-    icon: "globe",
-    name: "Fetch Web Server",
-    requireApproval: "always_allow",
-    transport: "http",
-    url: "https://mcp-fetch.example.com/api",
+    color: "text-cyan-600 dark:text-cyan-400",
+    highlight: "PostgreSQL hébergé",
+    icon: DatabaseIcon,
+    templateId: "supabase",
+    tint: "bg-cyan-500/10",
+  },
+  {
+    color: "text-sky-600 dark:text-sky-400",
+    highlight: "Paiements & factures",
+    icon: CreditCardIcon,
+    templateId: "stripe",
+    tint: "bg-sky-500/10",
   },
 ];
-export default function McpClient() {
+
+// Garde-fous de typage pour les valeurs libres du catalogue (aucun `any`).
+const MCP_TRANSPORTS = ["sse", "http", "stdio", "websocket"] as const;
+const MCP_AUTH_TYPES = [
+  "none",
+  "bearer",
+  "basic",
+  "oauth2",
+  "custom_headers",
+] as const;
+const MCP_APPROVALS = ["always_allow", "ask_permission", "write_only"] as const;
+
+function pickOption<T extends readonly string[]>(
+  options: T,
+  value: unknown,
+  fallback: T[number]
+): T[number] {
+  return typeof value === "string" && options.includes(value as T[number])
+    ? (value as T[number])
+    : fallback;
+}
+export default function McpClient({
+  embedded = false,
+  searchQuery = "",
+}: {
+  embedded?: boolean;
+  searchQuery?: string;
+} = {}) {
   const {
     data,
     isLoading,
@@ -112,21 +174,46 @@ export default function McpClient() {
     stats: { servers: number; totalCalls: number };
   }>("/api/mcp", fetcher);
   const [activeTab, setActiveTab] = useState<
-    "servers" | "library" | "tutorial" | "logs" | "settings"
-  >("servers");
+    "store" | "servers" | "library" | "tutorial" | "logs" | "settings"
+  >("store");
   const { data: logs = [], mutate: mutateLogs } = useSWR<McpLog[]>(
     "/api/mcp/logs",
     fetcher,
-    { refreshInterval: activeTab === "logs" ? 10_000 : 0, revalidateOnFocus: false }
+    {
+      refreshInterval: activeTab === "logs" ? 10_000 : 0,
+      revalidateOnFocus: false,
+    }
   );
-  const { data: tplData, mutate: mutateTpl } = useSWR<{ templates: any[] }>(
-    "/api/mcp/templates",
-    fetcher
+  const { data: tplData, mutate: mutateTpl } = useSWR<{
+    templates: McpTemplateRow[];
+  }>("/api/mcp/templates", fetcher);
+  const templates = useMemo(() => tplData?.templates ?? [], [tplData]);
+  // Modèles réellement installables : les autres (OAuth interactif) restent
+  // visibles avec leur badge, sans bouton actif. Le serveur refuse de toute
+  // façon leur installation.
+  const installableTemplates = useMemo(
+    () => templates.filter((tpl) => tpl.activation === "ready"),
+    [templates]
   );
-  const templates = tplData?.templates ?? [];
+  // Store : uniquement les connecteurs dont le modèle existe réellement dans le
+  // catalogue (sinon la carte n'est pas affichée du tout).
+  const storeConnectors = useMemo(
+    () =>
+      STORE_CONNECTORS.flatMap((connector) => {
+        const tpl = templates.find(
+          (candidate) => candidate.id === connector.templateId
+        );
+        return tpl && tpl.activation === "ready" ? [{ connector, tpl }] : [];
+      }),
+    [templates]
+  );
   const servers = data?.servers ?? [];
   const stats = data?.stats ?? { servers: 0, totalCalls: 0 };
-  const [searchQuery, setSearchQuery] = useState("");
+  // Recherche fournie par la barre globale de la page Outils ; l'ancienne
+  // recherche « serveurs » et « store » locale a été supprimée.
+  const [installingConnector, setInstallingConnector] = useState<string | null>(
+    null
+  );
   const [isServerModalOpen, setIsServerModalOpen] = useState(false);
   const [editingServer, setEditingServer] = useState<McpServer | null>(null);
   const [serverToDelete, setSkillToDelete] = useState<McpServer | null>(null);
@@ -178,7 +265,7 @@ export default function McpClient() {
   const [isSavingMcpPrefs, setIsSavingMcpPrefs] = useState(false);
   const { data: mcpPrefsData, mutate: mutateMcpPrefs } = useSWR(
     "/api/user/mcp-preferences",
-    (url: string) => fetch(url).then((r) => r.json()),
+    fetcher,
     { dedupingInterval: 10_000 }
   );
   useEffect(() => {
@@ -250,21 +337,23 @@ export default function McpClient() {
       toast.error("Erreur purge");
     }
   };
-  const handleNewServer = (template?: (typeof PRESET_TEMPLATES)[0] | any) => {
+  const handleNewServer = (template?: McpTemplateRow | null) => {
     setEditingServer(null);
     setTestResult(null);
     setFormName(template?.name ?? "");
     setFormDescription(template?.description ?? "");
-    setFormTransport((template?.transport as any) ?? "sse");
+    setFormTransport(pickOption(MCP_TRANSPORTS, template?.transport, "http"));
     setFormUrl(template?.url ?? "");
     setFormCommand(template?.command ?? "");
     setFormArgs(template?.args ?? "");
-    setFormAuthType((template?.authType as any) ?? "none");
+    setFormAuthType(pickOption(MCP_AUTH_TYPES, template?.authType, "none"));
     setFormToken("");
     setFormUsername("");
     setFormPassword("");
     setFormHeaders("");
-    setFormRequireApproval((template?.requireApproval as any) ?? "write_only");
+    setFormRequireApproval(
+      pickOption(MCP_APPROVALS, template?.requireApproval, "write_only")
+    );
     setFormTimeoutMs(15_000);
     setFormRateLimit(60);
     setFormEnvPairs([]);
@@ -451,7 +540,9 @@ export default function McpClient() {
       });
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error ?? "Erreur lors du rafraîchissement");
+        throw new Error(
+          extractApiErrorMessage(data) || "Erreur lors du rafraîchissement"
+        );
       }
       toast.success(data.message ?? "Outils synchronisés avec succès !");
       await mutateServers();
@@ -517,7 +608,13 @@ export default function McpClient() {
       toast.error(err.message ?? "Impossible de supprimer le serveur");
     }
   };
-  const handleInstallTemplate = async (tpl: any) => {
+  const handleInstallTemplate = async (tpl: McpTemplateRow) => {
+    if (tpl.activation !== "ready") {
+      toast.error(
+        `${tpl.name} utilise un flux OAuth interactif non pris en charge pour le moment.`
+      );
+      return;
+    }
     try {
       const res = await fetch("/api/mcp/templates", {
         body: JSON.stringify({ templateId: tpl.id }),
@@ -526,17 +623,49 @@ export default function McpClient() {
       });
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error);
+        throw new Error(extractApiErrorMessage(data) || "Erreur installation");
       }
       toast.success(data.message);
       await mutateServers();
-    } catch (e: any) {
-      toast.error(e.message ?? "Erreur installation");
+    } catch (e: unknown) {
+      toast.error(e instanceof Error ? e.message : "Erreur installation");
     }
   };
-  const handleCopyTemplate = async (tpl: any) => {
+  const handleCopyTemplate = async (tpl: McpTemplateRow) => {
     await navigator.clipboard.writeText(JSON.stringify(tpl, null, 2));
     toast.success("Template copié !");
+  };
+  // Store : activation en un clic — installe le template, ou active/désactive si déjà connecté
+  const handleStoreConnector = async (
+    connector: (typeof STORE_CONNECTORS)[number],
+    installed: McpServer | undefined
+  ) => {
+    const tpl = templates.find(
+      (candidate) => candidate.id === connector.templateId
+    );
+    if (installed) {
+      if (installingConnector) {
+        return;
+      }
+      setInstallingConnector(tpl?.name ?? connector.templateId);
+      await handleToggleEnabled(installed);
+      setInstallingConnector(null);
+      return;
+    }
+    if (!tpl) {
+      // Le catalogue ne propose plus ce modèle : on ne laisse pas un bouton
+      // inerte, on explique pourquoi.
+      toast.error(
+        `Le modèle « ${connector.templateId} » n'est plus proposé par le catalogue MCP.`
+      );
+      return;
+    }
+    setInstallingConnector(tpl.name);
+    try {
+      await handleInstallTemplate(tpl);
+    } finally {
+      setInstallingConnector(null);
+    }
   };
   const handleExport = (fmt: string, scope: "servers" | "logs") => {
     const url =
@@ -566,15 +695,22 @@ export default function McpClient() {
       toast.error("Erreur purge");
     }
   };
+  // Recherche globale : filtrage puis tri par pertinence (nom > description >
+  // transport) et alphabétiquement.
   const filteredServers = useMemo(
     () =>
-      servers.filter(
-        (s) =>
-          s.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          (s.description ?? "")
-            .toLowerCase()
-            .includes(searchQuery.toLowerCase()) ||
-          s.transport.toLowerCase().includes(searchQuery.toLowerCase())
+      sortByRelevance(
+        servers.filter((s) =>
+          matchesQuery(searchQuery, {
+            primary: s.name,
+            secondary: [s.description ?? "", s.transport],
+          })
+        ),
+        searchQuery,
+        (s) => ({
+          primary: s.name,
+          secondary: [s.description ?? "", s.transport],
+        })
       ),
     [servers, searchQuery]
   );
@@ -592,91 +728,138 @@ export default function McpClient() {
       ),
     [logs, logServerFilter, logToolFilter, logActionFilter]
   );
+  // Rangée d'actions globale de la page Outils : on y porte les boutons
+  // Exporter / Ajouter un serveur quand le panneau est intégré.
+  const [actionsAnchor, setActionsAnchor] = useState<HTMLElement | null>(null);
+  useEffect(() => {
+    if (embedded) {
+      setActionsAnchor(document.getElementById(TOOLS_ACTIONS_ID));
+    }
+  }, [embedded]);
+
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground">
-      <header className="sticky top-0 z-20 flex flex-col gap-4 border-b border-border/40 bg-background/95 backdrop-blur-md px-4 py-3 sm:px-6">
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <PageBackButton fallbackHref="/" label="Retour au chat" />
-            <div className="flex items-center gap-2.5">
-              <div className="flex size-9 items-center justify-center rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400">
-                <CpuIcon className="size-5" />
-              </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <h1 className="text-lg font-bold tracking-tight sm:text-xl">
-                    Model Context Protocol (MCP)
-                  </h1>
-                  <Badge
-                    className="text-[10px] font-semibold"
-                    variant="secondary"
+    <div
+      className={
+        embedded
+          ? "flex w-full flex-col text-foreground"
+          : "flex flex-col min-h-screen bg-background text-foreground"
+      }
+    >
+      {embedded && actionsAnchor
+        ? createPortal(
+            <div className="flex items-center gap-2">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    className="h-8 gap-1.5 text-xs font-medium"
+                    variant="outline"
                   >
-                    Standard Anthropic / Open Protocol
-                  </Badge>
+                    <DownloadIcon className="size-3.5" />
+                    <span>Exporter</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem
+                    onClick={() => handleExport("json", "servers")}
+                  >
+                    Serveurs JSON
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => handleExport("csv", "servers")}
+                  >
+                    Serveurs CSV
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => handleExport("md", "servers")}
+                  >
+                    Serveurs MD
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => handleExport("txt", "servers")}
+                  >
+                    Serveurs TXT
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem
+                    onClick={() => handleExport("json", "logs")}
+                  >
+                    Logs JSON
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => handleExport("csv", "logs")}>
+                    Logs CSV
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => handleExport("md", "logs")}>
+                    Logs MD
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => handleExport("txt", "logs")}>
+                    Logs TXT
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <Button
+                className="h-8 gap-1.5 text-xs font-medium shadow-xs"
+                onClick={() => handleNewServer()}
+              >
+                <PlusIcon className="size-3.5" />
+                <span>Ajouter un serveur MCP</span>
+              </Button>
+            </div>,
+            actionsAnchor
+          )
+        : null}
+      <header
+        className={
+          embedded
+            ? "hidden"
+            : "sticky top-0 z-20 flex flex-col gap-4 border-b border-border/40 bg-background/95 backdrop-blur-md px-4 py-3 sm:px-6"
+        }
+      >
+        <div
+          className={`flex items-center gap-3 ${embedded ? "justify-end" : "justify-between"}`}
+        >
+          {embedded ? null : (
+            <div className="flex items-center gap-3">
+              <PageBackButton fallbackHref="/" label="Retour au chat" />
+              <div className="flex items-center gap-2.5">
+                <div className="flex size-9 items-center justify-center rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400">
+                  <CpuIcon className="size-5" />
                 </div>
-                <p className="text-xs text-muted-foreground">
-                  Connectez vos bases de données, APIs et outils locaux
-                  directement à l'IA
-                </p>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <h1 className="text-lg font-bold tracking-tight sm:text-xl">
+                      Model Context Protocol (MCP)
+                    </h1>
+                    <Badge
+                      className="text-[10px] font-semibold"
+                      variant="secondary"
+                    >
+                      Standard Anthropic / Open Protocol
+                    </Badge>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    Connectez vos bases de données, APIs et outils locaux
+                    directement à l'IA
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  className="h-8 gap-1.5 text-xs font-medium shadow-xs"
-                  variant="outline"
-                >
-                  <DownloadIcon className="size-3.5" />
-                  <span>Exporter</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem
-                  onClick={() => handleExport("json", "servers")}
-                >
-                  Serveurs JSON
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => handleExport("csv", "servers")}
-                >
-                  Serveurs CSV
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleExport("md", "servers")}>
-                  Serveurs MD
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => handleExport("txt", "servers")}
-                >
-                  Serveurs TXT
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => handleExport("json", "logs")}>
-                  Logs JSON
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleExport("csv", "logs")}>
-                  Logs CSV
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleExport("md", "logs")}>
-                  Logs MD
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleExport("txt", "logs")}>
-                  Logs TXT
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <Button
-              className="h-8 gap-1.5 text-xs font-medium shadow-xs"
-              onClick={() => handleNewServer()}
-            >
-              <PlusIcon className="size-3.5" />
-              <span>Ajouter un serveur MCP</span>
-            </Button>
-          </div>
+          )}
         </div>
         <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
           <div className="flex items-center rounded-lg border border-border/50 bg-muted/20 p-0.5 text-xs">
+            <button
+              className={cn(
+                "rounded-md px-3 py-1.5 text-xs font-medium transition-colors flex items-center gap-1.5",
+                activeTab === "store"
+                  ? "bg-background text-foreground shadow-xs"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+              onClick={() => setActiveTab("store")}
+              type="button"
+            >
+              <StoreIcon className="size-3.5 text-primary" />
+              <span>Store ({STORE_CONNECTORS.length})</span>
+            </button>
             <button
               className={cn(
                 "rounded-md px-3 py-1.5 text-xs font-medium transition-colors flex items-center gap-1.5",
@@ -743,20 +926,172 @@ export default function McpClient() {
               <span>Paramètres</span>
             </button>
           </div>
-          {activeTab === "servers" && (
-            <div className="relative w-64">
-              <SearchIcon className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground" />
-              <Input
-                className="h-8 pl-8 text-xs bg-muted/40"
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Filtrer les serveurs..."
-                value={searchQuery}
-              />
-            </div>
-          )}
+          {/* Recherche locale supprimée : la barre globale de la page Outils
+              filtre le Store et la liste des serveurs. */}
         </div>
       </header>
       <main className="flex-1 p-4 sm:p-6 max-w-7xl mx-auto w-full">
+        {activeTab === "store" && (
+          <div className="space-y-5">
+            <div className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/[0.04] to-transparent p-5">
+              <div className="flex items-center gap-3 mb-1.5">
+                <div className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <StoreIcon className="size-5" />
+                </div>
+                <div>
+                  <h2 className="text-base font-bold">Store de connecteurs</h2>
+                  <p className="text-xs text-muted-foreground">
+                    Activez vos outils favoris en un clic — configuration
+                    automatique depuis les templates MCP.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {sortByRelevance(
+                storeConnectors.filter(({ connector, tpl }) =>
+                  matchesQuery(searchQuery, {
+                    primary: tpl.name,
+                    secondary: [connector.highlight, tpl.description],
+                  })
+                ),
+                searchQuery,
+                ({ connector, tpl }) => ({
+                  primary: tpl.name,
+                  secondary: [connector.highlight, tpl.description],
+                })
+              ).map(({ connector, tpl }) => {
+                const Icon = connector.icon;
+                const installed = servers.find(
+                  (s) =>
+                    (s.templateId ?? null) === tpl.id || s.name === tpl.name
+                );
+                const isBusy = installingConnector === tpl.name;
+                return (
+                  <div
+                    className={cn(
+                      "flex flex-col rounded-2xl border bg-card p-4 transition-all duration-200 hover:shadow-md",
+                      installed?.isEnabled
+                        ? "border-emerald-500/40"
+                        : "border-border/60"
+                    )}
+                    key={connector.templateId}
+                  >
+                    <div className="flex items-start gap-3 mb-3">
+                      <div
+                        className={cn(
+                          "flex size-11 shrink-0 items-center justify-center rounded-xl",
+                          connector.tint,
+                          connector.color
+                        )}
+                      >
+                        <Icon className="size-5.5" />
+                      </div>
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2">
+                          <h3 className="font-semibold text-sm">{tpl.name}</h3>
+                          {installed && (
+                            <span
+                              className={cn(
+                                "inline-flex items-center gap-1 rounded-full px-1.5 py-0.5 text-[10px] font-semibold",
+                                installed.isEnabled
+                                  ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                                  : "bg-muted text-muted-foreground"
+                              )}
+                            >
+                              <span
+                                className={cn(
+                                  "size-1.5 rounded-full",
+                                  installed.isEnabled
+                                    ? "bg-emerald-500"
+                                    : "bg-muted-foreground/50"
+                                )}
+                              />
+                              {installed.isEnabled ? "Actif" : "Inactif"}
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-[11px] text-muted-foreground line-clamp-2">
+                          {tpl.description}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1.5 flex-wrap mb-3">
+                      <Badge
+                        className="text-[10px] uppercase font-semibold px-2 py-0.5"
+                        variant="outline"
+                      >
+                        {tpl.transport}
+                      </Badge>
+                      {tpl.authType !== "none" && (
+                        <Badge
+                          className="text-[10px] px-2 py-0.5"
+                          variant="secondary"
+                        >
+                          {tpl.authType}
+                        </Badge>
+                      )}
+                      <Badge
+                        className="text-[10px] px-2 py-0.5"
+                        variant="outline"
+                      >
+                        {tpl.minTier.toUpperCase()}
+                      </Badge>
+                    </div>
+                    <div className="mt-auto">
+                      <Button
+                        className={cn(
+                          "w-full gap-2 text-xs font-medium",
+                          installed?.isEnabled &&
+                            "border-emerald-500/40 text-emerald-600 dark:text-emerald-400"
+                        )}
+                        disabled={Boolean(installingConnector)}
+                        onClick={() =>
+                          handleStoreConnector(connector, installed)
+                        }
+                        variant={installed?.isEnabled ? "outline" : "default"}
+                      >
+                        {isBusy ? (
+                          <>
+                            <Loader2Icon className="size-3.5 animate-spin" />
+                            {installed
+                              ? installed.isEnabled
+                                ? "Désactivation..."
+                                : "Activation..."
+                              : "Connexion..."}
+                          </>
+                        ) : installed ? (
+                          <>
+                            <ZapIcon className="size-3.5" />
+                            {installed.isEnabled ? "Désactiver" : "Activer"}
+                          </>
+                        ) : (
+                          <>
+                            <PlusIcon className="size-3.5" />
+                            Connecter en 1 clic
+                          </>
+                        )}
+                      </Button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <p className="text-[11px] text-muted-foreground text-center">
+              Un connecteur manquant ? Retrouvez les {templates.length} modèles
+              du catalogue (dont les intégrations OAuth documentées) dans
+              l'onglet{" "}
+              <button
+                className="font-medium text-primary hover:underline"
+                onClick={() => setActiveTab("library")}
+                type="button"
+              >
+                Bibliothèque
+              </button>
+              .
+            </p>
+          </div>
+        )}
         {activeTab === "servers" && (
           <div>
             {isLoading ? (
@@ -786,10 +1121,10 @@ export default function McpClient() {
                     Modèles préconfigurés :
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {PRESET_TEMPLATES.map((tmpl) => (
+                    {installableTemplates.map((tmpl) => (
                       <button
                         className="flex flex-col text-left p-3.5 rounded-xl border border-border/60 bg-card hover:bg-muted/40 transition-colors group cursor-pointer"
-                        key={tmpl.name}
+                        key={tmpl.id}
                         onClick={() => handleNewServer(tmpl)}
                         type="button"
                       >
@@ -805,7 +1140,7 @@ export default function McpClient() {
                           {tmpl.description}
                         </span>
                         <span className="text-[11px] font-semibold text-primary">
-                          Connecter +
+                          Pré-remplir la configuration →
                         </span>
                       </button>
                     ))}
@@ -937,7 +1272,9 @@ export default function McpClient() {
                           ● {(s as any).uptimeStatus ?? "unknown"}
                         </span>
                         <span>·</span>
-                        <span>{enabledCount}/{toolsCount} actifs</span>
+                        <span>
+                          {enabledCount}/{toolsCount} actifs
+                        </span>
                       </div>
                       <div className="flex items-center gap-1.5 flex-wrap mb-3">
                         <Badge
@@ -974,7 +1311,10 @@ export default function McpClient() {
                               ? "Accord écriture"
                               : "Auto-approuvé"}
                         </Badge>
-                        <Badge className="text-[10px] px-2 py-0.5" variant="outline">
+                        <Badge
+                          className="text-[10px] px-2 py-0.5"
+                          variant="outline"
+                        >
                           ⏱ {(s as any).timeoutMs ?? 15_000}ms ·{" "}
                           {(s as any).rateLimitPerMin ?? 60}/min
                         </Badge>
@@ -1012,7 +1352,8 @@ export default function McpClient() {
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <h2 className="text-sm font-bold">
-                Bibliothèque MCP — Templates installables (50+)
+                Bibliothèque MCP — {installableTemplates.length} modèles
+                installables sur {templates.length}
               </h2>
               <Button onClick={() => mutateTpl()} size="sm" variant="outline">
                 Actualiser
@@ -1024,16 +1365,26 @@ export default function McpClient() {
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                {templates.map((tpl: any) => (
+                {templates.map((tpl) => (
                   <div
                     className="rounded-2xl border bg-card p-4 flex flex-col"
                     key={tpl.id}
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className="font-semibold text-xs">{tpl.name}</span>
-                      <Badge className="text-[10px]" variant="outline">
-                        {tpl.transport}
-                      </Badge>
+                      <div className="flex items-center gap-1.5">
+                        <Badge className="text-[10px]" variant="outline">
+                          {tpl.transport}
+                        </Badge>
+                        {tpl.activation === "requires_oauth_flow" ? (
+                          <Badge
+                            className="border-amber-500/30 bg-amber-500/10 text-[10px] text-amber-700 dark:text-amber-400"
+                            variant="outline"
+                          >
+                            OAuth requise
+                          </Badge>
+                        ) : null}
+                      </div>
                     </div>
                     <p className="text-[11px] text-muted-foreground line-clamp-2 mb-3">
                       {tpl.description}
@@ -1041,8 +1392,14 @@ export default function McpClient() {
                     <div className="flex gap-1.5 mt-auto">
                       <Button
                         className="flex-1 h-7 text-xs"
+                        disabled={tpl.activation !== "ready"}
                         onClick={() => handleInstallTemplate(tpl)}
                         size="sm"
+                        title={
+                          tpl.activation === "ready"
+                            ? undefined
+                            : "Flux OAuth interactif non pris en charge : installation indisponible pour le moment."
+                        }
                       >
                         <PlusIcon className="size-3 mr-1" />
                         Installer
@@ -1059,20 +1416,20 @@ export default function McpClient() {
                     </div>
                   </div>
                 ))}
-                {PRESET_TEMPLATES.map((t) => (
+                {installableTemplates.map((t) => (
                   <div
                     className="rounded-2xl border border-dashed bg-muted/20 p-4 flex flex-col"
-                    key={`${t.name}preset`}
+                    key={`${t.id}preset`}
                   >
                     <span className="font-semibold text-xs mb-1">
-                      {t.name} (preset)
+                      {t.name} (pré-remplissage)
                     </span>
                     <p className="text-[11px] text-muted-foreground mb-3">
                       {t.description}
                     </p>
                     <Button
                       className="h-7 text-xs"
-                      onClick={() => handleNewServer(t as any)}
+                      onClick={() => handleNewServer(t)}
                       size="sm"
                       variant="outline"
                     >

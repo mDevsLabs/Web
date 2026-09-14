@@ -26,8 +26,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
-const fetcher = (url: string) => fetch(url).then((r) => r.json());
+import { fetcher } from "@/lib/utils";
 
 export default function ProjectDetailPage() {
   const params = useParams<{ id: string }>();
@@ -288,7 +287,9 @@ export default function ProjectDetailPage() {
                 allowEmpty
                 fallbackModels={availableModels}
                 modal
-                models={availableModels.length > 0 ? availableModels : undefined}
+                models={
+                  availableModels.length > 0 ? availableModels : undefined
+                }
                 onModelChange={setDefaultModel}
                 selectedModelId={defaultModel}
                 variant="block"

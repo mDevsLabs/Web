@@ -1,3 +1,4 @@
+import { errorResponse } from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
 import { duplicateAgent, getAgentsByUserId } from "@/lib/db/queries";
 
@@ -13,15 +14,16 @@ export async function POST(
   const userId = user.id || user.email;
   const existing = await getAgentsByUserId({ userId });
   if (existing.length >= 10) {
-    return Response.json(
-      { error: "Limite 10 agents atteinte" },
-      { status: 403 }
-    );
+    return errorResponse("quota_exceeded", {
+      details: { limit: 10, used: existing.length },
+      message: "Limite de 10 agents atteinte.",
+      status: 403,
+    });
   }
   const { id } = await params;
   const dup = await duplicateAgent({ id, userId });
   if (!dup) {
-    return Response.json({ error: "Agent introuvable" }, { status: 404 });
+    return errorResponse("not_found", { message: "Agent introuvable." });
   }
   return Response.json(dup, { status: 201 });
 }

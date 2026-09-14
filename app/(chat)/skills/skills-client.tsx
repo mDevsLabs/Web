@@ -23,7 +23,8 @@ import {
   ZapIcon,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { toast } from "sonner";
 import useSWR from "swr";
 import { AGENT_COLORS } from "@/components/agents/agent-presets";
@@ -58,7 +59,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { TOOL_IDS, TOOLS_META } from "@/lib/ai/tools/config";
+import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { Skill, SkillVersion } from "@/lib/db/schema";
+import { matchesQuery, sortByRelevance } from "@/lib/tools/search";
+import { TOOLS_ACTIONS_ID } from "@/lib/tools/tabs";
 import { cn } from "@/lib/utils";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -137,7 +141,9 @@ function VersionHistoryList({
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        throw new Error(data.error ?? "Erreur lors de la restauration");
+        throw new Error(
+          extractApiErrorMessage(data) || "Erreur lors de la restauration"
+        );
       }
       toast.success("Version restaurée : un nouveau snapshot a été créé.");
       onRestored();
@@ -195,7 +201,13 @@ function VersionHistoryList({
   );
 }
 
-export default function SkillsClient() {
+export default function SkillsClient({
+  embedded = false,
+  searchQuery = "",
+}: {
+  embedded?: boolean;
+  searchQuery?: string;
+} = {}) {
   const _router = useRouter();
   const {
     data: skills = [],
@@ -204,11 +216,19 @@ export default function SkillsClient() {
     mutate,
   } = useSWR<Skill[]>("/api/skills", fetcher);
 
-  const [searchQuery, setSearchQuery] = useState("");
+  // Recherche fournie par la barre globale de la page Outils.
   const [activeTab, setActiveTab] = useState<"all" | "pinned" | "library">(
     "all"
   );
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  // Rangée d'actions globale : les boutons Exporter / Importer / Nouveau y
+  // sont portés quand le panneau est intégré à la page Outils.
+  const [actionsAnchor, setActionsAnchor] = useState<HTMLElement | null>(null);
+  useEffect(() => {
+    if (embedded) {
+      setActionsAnchor(document.getElementById(TOOLS_ACTIONS_ID));
+    }
+  }, [embedded]);
 
   // Modals state
   const [isEditorOpen, setIsEditorOpen] = useState(false);
@@ -270,25 +290,32 @@ export default function SkillsClient() {
     return Array.from(set);
   }, [skills]);
 
-  // Filtrage des skills
+  // Filtrage des skills : recherche globale + onglet + tag, puis tri par
+  // pertinence (nom > description > instructions > tags), épinglés d'abord,
+  // alphabétiquement à pertinence égale.
   const filteredSkills = useMemo(
     () =>
-      skills.filter((s) => {
-        const matchesSearch =
-          searchQuery === "" ||
-          s.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          (s.description ?? "")
-            .toLowerCase()
-            .includes(searchQuery.toLowerCase()) ||
-          s.instructions.toLowerCase().includes(searchQuery.toLowerCase());
-
-        const matchesTab = activeTab === "all" || s.pinned;
-        const matchesTag =
-          !selectedTag ||
-          (Array.isArray(s.tags) && s.tags.includes(selectedTag));
-
-        return matchesSearch && matchesTab && matchesTag;
-      }),
+      sortByRelevance(
+        skills.filter((s) => {
+          const matches = matchesQuery(searchQuery, {
+            primary: s.name,
+            secondary: [s.description ?? "", s.instructions],
+            tags: Array.isArray(s.tags) ? s.tags : [],
+          });
+          const matchesTab = activeTab === "all" || s.pinned;
+          const matchesTag =
+            !selectedTag ||
+            (Array.isArray(s.tags) && s.tags.includes(selectedTag));
+          return matches && matchesTab && matchesTag;
+        }),
+        searchQuery,
+        (s) => ({
+          primary: s.name,
+          secondary: [s.description ?? "", s.instructions],
+          tags: Array.isArray(s.tags) ? s.tags : [],
+        }),
+        { isPinned: (s) => Boolean(s.pinned), pinnedFirst: true }
+      ),
     [skills, searchQuery, activeTab, selectedTag]
   );
 
@@ -533,182 +560,258 @@ export default function SkillsClient() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground">
-      {/* Header */}
-      <header className="sticky top-0 z-20 flex flex-col gap-4 border-b border-border/40 bg-background/95 backdrop-blur-md px-4 py-3 sm:px-6">
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3">
-            <PageBackButton fallbackHref="/" label="Retour au chat" />
-            <div className="flex items-center gap-2.5">
-              <div className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                <WrenchIcon className="size-5" />
+    <div
+      className={
+        embedded
+          ? "flex w-full flex-col text-foreground"
+          : "flex flex-col min-h-screen bg-background text-foreground"
+      }
+    >
+      {/* Boutons portés dans la rangée globale de la page Outils */}
+      {embedded && actionsAnchor
+        ? createPortal(
+            <div className="flex items-center gap-2">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    className="h-8 gap-1.5 text-xs font-medium"
+                    variant="outline"
+                  >
+                    <DownloadIcon className="size-3.5" />
+                    <span>Exporter</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem
+                    onClick={() =>
+                      window.open("/api/skills/export?format=json", "_blank")
+                    }
+                  >
+                    Skills JSON
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() =>
+                      window.open("/api/skills/export?format=csv", "_blank")
+                    }
+                  >
+                    Skills CSV
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() =>
+                      window.open("/api/skills/export?format=md", "_blank")
+                    }
+                  >
+                    Skills MD
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() =>
+                      window.open("/api/skills/export?format=txt", "_blank")
+                    }
+                  >
+                    Skills TXT
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <Button
+                className="h-8 gap-1.5 text-xs font-medium"
+                onClick={() => setIsImportOpen(true)}
+                variant="outline"
+              >
+                <UploadIcon className="size-3.5" />
+                <span>Importer</span>
+              </Button>
+              <Button
+                className="h-8 gap-1.5 text-xs font-medium shadow-xs"
+                onClick={() => handleNewSkill()}
+              >
+                <PlusIcon className="size-3.5" />
+                <span>Nouveau Skill</span>
+              </Button>
+            </div>,
+            actionsAnchor
+          )
+        : null}
+
+      {/* Header — masqué en mode intégré : l'en-tête de la page Outils porte
+          les boutons (voir portail ci-dessus) et la recherche globale. */}
+      {embedded ? null : (
+        <header className="sticky top-0 z-20 flex flex-col gap-4 border-b border-border/40 bg-background/95 px-4 py-3 backdrop-blur-md sm:px-6">
+          <div
+            className={`flex items-center gap-3 ${embedded ? "justify-end" : "justify-between"}`}
+          >
+            {embedded ? null : (
+              <div className="flex items-center gap-3">
+                <PageBackButton fallbackHref="/" label="Retour au chat" />
+                <div className="flex items-center gap-2.5">
+                  <div className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <WrenchIcon className="size-5" />
+                  </div>
+                  <div>
+                    <h1 className="text-lg font-bold tracking-tight sm:text-xl">
+                      Skills IA & Outils
+                    </h1>
+                    <p className="text-xs text-muted-foreground">
+                      Concevez des compétences personnalisées avec paramètres et
+                      outils
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div>
-                <h1 className="text-lg font-bold tracking-tight sm:text-xl">
-                  Skills IA & Outils
-                </h1>
-                <p className="text-xs text-muted-foreground">
-                  Concevez des compétences personnalisées avec paramètres et
-                  outils
-                </p>
-              </div>
+            )}
+
+            <div className="flex items-center gap-2">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    className="h-8 gap-1.5 text-xs font-medium"
+                    variant="outline"
+                  >
+                    <DownloadIcon className="size-3.5" />
+                    <span className="hidden sm:inline">Exporter</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem
+                    onClick={() =>
+                      window.open("/api/skills/export?format=json", "_blank")
+                    }
+                  >
+                    Skills JSON
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() =>
+                      window.open("/api/skills/export?format=csv", "_blank")
+                    }
+                  >
+                    Skills CSV
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() =>
+                      window.open("/api/skills/export?format=md", "_blank")
+                    }
+                  >
+                    Skills MD
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() =>
+                      window.open("/api/skills/export?format=txt", "_blank")
+                    }
+                  >
+                    Skills TXT
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <Button
+                className="h-8 gap-1.5 text-xs font-medium"
+                onClick={() => setIsImportOpen(true)}
+                variant="outline"
+              >
+                <UploadIcon className="size-3.5" />
+                <span className="hidden sm:inline">Importer</span>
+              </Button>
+              <Button
+                className="h-8 gap-1.5 text-xs font-medium shadow-xs"
+                onClick={() => handleNewSkill()}
+              >
+                <PlusIcon className="size-3.5" />
+                <span>Nouveau Skill</span>
+              </Button>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  className="h-8 gap-1.5 text-xs font-medium"
-                  variant="outline"
-                >
-                  <DownloadIcon className="size-3.5" />
-                  <span className="hidden sm:inline">Exporter</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem
-                  onClick={() =>
-                    window.open("/api/skills/export?format=json", "_blank")
-                  }
-                >
-                  Skills JSON
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() =>
-                    window.open("/api/skills/export?format=csv", "_blank")
-                  }
-                >
-                  Skills CSV
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() =>
-                    window.open("/api/skills/export?format=md", "_blank")
-                  }
-                >
-                  Skills MD
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() =>
-                    window.open("/api/skills/export?format=txt", "_blank")
-                  }
-                >
-                  Skills TXT
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-            <Button
-              className="h-8 gap-1.5 text-xs font-medium"
-              onClick={() => setIsImportOpen(true)}
-              variant="outline"
-            >
-              <UploadIcon className="size-3.5" />
-              <span className="hidden sm:inline">Importer</span>
-            </Button>
-            <Button
-              className="h-8 gap-1.5 text-xs font-medium shadow-xs"
-              onClick={() => handleNewSkill()}
-            >
-              <PlusIcon className="size-3.5" />
-              <span>Nouveau Skill</span>
-            </Button>
-          </div>
-        </div>
-
-        {/* Filtres & Recherche */}
-        <div className="flex flex-wrap items-center justify-between gap-2.5 pt-1">
-          <div className="flex items-center gap-2">
-            <div className="relative w-64 sm:w-80">
-              <SearchIcon className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground" />
-              <Input
-                className="h-8 pl-8 text-xs bg-muted/40"
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Rechercher un skill, un outil, un tag..."
-                value={searchQuery}
-              />
-            </div>
-
-            <div className="flex items-center rounded-lg border border-border/50 bg-muted/20 p-0.5 text-xs">
-              <button
-                className={cn(
-                  "rounded-md px-2.5 py-1 text-xs font-medium transition-colors flex items-center gap-1",
-                  activeTab === "library"
-                    ? "bg-background text-foreground shadow-xs"
-                    : "text-muted-foreground hover:text-foreground"
-                )}
-                onClick={() => setActiveTab("library")}
-                type="button"
-              >
-                <BookOpenIcon className="size-3 text-amber-500" />
-                <span>Bibliothèque</span>
-              </button>
-              <button
-                className={cn(
-                  "rounded-md px-2.5 py-1 text-xs font-medium transition-colors",
-                  activeTab === "all"
-                    ? "bg-background text-foreground shadow-xs"
-                    : "text-muted-foreground hover:text-foreground"
-                )}
-                onClick={() => setActiveTab("all")}
-                type="button"
-              >
-                Tous ({skills.length})
-              </button>
-              <button
-                className={cn(
-                  "rounded-md px-2.5 py-1 text-xs font-medium transition-colors flex items-center gap-1",
-                  activeTab === "pinned"
-                    ? "bg-background text-foreground shadow-xs"
-                    : "text-muted-foreground hover:text-foreground"
-                )}
-                onClick={() => setActiveTab("pinned")}
-                type="button"
-              >
-                <PinIcon className="size-3 text-amber-500" />
-                <span>Épinglés ({skills.filter((s) => s.pinned).length})</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Tags */}
-          {allTags.length > 0 && (
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 max-w-full">
-              <span className="text-[11px] text-muted-foreground flex items-center gap-1 shrink-0">
-                <TagIcon className="size-3" /> Tags:
-              </span>
-              {allTags.map((tag) => (
+          {/* Filtres — la recherche vit dans la barre globale de la page Outils */}
+          <div className="flex flex-wrap items-center justify-between gap-2.5 pt-0">
+            <div className="flex items-center gap-2">
+              <div className="flex items-center rounded-lg border border-border/50 bg-muted/20 p-0.5 text-xs">
                 <button
                   className={cn(
-                    "rounded-full px-2.5 py-0.5 text-[11px] font-medium transition-colors shrink-0",
-                    selectedTag === tag
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted/60 text-muted-foreground hover:text-foreground"
+                    "rounded-md px-2.5 py-1 text-xs font-medium transition-colors flex items-center gap-1",
+                    activeTab === "library"
+                      ? "bg-background text-foreground shadow-xs"
+                      : "text-muted-foreground hover:text-foreground"
                   )}
-                  key={tag}
-                  onClick={() =>
-                    setSelectedTag((prev) => (prev === tag ? null : tag))
-                  }
+                  onClick={() => setActiveTab("library")}
                   type="button"
                 >
-                  #{tag}
+                  <BookOpenIcon className="size-3 text-amber-500" />
+                  <span>Bibliothèque</span>
                 </button>
-              ))}
-              {selectedTag && (
                 <button
-                  className="text-[11px] text-muted-foreground hover:underline ml-1"
-                  onClick={() => setSelectedTag(null)}
+                  className={cn(
+                    "rounded-md px-2.5 py-1 text-xs font-medium transition-colors",
+                    activeTab === "all"
+                      ? "bg-background text-foreground shadow-xs"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                  onClick={() => setActiveTab("all")}
                   type="button"
                 >
-                  Effacer
+                  Tous ({skills.length})
                 </button>
-              )}
+                <button
+                  className={cn(
+                    "rounded-md px-2.5 py-1 text-xs font-medium transition-colors flex items-center gap-1",
+                    activeTab === "pinned"
+                      ? "bg-background text-foreground shadow-xs"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                  onClick={() => setActiveTab("pinned")}
+                  type="button"
+                >
+                  <PinIcon className="size-3 text-amber-500" />
+                  <span>
+                    Épinglés ({skills.filter((s) => s.pinned).length})
+                  </span>
+                </button>
+              </div>
             </div>
-          )}
-        </div>
-      </header>
 
-      {/* Contenu principal */}
-      <main className="flex-1 p-4 sm:p-6 max-w-7xl mx-auto w-full">
+            {/* Tags */}
+            {allTags.length > 0 && (
+              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 max-w-full">
+                <span className="text-[11px] text-muted-foreground flex items-center gap-1 shrink-0">
+                  <TagIcon className="size-3" /> Tags:
+                </span>
+                {allTags.map((tag) => (
+                  <button
+                    className={cn(
+                      "rounded-full px-2.5 py-0.5 text-[11px] font-medium transition-colors shrink-0",
+                      selectedTag === tag
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted/60 text-muted-foreground hover:text-foreground"
+                    )}
+                    key={tag}
+                    onClick={() =>
+                      setSelectedTag((prev) => (prev === tag ? null : tag))
+                    }
+                    type="button"
+                  >
+                    #{tag}
+                  </button>
+                ))}
+                {selectedTag && (
+                  <button
+                    className="text-[11px] text-muted-foreground hover:underline ml-1"
+                    onClick={() => setSelectedTag(null)}
+                    type="button"
+                  >
+                    Effacer
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+        </header>
+      )}
+
+      {/* Contenu principal — pleine largeur en mode intégré */}
+      <main
+        className={
+          embedded
+            ? "w-full flex-1 px-0 pt-2 pb-4"
+            : "mx-auto w-full max-w-7xl flex-1 p-4 sm:p-6"
+        }
+      >
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[1, 2, 3, 4, 5, 6].map((i) => (
@@ -783,7 +886,10 @@ export default function SkillsClient() {
                             });
                             const d = await r.json();
                             if (!r.ok) {
-                              throw new Error(d.error);
+                              throw new Error(
+                                extractApiErrorMessage(d) ||
+                                  "Erreur lors de l'installation du template."
+                              );
                             }
                             toast.success(d.message);
                             mutate();

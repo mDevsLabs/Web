@@ -11,7 +11,7 @@ import {
 import Link from "next/link";
 import { memo, useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
-import { useSWRConfig } from "swr";
+import useSWR, { useSWRConfig } from "swr";
 import { unstable_serialize } from "swr/infinite";
 import { useChatVisibility } from "@/hooks/use-chat-visibility";
 import type { Chat } from "@/lib/db/schema";
@@ -31,6 +31,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "../ui/sidebar";
+import { ChatAgentIcon } from "./chat-agent-icon";
 import {
   CheckCircleFillIcon,
   GlobeIcon,
@@ -41,8 +42,6 @@ import {
 } from "./icons";
 import { ProjectIcon } from "./project-icon";
 import { getChatHistoryPaginationKey } from "./sidebar-history";
-import { ChatAgentIcon } from "./chat-agent-icon";
-import useSWR from "swr";
 
 const PureChatItem = ({
   chat,
@@ -373,7 +372,9 @@ export const ChatItem = memo(PureChatItem, (prevProps, nextProps) => {
   if ((prevProps.chat as any).agentIcon !== (nextProps.chat as any).agentIcon) {
     return false;
   }
-  if ((prevProps.chat as any).agentColor !== (nextProps.chat as any).agentColor) {
+  if (
+    (prevProps.chat as any).agentColor !== (nextProps.chat as any).agentColor
+  ) {
     return false;
   }
   if (prevProps.projects !== nextProps.projects) {

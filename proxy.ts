@@ -1,4 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { API_ERROR_STATUS } from "./lib/api/error-codes";
+import { DEFAULT_MESSAGES_FR } from "./lib/api/error-messages";
 import { MAI_SESSION_COOKIE } from "./lib/constants";
 
 export async function proxy(request: NextRequest) {
@@ -8,18 +10,36 @@ export async function proxy(request: NextRequest) {
     return new Response("pong", { status: 200 });
   }
 
+  // BotID (Vercel) : le script de vérification du SDK client est servi sous ce
+  // préfixe fixe via les rewrites `beforeFiles` de withBotId. Le middleware
+  // s'exécutant AVANT les rewrites, toute interception ici (redirect /login)
+  // casse le chargement du script et fait rejeter les Server Actions protégées
+  // (POST /login, /register) avant même l'appel à l'API.
+  const BOTID_PREFIX = "/149e9513-01fa-4fb0-aad4-566afd725d1b/";
+  if (
+    pathname.startsWith(BOTID_PREFIX) ||
+    pathname.startsWith(
+      `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${BOTID_PREFIX}`
+    )
+  ) {
+    return NextResponse.next();
+  }
+
   // Routes publiques autorisées
   const isAuthRoute =
     pathname.startsWith("/login") || pathname.startsWith("/register");
+  // Bypass strictement limité aux assets statiques réels.
+  // (Ne plus utiliser pathname.endsWith(".png"/".svg"/".ico") : cela
+  // permettait de contourner l'auth via /api/.../*.svg)
   const isStaticRoute =
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api/auth") ||
-    pathname.startsWith("/favicon.ico") ||
-    pathname.startsWith("/logo.png") ||
-    pathname.startsWith("/images") ||
-    pathname.endsWith(".png") ||
-    pathname.endsWith(".svg") ||
-    pathname.endsWith(".ico");
+    pathname === "/favicon.ico" ||
+    pathname === "/logo.png" ||
+    pathname.startsWith("/images/") ||
+    pathname.startsWith("/demo-assets/") ||
+    pathname === "/sitemap.xml" ||
+    pathname === "/robots.txt";
 
   if (isStaticRoute) {
     return NextResponse.next();
@@ -27,15 +47,33 @@ export async function proxy(request: NextRequest) {
 
   const token = request.cookies.get(MAI_SESSION_COOKIE)?.value;
   const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const isApiRoute = pathname.startsWith("/api/");
 
   // 1. Utilisateur non authentifié tentant d'accéder à une route privée
   if (!token) {
     if (isAuthRoute) {
       return NextResponse.next();
     }
-    const redirectUrl = encodeURIComponent(new URL(request.url).pathname);
+    // Les API doivent répondre 401 JSON (enveloppe d'erreur unifiée), pas un
+    // redirect HTML
+    if (isApiRoute) {
+      return NextResponse.json(
+        {
+          code: "auth_required",
+          message: DEFAULT_MESSAGES_FR.auth_required,
+          status: API_ERROR_STATUS.auth_required,
+        },
+        { status: API_ERROR_STATUS.auth_required }
+      );
+    }
+    // Conserve le chemin + la query pour retour après login
+    const nextUrl = request.nextUrl.clone();
+    const redirectTarget = `${nextUrl.pathname}${nextUrl.search}`;
     return NextResponse.redirect(
-      new URL(`${base}/login?redirectUrl=${redirectUrl}`, request.url)
+      new URL(
+        `${base}/login?redirectUrl=${encodeURIComponent(redirectTarget)}`,
+        request.url
+      )
     );
   }
 

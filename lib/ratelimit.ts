@@ -1,3 +1,5 @@
+import { createHash } from "node:crypto";
+
 import { createClient } from "redis";
 
 import { isProductionEnvironment } from "@/lib/constants";
@@ -11,8 +13,14 @@ let client: ReturnType<typeof createClient> | null = null;
 function getClient() {
   if (!client && process.env.REDIS_URL) {
     client = createClient({ url: process.env.REDIS_URL });
-    client.on("error", () => undefined);
-    client.connect().catch(() => {
+    client.on("error", (error) =>
+      console.warn("[ratelimit] Erreur Redis:", error?.message ?? error)
+    );
+    client.connect().catch((error) => {
+      console.warn(
+        "[ratelimit] Connexion Redis impossible, repli mémoire:",
+        error?.message ?? error
+      );
       client = null;
     });
   }
@@ -54,6 +62,10 @@ export async function checkIpRateLimit(
       if (e instanceof ChatbotError) {
         throw e;
       }
+      console.warn(
+        "[ratelimit] Échec du repli DB pour le rate limit:",
+        e instanceof Error ? e.message : e
+      );
     }
   };
 
@@ -146,6 +158,10 @@ export async function checkIpRateLimit(
     if (error instanceof ChatbotError) {
       throw error;
     }
+    console.warn(
+      "[ratelimit] Échec Redis pour le rate limit chat, repli DB:",
+      error instanceof Error ? error.message : error
+    );
     // Fallback DB en cas d'erreur Redis
     if (userId) {
       await fallbackDbCheck(userId);
@@ -155,3 +171,164 @@ export async function checkIpRateLimit(
 
 // Alias pour compat
 export const checkUserRateLimit = checkIpRateLimit;
+
+// ─────────────────────────────────────────────
+// Rate limiting des Server Actions d'authentification
+// ─────────────────────────────────────────────
+
+export type AuthRateLimitAction =
+  | "login"
+  | "verify_login"
+  | "register"
+  | "verify_register"
+  | "resend_code";
+
+type BucketPolicy = { limit: number; windowSeconds: number };
+
+const AUTH_RATE_LIMITS: Record<
+  AuthRateLimitAction,
+  { identifier: BucketPolicy; ip: BucketPolicy }
+> = {
+  login: {
+    identifier: { limit: 5, windowSeconds: 600 },
+    ip: { limit: 20, windowSeconds: 3600 },
+  },
+  register: {
+    identifier: { limit: 3, windowSeconds: 3600 },
+    ip: { limit: 5, windowSeconds: 3600 },
+  },
+  resend_code: {
+    identifier: { limit: 3, windowSeconds: 900 },
+    ip: { limit: 10, windowSeconds: 3600 },
+  },
+  verify_login: {
+    identifier: { limit: 10, windowSeconds: 600 },
+    ip: { limit: 30, windowSeconds: 3600 },
+  },
+  verify_register: {
+    identifier: { limit: 10, windowSeconds: 600 },
+    ip: { limit: 30, windowSeconds: 3600 },
+  },
+};
+
+export type AuthRateLimitResult =
+  | { allowed: true }
+  | { allowed: false; retryAfterSeconds: number };
+
+// Repli mémoire (fenêtre fixe) : actif quand Redis est absent/indisponible,
+// pour ne jamais laisser les actions d'auth sans aucune protection.
+const memoryBuckets = new Map<string, { count: number; resetAt: number }>();
+const MEMORY_BUCKETS_MAX = 10_000;
+
+function checkMemoryBucket(
+  key: string,
+  policy: BucketPolicy,
+  now: number
+): AuthRateLimitResult {
+  const entry = memoryBuckets.get(key);
+  if (!entry || now >= entry.resetAt) {
+    memoryBuckets.set(key, {
+      count: 1,
+      resetAt: now + policy.windowSeconds * 1000,
+    });
+    if (memoryBuckets.size > MEMORY_BUCKETS_MAX) {
+      for (const [k, v] of memoryBuckets) {
+        if (now >= v.resetAt) {
+          memoryBuckets.delete(k);
+        }
+      }
+    }
+    return { allowed: true };
+  }
+  entry.count += 1;
+  if (entry.count > policy.limit) {
+    return {
+      allowed: false,
+      retryAfterSeconds: Math.max(1, Math.ceil((entry.resetAt - now) / 1000)),
+    };
+  }
+  return { allowed: true };
+}
+
+function hashIdentifier(identifier: string): string {
+  return createHash("sha256")
+    .update(identifier.toLowerCase().trim())
+    .digest("hex")
+    .slice(0, 32);
+}
+
+async function checkRedisBucket(
+  key: string,
+  policy: BucketPolicy
+): Promise<AuthRateLimitResult | null> {
+  const redis = getClient();
+  if (!redis?.isReady) {
+    return null;
+  }
+  try {
+    const multi = redis.multi();
+    multi.incr(key);
+    multi.expire(key, policy.windowSeconds, "NX" as any);
+    multi.ttl(key);
+    const results = (await multi.exec()) as unknown as unknown[];
+    const numbers = (results ?? [])
+      .map((entry) =>
+        Array.isArray(entry) && entry.length >= 2 ? entry[1] : entry
+      )
+      .filter((v): v is number => typeof v === "number");
+    const count = numbers[0] ?? 0;
+    const ttl = numbers[1] ?? policy.windowSeconds;
+    if (count > policy.limit) {
+      return { allowed: false, retryAfterSeconds: Math.max(1, ttl) };
+    }
+    return { allowed: true };
+  } catch (error) {
+    console.warn(
+      "[ratelimit] Échec Redis pour l'auth, repli mémoire:",
+      error instanceof Error ? error.message : error
+    );
+    return null;
+  }
+}
+
+async function checkAuthBucket(
+  key: string,
+  policy: BucketPolicy
+): Promise<AuthRateLimitResult> {
+  const redisResult = await checkRedisBucket(key, policy);
+  if (redisResult) {
+    return redisResult;
+  }
+  return checkMemoryBucket(key, policy, Date.now());
+}
+
+export async function checkAuthRateLimit(params: {
+  action: AuthRateLimitAction;
+  identifier?: string;
+  ip?: string;
+}): Promise<AuthRateLimitResult> {
+  const { action, identifier, ip } = params;
+  const policies = AUTH_RATE_LIMITS[action];
+
+  if (identifier?.trim()) {
+    const result = await checkAuthBucket(
+      `auth:${action}:id:${hashIdentifier(identifier)}`,
+      policies.identifier
+    );
+    if (!result.allowed) {
+      return result;
+    }
+  }
+
+  if (ip && ip !== "unknown") {
+    const result = await checkAuthBucket(
+      `auth:${action}:ip:${ip}`,
+      policies.ip
+    );
+    if (!result.allowed) {
+      return result;
+    }
+  }
+
+  return { allowed: true };
+}

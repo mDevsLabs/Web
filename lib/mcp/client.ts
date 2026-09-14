@@ -233,9 +233,15 @@ async function callStdioProcess(
       reject(new Error(`Timeout d'exécution stdio (${timeoutMs / 1000}s)`));
     }, timeoutMs);
 
+    // Rejeter les commandes contenant des métacaractères shell dangereux
+    if (/[\r\n;&|`$><]/.test(command)) {
+      reject(new Error("Caractères interdits dans la commande stdio."));
+      return;
+    }
+
     const proc = spawn(command, args, {
       env: { ...process.env, ...env },
-      shell: true,
+      shell: false,
     });
 
     proc.stdout.on("data", (chunk) => {
@@ -357,12 +363,9 @@ export async function fetchMcpTools(
           timeout
         );
         // Retry tools/list
-        const retryResult = await sendHttpJsonRpc<{ tools: McpToolDefinition[] }>(
-          targetUrl,
-          req,
-          headers,
-          timeout
-        );
+        const retryResult = await sendHttpJsonRpc<{
+          tools: McpToolDefinition[];
+        }>(targetUrl, req, headers, timeout);
         return retryResult?.tools ?? [];
       } catch {}
     }

@@ -7,6 +7,7 @@ import { memo, useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useSettings } from "@/hooks/use-settings";
 import { suggestions } from "@/lib/constants";
+import { getTierChatWeeklyLimit } from "@/lib/plans/tier-limits";
 import type { ChatMessage } from "@/lib/types";
 import { Suggestion } from "../ai-elements/suggestion";
 import type { VisibilityType } from "./visibility-selector";
@@ -29,7 +30,9 @@ function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
   const [isRotating, setIsRotating] = useState(false);
   const { data: costSettings } = useSettings();
   const costAiUsed = costSettings?.aiUsage?.tokensUsed ?? 0;
-  const costAiLimit = costSettings?.aiUsage?.limit ?? 2_000_000;
+  const costAiLimit =
+    costSettings?.aiUsage?.limit ??
+    getTierChatWeeklyLimit(costSettings?.aiUsage?.tier);
   const isQuotaExhausted = costAiLimit > 0 && costAiUsed >= costAiLimit;
 
   useEffect(() => {

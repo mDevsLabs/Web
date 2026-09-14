@@ -49,6 +49,79 @@ const runMigrate = async () => {
     await connection`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "pinned" boolean DEFAULT false NOT NULL`;
   } catch {}
 
+  // Modèles installés (migration 0019). Répété ici pour que les environnements
+  // dont le journal de migrations est incomplet disposent malgré tout du lien
+  // stable vers le modèle d'origine (slug) et de l'unicité par utilisateur.
+  try {
+    await connection`ALTER TABLE "Skill" DROP CONSTRAINT IF EXISTS "Skill_templateId_fkey"`;
+  } catch {}
+  try {
+    await connection`ALTER TABLE "Skill" ALTER COLUMN "templateId" TYPE text USING "templateId"::text`;
+  } catch {}
+  try {
+    await connection`CREATE UNIQUE INDEX IF NOT EXISTS "Skill_userId_templateId_key" ON "Skill" ("userId", "templateId") WHERE "templateId" IS NOT NULL`;
+  } catch {}
+  try {
+    await connection`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "templateId" text`;
+  } catch {}
+  try {
+    await connection`CREATE UNIQUE INDEX IF NOT EXISTS "McpServer_userId_templateId_key" ON "McpServer" ("userId", "templateId") WHERE "templateId" IS NOT NULL`;
+  } catch {}
+
+  // Espace Agent — mode de conversation (migration 0016). Répété ici pour que
+  // les environnements dont le journal de migrations est incomplet disposent
+  // malgré tout de la colonne, sans casser l'exécution.
+  try {
+    await connection`ALTER TABLE "Chat" ADD COLUMN IF NOT EXISTS "mode" VARCHAR(10) DEFAULT 'chat' NOT NULL`;
+  } catch {}
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "Chat_userId_mode_idx" ON "Chat" ("userId", "mode")`;
+  } catch {}
+
+  // Clarification interactive Agent (migration 0018). Répété ici pour les
+  // environnements dont le journal de migrations est incomplet : la demande
+  // d'information doit toujours pouvoir être persistée.
+  try {
+    await connection`
+      CREATE TABLE IF NOT EXISTS "AgentUserInputRequest" (
+        "id" UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+        "runId" UUID NOT NULL REFERENCES "AgentRun" ("id") ON DELETE CASCADE,
+        "chatId" UUID NOT NULL,
+        "stepId" UUID,
+        "toolExecutionId" UUID,
+        "toolCallId" TEXT NOT NULL,
+        "toolId" TEXT NOT NULL,
+        "title" TEXT NOT NULL,
+        "context" TEXT,
+        "questions" JSONB NOT NULL,
+        "questionsHash" VARCHAR(64) NOT NULL,
+        "status" VARCHAR(12) DEFAULT 'pending' NOT NULL CHECK ("status" IN ('pending','answered','expired','cancelled')),
+        "revision" INTEGER DEFAULT 0 NOT NULL,
+        "answers" JSONB,
+        "answeredBy" TEXT,
+        "answeredAt" TIMESTAMP,
+        "expiresAt" TIMESTAMP NOT NULL,
+        "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+      )
+    `;
+  } catch {}
+  try {
+    await connection`CREATE UNIQUE INDEX IF NOT EXISTS "AgentUserInputRequest_toolExecutionId_key" ON "AgentUserInputRequest" ("toolExecutionId")`;
+  } catch {}
+  try {
+    await connection`ALTER TABLE "ApprovalRequest" ADD COLUMN IF NOT EXISTS "toolCallId" TEXT`;
+  } catch {}
+  try {
+    await connection`ALTER TABLE "AgentStep" DROP CONSTRAINT IF EXISTS "AgentStep_type_check"`;
+    await connection`ALTER TABLE "AgentStep" ADD CONSTRAINT "AgentStep_type_check" CHECK ("type" IN ('planning', 'tool_call', 'tool_result', 'artifact', 'message', 'verification', 'error', 'user_input_request', 'user_input_answer', 'approval_request'))`;
+  } catch {}
+  try {
+    await connection`ALTER TABLE "Document" ADD COLUMN IF NOT EXISTS "projectId" UUID REFERENCES "Project" ("id") ON DELETE SET NULL`;
+  } catch {}
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "Document_projectId_idx" ON "Document" ("projectId")`;
+  } catch {}
+
   // Notifications & nouveautés — tables idempotentes
   try {
     await connection`

@@ -1,19 +1,17 @@
 import { type NextRequest, NextResponse } from "next/server";
+import {
+  errorResponse,
+  logError,
+  normalizeUpstreamError,
+} from "@/lib/api/error-response";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
-
-export const TIER_STORAGE_LIMITS: Record<string, number> = {
-  free: 500 * 1024 * 1024, // 500 MO
-  gratuit: 500 * 1024 * 1024,
-  max: 5 * 1024 * 1024 * 1024, // 5 GB
-  plus: 1024 * 1024 * 1024, // 1 GB
-  pro: 2 * 1024 * 1024 * 1024, // 2 GB
-};
+import { getTierStorageBytes } from "@/lib/plans/tier-limits";
 
 export async function GET() {
   const token = await getMaiSessionToken();
   if (!token) {
-    return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non authentifié." });
   }
 
   try {
@@ -33,8 +31,9 @@ export async function GET() {
     const filesData = filesRes.ok ? await filesRes.json() : { files: [] };
 
     const userTier = (user?.tier || storageData?.tier || "Free").trim();
-    const tierKey = userTier.toLowerCase();
-    const exactLimit = TIER_STORAGE_LIMITS[tierKey] || TIER_STORAGE_LIMITS.free;
+    const exactLimit = Number(
+      storageData?.bytes_limit || getTierStorageBytes(userTier)
+    );
 
     const bytesUsed = Number(storageData?.bytes_used || 0);
     const percentUsed =
@@ -58,15 +57,15 @@ export async function GET() {
       storage: finalStorage,
     });
   } catch (error) {
-    console.error("Erreur API Library GET:", error);
-    return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
+    logError("Erreur API Library GET", error);
+    return errorResponse("internal_error", { message: "Erreur serveur." });
   }
 }
 
 export async function POST(req: NextRequest) {
   const token = await getMaiSessionToken();
   if (!token) {
-    return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non authentifié." });
   }
 
   try {
@@ -74,10 +73,9 @@ export async function POST(req: NextRequest) {
     const file = formData.get("file");
 
     if (!file || !(file instanceof File)) {
-      return NextResponse.json(
-        { error: "Aucun fichier fourni" },
-        { status: 400 }
-      );
+      return errorResponse("invalid_request", {
+        message: "Aucun fichier fourni.",
+      });
     }
 
     const uploadFormData = new FormData();
@@ -92,30 +90,32 @@ export async function POST(req: NextRequest) {
     });
 
     const data = await res.json();
-    return NextResponse.json(data, { status: res.status });
+    if (!res.ok) {
+      const payload = normalizeUpstreamError(data, res.status);
+      return NextResponse.json(payload, { status: payload.status });
+    }
+    return NextResponse.json(data);
   } catch (error) {
-    console.error("Erreur API Library POST:", error);
-    return NextResponse.json(
-      { error: "Erreur lors de l'upload" },
-      { status: 500 }
-    );
+    logError("Erreur API Library POST", error);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de l'upload.",
+    });
   }
 }
 
 export async function DELETE(req: NextRequest) {
   const token = await getMaiSessionToken();
   if (!token) {
-    return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non authentifié." });
   }
 
   const { searchParams } = new URL(req.url);
   const fileId = searchParams.get("id");
 
   if (!fileId) {
-    return NextResponse.json(
-      { error: "ID du fichier requis" },
-      { status: 400 }
-    );
+    return errorResponse("invalid_request", {
+      message: "L'identifiant du fichier est requis.",
+    });
   }
 
   try {
@@ -127,20 +127,23 @@ export async function DELETE(req: NextRequest) {
     });
 
     const data = await res.json();
-    return NextResponse.json(data, { status: res.status });
+    if (!res.ok) {
+      const payload = normalizeUpstreamError(data, res.status);
+      return NextResponse.json(payload, { status: payload.status });
+    }
+    return NextResponse.json(data);
   } catch (error) {
-    console.error("Erreur API Library DELETE:", error);
-    return NextResponse.json(
-      { error: "Erreur lors de la suppression" },
-      { status: 500 }
-    );
+    logError("Erreur API Library DELETE", error);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de la suppression.",
+    });
   }
 }
 
 export async function PATCH(req: NextRequest) {
   const token = await getMaiSessionToken();
   if (!token) {
-    return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non authentifié." });
   }
 
   try {
@@ -148,7 +151,9 @@ export async function PATCH(req: NextRequest) {
     const { id, name } = body;
 
     if (!id || !name) {
-      return NextResponse.json({ error: "ID et nom requis" }, { status: 400 });
+      return errorResponse("invalid_request", {
+        message: "L'identifiant et le nom du fichier sont requis.",
+      });
     }
 
     const res = await fetch(`${MAI_API_URL}/cloud/files/${id}`, {
@@ -167,7 +172,9 @@ export async function PATCH(req: NextRequest) {
 
     return NextResponse.json({ id, name, success: true });
   } catch (error) {
-    console.error("Erreur API Library PATCH:", error);
+    // Repli volontaire : le renommage est optimiste côté client, un échec de
+    // synchronisation n'empêche pas l'opération locale.
+    console.warn("Erreur API Library PATCH:", error);
     return NextResponse.json({ success: true });
   }
 }

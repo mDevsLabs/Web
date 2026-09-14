@@ -1,7 +1,7 @@
+import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
+import { getStreamContext } from "@/lib/chat/stream-context";
 import { getChatById, getStreamIdsByChatId } from "@/lib/db/queries";
-
-import { getStreamContext } from "@/app/(chat)/api/chat/route";
 
 export async function GET(
   _request: Request,
@@ -11,16 +11,18 @@ export async function GET(
 
   const maiUser = await getMaiUser();
   if (!maiUser?.id) {
-    return new Response(null, { status: 401 });
+    return errorResponse("auth_required");
   }
 
   const chat = await getChatById({ id: chatId });
   if (!chat) {
-    return new Response(null, { status: 404 });
+    return errorResponse("not_found", {
+      message: "La discussion demandée est introuvable.",
+    });
   }
   const userId = maiUser.id || maiUser.email;
   if (chat.userId !== userId && chat.userId !== maiUser.email) {
-    return new Response(null, { status: 403 });
+    return errorResponse("access_denied");
   }
 
   let streamIds: string[];
@@ -53,6 +55,6 @@ export async function GET(
       },
     });
   } catch {
-    return new Response(null, { status: 500 });
+    return errorResponse("internal_error");
   }
 }

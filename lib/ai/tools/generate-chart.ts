@@ -113,7 +113,9 @@ function generatePieChartSvg({
       pathD = `M ${cx} ${cy} L ${x1} ${y1} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${x2} ${y2} Z`;
     }
 
-    slices.push(`<path d="${pathD}" fill="${color}" stroke="#ffffff" stroke-width="2"><title>${d.label}: ${d.value} (${Math.round((d.value / total) * 100)}%)</title></path>`);
+    slices.push(
+      `<path d="${pathD}" fill="${color}" stroke="#ffffff" stroke-width="2"><title>${d.label}: ${d.value} (${Math.round((d.value / total) * 100)}%)</title></path>`
+    );
 
     const legendY = 60 + i * 24;
     if (legendY < height - 20) {
@@ -176,11 +178,16 @@ export const generateChart = tool({
     chartType: z
       .enum(["bar", "pie", "doughnut"])
       .optional()
-      .describe("Type de graphique : 'bar' (barres verticales), 'pie' (camembert), 'doughnut' (anneau)"),
+      .describe(
+        "Type de graphique : 'bar' (barres verticales), 'pie' (camembert), 'doughnut' (anneau)"
+      ),
     data: z
       .array(
         z.object({
-          color: z.string().optional().describe("Couleur hexadécimale (optionnel, ex: #6366f1)"),
+          color: z
+            .string()
+            .optional()
+            .describe("Couleur hexadécimale (optionnel, ex: #6366f1)"),
           label: z.string().describe("Nom du point ou catégorie"),
           value: z.number().describe("Valeur numérique positive"),
         })
@@ -189,7 +196,13 @@ export const generateChart = tool({
       .max(30)
       .describe("Tableau des points de données (1 à 30 éléments)"),
     title: z.string().min(1).max(120).describe("Titre du graphique"),
-    xAxisLabel: z.string().optional().describe("Légende de l'axe horizontal X (optionnel)"),
-    yAxisLabel: z.string().optional().describe("Légende de l'axe vertical Y (optionnel)"),
+    xAxisLabel: z
+      .string()
+      .optional()
+      .describe("Légende de l'axe horizontal X (optionnel)"),
+    yAxisLabel: z
+      .string()
+      .optional()
+      .describe("Légende de l'axe vertical Y (optionnel)"),
   }),
 });

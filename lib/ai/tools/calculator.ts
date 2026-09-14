@@ -607,6 +607,264 @@ function convert(category: string, value: number, from: string, to: string) {
 
 const MAX_EXPR_LENGTH = 1000;
 
+/**
+ * Évaluateur d'expressions mathématiques pur (Descente Récursive).
+ * N'utilise JAMAIS eval() ou new Function() pour une sécurité absolue contre les RCE.
+ */
+class SafeMathEvaluator {
+  private pos = 0;
+  private expr = "";
+
+  constructor(expression: string) {
+    this.expr = expression
+      .replace(/×/g, "*")
+      .replace(/÷/g, "/")
+      .replace(/−/g, "-")
+      .replace(/\bmod\b/gi, "%");
+  }
+
+  private peek(): string {
+    while (this.pos < this.expr.length && /\s/.test(this.expr[this.pos])) {
+      this.pos++;
+    }
+    return this.pos < this.expr.length ? this.expr[this.pos] : "";
+  }
+
+  private get(): string {
+    const ch = this.peek();
+    if (ch) this.pos++;
+    return ch;
+  }
+
+  public evaluate(): number {
+    const res = this.parseExpression();
+    if (this.peek() !== "") {
+      throw new Error(`Caractère inattendu : "${this.peek()}"`);
+    }
+    return res;
+  }
+
+  private parseExpression(): number {
+    let val = this.parseTerm();
+    while (true) {
+      const op = this.peek();
+      if (op === "+" || op === "-") {
+        this.get();
+        const next = this.parseTerm();
+        val = op === "+" ? val + next : val - next;
+      } else {
+        break;
+      }
+    }
+    return val;
+  }
+
+  private parseTerm(): number {
+    let val = this.parsePower();
+    while (true) {
+      const op = this.peek();
+      if (op === "*" || op === "/" || op === "%") {
+        this.get();
+        const next = this.parsePower();
+        if ((op === "/" || op === "%") && next === 0) {
+          throw new Error("Division par zéro");
+        }
+        val = op === "*" ? val * next : op === "/" ? val / next : val % next;
+      } else {
+        break;
+      }
+    }
+    return val;
+  }
+
+  private parsePower(): number {
+    const base = this.parseFactor();
+    if (
+      this.peek() === "^" ||
+      (this.expr[this.pos] === "*" && this.expr[this.pos + 1] === "*")
+    ) {
+      if (this.peek() === "^") {
+        this.get();
+      } else {
+        this.get();
+        this.get();
+      }
+      const exp = this.parsePower(); // associatif à droite
+      return base ** exp;
+    }
+    return base;
+  }
+
+  private parseFactor(): number {
+    const op = this.peek();
+    if (op === "+") {
+      this.get();
+      return this.parseFactor();
+    }
+    if (op === "-") {
+      this.get();
+      return -this.parseFactor();
+    }
+
+    if (op === "(") {
+      this.get();
+      const val = this.parseExpression();
+      if (this.peek() !== ")") {
+        throw new Error("Parenthèse fermante ')' manquante");
+      }
+      this.get();
+      return val;
+    }
+
+    // Nombre ou constante ou fonction
+    if (/[0-9.]/.test(op)) {
+      return this.parseNumber();
+    }
+
+    if (/[a-zA-Z_]/.test(op)) {
+      return this.parseIdentifierOrFunction();
+    }
+
+    throw new Error(`Symbole invalide : "${op || "Fin de l'expression"}"`);
+  }
+
+  private parseNumber(): number {
+    const start = this.pos;
+    while (this.pos < this.expr.length && /[0-9.]/.test(this.expr[this.pos])) {
+      this.pos++;
+    }
+    // Notation scientifique 1e-5
+    if (this.pos < this.expr.length && /[eE]/.test(this.expr[this.pos])) {
+      this.pos++;
+      if (this.pos < this.expr.length && /[+-]/.test(this.expr[this.pos])) {
+        this.pos++;
+      }
+      while (this.pos < this.expr.length && /[0-9]/.test(this.expr[this.pos])) {
+        this.pos++;
+      }
+    }
+    const numStr = this.expr.slice(start, this.pos);
+    const num = Number(numStr);
+    if (Number.isNaN(num)) {
+      throw new Error(`Nombre invalide : "${numStr}"`);
+    }
+    return num;
+  }
+
+  private parseIdentifierOrFunction(): number {
+    const start = this.pos;
+    while (
+      this.pos < this.expr.length &&
+      /[a-zA-Z0-9_]/.test(this.expr[this.pos])
+    ) {
+      this.pos++;
+    }
+    const name = this.expr.slice(start, this.pos).toLowerCase();
+
+    // Constantes
+    if (name === "pi" || name === "π") return Math.PI;
+    if (name === "e") return Math.E;
+    if (name === "ln2") return Math.LN2;
+    if (name === "ln10") return Math.LN10;
+    if (name === "sqrt2") return Math.SQRT2;
+
+    // Appel de fonction
+    if (this.peek() === "(") {
+      this.get();
+      const args: number[] = [];
+      if (this.peek() !== ")") {
+        while (true) {
+          args.push(this.parseExpression());
+          if (this.peek() === ",") {
+            this.get();
+          } else {
+            break;
+          }
+        }
+      }
+      if (this.peek() !== ")") {
+        throw new Error(
+          `Parenthèse fermante ')' manquante après l'appel de "${name}"`
+        );
+      }
+      this.get();
+
+      switch (name) {
+        case "sqrt":
+          if (args.length !== 1) throw new Error("sqrt attend 1 argument");
+          if (args[0] < 0) throw new Error("sqrt d'un nombre négatif");
+          return Math.sqrt(args[0]);
+        case "abs":
+          if (args.length !== 1) throw new Error("abs attend 1 argument");
+          return Math.abs(args[0]);
+        case "sin":
+          if (args.length !== 1) throw new Error("sin attend 1 argument");
+          return Math.sin(args[0]);
+        case "cos":
+          if (args.length !== 1) throw new Error("cos attend 1 argument");
+          return Math.cos(args[0]);
+        case "tan":
+          if (args.length !== 1) throw new Error("tan attend 1 argument");
+          return Math.tan(args[0]);
+        case "asin":
+          if (args.length !== 1) throw new Error("asin attend 1 argument");
+          return Math.asin(args[0]);
+        case "acos":
+          if (args.length !== 1) throw new Error("acos attend 1 argument");
+          return Math.acos(args[0]);
+        case "atan":
+          if (args.length !== 1) throw new Error("atan attend 1 argument");
+          return Math.atan(args[0]);
+        case "exp":
+          if (args.length !== 1) throw new Error("exp attend 1 argument");
+          return Math.exp(args[0]);
+        case "ln":
+        case "log":
+          if (args.length !== 1) throw new Error("ln attend 1 argument");
+          if (args[0] <= 0) throw new Error("ln d'un nombre négatif ou nul");
+          return Math.log(args[0]);
+        case "log10":
+          if (args.length !== 1) throw new Error("log10 attend 1 argument");
+          if (args[0] <= 0) throw new Error("log10 d'un nombre négatif ou nul");
+          return Math.log10(args[0]);
+        case "log2":
+          if (args.length !== 1) throw new Error("log2 attend 1 argument");
+          if (args[0] <= 0) throw new Error("log2 d'un nombre négatif ou nul");
+          return Math.log2(args[0]);
+        case "ceil":
+          if (args.length !== 1) throw new Error("ceil attend 1 argument");
+          return Math.ceil(args[0]);
+        case "floor":
+          if (args.length !== 1) throw new Error("floor attend 1 argument");
+          return Math.floor(args[0]);
+        case "round":
+          if (args.length !== 1) throw new Error("round attend 1 argument");
+          return Math.round(args[0]);
+        case "trunc":
+          if (args.length !== 1) throw new Error("trunc attend 1 argument");
+          return Math.trunc(args[0]);
+        case "min":
+          if (args.length === 0)
+            throw new Error("min attend au moins 1 argument");
+          return Math.min(...args);
+        case "max":
+          if (args.length === 0)
+            throw new Error("max attend au moins 1 argument");
+          return Math.max(...args);
+        case "pow":
+          if (args.length !== 2) throw new Error("pow attend 2 arguments");
+          return args[0] ** args[1];
+        default:
+          throw new Error(
+            `Fonction mathématique inconnue ou non supportée : "${name}"`
+          );
+      }
+    }
+
+    throw new Error(`Identifiant mathématique inconnu : "${name}"`);
+  }
+}
+
 function safeEvalExpression(expression: string): {
   error?: string;
   result?: number;
@@ -621,101 +879,11 @@ function safeEvalExpression(expression: string): {
       error: `Expression trop longue (max ${MAX_EXPR_LENGTH} caractères)`,
     };
   }
-  if (
-    /[;`\\]|=>|\beval\b|\bnew\b|\bwindow\b|\bdocument\b|\bimport\b|\brequire\b|\bprocess\b|\bString\(|\bFunction\(/i.test(
-      expr
-    )
-  ) {
-    return {
-      error: "Caractères ou mots-clés non autorisés dans l'expression.",
-    };
-  }
-
-  const sanitized = expr
-    .replace(/×/g, "*")
-    .replace(/÷/g, "/")
-    .replace(/−/g, "-")
-    .replace(/π/g, "(pi)")
-    .replace(/\^/g, "**")
-    .replace(/\bmod\b/g, "%")
-    .replace(/\bsqrt\b/gi, "(__sqrt_fn__)")
-    .replace(/\blog\b/gi, "(__log10_fn__)");
 
   let result: number;
   try {
-    const fnMatch = sanitized.match(/__sqrt_fn__|__log10_fn__/g);
-    const needSqrt = fnMatch?.includes("__sqrt_fn__");
-    const needLog10 = fnMatch?.includes("__log10_fn__");
-    const finalExpr = sanitized
-      .replaceAll("__sqrt_fn__", "Math.sqrt")
-      .replaceAll("__log10_fn__", "Math.log10");
-
-    const allowedNames = new Set<string>([
-      "Math",
-      "PI",
-      "E",
-      "LN2",
-      "LN10",
-      "SQRT2",
-      "Infinity",
-      "NaN",
-      "abs",
-      "ceil",
-      "cos",
-      "cosh",
-      "exp",
-      "floor",
-      "log10",
-      "log2",
-      "max",
-      "min",
-      "pow",
-      "round",
-      "sin",
-      "sinh",
-      "sqrt",
-      "tan",
-      "tanh",
-      "trunc",
-      "ln",
-      ...(needSqrt ? ["Math.sqrt"] : []),
-      ...(needLog10 ? ["Math.log10"] : []),
-    ]);
-
-    const functionArgs: string[] = [];
-    const functionBodies: string[] = [];
-    for (const name of allowedNames) {
-      if (
-        name === "Math" ||
-        name === "PI" ||
-        name === "E" ||
-        name === "LN2" ||
-        name === "LN10" ||
-        name === "SQRT2" ||
-        name === "Infinity" ||
-        name === "NaN"
-      ) {
-        continue;
-      }
-      if (name === "ln") {
-        functionArgs.push("ln");
-        functionBodies.push("ln = (x) => Math.log(x)");
-        continue;
-      }
-      if (name === "log2") {
-        functionArgs.push("log2");
-        functionBodies.push("log2 = (x) => Math.log2(x)");
-        continue;
-      }
-      if (name === "log10") {
-        functionArgs.push("log10");
-        functionBodies.push("log10 = (x) => Math.log10(x)");
-      }
-    }
-
-    const body = `${functionBodies.join("; ")}; return (${finalExpr});`;
-    const fn = new Function(...functionArgs, body);
-    result = fn();
+    const evaluator = new SafeMathEvaluator(expr);
+    result = evaluator.evaluate();
   } catch (e: any) {
     return { error: `Erreur d'évaluation : ${e?.message || "inconnue"}` };
   }

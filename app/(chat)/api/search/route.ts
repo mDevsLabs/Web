@@ -1,5 +1,6 @@
 import { and, desc, ilike, or, sql } from "drizzle-orm";
 import { NextResponse } from "next/server";
+import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { getDb } from "@/lib/db/queries";
 import { chat, message, project } from "@/lib/db/schema";
@@ -22,7 +23,7 @@ export async function GET(request: Request) {
 
   const maiUser = await getMaiUser();
   if (!maiUser) {
-    return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non authentifié." });
   }
   const userIds = Array.from(
     new Set([maiUser.id, maiUser.email, maiUser.username].filter(Boolean))

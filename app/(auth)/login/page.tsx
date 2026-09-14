@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { loginAction, resendCodeAction, verifyLoginAction } from "../actions";
@@ -25,6 +26,7 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [targetEmail, setTargetEmail] = useState("");
   const [otpCode, setOtpCode] = useState("");
+  const [acceptedTerms, setAcceptedTerms] = useState(true);
 
   const [isLoading, setIsLoading] = useState(false);
   const [countdown, setCountdown] = useState(60);
@@ -44,6 +46,13 @@ export default function LoginPage() {
   // Étape 1 : Envoi des identifiants
   const handleCredentialsSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!acceptedTerms) {
+      toast.error(
+        "Veuillez accepter les conditions d'utilisation pour vous connecter."
+      );
+      return;
+    }
+
     if (!identifier || !password) {
       toast.error("Veuillez renseigner vos identifiants.");
       return;
@@ -53,9 +62,17 @@ export default function LoginPage() {
     const formData = new FormData();
     formData.append("identifier", identifier);
     formData.append("password", password);
+    formData.append("acceptedTerms", String(acceptedTerms));
 
-    const res = await loginAction(formData);
-    setIsLoading(false);
+    let res;
+    try {
+      res = await loginAction(formData);
+    } catch {
+      toast.error("Impossible de contacter le serveur. Réessayez.");
+      return;
+    } finally {
+      setIsLoading(false);
+    }
 
     if (!res.success) {
       toast.error(res.error || "Identifiants invalides.");
@@ -78,8 +95,15 @@ export default function LoginPage() {
     }
 
     setIsLoading(true);
-    const res = await verifyLoginAction(targetEmail, otpCode.trim());
-    setIsLoading(false);
+    let res;
+    try {
+      res = await verifyLoginAction(targetEmail, otpCode.trim());
+    } catch {
+      toast.error("Impossible de contacter le serveur. Réessayez.");
+      return;
+    } finally {
+      setIsLoading(false);
+    }
 
     if (!res.success) {
       toast.error(res.error || "Code invalide ou expiré.");
@@ -97,8 +121,15 @@ export default function LoginPage() {
       return;
     }
     setIsLoading(true);
-    const res = await resendCodeAction(targetEmail, "login");
-    setIsLoading(false);
+    let res;
+    try {
+      res = await resendCodeAction(targetEmail, "login");
+    } catch {
+      toast.error("Impossible de contacter le serveur. Réessayez.");
+      return;
+    } finally {
+      setIsLoading(false);
+    }
 
     if (res.success) {
       setCountdown(60);
@@ -184,6 +215,37 @@ export default function LoginPage() {
                   )}
                 </button>
               </div>
+            </div>
+
+            <div className="flex flex-col gap-1.5 pt-1">
+              <div className="flex items-center gap-2.5">
+                <Checkbox
+                  checked={acceptedTerms}
+                  id="login-terms"
+                  onCheckedChange={(checked) =>
+                    setAcceptedTerms(checked === true)
+                  }
+                />
+                <Label
+                  className="text-xs leading-normal font-normal text-muted-foreground cursor-pointer select-none"
+                  htmlFor="login-terms"
+                >
+                  J'accepte les{" "}
+                  <a
+                    className="font-medium text-foreground underline underline-offset-4 hover:text-primary transition-colors"
+                    href="https://mai-devs.vercel.app"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    conditions d'utilisation
+                  </a>
+                </Label>
+              </div>
+              {!acceptedTerms && (
+                <p className="text-[11px] text-destructive font-medium pl-6">
+                  Veuillez accepter les conditions pour continuer.
+                </p>
+              )}
             </div>
 
             <button

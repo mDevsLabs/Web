@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { errorResponse, logError } from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
 import { getMaiUser } from "@/lib/auth/session";
 import { deleteAgent, getAgentById, updateAgent } from "@/lib/db/queries";
@@ -41,7 +42,7 @@ export async function GET(
   const found = await getAgentById({ id, userId });
   // Allow fetching own agent or public template fallback via same id? Only own for now
   if (!found) {
-    return Response.json({ error: "Agent introuvable" }, { status: 404 });
+    return errorResponse("not_found", { message: "Agent introuvable." });
   }
   return Response.json(found);
 }
@@ -65,24 +66,22 @@ export async function PATCH(
     }
     const updated = await updateAgent({ data: parsed as any, id, userId });
     if (!updated) {
-      return Response.json({ error: "Agent introuvable" }, { status: 404 });
+      return errorResponse("not_found", { message: "Agent introuvable." });
     }
     return Response.json(updated);
   } catch (err: any) {
-    console.error("Erreur mise à jour agent:", err);
     if (err instanceof z.ZodError) {
       const issues = err.issues
         .map((e: any) => `${e.path.join(".") || "champ"}: ${e.message}`)
         .join(" • ");
-      return Response.json(
-        { error: `Données invalides : ${issues}` },
-        { status: 400 }
-      );
+      return errorResponse("invalid_request", {
+        message: `Données invalides : ${issues}`,
+      });
     }
-    return Response.json(
-      { error: err.message ?? "Erreur mise à jour" },
-      { status: 400 }
-    );
+    logError("Erreur mise à jour agent", err);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de la mise à jour de l'agent.",
+    });
   }
 }
 
@@ -99,7 +98,7 @@ export async function DELETE(
   const { id } = await params;
   const deleted = await deleteAgent({ id, userId });
   if (!deleted) {
-    return Response.json({ error: "Agent introuvable" }, { status: 404 });
+    return errorResponse("not_found", { message: "Agent introuvable." });
   }
   return Response.json({ message: "Agent supprimé", success: true });
 }

@@ -261,7 +261,8 @@ export const slashCommands: SlashCommand[] = [
   {
     action: "tool-memory",
     aliases: ["memory", "memoire", "souvenir"],
-    description: "Activer l'outil de gestion de la mémoire utilisateur (one-shot)",
+    description:
+      "Activer l'outil de gestion de la mémoire utilisateur (one-shot)",
     icon: <BrainIcon className="size-3.5" />,
     name: "memory",
   },
@@ -282,7 +283,8 @@ export const slashCommands: SlashCommand[] = [
   {
     action: "quiz",
     aliases: ["quizz", "quizzly", "test"],
-    description: "Créer un quiz interactif Quizzly (1 à 50 questions avec score)",
+    description:
+      "Créer un quiz interactif Quizzly (1 à 50 questions avec score)",
     icon: <TrophyIcon className="size-3.5" />,
     name: "quiz",
   },

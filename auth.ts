@@ -2,297 +2,512 @@ import bcrypt from "npm:bcryptjs";
 import type { Hono } from "npm:hono@4";
 import {
   BCRYPT_ROUNDS,
+  clientIp,
   extractToken,
   generateVerificationCode,
   getDb,
   parseUserAgent,
+  rateLimit,
   signToken,
   sqlite,
   verifyToken,
   verifyVerificationCode,
 } from "./config.ts";
 import { sendVerificationEmail } from "./email.ts";
+import { createRegisterMulti } from "./vibe-common.ts";
 
 export function registerAuthRoutes(app: Hono) {
+  const registerMulti = createRegisterMulti(app);
+
+  // GET /register info endpoint (évite 404 lors des tests au navigateur)
+  registerMulti(
+    "get",
+    ["/register", "/v1/register", "/api/register", "/api/vibe/register"],
+    (c) =>
+      c.json({
+        description:
+          "Pour créer un compte, envoyez une requête HTTP POST avec { email, username, password } en JSON.",
+        endpoint: "/register",
+        method: "POST",
+        service: "mAI Vibe Auth",
+      })
+  );
+
   // POST /register
-  app.post("/register", async (c) => {
-    try {
-      const { email, username, password } = await c.req.json();
-      if (!email || !username || !password) {
-        return c.json({ error: "Champs manquants." }, 400);
-      }
-
-      const sql = getDb();
-      const existing =
-        await sql`SELECT id FROM users WHERE email = ${email} OR username = ${username} LIMIT 1`;
-      if (existing.length > 0) {
-        return c.json({ error: "Email ou nom d'utilisateur déjà pris." }, 400);
-      }
-
-      const code = await generateVerificationCode(email, "register");
-      await sendVerificationEmail(email, code, "register");
-
-      return c.json({ email, status: "verification_required", success: true });
-    } catch (err: any) {
-      console.error("Register Error:", err);
-      return c.json({ error: "Erreur serveur." }, 500);
-    }
-  });
-
-  // POST /verify-register
-  app.post("/verify-register", async (c) => {
-    try {
-      const { email, username, password, code } = await c.req.json();
-      if (!email || !username || !password || !code) {
-        return c.json({ error: "Champs manquants." }, 400);
-      }
-
-      const isValid = await verifyVerificationCode(email, code, "register");
-      if (!isValid) {
-        return c.json({ error: "Code invalide ou expiré." }, 400);
-      }
-
-      const sql = getDb();
-      const existing =
-        await sql`SELECT id FROM users WHERE email = ${email} OR username = ${username} LIMIT 1`;
-      if (existing.length > 0) {
-        return c.json({ error: "Email ou nom d'utilisateur déjà pris." }, 400);
-      }
-
-      const hash = await bcrypt.hash(password, BCRYPT_ROUNDS);
-
-      const result = await sql`
-        INSERT INTO users (email, username, password_hash, tier)
-        VALUES (${email}, ${username}, ${hash}, 'Free')
-        RETURNING id, tier
-      `;
-
-      const user = result[0];
-      const token = await signToken({ sub: user.id, tier: user.tier });
-
-      const userAgent = c.req.header("user-agent") || "";
-      const ip =
-        c.req.header("cf-connecting-ip") ||
-        c.req.header("x-forwarded-for") ||
-        "Inconnue";
-      const { os, device_model, device_version, device_name } =
-        parseUserAgent(userAgent);
-
+  registerMulti(
+    "post",
+    ["/register", "/v1/register", "/api/register", "/api/vibe/register"],
+    async (c) => {
       try {
-        await sql`
-          INSERT INTO connected_devices (user_id, token, os, device_model, device_version, ip_address, device_name)
-          VALUES (${user.id}::text, ${token}, ${os}, ${device_model}, ${device_version}, ${ip}, ${device_name})
-        `;
-      } catch (dbErr) {
-        console.error("Erreur insertion device:", dbErr);
-      }
-
-      return c.json({ success: true, tier: user.tier, token });
-    } catch (err: any) {
-      console.error("Verify Register Error:", err);
-      return c.json({ error: "Erreur serveur." }, 500);
-    }
-  });
-
-  // POST /login
-  app.post("/login", async (c) => {
-    try {
-      const { email, password, identifier } = await c.req.json();
-      const loginId = (identifier || email || "").trim();
-      if (!loginId || !password) {
-        return c.json({ error: "Champs manquants." }, 400);
-      }
-
-      const sql = getDb();
-      const users =
-        await sql`SELECT id, email, password_hash, tier, is_blocked FROM users WHERE email = ${loginId} OR username = ${loginId} OR phone = ${loginId} LIMIT 1`;
-      if (users.length === 0) {
-        return c.json({ error: "Identifiants invalides." }, 401);
-      }
-
-      const user = users[0];
-      const match = await bcrypt.compare(password, user.password_hash);
-      if (!match) {
-        return c.json({ error: "Identifiants invalides." }, 401);
-      }
-
-      // Compte bloqué par un administrateur : refus explicite (403)
-      if (user.is_blocked) {
-        return c.json(
-          { error: "Votre compte a été bloqué par un administrateur. Contactez le support pour demander sa réactivation.", blocked: true },
-          403
-        );
-      }
-
-      const code = await generateVerificationCode(user.email, "login");
-      await sendVerificationEmail(user.email, code, "login");
-
-      return c.json({
-        email: user.email,
-        status: "verification_required",
-        success: true,
-      });
-    } catch (err: any) {
-      console.error("Login Error:", err);
-      return c.json({ error: "Erreur serveur." }, 500);
-    }
-  });
-
-  // POST /verify-login
-  app.post("/verify-login", async (c) => {
-    try {
-      const { email, code } = await c.req.json();
-      if (!email || !code) {
-        return c.json({ error: "Champs manquants." }, 400);
-      }
-
-      const isValid = await verifyVerificationCode(email, code, "login");
-      if (!isValid) {
-        return c.json({ error: "Code invalide ou expiré." }, 400);
-      }
-
-      const sql = getDb();
-      const users =
-        await sql`SELECT id, tier, is_blocked FROM users WHERE email = ${email} LIMIT 1`;
-      if (users.length === 0) {
-        return c.json({ error: "Utilisateur introuvable." }, 404);
-      }
-
-      const user = users[0];
-
-      // Compte bloqué par un administrateur : refus explicite (403)
-      if (user.is_blocked) {
-        return c.json(
-          { error: "Votre compte a été bloqué par un administrateur. Contactez le support pour demander sa réactivation.", blocked: true },
-          403
-        );
-      }
-
-      const token = await signToken({ sub: user.id, tier: user.tier });
-
-      const userAgent = c.req.header("user-agent") || "";
-      // Pour les tests en dev, on utilise une IP par défaut
-      let ip =
-        c.req.header("cf-connecting-ip") ||
-        c.req.header("x-forwarded-for") ||
-        c.req.header("x-real-ip") ||
-        "";
-      if (!ip || ip === "::1" || ip === "127.0.0.1") {
-        ip = "8.8.8.8"; // IP Google par défaut pour ne pas planter l'API
-      } else {
-        // Extraire la première IP si on a une liste
-        ip = ip.split(",")[0].trim();
-      }
-      const { os, device_model, device_version, device_name } =
-        parseUserAgent(userAgent);
-
-      let locationStr = "Lieu inconnu";
-      let countryStr = "Pays inconnu";
-      try {
-        const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 3000);
-        const geoRes = await fetch(`https://ip-api.com/json/${ip}`, {
-          headers: { "User-Agent": "mAI/1.0" },
-          signal: controller.signal,
-        });
-        clearTimeout(timeout);
-        if (geoRes.ok) {
-          const geoData = await geoRes.json();
-          if (geoData.status === "success") {
-            locationStr = `${geoData.city}, ${geoData.country}`;
-            countryStr = geoData.country;
-          }
-        }
-      } catch (e) {
-        console.error("Erreur de géolocalisation:", e);
-      }
-
-      // Vérifier si c'est un nouvel appareil ou un nouveau pays
-      let isNewDeviceOrLocation = true;
-      try {
-        const pastDevices = await sql`
-          SELECT device_name, location FROM connected_devices 
-          WHERE user_id = ${user.id}::text
-        `;
-        if (pastDevices.length > 0) {
-          // C'est pas sa toute première connexion
-          const knownDevice = pastDevices.some(
-            (d) => d.device_name === device_name
-          );
-          const knownLocation = pastDevices.some(
-            (d) => d.location && d.location.includes(countryStr)
-          );
-          if (knownDevice && knownLocation) {
-            isNewDeviceOrLocation = false;
-          }
-        } else {
-          // Première connexion jamais (donc nouvelle par defaut, ou pas besoin d'alerte? on envoie quand meme)
-          isNewDeviceOrLocation = true;
-        }
-      } catch (e) {
-        console.error(e);
-      }
-
-      try {
-        await sql`
-          INSERT INTO connected_devices (user_id, token, os, device_model, device_version, ip_address, device_name, location)
-          VALUES (${user.id}::text, ${token}, ${os}, ${device_model}, ${device_version}, ${ip}, ${device_name}, ${locationStr})
-        `;
-      } catch (dbErr) {
-        console.error("Erreur insertion device:", dbErr);
-      }
-
-      if (isNewDeviceOrLocation) {
-        // On n'attend pas l'envoi de l'email
-        sendVerificationEmail(email, "", "new_login", {
-          device: device_name,
-          location: locationStr,
-        }).catch(console.error);
-      }
-
-      return c.json({ success: true, tier: user.tier, token });
-    } catch (err: any) {
-      console.error("Verify Login Error:", err);
-      return c.json({ error: "Erreur serveur." }, 500);
-    }
-  });
-
-  // POST /resend-code
-  app.post("/resend-code", async (c) => {
-    try {
-      const { email, action } = await c.req.json();
-      if (!email || !action) {
-        return c.json({ error: "Champs manquants." }, 400);
-      }
-
-      // Vérifier le rate-limit (1 minute)
-      const result = await sqlite.execute({
-        args: [email, action],
-        sql: "SELECT expires_at FROM verification_codes WHERE email = ? AND action = ?",
-      });
-
-      if (result.rows.length > 0) {
-        const expiresAt = new Date(result.rows[0][0] as string);
-        const now = new Date();
-        // Si la date d'expiration est > maintenant + 9 minutes, ça veut dire qu'il a été généré il y a moins d'1 minute.
-        const diffMinutes = (expiresAt.getTime() - now.getTime()) / 60_000;
-        if (diffMinutes > 9) {
+        // Anti-abus : 5 inscriptions / IP / 15 min
+        if (!rateLimit(`register:${clientIp(c)}`, 5, 15 * 60_000)) {
           return c.json(
-            { error: "Veuillez patienter 1 minute avant de renvoyer un code." },
+            { error: "Trop de tentatives. Réessayez plus tard." },
             429
           );
         }
+        const { email, username, password } = await c.req.json();
+        if (!email || !username || !password) {
+          return c.json({ error: "Champs manquants." }, 400);
+        }
+
+        const cleanEmail = String(email).trim().toLowerCase();
+        const cleanUsername = String(username)
+          .trim()
+          .toLowerCase()
+          .replace(/^@/, "");
+        if (!/^[a-z0-9_]{2,30}$/.test(cleanUsername)) {
+          return c.json(
+            {
+              error:
+                "Le nom d'utilisateur doit comporter entre 2 et 30 caractères (lettres minuscules, chiffres, _).",
+            },
+            400
+          );
+        }
+
+        const sql = getDb();
+        const existing =
+          await sql`SELECT id FROM users WHERE LOWER(email) = ${cleanEmail} OR LOWER(username) = ${cleanUsername} LIMIT 1`;
+        if (existing.length > 0) {
+          return c.json(
+            { error: "Email ou nom d'utilisateur déjà pris." },
+            400
+          );
+        }
+
+        const code = await generateVerificationCode(cleanEmail, "register");
+        await sendVerificationEmail(cleanEmail, code, "register");
+
+        return c.json({
+          email: cleanEmail,
+          status: "verification_required",
+          success: true,
+        });
+      } catch (err: any) {
+        console.error("Register Error:", err);
+        return c.json({ error: err?.message || "Erreur serveur." }, 500);
+      }
+    }
+  );
+
+  // POST /verify-register
+  registerMulti(
+    "post",
+    [
+      "/verify-register",
+      "/v1/verify-register",
+      "/api/verify-register",
+      "/api/vibe/verify-register",
+    ],
+    async (c) => {
+      try {
+        const { email, username, password, code } = await c.req.json();
+        if (!email || !username || !password || !code) {
+          return c.json({ error: "Champs manquants." }, 400);
+        }
+
+        const cleanEmail = String(email).trim().toLowerCase();
+        const cleanUsername = String(username)
+          .trim()
+          .toLowerCase()
+          .replace(/^@/, "");
+        if (!/^[a-z0-9_]{2,30}$/.test(cleanUsername)) {
+          return c.json(
+            {
+              error:
+                "Le nom d'utilisateur doit comporter entre 2 et 30 caractères (lettres minuscules, chiffres, _).",
+            },
+            400
+          );
+        }
+
+        const isValid = await verifyVerificationCode(
+          cleanEmail,
+          code,
+          "register"
+        );
+        if (!isValid) {
+          return c.json({ error: "Code invalide ou expiré." }, 400);
+        }
+
+        const sql = getDb();
+        const existing =
+          await sql`SELECT id FROM users WHERE LOWER(email) = ${cleanEmail} OR LOWER(username) = ${cleanUsername} LIMIT 1`;
+        if (existing.length > 0) {
+          return c.json(
+            { error: "Email ou nom d'utilisateur déjà pris." },
+            400
+          );
+        }
+
+        const hash = await bcrypt.hash(password, BCRYPT_ROUNDS);
+
+        const result = await sql`
+        INSERT INTO users (email, username, password_hash, tier)
+        VALUES (${cleanEmail}, ${cleanUsername}, ${hash}, 'Free')
+        RETURNING id, tier
+      `;
+
+        const user = result[0];
+        const token = await signToken({ sub: user.id, tier: user.tier });
+
+        const userAgent = c.req.header("user-agent") || "";
+        const ip =
+          c.req.header("cf-connecting-ip") ||
+          c.req.header("x-forwarded-for") ||
+          "Inconnue";
+        const { os, device_model, device_version, device_name } =
+          parseUserAgent(userAgent);
+
+        try {
+          await sql`
+          INSERT INTO connected_devices (user_id, token, os, device_model, device_version, ip_address, device_name)
+          VALUES (${user.id}::text, ${token}, ${os}, ${device_model}, ${device_version}, ${ip}, ${device_name})
+        `;
+        } catch (dbErr) {
+          console.error("Erreur insertion device:", dbErr);
+        }
+
+        return c.json({ success: true, tier: user.tier, token });
+      } catch (err: any) {
+        console.error("Verify Register Error:", err);
+        return c.json({ error: err?.message || "Erreur serveur." }, 500);
+      }
+    }
+  );
+
+  // GET /login info endpoint (évite 404 lors des tests au navigateur)
+  registerMulti(
+    "get",
+    ["/login", "/v1/login", "/api/login", "/api/vibe/login"],
+    (c) =>
+      c.json({
+        description:
+          "Pour vous connecter, envoyez une requête HTTP POST avec { identifier, password } en JSON.",
+        endpoint: "/login",
+        method: "POST",
+        service: "mAI Vibe Auth",
+      })
+  );
+
+  // POST /login
+  registerMulti(
+    "post",
+    ["/login", "/v1/login", "/api/login", "/api/vibe/login"],
+    async (c) => {
+      let body;
+      try {
+        body = await c.req.json();
+      } catch (err: any) {
+        return c.json(
+          {
+            error:
+              "Requête JSON invalide (vérifiez les guillemets double de votre payload).",
+          },
+          400
+        );
+      }
+      try {
+        // Anti brute-force : 10 tentatives / IP / 5 min
+        if (!rateLimit(`login:${clientIp(c)}`, 10, 5 * 60_000)) {
+          return c.json(
+            { error: "Trop de tentatives. Réessayez plus tard." },
+            429
+          );
+        }
+        const { email, password, identifier } = body;
+        const loginId = (identifier || email || "").trim();
+        if (!loginId || !password) {
+          return c.json({ error: "Champs manquants." }, 400);
+        }
+
+        const cleanId = loginId.toLowerCase();
+        const cleanUser = cleanId.replace(/^@/, "");
+
+        const sql = getDb();
+        const users = await sql`
+          SELECT id, email, username, password_hash, tier, is_blocked 
+          FROM users 
+          WHERE LOWER(email) = ${cleanId} 
+             OR LOWER(username) = ${cleanUser} 
+             OR phone = ${loginId} 
+          LIMIT 1
+        `;
+        if (users.length === 0) {
+          return c.json(
+            {
+              accountNotFound: true,
+              error:
+                "Aucun compte n'a été trouvé avec cet identifiant ou cet e-mail. Avez-vous créé votre compte ?",
+            },
+            401
+          );
+        }
+
+        const user = users[0];
+        const match = await bcrypt.compare(password, user.password_hash);
+        if (!match) {
+          return c.json(
+            {
+              error:
+                "Mot de passe incorrect pour ce compte. Veuillez vérifier votre saisie.",
+              invalidPassword: true,
+            },
+            401
+          );
+        }
+
+        // Compte bloqué par un administrateur : refus explicite (403)
+        if (user.is_blocked) {
+          return c.json(
+            {
+              blocked: true,
+              error:
+                "Votre compte a été bloqué par un administrateur. Contactez le support pour demander sa réactivation.",
+            },
+            403
+          );
+        }
+
+        // Paramètre administrateur : ce compte exige-t-il un code de vérification à chaque connexion ?
+        // (colonne users.require_login_verification — script SQL tmp/016_require_login_verification.sql ;
+        //  défaut TRUE si la colonne est absente ou NULL)
+        let requiresOtp = true;
+        try {
+          const flags = await sql`
+          SELECT COALESCE(require_login_verification, TRUE) AS flag
+          FROM users
+          WHERE id = ${user.id}
+          LIMIT 1
+        `;
+          requiresOtp = flags[0]?.flag !== false;
+        } catch {
+          // Colonne non migrée : comportement par défaut conservé (code exigé)
+        }
+
+        if (!requiresOtp) {
+          // Connexion directe sans code de vérification (paramètre désactivé par un administrateur)
+          const token = await signToken({ sub: user.id, tier: user.tier });
+          return c.json({ success: true, tier: user.tier, token });
+        }
+
+        const code = await generateVerificationCode(user.email, "login");
+        await sendVerificationEmail(user.email, code, "login");
+
+        return c.json({
+          email: user.email,
+          status: "verification_required",
+          success: true,
+        });
+      } catch (err: any) {
+        console.error("Login Error:", err?.message || err, err?.stack);
+        return c.json({ error: err?.message || "Erreur serveur." }, 500);
+      }
+    }
+  );
+
+  // POST /verify-login
+  registerMulti(
+    "post",
+    [
+      "/verify-login",
+      "/v1/verify-login",
+      "/api/verify-login",
+      "/api/vibe/verify-login",
+    ],
+    async (c) => {
+      let body;
+      try {
+        body = await c.req.json();
+      } catch (err: any) {
+        return c.json(
+          {
+            error:
+              "Requête JSON invalide (vérifiez les guillemets de votre payload).",
+          },
+          400
+        );
       }
 
-      const code = await generateVerificationCode(email, action);
-      await sendVerificationEmail(email, code, action);
+      try {
+        const { email, code, identifier } = body;
+        const loginId = (email || identifier || "").trim();
+        if (!loginId || !code) {
+          return c.json({ error: "Champs manquants." }, 400);
+        }
 
-      return c.json({ success: true });
-    } catch (err: any) {
-      console.error("Resend Code Error:", err);
-      return c.json({ error: "Erreur serveur." }, 500);
+        const cleanId = loginId.toLowerCase();
+        const cleanUser = cleanId.replace(/^@/, "");
+
+        const sql = getDb();
+        const users = await sql`
+          SELECT id, tier, is_blocked, email, username 
+          FROM users 
+          WHERE LOWER(email) = ${cleanId} 
+             OR LOWER(username) = ${cleanUser} 
+          LIMIT 1
+        `;
+        if (users.length === 0) {
+          return c.json({ error: "Utilisateur introuvable." }, 404);
+        }
+
+        const user = users[0];
+
+        const isValid = await verifyVerificationCode(user.email, code, "login");
+        if (!isValid) {
+          return c.json({ error: "Code invalide ou expiré." }, 400);
+        }
+
+        // Compte bloqué par un administrateur : refus explicite (403)
+        if (user.is_blocked) {
+          return c.json(
+            {
+              blocked: true,
+              error:
+                "Votre compte a été bloqué par un administrateur. Contactez le support pour demander sa réactivation.",
+            },
+            403
+          );
+        }
+
+        const token = await signToken({ sub: user.id, tier: user.tier });
+
+        const userAgent = c.req.header("user-agent") || "";
+        // Pour les tests en dev, on utilise une IP par défaut
+        let ip =
+          c.req.header("cf-connecting-ip") ||
+          c.req.header("x-forwarded-for") ||
+          c.req.header("x-real-ip") ||
+          "";
+        if (!ip || ip === "::1" || ip === "127.0.0.1") {
+          ip = "8.8.8.8"; // IP Google par défaut pour ne pas planter l'API
+        } else {
+          // Extraire la première IP si on a une liste
+          ip = ip.split(",")[0].trim();
+        }
+        const { os, device_model, device_version, device_name } =
+          parseUserAgent(userAgent);
+
+        let locationStr = "Lieu inconnu";
+        let countryStr = "Pays inconnu";
+        try {
+          const controller = new AbortController();
+          const timeout = setTimeout(() => controller.abort(), 3000);
+          const geoRes = await fetch(`https://ip-api.com/json/${ip}`, {
+            headers: { "User-Agent": "mAI/1.0" },
+            signal: controller.signal,
+          });
+          clearTimeout(timeout);
+          if (geoRes.ok) {
+            const geoData = await geoRes.json();
+            if (geoData.status === "success") {
+              locationStr = `${geoData.city}, ${geoData.country}`;
+              countryStr = geoData.country;
+            }
+          }
+        } catch (e) {
+          console.error("Erreur de géolocalisation:", e);
+        }
+
+        // Vérifier si c'est un nouvel appareil ou un nouveau pays
+        let isNewDeviceOrLocation = true;
+        try {
+          const pastDevices = await sql`
+          SELECT device_name, location FROM connected_devices 
+          WHERE user_id = ${user.id}::text
+        `;
+          if (pastDevices.length > 0) {
+            // C'est pas sa toute première connexion
+            const knownDevice = pastDevices.some(
+              (d) => d.device_name === device_name
+            );
+            const knownLocation = pastDevices.some(
+              (d) => d.location && d.location.includes(countryStr)
+            );
+            if (knownDevice && knownLocation) {
+              isNewDeviceOrLocation = false;
+            }
+          } else {
+            // Première connexion jamais (donc nouvelle par defaut, ou pas besoin d'alerte? on envoie quand meme)
+            isNewDeviceOrLocation = true;
+          }
+        } catch (e) {
+          console.error(e);
+        }
+
+        try {
+          await sql`
+          INSERT INTO connected_devices (user_id, token, os, device_model, device_version, ip_address, device_name, location)
+          VALUES (${user.id}::text, ${token}, ${os}, ${device_model}, ${device_version}, ${ip}, ${device_name}, ${locationStr})
+        `;
+        } catch (dbErr) {
+          console.error("Erreur insertion device:", dbErr);
+        }
+
+        if (isNewDeviceOrLocation) {
+          // On n'attend pas l'envoi de l'email
+          sendVerificationEmail(email, "", "new_login", {
+            device: device_name,
+            location: locationStr,
+          }).catch(console.error);
+        }
+
+        return c.json({ success: true, tier: user.tier, token });
+      } catch (err: any) {
+        console.error("Verify Login Error:", err);
+        return c.json({ error: err?.message || "Erreur serveur." }, 500);
+      }
     }
-  });
+  );
+
+  // POST /resend-code
+  registerMulti(
+    "post",
+    [
+      "/resend-code",
+      "/v1/resend-code",
+      "/api/resend-code",
+      "/api/vibe/resend-code",
+    ],
+    async (c) => {
+      try {
+        const { email, action } = await c.req.json();
+        if (!email || !action) {
+          return c.json({ error: "Champs manquants." }, 400);
+        }
+
+        // Vérifier le rate-limit (1 minute)
+        const result = await sqlite.execute({
+          args: [email, action],
+          sql: "SELECT expires_at FROM verification_codes WHERE email = ? AND action = ?",
+        });
+
+        if (result.rows.length > 0) {
+          const expiresAt = new Date(result.rows[0][0] as string);
+          const now = new Date();
+          // Si la date d'expiration est > maintenant + 9 minutes, ça veut dire qu'il a été généré il y a moins d'1 minute.
+          const diffMinutes = (expiresAt.getTime() - now.getTime()) / 60_000;
+          if (diffMinutes > 9) {
+            return c.json(
+              {
+                error: "Veuillez patienter 1 minute avant de renvoyer un code.",
+              },
+              429
+            );
+          }
+        }
+
+        const code = await generateVerificationCode(email, action);
+        await sendVerificationEmail(email, code, action);
+
+        return c.json({ success: true });
+      } catch (err: any) {
+        console.error("Resend Code Error:", err);
+        return c.json({ error: err?.message || "Erreur serveur." }, 500);
+      }
+    }
+  );
 
   // POST /verify-code
   app.post("/verify-code", async (c) => {
@@ -464,7 +679,7 @@ export function registerAuthRoutes(app: Hono) {
       });
     } catch (err: any) {
       console.error("Verify-Code error:", err);
-      return c.json({ error: "Erreur serveur." }, 500);
+      return c.json({ error: err?.message || "Erreur serveur." }, 500);
     }
   });
 
@@ -518,11 +733,25 @@ export function registerAuthRoutes(app: Hono) {
       }
 
       if (username && username.trim()) {
-        const cleanUsername = username.trim();
+        const cleanUsername = username.trim().toLowerCase().replace(/^@/, "");
+        if (!/^[a-z0-9_]{2,30}$/.test(cleanUsername)) {
+          return c.json(
+            {
+              error:
+                "Le nom d'utilisateur doit comporter entre 2 et 30 caractères (lettres minuscules, chiffres, _).",
+            },
+            400
+          );
+        }
         const existing =
-          await sql`SELECT id FROM users WHERE username = ${cleanUsername} AND id::text != ${userId}::text LIMIT 1`;
+          await sql`SELECT id FROM users WHERE LOWER(username) = ${cleanUsername} AND id::text != ${userId}::text LIMIT 1`;
         if (existing.length > 0) {
-          return c.json({ error: "Ce nom d'utilisateur est déjà pris." }, 400);
+          return c.json(
+            {
+              error: "Ce nom d'utilisateur est déjà pris par un autre compte.",
+            },
+            400
+          );
         }
         await sql`UPDATE users SET username = ${cleanUsername} WHERE id::text = ${userId}::text`;
       }
@@ -644,7 +873,7 @@ export function registerAuthRoutes(app: Hono) {
       return c.json({ email: email.trim(), success: true });
     } catch (err: any) {
       console.error("verify-new-email Error:", err);
-      return c.json({ error: "Erreur serveur." }, 500);
+      return c.json({ error: err?.message || "Erreur serveur." }, 500);
     }
   });
 
@@ -672,7 +901,7 @@ export function registerAuthRoutes(app: Hono) {
       return c.json({ email, success: true });
     } catch (err: any) {
       console.error("request-delete-account Error:", err);
-      return c.json({ error: "Erreur serveur." }, 500);
+      return c.json({ error: err?.message || "Erreur serveur." }, 500);
     }
   });
 
@@ -731,7 +960,7 @@ export function registerAuthRoutes(app: Hono) {
       return c.json({ success: true });
     } catch (err: any) {
       console.error("confirm-delete-account Error:", err);
-      return c.json({ error: "Erreur serveur." }, 500);
+      return c.json({ error: err?.message || "Erreur serveur." }, 500);
     }
   });
 
@@ -795,24 +1024,28 @@ export function registerAuthRoutes(app: Hono) {
         const isPlanTier = validTiers.includes(planLower);
 
         // Nom personnalisé de la clé
-        const keyName = k.name || (isPlanTier ? `Clé ${rawPlan}` : rawPlan) || "Clé API Principale";
+        const keyName =
+          k.name ||
+          (isPlanTier ? `Clé ${rawPlan}` : rawPlan) ||
+          "Clé API Principale";
         // Le forfait est strictement le forfait d'abonnement du compte (free, plus, pro, max)
-        const effectivePlan = k.user_tier || userTier || (isPlanTier ? rawPlan : "Plus");
+        const effectivePlan =
+          k.user_tier || userTier || (isPlanTier ? rawPlan : "Plus");
 
         return {
           api_key: k.api_key,
+          created_at: k.created_at,
+          last_used_at: k.last_used_at,
           name: keyName,
           plan: effectivePlan,
           request_count: Number(k.request_count || 0),
-          created_at: k.created_at,
-          last_used_at: k.last_used_at,
         };
       });
 
       return c.json({ keys, success: true });
     } catch (err: any) {
       console.error("Erreur API Keys:", err);
-      return c.json({ error: "Erreur serveur." }, 500);
+      return c.json({ error: err?.message || "Erreur serveur." }, 500);
     }
   });
 }

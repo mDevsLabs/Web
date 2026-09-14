@@ -1,11 +1,16 @@
 import { NextResponse } from "next/server";
+import {
+  errorResponse,
+  logError,
+  normalizeUpstreamError,
+} from "@/lib/api/error-response";
 import { getMaiSessionToken } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
 
 export async function GET() {
   const token = await getMaiSessionToken();
   if (!token) {
-    return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non authentifié." });
   }
 
   try {
@@ -18,15 +23,15 @@ export async function GET() {
 
     const data = await res.json();
     if (!res.ok) {
-      return NextResponse.json(data, { status: res.status });
+      const payload = normalizeUpstreamError(data, res.status);
+      return NextResponse.json(payload, { status: payload.status });
     }
 
     return NextResponse.json(data);
   } catch (error) {
-    console.error("Erreur API images/usage:", error);
-    return NextResponse.json(
-      { error: "Erreur de récupération de l'usage" },
-      { status: 500 }
-    );
+    logError("Erreur API images/usage", error);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de la récupération de l'usage.",
+    });
   }
 }

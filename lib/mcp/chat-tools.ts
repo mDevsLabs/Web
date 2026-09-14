@@ -10,10 +10,12 @@ import { classifyToolAction, needsApproval } from "./classifier";
 import { callMcpTool } from "./client";
 
 export function createMcpChatTools({
+  approvedToolIds,
   chatId,
   servers,
   userId,
 }: {
+  approvedToolIds?: Set<string>;
   chatId?: string;
   servers: McpServer[];
   userId: string;
@@ -37,8 +39,24 @@ export function createMcpChatTools({
       const policy = (server.requireApproval as any) || "write_only";
       const requireUserApproval = needsApproval(policy, actionType);
 
+      const isApproved =
+        Boolean(approvedToolIds?.has(toolId)) ||
+        Boolean(approvedToolIds?.has(t.name)) ||
+        Boolean(approvedToolIds?.has(`tool-${toolId}`));
+
+      // Vrai Human-in-the-Loop : si l'action est sensible/soumise à politique et pas encore approuvée,
+      // on omet la fonction `execute` pour que le SDK AI suspende l'appel et demande l'approbation de l'utilisateur.
+      if (requireUserApproval && !isApproved) {
+        tools[toolId] = (tool as any)({
+          description: `[MCP: ${server.name}] ${t.description || t.name} (Action: ${actionType} - APPROBATION REQUISE)`,
+          inputSchema: z.object({}).catchall(z.any()),
+          parameters: z.record(z.string(), z.unknown()),
+        });
+        continue;
+      }
+
       tools[toolId] = (tool as any)({
-        description: `[MCP: ${server.name}] ${t.description || t.name} (Type d'action: ${actionType}${requireUserApproval ? " - Confirmation requise" : ""})`,
+        description: `[MCP: ${server.name}] ${t.description || t.name} (Type d'action: ${actionType}${requireUserApproval ? " - Confirmé" : ""})`,
         execute: async (args: any) => {
           const startTime = Date.now();
           try {
