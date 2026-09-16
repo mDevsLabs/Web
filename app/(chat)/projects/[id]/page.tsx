@@ -122,10 +122,9 @@ export default function ProjectDetailPage() {
   );
   const invite = inviteData?.invite ?? null;
 
-  const { data: modelsData } = useSWR<{ models: { id: string; name: string }[] }>(
-    "/api/models",
-    fetcher
-  );
+  const { data: modelsData } = useSWR<{
+    models: { id: string; name: string }[];
+  }>("/api/models", fetcher);
   const availableModels = modelsData?.models || [];
 
   const [editOpen, setEditOpen] = useState(false);
@@ -137,7 +136,9 @@ export default function ProjectDetailPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const refreshSidebar = useCallback(() => {
-    globalMutate((key) => typeof key === "string" && key.includes("/api/projects"));
+    globalMutate(
+      (key) => typeof key === "string" && key.includes("/api/projects")
+    );
   }, []);
 
   if (isLoading) {
@@ -282,7 +283,7 @@ export default function ProjectDetailPage() {
   };
 
   const joinLink = invite
-    ? `${typeof window !== "undefined" ? window.location.origin : ""}/projects/join/${invite.code}`
+    ? `${typeof window === "undefined" ? "" : window.location.origin}/projects/join/${invite.code}`
     : "";
 
   return (
@@ -398,8 +399,8 @@ export default function ProjectDetailPage() {
         <p className="px-4 pt-3 text-xs text-muted-foreground">
           Ces fichiers sont partagés avec tous les membres du projet et servent
           de contexte aux conversations. Le texte des documents (PDF, DOCX,
-          CSV…) est extrait automatiquement ; les images ne sont transmises qu'aux
-          modèles qui les prennent en charge.
+          CSV…) est extrait automatiquement ; les images ne sont transmises
+          qu'aux modèles qui les prennent en charge.
         </p>
         {projectFiles.length === 0 ? (
           <div className="p-8 text-center text-sm text-muted-foreground">
@@ -450,8 +451,8 @@ export default function ProjectDetailPage() {
                       className="h-7 w-7 text-destructive"
                       onClick={() => handleDeleteFile(file.id)}
                       size="icon"
-                      variant="ghost"
                       title="Supprimer"
+                      variant="ghost"
                     >
                       <Trash2Icon className="size-3.5" />
                     </Button>
@@ -515,7 +516,9 @@ export default function ProjectDetailPage() {
                   {invite.expiresAt
                     ? `Expire le ${new Date(invite.expiresAt).toLocaleDateString("fr-FR")}`
                     : "Sans expiration"}
-                  {invite.maxUses ? ` · ${invite.useCount}/${invite.maxUses} utilisations` : ""}
+                  {invite.maxUses
+                    ? ` · ${invite.useCount}/${invite.maxUses} utilisations`
+                    : ""}
                 </span>
               </div>
             </div>
@@ -628,7 +631,9 @@ export default function ProjectDetailPage() {
                 fallbackModels={availableModels as never}
                 modal
                 models={
-                  availableModels.length > 0 ? (availableModels as never) : undefined
+                  availableModels.length > 0
+                    ? (availableModels as never)
+                    : undefined
                 }
                 onModelChange={setDefaultModel}
                 selectedModelId={defaultModel}

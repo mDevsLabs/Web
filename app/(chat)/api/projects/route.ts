@@ -38,7 +38,10 @@ export async function GET(request: Request) {
 
   const countMap = new Map(counts.map((c) => [c.projectId, c.count]));
   const memberCounts = await Promise.all(
-    projects.map(async (p) => [p.id, await countProjectMembers({ projectId: p.id })] as const)
+    projects.map(
+      async (p) =>
+        [p.id, await countProjectMembers({ projectId: p.id })] as const
+    )
   );
   const memberCountMap = new Map(memberCounts);
   const withCounts = projects.map((p) => ({

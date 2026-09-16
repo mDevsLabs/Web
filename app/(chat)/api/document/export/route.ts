@@ -1,14 +1,12 @@
 import { getMaiUser } from "@/lib/auth/session";
-import { ChatbotError } from "@/lib/errors";
 import { getDocumentById } from "@/lib/db/queries";
+import { ChatbotError } from "@/lib/errors";
 import {
   buildExportFilename,
   DOCUMENT_EXPORT_MIME,
   markdownToDocx,
   markdownToHtml,
 } from "@/lib/export/document-export";
-
-export const runtime = "nodejs";
 
 const ALLOWED_FORMATS = ["html", "md", "docx"] as const;
 type ExportFormat = (typeof ALLOWED_FORMATS)[number];

@@ -35,7 +35,7 @@ export type InjectionBudget = {
 };
 
 export const DEFAULT_INJECTION_BUDGET: InjectionBudget = {
-  maxCharsPerFile: 8_000,
+  maxCharsPerFile: 8000,
   maxTotalChars: 24_000,
 };
 
@@ -173,15 +173,15 @@ export function planProjectFilesInjection(
       text = `${text.slice(0, remaining)}\n[... fichier tronqué : ${file.fileName}]`;
       truncated = true;
       usedChars = budget.maxTotalChars;
-      decisions.push({ file, action: "text", truncated });
+      decisions.push({ action: "text", file, truncated });
       textBlocks.push(`### ${file.fileName}\n${text}`);
       continue;
     }
 
     usedChars += text.length;
     decisions.push({
-      file,
       action: "text",
+      file,
       truncated: truncated || undefined,
     });
     textBlocks.push(`### ${file.fileName}\n${text}`);
@@ -202,9 +202,7 @@ export function buildProjectFilesManifest(
   if (files.length === 0) {
     return null;
   }
-  const byName = new Map(
-    (decisions ?? []).map((d) => [d.file.fileName, d])
-  );
+  const byName = new Map((decisions ?? []).map((d) => [d.file.fileName, d]));
   const lines = files.map((file) => {
     const decision = byName.get(file.fileName);
     const size = file.fileSize ? ` (${formatBytes(file.fileSize)})` : "";
@@ -239,7 +237,11 @@ export function buildProjectFilesPromptBlock(params: {
   if (params.files.length === 0) {
     return null;
   }
-  const plan = planProjectFilesInjection(params.files, params.caps, params.budget);
+  const plan = planProjectFilesInjection(
+    params.files,
+    params.caps,
+    params.budget
+  );
   const manifest = buildProjectFilesManifest(params.files, plan.decisions);
   const sections: string[] = [];
   if (manifest) {

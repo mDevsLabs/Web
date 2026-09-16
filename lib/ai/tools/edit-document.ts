@@ -4,10 +4,14 @@ import { z } from "zod";
 import { hashContent } from "@/lib/artifacts/hash";
 import {
   applyDocumentPatch,
-  documentPatchOpSchema,
   type DocumentPatch,
+  documentPatchOpSchema,
 } from "@/lib/artifacts/patch";
-import { getDocumentById, saveDocument, saveDocumentProposal } from "@/lib/db/queries";
+import {
+  getDocumentById,
+  saveDocument,
+  saveDocumentProposal,
+} from "@/lib/db/queries";
 import type { ChatMessage, DocumentProposalPayload } from "@/lib/types";
 import { generateUUID } from "@/lib/utils";
 
@@ -158,7 +162,8 @@ export const editDocument = ({ session, dataStream }: EditDocumentProps) =>
       } else if (effectivePosition === "append") {
         if (!new_string || new_string.length === 0) {
           return {
-            error: "position='append' requiert 'new_string' non vide à suffixer.",
+            error:
+              "position='append' requiert 'new_string' non vide à suffixer.",
           };
         }
         ops.push({
@@ -186,7 +191,10 @@ export const editDocument = ({ session, dataStream }: EditDocumentProps) =>
         ops.push({
           caseSensitive: caseSensitive ?? true,
           find: searchNeedle,
-          replaceAll: effectivePosition === "before" || effectivePosition === "after" ? !!replace_all : !!replace_all,
+          replaceAll:
+            effectivePosition === "before" || effectivePosition === "after"
+              ? !!replace_all
+              : !!replace_all,
           replaceWith,
           type: "replace_text",
         });
@@ -199,9 +207,7 @@ export const editDocument = ({ session, dataStream }: EditDocumentProps) =>
         };
       }
 
-      const parsedOps = z
-        .array(documentPatchOpSchema)
-        .safeParse(ops);
+      const parsedOps = z.array(documentPatchOpSchema).safeParse(ops);
       if (!parsedOps.success) {
         return { error: `Patch invalide : ${parsedOps.error.message}` };
       }

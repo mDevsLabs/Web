@@ -17,29 +17,29 @@ import { hashContent } from "./hash";
 
 export const documentPatchOpSchema = z.discriminatedUnion("type", [
   z.object({
-    type: z.literal("replace_text"),
+    caseSensitive: z.boolean().optional(),
     find: z.string().min(1).max(100_000),
-    replaceWith: z.string().max(100_000),
     occurrence: z.number().int().min(1).max(10_000).optional(),
     replaceAll: z.boolean().optional(),
-    caseSensitive: z.boolean().optional(),
+    replaceWith: z.string().max(100_000),
+    type: z.literal("replace_text"),
   }),
   z.object({
-    type: z.literal("insert"),
+    content: z.string().max(100_000),
     line: z.number().int().min(0).max(1_000_000),
     position: z.enum(["before", "after"]),
-    content: z.string().max(100_000),
+    type: z.literal("insert"),
   }),
   z.object({
+    endLine: z.number().int().min(1).max(1_000_000),
+    startLine: z.number().int().min(1).max(1_000_000),
     type: z.literal("delete_range"),
-    startLine: z.number().int().min(1).max(1_000_000),
-    endLine: z.number().int().min(1).max(1_000_000),
   }),
   z.object({
-    type: z.literal("replace_range"),
-    startLine: z.number().int().min(1).max(1_000_000),
-    endLine: z.number().int().min(1).max(1_000_000),
     content: z.string().max(100_000),
+    endLine: z.number().int().min(1).max(1_000_000),
+    startLine: z.number().int().min(1).max(1_000_000),
+    type: z.literal("replace_range"),
   }),
 ]);
 

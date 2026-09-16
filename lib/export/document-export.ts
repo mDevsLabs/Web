@@ -14,26 +14,18 @@
  *   bundle des routes qui n'exportent pas en DOCX.
  */
 
+import type { Paragraph, Table, TableCell, TableRow } from "docx";
 import MarkdownItConstructor, {
   type MarkdownIt,
   type Token as MarkdownItToken,
 } from "markdown-it";
-import type {
-  Paragraph,
-  Table,
-  TableCell,
-  TableRow,
-} from "docx";
 
 /** Bloc de contenu DOCX (paragraphe ou tableau) assemblé depuis le Markdown. */
 type DocxBlock = Paragraph | Table;
 
 export type DocumentExportFormat = "html" | "md";
 
-export const DOCUMENT_EXPORT_MIME: Record<
-  "html" | "md" | "docx",
-  string
-> = {
+export const DOCUMENT_EXPORT_MIME: Record<"html" | "md" | "docx", string> = {
   docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
   html: "text/html;charset=utf-8",
   md: "text/markdown;charset=utf-8",
@@ -72,8 +64,7 @@ export function markdownToHtml(markdown: string, title?: string): string {
 
   const headingMatch = /^#\s+(.+)$/m.exec(markdown ?? "");
   const derivedTitle = (
-    title ??
-    (headingMatch ? headingMatch[1].trim() : "Document")
+    title ?? (headingMatch ? headingMatch[1].trim() : "Document")
   )
     // Le titre est interpolé dans du HTML : échappement explicite.
     .replace(/&/g, "&amp;")
@@ -143,7 +134,12 @@ function buildInlineRuns(
 
   const walk = (
     tokens: Token[],
-    style: { bold?: boolean; italic?: boolean; strike?: boolean; code?: boolean }
+    style: {
+      bold?: boolean;
+      italic?: boolean;
+      strike?: boolean;
+      code?: boolean;
+    }
   ) => {
     // Lien courant : le href capturé à link_open est rappelé à link_close.
     let openHref: string | null = null;
@@ -223,8 +219,17 @@ export async function markdownToDocx(
   markdown: string,
   title?: string
 ): Promise<Uint8Array> {
-  const { Document, HeadingLevel, Packer, Paragraph, Table, TableCell, TableRow, TextRun, WidthType } =
-    await import("docx");
+  const {
+    Document,
+    HeadingLevel,
+    Packer,
+    Paragraph,
+    Table,
+    TableCell,
+    TableRow,
+    TextRun,
+    WidthType,
+  } = await import("docx");
   const md = createMarkdownRenderer();
   const tokens = md.parse(markdown ?? "", {});
 
@@ -247,7 +252,9 @@ export async function markdownToDocx(
         const inline = tokens[i + 1];
         blocks.push(
           new Paragraph({
-            children: buildInlineRuns(inline?.children ?? [], {}).map((run) => new TextRun(run as never)),
+            children: buildInlineRuns(inline?.children ?? [], {}).map(
+              (run) => new TextRun(run as never)
+            ),
             heading: headingLevels[Math.min(level, 6) - 1],
           })
         );
@@ -258,7 +265,9 @@ export async function markdownToDocx(
         const inline = tokens[i + 1];
         blocks.push(
           new Paragraph({
-            children: buildInlineRuns(inline?.children ?? [], {}).map((run) => new TextRun(run as never)),
+            children: buildInlineRuns(inline?.children ?? [], {}).map(
+              (run) => new TextRun(run as never)
+            ),
           })
         );
         i += 1; // consomme paragraph_close
@@ -280,16 +289,14 @@ export async function markdownToDocx(
             itemCounter += 1;
             let k = j + 1;
             let firstParagraph = true;
-            while (
-              k < tokens.length &&
-              tokens[k].type !== "list_item_close"
-            ) {
+            while (k < tokens.length && tokens[k].type !== "list_item_close") {
               if (tokens[k].type === "paragraph_open") {
                 const inline = tokens[k + 1];
                 const runs = buildInlineRuns(inline?.children ?? [], {}).map(
                   (run) => new TextRun(run as never)
                 );
-                const prefix = ordered && firstParagraph ? `${itemCounter}. ` : "";
+                const prefix =
+                  ordered && firstParagraph ? `${itemCounter}. ` : "";
                 blocks.push(
                   new Paragraph({
                     bullet:
@@ -323,7 +330,10 @@ export async function markdownToDocx(
             listDepth += 1;
             itemCounter = 0;
           }
-          if (t.type === "bullet_list_close" || t.type === "ordered_list_close") {
+          if (
+            t.type === "bullet_list_close" ||
+            t.type === "ordered_list_close"
+          ) {
             listDepth -= 1;
             if (listDepth === 0) {
               break;
@@ -400,9 +410,10 @@ export async function markdownToDocx(
                   new TableCell({
                     children: [
                       new Paragraph({
-                        children: buildInlineRuns(inline?.children ?? [], {}).map(
-                          (run) => new TextRun(run as never)
-                        ),
+                        children: buildInlineRuns(
+                          inline?.children ?? [],
+                          {}
+                        ).map((run) => new TextRun(run as never)),
                       }),
                     ],
                   })
@@ -447,7 +458,8 @@ export async function markdownToDocx(
   }
 
   const headingMatch = /^#\s+(.+)$/m.exec(markdown ?? "");
-  const docTitle = title ?? (headingMatch ? headingMatch[1].trim() : "Document");
+  const docTitle =
+    title ?? (headingMatch ? headingMatch[1].trim() : "Document");
 
   const doc = new Document({
     sections: [

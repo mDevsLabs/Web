@@ -54,7 +54,9 @@ export default function ProjectJoinPage() {
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
-        toast.error(extractApiErrorMessage(data) || "Impossible de rejoindre ce projet.");
+        toast.error(
+          extractApiErrorMessage(data) || "Impossible de rejoindre ce projet."
+        );
         return;
       }
       if (data.projectId) {

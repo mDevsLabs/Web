@@ -39,11 +39,11 @@ export function useAgentFlags() {
     },
     {
       dedupingInterval: 60_000,
+      errorRetryCount: 6,
+      errorRetryInterval: 5000,
       // Un échec réseau ne doit pas verrouiller l'utilisateur en mode Chat :
       // on retente au focus et à intervalle régulier jusqu'à récupération.
       revalidateOnFocus: true,
-      errorRetryInterval: 5_000,
-      errorRetryCount: 6,
       shouldRetryOnError: true,
     }
   );

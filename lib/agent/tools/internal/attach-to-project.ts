@@ -2,10 +2,7 @@ import { z } from "zod";
 import { requireAgentToolMetadata } from "@/lib/agent/tools/catalog";
 import { defineTool } from "@/lib/agent/tools/define-tool";
 import { toolFailure, toolSuccess } from "@/lib/agent/types";
-import {
-  attachDocumentToProject,
-  getDocumentById,
-} from "@/lib/db/queries";
+import { attachDocumentToProject, getDocumentById } from "@/lib/db/queries";
 import { getProjectAccess } from "@/lib/projects/access";
 
 const attachToProjectInputSchema = z.object({

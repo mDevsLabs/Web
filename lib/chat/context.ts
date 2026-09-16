@@ -5,6 +5,7 @@ import { DEFAULT_CHAT_MODEL, getModelCapabilities } from "@/lib/ai/models";
 import type { RequestHints } from "@/lib/ai/prompts";
 import { substituteSkillParams } from "@/lib/ai/skill-params";
 import type { ChatAuth } from "@/lib/chat/auth";
+import { buildProjectFilesPromptBlock } from "@/lib/chat/project-files";
 import { getUserApiKey } from "@/lib/db/api-keys";
 import {
   getAgentById,
@@ -22,7 +23,6 @@ import {
 import type { Chat, DBMessage } from "@/lib/db/schema";
 import { ChatbotError } from "@/lib/errors";
 import { getProjectAccess } from "@/lib/projects/access";
-import { buildProjectFilesPromptBlock } from "@/lib/chat/project-files";
 import type { ChatMessage } from "@/lib/types";
 import { convertToUIMessages } from "@/lib/utils";
 

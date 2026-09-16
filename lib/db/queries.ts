@@ -30,8 +30,8 @@ import {
   chat,
   customCommand,
   type DBMessage,
-  document,
   type DocumentProposal,
+  document,
   documentProposal,
   mcpLog,
   mcpServer,
@@ -1376,7 +1376,7 @@ export async function getProjectsByUserId({
         id: project.id,
         isArchived: project.isArchived,
         name: project.name,
-        role: sql<'owner'>`'owner'`.as("role"),
+        role: sql<"owner">`'owner'`.as("role"),
         updatedAt: project.updatedAt,
       })
       .from(project)
@@ -1411,7 +1411,7 @@ export async function getProjectsByUserId({
         id: project.id,
         isArchived: project.isArchived,
         name: project.name,
-        role: sql<'member'>`'member'`.as("role"),
+        role: sql<"member">`'member'`.as("role"),
         updatedAt: project.updatedAt,
       })
       .from(project)
@@ -1597,7 +1597,10 @@ export async function getProjectChatCounts({
       if (accessibleIds.length > 0) {
         const sharedWhere = includeArchived
           ? inArray(chat.projectId, accessibleIds)
-          : and(inArray(chat.projectId, accessibleIds), eq(chat.isArchived, false));
+          : and(
+              inArray(chat.projectId, accessibleIds),
+              eq(chat.isArchived, false)
+            );
         const sharedRows = await db
           .select({ count: count(chat.id), projectId: chat.projectId })
           .from(chat)
@@ -1609,7 +1612,9 @@ export async function getProjectChatCounts({
           sharedRows.map((r) => [r.projectId, r.count])
         );
         for (const row of rows) {
-          const shared = row.projectId ? sharedMap.get(row.projectId) : undefined;
+          const shared = row.projectId
+            ? sharedMap.get(row.projectId)
+            : undefined;
           if (shared !== undefined && shared > row.count) {
             row.count = shared;
             sharedMap.delete(row.projectId);
@@ -1740,11 +1745,7 @@ export async function getActiveProjectInvite({
   }
 }
 
-export async function getProjectInviteByCode({
-  code,
-}: {
-  code: string;
-}) {
+export async function getProjectInviteByCode({ code }: { code: string }) {
   try {
     const db = await dbReady();
     const [invite] = await db
@@ -1876,7 +1877,9 @@ export async function getProjectFiles({ projectId }: { projectId: string }) {
       .select({
         contentType: projectFile.contentType,
         createdAt: projectFile.createdAt,
-        extractedText: sql<string | null>`LEFT(${projectFile.extractedText}, 1)`,
+        extractedText: sql<
+          string | null
+        >`LEFT(${projectFile.extractedText}, 1)`,
         extractionStatus: projectFile.extractionStatus,
         fileName: projectFile.fileName,
         fileSize: projectFile.fileSize,
@@ -1921,8 +1924,8 @@ export async function createProjectFile({
         contentType,
         extractedText,
         extractionStatus,
-        fileRef,
         fileName,
+        fileRef,
         fileSize: fileSize ?? null,
         projectId,
         storageUrl,
@@ -2026,8 +2029,8 @@ export async function updateChatProjectById({
       // partagé) : la validation passe par la garde d'accès centralisée.
       const { getProjectAccess } = await import("@/lib/projects/access");
       const access = await getProjectAccess({
-        userEmail: email ?? null,
         projectId,
+        userEmail: email ?? null,
         userId,
       });
       if (!access) {

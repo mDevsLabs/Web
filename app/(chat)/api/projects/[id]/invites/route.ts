@@ -33,7 +33,10 @@ export async function GET(
 
   const access = await getProjectAccess({ projectId: id, userEmail, userId });
   if (!access) {
-    return new ChatbotError("not_found:database", "Projet introuvable").toResponse();
+    return new ChatbotError(
+      "not_found:database",
+      "Projet introuvable"
+    ).toResponse();
   }
   if (!hasMemberManagementAccess(access)) {
     return new ChatbotError(
@@ -60,7 +63,10 @@ export async function POST(
 
   const access = await getProjectAccess({ projectId: id, userEmail, userId });
   if (!access) {
-    return new ChatbotError("not_found:database", "Projet introuvable").toResponse();
+    return new ChatbotError(
+      "not_found:database",
+      "Projet introuvable"
+    ).toResponse();
   }
   if (!hasMemberManagementAccess(access)) {
     return new ChatbotError(
@@ -116,7 +122,10 @@ export async function DELETE(
 
   const access = await getProjectAccess({ projectId: id, userEmail, userId });
   if (!access) {
-    return new ChatbotError("not_found:database", "Projet introuvable").toResponse();
+    return new ChatbotError(
+      "not_found:database",
+      "Projet introuvable"
+    ).toResponse();
   }
   if (!hasMemberManagementAccess(access)) {
     return new ChatbotError(

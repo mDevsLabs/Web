@@ -1,4 +1,4 @@
-import { isAgentMode, type AgentMode } from "@/lib/agent/channel";
+import { type AgentMode, isAgentMode } from "@/lib/agent/channel";
 
 // Résolution de l'expérience affichée par le shell principal : « chat »,
 // « agent », ou « blocked » avec une raison exploitable par l'interface.

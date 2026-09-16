@@ -15,8 +15,8 @@
  * sauvegarde écrasante classique, jamais une corruption.
  */
 
-const FNV_OFFSET = 0x811c9dc5;
-const FNV_PRIME = 0x01000193;
+const FNV_OFFSET = 0x81_1c_9d_c5;
+const FNV_PRIME = 0x01_00_01_93;
 
 export function hashContent(content: string): string {
   let hash = FNV_OFFSET;

@@ -1,13 +1,13 @@
 import "server-only";
 
-import { sql, type SQL } from "drizzle-orm";
+import { type SQL, sql } from "drizzle-orm";
 import {
   canManageInvites,
   canManageMembers,
   canManageProjectSettings,
   canViewProject,
-  resolveProjectRole,
   type ProjectRole,
+  resolveProjectRole,
 } from "@/lib/projects/permissions";
 
 export type ProjectAccess = {
@@ -60,7 +60,11 @@ async function resolveUserIdentityVariants(params: {
     if (client) {
       const rows = (await client.unsafe(IDENTITY_LOOKUP_SQL, [
         params.userId,
-      ])) as Array<{ email: string | null; id: string | null; username: string | null }>;
+      ])) as Array<{
+        email: string | null;
+        id: string | null;
+        username: string | null;
+      }>;
       const row = rows[0];
       if (row) {
         for (const value of [row.id, row.email, row.username]) {
@@ -216,7 +220,8 @@ export async function getAccessibleProjectIds(params: {
     `);
     const list =
       (rows as unknown as { rows?: Array<{ id: string }> }).rows ??
-      (rows as unknown as Array<{ id: string }>) ?? [];
+      (rows as unknown as Array<{ id: string }>) ??
+      [];
     return list.map((r) => r.id);
   } catch {
     return [];

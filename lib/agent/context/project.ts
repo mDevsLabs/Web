@@ -1,13 +1,13 @@
 import "server-only";
 
+import { getModelCapabilities } from "@/lib/ai/models";
+import { buildProjectFilesPromptBlock } from "@/lib/chat/project-files";
 import {
   getChatsByUserId,
   getProjectById,
   getProjectFilesForInjection,
   getProjectMemories,
 } from "@/lib/db/queries";
-import { getModelCapabilities } from "@/lib/ai/models";
-import { buildProjectFilesPromptBlock } from "@/lib/chat/project-files";
 import { getProjectAccess } from "@/lib/projects/access";
 
 // Contexte projet : Agent reçoit des informations ciblées, jamais le projet

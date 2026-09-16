@@ -1,6 +1,11 @@
 import { z } from "zod";
+import {
+  extractDocument,
+  fetchDocumentBuffer,
+} from "@/lib/agent/tools/internal/extract";
 import { errorResponse, logError } from "@/lib/api/error-response";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
+import { MAI_API_URL } from "@/lib/constants";
 import {
   createProjectFile,
   deleteProjectFile,
@@ -8,15 +13,11 @@ import {
   getProjectFiles,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
-import { MAI_API_URL } from "@/lib/constants";
+import { getProjectAccess } from "@/lib/projects/access";
 import {
-  extractDocument,
-  fetchDocumentBuffer,
-} from "@/lib/agent/tools/internal/extract";
-import {
-  getProjectAccess,
-} from "@/lib/projects/access";
-import { canDeleteProjectFile, canUploadProjectFile } from "@/lib/projects/permissions";
+  canDeleteProjectFile,
+  canUploadProjectFile,
+} from "@/lib/projects/permissions";
 
 // Fichiers d'un Projet partagé : stockage cloud mAI (backend Z1 Storage via
 // MAI_API_URL, même chemin que /api/library) — jamais Vercel Blob ici. Le
@@ -66,7 +67,10 @@ export async function GET(
     userId: user.id || user.email,
   });
   if (!access) {
-    return new ChatbotError("not_found:database", "Projet introuvable").toResponse();
+    return new ChatbotError(
+      "not_found:database",
+      "Projet introuvable"
+    ).toResponse();
   }
   const files = await getProjectFiles({ projectId: id });
   return Response.json({ files });
@@ -90,7 +94,10 @@ export async function POST(
     userId,
   });
   if (!access) {
-    return new ChatbotError("not_found:database", "Projet introuvable").toResponse();
+    return new ChatbotError(
+      "not_found:database",
+      "Projet introuvable"
+    ).toResponse();
   }
   if (!canUploadProjectFile(access.role)) {
     return new ChatbotError(
@@ -186,8 +193,8 @@ export async function POST(
       contentType,
       extractedText,
       extractionStatus,
-      fileRef,
       fileName: file.name,
+      fileRef,
       fileSize: file.size,
       projectId: id,
       storageUrl,
@@ -227,16 +234,28 @@ export async function DELETE(
     userId,
   });
   if (!access) {
-    return new ChatbotError("not_found:database", "Projet introuvable").toResponse();
+    return new ChatbotError(
+      "not_found:database",
+      "Projet introuvable"
+    ).toResponse();
   }
 
   const file = await getProjectFileById({ id: fileId });
   if (!file || file.projectId !== id) {
-    return new ChatbotError("not_found:database", "Fichier introuvable").toResponse();
+    return new ChatbotError(
+      "not_found:database",
+      "Fichier introuvable"
+    ).toResponse();
   }
   // Un fichier est supprimable par son auteur ou par le propriétaire du
   // projet — décision portée par la matrice de permissions, pas par l'UI.
-  if (!canDeleteProjectFile({ fileUploadedBy: file.uploadedBy, role: access.role, userId })) {
+  if (
+    !canDeleteProjectFile({
+      fileUploadedBy: file.uploadedBy,
+      role: access.role,
+      userId,
+    })
+  ) {
     return new ChatbotError(
       "forbidden:api",
       "Ce fichier ne peut pas être supprimé."

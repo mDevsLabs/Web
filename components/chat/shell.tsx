@@ -143,7 +143,8 @@ export function ChatShell() {
   // rien n'est chargé — ou que tout a échoué — on ne verrouille PAS côté
   // client : la garde serveur (plan_required) fait foi à l'envoi.
   const knownTier =
-    flagsTier ?? (isSettingsTierLoaded ? (isSettingsFree ? "free" : "paid") : null);
+    flagsTier ??
+    (isSettingsTierLoaded ? (isSettingsFree ? "free" : "paid") : null);
 
   const experience = resolveChatExperience({
     agentEnabled: flags["agent.enabled"],
@@ -155,7 +156,11 @@ export function ChatShell() {
     // Garde d'interface : un clic « Agent » depuis Chat peut être bloqué si le
     // flag est coupé ou si le tier CONNU est free. Sinon, le choix est honoré
     // immédiatement — plus de réassignation silencieuse (bug Plus → Chat).
-    const probe = resolveChatExperience({ agentEnabled: flags["agent.enabled"], mode: next, tier: knownTier });
+    const probe = resolveChatExperience({
+      agentEnabled: flags["agent.enabled"],
+      mode: next,
+      tier: knownTier,
+    });
     if (probe.status === "blocked") {
       handleBlockedAgentSelect();
       return;
@@ -217,7 +222,11 @@ export function ChatShell() {
               modeSwitcher={
                 messages.length === 0 && !isLoading ? (
                   <HomeModeSwitcher
-                    mode={experience.status === "blocked" ? "chat" : experience.status}
+                    mode={
+                      experience.status === "blocked"
+                        ? "chat"
+                        : experience.status
+                    }
                     onBlockedAgentSelect={handleBlockedAgentSelect}
                     onModeChange={handleModeChange}
                   />

@@ -131,6 +131,9 @@ export type ProjectInvite = InferSelectModel<typeof projectInvite>;
 export const projectFile = pgTable(
   "ProjectFile",
   {
+    contentType: text("contentType")
+      .notNull()
+      .default("application/octet-stream"),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     // Texte extrait (PDF/DOCX/CSV convertis en texte) borné : injecté dans la
     // requête modèle sous budget, jamais le binaire complet.
@@ -140,12 +143,11 @@ export const projectFile = pgTable(
     })
       .notNull()
       .default("pending"),
+    fileName: text("fileName").notNull(),
     // Référence du fichier dans le stockage cloud MAI (Z1 Storage) — pas de
     // binaire ici : l'upload proxifie /api/library (même backend).
     fileRef: text("fileRef"),
-    fileName: text("fileName").notNull(),
     fileSize: integer("fileSize"),
-    contentType: text("contentType").notNull().default("application/octet-stream"),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     projectId: uuid("projectId")
       .notNull()

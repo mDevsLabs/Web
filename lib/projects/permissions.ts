@@ -63,7 +63,9 @@ export function canDeleteProjectFile(params: {
     return true;
   }
   if (params.role === "member") {
-    return Boolean(params.fileUploadedBy) && params.fileUploadedBy === params.userId;
+    return (
+      Boolean(params.fileUploadedBy) && params.fileUploadedBy === params.userId
+    );
   }
   return false;
 }

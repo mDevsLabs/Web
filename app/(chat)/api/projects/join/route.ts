@@ -58,8 +58,8 @@ export async function POST(request: Request) {
     // joinProjectWithInvite est idempotent : déjà membre => no-op (l'usage
     // de l'invitation n'est pas incrémenté).
     const result = await joinProjectWithInvite({
-      invitedBy: invite.createdBy,
       invite,
+      invitedBy: invite.createdBy,
       userId,
     });
 
@@ -76,7 +76,11 @@ export async function POST(request: Request) {
 
     // Le rôle effectif (owner si déjà propriétaire, member sinon) est renvoyé
     // pour que l'UI redirige directement vers l'espace.
-    const access = await getProjectAccess({ projectId: invite.projectId, userEmail, userId });
+    const access = await getProjectAccess({
+      projectId: invite.projectId,
+      userEmail,
+      userId,
+    });
     return Response.json({
       alreadyMember: result.alreadyMember,
       projectId: invite.projectId,
