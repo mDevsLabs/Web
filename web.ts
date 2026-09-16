@@ -41,7 +41,7 @@ function getYouApiKeys(): string[] {
   ];
 
   for (const k of candidateKeys) {
-    if (k && k.trim() && !keys.includes(k.trim())) {
+    if (k?.trim() && !keys.includes(k.trim())) {
       keys.push(k.trim());
     }
   }
@@ -424,7 +424,7 @@ export function registerWebRoutes(app: Hono) {
 
       const searchResult = await executeWebSearch(
         query,
-        isNaN(count) ? 5 : count
+        Number.isNaN(count) ? 5 : count
       );
       return c.json(searchResult, 200);
     } catch (err: any) {

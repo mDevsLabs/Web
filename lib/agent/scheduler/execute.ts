@@ -215,8 +215,7 @@ export async function executeScheduledRun(params: {
       ]
     : listRegisteredAgentTools();
   const continuationSnapshot =
-    activeRun &&
-    activeRun.toolPolicySnapshot &&
+    activeRun?.toolPolicySnapshot &&
     typeof activeRun.toolPolicySnapshot === "object"
       ? (activeRun.toolPolicySnapshot as Record<string, string>)
       : null;

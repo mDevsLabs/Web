@@ -65,7 +65,7 @@ export function registerDMModerationRoutes(
       const sql = getDb();
       await sql`DELETE FROM blocked_users WHERE user_id = ${userId} AND blocked_user_id = ${targetId}`;
       return c.json({ success: true });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur déblocage." }, 500);
     }
   };
@@ -96,7 +96,7 @@ export function registerDMModerationRoutes(
         ORDER BY b.created_at DESC
       `;
       return c.json({ blocked: rows });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur liste bloqués." }, 500);
     }
   };
@@ -331,7 +331,7 @@ export function registerDMModerationRoutes(
       if (!messageId) return c.json({ error: "ID du message requis." }, 400);
 
       const { content } = await c.req.json();
-      if (!content || !content.trim()) {
+      if (!content?.trim()) {
         return c.json(
           { error: "Le contenu du message ne peut pas être vide." },
           400

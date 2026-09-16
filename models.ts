@@ -13,7 +13,7 @@ import {
 import { maiModelsList } from "./maiModels.ts";
 
 function getOpenRouterApiKey(userCustomKey?: string | null): string {
-  if (userCustomKey && userCustomKey.trim().startsWith("sk-or-")) {
+  if (userCustomKey?.trim().startsWith("sk-or-")) {
     return userCustomKey.trim();
   }
   return getEnv("OPENROUTER_API_KEY") || "";
@@ -200,7 +200,7 @@ export function registerModelRoutes(app: Hono) {
       const rawModels: any[] = json.data || [];
 
       let filtered = rawModels
-        .filter((m) => m && m.id && !m.id.startsWith("openrouter/"))
+        .filter((m) => m?.id && !m.id.startsWith("openrouter/"))
         .filter((m) => {
           const modality = m.architecture?.modality || "";
           const outputModalities = m.architecture?.output_modalities || [];
@@ -246,7 +246,7 @@ export function registerModelRoutes(app: Hono) {
       }
 
       return c.json({ data: filtered, object: "list" });
-    } catch (_err) {
+    } catch {
       let fallback = [
         {
           architecture: {
@@ -588,7 +588,7 @@ export function registerModelRoutes(app: Hono) {
             ON CONFLICT (user_id, week_start)
             DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
           `;
-        } catch (_e) {}
+        } catch {}
       }
 
       return new Response(openRouterRes.body, {
@@ -734,7 +734,7 @@ export function registerModelRoutes(app: Hono) {
             ON CONFLICT (user_id, week_start)
             DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
           `;
-        } catch (_e) {}
+        } catch {}
       }
 
       return new Response(openRouterRes.body, {
@@ -883,7 +883,7 @@ export function registerModelRoutes(app: Hono) {
             ON CONFLICT (user_id, week_start)
             DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
           `;
-        } catch (_e) {}
+        } catch {}
       }
 
       return new Response(openRouterRes.body, {

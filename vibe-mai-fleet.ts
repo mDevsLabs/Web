@@ -112,10 +112,7 @@ export class MAIAgentFleet {
    * Récupère une clé OpenRouter (variable d'environnement ou table mprojects_api_keys).
    */
   public static async getOpenRouterKey(userId: number): Promise<string> {
-    if (
-      typeof (globalThis as any).Deno !== "undefined" &&
-      (globalThis as any).Deno.env?.get("OPENROUTER_API_KEY")
-    ) {
+    if ((globalThis as any).Deno?.env?.get("OPENROUTER_API_KEY")) {
       return (globalThis as any).Deno.env.get("OPENROUTER_API_KEY");
     }
     if (typeof process !== "undefined" && process.env?.OPENROUTER_API_KEY) {
@@ -232,7 +229,7 @@ export class MAIAgentFleet {
 
         case "create_post": {
           const { content, format = "micro_text", media_url } = args;
-          if (!content || !content.trim())
+          if (!content?.trim())
             throw new Error("Le contenu du post est obligatoire.");
 
           const safety = MAIAgentFleet.assessContentSafety(content);
@@ -1361,7 +1358,7 @@ export class MAIAgentFleet {
           let plannedHour: number | null = null;
           if (args.scheduled_time) {
             const d = new Date(String(args.scheduled_time));
-            if (isNaN(d.getTime())) {
+            if (Number.isNaN(d.getTime())) {
               const hm = String(args.scheduled_time).match(/^(\d{1,2})/);
               if (hm) plannedHour = Number(hm[1]);
             } else plannedHour = d.getHours();

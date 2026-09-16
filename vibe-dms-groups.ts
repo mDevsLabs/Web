@@ -118,8 +118,7 @@ export function registerDMGroupRoutes(
       const convRows =
         await sql`SELECT is_group, group_name, created_by FROM dm_conversations WHERE id = ${groupId}::uuid LIMIT 1`;
       const conv = convRows[0];
-      if (!conv || !conv.is_group)
-        return c.json({ error: "Groupe introuvable." }, 404);
+      if (!conv?.is_group) return c.json({ error: "Groupe introuvable." }, 404);
       if (Number(conv.created_by) !== userId)
         return c.json(
           {
@@ -205,7 +204,7 @@ export function registerDMGroupRoutes(
         });
       } catch {}
       return c.json({ removed: targetId, success: true });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur retrait membre." }, 500);
     }
   };
@@ -249,7 +248,7 @@ export function registerDMGroupRoutes(
         ORDER BY gm.joined_at ASC
       `;
       return c.json({ group: { ...rows[0], members } });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur détails groupe." }, 500);
     }
   };

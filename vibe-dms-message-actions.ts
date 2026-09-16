@@ -78,7 +78,7 @@ export function registerDMMessageActionRoutes(
         pinned: true,
       });
       return c.json({ pinned: true, success: true });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur épinglage." }, 500);
     }
   };
@@ -119,7 +119,7 @@ export function registerDMMessageActionRoutes(
         pinned: false,
       });
       return c.json({ pinned: false, success: true });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur désépinglage." }, 500);
     }
   };
@@ -187,7 +187,7 @@ export function registerDMMessageActionRoutes(
         LIMIT 30
       `.catch(() => []);
       return c.json({ messages });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur recherche conversation." }, 500);
     }
   };
@@ -265,7 +265,7 @@ export function registerDMMessageActionRoutes(
           return c.json({ error: "Conversation introuvable." }, 404);
       }
       return c.json({ success: true, unread: true });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur marquage non lu." }, 500);
     }
   };
@@ -422,7 +422,7 @@ export function registerDMMessageActionRoutes(
       }
 
       // Refuser l'appel si aucun texte n'est présent dans la bulle de message
-      if (!draft || !draft.trim()) {
+      if (!draft?.trim()) {
         return c.json(
           {
             error:
@@ -552,8 +552,7 @@ export function registerDMMessageActionRoutes(
         SELECT api_key FROM mprojects_api_keys WHERE user_id::text = ${userId}::text LIMIT 1
       `.catch(() => []);
       const openRouterApiKey =
-        (typeof (globalThis as any).Deno !== "undefined" &&
-          (globalThis as any).Deno.env?.get("OPENROUTER_API_KEY")) ||
+        (globalThis as any).Deno?.env?.get("OPENROUTER_API_KEY") ||
         (typeof process !== "undefined" && process.env?.OPENROUTER_API_KEY) ||
         (keyRows.length > 0 ? keyRows[0].api_key : "");
 

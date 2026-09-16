@@ -30,7 +30,7 @@ export const visibilityFilter = (viewerId: number | null) => {
 
 /** Version texte brut d'un contenu riche (scan de sécurité, snippets, recherche). */
 export function stripHtmlTags(text: string): string {
-  if (!text || !text.includes("<")) return text || "";
+  if (!text?.includes("<")) return text || "";
   return text
     .replace(/<br\s*\/?>/gi, "\n")
     .replace(/<\/(p|div|li|blockquote)>/gi, "\n")

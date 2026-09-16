@@ -35,7 +35,7 @@ export async function sendVerificationEmail(
   let subject = "Notification - mAI";
   let title = "Notification";
   let textContent = "";
-  let showCode = code ? true : false;
+  let showCode = !!code;
 
   switch (action) {
     case "register":

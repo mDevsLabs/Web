@@ -125,7 +125,7 @@ export function registerVibeSettingsRoutes(
         settings.default_vibe_audience = "public";
       }
       return c.json({ settings });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur paramètres." }, 500);
     }
   };

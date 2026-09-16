@@ -25,7 +25,7 @@ function cleanModelName(name: string): string {
 }
 
 function getOpenRouterApiKey(userCustomKey?: string | null): string {
-  if (userCustomKey && userCustomKey.trim().startsWith("sk-or-")) {
+  if (userCustomKey?.trim().startsWith("sk-or-")) {
     return userCustomKey.trim();
   }
   if (typeof Deno !== "undefined" && Deno.env) {
@@ -128,9 +128,7 @@ export function registerAudioRoutes(app: Hono) {
 
       // Règle stricte : filtrer par l'ID contenant ':free' quel que soit le forfait
       const freeSpeechModels = rawModels
-        .filter(
-          (m) => m && m.id && (m.id || "").toLowerCase().includes(":free")
-        )
+        .filter((m) => m?.id && (m.id || "").toLowerCase().includes(":free"))
         .map((m) => {
           const rawName = m.name || m.id;
           const cleanedName = cleanModelName(rawName) || cleanModelName(m.id);
@@ -168,7 +166,7 @@ export function registerAudioRoutes(app: Hono) {
         freeSpeechModels.length > 0 ? freeSpeechModels : FALLBACK_SPEECH_MODELS;
 
       return c.json({ data: finalModels, object: "list" });
-    } catch (_err) {
+    } catch {
       return c.json({ data: FALLBACK_SPEECH_MODELS, object: "list" });
     }
   };

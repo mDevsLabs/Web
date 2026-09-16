@@ -360,8 +360,7 @@ export async function getOpenRouterKey(
     SELECT api_key FROM mprojects_api_keys WHERE user_id::text = ${userId}::text LIMIT 1
   `.catch(() => []);
   return (
-    (typeof (globalThis as any).Deno !== "undefined" &&
-      (globalThis as any).Deno.env?.get("OPENROUTER_API_KEY")) ||
+    (globalThis as any).Deno?.env?.get("OPENROUTER_API_KEY") ||
     (typeof process !== "undefined" && process.env?.OPENROUTER_API_KEY) ||
     (keyRows.length > 0 ? keyRows[0].api_key : "")
   );

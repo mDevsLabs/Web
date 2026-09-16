@@ -184,7 +184,7 @@ async function getAuthUserId(c: any): Promise<number | null> {
     const userId = Number(
       payload.sub || (payload as any).id || (payload as any).userId
     );
-    return userId && !isNaN(userId) ? userId : null;
+    return userId && !Number.isNaN(userId) ? userId : null;
   } catch {
     return null;
   }

@@ -55,7 +55,7 @@ export async function pushRealtimeEvent(
   payload: any
 ) {
   const target = Number(userId);
-  if (!target || isNaN(target)) return;
+  if (!target || Number.isNaN(target)) return;
   try {
     await ensureRealtimeTables();
     const sql = getDb();
@@ -94,7 +94,7 @@ export function registerRealtimeRoutes(app: Hono) {
     try {
       const payload = await verifyToken(token);
       userId = Number(payload.sub || (payload as any).id);
-      if (!userId || isNaN(userId)) throw new Error("no user");
+      if (!userId || Number.isNaN(userId)) throw new Error("no user");
     } catch {
       return c.json({ error: "Token invalide." }, 401);
     }
@@ -270,7 +270,7 @@ export function registerRealtimeRoutes(app: Hono) {
       const body = await c.req.json().catch(() => ({}) as any);
       const partnerId = Number(body?.partner_id);
       const typing = body?.typing !== false;
-      if (!partnerId || isNaN(partnerId) || partnerId === userId) {
+      if (!partnerId || Number.isNaN(partnerId) || partnerId === userId) {
         return c.json({ error: "Partenaire requis." }, 400);
       }
 

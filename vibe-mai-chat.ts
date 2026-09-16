@@ -84,7 +84,7 @@ export async function generateMAICommentAnswer(
           if (aiRes.ok) {
             const aiData = await aiRes.json();
             const textOutput = aiData.choices?.[0]?.message?.content;
-            if (textOutput && textOutput.trim()) {
+            if (textOutput?.trim()) {
               answer = textOutput.trim();
               break;
             }
@@ -133,8 +133,7 @@ export function registerVibeMAIChatRoutes(
 
       const { message, execute_tool, model, context, conversation_id } =
         await c.req.json();
-      if (!message || !message.trim())
-        return c.json({ error: "Message requis." }, 400);
+      if (!message?.trim()) return c.json({ error: "Message requis." }, 400);
 
       // Modèle demandé par le client (sélecteur mAI), sinon réglage utilisateur
       const effectiveModel =
@@ -469,7 +468,7 @@ export function registerVibeMAIChatRoutes(
               if (aiRes.ok) {
                 const aiData = await aiRes.json();
                 const textOutput = aiData.choices?.[0]?.message?.content;
-                if (textOutput && textOutput.trim()) {
+                if (textOutput?.trim()) {
                   reply = textOutput.trim();
                   break;
                 }
@@ -482,7 +481,7 @@ export function registerVibeMAIChatRoutes(
             }
           }
         }
-      } else if (toolResult && toolResult.success) {
+      } else if (toolResult?.success) {
         reply = formatToolReply(toolToRun, toolResult.result, username);
       } else if (toolResult && !toolResult.success) {
         reply = `⚠️ L'action n'a pas pu être exécutée : ${toolResult.error}`;

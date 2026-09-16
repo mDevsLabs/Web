@@ -42,7 +42,7 @@ export function registerDMNotificationRoutes(
         LIMIT 100
       `;
       return c.json({ notifications: notifs });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur notifications." }, 500);
     }
   };
@@ -215,7 +215,7 @@ export function registerDMNotificationRoutes(
         unread_messages: Number(dmRow?.unread_messages || 0),
         unread_notifications: Number(notifRow?.unread_notifications || 0),
       });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur." }, 500);
     }
   };

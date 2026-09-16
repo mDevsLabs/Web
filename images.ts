@@ -658,7 +658,7 @@ async function fetchLiveCometImageModels(): Promise<ImageModelItem[]> {
 
     // Filtrage dynamique multi-formes des modèles d'image
     const imageModels = rawModels.filter((m: any) => {
-      if (!m || !m.id) return false;
+      if (!m?.id) return false;
       const mType = String(
         m.model_type || m.type || m.architecture?.modality || m.object || ""
       ).toLowerCase();
@@ -897,7 +897,7 @@ async function callCometImageGeneration(params: {
       const match =
         content.match(/!\[.*?\]\((https?:\/\/[^\s)]+)\)/) ||
         content.match(/(https?:\/\/[^\s)]+\.(?:png|jpg|jpeg|webp))/i);
-      if (match && match[1]) {
+      if (match?.[1]) {
         return {
           data: [
             {
@@ -1054,7 +1054,7 @@ export function registerImageRoutes(app: Hono) {
       }
 
       return c.json({ data: models, object: "list" });
-    } catch (_err) {
+    } catch {
       let fallback = FALLBACK_IMAGE_MODELS;
       if (shouldFilterFreeOnly) {
         fallback = fallback.filter((m) => m.id.toLowerCase().includes("flux"));

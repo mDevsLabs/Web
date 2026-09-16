@@ -85,7 +85,7 @@ export function registerVibeMAISettingsRoutes(
         tools,
         version: (MAI_TOOLS_CATALOG as any[]).length,
       });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur catalogue outils." }, 500);
     }
   };
@@ -124,7 +124,7 @@ export function registerVibeMAISettingsRoutes(
         enabled_tool_ids: filtered,
         success: true,
       });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur sauvegarde outils mAI." }, 500);
     }
   };

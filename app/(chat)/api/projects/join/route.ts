@@ -32,17 +32,18 @@ export async function POST(request: Request) {
 
     const invite = await getProjectInviteByCode({ code: parsed.code.trim() });
     const check = checkInviteUsability(invite);
-    if (!check.ok) {
-      const messages = {
+    if (!check.ok || !invite) {
+      const messages: Record<
+        "exhausted" | "expired" | "revoked",
+        string
+      > = {
         exhausted:
           "Cette invitation a atteint son nombre maximal d'utilisations.",
         expired: "Cette invitation a expiré.",
         revoked: "Cette invitation n'est plus valide.",
-      } as const;
-      return new ChatbotError(
-        "bad_request:api",
-        messages[check.reason]
-      ).toResponse();
+      };
+      const reason = check.ok ? "revoked" : check.reason;
+      return new ChatbotError("bad_request:api", messages[reason]).toResponse();
     }
 
     // Rejet immédiat si le projet n'existe plus (invitation en cascade) ou
@@ -69,7 +70,7 @@ export async function POST(request: Request) {
         body: `Un nouveau membre a rejoint le projet « ${project.name} ».`,
         link: `/projects/${project.id}`,
         title: "Nouveau membre",
-        type: "project_member_joined",
+        type: "project_member_joined" as const,
         userId: project.userId,
       }).catch(() => {});
     }

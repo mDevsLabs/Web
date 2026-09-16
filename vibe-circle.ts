@@ -45,7 +45,7 @@ export function registerVibeCircleRoutes(
     try {
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
-      return userId && !isNaN(userId) ? userId : null;
+      return userId && !Number.isNaN(userId) ? userId : null;
     } catch {
       return null;
     }

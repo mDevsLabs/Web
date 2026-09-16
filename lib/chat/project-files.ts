@@ -22,6 +22,9 @@ export type FileInjectionDecision = {
     | "text" // texte extrait injecté dans le prompt (sous budget)
     | "manifest_only" // non injecté : capacités insuffisantes ou trop lourd
     | "skip"; // sans contenu exploitable (échec d'extraction, vide)
+  // Fichier concerné par la décision (toujours renseigné dans le plan ;
+  // optionnel pour permettre l'agrégation par nom dans le manifest).
+  file?: ProjectFileLike;
   // Raison affichable dans le manifest pour les fichiers non injectés.
   notice?: string;
   // Troncature appliquée (texte) : true si le contenu dépasse le budget par
@@ -202,7 +205,11 @@ export function buildProjectFilesManifest(
   if (files.length === 0) {
     return null;
   }
-  const byName = new Map((decisions ?? []).map((d) => [d.file.fileName, d]));
+  const byName = new Map(
+    (decisions ?? [])
+      .filter((d) => d.file)
+      .map((d) => [d.file!.fileName, d])
+  );
   const lines = files.map((file) => {
     const decision = byName.get(file.fileName);
     const size = file.fileSize ? ` (${formatBytes(file.fileSize)})` : "";

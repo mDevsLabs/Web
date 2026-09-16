@@ -3997,6 +3997,7 @@ export async function createNotification(data: {
     | "mcp_access_request"
     | "news"
     | "planning_task_completed"
+    | "project_member_joined"
     | "quota_warning"
     // Notifications Agent (types autorisés par la contrainte 0017).
     | "agent_approval_required"

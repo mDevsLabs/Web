@@ -25,7 +25,7 @@ export function summarizeToolResult(params: {
   }
 
   const declared = params.summarize?.(params.result.data);
-  if (declared && declared.trim()) {
+  if (declared?.trim()) {
     return truncateSummary(declared.trim());
   }
 

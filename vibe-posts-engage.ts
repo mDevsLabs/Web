@@ -364,12 +364,12 @@ export function registerPostEngagementRoutes(registerMulti: RegisterMultiFn) {
         const authorId = Number(parentPost[0].author_id);
         let canView =
           vis === "public" ||
-          (currentUserId != null && authorId === currentUserId);
-        if (!canView && currentUserId != null && vis === "followers") {
+          (currentUserId !== null && authorId === currentUserId);
+        if (!canView && currentUserId !== null && vis === "followers") {
           const followerRows =
             await sql`SELECT 1 FROM follows WHERE follower_id = ${currentUserId} AND following_id = ${authorId} LIMIT 1`;
           canView = followerRows.length > 0;
-        } else if (!canView && currentUserId != null && vis === "circle") {
+        } else if (!canView && currentUserId !== null && vis === "circle") {
           const memberRows =
             await sql`SELECT 1 FROM circle_members WHERE user_id = ${authorId} AND member_user_id = ${currentUserId} LIMIT 1`;
           canView = memberRows.length > 0;
@@ -783,7 +783,7 @@ export function registerPostEngagementRoutes(registerMulti: RegisterMultiFn) {
       let mediaImages = 0;
       let mediaVideos = 0;
       for (const m of commentMedia) {
-        if (!m || !m.url || typeof m.url !== "string") continue;
+        if (!m?.url || typeof m.url !== "string") continue;
         const type = String(m.media_type || m.type || "");
         const isVideo =
           type.startsWith("video") || /\.(mp4|webm|mov)(\?|$)/i.test(m.url);
@@ -877,7 +877,7 @@ export function registerPostEngagementRoutes(registerMulti: RegisterMultiFn) {
             VALUES (${userId}, ${postId}::uuid, ${inserted[0].id}::uuid, ${m.url}, ${m.media_type}, ${m.alt_text})
             RETURNING id, url, media_type, alt_text
           `;
-          if (res && res[0]) insertedCommentMedia.push(res[0]);
+          if (res?.[0]) insertedCommentMedia.push(res[0]);
         } catch (mediaInsertErr) {
           console.warn("[vibe-posts] Comment media insert:", mediaInsertErr);
         }

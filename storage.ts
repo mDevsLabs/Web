@@ -364,7 +364,7 @@ export function findStorageNodeForRecord(
   const nodes = getStorageNodes();
 
   // 1. Format explicite taggé : node-1:bucket-name:key-path
-  if (r2Key && r2Key.startsWith("node-")) {
+  if (r2Key?.startsWith("node-")) {
     const parts = r2Key.split(":");
     if (parts.length >= 3) {
       const nodeId = Number.parseInt(parts[0].replace("node-", ""), 10);
@@ -377,7 +377,7 @@ export function findStorageNodeForRecord(
 
   // 2. Recherche par nom de bucket dans la clé ou l'URL
   for (const node of nodes) {
-    if (r2Key && r2Key.startsWith(`${node.bucket}/`)) {
+    if (r2Key?.startsWith(`${node.bucket}/`)) {
       return { node, rawKey: r2Key.slice(node.bucket.length + 1) };
     }
     if (
@@ -442,7 +442,7 @@ export function registerStorageRoutes(app: Hono) {
       const userId = payload.sub as string;
 
       const body = await c.req.parseBody();
-      const file = body["avatar"] || body["file"];
+      const file = body.avatar || body.file;
 
       if (!(file instanceof File) || file.size === 0) {
         return c.json({ error: "Fichier invalide ou non fourni." }, 400);
@@ -541,7 +541,7 @@ export function registerStorageRoutes(app: Hono) {
       }
 
       const body = await c.req.parseBody();
-      const file = body["file"];
+      const file = body.file;
 
       if (!(file instanceof File)) {
         return c.json({ error: "Fichier invalide ou non fourni." }, 400);
@@ -781,7 +781,7 @@ export function registerStorageRoutes(app: Hono) {
 
       // Lire le fichier
       const body = await c.req.parseBody();
-      const file = body["file"];
+      const file = body.file;
       if (!(file instanceof File)) {
         return c.json({ error: "Fichier invalide ou non fourni." }, 400);
       }
@@ -963,7 +963,7 @@ export function registerStorageRoutes(app: Hono) {
 
       try {
         const delRes = await s3Client.fetch(deleteUrl, { method: "DELETE" });
-        if (!delRes.ok && (!r2_key || !r2_key.startsWith("node-"))) {
+        if (!delRes.ok && !r2_key?.startsWith("node-")) {
           // Si suppression échoue sur nœud par défaut pour un ancien fichier, tenter sur les autres nœuds du pool
           for (const fallbackNode of getFallbackNodes(node).slice(1)) {
             try {

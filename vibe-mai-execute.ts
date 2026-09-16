@@ -156,7 +156,7 @@ export function registerVibeMAIExecuteRoutes(
             if (aiRes.ok) {
               const aiData = await aiRes.json();
               const textOutput = aiData.choices?.[0]?.message?.content;
-              if (textOutput && textOutput.trim()) {
+              if (textOutput?.trim()) {
                 reply = textOutput.trim();
                 break;
               }
@@ -236,7 +236,7 @@ export function registerVibeMAIExecuteRoutes(
       const toolName = String(name);
 
       const catalogTool = MAI_TOOLS_CATALOG.find((t) => t.id === toolName);
-      if (!catalogTool || !catalogTool.enabled) {
+      if (!catalogTool?.enabled) {
         return c.json(
           { error: `Outil inconnu ou désactivé : ${toolName}` },
           404

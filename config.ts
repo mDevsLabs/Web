@@ -270,7 +270,7 @@ export async function verifyToken(
       args: [token],
       sql: "SELECT 1 FROM token_blacklist WHERE token = ?",
     });
-    if (sqliteResult && sqliteResult.rows && sqliteResult.rows.length > 0) {
+    if (sqliteResult?.rows && sqliteResult.rows.length > 0) {
       throw new Error("Token révoqué.");
     }
   } catch (e: any) {

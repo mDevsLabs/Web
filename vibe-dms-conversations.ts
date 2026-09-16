@@ -47,7 +47,7 @@ export function registerDMDirectRoutes(
         LIMIT 10
       `;
       return c.json({ users });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur recherche." }, 500);
     }
   };
@@ -174,7 +174,7 @@ export function registerDMDirectRoutes(
         unread_count: Number(g.unread_count || 0),
       }));
       return c.json({ conversations: [...convs, ...groupConvs] });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur conversations." }, 500);
     }
   };
@@ -379,7 +379,7 @@ export function registerDMDirectRoutes(
         }
       } catch {}
       return c.json({ messages, pinned_messages });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur messages." }, 500);
     }
   };
@@ -418,8 +418,7 @@ export function registerDMDirectRoutes(
         conversation_id.startsWith("group:")
       ) {
         const groupId = conversation_id.slice(6);
-        if (!content || !content.trim())
-          return c.json({ error: "Contenu requis." }, 400);
+        if (!content?.trim()) return c.json({ error: "Contenu requis." }, 400);
         if (send_at)
           return c.json(
             {
@@ -593,7 +592,7 @@ export function registerDMDirectRoutes(
 
       const recId = Number(recipient_id);
 
-      if (!recId || !content || !content.trim()) {
+      if (!recId || !content?.trim()) {
         return c.json({ error: "Destinataire et contenu requis." }, 400);
       }
       if (recId === userId) {

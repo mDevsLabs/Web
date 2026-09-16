@@ -123,7 +123,7 @@ export function normalizeModelDisplayName(
   rawName?: string
 ): string {
   let name =
-    rawName && rawName.trim() && rawName.trim() !== id
+    rawName?.trim() && rawName.trim() !== id
       ? rawName.trim()
       : formatModelName(id).name;
   name = name

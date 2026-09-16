@@ -231,7 +231,7 @@ export function useChatAttachments({
         const uploadedAttachments = await Promise.all(uploadPromises);
         const successfullyUploadedAttachments = uploadedAttachments.filter(
           (attachment): attachment is Attachment =>
-            Boolean(attachment && attachment.url && attachment.contentType)
+            Boolean(attachment?.url && attachment.contentType)
         );
 
         setAttachments((curr) => [

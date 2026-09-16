@@ -527,7 +527,7 @@ export function registerProjectRoutes(app: Hono) {
         data: [...STATIC_PROJECTS_LIST, ...dbProjects],
         object: "list",
       });
-    } catch (_err) {
+    } catch {
       return c.json({ data: STATIC_PROJECTS_LIST, object: "list" });
     }
   });

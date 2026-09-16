@@ -199,7 +199,7 @@ export function registerAuthRoutes(app: Hono) {
       let body;
       try {
         body = await c.req.json();
-      } catch (err: any) {
+      } catch {
         return c.json(
           {
             error:
@@ -320,7 +320,7 @@ export function registerAuthRoutes(app: Hono) {
       let body;
       try {
         body = await c.req.json();
-      } catch (err: any) {
+      } catch {
         return c.json(
           {
             error:
@@ -422,8 +422,8 @@ export function registerAuthRoutes(app: Hono) {
             const knownDevice = pastDevices.some(
               (d) => d.device_name === device_name
             );
-            const knownLocation = pastDevices.some(
-              (d) => d.location && d.location.includes(countryStr)
+            const knownLocation = pastDevices.some((d) =>
+              d.location?.includes(countryStr)
             );
             if (knownDevice && knownLocation) {
               isNewDeviceOrLocation = false;
@@ -580,7 +580,7 @@ export function registerAuthRoutes(app: Hono) {
                 400
               );
             }
-          } catch (_redErr) {
+          } catch {
             // Ignorer si la table de redemptions n'est pas encore créée
           }
 
@@ -732,7 +732,7 @@ export function registerAuthRoutes(app: Hono) {
         return c.json({ error: "Le mot de passe actuel est incorrect." }, 400);
       }
 
-      if (username && username.trim()) {
+      if (username?.trim()) {
         const cleanUsername = username.trim().toLowerCase().replace(/^@/, "");
         if (!/^[a-z0-9_]{2,30}$/.test(cleanUsername)) {
           return c.json(
@@ -756,7 +756,7 @@ export function registerAuthRoutes(app: Hono) {
         await sql`UPDATE users SET username = ${cleanUsername} WHERE id::text = ${userId}::text`;
       }
 
-      if (email && email.trim()) {
+      if (email?.trim()) {
         const cleanEmail = email.trim();
         const existing =
           await sql`SELECT id FROM users WHERE email = ${cleanEmail} AND id::text != ${userId}::text LIMIT 1`;
@@ -809,12 +809,12 @@ export function registerAuthRoutes(app: Hono) {
 
       if (auto_logout_minutes !== undefined) {
         const mins = Number.parseInt(auto_logout_minutes, 10);
-        if (!isNaN(mins)) {
+        if (!Number.isNaN(mins)) {
           await sql`UPDATE users SET auto_logout_minutes = ${mins} WHERE id::text = ${userId}::text`;
         }
       }
 
-      if (password && password.trim()) {
+      if (password?.trim()) {
         if (password.length < 6) {
           return c.json(
             { error: "Le mot de passe doit contenir au moins 6 caractères." },

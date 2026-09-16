@@ -88,7 +88,7 @@ export async function getAuthUserId(c: any): Promise<number | null> {
     const userId = Number(
       payload.sub || (payload as any).id || (payload as any).userId
     );
-    if (!userId || isNaN(userId)) return null;
+    if (!userId || Number.isNaN(userId)) return null;
     return userId;
   } catch {
     return null;

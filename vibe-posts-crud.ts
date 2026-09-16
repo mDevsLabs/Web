@@ -82,7 +82,7 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
       await ensurePostColumns();
       await ensureCircleTable().catch(() => {});
 
-      if (!content || !content.trim()) {
+      if (!content?.trim()) {
         return c.json({ error: "Le contenu est obligatoire." }, 400);
       }
 
@@ -235,7 +235,7 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
 
       if (Array.isArray(media_assets)) {
         for (const media of media_assets) {
-          if (!media || !media.url) continue;
+          if (!media?.url) continue;
           const urlStr = String(media.url).trim();
           if (!urlStr) continue;
           normalizedMedia.push({
@@ -300,7 +300,7 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
           RETURNING id, url, media_type, file_size_bytes, alt_text
         `
         );
-        if (res && res[0]) {
+        if (res?.[0]) {
           insertedMediaList.push(res[0]);
         }
       }
@@ -709,7 +709,7 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
         top_referrers: [],
         views,
       });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur stats post." }, 500);
     }
   };
@@ -954,7 +954,7 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
         total_reposts: Number(a.total_reposts || 0),
         total_views: views_total,
       });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur stats créateur." }, 500);
     }
   };
@@ -1011,7 +1011,7 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
         status: accept ? "accepted" : "declined",
         success: true,
       });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur réponse collaboration." }, 500);
     }
   };
@@ -1057,7 +1057,7 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
       await fetchPostMedia(posts);
       await attachPollsAndCollabs(posts, userId);
       return c.json({ posts });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur posts programmés." }, 500);
     }
   };
@@ -1121,7 +1121,7 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
         status: "scheduled",
         success: true,
       });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur replanification." }, 500);
     }
   };
@@ -1149,7 +1149,7 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
       const drafts =
         await sql`SELECT * FROM post_drafts WHERE user_id = ${userId} ORDER BY updated_at DESC LIMIT 20`;
       return c.json({ drafts });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur brouillons." }, 500);
     }
   };
@@ -1204,7 +1204,7 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
         RETURNING id
       `;
       return c.json({ id: String(inserted[0]?.id), success: true }, 201);
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur sauvegarde brouillon." }, 500);
     }
   };
@@ -1237,7 +1237,7 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
       const sql = getDb();
       await sql`DELETE FROM post_drafts WHERE id = ${String(draftId)}::uuid AND user_id = ${userId}`;
       return c.json({ success: true });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur suppression brouillon." }, 500);
     }
   };
@@ -1498,7 +1498,7 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
           : [];
         for (let mi = 0; mi < media_assets.length; mi++) {
           const media = media_assets[mi];
-          if (!media || !media.url) continue;
+          if (!media?.url) continue;
           const urlStr = String(media.url).trim();
           if (!urlStr) continue;
           const position = Number.isFinite(Number(mediaPositions[mi]))
@@ -1523,7 +1523,7 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
               RETURNING id, url, media_type, file_size_bytes, alt_text
             `;
           }
-          if (res && res[0]) insertedMediaList.push(res[0]);
+          if (res?.[0]) insertedMediaList.push(res[0]);
         }
       }
 

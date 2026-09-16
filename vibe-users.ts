@@ -46,7 +46,7 @@ export function registerVibeUsersRoutes(
         payload.sub || (payload as any).id || (payload as any).userId
       );
 
-      if (!userId || isNaN(userId)) {
+      if (!userId || Number.isNaN(userId)) {
         return c.json({ error: "Jeton JWT invalide." }, 401);
       }
 
@@ -371,7 +371,7 @@ export function registerVibeUsersRoutes(
         LIMIT 10
       `.catch(() => []);
       return c.json({ users });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur suggestions onboarding." }, 500);
     }
   };
@@ -404,7 +404,7 @@ export function registerVibeUsersRoutes(
         ON CONFLICT (user_id) DO UPDATE SET onboarding_completed = TRUE, updated_at = NOW()
       `;
       return c.json({ success: true });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur validation onboarding." }, 500);
     }
   };
@@ -826,7 +826,7 @@ export function registerVibeUsersRoutes(
           let valid = false;
           try {
             const parsed = new URL(withScheme);
-            valid = Boolean(parsed.hostname && parsed.hostname.includes("."));
+            valid = Boolean(parsed.hostname?.includes("."));
           } catch {}
           if (!valid || withScheme.length > MAX_WEBSITE_LENGTH) {
             return c.json(
@@ -934,7 +934,7 @@ export function registerVibeUsersRoutes(
 
       try {
         const body = await c.req.parseBody();
-        const file = body["avatar"] || body["file"];
+        const file = body.avatar || body.file;
         if (file instanceof File && file.size > 0) {
           const cleanFilename = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
           const filename = `avatars/${userId}-${Date.now()}-${cleanFilename}`;
@@ -1397,7 +1397,7 @@ export function registerVibeUsersRoutes(
         series,
         total: Number((total[0] as any)?.n || 0),
       });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur visites profil." }, 500);
     }
   };

@@ -78,10 +78,15 @@ type ProjectMemberRow = {
 
 type Invite = {
   code: string;
+  createdAt?: string;
+  createdBy?: string;
   expiresAt: string | null;
+  id?: string;
   maxUses: number | null;
   useCount: number;
-} | null;
+  projectId?: string;
+  revokedAt?: string | null;
+};
 
 function formatBytes(bytes: number | null): string {
   if (!bytes) {
@@ -116,10 +121,9 @@ export default function ProjectDetailPage() {
   );
   const projectFiles: ProjectFile[] = filesData?.files ?? files;
 
-  const { data: inviteData, mutate: mutateInvite } = useSWR<Invite>(
-    id && isOwner ? `/api/projects/${id}/invites` : null,
-    fetcher
-  );
+  const { data: inviteData, mutate: mutateInvite } = useSWR<{
+    invite: Invite | null;
+  }>(id && isOwner ? `/api/projects/${id}/invites` : null, fetcher);
   const invite = inviteData?.invite ?? null;
 
   const { data: modelsData } = useSWR<{
