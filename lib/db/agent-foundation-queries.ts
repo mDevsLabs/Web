@@ -1,6 +1,16 @@
 import "server-only";
 
-import { and, asc, desc, eq, inArray, lte, or, sql } from "drizzle-orm";
+import {
+  and,
+  asc,
+  desc,
+  eq,
+  inArray,
+  lt,
+  lte,
+  or,
+  sql,
+} from "drizzle-orm";
 import type { ScheduleRule } from "@/lib/agent/contracts";
 import {
   type AgentOccurrenceRecord,
@@ -288,17 +298,20 @@ export async function claimOccurrence(params: {
       .where(
         and(
           eq(agentScheduleOccurrence.id, params.occurrenceId),
-          or(
-            eq(agentScheduleOccurrence.status, "pending"),
-            and(
-              eq(agentScheduleOccurrence.status, "claimed"),
-              sql`${agentScheduleOccurrence.leaseUntil} < ${params.now}`
-            ),
-            and(
-              eq(agentScheduleOccurrence.status, "running"),
-              sql`${agentScheduleOccurrence.leaseUntil} < ${params.now}`
-            )
+        // Comparaison de date via lt() : un fragment sql`${col} < ${date}`
+        // passe l'objet Date brut au driver (sans mapping Drizzle) et échoue
+        // avec TypeError "Received an instance of Date".
+        or(
+          eq(agentScheduleOccurrence.status, "pending"),
+          and(
+            eq(agentScheduleOccurrence.status, "claimed"),
+            lt(agentScheduleOccurrence.leaseUntil, params.now)
+          ),
+          and(
+            eq(agentScheduleOccurrence.status, "running"),
+            lt(agentScheduleOccurrence.leaseUntil, params.now)
           )
+        )
         )
       )
       .returning();
@@ -359,7 +372,7 @@ export async function listExpiredLeaseOccurrences(params: {
       .where(
         and(
           inArray(agentScheduleOccurrence.status, ["claimed", "running"]),
-          sql`${agentScheduleOccurrence.leaseUntil} < ${params.now}`
+          lt(agentScheduleOccurrence.leaseUntil, params.now)
         )
       )
       .limit(params.limit ?? 20);

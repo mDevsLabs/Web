@@ -368,7 +368,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
   useEffect(() => {
     setOpenMobile(false);
     setOpenMenu(null);
-  }, [pathname, setOpenMobile]);
+  }, [setOpenMobile]);
 
   const handleToggleSidebar = useCallback(() => {
     toggleSidebar();

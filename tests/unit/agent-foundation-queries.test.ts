@@ -1,4 +1,11 @@
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import {
+  afterAll,
+  beforeAll,
+  describe,
+  expect,
+  it,
+  vi,
+} from "vitest";
 
 // Tests d'intégration des fondations Agent (base requise). Exécution
 // conditionnelle : ils ne tournent que si AGENT_IT_DATABASE_URL (ou
@@ -16,6 +23,10 @@ describe.skipIf(!RUN_DB_TESTS)("Fondations Agent — intégration base", () => {
   afterAll(() => {
     delete process.env.DATABASE_URL;
   });
+
+  // Intégration Neon réelle : sous la suite complète (30 workers parallèles),
+  // la latence pooler + scheduler dépasse le timeout par défaut (5 s).
+  vi.setConfig({ testTimeout: 60_000 });
 
   it("réserve atomiquement une occurrence : un seul worker gagne", async () => {
     const { createAgentSchedule } = await import(

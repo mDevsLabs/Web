@@ -323,7 +323,7 @@ export function QuizCard({ args, output }: QuizCardProps) {
 
               let optionStyle =
                 "border-border/60 bg-background/60 text-foreground hover:bg-muted/70";
-              let badge = null;
+              let badge: React.ReactNode = null;
 
               if (isCurrentAnswered) {
                 if (isCorrectAnswer) {

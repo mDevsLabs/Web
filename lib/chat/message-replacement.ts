@@ -20,7 +20,7 @@ export type MessageReplacementPlan = {
 };
 
 export function planMessageReplacement(params: {
-  dbMessages: Array<Pick<ChatMessage, "id">>;
+  dbMessages: Pick<ChatMessage, "id">[];
   incomingMessageId: string;
   /** Flux d'approbation d'outils : aucun remplacement dans ce cas. */
   isToolApprovalFlow?: boolean;

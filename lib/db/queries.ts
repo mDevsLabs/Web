@@ -11,6 +11,7 @@ import {
   gte,
   inArray,
   isNull,
+  lt,
   lte,
   notInArray,
   or,
@@ -65,6 +66,62 @@ async function getProjectAccessGuard() {
 let _db: ReturnType<typeof drizzle> | null = null;
 let _migrationRan = false;
 
+// Colonnes NOT NULL dont le schéma Drizzle déclare un défaut (defaultNow())
+// mais que la base peut avoir été créée sans : toute insertion qui ne fournit
+// pas la valeur échoue alors (ex. saveChat sans createdAt → aucun appel IA,
+// quel que soit le mode). ensureTableTypes ne répare que les tables ABSENTES ;
+// ces ALTER réparent les colonnes EXISTANTES désynchronisées. Idempotent.
+const REQUIRED_COLUMN_DEFAULTS: Array<{
+  column: string;
+  table: string;
+}> = [
+  { column: "createdAt", table: "Chat" },
+  { column: "createdAt", table: "Message_v2" },
+  { column: "createdAt", table: "Stream" },
+  { column: "createdAt", table: "Document" },
+  { column: "createdAt", table: "Suggestion" },
+  { column: "updatedAt", table: "Project" },
+  { column: "startedAt", table: "AgentRun" },
+  { column: "completedAt", table: "AgentRun" },
+  { column: "startedAt", table: "ToolExecution" },
+  { column: "completedAt", table: "ToolExecution" },
+  { column: "completedAt", table: "AgentStep" },
+  { column: "expiresAt", table: "AgentUserInputRequest" },
+  { column: "expiresAt", table: "ApprovalRequest" },
+];
+
+async function ensureColumnDefaults(
+  client: ReturnType<typeof postgres>
+): Promise<void> {
+  // Une seule interrogation : seules les colonnes SANS défaut sont réparées.
+  // La base saine ne subit donc qu'un SELECT (coût négligeable au démarrage,
+  // y compris pour les workers de tests qui initialisent chacun leur client).
+  try {
+    const values = REQUIRED_COLUMN_DEFAULTS.map(
+      ({ column, table }) => `('${table}','${column}')`
+    ).join(", ");
+    const missing = await client.unsafe<[
+      { column_name: string; table_name: string }
+    ]>(
+      `SELECT table_name, column_name FROM information_schema.columns
+       WHERE (table_name, column_name) IN (${values}) AND column_default IS NULL`
+    );
+    for (const { column_name, table_name } of missing) {
+      try {
+        await client.unsafe(
+          `ALTER TABLE "${table_name}" ALTER COLUMN "${column_name}" SET DEFAULT now()`
+        );
+      } catch {
+        // Une réparation peut échouer (droits, table supprimée entre-temps) :
+        // on tente les suivantes sans bloquer le démarrage.
+      }
+    }
+  } catch {
+    // information_schema indisponible : tant pis, les migrations CLI
+    // (lib/db/migrate.ts) restent le filet de sécurité.
+  }
+}
+
 async function ensureTableTypes(client: ReturnType<typeof postgres>) {
   if (_migrationRan) {
     return;
@@ -79,6 +136,11 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
       /* ignorer les erreurs (déjà existant, etc.) */
     }
   };
+
+  // Réparation des colonnes existantes dont le défaut a disparu (drift de
+  // schéma) : sans cela, saveChat/saveMessages échouent en production et le
+  // modèle IA n'est jamais appelé.
+  await ensureColumnDefaults(client);
 
   // Création des tables une par une
   await run(client`CREATE TABLE IF NOT EXISTS "User" (
@@ -3751,9 +3813,11 @@ export async function purgeMcpLogs({
     return { deleted: deleted.length };
   }
   const cutoff = new Date(Date.now() - olderThanDays * 24 * 60 * 60 * 1000);
+  // lt() plutôt qu'un fragment sql brut : l'objet Date est sérialisé par
+  // Drizzle, sinon le driver échoue ("Received an instance of Date").
   const deleted = await db
     .delete(mcpLog)
-    .where(and(eq(mcpLog.userId, userId), sql`${mcpLog.createdAt} < ${cutoff}`))
+    .where(and(eq(mcpLog.userId, userId), lt(mcpLog.createdAt, cutoff)))
     .returning();
   return { deleted: deleted.length };
 }
@@ -4538,7 +4602,7 @@ export async function deleteMemory({
 
 function sanitizeMemoryContent(content: string): string {
   return content
-    .replace(/\u0000/g, "")
+    .replace(new RegExp(String.fromCharCode(0), "g"), "")
     .trim()
     .slice(0, MEMORY_CONTENT_MAX_LENGTH);
 }
@@ -4640,7 +4704,7 @@ export async function searchMemories({
     conditions.push(isNull(userMemory.agentId));
     conditions.push(isNull(userMemory.projectId));
   }
-  conditions.push(sql`${userMemory.content} ILIKE ${"%" + safe + "%"}`);
+  conditions.push(sql`${userMemory.content} ILIKE ${`%${safe}%`}`);
   return database
     .select()
     .from(userMemory)

@@ -196,7 +196,7 @@ export function registerAuthRoutes(app: Hono) {
     "post",
     ["/login", "/v1/login", "/api/login", "/api/vibe/login"],
     async (c) => {
-      let body;
+      let body: unknown;
       try {
         body = await c.req.json();
       } catch {
@@ -317,7 +317,7 @@ export function registerAuthRoutes(app: Hono) {
       "/api/vibe/verify-login",
     ],
     async (c) => {
-      let body;
+      let body: unknown;
       try {
         body = await c.req.json();
       } catch {

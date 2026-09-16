@@ -108,7 +108,7 @@ export function ScheduleDialog({
       setCloudFileUrls([]);
       setCustomInstructions("");
     }
-  }, [initialData, isOpen]);
+  }, [initialData]);
 
   const toggleTool = (toolKey: string) => {
     setEnabledTools((prev) =>

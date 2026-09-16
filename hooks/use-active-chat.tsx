@@ -751,7 +751,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       setInput("");
     }, 0);
     return () => clearTimeout(timer);
-  }, [chatId, setInput]);
+  }, [chatId]);
 
   useEffect(() => {
     if (chatData && !isNewChat) {

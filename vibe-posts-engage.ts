@@ -429,7 +429,7 @@ export function registerPostEngagementRoutes(registerMulti: RegisterMultiFn) {
         console.warn("[vibe-posts] Comment media hydratation:", mediaErr);
       }
 
-      let aiDigest = null;
+      let aiDigest: string | null = null;
       if (enriched.length >= 2) {
         aiDigest = MAIAgentFleet.synthesizeThread(
           enriched.map((cm: any) => ({

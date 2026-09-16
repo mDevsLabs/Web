@@ -79,8 +79,7 @@ export function PodcastCard({
     if (autoStart) {
       audio.play().catch(() => setIsPlaying(false));
     }
-    // biome-ignore lint/correctness/useExhaustiveDependencies: recharger uniquement au changement de segment ; autoStart pilote seulement la lecture
-  }, [segmentIndex, current?.audio_url]);
+  }, [current, autoStart]);
 
   const handleEnded = useCallback(() => {
     if (segmentIndex < playable.length - 1) {

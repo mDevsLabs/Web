@@ -73,7 +73,7 @@ export function useDrafts(params: {
       });
     }, RESTORE_DEBOUNCE_MS);
     return () => clearTimeout(timer);
-  }, [draftKey, setInput, textareaRef]);
+  }, [draftKey, setInput]);
 
   // Sauvegarde débounée : chaque conversation écrit UNIQUEMENT dans sa propre
   // clé. La clé capturée au moment de l'effet protège contre une écriture

@@ -50,8 +50,8 @@ const WEEKDAY_NAMES = [
   "samedi",
 ];
 
-export class MAIAgentFleet {
-  public static assessContentSafety(content: string): {
+export const MAIAgentFleet = {
+  assessContentSafety(content: string): {
     isSafe: boolean;
     toxicityScore: number;
     flagReason?: string;
@@ -77,92 +77,13 @@ export class MAIAgentFleet {
     }
 
     return { isSafe: true, toxicityScore: 0.02 };
-  }
-
-  public static async modulateText(opts: {
-    text: string;
-    tone?: string;
-    format?: string;
-  }): Promise<string> {
-    const { text, tone = "executive" } = opts;
-    const tonePrefixes: Record<string, string> = {
-      executive: "⚡ ",
-      minimal: "✦ ",
-      poetic: "✨ ",
-      viral: "🔥 ",
-    };
-
-    const prefix = tonePrefixes[tone] || "";
-    return `${prefix}${text.trim()}`;
-  }
-
-  public static synthesizeThread(
-    comments: Array<{ author: string; content: string }>
-  ): string {
-    if (!comments || comments.length === 0)
-      return "Aucun commentaire pour le moment.";
-    const count = comments.length;
-    const authors = [...new Set(comments.map((c) => c.author))]
-      .slice(0, 3)
-      .join(", ");
-    return `Synthèse (${count} réponses) : Échanges autour des points partagés par @${authors}.`;
-  }
-
-  /**
-   * Récupère une clé OpenRouter (variable d'environnement ou table mprojects_api_keys).
-   */
-  public static async getOpenRouterKey(userId: number): Promise<string> {
-    if ((globalThis as any).Deno?.env?.get("OPENROUTER_API_KEY")) {
-      return (globalThis as any).Deno.env.get("OPENROUTER_API_KEY");
-    }
-    if (typeof process !== "undefined" && process.env?.OPENROUTER_API_KEY) {
-      return process.env.OPENROUTER_API_KEY;
-    }
-    try {
-      const sql = getDb();
-      const keyRows =
-        await sql`SELECT api_key FROM mprojects_api_keys WHERE user_id::text = ${String(userId)}::text LIMIT 1`;
-      return keyRows[0]?.api_key || "";
-    } catch {
-      return "";
-    }
-  }
-
-  /**
-   * Modèle mAI par défaut de l'utilisateur (réglage user_settings.mai_default_model,
-   * choisi dans les paramètres ou directement dans mAI). Cache mémoire 60 s.
-   */
-  static userModelCache = new Map<
-    string,
-    { model: string; expiresAt: number }
-  >();
-
-  public static async getUserDefaultModel(
-    userId: number | string
-  ): Promise<string> {
-    const key = String(userId);
-    const cached = MAIAgentFleet.userModelCache.get(key);
-    if (cached && cached.expiresAt > Date.now()) return cached.model;
-    let model = "poolside/laguna-xs-2.1:free";
-    try {
-      const sql = getDb();
-      const rows =
-        await sql`SELECT mai_default_model FROM user_settings WHERE user_id = ${Number(key)} LIMIT 1`;
-      const saved = String(rows[0]?.mai_default_model || "").trim();
-      if (saved) model = saved;
-    } catch {}
-    MAIAgentFleet.userModelCache.set(key, {
-      expiresAt: Date.now() + 60_000,
-      model,
-    });
-    return model;
-  }
+  },
 
   /**
    * Appel générique OpenRouter pour les outils textuels (traduction, reformulation...).
    * Sans `model`, utilise le modèle par défaut de l'utilisateur.
    */
-  public static async callOpenRouter(
+  async callOpenRouter(
     userId: number,
     system: string,
     user: string,
@@ -198,9 +119,9 @@ export class MAIAgentFleet {
     } catch {
       return null;
     }
-  }
+  },
 
-  public static async executeTool(
+  async executeTool(
     toolName: string,
     args: Record<string, any>,
     userId: string | number
@@ -1729,5 +1650,79 @@ export class MAIAgentFleet {
       `.catch(() => {});
       return { error: err.message, result: null, success: false };
     }
-  }
-}
+  },
+
+  /**
+   * Récupère une clé OpenRouter (variable d'environnement ou table mprojects_api_keys).
+   */
+  async getOpenRouterKey(userId: number): Promise<string> {
+    if ((globalThis as any).Deno?.env?.get("OPENROUTER_API_KEY")) {
+      return (globalThis as any).Deno.env.get("OPENROUTER_API_KEY");
+    }
+    if (typeof process !== "undefined" && process.env?.OPENROUTER_API_KEY) {
+      return process.env.OPENROUTER_API_KEY;
+    }
+    try {
+      const sql = getDb();
+      const keyRows =
+        await sql`SELECT api_key FROM mprojects_api_keys WHERE user_id::text = ${String(userId)}::text LIMIT 1`;
+      return keyRows[0]?.api_key || "";
+    } catch {
+      return "";
+    }
+  },
+
+  async getUserDefaultModel(userId: number | string): Promise<string> {
+    const key = String(userId);
+    const cached = MAIAgentFleet.userModelCache.get(key);
+    if (cached && cached.expiresAt > Date.now()) return cached.model;
+    let model = "poolside/laguna-xs-2.1:free";
+    try {
+      const sql = getDb();
+      const rows =
+        await sql`SELECT mai_default_model FROM user_settings WHERE user_id = ${Number(key)} LIMIT 1`;
+      const saved = String(rows[0]?.mai_default_model || "").trim();
+      if (saved) model = saved;
+    } catch {}
+    MAIAgentFleet.userModelCache.set(key, {
+      expiresAt: Date.now() + 60_000,
+      model,
+    });
+    return model;
+  },
+
+  async modulateText(opts: {
+    text: string;
+    tone?: string;
+    format?: string;
+  }): Promise<string> {
+    const { text, tone = "executive" } = opts;
+    const tonePrefixes: Record<string, string> = {
+      executive: "⚡ ",
+      minimal: "✦ ",
+      poetic: "✨ ",
+      viral: "🔥 ",
+    };
+
+    const prefix = tonePrefixes[tone] || "";
+    return `${prefix}${text.trim()}`;
+  },
+
+  synthesizeThread(
+    comments: Array<{ author: string; content: string }>
+  ): string {
+    if (!comments || comments.length === 0)
+      return "Aucun commentaire pour le moment.";
+    const count = comments.length;
+    const authors = [...new Set(comments.map((c) => c.author))]
+      .slice(0, 3)
+      .join(", ");
+    return `Synthèse (${count} réponses) : Échanges autour des points partagés par @${authors}.`;
+  },
+
+  /**
+   * Modèle mAI par défaut de l'utilisateur (réglage user_settings.mai_default_model,
+   * choisi dans les paramètres ou directement dans mAI). Cache mémoire 60 s.
+   */
+  userModelCache: new Map<string, { model: string; expiresAt: number }>(),
+};

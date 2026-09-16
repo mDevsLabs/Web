@@ -200,15 +200,15 @@ export function planProjectFilesInjection(
  */
 export function buildProjectFilesManifest(
   files: ProjectFileLike[],
-  decisions?: Array<FileInjectionDecision>
+  decisions?: FileInjectionDecision[]
 ): string | null {
   if (files.length === 0) {
     return null;
   }
   const byName = new Map(
-    (decisions ?? [])
-      .filter((d) => d.file)
-      .map((d) => [d.file!.fileName, d])
+    (decisions ?? []).flatMap((d) =>
+      d.file ? [[d.file.fileName, d] as const] : []
+    )
   );
   const lines = files.map((file) => {
     const decision = byName.get(file.fileName);

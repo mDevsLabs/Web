@@ -54,7 +54,9 @@ async function handleCronExecution(request: Request) {
   }
 
   const dueItems = await getDueScheduledMessages();
-  const results = [];
+  const results: Array<
+    { id: string; status: string } & Record<string, unknown>
+  > = [];
 
   for (const item of dueItems) {
     try {

@@ -226,9 +226,7 @@ export async function executeWebSearch(
       "https://api.ydc-index.io/search",
     ];
 
-    for (let i = 0; i < keys.length; i++) {
-      const key = keys[i];
-
+    for (const key of keys) {
       for (const endpointUrl of endpoints) {
         try {
           const res = await fetch(endpointUrl, {

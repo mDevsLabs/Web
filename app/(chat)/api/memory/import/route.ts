@@ -65,11 +65,13 @@ export async function POST(request: Request) {
       existing.map((m) => m.content.toLowerCase().trim())
     );
 
-    const inserted = [];
+    const inserted: Awaited<ReturnType<typeof createMemory>>[] = [];
     let skippedCount = 0;
 
     for (const item of parsed.memories) {
-      const cleanContent = item.content.replace(/\u0000/g, "").trim();
+      const cleanContent = item.content
+        .replace(new RegExp(String.fromCharCode(0), "g"), "")
+        .trim();
       if (!cleanContent) {
         continue;
       }

@@ -365,6 +365,7 @@ export function DiagramCard({
     >
       <div
         className="flex h-full w-full items-center justify-center p-2 [&_svg]:max-h-full [&_svg]:max-w-full"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: SVG purifié via DOMPurify (sanitizeSvg) — scripts/handlers retirés
         dangerouslySetInnerHTML={{ __html: sanitizeSvg(svg) }}
         style={{
           transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
@@ -421,6 +422,7 @@ export function DiagramCard({
           >
             <div
               className="flex h-full w-full items-center justify-center p-4 [&_svg]:h-full [&_svg]:w-full [&_svg]:max-h-full [&_svg]:max-w-full"
+              // biome-ignore lint/security/noDangerouslySetInnerHtml: SVG purifié via DOMPurify (sanitizeSvg) — scripts/handlers retirés
               dangerouslySetInnerHTML={{ __html: sanitizeSvg(svg as string) }}
               style={{
                 transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,

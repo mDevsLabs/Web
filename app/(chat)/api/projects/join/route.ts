@@ -33,10 +33,7 @@ export async function POST(request: Request) {
     const invite = await getProjectInviteByCode({ code: parsed.code.trim() });
     const check = checkInviteUsability(invite);
     if (!check.ok || !invite) {
-      const messages: Record<
-        "exhausted" | "expired" | "revoked",
-        string
-      > = {
+      const messages: Record<"exhausted" | "expired" | "revoked", string> = {
         exhausted:
           "Cette invitation a atteint son nombre maximal d'utilisations.",
         expired: "Cette invitation a expiré.",

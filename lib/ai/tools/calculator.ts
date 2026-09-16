@@ -613,7 +613,7 @@ const MAX_EXPR_LENGTH = 1000;
  */
 class SafeMathEvaluator {
   private pos = 0;
-  private expr = "";
+  private readonly expr: string;
 
   constructor(expression: string) {
     this.expr = expression
@@ -636,7 +636,7 @@ class SafeMathEvaluator {
     return ch;
   }
 
-  public evaluate(): number {
+  evaluate(): number {
     const res = this.parseExpression();
     if (this.peek() !== "") {
       throw new Error(`Caractère inattendu : "${this.peek()}"`);

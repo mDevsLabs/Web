@@ -49,6 +49,34 @@ const runMigrate = async () => {
     await connection`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "pinned" boolean DEFAULT false NOT NULL`;
   } catch {}
 
+  // Colonnes NOT NULL dont le défaut a disparu (drift de schéma) : sans
+  // réparation, saveChat/saveMessages échouent en production et le modèle IA
+  // n'est jamais appelé. Même liste que lib/db/queries.ts (ensureColumnDefaults).
+  const requiredColumnDefaults: Array<{ column: string; table: string }> = [
+    { column: "createdAt", table: "Chat" },
+    { column: "createdAt", table: "Message_v2" },
+    { column: "createdAt", table: "Stream" },
+    { column: "createdAt", table: "Document" },
+    { column: "createdAt", table: "Suggestion" },
+    { column: "updatedAt", table: "Project" },
+    { column: "startedAt", table: "AgentRun" },
+    { column: "completedAt", table: "AgentRun" },
+    { column: "startedAt", table: "ToolExecution" },
+    { column: "completedAt", table: "ToolExecution" },
+    { column: "completedAt", table: "AgentStep" },
+    { column: "expiresAt", table: "AgentUserInputRequest" },
+    { column: "expiresAt", table: "ApprovalRequest" },
+  ];
+  for (const { column, table } of requiredColumnDefaults) {
+    try {
+      await connection.unsafe(
+        `ALTER TABLE "${table}" ALTER COLUMN "${column}" SET DEFAULT now()`
+      );
+    } catch {
+      // Table absente : la migration drizzle qui suit la créera.
+    }
+  }
+
   // Modèles installés (migration 0019). Répété ici pour que les environnements
   // dont le journal de migrations est incomplet disposent malgré tout du lien
   // stable vers le modèle d'origine (slug) et de l'unicité par utilisateur.

@@ -14,6 +14,7 @@ import { toast } from "sonner";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import type { AuthResponse } from "../actions";
 import {
   registerAction,
   resendCodeAction,
@@ -74,7 +75,7 @@ export default function RegisterPage() {
     formData.append("password", password);
     formData.append("acceptedTerms", String(acceptedTerms));
 
-    let res;
+    let res: AuthResponse | undefined;
     try {
       res = await registerAction(formData);
     } catch {
@@ -104,7 +105,7 @@ export default function RegisterPage() {
     }
 
     setIsLoading(true);
-    let res;
+    let res: AuthResponse | undefined;
     try {
       res = await verifyRegisterAction(
         email.trim(),
@@ -138,7 +139,7 @@ export default function RegisterPage() {
       return;
     }
     setIsLoading(true);
-    let res;
+    let res: AuthResponse | undefined;
     try {
       res = await resendCodeAction(email.trim(), "register");
     } catch {

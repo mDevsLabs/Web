@@ -129,8 +129,8 @@ const DOCX_STYLES = {
 function buildInlineRuns(
   children: Token[],
   inherited: { bold?: boolean; italic?: boolean; strike?: boolean }
-): Array<Record<string, unknown>> {
-  const runs: Array<Record<string, unknown>> = [];
+): Record<string, unknown>[] {
+  const runs: Record<string, unknown>[] = [];
 
   const walk = (
     tokens: Token[],

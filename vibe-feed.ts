@@ -128,7 +128,7 @@ export function registerVibeFeedRoutes(
       if (type === "trending") {
         const tag = (c.req.query("tag") || "").trim();
         const rankOffset = rawCursor ? (parseRank(rawCursor) ?? 0) : 0;
-        let posts;
+        let posts: Awaited<ReturnType<typeof sql>>;
         if (tag) {
           posts = await sql`
             SELECT p.*, pr.display_name, pr.avatar_url, u.username, u.tier,
@@ -191,7 +191,7 @@ export function registerVibeFeedRoutes(
           keyset
             ? sql`AND (p.published_at, p.id) < (${keyset.ts}::timestamptz, ${keyset.id}::uuid)`
             : sql``;
-        let posts;
+        let posts: Awaited<ReturnType<typeof sql>>;
         if (currentUserId) {
           await ensureCircleTable().catch(() => {});
           posts = await sql`
@@ -232,7 +232,7 @@ export function registerVibeFeedRoutes(
           (p: any) => !isHiddenAuthor(p.author_id)
         );
 
-        const last = visibleStream[visibleStream.length - 1];
+        const last = visibleStream.at(-1);
         return c.json({
           count: visibleStream.length,
           mode: "stream",

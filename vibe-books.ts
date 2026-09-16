@@ -1427,7 +1427,7 @@ export function registerVibeBooksRoutes(
         FROM vibe_books b
         JOIN users u ON u.id = b.user_id
         LEFT JOIN profiles pr ON pr.user_id = u.id
-        WHERE COALESCE(b.is_public, FALSE) = TRUE AND b.title ILIKE ${"%" + q + "%"}
+        WHERE COALESCE(b.is_public, FALSE) = TRUE AND b.title ILIKE ${`%${q}%`}
         ORDER BY items_count DESC, b.updated_at DESC NULLS LAST
         LIMIT 20
       `;

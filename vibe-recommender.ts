@@ -167,17 +167,17 @@ export interface RecommendationSignal {
 // MOTEUR DE RECOMMANDATION HYBRIDE
 // ─────────────────────────────────────────────
 
-export class HybridRecommender {
-  private static readonly DEFAULT_TUNER: FeedTunerWeights = {
+export const HybridRecommender = {
+  DEFAULT_TUNER: {
     dwell: 0.13,
     freshness: 0.3,
     novelty: 0.18,
     popularity: 0.22,
     proximity: 0.09,
     serendipity: 0.08,
-  };
+  },
 
-  public static scorePost(candidate: PostCandidate): RecommendationSignal {
+  scorePost(candidate: PostCandidate): RecommendationSignal {
     const tuner = candidate.tuner || HybridRecommender.DEFAULT_TUNER;
     const dwellW = (tuner as any).dwell ?? 0.13;
     const ageHours = ageInHours(candidate.publishedAt);
@@ -272,5 +272,5 @@ export class HybridRecommender {
             : ["Général"],
       totalScore,
     };
-  }
-}
+  },
+};

@@ -126,7 +126,9 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const parsed = createSchema.parse(body);
-    const content = parsed.content.replace(/\u0000/g, "").trim();
+    const content = parsed.content
+      .replace(new RegExp(String.fromCharCode(0), "g"), "")
+      .trim();
     if (!content) {
       return new ChatbotError(
         "bad_request:api",

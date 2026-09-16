@@ -541,7 +541,7 @@ export function registerProjectRoutes(app: Hono) {
       return c.json({ error: "Le nom du projet est obligatoire." }, 400);
     }
 
-    const projectId = "proj-" + Math.random().toString(36).substr(2, 9);
+    const projectId = `proj-${Math.random().toString(36).substr(2, 9)}`;
 
     await sql`
       INSERT INTO mprojects_projects (user_id, project_id, name, description, is_public)

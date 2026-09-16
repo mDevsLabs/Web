@@ -14,6 +14,7 @@ import { toast } from "sonner";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import type { AuthResponse } from "../actions";
 import { loginAction, resendCodeAction, verifyLoginAction } from "../actions";
 
 export default function LoginPage() {
@@ -64,7 +65,7 @@ export default function LoginPage() {
     formData.append("password", password);
     formData.append("acceptedTerms", String(acceptedTerms));
 
-    let res;
+    let res: AuthResponse | undefined;
     try {
       res = await loginAction(formData);
     } catch {
@@ -95,7 +96,7 @@ export default function LoginPage() {
     }
 
     setIsLoading(true);
-    let res;
+    let res: AuthResponse | undefined;
     try {
       res = await verifyLoginAction(targetEmail, otpCode.trim());
     } catch {
@@ -121,7 +122,7 @@ export default function LoginPage() {
       return;
     }
     setIsLoading(true);
-    let res;
+    let res: AuthResponse | undefined;
     try {
       res = await resendCodeAction(targetEmail, "login");
     } catch {

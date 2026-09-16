@@ -40,7 +40,9 @@ export const memory = ({
       }
       switch (action) {
         case "add": {
-          const safe = (content || "").replace(/\u0000/g, "").trim();
+          const safe = (content || "")
+            .replace(new RegExp(String.fromCharCode(0), "g"), "")
+            .trim();
           if (!safe) {
             return { error: "content requis pour add." };
           }
