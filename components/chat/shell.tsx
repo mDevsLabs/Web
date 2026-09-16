@@ -23,6 +23,8 @@ import {
   useArtifact,
   useArtifactSelector,
 } from "@/hooks/use-artifact";
+import { useTier } from "@/hooks/use-tier";
+import { resolveChatExperience } from "@/lib/agent/mode-gate";
 import type { Attachment, ChatMessage } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { Artifact } from "./artifact";
@@ -38,12 +40,17 @@ export function ChatShell() {
   const router = useRouter();
   const isChatRoute = pathname === "/" || pathname?.startsWith("/chat");
   const { mode, setMode } = useAgentMode();
-  const { flags, tier } = useAgentFlags();
+  const { flags, isError: isFlagsError, tier: flagsTier } = useAgentFlags();
+  // Tier indépendant de /api/agent/flags : useSettings est déjà chargé par le
+  // compositeur (quota). Un échec de l'un des deux canaux ne doit plus forcer
+  // un retour silencieux à Chat pour un abonné payant — le serveur arbitre.
+  const { isFree: isSettingsFree, loaded: isSettingsTierLoaded } = useTier();
   const [agentUpgradeOpen, setAgentUpgradeOpen] = useState(false);
 
   // Le sélecteur est visible pour tout le monde, mais un utilisateur Free ne
   // peut pas activer Agent : la garde réelle reste côté serveur (plan_required),
   // ceci n'est que l'explication affichée.
+  // Tier client = source chargée uniquement ; sinon null → pas de verrou client.
 
   const {
     chatId,
@@ -132,18 +139,31 @@ export function ChatShell() {
     return null;
   }
 
-  const agentAvailable = flags["agent.enabled"] && tier !== "free";
-  const effectiveMode = agentAvailable ? mode : "chat";
+  // Tier « connu » : au moins un canal (flags ou settings) a répondu. Tant que
+  // rien n'est chargé — ou que tout a échoué — on ne verrouille PAS côté
+  // client : la garde serveur (plan_required) fait foi à l'envoi.
+  const knownTier =
+    flagsTier ?? (isSettingsTierLoaded ? (isSettingsFree ? "free" : "paid") : null);
+
+  const experience = resolveChatExperience({
+    agentEnabled: flags["agent.enabled"],
+    mode,
+    tier: knownTier,
+  });
 
   const handleModeChange = (next: "chat" | "agent") => {
-    if (next === "agent") {
-      setMode("agent");
-      if (pathname !== "/") {
-        router.push("/");
-      }
+    // Garde d'interface : un clic « Agent » depuis Chat peut être bloqué si le
+    // flag est coupé ou si le tier CONNU est free. Sinon, le choix est honoré
+    // immédiatement — plus de réassignation silencieuse (bug Plus → Chat).
+    const probe = resolveChatExperience({ agentEnabled: flags["agent.enabled"], mode: next, tier: knownTier });
+    if (probe.status === "blocked") {
+      handleBlockedAgentSelect();
       return;
     }
-    setMode("chat");
+    setMode(next);
+    if (next === "agent" && pathname !== "/") {
+      router.push("/");
+    }
   };
 
   const handleBlockedAgentSelect = () => {
@@ -154,7 +174,7 @@ export function ChatShell() {
     setAgentUpgradeOpen(true);
   };
 
-  if (effectiveMode === "agent") {
+  if (experience.status === "agent") {
     return (
       <>
         <AgentShell />
@@ -197,7 +217,7 @@ export function ChatShell() {
               modeSwitcher={
                 messages.length === 0 && !isLoading ? (
                   <HomeModeSwitcher
-                    mode={effectiveMode}
+                    mode={experience.status === "blocked" ? "chat" : experience.status}
                     onBlockedAgentSelect={handleBlockedAgentSelect}
                     onModeChange={handleModeChange}
                   />

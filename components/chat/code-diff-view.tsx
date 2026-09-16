@@ -1,9 +1,8 @@
 "use client";
 
-// @ts-expect-error
-import { diff_match_patch } from "diff-match-patch";
 import { Columns2Icon, Rows2Icon } from "lucide-react";
 import { useMemo, useState } from "react";
+import { computeLineDiff } from "@/lib/editor/line-diff";
 import { cn } from "@/lib/utils";
 
 export interface CodeDiffViewProps {
@@ -12,87 +11,7 @@ export interface CodeDiffViewProps {
   oldContent: string;
 }
 
-interface DiffLine {
-  newLineNumber?: number;
-  oldLineNumber?: number;
-  text: string;
-  type: "insert" | "delete" | "equal";
-}
-
-interface SplitRow {
-  left?: { num?: number; text: string; type: "delete" | "equal" };
-  right?: { num?: number; text: string; type: "insert" | "equal" };
-}
-
 type ViewMode = "unified" | "split";
-
-function buildSplitRows(lines: DiffLine[]): SplitRow[] {
-  const rows: SplitRow[] = [];
-  let i = 0;
-  while (i < lines.length) {
-    const line = lines[i];
-    if (line.type === "equal") {
-      rows.push({
-        left: {
-          num: line.oldLineNumber,
-          text: line.text,
-          type: "equal",
-        },
-        right: {
-          num: line.newLineNumber,
-          text: line.text,
-          type: "equal",
-        },
-      });
-      i++;
-      continue;
-    }
-    // Run de suppressions suivi (éventuellement) d'un run d'ajouts : on apparie ligne à ligne
-    if (line.type === "delete") {
-      let j = i;
-      while (j < lines.length && lines[j].type === "delete") {
-        j++;
-      }
-      let k = j;
-      while (k < lines.length && lines[k].type === "insert") {
-        k++;
-      }
-      const dels = lines.slice(i, j);
-      const ins = lines.slice(j, k);
-      const max = Math.max(dels.length, ins.length);
-      for (let r = 0; r < max; r++) {
-        const d = dels[r];
-        const n = ins[r];
-        rows.push({
-          left: d
-            ? { num: d.oldLineNumber, text: d.text, type: "delete" }
-            : undefined,
-          right: n
-            ? { num: n.newLineNumber, text: n.text, type: "insert" }
-            : undefined,
-        });
-      }
-      i = k;
-      continue;
-    }
-    // Run d'ajouts seul (aucune suppression à apparier)
-    let k = i;
-    while (k < lines.length && lines[k].type === "insert") {
-      k++;
-    }
-    for (let r = i; r < k; r++) {
-      rows.push({
-        right: {
-          num: lines[r].newLineNumber,
-          text: lines[r].text,
-          type: "insert",
-        },
-      });
-    }
-    i = k;
-  }
-  return rows;
-}
 
 export function CodeDiffView({
   oldContent,
@@ -101,64 +20,10 @@ export function CodeDiffView({
 }: CodeDiffViewProps) {
   const [viewMode, setViewMode] = useState<ViewMode>("split");
 
-  const { lines, splitRows, additions, deletions } = useMemo(() => {
-    const dmp = new diff_match_patch();
-    const a = dmp.diff_linesToChars_(oldContent || "", newContent || "");
-    const diffs = dmp.diff_main(a.chars1, a.chars2, false);
-    dmp.diff_charsToLines_(diffs, a.lineArray);
-    dmp.diff_cleanupSemantic(diffs);
-
-    const resultLines: DiffLine[] = [];
-    let oldLineNum = 1;
-    let newLineNum = 1;
-    let addCount = 0;
-    let delCount = 0;
-
-    for (const [op, text] of diffs) {
-      const splitLines = text.split("\n");
-      // Si la dernière ligne est vide à cause du split sur le dernier \n, on ne la traite pas si elle est vide
-      const count =
-        splitLines.length > 1 && splitLines.at(-1) === ""
-          ? splitLines.length - 1
-          : splitLines.length;
-
-      for (let i = 0; i < count; i++) {
-        const lineText = splitLines[i];
-        if (op === 1) {
-          // Inserted
-          addCount++;
-          resultLines.push({
-            newLineNumber: newLineNum++,
-            text: lineText,
-            type: "insert",
-          });
-        } else if (op === -1) {
-          // Deleted
-          delCount++;
-          resultLines.push({
-            oldLineNumber: oldLineNum++,
-            text: lineText,
-            type: "delete",
-          });
-        } else {
-          // Equal
-          resultLines.push({
-            newLineNumber: newLineNum++,
-            oldLineNumber: oldLineNum++,
-            text: lineText,
-            type: "equal",
-          });
-        }
-      }
-    }
-
-    return {
-      additions: addCount,
-      deletions: delCount,
-      lines: resultLines,
-      splitRows: buildSplitRows(resultLines),
-    };
-  }, [oldContent, newContent]);
+  const { lines, splitRows, additions, deletions } = useMemo(
+    () => computeLineDiff(oldContent, newContent),
+    [oldContent, newContent]
+  );
 
   const cellClasses = (type: "insert" | "delete" | "equal" | "empty") => {
     if (type === "insert") {

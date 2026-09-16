@@ -1,18 +1,27 @@
 import { tool, type UIMessageStreamWriter } from "ai";
 import type { Session } from "next-auth";
 import { z } from "zod";
-import { getDocumentById, saveDocument } from "@/lib/db/queries";
-import type { ChatMessage } from "@/lib/types";
+import { hashContent } from "@/lib/artifacts/hash";
+import {
+  applyDocumentPatch,
+  documentPatchOpSchema,
+  type DocumentPatch,
+} from "@/lib/artifacts/patch";
+import { getDocumentById, saveDocument, saveDocumentProposal } from "@/lib/db/queries";
+import type { ChatMessage, DocumentProposalPayload } from "@/lib/types";
+import { generateUUID } from "@/lib/utils";
 
 type EditDocumentProps = {
   session: Session;
   dataStream: UIMessageStreamWriter<ChatMessage>;
 };
 
+const PROPOSED_CONTENT_MAX = 200_000;
+
 export const editDocument = ({ session, dataStream }: EditDocumentProps) =>
   tool({
     description:
-      "Make a targeted edit to an existing artifact. Preferred over updateDocument for small changes. Supports: find/replace via old_string/new_string, insert before/after via position, prepend/append, delete by lines via deleteRange, full replace via content, rename via title. Options: anchor for disambiguation, caseSensitive, replace_all, preview (dry-run). If you want to replace the whole document, provide 'content' instead of old_string/new_string.",
+      "Make a targeted edit to an existing artifact. Preferred over updateDocument for small changes. Supports: find/replace via old_string/new_string, insert before/after via position, prepend/append, delete by lines via deleteRange, full replace via content, rename via title. Options: anchor for disambiguation, caseSensitive, replace_all, preview (dry-run), propose (store as a suggestion the user must accept instead of applying directly). If you want to replace the whole document, provide 'content' instead of old_string/new_string.",
     execute: async ({
       id,
       old_string,
@@ -24,6 +33,7 @@ export const editDocument = ({ session, dataStream }: EditDocumentProps) =>
       position,
       caseSensitive,
       preview,
+      propose,
       deleteRange,
     }) => {
       // Validate UUID format early for clear feedback
@@ -55,15 +65,12 @@ export const editDocument = ({ session, dataStream }: EditDocumentProps) =>
         return { error: "Forbidden" };
       }
 
-      let updated = "";
       const currentContent = document.content ?? "";
       const effectiveTitle = title
         ? title.trim().slice(0, 200)
         : document.title;
-      const isCaseSensitive = caseSensitive ?? true;
       const effectivePosition = position ?? "replace";
 
-      // Helper: stream helper to avoid duplication
       const streamContent = (
         contentToStream: string,
         kindOverride?: string
@@ -83,30 +90,28 @@ export const editDocument = ({ session, dataStream }: EditDocumentProps) =>
           dataStream.write({
             data: chunk,
             transient: true,
-            type: deltaType as any,
+            type: deltaType as never,
           });
         }
       };
 
-      // Direct full replacement with content
+      // --- Remplacement total (content direct) : inchangé, hors patch ciblé ---
       if (content && content.trim().length > 0) {
-        updated = content;
-
         if (preview) {
           return {
-            contentLength: updated.length,
+            contentLength: content.length,
             id,
             kind: document.kind,
             message:
               "Preview: full content replacement (not saved, preview=true).",
-            preview: updated.slice(0, 5000),
+            preview: content.slice(0, 5000),
             title: effectiveTitle,
             wouldSave: true,
           };
         }
 
         await saveDocument({
-          content: updated,
+          content,
           id: document.id,
           kind: document.kind,
           title: effectiveTitle,
@@ -114,7 +119,7 @@ export const editDocument = ({ session, dataStream }: EditDocumentProps) =>
         });
 
         dataStream.write({ data: null, transient: true, type: "data-clear" });
-        streamContent(updated);
+        streamContent(content);
         dataStream.write({ data: null, transient: true, type: "data-finish" });
 
         return {
@@ -128,6 +133,65 @@ export const editDocument = ({ session, dataStream }: EditDocumentProps) =>
         };
       }
 
+      // --- Construction du patch ciblé typé (lib/artifacts/patch.ts) ---
+      const ops: DocumentPatch["ops"] = [];
+
+      if (deleteRange) {
+        ops.push({
+          endLine: deleteRange.end,
+          startLine: deleteRange.start,
+          type: "delete_range",
+        });
+      } else if (effectivePosition === "prepend") {
+        if (!new_string || new_string.length === 0) {
+          return {
+            error:
+              "position='prepend' requiert 'new_string' non vide à préfixer.",
+          };
+        }
+        ops.push({
+          content: new_string,
+          line: 1,
+          position: "before",
+          type: "insert",
+        });
+      } else if (effectivePosition === "append") {
+        if (!new_string || new_string.length === 0) {
+          return {
+            error: "position='append' requiert 'new_string' non vide à suffixer.",
+          };
+        }
+        ops.push({
+          content: new_string,
+          line: Number.MAX_SAFE_INTEGER,
+          position: "after",
+          type: "insert",
+        });
+      } else {
+        if (!old_string || old_string.trim() === "") {
+          return {
+            error:
+              "old_string est obligatoire et ne peut pas être vide pour un editDocument ciblé. Si vous voulez réécrire tout le document, utilisez 'content' (remplacement total) ou updateDocument. Pour prepend/append utilisez position='prepend'/'append' avec new_string.",
+          };
+        }
+        const searchNeedle = anchor ? `${anchor}${old_string}` : old_string;
+        const insert = new_string ?? "";
+        const replaceWith =
+          effectivePosition === "before"
+            ? `${insert}${searchNeedle}`
+            : effectivePosition === "after"
+              ? `${searchNeedle}${insert}`
+              : insert;
+
+        ops.push({
+          caseSensitive: caseSensitive ?? true,
+          find: searchNeedle,
+          replaceAll: effectivePosition === "before" || effectivePosition === "after" ? !!replace_all : !!replace_all,
+          replaceWith,
+          type: "replace_text",
+        });
+      }
+
       if (!currentContent) {
         return {
           error:
@@ -135,273 +199,29 @@ export const editDocument = ({ session, dataStream }: EditDocumentProps) =>
         };
       }
 
-      // Delete by line range (1-indexed)
-      if (deleteRange) {
-        const lines = currentContent.split("\n");
-        const totalLines = lines.length;
-        const start = Math.max(1, Math.min(deleteRange.start, totalLines));
-        const end = Math.max(start, Math.min(deleteRange.end, totalLines));
-        if (start > totalLines) {
-          return {
-            error: `deleteRange start ${start} dépasse le nombre de lignes (${totalLines}).`,
-          };
-        }
-        const before = lines.slice(0, start - 1).join("\n");
-        const after = lines.slice(end).join("\n");
-        updated = [before, after]
-          .filter(
-            (_s, i, _arr) => !(i === 0 && before === "" && after !== "") || true
-          )
-          .join(before && after ? "\n" : "");
-        // Fix join when deleting in middle: need newline between
-        if (before && after) {
-          updated = `${before}\n${after}`;
-        } else {
-          updated = before + after;
-        }
-
-        if (preview) {
-          return {
-            deletedLines: {
-              end,
-              start,
-              totalAfter: updated.split("\n").length,
-              totalBefore: totalLines,
-            },
-            id,
-            kind: document.kind,
-            message: `Preview: would delete lines ${start}-${end} (not saved).`,
-            preview: updated.slice(0, 5000),
-            title: effectiveTitle,
-            wouldSave: true,
-          };
-        }
-
-        await saveDocument({
-          content: updated,
-          id: document.id,
-          kind: document.kind,
-          title: effectiveTitle,
-          userId: document.userId,
-        });
-
-        dataStream.write({ data: null, transient: true, type: "data-clear" });
-        streamContent(updated);
-        dataStream.write({ data: null, transient: true, type: "data-finish" });
-
-        return {
-          content: "The document has been edited successfully (lines deleted).",
-          id,
-          kind: document.kind,
-          title: effectiveTitle,
-        };
+      const parsedOps = z
+        .array(documentPatchOpSchema)
+        .safeParse(ops);
+      if (!parsedOps.success) {
+        return { error: `Patch invalide : ${parsedOps.error.message}` };
       }
 
-      // Prepend / Append (no old_string needed)
-      if (effectivePosition === "prepend" || effectivePosition === "append") {
-        if (!new_string || new_string.length === 0) {
-          return {
-            error: `position='${effectivePosition}' requiert 'new_string' non vide à ${effectivePosition === "prepend" ? "préfixer" : "suffixer"}.`,
-          };
-        }
-        updated =
-          effectivePosition === "prepend"
-            ? `${new_string}\n${currentContent}`
-            : `${currentContent}\n${new_string}`;
-
-        if (preview) {
-          return {
-            id,
-            kind: document.kind,
-            message: `Preview: would ${effectivePosition} content (not saved).`,
-            preview: updated.slice(0, 5000),
-            title: effectiveTitle,
-            wouldSave: true,
-          };
-        }
-
-        await saveDocument({
-          content: updated,
-          id: document.id,
-          kind: document.kind,
-          title: effectiveTitle,
-          userId: document.userId,
-        });
-
-        dataStream.write({ data: null, transient: true, type: "data-clear" });
-        streamContent(updated);
-        dataStream.write({ data: null, transient: true, type: "data-finish" });
-
-        return {
-          content: `The document has been edited successfully (${effectivePosition}).`,
-          id,
-          kind: document.kind,
-          title: effectiveTitle,
-        };
-      }
-
-      // From here, old_string is required for replace/before/after
-      if (!old_string || old_string.trim() === "") {
-        return {
-          error:
-            "old_string est obligatoire et ne peut pas être vide pour un editDocument ciblé. Si vous voulez réécrire tout le document, utilisez 'content' (remplacement total) ou updateDocument. Pour prepend/append utilisez position='prepend'/'append' avec new_string.",
-        };
-      }
-
-      // Build search targets with anchor and case sensitivity
-      const searchNeedle = anchor ? `${anchor}${old_string}` : old_string;
-      const searchNeedleTrimmed = anchor
-        ? `${anchor.trim()}${old_string.trim()}`
-        : old_string.trim();
-
-      const findAndReplace = (
-        source: string,
-        needle: string,
-        replacementText: string,
-        all: boolean,
-        caseSensitiveFlag: boolean
-      ): { result: string; found: boolean } => {
-        if (!caseSensitiveFlag) {
-          // case-insensitive replace via regex escape
-          const escaped = needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-          const flags = all ? "gi" : "i";
-          const regex = new RegExp(escaped, flags);
-          if (!regex.test(source)) {
-            return { found: false, result: source };
-          }
-          const result = all
-            ? source.replace(regex, replacementText)
-            : source.replace(regex, replacementText);
-          return { found: true, result };
-        }
-        if (source.includes(needle)) {
-          const result = all
-            ? source.replaceAll(needle, replacementText)
-            : source.replace(needle, replacementText);
-          return { found: true, result };
-        }
-        return { found: false, result: source };
+      const patch: DocumentPatch = {
+        baseHash: hashContent(currentContent),
+        ops: parsedOps.data,
       };
 
-      const replacement = new_string ?? "";
+      const result = applyDocumentPatch(currentContent, patch);
 
-      if (effectivePosition === "before" || effectivePosition === "after") {
-        // Insert before/after the found old_string
-        let found = false;
-        let tryNeedles = [
-          searchNeedle,
-          searchNeedleTrimmed,
-          old_string,
-          old_string.trim(),
-        ].filter(Boolean) as string[];
-        // deduplicate
-        tryNeedles = [...new Set(tryNeedles)];
-        for (const needle of tryNeedles) {
-          const searchRes = findAndReplace(
-            currentContent,
-            needle,
-            needle,
-            false,
-            isCaseSensitive
-          );
-          if (searchRes.found) {
-            const insertText = replacement;
-            if (effectivePosition === "before") {
-              updated = isCaseSensitive
-                ? currentContent.replace(needle, `${insertText}${needle}`)
-                : (() => {
-                    const escaped = needle.replace(
-                      /[.*+?^${}()|[\]\\]/g,
-                      "\\$&"
-                    );
-                    const regex = new RegExp(escaped, "i");
-                    return currentContent.replace(
-                      regex,
-                      `${insertText}${needle}`
-                    );
-                  })();
-            } else {
-              updated = isCaseSensitive
-                ? currentContent.replace(needle, `${needle}${insertText}`)
-                : (() => {
-                    const escaped = needle.replace(
-                      /[.*+?^${}()|[\]\\]/g,
-                      "\\$&"
-                    );
-                    const regex = new RegExp(escaped, "i");
-                    return currentContent.replace(
-                      regex,
-                      `${needle}${insertText}`
-                    );
-                  })();
-            }
-            // handle replace_all for before/after: replace all occurrences with insertion
-            if (replace_all) {
-              const escaped2 = needle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-              const flags2 = isCaseSensitive ? "g" : "gi";
-              const regex2 = new RegExp(escaped2, flags2);
-              updated = currentContent.replace(regex2, (match) =>
-                effectivePosition === "before"
-                  ? `${insertText}${match}`
-                  : `${match}${insertText}`
-              );
-            }
-            found = true;
-            break;
-          }
-        }
-        if (!found) {
-          return {
-            error: `old_string introuvable pour insertion '${effectivePosition}'. Vérifiez l'orthographe exacte, l'ancre, ou caseSensitive. Conseil : ajoutez 3-5 lignes de contexte dans anchor.`,
-          };
-        }
-      } else {
-        // Standard replace
-        let res = findAndReplace(
-          currentContent,
-          searchNeedle,
-          replacement,
-          !!replace_all,
-          isCaseSensitive
-        );
-        if (!res.found) {
-          res = findAndReplace(
-            currentContent,
-            searchNeedleTrimmed,
-            replacement,
-            !!replace_all,
-            isCaseSensitive
-          );
-        }
-        if (!res.found) {
-          res = findAndReplace(
-            currentContent,
-            old_string,
-            replacement,
-            !!replace_all,
-            isCaseSensitive
-          );
-        }
-        if (!res.found) {
-          const trimmedOld = old_string.trim();
-          if (trimmedOld) {
-            res = findAndReplace(
-              currentContent,
-              trimmedOld,
-              replacement,
-              !!replace_all,
-              isCaseSensitive
-            );
-          }
-        }
-        if (!res.found) {
-          return {
-            error:
-              "old_string introuvable dans le document. Vérifiez l'orthographe exacte, l'ancre ou caseSensitive, ou ajoutez 3-5 lignes de contexte pour garantir l'unicité. Conseil : si le changement est massif, utilisez 'content' ou updateDocument.",
-          };
-        }
-        updated = res.result;
+      if (!result.ok) {
+        const first = result.errors[0];
+        return {
+          error: `Édition ciblée impossible : ${first?.message ?? "patch invalide"}`,
+          errors: result.errors,
+        };
       }
+
+      const updated = result.content;
 
       if (preview) {
         return {
@@ -415,6 +235,62 @@ export const editDocument = ({ session, dataStream }: EditDocumentProps) =>
         };
       }
 
+      // --- Mode proposition : stockage + diffusion, JAMAIS d'application ---
+      if (propose) {
+        const proposalId = generateUUID();
+        const truncated =
+          updated.length > PROPOSED_CONTENT_MAX
+            ? `${updated.slice(0, PROPOSED_CONTENT_MAX)}\n\n[… contenu tronqué pour l'aperçu …]`
+            : updated;
+
+        const chatId =
+          (dataStream as unknown as { chatId?: string } | undefined)?.chatId ??
+          null;
+
+        await saveDocumentProposal({
+          baseHash: patch.baseHash,
+          chatId,
+          description:
+            effectivePosition === "replace"
+              ? `Remplacer « ${(old_string ?? "").slice(0, 80)} »`
+              : `Édition ciblée (${effectivePosition})`,
+          documentId: document.id,
+          id: proposalId,
+          ops: patch.ops,
+          userId: document.userId,
+        });
+
+        const payload: DocumentProposalPayload = {
+          baseContent: currentContent,
+          baseHash: patch.baseHash,
+          chatId,
+          description:
+            effectivePosition === "replace"
+              ? `Remplacer « ${(old_string ?? "").slice(0, 80)} »`
+              : `Édition ciblée (${effectivePosition})`,
+          documentId: document.id,
+          id: proposalId,
+          ops: patch.ops,
+          proposedContent: truncated,
+        };
+
+        dataStream.write({
+          data: payload,
+          transient: true,
+          type: "data-proposal",
+        });
+
+        return {
+          content:
+            "A targeted change has been proposed. It is stored as a suggestion and requires explicit user approval before being applied.",
+          id,
+          kind: document.kind,
+          proposalId,
+          title: effectiveTitle,
+        };
+      }
+
+      // --- Application directe (comportement historique conservé) ---
       await saveDocument({
         content: updated,
         id: document.id,
@@ -488,11 +364,10 @@ export const editDocument = ({ session, dataStream }: EditDocumentProps) =>
       id: z.string().describe("The ID of the artifact to edit"),
       new_string: z
         .string()
-        .min(1)
         .max(100_000)
         .optional()
         .describe(
-          "Replacement string (1-100k chars). Required unless 'content' or deleteRange is provided. Pour position before/after: texte à insérer."
+          "Replacement string (up to 100k chars). Required unless 'content' or deleteRange is provided. Pour position before/after: texte à insérer."
         ),
       old_string: z
         .string()
@@ -513,6 +388,12 @@ export const editDocument = ({ session, dataStream }: EditDocumentProps) =>
         .optional()
         .describe(
           "Si true, prévisualise le résultat sans sauvegarder (dry-run). Retourne preview."
+        ),
+      propose: z
+        .boolean()
+        .optional()
+        .describe(
+          "Si true, stocke l'édition comme une PROPOSITION à approuver (accept/refuse) au lieu de l'appliquer immédiatement. Utilisez-le quand l'utilisateur demande des suggestions ou une revue avant modification."
         ),
       replace_all: z
         .boolean()

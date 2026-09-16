@@ -1,18 +1,31 @@
 "use client";
 
 import type { Dispatch, SetStateAction } from "react";
-import { useEffect, useRef } from "react";
-import { useLocalStorage } from "usehooks-ts";
+import { useCallback, useEffect, useRef } from "react";
+import {
+  clearDraft,
+  draftKeyForChatId,
+  loadDraft,
+  NEW_CHAT_DRAFT_KEY,
+  resolveNewChatDraftKey,
+  saveDraft,
+} from "@/lib/chat/drafts";
 import { MAI_PENDING_ATTACHMENT_KEY } from "@/lib/constants";
 import type { Attachment } from "@/lib/types";
 
-const DRAFT_COOKIE = "mai-draft";
-const DRAFT_MAX_AGE = 60 * 60 * 24 * 30; // 30 jours
+const RESTORE_DEBOUNCE_MS = 200;
 
-export const DRAFT_COOKIE_NAME = DRAFT_COOKIE;
-
-// Persistance des brouillons : localStorage par discussion + cookie global
-// 30 jours pour les nouvelles conversations + handoff pièce jointe cloud.
+// Persistance du brouillon de saisie : exclusivement locale au navigateur.
+//
+// Contrats :
+// - un brouillon par conversation (`mai.draft:v1:<chatId>`), le contexte de
+//   création d'une nouvelle conversation ayant sa clé dédiée — jamais de
+//   restauration croisée entre chats ;
+// - restauration UNIQUEMENT si le compositeur est vide : le brouillon ne
+//   masque jamais une saisie en cours (navigation vers un chat où l'utilisateur
+//   vient de taper du texte) ;
+// - sauvegarde débounée à chaque frappe, suppression nette après envoi
+//   (clearDraft + clearLocalStorageInput).
 export function useDrafts(params: {
   chatId: string;
   input: string;
@@ -30,61 +43,59 @@ export function useDrafts(params: {
     textareaRef,
   } = params;
 
-  const [localStorageInput, setLocalStorageInput] = useLocalStorage(
-    `input:${chatId}`,
-    ""
-  );
+  // Clé namespacée : identifiant de conversation réel, ou clé dédiée au
+  // contexte de création. Aucune clé générique partagée entre chats.
+  const draftKey = isNewChatInput
+    ? resolveNewChatDraftKey()
+    : draftKeyForChatId(chatId);
 
-  const didRestoreDraftRef = useRef(false);
-
-  // biome-ignore lint/correctness/useExhaustiveDependencies: restauration unique au montage, dépendances volontairement gelées
+  // Restauration unique par clé : au montage et à chaque changement de
+  // conversation (navigation SPA incluse), contrairement à l'ancien
+  // comportement gelé au premier montage.
+  const restoredKeyRef = useRef<string | null>(null);
   useEffect(() => {
-    if (didRestoreDraftRef.current || !textareaRef.current) {
+    if (restoredKeyRef.current === draftKey) {
       return;
     }
-    didRestoreDraftRef.current = true;
+    restoredKeyRef.current = draftKey;
 
-    let finalValue = textareaRef.current.value;
-    if (!finalValue && localStorageInput) {
-      finalValue = localStorageInput;
-    }
-    if (!finalValue && isNewChatInput) {
-      const draft = document.cookie
-        .split("; ")
-        .find((row) => row.startsWith(`${DRAFT_COOKIE}=`))
-        ?.split("=")[1];
-      if (draft) {
-        finalValue = decodeURIComponent(draft);
-      }
-    }
-    if (finalValue) {
-      setInput(finalValue);
-    }
-  }, [setInput, isNewChatInput]);
-
-  // Brouillon global persisté 30 jours (cookie) pour les nouvelles conversations
-  useEffect(() => {
-    if (!isNewChatInput) {
-      return;
-    }
+    // setState dans l'effet : volontairement après peinture pour laisser le
+    // changement de page s'afficher d'abord. Une garde sur ref suffit — l'effet
+    // ne se réexécute qu'au changement de chatId.
     const timer = setTimeout(() => {
-      if (typeof document !== "undefined") {
-        if (input.trim()) {
-          document.cookie = `${DRAFT_COOKIE}=${encodeURIComponent(input)}; path=/; max-age=${DRAFT_MAX_AGE}`;
-        } else {
-          document.cookie = `${DRAFT_COOKIE}=; path=/; max-age=0`;
+      setInput((current) => {
+        // Une saisie déjà présente (ex. l'utilisateur a commencé à écrire
+        // avant la fin de l'hydratation) ne doit jamais être écrasée.
+        if (current.trim()) {
+          return current;
         }
-      }
-    }, 600);
+        return loadDraft(draftKey);
+      });
+    }, RESTORE_DEBOUNCE_MS);
     return () => clearTimeout(timer);
-  }, [input, isNewChatInput]);
+  }, [draftKey, setInput, textareaRef]);
+
+  // Sauvegarde débounée : chaque conversation écrit UNIQUEMENT dans sa propre
+  // clé. La clé capturée au moment de l'effet protège contre une écriture
+  // tardive dans la clé d'un chat quitté (course de navigation).
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      saveDraft(draftKey, input);
+    }, RESTORE_DEBOUNCE_MS);
+    return () => clearTimeout(timer);
+  }, [draftKey, input]);
 
   // Handoff Cloud -> chat : consommer la pièce jointe en attente
-  // biome-ignore lint/correctness/useExhaustiveDependencies: consommation unique au montage, dépendances volontairement gelées
+  // (sessionStorage), une seule fois par montage du compositeur.
+  const didConsumePendingAttachmentRef = useRef(false);
   useEffect(() => {
-    if (!isNewChatInput || typeof window === "undefined") {
+    if (!isNewChatInput || didConsumePendingAttachmentRef.current) {
       return;
     }
+    if (typeof window === "undefined") {
+      return;
+    }
+    didConsumePendingAttachmentRef.current = true;
     try {
       const raw = sessionStorage.getItem(MAI_PENDING_ATTACHMENT_KEY);
       if (!raw) {
@@ -101,28 +112,33 @@ export function useDrafts(params: {
         setAttachments((prev) => [
           ...prev,
           {
-            contentType: pending.mediaType,
-            name: pending.name,
-            url: pending.url,
-          } as Attachment,
+            contentType: pending.mediaType ?? "",
+            name: pending.name ?? "",
+            url: pending.url ?? "",
+          } satisfies Attachment,
         ]);
       }
       if (pending.prompt) {
         setInput(pending.prompt);
       }
-    } catch {}
-  }, [isNewChatInput]);
-
-  useEffect(() => {
-    setLocalStorageInput(input);
-  }, [input, setLocalStorageInput]);
-
-  /** Efface le brouillon global (après envoi). */
-  const clearGlobalDraft = () => {
-    if (typeof document !== "undefined") {
-      document.cookie = `${DRAFT_COOKIE}=; path=/; max-age=0`;
+    } catch (error) {
+      console.warn(
+        "[chat-draft] Pièce jointe en attente illisible :",
+        error instanceof Error ? error.message : error
+      );
     }
-  };
+  }, [isNewChatInput, setInput, setAttachments]);
 
-  return { clearGlobalDraft, localStorageInput, setLocalStorageInput };
+  // Efface le brouillon de la conversation courante (après envoi). Expose
+  // également un effacement de l'ancienne clé de compatibilité si un
+  // navigateur en porte encore une.
+  const clearCurrentDraft = useCallback(() => {
+    clearDraft(draftKey);
+    clearDraft(NEW_CHAT_DRAFT_KEY);
+  }, [draftKey]);
+
+  return {
+    clearCurrentDraft,
+    draftKey,
+  };
 }

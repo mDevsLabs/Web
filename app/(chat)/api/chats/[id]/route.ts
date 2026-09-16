@@ -12,6 +12,35 @@ import {
   updateChatVisibilityById,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
+import { getProjectAccess } from "@/lib/projects/access";
+
+// Lecture d'une conversation d'un espace projet partagé : le propriétaire du
+// chat ET les membres du projet peuvent consulter. Les mutations (titre,
+// visibilité, suppression…) restent réservées au propriétaire du chat.
+async function canViewChat(params: {
+  chat: { projectId: string | null; userId: string };
+  email: string;
+  userId: string;
+}): Promise<boolean> {
+  if (
+    chatOwnerMatches({
+      chatUserId: params.chat.userId,
+      email: params.email,
+      userId: params.userId,
+    })
+  ) {
+    return true;
+  }
+  if (!params.chat.projectId) {
+    return false;
+  }
+  const access = await getProjectAccess({
+    projectId: params.chat.projectId,
+    userEmail: params.email,
+    userId: params.userId,
+  });
+  return Boolean(access);
+}
 
 const patchSchema = z.object({
   customInstructions: z.string().max(4000).nullable().optional(),
@@ -40,12 +69,11 @@ export async function GET(
   }
   const userId = user.id || user.email;
   if (
-    !chatOwnerMatches({
-      chatUserId: chat.userId,
+    !(await canViewChat({
+      chat,
       email: user.email,
       userId,
-      username: user.username,
-    })
+    }))
   ) {
     return new ChatbotError("forbidden:chat").toResponse();
   }

@@ -2,11 +2,15 @@ import { z } from "zod";
 import { getMaiUser } from "@/lib/auth/session";
 import {
   deleteProject,
-  getChatsByUserId,
-  getProjectById,
+  getProjectChats,
+  getProjectMembers,
   updateProject,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
+import {
+  getProjectAccess,
+  hasProjectManageAccess,
+} from "@/lib/projects/access";
 
 const patchSchema = z.object({
   color: z
@@ -34,26 +38,33 @@ export async function GET(
   const userId = user.id || user.email;
   const userEmail = user.email;
 
-  const project = await getProjectById({ id, userEmail, userId });
-  if (!project) {
+  // Garde centralisée : propriétaire OU membre. Un projectId deviné par un
+  // utilisateur extérieur donne un 404, jamais les données du projet.
+  const access = await getProjectAccess({ projectId: id, userEmail, userId });
+  if (!access) {
     return new ChatbotError(
       "not_found:database",
       "Projet introuvable"
     ).toResponse();
   }
 
-  // Get recent chats preview
-  const { chats } = await getChatsByUserId({
-    endingBefore: null,
-    id: userId,
-    includeArchived: false,
-    limit: 5,
-    projectId: id,
-    startingAfter: null,
-    userEmail,
-  });
+  // Espace partagé : conversations de TOUS les membres (l'utilisateur ne peut
+  // modifier que les siennes — les routes de mutation revalident).
+  const chats = await getProjectChats({ projectId: id });
+  const members = await getProjectMembers({ projectId: id }).catch(() => []);
 
-  return Response.json({ project, recentChats: chats });
+  return Response.json({
+    members: members.map((m) => ({
+      joinedAt: m.joinedAt,
+      role: m.role,
+      userId: m.userId,
+    })),
+    project: {
+      ...access.project,
+      role: access.role,
+    },
+    recentChats: chats,
+  });
 }
 
 export async function PATCH(
@@ -67,6 +78,22 @@ export async function PATCH(
   }
   const userId = user.id || user.email;
   const userEmail = user.email;
+
+  const access = await getProjectAccess({ projectId: id, userEmail, userId });
+  if (!access) {
+    return new ChatbotError(
+      "not_found:database",
+      "Projet introuvable"
+    ).toResponse();
+  }
+  // Réglages (instructions, modèle, nom…) : propriétaire uniquement. Un membre
+  // reçoit un 403 même si l'UI masque le formulaire.
+  if (!hasProjectManageAccess(access)) {
+    return new ChatbotError(
+      "forbidden:api",
+      "Seul le propriétaire du projet peut modifier ses réglages."
+    ).toResponse();
+  }
 
   try {
     const body = await request.json();
@@ -118,6 +145,22 @@ export async function DELETE(
   const userEmail = user.email;
   const { searchParams } = new URL(request.url);
   const deleteChats = searchParams.get("deleteChats") === "true";
+
+  const access = await getProjectAccess({ projectId: id, userEmail, userId });
+  if (!access) {
+    return new ChatbotError(
+      "not_found:database",
+      "Projet introuvable"
+    ).toResponse();
+  }
+  // Suppression : propriétaire uniquement (les lignes membres/invites/fichiers
+  // partent en cascade).
+  if (!hasProjectManageAccess(access)) {
+    return new ChatbotError(
+      "forbidden:api",
+      "Seul le propriétaire peut supprimer ce projet."
+    ).toResponse();
+  }
 
   const deleted = await deleteProject({ deleteChats, id, userEmail, userId });
   if (!deleted) {

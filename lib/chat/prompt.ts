@@ -36,6 +36,9 @@ export async function buildPromptAddendum(
   if (ctx.projectCustomInstructions) {
     effectiveAddendum = `${effectiveAddendum}\n\nContexte et instructions du dossier/projet :\n${ctx.projectCustomInstructions}`;
   }
+  if (ctx.projectFilesPromptBlock) {
+    effectiveAddendum = `${effectiveAddendum}\n\n${ctx.projectFilesPromptBlock}`;
+  }
   if (memoryCtx.projectMemoryBlock) {
     effectiveAddendum = `${effectiveAddendum}\n\n${memoryCtx.projectMemoryBlock}`;
   }

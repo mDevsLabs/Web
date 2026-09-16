@@ -10,6 +10,10 @@ export type ProjectLite = {
   color: string;
   defaultModel?: string | null;
   chatCount?: number;
+  // Projets partagés : rôle de l'utilisateur courant ("owner" par défaut pour
+  // les projets créés avant la migration, la ligne owner est implicite).
+  role?: "member" | "owner";
+  memberCount?: number;
 };
 
 export function useProjects() {
@@ -17,7 +21,7 @@ export function useProjects() {
     projects: ProjectLite[];
   }>("/api/projects", fetcher, {
     dedupingInterval: 30_000,
-    revalidateOnFocus: false,
+    revalidateOnFocus: true,
   });
   return {
     error,

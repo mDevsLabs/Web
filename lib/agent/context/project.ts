@@ -3,8 +3,12 @@ import "server-only";
 import {
   getChatsByUserId,
   getProjectById,
+  getProjectFilesForInjection,
   getProjectMemories,
 } from "@/lib/db/queries";
+import { getModelCapabilities } from "@/lib/ai/models";
+import { buildProjectFilesPromptBlock } from "@/lib/chat/project-files";
+import { getProjectAccess } from "@/lib/projects/access";
 
 // Contexte projet : Agent reçoit des informations ciblées, jamais le projet
 // entier. Trois blocs seulement — instructions, mémoire liée au projet, et
@@ -20,6 +24,7 @@ export type AgentProjectContext = {
 };
 
 export async function loadAgentProjectContext(params: {
+  modelId?: string;
   projectId: string | null;
   userEmail: string;
   userId: string;
@@ -74,6 +79,27 @@ export async function loadAgentProjectContext(params: {
     .map((chat) => chat.title)
     .filter((title): title is string => Boolean(title));
 
+  // Fichiers du projet partagé ou personnel : manifest + textes extraits sous
+  // budget, filtrés par les capacités du modèle Agent (aucune image envoyée à
+  // un modèle texte seul). Accès revalidé par la garde centralisée.
+  let filesBlock: string | null = null;
+  try {
+    const access = await getProjectAccess({
+      projectId: params.projectId,
+      userEmail: params.userEmail,
+      userId: params.userId,
+    });
+    if (access) {
+      const files = await getProjectFilesForInjection({
+        projectId: params.projectId,
+      });
+      filesBlock = buildProjectFilesPromptBlock({
+        caps: getModelCapabilities(params.modelId ?? ""),
+        files,
+      });
+    }
+  } catch {}
+
   const resourcesBlock =
     recentChatTitles.length > 0
       ? [
@@ -83,10 +109,14 @@ export async function loadAgentProjectContext(params: {
         ].join("\n")
       : null;
 
+  const combinedResources = [filesBlock, resourcesBlock]
+    .filter(Boolean)
+    .join("\n\n");
+
   return {
     instructions: instructions || null,
     memories: memoryLines,
     recentChatTitles,
-    resourcesBlock,
+    resourcesBlock: combinedResources || null,
   };
 }

@@ -37,7 +37,25 @@ import type { updateDocument } from "./ai/tools/update-document";
 import type { updateProfilePicture } from "./ai/tools/update-profile-picture";
 import type { webCapture } from "./ai/tools/web-capture";
 import type { webSearch } from "./ai/tools/web-search";
+import type { DocumentPatchOp } from "./artifacts/patch";
 import type { Suggestion } from "./db/schema";
+
+/**
+ * Payload diffusé dans le flux AI SDK quand l'IA propose un patch ciblé.
+ * `oldContent`/`newContent` permettent l'aperçu diff côté client ; l'application
+ * réelle passe toujours par la route d'acceptation (revalidation serveur).
+ */
+export type DocumentProposalPayload = {
+  baseContent: string;
+  baseHash: string;
+  chatId: string | null;
+  description: string | null;
+  documentId: string;
+  id: string;
+  ops: DocumentPatchOp[];
+  /** Contenu résultant si le patch est appliqué tel quel (aperçu). */
+  proposedContent: string;
+};
 
 export const messageMetadataSchema = z.object({
   createdAt: z.string(),
@@ -140,6 +158,8 @@ export type CustomUIDataTypes = {
   kind: ArtifactKind;
   clear: null;
   finish: null;
+  // Proposition de modification ciblée d'un Artifact (patch IA à approuver).
+  proposal: DocumentProposalPayload;
   "chat-title": string;
   "waiting-status": WaitingStatusData;
   usage: { tokens: number; total: number };

@@ -2,6 +2,7 @@ import { chatOwnerMatches } from "@/lib/agent/channel";
 import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { getChatById, getMessagesByChatId } from "@/lib/db/queries";
+import { getProjectAccess } from "@/lib/projects/access";
 import { convertToUIMessages } from "@/lib/utils";
 
 export async function GET(request: Request) {
@@ -41,7 +42,20 @@ export async function GET(request: Request) {
         }))
   );
 
-  if (chat.visibility === "private" && !isOwner) {
+  // Espace projet partagé : un membre peut lire les conversations du projet
+  // (lecture seule), même privées, parce qu'il fait partie de l'espace. Les
+  // autres utilisateurs ne peuvent rien lire (garde serveur).
+  let isProjectMember = false;
+  if (!isOwner && chat.projectId && maiUser) {
+    const access = await getProjectAccess({
+      projectId: chat.projectId,
+      userEmail: maiUser.email,
+      userId: currentUserId ?? "",
+    });
+    isProjectMember = Boolean(access);
+  }
+
+  if (chat.visibility === "private" && !isOwner && !isProjectMember) {
     return errorResponse("access_denied");
   }
 

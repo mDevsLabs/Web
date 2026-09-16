@@ -11,6 +11,7 @@ import {
   getChatById,
   getMessagesByChatId,
   getProjectById,
+  getProjectFilesForInjection,
   getSkillById,
   getUserModelPreferences,
   saveChat,
@@ -20,6 +21,8 @@ import {
 } from "@/lib/db/queries";
 import type { Chat, DBMessage } from "@/lib/db/schema";
 import { ChatbotError } from "@/lib/errors";
+import { getProjectAccess } from "@/lib/projects/access";
+import { buildProjectFilesPromptBlock } from "@/lib/chat/project-files";
 import type { ChatMessage } from "@/lib/types";
 import { convertToUIMessages } from "@/lib/utils";
 
@@ -102,6 +105,7 @@ export type ChatRequestContext = {
 
   // Extraits pour prompt.ts
   projectCustomInstructions: string | null;
+  projectFilesPromptBlock: string | null;
   enabledTools?: string[];
   pendingPrompt?: { commandId?: string; text: string } | null;
 };
@@ -413,6 +417,31 @@ export async function buildChatContext(
 
   const modelMessages = await convertToModelMessages(uiMessages);
 
+  // Fichiers du projet : manifest + textes extraits sous budget, filtrés par
+  // les capacités du modèle (un modèle texte seul ne reçoit jamais d'image).
+  // Le projet rattaché au chat peut être partagé : l'accès passe par la garde
+  // centralisée (owner ou membre). Le garde-fou getProjectFilesForInjection
+  // ne charge que les fichiers du projet déjà autorisé ci-dessus.
+  let projectFilesPromptBlock: string | null = null;
+  if (effectiveProjectId) {
+    try {
+      const access = await getProjectAccess({
+        projectId: effectiveProjectId,
+        userEmail: maiUser.email,
+        userId,
+      });
+      if (access) {
+        const projectFiles = await getProjectFilesForInjection({
+          projectId: effectiveProjectId,
+        });
+        projectFilesPromptBlock = buildProjectFilesPromptBlock({
+          caps: getModelCapabilities(chatModel),
+          files: projectFiles,
+        });
+      }
+    } catch {}
+  }
+
   // Récupérer custom instructions utilisateur + chat
   const userPrefs = await getUserModelPreferences(userId);
 
@@ -452,6 +481,7 @@ export async function buildChatContext(
     pendingPrompt: body.pendingPrompt,
 
     projectCustomInstructions,
+    projectFilesPromptBlock,
     projectId,
     requestHints,
     selectedChatMode,

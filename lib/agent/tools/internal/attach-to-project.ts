@@ -5,8 +5,8 @@ import { toolFailure, toolSuccess } from "@/lib/agent/types";
 import {
   attachDocumentToProject,
   getDocumentById,
-  getProjectById,
 } from "@/lib/db/queries";
+import { getProjectAccess } from "@/lib/projects/access";
 
 const attachToProjectInputSchema = z.object({
   documentId: z
@@ -33,12 +33,14 @@ export const attachToProjectTool = defineTool({
       );
     }
 
-    const project = await getProjectById({
-      id: input.projectId,
+    // Espace partagé : le rattachement est permis au propriétaire OU au
+    // membre du projet (garde centralisée, jamais la seule validité UUID).
+    const access = await getProjectAccess({
+      projectId: input.projectId,
       userEmail: context.userEmail,
       userId: context.userId,
     }).catch(() => null);
-    if (!project) {
+    if (!access) {
       return toolFailure("project_unavailable", "Projet introuvable.", {
         category: "permanent",
         retryable: false,
@@ -66,14 +68,14 @@ export const attachToProjectTool = defineTool({
         documentId: input.documentId,
         kind: updated.kind,
         projectId: input.projectId,
-        projectName: project.name,
+        projectName: access.project.name,
         title,
       },
       [
         {
           id: `project-${input.projectId}`,
           kind: "project",
-          title: project.name,
+          title: access.project.name,
         },
       ],
       {

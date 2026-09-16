@@ -372,6 +372,7 @@ export async function POST(request: Request) {
 
     // 13. Contexte projet ciblé puis construction du contexte envoyé au modèle.
     const projectContext = await loadAgentProjectContext({
+      modelId: ctx.chatModel,
       projectId: ctx.effectiveProjectId ?? null,
       userEmail: ctx.userEmail,
       userId: ctx.userId,

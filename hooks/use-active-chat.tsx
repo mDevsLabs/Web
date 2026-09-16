@@ -730,6 +730,29 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     }
   }, [chatId, isNewChat, chatData, setMessages]);
 
+  // Changement de conversation : l'input ne doit JAMAIS traverser les chats.
+  // Chaque conversation restaure son propre brouillon local (use-drafts) ; ici
+  // on purge l'input du chat quitté pour empêcher la course où un setInput
+  // tardif écrirait le texte du chat A dans la clé de brouillon du chat B.
+  const prevDraftChatIdRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (prevDraftChatIdRef.current === chatId) {
+      return;
+    }
+    const previousChatId = prevDraftChatIdRef.current;
+    prevDraftChatIdRef.current = chatId;
+    // Au premier montage, ne rien purger : l'input est vide par défaut.
+    if (previousChatId === null) {
+      return;
+    }
+    // Purge déboutée : laisse l'effet de sauvegarde du brouillon (clé capturée
+    // au moment du chat quitté) finir son cycle sans écraser le nouveau chat.
+    const timer = setTimeout(() => {
+      setInput("");
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [chatId, setInput]);
+
   useEffect(() => {
     if (chatData && !isNewChat) {
       const cookieModel = document.cookie

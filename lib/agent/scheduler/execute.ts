@@ -274,6 +274,7 @@ export async function executeScheduledRun(params: {
 
   // 8. Contexte projet puis contexte du modèle : mêmes builders que l'API.
   const projectContext = await loadAgentProjectContext({
+    modelId: resolvedModelId,
     projectId: schedule.projectId,
     userEmail: "",
     userId,

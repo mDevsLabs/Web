@@ -284,9 +284,10 @@ export async function executeSuggestedAction(params: {
 
   if (id === "add_result_to_project") {
     const projectId = (parsedPayload.data as { projectId: string }).projectId;
-    const project = await getProjectById({
-      id: projectId,
-      userEmail: "",
+    // Espace partagé : owner ou membre (garde centralisée).
+    const { getProjectAccess } = await import("@/lib/projects/access");
+    const project = await getProjectAccess({
+      projectId,
       userId: params.userId,
     }).catch(() => null);
     if (!project) {

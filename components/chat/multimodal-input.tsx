@@ -147,7 +147,7 @@ function PureMultimodalInput({
     }
   }, [width, isMobileWidth]);
 
-  const { clearGlobalDraft, setLocalStorageInput } = useDrafts({
+  const { clearCurrentDraft } = useDrafts({
     chatId,
     input,
     isNewChatInput,
@@ -615,10 +615,12 @@ function PureMultimodalInput({
     });
 
     setAttachments([]);
-    setLocalStorageInput("");
     setInput("");
     resetUploadedBytes();
-    clearGlobalDraft();
+    // Le message est parti : le brouillon local n'a plus de raison d'exister.
+    // En cas d'échec réseau, le contenu reste dans le dernier message affiché
+    // (voir la garde anti-doublon sur status === "error").
+    clearCurrentDraft();
 
     if (width && width > 768) {
       textareaRef.current?.focus();
@@ -629,12 +631,11 @@ function PureMultimodalInput({
     attachments,
     sendMessage,
     setAttachments,
-    setLocalStorageInput,
     width,
     chatId,
     isGhostMode,
     resetUploadedBytes,
-    clearGlobalDraft,
+    clearCurrentDraft,
   ]);
 
   const handleSkillParamsSubmit = useCallback(

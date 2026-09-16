@@ -169,6 +169,81 @@ const runMigrate = async () => {
     await connection`ALTER TABLE "user_notification_prefs" ADD COLUMN IF NOT EXISTS "regenerateMode" varchar DEFAULT 'truncate' NOT NULL`;
   } catch {}
 
+  // Projets partagés (migration 0020) : membres, invitations et fichiers.
+  // Répété ici (convention du dépôt) pour les environnements dont le journal
+  // de migrations est incomplet.
+  try {
+    await connection`
+      CREATE TABLE IF NOT EXISTS "ProjectMember" (
+        "id" UUID PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+        "projectId" UUID NOT NULL REFERENCES "Project" ("id") ON DELETE CASCADE,
+        "role" VARCHAR DEFAULT 'member' NOT NULL,
+        "userId" TEXT NOT NULL,
+        "invitedBy" TEXT,
+        "joinedAt" TIMESTAMP DEFAULT now() NOT NULL
+      )
+    `;
+  } catch {}
+  try {
+    await connection`CREATE UNIQUE INDEX IF NOT EXISTS "ProjectMember_projectId_userId_key" ON "ProjectMember" ("projectId", "userId")`;
+  } catch {}
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "ProjectMember_projectId_idx" ON "ProjectMember" ("projectId")`;
+  } catch {}
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "ProjectMember_userId_idx" ON "ProjectMember" ("userId")`;
+  } catch {}
+  try {
+    await connection`
+      CREATE TABLE IF NOT EXISTS "ProjectInvite" (
+        "id" UUID PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+        "projectId" UUID NOT NULL REFERENCES "Project" ("id") ON DELETE CASCADE,
+        "code" TEXT NOT NULL,
+        "createdBy" TEXT NOT NULL,
+        "maxUses" INTEGER,
+        "useCount" INTEGER DEFAULT 0 NOT NULL,
+        "expiresAt" TIMESTAMP,
+        "revokedAt" TIMESTAMP,
+        "createdAt" TIMESTAMP DEFAULT now() NOT NULL
+      )
+    `;
+  } catch {}
+  try {
+    await connection`CREATE UNIQUE INDEX IF NOT EXISTS "ProjectInvite_code_key" ON "ProjectInvite" ("code")`;
+  } catch {}
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "ProjectInvite_projectId_idx" ON "ProjectInvite" ("projectId")`;
+  } catch {}
+  try {
+    await connection`CREATE UNIQUE INDEX IF NOT EXISTS "ProjectInvite_one_active_per_project_key" ON "ProjectInvite" ("projectId") WHERE "revokedAt" IS NULL`;
+  } catch {}
+  try {
+    await connection`
+      CREATE TABLE IF NOT EXISTS "ProjectFile" (
+        "id" UUID PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+        "projectId" UUID NOT NULL REFERENCES "Project" ("id") ON DELETE CASCADE,
+        "fileName" TEXT NOT NULL,
+        "contentType" TEXT DEFAULT 'application/octet-stream' NOT NULL,
+        "fileSize" INTEGER,
+        "uploadedBy" TEXT NOT NULL,
+        "fileRef" TEXT,
+        "storageUrl" TEXT NOT NULL,
+        "extractionStatus" VARCHAR DEFAULT 'pending' NOT NULL,
+        "extractedText" TEXT,
+        "createdAt" TIMESTAMP DEFAULT now() NOT NULL
+      )
+    `;
+  } catch {}
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "ProjectFile_projectId_createdAt_idx" ON "ProjectFile" ("projectId", "createdAt")`;
+  } catch {}
+  try {
+    await connection`ALTER TABLE "Notification" DROP CONSTRAINT IF EXISTS "Notification_type_check"`;
+  } catch {}
+  try {
+    await connection`ALTER TABLE "Notification" ADD CONSTRAINT "Notification_type_check" CHECK ("type" IN ('ai_response','project_created','mcp_created','mcp_access_request','news','planning_task_completed','quota_warning','agent_run_finished','agent_run_failed','agent_approval_required','agent_user_input_required','project_member_joined'))`;
+  } catch {}
+
   const start = Date.now();
   await migrate(db, { migrationsFolder: "./lib/db/migrations" });
   const end = Date.now();

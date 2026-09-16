@@ -80,6 +80,20 @@ export function DataStreamHandler() {
               status: "idle",
             };
 
+          case "data-proposal": {
+            // Une proposition ne modifie jamais le contenu affiché : elle est
+            // stockée en métadonnées jusqu'à acceptation explicite.
+            const proposal = delta.data;
+            setMetadata((currentMetadata: Record<string, unknown>) => ({
+              ...currentMetadata,
+              proposals: [
+                ...((currentMetadata?.proposals as unknown[]) ?? []),
+                proposal,
+              ],
+            }));
+            return draftArtifact;
+          }
+
           default:
             return draftArtifact;
         }

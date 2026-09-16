@@ -70,7 +70,9 @@ export async function GET(request: Request) {
       .from(project)
       .where(
         and(
-          sql`${project.userId}::text = ANY(${userIds})`,
+          // Projets possédés OU projets partagés dont l'utilisateur est membre
+          // (ProjectMember) : la recherche n'expose jamais un projet étranger.
+          sql`(${project.userId}::text = ANY(${userIds}) OR EXISTS (SELECT 1 FROM "ProjectMember" pm WHERE pm."projectId" = ${project.id} AND pm."userId"::text = ANY(${userIds})))`,
           projectConditions.length > 0
             ? and(...projectConditions)
             : ilike(project.name, escapedFull)

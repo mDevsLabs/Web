@@ -8,6 +8,7 @@ import {
   index,
   integer,
   json,
+  jsonb,
   pgTable,
   primaryKey,
   serial,
@@ -60,6 +61,107 @@ export const project = pgTable(
 );
 
 export type Project = InferSelectModel<typeof project>;
+
+// ─────────────────────────────────────────────
+// Projets partagés (migration 0020) : membres, invitations et fichiers.
+// Un Projet devient un espace de travail persistant : le propriétaire conserve
+// la ligne "Project" (userId inchangé pour la compatibilité legacy), les
+// membres autorisés sont résolus via ProjectMember. Les conversations restent
+// référencées par Chat.projectId (une seule copie, jamais dupliquée entre
+// comptes) et les fichiers projet pointent vers le stockage cloud MAI (Z1),
+// sans copie binaire en base.
+// ─────────────────────────────────────────────
+export const projectMember = pgTable(
+  "ProjectMember",
+  {
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    invitedBy: text("invitedBy"),
+    joinedAt: timestamp("joinedAt").notNull().defaultNow(),
+    projectId: uuid("projectId")
+      .notNull()
+      .references(() => project.id, { onDelete: "cascade" }),
+    // Rôles : "owner" (réglages, suppression, invitations) et "member"
+    // (contributions). Enum volontairement minimal — de nouveaux rôles
+    // pourront être ajoutés plus tard sans refonte.
+    role: varchar("role", { enum: ["owner", "member"] })
+      .notNull()
+      .default("member"),
+    // Identité canonique users.id (jamais email/username, contrairement aux
+    // champs userId historiques).
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    projectIdx: index("ProjectMember_projectId_idx").on(table.projectId),
+    projectUserUnique: uniqueIndex("ProjectMember_projectId_userId_key").on(
+      table.projectId,
+      table.userId
+    ),
+    userIdIdx: index("ProjectMember_userId_idx").on(table.userId),
+  })
+);
+
+export type ProjectMember = InferSelectModel<typeof projectMember>;
+
+export const projectInvite = pgTable(
+  "ProjectInvite",
+  {
+    // Code URL-safe (nanoid) : sert à la fois de lien partageable
+    // (/projects/join/[code]) et de code manuel. Inguessable : aucune donnée
+    // privée n'est servie sans session authentifiée, même avec le code.
+    code: text("code").notNull(),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    createdBy: text("createdBy").notNull(),
+    expiresAt: timestamp("expiresAt"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    maxUses: integer("maxUses"),
+    projectId: uuid("projectId")
+      .notNull()
+      .references(() => project.id, { onDelete: "cascade" }),
+    revokedAt: timestamp("revokedAt"),
+    useCount: integer("useCount").notNull().default(0),
+  },
+  (table) => ({
+    codeUnique: uniqueIndex("ProjectInvite_code_key").on(table.code),
+    projectIdx: index("ProjectInvite_projectId_idx").on(table.projectId),
+  })
+);
+
+export type ProjectInvite = InferSelectModel<typeof projectInvite>;
+
+export const projectFile = pgTable(
+  "ProjectFile",
+  {
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    // Texte extrait (PDF/DOCX/CSV convertis en texte) borné : injecté dans la
+    // requête modèle sous budget, jamais le binaire complet.
+    extractedText: text("extractedText"),
+    extractionStatus: varchar("extractionStatus", {
+      enum: ["pending", "ready", "unsupported", "failed"],
+    })
+      .notNull()
+      .default("pending"),
+    // Référence du fichier dans le stockage cloud MAI (Z1 Storage) — pas de
+    // binaire ici : l'upload proxifie /api/library (même backend).
+    fileRef: text("fileRef"),
+    fileName: text("fileName").notNull(),
+    fileSize: integer("fileSize"),
+    contentType: text("contentType").notNull().default("application/octet-stream"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    projectId: uuid("projectId")
+      .notNull()
+      .references(() => project.id, { onDelete: "cascade" }),
+    storageUrl: text("storageUrl").notNull(),
+    uploadedBy: text("uploadedBy").notNull(),
+  },
+  (table) => ({
+    projectCreatedIdx: index("ProjectFile_projectId_createdAt_idx").on(
+      table.projectId,
+      table.createdAt
+    ),
+  })
+);
+
+export type ProjectFile = InferSelectModel<typeof projectFile>;
 
 export const skill = pgTable(
   "Skill",
@@ -240,6 +342,46 @@ export const chat = pgTable(
 );
 
 export type Chat = InferSelectModel<typeof chat>;
+
+// Propositions de modifications ciblées d'un Artifact par l'IA. Une proposal
+// décrit un patch typé (lib/artifacts/patch.ts) généré contre un état précis
+// du document (baseHash) : elle n'est JAMAIS appliquée implicitement —// l'utilisateur accepte ou refuse explicitement. Le contenu du document reste
+// dans Document ; cette table ne porte que des métadonnées de patch.
+export const documentProposal = pgTable(
+  "DocumentProposal",
+  {
+    // Hash FNV-1a du contenu de référence (lib/artifacts/hash.ts) : si le
+    // document a changé entre la génération et l'acceptation, la proposal
+    // est marquée stale au lieu d'écraser les modifications utilisateur.
+    baseHash: text("baseHash").notNull(),
+    chatId: uuid("chatId").references(() => chat.id, { onDelete: "set null" }),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    description: text("description"),
+    documentId: uuid("documentId").notNull(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    // Ops sérialisées au format strict DocumentPatchOp[] (jsonb).
+    ops: jsonb("ops").notNull(),
+    resolvedAt: timestamp("resolvedAt"),
+    status: varchar("status", {
+      enum: ["pending", "accepted", "rejected", "stale"],
+    })
+      .notNull()
+      .default("pending"),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    documentStatusIdx: index("DocumentProposal_documentId_status_idx").on(
+      table.documentId,
+      table.status
+    ),
+    userCreatedIdx: index("DocumentProposal_userId_createdAt_idx").on(
+      table.userId,
+      table.createdAt
+    ),
+  })
+);
+
+export type DocumentProposal = InferSelectModel<typeof documentProposal>;
 
 export const message = pgTable("Message_v2", {
   attachments: json("attachments").notNull().default([]),
@@ -567,6 +709,7 @@ export const notification = pgTable(
         "mcp_access_request",
         "news",
         "planning_task_completed",
+        "project_member_joined",
         "quota_warning",
         "agent_run_finished",
         "agent_run_failed",
