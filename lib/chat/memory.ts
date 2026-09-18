@@ -37,12 +37,26 @@ export async function buildMemoryContext(params: {
   const memoryLimit = memoryLimitForTier(tier);
   // Même portée que celle où l'outil écrit (agent sinon globale) : une seule
   // requête ici, réutilisée à l'enregistrement du tool.
-  const memoryAllowAdd = memoryActive
-    ? (await countMemories({
-        agentId: effectiveAgentId ?? null,
-        userId,
-      })) < memoryLimit
-    : false;
+  // Dégradation gracieuse : un échec de comptage (drift de schéma, base
+  // momentanément indisponible) ne doit jamais faire échouer la requête de
+  // chat entière — on laisse passer l'ajout mémoire plutôt que de bloquer
+  // l'utilisateur (memoryAllowAdd devient true en dernier recours).
+  let memoryAllowAdd = false;
+  if (memoryActive) {
+    try {
+      memoryAllowAdd =
+        (await countMemories({
+          agentId: effectiveAgentId ?? null,
+          userId,
+        })) < memoryLimit;
+    } catch (error) {
+      console.warn(
+        "[memory] countMemories indisponible, ajout mémoire autorisé par défaut :",
+        error instanceof Error ? error.message : error
+      );
+      memoryAllowAdd = true;
+    }
+  }
 
   let userMemoryBlock = "";
   let projectMemoryBlock = "";

@@ -48,7 +48,13 @@ const partSchema = z.union([textPartSchema, filePartSchema]);
 const userMessageSchema = z.object({
   id: z.string().min(8).max(64),
   parts: z.array(partSchema),
-  role: z.enum(["user"]),
+  // Le transport AI SDK réutilise ce champ pour les flux de continuation
+  // (regeneration, approval, reprise de stream) où le dernier message peut
+  // être un assistant — rejeté injustement par un enum("user") strict
+  // (guard=schema « message.role: user attendu »). La sémantique réelle
+  // (qui peut déclencher un tour) reste garantée côté serveur dans
+  // buildChatContext, qui ne traite que les messages role=user.
+  role: z.enum(["user", "assistant"]),
 });
 
 const toolApprovalMessageSchema = z.object({

@@ -142,6 +142,63 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
   // modèle IA n'est jamais appelé.
   await ensureColumnDefaults(client);
 
+  // ── Réparation du drift de types (base partagée / environnements mixtes) ──
+  // Trois colonnes ont dérivé du schéma Drizzle ; chaque requête utilisateur
+  // échouait alors AVANT l'appel au modèle (500 Chat, « base de données »
+  // Agent, quota jamais débité). Tout est idempotent, sans perte de données,
+  // et les erreurs individuelles sont absorbées par run() ci-dessus.
+
+  // Skill.userId : le code écrit l'identifiant mAI canonique (texte, ex. "1"
+  // ou email) alors que la colonne dérivée en uuid rejetait toute écriture et
+  // toute lecture filtrée par utilisateur (22P02 invalid input syntax).
+  // Les index btree sur la colonne sont reconstruits automatiquement par
+  // l'ALTER TYPE ; la FK héritée Skill_userId_fkey (vers "User"(id) uuid)
+  // est retirée : incompatible avec le type texte et jamais exploitable.
+  await run(
+    client`ALTER TABLE "Skill" DROP CONSTRAINT IF EXISTS "Skill_userId_fkey"`
+  );
+  await run(client`DO $$ BEGIN
+    IF EXISTS (
+      SELECT 1 FROM information_schema.columns
+      WHERE table_name = 'Skill' AND column_name = 'userId' AND data_type = 'uuid'
+    ) THEN
+      ALTER TABLE "Skill" ALTER COLUMN "userId" TYPE text USING "userId"::text;
+    END IF;
+  END $$;`);
+
+  // weekly_usage.user_id : dérivé en integer alors que recordTokenUsage écrit
+  // du texte (identifiant mAI). La clé étrangère vers users(id) (integer,
+  // table plateforme partagée) doit être retirée : un userId texte ne peut
+  // plus y référencer. La PK (user_id, week_start) est reconstruite par
+  // l'ALTER TYPE — les lignes existantes sont converties, pas perdues.
+  await run(
+    client`ALTER TABLE "weekly_usage" DROP CONSTRAINT IF EXISTS "weekly_usage_user_id_fkey"`
+  );
+  await run(client`DO $$ BEGIN
+    IF EXISTS (
+      SELECT 1 FROM information_schema.columns
+      WHERE table_name = 'weekly_usage' AND column_name = 'user_id' AND data_type = 'integer'
+    ) THEN
+      ALTER TABLE "weekly_usage" ALTER COLUMN "user_id" TYPE text USING "user_id"::text;
+    END IF;
+  END $$;`);
+
+  // UserMemory : les colonnes introduites par le schéma Drizzle (filtre de
+  // portée, importance, tags) manquaient en base — GET /api/memory et
+  // countMemories échouaient en 42703 « column does not exist ».
+  await run(
+    client`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "category" varchar(50) DEFAULT 'general'`
+  );
+  await run(
+    client`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "isEnabled" boolean DEFAULT true NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "isImportant" boolean DEFAULT false NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "tags" json DEFAULT '[]'::json NOT NULL`
+  );
+
   // Création des tables une par une
   await run(client`CREATE TABLE IF NOT EXISTS "User" (
     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
