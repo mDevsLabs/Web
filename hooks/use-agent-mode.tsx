@@ -13,6 +13,7 @@ import {
 import useSWR from "swr";
 import { type AgentMode, isAgentMode } from "@/lib/agent/channel";
 import type { AgentRunRecord } from "@/lib/agent/types";
+import { apiEndpoints } from "@/lib/client/api-endpoints";
 import { fetcher } from "@/lib/utils";
 
 const STORAGE_KEY = "mai.agent-mode";
@@ -53,9 +54,7 @@ export function AgentModeProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const { data } = useSWR<{ mode?: string; runs?: AgentRunRecord[] }>(
-    chatId
-      ? `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agent/runs?chatId=${chatId}`
-      : null,
+    chatId ? apiEndpoints.agentRunsForChat(chatId) : null,
     fetcher,
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );

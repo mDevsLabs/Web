@@ -57,7 +57,7 @@ export function registerPostCrudRoutes(registerMulti: RegisterMultiFn) {
       const userId = Number(payload.sub || (payload as any).id);
 
       // Anti-spam : 10 posts / 5 min / utilisateur
-      if (!rateLimit(`post:${userId}`, 10, 5 * 60_000)) {
+      if (!(await rateLimit(`post:${userId}`, 10, 5 * 60_000))) {
         return c.json(
           { error: "Vous publiez trop vite. Patientez un instant." },
           429

@@ -6,6 +6,7 @@ import {
   type AgentChannelInfo,
   getAgentChannelInfo,
 } from "@/lib/agent/channel";
+import { apiEndpoints } from "@/lib/client/api-endpoints";
 import {
   type AgentFlagKey,
   type AgentFlags,
@@ -27,7 +28,7 @@ export type AgentFlagsPayload = {
 // SWR réessaie et l'appelant reçoit `isError` + les dernières données valides.
 export function useAgentFlags() {
   const { data, error, isLoading } = useSWR<AgentFlagsPayload>(
-    `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agent/flags`,
+    apiEndpoints.agentFlags(),
     (url: string) => {
       // fetch+throw (et non fetch->null) : laisse SWR gérer retry/état d'erreur.
       return fetch(url).then((response) => {

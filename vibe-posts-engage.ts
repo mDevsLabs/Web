@@ -830,7 +830,7 @@ export function registerPostEngagementRoutes(registerMulti: RegisterMultiFn) {
             400
           );
         }
-        if (!rateLimit(`mai-cmd:${userId}`, 5, 60_000)) {
+        if (!(await rateLimit(`mai-cmd:${userId}`, 5, 60_000))) {
           return c.json(
             { error: "Trop de commandes /mai. Patientez une minute." },
             429

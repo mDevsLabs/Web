@@ -5,6 +5,7 @@ import useSWR from "swr";
 import type { ModelRegistryPayload } from "@/components/chat/input/use-model-capabilities";
 import type { SharedModel } from "@/components/chat/model-selector-compact";
 import type { ModelCapabilities } from "@/lib/ai/registry/capabilities";
+import { apiEndpoints } from "@/lib/client/api-endpoints";
 import { fetcher } from "@/lib/utils";
 
 // Modèles utilisables par Agent : la seule dépendance dure est le tool calling.
@@ -12,7 +13,7 @@ import { fetcher } from "@/lib/utils";
 // central exposé par /api/models.
 export function useAgentModels() {
   const { data, isLoading } = useSWR<ModelRegistryPayload>(
-    `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models`,
+    apiEndpoints.models(),
     fetcher,
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );

@@ -117,7 +117,11 @@ export function registerVibeAIRoutes(app: Hono) {
         return c.json({ error: "Action invalide." }, 400);
       // Anti-abus : la continuation se déclenche en tapant, on la plafonne plus fort
       if (
-        !rateLimit(`ai-text:${userId}`, action === "complete" ? 40 : 20, 60_000)
+        !(await rateLimit(
+          `ai-text:${userId}`,
+          action === "complete" ? 40 : 20,
+          60_000
+        ))
       ) {
         return c.json(
           { error: "Trop de requêtes mAI. Patientez un instant." },
@@ -228,7 +232,7 @@ export function registerVibeAIRoutes(app: Hono) {
       const targetLang = String(body?.target_lang || "fr")
         .toLowerCase()
         .slice(0, 8);
-      if (!rateLimit(`ai-translate:${userId}`, 20, 60_000)) {
+      if (!(await rateLimit(`ai-translate:${userId}`, 20, 60_000))) {
         return c.json(
           { error: "Trop de traductions. Patientez un instant." },
           429

@@ -6,9 +6,13 @@ import { askUserTool } from "@/lib/agent/tools/internal/ask-user";
 import { attachToProjectTool } from "@/lib/agent/tools/internal/attach-to-project";
 import { createArtifactTool } from "@/lib/agent/tools/internal/create-artifact";
 import { exportDeliverableTool } from "@/lib/agent/tools/internal/export-deliverable";
+import { generateAudioTool } from "@/lib/agent/tools/internal/generate-audio";
+import { generateImageTool } from "@/lib/agent/tools/internal/generate-image";
+import { manageMemoryTool } from "@/lib/agent/tools/internal/manage-memory";
 import { readFileTool } from "@/lib/agent/tools/internal/read-file";
 import { readUrlTool } from "@/lib/agent/tools/internal/read-url";
 import { searchWebTool } from "@/lib/agent/tools/internal/search-web";
+import { tasksTool } from "@/lib/agent/tools/internal/tasks";
 import type { AgentTool, RegisteredAgentTool } from "@/lib/agent/types";
 
 // Registre centralisé des outils Agent. Ajouter une capacité se limite à
@@ -37,6 +41,10 @@ export function registerBuiltinAgentTools(): void {
   registerAgentTool(createArtifactTool);
   registerAgentTool(exportDeliverableTool);
   registerAgentTool(attachToProjectTool);
+  registerAgentTool(tasksTool);
+  registerAgentTool(generateImageTool);
+  registerAgentTool(generateAudioTool);
+  registerAgentTool(manageMemoryTool);
 }
 
 export function getRegisteredAgentTool(

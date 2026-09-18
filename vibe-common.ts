@@ -9,7 +9,7 @@ import type { Hono } from "npm:hono@4";
 import { extractToken, getDb, verifyToken } from "./config.ts";
 
 export type RegisterMultiFn = (
-  method: "get" | "post" | "delete",
+  method: "get" | "post" | "delete" | "patch" | "put",
   paths: string[],
   handler: (c: any) => Promise<any> | any
 ) => void;
@@ -19,7 +19,7 @@ export type RegisterMultiFn = (
  */
 export function createRegisterMulti(app: Hono): RegisterMultiFn {
   return (
-    method: "get" | "post" | "delete",
+    method: "get" | "post" | "delete" | "patch" | "put",
     paths: string[],
     handler: (c: any) => Promise<any> | any
   ) => {
@@ -27,6 +27,8 @@ export function createRegisterMulti(app: Hono): RegisterMultiFn {
       if (method === "get") app.get(p, handler);
       else if (method === "post") app.post(p, handler);
       else if (method === "delete") app.delete(p, handler);
+      else if (method === "patch") app.patch(p, handler);
+      else if (method === "put") app.put(p, handler);
     }
   };
 }

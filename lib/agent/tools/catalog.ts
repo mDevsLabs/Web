@@ -110,6 +110,58 @@ export const AGENT_TOOL_CATALOG: Record<string, AgentToolMetadata> = {
     name: "Recherche Web",
     permissions: { default: "auto", readOnly: true },
   },
+  tasks: {
+    availability: {
+      categories: ["internal"],
+      requires: { tools: true },
+      tiers: "all",
+    },
+    category: "internal",
+    description:
+      "Structure un plan de travail réel avant d'exécuter quoi que ce soit : une liste ordonnée de tâches concrètes (2 à 8), chacune avec un intitulé clair commençant par un verbe à l'infinitif et un résultat attendu. À appeler EN PREMIER, avant tout autre outil, dès que l'utilisateur active l'option Tâches : le plan s'affiche ensuite dans la timeline et guide l'exécution.",
+    id: "tasks",
+    name: "Planifier les tâches",
+    permissions: { default: "auto", readOnly: true },
+  },
+  generate_image: {
+    availability: {
+      categories: ["internal"],
+      requires: { tools: true },
+      tiers: "all",
+    },
+    category: "internal",
+    description:
+      "Génère une image via mAI Studio à partir d'une description détaillée. Utilise cet outil dès que l'utilisateur demande de créer, générer, dessiner ou illustrer une image. L'URL de l'image produite est renvoyée et doit être présentée dans la réponse.",
+    id: "generate_image",
+    name: "Créer une image",
+    permissions: { default: "auto", readOnly: false },
+  },
+  generate_audio: {
+    availability: {
+      categories: ["internal"],
+      requires: { tools: true },
+      tiers: "all",
+    },
+    category: "internal",
+    description:
+      "Synthétise un audio (voix) via mAI Audio Studio à partir d'un texte. Utilise cet outil dès que l'utilisateur demande de parler, synthétiser, vocaliser ou créer un son. Renvoie audio_url, à jouer directement dans la réponse.",
+    id: "generate_audio",
+    name: "Créer un audio",
+    permissions: { default: "auto", readOnly: false },
+  },
+  manage_memory: {
+    availability: {
+      categories: ["internal"],
+      requires: { tools: true },
+      tiers: "all",
+    },
+    category: "internal",
+    description:
+      "Gère la mémoire personnalisée de l'utilisateur : ajouter (add), supprimer (delete), lister (list) ou rechercher (search) des informations durables le concernant (préférences, faits, contexte). Utilise cet outil quand l'utilisateur demande de retenir, d'oublier ou de retrouver des informations mémorisées.",
+    id: "manage_memory",
+    name: "Gérer la mémoire",
+    permissions: { default: "auto", readOnly: false },
+  },
 };
 
 export const AGENT_TOOL_IDS = Object.keys(AGENT_TOOL_CATALOG);

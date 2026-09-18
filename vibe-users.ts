@@ -1327,7 +1327,10 @@ export function registerVibeUsersRoutes(
       // Pas d'auto-comptage
       if (viewerId && viewerId === targetId)
         return c.json({ counted: false, success: true });
-      if (viewerId && !rateLimit(`pv:${viewerId}:${targetId}`, 1, 60_000)) {
+      if (
+        viewerId &&
+        !(await rateLimit(`pv:${viewerId}:${targetId}`, 1, 60_000))
+      ) {
         return c.json({ counted: false, success: true });
       }
       const body = await c.req.json().catch(() => ({}) as any);

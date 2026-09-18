@@ -10,6 +10,7 @@ import { useAgentStream } from "@/components/agent/agent-stream-provider";
 import { useDataStream } from "@/components/chat/data-stream-provider";
 import { getChatHistoryPaginationKey } from "@/components/chat/sidebar-history";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
+import { apiEndpoints, apiUrl } from "@/lib/client/api-endpoints";
 import type {
   AgentAutonomy,
   AgentStepRecord,
@@ -28,10 +29,15 @@ import { fetcher, fetchWithErrorHandlers, generateUUID } from "@/lib/utils";
 export type AgentToolMode = "auto" | "all" | "categories";
 
 export type AgentRequestOptions = {
+  audioEnabled: boolean;
   autonomy: AgentAutonomy;
   enabledCategories: ToolCategory[] | null;
+  forceWeb: boolean;
+  imageEnabled: boolean;
+  memoryEnabled: boolean;
   projectId: string | null;
   reasoningLevel: ReasoningLevel;
+  tasksEnabled: boolean;
   toolMode: AgentToolMode;
 };
 
@@ -78,12 +84,40 @@ export type SubmitUserInputResult =
 type AgentMessagePart = NonNullable<ChatMessage["parts"]>[number];
 
 const EMPTY_OPTIONS: AgentRequestOptions = {
+  audioEnabled: false,
   autonomy: "standard",
   enabledCategories: null,
+  forceWeb: false,
+  imageEnabled: false,
+  memoryEnabled: false,
   projectId: null,
   reasoningLevel: "medium",
+  tasksEnabled: false,
   toolMode: "auto",
 };
+
+// Clés one-shot du menu « + » : remises à zéro après chaque envoi, comme les
+// outils one-shot du Chat. Les réglages persistants (autonomie, réflexion,
+// familles d'outils, projet) ne sont pas touchés.
+const ONE_SHOT_OPTION_KEYS: readonly (keyof AgentRequestOptions)[] = [
+  "audioEnabled",
+  "forceWeb",
+  "imageEnabled",
+  "memoryEnabled",
+  "tasksEnabled",
+] as const;
+
+function clearOneShotOptions(
+  options: AgentRequestOptions
+): AgentRequestOptions {
+  const next = { ...options };
+  for (const key of ONE_SHOT_OPTION_KEYS) {
+    if (typeof next[key] === "boolean") {
+      (next as Record<string, unknown>)[key] = false;
+    }
+  }
+  return next;
+}
 
 function toToolActivity(execution: ToolExecutionRecord): AgentToolActivity {
   return {
@@ -125,7 +159,7 @@ export function useAgentChat({
   const { data: chatData, isLoading } = useSWR(
     isNewChat
       ? null
-      : `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/messages?chatId=${chatId}`,
+      : apiEndpoints.messagesForChat(chatId),
     fetcher,
     { revalidateOnFocus: false }
   );
@@ -167,9 +201,7 @@ export function useAgentChat({
       mutate(unstable_serialize(getChatHistoryPaginationKey));
       // Fin de run : l'historique persisté (timeline, usage, actions
       // suggérées) est revalidé — le flux ne sert qu'aux mises à jour live.
-      mutate(
-        `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agent/runs?chatId=${chatId}`
-      );
+      mutate(apiEndpoints.agentRunsForChat(chatId));
     },
     // Reprise du MÊME run, uniquement sur une action explicite de
     // l'utilisateur : une approbation accordée, ou une réponse enregistrée par
@@ -183,10 +215,10 @@ export function useAgentChat({
       return Boolean(lastMessage.parts?.some(isResumeTriggerPart));
     },
     transport: new DefaultChatTransport({
-      api: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agent`,
+      api: apiUrl("/api/agent"),
       fetch: fetchWithErrorHandlers,
       prepareReconnectToStreamRequest: () => ({
-        api: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chat/${chatId}/stream`,
+        api: apiEndpoints.chatStream(chatId),
       }),
       prepareSendMessagesRequest(request) {
         const lastMessage = request.messages.at(-1);
@@ -194,9 +226,13 @@ export function useAgentChat({
         const options = optionsRef.current;
         return {
           body: {
+            audioEnabled: options.audioEnabled || undefined,
             autonomy: options.autonomy,
             enabledCategories: options.enabledCategories,
+            forceWeb: options.forceWeb || undefined,
             id: request.id,
+            imageEnabled: options.imageEnabled || undefined,
+            memoryEnabled: options.memoryEnabled || undefined,
             modelId: modelIdRef.current,
             ...(isContinuation
               ? { messages: request.messages }
@@ -205,6 +241,7 @@ export function useAgentChat({
                   projectId: options.projectId,
                 }),
             reasoningLevel: options.reasoningLevel,
+            tasksEnabled: options.tasksEnabled || undefined,
             toolMode: options.toolMode,
             visibility: visibilityRef.current,
             ...request.body,
@@ -265,14 +302,14 @@ export function useAgentChat({
       text: string;
     }) => {
       if (options) {
-        optionsRef.current = options;
+        // Capture puis remise à zéro des toggles one-shot : l'utilisateur n'a
+        // pas à désactiver lui-même Image/Audio/Web/Mémoire/Tâches après
+        // chaque envoi (même contrat que les outils one-shot du Chat). Les
+        // réglages persistants (projet, autonomie, réflexion) sont conservés.
+        optionsRef.current = clearOneShotOptions(options);
       }
       if (typeof window !== "undefined") {
-        window.history.pushState(
-          {},
-          "",
-          `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/chat/${chatId}`
-        );
+        window.history.pushState({}, "", apiEndpoints.chatPath(chatId));
       }
       sendMessage({
         parts: [
@@ -323,7 +360,7 @@ export function useAgentChat({
       }
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agent/runs/${targetRunId}/user-input`,
+          apiEndpoints.agentRunUserInput(targetRunId),
           {
             body: JSON.stringify({ answers, requestId, revision }),
             headers: { "Content-Type": "application/json" },
@@ -389,10 +426,7 @@ export function useAgentChat({
       return;
     }
     try {
-      await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agent/runs/${runId}`,
-        { method: "DELETE" }
-      );
+      await fetch(apiEndpoints.agentRunById(runId), { method: "DELETE" });
     } catch {
       // Sans confirmation, le serveur clôturera le run à la déconnexion.
     }

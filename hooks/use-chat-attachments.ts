@@ -10,6 +10,7 @@ import {
 } from "react";
 import { toast } from "sonner";
 import { MAI_PENDING_ATTACHMENT_KEY } from "@/lib/constants";
+import { apiEndpoints } from "@/lib/client/api-endpoints";
 import type { Attachment } from "@/lib/types";
 
 export const MAX_FILES_PER_MESSAGE = 4;
@@ -71,13 +72,10 @@ export function useChatAttachments({
       formData.append("file", file);
 
       try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/files/upload`,
-          {
-            body: formData,
-            method: "POST",
-          }
-        );
+        const response = await fetch(apiEndpoints.fileUpload(), {
+          body: formData,
+          method: "POST",
+        });
 
         if (response.ok) {
           const data = await response.json();

@@ -155,8 +155,8 @@ export function registerMiddleware(app: Hono) {
         userPlan = keyTier;
       }
 
-      const sql = getDb();
       try {
+        const sql = getDb();
         const rows = await sql`
           SELECT k.*, u.tier as user_tier, u.id as u_id
           FROM mprojects_api_keys k
@@ -192,26 +192,27 @@ export function registerMiddleware(app: Hono) {
             const payload = await verifyToken(apiKey);
             currentUserId = String(payload.sub || "");
             userPlan = String(payload.tier || "Free");
-
-            // Vérifier dans la table users si le forfait a changé
-            if (currentUserId) {
-              const uRows = await sql`
-                SELECT tier FROM users
-                WHERE id::text = ${currentUserId}::text OR username = ${currentUserId}::text OR email = ${currentUserId}::text
-                LIMIT 1
-              `;
-              if (uRows.length > 0 && uRows[0].tier) {
-                userPlan = uRows[0].tier;
-              }
-            }
           } catch {
             if (!isPublicRoute) {
               return c.json({ error: "Invalid API Key." }, 403);
             }
           }
+
+          // Vérifier dans la table users si le forfait a changé
+          if (currentUserId) {
+            const uRows = await sql`
+              SELECT tier FROM users
+              WHERE id::text = ${currentUserId}::text OR username = ${currentUserId}::text OR email = ${currentUserId}::text
+              LIMIT 1
+            `;
+            if (uRows.length > 0 && uRows[0].tier) {
+              userPlan = uRows[0].tier;
+            }
+          }
         }
-      } catch (dbErr) {
-        console.error("Auth DB Error in middleware:", dbErr);
+      } catch {
+        console.error("Auth DB Error in middleware.");
+        return c.json({ error: "Authentication service unavailable." }, 503);
       }
     }
 

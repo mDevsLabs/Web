@@ -76,6 +76,13 @@ export class ChatbotError extends Error {
     const legacyCode: ErrorCode = `${this.type}:${this.surface}`;
     const code = this.apiCode ?? legacyCodeToApi(legacyCode);
 
+    // Les échecs d'infrastructure ne sont pas des « requêtes invalides » :
+    // bad_request:database est mappé sur database_error (500) côté taxonomie
+    // API — on aligne le statut HTTP pour ne pas faire porter à l'utilisateur
+    // un 400 trompeur (le bug « 400 sans raison » vient de là).
+    const statusCode =
+      legacyCode === "bad_request:database" ? 500 : this.statusCode;
+
     const causeMsg =
       typeof this.cause === "string"
         ? this.cause
@@ -91,10 +98,10 @@ export class ChatbotError extends Error {
       {
         code,
         message: this.message,
-        status: this.statusCode,
+        status: statusCode,
         ...(details === undefined ? {} : { details }),
       },
-      { status: this.statusCode }
+      { status: statusCode }
     );
   }
 }

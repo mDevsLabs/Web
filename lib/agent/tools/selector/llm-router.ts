@@ -6,8 +6,7 @@ import {
   type AgentToolFamily,
   isAgentToolFamily,
 } from "@/lib/agent/tools/selector/families";
-import { titleModel } from "@/lib/ai/models";
-import { getLanguageModel } from "@/lib/ai/providers";
+import { getUtilityModel } from "@/lib/ai/providers";
 
 // Escalade volontairement minimale : un appel court à un petit modèle, qui ne
 // choisit que des familles — jamais des outils précis — et ne décide de rien
@@ -41,7 +40,7 @@ export async function routeFamiliesWithModel(params: {
     const { text } = await generateText({
       abortSignal: AbortSignal.timeout(ROUTER_TIMEOUT_MS),
       instructions,
-      model: getLanguageModel(titleModel.id, {
+      model: await getUtilityModel({
         sessionToken: params.sessionToken,
         userId: params.userId,
       }),

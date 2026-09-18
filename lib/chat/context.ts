@@ -218,8 +218,13 @@ export async function buildChatContext(
   const agentIdFromBody: string | null = isFreeUser
     ? null
     : (body.agentId ?? body.selectedAgentId ?? null);
-  const chatModelFromAgent: string | null =
-    !isFreeUser && body.selectedChatModel ? body.selectedChatModel : null;
+  // Le modèle demandé vient du sélecteur client, déjà filtré par le catalogue
+  // du forfait (/api/models → /v1/models filtré par le backend mAI). L'écraser
+  // pour les comptes Free par DEFAULT_CHAT_MODEL (payant) provoquait un refus
+  // backend model_access_denied — le bug « erreur 400/erreur inconnue » du Chat
+  // Free. Le backend mAI reste l'autorité finale : un modèle hors forfait est
+  // refusé explicitement par lui.
+  const chatModelFromAgent: string | null = body.selectedChatModel || null;
   // Si un agent est actif, son modèle par défaut prime (global cookie déjà mis à jour côté client)
   let agentInstructions: string | null = null;
   let agentDefaultModel: string | null = null;

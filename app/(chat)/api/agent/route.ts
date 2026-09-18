@@ -22,7 +22,10 @@ import { applyToolPermissions } from "@/lib/agent/tools/permissions";
 import { listRegisteredAgentTools } from "@/lib/agent/tools/registry";
 import { selectAgentTools } from "@/lib/agent/tools/selector";
 import { familyForCategory } from "@/lib/agent/tools/selector/families";
-import type { RegisteredAgentTool, ToolPermission } from "@/lib/agent/types";
+import type {
+  RegisteredAgentTool,
+  ToolPermission,
+} from "@/lib/agent/types";
 import { injectUserInputAnswers } from "@/lib/agent/user-input/inject";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
@@ -250,6 +253,18 @@ export async function POST(request: Request) {
       ? (activeRun.toolPolicySnapshot as Record<string, ToolPermission>)
       : null;
 
+    // Options one-shot du menu « + » (valides uniquement sur un envoi initial,
+    // jamais sur une reprise où le plateau d'outils du run doit rester stable).
+    const oneShotOptions = isContinuation
+      ? null
+      : {
+          audio: body.audioEnabled === true,
+          image: body.imageEnabled === true,
+          memory: body.memoryEnabled === true,
+          tasks: body.tasksEnabled === true,
+          web: body.forceWeb === true,
+        };
+
     let selectedTools: RegisteredAgentTool[];
     if (continuationSnapshot) {
       selectedTools = baselineTools.filter(
@@ -269,6 +284,26 @@ export async function POST(request: Request) {
         userTier: tier,
       });
       selectedTools = selection.tools;
+
+      // Options one-shot : les outils correspondants sont forcés dans le
+      // plateau, indépendamment du mode de sélection (auto / all / catégories).
+      if (oneShotOptions) {
+        const forcedIds = [
+          ...(oneShotOptions.tasks ? ["tasks"] : []),
+          ...(oneShotOptions.image ? ["generate_image"] : []),
+          ...(oneShotOptions.audio ? ["generate_audio"] : []),
+          ...(oneShotOptions.memory ? ["manage_memory"] : []),
+          ...(oneShotOptions.web ? ["search_web", "read_url"] : []),
+        ];
+        for (const toolId of forcedIds) {
+          if (!selectedTools.some((tool) => tool.id === toolId)) {
+            const forced = baselineTools.find((tool) => tool.id === toolId);
+            if (forced) {
+              selectedTools = [...selectedTools, forced];
+            }
+          }
+        }
+      }
     }
 
     const permissions = applyToolPermissions({
@@ -378,11 +413,45 @@ export async function POST(request: Request) {
       userId: ctx.userId,
     });
 
+    // Bloc d'instructions des options one-shot : le modèle sait explicitement
+    // ce qu'il doit faire des outils forcés (plan d'abord, génération…).
+    const oneShotInstructions = oneShotOptions
+      ? [
+          ...(oneShotOptions.tasks
+            ? [
+                "L'utilisateur a activé l'option Tâches : commence IMMÉDIATEMENT par appeler l'outil tasks pour structurer un plan réel (2 à 8 tâches concrètes et ordonnées), puis exécute ce plan étape par étape sans attendre de validation.",
+              ]
+            : []),
+          ...(oneShotOptions.image
+            ? [
+                "L'utilisateur a activé l'option Créer une image : utilise l'outil generate_image dès que la demande le permet, sans redemander la permission.",
+              ]
+            : []),
+          ...(oneShotOptions.audio
+            ? [
+                "L'utilisateur a activé l'option Créer un audio : utilise l'outil generate_audio dès que la demande le permet, sans redemander la permission.",
+              ]
+            : []),
+          ...(oneShotOptions.memory
+            ? [
+                "L'utilisateur a activé l'option Mémoire : utilise l'outil manage_memory pour retenir, retrouver ou oublier des informations durables le concernant quand c'est pertinent.",
+              ]
+            : []),
+          ...(oneShotOptions.web
+            ? [
+                "L'utilisateur a demandé la Recherche Web : appuie tes affirmations factuelles sur search_web (et read_url pour les sources identifiées).",
+              ]
+            : []),
+        ].join("\n")
+      : null;
+
     const agentContext = await buildAgentContext({
       assistantInstructions: ctx.agentInstructions,
       attachments,
       autonomy,
-      chatInstructions: ctx.chatCustomInstructions,
+      chatInstructions: [ctx.chatCustomInstructions, oneShotInstructions]
+        .filter(Boolean)
+        .join("\n\n") || null,
       contextWindow: capabilities.contextWindow,
       families,
       memoryBlock: null,
@@ -422,7 +491,10 @@ export async function POST(request: Request) {
       projectId: ctx.effectiveProjectId ?? null,
       reasoningLevel,
       runId: run.id,
-      sendReasoning: capabilities.reasoning === true,
+      // Réflexion visible par défaut : identique au Chat (lib/chat/stream.ts
+      // envoie toujours sendReasoning: true). Seuls les parts explicitement
+      // fournis par le provider transitent — jamais de chain-of-thought fabriqué.
+      sendReasoning: true,
       sessionToken: ctx.sessionToken,
       shouldRenameAfterFirst: ctx.shouldRenameAfterFirst,
       startedAt: Date.now(),

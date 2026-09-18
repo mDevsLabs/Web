@@ -24,6 +24,7 @@ import { extractChatIdFromPath, useAgentMode } from "@/hooks/use-agent-mode";
 import { useAgentModels } from "@/hooks/use-agent-models";
 import { type ProjectLite, useProjects } from "@/hooks/use-projects";
 import { AGENT_COMPOSER_ARIA_LABEL } from "@/lib/agent/channel";
+import { apiEndpoints } from "@/lib/client/api-endpoints";
 import type {
   AgentRunRecord,
   AgentRunUsage,
@@ -91,10 +92,15 @@ function AgentShellInner() {
 
   const [project, setProject] = useState<ProjectLite | null>(null);
   const [options, setOptions] = useState<AgentRequestOptions>({
+    audioEnabled: false,
     autonomy: "standard",
     enabledCategories: null,
+    forceWeb: false,
+    imageEnabled: false,
+    memoryEnabled: false,
     projectId: null,
     reasoningLevel: "medium",
+    tasksEnabled: false,
     toolMode: "auto",
   });
 
@@ -103,9 +109,7 @@ function AgentShellInner() {
   // premier envoi transmet projectId ; les suivants ne perdent jamais une
   // association déjà enregistrée ni un changement explicite de l'utilisateur.
   const { data: chatRecord } = useSWR<{ projectId: string | null }>(
-    isNewChat
-      ? null
-      : `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chats/${chatId}`,
+    isNewChat ? null : apiEndpoints.chatById(chatId),
     fetcher,
     { revalidateOnFocus: false }
   );
@@ -127,7 +131,7 @@ function AgentShellInner() {
       setProject(known);
       setOptions((current) => ({ ...current, projectId: known.id }));
     } else if (allProjects.length > 0) {
-      fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chats/${chatId}`, {
+      fetch(apiEndpoints.chatById(chatId), {
         body: JSON.stringify({ projectId: null }),
         headers: { "Content-Type": "application/json" },
         method: "PATCH",
@@ -156,7 +160,7 @@ function AgentShellInner() {
   // ToolExecution). On hydrate la timeline depuis l'API, jamais depuis le flux.
   // La clé SWR est aussi revalidée en fin de run : les actions suggérées
   // persistées côté serveur apparaissent après la fin du flux.
-  const runsHistoryKey = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agent/runs?chatId=${chatId}`;
+  const runsHistoryKey = apiEndpoints.agentRunsForChat(chatId);
   const { data: history, mutate: mutateHistory } =
     useSWR<AgentRunHistoryPayload>(isNewChat ? null : runsHistoryKey, fetcher, {
       revalidateOnFocus: false,
@@ -275,14 +279,11 @@ function AgentShellInner() {
         // Changement explicite : persisté immédiatement sur une conversation
         // existante, pour survivre à un envoi raté, un refresh ou un retour.
         if (!isNewChat) {
-          fetch(
-            `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chats/${chatId}`,
-            {
-              body: JSON.stringify({ projectId: next?.id ?? null }),
-              headers: { "Content-Type": "application/json" },
-              method: "PATCH",
-            }
-          )
+          fetch(apiEndpoints.chatById(chatId), {
+            body: JSON.stringify({ projectId: next?.id ?? null }),
+            headers: { "Content-Type": "application/json" },
+            method: "PATCH",
+          })
             .then((response) => {
               if (!response.ok) {
                 throw new Error(String(response.status));

@@ -10,8 +10,7 @@ import {
   type AgentToolFamily,
   isAgentToolFamily,
 } from "@/lib/agent/tools/selector/families";
-import { titleModel } from "@/lib/ai/models";
-import { getLanguageModel } from "@/lib/ai/providers";
+import { getUtilityModel } from "@/lib/ai/providers";
 
 // Sélection d'outils par sortie structurée du modèle : le modèle exprime les
 // familles nécessaires pour la tâche, en JSON validé par zod (generateObject).
@@ -41,7 +40,7 @@ export async function selectFamiliesWithModel(params: {
   try {
     const { object } = await generateObject({
       abortSignal: AbortSignal.timeout(SELECT_TIMEOUT_MS),
-      model: getLanguageModel(titleModel.id, {
+      model: await getUtilityModel({
         sessionToken: params.sessionToken,
         userId: params.userId,
       }),

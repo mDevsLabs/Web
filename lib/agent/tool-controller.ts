@@ -5,6 +5,7 @@ import { AGENT_ERROR_CODES } from "@/lib/agent/errors";
 import type { AgentEventWriter } from "@/lib/agent/events";
 import {
   emitAgentArtifact,
+  emitAgentPlan,
   emitAgentRun,
   emitAgentSources,
   emitAgentStep,
@@ -36,6 +37,7 @@ import {
   completeToolExecution,
   createAgentStep,
   createToolExecution,
+  setAgentRunPlan,
   updateAgentStep,
 } from "@/lib/db/agent-queries";
 
@@ -408,6 +410,15 @@ export function createAgentToolController(params: {
           type: "user_input_request",
         });
       }
+    }
+
+    // Plan de tâche déclaré par un outil (effet générique ToolOutcome.plan) :
+    // persisté sur le run puis diffusé à la timeline. La progression des items
+    // reste pilotée par onPlanProgress, déjà branchée sur les étapes.
+    const plan = vc.result.success ? vc.result.outcome?.plan : undefined;
+    if (plan) {
+      await setAgentRunPlan({ id: params.runId, plan }).catch(() => {});
+      emitAgentPlan(params.writer, plan);
     }
 
     params.onPlanProgress({ status, title: vc.tool.name });

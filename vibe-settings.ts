@@ -72,6 +72,16 @@ export function registerVibeSettingsRoutes(
         tokens = 10,
         action_type = "request",
       } = body;
+      if (
+        typeof tokens !== "number" ||
+        !Number.isFinite(tokens) ||
+        tokens < 0
+      ) {
+        return c.json(
+          { error: "Nombre de tokens invalide.", success: false },
+          400
+        );
+      }
 
       const sql = getDb();
       const { weekStartStr } = getWeekData();

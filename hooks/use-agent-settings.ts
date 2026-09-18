@@ -11,6 +11,7 @@ import type {
 } from "@/lib/agent/types";
 import type { AgentModelEntry } from "@/lib/ai/registry";
 import type { ReasoningLevel } from "@/lib/ai/registry/reasoning";
+import { apiEndpoints } from "@/lib/client/api-endpoints";
 import { fetcher } from "@/lib/utils";
 
 export type AgentSettingsTool = {
@@ -37,7 +38,7 @@ export type AgentSettingsPatch = {
   toolPolicies?: Record<string, ToolPermission>;
 };
 
-const ENDPOINT = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agent/settings`;
+const ENDPOINT = apiEndpoints.agentSettings();
 
 export function useAgentSettings() {
   const { data, error, isLoading, mutate } = useSWR<AgentSettingsPayload>(

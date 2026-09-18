@@ -31,10 +31,27 @@ export const maxDuration = 300;
 export async function POST(request: Request) {
   let requestBody: PostRequestBody;
 
+  // Le rejet doit être traçable : un 400 silencieux (aucun log) rend le bug
+  // indiscernable côté production — les logs backend ne voient jamais la
+  // requête car elle meurt avant tout appel au modèle.
   try {
-    const json = await request.json();
-    requestBody = postRequestBodySchema.parse(json);
+    const json: unknown = await request.json();
+    const parsed = postRequestBodySchema.safeParse(json);
+    if (!parsed.success) {
+      const issues = parsed.error.issues
+        .slice(0, 5)
+        .map((issue) => `${issue.path.join(".") || "body"}: ${issue.message}`)
+        .join("; ");
+      console.error(
+        `[chat-api] rejected guard=schema issues="${issues}"`
+      );
+      return new ChatbotError("bad_request:api").toResponse();
+    }
+    requestBody = parsed.data;
   } catch {
+    console.error(
+      "[chat-api] rejected guard=json_parse message=corps JSON illisible"
+    );
     return new ChatbotError("bad_request:api").toResponse();
   }
 
@@ -236,7 +253,13 @@ export async function POST(request: Request) {
       stream,
     });
   } catch (error) {
+    // ChatbotError est historiquement renvoyée sans aucun log : un échec DB
+    // (bad_request:database) produisait donc un 400 muet impossible à
+    // diagnostiquer. Tracer le code + message sans donnée sensible.
     if (error instanceof ChatbotError) {
+      console.error(
+        `[chat-api] rejected guard=chatbot_error code=${error.type}:${error.surface} message="${error.message}"`
+      );
       return error.toResponse();
     }
     console.error("Unhandled error in chat API:", error);

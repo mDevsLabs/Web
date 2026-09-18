@@ -176,6 +176,10 @@ export type ToolAwaitingUserRef = {
 export type ToolOutcome = {
   artifact?: ToolArtifactRef;
   awaitingUser?: ToolAwaitingUserRef;
+  // Plan de tâche structuré, déclaré par un outil (tasks) : le contrôleur le
+  // persiste sur le run et le diffuse à la timeline. Effet générique : aucune
+  // couche ne connaît le nom de l'outil qui l'a produit.
+  plan?: AgentPlan;
 };
 
 export type ToolSuccess = {

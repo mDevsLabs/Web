@@ -3,6 +3,7 @@
 import { ArrowRightIcon, SparklesIcon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { apiEndpoints } from "@/lib/client/api-endpoints";
 
 // Actions suggérées d'un run Agent : strictement pilotées par le registre
 // serveur. Le composant reçoit des actions déjà validées (identifiant connu,
@@ -37,7 +38,7 @@ export function AgentSuggestedActions({
     setBusyId(action.id);
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/agent/runs/${runId}/suggested-action`,
+        apiEndpoints.agentRunSuggestedAction(runId),
         {
           body: JSON.stringify({
             actionId: action.id,

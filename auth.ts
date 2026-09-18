@@ -40,7 +40,7 @@ export function registerAuthRoutes(app: Hono) {
     async (c) => {
       try {
         // Anti-abus : 5 inscriptions / IP / 15 min
-        if (!rateLimit(`register:${clientIp(c)}`, 5, 15 * 60_000)) {
+        if (!(await rateLimit(`register:${clientIp(c)}`, 5, 15 * 60_000))) {
           return c.json(
             { error: "Trop de tentatives. Réessayez plus tard." },
             429
@@ -210,7 +210,7 @@ export function registerAuthRoutes(app: Hono) {
       }
       try {
         // Anti brute-force : 10 tentatives / IP / 5 min
-        if (!rateLimit(`login:${clientIp(c)}`, 10, 5 * 60_000)) {
+        if (!(await rateLimit(`login:${clientIp(c)}`, 10, 5 * 60_000))) {
           return c.json(
             { error: "Trop de tentatives. Réessayez plus tard." },
             429

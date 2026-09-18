@@ -47,12 +47,10 @@ export function clientIp(c: any): string {
 }
 
 export async function rateLimit(
-  c: any,
-  opts: { limit?: number; windowSec?: number; keyPrefix?: string } = {}
+  key: string,
+  limit: number,
+  windowMs: number
 ): Promise<boolean> {
-  const limit = opts.limit ?? 60;
-  const windowMs = (opts.windowSec ?? 60) * 1000;
-  const key = `${opts.keyPrefix ?? "rl"}:${clientIp(c)}:${c?.req?.path ?? c?.req?.url ?? "global"}`;
   const now = Date.now();
   const entry = __rateBuckets.get(key);
   if (!entry || entry.resetAt <= now) {

@@ -52,10 +52,17 @@ const toolApprovalMessageSchema = z.object({
 });
 
 export const agentRequestBodySchema = z.object({
+  // Options one-shot issues du menu « + » du composer Agent : elles ne
+  // s'appliquent qu'au message envoyé, jamais aux reprises du run.
+  audioEnabled: z.boolean().optional(),
   assistantId: z.string().uuid().nullable().optional(),
   autonomy: z.enum(["careful", "standard", "high"]).optional(),
   enabledCategories: z.array(z.string().max(40)).max(12).nullable().optional(),
+  forceWeb: z.boolean().optional(),
   id: z.uuid(),
+  imageEnabled: z.boolean().optional(),
+  memoryEnabled: z.boolean().optional(),
+  tasksEnabled: z.boolean().optional(),
   isGhostMode: z.boolean().optional().default(false),
   message: userMessageSchema.optional(),
   messages: z.array(toolApprovalMessageSchema).optional(),

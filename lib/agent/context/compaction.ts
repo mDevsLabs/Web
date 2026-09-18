@@ -1,8 +1,7 @@
 import "server-only";
 
 import { generateText, type ModelMessage } from "ai";
-import { titleModel } from "@/lib/ai/models";
-import { getLanguageModel } from "@/lib/ai/providers";
+import { getUtilityModel } from "@/lib/ai/providers";
 
 // Budget de contexte et compaction. La compaction ne concerne QUE ce qui est
 // envoyé au modèle : l'historique affiché à l'utilisateur n'est jamais modifié.
@@ -102,7 +101,7 @@ export async function summarizeContext(params: {
     const { text } = await generateText({
       abortSignal: AbortSignal.timeout(SUMMARY_TIMEOUT_MS),
       instructions,
-      model: getLanguageModel(titleModel.id, {
+      model: await getUtilityModel({
         sessionToken: params.sessionToken,
         userId: params.userId,
       }),

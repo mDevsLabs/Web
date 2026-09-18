@@ -2,8 +2,7 @@ import "server-only";
 
 import { generateText } from "ai";
 import type { AgentPlan, AgentStepStatus } from "@/lib/agent/types";
-import { titleModel } from "@/lib/ai/models";
-import { getLanguageModel } from "@/lib/ai/providers";
+import { getUtilityModel } from "@/lib/ai/providers";
 
 // Plan de tâche : synthèse opérationnelle (« 1. Lire les documents, 2. Extraire
 // les informations… »), jamais le raisonnement privé du modèle. Généré par un
@@ -43,7 +42,7 @@ export async function generateTaskPlan(params: {
     const { text } = await generateText({
       abortSignal: AbortSignal.timeout(PLAN_TIMEOUT_MS),
       instructions,
-      model: getLanguageModel(titleModel.id, {
+      model: await getUtilityModel({
         sessionToken: params.sessionToken,
         userId: params.userId,
       }),

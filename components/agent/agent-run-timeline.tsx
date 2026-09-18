@@ -43,6 +43,7 @@ import type {
   AgentToolActivity,
   ToolCategory,
 } from "@/lib/agent/types";
+import { apiEndpoints } from "@/lib/client/api-endpoints";
 import { cn } from "@/lib/utils";
 
 // Timeline d'exécution : uniquement des actions observables — outils, fichiers,
@@ -325,9 +326,7 @@ function ArtifactDialog({
     let cancelled = false;
     setIsLoading(true);
     setContent(null);
-    fetch(
-      `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/document?id=${artifact.documentId}`
-    )
+    fetch(apiEndpoints.document(artifact.documentId))
       .then((response) => (response.ok ? response.json() : null))
       .then((documents: { content?: string }[] | null) => {
         if (!cancelled) {
@@ -380,7 +379,7 @@ function ArtifactDialog({
           {artifact ? (
             <Button asChild size="sm" variant="outline">
               <a
-                href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/document?id=${artifact.documentId}`}
+                href={apiEndpoints.document(artifact.documentId)}
                 rel="noreferrer"
                 target="_blank"
               >

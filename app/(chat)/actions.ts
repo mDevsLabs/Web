@@ -62,7 +62,11 @@ export async function generateTitleFromConversation({
       : userText;
     const { text } = await generateText({
       instructions: titlePrompt,
-      model: getTitleModel({ sessionToken: token, userId: user?.id }),
+      model: getTitleModel({
+        sessionToken: token,
+        tier: user.tier,
+        userId: user?.id,
+      }),
       prompt: combined.slice(0, 2000),
     });
     const cleaned = text

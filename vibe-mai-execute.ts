@@ -243,7 +243,7 @@ export function registerVibeMAIExecuteRoutes(
         );
       }
 
-      if (!rateLimit(`mai-execute:${userId}`, 30, 60_000)) {
+      if (!(await rateLimit(`mai-execute:${userId}`, 30, 60_000))) {
         return c.json(
           { error: "Trop de requêtes d'exécution. Réessayez dans une minute." },
           429

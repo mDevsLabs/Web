@@ -72,6 +72,72 @@ function WaitingText() {
   );
 }
 
+function AgentImageToolResult({
+  output,
+  toolCallId,
+}: {
+  output: {
+    error?: string;
+    height?: number;
+    image_url?: string;
+    prompt?: string;
+    width?: number;
+  };
+  toolCallId: string;
+}) {
+  // Sortie de l'outil Agent generate_image : même carte que l'image du Chat
+  // (aperçu, copie, téléchargement), l'identifiant de part étant identique.
+  return (
+    <ImageToolResult output={output as any} toolCallId={toolCallId} />
+  );
+}
+
+function AgentAudioToolResult({
+  output,
+}: {
+  output: {
+    audio_url?: string;
+    error?: string;
+    model?: string;
+    text?: string;
+    voice?: string;
+  };
+}) {
+  // Sortie de l'outil Agent generate_audio : même carte lecteur que la
+  // synthèse vocale du Chat (voix, transcription, lecture directe).
+  return (
+    <div
+      className="flex w-[min(100%,480px)] flex-col gap-3 rounded-2xl border border-border/60 bg-card/90 p-4 shadow-sm backdrop-blur-xs"
+    >
+      <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2">
+          <span className="flex size-7 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+            <MicIcon className="size-4" />
+          </span>
+          <span className="font-semibold text-[13px] text-foreground">
+            Synthèse vocale Agent
+          </span>
+        </div>
+        {output.voice ? (
+          <span className="rounded-full border border-border/30 bg-muted/60 px-2 py-0.5 text-[11px] font-medium text-muted-foreground">
+            Voix : {output.voice.replace("flux-", "").replace("-en", "")}
+          </span>
+        ) : null}
+      </div>
+
+      <audio className="h-10 w-full rounded-lg outline-hidden" controls src={output.audio_url}>
+        Votre navigateur ne supporte pas l'élément audio.
+      </audio>
+
+      {output.text ? (
+        <div className="rounded-xl border border-border/20 bg-muted/30 p-2.5 text-[12px] italic leading-relaxed text-muted-foreground/90">
+          «{output.text}»
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
 function ToolApprovalActions({
   addToolApprovalResponse,
   approvalId,
@@ -668,6 +734,70 @@ const PurePreviewMessage = ({
           </ToolContent>
         </Tool>
       );
+    }
+
+    if ((type as string) === "tool-generate_image") {
+      const toolPart = part as any;
+      const { toolCallId } = toolPart;
+      if (
+        toolPart.state === "output-available" &&
+        toolPart.output &&
+        !toolPart.output.error &&
+        toolPart.output.image_url
+      ) {
+        return (
+          <AgentImageToolResult
+            key={toolCallId ?? key}
+            output={toolPart.output}
+            toolCallId={toolCallId ?? key}
+          />
+        );
+      }
+      if (
+        toolPart.state === "output-available" &&
+        toolPart.output?.error
+      ) {
+        return (
+          <div
+            className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-400"
+            key={toolCallId ?? key}
+          >
+            Erreur génération image : {String(toolPart.output.error)}
+          </div>
+        );
+      }
+      return null;
+    }
+
+    if ((type as string) === "tool-generate_audio") {
+      const toolPart = part as any;
+      if (
+        toolPart.state === "output-available" &&
+        toolPart.output &&
+        !toolPart.output.error &&
+        toolPart.output.audio_url
+      ) {
+        return (
+          <AgentAudioToolResult
+            key={toolPart.toolCallId ?? key}
+            output={toolPart.output}
+          />
+        );
+      }
+      if (
+        toolPart.state === "output-available" &&
+        toolPart.output?.error
+      ) {
+        return (
+          <div
+            className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-400"
+            key={toolPart.toolCallId ?? key}
+          >
+            Erreur synthèse vocale : {String(toolPart.output.error)}
+          </div>
+        );
+      }
+      return null;
     }
 
     if (type === "tool-imageGenerate") {
