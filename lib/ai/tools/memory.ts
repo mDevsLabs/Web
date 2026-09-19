@@ -1,5 +1,6 @@
 import { tool } from "ai";
 import { z } from "zod";
+import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
 import {
   countMemories,
   createMemory,
@@ -8,7 +9,6 @@ import {
   getGlobalMemories,
   searchMemories,
 } from "@/lib/db/queries";
-import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
 
 type MemoryProps = {
   userId: string;
@@ -40,7 +40,9 @@ export const memory = ({
       }
       switch (action) {
         case "add": {
-          const safe = (content || "").replace(/\u0000/g, "").trim();
+          const safe = (content || "")
+            .replace(new RegExp(String.fromCharCode(0), "g"), "")
+            .trim();
           if (!safe) {
             return { error: "content requis pour add." };
           }

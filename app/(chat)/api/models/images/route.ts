@@ -1,12 +1,17 @@
 import { NextResponse } from "next/server";
+import { normalizeModelDisplayName } from "@/lib/ai/models";
+import {
+  errorResponse,
+  logError,
+  normalizeUpstreamError,
+} from "@/lib/api/error-response";
 import { getMaiSessionToken } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
-import { normalizeModelDisplayName } from "@/lib/ai/models";
 
 export async function GET() {
   const token = await getMaiSessionToken();
   if (!token) {
-    return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non authentifié." });
   }
 
   try {
@@ -18,10 +23,9 @@ export async function GET() {
     });
 
     if (!res.ok) {
-      const err = await res
-        .json()
-        .catch(() => ({ error: "Erreur API Images" }));
-      return NextResponse.json(err, { status: res.status });
+      const errBody = await res.json().catch(() => null);
+      const payload = normalizeUpstreamError(errBody, res.status);
+      return NextResponse.json(payload, { status: payload.status });
     }
 
     const data = await res.json();
@@ -33,10 +37,9 @@ export async function GET() {
     }
     return NextResponse.json(data);
   } catch (error) {
-    console.error("Erreur API models/images:", error);
-    return NextResponse.json(
-      { error: "Erreur de connexion au serveur" },
-      { status: 500 }
-    );
+    logError("Erreur API models/images", error);
+    return errorResponse("internal_error", {
+      message: "Erreur de connexion au serveur.",
+    });
   }
 }

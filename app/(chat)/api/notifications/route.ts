@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { z } from "zod";
+import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import {
   broadcastNewsNotification,
@@ -8,6 +10,24 @@ import {
   markAllNotificationsRead,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
+
+const notificationSchema = z.object({
+  body: z.string().max(500).nullish(),
+  broadcast: z.boolean().optional(),
+  link: z.string().max(500).nullish(),
+  title: z.string().min(1).max(120),
+  type: z.string().max(50).nullish(),
+});
+
+function isAdminEmail(email?: string | null): boolean {
+  if (!email) return false;
+  const raw = process.env.MAI_ADMIN_EMAILS || process.env.ADMIN_EMAILS || "";
+  const allow = raw
+    .split(",")
+    .map((s) => s.trim().toLowerCase())
+    .filter(Boolean);
+  return allow.includes(email.toLowerCase());
+}
 
 export async function GET(request: Request) {
   const user = await getMaiUser();
@@ -41,26 +61,18 @@ export async function POST(request: Request) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
   const body = await request.json().catch(() => ({}));
-  const {
-    type,
-    title,
-    body: notifBody,
-    link,
-    broadcast,
-  } = body as {
-    type?: string;
-    title?: string;
-    body?: string;
-    link?: string;
-    broadcast?: boolean;
-  };
+  const parsed = notificationSchema.safeParse(body);
+  if (!parsed.success) {
+    return errorResponse("invalid_request", {
+      message: "Payload invalide (titre 1-120, corps/lien ≤500).",
+    });
+  }
+  const { type, title, body: notifBody, link, broadcast } = parsed.data;
 
   if (broadcast) {
-    // broadcast news - only for authenticated users (admin via session)
-    // In production, check tier or isAdmin; for now allow any authenticated to broadcast news? Restrict to manual via admin script direct DB
-    // We allow but log
-    if (!title) {
-      return NextResponse.json({ error: "title required" }, { status: 400 });
+    // Broadcast réservé aux admins (corrige : tout authentifié pouvait spammer)
+    if (!isAdminEmail(user.email)) {
+      return errorResponse("access_denied");
     }
     const result = await broadcastNewsNotification({
       body: notifBody ?? null,
@@ -72,10 +84,9 @@ export async function POST(request: Request) {
 
   // single notification - for system triggers, not direct user creation; but allow manual test
   if (!title || !type) {
-    return NextResponse.json(
-      { error: "type and title required" },
-      { status: 400 }
-    );
+    return errorResponse("invalid_request", {
+      message: "Les champs 'type' et 'titre' sont obligatoires.",
+    });
   }
   const allowed = [
     "ai_response",
@@ -85,7 +96,9 @@ export async function POST(request: Request) {
     "news",
   ];
   if (!allowed.includes(type)) {
-    return NextResponse.json({ error: "invalid type" }, { status: 400 });
+    return errorResponse("invalid_request", {
+      message: "Type de notification invalide.",
+    });
   }
   const userId = user.id || user.email;
   const created = await createNotification({
@@ -109,7 +122,9 @@ export async function PATCH(request: Request) {
     await markAllNotificationsRead(userId);
     return NextResponse.json({ success: true });
   }
-  return NextResponse.json({ error: "invalid action" }, { status: 400 });
+  return errorResponse("invalid_request", {
+    message: "Action invalide.",
+  });
 }
 
 export async function DELETE(request: Request) {
@@ -129,7 +144,9 @@ export async function DELETE(request: Request) {
   }
 
   if (clearRead) {
-    const { getNotificationsByUserId, deleteNotification } = await import("@/lib/db/queries");
+    const { getNotificationsByUserId, deleteNotification } = await import(
+      "@/lib/db/queries"
+    );
     const notifs = await getNotificationsByUserId({
       limit: 50,
       userId,
@@ -142,14 +159,21 @@ export async function DELETE(request: Request) {
   }
 
   // Also check if body has action: 'deleteAll'
-  try {
-    const body = await request.json();
-    if (body?.action === "deleteAll") {
-      const { deleteAllNotifications } = await import("@/lib/db/queries");
-      await deleteAllNotifications(userId);
-      return NextResponse.json({ success: true });
+  const contentType = request.headers.get("content-type") || "";
+  if (contentType.includes("application/json")) {
+    try {
+      const body = await request.json();
+      if (body?.action === "deleteAll") {
+        const { deleteAllNotifications } = await import("@/lib/db/queries");
+        await deleteAllNotifications(userId);
+        return NextResponse.json({ success: true });
+      }
+    } catch (error) {
+      console.warn("Corps JSON invalide pour DELETE notifications:", error);
     }
-  } catch {}
+  }
 
-  return NextResponse.json({ error: "invalid" }, { status: 400 });
+  return errorResponse("invalid_request", {
+    message: "Action de suppression invalide.",
+  });
 }

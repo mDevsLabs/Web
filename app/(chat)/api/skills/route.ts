@@ -1,8 +1,11 @@
 import { z } from "zod";
-import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
-import { getMaiUser } from "@/lib/auth/session";
+import {
+  errorResponse,
+  logError,
+  zodIssuesMessage,
+} from "@/lib/api/error-response";
+import { requireUser, unauthorizedResponse } from "@/lib/auth/require-user";
 import { createSkill, getSkillsByUserId } from "@/lib/db/queries";
-import { ChatbotError } from "@/lib/errors";
 
 const createSkillSchema = z.object({
   color: z
@@ -32,29 +35,28 @@ const createSkillSchema = z.object({
     .optional(),
   pinned: z.boolean().optional(),
   tags: z.array(z.string().max(50)).optional(),
-  templateId: z.string().uuid().nullable().optional(),
+  templateId: z.string().min(1).max(64).nullable().optional(),
   tools: z.array(z.string()).optional(),
 });
 
 export async function GET() {
-  const guard = await requirePaidPlan("plus");
-  if (!guard.allowed) {
-    return planGuardResponse(guard)!;
+  // Skills ouverts à tous les forfaits, y compris Free.
+  const session = await requireUser();
+  if (!session) {
+    return unauthorizedResponse();
   }
-  const user = guard.user;
-  const userId = user.id || user.email;
+  const { userId } = session;
 
   const skills = await getSkillsByUserId({ userId });
   return Response.json(skills);
 }
 
 export async function POST(request: Request) {
-  const guard = await requirePaidPlan("plus");
-  if (!guard.allowed) {
-    return planGuardResponse(guard)!;
+  const session = await requireUser();
+  if (!session) {
+    return unauthorizedResponse();
   }
-  const user = guard.user;
-  const userId = user.id || user.email;
+  const { userId } = session;
 
   try {
     const json = await request.json();
@@ -66,10 +68,15 @@ export async function POST(request: Request) {
     });
 
     return Response.json(created, { status: 201 });
-  } catch (err: any) {
-    return Response.json(
-      { error: err.message ?? "Données invalides" },
-      { status: 400 }
-    );
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return errorResponse("invalid_request", {
+        message: zodIssuesMessage(err),
+      });
+    }
+    logError("Erreur création skill", err);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de la création du skill.",
+    });
   }
 }

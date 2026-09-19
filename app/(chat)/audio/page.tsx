@@ -28,6 +28,7 @@ import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { VoiceOptionSelector } from "@/components/settings/option-selectors";
 import { useAudioUsage } from "@/hooks/use-settings";
+import { extractApiErrorMessage } from "@/lib/api/client-error";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
 import { cn, formatAudioModelName } from "@/lib/utils";
 
@@ -336,9 +337,7 @@ export default function AudioPage() {
 
       if (!res.ok || !data.success) {
         const errMsg =
-          data?.error?.message ||
-          data?.error ||
-          "Erreur lors de la synthèse vocale";
+          extractApiErrorMessage(data) || "Erreur lors de la synthèse vocale";
         throw new Error(errMsg);
       }
 

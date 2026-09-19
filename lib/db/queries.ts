@@ -11,7 +11,9 @@ import {
   gte,
   inArray,
   isNull,
+  lt,
   lte,
+  notInArray,
   or,
   type SQL,
   sql,
@@ -29,30 +31,96 @@ import {
   chat,
   customCommand,
   type DBMessage,
+  type DocumentProposal,
   document,
+  documentProposal,
   mcpLog,
   mcpServer,
   mcpServerSecret,
-  mcpTemplate,
   message,
+  pluginInstallation,
   project,
-  type Suggestion,
-  skill,
+  projectFile,
+  projectInvite,
+  projectMember,
+  type ScheduledMessage,
   type Skill,
-  skillTemplate,
+  type Suggestion,
+  scheduledMessage,
+  skill,
   skillUsage,
   skillVersion,
   stream,
   suggestion,
   userMcpPrefs,
   userMemory,
-  scheduledMessage,
-  type ScheduledMessage,
   vote,
 } from "./schema";
 
+// Garde d'accès aux projets partagés (owner ou membre). Import paresseux pour
+// éviter tout cycle : access.ts importe déjà queries.ts (getDb, getRawClient).
+async function getProjectAccessGuard() {
+  return import("@/lib/projects/access");
+}
+
 let _db: ReturnType<typeof drizzle> | null = null;
 let _migrationRan = false;
+
+// Colonnes NOT NULL dont le schéma Drizzle déclare un défaut (defaultNow())
+// mais que la base peut avoir été créée sans : toute insertion qui ne fournit
+// pas la valeur échoue alors (ex. saveChat sans createdAt → aucun appel IA,
+// quel que soit le mode). ensureTableTypes ne répare que les tables ABSENTES ;
+// ces ALTER réparent les colonnes EXISTANTES désynchronisées. Idempotent.
+const REQUIRED_COLUMN_DEFAULTS: Array<{
+  column: string;
+  table: string;
+}> = [
+  { column: "createdAt", table: "Chat" },
+  { column: "createdAt", table: "Message_v2" },
+  { column: "createdAt", table: "Stream" },
+  { column: "createdAt", table: "Document" },
+  { column: "createdAt", table: "Suggestion" },
+  { column: "updatedAt", table: "Project" },
+  { column: "startedAt", table: "AgentRun" },
+  { column: "completedAt", table: "AgentRun" },
+  { column: "startedAt", table: "ToolExecution" },
+  { column: "completedAt", table: "ToolExecution" },
+  { column: "completedAt", table: "AgentStep" },
+  { column: "expiresAt", table: "AgentUserInputRequest" },
+  { column: "expiresAt", table: "ApprovalRequest" },
+];
+
+async function ensureColumnDefaults(
+  client: ReturnType<typeof postgres>
+): Promise<void> {
+  // Une seule interrogation : seules les colonnes SANS défaut sont réparées.
+  // La base saine ne subit donc qu'un SELECT (coût négligeable au démarrage,
+  // y compris pour les workers de tests qui initialisent chacun leur client).
+  try {
+    const values = REQUIRED_COLUMN_DEFAULTS.map(
+      ({ column, table }) => `('${table}','${column}')`
+    ).join(", ");
+    const missing = await client.unsafe<[
+      { column_name: string; table_name: string }
+    ]>(
+      `SELECT table_name, column_name FROM information_schema.columns
+       WHERE (table_name, column_name) IN (${values}) AND column_default IS NULL`
+    );
+    for (const { column_name, table_name } of missing) {
+      try {
+        await client.unsafe(
+          `ALTER TABLE "${table_name}" ALTER COLUMN "${column_name}" SET DEFAULT now()`
+        );
+      } catch {
+        // Une réparation peut échouer (droits, table supprimée entre-temps) :
+        // on tente les suivantes sans bloquer le démarrage.
+      }
+    }
+  } catch {
+    // information_schema indisponible : tant pis, les migrations CLI
+    // (lib/db/migrate.ts) restent le filet de sécurité.
+  }
+}
 
 async function ensureTableTypes(client: ReturnType<typeof postgres>) {
   if (_migrationRan) {
@@ -68,6 +136,78 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
       /* ignorer les erreurs (déjà existant, etc.) */
     }
   };
+
+  // Réparation des colonnes existantes dont le défaut a disparu (drift de
+  // schéma) : sans cela, saveChat/saveMessages échouent en production et le
+  // modèle IA n'est jamais appelé.
+  await ensureColumnDefaults(client);
+
+  // ── Réparation du drift de types (base partagée / environnements mixtes) ──
+  // Trois colonnes ont dérivé du schéma Drizzle ; chaque requête utilisateur
+  // échouait alors AVANT l'appel au modèle (500 Chat, « base de données »
+  // Agent, quota jamais débité). Tout est idempotent, sans perte de données,
+  // et les erreurs individuelles sont absorbées par run() ci-dessus.
+
+  // Skill.userId : le code écrit l'identifiant mAI canonique (texte, ex. "1"
+  // ou email) alors que la colonne dérivée en uuid rejetait toute écriture et
+  // toute lecture filtrée par utilisateur (22P02 invalid input syntax).
+  // Les index btree sur la colonne sont reconstruits automatiquement par
+  // l'ALTER TYPE ; la FK héritée Skill_userId_fkey (vers "User"(id) uuid)
+  // est retirée : incompatible avec le type texte et jamais exploitable.
+  await run(
+    client`ALTER TABLE "Skill" DROP CONSTRAINT IF EXISTS "Skill_userId_fkey"`
+  );
+  await run(client`DO $$ BEGIN
+    IF EXISTS (
+      SELECT 1 FROM information_schema.columns
+      WHERE table_name = 'Skill' AND column_name = 'userId' AND data_type = 'uuid'
+    ) THEN
+      ALTER TABLE "Skill" ALTER COLUMN "userId" TYPE text USING "userId"::text;
+    END IF;
+  END $$;`);
+
+  // weekly_usage : table PLATEFORME partagée avec le backend mAI déployé
+  // (handleGetUsage passe un user_id integer). Son contrat est integer + FK
+  // vers users(id) — on ne la convertit PAS : si un drift inverse a été
+  // appliqué (text), on le restaure ici. Les lignes dont user_id n'est pas
+  // numérique (normalement aucune : la colonne était integer à l'origine)
+  // sont mises de côté dans weekly_usage_drift_backup plutôt que perdues.
+  await run(client`DO $$ BEGIN
+    IF EXISTS (
+      SELECT 1 FROM information_schema.columns
+      WHERE table_name = 'weekly_usage' AND column_name = 'user_id' AND data_type = 'text'
+    ) THEN
+      CREATE TABLE IF NOT EXISTS weekly_usage_drift_backup AS
+        SELECT * FROM weekly_usage WHERE user_id !~ '^[0-9]+$';
+      DELETE FROM weekly_usage WHERE user_id !~ '^[0-9]+$';
+      ALTER TABLE "weekly_usage" ALTER COLUMN "user_id" TYPE integer USING "user_id"::integer;
+    END IF;
+  END $$;`);
+  await run(client`DO $$ BEGIN
+    IF NOT EXISTS (
+      SELECT 1 FROM pg_constraint
+      WHERE conrelid = 'weekly_usage'::regclass AND conname = 'weekly_usage_user_id_fkey'
+    ) THEN
+      ALTER TABLE "weekly_usage" ADD CONSTRAINT "weekly_usage_user_id_fkey"
+        FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE NOT VALID;
+    END IF;
+  END $$;`);
+
+  // UserMemory : les colonnes introduites par le schéma Drizzle (filtre de
+  // portée, importance, tags) manquaient en base — GET /api/memory et
+  // countMemories échouaient en 42703 « column does not exist ».
+  await run(
+    client`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "category" varchar(50) DEFAULT 'general'`
+  );
+  await run(
+    client`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "isEnabled" boolean DEFAULT true NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "isImportant" boolean DEFAULT false NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "tags" json DEFAULT '[]'::json NOT NULL`
+  );
 
   // Création des tables une par une
   await run(client`CREATE TABLE IF NOT EXISTS "User" (
@@ -672,7 +812,25 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "lastUsedAt" timestamp`
   );
   await run(
-    client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "templateId" uuid`
+    client`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "templateId" text`
+  );
+  // Les modèles de Skills sont identifiés par un slug (et non plus par un uuid
+  // de la table SkillTemplate) : la colonne historique est convertie une fois
+  // pour toutes, puis rendue unique par utilisateur (installation idempotente).
+  await run(
+    client`ALTER TABLE "Skill" DROP CONSTRAINT IF EXISTS "Skill_templateId_fkey"`
+  );
+  await run(
+    client`ALTER TABLE "Skill" ALTER COLUMN "templateId" TYPE text USING "templateId"::text`
+  );
+  await run(
+    client`CREATE UNIQUE INDEX IF NOT EXISTS "Skill_userId_templateId_key" ON "Skill" ("userId", "templateId") WHERE "templateId" IS NOT NULL`
+  );
+  await run(
+    client`ALTER TABLE "McpServer" ADD COLUMN IF NOT EXISTS "templateId" text`
+  );
+  await run(
+    client`CREATE UNIQUE INDEX IF NOT EXISTS "McpServer_userId_templateId_key" ON "McpServer" ("userId", "templateId") WHERE "templateId" IS NOT NULL`
   );
   await run(client`CREATE TABLE IF NOT EXISTS "user_mcp_prefs" (
     "userId" text PRIMARY KEY NOT NULL,
@@ -940,6 +1098,23 @@ END $$;`
   await run(
     client`CREATE INDEX IF NOT EXISTS "SkillUsage_userId_idx" ON "SkillUsage" USING btree ("userId")`
   );
+
+  await run(client`CREATE TABLE IF NOT EXISTS "PluginInstallation" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+    "userId" text NOT NULL,
+    "pluginId" varchar(64) NOT NULL,
+    "version" varchar(20) DEFAULT '1.0.0' NOT NULL,
+    "isEnabled" boolean DEFAULT true NOT NULL,
+    "settings" json DEFAULT '{}'::json NOT NULL,
+    "installedAt" timestamp DEFAULT now() NOT NULL,
+    "updatedAt" timestamp DEFAULT now() NOT NULL
+  )`);
+  await run(
+    client`CREATE UNIQUE INDEX IF NOT EXISTS "PluginInstallation_userId_pluginId_key" ON "PluginInstallation" USING btree ("userId","pluginId")`
+  );
+  await run(
+    client`CREATE INDEX IF NOT EXISTS "PluginInstallation_userId_idx" ON "PluginInstallation" USING btree ("userId")`
+  );
 }
 
 let _migrationPromise: Promise<void> | null = null;
@@ -973,8 +1148,16 @@ export function getDb() {
   return _db;
 }
 
-// Helper utilisé dans toutes les fonctions de requêtes
-async function dbReady() {
+// Client Postgres brut, pour les modules voisins (lib/db/users.ts) qui ont
+// besoin de SQL paramétré direct. Toujours appeler après dbReady().
+export function getRawClient() {
+  return _rawClient;
+}
+
+// Helper utilisé dans toutes les fonctions de requêtes. Exporté pour les
+// modules de requêtes voisins (agent-queries.ts), qui doivent bénéficier du
+// même init paresseux et de la même attente des migrations de types.
+export async function dbReady() {
   if (!_db) {
     initDb();
   }
@@ -1000,6 +1183,7 @@ export async function saveChat({
   agentId,
   skillId,
   temperatureOverride,
+  mode,
 }: {
   id: string;
   userId: string;
@@ -1012,6 +1196,7 @@ export async function saveChat({
   agentId?: string | null;
   skillId?: string | null;
   temperatureOverride?: number | null;
+  mode?: "chat" | "agent";
 }) {
   try {
     const db = await dbReady();
@@ -1019,6 +1204,7 @@ export async function saveChat({
       agentId: agentId ?? null,
       customInstructions: customInstructions ?? null,
       id,
+      mode: mode ?? "chat",
       projectId: projectId ?? null,
       skillId: skillId ?? null,
       tags: tags ?? [],
@@ -1308,13 +1494,65 @@ export async function getProjectsByUserId({
       conditions.push(sql`${project.name} ILIKE ${escaped}`);
     }
     const where = and(...conditions);
-    const rows = await db
-      .select()
+    const owned = await db
+      .select({
+        color: project.color,
+        createdAt: project.createdAt,
+        customInstructions: project.customInstructions,
+        defaultModel: project.defaultModel,
+        description: project.description,
+        icon: project.icon,
+        id: project.id,
+        isArchived: project.isArchived,
+        name: project.name,
+        role: sql<"owner">`'owner'`.as("role"),
+        updatedAt: project.updatedAt,
+      })
       .from(project)
       .where(where)
       .orderBy(desc(project.updatedAt), desc(project.createdAt))
       .limit(Math.min(Math.max(limit, 1), 100));
-    return rows;
+
+    // Projets rejoints : membre ProjectMember et NON propriétaire (évite le
+    // doublon quand un membre-ligne coexiste avec l'ownership legacy).
+    const joinedConditions: SQL<unknown>[] = [
+      eq(projectMember.role, "member"),
+      notInArray(
+        projectMember.projectId,
+        db.select({ id: project.id }).from(project).where(userCondition)
+      ),
+    ];
+    if (!includeArchived) {
+      joinedConditions.push(eq(project.isArchived, false));
+    }
+    if (search) {
+      const escaped = `%${search.replace(/[%_]/g, "\\$&")}%`;
+      joinedConditions.push(sql`${project.name} ILIKE ${escaped}`);
+    }
+    const joined = await db
+      .select({
+        color: project.color,
+        createdAt: project.createdAt,
+        customInstructions: project.customInstructions,
+        defaultModel: project.defaultModel,
+        description: project.description,
+        icon: project.icon,
+        id: project.id,
+        isArchived: project.isArchived,
+        name: project.name,
+        role: sql<"member">`'member'`.as("role"),
+        updatedAt: project.updatedAt,
+      })
+      .from(project)
+      .innerJoin(projectMember, eq(projectMember.projectId, project.id))
+      .where(and(...joinedConditions))
+      .orderBy(desc(project.updatedAt), desc(project.createdAt))
+      .limit(Math.min(Math.max(limit, 1), 100));
+
+    return [...owned, ...joined].sort(
+      (a, b) =>
+        new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
+    );
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -1475,7 +1713,416 @@ export async function getProjectChatCounts({
       .from(chat)
       .where(where)
       .groupBy(chat.projectId);
+
+    // Projets partagés : compter TOUTES les conversations des projets où
+    // l'utilisateur est owner ou membre (les autres auteurs aussi). La liste
+    // des projets accessibles vient de la garde centralisée.
+    try {
+      const { getAccessibleProjectIds } = await import("@/lib/projects/access");
+      const accessibleIds = await getAccessibleProjectIds({
+        userEmail,
+        userId,
+      });
+      if (accessibleIds.length > 0) {
+        const sharedWhere = includeArchived
+          ? inArray(chat.projectId, accessibleIds)
+          : and(
+              inArray(chat.projectId, accessibleIds),
+              eq(chat.isArchived, false)
+            );
+        const sharedRows = await db
+          .select({ count: count(chat.id), projectId: chat.projectId })
+          .from(chat)
+          .where(sharedWhere)
+          .groupBy(chat.projectId);
+        // Fusion : max(ownCount, sharedCount) — un projet n'est ni owner-only
+        // ni membre-only dans ce contexte, le compte d'espace fait foi.
+        const sharedMap = new Map(
+          sharedRows.map((r) => [r.projectId, r.count])
+        );
+        for (const row of rows) {
+          const shared = row.projectId
+            ? sharedMap.get(row.projectId)
+            : undefined;
+          if (shared !== undefined && shared > row.count) {
+            row.count = shared;
+            sharedMap.delete(row.projectId);
+          }
+        }
+        for (const [projectId, sharedCount] of sharedMap) {
+          rows.push({ count: sharedCount, projectId });
+        }
+      }
+    } catch {
+      // Garde indisponible (environnement dégradé) : comptes personnels seuls.
+    }
+
     return rows;
+  } catch {
+    return [];
+  }
+}
+
+// ─────────────────────────────────────────────
+// Projets partagés : membres, invitations, fichiers, conversations du projet
+// ─────────────────────────────────────────────
+
+// Tous les chats d'un projet partagé (tous auteurs confondus). L'appelant
+// DOIT avoir vérifié l'accès au projet au préalable (getProjectAccess) : cette
+// fonction ne revalide pas, elle liste l'espace demandé.
+export async function getProjectChats({
+  projectId,
+  limit = 100,
+  includeArchived = true,
+}: {
+  projectId: string;
+  limit?: number;
+  includeArchived?: boolean;
+}) {
+  try {
+    const db = await dbReady();
+    const conditions: SQL<unknown>[] = [eq(chat.projectId, projectId)];
+    if (!includeArchived) {
+      conditions.push(eq(chat.isArchived, false));
+    }
+    return await db
+      .select({
+        agentColor: agent.color,
+        agentEmoji: agent.emoji,
+        agentIcon: agent.icon,
+        agentId: chat.agentId,
+        agentName: agent.name,
+        archivedAt: chat.archivedAt,
+        createdAt: chat.createdAt,
+        customInstructions: chat.customInstructions,
+        id: chat.id,
+        isArchived: chat.isArchived,
+        mode: chat.mode,
+        ownerVariant: chat.userId,
+        pinned: chat.pinned,
+        projectId: chat.projectId,
+        skillId: chat.skillId,
+        tags: chat.tags,
+        temperatureOverride: chat.temperatureOverride,
+        title: chat.title,
+        userId: chat.userId,
+        visibility: chat.visibility,
+      })
+      .from(chat)
+      .leftJoin(agent, eq(chat.agentId, agent.id))
+      .where(and(...conditions))
+      .orderBy(desc(chat.pinned), desc(chat.createdAt))
+      .limit(Math.min(Math.max(limit, 1), 200));
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+// Membres d'un projet (l'appelant a vérifié l'accès).
+export async function getProjectMembers({ projectId }: { projectId: string }) {
+  try {
+    const db = await dbReady();
+    return await db
+      .select()
+      .from(projectMember)
+      .where(eq(projectMember.projectId, projectId))
+      .orderBy(desc(projectMember.joinedAt));
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function countProjectMembers({
+  projectId,
+}: {
+  projectId: string;
+}) {
+  try {
+    const db = await dbReady();
+    const [result] = await db
+      .select({ value: count() })
+      .from(projectMember)
+      .where(eq(projectMember.projectId, projectId));
+    return result?.value ?? 0;
+  } catch {
+    return 0;
+  }
+}
+
+// Invitation active d'un projet (index unique partiel : au plus une ligne).
+export async function getActiveProjectInvite({
+  projectId,
+}: {
+  projectId: string;
+}) {
+  try {
+    const db = await dbReady();
+    const [invite] = await db
+      .select()
+      .from(projectInvite)
+      .where(
+        and(
+          eq(projectInvite.projectId, projectId),
+          isNull(projectInvite.revokedAt)
+        )
+      )
+      .orderBy(desc(projectInvite.createdAt))
+      .limit(1);
+    return invite ?? null;
+  } catch {
+    return null;
+  }
+}
+
+export async function getProjectInviteByCode({ code }: { code: string }) {
+  try {
+    const db = await dbReady();
+    const [invite] = await db
+      .select()
+      .from(projectInvite)
+      .where(eq(projectInvite.code, code))
+      .limit(1);
+    return invite ?? null;
+  } catch {
+    return null;
+  }
+}
+
+export async function createProjectInvite({
+  projectId,
+  createdBy,
+  maxUses = null,
+  expiresAt = null,
+}: {
+  projectId: string;
+  createdBy: string;
+  maxUses?: number | null;
+  expiresAt?: Date | null;
+}) {
+  const db = await dbReady();
+  const { nanoid } = await import("nanoid");
+  const code = nanoid(24);
+  const [invite] = await db
+    .insert(projectInvite)
+    .values({ code, createdBy, expiresAt, maxUses, projectId })
+    .returning();
+  return invite;
+}
+
+// Révoque l'invitation active d'un projet. Idempotent : renvoie true même si
+// aucune invitation n'est active.
+export async function revokeProjectInvites({
+  projectId,
+}: {
+  projectId: string;
+}) {
+  try {
+    const db = await dbReady();
+    const revoked = await db
+      .update(projectInvite)
+      .set({ revokedAt: new Date() })
+      .where(
+        and(
+          eq(projectInvite.projectId, projectId),
+          isNull(projectInvite.revokedAt)
+        )
+      )
+      .returning();
+    return revoked.length > 0;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function deleteProjectMember({
+  projectId,
+  userId: memberUserId,
+}: {
+  projectId: string;
+  userId: string;
+}) {
+  try {
+    const db = await dbReady();
+    const removed = await db
+      .delete(projectMember)
+      .where(
+        and(
+          eq(projectMember.projectId, projectId),
+          eq(projectMember.userId, memberUserId)
+        )
+      )
+      .returning();
+    return removed.length > 0;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+// Rejoindre un projet via une invitation : atomique. L'index unique
+// (projectId, userId) protège contre les doubles joins concurrents ; le
+// compteur d'usage est incrémenté seulement si l'insertion réussit.
+export async function joinProjectWithInvite({
+  invite,
+  userId,
+  invitedBy,
+}: {
+  invite: typeof projectInvite.$inferSelect;
+  userId: string;
+  invitedBy: string;
+}) {
+  const db = await dbReady();
+  try {
+    const [member] = await db
+      .insert(projectMember)
+      .values({
+        invitedBy,
+        projectId: invite.projectId,
+        role: "member",
+        userId,
+      })
+      .onConflictDoNothing({
+        target: [projectMember.projectId, projectMember.userId],
+      })
+      .returning();
+    if (!member) {
+      // Déjà membre : rien à faire, pas d'incrément d'usage.
+      return { alreadyMember: true, member: null } as const;
+    }
+    await db
+      .update(projectInvite)
+      .set({ useCount: sql`${projectInvite.useCount} + 1` })
+      .where(eq(projectInvite.id, invite.id));
+    return { alreadyMember: false, member } as const;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+// Fichiers d'un projet (l'appelant a vérifié l'accès).
+export async function getProjectFiles({ projectId }: { projectId: string }) {
+  try {
+    const db = await dbReady();
+    return await db
+      .select({
+        contentType: projectFile.contentType,
+        createdAt: projectFile.createdAt,
+        extractedText: sql<
+          string | null
+        >`LEFT(${projectFile.extractedText}, 1)`,
+        extractionStatus: projectFile.extractionStatus,
+        fileName: projectFile.fileName,
+        fileSize: projectFile.fileSize,
+        id: projectFile.id,
+        storageUrl: projectFile.storageUrl,
+        uploadedBy: projectFile.uploadedBy,
+      })
+      .from(projectFile)
+      .where(eq(projectFile.projectId, projectId))
+      .orderBy(desc(projectFile.createdAt));
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function createProjectFile({
+  projectId,
+  fileName,
+  contentType,
+  fileSize,
+  uploadedBy,
+  fileRef,
+  storageUrl,
+  extractionStatus = "pending",
+  extractedText = null,
+}: {
+  projectId: string;
+  fileName: string;
+  contentType: string;
+  fileSize?: number | null;
+  uploadedBy: string;
+  fileRef?: string | null;
+  storageUrl: string;
+  extractionStatus?: "pending" | "ready" | "unsupported" | "failed";
+  extractedText?: string | null;
+}) {
+  try {
+    const db = await dbReady();
+    const [file] = await db
+      .insert(projectFile)
+      .values({
+        contentType,
+        extractedText,
+        extractionStatus,
+        fileName,
+        fileRef,
+        fileSize: fileSize ?? null,
+        projectId,
+        storageUrl,
+        uploadedBy,
+      })
+      .returning();
+    return file;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function getProjectFileById({ id }: { id: string }) {
+  try {
+    const db = await dbReady();
+    const [file] = await db
+      .select()
+      .from(projectFile)
+      .where(eq(projectFile.id, id))
+      .limit(1);
+    return file ?? null;
+  } catch {
+    return null;
+  }
+}
+
+export async function deleteProjectFile({ id }: { id: string }) {
+  try {
+    const db = await dbReady();
+    const [deleted] = await db
+      .delete(projectFile)
+      .where(eq(projectFile.id, id))
+      .returning();
+    return deleted ?? null;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+// Contexte fichiers pour l'injection modèle : texte extrait complet, borné
+// côté policy (lib/chat/project-files.ts), jamais exposé aux listes UI.
+export async function getProjectFilesForInjection({
+  projectId,
+}: {
+  projectId: string;
+}) {
+  try {
+    const db = await dbReady();
+    return await db
+      .select({
+        contentType: projectFile.contentType,
+        createdAt: projectFile.createdAt,
+        extractedText: projectFile.extractedText,
+        extractionStatus: projectFile.extractionStatus,
+        fileName: projectFile.fileName,
+        fileSize: projectFile.fileSize,
+        id: projectFile.id,
+        storageUrl: projectFile.storageUrl,
+      })
+      .from(projectFile)
+      .where(
+        and(
+          eq(projectFile.projectId, projectId),
+          inArray(projectFile.extractionStatus, ["ready", "unsupported"])
+        )
+      )
+      .orderBy(desc(projectFile.createdAt))
+      .limit(50);
   } catch {
     return [];
   }
@@ -1507,8 +2154,15 @@ export async function updateChatProjectById({
   try {
     const db = await dbReady();
     if (projectId) {
-      const proj = await getProjectById({ id: projectId, userId });
-      if (!proj) {
+      // Le projet cible est accessible au propriétaire OU au membre (espace
+      // partagé) : la validation passe par la garde d'accès centralisée.
+      const { getProjectAccess } = await import("@/lib/projects/access");
+      const access = await getProjectAccess({
+        projectId,
+        userEmail: email ?? null,
+        userId,
+      });
+      if (!access) {
         throw new ChatbotError("not_found:database", "Project not found");
       }
     }
@@ -1651,8 +2305,14 @@ export async function bulkUpdateChats({
   }
   if (action === "move") {
     if (projectId) {
-      const proj = await getProjectById({ id: projectId, userId });
-      if (!proj) {
+      // Espace partagé : la cible est accessible au propriétaire OU au membre.
+      const { getProjectAccess } = await import("@/lib/projects/access");
+      const access = await getProjectAccess({
+        projectId,
+        userEmail: email ?? null,
+        userId,
+      });
+      if (!access) {
         throw new ChatbotError("not_found:database", "Project not found");
       }
     }
@@ -1878,6 +2538,48 @@ export async function getDocumentById({ id }: { id: string }) {
   }
 }
 
+// Rattache (ou retire) un livrable à un projet. Le filtrage par userId est
+// appliqué ici : un livrable d'un autre utilisateur ne peut jamais être
+// rattaché à un projet, même si l'identifiant est deviné.
+export async function attachDocumentToProject({
+  documentId,
+  projectId,
+  userId,
+}: {
+  documentId: string;
+  projectId: string | null;
+  userId: string;
+}) {
+  try {
+    const db = await dbReady();
+    const rows = await db
+      .update(document)
+      .set({ projectId })
+      .where(and(eq(document.id, documentId), eq(document.userId, userId)))
+      .returning();
+    return rows.at(-1) ?? null;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function getDocumentsByProject({
+  projectId,
+}: {
+  projectId: string;
+}) {
+  try {
+    const db = await dbReady();
+    return await db
+      .select()
+      .from(document)
+      .where(eq(document.projectId, projectId))
+      .orderBy(desc(document.createdAt));
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
 export async function deleteDocumentsByIdAfterTimestamp({
   id,
   timestamp,
@@ -1929,6 +2631,104 @@ export async function getSuggestionsByDocumentId({
       .select()
       .from(suggestion)
       .where(eq(suggestion.documentId, documentId));
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+// ------------------------------------------------------------------
+// Propositions de modifications ciblées (DocumentProposal).
+// Toutes les lectures/écritures filtrent par userId : un utilisateur ne peut
+// jamais voir ni résoudre les propositions d'un autre compte.
+// ------------------------------------------------------------------
+
+export async function saveDocumentProposal({
+  id,
+  documentId,
+  userId,
+  chatId,
+  ops,
+  baseHash,
+  description,
+}: {
+  id: string;
+  documentId: string;
+  userId: string;
+  chatId: string | null;
+  ops: unknown;
+  baseHash: string;
+  description: string | null;
+}): Promise<DocumentProposal> {
+  try {
+    const db = await dbReady();
+    const [row] = await db
+      .insert(documentProposal)
+      .values({ baseHash, chatId, description, documentId, id, ops, userId })
+      .returning();
+    return row;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function getDocumentProposalById({
+  id,
+}: {
+  id: string;
+}): Promise<DocumentProposal | null> {
+  try {
+    const db = await dbReady();
+    const [row] = await db
+      .select()
+      .from(documentProposal)
+      .where(eq(documentProposal.id, id))
+      .limit(1);
+    return row ?? null;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function getPendingProposalsByDocumentId({
+  documentId,
+  userId,
+}: {
+  documentId: string;
+  userId: string;
+}): Promise<DocumentProposal[]> {
+  try {
+    const db = await dbReady();
+    return await db
+      .select()
+      .from(documentProposal)
+      .where(
+        and(
+          eq(documentProposal.documentId, documentId),
+          eq(documentProposal.userId, userId),
+          eq(documentProposal.status, "pending")
+        )
+      )
+      .orderBy(desc(documentProposal.createdAt));
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function resolveDocumentProposal({
+  id,
+  status,
+}: {
+  id: string;
+  status: "accepted" | "rejected" | "stale";
+}): Promise<DocumentProposal | null> {
+  try {
+    const db = await dbReady();
+    const rows = await db
+      .update(documentProposal)
+      .set({ resolvedAt: new Date(), status })
+      .where(eq(documentProposal.id, id))
+      .returning();
+    return rows[0] ?? null;
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -2124,13 +2924,20 @@ export async function recordTokenUsage({
       return;
     }
 
-    // 1. Mise à jour ou insertion dans weekly_usage
-    await _rawClient`
-      INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-      VALUES (${targetUserId}::text, ${weekStartStr}::date, ${actualTotal})
-      ON CONFLICT (user_id, week_start)
-      DO UPDATE SET tokens_used = weekly_usage.tokens_used + ${actualTotal}
-    `;
+    // weekly_usage.user_id est un INTEGER (table plateforme partagée avec le
+    // backend mAI : handleGetUsage passe un integer). On n'y débite que les
+    // identifiants numériques (users.id) ; les autres formats (uuid, emails)
+    // ne sont pas comptabilisés ici — le quota hebdomadaire reste cohérent.
+    const numericUserId = String(targetUserId).match(/^\d+$/)?.[0];
+    if (numericUserId) {
+      // 1. Mise à jour ou insertion dans weekly_usage
+      await _rawClient`
+        INSERT INTO weekly_usage (user_id, week_start, tokens_used)
+        VALUES (${Number(numericUserId)}, ${weekStartStr}::date, ${actualTotal})
+        ON CONFLICT (user_id, week_start)
+        DO UPDATE SET tokens_used = weekly_usage.tokens_used + ${actualTotal}
+      `;
+    }
 
     // 2. Enregistrement dans mprojects_api_logs
     try {
@@ -2145,7 +2952,10 @@ export async function recordTokenUsage({
           NOW()
         )
       `;
-    } catch {}
+    } catch (logErr) {
+      // Repli volontaire (l'usage a déjà été débité) — tracé pour audit.
+      console.warn("Insertion mprojects_api_logs impossible:", logErr);
+    }
   } catch (err) {
     console.error("Erreur recordTokenUsage direct en BDD:", err);
   }
@@ -2162,6 +2972,24 @@ export async function getSkillsByUserId({ userId }: { userId: string }) {
     .from(skill)
     .where(eq(skill.userId, userId))
     .orderBy(desc(skill.pinned), desc(skill.updatedAt));
+}
+
+// Skill installé depuis un modèle donné : sert à rendre l'installation d'un
+// modèle idempotente (un seul skill par utilisateur et par slug de modèle).
+export async function getSkillByTemplateId({
+  userId,
+  templateId,
+}: {
+  userId: string;
+  templateId: string;
+}) {
+  const database = await getDb();
+  const [result] = await database
+    .select()
+    .from(skill)
+    .where(and(eq(skill.userId, userId), eq(skill.templateId, templateId)))
+    .limit(1);
+  return result ?? null;
 }
 
 export async function getSkillById({
@@ -2527,6 +3355,26 @@ export async function getMcpServerById({
   return result ?? null;
 }
 
+// Serveur MCP installé depuis un modèle donné : l'installation d'un modèle MCP
+// est idempotente (un seul serveur par utilisateur et par slug de modèle).
+export async function getMcpServerByTemplateId({
+  userId,
+  templateId,
+}: {
+  userId: string;
+  templateId: string;
+}) {
+  const database = await getDb();
+  const [result] = await database
+    .select()
+    .from(mcpServer)
+    .where(
+      and(eq(mcpServer.userId, userId), eq(mcpServer.templateId, templateId))
+    )
+    .limit(1);
+  return result ?? null;
+}
+
 export async function createMcpServer(data: {
   userId: string;
   name: string;
@@ -2549,6 +3397,8 @@ export async function createMcpServer(data: {
   >;
   timeoutMs?: number;
   rateLimitPerMin?: number;
+  /** Slug du modèle MCP d'origine (voir lib/mcp-templates). */
+  templateId?: string | null;
 }) {
   const database = await getDb();
   const [created] = await database
@@ -2566,6 +3416,7 @@ export async function createMcpServer(data: {
       name: data.name,
       rateLimitPerMin: data.rateLimitPerMin ?? 60,
       requireApproval: data.requireApproval ?? "write_only",
+      templateId: data.templateId ?? null,
       timeoutMs: data.timeoutMs ?? 15_000,
       toolOverrides: (data.toolOverrides as any) ?? {},
       toolsCache: (data.toolsCache as any) ?? [],
@@ -2819,33 +3670,11 @@ export async function updateMcpServerSync({
   return updated ?? null;
 }
 
-export async function getSkillTemplates() {
-  const database = await getDb();
-  return database
-    .select()
-    .from(skillTemplate)
-    .where(eq(skillTemplate.isPublic, true))
-    .orderBy(desc(skillTemplate.createdAt));
-}
-
-export async function getMcpTemplates() {
-  const database = await getDb();
-  return database
-    .select()
-    .from(mcpTemplate)
-    .where(eq(mcpTemplate.isPublic, true))
-    .orderBy(desc(mcpTemplate.createdAt));
-}
-
-export async function getMcpTemplateById(id: string) {
-  const database = await getDb();
-  const [result] = await database
-    .select()
-    .from(mcpTemplate)
-    .where(eq(mcpTemplate.id, id))
-    .limit(1);
-  return result ?? null;
-}
+// Les catalogues de modèles (Skills / MCP) ne sont plus lus en base : la
+// source de vérité est statique et versionnée (lib/skill-templates,
+// lib/mcp-templates). Les tables SkillTemplate / McpTemplate sont conservées
+// pour ne pas casser les environnements existants mais ne sont plus alimentées
+// ni interrogées ; aucune requête concurrente des catalogues ne subsiste.
 
 // ==========================================
 // MCP SECRETS (chiffrés) — lib/mcp/encryption
@@ -3058,9 +3887,11 @@ export async function purgeMcpLogs({
     return { deleted: deleted.length };
   }
   const cutoff = new Date(Date.now() - olderThanDays * 24 * 60 * 60 * 1000);
+  // lt() plutôt qu'un fragment sql brut : l'objet Date est sérialisé par
+  // Drizzle, sinon le driver échoue ("Received an instance of Date").
   const deleted = await db
     .delete(mcpLog)
-    .where(and(eq(mcpLog.userId, userId), sql`${mcpLog.createdAt} < ${cutoff}`))
+    .where(and(eq(mcpLog.userId, userId), lt(mcpLog.createdAt, cutoff)))
     .returning();
   return { deleted: deleted.length };
 }
@@ -3166,8 +3997,10 @@ export async function getUserPreferences(userId: string) {
         defaultAudioSpeed: row.defaultAudioSpeed ?? 1.0,
         defaultAudioVoice: row.defaultAudioVoice || "flux-alexis-en",
         defaultChatModel: row.defaultChatModel || null,
-        defaultChatVisibility: (row.defaultChatVisibility as "private" | "public") || "private",
-        defaultImageModel: row.defaultImageModel || "black-forest-labs/flux-schnell",
+        defaultChatVisibility:
+          (row.defaultChatVisibility as "private" | "public") || "private",
+        defaultImageModel:
+          row.defaultImageModel || "black-forest-labs/flux-schnell",
         defaultImageSize: row.defaultImageSize || "1024x1024",
         enabled: Boolean(row.customInstructionsEnabled),
         ghostMemoryEnabled: Boolean(row.ghostMemoryEnabled),
@@ -3232,13 +4065,16 @@ export async function upsertUserPreferences(
       .values({
         customInstructions: data.customInstructions ?? "",
         customInstructionsEnabled: data.enabled ?? false,
-        defaultAgentId: data.defaultAgentId ? (data.defaultAgentId as any) : null,
+        defaultAgentId: data.defaultAgentId
+          ? (data.defaultAgentId as any)
+          : null,
         defaultAudioModel: data.defaultAudioModel ?? "deepgram/flux-tts:free",
         defaultAudioSpeed: data.defaultAudioSpeed ?? 1.0,
         defaultAudioVoice: data.defaultAudioVoice ?? "flux-alexis-en",
         defaultChatModel: data.defaultChatModel ?? null,
         defaultChatVisibility: data.defaultChatVisibility ?? "private",
-        defaultImageModel: data.defaultImageModel ?? "black-forest-labs/flux-schnell",
+        defaultImageModel:
+          data.defaultImageModel ?? "black-forest-labs/flux-schnell",
         defaultImageSize: data.defaultImageSize ?? "1024x1024",
         defaultTemperature: data.temperature ?? 0.7,
         defaultTopP: data.topP ?? 0.9,
@@ -3253,20 +4089,33 @@ export async function upsertUserPreferences(
   const updatePayload: Record<string, any> = {
     updatedAt: new Date(),
   };
-  if (data.customInstructions !== undefined) updatePayload.customInstructions = data.customInstructions;
-  if (data.enabled !== undefined) updatePayload.customInstructionsEnabled = data.enabled;
-  if (data.temperature !== undefined) updatePayload.defaultTemperature = data.temperature;
+  if (data.customInstructions !== undefined)
+    updatePayload.customInstructions = data.customInstructions;
+  if (data.enabled !== undefined)
+    updatePayload.customInstructionsEnabled = data.enabled;
+  if (data.temperature !== undefined)
+    updatePayload.defaultTemperature = data.temperature;
   if (data.topP !== undefined) updatePayload.defaultTopP = data.topP;
-  if (data.defaultAgentId !== undefined) updatePayload.defaultAgentId = data.defaultAgentId;
-  if (data.defaultChatModel !== undefined) updatePayload.defaultChatModel = data.defaultChatModel;
-  if (data.defaultChatVisibility !== undefined) updatePayload.defaultChatVisibility = data.defaultChatVisibility;
-  if (data.defaultImageModel !== undefined) updatePayload.defaultImageModel = data.defaultImageModel;
-  if (data.defaultImageSize !== undefined) updatePayload.defaultImageSize = data.defaultImageSize;
-  if (data.defaultAudioModel !== undefined) updatePayload.defaultAudioModel = data.defaultAudioModel;
-  if (data.defaultAudioVoice !== undefined) updatePayload.defaultAudioVoice = data.defaultAudioVoice;
-  if (data.defaultAudioSpeed !== undefined) updatePayload.defaultAudioSpeed = data.defaultAudioSpeed;
-  if (data.ghostMemoryEnabled !== undefined) updatePayload.ghostMemoryEnabled = data.ghostMemoryEnabled;
-  if (data.showAgentChatIcons !== undefined) updatePayload.showAgentChatIcons = data.showAgentChatIcons;
+  if (data.defaultAgentId !== undefined)
+    updatePayload.defaultAgentId = data.defaultAgentId;
+  if (data.defaultChatModel !== undefined)
+    updatePayload.defaultChatModel = data.defaultChatModel;
+  if (data.defaultChatVisibility !== undefined)
+    updatePayload.defaultChatVisibility = data.defaultChatVisibility;
+  if (data.defaultImageModel !== undefined)
+    updatePayload.defaultImageModel = data.defaultImageModel;
+  if (data.defaultImageSize !== undefined)
+    updatePayload.defaultImageSize = data.defaultImageSize;
+  if (data.defaultAudioModel !== undefined)
+    updatePayload.defaultAudioModel = data.defaultAudioModel;
+  if (data.defaultAudioVoice !== undefined)
+    updatePayload.defaultAudioVoice = data.defaultAudioVoice;
+  if (data.defaultAudioSpeed !== undefined)
+    updatePayload.defaultAudioSpeed = data.defaultAudioSpeed;
+  if (data.ghostMemoryEnabled !== undefined)
+    updatePayload.ghostMemoryEnabled = data.ghostMemoryEnabled;
+  if (data.showAgentChatIcons !== undefined)
+    updatePayload.showAgentChatIcons = data.showAgentChatIcons;
 
   const [updated] = await db
     .update(userPreferences)
@@ -3286,7 +4135,13 @@ export async function createNotification(data: {
     | "mcp_access_request"
     | "news"
     | "planning_task_completed"
-    | "quota_warning";
+    | "project_member_joined"
+    | "quota_warning"
+    // Notifications Agent (types autorisés par la contrainte 0017).
+    | "agent_approval_required"
+    | "agent_run_failed"
+    | "agent_run_finished"
+    | "agent_user_input_required";
   title: string;
   body?: string | null;
   link?: string | null;
@@ -3311,7 +4166,11 @@ export async function createNotification(data: {
     if (gate[data.type] === false) {
       return null;
     }
-  } catch {}
+  } catch (prefsErr) {
+    // Repli volontaire : préférences illisibles → notification envoyée par
+    // défaut, mais l'incident est tracé.
+    console.warn("Préférences de notification illisibles:", prefsErr);
+  }
   const [created] = await db
     .insert(notification)
     .values({
@@ -3728,6 +4587,42 @@ export async function getGhostMemoryEnabled(userId: string): Promise<boolean> {
   }
 }
 
+export async function getUserModelPreferences(userId: string): Promise<{
+  customInstructions: string | null;
+  customInstructionsEnabled: boolean;
+  defaultTemperature: number | null;
+  defaultTopP: number | null;
+}> {
+  const empty = {
+    customInstructions: null,
+    customInstructionsEnabled: false,
+    defaultTemperature: null,
+    defaultTopP: null,
+  };
+  try {
+    await dbReady();
+    if (!_rawClient) {
+      return empty;
+    }
+    const rows = await _rawClient`
+      SELECT custom_instructions, custom_instructions_enabled, default_temperature, default_top_p FROM users
+      WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text
+      LIMIT 1`;
+    const row = (rows as any[])[0];
+    if (!row) {
+      return empty;
+    }
+    return {
+      customInstructions: row.custom_instructions || null,
+      customInstructionsEnabled: Boolean(row.custom_instructions_enabled),
+      defaultTemperature: row.default_temperature ?? null,
+      defaultTopP: row.default_top_p ?? null,
+    };
+  } catch {
+    return empty;
+  }
+}
+
 export async function createMemory({
   userId,
   content,
@@ -3781,7 +4676,7 @@ export async function deleteMemory({
 
 function sanitizeMemoryContent(content: string): string {
   return content
-    .replace(/\u0000/g, "")
+    .replace(new RegExp(String.fromCharCode(0), "g"), "")
     .trim()
     .slice(0, MEMORY_CONTENT_MAX_LENGTH);
 }
@@ -3883,7 +4778,7 @@ export async function searchMemories({
     conditions.push(isNull(userMemory.agentId));
     conditions.push(isNull(userMemory.projectId));
   }
-  conditions.push(sql`${userMemory.content} ILIKE ${"%" + safe + "%"}`);
+  conditions.push(sql`${userMemory.content} ILIKE ${`%${safe}%`}`);
   return database
     .select()
     .from(userMemory)
@@ -4117,7 +5012,10 @@ export async function getAgentStatsByUserId({ userId }: { userId: string }) {
     .where(eq(chat.userId, userId))
     .groupBy(chat.agentId);
 
-  const countsMap = new Map<string, { count: number; lastUsedAt: string | null }>();
+  const countsMap = new Map<
+    string,
+    { count: number; lastUsedAt: string | null }
+  >();
   let totalStandardChats = 0;
   let totalAgentChats = 0;
 
@@ -4261,29 +5159,35 @@ export async function updateScheduledMessage(params: {
 
   if (updates.title !== undefined) updateData.title = updates.title;
   if (updates.prompt !== undefined) updateData.prompt = updates.prompt;
-  if (updates.scheduledAt !== undefined) updateData.scheduledAt = updates.scheduledAt;
-  if (updates.createMode !== undefined) updateData.createMode = updates.createMode;
+  if (updates.scheduledAt !== undefined)
+    updateData.scheduledAt = updates.scheduledAt;
+  if (updates.createMode !== undefined)
+    updateData.createMode = updates.createMode;
   if (updates.chatId !== undefined) updateData.chatId = updates.chatId;
   if (updates.agentId !== undefined) updateData.agentId = updates.agentId;
   if (updates.modelId !== undefined) updateData.modelId = updates.modelId;
-  if (updates.enabledTools !== undefined) updateData.enabledTools = updates.enabledTools;
-  if (updates.cloudFileUrls !== undefined) updateData.cloudFileUrls = updates.cloudFileUrls;
-  if (updates.customInstructions !== undefined) updateData.customInstructions = updates.customInstructions;
-  if (updates.temperature !== undefined) updateData.temperature = updates.temperature;
-  if (updates.recurrence !== undefined) updateData.recurrence = updates.recurrence;
-  if (updates.executedAt !== undefined) updateData.executedAt = updates.executedAt;
+  if (updates.enabledTools !== undefined)
+    updateData.enabledTools = updates.enabledTools;
+  if (updates.cloudFileUrls !== undefined)
+    updateData.cloudFileUrls = updates.cloudFileUrls;
+  if (updates.customInstructions !== undefined)
+    updateData.customInstructions = updates.customInstructions;
+  if (updates.temperature !== undefined)
+    updateData.temperature = updates.temperature;
+  if (updates.recurrence !== undefined)
+    updateData.recurrence = updates.recurrence;
+  if (updates.executedAt !== undefined)
+    updateData.executedAt = updates.executedAt;
   if (updates.lastError !== undefined) updateData.lastError = updates.lastError;
-  if (updates.resultChatId !== undefined) updateData.resultChatId = updates.resultChatId;
+  if (updates.resultChatId !== undefined)
+    updateData.resultChatId = updates.resultChatId;
   if (updates.status !== undefined) updateData.status = updates.status;
 
   const [updated] = await database
     .update(scheduledMessage)
     .set(updateData)
     .where(
-      and(
-        eq(scheduledMessage.id, id),
-        eq(scheduledMessage.userId, userId)
-      )
+      and(eq(scheduledMessage.id, id), eq(scheduledMessage.userId, userId))
     )
     .returning();
   return updated ?? null;
@@ -4359,13 +5263,92 @@ export async function setScheduledMessageStatus(params: {
   await database
     .update(scheduledMessage)
     .set({
-      executedAt: params.executedAt !== undefined ? params.executedAt : undefined,
-      lastError: params.lastError !== undefined ? params.lastError : undefined,
-      resultChatId: params.resultChatId !== undefined ? params.resultChatId : undefined,
+      executedAt:
+        params.executedAt === undefined ? undefined : params.executedAt,
+      lastError: params.lastError === undefined ? undefined : params.lastError,
+      resultChatId:
+        params.resultChatId === undefined ? undefined : params.resultChatId,
       status: params.status,
       updatedAt: new Date(),
     })
     .where(eq(scheduledMessage.id, params.id));
 }
 
+// ─────────────────────────────────────────────────────────────
+// Plugins installés par utilisateur
+// ─────────────────────────────────────────────────────────────
 
+export async function getPluginInstallationsByUserId(params: {
+  userId: string;
+}) {
+  const database = await getDb();
+  const rows = await database
+    .select()
+    .from(pluginInstallation)
+    .where(eq(pluginInstallation.userId, params.userId))
+    .orderBy(desc(pluginInstallation.installedAt));
+  return rows;
+}
+
+export async function installPlugin(params: {
+  userId: string;
+  pluginId: string;
+  version: string;
+}) {
+  const database = await getDb();
+  const now = new Date();
+  const [row] = await database
+    .insert(pluginInstallation)
+    .values({
+      installedAt: now,
+      isEnabled: true,
+      pluginId: params.pluginId,
+      updatedAt: now,
+      userId: params.userId,
+      version: params.version,
+    })
+    .onConflictDoUpdate({
+      set: {
+        isEnabled: true,
+        updatedAt: now,
+        version: params.version,
+      },
+      target: [pluginInstallation.userId, pluginInstallation.pluginId],
+    })
+    .returning();
+  return row;
+}
+
+export async function setPluginEnabled(params: {
+  userId: string;
+  pluginId: string;
+  isEnabled: boolean;
+}) {
+  const database = await getDb();
+  const [row] = await database
+    .update(pluginInstallation)
+    .set({ isEnabled: params.isEnabled, updatedAt: new Date() })
+    .where(
+      and(
+        eq(pluginInstallation.userId, params.userId),
+        eq(pluginInstallation.pluginId, params.pluginId)
+      )
+    )
+    .returning();
+  return row;
+}
+
+export async function uninstallPlugin(params: {
+  userId: string;
+  pluginId: string;
+}) {
+  const database = await getDb();
+  await database
+    .delete(pluginInstallation)
+    .where(
+      and(
+        eq(pluginInstallation.userId, params.userId),
+        eq(pluginInstallation.pluginId, params.pluginId)
+      )
+    );
+}

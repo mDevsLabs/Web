@@ -1,11 +1,12 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { errorResponse } from "@/lib/api/error-response";
 import { getMaiSessionToken } from "@/lib/auth/session";
 import { getTierSpeechLimit, MAI_API_URL } from "@/lib/constants";
 
 export async function GET(_req: NextRequest) {
   const token = await getMaiSessionToken();
   if (!token) {
-    return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non authentifié." });
   }
 
   try {

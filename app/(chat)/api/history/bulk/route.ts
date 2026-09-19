@@ -63,7 +63,20 @@ export async function DELETE(request: Request) {
 
   // For now, only support deleteAll (existing behavior) + project scoped delete via bulk
   if (projectId || isArchived) {
-    // Use bulk delete with query
+    // Use bulk delete with query. Espace projet : l'accès est vérifié, mais la
+    // suppression en masse reste limitée aux PROPRES conversations de
+    // l'utilisateur (chatUserFilter dans bulkUpdateChats).
+    if (projectId) {
+      const { getProjectAccess } = await import("@/lib/projects/access");
+      const access = await getProjectAccess({
+        projectId,
+        userEmail: user.email,
+        userId,
+      });
+      if (!access) {
+        return new ChatbotError("not_found:database").toResponse();
+      }
+    }
     const { getChatsByUserId } = await import("@/lib/db/queries");
     const { chats } = await getChatsByUserId({
       endingBefore: null,
@@ -78,6 +91,7 @@ export async function DELETE(request: Request) {
       limit: 100,
       projectId: projectId ?? undefined,
       startingAfter: null,
+      userEmail: user.email,
     });
     const ids = chats.map((c) => c.id);
     if (ids.length === 0) {

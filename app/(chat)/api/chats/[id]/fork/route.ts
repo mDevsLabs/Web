@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { z } from "zod";
+import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import {
   getChatById,
@@ -13,21 +15,38 @@ export async function POST(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
+  const idParsed = z.string().uuid().safeParse(id);
+  if (!idParsed.success) {
+    return errorResponse("invalid_request", {
+      message: "L'identifiant de la discussion est invalide.",
+    });
+  }
   const maiUser = await getMaiUser();
   if (!maiUser) {
-    return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non authentifié." });
   }
   const userId = maiUser.id || maiUser.email;
 
   const body = await request.json().catch(() => ({}));
-  const upToMessageId: string | null = body.upToMessageId ?? null;
+  const bodySchema = z.object({
+    upToMessageId: z.string().uuid().nullish(),
+  });
+  const parsed = bodySchema.safeParse(body);
+  if (!parsed.success) {
+    return errorResponse("invalid_request", {
+      message: "Le paramètre 'upToMessageId' est invalide.",
+    });
+  }
+  const upToMessageId: string | null = parsed.data.upToMessageId ?? null;
 
   const chat = await getChatById({ id });
   if (!chat) {
-    return NextResponse.json({ error: "Chat introuvable" }, { status: 404 });
+    return errorResponse("not_found", {
+      message: "Discussion introuvable.",
+    });
   }
   if (chat.userId !== userId && chat.userId !== maiUser.email) {
-    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    return errorResponse("access_denied");
   }
 
   const messages = await getMessagesByChatId({ id });

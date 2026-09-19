@@ -1,11 +1,16 @@
 import { type NextRequest, NextResponse } from "next/server";
+import {
+  errorResponse,
+  logError,
+  normalizeUpstreamError,
+} from "@/lib/api/error-response";
 import { getMaiSessionToken } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
 
 export async function POST(req: NextRequest) {
   const token = await getMaiSessionToken();
   if (!token) {
-    return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+    return errorResponse("auth_required");
   }
 
   try {
@@ -23,15 +28,10 @@ export async function POST(req: NextRequest) {
         const usedToday = Number(usageData.usedToday ?? 0);
         const remaining = Number(usageData.remaining ?? dailyLimit - usedToday);
         if (dailyLimit > 0 && (usedToday >= dailyLimit || remaining <= 0)) {
-          return NextResponse.json(
-            {
-              error: `Votre quota journalier de génération d'images est épuisé (${usedToday}/${dailyLimit} images). Réinitialisation à minuit UTC.`,
-              limit: dailyLimit,
-              over_limit: true,
-              used: usedToday,
-            },
-            { status: 429 }
-          );
+          return errorResponse("quota_exceeded", {
+            details: { limit: dailyLimit, used: usedToday },
+            message: `Votre quota journalier de génération d'images est épuisé (${usedToday}/${dailyLimit} images). Réinitialisation à minuit UTC.`,
+          });
         }
       }
     } catch (quotaErr) {
@@ -51,15 +51,15 @@ export async function POST(req: NextRequest) {
 
     const data = await res.json();
     if (!res.ok) {
-      return NextResponse.json(data, { status: res.status });
+      const payload = normalizeUpstreamError(data, res.status);
+      return NextResponse.json(payload, { status: payload.status });
     }
 
     return NextResponse.json(data);
   } catch (error) {
-    console.error("Erreur API images/generations:", error);
-    return NextResponse.json(
-      { error: "Erreur lors de la génération de l'image" },
-      { status: 500 }
-    );
+    logError("Erreur API images/generations", error);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de la génération de l'image.",
+    });
   }
 }

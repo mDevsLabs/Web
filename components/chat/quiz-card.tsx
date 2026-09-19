@@ -51,7 +51,9 @@ export function QuizCard({ args, output }: QuizCardProps) {
   const difficulty = quizData?.difficulty;
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number[]>>({});
+  const [selectedAnswers, setSelectedAnswers] = useState<
+    Record<number, number[]>
+  >({});
   const [isAnswered, setIsAnswered] = useState<Record<number, boolean>>({});
   const [isFinished, setIsFinished] = useState(false);
   const [showRecap, setShowRecap] = useState(false);
@@ -200,147 +202,7 @@ export function QuizCard({ args, output }: QuizCardProps) {
       </div>
 
       {/* Contenu principal du Quiz */}
-      {!isFinished ? (
-        <div className="space-y-4 p-4 sm:p-5">
-          {/* Question */}
-          <div className="space-y-1">
-            <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
-              <span>Question {currentIndex + 1}</span>
-              {isMultiple && (
-                <span className="text-[11px] font-normal text-amber-500">
-                  (Plusieurs réponses possibles)
-                </span>
-              )}
-            </div>
-            <h5 className="font-semibold text-base leading-snug text-foreground">
-              {currentQ.question}
-            </h5>
-          </div>
-
-          {/* Options de réponse */}
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-            {currentQ.options.map((option, optIdx) => {
-              const isSelected = currentSelections.includes(optIdx);
-              const isCorrectAnswer = currentQ.correctAnswers.includes(optIdx);
-
-              let optionStyle =
-                "border-border/60 bg-background/60 text-foreground hover:bg-muted/70";
-              let badge = null;
-
-              if (isCurrentAnswered) {
-                if (isCorrectAnswer) {
-                  optionStyle =
-                    "border-emerald-500 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 font-medium shadow-2xs";
-                  badge = (
-                    <CheckCircle2Icon className="size-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
-                  );
-                } else if (isSelected && !isCorrectAnswer) {
-                  optionStyle =
-                    "border-destructive bg-destructive/15 text-destructive font-medium shadow-2xs";
-                  badge = (
-                    <XCircleIcon className="size-4 shrink-0 text-destructive" />
-                  );
-                } else {
-                  optionStyle = "border-border/40 opacity-40";
-                }
-              } else if (isSelected) {
-                optionStyle =
-                  "border-primary bg-primary/10 text-primary font-medium shadow-2xs";
-              }
-
-              return (
-                <button
-                  className={cn(
-                    "flex items-center justify-between rounded-xl border p-3 text-left text-xs transition sm:text-sm",
-                    optionStyle,
-                    isCurrentAnswered ? "cursor-default" : "cursor-pointer"
-                  )}
-                  disabled={isCurrentAnswered}
-                  key={option}
-                  onClick={() => handleSelectOption(optIdx)}
-                  type="button"
-                >
-                  <span className="flex-1 pr-2">{option}</span>
-                  {badge}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Bouton de validation pour les choix multiples */}
-          {isMultiple && !isCurrentAnswered && (
-            <div className="pt-2 text-right">
-              <Button
-                className="gap-2 shadow-xs"
-                disabled={currentSelections.length === 0}
-                onClick={handleValidateMultiple}
-                size="sm"
-              >
-                <span>Valider ma sélection</span>
-              </Button>
-            </div>
-          )}
-
-          {/* Explication après réponse */}
-          {isCurrentAnswered && (
-            <div className="space-y-3 pt-2">
-              <div
-                className={cn(
-                  "rounded-xl border p-3 text-xs leading-relaxed transition",
-                  currentSelections.length === currentQ.correctAnswers.length &&
-                    currentSelections.every((val) =>
-                      currentQ.correctAnswers.includes(val)
-                    )
-                    ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-800 dark:text-emerald-200"
-                    : "border-destructive/30 bg-destructive/10 text-destructive dark:text-red-300"
-                )}
-              >
-                <div className="font-semibold mb-1 flex items-center gap-1.5">
-                  {currentSelections.length === currentQ.correctAnswers.length &&
-                  currentSelections.every((val) =>
-                    currentQ.correctAnswers.includes(val)
-                  ) ? (
-                    <>
-                      <CheckCircle2Icon className="size-4 text-emerald-600" />
-                      <span>Excellente réponse !</span>
-                    </>
-                  ) : (
-                    <>
-                      <AlertCircleIcon className="size-4 text-destructive" />
-                      <span>Réponse incorrecte</span>
-                    </>
-                  )}
-                </div>
-                <p className="opacity-95">{currentQ.explanation}</p>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <Button
-                  className="gap-2 shadow-xs"
-                  disabled={currentIndex === 0}
-                  onClick={handlePrevious}
-                  size="sm"
-                  variant="outline"
-                >
-                  Question précédente
-                </Button>
-                <Button
-                  className="gap-2 shadow-xs"
-                  onClick={handleNext}
-                  size="sm"
-                >
-                  <span>
-                    {currentIndex < questions.length - 1
-                      ? "Question suivante"
-                      : "Voir les résultats"}
-                  </span>
-                  <ChevronRightIcon className="size-4" />
-                </Button>
-              </div>
-            </div>
-          )}
-        </div>
-      ) : (
+      {isFinished ? (
         /* Écran récapitulatif de fin */
         <div className="space-y-5 p-6 text-center sm:p-8">
           <div className="mx-auto flex size-16 items-center justify-center rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white shadow-lg">
@@ -348,15 +210,13 @@ export function QuizCard({ args, output }: QuizCardProps) {
           </div>
 
           <div>
-            <h4 className="font-bold text-xl text-foreground">
-              Quiz terminé
-            </h4>
+            <h4 className="font-bold text-xl text-foreground">Quiz terminé</h4>
             <p className="mt-1 text-xs text-muted-foreground">
               {percentage >= 80
                 ? "Impressionnant ! Vous maîtrisez parfaitement le sujet !"
                 : percentage >= 50
-                ? "Beau travail ! Vos bases sont solides."
-                : "Ne baissez pas les bras, réessayez pour vous perfectionner !"}
+                  ? "Beau travail ! Vos bases sont solides."
+                  : "Ne baissez pas les bras, réessayez pour vous perfectionner !"}
             </p>
           </div>
 
@@ -437,6 +297,147 @@ export function QuizCard({ args, output }: QuizCardProps) {
               <span>Rejouer ce Quiz</span>
             </Button>
           </div>
+        </div>
+      ) : (
+        <div className="space-y-4 p-4 sm:p-5">
+          {/* Question */}
+          <div className="space-y-1">
+            <div className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
+              <span>Question {currentIndex + 1}</span>
+              {isMultiple && (
+                <span className="text-[11px] font-normal text-amber-500">
+                  (Plusieurs réponses possibles)
+                </span>
+              )}
+            </div>
+            <h5 className="font-semibold text-base leading-snug text-foreground">
+              {currentQ.question}
+            </h5>
+          </div>
+
+          {/* Options de réponse */}
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+            {currentQ.options.map((option, optIdx) => {
+              const isSelected = currentSelections.includes(optIdx);
+              const isCorrectAnswer = currentQ.correctAnswers.includes(optIdx);
+
+              let optionStyle =
+                "border-border/60 bg-background/60 text-foreground hover:bg-muted/70";
+              let badge: React.ReactNode = null;
+
+              if (isCurrentAnswered) {
+                if (isCorrectAnswer) {
+                  optionStyle =
+                    "border-emerald-500 bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 font-medium shadow-2xs";
+                  badge = (
+                    <CheckCircle2Icon className="size-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
+                  );
+                } else if (isSelected && !isCorrectAnswer) {
+                  optionStyle =
+                    "border-destructive bg-destructive/15 text-destructive font-medium shadow-2xs";
+                  badge = (
+                    <XCircleIcon className="size-4 shrink-0 text-destructive" />
+                  );
+                } else {
+                  optionStyle = "border-border/40 opacity-40";
+                }
+              } else if (isSelected) {
+                optionStyle =
+                  "border-primary bg-primary/10 text-primary font-medium shadow-2xs";
+              }
+
+              return (
+                <button
+                  className={cn(
+                    "flex items-center justify-between rounded-xl border p-3 text-left text-xs transition sm:text-sm",
+                    optionStyle,
+                    isCurrentAnswered ? "cursor-default" : "cursor-pointer"
+                  )}
+                  disabled={isCurrentAnswered}
+                  key={option}
+                  onClick={() => handleSelectOption(optIdx)}
+                  type="button"
+                >
+                  <span className="flex-1 pr-2">{option}</span>
+                  {badge}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Bouton de validation pour les choix multiples */}
+          {isMultiple && !isCurrentAnswered && (
+            <div className="pt-2 text-right">
+              <Button
+                className="gap-2 shadow-xs"
+                disabled={currentSelections.length === 0}
+                onClick={handleValidateMultiple}
+                size="sm"
+              >
+                <span>Valider ma sélection</span>
+              </Button>
+            </div>
+          )}
+
+          {/* Explication après réponse */}
+          {isCurrentAnswered && (
+            <div className="space-y-3 pt-2">
+              <div
+                className={cn(
+                  "rounded-xl border p-3 text-xs leading-relaxed transition",
+                  currentSelections.length === currentQ.correctAnswers.length &&
+                    currentSelections.every((val) =>
+                      currentQ.correctAnswers.includes(val)
+                    )
+                    ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-800 dark:text-emerald-200"
+                    : "border-destructive/30 bg-destructive/10 text-destructive dark:text-red-300"
+                )}
+              >
+                <div className="font-semibold mb-1 flex items-center gap-1.5">
+                  {currentSelections.length ===
+                    currentQ.correctAnswers.length &&
+                  currentSelections.every((val) =>
+                    currentQ.correctAnswers.includes(val)
+                  ) ? (
+                    <>
+                      <CheckCircle2Icon className="size-4 text-emerald-600" />
+                      <span>Excellente réponse !</span>
+                    </>
+                  ) : (
+                    <>
+                      <AlertCircleIcon className="size-4 text-destructive" />
+                      <span>Réponse incorrecte</span>
+                    </>
+                  )}
+                </div>
+                <p className="opacity-95">{currentQ.explanation}</p>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <Button
+                  className="gap-2 shadow-xs"
+                  disabled={currentIndex === 0}
+                  onClick={handlePrevious}
+                  size="sm"
+                  variant="outline"
+                >
+                  Question précédente
+                </Button>
+                <Button
+                  className="gap-2 shadow-xs"
+                  onClick={handleNext}
+                  size="sm"
+                >
+                  <span>
+                    {currentIndex < questions.length - 1
+                      ? "Question suivante"
+                      : "Voir les résultats"}
+                  </span>
+                  <ChevronRightIcon className="size-4" />
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

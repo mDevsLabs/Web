@@ -173,26 +173,23 @@ export function NotificationBell() {
         headers: { "Content-Type": "application/json" },
         method: "PATCH",
       });
-      mutate(
-        (prev) => {
-          if (!prev) {
-            return prev;
-          }
-          const target = prev.notifications.find((n) => n.id === id);
-          if (!target || target.isRead === isRead) {
-            return prev;
-          }
-          const diff = isRead ? -1 : 1;
-          return {
-            ...prev,
-            notifications: prev.notifications.map((n) =>
-              n.id === id ? { ...n, isRead } : n
-            ),
-            unreadCount: Math.max(0, (prev.unreadCount ?? 0) + diff),
-          };
-        },
-        false
-      );
+      mutate((prev) => {
+        if (!prev) {
+          return prev;
+        }
+        const target = prev.notifications.find((n) => n.id === id);
+        if (!target || target.isRead === isRead) {
+          return prev;
+        }
+        const diff = isRead ? -1 : 1;
+        return {
+          ...prev,
+          notifications: prev.notifications.map((n) =>
+            n.id === id ? { ...n, isRead } : n
+          ),
+          unreadCount: Math.max(0, (prev.unreadCount ?? 0) + diff),
+        };
+      }, false);
     } catch {}
   };
 
@@ -369,10 +366,14 @@ export function NotificationBell() {
                           : "text-primary hover:bg-primary/10 hover:text-primary font-medium"
                       )}
                       onClick={() => handleMarkOne(n.id, !n.isRead)}
-                      title={n.isRead ? "Marquer comme non lu" : "Marquer comme lu"}
+                      title={
+                        n.isRead ? "Marquer comme non lu" : "Marquer comme lu"
+                      }
                       type="button"
                     >
-                      <CheckCheckIcon className={cn("size-3.5", !n.isRead && "text-primary")} />
+                      <CheckCheckIcon
+                        className={cn("size-3.5", !n.isRead && "text-primary")}
+                      />
                     </button>
                     <button
                       className="rounded-md p-1 hover:bg-destructive/10 text-muted-foreground hover:text-destructive transition-colors opacity-70 group-hover:opacity-100"

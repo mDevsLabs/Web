@@ -13,6 +13,7 @@ import useSWR, { useSWRConfig } from "swr";
 import { useCopyToClipboard } from "usehooks-ts";
 import { useActiveChat } from "@/hooks/use-active-chat";
 import { speakText, stopSpeaking } from "@/hooks/use-speech";
+import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatMessage } from "@/lib/types";
 import { fetcher } from "@/lib/utils";
@@ -136,7 +137,7 @@ export function PureMessageActions({
       );
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || "Erreur fork");
+        throw new Error(extractApiErrorMessage(data) || "Erreur fork");
       }
       toast.success("Branche créée");
       router.push(`/chat/${data.id}`);
@@ -246,7 +247,7 @@ export function PureMessageActions({
         });
         const data = await res.json();
         if (!res.ok) {
-          throw new Error(data.error || "Erreur fork");
+          throw new Error(extractApiErrorMessage(data) || "Erreur fork");
         }
         toast.success(
           "Branche créée — régénération dans la nouvelle conversation"

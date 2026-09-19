@@ -15,7 +15,7 @@ import {
 import { MAI_UPGRADE_URL } from "@/lib/constants";
 
 export type UpgradeDialogProps = {
-  feature?: "skills" | "mcp" | "agents" | "generic";
+  feature?: "skills" | "mcp" | "agents" | "plugins" | "generic";
   open: boolean;
   onOpenChange: (open: boolean) => void;
 };
@@ -38,6 +38,11 @@ const FEATURE_COPY: Record<
     description:
       "Connectez vos bases de données, API et outils locaux directement à l'IA grâce au protocole MCP. Réservé aux forfaits Plus, Pro et Max.",
     title: "Model Context Protocol — Plan requis",
+  },
+  plugins: {
+    description:
+      "Installez des plugins qui étendent l'IA (météo, quiz, et bien plus) et mentionnez-les directement dans le chat. Réservé aux forfaits Plus, Pro et Max.",
+    title: "Plugins — Plan requis",
   },
   skills: {
     description:

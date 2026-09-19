@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { getDueScheduledMessages } from "@/lib/db/queries";
 import { executeScheduledMessage } from "@/lib/planning/executor";
@@ -10,34 +11,33 @@ async function isAuthorized(request: Request): Promise<boolean> {
   const authHeader = request.headers.get("authorization");
   const headerSecret = request.headers.get("x-cron-secret");
 
-  const url = new URL(request.url);
-  const paramSecret =
-    url.searchParams.get("secret") || url.searchParams.get("key");
-
-  // 1. Vérification par CRON_SECRET (Bearer token, header ou query param)
+  // Secret uniquement via header (jamais en query : logs/proxy/history).
+  // En prod, CRON_SECRET obligatoire (fail-closed).
   if (cronSecret) {
     if (authHeader === `Bearer ${cronSecret}`) return true;
     if (headerSecret === cronSecret) return true;
-    if (paramSecret === cronSecret) return true;
+    return false;
   }
 
-  // 2. Si appelé par un utilisateur connecté dans l'application
+  if (process.env.NODE_ENV === "production") {
+    console.error(
+      "[cron/planning] CRON_SECRET manquant en production — refusé"
+    );
+    return false;
+  }
+
+  // 2. Dev uniquement : tolérer l'appel d'un utilisateur connecté
   try {
     const user = await getMaiUser();
     if (user) return true;
   } catch {
-    // Ignorer l'erreur et continuer
+    // ignore
   }
 
-  // 3. En mode développement, tolérer l'absence de CRON_SECRET
-  if (!cronSecret && process.env.NODE_ENV !== "production") {
-    console.warn(
-      "[cron/planning] CRON_SECRET manquant — endpoint non protégé (dev uniquement)"
-    );
-    return true;
-  }
-
-  return false;
+  console.warn(
+    "[cron/planning] CRON_SECRET manquant — endpoint non protégé (dev uniquement)"
+  );
+  return true;
 }
 
 async function handleCronExecution(request: Request) {
@@ -46,16 +46,17 @@ async function handleCronExecution(request: Request) {
   if (!authorized) {
     const cronSecret = process.env.CRON_SECRET;
     if (!cronSecret && process.env.NODE_ENV === "production") {
-      return NextResponse.json(
-        { error: "CRON_SECRET non configuré et utilisateur non authentifié" },
-        { status: 503 }
-      );
+      return errorResponse("service_unavailable", {
+        message: "CRON_SECRET non configuré et utilisateur non authentifié.",
+      });
     }
-    return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non autorisé." });
   }
 
   const dueItems = await getDueScheduledMessages();
-  const results = [];
+  const results: Array<
+    { id: string; status: string } & Record<string, unknown>
+  > = [];
 
   for (const item of dueItems) {
     try {

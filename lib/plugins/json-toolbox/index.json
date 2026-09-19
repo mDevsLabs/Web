@@ -1,0 +1,22 @@
+{
+  "id": "json-toolbox",
+  "name": "Boîte à outils JSON",
+  "version": "1.0.0",
+  "description": "Validateur, formateur, minifieur, comparateur et explorateur de chemins JSON — entièrement local, sans aucun accès réseau.",
+  "author": "mAI",
+  "category": "dev",
+  "tags": ["json", "dev", "validation", "diff", "formatage"],
+  "icon": { "type": "lucide", "name": "Braces" },
+  "minTier": "plus",
+  "permissions": {
+    "network": "none",
+    "readsUserData": false,
+    "writesUserData": false,
+    "requiresApproval": false
+  },
+  "tool": {
+    "id": "jsonToolbox",
+    "label": "Boîte à outils JSON",
+    "systemHint": "jsonToolbox (valide, formate, minifie, compare deux JSON ou liste les chemins d'un document ; signale la position exacte d'une erreur de syntaxe et les différences structurées — tout est calculé localement, aucun appel réseau)"
+  }
+}

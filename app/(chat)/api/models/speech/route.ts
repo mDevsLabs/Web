@@ -1,8 +1,8 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { normalizeModelDisplayName } from "@/lib/ai/models";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
 import { getUserApiKey } from "@/lib/db/api-keys";
-import { normalizeModelDisplayName } from "@/lib/ai/models";
 
 // Voix Flux par défaut collées par l'API amont à tous les modèles sans voix
 // déclarées : elles ne sont valides que pour la famille flux/deepgram.
@@ -28,7 +28,7 @@ function resolveModelVoices(modelId: string, declaredVoices: unknown) {
     [...declared].sort().join(",") ===
       [...FLUX_FALLBACK_VOICES].sort().join(",")
   ) {
-    return undefined;
+    return;
   }
   return declared;
 }

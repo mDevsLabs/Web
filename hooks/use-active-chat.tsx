@@ -16,14 +16,18 @@ import {
   useRef,
   useState,
 } from "react";
+import { toast } from "sonner";
 import useSWR, { useSWRConfig } from "swr";
 import { unstable_serialize } from "swr/infinite";
 import { useDataStream } from "@/components/chat/data-stream-provider";
 import { getChatHistoryPaginationKey } from "@/components/chat/sidebar-history";
-import { toast } from "@/components/chat/toast";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
 import { useAutoResume } from "@/hooks/use-auto-resume";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import {
+  ACCOUNT_PROFILE_TOOL,
+  isProfileAwaiting,
+} from "@/lib/ai/tools/account-status";
 import { DEFAULT_ENABLED_TOOLS, type ToolId } from "@/lib/ai/tools/config";
 import type { PendingCommand } from "@/lib/commands/exec";
 import type { Agent, Skill, Vote } from "@/lib/db/schema";
@@ -101,15 +105,35 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
 
   const getAiErrorMessage = useCallback((error: unknown) => {
     const candidate = error as {
+      apiCode?: string;
       status?: number;
       statusCode?: number;
       message?: string;
     };
     const message = candidate?.message ?? String(error ?? "");
+    const apiCode = candidate?.apiCode ?? null;
     const code =
       candidate?.status ??
       candidate?.statusCode ??
       Number(message.match(/\b(403|429|5\d\d|4\d\d)\b/)?.[1]);
+
+    if (apiCode === "quota_exceeded") {
+      return "Quota atteint : mettez à niveau votre forfait pour continuer.";
+    }
+    if (apiCode === "rate_limited") {
+      return "Trop de requêtes, réessayez dans quelques instants !";
+    }
+    if (
+      apiCode === "plan_required" ||
+      apiCode === "access_denied" ||
+      apiCode === "model_access_denied" ||
+      apiCode === "bot_detected"
+    ) {
+      return "Accès refusé pour cette requête.";
+    }
+    if (apiCode === "service_unavailable" || apiCode === "upstream_error") {
+      return "Le service mAI est momentanément indisponible, réessayez plus tard !";
+    }
     if (code === 403) return "Code 403 : Quota atteint !";
     if (code === 429)
       return "Code 429 : Serveurs surchargés, réessayer plus tard !";
@@ -183,22 +207,22 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       const next = !prev;
       isGhostModeRef.current = next;
       if (next) {
-        // Auto-disable imageGenerate tool if pending
+        // Auto-disable les outils indisponibles en fantôme s'ils sont actifs
         setPendingToolsState((tools) => {
-          const filtered = tools.filter((t) => t !== "imageGenerate");
+          const filtered = tools.filter(
+            (t) =>
+              t !== "imageGenerate" &&
+              t !== "updateAccountProfile" &&
+              t !== "updateProfilePicture"
+          );
           pendingToolsRef.current = filtered;
           return filtered;
         });
-        toast({
-          description:
-            "Mode fantôme activé - La discussion est temporaire et ne sera pas enregistrée.",
-          type: "success",
-        });
+        toast.success(
+          "Mode fantôme activé - La discussion est temporaire et ne sera pas enregistrée."
+        );
       } else {
-        toast({
-          description: "Mode fantôme désactivé",
-          type: "success",
-        });
+        toast.success("Mode fantôme désactivé");
       }
       return next;
     });
@@ -216,10 +240,17 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   }, []);
   const togglePendingTool = useCallback((tool: ToolId) => {
     if (tool === "imageGenerate" && isGhostModeRef.current) {
-      toast({
-        description: "La génération d'image est indisponible en Mode fantôme",
-        type: "error",
-      });
+      toast.error("La génération d'image est indisponible en Mode fantôme");
+      return;
+    }
+    if (tool === "updateAccountProfile" && isGhostModeRef.current) {
+      toast.error("La modification de profil est indisponible en Mode fantôme");
+      return;
+    }
+    if (tool === "updateProfilePicture" && isGhostModeRef.current) {
+      toast.error(
+        "Le changement de photo de profil est indisponible en Mode fantôme"
+      );
       return;
     }
     setPendingToolsState((prev) => {
@@ -532,10 +563,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       if (error.message?.includes("AI Gateway requires a valid credit card")) {
         setShowCreditCardAlert(true);
       } else {
-        toast({
-          description: getAiErrorMessage(error),
-          type: "error",
-        });
+        toast.error(getAiErrorMessage(error));
       }
     },
     onFinish: () => {
@@ -546,6 +574,16 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     sendAutomaticallyWhen: ({ messages: currentMessages }) => {
       const lastMessage = currentMessages.at(-1);
       if (!lastMessage) return false;
+
+      // Confirmation de profil en attente : le flux ne doit PAS reprendre tant
+      // que l'utilisateur n'a pas confirmé/annulé dans AccountProfileCard —
+      // sinon chaque fin de stream relance un round LLM parasite.
+      const hasAwaitingProfileConfirmation = lastMessage.parts?.some(
+        (part) =>
+          (part as { type?: string }).type === `tool-${ACCOUNT_PROFILE_TOOL}` &&
+          isProfileAwaiting((part as { output?: unknown }).output)
+      );
+      if (hasAwaitingProfileConfirmation) return false;
 
       const hasApprovedTool = lastMessage.parts?.some(
         (part) =>
@@ -592,7 +630,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
         const toolsToSend = isToolApprovalContinuation
           ? []
           : isGhostModeRef.current
-            ? pendingToolsRef.current.filter((t) => t !== "imageGenerate")
+            ? pendingToolsRef.current.filter(
+                (t) => t !== "imageGenerate" && t !== "updateAccountProfile"
+              )
             : [...pendingToolsRef.current];
         if (!isToolApprovalContinuation && pendingToolsRef.current.length > 0) {
           // Clear after capturing — one-shot
@@ -664,7 +704,6 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     stop();
   }, [
     setMessages,
-    setInput,
     setActiveSkill,
     setSkillParamValues,
     setWaitingStatus,
@@ -689,7 +728,30 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       lastLoadedChatIdRef.current = chatId;
       setMessages(chatData.messages);
     }
-  }, [chatId, isNewChat, chatData, setMessages, setInput]);
+  }, [chatId, isNewChat, chatData, setMessages]);
+
+  // Changement de conversation : l'input ne doit JAMAIS traverser les chats.
+  // Chaque conversation restaure son propre brouillon local (use-drafts) ; ici
+  // on purge l'input du chat quitté pour empêcher la course où un setInput
+  // tardif écrirait le texte du chat A dans la clé de brouillon du chat B.
+  const prevDraftChatIdRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (prevDraftChatIdRef.current === chatId) {
+      return;
+    }
+    const previousChatId = prevDraftChatIdRef.current;
+    prevDraftChatIdRef.current = chatId;
+    // Au premier montage, ne rien purger : l'input est vide par défaut.
+    if (previousChatId === null) {
+      return;
+    }
+    // Purge déboutée : laisse l'effet de sauvegarde du brouillon (clé capturée
+    // au moment du chat quitté) finir son cycle sans écraser le nouveau chat.
+    const timer = setTimeout(() => {
+      setInput("");
+    }, 0);
+    return () => clearTimeout(timer);
+  }, [chatId]);
 
   useEffect(() => {
     if (chatData && !isNewChat) {

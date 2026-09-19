@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": "2026.09.14",
+  "categories": [
+    {
+      "id": "meteo",
+      "label": "Météo & environnement",
+      "icon": "CloudSun"
+    },
+    {
+      "id": "education",
+      "label": "Éducation & quiz",
+      "icon": "GraduationCap"
+    },
+    {
+      "id": "web",
+      "label": "Web & données",
+      "icon": "Globe"
+    },
+    {
+      "id": "productivite",
+      "label": "Productivité",
+      "icon": "Zap"
+    },
+    {
+      "id": "dev",
+      "label": "Développement",
+      "icon": "Code"
+    }
+  ],
+  "plugins": [
+    {
+      "id": "weather",
+      "dir": "weather",
+      "entry": "./weather",
+      "manifest": "./weather/index.json"
+    },
+    {
+      "id": "quizzly",
+      "dir": "quizzly",
+      "entry": "./quizzly",
+      "manifest": "./quizzly/index.json"
+    },
+    {
+      "id": "air-quality",
+      "dir": "air-quality",
+      "entry": "./air-quality",
+      "manifest": "./air-quality/index.json"
+    },
+    {
+      "id": "json-toolbox",
+      "dir": "json-toolbox",
+      "entry": "./json-toolbox",
+      "manifest": "./json-toolbox/index.json"
+    },
+    {
+      "id": "fr-holidays",
+      "dir": "fr-holidays",
+      "entry": "./fr-holidays",
+      "manifest": "./fr-holidays/index.json"
+    }
+  ]
+}

@@ -12,7 +12,12 @@ import { cjk } from "@streamdown/cjk";
 import { code } from "@streamdown/code";
 import { math } from "@streamdown/math";
 import { mermaid } from "@streamdown/mermaid";
-import { ChevronDownIcon } from "lucide-react";
+import {
+  BrainIcon,
+  ChevronDownIcon,
+  ScrollTextIcon,
+  TimerIcon,
+} from "lucide-react";
 import {
   createContext,
   memo,
@@ -154,14 +159,27 @@ export type ReasoningTriggerProps = ComponentProps<
   getThinkingMessage?: (isStreaming: boolean, duration?: number) => ReactNode;
 };
 
+const formatDuration = (duration: number) => {
+  if (duration < 60) {
+    return `${duration} s`;
+  }
+  const minutes = Math.floor(duration / 60);
+  const seconds = duration % 60;
+  return seconds > 0 ? `${minutes} min ${seconds} s` : `${minutes} min`;
+};
+
 const defaultGetThinkingMessage = (isStreaming: boolean, duration?: number) => {
   if (isStreaming || duration === 0) {
-    return <Shimmer className="font-medium" duration={1}>Thinking...</Shimmer>;
+    return (
+      <Shimmer className="font-medium" duration={1}>
+        Réflexion en cours…
+      </Shimmer>
+    );
   }
   if (duration === undefined) {
-    return <p>Thought for a few seconds</p>;
+    return <p>A réfléchi quelques secondes</p>;
   }
-  return <p>Thought for {duration} seconds</p>;
+  return <p>A réfléchi pendant {formatDuration(duration)}</p>;
 };
 
 export const ReasoningTrigger = memo(
@@ -183,7 +201,19 @@ export const ReasoningTrigger = memo(
       >
         {children ?? (
           <>
+            <BrainIcon
+              className={cn(
+                "size-3.5 shrink-0",
+                isStreaming && "animate-pulse text-primary"
+              )}
+            />
             {getThinkingMessage(isStreaming, duration)}
+            {duration !== undefined && duration > 0 && !isStreaming && (
+              <span className="inline-flex items-center gap-1 rounded-full bg-muted/60 px-1.5 py-0.5 text-[10px] font-medium tabular-nums">
+                <TimerIcon className="size-2.5" />
+                {formatDuration(duration)}
+              </span>
+            )}
             <ChevronDownIcon
               className={cn(
                 "size-4 transition-transform",
@@ -222,8 +252,12 @@ export const ReasoningContent = memo(
           className
         )}
       >
+        <div className="mb-1 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground/50">
+          <ScrollTextIcon className="size-3" />
+          <span>Journal de raisonnement</span>
+        </div>
         <div
-          className="max-h-[200px] overflow-y-auto rounded-lg border border-border/20 bg-muted/30 px-3 py-2 text-[11px] leading-relaxed"
+          className="max-h-[240px] overflow-y-auto rounded-lg border border-border/20 bg-muted/30 px-3 py-2 text-[11px] leading-relaxed"
           ref={scrollRef}
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >

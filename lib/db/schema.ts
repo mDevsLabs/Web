@@ -8,6 +8,7 @@ import {
   index,
   integer,
   json,
+  jsonb,
   pgTable,
   primaryKey,
   serial,
@@ -17,6 +18,23 @@ import {
   uuid,
   varchar,
 } from "drizzle-orm/pg-core";
+import type { ScheduleRule } from "@/lib/agent/contracts";
+import type {
+  AgentOccurrenceRecord,
+  AgentRunCheckpoint,
+  AgentRunInstructionRecord,
+  AgentRunUsageNormalized,
+  AgentScheduleRecord,
+  ApprovalRequestRecord,
+  ToolExecutionAttemptFields,
+} from "@/lib/agent/db-schema";
+import type {
+  AgentExecutionBudget,
+  AgentPlan,
+  AgentRunUsage,
+  ToolCategory,
+  ToolPermission,
+} from "@/lib/agent/types";
 
 export const project = pgTable(
   "Project",
@@ -44,6 +62,109 @@ export const project = pgTable(
 
 export type Project = InferSelectModel<typeof project>;
 
+// ─────────────────────────────────────────────
+// Projets partagés (migration 0020) : membres, invitations et fichiers.
+// Un Projet devient un espace de travail persistant : le propriétaire conserve
+// la ligne "Project" (userId inchangé pour la compatibilité legacy), les
+// membres autorisés sont résolus via ProjectMember. Les conversations restent
+// référencées par Chat.projectId (une seule copie, jamais dupliquée entre
+// comptes) et les fichiers projet pointent vers le stockage cloud MAI (Z1),
+// sans copie binaire en base.
+// ─────────────────────────────────────────────
+export const projectMember = pgTable(
+  "ProjectMember",
+  {
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    invitedBy: text("invitedBy"),
+    joinedAt: timestamp("joinedAt").notNull().defaultNow(),
+    projectId: uuid("projectId")
+      .notNull()
+      .references(() => project.id, { onDelete: "cascade" }),
+    // Rôles : "owner" (réglages, suppression, invitations) et "member"
+    // (contributions). Enum volontairement minimal — de nouveaux rôles
+    // pourront être ajoutés plus tard sans refonte.
+    role: varchar("role", { enum: ["owner", "member"] })
+      .notNull()
+      .default("member"),
+    // Identité canonique users.id (jamais email/username, contrairement aux
+    // champs userId historiques).
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    projectIdx: index("ProjectMember_projectId_idx").on(table.projectId),
+    projectUserUnique: uniqueIndex("ProjectMember_projectId_userId_key").on(
+      table.projectId,
+      table.userId
+    ),
+    userIdIdx: index("ProjectMember_userId_idx").on(table.userId),
+  })
+);
+
+export type ProjectMember = InferSelectModel<typeof projectMember>;
+
+export const projectInvite = pgTable(
+  "ProjectInvite",
+  {
+    // Code URL-safe (nanoid) : sert à la fois de lien partageable
+    // (/projects/join/[code]) et de code manuel. Inguessable : aucune donnée
+    // privée n'est servie sans session authentifiée, même avec le code.
+    code: text("code").notNull(),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    createdBy: text("createdBy").notNull(),
+    expiresAt: timestamp("expiresAt"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    maxUses: integer("maxUses"),
+    projectId: uuid("projectId")
+      .notNull()
+      .references(() => project.id, { onDelete: "cascade" }),
+    revokedAt: timestamp("revokedAt"),
+    useCount: integer("useCount").notNull().default(0),
+  },
+  (table) => ({
+    codeUnique: uniqueIndex("ProjectInvite_code_key").on(table.code),
+    projectIdx: index("ProjectInvite_projectId_idx").on(table.projectId),
+  })
+);
+
+export type ProjectInvite = InferSelectModel<typeof projectInvite>;
+
+export const projectFile = pgTable(
+  "ProjectFile",
+  {
+    contentType: text("contentType")
+      .notNull()
+      .default("application/octet-stream"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    // Texte extrait (PDF/DOCX/CSV convertis en texte) borné : injecté dans la
+    // requête modèle sous budget, jamais le binaire complet.
+    extractedText: text("extractedText"),
+    extractionStatus: varchar("extractionStatus", {
+      enum: ["pending", "ready", "unsupported", "failed"],
+    })
+      .notNull()
+      .default("pending"),
+    fileName: text("fileName").notNull(),
+    // Référence du fichier dans le stockage cloud MAI (Z1 Storage) — pas de
+    // binaire ici : l'upload proxifie /api/library (même backend).
+    fileRef: text("fileRef"),
+    fileSize: integer("fileSize"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    projectId: uuid("projectId")
+      .notNull()
+      .references(() => project.id, { onDelete: "cascade" }),
+    storageUrl: text("storageUrl").notNull(),
+    uploadedBy: text("uploadedBy").notNull(),
+  },
+  (table) => ({
+    projectCreatedIdx: index("ProjectFile_projectId_createdAt_idx").on(
+      table.projectId,
+      table.createdAt
+    ),
+  })
+);
+
+export type ProjectFile = InferSelectModel<typeof projectFile>;
+
 export const skill = pgTable(
   "Skill",
   {
@@ -62,7 +183,10 @@ export const skill = pgTable(
     pinned: boolean("pinned").notNull().default(false),
     shareId: text("shareId"),
     tags: text("tags").array().notNull().default([]),
-    templateId: uuid("templateId"),
+    // Slug du modèle de skill d'origine (ex : « sql-data-analyst »). Unique par
+    // utilisateur : l'installation d'un modèle est idempotente. Voir
+    // lib/skill-templates (source de vérité) et la migration 0019.
+    templateId: text("templateId"),
     tools: json("tools").notNull().default([]),
     updatedAt: timestamp("updatedAt").notNull().defaultNow(),
     usageCount: integer("usageCount").notNull().default(0),
@@ -176,6 +300,11 @@ export const chat = pgTable(
     customInstructions: text("customInstructions"),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     isArchived: boolean("isArchived").notNull().default(false),
+    // Conversation classique (chat) ou exécutée par Agent : évite de dupliquer
+    // l'historique, la sidebar et les projets pour le mode Agent.
+    mode: varchar("mode", { enum: ["chat", "agent"] })
+      .notNull()
+      .default("chat"),
     pinned: boolean("pinned").notNull().default(false),
     projectId: uuid("projectId").references(() => project.id, {
       onDelete: "set null",
@@ -202,6 +331,7 @@ export const chat = pgTable(
       table.userId,
       table.createdAt
     ),
+    userModeIdx: index("Chat_userId_mode_idx").on(table.userId, table.mode),
     userPinnedIdx: index("Chat_userId_pinned_idx").on(
       table.userId,
       table.pinned
@@ -214,6 +344,46 @@ export const chat = pgTable(
 );
 
 export type Chat = InferSelectModel<typeof chat>;
+
+// Propositions de modifications ciblées d'un Artifact par l'IA. Une proposal
+// décrit un patch typé (lib/artifacts/patch.ts) généré contre un état précis
+// du document (baseHash) : elle n'est JAMAIS appliquée implicitement —// l'utilisateur accepte ou refuse explicitement. Le contenu du document reste
+// dans Document ; cette table ne porte que des métadonnées de patch.
+export const documentProposal = pgTable(
+  "DocumentProposal",
+  {
+    // Hash FNV-1a du contenu de référence (lib/artifacts/hash.ts) : si le
+    // document a changé entre la génération et l'acceptation, la proposal
+    // est marquée stale au lieu d'écraser les modifications utilisateur.
+    baseHash: text("baseHash").notNull(),
+    chatId: uuid("chatId").references(() => chat.id, { onDelete: "set null" }),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    description: text("description"),
+    documentId: uuid("documentId").notNull(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    // Ops sérialisées au format strict DocumentPatchOp[] (jsonb).
+    ops: jsonb("ops").notNull(),
+    resolvedAt: timestamp("resolvedAt"),
+    status: varchar("status", {
+      enum: ["pending", "accepted", "rejected", "stale"],
+    })
+      .notNull()
+      .default("pending"),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    documentStatusIdx: index("DocumentProposal_documentId_status_idx").on(
+      table.documentId,
+      table.status
+    ),
+    userCreatedIdx: index("DocumentProposal_userId_createdAt_idx").on(
+      table.userId,
+      table.createdAt
+    ),
+  })
+);
+
+export type DocumentProposal = InferSelectModel<typeof documentProposal>;
 
 export const message = pgTable("Message_v2", {
   attachments: json("attachments").notNull().default([]),
@@ -256,11 +426,17 @@ export const document = pgTable(
     })
       .notNull()
       .default("text"),
+    // Rattachement facultatif d'un livrable à un projet : un résultat Agent
+    // peut être conservé dans le projet sélectionné, sans changer de table.
+    projectId: uuid("projectId").references(() => project.id, {
+      onDelete: "set null",
+    }),
     title: text("title").notNull(),
     userId: text("userId").notNull(),
   },
   (table) => ({
     pk: primaryKey({ columns: [table.id, table.createdAt] }),
+    projectIdx: index("Document_projectId_idx").on(table.projectId),
   })
 );
 
@@ -452,6 +628,10 @@ export const mcpServer = pgTable(
     })
       .notNull()
       .default("write_only"),
+    // Slug du modèle MCP d'origine (ex : « github »), vide pour un serveur
+    // ajouté à la main. Unique par utilisateur : installer deux fois le même
+    // modèle réutilise le serveur existant (voir lib/mcp-templates/install).
+    templateId: text("templateId"),
     timeoutMs: integer("timeoutMs").notNull().default(15_000),
     toolOverrides: json("toolOverrides").notNull().default({}),
     toolsCache: json("toolsCache").notNull().default([]),
@@ -531,7 +711,12 @@ export const notification = pgTable(
         "mcp_access_request",
         "news",
         "planning_task_completed",
+        "project_member_joined",
         "quota_warning",
+        "agent_run_finished",
+        "agent_run_failed",
+        "agent_approval_required",
+        "agent_user_input_required",
       ],
     }).notNull(),
     userId: text("userId").notNull(),
@@ -553,6 +738,19 @@ export const notification = pgTable(
 export type Notification = InferSelectModel<typeof notification>;
 
 export const userNotificationPrefs = pgTable("user_notification_prefs", {
+  // Canaux Agent : in-app est toujours actif pour les événements importants ;
+  // email et push restent désactivés tant que l'infrastructure mAI n'est pas
+  // confirmée (aucune clé utilisateur, jamais les connexions Gmail).
+  agentApprovalRequired: boolean("agentApprovalRequired")
+    .notNull()
+    .default(true),
+  agentEmailEnabled: boolean("agentEmailEnabled").notNull().default(false),
+  agentPushEnabled: boolean("agentPushEnabled").notNull().default(false),
+  agentRunFailed: boolean("agentRunFailed").notNull().default(true),
+  agentRunFinished: boolean("agentRunFinished").notNull().default(true),
+  agentUserInputRequired: boolean("agentUserInputRequired")
+    .notNull()
+    .default(true),
   aiResponse: boolean("aiResponse").notNull().default(true),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
   enabled: boolean("enabled").notNull().default(false),
@@ -614,6 +812,11 @@ export const userPreferences = pgTable("user_preferences", {
 
 export type UserPreferences = InferSelectModel<typeof userPreferences>;
 
+// Tables historiques des catalogues de modèles, alimentées par d'anciens
+// fichiers de seed supprimés. Les catalogues sont désormais statiques et
+// versionnés (lib/skill-templates, lib/mcp-templates) : ces tables ne sont plus
+// lues ni écrites, et sont conservées uniquement pour ne pas casser les
+// environnements existants (voir migration 0019).
 export const skillTemplate = pgTable(
   "SkillTemplate",
   {
@@ -709,6 +912,29 @@ export const userMcpPrefs = pgTable("user_mcp_prefs", {
   userId: text("userId").primaryKey().notNull(),
 });
 export type UserMcpPrefs = InferSelectModel<typeof userMcpPrefs>;
+
+export const pluginInstallation = pgTable(
+  "PluginInstallation",
+  {
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    installedAt: timestamp("installedAt").notNull().defaultNow(),
+    isEnabled: boolean("isEnabled").notNull().default(true),
+    pluginId: varchar("pluginId", { length: 64 }).notNull(),
+    settings: json("settings").notNull().default({}),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+    userId: text("userId").notNull(),
+    version: varchar("version", { length: 20 }).notNull().default("1.0.0"),
+  },
+  (table) => ({
+    userIdIdx: index("PluginInstallation_userId_idx").on(table.userId),
+    userPluginUnique: uniqueIndex("PluginInstallation_userId_pluginId_key").on(
+      table.userId,
+      table.pluginId
+    ),
+  })
+);
+
+export type PluginInstallation = InferSelectModel<typeof pluginInstallation>;
 
 export const agent = pgTable(
   "Agent",
@@ -824,12 +1050,12 @@ export const scheduledMessage = pgTable(
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     lastError: text("lastError"),
     modelId: text("modelId").notNull().default("google/gemini-2.5-flash"),
+    prompt: text("prompt").notNull(),
     recurrence: varchar("recurrence", {
       enum: ["none", "daily", "weekly", "monthly"],
     })
       .notNull()
       .default("none"),
-    prompt: text("prompt").notNull(),
     resultChatId: uuid("resultChatId"),
     scheduledAt: timestamp("scheduledAt").notNull(),
     status: varchar("status", {
@@ -852,3 +1078,430 @@ export const scheduledMessage = pgTable(
 );
 export type ScheduledMessage = InferSelectModel<typeof scheduledMessage>;
 
+// ─────────────────────────────────────────────
+// Espace Agent : runs, steps, exécutions d'outils et réglages
+// ─────────────────────────────────────────────
+
+// Un run = une requête utilisateur exécutée par Agent. Une conversation peut en
+// contenir plusieurs. Le run est la source de vérité de l'exécution côté serveur
+// (le frontend ne fait que consommer le flux et restaurer l'état).
+export const agentRun = pgTable(
+  "AgentRun",
+  {
+    autonomy: varchar("autonomy", {
+      enum: ["careful", "standard", "high"],
+    })
+      .notNull()
+      .default("standard"),
+    budget: json("budget").$type<AgentExecutionBudget>().notNull().default({
+      maxDurationMs: 0,
+      maxRetries: 0,
+      maxSteps: 0,
+      maxToolCalls: 0,
+    }),
+    chatId: uuid("chatId")
+      .notNull()
+      .references(() => chat.id, { onDelete: "cascade" }),
+    checkpoint: json("checkpoint").$type<AgentRunCheckpoint>(),
+    completedAt: timestamp("completedAt"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    error: text("error"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    messageId: text("messageId"),
+    model: text("model").notNull(),
+    plan: json("plan").$type<AgentPlan | null>(),
+    reasoningLevel: varchar("reasoningLevel", {
+      enum: ["low", "medium", "high"],
+    })
+      .notNull()
+      .default("medium"),
+    revision: integer("revision").notNull().default(0),
+    startedAt: timestamp("startedAt"),
+    status: varchar("status", {
+      enum: [
+        "queued",
+        "running",
+        "waiting_for_tool",
+        "waiting_for_approval",
+        "waiting_for_user",
+        "completed",
+        "failed",
+        "cancelled",
+        "timed_out",
+      ],
+    })
+      .notNull()
+      .default("queued"),
+    stepCount: integer("stepCount").notNull().default(0),
+    suggestedActions: json("suggestedActions")
+      .$type<unknown[]>()
+      .notNull()
+      .default([]),
+    toolCallCount: integer("toolCallCount").notNull().default(0),
+    toolPolicySnapshot: json("toolPolicySnapshot")
+      .$type<Record<string, ToolPermission>>()
+      .notNull()
+      .default({}),
+    usage: json("usage")
+      .$type<AgentRunUsage | AgentRunUsageNormalized>()
+      .notNull()
+      .default({}),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    chatIdIdx: index("AgentRun_chatId_idx").on(table.chatId),
+    createdAtIdx: index("AgentRun_createdAt_idx").on(table.createdAt),
+    userStatusIdx: index("AgentRun_userId_status_idx").on(
+      table.userId,
+      table.status
+    ),
+  })
+);
+
+export type AgentRun = InferSelectModel<typeof agentRun>;
+
+// Chaque action importante du run devient un step visible (jamais de
+// chain-of-thought : uniquement action, outil, progression, résultat utile).
+export const agentStep = pgTable(
+  "AgentStep",
+  {
+    completedAt: timestamp("completedAt"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    index: integer("index").notNull().default(0),
+    runId: uuid("runId")
+      .notNull()
+      .references(() => agentRun.id, { onDelete: "cascade" }),
+    status: varchar("status", {
+      enum: ["pending", "running", "completed", "failed", "skipped"],
+    })
+      .notNull()
+      .default("pending"),
+    summary: text("summary"),
+    title: text("title").notNull(),
+    toolExecutionId: uuid("toolExecutionId"),
+    type: varchar("type", {
+      enum: [
+        "planning",
+        "tool_call",
+        "tool_result",
+        "artifact",
+        "message",
+        "verification",
+        "error",
+        "user_input_request",
+        "user_input_answer",
+        "approval_request",
+      ],
+    }).notNull(),
+  },
+  (table) => ({
+    runIndexIdx: index("AgentStep_runId_index_idx").on(
+      table.runId,
+      table.index
+    ),
+  })
+);
+
+export type AgentStep = InferSelectModel<typeof agentStep>;
+
+// Appels d'outils : entrée, sortie, statut, durée. Les secrets et identifiants
+// ne sont jamais journalisés ici.
+export const toolExecution = pgTable(
+  "ToolExecution",
+  {
+    approvalStatus: varchar("approvalStatus", {
+      enum: ["not_required", "pending", "approved", "denied"],
+    })
+      .notNull()
+      .default("not_required"),
+    // Tentatives : chaque retry est une ligne liée à sa tentative parente.
+    attempt: integer("attempt").notNull().default(1),
+    category: varchar("category", {
+      enum: [
+        "web",
+        "files",
+        "library",
+        "project",
+        "internal",
+        "artifact",
+        "plugins",
+        "mcp",
+        "skills",
+      ],
+    })
+      .notNull()
+      .default("internal"),
+    completedAt: timestamp("completedAt"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    durationMs: integer("durationMs"),
+    error: text("error"),
+    errorCategory: varchar("errorCategory", { length: 32 }),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    input: json("input").$type<unknown>(),
+    output: json("output").$type<unknown>(),
+    parentExecutionId: uuid("parentExecutionId"),
+    retryAfterMs: integer("retryAfterMs"),
+    retryable: boolean("retryable").notNull().default(false),
+    runId: uuid("runId")
+      .notNull()
+      .references(() => agentRun.id, { onDelete: "cascade" }),
+    startedAt: timestamp("startedAt"),
+    status: varchar("status", {
+      enum: ["running", "completed", "failed", "denied", "cancelled"],
+    })
+      .notNull()
+      .default("running"),
+    stepId: uuid("stepId"),
+    toolId: text("toolId").notNull(),
+  },
+  (table) => ({
+    runIdIdx: index("ToolExecution_runId_idx").on(table.runId),
+    toolIdIdx: index("ToolExecution_toolId_idx").on(table.toolId),
+  })
+);
+
+export type ToolExecution = InferSelectModel<typeof toolExecution>;
+
+// Paramètres Agent (1 ligne par utilisateur), page /settings/agent.
+export const agentSettings = pgTable("AgentSettings", {
+  autonomy: varchar("autonomy", {
+    enum: ["careful", "standard", "high"],
+  })
+    .notNull()
+    .default("standard"),
+  createdAt: timestamp("createdAt").notNull().defaultNow(),
+  defaultModel: text("defaultModel"),
+  defaultProjectId: uuid("defaultProjectId"),
+  enabledCategories: json("enabledCategories")
+    .$type<ToolCategory[]>()
+    .notNull()
+    .default([]),
+  reasoningLevel: varchar("reasoningLevel", {
+    enum: ["low", "medium", "high"],
+  })
+    .notNull()
+    .default("medium"),
+  toolPolicies: json("toolPolicies")
+    .$type<Record<string, ToolPermission>>()
+    .notNull()
+    .default({}),
+  updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+  userId: text("userId").primaryKey().notNull(),
+});
+
+export type AgentSettings = InferSelectModel<typeof agentSettings>;
+
+// ---------------------------------------------------------------------------
+// Fondations Agent (migration 0017) : tâches planifiées, occurrences,
+// approbations persistantes, instructions de réorientation.
+// ---------------------------------------------------------------------------
+
+// Tâche planifiée Agent : règle en heure LOCALE + fuseau IANA. La prochaine
+// échéance est recalculée depuis la règle et le fuseau (jamais une suite de
+// dates UTC). Suppression LOGIQUE : les runs passés restent consultables.
+export const agentSchedule = pgTable(
+  "AgentSchedule",
+  {
+    agentId: uuid("agentId"),
+    config: json("config").$type<AgentScheduleRecord["config"]>().notNull(),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    deletedAt: timestamp("deletedAt"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    instructions: text("instructions").notNull(),
+    lastError: text("lastError"),
+    lastRunAt: timestamp("lastRunAt"),
+    modelId: text("modelId").notNull(),
+    nextDueAt: timestamp("nextDueAt").notNull(),
+    projectId: uuid("projectId"),
+    revision: integer("revision").notNull().default(0),
+    rule: json("rule").$type<ScheduleRule>().notNull(),
+    status: varchar("status", {
+      enum: ["active", "paused", "deleted"],
+    })
+      .notNull()
+      .default("active"),
+    timezone: varchar("timezone", { length: 64 }).notNull(),
+    title: text("title").notNull(),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    // File d'attente du scheduler : échéances dues, par worker.
+    dueIdx: index("AgentSchedule_status_nextDueAt_idx").on(
+      table.status,
+      table.nextDueAt
+    ),
+    userIdIdx: index("AgentSchedule_userId_idx").on(table.userId),
+  })
+);
+
+export type AgentSchedule = InferSelectModel<typeof agentSchedule>;
+
+// Une exécution prévue. UNIQUE(scheduleId, dueAt) garantit l'idempotence : un
+// tick rejoué ou deux workers concurrents ne créent jamais deux occurrences.
+export const agentScheduleOccurrence = pgTable(
+  "AgentScheduleOccurrence",
+  {
+    attempt: integer("attempt").notNull().default(0),
+    claimedAt: timestamp("claimedAt"),
+    claimedBy: varchar("claimedBy", { length: 128 }),
+    dueAt: timestamp("dueAt").notNull(),
+    finishedAt: timestamp("finishedAt"),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    // Lease anti-double-exécution : expirée => reprise après crash.
+    leaseUntil: timestamp("leaseUntil"),
+    runId: uuid("runId").references(() => agentRun.id, {
+      onDelete: "set null",
+    }),
+    scheduleId: uuid("scheduleId")
+      .notNull()
+      .references(() => agentSchedule.id, { onDelete: "cascade" }),
+    status: varchar("status", {
+      enum: ["pending", "claimed", "running", "completed", "failed", "skipped"],
+    })
+      .notNull()
+      .default("pending"),
+  },
+  (table) => ({
+    claimIdx: index("AgentScheduleOccurrence_status_leaseUntil_idx").on(
+      table.status,
+      table.leaseUntil
+    ),
+    occurrenceUnique: uniqueIndex(
+      "AgentScheduleOccurrence_scheduleId_dueAt_key"
+    ).on(table.scheduleId, table.dueAt),
+    runIdIdx: index("AgentScheduleOccurrence_runId_idx").on(table.runId),
+  })
+);
+
+export type AgentScheduleOccurrence = InferSelectModel<
+  typeof agentScheduleOccurrence
+>;
+
+// Approbation persistante liée à un appel d'outil et à SES paramètres exacts
+// (hash sha256 canonique) : toute modification de paramètres l'invalide.
+export const approvalRequest = pgTable(
+  "ApprovalRequest",
+  {
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    decidedAt: timestamp("decidedAt"),
+    denyReason: text("denyReason"),
+    expiresAt: timestamp("expiresAt").notNull(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    params: json("params").$type<Record<string, unknown>>().notNull(),
+    paramsHash: varchar("paramsHash", { length: 64 }).notNull(),
+    runId: uuid("runId")
+      .notNull()
+      .references(() => agentRun.id, { onDelete: "cascade" }),
+    status: varchar("status", {
+      enum: ["pending", "approved", "denied", "expired"],
+    })
+      .notNull()
+      .default("pending"),
+    stepId: uuid("stepId"),
+    // Identifiant de l'appel d'outil côté fournisseur : une demande par appel,
+    // relue à la reprise sans dépendre de ce que transmet le client.
+    toolCallId: text("toolCallId"),
+    toolExecutionId: uuid("toolExecutionId"),
+    toolId: text("toolId").notNull(),
+  },
+  (table) => ({
+    pendingIdx: index("ApprovalRequest_runId_status_idx").on(
+      table.runId,
+      table.status
+    ),
+    toolCallIdx: uniqueIndex("ApprovalRequest_runId_toolCallId_key").on(
+      table.runId,
+      table.toolCallId
+    ),
+  })
+);
+
+export type ApprovalRequest = InferSelectModel<typeof approvalRequest>;
+
+// Réorientations utilisateur : file ORDONNÉE (seq) appliquée au prochain
+// point sûr, protégée par la révision optimiste du run.
+export const agentRunInstruction = pgTable(
+  "AgentRunInstruction",
+  {
+    appliedAt: timestamp("appliedAt"),
+    appliedStepIndex: integer("appliedStepIndex"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    runId: uuid("runId")
+      .notNull()
+      .references(() => agentRun.id, { onDelete: "cascade" }),
+    seq: integer("seq").notNull(),
+    status: varchar("status", {
+      enum: ["pending", "applied", "discarded"],
+    })
+      .notNull()
+      .default("pending"),
+    stopRequested: boolean("stopRequested").notNull().default(false),
+    text: text("text").notNull(),
+  },
+  (table) => ({
+    pendingIdx: index("AgentRunInstruction_runId_status_seq_idx").on(
+      table.runId,
+      table.status,
+      table.seq
+    ),
+  })
+);
+
+export type AgentRunInstruction = InferSelectModel<typeof agentRunInstruction>;
+
+// Questionnaire posé par un outil d'attente utilisateur (ask_user) : les
+// questions servent de contrat validé côté serveur, et la réponse est liée au
+// ToolCall exact. Après refresh ou fermeture de l'application, la demande et sa
+// réponse restent lisibles ; la réponse est validée puis réinjectée dans le
+// même AgentRun.
+export const agentUserInputRequest = pgTable(
+  "AgentUserInputRequest",
+  {
+    answeredAt: timestamp("answeredAt"),
+    answeredBy: text("answeredBy"),
+    answers: json("answers").$type<unknown>(),
+    chatId: uuid("chatId").notNull(),
+    context: text("context"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    expiresAt: timestamp("expiresAt").notNull(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    questions: json("questions").$type<unknown>().notNull(),
+    // Empreinte canonique des questions affichées : le questionnaire ne peut
+    // pas être modifié après présentation sans invalider la réponse.
+    questionsHash: varchar("questionsHash", { length: 64 }).notNull(),
+    revision: integer("revision").notNull().default(0),
+    runId: uuid("runId")
+      .notNull()
+      .references(() => agentRun.id, { onDelete: "cascade" }),
+    status: varchar("status", {
+      enum: ["pending", "answered", "expired", "cancelled"],
+    })
+      .notNull()
+      .default("pending"),
+    stepId: uuid("stepId"),
+    title: text("title").notNull(),
+    toolCallId: text("toolCallId").notNull(),
+    toolExecutionId: uuid("toolExecutionId"),
+    toolId: text("toolId").notNull(),
+  },
+  (table) => ({
+    chatStatusIdx: index("AgentUserInputRequest_chatId_status_idx").on(
+      table.chatId,
+      table.status
+    ),
+    runStatusIdx: index("AgentUserInputRequest_runId_status_idx").on(
+      table.runId,
+      table.status
+    ),
+    toolExecutionKey: uniqueIndex(
+      "AgentUserInputRequest_toolExecutionId_key"
+    ).on(table.toolExecutionId),
+  })
+);
+
+export type AgentUserInputRequest = InferSelectModel<
+  typeof agentUserInputRequest
+>;

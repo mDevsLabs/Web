@@ -1,6 +1,7 @@
-import { cookies } from "next/headers";
 import { jwtVerify } from "jose";
+import { cookies } from "next/headers";
 import { MAI_API_URL, MAI_SESSION_COOKIE } from "@/lib/constants";
+import { getTierChatWeeklyLimit } from "@/lib/plans/tier-limits";
 
 export { MAI_SESSION_COOKIE } from "@/lib/constants";
 
@@ -77,6 +78,13 @@ export async function removeMaiSessionToken() {
   cookieStore.delete(MAI_SESSION_COOKIE);
 }
 
+// Invalidation ciblée du cache utilisateur après une mutation de profil
+// (avatar, username, téléphone…) : la session reste valide, seule la copie en
+// mémoire est jetée pour que la prochaine requête relise l'amont.
+export function invalidateMaiUserCache(token: string): void {
+  userCache.delete(token);
+}
+
 // Rafraîchissement asynchrone non-bloquant des quotas mAI
 function triggerBackgroundUsageRefresh(token: string) {
   fetch(`${MAI_API_URL}/usage`, {
@@ -88,7 +96,9 @@ function triggerBackgroundUsageRefresh(token: string) {
       if (data && !data.error) {
         const cached = userCache.get(token);
         if (cached) {
-          cached.user.tokensUsed = Number(data.tokensUsed || cached.user.tokensUsed);
+          cached.user.tokensUsed = Number(
+            data.tokensUsed || cached.user.tokensUsed
+          );
           cached.user.limit = Number(data.limit || cached.user.limit);
           cached.user.tier = data.tier || cached.user.tier;
           if (data.username) cached.user.username = data.username;
@@ -130,8 +140,12 @@ export async function getMaiUser(
       const user: MaiUser = {
         avatarUrl: payload.avatarUrl || null,
         email: payload.email || "",
-        id: payload.id ? String(payload.id) : payload.sub ? String(payload.sub) : payload.email || "",
-        limit: Number(payload.limit || 2_000_000),
+        id: payload.id
+          ? String(payload.id)
+          : payload.sub
+            ? String(payload.sub)
+            : payload.email || "",
+        limit: Number(payload.limit || getTierChatWeeklyLimit(payload.tier)),
         phone: payload.phone || "",
         resetAt: payload.resetAt,
         tier: payload.tier || "Free",
@@ -169,7 +183,7 @@ export async function getMaiUser(
           avatarUrl: data.avatarUrl || null,
           email: data.email || "",
           id: userId || data.email,
-          limit: Number(data.limit || 2_000_000),
+          limit: Number(data.limit || getTierChatWeeklyLimit(data.tier)),
           phone: data.phone || "",
           resetAt: data.resetAt,
           tier: data.tier || "Free",

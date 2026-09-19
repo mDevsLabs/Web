@@ -32,7 +32,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { DEFAULT_CHAT_MODEL, FALLBACK_MODELS } from "@/lib/ai/models";
-import { TOOLS_META, TOOL_IDS, type ToolId } from "@/lib/ai/tools/config";
+import { TOOL_IDS, TOOLS_META, type ToolId } from "@/lib/ai/tools/config";
+import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { Agent, ScheduledMessage } from "@/lib/db/schema";
 import { cn, fetcher } from "@/lib/utils";
 
@@ -56,12 +57,18 @@ export function ScheduleDialog({
   const [scheduledAt, setScheduledAt] = useState("");
   const [selectedAgentId, setSelectedAgentId] = useState<string | null>(null);
   const [selectedModel, setSelectedModel] = useState(DEFAULT_CHAT_MODEL);
-  const [createMode, setCreateMode] = useState<"new_chat" | "existing_chat">("new_chat");
+  const [createMode, setCreateMode] = useState<"new_chat" | "existing_chat">(
+    "new_chat"
+  );
   const [selectedChatId, setSelectedChatId] = useState<string>("");
-  const [recurrence, setRecurrence] = useState<"none" | "daily" | "weekly" | "monthly">("none");
+  const [recurrence, setRecurrence] = useState<
+    "none" | "daily" | "weekly" | "monthly"
+  >("none");
   const [enabledTools, setEnabledTools] = useState<string[]>([]);
   const [cloudFileUrls, setCloudFileUrls] = useState<string[]>([]);
-  const [cloudFileNames, setCloudFileNames] = useState<Record<string, string>>({});
+  const [cloudFileNames, setCloudFileNames] = useState<Record<string, string>>(
+    {}
+  );
   const [isCloudPickerOpen, setIsCloudPickerOpen] = useState(false);
   const [customInstructions, setCustomInstructions] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -85,7 +92,9 @@ export function ScheduleDialog({
       setCustomInstructions(initialData.customInstructions || "");
     } else {
       setTitle("Rapport matinal");
-      setPrompt("Génère un résumé complet des actualités technologiques et IA d'aujourd'hui.");
+      setPrompt(
+        "Génère un résumé complet des actualités technologiques et IA d'aujourd'hui."
+      );
       const inOneHour = new Date(Date.now() + 60 * 60 * 1000);
       const pad = (n: number) => n.toString().padStart(2, "0");
       const localIso = `${inOneHour.getFullYear()}-${pad(inOneHour.getMonth() + 1)}-${pad(inOneHour.getDate())}T${pad(inOneHour.getHours())}:${pad(inOneHour.getMinutes())}`;
@@ -99,7 +108,7 @@ export function ScheduleDialog({
       setCloudFileUrls([]);
       setCustomInstructions("");
     }
-  }, [initialData, isOpen]);
+  }, [initialData]);
 
   const toggleTool = (toolKey: string) => {
     setEnabledTools((prev) =>
@@ -112,9 +121,13 @@ export function ScheduleDialog({
   // Liste des discussions pour le mode "Continuer un fil existant"
   const { data: availableChats } = useSWR<
     { id: string; title: string; createdAt: string | Date }[]
-  >(isOpen && createMode === "existing_chat" ? "/api/planning/chats" : null, fetcher, {
-    revalidateOnFocus: false,
-  });
+  >(
+    isOpen && createMode === "existing_chat" ? "/api/planning/chats" : null,
+    fetcher,
+    {
+      revalidateOnFocus: false,
+    }
+  );
 
   const setPresetTime = (minutesFromNow: number) => {
     const d = new Date(Date.now() + minutesFromNow * 60 * 1000);
@@ -173,7 +186,9 @@ export function ScheduleDialog({
 
       if (!res.ok) {
         const data = await res.json();
-        throw new Error(data.error || "Erreur lors de l'enregistrement");
+        throw new Error(
+          extractApiErrorMessage(data) || "Erreur lors de l'enregistrement"
+        );
       }
 
       toast.success(
@@ -199,11 +214,14 @@ export function ScheduleDialog({
               <CalendarIcon className="size-4" />
             </span>
             <DialogTitle>
-              {initialData ? "Modifier la planification" : "Nouvelle planification"}
+              {initialData
+                ? "Modifier la planification"
+                : "Nouvelle planification"}
             </DialogTitle>
           </div>
           <DialogDescription>
-            Définissez la date, l'heure et les paramètres de votre message automatique à l'IA.
+            Définissez la date, l'heure et les paramètres de votre message
+            automatique à l'IA.
           </DialogDescription>
         </DialogHeader>
 
@@ -376,8 +394,8 @@ export function ScheduleDialog({
                 {availableChats && availableChats.length === 0 && (
                   <p className="mt-1 flex items-center gap-1 text-[11px] text-muted-foreground">
                     <MessagesSquareIcon className="size-3" />
-                    Aucune discussion existante. Créez-en une d'abord ou choisissez
-                    « Nouvelle discussion ».
+                    Aucune discussion existante. Créez-en une d'abord ou
+                    choisissez « Nouvelle discussion ».
                   </p>
                 )}
               </div>
@@ -415,8 +433,14 @@ export function ScheduleDialog({
             </div>
             {recurrence !== "none" && (
               <p className="mt-1.5 text-[11px] text-muted-foreground">
-                Le message sera réexécuté automatiquement {recurrence === "daily" ? "chaque jour" : recurrence === "weekly" ? "chaque semaine" : "chaque mois"} à
-                la même heure, et une notification vous informera à chaque exécution.
+                Le message sera réexécuté automatiquement{" "}
+                {recurrence === "daily"
+                  ? "chaque jour"
+                  : recurrence === "weekly"
+                    ? "chaque semaine"
+                    : "chaque mois"}{" "}
+                à la même heure, et une notification vous informera à chaque
+                exécution.
               </p>
             )}
           </div>
@@ -456,7 +480,9 @@ export function ScheduleDialog({
                     <button
                       className="rounded-full p-0.5 hover:bg-muted-foreground/20 cursor-pointer"
                       onClick={() => {
-                        setCloudFileUrls((prev) => prev.filter((_, idx) => idx !== i));
+                        setCloudFileUrls((prev) =>
+                          prev.filter((_, idx) => idx !== i)
+                        );
                         setCloudFileNames((prev) => {
                           const copy = { ...prev };
                           delete copy[url];
@@ -478,7 +504,14 @@ export function ScheduleDialog({
               Outils activés pour l'exécution
             </Label>
             <div className="mt-1.5 flex flex-wrap gap-1.5">
-              {TOOL_IDS.map((tid) => {
+              {/* Les outils de compte ne sont pas exécutables dans une tâche
+                  planifiée (pas de carte interactive, pas de contexte live). */}
+              {TOOL_IDS.filter(
+                (tid) =>
+                  tid !== "updateAccountProfile" &&
+                  tid !== "getAccountUsage" &&
+                  tid !== "updateProfilePicture"
+              ).map((tid) => {
                 const meta = TOOLS_META[tid];
                 const active = enabledTools.includes(tid);
                 return (
@@ -533,7 +566,9 @@ export function ScheduleDialog({
         <CloudFilePickerDialog
           onOpenChange={setIsCloudPickerOpen}
           onSelectAttachments={(attachments) => {
-            const toAdd = attachments.filter((a) => !cloudFileUrls.includes(a.url));
+            const toAdd = attachments.filter(
+              (a) => !cloudFileUrls.includes(a.url)
+            );
             const remaining = 10 - cloudFileUrls.length;
             const slice = toAdd.slice(0, remaining);
             if (slice.length > 0) {

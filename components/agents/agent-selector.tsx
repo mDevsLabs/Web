@@ -21,7 +21,7 @@ export function AgentSelectorCompact() {
   const { activeAgent, setActiveAgent, clearActiveAgent } = useActiveChat();
   const { isFree } = useTier();
   const { data: agents = [] } = useSWR<Agent[]>(
-    !isFree ? "/api/agents" : null,
+    isFree ? null : "/api/agents",
     fetcher
   );
   const [open, setOpen] = useState(false);

@@ -1,5 +1,6 @@
 import { tool } from "ai";
 import { z } from "zod";
+import { isPrivateOrBlockedHost } from "@/lib/web/ssrf";
 
 function cleanHtmlToText(html: string): string {
   // Supprimer les balises script, style, noscript, svg, iframe
@@ -38,7 +39,9 @@ function cleanHtmlToText(html: string): string {
   return cleaned
     .split("\n")
     .map((line) => line.trim().replace(/[ \t]+/g, " "))
-    .filter((line, i, arr) => line.length > 0 || (i > 0 && arr[i - 1]?.length > 0))
+    .filter(
+      (line, i, arr) => line.length > 0 || (i > 0 && arr[i - 1]?.length > 0)
+    )
     .join("\n")
     .trim();
 }
@@ -46,12 +49,16 @@ function cleanHtmlToText(html: string): string {
 function extractMeta(html: string): { title?: string; description?: string } {
   const titleMatch = html.match(/<title[^>]*>([^<]+)<\/title>/i);
   const descMatch =
-    html.match(/<meta[^>]*name=["']description["'][^>]*content=["']([^"']+)["']/i) ||
-    html.match(/<meta[^>]*property=["']og:description["'][^>]*content=["']([^"']+)["']/i);
+    html.match(
+      /<meta[^>]*name=["']description["'][^>]*content=["']([^"']+)["']/i
+    ) ||
+    html.match(
+      /<meta[^>]*property=["']og:description["'][^>]*content=["']([^"']+)["']/i
+    );
 
   return {
-    title: titleMatch ? titleMatch[1].trim() : undefined,
     description: descMatch ? descMatch[1].trim() : undefined,
+    title: titleMatch ? titleMatch[1].trim() : undefined,
   };
 }
 
@@ -66,9 +73,25 @@ export const readUrl = tool({
 
     let parsedUrl: URL;
     try {
-      parsedUrl = new URL(rawUrl.startsWith("http") ? rawUrl : `https://${rawUrl}`);
+      parsedUrl = new URL(
+        rawUrl.startsWith("http") ? rawUrl : `https://${rawUrl}`
+      );
     } catch {
       return { error: `URL invalide : "${rawUrl}".` };
+    }
+
+    // Protection anti-SSRF
+    if (!["http:", "https:"].includes(parsedUrl.protocol)) {
+      return {
+        error: "Protocole non autorisé. Seuls HTTP et HTTPS sont acceptés.",
+      };
+    }
+
+    if (isPrivateOrBlockedHost(parsedUrl.hostname)) {
+      return {
+        error:
+          "Accès refusé pour des raisons de sécurité (adresse IP privée, locale ou métadonnées internes).",
+      };
     }
 
     try {
@@ -97,7 +120,10 @@ export const readUrl = tool({
       const contentType = response.headers.get("content-type") || "";
       const rawText = await response.text();
 
-      const maxChars = Math.min(Math.max(input.maxLength ?? 15_000, 1_000), 50_000);
+      const maxChars = Math.min(
+        Math.max(input.maxLength ?? 15_000, 1000),
+        50_000
+      );
 
       let textContent = "";
       let title: string | undefined;
@@ -129,7 +155,9 @@ export const readUrl = tool({
       if (err.name === "AbortError") {
         return { error: "Délai de connexion dépassé (timeout 12s)." };
       }
-      return { error: `Erreur lors de la récupération de l'URL : ${err.message || "inconnue"}` };
+      return {
+        error: `Erreur lors de la récupération de l'URL : ${err.message || "inconnue"}`,
+      };
     }
   },
   inputSchema: z.object({
@@ -137,13 +165,15 @@ export const readUrl = tool({
       .number()
       .int()
       .min(1000)
-      .max(50000)
+      .max(50_000)
       .optional()
       .describe("Nombre maximum de caractères à extraire (défaut: 15000)"),
     url: z
       .string()
       .url()
       .or(z.string().min(3))
-      .describe("L'adresse URL du site Web ou de la documentation à lire (ex: https://nextjs.org/docs)"),
+      .describe(
+        "L'adresse URL du site Web ou de la documentation à lire (ex: https://nextjs.org/docs)"
+      ),
   }),
 });
