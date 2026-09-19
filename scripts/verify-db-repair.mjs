@@ -1,6 +1,7 @@
 /**
  * Vérification post-réparation : rejoue les requêtes exactes qui échouaient
- * dans dev-server.log. Les écritures sont annulées (ROLLBACK).
+ * dans dev-server.log, plus le contrat plateforme weekly_usage (integer).
+ * Les écritures sont annulées (ROLLBACK).
  *   node scripts/verify-db-repair.mjs
  */
 import postgres from "postgres";
@@ -25,18 +26,30 @@ console.log("✅ 2. SELECT UserMemory avec filtres de portée (getGlobalMemories
 await sql`SELECT count(*)::int AS n FROM "UserMemory" WHERE "userId" = ${"1"} AND "agentId" IS NULL AND "isEnabled" = ${true}`;
 console.log("✅ 3. countMemories sur UserMemory");
 
-// 4. recordTokenUsage : échouait en 42804/22P04 (integer vs text) — testé en transaction annulée
+// 4. recordTokenUsage : weekly_usage.user_id est INTEGER (contrat plateforme).
+//    Écriture d'un id numérique en transaction annulée.
 await sql.begin(async (tx) => {
   await tx`INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-    VALUES (${"1"}::text, ${"2026-09-14"}::date, ${42})
+    VALUES (${1}, ${"2026-09-14"}::date, ${42})
     ON CONFLICT (user_id, week_start)
     DO UPDATE SET tokens_used = weekly_usage.tokens_used + ${42}`;
-  await tx`ROLLBACK`;
   throw new Error("__rollback__");
 }).catch((e) => {
   if (e.message !== "__rollback__") throw e;
 });
-console.log("✅ 4. INSERT weekly_usage (user_id texte) — transaction annulée");
+console.log("✅ 4. INSERT weekly_usage (user_id integer) — transaction annulée");
+
+// 5. Contrat backend mAI déployé (handleGetUsage) : filtre text = integer —
+//    échouait en 42883 tant que la colonne était restée en text.
+const usage = await sql`
+  SELECT COALESCE(SUM(tokens_used), 0)::bigint AS used
+  FROM weekly_usage WHERE user_id = ${1}
+`;
+console.log(`✅ 5. SELECT weekly_usage WHERE user_id = integer (handleGetUsage) : ${usage[0].used} tokens`);
+
+// 6. getPersistedTier : lecture users par id::text (users.id est integer)
+const tier = await sql`SELECT id::text AS id, tier FROM users WHERE id::text = ${"1"}::text LIMIT 1`;
+console.log(`✅ 6. getPersistedTier (users.id integer, lookup texte) : ${tier.length} ligne(s)`);
 
 await sql.end();
 console.log("\n✅ Toutes les requêtes critiques passent.");

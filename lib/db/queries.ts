@@ -166,20 +166,30 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     END IF;
   END $$;`);
 
-  // weekly_usage.user_id : dérivé en integer alors que recordTokenUsage écrit
-  // du texte (identifiant mAI). La clé étrangère vers users(id) (integer,
-  // table plateforme partagée) doit être retirée : un userId texte ne peut
-  // plus y référencer. La PK (user_id, week_start) est reconstruite par
-  // l'ALTER TYPE — les lignes existantes sont converties, pas perdues.
-  await run(
-    client`ALTER TABLE "weekly_usage" DROP CONSTRAINT IF EXISTS "weekly_usage_user_id_fkey"`
-  );
+  // weekly_usage : table PLATEFORME partagée avec le backend mAI déployé
+  // (handleGetUsage passe un user_id integer). Son contrat est integer + FK
+  // vers users(id) — on ne la convertit PAS : si un drift inverse a été
+  // appliqué (text), on le restaure ici. Les lignes dont user_id n'est pas
+  // numérique (normalement aucune : la colonne était integer à l'origine)
+  // sont mises de côté dans weekly_usage_drift_backup plutôt que perdues.
   await run(client`DO $$ BEGIN
     IF EXISTS (
       SELECT 1 FROM information_schema.columns
-      WHERE table_name = 'weekly_usage' AND column_name = 'user_id' AND data_type = 'integer'
+      WHERE table_name = 'weekly_usage' AND column_name = 'user_id' AND data_type = 'text'
     ) THEN
-      ALTER TABLE "weekly_usage" ALTER COLUMN "user_id" TYPE text USING "user_id"::text;
+      CREATE TABLE IF NOT EXISTS weekly_usage_drift_backup AS
+        SELECT * FROM weekly_usage WHERE user_id !~ '^[0-9]+$';
+      DELETE FROM weekly_usage WHERE user_id !~ '^[0-9]+$';
+      ALTER TABLE "weekly_usage" ALTER COLUMN "user_id" TYPE integer USING "user_id"::integer;
+    END IF;
+  END $$;`);
+  await run(client`DO $$ BEGIN
+    IF NOT EXISTS (
+      SELECT 1 FROM pg_constraint
+      WHERE conrelid = 'weekly_usage'::regclass AND conname = 'weekly_usage_user_id_fkey'
+    ) THEN
+      ALTER TABLE "weekly_usage" ADD CONSTRAINT "weekly_usage_user_id_fkey"
+        FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE NOT VALID;
     END IF;
   END $$;`);
 
@@ -2914,13 +2924,20 @@ export async function recordTokenUsage({
       return;
     }
 
-    // 1. Mise à jour ou insertion dans weekly_usage
-    await _rawClient`
-      INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-      VALUES (${targetUserId}::text, ${weekStartStr}::date, ${actualTotal})
-      ON CONFLICT (user_id, week_start)
-      DO UPDATE SET tokens_used = weekly_usage.tokens_used + ${actualTotal}
-    `;
+    // weekly_usage.user_id est un INTEGER (table plateforme partagée avec le
+    // backend mAI : handleGetUsage passe un integer). On n'y débite que les
+    // identifiants numériques (users.id) ; les autres formats (uuid, emails)
+    // ne sont pas comptabilisés ici — le quota hebdomadaire reste cohérent.
+    const numericUserId = String(targetUserId).match(/^\d+$/)?.[0];
+    if (numericUserId) {
+      // 1. Mise à jour ou insertion dans weekly_usage
+      await _rawClient`
+        INSERT INTO weekly_usage (user_id, week_start, tokens_used)
+        VALUES (${Number(numericUserId)}, ${weekStartStr}::date, ${actualTotal})
+        ON CONFLICT (user_id, week_start)
+        DO UPDATE SET tokens_used = weekly_usage.tokens_used + ${actualTotal}
+      `;
+    }
 
     // 2. Enregistrement dans mprojects_api_logs
     try {
