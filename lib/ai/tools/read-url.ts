@@ -1,6 +1,6 @@
 import { tool } from "ai";
 import { z } from "zod";
-import { isPrivateOrBlockedHost } from "@/lib/web/ssrf";
+import { safeFetchText } from "@/lib/web/safe-fetch";
 
 function cleanHtmlToText(html: string): string {
   // Supprimer les balises script, style, noscript, svg, iframe
@@ -71,54 +71,30 @@ export const readUrl = tool({
       return { error: "URL manquante ou vide." };
     }
 
-    let parsedUrl: URL;
     try {
-      parsedUrl = new URL(
-        rawUrl.startsWith("http") ? rawUrl : `https://${rawUrl}`
-      );
-    } catch {
-      return { error: `URL invalide : "${rawUrl}".` };
-    }
-
-    // Protection anti-SSRF
-    if (!["http:", "https:"].includes(parsedUrl.protocol)) {
-      return {
-        error: "Protocole non autorisé. Seuls HTTP et HTTPS sont acceptés.",
-      };
-    }
-
-    if (isPrivateOrBlockedHost(parsedUrl.hostname)) {
-      return {
-        error:
-          "Accès refusé pour des raisons de sécurité (adresse IP privée, locale ou métadonnées internes).",
-      };
-    }
-
-    try {
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 12_000);
-
-      const response = await fetch(parsedUrl.toString(), {
+      // Client HTTP durci : résolution DNS vérifiée puis épinglée (rebinding),
+      // redirections revalidées une par une, corps lu en flux avec plafond —
+      // l'ancien `await response.text()` allouait la réponse entière.
+      const fetched = await safeFetchText(rawUrl, {
         headers: {
           Accept:
             "text/html,application/xhtml+xml,application/xml;q=0.9,text/plain;q=0.8,*/*;q=0.7",
           "User-Agent":
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 mAI-Bot/1.0",
         },
-        signal: controller.signal,
+        maxBytes: 500_000,
+        timeoutMs: 12_000,
       });
 
-      clearTimeout(timeout);
-
-      if (!response.ok) {
+      if (!fetched.ok) {
         return {
-          error: `Impossible de charger la page (HTTP ${response.status} : ${response.statusText}).`,
-          url: parsedUrl.toString(),
+          error: `Impossible de charger la page (${fetched.error}).`,
+          url: rawUrl,
         };
       }
-
-      const contentType = response.headers.get("content-type") || "";
-      const rawText = await response.text();
+      const parsedUrl = new URL(fetched.finalUrl);
+      const contentType = fetched.contentType || "";
+      const rawText = fetched.text;
 
       const maxChars = Math.min(
         Math.max(input.maxLength ?? 15_000, 1000),

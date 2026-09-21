@@ -160,10 +160,16 @@ export async function POST(request: Request) {
       ? requested.id
       : pickDefaultAgentModel(models, settings.defaultModel, tier);
 
+    // TOUTES les vérifications portent sur le modèle RÉELLEMENT résolu. Avant,
+    // `capabilitiesOverride` recevait les capacités du modèle DEMANDÉ : quand un
+    // repli était choisi (modèle sans outils), le garde jugeait l'accès avec les
+    // capacités d'un autre modèle et pouvait refuser un modèle légitime
+    // (model_access_denied) ou valider un modèle hors forfait.
+    const resolvedEntry = getModelEntry(resolvedModel, models);
     const modelAccess = checkAgentModelAccess({
-      capabilitiesOverride: requested.capabilities,
+      capabilitiesOverride: resolvedEntry.capabilities,
       flags,
-      modelId: resolvedModel,
+      modelId: resolvedEntry.id,
       tier,
     });
     if (modelAccess.error) {
@@ -501,6 +507,9 @@ export async function POST(request: Request) {
       // Reprise : les étapes continuent là où le run s'était arrêté au lieu de
       // repartir de l'indice 0 dans la timeline.
       startStepIndex: activeRun?.stepCount ?? 0,
+      // Budget d'outils CUMULÉ : la reprise repart du compteur persisté, pas de
+      // zéro (sinon une tâche relancée indéfiniment n'atteint jamais sa limite).
+      startToolCallCount: activeRun?.toolCallCount ?? 0,
       task,
       tools: enabledTools,
       userEmail: ctx.userEmail,

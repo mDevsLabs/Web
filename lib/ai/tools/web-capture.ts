@@ -1,6 +1,7 @@
 import { tool } from "ai";
 import { z } from "zod";
-import { safeExternalUrl } from "@/lib/web/ssrf";
+import { redactUrlForThirdParty, safeExternalUrl } from "@/lib/web/ssrf";
+import { safeFetchBuffer, safeFetchText } from "@/lib/web/safe-fetch";
 
 function extractMetaContent(
   html: string,
@@ -65,26 +66,28 @@ export const webCapture = tool({
     const finalUrl = target.url.toString();
 
     try {
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 15_000);
-      const response = await fetch(finalUrl, {
+      // Client unique : redirections revalidées (une page publique peut
+      // rediriger vers 169.254.169.254) et corps plafonné pendant la lecture —
+      // `(await response.text()).slice(...)` allouait tout avant troncature.
+      const fetched = await safeFetchText(finalUrl, {
+        allowedContentTypes: ["html", "xml", "text/", "json"],
         headers: {
           Accept: "text/html,application/xhtml+xml",
           "User-Agent":
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 mAI-Bot/1.0",
         },
-        signal: controller.signal,
+        maxBytes: 500_000,
+        timeoutMs: 15_000,
       });
-      clearTimeout(timeout);
 
-      if (!response.ok) {
+      if (!fetched.ok) {
         return {
-          error: `Impossible de charger la page (HTTP ${response.status}).`,
+          error: `Impossible de charger la page (${fetched.error}).`,
           url: finalUrl,
         };
       }
 
-      const html = (await response.text()).slice(0, 500_000);
+      const html = fetched.text;
 
       const meta = (name: string) =>
         extractMetaContent(html, [
@@ -123,7 +126,11 @@ export const webCapture = tool({
         .filter(Boolean)
         .slice(0, 5);
       const technologies = detectTechnologies(html);
-      const screenshotUrls = buildScreenshotUrls(finalUrl);
+      // Le service de capture est un tiers : il reçoit une URL débarrassée de
+      // ses paramètres sensibles (jeton de session, clé, lien signé).
+      const screenshotUrls = buildScreenshotUrls(
+        redactUrlForThirdParty(finalUrl)
+      );
 
       // Vérifie rapidement que le service de capture répond (fallback sinon)
       let screenshotUrl = screenshotUrls[0];
@@ -152,16 +159,17 @@ export const webCapture = tool({
         url: finalUrl,
       };
 
-      // Modèles vision : l'image de capture est transmise au modèle
+      // Modèles vision : l'image de capture est transmise au modèle.
+      // Plafonnée (2 Mo) : une capture de 4 K en base64 représente plusieurs
+      // mégaoctets qui seraient sinon ajoutés au contexte du modèle.
       try {
-        const imageRes = await fetch(screenshotUrl, {
-          signal: AbortSignal.timeout(12_000),
+        const image = await safeFetchBuffer(screenshotUrl, {
+          allowedContentTypes: ["image/"],
+          maxBytes: 2_000_000,
+          timeoutMs: 12_000,
         });
-        if (imageRes.ok) {
-          const arrayBuffer = await imageRes.arrayBuffer();
-          const base64 = Buffer.from(arrayBuffer).toString("base64");
-          (result as any).__screenshotBase64 =
-            `data:image/png;base64,${base64}`;
+        if (image.ok) {
+          (result as any).__screenshotBase64 = `data:image/png;base64,${image.buffer.toString("base64")}`;
         }
       } catch {}
 

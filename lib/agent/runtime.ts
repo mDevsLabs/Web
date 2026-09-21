@@ -103,12 +103,30 @@ export type AgentStreamParams = {
   // Indice de départ des étapes : sur une reprise (réponse, approbation), les
   // nouvelles étapes s'ajoutent à la suite au lieu de repartir de 0.
   startStepIndex?: number;
+  // Nombre d'appels d'outils déjà consommés par les invocations précédentes du
+  // même run : sans cette baseline, le budget d'outils repartait de zéro à
+  // chaque reprise (approbation, réponse utilisateur, continuation).
+  startToolCallCount?: number;
   startedAt: number;
   task: string;
   tools: RegisteredAgentTool[];
   userEmail: string;
   userId: string;
 };
+
+/**
+ * Compose les instructions système en y ajoutant les réorientations demandées
+ * par l'utilisateur pendant le run. Exporté pour être testé directement.
+ */
+export function composeAgentInstructions(
+  base: string,
+  reorientations: readonly string[]
+): string {
+  if (reorientations.length === 0) {
+    return base;
+  }
+  return `${base}\n\nCONSIGNES DE RÉORIENTATION DE L'UTILISATEUR (à prendre en compte maintenant, par ordre d'arrivée) :\n${reorientations.map((text) => `- ${text}`).join("\n")}`;
+}
 
 export function createAgentStream(params: AgentStreamParams) {
   return createUIMessageStream({
@@ -119,7 +137,7 @@ export function createAgentStream(params: AgentStreamParams) {
         producedArtifact: false,
         sources: [],
         stepIndex: params.startStepIndex ?? 0,
-        toolCallCount: 0,
+        toolCallCount: params.startToolCallCount ?? 0,
         waitingForApproval: false,
         waitingForUser: false,
       };
@@ -144,6 +162,10 @@ export function createAgentStream(params: AgentStreamParams) {
       // Réorientations appliquées aux points sûrs : réinjectées au modèle via
       // le contexte du prochain appel (message système de fin).
       const pendingReorientations: string[] = [];
+      // Nombre de réorientations déjà transmises au modèle : évite de les
+      // réinjecter à chaque étape tout en garantissant qu'elles le sont AVANT
+      // l'appel suivant.
+      let injectedReorientations = 0;
 
       // Persistance du checkpoint (révision optimiste). Un échec n'interrompt
       // jamais le run : au pire, la limite est réévaluée depuis le dernier
@@ -257,13 +279,32 @@ export function createAgentStream(params: AgentStreamParams) {
         params.reasoningLevel
       );
 
+      // Interruption réelle : une réorientation « arrête-toi » doit couper la
+      // génération en cours, pas seulement changer un état local. Le
+      // contrôleur interne est chaîné au signal de la requête HTTP.
+      const internalController = new AbortController();
+      if (params.abortSignal) {
+        if (params.abortSignal.aborted) {
+          internalController.abort();
+        } else {
+          params.abortSignal.addEventListener(
+            "abort",
+            () => internalController.abort(),
+            { once: true }
+          );
+        }
+      }
+      // Baselines CUMULÉES : valeur persistée à l'entrée de cette invocation.
+      const stepBaseline = state.stepIndex;
+      const toolCallBaseline = state.toolCallCount;
+
       const result = streamText({
-        abortSignal: params.abortSignal,
+        abortSignal: internalController.signal,
         activeTools: params.tools.map((tool) => tool.id),
-        instructions:
-          pendingReorientations.length > 0
-            ? `${params.context.instructions}\n\nCONSIGNES DE RÉORIENTATION DE L'UTILISATEUR (à prendre en compte maintenant, par ordre d'arrivée) :\n${pendingReorientations.map((t) => `- ${t}`).join("\n")}`
-            : params.context.instructions,
+        instructions: composeAgentInstructions(
+          params.context.instructions,
+          pendingReorientations
+        ),
         maxRetries: params.budget.maxRetries,
         messages: params.context.messages,
         model: params.model,
@@ -326,11 +367,17 @@ export function createAgentStream(params: AgentStreamParams) {
           }).catch(() => {});
         },
         onStepEnd: async (step) => {
+          const stepToolCalls = step.toolCalls?.length ?? 0;
+          // Télémétrie ET budget : le nombre RÉEL d'appels d'outils est
+          // persisté à chaque étape (l'ancien `toolCallDelta: 0` sous-comptait
+          // systématiquement) ; la valeur relue au prochain démarrage sert de
+          // baseline cumulée.
           await bumpAgentRunCounters({
             id: params.runId,
             stepDelta: 1,
-            toolCallDelta: 0,
+            toolCallDelta: stepToolCalls,
           }).catch(() => {});
+          state.toolCallCount += stepToolCalls;
           // Fin d'étape = point sûr : la tranche d'activité est refermée puis
           // persistée (un crash ne perd donc pas le temps déjà consommé), et
           // une nouvelle tranche est ouverte pour la suite.
@@ -350,7 +397,10 @@ export function createAgentStream(params: AgentStreamParams) {
             if (reorientation) {
               pendingReorientations.push(reorientation.text);
               if (reorientation.stopRequested) {
+                // Interruption effective : le flux en cours est coupé, les
+                // étapes suivantes ne partent pas.
                 aborted = true;
+                internalController.abort();
               }
             }
           } catch {
@@ -364,10 +414,16 @@ export function createAgentStream(params: AgentStreamParams) {
         },
         prepareStep: ({ steps }) => {
           const elapsed = clock.now() - params.startedAt;
-          const toolCalls = steps.reduce(
-            (total, step) => total + (step.toolCalls?.length ?? 0),
-            0
-          );
+          // Comptage CUMULÉ à travers les reprises : baseline persistée + 
+          // étapes de l'invocation en cours. L'ancien calcul ne comptait que
+          // `steps` (par invocation), si bien qu'une longue tâche reprise
+          // plusieurs fois n'atteignait jamais son plafond.
+          const toolCalls =
+            toolCallBaseline +
+            steps.reduce(
+              (total, step) => total + (step.toolCalls?.length ?? 0),
+              0
+            );
           const stop = shouldStopAtSafePoint({
             checkpoint: duration,
             clock,
@@ -376,6 +432,20 @@ export function createAgentStream(params: AgentStreamParams) {
           if (stop.stop) {
             productLimitReached = true;
           }
+
+          const patch: { instructions?: string; toolChoice?: "none" } = {};
+          // Les réorientations lues au dernier point sûr sont injectées ICI,
+          // avant la construction de l'étape suivante. Les lire seulement en
+          // fin d'étape (onStepEnd) les rendait inopérantes : les instructions
+          // de l'appel suivant étaient déjà figées.
+          if (pendingReorientations.length > injectedReorientations) {
+            patch.instructions = composeAgentInstructions(
+              params.context.instructions,
+              [...pendingReorientations]
+            );
+            injectedReorientations = pendingReorientations.length;
+          }
+
           // Budget d'invocation ou limite produit atteinte : on interdit les
           // outils restants pour forcer une réponse finale au lieu d'une
           // coupure brutale, sans perdre les résultats déjà produits.
@@ -384,12 +454,14 @@ export function createAgentStream(params: AgentStreamParams) {
             elapsed >= params.budget.maxDurationMs ||
             toolCalls >= params.budget.maxToolCalls
           ) {
-            return { toolChoice: "none" as const };
+            patch.toolChoice = "none";
           }
+
+          return Object.keys(patch).length > 0 ? patch : undefined;
         },
         ...(providerOptions ? { providerOptions } : {}),
         stopWhen: ({ steps }) =>
-          steps.length >= params.budget.maxSteps ||
+          stepBaseline + steps.length >= params.budget.maxSteps ||
           clock.now() - params.startedAt >= params.budget.maxDurationMs ||
           shouldStopAtSafePoint({
             checkpoint: duration,

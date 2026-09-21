@@ -17,3 +17,17 @@ maiModels.ts
 docs/AI_AGENTS_API.md
 docs/llms-api.md
 *.agent-doc.md
+
+# Artefacts générés et journaux de débogage : jamais versionnés.
+# (Ils étaient suivis et polluaient chaque revue : journaux d'exécution,
+# rapports Playwright, cache d'incrémental TypeScript, identifiant local.)
+.freebuff/project-id
+.freebuff/*.log
+dev-server.log
+build.log
+tsconfig.tsbuildinfo
+*.tsbuildinfo
+playwright-report/
+test-results/
+.sbom/
+sbom.json

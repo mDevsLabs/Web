@@ -227,11 +227,11 @@ export function registerAuthRoutes(app: Hono) {
 
         const sql = getDb();
         const users = await sql`
-          SELECT id, email, username, password_hash, tier, is_blocked 
-          FROM users 
-          WHERE LOWER(email) = ${cleanId} 
-             OR LOWER(username) = ${cleanUser} 
-             OR phone = ${loginId} 
+          SELECT id, email, username, password_hash, tier, is_blocked
+          FROM users
+          WHERE LOWER(email) = ${cleanId}
+             OR LOWER(username) = ${cleanUser}
+             OR phone = ${loginId}
           LIMIT 1
         `;
         if (users.length === 0) {
@@ -342,10 +342,10 @@ export function registerAuthRoutes(app: Hono) {
 
         const sql = getDb();
         const users = await sql`
-          SELECT id, tier, is_blocked, email, username 
-          FROM users 
-          WHERE LOWER(email) = ${cleanId} 
-             OR LOWER(username) = ${cleanUser} 
+          SELECT id, tier, is_blocked, email, username
+          FROM users
+          WHERE LOWER(email) = ${cleanId}
+             OR LOWER(username) = ${cleanUser}
           LIMIT 1
         `;
         if (users.length === 0) {
@@ -414,7 +414,7 @@ export function registerAuthRoutes(app: Hono) {
         let isNewDeviceOrLocation = true;
         try {
           const pastDevices = await sql`
-          SELECT device_name, location FROM connected_devices 
+          SELECT device_name, location FROM connected_devices
           WHERE user_id = ${user.id}::text
         `;
           if (pastDevices.length > 0) {
@@ -535,9 +535,9 @@ export function registerAuthRoutes(app: Hono) {
       // 1. Recherche dans la table subscription_codes de la base de données
       try {
         const codeRows = await sql`
-          SELECT id, code, tier, max_uses, uses_count, is_active, expires_at 
-          FROM subscription_codes 
-          WHERE UPPER(code) = UPPER(${inputCode}) 
+          SELECT id, code, tier, max_uses, uses_count, is_active, expires_at
+          FROM subscription_codes
+          WHERE UPPER(code) = UPPER(${inputCode})
           LIMIT 1
         `;
 
@@ -568,8 +568,8 @@ export function registerAuthRoutes(app: Hono) {
           // Vérifier si l'utilisateur a déjà activé ce code spécifique
           try {
             const redemptions = await sql`
-              SELECT id FROM subscription_code_redemptions 
-              WHERE code_id = ${row.id} AND user_id = ${userId}::text 
+              SELECT id FROM subscription_code_redemptions
+              WHERE code_id = ${row.id} AND user_id = ${userId}::text
               LIMIT 1
             `;
             if (redemptions.length > 0) {
@@ -632,7 +632,7 @@ export function registerAuthRoutes(app: Hono) {
       if (dbCodeId) {
         try {
           await sql`
-            UPDATE subscription_codes 
+            UPDATE subscription_codes
             SET uses_count = uses_count + 1,
                 is_active = CASE WHEN max_uses > 0 AND (uses_count + 1) >= max_uses THEN FALSE ELSE is_active END
             WHERE id = ${dbCodeId}
@@ -1006,7 +1006,7 @@ export function registerAuthRoutes(app: Hono) {
           FROM mprojects_api_keys k
           LEFT JOIN users u ON k.user_id = u.id::text OR k.user_id = u.username OR k.user_id = u.email
           WHERE (
-            k.user_id = ${userId}::text 
+            k.user_id = ${userId}::text
             OR k.user_id IN (SELECT id::text FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text)
             OR k.user_id IN (SELECT email FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text)
             OR k.user_id IN (SELECT username FROM users WHERE id::text = ${userId}::text OR email = ${userId}::text OR username = ${userId}::text)

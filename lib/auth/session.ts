@@ -39,8 +39,36 @@ export async function setMaiSessionToken(token: string) {
   });
 }
 
+// Cache de sessions indexé par JETON. Deux garanties :
+//  • taille BORNÉE (LRU) : un cache non borné indexé par jeton est un vecteur
+//    d'épuisement mémoire — il suffisait d'accumuler des jetons distincts ;
+//  • purge des entrées expirées : elles ne restent jamais indéfiniment.
+// Le jeton complet n'est jamais journalisé (aucun log ne le contient).
 const userCache = new Map<string, { user: MaiUser; expiresAt: number }>();
 const CACHE_TTL_MS = 120_000; // 2 minutes de cache en mémoire
+const CACHE_MAX_ENTRIES = 500;
+
+function readCachedUser(token: string) {
+  const cached = userCache.get(token);
+  if (!cached) {
+    return null;
+  }
+  if (Date.now() >= cached.expiresAt) {
+    userCache.delete(token);
+    return null;
+  }
+  // Réinsertion : l'ordre d'itération d'un Map sert d'ordre LRU.
+  userCache.delete(token);
+  userCache.set(token, cached);
+  return cached;
+}
+
+function cacheUser(token: string, user: MaiUser, expiresAt: number) {
+  if (userCache.size >= CACHE_MAX_ENTRIES) {
+    userCache.delete(userCache.keys().next().value as string);
+  }
+  userCache.set(token, { expiresAt, user });
+}
 
 let _jwtSecret: Uint8Array | null | undefined;
 
@@ -48,6 +76,13 @@ function getJwtSecret(): Uint8Array | null {
   if (_jwtSecret === undefined) {
     const secret = process.env.MAI_JWT_SECRET || process.env.JWT_SECRET || "";
     _jwtSecret = secret ? new TextEncoder().encode(secret) : null;
+    if (!_jwtSecret && process.env.NODE_ENV === "production") {
+      // Signal fort : sans clé locale, la vérification est déléguée à l'API
+      // distante (ligne suivante du flux d'authentification).
+      console.warn(
+        "[auth] MAI_JWT_SECRET absent : vérification des sessions déléguée à l'API distante."
+      );
+    }
   }
   return _jwtSecret;
 }
@@ -62,6 +97,17 @@ async function verifyJwtPayload(token: string): Promise<any | null> {
   try {
     const { payload } = await jwtVerify(token, secret, {
       algorithms: ["HS256"],
+      // Contrôles appliqués dès qu'ils sont configurés (aucun défaut imposé
+      // pour ne pas casser des jetons émis par un autre service) :
+      ...(process.env.MAI_JWT_ISSUER
+        ? { issuer: process.env.MAI_JWT_ISSUER }
+        : {}),
+      ...(process.env.MAI_JWT_AUDIENCE
+        ? { audience: process.env.MAI_JWT_AUDIENCE }
+        : {}),
+      // L'expiration est obligatoire : un jeton sans `exp` serait valable à
+      // vie, ce qui rend toute révocation impossible.
+      requiredClaims: ["exp"],
     });
     return payload;
   } catch {
@@ -121,8 +167,8 @@ export async function getMaiUser(
   }
 
   // 1. Cache mémoire valide
-  const cached = userCache.get(token);
-  if (cached && Date.now() < cached.expiresAt) {
+  const cached = readCachedUser(token);
+  if (cached) {
     return cached.user;
   }
 
@@ -154,7 +200,7 @@ export async function getMaiUser(
         weekStart: payload.weekStart,
       };
 
-      userCache.set(token, { expiresAt: Date.now() + CACHE_TTL_MS, user });
+      cacheUser(token, user, Date.now() + CACHE_TTL_MS);
       // Lancer le rafraîchissement d'usage en arrière-plan sans bloquer la requête
       triggerBackgroundUsageRefresh(token);
       return user;
@@ -192,7 +238,7 @@ export async function getMaiUser(
           weekStart: data.weekStart,
         };
 
-        userCache.set(token, { expiresAt: Date.now() + CACHE_TTL_MS, user });
+        cacheUser(token, user, Date.now() + CACHE_TTL_MS);
         return user;
       }
     }

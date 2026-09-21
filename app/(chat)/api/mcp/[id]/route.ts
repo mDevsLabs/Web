@@ -10,6 +10,13 @@ import {
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import { fetchMcpTools } from "@/lib/mcp/client";
+import { toMcpServerDto } from "@/lib/mcp/dto";
+import { isEncryptionConfigured } from "@/lib/mcp/encryption";
+import {
+  countInlineSecrets,
+  persistInlineMcpSecrets,
+  splitInlineSecrets,
+} from "@/lib/mcp/secrets-write";
 
 const toolOverrideSchema = z.object({
   enabled: z.boolean(),
@@ -70,7 +77,9 @@ export async function GET(
     });
   }
 
-  return Response.json(found);
+  // DTO redacté : jamais de valeur secrète dans la réponse, quel que soit
+  // l'historique de la ligne en base.
+  return Response.json(toMcpServerDto(found));
 }
 
 export async function PATCH(
@@ -91,7 +100,7 @@ export async function PATCH(
     // 1. Bascule d'activation rapide
     if (json.toggleEnabled) {
       const updated = await toggleMcpServer({ id, userId });
-      return Response.json(updated);
+      return Response.json(toMcpServerDto(updated));
     }
 
     // 1b. Toggle per-tool
@@ -141,7 +150,7 @@ export async function PATCH(
         id,
         userId,
       });
-      return Response.json(updated);
+      return Response.json(toMcpServerDto(updated));
     }
 
     // 2. Rafraîchissement des outils en cache
@@ -170,20 +179,35 @@ export async function PATCH(
         logError("Erreur vérification préférences MCP", prefsErr);
       }
       const timeoutMs = (server as any).timeoutMs ?? 15_000;
+      // Les valeurs réelles viennent du stockage chiffré : la ligne McpServer ne
+      // porte plus de secret en clair (colonnes vidées à l'écriture).
+      const { loadMcpSecretDescriptors, mergeMcpSecrets } = await import(
+        "@/lib/mcp/secrets-config"
+      );
+      const descriptors = await loadMcpSecretDescriptors({
+        serverId: id,
+        userId,
+      });
+      const effective = mergeMcpSecrets({
+        authConfig: server.authConfig,
+        authType: server.authType,
+        env: server.env,
+        headers: server.headers,
+        secrets: descriptors,
+      });
       const tools = await fetchMcpTools({
         args: server.args as string[],
-        authConfig: server.authConfig as any,
+        authConfig: effective.authConfig as any,
         authType: server.authType as any,
         command: server.command,
-        env: server.env as Record<string, string>,
-        headers: server.headers as Record<string, string>,
+        env: effective.env,
+        headers: effective.headers,
         name: server.name,
         timeoutMs,
         transport: server.transport as any,
         url: server.url,
       });
 
-      // decrypt env/auth if needed via secrets table
       const updated = await updateMcpServer({
         data: {
           lastSyncAt: new Date(),
@@ -196,7 +220,7 @@ export async function PATCH(
 
       return Response.json({
         message: `${tools.length} outil(s) synchronisé(s)`,
-        server: updated,
+        server: toMcpServerDto(updated),
         tools,
       });
     }
@@ -253,8 +277,20 @@ export async function PATCH(
     }
 
     const parsed = updateMcpSchema.parse(json);
+    const inlineSecretCount = countInlineSecrets(parsed);
+    if (inlineSecretCount > 0 && !isEncryptionConfigured()) {
+      return errorResponse("service_unavailable", {
+        message:
+          "Chiffrement des secrets MCP non configuré sur ce serveur (MCP_ENCRYPTION_KEY absente) : aucune valeur secrète n'a été enregistrée.",
+      });
+    }
+    // Les colonnes JSON sensibles sont vidées dans la ligne : les valeurs
+    // partent exclusivement dans `mcp_server_secret` (chiffrées).
+    const { row: serverRow } = splitInlineSecrets(
+      parsed as Record<string, unknown>
+    );
     const updated = await updateMcpServer({
-      data: parsed as any,
+      data: serverRow as any,
       id,
       userId,
     });
@@ -265,7 +301,25 @@ export async function PATCH(
       });
     }
 
-    return Response.json(updated);
+    if (inlineSecretCount > 0) {
+      try {
+        await persistInlineMcpSecrets({
+          authConfig: parsed.authConfig,
+          env: parsed.env,
+          headers: parsed.headers,
+          serverId: id,
+          userId,
+        });
+      } catch (secretsErr) {
+        logError("Échec persistance secrets MCP", secretsErr);
+        return errorResponse("service_unavailable", {
+          message:
+            "Les réglages ont été enregistrés mais les secrets n'ont pas pu être chiffrés : aucune valeur secrète n'a été conservée en clair.",
+        });
+      }
+    }
+
+    return Response.json(toMcpServerDto(updated));
   } catch (err: unknown) {
     if (err instanceof z.ZodError) {
       const issues = err.issues

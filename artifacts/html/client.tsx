@@ -150,13 +150,26 @@ export const htmlArtifact = new Artifact<"html">({
   },
   toolbar: [
     {
-      description: "Preview in new tab",
+      description: "Télécharger la page HTML (aperçu sûr, hors origine applicative)",
       icon: <PlayIcon size={18} />,
       onClick: async (props: any) => {
         const c = props.content ?? "";
-        const blob = new Blob([c], { type: "text/html" });
+        // `window.open(URL.createObjectURL(blob))` faisait hériter au document
+        // ouvert l'origine de l'application : le HTML (produit par le modèle ou
+        // fourni par l'utilisateur) s'exécutait alors same-origin, avec accès à
+        // window.opener, aux cookies et au stockage. Un téléchargement de
+        // fichier conserve l'aperçu sans jamais donner cette origine.
+        const blob = new Blob([c], { type: "text/html;charset=utf-8" });
         const url = URL.createObjectURL(blob);
-        window.open(url, "_blank");
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "mai-sandbox.html";
+        a.rel = "noopener noreferrer";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+        toast.success("Page HTML téléchargée");
       },
     },
   ],

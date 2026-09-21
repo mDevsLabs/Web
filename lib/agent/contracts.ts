@@ -64,7 +64,20 @@ const recurringBase = z.object({
 // weekly, dayOfMonth que pour monthly — une règle ambiguë est rejetée plutôt
 // qu'interprétée.
 export const scheduleRuleSchema = z.discriminatedUnion("kind", [
-  z.object({ kind: z.literal("once") }),
+  z.object({
+    kind: z.literal("once"),
+    // Date d'exécution LOCALE « YYYY-MM-DDTHH:mm », interprétée dans le fuseau
+    // IANA de la planification. Sans ce champ, une tâche « once » n'avait
+    // aucune échéance exploitable : la route refusait la création et la
+    // fonctionnalité était inutilisable.
+    runAt: z
+      .string()
+      .regex(
+        /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/,
+        "Date d'exécution attendue au format AAAA-MM-JJTHH:mm"
+      )
+      .optional(),
+  }),
   recurringBase
     .refine(
       (rule) => rule.frequency !== "daily" || rule.weekday === undefined,

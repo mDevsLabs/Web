@@ -9,6 +9,7 @@ import {
 } from "@/lib/agent/tools/internal/extract";
 import { type AgentSource, toolFailure, toolSuccess } from "@/lib/agent/types";
 import { MAI_API_URL } from "@/lib/constants";
+import { isTokenOriginAllowed, tokenOriginAllowlist } from "@/lib/web/safe-fetch";
 
 const readFileInputSchema = z
   .object({
@@ -115,7 +116,14 @@ export const readFileTool = defineTool({
       }
       source.url = resolved.url;
       source.name = resolved.name;
-      source.authHeader = `Bearer ${context.sessionToken}`;
+      // Le jeton de session mAI ne doit jamais partir vers l'URL qu'un tiers a
+      // pu placer dans la bibliothèque : il n'est joint que si l'origine cible
+      // fait partie de la liste blanche explicite (et il est de nouveau
+      // retiré à chaque redirection par le client HTTP).
+      const allowlist = tokenOriginAllowlist();
+      if (isTokenOriginAllowed(resolved.url, allowlist)) {
+        source.authHeader = `Bearer ${context.sessionToken}`;
+      }
     } else if (input.url) {
       source.url = input.url;
     }

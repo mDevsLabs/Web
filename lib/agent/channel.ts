@@ -33,10 +33,23 @@ export const AGENT_UPGRADE_CTA = "Améliorer mon forfait";
 export const AGENT_MODES = ["chat", "agent"] as const;
 export type AgentMode = (typeof AGENT_MODES)[number];
 
-// Garde partagée « identité propriétaire de la conversation » : chat.userId a
-// été enregistré selon des variantes historiques (id, email, username). Une
-// seule définition pour le contrôle d'envoi (lib/chat/context.ts) et le
-// contrôle de lecture (/api/messages), sinon les deux chemins divergent.
+// Garde partagée « identité propriétaire de la conversation ».
+//
+// L'ancienne comparaison acceptait aussi bien l'identifiant que l'EMAIL ou le
+// NOM D'UTILISATEUR. Ces deux derniers sont modifiables par l'utilisateur (et
+// peuvent être proches d'une valeur légitime) : en changer suffisait donc à
+// faire coïncider son identité avec celle d'un autre compte ayant conservé
+// l'ancienne valeur, c'est-à-dire à lire — ou écrire — dans ses conversations.
+// Seul l'identifiant canonique, immuable et unique est accepté.
+//
+// MIGRATION : les conversations historiques dont `userId` contient un email ou
+// un pseudonyme doivent être converties AVANT ce durcissement
+// (scripts/migrate-chat-owner-canonical.ts). L'option
+// `CHAT_OWNER_LEGACY_MATCH=true` rétablit temporairement l'ancienne tolérance
+// pour les environnements dont la migration n'est pas terminée.
+export const CHAT_OWNER_LEGACY_MATCH_ENABLED =
+  process.env.CHAT_OWNER_LEGACY_MATCH === "true";
+
 export function chatOwnerMatches(params: {
   chatUserId: string;
   email?: string | null;
@@ -44,9 +57,18 @@ export function chatOwnerMatches(params: {
   username?: string | null;
 }): boolean {
   const { chatUserId, email, userId, username } = params;
+  if (!chatUserId) {
+    return false;
+  }
+  if (userId && chatUserId === userId) {
+    return true;
+  }
+  if (!CHAT_OWNER_LEGACY_MATCH_ENABLED) {
+    return false;
+  }
+  // Compatibilité temporaire, explicitement activée par l'exploitant.
   return Boolean(
-    chatUserId &&
-      (chatUserId === userId || chatUserId === email || chatUserId === username)
+    (email && chatUserId === email) || (username && chatUserId === username)
   );
 }
 

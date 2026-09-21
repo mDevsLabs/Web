@@ -5,6 +5,7 @@ import {
 } from "@/lib/agent/contracts";
 import { checkAgentAccess } from "@/lib/agent/gate";
 import { nextOccurrenceFromRule } from "@/lib/agent/scheduler/occurrence";
+import { resolveOnceDueAt } from "@/lib/agent/scheduler/once";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { authenticateChatRequest } from "@/lib/chat/auth";
@@ -79,14 +80,24 @@ export async function POST(request: Request) {
 
   // Première échéance : calculée depuis la règle et le fuseau, jamais depuis
   // une conversion naïve UTC.
-  const firstDue =
-    intent.rule.kind === "once"
-      ? null
-      : nextOccurrenceFromRule(intent.rule, intent.timezone, new Date());
+  // « once » : la date locale fournie est résolue dans le fuseau IANA de la
+  // planification puis comparée à l'instant présent (date passée refusée).
+  let firstDue: Date | null;
+  if (intent.rule.kind === "once") {
+    const once = resolveOnceDueAt({
+      rule: intent.rule,
+      timezone: intent.timezone,
+    });
+    if (!once.ok) {
+      return errorResponse("invalid_request", { message: once.error });
+    }
+    firstDue = once.dueAt;
+  } else {
+    firstDue = nextOccurrenceFromRule(intent.rule, intent.timezone, new Date());
+  }
   if (!firstDue) {
     return errorResponse("invalid_request", {
-      message:
-        "Une tâche planifiée unique exige une date d'exécution explicite.",
+      message: "Impossible de déterminer la première échéance de cette planification.",
     });
   }
 

@@ -1,6 +1,11 @@
 import { tool } from "ai";
 import Papa from "papaparse";
 import { z } from "zod";
+import {
+  DOCUMENT_MAX_BYTES,
+  safeFetchBuffer,
+} from "@/lib/web/safe-fetch";
+import { checkDocumentShape } from "@/lib/web/zip-guard";
 
 const MAX_CHARS = 100_000;
 
@@ -101,21 +106,27 @@ export const documentParser = tool({
     "Analyse avancée d'un document long (PDF, DOCX, CSV) : extraction sémantique du texte, découpage par pages/chapitres, détection des titres et extraction des tableaux vers le tableur interactif. Le paramètre url doit être l'URL publique d'un fichier (pièce jointe téléversée ou fichier bibliothèque). À activer quand l'utilisateur joint un document à analyser, résumer ou dont il faut extraire les données.",
   execute: async ({ extractTables, maxChars, url }) => {
     try {
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 60_000);
-      const res = await fetch(url, { signal: controller.signal });
-      clearTimeout(timeout);
-      if (!res.ok) {
+      // Téléchargement borné via le client unique : redirections revalidées,
+      // plafond d'octets appliqué PENDANT la lecture (l'ancien
+      // `res.arrayBuffer()` allouait le corps entier avant tout contrôle).
+      const fetched = await safeFetchBuffer(url, {
+        maxBytes: DOCUMENT_MAX_BYTES,
+        timeoutMs: 60_000,
+      });
+      if (!fetched.ok) {
         return {
-          error: `Impossible de télécharger le document (HTTP ${res.status}).`,
+          error: `Impossible de télécharger le document (${fetched.error}).`,
           url,
         };
       }
 
-      const contentType =
-        res.headers.get("content-type")?.split(";")[0]?.trim() || "";
-      const urlLower = url.toLowerCase().split("?")[0];
-      const buffer = Buffer.from(await res.arrayBuffer());
+      const contentType = fetched.contentType.split(";")[0]?.trim() || "";
+      const urlLower = fetched.finalUrl.toLowerCase().split("?")[0];
+      const buffer = fetched.buffer;
+      const shape = checkDocumentShape({ buffer, contentType, urlLower });
+      if (shape.error) {
+        return { error: shape.error, url };
+      }
 
       // ---- PDF ----
       if (contentType === "application/pdf" || urlLower.endsWith(".pdf")) {

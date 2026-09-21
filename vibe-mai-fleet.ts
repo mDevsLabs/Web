@@ -236,7 +236,7 @@ export const MAIAgentFleet = {
           const maxImages = getTierDailyImageLimit(tier);
 
           const todayRows = await sql`
-            SELECT images_generated FROM daily_image_usage 
+            SELECT images_generated FROM daily_image_usage
             WHERE user_id = ${uid} AND usage_date = CURRENT_DATE LIMIT 1
           `;
           const currentCount = todayRows[0]?.images_generated || 0;

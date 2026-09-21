@@ -19,6 +19,13 @@ import {
   useRef,
   useState,
 } from "react";
+import {
+  buildSandboxDocument,
+  detectReactMode,
+  detectTailwind,
+  readSandboxLogMessage,
+  SANDBOX_IFRAME_SANDBOX,
+} from "@/lib/security/sandbox";
 import { cn } from "@/lib/utils";
 
 type ConsoleLog = {
@@ -36,87 +43,6 @@ const DEVICE_WIDTH: Record<DeviceMode, string> = {
   tablet: "820px",
 };
 
-const CONSOLE_BRIDGE = `
-<script>
-(function () {
-  var send = function (level, args) {
-    try {
-      var text = Array.prototype.map.call(args, function (a) {
-        if (a instanceof Error) return a.stack || a.message;
-        if (typeof a === "object" && a !== null) {
-          try { return JSON.stringify(a, null, 1); } catch (e) { return String(a); }
-        }
-        return String(a);
-      }).join(" ");
-      parent.postMessage({ __maiSandbox: true, level: level, text: text }, "*");
-    } catch (e) {}
-  };
-  ["log", "info", "warn", "error"].forEach(function (level) {
-    var original = console[level] ? console[level].bind(console) : function () {};
-    console[level] = function () {
-      send(level, arguments);
-      original.apply(null, arguments);
-    };
-  });
-  window.addEventListener("error", function (event) {
-    send("error", [event.message + " (" + (event.filename || "") + ":" + event.lineno + ")"]);
-  });
-  window.addEventListener("unhandledrejection", function (event) {
-    send("error", ["Promesse rejetée : " + (event.reason && (event.reason.stack || event.reason.message) || event.reason)]);
-  });
-  parent.postMessage({ __maiSandbox: true, level: "info", text: "Sandbox rechargée" }, "*");
-})();
-</script>`;
-
-const TAILWIND_CDN = `<script src="https://cdn.tailwindcss.com"></script>`;
-
-const REACT_CDN = `
-<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>`;
-
-function detectReactMode(content: string): boolean {
-  return (
-    /type=["']text\/babel["']/i.test(content) ||
-    /from\s+["']react["']|require\(["']react["']\)/i.test(content) ||
-    /ReactDOM\.render|createRoot\s*\(/i.test(content)
-  );
-}
-
-function detectTailwind(content: string): boolean {
-  return /tailwind/i.test(content);
-}
-
-// Injecte un contenu dans <head> (ou crée le document complet si besoin).
-function injectIntoHead(html: string, injections: string): string {
-  if (/<head[^>]*>/i.test(html)) {
-    return html.replace(/<head[^>]*>/i, (m) => `${m}\n${injections}`);
-  }
-  if (/<html[^>]*>/i.test(html)) {
-    return html.replace(
-      /<html[^>]*>/i,
-      (m) => `${m}\n<head>${injections}</head>`
-    );
-  }
-  return `<!DOCTYPE html><html><head>${injections}</head><body>${html}</body></html>`;
-}
-
-function buildSandboxDoc(params: {
-  content: string;
-  reactMode: boolean;
-  tailwindEnabled: boolean;
-}): string {
-  const { content, reactMode, tailwindEnabled } = params;
-  let doc = injectIntoHead(content, CONSOLE_BRIDGE);
-  if (tailwindEnabled) {
-    doc = injectIntoHead(doc, TAILWIND_CDN);
-  }
-  if (reactMode) {
-    doc = injectIntoHead(doc, REACT_CDN);
-  }
-  return doc;
-}
-
 export function SandboxPreview({ content }: { content: string }) {
   const [reactAuto] = useState(() => detectReactMode(content));
   const [reactMode, setReactMode] = useState(reactAuto);
@@ -129,6 +55,7 @@ export function SandboxPreview({ content }: { content: string }) {
   const [logs, setLogs] = useState<ConsoleLog[]>([]);
   const [consoleOpen, setConsoleOpen] = useState(false);
   const logIdRef = useRef(0);
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
   // Refresh auto débouncé pendant le streaming (800 ms)
   useEffect(() => {
@@ -144,24 +71,25 @@ export function SandboxPreview({ content }: { content: string }) {
   // Capture console de l'iframe
   useEffect(() => {
     const handler = (event: MessageEvent) => {
-      const data = event.data as
-        | { __maiSandbox?: boolean; level?: string; text?: string }
-        | undefined;
-      if (!data?.__maiSandbox) {
+      // Le contenu sandboxé n'est pas fiable : la validation (fenêtre source
+      // exacte, schéma, plafond de taille) est centralisée et testée dans
+      // lib/security/sandbox.ts. Ni l'origine (opaque, donc « null ») ni le
+      // contenu du message ne peuvent servir de contrôle d'accès.
+      const message = readSandboxLogMessage({
+        data: event.data,
+        expectedWindow: iframeRef.current?.contentWindow ?? null,
+        source: event.source,
+      });
+      if (!message) {
         return;
       }
-      const level = (["log", "info", "warn", "error"] as const).includes(
-        data.level as any
-      )
-        ? (data.level as ConsoleLog["level"])
-        : "log";
       setLogs((prev) => {
         const next: ConsoleLog[] = [
           ...prev,
           {
-            argsText: data.text ?? "",
+            argsText: message.text,
             id: ++logIdRef.current,
-            level,
+            level: message.level,
             time: new Date().toLocaleTimeString("fr-FR", { hour12: false }),
           },
         ];
@@ -177,7 +105,7 @@ export function SandboxPreview({ content }: { content: string }) {
 
   const srcDoc = useMemo(
     () =>
-      buildSandboxDoc({
+      buildSandboxDocument({
         content: committedContent,
         reactMode,
         tailwindEnabled,
@@ -367,7 +295,13 @@ export function SandboxPreview({ content }: { content: string }) {
       <div className="min-h-0 flex-1 rounded-lg border border-border/40 bg-muted/30 p-1.5">
         <iframe
           className="h-full min-h-[300px] w-full rounded border border-border/30 bg-white"
-          sandbox="allow-scripts allow-same-origin allow-modals"
+          // `allow-same-origin` est volontairement ABSENT : combiné à
+          // `allow-scripts` sur un `srcdoc`, il donnait au contenu non fiable
+          // l'origine de l'application (accès DOM parent, cookies,
+          // localStorage). `allow-modals` est retiré (spam de dialogues).
+          ref={iframeRef}
+          referrerPolicy="no-referrer"
+          sandbox={SANDBOX_IFRAME_SANDBOX}
           srcDoc={srcDoc}
           style={deviceStyle}
           title="Preview Live"

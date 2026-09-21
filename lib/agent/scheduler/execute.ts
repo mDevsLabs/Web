@@ -15,6 +15,7 @@ import {
   getAgentFlags,
 } from "@/lib/agent/flags";
 import { createAgentStream } from "@/lib/agent/runtime";
+import { scheduleChatId } from "@/lib/agent/scheduler/chat-id";
 import { loadAgentSettings } from "@/lib/agent/settings";
 import { listMcpAgentTools } from "@/lib/agent/tools/adapters/mcp";
 import { applyToolPermissions } from "@/lib/agent/tools/permissions";
@@ -77,19 +78,24 @@ const TERMINAL_RUN_STATUSES: ReadonlySet<string> = new Set([
 
 // Conversation cible : création réelle au premier run du schedule,
 // réutilisation aux occurrences suivantes (le chat persiste).
+//
+// La conversation est identifiée par le SCHEDULE, jamais par le projet :
+// l'ancienne version utilisait `projectId` comme `chatId`, si bien que toutes
+// les tâches planifiées d'un même projet partageaient — et mélangeaient — leur
+// historique (contexte, reprises, approbations).
 async function ensureScheduleChat(params: {
   schedule: AgentScheduleRecord;
 }): Promise<string> {
-  const candidate = params.schedule.projectId;
-  if (candidate) {
-    const existing = await getChatById({ id: candidate });
-    if (existing) {
-      return candidate;
-    }
-  }
-  const chatId = candidate ?? generateUUID();
+  const chatId = scheduleChatId(params.schedule.id);
   const existing = await getChatById({ id: chatId });
   if (existing) {
+    // Le propriétaire est revérifié à chaque exécution : un chat ne doit jamais
+    // être réutilisé pour un autre utilisateur, même si l'identifiant fuitait.
+    if (existing.userId !== params.schedule.userId) {
+      throw new Error(
+        "Conversation de tâche planifiée appartenant à un autre utilisateur."
+      );
+    }
     return chatId;
   }
   await saveChat({

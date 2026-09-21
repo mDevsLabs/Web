@@ -128,6 +128,23 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
   }
   _migrationRan = true;
 
+  // DDL HORS du chemin de requête.
+  //
+  // Ces réparations s'exécutaient au premier accès base de chaque process :
+  // une application ne doit pas modifier le schéma pendant qu'elle sert des
+  // requêtes (verrous de table, DDL concurrent entre instances, opérations
+  // destructrices impossibles à auditer). Les migrations vivent dans
+  // lib/db/migrate.ts, exécuté par un job dédié et approuvé.
+  //
+  // `DB_RUNTIME_DDL_REPAIR=true` reste disponible pour le dépannage ponctuel
+  // d'un environnement cassé, et seulement là.
+  if (process.env.DB_RUNTIME_DDL_REPAIR !== "true") {
+    return;
+  }
+  console.warn(
+    "[db] DB_RUNTIME_DDL_REPAIR=true : réparations de schéma exécutées au runtime (dépannage ponctuel uniquement — préférez `pnpm db:migrate`)."
+  );
+
   // Neon pooler: chaque instruction doit être dans une requête séparée
   const run = async (query: Promise<unknown>) => {
     try {
@@ -172,13 +189,52 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
   // appliqué (text), on le restaure ici. Les lignes dont user_id n'est pas
   // numérique (normalement aucune : la colonne était integer à l'origine)
   // sont mises de côté dans weekly_usage_drift_backup plutôt que perdues.
-  await run(client`DO $$ BEGIN
+  // PERTE DE DONNÉES corrigée : `CREATE TABLE IF NOT EXISTS ... AS SELECT` est
+  // un NO-OP quand la sauvegarde existe déjà (deuxième exécution), alors que le
+  // `DELETE` qui suivait s'exécutait quand même : les nouvelles lignes non
+  // numériques (comptes identifiés par email ou UUID) étaient supprimées SANS
+  // sauvegarde, et les quotas correspondants perdus. La sauvegarde est
+  // désormais construite ligne par ligne, sa complétude est VÉRIFIÉE, et toute
+  // anomalie fait lever l'exception AVANT le moindre DELETE (transaction DDL
+  // implicite du bloc DO : rien n'est appliqué).
+  await run(client`DO $$
+  DECLARE
+    a_deplacer integer;
+    sauvegardees integer;
+  BEGIN
     IF EXISTS (
       SELECT 1 FROM information_schema.columns
       WHERE table_name = 'weekly_usage' AND column_name = 'user_id' AND data_type = 'text'
     ) THEN
-      CREATE TABLE IF NOT EXISTS weekly_usage_drift_backup AS
-        SELECT * FROM weekly_usage WHERE user_id !~ '^[0-9]+$';
+      CREATE TABLE IF NOT EXISTS weekly_usage_drift_backup (
+        LIKE weekly_usage INCLUDING DEFAULTS
+      );
+
+      SELECT count(*) INTO a_deplacer
+        FROM weekly_usage WHERE user_id !~ '^[0-9]+$';
+
+      INSERT INTO weekly_usage_drift_backup
+        SELECT w.* FROM weekly_usage w
+        WHERE w.user_id !~ '^[0-9]+$'
+          AND NOT EXISTS (
+            SELECT 1 FROM weekly_usage_drift_backup b
+            WHERE b.user_id = w.user_id AND b.week_start = w.week_start
+          );
+
+      SELECT count(*) INTO sauvegardees
+        FROM weekly_usage w
+        WHERE w.user_id !~ '^[0-9]+$'
+          AND EXISTS (
+            SELECT 1 FROM weekly_usage_drift_backup b
+            WHERE b.user_id = w.user_id AND b.week_start = w.week_start
+          );
+
+      IF sauvegardees < a_deplacer THEN
+        RAISE EXCEPTION
+          'Sauvegarde weekly_usage incomplète (% lignes à déplacer, % sauvegardées) : aucune suppression effectuée.',
+          a_deplacer, sauvegardees;
+      END IF;
+
       DELETE FROM weekly_usage WHERE user_id !~ '^[0-9]+$';
       ALTER TABLE "weekly_usage" ALTER COLUMN "user_id" TYPE integer USING "user_id"::integer;
     END IF;

@@ -39,14 +39,52 @@ END $$;`;
 console.log("2/5 weekly_usage.user_id -> integer (contrat plateforme)…");
 // Si une conversion inverse (text) a été appliquée par erreur, on la
 // restaure : les lignes non numériques sont mises de côté, pas perdues.
+//
+// PERTE DE DONNÉES corrigée : `CREATE TABLE IF NOT EXISTS ... AS SELECT` est un
+// NO-OP quand `weekly_usage_drift_backup` existe déjà (deuxième exécution),
+// mais le `DELETE` s'exécutait quand même — les lignes non numériques ajoutées
+// depuis étaient donc supprimées sans sauvegarde. On sauvegarde désormais ligne
+// par ligne, on VÉRIFIE la complétude, et on lève une exception avant tout
+// DELETE si la moindre ligne manque dans la sauvegarde.
 await sql`ALTER TABLE "weekly_usage" DROP CONSTRAINT IF EXISTS "weekly_usage_user_id_fkey"`;
-await sql`DO $$ BEGIN
+await sql`DO $$
+DECLARE
+  a_deplacer integer;
+  sauvegardees integer;
+BEGIN
   IF EXISTS (
     SELECT 1 FROM information_schema.columns
     WHERE table_name = 'weekly_usage' AND column_name = 'user_id' AND data_type = 'text'
   ) THEN
-    CREATE TABLE IF NOT EXISTS weekly_usage_drift_backup AS
-      SELECT * FROM weekly_usage WHERE user_id !~ '^[0-9]+$';
+    CREATE TABLE IF NOT EXISTS weekly_usage_drift_backup (
+      LIKE weekly_usage INCLUDING DEFAULTS
+    );
+
+    SELECT count(*) INTO a_deplacer
+      FROM weekly_usage WHERE user_id !~ '^[0-9]+$';
+
+    INSERT INTO weekly_usage_drift_backup
+      SELECT w.* FROM weekly_usage w
+      WHERE w.user_id !~ '^[0-9]+$'
+        AND NOT EXISTS (
+          SELECT 1 FROM weekly_usage_drift_backup b
+          WHERE b.user_id = w.user_id AND b.week_start = w.week_start
+        );
+
+    SELECT count(*) INTO sauvegardees
+      FROM weekly_usage w
+      WHERE w.user_id !~ '^[0-9]+$'
+        AND EXISTS (
+          SELECT 1 FROM weekly_usage_drift_backup b
+          WHERE b.user_id = w.user_id AND b.week_start = w.week_start
+        );
+
+    IF sauvegardees < a_deplacer THEN
+      RAISE EXCEPTION
+        'Sauvegarde weekly_usage incomplète (% à déplacer, % sauvegardées) : aucune suppression effectuée.',
+        a_deplacer, sauvegardees;
+    END IF;
+
     DELETE FROM weekly_usage WHERE user_id !~ '^[0-9]+$';
     ALTER TABLE "weekly_usage" ALTER COLUMN "user_id" TYPE integer USING "user_id"::integer;
   END IF;

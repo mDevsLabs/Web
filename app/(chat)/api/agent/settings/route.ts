@@ -11,6 +11,7 @@ import { getAgentModelsForTier } from "@/lib/ai/registry";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
 import { normalizeTier } from "@/lib/auth/plan";
 import { requireUser, unauthorizedResponse } from "@/lib/auth/require-user";
+import { getPersistedTier } from "@/lib/db/users";
 
 const patchSchema = z.object({
   autonomy: z.enum(["careful", "standard", "high"]).optional(),
@@ -39,7 +40,14 @@ export async function GET() {
   ]);
 
   const flags = getAgentFlags();
-  const tier = normalizeTier(user.tier);
+  // Le forfait qui décide des capacités affichées est celui PERSISTÉ dans
+  // `users.tier`. Le lire depuis la session (JWT ou cache mémoire de 2 minutes)
+  // affichait les capacités de l'ancien forfait : un utilisateur venant de
+  // passer en Plus continuait de voir l'interface Free (et réciproquement).
+  const persistedTier = await getPersistedTier({ userId }).catch(() => null);
+  const tier = normalizeTier(
+    persistedTier?.ok ? persistedTier.tier : user.tier
+  );
 
   return Response.json(
     {

@@ -1,4 +1,9 @@
-import { safeExternalUrl } from "@/lib/web/ssrf";
+import {
+  DOCUMENT_MAX_BYTES,
+  safeFetchBuffer,
+  tokenOriginAllowlist,
+} from "@/lib/web/safe-fetch";
+import { checkDocumentShape } from "@/lib/web/zip-guard";
 
 // Extraction serveur de contenu, partagée par les outils Agent (read_file).
 // Aucun navigateur, aucune VM : le fichier est récupéré par HTTP puis analysé
@@ -22,7 +27,12 @@ export type ExtractedDocument = {
 };
 
 export type FetchDocumentResult =
-  | { buffer: Buffer; contentType: string }
+  | {
+      buffer: Buffer;
+      contentType: string;
+      finalUrl: string;
+      truncated: boolean;
+    }
   | { error: string };
 
 const DOCX_MIME =
@@ -104,36 +114,38 @@ function toCsv(rows: string[][]): string {
     .join("\n");
 }
 
+/**
+ * Téléchargement borné d'un document.
+ *
+ * L'ancienne implémentation faisait `await response.arrayBuffer()` : le corps
+ * ENTIER était alloué en mémoire avant la moindre vérification de taille, et
+ * `fetch` suivait les redirections sans les revalider (SSRF par redirection).
+ * Le client unique applique désormais : résolution DNS vérifiée et épinglée,
+ * redirections revalidées, plafond d'octets pendant la lecture, et retrait de
+ * tout en-tête d'autorisation hors des origines de confiance.
+ */
 export async function fetchDocumentBuffer(params: {
   headers?: Record<string, string>;
   signal?: AbortSignal;
   url: string;
 }): Promise<FetchDocumentResult> {
-  const target = safeExternalUrl(params.url);
-  if (target.error || !target.url) {
-    return { error: target.error ?? "URL invalide." };
+  const result = await safeFetchBuffer(params.url, {
+    headers: params.headers,
+    maxBytes: DOCUMENT_MAX_BYTES,
+    signal: params.signal,
+    timeoutMs: 20_000,
+    // Un éventuel Bearer de session ne part QUE vers l'API mAI déclarée.
+    tokenOriginAllowlist: tokenOriginAllowlist(),
+  });
+  if (!result.ok) {
+    return { error: `Téléchargement impossible : ${result.error}` };
   }
-
-  try {
-    const response = await fetch(target.url.toString(), {
-      cache: "no-store",
-      headers: { Accept: "*/*", ...params.headers },
-      signal: params.signal ?? AbortSignal.timeout(20_000),
-    });
-    if (!response.ok) {
-      return {
-        error: `Téléchargement impossible (HTTP ${response.status}) pour ${target.url.hostname}.`,
-      };
-    }
-    const arrayBuffer = await response.arrayBuffer();
-    const contentType = (
-      response.headers.get("content-type") ?? ""
-    ).toLowerCase();
-    return { buffer: Buffer.from(arrayBuffer), contentType };
-  } catch (error) {
-    const message = error instanceof Error ? error.message : "inconnue";
-    return { error: `Téléchargement impossible : ${message}.` };
-  }
+  return {
+    buffer: result.buffer,
+    contentType: result.contentType.toLowerCase(),
+    finalUrl: result.finalUrl,
+    truncated: result.truncated,
+  };
 }
 
 export async function extractDocument(params: {
@@ -148,6 +160,13 @@ export async function extractDocument(params: {
   const limit = clampMaxChars(params.maxChars);
 
   try {
+    // Cohérence type déclaré / contenu réel + refus des bombes de
+    // décompression AVANT de confier les octets à une bibliothèque.
+    const shape = checkDocumentShape({ buffer, contentType, urlLower });
+    if (shape.error) {
+      return { error: shape.error };
+    }
+
     if (contentType.includes("pdf") || urlLower.endsWith(".pdf")) {
       const { PDFParse } = await import("pdf-parse");
       const parser = new PDFParse({ data: new Uint8Array(buffer) });

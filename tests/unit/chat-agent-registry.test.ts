@@ -22,7 +22,13 @@ describe("Garde d'identité chatOwnerMatches", () => {
     ).toBe(true);
   });
 
-  it("reconnaît la variante email (conversations historiques)", () => {
+  // DURCISSEMENT : la correspondance par email/pseudo a été retirée du chemin
+  // par défaut. Ces deux valeurs sont MODIFIABLES par l'utilisateur : il
+  // suffisait de prendre l'ancien email/pseudo d'un autre compte pour hériter
+  // de l'accès à ses conversations. Les conversations historiques doivent être
+  // migrées (scripts/migrate-chat-owner-canonical.ts) ; l'ancienne tolérance
+  // n'est rétablie que par CHAT_OWNER_LEGACY_MATCH=true.
+  it("refuse la variante email (valeur modifiable)", () => {
     expect(
       chatOwnerMatches({
         chatUserId: "u@mai.dev",
@@ -30,10 +36,10 @@ describe("Garde d'identité chatOwnerMatches", () => {
         userId: "user-123",
         username: "maria",
       })
-    ).toBe(true);
+    ).toBe(false);
   });
 
-  it("reconnaît la variante username (lecture et envoi cohérents)", () => {
+  it("refuse la variante username (valeur modifiable)", () => {
     expect(
       chatOwnerMatches({
         chatUserId: "maria",
@@ -41,7 +47,7 @@ describe("Garde d'identité chatOwnerMatches", () => {
         userId: "user-123",
         username: "maria",
       })
-    ).toBe(true);
+    ).toBe(false);
   });
 
   it("refuse une conversation étrangère", () => {
