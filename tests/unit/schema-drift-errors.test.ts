@@ -60,10 +60,11 @@ describe("ChatbotError — dérive de schéma", () => {
       .spyOn(console, "error")
       .mockImplementation(() => {});
     try {
-      new ChatbotError(
+      const error = new ChatbotError(
         "bad_request:database",
         { cause: drizzleLikeQueryError("42703", 'column "x" does not exist') }
       );
+      expect(error.message).toBe(SCHEMA_DRIFT_MESSAGE);
       expect(consoleError).toHaveBeenCalledTimes(1);
       const [first, second] = consoleError.mock.calls[0];
       expect(String(first)).toContain("Schéma de base obsolète");

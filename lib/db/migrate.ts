@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { config } from "dotenv";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { migrate } from "drizzle-orm/postgres-js/migrator";
@@ -44,7 +45,27 @@ function noteIgnoredStep(error: unknown): void {
 }
 
 const runMigrate = async () => {
-  const dbUrl = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+  // En CI, la cible peut être désignée par un fichier env généré à la volée
+  // (vercel pull) : DATABASE_URL_FILE/POSTGRES_URL_FILE pointe vers ce fichier
+  // et le secret ne transite jamais dans un fichier du projet. La variable
+  // directe reste prioritaire pour l'usage local.
+  let dbUrl = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+  const urlFile =
+    process.env.DATABASE_URL_FILE || process.env.POSTGRES_URL_FILE;
+  if (!dbUrl && urlFile) {
+    try {
+      const content = readFileSync(urlFile, "utf8");
+      const match = content.match(
+        /(?:DATABASE_URL|POSTGRES_URL)\s*=\s*"?([^"\n]+)"?/
+      );
+      if (match) {
+        dbUrl = match[1].trim();
+      }
+    } catch {
+      console.error(`Fichier env introuvable ou illisible : ${urlFile}`);
+      process.exit(1);
+    }
+  }
   if (!dbUrl) {
     console.log("DATABASE_URL / POSTGRES_URL not defined, skipping migrations");
     process.exit(0);
