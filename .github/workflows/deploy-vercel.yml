@@ -9,11 +9,18 @@ name: 🚀 Deploy to Vercel
 # production, sans approbation.
 #
 # MAINTENANT :
-#  • `preview` : build + déploiement de prévisualisation, AUCUNE migration,
-#    aucun accès base ;
+#  • `preview` : build + déploiement de prévisualisation. Un push sur `main`
+#    ou `canary` migre et vérifie le schéma AVANT le build (PR de forks :
+#    jamais de migration, jamais d'accès base) ;
 #  • `production` : réservé à la branche `main`, rattaché à l'environnement
-#    GitHub `production` (approbation requise), seul endroit où les migrations
-#    s'exécutent.
+#    GitHub `production` (approbation requise), avec garde de schéma avant
+#    et après migration.
+#
+# ⚠️ Le secret GitHub `DATABASE_URL` doit être EXACTEMENT la même base que la
+# variable `DATABASE_URL` du dashboard Vercel (preview + production) : c'est
+# celle que le code utilise à l'exécution. Une divergence reconduit le bug
+# « migrations appliquées côté CI, base runtime jamais migrée » (500 sur
+# /api/chat et /api/agent, aucun appel modèle).
 on:
   push:
     branches: [main, canary]
@@ -31,7 +38,7 @@ env:
 
 jobs:
   preview:
-    name: Prévisualisation (sans accès base)
+    name: Prévisualisation (migrations sur branches suivies)
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
@@ -64,11 +71,31 @@ jobs:
       - name: 📥 Installation des dépendances
         run: pnpm install --frozen-lockfile
 
+      # Les pushes sur main/canary migrent la base partagée avant le build :
+      # c'est la seule façon de garantir que la base runtime suit le code
+      # déployé en preview (même DATABASE_URL que la production). Une PR d'un
+      # fork n'a de toute façon pas accès aux secrets : aucune migration
+      # possible, le garde de schéma reste en échec explicite si la base est
+      # obsolète.
+      - name: 🗄️ Migration de la base partagée (main/canary uniquement)
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/canary')
+        run: pnpm exec tsx lib/db/migrate.ts
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          POSTGRES_URL: ${{ secrets.DATABASE_URL }}
+          MIGRATIONS_STRICT: "true"
+
+      # Garde : la base runtime doit correspondre au schéma attendu par le
+      # code. Un échec ici bloque le déploiement (au lieu de le laisser
+      # produire un site qui répond 500 sur chaque conversation).
+      - name: 🛡️ Garde de schéma avant déploiement
+        run: node scripts/check-db-schema.mjs
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
       - name: 🌍 Récupérer l'environnement de prévisualisation
         run: vercel pull --yes --environment=preview --token=${{ env.VERCEL_TOKEN }}
 
-      # Aucune variable de base de données n'est exposée ici : une branche de
-      # prévisualisation ne doit jamais pouvoir écrire dans la base partagée.
       - name: 🏗️ Build des artefacts
         run: vercel build --token=${{ env.VERCEL_TOKEN }}
 
@@ -123,6 +150,17 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
+      # État AVANT migration : la garde échoue explicitement si la base est
+      # plus vieille que le code (tables critiques absentes), avec le rappel
+      # de la commande à exécuter.
+      - name: 🛡️ Garde de schéma (avant migration)
+        run: |
+          node scripts/check-db-schema.mjs \
+            || echo "::warning::Schéma en dérive avant migration : la migration qui suit doit la résoudre."
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        continue-on-error: true
+
       # Migration PUIS build. `MIGRATIONS_STRICT=true` : une étape de réparation
       # en échec inattendu fait échouer le job au lieu d'être absorbée.
       - name: 🗄️ Migration puis build des artefacts
@@ -131,6 +169,13 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           POSTGRES_URL: ${{ secrets.DATABASE_URL }}
           MIGRATIONS_STRICT: "true"
+
+      # Vérification dure APRÈS migration : si une table critique manque
+      # encore, le déploiement est bloqué (il répondrait 500 partout).
+      - name: 🛡️ Garde de schéma (après migration, bloquante)
+        run: node scripts/check-db-schema.mjs
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
       - name: 🌐 Déployer en production
         run: vercel deploy --prebuilt --archive=tgz --prod --token=${{ env.VERCEL_TOKEN }}

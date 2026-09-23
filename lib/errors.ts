@@ -44,6 +44,37 @@ export type ChatbotErrorMeta = {
   statusCode?: number;
 };
 
+// SQLSTATE « relation/colonne absente » : la base ne correspond pas au code
+// déployé (migrations non appliquées). Symptôme exact du bug « l'IA ne répond
+// pas, aucun appel API » : chaque route base répond 500 sans que le modèle
+// soit jamais appelé, et le message générique masque la cause réelle.
+const SCHEMA_DRIFT_SQLSTATES = new Set(["42P01", "42703"]);
+
+// Remonte la chaîne des causes (postgres.js encapsule l'erreur SQL dans la
+// propriété `cause` de l'Error « Failed query ») pour trouver un SQLSTATE.
+function findSqlState(error: unknown): string | null {
+  let current: unknown = error;
+  for (let depth = 0; current && depth < 8; depth += 1) {
+    const code = (current as { code?: unknown }).code;
+    if (typeof code === "string") {
+      return code;
+    }
+    current = (current as { cause?: unknown }).cause;
+  }
+  return null;
+}
+
+export function isSchemaDriftError(error: unknown): boolean {
+  const state = findSqlState(error);
+  return state !== null && SCHEMA_DRIFT_SQLSTATES.has(state);
+}
+
+export const SCHEMA_DRIFT_MESSAGE =
+  "Le service est momentanément indisponible : le schéma de la base de données n'est pas à jour. L'équipe a été notifiée.";
+
+export const SCHEMA_DRIFT_OPERATOR_LOG =
+  "Schéma de base obsolète : migrations non appliquées sur cet environnement. Exécutez `pnpm exec tsx lib/db/migrate.ts` avec le DATABASE_URL de CET environnement (voir scripts/check-db-schema.mjs pour un diagnostic).";
+
 export class ChatbotError extends Error {
   type: ErrorType;
   surface: Surface;
@@ -70,6 +101,21 @@ export class ChatbotError extends Error {
     this.surface = surface as Surface;
     this.statusCode = meta?.statusCode ?? getStatusCodeByType(this.type);
     this.apiCode = meta?.apiCode;
+
+    // Dérive de schéma détectée dans la cause : message utilisateur explicite
+    // au lieu d'un « erreur de base de données » générique, et signal fort
+    // dans les logs serveur (c'est une erreur d'OPÉRATION, pas de code).
+    if (
+      typeof cause === "object" &&
+      cause !== null &&
+      isSchemaDriftError(cause)
+    ) {
+      this.message = SCHEMA_DRIFT_MESSAGE;
+      console.error(`[mAI] ${SCHEMA_DRIFT_OPERATOR_LOG}`, {
+        sqlState: findSqlState(cause),
+        errorCode,
+      });
+    }
   }
 
   toResponse() {
