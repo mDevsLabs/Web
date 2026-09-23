@@ -8,12 +8,24 @@ import {
 } from "@/lib/ai/tools/ids";
 import { getAirQuality } from "@/lib/plugins/air-quality";
 import {
+  listPluginAgentTools,
+  narrowPluginAgentToolsForTask,
+} from "@/lib/agent/tools/adapters/plugins";
+import { getGithubRepositorySummary } from "@/lib/plugins/github-public";
+import {
   getPluginManifest,
   isPluginOnlyToolId,
   PLUGIN_MANIFEST_LIST,
   PLUGIN_ONLY_TOOL_IDS,
 } from "@/lib/plugins/catalog";
-import { frHolidays } from "@/lib/plugins/fr-holidays";
+import {
+  frHolidays,
+  internationalHolidays,
+  isPublicHoliday,
+} from "@/lib/plugins/fr-holidays";
+import { getFoodProduct } from "@/lib/plugins/open-food-facts";
+import { searchWorldBankIndicators } from "@/lib/plugins/world-bank";
+import { fetchPublicJson, PUBLIC_API_MAX_BYTES } from "@/lib/plugins/shared/public-api";
 import { isLucideIconName } from "@/lib/plugins/icon-allowlist";
 import { jsonToolbox } from "@/lib/plugins/json-toolbox";
 import { createPluginTools, getPluginDefinition } from "@/lib/plugins/server";
@@ -48,19 +60,27 @@ afterEach(() => {
 });
 
 describe("Catalogue de plugins", () => {
-  it("expose les cinq plugins attendus, avec identifiants uniques", () => {
+  it("expose les onze plugins attendus, avec identifiants uniques", () => {
     const ids = PLUGIN_MANIFEST_LIST.map((plugin) => plugin.id).toSorted(
       (a, b) => a.localeCompare(b)
     );
     expect(ids).toEqual([
       "air-quality",
+      "crossref",
       "fr-holidays",
+      "github-public",
       "json-toolbox",
+      "open-food-facts",
+      "open-library",
       "quizzly",
+      "tvmaze",
       "weather",
+      "world-bank",
     ]);
 
-    const toolIds = PLUGIN_MANIFEST_LIST.map((plugin) => plugin.tool.id);
+    const toolIds = PLUGIN_MANIFEST_LIST.flatMap((plugin) =>
+      plugin.tools.map((tool) => tool.id)
+    );
     expect(new Set(toolIds).size).toBe(toolIds.length);
   });
 
@@ -69,8 +89,12 @@ describe("Catalogue de plugins", () => {
       expect(plugin.version).toMatch(/^\d+\.\d+\.\d+/);
       expect(plugin.category.length).toBeGreaterThan(0);
       expect(plugin.tags.length).toBeGreaterThan(0);
-      expect(plugin.tool.label.length).toBeGreaterThan(0);
-      expect(plugin.tool.systemHint.length).toBeGreaterThan(0);
+      expect(plugin.tools.length).toBeGreaterThan(0);
+      for (const pluginTool of plugin.tools) {
+        expect(pluginTool.label.length).toBeGreaterThan(0);
+        expect(pluginTool.description.length).toBeGreaterThan(0);
+        expect(pluginTool.systemHint.length).toBeGreaterThan(0);
+      }
 
       // Les plugins sont réservés aux forfaits payants.
       expect(["plus", "pro", "max"]).toContain(plugin.minTier);
@@ -94,9 +118,11 @@ describe("Catalogue de plugins", () => {
 
   it("ne réutilise jamais un identifiant d'outil implémenté nativement", () => {
     for (const plugin of PLUGIN_MANIFEST_LIST) {
-      expect(isNativeToolId(plugin.tool.id)).toBe(false);
-      if ((TOOL_IDS as readonly string[]).includes(plugin.tool.id)) {
-        expect(isPluginProvidedToolId(plugin.tool.id)).toBe(true);
+      for (const pluginTool of plugin.tools) {
+        expect(isNativeToolId(pluginTool.id)).toBe(false);
+        if ((TOOL_IDS as readonly string[]).includes(pluginTool.id)) {
+          expect(isPluginProvidedToolId(pluginTool.id)).toBe(true);
+        }
       }
     }
   });
@@ -122,23 +148,47 @@ describe("Catalogue de plugins", () => {
     for (const plugin of PLUGIN_MANIFEST_LIST) {
       const definition = getPluginDefinition(plugin.id);
       expect(definition).toBeDefined();
-      const tool = definition?.createTool({});
-      expect(tool?.description?.length ?? 0).toBeGreaterThan(0);
-      expect(typeof tool?.execute).toBe("function");
+      const tools = definition?.createTools({});
+      expect(Object.keys(tools ?? {}).toSorted()).toEqual(
+        plugin.tools.map((pluginTool) => pluginTool.id).toSorted()
+      );
+      for (const pluginTool of Object.values(tools ?? {})) {
+        expect(pluginTool.description?.length ?? 0).toBeGreaterThan(0);
+        expect(typeof pluginTool.execute).toBe("function");
+      }
     }
-    expect(getPluginManifest("air-quality")?.tool.id).toBe("getAirQuality");
+    expect(getPluginManifest("air-quality")?.tools[0]?.id).toBe("getAirQuality");
   });
 
   it("n'instancie que les outils des plugins autorisés", () => {
     const all = createPluginTools({});
     expect(Object.keys(all).toSorted((a, b) => a.localeCompare(b))).toEqual(
-      PLUGIN_MANIFEST_LIST.map((plugin) => plugin.tool.id).toSorted((a, b) =>
-        a.localeCompare(b)
-      )
+      PLUGIN_MANIFEST_LIST.flatMap((plugin) =>
+        plugin.tools.map((pluginTool) => pluginTool.id)
+      ).toSorted((a, b) => a.localeCompare(b))
     );
     const scoped = createPluginTools({}, ["fr-holidays"]);
-    expect(Object.keys(scoped)).toEqual(["frHolidays"]);
+    expect(Object.keys(scoped).toSorted()).toEqual([
+      "frHolidays",
+      "getHolidayLongWeekends",
+      "internationalHolidays",
+      "isPublicHoliday",
+      "listHolidayCountries",
+    ]);
     expect(createPluginTools({}, [])).toEqual({});
+  });
+
+  it("adapte les outils des plugins à Agent et réduit la sélection automatique", () => {
+    const githubTools = listPluginAgentTools(["github-public"]);
+    expect(githubTools).toHaveLength(4);
+    expect(githubTools.every((agentTool) => agentTool.source === "plugin" && agentTool.permissions.readOnly)).toBe(true);
+    expect(
+      narrowPluginAgentToolsForTask("Montre les issues GitHub ouvertes", githubTools, ["github-public"]).map((agentTool) => agentTool.id)
+    ).toEqual(["listGithubIssues"]);
+    expect(
+      narrowPluginAgentToolsForTask("@GitHub public inspecte ce dépôt", githubTools, ["github-public"])
+    ).toHaveLength(4);
+    expect(listPluginAgentTools([])).toEqual([]);
   });
 });
 
@@ -395,5 +445,119 @@ describe("Plugin Qualité de l'air (réseau lecture seule)", () => {
     );
     const result = await runTool(getAirQuality, { city: "VilleInconnue" });
     expect(String(result.error)).toContain("introuvable");
+  });
+});
+
+describe("Connecteurs publics des plugins", () => {
+  it("refuse tout hôte externe à la liste autorisée sans envoyer de requête", async () => {
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+    const result = await fetchPublicJson("https://example.org/private");
+    expect(result).toMatchObject({ ok: false, error: "Domaine de source non autorisé." });
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("normalise la limite HTTP 429 et refuse un corps trop grand", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => new Response("", {
+        headers: { "content-length": String(PUBLIC_API_MAX_BYTES + 1), "retry-after": "30" },
+        status: 429,
+      }))
+    );
+    const limited = await fetchPublicJson("https://api.github.com/repos/openai/openai-node");
+    expect(limited).toMatchObject({ ok: false });
+    if (!limited.ok) expect(limited.error).toContain("HTTP 429");
+
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => new Response("{}", {
+        headers: { "content-length": String(PUBLIC_API_MAX_BYTES + 1) },
+        status: 200,
+      }))
+    );
+    const oversized = await fetchPublicJson("https://api.github.com/repos/openai/openai-node");
+    expect(oversized).toMatchObject({ ok: false, error: "Réponse trop volumineuse; résultat refusé." });
+  });
+
+  it("normalise les erreurs réseau sans propager une exception au modèle", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => { throw new Error("socket unavailable"); }));
+    const result = await fetchPublicJson("https://api.github.com/repos/openai/openai-node");
+    expect(result).toMatchObject({ ok: false, error: "Erreur réseau ou réponse JSON invalide." });
+  });
+
+  it("retourne un résumé GitHub borné et une source vérifiable", async () => {
+    const calls: string[] = [];
+    vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL) => {
+      calls.push(String(input));
+      return Response.json({
+        default_branch: "main",
+        description: "Dépôt de test",
+        forks_count: 12,
+        full_name: "openai/example",
+        html_url: "https://github.com/openai/example",
+        license: { spdx_id: "MIT" },
+        open_issues_count: 3,
+        stargazers_count: 42,
+        updated_at: "2026-09-22T00:00:00Z",
+      });
+    }));
+    const result = await runTool(getGithubRepositorySummary, { repository: "openai/example" });
+    expect(calls).toEqual(["https://api.github.com/repos/openai/example"]);
+    expect(result).toMatchObject({
+      name: "openai/example",
+      stars: 42,
+      source: { url: "https://github.com/openai/example" },
+    });
+  });
+
+  it("signale l'absence de produit Open Food Facts sans inventer de champs", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => Response.json({ status: 0, status_verbose: "product not found" })));
+    const result = await runTool(getFoodProduct, { barcode: "3017620422003" });
+    expect(String(result.error)).toContain("absent");
+  });
+
+  it("recherche les indicateurs par l'endpoint de métadonnées officiel", async () => {
+    const calls: string[] = [];
+    vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL) => {
+      calls.push(String(input));
+      return Response.json({
+        source: [{
+          id: "2",
+          name: "World Development Indicators",
+          concept: [{
+            id: "Series",
+            variable: [{
+              id: "NY.GDP.MKTP.CD",
+              metatype: [{ id: "definition", value: "GDP (current US$)" }],
+            }],
+          }],
+        }],
+      });
+    }));
+    const result = await runTool(searchWorldBankIndicators, { limit: 5, query: "gross domestic product" });
+    expect(calls).toEqual([
+      "https://api.worldbank.org/v2/sources/2/search/gross%20domestic%20product?format=json&per_page=100",
+    ]);
+    expect(result.indicators).toMatchObject([
+      { id: "NY.GDP.MKTP.CD", matches: [{ text: "GDP (current US$)" }] },
+    ]);
+  });
+
+  it("utilise l'API Nager v4 et ne confond pas un congé scolaire avec un jour férié", async () => {
+    const calls: string[] = [];
+    vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL) => {
+      calls.push(String(input));
+      return Response.json([
+        { date: "2026-01-01", name: "New Year's Day", countryCode: "AT", nationalHoliday: true, subdivisionCodes: null, holidayTypes: ["Public"] },
+        { date: "2026-01-02", name: "School Holiday", countryCode: "AT", nationalHoliday: false, subdivisionCodes: ["AT-1"], holidayTypes: ["School"] },
+      ]);
+    }));
+    const listed = await runTool(internationalHolidays, { country: "at", year: 2026 });
+    expect(calls[0]).toBe("https://nagerholidays.com/api/v4/Holidays/AT/2026");
+    expect((listed.holidays as Array<{ name: string }>)[0]?.name).toBe("New Year's Day");
+
+    const checked = await runTool(isPublicHoliday, { country: "at", date: "2026-01-02" });
+    expect(checked.isPublicHoliday).toBe(false);
   });
 });

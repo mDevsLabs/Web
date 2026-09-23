@@ -1,5 +1,6 @@
 import "server-only";
 
+import { randomUUID } from "node:crypto";
 import { consumeStream, convertToModelMessages } from "ai";
 import { resolveAgentExecutionBudget } from "@/lib/agent/budget";
 import { buildAgentContext } from "@/lib/agent/context/build";
@@ -18,6 +19,11 @@ import { createAgentStream } from "@/lib/agent/runtime";
 import { scheduleChatId } from "@/lib/agent/scheduler/chat-id";
 import { loadAgentSettings } from "@/lib/agent/settings";
 import { listMcpAgentTools } from "@/lib/agent/tools/adapters/mcp";
+import {
+  getMentionedPluginToolIds,
+  listInstalledPluginAgentTools,
+  narrowPluginAgentToolsForTask,
+} from "@/lib/agent/tools/adapters/plugins";
 import { applyToolPermissions } from "@/lib/agent/tools/permissions";
 import { listRegisteredAgentTools } from "@/lib/agent/tools/registry";
 import { selectAgentTools } from "@/lib/agent/tools/selector";
@@ -31,11 +37,14 @@ import { getLanguageModel } from "@/lib/ai/providers";
 import { getModelEntry, pickDefaultAgentModel } from "@/lib/ai/registry";
 import {
   createAgentRun,
+  claimAgentRunExecution,
+  releaseAgentRunExecution,
   getActiveAgentRunByChatId,
   getAgentRunById,
   updateAgentRunStatus,
 } from "@/lib/db/agent-queries";
 import { getUserApiKey } from "@/lib/db/api-keys";
+import { startOccurrence } from "@/lib/db/agent-foundation-queries";
 import {
   getChatById,
   getMcpServersByUserId,
@@ -117,10 +126,11 @@ export type ScheduledRunExecution =
       runId: string;
       status: "waiting_for_approval" | "waiting_for_user";
     }
-  | { outcome: "already_done"; runId: string }
+  | { finalStatus: string; outcome: "already_done"; runId: string }
   | { outcome: "no_tools"; runId: string | null };
 
 export async function executeScheduledRun(params: {
+  abortSignal?: AbortSignal;
   occurrence: AgentOccurrenceRecord | null;
   schedule: AgentScheduleRecord;
 }): Promise<ScheduledRunExecution> {
@@ -142,13 +152,16 @@ export async function executeScheduledRun(params: {
   // jamais dupliqué ; l'occurrence porteuse d'un runId terminal est déjà
   // réalisée (crash après exécution, avant clôture) : rien à relancer.
   const activeRun = await getActiveAgentRunByChatId({ chatId });
-  if (!activeRun && params.occurrence?.runId) {
+  if (params.occurrence?.runId) {
     const prior = await getAgentRunById({
       id: params.occurrence.runId,
       userId,
     }).catch(() => null);
     if (prior && TERMINAL_RUN_STATUSES.has(prior.status)) {
-      return { outcome: "already_done", runId: prior.id };
+      return { finalStatus: prior.status, outcome: "already_done", runId: prior.id };
+    }
+    if (activeRun && activeRun.id !== params.occurrence.runId) {
+      throw new Error("L'occurrence est liée à un autre run actif.");
     }
   }
 
@@ -200,6 +213,7 @@ export async function executeScheduledRun(params: {
         settings?.defaultModel ?? null,
         tier ?? "Free"
       );
+  const resolvedModelEntry = getModelEntry(resolvedModelId, FALLBACK_MODELS);
 
   const userApiKey = await getUserApiKey(userId);
   const model = getLanguageModel(resolvedModelId, {
@@ -212,26 +226,33 @@ export async function executeScheduledRun(params: {
   // confirmation ne devient jamais une exécution silencieuse. Sur reprise,
   // les outils du run sont réutilisés tels quels (snapshot persisté).
   // Outils MCP : serveurs activés de l'utilisateur, sous le drapeau agent.mcp.
+  const pluginAgentContext = flags["agent.plugins"]
+    ? await listInstalledPluginAgentTools({ tier: tier ?? "Free", userId }).catch(() => ({ pluginIds: [], tools: [] }))
+    : { pluginIds: [], tools: [] };
+  const registeredTools = [
+    ...listRegisteredAgentTools(),
+    ...pluginAgentContext.tools,
+  ];
   const baselineTools: RegisteredAgentTool[] = flags["agent.mcp"]
     ? [
-        ...listRegisteredAgentTools(),
+        ...registeredTools,
         ...(await getMcpServersByUserId({ userId })
           .then((servers) => listMcpAgentTools({ servers, userId }))
           .catch(() => [])),
       ]
-    : listRegisteredAgentTools();
+    : registeredTools;
   const continuationSnapshot =
     activeRun?.toolPolicySnapshot &&
     typeof activeRun.toolPolicySnapshot === "object"
       ? (activeRun.toolPolicySnapshot as Record<string, string>)
       : null;
-  const selectedTools = continuationSnapshot
+  let selectedTools = continuationSnapshot
     ? baselineTools.filter((tool) => tool.id in continuationSnapshot)
     : (
         await selectAgentTools({
           capabilities: {
             files: false,
-            tools: modelEntry.capabilities.tools,
+            tools: resolvedModelEntry.capabilities.tools,
           },
           enabledCategories: schedule.config.enabledCategories
             ? (schedule.config
@@ -243,6 +264,21 @@ export async function executeScheduledRun(params: {
           userTier: tier,
         })
       ).tools;
+  if (!continuationSnapshot) {
+    selectedTools = narrowPluginAgentToolsForTask(
+      task,
+      selectedTools,
+      pluginAgentContext.pluginIds
+    );
+  }
+  if (!continuationSnapshot) {
+    for (const toolId of getMentionedPluginToolIds(task, pluginAgentContext.pluginIds)) {
+      if (!selectedTools.some((tool) => tool.id === toolId)) {
+        const forced = baselineTools.find((tool) => tool.id === toolId);
+        if (forced) selectedTools = [...selectedTools, forced];
+      }
+    }
+  }
   const permissions = applyToolPermissions({
     autonomy: schedule.config.autonomy,
     overrides: settings?.toolPolicies ?? {},
@@ -261,6 +297,10 @@ export async function executeScheduledRun(params: {
     return { outcome: "no_tools", runId: activeRun?.id ?? null };
   }
 
+  if (params.abortSignal?.aborted) {
+    throw new Error("Délai technique du planificateur dépassé avant la création du run.");
+  }
+
   // 7. Run : création, ou remise en exécution du run repris.
   const run =
     activeRun ??
@@ -276,6 +316,13 @@ export async function executeScheduledRun(params: {
       toolPolicySnapshot: permissions.snapshot,
       userId,
     }));
+  const executionOwner = randomUUID();
+  if (!await claimAgentRunExecution({ id: run.id, owner: executionOwner })) {
+    throw new Error("Run planifié déjà réservé par une autre exécution.");
+  }
+  if (params.occurrence) {
+    await startOccurrence({ id: params.occurrence.id, now: new Date(), runId: run.id });
+  }
 
   // 8. Contexte projet puis contexte du modèle : mêmes builders que l'API.
   const projectContext = await loadAgentProjectContext({
@@ -292,7 +339,7 @@ export async function executeScheduledRun(params: {
     attachments: [],
     autonomy: schedule.config.autonomy,
     chatInstructions: schedule.instructions,
-    contextWindow: modelEntry.capabilities.contextWindow,
+    contextWindow: resolvedModelEntry.capabilities.contextWindow,
     families,
     memoryBlock: null,
     messages: await convertToModelMessages(existingMessages),
@@ -312,6 +359,7 @@ export async function executeScheduledRun(params: {
   // checkpoints, messages, statut final, usage, événements métier) est celle
   // du runtime — identique à un run interactif.
   const stream = createAgentStream({
+    abortSignal: params.abortSignal,
     approvalRequiredToolIds,
     budget,
     chatId,
@@ -328,6 +376,7 @@ export async function executeScheduledRun(params: {
     reasoningLevel: schedule.config.reasoningLevel,
     revision: activeRun?.revision ?? undefined,
     runId: run.id,
+    executionOwner,
     sendReasoning: false,
     sessionToken: SCHEDULED_SESSION_SENTINEL,
     shouldRenameAfterFirst: false,
@@ -338,14 +387,24 @@ export async function executeScheduledRun(params: {
     userEmail: "",
     userId,
   });
-  await consumeStream({ onError: () => {}, stream });
+  await consumeStream({ onError: () => {}, stream }).catch(() => {});
+  await releaseAgentRunExecution({ id: run.id, owner: executionOwner }).catch(() => {});
 
   // 10. Statut final relu depuis la base (jamais déduit du flux) : une
   // attente (approbation, question) persiste son statut pour la reprise.
   const finalRow = await getAgentRunById({ id: run.id, userId }).catch(
     () => null
   );
-  const finalStatus = finalRow?.status ?? "failed";
+  let finalStatus = finalRow?.status ?? "failed";
+  if (params.abortSignal?.aborted && ["queued", "running", "waiting_for_tool"].includes(finalStatus)) {
+    finalStatus = "timed_out";
+    await updateAgentRunStatus({ id: run.id, status: "timed_out", completedAt: new Date(), stopReason: "scheduler_deadline", error: "Délai technique du planificateur dépassé.", onlyIfActive: true });
+    console.warn(JSON.stringify({ event: "agent_schedule_run_timed_out", runId: run.id, occurrenceId: params.occurrence?.id ?? null }));
+  }
+  if (["queued", "running", "waiting_for_tool"].includes(finalStatus)) {
+    finalStatus = "failed";
+    await updateAgentRunStatus({ id: run.id, status: "failed", completedAt: new Date(), stopReason: "stream_incomplete", error: "Le flux planifié s'est interrompu avant la clôture du run.", onlyIfActive: true });
+  }
   if (
     finalStatus === "waiting_for_approval" ||
     finalStatus === "waiting_for_user"

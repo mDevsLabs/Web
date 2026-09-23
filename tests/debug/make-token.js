@@ -21,8 +21,7 @@ function loadDotEnv(path) {
 loadDotEnv(".env");
 loadDotEnv(".env.local");
 
-const secret =
-  process.env.MAI_JWT_SECRET || process.env.JWT_SECRET || "";
+const secret = process.env.MAI_JWT_SECRET || process.env.JWT_SECRET || "";
 if (!secret) {
   console.error("NO_SECRET");
   process.exit(1);
@@ -32,16 +31,22 @@ const claims = {
   email: "debug-user@example.com",
   exp: Math.floor(Date.now() / 1000) + 3600,
   id: "debug-user-1234",
-  limit: 100000,
+  limit: 100_000,
   tier: "Free",
   tokensUsed: 0,
   username: "debug-user",
 };
 
 const b64url = (buf) =>
-  Buffer.from(buf).toString("base64").replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  Buffer.from(buf)
+    .toString("base64")
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/[=]+$/, "");
 const header = b64url(JSON.stringify({ alg: "HS256", typ: "JWT" }));
 const payload = b64url(JSON.stringify(claims));
 const data = `${header}.${payload}`;
-const signature = b64url(require("crypto").createHmac("sha256", secret).update(data).digest());
+const signature = b64url(
+  require("crypto").createHmac("sha256", secret).update(data).digest()
+);
 console.log(`${data}.${signature}`);

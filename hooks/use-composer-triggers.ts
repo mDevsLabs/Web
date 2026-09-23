@@ -1,9 +1,7 @@
 "use client";
 
-import type { Agent, CustomCommand, McpServer, Skill } from "@/lib/db/schema";
-import type { ProjectLite } from "@/hooks/use-projects";
-import { useCallback, useMemo, useRef, useState } from "react";
 import type { Dispatch, RefObject, SetStateAction } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import {
   deactivateMentionToken,
   detectTrigger,
@@ -18,6 +16,8 @@ import {
   getFilteredSlashCommands,
   type SlashCommand,
 } from "@/components/chat/slash-commands";
+import type { ProjectLite } from "@/hooks/use-projects";
+import type { Agent, CustomCommand, McpServer, Skill } from "@/lib/db/schema";
 
 // Triggers de composition partagés par le Chat et l'Agent : détection des
 // commandes « / » et des mentions « @ », navigation clavier dans les menus,

@@ -24,7 +24,10 @@ export function resolveOnceDueAt(params: {
   timezone: string;
 }): OnceResolution {
   if (params.rule.kind !== "once") {
-    return { error: "La règle fournie n'est pas une exécution unique.", ok: false };
+    return {
+      error: "La règle fournie n'est pas une exécution unique.",
+      ok: false,
+    };
   }
   const runAt = params.rule.runAt;
   if (!runAt) {
@@ -36,7 +39,10 @@ export function resolveOnceDueAt(params: {
   }
   const match = runAt.match(RUN_AT_PATTERN);
   if (!match) {
-    return { error: "Date d'exécution invalide (attendu AAAA-MM-JJTHH:mm).", ok: false };
+    return {
+      error: "Date d'exécution invalide (attendu AAAA-MM-JJTHH:mm).",
+      ok: false,
+    };
   }
   if (!isValidIanaTimezone(params.timezone)) {
     return { error: "Fuseau horaire IANA invalide.", ok: false };
@@ -56,8 +62,13 @@ export function resolveOnceDueAt(params: {
   // Une date impossible (31 février) est normalisée par Date.UTC : on la refuse
   // plutôt que de planifier une exécution à une date que l'utilisateur n'a pas
   // choisie.
-  const probe = new Date(Date.UTC(numeric.year, numeric.month - 1, numeric.day));
-  if (probe.getUTCDate() !== numeric.day || probe.getUTCMonth() !== numeric.month - 1) {
+  const probe = new Date(
+    Date.UTC(numeric.year, numeric.month - 1, numeric.day)
+  );
+  if (
+    probe.getUTCDate() !== numeric.day ||
+    probe.getUTCMonth() !== numeric.month - 1
+  ) {
     return { error: "Cette date n'existe pas dans le calendrier.", ok: false };
   }
 

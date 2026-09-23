@@ -38,7 +38,9 @@ function noteIgnoredStep(error: unknown): void {
     return;
   }
   unexpectedStepErrors.push(`${code || "sans code"} — ${short}`);
-  console.warn(`[migrate] ÉCHEC d'une étape de réparation (${code || "sans code"}) : ${short}`);
+  console.warn(
+    `[migrate] ÉCHEC d'une étape de réparation (${code || "sans code"}) : ${short}`
+  );
 }
 
 const runMigrate = async () => {

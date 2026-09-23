@@ -1,11 +1,7 @@
 import { z } from "zod";
 import { requireAgentToolMetadata } from "@/lib/agent/tools/catalog";
 import { defineTool } from "@/lib/agent/tools/define-tool";
-import {
-  toolFailure,
-  type ToolResult,
-  toolSuccess,
-} from "@/lib/agent/types";
+import { type ToolResult, toolFailure, toolSuccess } from "@/lib/agent/types";
 import { generateAudioViaMai } from "@/lib/ai/generators/audio";
 
 // Synthèse vocale côté Agent : même cœur partagé que le Chat

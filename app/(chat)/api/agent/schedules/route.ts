@@ -26,14 +26,16 @@ const listQuerySchema = z.object({
     .transform((value) => value === "true"),
 });
 
-export async function GET() {
+export async function GET(request: Request) {
   const user = await getMaiUser();
   if (!user) {
     return errorResponse("auth_required");
   }
   const userId = user.id || user.email;
 
-  const schedules = await listAgentSchedules({ userId });
+  const query = listQuerySchema.safeParse(Object.fromEntries(new URL(request.url).searchParams));
+  if (!query.success) return errorResponse("invalid_request");
+  const schedules = await listAgentSchedules({ userId, includeDeleted: query.data.includeDeleted });
   return Response.json(
     { schedules },
     {
@@ -97,7 +99,8 @@ export async function POST(request: Request) {
   }
   if (!firstDue) {
     return errorResponse("invalid_request", {
-      message: "Impossible de déterminer la première échéance de cette planification.",
+      message:
+        "Impossible de déterminer la première échéance de cette planification.",
     });
   }
 

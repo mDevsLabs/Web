@@ -1,6 +1,6 @@
+import type { IncomingHttpHeaders, IncomingMessage } from "node:http";
 import { request as httpRequest } from "node:http";
 import { request as httpsRequest } from "node:https";
-import type { IncomingHttpHeaders, IncomingMessage } from "node:http";
 import {
   MAX_REDIRECTS,
   resolveRedirectTarget,
@@ -140,7 +140,10 @@ export async function readStreamCapped(
  * un préfixe de chaîne : `https://api.mai.example.evil.com` ne correspond pas
  * à `https://api.mai.example`.
  */
-export function isTokenOriginAllowed(targetUrl: string, allowlist: readonly string[]): boolean {
+export function isTokenOriginAllowed(
+  targetUrl: string,
+  allowlist: readonly string[]
+): boolean {
   let origin: string;
   try {
     origin = new URL(targetUrl).origin;
@@ -277,7 +280,11 @@ async function fetchCapped(
       response = await requestOnce({
         addresses,
         // Le jeton n'est envoyé que si l'origine de CE saut est autorisée.
-        headers: headersForHop(headers, url.toString(), options.tokenOriginAllowlist),
+        headers: headersForHop(
+          headers,
+          url.toString(),
+          options.tokenOriginAllowlist
+        ),
         signal: options.signal,
         timeoutMs,
         url,
@@ -361,7 +368,10 @@ async function fetchCapped(
   }
 
   return {
-    failure: { error: `Trop de redirections (max ${maxRedirects}).`, ok: false },
+    failure: {
+      error: `Trop de redirections (max ${maxRedirects}).`,
+      ok: false,
+    },
   };
 }
 

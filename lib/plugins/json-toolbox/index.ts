@@ -246,6 +246,6 @@ export const jsonToolbox = tool({
 });
 
 export const jsonToolboxPlugin: PluginDefinition = {
-  createTool: () => jsonToolbox,
+  createTools: () => ({ jsonToolbox }),
   manifest: manifest as PluginManifest,
 };

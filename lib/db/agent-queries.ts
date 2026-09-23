@@ -1,6 +1,6 @@
 import "server-only";
 
-import { and, asc, desc, eq, inArray, sql } from "drizzle-orm";
+import { and, asc, desc, eq, gte, inArray, sql } from "drizzle-orm";
 import type {
   AgentAutonomy,
   AgentExecutionBudget,
@@ -34,6 +34,7 @@ export async function createAgentRun(params: {
   budget: AgentExecutionBudget;
   chatId: string;
   messageId?: string | null;
+  parentRunId?: string | null;
   model: string;
   plan?: AgentPlan | null;
   reasoningLevel: ReasoningLevel;
@@ -50,6 +51,7 @@ export async function createAgentRun(params: {
         budget: params.budget,
         chatId: params.chatId,
         messageId: params.messageId ?? null,
+        parentRunId: params.parentRunId ?? null,
         model: params.model,
         plan: params.plan ?? null,
         reasoningLevel: params.reasoningLevel,
@@ -63,6 +65,69 @@ export async function createAgentRun(params: {
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
+}
+
+export async function getAgentRunByMessageId(params: {
+  chatId: string;
+  messageId: string;
+}): Promise<AgentRun | null> {
+  const db = await dbReady();
+  const [row] = await db.select().from(agentRun).where(and(
+    eq(agentRun.chatId, params.chatId), eq(agentRun.messageId, params.messageId)
+  )).limit(1);
+  return row ?? null;
+}
+
+// Réservation d'exécution atomique. La lease dépasse la limite HTTP (300 s)
+// et sera libérée par le runtime à la clôture, y compris en attente utilisateur.
+export async function claimAgentRunExecution(params: {
+  id: string;
+  owner: string;
+}): Promise<boolean> {
+  const db = await dbReady();
+  const [row] = await db.update(agentRun).set({
+    executionOwner: params.owner,
+    executionLeaseUntil: new Date(Date.now() + 310_000),
+  }).where(and(
+    eq(agentRun.id, params.id),
+    inArray(agentRun.status, ACTIVE_AGENT_RUN_STATUSES),
+    sql`(${agentRun.executionLeaseUntil} IS NULL OR ${agentRun.executionLeaseUntil} < now())`
+  )).returning({ id: agentRun.id });
+  if (row) console.info(JSON.stringify({ event: "agent_run_reserved", runId: row.id }));
+  return Boolean(row);
+}
+
+export async function releaseAgentRunExecution(params: {
+  id: string;
+  owner: string;
+}): Promise<void> {
+  const db = await dbReady();
+  await db.update(agentRun).set({ executionOwner: null, executionLeaseUntil: null })
+    .where(and(eq(agentRun.id, params.id), eq(agentRun.executionOwner, params.owner)));
+}
+
+export async function setAgentRunFeedback(params: {
+  goalReached?: boolean;
+  id: string;
+  useful?: boolean;
+  userId: string;
+}): Promise<AgentRun | null> {
+  const db = await dbReady();
+  const [row] = await db.update(agentRun).set({
+    ...(params.useful === undefined ? {} : { useful: params.useful }),
+    ...(params.goalReached === undefined ? {} : { goalReached: params.goalReached }),
+    feedbackAt: new Date(),
+  }).where(and(eq(agentRun.id, params.id), eq(agentRun.userId, params.userId),
+    inArray(agentRun.status, ["completed", "failed", "cancelled", "timed_out"])
+  )).returning();
+  return row ?? null;
+}
+
+export async function getAgentActivityRuns(params: { since: Date; userId: string }): Promise<AgentRun[]> {
+  const db = await dbReady();
+  return db.select().from(agentRun).where(and(
+    eq(agentRun.userId, params.userId), gte(agentRun.createdAt, params.since)
+  )).orderBy(desc(agentRun.createdAt));
 }
 
 export async function getAgentRunById({
@@ -133,24 +198,31 @@ export async function updateAgentRunStatus({
   id,
   startedAt,
   status,
+  stopReason,
+  onlyIfActive = false,
 }: {
   completedAt?: Date | null;
   error?: string | null;
   id: string;
   startedAt?: Date | null;
   status: AgentRunStatus;
-}): Promise<void> {
+  stopReason?: string | null;
+  onlyIfActive?: boolean;
+}): Promise<boolean> {
   try {
     const db = await dbReady();
-    await db
+    const rows = await db
       .update(agentRun)
       .set({
         completedAt: completedAt ?? null,
         error: error ?? null,
         status,
+        ...(stopReason === undefined ? {} : { stopReason }),
         ...(startedAt === undefined ? {} : { startedAt }),
       })
-      .where(eq(agentRun.id, id));
+      .where(and(eq(agentRun.id, id), ...(onlyIfActive ? [inArray(agentRun.status, ACTIVE_AGENT_RUN_STATUSES)] : [])))
+      .returning({ id: agentRun.id });
+    return rows.length > 0;
   } catch (err) {
     throw new ChatbotError("bad_request:database", { cause: err });
   }
@@ -209,7 +281,19 @@ export async function setAgentRunUsage({
 }): Promise<void> {
   try {
     const db = await dbReady();
-    await db.update(agentRun).set({ usage }).where(eq(agentRun.id, id));
+    await db.transaction(async (tx) => {
+      const [current] = await tx.select({ usage: agentRun.usage }).from(agentRun)
+        .where(eq(agentRun.id, id)).for("update").limit(1);
+      if (!current) return;
+      const previous = current.usage as AgentRunUsage;
+      await tx.update(agentRun).set({ usage: {
+        ...previous,
+        durationMs: (previous.durationMs ?? 0) + (usage.durationMs ?? 0),
+        inputTokens: (previous.inputTokens ?? 0) + (usage.inputTokens ?? 0),
+        outputTokens: (previous.outputTokens ?? 0) + (usage.outputTokens ?? 0),
+        totalTokens: (previous.totalTokens ?? 0) + (usage.totalTokens ?? 0),
+      } }).where(eq(agentRun.id, id));
+    });
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }

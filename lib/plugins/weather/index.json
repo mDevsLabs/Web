@@ -14,9 +14,10 @@
     "writesUserData": false,
     "requiresApproval": false
   },
-  "tool": {
+  "tools": [{
+    "description": "Météo actuelle et prévisions pour une ville ou des coordonnées.",
     "id": "getWeather",
     "label": "Météo",
     "systemHint": "getWeather (météo actuelle et prévisions 1 à 7 jours, celsius/fahrenheit, par ville ou coordonnées)"
-  }
+  }]
 }

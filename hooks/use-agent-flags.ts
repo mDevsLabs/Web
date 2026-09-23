@@ -6,12 +6,12 @@ import {
   type AgentChannelInfo,
   getAgentChannelInfo,
 } from "@/lib/agent/channel";
-import { apiEndpoints } from "@/lib/client/api-endpoints";
 import {
   type AgentFlagKey,
   type AgentFlags,
   DEFAULT_AGENT_FLAGS,
 } from "@/lib/agent/flags";
+import { apiEndpoints } from "@/lib/client/api-endpoints";
 
 export type AgentFlagsPayload = {
   channel: AgentChannelInfo;

@@ -9,7 +9,7 @@ import {
   MicIcon,
   QrCodeIcon,
 } from "lucide-react";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { toast } from "sonner";
 import {
@@ -87,9 +87,7 @@ function AgentImageToolResult({
 }) {
   // Sortie de l'outil Agent generate_image : même carte que l'image du Chat
   // (aperçu, copie, téléchargement), l'identifiant de part étant identique.
-  return (
-    <ImageToolResult output={output as any} toolCallId={toolCallId} />
-  );
+  return <ImageToolResult output={output as any} toolCallId={toolCallId} />;
 }
 
 function AgentAudioToolResult({
@@ -106,9 +104,7 @@ function AgentAudioToolResult({
   // Sortie de l'outil Agent generate_audio : même carte lecteur que la
   // synthèse vocale du Chat (voix, transcription, lecture directe).
   return (
-    <div
-      className="flex w-[min(100%,480px)] flex-col gap-3 rounded-2xl border border-border/60 bg-card/90 p-4 shadow-sm backdrop-blur-xs"
-    >
+    <div className="flex w-[min(100%,480px)] flex-col gap-3 rounded-2xl border border-border/60 bg-card/90 p-4 shadow-sm backdrop-blur-xs">
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-2">
           <span className="flex size-7 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
@@ -125,7 +121,11 @@ function AgentAudioToolResult({
         ) : null}
       </div>
 
-      <audio className="h-10 w-full rounded-lg outline-hidden" controls src={output.audio_url}>
+      <audio
+        className="h-10 w-full rounded-lg outline-hidden"
+        controls
+        src={output.audio_url}
+      >
         Votre navigateur ne supporte pas l'élément audio.
       </audio>
 
@@ -141,10 +141,26 @@ function AgentAudioToolResult({
 function ToolApprovalActions({
   addToolApprovalResponse,
   approvalId,
+  chatId,
+  toolCallId,
+  isAgent,
 }: {
   addToolApprovalResponse: UseChatHelpers<ChatMessage>["addToolApprovalResponse"];
   approvalId: string;
+  chatId?: string;
+  toolCallId?: string;
+  isAgent?: boolean;
 }) {
+  const [preview, setPreview] = useState<{ enabled: boolean; preview?: { tool: string; target: string; effect: string; details?: string[] } } | null>(null);
+  useEffect(() => {
+    if (!isAgent || !chatId || !toolCallId) return;
+    let cancelled = false;
+    fetch(`/api/agent/runs?view=approvalPreview&chatId=${encodeURIComponent(chatId)}&toolCallId=${encodeURIComponent(toolCallId)}`)
+      .then((response) => response.ok ? response.json() : Promise.reject(new Error("preview")))
+      .then((value) => { if (!cancelled) setPreview(value); })
+      .catch(() => { if (!cancelled) setPreview({ enabled: true }); });
+    return () => { cancelled = true; };
+  }, [isAgent, chatId, toolCallId]);
   const handleDeny = useCallback(() => {
     addToolApprovalResponse({
       approved: false,
@@ -161,7 +177,9 @@ function ToolApprovalActions({
   }, [addToolApprovalResponse, approvalId]);
 
   return (
-    <div className="flex items-center justify-end gap-2 border-t px-4 py-3">
+    <div className="flex flex-wrap items-center justify-end gap-2 border-t px-4 py-3">
+      {preview?.enabled && preview.preview ? <div className="w-full rounded-md bg-muted p-2 text-xs"><p className="font-medium">{preview.preview.tool}</p><p>Cible : {preview.preview.target}</p><p>Effet prévu : {preview.preview.effect}</p>{preview.preview.details?.length ? <p className="mt-1 break-words text-muted-foreground">Paramètres : {preview.preview.details.join(" · ")}</p> : null}</div> : null}
+      {preview?.enabled && !preview.preview ? <p className="w-full text-xs text-destructive">Aperçu indisponible : l'accord est suspendu.</p> : null}
       <button
         className="rounded-md px-3 py-1.5 text-muted-foreground text-sm transition-colors hover:bg-muted hover:text-foreground"
         onClick={handleDeny}
@@ -170,6 +188,7 @@ function ToolApprovalActions({
         Refuser
       </button>
       <button
+        disabled={isAgent && (!preview || (preview.enabled && !preview.preview))}
         className="rounded-md bg-primary px-3 py-1.5 text-primary-foreground text-sm transition-colors hover:bg-primary/90"
         onClick={handleAllow}
         type="button"
@@ -584,6 +603,9 @@ const PurePreviewMessage = ({
                 <ToolApprovalActions
                   addToolApprovalResponse={addToolApprovalResponse}
                   approvalId={approvalId}
+                  chatId={chatId}
+                  toolCallId={toolCallId}
+                  isAgent={Boolean(submitUserInputAnswer)}
                 />
               )}
             </ToolContent>
@@ -753,10 +775,7 @@ const PurePreviewMessage = ({
           />
         );
       }
-      if (
-        toolPart.state === "output-available" &&
-        toolPart.output?.error
-      ) {
+      if (toolPart.state === "output-available" && toolPart.output?.error) {
         return (
           <div
             className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-400"
@@ -784,10 +803,7 @@ const PurePreviewMessage = ({
           />
         );
       }
-      if (
-        toolPart.state === "output-available" &&
-        toolPart.output?.error
-      ) {
+      if (toolPart.state === "output-available" && toolPart.output?.error) {
         return (
           <div
             className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-400"
@@ -1339,6 +1355,9 @@ const PurePreviewMessage = ({
               <ToolApprovalActions
                 addToolApprovalResponse={addToolApprovalResponse}
                 approvalId={approvalId}
+                chatId={chatId}
+                toolCallId={toolCallId}
+                isAgent={Boolean(submitUserInputAnswer)}
               />
             )}
           </ToolContent>

@@ -182,6 +182,6 @@ export const getWeather = tool({
 });
 
 export const weatherPlugin: PluginDefinition = {
-  createTool: () => getWeather,
+  createTools: () => ({ getWeather }),
   manifest: manifest as PluginManifest,
 };

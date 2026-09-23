@@ -10,7 +10,6 @@ import { useAgentStream } from "@/components/agent/agent-stream-provider";
 import { useDataStream } from "@/components/chat/data-stream-provider";
 import { getChatHistoryPaginationKey } from "@/components/chat/sidebar-history";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
-import { apiEndpoints, apiUrl } from "@/lib/client/api-endpoints";
 import type {
   AgentAutonomy,
   AgentStepRecord,
@@ -19,6 +18,7 @@ import type {
   ToolExecutionRecord,
 } from "@/lib/agent/types";
 import type { ReasoningLevel } from "@/lib/ai/registry/reasoning";
+import { apiEndpoints, apiUrl } from "@/lib/client/api-endpoints";
 import type { Attachment, ChatMessage } from "@/lib/types";
 import { fetcher, fetchWithErrorHandlers, generateUUID } from "@/lib/utils";
 
@@ -70,7 +70,7 @@ function isResumeTriggerPart(part: unknown): boolean {
       ? (output as { answered?: boolean }).answered
       : undefined;
   if (candidate.state === "approval-responded") {
-    return candidate.approval?.approved === true;
+    return typeof candidate.approval?.approved === "boolean";
   }
   return candidate.state === "output-available" && answered === true;
 }
@@ -157,9 +157,7 @@ export function useAgentChat({
   visibilityRef.current = visibility;
 
   const { data: chatData, isLoading } = useSWR(
-    isNewChat
-      ? null
-      : apiEndpoints.messagesForChat(chatId),
+    isNewChat ? null : apiEndpoints.messagesForChat(chatId),
     fetcher,
     { revalidateOnFocus: false }
   );
@@ -191,6 +189,9 @@ export function useAgentChat({
       applyDataPart(dataPart);
     },
     onError: (error) => {
+      // Un retry peut retrouver un run déjà créé : la base restaure sa
+      // timeline même si le transport a perdu la réponse initiale.
+      mutate(apiEndpoints.agentRunsForChat(chatId));
       const message =
         error instanceof Error && error.message
           ? error.message.slice(0, 300)
@@ -295,10 +296,12 @@ export function useAgentChat({
     ({
       attachments = [],
       options,
+      resumeFromRunId,
       text,
     }: {
       attachments?: Attachment[];
       options?: AgentRequestOptions;
+      resumeFromRunId?: string;
       text: string;
     }) => {
       if (options) {
@@ -322,7 +325,7 @@ export function useAgentChat({
           { text, type: "text" as const },
         ],
         role: "user" as const,
-      });
+      }, resumeFromRunId ? { body: { resumeFromRunId } } : undefined);
     },
     [chatId, sendMessage]
   );

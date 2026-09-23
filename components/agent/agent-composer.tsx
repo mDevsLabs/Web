@@ -25,22 +25,20 @@ import {
   ComposerShell,
   composerTextareaClass,
 } from "@/components/chat/composer-primitives";
+import { VoiceRecorderButton } from "@/components/chat/input/voice-recorder-button";
 import {
   MentionMenu,
   type MentionSelectPayload,
 } from "@/components/chat/mention-menu";
 import {
-  type SlashCommand,
-  SlashCommandMenu,
-} from "@/components/chat/slash-commands";
-import { VoiceRecorderButton } from "@/components/chat/input/voice-recorder-button";
-import {
   ModelSelectorCompact,
   type SharedModel,
 } from "@/components/chat/model-selector-compact";
 import { PreviewAttachment } from "@/components/chat/preview-attachment";
-import { useComposerTriggers } from "@/hooks/use-composer-triggers";
-import type { Agent, McpServer, Skill } from "@/lib/db/schema";
+import {
+  type SlashCommand,
+  SlashCommandMenu,
+} from "@/components/chat/slash-commands";
 import type {
   AgentRequestOptions,
   AgentToolMode,
@@ -49,8 +47,9 @@ import {
   MAX_FILES_PER_MESSAGE,
   useChatAttachments,
 } from "@/hooks/use-chat-attachments";
-import { useProjects } from "@/hooks/use-projects";
+import { useComposerTriggers } from "@/hooks/use-composer-triggers";
 import type { ProjectLite } from "@/hooks/use-projects";
+import { useProjects } from "@/hooks/use-projects";
 import { AGENT_HOME_PLACEHOLDER } from "@/lib/agent/channel";
 import type { AgentFlags } from "@/lib/agent/flags";
 import type { ToolCategory } from "@/lib/agent/types";
@@ -58,6 +57,8 @@ import type { AgentComposerActionId } from "@/lib/agent/ui/composer-actions";
 import { getAgentComposerAction } from "@/lib/agent/ui/composer-actions";
 import type { ModelCapabilities } from "@/lib/ai/registry/capabilities";
 import type { ReasoningLevel } from "@/lib/ai/registry/reasoning";
+import type { Agent, McpServer, Skill } from "@/lib/db/schema";
+import type { PluginCatalogEntry } from "@/lib/plugins/types";
 import type { Attachment } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
@@ -173,12 +174,23 @@ export function AgentComposer({
     () => (Array.isArray(mcpData?.servers) ? mcpData.servers : []),
     [mcpData]
   );
+  const { data: pluginData } = useSWR<{ plugins: PluginCatalogEntry[] }>(
+    flags["agent.plugins"] ? "/api/plugins" : null,
+    (url: string) => fetch(url).then((response) => response.json()),
+    { dedupingInterval: 30_000, revalidateOnFocus: false }
+  );
+  const userPlugins = useMemo(
+    () => (pluginData?.plugins ?? []).filter((plugin) => plugin.installed && plugin.enabled && !plugin.locked),
+    [pluginData]
+  );
 
   const handleMentionSelection = useCallback(
     (payload: MentionSelectPayload) => {
       switch (payload.type) {
         case "agent":
-          toast.success(`Assistant « ${payload.agent.name} » ciblé pour la tâche.`);
+          toast.success(
+            `Assistant « ${payload.agent.name} » ciblé pour la tâche.`
+          );
           break;
         case "memory":
           onOptionsChange({ memoryEnabled: true });
@@ -191,17 +203,21 @@ export function AgentComposer({
         case "skill":
           toast.success(`Compétence « ${payload.skill.name} » activée.`);
           break;
+        case "plugin":
+          toast.success(`Plugin « ${payload.plugin.name} » disponible pour cette tâche.`);
+          break;
         case "system":
           if (payload.action === "web") {
             onOptionsChange({ forceWeb: true });
             toast.success("Recherche Web activée pour la prochaine tâche.");
           } else {
-            toast.success("Référence ajoutée — Agent s'appuiera sur ce contenu.");
+            toast.success(
+              "Référence ajoutée — Agent s'appuiera sur ce contenu."
+            );
           }
           break;
         default:
-          // Plugins, MCP et commandes personnalisées : sans support Agent à ce
-          // jour, un signal explicite vaut mieux qu'une sélection muette.
+          // MCP et commandes personnalisées ne sont pas des mentions de tâche Agent.
           toast.info(
             "Cet élément n'est pas encore pris en charge dans le mode Agent."
           );
@@ -234,6 +250,7 @@ export function AgentComposer({
     projects: allProjects,
     setInput,
     skills: userSkills,
+    installedPlugins: userPlugins,
     textareaRef,
     userAgents,
   });
@@ -432,10 +449,11 @@ export function AgentComposer({
             agents={userAgents}
             customCommands={[]}
             isLoadingProjects={false}
-            memoryAtLimit={false}
             mcpServers={userMcpServers}
-            onSelect={insertMentionToken}
+            memoryAtLimit={false}
             onClose={closeMenus}
+            onSelect={insertMentionToken}
+            plugins={userPlugins}
             projects={allProjects as never}
             query={mentionQuery}
             selectedIndex={mentionIndex}
@@ -464,8 +482,8 @@ export function AgentComposer({
           disabled={isRunning}
           onBlur={handleTextareaBlur}
           onChange={textareaProps.onChange}
-          onKeyDown={handleTextareaKeyDown}
           onInput={resize}
+          onKeyDown={handleTextareaKeyDown}
           placeholder={placeholder}
           ref={textareaRef}
           rows={1}
@@ -526,7 +544,9 @@ export function AgentComposer({
                   aria-label={`Retirer ${meta.label}`}
                   className="ml-0.5 cursor-pointer rounded-full p-0.5 hover:bg-primary/20"
                   onClick={() =>
-                    onOptionsChange({ [key]: false } as Partial<AgentRequestOptions>)
+                    onOptionsChange({
+                      [key]: false,
+                    } as Partial<AgentRequestOptions>)
                   }
                   type="button"
                 >

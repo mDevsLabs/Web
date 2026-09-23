@@ -14,9 +14,10 @@
     "writesUserData": false,
     "requiresApproval": false
   },
-  "tool": {
+  "tools": [{
+    "description": "Générer un quiz interactif complet avec réponses et explications.",
     "id": "quizzly",
     "label": "Quizzly",
     "systemHint": "quizzly (génère un quiz interactif complet de 1 à 50 questions avec choix unique/multiple, réponses correctes, explications et calcul de score pour tester l'utilisateur de manière ludique)"
-  }
+  }]
 }

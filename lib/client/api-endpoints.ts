@@ -10,31 +10,29 @@ export function apiUrl(path: string): string {
 }
 
 export const apiEndpoints = {
-  /** Navigation SPA vers une conversation (history.pushState). */
-  chatPath: (chatId: string) => `${BASE_PATH}/chat/${chatId}`,
+  agentFlags: () => apiUrl("/api/agent/flags"),
+  agentModels: () => apiUrl("/api/models"),
+  agentRunById: (runId: string) => apiUrl(`/api/agent/runs/${runId}`),
+  agentRunSuggestedAction: (runId: string) =>
+    apiUrl(`/api/agent/runs/${runId}/suggested-action`),
+  agentRunsForChat: (chatId: string) =>
+    apiUrl(`/api/agent/runs?chatId=${chatId}`),
+  agentRunUserInput: (runId: string) =>
+    apiUrl(`/api/agent/runs/${runId}/user-input`),
+  agentSettings: () => apiUrl("/api/agent/settings"),
 
   chatById: (chatId: string) => apiUrl(`/api/chats/${chatId}`),
   chatExport: (chatId: string, format: "html" | "md" = "md") =>
     apiUrl(`/api/chats/${chatId}/export?format=${format}`),
+  /** Navigation SPA vers une conversation (history.pushState). */
+  chatPath: (chatId: string) => `${BASE_PATH}/chat/${chatId}`,
   chatStream: (chatId: string) => apiUrl(`/api/chat/${chatId}/stream`),
 
   document: (documentId: string) => apiUrl(`/api/document?id=${documentId}`),
 
-  agentFlags: () => apiUrl("/api/agent/flags"),
-  agentModels: () => apiUrl("/api/models"),
-  agentRunsForChat: (chatId: string) =>
-    apiUrl(`/api/agent/runs?chatId=${chatId}`),
-  agentRunById: (runId: string) => apiUrl(`/api/agent/runs/${runId}`),
-  agentRunUserInput: (runId: string) =>
-    apiUrl(`/api/agent/runs/${runId}/user-input`),
-  agentRunSuggestedAction: (runId: string) =>
-    apiUrl(`/api/agent/runs/${runId}/suggested-action`),
-  agentSettings: () => apiUrl("/api/agent/settings"),
+  fileUpload: () => apiUrl("/api/files/upload"),
 
-  messagesForChat: (chatId: string) =>
-    apiUrl(`/api/messages?chatId=${chatId}`),
+  messagesForChat: (chatId: string) => apiUrl(`/api/messages?chatId=${chatId}`),
 
   models: () => apiUrl("/api/models"),
-
-  fileUpload: () => apiUrl("/api/files/upload"),
 } as const;

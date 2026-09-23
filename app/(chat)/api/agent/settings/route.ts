@@ -57,6 +57,7 @@ export async function GET() {
       tools: Object.values(AGENT_TOOL_CATALOG).map((tool) => ({
         category: tool.category,
         defaultPermission: tool.permissions.default,
+        impact: tool.permissions.impact ?? (tool.permissions.destructive ? "deletion" : tool.permissions.readOnly ? "read" : "external_mutation"),
         description: tool.description,
         id: tool.id,
         name: tool.name,

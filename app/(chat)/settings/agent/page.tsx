@@ -10,7 +10,9 @@ import {
   WrenchIcon,
 } from "lucide-react";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { AgentActivityPanel } from "@/components/agent/agent-activity-panel";
+import { AgentScheduleHistoryPanel } from "@/components/agent/agent-schedule-history-panel";
 import {
   AgentChannelBadge,
   AgentChannelNotice,
@@ -91,6 +93,13 @@ function Section({
 }
 
 export default function AgentSettingsPage() {
+  const [activityView, setActivityView] = useState(false);
+  const [historyView, setHistoryView] = useState(false);
+  useEffect(() => {
+    const view = new URLSearchParams(window.location.search).get("view");
+    setActivityView(view === "activity");
+    setHistoryView(view === "history");
+  }, []);
   const { data, isLoading, update } = useAgentSettings();
   const { projects } = useProjects();
 
@@ -120,7 +129,17 @@ export default function AgentSettingsPage() {
           </div>
         </div>
 
-        {isLoading || !settings || !flags ? (
+        {flags?.["agent.activity"] || flags?.["agent.scheduleHistory"] ? (
+          <nav className="mt-4 flex gap-4 text-sm">
+            <Link href="/settings/agent">Paramètres</Link>
+            {flags?.["agent.activity"] ? <Link href="/settings/agent?view=activity">Activité Agent</Link> : null}
+            {flags?.["agent.scheduleHistory"] ? <Link href="/settings/agent?view=history">Historique planifié</Link> : null}
+          </nav>
+        ) : null}
+        {activityView && flags?.["agent.activity"] ? <AgentActivityPanel /> : null}
+        {historyView && flags?.["agent.scheduleHistory"] ? <AgentScheduleHistoryPanel /> : null}
+
+        {(activityView && flags?.["agent.activity"]) || (historyView && flags?.["agent.scheduleHistory"]) ? null : isLoading || !settings || !flags ? (
           <div className="flex flex-col items-center justify-center gap-3 py-20 text-muted-foreground">
             <Loader2Icon className="size-6 animate-spin text-primary" />
             <span className="text-sm">Chargement des paramètres…</span>
@@ -279,7 +298,7 @@ export default function AgentSettingsPage() {
                     </div>
                     <div className="shrink-0 sm:w-44">
                       <OptionSelector
-                        items={(["auto", "ask", "off"] as ToolPermission[]).map(
+                        items={(((tool.impact === "external_mutation" || tool.impact === "deletion") ? ["ask", "off"] : ["auto", "ask", "off"]) as ToolPermission[]).map(
                           (permission) => ({
                             description:
                               TOOL_PERMISSION_DESCRIPTIONS[permission],
@@ -295,8 +314,9 @@ export default function AgentSettingsPage() {
                           })
                         }
                         value={
-                          settings.toolPolicies[tool.id] ??
-                          tool.defaultPermission
+                          (tool.impact === "external_mutation" || tool.impact === "deletion") && settings.toolPolicies[tool.id] === "auto"
+                            ? "ask"
+                            : settings.toolPolicies[tool.id] ?? tool.defaultPermission
                         }
                       />
                     </div>

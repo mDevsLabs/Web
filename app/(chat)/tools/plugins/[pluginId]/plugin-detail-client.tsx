@@ -231,12 +231,19 @@ export default function PluginDetailClient({
               <dd className="font-medium text-foreground">
                 {getCategoryLabel(manifest.category)}
               </dd>
-              <dt className="text-muted-foreground">Outil</dt>
-              <dd className="font-medium text-foreground">
-                {manifest.tool.label}
-                <span className="ml-2 rounded bg-muted px-1.5 py-0.5 font-mono text-[11px] text-muted-foreground">
-                  {manifest.tool.id}
-                </span>
+              <dt className="self-start text-muted-foreground">Outils</dt>
+              <dd className="flex flex-col gap-2 font-medium text-foreground">
+                {manifest.tools.map((pluginTool) => (
+                  <div className="flex flex-col" key={pluginTool.id}>
+                    <span>{pluginTool.label}</span>
+                    <span className="font-normal text-xs text-muted-foreground">
+                      {pluginTool.description}
+                    </span>
+                    <span className="font-mono text-[11px] text-muted-foreground">
+                      {pluginTool.id}
+                    </span>
+                  </div>
+                ))}
               </dd>
               <dt className="text-muted-foreground">Auteur</dt>
               <dd className="font-medium text-foreground">{manifest.author}</dd>

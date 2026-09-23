@@ -1,10 +1,7 @@
 import { tool } from "ai";
 import Papa from "papaparse";
 import { z } from "zod";
-import {
-  DOCUMENT_MAX_BYTES,
-  safeFetchBuffer,
-} from "@/lib/web/safe-fetch";
+import { DOCUMENT_MAX_BYTES, safeFetchBuffer } from "@/lib/web/safe-fetch";
 import { checkDocumentShape } from "@/lib/web/zip-guard";
 
 const MAX_CHARS = 100_000;

@@ -15,11 +15,17 @@ import {
   getOccurrenceById,
   listDueSchedules,
   listExpiredLeaseOccurrences,
+  listWaitingOccurrences,
+  getScheduleVersionById,
+  getAgentScheduleForScheduler,
+  getWaitingRequestExpiry,
   recordScheduleRun,
   resetOccurrenceToPending,
   setAgentScheduleError,
   startOccurrence,
+  waitOccurrence,
 } from "@/lib/db/agent-foundation-queries";
+import { getAgentRunById, updateAgentRunStatus } from "@/lib/db/agent-queries";
 // Scheduler central des tâches planifiées Agent : indépendant du fournisseur
 // d'infrastructure (il n'exige qu'un déclencheur périodique — le tick cron —
 // et la base). Invariants :
@@ -32,6 +38,16 @@ import {
 //     crash, le run existant est repris (avancé) tel quel.
 
 export const SCHEDULE_MAX_ATTEMPTS = 3;
+
+export function isWaitingRequestExpired(params: {
+  expiresAt: Date | null;
+  now: Date;
+  runStatus: string;
+}): boolean {
+  return (params.runStatus === "waiting_for_approval" || params.runStatus === "waiting_for_user")
+    && params.expiresAt !== null
+    && params.expiresAt.getTime() <= params.now.getTime();
+}
 
 function nextDueForSchedule(
   schedule: AgentScheduleRecord,
@@ -101,6 +117,7 @@ export async function claimDueOccurrence(params: {
 // l'exécution, la lease expire, l'occurrence est re-réclamée au tick suivant
 // et le run existant est avancé (jamais dupliqué).
 export async function processDueSchedule(params: {
+  timeoutMs?: number;
   now: Date;
   schedule: AgentScheduleRecord;
   workerId: string;
@@ -128,15 +145,29 @@ export async function processDueSchedule(params: {
   }
 
   const { occurrence } = claim;
+  const version = occurrence.scheduleVersionId
+    ? await getScheduleVersionById({ id: occurrence.scheduleVersionId, scheduleId: params.schedule.id })
+    : null;
+  const executionSchedule = version
+    ? { ...params.schedule, ...version.snapshot, nextDueAt: params.schedule.nextDueAt }
+    : params.schedule;
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort("scheduler_deadline"), params.timeoutMs ?? 240_000);
+  let hardTimer: ReturnType<typeof setTimeout> | null = null;
 
   try {
     // Exécution réelle par le runtime Agent. Cette étape crée (ou reprend) le
     // run, la conversation, persiste steps, checkpoints et messages, et rend
     // le statut final relu depuis la base.
-    const execution = await executeScheduledRun({
-      occurrence,
-      schedule: params.schedule,
-    });
+    const execution = await Promise.race([
+      executeScheduledRun({ abortSignal: controller.signal, occurrence, schedule: executionSchedule }),
+      new Promise<never>((_, reject) => {
+        hardTimer = setTimeout(() => {
+          controller.abort("scheduler_deadline");
+          reject(new Error("Délai maximum du run planifié dépassé."));
+        }, (params.timeoutMs ?? 240_000) + 20_000);
+      }),
+    ]);
 
     if (execution.outcome === "already_done") {
       // Crash après exécution, avant clôture : le travail est réalisé.
@@ -148,14 +179,14 @@ export async function processDueSchedule(params: {
       await finishOccurrence({
         id: occurrence.id,
         now: params.now,
-        status: "completed",
+        status: execution.finalStatus === "completed" ? "completed" : "failed",
       });
-      const nextDue = nextDueForSchedule(params.schedule, params.now);
-      await closeScheduleAfterRun({
-        nextDue,
-        now: params.now,
-        schedule: params.schedule,
-      });
+      if (execution.finalStatus === "completed") {
+        const nextDue = nextDueForSchedule(params.schedule, params.now);
+        await closeScheduleAfterRun({ nextDue, now: params.now, schedule: params.schedule });
+      } else {
+        await setAgentScheduleError({ id: params.schedule.id, expectedRevision: params.schedule.revision, lastError: `Run planifié terminé avec ${execution.finalStatus}.` });
+      }
       return { outcome: "claimed", runId: execution.runId };
     }
 
@@ -174,6 +205,7 @@ export async function processDueSchedule(params: {
       });
       await setAgentScheduleError({
         id: params.schedule.id,
+        expectedRevision: params.schedule.revision,
         lastError:
           "Aucun outil disponible pour cette tâche (réglages ou forfait).",
       });
@@ -181,20 +213,15 @@ export async function processDueSchedule(params: {
     }
 
     if (execution.outcome === "awaiting_resolution") {
-      await startOccurrence({
-        id: occurrence.id,
-        now: params.now,
-        runId: execution.runId,
-      });
-      // Attente persistée : occurrence maintenue « running » sous lease —
-      // sa résolution reprendra le même run. Lease longue : aucune autre
-      // exécution ne démarrera pendant l'attente (anti-doublon).
+      await waitOccurrence({ id: occurrence.id, runId: execution.runId });
+      // Attente persistée sans lease : aucune échéance suivante ne sera
+      // réclamée avant résolution ou expiration de la demande.
       return { outcome: "awaiting_resolution", runId: execution.runId };
     }
 
     // Run terminé (completed, failed, timed_out, cancelled) : occurrence
     // clôturée, échéance suivante recalculée depuis la règle + fuseau.
-    const failed = execution.finalStatus === "failed";
+    const failed = execution.finalStatus !== "completed";
     await finishOccurrence({
       id: occurrence.id,
       now: params.now,
@@ -209,6 +236,7 @@ export async function processDueSchedule(params: {
     if (failed) {
       await setAgentScheduleError({
         id: params.schedule.id,
+        expectedRevision: params.schedule.revision,
         lastError: `Dernier run en échec (${execution.finalStatus}).`,
       });
     }
@@ -232,12 +260,20 @@ export async function processDueSchedule(params: {
       }).catch(() => {});
       await setAgentScheduleError({
         id: params.schedule.id,
+        expectedRevision: params.schedule.revision,
         lastError: message,
       });
+    } else if (fresh?.runId && controller.signal.aborted) {
+      // Le run reste lié à l'occurrence et sa lease expire naturellement.
+      // Le runtime reçoit l'annulation et finalise son checkpoint en arrière-plan.
+      console.warn(JSON.stringify({ event: "agent_schedule_watchdog", occurrenceId: occurrence.id, runId: fresh.runId, attempt: fresh.attempt }));
     } else {
       await resetOccurrenceToPending({ id: occurrence.id }).catch(() => {});
     }
     return { message, outcome: "error" };
+  } finally {
+    clearTimeout(timer);
+    if (hardTimer) clearTimeout(hardTimer);
   }
 }
 
@@ -254,12 +290,14 @@ async function closeScheduleAfterRun(params: {
       id: params.schedule.id,
       lastRunAt: params.now,
       nextDueAt: params.nextDue,
+      expectedRevision: params.schedule.revision,
     });
     return;
   }
   await deactivateScheduleAfterRun({
     id: params.schedule.id,
     lastRunAt: params.now,
+    expectedRevision: params.schedule.revision,
   });
 }
 
@@ -267,7 +305,8 @@ async function closeScheduleAfterRun(params: {
 // dues ET les occurrences à la lease expirée (reprise après crash). Un
 // timeout de tick (le budget d'invocation + une marge) borne chaque run :
 // le cron ne peut pas rester bloqué sur un run en attente externe.
-const TICK_RUN_TIMEOUT_MS = 5 * 60 * 1000;
+const TICK_TIMEOUT_MS = 285_000;
+const TICK_RUN_TIMEOUT_MS = 240_000;
 
 export async function runSchedulerTick(params: {
   now?: Date;
@@ -283,13 +322,42 @@ export async function runSchedulerTick(params: {
     runId?: string;
     scheduleId: string;
   }> = [];
+  const deadline = Date.now() + TICK_TIMEOUT_MS;
+
+  for (const occurrence of await listWaitingOccurrences({})) {
+    if (Date.now() >= deadline - 5_000) break;
+    if (!occurrence.runId) continue;
+    const schedule = await getAgentScheduleForScheduler(occurrence.scheduleId);
+    if (!schedule) continue;
+    const run = await getAgentRunById({ id: occurrence.runId, userId: schedule.userId });
+    if (!run) continue;
+    if (["completed", "failed", "cancelled", "timed_out"].includes(run.status)) {
+      await finishOccurrence({ id: occurrence.id, now, status: run.status === "completed" ? "completed" : "failed" });
+      await closeScheduleAfterRun({ nextDue: nextDueForSchedule(schedule, now), now, schedule });
+    } else if (run.status === "waiting_for_approval" || run.status === "waiting_for_user") {
+      const expiresAt = await getWaitingRequestExpiry({
+        kind: run.status === "waiting_for_approval" ? "approval" : "user",
+        runId: run.id,
+      });
+      if (isWaitingRequestExpired({ expiresAt, now, runStatus: run.status })) {
+        const expired = await updateAgentRunStatus({ id: run.id, status: "timed_out", completedAt: now, stopReason: "user_request_expired", error: "Demande utilisateur expirée après 24 heures.", onlyIfActive: true });
+        if (expired) {
+          await finishOccurrence({ id: occurrence.id, now, status: "failed" });
+          await setAgentScheduleError({ id: schedule.id, lastError: "Demande utilisateur expirée après 24 heures : tâche mise en pause." });
+          console.warn(JSON.stringify({ event: "agent_schedule_wait_expired", occurrenceId: occurrence.id, runId: run.id, scheduleId: schedule.id }));
+        }
+      }
+    }
+  }
 
   const due = await listDueSchedules({ now });
   for (const schedule of due) {
+    if (Date.now() >= deadline - 5_000) break;
     const result = await processDueSchedule({
       now,
       schedule,
       workerId,
+      timeoutMs: Math.min(TICK_RUN_TIMEOUT_MS, deadline - Date.now() - 5_000),
     });
     results.push({
       outcome: result.outcome,
@@ -307,9 +375,12 @@ export async function runSchedulerTick(params: {
   // (le run actif, s'il existe, sera avancé sans duplication). Celles sans
   // run redeviennent éligibles à un nouveau claim (jamais perdues, jamais
   // doublonnées : clé unique + compteur attempt).
-  const expired = await listExpiredLeaseOccurrences({ now });
-  for (const occurrence of expired) {
-    await resetOccurrenceToPending({ id: occurrence.id }).catch(() => {});
+  if (Date.now() < deadline - 5_000) {
+    const expired = await listExpiredLeaseOccurrences({ now });
+    for (const occurrence of expired) {
+      if (Date.now() >= deadline - 5_000) break;
+      await resetOccurrenceToPending({ id: occurrence.id }).catch(() => {});
+    }
   }
   return { processed: results.length, results };
 }

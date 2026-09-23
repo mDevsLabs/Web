@@ -150,8 +150,12 @@ export function deactivateMentionToken(params: {
       return;
     }
     const plugin = plugins.find((p) => `@${p.name}` === token);
-    if (plugin && pendingTools.includes(plugin.tool.id)) {
-      togglePendingTool(plugin.tool.id);
+    if (plugin) {
+      for (const pluginTool of plugin.tools) {
+        if (pendingTools.includes(pluginTool.id)) {
+          togglePendingTool(pluginTool.id);
+        }
+      }
     }
   }
 }

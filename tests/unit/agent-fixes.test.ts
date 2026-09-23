@@ -1,7 +1,10 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { chatOwnerMatches, CHAT_OWNER_LEGACY_MATCH_ENABLED } from "@/lib/agent/channel";
+import {
+  CHAT_OWNER_LEGACY_MATCH_ENABLED,
+  chatOwnerMatches,
+} from "@/lib/agent/channel";
 import { composeAgentInstructions } from "@/lib/agent/runtime";
 import { isCanonicalUuid, scheduleChatId } from "@/lib/agent/scheduler/chat-id";
 import { resolveOnceDueAt } from "@/lib/agent/scheduler/once";
@@ -25,7 +28,9 @@ describe("Réorientation — les consignes atteignent réellement le modèle", (
       "explore plutôt la piste B",
     ]);
     expect(composed).toContain("INSTRUCTIONS");
-    expect(composed.indexOf("piste A")).toBeLessThan(composed.indexOf("piste B"));
+    expect(composed.indexOf("piste A")).toBeLessThan(
+      composed.indexOf("piste B")
+    );
     expect(composed).toContain("RÉORIENTATION");
   });
 
@@ -55,12 +60,16 @@ describe("Budgets cumulés entre les reprises", () => {
     expect(runtime).toContain("startToolCallCount");
     expect(runtime).toContain("toolCallBaseline +");
     // Fin d'appels d'outils cumulée dans le garde de boucle.
-    expect(runtime).toContain("stepBaseline + steps.length >= params.budget.maxSteps");
+    expect(runtime).toContain(
+      "stepBaseline + steps.length >= params.budget.maxSteps"
+    );
   });
 
   it("la route transmet le compteur persisté d'une reprise", () => {
     const route = codeOnly("app/(chat)/api/agent/route.ts");
-    expect(route).toContain("startToolCallCount: activeRun?.toolCallCount ?? 0");
+    expect(route).toContain(
+      "startToolCallCount: activeRun?.toolCallCount ?? 0"
+    );
   });
 });
 
@@ -171,7 +180,9 @@ describe("Planification — once, fuseaux et conversation dédiée", () => {
     const execute = codeOnly("lib/agent/scheduler/execute.ts");
     expect(execute).toContain("scheduleChatId(params.schedule.id)");
     // Le projet ne doit plus servir d'identifiant de conversation.
-    expect(execute).not.toContain("const candidate = params.schedule.projectId");
+    expect(execute).not.toContain(
+      "const candidate = params.schedule.projectId"
+    );
   });
 });
 

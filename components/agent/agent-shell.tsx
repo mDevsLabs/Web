@@ -7,6 +7,7 @@ import type { AgentComposerSubmit } from "@/components/agent/agent-composer";
 import { AgentComposer } from "@/components/agent/agent-composer";
 import { AgentHome } from "@/components/agent/agent-home";
 import { AgentRunTimeline } from "@/components/agent/agent-run-timeline";
+import { AgentRunFeedback } from "@/components/agent/agent-run-feedback";
 import {
   AgentStreamProvider,
   useAgentStream,
@@ -24,7 +25,6 @@ import { extractChatIdFromPath, useAgentMode } from "@/hooks/use-agent-mode";
 import { useAgentModels } from "@/hooks/use-agent-models";
 import { type ProjectLite, useProjects } from "@/hooks/use-projects";
 import { AGENT_COMPOSER_ARIA_LABEL } from "@/lib/agent/channel";
-import { apiEndpoints } from "@/lib/client/api-endpoints";
 import type {
   AgentRunRecord,
   AgentRunUsage,
@@ -33,6 +33,7 @@ import type {
   AgentToolActivity,
   ToolExecutionRecord,
 } from "@/lib/agent/types";
+import { apiEndpoints } from "@/lib/client/api-endpoints";
 import { fetcher } from "@/lib/utils";
 
 // Enveloppe de l'expérience Agent : le provider d'état de flux est monté ici,
@@ -155,6 +156,7 @@ function AgentShellInner() {
     modelId: currentModelId,
     visibility: visibilityType,
   });
+  const [resumeFromRunId, setResumeFromRunId] = useState<string | null>(null);
 
   // Reprise après refresh : la vérité est côté serveur (AgentRun / AgentStep /
   // ToolExecution). On hydrate la timeline depuis l'API, jamais depuis le flux.
@@ -257,7 +259,9 @@ function AgentShellInner() {
       attachments: payload.attachments,
       options: payload.options,
       text: payload.text,
+      resumeFromRunId: resumeFromRunId ?? undefined,
     });
+    setResumeFromRunId(null);
   };
 
   const isRunning = status === "streaming" || status === "submitted";
@@ -328,6 +332,23 @@ function AgentShellInner() {
             {showHome ? null : (
               <>
                 <AgentRunTimeline state={state} />
+                {flags["agent.activity"] && state.run && ["completed", "failed", "cancelled", "timed_out"].includes(state.run.status) ? (
+                  <AgentRunFeedback
+                    goalReached={((history?.runs ?? []).find((run) => run.id === state.run?.runId) as { goalReached?: boolean | null } | undefined)?.goalReached ?? null}
+                    key={state.run.runId}
+                    runId={state.run.runId}
+                    useful={((history?.runs ?? []).find((run) => run.id === state.run?.runId) as { useful?: boolean | null } | undefined)?.useful ?? null}
+                  />
+                ) : null}
+                {flags["agent.guidedResume"] && !isRunning && state.run?.status === "timed_out" ? (
+                  <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-3 text-sm">
+                    <p>Le délai est dépassé. Vous pouvez poursuivre dans un nouveau run lié à celui-ci.</p>
+                    <button className="mt-2 rounded-md bg-primary px-3 py-1.5 text-primary-foreground" onClick={() => setResumeFromRunId(state.run?.runId ?? null)} type="button">
+                      Poursuivre
+                    </button>
+                    {resumeFromRunId ? <p className="mt-2 text-xs">Ajoutez votre consigne dans la zone de saisie, puis envoyez-la.</p> : null}
+                  </div>
+                ) : null}
                 {!isRunning && suggestedActions.length > 0 ? (
                   <AgentSuggestedActions
                     actions={suggestedActions}

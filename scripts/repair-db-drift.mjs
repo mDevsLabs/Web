@@ -11,8 +11,9 @@
  * Aucune perte de données : conversions de type, ADD COLUMN IF NOT EXISTS,
  * lignes non convertibles mises de côté dans weekly_usage_drift_backup.
  */
-import postgres from "postgres";
+
 import { readFileSync } from "node:fs";
+import postgres from "postgres";
 
 const env = readFileSync(".env", "utf8");
 const urlMatch = env.match(/(?:DATABASE_URL|POSTGRES_URL)\s*=\s*"?([^"\n]+)"?/);
@@ -120,19 +121,25 @@ const check = await sql`
   ORDER BY table_name, column_name
 `;
 console.log(
-  check.map((c) => `${c.table_name}.${c.column_name} = ${c.data_type}`).join("\n")
+  check
+    .map((c) => `${c.table_name}.${c.column_name} = ${c.data_type}`)
+    .join("\n")
 );
 
 console.log("5/5 Requêtes de contrôle…");
 const skillQuery = await sql`
   SELECT count(*)::int AS n FROM "Skill" WHERE "userId" = ${"1"}::text
 `;
-console.log(`✓ Skill filtrable par userId texte : ${skillQuery[0].n} ligne(s).`);
+console.log(
+  `✓ Skill filtrable par userId texte : ${skillQuery[0].n} ligne(s).`
+);
 
 const usageQuery = await sql`
   SELECT count(*)::int AS n FROM weekly_usage WHERE user_id = ${1} AND week_start >= '2026-01-01'
 `;
-console.log(`✓ weekly_usage filtrable par user_id integer : ${usageQuery[0].n} ligne(s).`);
+console.log(
+  `✓ weekly_usage filtrable par user_id integer : ${usageQuery[0].n} ligne(s).`
+);
 
 await sql.end();
 console.log("\n✅ Réparation terminée.");

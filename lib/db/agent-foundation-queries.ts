@@ -1,16 +1,6 @@
 import "server-only";
 
-import {
-  and,
-  asc,
-  desc,
-  eq,
-  inArray,
-  lt,
-  lte,
-  or,
-  sql,
-} from "drizzle-orm";
+import { and, asc, desc, eq, inArray, lt, lte, or, sql } from "drizzle-orm";
 import type { ScheduleRule } from "@/lib/agent/contracts";
 import {
   type AgentOccurrenceRecord,
@@ -27,7 +17,9 @@ import {
   agentRun,
   agentRunInstruction,
   agentSchedule,
+  agentScheduleVersion,
   agentScheduleOccurrence,
+  agentUserInputRequest,
   approvalRequest,
 } from "@/lib/db/schema";
 import { ChatbotError } from "@/lib/errors";
@@ -57,9 +49,8 @@ export async function createAgentSchedule(params: {
 }): Promise<AgentScheduleRecord> {
   try {
     const db = await dbReady();
-    const [row] = await db
-      .insert(agentSchedule)
-      .values({
+    return await db.transaction(async (tx) => {
+      const [row] = await tx.insert(agentSchedule).values({
         agentId: params.agentId,
         config: params.config,
         instructions: params.instructions,
@@ -70,9 +61,15 @@ export async function createAgentSchedule(params: {
         timezone: params.timezone,
         title: params.title,
         userId: params.userId,
-      })
-      .returning();
-    return row;
+      }).returning();
+      await tx.insert(agentScheduleVersion).values({
+        revision: row.revision,
+        scheduleId: row.id,
+        snapshot: row,
+        userId: row.userId,
+      });
+      return row;
+    });
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -98,6 +95,12 @@ export async function getAgentScheduleById(params: {
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
+}
+
+export async function getAgentScheduleForScheduler(id: string): Promise<AgentScheduleRecord | null> {
+  const db = await dbReady();
+  const [row] = await db.select().from(agentSchedule).where(eq(agentSchedule.id, id)).limit(1);
+  return row ?? null;
 }
 
 export async function listAgentSchedules(params: {
@@ -141,41 +144,51 @@ export async function mutateAgentSchedule(params: {
             | "timezone"
             | "title"
           >
-        >;
+        > & Partial<AgentScheduleRecord["config"]>;
       }
     | { action: "resume" };
   userId: string;
 }): Promise<boolean> {
   try {
     const db = await dbReady();
-    const set: Record<string, unknown> = {
-      revision: sql`${agentSchedule.revision} + 1`,
-      updatedAt: new Date(),
-    };
-    if (params.mutation.action === "delete") {
-      set.deletedAt = new Date();
-      set.status = "deleted";
-    } else if (params.mutation.action === "pause") {
-      set.status = "paused";
-    } else if (params.mutation.action === "resume") {
-      set.status = "active";
-    } else {
-      Object.assign(set, params.mutation.patch);
-    }
-
-    const rows = await db
-      .update(agentSchedule)
-      .set(set)
-      .where(
-        and(
-          eq(agentSchedule.id, params.id),
-          eq(agentSchedule.userId, params.userId),
-          eq(agentSchedule.revision, params.expectedRevision),
-          sql`${agentSchedule.deletedAt} IS NULL`
-        )
-      )
-      .returning({ id: agentSchedule.id });
-    return rows.length > 0;
+    return await db.transaction(async (tx) => {
+      const [current] = await tx.select().from(agentSchedule).where(and(
+        eq(agentSchedule.id, params.id), eq(agentSchedule.userId, params.userId),
+        eq(agentSchedule.revision, params.expectedRevision), sql`${agentSchedule.deletedAt} IS NULL`
+      )).limit(1);
+      if (!current) return false;
+      const set: Record<string, unknown> = {
+        revision: sql`${agentSchedule.revision} + 1`, updatedAt: new Date(),
+      };
+      if (params.mutation.action === "delete") {
+        set.deletedAt = new Date(); set.status = "deleted";
+      } else if (params.mutation.action === "pause") {
+        set.status = "paused";
+      } else if (params.mutation.action === "resume") {
+        set.status = "active";
+      } else {
+        const { autonomy, enabledCategories, reasoningLevel, ...columns } = params.mutation.patch;
+        Object.assign(set, columns);
+        if (autonomy !== undefined || enabledCategories !== undefined || reasoningLevel !== undefined) {
+          set.config = {
+            ...current.config,
+            ...(autonomy === undefined ? {} : { autonomy }),
+            ...(enabledCategories === undefined ? {} : { enabledCategories }),
+            ...(reasoningLevel === undefined ? {} : { reasoningLevel }),
+          };
+        }
+      }
+      const [updated] = await tx.update(agentSchedule).set(set).where(and(
+        eq(agentSchedule.id, params.id), eq(agentSchedule.userId, params.userId),
+        eq(agentSchedule.revision, params.expectedRevision), sql`${agentSchedule.deletedAt} IS NULL`
+      )).returning();
+      if (!updated) return false;
+      await tx.insert(agentScheduleVersion).values({
+        revision: updated.revision, scheduleId: updated.id,
+        snapshot: updated, userId: updated.userId,
+      });
+      return true;
+    });
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -184,6 +197,7 @@ export async function mutateAgentSchedule(params: {
 export async function setAgentScheduleError(params: {
   id: string;
   lastError: string | null;
+  expectedRevision?: number;
 }): Promise<void> {
   try {
     const db = await dbReady();
@@ -193,7 +207,7 @@ export async function setAgentScheduleError(params: {
         lastError: params.lastError,
         ...(params.lastError === null ? {} : { status: "paused" as const }),
       })
-      .where(eq(agentSchedule.id, params.id));
+      .where(and(eq(agentSchedule.id, params.id), ...(params.expectedRevision === undefined ? [] : [eq(agentSchedule.revision, params.expectedRevision)])));
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -203,13 +217,14 @@ export async function recordScheduleRun(params: {
   id: string;
   lastRunAt: Date;
   nextDueAt: Date;
+  expectedRevision?: number;
 }): Promise<void> {
   try {
     const db = await dbReady();
     await db
       .update(agentSchedule)
       .set({ lastRunAt: params.lastRunAt, nextDueAt: params.nextDueAt })
-      .where(eq(agentSchedule.id, params.id));
+      .where(and(eq(agentSchedule.id, params.id), ...(params.expectedRevision === undefined ? [] : [eq(agentSchedule.revision, params.expectedRevision)])));
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -229,7 +244,11 @@ export async function ensureOccurrence(params: {
     const db = await dbReady();
     const inserted = await db
       .insert(agentScheduleOccurrence)
-      .values({ dueAt: params.dueAt, scheduleId: params.scheduleId })
+      .values({
+        dueAt: params.dueAt,
+        scheduleId: params.scheduleId,
+        scheduleVersionId: sql`(SELECT "id" FROM "AgentScheduleVersion" WHERE "scheduleId" = ${params.scheduleId} ORDER BY "revision" DESC LIMIT 1)`,
+      })
       .onConflictDoNothing()
       .returning();
     if (inserted[0]) {
@@ -298,20 +317,20 @@ export async function claimOccurrence(params: {
       .where(
         and(
           eq(agentScheduleOccurrence.id, params.occurrenceId),
-        // Comparaison de date via lt() : un fragment sql`${col} < ${date}`
-        // passe l'objet Date brut au driver (sans mapping Drizzle) et échoue
-        // avec TypeError "Received an instance of Date".
-        or(
-          eq(agentScheduleOccurrence.status, "pending"),
-          and(
-            eq(agentScheduleOccurrence.status, "claimed"),
-            lt(agentScheduleOccurrence.leaseUntil, params.now)
-          ),
-          and(
-            eq(agentScheduleOccurrence.status, "running"),
-            lt(agentScheduleOccurrence.leaseUntil, params.now)
+          // Comparaison de date via lt() : un fragment sql`${col} < ${date}`
+          // passe l'objet Date brut au driver (sans mapping Drizzle) et échoue
+          // avec TypeError "Received an instance of Date".
+          or(
+            eq(agentScheduleOccurrence.status, "pending"),
+            and(
+              eq(agentScheduleOccurrence.status, "claimed"),
+              lt(agentScheduleOccurrence.leaseUntil, params.now)
+            ),
+            and(
+              eq(agentScheduleOccurrence.status, "running"),
+              lt(agentScheduleOccurrence.leaseUntil, params.now)
+            )
           )
-        )
         )
       )
       .returning();
@@ -339,6 +358,53 @@ export async function startOccurrence(params: {
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
+}
+
+export async function waitOccurrence(params: { id: string; runId: string }): Promise<void> {
+  const db = await dbReady();
+  await db.update(agentScheduleOccurrence).set({
+    runId: params.runId, status: "waiting", leaseUntil: null,
+  }).where(eq(agentScheduleOccurrence.id, params.id));
+}
+
+export async function listWaitingOccurrences(params: { limit?: number }): Promise<AgentOccurrenceRecord[]> {
+  const db = await dbReady();
+  return db.select().from(agentScheduleOccurrence)
+    .where(eq(agentScheduleOccurrence.status, "waiting"))
+    .orderBy(asc(agentScheduleOccurrence.claimedAt)).limit(params.limit ?? 50);
+}
+
+export async function getWaitingRequestExpiry(params: {
+  kind: "approval" | "user";
+  runId: string;
+}): Promise<Date | null> {
+  const db = await dbReady();
+  if (params.kind === "approval") {
+    const [request] = await db.select({ expiresAt: approvalRequest.expiresAt, status: approvalRequest.status })
+      .from(approvalRequest).where(eq(approvalRequest.runId, params.runId))
+      .orderBy(desc(approvalRequest.createdAt)).limit(1);
+    return request && ["pending", "expired"].includes(request.status) ? request.expiresAt : null;
+  }
+  const [request] = await db.select({ expiresAt: agentUserInputRequest.expiresAt, status: agentUserInputRequest.status })
+    .from(agentUserInputRequest).where(eq(agentUserInputRequest.runId, params.runId))
+    .orderBy(desc(agentUserInputRequest.createdAt)).limit(1);
+  return request && ["pending", "expired"].includes(request.status) ? request.expiresAt : null;
+}
+
+export async function getScheduleVersionById(params: { id: string; scheduleId: string }) {
+  const db = await dbReady();
+  const [row] = await db.select().from(agentScheduleVersion).where(and(
+    eq(agentScheduleVersion.id, params.id), eq(agentScheduleVersion.scheduleId, params.scheduleId)
+  )).limit(1);
+  return row ?? null;
+}
+
+export async function listScheduleVersions(params: { scheduleId: string; limit?: number }) {
+  const db = await dbReady();
+  const query = db.select().from(agentScheduleVersion)
+    .where(eq(agentScheduleVersion.scheduleId, params.scheduleId))
+    .orderBy(desc(agentScheduleVersion.revision));
+  return params.limit === undefined ? query : query.limit(params.limit);
 }
 
 export async function finishOccurrence(params: {
@@ -431,13 +497,14 @@ export async function resetOccurrenceToPending(params: {
 export async function deactivateScheduleAfterRun(params: {
   id: string;
   lastRunAt: Date;
+  expectedRevision?: number;
 }): Promise<void> {
   try {
     const db = await dbReady();
     await db
       .update(agentSchedule)
       .set({ lastRunAt: params.lastRunAt, status: "paused" })
-      .where(eq(agentSchedule.id, params.id));
+      .where(and(eq(agentSchedule.id, params.id), ...(params.expectedRevision === undefined ? [] : [eq(agentSchedule.revision, params.expectedRevision)])));
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }

@@ -206,7 +206,7 @@ function PureMultimodalInput({
     () =>
       Array.isArray(pluginsData?.plugins)
         ? pluginsData.plugins.filter(
-            (plugin) => plugin.installed && plugin.enabled
+            (plugin) => plugin.installed && plugin.enabled && !plugin.locked
           )
         : [],
     [pluginsData]
@@ -441,9 +441,10 @@ function PureMultimodalInput({
         );
       } else if (payload.type === "plugin") {
         mentionTag = `@${payload.plugin.name} `;
-        const pluginToolId = payload.plugin.tool.id;
-        if (!pendingTools.includes(pluginToolId as any)) {
-          togglePendingTool(pluginToolId as any);
+        for (const pluginTool of payload.plugin.tools) {
+          if (!pendingTools.includes(pluginTool.id as any)) {
+            togglePendingTool(pluginTool.id as any);
+          }
         }
         toast.success(
           `Plugin activé pour le prochain message : ${payload.plugin.name}`

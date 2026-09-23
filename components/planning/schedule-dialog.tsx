@@ -33,6 +33,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { DEFAULT_CHAT_MODEL, FALLBACK_MODELS } from "@/lib/ai/models";
 import { TOOL_IDS, TOOLS_META, type ToolId } from "@/lib/ai/tools/config";
+import { PLUGIN_TOOL_IDS } from "@/lib/plugins/catalog";
+import type { PluginCatalogEntry } from "@/lib/plugins/types";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { Agent, ScheduledMessage } from "@/lib/db/schema";
 import { cn, fetcher } from "@/lib/utils";
@@ -72,6 +74,22 @@ export function ScheduleDialog({
   const [isCloudPickerOpen, setIsCloudPickerOpen] = useState(false);
   const [customInstructions, setCustomInstructions] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { data: pluginData } = useSWR<{ plugins: PluginCatalogEntry[] }>(
+    isOpen ? "/api/plugins" : null,
+    fetcher,
+    { revalidateOnFocus: false }
+  );
+  const activePluginTools = (pluginData?.plugins ?? [])
+    .filter((plugin) => plugin.installed && plugin.enabled && !plugin.locked)
+    .flatMap((plugin) =>
+      plugin.tools.map((pluginTool) => ({
+        id: pluginTool.id,
+        label: `${plugin.name} · ${pluginTool.label}`,
+      }))
+    );
+  const activePluginToolIds = new Set(
+    activePluginTools.map((pluginTool) => pluginTool.id)
+  );
 
   useEffect(() => {
     if (initialData) {
@@ -510,7 +528,8 @@ export function ScheduleDialog({
                 (tid) =>
                   tid !== "updateAccountProfile" &&
                   tid !== "getAccountUsage" &&
-                  tid !== "updateProfilePicture"
+                  tid !== "updateProfilePicture" &&
+                  (!PLUGIN_TOOL_IDS.includes(tid) || activePluginToolIds.has(tid))
               ).map((tid) => {
                 const meta = TOOLS_META[tid];
                 const active = enabledTools.includes(tid);
@@ -535,6 +554,34 @@ export function ScheduleDialog({
                   </button>
                 );
               })}
+              {activePluginTools
+                .filter(
+                  (pluginTool) =>
+                    !(TOOL_IDS as readonly string[]).includes(pluginTool.id)
+                )
+                .map((pluginTool) => {
+                  const active = enabledTools.includes(pluginTool.id);
+                  return (
+                    <button
+                      className={cn(
+                        "flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs transition cursor-pointer",
+                        active
+                          ? "border-primary bg-primary/10 text-primary font-medium"
+                          : "border-border/50 bg-background text-muted-foreground hover:bg-muted"
+                      )}
+                      key={pluginTool.id}
+                      onClick={() => toggleTool(pluginTool.id)}
+                      type="button"
+                    >
+                      {active ? (
+                        <CheckCircle2Icon className="size-3 text-primary" />
+                      ) : (
+                        <PlusIcon className="size-3 opacity-50" />
+                      )}
+                      <span>{pluginTool.label}</span>
+                    </button>
+                  );
+                })}
             </div>
           </div>
 

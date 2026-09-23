@@ -129,7 +129,7 @@ export async function buildMcpAgentTools(params: {
       },
       id: toolId,
       name: `${params.server.name} · ${cached.name}`,
-      permissions: { default: "ask", readOnly: false },
+      permissions: { default: "ask", impact: "external_mutation", readOnly: false },
       schema: z.record(z.string(), z.unknown()) as z.ZodType<
         Record<string, unknown>
       >,

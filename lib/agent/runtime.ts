@@ -58,6 +58,7 @@ import { saveAgentRunCheckpoint } from "@/lib/db/agent-foundation-queries";
 import {
   bumpAgentRunCounters,
   createAgentStep,
+  releaseAgentRunExecution,
   setAgentRunPlan,
   setAgentRunSuggestedActions,
   setAgentRunUsage,
@@ -69,7 +70,7 @@ import { generateUUID } from "@/lib/utils";
 
 // Runtime Agent : une boucle de tool calling standard, portée par les primitives
 // du SDK AI — streamText multi-steps (stopWhen), sélection d'outils par étape
-// (prepareStep), fin d'étape (onStepEnd), approbations signées (toolApproval) et
+// (prepareStep), fin d'étape (onStepEnd), approbations persistées (needsApproval) et
 // sources natives. Aucune orchestration propriétaire, aucune infrastructure
 // distante : seulement des messages, des outils, du streaming et la base.
 
@@ -93,6 +94,7 @@ export type AgentStreamParams = {
   reasoningLevel: ReasoningLevel;
   revision?: number;
   runId: string;
+  executionOwner?: string;
   sessionToken: string;
   shouldRenameAfterFirst: boolean;
   // Transport des parts de raisonnement : activé uniquement quand le modèle
@@ -183,6 +185,8 @@ export function createAgentStream(params: AgentStreamParams) {
         }).catch(() => false);
         if (saved) {
           revision += 1;
+        } else {
+          console.warn(JSON.stringify({ event: "agent_checkpoint_conflict", runId: params.runId, revision, stepCount: state.stepIndex, toolCallCount: state.toolCallCount }));
         }
         return saved;
       };
@@ -414,7 +418,7 @@ export function createAgentStream(params: AgentStreamParams) {
         },
         prepareStep: ({ steps }) => {
           const elapsed = clock.now() - params.startedAt;
-          // Comptage CUMULÉ à travers les reprises : baseline persistée + 
+          // Comptage CUMULÉ à travers les reprises : baseline persistée +
           // étapes de l'invocation en cours. L'ancien calcul ne comptait que
           // `steps` (par invocation), si bien qu'une longue tâche reprise
           // plusieurs fois n'atteignait jamais son plafond.
@@ -497,7 +501,7 @@ export function createAgentStream(params: AgentStreamParams) {
         : state.waitingForUser
           ? "waiting_for_user"
           : aborted
-            ? "cancelled"
+            ? params.abortSignal?.reason === "scheduler_deadline" ? "timed_out" : "cancelled"
             : failure
               ? state.lastErrorCategory === "timeout"
                 ? "timed_out"
@@ -539,7 +543,17 @@ export function createAgentStream(params: AgentStreamParams) {
             : null),
         id: params.runId,
         status: finalStatus,
+        onlyIfActive: true,
+        stopReason: finalStatus === "timed_out"
+          ? params.abortSignal?.reason === "scheduler_deadline" ? "scheduler_deadline" : "duration_limit"
+          : finalStatus === "cancelled" ? "interrupted" : finalStatus === "failed" ? "execution_error" : null,
       }).catch(() => {});
+      if (finalStatus === "timed_out") {
+        console.warn(JSON.stringify({ event: "agent_run_timed_out", runId: params.runId, stepCount: state.stepIndex, toolCallCount: state.toolCallCount }));
+      }
+      if (params.executionOwner) {
+        await releaseAgentRunExecution({ id: params.runId, owner: params.executionOwner }).catch(() => {});
+      }
 
       if (productLimitReached) {
         emitBusiness({
@@ -629,6 +643,9 @@ export function createAgentStream(params: AgentStreamParams) {
       });
     },
     onError: (error) => {
+      if (params.executionOwner) {
+        releaseAgentRunExecution({ id: params.runId, owner: params.executionOwner }).catch(() => {});
+      }
       console.error("Erreur de streaming Agent :", error);
       return "Agent a rencontré une erreur pendant l'exécution. Les étapes déjà réalisées restent visibles.";
     },

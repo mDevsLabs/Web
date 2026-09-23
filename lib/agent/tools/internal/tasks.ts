@@ -53,9 +53,10 @@ export const tasksToolInputSchema = z.object({
 
 export type TasksToolInput = z.infer<typeof tasksToolInputSchema>;
 
-export function tasksToPlan(
-  input: TasksToolInput
-): { items: AgentPlanItem[]; title: string } {
+export function tasksToPlan(input: TasksToolInput): {
+  items: AgentPlanItem[];
+  title: string;
+} {
   return {
     items: input.tasks.map((task, index) => ({
       id: `task-${index + 1}`,

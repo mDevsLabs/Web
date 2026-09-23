@@ -31,7 +31,7 @@ async function main() {
 
   const sql = postgres(url, { max: 1 });
   try {
-    const totals = { converted: 0, already: 0, unresolved: 0 };
+    const totals = { already: 0, converted: 0, unresolved: 0 };
 
     for (const table of TABLES) {
       const rows = await sql<Array<{ userId: string; n: string }>>`
@@ -45,7 +45,9 @@ async function main() {
         const count = Number(row.n);
         if (!owner) {
           totals.unresolved += count;
-          console.warn(`[${table}] userId NULL sur ${count} ligne(s) — à traiter à la main.`);
+          console.warn(
+            `[${table}] userId NULL sur ${count} ligne(s) — à traiter à la main.`
+          );
           continue;
         }
         if (!owner.includes("@")) {
@@ -104,6 +106,9 @@ async function main() {
 }
 
 main().catch((error) => {
-  console.error("Échec de la migration des propriétaires de conversations :", error);
+  console.error(
+    "Échec de la migration des propriétaires de conversations :",
+    error
+  );
   process.exit(1);
 });

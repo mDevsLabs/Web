@@ -1,0 +1,18 @@
+{
+  "id": "world-bank",
+  "name": "Banque mondiale",
+  "version": "1.0.0",
+  "description": "Données publiques sur les pays et indicateurs économiques et sociaux.",
+  "author": "mAI",
+  "category": "data",
+  "tags": ["pays", "indicateurs", "économie", "démographie", "données", "Banque mondiale"],
+  "icon": { "type": "lucide", "name": "BarChart3" },
+  "minTier": "plus",
+  "permissions": { "network": "read-only", "readsUserData": false, "writesUserData": false, "requiresApproval": false },
+  "tools": [
+    { "id": "listWorldBankCountries", "label": "Pays", "description": "Pays, régions et niveaux de revenu.", "systemHint": "listWorldBankCountries (liste les pays et économies par nom ou code)" },
+    { "id": "searchWorldBankIndicators", "label": "Indicateurs", "description": "Recherche des indicateurs Banque mondiale.", "systemHint": "searchWorldBankIndicators (recherche des indicateurs de la Banque mondiale)" },
+    { "id": "getWorldBankSeries", "label": "Série chronologique", "description": "Série d'un indicateur dans un pays.", "systemHint": "getWorldBankSeries (valeurs annuelles d'un indicateur pour un pays et intervalle)" },
+    { "id": "compareWorldBankCountries", "label": "Comparer des pays", "description": "Compare un indicateur entre plusieurs pays.", "systemHint": "compareWorldBankCountries (compare 2 à 5 pays pour un indicateur et une période)" }
+  ]
+}

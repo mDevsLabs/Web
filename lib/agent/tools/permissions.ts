@@ -47,6 +47,15 @@ export function resolveToolPermission(params: {
   tool: Pick<RegisteredAgentTool, "id" | "permissions">;
 }): ToolPermission {
   const override = params.overrides?.[params.tool.id];
+  const sensitive =
+    params.tool.permissions.destructive ||
+    params.tool.permissions.impact === "external_mutation" ||
+    params.tool.permissions.impact === "deletion";
+  // La désactivation reste possible, mais aucune surcharge ni autonomie ne
+  // peut transformer une mutation externe ou une suppression en exécution libre.
+  if (sensitive) {
+    return override === "off" ? "off" : "ask";
+  }
   if (override) {
     return override;
   }

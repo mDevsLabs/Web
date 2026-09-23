@@ -1,7 +1,9 @@
+import { randomUUID } from "node:crypto";
+import { convertToModelMessages } from "ai";
 import { applyIncomingApprovalDecisions } from "@/lib/agent/approvals/incoming";
 import { resolveAgentExecutionBudget } from "@/lib/agent/budget";
 import { buildAgentContext } from "@/lib/agent/context/build";
-import { collectAttachments } from "@/lib/agent/context/files";
+import { collectAttachments, validateAttachmentsAgainstModel } from "@/lib/agent/context/files";
 import { loadAgentProjectContext } from "@/lib/agent/context/project";
 import {
   type AgentTierFailure,
@@ -18,14 +20,16 @@ import {
 } from "@/lib/agent/runtime";
 import { loadAgentSettings, toToolCategories } from "@/lib/agent/settings";
 import { listMcpAgentTools } from "@/lib/agent/tools/adapters/mcp";
+import {
+  getMentionedPluginToolIds,
+  listInstalledPluginAgentTools,
+  narrowPluginAgentToolsForTask,
+} from "@/lib/agent/tools/adapters/plugins";
 import { applyToolPermissions } from "@/lib/agent/tools/permissions";
 import { listRegisteredAgentTools } from "@/lib/agent/tools/registry";
 import { selectAgentTools } from "@/lib/agent/tools/selector";
 import { familyForCategory } from "@/lib/agent/tools/selector/families";
-import type {
-  RegisteredAgentTool,
-  ToolPermission,
-} from "@/lib/agent/types";
+import type { RegisteredAgentTool, ToolPermission } from "@/lib/agent/types";
 import { injectUserInputAnswers } from "@/lib/agent/user-input/inject";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
@@ -37,11 +41,17 @@ import { loadMcpContext } from "@/lib/chat/mcp";
 import {
   createAgentRun,
   createAgentStep,
+  claimAgentRunExecution,
   getActiveAgentRunByChatId,
+  getAgentRunByMessageId,
+  getAgentRunById,
+  getAgentStepsByRunId,
+  getToolExecutionsByRunId,
   updateAgentRunStatus,
 } from "@/lib/db/agent-queries";
 import { getAnsweredAgentUserInputsForRun } from "@/lib/db/agent-user-input-queries";
 import { ChatbotError } from "@/lib/errors";
+import { saveMessages } from "@/lib/db/queries";
 import type { ChatMessage } from "@/lib/types";
 import { getTextFromMessage } from "@/lib/utils";
 import { type AgentRequestBody, agentRequestBodySchema } from "./schema";
@@ -120,6 +130,21 @@ export async function POST(request: Request) {
       });
     }
 
+    // Un rejeu retrouve le run avant le nouveau contrôle de quota : le
+    // premier essai a pu consommer le reste du quota après avoir été accepté.
+    const incomingMessageId = (body.message as { id?: string } | undefined)?.id ?? null;
+    if (incomingMessageId) {
+      const replay = await getAgentRunByMessageId({ chatId: body.id, messageId: incomingMessageId });
+      if (replay) {
+        if (replay.userId !== auth.userId) return errorResponse("access_denied");
+        return Response.json({ code: "existing_run", runId: replay.id, status: replay.status }, { status: 409 });
+      }
+      const active = await getActiveAgentRunByChatId({ chatId: body.id });
+      if (active && active.userId === auth.userId) {
+        return Response.json({ code: "active_run_conflict", runId: active.id }, { status: 409 });
+      }
+    }
+
     // 3. Garde serveur : flag, forfait payant, quota hebdomadaire.
     const access = checkAgentAccess(auth);
     if (!access.allowed) {
@@ -127,34 +152,14 @@ export async function POST(request: Request) {
     }
     const { flags, tier } = access;
 
-    // 4. Contexte partagé avec le Chat : création de la conversation en mode
-    // « agent », projet, mémoire, assistant, skill, hints géographiques.
-    const ctx = await buildChatContext(request, auth, {
-      agentId: body.assistantId ?? null,
-      enabledTools: [],
-      id: body.id,
-      isGhostMode: false,
-      message: (body.message as ChatMessage | undefined) ?? null,
-      messages: (body.messages as ChatMessage[] | undefined) ?? null,
-      mode: "agent",
-      pendingPrompt: null,
-      projectId: body.projectId,
-      selectedAgentId: body.assistantId ?? null,
-      selectedChatMode: "agent",
-      selectedChatModel: body.modelId,
-      selectedVisibilityType: body.visibility,
-      skillId: body.skillId,
-      tags: ["agent"],
-    });
-
-    // 5. Registre de modèles : forfait, capacités, modèle réellement utilisable.
+    // 4. Registre de modèles : forfait, capacités, modèle réellement utilisable.
     // Le registre évalué est celui de l'utilisateur (fetchUserModels) — le
     // même catalogue que le sélecteur client. checkAgentModelAccess ne doit
     // jamais rejuger le modèle sur un autre catalogue (FALLBACK_MODELS) : un
     // modèle réel de l'utilisateur serait sinon classé « sans outils » et
     // refusé (model_access_denied) alors qu'il est sélectionnable dans l'UI.
     const models = await fetchUserModels();
-    const settings = await loadAgentSettings({ userId: ctx.userId });
+    const settings = await loadAgentSettings({ userId: auth.userId });
     const requested = getModelEntry(body.modelId, models);
     const resolvedModel = requested.capabilities.tools
       ? requested.id
@@ -183,6 +188,28 @@ export async function POST(request: Request) {
     }
     const capabilities = modelAccess.capabilities;
 
+    // 5. Le contexte partagé est construit avec le modèle EFFECTIF : les
+    // fichiers du projet et leurs limites ne suivent jamais le modèle demandé
+    // si Agent a choisi un repli compatible avec les outils.
+    const ctx = await buildChatContext(request, auth, {
+      agentId: body.assistantId ?? null,
+      enabledTools: [],
+      id: body.id,
+      isGhostMode: false,
+      message: (body.message as ChatMessage | undefined) ?? null,
+      messages: (body.messages as ChatMessage[] | undefined) ?? null,
+      mode: "agent",
+      persistIncomingMessage: false,
+      pendingPrompt: null,
+      projectId: body.projectId,
+      selectedAgentId: body.assistantId ?? null,
+      selectedChatMode: "agent",
+      selectedChatModel: resolvedModel,
+      selectedVisibilityType: body.visibility,
+      skillId: body.skillId,
+      tags: ["agent"],
+    });
+
     // 6. Fichiers : types, nombre et capacités du modèle revérifiés.
     const attachments = collectAttachments(
       (body.message as ChatMessage | undefined) ?? null
@@ -203,6 +230,15 @@ export async function POST(request: Request) {
         message: `Ce modèle accepte au maximum ${capabilities.maxFiles} fichiers (${attachments.length} fournis).`,
       });
     }
+    const mediaValidation = validateAttachmentsAgainstModel({
+      attachments,
+      capabilities,
+    });
+    if (mediaValidation.error) {
+      return errorResponse("unsupported_media_type", {
+        message: mediaValidation.error,
+      });
+    }
 
     // 7. Réflexion et autonomie : valeurs validées, jamais transmises telles quelles.
     const reasoningLevel = normalizeAgentReasoningLevel({
@@ -216,9 +252,54 @@ export async function POST(request: Request) {
 
     // 8. Nouveau run ou reprise du run en attente (approbation, question).
     const isContinuation = Boolean(body.messages);
+    const messageId = (body.message as { id?: string } | undefined)?.id ?? null;
+    if (!isContinuation && messageId) {
+      const replay = await getAgentRunByMessageId({ chatId: ctx.id, messageId });
+      if (replay) {
+        return Response.json({ code: "existing_run", runId: replay.id, status: replay.status }, { status: 409 });
+      }
+    }
     const activeRun = isContinuation
       ? await getActiveAgentRunByChatId({ chatId: ctx.id })
       : null;
+    if (isContinuation && !activeRun) {
+      return errorResponse("conflict", { message: "Aucun run actif à reprendre dans cette conversation." });
+    }
+    if (!isContinuation) {
+      const active = await getActiveAgentRunByChatId({ chatId: ctx.id });
+      if (active) {
+        return Response.json({ code: "active_run_conflict", runId: active.id }, { status: 409 });
+      }
+    }
+    let resumeSummary: string | null = null;
+    let parentRunId: string | null = null;
+    if (body.resumeFromRunId) {
+      if (!flags["agent.guidedResume"]) return errorResponse("service_unavailable", { message: "La reprise guidée n'est pas encore activée." });
+      if (isContinuation) return errorResponse("invalid_request", { message: "Une reprise guidée doit envoyer une nouvelle consigne." });
+      const parent = await getAgentRunById({ id: body.resumeFromRunId, userId: ctx.userId });
+      if (!parent || parent.chatId !== ctx.id || parent.status !== "timed_out") {
+        return errorResponse("invalid_request", { message: "Le run à poursuivre est introuvable ou n'a pas expiré dans cette conversation." });
+      }
+      parentRunId = parent.id;
+      const [steps, executions] = await Promise.all([
+        getAgentStepsByRunId({ runId: parent.id }),
+        getToolExecutionsByRunId({ runId: parent.id }),
+      ]);
+      const completed = executions.filter((item) => item.status === "completed").slice(-8);
+      const entries = completed.map((item) => {
+        const output = item.output && typeof item.output === "object" ? item.output as Record<string, unknown> : {};
+        const useful = ["title", "url", "documentId", "artifactId", "source"].map((key) => output[key]).filter((value): value is string => typeof value === "string").map((value) => value.slice(0, 180));
+        return `- ${item.toolId}: ${useful.join(" · ") || "résultat disponible dans l'historique"}`;
+      });
+      resumeSummary = [
+        `Reprise liée au run ${parent.id}. Le run initial et ses limites restent inchangés.`,
+        `Arrêt: ${(parent.stopReason ?? parent.error ?? "délai dépassé").slice(0, 180)}`,
+        "Étapes utiles:",
+        ...steps.filter((step) => step.status === "completed").slice(-10).map((step) => `- ${step.title}: ${(step.summary ?? "").slice(0, 180)}`),
+        "Résultats, sources et livrables:",
+        ...entries,
+      ].join("\n").slice(0, 3500);
+    }
 
     const task = isContinuation
       ? lastUserText(body.messages)
@@ -234,9 +315,16 @@ export async function POST(request: Request) {
     // exactement les outils du run pour ne pas invalider un appel en attente.
     // Outils MCP : les serveurs installés et activés deviennent des outils
     // réellement exécutables (source "mcp"), sous le drapeau agent.mcp.
+    const pluginAgentContext = flags["agent.plugins"]
+      ? await listInstalledPluginAgentTools({ tier, userId: ctx.userId }).catch(() => ({ pluginIds: [], tools: [] }))
+      : { pluginIds: [], tools: [] };
+    const registeredTools = [
+      ...listRegisteredAgentTools(),
+      ...pluginAgentContext.tools,
+    ];
     const baselineTools = flags["agent.mcp"]
       ? [
-          ...listRegisteredAgentTools(),
+          ...registeredTools,
           ...(await loadMcpContext({
             chatId: ctx.id,
             isToolApprovalFlow: false,
@@ -254,7 +342,7 @@ export async function POST(request: Request) {
             )
             .catch(() => [])),
         ]
-      : listRegisteredAgentTools();
+      : registeredTools;
     const continuationSnapshot = activeRun
       ? (activeRun.toolPolicySnapshot as Record<string, ToolPermission>)
       : null;
@@ -290,6 +378,13 @@ export async function POST(request: Request) {
         userTier: tier,
       });
       selectedTools = selection.tools;
+      if ((body.toolMode ?? "auto") === "auto") {
+        selectedTools = narrowPluginAgentToolsForTask(
+          task,
+          selectedTools,
+          pluginAgentContext.pluginIds
+        );
+      }
 
       // Options one-shot : les outils correspondants sont forcés dans le
       // plateau, indépendamment du mode de sélection (auto / all / catégories).
@@ -308,6 +403,12 @@ export async function POST(request: Request) {
               selectedTools = [...selectedTools, forced];
             }
           }
+        }
+      }
+      for (const toolId of getMentionedPluginToolIds(task, pluginAgentContext.pluginIds)) {
+        if (!selectedTools.some((tool) => tool.id === toolId)) {
+          const forced = baselineTools.find((tool) => tool.id === toolId);
+          if (forced) selectedTools = [...selectedTools, forced];
         }
       }
     }
@@ -354,20 +455,44 @@ export async function POST(request: Request) {
         : null);
 
     // 11. Run : création, ou reprise du même run (statut remis en exécution).
-    const run =
-      activeRun ??
-      (await createAgentRun({
+    let run = activeRun;
+    if (!run) {
+      try {
+        run = await createAgentRun({
         autonomy,
         budget,
         chatId: ctx.id,
-        messageId: (body.message as { id?: string } | undefined)?.id ?? null,
+        messageId,
+        parentRunId,
         model: resolvedModel,
         plan,
         reasoningLevel,
         status: "running",
         toolPolicySnapshot: permissions.snapshot,
         userId: ctx.userId,
-      }));
+        });
+      } catch (error) {
+        const replay = messageId ? await getAgentRunByMessageId({ chatId: ctx.id, messageId }) : null;
+        if (replay) return Response.json({ code: "existing_run", runId: replay.id, status: replay.status }, { status: 409 });
+        const conflict = await getActiveAgentRunByChatId({ chatId: ctx.id });
+        if (conflict) return Response.json({ code: "active_run_conflict", runId: conflict.id }, { status: 409 });
+        throw error;
+      }
+    }
+
+    const executionOwner = randomUUID();
+    if (!await claimAgentRunExecution({ id: run.id, owner: executionOwner })) {
+      console.warn(JSON.stringify({ event: "agent_run_reservation_conflict", runId: run.id, chatId: ctx.id }));
+      return Response.json({ code: "run_execution_in_progress", runId: run.id }, { status: 409 });
+    }
+    if (body.message) {
+      await saveMessages({ messages: [{
+        attachments: [], chatId: ctx.id, createdAt: new Date(),
+        id: messageId as string, parts: (body.message as ChatMessage).parts,
+        role: "user",
+      }] });
+    }
+    if (parentRunId) console.info(JSON.stringify({ event: "agent_run_resumed", runId: run.id, parentRunId, chatId: ctx.id }));
 
     if (activeRun) {
       await updateAgentRunStatus({ id: activeRun.id, status: "running" });
@@ -413,7 +538,7 @@ export async function POST(request: Request) {
 
     // 13. Contexte projet ciblé puis construction du contexte envoyé au modèle.
     const projectContext = await loadAgentProjectContext({
-      modelId: ctx.chatModel,
+      modelId: resolvedModel,
       projectId: ctx.effectiveProjectId ?? null,
       userEmail: ctx.userEmail,
       userId: ctx.userId,
@@ -455,13 +580,16 @@ export async function POST(request: Request) {
       assistantInstructions: ctx.agentInstructions,
       attachments,
       autonomy,
-      chatInstructions: [ctx.chatCustomInstructions, oneShotInstructions]
-        .filter(Boolean)
-        .join("\n\n") || null,
+      chatInstructions:
+        [ctx.chatCustomInstructions, oneShotInstructions, resumeSummary]
+          .filter(Boolean)
+          .join("\n\n") || null,
       contextWindow: capabilities.contextWindow,
       families,
       memoryBlock: null,
-      messages: ctx.modelMessages,
+      messages: parentRunId && body.message
+        ? await convertToModelMessages([body.message as ChatMessage])
+        : ctx.modelMessages,
       plan,
       project: projectContext,
       reasoningLevel,
@@ -497,6 +625,7 @@ export async function POST(request: Request) {
       projectId: ctx.effectiveProjectId ?? null,
       reasoningLevel,
       runId: run.id,
+      executionOwner,
       // Réflexion visible par défaut : identique au Chat (lib/chat/stream.ts
       // envoie toujours sendReasoning: true). Seuls les parts explicitement
       // fournis par le provider transitent — jamais de chain-of-thought fabriqué.

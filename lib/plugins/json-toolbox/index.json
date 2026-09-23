@@ -14,9 +14,10 @@
     "writesUserData": false,
     "requiresApproval": false
   },
-  "tool": {
+  "tools": [{
+    "description": "Valider, formater, minifier et comparer un document JSON.",
     "id": "jsonToolbox",
     "label": "Boîte à outils JSON",
     "systemHint": "jsonToolbox (valide, formate, minifie, compare deux JSON ou liste les chemins d'un document ; signale la position exacte d'une erreur de syntaxe et les différences structurées — tout est calculé localement, aucun appel réseau)"
-  }
+  }]
 }

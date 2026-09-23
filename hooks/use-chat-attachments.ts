@@ -9,8 +9,8 @@ import {
   useState,
 } from "react";
 import { toast } from "sonner";
-import { MAI_PENDING_ATTACHMENT_KEY } from "@/lib/constants";
 import { apiEndpoints } from "@/lib/client/api-endpoints";
+import { MAI_PENDING_ATTACHMENT_KEY } from "@/lib/constants";
 import type { Attachment } from "@/lib/types";
 
 export const MAX_FILES_PER_MESSAGE = 4;

@@ -1,0 +1,18 @@
+{
+  "id": "github-public",
+  "name": "GitHub public",
+  "version": "1.0.0",
+  "description": "Lecture seule des dépôts, tickets, releases et fichiers publics GitHub.",
+  "author": "mAI",
+  "category": "dev",
+  "tags": ["github", "code", "dépôt", "issues", "releases", "développement"],
+  "icon": { "type": "lucide", "name": "Code" },
+  "minTier": "plus",
+  "permissions": { "network": "read-only", "readsUserData": false, "writesUserData": false, "requiresApproval": false },
+  "tools": [
+    { "id": "getGithubRepositorySummary", "label": "Résumé d'un dépôt", "description": "Résumé public d'un dépôt GitHub.", "systemHint": "getGithubRepositorySummary (résumé public repository owner/repo)" },
+    { "id": "listGithubIssues", "label": "Issues", "description": "Issues publiques d'un dépôt.", "systemHint": "listGithubIssues (liste les issues publiques récentes, sans pull requests)" },
+    { "id": "listGithubReleases", "label": "Releases", "description": "Releases et notes publiques.", "systemHint": "listGithubReleases (dernières versions et notes publiques)" },
+    { "id": "readGithubFile", "label": "Lire un fichier", "description": "Lire un fichier d'un dépôt public.", "systemHint": "readGithubFile (lit un fichier texte public et borné dans le dépôt)" }
+  ]
+}

@@ -100,9 +100,9 @@ async function ensureColumnDefaults(
     const values = REQUIRED_COLUMN_DEFAULTS.map(
       ({ column, table }) => `('${table}','${column}')`
     ).join(", ");
-    const missing = await client.unsafe<[
-      { column_name: string; table_name: string }
-    ]>(
+    const missing = await client.unsafe<
+      [{ column_name: string; table_name: string }]
+    >(
       `SELECT table_name, column_name FROM information_schema.columns
        WHERE (table_name, column_name) IN (${values}) AND column_default IS NULL`
     );

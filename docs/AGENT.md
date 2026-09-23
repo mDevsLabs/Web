@@ -22,7 +22,7 @@ MCP et skills.
 
 Le moteur s'appuie sur les primitives déjà installées (`ai@7`) :
 `streamText` multi-étapes (`stopWhen`), `prepareStep`, `onStepEnd`, `onChunk`,
-`toolApproval` + `experimental_toolApprovalSecret` (approbations signées HMAC),
+`needsApproval` par outil (décisions persistées et liées à l'empreinte des paramètres),
 `toUIMessageStream` et les streams resumables Redis (reprise après refresh).
 
 ## 2. Chat vs Agent
@@ -52,13 +52,13 @@ buildChatContext({ mode: "agent" })
   ↓
 ModelRegistry (/api/models)     → modèle utilisable + capacités
 checkAgentModelAccess           → tool calling obligatoire, forfait
-collectAttachments              → types / nombre / capacités du modèle
+collectAttachments + validation → types / nombre / capacités détaillées du modèle effectif
 normalizeAgentReasoningLevel    → valeur validée
 resolveAgentExecutionBudget     → maxSteps, maxToolCalls, durée, retries
 ToolSelector (hybride)          → outils pertinents
 applyToolPermissions            → auto / ask / off (autonomie + surcharges)
 generateTaskPlan                → plan synthétique si la tâche le justifie
-createAgentRun / reprise        → AgentRun persisté
+createAgentRun / reprise        → unicité conversation/message, réservation d'exécution
 loadAgentProjectContext         → contexte projet ciblé
 buildAgentContext               → compaction + budget de tokens
 createAgentStream               → boucle LLM ↔ tools + événements
@@ -149,7 +149,10 @@ ou MCP ne contourne une permission.
   routage LLM uniquement en cas d'ambiguïté (`llm-router.ts`). L'objectif est de
   ne jamais envoyer 100 outils au modèle.
 - Trois modes depuis le composer : `auto`, `all`, `categories`.
-- Permissions par outil : `auto`, `ask`, `off`. Les règles et l'autonomie sont
+- Permissions par outil : `auto`, `ask`, `off`, avec impact déclaré (`read`,
+  `local_creation`, `external_mutation`, `deletion`). Une mutation externe ou
+  suppression exige toujours un accord ; la création locale suit les réglages.
+  Les règles et l'autonomie sont
   évaluées **côté serveur** ; sans flag d'approbations, un outil qui exigerait
   une confirmation est retiré plutôt qu'exécuté silencieusement.
 
@@ -163,13 +166,19 @@ ou MCP ne contourne une permission.
 | `AgentUserInputRequest` | questionnaire posé par `ask_user` : questions, empreinte, statut, révision, réponse |
 | `ApprovalRequest` | accord attendu sur des paramètres exacts (hash, décision, TTL) |
 | `AgentSettings`  | modèle, réflexion, autonomie, catégories, permissions        |
+| `AgentScheduleVersion` | versions immuables des consignes et réglages planifiés |
+| `AgentScheduleOccurrence` | échéance liée à la version exécutée, si attribuable |
 | `Chat.mode`      | `chat` ou `agent`                                            |
 
 Statuts de run : `queued`, `running`, `waiting_for_tool`,
-`waiting_for_approval`, `waiting_for_user`, `completed`, `failed`, `cancelled`.
+`waiting_for_approval`, `waiting_for_user`, `completed`, `failed`, `cancelled`,
+`timed_out`.
 
-Migration : `lib/db/migrations/0016_agent.sql` puis `0018_agent_user_input.sql`
-(+ entrées journal + blocs idempotents dans `lib/db/migrate.ts`).
+Migrations : `0016_agent.sql`, `0017_agent_foundation.sql`,
+`0018_agent_user_input.sql` et `0022_agent_reliability.sql`. La dernière
+réconcilie les anciens doublons actifs sans supprimer leurs étapes ou livrables,
+puis ajoute les contraintes d'unicité, le lien parent, la réservation, les
+versions et les champs de retour d'expérience.
 
 Rien de sensible n'est journalisé : pas de secrets, pas de clés API, pas de
 chaîne de raisonnement.
@@ -188,6 +197,18 @@ resumable Redis (`/api/chat/[id]/stream`).
 
 **Stop** : annule le flux (abort) puis `DELETE /api/agent/runs/[id]` marque le
 run `cancelled` en conservant les étapes déjà réalisées.
+
+Une nouvelle consigne pendant un run actif reçoit un conflit explicite. Le
+rejeu du même identifiant de message retrouve le run existant sans nouvel effet.
+Après `timed_out`, `resumeFromRunId` démarre un nouveau run dans la même
+conversation ; le serveur vérifie le parent et transmet un résumé borné des
+étapes, sources et livrables. L'ancien run et ses compteurs restent intacts.
+
+Une tâche planifiée en attente passe à l'état d'occurrence `waiting` : aucune
+nouvelle échéance n'est réclamée tant que la demande n'est pas résolue. Après
+24 heures, l'occurrence échoue et la tâche est mise en pause avec un motif.
+Le tick cron est borné à 285 secondes, avec 240 secondes au plus par run ;
+l'annulation atteint le runtime, qui conserve son checkpoint.
 
 ## 9. Contexte intelligent
 
@@ -210,6 +231,7 @@ affiché à l'utilisateur. Le projet n'est jamais envoyé en entier :
 | Badge Alpha                | `components/agent/alpha-badge.tsx`              |
 | Dialogue Free → forfaits   | `components/agent/agent-upgrade-dialog.tsx`     |
 | Paramètres Agent           | `app/(chat)/settings/agent/page.tsx`            |
+| Activité individuelle et versions planifiées | `components/agent/agent-activity-panel.tsx`, `agent-schedule-history-panel.tsx` |
 
 Le composer s'adapte aux capacités du modèle : Réflexion n'apparaît que si
 `flags["agent.reasoning"] && capabilities.reasoning`, Fichiers est grisé si le
@@ -225,6 +247,10 @@ faux.
 `agent.plugins`, `agent.artifacts`, `agent.approvals`, `agent.reasoning`,
 `agent.skills`, `agent.mcp`.
 
+Les interfaces `agent.approvalPreview`, `agent.guidedResume`,
+`agent.scheduleHistory` et `agent.activity` sont activées progressivement.
+Elles sont désactivées par défaut et peuvent être ouvertes par `AGENT_FLAGS`.
+
 ## 12. API
 
 | Route                       | Rôle                                        |
@@ -234,6 +260,10 @@ faux.
 | `GET /api/agent/settings`   | paramètres + modèles + outils disponibles   |
 | `PATCH /api/agent/settings` | enregistrer les paramètres                  |
 | `GET /api/agent/runs`       | runs, steps, exécutions d'une conversation  |
+| `GET /api/agent/runs?view=activity` | agrégats et runs de l'utilisateur courant |
+| `GET /api/agent/runs?view=approvalPreview&chatId=…&toolCallId=…` | aperçu serveur lié à l'empreinte des paramètres |
+| `PATCH /api/agent/runs/[id]` | avis « utile » et « objectif atteint » séparés |
+| `GET /api/agent/schedules/[id]/versions` | versions immuables de la tâche |
 | `DELETE /api/agent/runs/[id]` | Stop : marque le run `cancelled`          |
 
 ## 13. Points ouverts (non bloquants)

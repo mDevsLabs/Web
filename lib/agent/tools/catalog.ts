@@ -30,7 +30,7 @@ export const AGENT_TOOL_CATALOG: Record<string, AgentToolMetadata> = {
       "Pose de 1 à 6 questions précises à l'utilisateur (choix unique, choix multiples, texte, curseur numérique, oui/non, date) lorsqu'une information manque et qu'aucune hypothèse raisonnable n'est possible. Chaque question porte un identifiant unique, un type de réponse, des choix éventuels (obligatoires pour les types à choix), une valeur par défaut facultative et son caractère obligatoire. Le run se suspend jusqu'à la réponse de l'utilisateur, puis reprend au même endroit.",
     id: "ask_user",
     name: "Question à l'utilisateur",
-    permissions: { default: "auto", readOnly: true },
+    permissions: { default: "auto", impact: "read", readOnly: true },
   },
   attach_to_project: {
     availability: {
@@ -43,7 +43,7 @@ export const AGENT_TOOL_CATALOG: Record<string, AgentToolMetadata> = {
       "Enregistre un livrable déjà créé dans un projet de l'utilisateur, pour que le résultat reste consultable avec le reste du projet. Exige un accord explicite : la demande précise le livrable et le projet.",
     id: "attach_to_project",
     name: "Ajouter un résultat au projet",
-    permissions: { default: "ask", destructive: true, readOnly: false },
+    permissions: { default: "ask", impact: "external_mutation", readOnly: false },
   },
   create_artifact: {
     availability: {
@@ -56,7 +56,7 @@ export const AGENT_TOOL_CATALOG: Record<string, AgentToolMetadata> = {
       "Crée un livrable consultable à côté de la conversation : document texte, code, feuille de calcul ou page HTML. À utiliser pour tout contenu long ou structuré plutôt que de le déverser dans le message.",
     id: "create_artifact",
     name: "Créer un livrable",
-    permissions: { default: "auto" },
+    permissions: { default: "auto", impact: "local_creation" },
   },
   export_deliverable: {
     availability: {
@@ -69,7 +69,46 @@ export const AGENT_TOOL_CATALOG: Record<string, AgentToolMetadata> = {
       "Crée un livrable tabulaire consultable et téléchargeable (CSV, tableau Markdown ou page HTML) à partir de données structurées. À utiliser pour un export, un tableau de synthèse ou un comparatif plutôt que de déverser les lignes dans la réponse.",
     id: "export_deliverable",
     name: "Exporter un livrable",
-    permissions: { default: "auto", readOnly: false },
+    permissions: { default: "auto", impact: "local_creation", readOnly: false },
+  },
+  generate_audio: {
+    availability: {
+      categories: ["internal"],
+      requires: { tools: true },
+      tiers: "all",
+    },
+    category: "internal",
+    description:
+      "Synthétise un audio (voix) via mAI Audio Studio à partir d'un texte. Utilise cet outil dès que l'utilisateur demande de parler, synthétiser, vocaliser ou créer un son. Renvoie audio_url, à jouer directement dans la réponse.",
+    id: "generate_audio",
+    name: "Créer un audio",
+    permissions: { default: "auto", impact: "local_creation", readOnly: false },
+  },
+  generate_image: {
+    availability: {
+      categories: ["internal"],
+      requires: { tools: true },
+      tiers: "all",
+    },
+    category: "internal",
+    description:
+      "Génère une image via mAI Studio à partir d'une description détaillée. Utilise cet outil dès que l'utilisateur demande de créer, générer, dessiner ou illustrer une image. L'URL de l'image produite est renvoyée et doit être présentée dans la réponse.",
+    id: "generate_image",
+    name: "Créer une image",
+    permissions: { default: "auto", impact: "local_creation", readOnly: false },
+  },
+  manage_memory: {
+    availability: {
+      categories: ["internal"],
+      requires: { tools: true },
+      tiers: "all",
+    },
+    category: "internal",
+    description:
+      "Gère la mémoire personnalisée de l'utilisateur : ajouter (add), supprimer (delete), lister (list) ou rechercher (search) des informations durables le concernant (préférences, faits, contexte). Utilise cet outil quand l'utilisateur demande de retenir, d'oublier ou de retrouver des informations mémorisées.",
+    id: "manage_memory",
+    name: "Gérer la mémoire",
+    permissions: { default: "ask", impact: "external_mutation", readOnly: false },
   },
   read_file: {
     availability: {
@@ -122,45 +161,6 @@ export const AGENT_TOOL_CATALOG: Record<string, AgentToolMetadata> = {
     id: "tasks",
     name: "Planifier les tâches",
     permissions: { default: "auto", readOnly: true },
-  },
-  generate_image: {
-    availability: {
-      categories: ["internal"],
-      requires: { tools: true },
-      tiers: "all",
-    },
-    category: "internal",
-    description:
-      "Génère une image via mAI Studio à partir d'une description détaillée. Utilise cet outil dès que l'utilisateur demande de créer, générer, dessiner ou illustrer une image. L'URL de l'image produite est renvoyée et doit être présentée dans la réponse.",
-    id: "generate_image",
-    name: "Créer une image",
-    permissions: { default: "auto", readOnly: false },
-  },
-  generate_audio: {
-    availability: {
-      categories: ["internal"],
-      requires: { tools: true },
-      tiers: "all",
-    },
-    category: "internal",
-    description:
-      "Synthétise un audio (voix) via mAI Audio Studio à partir d'un texte. Utilise cet outil dès que l'utilisateur demande de parler, synthétiser, vocaliser ou créer un son. Renvoie audio_url, à jouer directement dans la réponse.",
-    id: "generate_audio",
-    name: "Créer un audio",
-    permissions: { default: "auto", readOnly: false },
-  },
-  manage_memory: {
-    availability: {
-      categories: ["internal"],
-      requires: { tools: true },
-      tiers: "all",
-    },
-    category: "internal",
-    description:
-      "Gère la mémoire personnalisée de l'utilisateur : ajouter (add), supprimer (delete), lister (list) ou rechercher (search) des informations durables le concernant (préférences, faits, contexte). Utilise cet outil quand l'utilisateur demande de retenir, d'oublier ou de retrouver des informations mémorisées.",
-    id: "manage_memory",
-    name: "Gérer la mémoire",
-    permissions: { default: "auto", readOnly: false },
   },
 };
 

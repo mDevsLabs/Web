@@ -1,12 +1,16 @@
 import { createCipheriv, createHash, randomBytes } from "node:crypto";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { toMcpServerDto, redactArgument, sanitizeUrlForClient } from "@/lib/mcp/dto";
+import {
+  redactArgument,
+  sanitizeUrlForClient,
+  toMcpServerDto,
+} from "@/lib/mcp/dto";
 import {
   decrypt,
   encrypt,
   isEncrypted,
-  reencrypt,
   isEncryptionConfigured,
+  reencrypt,
 } from "@/lib/mcp/encryption";
 
 const ENV_KEYS = [
@@ -128,7 +132,7 @@ describe("DTO MCP — aucun secret ne sort de l'API", () => {
     createdAt: new Date("2026-01-01T00:00:00Z"),
     description: "serveur de test",
     env: { GITHUB_TOKEN: SECRET, PLAIN: "ok" },
-    headers: { "X-Api-Key": SECRET, Accept: "application/json" },
+    headers: { Accept: "application/json", "X-Api-Key": SECRET },
     icon: "server",
     id: "6f1f2a3c-0000-4000-8000-000000000000",
     isEnabled: true,

@@ -52,6 +52,26 @@ export const permissionsSchema = z
     }
   );
 
+const pluginToolSchema = z.object({
+  description: z.string().min(1),
+  id: z
+    .string()
+    .min(1)
+    .refine((toolId) => !isNativeToolId(toolId), {
+      message:
+        "Un identifiant d'outil implémenté nativement ne peut pas être réutilisé par un plugin.",
+    })
+    .refine(
+      (toolId) => !isChatToolId(toolId) || isPluginProvidedToolId(toolId),
+      {
+        message:
+          "Un identifiant d'outil de Chat doit être déclaré comme fourni par un plugin dans lib/ai/tools/ids.ts.",
+      }
+    ),
+  label: z.string().min(1),
+  systemHint: z.string().min(1),
+});
+
 export const manifestSchema = z.object({
   author: z.string().min(1).default("mAI"),
   category: z.string().min(1),
@@ -65,26 +85,14 @@ export const manifestSchema = z.object({
   name: z.string().min(1),
   permissions: permissionsSchema,
   tags: z.array(z.string().min(1)).default([]),
-  tool: z.object({
-    id: z
-      .string()
-      .min(1)
-      .refine((toolId) => !isNativeToolId(toolId), {
-        message:
-          "Un identifiant d'outil implémenté nativement ne peut pas être réutilisé par un plugin.",
-      })
-      .refine(
-        (toolId) => !isChatToolId(toolId) || isPluginProvidedToolId(toolId),
-        {
-          message:
-            "Un identifiant d'outil sélectionnable doit être déclaré dans PLUGIN_PROVIDED_TOOL_IDS (lib/ai/tools/ids.ts).",
-        }
-      ),
-    label: z.string().min(1),
-    systemHint: z.string().min(1),
-  }),
+  tools: z.array(pluginToolSchema).min(1).max(24),
   version: z.string().regex(/^\d+\.\d+\.\d+/),
-});
+}).refine(
+  (manifest) =>
+    new Set(manifest.tools.map((tool) => tool.id)).size ===
+    manifest.tools.length,
+  { message: "Les identifiants d'outils d'un plugin doivent être uniques." }
+);
 
 export const rootCatalogSchema = z.object({
   catalogVersion: z.string().min(1),

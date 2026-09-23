@@ -16,7 +16,9 @@ export function getPluginDefinition(
 export function getPluginDefinitionByToolId(
   toolId: string
 ): PluginDefinition | undefined {
-  return PLUGIN_DEFINITION_LIST.find((d) => d.manifest.tool.id === toolId);
+  return PLUGIN_DEFINITION_LIST.find((definition) =>
+    definition.manifest.tools.some((tool) => tool.id === toolId)
+  );
 }
 
 export function getPluginIdForToolId(toolId: string): string | undefined {
@@ -24,7 +26,9 @@ export function getPluginIdForToolId(toolId: string): string | undefined {
 }
 
 export function isKnownPluginToolId(toolId: string): boolean {
-  return PLUGIN_DEFINITION_LIST.some((d) => d.manifest.tool.id === toolId);
+  return PLUGIN_DEFINITION_LIST.some((definition) =>
+    definition.manifest.tools.some((tool) => tool.id === toolId)
+  );
 }
 
 // Tous les hints de plugins, indexés par identifiant d'outil : fusionnés avec
@@ -32,21 +36,27 @@ export function isKnownPluginToolId(toolId: string): boolean {
 export function getPluginSystemHints(): Record<string, string> {
   const hints: Record<string, string> = {};
   for (const definition of PLUGIN_DEFINITION_LIST) {
-    hints[definition.manifest.tool.id] = definition.manifest.tool.systemHint;
+    for (const manifestTool of definition.manifest.tools) {
+      hints[manifestTool.id] = manifestTool.systemHint;
+    }
   }
   return hints;
 }
 
 export function getPluginToolIds(): string[] {
-  return PLUGIN_MANIFEST_LIST.map((p) => p.tool.id);
+  return PLUGIN_MANIFEST_LIST.flatMap((plugin) =>
+    plugin.tools.map((tool) => tool.id)
+  );
 }
 
 // Convertit une liste d'identifiants de plugins en identifiants d'outils IA
 // (utilisés par `activeTools` de streamText et par les mentions @).
 export function getToolIdsForPluginIds(pluginIds: string[]): string[] {
   const allowed = new Set(pluginIds);
-  return PLUGIN_DEFINITION_LIST.filter((d) => allowed.has(d.manifest.id)).map(
-    (d) => d.manifest.tool.id
+  return PLUGIN_DEFINITION_LIST.filter((definition) =>
+    allowed.has(definition.manifest.id)
+  ).flatMap((definition) =>
+    definition.manifest.tools.map((tool) => tool.id)
   );
 }
 
@@ -62,7 +72,16 @@ export function createPluginTools(
     if (allowed && !allowed.has(definition.manifest.id)) {
       continue;
     }
-    tools[definition.manifest.tool.id] = definition.createTool(deps);
+    const created = definition.createTools(deps);
+    for (const manifestTool of definition.manifest.tools) {
+      const implementation = created[manifestTool.id];
+      if (!implementation) {
+        throw new Error(
+          `Le plugin « ${definition.manifest.id} » ne fournit pas l'outil « ${manifestTool.id} ».`
+        );
+      }
+      tools[manifestTool.id] = implementation;
+    }
   }
   return tools;
 }

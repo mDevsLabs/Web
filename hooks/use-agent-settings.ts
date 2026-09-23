@@ -19,6 +19,7 @@ export type AgentSettingsTool = {
   defaultPermission: ToolPermission;
   description: string;
   id: string;
+  impact: "read" | "local_creation" | "external_mutation" | "deletion";
   name: string;
 };
 

@@ -129,6 +129,7 @@ export type AgentToolSource =
 export type AgentToolPermissions = {
   default: ToolPermission;
   destructive?: boolean;
+  impact?: "read" | "local_creation" | "external_mutation" | "deletion";
   readOnly?: boolean;
 };
 

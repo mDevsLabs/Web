@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
 import {
+  headersForHop,
+  isTokenOriginAllowed,
+  readStreamCapped,
+} from "@/lib/web/safe-fetch";
+import {
   blockedIpReason,
   isPrivateOrBlockedHost,
   MAX_REDIRECTS,
@@ -10,11 +15,10 @@ import {
   validateAndResolveUrl,
 } from "@/lib/web/ssrf";
 import {
-  headersForHop,
-  isTokenOriginAllowed,
-  readStreamCapped,
-} from "@/lib/web/safe-fetch";
-import { inspectZipArchive, looksLikePdf, looksLikeZip } from "@/lib/web/zip-guard";
+  inspectZipArchive,
+  looksLikePdf,
+  looksLikeZip,
+} from "@/lib/web/zip-guard";
 
 describe("SSRF — classification des adresses littérales", () => {
   it("bloque loopback, privé, CGNAT, link-local et métadonnées cloud", () => {
@@ -89,7 +93,9 @@ describe("SSRF — URL et redirections", () => {
     expect(safeExternalUrl("file:///etc/passwd").error).toBeDefined();
     expect(safeExternalUrl("gopher://example.com/").error).toBeDefined();
     expect(safeExternalUrl("data:text/html,<script>").error).toBeDefined();
-    expect(safeExternalUrl("https://user:pass@example.com/").error).toBeDefined();
+    expect(
+      safeExternalUrl("https://user:pass@example.com/").error
+    ).toBeDefined();
     expect(safeExternalUrl("https://example.com:2375/").error).toBeDefined();
     expect(safeExternalUrl("javascript:alert(1)").error).toBeDefined();
     expect(safeExternalUrl("").error).toBeDefined();
@@ -121,9 +127,12 @@ describe("SSRF — URL et redirections", () => {
   });
 
   it("refuse un hôte résolu vers une adresse privée (DNS rebinding)", async () => {
-    const rebind = await validateAndResolveUrl("https://public-looking.example/x", {
-      resolver: async () => ["93.184.216.34", "127.0.0.1"],
-    });
+    const rebind = await validateAndResolveUrl(
+      "https://public-looking.example/x",
+      {
+        resolver: async () => ["93.184.216.34", "127.0.0.1"],
+      }
+    );
     expect(rebind.error).toBeDefined();
     expect(rebind.error).toContain("adresse interdite");
 
@@ -170,17 +179,19 @@ describe("Client sortant — en-têtes et plafonds", () => {
     expect(
       isTokenOriginAllowed("https://api.mai.example.evil.com/steal", allowlist)
     ).toBe(false);
-    expect(isTokenOriginAllowed("http://api.mai.example/", allowlist)).toBe(false);
-    expect(isTokenOriginAllowed("https://autre.example/", allowlist)).toBe(false);
+    expect(isTokenOriginAllowed("http://api.mai.example/", allowlist)).toBe(
+      false
+    );
+    expect(isTokenOriginAllowed("https://autre.example/", allowlist)).toBe(
+      false
+    );
   });
 
   it("retire l'en-tête Authorization à chaque saut non autorisé", () => {
     const headers = { Accept: "*/*", Authorization: "Bearer secret-session" };
-    const allowed = headersForHop(
-      headers,
-      "https://api.mai.example/x",
-      ["https://api.mai.example"]
-    );
+    const allowed = headersForHop(headers, "https://api.mai.example/x", [
+      "https://api.mai.example",
+    ]);
     expect(allowed.Authorization).toBe("Bearer secret-session");
 
     const foreign = headersForHop(headers, "https://evil.example/x", [
@@ -190,7 +201,11 @@ describe("Client sortant — en-têtes et plafonds", () => {
     expect(foreign.Accept).toBe("*/*");
 
     // Sans liste blanche déclarée : jamais de jeton (défaut restrictif).
-    const undeclared = headersForHop(headers, "https://api.mai.example/x", undefined);
+    const undeclared = headersForHop(
+      headers,
+      "https://api.mai.example/x",
+      undefined
+    );
     expect(undeclared.Authorization).toBeUndefined();
   });
 
@@ -233,18 +248,20 @@ describe("Client sortant — en-têtes et plafonds", () => {
 
 describe("Bombes de décompression (DOCX/ZIP)", () => {
   /** Construit un ZIP minimal dont l'annuaire central déclare les tailles. */
-  function buildZip(entries: Array<{ name: string; uncompressed: number }>): Buffer {
+  function buildZip(
+    entries: Array<{ name: string; uncompressed: number }>
+  ): Buffer {
     const central: Buffer[] = [];
     for (const entry of entries) {
       const header = Buffer.alloc(46);
-      header.writeUInt32LE(0x02014b50, 0);
+      header.writeUInt32LE(0x02_01_4b_50, 0);
       header.writeUInt32LE(entry.uncompressed, 24);
       header.writeUInt16LE(entry.name.length, 28);
       central.push(Buffer.concat([header, Buffer.from(entry.name, "utf8")]));
     }
     const centralBuffer = Buffer.concat(central);
     const eocd = Buffer.alloc(22);
-    eocd.writeUInt32LE(0x06054b50, 0);
+    eocd.writeUInt32LE(0x06_05_4b_50, 0);
     eocd.writeUInt16LE(entries.length, 8);
     eocd.writeUInt16LE(entries.length, 10);
     eocd.writeUInt32LE(centralBuffer.length, 12);
@@ -255,7 +272,7 @@ describe("Bombes de décompression (DOCX/ZIP)", () => {
   it("accepte une archive raisonnable", () => {
     const archive = buildZip([
       { name: "word/document.xml", uncompressed: 40_000 },
-      { name: "[Content_Types].xml", uncompressed: 1_200 },
+      { name: "[Content_Types].xml", uncompressed: 1200 },
     ]);
     const inspection = inspectZipArchive(archive as Buffer);
     expect(inspection.ok).toBe(true);
@@ -268,7 +285,7 @@ describe("Bombes de décompression (DOCX/ZIP)", () => {
 
   it("refuse une bombe de décompression (taille annoncée délirante)", () => {
     const bomb = buildZip([
-      { name: "word/document.xml", uncompressed: 0x7fffffff },
+      { name: "word/document.xml", uncompressed: 0x7f_ff_ff_ff },
     ]);
     const inspection = inspectZipArchive(bomb as Buffer);
     expect(inspection.ok).toBe(false);
@@ -289,7 +306,7 @@ describe("Bombes de décompression (DOCX/ZIP)", () => {
 
   it("refuse les tailles zip64 non vérifiables et les buffers non ZIP", () => {
     const zip64 = buildZip([{ name: "a", uncompressed: 1 }]);
-    zip64.writeUInt32LE(0xffffffff, zip64.length - 22 + 16);
+    zip64.writeUInt32LE(0xff_ff_ff_ff, zip64.length - 22 + 16);
     expect(inspectZipArchive(zip64 as Buffer).ok).toBe(false);
     expect(inspectZipArchive(Buffer.from("pas un zip")).ok).toBe(false);
   });

@@ -151,6 +151,6 @@ export const getAirQuality = tool({
 });
 
 export const airQualityPlugin: PluginDefinition = {
-  createTool: () => getAirQuality,
+  createTools: () => ({ getAirQuality }),
   manifest: manifest as PluginManifest,
 };

@@ -66,9 +66,7 @@ export function splitInlineSecrets<T extends Record<string, unknown>>(
   ];
 
   for (const { column, kind } of sources) {
-    for (const [key, value] of Object.entries(
-      asStringRecord(record[column])
-    )) {
+    for (const [key, value] of Object.entries(asStringRecord(record[column]))) {
       values.push({ key, kind, value });
     }
     if (column in record) {

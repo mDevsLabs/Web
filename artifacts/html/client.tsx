@@ -150,7 +150,8 @@ export const htmlArtifact = new Artifact<"html">({
   },
   toolbar: [
     {
-      description: "Télécharger la page HTML (aperçu sûr, hors origine applicative)",
+      description:
+        "Télécharger la page HTML (aperçu sûr, hors origine applicative)",
       icon: <PlayIcon size={18} />,
       onClick: async (props: any) => {
         const c = props.content ?? "";

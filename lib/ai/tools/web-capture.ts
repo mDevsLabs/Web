@@ -1,7 +1,7 @@
 import { tool } from "ai";
 import { z } from "zod";
-import { redactUrlForThirdParty, safeExternalUrl } from "@/lib/web/ssrf";
 import { safeFetchBuffer, safeFetchText } from "@/lib/web/safe-fetch";
+import { redactUrlForThirdParty, safeExternalUrl } from "@/lib/web/ssrf";
 
 function extractMetaContent(
   html: string,
@@ -169,7 +169,8 @@ export const webCapture = tool({
           timeoutMs: 12_000,
         });
         if (image.ok) {
-          (result as any).__screenshotBase64 = `data:image/png;base64,${image.buffer.toString("base64")}`;
+          (result as any).__screenshotBase64 =
+            `data:image/png;base64,${image.buffer.toString("base64")}`;
         }
       } catch {}
 

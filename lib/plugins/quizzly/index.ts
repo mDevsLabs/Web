@@ -61,6 +61,6 @@ export const quizzly = tool({
 });
 
 export const quizzlyPlugin: PluginDefinition = {
-  createTool: () => quizzly,
+  createTools: () => ({ quizzly }),
   manifest: manifest as PluginManifest,
 };

@@ -1,0 +1,18 @@
+{
+  "id": "open-food-facts",
+  "name": "Open Food Facts",
+  "version": "1.0.0",
+  "description": "Recherche de produits, ingrédients, allergènes et informations nutritionnelles publiques.",
+  "author": "mAI",
+  "category": "food",
+  "tags": ["alimentation", "produits", "nutrition", "ingrédients", "allergènes", "code-barres"],
+  "icon": { "type": "lucide", "name": "Leaf" },
+  "minTier": "plus",
+  "permissions": { "network": "read-only", "readsUserData": false, "writesUserData": false, "requiresApproval": false },
+  "tools": [
+    { "id": "getFoodProduct", "label": "Produit par code-barres", "description": "Fiche alimentaire depuis un code-barres.", "systemHint": "getFoodProduct (recherche un produit Open Food Facts par code-barres)" },
+    { "id": "searchFoodProducts", "label": "Rechercher des produits", "description": "Recherche alimentaire par mots-clés.", "systemHint": "searchFoodProducts (recherche des aliments par nom)" },
+    { "id": "compareFoodProducts", "label": "Comparer des produits", "description": "Comparaison de plusieurs produits par code-barres.", "systemHint": "compareFoodProducts (compare les champs connus de 2 à 5 produits)" },
+    { "id": "getFoodIngredients", "label": "Ingrédients et allergènes", "description": "Informations déclarées sur les ingrédients et allergènes.", "systemHint": "getFoodIngredients (lit ingrédients et allergènes déclarés pour un code-barres)" }
+  ]
+}

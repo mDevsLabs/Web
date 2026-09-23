@@ -46,6 +46,7 @@ export type ChatRequestBodyShape = {
   isGhostMode: boolean;
   // Mode de la conversation créée : « chat » (défaut) ou « agent ».
   mode?: "chat" | "agent";
+  persistIncomingMessage?: boolean;
 };
 
 export type ChatRequestContext = {
@@ -405,7 +406,7 @@ export async function buildChatContext(
     longitude,
   };
 
-  if (message?.role === "user" && !isGhostMode) {
+  if (message?.role === "user" && !isGhostMode && body.persistIncomingMessage !== false) {
     await saveMessages({
       messages: [
         {

@@ -170,7 +170,7 @@ export function PendingToolsChips({
           } else {
             const plugin = getPluginByToolId(tidStr);
             if (plugin) {
-              label = plugin.name;
+              label = `${plugin.name} · ${plugin.tools.find((tool) => tool.id === tidStr)?.label ?? tidStr}`;
             } else {
               const meta = TOOLS_META[tid as ToolId];
               label = meta?.label || tidStr;
@@ -226,7 +226,9 @@ export function PendingToolsChips({
           IconComponent = CpuIcon;
         } else {
           const meta = TOOLS_META[tid as ToolId];
-          label = plugin?.name ?? meta?.label ?? tidStr;
+          label = plugin
+            ? `${plugin.name} · ${plugin.tools.find((tool) => tool.id === tidStr)?.label ?? tidStr}`
+            : meta?.label ?? tidStr;
           IconComponent = plugin ? null : meta?.icon;
         }
         return (

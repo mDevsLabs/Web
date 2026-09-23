@@ -67,7 +67,9 @@ describe("Sandbox HTML — isolation de l'origine", () => {
     expect(SANDBOX_CSP).toContain("object-src 'none'");
     expect(SANDBOX_CSP).toContain("frame-src 'none'");
     // Un `script-src` restreint reste nécessaire aux CDN d'aperçu.
-    expect(SANDBOX_CSP).toContain("script-src 'unsafe-inline' 'unsafe-eval' https:");
+    expect(SANDBOX_CSP).toContain(
+      "script-src 'unsafe-inline' 'unsafe-eval' https:"
+    );
     expect(SANDBOX_CSP_META).toContain(`content="${SANDBOX_CSP}"`);
   });
 
@@ -149,7 +151,11 @@ describe("Pont console — messages inter-fenêtres", () => {
 
   it("rejette les charges malformées (schéma non conforme)", () => {
     const reject = (data: unknown) =>
-      readSandboxLogMessage({ data, expectedWindow: frameWindow, source: frameWindow });
+      readSandboxLogMessage({
+        data,
+        expectedWindow: frameWindow,
+        source: frameWindow,
+      });
     expect(reject(null)).toBeNull();
     expect(reject("__maiSandbox")).toBeNull();
     expect(reject(["__maiSandbox"])).toBeNull();
@@ -175,7 +181,11 @@ describe("Pont console — messages inter-fenêtres", () => {
 
   it("n'accepte pas un texte non textuel (prototype/objet piégé)", () => {
     const message = readSandboxLogMessage({
-      data: { __maiSandbox: true, level: "log", text: { toString: () => "boom" } },
+      data: {
+        __maiSandbox: true,
+        level: "log",
+        text: { toString: () => "boom" },
+      },
       expectedWindow: frameWindow,
       source: frameWindow,
     });

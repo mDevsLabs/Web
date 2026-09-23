@@ -98,7 +98,9 @@ export function redactArgument(argument: string): string {
  * fragments ressemblant à un secret masqués. Une URL invalide n'est pas
  * renvoyée telle quelle (elle peut contenir n'importe quoi).
  */
-export function sanitizeUrlForClient(raw: string | null | undefined): string | null {
+export function sanitizeUrlForClient(
+  raw: string | null | undefined
+): string | null {
   if (!raw) {
     return null;
   }
@@ -157,7 +159,8 @@ export function toMcpServerDto(row: unknown): McpServerDto {
       env: keyNames(record.env),
       header: keyNames(record.headers),
     },
-    templateId: typeof record.templateId === "string" ? record.templateId : null,
+    templateId:
+      typeof record.templateId === "string" ? record.templateId : null,
     timeoutMs: Number(record.timeoutMs ?? 15_000),
     toolOverrides: asRecord(record.toolOverrides),
     toolsCache: Array.isArray(record.toolsCache) ? record.toolsCache : [],

@@ -16,8 +16,8 @@ export const PLUGIN_MANIFEST_LIST: PluginManifest[] = [
   ...PLUGIN_MANIFESTS,
 ].sort((a, b) => a.name.localeCompare(b.name, "fr"));
 
-export const PLUGIN_TOOL_IDS: string[] = PLUGIN_MANIFEST_LIST.map(
-  (p) => p.tool.id
+export const PLUGIN_TOOL_IDS: string[] = PLUGIN_MANIFEST_LIST.flatMap((plugin) =>
+  plugin.tools.map((tool) => tool.id)
 );
 
 // Ids fournis par un plugin et absents du registre natif : eux seuls peuvent
@@ -43,7 +43,9 @@ export function getPluginManifest(
 }
 
 export function getPluginByToolId(toolId: string): PluginManifest | undefined {
-  return PLUGIN_MANIFEST_LIST.find((p) => p.tool.id === toolId);
+  return PLUGIN_MANIFEST_LIST.find((plugin) =>
+    plugin.tools.some((tool) => tool.id === toolId)
+  );
 }
 
 export function isPluginToolId(toolId: string): boolean {
@@ -74,7 +76,7 @@ export function matchesPluginQuery(
     plugin.name,
     plugin.description,
     plugin.id,
-    plugin.tool.label,
+    ...plugin.tools.flatMap((tool) => [tool.label, tool.description]),
     getCategoryLabel(plugin.category),
     ...plugin.tags,
   ]

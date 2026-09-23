@@ -21,6 +21,7 @@ const ALLOWED_MEDIA_TYPES = [
 ] as const;
 
 const filePartSchema = z.object({
+  filename: z.string().min(1).max(255).optional(),
   mediaType: z
     .string()
     .min(1)
@@ -38,7 +39,6 @@ const filePartSchema = z.object({
   // historiques portent encore `name`. Accepter les deux évite un 400 sur un
   // simple écart de nommage.
   name: z.string().min(1).max(255).optional(),
-  filename: z.string().min(1).max(255).optional(),
   type: z.enum(["file"]),
   url: z.url(),
 });

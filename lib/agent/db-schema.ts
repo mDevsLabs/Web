@@ -54,6 +54,7 @@ export type AgentOccurrenceStatus =
   | "failed"
   | "pending"
   | "running"
+  | "waiting"
   | "skipped";
 
 export type AgentOccurrenceRecord = {
@@ -67,6 +68,7 @@ export type AgentOccurrenceRecord = {
   id: string;
   runId: string | null;
   scheduleId: string;
+  scheduleVersionId: string | null;
   status: AgentOccurrenceStatus;
 };
 
@@ -96,6 +98,7 @@ export type ApprovalRequestRecord = {
   status: ApprovalRequestStatus;
   stepId: string | null;
   toolExecutionId: string | null;
+  toolCallId: string | null;
   toolId: string;
 };
 

@@ -9,11 +9,11 @@
 //
 // Testé par tests/unit/zip-guard.test.ts (buffers synthétiques, aucun réseau).
 
-export const ZIP_MAX_ENTRIES = 2_000;
+export const ZIP_MAX_ENTRIES = 2000;
 export const ZIP_MAX_TOTAL_UNCOMPRESSED_BYTES = 200 * 1024 * 1024; // 200 Mo
 
-const EOCD_SIGNATURE = 0x06054b50;
-const CENTRAL_SIGNATURE = 0x02014b50;
+const EOCD_SIGNATURE = 0x06_05_4b_50;
+const CENTRAL_SIGNATURE = 0x02_01_4b_50;
 const EOCD_MIN_SIZE = 22;
 const MAX_COMMENT_SIZE = 65_535;
 
@@ -22,8 +22,15 @@ export type ZipInspection =
   | { error: string; ok: false };
 
 function findEocdOffset(buffer: Buffer): number {
-  const earliest = Math.max(0, buffer.length - EOCD_MIN_SIZE - MAX_COMMENT_SIZE);
-  for (let offset = buffer.length - EOCD_MIN_SIZE; offset >= earliest; offset -= 1) {
+  const earliest = Math.max(
+    0,
+    buffer.length - EOCD_MIN_SIZE - MAX_COMMENT_SIZE
+  );
+  for (
+    let offset = buffer.length - EOCD_MIN_SIZE;
+    offset >= earliest;
+    offset -= 1
+  ) {
     if (buffer.readUInt32LE(offset) === EOCD_SIGNATURE) {
       return offset;
     }
@@ -43,7 +50,8 @@ export function inspectZipArchive(
   } = {}
 ): ZipInspection {
   const maxEntries = limits.maxEntries ?? ZIP_MAX_ENTRIES;
-  const maxTotal = limits.maxTotalUncompressedBytes ?? ZIP_MAX_TOTAL_UNCOMPRESSED_BYTES;
+  const maxTotal =
+    limits.maxTotalUncompressedBytes ?? ZIP_MAX_TOTAL_UNCOMPRESSED_BYTES;
 
   if (buffer.length < EOCD_MIN_SIZE) {
     return { error: "Archive trop courte pour être un ZIP valide.", ok: false };
@@ -58,12 +66,15 @@ export function inspectZipArchive(
   const centralOffset = buffer.readUInt32LE(eocd + 16);
 
   if (
-    declaredEntries === 0xffff ||
-    centralSize === 0xffffffff ||
-    centralOffset === 0xffffffff
+    declaredEntries === 0xff_ff ||
+    centralSize === 0xff_ff_ff_ff ||
+    centralOffset === 0xff_ff_ff_ff
   ) {
     // zip64 : les tailles réelles ne sont pas dans l'annuaire central classique.
-    return { error: "Archive ZIP64 refusée (tailles non vérifiables).", ok: false };
+    return {
+      error: "Archive ZIP64 refusée (tailles non vérifiables).",
+      ok: false,
+    };
   }
   if (declaredEntries > maxEntries) {
     return {
@@ -72,7 +83,10 @@ export function inspectZipArchive(
     };
   }
   if (centralOffset + centralSize > buffer.length) {
-    return { error: "Annuaire central ZIP incohérent avec le fichier.", ok: false };
+    return {
+      error: "Annuaire central ZIP incohérent avec le fichier.",
+      ok: false,
+    };
   }
 
   let offset = centralOffset;
@@ -80,7 +94,10 @@ export function inspectZipArchive(
   let totalUncompressedBytes = 0;
 
   for (let index = 0; index < declaredEntries; index += 1) {
-    if (offset + 46 > buffer.length || buffer.readUInt32LE(offset) !== CENTRAL_SIGNATURE) {
+    if (
+      offset + 46 > buffer.length ||
+      buffer.readUInt32LE(offset) !== CENTRAL_SIGNATURE
+    ) {
       return { error: "Entrée ZIP illisible (annuaire corrompu).", ok: false };
     }
     const uncompressed = buffer.readUInt32LE(offset + 24);
@@ -88,13 +105,19 @@ export function inspectZipArchive(
     const commentLength = buffer.readUInt16LE(offset + 32);
     const nameLength = buffer.readUInt16LE(offset + 28);
 
-    if (uncompressed === 0xffffffff) {
-      return { error: "Entrée ZIP64 refusée (taille non vérifiable).", ok: false };
+    if (uncompressed === 0xff_ff_ff_ff) {
+      return {
+        error: "Entrée ZIP64 refusée (taille non vérifiable).",
+        ok: false,
+      };
     }
     entries += 1;
     totalUncompressedBytes += uncompressed;
     if (entries > maxEntries) {
-      return { error: `Archive refusée : plus de ${maxEntries} entrées.`, ok: false };
+      return {
+        error: `Archive refusée : plus de ${maxEntries} entrées.`,
+        ok: false,
+      };
     }
     if (totalUncompressedBytes > maxTotal) {
       return {
@@ -120,7 +143,9 @@ export function looksLikeZip(buffer: Buffer): boolean {
 
 /** Vrai si les octets commencent par l'en-tête PDF. */
 export function looksLikePdf(buffer: Buffer): boolean {
-  return buffer.length >= 5 && buffer.subarray(0, 5).toString("latin1") === "%PDF-";
+  return (
+    buffer.length >= 5 && buffer.subarray(0, 5).toString("latin1") === "%PDF-"
+  );
 }
 
 /**
@@ -159,7 +184,10 @@ export function checkDocumentShape(params: {
     return { kind: "docx" };
   }
   if (contentType.includes("zip")) {
-    return { error: "Archives ZIP refusées : convertissez le fichier.", kind: "other" };
+    return {
+      error: "Archives ZIP refusées : convertissez le fichier.",
+      kind: "other",
+    };
   }
   return { kind: wantsPdf ? "pdf" : "other" };
 }

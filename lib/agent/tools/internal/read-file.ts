@@ -9,7 +9,10 @@ import {
 } from "@/lib/agent/tools/internal/extract";
 import { type AgentSource, toolFailure, toolSuccess } from "@/lib/agent/types";
 import { MAI_API_URL } from "@/lib/constants";
-import { isTokenOriginAllowed, tokenOriginAllowlist } from "@/lib/web/safe-fetch";
+import {
+  isTokenOriginAllowed,
+  tokenOriginAllowlist,
+} from "@/lib/web/safe-fetch";
 
 const readFileInputSchema = z
   .object({

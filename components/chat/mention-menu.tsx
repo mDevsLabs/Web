@@ -165,7 +165,11 @@ function buildFlatList(
           p.name.toLowerCase().includes(q) ||
           p.description.toLowerCase().includes(q) ||
           p.tags.some((t) => t.toLowerCase().includes(q)) ||
-          p.tool.label.toLowerCase().includes(q)
+          p.tools.some(
+            (tool) =>
+              tool.label.toLowerCase().includes(q) ||
+              tool.description.toLowerCase().includes(q)
+          )
       )
     : plugins;
 
@@ -502,7 +506,7 @@ function MentionItem({
             )}
           </div>
           <span className="text-[11px] text-muted-foreground/70 truncate">
-            {item.plugin.description}
+            {item.plugin.tools.map((tool) => tool.label).join(" · ")}
           </span>
         </div>
       </button>

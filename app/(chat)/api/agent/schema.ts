@@ -52,24 +52,25 @@ const toolApprovalMessageSchema = z.object({
 });
 
 export const agentRequestBodySchema = z.object({
+  assistantId: z.string().uuid().nullable().optional(),
   // Options one-shot issues du menu « + » du composer Agent : elles ne
   // s'appliquent qu'au message envoyé, jamais aux reprises du run.
   audioEnabled: z.boolean().optional(),
-  assistantId: z.string().uuid().nullable().optional(),
   autonomy: z.enum(["careful", "standard", "high"]).optional(),
   enabledCategories: z.array(z.string().max(40)).max(12).nullable().optional(),
   forceWeb: z.boolean().optional(),
   id: z.uuid(),
   imageEnabled: z.boolean().optional(),
-  memoryEnabled: z.boolean().optional(),
-  tasksEnabled: z.boolean().optional(),
   isGhostMode: z.boolean().optional().default(false),
+  memoryEnabled: z.boolean().optional(),
   message: userMessageSchema.optional(),
   messages: z.array(toolApprovalMessageSchema).optional(),
   modelId: z.string().min(1).max(200),
   projectId: z.string().uuid().nullable().optional(),
   reasoningLevel: z.enum(["low", "medium", "high"]).optional(),
+  resumeFromRunId: z.uuid().optional(),
   skillId: z.string().uuid().nullable().optional(),
+  tasksEnabled: z.boolean().optional(),
   toolMode: z.enum(["auto", "all", "categories"]).optional().default("auto"),
   visibility: z.enum(["public", "private"]).optional().default("private"),
 });

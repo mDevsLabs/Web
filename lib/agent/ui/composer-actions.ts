@@ -1,13 +1,13 @@
 import {
   BrainIcon,
   FolderIcon,
-  type LucideIcon,
+  GlobeIcon,
+  ImageIcon,
+  LibraryIcon,
   ListChecksIcon,
+  type LucideIcon,
   MicIcon,
   PaperclipIcon,
-  ImageIcon,
-  GlobeIcon,
-  LibraryIcon,
   WrenchIcon,
 } from "lucide-react";
 import type { AgentFlagKey } from "@/lib/agent/flags";
@@ -73,7 +73,8 @@ export const AGENT_COMPOSER_ACTIONS: AgentComposerAction[] = [
     unavailableReason: modelLacksFiles,
   },
   {
-    description: "Choisir des fichiers déjà enregistrés dans votre bibliothèque.",
+    description:
+      "Choisir des fichiers déjà enregistrés dans votre bibliothèque.",
     icon: LibraryIcon,
     id: "library",
     label: "Bibliothèque",
@@ -95,8 +96,7 @@ export const AGENT_COMPOSER_ACTIONS: AgentComposerAction[] = [
     label: "Créer un audio",
   },
   {
-    description:
-      "Activer la recherche Web pour la prochaine tâche (one-shot).",
+    description: "Activer la recherche Web pour la prochaine tâche (one-shot).",
     icon: GlobeIcon,
     id: "web",
     label: "Recherche Web",

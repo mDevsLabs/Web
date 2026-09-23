@@ -16,6 +16,7 @@ export type PluginCategory = {
 // Partie « outil IA » du manifeste : identifiant d'outil (clé utilisée par le
 // SDK AI et par les mentions @) et hint injecté dans le prompt système.
 export type PluginToolManifest = {
+  description: string;
   id: string;
   label: string;
   systemHint: string;
@@ -46,7 +47,7 @@ export type PluginManifest = {
   icon: PluginIconRef;
   minTier: "free" | "plus" | "pro" | "max";
   permissions: PluginPermissions;
-  tool: PluginToolManifest;
+  tools: PluginToolManifest[];
 };
 
 // Dépendances injectées pour les plugins qui en ont besoin (stream de données,
@@ -62,7 +63,7 @@ export type PluginToolDeps = {
 
 export type PluginDefinition = {
   manifest: PluginManifest;
-  createTool: (deps: PluginToolDeps) => Tool;
+  createTools: (deps: PluginToolDeps) => Record<string, Tool>;
 };
 
 // Vue client : manifeste + état d'installation pour l'utilisateur courant.

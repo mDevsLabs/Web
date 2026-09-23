@@ -69,10 +69,12 @@ for (const entry of root.plugins) {
     );
   }
 
-  if (seenToolIds.has(manifest.tool.id)) {
-    fail(`Identifiant d'outil dupliqué : ${manifest.tool.id}`);
+  for (const tool of manifest.tools) {
+    if (seenToolIds.has(tool.id)) {
+      fail(`Identifiant d'outil dupliqué : ${tool.id}`);
+    }
+    seenToolIds.add(tool.id);
   }
-  seenToolIds.add(manifest.tool.id);
 
   if (!categoryIds.has(manifest.category)) {
     fail(

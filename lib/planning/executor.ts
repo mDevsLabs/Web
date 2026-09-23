@@ -8,6 +8,7 @@ import { codeExecution } from "@/lib/ai/tools/code-execution";
 import { dateTime } from "@/lib/ai/tools/datetime";
 import { webSearch } from "@/lib/ai/tools/web-search";
 import { getUserApiKey } from "@/lib/db/api-keys";
+import { getPersistedTier } from "@/lib/db/users";
 import {
   createNotification,
   getAgentById,
@@ -21,7 +22,9 @@ import {
   saveMessages,
   setScheduledMessageStatus,
 } from "@/lib/db/queries";
+import { getPluginManifest } from "@/lib/plugins/catalog";
 import { createPluginTools } from "@/lib/plugins/server";
+import { canUsePlugin } from "@/lib/plugins/tier-lock";
 import { generateUUID } from "@/lib/utils";
 
 export type PlanningRecurrence = "none" | "daily" | "weekly" | "monthly";
@@ -193,9 +196,13 @@ export async function executeScheduledMessage(scheduledId: string) {
     const pluginInstallations = await getPluginInstallationsByUserId({
       userId,
     });
-    const enabledPluginIds = pluginInstallations
-      .filter((installation) => installation.isEnabled)
-      .map((installation) => installation.pluginId);
+    const persistedTier = await getPersistedTier({ userId });
+    const tier = persistedTier.ok ? persistedTier.tier : "free";
+    const enabledPluginIds = pluginInstallations.flatMap((installation) => {
+      if (!installation.isEnabled) return [];
+      const plugin = getPluginManifest(installation.pluginId);
+      return plugin && canUsePlugin(plugin, tier) ? [plugin.id] : [];
+    });
     const pluginTools = createPluginTools(
       { chatModel: effectiveModel, isGhostMode: false },
       enabledPluginIds
@@ -216,7 +223,9 @@ export async function executeScheduledMessage(scheduledId: string) {
 
     // Générer la réponse
     const result = await generateText({
-      activeTools: activeTools.length > 0 ? (activeTools as any) : undefined,
+      // Une sélection vide signifie « aucun outil ». Passer `undefined` au SDK
+      // réactiverait toutes les entrées de `tools`, y compris les plugins.
+      activeTools: activeTools as any,
       instructions: systemPrompt({
         modeAddendum,
         supportsTools: activeTools.length > 0,

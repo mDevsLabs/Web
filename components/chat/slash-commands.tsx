@@ -6,7 +6,6 @@ import {
   BotIcon,
   BrainIcon,
   CalculatorIcon,
-  ListChecksIcon,
   CalendarClockIcon,
   CalendarIcon,
   CloudSunIcon,
@@ -20,6 +19,7 @@ import {
   HomeIcon,
   ImageIcon,
   LightbulbIcon,
+  ListChecksIcon,
   ListIcon,
   NotebookIcon,
   PaletteIcon,
@@ -476,8 +476,7 @@ export function getFilteredSlashCommands(
   if (context?.mode === "agent") {
     list = list.filter(
       (cmd) =>
-        cmd.action === "custom" ||
-        !AGENT_EXCLUDED_SLASH_ACTIONS.has(cmd.action)
+        cmd.action === "custom" || !AGENT_EXCLUDED_SLASH_ACTIONS.has(cmd.action)
     );
   }
   if (context?.isHome) {

@@ -19,7 +19,8 @@ import {
   getPluginInstallationsByUserId,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
-import { isPluginOnlyToolId } from "@/lib/plugins/catalog";
+import { getPluginManifest, isPluginOnlyToolId } from "@/lib/plugins/catalog";
+import { canUsePlugin } from "@/lib/plugins/tier-lock";
 import {
   createPluginTools,
   getToolIdsForPluginIds,
@@ -42,9 +43,7 @@ export async function POST(request: Request) {
         .slice(0, 5)
         .map((issue) => `${issue.path.join(".") || "body"}: ${issue.message}`)
         .join("; ");
-      console.error(
-        `[chat-api] rejected guard=schema issues="${issues}"`
-      );
+      console.error(`[chat-api] rejected guard=schema issues="${issues}"`);
       return new ChatbotError("bad_request:api").toResponse();
     }
     requestBody = parsed.data;
@@ -132,9 +131,11 @@ export async function POST(request: Request) {
       ctx.isGhostMode || !pluginsAllowed
         ? []
         : await getPluginInstallationsByUserId({ userId: ctx.userId });
-    const enabledPluginIds = pluginInstallations
-      .filter((installation) => installation.isEnabled)
-      .map((installation) => installation.pluginId);
+    const enabledPluginIds = pluginInstallations.flatMap((installation) => {
+      if (!installation.isEnabled) return [];
+      const plugin = getPluginManifest(installation.pluginId);
+      return plugin && canUsePlugin(plugin, ctx.maiUser.tier) ? [plugin.id] : [];
+    });
     const installedPluginToolIds = getToolIdsForPluginIds(enabledPluginIds);
 
     // 5. Addendum de prompt (instructions, mémoire, outils, commande)

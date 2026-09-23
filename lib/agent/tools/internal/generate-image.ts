@@ -1,11 +1,7 @@
 import { z } from "zod";
 import { requireAgentToolMetadata } from "@/lib/agent/tools/catalog";
 import { defineTool } from "@/lib/agent/tools/define-tool";
-import {
-  toolFailure,
-  type ToolResult,
-  toolSuccess,
-} from "@/lib/agent/types";
+import { type ToolResult, toolFailure, toolSuccess } from "@/lib/agent/types";
 import { generateImageViaMai } from "@/lib/ai/generators/image";
 
 // Génération d'image côté Agent : la logique métier vit dans le cœur partagé

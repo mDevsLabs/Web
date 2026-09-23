@@ -31,7 +31,9 @@ describe("DDL hors du chemin de requête", () => {
     const body = queries.slice(start, end);
 
     const gate = body.indexOf("DB_RUNTIME_DDL_REPAIR");
-    const firstExecution = body.search(/await ensureColumnDefaults\(|await run\(/);
+    const firstExecution = body.search(
+      /await ensureColumnDefaults\(|await run\(/
+    );
     expect(gate).toBeGreaterThan(-1);
     expect(firstExecution).toBeGreaterThan(-1);
     expect(gate).toBeLessThan(firstExecution);
@@ -39,21 +41,22 @@ describe("DDL hors du chemin de requête", () => {
 });
 
 describe("Repair weekly_usage — aucune suppression sans sauvegarde vérifiée", () => {
-  for (const file of [
-    "lib/db/queries.ts",
-    "scripts/repair-db-drift.mjs",
-  ]) {
+  for (const file of ["lib/db/queries.ts", "scripts/repair-db-drift.mjs"]) {
     it(`${file} vérifie la sauvegarde AVANT le DELETE`, () => {
       const code = codeOnly(file);
       const insertIndex = code.indexOf("INSERT INTO weekly_usage_drift_backup");
       const checkIndex = code.indexOf("sauvegardees < a_deplacer");
-      const deleteIndex = code.indexOf("DELETE FROM weekly_usage WHERE user_id !~");
+      const deleteIndex = code.indexOf(
+        "DELETE FROM weekly_usage WHERE user_id !~"
+      );
       const alterIndex = code.indexOf(
         'ALTER TABLE "weekly_usage" ALTER COLUMN "user_id" TYPE integer'
       );
 
       expect(deleteIndex, "DELETE introuvable").toBeGreaterThan(-1);
-      expect(checkIndex, "vérification de complétude absente").toBeGreaterThan(-1);
+      expect(checkIndex, "vérification de complétude absente").toBeGreaterThan(
+        -1
+      );
       // Ordre imposé : sauvegarde → vérification → DELETE → ALTER TYPE.
       expect(insertIndex).toBeLessThan(checkIndex);
       expect(checkIndex).toBeLessThan(deleteIndex);

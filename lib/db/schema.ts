@@ -1108,6 +1108,13 @@ export const agentRun = pgTable(
     error: text("error"),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     messageId: text("messageId"),
+    parentRunId: uuid("parentRunId"),
+    stopReason: text("stopReason"),
+    executionOwner: text("executionOwner"),
+    executionLeaseUntil: timestamp("executionLeaseUntil"),
+    useful: boolean("useful"),
+    goalReached: boolean("goalReached"),
+    feedbackAt: timestamp("feedbackAt"),
     model: text("model").notNull(),
     plan: json("plan").$type<AgentPlan | null>(),
     reasoningLevel: varchar("reasoningLevel", {
@@ -1151,6 +1158,7 @@ export const agentRun = pgTable(
   (table) => ({
     chatIdIdx: index("AgentRun_chatId_idx").on(table.chatId),
     createdAtIdx: index("AgentRun_createdAt_idx").on(table.createdAt),
+    parentRunFk: foreignKey({ columns: [table.parentRunId], foreignColumns: [table.id], name: "AgentRun_parentRunId_fkey" }).onDelete("set null"),
     userStatusIdx: index("AgentRun_userId_status_idx").on(
       table.userId,
       table.status
@@ -1338,6 +1346,23 @@ export const agentSchedule = pgTable(
 
 export type AgentSchedule = InferSelectModel<typeof agentSchedule>;
 
+export const agentScheduleVersion = pgTable(
+  "AgentScheduleVersion",
+  {
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    scheduleId: uuid("scheduleId").notNull().references(() => agentSchedule.id, { onDelete: "cascade" }),
+    revision: integer("revision").notNull(),
+    snapshot: json("snapshot").$type<AgentScheduleRecord>().notNull(),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    scheduleRevisionUnique: uniqueIndex("AgentScheduleVersion_schedule_revision_key").on(table.scheduleId, table.revision),
+  })
+);
+
+export type AgentScheduleVersion = InferSelectModel<typeof agentScheduleVersion>;
+
 // Une exécution prévue. UNIQUE(scheduleId, dueAt) garantit l'idempotence : un
 // tick rejoué ou deux workers concurrents ne créent jamais deux occurrences.
 export const agentScheduleOccurrence = pgTable(
@@ -1357,8 +1382,9 @@ export const agentScheduleOccurrence = pgTable(
     scheduleId: uuid("scheduleId")
       .notNull()
       .references(() => agentSchedule.id, { onDelete: "cascade" }),
+    scheduleVersionId: uuid("scheduleVersionId").references(() => agentScheduleVersion.id, { onDelete: "set null" }),
     status: varchar("status", {
-      enum: ["pending", "claimed", "running", "completed", "failed", "skipped"],
+      enum: ["pending", "claimed", "running", "waiting", "completed", "failed", "skipped"],
     })
       .notNull()
       .default("pending"),

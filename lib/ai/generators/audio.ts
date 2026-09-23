@@ -148,7 +148,9 @@ export async function generateAudioViaMai(params: {
 
       const audioUrl =
         data?.audio_url ||
-        (data?.audioContent ? `data:audio/mp3;base64,${data.audioContent}` : "");
+        (data?.audioContent
+          ? `data:audio/mp3;base64,${data.audioContent}`
+          : "");
       if (!audioUrl) {
         return { error: "Aucun flux audio retourné." };
       }

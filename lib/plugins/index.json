@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": "2026.09.14",
+  "catalogVersion": "2026.09.23",
   "categories": [
     {
       "id": "meteo",
@@ -26,7 +26,11 @@
       "id": "dev",
       "label": "Développement",
       "icon": "Code"
-    }
+    },
+    { "id": "food", "label": "Alimentation", "icon": "Leaf" },
+    { "id": "research", "label": "Recherche", "icon": "Atom" },
+    { "id": "data", "label": "Données", "icon": "BarChart3" },
+    { "id": "culture", "label": "Culture", "icon": "Video" }
   ],
   "plugins": [
     {
@@ -58,6 +62,42 @@
       "dir": "fr-holidays",
       "entry": "./fr-holidays",
       "manifest": "./fr-holidays/index.json"
+    },
+    {
+      "id": "github-public",
+      "dir": "github-public",
+      "entry": "./github-public",
+      "manifest": "./github-public/index.json"
+    },
+    {
+      "id": "open-food-facts",
+      "dir": "open-food-facts",
+      "entry": "./open-food-facts",
+      "manifest": "./open-food-facts/index.json"
+    },
+    {
+      "id": "open-library",
+      "dir": "open-library",
+      "entry": "./open-library",
+      "manifest": "./open-library/index.json"
+    },
+    {
+      "id": "crossref",
+      "dir": "crossref",
+      "entry": "./crossref",
+      "manifest": "./crossref/index.json"
+    },
+    {
+      "id": "world-bank",
+      "dir": "world-bank",
+      "entry": "./world-bank",
+      "manifest": "./world-bank/index.json"
+    },
+    {
+      "id": "tvmaze",
+      "dir": "tvmaze",
+      "entry": "./tvmaze",
+      "manifest": "./tvmaze/index.json"
     }
   ]
 }

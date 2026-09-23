@@ -18,22 +18,26 @@
 
 /** Plages bloquées, en notation CIDR IPv4. */
 const BLOCKED_IPV4_RANGES: Array<[number, number, string]> = [
-  [0x00000000, 0xff000000, "0.0.0.0/8 (réseau source)"],
-  [0x0a000000, 0xff000000, "10.0.0.0/8 (privé)"],
-  [0x64400000, 0xffc00000, "100.64.0.0/10 (CGNAT)"],
-  [0x7f000000, 0xff000000, "127.0.0.0/8 (loopback)"],
-  [0xa9fe0000, 0xffff0000, "169.254.0.0/16 (link-local, métadonnées cloud)"],
-  [0xac100000, 0xfff00000, "172.16.0.0/12 (privé)"],
-  [0xc0000000, 0xffffff00, "192.0.0.0/24 (IETF)"],
-  [0xc0000200, 0xffffff00, "192.0.2.0/24 (documentation)"],
-  [0xc0586300, 0xffffff00, "192.88.99.0/24 (relais 6to4)"],
-  [0xc0a80000, 0xffff0000, "192.168.0.0/16 (privé)"],
-  [0xc6120000, 0xfffe0000, "198.18.0.0/15 (benchmark)"],
-  [0xc6336400, 0xffffff00, "198.51.100.0/24 (documentation)"],
-  [0xcb007100, 0xffffff00, "203.0.113.0/24 (documentation)"],
-  [0xe0000000, 0xf0000000, "224.0.0.0/4 (multicast)"],
-  [0xf0000000, 0xf0000000, "240.0.0.0/4 (réservé)"],
-  [0xffffffff, 0xffffffff, "255.255.255.255 (broadcast)"],
+  [0x00_00_00_00, 0xff_00_00_00, "0.0.0.0/8 (réseau source)"],
+  [0x0a_00_00_00, 0xff_00_00_00, "10.0.0.0/8 (privé)"],
+  [0x64_40_00_00, 0xff_c0_00_00, "100.64.0.0/10 (CGNAT)"],
+  [0x7f_00_00_00, 0xff_00_00_00, "127.0.0.0/8 (loopback)"],
+  [
+    0xa9_fe_00_00,
+    0xff_ff_00_00,
+    "169.254.0.0/16 (link-local, métadonnées cloud)",
+  ],
+  [0xac_10_00_00, 0xff_f0_00_00, "172.16.0.0/12 (privé)"],
+  [0xc0_00_00_00, 0xff_ff_ff_00, "192.0.0.0/24 (IETF)"],
+  [0xc0_00_02_00, 0xff_ff_ff_00, "192.0.2.0/24 (documentation)"],
+  [0xc0_58_63_00, 0xff_ff_ff_00, "192.88.99.0/24 (relais 6to4)"],
+  [0xc0_a8_00_00, 0xff_ff_00_00, "192.168.0.0/16 (privé)"],
+  [0xc6_12_00_00, 0xff_fe_00_00, "198.18.0.0/15 (benchmark)"],
+  [0xc6_33_64_00, 0xff_ff_ff_00, "198.51.100.0/24 (documentation)"],
+  [0xcb_00_71_00, 0xff_ff_ff_00, "203.0.113.0/24 (documentation)"],
+  [0xe0_00_00_00, 0xf0_00_00_00, "224.0.0.0/4 (multicast)"],
+  [0xf0_00_00_00, 0xf0_00_00_00, "240.0.0.0/4 (réservé)"],
+  [0xff_ff_ff_ff, 0xff_ff_ff_ff, "255.255.255.255 (broadcast)"],
 ];
 
 /** Suffixes de noms internes/cluster : jamais résolubles vers l'extérieur. */
@@ -91,7 +95,7 @@ export function parseIpv4ToBytes(host: string): number[] | null {
   const nums = values as number[];
 
   if (nums.length === 1) {
-    if (nums[0] > 0xffffffff) {
+    if (nums[0] > 0xff_ff_ff_ff) {
       return null;
     }
     return [
@@ -109,8 +113,9 @@ export function parseIpv4ToBytes(host: string): number[] | null {
   if (last >= 256 ** tailLength) {
     return null;
   }
-  const tail = Array.from({ length: tailLength }, (_, index) =>
-    (last >>> (8 * (tailLength - 1 - index))) & 0xff
+  const tail = Array.from(
+    { length: tailLength },
+    (_, index) => (last >>> (8 * (tailLength - 1 - index))) & 0xff
   );
   const bytes = [...head, ...tail];
   if (bytes.some((byte) => byte > 255)) {
@@ -136,7 +141,10 @@ export function isBlockedIpv4Bytes(bytes: readonly number[]): string | null {
  * forme canonique ou mappée). Renvoie le libellé de la plage bloquée, ou null.
  */
 export function blockedIpReason(rawHost: string): string | null {
-  const host = rawHost.trim().replace(/^\[|\]$/g, "").toLowerCase();
+  const host = rawHost
+    .trim()
+    .replace(/^\[|\]$/g, "")
+    .toLowerCase();
   if (!host) {
     return "hôte vide";
   }
@@ -151,7 +159,9 @@ export function blockedIpReason(rawHost: string): string | null {
   }
 
   // IPv6 : on teste les formes mappées (dont NAT64) puis les préfixes locaux.
-  const mapped = host.match(/^(?:::ffff:|::|64:ff9b::)(\d{1,3}(?:\.\d{1,3}){3})$/);
+  const mapped = host.match(
+    /^(?:::ffff:|::|64:ff9b::)(\d{1,3}(?:\.\d{1,3}){3})$/
+  );
   if (mapped) {
     const inner = parseIpv4ToBytes(mapped[1]);
     if (inner) {
@@ -196,7 +206,10 @@ export function blockedIpReason(rawHost: string): string | null {
  * d'accès doit passer par `assertPublicHost` (résolution DNS incluse).
  */
 export function isPrivateOrBlockedHost(hostname: string): boolean {
-  const host = hostname.toLowerCase().trim().replace(/^\[|\]$/g, "");
+  const host = hostname
+    .toLowerCase()
+    .trim()
+    .replace(/^\[|\]$/g, "");
   if (!host) {
     return true;
   }
@@ -212,7 +225,9 @@ export function isPrivateOrBlockedHost(hostname: string): boolean {
   return blockedIpReason(host) !== null;
 }
 
-export type SafeUrlResult = { error: string; url?: undefined } | { error?: undefined; url: URL };
+export type SafeUrlResult =
+  | { error: string; url?: undefined }
+  | { error?: undefined; url: URL };
 
 /**
  * Normalise une URL utilisateur et refuse les schémas/hôtes dangereux.
@@ -232,9 +247,7 @@ export function safeExternalUrl(raw: string): SafeUrlResult {
   // `scheme://` explicite (file, gopher, ftp…) ou `scheme:` sans « // »
   // (`javascript:`, `data:`), en excluant `hote:port` où le « : » est suivi
   // de chiffres.
-  const explicitScheme = trimmed.match(
-    /^([a-z][a-z0-9+.-]*):(?:\/\/|(?!\d))/i
-  );
+  const explicitScheme = trimmed.match(/^([a-z][a-z0-9+.-]*):(?:\/\/|(?!\d))/i);
   let candidate = trimmed;
   if (explicitScheme) {
     const scheme = explicitScheme[1].toLowerCase();
@@ -263,10 +276,14 @@ export function safeExternalUrl(raw: string): SafeUrlResult {
   // proxy et permettent de contourner une règle d'authentification en amont.
   if (parsedUrl.username || parsedUrl.password) {
     return {
-      error: "URL avec identifiants refusée (utilisez un en-tête d'autorisation).",
+      error:
+        "URL avec identifiants refusée (utilisez un en-tête d'autorisation).",
     };
   }
-  if (parsedUrl.port && !["", "80", "443", "8080", "8443"].includes(parsedUrl.port)) {
+  if (
+    parsedUrl.port &&
+    !["", "80", "443", "8080", "8443"].includes(parsedUrl.port)
+  ) {
     return {
       error: `Port non autorisé (${parsedUrl.port}) : seuls 80, 443, 8080 et 8443 sont acceptés.`,
     };
@@ -328,7 +345,10 @@ async function defaultResolver(hostname: string): Promise<string[]> {
 export async function validateAndResolveUrl(
   raw: string,
   options: { resolver?: Resolver } = {}
-): Promise<{ error: string; host?: undefined } | { error?: undefined; host: ResolvedHost }> {
+): Promise<
+  | { error: string; host?: undefined }
+  | { error?: undefined; host: ResolvedHost }
+> {
   const checked = safeExternalUrl(raw);
   if (checked.error !== undefined) {
     return { error: checked.error };
@@ -336,7 +356,10 @@ export async function validateAndResolveUrl(
   const url = checked.url;
 
   // Littéral IP : la résolution est inutile.
-  if (blockedIpReason(url.hostname) !== null || parseIpv4ToBytes(url.hostname)) {
+  if (
+    blockedIpReason(url.hostname) !== null ||
+    parseIpv4ToBytes(url.hostname)
+  ) {
     return { error: "Adresse IP non autorisée." };
   }
 

@@ -1,11 +1,7 @@
 import { z } from "zod";
 import { requireAgentToolMetadata } from "@/lib/agent/tools/catalog";
 import { defineTool } from "@/lib/agent/tools/define-tool";
-import {
-  toolFailure,
-  type ToolResult,
-  toolSuccess,
-} from "@/lib/agent/types";
+import { type ToolResult, toolFailure, toolSuccess } from "@/lib/agent/types";
 import {
   countMemories,
   createMemory,
@@ -29,7 +25,11 @@ const memoryInputSchema = z.object({
     .max(2000)
     .optional()
     .describe("Contenu à mémoriser (requis pour l'action add)."),
-  id: z.string().uuid().optional().describe("Identifiant de la mémoire à supprimer (requis pour delete)."),
+  id: z
+    .string()
+    .uuid()
+    .optional()
+    .describe("Identifiant de la mémoire à supprimer (requis pour delete)."),
   query: z
     .string()
     .max(300)

@@ -74,7 +74,12 @@ const CALLS = [
       `${T("ai-translate", "userId")}, 20, 60_000`,
     ],
   ],
-  ["vibe-users.ts", [`${T("pv", "viewerId}:${targetId".slice(0, 0) + "viewerId}:${targetId")}, 1, 60_000`]],
+  [
+    "vibe-users.ts",
+    [
+      `${T("pv", "viewerId}:${targetId".slice(0, 0) + "viewerId}:${targetId")}, 1, 60_000`,
+    ],
+  ],
 ] as const;
 
 function context(pathname: string, headers: Record<string, string> = {}) {
@@ -92,11 +97,21 @@ function context(pathname: string, headers: Record<string, string> = {}) {
 }
 
 describe("bounded root backend audit", () => {
-  it.each(CALLS)("%s awaits every limiter with its original key and window", (file, expected) => {
-    const ast = ts.createSourceFile(file, source(file), ts.ScriptTarget.Latest, true);
+  it.each(
+    CALLS
+  )("%s awaits every limiter with its original key and window", (file, expected) => {
+    const ast = ts.createSourceFile(
+      file,
+      source(file),
+      ts.ScriptTarget.Latest,
+      true
+    );
     const calls: string[] = [];
     function visit(node: ts.Node) {
-      if (ts.isCallExpression(node) && node.expression.getText(ast) === "rateLimit") {
+      if (
+        ts.isCallExpression(node) &&
+        node.expression.getText(ast) === "rateLimit"
+      ) {
         expect(ts.isAwaitExpression(node.parent)).toBe(true);
         calls.push(node.arguments.map((arg) => arg.getText(ast)).join(", "));
       }
@@ -106,7 +121,11 @@ describe("bounded root backend audit", () => {
     expect(calls).toEqual(expected);
   });
 
-  it.each([60_000, 5 * 60_000, 15 * 60_000])("enforces limits and expires at %i ms", async (windowMs) => {
+  it.each([
+    60_000,
+    5 * 60_000,
+    15 * 60_000,
+  ])("enforces limits and expires at %i ms", async (windowMs) => {
     const clock = vi.spyOn(Date, "now").mockReturnValue(1000);
     try {
       const { rateLimit } = loadIsolated("config.ts");
@@ -126,7 +145,9 @@ describe("bounded root backend audit", () => {
 
   it("separates IPs and viewer-target pairs", async () => {
     const { clientIp, rateLimit } = loadIsolated("config.ts");
-    const ip = clientIp(context("/login", { "x-forwarded-for": "192.0.2.1, 192.0.2.2" }));
+    const ip = clientIp(
+      context("/login", { "x-forwarded-for": "192.0.2.1, 192.0.2.2" })
+    );
     expect(ip).toBe("192.0.2.1");
     expect(await rateLimit(`login:${ip}`, 1, 60_000)).toBe(true);
     expect(await rateLimit(`login:${ip}`, 1, 60_000)).toBe(false);
@@ -138,17 +159,36 @@ describe("bounded root backend audit", () => {
   });
 
   it("registers every alias for all five supported methods", () => {
-    const { createRegisterMulti } = loadIsolated("vibe-common.ts", { "./config.ts": {} });
-    const app = { delete: vi.fn(), get: vi.fn(), patch: vi.fn(), post: vi.fn(), put: vi.fn() };
+    const { createRegisterMulti } = loadIsolated("vibe-common.ts", {
+      "./config.ts": {},
+    });
+    const app = {
+      delete: vi.fn(),
+      get: vi.fn(),
+      patch: vi.fn(),
+      post: vi.fn(),
+      put: vi.fn(),
+    };
     const register = createRegisterMulti(app);
     const handler = vi.fn();
     for (const method of ["get", "post", "delete", "patch", "put"] as const) {
       register(method, ["/first", "/second"], handler);
-      expect(app[method].mock.calls).toEqual([["/first", handler], ["/second", handler]]);
+      expect(app[method].mock.calls).toEqual([
+        ["/first", handler],
+        ["/second", handler],
+      ]);
     }
   });
 
-  it.each([Number.NaN, Number.POSITIVE_INFINITY, Number.NEGATIVE_INFINITY, -1, "10", null, true])("rejects invalid usage %s before accessing DB", async (tokens) => {
+  it.each([
+    Number.NaN,
+    Number.POSITIVE_INFINITY,
+    Number.NEGATIVE_INFINITY,
+    -1,
+    "10",
+    null,
+    true,
+  ])("rejects invalid usage %s before accessing DB", async (tokens) => {
     const sql = vi.fn().mockResolvedValue([]);
     const getDb = vi.fn(() => sql);
     const { registerVibeSettingsRoutes } = loadIsolated("vibe-settings.ts", {
@@ -162,17 +202,26 @@ describe("bounded root backend audit", () => {
     });
     const register = vi.fn();
     registerVibeSettingsRoutes({}, register);
-    const handler = register.mock.calls.find((call) => call[1].includes("/usage/log"))?.[2];
+    const handler = register.mock.calls.find((call) =>
+      call[1].includes("/usage/log")
+    )?.[2];
     expect(handler).toBeTypeOf("function");
     const c = context("/usage/log");
-    const result = await handler({ ...c, req: { ...c.req, json: async () => ({ tokens }) } });
+    const result = await handler({
+      ...c,
+      req: { ...c.req, json: async () => ({ tokens }) },
+    });
     expect(result.status).toBe(400);
     expect(result.body.success).toBe(false);
     expect(getDb).not.toHaveBeenCalled();
     expect(sql).not.toHaveBeenCalled();
   });
 
-  it.each([0, 10, undefined])("preserves valid/default usage %s with stubbed persistence", async (tokens) => {
+  it.each([
+    0,
+    10,
+    undefined,
+  ])("preserves valid/default usage %s with stubbed persistence", async (tokens) => {
     const sql = vi.fn().mockResolvedValue([]);
     const { registerVibeSettingsRoutes } = loadIsolated("vibe-settings.ts", {
       "./config.ts": {
@@ -185,16 +234,25 @@ describe("bounded root backend audit", () => {
     });
     const register = vi.fn();
     registerVibeSettingsRoutes({}, register);
-    const handler = register.mock.calls.find((call) => call[1].includes("/usage/log"))?.[2];
+    const handler = register.mock.calls.find((call) =>
+      call[1].includes("/usage/log")
+    )?.[2];
     const c = context("/usage/log");
-    expect(await handler({ ...c, req: { ...c.req, json: async () => ({ tokens }) } })).toEqual({
-      body: { logged: true, success: true }, status: 200,
+    expect(
+      await handler({ ...c, req: { ...c.req, json: async () => ({ tokens }) } })
+    ).toEqual({
+      body: { logged: true, success: true },
+      status: 200,
     });
     expect(sql).toHaveBeenCalledTimes(2);
     expect(sql.mock.calls[0][3]).toBe(tokens ?? 10);
   });
 
-  it.each(["initial-query", "db-init", "jwt-user-query"])("returns 503 without next on %s failure", async (failure) => {
+  it.each([
+    "initial-query",
+    "db-init",
+    "jwt-user-query",
+  ])("returns 503 without next on %s failure", async (failure) => {
     const sql = vi.fn();
     if (failure === "jwt-user-query") sql.mockResolvedValueOnce([]);
     sql.mockRejectedValue(new Error("stub DB failure"));
@@ -217,7 +275,8 @@ describe("bounded root backend audit", () => {
       const next = vi.fn();
       const c = context(pathname, { authorization: "Bearer stub-token" });
       expect(await middleware(c, next)).toEqual({
-        body: { error: "Authentication service unavailable." }, status: 503,
+        body: { error: "Authentication service unavailable." },
+        status: 503,
       });
       expect(next).not.toHaveBeenCalled();
       expect(c.set).not.toHaveBeenCalled();
@@ -237,7 +296,16 @@ describe("bounded root backend audit", () => {
     registerMiddleware({ use });
     const middleware = use.mock.calls[0][1];
     const next = vi.fn();
-    expect((await middleware(context("/v1/chat/completions", { authorization: "Bearer stub-token" }), next)).status).toBe(403);
+    expect(
+      (
+        await middleware(
+          context("/v1/chat/completions", {
+            authorization: "Bearer stub-token",
+          }),
+          next
+        )
+      ).status
+    ).toBe(403);
     expect(next).not.toHaveBeenCalled();
     await middleware(context("/v1/models"), next);
     expect(next).toHaveBeenCalledTimes(1);
