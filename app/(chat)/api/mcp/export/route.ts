@@ -2,6 +2,7 @@ import { getMaiUser } from "@/lib/auth/session";
 import { getMcpServersByUserId } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import { type ExportFormat, formatExport } from "@/lib/export/formatters";
+import { sanitizeUrlForClient } from "@/lib/mcp/dto";
 
 export async function GET(request: Request) {
   const user = await getMaiUser();
@@ -21,7 +22,9 @@ export async function GET(request: Request) {
     timeoutMs: (s as any).timeoutMs ?? 15_000,
     transport: s.transport,
     uptimeStatus: (s as any).uptimeStatus ?? "unknown",
-    url: s.url ?? s.command ?? "",
+    // Les identifiants et paramètres de requête ressemblant à un secret sont
+    // retirés : un export ne doit pas recopier une URL porteuse de jeton.
+    url: sanitizeUrlForClient(s.url) ?? s.command ?? "",
   }));
   const cols = [
     "name",

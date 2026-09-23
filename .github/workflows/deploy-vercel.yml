@@ -1,9 +1,22 @@
 name: 🚀 Deploy to Vercel
 
+# Séparation stricte des environnements.
+#
+# AVANT : un seul job, déclenché sur TOUTE branche et TOUTE pull request,
+# exécutait `pnpm exec tsx lib/db/migrate.ts` avec le même secret
+# `DATABASE_URL` que la production. Une branche de prévisualisation (ou une PR
+# d'un contributeur) migrait donc — et réparait le schéma de — la base de
+# production, sans approbation.
+#
+# MAINTENANT :
+#  • `preview` : build + déploiement de prévisualisation, AUCUNE migration,
+#    aucun accès base ;
+#  • `production` : réservé à la branche `main`, rattaché à l'environnement
+#    GitHub `production` (approbation requise), seul endroit où les migrations
+#    s'exécutent.
 on:
   push:
-    branches:
-      - '**'
+    branches: [main, canary]
   pull_request:
     types: [opened, synchronize, reopened]
   workflow_dispatch:
@@ -12,22 +25,31 @@ env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+  # Outil épinglé : `vercel@latest` rendait les déploiements non reproductibles
+  # (une nouvelle version pouvait changer le comportement sans changement de code).
+  VERCEL_CLI_VERSION: "59.23.2"
 
 jobs:
-  deploy:
+  preview:
+    name: Prévisualisation (sans accès base)
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - name: 📦 Checkout du code
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: ⚡ Setup pnpm
         uses: pnpm/action-setup@v4
+        with:
+          run_install: false
 
       - name: 🛠️ Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'pnpm'
+          node-version: 22
+          cache: pnpm
 
       - name: 🔑 Vérifier les secrets Vercel
         run: |
@@ -35,47 +57,80 @@ jobs:
             echo "::error::Le secret VERCEL_TOKEN est manquant dans les paramètres GitHub !"
             exit 1
           fi
-          if [ -z "${{ env.VERCEL_ORG_ID }}" ]; then
-            echo "::error::La variable VERCEL_ORG_ID est manquante !"
-            exit 1
-          fi
-          if [ -z "${{ env.VERCEL_PROJECT_ID }}" ]; then
-            echo "::error::La variable VERCEL_PROJECT_ID est manquante !"
-            exit 1
-          fi
 
-      - name: ⚡ Install Vercel CLI
-        run: npm install --global vercel@latest
+      - name: ⚡ Installer la CLI Vercel (version épinglée)
+        run: npm install --global vercel@${{ env.VERCEL_CLI_VERSION }}
 
       - name: 📥 Installation des dépendances
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
-      - name: 🗄️ Exécution des migrations base de données
-        run: pnpm exec tsx lib/db/migrate
+      - name: 🌍 Récupérer l'environnement de prévisualisation
+        run: vercel pull --yes --environment=preview --token=${{ env.VERCEL_TOKEN }}
+
+      # Aucune variable de base de données n'est exposée ici : une branche de
+      # prévisualisation ne doit jamais pouvoir écrire dans la base partagée.
+      - name: 🏗️ Build des artefacts
+        run: vercel build --token=${{ env.VERCEL_TOKEN }}
+
+      - name: 🌐 Déployer la prévisualisation
+        run: vercel deploy --prebuilt --archive=tgz --token=${{ env.VERCEL_TOKEN }}
+
+  production:
+    name: Production (migrations approuvées)
+    # Seule la branche `main` peut migrer et déployer en production. Le job est
+    # rattaché à l'environnement GitHub `production` : les règles de protection
+    # de cet environnement (reviewers obligatoires) s'appliquent avant toute
+    # exécution, migrations incluses.
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    environment: production
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📦 Checkout du code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: ⚡ Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: 🛠️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: ⚡ Installer la CLI Vercel (version épinglée)
+        run: npm install --global vercel@${{ env.VERCEL_CLI_VERSION }}
+
+      - name: 📥 Installation des dépendances
+        run: pnpm install --frozen-lockfile
+
+      - name: 🌍 Récupérer l'environnement de production
+        run: vercel pull --yes --environment=production --token=${{ env.VERCEL_TOKEN }}
+
+      # Journalisation explicite : quel schéma va être migré (hôte + base, sans
+      # identifiants — l'URL complète n'est jamais affichée).
+      - name: 🔎 Identifier la cible de migration
+        run: |
+          node -e '
+            const raw = process.env.DATABASE_URL || "";
+            if (!raw) { console.error("::error::DATABASE_URL absente pour la production."); process.exit(1); }
+            const u = new URL(raw);
+            console.log(`Migration de ${u.hostname}/${u.pathname.replace("/", "")} (utilisateur ${u.username || "n/a"})`);
+          '
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+      # Migration PUIS build. `MIGRATIONS_STRICT=true` : une étape de réparation
+      # en échec inattendu fait échouer le job au lieu d'être absorbée.
+      - name: 🗄️ Migration puis build des artefacts
+        run: pnpm exec tsx lib/db/migrate.ts && vercel build --prod --token=${{ env.VERCEL_TOKEN }}
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           POSTGRES_URL: ${{ secrets.DATABASE_URL }}
+          MIGRATIONS_STRICT: "true"
 
-      - name: 🌍 Pull Vercel Environment Information
-        run: |
-          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            vercel pull --yes --environment=production --token=${{ env.VERCEL_TOKEN }}
-          else
-            vercel pull --yes --environment=preview --token=${{ env.VERCEL_TOKEN }}
-          fi
-
-      - name: 🏗️ Build Project Artifacts
-        run: |
-          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            vercel build --prod --token=${{ env.VERCEL_TOKEN }}
-          else
-            vercel build --token=${{ env.VERCEL_TOKEN }}
-          fi
-
-      - name: 🌐 Deploy Project Artifacts to Vercel
-        run: |
-          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            vercel deploy --prebuilt --archive=tgz --prod --token=${{ env.VERCEL_TOKEN }}
-          else
-            vercel deploy --prebuilt --archive=tgz --token=${{ env.VERCEL_TOKEN }}
-          fi
+      - name: 🌐 Déployer en production
+        run: vercel deploy --prebuilt --archive=tgz --prod --token=${{ env.VERCEL_TOKEN }}

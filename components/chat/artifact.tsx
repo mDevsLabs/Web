@@ -289,7 +289,20 @@ function PureArtifact({
       : true;
 
   const { width: windowWidth, height: windowHeight } = useWindowSize();
-  const isMobile = windowWidth ? windowWidth < 768 : false;
+  // Hydratation : useWindowSize lit window.innerWidth dès le PREMIER rendu
+  // client (initializeWithValue, défaut d'usehooks-ts), alors que le serveur
+  // a rendu la branche desktop. Sur un viewport < 768 px (mobile réel,
+  // fenêtre étroite, zoom Windows > 100 %), la première hydration détachait
+  // donc l'arbre servi (div repliée -> null) et React régénérait le
+  // sous-arbre : les clics réels étaient avalés jusqu'au rendu stable. On
+  // force isMobile à false pendant le rendu d'hydratation (identique au
+  // serveur, zéro divergence), puis l'effet de montage révèle la valeur
+  // réelle du viewport — un rendu de plus sur mobile, aucun arbre détaché.
+  const [isViewportKnown, setIsViewportKnown] = useState(false);
+  useEffect(() => {
+    setIsViewportKnown(true);
+  }, []);
+  const isMobile = isViewportKnown && windowWidth ? windowWidth < 768 : false;
 
   const artifactDefinition = artifactDefinitions.find(
     (definition) => definition.kind === artifact.kind

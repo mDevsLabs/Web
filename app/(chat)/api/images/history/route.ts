@@ -1,4 +1,9 @@
 import { type NextRequest, NextResponse } from "next/server";
+import {
+  errorResponse,
+  logError,
+  normalizeUpstreamError,
+} from "@/lib/api/error-response";
 import { getMaiSessionToken } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
 import { formatImageSrc } from "@/lib/utils";
@@ -6,7 +11,7 @@ import { formatImageSrc } from "@/lib/utils";
 export async function GET(req: NextRequest) {
   const token = await getMaiSessionToken();
   if (!token) {
-    return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non authentifié." });
   }
 
   const { searchParams } = req.nextUrl;
@@ -26,7 +31,8 @@ export async function GET(req: NextRequest) {
 
     const data = await res.json();
     if (!res.ok) {
-      return NextResponse.json(data, { status: res.status });
+      const payload = normalizeUpstreamError(data, res.status);
+      return NextResponse.json(payload, { status: payload.status });
     }
 
     const rawItems = data.data || data.images || [];
@@ -42,24 +48,25 @@ export async function GET(req: NextRequest) {
       total: data.total || items.length,
     });
   } catch (error) {
-    console.error("Erreur API images/history:", error);
-    return NextResponse.json(
-      { error: "Erreur lors du chargement de l'historique" },
-      { status: 500 }
-    );
+    logError("Erreur API images/history", error);
+    return errorResponse("internal_error", {
+      message: "Erreur lors du chargement de l'historique.",
+    });
   }
 }
 
 export async function DELETE(req: NextRequest) {
   const token = await getMaiSessionToken();
   if (!token) {
-    return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non authentifié." });
   }
 
   const { searchParams } = req.nextUrl;
   const id = searchParams.get("id");
   if (!id) {
-    return NextResponse.json({ error: "ID manquant" }, { status: 400 });
+    return errorResponse("invalid_request", {
+      message: "L'identifiant de l'image est requis.",
+    });
   }
 
   try {
@@ -72,23 +79,23 @@ export async function DELETE(req: NextRequest) {
 
     const data = await res.json();
     if (!res.ok) {
-      return NextResponse.json(data, { status: res.status });
+      const payload = normalizeUpstreamError(data, res.status);
+      return NextResponse.json(payload, { status: payload.status });
     }
 
     return NextResponse.json(data);
   } catch (error) {
-    console.error("Erreur suppression image:", error);
-    return NextResponse.json(
-      { error: "Erreur lors de la suppression de l'image" },
-      { status: 500 }
-    );
+    logError("Erreur suppression image", error);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de la suppression de l'image.",
+    });
   }
 }
 
 export async function PATCH(req: NextRequest) {
   const token = await getMaiSessionToken();
   if (!token) {
-    return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non authentifié." });
   }
 
   const { searchParams } = req.nextUrl;
@@ -97,7 +104,9 @@ export async function PATCH(req: NextRequest) {
   const targetId = id || body.id;
 
   if (!targetId) {
-    return NextResponse.json({ error: "ID manquant" }, { status: 400 });
+    return errorResponse("invalid_request", {
+      message: "L'identifiant de l'image est requis.",
+    });
   }
 
   try {
@@ -112,15 +121,15 @@ export async function PATCH(req: NextRequest) {
 
     const data = await res.json();
     if (!res.ok) {
-      return NextResponse.json(data, { status: res.status });
+      const payload = normalizeUpstreamError(data, res.status);
+      return NextResponse.json(payload, { status: payload.status });
     }
 
     return NextResponse.json(data);
   } catch (error) {
-    console.error("Erreur mise à jour image:", error);
-    return NextResponse.json(
-      { error: "Erreur lors de la mise à jour de l'image" },
-      { status: 500 }
-    );
+    logError("Erreur mise à jour image", error);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de la mise à jour de l'image.",
+    });
   }
 }

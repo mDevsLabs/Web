@@ -1,5 +1,6 @@
 import { and, desc, ilike, or, sql } from "drizzle-orm";
 import { NextResponse } from "next/server";
+import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { getDb } from "@/lib/db/queries";
 import { chat, message, project } from "@/lib/db/schema";
@@ -22,7 +23,7 @@ export async function GET(request: Request) {
 
   const maiUser = await getMaiUser();
   if (!maiUser) {
-    return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non authentifié." });
   }
   const userIds = Array.from(
     new Set([maiUser.id, maiUser.email, maiUser.username].filter(Boolean))
@@ -69,7 +70,9 @@ export async function GET(request: Request) {
       .from(project)
       .where(
         and(
-          sql`${project.userId}::text = ANY(${userIds})`,
+          // Projets possédés OU projets partagés dont l'utilisateur est membre
+          // (ProjectMember) : la recherche n'expose jamais un projet étranger.
+          sql`(${project.userId}::text = ANY(${userIds}) OR EXISTS (SELECT 1 FROM "ProjectMember" pm WHERE pm."projectId" = ${project.id} AND pm."userId"::text = ANY(${userIds})))`,
           projectConditions.length > 0
             ? and(...projectConditions)
             : ilike(project.name, escapedFull)

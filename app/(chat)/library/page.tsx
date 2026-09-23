@@ -57,11 +57,10 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import {
-  DEFAULT_CHAT_MODEL,
-  getModelCapabilities,
-} from "@/lib/ai/models";
+import { DEFAULT_CHAT_MODEL, getModelCapabilities } from "@/lib/ai/models";
+import { extractApiErrorMessage } from "@/lib/api/client-error";
 import { MAI_PENDING_ATTACHMENT_KEY, MAI_UPGRADE_URL } from "@/lib/constants";
+import { fetcher } from "@/lib/utils";
 
 export type CloudFile = {
   id: string;
@@ -205,7 +204,7 @@ export default function LibraryPage() {
   // Le modèle actuel (cookie chat-model) accepte-t-il les fichiers ?
   const { data: modelsCapData } = useSWR(
     `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models`,
-    (url: string) => fetch(url).then((r) => r.json()),
+    fetcher,
     { dedupingInterval: 60_000, revalidateOnFocus: false }
   );
   const currentModelSupportsFiles = useMemo(() => {
@@ -395,7 +394,10 @@ export default function LibraryPage() {
       const data = await res.json();
 
       if (!res.ok || !data.success) {
-        toast.error(data.error || `Échec de l'importation de ${file.name}`);
+        toast.error(
+          extractApiErrorMessage(data) ||
+            `Échec de l'importation de ${file.name}`
+        );
         setUploadingFiles((prev) => prev.filter((f) => f.name !== file.name));
         return;
       }
@@ -453,7 +455,9 @@ export default function LibraryPage() {
 
       const data = await res.json();
       if (!res.ok || !data.success) {
-        toast.error(data.error || "Erreur lors de la suppression.");
+        toast.error(
+          extractApiErrorMessage(data) || "Erreur lors de la suppression."
+        );
         return;
       }
 
@@ -1640,9 +1644,7 @@ export default function LibraryPage() {
               <Button
                 className="gap-1.5 text-xs rounded-xl"
                 disabled={!currentModelSupportsFiles}
-                onClick={() =>
-                  previewFile && handleSummarizeFile(previewFile)
-                }
+                onClick={() => previewFile && handleSummarizeFile(previewFile)}
                 size="sm"
                 type="button"
                 variant="secondary"

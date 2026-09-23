@@ -111,8 +111,16 @@ function PureChatHeader({
   );
 
   const handleExport = useCallback(
-    async (format: "md" | "json" | "txt") => {
+    async (format: "md" | "json" | "txt" | "html") => {
       try {
+        if (format === "html") {
+          window.open(
+            `/api/chats/${chatId}/export?format=html&inline=true`,
+            "_blank"
+          );
+          toast.success("Aperçu d'impression / PDF ouvert");
+          return;
+        }
         const res = await fetch(`/api/chats/${chatId}/export?format=${format}`);
         if (!res.ok) {
           throw new Error("Export échoué");
@@ -432,54 +440,60 @@ function PureChatHeader({
       <div className="ml-auto flex items-center gap-2">
         {/* Export compact (mobile) */}
         {!isHome && (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              aria-label="Exporter"
-              className="sm:hidden rounded-xl text-xs h-8 w-8 p-0 border-border/60 hover:bg-muted"
-              size="sm"
-              variant="outline"
-            >
-              <DownloadIcon className="size-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-44">
-            <DropdownMenuItem onClick={() => handleExport("md")}>
-              Markdown (.md)
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => handleExport("json")}>
-              JSON (.json)
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => handleExport("txt")}>
-              Texte (.txt)
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                aria-label="Exporter"
+                className="sm:hidden rounded-xl text-xs h-8 w-8 p-0 border-border/60 hover:bg-muted"
+                size="sm"
+                variant="outline"
+              >
+                <DownloadIcon className="size-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuItem onClick={() => handleExport("html")}>
+                Imprimer / PDF (.html)
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleExport("md")}>
+                Markdown (.md)
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleExport("json")}>
+                JSON (.json)
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleExport("txt")}>
+                Texte (.txt)
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         )}
         {!isHome && (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              className="hidden sm:inline-flex rounded-xl text-xs gap-1.5 h-8 border-border/60 hover:bg-muted"
-              size="sm"
-              variant="outline"
-            >
-              <DownloadIcon className="size-3.5" />
-              <span>Exporter</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-44">
-            <DropdownMenuItem onClick={() => handleExport("md")}>
-              Markdown (.md)
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => handleExport("json")}>
-              JSON (.json)
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => handleExport("txt")}>
-              Texte (.txt)
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                className="hidden sm:inline-flex rounded-xl text-xs gap-1.5 h-8 border-border/60 hover:bg-muted"
+                size="sm"
+                variant="outline"
+              >
+                <DownloadIcon className="size-3.5" />
+                <span>Exporter</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuItem onClick={() => handleExport("html")}>
+                Imprimer / PDF (.html)
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleExport("md")}>
+                Markdown (.md)
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleExport("json")}>
+                JSON (.json)
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleExport("txt")}>
+                Texte (.txt)
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         )}
         <NotificationBell />
       </div>

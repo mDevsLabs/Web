@@ -12,9 +12,10 @@ import {
   FileTextIcon,
   GlobeIcon,
   GraduationCapIcon,
-  HeartIcon,
   HeadsetIcon,
+  HeartIcon,
   LightbulbIcon,
+  type LucideIcon,
   MessageCircleIcon,
   MusicIcon,
   PaletteIcon,
@@ -27,7 +28,6 @@ import {
   WalletIcon,
   WrenchIcon,
   ZapIcon,
-  type LucideIcon,
 } from "lucide-react";
 
 /** Central icon-name → lucide-component registry (agents, skills, chats). */
@@ -45,8 +45,8 @@ export const AGENT_ICON_REGISTRY: Record<string, LucideIcon> = {
   file: FileTextIcon,
   globe: GlobeIcon,
   graduation: GraduationCapIcon,
-  heart: HeartIcon,
   headset: HeadsetIcon,
+  heart: HeartIcon,
   lightbulb: LightbulbIcon,
   message: MessageCircleIcon,
   music: MusicIcon,

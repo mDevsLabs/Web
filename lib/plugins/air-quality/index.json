@@ -1,0 +1,23 @@
+{
+  "id": "air-quality",
+  "name": "Qualité de l'air",
+  "version": "1.0.0",
+  "description": "Indice de qualité de l'air, polluants et pollen (Europe) pour une ville ou des coordonnées, avec prévisions horaires.",
+  "author": "mAI",
+  "category": "meteo",
+  "tags": ["air", "pollution", "pollen", "santé", "environnement"],
+  "icon": { "type": "lucide", "name": "Leaf" },
+  "minTier": "plus",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": false,
+    "writesUserData": false,
+    "requiresApproval": false
+  },
+  "tools": [{
+    "description": "Mesures et prévisions de qualité de l'air et de pollen.",
+    "id": "getAirQuality",
+    "label": "Qualité de l'air",
+    "systemHint": "getAirQuality (indice de qualité de l'air, PM10/PM2.5, ozone, dioxyde d'azote et pollen par ville ou coordonnées, avec prévisions horaires sur 1 à 72 h)"
+  }]
+}

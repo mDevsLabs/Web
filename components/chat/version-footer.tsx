@@ -117,7 +117,7 @@ export const VersionFooter = ({
             <ChevronLeftIcon className="size-4" />
           </button>
           <span className="min-w-[4rem] text-center text-xs tabular-nums text-muted-foreground">
-            {currentVersionIndex + 1} of {documents.length}
+            Version {currentVersionIndex + 1} sur {documents.length}
           </span>
           <button
             className="flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:pointer-events-none disabled:opacity-30"
@@ -135,7 +135,7 @@ export const VersionFooter = ({
             mode === "diff" && "bg-muted text-foreground"
           )}
           onClick={handleToggleMode}
-          title="Show changes"
+          title="Afficher les modifications"
           type="button"
         >
           <DiffIcon className="size-4" />
@@ -149,7 +149,7 @@ export const VersionFooter = ({
           onClick={handleRestore}
           type="button"
         >
-          Restore
+          Restaurer cette version
           {isMutating ? (
             <div className="animate-spin">
               <LoaderIcon size={14} />
@@ -161,7 +161,7 @@ export const VersionFooter = ({
           onClick={handleLatest}
           type="button"
         >
-          Latest
+          Dernière version
         </button>
       </div>
     </motion.div>

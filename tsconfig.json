@@ -33,20 +33,16 @@
     "hooks/**/*.tsx",
     "lib/**/*.ts",
     "lib/**/*.tsx",
+    "scripts/**/*.ts",
+    "tests/**/*.ts",
     "proxy.ts",
     ".next/types/**/*.ts",
-    "next.config.js",
+    "next.config.ts",
+    "drizzle.config.ts",
+    "playwright.config.ts",
+    "instrumentation.ts",
+    "instrumentation-client.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "auth.ts",
-    "devices.ts",
-    "email.ts",
-    "main.ts",
-    "middleware.ts",
-    "models.ts",
-    "projects.ts",
-    "storage.ts"
-  ]
+  "exclude": ["node_modules"]
 }

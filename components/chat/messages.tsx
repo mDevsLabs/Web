@@ -6,6 +6,7 @@ import {
   SearchIcon,
   XIcon,
 } from "lucide-react";
+import type { ReactNode } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useMessages } from "@/hooks/use-messages";
 import type { Vote } from "@/lib/db/schema";
@@ -28,6 +29,12 @@ type MessagesProps = {
   isLoading?: boolean;
   selectedModelId: string;
   onEditMessage?: (message: ChatMessage) => void;
+  /**
+   * Sélecteur Chat | Agent de l'accueil (HomeModeSwitcher). Il est rendu ici,
+   * en tête de la pile centrée, pour occuper exactement la même place que sur
+   * l'accueil Agent — aucune copie du contrôle n'est produite ailleurs.
+   */
+  modeSwitcher?: ReactNode;
 };
 
 function PureMessages({
@@ -43,6 +50,7 @@ function PureMessages({
   isLoading,
   selectedModelId: _selectedModelId,
   onEditMessage,
+  modeSwitcher,
 }: MessagesProps) {
   const {
     containerRef: messagesContainerRef,
@@ -227,8 +235,22 @@ function PureMessages({
         </div>
       )}
       {messages.length === 0 && !isLoading && (
-        <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center p-4 overflow-y-auto">
-          <Greeting />
+        <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center overflow-y-auto p-4">
+          {/* Pile d'accueil centrée : mêmes largeur maximale, espacement et
+              paddings que la pile Agent (agent-home.tsx), pour une position
+              identique du sélecteur et du titre dans les deux modes.
+
+              z-10 INDISPENSABLE : le conteneur de messages est rendu après
+              (frère suivant) en absolute inset-0 transparent ; sans z-index
+              supérieur, il peint au-dessus de la pile et avale les clics
+              réels sur le sélecteur Chat | Agent (clics programmatiques
+              épargnés, d'où un bug invisible aux tests automatisés). */}
+          <div className="flex w-full max-w-3xl flex-col items-center py-8">
+            {modeSwitcher ? (
+              <div className="pointer-events-auto mb-8">{modeSwitcher}</div>
+            ) : null}
+            <Greeting />
+          </div>
         </div>
       )}
       <div

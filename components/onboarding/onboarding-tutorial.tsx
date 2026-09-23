@@ -166,6 +166,19 @@ export function OnboardingTutorial() {
           {current.content}
         </p>
 
+        {current.bullets?.length ? (
+          <ul className="mt-2 space-y-1 text-[12.5px] leading-relaxed text-muted-foreground">
+            {current.bullets.map((bullet) => (
+              <li className="flex gap-1.5" key={bullet}>
+                <span aria-hidden="true" className="text-primary">
+                  •
+                </span>
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+
         <div className="mt-3 flex items-center gap-1.5">
           {ONBOARDING_STEPS.map((_, i) => (
             <span

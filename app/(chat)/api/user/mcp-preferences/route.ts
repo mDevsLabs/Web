@@ -1,4 +1,9 @@
 import { z } from "zod";
+import {
+  errorResponse,
+  logError,
+  zodIssuesMessage,
+} from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { getUserMcpPrefs, upsertUserMcpPrefs } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
@@ -35,10 +40,15 @@ export async function POST(request: Request) {
     const parsed = schema.parse(json);
     const updated = await upsertUserMcpPrefs(userId, parsed);
     return Response.json(updated);
-  } catch (err: any) {
-    return Response.json(
-      { error: err.message ?? "Données invalides" },
-      { status: 400 }
-    );
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return errorResponse("invalid_request", {
+        message: zodIssuesMessage(err),
+      });
+    }
+    logError("Erreur sauvegarde préférences MCP", err);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de l'enregistrement des préférences MCP.",
+    });
   }
 }

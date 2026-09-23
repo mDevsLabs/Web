@@ -49,11 +49,28 @@ export function useChatVisibility({
     updateChatVisibility({
       chatId,
       visibility: updatedVisibilityType,
-    }).catch(() => {
-      setLocalVisibility(initialVisibilityType);
-      mutate(unstable_serialize(getChatHistoryPaginationKey));
-      toast.error("Impossible de changer la visibilité de la conversation.");
-    });
+    })
+      .then(() => {
+        if (updatedVisibilityType === "public") {
+          if (typeof window !== "undefined") {
+            const shareUrl = `${window.location.origin}/chat/${chatId}`;
+            navigator.clipboard.writeText(shareUrl).then(
+              () =>
+                toast.success(
+                  "Discussion publique : lien copié dans le presse-papiers !"
+                ),
+              () => toast.success("Discussion rendue publique !")
+            );
+          }
+        } else {
+          toast.success("Discussion rendue privée");
+        }
+      })
+      .catch(() => {
+        setLocalVisibility(initialVisibilityType);
+        mutate(unstable_serialize(getChatHistoryPaginationKey));
+        toast.error("Impossible de changer la visibilité de la conversation.");
+      });
   };
 
   return { setVisibilityType, visibilityType };

@@ -1,0 +1,18 @@
+{
+  "id": "crossref",
+  "name": "Crossref",
+  "version": "1.0.0",
+  "description": "Métadonnées ouvertes de publications scientifiques, DOI et revues.",
+  "author": "mAI",
+  "category": "research",
+  "tags": ["science", "recherche", "publications", "DOI", "revues", "articles"],
+  "icon": { "type": "lucide", "name": "Atom" },
+  "minTier": "plus",
+  "permissions": { "network": "read-only", "readsUserData": false, "writesUserData": false, "requiresApproval": false },
+  "tools": [
+    { "id": "searchPublications", "label": "Rechercher des publications", "description": "Recherche bibliographique Crossref.", "systemHint": "searchPublications (recherche des publications par sujet ou citation)" },
+    { "id": "getPublicationByDoi", "label": "Chercher un DOI", "description": "Métadonnées d'une publication par DOI.", "systemHint": "getPublicationByDoi (recherche la fiche d'une publication par DOI)" },
+    { "id": "searchAuthorPublications", "label": "Publications d'un auteur", "description": "Publications Crossref associées à un auteur.", "systemHint": "searchAuthorPublications (recherche les publications d'un auteur)" },
+    { "id": "searchJournals", "label": "Rechercher des revues", "description": "Recherche des journaux et revues académiques.", "systemHint": "searchJournals (recherche des revues et leurs ISSN)" }
+  ]
+}

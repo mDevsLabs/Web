@@ -1,3 +1,4 @@
+import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { duplicateSkill } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
@@ -15,10 +16,9 @@ export async function POST(
 
   const duplicated = await duplicateSkill({ id, userId });
   if (!duplicated) {
-    return Response.json(
-      { error: "Impossible de dupliquer le skill (introuvable)" },
-      { status: 404 }
-    );
+    return errorResponse("not_found", {
+      message: "Impossible de dupliquer le skill (introuvable).",
+    });
   }
 
   return Response.json(duplicated, { status: 201 });

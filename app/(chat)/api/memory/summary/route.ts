@@ -1,6 +1,8 @@
 import { generateText } from "ai";
-import { getLanguageModel } from "@/lib/ai/providers";
+import { z } from "zod";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { getLanguageModel } from "@/lib/ai/providers";
+import { errorResponse, logError } from "@/lib/api/error-response";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import {
   getAgentMemories,
@@ -18,19 +20,28 @@ export async function POST(request: Request) {
   ]);
 
   if (!sessionToken || !maiUser) {
-    return Response.json({ error: "Non authentifié." }, { status: 401 });
+    return errorResponse("auth_required", { message: "Non authentifié." });
   }
 
   const userId = maiUser.id || maiUser.email;
 
   try {
     const json = await request.json().catch(() => ({}));
-    const { agentId, projectId, scope, modelId } = json as {
-      agentId?: string | null;
-      projectId?: string | null;
-      scope?: string;
-      modelId?: string;
-    };
+    const schema = z.object({
+      agentId: z.string().uuid().nullish(),
+      modelId: z
+        .string()
+        .max(100)
+        .regex(/^[A-Za-z0-9/._:-]+$/)
+        .nullish(),
+      projectId: z.string().uuid().nullish(),
+      scope: z.enum(["all", "global"]).nullish(),
+    });
+    const parsed = schema.safeParse(json);
+    if (!parsed.success) {
+      return errorResponse("invalid_request", { message: "Payload invalide." });
+    }
+    const { agentId, projectId, scope, modelId } = parsed.data;
 
     // Récupérer les mémoires selon le scope demandé
     let memories: Array<{ content: string; createdAt: Date | string }> = [];
@@ -90,15 +101,10 @@ Rédige une synthèse fluide, concise et valorisante sans inventer d'information
       model: effectiveModel,
       summary: result.text,
     });
-  } catch (error: any) {
-    console.error("Erreur génération résumé de mémoire:", error);
-    return Response.json(
-      {
-        error:
-          error?.message ||
-          "Erreur lors de la génération du résumé de la mémoire.",
-      },
-      { status: 500 }
-    );
+  } catch (error: unknown) {
+    logError("Erreur génération résumé de mémoire", error);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de la génération du résumé de la mémoire.",
+    });
   }
 }

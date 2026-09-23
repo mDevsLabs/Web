@@ -1,6 +1,7 @@
-import { getMaiUser } from "@/lib/auth/session";
+import { z } from "zod";
 import { memoryLimitForTier } from "@/lib/auth/plan";
-import { ChatbotError } from "@/lib/errors";
+import { getMaiUser } from "@/lib/auth/session";
+import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
 import {
   countMemories,
   createMemory,
@@ -13,8 +14,7 @@ import {
   getUserMemoriesWithScope,
   updateMemory,
 } from "@/lib/db/queries";
-import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
-import { z } from "zod";
+import { ChatbotError } from "@/lib/errors";
 
 const createSchema = z
   .object({
@@ -46,22 +46,30 @@ async function resolveScope(
   projectId: string | null
 ) {
   if (agentId) {
-    const agent = await getAgentById({ id: agentId, userId });
-    if (!agent) {
+    try {
+      const agent = await getAgentById({ id: agentId, userId });
+      if (!agent) {
+        return null;
+      }
+      return { agentId, projectId: null } as const;
+    } catch {
       return null;
     }
-    return { agentId, projectId: null } as const;
   }
   if (projectId) {
-    const project = await getProjectById({
-      id: projectId,
-      userId,
-      userEmail,
-    });
-    if (!project) {
+    try {
+      const project = await getProjectById({
+        id: projectId,
+        userEmail,
+        userId,
+      });
+      if (!project) {
+        return null;
+      }
+      return { agentId: null, projectId } as const;
+    } catch {
       return null;
     }
-    return { agentId: null, projectId } as const;
   }
   return { agentId: null, projectId: null } as const;
 }
@@ -83,15 +91,14 @@ export async function GET(request: Request) {
         memories,
       });
     }
-    const scope = await resolveScope(
+    const resolvedScope = await resolveScope(
       userId,
       user.email,
       agentId,
       projectId
     );
-    if (!scope) {
-      return new ChatbotError("not_found:database").toResponse();
-    }
+    // Pour GET, si l'agent ou projet n'existe pas, repli sur le scope global pour ne pas bloquer le chat
+    const scope = resolvedScope ?? { agentId: null, projectId: null };
     const memories = scope.agentId
       ? await getAgentMemories({ agentId: scope.agentId, userId })
       : scope.projectId
@@ -119,7 +126,9 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const parsed = createSchema.parse(body);
-    const content = parsed.content.replace(/\u0000/g, "").trim();
+    const content = parsed.content
+      .replace(new RegExp(String.fromCharCode(0), "g"), "")
+      .trim();
     if (!content) {
       return new ChatbotError(
         "bad_request:api",

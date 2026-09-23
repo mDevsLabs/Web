@@ -1,0 +1,23 @@
+{
+  "id": "quizzly",
+  "name": "Quizzly",
+  "version": "1.1.0",
+  "description": "Générateur de quiz interactifs sur mesure (1 à 50 questions) avec correction dynamique, explications et score final.",
+  "author": "mAI",
+  "category": "education",
+  "tags": ["quiz", "éducation", "apprentissage", "test", "score"],
+  "icon": { "type": "lucide", "name": "Trophy" },
+  "minTier": "plus",
+  "permissions": {
+    "network": "none",
+    "readsUserData": false,
+    "writesUserData": false,
+    "requiresApproval": false
+  },
+  "tools": [{
+    "description": "Générer un quiz interactif complet avec réponses et explications.",
+    "id": "quizzly",
+    "label": "Quizzly",
+    "systemHint": "quizzly (génère un quiz interactif complet de 1 à 50 questions avec choix unique/multiple, réponses correctes, explications et calcul de score pour tester l'utilisateur de manière ludique)"
+  }]
+}

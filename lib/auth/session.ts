@@ -1,6 +1,7 @@
-import { cookies } from "next/headers";
 import { jwtVerify } from "jose";
+import { cookies } from "next/headers";
 import { MAI_API_URL, MAI_SESSION_COOKIE } from "@/lib/constants";
+import { getTierChatWeeklyLimit } from "@/lib/plans/tier-limits";
 
 export { MAI_SESSION_COOKIE } from "@/lib/constants";
 
@@ -38,8 +39,36 @@ export async function setMaiSessionToken(token: string) {
   });
 }
 
+// Cache de sessions indexé par JETON. Deux garanties :
+//  • taille BORNÉE (LRU) : un cache non borné indexé par jeton est un vecteur
+//    d'épuisement mémoire — il suffisait d'accumuler des jetons distincts ;
+//  • purge des entrées expirées : elles ne restent jamais indéfiniment.
+// Le jeton complet n'est jamais journalisé (aucun log ne le contient).
 const userCache = new Map<string, { user: MaiUser; expiresAt: number }>();
 const CACHE_TTL_MS = 120_000; // 2 minutes de cache en mémoire
+const CACHE_MAX_ENTRIES = 500;
+
+function readCachedUser(token: string) {
+  const cached = userCache.get(token);
+  if (!cached) {
+    return null;
+  }
+  if (Date.now() >= cached.expiresAt) {
+    userCache.delete(token);
+    return null;
+  }
+  // Réinsertion : l'ordre d'itération d'un Map sert d'ordre LRU.
+  userCache.delete(token);
+  userCache.set(token, cached);
+  return cached;
+}
+
+function cacheUser(token: string, user: MaiUser, expiresAt: number) {
+  if (userCache.size >= CACHE_MAX_ENTRIES) {
+    userCache.delete(userCache.keys().next().value as string);
+  }
+  userCache.set(token, { expiresAt, user });
+}
 
 let _jwtSecret: Uint8Array | null | undefined;
 
@@ -47,6 +76,13 @@ function getJwtSecret(): Uint8Array | null {
   if (_jwtSecret === undefined) {
     const secret = process.env.MAI_JWT_SECRET || process.env.JWT_SECRET || "";
     _jwtSecret = secret ? new TextEncoder().encode(secret) : null;
+    if (!_jwtSecret && process.env.NODE_ENV === "production") {
+      // Signal fort : sans clé locale, la vérification est déléguée à l'API
+      // distante (ligne suivante du flux d'authentification).
+      console.warn(
+        "[auth] MAI_JWT_SECRET absent : vérification des sessions déléguée à l'API distante."
+      );
+    }
   }
   return _jwtSecret;
 }
@@ -61,6 +97,17 @@ async function verifyJwtPayload(token: string): Promise<any | null> {
   try {
     const { payload } = await jwtVerify(token, secret, {
       algorithms: ["HS256"],
+      // Contrôles appliqués dès qu'ils sont configurés (aucun défaut imposé
+      // pour ne pas casser des jetons émis par un autre service) :
+      ...(process.env.MAI_JWT_ISSUER
+        ? { issuer: process.env.MAI_JWT_ISSUER }
+        : {}),
+      ...(process.env.MAI_JWT_AUDIENCE
+        ? { audience: process.env.MAI_JWT_AUDIENCE }
+        : {}),
+      // L'expiration est obligatoire : un jeton sans `exp` serait valable à
+      // vie, ce qui rend toute révocation impossible.
+      requiredClaims: ["exp"],
     });
     return payload;
   } catch {
@@ -77,6 +124,13 @@ export async function removeMaiSessionToken() {
   cookieStore.delete(MAI_SESSION_COOKIE);
 }
 
+// Invalidation ciblée du cache utilisateur après une mutation de profil
+// (avatar, username, téléphone…) : la session reste valide, seule la copie en
+// mémoire est jetée pour que la prochaine requête relise l'amont.
+export function invalidateMaiUserCache(token: string): void {
+  userCache.delete(token);
+}
+
 // Rafraîchissement asynchrone non-bloquant des quotas mAI
 function triggerBackgroundUsageRefresh(token: string) {
   fetch(`${MAI_API_URL}/usage`, {
@@ -88,7 +142,9 @@ function triggerBackgroundUsageRefresh(token: string) {
       if (data && !data.error) {
         const cached = userCache.get(token);
         if (cached) {
-          cached.user.tokensUsed = Number(data.tokensUsed || cached.user.tokensUsed);
+          cached.user.tokensUsed = Number(
+            data.tokensUsed || cached.user.tokensUsed
+          );
           cached.user.limit = Number(data.limit || cached.user.limit);
           cached.user.tier = data.tier || cached.user.tier;
           if (data.username) cached.user.username = data.username;
@@ -111,8 +167,8 @@ export async function getMaiUser(
   }
 
   // 1. Cache mémoire valide
-  const cached = userCache.get(token);
-  if (cached && Date.now() < cached.expiresAt) {
+  const cached = readCachedUser(token);
+  if (cached) {
     return cached.user;
   }
 
@@ -130,8 +186,12 @@ export async function getMaiUser(
       const user: MaiUser = {
         avatarUrl: payload.avatarUrl || null,
         email: payload.email || "",
-        id: payload.id ? String(payload.id) : payload.sub ? String(payload.sub) : payload.email || "",
-        limit: Number(payload.limit || 2_000_000),
+        id: payload.id
+          ? String(payload.id)
+          : payload.sub
+            ? String(payload.sub)
+            : payload.email || "",
+        limit: Number(payload.limit || getTierChatWeeklyLimit(payload.tier)),
         phone: payload.phone || "",
         resetAt: payload.resetAt,
         tier: payload.tier || "Free",
@@ -140,7 +200,7 @@ export async function getMaiUser(
         weekStart: payload.weekStart,
       };
 
-      userCache.set(token, { expiresAt: Date.now() + CACHE_TTL_MS, user });
+      cacheUser(token, user, Date.now() + CACHE_TTL_MS);
       // Lancer le rafraîchissement d'usage en arrière-plan sans bloquer la requête
       triggerBackgroundUsageRefresh(token);
       return user;
@@ -169,7 +229,7 @@ export async function getMaiUser(
           avatarUrl: data.avatarUrl || null,
           email: data.email || "",
           id: userId || data.email,
-          limit: Number(data.limit || 2_000_000),
+          limit: Number(data.limit || getTierChatWeeklyLimit(data.tier)),
           phone: data.phone || "",
           resetAt: data.resetAt,
           tier: data.tier || "Free",
@@ -178,7 +238,7 @@ export async function getMaiUser(
           weekStart: data.weekStart,
         };
 
-        userCache.set(token, { expiresAt: Date.now() + CACHE_TTL_MS, user });
+        cacheUser(token, user, Date.now() + CACHE_TTL_MS);
         return user;
       }
     }

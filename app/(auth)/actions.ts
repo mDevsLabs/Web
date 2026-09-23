@@ -1,5 +1,12 @@
 "use server";
 
+import { extractApiErrorMessage } from "@/lib/api/client-error";
+import type { ApiErrorCode } from "@/lib/api/error-codes";
+import { DEFAULT_MESSAGES_FR } from "@/lib/api/error-messages";
+import {
+  type AuthGuardFailure,
+  guardAuthAction,
+} from "@/lib/auth/actions-guard";
 import { removeMaiSessionToken, setMaiSessionToken } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
 
@@ -9,7 +16,35 @@ export type AuthResponse = {
   email?: string;
   tier?: string;
   error?: string;
+  code?: ApiErrorCode;
+  retryAfterSeconds?: number;
 };
+
+function formatRetryDelay(seconds: number): string {
+  if (seconds >= 120) {
+    const minutes = Math.ceil(seconds / 60);
+    return `${minutes} minutes`;
+  }
+  if (seconds >= 60) {
+    return "1 minute";
+  }
+  return `${Math.max(1, seconds)} secondes`;
+}
+
+function guardFailureToResponse(failure: AuthGuardFailure): AuthResponse {
+  const message =
+    failure.code === "rate_limited" && failure.retryAfterSeconds
+      ? `Trop de tentatives. Veuillez réessayer dans ${formatRetryDelay(
+          failure.retryAfterSeconds
+        )}.`
+      : DEFAULT_MESSAGES_FR[failure.code];
+  return {
+    code: failure.code,
+    error: message,
+    retryAfterSeconds: failure.retryAfterSeconds,
+    success: false,
+  };
+}
 
 // 1. Demande de connexion (Envoi de l'OTP)
 export async function loginAction(formData: FormData): Promise<AuthResponse> {
@@ -17,9 +52,31 @@ export async function loginAction(formData: FormData): Promise<AuthResponse> {
     formData.get("identifier") || formData.get("email") || ""
   ).trim();
   const password = String(formData.get("password") || "");
+  const acceptedTerms = formData.get("acceptedTerms");
+
+  if (acceptedTerms !== "true") {
+    return {
+      code: "invalid_request",
+      error:
+        "Vous devez accepter les conditions d'utilisation pour vous connecter.",
+      success: false,
+    };
+  }
 
   if (!identifier || !password) {
-    return { error: "Veuillez renseigner tous les champs.", success: false };
+    return {
+      code: "invalid_request",
+      error: "Veuillez renseigner tous les champs.",
+      success: false,
+    };
+  }
+
+  const guardFailure = await guardAuthAction({
+    action: "login",
+    identifier,
+  });
+  if (guardFailure) {
+    return guardFailureToResponse(guardFailure);
   }
 
   try {
@@ -31,7 +88,11 @@ export async function loginAction(formData: FormData): Promise<AuthResponse> {
 
     const data = await res.json();
     if (!res.ok || data.error) {
-      return { error: data.error || "Identifiants invalides.", success: false };
+      return {
+        code: "invalid_credentials",
+        error: extractApiErrorMessage(data) || "Identifiants invalides.",
+        success: false,
+      };
     }
 
     return {
@@ -39,9 +100,10 @@ export async function loginAction(formData: FormData): Promise<AuthResponse> {
       status: data.status || "verification_required",
       success: true,
     };
-  } catch (err: any) {
+  } catch (err) {
     console.error("Erreur loginAction:", err);
     return {
+      code: "service_unavailable",
       error: "Impossible de joindre le serveur d'authentification.",
       success: false,
     };
@@ -57,7 +119,19 @@ export async function verifyLoginAction(
   const cleanCode = code ? code.trim() : "";
 
   if (!cleanEmail || !cleanCode) {
-    return { error: "E-mail et code requis.", success: false };
+    return {
+      code: "invalid_request",
+      error: "E-mail et code requis.",
+      success: false,
+    };
+  }
+
+  const guardFailure = await guardAuthAction({
+    action: "verify_login",
+    identifier: cleanEmail,
+  });
+  if (guardFailure) {
+    return guardFailureToResponse(guardFailure);
   }
 
   try {
@@ -91,10 +165,15 @@ export async function verifyLoginAction(
       }
     }
 
-    return { error: data.error || "Code invalide ou expiré.", success: false };
-  } catch (err: any) {
+    return {
+      code: "invalid_credentials",
+      error: extractApiErrorMessage(data) || "Code invalide ou expiré.",
+      success: false,
+    };
+  } catch (err) {
     console.error("Erreur verifyLoginAction:", err);
     return {
+      code: "service_unavailable",
       error: "Erreur serveur lors de la vérification du code.",
       success: false,
     };
@@ -108,16 +187,39 @@ export async function registerAction(
   const email = String(formData.get("email") || "").trim();
   const username = String(formData.get("username") || "").trim();
   const password = String(formData.get("password") || "");
+  const acceptedTerms = formData.get("acceptedTerms");
+
+  if (acceptedTerms !== "true") {
+    return {
+      code: "invalid_request",
+      error:
+        "Vous devez accepter les conditions d'utilisation pour vous inscrire.",
+      success: false,
+    };
+  }
 
   if (!email || !username || !password) {
-    return { error: "Tous les champs sont requis.", success: false };
+    return {
+      code: "invalid_request",
+      error: "Tous les champs sont requis.",
+      success: false,
+    };
   }
 
   if (password.length < 6) {
     return {
+      code: "invalid_request",
       error: "Le mot de passe doit faire au moins 6 caractères.",
       success: false,
     };
+  }
+
+  const guardFailure = await guardAuthAction({
+    action: "register",
+    identifier: email,
+  });
+  if (guardFailure) {
+    return guardFailureToResponse(guardFailure);
   }
 
   try {
@@ -130,7 +232,8 @@ export async function registerAction(
     const data = await res.json();
     if (!res.ok || data.error) {
       return {
-        error: data.error || "Erreur lors de l'inscription.",
+        code: "invalid_request",
+        error: extractApiErrorMessage(data) || "Erreur lors de l'inscription.",
         success: false,
       };
     }
@@ -140,9 +243,10 @@ export async function registerAction(
       status: data.status || "verification_required",
       success: true,
     };
-  } catch (err: any) {
+  } catch (err) {
     console.error("Erreur registerAction:", err);
     return {
+      code: "service_unavailable",
       error: "Impossible de joindre le serveur d'authentification.",
       success: false,
     };
@@ -157,7 +261,19 @@ export async function verifyRegisterAction(
   code: string
 ): Promise<AuthResponse> {
   if (!email || !username || !password || !code) {
-    return { error: "Champs manquants.", success: false };
+    return {
+      code: "invalid_request",
+      error: "Champs manquants.",
+      success: false,
+    };
+  }
+
+  const guardFailure = await guardAuthAction({
+    action: "verify_register",
+    identifier: email,
+  });
+  if (guardFailure) {
+    return guardFailureToResponse(guardFailure);
   }
 
   try {
@@ -170,16 +286,18 @@ export async function verifyRegisterAction(
     const data = await res.json();
     if (!res.ok || !data.token) {
       return {
-        error: data.error || "Code invalide ou expiré.",
+        code: "invalid_credentials",
+        error: extractApiErrorMessage(data) || "Code invalide ou expiré.",
         success: false,
       };
     }
 
     await setMaiSessionToken(data.token);
     return { success: true, tier: data.tier };
-  } catch (err: any) {
+  } catch (err) {
     console.error("Erreur verifyRegisterAction:", err);
     return {
+      code: "service_unavailable",
       error: "Erreur serveur lors de la finalisation de l'inscription.",
       success: false,
     };
@@ -191,6 +309,14 @@ export async function resendCodeAction(
   email: string,
   action: "login" | "register" | "verify_new_email" | "delete_account"
 ): Promise<AuthResponse> {
+  const guardFailure = await guardAuthAction({
+    action: "resend_code",
+    identifier: email,
+  });
+  if (guardFailure) {
+    return guardFailureToResponse(guardFailure);
+  }
+
   try {
     const res = await fetch(`${MAI_API_URL}/resend-code`, {
       body: JSON.stringify({ action, email }),
@@ -201,15 +327,20 @@ export async function resendCodeAction(
     const data = await res.json();
     if (!res.ok || data.error) {
       return {
-        error: data.error || "Erreur lors du renvoi du code.",
+        code: "invalid_request",
+        error: extractApiErrorMessage(data) || "Erreur lors du renvoi du code.",
         success: false,
       };
     }
 
     return { success: true };
-  } catch (err: any) {
+  } catch (err) {
     console.error("Erreur resendCodeAction:", err);
-    return { error: "Impossible de renvoyer le code.", success: false };
+    return {
+      code: "service_unavailable",
+      error: "Impossible de renvoyer le code.",
+      success: false,
+    };
   }
 }
 

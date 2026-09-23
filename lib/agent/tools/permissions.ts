@@ -1,0 +1,147 @@
+import type {
+  AgentAutonomy,
+  RegisteredAgentTool,
+  ToolPermission,
+} from "@/lib/agent/types";
+
+// Moteur de permissions : décide, pour chaque outil, s'il s'exécute
+// automatiquement, s'il doit demander l'accord de l'utilisateur, ou s'il est
+// désactivé. Trois niveaux de priorité :
+//   1. autonomie de l'utilisateur (Prudente / Standard / Élevée),
+//   2. politiques par outil définies dans Paramètres → Agent (surcharge),
+//   3. valeur déclarée par l'outil lui-même (permissions.default).
+// La décision est toujours prise côté serveur.
+
+// Décision tri-états du PermissionEngine : le contrat central. `allow` exécute,
+// `deny` interdit (l'outil est retiré du plateau), `require_approval` crée une
+// ApprovalRequest persistante avant toute exécution.
+export type PermissionDecision = "allow" | "deny" | "require_approval";
+
+// Lecture seule : rien à confirmer. Tout le reste dépend de l'autonomie.
+const READ_ONLY_DEFAULT: ToolPermission = "auto";
+const WRITE_DEFAULT: ToolPermission = "ask";
+// Suppression / irréversibilité : jamais automatique, même en autonomie élevée.
+const DESTRUCTIVE_DEFAULT: ToolPermission = "ask";
+
+export const AUTONOMY_DEFAULTS: Record<AgentAutonomy, ToolPermission> = {
+  careful: "ask",
+  high: "auto",
+  standard: "auto",
+};
+
+export function permissionForTool(
+  tool: Pick<RegisteredAgentTool, "permissions">
+): ToolPermission {
+  if (tool.permissions.destructive) {
+    return DESTRUCTIVE_DEFAULT;
+  }
+  if (tool.permissions.readOnly) {
+    return READ_ONLY_DEFAULT;
+  }
+  return tool.permissions.default ?? WRITE_DEFAULT;
+}
+
+export function resolveToolPermission(params: {
+  autonomy: AgentAutonomy;
+  overrides?: Record<string, ToolPermission>;
+  tool: Pick<RegisteredAgentTool, "id" | "permissions">;
+}): ToolPermission {
+  const override = params.overrides?.[params.tool.id];
+  const sensitive =
+    params.tool.permissions.destructive ||
+    params.tool.permissions.impact === "external_mutation" ||
+    params.tool.permissions.impact === "deletion";
+  // La désactivation reste possible, mais aucune surcharge ni autonomie ne
+  // peut transformer une mutation externe ou une suppression en exécution libre.
+  if (sensitive) {
+    return override === "off" ? "off" : "ask";
+  }
+  if (override) {
+    return override;
+  }
+
+  const declared = permissionForTool(params.tool);
+
+  // L'autonomie ne relâche jamais une action irréversible : elle ne peut
+  // qu'assouplir ou durcir les actions non destructives.
+  if (params.tool.permissions.destructive) {
+    return declared;
+  }
+
+  if (params.autonomy === "careful") {
+    return declared === "auto" && params.tool.permissions.readOnly
+      ? "auto"
+      : "ask";
+  }
+
+  if (params.autonomy === "high") {
+    return "auto";
+  }
+
+  return declared;
+}
+
+// Conversion permission → décision tri-états. Point unique de mapping : les
+// nouvelles granularités (préparation / action irréversible) n'ont qu'à
+// affiner `permissionForTool` pour être prises en compte partout.
+export function permissionToDecision(
+  permission: ToolPermission
+): PermissionDecision {
+  if (permission === "off") {
+    return "deny";
+  }
+  return permission === "ask" ? "require_approval" : "allow";
+}
+
+export function decideToolPermission(params: {
+  autonomy: AgentAutonomy;
+  overrides?: Record<string, ToolPermission>;
+  tool: Pick<RegisteredAgentTool, "id" | "permissions">;
+}): PermissionDecision {
+  return permissionToDecision(resolveToolPermission(params));
+}
+
+export function applyToolPermissions(params: {
+  autonomy: AgentAutonomy;
+  overrides?: Record<string, ToolPermission>;
+  tools: RegisteredAgentTool[];
+}): {
+  approvalRequiredToolIds: string[];
+  enabledTools: RegisteredAgentTool[];
+  snapshot: Record<string, ToolPermission>;
+} {
+  const enabledTools: RegisteredAgentTool[] = [];
+  const approvalRequiredToolIds: string[] = [];
+  const snapshot: Record<string, ToolPermission> = {};
+
+  for (const tool of params.tools) {
+    const permission = resolveToolPermission({
+      autonomy: params.autonomy,
+      overrides: params.overrides,
+      tool,
+    });
+    snapshot[tool.id] = permission;
+
+    if (permission === "off") {
+      continue;
+    }
+    enabledTools.push(tool);
+    if (permission === "ask") {
+      approvalRequiredToolIds.push(tool.id);
+    }
+  }
+
+  return { approvalRequiredToolIds, enabledTools, snapshot };
+}
+
+// Statut d'approbation attendu par le SDK AI : "user-approval" suspend l'appel
+// et remonte une demande au client, "not-applicable" exécute directement.
+// Un outil n'est suspendu que si le serveur l'a décidé (permissions) : la
+// prédication est branchée dans l'adaptateur provider (needsApproval), jamais
+// dans le runtime, et elle ne connaît pas le nom des outils.
+export function requiresApproval(params: {
+  approvalRequiredToolIds: string[];
+  toolId: string;
+}): boolean {
+  return params.approvalRequiredToolIds.includes(params.toolId);
+}

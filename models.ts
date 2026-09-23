@@ -2,6 +2,7 @@ import type { Hono } from "npm:hono@4";
 import {
   extractToken,
   getDb,
+  getEnv,
   getTierMaiTokenLimit,
   getTierSpeechLimit,
   getUserQuotaBoost,
@@ -12,10 +13,10 @@ import {
 import { maiModelsList } from "./maiModels.ts";
 
 function getOpenRouterApiKey(userCustomKey?: string | null): string {
-  if (userCustomKey && userCustomKey.trim().startsWith("sk-or-")) {
+  if (userCustomKey?.trim().startsWith("sk-or-")) {
     return userCustomKey.trim();
   }
-  return Deno.env.get("OPENROUTER_API_KEY") || "";
+  return getEnv("OPENROUTER_API_KEY") || "";
 }
 
 export function registerModelRoutes(app: Hono) {
@@ -58,7 +59,8 @@ export function registerModelRoutes(app: Hono) {
 
       const { weekStartStr, nextResetIso } = getWeekData();
 
-      const userResult = await sql`SELECT id, tier, email, username, phone, avatar_url FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
+      const userResult =
+        await sql`SELECT id, tier, email, username, phone, avatar_url FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
       const user = userResult[0];
       const resolvedUserId = user ? user.id : userId;
 
@@ -66,7 +68,7 @@ export function registerModelRoutes(app: Hono) {
         sql`
           SELECT COALESCE(SUM(tokens_used::numeric), 0) as tokens_used 
           FROM weekly_usage 
-          WHERE user_id = ${resolvedUserId}::integer AND week_start = ${weekStartStr}::date
+          WHERE user_id = ${resolvedUserId}::text AND week_start = ${weekStartStr}::date
         `.catch((e) => {
           console.error("[usageResult] Error:", e);
           return [];
@@ -151,14 +153,14 @@ export function registerModelRoutes(app: Hono) {
 
       const usageResult = await sql`
         SELECT tokens_used FROM weekly_usage
-        WHERE user_id = ${resolvedUserId}::integer AND week_start = ${weekStartStr}::date
+        WHERE user_id = ${resolvedUserId}::text AND week_start = ${weekStartStr}::date
         LIMIT 1
       `;
       const currentUsage = usageResult[0]?.tokens_used || 0;
 
       await sql`
         INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-        VALUES (${resolvedUserId}::integer, ${weekStartStr}::date, ${tokensUsed})
+        VALUES (${resolvedUserId}::text, ${weekStartStr}::date, ${tokensUsed})
         ON CONFLICT (user_id, week_start)
         DO UPDATE SET tokens_used = weekly_usage.tokens_used + ${tokensUsed}
       `;
@@ -173,7 +175,7 @@ export function registerModelRoutes(app: Hono) {
       });
     } catch (err: any) {
       console.error("[log-usage] Error:", err);
-      return c.json({ error: "Erreur serveur.", details: err?.message }, 500);
+      return c.json({ details: err?.message, error: "Erreur serveur." }, 500);
     }
   };
 
@@ -198,7 +200,7 @@ export function registerModelRoutes(app: Hono) {
       const rawModels: any[] = json.data || [];
 
       let filtered = rawModels
-        .filter((m) => m && m.id && !m.id.startsWith("openrouter/"))
+        .filter((m) => m?.id && !m.id.startsWith("openrouter/"))
         .filter((m) => {
           const modality = m.architecture?.modality || "";
           const outputModalities = m.architecture?.output_modalities || [];
@@ -235,9 +237,41 @@ export function registerModelRoutes(app: Hono) {
         );
       }
 
+      const lagunaIdx = filtered.findIndex(
+        (m) => m.id === "poolside/laguna-xs-2.1:free"
+      );
+      if (lagunaIdx > 0) {
+        const [laguna] = filtered.splice(lagunaIdx, 1);
+        filtered.unshift(laguna);
+      }
+
       return c.json({ data: filtered, object: "list" });
-    } catch (_err) {
+    } catch {
       let fallback = [
+        {
+          architecture: {
+            input_modalities: ["text"],
+            modality: "text->text",
+            output_modalities: ["text"],
+          },
+          created: 0,
+          description: "Modèle IA Laguna XS 2.1 haute performance par Poolside",
+          id: "poolside/laguna-xs-2.1:free",
+          maxContext: 128_000,
+          maxOutput: 4096,
+          name: "Laguna XS 2.1",
+          object: "model",
+          owned_by: "poolside",
+          supported_parameters: [
+            "temperature",
+            "top_p",
+            "max_tokens",
+            "stream",
+            "stop",
+            "tools",
+            "response_format",
+          ],
+        },
         {
           architecture: {
             input_modalities: ["text", "image", "file"],
@@ -498,7 +532,7 @@ export function registerModelRoutes(app: Hono) {
       const { weekStartStr } = getWeekData();
       const usageResult = await sql`
         SELECT tokens_used FROM weekly_usage
-        WHERE user_id = ${userId}::integer AND week_start = ${weekStartStr}::date
+        WHERE user_id = ${userId}::text AND week_start = ${weekStartStr}::date
         LIMIT 1
       `;
       const currentUsage = usageResult[0]?.tokens_used || 0;
@@ -525,8 +559,12 @@ export function registerModelRoutes(app: Hono) {
 
       // Nettoyer le body : retirer tout champ `api_key` ou `Authorization` injecté par le client
       // pour empêcher tout contournement de la clé serveur.
-      const { api_key: _ck, authorization: _ca, Authorization: _cA, ...safeBody } =
-        body as Record<string, any>;
+      const {
+        api_key: _ck,
+        authorization: _ca,
+        Authorization: _cA,
+        ...safeBody
+      } = body as Record<string, any>;
 
       const openRouterRes = await fetch(
         "https://openrouter.ai/api/v1/chat/completions",
@@ -546,11 +584,11 @@ export function registerModelRoutes(app: Hono) {
         try {
           await sql`
             INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-            VALUES (${userId}::integer, ${weekStartStr}::date, 1)
+            VALUES (${userId}::text, ${weekStartStr}::date, 1)
             ON CONFLICT (user_id, week_start)
             DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
           `;
-        } catch (_e) {}
+        } catch {}
       }
 
       return new Response(openRouterRes.body, {
@@ -600,7 +638,9 @@ export function registerModelRoutes(app: Hono) {
       }
 
       const modelRequested = body.model;
-      const modelStr = String(modelRequested || "").toLowerCase().trim();
+      const modelStr = String(modelRequested || "")
+        .toLowerCase()
+        .trim();
 
       const isFreePlan = !isPaidTier(userPlan);
       const isFreeModel = modelStr.includes(":free");
@@ -639,7 +679,7 @@ export function registerModelRoutes(app: Hono) {
       const { weekStartStr } = getWeekData();
       const usageResult = await sql`
         SELECT tokens_used FROM weekly_usage
-        WHERE user_id = ${userId}::integer AND week_start = ${weekStartStr}::date
+        WHERE user_id = ${userId}::text AND week_start = ${weekStartStr}::date
         LIMIT 1
       `;
       const currentUsage = usageResult[0]?.tokens_used || 0;
@@ -665,8 +705,12 @@ export function registerModelRoutes(app: Hono) {
       }
 
       // Nettoyer le body : retirer tout champ `api_key` ou `Authorization` injecté par le client
-      const { api_key: _ck, authorization: _ca, Authorization: _cA, ...safeBody } =
-        body as Record<string, any>;
+      const {
+        api_key: _ck,
+        authorization: _ca,
+        Authorization: _cA,
+        ...safeBody
+      } = body as Record<string, any>;
 
       const openRouterRes = await fetch(
         "https://openrouter.ai/api/v1/chat/completions",
@@ -686,11 +730,11 @@ export function registerModelRoutes(app: Hono) {
         try {
           await sql`
             INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-            VALUES (${userId}::integer, ${weekStartStr}::date, 1)
+            VALUES (${userId}::text, ${weekStartStr}::date, 1)
             ON CONFLICT (user_id, week_start)
             DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
           `;
-        } catch (_e) {}
+        } catch {}
       }
 
       return new Response(openRouterRes.body, {
@@ -739,7 +783,9 @@ export function registerModelRoutes(app: Hono) {
 
       const paramModel = c.req.param("model");
       const modelRequested = body.model || paramModel || pathModel;
-      const modelStr = String(modelRequested || "").toLowerCase().trim();
+      const modelStr = String(modelRequested || "")
+        .toLowerCase()
+        .trim();
 
       const isFreePlan = !isPaidTier(userPlan);
       const isFreeModel = modelStr.includes(":free");
@@ -777,7 +823,7 @@ export function registerModelRoutes(app: Hono) {
       const { weekStartStr } = getWeekData();
       const usageResult = await sql`
         SELECT tokens_used FROM weekly_usage
-        WHERE user_id = ${userId}::integer AND week_start = ${weekStartStr}::date
+        WHERE user_id = ${userId}::text AND week_start = ${weekStartStr}::date
         LIMIT 1
       `;
       const currentUsage = usageResult[0]?.tokens_used || 0;
@@ -803,8 +849,12 @@ export function registerModelRoutes(app: Hono) {
       }
 
       // Nettoyer le body : retirer tout champ `api_key` ou `Authorization` injecté par le client
-      const { api_key: _ck, authorization: _ca, Authorization: _cA, ...safeBody } =
-        body as Record<string, any>;
+      const {
+        api_key: _ck,
+        authorization: _ca,
+        Authorization: _cA,
+        ...safeBody
+      } = body as Record<string, any>;
 
       const openRouterPayload = {
         ...safeBody,
@@ -829,11 +879,11 @@ export function registerModelRoutes(app: Hono) {
         try {
           await sql`
             INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-            VALUES (${userId}::integer, ${weekStartStr}::date, 1)
+            VALUES (${userId}::text, ${weekStartStr}::date, 1)
             ON CONFLICT (user_id, week_start)
             DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
           `;
-        } catch (_e) {}
+        } catch {}
       }
 
       return new Response(openRouterRes.body, {

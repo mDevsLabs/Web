@@ -10,6 +10,84 @@ type Props = {
   language?: string;
 };
 
+// Motifs dangereux refusés avant même l'envoi au Worker (import,
+// fetch/XHR, DOM, storage, eval/Function).
+const BLOCKED_JS_PATTERNS = [
+  /import\s*\(/,
+  /\bimport\b.*\bfrom\b/,
+  /\bfetch\s*\(/,
+  /\bXMLHttpRequest\b/,
+  /\bWebSocket\b/,
+  /\bdocument\b/,
+  /\bwindow\b/,
+  /\blocalStorage\b/,
+  /\bsessionStorage\b/,
+  /\bindexedDB\b/,
+  /\beval\s*\(/,
+  /\bFunction\s*\(/,
+  /\bnavigator\b.*\bsendBeacon\b/,
+];
+
+function runJsInSandbox(code: string, timeoutMs = 10_000): Promise<string> {
+  for (const re of BLOCKED_JS_PATTERNS) {
+    if (re.test(code)) {
+      return Promise.reject(
+        new Error(
+          "Code JS bloqué : motif interdit détecté (réseau/DOM/import/eval)."
+        )
+      );
+    }
+  }
+  const workerSrc = `
+    let out = "";
+    const log = (...a) => { out += a.map(String).join(" ") + "\\n"; };
+    self.console = { log, info: log, warn: log, error: log };
+    self.onmessage = (e) => {
+      const userCode = String(e.data ?? "");
+      try {
+        const fn = new Function("console", '"use strict";\\n" + userCode');
+        const res = fn({ log, info: log, warn: log, error: log });
+        if (res !== undefined && res !== null) out += String(res);
+        self.postMessage({ ok: true, out });
+      } catch (err) {
+        self.postMessage({ ok: false, err: err && err.message ? err.message : String(err) });
+      }
+    };
+  `;
+  return new Promise((resolve, reject) => {
+    let settled = false;
+    const blob = new Blob([workerSrc], { type: "text/javascript" });
+    const url = URL.createObjectURL(blob);
+    const worker = new Worker(url);
+    const timer = window.setTimeout(() => {
+      if (settled) return;
+      settled = true;
+      worker.terminate();
+      URL.revokeObjectURL(url);
+      reject(new Error("L'exécution JS a dépassé le délai autorisé."));
+    }, timeoutMs);
+    worker.onmessage = (ev: MessageEvent) => {
+      if (settled) return;
+      settled = true;
+      window.clearTimeout(timer);
+      worker.terminate();
+      URL.revokeObjectURL(url);
+      const data = ev.data as { ok: boolean; out?: string; err?: string };
+      if (data.ok) resolve(data.out ?? "");
+      else reject(new Error(data.err || "Erreur d'exécution JS"));
+    };
+    worker.onerror = (ev) => {
+      if (settled) return;
+      settled = true;
+      window.clearTimeout(timer);
+      worker.terminate();
+      URL.revokeObjectURL(url);
+      reject(new Error(ev.message || "Erreur Worker JS"));
+    };
+    worker.postMessage(code);
+  });
+}
+
 export function CodeExecution({ code, language = "python" }: Props) {
   const [output, setOutput] = useState<string>("");
   const [error, setError] = useState<string>("");
@@ -46,7 +124,8 @@ export function CodeExecution({ code, language = "python" }: Props) {
           setPyodideReady(true);
         }
       } catch (e) {
-        if (!cancelled) setPyodideError(e instanceof Error ? e.message : String(e));
+        if (!cancelled)
+          setPyodideError(e instanceof Error ? e.message : String(e));
       } finally {
         if (!cancelled) setIsPyodideLoading(false);
       }
@@ -94,7 +173,8 @@ export function CodeExecution({ code, language = "python" }: Props) {
             py.runPythonAsync(code),
             new Promise<never>((_, reject) => {
               timeoutId = window.setTimeout(
-                () => reject(new Error("L'exécution a dépassé le délai autorisé.")),
+                () =>
+                  reject(new Error("L'exécution a dépassé le délai autorisé.")),
                 60_000
               );
             }),
@@ -110,23 +190,14 @@ export function CodeExecution({ code, language = "python" }: Props) {
           setError(e.message || String(e));
         }
       } else {
-        // JS
-        let stdout = "";
-        const originalLog = console.log;
-        console.log = (...args: any[]) => {
-          stdout += `${args.map(String).join(" ")}\n`;
-        };
+        // JS — exécuté dans un Web Worker isolé (pas d'accès DOM,
+        // cookies, localStorage). Remplace l'ancien `new Function(code)`
+        // qui s'exécutait dans le contexte de la page.
         try {
-          const fn = new Function(code);
-          const res = fn();
-          if (res !== undefined) {
-            stdout += String(res);
-          }
-          setOutput(stdout.trim() || "(exécution JS réussie)");
+          const out = await runJsInSandbox(code, 10_000);
+          setOutput(out.trim() || "(exécution JS réussie)");
         } catch (e: any) {
           setError(e.message || String(e));
-        } finally {
-          console.log = originalLog;
         }
       }
     } finally {
@@ -147,15 +218,15 @@ export function CodeExecution({ code, language = "python" }: Props) {
           {language === "python"
             ? "Python (Pyodide, navigateur)"
             : "JavaScript"}{" "}
-          {language !== "python"
-            ? "• prêt"
-            : pyodideReady
+          {language === "python"
+            ? pyodideReady
               ? "• prêt"
               : pyodideError
                 ? "• erreur de chargement"
                 : isPyodideLoading
                   ? "• chargement..."
-                  : "• indisponible"}
+                  : "• indisponible"
+            : "• prêt"}
         </span>
         <div className="flex items-center gap-1">
           <Button
@@ -168,7 +239,10 @@ export function CodeExecution({ code, language = "python" }: Props) {
           </Button>
           <Button
             className="h-7 text-xs gap-1"
-            disabled={isRunning || (language === "python" && (!pyodideReady || isPyodideLoading))}
+            disabled={
+              isRunning ||
+              (language === "python" && (!pyodideReady || isPyodideLoading))
+            }
             onClick={run}
             size="sm"
           >

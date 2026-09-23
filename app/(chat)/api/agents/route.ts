@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { errorResponse, logError } from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
 import { getMaiUser } from "@/lib/auth/session";
 import { createAgent, getAgentsByUserId } from "@/lib/db/queries";
@@ -52,13 +53,12 @@ export async function POST(request: Request) {
   // Enforce max 10 agents per user
   const existing = await getAgentsByUserId({ userId });
   if (existing.length >= 10) {
-    return Response.json(
-      {
-        error:
-          "Limite de 10 agents atteinte. Supprimez un agent avant d'en créer un nouveau.",
-      },
-      { status: 403 }
-    );
+    return errorResponse("quota_exceeded", {
+      details: { limit: 10, used: existing.length },
+      message:
+        "Limite de 10 agents atteinte. Supprimez un agent avant d'en créer un nouveau.",
+      status: 403,
+    });
   }
 
   try {
@@ -67,10 +67,9 @@ export async function POST(request: Request) {
     if (parsed.emoji?.trim()) {
       const graphemes = Array.from(parsed.emoji.trim());
       if (graphemes.length > 4) {
-        return Response.json(
-          { error: "Emoji trop long (max 4 caractères)" },
-          { status: 400 }
-        );
+        return errorResponse("invalid_request", {
+          message: "Emoji trop long (maximum 4 caractères).",
+        });
       }
     }
     const created = await createAgent({
@@ -80,19 +79,17 @@ export async function POST(request: Request) {
     });
     return Response.json(created, { status: 201 });
   } catch (err: any) {
-    console.error("Erreur création agent:", err);
     if (err instanceof z.ZodError) {
       const issues = err.issues
         .map((e: any) => `${e.path.join(".") || "champ"}: ${e.message}`)
         .join(" • ");
-      return Response.json(
-        { error: `Données invalides : ${issues}` },
-        { status: 400 }
-      );
+      return errorResponse("invalid_request", {
+        message: `Données invalides : ${issues}`,
+      });
     }
-    return Response.json(
-      { error: err.message ?? "Erreur lors de la création de l'agent" },
-      { status: 500 }
-    );
+    logError("Erreur création agent", err);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de la création de l'agent.",
+    });
   }
 }

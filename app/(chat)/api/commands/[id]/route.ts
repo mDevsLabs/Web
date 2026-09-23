@@ -1,4 +1,9 @@
 import { z } from "zod";
+import {
+  errorResponse,
+  logError,
+  zodIssuesMessage,
+} from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
 import { commandPayloadSchema } from "@/lib/commands/types";
 import { deleteCustomCommand, updateCustomCommand } from "@/lib/db/queries";
@@ -44,14 +49,21 @@ export async function PATCH(
       userId,
     });
     if (!updated) {
-      return Response.json({ error: "Commande introuvable" }, { status: 404 });
+      return errorResponse("not_found", {
+        message: "Commande introuvable.",
+      });
     }
     return Response.json(updated);
-  } catch (err: any) {
-    return Response.json(
-      { error: err.message ?? "Erreur lors de la mise à jour" },
-      { status: 400 }
-    );
+  } catch (err: unknown) {
+    if (err instanceof z.ZodError) {
+      return errorResponse("invalid_request", {
+        message: zodIssuesMessage(err),
+      });
+    }
+    logError("Erreur mise à jour commande", err);
+    return errorResponse("internal_error", {
+      message: "Erreur lors de la mise à jour de la commande.",
+    });
   }
 }
 
@@ -69,7 +81,7 @@ export async function DELETE(
 
   const deleted = await deleteCustomCommand({ id, userId });
   if (!deleted) {
-    return Response.json({ error: "Commande introuvable" }, { status: 404 });
+    return errorResponse("not_found", { message: "Commande introuvable." });
   }
 
   return Response.json({

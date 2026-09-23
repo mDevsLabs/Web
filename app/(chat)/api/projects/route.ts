@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { getMaiUser } from "@/lib/auth/session";
 import {
+  countProjectMembers,
   createProject,
   getProjectChatCounts,
   getProjectsByUserId,
@@ -36,9 +37,19 @@ export async function GET(request: Request) {
   ]);
 
   const countMap = new Map(counts.map((c) => [c.projectId, c.count]));
+  const memberCounts = await Promise.all(
+    projects.map(
+      async (p) =>
+        [p.id, await countProjectMembers({ projectId: p.id })] as const
+    )
+  );
+  const memberCountMap = new Map(memberCounts);
   const withCounts = projects.map((p) => ({
     ...p,
+    // Compte TOUTES les conversations du projet (shared included) : getProjectChatCounts
+    // filtre sur les projets accessibles via getProjectAccess (owner ou membre).
     chatCount: p.id ? (countMap.get(p.id) ?? 0) : 0,
+    memberCount: p.id ? (memberCountMap.get(p.id) ?? 0) + 1 : 1,
   }));
 
   // Also count unassigned chats

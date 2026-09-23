@@ -43,6 +43,29 @@ export async function GET(request: NextRequest) {
   const pinned =
     pinnedParam === "true" ? true : pinnedParam === "false" ? false : null;
 
+  // Espace projet partagé : quand un projectId est demandé, on renvoie TOUTES
+  // les conversations du projet (tous auteurs), après vérification du rôle
+  // (owner ou membre). Sans projectId, l'historique reste strictement
+  // personnel — les conversations des autres n'y remontent jamais.
+  if (projectId) {
+    const { getProjectAccess } = await import("@/lib/projects/access");
+    const access = await getProjectAccess({
+      projectId,
+      userEmail: user.email,
+      userId,
+    });
+    if (!access) {
+      return new ChatbotError("not_found:database").toResponse();
+    }
+    const { getProjectChats } = await import("@/lib/db/queries");
+    const chats = await getProjectChats({
+      includeArchived: includeArchived || isArchived === true,
+      limit,
+      projectId,
+    });
+    return Response.json({ chats, hasMore: false });
+  }
+
   try {
     const chats = await getChatsByUserId({
       endingBefore,

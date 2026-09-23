@@ -19,6 +19,7 @@ import {
   HomeIcon,
   ImageIcon,
   LightbulbIcon,
+  ListChecksIcon,
   ListIcon,
   NotebookIcon,
   PaletteIcon,
@@ -56,6 +57,7 @@ export type SlashCommandAction =
   | "notes"
   | "search"
   | "home"
+  | "tasks"
   | "tool-image"
   | "tool-audio"
   | "tool-web"
@@ -156,6 +158,14 @@ export const slashCommands: SlashCommand[] = [
     description: "Rechercher dans conversations / projets / fichiers",
     icon: <SearchIcon className="size-3.5" />,
     name: "search",
+  },
+  {
+    action: "tasks",
+    aliases: ["taches", "plan", "todo"],
+    description:
+      "Plan de tâches : Agent concevra un plan et une liste de tâches avant d'agir (one-shot)",
+    icon: <ListChecksIcon className="size-3.5" />,
+    name: "taches",
   },
   {
     action: "tool-image",
@@ -261,7 +271,8 @@ export const slashCommands: SlashCommand[] = [
   {
     action: "tool-memory",
     aliases: ["memory", "memoire", "souvenir"],
-    description: "Activer l'outil de gestion de la mémoire utilisateur (one-shot)",
+    description:
+      "Activer l'outil de gestion de la mémoire utilisateur (one-shot)",
     icon: <BrainIcon className="size-3.5" />,
     name: "memory",
   },
@@ -282,7 +293,8 @@ export const slashCommands: SlashCommand[] = [
   {
     action: "quiz",
     aliases: ["quizz", "quizzly", "test"],
-    description: "Créer un quiz interactif Quizzly (1 à 50 questions avec score)",
+    description:
+      "Créer un quiz interactif Quizzly (1 à 50 questions avec score)",
     icon: <TrophyIcon className="size-3.5" />,
     name: "quiz",
   },
@@ -400,7 +412,36 @@ export type SlashCommandContext = {
   isHome?: boolean;
   // Plans gratuits : /agents masquée
   isFree?: boolean;
+  // Mode d'exécution : « agent » filtre les commandes sans sens dans l'espace
+  // Agent (mode fantôme, quiz, outils propres au Chat) et remappe les toggles
+  // d'outils vers les options one-shot d'Agent.
+  mode?: "agent" | "chat";
 };
+
+// Commandes conservées en mode Agent : navigation, export, thème et les
+// toggles remappés (image / audio / web / mémoire / tâches). Les autres
+// n'ont pas d'équivalent côté Agent et sont masquées plutôt que grisées.
+const AGENT_EXCLUDED_SLASH_ACTIONS = new Set([
+  "agents",
+  "clear",
+  "delete",
+  "ghost",
+  "model",
+  "purge",
+  "quiz",
+  "rename",
+  "tool-calc",
+  "tool-chart",
+  "tool-code",
+  "tool-doc",
+  "tool-note",
+  "tool-qr",
+  "tool-weather",
+  "tool-suggest",
+  "tool-summary",
+  "tool-time",
+  "tools-clear",
+]);
 
 export function customCommandsToSlashCommands(
   commands: CustomCommand[]
@@ -432,6 +473,12 @@ export function getFilteredSlashCommands(
 ): SlashCommand[] {
   // Commandes personnalisées en tête de liste
   let list = [...customCommands, ...slashCommands];
+  if (context?.mode === "agent") {
+    list = list.filter(
+      (cmd) =>
+        cmd.action === "custom" || !AGENT_EXCLUDED_SLASH_ACTIONS.has(cmd.action)
+    );
+  }
   if (context?.isHome) {
     // Pas de conversation à exporter sur l'accueil
     list = list.filter((cmd) => cmd.action !== "export");

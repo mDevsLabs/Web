@@ -14,6 +14,7 @@ import {
   KeyRoundIcon,
   Loader2Icon,
   LockIcon,
+  MonitorSmartphoneIcon,
   RefreshCwIcon,
   SettingsIcon,
   ShieldCheckIcon,
@@ -29,6 +30,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import {
   type ComponentType,
+  Suspense,
   useCallback,
   useEffect,
   useMemo,
@@ -68,6 +70,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { requestOnboardingReplay } from "@/hooks/use-onboarding";
 import {
   resolveImagesUsage,
   resolveSpeechUsage,
@@ -76,8 +79,14 @@ import {
 import { useTier } from "@/hooks/use-tier";
 import type { ChatModel } from "@/lib/ai/models";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { extractApiErrorMessage } from "@/lib/api/client-error";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
-import { cn } from "@/lib/utils";
+import {
+  getTierChatWeeklyLimit,
+  getTierStorageBytes,
+} from "@/lib/plans/tier-limits";
+import { usePlatform } from "@/lib/platform";
+import { cn, fetcher } from "@/lib/utils";
 
 function formatTokens(n: number) {
   return new Intl.NumberFormat("fr-FR").format(n);
@@ -148,14 +157,32 @@ const SETTINGS_TABS: {
 ];
 
 export default function SettingsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="p-6 text-sm text-muted-foreground">Chargement…</div>
+      }
+    >
+      <SettingsPageInner />
+    </Suspense>
+  );
+}
+
+function SettingsPageInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const platformInfo = usePlatform();
   const initialTab = searchParams.get("tab") as SettingsTab | null;
   const [activeTab, setActiveTab] = useState<SettingsTab>(
     initialTab && SETTINGS_TABS.some((t) => t.id === initialTab)
       ? initialTab
       : "profile"
   );
+
+  const handleReplayTutorial = useCallback(() => {
+    requestOnboardingReplay();
+    router.push("/");
+  }, [router]);
 
   const handleTabChange = useCallback(
     (tab: SettingsTab) => {
@@ -289,14 +316,14 @@ export default function SettingsPage() {
 
   const { data: prefModelsData } = useSWR(
     `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models`,
-    (url: string) => fetch(url).then((r) => r.json()),
+    fetcher,
     { dedupingInterval: 60_000 }
   );
   const prefModels: ChatModel[] = prefModelsData?.models || [];
 
   const { data: imageModelsData } = useSWR(
     `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models/images`,
-    (url: string) => fetch(url).then((r) => r.json()),
+    fetcher,
     { dedupingInterval: 60_000 }
   );
   const imageModels: SharedModel[] =
@@ -304,7 +331,7 @@ export default function SettingsPage() {
 
   const { data: audioModelsData } = useSWR(
     `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/models/speech`,
-    (url: string) => fetch(url).then((r) => r.json()),
+    fetcher,
     { dedupingInterval: 60_000 }
   );
   const audioModels: SharedModel[] =
@@ -340,7 +367,7 @@ export default function SettingsPage() {
 
   const { data: customPrefData, mutate: mutateCustomPref } = useSWR(
     "/api/user/preferences",
-    (url: string) => fetch(url).then((r) => r.json()),
+    fetcher,
     { dedupingInterval: 30_000 }
   );
 
@@ -352,7 +379,7 @@ export default function SettingsPage() {
   const [isSavingAgentIconsPref, setIsSavingAgentIconsPref] = useState(false);
   const { data: prefAgentsData } = useSWR(
     isFree ? null : "/api/agents",
-    (url: string) => fetch(url).then((r) => r.json()),
+    fetcher,
     { dedupingInterval: 30_000 }
   );
   const prefAgents: any[] = Array.isArray(prefAgentsData) ? prefAgentsData : [];
@@ -465,7 +492,7 @@ export default function SettingsPage() {
   // Notifications prefs fetch
   const { data: notifPrefsData, mutate: mutateNotifPrefs } = useSWR(
     "/api/notifications/preferences",
-    (url: string) => fetch(url).then((r) => r.json()),
+    fetcher,
     { dedupingInterval: 10_000 }
   );
 
@@ -715,7 +742,7 @@ export default function SettingsPage() {
       });
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || "Erreur");
+        throw new Error(extractApiErrorMessage(data) || "Erreur");
       }
       toast.success("Instructions personnalisées enregistrées !");
       mutateCustomPref();
@@ -752,7 +779,10 @@ export default function SettingsPage() {
       const data = await res.json();
 
       if (!res.ok || !data.success) {
-        toast.error(data.error || "Erreur lors du téléversement de l'avatar.");
+        toast.error(
+          extractApiErrorMessage(data) ||
+            "Erreur lors du téléversement de l'avatar."
+        );
         return;
       }
 
@@ -821,7 +851,10 @@ export default function SettingsPage() {
       const data = await res.json();
 
       if (!res.ok || data.error) {
-        toast.error(data.error || "Erreur lors de la mise à jour du profil.");
+        toast.error(
+          extractApiErrorMessage(data) ||
+            "Erreur lors de la mise à jour du profil."
+        );
         return;
       }
 
@@ -867,7 +900,7 @@ export default function SettingsPage() {
 
       const data = await res.json();
       if (!res.ok || !data.success) {
-        toast.error(data.error || "Code invalide ou expiré.");
+        toast.error(extractApiErrorMessage(data) || "Code invalide ou expiré.");
         return;
       }
 
@@ -919,6 +952,10 @@ export default function SettingsPage() {
         Math.round(((cloudUsage.bytesUsed || 0) / cloudUsage.bytesLimit) * 100)
       )
     : 0;
+
+  // Repli aligné sur le SSOT des quotas (lib/plans/tier-limits.ts)
+  const aiLimitFallback = getTierChatWeeklyLimit(profile?.tier);
+  const storageLimitFallback = getTierStorageBytes(profile?.tier);
 
   // Ancres de la barre latérale pour l'onglet actif (défilement + surlignage)
   const anchorItems: AnchorItem[] = useMemo(() => {
@@ -1082,6 +1119,24 @@ export default function SettingsPage() {
                   <p className="text-xs text-muted-foreground mt-0.5">
                     {email}
                   </p>
+                  <div className="mt-1.5 flex flex-wrap items-center gap-2 text-[11px] text-muted-foreground">
+                    <span className="inline-flex items-center gap-1">
+                      <MonitorSmartphoneIcon className="size-3" />
+                      {platformInfo.desktopVersion
+                        ? `${platformInfo.label} v${platformInfo.desktopVersion}`
+                        : platformInfo.label}
+                    </span>
+                    <span aria-hidden="true" className="text-border">
+                      •
+                    </span>
+                    <button
+                      className="font-medium text-primary hover:underline cursor-pointer"
+                      onClick={handleReplayTutorial}
+                      type="button"
+                    >
+                      Revoir le tutoriel
+                    </button>
+                  </div>
                   <button
                     className="mt-2 text-xs font-medium text-primary hover:underline cursor-pointer flex items-center gap-1"
                     disabled={isUploadingAvatar}
@@ -1188,7 +1243,9 @@ export default function SettingsPage() {
                               : "Afficher le mot de passe"
                           }
                           className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground transition-colors cursor-pointer rounded"
-                          onClick={() => setShowCurrentPassword((prev) => !prev)}
+                          onClick={() =>
+                            setShowCurrentPassword((prev) => !prev)
+                          }
                           tabIndex={-1}
                           type="button"
                         >
@@ -2126,7 +2183,7 @@ export default function SettingsPage() {
                   </div>
                   <p className="text-xs text-muted-foreground mt-1">
                     {profile?.tier === "Free"
-                      ? `Accès gratuit avec ${formatTokens(aiUsage?.limit || 2_000_000)} tokens hebdomadaires et ${formatBytes(cloudUsage?.bytesLimit || 524_288_000)} de stockage cloud.`
+                      ? `Accès gratuit avec ${formatTokens(aiUsage?.limit || aiLimitFallback)} tokens hebdomadaires et ${formatBytes(cloudUsage?.bytesLimit || storageLimitFallback)} de stockage cloud.`
                       : "Forfait premium débloqué avec quotas étendus et modèles avancés."}
                   </p>
                 </div>
@@ -2166,7 +2223,7 @@ export default function SettingsPage() {
                   <div className="text-right">
                     <span className="text-sm font-bold text-foreground">
                       {formatTokens(aiUsage?.tokensUsed || 0)} /{" "}
-                      {formatTokens(aiUsage?.limit || 2_000_000)}
+                      {formatTokens(aiUsage?.limit || aiLimitFallback)}
                     </span>
                     <span className="text-xs text-muted-foreground block">
                       tokens ({aiPercent}%)
@@ -2329,7 +2386,9 @@ export default function SettingsPage() {
                   <div className="text-right">
                     <span className="text-sm font-bold text-foreground">
                       {formatBytes(cloudUsage?.bytesUsed || 0)} /{" "}
-                      {formatBytes(cloudUsage?.bytesLimit || 524_288_000)}
+                      {formatBytes(
+                        cloudUsage?.bytesLimit || storageLimitFallback
+                      )}
                     </span>
                     <span className="text-xs text-muted-foreground block">
                       utilisés ({cloudPercent}%)

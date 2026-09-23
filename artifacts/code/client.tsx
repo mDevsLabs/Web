@@ -1,8 +1,10 @@
 import { toast } from "sonner";
+import { CodeDiffView } from "@/components/chat/code-diff-view";
 import { CodeEditor } from "@/components/chat/code-editor";
 import { Artifact } from "@/components/chat/create-artifact";
 import {
   CopyIcon,
+  DeltaIcon,
   LogsIcon,
   MessageIcon,
   RedoIcon,
@@ -14,11 +16,50 @@ type Metadata = {
 };
 
 const codeArtifactContent: Artifact<"code", Metadata>["content"] =
-  function CodeArtifactContent({ metadata, ...props }) {
+  function CodeArtifactContent({
+    metadata,
+    mode,
+    status,
+    content,
+    isCurrentVersion,
+    currentVersionIndex,
+    onSaveContent,
+    getDocumentContentById,
+    isLoading,
+    ...props
+  }) {
+    if (isLoading) {
+      return (
+        <div className="flex h-64 items-center justify-center text-sm text-muted-foreground">
+          Chargement du code...
+        </div>
+      );
+    }
+
+    if (mode === "diff") {
+      const prevContent = getDocumentContentById(currentVersionIndex - 1);
+      return (
+        <div className="relative min-h-[300px] p-2">
+          <CodeDiffView
+            language={(props as any).language || "code"}
+            newContent={content}
+            oldContent={prevContent}
+          />
+        </div>
+      );
+    }
+
     return (
       <>
         <div className="relative min-h-[200px]">
-          <CodeEditor {...props} />
+          <CodeEditor
+            content={content}
+            currentVersionIndex={currentVersionIndex}
+            isCurrentVersion={isCurrentVersion}
+            onSaveContent={onSaveContent}
+            status={status}
+            suggestions={props.suggestions}
+          />
         </div>
 
         {metadata?.outputs && metadata.outputs.length > 0 ? (
@@ -32,6 +73,14 @@ const codeArtifactContent: Artifact<"code", Metadata>["content"] =
 
 export const codeArtifact = new Artifact<"code", Metadata>({
   actions: [
+    {
+      description: "Basculer la comparaison (Diff)",
+      icon: <DeltaIcon size={18} />,
+      isDisabled: ({ currentVersionIndex }) => currentVersionIndex === 0,
+      onClick: ({ handleVersionChange }) => {
+        handleVersionChange("toggle");
+      },
+    },
     {
       description: "Voir la version précédente",
       icon: <UndoIcon size={18} />,
@@ -82,12 +131,7 @@ export const codeArtifact = new Artifact<"code", Metadata>({
       setArtifact((draftArtifact) => ({
         ...draftArtifact,
         content: streamPart.data,
-        isVisible:
-          draftArtifact.status === "streaming" &&
-          draftArtifact.content.length > 300 &&
-          draftArtifact.content.length < 310
-            ? true
-            : draftArtifact.isVisible,
+        isVisible: true,
         status: "streaming",
       }));
     }
