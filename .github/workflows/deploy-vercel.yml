@@ -2,24 +2,20 @@ name: 🚀 Deploy to Vercel
 
 # Séparation stricte des environnements.
 #
-# AVANT : un seul job, déclenché sur TOUTE branche et TOUTE pull request,
-# exécutait `pnpm exec tsx lib/db/migrate.ts` avec le même secret
-# `DATABASE_URL` que la production. Une branche de prévisualisation (ou une PR
-# d'un contributeur) migrait donc — et réparait le schéma de — la base de
-# production, sans approbation.
+# Pourquoi migrer depuis le secret GitHub et pas depuis `vercel pull` :
+# Vercel ne restitue JAMAIS les valeurs sensibles du dashboard via la CLI
+# (les secrets sont remplacés par "[SENSITIVE]"), donc la CI ne peut pas lire
+# la DATABASE_URL du runtime. Le secret GitHub `DATABASE_URL` est donc la
+# seule source migrable — il DOIT être identique à la variable du dashboard
+# Vercel (Production + Preview). Une divergence reconduit le bug « migrations
+# appliquées côté CI sur une base, runtime Vercel branché sur une autre »
+# (500 sur /api/chat et /api/agent, aucun appel modèle).
 #
-# MAINTENANT :
-#  • la base migrée est TOUJOURS celle du `vercel pull` de l'environnement
-#    déployé (fichier .env.vercel) : divergence secret GitHub / dashboard
-#    impossible par construction. Le bug « migrations appliquées côté CI sur
-#    une base, runtime Vercel branché sur une autre » ne peut plus se produire
-#    silencieusement — la garde compare les empreintes et bloque sinon ;
-#  • `preview` : build + déploiement de prévisualisation. Un push sur `main`
-#    ou `canary` migre et vérifie le schéma AVANT le build (PR de forks :
-#    jamais de migration, jamais d'accès base) ;
-#  • `production` : réservé à la branche `main`, rattaché à l'environnement
-#    GitHub `production` (approbation requise), avec garde de schéma avant
-#    et après migration.
+# Garde-fous :
+#  • `preview` : un push sur `main` ou `canary` migre puis vérifie le schéma
+#    AVANT le build (PR de forks : jamais de migration, jamais d'accès base) ;
+#  • `production` : réservé à `main` (environnement GitHub `production`,
+#    approbation requise), garde avant et après migration.
 on:
   push:
     branches: [main, canary]
@@ -75,26 +71,29 @@ jobs:
       - name: 🌍 Récupérer l'environnement de prévisualisation
         run: vercel pull --yes --environment=preview --token=${{ env.VERCEL_TOKEN }}
 
-      - name: 🔎 Révéler la base runtime (empreinte, sans secret)
-        run: node scripts/print-db-target.mjs .env.vercel
+      # Empreinte de la base migrée (hôte/base/utilisateur, jamais le secret) :
+      # à comparer visuellement avec la DATABASE_URL du dashboard Vercel.
+      - name: 🔎 Révéler la base migrée (empreinte, sans secret)
+        run: node scripts/print-db-target.mjs
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
-      # Les pushes sur main/canary migrent la base du DASHBOARD (celle du
-      # déploiement) : un éventuel secret GitHub divergent n'est plus suivi.
-      - name: 🗄️ Migration de la base du déploiement (main/canary uniquement)
+      # Les pushes sur main/canary migrent la base référencée par le secret
+      # GitHub AVANT le build : c'est la seule base accessible à la CI.
+      - name: 🗄️ Migration de la base (main/canary uniquement)
         if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/canary')
         run: pnpm exec tsx lib/db/migrate.ts
         env:
-          DATABASE_URL_FILE: .env.vercel
-          POSTGRES_URL_FILE: .env.vercel
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          POSTGRES_URL: ${{ secrets.DATABASE_URL }}
           MIGRATIONS_STRICT: "true"
 
-      # Garde bloquante sur la MÊME base que le déploiement : un schéma obsolète
-      # n'est plus déployé (il répondrait 500 sur chaque conversation).
+      # Garde bloquante : un schéma obsolète n'est plus déployé (il répondrait
+      # 500 sur chaque conversation).
       - name: 🛡️ Garde de schéma avant déploiement
-        run: node scripts/check-db-schema.mjs .env.vercel
+        run: node scripts/check-db-schema.mjs
         env:
-          DATABASE_URL: ""
-          POSTGRES_URL: ""
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
       - name: 🏗️ Build des artefacts
         run: vercel build --token=${{ env.VERCEL_TOKEN }}
@@ -137,37 +136,39 @@ jobs:
       - name: 🌍 Récupérer l'environnement de production
         run: vercel pull --yes --environment=production --token=${{ env.VERCEL_TOKEN }}
 
-      - name: 🔎 Révéler la base runtime (empreinte, sans secret)
-        run: node scripts/print-db-target.mjs .env.vercel
+      # Journalisation explicite : quel schéma va être migré (hôte + base, sans
+      # identifiants — l'URL complète n'est jamais affichée).
+      - name: 🔎 Révéler la base migrée (empreinte, sans secret)
+        run: node scripts/print-db-target.mjs
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
       # État AVANT migration : la garde échoue explicitement si la base est
       # plus vieille que le code (tables critiques absentes), avec le rappel
       # de la commande à exécuter.
       - name: 🛡️ Garde de schéma (avant migration)
         run: |
-          node scripts/check-db-schema.mjs .env.vercel \
+          node scripts/check-db-schema.mjs \
             || echo "::warning::Schéma en dérive avant migration : la migration qui suit doit la résoudre."
         env:
-          DATABASE_URL: ""
-          POSTGRES_URL: ""
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         continue-on-error: true
 
-      # Migration PUIS build, sur la base du DASHBOARD. `MIGRATIONS_STRICT=true` :
-      # une étape de réparation en échec inattendu fait échouer le job.
+      # Migration PUIS build. `MIGRATIONS_STRICT=true` : une étape de réparation
+      # en échec inattendu fait échouer le job au lieu d'être absorbée.
       - name: 🗄️ Migration puis build des artefacts
         run: pnpm exec tsx lib/db/migrate.ts && vercel build --prod --token=${{ env.VERCEL_TOKEN }}
         env:
-          DATABASE_URL_FILE: .env.vercel
-          POSTGRES_URL_FILE: .env.vercel
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          POSTGRES_URL: ${{ secrets.DATABASE_URL }}
           MIGRATIONS_STRICT: "true"
 
       # Vérification dure APRÈS migration : si une table critique manque
       # encore, le déploiement est bloqué (il répondrait 500 partout).
       - name: 🛡️ Garde de schéma (après migration, bloquante)
-        run: node scripts/check-db-schema.mjs .env.vercel
+        run: node scripts/check-db-schema.mjs
         env:
-          DATABASE_URL: ""
-          POSTGRES_URL: ""
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
       - name: 🌐 Déployer en production
         run: vercel deploy --prebuilt --archive=tgz --prod --token=${{ env.VERCEL_TOKEN }}
