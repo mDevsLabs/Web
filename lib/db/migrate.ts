@@ -4,6 +4,8 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import { migrate } from "drizzle-orm/postgres-js/migrator";
 import postgres from "postgres";
 
+import { sanitizeConnectionString } from "@/lib/db/connection-string";
+
 config({
   path: ".env.local",
 });
@@ -49,17 +51,19 @@ const runMigrate = async () => {
   // (vercel pull) : DATABASE_URL_FILE/POSTGRES_URL_FILE pointe vers ce fichier
   // et le secret ne transite jamais dans un fichier du projet. La variable
   // directe reste prioritaire pour l'usage local.
-  let dbUrl = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+  // La variable peut avoir été collée avec des guillemets englobants dans un
+  // dashboard : sanitizeConnectionString() les retire avant usage.
+  let dbUrl = sanitizeConnectionString(
+    process.env.DATABASE_URL || process.env.POSTGRES_URL || ""
+  );
   const urlFile =
     process.env.DATABASE_URL_FILE || process.env.POSTGRES_URL_FILE;
   if (!dbUrl && urlFile) {
     try {
       const content = readFileSync(urlFile, "utf8");
-      const match = content.match(
-        /(?:DATABASE_URL|POSTGRES_URL)\s*=\s*"?([^"\n]+)"?/
-      );
-      if (match) {
-        dbUrl = match[1].trim();
+      const match = content.match(/(?:DATABASE_URL|POSTGRES_URL)\s*=\s*(.+)?/);
+      if (match?.[1]) {
+        dbUrl = sanitizeConnectionString(match[1]);
       }
     } catch {
       console.error(`Fichier env introuvable ou illisible : ${urlFile}`);

@@ -1,6 +1,8 @@
 import "server-only";
 import "dotenv/config";
 
+import { resolveDatabaseUrl } from "@/lib/db/connection-string";
+
 import {
   and,
   asc,
@@ -1177,10 +1179,7 @@ let _migrationPromise: Promise<void> | null = null;
 let _rawClient: postgres.Sql | null = null;
 
 function initDb() {
-  const connectionString =
-    process.env.DATABASE_URL ||
-    process.env.POSTGRES_URL ||
-    process.env.POSTGRES_PRISMA_URL;
+  const connectionString = resolveDatabaseUrl();
 
   if (!connectionString) {
     throw new Error(

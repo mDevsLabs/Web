@@ -46,6 +46,7 @@ const envFiles = process.argv.slice(2).length > 0
   : [".env.local", ".env"];
 
 let databaseUrl = process.env.DATABASE_URL || process.env.POSTGRES_URL || "";
+databaseUrl = databaseUrl.trim().replace(/^("')+/, "").replace(/(["'])+$/, "").trim();
 if (!databaseUrl) {
   for (const file of envFiles) {
     if (!existsSync(file)) continue;

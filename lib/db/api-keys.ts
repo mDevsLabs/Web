@@ -2,8 +2,10 @@ import "server-only";
 
 import postgres from "postgres";
 
+import { resolveDatabaseUrl } from "@/lib/db/connection-string";
+
 export async function getUserApiKey(userId: string): Promise<string | null> {
-  const dbUrl = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+  const dbUrl = resolveDatabaseUrl();
   if (!userId || !dbUrl) {
     return null;
   }
