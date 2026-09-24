@@ -243,6 +243,25 @@ export function toolFailure(
   };
 }
 
+export function unwrapAgentToolOutput(output: unknown): unknown {
+  if (!output || typeof output !== "object") return output;
+  const value = output as {
+    data?: unknown;
+    error?: { message?: unknown };
+    success?: unknown;
+  };
+  if (value.success === true && "data" in value) return value.data;
+  if (value.success === false && value.error) {
+    return {
+      error:
+        typeof value.error.message === "string"
+          ? value.error.message
+          : "Erreur de l'outil.",
+    };
+  }
+  return output;
+}
+
 export function isToolSuccess(result: ToolResult): result is ToolSuccess {
   return result.success;
 }
@@ -250,6 +269,7 @@ export function isToolSuccess(result: ToolResult): result is ToolSuccess {
 // Contexte d'exécution d'un outil : tout ce dont une fonction serveur a besoin
 // pour travailler sans dépendre du runtime ni du flux.
 export type ToolExecutionContext = {
+  agentId?: string | null;
   chatId: string;
   projectId: string | null;
   runId: string;
@@ -260,6 +280,7 @@ export type ToolExecutionContext = {
   // rattacher une approbation ou une réponse utilisateur au tool call exact.
   toolCallId: string;
   toolExecutionId: string;
+  tier?: string;
   userEmail: string;
   userId: string;
 };
@@ -268,10 +289,12 @@ export type ToolExecutionContext = {
 // d'exécution d'outil sont créés au moment de chaque appel (voir
 // ToolCallController), puisque un step n'existe qu'une fois l'outil demandé.
 export type AgentToolBaseContext = {
+  agentId?: string | null;
   chatId: string;
   projectId: string | null;
   sessionToken: string;
   signal?: AbortSignal;
+  tier?: string;
   userEmail: string;
   userId: string;
 };

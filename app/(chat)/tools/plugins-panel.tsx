@@ -124,13 +124,19 @@ export default function PluginsPanel({
         (!category || plugin.category === category) &&
         matchesQuery(searchQuery, {
           primary: plugin.name,
-          secondary: [plugin.description, plugin.tools.map((tool) => tool.label).join(", ")],
+          secondary: [
+            plugin.description,
+            plugin.tools.map((tool) => tool.label).join(", "),
+          ],
           tags: plugin.tags,
         })
     );
     return sortByRelevance(matching, searchQuery, (plugin) => ({
       primary: plugin.name,
-      secondary: [plugin.description, plugin.tools.map((tool) => tool.label).join(", ")],
+      secondary: [
+        plugin.description,
+        plugin.tools.map((tool) => tool.label).join(", "),
+      ],
       tags: plugin.tags,
     }));
   }, [entries, searchQuery, category]);
@@ -139,7 +145,10 @@ export default function PluginsPanel({
     () =>
       sortByRelevance(installed, searchQuery, (plugin) => ({
         primary: plugin.name,
-        secondary: [plugin.description, plugin.tools.map((tool) => tool.label).join(", ")],
+        secondary: [
+          plugin.description,
+          plugin.tools.map((tool) => tool.label).join(", "),
+        ],
         tags: plugin.tags,
       })),
     [installed, searchQuery]
@@ -153,7 +162,7 @@ export default function PluginsPanel({
             <div className="flex items-center gap-2">
               <Button
                 className="h-8 gap-1.5 text-xs font-medium"
-                onClick={() => router.push("/tools/plugins")}
+                onClick={() => router.push("/tools?tab=plugins")}
                 variant="outline"
               >
                 Gérer le catalogue

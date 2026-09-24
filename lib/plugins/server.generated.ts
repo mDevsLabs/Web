@@ -6,6 +6,7 @@ import { crossrefPlugin } from "./crossref";
 import { frHolidaysPlugin } from "./fr-holidays";
 import { githubPublicPlugin } from "./github-public";
 import { jsonToolboxPlugin } from "./json-toolbox";
+import { mobiliteFrPlugin } from "./mobilite-fr";
 import { openFoodFactsPlugin } from "./open-food-facts";
 import { openLibraryPlugin } from "./open-library";
 import { quizzlyPlugin } from "./quizzly";
@@ -20,6 +21,7 @@ export const PLUGIN_DEFINITIONS: PluginDefinition[] = [
   frHolidaysPlugin,
   githubPublicPlugin,
   jsonToolboxPlugin,
+  mobiliteFrPlugin,
   openFoodFactsPlugin,
   openLibraryPlugin,
   quizzlyPlugin,

@@ -8,7 +8,6 @@ import { codeExecution } from "@/lib/ai/tools/code-execution";
 import { dateTime } from "@/lib/ai/tools/datetime";
 import { webSearch } from "@/lib/ai/tools/web-search";
 import { getUserApiKey } from "@/lib/db/api-keys";
-import { getPersistedTier } from "@/lib/db/users";
 import {
   createNotification,
   getAgentById,
@@ -22,6 +21,7 @@ import {
   saveMessages,
   setScheduledMessageStatus,
 } from "@/lib/db/queries";
+import { getPersistedTier } from "@/lib/db/users";
 import { getPluginManifest } from "@/lib/plugins/catalog";
 import { createPluginTools } from "@/lib/plugins/server";
 import { canUsePlugin } from "@/lib/plugins/tier-lock";
@@ -204,7 +204,11 @@ export async function executeScheduledMessage(scheduledId: string) {
       return plugin && canUsePlugin(plugin, tier) ? [plugin.id] : [];
     });
     const pluginTools = createPluginTools(
-      { chatModel: effectiveModel, isGhostMode: false },
+      {
+        channel: "planning",
+        chatModel: effectiveModel,
+        isGhostMode: false,
+      },
       enabledPluginIds
     );
 

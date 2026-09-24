@@ -1,3 +1,5 @@
+import type { ChildProcessWithoutNullStreams } from "node:child_process";
+import { safeFetchText } from "@/lib/web/safe-fetch";
 import type {
   McpApprovalPolicy,
   McpJsonRpcRequest,
@@ -58,9 +60,22 @@ export function checkAllowStdio(
   config: McpServerConfig,
   prefs: { allowStdio?: boolean } | null
 ): void {
-  if (config.transport === "stdio" && prefs && prefs.allowStdio === false) {
+  if (config.transport !== "stdio") {
+    return;
+  }
+  if (process.env.MCP_STDIO_ENABLED !== "true") {
+    throw new Error(
+      "Le transport stdio est désactivé par la configuration serveur."
+    );
+  }
+  if (prefs && prefs.allowStdio === false) {
     throw new Error(
       "Le transport stdio est désactivé dans les paramètres globaux MCP."
+    );
+  }
+  if (!process.env.MCP_STDIO_ALLOWED_COMMANDS?.trim()) {
+    throw new Error(
+      "Le transport stdio exige une allowlist serveur de commandes."
     );
   }
 }
@@ -99,7 +114,7 @@ export function getFilteredTools(
   return filtered;
 }
 
-function buildHeaders(config: McpServerConfig): HeadersInit {
+function buildHeaders(config: McpServerConfig): Record<string, string> {
   const headers: Record<string, string> = {
     Accept: "application/json, text/event-stream",
     "Content-Type": "application/json",
@@ -168,97 +183,142 @@ function parseMcpResponse<T>(rawText: string): McpJsonRpcResponse<T> {
 async function sendHttpJsonRpc<T = unknown>(
   url: string,
   request: McpJsonRpcRequest,
-  headers: HeadersInit,
+  headers: Record<string, string>,
   timeoutMs = 15_000
 ): Promise<T> {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
-
-  try {
-    const res = await fetch(url, {
-      body: JSON.stringify(request),
-      headers,
-      method: "POST",
-      signal: controller.signal,
-    });
-
-    if (!res.ok) {
-      const errorText = await res.text().catch(() => res.statusText);
-      throw new Error(
-        `Erreur serveur MCP (${res.status} ${res.statusText}): ${errorText.slice(0, 300)}`
-      );
-    }
-
-    const rawText = await res.text();
-    const data = parseMcpResponse<T>(rawText);
-    if (data.error) {
-      throw new Error(`MCP Error ${data.error.code}: ${data.error.message}`);
-    }
-
-    return data.result as T;
-  } catch (err: any) {
-    if (err.name === "AbortError") {
-      throw new Error(`Délai d'attente dépassé (${timeoutMs / 1000}s)`);
-    }
-    throw err;
-  } finally {
-    clearTimeout(timer);
+  const target = new URL(url);
+  if (target.protocol !== "https:") {
+    throw new Error("Le transport MCP distant exige HTTPS.");
   }
+  const origin = target.origin;
+  const response = await safeFetchText(url, {
+    body: JSON.stringify(request),
+    headers,
+    maxBytes: 1_000_000,
+    maxRedirects: 3,
+    method: "POST",
+    timeoutMs,
+    tokenOriginAllowlist: [origin],
+  });
+
+  if (!response.ok) {
+    const status = response.status ? ` (HTTP ${response.status})` : "";
+    throw new Error(`Erreur serveur MCP${status}: ${response.error}`);
+  }
+
+  const data = parseMcpResponse<T>(response.text);
+  if (data.error) {
+    throw new Error(`MCP Error ${data.error.code}: ${data.error.message}`);
+  }
+
+  return data.result as T;
 }
 
 /**
  * Exécution d'une commande locale via transport stdio
  */
-async function callStdioProcess(
+async function callStdioProcess<T = Record<string, unknown>>(
   command: string,
   args: string[],
   env: Record<string, string>,
   inputRpc: McpJsonRpcRequest,
   timeoutMs = 15_000
-): Promise<any> {
-  // En environnement Edge / Browser, stdio n'est pas supporté
+): Promise<T> {
   if (typeof window !== "undefined" || !process?.versions?.node) {
     throw new Error(
       "Le transport stdio est réservé à l'environnement serveur Node.js"
     );
   }
+  if (process.env.MCP_STDIO_ENABLED !== "true") {
+    throw new Error(
+      "Le transport stdio est désactivé par la configuration serveur."
+    );
+  }
+  if (!command || command.length > 256 || /[\r\n\0;&|`$><]/.test(command)) {
+    throw new Error("Commande stdio non autorisée.");
+  }
+  if (
+    args.length > 64 ||
+    args.some((arg) => arg.length > 2000 || arg.includes("\0"))
+  ) {
+    throw new Error("Arguments stdio trop volumineux ou non autorisés.");
+  }
+
+  const allowedCommands = new Set(
+    (process.env.MCP_STDIO_ALLOWED_COMMANDS ?? "")
+      .split(",")
+      .map((value) => value.trim())
+      .filter(Boolean)
+  );
+  const commandName = command.split(/[\\/]/).pop() ?? command;
+  if (!allowedCommands.has(command) && !allowedCommands.has(commandName)) {
+    throw new Error("Commande stdio absente de l'allowlist serveur.");
+  }
+
+  const allowedEnvKeys = new Set(
+    (process.env.MCP_STDIO_ALLOWED_ENV_KEYS ?? "")
+      .split(",")
+      .map((value) => value.trim())
+      .filter(Boolean)
+  );
+  const explicitEnvKeys = Object.keys(env);
+  if (explicitEnvKeys.some((key) => !allowedEnvKeys.has(key))) {
+    throw new Error("Variable d'environnement stdio non autorisée.");
+  }
 
   const { spawn } = await import("node:child_process");
+  const safeEnv: Record<string, string> = {
+    PATH: process.env.PATH ?? "",
+  };
+  for (const [key, value] of Object.entries(env)) {
+    if (value.length > 4096) {
+      throw new Error(
+        `Variable d'environnement stdio trop volumineuse : ${key}.`
+      );
+    }
+    safeEnv[key] = value;
+  }
 
   return new Promise((resolve, reject) => {
     let stdoutData = "";
     let stderrData = "";
-    const timer = setTimeout(() => {
+    let settled = false;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const finishReject = (error: Error) => {
+      if (settled) return;
+      settled = true;
+      if (timer) clearTimeout(timer);
+      reject(error);
+    };
+    const proc = spawn(command, args, {
+      env: safeEnv as NodeJS.ProcessEnv,
+      shell: false,
+      stdio: ["pipe", "pipe", "pipe"],
+      windowsHide: true,
+    }) as ChildProcessWithoutNullStreams;
+    timer = setTimeout(() => {
       proc.kill();
-      reject(new Error(`Timeout d'exécution stdio (${timeoutMs / 1000}s)`));
+      finishReject(
+        new Error(`Timeout d'exécution stdio (${timeoutMs / 1000}s)`)
+      );
     }, timeoutMs);
 
-    // Rejeter les commandes contenant des métacaractères shell dangereux
-    if (/[\r\n;&|`$><]/.test(command)) {
-      reject(new Error("Caractères interdits dans la commande stdio."));
-      return;
-    }
-
-    const proc = spawn(command, args, {
-      env: { ...process.env, ...env },
-      shell: false,
-    });
-
-    proc.stdout.on("data", (chunk) => {
+    proc.stdout.on("data", (chunk: Buffer) => {
+      if (stdoutData.length + chunk.length > 1_000_000) {
+        proc.kill();
+        finishReject(new Error("Réponse stdio trop volumineuse."));
+        return;
+      }
       stdoutData += chunk.toString();
     });
-
-    proc.stderr.on("data", (chunk) => {
-      stderrData += chunk.toString();
+    proc.stderr.on("data", (chunk: Buffer) => {
+      stderrData = `${stderrData}${chunk.toString()}`.slice(0, 4000);
     });
-
-    proc.on("error", (err) => {
-      clearTimeout(timer);
-      reject(err);
-    });
-
+    proc.on("error", (error) => finishReject(error));
     proc.on("close", (code) => {
-      clearTimeout(timer);
+      if (settled) return;
+      settled = true;
+      if (timer) clearTimeout(timer);
       if (code !== 0 && !stdoutData.trim()) {
         reject(
           new Error(
@@ -268,16 +328,15 @@ async function callStdioProcess(
         return;
       }
 
-      // Parcourir les lignes stdout pour extraire la réponse JSON-RPC
-      const lines = stdoutData.split("\n").filter((l) => l.trim());
-      for (let i = lines.length - 1; i >= 0; i--) {
+      const lines = stdoutData.split("\n").filter((line) => line.trim());
+      for (let index = lines.length - 1; index >= 0; index -= 1) {
         try {
-          const parsed = JSON.parse(lines[i]);
+          const parsed = JSON.parse(lines[index]);
           if (parsed.jsonrpc === "2.0") {
             if (parsed.error) {
               reject(new Error(parsed.error.message));
             } else {
-              resolve(parsed.result);
+              resolve(parsed.result as T);
             }
             return;
           }
@@ -291,7 +350,6 @@ async function callStdioProcess(
       );
     });
 
-    // Envoyer la requête JSON-RPC sur stdin
     proc.stdin.write(`${JSON.stringify(inputRpc)}\n`);
     proc.stdin.end();
   });
@@ -312,16 +370,13 @@ export async function fetchMcpTools(
 
   const timeout = getEffectiveTimeout(config);
   if (config.transport === "stdio") {
+    checkAllowStdio(config, null);
     if (!config.command) {
       throw new Error("Commande manquante pour le transport stdio");
     }
-    const result = await callStdioProcess(
-      config.command,
-      config.args ?? [],
-      config.env ?? {},
-      req,
-      timeout
-    );
+    const result = await callStdioProcess<{
+      tools?: McpToolDefinition[];
+    }>(config.command, config.args ?? [], config.env ?? {}, req, timeout);
     return (result?.tools as McpToolDefinition[]) ?? [];
   }
 
@@ -402,17 +457,18 @@ export async function callMcpTool(
 
   const timeout = getEffectiveTimeout(config);
   if (config.transport === "stdio") {
+    checkAllowStdio(config, null);
     if (!config.command) {
       throw new Error("Commande stdio manquante");
     }
-    const result = await callStdioProcess(
+    const result = await callStdioProcess<McpToolCallResult>(
       config.command,
       config.args ?? [],
       config.env ?? {},
       req,
       timeout
     );
-    return result as McpToolCallResult;
+    return result;
   }
 
   let targetUrl = config.url;

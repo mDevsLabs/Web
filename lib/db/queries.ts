@@ -1,8 +1,6 @@
 import "server-only";
 import "dotenv/config";
 
-import { resolveDatabaseUrl } from "@/lib/db/connection-string";
-
 import {
   and,
   asc,
@@ -24,6 +22,7 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import type { ArtifactKind } from "@/components/chat/artifact";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
+import { resolveDatabaseUrl } from "@/lib/db/connection-string";
 import { MEMORY_CONTENT_MAX_LENGTH } from "../constants";
 import { ChatbotError } from "../errors";
 import {
@@ -3016,6 +3015,29 @@ export async function recordTokenUsage({
   }
 }
 
+export async function getWeeklyAiTokenUsage({
+  userId,
+}: {
+  userId: string;
+}): Promise<number | null> {
+  try {
+    await dbReady();
+    const client = getRawClient();
+    if (!client) return null;
+    const rows = await client.unsafe<{ tokens_used: number | string }[]>(
+      `SELECT COALESCE(tokens_used, 0)::bigint AS tokens_used
+       FROM weekly_usage
+       WHERE user_id::text = $1
+         AND week_start = date_trunc('week', now() AT TIME ZONE 'UTC')::date
+       LIMIT 1`,
+      [userId]
+    );
+    return rows[0] ? Number(rows[0].tokens_used) : 0;
+  } catch {
+    return null;
+  }
+}
+
 // ==========================================
 // SKILLS QUERIES
 // ==========================================
@@ -4199,6 +4221,7 @@ export async function createNotification(data: {
     | "agent_user_input_required";
   title: string;
   body?: string | null;
+  dedupeKey?: string | null;
   link?: string | null;
 }) {
   const db = await dbReady();
@@ -4230,11 +4253,14 @@ export async function createNotification(data: {
     .insert(notification)
     .values({
       body: data.body ?? null,
+      dedupeKey: data.dedupeKey ?? null,
       link: data.link ?? null,
       title: data.title,
       type: data.type,
       userId: data.userId,
     })
+    .onConflictDoNothing()
+
     .returning();
   return created;
 }
@@ -5364,7 +5390,6 @@ export async function installPlugin(params: {
     })
     .onConflictDoUpdate({
       set: {
-        isEnabled: true,
         updatedAt: now,
         version: params.version,
       },

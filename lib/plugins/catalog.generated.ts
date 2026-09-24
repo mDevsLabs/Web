@@ -5,6 +5,7 @@ import crossrefPluginManifest from "./crossref/index.json";
 import frHolidaysPluginManifest from "./fr-holidays/index.json";
 import githubPublicPluginManifest from "./github-public/index.json";
 import jsonToolboxPluginManifest from "./json-toolbox/index.json";
+import mobiliteFrPluginManifest from "./mobilite-fr/index.json";
 import openFoodFactsPluginManifest from "./open-food-facts/index.json";
 import openLibraryPluginManifest from "./open-library/index.json";
 import quizzlyPluginManifest from "./quizzly/index.json";
@@ -22,6 +23,7 @@ export const PLUGIN_MANIFESTS = [
   frHolidaysPluginManifest,
   githubPublicPluginManifest,
   jsonToolboxPluginManifest,
+  mobiliteFrPluginManifest,
   openFoodFactsPluginManifest,
   openLibraryPluginManifest,
   quizzlyPluginManifest,

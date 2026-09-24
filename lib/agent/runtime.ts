@@ -32,7 +32,10 @@ import {
 } from "@/lib/agent/limits";
 import { persistAgentRunMessages } from "@/lib/agent/persist";
 import { applyPlanProgress } from "@/lib/agent/plan";
-import { takePendingReorientations } from "@/lib/agent/reorientation/service";
+import {
+  acknowledgeReorientations,
+  takePendingReorientations,
+} from "@/lib/agent/reorientation/service";
 import {
   deriveSuggestedActions,
   validateDerivedActions,
@@ -76,6 +79,7 @@ import { generateUUID } from "@/lib/utils";
 
 export type AgentStreamParams = {
   abortSignal?: AbortSignal;
+  agentId?: string | null;
   approvalRequiredToolIds: string[];
   budget: AgentExecutionBudget;
   chatId: string;
@@ -111,12 +115,14 @@ export type AgentStreamParams = {
   startToolCallCount?: number;
   startedAt: number;
   task: string;
+  tier?: string;
   tools: RegisteredAgentTool[];
   userEmail: string;
   userId: string;
 };
 
 /**
+
  * Compose les instructions système en y ajoutant les réorientations demandées
  * par l'utilisateur pendant le run. Exporté pour être testé directement.
  */
@@ -164,7 +170,9 @@ export function createAgentStream(params: AgentStreamParams) {
       // Réorientations appliquées aux points sûrs : réinjectées au modèle via
       // le contexte du prochain appel (message système de fin).
       const pendingReorientations: string[] = [];
+      const pendingReorientationIds: string[] = [];
       // Nombre de réorientations déjà transmises au modèle : évite de les
+
       // réinjecter à chaque étape tout en garantissant qu'elles le sont AVANT
       // l'appel suivant.
       let injectedReorientations = 0;
@@ -180,13 +188,23 @@ export function createAgentStream(params: AgentStreamParams) {
             lastStepIndex: state.stepIndex,
             toolSelectionSignature: null,
           },
+          executionOwner: params.executionOwner,
           expectedRevision: revision,
           id: params.runId,
         }).catch(() => false);
+
         if (saved) {
           revision += 1;
         } else {
-          console.warn(JSON.stringify({ event: "agent_checkpoint_conflict", runId: params.runId, revision, stepCount: state.stepIndex, toolCallCount: state.toolCallCount }));
+          console.warn(
+            JSON.stringify({
+              event: "agent_checkpoint_conflict",
+              revision,
+              runId: params.runId,
+              stepCount: state.stepIndex,
+              toolCallCount: state.toolCallCount,
+            })
+          );
         }
         return saved;
       };
@@ -249,13 +267,16 @@ export function createAgentStream(params: AgentStreamParams) {
       const controller = createAgentToolController({
         approvalRequiredToolIds: params.approvalRequiredToolIds,
         base: {
+          agentId: params.agentId,
           chatId: params.chatId,
           projectId: params.projectId,
           sessionToken: params.sessionToken,
           signal: params.abortSignal,
+          tier: params.tier,
           userEmail: params.userEmail,
           userId: params.userId,
         },
+        executionOwner: params.executionOwner,
         maxToolAttempts: Math.max(1, params.budget.maxRetries + 1),
         onPlanProgress: ({ status, title }) => {
           if (!plan) {
@@ -263,7 +284,11 @@ export function createAgentStream(params: AgentStreamParams) {
           }
           plan = applyPlanProgress({ plan: plan as AgentPlan, status, title });
           emitAgentPlan(writer, plan);
-          setAgentRunPlan({ id: params.runId, plan }).catch(() => {});
+          setAgentRunPlan({
+            executionOwner: params.executionOwner,
+            id: params.runId,
+            plan,
+          }).catch(() => {});
         },
         runId: params.runId,
         state,
@@ -361,6 +386,7 @@ export function createAgentStream(params: AgentStreamParams) {
             totalTokens: totals.totalTokens,
           };
           await setAgentRunUsage({
+            executionOwner: params.executionOwner,
             id: params.runId,
             usage: {
               durationMs: Date.now() - params.startedAt,
@@ -377,10 +403,12 @@ export function createAgentStream(params: AgentStreamParams) {
           // systématiquement) ; la valeur relue au prochain démarrage sert de
           // baseline cumulée.
           await bumpAgentRunCounters({
+            executionOwner: params.executionOwner,
             id: params.runId,
             stepDelta: 1,
             toolCallDelta: stepToolCalls,
           }).catch(() => {});
+
           state.toolCallCount += stepToolCalls;
           // Fin d'étape = point sûr : la tranche d'activité est refermée puis
           // persistée (un crash ne perd donc pas le temps déjà consommé), et
@@ -399,7 +427,16 @@ export function createAgentStream(params: AgentStreamParams) {
               runId: params.runId,
             });
             if (reorientation) {
-              pendingReorientations.push(reorientation.text);
+              pendingReorientations.push(
+                ...reorientation.instructions.map(
+                  (instruction) => instruction.text
+                )
+              );
+              pendingReorientationIds.push(
+                ...reorientation.instructions.map(
+                  (instruction) => instruction.id
+                )
+              );
               if (reorientation.stopRequested) {
                 // Interruption effective : le flux en cours est coupé, les
                 // étapes suivantes ne partent pas.
@@ -416,7 +453,10 @@ export function createAgentStream(params: AgentStreamParams) {
             emitRun("running");
           }
         },
-        prepareStep: ({ steps }) => {
+        prepareStep: async ({ steps }) => {
+          if (state.waitingForUser || state.waitingForApproval) {
+            return { toolChoice: "none" };
+          }
           const elapsed = clock.now() - params.startedAt;
           // Comptage CUMULÉ à travers les reprises : baseline persistée +
           // étapes de l'invocation en cours. L'ancien calcul ne comptait que
@@ -447,6 +487,11 @@ export function createAgentStream(params: AgentStreamParams) {
               params.context.instructions,
               [...pendingReorientations]
             );
+            await acknowledgeReorientations({
+              appliedStepIndex: state.stepIndex,
+              ids: pendingReorientationIds.slice(injectedReorientations),
+              runId: params.runId,
+            });
             injectedReorientations = pendingReorientations.length;
           }
 
@@ -465,6 +510,8 @@ export function createAgentStream(params: AgentStreamParams) {
         },
         ...(providerOptions ? { providerOptions } : {}),
         stopWhen: ({ steps }) =>
+          state.waitingForUser ||
+          state.waitingForApproval ||
           stepBaseline + steps.length >= params.budget.maxSteps ||
           clock.now() - params.startedAt >= params.budget.maxDurationMs ||
           shouldStopAtSafePoint({
@@ -501,7 +548,9 @@ export function createAgentStream(params: AgentStreamParams) {
         : state.waitingForUser
           ? "waiting_for_user"
           : aborted
-            ? params.abortSignal?.reason === "scheduler_deadline" ? "timed_out" : "cancelled"
+            ? params.abortSignal?.reason === "scheduler_deadline"
+              ? "timed_out"
+              : "cancelled"
             : failure
               ? state.lastErrorCategory === "timeout"
                 ? "timed_out"
@@ -531,7 +580,17 @@ export function createAgentStream(params: AgentStreamParams) {
       await persistCheckpoint();
       const runActiveMs = accumulatedActiveMs(duration, clock);
 
+      if (
+        finalStatus !== "waiting_for_user" &&
+        finalStatus !== "waiting_for_approval"
+      ) {
+        await expireAgentUserInputsForRun({ runId: params.runId }).catch(
+          () => null
+        );
+      }
+
       await updateAgentRunStatus({
+        executionOwner: params.executionOwner,
         ...(finalStatus === "waiting_for_user" ||
         finalStatus === "waiting_for_approval"
           ? {}
@@ -542,19 +601,29 @@ export function createAgentStream(params: AgentStreamParams) {
             ? "Limite de durée du forfait atteinte : le travail réalisé est conservé."
             : null),
         id: params.runId,
-        status: finalStatus,
         onlyIfActive: true,
-        stopReason: finalStatus === "timed_out"
-          ? params.abortSignal?.reason === "scheduler_deadline" ? "scheduler_deadline" : "duration_limit"
-          : finalStatus === "cancelled" ? "interrupted" : finalStatus === "failed" ? "execution_error" : null,
+        status: finalStatus,
+        stopReason:
+          finalStatus === "timed_out"
+            ? params.abortSignal?.reason === "scheduler_deadline"
+              ? "scheduler_deadline"
+              : "duration_limit"
+            : finalStatus === "cancelled"
+              ? "interrupted"
+              : finalStatus === "failed"
+                ? "execution_error"
+                : null,
       }).catch(() => {});
       if (finalStatus === "timed_out") {
-        console.warn(JSON.stringify({ event: "agent_run_timed_out", runId: params.runId, stepCount: state.stepIndex, toolCallCount: state.toolCallCount }));
+        console.warn(
+          JSON.stringify({
+            event: "agent_run_timed_out",
+            runId: params.runId,
+            stepCount: state.stepIndex,
+            toolCallCount: state.toolCallCount,
+          })
+        );
       }
-      if (params.executionOwner) {
-        await releaseAgentRunExecution({ id: params.runId, owner: params.executionOwner }).catch(() => {});
-      }
-
       if (productLimitReached) {
         emitBusiness({
           limitKind: "tier",
@@ -608,6 +677,7 @@ export function createAgentStream(params: AgentStreamParams) {
           }));
           await setAgentRunSuggestedActions({
             actions: displayActions,
+            executionOwner: params.executionOwner,
             id: params.runId,
           }).catch(() => {});
         }
@@ -629,22 +699,38 @@ export function createAgentStream(params: AgentStreamParams) {
         ...usageTotals,
       });
     },
+
     generateId: generateUUID,
     onEnd: async ({ messages: finishedMessages }) => {
-      await persistAgentRunMessages({
-        chatId: params.chatId,
-        existingMessages: params.existingMessages,
-        finishedMessages: finishedMessages as ChatMessage[],
-        firstUserMessageForTitle: params.firstUserMessageForTitle,
-        isContinuation: params.isContinuation,
-        shouldRenameAfterFirst: params.shouldRenameAfterFirst,
-      }).catch((error) => {
+      try {
+        await persistAgentRunMessages({
+          chatId: params.chatId,
+          executionOwner: params.executionOwner,
+          existingMessages: params.existingMessages,
+          finishedMessages: finishedMessages as ChatMessage[],
+          firstUserMessageForTitle: params.firstUserMessageForTitle,
+          isContinuation: params.isContinuation,
+          runId: params.runId,
+          shouldRenameAfterFirst: params.shouldRenameAfterFirst,
+          userId: params.userId,
+        });
+      } catch (error) {
         console.error("Erreur persistance conversation Agent :", error);
-      });
+      } finally {
+        if (params.executionOwner) {
+          await releaseAgentRunExecution({
+            id: params.runId,
+            owner: params.executionOwner,
+          }).catch(() => {});
+        }
+      }
     },
     onError: (error) => {
       if (params.executionOwner) {
-        releaseAgentRunExecution({ id: params.runId, owner: params.executionOwner }).catch(() => {});
+        releaseAgentRunExecution({
+          id: params.runId,
+          owner: params.executionOwner,
+        }).catch(() => {});
       }
       console.error("Erreur de streaming Agent :", error);
       return "Agent a rencontré une erreur pendant l'exécution. Les étapes déjà réalisées restent visibles.";

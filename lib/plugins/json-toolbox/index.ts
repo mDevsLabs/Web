@@ -65,16 +65,18 @@ function collectPaths(
   value: unknown,
   prefix: string,
   out: Array<{ path: string; type: string; value?: unknown }>
-): void {
+): boolean {
   if (out.length >= MAX_ENTRIES) {
-    return;
+    return true;
   }
   if (Array.isArray(value)) {
     out.push({ path: prefix, type: "array" });
-    value.forEach((item, index) =>
-      collectPaths(item, `${prefix}[${index}]`, out)
-    );
-    return;
+    for (let index = 0; index < value.length; index += 1) {
+      if (collectPaths(value[index], `${prefix}[${index}]`, out)) {
+        return true;
+      }
+    }
+    return false;
   }
   if (value !== null && typeof value === "object") {
     out.push({ path: prefix, type: "object" });
@@ -84,15 +86,18 @@ function collectPaths(
       const childPath = /^[A-Za-z_$][\w$]*$/.test(key)
         ? `${prefix}.${key}`
         : `${prefix}["${key}"]`;
-      collectPaths(child, childPath, out);
+      if (collectPaths(child, childPath, out)) {
+        return true;
+      }
     }
-    return;
+    return false;
   }
   out.push({
     path: prefix,
     type: value === null ? "null" : typeof value,
     value: value === null || typeof value === "object" ? undefined : value,
   });
+  return false;
 }
 
 type DiffEntry = {
@@ -107,18 +112,18 @@ function diffValues(
   right: unknown,
   path: string,
   out: DiffEntry[]
-): void {
+): boolean {
   if (out.length >= MAX_ENTRIES) {
-    return;
+    return true;
   }
   if (left === right) {
-    return;
+    return false;
   }
   const leftIsObject = left !== null && typeof left === "object";
   const rightIsObject = right !== null && typeof right === "object";
   if (!(leftIsObject && rightIsObject)) {
     out.push({ from: left, kind: "changed", path, to: right });
-    return;
+    return false;
   }
   const leftRecord = left as Record<string, unknown>;
   const rightRecord = right as Record<string, unknown>;
@@ -127,6 +132,9 @@ function diffValues(
     ...Object.keys(rightRecord),
   ]);
   for (const key of keys) {
+    if (out.length >= MAX_ENTRIES) {
+      return true;
+    }
     const childPath = /^[A-Za-z_$][\w$]*$/.test(key)
       ? `${path}.${key}`
       : `${path}["${key}"]`;
@@ -140,8 +148,11 @@ function diffValues(
       out.push({ kind: "added", path: childPath, to: rightRecord[key] });
       continue;
     }
-    diffValues(leftRecord[key], rightRecord[key], childPath, out);
+    if (diffValues(leftRecord[key], rightRecord[key], childPath, out)) {
+      return true;
+    }
   }
+  return false;
 }
 
 function boundedText(text: string): string {
@@ -189,12 +200,12 @@ export const jsonToolbox = tool({
     if (input.operation === "paths") {
       const entries: Array<{ path: string; type: string; value?: unknown }> =
         [];
-      collectPaths(parsed.value, "$", entries);
+      const truncated = collectPaths(parsed.value, "$", entries);
       return {
         entries,
         operation: input.operation,
         total: entries.length,
-        truncated: entries.length >= MAX_ENTRIES,
+        truncated,
       };
     }
 
@@ -212,12 +223,17 @@ export const jsonToolbox = tool({
     }
 
     const differences: DiffEntry[] = [];
-    diffValues(parsed.value, compared.value, "$", differences);
+    const truncated = diffValues(
+      parsed.value,
+      compared.value,
+      "$",
+      differences
+    );
     return {
       differences,
       identical: differences.length === 0,
       operation: input.operation,
-      truncated: differences.length >= MAX_ENTRIES,
+      truncated,
     };
   },
   inputSchema: z.object({

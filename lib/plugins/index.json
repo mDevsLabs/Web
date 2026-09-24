@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": "2026.09.23",
+  "catalogVersion": "2026.09.24",
   "categories": [
     {
       "id": "meteo",
@@ -30,7 +30,8 @@
     { "id": "food", "label": "Alimentation", "icon": "Leaf" },
     { "id": "research", "label": "Recherche", "icon": "Atom" },
     { "id": "data", "label": "Données", "icon": "BarChart3" },
-    { "id": "culture", "label": "Culture", "icon": "Video" }
+    { "id": "culture", "label": "Culture", "icon": "Video" },
+    { "id": "mobilite", "label": "Mobilité", "icon": "Map" }
   ],
   "plugins": [
     {
@@ -98,6 +99,12 @@
       "dir": "tvmaze",
       "entry": "./tvmaze",
       "manifest": "./tvmaze/index.json"
+    },
+    {
+      "id": "mobilite-fr",
+      "dir": "mobilite-fr",
+      "entry": "./mobilite-fr",
+      "manifest": "./mobilite-fr/index.json"
     }
   ]
 }

@@ -116,6 +116,12 @@ async function handlePost(request: Request, params: Promise<{ id: string }>) {
     return errorResponse("not_found", { message: "Run introuvable." });
   }
 
+  if (run.status !== "waiting_for_user") {
+    return errorResponse("conflict", {
+      message: "Ce run n'attend plus de réponse utilisateur.",
+    });
+  }
+
   // Propriété de la conversation : la réponse ne peut venir que du
   // propriétaire du run.
   const chat = await getChatById({ id: run.chatId });

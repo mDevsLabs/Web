@@ -31,9 +31,9 @@ import { toolFailure } from "@/lib/agent/types";
 import {
   createApprovalRequest,
   getApprovalRequestByToolCall,
+  renewApprovalRequest,
 } from "@/lib/db/agent-foundation-queries";
 import {
-  bumpAgentRunCounters,
   completeToolExecution,
   createAgentStep,
   createToolExecution,
@@ -96,6 +96,7 @@ function failureFromResult(result: ToolFailure): {
 export function createAgentToolController(params: {
   approvalRequiredToolIds: string[];
   base: AgentToolBaseContext;
+  executionOwner?: string | null;
   maxToolAttempts: number;
   onPlanProgress: (progress: {
     status: AgentStepStatus;
@@ -123,6 +124,7 @@ export function createAgentToolController(params: {
     const index = params.state.stepIndex;
     params.state.stepIndex += 1;
     const step = await createAgentStep({
+      executionOwner: params.executionOwner,
       index,
       runId: params.runId,
       status: "running",
@@ -142,6 +144,7 @@ export function createAgentToolController(params: {
     }
 
     const request = await createApprovalRequest({
+      executionOwner: params.executionOwner,
       expiresAt: new Date(Date.now() + APPROVAL_TTL_MS),
       params: (vc.input && typeof vc.input === "object"
         ? vc.input
@@ -215,13 +218,31 @@ export function createAgentToolController(params: {
     }
 
     if (existing.status === "expired") {
-      const requestId = await createPendingApproval({
-        input: vc.input,
+      const renewed = await renewApprovalRequest({
+        executionOwner: params.executionOwner,
+        expiresAt: new Date(Date.now() + APPROVAL_TTL_MS),
+        id: existing.id,
+        params: (vc.input && typeof vc.input === "object"
+          ? vc.input
+          : { value: vc.input }) as Record<string, unknown>,
         paramsHash,
-        toolCallId: vc.toolCallId,
+        stepId: pendingStepId,
+        toolExecutionId: pendingExecutionId,
         toolId: vc.toolId,
       });
-      return { kind: "pending", requestId };
+      if (renewed) return { kind: "pending", requestId: renewed.id };
+      const current = await getApprovalRequestByToolCall({
+        runId: params.runId,
+        toolCallId: vc.toolCallId,
+      });
+      if (current?.status === "pending") {
+        return { kind: "pending", requestId: current.id };
+      }
+      return {
+        kind: "denied",
+        reason:
+          "La demande d'approbation précédente a expiré. Recommencez l'action pour obtenir une nouvelle demande.",
+      };
     }
 
     return { kind: "pending", requestId: existing.id };
@@ -278,11 +299,13 @@ export function createAgentToolController(params: {
       durationMs: vc.durationMs,
       error: failure?.message ?? null,
       errorCategory,
+      executionOwner: params.executionOwner,
       id: vc.executionId,
       output: vc.result.success ? vc.result.data : { error: vc.result.error },
       retryable: vc.result.success
         ? false
         : (vc.result.error.retryable ?? false),
+      runId: params.runId,
       status: vc.result.success
         ? "completed"
         : vc.approvalStatus === "denied"
@@ -292,7 +315,9 @@ export function createAgentToolController(params: {
 
     await updateAgentStep({
       completedAt: new Date(),
+      executionOwner: params.executionOwner,
       id: vc.stepId,
+      runId: params.runId,
       status,
       summary,
       toolExecutionId: vc.executionId,
@@ -342,6 +367,7 @@ export function createAgentToolController(params: {
     if (artifact) {
       params.state.producedArtifact = true;
       const artifactStep = await createAgentStep({
+        executionOwner: params.executionOwner,
         index: params.state.stepIndex,
         runId: params.runId,
         status: "completed",
@@ -352,7 +378,10 @@ export function createAgentToolController(params: {
       params.state.stepIndex += 1;
       await updateAgentStep({
         completedAt: new Date(),
+        executionOwner: params.executionOwner,
         id: artifactStep.id,
+        runId: params.runId,
+
         status: "completed",
         toolExecutionId: vc.executionId,
       });
@@ -391,6 +420,7 @@ export function createAgentToolController(params: {
       // « question posée », puis « réponse reçue » (route) et la reprise,
       // au lieu d'une simple sortie d'outil.
       const questionStep = await createAgentStep({
+        executionOwner: params.executionOwner,
         index: params.state.stepIndex,
         runId: params.runId,
         status: "completed",
@@ -417,15 +447,15 @@ export function createAgentToolController(params: {
     // reste pilotée par onPlanProgress, déjà branchée sur les étapes.
     const plan = vc.result.success ? vc.result.outcome?.plan : undefined;
     if (plan) {
-      await setAgentRunPlan({ id: params.runId, plan }).catch(() => {});
+      await setAgentRunPlan({
+        executionOwner: params.executionOwner,
+        id: params.runId,
+        plan,
+      }).catch(() => {});
       emitAgentPlan(params.writer, plan);
     }
 
     params.onPlanProgress({ status, title: vc.tool.name });
-    await bumpAgentRunCounters({
-      id: params.runId,
-      toolCallDelta: 1,
-    }).catch(() => {});
   }
 
   return {
@@ -438,25 +468,42 @@ export function createAgentToolController(params: {
         toolCallId,
         toolId,
       });
+      if (resolution.kind === "denied") {
+        return false;
+      }
       if (resolution.kind === "pending") {
         params.state.waitingForApproval = true;
       }
-      // false = le SDK peut exécuter (l'accord existe et couvre l'appel) ;
-      // true = le run se suspend en attendant la décision utilisateur.
       return resolution.kind !== "approved";
     },
 
     runToolCall: async ({ execute, input, tool, toolCallId }) => {
+      if (params.state.waitingForUser) {
+        return toolFailure(
+          "user_input_required",
+          "Une réponse de l'utilisateur est requise avant toute autre action.",
+          { category: "user_intervention", retryable: false }
+        );
+      }
+      if (params.state.waitingForApproval) {
+        return toolFailure(
+          "approval_required",
+          "Une approbation est requise avant toute autre action.",
+          { category: "user_intervention", retryable: false }
+        );
+      }
       const index = params.state.stepIndex;
       params.state.stepIndex += 1;
 
       const step = await createAgentStep({
+        executionOwner: params.executionOwner,
         index,
         runId: params.runId,
         status: "running",
         title: tool.name,
         type: "tool_call",
       });
+
       pendingStepId = step.id;
       emitAgentBusinessEvent({
         runId: params.runId,
@@ -469,7 +516,9 @@ export function createAgentToolController(params: {
       const firstExecution = await createToolExecution({
         attempt: 1,
         category: tool.category,
+        executionOwner: params.executionOwner,
         input,
+        operationKey: `${params.runId}:${toolCallId}`,
         runId: params.runId,
         stepId: step.id,
         toolId: tool.id,
@@ -586,7 +635,9 @@ export function createAgentToolController(params: {
         const retryExecution = await createToolExecution({
           attempt,
           category: tool.category,
+          executionOwner: params.executionOwner,
           input,
+          operationKey: `${params.runId}:${toolCallId}`,
           parentExecutionId: executionId,
           retryable: true,
           runId: params.runId,

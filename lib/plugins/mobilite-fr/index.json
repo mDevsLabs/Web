@@ -1,0 +1,26 @@
+{
+  "id": "mobilite-fr",
+  "name": "Mobilité France",
+  "version": "1.0.0",
+  "description": "Explore les données publiques françaises de transports en commun, mobilité partagée, vélo, recharge électrique, stationnement et trafic ; affiche les sources et leur fraîcheur.",
+  "author": "mAI",
+  "category": "mobilite",
+  "tags": ["mobilité", "transport", "vélo", "trottinette", "recharge électrique", "stationnement", "trafic", "covoiturage", "données publiques"],
+  "icon": { "type": "lucide", "name": "Map" },
+  "minTier": "plus",
+  "permissions": { "network": "read-only", "readsUserData": false, "writesUserData": false, "requiresApproval": false },
+  "tools": [
+    {
+      "id": "searchMobilityDatasets",
+      "label": "Trouver des données mobilité",
+      "description": "Recherche des jeux de données publics par lieu, mode et disponibilité du temps réel.",
+      "systemHint": "searchMobilityDatasets (recherche les jeux de données publics français pour les transports en commun, vélos et trottinettes partagés, covoiturage, aménagements cyclables, recharge électrique, stationnement et trafic ; précise la zone et les formats disponibles)"
+    },
+    {
+      "id": "getMobilityDatasetDetails",
+      "label": "Détails d’un jeu mobilité",
+      "description": "Affiche les ressources, formats et dates de mise à jour d’un jeu de données du PAN.",
+      "systemHint": "getMobilityDatasetDetails (affiche les ressources, formats, dernières mises à jour et liens officiels d’un jeu de données identifié par son slug transport.data.gouv.fr)"
+    }
+  ]
+}

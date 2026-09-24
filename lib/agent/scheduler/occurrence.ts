@@ -82,7 +82,7 @@ export function nextOccurrenceFromRule(
   from: Date
 ): Date | null {
   if (rule.kind === "once") {
-    return null; // géré par la date unique du schedule
+    return null;
   }
 
   const [hour, minute] = rule.time.split(":").map(Number);

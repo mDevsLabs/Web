@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { useSWRConfig } from "swr";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { Button } from "@/components/ui/button";
 import { getCategoryLabel } from "@/lib/plugins/catalog";
@@ -51,6 +52,7 @@ export default function PluginDetailClient({
   locked: boolean;
   manifest: PluginManifest;
 }) {
+  const { mutate: mutatePlugins } = useSWRConfig();
   const [isBusy, setIsBusy] = useState(false);
   const [state, setState] = useState({ enabled, installed, installedVersion });
 
@@ -67,6 +69,7 @@ export default function PluginDetailClient({
         throw new Error(payload?.message || "Action impossible.");
       }
       onSuccess();
+      await mutatePlugins("/api/plugins");
       toast.success(successMessage);
     } catch (error) {
       toast.error(

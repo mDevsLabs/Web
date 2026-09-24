@@ -1,6 +1,7 @@
 import "server-only";
 
 import { generateText } from "ai";
+import { recordAgentUsage } from "@/lib/agent/accounting";
 import {
   AGENT_FAMILY_LABELS,
   type AgentToolFamily,
@@ -37,7 +38,7 @@ export async function routeFamiliesWithModel(params: {
   ].join("\n");
 
   try {
-    const { text } = await generateText({
+    const result = await generateText({
       abortSignal: AbortSignal.timeout(ROUTER_TIMEOUT_MS),
       instructions,
       model: await getUtilityModel({
@@ -46,8 +47,15 @@ export async function routeFamiliesWithModel(params: {
       }),
       prompt: params.task.slice(0, 2000),
     });
+    await recordAgentUsage({
+      model: "agent-tool-router",
+      sessionToken: params.sessionToken,
+      usage: result.usage,
+      userEmail: "",
+      userId: params.userId,
+    }).catch(() => null);
 
-    return parseFamilies(text, params.availableFamilies);
+    return parseFamilies(result.text, params.availableFamilies);
   } catch {
     return null;
   }

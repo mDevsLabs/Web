@@ -65,7 +65,7 @@ function isToolAllowedByUser(
   context: ToolSelectionContext
 ): boolean {
   const enabled = context.enabledCategories;
-  if (!enabled || enabled.length === 0) {
+  if (enabled === null) {
     return true;
   }
   return enabled.includes(tool.category);

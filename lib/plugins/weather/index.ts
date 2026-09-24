@@ -96,9 +96,36 @@ type OpenMeteoForecast = {
     wind_speed_10m_max?: number[];
     [key: string]: unknown;
   };
-  locationName?: string;
+  cityName?: string;
   units?: { temperature: string; wind: string };
 };
+
+const openMeteoForecastSchema = z
+  .object({
+    current: z
+      .object({
+        interval: z.number(),
+        temperature_2m: z.number(),
+        time: z.string(),
+      })
+      .passthrough(),
+    daily: z
+      .object({
+        sunrise: z.array(z.string()),
+        sunset: z.array(z.string()),
+        time: z.array(z.string()),
+      })
+      .passthrough(),
+    hourly: z
+      .object({
+        temperature_2m: z.array(z.number()),
+        time: z.array(z.string()),
+      })
+      .passthrough(),
+    latitude: z.number(),
+    longitude: z.number(),
+  })
+  .passthrough();
 
 export const getWeather = tool({
   description:
@@ -138,9 +165,13 @@ export const getWeather = tool({
       return { error: `Météo indisponible : ${result.error}` };
     }
 
-    const weatherData = result.data;
+    const parsedForecast = openMeteoForecastSchema.safeParse(result.data);
+    if (!parsedForecast.success) {
+      return { error: "Réponse météo invalide." };
+    }
+    const weatherData = parsedForecast.data as OpenMeteoForecast;
     if (location.label) {
-      weatherData.locationName = location.label;
+      weatherData.cityName = location.label;
     }
     weatherData.units = { temperature: tempUnit, wind: "km/h" };
 

@@ -8,7 +8,7 @@ import { nextOccurrenceFromRule } from "@/lib/agent/scheduler/occurrence";
 import { resolveOnceDueAt } from "@/lib/agent/scheduler/once";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
-import { authenticateChatRequest } from "@/lib/chat/auth";
+import { authenticateChatRequest, enforceChatRateLimit } from "@/lib/chat/auth";
 import {
   createAgentSchedule,
   listAgentSchedules,
@@ -33,9 +33,14 @@ export async function GET(request: Request) {
   }
   const userId = user.id || user.email;
 
-  const query = listQuerySchema.safeParse(Object.fromEntries(new URL(request.url).searchParams));
+  const query = listQuerySchema.safeParse(
+    Object.fromEntries(new URL(request.url).searchParams)
+  );
   if (!query.success) return errorResponse("invalid_request");
-  const schedules = await listAgentSchedules({ userId, includeDeleted: query.data.includeDeleted });
+  const schedules = await listAgentSchedules({
+    includeDeleted: query.data.includeDeleted,
+    userId,
+  });
   return Response.json(
     { schedules },
     {
@@ -69,6 +74,7 @@ export async function POST(request: Request) {
   if (error === "unauthorized" || !auth) {
     return errorResponse("auth_required");
   }
+  await enforceChatRateLimit(request, auth.userId);
   const access = checkAgentAccess(auth);
   if (!access.allowed) {
     return access.response;

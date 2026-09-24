@@ -1,8 +1,10 @@
 import { z } from "zod";
 import { scheduleMutationSchema } from "@/lib/agent/contracts";
 import { nextOccurrenceFromRule } from "@/lib/agent/scheduler/occurrence";
+import { resolveOnceDueAt } from "@/lib/agent/scheduler/once";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
+import { enforceChatRateLimit } from "@/lib/chat/auth";
 import {
   getAgentScheduleById,
   listOccurrencesByScheduleId,
@@ -54,6 +56,7 @@ export async function PATCH(
     return errorResponse("auth_required");
   }
   const userId = user.id || user.email;
+  await enforceChatRateLimit(request, userId);
 
   let body: unknown;
   try {
@@ -84,7 +87,19 @@ export async function PATCH(
     if (mutation.patch.rule || mutation.patch.timezone) {
       const rule = mutation.patch.rule ?? existing.rule;
       const timezone = mutation.patch.timezone ?? existing.timezone;
-      const nextDue = nextOccurrenceFromRule(rule, timezone, new Date());
+      const once =
+        rule.kind === "once" ? resolveOnceDueAt({ rule, timezone }) : null;
+      const nextDue =
+        rule.kind === "once"
+          ? once?.ok
+            ? once.dueAt
+            : null
+          : nextOccurrenceFromRule(rule, timezone, new Date());
+      if (once && !once.ok) {
+        return errorResponse("invalid_request", {
+          message: once.error,
+        });
+      }
       if (nextDue) {
         patch.nextDueAt = nextDue;
       }

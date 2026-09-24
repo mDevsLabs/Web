@@ -13,11 +13,12 @@ import type {
 import {
   type AgentFlagKey,
   type AgentFlags,
+  filterToolsByFlags,
   getAgentFlags,
 } from "@/lib/agent/flags";
 import { createAgentStream } from "@/lib/agent/runtime";
 import { scheduleChatId } from "@/lib/agent/scheduler/chat-id";
-import { loadAgentSettings } from "@/lib/agent/settings";
+import { loadAgentSettings, toToolCategories } from "@/lib/agent/settings";
 import { listMcpAgentTools } from "@/lib/agent/tools/adapters/mcp";
 import {
   getMentionedPluginToolIds,
@@ -34,25 +35,34 @@ import type {
 } from "@/lib/agent/types";
 import { FALLBACK_MODELS } from "@/lib/ai/models";
 import { getLanguageModel } from "@/lib/ai/providers";
-import { getModelEntry, pickDefaultAgentModel } from "@/lib/ai/registry";
 import {
-  createAgentRun,
+  getModelEntry,
+  isAgentCompatible,
+  isModelAllowedForUser,
+  pickDefaultAgentModel,
+} from "@/lib/ai/registry";
+import { isPaidTier } from "@/lib/auth/plan";
+import { buildMemoryContext } from "@/lib/chat/memory";
+import { startOccurrence } from "@/lib/db/agent-foundation-queries";
+import {
   claimAgentRunExecution,
-  releaseAgentRunExecution,
+  createAgentRun,
   getActiveAgentRunByChatId,
   getAgentRunById,
+  releaseAgentRunExecution,
   updateAgentRunStatus,
 } from "@/lib/db/agent-queries";
 import { getUserApiKey } from "@/lib/db/api-keys";
-import { startOccurrence } from "@/lib/db/agent-foundation-queries";
 import {
   getChatById,
   getMcpServersByUserId,
   getMessagesByChatId,
+  getWeeklyAiTokenUsage,
   saveChat,
   saveMessages,
 } from "@/lib/db/queries";
 import { getPersistedTier } from "@/lib/db/users";
+import { getTierChatWeeklyLimit } from "@/lib/plans/tier-limits";
 import type { ChatMessage } from "@/lib/types";
 import { generateUUID, getTextFromMessage } from "@/lib/utils";
 
@@ -135,6 +145,9 @@ export async function executeScheduledRun(params: {
   schedule: AgentScheduleRecord;
 }): Promise<ScheduledRunExecution> {
   const flags = getAgentFlags();
+  if (!flags["agent.enabled"]) {
+    return { outcome: "no_tools", runId: null };
+  }
   const schedule = params.schedule;
   const userId = schedule.userId;
 
@@ -143,7 +156,22 @@ export async function executeScheduledRun(params: {
   // aux runs interactifs. Un tier illisible garde un budget technique borné.
   const persisted = await getPersistedTier({ userId });
   const tier = persisted.ok ? persisted.tier : null;
+  if (!tier || !isPaidTier(tier)) {
+    return { outcome: "no_tools", runId: null };
+  }
   const budget: AgentExecutionBudget = resolveAgentExecutionBudget({ tier });
+  const weeklyUsage = await getWeeklyAiTokenUsage({ userId });
+  if (weeklyUsage !== null && weeklyUsage >= getTierChatWeeklyLimit(tier)) {
+    return { outcome: "no_tools", runId: null };
+  }
+  if (weeklyUsage === null) {
+    console.warn(
+      JSON.stringify({
+        event: "agent_scheduler_quota_unavailable",
+        userId,
+      })
+    );
+  }
 
   // 2. Conversation réelle : source de vérité du chatId, avant tout run.
   const chatId = await ensureScheduleChat({ schedule });
@@ -158,7 +186,11 @@ export async function executeScheduledRun(params: {
       userId,
     }).catch(() => null);
     if (prior && TERMINAL_RUN_STATUSES.has(prior.status)) {
-      return { finalStatus: prior.status, outcome: "already_done", runId: prior.id };
+      return {
+        finalStatus: prior.status,
+        outcome: "already_done",
+        runId: prior.id,
+      };
     }
     if (activeRun && activeRun.id !== params.occurrence.runId) {
       throw new Error("L'occurrence est liée à un autre run actif.");
@@ -205,14 +237,21 @@ export async function executeScheduledRun(params: {
   // cookie pour fetchUserModels en cron. Un modelId inconnu ou sans outils
   // retombe sur le défaut Agent : jamais d'échec silencieux du schedule.
   const settings = await loadAgentSettings({ userId }).catch(() => null);
-  const modelEntry = getModelEntry(schedule.modelId, FALLBACK_MODELS);
-  const resolvedModelId = modelEntry.capabilities.tools
-    ? schedule.modelId
-    : pickDefaultAgentModel(
-        FALLBACK_MODELS,
-        settings?.defaultModel ?? null,
-        tier ?? "Free"
-      );
+  const requestedModel = getModelEntry(schedule.modelId, FALLBACK_MODELS);
+  const requestedModelExists = FALLBACK_MODELS.some(
+    (model) => model.id === schedule.modelId
+  );
+  const resolvedModelId =
+    requestedModelExists &&
+    requestedModel.capabilities.tools &&
+    isAgentCompatible(requestedModel) &&
+    isModelAllowedForUser(requestedModel.id, tier)
+      ? requestedModel.id
+      : pickDefaultAgentModel(
+          FALLBACK_MODELS,
+          settings?.defaultModel ?? null,
+          tier ?? "Free"
+        );
   const resolvedModelEntry = getModelEntry(resolvedModelId, FALLBACK_MODELS);
 
   const userApiKey = await getUserApiKey(userId);
@@ -227,20 +266,33 @@ export async function executeScheduledRun(params: {
   // les outils du run sont réutilisés tels quels (snapshot persisté).
   // Outils MCP : serveurs activés de l'utilisateur, sous le drapeau agent.mcp.
   const pluginAgentContext = flags["agent.plugins"]
-    ? await listInstalledPluginAgentTools({ tier: tier ?? "Free", userId }).catch(() => ({ pluginIds: [], tools: [] }))
+    ? await listInstalledPluginAgentTools({ tier, userId }).catch(
+        (error: unknown) => {
+          console.warn(
+            JSON.stringify({
+              event: "agent_plugin_registry_unavailable",
+              message: error instanceof Error ? error.message : "unknown",
+            })
+          );
+          return { pluginIds: [], tools: [] };
+        }
+      )
     : { pluginIds: [], tools: [] };
   const registeredTools = [
     ...listRegisteredAgentTools(),
     ...pluginAgentContext.tools,
   ];
-  const baselineTools: RegisteredAgentTool[] = flags["agent.mcp"]
-    ? [
-        ...registeredTools,
-        ...(await getMcpServersByUserId({ userId })
-          .then((servers) => listMcpAgentTools({ servers, userId }))
-          .catch(() => [])),
-      ]
-    : registeredTools;
+  const baselineTools: RegisteredAgentTool[] = filterToolsByFlags(
+    flags["agent.mcp"]
+      ? [
+          ...registeredTools,
+          ...(await getMcpServersByUserId({ userId })
+            .then((servers) => listMcpAgentTools({ servers, userId }))
+            .catch(() => [])),
+        ]
+      : registeredTools,
+    flags
+  );
   const continuationSnapshot =
     activeRun?.toolPolicySnapshot &&
     typeof activeRun.toolPolicySnapshot === "object"
@@ -254,10 +306,9 @@ export async function executeScheduledRun(params: {
             files: false,
             tools: resolvedModelEntry.capabilities.tools,
           },
-          enabledCategories: schedule.config.enabledCategories
-            ? (schedule.config
-                .enabledCategories as import("@/lib/agent/types").ToolCategory[])
-            : null,
+          enabledCategories: toToolCategories(
+            schedule.config.enabledCategories as string[] | null | undefined
+          ),
           mode: "auto",
           task,
           tools: baselineTools,
@@ -272,7 +323,10 @@ export async function executeScheduledRun(params: {
     );
   }
   if (!continuationSnapshot) {
-    for (const toolId of getMentionedPluginToolIds(task, pluginAgentContext.pluginIds)) {
+    for (const toolId of getMentionedPluginToolIds(
+      task,
+      pluginAgentContext.pluginIds
+    )) {
       if (!selectedTools.some((tool) => tool.id === toolId)) {
         const forced = baselineTools.find((tool) => tool.id === toolId);
         if (forced) selectedTools = [...selectedTools, forced];
@@ -298,7 +352,9 @@ export async function executeScheduledRun(params: {
   }
 
   if (params.abortSignal?.aborted) {
-    throw new Error("Délai technique du planificateur dépassé avant la création du run.");
+    throw new Error(
+      "Délai technique du planificateur dépassé avant la création du run."
+    );
   }
 
   // 7. Run : création, ou remise en exécution du run repris.
@@ -317,11 +373,16 @@ export async function executeScheduledRun(params: {
       userId,
     }));
   const executionOwner = randomUUID();
-  if (!await claimAgentRunExecution({ id: run.id, owner: executionOwner })) {
+  if (!(await claimAgentRunExecution({ id: run.id, owner: executionOwner }))) {
     throw new Error("Run planifié déjà réservé par une autre exécution.");
   }
   if (params.occurrence) {
-    await startOccurrence({ id: params.occurrence.id, now: new Date(), runId: run.id });
+    await startOccurrence({
+      id: params.occurrence.id,
+      now: new Date(),
+      runId: run.id,
+      workerId: params.occurrence.claimedBy,
+    });
   }
 
   // 8. Contexte projet puis contexte du modèle : mêmes builders que l'API.
@@ -334,6 +395,13 @@ export async function executeScheduledRun(params: {
   const families = [
     ...new Set(enabledTools.map((tool) => familyForCategory(tool.category))),
   ];
+  const memoryContext = await buildMemoryContext({
+    effectiveAgentId: schedule.agentId,
+    effectiveProjectId: schedule.projectId,
+    isGhostMode: false,
+    tier,
+    userId,
+  });
   const agentContext = await buildAgentContext({
     assistantInstructions: null,
     attachments: [],
@@ -341,8 +409,12 @@ export async function executeScheduledRun(params: {
     chatInstructions: schedule.instructions,
     contextWindow: resolvedModelEntry.capabilities.contextWindow,
     families,
-    memoryBlock: null,
+    memoryBlock:
+      [memoryContext.userMemoryBlock, memoryContext.projectMemoryBlock]
+        .filter(Boolean)
+        .join("\n\n") || null,
     messages: await convertToModelMessages(existingMessages),
+
     plan: activeRun?.plan ?? null,
     project: projectContext,
     reasoningLevel: schedule.config.reasoningLevel,
@@ -353,18 +425,25 @@ export async function executeScheduledRun(params: {
     userInstructions: null,
   });
 
-  await updateAgentRunStatus({ id: run.id, status: "running" });
+  await updateAgentRunStatus({
+    executionOwner,
+    id: run.id,
+    status: "running",
+  });
 
   // 9. Exécution par le runtime standard : toute la persistance (steps,
   // checkpoints, messages, statut final, usage, événements métier) est celle
   // du runtime — identique à un run interactif.
   const stream = createAgentStream({
     abortSignal: params.abortSignal,
+    agentId: schedule.agentId,
     approvalRequiredToolIds,
     budget,
+
     chatId,
     checkpoint: activeRun?.checkpoint?.duration ?? null,
     context: agentContext,
+    executionOwner,
     existingMessages,
     firstUserMessageForTitle: null,
     flags,
@@ -376,19 +455,19 @@ export async function executeScheduledRun(params: {
     reasoningLevel: schedule.config.reasoningLevel,
     revision: activeRun?.revision ?? undefined,
     runId: run.id,
-    executionOwner,
     sendReasoning: false,
     sessionToken: SCHEDULED_SESSION_SENTINEL,
     shouldRenameAfterFirst: false,
     startedAt: Date.now(),
     startStepIndex: activeRun?.stepCount ?? 0,
     task,
+    tier,
     tools: enabledTools,
     userEmail: "",
+
     userId,
   });
   await consumeStream({ onError: () => {}, stream }).catch(() => {});
-  await releaseAgentRunExecution({ id: run.id, owner: executionOwner }).catch(() => {});
 
   // 10. Statut final relu depuis la base (jamais déduit du flux) : une
   // attente (approbation, question) persiste son statut pour la reprise.
@@ -396,15 +475,43 @@ export async function executeScheduledRun(params: {
     () => null
   );
   let finalStatus = finalRow?.status ?? "failed";
-  if (params.abortSignal?.aborted && ["queued", "running", "waiting_for_tool"].includes(finalStatus)) {
+  if (
+    params.abortSignal?.aborted &&
+    ["queued", "running", "waiting_for_tool"].includes(finalStatus)
+  ) {
     finalStatus = "timed_out";
-    await updateAgentRunStatus({ id: run.id, status: "timed_out", completedAt: new Date(), stopReason: "scheduler_deadline", error: "Délai technique du planificateur dépassé.", onlyIfActive: true });
-    console.warn(JSON.stringify({ event: "agent_schedule_run_timed_out", runId: run.id, occurrenceId: params.occurrence?.id ?? null }));
+    await updateAgentRunStatus({
+      completedAt: new Date(),
+      error: "Délai technique du planificateur dépassé.",
+      executionOwner,
+      id: run.id,
+      onlyIfActive: true,
+      status: "timed_out",
+      stopReason: "scheduler_deadline",
+    });
+    console.warn(
+      JSON.stringify({
+        event: "agent_schedule_run_timed_out",
+        occurrenceId: params.occurrence?.id ?? null,
+        runId: run.id,
+      })
+    );
   }
   if (["queued", "running", "waiting_for_tool"].includes(finalStatus)) {
     finalStatus = "failed";
-    await updateAgentRunStatus({ id: run.id, status: "failed", completedAt: new Date(), stopReason: "stream_incomplete", error: "Le flux planifié s'est interrompu avant la clôture du run.", onlyIfActive: true });
+    await updateAgentRunStatus({
+      completedAt: new Date(),
+      error: "Le flux planifié s'est interrompu avant la clôture du run.",
+      executionOwner,
+      id: run.id,
+      onlyIfActive: true,
+      status: "failed",
+      stopReason: "stream_incomplete",
+    });
   }
+  await releaseAgentRunExecution({ id: run.id, owner: executionOwner }).catch(
+    () => {}
+  );
   if (
     finalStatus === "waiting_for_approval" ||
     finalStatus === "waiting_for_user"

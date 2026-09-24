@@ -36,6 +36,7 @@ const agentUserInputOutputSchema = z.object({
   answers: answersSchema.optional(),
   data: z
     .object({
+      answers: answersSchema.optional(),
       context: z.string().nullable().optional(),
       expiresAt: z.string().optional(),
       questions: z.array(askUserQuestionSchema),
@@ -88,10 +89,8 @@ function readAnswers(
   output: unknown
 ): { questionId: string; value: unknown }[] | null {
   const parsed = agentUserInputOutputSchema.safeParse(output);
-  if (!parsed.success || !parsed.data.answers) {
-    return null;
-  }
-  return parsed.data.answers;
+  if (!parsed.success) return null;
+  return parsed.data.answers ?? parsed.data.data?.answers ?? null;
 }
 
 function inputQuestions(input: unknown): AskUserQuestion[] {

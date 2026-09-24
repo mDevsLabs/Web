@@ -12,6 +12,7 @@ import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
 import { normalizeTier } from "@/lib/auth/plan";
 import { requireUser, unauthorizedResponse } from "@/lib/auth/require-user";
 import { getPersistedTier } from "@/lib/db/users";
+import { getProjectAccess } from "@/lib/projects/access";
 
 const patchSchema = z.object({
   autonomy: z.enum(["careful", "standard", "high"]).optional(),
@@ -57,9 +58,15 @@ export async function GET() {
       tools: Object.values(AGENT_TOOL_CATALOG).map((tool) => ({
         category: tool.category,
         defaultPermission: tool.permissions.default,
-        impact: tool.permissions.impact ?? (tool.permissions.destructive ? "deletion" : tool.permissions.readOnly ? "read" : "external_mutation"),
         description: tool.description,
         id: tool.id,
+        impact:
+          tool.permissions.impact ??
+          (tool.permissions.destructive
+            ? "deletion"
+            : tool.permissions.readOnly
+              ? "read"
+              : "external_mutation"),
         name: tool.name,
       })),
     },
@@ -80,6 +87,47 @@ export async function PATCH(request: Request) {
 
   try {
     const patch = patchSchema.parse(await request.json());
+    const models = await fetchUserModels();
+    const persistedTier = await getPersistedTier({ userId });
+    const tier = normalizeTier(
+      persistedTier.ok ? persistedTier.tier : session.user.tier
+    );
+    if (patch.defaultModel) {
+      const model = models.find(
+        (candidate) => candidate.id === patch.defaultModel
+      );
+      const entry = model
+        ? getAgentModelsForTier([model], tier).find(
+            (candidate) => candidate.id === patch.defaultModel
+          )
+        : undefined;
+      if (!entry) {
+        return errorResponse("invalid_request", {
+          message: "Ce modèle n'est pas disponible avec votre forfait.",
+        });
+      }
+    }
+    if (patch.defaultProjectId) {
+      const project = await getProjectAccess({
+        projectId: patch.defaultProjectId,
+        userEmail: session.user.email,
+        userId,
+      });
+      if (!project) {
+        return errorResponse("invalid_request", {
+          message: "Ce projet ne vous est pas accessible.",
+        });
+      }
+    }
+    if (
+      patch.enabledCategories &&
+      patch.enabledCategories.length > 0 &&
+      (toToolCategories(patch.enabledCategories)?.length ?? 0) === 0
+    ) {
+      return errorResponse("invalid_request", {
+        message: "La liste des catégories Agent est invalide.",
+      });
+    }
     const settings = await saveAgentSettings({
       patch: {
         autonomy: patch.autonomy,

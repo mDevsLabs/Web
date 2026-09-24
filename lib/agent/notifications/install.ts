@@ -36,9 +36,10 @@ export function ensureAgentNotificationsInstalled(): void {
   }
   installed = true;
 
-  setAgentInAppNotificationWriter(async ({ payload, userId }) => {
+  setAgentInAppNotificationWriter(async ({ dedupeKey, payload, userId }) => {
     await createNotification({
       body: payload.body,
+      dedupeKey,
       link: payload.link,
       title: payload.title,
       type: payload.type,

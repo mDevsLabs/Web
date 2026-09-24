@@ -1,6 +1,7 @@
 import "server-only";
 
 import { generateText } from "ai";
+import { recordAgentUsage } from "@/lib/agent/accounting";
 import type { AgentPlan, AgentStepStatus } from "@/lib/agent/types";
 import { getUtilityModel } from "@/lib/ai/providers";
 
@@ -39,7 +40,7 @@ export async function generateTaskPlan(params: {
   ].join("\n");
 
   try {
-    const { text } = await generateText({
+    const result = await generateText({
       abortSignal: AbortSignal.timeout(PLAN_TIMEOUT_MS),
       instructions,
       model: await getUtilityModel({
@@ -48,8 +49,15 @@ export async function generateTaskPlan(params: {
       }),
       prompt: params.task.slice(0, 4000),
     });
+    await recordAgentUsage({
+      model: "agent-plan",
+      sessionToken: params.sessionToken,
+      usage: result.usage,
+      userEmail: "",
+      userId: params.userId,
+    }).catch(() => null);
 
-    return parsePlan(text);
+    return parsePlan(result.text);
   } catch {
     return null;
   }

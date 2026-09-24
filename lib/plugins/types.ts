@@ -55,10 +55,13 @@ export type PluginManifest = {
 // purement fonctionnel (météo, quiz) les ignore, et certains contextes
 // d'exécution (planification) n'ont pas de stream UI.
 export type PluginToolDeps = {
+  channel?: "agent" | "chat" | "planning" | "scheduler";
   chatModel?: string;
   dataStream?: UIMessageStreamWriter<ChatMessage>;
   isGhostMode?: boolean;
   session?: unknown;
+  signal?: AbortSignal;
+  userId?: string;
 };
 
 export type PluginDefinition = {

@@ -1,5 +1,9 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
+  listPluginAgentTools,
+  narrowPluginAgentToolsForTask,
+} from "@/lib/agent/tools/adapters/plugins";
+import {
   isNativeToolId,
   isPluginProvidedToolId,
   NATIVE_TOOL_IDS,
@@ -7,11 +11,6 @@ import {
   TOOL_IDS,
 } from "@/lib/ai/tools/ids";
 import { getAirQuality } from "@/lib/plugins/air-quality";
-import {
-  listPluginAgentTools,
-  narrowPluginAgentToolsForTask,
-} from "@/lib/agent/tools/adapters/plugins";
-import { getGithubRepositorySummary } from "@/lib/plugins/github-public";
 import {
   getPluginManifest,
   isPluginOnlyToolId,
@@ -23,12 +22,17 @@ import {
   internationalHolidays,
   isPublicHoliday,
 } from "@/lib/plugins/fr-holidays";
-import { getFoodProduct } from "@/lib/plugins/open-food-facts";
-import { searchWorldBankIndicators } from "@/lib/plugins/world-bank";
-import { fetchPublicJson, PUBLIC_API_MAX_BYTES } from "@/lib/plugins/shared/public-api";
+import { getGithubRepositorySummary } from "@/lib/plugins/github-public";
 import { isLucideIconName } from "@/lib/plugins/icon-allowlist";
 import { jsonToolbox } from "@/lib/plugins/json-toolbox";
+import { getFoodProduct } from "@/lib/plugins/open-food-facts";
+import { quizQuestionSchema, quizzly } from "@/lib/plugins/quizzly";
 import { createPluginTools, getPluginDefinition } from "@/lib/plugins/server";
+import {
+  fetchPublicJson,
+  PUBLIC_API_MAX_BYTES,
+} from "@/lib/plugins/shared/public-api";
+import { searchWorldBankIndicators } from "@/lib/plugins/world-bank";
 
 const TOOL_CALL_OPTIONS = {
   abortSignal: new AbortController().signal,
@@ -70,6 +74,7 @@ describe("Catalogue de plugins", () => {
       "fr-holidays",
       "github-public",
       "json-toolbox",
+      "mobilite-fr",
       "open-food-facts",
       "open-library",
       "quizzly",
@@ -149,15 +154,50 @@ describe("Catalogue de plugins", () => {
       const definition = getPluginDefinition(plugin.id);
       expect(definition).toBeDefined();
       const tools = definition?.createTools({});
-      expect(Object.keys(tools ?? {}).toSorted()).toEqual(
-        plugin.tools.map((pluginTool) => pluginTool.id).toSorted()
+      expect(
+        Object.keys(tools ?? {}).toSorted((left, right) =>
+          left.localeCompare(right)
+        )
+      ).toEqual(
+        plugin.tools
+          .map((pluginTool) => pluginTool.id)
+          .toSorted((left, right) => left.localeCompare(right))
       );
       for (const pluginTool of Object.values(tools ?? {})) {
         expect(pluginTool.description?.length ?? 0).toBeGreaterThan(0);
         expect(typeof pluginTool.execute).toBe("function");
       }
     }
-    expect(getPluginManifest("air-quality")?.tools[0]?.id).toBe("getAirQuality");
+    expect(getPluginManifest("air-quality")?.tools[0]?.id).toBe(
+      "getAirQuality"
+    );
+  });
+
+  it("convertit une erreur réseau de plugin en ToolFailure Agent", async () => {
+    const [githubSummary] = listPluginAgentTools(["github-public"]);
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => new Response("service unavailable", { status: 503 }))
+    );
+    const result = await githubSummary.execute(
+      { repository: "openai/example" },
+      {
+        chatId: "chat",
+        projectId: null,
+        runId: "run",
+        sessionToken: "token",
+        signal: new AbortController().signal,
+        stepId: "step",
+        toolCallId: "call",
+        toolExecutionId: "execution",
+        userEmail: "user@example.com",
+        userId: "user",
+      }
+    );
+    expect(result).toMatchObject({
+      error: { category: "transient", retryable: true },
+      success: false,
+    });
   });
 
   it("n'instancie que les outils des plugins autorisés", () => {
@@ -181,12 +221,25 @@ describe("Catalogue de plugins", () => {
   it("adapte les outils des plugins à Agent et réduit la sélection automatique", () => {
     const githubTools = listPluginAgentTools(["github-public"]);
     expect(githubTools).toHaveLength(4);
-    expect(githubTools.every((agentTool) => agentTool.source === "plugin" && agentTool.permissions.readOnly)).toBe(true);
     expect(
-      narrowPluginAgentToolsForTask("Montre les issues GitHub ouvertes", githubTools, ["github-public"]).map((agentTool) => agentTool.id)
+      githubTools.every(
+        (agentTool) =>
+          agentTool.source === "plugin" && agentTool.permissions.readOnly
+      )
+    ).toBe(true);
+    expect(
+      narrowPluginAgentToolsForTask(
+        "Montre les issues GitHub ouvertes",
+        githubTools,
+        ["github-public"]
+      ).map((agentTool) => agentTool.id)
     ).toEqual(["listGithubIssues"]);
     expect(
-      narrowPluginAgentToolsForTask("@GitHub public inspecte ce dépôt", githubTools, ["github-public"])
+      narrowPluginAgentToolsForTask(
+        "@GitHub public inspecte ce dépôt",
+        githubTools,
+        ["github-public"]
+      )
     ).toHaveLength(4);
     expect(listPluginAgentTools([])).toEqual([]);
   });
@@ -435,6 +488,16 @@ describe("Plugin Qualité de l'air (réseau lecture seule)", () => {
     expect(String(result.error)).toContain("Qualité de l'air indisponible");
   });
 
+  it("distingue une panne du géocodeur d'une ville inconnue", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => new Response("unavailable", { status: 503 }))
+    );
+    const result = await runTool(getAirQuality, { city: "Paris" });
+    expect(String(result.error)).toContain("Géo-codeur");
+    expect(String(result.error)).not.toContain("introuvable");
+  });
+
   it("signale une ville introuvable", async () => {
     vi.stubGlobal(
       "fetch",
@@ -453,89 +516,193 @@ describe("Connecteurs publics des plugins", () => {
     const fetchMock = vi.fn();
     vi.stubGlobal("fetch", fetchMock);
     const result = await fetchPublicJson("https://example.org/private");
-    expect(result).toMatchObject({ ok: false, error: "Domaine de source non autorisé." });
+    expect(result).toMatchObject({
+      error: "Domaine de source non autorisé.",
+      ok: false,
+    });
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
   it("normalise la limite HTTP 429 et refuse un corps trop grand", async () => {
     vi.stubGlobal(
       "fetch",
-      vi.fn(async () => new Response("", {
-        headers: { "content-length": String(PUBLIC_API_MAX_BYTES + 1), "retry-after": "30" },
-        status: 429,
-      }))
+      vi.fn(
+        async () =>
+          new Response("", {
+            headers: {
+              "content-length": String(PUBLIC_API_MAX_BYTES + 1),
+              "retry-after": "30",
+            },
+            status: 429,
+          })
+      )
     );
-    const limited = await fetchPublicJson("https://api.github.com/repos/openai/openai-node");
+    const limited = await fetchPublicJson(
+      "https://api.github.com/repos/openai/openai-node"
+    );
     expect(limited).toMatchObject({ ok: false });
     if (!limited.ok) expect(limited.error).toContain("HTTP 429");
 
     vi.stubGlobal(
       "fetch",
-      vi.fn(async () => new Response("{}", {
-        headers: { "content-length": String(PUBLIC_API_MAX_BYTES + 1) },
-        status: 200,
-      }))
+      vi.fn(
+        async () =>
+          new Response("{}", {
+            headers: { "content-length": String(PUBLIC_API_MAX_BYTES + 1) },
+            status: 200,
+          })
+      )
     );
-    const oversized = await fetchPublicJson("https://api.github.com/repos/openai/openai-node");
-    expect(oversized).toMatchObject({ ok: false, error: "Réponse trop volumineuse; résultat refusé." });
+    const oversized = await fetchPublicJson(
+      "https://api.github.com/repos/openai/openai-node"
+    );
+    expect(oversized).toMatchObject({
+      error: "Réponse trop volumineuse; résultat refusé.",
+      ok: false,
+    });
   });
 
   it("normalise les erreurs réseau sans propager une exception au modèle", async () => {
-    vi.stubGlobal("fetch", vi.fn(async () => { throw new Error("socket unavailable"); }));
-    const result = await fetchPublicJson("https://api.github.com/repos/openai/openai-node");
-    expect(result).toMatchObject({ ok: false, error: "Erreur réseau ou réponse JSON invalide." });
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => {
+        throw new Error("socket unavailable");
+      })
+    );
+    const result = await fetchPublicJson(
+      "https://api.github.com/repos/openai/openai-node"
+    );
+    expect(result).toMatchObject({
+      error: "Erreur réseau ou réponse JSON invalide.",
+      ok: false,
+    });
   });
 
   it("retourne un résumé GitHub borné et une source vérifiable", async () => {
     const calls: string[] = [];
-    vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL) => {
-      calls.push(String(input));
-      return Response.json({
-        default_branch: "main",
-        description: "Dépôt de test",
-        forks_count: 12,
-        full_name: "openai/example",
-        html_url: "https://github.com/openai/example",
-        license: { spdx_id: "MIT" },
-        open_issues_count: 3,
-        stargazers_count: 42,
-        updated_at: "2026-09-22T00:00:00Z",
-      });
-    }));
-    const result = await runTool(getGithubRepositorySummary, { repository: "openai/example" });
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (input: RequestInfo | URL) => {
+        calls.push(String(input));
+        return Response.json({
+          default_branch: "main",
+          description: "Dépôt de test",
+          forks_count: 12,
+          full_name: "openai/example",
+          html_url: "https://github.com/openai/example",
+          license: { spdx_id: "MIT" },
+          open_issues_count: 3,
+          private: false,
+          stargazers_count: 42,
+          updated_at: "2026-09-22T00:00:00Z",
+        });
+      })
+    );
+    const result = await runTool(getGithubRepositorySummary, {
+      repository: "openai/example",
+    });
     expect(calls).toEqual(["https://api.github.com/repos/openai/example"]);
     expect(result).toMatchObject({
       name: "openai/example",
-      stars: 42,
       source: { url: "https://github.com/openai/example" },
+      stars: 42,
     });
   });
 
+  it("refuse un dépôt GitHub privé même avec un token configuré", async () => {
+    const previous = process.env.GITHUB_PUBLIC_TOKEN;
+    process.env.GITHUB_PUBLIC_TOKEN = "token-public-test";
+    try {
+      vi.stubGlobal(
+        "fetch",
+        vi.fn(async () => Response.json({ private: true }))
+      );
+      const result = await runTool(getGithubRepositorySummary, {
+        repository: "private/example",
+      });
+      expect(String(result.error)).toContain("public");
+    } finally {
+      if (previous === undefined) delete process.env.GITHUB_PUBLIC_TOKEN;
+      else process.env.GITHUB_PUBLIC_TOKEN = previous;
+    }
+  });
+
+  it("valide les indices et les longueurs du quiz", () => {
+    expect(
+      quizQuestionSchema.safeParse({
+        correctAnswers: [-1, 1, 1],
+        explanation: "explication",
+        id: "q1",
+        options: ["a", "b"],
+        question: "Question",
+        type: "single_choice",
+      }).success
+    ).toBe(false);
+    expect(
+      quizQuestionSchema.safeParse({
+        correctAnswers: [0],
+        explanation: "explication",
+        id: "q2",
+        options: ["a", "b"],
+        question: "Question",
+        type: "single_choice",
+      }).success
+    ).toBe(true);
+  });
+
+  it("refuse une date grégorienne impossible", async () => {
+    const result = await runTool(frHolidays, {
+      from: "2026-02-31",
+      to: "2026-02-31",
+      year: 2026,
+    });
+    expect(String(result.error)).toContain("Date");
+  });
+
   it("signale l'absence de produit Open Food Facts sans inventer de champs", async () => {
-    vi.stubGlobal("fetch", vi.fn(async () => Response.json({ status: 0, status_verbose: "product not found" })));
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () =>
+        Response.json({ status: 0, status_verbose: "product not found" })
+      )
+    );
     const result = await runTool(getFoodProduct, { barcode: "3017620422003" });
     expect(String(result.error)).toContain("absent");
   });
 
   it("recherche les indicateurs par l'endpoint de métadonnées officiel", async () => {
     const calls: string[] = [];
-    vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL) => {
-      calls.push(String(input));
-      return Response.json({
-        source: [{
-          id: "2",
-          name: "World Development Indicators",
-          concept: [{
-            id: "Series",
-            variable: [{
-              id: "NY.GDP.MKTP.CD",
-              metatype: [{ id: "definition", value: "GDP (current US$)" }],
-            }],
-          }],
-        }],
-      });
-    }));
-    const result = await runTool(searchWorldBankIndicators, { limit: 5, query: "gross domestic product" });
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (input: RequestInfo | URL) => {
+        calls.push(String(input));
+        return Response.json({
+          source: [
+            {
+              concept: [
+                {
+                  id: "Series",
+                  variable: [
+                    {
+                      id: "NY.GDP.MKTP.CD",
+                      metatype: [
+                        { id: "definition", value: "GDP (current US$)" },
+                      ],
+                    },
+                  ],
+                },
+              ],
+              id: "2",
+              name: "World Development Indicators",
+            },
+          ],
+        });
+      })
+    );
+    const result = await runTool(searchWorldBankIndicators, {
+      limit: 5,
+      query: "gross domestic product",
+    });
     expect(calls).toEqual([
       "https://api.worldbank.org/v2/sources/2/search/gross%20domestic%20product?format=json&per_page=100",
     ]);
@@ -546,18 +713,43 @@ describe("Connecteurs publics des plugins", () => {
 
   it("utilise l'API Nager v4 et ne confond pas un congé scolaire avec un jour férié", async () => {
     const calls: string[] = [];
-    vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL) => {
-      calls.push(String(input));
-      return Response.json([
-        { date: "2026-01-01", name: "New Year's Day", countryCode: "AT", nationalHoliday: true, subdivisionCodes: null, holidayTypes: ["Public"] },
-        { date: "2026-01-02", name: "School Holiday", countryCode: "AT", nationalHoliday: false, subdivisionCodes: ["AT-1"], holidayTypes: ["School"] },
-      ]);
-    }));
-    const listed = await runTool(internationalHolidays, { country: "at", year: 2026 });
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (input: RequestInfo | URL) => {
+        calls.push(String(input));
+        return Response.json([
+          {
+            countryCode: "AT",
+            date: "2026-01-01",
+            holidayTypes: ["Public"],
+            name: "New Year's Day",
+            nationalHoliday: true,
+            subdivisionCodes: null,
+          },
+          {
+            countryCode: "AT",
+            date: "2026-01-02",
+            holidayTypes: ["School"],
+            name: "School Holiday",
+            nationalHoliday: false,
+            subdivisionCodes: ["AT-1"],
+          },
+        ]);
+      })
+    );
+    const listed = await runTool(internationalHolidays, {
+      country: "at",
+      year: 2026,
+    });
     expect(calls[0]).toBe("https://nagerholidays.com/api/v4/Holidays/AT/2026");
-    expect((listed.holidays as Array<{ name: string }>)[0]?.name).toBe("New Year's Day");
+    expect((listed.holidays as Array<{ name: string }>)[0]?.name).toBe(
+      "New Year's Day"
+    );
 
-    const checked = await runTool(isPublicHoliday, { country: "at", date: "2026-01-02" });
+    const checked = await runTool(isPublicHoliday, {
+      country: "at",
+      date: "2026-01-02",
+    });
     expect(checked.isPublicHoliday).toBe(false);
   });
 });

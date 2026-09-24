@@ -20,11 +20,11 @@ import {
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import { getPluginManifest, isPluginOnlyToolId } from "@/lib/plugins/catalog";
-import { canUsePlugin } from "@/lib/plugins/tier-lock";
 import {
   createPluginTools,
   getToolIdsForPluginIds,
 } from "@/lib/plugins/server";
+import { canUsePlugin } from "@/lib/plugins/tier-lock";
 import { type PostRequestBody, postRequestBodySchema } from "./schema";
 
 export const maxDuration = 300;
@@ -134,7 +134,9 @@ export async function POST(request: Request) {
     const enabledPluginIds = pluginInstallations.flatMap((installation) => {
       if (!installation.isEnabled) return [];
       const plugin = getPluginManifest(installation.pluginId);
-      return plugin && canUsePlugin(plugin, ctx.maiUser.tier) ? [plugin.id] : [];
+      return plugin && canUsePlugin(plugin, ctx.maiUser.tier)
+        ? [plugin.id]
+        : [];
     });
     const installedPluginToolIds = getToolIdsForPluginIds(enabledPluginIds);
 
@@ -209,6 +211,7 @@ export async function POST(request: Request) {
 
         const pluginTools = createPluginTools(
           {
+            channel: "chat",
             chatModel: ctx.chatModel,
             dataStream,
             isGhostMode: ctx.isGhostMode,

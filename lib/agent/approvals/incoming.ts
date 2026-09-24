@@ -34,6 +34,7 @@ const approvalResponsePartSchema = z.object({
     .optional(),
   input: z.unknown().optional(),
   toolCallId: z.string().min(1).max(200),
+  toolId: z.string().min(1).max(200).optional(),
 });
 
 export type AppliedApprovalDecisions = {
@@ -48,6 +49,7 @@ type IncomingApprovalDecision = {
   input: unknown;
   reason?: string;
   toolCallId: string;
+  toolId?: string;
 };
 
 // Lecture défensive : la charge utile vient du client, donc rien n'est supposé
@@ -87,6 +89,9 @@ function collectIncomingDecisions(
         input: parsed.data.input,
         ...(approval.reason === undefined ? {} : { reason: approval.reason }),
         toolCallId: parsed.data.toolCallId,
+        ...(parsed.data.toolId === undefined
+          ? {}
+          : { toolId: parsed.data.toolId }),
       });
     }
   }
@@ -143,6 +148,16 @@ export async function applyIncomingApprovalDecisions(params: {
       // Demande inconnue de ce run, ou déjà décidée (rejeu du flux) : rien à
       // appliquer. Une demande absente sera recréée par le contrôleur.
       if (request?.status !== "pending") {
+        continue;
+      }
+      if (
+        decision.approvalId !== request.id ||
+        decision.toolCallId !== request.toolCallId ||
+        (decision.toolId !== undefined && decision.toolId !== request.toolId) ||
+        request.expiresAt.getTime() <= Date.now()
+      ) {
+        await expireApprovalRequestById({ id: request.id }).catch(() => null);
+        applied.invalidated += 1;
         continue;
       }
 

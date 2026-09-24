@@ -2,6 +2,7 @@ import { z } from "zod";
 import { requireAgentToolMetadata } from "@/lib/agent/tools/catalog";
 import { defineTool } from "@/lib/agent/tools/define-tool";
 import { type ToolResult, toolFailure, toolSuccess } from "@/lib/agent/types";
+import { memoryLimitForTier } from "@/lib/auth/plan";
 import {
   countMemories,
   createMemory,
@@ -51,8 +52,10 @@ function sanitizeContent(value: string | undefined): string {
 export const manageMemoryTool = defineTool({
   ...requireAgentToolMetadata("manage_memory"),
   execute: async (input, context) => {
-    const agentId = null;
-    const memoryLimit = MEMORY_LIMIT_DEFAULT;
+    const agentId = context.agentId ?? null;
+    const memoryLimit = context.tier
+      ? memoryLimitForTier(context.tier)
+      : MEMORY_LIMIT_DEFAULT;
 
     const readMemories = async () =>
       agentId

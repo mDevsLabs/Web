@@ -151,7 +151,14 @@ function countWorkdays(
 
 const isoDateSchema = z
   .string()
-  .regex(/^\d{4}-\d{2}-\d{2}$/, "Format attendu : AAAA-MM-JJ");
+  .regex(/^\d{4}-\d{2}-\d{2}$/, "Format attendu : AAAA-MM-JJ")
+  .refine((value) => {
+    const parsed = new Date(`${value}T00:00:00Z`);
+    return (
+      !Number.isNaN(parsed.getTime()) &&
+      parsed.toISOString().slice(0, 10) === value
+    );
+  }, "Date grégorienne invalide.");
 
 export const frHolidays = tool({
   description:
@@ -173,10 +180,19 @@ export const frHolidays = tool({
       year: input.year,
     };
 
+    if ((input.from && !input.to) || (!input.from && input.to)) {
+      return { error: "« from » et « to » doivent être fournis ensemble." };
+    }
+
     if (input.from && input.to) {
       const from = new Date(`${input.from}T00:00:00Z`);
       const to = new Date(`${input.to}T00:00:00Z`);
-      if (Number.isNaN(from.getTime()) || Number.isNaN(to.getTime())) {
+      if (
+        Number.isNaN(from.getTime()) ||
+        Number.isNaN(to.getTime()) ||
+        from.toISOString().slice(0, 10) !== input.from ||
+        to.toISOString().slice(0, 10) !== input.to
+      ) {
         return {
           error:
             "Dates invalides : utilisez le format AAAA-MM-JJ pour « from » et « to ».",
@@ -185,6 +201,11 @@ export const frHolidays = tool({
       if (from.getTime() > to.getTime()) {
         return { error: "« from » doit précéder « to »." };
       }
+      const fromYear = from.getUTCFullYear();
+      const toYear = to.getUTCFullYear();
+      if (fromYear < MIN_YEAR || toYear > MAX_YEAR) {
+        return { error: `Années hors plage (${MIN_YEAR}–${MAX_YEAR}).` };
+      }
       const totalDays =
         Math.round((to.getTime() - from.getTime()) / 86_400_000) + 1;
       if (totalDays > 3660) {
@@ -192,6 +213,11 @@ export const frHolidays = tool({
           error:
             "Intervalle trop large : 10 ans maximum entre « from » et « to ».",
         };
+      }
+      for (let year = fromYear; year <= toYear; year += 1) {
+        for (const holiday of buildHolidays(year)) {
+          holidayDates.add(holiday.date);
+        }
       }
       result.range = {
         from: input.from,
@@ -229,65 +255,149 @@ export const frHolidays = tool({
 
 const NAGER_V3 = "https://nagerholidays.com/api/v3";
 const NAGER_V4 = "https://nagerholidays.com/api/v4";
-const countrySchema = z.string().length(2).regex(/^[A-Za-z]{2}$/).transform((value) => value.toUpperCase());
+const countrySchema = z
+  .string()
+  .length(2)
+  .regex(/^[A-Za-z]{2}$/)
+  .transform((value) => value.toUpperCase());
 const yearSchema = z.number().int().min(1970).max(2100);
-type ApiHoliday = { date: string; localName?: string; name?: string; countryCode?: string; types?: string[]; holidayTypes?: string[]; global?: boolean; nationalHoliday?: boolean; counties?: string[] | null; subdivisionCodes?: string[] | null };
+type ApiHoliday = {
+  date: string;
+  localName?: string;
+  name?: string;
+  countryCode?: string;
+  types?: string[];
+  holidayTypes?: string[];
+  global?: boolean;
+  nationalHoliday?: boolean;
+  counties?: string[] | null;
+  subdivisionCodes?: string[] | null;
+};
 
 export const internationalHolidays = tool({
-  description: "Liste les jours fériés publics d'un pays pour une année avec noms locaux et types.",
-  inputSchema: z.object({ country: countrySchema, year: yearSchema }),
+  description:
+    "Liste les jours fériés publics d'un pays pour une année avec noms locaux et types.",
   execute: async ({ country, year }) => {
     const countryCode = country.toUpperCase();
     const url = `${NAGER_V4}/Holidays/${countryCode}/${year}`;
     const result = await fetchPublicJson<ApiHoliday[]>(url);
     if (!result.ok) return { error: result.error };
-    return { country: countryCode, year, holidays: result.data.slice(0, 50).map((holiday) => ({ date: holiday.date, localName: holiday.localName ?? holiday.name ?? null, name: holiday.name ?? null, types: holiday.holidayTypes ?? holiday.types ?? [], national: holiday.nationalHoliday ?? holiday.global ?? null, regions: holiday.subdivisionCodes ?? holiday.counties ?? null })), source: sourceRef(url, "Nager.Date — jours fériés") };
+    return {
+      country: countryCode,
+      holidays: result.data
+        .filter((holiday) =>
+          (holiday.holidayTypes ?? holiday.types ?? []).includes("Public")
+        )
+        .slice(0, 50)
+        .map((holiday) => ({
+          date: holiday.date,
+          localName: holiday.localName ?? holiday.name ?? null,
+          name: holiday.name ?? null,
+          national: holiday.nationalHoliday ?? holiday.global ?? null,
+          regions: holiday.subdivisionCodes ?? holiday.counties ?? null,
+          types: holiday.holidayTypes ?? holiday.types ?? [],
+        })),
+      source: sourceRef(url, "Nager.Date — jours fériés"),
+      year,
+    };
   },
+  inputSchema: z.object({ country: countrySchema, year: yearSchema }),
 });
 
 export const isPublicHoliday = tool({
-  description: "Vérifie si une date exacte est un jour férié national ou régional dans un pays.",
-  inputSchema: z.object({ country: countrySchema, date: isoDateSchema }),
+  description:
+    "Vérifie si une date exacte est un jour férié national ou régional dans un pays.",
   execute: async ({ country, date }) => {
     const countryCode = country.toUpperCase();
     const year = Number(date.slice(0, 4));
-    if (year < 1970 || year > 2100) return { error: "Année hors plage (1970–2100)." };
+    if (year < 1970 || year > 2100)
+      return { error: "Année hors plage (1970–2100)." };
     const parsed = new Date(`${date}T00:00:00Z`);
-    if (Number.isNaN(parsed.getTime()) || parsed.toISOString().slice(0, 10) !== date) {
-      return { error: "Date invalide. Utilisez une date grégorienne réelle au format AAAA-MM-JJ." };
+    if (
+      Number.isNaN(parsed.getTime()) ||
+      parsed.toISOString().slice(0, 10) !== date
+    ) {
+      return {
+        error:
+          "Date invalide. Utilisez une date grégorienne réelle au format AAAA-MM-JJ.",
+      };
     }
     const url = `${NAGER_V4}/Holidays/${countryCode}/${year}`;
     const result = await fetchPublicJson<ApiHoliday[]>(url);
     if (!result.ok) return { error: result.error };
-    const holidays = result.data.filter((holiday) => holiday.date === date && (holiday.holidayTypes ?? holiday.types ?? []).includes("Public")).slice(0, 10);
-    return { country: countryCode, date, isPublicHoliday: holidays.length > 0, holidays: holidays.map((holiday) => ({ localName: holiday.localName ?? holiday.name ?? null, name: holiday.name ?? null, national: holiday.nationalHoliday ?? holiday.global ?? null, regions: holiday.subdivisionCodes ?? holiday.counties ?? null })), source: sourceRef(url, "Nager.Date — vérification") };
+    const holidays = result.data
+      .filter(
+        (holiday) =>
+          holiday.date === date &&
+          (holiday.holidayTypes ?? holiday.types ?? []).includes("Public")
+      )
+      .slice(0, 10);
+    return {
+      country: countryCode,
+      date,
+      holidays: holidays.map((holiday) => ({
+        localName: holiday.localName ?? holiday.name ?? null,
+        name: holiday.name ?? null,
+        national: holiday.nationalHoliday ?? holiday.global ?? null,
+        regions: holiday.subdivisionCodes ?? holiday.counties ?? null,
+      })),
+      isPublicHoliday: holidays.length > 0,
+      source: sourceRef(url, "Nager.Date — vérification"),
+    };
   },
+  inputSchema: z.object({ country: countrySchema, date: isoDateSchema }),
 });
 
 export const getHolidayLongWeekends = tool({
-  description: "Recherche les week-ends prolongés détectés par Nager.Date pour un pays et une année.",
-  inputSchema: z.object({ country: countrySchema, year: yearSchema }),
+  description:
+    "Recherche les week-ends prolongés détectés par Nager.Date pour un pays et une année.",
   execute: async ({ country, year }) => {
     const countryCode = country.toUpperCase();
     const url = `${NAGER_V3}/LongWeekend/${year}/${countryCode}`;
-    const result = await fetchPublicJson<Array<{ startDate: string; endDate: string; dayCount: number; needBridgeDay: boolean }>>(url);
+    const result =
+      await fetchPublicJson<
+        Array<{
+          startDate: string;
+          endDate: string;
+          dayCount: number;
+          needBridgeDay: boolean;
+        }>
+      >(url);
     if (!result.ok) return { error: result.error };
-    return { country: countryCode, year, longWeekends: result.data.slice(0, 20), source: sourceRef(url, "Nager.Date — week-ends prolongés") };
+    return {
+      country: countryCode,
+      longWeekends: result.data.slice(0, 20),
+      source: sourceRef(url, "Nager.Date — week-ends prolongés"),
+      year,
+    };
   },
+  inputSchema: z.object({ country: countrySchema, year: yearSchema }),
 });
 
 export const listHolidayCountries = tool({
   description: "Liste les codes pays disponibles dans le service Nager.Date.",
-  inputSchema: z.object({}),
   execute: async () => {
     const url = `${NAGER_V3}/AvailableCountries`;
-    const result = await fetchPublicJson<Array<{ countryCode: string; name: string }>>(url);
+    const result =
+      await fetchPublicJson<Array<{ countryCode: string; name: string }>>(url);
     if (!result.ok) return { error: result.error };
-    return { countries: result.data.slice(0, 250).map(({ countryCode, name }) => ({ code: countryCode, name })), source: sourceRef(url, "Nager.Date — pays") };
+    return {
+      countries: result.data
+        .slice(0, 250)
+        .map(({ countryCode, name }) => ({ code: countryCode, name })),
+      source: sourceRef(url, "Nager.Date — pays"),
+    };
   },
+  inputSchema: z.object({}),
 });
 
 export const frHolidaysPlugin: PluginDefinition = {
-  createTools: () => ({ frHolidays, internationalHolidays, isPublicHoliday, getHolidayLongWeekends, listHolidayCountries }),
+  createTools: () => ({
+    frHolidays,
+    getHolidayLongWeekends,
+    internationalHolidays,
+    isPublicHoliday,
+    listHolidayCountries,
+  }),
   manifest: manifest as PluginManifest,
 };

@@ -4,12 +4,21 @@ import { z } from "zod";
 import { defineTool } from "@/lib/agent/tools/define-tool";
 import type { AgentTool, RegisteredAgentTool } from "@/lib/agent/types";
 import { toolFailure, toolSuccess } from "@/lib/agent/types";
+import { getUserMcpPrefs } from "@/lib/db/queries";
 import type { McpServer } from "@/lib/db/schema";
-import { callMcpTool } from "@/lib/mcp/client";
+import { callMcpTool, getFilteredTools } from "@/lib/mcp/client";
 import {
   loadMcpSecretDescriptors,
   mergeMcpSecrets,
 } from "@/lib/mcp/secrets-config";
+import type {
+  McpAuthType,
+  McpServerConfig,
+  McpToolCallResult,
+  McpToolDefinition,
+  McpToolOverride,
+  McpTransport,
+} from "@/lib/mcp/types";
 
 // Adaptateur MCP → AgentTool : les serveurs MCP installés et activés par
 // l'utilisateur deviennent des outils Agent réellement exécutables. Chaque
@@ -33,6 +42,19 @@ export function mcpAgentToolId(params: {
   return `mcp_${safeServerName}_${safeToolName}`;
 }
 
+function boundedMcpResult(result: McpToolCallResult): unknown {
+  try {
+    const serialized = JSON.stringify(result);
+    if (serialized.length <= 50_000) return result;
+  } catch {}
+  return {
+    content: Array.isArray(result.content)
+      ? result.content.slice(0, 10)
+      : undefined,
+    truncated: true,
+  };
+}
+
 export async function buildMcpAgentTools(params: {
   server: McpServer;
   userId: string;
@@ -40,11 +62,33 @@ export async function buildMcpAgentTools(params: {
   if (!params.server.isEnabled) {
     return [];
   }
-  const cachedTools =
-    (params.server.toolsCache as Array<{
-      description?: string;
-      name: string;
-    }>) ?? [];
+  const prefs = await getUserMcpPrefs(params.userId).catch(() => null);
+  if (prefs?.globalKillSwitch) {
+    return [];
+  }
+  if (params.server.transport === "stdio" && prefs?.allowStdio === false) {
+    return [];
+  }
+  const serverConfig: McpServerConfig = {
+    args: (params.server.args as string[]) ?? [],
+    authConfig: (params.server.authConfig ??
+      {}) as McpServerConfig["authConfig"],
+    authType: params.server.authType as McpAuthType,
+    command: params.server.command,
+    env: (params.server.env ?? {}) as Record<string, string>,
+    headers: (params.server.headers ?? {}) as Record<string, string>,
+    id: params.server.id,
+    name: params.server.name,
+    timeoutMs: params.server.timeoutMs,
+    toolOverrides: (params.server.toolOverrides ?? {}) as Record<
+      string,
+      McpToolOverride
+    >,
+    toolsCache: (params.server.toolsCache ?? []) as McpToolDefinition[],
+    transport: params.server.transport as McpTransport,
+    url: params.server.url,
+  };
+  const cachedTools = getFilteredTools(serverConfig);
   if (cachedTools.length === 0) {
     return [];
   }
@@ -63,6 +107,10 @@ export async function buildMcpAgentTools(params: {
     headers: params.server.headers,
     secrets,
   });
+  serverConfig.authConfig = merged.authConfig;
+  serverConfig.env = merged.env;
+  serverConfig.headers = merged.headers;
+  serverConfig.timeoutMs = 20_000;
 
   const tools: RegisteredAgentTool[] = [];
   for (const cached of cachedTools) {
@@ -84,23 +132,7 @@ export async function buildMcpAgentTools(params: {
       description: cached.description?.slice(0, 500) || summary,
       execute: async (input) => {
         try {
-          const result = await callMcpTool(
-            {
-              args: (params.server.args as string[]) ?? [],
-              authConfig: merged.authConfig,
-              authType: (params.server.authType as "bearer") ?? "none",
-              command: params.server.command ?? undefined,
-              env: merged.env,
-              headers: merged.headers,
-              id: params.server.id,
-              name: params.server.name,
-              timeoutMs: 20_000,
-              transport: (params.server.transport as "http") ?? "http",
-              url: params.server.url ?? undefined,
-            },
-            cached.name,
-            input
-          );
+          const result = await callMcpTool(serverConfig, cached.name, input);
           if (result?.isError) {
             return toolFailure(
               "tool_failed",
@@ -108,7 +140,7 @@ export async function buildMcpAgentTools(params: {
               { category: "transient", retryable: true }
             );
           }
-          return toolSuccess(summary, [
+          return toolSuccess(boundedMcpResult(result), [
             {
               id: `${params.server.id}:${cached.name}`,
               kind: "mcp",
@@ -129,7 +161,11 @@ export async function buildMcpAgentTools(params: {
       },
       id: toolId,
       name: `${params.server.name} · ${cached.name}`,
-      permissions: { default: "ask", impact: "external_mutation", readOnly: false },
+      permissions: {
+        default: "ask",
+        impact: "external_mutation",
+        readOnly: false,
+      },
       schema: z.record(z.string(), z.unknown()) as z.ZodType<
         Record<string, unknown>
       >,

@@ -55,9 +55,7 @@ export function getToolIdsForPluginIds(pluginIds: string[]): string[] {
   const allowed = new Set(pluginIds);
   return PLUGIN_DEFINITION_LIST.filter((definition) =>
     allowed.has(definition.manifest.id)
-  ).flatMap((definition) =>
-    definition.manifest.tools.map((tool) => tool.id)
-  );
+  ).flatMap((definition) => definition.manifest.tools.map((tool) => tool.id));
 }
 
 // Instancie les outils des plugins autorisés. `pluginIds` vide/absent = tous
@@ -71,6 +69,25 @@ export function createPluginTools(
   for (const definition of PLUGIN_DEFINITION_LIST) {
     if (allowed && !allowed.has(definition.manifest.id)) {
       continue;
+    }
+    if (
+      deps.channel &&
+      deps.channel !== "agent" &&
+      (definition.manifest.permissions.writesUserData ||
+        definition.manifest.permissions.requiresApproval)
+    ) {
+      throw new Error(
+        `Le plugin « ${definition.manifest.id} » nécessite le canal Agent interactif.`
+      );
+    }
+    if (
+      deps.channel &&
+      deps.channel !== "agent" &&
+      definition.manifest.permissions.readsUserData
+    ) {
+      throw new Error(
+        `Le plugin « ${definition.manifest.id} » nécessite un contexte utilisateur non disponible.`
+      );
     }
     const created = definition.createTools(deps);
     for (const manifestTool of definition.manifest.tools) {

@@ -137,7 +137,7 @@ export function toToolCategories(
   const categories = values.filter((value): value is ToolCategory =>
     TOOL_CATEGORIES.includes(value as ToolCategory)
   );
-  return categories.length > 0 ? categories : null;
+  return categories;
 }
 
 export function sanitizeToolPolicies(

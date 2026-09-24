@@ -32,10 +32,16 @@ vi.mock("@/lib/agent/flags", () => ({
 
 vi.mock("@/lib/ai/registry", () => ({
   getModelEntry: (id: string) => ({
+    agentCompatibility: {
+      continuationAfterToolResult: true,
+      structuredToolCalls: true,
+      toolDefinitions: true,
+    },
     capabilities: { tools: true },
     id,
     name: id,
   }),
+  isAgentCompatible: () => true,
   isModelAllowedForUser: (modelId: string, tier: string) =>
     !(modelId === "premium-model" && tier === "plus"),
 }));

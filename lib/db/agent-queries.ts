@@ -51,8 +51,8 @@ export async function createAgentRun(params: {
         budget: params.budget,
         chatId: params.chatId,
         messageId: params.messageId ?? null,
-        parentRunId: params.parentRunId ?? null,
         model: params.model,
+        parentRunId: params.parentRunId ?? null,
         plan: params.plan ?? null,
         reasoningLevel: params.reasoningLevel,
         startedAt: new Date(),
@@ -72,9 +72,16 @@ export async function getAgentRunByMessageId(params: {
   messageId: string;
 }): Promise<AgentRun | null> {
   const db = await dbReady();
-  const [row] = await db.select().from(agentRun).where(and(
-    eq(agentRun.chatId, params.chatId), eq(agentRun.messageId, params.messageId)
-  )).limit(1);
+  const [row] = await db
+    .select()
+    .from(agentRun)
+    .where(
+      and(
+        eq(agentRun.chatId, params.chatId),
+        eq(agentRun.messageId, params.messageId)
+      )
+    )
+    .limit(1);
   return row ?? null;
 }
 
@@ -85,15 +92,24 @@ export async function claimAgentRunExecution(params: {
   owner: string;
 }): Promise<boolean> {
   const db = await dbReady();
-  const [row] = await db.update(agentRun).set({
-    executionOwner: params.owner,
-    executionLeaseUntil: new Date(Date.now() + 310_000),
-  }).where(and(
-    eq(agentRun.id, params.id),
-    inArray(agentRun.status, ACTIVE_AGENT_RUN_STATUSES),
-    sql`(${agentRun.executionLeaseUntil} IS NULL OR ${agentRun.executionLeaseUntil} < now())`
-  )).returning({ id: agentRun.id });
-  if (row) console.info(JSON.stringify({ event: "agent_run_reserved", runId: row.id }));
+  const [row] = await db
+    .update(agentRun)
+    .set({
+      executionLeaseUntil: new Date(Date.now() + 310_000),
+      executionOwner: params.owner,
+    })
+    .where(
+      and(
+        eq(agentRun.id, params.id),
+        inArray(agentRun.status, ACTIVE_AGENT_RUN_STATUSES),
+        sql`(${agentRun.executionLeaseUntil} IS NULL OR ${agentRun.executionLeaseUntil} < now())`
+      )
+    )
+    .returning({ id: agentRun.id });
+  if (row)
+    console.info(
+      JSON.stringify({ event: "agent_run_reserved", runId: row.id })
+    );
   return Boolean(row);
 }
 
@@ -102,8 +118,12 @@ export async function releaseAgentRunExecution(params: {
   owner: string;
 }): Promise<void> {
   const db = await dbReady();
-  await db.update(agentRun).set({ executionOwner: null, executionLeaseUntil: null })
-    .where(and(eq(agentRun.id, params.id), eq(agentRun.executionOwner, params.owner)));
+  await db
+    .update(agentRun)
+    .set({ executionLeaseUntil: null, executionOwner: null })
+    .where(
+      and(eq(agentRun.id, params.id), eq(agentRun.executionOwner, params.owner))
+    );
 }
 
 export async function setAgentRunFeedback(params: {
@@ -113,21 +133,46 @@ export async function setAgentRunFeedback(params: {
   userId: string;
 }): Promise<AgentRun | null> {
   const db = await dbReady();
-  const [row] = await db.update(agentRun).set({
-    ...(params.useful === undefined ? {} : { useful: params.useful }),
-    ...(params.goalReached === undefined ? {} : { goalReached: params.goalReached }),
-    feedbackAt: new Date(),
-  }).where(and(eq(agentRun.id, params.id), eq(agentRun.userId, params.userId),
-    inArray(agentRun.status, ["completed", "failed", "cancelled", "timed_out"])
-  )).returning();
+  const [row] = await db
+    .update(agentRun)
+    .set({
+      ...(params.useful === undefined ? {} : { useful: params.useful }),
+      ...(params.goalReached === undefined
+        ? {}
+        : { goalReached: params.goalReached }),
+      feedbackAt: new Date(),
+    })
+    .where(
+      and(
+        eq(agentRun.id, params.id),
+        eq(agentRun.userId, params.userId),
+        inArray(agentRun.status, [
+          "completed",
+          "failed",
+          "cancelled",
+          "timed_out",
+        ])
+      )
+    )
+    .returning();
   return row ?? null;
 }
 
-export async function getAgentActivityRuns(params: { since: Date; userId: string }): Promise<AgentRun[]> {
+export async function getAgentActivityRuns(params: {
+  since: Date;
+  userId: string;
+}): Promise<AgentRun[]> {
   const db = await dbReady();
-  return db.select().from(agentRun).where(and(
-    eq(agentRun.userId, params.userId), gte(agentRun.createdAt, params.since)
-  )).orderBy(desc(agentRun.createdAt));
+  return db
+    .select()
+    .from(agentRun)
+    .where(
+      and(
+        eq(agentRun.userId, params.userId),
+        gte(agentRun.createdAt, params.since)
+      )
+    )
+    .orderBy(desc(agentRun.createdAt));
 }
 
 export async function getAgentRunById({
@@ -195,6 +240,7 @@ export async function getActiveAgentRunByChatId({
 export async function updateAgentRunStatus({
   completedAt,
   error,
+  executionOwner,
   id,
   startedAt,
   status,
@@ -203,6 +249,7 @@ export async function updateAgentRunStatus({
 }: {
   completedAt?: Date | null;
   error?: string | null;
+  executionOwner?: string | null;
   id: string;
   startedAt?: Date | null;
   status: AgentRunStatus;
@@ -220,7 +267,18 @@ export async function updateAgentRunStatus({
         ...(stopReason === undefined ? {} : { stopReason }),
         ...(startedAt === undefined ? {} : { startedAt }),
       })
-      .where(and(eq(agentRun.id, id), ...(onlyIfActive ? [inArray(agentRun.status, ACTIVE_AGENT_RUN_STATUSES)] : [])))
+      .where(
+        and(
+          eq(agentRun.id, id),
+          ...(executionOwner
+            ? [eq(agentRun.executionOwner, executionOwner)]
+            : []),
+          ...(onlyIfActive
+            ? [inArray(agentRun.status, ACTIVE_AGENT_RUN_STATUSES)]
+            : [])
+        )
+      )
+
       .returning({ id: agentRun.id });
     return rows.length > 0;
   } catch (err) {
@@ -229,10 +287,12 @@ export async function updateAgentRunStatus({
 }
 
 export async function bumpAgentRunCounters({
+  executionOwner,
   id,
   stepDelta = 0,
   toolCallDelta = 0,
 }: {
+  executionOwner?: string | null;
   id: string;
   stepDelta?: number;
   toolCallDelta?: number;
@@ -251,48 +311,93 @@ export async function bumpAgentRunCounters({
               toolCallCount: sql`${agentRun.toolCallCount} + ${toolCallDelta}`,
             }),
       })
-      .where(eq(agentRun.id, id));
+      .where(
+        and(
+          eq(agentRun.id, id),
+          ...(executionOwner
+            ? [eq(agentRun.executionOwner, executionOwner)]
+            : [])
+        )
+      );
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
 }
 
 export async function setAgentRunPlan({
+  executionOwner,
   id,
   plan,
 }: {
+  executionOwner?: string | null;
   id: string;
   plan: AgentPlan | null;
 }): Promise<void> {
   try {
     const db = await dbReady();
-    await db.update(agentRun).set({ plan }).where(eq(agentRun.id, id));
+    await db
+      .update(agentRun)
+      .set({ plan })
+      .where(
+        and(
+          eq(agentRun.id, id),
+          ...(executionOwner
+            ? [eq(agentRun.executionOwner, executionOwner)]
+            : [])
+        )
+      );
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
 }
 
 export async function setAgentRunUsage({
+  executionOwner,
   id,
   usage,
 }: {
+  executionOwner?: string | null;
   id: string;
   usage: AgentRunUsage;
 }): Promise<void> {
   try {
     const db = await dbReady();
     await db.transaction(async (tx) => {
-      const [current] = await tx.select({ usage: agentRun.usage }).from(agentRun)
-        .where(eq(agentRun.id, id)).for("update").limit(1);
+      const [current] = await tx
+        .select({ usage: agentRun.usage })
+        .from(agentRun)
+        .where(
+          and(
+            eq(agentRun.id, id),
+            ...(executionOwner
+              ? [eq(agentRun.executionOwner, executionOwner)]
+              : [])
+          )
+        )
+        .for("update")
+        .limit(1);
       if (!current) return;
       const previous = current.usage as AgentRunUsage;
-      await tx.update(agentRun).set({ usage: {
-        ...previous,
-        durationMs: (previous.durationMs ?? 0) + (usage.durationMs ?? 0),
-        inputTokens: (previous.inputTokens ?? 0) + (usage.inputTokens ?? 0),
-        outputTokens: (previous.outputTokens ?? 0) + (usage.outputTokens ?? 0),
-        totalTokens: (previous.totalTokens ?? 0) + (usage.totalTokens ?? 0),
-      } }).where(eq(agentRun.id, id));
+      await tx
+        .update(agentRun)
+        .set({
+          usage: {
+            ...previous,
+            durationMs: (previous.durationMs ?? 0) + (usage.durationMs ?? 0),
+            inputTokens: (previous.inputTokens ?? 0) + (usage.inputTokens ?? 0),
+            outputTokens:
+              (previous.outputTokens ?? 0) + (usage.outputTokens ?? 0),
+            totalTokens: (previous.totalTokens ?? 0) + (usage.totalTokens ?? 0),
+          },
+        })
+        .where(
+          and(
+            eq(agentRun.id, id),
+            ...(executionOwner
+              ? [eq(agentRun.executionOwner, executionOwner)]
+              : [])
+          )
+        );
     });
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
@@ -303,9 +408,11 @@ export async function setAgentRunUsage({
 // relues par l'API runs après refresh (le flux ne sert qu'aux mises à jour).
 export async function setAgentRunSuggestedActions({
   actions,
+  executionOwner,
   id,
 }: {
   actions: { id: string; label: string; payload: Record<string, unknown> }[];
+  executionOwner?: string | null;
   id: string;
 }): Promise<void> {
   try {
@@ -313,13 +420,21 @@ export async function setAgentRunSuggestedActions({
     await db
       .update(agentRun)
       .set({ suggestedActions: actions })
-      .where(eq(agentRun.id, id));
+      .where(
+        and(
+          eq(agentRun.id, id),
+          ...(executionOwner
+            ? [eq(agentRun.executionOwner, executionOwner)]
+            : [])
+        )
+      );
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
 }
 
 export async function createAgentStep(params: {
+  executionOwner?: string | null;
   index: number;
   runId: string;
   status?: AgentStepStatus;
@@ -330,6 +445,16 @@ export async function createAgentStep(params: {
 }) {
   try {
     const db = await dbReady();
+    if (params.executionOwner) {
+      const [run] = await db
+        .select({ owner: agentRun.executionOwner })
+        .from(agentRun)
+        .where(eq(agentRun.id, params.runId))
+        .limit(1);
+      if (!run || run.owner !== params.executionOwner) {
+        throw new Error("lease_agent_invalid");
+      }
+    }
     const [row] = await db
       .insert(agentStep)
       .values({
@@ -350,14 +475,18 @@ export async function createAgentStep(params: {
 
 export async function updateAgentStep({
   completedAt,
+  executionOwner,
   id,
+  runId,
   status,
   summary,
   title,
   toolExecutionId,
 }: {
   completedAt?: Date | null;
+  executionOwner?: string | null;
   id: string;
+  runId?: string;
   status?: AgentStepStatus;
   summary?: string | null;
   title?: string;
@@ -365,6 +494,16 @@ export async function updateAgentStep({
 }): Promise<void> {
   try {
     const db = await dbReady();
+    if (executionOwner) {
+      if (!runId) throw new Error("lease_agent_missing_run");
+      const [step] = await db
+        .select({ owner: agentRun.executionOwner })
+        .from(agentStep)
+        .innerJoin(agentRun, eq(agentRun.id, agentStep.runId))
+        .where(and(eq(agentStep.id, id), eq(agentStep.runId, runId)))
+        .limit(1);
+      if (!step || step.owner !== executionOwner) return;
+    }
     await db
       .update(agentStep)
       .set({
@@ -374,7 +513,12 @@ export async function updateAgentStep({
         ...(title === undefined ? {} : { title }),
         ...(toolExecutionId === undefined ? {} : { toolExecutionId }),
       })
-      .where(eq(agentStep.id, id));
+      .where(
+        and(
+          eq(agentStep.id, id),
+          ...(runId ? [eq(agentStep.runId, runId)] : [])
+        )
+      );
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -396,7 +540,9 @@ export async function getAgentStepsByRunId({ runId }: { runId: string }) {
 export async function createToolExecution(params: {
   attempt?: number;
   category: ToolCategory;
+  executionOwner?: string | null;
   input: unknown;
+  operationKey?: string | null;
   parentExecutionId?: string | null;
   retryable?: boolean;
   runId: string;
@@ -405,13 +551,25 @@ export async function createToolExecution(params: {
 }): Promise<ToolExecution> {
   try {
     const db = await dbReady();
+    if (params.executionOwner) {
+      const [run] = await db
+        .select({ owner: agentRun.executionOwner })
+        .from(agentRun)
+        .where(eq(agentRun.id, params.runId))
+        .limit(1);
+      if (!run || run.owner !== params.executionOwner) {
+        throw new Error("lease_agent_invalid");
+      }
+    }
     const [row] = await db
       .insert(toolExecution)
       .values({
         attempt: params.attempt ?? 1,
         category: params.category,
         input: params.input as never,
+        operationKey: params.operationKey ?? null,
         parentExecutionId: params.parentExecutionId ?? null,
+
         retryable: params.retryable ?? false,
         runId: params.runId,
         startedAt: new Date(),
@@ -431,22 +589,35 @@ export async function completeToolExecution({
   durationMs,
   error,
   errorCategory,
+  executionOwner,
   id,
   output,
   retryable,
+  runId,
   status,
 }: {
   approvalStatus?: "not_required" | "pending" | "approved" | "denied";
   durationMs?: number;
   error?: string | null;
   errorCategory?: string | null;
+  executionOwner?: string | null;
   id: string;
   output?: unknown;
   retryable?: boolean;
+  runId?: string;
   status: "running" | "completed" | "failed" | "denied" | "cancelled";
 }): Promise<void> {
   try {
     const db = await dbReady();
+    if (executionOwner) {
+      if (!runId) throw new Error("lease_agent_missing_run");
+      const [run] = await db
+        .select({ owner: agentRun.executionOwner })
+        .from(agentRun)
+        .where(eq(agentRun.id, runId))
+        .limit(1);
+      if (!run || run.owner !== executionOwner) return;
+    }
     await db
       .update(toolExecution)
       .set({
@@ -459,15 +630,22 @@ export async function completeToolExecution({
         completedAt: new Date(),
         status,
       })
-      .where(eq(toolExecution.id, id));
+      .where(
+        and(
+          eq(toolExecution.id, id),
+          ...(runId ? [eq(toolExecution.runId, runId)] : [])
+        )
+      );
   } catch (err) {
     throw new ChatbotError("bad_request:database", { cause: err });
   }
 }
 
 export async function getToolExecutionsByRunId({
+  limit = 200,
   runId,
 }: {
+  limit?: number;
   runId: string;
 }): Promise<ToolExecution[]> {
   try {
@@ -476,7 +654,8 @@ export async function getToolExecutionsByRunId({
       .select()
       .from(toolExecution)
       .where(eq(toolExecution.runId, runId))
-      .orderBy(asc(toolExecution.createdAt));
+      .orderBy(asc(toolExecution.createdAt))
+      .limit(Math.min(Math.max(limit, 1), 500));
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }

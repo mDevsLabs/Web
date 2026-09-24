@@ -245,6 +245,7 @@ export function installAgentNotificationListener(params: {
         // C'est le canal par défaut : l'utilisateur retrouve l'attente même
         // après avoir fermé l'application.
         await persistInAppNotification({
+          dedupeKey: `${event.runId}:${event.type}`,
           payload: notification,
           userId: target.userId,
         }).catch(() => {});
@@ -277,6 +278,7 @@ export function installAgentNotificationListener(params: {
 // découplé.
 let inAppWriter:
   | ((notification: {
+      dedupeKey?: string;
       payload: AgentNotificationPayload;
       userId: string;
     }) => Promise<void>)
@@ -284,6 +286,7 @@ let inAppWriter:
 
 export function setAgentInAppNotificationWriter(
   writer: (notification: {
+    dedupeKey?: string;
     payload: AgentNotificationPayload;
     userId: string;
   }) => Promise<void>
@@ -292,6 +295,7 @@ export function setAgentInAppNotificationWriter(
 }
 
 export async function persistInAppNotification(params: {
+  dedupeKey?: string;
   payload: AgentNotificationPayload;
   userId: string;
 }): Promise<void> {

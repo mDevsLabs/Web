@@ -138,12 +138,19 @@ export function isWeatherAtLocation(
   if (!value || typeof value !== "object") {
     return false;
   }
-  const candidate = value as { current?: unknown; daily?: unknown };
+  const candidate = value as {
+    current?: { temperature_2m?: unknown };
+    daily?: { sunrise?: unknown; sunset?: unknown; time?: unknown };
+  };
   return (
     typeof candidate.current === "object" &&
     candidate.current !== null &&
+    typeof candidate.current.temperature_2m === "number" &&
     typeof candidate.daily === "object" &&
-    candidate.daily !== null
+    candidate.daily !== null &&
+    Array.isArray(candidate.daily.sunrise) &&
+    Array.isArray(candidate.daily.sunset) &&
+    Array.isArray(candidate.daily.time)
   );
 }
 

@@ -300,6 +300,7 @@ export const chat = pgTable(
     customInstructions: text("customInstructions"),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     isArchived: boolean("isArchived").notNull().default(false),
+
     // Conversation classique (chat) ou exécutée par Agent : évite de dupliquer
     // l'historique, la sidebar et les projets pour le mode Agent.
     mode: varchar("mode", { enum: ["chat", "agent"] })
@@ -699,6 +700,7 @@ export const notification = pgTable(
   {
     body: text("body"),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
+    dedupeKey: text("dedupeKey"),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     isRead: boolean("isRead").notNull().default(false),
     link: text("link"),
@@ -723,6 +725,10 @@ export const notification = pgTable(
   },
   (table) => ({
     createdAtIdx: index("Notification_createdAt_idx").on(table.createdAt),
+    dedupeUnique: uniqueIndex("Notification_userId_dedupeKey_key").on(
+      table.userId,
+      table.dedupeKey
+    ),
     userIdIdx: index("Notification_userId_idx").on(table.userId),
     userReadIdx: index("Notification_userId_isRead_idx").on(
       table.userId,
@@ -1106,16 +1112,14 @@ export const agentRun = pgTable(
     completedAt: timestamp("completedAt"),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     error: text("error"),
+    executionLeaseUntil: timestamp("executionLeaseUntil"),
+    executionOwner: text("executionOwner"),
+    feedbackAt: timestamp("feedbackAt"),
+    goalReached: boolean("goalReached"),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     messageId: text("messageId"),
-    parentRunId: uuid("parentRunId"),
-    stopReason: text("stopReason"),
-    executionOwner: text("executionOwner"),
-    executionLeaseUntil: timestamp("executionLeaseUntil"),
-    useful: boolean("useful"),
-    goalReached: boolean("goalReached"),
-    feedbackAt: timestamp("feedbackAt"),
     model: text("model").notNull(),
+    parentRunId: uuid("parentRunId"),
     plan: json("plan").$type<AgentPlan | null>(),
     reasoningLevel: varchar("reasoningLevel", {
       enum: ["low", "medium", "high"],
@@ -1140,6 +1144,7 @@ export const agentRun = pgTable(
       .notNull()
       .default("queued"),
     stepCount: integer("stepCount").notNull().default(0),
+    stopReason: text("stopReason"),
     suggestedActions: json("suggestedActions")
       .$type<unknown[]>()
       .notNull()
@@ -1153,12 +1158,17 @@ export const agentRun = pgTable(
       .$type<AgentRunUsage | AgentRunUsageNormalized>()
       .notNull()
       .default({}),
+    useful: boolean("useful"),
     userId: text("userId").notNull(),
   },
   (table) => ({
     chatIdIdx: index("AgentRun_chatId_idx").on(table.chatId),
     createdAtIdx: index("AgentRun_createdAt_idx").on(table.createdAt),
-    parentRunFk: foreignKey({ columns: [table.parentRunId], foreignColumns: [table.id], name: "AgentRun_parentRunId_fkey" }).onDelete("set null"),
+    parentRunFk: foreignKey({
+      columns: [table.parentRunId],
+      foreignColumns: [table.id],
+      name: "AgentRun_parentRunId_fkey",
+    }).onDelete("set null"),
     userStatusIdx: index("AgentRun_userId_status_idx").on(
       table.userId,
       table.status
@@ -1247,6 +1257,7 @@ export const toolExecution = pgTable(
     errorCategory: varchar("errorCategory", { length: 32 }),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     input: json("input").$type<unknown>(),
+    operationKey: text("operationKey"),
     output: json("output").$type<unknown>(),
     parentExecutionId: uuid("parentExecutionId"),
     retryAfterMs: integer("retryAfterMs"),
@@ -1264,6 +1275,9 @@ export const toolExecution = pgTable(
     toolId: text("toolId").notNull(),
   },
   (table) => ({
+    operationUnique: uniqueIndex(
+      "ToolExecution_runId_operationKey_attempt_key"
+    ).on(table.runId, table.operationKey, table.attempt),
     runIdIdx: index("ToolExecution_runId_idx").on(table.runId),
     toolIdIdx: index("ToolExecution_toolId_idx").on(table.toolId),
   })
@@ -1349,19 +1363,25 @@ export type AgentSchedule = InferSelectModel<typeof agentSchedule>;
 export const agentScheduleVersion = pgTable(
   "AgentScheduleVersion",
   {
-    id: uuid("id").primaryKey().notNull().defaultRandom(),
-    scheduleId: uuid("scheduleId").notNull().references(() => agentSchedule.id, { onDelete: "cascade" }),
-    revision: integer("revision").notNull(),
-    snapshot: json("snapshot").$type<AgentScheduleRecord>().notNull(),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    revision: integer("revision").notNull(),
+    scheduleId: uuid("scheduleId")
+      .notNull()
+      .references(() => agentSchedule.id, { onDelete: "cascade" }),
+    snapshot: json("snapshot").$type<AgentScheduleRecord>().notNull(),
     userId: text("userId").notNull(),
   },
   (table) => ({
-    scheduleRevisionUnique: uniqueIndex("AgentScheduleVersion_schedule_revision_key").on(table.scheduleId, table.revision),
+    scheduleRevisionUnique: uniqueIndex(
+      "AgentScheduleVersion_schedule_revision_key"
+    ).on(table.scheduleId, table.revision),
   })
 );
 
-export type AgentScheduleVersion = InferSelectModel<typeof agentScheduleVersion>;
+export type AgentScheduleVersion = InferSelectModel<
+  typeof agentScheduleVersion
+>;
 
 // Une exécution prévue. UNIQUE(scheduleId, dueAt) garantit l'idempotence : un
 // tick rejoué ou deux workers concurrents ne créent jamais deux occurrences.
@@ -1382,9 +1402,20 @@ export const agentScheduleOccurrence = pgTable(
     scheduleId: uuid("scheduleId")
       .notNull()
       .references(() => agentSchedule.id, { onDelete: "cascade" }),
-    scheduleVersionId: uuid("scheduleVersionId").references(() => agentScheduleVersion.id, { onDelete: "set null" }),
+    scheduleVersionId: uuid("scheduleVersionId").references(
+      () => agentScheduleVersion.id,
+      { onDelete: "set null" }
+    ),
     status: varchar("status", {
-      enum: ["pending", "claimed", "running", "waiting", "completed", "failed", "skipped"],
+      enum: [
+        "pending",
+        "claimed",
+        "running",
+        "waiting",
+        "completed",
+        "failed",
+        "skipped",
+      ],
     })
       .notNull()
       .default("pending"),

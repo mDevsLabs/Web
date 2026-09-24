@@ -40,7 +40,15 @@ export async function recordAgentUsage(params: {
     totalTokens,
     userEmail: params.userEmail,
     userId: params.userId,
-  }).catch(() => {});
+  }).catch((error: unknown) => {
+    console.warn(
+      JSON.stringify({
+        event: "agent_usage_persist_failed",
+        message: error instanceof Error ? error.message : "unknown",
+        userId: params.userId,
+      })
+    );
+  });
 
   // Notification best-effort de l'endpoint de journalisation amont.
   try {
@@ -57,6 +65,7 @@ export async function recordAgentUsage(params: {
         "Content-Type": "application/json",
       },
       method: "POST",
+      signal: AbortSignal.timeout(3000),
     });
   } catch {
     // Le décompte local a déjà été appliqué : un échec de journalisation ne

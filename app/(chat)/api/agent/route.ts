@@ -3,8 +3,12 @@ import { convertToModelMessages } from "ai";
 import { applyIncomingApprovalDecisions } from "@/lib/agent/approvals/incoming";
 import { resolveAgentExecutionBudget } from "@/lib/agent/budget";
 import { buildAgentContext } from "@/lib/agent/context/build";
-import { collectAttachments, validateAttachmentsAgainstModel } from "@/lib/agent/context/files";
+import {
+  collectAttachments,
+  validateAttachmentsAgainstModel,
+} from "@/lib/agent/context/files";
 import { loadAgentProjectContext } from "@/lib/agent/context/project";
+import { filterToolsByFlags } from "@/lib/agent/flags";
 import {
   type AgentTierFailure,
   agentTierFailureResponse,
@@ -33,25 +37,31 @@ import type { RegisteredAgentTool, ToolPermission } from "@/lib/agent/types";
 import { injectUserInputAnswers } from "@/lib/agent/user-input/inject";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
-import { getModelEntry, pickDefaultAgentModel } from "@/lib/ai/registry";
+import {
+  getModelEntry,
+  isAgentCompatible,
+  isModelAllowedForUser,
+  pickDefaultAgentModel,
+} from "@/lib/ai/registry";
 import { errorResponse } from "@/lib/api/error-response";
 import { authenticateChatRequest, enforceChatRateLimit } from "@/lib/chat/auth";
 import { buildChatContext } from "@/lib/chat/context";
 import { loadMcpContext } from "@/lib/chat/mcp";
+import { buildMemoryContext } from "@/lib/chat/memory";
 import {
+  claimAgentRunExecution,
   createAgentRun,
   createAgentStep,
-  claimAgentRunExecution,
   getActiveAgentRunByChatId,
-  getAgentRunByMessageId,
   getAgentRunById,
+  getAgentRunByMessageId,
   getAgentStepsByRunId,
   getToolExecutionsByRunId,
   updateAgentRunStatus,
 } from "@/lib/db/agent-queries";
 import { getAnsweredAgentUserInputsForRun } from "@/lib/db/agent-user-input-queries";
-import { ChatbotError } from "@/lib/errors";
 import { saveMessages } from "@/lib/db/queries";
+import { ChatbotError } from "@/lib/errors";
 import type { ChatMessage } from "@/lib/types";
 import { getTextFromMessage } from "@/lib/utils";
 import { type AgentRequestBody, agentRequestBodySchema } from "./schema";
@@ -132,16 +142,27 @@ export async function POST(request: Request) {
 
     // Un rejeu retrouve le run avant le nouveau contrôle de quota : le
     // premier essai a pu consommer le reste du quota après avoir été accepté.
-    const incomingMessageId = (body.message as { id?: string } | undefined)?.id ?? null;
+    const incomingMessageId =
+      (body.message as { id?: string } | undefined)?.id ?? null;
     if (incomingMessageId) {
-      const replay = await getAgentRunByMessageId({ chatId: body.id, messageId: incomingMessageId });
+      const replay = await getAgentRunByMessageId({
+        chatId: body.id,
+        messageId: incomingMessageId,
+      });
       if (replay) {
-        if (replay.userId !== auth.userId) return errorResponse("access_denied");
-        return Response.json({ code: "existing_run", runId: replay.id, status: replay.status }, { status: 409 });
+        if (replay.userId !== auth.userId)
+          return errorResponse("access_denied");
+        return Response.json(
+          { code: "existing_run", runId: replay.id, status: replay.status },
+          { status: 409 }
+        );
       }
       const active = await getActiveAgentRunByChatId({ chatId: body.id });
       if (active && active.userId === auth.userId) {
-        return Response.json({ code: "active_run_conflict", runId: active.id }, { status: 409 });
+        return Response.json(
+          { code: "active_run_conflict", runId: active.id },
+          { status: 409 }
+        );
       }
     }
 
@@ -161,9 +182,16 @@ export async function POST(request: Request) {
     const models = await fetchUserModels();
     const settings = await loadAgentSettings({ userId: auth.userId });
     const requested = getModelEntry(body.modelId, models);
-    const resolvedModel = requested.capabilities.tools
-      ? requested.id
-      : pickDefaultAgentModel(models, settings.defaultModel, tier);
+    const requestedModelExists = models.some(
+      (model) => model.id === body.modelId
+    );
+    const resolvedModel =
+      requestedModelExists &&
+      requested.capabilities.tools &&
+      isAgentCompatible(requested) &&
+      isModelAllowedForUser(requested.id, tier)
+        ? requested.id
+        : pickDefaultAgentModel(models, settings.defaultModel, tier);
 
     // TOUTES les vérifications portent sur le modèle RÉELLEMENT résolu. Avant,
     // `capabilitiesOverride` recevait les capacités du modèle DEMANDÉ : quand un
@@ -199,8 +227,8 @@ export async function POST(request: Request) {
       message: (body.message as ChatMessage | undefined) ?? null,
       messages: (body.messages as ChatMessage[] | undefined) ?? null,
       mode: "agent",
-      persistIncomingMessage: false,
       pendingPrompt: null,
+      persistIncomingMessage: false,
       projectId: body.projectId,
       selectedAgentId: body.assistantId ?? null,
       selectedChatMode: "agent",
@@ -208,6 +236,14 @@ export async function POST(request: Request) {
       selectedVisibilityType: body.visibility,
       skillId: body.skillId,
       tags: ["agent"],
+    });
+
+    const memoryContext = await buildMemoryContext({
+      effectiveAgentId: ctx.effectiveAgentId,
+      effectiveProjectId: ctx.effectiveProjectId,
+      isGhostMode: false,
+      tier,
+      userId: ctx.userId,
     });
 
     // 6. Fichiers : types, nombre et capacités du modèle revérifiés.
@@ -254,51 +290,93 @@ export async function POST(request: Request) {
     const isContinuation = Boolean(body.messages);
     const messageId = (body.message as { id?: string } | undefined)?.id ?? null;
     if (!isContinuation && messageId) {
-      const replay = await getAgentRunByMessageId({ chatId: ctx.id, messageId });
+      const replay = await getAgentRunByMessageId({
+        chatId: ctx.id,
+        messageId,
+      });
       if (replay) {
-        return Response.json({ code: "existing_run", runId: replay.id, status: replay.status }, { status: 409 });
+        return Response.json(
+          { code: "existing_run", runId: replay.id, status: replay.status },
+          { status: 409 }
+        );
       }
     }
     const activeRun = isContinuation
       ? await getActiveAgentRunByChatId({ chatId: ctx.id })
       : null;
     if (isContinuation && !activeRun) {
-      return errorResponse("conflict", { message: "Aucun run actif à reprendre dans cette conversation." });
+      return errorResponse("conflict", {
+        message: "Aucun run actif à reprendre dans cette conversation.",
+      });
     }
     if (!isContinuation) {
       const active = await getActiveAgentRunByChatId({ chatId: ctx.id });
       if (active) {
-        return Response.json({ code: "active_run_conflict", runId: active.id }, { status: 409 });
+        return Response.json(
+          { code: "active_run_conflict", runId: active.id },
+          { status: 409 }
+        );
       }
     }
     let resumeSummary: string | null = null;
     let parentRunId: string | null = null;
     if (body.resumeFromRunId) {
-      if (!flags["agent.guidedResume"]) return errorResponse("service_unavailable", { message: "La reprise guidée n'est pas encore activée." });
-      if (isContinuation) return errorResponse("invalid_request", { message: "Une reprise guidée doit envoyer une nouvelle consigne." });
-      const parent = await getAgentRunById({ id: body.resumeFromRunId, userId: ctx.userId });
-      if (!parent || parent.chatId !== ctx.id || parent.status !== "timed_out") {
-        return errorResponse("invalid_request", { message: "Le run à poursuivre est introuvable ou n'a pas expiré dans cette conversation." });
+      if (!flags["agent.guidedResume"])
+        return errorResponse("service_unavailable", {
+          message: "La reprise guidée n'est pas encore activée.",
+        });
+      if (isContinuation)
+        return errorResponse("invalid_request", {
+          message: "Une reprise guidée doit envoyer une nouvelle consigne.",
+        });
+      const parent = await getAgentRunById({
+        id: body.resumeFromRunId,
+        userId: ctx.userId,
+      });
+      if (
+        !parent ||
+        parent.chatId !== ctx.id ||
+        parent.status !== "timed_out"
+      ) {
+        return errorResponse("invalid_request", {
+          message:
+            "Le run à poursuivre est introuvable ou n'a pas expiré dans cette conversation.",
+        });
       }
       parentRunId = parent.id;
       const [steps, executions] = await Promise.all([
         getAgentStepsByRunId({ runId: parent.id }),
         getToolExecutionsByRunId({ runId: parent.id }),
       ]);
-      const completed = executions.filter((item) => item.status === "completed").slice(-8);
+      const completed = executions
+        .filter((item) => item.status === "completed")
+        .slice(-8);
       const entries = completed.map((item) => {
-        const output = item.output && typeof item.output === "object" ? item.output as Record<string, unknown> : {};
-        const useful = ["title", "url", "documentId", "artifactId", "source"].map((key) => output[key]).filter((value): value is string => typeof value === "string").map((value) => value.slice(0, 180));
+        const output =
+          item.output && typeof item.output === "object"
+            ? (item.output as Record<string, unknown>)
+            : {};
+        const useful = ["title", "url", "documentId", "artifactId", "source"]
+          .map((key) => output[key])
+          .filter((value): value is string => typeof value === "string")
+          .map((value) => value.slice(0, 180));
         return `- ${item.toolId}: ${useful.join(" · ") || "résultat disponible dans l'historique"}`;
       });
       resumeSummary = [
         `Reprise liée au run ${parent.id}. Le run initial et ses limites restent inchangés.`,
         `Arrêt: ${(parent.stopReason ?? parent.error ?? "délai dépassé").slice(0, 180)}`,
         "Étapes utiles:",
-        ...steps.filter((step) => step.status === "completed").slice(-10).map((step) => `- ${step.title}: ${(step.summary ?? "").slice(0, 180)}`),
+        ...steps
+          .filter((step) => step.status === "completed")
+          .slice(-10)
+          .map(
+            (step) => `- ${step.title}: ${(step.summary ?? "").slice(0, 180)}`
+          ),
         "Résultats, sources et livrables:",
         ...entries,
-      ].join("\n").slice(0, 3500);
+      ]
+        .join("\n")
+        .slice(0, 3500);
     }
 
     const task = isContinuation
@@ -316,33 +394,46 @@ export async function POST(request: Request) {
     // Outils MCP : les serveurs installés et activés deviennent des outils
     // réellement exécutables (source "mcp"), sous le drapeau agent.mcp.
     const pluginAgentContext = flags["agent.plugins"]
-      ? await listInstalledPluginAgentTools({ tier, userId: ctx.userId }).catch(() => ({ pluginIds: [], tools: [] }))
+      ? await listInstalledPluginAgentTools({ tier, userId: ctx.userId }).catch(
+          (error: unknown) => {
+            console.warn(
+              JSON.stringify({
+                event: "agent_plugin_registry_unavailable",
+                message: error instanceof Error ? error.message : "unknown",
+              })
+            );
+            return { pluginIds: [], tools: [] };
+          }
+        )
       : { pluginIds: [], tools: [] };
     const registeredTools = [
       ...listRegisteredAgentTools(),
       ...pluginAgentContext.tools,
     ];
-    const baselineTools = flags["agent.mcp"]
-      ? [
-          ...registeredTools,
-          ...(await loadMcpContext({
-            chatId: ctx.id,
-            isToolApprovalFlow: false,
-            messages: null,
-            requestedTools: [],
-            skillMcpServerIds: [],
-            skillMcpToolFilter: null,
-            userId: ctx.userId,
-          })
-            .then((mcp) =>
-              listMcpAgentTools({
-                servers: mcp.userMcpServers,
-                userId: ctx.userId,
-              })
-            )
-            .catch(() => [])),
-        ]
-      : registeredTools;
+    const baselineTools = filterToolsByFlags(
+      flags["agent.mcp"]
+        ? [
+            ...registeredTools,
+            ...(await loadMcpContext({
+              chatId: ctx.id,
+              isToolApprovalFlow: false,
+              messages: null,
+              requestedTools: [],
+              skillMcpServerIds: [],
+              skillMcpToolFilter: null,
+              userId: ctx.userId,
+            })
+              .then((mcp) =>
+                listMcpAgentTools({
+                  servers: mcp.userMcpServers,
+                  userId: ctx.userId,
+                })
+              )
+              .catch(() => [])),
+          ]
+        : registeredTools,
+      flags
+    );
     const continuationSnapshot = activeRun
       ? (activeRun.toolPolicySnapshot as Record<string, ToolPermission>)
       : null;
@@ -405,7 +496,10 @@ export async function POST(request: Request) {
           }
         }
       }
-      for (const toolId of getMentionedPluginToolIds(task, pluginAgentContext.pluginIds)) {
+      for (const toolId of getMentionedPluginToolIds(
+        task,
+        pluginAgentContext.pluginIds
+      )) {
         if (!selectedTools.some((tool) => tool.id === toolId)) {
           const forced = baselineTools.find((tool) => tool.id === toolId);
           if (forced) selectedTools = [...selectedTools, forced];
@@ -459,43 +553,83 @@ export async function POST(request: Request) {
     if (!run) {
       try {
         run = await createAgentRun({
-        autonomy,
-        budget,
-        chatId: ctx.id,
-        messageId,
-        parentRunId,
-        model: resolvedModel,
-        plan,
-        reasoningLevel,
-        status: "running",
-        toolPolicySnapshot: permissions.snapshot,
-        userId: ctx.userId,
+          autonomy,
+          budget,
+          chatId: ctx.id,
+          messageId,
+          model: resolvedModel,
+          parentRunId,
+          plan,
+          reasoningLevel,
+          status: "running",
+          toolPolicySnapshot: permissions.snapshot,
+          userId: ctx.userId,
         });
       } catch (error) {
-        const replay = messageId ? await getAgentRunByMessageId({ chatId: ctx.id, messageId }) : null;
-        if (replay) return Response.json({ code: "existing_run", runId: replay.id, status: replay.status }, { status: 409 });
+        const replay = messageId
+          ? await getAgentRunByMessageId({ chatId: ctx.id, messageId })
+          : null;
+        if (replay)
+          return Response.json(
+            { code: "existing_run", runId: replay.id, status: replay.status },
+            { status: 409 }
+          );
         const conflict = await getActiveAgentRunByChatId({ chatId: ctx.id });
-        if (conflict) return Response.json({ code: "active_run_conflict", runId: conflict.id }, { status: 409 });
+        if (conflict)
+          return Response.json(
+            { code: "active_run_conflict", runId: conflict.id },
+            { status: 409 }
+          );
         throw error;
       }
     }
 
     const executionOwner = randomUUID();
-    if (!await claimAgentRunExecution({ id: run.id, owner: executionOwner })) {
-      console.warn(JSON.stringify({ event: "agent_run_reservation_conflict", runId: run.id, chatId: ctx.id }));
-      return Response.json({ code: "run_execution_in_progress", runId: run.id }, { status: 409 });
+    if (
+      !(await claimAgentRunExecution({ id: run.id, owner: executionOwner }))
+    ) {
+      console.warn(
+        JSON.stringify({
+          chatId: ctx.id,
+          event: "agent_run_reservation_conflict",
+          runId: run.id,
+        })
+      );
+      return Response.json(
+        { code: "run_execution_in_progress", runId: run.id },
+        { status: 409 }
+      );
     }
     if (body.message) {
-      await saveMessages({ messages: [{
-        attachments: [], chatId: ctx.id, createdAt: new Date(),
-        id: messageId as string, parts: (body.message as ChatMessage).parts,
-        role: "user",
-      }] });
+      await saveMessages({
+        messages: [
+          {
+            attachments: [],
+            chatId: ctx.id,
+            createdAt: new Date(),
+            id: messageId as string,
+            parts: (body.message as ChatMessage).parts,
+            role: "user",
+          },
+        ],
+      });
     }
-    if (parentRunId) console.info(JSON.stringify({ event: "agent_run_resumed", runId: run.id, parentRunId, chatId: ctx.id }));
+    if (parentRunId)
+      console.info(
+        JSON.stringify({
+          chatId: ctx.id,
+          event: "agent_run_resumed",
+          parentRunId,
+          runId: run.id,
+        })
+      );
 
     if (activeRun) {
-      await updateAgentRunStatus({ id: activeRun.id, status: "running" });
+      await updateAgentRunStatus({
+        executionOwner,
+        id: activeRun.id,
+        status: "running",
+      });
     }
 
     // 12a. Décisions d'approbation portées par les messages entrants : elles
@@ -586,10 +720,15 @@ export async function POST(request: Request) {
           .join("\n\n") || null,
       contextWindow: capabilities.contextWindow,
       families,
-      memoryBlock: null,
-      messages: parentRunId && body.message
-        ? await convertToModelMessages([body.message as ChatMessage])
-        : ctx.modelMessages,
+      memoryBlock:
+        [memoryContext.userMemoryBlock, memoryContext.projectMemoryBlock]
+          .filter(Boolean)
+          .join("\n\n") || null,
+
+      messages:
+        parentRunId && body.message
+          ? await convertToModelMessages([body.message as ChatMessage])
+          : ctx.modelMessages,
       plan,
       project: projectContext,
       reasoningLevel,
@@ -611,10 +750,13 @@ export async function POST(request: Request) {
 
     const stream = createAgentStream({
       abortSignal: request.signal,
+      agentId: ctx.effectiveAgentId,
       approvalRequiredToolIds,
+
       budget,
       chatId: ctx.id,
       context: agentContext,
+      executionOwner,
       existingMessages: ctx.uiMessages,
       firstUserMessageForTitle: ctx.firstUserMessageForTitle,
       flags,
@@ -625,7 +767,6 @@ export async function POST(request: Request) {
       projectId: ctx.effectiveProjectId ?? null,
       reasoningLevel,
       runId: run.id,
-      executionOwner,
       // Réflexion visible par défaut : identique au Chat (lib/chat/stream.ts
       // envoie toujours sendReasoning: true). Seuls les parts explicitement
       // fournis par le provider transitent — jamais de chain-of-thought fabriqué.
@@ -640,7 +781,9 @@ export async function POST(request: Request) {
       // zéro (sinon une tâche relancée indéfiniment n'atteint jamais sa limite).
       startToolCallCount: activeRun?.toolCallCount ?? 0,
       task,
+      tier,
       tools: enabledTools,
+
       userEmail: ctx.userEmail,
       userId: ctx.userId,
     });

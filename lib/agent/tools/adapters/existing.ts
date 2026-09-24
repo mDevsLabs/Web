@@ -64,12 +64,21 @@ export function fromExistingTool<Input>(params: {
 export function webResultsToSources(
   results: Array<{ source?: string; title?: string; url?: string }>
 ): AgentSource[] {
-  return results
-    .filter((result) => Boolean(result.url))
-    .map((result, index) => ({
-      id: `web-${index + 1}`,
-      kind: "web" as const,
-      title: result.title || result.url || "Résultat web",
-      url: result.url,
-    }));
+  return results.flatMap((result, index) => {
+    if (!result.url) return [];
+    try {
+      const url = new URL(result.url);
+      if (!["http:", "https:"].includes(url.protocol)) return [];
+      return [
+        {
+          id: `web-${index + 1}`,
+          kind: "web" as const,
+          title: (result.title || result.url || "Résultat web").slice(0, 200),
+          url: url.toString(),
+        },
+      ];
+    } catch {
+      return [];
+    }
+  });
 }

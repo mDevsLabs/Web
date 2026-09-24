@@ -56,6 +56,19 @@ type AirQualityResponse = {
   locationName?: string;
 };
 
+const airQualityResponseSchema = z
+  .object({
+    current: z.record(z.string(), z.number()).optional(),
+    current_units: z.record(z.string(), z.string()).optional(),
+    hourly: z
+      .object({
+        time: z.array(z.string()).optional(),
+      })
+      .passthrough()
+      .optional(),
+  })
+  .passthrough();
+
 export const getAirQuality = tool({
   description:
     "Obtenir l'indice de qualité de l'air (indice européen et américain), les polluants (PM10, PM2.5, O3, NO2, SO2, CO) et les concentrations de pollen d'une ville ou de coordonnées, avec prévisions horaires. Fournit une interprétation lisible du niveau de pollution.",
@@ -91,7 +104,11 @@ export const getAirQuality = tool({
       return { error: `Qualité de l'air indisponible : ${result.error}` };
     }
 
-    const data = result.data;
+    const parsedResponse = airQualityResponseSchema.safeParse(result.data);
+    if (!parsedResponse.success) {
+      return { error: "Réponse de qualité de l'air invalide." };
+    }
+    const data = parsedResponse.data as AirQualityResponse;
     const current = data.current ?? {};
     const aqiLevel = describeEuropeanAqi(current.european_aqi);
 

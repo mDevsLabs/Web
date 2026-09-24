@@ -57,6 +57,8 @@ export type SafeFetchOptions = {
   resolver?: (hostname: string) => Promise<string[]>;
   signal?: AbortSignal;
   timeoutMs?: number;
+  method?: "GET" | "POST";
+  body?: string | Uint8Array;
   /**
    * Origines autorisées à recevoir l'en-tête `Authorization`. Toute autre
    * destination (y compris après une redirection) le voit retiré : un jeton de
@@ -195,7 +197,9 @@ function pinnedLookup(addresses: string[]) {
 
 function requestOnce(params: {
   addresses: string[];
+  body?: string | Uint8Array;
   headers: Record<string, string>;
+  method?: "GET" | "POST";
   signal?: AbortSignal;
   timeoutMs: number;
   url: URL;
@@ -207,7 +211,7 @@ function requestOnce(params: {
         headers: params.headers,
         host: params.url.hostname,
         lookup: pinnedLookup(params.addresses) as never,
-        method: "GET",
+        method: params.method ?? "GET",
         path: `${params.url.pathname}${params.url.search}`,
         port: params.url.port ? Number(params.url.port) : isHttps ? 443 : 80,
         signal: params.signal,
@@ -225,7 +229,7 @@ function requestOnce(params: {
       request.destroy(new Error(`Délai dépassé (${params.timeoutMs} ms).`));
     });
     request.on("error", reject);
-    request.end();
+    request.end(params.body);
   });
 }
 
@@ -279,12 +283,14 @@ async function fetchCapped(
     try {
       response = await requestOnce({
         addresses,
+        body: options.body,
         // Le jeton n'est envoyé que si l'origine de CE saut est autorisée.
         headers: headersForHop(
           headers,
           url.toString(),
           options.tokenOriginAllowlist
         ),
+        method: options.method,
         signal: options.signal,
         timeoutMs,
         url,

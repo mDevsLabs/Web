@@ -4,6 +4,12 @@
 // bornés, pour éviter que chaque plugin recopie sa propre variante.
 
 export const PLUGIN_HTTP_TIMEOUT_MS = 8000;
+const MAX_RESPONSE_BYTES = 1_000_000;
+const OPEN_METEO_HOSTS = new Set([
+  "geocoding-api.open-meteo.com",
+  "api.open-meteo.com",
+  "air-quality-api.open-meteo.com",
+]);
 
 export type GeocodedCity = {
   country: string;
@@ -22,11 +28,25 @@ export async function fetchJson<T>(
   url: string,
   timeoutMs = PLUGIN_HTTP_TIMEOUT_MS
 ): Promise<HttpJsonResult<T>> {
+  let parsedUrl: URL;
+  try {
+    parsedUrl = new URL(url);
+  } catch {
+    return { error: "Adresse du service invalide.", ok: false };
+  }
+  if (
+    parsedUrl.protocol !== "https:" ||
+    !OPEN_METEO_HOSTS.has(parsedUrl.hostname)
+  ) {
+    return { error: "Service Open-Meteo non autorisé.", ok: false };
+  }
+
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
   try {
-    const response = await fetch(url, {
+    const response = await fetch(parsedUrl, {
       headers: { Accept: "application/json" },
+      redirect: "error",
       signal: controller.signal,
     });
     if (!response.ok) {
@@ -35,15 +55,45 @@ export async function fetchJson<T>(
         ok: false,
       };
     }
-    return { data: (await response.json()) as T, ok: true };
+    const contentLength = Number(response.headers.get("content-length") ?? 0);
+    if (contentLength > MAX_RESPONSE_BYTES) {
+      return { error: "Réponse trop volumineuse.", ok: false };
+    }
+    if (!response.body) {
+      return { error: "Réponse vide ou illisible.", ok: false };
+    }
+    const reader = response.body.getReader();
+    const chunks: Uint8Array[] = [];
+    let bytes = 0;
+    while (true) {
+      const chunk = await reader.read();
+      if (chunk.done) break;
+      bytes += chunk.value.byteLength;
+      if (bytes > MAX_RESPONSE_BYTES) {
+        await reader.cancel();
+        return { error: "Réponse trop volumineuse.", ok: false };
+      }
+      chunks.push(chunk.value);
+    }
+    const body = new Uint8Array(bytes);
+    let offset = 0;
+    for (const chunk of chunks) {
+      body.set(chunk, offset);
+      offset += chunk.byteLength;
+    }
+    return { data: JSON.parse(new TextDecoder().decode(body)) as T, ok: true };
   } catch (error) {
     const aborted =
       error instanceof Error &&
       (error.name === "AbortError" || error.name === "TimeoutError");
+    const redirect =
+      error instanceof TypeError && /redirect/i.test(error.message);
     return {
       error: aborted
         ? `Délai d'attente dépassé (${timeoutMs / 1000}s).`
-        : "Erreur réseau lors de l'appel du service.",
+        : redirect
+          ? "Redirection du service refusée."
+          : "Erreur réseau ou réponse JSON invalide.",
       ok: false,
     };
   } finally {
@@ -51,7 +101,11 @@ export async function fetchJson<T>(
   }
 }
 
-export async function geocodeCity(city: string): Promise<GeocodedCity | null> {
+type GeocodeResult =
+  | { city: GeocodedCity; ok: true }
+  | { error: string; ok: false; reason: "not_found" | "upstream" };
+
+export async function geocodeCity(city: string): Promise<GeocodeResult> {
   const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
     city
   )}&count=1&language=fr&format=json`;
@@ -64,17 +118,28 @@ export async function geocodeCity(city: string): Promise<GeocodedCity | null> {
     }>;
   }>(url);
   if (!result.ok) {
-    return null;
+    return {
+      error: `Géo-codeur indisponible : ${result.error}`,
+      ok: false,
+      reason: "upstream",
+    };
   }
   const first = result.data.results?.[0];
   if (!first) {
-    return null;
+    return {
+      error: `Ville introuvable : "${city}". Vérifiez l'orthographe.`,
+      ok: false,
+      reason: "not_found",
+    };
   }
   return {
-    country: first.country || "",
-    latitude: first.latitude,
-    longitude: first.longitude,
-    name: first.name,
+    city: {
+      country: first.country || "",
+      latitude: first.latitude,
+      longitude: first.longitude,
+      name: first.name,
+    },
+    ok: true,
   };
 }
 
@@ -90,13 +155,11 @@ export async function resolveLocation(input: {
   longitude?: number;
 }): Promise<ResolvedLocation> {
   if (input.city) {
-    const coords = await geocodeCity(input.city);
-    if (!coords) {
-      return {
-        error: `Ville introuvable : "${input.city}". Vérifiez l'orthographe.`,
-        ok: false,
-      };
+    const geocoded = await geocodeCity(input.city);
+    if (!geocoded.ok) {
+      return { error: geocoded.error, ok: false };
     }
+    const coords = geocoded.city;
     return {
       label: `${coords.name}${coords.country ? `, ${coords.country}` : ""}`,
       latitude: coords.latitude,

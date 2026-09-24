@@ -5,6 +5,7 @@ import {
   zodIssuesMessage,
 } from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
+import { enforceChatRateLimit } from "@/lib/chat/auth";
 import {
   getPluginInstallationsByUserId,
   installPlugin,
@@ -56,6 +57,7 @@ export async function POST(request: Request) {
   const userId = user.id || user.email;
 
   try {
+    await enforceChatRateLimit(request, userId);
     const json = await request.json();
     const parsed = installPluginSchema.parse(json);
 

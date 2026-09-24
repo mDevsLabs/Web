@@ -16,6 +16,7 @@ import {
   AgentUserInputCard,
   type AgentUserInputSubmit,
 } from "@/components/agent/agent-user-input-card";
+import { unwrapAgentToolOutput } from "@/lib/agent/types";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatMessage } from "@/lib/types";
 import {
@@ -53,7 +54,10 @@ import { ProfilePictureCard } from "./profile-picture-card";
 import { QuizCard } from "./quiz-card";
 import { isWeatherAtLocation, isWeatherErrorOutput, Weather } from "./weather";
 import { WebCaptureCard } from "./web-capture-card";
-import { WebSearchResults } from "./web-search-results";
+import {
+  type WebSearchResultItem,
+  WebSearchResults,
+} from "./web-search-results";
 
 function WaitingText() {
   const { waitingStatus } = useDataStream();
@@ -151,15 +155,33 @@ function ToolApprovalActions({
   toolCallId?: string;
   isAgent?: boolean;
 }) {
-  const [preview, setPreview] = useState<{ enabled: boolean; preview?: { tool: string; target: string; effect: string; details?: string[] } } | null>(null);
+  const [preview, setPreview] = useState<{
+    enabled: boolean;
+    preview?: {
+      tool: string;
+      target: string;
+      effect: string;
+      details?: string[];
+    };
+  } | null>(null);
   useEffect(() => {
     if (!isAgent || !chatId || !toolCallId) return;
     let cancelled = false;
-    fetch(`/api/agent/runs?view=approvalPreview&chatId=${encodeURIComponent(chatId)}&toolCallId=${encodeURIComponent(toolCallId)}`)
-      .then((response) => response.ok ? response.json() : Promise.reject(new Error("preview")))
-      .then((value) => { if (!cancelled) setPreview(value); })
-      .catch(() => { if (!cancelled) setPreview({ enabled: true }); });
-    return () => { cancelled = true; };
+    fetch(
+      `/api/agent/runs?view=approvalPreview&chatId=${encodeURIComponent(chatId)}&toolCallId=${encodeURIComponent(toolCallId)}`
+    )
+      .then((response) =>
+        response.ok ? response.json() : Promise.reject(new Error("preview"))
+      )
+      .then((value) => {
+        if (!cancelled) setPreview(value);
+      })
+      .catch(() => {
+        if (!cancelled) setPreview({ enabled: true });
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [isAgent, chatId, toolCallId]);
   const handleDeny = useCallback(() => {
     addToolApprovalResponse({
@@ -178,8 +200,23 @@ function ToolApprovalActions({
 
   return (
     <div className="flex flex-wrap items-center justify-end gap-2 border-t px-4 py-3">
-      {preview?.enabled && preview.preview ? <div className="w-full rounded-md bg-muted p-2 text-xs"><p className="font-medium">{preview.preview.tool}</p><p>Cible : {preview.preview.target}</p><p>Effet prévu : {preview.preview.effect}</p>{preview.preview.details?.length ? <p className="mt-1 break-words text-muted-foreground">Paramètres : {preview.preview.details.join(" · ")}</p> : null}</div> : null}
-      {preview?.enabled && !preview.preview ? <p className="w-full text-xs text-destructive">Aperçu indisponible : l'accord est suspendu.</p> : null}
+      {preview?.enabled && preview.preview ? (
+        <div className="w-full rounded-md bg-muted p-2 text-xs">
+          <p className="font-medium">{preview.preview.tool}</p>
+          <p>Cible : {preview.preview.target}</p>
+          <p>Effet prévu : {preview.preview.effect}</p>
+          {preview.preview.details?.length ? (
+            <p className="mt-1 break-words text-muted-foreground">
+              Paramètres : {preview.preview.details.join(" · ")}
+            </p>
+          ) : null}
+        </div>
+      ) : null}
+      {preview?.enabled && !preview.preview ? (
+        <p className="w-full text-xs text-destructive">
+          Aperçu indisponible : l'accord est suspendu.
+        </p>
+      ) : null}
       <button
         className="rounded-md px-3 py-1.5 text-muted-foreground text-sm transition-colors hover:bg-muted hover:text-foreground"
         onClick={handleDeny}
@@ -188,8 +225,10 @@ function ToolApprovalActions({
         Refuser
       </button>
       <button
-        disabled={isAgent && (!preview || (preview.enabled && !preview.preview))}
         className="rounded-md bg-primary px-3 py-1.5 text-primary-foreground text-sm transition-colors hover:bg-primary/90"
+        disabled={
+          isAgent && (!preview || (preview.enabled && !preview.preview))
+        }
         onClick={handleAllow}
         type="button"
       >
@@ -604,8 +643,8 @@ const PurePreviewMessage = ({
                   addToolApprovalResponse={addToolApprovalResponse}
                   approvalId={approvalId}
                   chatId={chatId}
-                  toolCallId={toolCallId}
                   isAgent={Boolean(submitUserInputAnswer)}
+                  toolCallId={toolCallId}
                 />
               )}
             </ToolContent>
@@ -761,27 +800,28 @@ const PurePreviewMessage = ({
     if ((type as string) === "tool-generate_image") {
       const toolPart = part as any;
       const { toolCallId } = toolPart;
+      const output = unwrapAgentToolOutput(toolPart.output) as any;
       if (
         toolPart.state === "output-available" &&
-        toolPart.output &&
-        !toolPart.output.error &&
-        toolPart.output.image_url
+        output &&
+        !output.error &&
+        output.image_url
       ) {
         return (
           <AgentImageToolResult
             key={toolCallId ?? key}
-            output={toolPart.output}
+            output={output}
             toolCallId={toolCallId ?? key}
           />
         );
       }
-      if (toolPart.state === "output-available" && toolPart.output?.error) {
+      if (toolPart.state === "output-available" && output?.error) {
         return (
           <div
             className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-400"
             key={toolCallId ?? key}
           >
-            Erreur génération image : {String(toolPart.output.error)}
+            Erreur génération image : {String(output.error)}
           </div>
         );
       }
@@ -790,26 +830,27 @@ const PurePreviewMessage = ({
 
     if ((type as string) === "tool-generate_audio") {
       const toolPart = part as any;
+      const output = unwrapAgentToolOutput(toolPart.output) as any;
       if (
         toolPart.state === "output-available" &&
-        toolPart.output &&
-        !toolPart.output.error &&
-        toolPart.output.audio_url
+        output &&
+        !output.error &&
+        output.audio_url
       ) {
         return (
           <AgentAudioToolResult
             key={toolPart.toolCallId ?? key}
-            output={toolPart.output}
+            output={output}
           />
         );
       }
-      if (toolPart.state === "output-available" && toolPart.output?.error) {
+      if (toolPart.state === "output-available" && output?.error) {
         return (
           <div
             className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-600 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-400"
             key={toolPart.toolCallId ?? key}
           >
-            Erreur synthèse vocale : {String(toolPart.output.error)}
+            Erreur synthèse vocale : {String(output.error)}
           </div>
         );
       }
@@ -976,23 +1017,32 @@ const PurePreviewMessage = ({
 
     if (type === "tool-webSearch") {
       const { toolCallId, state } = part;
+      const output = unwrapAgentToolOutput(part.output);
 
-      if (state === "output-available" && part.output) {
-        if ("error" in part.output) {
+      if (state === "output-available" && output) {
+        if (
+          typeof output === "object" &&
+          output !== null &&
+          "error" in output
+        ) {
           return (
             <div
               className="rounded-xl border border-red-200 bg-red-50 p-3.5 text-sm text-red-600 dark:border-red-900/40 dark:bg-red-950/30 dark:text-red-400"
               key={toolCallId}
             >
-              Recherche Web : {part.output.error}
+              Recherche Web : {String((output as { error: unknown }).error)}
             </div>
           );
         }
+        const result = output as {
+          query?: string;
+          results?: WebSearchResultItem[];
+        };
         return (
           <WebSearchResults
             key={toolCallId}
-            query={part.output.query}
-            results={part.output.results || []}
+            query={result.query}
+            results={result.results || []}
           />
         );
       }
@@ -1013,7 +1063,8 @@ const PurePreviewMessage = ({
 
     if (type === "tool-memory") {
       const toolPart = part as any;
-      const { state, toolCallId, input, output } = toolPart;
+      const { state, toolCallId, input } = toolPart;
+      const output = unwrapAgentToolOutput(toolPart.output) as any;
       const action = input?.action || output?.action || "add";
       const isAvailable = state === "output-available";
       const isError = state === "output-error" || (output && "error" in output);
@@ -1105,7 +1156,10 @@ const PurePreviewMessage = ({
       (type === "dynamic-tool" && (part as any).toolName?.startsWith("mcp_"))
     ) {
       const toolPart = part as any;
-      const { state, toolCallId, input, output } = toolPart;
+      const { state, toolCallId, input } = toolPart;
+      const output = unwrapAgentToolOutput(toolPart.output) as {
+        error?: unknown;
+      } | null;
       const rawName = (toolPart.toolName || type)
         .replace(/^tool-/, "")
         .replace(/^mcp_/, "");
@@ -1174,7 +1228,9 @@ const PurePreviewMessage = ({
             )}
             {isError && (
               <div className="rounded-lg bg-red-500/10 border border-red-500/20 p-2 text-red-600 text-xs">
-                {output?.error || "Erreur lors de l'exécution de l'outil MCP."}
+                {String(
+                  output?.error || "Erreur lors de l'exécution de l'outil MCP."
+                )}
               </div>
             )}
           </div>
@@ -1346,8 +1402,12 @@ const PurePreviewMessage = ({
               <ToolInput input={toolPart.input} />
             )}
             {state === "output-available" && (
-              <ToolOutput errorText={undefined} output={toolPart.output} />
+              <ToolOutput
+                errorText={undefined}
+                output={unwrapAgentToolOutput(toolPart.output)}
+              />
             )}
+
             {state === "output-error" && (
               <ToolOutput errorText={toolPart.errorText} output={undefined} />
             )}
@@ -1356,8 +1416,8 @@ const PurePreviewMessage = ({
                 addToolApprovalResponse={addToolApprovalResponse}
                 approvalId={approvalId}
                 chatId={chatId}
-                toolCallId={toolCallId}
                 isAgent={Boolean(submitUserInputAnswer)}
+                toolCallId={toolCallId}
               />
             )}
           </ToolContent>

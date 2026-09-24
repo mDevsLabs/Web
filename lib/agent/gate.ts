@@ -3,6 +3,7 @@ import "server-only";
 import { type AgentFlags, getAgentFlags } from "@/lib/agent/flags";
 import {
   getModelEntry,
+  isAgentCompatible,
   isModelAllowedForUser,
   type ModelCapabilities,
 } from "@/lib/ai/registry";
@@ -126,6 +127,14 @@ export function checkAgentModelAccess(params: {
     return {
       capabilities,
       error: `Le modèle « ${entry.name} » ne prend pas en charge les outils : Agent ne peut pas fonctionner avec lui. Choisissez un autre modèle.`,
+      model: entry.id,
+    };
+  }
+
+  if (!isAgentCompatible(entry)) {
+    return {
+      capabilities,
+      error: `Le modèle « ${entry.name} » ne prend pas en charge la boucle d'outils Agent.`,
       model: entry.id,
     };
   }
