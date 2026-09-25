@@ -33,6 +33,7 @@ export function useChatAttachments({
 }: UseChatAttachmentsOptions) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const uploadedBytesRef = useRef(0);
+  const uploadedFileSizesRef = useRef(new Map<string, number>());
   const [uploadQueue, setUploadQueue] = useState<string[]>([]);
 
   // Handoff Cloud -> Chat via sessionStorage
@@ -47,6 +48,10 @@ export function useChatAttachments({
           if (curr.some((a) => a.url === parsed.url)) return curr;
           return [...curr, parsed];
         });
+        if (typeof parsed.size === "number") {
+          uploadedFileSizesRef.current.set(parsed.url, parsed.size);
+          uploadedBytesRef.current += parsed.size;
+        }
         toast.success(`Fichier Cloud importé : ${parsed.name}`);
       }
     } catch {}
@@ -57,6 +62,8 @@ export function useChatAttachments({
     if (!hasStrictCaps) return;
     if (!hasVisionSupport && attachments.length > 0) {
       setAttachments([]);
+      uploadedBytesRef.current = 0;
+      uploadedFileSizesRef.current.clear();
       if (fileInputRef.current) {
         fileInputRef.current.value = "";
       }
@@ -83,7 +90,8 @@ export function useChatAttachments({
 
           return {
             contentType,
-            name: pathname,
+            name: file.name || pathname || "fichier",
+            size: file.size,
             url,
           };
         }
@@ -98,6 +106,78 @@ export function useChatAttachments({
     []
   );
 
+  const uploadFiles = useCallback(
+    async (files: File[]) => {
+      if (files.length === 0) {
+        return;
+      }
+
+      const remainingSlots = MAX_FILES_PER_MESSAGE - attachments.length;
+      if (remainingSlots <= 0) {
+        toast.error(`Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message.`);
+        return;
+      }
+
+      const candidates = files.slice(0, remainingSlots);
+      if (files.length > candidates.length) {
+        toast.error(
+          `Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message. Seuls ${candidates.length} fichier(s) seront ajoutés.`
+        );
+      }
+
+      let projectedBytes = uploadedBytesRef.current;
+      const accepted: File[] = [];
+      let rejectedForSize = 0;
+      for (const file of candidates) {
+        if (projectedBytes + file.size > MAX_TOTAL_SIZE_BYTES) {
+          rejectedForSize += 1;
+          continue;
+        }
+        accepted.push(file);
+        projectedBytes += file.size;
+      }
+
+      if (rejectedForSize > 0) {
+        toast.error(
+          `${rejectedForSize} fichier(s) dépassent la limite de 50 Mo par message.`
+        );
+      }
+      if (accepted.length === 0) {
+        return;
+      }
+
+      setUploadQueue(accepted.map((file) => file.name));
+      try {
+        const results = await Promise.all(
+          accepted.map(async (file) => ({
+            attachment: await uploadFile(file),
+            file,
+          }))
+        );
+        const successfullyUploaded = results.flatMap(({ attachment, file }) => {
+          if (!attachment) {
+            return [];
+          }
+          uploadedFileSizesRef.current.set(attachment.url, file.size);
+          uploadedBytesRef.current += file.size;
+          return [attachment];
+        });
+
+        if (successfullyUploaded.length > 0) {
+          setAttachments((currentAttachments) => [
+            ...currentAttachments,
+            ...successfullyUploaded,
+          ]);
+        }
+      } catch {
+        toast.error("Échec lors du téléversement des fichiers");
+      } finally {
+        setUploadQueue([]);
+      }
+    },
+    [attachments.length, setAttachments, uploadFile]
+  );
+
   const handleFileChange = useCallback(
     async (event: ChangeEvent<HTMLInputElement>) => {
       if (!hasVisionSupport && hasStrictCaps) {
@@ -109,73 +189,17 @@ export function useChatAttachments({
         }
         return;
       }
+
       const files = Array.from(event.target.files || []);
-
-      if (files.length > 0) {
-        const remainingSlots = MAX_FILES_PER_MESSAGE - attachments.length;
-        if (remainingSlots <= 0) {
-          toast.error(`Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message.`);
-          if (fileInputRef.current) {
-            fileInputRef.current.value = "";
-          }
-          return;
-        }
-        if (files.length > remainingSlots) {
-          toast.error(
-            `Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message. Seuls ${remainingSlots} fichier(s) ont été ajoutés.`
-          );
-        }
-        const accepted = files.slice(0, Math.max(remainingSlots, 0));
-        const oversized = accepted.find(
-          (file) => uploadedBytesRef.current + file.size > MAX_TOTAL_SIZE_BYTES
-        );
-        if (oversized) {
-          toast.error(
-            "Limite de 50 Mo par message dépassée. Retirez des pièces jointes ou choisissez des fichiers plus légers."
-          );
-          if (fileInputRef.current) {
-            fileInputRef.current.value = "";
-          }
-          return;
-        }
-      }
-
-      setUploadQueue(files.map((file) => file.name));
-
       try {
-        const uploadPromises = files.map((file) => uploadFile(file));
-        const uploadedAttachments = await Promise.all(uploadPromises);
-        const successfullyUploadedAttachments = uploadedAttachments.filter(
-          (attachment): attachment is Attachment => attachment !== undefined
-        );
-        uploadedBytesRef.current += uploadedAttachments.reduce(
-          (total, attachment, index) =>
-            attachment === undefined
-              ? total
-              : total + (files[index]?.size ?? 0),
-          0
-        );
-
-        setAttachments((currentAttachments) => [
-          ...currentAttachments,
-          ...successfullyUploadedAttachments,
-        ]);
-      } catch {
-        toast.error("Échec lors du téléversement des fichiers");
+        await uploadFiles(files);
       } finally {
-        setUploadQueue([]);
         if (fileInputRef.current) {
           fileInputRef.current.value = "";
         }
       }
     },
-    [
-      setAttachments,
-      uploadFile,
-      hasVisionSupport,
-      hasStrictCaps,
-      attachments.length,
-    ]
+    [hasStrictCaps, hasVisionSupport, uploadFiles]
   );
 
   const handleCloudAttachments = useCallback(
@@ -186,9 +210,54 @@ export function useChatAttachments({
         );
         return;
       }
-      setAttachments((curr) => [...curr, ...newAttachments]);
+
+      const remainingSlots = MAX_FILES_PER_MESSAGE - attachments.length;
+      if (remainingSlots <= 0) {
+        toast.error(`Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message.`);
+        return;
+      }
+
+      const candidates = newAttachments.slice(0, remainingSlots);
+      const accepted: Attachment[] = [];
+      let projectedBytes = uploadedBytesRef.current;
+      let rejectedForSize = 0;
+      for (const attachment of candidates) {
+        if (
+          typeof attachment.size === "number" &&
+          projectedBytes + attachment.size > MAX_TOTAL_SIZE_BYTES
+        ) {
+          rejectedForSize += 1;
+          continue;
+        }
+        accepted.push(attachment);
+        if (typeof attachment.size === "number") {
+          projectedBytes += attachment.size;
+        }
+      }
+
+      if (newAttachments.length > candidates.length) {
+        toast.error(
+          `Maximum ${MAX_FILES_PER_MESSAGE} fichiers par message. Seuls ${candidates.length} fichier(s) seront ajoutés.`
+        );
+      }
+      if (rejectedForSize > 0) {
+        toast.error(
+          `${rejectedForSize} fichier(s) Cloud dépassent la limite de 50 Mo par message.`
+        );
+      }
+      if (accepted.length === 0) {
+        return;
+      }
+
+      for (const attachment of accepted) {
+        if (typeof attachment.size === "number") {
+          uploadedFileSizesRef.current.set(attachment.url, attachment.size);
+        }
+      }
+      uploadedBytesRef.current = projectedBytes;
+      setAttachments((curr) => [...curr, ...accepted]);
     },
-    [setAttachments, hasVisionSupport, hasStrictCaps]
+    [attachments.length, hasStrictCaps, hasVisionSupport, setAttachments]
   );
 
   const handlePaste = useCallback(
@@ -218,31 +287,12 @@ export function useChatAttachments({
       if (imageItems.length === 0) return;
 
       event.preventDefault();
-      setUploadQueue((prev) => [...prev, "Image collée"]);
-
-      try {
-        const uploadPromises = imageItems
-          .map((item) => item.getAsFile())
-          .filter((file): file is File => file !== null)
-          .map((file) => uploadFile(file));
-
-        const uploadedAttachments = await Promise.all(uploadPromises);
-        const successfullyUploadedAttachments = uploadedAttachments.filter(
-          (attachment): attachment is Attachment =>
-            Boolean(attachment?.url && attachment.contentType)
-        );
-
-        setAttachments((curr) => [
-          ...curr,
-          ...(successfullyUploadedAttachments as Attachment[]),
-        ]);
-      } catch {
-        toast.error("Échec du téléversement de l'image collée");
-      } finally {
-        setUploadQueue([]);
-      }
+      const imageFiles = imageItems
+        .map((item) => item.getAsFile())
+        .filter((file): file is File => file !== null);
+      await uploadFiles(imageFiles);
     },
-    [setAttachments, uploadFile, hasVisionSupport, hasStrictCaps]
+    [hasStrictCaps, hasVisionSupport, uploadFiles]
   );
 
   useEffect(() => {
@@ -258,15 +308,27 @@ export function useChatAttachments({
 
   const removeAttachment = useCallback(
     (indexToRemove: number) => {
+      const removed = attachments[indexToRemove];
+      if (removed) {
+        const size = uploadedFileSizesRef.current.get(removed.url);
+        if (typeof size === "number") {
+          uploadedBytesRef.current = Math.max(
+            0,
+            uploadedBytesRef.current - size
+          );
+          uploadedFileSizesRef.current.delete(removed.url);
+        }
+      }
       setAttachments((current) =>
         current.filter((_, i) => i !== indexToRemove)
       );
     },
-    [setAttachments]
+    [attachments, setAttachments]
   );
 
   const resetUploadedBytes = useCallback(() => {
     uploadedBytesRef.current = 0;
+    uploadedFileSizesRef.current.clear();
   }, []);
 
   return {

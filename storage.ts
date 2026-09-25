@@ -997,6 +997,47 @@ export function registerStorageRoutes(app: Hono) {
     }
   };
 
+  // PATCH /cloud/files/:id — renommage persisté et vérifié côté serveur
+  const handleRenameFile = async (c: any) => {
+    try {
+      const token = extractToken(c.req.raw);
+      if (!token) return c.json({ error: "Non authentifié." }, 401);
+      const payload = await verifyToken(token);
+      const userId = String(payload.sub || (payload as any).id || "");
+      const fileId = c.req.param("id");
+      if (
+        !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+          fileId
+        )
+      ) {
+        return c.json({ error: "Identifiant de fichier invalide." }, 400);
+      }
+      const body = await c.req.json().catch(() => ({}));
+      const name = typeof body?.name === "string" ? body.name.trim() : "";
+      if (!name || name.length > 255) {
+        return c.json({ error: "Nom de fichier invalide." }, 400);
+      }
+
+      const sql = getDb();
+      const rows = await sql`
+        UPDATE cloud_files
+        SET original_name = ${name}
+        WHERE id = ${fileId}::uuid AND user_id = ${userId}::text
+        RETURNING id, filename, original_name, url, size_bytes, mime_type, uploaded_at
+      `;
+      if (rows.length === 0) {
+        return c.json({ error: "Fichier introuvable ou accès refusé." }, 404);
+      }
+      return c.json({ file: rows[0], success: true });
+    } catch (err: any) {
+      console.error("Cloud Rename Error:", err);
+      return c.json({ error: "Erreur serveur lors du renommage." }, 500);
+    }
+  };
+
+  app.patch("/cloud/files/:id", handleRenameFile);
+  app.patch("/v1/cloud/files/:id", handleRenameFile);
+
   app.delete("/cloud/files/:id", handleDeleteFile);
   app.delete("/v1/cloud/files/:id", handleDeleteFile);
 }

@@ -16,6 +16,7 @@ import {
   checkAgentModelAccess,
   normalizeAgentReasoningLevel,
 } from "@/lib/agent/gate";
+import { buildAgentOneShotInstructions } from "@/lib/agent/instructions";
 import { ensureAgentNotificationsInstalled } from "@/lib/agent/notifications/install";
 import { generateTaskPlan, shouldGeneratePlan } from "@/lib/agent/plan";
 import {
@@ -43,6 +44,7 @@ import {
   isModelAllowedForUser,
   pickDefaultAgentModel,
 } from "@/lib/ai/registry";
+import { toAgentToolId } from "@/lib/ai/tools/ids";
 import { errorResponse } from "@/lib/api/error-response";
 import { authenticateChatRequest, enforceChatRateLimit } from "@/lib/chat/auth";
 import { buildChatContext } from "@/lib/chat/context";
@@ -193,14 +195,22 @@ export async function POST(request: Request) {
         ? requested.id
         : pickDefaultAgentModel(models, settings.defaultModel, tier);
 
-    // TOUTES les vérifications portent sur le modèle RÉELLEMENT résolu. Avant,
-    // `capabilitiesOverride` recevait les capacités du modèle DEMANDÉ : quand un
-    // repli était choisi (modèle sans outils), le garde jugeait l'accès avec les
-    // capacités d'un autre modèle et pouvait refuser un modèle légitime
-    // (model_access_denied) ou valider un modèle hors forfait.
+    // TOUTES les vérifications portent sur le modèle RÉELLEMENT résolu et sur
+    // l'entrée complète du catalogue utilisateur. Le gate ne relit jamais le
+    // fallback : une Laguna sélectionnée depuis /v1/models ne peut pas être
+    // reclassée à tort par une heuristique de nom.
+    if (resolvedModel !== body.modelId) {
+      console.info(
+        JSON.stringify({
+          event: "agent_model_resolved",
+          modelId: resolvedModel,
+          requestedModelId: body.modelId,
+        })
+      );
+    }
     const resolvedEntry = getModelEntry(resolvedModel, models);
     const modelAccess = checkAgentModelAccess({
-      capabilitiesOverride: resolvedEntry.capabilities,
+      entry: resolvedEntry,
       flags,
       modelId: resolvedEntry.id,
       tier,
@@ -235,6 +245,7 @@ export async function POST(request: Request) {
       selectedChatModel: resolvedModel,
       selectedVisibilityType: body.visibility,
       skillId: body.skillId,
+      skillParams: body.skillParams,
       tags: ["agent"],
     });
 
@@ -410,6 +421,9 @@ export async function POST(request: Request) {
       ...listRegisteredAgentTools(),
       ...pluginAgentContext.tools,
     ];
+    const selectedMcpServerIds = Array.from(
+      new Set([...ctx.agentMcpServerIds, ...ctx.skillMcpServerIds])
+    );
     const baselineTools = filterToolsByFlags(
       flags["agent.mcp"]
         ? [
@@ -419,12 +433,14 @@ export async function POST(request: Request) {
               isToolApprovalFlow: false,
               messages: null,
               requestedTools: [],
-              skillMcpServerIds: [],
-              skillMcpToolFilter: null,
+              serverIds: selectedMcpServerIds,
+              skillMcpServerIds: ctx.skillMcpServerIds,
+              skillMcpToolFilter: ctx.skillMcpToolFilter,
               userId: ctx.userId,
             })
               .then((mcp) =>
                 listMcpAgentTools({
+                  serverIds: selectedMcpServerIds,
                   servers: mcp.userMcpServers,
                   userId: ctx.userId,
                 })
@@ -434,6 +450,12 @@ export async function POST(request: Request) {
         : registeredTools,
       flags
     );
+    const skillAgentToolIds = new Set(
+      ctx.skillTools
+        .filter((toolId) => toolId !== "mcp")
+        .map((toolId) => toAgentToolId(toolId) ?? toolId)
+    );
+
     const continuationSnapshot = activeRun
       ? (activeRun.toolPolicySnapshot as Record<string, ToolPermission>)
       : null;
@@ -505,6 +527,17 @@ export async function POST(request: Request) {
           if (forced) selectedTools = [...selectedTools, forced];
         }
       }
+      // Les outils d'un Skill sont une contrainte de contexte : ils ne
+      // dépendent pas du sélecteur auto et doivent rester disponibles dès que
+      // le plugin ou le MCP associé est installé.
+      for (const tool of baselineTools) {
+        if (
+          skillAgentToolIds.has(tool.id) &&
+          !selectedTools.some((selected) => selected.id === tool.id)
+        ) {
+          selectedTools = [...selectedTools, tool];
+        }
+      }
     }
 
     const permissions = applyToolPermissions({
@@ -539,7 +572,9 @@ export async function POST(request: Request) {
     // conservé tel quel lors d'une reprise.
     const plan =
       activeRun?.plan ??
-      (shouldGeneratePlan({ familyCount: families.length, task })
+      (!isContinuation &&
+      shouldGeneratePlan({ familyCount: families.length, task }) &&
+      oneShotOptions?.tasks !== true
         ? await generateTaskPlan({
             families,
             sessionToken: ctx.sessionToken,
@@ -678,37 +713,9 @@ export async function POST(request: Request) {
       userId: ctx.userId,
     });
 
-    // Bloc d'instructions des options one-shot : le modèle sait explicitement
-    // ce qu'il doit faire des outils forcés (plan d'abord, génération…).
-    const oneShotInstructions = oneShotOptions
-      ? [
-          ...(oneShotOptions.tasks
-            ? [
-                "L'utilisateur a activé l'option Tâches : commence IMMÉDIATEMENT par appeler l'outil tasks pour structurer un plan réel (2 à 8 tâches concrètes et ordonnées), puis exécute ce plan étape par étape sans attendre de validation.",
-              ]
-            : []),
-          ...(oneShotOptions.image
-            ? [
-                "L'utilisateur a activé l'option Créer une image : utilise l'outil generate_image dès que la demande le permet, sans redemander la permission.",
-              ]
-            : []),
-          ...(oneShotOptions.audio
-            ? [
-                "L'utilisateur a activé l'option Créer un audio : utilise l'outil generate_audio dès que la demande le permet, sans redemander la permission.",
-              ]
-            : []),
-          ...(oneShotOptions.memory
-            ? [
-                "L'utilisateur a activé l'option Mémoire : utilise l'outil manage_memory pour retenir, retrouver ou oublier des informations durables le concernant quand c'est pertinent.",
-              ]
-            : []),
-          ...(oneShotOptions.web
-            ? [
-                "L'utilisateur a demandé la Recherche Web : appuie tes affirmations factuelles sur search_web (et read_url pour les sources identifiées).",
-              ]
-            : []),
-        ].join("\n")
-      : null;
+    // Les options one-shot et la consigne de plan partagent un contrat unique ;
+    // la route ne duplique plus les instructions selon le chemin d'envoi.
+    const oneShotInstructions = buildAgentOneShotInstructions(oneShotOptions);
 
     const agentContext = await buildAgentContext({
       assistantInstructions: ctx.agentInstructions,
@@ -733,7 +740,10 @@ export async function POST(request: Request) {
       project: projectContext,
       reasoningLevel,
       sessionToken: ctx.sessionToken,
-      skillInstructions: ctx.skillInstructions,
+      skillInstructions:
+        [ctx.skillInstructions, ...ctx.agentSkillInstructions]
+          .filter(Boolean)
+          .join("\n\n") || null,
       task,
       userId: ctx.userId,
       userInstructions: ctx.userCustomEnabled

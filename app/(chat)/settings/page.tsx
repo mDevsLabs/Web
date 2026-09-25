@@ -194,6 +194,34 @@ function SettingsPageInner() {
     [router, searchParams]
   );
 
+  const handleTabKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
+      if (
+        event.key !== "ArrowRight" &&
+        event.key !== "ArrowLeft" &&
+        event.key !== "Home" &&
+        event.key !== "End"
+      ) {
+        return;
+      }
+      event.preventDefault();
+      const nextIndex =
+        event.key === "Home"
+          ? 0
+          : event.key === "End"
+            ? SETTINGS_TABS.length - 1
+            : event.key === "ArrowRight"
+              ? (index + 1) % SETTINGS_TABS.length
+              : (index - 1 + SETTINGS_TABS.length) % SETTINGS_TABS.length;
+      const nextTab = SETTINGS_TABS[nextIndex];
+      handleTabChange(nextTab.id);
+      window.setTimeout(() => {
+        document.getElementById(`settings-tab-${nextTab.id}`)?.focus();
+      }, 0);
+    },
+    [handleTabChange]
+  );
+
   useEffect(() => {
     const t = searchParams.get("tab") as SettingsTab | null;
     if (t && SETTINGS_TABS.some((tab) => tab.id === t) && t !== activeTab) {
@@ -1030,17 +1058,27 @@ function SettingsPageInner() {
 
       {/* Onglets — même design que les pages Audio / Images */}
       <div className="border-b border-border/40 bg-muted/20 px-4 py-2 sm:px-6">
-        <div className="max-w-7xl mx-auto w-full flex items-center gap-2 overflow-x-auto">
-          {SETTINGS_TABS.map((tab) => (
+        <div
+          aria-label="Sections des paramètres"
+          className="max-w-7xl mx-auto w-full flex items-center gap-2 overflow-x-auto"
+          role="tablist"
+        >
+          {SETTINGS_TABS.map((tab, index) => (
             <button
+              aria-controls={`settings-panel-${tab.id}`}
+              aria-selected={activeTab === tab.id}
               className={cn(
                 "flex shrink-0 items-center gap-2 rounded-lg px-3.5 py-1.5 text-xs font-semibold transition-all cursor-pointer",
                 activeTab === tab.id
                   ? "bg-primary text-primary-foreground shadow-sm"
                   : "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
               )}
+              id={`settings-tab-${tab.id}`}
               key={tab.id}
               onClick={() => handleTabChange(tab.id)}
+              onKeyDown={(event) => handleTabKeyDown(event, index)}
+              role="tab"
+              tabIndex={activeTab === tab.id ? 0 : -1}
               type="button"
             >
               <tab.icon className="size-3.5" />
@@ -1050,7 +1088,13 @@ function SettingsPageInner() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto w-full p-4 sm:p-6 md:p-10 flex gap-8 items-start">
+      <div
+        aria-labelledby={`settings-tab-${activeTab}`}
+        className="max-w-7xl mx-auto w-full p-4 sm:p-6 md:p-10 flex gap-8 items-start"
+        id={`settings-panel-${activeTab}`}
+        role="tabpanel"
+        tabIndex={0}
+      >
         <SettingsAnchorNav items={anchorItems} />
         <div className="flex-1 min-w-0">
           {isLoading ? (
@@ -1246,7 +1290,6 @@ function SettingsPageInner() {
                           onClick={() =>
                             setShowCurrentPassword((prev) => !prev)
                           }
-                          tabIndex={-1}
                           type="button"
                         >
                           {showCurrentPassword ? (
@@ -1282,7 +1325,6 @@ function SettingsPageInner() {
                           }
                           className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground transition-colors cursor-pointer rounded"
                           onClick={() => setShowNewPassword((prev) => !prev)}
-                          tabIndex={-1}
                           type="button"
                         >
                           {showNewPassword ? (
@@ -1494,11 +1536,15 @@ function SettingsPageInner() {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1.5">
-                    <Label className="text-xs font-medium text-muted-foreground">
+                    <Label
+                      className="text-xs font-medium text-muted-foreground"
+                      htmlFor="settings-temperature"
+                    >
                       Température ({customTemp})
                     </Label>
                     <input
                       className="w-full accent-primary"
+                      id="settings-temperature"
                       max={2}
                       min={0}
                       onChange={(e) =>
@@ -1513,11 +1559,15 @@ function SettingsPageInner() {
                     </span>
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <Label className="text-xs font-medium text-muted-foreground">
+                    <Label
+                      className="text-xs font-medium text-muted-foreground"
+                      htmlFor="settings-top-p"
+                    >
                       Top P ({customTopP})
                     </Label>
                     <input
                       className="w-full accent-primary"
+                      id="settings-top-p"
                       max={1}
                       min={0}
                       onChange={(e) =>
@@ -1563,6 +1613,20 @@ function SettingsPageInner() {
                       }
                     : undefined
                 }
+                onKeyDown={
+                  isFree
+                    ? (event) => {
+                        if (event.key !== "Enter" && event.key !== " ") return;
+                        event.preventDefault();
+                        toast.error(
+                          "Sélection d'agents réservée aux forfaits Plus, Pro et Max"
+                        );
+                        setAgentsUpgradeOpen(true);
+                      }
+                    : undefined
+                }
+                role={isFree ? "button" : undefined}
+                tabIndex={isFree ? 0 : undefined}
               >
                 <div className="flex items-center gap-2.5">
                   <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 ring-1 ring-indigo-500/20">

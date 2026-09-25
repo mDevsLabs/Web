@@ -38,9 +38,21 @@ export const imageGenerate = ({ dataStream, session }: ImageGenerateProps) =>
       });
     },
     inputSchema: z.object({
-      height: z.number().optional().default(1024).describe("Hauteur 512-1536"),
+      height: z
+        .number()
+        .int()
+        .min(512)
+        .max(1536)
+        .optional()
+        .describe("Hauteur 512-1536"),
       negative_prompt: z.string().optional().describe("Éléments à exclure"),
       prompt: z.string().describe("Description détaillée de l'image à générer"),
-      width: z.number().optional().default(1024).describe("Largeur 512-1536"),
+      width: z
+        .number()
+        .int()
+        .min(512)
+        .max(1536)
+        .optional()
+        .describe("Largeur 512-1536"),
     }),
   });

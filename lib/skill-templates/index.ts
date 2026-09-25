@@ -1,6 +1,6 @@
-import { normalizeToolIds } from "@/lib/ai/tools/ids";
 import { isLucideIconName } from "@/lib/plugins/icon-allowlist";
 import type { SkillTemplateDefinition } from "./types";
+import { validateSkillTemplateManifest } from "./validation";
 
 // Modèles de Skills — SOURCE DE VÉRITÉ UNIQUE (format aligné sur lib/plugins).
 //
@@ -9,9 +9,11 @@ import type { SkillTemplateDefinition } from "./types";
 //   • icône présente dans la liste blanche lucide (jamais de repli silencieux) ;
 //   • identifiants d'outils connus du registre Chat ou du registre Agent
 //     (lib/ai/tools/ids.ts) — aucun identifiant inventé ;
+//   • `pluginIds` ne cite que des plugins du catalogue et chaque outil de
+//     plugin est rattaché à son propriétaire ;
 //   • `mcpServerNames` ne cite que des serveurs réellement présents dans le
-//     catalogue MCP (lib/mcp-templates) ; un modèle qui exploite MCP n'est
-//     jamais accessible depuis le forfait gratuit.
+//     catalogue MCP (lib/mcp-templates), sans valeur générique ; un modèle qui
+//     exploite MCP n'est jamais accessible depuis le forfait gratuit.
 export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
   {
     manifest: {
@@ -28,6 +30,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
       minTier: "free",
       name: "Architecte TypeScript",
       parameters: [],
+      pluginIds: [],
       tags: ["Dev", "Code", "TypeScript"],
       tools: ["codeExecution", "createDocument"],
     },
@@ -47,6 +50,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
       minTier: "free",
       name: "Chercheur Web & Synthèse",
       parameters: [],
+      pluginIds: [],
       tags: ["Recherche", "Veille"],
       tools: ["webSearch", "createDocument"],
     },
@@ -66,6 +70,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
       minTier: "free",
       name: "Copywriter & Rédaction",
       parameters: [],
+      pluginIds: [],
       tags: ["Marketing", "Rédaction"],
       tools: ["createDocument"],
     },
@@ -92,6 +97,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
           type: "string",
         },
       ],
+      pluginIds: [],
       tags: ["Data", "SQL", "Analyse"],
       tools: ["mcp", "generateChart", "createDocument"],
     },
@@ -120,6 +126,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
           type: "string",
         },
       ],
+      pluginIds: [],
       tags: ["Sentry", "Debug", "Monitoring"],
       tools: ["mcp", "webSearch"],
     },
@@ -146,6 +153,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
           type: "string",
         },
       ],
+      pluginIds: [],
       tags: ["Slack", "Support", "Communication"],
       tools: ["mcp", "createDocument"],
     },
@@ -172,6 +180,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
           type: "string",
         },
       ],
+      pluginIds: [],
       tags: ["Notion", "Documents", "Organisation"],
       tools: ["mcp", "createDocument"],
     },
@@ -205,6 +214,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
           type: "string",
         },
       ],
+      pluginIds: [],
       tags: ["Veille", "Brave", "Sources"],
       tools: ["mcp", "readUrl", "createDocument"],
     },
@@ -224,6 +234,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
       minTier: "free",
       name: "Spécialiste SEO & Rédaction",
       parameters: [],
+      pluginIds: [],
       tags: ["SEO", "Web"],
       tools: ["createDocument", "webSearch"],
     },
@@ -243,6 +254,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
       minTier: "free",
       name: "Préparateur d'entretien technique",
       parameters: [],
+      pluginIds: [],
       tags: ["Career", "Interview"],
       tools: ["createDocument"],
     },
@@ -261,6 +273,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
       minTier: "free",
       name: "Consultant en sécurité",
       parameters: [],
+      pluginIds: [],
       tags: ["Sécurité", "Audit"],
       tools: ["createDocument", "codeExecution"],
     },
@@ -280,6 +293,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
       minTier: "free",
       name: "Rédacteur d'e-mails professionnels",
       parameters: [],
+      pluginIds: [],
       tags: ["Email", "Communication"],
       tools: ["createDocument"],
     },
@@ -299,6 +313,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
       minTier: "free",
       name: "Rédacteur de documentation technique",
       parameters: [],
+      pluginIds: [],
       tags: ["Doc", "Technique"],
       tools: ["createDocument"],
     },
@@ -317,6 +332,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
       minTier: "free",
       name: "Analyste de marché / Veille",
       parameters: [],
+      pluginIds: [],
       tags: ["Veille", "Marché"],
       tools: ["webSearch", "createDocument"],
     },
@@ -350,6 +366,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
           type: "string",
         },
       ],
+      pluginIds: [],
       tags: ["GitHub", "Revue", "Triage"],
       tools: ["mcp", "documentParser", "createDocument"],
     },
@@ -377,6 +394,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
           type: "string",
         },
       ],
+      pluginIds: [],
       tags: ["Stripe", "Abonnements", "Finance"],
       tools: ["mcp", "generateChart", "createDocument"],
     },
@@ -403,15 +421,212 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
           type: "string",
         },
       ],
+      pluginIds: [],
       tags: ["Linear", "Roadmap", "Produit"],
       tools: ["mcp", "createDocument"],
     },
   },
+  {
+    manifest: {
+      author: "mAI",
+      category: "research",
+      color: "#0ea5e9",
+      description:
+        "Recherche bibliographique OpenAlex, comparaison de sources et synthèse académique citée.",
+      icon: { name: "Atom", type: "lucide" },
+      id: "academic-synthesis",
+      instructions:
+        "Tu es un chercheur académique rigoureux. Construis une recherche bibliographique reproductible à partir de l'index scientifique OpenAlex. Regroupe les travaux par auteurs, période, discipline et méthode, vérifie les identifiants, les DOI et les liens d'accès, distingue les résultats établis des hypothèses, puis rédige une synthèse argumentée avec une bibliographie traçable. Signale explicitement les limites, les biais de couverture et les manques de sources ; n'invente jamais une référence.",
+      mcpServerNames: [],
+      minTier: "plus",
+      name: "Synthèse académique",
+      parameters: [
+        {
+          description: "Sujet, question de recherche ou auteur à étudier",
+          name: "sujet",
+          required: true,
+          type: "string",
+        },
+        {
+          description: "Fenêtre de publication à prendre en compte",
+          name: "periode",
+          required: false,
+          type: "string",
+        },
+        {
+          defaultValue: "10",
+          description: "Nombre maximal de références principales",
+          name: "limite",
+          required: false,
+          type: "string",
+        },
+      ],
+      pluginIds: ["openalex"],
+      tags: ["Recherche", "Académie", "OpenAlex", "Bibliographie"],
+      tools: [
+        "searchOpenAlexWorks",
+        "getOpenAlexWork",
+        "searchOpenAlexAuthors",
+        "getOpenAlexAuthor",
+        "readUrl",
+        "createDocument",
+      ],
+    },
+  },
+  {
+    manifest: {
+      author: "mAI",
+      category: "research",
+      color: "#14b8a6",
+      description:
+        "Compare des jeux de données Eurostat et produit une lecture européenne sourcée.",
+      icon: { name: "BarChart3", type: "lucide" },
+      id: "european-statistics",
+      instructions:
+        "Tu es analyste de données européennes. Consulte d'abord les métadonnées du jeu Eurostat demandé, vérifie les dimensions, les codes géographiques, les unités et la période, puis filtre les observations pour obtenir des séries comparables. Présente les valeurs, les écarts, les dates de mise à jour, les sources et les limites dans un tableau lisible. Ajoute un graphique seulement si les données sont homogènes et ne complète jamais une valeur manquante par une estimation présentée comme un fait.",
+      mcpServerNames: [],
+      minTier: "plus",
+      name: "Statistiques européennes",
+      parameters: [
+        {
+          description: "Codes de pays Eurostat à comparer (FR, DE, etc.)",
+          name: "pays",
+          required: true,
+          type: "string",
+        },
+        {
+          description: "Indicateur ou code de dimension Eurostat à analyser",
+          name: "indicateur",
+          required: true,
+          type: "string",
+        },
+        {
+          defaultValue: "2015",
+          description: "Première année de la série",
+          name: "annee_debut",
+          required: false,
+          type: "string",
+        },
+        {
+          description: "Dernière année de la série",
+          name: "annee_fin",
+          required: false,
+          type: "string",
+        },
+      ],
+      pluginIds: ["eurostat"],
+      tags: ["Europe", "Statistiques", "Eurostat", "Données"],
+      tools: [
+        "getEurostatData",
+        "getEurostatDatasetMetadata",
+        "generateChart",
+        "createDocument",
+      ],
+    },
+  },
+  {
+    manifest: {
+      author: "mAI",
+      category: "dev",
+      color: "#f97316",
+      description:
+        "Prépare une release publique : état du dépôt, risques, checks et notes de version.",
+      icon: { name: "Rocket", type: "lucide" },
+      id: "release-preparation",
+      instructions:
+        "Tu es responsable de préparation de release pour un projet public GitLab. Inspecte le résumé du projet, les issues et merge requests ouvertes, les dernières releases et les fichiers de versionnement ou de configuration accessibles publiquement. Croise les informations GitHub et Sentry si ces serveurs sont installés. Vérifie la cohérence entre la version, les notes, les migrations et les tests attendus ; produis une checklist ordonnée, les risques bloquants et un brouillon de notes. Ne modifie ni ne publie quoi que ce soit : toute action d'écriture reste proposée puis soumise à approbation.",
+      mcpServerNames: ["GitHub", "GitLab", "Sentry"],
+      minTier: "plus",
+      name: "Préparation de release",
+      parameters: [
+        {
+          description: "Projet public au format namespace/projet",
+          name: "depot",
+          required: true,
+          type: "string",
+        },
+        {
+          description: "Version ou périmètre de la release à préparer",
+          name: "version",
+          required: false,
+          type: "string",
+        },
+        {
+          defaultValue: "complete",
+          description: "Périmètre : checklist ou notes de version",
+          name: "livrable",
+          required: false,
+          type: "string",
+        },
+      ],
+      pluginIds: ["gitlab-public"],
+      strictMcp: true,
+      tags: ["Release", "GitLab", "DevOps", "Checklist"],
+      tools: [
+        "getGitlabProjectSummary",
+        "listGitlabIssues",
+        "listGitlabReleases",
+        "readGitlabFile",
+        "mcp",
+        "codeExecution",
+        "createDocument",
+      ],
+    },
+  },
+  {
+    manifest: {
+      author: "mAI",
+      category: "research",
+      color: "#8b5cf6",
+      description:
+        "Explore, sélectionne et organise des entités et références dans une base de connaissances.",
+      icon: { name: "Brain", type: "lucide" },
+      id: "knowledge-curation",
+      instructions:
+        "Tu es curator de connaissances. À partir d'un thème, recherche des entités dans Wikidata, vérifie les identifiants, les libellés, les alias et les relations, puis regroupe les éléments par concepts et provenance. Compare les résultats aux bases Airtable accessibles via le serveur MCP, propose une structure de collection, des tags stables et une courte note de provenance pour chaque ressource. Détecte les doublons, les ambiguïtés et les références incomplètes ; toute création ou mise à jour Airtable reste proposée puis approuvée explicitement.",
+      mcpServerNames: ["Airtable"],
+      minTier: "plus",
+      name: "Curation de connaissances",
+      parameters: [
+        {
+          description: "Thème ou question qui délimite la curation",
+          name: "theme",
+          required: true,
+          type: "string",
+        },
+        {
+          defaultValue: "mixte",
+          description:
+            "Type d'entité prioritaire : personne, lieu, œuvre ou concept",
+          name: "type_source",
+          required: false,
+          type: "string",
+        },
+        {
+          defaultValue: "20",
+          description: "Nombre maximal de ressources à retenir",
+          name: "limite",
+          required: false,
+          type: "string",
+        },
+      ],
+      pluginIds: ["wikidata"],
+      strictMcp: true,
+      tags: ["Curation", "Connaissances", "Wikidata", "Organisation"],
+      tools: [
+        "searchWikidataEntities",
+        "getWikidataEntity",
+        "mcp",
+        "readUrl",
+        "createDocument",
+      ],
+    },
+  },
 ];
 
-// Contrôle d'intégrité au chargement : une icône inconnue ou un identifiant
-// d'outil inventé doit faire échouer le build/les tests plutôt que de produire
-// un modèle qui ne fonctionne pas.
+// Contrôle d'intégrité au chargement : une icône inconnue, un outil non
+// whitelisté ou une dépendance de Plugin/MCP incohérente doit faire échouer
+// le build/les tests plutôt que de produire un modèle qui ne fonctionne pas.
 for (const template of SKILL_TEMPLATES) {
   const { manifest } = template;
   if (!isLucideIconName(manifest.icon.name)) {
@@ -419,15 +634,39 @@ for (const template of SKILL_TEMPLATES) {
       `Modèle de skill ${manifest.id} : icône inconnue « ${manifest.icon.name} » (voir lib/plugins/icon-allowlist.ts).`
     );
   }
-  const { unknown } = normalizeToolIds(manifest.tools);
-  if (unknown.length > 0) {
+  const validation = validateSkillTemplateManifest(manifest);
+  if (!validation.valid) {
     throw new Error(
-      `Modèle de skill ${manifest.id} : outils inconnus ${unknown.join(", ")} (voir lib/ai/tools/ids.ts).`
-    );
-  }
-  if (manifest.mcpServerNames.length > 0 && manifest.minTier === "free") {
-    throw new Error(
-      `Modèle de skill ${manifest.id} : un modèle qui exploite MCP ne peut pas être accessible au forfait gratuit.`
+      `Modèle de skill ${manifest.id} : ${validation.errors.join(" ; ")}.`
     );
   }
 }
+
+export type {
+  ConvertSkillMarkdownOptions,
+  ParsedSkillMarkdown,
+  SkillMarkdownConversionResult,
+  SkillMarkdownErrorCode,
+  SkillMarkdownFrontmatter,
+  SkillMarkdownParseResult,
+} from "./skill-md";
+// Le convertisseur reste une dépendance locale et pure : il est exporté pour
+// les appelants de tests/import sans passer par une API ou une migration.
+export {
+  convertSkillMarkdown,
+  parseSkillMarkdown,
+  SkillMarkdownError,
+  safeConvertSkillMarkdown,
+  safeParseSkillMarkdown,
+} from "./skill-md";
+export type {
+  SkillTemplateValidationResult,
+  SkillToolClassification,
+  SkillToolSource,
+} from "./validation";
+export {
+  assertSkillTemplateManifest,
+  canonicalMcpServerName,
+  classifySkillTools,
+  validateSkillTemplateManifest,
+} from "./validation";

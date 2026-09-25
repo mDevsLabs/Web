@@ -7,6 +7,7 @@ import {
   getScheduledMessageById,
   updateScheduledMessage,
 } from "@/lib/db/queries";
+import { requireOwnedPlanningChat } from "@/lib/planning/chat-access";
 
 const patchSchema = z.object({
   agentId: z.string().uuid().nullable().optional(),
@@ -36,7 +37,12 @@ export async function GET(
   }
 
   const { id } = await params;
-  const userId = user.id || user.email;
+  const userId = user.id;
+  if (!userId) {
+    return errorResponse("auth_required", {
+      message: "Session utilisateur invalide.",
+    });
+  }
   const message = await getScheduledMessageById({ id, userId });
 
   if (!message) {
@@ -58,7 +64,12 @@ export async function PATCH(
   }
 
   const { id } = await params;
-  const userId = user.id || user.email;
+  const userId = user.id;
+  if (!userId) {
+    return errorResponse("auth_required", {
+      message: "Session utilisateur invalide.",
+    });
+  }
 
   try {
     const json = await request.json();
@@ -69,6 +80,29 @@ export async function PATCH(
       return errorResponse("not_found", {
         message: "Message planifié introuvable.",
       });
+    }
+
+    if (
+      (parsed.createMode === "existing_chat" ||
+        existing.createMode === "existing_chat") &&
+      !parsed.chatId &&
+      !existing.chatId
+    ) {
+      return errorResponse("invalid_request", {
+        message:
+          "Une planification existante doit garder une conversation valide.",
+      });
+    }
+
+    const targetChatIds = [existing.chatId, parsed.chatId].filter(
+      (chatId): chatId is string =>
+        typeof chatId === "string" && chatId.length > 0
+    );
+    for (const chatId of new Set(targetChatIds)) {
+      const access = await requireOwnedPlanningChat({ chatId, user });
+      if (access.response) {
+        return access.response;
+      }
     }
 
     // Une planification terminée, échouée ou annulée qui est modifiée (ou
@@ -137,7 +171,12 @@ export async function DELETE(
   }
 
   const { id } = await params;
-  const userId = user.id || user.email;
+  const userId = user.id;
+  if (!userId) {
+    return errorResponse("auth_required", {
+      message: "Session utilisateur invalide.",
+    });
+  }
 
   const success = await deleteScheduledMessage({ id, userId });
   if (!success) {

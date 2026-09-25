@@ -1,0 +1,50 @@
+{
+  "id": "openalex",
+  "name": "OpenAlex",
+  "version": "1.0.0",
+  "description": "Index scientifique ouvert de travaux, auteurs, citations et accès libre.",
+  "author": "mAI",
+  "category": "research",
+  "tags": [
+    "openalex",
+    "recherche",
+    "scientifique",
+    "articles",
+    "auteurs",
+    "citations"
+  ],
+  "icon": { "type": "lucide", "name": "Atom" },
+  "minTier": "plus",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": false,
+    "writesUserData": false,
+    "requiresApproval": false
+  },
+  "tools": [
+    {
+      "id": "searchOpenAlexWorks",
+      "label": "Rechercher des travaux",
+      "description": "Travaux scientifiques OpenAlex avec auteurs et citations.",
+      "systemHint": "searchOpenAlexWorks (recherche des travaux scientifiques indexés par OpenAlex)"
+    },
+    {
+      "id": "getOpenAlexWork",
+      "label": "Lire un travail",
+      "description": "Fiche d’un travail OpenAlex à partir de W ou DOI.",
+      "systemHint": "getOpenAlexWork (lit une publication OpenAlex à partir de son identifiant ou DOI)"
+    },
+    {
+      "id": "searchOpenAlexAuthors",
+      "label": "Rechercher des auteurs",
+      "description": "Auteurs et institutions indexés par OpenAlex.",
+      "systemHint": "searchOpenAlexAuthors (recherche un auteur scientifique dans OpenAlex)"
+    },
+    {
+      "id": "getOpenAlexAuthor",
+      "label": "Profil d’un auteur",
+      "description": "Profil public d’un auteur OpenAlex.",
+      "systemHint": "getOpenAlexAuthor (lit le profil public d’un auteur OpenAlex)"
+    }
+  ]
+}

@@ -22,7 +22,7 @@ import { isLucideIconName } from "@/lib/plugins/icon-allowlist";
 
 const SECRET_LIKE = /(sk_(live|test)_|ghp_|github_pat_|ntn_|sbp_|xox[baprs]-)/i;
 const DANGEROUS_COMMAND =
-  /\b(docker|kubectl|sudo|aws|gcloud|az|rm\s+-rf|sh\s+-c|bash\s+-c|curl|wget)\b/i;
+  /\b(docker|kubectl|sudo|aws|gcloud|az|rm\s+-rf|sh\s+-c|bash\s+-c|curl|wget|npx|npm|pnpm|node|python|python3)\b/i;
 
 describe("Catalogue de modèles MCP", () => {
   it("expose des identifiants et des noms uniques", () => {
@@ -65,9 +65,12 @@ describe("Catalogue de modèles MCP", () => {
       }
       expect(template.url ?? "").not.toMatch(/example\.|localhost/i);
 
-      // Aucune commande dangereuse, aucun secret dans les arguments.
-      expect(template.command ?? "").not.toMatch(DANGEROUS_COMMAND);
-      expect(template.args ?? "").not.toMatch(DANGEROUS_COMMAND);
+      // Aucun interpréteur générique dans un modèle installable. Les modèles
+      // stdio bloqués restent documentés, mais ne sont jamais exécutables.
+      if (template.activation === "ready") {
+        expect(template.command ?? "").not.toMatch(DANGEROUS_COMMAND);
+        expect(template.args ?? "").not.toMatch(DANGEROUS_COMMAND);
+      }
       expect(template.args ?? "").not.toMatch(SECRET_LIKE);
       expect(JSON.stringify(template.args ?? "")).not.toMatch(
         /token=|apikey=|api_key=|password=/i
@@ -113,14 +116,46 @@ describe("Catalogue de modèles MCP", () => {
     }
   });
 
-  it("expose les cinq connecteurs du Store, tous installables", () => {
-    const storeIds = ["github", "notion", "brave-search", "supabase", "stripe"];
+  it("expose les connecteurs du Store et marque les stdio non vérifiés", () => {
+    const storeIds = [
+      "github",
+      "gitlab",
+      "notion",
+      "brave-search",
+      "supabase",
+      "stripe",
+      "airtable",
+    ];
     for (const id of storeIds) {
       const template = getMcpTemplate(id);
       expect(template, `modèle ${id} absent du catalogue`).toBeDefined();
-      expect(template?.activation).toBe("ready");
+      expect(template?.activation).toBe(
+        ["notion", "brave-search", "stripe"].includes(id)
+          ? "requires_vetted_stdio"
+          : "ready"
+      );
     }
     expect(getMcpTemplate("modele-qui-nexiste-pas")).toBeUndefined();
+  });
+
+  it("documente GitLab et Airtable comme des connecteurs Bearer Plus read-write", () => {
+    for (const id of ["gitlab", "airtable"]) {
+      const template = getMcpTemplate(id)!;
+      expect(template.minTier).toBe("plus");
+      expect(template.transport).toBe("http");
+      expect(template.authType).toBe("bearer");
+      expect(template.readOnly).toBe(false);
+      expect(["write_only", "ask_permission"]).toContain(
+        template.requireApproval
+      );
+      expect(template.credentials).toHaveLength(1);
+      expect(template.credentials[0].required).toBe(true);
+      expect(template.credentials[0].kind).toBe("auth");
+      expect(template.credentials[0].key).toBe("token");
+      expect(JSON.stringify(template.credentials[0])).not.toMatch(
+        /"value"|ghp_|github_pat_|glpat-|pat[A-Za-z0-9]/i
+      );
+    }
   });
 });
 

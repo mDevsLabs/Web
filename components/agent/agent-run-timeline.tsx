@@ -188,7 +188,9 @@ function RunSummary({ run }: { run: AgentRunEvent }) {
       >
         {badge.label}
       </span>
-      {run.model ? <span>Modèle : {run.model}</span> : null}
+      {run.model ? (
+        <span className="max-w-full break-all">Modèle : {run.model}</span>
+      ) : null}
       <span>Réflexion : {run.reasoningLevel}</span>
       <span className="inline-flex items-center gap-1">
         <TimerIcon className="size-3" />
@@ -443,7 +445,7 @@ export function AgentRunTimeline({
       {state.run ? <RunSummary run={state.run} /> : null}
 
       {state.plan ? (
-        <div className="flex flex-col gap-1.5">
+        <div aria-live="polite" className="flex flex-col gap-1.5">
           <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
             {state.plan.title}
           </p>
@@ -451,14 +453,22 @@ export function AgentRunTimeline({
             {state.plan.items.map((item) => (
               <li className="flex items-center gap-2 text-[13px]" key={item.id}>
                 <StatusDot status={item.status} />
-                <span
-                  className={cn(
-                    item.status === "completed" &&
-                      "text-muted-foreground line-through decoration-border",
-                    item.status === "running" && "font-medium"
-                  )}
-                >
-                  {item.label}
+                <span className="flex min-w-0 flex-1 flex-col">
+                  <span
+                    className={cn(
+                      "min-w-0 break-words",
+                      item.status === "completed" &&
+                        "text-muted-foreground line-through decoration-border",
+                      item.status === "running" && "font-medium"
+                    )}
+                  >
+                    {item.label}
+                  </span>
+                  {item.description ? (
+                    <span className="text-[11px] leading-5 text-muted-foreground">
+                      {item.description}
+                    </span>
+                  ) : null}
                 </span>
               </li>
             ))}
@@ -514,8 +524,8 @@ export function AgentRunTimeline({
                   <Icon className="size-3.5 text-muted-foreground" />
                 </span>
                 <span className="flex min-w-0 flex-1 flex-col">
-                  <span className="flex items-center gap-2">
-                    <span className="truncate text-[13px] font-medium">
+                  <span className="flex min-w-0 flex-wrap items-center gap-2">
+                    <span className="min-w-0 break-words text-[13px] font-medium">
                       {step.title}
                     </span>
                     {category ? (
@@ -555,14 +565,16 @@ export function AgentRunTimeline({
           <div className="flex flex-wrap gap-2">
             {state.artifacts.map((artifact) => (
               <button
-                className="flex cursor-pointer items-center gap-2 rounded-xl border border-border/50 bg-background px-3 py-2 text-xs font-medium transition-colors hover:border-primary/40"
+                className="flex min-h-11 max-w-full cursor-pointer items-center gap-2 rounded-xl border border-border/50 bg-background px-3 py-2 text-xs font-medium transition-colors hover:border-primary/40 focus-visible:outline-2 focus-visible:outline-offset-2"
                 data-testid={`agent-artifact-${artifact.documentId}`}
                 key={artifact.documentId}
                 onClick={() => setOpenArtifact(artifact)}
                 type="button"
               >
                 <FileTextIcon className="size-3.5 text-muted-foreground" />
-                {artifact.title}
+                <span className="max-w-[min(22rem,70vw)] truncate">
+                  {artifact.title}
+                </span>
               </button>
             ))}
           </div>
@@ -584,7 +596,7 @@ export function AgentRunTimeline({
                 <HelpCircleIcon className="size-3 shrink-0 text-muted-foreground/60" />
                 {source.url ? (
                   <a
-                    className="truncate underline decoration-border underline-offset-2 hover:text-foreground"
+                    className="min-w-0 truncate underline decoration-border underline-offset-2 hover:text-foreground"
                     href={source.url}
                     rel="noreferrer"
                     target="_blank"

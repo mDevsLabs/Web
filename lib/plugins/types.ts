@@ -25,9 +25,16 @@ export type PluginToolManifest = {
 // Permissions déclarées par un plugin : explicites, vérifiées par
 // `scripts/validate-plugins.ts` et rappelées telles quelles à l'utilisateur.
 // Un plugin qui écrit des données utilisateur DOIT exiger une approbation.
+export type PluginSecretKind = "env" | "auth" | "header";
+
+export type PluginSecretResolver = (request: {
+  key: string;
+  kind: PluginSecretKind;
+}) => Promise<string | undefined>;
+
 export type PluginPermissions = {
-  /** Accès réseau : aucun, ou strictement en lecture. */
-  network: "none" | "read-only";
+  /** Accès réseau : aucun, lecture seule ou écriture explicitement déclarée. */
+  network: "none" | "read-only" | "read-write";
   /** Le plugin lit des données rattachées à l'utilisateur. */
   readsUserData: boolean;
   /** Le plugin écrit/modifie des données rattachées à l'utilisateur. */
@@ -61,6 +68,8 @@ export type PluginToolDeps = {
   isGhostMode?: boolean;
   session?: unknown;
   signal?: AbortSignal;
+  /** Résolveur server-only, injectable par un futur Plugin authentifié. */
+  secretResolver?: PluginSecretResolver;
   userId?: string;
 };
 

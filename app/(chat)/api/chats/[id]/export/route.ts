@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { chatOwnerMatches } from "@/lib/agent/channel";
 import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { getChatById, getMessagesByChatId } from "@/lib/db/queries";
@@ -317,7 +318,12 @@ export async function GET(
   if (!maiUser) {
     return errorResponse("auth_required", { message: "Non authentifié." });
   }
-  const userId = maiUser.id || maiUser.email;
+  const userId = maiUser.id;
+  if (!userId) {
+    return errorResponse("auth_required", {
+      message: "Session utilisateur invalide.",
+    });
+  }
 
   const chat = await getChatById({ id });
   if (!chat) {
@@ -326,9 +332,13 @@ export async function GET(
     });
   }
   if (
-    chat.userId !== userId &&
-    chat.userId !== maiUser.email &&
-    chat.visibility !== "public"
+    chat.visibility !== "public" &&
+    !chatOwnerMatches({
+      chatUserId: chat.userId,
+      email: maiUser.email,
+      userId: maiUser.id,
+      username: maiUser.username,
+    })
   ) {
     return errorResponse("access_denied");
   }

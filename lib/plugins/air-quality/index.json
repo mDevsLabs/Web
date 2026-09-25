@@ -14,10 +14,12 @@
     "writesUserData": false,
     "requiresApproval": false
   },
-  "tools": [{
-    "description": "Mesures et prévisions de qualité de l'air et de pollen.",
-    "id": "getAirQuality",
-    "label": "Qualité de l'air",
-    "systemHint": "getAirQuality (indice de qualité de l'air, PM10/PM2.5, ozone, dioxyde d'azote et pollen par ville ou coordonnées, avec prévisions horaires sur 1 à 72 h)"
-  }]
+  "tools": [
+    {
+      "description": "Mesures et prévisions de qualité de l'air et de pollen.",
+      "id": "getAirQuality",
+      "label": "Qualité de l'air",
+      "systemHint": "getAirQuality (indice de qualité de l'air, PM10/PM2.5, ozone, dioxyde d'azote et pollen par ville ou coordonnées, avec prévisions horaires sur 1 à 72 h)"
+    }
+  ]
 }

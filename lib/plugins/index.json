@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": "2026.09.24",
+  "catalogVersion": "2026.09.25",
   "categories": [
     {
       "id": "meteo",
@@ -105,6 +105,30 @@
       "dir": "mobilite-fr",
       "entry": "./mobilite-fr",
       "manifest": "./mobilite-fr/index.json"
+    },
+    {
+      "id": "wikidata",
+      "dir": "wikidata",
+      "entry": "./wikidata",
+      "manifest": "./wikidata/index.json"
+    },
+    {
+      "id": "gitlab-public",
+      "dir": "gitlab-public",
+      "entry": "./gitlab-public",
+      "manifest": "./gitlab-public/index.json"
+    },
+    {
+      "id": "eurostat",
+      "dir": "eurostat",
+      "entry": "./eurostat",
+      "manifest": "./eurostat/index.json"
+    },
+    {
+      "id": "openalex",
+      "dir": "openalex",
+      "entry": "./openalex",
+      "manifest": "./openalex/index.json"
     }
   ]
 }

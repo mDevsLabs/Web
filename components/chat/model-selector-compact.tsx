@@ -237,6 +237,7 @@ type ModelSelectorCompactProps = {
   variant?: "compact" | "block";
   placeholder?: string;
   focusInputAfterSelect?: boolean;
+  fallbackToFirst?: boolean;
   allowEmpty?: boolean;
   emptyLabel?: string;
   // Requis quand le sélecteur est rendu dans une Dialog modale : sans cela,
@@ -367,6 +368,7 @@ function PureModelSelectorCompact({
   variant = "compact",
   placeholder = "Modèle IA",
   focusInputAfterSelect,
+  fallbackToFirst = true,
   allowEmpty,
   emptyLabel = DEFAULT_EMPTY_LABEL,
   modal,
@@ -404,13 +406,15 @@ function PureModelSelectorCompact({
 
   const selectedModel =
     models.find((m) => m.id === selectedModelId) ??
-    models.find((m) => m.id === DEFAULT_CHAT_MODEL) ??
-    models[0];
+    (fallbackToFirst
+      ? (models.find((m) => m.id === DEFAULT_CHAT_MODEL) ?? models[0])
+      : undefined);
   const provider = selectedModel ? resolveProviderKey(selectedModel) : null;
   const isEmptySelection = allowEmpty && !selectedModelId;
   const triggerLabel = isEmptySelection
     ? emptyLabel
-    : selectedModel?.name || placeholder;
+    : selectedModel?.name ||
+      (selectedModelId ? "Modèle indisponible" : placeholder);
 
   // Filtrage intelligent insensible aux accents et à la casse
   const filteredModels = useMemo(() => {
@@ -462,7 +466,7 @@ function PureModelSelectorCompact({
       <ModelSelectorTrigger asChild>
         {variant === "compact" ? (
           <Button
-            className="h-8 sm:h-7 max-w-[220px] justify-between gap-1.5 rounded-lg px-2 text-[12px] text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
+            className="h-8 max-w-[min(220px,calc(100vw-9rem))] justify-between gap-1.5 rounded-lg px-2 text-[12px] text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer sm:h-7 sm:max-w-[220px]"
             data-testid="model-selector"
             variant="ghost"
           >
@@ -540,7 +544,7 @@ function PureModelSelectorCompact({
                     key={model.id}
                     model={model}
                     onModelChange={onModelChange}
-                    selectedModelId={selectedModel?.id}
+                    selectedModelId={selectedModel?.id ?? selectedModelId}
                     setOpen={setOpen}
                     source={source}
                   />

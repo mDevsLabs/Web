@@ -21,6 +21,11 @@ import {
 } from "@/lib/agent/events/business";
 import type { AgentFlags } from "@/lib/agent/flags";
 import {
+  AGENT_FALLBACK_FINAL_RESPONSE,
+  AGENT_FINAL_RESPONSE_INSTRUCTION,
+  composeAgentInstructions,
+} from "@/lib/agent/instructions";
+import {
   type AgentRunClock,
   accumulatedActiveMs,
   closeActivity,
@@ -121,19 +126,36 @@ export type AgentStreamParams = {
   userId: string;
 };
 
-/**
+// Réexporté depuis le contrat d'instructions partagé : les tests et les
+// appelants historiques continuent d'utiliser l'API publique du runtime.
+export {
+  AGENT_FALLBACK_FINAL_RESPONSE,
+  AGENT_FINAL_RESPONSE_INSTRUCTION,
+  composeAgentInstructions,
+} from "@/lib/agent/instructions";
 
- * Compose les instructions système en y ajoutant les réorientations demandées
- * par l'utilisateur pendant le run. Exporté pour être testé directement.
+/**
+ * Une étape de tool calling doit toujours pouvoir être suivie d'une étape de
+ * synthèse. Le seuil est calculé sur le nombre total d'étapes déjà exécutées,
+ * afin de réserver la dernière place du budget à cette réponse.
  */
-export function composeAgentInstructions(
-  base: string,
-  reorientations: readonly string[]
-): string {
-  if (reorientations.length === 0) {
-    return base;
+export function shouldForceAgentFinalResponse(params: {
+  elapsedMs: number;
+  maxDurationMs: number;
+  maxSteps: number;
+  maxToolCalls: number;
+  stepCount: number;
+  toolCallCount: number;
+  productLimitReached: boolean;
+}): boolean {
+  if (
+    params.productLimitReached ||
+    params.elapsedMs >= params.maxDurationMs ||
+    params.toolCallCount >= params.maxToolCalls
+  ) {
+    return true;
   }
-  return `${base}\n\nCONSIGNES DE RÉORIENTATION DE L'UTILISATEUR (à prendre en compte maintenant, par ordre d'arrivée) :\n${reorientations.map((text) => `- ${text}`).join("\n")}`;
+  return params.stepCount >= Math.max(0, params.maxSteps - 1);
 }
 
 export function createAgentStream(params: AgentStreamParams) {
@@ -152,6 +174,8 @@ export function createAgentStream(params: AgentStreamParams) {
       let plan = params.plan;
       let aborted = false;
       let failure: string | null = null;
+      let lastStepHadText = false;
+      let lastStepHadToolCalls = false;
       let accountingStarted = false;
       let productLimitReached = false;
       // Horloge injectable + checkpoint persisté : la limite produit s'appuie
@@ -290,6 +314,9 @@ export function createAgentStream(params: AgentStreamParams) {
             plan,
           }).catch(() => {});
         },
+        onPlanReplaced: (nextPlan) => {
+          plan = nextPlan;
+        },
         runId: params.runId,
         state,
         writer,
@@ -363,6 +390,7 @@ export function createAgentStream(params: AgentStreamParams) {
         },
         onFinish: async ({ usage }) => {
           const totals = await recordAgentUsage({
+            idempotencyKey: `agent:${params.runId}:${params.revision ?? 0}`,
             model: params.modelId,
             sessionToken: params.sessionToken,
             usage: usage as {
@@ -449,6 +477,8 @@ export function createAgentStream(params: AgentStreamParams) {
             // elle sera retentée au point sûr suivant, sans perte.
           }
           const text = (step.text ?? "").trim();
+          lastStepHadText = text.length > 0;
+          lastStepHadToolCalls = stepToolCalls > 0;
           if (text) {
             emitRun("running");
           }
@@ -477,16 +507,25 @@ export function createAgentStream(params: AgentStreamParams) {
             productLimitReached = true;
           }
 
+          const stepCount = stepBaseline + steps.length;
+          const maxSteps = Math.max(1, params.budget.maxSteps);
+          const forceFinalResponse = shouldForceAgentFinalResponse({
+            elapsedMs: elapsed,
+            maxDurationMs: params.budget.maxDurationMs,
+            maxSteps,
+            maxToolCalls: params.budget.maxToolCalls,
+            productLimitReached,
+            stepCount,
+            toolCallCount: toolCalls,
+          });
           const patch: { instructions?: string; toolChoice?: "none" } = {};
           // Les réorientations lues au dernier point sûr sont injectées ICI,
           // avant la construction de l'étape suivante. Les lire seulement en
           // fin d'étape (onStepEnd) les rendait inopérantes : les instructions
           // de l'appel suivant étaient déjà figées.
-          if (pendingReorientations.length > injectedReorientations) {
-            patch.instructions = composeAgentInstructions(
-              params.context.instructions,
-              [...pendingReorientations]
-            );
+          const hasNewReorientations =
+            pendingReorientations.length > injectedReorientations;
+          if (hasNewReorientations) {
             await acknowledgeReorientations({
               appliedStepIndex: state.stepIndex,
               ids: pendingReorientationIds.slice(injectedReorientations),
@@ -495,30 +534,55 @@ export function createAgentStream(params: AgentStreamParams) {
             injectedReorientations = pendingReorientations.length;
           }
 
-          // Budget d'invocation ou limite produit atteinte : on interdit les
-          // outils restants pour forcer une réponse finale au lieu d'une
-          // coupure brutale, sans perdre les résultats déjà produits.
-          if (
-            stop.stop ||
-            elapsed >= params.budget.maxDurationMs ||
-            toolCalls >= params.budget.maxToolCalls
-          ) {
+          // La dernière place du budget est réservée à une synthèse textuelle.
+          // Les instructions de finalisation sont composées avec les
+          // réorientations pour que les deux contrats utilisent le même chemin.
+          if (hasNewReorientations || forceFinalResponse) {
+            patch.instructions = composeAgentInstructions(
+              params.context.instructions,
+              pendingReorientations,
+              forceFinalResponse
+            );
+          }
+          if (forceFinalResponse) {
             patch.toolChoice = "none";
           }
 
           return Object.keys(patch).length > 0 ? patch : undefined;
         },
         ...(providerOptions ? { providerOptions } : {}),
-        stopWhen: ({ steps }) =>
-          state.waitingForUser ||
-          state.waitingForApproval ||
-          stepBaseline + steps.length >= params.budget.maxSteps ||
-          clock.now() - params.startedAt >= params.budget.maxDurationMs ||
-          shouldStopAtSafePoint({
-            checkpoint: duration,
-            clock,
-            productLimitMs: params.budget.productLimitMs ?? null,
-          }).stop,
+        stopWhen: ({ steps }) => {
+          if (state.waitingForUser || state.waitingForApproval) {
+            return true;
+          }
+
+          const stepCount = stepBaseline + steps.length;
+          const maxSteps = Math.max(1, params.budget.maxSteps);
+          const lastStepHasToolCalls =
+            (steps.at(-1)?.toolCalls?.length ?? 0) > 0;
+          const hardLimitReached =
+            clock.now() - params.startedAt >= params.budget.maxDurationMs ||
+            shouldStopAtSafePoint({
+              checkpoint: duration,
+              clock,
+              productLimitMs: params.budget.productLimitMs ?? null,
+            }).stop;
+
+          // Une étape contenant des outils est suivie d'une étape de synthèse,
+          // même si elle vient d'atteindre le plafond. Le hard stop intervient
+          // seulement après cette tentative, pour ne jamais terminer sur un
+          // ToolCall sans réponse conversationnelle.
+          if (stepCount > maxSteps) {
+            return true;
+          }
+          if (
+            (stepCount >= maxSteps || hardLimitReached) &&
+            !lastStepHasToolCalls
+          ) {
+            return true;
+          }
+          return false;
+        },
         tools,
       });
 
@@ -539,6 +603,29 @@ export function createAgentStream(params: AgentStreamParams) {
         await result.finishReason;
       } catch {
         // L'erreur a déjà été captée par onError ; on poursuit la finalisation.
+      }
+
+      // Un provider peut respecter toolChoice: "none" tout en renvoyant une
+      // étape vide. On ne laisse jamais un run terminé silencieusement sans
+      // texte conversationnel : les erreurs réseau réelles restent des
+      // erreurs, mais une réponse vide reçoit un fallback persistable.
+      if (
+        !state.waitingForApproval &&
+        !state.waitingForUser &&
+        !aborted &&
+        !failure &&
+        (!lastStepHadText || lastStepHadToolCalls)
+      ) {
+        const fallbackId = generateId();
+        writer.write({ id: fallbackId, type: "text-start" });
+        writer.write({
+          delta: AGENT_FALLBACK_FINAL_RESPONSE,
+          id: fallbackId,
+          type: "text-delta",
+        });
+        writer.write({ id: fallbackId, type: "text-end" });
+        lastStepHadText = true;
+        lastStepHadToolCalls = false;
       }
 
       // Une suspension n'est ni un échec ni une fin : le run reste actif et

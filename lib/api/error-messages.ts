@@ -14,6 +14,8 @@ export const DEFAULT_MESSAGES_FR: Record<ApiErrorCode, string> = {
   invalid_credentials: "Identifiants invalides.",
   invalid_request:
     "La requête n'a pas pu être traitée. Veuillez vérifier vos données.",
+  mcp_required:
+    "Configurez d'abord les serveurs MCP requis par cette compétence.",
   model_access_denied:
     "Ce modèle n'est pas disponible avec votre forfait actuel.",
   not_found: "La ressource demandée est introuvable.",

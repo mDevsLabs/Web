@@ -59,6 +59,11 @@ export function tasksToPlan(input: TasksToolInput): {
 } {
   return {
     items: input.tasks.map((task, index) => ({
+      ...(task.description?.trim()
+        ? {
+            description: task.description.trim().slice(0, TASK_DESCRIPTION_MAX),
+          }
+        : {}),
       id: `task-${index + 1}`,
       label: task.title.slice(0, TASK_TITLE_MAX),
       status: "pending" as AgentStepStatus,

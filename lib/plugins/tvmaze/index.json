@@ -8,11 +8,36 @@
   "tags": ["séries", "télévision", "épisodes", "programmes", "diffusion"],
   "icon": { "type": "lucide", "name": "Video" },
   "minTier": "plus",
-  "permissions": { "network": "read-only", "readsUserData": false, "writesUserData": false, "requiresApproval": false },
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": false,
+    "writesUserData": false,
+    "requiresApproval": false
+  },
   "tools": [
-    { "id": "searchTvShows", "label": "Rechercher des séries", "description": "Recherche dans le catalogue TVmaze.", "systemHint": "searchTvShows (recherche des séries et émissions)" },
-    { "id": "getTvShow", "label": "Fiche série", "description": "Détails, genres, diffusion et note d'une série.", "systemHint": "getTvShow (fiche détaillée à partir d'un identifiant TVmaze)" },
-    { "id": "listTvEpisodes", "label": "Épisodes", "description": "Épisodes associés à une série.", "systemHint": "listTvEpisodes (liste les épisodes triés par diffusion)" },
-    { "id": "getTvSchedule", "label": "Programmes diffusés", "description": "Programme TV à une date donnée.", "systemHint": "getTvSchedule (émissions programmées dans un pays et à une date)" }
+    {
+      "id": "searchTvShows",
+      "label": "Rechercher des séries",
+      "description": "Recherche dans le catalogue TVmaze.",
+      "systemHint": "searchTvShows (recherche des séries et émissions)"
+    },
+    {
+      "id": "getTvShow",
+      "label": "Fiche série",
+      "description": "Détails, genres, diffusion et note d'une série.",
+      "systemHint": "getTvShow (fiche détaillée à partir d'un identifiant TVmaze)"
+    },
+    {
+      "id": "listTvEpisodes",
+      "label": "Épisodes",
+      "description": "Épisodes associés à une série.",
+      "systemHint": "listTvEpisodes (liste les épisodes triés par diffusion)"
+    },
+    {
+      "id": "getTvSchedule",
+      "label": "Programmes diffusés",
+      "description": "Programme TV à une date donnée.",
+      "systemHint": "getTvSchedule (émissions programmées dans un pays et à une date)"
+    }
   ]
 }

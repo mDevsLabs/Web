@@ -1,0 +1,31 @@
+{
+  "id": "wikidata",
+  "name": "Wikidata",
+  "version": "1.0.0",
+  "description": "Recherche et lecture d’entités, propriétés et liens de Wikidata.",
+  "author": "mAI",
+  "category": "research",
+  "tags": ["wikidata", "knowledge graph", "entités", "encyclopédie", "données"],
+  "icon": { "type": "lucide", "name": "Globe" },
+  "minTier": "plus",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": false,
+    "writesUserData": false,
+    "requiresApproval": false
+  },
+  "tools": [
+    {
+      "id": "searchWikidataEntities",
+      "label": "Rechercher une entité",
+      "description": "Recherche des entités publiques de Wikidata.",
+      "systemHint": "searchWikidataEntities (recherche une entité Wikidata par son nom ou son libellé)"
+    },
+    {
+      "id": "getWikidataEntity",
+      "label": "Lire une entité",
+      "description": "Libellés, alias, propriétés et liens d’une entité Wikidata.",
+      "systemHint": "getWikidataEntity (lit une entité Wikidata à partir de son identifiant Q ou P)"
+    }
+  ]
+}

@@ -21,6 +21,7 @@ export async function recordAgentUsage(params: {
     outputTokens?: number;
     totalTokens?: number;
   } | null;
+  idempotencyKey?: string;
   userEmail: string;
   userId: string;
 }): Promise<AgentUsageTotals> {
@@ -33,6 +34,7 @@ export async function recordAgentUsage(params: {
   }
 
   await recordTokenUsage({
+    idempotencyKey: params.idempotencyKey,
     inputTokens,
     isGhostMode: false,
     model: params.model,

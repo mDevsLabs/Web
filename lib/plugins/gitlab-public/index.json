@@ -1,0 +1,43 @@
+{
+  "id": "gitlab-public",
+  "name": "GitLab public",
+  "version": "1.0.0",
+  "description": "Lecture seule des projets, issues, releases et fichiers publics GitLab.",
+  "author": "mAI",
+  "category": "dev",
+  "tags": ["gitlab", "code", "projet", "issues", "releases", "développement"],
+  "icon": { "type": "lucide", "name": "Code" },
+  "minTier": "plus",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": false,
+    "writesUserData": false,
+    "requiresApproval": false
+  },
+  "tools": [
+    {
+      "id": "getGitlabProjectSummary",
+      "label": "Résumé d’un projet",
+      "description": "Résumé public d’un projet GitLab.",
+      "systemHint": "getGitlabProjectSummary (résumé public d’un projet GitLab)"
+    },
+    {
+      "id": "listGitlabIssues",
+      "label": "Issues",
+      "description": "Issues publiques récentes d’un projet GitLab.",
+      "systemHint": "listGitlabIssues (liste les issues publiques récentes d’un projet GitLab)"
+    },
+    {
+      "id": "listGitlabReleases",
+      "label": "Releases",
+      "description": "Releases publiques d’un projet GitLab.",
+      "systemHint": "listGitlabReleases (liste les dernières releases publiques d’un projet GitLab)"
+    },
+    {
+      "id": "readGitlabFile",
+      "label": "Lire un fichier",
+      "description": "Lit un fichier texte d’un projet GitLab public.",
+      "systemHint": "readGitlabFile (lit un fichier texte public d’un projet GitLab sur une branche ou un tag)"
+    }
+  ]
+}

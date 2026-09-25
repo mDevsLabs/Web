@@ -367,6 +367,7 @@ export type AgentExecutionBudget = {
 };
 
 export type AgentPlanItem = {
+  description?: string;
   id: string;
   label: string;
   status: AgentStepStatus;

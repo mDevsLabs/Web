@@ -76,7 +76,7 @@ import { cn, fetcher } from "@/lib/utils";
 // n'est maintenue ici, sinon elle diverge (c'était le cas des presets et du
 // Store, dont 5 connecteurs sur 6 ne résolvaient aucun template).
 type McpTemplateRow = {
-  activation: "ready" | "requires_oauth_flow";
+  activation: "ready" | "requires_oauth_flow" | "requires_vetted_stdio";
   args: string;
   authType: string;
   command: string;
@@ -188,9 +188,9 @@ export default function McpClient({
     templates: McpTemplateRow[];
   }>("/api/mcp/templates", fetcher);
   const templates = useMemo(() => tplData?.templates ?? [], [tplData]);
-  // Modèles réellement installables : les autres (OAuth interactif) restent
-  // visibles avec leur badge, sans bouton actif. Le serveur refuse de toute
-  // façon leur installation.
+  // Modèles réellement installables : les autres restent visibles avec leur
+  // badge, sans bouton actif. Le serveur refuse de toute façon leur
+  // installation.
   const installableTemplates = useMemo(
     () => templates.filter((tpl) => tpl.activation === "ready"),
     [templates]
@@ -611,7 +611,9 @@ export default function McpClient({
   const handleInstallTemplate = async (tpl: McpTemplateRow) => {
     if (tpl.activation !== "ready") {
       toast.error(
-        `${tpl.name} utilise un flux OAuth interactif non pris en charge pour le moment.`
+        tpl.activation === "requires_vetted_stdio"
+          ? `${tpl.name} attend un wrapper stdio vérifié par l'infrastructure.`
+          : `${tpl.name} utilise un flux OAuth interactif non pris en charge pour le moment.`
       );
       return;
     }
@@ -1383,6 +1385,13 @@ export default function McpClient({
                           >
                             OAuth requise
                           </Badge>
+                        ) : tpl.activation === "requires_vetted_stdio" ? (
+                          <Badge
+                            className="border-amber-500/30 bg-amber-500/10 text-[10px] text-amber-700 dark:text-amber-400"
+                            variant="outline"
+                          >
+                            stdio à vérifier
+                          </Badge>
                         ) : null}
                       </div>
                     </div>
@@ -1398,7 +1407,9 @@ export default function McpClient({
                         title={
                           tpl.activation === "ready"
                             ? undefined
-                            : "Flux OAuth interactif non pris en charge : installation indisponible pour le moment."
+                            : tpl.activation === "requires_vetted_stdio"
+                              ? "Wrapper stdio non vérifié : installation indisponible pour le moment."
+                              : "Flux OAuth interactif non pris en charge : installation indisponible pour le moment."
                         }
                       >
                         <PlusIcon className="size-3 mr-1" />

@@ -37,7 +37,7 @@ const iconSchema = z.union([
 // approbation explicite, sinon la validation échoue.
 export const permissionsSchema = z
   .object({
-    network: z.enum(["none", "read-only"]),
+    network: z.enum(["none", "read-only", "read-write"]),
     readsUserData: z.boolean(),
     requiresApproval: z.boolean(),
     writesUserData: z.boolean(),
@@ -48,6 +48,14 @@ export const permissionsSchema = z
     {
       message:
         "writesUserData: true exige requiresApproval: true (toute écriture de données utilisateur doit être approuvée).",
+      path: ["requiresApproval"],
+    }
+  )
+  .refine(
+    (permissions) =>
+      permissions.network !== "read-write" || permissions.requiresApproval,
+    {
+      message: "network: read-write exige requiresApproval: true.",
       path: ["requiresApproval"],
     }
   );
@@ -72,27 +80,30 @@ const pluginToolSchema = z.object({
   systemHint: z.string().min(1),
 });
 
-export const manifestSchema = z.object({
-  author: z.string().min(1).default("mAI"),
-  category: z.string().min(1),
-  description: z.string().min(1),
-  icon: iconSchema,
-  id: z.string().regex(/^[a-z0-9][a-z0-9-]*$/),
-  // Les plugins sont réservés aux forfaits payants : le plancher est « plus ».
-  minTier: z.enum(["plus", "pro", "max"], {
-    message: "minTier doit valoir plus, pro ou max (les plugins sont payants).",
-  }),
-  name: z.string().min(1),
-  permissions: permissionsSchema,
-  tags: z.array(z.string().min(1)).default([]),
-  tools: z.array(pluginToolSchema).min(1).max(24),
-  version: z.string().regex(/^\d+\.\d+\.\d+/),
-}).refine(
-  (manifest) =>
-    new Set(manifest.tools.map((tool) => tool.id)).size ===
-    manifest.tools.length,
-  { message: "Les identifiants d'outils d'un plugin doivent être uniques." }
-);
+export const manifestSchema = z
+  .object({
+    author: z.string().min(1).default("mAI"),
+    category: z.string().min(1),
+    description: z.string().min(1),
+    icon: iconSchema,
+    id: z.string().regex(/^[a-z0-9][a-z0-9-]*$/),
+    // Les plugins sont réservés aux forfaits payants : le plancher est « plus ».
+    minTier: z.enum(["plus", "pro", "max"], {
+      message:
+        "minTier doit valoir plus, pro ou max (les plugins sont payants).",
+    }),
+    name: z.string().min(1),
+    permissions: permissionsSchema,
+    tags: z.array(z.string().min(1)).default([]),
+    tools: z.array(pluginToolSchema).min(1).max(24),
+    version: z.string().regex(/^\d+\.\d+\.\d+/),
+  })
+  .refine(
+    (manifest) =>
+      new Set(manifest.tools.map((tool) => tool.id)).size ===
+      manifest.tools.length,
+    { message: "Les identifiants d'outils d'un plugin doivent être uniques." }
+  );
 
 export const rootCatalogSchema = z.object({
   catalogVersion: z.string().min(1),

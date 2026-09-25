@@ -1,3 +1,4 @@
+import { chatOwnerMatches } from "@/lib/agent/channel";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { errorResponse } from "@/lib/api/error-response";
 import { isPaidTier } from "@/lib/auth/plan";
@@ -289,8 +290,14 @@ export async function DELETE(request: Request) {
     return new ChatbotError("not_found:chat").toResponse();
   }
 
-  const userId = maiUser.id || maiUser.email;
-  if (chat.userId !== userId && chat.userId !== maiUser.email) {
+  if (
+    !chatOwnerMatches({
+      chatUserId: chat.userId,
+      email: maiUser.email,
+      userId: maiUser.id,
+      username: maiUser.username,
+    })
+  ) {
     return new ChatbotError("forbidden:chat").toResponse();
   }
 

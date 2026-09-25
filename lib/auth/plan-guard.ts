@@ -1,5 +1,6 @@
 import { getMaiUser } from "@/lib/auth/session";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
+import { getPersistedTier } from "@/lib/db/users";
 import {
   type PaidTier,
   type PlanGuardResult,
@@ -20,12 +21,20 @@ export async function requirePaidPlan(
       upgradeUrl: MAI_UPGRADE_URL,
     };
   }
-  if (!tierAtLeast(user.tier, minimum)) {
+  const persisted = await getPersistedTier({
+    userId: user.id || user.email,
+  });
+  if (!persisted.ok || !tierAtLeast(persisted.tier, minimum)) {
     return {
       allowed: false,
       reason: "plan_required",
       upgradeUrl: MAI_UPGRADE_URL,
     };
   }
-  return { allowed: true, tier: user.tier, user };
+  const displayTier = `${persisted.tier[0]?.toUpperCase() ?? ""}${persisted.tier.slice(1)}`;
+  return {
+    allowed: true,
+    tier: persisted.tier,
+    user: { ...user, tier: displayTier },
+  };
 }

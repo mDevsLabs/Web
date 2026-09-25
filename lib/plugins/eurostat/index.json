@@ -1,0 +1,38 @@
+{
+  "id": "eurostat",
+  "name": "Eurostat",
+  "version": "1.0.0",
+  "description": "Données et métadonnées publiques des statistiques européennes d’Eurostat.",
+  "author": "mAI",
+  "category": "data",
+  "tags": [
+    "eurostat",
+    "Europe",
+    "statistiques",
+    "données",
+    "économie",
+    "démographie"
+  ],
+  "icon": { "type": "lucide", "name": "BarChart3" },
+  "minTier": "plus",
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": false,
+    "writesUserData": false,
+    "requiresApproval": false
+  },
+  "tools": [
+    {
+      "id": "getEurostatData",
+      "label": "Lire des données",
+      "description": "Observations Eurostat bornées pour un jeu et des filtres.",
+      "systemHint": "getEurostatData (lit des observations Eurostat pour un jeu, des pays, des indicateurs et une période)"
+    },
+    {
+      "id": "getEurostatDatasetMetadata",
+      "label": "Métadonnées d’un jeu",
+      "description": "Nom, description, couverture et licence d’un jeu Eurostat.",
+      "systemHint": "getEurostatDatasetMetadata (consulte les métadonnées publiques d’un jeu Eurostat)"
+    }
+  ]
+}

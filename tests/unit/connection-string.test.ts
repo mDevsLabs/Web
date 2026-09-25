@@ -27,9 +27,7 @@ describe("sanitizeConnectionString", () => {
 
   it("retire des guillemets doublés et les espaces autour", () => {
     expect(
-      sanitizeConnectionString(
-        '  ""postgresql://user:pass@host/db""  '
-      )
+      sanitizeConnectionString('  ""postgresql://user:pass@host/db""  ')
     ).toBe("postgresql://user:pass@host/db");
   });
 
@@ -44,9 +42,9 @@ describe("sanitizeConnectionString", () => {
 
 describe("resolveDatabaseUrl", () => {
   it("résout DATABASE_URL propre", () => {
-    expect(
-      resolveDatabaseUrl({ DATABASE_URL: "postgres://a@b/c" })
-    ).toBe("postgres://a@b/c");
+    expect(resolveDatabaseUrl({ DATABASE_URL: "postgres://a@b/c" })).toBe(
+      "postgres://a@b/c"
+    );
   });
 
   it("nettoie DATABASE_URL avec guillemets (cas Vercel des logs)", () => {

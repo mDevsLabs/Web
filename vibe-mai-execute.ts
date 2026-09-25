@@ -27,6 +27,7 @@ import {
   getOpenRouterKey,
   getOrCreateConversation,
   getUserAutoApprove,
+  hasPendingToolApproval,
   makeToolCallRecord,
   resolveOwnedConversation,
   saveMAIMessage,
@@ -105,7 +106,11 @@ export function registerVibeMAIExecuteRoutes(
       let postContextBlock = "";
       const contextPostId = body?.context?.post_id;
       if (contextPostId) {
-        const postCtx = await buildPostContext(sql, String(contextPostId));
+        const postCtx = await buildPostContext(
+          sql,
+          String(contextPostId),
+          userId
+        );
         if (postCtx) postContextBlock = `\n\n${postCtx.text}`;
       }
 
@@ -174,6 +179,10 @@ export function registerVibeMAIExecuteRoutes(
           { error: "Impossible de régénérer la réponse pour le moment." },
           502
         );
+      }
+
+      if (!conversationId) {
+        return c.json({ error: "Conversation introuvable." }, 404);
       }
 
       const saved = await saveMAIMessage(
@@ -289,9 +298,9 @@ export function registerVibeMAIExecuteRoutes(
         });
       }
 
-      if (SENSITIVE_TOOLS.includes(toolName) && approve !== true) {
+      if (SENSITIVE_TOOLS.includes(toolName)) {
         const autoApprove = await getUserAutoApprove(sql, userId);
-        if (!autoApprove) {
+        if (!autoApprove && approve !== true) {
           // Le record « pending_approval » a déjà été persisté par le chat mAI :
           // aucune écriture supplémentaire ici (pas de doublon).
           return c.json({
@@ -302,6 +311,26 @@ export function registerVibeMAIExecuteRoutes(
             requiresApproval: true,
             toolExecuted: null,
           });
+        }
+        if (!autoApprove && approve === true) {
+          if (!conversationId) {
+            return c.json({ error: "Conversation introuvable." }, 404);
+          }
+          const approved = await hasPendingToolApproval({
+            args,
+            conversationId: conversationId || "",
+            sql,
+            toolName,
+          });
+          if (!approved) {
+            return c.json(
+              {
+                error:
+                  "Cette approbation ne correspond à aucun appel en attente. Rechargez la conversation puis réessayez.",
+              },
+              403
+            );
+          }
         }
       }
 

@@ -3,7 +3,12 @@ import { convertToModelMessages, type ModelMessage } from "ai";
 import { chatOwnerMatches } from "@/lib/agent/channel";
 import { DEFAULT_CHAT_MODEL, getModelCapabilities } from "@/lib/ai/models";
 import type { RequestHints } from "@/lib/ai/prompts";
-import { substituteSkillParams } from "@/lib/ai/skill-params";
+import {
+  type SkillParameterDefinition,
+  substituteSkillParams,
+  validateSkillParams,
+  withSkillDefaults,
+} from "@/lib/ai/skill-params";
 import type { ChatAuth } from "@/lib/chat/auth";
 import { buildProjectFilesPromptBlock } from "@/lib/chat/project-files";
 import { getUserApiKey } from "@/lib/db/api-keys";
@@ -14,6 +19,7 @@ import {
   getProjectById,
   getProjectFilesForInjection,
   getSkillById,
+  getSkillsByUserId,
   getUserModelPreferences,
   saveChat,
   saveMessages,
@@ -36,6 +42,7 @@ export type ChatRequestBodyShape = {
   selectedChatMode?: string | null;
   selectedVisibilityType: "public" | "private";
   projectId?: string | null;
+  mcpServerIds?: string[];
   skillId?: string | null;
   skillParams?: Record<string, string> | null;
   pendingPrompt?: { commandId?: string; text: string } | null;
@@ -80,6 +87,8 @@ export type ChatRequestContext = {
   skillMcpToolFilter: Record<string, string[] | null> | null;
   agentInstructions: string | null;
   agentSkillIds: string[];
+  agentSkillInstructions: string[];
+  agentMcpServerIds: string[];
   agentTemperature: number | null;
   agentTopP: number | null;
   agentMaxTokens: number | null;
@@ -94,7 +103,7 @@ export type ChatRequestContext = {
   requestHints: RequestHints;
   modelMessages: ModelMessage[];
 
-  // Préférences utilisateur (table users)
+  // Préférences utilisateur (user_preferences, fallback users pendant migration)
   userCustomInstructions: string | null;
   userCustomEnabled: boolean;
   userDefaultTemp: number | null;
@@ -177,11 +186,13 @@ export async function buildChatContext(
 
   // Les Skills sont ouverts à tous les forfaits, y compris Free. En revanche,
   // les serveurs MCP intégrés à un skill restent réservés aux forfaits payants.
-  const effectiveSkillId = (chat as any)?.skillId || skillId;
+  const effectiveSkillId =
+    skillId === undefined ? ((chat as any)?.skillId ?? null) : skillId;
   let skillInstructions: string | null = null;
   let skillTools: string[] = [];
   let skillMcpServerIds: string[] = [];
   let skillMcpToolFilter: Record<string, string[] | null> | null = null;
+  let skillParameterError: string | null = null;
 
   if (effectiveSkillId) {
     try {
@@ -190,9 +201,17 @@ export async function buildChatContext(
         userId,
       });
       if (activeSkill) {
+        const parameters = Array.isArray(activeSkill.parameters)
+          ? (activeSkill.parameters as SkillParameterDefinition[])
+          : [];
+        const parameterError = validateSkillParams(parameters, skillParams);
+        if (parameterError) {
+          skillParameterError = parameterError;
+        }
+        const effectiveSkillParams = withSkillDefaults(parameters, skillParams);
         skillInstructions = substituteSkillParams(
           activeSkill.instructions,
-          skillParams
+          effectiveSkillParams
         );
         if (Array.isArray(activeSkill.tools)) {
           skillTools = activeSkill.tools as string[];
@@ -215,6 +234,10 @@ export async function buildChatContext(
     } catch {}
   }
 
+  if (skillParameterError) {
+    throw new ChatbotError("bad_request:api", skillParameterError);
+  }
+
   // Agent remplace Mode IA — agentId envoyé par use-active-chat (cookie + DB)
   const agentIdFromBody: string | null = isFreeUser
     ? null
@@ -230,6 +253,8 @@ export async function buildChatContext(
   let agentInstructions: string | null = null;
   let agentDefaultModel: string | null = null;
   let agentSkillIds: string[] = [];
+  let agentSkillInstructions: string[] = [];
+  let agentMcpServerIds: string[] = [];
   let agentTemperature: number | null = null;
   let agentTopP: number | null = null;
   let agentMaxTokens: number | null = null;
@@ -246,11 +271,62 @@ export async function buildChatContext(
         agentTopP = (ag as any).topP ?? null;
         agentMaxTokens = (ag as any).maxTokens ?? null;
         if (Array.isArray(ag.skillIds)) {
-          agentSkillIds = ag.skillIds as string[];
+          agentSkillIds = ag.skillIds.filter(
+            (skillId): skillId is string => typeof skillId === "string"
+          );
+          const skills = await Promise.all(
+            agentSkillIds.map((skillId) =>
+              getSkillById({ id: skillId, userId }).catch(() => null)
+            )
+          );
+          agentSkillInstructions = skills
+            .map((skill) => skill?.instructions?.trim())
+            .filter((instructions): instructions is string =>
+              Boolean(instructions)
+            );
+        }
+        if (Array.isArray(ag.mcpServerIds)) {
+          agentMcpServerIds = ag.mcpServerIds.filter(
+            (serverId): serverId is string => typeof serverId === "string"
+          );
         }
       }
     } catch {}
   }
+  if (agentSkillIds.length > 0) {
+    try {
+      const ownedSkills = await getSkillsByUserId({ userId });
+      const selectedAgentSkills = ownedSkills.filter((skill) =>
+        agentSkillIds.includes(skill.id)
+      );
+      for (const agentSkill of selectedAgentSkills) {
+        if (Array.isArray(agentSkill.tools)) {
+          skillTools = Array.from(
+            new Set([...skillTools, ...(agentSkill.tools as string[])])
+          );
+        }
+        if (!isFreeUser && Array.isArray(agentSkill.mcpServerIds)) {
+          skillMcpServerIds = Array.from(
+            new Set([
+              ...skillMcpServerIds,
+              ...(agentSkill.mcpServerIds as string[]),
+            ])
+          );
+        }
+        if (
+          !isFreeUser &&
+          agentSkill.mcpToolFilter &&
+          typeof agentSkill.mcpToolFilter === "object"
+        ) {
+          skillMcpToolFilter = {
+            ...(skillMcpToolFilter ?? {}),
+            ...(agentSkill.mcpToolFilter as Record<string, string[] | null>),
+          };
+        }
+      }
+    } catch {}
+  }
+
   const chatModel =
     chatModelFromAgent ||
     agentDefaultModel ||
@@ -406,7 +482,11 @@ export async function buildChatContext(
     longitude,
   };
 
-  if (message?.role === "user" && !isGhostMode && body.persistIncomingMessage !== false) {
+  if (
+    message?.role === "user" &&
+    !isGhostMode &&
+    body.persistIncomingMessage !== false
+  ) {
     await saveMessages({
       messages: [
         {
@@ -460,7 +540,9 @@ export async function buildChatContext(
   return {
     agentInstructions,
     agentMaxTokens,
+    agentMcpServerIds,
     agentSkillIds,
+    agentSkillInstructions,
     agentTemperature,
     agentTopP,
 

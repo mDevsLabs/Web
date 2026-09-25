@@ -14,7 +14,12 @@ export async function POST(
   }
 
   const { id } = await params;
-  const userId = user.id || user.email;
+  const userId = user.id;
+  if (!userId) {
+    return errorResponse("auth_required", {
+      message: "Session utilisateur invalide.",
+    });
+  }
 
   const item = await getScheduledMessageById({ id, userId });
   if (!item) {

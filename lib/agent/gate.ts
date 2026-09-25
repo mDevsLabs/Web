@@ -1,7 +1,9 @@
 import "server-only";
 
 import { type AgentFlags, getAgentFlags } from "@/lib/agent/flags";
+import type { ChatModel } from "@/lib/ai/models";
 import {
+  type AgentModelEntry,
   getModelEntry,
   isAgentCompatible,
   isModelAllowedForUser,
@@ -104,16 +106,25 @@ export type AgentModelAccess = {
 // Validation du modèle : disponibilité pour le forfait, support des outils
 // (indispensable à Agent) et niveau de réflexion réellement accepté.
 export function checkAgentModelAccess(params: {
-  // Capacités évaluées par l'appelant sur le catalogue réel de l'utilisateur
-  // (fetchUserModels). Sans override, repli sur le catalogue de secours —
-  // comportement conservé pour les autres appelants éventuels.
+  // L'entrée résolue est la source de vérité lorsqu'elle est fournie. Elle
+  // évite de perdre les capacités et la compatibilité en relisant un autre
+  // catalogue (en particulier le fallback local).
+  entry?: AgentModelEntry;
+  // Catalogue optionnel pour les appelants qui ne transportent pas encore
+  // l'entrée complète. Il est transmis à getModelEntry au lieu d'être ignoré.
+  models?: ChatModel[];
+  // Conservé pour compatibilité avec les appelants qui fournissent seulement
+  // les capacités. L'entrée complète reste prioritaire.
   capabilitiesOverride?: ModelCapabilities;
   flags: AgentFlags;
   modelId: string;
   tier: string;
 }): AgentModelAccess {
-  const entry = getModelEntry(params.modelId);
-  const capabilities = params.capabilitiesOverride ?? entry.capabilities;
+  const entry = params.entry ?? getModelEntry(params.modelId, params.models);
+  const capabilities =
+    params.entry?.capabilities ??
+    params.capabilitiesOverride ??
+    entry.capabilities;
 
   if (!isModelAllowedForUser(entry.id, params.tier)) {
     return {

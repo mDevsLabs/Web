@@ -18,8 +18,6 @@ const updateSkillSchema = z.object({
   description: z.string().max(1000).optional(),
   icon: z.string().max(50).optional(),
   instructions: z.string().min(1).max(20_000).optional(),
-  isPublic: z.boolean().optional(),
-  lastUsedAt: z.string().nullable().optional(),
   mcpServerIds: z.array(z.string().uuid()).max(20).optional(),
   mcpToolFilter: z
     .record(z.string(), z.array(z.string()).nullable())
@@ -33,17 +31,15 @@ const updateSkillSchema = z.object({
         enumValues: z.array(z.string()).optional(),
         name: z.string().min(1).max(50),
         required: z.boolean().optional(),
-        type: z.enum(["string", "number", "boolean", "enum"]).optional(),
+        type: z
+          .enum(["string", "number", "integer", "boolean", "enum"])
+          .optional(),
       })
     )
     .optional(),
   pinned: z.boolean().optional(),
-  shareId: z.string().nullable().optional(),
   tags: z.array(z.string().max(50)).optional(),
-  templateId: z.string().min(1).max(64).nullable().optional(),
   tools: z.array(z.string()).optional(),
-  usageCount: z.number().int().min(0).optional(),
-  version: z.string().max(20).optional(),
 });
 
 export async function GET(

@@ -1,6 +1,6 @@
 import "server-only";
 
-import { setMcpServerSecrets } from "@/lib/db/queries";
+import { setMcpServerSecrets, upsertMcpServerSecret } from "@/lib/db/queries";
 import { encrypt, isEncryptionConfigured } from "./encryption";
 
 // Écriture des secrets MCP.
@@ -25,9 +25,18 @@ function asStringRecord(value: unknown): Record<string, string> {
   }
   const out: Record<string, string> = {};
   for (const [key, raw] of Object.entries(value as Record<string, unknown>)) {
-    if (typeof raw === "string" && raw) {
-      out[key] = raw;
+    if (
+      key === "__proto__" ||
+      key === "prototype" ||
+      key === "constructor" ||
+      !/^[A-Za-z_][A-Za-z0-9_-]{0,127}$/.test(key) ||
+      typeof raw !== "string" ||
+      !raw ||
+      raw.length > 16_384
+    ) {
+      continue;
     }
+    out[key] = raw;
   }
   return out;
 }
@@ -99,6 +108,8 @@ export async function persistInlineMcpSecrets(params: {
   headers?: unknown;
   serverId: string;
   userId: string;
+  /** Les éditions partielles doivent conserver les autres kinds/keys. */
+  preserveExisting?: boolean;
 }): Promise<number> {
   const payload = splitInlineSecrets({
     authConfig: params.authConfig,
@@ -113,14 +124,32 @@ export async function persistInlineMcpSecrets(params: {
     const { McpEncryptionConfigError } = await import("./encryption");
     throw new McpEncryptionConfigError();
   }
-  await setMcpServerSecrets({
-    secrets: payload.values.map((entry) => ({
-      encryptedValue: encrypt(entry.value),
-      key: entry.key,
-      kind: entry.kind,
-    })),
-    serverId: params.serverId,
-    userId: params.userId,
-  });
+  if (params.preserveExisting) {
+    // Upsert champ par champ : une édition partielle ne doit pas supprimer les
+    // autres secrets du serveur (le formulaire autorise explicitement un champ
+    // vide = conserver). La ligne McpServer reste vide; seules ces valeurs
+    // chiffrées sont stockées dans mcp_server_secret.
+    for (const entry of payload.values) {
+      await upsertMcpServerSecret({
+        encryptedValue: encrypt(entry.value),
+        key: entry.key,
+        kind: entry.kind,
+        serverId: params.serverId,
+        userId: params.userId,
+      });
+    }
+  } else {
+    // Création : le remplacement atomique est utile et conserve le contrat
+    // historique de l'appelant.
+    await setMcpServerSecrets({
+      secrets: payload.values.map((entry) => ({
+        encryptedValue: encrypt(entry.value),
+        key: entry.key,
+        kind: entry.kind,
+      })),
+      serverId: params.serverId,
+      userId: params.userId,
+    });
+  }
   return payload.values.length;
 }

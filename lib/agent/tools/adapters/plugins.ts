@@ -202,6 +202,17 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
   ],
   getAuthorBooks: ["livres de", "ouvrages de", "bibliographie de", "auteur"],
   getBookWork: ["détails de l'œuvre", "fiche d'œuvre", "ouvrage olid"],
+  getEurostatData: [
+    "eurostat",
+    "données eurostat",
+    "statistiques européennes",
+    "jeu de données eurostat",
+  ],
+  getEurostatDatasetMetadata: [
+    "métadonnées eurostat",
+    "jeu eurostat",
+    "couverture eurostat",
+  ],
   getFoodIngredients: ["ingrédients", "allergènes", "traces alimentaires"],
   getFoodProduct: ["code-barres", "code barre", "ean", "produit alimentaire"],
   getGithubRepositorySummary: [
@@ -211,11 +222,23 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "étoiles github",
     "github summary",
   ],
+  getGitlabProjectSummary: [
+    "projet gitlab",
+    "dépôt gitlab",
+    "repository gitlab",
+    "résumé gitlab",
+  ],
   getHolidayLongWeekends: [
     "week-end prolongé",
     "weekends prolongés",
     "long weekend",
     "ponts",
+  ],
+  getOpenAlexAuthor: ["auteur openalex", "profil auteur openalex"],
+  getOpenAlexWork: [
+    "publication openalex",
+    "travail openalex",
+    "article openalex",
   ],
   getPublicationByDoi: ["doi", "digital object identifier"],
   getTvSchedule: [
@@ -230,6 +253,7 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "informations sur cette série",
   ],
   getWeather: ["météo", "température", "prévision météo", "weather", "pluie"],
+  getWikidataEntity: ["entité wikidata", "fiche wikidata", "id wikidata"],
   getWorldBankSeries: [
     "série chronologique",
     "évolution de l'indicateur",
@@ -260,6 +284,8 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "versions github",
     "notes de version",
   ],
+  listGitlabIssues: ["issue gitlab", "issues gitlab", "tickets gitlab"],
+  listGitlabReleases: ["release gitlab", "releases gitlab", "versions gitlab"],
   listHolidayCountries: [
     "pays pris en charge",
     "pays disponibles pour les jours fériés",
@@ -277,6 +303,7 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "lire le fichier",
     "contenu du fichier",
   ],
+  readGitlabFile: ["fichier gitlab", "code gitlab", "lire le fichier gitlab"],
   searchAuthorPublications: [
     "publications de",
     "articles de l'auteur",
@@ -300,6 +327,15 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "issn",
     "revues académiques",
   ],
+  searchOpenAlexAuthors: [
+    "auteur scientifique openalex",
+    "rechercher un auteur openalex",
+  ],
+  searchOpenAlexWorks: [
+    "publication scientifique openalex",
+    "recherche openalex",
+    "travaux scientifiques openalex",
+  ],
   searchPublications: [
     "publication scientifique",
     "article scientifique",
@@ -312,6 +348,7 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "séries tv",
     "émission télévisée",
   ],
+  searchWikidataEntities: ["wikidata", "rechercher une entité wikidata"],
   searchWorldBankIndicators: [
     "indicateur banque mondiale",
     "indicateurs économiques",

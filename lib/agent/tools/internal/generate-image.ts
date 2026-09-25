@@ -71,7 +71,7 @@ export const generateImageTool = defineTool({
       // Le token mAI de session utilisateur : identique à celui du Chat,
       // résolu depuis la session de run plutôt que du SDK.
       resolveToken: async () => context.sessionToken,
-      userId: context.userEmail,
+      userId: context.userId,
     });
     return imageResultToToolResult(output);
   },

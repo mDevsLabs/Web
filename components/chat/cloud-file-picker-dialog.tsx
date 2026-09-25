@@ -94,6 +94,7 @@ export function CloudFilePickerDialog({
     const attachments: Attachment[] = selectedFiles.map((f) => ({
       contentType: f.mime_type || "application/octet-stream",
       name: f.original_name,
+      size: f.size_bytes,
       url: f.url,
     }));
 

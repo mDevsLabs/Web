@@ -77,6 +77,8 @@ export function createChatStream(params: ChatStreamParams) {
         await prepareTools(dataStream);
       const supportsTools = activeToolsList.length > 0;
 
+      const usageEventKey = `chat:${ctx.id}:${ctx.message?.id ?? ctx.uiMessages.at(-1)?.id ?? `len-${ctx.uiMessages.length}`}:${ctx.chatModel}`;
+
       const result = streamText({
         activeTools: supportsTools ? (activeToolsList as any) : undefined,
         instructions: systemPrompt({
@@ -108,6 +110,7 @@ export function createChatStream(params: ChatStreamParams) {
             isGhostMode: ctx.isGhostMode,
             sessionToken: ctx.sessionToken,
             usage: usage as any,
+            usageEventKey,
             userId: ctx.userId,
           });
         },
@@ -152,6 +155,7 @@ async function handleTokenAccounting(params: {
   email: string;
   isGhostMode: boolean;
   sessionToken: string;
+  usageEventKey: string;
   userId: string;
 }): Promise<void> {
   const {
@@ -161,6 +165,7 @@ async function handleTokenAccounting(params: {
     email,
     isGhostMode,
     sessionToken,
+    usageEventKey,
     userId,
   } = params;
   // Décompte précis des tokens (entrée + sortie additionnés)
@@ -171,6 +176,7 @@ async function handleTokenAccounting(params: {
   if (totalTokens > 0) {
     // 1. Enregistrement direct et persistant en BDD (normal et fantôme)
     await recordTokenUsage({
+      idempotencyKey: usageEventKey,
       inputTokens,
       isGhostMode,
       model: chatModel,

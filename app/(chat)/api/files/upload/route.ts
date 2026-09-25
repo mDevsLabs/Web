@@ -1,4 +1,4 @@
-import { put } from "@vercel/blob";
+import { del, issueSignedToken, presignUrl, put } from "@vercel/blob";
 import { nanoid } from "nanoid";
 import { NextResponse } from "next/server";
 import { z } from "zod";
@@ -94,17 +94,34 @@ export async function POST(request: Request) {
     const filename = (formData.get("file") as File).name;
     const safeName = filename.replace(/[^a-zA-Z0-9._-]/g, "_");
     // Namespace par utilisateur + suffixe unique : deux utilisateurs ne peuvent
-    // pas s'écraser mutuellement les fichiers sur le blob public.
+    // pas s'écraser mutuellement les fichiers sur le blob privé.
     const blobKey = `uploads/${session.user.id}/${nanoid()}-${safeName}`;
     const fileBuffer = await file.arrayBuffer();
 
+    let uploadedUrl: string | null = null;
     try {
       const data = await put(blobKey, fileBuffer, {
-        access: "public",
+        access: "private",
+      });
+      uploadedUrl = data.url;
+      const validUntil = Date.now() + 10 * 60 * 1000;
+      const signedToken = await issueSignedToken({
+        operations: ["get"],
+        pathname: data.pathname,
+        validUntil,
+      });
+      const { presignedUrl } = await presignUrl(signedToken, {
+        access: "private",
+        operation: "get",
+        pathname: data.pathname,
+        validUntil,
       });
 
-      return NextResponse.json(data);
+      return NextResponse.json({ ...data, url: presignedUrl });
     } catch (error) {
+      if (uploadedUrl) {
+        await del(uploadedUrl).catch(() => {});
+      }
       logError("Échec upload blob", error);
       return errorResponse("internal_error", {
         message: "L'envoi du fichier a échoué. Veuillez réessayer.",

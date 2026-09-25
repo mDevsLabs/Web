@@ -5,10 +5,25 @@
   "description": "Explore les données publiques françaises de transports en commun, mobilité partagée, vélo, recharge électrique, stationnement et trafic ; affiche les sources et leur fraîcheur.",
   "author": "mAI",
   "category": "mobilite",
-  "tags": ["mobilité", "transport", "vélo", "trottinette", "recharge électrique", "stationnement", "trafic", "covoiturage", "données publiques"],
+  "tags": [
+    "mobilité",
+    "transport",
+    "vélo",
+    "trottinette",
+    "recharge électrique",
+    "stationnement",
+    "trafic",
+    "covoiturage",
+    "données publiques"
+  ],
   "icon": { "type": "lucide", "name": "Map" },
   "minTier": "plus",
-  "permissions": { "network": "read-only", "readsUserData": false, "writesUserData": false, "requiresApproval": false },
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": false,
+    "writesUserData": false,
+    "requiresApproval": false
+  },
   "tools": [
     {
       "id": "searchMobilityDatasets",

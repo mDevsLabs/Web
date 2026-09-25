@@ -48,10 +48,12 @@ describe("isSchemaDriftError", () => {
 
 describe("ChatbotError — dérive de schéma", () => {
   it("remplace le message générique par le message explicite de dérive", () => {
-    const error = new ChatbotError(
-      "bad_request:database",
-      { cause: drizzleLikeQueryError("42P01", 'relation "AgentRun" does not exist') }
-    );
+    const error = new ChatbotError("bad_request:database", {
+      cause: drizzleLikeQueryError(
+        "42P01",
+        'relation "AgentRun" does not exist'
+      ),
+    });
     expect(error.message).toBe(SCHEMA_DRIFT_MESSAGE);
   });
 
@@ -60,10 +62,9 @@ describe("ChatbotError — dérive de schéma", () => {
       .spyOn(console, "error")
       .mockImplementation(() => {});
     try {
-      const error = new ChatbotError(
-        "bad_request:database",
-        { cause: drizzleLikeQueryError("42703", 'column "x" does not exist') }
-      );
+      const error = new ChatbotError("bad_request:database", {
+        cause: drizzleLikeQueryError("42703", 'column "x" does not exist'),
+      });
       expect(error.message).toBe(SCHEMA_DRIFT_MESSAGE);
       expect(consoleError).toHaveBeenCalledTimes(1);
       const [first, second] = consoleError.mock.calls[0];
@@ -89,10 +90,12 @@ describe("ChatbotError — dérive de schéma", () => {
   });
 
   it("la réponse HTTP reste database_error 500 avec le message explicite", () => {
-    const error = new ChatbotError(
-      "bad_request:database",
-      { cause: drizzleLikeQueryError("42P01", 'relation "ProjectMember" does not exist') }
-    );
+    const error = new ChatbotError("bad_request:database", {
+      cause: drizzleLikeQueryError(
+        "42P01",
+        'relation "ProjectMember" does not exist'
+      ),
+    });
     const response = error.toResponse();
     expect(response.status).toBe(500);
   });

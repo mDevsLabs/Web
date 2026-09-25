@@ -112,8 +112,8 @@ export class ChatbotError extends Error {
     ) {
       this.message = SCHEMA_DRIFT_MESSAGE;
       console.error(`[mAI] ${SCHEMA_DRIFT_OPERATOR_LOG}`, {
-        sqlState: findSqlState(cause),
         errorCode,
+        sqlState: findSqlState(cause),
       });
     }
   }

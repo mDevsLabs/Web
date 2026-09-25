@@ -90,6 +90,14 @@ export default function PluginsPanel({
   };
 
   const handleUninstall = (plugin: PluginCatalogEntry) => {
+    if (
+      typeof window !== "undefined" &&
+      !window.confirm(
+        `Désinstaller ${plugin.name} ? Cette action est définitive sur cet appareil.`
+      )
+    ) {
+      return;
+    }
     runAction(
       plugin.id,
       () => fetch(`/api/plugins/${plugin.id}`, { method: "DELETE" }),
@@ -189,7 +197,7 @@ export default function PluginsPanel({
                 <div className="group relative" key={plugin.id}>
                   <button
                     className={cn(
-                      "flex size-12 items-center justify-center rounded-2xl border border-border/50 bg-card shadow-sm transition hover:scale-105 cursor-pointer",
+                      "flex size-12 min-h-11 min-w-11 items-center justify-center rounded-2xl border border-border/50 bg-card shadow-sm transition hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer",
                       !plugin.enabled && "opacity-45"
                     )}
                     onClick={() => openPluginPage(plugin)}
@@ -198,10 +206,10 @@ export default function PluginsPanel({
                   >
                     <PluginIcon className="size-6" icon={plugin.icon} />
                   </button>
-                  {/* Désinstallation rapide au survol de la vignette */}
+                  {/* Action tactile visible sur mobile ; sur desktop, la fiche plugin expose la même action. */}
                   <button
                     aria-label={`Désinstaller ${plugin.name}`}
-                    className="absolute -top-1.5 -right-1.5 z-10 hidden size-5 items-center justify-center rounded-full border border-border/60 bg-background text-muted-foreground shadow-sm transition hover:border-destructive/40 hover:bg-destructive/10 hover:text-destructive group-hover:flex cursor-pointer"
+                    className="absolute -top-2 -right-2 z-10 flex size-8 items-center justify-center rounded-full border border-border/60 bg-background text-muted-foreground shadow-sm transition hover:border-destructive/40 hover:bg-destructive/10 hover:text-destructive focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer sm:hidden"
                     disabled={isBusy}
                     onClick={(event) => {
                       event.stopPropagation();
@@ -227,7 +235,7 @@ export default function PluginsPanel({
       <section className="flex flex-wrap items-center gap-2">
         <button
           className={cn(
-            "rounded-full border px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer",
+            "min-h-11 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer",
             category === null
               ? "border-primary/40 bg-primary/10 text-primary"
               : "border-border/60 text-muted-foreground hover:text-foreground"
@@ -240,7 +248,7 @@ export default function PluginsPanel({
         {PLUGIN_CATEGORIES.map((cat) => (
           <button
             className={cn(
-              "flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer",
+              "flex items-center gap-1.5 min-h-11 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors cursor-pointer",
               category === cat.id
                 ? "border-primary/40 bg-primary/10 text-primary"
                 : "border-border/60 text-muted-foreground hover:text-foreground"
@@ -277,21 +285,23 @@ export default function PluginsPanel({
                   key={plugin.id}
                 >
                   <button
-                    className="flex size-11 shrink-0 items-center justify-center rounded-2xl border border-border/50 bg-card shadow-sm cursor-pointer"
+                    className="flex min-w-0 flex-1 items-center gap-3 rounded-xl text-left focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer"
                     onClick={() => openPluginPage(plugin)}
                     title={`${plugin.name} — voir la page du plugin`}
                     type="button"
                   >
-                    <PluginIcon className="size-5" icon={plugin.icon} />
+                    <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl border border-border/50 bg-card shadow-sm">
+                      <PluginIcon className="size-5" icon={plugin.icon} />
+                    </span>
+                    <span className="flex min-w-0 flex-1 flex-col">
+                      <span className="truncate text-sm font-semibold text-foreground">
+                        {plugin.name}
+                      </span>
+                      <span className="truncate text-xs text-muted-foreground">
+                        {plugin.description}
+                      </span>
+                    </span>
                   </button>
-                  <div className="flex min-w-0 flex-1 flex-col">
-                    <span className="truncate text-sm font-semibold text-foreground">
-                      {plugin.name}
-                    </span>
-                    <span className="truncate text-xs text-muted-foreground">
-                      {plugin.description}
-                    </span>
-                  </div>
                   {plugin.locked ? (
                     <span
                       className="flex shrink-0 items-center gap-1 rounded-full border border-amber-500/40 bg-amber-500/10 px-2.5 py-1 text-[11px] font-semibold text-amber-700 dark:text-amber-400"

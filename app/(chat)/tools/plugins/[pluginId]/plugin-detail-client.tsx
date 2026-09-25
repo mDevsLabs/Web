@@ -1,10 +1,17 @@
 "use client";
 
 import {
+  AlertTriangleIcon,
   CheckIcon,
+  CircleCheckIcon,
+  DatabaseIcon,
+  Globe2Icon,
+  InfoIcon,
+  KeyRoundIcon,
   Loader2Icon,
   LockIcon,
   PlusIcon,
+  ShieldCheckIcon,
   Trash2Icon,
 } from "lucide-react";
 import { useState } from "react";
@@ -17,25 +24,84 @@ import { PluginIcon } from "@/lib/plugins/icon";
 import type { PluginManifest } from "@/lib/plugins/types";
 import { cn } from "@/lib/utils";
 
-// Vue dédiée d'un plugin (page, pas de fenêtre contextuelle) : toutes les
-// informations du manifeste avec les actions installer / activer-désactiver /
-// désinstaller.
-// Libellés lisibles des permissions déclarées par le manifeste.
-function permissionLabels(manifest: PluginManifest): string[] {
+function networkLabel(manifest: PluginManifest): string {
+  if (manifest.permissions.network === "none") return "Aucun accès réseau";
+  if (manifest.permissions.network === "read-write") {
+    return "Accès réseau en lecture et écriture";
+  }
+  return "Accès réseau en lecture seule";
+}
+
+function riskLabel(manifest: PluginManifest): {
+  label: string;
+  tone: "low" | "medium" | "high";
+} {
+  if (manifest.permissions.writesUserData) {
+    return { label: "Données sensibles", tone: "high" };
+  }
+  if (manifest.permissions.readsUserData) {
+    return { label: "Données personnelles", tone: "medium" };
+  }
+  return { label: "Accès limité", tone: "low" };
+}
+
+type PermissionRow = {
+  detail: string;
+  icon: typeof CheckIcon;
+  label: string;
+  tone: "default" | "positive" | "warning" | "danger";
+  value: string;
+};
+
+function permissionRows(manifest: PluginManifest): PermissionRow[] {
   const { permissions } = manifest;
   return [
-    permissions.network === "none"
-      ? "Aucun accès réseau"
-      : "Accès réseau en lecture seule",
-    permissions.readsUserData
-      ? "Lit des données de votre compte"
-      : "Ne lit aucune donnée de votre compte",
-    permissions.writesUserData
-      ? "Modifie des données de votre compte"
-      : "N'écrit aucune donnée de votre compte",
-    permissions.requiresApproval
-      ? "Approbation explicite requise à chaque exécution"
-      : "Aucune approbation nécessaire (lecture ou calcul local)",
+    {
+      detail:
+        permissions.network === "none"
+          ? "Le plugin ne contacte aucun service externe."
+          : permissions.network === "read-write"
+            ? "Le plugin peut modifier des données sur un service externe après approbation."
+            : "Le plugin contacte un service externe en lecture seule.",
+      icon: Globe2Icon,
+      label: "Réseau",
+      tone:
+        permissions.network === "none"
+          ? "positive"
+          : permissions.network === "read-write"
+            ? "danger"
+            : "warning",
+      value: networkLabel(manifest),
+    },
+    {
+      detail: permissions.readsUserData
+        ? "Les données demandées sont transmises au modèle pour traiter la tâche."
+        : "Aucune donnée de votre compte n'est lue par ce plugin.",
+      icon: DatabaseIcon,
+      label: "Données du compte",
+      tone: permissions.readsUserData ? "warning" : "positive",
+      value: permissions.readsUserData ? "Lecture possible" : "Aucune lecture",
+    },
+    {
+      detail: permissions.writesUserData
+        ? "Une action modifie des données et nécessite une confirmation explicite."
+        : "Le plugin ne modifie aucune donnée de votre compte.",
+      icon: KeyRoundIcon,
+      label: "Écriture",
+      tone: permissions.writesUserData ? "danger" : "positive",
+      value: permissions.writesUserData
+        ? "Modification possible"
+        : "Aucune écriture",
+    },
+    {
+      detail: permissions.requiresApproval
+        ? "Vous verrez une demande d'approbation avant chaque exécution sensible."
+        : "Aucune confirmation n'est nécessaire pour ce plugin.",
+      icon: ShieldCheckIcon,
+      label: "Approbation",
+      tone: permissions.requiresApproval ? "warning" : "positive",
+      value: permissions.requiresApproval ? "Requise" : "Non requise",
+    },
   ];
 }
 
@@ -54,11 +120,14 @@ export default function PluginDetailClient({
 }) {
   const { mutate: mutatePlugins } = useSWRConfig();
   const [isBusy, setIsBusy] = useState(false);
+  const [confirmUninstall, setConfirmUninstall] = useState(false);
   const [state, setState] = useState({ enabled, installed, installedVersion });
+  const risk = riskLabel(manifest);
+  const permissions = permissionRows(manifest);
 
   const runAction = async (
     action: () => Promise<Response>,
-    onSuccess: () => void,
+    onSuccess: () => void | Promise<void>,
     successMessage: string
   ) => {
     setIsBusy(true);
@@ -68,7 +137,7 @@ export default function PluginDetailClient({
         const payload = await response.json().catch(() => null);
         throw new Error(payload?.message || "Action impossible.");
       }
-      onSuccess();
+      await onSuccess();
       await mutatePlugins("/api/plugins");
       toast.success(successMessage);
     } catch (error) {
@@ -117,10 +186,16 @@ export default function PluginDetailClient({
   };
 
   const handleUninstall = () => {
+    if (!confirmUninstall) {
+      setConfirmUninstall(true);
+      return;
+    }
     runAction(
       () => fetch(`/api/plugins/${manifest.id}`, { method: "DELETE" }),
-      () =>
-        setState({ enabled: false, installed: false, installedVersion: null }),
+      () => {
+        setConfirmUninstall(false);
+        setState({ enabled: false, installed: false, installedVersion: null });
+      },
       `${manifest.name} désinstallé.`
     );
   };
@@ -139,8 +214,8 @@ export default function PluginDetailClient({
   };
 
   return (
-    <div className="flex flex-1 flex-col bg-background text-foreground">
-      <header className="flex items-center gap-3 border-b border-border/40 px-4 py-4 sm:px-6">
+    <div className="flex min-h-0 flex-1 flex-col bg-background text-foreground">
+      <header className="sticky top-0 z-20 flex items-center gap-3 border-b border-border/40 bg-background/90 px-4 py-3 backdrop-blur-md sm:px-6 sm:py-4">
         <PageBackButton
           fallbackHref="/tools?tab=plugins"
           label="Retour aux plugins"
@@ -160,125 +235,240 @@ export default function PluginDetailClient({
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-2xl flex-1 px-4 py-6 sm:px-6">
-        <div className="flex flex-col gap-6">
-          {/* État */}
-          <div className="flex flex-wrap items-center gap-2">
-            {state.installed ? (
-              <>
-                <span
-                  className={cn(
-                    "inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold",
-                    state.enabled
+      <main className="mx-auto w-full max-w-4xl flex-1 overflow-y-auto px-4 py-5 sm:px-6 sm:py-8">
+        <div className="flex flex-col gap-6 pb-28 sm:gap-8 sm:pb-8">
+          <section className="flex flex-col gap-4 rounded-3xl border border-border/60 bg-card p-5 shadow-sm sm:p-7">
+            <div className="flex flex-wrap items-center gap-2">
+              <span
+                className={cn(
+                  "inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold",
+                  state.installed
+                    ? state.enabled
                       ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
                       : "bg-muted text-muted-foreground"
+                    : "bg-muted text-muted-foreground"
+                )}
+              >
+                <span
+                  className={cn(
+                    "size-1.5 rounded-full",
+                    state.enabled ? "bg-emerald-500" : "bg-muted-foreground"
                   )}
-                >
-                  <span
-                    className={cn(
-                      "size-1.5 rounded-full",
-                      state.enabled ? "bg-emerald-500" : "bg-muted-foreground"
-                    )}
-                  />
-                  {state.enabled ? "Activé" : "Installé (désactivé)"}
-                </span>
-                <span className="rounded-full bg-muted px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
-                  v{state.installedVersion ?? manifest.version}
-                </span>
-              </>
-            ) : (
+                />
+                {state.enabled
+                  ? "Activé"
+                  : state.installed
+                    ? "Installé (désactivé)"
+                    : "Non installé"}
+              </span>
               <span className="rounded-full bg-muted px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
-                Non installé
+                v{state.installedVersion ?? manifest.version}
               </span>
-            )}
-            <span
-              className={cn(
-                "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase",
-                locked
-                  ? "bg-amber-500/10 text-amber-700 dark:text-amber-400"
-                  : "bg-primary/10 text-primary"
-              )}
-            >
-              {locked ? <LockIcon className="size-3" /> : null}
-              {manifest.minTier}
-            </span>
+              <span
+                className={cn(
+                  "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase",
+                  locked
+                    ? "bg-amber-500/10 text-amber-700 dark:text-amber-400"
+                    : "bg-primary/10 text-primary"
+                )}
+              >
+                {locked ? <LockIcon className="size-3" /> : null}
+                {manifest.minTier}
+              </span>
+              <span
+                className={cn(
+                  "inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold",
+                  risk.tone === "high"
+                    ? "bg-red-500/10 text-red-700 dark:text-red-400"
+                    : risk.tone === "medium"
+                      ? "bg-amber-500/10 text-amber-700 dark:text-amber-400"
+                      : "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400"
+                )}
+              >
+                <ShieldCheckIcon className="size-3" />
+                {risk.label}
+              </span>
+            </div>
+
+            <div className="max-w-3xl">
+              <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+                {manifest.name}
+              </h2>
+              <p className="mt-2 text-sm leading-7 text-muted-foreground sm:text-base">
+                {manifest.description}
+              </p>
+            </div>
+
             {locked ? (
-              <span className="text-[11px] text-muted-foreground">
-                Installation réservée au forfait {manifest.minTier} — le serveur
-                refuse toute autre installation.
-              </span>
+              <div className="flex items-start gap-3 rounded-2xl border border-amber-500/25 bg-amber-500/10 p-3 text-sm text-amber-900 dark:text-amber-200">
+                <LockIcon className="mt-0.5 size-4 shrink-0" />
+                <p>
+                  Installation réservée au forfait {manifest.minTier}. Le
+                  serveur refusera toute installation avec un forfait inférieur.
+                </p>
+              </div>
             ) : null}
-          </div>
-
-          {/* Description */}
-          <section className="flex flex-col gap-2">
-            <h2 className="text-sm font-semibold text-foreground">
-              Description
-            </h2>
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              {manifest.description}
-            </p>
           </section>
 
-          {/* Informations */}
-          <section className="flex flex-col gap-3">
-            <h2 className="text-sm font-semibold text-foreground">
-              Informations
-            </h2>
-            <dl className="grid grid-cols-[auto_1fr] items-center gap-x-6 gap-y-2 text-sm">
-              <dt className="text-muted-foreground">Version disponible</dt>
-              <dd className="font-medium text-foreground">
-                v{manifest.version}
-              </dd>
-              <dt className="text-muted-foreground">Catégorie</dt>
-              <dd className="font-medium text-foreground">
+          <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-2xl border border-border/50 bg-muted/20 p-4">
+              <p className="text-xs font-medium text-muted-foreground">
+                Version disponible
+              </p>
+              <p className="mt-1 text-lg font-semibold">v{manifest.version}</p>
+            </div>
+            <div className="rounded-2xl border border-border/50 bg-muted/20 p-4">
+              <p className="text-xs font-medium text-muted-foreground">
+                Catégorie
+              </p>
+              <p className="mt-1 text-lg font-semibold">
                 {getCategoryLabel(manifest.category)}
-              </dd>
-              <dt className="self-start text-muted-foreground">Outils</dt>
-              <dd className="flex flex-col gap-2 font-medium text-foreground">
-                {manifest.tools.map((pluginTool) => (
-                  <div className="flex flex-col" key={pluginTool.id}>
-                    <span>{pluginTool.label}</span>
-                    <span className="font-normal text-xs text-muted-foreground">
-                      {pluginTool.description}
-                    </span>
-                    <span className="font-mono text-[11px] text-muted-foreground">
-                      {pluginTool.id}
-                    </span>
-                  </div>
-                ))}
-              </dd>
-              <dt className="text-muted-foreground">Auteur</dt>
-              <dd className="font-medium text-foreground">{manifest.author}</dd>
-            </dl>
+              </p>
+            </div>
+            <div className="rounded-2xl border border-border/50 bg-muted/20 p-4">
+              <p className="text-xs font-medium text-muted-foreground">
+                Outils exposés
+              </p>
+              <p className="mt-1 text-lg font-semibold">
+                {manifest.tools.length}
+              </p>
+            </div>
+            <div className="rounded-2xl border border-border/50 bg-muted/20 p-4">
+              <p className="text-xs font-medium text-muted-foreground">
+                Auteur
+              </p>
+              <p className="mt-1 truncate text-lg font-semibold">
+                {manifest.author}
+              </p>
+            </div>
           </section>
 
-          {/* Permissions déclarées */}
-          <section className="flex flex-col gap-2">
-            <h2 className="text-sm font-semibold text-foreground">
-              Permissions
-            </h2>
-            <ul className="flex flex-col gap-1.5">
-              {permissionLabels(manifest).map((label) => (
-                <li
-                  className="flex items-start gap-2 text-sm text-muted-foreground"
-                  key={label}
+          <section className="flex flex-col gap-4">
+            <div>
+              <h2 className="text-base font-semibold">Outils et capacités</h2>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Agent ne peut utiliser que les outils listés ici, avec les
+                permissions déclarées par le manifeste.
+              </p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {manifest.tools.map((pluginTool) => (
+                <article
+                  className="flex min-w-0 flex-col gap-3 rounded-2xl border border-border/50 bg-card p-4"
+                  key={pluginTool.id}
                 >
-                  <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-muted-foreground/60" />
-                  {label}
-                </li>
+                  <div className="flex items-start gap-3">
+                    <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                      <InfoIcon className="size-4" />
+                    </span>
+                    <div className="min-w-0">
+                      <h3 className="font-semibold">{pluginTool.label}</h3>
+                      <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                        {pluginTool.description}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="min-w-0 rounded-xl bg-muted/50 p-3">
+                    <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                      Identifiant
+                    </p>
+                    <p className="mt-1 break-all font-mono text-xs text-foreground">
+                      {pluginTool.id}
+                    </p>
+                    <p className="mt-3 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                      Instruction Agent
+                    </p>
+                    <p className="mt-1 break-words text-xs leading-5 text-muted-foreground">
+                      {pluginTool.systemHint}
+                    </p>
+                  </div>
+                </article>
               ))}
-            </ul>
+            </div>
           </section>
 
-          {/* Tags */}
+          <section className="flex flex-col gap-4">
+            <div>
+              <h2 className="text-base font-semibold">
+                Permissions et sécurité
+              </h2>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Ces informations proviennent du manifeste contrôlé par le
+                serveur. Elles décrivent les capacités déclarées, pas les
+                actions réellement choisies par le modèle.
+              </p>
+            </div>
+            <div className="overflow-hidden rounded-2xl border border-border/50 bg-card">
+              <div className="divide-y divide-border/50">
+                {permissions.map((permission) => {
+                  const Icon = permission.icon;
+                  return (
+                    <div
+                      className="flex flex-col gap-3 p-4 sm:flex-row sm:items-start sm:gap-4"
+                      key={permission.label}
+                    >
+                      <span
+                        className={cn(
+                          "flex size-9 shrink-0 items-center justify-center rounded-xl",
+                          permission.tone === "positive"
+                            ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                            : permission.tone === "danger"
+                              ? "bg-red-500/10 text-red-600 dark:text-red-400"
+                              : "bg-amber-500/10 text-amber-700 dark:text-amber-400"
+                        )}
+                      >
+                        <Icon className="size-4" />
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                          <p className="font-medium">{permission.label}</p>
+                          <span className="text-xs text-muted-foreground">
+                            {permission.value}
+                          </span>
+                        </div>
+                        <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                          {permission.detail}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="flex items-start gap-3 rounded-2xl border border-border/50 bg-muted/20 p-4 text-sm leading-6 text-muted-foreground">
+              <ShieldCheckIcon className="mt-0.5 size-4 shrink-0 text-primary" />
+              <p>
+                Les outils qui modifient des données ou effectuent une action
+                sensible restent bloqués tant que leur approbation n'a pas été
+                accordée pour les paramètres exacts de l'appel.
+              </p>
+            </div>
+          </section>
+
+          <section className="rounded-2xl border border-border/50 bg-muted/20 p-4 sm:p-5">
+            <div className="flex items-start gap-3">
+              <CircleCheckIcon className="mt-0.5 size-5 shrink-0 text-emerald-600 dark:text-emerald-400" />
+              <div>
+                <h2 className="text-sm font-semibold">Utilisation</h2>
+                <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                  Mentionnez ce plugin dans le chat avec{" "}
+                  <span className="font-semibold text-foreground">
+                    @{manifest.name}
+                  </span>{" "}
+                  pour l'utiliser dans une tâche. Agent choisira l'outil adapté
+                  à votre demande et appliquera les permissions ci-dessus.
+                </p>
+              </div>
+            </div>
+          </section>
+
           {manifest.tags.length > 0 ? (
-            <section className="flex flex-col gap-2">
-              <h2 className="text-sm font-semibold text-foreground">Tags</h2>
+            <section className="flex flex-col gap-3">
+              <h2 className="text-base font-semibold">Mots-clés</h2>
               <div className="flex flex-wrap gap-1.5">
                 {manifest.tags.map((tag) => (
                   <span
-                    className="rounded-full bg-muted px-2 py-0.5 text-[11px] text-muted-foreground"
+                    className="rounded-full bg-muted px-2.5 py-1 text-[11px] font-medium text-muted-foreground"
                     key={tag}
                   >
                     {tag}
@@ -288,81 +478,108 @@ export default function PluginDetailClient({
             </section>
           ) : null}
 
-          {/* Utilisation */}
-          <section className="rounded-2xl border border-border/50 bg-muted/20 p-4">
-            <p className="text-xs leading-relaxed text-muted-foreground">
-              Mentionnez ce plugin dans le chat avec{" "}
-              <span className="font-semibold text-foreground">
-                @{manifest.name}
-              </span>{" "}
-              pour l'utiliser au prochain message.
-            </p>
-          </section>
-
-          {/* Actions */}
-          <div className="flex flex-wrap items-center gap-2 border-t border-border/40 pt-4">
-            {state.installed ? (
-              <>
+          {confirmUninstall ? (
+            <div
+              aria-live="polite"
+              className="flex flex-col gap-3 rounded-2xl border border-destructive/30 bg-destructive/5 p-4 sm:flex-row sm:items-center sm:justify-between"
+              role="alert"
+            >
+              <div className="flex items-start gap-2 text-sm">
+                <AlertTriangleIcon className="mt-0.5 size-4 shrink-0 text-destructive" />
+                <p>
+                  Désinstaller {manifest.name} ? Les outils de ce plugin ne
+                  seront plus proposés dans les prochaines conversations.
+                </p>
+              </div>
+              <div className="flex shrink-0 gap-2">
                 <Button
-                  disabled={isBusy || (locked && !state.enabled)}
-                  onClick={handleToggleEnabled}
-                  title={
-                    locked && !state.enabled
-                      ? `Forfait ${manifest.minTier} requis pour réactiver ce plugin.`
-                      : undefined
-                  }
-                  variant="outline"
+                  disabled={isBusy}
+                  onClick={() => setConfirmUninstall(false)}
+                  size="sm"
+                  variant="ghost"
                 >
-                  {isBusy ? (
-                    <Loader2Icon className="size-4 animate-spin" />
-                  ) : (
-                    <CheckIcon
-                      className={cn(
-                        "size-4",
-                        state.enabled
-                          ? "text-emerald-500"
-                          : "text-muted-foreground"
-                      )}
-                    />
-                  )}
-                  {state.enabled ? "Désactiver" : "Activer"}
+                  Annuler
                 </Button>
                 <Button
                   disabled={isBusy}
                   onClick={handleUninstall}
+                  size="sm"
                   variant="destructive"
                 >
-                  {isBusy ? (
-                    <Loader2Icon className="size-4 animate-spin" />
-                  ) : (
-                    <Trash2Icon className="size-4" />
-                  )}
-                  Désinstaller
+                  Confirmer
                 </Button>
-              </>
-            ) : (
+              </div>
+            </div>
+          ) : null}
+        </div>
+      </main>
+
+      <div className="sticky bottom-0 z-20 border-t border-border/50 bg-background/95 px-4 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 backdrop-blur-md sm:static sm:px-6 sm:pb-0 sm:pt-0">
+        <div className="mx-auto flex w-full max-w-4xl flex-wrap items-center justify-end gap-2">
+          {state.installed ? (
+            <>
               <Button
-                disabled={isBusy || locked}
-                onClick={handleInstall}
+                disabled={isBusy || (locked && !state.enabled)}
+                onClick={handleToggleEnabled}
                 title={
-                  locked
-                    ? `Forfait ${manifest.minTier} requis pour installer ce plugin.`
+                  locked && !state.enabled
+                    ? `Forfait ${manifest.minTier} requis pour réactiver ce plugin.`
                     : undefined
                 }
+                type="button"
+                variant="outline"
               >
                 {isBusy ? (
                   <Loader2Icon className="size-4 animate-spin" />
-                ) : locked ? (
-                  <LockIcon className="size-4" />
                 ) : (
-                  <PlusIcon className="size-4" />
+                  <CheckIcon
+                    className={cn(
+                      "size-4",
+                      state.enabled
+                        ? "text-emerald-500"
+                        : "text-muted-foreground"
+                    )}
+                  />
                 )}
-                Installer
+                {state.enabled ? "Désactiver" : "Activer"}
               </Button>
-            )}
-          </div>
+              <Button
+                disabled={isBusy}
+                onClick={handleUninstall}
+                type="button"
+                variant="destructive"
+              >
+                {isBusy ? (
+                  <Loader2Icon className="size-4 animate-spin" />
+                ) : (
+                  <Trash2Icon className="size-4" />
+                )}
+                Désinstaller
+              </Button>
+            </>
+          ) : (
+            <Button
+              disabled={isBusy || locked}
+              onClick={handleInstall}
+              title={
+                locked
+                  ? `Forfait ${manifest.minTier} requis pour installer ce plugin.`
+                  : undefined
+              }
+              type="button"
+            >
+              {isBusy ? (
+                <Loader2Icon className="size-4 animate-spin" />
+              ) : locked ? (
+                <LockIcon className="size-4" />
+              ) : (
+                <PlusIcon className="size-4" />
+              )}
+              Installer
+            </Button>
+          )}
         </div>
-      </main>
+      </div>
     </div>
   );
 }

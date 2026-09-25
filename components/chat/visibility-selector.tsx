@@ -40,7 +40,7 @@ const visibilities: Array<{
   },
   {
     description:
-      "Toute personne disposant du lien peut consulter cette discussion",
+      "Toute personne connectée disposant du lien peut consulter cette discussion",
     icon: <GlobeIcon />,
     id: "public",
     label: "Public",

@@ -12,8 +12,8 @@ name: 🚀 Deploy to Vercel
 # (500 sur /api/chat et /api/agent, aucun appel modèle).
 #
 # Garde-fous :
-#  • `preview` : un push sur `main` ou `canary` migre puis vérifie le schéma
-#    AVANT le build (PR de forks : jamais de migration, jamais d'accès base) ;
+#  • `preview` : ne migre jamais la base ; le garde de schéma bloque si la
+#    base n'est pas prête (PR de forks : jamais d'accès base) ;
 #  • `production` : réservé à `main` (environnement GitHub `production`,
 #    approbation requise), garde avant et après migration.
 on:
@@ -78,16 +78,9 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
-      # Les pushes sur main/canary migrent la base référencée par le secret
-      # GitHub AVANT le build : c'est la seule base accessible à la CI.
-      - name: 🗄️ Migration de la base (main/canary uniquement)
-        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/canary')
-        run: pnpm exec tsx lib/db/migrate.ts
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          POSTGRES_URL: ${{ secrets.DATABASE_URL }}
-          MIGRATIONS_STRICT: "true"
-
+      # Les migrations ne sont jamais déclenchées automatiquement par une
+      # preview ou une branche canary. Le garde de schéma ci-dessous bloque
+      # le déploiement si la base n'a pas été préparée manuellement.
       # Garde bloquante : un schéma obsolète n'est plus déployé (il répondrait
       # 500 sur chaque conversation).
       - name: 🛡️ Garde de schéma avant déploiement

@@ -5,6 +5,7 @@ import {
   agentTierFailureResponse,
   checkAgentAccess,
 } from "@/lib/agent/gate";
+import type { AgentModelEntry } from "@/lib/ai/registry";
 import type { MaiUser } from "@/lib/auth/session";
 
 // Mock de la résolution DB : le gate lui-même lit le tier déjà résolu dans
@@ -31,17 +32,31 @@ vi.mock("@/lib/agent/flags", () => ({
 }));
 
 vi.mock("@/lib/ai/registry", () => ({
-  getModelEntry: (id: string) => ({
-    agentCompatibility: {
-      continuationAfterToolResult: true,
-      structuredToolCalls: true,
-      toolDefinitions: true,
-    },
-    capabilities: { tools: true },
-    id,
-    name: id,
-  }),
-  isAgentCompatible: () => true,
+  getModelEntry: (
+    id: string,
+    models?: Array<{
+      id: string;
+      name?: string;
+      supported_parameters?: string[];
+    }>
+  ) => {
+    const found = models?.find((model) => model.id === id);
+    const tools = found
+      ? (found.supported_parameters ?? []).includes("tools")
+      : id !== "poolside/laguna-xs-2.1:free";
+    return {
+      agentCompatibility: {
+        continuationAfterToolResult: tools,
+        structuredToolCalls: tools,
+        toolDefinitions: tools,
+      },
+      capabilities: { tools },
+      id,
+      name: found?.name ?? id,
+    };
+  },
+  isAgentCompatible: (entry: { agentCompatibility: Record<string, boolean> }) =>
+    Object.values(entry.agentCompatibility).every(Boolean),
   isModelAllowedForUser: (modelId: string, tier: string) =>
     !(modelId === "premium-model" && tier === "plus"),
 }));
@@ -150,5 +165,72 @@ describe("checkAgentModelAccess", () => {
       tier: "plus",
     });
     expect(ok.error).toBeUndefined();
+  });
+
+  it("conserve les métadonnées Laguna fournies par le catalogue utilisateur", async () => {
+    const { DEFAULT_AGENT_FLAGS } = await import("@/lib/agent/flags");
+    const { checkAgentModelAccess } = await import("@/lib/agent/gate");
+
+    const laguna = {
+      agentCompatibility: {
+        continuationAfterToolResult: true,
+        structuredToolCalls: true,
+        toolDefinitions: true,
+      },
+      capabilities: {
+        audio: false,
+        contextWindow: 32_000,
+        documents: false,
+        file: false,
+        image: false,
+        images: false,
+        maxFiles: 0,
+        reasoning: false,
+        reasoningLevels: [],
+        tools: true,
+        vision: false,
+      },
+      description: "Modèle Laguna",
+      id: "poolside/laguna-xs-2.1:free",
+      isFree: true,
+      name: "Laguna XS 2.1 (Free)",
+      provider: "poolside",
+      reasoningLevels: [],
+      tierAccess: { minimumTier: "free" },
+    } as unknown as AgentModelEntry;
+
+    const result = checkAgentModelAccess({
+      entry: laguna,
+      flags: DEFAULT_AGENT_FLAGS,
+      modelId: laguna.id,
+      tier: "plus",
+    });
+
+    expect(result.error).toBeUndefined();
+    expect(result.model).toBe("poolside/laguna-xs-2.1:free");
+    expect(result.capabilities.tools).toBe(true);
+  });
+
+  it("utilise le catalogue transmis quand l'entrée complète n'est pas encore fournie", async () => {
+    const { DEFAULT_AGENT_FLAGS } = await import("@/lib/agent/flags");
+    const { checkAgentModelAccess } = await import("@/lib/agent/gate");
+
+    const result = checkAgentModelAccess({
+      flags: DEFAULT_AGENT_FLAGS,
+      modelId: "poolside/laguna-xs-2.1:free",
+      models: [
+        {
+          description: "Laguna XS 2.1",
+          id: "poolside/laguna-xs-2.1:free",
+          isFree: true,
+          name: "Laguna XS 2.1",
+          provider: "poolside",
+          supported_parameters: ["tools"],
+        },
+      ],
+      tier: "plus",
+    });
+
+    expect(result.error).toBeUndefined();
   });
 });

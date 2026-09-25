@@ -173,7 +173,9 @@ export type ChatMessage = UIMessage<
 >;
 
 export type Attachment = {
-  name: string;
-  url: string;
   contentType: string;
+  name: string;
+  /** Taille connue du fichier, utilisée pour appliquer les limites côté client. */
+  size?: number;
+  url: string;
 };

@@ -35,9 +35,26 @@ export default defineConfig({
   projects: [
     {
       name: "e2e",
+      testIgnore: /mobile-agent-ui\.test\.ts/,
       testMatch: /e2e\/.*.test.ts/,
       use: {
         ...devices["Desktop Chrome"],
+      },
+    },
+
+    {
+      name: "Mobile Chrome",
+      testMatch: /mobile-agent-ui\.test\.ts/,
+      use: {
+        ...devices["Pixel 5"],
+      },
+    },
+
+    {
+      name: "Mobile Safari",
+      testMatch: /mobile-agent-ui\.test\.ts/,
+      use: {
+        ...devices["iPhone 12"],
       },
     },
 

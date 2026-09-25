@@ -7,14 +7,16 @@ import { calculator } from "@/lib/ai/tools/calculator";
 import { codeExecution } from "@/lib/ai/tools/code-execution";
 import { dateTime } from "@/lib/ai/tools/datetime";
 import { webSearch } from "@/lib/ai/tools/web-search";
+import { loadMcpContext } from "@/lib/chat/mcp";
 import { getUserApiKey } from "@/lib/db/api-keys";
 import {
+  claimScheduledMessage,
   createNotification,
   getAgentById,
   getChatById,
   getMessagesByChatId,
   getPluginInstallationsByUserId,
-  getScheduledMessageById,
+  getSkillById,
   recordTokenUsage,
   rescheduleRecurringMessage,
   saveChat,
@@ -22,6 +24,7 @@ import {
   setScheduledMessageStatus,
 } from "@/lib/db/queries";
 import { getPersistedTier } from "@/lib/db/users";
+import { requireOwnedPlanningChat } from "@/lib/planning/chat-access";
 import { getPluginManifest } from "@/lib/plugins/catalog";
 import { createPluginTools } from "@/lib/plugins/server";
 import { canUsePlugin } from "@/lib/plugins/tier-lock";
@@ -50,24 +53,32 @@ export function computeNextOccurrence(
 }
 
 export async function executeScheduledMessage(scheduledId: string) {
-  const item = await getScheduledMessageById({ id: scheduledId });
+  // La réservation atomique empêche deux workers d'exécuter la même
+  // planification. Les exécutions explicites d'un item failed restent possibles.
+  const item = await claimScheduledMessage({ id: scheduledId });
   if (!item) {
-    throw new Error(`Message planifié introuvable : ${scheduledId}`);
+    return { skipped: true, status: "not_claimable" };
   }
-
-  if (item.status !== "pending" && item.status !== "failed") {
-    return { skipped: true, status: item.status };
-  }
-
-  // Marquer en processing
-  await setScheduledMessageStatus({
-    id: item.id,
-    status: "processing",
-  });
 
   try {
     const userId = item.userId;
     let targetChatId = item.chatId;
+
+    if (targetChatId) {
+      const access = await requireOwnedPlanningChat({
+        chatId: targetChatId,
+        user: {
+          email: null,
+          id: userId,
+          username: null,
+        },
+      });
+      if (access.response) {
+        throw new Error(
+          "La conversation cible n'appartient pas à l'utilisateur."
+        );
+      }
+    }
 
     // Déterminer ou créer la discussion cible
     if (item.createMode === "new_chat" || !targetChatId) {
@@ -144,6 +155,11 @@ export async function executeScheduledMessage(scheduledId: string) {
     let agentModel: string | null = null;
     let agentTemp: number | null = null;
     let agentCloudUrls: string[] = [];
+    let agentSkillInstructions: string[] = [];
+    let agentSkillToolIds: string[] = [];
+    let agentMcpServerIds: string[] = [];
+    let agentSkillMcpServerIds: string[] = [];
+    const agentSkillMcpToolFilter: Record<string, string[] | null> = {};
     if (item.agentId) {
       const ag = await getAgentById({ id: item.agentId, userId });
       if (ag) {
@@ -153,6 +169,48 @@ export async function executeScheduledMessage(scheduledId: string) {
         agentCloudUrls = Array.isArray(ag.cloudFileUrls)
           ? (ag.cloudFileUrls as string[])
           : [];
+        const skillIds = Array.isArray(ag.skillIds)
+          ? (ag.skillIds as string[]).filter(
+              (skillId): skillId is string => typeof skillId === "string"
+            )
+          : [];
+        const skills = await Promise.all(
+          skillIds.map((skillId) =>
+            getSkillById({ id: skillId, userId }).catch(() => null)
+          )
+        );
+        agentSkillInstructions = skills
+          .map((skill) => skill?.instructions?.trim())
+          .filter((instructions): instructions is string =>
+            Boolean(instructions)
+          );
+        agentSkillToolIds = Array.from(
+          new Set(
+            skills.flatMap((skill) =>
+              Array.isArray(skill?.tools) ? (skill.tools as string[]) : []
+            )
+          )
+        );
+        agentMcpServerIds = Array.isArray(ag.mcpServerIds)
+          ? (ag.mcpServerIds as string[])
+          : [];
+        agentSkillMcpServerIds = Array.from(
+          new Set(
+            skills.flatMap((skill) =>
+              Array.isArray(skill?.mcpServerIds)
+                ? (skill.mcpServerIds as string[])
+                : []
+            )
+          )
+        );
+        for (const skill of skills) {
+          if (skill?.mcpToolFilter && typeof skill.mcpToolFilter === "object") {
+            Object.assign(
+              agentSkillMcpToolFilter,
+              skill.mcpToolFilter as Record<string, string[] | null>
+            );
+          }
+        }
       }
     }
 
@@ -163,6 +221,9 @@ export async function executeScheduledMessage(scheduledId: string) {
     let modeAddendum = "";
     if (agentInstructions) {
       modeAddendum += `AGENT ACTIF :\n${agentInstructions}\n\n`;
+    }
+    if (agentSkillInstructions.length > 0) {
+      modeAddendum += `SKILLS DE L'AGENT :\n${agentSkillInstructions.join("\n\n")}\n\n`;
     }
     if (item.customInstructions) {
       modeAddendum += `INSTRUCTIONS PARTICULIÈRES :\n${item.customInstructions}\n\n`;
@@ -212,6 +273,39 @@ export async function executeScheduledMessage(scheduledId: string) {
       enabledPluginIds
     );
 
+    const wantsMcp =
+      enabledToolsList.includes("mcp") ||
+      agentSkillMcpServerIds.length > 0 ||
+      agentMcpServerIds.length > 0;
+    const effectiveMcpServerIds =
+      agentSkillMcpServerIds.length > 0
+        ? agentSkillMcpServerIds
+        : agentMcpServerIds;
+    const mcpContext = wantsMcp
+      ? await loadMcpContext({
+          chatId: targetChatId,
+          isToolApprovalFlow: false,
+          messages: null,
+          requestedTools: ["mcp"],
+          serverIds:
+            effectiveMcpServerIds.length > 0
+              ? effectiveMcpServerIds
+              : undefined,
+          skillMcpServerIds: agentSkillMcpServerIds,
+          skillMcpToolFilter:
+            Object.keys(agentSkillMcpToolFilter).length > 0
+              ? agentSkillMcpToolFilter
+              : null,
+          userId,
+        }).catch(() => null)
+      : null;
+    const executableMcpTools = Object.fromEntries(
+      Object.entries(mcpContext?.mcpTools ?? {}).filter(
+        ([, tool]) =>
+          typeof (tool as { execute?: unknown }).execute === "function"
+      )
+    );
+
     // Outils serveur disponibles
     const availableTools: Record<string, any> = {
       calculator,
@@ -219,11 +313,16 @@ export async function executeScheduledMessage(scheduledId: string) {
       dateTime,
       webSearch,
       ...pluginTools,
+      ...executableMcpTools,
     };
 
-    const activeTools = enabledToolsList.filter((t) =>
-      Boolean(availableTools[t])
-    );
+    const activeTools = Array.from(
+      new Set([
+        ...enabledToolsList,
+        ...agentSkillToolIds,
+        ...(wantsMcp ? Object.keys(executableMcpTools) : []),
+      ])
+    ).filter((toolId) => Boolean(availableTools[toolId]));
 
     // Générer la réponse
     const result = await generateText({
@@ -280,6 +379,7 @@ export async function executeScheduledMessage(scheduledId: string) {
 
     if (totalTokens > 0) {
       await recordTokenUsage({
+        idempotencyKey: `planning:${item.id}:${new Date(item.scheduledAt).toISOString()}`,
         inputTokens,
         isGhostMode: false,
         model: effectiveModel,

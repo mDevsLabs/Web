@@ -1,7 +1,7 @@
 // Client commun des API publiques des plugins. Les outils construisent leurs
 // URL depuis des domaines constants; ce garde-fou refuse tout autre hôte,
 // toute redirection et toute réponse trop volumineuse.
-export const PUBLIC_API_TIMEOUT_MS = 8_000;
+export const PUBLIC_API_TIMEOUT_MS = 8000;
 export const PUBLIC_API_MAX_BYTES = 1_000_000;
 
 export type PublicApiResult<T> =
@@ -18,6 +18,10 @@ const ALLOWED_HOSTS = new Set([
   "date.nager.at",
   "nagerholidays.com",
   "api.tvmaze.com",
+  "www.wikidata.org",
+  "gitlab.com",
+  "ec.europa.eu",
+  "api.openalex.org",
 ]);
 
 function safeStatusMessage(response: Response): string {
@@ -59,7 +63,11 @@ export async function fetchPublicJson<T>(
     }
     const contentLength = Number(response.headers.get("content-length") ?? 0);
     if (contentLength > PUBLIC_API_MAX_BYTES) {
-      return { error: "Réponse trop volumineuse; résultat refusé.", ok: false, url: url.href };
+      return {
+        error: "Réponse trop volumineuse; résultat refusé.",
+        ok: false,
+        url: url.href,
+      };
     }
     const reader = response.body?.getReader();
     if (!reader) {
@@ -73,7 +81,11 @@ export async function fetchPublicJson<T>(
       byteCount += chunk.value.byteLength;
       if (byteCount > PUBLIC_API_MAX_BYTES) {
         await reader.cancel();
-        return { error: "Réponse trop volumineuse; résultat refusé.", ok: false, url: url.href };
+        return {
+          error: "Réponse trop volumineuse; résultat refusé.",
+          ok: false,
+          url: url.href,
+        };
       }
       chunks.push(chunk.value);
     }
@@ -86,10 +98,17 @@ export async function fetchPublicJson<T>(
     const text = new TextDecoder().decode(bytes);
     return { data: JSON.parse(text) as T, ok: true, url: url.href };
   } catch (error) {
-    const aborted = error instanceof Error && (error.name === "AbortError" || error.name === "TimeoutError");
-    const redirect = error instanceof TypeError && /redirect/i.test(error.message);
+    const aborted =
+      error instanceof Error &&
+      (error.name === "AbortError" || error.name === "TimeoutError");
+    const redirect =
+      error instanceof TypeError && /redirect/i.test(error.message);
     return {
-      error: aborted ? `Délai dépassé (${PUBLIC_API_TIMEOUT_MS / 1000}s).` : redirect ? "Redirection de la source refusée." : "Erreur réseau ou réponse JSON invalide.",
+      error: aborted
+        ? `Délai dépassé (${PUBLIC_API_TIMEOUT_MS / 1000}s).`
+        : redirect
+          ? "Redirection de la source refusée."
+          : "Erreur réseau ou réponse JSON invalide.",
       ok: false,
       url: url.href,
     };
@@ -104,9 +123,11 @@ export function sourceRef(url: string, title: string) {
 
 export function contactHeaders(appName: string): Record<string, string> {
   const email = process.env.PUBLIC_API_CONTACT_EMAIL?.trim();
-  return email ? { "User-Agent": `${appName}/1.0 (${email})` } : { "User-Agent": `${appName}/1.0` };
+  return email
+    ? { "User-Agent": `${appName}/1.0 (${email})` }
+    : { "User-Agent": `${appName}/1.0` };
 }
 
-export function truncateText(value: unknown, max = 2_000): string | null {
+export function truncateText(value: unknown, max = 2000): string | null {
   return typeof value === "string" ? value.slice(0, max) : null;
 }

@@ -28,6 +28,42 @@ import {
   stripHtmlTags,
 } from "./vibe-posts-core.ts";
 
+async function canViewerAccessPost(
+  sql: any,
+  postId: string,
+  viewerId: number
+): Promise<boolean> {
+  if (!isUuid(postId)) return false;
+  const rows = await sql`
+    SELECT p.id
+    FROM posts p
+    WHERE p.id = ${postId}::uuid
+      AND COALESCE(p.status, 'published') = 'published'
+      AND (
+        COALESCE(p.visibility, 'public') = 'public'
+        OR p.author_id = ${viewerId}
+        OR (
+          p.visibility = 'followers'
+          AND EXISTS (
+            SELECT 1 FROM follows f
+            WHERE f.follower_id = ${viewerId}
+              AND f.following_id = p.author_id
+          )
+        )
+        OR (
+          p.visibility = 'circle'
+          AND EXISTS (
+            SELECT 1 FROM circle_members cm
+            WHERE cm.user_id = p.author_id
+              AND cm.member_user_id = ${viewerId}
+          )
+        )
+      )
+    LIMIT 1
+  `;
+  return rows.length > 0;
+}
+
 export function registerPostEngagementRoutes(registerMulti: RegisterMultiFn) {
   // 2. LIKES & REPOSTS & BOOKMARKS
   const handleLike = async (c: any) => {
@@ -39,6 +75,10 @@ export function registerPostEngagementRoutes(registerMulti: RegisterMultiFn) {
 
       const postId = c.req.param("id");
       const sql = getDb();
+
+      if (!(await canViewerAccessPost(sql, postId, userId))) {
+        return c.json({ error: "Publication introuvable." }, 404);
+      }
 
       const existing = await sql`
         SELECT id FROM post_interactions
@@ -138,6 +178,10 @@ export function registerPostEngagementRoutes(registerMulti: RegisterMultiFn) {
 
       const postId = c.req.param("id");
       const sql = getDb();
+
+      if (!(await canViewerAccessPost(sql, postId, userId))) {
+        return c.json({ error: "Publication introuvable." }, 404);
+      }
 
       const existing = await sql`
         SELECT id FROM post_interactions

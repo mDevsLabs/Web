@@ -26,6 +26,7 @@ import type { SkillTemplateManifest } from "./types";
 
 export type SkillTemplateFailureCode =
   | "access_denied"
+  | "conflict"
   | "internal_error"
   | "not_found"
   | "plan_required";
@@ -131,6 +132,13 @@ export async function installSkillTemplate(params: {
     template,
     servers.map((server) => ({ id: server.id, name: server.name }))
   );
+  if (template.strictMcp && resolved.unresolved.length > 0) {
+    return {
+      code: "conflict",
+      message: `Connectez d'abord le serveur MCP ${resolved.unresolved.join(", ")} avant d'installer ce skill.`,
+      ok: false,
+    };
+  }
 
   let created: InstalledSkill;
   try {

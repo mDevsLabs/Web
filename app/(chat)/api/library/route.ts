@@ -148,9 +148,10 @@ export async function PATCH(req: NextRequest) {
 
   try {
     const body = await req.json();
-    const { id, name } = body;
+    const id = typeof body?.id === "string" ? body.id.trim() : "";
+    const name = typeof body?.name === "string" ? body.name.trim() : "";
 
-    if (!id || !name) {
+    if (!/^[0-9a-f-]{36}$/i.test(id) || !name || name.length > 255) {
       return errorResponse("invalid_request", {
         message: "L'identifiant et le nom du fichier sont requis.",
       });
@@ -165,16 +166,22 @@ export async function PATCH(req: NextRequest) {
       method: "PATCH",
     }).catch(() => null);
 
-    if (res?.ok) {
-      const data = await res.json();
-      return NextResponse.json(data);
+    if (!res) {
+      return errorResponse("service_unavailable", {
+        message:
+          "Le service de fichiers est indisponible. Le nom n'a pas été modifié.",
+      });
     }
-
-    return NextResponse.json({ id, name, success: true });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      const payload = normalizeUpstreamError(data, res.status);
+      return NextResponse.json(payload, { status: payload.status });
+    }
+    return NextResponse.json(data);
   } catch (error) {
-    // Repli volontaire : le renommage est optimiste côté client, un échec de
-    // synchronisation n'empêche pas l'opération locale.
-    console.warn("Erreur API Library PATCH:", error);
-    return NextResponse.json({ success: true });
+    logError("Erreur API Library PATCH", error);
+    return errorResponse("internal_error", {
+      message: "Impossible de renommer le fichier.",
+    });
   }
 }

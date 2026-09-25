@@ -7,7 +7,6 @@ import { ArrowUpIcon } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import {
-  type ChangeEvent,
   type Dispatch,
   memo,
   type SetStateAction,
@@ -42,12 +41,7 @@ import {
   NoToolsWarning,
   QuotaBanner,
 } from "@/components/chat/input/input-banners";
-import {
-  deactivateMentionToken,
-  detectTrigger,
-  MENTION_TOKEN_RE,
-  renderHighlightedMentions,
-} from "@/components/chat/input/mention-utils";
+import { renderHighlightedMentions } from "@/components/chat/input/mention-utils";
 import { PlusMenuButton } from "@/components/chat/input/plus-menu";
 import { StopButton } from "@/components/chat/input/stop-button";
 import { useDrafts } from "@/components/chat/input/use-drafts";
@@ -55,7 +49,6 @@ import { useModelCapabilities } from "@/components/chat/input/use-model-capabili
 import { useQuotaMeter } from "@/components/chat/input/use-quota-meter";
 import { VoiceRecorderButton } from "@/components/chat/input/voice-recorder-button";
 import {
-  getFilteredMentionItems,
   MentionMenu,
   type MentionSelectPayload,
 } from "@/components/chat/mention-menu";
@@ -64,8 +57,6 @@ import { PreviewAttachment } from "@/components/chat/preview-attachment";
 import { QuizConfigDialog } from "@/components/chat/quiz-config-dialog";
 import { SkillParamsDialog } from "@/components/chat/skill-params-dialog";
 import {
-  customCommandsToSlashCommands,
-  getFilteredSlashCommands,
   type SlashCommand,
   SlashCommandMenu,
 } from "@/components/chat/slash-commands";
@@ -76,6 +67,7 @@ import {
   MAX_FILES_PER_MESSAGE,
   useChatAttachments,
 } from "@/hooks/use-chat-attachments";
+import { useComposerTriggers } from "@/hooks/use-composer-triggers";
 import { useProjects } from "@/hooks/use-projects";
 import { useTier } from "@/hooks/use-tier";
 import { chatModels } from "@/lib/ai/models";
@@ -158,15 +150,6 @@ function PureMultimodalInput({
 
   const [cloudPickerOpen, setCloudPickerOpen] = useState(false);
   const [quizDialogOpen, setQuizDialogOpen] = useState(false);
-  const [slashOpen, setSlashOpen] = useState(false);
-  const [slashQuery, setSlashQuery] = useState("");
-  const [slashIndex, setSlashIndex] = useState(0);
-
-  // Mention (@) state
-  const [mentionOpen, setMentionOpen] = useState(false);
-  const [mentionQuery, setMentionQuery] = useState("");
-  const [mentionIndex, setMentionIndex] = useState(0);
-  const mentionTriggerPosRef = useRef<number | null>(null);
 
   const {
     pendingProject,
@@ -229,10 +212,6 @@ function PureMultimodalInput({
     isFree ? null : "/api/commands?kind=slash",
     (url: string) => fetch(url).then((r) => r.json()),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
-  );
-  const customSlashCommands = useMemo(
-    () => customCommandsToSlashCommands(customCommandsData),
-    [customCommandsData]
   );
   const { data: customMentionCommands = [] } = useSWR<CustomCommand[]>(
     isFree ? null : "/api/commands?kind=mention",
@@ -327,39 +306,8 @@ function PureMultimodalInput({
     textareaRef,
   });
 
-  const handleInput = useCallback(
-    (event: ChangeEvent<HTMLTextAreaElement>) => {
-      const val = event.target.value;
-      const cursor = event.target.selectionStart ?? val.length;
-      setInput(val);
-
-      // Les sélections de session ne dépendent pas du texte saisi. Une mention peut
-      // être supprimée sans désactiver l'agent ou le serveur sélectionné.
-      const trigger = detectTrigger(val, cursor);
-      if (trigger?.type === "slash") {
-        setSlashOpen(true);
-        setSlashQuery(trigger.query);
-        setSlashIndex(0);
-        setMentionOpen(false);
-        mentionTriggerPosRef.current = null;
-      } else if (trigger?.type === "mention") {
-        setMentionOpen(true);
-        setMentionQuery(trigger.query);
-        setMentionIndex(0);
-        mentionTriggerPosRef.current = trigger.start;
-        setSlashOpen(false);
-      } else {
-        setSlashOpen(false);
-        setMentionOpen(false);
-        mentionTriggerPosRef.current = null;
-      }
-    },
-    [setInput]
-  );
-
-  const handleSlashSelect = useCallback(
+  const handleSlashCommand = useCallback(
     async (cmd: SlashCommand) => {
-      setSlashOpen(false);
       setInput("");
       await runSlashCommand(cmd, {
         chatId,
@@ -401,46 +349,14 @@ function PureMultimodalInput({
     ]
   );
 
-  const handleMentionSelect = useCallback(
+  const handleMentionSuggestion = useCallback(
     (payload: MentionSelectPayload) => {
-      // Bloquer si le modèle ne supporte pas les tools
-      if (
-        (payload.type === "skill" ||
-          payload.type === "mcp" ||
-          payload.type === "plugin") &&
-        !supportsTools
-      ) {
-        toast.warning(
-          "Ce modèle ne prend pas en charge les outils (tools). Les compétences et MCP sont indisponibles."
-        );
-        setMentionOpen(false);
-        setMentionQuery("");
-        mentionTriggerPosRef.current = null;
-        return;
-      }
-
-      // Bloquer si le quota de mémoire de cette portée est atteint
-      if (payload.type === "memory" && memoryAtLimit) {
-        toast.warning(
-          `Limite de mémoires atteinte (${memoryCount}/${memoryLimit}) — libérez de l'espace dans l'onglet Mémoire des paramètres.`
-        );
-        setMentionOpen(false);
-        setMentionQuery("");
-        mentionTriggerPosRef.current = null;
-        return;
-      }
-
-      const textarea = textareaRef.current;
-      const cursor = textarea?.selectionStart ?? input.length;
-      let mentionTag = "";
       if (payload.type === "skill") {
-        mentionTag = `@${payload.skill.name} `;
         setActiveSkill(payload.skill);
         toast.success(
           `Compétence appliquée à la discussion : ${payload.skill.name}`
         );
       } else if (payload.type === "plugin") {
-        mentionTag = `@${payload.plugin.name} `;
         for (const pluginTool of payload.plugin.tools) {
           if (!pendingTools.includes(pluginTool.id as any)) {
             togglePendingTool(pluginTool.id as any);
@@ -450,7 +366,6 @@ function PureMultimodalInput({
           `Plugin activé pour le prochain message : ${payload.plugin.name}`
         );
       } else if (payload.type === "mcp") {
-        mentionTag = `@${payload.server.name} `;
         const mcpKey = `mcp:${payload.server.id}`;
         if (
           !pendingTools.includes(mcpKey as any) &&
@@ -460,7 +375,6 @@ function PureMultimodalInput({
         }
         toast.success(`Serveur MCP ciblé : ${payload.server.name}`);
       } else if (payload.type === "project") {
-        mentionTag = `@${payload.project.name} `;
         setPendingProject({
           color: payload.project.color,
           icon: payload.project.icon,
@@ -471,7 +385,6 @@ function PureMultimodalInput({
           `Conversations enregistrées dans : ${payload.project.name}`
         );
       } else if (payload.type === "agent") {
-        mentionTag = `@${payload.agent.name} `;
         setActiveAgent(payload.agent);
         const icon = (payload.agent as any).emoji
           ? `${(payload.agent as any).emoji} `
@@ -480,7 +393,6 @@ function PureMultimodalInput({
           `Agent activé : ${icon}${payload.agent.name} — modèle ${(payload.agent as any).defaultModelId}`
         );
       } else if (payload.type === "system") {
-        mentionTag = `@${payload.label} `;
         if (payload.action === "web") {
           togglePendingTool("webSearch" as any);
           toast.success("Outil Recherche Web activé !");
@@ -492,91 +404,128 @@ function PureMultimodalInput({
           toast.success("Référence aux notes ajoutée !");
         }
       } else if (payload.type === "memory") {
-        mentionTag = "@Memory ";
         if (!pendingTools.includes("memory")) {
           togglePendingTool("memory");
         }
         toast.success(
           "Mémoire activée pour le prochain message — l'IA pourra retenir ou retrouver des informations"
         );
-      } else if (payload.type === "customCommand") {
-        const command = payload.command;
-        executeCustomCommand(command, {
-          agents: userAgents,
-          router,
-          setActiveAgent: setActiveAgent as any,
-          setActiveSkill: setActiveSkill as any,
-          setPendingCommand,
-          skills: userSkills,
-          toast: (opts) => {
-            if (opts.type === "error") {
-              toast.error(opts.description);
-            } else {
-              toast.success(opts.description);
-            }
-          },
-          togglePendingTool: togglePendingTool as any,
-        });
-        // Tag indicatif uniquement pour les actions qui se combinent au message
-        if (
-          command.actionType === "mcp" ||
-          command.actionType === "tools" ||
-          command.actionType === "agent" ||
-          command.actionType === "skill"
-        ) {
-          mentionTag = `@${command.trigger} `;
-        }
       }
-
-      const atPos = mentionTriggerPosRef.current;
-      let newVal = input;
-      let targetCursorPos = cursor;
-      if (atPos !== null && atPos >= 0) {
-        const before = input.slice(0, atPos);
-        const after = input.slice(cursor);
-        newVal = `${before}${mentionTag}${after.trimStart()}`;
-        targetCursorPos = before.length + mentionTag.length;
-      } else {
-        const before = input.trimEnd();
-        newVal = `${before ? `${before} ` : ""}${mentionTag}`;
-        targetCursorPos = newVal.length;
-      }
-
-      setInput(newVal);
-      setMentionOpen(false);
-      setMentionQuery("");
-      mentionTriggerPosRef.current = null;
-      // Refocus & positionner le curseur exactement après la mention
-      setTimeout(() => {
-        if (textareaRef.current) {
-          textareaRef.current.focus();
-          try {
-            textareaRef.current.setSelectionRange(
-              targetCursorPos,
-              targetCursorPos
-            );
-          } catch {}
-        }
-      }, 50);
     },
     [
-      input,
-      memoryAtLimit,
-      memoryCount,
-      memoryLimit,
-      router,
-      setInput,
-      supportsTools,
       pendingTools,
-      setPendingCommand,
-      setPendingProject,
       setActiveAgent,
+      setActiveSkill,
+      setPendingProject,
+      togglePendingTool,
+    ]
+  );
+
+  const handleCustomMention = useCallback(
+    (command: CustomCommand) => {
+      executeCustomCommand(command, {
+        agents: userAgents,
+        router,
+        setActiveAgent: setActiveAgent as any,
+        setActiveSkill: setActiveSkill as any,
+        setPendingCommand,
+        skills: userSkills,
+        toast: (opts) => {
+          if (opts.type === "error") {
+            toast.error(opts.description);
+          } else {
+            toast.success(opts.description);
+          }
+        },
+        togglePendingTool: togglePendingTool as any,
+      });
+
+      return ["agent", "mcp", "skill", "tools"].includes(command.actionType)
+        ? `@${command.trigger}`
+        : null;
+    },
+    [
+      router,
+      setActiveAgent,
+      setPendingCommand,
       setActiveSkill,
       togglePendingTool,
       userAgents,
       userSkills,
     ]
   );
+
+  const resolveMention = useCallback(
+    (payload: MentionSelectPayload) => {
+      if (
+        (payload.type === "skill" ||
+          payload.type === "mcp" ||
+          payload.type === "plugin" ||
+          (payload.type === "system" && payload.action === "web")) &&
+        !supportsTools
+      ) {
+        toast.warning(
+          "Ce modèle ne prend pas en charge les outils (tools). Les compétences et MCP sont indisponibles."
+        );
+        return false;
+      }
+      if (payload.type === "memory" && memoryAtLimit) {
+        toast.warning(
+          `Limite de mémoires atteinte (${memoryCount}/${memoryLimit}) — libérez de l'espace dans l'onglet Mémoire des paramètres.`
+        );
+        return false;
+      }
+      return true;
+    },
+    [memoryAtLimit, memoryCount, memoryLimit, supportsTools]
+  );
+
+  const {
+    closeMenus,
+    filteredSlashCommands,
+    customSlashCommands,
+    handleMentionSelect,
+    handleSlashSelect,
+    handleTextareaKeyDown: handleSharedTextareaKeyDown,
+    mentionIndex,
+    mentionMenuId,
+    mentionOpen,
+    mentionQuery,
+    slashIndex,
+    slashMenuId,
+    slashOpen,
+    slashQuery,
+    textareaProps,
+  } = useComposerTriggers({
+    activeAgent,
+    activeSkill,
+    clearActiveAgent,
+    clearActiveSkill,
+    clearPendingProject,
+    customCommands: customCommandsData,
+    customMentionCommands,
+    input,
+    installedPlugins,
+    isFree,
+    isNewChatInput,
+    mcpServers: userMcpServers,
+    memoryAtLimit,
+    memoryLimit,
+    mode: "chat",
+    onCustomCommand: handleCustomMention,
+    onSlashCommand: handleSlashCommand,
+    onSuggestionSelect: handleMentionSuggestion,
+    pendingProject,
+    pendingTools,
+    projects,
+    resolveMention,
+    setInput,
+    skills: userSkills,
+    supportsTools,
+    textareaRef,
+    togglePendingTool,
+    userAgents,
+  });
 
   const [skillParamsDialogOpen, setSkillParamsDialogOpen] = useState(false);
 
@@ -713,42 +662,32 @@ function PureMultimodalInput({
   }, [hasVisionSupport, hasStrictCaps]);
 
   const handleSlashClose = useCallback(() => {
-    setSlashOpen(false);
-  }, []);
+    closeMenus();
+  }, [closeMenus]);
 
   const handleMentionClose = useCallback(() => {
-    setMentionOpen(false);
-  }, []);
+    closeMenus();
+  }, [closeMenus]);
 
   const handlePromptSubmit = useCallback(() => {
-    if (mentionOpen) {
-      // If mention menu open, let Enter select instead of submit
+    if (mentionOpen || slashOpen) {
       return;
     }
-    if (input.startsWith("/")) {
-      const query = input.slice(1).trim().split(/\s/)[0] ?? "";
-      const cmd = getFilteredSlashCommands(
-        query,
-        {
-          isFree,
-          isHome: isNewChatInput,
-        },
-        customSlashCommands
-      )[0];
-      // fallback exact match
-      if (
-        cmd &&
-        (cmd.name === query.toLowerCase() ||
-          cmd.aliases?.includes(query.toLowerCase()))
-      ) {
-        handleSlashSelect(cmd);
-        return;
-      }
-      // If slash menu open, Enter should select not submit
-      if (slashOpen) {
+
+    const exactSlash = input.trim().match(/^\/([\p{L}\p{N}_-]+)$/u);
+    if (exactSlash) {
+      const query = exactSlash[1].toLowerCase();
+      const command = filteredSlashCommands.find(
+        (item) =>
+          item.name.toLowerCase() === query ||
+          item.aliases?.some((alias) => alias.toLowerCase() === query)
+      );
+      if (command) {
+        handleSlashSelect(command);
         return;
       }
     }
+
     if (!input.trim() && attachments.length === 0) {
       return;
     }
@@ -765,202 +704,33 @@ function PureMultimodalInput({
     }
   }, [
     attachments.length,
-    customSlashCommands,
+    filteredSlashCommands,
     handleSlashSelect,
     hasVisionSupport,
     hasStrictCaps,
     input,
-    isFree,
-    isNewChatInput,
+    mentionOpen,
+    slashOpen,
     status,
     submitForm,
-    slashOpen,
-    mentionOpen,
   ]);
 
   const handleTextareaKeyDown = useCallback(
-    (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-      if (mentionOpen) {
-        const flat = getFilteredMentionItems(
-          mentionQuery,
-          projects as any,
-          userSkills,
-          userMcpServers,
-          userAgents as any,
-          customMentionCommands,
-          installedPlugins
-        );
-        if (e.key === "ArrowDown") {
-          e.preventDefault();
-          setMentionIndex((i) => Math.min(i + 1, flat.length - 1));
-          return;
-        }
-        if (e.key === "ArrowUp") {
-          e.preventDefault();
-          setMentionIndex((i) => Math.max(i - 1, 0));
-          return;
-        }
-        if (e.key === "Enter" || e.key === "Tab") {
-          e.preventDefault();
-          if (flat[mentionIndex]) {
-            const item = flat[mentionIndex];
-            if (item.kind === "skill") {
-              handleMentionSelect({
-                skill: item.skill,
-                type: "skill",
-              });
-            } else if (item.kind === "plugin") {
-              handleMentionSelect({
-                plugin: item.plugin,
-                type: "plugin",
-              });
-            } else if (item.kind === "mcp") {
-              handleMentionSelect({
-                server: item.server,
-                type: "mcp",
-              });
-            } else if (item.kind === "project") {
-              handleMentionSelect({
-                project: (item as any).project,
-                type: "project",
-              });
-            } else if (item.kind === "agent") {
-              handleMentionSelect({
-                agent: (item as any).agent,
-                type: "agent",
-              });
-            } else if (item.kind === "custom-command") {
-              handleMentionSelect({
-                command: (item as any).command,
-                type: "customCommand",
-              });
-            } else if (item.kind === "memory") {
-              handleMentionSelect({ type: "memory" });
-            }
-          }
-          return;
-        }
-        if (e.key === "Escape") {
-          e.preventDefault();
-          setMentionOpen(false);
-          return;
-        }
-      }
-      if (slashOpen) {
-        const filtered = getFilteredSlashCommands(
-          slashQuery,
-          {
-            isFree,
-            isHome: isNewChatInput,
-          },
-          customSlashCommands
-        );
-        if (e.key === "ArrowDown") {
-          e.preventDefault();
-          setSlashIndex((i) => Math.min(i + 1, filtered.length - 1));
-          return;
-        }
-        if (e.key === "ArrowUp") {
-          e.preventDefault();
-          setSlashIndex((i) => Math.max(i - 1, 0));
-          return;
-        }
-        if (e.key === "Enter" || e.key === "Tab") {
-          e.preventDefault();
-          if (filtered[slashIndex]) {
-            handleSlashSelect(filtered[slashIndex]);
-          }
-          return;
-        }
-        if (e.key === "Escape") {
-          e.preventDefault();
-          setSlashOpen(false);
-          return;
-        }
-      }
-      if (e.key === "Backspace" && !e.metaKey && !e.ctrlKey && !e.altKey) {
-        const target = e.currentTarget;
-        const { value, selectionStart } = target;
-        if (
-          selectionStart === target.selectionEnd &&
-          selectionStart !== null &&
-          selectionStart > 0
-        ) {
-          const before = value.slice(0, selectionStart);
-          const match = before.match(MENTION_TOKEN_RE);
-          if (match) {
-            e.preventDefault();
-            const token = match[1];
-            const deleteFrom = selectionStart - match[0].length;
-            setInput(
-              `${before.slice(0, deleteFrom)}${value.slice(selectionStart)}`
-            );
-            requestAnimationFrame(() => {
-              try {
-                target.setSelectionRange(deleteFrom, deleteFrom);
-              } catch {}
-            });
-
-            deactivateMentionToken({
-              activeAgent,
-              activeSkill,
-              clearActiveAgent,
-              clearActiveSkill,
-              clearPendingProject,
-              pendingProject,
-              pendingTools,
-              plugins: installedPlugins,
-              togglePendingTool,
-              token,
-              userMcpServers,
-            });
-          }
-        }
-      }
-      if (e.key === "Escape" && editingMessage && onCancelEdit) {
-        e.preventDefault();
+    (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      if (event.key === "Escape" && editingMessage && onCancelEdit) {
+        event.preventDefault();
         onCancelEdit();
+        return;
       }
+      handleSharedTextareaKeyDown(event);
     },
-    [
-      activeAgent,
-      activeSkill,
-      clearActiveAgent,
-      clearActiveSkill,
-      clearPendingProject,
-      customMentionCommands,
-      customSlashCommands,
-      editingMessage,
-      handleSlashSelect,
-      handleMentionSelect,
-      installedPlugins,
-      isFree,
-      isNewChatInput,
-      onCancelEdit,
-      pendingProject,
-      pendingTools,
-      setInput,
-      slashIndex,
-      slashOpen,
-      slashQuery,
-      mentionOpen,
-      mentionQuery,
-      mentionIndex,
-      projects,
-      userAgents,
-      userSkills,
-      userMcpServers,
-      togglePendingTool,
-    ]
+    [editingMessage, handleSharedTextareaKeyDown, onCancelEdit]
   );
 
-  // Close menus on blur after delay
+  // Le hook partagé gère la fermeture retardée après blur.
   const handleTextareaBlur = useCallback(() => {
-    setTimeout(() => {
-      setSlashOpen(false);
-      setMentionOpen(false);
-    }, 150);
-  }, []);
+    closeMenus();
+  }, [closeMenus]);
 
   return (
     <div
@@ -1048,8 +818,9 @@ function PureMultimodalInput({
       <div className="relative">
         {slashOpen ? (
           <SlashCommandMenu
-            context={{ isFree, isHome: isNewChatInput }}
+            context={{ isFree, isHome: isNewChatInput, mode: "chat" }}
             customCommands={customSlashCommands}
+            id={slashMenuId}
             onClose={handleSlashClose}
             onSelect={handleSlashSelect}
             query={slashQuery}
@@ -1061,6 +832,7 @@ function PureMultimodalInput({
           <MentionMenu
             agents={userAgents as any}
             customCommands={customMentionCommands}
+            id={mentionMenuId}
             isLoadingProjects={isProjectsLoading}
             mcpServers={userMcpServers}
             memoryAtLimit={memoryAtLimit}
@@ -1161,8 +933,8 @@ function PureMultimodalInput({
                 : ""
             )}
             data-testid="multimodal-input"
+            {...textareaProps}
             onBlur={handleTextareaBlur}
-            onChange={handleInput}
             onKeyDown={handleTextareaKeyDown}
             onScroll={(e) => {
               if (overlayRef.current) {

@@ -41,6 +41,7 @@ import {
   isModelAllowedForUser,
   pickDefaultAgentModel,
 } from "@/lib/ai/registry";
+import { toAgentToolId } from "@/lib/ai/tools/ids";
 import { isPaidTier } from "@/lib/auth/plan";
 import { buildMemoryContext } from "@/lib/chat/memory";
 import { startOccurrence } from "@/lib/db/agent-foundation-queries";
@@ -54,9 +55,11 @@ import {
 } from "@/lib/db/agent-queries";
 import { getUserApiKey } from "@/lib/db/api-keys";
 import {
+  getAgentById,
   getChatById,
   getMcpServersByUserId,
   getMessagesByChatId,
+  getSkillById,
   getWeeklyAiTokenUsage,
   saveChat,
   saveMessages,
@@ -282,12 +285,57 @@ export async function executeScheduledRun(params: {
     ...listRegisteredAgentTools(),
     ...pluginAgentContext.tools,
   ];
+  const scheduledAgent = schedule.agentId
+    ? await getAgentById({ id: schedule.agentId, userId }).catch(() => null)
+    : null;
+  const scheduledMcpServerIds = Array.isArray(scheduledAgent?.mcpServerIds)
+    ? (scheduledAgent.mcpServerIds as string[])
+    : [];
+  const scheduledSkillIds = Array.isArray(scheduledAgent?.skillIds)
+    ? (scheduledAgent.skillIds as string[]).filter(
+        (skillId) => typeof skillId === "string"
+      )
+    : [];
+  const scheduledSkills = await Promise.all(
+    scheduledSkillIds.map((skillId) =>
+      getSkillById({ id: skillId, userId }).catch(() => null)
+    )
+  );
+  const scheduledSkillInstructions = scheduledSkills
+    .map((skill) => skill?.instructions?.trim())
+    .filter((instructions): instructions is string => Boolean(instructions));
+  const scheduledSkillToolIds = new Set(
+    scheduledSkills
+      .flatMap((skill) =>
+        Array.isArray(skill?.tools) ? (skill.tools as string[]) : []
+      )
+      .filter((toolId) => toolId !== "mcp")
+      .map((toolId) => toAgentToolId(toolId) ?? toolId)
+  );
+  const scheduledSkillMcpServerIds = Array.from(
+    new Set(
+      scheduledSkills.flatMap((skill) =>
+        Array.isArray(skill?.mcpServerIds)
+          ? (skill.mcpServerIds as string[])
+          : []
+      )
+    )
+  );
+  const effectiveMcpServerIds = Array.from(
+    new Set([...scheduledMcpServerIds, ...scheduledSkillMcpServerIds])
+  );
   const baselineTools: RegisteredAgentTool[] = filterToolsByFlags(
     flags["agent.mcp"]
       ? [
           ...registeredTools,
           ...(await getMcpServersByUserId({ userId })
-            .then((servers) => listMcpAgentTools({ servers, userId }))
+            .then((servers) =>
+              listMcpAgentTools({
+                serverIds: effectiveMcpServerIds,
+                servers,
+                userId,
+              })
+            )
             .catch(() => [])),
         ]
       : registeredTools,
@@ -330,6 +378,14 @@ export async function executeScheduledRun(params: {
       if (!selectedTools.some((tool) => tool.id === toolId)) {
         const forced = baselineTools.find((tool) => tool.id === toolId);
         if (forced) selectedTools = [...selectedTools, forced];
+      }
+    }
+    for (const tool of baselineTools) {
+      if (
+        scheduledSkillToolIds.has(tool.id) &&
+        !selectedTools.some((selected) => selected.id === tool.id)
+      ) {
+        selectedTools = [...selectedTools, tool];
       }
     }
   }
@@ -419,7 +475,7 @@ export async function executeScheduledRun(params: {
     project: projectContext,
     reasoningLevel: schedule.config.reasoningLevel,
     sessionToken: SCHEDULED_SESSION_SENTINEL,
-    skillInstructions: null,
+    skillInstructions: scheduledSkillInstructions.join("\n\n") || null,
     task,
     userId,
     userInstructions: null,

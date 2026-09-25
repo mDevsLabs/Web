@@ -59,6 +59,26 @@ export const FALLBACK_MODELS: ChatModel[] = [
       modality: "text->text",
       output_modalities: ["text"],
     },
+    description: "Modèle de texte Poolside compatible avec les outils Agent",
+    id: "poolside/laguna-xs-2.1:free",
+    isFree: true,
+    name: "Laguna XS 2.1",
+    provider: "poolside",
+    supported_parameters: [
+      "temperature",
+      "top_p",
+      "max_tokens",
+      "tools",
+      "tool_choice",
+      "response_format",
+    ],
+  },
+  {
+    architecture: {
+      input_modalities: ["text"],
+      modality: "text->text",
+      output_modalities: ["text"],
+    },
     description: "Modèle open-source de pointe par Meta",
     id: "meta-llama/llama-3.3-70b-instruct:free",
     isFree: true,
@@ -205,8 +225,16 @@ export function getModelCapabilities(
     (model as any)?.modality ||
     ""
   ).toLowerCase();
-  const supportedParams: string[] =
+  const rawSupportedParams =
     model.supported_parameters || (model as any)?.supported_parameters || [];
+  const supportedParams: string[] = Array.isArray(rawSupportedParams)
+    ? rawSupportedParams
+        .filter(
+          (parameter): parameter is string => typeof parameter === "string"
+        )
+        .map((parameter) => parameter.trim().toLowerCase())
+        .filter(Boolean)
+    : [];
 
   const hasArchitecture = inputModalities.length > 0 || modality.length > 0;
 

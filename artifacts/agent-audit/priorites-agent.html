@@ -1,1 +1,43 @@
-<div id="agent-roadmap" role="img" aria-label="Priorisation des recommandations Agent en trois étapes : fiabilité, garde-fous, évolutions" style="font-family:Arial,sans-serif;color:#14243a;max-width:100%;padding:20px 4px"><h2 style="font-size:20px;margin:0 0 6px">Parcours de remédiation Agent</h2><p style="margin:0 0 18px;color:#526174">Ordre conseillé pour fiabiliser les exécutions puis élargir les capacités.</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px"><section style="border-top:5px solid #b42318;padding:12px 4px"><h3>P0 · Fiabilité</h3><p>Corriger maintenant</p><ul><li>Aligner modèle planifié et capacités réellement résolues</li><li>Verrouiller atomiquement la création/reprise d’un run</li></ul></section><section style="border-top:5px solid #b54708;padding:12px 4px"><h3>P1 · Garde-fous</h3><p>Durcir le parcours</p><ul><li>Valider les types de fichiers selon les capacités modèle</li><li>Borner les ticks cron et gérer les leases expirées</li></ul></section><section style="border-top:5px solid #175cd3;padding:12px 4px"><h3>P2 · Évolution</h3><p>Améliorer ensuite</p><ul><li>Observabilité des checkpoints et du scheduler</li><li>Reprise manuelle guidée, historique des versions</li><li>Évaluation qualité, coûts et taux de succès</li></ul></section></div><p style="font-size:13px;color:#526174">P0 priorité immédiate · P1 avant élargissement Alpha · P2 feuille de route</p></div>
+<div
+  aria-label="Priorisation des recommandations Agent en trois étapes : fiabilité, garde-fous, évolutions"
+  id="agent-roadmap"
+  role="img"
+  style="font-family:Arial,sans-serif;color:#14243a;max-width:100%;padding:20px 4px"
+>
+  <h2 style="font-size:20px;margin:0 0 6px">Parcours de remédiation Agent</h2>
+  <p style="margin:0 0 18px;color:#526174">
+    Ordre conseillé pour fiabiliser les exécutions puis élargir les capacités.
+  </p>
+  <div
+    style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px"
+  >
+    <section style="border-top:5px solid #b42318;padding:12px 4px">
+      <h3>P0 · Fiabilité</h3>
+      <p>Corriger maintenant</p>
+      <ul>
+        <li>Aligner modèle planifié et capacités réellement résolues</li>
+        <li>Verrouiller atomiquement la création/reprise d’un run</li>
+      </ul>
+    </section>
+    <section style="border-top:5px solid #b54708;padding:12px 4px">
+      <h3>P1 · Garde-fous</h3>
+      <p>Durcir le parcours</p>
+      <ul>
+        <li>Valider les types de fichiers selon les capacités modèle</li>
+        <li>Borner les ticks cron et gérer les leases expirées</li>
+      </ul>
+    </section>
+    <section style="border-top:5px solid #175cd3;padding:12px 4px">
+      <h3>P2 · Évolution</h3>
+      <p>Améliorer ensuite</p>
+      <ul>
+        <li>Observabilité des checkpoints et du scheduler</li>
+        <li>Reprise manuelle guidée, historique des versions</li>
+        <li>Évaluation qualité, coûts et taux de succès</li>
+      </ul>
+    </section>
+  </div>
+  <p style="font-size:13px;color:#526174">
+    P0 priorité immédiate · P1 avant élargissement Alpha · P2 feuille de route
+  </p>
+</div>

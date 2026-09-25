@@ -6,6 +6,10 @@ import {
   getMcpServerByTemplateId,
   getUserMcpPrefs,
 } from "@/lib/db/queries";
+import {
+  assertMcpRuntimeEnabled,
+  toMcpRuntimePreferences,
+} from "@/lib/mcp/policy";
 import { getMcpTemplate } from "./catalog";
 import type { McpTemplateManifest } from "./types";
 
@@ -90,6 +94,13 @@ export async function installMcpTemplate(params: {
       ok: false,
     };
   }
+  if (template.activation === "requires_vetted_stdio") {
+    return {
+      code: "conflict",
+      message: `« ${template.name} » nécessite un wrapper MCP stdio vérifié par l'infrastructure. L'exécution de « ${template.command ?? "npx"} » est volontairement désactivée.`,
+      ok: false,
+    };
+  }
 
   try {
     const prefs = await getUserMcpPrefs(params.userId);
@@ -107,9 +118,37 @@ export async function installMcpTemplate(params: {
         ok: false,
       };
     }
+
+    try {
+      assertMcpRuntimeEnabled(
+        {
+          args: splitTemplateArgs(template.args),
+          command: template.command,
+          env: template.env,
+          isEnabled: true,
+          transport: template.transport,
+        },
+        toMcpRuntimePreferences(prefs)
+      );
+    } catch (error) {
+      return {
+        code: "access_denied",
+        message:
+          error instanceof Error
+            ? error.message
+            : "Configuration MCP refusée par la politique de sécurité.",
+        ok: false,
+      };
+    }
   } catch {
-    // Préférences indisponibles : la création se poursuit (aucune capacité
-    // supplémentaire n'est accordée par ce chemin).
+    // Fail closed : sans lecture des préférences, on ne peut pas affirmer que
+    // le kill-switch ou le veto stdio est respecté.
+    return {
+      code: "internal_error",
+      message:
+        "Impossible de vérifier les préférences MCP. Réessayez dans un instant.",
+      ok: false,
+    };
   }
 
   // Installation idempotente : un serveur déjà issu de ce modèle est réutilisé

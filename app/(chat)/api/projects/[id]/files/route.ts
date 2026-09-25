@@ -266,11 +266,23 @@ export async function DELETE(
     // Suppression du stockage cloud (best effort) : le fichier appartient au
     // compte du membre qui l'a téléversé.
     const token = await getMaiSessionToken();
-    if (token && file.fileRef) {
-      await fetch(`${MAI_API_URL}/cloud/files/${file.fileRef}`, {
-        headers: { Authorization: `Bearer ${token}` },
-        method: "DELETE",
-      }).catch(() => null);
+    if (file.fileRef && !token) {
+      throw new Error("Session requise pour supprimer le fichier cloud.");
+    }
+    if (file.fileRef) {
+      const remoteDelete = await fetch(
+        `${MAI_API_URL}/cloud/files/${file.fileRef}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+          method: "DELETE",
+        }
+      ).catch(() => null);
+      if (remoteDelete && !remoteDelete.ok && remoteDelete.status !== 404) {
+        throw new Error("Suppression cloud refusée.");
+      }
+      if (!remoteDelete) {
+        throw new Error("Suppression cloud indisponible.");
+      }
     }
     await deleteProjectFile({ id: fileId });
     return Response.json({ success: true });

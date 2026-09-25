@@ -33,10 +33,10 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { DEFAULT_CHAT_MODEL, FALLBACK_MODELS } from "@/lib/ai/models";
 import { TOOL_IDS, TOOLS_META, type ToolId } from "@/lib/ai/tools/config";
-import { PLUGIN_TOOL_IDS } from "@/lib/plugins/catalog";
-import type { PluginCatalogEntry } from "@/lib/plugins/types";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { Agent, ScheduledMessage } from "@/lib/db/schema";
+import { PLUGIN_TOOL_IDS } from "@/lib/plugins/catalog";
+import type { PluginCatalogEntry } from "@/lib/plugins/types";
 import { cn, fetcher } from "@/lib/utils";
 
 interface ScheduleDialogProps {
@@ -529,7 +529,8 @@ export function ScheduleDialog({
                   tid !== "updateAccountProfile" &&
                   tid !== "getAccountUsage" &&
                   tid !== "updateProfilePicture" &&
-                  (!PLUGIN_TOOL_IDS.includes(tid) || activePluginToolIds.has(tid))
+                  (!PLUGIN_TOOL_IDS.includes(tid) ||
+                    activePluginToolIds.has(tid))
               ).map((tid) => {
                 const meta = TOOLS_META[tid];
                 const active = enabledTools.includes(tid);

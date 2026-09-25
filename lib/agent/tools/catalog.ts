@@ -43,7 +43,11 @@ export const AGENT_TOOL_CATALOG: Record<string, AgentToolMetadata> = {
       "Enregistre un livrable déjà créé dans un projet de l'utilisateur, pour que le résultat reste consultable avec le reste du projet. Exige un accord explicite : la demande précise le livrable et le projet.",
     id: "attach_to_project",
     name: "Ajouter un résultat au projet",
-    permissions: { default: "ask", impact: "external_mutation", readOnly: false },
+    permissions: {
+      default: "ask",
+      impact: "external_mutation",
+      readOnly: false,
+    },
   },
   create_artifact: {
     availability: {
@@ -108,7 +112,11 @@ export const AGENT_TOOL_CATALOG: Record<string, AgentToolMetadata> = {
       "Gère la mémoire personnalisée de l'utilisateur : ajouter (add), supprimer (delete), lister (list) ou rechercher (search) des informations durables le concernant (préférences, faits, contexte). Utilise cet outil quand l'utilisateur demande de retenir, d'oublier ou de retrouver des informations mémorisées.",
     id: "manage_memory",
     name: "Gérer la mémoire",
-    permissions: { default: "ask", impact: "external_mutation", readOnly: false },
+    permissions: {
+      default: "ask",
+      impact: "external_mutation",
+      readOnly: false,
+    },
   },
   read_file: {
     availability: {

@@ -48,9 +48,10 @@ export async function buildPromptAddendum(
   if (ctx.skillInstructions) {
     effectiveAddendum = `${effectiveAddendum}\n\nCOMPETENCE / SKILL ACTIF POUR CETTE DISCUSSION :\n${ctx.skillInstructions}`;
   }
-  // Skills/MCP embarqués dans l'agent (fusion avec skill actif + one-shot)
-  if (ctx.agentSkillIds.length > 0 && !ctx.skillInstructions) {
-    // Si agent a des skills mais pas de skill actif, on concatène leurs instructions (optionnel lazy)
+  // Skills associés à l'Agent : leurs instructions font partie du contexte
+  // même lorsqu'aucun Skill n'est sélectionné pour la discussion courante.
+  if (ctx.agentSkillInstructions.length > 0) {
+    effectiveAddendum = `${effectiveAddendum}\n\nSKILLS DE L'AGENT ACTIF :\n${ctx.agentSkillInstructions.join("\n\n")}`;
   }
   if (ctx.isGhostMode) {
     effectiveAddendum += `\n\nMODE FANTÔME ACTIF : Cette discussion est éphémère et confidentielle (non enregistrée). L'outil de génération d'image et l'outil de modification de profil sont strictement indisponibles dans ce mode.`;

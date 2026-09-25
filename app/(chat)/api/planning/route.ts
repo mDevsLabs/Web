@@ -6,6 +6,7 @@ import {
   createScheduledMessage,
   getScheduledMessagesByUserId,
 } from "@/lib/db/queries";
+import { requireOwnedPlanningChat } from "@/lib/planning/chat-access";
 
 const createSchema = z.object({
   agentId: z.string().uuid().nullable().optional(),
@@ -30,7 +31,12 @@ export async function GET(request: Request) {
 
   const { searchParams } = new URL(request.url);
   const status = searchParams.get("status") || "all";
-  const userId = user.id || user.email;
+  const userId = user.id;
+  if (!userId) {
+    return errorResponse("auth_required", {
+      message: "Session utilisateur invalide.",
+    });
+  }
 
   const messages = await getScheduledMessagesByUserId({
     status,
@@ -49,7 +55,26 @@ export async function POST(request: Request) {
   try {
     const json = await request.json();
     const parsed = createSchema.parse(json);
-    const userId = user.id || user.email;
+    const userId = user.id;
+    if (!userId) {
+      return errorResponse("auth_required", {
+        message: "Session utilisateur invalide.",
+      });
+    }
+
+    if (parsed.chatId) {
+      const access = await requireOwnedPlanningChat({
+        chatId: parsed.chatId,
+        user,
+      });
+      if (access.response) {
+        return access.response;
+      }
+    } else if (parsed.createMode === "existing_chat") {
+      return errorResponse("invalid_request", {
+        message: "Une conversation existante doit être sélectionnée.",
+      });
+    }
 
     const scheduledDate = new Date(parsed.scheduledAt);
     if (Number.isNaN(scheduledDate.getTime())) {

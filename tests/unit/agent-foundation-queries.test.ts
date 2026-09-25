@@ -1,5 +1,5 @@
-import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { randomUUID } from "node:crypto";
+import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 
 // Tests d'intégration des fondations Agent (base requise). Exécution
 // conditionnelle : ils ne tournent que si AGENT_IT_DATABASE_URL (ou
@@ -96,62 +96,156 @@ describe.skipIf(!RUN_DB_TESTS)("Fondations Agent — intégration base", () => {
   });
 
   it("met à jour config atomiquement et conserve les versions lors d'une édition concurrente", async () => {
-    const { createAgentSchedule, mutateAgentSchedule, getAgentScheduleById, listScheduleVersions, ensureOccurrence } = await import("@/lib/db/agent-foundation-queries");
+    const {
+      createAgentSchedule,
+      mutateAgentSchedule,
+      getAgentScheduleById,
+      listScheduleVersions,
+      ensureOccurrence,
+    } = await import("@/lib/db/agent-foundation-queries");
     const userId = `it-versions-${Date.now()}`;
     const schedule = await createAgentSchedule({
-      agentId: null, config: { autonomy: "standard", enabledCategories: null, reasoningLevel: "medium" },
-      instructions: "Version initiale", modelId: "google/gemini-2.5-flash",
-      nextDueAt: new Date(Date.now() + 3_600_000), projectId: null,
-      rule: { kind: "once" }, timezone: "Europe/Paris", title: "IT — versions", userId,
+      agentId: null,
+      config: {
+        autonomy: "standard",
+        enabledCategories: null,
+        reasoningLevel: "medium",
+      },
+      instructions: "Version initiale",
+      modelId: "google/gemini-2.5-flash",
+      nextDueAt: new Date(Date.now() + 3_600_000),
+      projectId: null,
+      rule: { kind: "once" },
+      timezone: "Europe/Paris",
+      title: "IT — versions",
+      userId,
     });
     const [first, second] = await Promise.all([
-      mutateAgentSchedule({ id: schedule.id, userId, expectedRevision: schedule.revision, mutation: { action: "update", patch: { autonomy: "high", reasoningLevel: "high", enabledCategories: ["web"] } } }),
-      mutateAgentSchedule({ id: schedule.id, userId, expectedRevision: schedule.revision, mutation: { action: "update", patch: { title: "Concurrent" } } }),
+      mutateAgentSchedule({
+        expectedRevision: schedule.revision,
+        id: schedule.id,
+        mutation: {
+          action: "update",
+          patch: {
+            autonomy: "high",
+            enabledCategories: ["web"],
+            reasoningLevel: "high",
+          },
+        },
+        userId,
+      }),
+      mutateAgentSchedule({
+        expectedRevision: schedule.revision,
+        id: schedule.id,
+        mutation: { action: "update", patch: { title: "Concurrent" } },
+        userId,
+      }),
     ]);
     expect(Number(first) + Number(second)).toBe(1);
     const updated = await getAgentScheduleById({ id: schedule.id, userId });
     expect(updated?.revision).toBe(schedule.revision + 1);
-    if (first) expect(updated?.config).toEqual({ autonomy: "high", enabledCategories: ["web"], reasoningLevel: "high" });
+    if (first)
+      expect(updated?.config).toEqual({
+        autonomy: "high",
+        enabledCategories: ["web"],
+        reasoningLevel: "high",
+      });
     const versions = await listScheduleVersions({ scheduleId: schedule.id });
     expect(versions).toHaveLength(2);
-    expect(versions.find((item) => item.revision === schedule.revision)?.snapshot.config).toEqual(schedule.config);
-    const occurrence = await ensureOccurrence({ scheduleId: schedule.id, dueAt: schedule.nextDueAt });
+    expect(
+      versions.find((item) => item.revision === schedule.revision)?.snapshot
+        .config
+    ).toEqual(schedule.config);
+    const occurrence = await ensureOccurrence({
+      dueAt: schedule.nextDueAt,
+      scheduleId: schedule.id,
+    });
     expect(occurrence?.scheduleVersionId).toBe(versions[0].id);
   });
 
   it("garantit un seul run actif, un message idempotent et une seule réservation", async () => {
     const { saveChat, deleteChatById } = await import("@/lib/db/queries");
-    const { createAgentRun, getAgentRunByMessageId, getAgentRunById, claimAgentRunExecution, releaseAgentRunExecution, updateAgentRunStatus } = await import("@/lib/db/agent-queries");
+    const {
+      createAgentRun,
+      getAgentRunByMessageId,
+      getAgentRunById,
+      claimAgentRunExecution,
+      releaseAgentRunExecution,
+      updateAgentRunStatus,
+    } = await import("@/lib/db/agent-queries");
     const chatId = randomUUID();
     const userId = `it-run-${Date.now()}`;
-    await saveChat({ id: chatId, userId, title: "IT — concurrence Agent", visibility: "private", mode: "agent" });
+    await saveChat({
+      id: chatId,
+      mode: "agent",
+      title: "IT — concurrence Agent",
+      userId,
+      visibility: "private",
+    });
     try {
-      const base = { autonomy: "standard" as const, budget: { maxDurationMs: 240_000, maxRetries: 0, maxSteps: 5, maxToolCalls: 5 }, chatId, model: "google/gemini-2.5-flash", reasoningLevel: "medium" as const, toolPolicySnapshot: {}, userId };
+      const base = {
+        autonomy: "standard" as const,
+        budget: {
+          maxDurationMs: 240_000,
+          maxRetries: 0,
+          maxSteps: 5,
+          maxToolCalls: 5,
+        },
+        chatId,
+        model: "google/gemini-2.5-flash",
+        reasoningLevel: "medium" as const,
+        toolPolicySnapshot: {},
+        userId,
+      };
       const firstId = randomUUID();
       const secondId = randomUUID();
       const creates = await Promise.allSettled([
         createAgentRun({ ...base, messageId: firstId }),
         createAgentRun({ ...base, messageId: secondId }),
       ]);
-      expect(creates.filter((result) => result.status === "fulfilled")).toHaveLength(1);
+      expect(
+        creates.filter((result) => result.status === "fulfilled")
+      ).toHaveLength(1);
       const winner = creates.find((result) => result.status === "fulfilled");
-      if (!winner || winner.status !== "fulfilled") throw new Error("Aucun run créé");
+      if (!winner || winner.status !== "fulfilled")
+        throw new Error("Aucun run créé");
       const run = winner.value;
-      expect((await getAgentRunByMessageId({ chatId, messageId: run.messageId as string }))?.id).toBe(run.id);
+      expect(
+        (
+          await getAgentRunByMessageId({
+            chatId,
+            messageId: run.messageId as string,
+          })
+        )?.id
+      ).toBe(run.id);
       const claims = await Promise.all([
         claimAgentRunExecution({ id: run.id, owner: "worker-a" }),
         claimAgentRunExecution({ id: run.id, owner: "worker-b" }),
       ]);
       expect(claims.filter(Boolean)).toHaveLength(1);
-      await releaseAgentRunExecution({ id: run.id, owner: claims[0] ? "worker-a" : "worker-b" });
-      await updateAgentRunStatus({ id: run.id, status: "timed_out", completedAt: new Date(), stopReason: "duration_limit" });
+      await releaseAgentRunExecution({
+        id: run.id,
+        owner: claims[0] ? "worker-a" : "worker-b",
+      });
+      await updateAgentRunStatus({
+        completedAt: new Date(),
+        id: run.id,
+        status: "timed_out",
+        stopReason: "duration_limit",
+      });
       const parentBefore = await getAgentRunById({ id: run.id, userId });
-      const resumed = await createAgentRun({ ...base, messageId: randomUUID(), parentRunId: run.id });
+      const resumed = await createAgentRun({
+        ...base,
+        messageId: randomUUID(),
+        parentRunId: run.id,
+      });
       expect(resumed.parentRunId).toBe(run.id);
       const parentAfter = await getAgentRunById({ id: run.id, userId });
       expect(parentAfter?.stepCount).toBe(parentBefore?.stepCount);
       expect(parentAfter?.toolCallCount).toBe(parentBefore?.toolCallCount);
-    } finally { await deleteChatById({ id: chatId }); }
+    } finally {
+      await deleteChatById({ id: chatId });
+    }
   });
 });
 

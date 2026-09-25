@@ -6,6 +6,7 @@
 import { z } from "zod";
 import { errorResponse } from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
+import { toMcpServerDto } from "@/lib/mcp/dto";
 import { installMcpTemplate } from "@/lib/mcp-templates/install";
 
 export async function POST(request: Request) {
@@ -39,7 +40,7 @@ export async function POST(request: Request) {
       alreadyInstalled: result.alreadyInstalled,
       message: result.message,
       requiresConfiguration: result.requiresConfiguration,
-      server: result.server,
+      server: toMcpServerDto(result.server),
       template: result.template.name,
     },
     { status: result.alreadyInstalled ? 200 : 201 }

@@ -228,7 +228,7 @@ export function PendingToolsChips({
           const meta = TOOLS_META[tid as ToolId];
           label = plugin
             ? `${plugin.name} · ${plugin.tools.find((tool) => tool.id === tidStr)?.label ?? tidStr}`
-            : meta?.label ?? tidStr;
+            : (meta?.label ?? tidStr);
           IconComponent = plugin ? null : meta?.icon;
         }
         return (

@@ -21,6 +21,7 @@ import {
 } from "./config.ts";
 import { createRegisterMulti } from "./vibe-common.ts";
 import { MAIAgentFleet } from "./vibe-mai-fleet.ts";
+import { visibilityFilter } from "./vibe-posts-core.ts";
 
 const TEXT_ACTIONS = new Set([
   "complete",
@@ -307,6 +308,21 @@ export function registerVibeAIRoutes(app: Hono) {
       const sql = getDb();
       await ensureTranslationsTable().catch(() => {});
 
+      // Vérifie l'accès AVANT de lire le cache ou d'envoyer le contenu à l'IA.
+      // Une traduction en cache ne doit pas contourner la visibilité du post.
+      const postRows = await sql`
+        SELECT p.content
+        FROM posts p
+        WHERE p.id = ${postId}::uuid
+          AND COALESCE(p.status, 'published') = 'published'
+          ${visibilityFilter(userId)}
+        LIMIT 1
+      `;
+      if (postRows.length === 0)
+        return c.json({ error: "Publication introuvable." }, 404);
+      const content = String(postRows[0].content || "").trim();
+      if (!content) return c.json({ error: "Publication vide." }, 400);
+
       // 1. Cache : traduction déjà générée pour ce post + langue cible
       try {
         const cachedRows = await sql`
@@ -325,13 +341,6 @@ export function registerVibeAIRoutes(app: Hono) {
       } catch {}
 
       // 2. Génération : détection de langue + traduction en un seul appel
-      const postRows =
-        await sql`SELECT content FROM posts WHERE id = ${postId}::uuid LIMIT 1`;
-      if (postRows.length === 0)
-        return c.json({ error: "Publication introuvable." }, 404);
-      const content = String(postRows[0].content || "").trim();
-      if (!content) return c.json({ error: "Publication vide." }, 400);
-
       const altTarget = targetLang.slice(0, 2) === "FR" ? "EN-US" : "FR";
       const system =
         "Tu es le moteur de traduction du réseau social Vibe. On te donne une publication. " +

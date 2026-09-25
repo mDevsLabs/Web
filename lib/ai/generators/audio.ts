@@ -1,6 +1,7 @@
 import "server-only";
 
 import { MAI_API_URL } from "@/lib/constants";
+import { getUserPreferences } from "@/lib/db/queries";
 
 // Cœur de synthèse vocale, extrait de l'outil du Chat
 // (lib/ai/tools/audio-generate.ts) pour être partagé avec Agent sans
@@ -77,34 +78,20 @@ export async function generateAudioViaMai(params: {
       );
     }
 
-    // Préférences utilisateur : modèle, voix et vitesse par défaut.
+    // Préférences utilisateur : lecture directe en base, sans fetch relatif
+    // depuis un module serveur.
     let targetModel = "deepgram/flux-tts:free";
     let targetVoice = params.request.voice || "flux-alexis-en";
     let targetSpeed = params.request.speed || 1.0;
-    try {
-      const prefRes = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      if (prefRes.ok) {
-        const prefs = (await prefRes.json()) as {
-          defaultAudioModel?: string;
-          defaultAudioSpeed?: number;
-          defaultAudioVoice?: string;
-        };
-        if (prefs.defaultAudioModel) {
-          targetModel = prefs.defaultAudioModel;
-        }
-        if (!params.request.voice && prefs.defaultAudioVoice) {
-          targetVoice = prefs.defaultAudioVoice;
-        }
-        if (!params.request.speed && prefs.defaultAudioSpeed) {
-          targetSpeed = prefs.defaultAudioSpeed;
-        }
-      }
-    } catch (prefError) {
-      // Repli volontaire : préférences indisponibles → valeurs par défaut.
-      console.warn("Préférences audio illisibles:", prefError);
+    const prefs = await getUserPreferences(params.userId).catch(() => null);
+    if (prefs?.defaultAudioModel) {
+      targetModel = prefs.defaultAudioModel;
+    }
+    if (!params.request.voice && prefs?.defaultAudioVoice) {
+      targetVoice = prefs.defaultAudioVoice;
+    }
+    if (!params.request.speed && prefs?.defaultAudioSpeed) {
+      targetSpeed = prefs.defaultAudioSpeed;
     }
 
     const res = await fetch(`${MAI_API_URL}/v1/audio/speech`, {

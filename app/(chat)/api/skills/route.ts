@@ -29,7 +29,9 @@ const createSkillSchema = z.object({
         enumValues: z.array(z.string()).optional(),
         name: z.string().min(1).max(50),
         required: z.boolean().optional(),
-        type: z.enum(["string", "number", "boolean", "enum"]).optional(),
+        type: z
+          .enum(["string", "number", "integer", "boolean", "enum"])
+          .optional(),
       })
     )
     .optional(),

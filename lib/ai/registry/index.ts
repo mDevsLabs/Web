@@ -136,10 +136,11 @@ export function contextWindowFor(
 // Modèles utilisables par Agent : compatibilité complète outillage requise
 // (définitions, ToolCalls structurés, continuation après ToolResult).
 export function isAgentCompatible(entry: AgentModelEntry): boolean {
-  return (
-    entry.agentCompatibility.toolDefinitions &&
-    entry.agentCompatibility.structuredToolCalls &&
-    entry.agentCompatibility.continuationAfterToolResult
+  return Boolean(
+    entry.capabilities.tools &&
+      entry.agentCompatibility?.toolDefinitions &&
+      entry.agentCompatibility?.structuredToolCalls &&
+      entry.agentCompatibility?.continuationAfterToolResult
   );
 }
 

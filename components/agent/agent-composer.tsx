@@ -35,6 +35,7 @@ import {
   type SharedModel,
 } from "@/components/chat/model-selector-compact";
 import { PreviewAttachment } from "@/components/chat/preview-attachment";
+import { SkillParamsDialog } from "@/components/chat/skill-params-dialog";
 import {
   type SlashCommand,
   SlashCommandMenu,
@@ -90,6 +91,7 @@ export function AgentComposer({
   flags,
   isRunning,
   modelId,
+  modelIsCompatible = true,
   models,
   onModelChange,
   onOptionsChange,
@@ -105,6 +107,7 @@ export function AgentComposer({
   flags: AgentFlags;
   isRunning: boolean;
   modelId: string;
+  modelIsCompatible?: boolean;
   models: SharedModel[];
   onModelChange: (modelId: string) => void;
   onOptionsChange: (patch: Partial<AgentRequestOptions>) => void;
@@ -124,6 +127,7 @@ export function AgentComposer({
     AgentComposerActionId | "reasoning" | null
   >(null);
   const [isCloudPickerOpen, setIsCloudPickerOpen] = useState(false);
+  const [skillParamsDialogOpen, setSkillParamsDialogOpen] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const supportsFiles =
@@ -151,15 +155,26 @@ export function AgentComposer({
     flags["agent.reasoning"] && capabilities.reasoning
   );
 
-  // Données des menus @ : projets, skills, agents et serveurs MCP de
-  // l'utilisateur. Plugins et commandes personnalisées restent hors Agent
-  // (pas d'outils plugins exécutables à ce jour) — filtrés à la source.
+  // Données des menus @ : projets, skills, agents, plugins et serveurs MCP
+  // de l'utilisateur. Les effects de session sont retransmis dans la requête
+  // et revérifiés côté serveur.
   const { projects: allProjects } = useProjects();
   const { data: userSkills = [] } = useSWR<Skill[]>(
     "/api/skills",
     (url: string) => fetch(url).then((r) => r.json()),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
+  const selectedSkill = useMemo(
+    () => userSkills.find((skill) => skill.id === options.skillId) ?? null,
+    [options.skillId, userSkills]
+  );
+  const selectedSkillHasParams = useMemo(
+    () =>
+      Array.isArray((selectedSkill as any)?.parameters) &&
+      (selectedSkill as any).parameters.length > 0,
+    [selectedSkill]
+  );
+
   const { data: userAgents = [] } = useSWR<Agent[]>(
     "/api/agents",
     (url: string) => fetch(url).then((r) => r.json()),
@@ -180,7 +195,10 @@ export function AgentComposer({
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
   const userPlugins = useMemo(
-    () => (pluginData?.plugins ?? []).filter((plugin) => plugin.installed && plugin.enabled && !plugin.locked),
+    () =>
+      (pluginData?.plugins ?? []).filter(
+        (plugin) => plugin.installed && plugin.enabled && !plugin.locked
+      ),
     [pluginData]
   );
 
@@ -201,10 +219,29 @@ export function AgentComposer({
           toast.success(`Tâche reliée au projet : ${payload.project.name}`);
           break;
         case "skill":
+          onOptionsChange({
+            skillId: payload.skill.id,
+            skillParams: null,
+          });
           toast.success(`Compétence « ${payload.skill.name} » activée.`);
           break;
+        case "mcp": {
+          const serverId = payload.server.id;
+          const nextServerIds = options.mcpServerIds.includes(serverId)
+            ? options.mcpServerIds.filter((id) => id !== serverId)
+            : [...options.mcpServerIds, serverId];
+          onOptionsChange({ mcpServerIds: nextServerIds });
+          toast.success(
+            nextServerIds.includes(serverId)
+              ? `Serveur MCP « ${payload.server.name} » activé.`
+              : `Serveur MCP « ${payload.server.name} » désactivé.`
+          );
+          break;
+        }
         case "plugin":
-          toast.success(`Plugin « ${payload.plugin.name} » disponible pour cette tâche.`);
+          toast.success(
+            `Plugin « ${payload.plugin.name} » disponible pour cette tâche.`
+          );
           break;
         case "system":
           if (payload.action === "web") {
@@ -217,43 +254,16 @@ export function AgentComposer({
           }
           break;
         default:
-          // MCP et commandes personnalisées ne sont pas des mentions de tâche Agent.
+          // Les commandes personnalisées et les éléments non reconnus ne
+          // sont pas des actions de tâche Agent.
           toast.info(
             "Cet élément n'est pas encore pris en charge dans le mode Agent."
           );
           break;
       }
     },
-    [onOptionsChange, onProjectChange]
+    [onOptionsChange, onProjectChange, options.mcpServerIds]
   );
-
-  // Triggers @ et / : la logique (détection, navigation clavier, insertion de
-  // token) est partagée avec le Chat via useComposerTriggers. Les sélections
-  // sont traduites en options Agent (skill, agent/assistant, projet, mémoire,
-  // web) — le serveur revérifie tout.
-  const {
-    closeMenus,
-    handleMentionSelect: insertMentionToken,
-    handleTextareaBlur,
-    handleTextareaKeyDown,
-    mentionIndex,
-    mentionOpen,
-    mentionQuery,
-    slashIndex,
-    slashOpen,
-    slashQuery,
-    textareaProps,
-  } = useComposerTriggers({
-    input,
-    mcpServers: userMcpServers,
-    onSuggestionSelect: handleMentionSelection,
-    projects: allProjects,
-    setInput,
-    skills: userSkills,
-    installedPlugins: userPlugins,
-    textareaRef,
-    userAgents,
-  });
 
   const handleSlashSelection = useCallback(
     (command: SlashCommand) => {
@@ -292,22 +302,133 @@ export function AgentComposer({
     [onOptionsChange, options.tasksEnabled]
   );
 
+  // Triggers @ et / : la logique (détection, navigation clavier, insertion de
+  // token) est partagée avec le Chat via useComposerTriggers. Les sélections
+  // sont traduites en options Agent (skill, agent/assistant, projet, mémoire,
+  // web) — le serveur revérifie tout.
+  const {
+    closeMenus,
+    handleMentionSelect: insertMentionToken,
+    mentionIndex,
+    mentionMenuId,
+    mentionOpen,
+    mentionQuery,
+    slashIndex,
+    slashMenuId,
+    slashOpen,
+    slashQuery,
+    textareaProps,
+  } = useComposerTriggers({
+    activeSkill:
+      userSkills.find((skill) => skill.id === options.skillId) ?? null,
+    clearActiveSkill: () =>
+      onOptionsChange({ skillId: null, skillParams: null }),
+    clearPendingProject: () => onProjectChange(null),
+    input,
+    installedPlugins: userPlugins,
+    isFree: false,
+    isNewChatInput: true,
+    mcpServers: userMcpServers,
+    mode: "agent",
+    onSlashCommand: handleSlashSelection,
+    onSuggestionSelect: handleMentionSelection,
+    pendingProject: project ? { name: project.name } : null,
+    pendingTools: options.mcpServerIds.map((serverId) => `mcp:${serverId}`),
+    projects: allProjects,
+    setInput,
+    skills: userSkills,
+    supportsTools: capabilities.tools,
+    textareaRef,
+    togglePendingTool: (toolId) => {
+      if (!toolId.startsWith("mcp:")) return;
+      const serverId = toolId.slice(4);
+      onOptionsChange({
+        mcpServerIds: options.mcpServerIds.includes(serverId)
+          ? options.mcpServerIds.filter((id) => id !== serverId)
+          : [...options.mcpServerIds, serverId],
+      });
+    },
+    userAgents,
+  });
+
+  const sendTask = useCallback(
+    (skillParams: Record<string, string> | null = options.skillParams) => {
+      const text = input.trim();
+      if (isRunning || (!text && attachments.length === 0)) {
+        return;
+      }
+      onSubmit({
+        attachments,
+        options: {
+          ...options,
+          projectId: project?.id ?? null,
+          skillParams,
+        },
+        text,
+      });
+      // Les Skills et serveurs MCP mentionnés sont one-shot : le snapshot
+      // envoyé ci-dessus conserve la requête, puis l'interface revient à zéro.
+      onOptionsChange({ mcpServerIds: [], skillId: null, skillParams: null });
+      setInput("");
+      setAttachments([]);
+      if (textareaRef.current) {
+        textareaRef.current.style.height = "auto";
+      }
+    },
+    [
+      attachments,
+      input,
+      isRunning,
+      onOptionsChange,
+      onSubmit,
+      options,
+      project?.id,
+    ]
+  );
+
   const submit = useCallback(() => {
     const text = input.trim();
     if (isRunning || (!text && attachments.length === 0)) {
       return;
     }
-    onSubmit({
-      attachments,
-      options: { ...options, projectId: project?.id ?? null },
-      text,
-    });
-    setInput("");
-    setAttachments([]);
-    if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
+    if (selectedSkillHasParams) {
+      setSkillParamsDialogOpen(true);
+      return;
     }
-  }, [attachments, input, isRunning, onSubmit, options, project?.id]);
+    sendTask();
+  }, [attachments.length, input, isRunning, selectedSkillHasParams, sendTask]);
+
+  const handleSkillParamsSubmit = useCallback(
+    (values: Record<string, string>) => {
+      setSkillParamsDialogOpen(false);
+      sendTask(values);
+    },
+    [sendTask]
+  );
+
+  const canSend =
+    modelIsCompatible && (input.trim().length > 0 || attachments.length > 0);
+
+  const handleTextareaKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      textareaProps.onKeyDown?.(event);
+      if (
+        event.defaultPrevented ||
+        event.key !== "Enter" ||
+        event.shiftKey ||
+        event.nativeEvent.isComposing ||
+        mentionOpen ||
+        slashOpen ||
+        !canSend
+      ) {
+        return;
+      }
+
+      event.preventDefault();
+      submit();
+    },
+    [canSend, mentionOpen, slashOpen, submit, textareaProps.onKeyDown]
+  );
 
   const resize = useCallback(() => {
     const element = textareaRef.current;
@@ -408,8 +529,6 @@ export function AgentComposer({
     []
   );
 
-  const canSend = input.trim().length > 0 || attachments.length > 0;
-
   // Chips one-shot actives, dérivées des options.
   const activeOneShotChips = useMemo(
     () =>
@@ -438,16 +557,19 @@ export function AgentComposer({
           <SlashCommandMenu
             context={{ isFree: false, isHome: true, mode: "agent" }}
             customCommands={[]}
+            id={slashMenuId}
             onClose={closeMenus}
             onSelect={handleSlashSelection}
             query={slashQuery}
             selectedIndex={slashIndex}
+            supportsTools={capabilities.tools}
           />
         ) : null}
         {mentionOpen ? (
           <MentionMenu
             agents={userAgents}
             customCommands={[]}
+            id={mentionMenuId}
             isLoadingProjects={false}
             mcpServers={userMcpServers}
             memoryAtLimit={false}
@@ -458,6 +580,7 @@ export function AgentComposer({
             query={mentionQuery}
             selectedIndex={mentionIndex}
             skills={userSkills}
+            supportsTools={capabilities.tools}
           />
         ) : null}
       </div>
@@ -480,8 +603,7 @@ export function AgentComposer({
           className={composerTextareaClass}
           data-testid="agent-composer-input"
           disabled={isRunning}
-          onBlur={handleTextareaBlur}
-          onChange={textareaProps.onChange}
+          {...textareaProps}
           onInput={resize}
           onKeyDown={handleTextareaKeyDown}
           placeholder={placeholder}
@@ -502,9 +624,10 @@ export function AgentComposer({
             />
           </div>
 
-          <div className="flex shrink-0 items-center gap-1">
+          <div className="flex min-w-0 flex-wrap items-center justify-end gap-1 sm:shrink-0 sm:flex-nowrap">
             <ModelSelectorCompact
               capabilities={{ [modelId]: capabilities }}
+              fallbackToFirst={false}
               models={models}
               onModelChange={onModelChange}
               placeholder="Modèle d'IA"
@@ -519,7 +642,11 @@ export function AgentComposer({
               running={isRunning}
               sendLabel="Confier la tâche à Agent"
               sendTestId="agent-send-button"
-              sendTitle="Confier la tâche à Agent"
+              sendTitle={
+                modelIsCompatible
+                  ? "Confier la tâche à Agent"
+                  : "Choisissez un modèle compatible avec Agent"
+              }
               stopLabel="Arrêter Agent"
               stopTestId="agent-stop-button"
               stopTitle="Arrêter Agent"
@@ -616,6 +743,13 @@ export function AgentComposer({
         onOpenChange={setIsCloudPickerOpen}
         onSelectAttachments={handleCloudAttachments}
         open={isCloudPickerOpen}
+      />
+
+      <SkillParamsDialog
+        onOpenChange={setSkillParamsDialogOpen}
+        onSubmit={handleSkillParamsSubmit}
+        open={skillParamsDialogOpen}
+        skill={selectedSkill}
       />
     </div>
   );

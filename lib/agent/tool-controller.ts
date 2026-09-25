@@ -18,6 +18,7 @@ import { summarizeToolResult } from "@/lib/agent/summaries";
 import { AgentToolError } from "@/lib/agent/tool-errors";
 import { getAgentToolLabel } from "@/lib/agent/tools/catalog";
 import type {
+  AgentPlan,
   AgentSource,
   AgentStepStatus,
   AgentToolBaseContext,
@@ -102,6 +103,7 @@ export function createAgentToolController(params: {
     status: AgentStepStatus;
     title: string;
   }) => void;
+  onPlanReplaced: (plan: AgentPlan) => void;
   runId: string;
   state: AgentToolControllerState;
   writer: AgentEventWriter;
@@ -453,9 +455,15 @@ export function createAgentToolController(params: {
         plan,
       }).catch(() => {});
       emitAgentPlan(params.writer, plan);
+      params.onPlanReplaced(plan);
     }
 
-    params.onPlanProgress({ status, title: vc.tool.name });
+    // Un outil qui expose un nouveau plan vient de remplacer ce plan. Ne pas
+    // appliquer son nom (« Planifier les tâches ») comme si c'était une étape
+    // individuelle : cela laisserait les tâches dans un état incohérent.
+    if (!plan) {
+      params.onPlanProgress({ status, title: vc.tool.name });
+    }
   }
 
   return {

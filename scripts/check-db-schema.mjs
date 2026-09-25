@@ -13,7 +13,7 @@
  *   - Code de sortie 1 si une table/colonne critique manque.
  */
 
-import { readFileSync, existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import postgres from "postgres";
 
 // Tables absolument requises par les routes /api/chat et /api/agent. Toute
@@ -29,6 +29,11 @@ const REQUIRED_TABLES = [
   "Skill",
   "ToolExecution",
   "user_notification_prefs",
+  "user_preferences",
+  "UsageEvent",
+  "Message_v2",
+  "Stream",
+  "ScheduledMessage",
 ];
 
 // Colonnes introduites par des migrations récentes : détecte une base partiellement migrée.
@@ -39,19 +44,35 @@ const REQUIRED_COLUMNS = [
   { column: "stopReason", table: "AgentRun" },
   { column: "parentRunId", table: "AgentRun" },
   { column: "scheduleVersionId", table: "AgentScheduleOccurrence" },
+  { column: "planningTaskCompleted", table: "user_notification_prefs" },
+  { column: "quotaWarning", table: "user_notification_prefs" },
 ];
 
-const envFiles = process.argv.slice(2).length > 0
-  ? process.argv.slice(2)
-  : [".env.local", ".env"];
+const REQUIRED_INDEXES = [
+  "UsageEvent_userId_createdAt_idx",
+  "Message_v2_chatId_createdAt_id_idx",
+  "Stream_chatId_createdAt_idx",
+  "ScheduledMessage_userId_status_scheduledAt_idx",
+];
+
+const envFiles =
+  process.argv.slice(2).length > 0
+    ? process.argv.slice(2)
+    : [".env.local", ".env"];
 
 let databaseUrl = process.env.DATABASE_URL || process.env.POSTGRES_URL || "";
-databaseUrl = databaseUrl.trim().replace(/^("')+/, "").replace(/(["'])+$/, "").trim();
+databaseUrl = databaseUrl
+  .trim()
+  .replace(/^("')+/, "")
+  .replace(/(["'])+$/, "")
+  .trim();
 if (!databaseUrl) {
   for (const file of envFiles) {
     if (!existsSync(file)) continue;
     const content = readFileSync(file, "utf8");
-    const match = content.match(/(?:DATABASE_URL|POSTGRES_URL)\s*=\s*"?([^"\n]+)"?/);
+    const match = content.match(
+      /(?:DATABASE_URL|POSTGRES_URL)\s*=\s*"?([^"\n]+)"?/
+    );
     if (match) {
       databaseUrl = match[1].trim();
       break;
@@ -77,6 +98,7 @@ try {
 
 const missingTables = [];
 const missingColumns = [];
+const missingIndexes = [];
 
 try {
   // Liste complète des tables du schéma public (~140 lignes) : on filtre en JS
@@ -88,6 +110,16 @@ try {
   const foundTableSet = new Set(allTables.map((row) => row.table_name));
   for (const table of REQUIRED_TABLES) {
     if (!foundTableSet.has(table)) missingTables.push(table);
+  }
+
+  const indexes = await sql`
+    SELECT indexname
+    FROM pg_indexes
+    WHERE schemaname = 'public'
+  `;
+  const foundIndexSet = new Set(indexes.map((row) => row.indexname));
+  for (const index of REQUIRED_INDEXES) {
+    if (!foundIndexSet.has(index)) missingIndexes.push(index);
   }
 
   for (const { column, table } of REQUIRED_COLUMNS) {
@@ -102,7 +134,11 @@ try {
     if (found.length === 0) missingColumns.push(`${table}.${column}`);
   }
 
-  if (missingTables.length > 0 || missingColumns.length > 0) {
+  if (
+    missingTables.length > 0 ||
+    missingColumns.length > 0 ||
+    missingIndexes.length > 0
+  ) {
     console.error(
       `::error::Schéma de base obsolète sur ${target} : migrations non appliquées.`
     );
@@ -115,6 +151,9 @@ try {
       console.error(
         `::error::Colonnes manquantes : ${missingColumns.join(", ")}.`
       );
+    }
+    if (missingIndexes.length > 0) {
+      console.error(`::error::Index manquants : ${missingIndexes.join(", ")}.`);
     }
     process.exit(1);
   }

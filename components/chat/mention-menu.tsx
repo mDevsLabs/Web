@@ -40,6 +40,7 @@ export type MentionSelectPayload =
   | { type: "memory" };
 
 type MentionMenuProps = {
+  id?: string;
   query: string;
   projects: MentionProject[];
   skills?: Skill[];
@@ -173,13 +174,13 @@ function buildFlatList(
       )
     : plugins;
 
-  const filteredMcp = q
-    ? mcpServers.filter(
-        (m) =>
-          m.name.toLowerCase().includes(q) ||
-          (m.description ?? "").toLowerCase().includes(q)
-      )
-    : mcpServers.filter((m) => m.isEnabled);
+  const filteredMcp = mcpServers.filter(
+    (m) =>
+      m.isEnabled &&
+      (!q ||
+        m.name.toLowerCase().includes(q) ||
+        (m.description ?? "").toLowerCase().includes(q))
+  );
 
   const filteredProjects = q
     ? projects.filter(
@@ -232,14 +233,14 @@ function buildFlatList(
     label: a.name,
   }));
 
-  const filteredCustom = q
-    ? customCommands.filter(
-        (c) =>
-          c.trigger.toLowerCase().includes(q) ||
-          c.name.toLowerCase().includes(q) ||
-          (c.description ?? "").toLowerCase().includes(q)
-      )
-    : customCommands;
+  const filteredCustom = customCommands.filter(
+    (c) =>
+      c.enabled &&
+      (!q ||
+        c.trigger.toLowerCase().includes(q) ||
+        c.name.toLowerCase().includes(q) ||
+        (c.description ?? "").toLowerCase().includes(q))
+  );
 
   const customItems: FlatMentionItem[] = filteredCustom.map((c) => ({
     command: c,
@@ -281,6 +282,7 @@ export function getFilteredMentionItems(
 }
 
 function MentionItem({
+  id,
   item,
   isSelected,
   memoryAtLimit,
@@ -289,6 +291,7 @@ function MentionItem({
   onSelect,
   supportsTools = true,
 }: {
+  id?: string;
   item: FlatMentionItem;
   isSelected: boolean;
   memoryAtLimit?: boolean;
@@ -352,13 +355,16 @@ function MentionItem({
 
     return (
       <button
+        aria-selected={isSelected && !isDisabled}
         className={cn(
           "flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors cursor-pointer",
           isSelected ? "bg-muted/70" : "hover:bg-muted/40"
         )}
         data-selected={isSelected}
+        id={id}
         onClick={handleClick}
         onMouseDown={handleMouseDown}
+        role="option"
         type="button"
       >
         <div className="flex size-6 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
@@ -384,6 +390,7 @@ function MentionItem({
   if (item.kind === "memory") {
     return (
       <button
+        aria-selected={isSelected && !isDisabled}
         className={cn(
           "flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors",
           isDisabled
@@ -393,8 +400,10 @@ function MentionItem({
               : "hover:bg-muted/40"
         )}
         data-selected={isSelected && !isDisabled}
+        id={id}
         onClick={handleClick}
         onMouseDown={handleMouseDown}
+        role="option"
         type="button"
       >
         <div className="flex size-6 shrink-0 items-center justify-center rounded-md bg-sky-500/10 text-sky-600 dark:text-sky-400">
@@ -429,6 +438,7 @@ function MentionItem({
   if (item.kind === "skill") {
     return (
       <button
+        aria-selected={isSelected && !isDisabled}
         className={cn(
           "flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors",
           isDisabled
@@ -438,8 +448,10 @@ function MentionItem({
               : "hover:bg-muted/40"
         )}
         data-selected={isSelected && !isDisabled}
+        id={id}
         onClick={handleClick}
         onMouseDown={handleMouseDown}
+        role="option"
         type="button"
       >
         <div
@@ -475,6 +487,7 @@ function MentionItem({
   if (item.kind === "plugin") {
     return (
       <button
+        aria-selected={isSelected && !isDisabled}
         className={cn(
           "flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors",
           isDisabled
@@ -484,8 +497,10 @@ function MentionItem({
               : "hover:bg-muted/40"
         )}
         data-selected={isSelected && !isDisabled}
+        id={id}
         onClick={handleClick}
         onMouseDown={handleMouseDown}
+        role="option"
         type="button"
       >
         <div className="flex size-6 shrink-0 items-center justify-center rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
@@ -516,6 +531,7 @@ function MentionItem({
   if (item.kind === "mcp") {
     return (
       <button
+        aria-selected={isSelected && !isDisabled}
         className={cn(
           "flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors",
           isDisabled
@@ -525,8 +541,10 @@ function MentionItem({
               : "hover:bg-muted/40"
         )}
         data-selected={isSelected && !isDisabled}
+        id={id}
         onClick={handleClick}
         onMouseDown={handleMouseDown}
+        role="option"
         type="button"
       >
         <div className="flex size-6 shrink-0 items-center justify-center rounded-md bg-purple-500/10 text-purple-600 dark:text-purple-400">
@@ -559,13 +577,16 @@ function MentionItem({
   if (item.kind === "project") {
     return (
       <button
+        aria-selected={isSelected && !isDisabled}
         className={cn(
           "flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors",
           isSelected ? "bg-muted/70" : "hover:bg-muted/40"
         )}
         data-selected={isSelected}
+        id={id}
         onClick={handleClick}
         onMouseDown={handleMouseDown}
+        role="option"
         type="button"
       >
         <div
@@ -594,13 +615,16 @@ function MentionItem({
   if (item.kind === "custom-command") {
     return (
       <button
+        aria-selected={isSelected && !isDisabled}
         className={cn(
           "flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors",
           isSelected ? "bg-muted/70" : "hover:bg-muted/40"
         )}
         data-selected={isSelected}
+        id={id}
         onClick={handleClick}
         onMouseDown={handleMouseDown}
+        role="option"
         type="button"
       >
         <div
@@ -631,13 +655,16 @@ function MentionItem({
   // Agent
   return (
     <button
+      aria-selected={isSelected && !isDisabled}
       className={cn(
         "flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors",
         isSelected ? "bg-muted/70" : "hover:bg-muted/40"
       )}
       data-selected={isSelected}
+      id={id}
       onClick={handleClick}
       onMouseDown={handleMouseDown}
+      role="option"
       type="button"
     >
       <div
@@ -669,6 +696,7 @@ function MentionItem({
 }
 
 export function MentionMenu({
+  id = "composer-mention-listbox",
   query,
   projects,
   skills = [],
@@ -702,6 +730,7 @@ export function MentionMenu({
   );
 
   const memoryItems = flat.filter((i) => i.kind === "memory");
+  const systemItems = flat.filter((i) => i.kind === "system");
   const skillItems = flat.filter((i) => i.kind === "skill");
   const pluginItems = flat.filter((i) => i.kind === "plugin");
   const mcpItems = flat.filter((i) => i.kind === "mcp");
@@ -709,12 +738,19 @@ export function MentionMenu({
   const agentItems = flat.filter((i) => i.kind === "agent");
   const customCommandItems = flat.filter((i) => i.kind === "custom-command");
 
+  const selectedOptionId = flat[selectedIndex]
+    ? `${id}-option-${selectedIndex}`
+    : null;
+
   useEffect(() => {
-    const selected = menuRef.current?.querySelector("[data-selected='true']");
+    if (!selectedOptionId) {
+      return;
+    }
+    const selected = menuRef.current?.querySelector(`#${selectedOptionId}`);
     if (selected) {
       selected.scrollIntoView({ block: "nearest" });
     }
-  }, []);
+  }, [selectedOptionId]);
 
   const showNoProject = !isLoadingProjects && projects.length === 0;
 
@@ -724,8 +760,11 @@ export function MentionMenu({
 
   return (
     <div
+      aria-label="Mentions"
       className="absolute bottom-full left-0 right-0 z-50 mb-3 overflow-hidden rounded-2xl border border-border/80 bg-white dark:bg-zinc-900 text-foreground shadow-2xl ring-1 ring-black/10 dark:ring-white/10"
+      id={id}
       ref={menuRef}
+      role="listbox"
     >
       <div className="max-h-80 overflow-y-auto pb-1 no-scrollbar">
         {/* Section Mémoire (@Memory) */}
@@ -740,12 +779,34 @@ export function MentionMenu({
               const flatIndex = flat.indexOf(item);
               return (
                 <MentionItem
+                  id={`${id}-option-${flatIndex}`}
                   isSelected={flatIndex === selectedIndex}
                   item={item}
                   key={`mem-${item.id}`}
                   memoryAtLimit={memoryAtLimit}
                   memoryCount={memoryCount}
                   memoryLimit={memoryLimit}
+                  onSelect={onSelect}
+                />
+              );
+            })}
+          </>
+        )}
+
+        {/* Section système (Web, Library, Planning, Notes) */}
+        {systemItems.length > 0 && (
+          <>
+            <div className="px-4 py-2 bg-muted/40 border-b border-border/40 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
+              <GlobeIcon className="size-3.5" /> Références
+            </div>
+            {systemItems.map((item) => {
+              const flatIndex = flat.indexOf(item);
+              return (
+                <MentionItem
+                  id={`${id}-option-${flatIndex}`}
+                  isSelected={flatIndex === selectedIndex}
+                  item={item}
+                  key={`system-${item.id}`}
                   onSelect={onSelect}
                 />
               );
@@ -775,6 +836,7 @@ export function MentionMenu({
               const flatIndex = flat.indexOf(item);
               return (
                 <MentionItem
+                  id={`${id}-option-${flatIndex}`}
                   isSelected={flatIndex === selectedIndex}
                   item={item}
                   key={`s-${item.id}`}
@@ -801,6 +863,7 @@ export function MentionMenu({
               const flatIndex = flat.indexOf(item);
               return (
                 <MentionItem
+                  id={`${id}-option-${flatIndex}`}
                   isSelected={flatIndex === selectedIndex}
                   item={item}
                   key={`plugin-${item.id}`}
@@ -827,6 +890,7 @@ export function MentionMenu({
               const flatIndex = flat.indexOf(item);
               return (
                 <MentionItem
+                  id={`${id}-option-${flatIndex}`}
                   isSelected={flatIndex === selectedIndex}
                   item={item}
                   key={`mcp-${item.id}`}
@@ -869,6 +933,7 @@ export function MentionMenu({
             const flatIndex = flat.indexOf(item);
             return (
               <MentionItem
+                id={`${id}-option-${flatIndex}`}
                 isSelected={flatIndex === selectedIndex}
                 item={item}
                 key={`p-${item.id}`}
@@ -900,6 +965,7 @@ export function MentionMenu({
                 const flatIndex = flat.indexOf(item);
                 return (
                   <MentionItem
+                    id={`${id}-option-${flatIndex}`}
                     isSelected={flatIndex === selectedIndex}
                     item={item}
                     key={`ag-${item.id}`}
@@ -921,6 +987,7 @@ export function MentionMenu({
               const flatIndex = flat.indexOf(item);
               return (
                 <MentionItem
+                  id={`${id}-option-${flatIndex}`}
                   isSelected={flatIndex === selectedIndex}
                   item={item}
                   key={`cmd-${item.id}`}

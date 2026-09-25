@@ -38,7 +38,7 @@ export async function generateMAICommentAnswer(
   opts: { postId: string; question: string; requesterId: number }
 ): Promise<string | null> {
   try {
-    const context = await buildPostContext(sql, opts.postId);
+    const context = await buildPostContext(sql, opts.postId, opts.requesterId);
     if (!context) return null;
 
     const openRouterApiKey = await getOpenRouterKey(sql, opts.requesterId);
@@ -207,7 +207,11 @@ export function registerVibeMAIChatRoutes(
       let postContextBlock = "";
       let postImageParts: any[] = [];
       if (context?.post_id) {
-        const postCtx = await buildPostContext(sql, String(context.post_id));
+        const postCtx = await buildPostContext(
+          sql,
+          String(context.post_id),
+          userId
+        );
         if (postCtx) {
           postContextBlock = `\n\n---\n${postCtx.text}`;
           postImageParts = postCtx.imageParts;

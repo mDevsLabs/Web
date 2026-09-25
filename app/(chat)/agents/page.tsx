@@ -1,5 +1,4 @@
 import { PageBackButton } from "@/components/chat/page-back-button";
-import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import { isPaidTier } from "@/lib/auth/plan";
 import { getMaiUser } from "@/lib/auth/session";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
@@ -54,8 +53,6 @@ export default async function AgentsPage() {
             Mettre à niveau mon forfait
           </a>
         </main>
-
-        <UpgradeDialog feature="agents" onOpenChange={() => undefined} open />
       </div>
     );
   }

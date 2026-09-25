@@ -9,6 +9,7 @@
  */
 
 import { getDb } from "./config.ts";
+import { isBlockEitherWay } from "./vibe-common.ts";
 import { stripHtmlTags } from "./vibe-posts-core.ts";
 
 /** Regex UUID partagée (conversations mAI, publications jointes). */
@@ -248,6 +249,143 @@ export const VISION_CAPABLE_MODELS = new Set([
 const MAX_CONTEXT_IMAGES = 3;
 const MAX_CONTEXT_IMAGE_BYTES = 3.5 * 1024 * 1024;
 
+function readRuntimeEnv(name: string): string {
+  try {
+    const denoEnv = (globalThis as any).Deno?.env;
+    if (denoEnv?.get) return String(denoEnv.get(name) ?? "");
+    return String((globalThis as any).process?.env?.[name] ?? "");
+  } catch {
+    return "";
+  }
+}
+
+function configuredMediaHosts(): Set<string> {
+  const hosts = new Set<string>();
+  const raw = readRuntimeEnv("MEDIA_FETCH_ALLOWED_HOSTS");
+  for (const value of raw.split(",")) {
+    const host = value.trim().toLowerCase();
+    if (host) hosts.add(host);
+  }
+
+  // Les hôtes de stockage configurés sont approuvés par défaut. Les autres
+  // domaines exigent une entrée explicite dans MEDIA_FETCH_ALLOWED_HOSTS.
+  const storageKeys = ["S3_PUBLIC_URL", "Z1_PUBLIC_URL"];
+  for (let index = 1; index <= 10; index += 1) {
+    storageKeys.push(
+      `S3_PUBLIC_URL_${index}`,
+      `Z1_PUBLIC_URL_${index}`,
+      `S3_PUBLIC_URL${index}`,
+      `Z1_PUBLIC_URL${index}`
+    );
+  }
+  for (const key of storageKeys) {
+    const value = readRuntimeEnv(key).trim();
+    if (!value) continue;
+    try {
+      hosts.add(new URL(value).hostname.toLowerCase());
+    } catch {}
+  }
+  return hosts;
+}
+
+function isBlockedMediaHost(hostname: string): boolean {
+  const host = hostname.toLowerCase().replace(/^\[|\]$/g, "");
+  if (
+    host === "localhost" ||
+    host.endsWith(".localhost") ||
+    host.endsWith(".internal") ||
+    host.endsWith(".local") ||
+    host.endsWith(".lan")
+  ) {
+    return true;
+  }
+  if (
+    host.includes(":") &&
+    (host === "::1" ||
+      host === "::" ||
+      host.startsWith("fc") ||
+      host.startsWith("fd") ||
+      host.startsWith("fe80:"))
+  ) {
+    return true;
+  }
+  const octets = host.split(".").map((part) => Number(part));
+  if (
+    octets.length === 4 &&
+    octets.every((part) => Number.isInteger(part) && part >= 0 && part <= 255)
+  ) {
+    const [a, b] = octets;
+    return (
+      a === 0 ||
+      a === 10 ||
+      a === 127 ||
+      (a === 100 && b >= 64 && b <= 127) ||
+      (a === 169 && b === 254) ||
+      (a === 172 && b >= 16 && b <= 31) ||
+      (a === 192 && b === 168) ||
+      a >= 224
+    );
+  }
+  return false;
+}
+
+function isAllowedMediaUrl(raw: string): URL | null {
+  try {
+    const url = new URL(raw);
+    if (url.protocol !== "https:" || url.username || url.password) return null;
+    if (isBlockedMediaHost(url.hostname)) return null;
+    return configuredMediaHosts().has(url.hostname.toLowerCase()) ? url : null;
+  } catch {
+    return null;
+  }
+}
+
+async function readCappedImage(response: Response): Promise<Uint8Array | null> {
+  const declaredLength = Number(response.headers.get("content-length") ?? "0");
+  if (
+    Number.isFinite(declaredLength) &&
+    declaredLength > MAX_CONTEXT_IMAGE_BYTES
+  ) {
+    return null;
+  }
+  const body = (response as any).body;
+  const reader = body?.getReader?.();
+  if (!reader) {
+    const buffer = new Uint8Array(await response.arrayBuffer());
+    return buffer.byteLength > 0 && buffer.byteLength <= MAX_CONTEXT_IMAGE_BYTES
+      ? buffer
+      : null;
+  }
+  const chunks: Uint8Array[] = [];
+  let total = 0;
+  try {
+    while (true) {
+      const next = await reader.read();
+      if (next.done) break;
+      const chunk =
+        next.value instanceof Uint8Array
+          ? next.value
+          : new Uint8Array(next.value);
+      total += chunk.byteLength;
+      if (total > MAX_CONTEXT_IMAGE_BYTES) {
+        await reader.cancel?.();
+        return null;
+      }
+      chunks.push(chunk);
+    }
+  } catch {
+    return null;
+  }
+  if (total === 0) return null;
+  const result = new Uint8Array(total);
+  let offset = 0;
+  for (const chunk of chunks) {
+    result.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return result;
+}
+
 function bytesToBase64(bytes: Uint8Array): string {
   let binary = "";
   const CHUNK = 0x80_00;
@@ -262,9 +400,11 @@ function bytesToBase64(bytes: Uint8Array): string {
 
 export async function buildPostContext(
   sql: any,
-  postId: string
+  postId: string,
+  viewerId: number
 ): Promise<{ text: string; imageParts: any[] } | null> {
   try {
+    if (!Number.isInteger(viewerId) || viewerId <= 0) return null;
     if (
       !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
         postId
@@ -273,17 +413,44 @@ export async function buildPostContext(
       return null;
 
     const rows = await sql`
-      SELECT p.id, p.content, p.likes_count, p.reposts_count, p.replies_count, p.views_count,
+      SELECT p.id, p.author_id, p.content, p.likes_count, p.reposts_count, p.replies_count, p.views_count,
              p.published_at, p.created_via, p.ai_generated,
              u.username, pr.display_name
       FROM posts p
       JOIN users u ON u.id = p.author_id
       LEFT JOIN profiles pr ON pr.user_id = u.id
       WHERE p.id = ${postId}::uuid
+         AND COALESCE(p.status, 'published') = 'published'
+         AND (
+           COALESCE(p.visibility, 'public') = 'public'
+           OR p.author_id = ${viewerId}
+           OR (
+             p.visibility = 'followers'
+             AND EXISTS (
+               SELECT 1 FROM follows f
+               WHERE f.follower_id = ${viewerId}
+                 AND f.following_id = p.author_id
+             )
+           )
+           OR (
+             p.visibility = 'circle'
+             AND EXISTS (
+               SELECT 1 FROM circle_members cm
+               WHERE cm.user_id = p.author_id
+                 AND cm.member_user_id = ${viewerId}
+             )
+           )
+         )
       LIMIT 1
     `;
     if (rows.length === 0) return null;
     const post = rows[0];
+    if (
+      Number(post.author_id) !== viewerId &&
+      (await isBlockEitherWay(viewerId, Number(post.author_id)))
+    ) {
+      return null;
+    }
 
     let commentsText = "";
     try {
@@ -329,15 +496,25 @@ export async function buildPostContext(
         /\.(png|jpe?g|webp|gif)(\?|$)/i.test(url);
       if (!url || !isImage) continue;
       try {
-        const res = await fetch(url);
+        const allowedUrl = isAllowedMediaUrl(url);
+        if (!allowedUrl) continue;
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 5000);
+        const res = await fetch(allowedUrl.toString(), {
+          redirect: "error",
+          signal: controller.signal,
+        });
+        clearTimeout(timeout);
         if (!res.ok) continue;
-        const buf = await res.arrayBuffer();
-        if (buf.byteLength === 0 || buf.byteLength > MAX_CONTEXT_IMAGE_BYTES)
-          continue;
-        const contentType = res.headers.get("content-type") || "image/jpeg";
+        const bytes = await readCappedImage(res);
+        if (!bytes) continue;
+        const contentType = (
+          res.headers.get("content-type") || ""
+        ).toLowerCase();
+        if (!contentType.startsWith("image/")) continue;
         imageParts.push({
           image_url: {
-            url: `data:${contentType};base64,${bytesToBase64(new Uint8Array(buf))}`,
+            url: `data:${contentType.split(";")[0]};base64,${bytesToBase64(bytes)}`,
           },
           type: "image_url",
         });
@@ -527,6 +704,66 @@ export function makeToolCallRecord(opts: {
     result: opts.result ?? null,
     status: opts.status,
   };
+}
+
+function canonicalizeToolArgs(value: unknown): unknown {
+  if (Array.isArray(value)) {
+    return value.map(canonicalizeToolArgs);
+  }
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value as Record<string, unknown>)
+        .sort(([left], [right]) => left.localeCompare(right))
+        .map(([key, item]) => [key, canonicalizeToolArgs(item)])
+    );
+  }
+  return value;
+}
+
+export function canonicalToolArgs(value: unknown): string {
+  try {
+    return JSON.stringify(canonicalizeToolArgs(value));
+  } catch {
+    return "";
+  }
+}
+
+/**
+ * Vérifie qu'une approbation sensible correspond à un appel déjà persisté dans
+ * la conversation. Un boolône `approve` seul ne constitue pas une autorisation.
+ */
+export async function hasPendingToolApproval(params: {
+  args: unknown;
+  conversationId: string;
+  sql: any;
+  toolName: string;
+}): Promise<boolean> {
+  const rows = await params.sql`
+    SELECT tool_calls
+    FROM mai_messages
+    WHERE conversation_id = ${params.conversationId}::uuid
+      AND sender_role = 'assistant'
+      AND tool_calls IS NOT NULL
+    ORDER BY created_at DESC
+    LIMIT 12
+  `;
+  const expectedArgs = canonicalToolArgs(params.args);
+  if (!expectedArgs) {
+    return false;
+  }
+  for (const row of rows as any[]) {
+    const calls = Array.isArray(row.tool_calls) ? row.tool_calls : [];
+    const approved = calls.some(
+      (call: any) =>
+        call?.name === params.toolName &&
+        call?.status === "pending_approval" &&
+        canonicalToolArgs(call.args) === expectedArgs
+    );
+    if (approved) {
+      return true;
+    }
+  }
+  return false;
 }
 
 /**

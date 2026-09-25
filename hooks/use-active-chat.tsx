@@ -394,12 +394,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     if (typeof document !== "undefined") {
       if (agent?.id) {
         document.cookie = `agent-id=${encodeURIComponent(agent.id)}; path=/; max-age=31536000`;
-        // Le modèle par défaut de l'agent écrase le modèle global
-        if (agent.defaultModelId) {
-          setCurrentModelId(agent.defaultModelId);
-          currentModelIdRef.current = agent.defaultModelId;
-          document.cookie = `chat-model=${encodeURIComponent(agent.defaultModelId)}; path=/; max-age=31536000`;
-        }
+        // Chat et Agent partagent le modèle global. Le modèle propre à un
+        // assistant reste une préférence de secours serveur, il ne doit plus
+        // réécrire silencieusement le modèle choisi par l'utilisateur.
       } else {
         document.cookie = "agent-id=; path=/; max-age=0";
       }
@@ -506,11 +503,6 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
                   activeAgentRef.current = ag as Agent;
                   activeAgentIdRef.current = ag.id;
                   document.cookie = `agent-id=${encodeURIComponent(ag.id)}; path=/; max-age=31536000`;
-                  if (ag.defaultModelId) {
-                    setCurrentModelId(ag.defaultModelId);
-                    currentModelIdRef.current = ag.defaultModelId;
-                    document.cookie = `chat-model=${encodeURIComponent(ag.defaultModelId)}; path=/; max-age=31536000`;
-                  }
                 }
               })
               .catch(() => {});

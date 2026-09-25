@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { SCHEDULE_MAX_ATTEMPTS, isWaitingRequestExpired } from "@/lib/agent/scheduler/engine";
+import {
+  isWaitingRequestExpired,
+  SCHEDULE_MAX_ATTEMPTS,
+} from "@/lib/agent/scheduler/engine";
 import { nextOccurrenceFromRule } from "@/lib/agent/scheduler/occurrence";
 
 // Invariants du scheduler testables SANS base : le calcul de la prochaine
@@ -38,8 +41,26 @@ describe("Scheduler — règle one-shot et bornes", () => {
   it("ne réévalue pas une attente de cinq minutes et expire la demande à 24 heures", () => {
     const started = new Date("2026-09-20T10:00:00Z");
     const expiresAt = new Date(started.getTime() + 24 * 60 * 60 * 1000);
-    expect(isWaitingRequestExpired({ runStatus: "waiting_for_user", expiresAt, now: new Date(started.getTime() + 6 * 60 * 1000) })).toBe(false);
-    expect(isWaitingRequestExpired({ runStatus: "waiting_for_user", expiresAt, now: expiresAt })).toBe(true);
-    expect(isWaitingRequestExpired({ runStatus: "running", expiresAt, now: expiresAt })).toBe(false);
+    expect(
+      isWaitingRequestExpired({
+        expiresAt,
+        now: new Date(started.getTime() + 6 * 60 * 1000),
+        runStatus: "waiting_for_user",
+      })
+    ).toBe(false);
+    expect(
+      isWaitingRequestExpired({
+        expiresAt,
+        now: expiresAt,
+        runStatus: "waiting_for_user",
+      })
+    ).toBe(true);
+    expect(
+      isWaitingRequestExpired({
+        expiresAt,
+        now: expiresAt,
+        runStatus: "running",
+      })
+    ).toBe(false);
   });
 });

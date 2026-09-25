@@ -64,22 +64,26 @@ afterEach(() => {
 });
 
 describe("Catalogue de plugins", () => {
-  it("expose les onze plugins attendus, avec identifiants uniques", () => {
+  it("expose les seize plugins attendus, avec identifiants uniques", () => {
     const ids = PLUGIN_MANIFEST_LIST.map((plugin) => plugin.id).toSorted(
       (a, b) => a.localeCompare(b)
     );
     expect(ids).toEqual([
       "air-quality",
       "crossref",
+      "eurostat",
       "fr-holidays",
       "github-public",
+      "gitlab-public",
       "json-toolbox",
       "mobilite-fr",
       "open-food-facts",
       "open-library",
+      "openalex",
       "quizzly",
       "tvmaze",
       "weather",
+      "wikidata",
       "world-bank",
     ]);
 
@@ -105,7 +109,9 @@ describe("Catalogue de plugins", () => {
       expect(["plus", "pro", "max"]).toContain(plugin.minTier);
 
       // Permissions déclaratives obligatoires.
-      expect(["none", "read-only"]).toContain(plugin.permissions.network);
+      expect(["none", "read-only", "read-write"]).toContain(
+        plugin.permissions.network
+      );
       expect(typeof plugin.permissions.readsUserData).toBe("boolean");
       expect(typeof plugin.permissions.writesUserData).toBe("boolean");
       expect(typeof plugin.permissions.requiresApproval).toBe("boolean");

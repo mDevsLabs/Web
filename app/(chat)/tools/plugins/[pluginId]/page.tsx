@@ -6,7 +6,8 @@ import { canUsePlugin } from "@/lib/plugins/tier-lock";
 import PluginDetailClient from "./plugin-detail-client";
 
 export const metadata: Metadata = {
-  description: "Détails d'un plugin mAI : version, description et gestion.",
+  description:
+    "Détails d'un plugin mAI : version, outils, permissions, sécurité et gestion.",
   title: "Plugin | mAI",
 };
 

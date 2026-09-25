@@ -1,13 +1,14 @@
 "use client";
 
+import { AlertTriangleIcon } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import useSWR from "swr";
 import type { AgentComposerSubmit } from "@/components/agent/agent-composer";
 import { AgentComposer } from "@/components/agent/agent-composer";
 import { AgentHome } from "@/components/agent/agent-home";
-import { AgentRunTimeline } from "@/components/agent/agent-run-timeline";
 import { AgentRunFeedback } from "@/components/agent/agent-run-feedback";
+import { AgentRunTimeline } from "@/components/agent/agent-run-timeline";
 import {
   AgentStreamProvider,
   useAgentStream,
@@ -87,9 +88,42 @@ function AgentShellInner() {
   const { chatId, currentModelId, setCurrentModelId, visibilityType } =
     useActiveChat();
   const { flags, channelInfo } = useAgentFlags();
-  const { capabilities: modelsCapabilities, models } = useAgentModels();
-  const { currentCapabilities } = useModelCapabilities(currentModelId);
+  const {
+    capabilities: modelsCapabilities,
+    catalogModelIds,
+    isLoading: isLoadingModels,
+    models,
+  } = useAgentModels();
+  const { currentCapabilities, currentEntry } =
+    useModelCapabilities(currentModelId);
   const { reset, state } = useAgentStream();
+
+  const currentModelIsAgentCompatible = Boolean(
+    currentEntry?.capabilities.tools &&
+      currentEntry.agentCompatibility?.toolDefinitions &&
+      currentEntry.agentCompatibility?.structuredToolCalls &&
+      currentEntry.agentCompatibility?.continuationAfterToolResult
+  );
+
+  // Le cookie peut contenir un modèle qui n'existe plus. Une fois le catalogue
+  // chargé, on synchronise seulement les IDs invalides ; un modèle Chat
+  // incompatible reste visible et l'utilisateur peut le changer lui-même.
+  useEffect(() => {
+    if (
+      !isLoadingModels &&
+      catalogModelIds.size > 0 &&
+      !catalogModelIds.has(currentModelId) &&
+      models.length > 0
+    ) {
+      setCurrentModelId(models[0].id);
+    }
+  }, [
+    catalogModelIds,
+    currentModelId,
+    isLoadingModels,
+    models,
+    setCurrentModelId,
+  ]);
 
   const [project, setProject] = useState<ProjectLite | null>(null);
   const [options, setOptions] = useState<AgentRequestOptions>({
@@ -98,9 +132,12 @@ function AgentShellInner() {
     enabledCategories: null,
     forceWeb: false,
     imageEnabled: false,
+    mcpServerIds: [],
     memoryEnabled: false,
     projectId: null,
     reasoningLevel: "medium",
+    skillId: null,
+    skillParams: null,
     tasksEnabled: false,
     toolMode: "auto",
   });
@@ -154,6 +191,7 @@ function AgentShellInner() {
     chatId,
     isNewChat,
     modelId: currentModelId,
+    onModelResolved: setCurrentModelId,
     visibility: visibilityType,
   });
   const [resumeFromRunId, setResumeFromRunId] = useState<string | null>(null);
@@ -258,8 +296,8 @@ function AgentShellInner() {
     sendTask({
       attachments: payload.attachments,
       options: payload.options,
-      text: payload.text,
       resumeFromRunId: resumeFromRunId ?? undefined,
+      text: payload.text,
     });
     setResumeFromRunId(null);
   };
@@ -268,45 +306,63 @@ function AgentShellInner() {
   const showHome =
     messages.length === 0 && !isRunning && state.steps.length === 0;
 
+  const modelCompatibilityWarning =
+    currentEntry && !currentModelIsAgentCompatible ? (
+      <div
+        className="mb-2 flex items-start gap-2 rounded-xl border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-xs leading-5 text-amber-900 dark:text-amber-200"
+        role="status"
+      >
+        <AlertTriangleIcon className="mt-0.5 size-3.5 shrink-0" />
+        <span>
+          Ce modèle ne peut pas exécuter la boucle d&apos;outils Agent.
+          Choisissez un modèle compatible pour envoyer une nouvelle tâche.
+        </span>
+      </div>
+    ) : null;
+
   const composer = (
-    <AgentComposer
-      capabilities={capabilities}
-      flags={flags}
-      isRunning={isRunning}
-      modelId={currentModelId}
-      models={models}
-      onModelChange={setCurrentModelId}
-      onOptionsChange={handleOptionsChange}
-      onProjectChange={(next) => {
-        setProject(next);
-        handleOptionsChange({ projectId: next?.id ?? null });
-        // Changement explicite : persisté immédiatement sur une conversation
-        // existante, pour survivre à un envoi raté, un refresh ou un retour.
-        if (!isNewChat) {
-          fetch(apiEndpoints.chatById(chatId), {
-            body: JSON.stringify({ projectId: next?.id ?? null }),
-            headers: { "Content-Type": "application/json" },
-            method: "PATCH",
-          })
-            .then((response) => {
-              if (!response.ok) {
-                throw new Error(String(response.status));
-              }
+    <>
+      {modelCompatibilityWarning}
+      <AgentComposer
+        capabilities={capabilities}
+        flags={flags}
+        isRunning={isRunning}
+        modelId={currentModelId}
+        modelIsCompatible={currentModelIsAgentCompatible || !currentEntry}
+        models={models}
+        onModelChange={setCurrentModelId}
+        onOptionsChange={handleOptionsChange}
+        onProjectChange={(next) => {
+          setProject(next);
+          handleOptionsChange({ projectId: next?.id ?? null });
+          // Changement explicite : persisté immédiatement sur une conversation
+          // existante, pour survivre à un envoi raté, un refresh ou un retour.
+          if (!isNewChat) {
+            fetch(apiEndpoints.chatById(chatId), {
+              body: JSON.stringify({ projectId: next?.id ?? null }),
+              headers: { "Content-Type": "application/json" },
+              method: "PATCH",
             })
-            .catch(() => {
-              // L'association reste appliquée localement ; le prochain envoi
-              // retransmettra projectId et rattrapera l'état serveur.
-            });
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error(String(response.status));
+                }
+              })
+              .catch(() => {
+                // L'association reste appliquée localement ; le prochain envoi
+                // retransmettra projectId et rattrapera l'état serveur.
+              });
+          }
+        }}
+        onStop={stopRun}
+        onSubmit={handleSubmit}
+        options={options}
+        placeholder={
+          showHome ? undefined : "Précisez, ajustez ou poursuivez la tâche"
         }
-      }}
-      onStop={stopRun}
-      onSubmit={handleSubmit}
-      options={options}
-      placeholder={
-        showHome ? undefined : "Précisez, ajustez ou poursuivez la tâche"
-      }
-      project={project}
-    />
+        project={project}
+      />
+    </>
   );
 
   return (
@@ -332,21 +388,53 @@ function AgentShellInner() {
             {showHome ? null : (
               <>
                 <AgentRunTimeline state={state} />
-                {flags["agent.activity"] && state.run && ["completed", "failed", "cancelled", "timed_out"].includes(state.run.status) ? (
+                {flags["agent.activity"] &&
+                state.run &&
+                ["completed", "failed", "cancelled", "timed_out"].includes(
+                  state.run.status
+                ) ? (
                   <AgentRunFeedback
-                    goalReached={((history?.runs ?? []).find((run) => run.id === state.run?.runId) as { goalReached?: boolean | null } | undefined)?.goalReached ?? null}
+                    goalReached={
+                      (
+                        (history?.runs ?? []).find(
+                          (run) => run.id === state.run?.runId
+                        ) as { goalReached?: boolean | null } | undefined
+                      )?.goalReached ?? null
+                    }
                     key={state.run.runId}
                     runId={state.run.runId}
-                    useful={((history?.runs ?? []).find((run) => run.id === state.run?.runId) as { useful?: boolean | null } | undefined)?.useful ?? null}
+                    useful={
+                      (
+                        (history?.runs ?? []).find(
+                          (run) => run.id === state.run?.runId
+                        ) as { useful?: boolean | null } | undefined
+                      )?.useful ?? null
+                    }
                   />
                 ) : null}
-                {flags["agent.guidedResume"] && !isRunning && state.run?.status === "timed_out" ? (
+                {flags["agent.guidedResume"] &&
+                !isRunning &&
+                state.run?.status === "timed_out" ? (
                   <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-3 text-sm">
-                    <p>Le délai est dépassé. Vous pouvez poursuivre dans un nouveau run lié à celui-ci.</p>
-                    <button className="mt-2 rounded-md bg-primary px-3 py-1.5 text-primary-foreground" onClick={() => setResumeFromRunId(state.run?.runId ?? null)} type="button">
+                    <p>
+                      Le délai est dépassé. Vous pouvez poursuivre dans un
+                      nouveau run lié à celui-ci.
+                    </p>
+                    <button
+                      className="mt-2 rounded-md bg-primary px-3 py-1.5 text-primary-foreground"
+                      onClick={() =>
+                        setResumeFromRunId(state.run?.runId ?? null)
+                      }
+                      type="button"
+                    >
                       Poursuivre
                     </button>
-                    {resumeFromRunId ? <p className="mt-2 text-xs">Ajoutez votre consigne dans la zone de saisie, puis envoyez-la.</p> : null}
+                    {resumeFromRunId ? (
+                      <p className="mt-2 text-xs">
+                        Ajoutez votre consigne dans la zone de saisie, puis
+                        envoyez-la.
+                      </p>
+                    ) : null}
                   </div>
                 ) : null}
                 {!isRunning && suggestedActions.length > 0 ? (
@@ -387,7 +475,9 @@ function AgentShellInner() {
                 capabilities={capabilities}
                 flags={flags}
                 isRunning={isRunning}
+                modelCompatibilityKnown={Boolean(currentEntry)}
                 modelId={currentModelId}
+                modelIsCompatible={currentModelIsAgentCompatible}
                 models={models}
                 modeSwitcher={
                   <HomeModeSwitcher

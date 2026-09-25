@@ -34,9 +34,17 @@ function asStringRecord(value: unknown): Record<string, string> {
   }
   const record: Record<string, string> = {};
   for (const [key, raw] of Object.entries(value as Record<string, unknown>)) {
-    if (typeof raw === "string") {
-      record[key] = raw;
+    if (
+      key === "__proto__" ||
+      key === "prototype" ||
+      key === "constructor" ||
+      !/^[A-Za-z_][A-Za-z0-9_-]{0,127}$/.test(key) ||
+      typeof raw !== "string" ||
+      raw.length > 16_384
+    ) {
+      continue;
     }
+    record[key] = raw;
   }
   return record;
 }
@@ -52,14 +60,22 @@ export async function loadMcpSecretDescriptors(params: {
   serverId: string;
   userId: string;
 }): Promise<McpSecretDescriptor[]> {
-  const rows = await getMcpServerSecrets(params).catch(() => []);
+  // Une erreur de lecture est une panne de contrôle d'accès, pas une absence
+  // de secrets : la propager oblige l'appelant à fail-closed plutôt que de
+  // découvrir/appeler un serveur sans son credential.
+  const rows = await getMcpServerSecrets(params);
   const descriptors: McpSecretDescriptor[] = [];
   for (const row of rows) {
     if (!isSecretKind(row.kind)) {
       continue;
     }
     const value = decrypt(row.encryptedValue);
-    if (!value) {
+    if (
+      !value ||
+      typeof row.key !== "string" ||
+      !/^[A-Za-z_][A-Za-z0-9_-]{0,127}$/.test(row.key) ||
+      value.length > 16_384
+    ) {
       continue;
     }
     descriptors.push({ key: row.key, kind: row.kind, value });
@@ -93,23 +109,33 @@ export function mergeMcpSecrets(params: {
       if (secret.key === "username" || secret.key === "password") {
         authConfig[secret.key] = secret.value;
       } else {
-        authConfig.password = secret.value;
+        // Ne pas inventer un mot de passe à partir d'une clé arbitraire.
+        continue;
       }
       continue;
     }
     if (authType === "custom_headers") {
+      if (!/^[!#$%&'*+.^_`|~0-9A-Za-z-]+$/.test(secret.key)) continue;
       headers[secret.key] = secret.value;
       continue;
     }
     if (
-      secret.key === "clientId" ||
-      secret.key === "clientSecret" ||
-      secret.key === "tokenUrl"
+      authType === "oauth2" &&
+      (secret.key === "clientId" ||
+        secret.key === "clientSecret" ||
+        secret.key === "tokenUrl" ||
+        secret.key === "token")
     ) {
       authConfig[secret.key] = secret.value;
       continue;
     }
-    authConfig.token = secret.value;
+    if (authType === "bearer" && secret.key === "token") {
+      authConfig.token = secret.value;
+      continue;
+    }
+    // Les rédactions statiques utilisent `token`; une clé inconnue ne doit
+    // pas être transformée en credential implicite.
+    if (authType === "none") continue;
   }
 
   return { authConfig, env, headers };
@@ -122,4 +148,21 @@ export function isSecretConfigured(
   key: string
 ): boolean {
   return secrets.some((secret) => secret.key === key);
+}
+
+/**
+ * Adapte le coffre MCP au contrat de dépendances d'un futur Plugin.
+ * La résolution reste côté serveur et ne renvoie jamais la liste complète
+ * des secrets au code client.
+ */
+export function createMcpSecretResolver(params: {
+  serverId: string;
+  userId: string;
+}) {
+  return async (request: { key: string; kind: McpSecretKind }) => {
+    const secrets = await loadMcpSecretDescriptors(params).catch(() => []);
+    return secrets.find(
+      (secret) => secret.key === request.key && secret.kind === request.kind
+    )?.value;
+  };
 }

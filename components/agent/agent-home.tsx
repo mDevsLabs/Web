@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Settings2Icon } from "lucide-react";
+import { AlertTriangleIcon, Settings2Icon } from "lucide-react";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { AgentComposerSubmit } from "@/components/agent/agent-composer";
@@ -22,6 +22,8 @@ export function AgentHome({
   flags,
   isRunning,
   modeSwitcher,
+  modelCompatibilityKnown,
+  modelIsCompatible,
   modelId,
   models,
   onModelChange,
@@ -40,6 +42,8 @@ export function AgentHome({
    * centrée : même contrôle et même position que sur l'accueil Chat.
    */
   modeSwitcher?: ReactNode;
+  modelCompatibilityKnown: boolean;
+  modelIsCompatible: boolean;
   modelId: string;
   models: SharedModel[];
   onModelChange: (id: string) => void;
@@ -56,6 +60,19 @@ export function AgentHome({
           + mb-2 (8 px) = 32 px, soit exactement la marge utilisée par la pile
           d'accueil du Chat (mb-8). */}
       {modeSwitcher ? <div className="mb-2">{modeSwitcher}</div> : null}
+
+      {modelCompatibilityKnown && !modelIsCompatible ? (
+        <div
+          className="flex w-full items-start gap-2 rounded-2xl border border-amber-500/30 bg-amber-500/10 px-3 py-2.5 text-left text-xs leading-5 text-amber-900 dark:text-amber-200"
+          role="status"
+        >
+          <AlertTriangleIcon className="mt-0.5 size-4 shrink-0" />
+          <span>
+            Le modèle sélectionné ne peut pas exécuter la boucle d&apos;outils
+            Agent. Choisissez un modèle compatible pour continuer.
+          </span>
+        </div>
+      ) : null}
 
       <motion.h1
         animate={{ opacity: 1, y: 0 }}
@@ -77,6 +94,7 @@ export function AgentHome({
           flags={flags}
           isRunning={isRunning}
           modelId={modelId}
+          modelIsCompatible={modelIsCompatible || !modelCompatibilityKnown}
           models={models}
           onModelChange={onModelChange}
           onOptionsChange={onOptionsChange}

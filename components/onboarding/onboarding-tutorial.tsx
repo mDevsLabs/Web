@@ -114,7 +114,7 @@ export function OnboardingTutorial() {
   };
 
   return (
-    <div className="fixed inset-0 z-[60]">
+    <div className="pointer-events-none fixed inset-0 z-[60]">
       {rect ? (
         <div
           className="pointer-events-none fixed rounded-xl ring-2 ring-primary ring-offset-2 ring-offset-background transition-all duration-300"
@@ -131,11 +131,13 @@ export function OnboardingTutorial() {
       )}
 
       <div
+        aria-label={current.title}
         className={cn(
-          "fixed z-[70] w-[330px] max-w-[calc(100vw-24px)] rounded-2xl border border-border/60 bg-card p-4 text-card-foreground shadow-[var(--shadow-float)]",
+          "pointer-events-auto fixed z-[70] w-[330px] max-w-[calc(100vw-24px)] rounded-2xl border border-border/60 bg-card p-4 text-card-foreground shadow-[var(--shadow-float)]",
           !rect && "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
         )}
         ref={tooltipRef}
+        role="dialog"
         style={
           tooltipPos
             ? { left: tooltipPos.left, top: tooltipPos.top }

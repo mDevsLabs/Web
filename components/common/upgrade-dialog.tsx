@@ -58,6 +58,16 @@ export function UpgradeDialog({
 }: UpgradeDialogProps) {
   const copy = FEATURE_COPY[feature];
   const [isMounted, setIsMounted] = useState(false);
+  const [isOpen, setIsOpen] = useState(open);
+
+  useEffect(() => {
+    setIsOpen(open);
+  }, [open]);
+
+  const handleOpenChange = (nextOpen: boolean) => {
+    setIsOpen(nextOpen);
+    onOpenChange(nextOpen);
+  };
 
   useEffect(() => {
     setIsMounted(true);
@@ -68,7 +78,7 @@ export function UpgradeDialog({
   }
 
   return (
-    <Dialog onOpenChange={onOpenChange} open={open}>
+    <Dialog onOpenChange={handleOpenChange} open={isOpen}>
       <DialogContent className="max-w-md">
         <DialogHeader>
           <div className="flex items-center gap-3">

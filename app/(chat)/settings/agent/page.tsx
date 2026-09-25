@@ -10,7 +10,7 @@ import {
   WrenchIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState, type ReactNode } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 import { AgentActivityPanel } from "@/components/agent/agent-activity-panel";
 import { AgentScheduleHistoryPanel } from "@/components/agent/agent-schedule-history-panel";
 import {
@@ -132,14 +132,27 @@ export default function AgentSettingsPage() {
         {flags?.["agent.activity"] || flags?.["agent.scheduleHistory"] ? (
           <nav className="mt-4 flex gap-4 text-sm">
             <Link href="/settings/agent">Paramètres</Link>
-            {flags?.["agent.activity"] ? <Link href="/settings/agent?view=activity">Activité Agent</Link> : null}
-            {flags?.["agent.scheduleHistory"] ? <Link href="/settings/agent?view=history">Historique planifié</Link> : null}
+            {flags?.["agent.activity"] ? (
+              <Link href="/settings/agent?view=activity">Activité Agent</Link>
+            ) : null}
+            {flags?.["agent.scheduleHistory"] ? (
+              <Link href="/settings/agent?view=history">
+                Historique planifié
+              </Link>
+            ) : null}
           </nav>
         ) : null}
-        {activityView && flags?.["agent.activity"] ? <AgentActivityPanel /> : null}
-        {historyView && flags?.["agent.scheduleHistory"] ? <AgentScheduleHistoryPanel /> : null}
+        {activityView && flags?.["agent.activity"] ? (
+          <AgentActivityPanel />
+        ) : null}
+        {historyView && flags?.["agent.scheduleHistory"] ? (
+          <AgentScheduleHistoryPanel />
+        ) : null}
 
-        {(activityView && flags?.["agent.activity"]) || (historyView && flags?.["agent.scheduleHistory"]) ? null : isLoading || !settings || !flags ? (
+        {(activityView && flags?.["agent.activity"]) ||
+        (historyView && flags?.["agent.scheduleHistory"]) ? null : isLoading ||
+          !settings ||
+          !flags ? (
           <div className="flex flex-col items-center justify-center gap-3 py-20 text-muted-foreground">
             <Loader2Icon className="size-6 animate-spin text-primary" />
             <span className="text-sm">Chargement des paramètres…</span>
@@ -154,14 +167,15 @@ export default function AgentSettingsPage() {
             )}
 
             <Section
-              description="Modèle utilisé par défaut pour les nouvelles tâches."
+              description="Utilisé uniquement si le modèle partagé avec Chat n'est pas disponible ou compatible avec Agent."
               icon={SparklesIcon}
-              title="Modèle par défaut"
+              title="Modèle de repli"
             >
               <ModelSelectorCompact
                 allowEmpty
                 capabilities={{}}
                 emptyLabel="Automatique (recommandé)"
+                fallbackToFirst={false}
                 models={data.agentModels.map((entry) => ({
                   description: entry.description,
                   id: entry.id,
@@ -248,7 +262,7 @@ export default function AgentSettingsPage() {
                   return (
                     <button
                       className={cn(
-                        "cursor-pointer rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
+                        "min-h-11 cursor-pointer rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
                         enabled
                           ? "border-primary/40 bg-primary/10 text-foreground"
                           : "border-border/50 bg-card/60 text-muted-foreground hover:text-foreground"
@@ -298,14 +312,16 @@ export default function AgentSettingsPage() {
                     </div>
                     <div className="shrink-0 sm:w-44">
                       <OptionSelector
-                        items={(((tool.impact === "external_mutation" || tool.impact === "deletion") ? ["ask", "off"] : ["auto", "ask", "off"]) as ToolPermission[]).map(
-                          (permission) => ({
-                            description:
-                              TOOL_PERMISSION_DESCRIPTIONS[permission],
-                            id: permission,
-                            label: TOOL_PERMISSION_LABELS[permission],
-                          })
-                        )}
+                        items={(
+                          (tool.impact === "external_mutation" ||
+                          tool.impact === "deletion"
+                            ? ["ask", "off"]
+                            : ["auto", "ask", "off"]) as ToolPermission[]
+                        ).map((permission) => ({
+                          description: TOOL_PERMISSION_DESCRIPTIONS[permission],
+                          id: permission,
+                          label: TOOL_PERMISSION_LABELS[permission],
+                        }))}
                         onChange={(value) =>
                           update({
                             toolPolicies: {
@@ -314,9 +330,12 @@ export default function AgentSettingsPage() {
                           })
                         }
                         value={
-                          (tool.impact === "external_mutation" || tool.impact === "deletion") && settings.toolPolicies[tool.id] === "auto"
+                          (tool.impact === "external_mutation" ||
+                            tool.impact === "deletion") &&
+                          settings.toolPolicies[tool.id] === "auto"
                             ? "ask"
-                            : settings.toolPolicies[tool.id] ?? tool.defaultPermission
+                            : (settings.toolPolicies[tool.id] ??
+                              tool.defaultPermission)
                         }
                       />
                     </div>

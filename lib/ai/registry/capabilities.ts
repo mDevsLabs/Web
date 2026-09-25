@@ -122,7 +122,18 @@ export function getMemoizedCapabilities(
   model: ChatModel | string
 ): ModelCapabilities {
   const modelId = typeof model === "string" ? model : model.id;
-  const cacheKey = `${modelId}:${typeof model === "string" ? "" : (model.maxContext ?? "")}`;
+  // Les métadonnées OpenRouter évoluent sans changer l'identifiant. Inclure leur
+  // signature dans la clé évite de conserver les capacités d'un ancien snapshot
+  // du catalogue pendant toute la vie du processus.
+  const metadataKey =
+    typeof model === "string"
+      ? ""
+      : JSON.stringify({
+          architecture: model.architecture,
+          maxContext: model.maxContext,
+          supported_parameters: model.supported_parameters,
+        });
+  const cacheKey = `v2:${modelId}:${metadataKey}`;
   const cached = capabilitiesCache.get(cacheKey);
   if (cached) {
     return cached;

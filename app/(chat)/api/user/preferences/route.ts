@@ -27,7 +27,10 @@ export async function GET() {
   if (!user) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
+  const userId = user.id;
+  if (!userId) {
+    return new ChatbotError("unauthorized:chat").toResponse();
+  }
   try {
     const prefs = await getUserPreferences(userId);
     return NextResponse.json(prefs);
@@ -57,7 +60,10 @@ export async function POST(request: Request) {
   if (!user) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
+  const userId = user.id;
+  if (!userId) {
+    return new ChatbotError("unauthorized:chat").toResponse();
+  }
   try {
     const body = await request.json().catch(() => ({}));
     const parsed = schema.safeParse(body);

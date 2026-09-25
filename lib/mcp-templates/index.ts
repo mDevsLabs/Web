@@ -12,13 +12,15 @@ import type { McpTemplateDefinition } from "./types";
 //   • aucune commande d'exécution dangereuse (shell, docker, kubectl, aws…) ;
 //   • chaque credential déclare sa destination (`kind`) et sa documentation.
 //
-// `activation: "requires_oauth_flow"` marque une intégration réelle mais non
-// installable tant que le flux OAuth interactif n'est pas implémenté : le
-// serveur refuse l'installation au lieu de laisser un bouton inerte.
+// `activation: "requires_oauth_flow"` et
+// `activation: "requires_vetted_stdio"` marquent une intégration réelle mais
+// volontairement non installable tant que le flux OAuth ou le wrapper stdio
+// vérifié n'est pas disponible : le serveur refuse l'installation au lieu de
+// laisser un bouton inerte.
 export const MCP_TEMPLATES: McpTemplateDefinition[] = [
   {
     manifest: {
-      activation: "ready",
+      activation: "requires_vetted_stdio",
       args: "-y @modelcontextprotocol/server-brave-search",
       author: "mAI",
       authType: "bearer",
@@ -99,6 +101,85 @@ export const MCP_TEMPLATES: McpTemplateDefinition[] = [
   },
   {
     manifest: {
+      activation: "ready",
+      author: "mAI",
+      authType: "bearer",
+      category: "devtools",
+      credentials: [
+        {
+          docsUrl: "https://gitlab.com/-/user_settings/personal_access_tokens",
+          instructions:
+            "GitLab → User settings → Personal access tokens → Create personal access token. Donnez une expiration courte, limitez les projets et les scopes aux opérations nécessaires (notamment read_api et api si vous autorisez des écritures). Copiez le jeton dans le champ « Token d'accès personnel GitLab » de la fiche MCP ; il sera chiffré côté serveur et ne sera pas renvoyé au navigateur.",
+          key: "token",
+          kind: "auth",
+          label: "Token d'accès personnel GitLab",
+          required: true,
+        },
+      ],
+      description:
+        "Projets, issues, merge requests, dépôts et pipelines GitLab via le serveur MCP distant officiel.",
+      docsUrl:
+        "https://docs.gitlab.com/user/model_context_protocol/mcp_server/",
+      icon: { name: "Code", type: "lucide" },
+      id: "gitlab",
+      minTier: "plus",
+      name: "GitLab",
+      readOnly: false,
+      requireApproval: "write_only",
+      setupInstructions: [
+        "1. Vérifiez que l'accès au serveur MCP est autorisé pour votre groupe ou instance GitLab.",
+        "2. Créez un token personnel depuis https://gitlab.com/-/user_settings/personal_access_tokens avec une expiration courte.",
+        "3. Limitez les projets et les permissions aux ressources nécessaires ; le scope api est requis pour les opérations d'écriture.",
+        "4. Installez ce modèle puis renseignez le token dans la fiche du serveur.",
+        "5. Les lectures sont automatiques ; les créations et modifications GitLab demandent une approbation dans la conversation.",
+      ],
+      tags: ["GitLab", "Code", "DevOps", "CI/CD"],
+      transport: "http",
+      url: "https://gitlab.com/api/v4/mcp",
+      verifiedAt: "2026-09-25",
+    },
+  },
+  {
+    manifest: {
+      activation: "ready",
+      author: "mAI",
+      authType: "bearer",
+      category: "data",
+      credentials: [
+        {
+          docsUrl: "https://airtable.com/create/tokens",
+          instructions:
+            "Créez un Personal Access Token Airtable depuis https://airtable.com/create/tokens, limitez-le aux bases accessibles et aux scopes data.records:read, data.records:write et schema.bases:read (ajoutez les scopes nécessaires aux commentaires ou au schéma). Copiez le jeton Bearer dans le champ « Jeton d'accès Airtable » de la fiche MCP ; il est chiffré côté serveur et n'est jamais renvoyé au navigateur.",
+          key: "token",
+          kind: "auth",
+          label: "Jeton d'accès Airtable (Bearer)",
+          required: true,
+        },
+      ],
+      description:
+        "Bases, tables, champs et enregistrements Airtable en lecture et en écriture via le serveur MCP Airtable.",
+      docsUrl: "https://airtable.com/developers/web/api/",
+      icon: { name: "Database", type: "lucide" },
+      id: "airtable",
+      minTier: "plus",
+      name: "Airtable",
+      readOnly: false,
+      requireApproval: "write_only",
+      setupInstructions: [
+        "1. Créez un Personal Access Token depuis https://airtable.com/create/tokens.",
+        "2. Sélectionnez uniquement les bases et permissions nécessaires ; ajoutez data.records:write pour les créations et modifications.",
+        "3. Installez ce modèle puis collez le jeton Bearer dans la fiche du serveur.",
+        "4. Le serveur utilise le point d'accès officiel https://mcp.airtable.com/mcp ; le jeton reste dans le stockage chiffré MCP.",
+        "5. Les lectures sont automatiques ; toute création, mise à jour ou suppression est soumise à approbation.",
+      ],
+      tags: ["Airtable", "Données", "No-code", "API"],
+      transport: "http",
+      url: "https://mcp.airtable.com/mcp",
+      verifiedAt: "2026-09-25",
+    },
+  },
+  {
+    manifest: {
       activation: "requires_oauth_flow",
       author: "mAI",
       authType: "oauth2",
@@ -153,7 +234,7 @@ export const MCP_TEMPLATES: McpTemplateDefinition[] = [
   },
   {
     manifest: {
-      activation: "ready",
+      activation: "requires_vetted_stdio",
       args: "-y @notionhq/notion-mcp-server",
       author: "mAI",
       authType: "bearer",
@@ -220,7 +301,7 @@ export const MCP_TEMPLATES: McpTemplateDefinition[] = [
   },
   {
     manifest: {
-      activation: "ready",
+      activation: "requires_vetted_stdio",
       args: "-y @stripe/mcp",
       author: "mAI",
       authType: "bearer",

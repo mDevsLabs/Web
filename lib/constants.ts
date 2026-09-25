@@ -36,6 +36,7 @@ export const LEGAL_LINKS = [
   { href: "https://mai-devs.vercel.app/privacy", label: "Confidentialité" },
   { href: "https://mai-devs.vercel.app/terms", label: "CGU" },
 ] as const;
+export const TERMS_URL = LEGAL_LINKS[2].href;
 
 // Limites quotidiennes de génération d'images par tier.
 // Source unique de vérité : lib/plans/tier-limits.ts (miroir du backend Val Town).

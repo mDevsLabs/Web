@@ -386,16 +386,26 @@ export const documentProposal = pgTable(
 
 export type DocumentProposal = InferSelectModel<typeof documentProposal>;
 
-export const message = pgTable("Message_v2", {
-  attachments: json("attachments").notNull().default([]),
-  chatId: uuid("chatId")
-    .notNull()
-    .references(() => chat.id, { onDelete: "cascade" }),
-  createdAt: timestamp("createdAt").notNull().defaultNow(),
-  id: text("id").primaryKey().notNull(),
-  parts: json("parts").notNull(),
-  role: varchar("role").notNull(),
-});
+export const message = pgTable(
+  "Message_v2",
+  {
+    attachments: json("attachments").notNull().default([]),
+    chatId: uuid("chatId")
+      .notNull()
+      .references(() => chat.id, { onDelete: "cascade" }),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: text("id").primaryKey().notNull(),
+    parts: json("parts").notNull(),
+    role: varchar("role").notNull(),
+  },
+  (table) => ({
+    chatCreatedIdx: index("Message_v2_chatId_createdAt_id_idx").on(
+      table.chatId,
+      table.createdAt,
+      table.id
+    ),
+  })
+);
 
 export const DBMessage = message;
 export type DBMessage = InferSelectModel<typeof message>;
@@ -477,6 +487,10 @@ export const stream = pgTable(
     id: text("id").primaryKey().notNull(),
   },
   (table) => ({
+    chatCreatedIdx: index("Stream_chatId_createdAt_idx").on(
+      table.chatId,
+      table.createdAt
+    ),
     chatRef: foreignKey({
       columns: [table.chatId],
       foreignColumns: [chat.id],
@@ -486,6 +500,27 @@ export const stream = pgTable(
 );
 
 export type Stream = InferSelectModel<typeof stream>;
+
+export const usageEvent = pgTable(
+  "UsageEvent",
+  {
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: text("id").primaryKey().notNull(),
+    inputTokens: integer("inputTokens").notNull().default(0),
+    isGhostMode: boolean("isGhostMode").notNull().default(false),
+    model: text("model"),
+    outputTokens: integer("outputTokens").notNull().default(0),
+    totalTokens: integer("totalTokens").notNull().default(0),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    userCreatedIdx: index("UsageEvent_userId_createdAt_idx").on(
+      table.userId,
+      table.createdAt
+    ),
+  })
+);
+export type UsageEvent = InferSelectModel<typeof usageEvent>;
 
 export const tokenBlacklist = pgTable("token_blacklist", {
   expiresAt: timestamp("expires_at").notNull().defaultNow(),
@@ -901,7 +936,7 @@ export const mcpServerSecret = pgTable(
 export type McpServerSecret = InferSelectModel<typeof mcpServerSecret>;
 
 export const userMcpPrefs = pgTable("user_mcp_prefs", {
-  allowStdio: boolean("allowStdio").notNull().default(true),
+  allowStdio: boolean("allowStdio").notNull().default(false),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
   defaultRateLimitPerMin: integer("defaultRateLimitPerMin")
     .notNull()
@@ -1079,6 +1114,9 @@ export const scheduledMessage = pgTable(
       table.scheduledAt
     ),
     statusIdx: index("ScheduledMessage_status_idx").on(table.status),
+    statusScheduledIdx: index(
+      "ScheduledMessage_userId_status_scheduledAt_idx"
+    ).on(table.userId, table.status, table.scheduledAt),
     userIdIdx: index("ScheduledMessage_userId_idx").on(table.userId),
   })
 );

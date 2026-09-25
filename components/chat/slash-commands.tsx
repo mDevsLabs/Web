@@ -235,7 +235,7 @@ export const slashCommands: SlashCommand[] = [
   },
   {
     action: "tool-note",
-    aliases: ["note", "notes", "memo", "mémo"],
+    aliases: ["note", "memo", "mémo"],
     description: "Activer création de note téléchargeable (one-shot)",
     icon: <NotebookIcon className="size-3.5" />,
     name: "note",
@@ -326,6 +326,7 @@ export const slashCommands: SlashCommand[] = [
 ];
 
 type SlashCommandMenuProps = {
+  id?: string;
   query: string;
   onSelect: (command: SlashCommand) => void;
   onClose: () => void;
@@ -337,12 +338,14 @@ type SlashCommandMenuProps = {
 
 function SlashCommandMenuItem({
   cmd,
+  id,
   index,
   onSelect,
   selectedIndex,
   supportsTools = true,
 }: {
   cmd: SlashCommand;
+  id?: string;
   index: number;
   onSelect: (command: SlashCommand) => void;
   selectedIndex: number;
@@ -370,6 +373,8 @@ function SlashCommandMenuItem({
 
   return (
     <button
+      aria-disabled={isDisabled}
+      aria-selected={index === selectedIndex && !isDisabled}
       className={cn(
         "flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors",
         isDisabled
@@ -379,8 +384,10 @@ function SlashCommandMenuItem({
             : "hover:bg-muted/40"
       )}
       data-selected={index === selectedIndex && !isDisabled}
+      id={id}
       onClick={handleClick}
       onMouseDown={handleMouseDown}
+      role="option"
       type="button"
     >
       <div className="flex size-6 shrink-0 items-center justify-center text-muted-foreground/60">
@@ -515,6 +522,7 @@ export function getFilteredSlashCommands(
 }
 
 export function SlashCommandMenu({
+  id = "composer-slash-listbox",
   query,
   onSelect,
   onClose: _onClose,
@@ -526,12 +534,19 @@ export function SlashCommandMenu({
   const menuRef = useRef<HTMLDivElement>(null);
   const filtered = getFilteredSlashCommands(query, context, customCommands);
 
+  const selectedOptionId = filtered[selectedIndex]
+    ? `${id}-option-${selectedIndex}`
+    : null;
+
   useEffect(() => {
-    const selected = menuRef.current?.querySelector("[data-selected='true']");
+    if (!selectedOptionId) {
+      return;
+    }
+    const selected = menuRef.current?.querySelector(`#${selectedOptionId}`);
     if (selected) {
       selected.scrollIntoView({ block: "nearest" });
     }
-  }, []);
+  }, [selectedOptionId]);
 
   if (filtered.length === 0) {
     return null;
@@ -539,8 +554,11 @@ export function SlashCommandMenu({
 
   return (
     <div
+      aria-label="Commandes slash"
       className="absolute bottom-full left-0 right-0 z-50 mb-3 overflow-hidden rounded-2xl border border-border/80 bg-white dark:bg-zinc-900 text-foreground shadow-2xl ring-1 ring-black/10 dark:ring-white/10"
+      id={id}
       ref={menuRef}
+      role="listbox"
     >
       <div className="px-4 py-2.5 bg-muted/40 border-b border-border/40 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground flex items-center justify-between">
         <span>Commandes (/)</span>
@@ -552,8 +570,9 @@ export function SlashCommandMenu({
         {filtered.map((cmd, index) => (
           <SlashCommandMenuItem
             cmd={cmd}
+            id={`${id}-option-${index}`}
             index={index}
-            key={cmd.name}
+            key={`${cmd.action}-${cmd.name}`}
             onSelect={onSelect}
             selectedIndex={selectedIndex}
             supportsTools={supportsTools}

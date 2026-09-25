@@ -53,7 +53,7 @@ export const composerTextareaClass =
 
 // Rangée d'actions : outils à gauche, actions à droite.
 export const composerActionsRowClass =
-  "flex items-center justify-between gap-2 px-1";
+  "flex flex-wrap items-center justify-between gap-2 px-1";
 
 // Bouton d'envoi/arrêt canonique. Deux états exclusifs :
 // - running + onStop : bouton d'arrêt (carré plein) ;

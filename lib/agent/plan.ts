@@ -109,7 +109,10 @@ export function applyPlanProgress(params: {
   status: AgentStepStatus;
   title: string;
 }): AgentPlan {
-  const normalizedTitle = params.title.toLowerCase();
+  const normalizedTitle = params.title.trim().toLowerCase();
+  if (!normalizedTitle) {
+    return params.plan;
+  }
   const items = params.plan.items.map((item) => {
     if (item.status !== "pending") {
       return item;
@@ -127,7 +130,12 @@ export function applyPlanProgress(params: {
 export function planToInstructions(plan: AgentPlan): string {
   return [
     `Plan de travail validé pour cette tâche (« ${plan.title} ») :`,
-    ...plan.items.map((item, index) => `${index + 1}. ${item.label}`),
+    ...plan.items.map(
+      (item, index) =>
+        `${index + 1}. ${item.label}${
+          item.description ? ` — ${item.description}` : ""
+        }`
+    ),
     "Suis ce plan, ajuste-le si les résultats l'exigent, et indique brièvement où tu en es.",
   ].join("\n");
 }

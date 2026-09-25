@@ -35,8 +35,11 @@ export type AgentRequestOptions = {
   forceWeb: boolean;
   imageEnabled: boolean;
   memoryEnabled: boolean;
+  mcpServerIds: string[];
   projectId: string | null;
   reasoningLevel: ReasoningLevel;
+  skillId: string | null;
+  skillParams: Record<string, string> | null;
   tasksEnabled: boolean;
   toolMode: AgentToolMode;
 };
@@ -89,9 +92,12 @@ const EMPTY_OPTIONS: AgentRequestOptions = {
   enabledCategories: null,
   forceWeb: false,
   imageEnabled: false,
+  mcpServerIds: [],
   memoryEnabled: false,
   projectId: null,
   reasoningLevel: "medium",
+  skillId: null,
+  skillParams: null,
   tasksEnabled: false,
   toolMode: "auto",
 };
@@ -116,6 +122,9 @@ function clearOneShotOptions(
       (next as Record<string, unknown>)[key] = false;
     }
   }
+  next.mcpServerIds = [];
+  next.skillId = null;
+  next.skillParams = null;
   return next;
 }
 
@@ -139,11 +148,13 @@ export function useAgentChat({
   chatId,
   isNewChat,
   modelId,
+  onModelResolved,
   visibility,
 }: {
   chatId: string;
   isNewChat: boolean;
   modelId: string;
+  onModelResolved?: (modelId: string) => void;
   visibility: VisibilityType;
 }) {
   const { applyDataPart, state: streamState } = useAgentStream();
@@ -180,6 +191,13 @@ export function useAgentChat({
     id: chatId,
     messages: initialMessages,
     onData: (dataPart) => {
+      if (
+        dataPart.type === "data-agent-run" &&
+        dataPart.data.model &&
+        dataPart.data.model !== modelIdRef.current
+      ) {
+        onModelResolved?.(dataPart.data.model);
+      }
       // Le statut d'attente est partagé avec le Chat : « Agent travaille… »
       // s'affiche pendant le premier chunk, comme pour une réponse classique.
       if (dataPart.type === "data-waiting-status") {
@@ -233,6 +251,10 @@ export function useAgentChat({
             forceWeb: options.forceWeb || undefined,
             id: request.id,
             imageEnabled: options.imageEnabled || undefined,
+            mcpServerIds:
+              options.mcpServerIds.length > 0
+                ? options.mcpServerIds
+                : undefined,
             memoryEnabled: options.memoryEnabled || undefined,
             modelId: modelIdRef.current,
             ...(isContinuation
@@ -242,6 +264,8 @@ export function useAgentChat({
                   projectId: options.projectId,
                 }),
             reasoningLevel: options.reasoningLevel,
+            skillId: options.skillId || undefined,
+            skillParams: options.skillParams ?? undefined,
             tasksEnabled: options.tasksEnabled || undefined,
             toolMode: options.toolMode,
             visibility: visibilityRef.current,
@@ -304,28 +328,38 @@ export function useAgentChat({
       resumeFromRunId?: string;
       text: string;
     }) => {
+      const requestOptions = options ?? optionsRef.current;
       if (options) {
-        // Capture puis remise à zéro des toggles one-shot : l'utilisateur n'a
-        // pas à désactiver lui-même Image/Audio/Web/Mémoire/Tâches après
-        // chaque envoi (même contrat que les outils one-shot du Chat). Les
-        // réglages persistants (projet, autonomie, réflexion) sont conservés.
-        optionsRef.current = clearOneShotOptions(options);
+        // Le transport lit optionsRef pendant la préparation de la requête.
+        // On conserve donc les options one-shot jusqu'à l'envoi effectif, puis
+        // on les remet à zéro pour le prochain message.
+        optionsRef.current = requestOptions;
       }
       if (typeof window !== "undefined") {
         window.history.pushState({}, "", apiEndpoints.chatPath(chatId));
       }
-      sendMessage({
-        parts: [
-          ...attachments.map((attachment) => ({
-            mediaType: attachment.contentType,
-            name: attachment.name,
-            type: "file" as const,
-            url: attachment.url,
-          })),
-          { text, type: "text" as const },
-        ],
-        role: "user" as const,
-      }, resumeFromRunId ? { body: { resumeFromRunId } } : undefined);
+      const request = sendMessage(
+        {
+          parts: [
+            ...attachments.map((attachment) => ({
+              mediaType: attachment.contentType,
+              name: attachment.name,
+              type: "file" as const,
+              url: attachment.url,
+            })),
+            { text, type: "text" as const },
+          ],
+          role: "user" as const,
+        },
+        resumeFromRunId ? { body: { resumeFromRunId } } : undefined
+      );
+      if (options) {
+        void Promise.resolve(request)
+          .finally(() => {
+            optionsRef.current = clearOneShotOptions(requestOptions);
+          })
+          .catch(() => {});
+      }
     },
     [chatId, sendMessage]
   );

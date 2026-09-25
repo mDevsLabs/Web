@@ -5,7 +5,11 @@ import {
   CHAT_OWNER_LEGACY_MATCH_ENABLED,
   chatOwnerMatches,
 } from "@/lib/agent/channel";
-import { composeAgentInstructions } from "@/lib/agent/runtime";
+import {
+  buildAgentOneShotInstructions,
+  composeAgentInstructions,
+} from "@/lib/agent/instructions";
+import { shouldForceAgentFinalResponse } from "@/lib/agent/runtime";
 import { isCanonicalUuid, scheduleChatId } from "@/lib/agent/scheduler/chat-id";
 import { resolveOnceDueAt } from "@/lib/agent/scheduler/once";
 
@@ -34,6 +38,54 @@ describe("Réorientation — les consignes atteignent réellement le modèle", (
     expect(composed).toContain("RÉORIENTATION");
   });
 
+  it("compose la finalisation dans le même contrat d'instructions", () => {
+    const composed = composeAgentInstructions(
+      "INSTRUCTIONS",
+      ["continue avec la piste A"],
+      true
+    );
+    expect(composed).toContain("continue avec la piste A");
+    expect(composed).toContain("ÉTAPE FINALE OBLIGATOIRE");
+  });
+
+  it("centralise les instructions des options one-shot", () => {
+    const instructions = buildAgentOneShotInstructions({
+      audio: false,
+      image: false,
+      memory: false,
+      tasks: true,
+      web: false,
+    });
+    expect(instructions).toContain("tasks");
+    expect(instructions).toContain("réponse textuelle");
+    expect(buildAgentOneShotInstructions(null)).toBeNull();
+  });
+
+  it("réserve la dernière étape pour une réponse textuelle", () => {
+    expect(
+      shouldForceAgentFinalResponse({
+        elapsedMs: 0,
+        maxDurationMs: 10_000,
+        maxSteps: 4,
+        maxToolCalls: 10,
+        productLimitReached: false,
+        stepCount: 2,
+        toolCallCount: 1,
+      })
+    ).toBe(false);
+    expect(
+      shouldForceAgentFinalResponse({
+        elapsedMs: 0,
+        maxDurationMs: 10_000,
+        maxSteps: 4,
+        maxToolCalls: 10,
+        productLimitReached: false,
+        stepCount: 3,
+        toolCallCount: 1,
+      })
+    ).toBe(true);
+  });
+
   it("injecte les consignes dans prepareStep, pas seulement en fin d'étape", () => {
     const runtime = codeOnly("lib/agent/runtime.ts");
     // Les instructions de l'étape suivante sont construites à partir de
@@ -59,16 +111,26 @@ describe("Budgets cumulés entre les reprises", () => {
     expect(runtime).toContain("toolCallDelta: stepToolCalls");
     expect(runtime).toContain("startToolCallCount");
     expect(runtime).toContain("toolCallBaseline +");
-    // Fin d'appels d'outils cumulée dans le garde de boucle.
-    expect(runtime).toContain(
-      "stepBaseline + steps.length >= params.budget.maxSteps"
-    );
+    // Fin d'appels d'outils cumulée dans le garde de boucle, avec une étape
+    // de synthèse réservée au lieu d'un arrêt direct sur ToolCall.
+    expect(runtime).toContain("shouldForceAgentFinalResponse");
+    expect(runtime).toContain("lastStepHasToolCalls");
   });
 
-  it("la route transmet le compteur persisté d'une reprise", () => {
+  it("la route transmet le compteur persistant d'une reprise", () => {
     const route = codeOnly("app/(chat)/api/agent/route.ts");
     expect(route).toContain(
       "startToolCallCount: activeRun?.toolCallCount ?? 0"
+    );
+  });
+
+  it("garde les options one-shot jusqu'à la préparation de la requête", () => {
+    const hook = codeOnly("hooks/use-agent-chat.ts");
+    expect(hook).toContain("optionsRef.current = requestOptions");
+    expect(hook).toContain("Promise.resolve(request)");
+    expect(hook).toContain(".finally(() => {");
+    expect(hook).not.toContain(
+      "optionsRef.current = clearOneShotOptions(options);"
     );
   });
 });
@@ -76,7 +138,7 @@ describe("Budgets cumulés entre les reprises", () => {
 describe("Modèle résolu — garde d'accès et capacités cohérentes", () => {
   it("juge l'accès avec les capacités du modèle RÉELLEMENT résolu", () => {
     const route = codeOnly("app/(chat)/api/agent/route.ts");
-    expect(route).toContain("capabilitiesOverride: resolvedEntry.capabilities");
+    expect(route).toContain("entry: resolvedEntry");
     expect(route).toContain("modelId: resolvedEntry.id");
     // L'ancienne version jugeait avec les capacités du modèle demandé.
     expect(route).not.toContain("capabilitiesOverride: requested.capabilities");
