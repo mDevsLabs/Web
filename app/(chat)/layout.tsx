@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Suspense } from "react";
 import { AppSidebar } from "@/components/chat/app-sidebar";
 import { DataStreamProvider } from "@/components/chat/data-stream-provider";
+import { NotificationPermissionGate } from "@/components/chat/notification-permission-gate";
 import { ChatShell } from "@/components/chat/shell";
 import { OnboardingTutorial } from "@/components/onboarding/onboarding-tutorial";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
@@ -43,6 +44,7 @@ async function SidebarShell({ children }: { children: React.ReactNode }) {
               <div className="flex-1">{children}</div>
             </div>
             <OnboardingTutorial />
+            <NotificationPermissionGate />
           </SidebarInset>
         </AgentModeProvider>
       </ActiveChatProvider>

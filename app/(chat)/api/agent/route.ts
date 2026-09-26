@@ -14,11 +14,10 @@ import {
   agentTierFailureResponse,
   checkAgentAccess,
   checkAgentModelAccess,
-  normalizeAgentReasoningLevel,
+  resolveAgentReasoning,
 } from "@/lib/agent/gate";
 import { buildAgentOneShotInstructions } from "@/lib/agent/instructions";
 import { ensureAgentNotificationsInstalled } from "@/lib/agent/notifications/install";
-import { generateTaskPlan, shouldGeneratePlan } from "@/lib/agent/plan";
 import {
   createAgentStream,
   createAgentStreamResponse,
@@ -30,6 +29,7 @@ import {
   listInstalledPluginAgentTools,
   narrowPluginAgentToolsForTask,
 } from "@/lib/agent/tools/adapters/plugins";
+import { TASKS_TOOL_ID } from "@/lib/agent/tools/catalog";
 import { applyToolPermissions } from "@/lib/agent/tools/permissions";
 import { listRegisteredAgentTools } from "@/lib/agent/tools/registry";
 import { selectAgentTools } from "@/lib/agent/tools/selector";
@@ -289,12 +289,16 @@ export async function POST(request: Request) {
     }
 
     // 7. Réflexion et autonomie : valeurs validées, jamais transmises telles quelles.
-    const reasoningLevel = normalizeAgentReasoningLevel({
+    //    `reasoning` sépare l'intention (persistée) de l'effort applicable au
+    //    modèle sélectionné : les deux ne coïncident pas quand le modèle expose
+    //    moins de niveaux que la préférence n'en prévoit.
+    const reasoning = resolveAgentReasoning({
       capabilities,
       fallback: settings.reasoningLevel,
       flags,
       requested: body.reasoningLevel,
     });
+    const reasoningLevel = reasoning.requested;
     const autonomy = body.autonomy ?? settings.autonomy;
     const budget = resolveAgentExecutionBudget({ tier });
 
@@ -485,6 +489,10 @@ export async function POST(request: Request) {
           body.enabledCategories ?? settings.enabledCategories ?? null
         ),
         mode: body.toolMode,
+        // Outils engageants : seul le menu « + » peut les activer. Sans cette
+        // liste, `tasks` reste invisible au sélecteur — quel que soit le mode —
+        // donc le modèle ne peut pas fabriquer un plan non demandé.
+        optInToolIds: oneShotOptions?.tasks ? [TASKS_TOOL_ID] : [],
         sessionToken: ctx.sessionToken,
         task,
         tools: baselineTools,
@@ -502,9 +510,11 @@ export async function POST(request: Request) {
 
       // Options one-shot : les outils correspondants sont forcés dans le
       // plateau, indépendamment du mode de sélection (auto / all / catégories).
+      // Pour `tasks`, c'est une redondance volontaire avec `optInToolIds` : les
+      // deux chemins doivent produire le même plateau.
       if (oneShotOptions) {
         const forcedIds = [
-          ...(oneShotOptions.tasks ? ["tasks"] : []),
+          ...(oneShotOptions.tasks ? [TASKS_TOOL_ID] : []),
           ...(oneShotOptions.image ? ["generate_image"] : []),
           ...(oneShotOptions.audio ? ["generate_audio"] : []),
           ...(oneShotOptions.memory ? ["manage_memory"] : []),
@@ -569,20 +579,16 @@ export async function POST(request: Request) {
       ...new Set(enabledTools.map((tool) => familyForCategory(tool.category))),
     ];
 
-    // 10. Plan de tâche : uniquement pour les tâches qui le justifient, et
-    // conservé tel quel lors d'une reprise.
-    const plan =
-      activeRun?.plan ??
-      (!isContinuation &&
-      shouldGeneratePlan({ familyCount: families.length, task }) &&
-      oneShotOptions?.tasks !== true
-        ? await generateTaskPlan({
-            families,
-            sessionToken: ctx.sessionToken,
-            task,
-            userId: ctx.userId,
-          })
-        : null);
+    // 10. Plan de tâche.
+    //
+    // Il n'existe que si l'utilisateur a activé l'option « Tâches », et il est
+    // alors produit par l'OUTIL `tasks` lui-même, au premier tour : le modèle le
+    // rédige, l'interface l'affiche, la progression se met à jour via
+    // applyPlanProgress. Un plan généré en amont par le serveur doublonnait cet
+    // outil, coûtait un appel modèle, et suffisait à faire annoncer un plan sur
+    // un simple « Salut » — le modèle le suivait et s'arrêtait là, sans jamais
+    // exécuter quoi que ce soit. Conservé tel quel lors d'une reprise.
+    const plan = activeRun?.plan ?? null;
 
     // 11. Run : création, ou reprise du même run (statut remis en exécution).
     let run = activeRun;
@@ -788,6 +794,11 @@ export async function POST(request: Request) {
       modelId: resolvedModel,
       plan,
       projectId: ctx.effectiveProjectId ?? null,
+      // Niveau transmis au fournisseur. `null` = on n'envoie rien : le modèle
+      // applique son propre défaut, et `reasoningLevel` reste l'intention
+      // enregistrée. Les deux diffèrent dès que le modèle expose moins de
+      // niveaux que la préférence n'en prévoit.
+      reasoningEffort: reasoning.effort,
       reasoningLevel,
       runId: run.id,
       // Réflexion visible par défaut : identique au Chat (lib/chat/stream.ts

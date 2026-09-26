@@ -42,3 +42,25 @@ export function hasTimelineContent(input: TimelineContentInput): boolean {
     input.sources.length > 0
   );
 }
+
+export type AgentHomeVisibilityInput = {
+  isHydrating: boolean;
+  messageCount: number;
+  stepCount: number;
+};
+
+/**
+ * L'accueil Agent remplace la timeline quand la conversation est vide ET
+ * qu'aucune étape de run n'est en mémoire.
+ *
+ * Les deux moitiés sont indispensables, et c'est exactement pour ça que «
+ * Nouvelle discussion » échouait : `resetChat()` ne vidait que les messages,
+ * alors que `state.steps` appartient à un autre provider, monté plus bas dans
+ * l'arbre que le sidebar. Le routeur revenait bien à `/`, mais une seule des
+ * deux conditions restait fausse — l'accueil ne s'affichait donc jamais.
+ */
+export function shouldShowAgentHome(input: AgentHomeVisibilityInput): boolean {
+  return (
+    !input.isHydrating && input.messageCount === 0 && input.stepCount === 0
+  );
+}

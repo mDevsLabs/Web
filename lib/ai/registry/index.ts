@@ -207,14 +207,21 @@ export function pickDefaultAgentModel(
 export {
   DEFAULT_MAX_FILES,
   deriveModelCapabilities,
+  getMemoizedCapabilities,
   type ModelCapabilities,
+  type ReasoningEffortResolution,
+  resetCapabilitiesCache,
+  resolveReasoningEffort,
 } from "@/lib/ai/registry/capabilities";
 export {
   DEFAULT_REASONING_LEVEL,
   isReasoningLevel,
   normalizeReasoningLevel,
+  REASONING_LEVEL_DESCRIPTIONS,
+  REASONING_LEVEL_LABELS,
   REASONING_LEVELS,
   type ReasoningLevel,
+  resolveReasoningProviderOptions,
 } from "@/lib/ai/registry/reasoning";
 export {
   filterModelsForTier,

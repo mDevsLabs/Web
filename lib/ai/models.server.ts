@@ -65,6 +65,10 @@ export async function fetchUserModels(): Promise<ChatModel[]> {
         maxOutput: m.maxOutput || 4096,
         name: displayName || name,
         provider,
+        // Capacités de réflexion déclarées par le fournisseur. Sans ce champ,
+        // le registre retomberait sur ses heuristiques par nom de modèle et
+        // proposerait des niveaux d'effort qu'aucun modèle n'accepte.
+        reasoning: m.reasoning ?? null,
         supported_parameters: m.supported_parameters,
       };
     });

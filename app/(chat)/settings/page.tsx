@@ -43,6 +43,7 @@ import {
   ModelSelectorCompact,
   type SharedModel,
 } from "@/components/chat/model-selector-compact";
+import { reopenNotificationPrompt } from "@/components/chat/notification-permission-gate";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import { ConfigurationSection } from "@/components/settings/configuration-client";
@@ -68,6 +69,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { requestOnboardingReplay } from "@/hooks/use-onboarding";
@@ -82,7 +84,16 @@ import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
 import {
+  customInstructionsCounterLabel,
+  customInstructionsHint,
+  formatCharCount,
+} from "@/lib/plans/custom-instructions";
+import {
+  exceedsCustomInstructionsProductLimit,
+  getCustomInstructionsEffectiveMax,
   getTierChatWeeklyLimit,
+  getTierCustomInstructionsMax,
+  getTierLimits,
   getTierStorageBytes,
 } from "@/lib/plans/tier-limits";
 import { usePlatform } from "@/lib/platform";
@@ -400,17 +411,32 @@ function SettingsPageInner() {
   );
 
   const { isFree } = useTier();
+
+  // Forfait utilisé pour BORNER les instructions personnalisées. On lit le
+  // profil plutôt que `useTier()` : le profil expose `tier` tel que persisté,
+  // alors que useTier dérive des drapeaux à partir de plusieurs sources de la
+  // charge utile /api/settings. Un tier non lu bascule par défaut sur Free
+  // (normalizeTierKey), soit la limite la plus stricte — le bon sens de
+  // fail-safe pour une longueur maximale.
+  const tierRaw = profile?.tier;
+  const customInstructionsMax = getCustomInstructionsEffectiveMax(tierRaw);
+  const customInstructionsOverLimit = exceedsCustomInstructionsProductLimit(
+    tierRaw,
+    customInstructions.length
+  );
+
   const [defaultAgentId, setDefaultAgentId] = useState<string>("none");
   const [isSavingDefaultAgent, setIsSavingDefaultAgent] = useState(false);
   const [agentsUpgradeOpen, setAgentsUpgradeOpen] = useState(false);
   const [showAgentChatIcons, setShowAgentChatIcons] = useState<boolean>(true);
   const [isSavingAgentIconsPref, setIsSavingAgentIconsPref] = useState(false);
-  const { data: prefAgentsData } = useSWR(
-    isFree ? null : "/api/agents",
-    fetcher,
-    { dedupingInterval: 30_000 }
-  );
-  const prefAgents: any[] = Array.isArray(prefAgentsData) ? prefAgentsData : [];
+  const { data: prefAgentsData } = useSWR<{
+    agents: any[];
+    limit: number | null;
+  }>(isFree ? null : "/api/agents", fetcher, { dedupingInterval: 30_000 });
+  const prefAgents: any[] = Array.isArray(prefAgentsData?.agents)
+    ? prefAgentsData.agents
+    : [];
 
   const handleSaveDefaultAgent = useCallback(
     async (next: string) => {
@@ -625,6 +651,10 @@ function SettingsPageInner() {
     }
   }, [notifEnabled, mutateNotifPrefs]);
 
+  const handleReopenNotificationPrompt = useCallback(() => {
+    reopenNotificationPrompt();
+  }, []);
+
   const handleSaveNotifPrefs = useCallback(async () => {
     setIsSavingNotif(true);
     try {
@@ -758,9 +788,12 @@ function SettingsPageInner() {
   const handleSaveCustomInstructions = useCallback(async () => {
     setIsSavingCustom(true);
     try {
+      // Troncature à la limite EFFECTIVE du forfait, pas à une constante :
+      // c'est cette valeur que le serveur valide (même source de vérité).
+      const payloadText = customInstructions.slice(0, customInstructionsMax);
       const res = await fetch("/api/user/preferences", {
         body: JSON.stringify({
-          customInstructions: customInstructions.slice(0, 4000),
+          customInstructions: payloadText,
           enabled: customEnabled,
           temperature: customTemp,
           topP: customTopP,
@@ -772,7 +805,17 @@ function SettingsPageInner() {
       if (!res.ok) {
         throw new Error(extractApiErrorMessage(data) || "Erreur");
       }
-      toast.success("Instructions personnalisées enregistrées !");
+      if (payloadText.length === customInstructions.length) {
+        toast.success("Instructions personnalisées enregistrées !");
+      } else {
+        // Le textarea limite la saisie via maxLength, mais une valeur
+        // ré-hydratée depuis l'API peut dépasser la limite après un changement
+        // de forfait. On le dit plutôt que de tronquer en silence.
+        setCustomInstructions(payloadText);
+        toast.warning("Texte tronqué", {
+          description: `Conservé ${formatCharCount(payloadText.length)} caractères sur ${formatCharCount(customInstructions.length)}.`,
+        });
+      }
       mutateCustomPref();
     } catch (e: any) {
       toast.error(e.message || "Erreur lors de la sauvegarde");
@@ -781,6 +824,7 @@ function SettingsPageInner() {
     }
   }, [
     customInstructions,
+    customInstructionsMax,
     customEnabled,
     customTemp,
     customTopP,
@@ -1107,7 +1151,7 @@ function SettingsPageInner() {
             <div className="py-6 flex flex-col gap-8 max-w-4xl">
               {/* Avatar */}
               <div
-                className="flex items-center gap-5 p-5 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md scroll-mt-6"
+                className="surface-card flex items-center gap-5"
                 id="profile-avatar"
               >
                 <div className="relative group">
@@ -1268,7 +1312,7 @@ function SettingsPageInner() {
                         htmlFor="settings-current-password"
                       >
                         Mot de passe actuel{" "}
-                        <strong className="text-red-500">*</strong>
+                        <strong className="text-destructive">*</strong>
                       </Label>
                       <div className="relative">
                         <Input
@@ -1388,7 +1432,7 @@ function SettingsPageInner() {
             /* ────────────── SECTION PRÉFÉRENCES IA ────────────── */
             <div className="py-6 flex flex-col gap-6 max-w-4xl">
               <div
-                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6 scroll-mt-6"
+                className="surface-card flex flex-col gap-5 scroll-mt-6"
                 id="prefs-defaults"
               >
                 <div className="flex items-center gap-2.5">
@@ -1458,10 +1502,11 @@ function SettingsPageInner() {
                     </span>
                   </div>
                   <p className="text-[11px] text-muted-foreground leading-relaxed">
-                    Les <strong>Agents</strong> remplacent les Modes IA. Crée
-                    jusqu'à 10 agents personnalisés (instructions 5000c,
-                    emoji/icône, modèle par défaut, skills, MCP et fichiers).
-                    Sélection globale via le menu à côté du modèle ou{" "}
+                    Les <strong>Agents</strong> remplacent les Modes IA. Créez
+                    des agents personnalisés (instructions 5000c, icône, modèle
+                    par défaut, skills, MCP et fichiers) : 15 avec Plus, 25 avec
+                    Pro, illimité avec Max. Sélection globale via le menu à côté
+                    du modèle ou{" "}
                     <code className="px-1 py-0.5 rounded bg-muted text-[10px]">
                       @
                     </code>{" "}
@@ -1492,11 +1537,11 @@ function SettingsPageInner() {
 
               {/* Instructions personnalisées */}
               <div
-                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6 scroll-mt-6"
+                className="surface-card flex flex-col gap-5 scroll-mt-6"
                 id="prefs-instructions"
               >
                 <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-amber-500/10 text-amber-600 ring-1 ring-amber-500/20">
+                  <div className="p-2 rounded-xl bg-warning/10 text-warning ring-1 ring-warning/20">
                     <BotIcon className="size-5" />
                   </div>
                   <div className="flex-1">
@@ -1520,19 +1565,60 @@ function SettingsPageInner() {
                 </div>
                 <div className="flex flex-col gap-2">
                   <Label className="text-xs font-medium text-muted-foreground">
-                    Qui êtes-vous ? Que doit savoir mAI sur vous ? (max 4000c)
+                    Qui êtes-vous ? Que doit savoir mAI sur vous ?{" "}
+                    {customInstructionsHint(tierRaw)
+                      ? "(illimité)"
+                      : `(max ${formatCharCount(getCustomInstructionsEffectiveMax(tierRaw))}c)`}
                   </Label>
                   <textarea
-                    className="w-full rounded-xl border border-border/60 bg-muted/20 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-primary/20 resize-y"
-                    maxLength={4000}
+                    className="field-input resize-y"
+                    maxLength={getCustomInstructionsEffectiveMax(tierRaw)}
                     onChange={(e) => setCustomInstructions(e.target.value)}
                     placeholder="Ex: Je suis développeur full-stack à Paris. Réponds toujours en français, tutoie, sois concis, privilégie TypeScript avec exemples exécutables. Mon projet principal est mAI Web..."
                     rows={5}
                     value={customInstructions}
                   />
-                  <span className="text-[11px] text-muted-foreground text-right">
-                    {customInstructions.length}/4000
-                  </span>
+                  <div className="flex items-start justify-between gap-3">
+                    <span className="text-[11px] text-muted-foreground">
+                      {customInstructionsHint(tierRaw)}
+                    </span>
+                    <span
+                      className={cn(
+                        "text-[11px] text-right tabular-nums",
+                        customInstructionsOverLimit
+                          ? "font-semibold text-destructive"
+                          : "text-muted-foreground"
+                      )}
+                    >
+                      {customInstructionsCounterLabel(
+                        tierRaw,
+                        customInstructions.length
+                      )}
+                    </span>
+                  </div>
+                  {customInstructionsOverLimit ? (
+                    <div className="surface-muted border-destructive/30 bg-destructive/5 flex flex-col gap-2 p-3">
+                      <p className="text-[11px] leading-relaxed text-destructive">
+                        Ce texte dépasse la limite du forfait{" "}
+                        {getTierLimits(tierRaw).label} (
+                        {formatCharCount(
+                          getTierCustomInstructionsMax(tierRaw) ?? 0
+                        )}{" "}
+                        caractères). Il sera tronqué au prochain enregistrement,
+                        ou refusé à l'enregistrement du champ ci-dessous.
+                      </p>
+                      <Link
+                        className="inline-flex w-fit items-center gap-1.5 text-[11px] font-semibold text-foreground hover:underline"
+                        href={MAI_UPGRADE_URL}
+                        rel="noreferrer"
+                        target="_blank"
+                      >
+                        <SparklesIcon className="size-3" />
+                        Voir les forfaits
+                        <ExternalLinkIcon className="size-3" />
+                      </Link>
+                    </div>
+                  ) : null}
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1.5">
@@ -1584,7 +1670,7 @@ function SettingsPageInner() {
                 </div>
                 <div className="flex justify-end">
                   <button
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-600 text-white px-6 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer disabled:opacity-50"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground px-6 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer disabled:opacity-50"
                     disabled={isSavingCustom}
                     onClick={handleSaveCustomInstructions}
                     type="button"
@@ -1601,7 +1687,7 @@ function SettingsPageInner() {
 
               {/* Agent par défaut */}
               <div
-                className={`p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6 scroll-mt-6 ${isFree ? "cursor-pointer" : ""}`}
+                className={`surface-card flex flex-col gap-4 scroll-mt-6 ${isFree ? "cursor-pointer" : ""}`}
                 id="prefs-agent"
                 onClick={
                   isFree
@@ -1646,7 +1732,7 @@ function SettingsPageInner() {
                   )}
                 </div>
                 {isFree ? (
-                  <div className="flex items-center gap-2 p-3 rounded-xl border border-dashed border-amber-500/40 bg-amber-500/5 text-xs text-amber-700 dark:text-amber-400">
+                  <div className="flex items-center gap-2 p-3 rounded-xl border border-dashed border-warning/40 bg-warning/5 text-xs text-warning">
                     <LockIcon className="size-4 shrink-0" />
                     <span>
                       Réservé aux forfaits Plus, Pro et Max — passez à un
@@ -1663,11 +1749,7 @@ function SettingsPageInner() {
                       items={[
                         { id: "none", label: "Aucun (modèle standard)" },
                         ...prefAgents.map((a) => ({
-                          icon: a.emoji ? (
-                            <span>{a.emoji}</span>
-                          ) : (
-                            <BotIcon className="size-3.5" />
-                          ),
+                          icon: <BotIcon className="size-3.5" />,
                           id: a.id,
                           label: a.name,
                         })),
@@ -1717,7 +1799,7 @@ function SettingsPageInner() {
 
               {/* Préférences Outils de Génération (Images & Audio) */}
               <div
-                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6 scroll-mt-6"
+                className="surface-card flex flex-col gap-5 scroll-mt-6"
                 id="prefs-tools"
               >
                 <div className="flex items-center gap-2.5">
@@ -1772,11 +1854,11 @@ function SettingsPageInner() {
 
               {/* Préférences Outil Audio & Synthèse Vocale */}
               <div
-                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6 scroll-mt-6"
+                className="surface-card flex flex-col gap-5 scroll-mt-6"
                 id="prefs-audio"
               >
                 <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-500 ring-1 ring-emerald-500/20">
+                  <div className="p-2 rounded-xl bg-success/10 text-success ring-1 ring-success/20">
                     <Volume2Icon className="size-5" />
                   </div>
                   <div>
@@ -1856,7 +1938,7 @@ function SettingsPageInner() {
                     </span>
                   </div>
                   <input
-                    className="w-full accent-emerald-500"
+                    className="w-full accent-foreground"
                     max={2.0}
                     min={0.5}
                     onChange={(e) =>
@@ -1887,7 +1969,7 @@ function SettingsPageInner() {
 
               {/* Mode régénération */}
               <div
-                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6 scroll-mt-6"
+                className="surface-card flex flex-col gap-4 scroll-mt-6"
                 id="prefs-regenerate"
               >
                 <div className="flex items-center gap-2.5">
@@ -1955,11 +2037,11 @@ function SettingsPageInner() {
             /* ────────────── SECTION NOTIFICATIONS ────────────── */
             <div className="py-6 flex flex-col gap-6 max-w-4xl">
               <div
-                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-5 sm:p-6 scroll-mt-6"
+                className="surface-card flex flex-col gap-5 scroll-mt-6"
                 id="notif-main"
               >
                 <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-blue-500/10 text-blue-500 ring-1 ring-blue-500/20">
+                  <div className="p-2 rounded-xl bg-info/10 text-info ring-1 ring-info/20">
                     <BellIcon className="size-5" />
                   </div>
                   <div>
@@ -1974,20 +2056,32 @@ function SettingsPageInner() {
                     <span
                       className={`text-xs px-2 py-1 rounded-full border font-medium ${
                         notifEnabled
-                          ? "bg-emerald-500/10 text-emerald-600 border-emerald-500/20"
+                          ? "bg-success/10 text-success border-success/20"
                           : "bg-muted text-muted-foreground border-border/50"
                       }`}
                     >
                       {notifEnabled ? "Activées" : "Désactivées"}
                     </span>
+                    {/* L'invite de chargement est mémorisée par appareil : ce
+                        bouton est le seul moyen de la retrouver après un
+                        « Fermer — ne plus afficher ». */}
+                    <Button
+                      className="h-8 gap-1.5 text-xs"
+                      onClick={handleReopenNotificationPrompt}
+                      type="button"
+                      variant="outline"
+                    >
+                      <BellIcon className="size-3.5" />
+                      Revoir l'invite
+                    </Button>
                   </div>
                 </div>
 
                 {/* Demande permission */}
                 {browserPerm === "granted" ? (
-                  <div className="p-3 rounded-xl border border-emerald-500/20 bg-emerald-500/5 flex items-center justify-between gap-3">
+                  <div className="p-3 rounded-xl border border-success/20 bg-success/5 flex items-center justify-between gap-3">
                     <span className="text-sm font-medium text-foreground flex items-center gap-2">
-                      <ShieldCheckIcon className="size-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                      <ShieldCheckIcon className="size-4 text-success shrink-0" />
                       Permission accordée
                     </span>
                     <button
@@ -2001,7 +2095,7 @@ function SettingsPageInner() {
                     </button>
                   </div>
                 ) : (
-                  <div className="p-3 rounded-xl border border-amber-500/20 bg-amber-500/5 flex flex-col gap-2">
+                  <div className="p-3 rounded-xl border border-warning/20 bg-warning/5 flex flex-col gap-2">
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex flex-col">
                         <span className="text-sm font-medium text-foreground">
@@ -2016,7 +2110,7 @@ function SettingsPageInner() {
                         </span>
                       </div>
                       <button
-                        className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-amber-600 text-white px-4 py-2 text-xs font-semibold hover:opacity-90 cursor-pointer shrink-0"
+                        className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-primary text-primary-foreground px-4 py-2 text-xs font-semibold hover:opacity-90 cursor-pointer shrink-0"
                         onClick={handleRequestNotificationPermission}
                         type="button"
                       >
@@ -2230,7 +2324,7 @@ function SettingsPageInner() {
             >
               {/* Forfait actuel */}
               <div
-                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col md:flex-row md:items-center justify-between gap-4 sm:p-6 scroll-mt-6"
+                className="surface-card flex flex-col md:flex-row md:items-center justify-between gap-4 scroll-mt-6"
                 id="usage-plan"
               >
                 <div>
@@ -2264,10 +2358,7 @@ function SettingsPageInner() {
               </div>
 
               {/* Consommation mAI (Tokens hebdomadaires) */}
-              <div
-                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6"
-                id="usage"
-              >
+              <div className="surface-card flex flex-col gap-4" id="usage">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
                     <div className="p-2 rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
@@ -2300,9 +2391,9 @@ function SettingsPageInner() {
                   <div
                     className={`h-full transition-all duration-500 rounded-full ${
                       aiPercent > 90
-                        ? "bg-red-500"
+                        ? "bg-destructive"
                         : aiPercent > 75
-                          ? "bg-amber-500"
+                          ? "bg-warning"
                           : "bg-gradient-to-r from-indigo-500 to-purple-600"
                     }`}
                     style={{ width: `${aiPercent}%` }}
@@ -2319,7 +2410,7 @@ function SettingsPageInner() {
 
               {/* Consommation Images (Quota journalier) */}
               <div
-                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6 scroll-mt-6"
+                className="surface-card flex flex-col gap-4 scroll-mt-6"
                 id="usage-images"
               >
                 <div className="flex items-center justify-between gap-3">
@@ -2354,9 +2445,9 @@ function SettingsPageInner() {
                   <div
                     className={`h-full transition-all duration-500 rounded-full ${
                       imagesPercent >= 100
-                        ? "bg-red-500"
+                        ? "bg-destructive"
                         : imagesPercent > 75
-                          ? "bg-amber-500"
+                          ? "bg-warning"
                           : "bg-gradient-to-r from-purple-500 to-pink-600"
                     }`}
                     style={{ width: `${imagesPercent}%` }}
@@ -2373,12 +2464,12 @@ function SettingsPageInner() {
 
               {/* Consommation Synthèse Vocale (Tokens Speech) */}
               <div
-                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6 scroll-mt-6"
+                className="surface-card flex flex-col gap-4 scroll-mt-6"
                 id="usage-speech"
               >
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-500 ring-1 ring-emerald-500/20 shrink-0">
+                    <div className="p-2 rounded-xl bg-success/10 text-success ring-1 ring-success/20 shrink-0">
                       <Volume2Icon className="size-5" />
                     </div>
                     <div className="min-w-0">
@@ -2407,10 +2498,10 @@ function SettingsPageInner() {
                   <div
                     className={`h-full transition-all duration-500 rounded-full ${
                       speechPercent >= 100
-                        ? "bg-red-500"
+                        ? "bg-destructive"
                         : speechPercent > 75
-                          ? "bg-amber-500"
-                          : "bg-gradient-to-r from-emerald-500 to-teal-600"
+                          ? "bg-warning"
+                          : "bg-foreground"
                     }`}
                     style={{ width: `${speechPercent}%` }}
                   />
@@ -2428,12 +2519,12 @@ function SettingsPageInner() {
 
               {/* Consommation Cloud Storage */}
               <div
-                className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6 scroll-mt-6"
+                className="surface-card flex flex-col gap-4 scroll-mt-6"
                 id="usage-cloud"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
-                    <div className="p-2 rounded-xl bg-blue-500/10 text-blue-500 ring-1 ring-blue-500/20">
+                    <div className="p-2 rounded-xl bg-info/10 text-info ring-1 ring-info/20">
                       <CloudIcon className="size-5" />
                     </div>
                     <div>
@@ -2465,10 +2556,10 @@ function SettingsPageInner() {
                   <div
                     className={`h-full transition-all duration-500 rounded-full ${
                       cloudPercent > 90
-                        ? "bg-red-500"
+                        ? "bg-destructive"
                         : cloudPercent > 75
-                          ? "bg-amber-500"
-                          : "bg-gradient-to-r from-blue-500 to-cyan-600"
+                          ? "bg-warning"
+                          : "bg-foreground"
                     }`}
                     style={{ width: `${cloudPercent}%` }}
                   />

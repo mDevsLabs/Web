@@ -34,6 +34,7 @@ const REQUIRED_TABLES = [
   "Message_v2",
   "Stream",
   "ScheduledMessage",
+  "UserMemory",
 ];
 
 // Colonnes introduites par des migrations récentes : détecte une base partiellement migrée.
@@ -41,11 +42,19 @@ const REQUIRED_COLUMNS = [
   { column: "agentApprovalRequired", table: "user_notification_prefs" },
   { column: "executionOwner", table: "AgentRun" },
   { column: "executionLeaseUntil", table: "AgentRun" },
+  { column: "isEnabled", table: "UserMemory" },
+  { column: "isImportant", table: "UserMemory" },
+  { column: "planningTaskCompleted", table: "user_notification_prefs" },
+  { column: "quotaWarning", table: "user_notification_prefs" },
   { column: "stopReason", table: "AgentRun" },
   { column: "parentRunId", table: "AgentRun" },
   { column: "scheduleVersionId", table: "AgentScheduleOccurrence" },
-  { column: "planningTaskCompleted", table: "user_notification_prefs" },
-  { column: "quotaWarning", table: "user_notification_prefs" },
+  { column: "tags", table: "UserMemory" },
+  // Migration 0030 : écran chargé à chaque arrivée sur l'accueil, et
+  // décomposition du quota (les tokens de réflexion sont un sous-ensemble des
+  // tokens de sortie : ils sont comptés, mais gardés à part).
+  { column: "defaultMode", table: "AgentSettings" },
+  { column: "reasoningTokens", table: "UsageEvent" },
 ];
 
 const REQUIRED_INDEXES = [

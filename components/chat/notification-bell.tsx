@@ -6,13 +6,17 @@ import {
   Bot,
   CalendarClock,
   CheckCheckIcon,
+  CheckCircle2,
   CheckIcon,
   Folder,
   Lock,
   Megaphone,
+  MessageCircleQuestion,
   Puzzle,
+  ShieldQuestion,
   Trash2Icon,
   TrashIcon,
+  UserPlus,
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -63,10 +67,23 @@ function NotificationIcon({ type }: { type: string }) {
       return <Megaphone className="size-4" />;
     case "project_created":
       return <Folder className="size-4" />;
+    case "project_member_joined":
+      return <UserPlus className="size-4" />;
     case "planning_task_completed":
-      return <CalendarClock className="size-4 text-emerald-500" />;
+      return <CalendarClock className="size-4 text-success" />;
     case "quota_warning":
-      return <AlertTriangle className="size-4 text-amber-500" />;
+      return <AlertTriangle className="size-4 text-warning" />;
+    // Types Agent : 6 lignes plutôt qu'un repli sur la cloche, sinon les
+    // événements les plus importants (fin de run, approbation attendue)
+    // s'affichaient comme une notification générique.
+    case "agent_run_finished":
+      return <CheckCircle2 className="size-4 text-success" />;
+    case "agent_run_failed":
+      return <AlertTriangle className="size-4 text-destructive" />;
+    case "agent_approval_required":
+      return <ShieldQuestion className="size-4 text-warning" />;
+    case "agent_user_input_required":
+      return <MessageCircleQuestion className="size-4 text-info" />;
     default:
       return <BellIcon className="size-4" />;
   }

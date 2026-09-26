@@ -22,7 +22,6 @@ export type AgentStatItem = {
   name: string;
   description: string | null;
   icon: string;
-  emoji: string | null;
   color: string;
   defaultModelId: string;
   pinned: boolean;
@@ -35,6 +34,8 @@ export type AgentsStatsData = {
   totalAgentChats: number;
   totalStandardChats: number;
   totalAgents: number;
+  /** Quota d'agents du forfait ; `null` = illimité (Max). */
+  agentLimit: number | null;
   agents: AgentStatItem[];
 };
 
@@ -152,12 +153,7 @@ export function AgentsStats() {
                     className="size-5 rounded-md flex items-center justify-center text-white text-xs shrink-0"
                     style={{ backgroundColor: topAgent.color }}
                   >
-                    <AgentIcon
-                      emoji={topAgent.emoji}
-                      icon={topAgent.icon}
-                      size={12}
-                      variant="plain"
-                    />
+                    <AgentIcon icon={topAgent.icon} size={12} variant="plain" />
                   </div>
                   <span className="text-base font-bold text-foreground truncate">
                     {topAgent.name}
@@ -193,7 +189,7 @@ export function AgentsStats() {
           </div>
           <div className="mt-3">
             <span className="text-2xl font-bold text-foreground">
-              {totalAgents}/10
+              {totalAgents}/{data.agentLimit ?? "∞"}
             </span>
             <p className="text-[11px] text-muted-foreground mt-0.5">
               agents personnalisés prêts à l'emploi
@@ -236,12 +232,7 @@ export function AgentsStats() {
                           className="size-5 rounded-md flex items-center justify-center text-white text-[10px] shrink-0"
                           style={{ backgroundColor: ag.color }}
                         >
-                          <AgentIcon
-                            emoji={ag.emoji}
-                            icon={ag.icon}
-                            size={12}
-                            variant="plain"
-                          />
+                          <AgentIcon icon={ag.icon} size={12} variant="plain" />
                         </div>
                         <span className="font-medium text-foreground truncate">
                           {ag.name}
@@ -381,12 +372,7 @@ export function AgentsStats() {
                           className="size-7 rounded-lg flex items-center justify-center text-white shrink-0 shadow-xs"
                           style={{ backgroundColor: ag.color }}
                         >
-                          <AgentIcon
-                            emoji={ag.emoji}
-                            icon={ag.icon}
-                            size={14}
-                            variant="plain"
-                          />
+                          <AgentIcon icon={ag.icon} size={14} variant="plain" />
                         </div>
                         <div className="min-w-0">
                           <span className="font-semibold text-foreground block truncate">

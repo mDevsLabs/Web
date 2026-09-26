@@ -52,7 +52,6 @@ const PureChatItem = ({
 }: {
   chat: Chat & {
     agentIcon?: string | null;
-    agentEmoji?: string | null;
     agentColor?: string | null;
     agentName?: string | null;
   };
@@ -220,7 +219,6 @@ const PureChatItem = ({
           {showIcon && (
             <ChatAgentIcon
               agentColor={chat.agentColor}
-              agentEmoji={chat.agentEmoji}
               agentIcon={chat.agentIcon}
               size={14}
             />

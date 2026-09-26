@@ -22,12 +22,17 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import type { ArtifactKind } from "@/components/chat/artifact";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
+import { resolveBillableTotal } from "@/lib/agent/usage";
+import { dedupeAgentTemplatesByName } from "@/lib/agent-templates/dedupe";
+import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { resolveDatabaseUrl } from "@/lib/db/connection-string";
 import {
   redactMcpError,
   redactMcpText,
   redactMcpValue,
 } from "@/lib/mcp/redaction";
+import type { ScheduleToolMode } from "@/lib/planning/tool-mode";
+import { normalizeScheduleToolMode } from "@/lib/planning/tool-mode";
 import { MEMORY_CONTENT_MAX_LENGTH } from "../constants";
 import { ChatbotError } from "../errors";
 import {
@@ -255,12 +260,12 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     END IF;
   END $$;`);
 
-  // UserMemory : les colonnes introduites par le schéma Drizzle (filtre de
-  // portée, importance, tags) manquaient en base — GET /api/memory et
-  // countMemories échouaient en 42703 « column does not exist ».
-  await run(
-    client`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "category" varchar(50) DEFAULT 'general'`
-  );
+  // UserMemory : les colonnes introduites par le schéma Drizzle (activation,
+  // importance, tags) manquaient en base — GET /api/memory et countMemories
+  // échouaient en 42703 « column does not exist ». La colonne "category" a été
+  // retirée (migration 0030) : elle n'était jamais utilisée en dehors d'un
+  // filtre d'interface, et un varchar libre sans contrainte côté serveur
+  // devenait une source de données incohérentes.
   await run(
     client`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "isEnabled" boolean DEFAULT true NOT NULL`
   );
@@ -943,9 +948,8 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     "description" varchar(500) DEFAULT '',
     "instructions" text NOT NULL DEFAULT '',
     "icon" varchar(50) DEFAULT 'sparkles' NOT NULL,
-    "emoji" varchar(10) DEFAULT NULL,
     "color" varchar(7) DEFAULT '#6366f1' NOT NULL,
-    "defaultModelId" text NOT NULL DEFAULT 'google/gemini-2.5-flash',
+    "defaultModelId" text NOT NULL DEFAULT '${DEFAULT_CHAT_MODEL}',
     "skillIds" json DEFAULT '[]'::json NOT NULL,
     "mcpServerIds" json DEFAULT '[]'::json NOT NULL,
     "cloudFileUrls" json DEFAULT '[]'::json NOT NULL,
@@ -990,9 +994,8 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     "description" varchar(500) DEFAULT '',
     "instructions" text NOT NULL DEFAULT '',
     "icon" varchar(50) DEFAULT 'bot' NOT NULL,
-    "emoji" varchar(10) DEFAULT NULL,
     "color" varchar(7) DEFAULT '#6366f1' NOT NULL,
-    "defaultModelId" text DEFAULT 'google/gemini-2.5-flash' NOT NULL,
+    "defaultModelId" text DEFAULT '${DEFAULT_CHAT_MODEL}' NOT NULL,
     "skillIds" json DEFAULT '[]'::json,
     "mcpServerIds" json DEFAULT '[]'::json,
     "tags" varchar(50)[] DEFAULT '{}' NOT NULL,
@@ -1003,8 +1006,11 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
   await run(
     client`CREATE INDEX IF NOT EXISTS "AgentTemplate_isPublic_idx" ON "AgentTemplate" USING btree ("isPublic")`
   );
+  // Unicité du nom : garde-fou qui empêche le rejeu du seed de 0007_agents.sql
+  // de dupliquer les modèles (cf. migration 0029). ON CONFLICT DO NOTHING sans
+  // cible couvre cette contrainte, le seed redevient idempotent.
   await run(
-    client`CREATE INDEX IF NOT EXISTS "AgentTemplate_name_idx" ON "AgentTemplate" USING btree ("name")`
+    client`CREATE UNIQUE INDEX IF NOT EXISTS "AgentTemplate_name_key" ON "AgentTemplate" USING btree ("name")`
   );
 
   await run(
@@ -1069,8 +1075,9 @@ END $$;`
     "resultChatId" uuid,
     "agentId" uuid REFERENCES "Agent"("id") ON DELETE SET NULL,
     "recurrence" varchar(20) DEFAULT 'none' NOT NULL,
-    "modelId" text DEFAULT 'google/gemini-2.5-flash' NOT NULL,
+    "modelId" text DEFAULT '${DEFAULT_CHAT_MODEL}' NOT NULL,
     "enabledTools" json DEFAULT '[]'::json NOT NULL,
+    "toolMode" varchar(16) DEFAULT 'auto' NOT NULL,
     "cloudFileUrls" json DEFAULT '[]'::json NOT NULL,
     "customInstructions" text,
     "temperature" double precision,
@@ -1086,6 +1093,9 @@ END $$;`
       END IF;
       IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='ScheduledMessage' AND column_name='recurrence') THEN
         ALTER TABLE "ScheduledMessage" ADD COLUMN "recurrence" varchar(20) DEFAULT 'none' NOT NULL;
+      END IF;
+      IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='ScheduledMessage' AND column_name='toolMode') THEN
+        ALTER TABLE "ScheduledMessage" ADD COLUMN "toolMode" varchar(16) DEFAULT 'auto' NOT NULL;
       END IF;
     END IF;
   END $$;`);
@@ -1393,7 +1403,6 @@ export async function getChatsByUserId({
       return db
         .select({
           agentColor: agent.color,
-          agentEmoji: agent.emoji,
           agentIcon: agent.icon,
           agentId: chat.agentId,
           agentName: agent.name,
@@ -1847,7 +1856,6 @@ export async function getProjectChats({
     return await db
       .select({
         agentColor: agent.color,
-        agentEmoji: agent.emoji,
         agentIcon: agent.icon,
         agentId: chat.agentId,
         agentName: agent.name,
@@ -2958,6 +2966,7 @@ export async function recordTokenUsage({
   userEmail,
   inputTokens = 0,
   outputTokens = 0,
+  reasoningTokens = 0,
   totalTokens = 0,
   model = "default",
   isGhostMode = false,
@@ -2967,15 +2976,22 @@ export async function recordTokenUsage({
   userEmail?: string | null;
   inputTokens?: number;
   outputTokens?: number;
+  // Décomposition du quota : les tokens de réflexion sont un sous-ensemble des
+  // tokens de sortie côté fournisseur, mais l'AI SDK les sort de `outputTokens`.
+  // Ils sont donc comptés à part pour rester lisibles, et inclus dans
+  // `actualTotal` s'ils n'y sont pas déjà.
+  reasoningTokens?: number;
   totalTokens?: number;
   model?: string;
   isGhostMode?: boolean;
   idempotencyKey?: string;
 }) {
-  const actualTotal =
-    totalTokens > 0
-      ? totalTokens
-      : Math.max(0, (inputTokens || 0) + (outputTokens || 0));
+  const actualTotal = resolveBillableTotal({
+    inputTokens,
+    outputTokens,
+    reasoningTokens,
+    totalTokens,
+  });
 
   if (
     actualTotal <= 0 &&
@@ -3011,15 +3027,18 @@ export async function recordTokenUsage({
       const safeKey = idempotencyKey.slice(0, 256);
       const safeInputTokens = Math.max(0, Math.floor(inputTokens || 0));
       const safeOutputTokens = Math.max(0, Math.floor(outputTokens || 0));
+      const safeReasoningTokens = Math.max(0, Math.floor(reasoningTokens || 0));
       const safeTotalTokens = Math.max(0, Math.floor(actualTotal));
       try {
         const inserted = await _rawClient`
           INSERT INTO "UsageEvent" (
-            "id", "userId", "model", "inputTokens", "outputTokens", "totalTokens", "isGhostMode"
+            "id", "userId", "model", "inputTokens", "outputTokens",
+            "reasoningTokens", "totalTokens", "isGhostMode"
           )
           VALUES (
             ${safeKey}, ${targetUserId}, ${model}, ${safeInputTokens},
-            ${safeOutputTokens}, ${safeTotalTokens}, ${isGhostMode}
+            ${safeOutputTokens}, ${safeReasoningTokens},
+            ${safeTotalTokens}, ${isGhostMode}
           )
           ON CONFLICT ("id") DO NOTHING
           RETURNING "id"
@@ -3029,8 +3048,9 @@ export async function recordTokenUsage({
           insertedUsageEventKey = safeKey;
         }
       } catch (eventError) {
-        // La table est ajoutée par la migration 0026. Tant qu'elle n'est pas
-        // appliquée, conserver le comptage historique plutôt que de le perdre.
+        // La table est ajoutée par la migration 0026, `reasoningTokens` par la
+        // 0030. Tant qu'elles ne sont pas appliquées, conserver le comptage
+        // historique plutôt que de le perdre.
         console.warn(
           "UsageEvent indisponible, comptage direct conservé:",
           eventError
@@ -4415,13 +4435,27 @@ export async function createNotification(data: {
     if (!prefs.enabled) {
       return null;
     }
+    // Le gate DOIT couvrir les 12 types. Un type absent de cette table
+    // valait `undefined`, donc différent de `false` : la notification passait
+    // sans jamais consulter la préférence correspondante. C'était le cas des
+    // 6 types `agent_*` et de `project_member_joined`, dont les colonnes
+    // existent en base (migrations 0017 / 0020) mais n'étaient pas câblées ici.
+    // `?? true` reste le repli : une ligne de prefs partielle (base antérieure
+    // à une migration) ne doit jamais faire perdre une notification.
     const gate: Record<string, boolean> = {
+      agent_approval_required: (prefs as any).agentApprovalRequired ?? true,
+      agent_run_failed: (prefs as any).agentRunFailed ?? true,
+      agent_run_finished: (prefs as any).agentRunFinished ?? true,
+      agent_user_input_required: (prefs as any).agentUserInputRequired ?? true,
       ai_response: prefs.aiResponse,
       mcp_access_request: prefs.mcpAccessRequest,
       mcp_created: prefs.mcpCreated,
       news: prefs.news,
       planning_task_completed: (prefs as any).planningTaskCompleted ?? true,
       project_created: prefs.projectCreated,
+      // Pas de colonne dédiée : la participation à un projet est un événement
+      // factuel, governed par projectCreated.
+      project_member_joined: prefs.projectCreated,
       quota_warning: (prefs as any).quotaWarning ?? true,
     };
     if (gate[data.type] === false) {
@@ -4579,7 +4613,6 @@ export async function createAgent(data: {
   description?: string;
   instructions: string;
   icon?: string;
-  emoji?: string | null;
   color?: string;
   defaultModelId?: string;
   skillIds?: string[];
@@ -4599,9 +4632,8 @@ export async function createAgent(data: {
     .values({
       cloudFileUrls: (data.cloudFileUrls as any) ?? [],
       color: data.color ?? "#6366f1",
-      defaultModelId: data.defaultModelId ?? "google/gemini-2.5-flash",
+      defaultModelId: data.defaultModelId ?? DEFAULT_CHAT_MODEL,
       description: data.description ?? "",
-      emoji: data.emoji ?? null,
       icon: data.icon ?? "sparkles",
       instructions: data.instructions,
       maxTokens: data.maxTokens ?? null,
@@ -4632,7 +4664,6 @@ export async function updateAgent({
     description: string;
     instructions: string;
     icon: string;
-    emoji: string | null;
     color: string;
     defaultModelId: string;
     skillIds: string[];
@@ -4687,9 +4718,8 @@ export async function duplicateAgent({
   return createAgent({
     cloudFileUrls: (original.cloudFileUrls as any) ?? [],
     color: original.color ?? "#6366f1",
-    defaultModelId: original.defaultModelId ?? "google/gemini-2.5-flash",
+    defaultModelId: original.defaultModelId ?? DEFAULT_CHAT_MODEL,
     description: original.description ?? "",
-    emoji: (original as any).emoji ?? null,
     icon: original.icon ?? "sparkles",
     instructions: original.instructions,
     maxTokens: (original as any).maxTokens ?? null,
@@ -4922,7 +4952,6 @@ export async function createMemory({
   content,
   agentId = null,
   projectId = null,
-  category = "general",
   tags = [],
   isImportant = false,
   isEnabled = true,
@@ -4931,7 +4960,6 @@ export async function createMemory({
   content: string;
   agentId?: string | null;
   projectId?: string | null;
-  category?: string;
   tags?: string[];
   isImportant?: boolean;
   isEnabled?: boolean;
@@ -4941,7 +4969,6 @@ export async function createMemory({
     .insert(userMemory)
     .values({
       agentId: agentId ?? null,
-      category: category ?? "general",
       content: sanitizeMemoryContent(content),
       isEnabled: isEnabled ?? true,
       isImportant: isImportant ?? false,
@@ -4976,7 +5003,6 @@ function sanitizeMemoryContent(content: string): string {
 }
 
 export async function updateMemory({
-  category,
   content,
   id,
   isEnabled,
@@ -4984,7 +5010,6 @@ export async function updateMemory({
   tags,
   userId,
 }: {
-  category?: string;
   content?: string;
   id: string;
   isEnabled?: boolean;
@@ -4998,7 +5023,6 @@ export async function updateMemory({
     if (!safe) return null;
     setFields.content = safe;
   }
-  if (category !== undefined) setFields.category = category;
   if (isEnabled !== undefined) setFields.isEnabled = isEnabled;
   if (isImportant !== undefined) setFields.isImportant = isImportant;
   if (tags !== undefined) setFields.tags = tags;
@@ -5029,7 +5053,6 @@ export async function getUserMemoriesWithScope({
     .select({
       agentId: userMemory.agentId,
       agentName: agent.name,
-      category: userMemory.category,
       content: userMemory.content,
       createdAt: userMemory.createdAt,
       id: userMemory.id,
@@ -5083,11 +5106,16 @@ export async function searchMemories({
 
 export async function getAgentTemplates() {
   const database = await getDb();
-  return database
+  const rows = await database
     .select()
     .from(agentTemplate)
     .where(eq(agentTemplate.isPublic, true))
     .orderBy(asc(agentTemplate.name));
+  // Défense en profondeur : la migration 0029 supprime les doublons et pose un
+  // index UNIQUE sur "name", mais une base migrée à la main (ou une ligne
+  // insérée avant la contrainte) ne doit jamais afficher deux fois le même
+  // modèle. Voir lib/agent-templates/dedupe.ts.
+  return dedupeAgentTemplatesByName(rows);
 }
 
 export async function broadcastNewsNotification(data: {
@@ -5328,7 +5356,6 @@ export async function getAgentStatsByUserId({ userId }: { userId: string }) {
       color: ag.color,
       defaultModelId: ag.defaultModelId,
       description: ag.description,
-      emoji: ag.emoji,
       icon: ag.icon,
       id: ag.id,
       lastUsedAt: stats.lastUsedAt,
@@ -5364,6 +5391,7 @@ export async function createScheduledMessage(params: {
   agentId?: string | null;
   modelId?: string;
   enabledTools?: string[];
+  toolMode?: ScheduleToolMode;
   cloudFileUrls?: string[];
   customInstructions?: string | null;
   temperature?: number | null;
@@ -5378,14 +5406,17 @@ export async function createScheduledMessage(params: {
       cloudFileUrls: params.cloudFileUrls || [],
       createMode: params.createMode || "new_chat",
       customInstructions: params.customInstructions || null,
+      // Conservé pour la compat ascendante, plus lu par l'exécuteur : le
+      // périmètre d'outils est désormais porté par "toolMode".
       enabledTools: params.enabledTools || [],
-      modelId: params.modelId || "google/gemini-2.5-flash",
+      modelId: params.modelId || DEFAULT_CHAT_MODEL,
       prompt: params.prompt,
       recurrence: params.recurrence || "none",
       scheduledAt: params.scheduledAt,
       status: "pending",
       temperature: params.temperature ?? null,
       title: params.title || "Envoi planifié",
+      toolMode: normalizeScheduleToolMode(params.toolMode),
       userId: params.userId,
     })
     .returning();
@@ -5436,6 +5467,7 @@ export async function updateScheduledMessage(params: {
   agentId?: string | null;
   modelId?: string;
   enabledTools?: string[];
+  toolMode?: ScheduleToolMode;
   cloudFileUrls?: string[];
   customInstructions?: string | null;
   temperature?: number | null;
@@ -5462,6 +5494,8 @@ export async function updateScheduledMessage(params: {
   if (updates.modelId !== undefined) updateData.modelId = updates.modelId;
   if (updates.enabledTools !== undefined)
     updateData.enabledTools = updates.enabledTools;
+  if (updates.toolMode !== undefined)
+    updateData.toolMode = normalizeScheduleToolMode(updates.toolMode);
   if (updates.cloudFileUrls !== undefined)
     updateData.cloudFileUrls = updates.cloudFileUrls;
   if (updates.customInstructions !== undefined)

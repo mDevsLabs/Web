@@ -7,6 +7,7 @@ import useSWR from "swr";
 
 import { AgentIcon } from "@/components/agents/agent-icon";
 import { AGENT_COLORS, AGENT_ICONS } from "@/components/agents/agent-presets";
+import { ColorPicker } from "@/components/common/color-picker";
 import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import { Button } from "@/components/ui/button";
 import {
@@ -86,10 +87,11 @@ export function ConfigurationSection() {
     servers: Array<{ id: string; name: string; isEnabled: boolean }>;
   }>(isFree ? null : "/api/mcp", fetcher);
   const mcpServers = mcpData?.servers ?? [];
-  const { data: agents = [] } = useSWR<Array<{ id: string; name: string }>>(
-    isFree ? null : "/api/agents",
-    fetcher
-  );
+  const { data: agentsData } = useSWR<{
+    agents: Array<{ id: string; name: string }>;
+    limit: number | null;
+  }>(isFree ? null : "/api/agents", fetcher);
+  const agents = agentsData?.agents ?? [];
   const { data: skills = [] } = useSWR<Array<{ id: string; name: string }>>(
     isFree ? null : "/api/skills",
     fetcher
@@ -439,20 +441,12 @@ export function ConfigurationSection() {
                   </button>
                 ))}
               </div>
-              <div className="flex flex-wrap gap-1.5 pt-1">
-                {AGENT_COLORS.map((c) => (
-                  <button
-                    className={cn(
-                      "size-6 rounded-full transition-transform",
-                      form.color === c && "ring-2 ring-foreground scale-110"
-                    )}
-                    key={c}
-                    onClick={() => setFormPartial({ color: c })}
-                    style={{ backgroundColor: c }}
-                    type="button"
-                  />
-                ))}
-              </div>
+              <ColorPicker
+                className="pt-1"
+                colors={AGENT_COLORS}
+                onChange={(color) => setFormPartial({ color })}
+                value={form.color}
+              />
             </div>
 
             {/* Action */}

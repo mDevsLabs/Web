@@ -18,6 +18,7 @@ import {
   uuid,
   varchar,
 } from "drizzle-orm/pg-core";
+import { AGENT_MODES, type AgentMode } from "@/lib/agent/channel";
 import type { ScheduleRule } from "@/lib/agent/contracts";
 import type {
   AgentOccurrenceRecord,
@@ -35,6 +36,8 @@ import type {
   ToolCategory,
   ToolPermission,
 } from "@/lib/agent/types";
+import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { REASONING_LEVELS } from "@/lib/ai/registry/reasoning";
 
 export const project = pgTable(
   "Project",
@@ -510,6 +513,10 @@ export const usageEvent = pgTable(
     isGhostMode: boolean("isGhostMode").notNull().default(false),
     model: text("model"),
     outputTokens: integer("outputTokens").notNull().default(0),
+    // Les tokens de réflexion sont un sous-ensemble des tokens de sortie côté
+    // fournisseur : ils sont additionnés au quota mais gardés à part, pour que
+    // la décomposition reste lisible (migration 0030).
+    reasoningTokens: integer("reasoningTokens").notNull().default(0),
     totalTokens: integer("totalTokens").notNull().default(0),
     userId: text("userId").notNull(),
   },
@@ -985,9 +992,8 @@ export const agent = pgTable(
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     defaultModelId: text("defaultModelId")
       .notNull()
-      .default("google/gemini-2.5-flash"),
+      .default(DEFAULT_CHAT_MODEL),
     description: varchar("description", { length: 500 }).default(""),
-    emoji: varchar("emoji", { length: 10 }),
     icon: varchar("icon", { length: 50 }).default("sparkles").notNull(),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     instructions: text("instructions").notNull().default(""),
@@ -1025,10 +1031,9 @@ export const agentTemplate = pgTable(
     color: varchar("color", { length: 7 }).default("#6366f1").notNull(),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     defaultModelId: text("defaultModelId")
-      .default("google/gemini-2.5-flash")
+      .default(DEFAULT_CHAT_MODEL)
       .notNull(),
     description: varchar("description", { length: 500 }).default(""),
-    emoji: varchar("emoji", { length: 10 }),
     icon: varchar("icon", { length: 50 }).default("bot").notNull(),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     instructions: text("instructions").notNull().default(""),
@@ -1041,7 +1046,9 @@ export const agentTemplate = pgTable(
   },
   (table) => ({
     isPublicIdx: index("AgentTemplate_isPublic_idx").on(table.isPublic),
-    nameIdx: index("AgentTemplate_name_idx").on(table.name),
+    // Un nom de modèle d'agent est unique : garantit qu'un rejeu du seed de
+    // 0007_agents.sql ne puisse pas dupliquer les modèles (cf. migration 0029).
+    nameKey: uniqueIndex("AgentTemplate_name_key").on(table.name),
   })
 );
 export type AgentTemplate = InferSelectModel<typeof agentTemplate>;
@@ -1050,7 +1057,6 @@ export const userMemory = pgTable(
   "UserMemory",
   {
     agentId: uuid("agentId"),
-    category: varchar("category", { length: 50 }).default("general"),
     content: text("content").notNull(),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
@@ -1090,7 +1096,7 @@ export const scheduledMessage = pgTable(
     executedAt: timestamp("executedAt"),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     lastError: text("lastError"),
-    modelId: text("modelId").notNull().default("google/gemini-2.5-flash"),
+    modelId: text("modelId").notNull().default(DEFAULT_CHAT_MODEL),
     prompt: text("prompt").notNull(),
     recurrence: varchar("recurrence", {
       enum: ["none", "daily", "weekly", "monthly"],
@@ -1106,6 +1112,12 @@ export const scheduledMessage = pgTable(
       .default("pending"),
     temperature: doublePrecision("temperature"),
     title: text("title").notNull().default("Envoi planifié"),
+    // Périmètre d'outils de l'exécution planifiée (cf. lib/planning/tool-mode).
+    toolMode: varchar("toolMode", {
+      enum: ["auto", "plugins", "none"],
+    })
+      .notNull()
+      .default("auto"),
     updatedAt: timestamp("updatedAt").notNull().defaultNow(),
     userId: text("userId").notNull(),
   },
@@ -1159,9 +1171,7 @@ export const agentRun = pgTable(
     model: text("model").notNull(),
     parentRunId: uuid("parentRunId"),
     plan: json("plan").$type<AgentPlan | null>(),
-    reasoningLevel: varchar("reasoningLevel", {
-      enum: ["low", "medium", "high"],
-    })
+    reasoningLevel: varchar("reasoningLevel", { enum: REASONING_LEVELS })
       .notNull()
       .default("medium"),
     revision: integer("revision").notNull().default(0),
@@ -1336,15 +1346,18 @@ export const agentSettings = pgTable("AgentSettings", {
     .notNull()
     .default("standard"),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
+  // Écran chargé à chaque arrivée sur la page d'accueil. "agent" n'est
+  // proposé qu'aux comptes qui y ont droit (cf. /api/agent/settings PATCH).
+  defaultMode: varchar("defaultMode", { enum: AGENT_MODES })
+    .notNull()
+    .default("chat"),
   defaultModel: text("defaultModel"),
   defaultProjectId: uuid("defaultProjectId"),
   enabledCategories: json("enabledCategories")
     .$type<ToolCategory[]>()
     .notNull()
     .default([]),
-  reasoningLevel: varchar("reasoningLevel", {
-    enum: ["low", "medium", "high"],
-  })
+  reasoningLevel: varchar("reasoningLevel", { enum: REASONING_LEVELS })
     .notNull()
     .default("medium"),
   toolPolicies: json("toolPolicies")

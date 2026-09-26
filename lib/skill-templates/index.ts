@@ -165,7 +165,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
       color: "#8b5cf6",
       description:
         "Retrouver, résumer et ranger les documents Google Drive par thème.",
-      icon: { name: "FileText", type: "lucide" },
+      icon: { name: "NotebookPen", type: "lucide" },
       id: "notion-organizer",
       instructions:
         "Tu es un assistant documentaire. Recherche dans Notion via le serveur MCP Notion installé les pages et bases correspondant à la demande, résume leur contenu, signale les pages orphelines ou obsolètes, propose un plan de classement (bases, propriétés, renommage) et rédige un inventaire clair. Toute modification de page doit être proposée puis approuvée avant écriture.",
@@ -192,7 +192,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
       color: "#14b8a6",
       description:
         "Zones de chalandise, temps de trajet et comparaison de lieux via Maps.",
-      icon: { name: "Map", type: "lucide" },
+      icon: { name: "Rss", type: "lucide" },
       id: "brave-tech-watch",
       instructions:
         "Tu es un veilleur technologique. Interroge le serveur MCP Brave Search installé pour collecter des résultats récents et indépendants, croise au moins trois sources, écarte les contenus promotionnels, puis rédige une note de veille datée : faits marquants, incertitudes et sources citées avec leur URL.",
@@ -285,7 +285,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
       color: "#06b6d4",
       description:
         "E-mails clairs, persuasifs et conformes aux usages d'entreprise.",
-      icon: { name: "FileText", type: "lucide" },
+      icon: { name: "Mail", type: "lucide" },
       id: "email-drafter",
       instructions:
         "Tu es un rédacteur d'e-mails professionnels. Aide à structurer un message clair, persuasif et respectueux des conventions de correspondance d'entreprise.",
@@ -344,7 +344,7 @@ export const SKILL_TEMPLATES: SkillTemplateDefinition[] = [
       color: "#1f2937",
       description:
         "Triage des issues et revues de pull requests GitHub avec plan de test.",
-      icon: { name: "Code", type: "lucide" },
+      icon: { name: "GitBranch", type: "lucide" },
       id: "github-maintainer",
       instructions:
         "Tu es mainteneur d'un dépôt GitHub. Via le serveur MCP GitHub installé, liste les issues et pull requests ouvertes, déduplique, priorise selon l'impact et l'ancienneté, puis pour chaque sujet retenu : résume le contexte, liste les fichiers concernés, propose un plan de test et une réponse prête à publier. Toute écriture (commentaire, label, fermeture, création de branche) est proposée puis attend une approbation explicite avant exécution.",

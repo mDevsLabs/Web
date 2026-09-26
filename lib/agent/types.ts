@@ -135,6 +135,16 @@ export type AgentToolPermissions = {
 
 export type AgentToolAvailability = {
   categories: ToolCategory[];
+  /**
+   * Outil « engageant » : JAMAIS proposé automatiquement, quel que soit le mode
+   * de sélection (auto, all, categories) ou le routeur LLM. Il n'entre dans le
+   * plateau que si l'utilisateur l'a explicitement demandé — aujourd'hui, seule
+   * l'option « Tâches » du menu « + » qualifie `tasks`.
+   *
+   * Sans cette marque, un simple « Salut » suffisait à faire produire au modèle
+   * un plan de tâches que personne n'avait demandé.
+   */
+  optIn?: boolean;
   requires?: {
     files?: boolean;
     reasoning?: boolean;

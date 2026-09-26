@@ -1,11 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-
+import type { AgentFlags } from "@/lib/agent/flags";
 import {
   AGENT_PLAN_REQUIRED_MESSAGE,
   agentTierFailureResponse,
   checkAgentAccess,
+  resolveAgentReasoning,
 } from "@/lib/agent/gate";
-import type { AgentModelEntry } from "@/lib/ai/registry";
+import type { AgentModelEntry, ModelCapabilities } from "@/lib/ai/registry";
 import type { MaiUser } from "@/lib/auth/session";
 
 // Mock de la résolution DB : le gate lui-même lit le tier déjà résolu dans
@@ -31,7 +32,12 @@ vi.mock("@/lib/agent/flags", () => ({
   getAgentFlags: () => FLAG_VALUES,
 }));
 
-vi.mock("@/lib/ai/registry", () => ({
+// Seul l'accès au modèle est simulé (le tier est résolu en base). Le reste du
+// registre est réel : resolveAgentReasoning s'appuie sur resolveReasoningEffort
+// et normalizeReasoningLevel, qu'un mock factories aurait bouchés — le test
+// vérifierait alors le mock et non le comportement.
+vi.mock("@/lib/ai/registry", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/lib/ai/registry")>()),
   getModelEntry: (
     id: string,
     models?: Array<{
@@ -186,7 +192,9 @@ describe("checkAgentModelAccess", () => {
         images: false,
         maxFiles: 0,
         reasoning: false,
+        reasoningDefault: null,
         reasoningLevels: [],
+        reasoningMandatory: false,
         tools: true,
         vision: false,
       },
@@ -232,5 +240,133 @@ describe("checkAgentModelAccess", () => {
     });
 
     expect(result.error).toBeUndefined();
+  });
+});
+describe("L'effort transmis à l'Agent", () => {
+  const SPACE_BUNNY = {
+    audio: false,
+    contextWindow: 1_000_000,
+    documents: false,
+    file: false,
+    image: false,
+    images: false,
+    maxFiles: 0,
+    reasoning: true,
+    reasoningDefault: "max",
+    reasoningLevels: ["max", "xhigh", "high", "medium", "low"],
+    reasoningMandatory: true,
+    tools: true,
+    vision: false,
+  } as unknown as ModelCapabilities;
+
+  const MAI_2 = {
+    ...SPACE_BUNNY,
+    reasoningDefault: "high",
+    reasoningLevels: ["max", "high", "low"],
+    reasoningMandatory: false,
+  } as unknown as ModelCapabilities;
+
+  // mAI-2-Mini : raisonne mais n'expose aucun niveau.
+  const MAI_2_MINI = {
+    ...SPACE_BUNNY,
+    reasoningDefault: null,
+    reasoningLevels: [],
+  } as unknown as ModelCapabilities;
+
+  const enabledFlags = { "agent.reasoning": true } as AgentFlags;
+  const disabledFlags = { "agent.reasoning": false } as AgentFlags;
+
+  it("enregistre l'intention et transmet le niveau demandé", () => {
+    const result = resolveAgentReasoning({
+      capabilities: SPACE_BUNNY,
+      fallback: "medium",
+      flags: enabledFlags,
+      requested: "high",
+    });
+    expect(result.requested).toBe("high");
+    expect(result.effort).toBe("high");
+  });
+
+  it("accepte les sept niveaux, pas seulement le triplet historique", () => {
+    for (const level of [
+      "max",
+      "xhigh",
+      "high",
+      "medium",
+      "low",
+      "minimal",
+      "none",
+    ] as const) {
+      const result = resolveAgentReasoning({
+        capabilities: {
+          ...SPACE_BUNNY,
+          reasoningLevels: [level],
+        } as unknown as ModelCapabilities,
+        fallback: "medium",
+        flags: enabledFlags,
+        requested: level,
+      });
+      expect(result.effort).toBe(level);
+    }
+  });
+
+  it("enregistre l'intention mais recale l'effort sur les niveaux du modèle", () => {
+    // L'utilisateur a choisi « xhigh » ; mAI-2 ne le propose pas.
+    const result = resolveAgentReasoning({
+      capabilities: MAI_2,
+      fallback: "medium",
+      flags: enabledFlags,
+      requested: "xhigh",
+    });
+    // L'intention reste celle de l'utilisateur, c'est elle qu'on affiche.
+    expect(result.requested).toBe("xhigh");
+    // L'effort transmis est un niveau que mAI-2 accepte.
+    expect(result.effort).toBe("high");
+  });
+
+  it("n'envoie rien sur un modèle qui n'expose aucun niveau", () => {
+    const result = resolveAgentReasoning({
+      capabilities: MAI_2_MINI,
+      fallback: "medium",
+      flags: enabledFlags,
+      requested: "high",
+    });
+    expect(result.requested).toBe("high");
+    expect(result.effort).toBeNull();
+  });
+
+  it("n'envoie rien quand le sélecteur est coupé, sans perdre l'intention", () => {
+    // Le flag coupe la molette, il ne doit pas réécrire ce que l'utilisateur a
+    // choisi : le réglage doit survivre à une réactivation du flag.
+    const result = resolveAgentReasoning({
+      capabilities: SPACE_BUNNY,
+      fallback: "medium",
+      flags: disabledFlags,
+      requested: "max",
+    });
+    expect(result.effort).toBeNull();
+    expect(result.requested).toBe("max");
+  });
+
+  it("retombe sur le réglage Agent quand la requête n'en porte pas", () => {
+    const result = resolveAgentReasoning({
+      capabilities: SPACE_BUNNY,
+      fallback: "low",
+      flags: enabledFlags,
+      requested: undefined,
+    });
+    expect(result.effort).toBe("low");
+  });
+
+  it("ne laisse passer ni valeur illisible ni niveau hors nomenclature", () => {
+    for (const requested of ["turbo", "", 42, null, {}]) {
+      const result = resolveAgentReasoning({
+        capabilities: SPACE_BUNNY,
+        fallback: "medium",
+        flags: enabledFlags,
+        requested,
+      });
+      expect(result.requested).toBe("medium");
+    }
   });
 });

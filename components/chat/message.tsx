@@ -118,7 +118,7 @@ function AgentAudioToolResult({
             Synthèse vocale Agent
           </span>
         </div>
-        {output.voice ? (
+        {typeof output.voice === "string" ? (
           <span className="rounded-full border border-border/30 bg-muted/60 px-2 py-0.5 text-[11px] font-medium text-muted-foreground">
             Voix : {output.voice.replace("flux-", "").replace("-en", "")}
           </span>
@@ -420,7 +420,13 @@ const PurePreviewMessage = ({
   searchQuery?: string;
   isCurrentMatch?: boolean;
 }) => {
-  const attachmentsFromMessage = message.parts.filter(
+  // `parts` est `notNull` en base et toujours un tableau côté SDK, mais c'était la
+  // SEULE lecture non gardée de ce fichier : une ligne malformée suffisait à
+  // faire tomber le segment de route entier — donc la conversation, le
+  // compositeur et l'historique avec. Toute lecture passe par cette liste.
+  const messageParts = message.parts ?? [];
+
+  const attachmentsFromMessage = messageParts.filter(
     (part) => part.type === "file"
   );
 
@@ -429,13 +435,13 @@ const PurePreviewMessage = ({
   const isUser = message.role === "user";
   const isAssistant = message.role === "assistant";
 
-  const hasAnyContent = message.parts?.some(
+  const hasAnyContent = messageParts.some(
     (part) =>
       (part.type === "text" && part.text?.trim().length > 0) ||
       (part.type === "reasoning" &&
         "text" in part &&
         part.text?.trim().length > 0) ||
-      part.type.startsWith("tool-")
+      (typeof part.type === "string" && part.type.startsWith("tool-"))
   );
   const isThinking = isAssistant && isLoading && !hasAnyContent;
 
@@ -457,7 +463,7 @@ const PurePreviewMessage = ({
     </div>
   );
 
-  const mergedReasoning = message.parts?.reduce(
+  const mergedReasoning = messageParts.reduce(
     (acc, part) => {
       if (part.type === "reasoning" && part.text?.trim().length > 0) {
         return {
@@ -477,8 +483,7 @@ const PurePreviewMessage = ({
     if (!isAssistant || isLoading) {
       return false;
     }
-    const parts = message.parts ?? [];
-    const last = parts.at(-1);
+    const last = messageParts.at(-1);
     if (!last) {
       return false;
     }
@@ -492,9 +497,9 @@ const PurePreviewMessage = ({
       state === "input-streaming" ||
       state === "approval-responded"
     );
-  }, [isAssistant, isLoading, message.parts]);
+  }, [isAssistant, isLoading, messageParts]);
 
-  const parts = message.parts?.map((part, index) => {
+  const parts = messageParts.map((part, index) => {
     const { type } = part;
     const key = `message-${message.id}-part-${index}`;
 

@@ -43,6 +43,10 @@ import { Input } from "@/components/ui/input";
 import { normalizeModelDisplayName } from "@/lib/ai/models";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { Agent, ScheduledMessage } from "@/lib/db/schema";
+import {
+  deriveScheduleToolMode,
+  SCHEDULE_TOOL_MODE_META,
+} from "@/lib/planning/tool-mode";
 import { cn, fetcher } from "@/lib/utils";
 
 interface PlanningClientProps {
@@ -262,7 +266,7 @@ export function PlanningClient({
     const ag = initialAgents.find((a) => a.id === agentId);
     return ag ? (
       <span className="flex items-center gap-1">
-        {ag.emoji ? <span>{ag.emoji}</span> : <BotIcon className="size-3" />}
+        <BotIcon className="size-3" />
         <span>{ag.name}</span>
       </span>
     ) : null;
@@ -528,15 +532,17 @@ export function PlanningClient({
                             </span>
                           </span>
                         )}
-                      {Array.isArray(item.enabledTools) &&
-                        (item.enabledTools as string[]).map((t) => (
-                          <span
-                            className="rounded-md bg-primary/10 px-2 py-0.5 text-[11px] font-medium text-primary"
-                            key={t}
-                          >
-                            {t}
-                          </span>
-                        ))}
+                      <span className="rounded-md bg-primary/10 px-2 py-0.5 text-[11px] font-medium text-primary">
+                        Outils :{" "}
+                        {
+                          SCHEDULE_TOOL_MODE_META[
+                            deriveScheduleToolMode({
+                              enabledTools: item.enabledTools,
+                              storedMode: item.toolMode,
+                            })
+                          ].label
+                        }
+                      </span>
                     </div>
 
                     {item.lastError && (

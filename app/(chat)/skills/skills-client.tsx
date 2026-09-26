@@ -29,6 +29,7 @@ import { toast } from "sonner";
 import useSWR from "swr";
 import { AGENT_COLORS } from "@/components/agents/agent-presets";
 import { PageBackButton } from "@/components/chat/page-back-button";
+import { ColorPicker } from "@/components/common/color-picker";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -1227,20 +1228,12 @@ export default function SkillsClient({
                 <Label className="text-xs font-semibold">
                   Couleur du badge
                 </Label>
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  {AGENT_COLORS.map((c) => (
-                    <button
-                      className={cn(
-                        "size-6 rounded-full transition-transform",
-                        formColor === c && "ring-2 ring-foreground scale-110"
-                      )}
-                      key={c}
-                      onClick={() => setFormColor(c)}
-                      style={{ backgroundColor: c }}
-                      type="button"
-                    />
-                  ))}
-                </div>
+                <ColorPicker
+                  className="pt-1"
+                  colors={AGENT_COLORS}
+                  onChange={setFormColor}
+                  value={formColor}
+                />
               </div>
             </div>
 

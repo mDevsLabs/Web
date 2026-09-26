@@ -1,5 +1,6 @@
 import "server-only";
 
+import { readReasoningTokens, resolveBillableTotal } from "@/lib/agent/usage";
 import { MAI_API_URL } from "@/lib/constants";
 import { recordTokenUsage } from "@/lib/db/queries";
 
@@ -10,27 +11,37 @@ import { recordTokenUsage } from "@/lib/db/queries";
 export type AgentUsageTotals = {
   inputTokens: number;
   outputTokens: number;
+  reasoningTokens: number;
   totalTokens: number;
 };
 
 export async function recordAgentUsage(params: {
   model: string;
   sessionToken: string;
-  usage: {
-    inputTokens?: number;
-    outputTokens?: number;
-    totalTokens?: number;
-  } | null;
+  usage: Record<string, unknown> | null;
   idempotencyKey?: string;
   userEmail: string;
   userId: string;
 }): Promise<AgentUsageTotals> {
-  const inputTokens = params.usage?.inputTokens ?? 0;
-  const outputTokens = params.usage?.outputTokens ?? 0;
-  const totalTokens = params.usage?.totalTokens ?? inputTokens + outputTokens;
+  const usage = params.usage ?? {};
+  const inputTokens =
+    typeof usage.inputTokens === "number" ? usage.inputTokens : 0;
+  const outputTokens =
+    typeof usage.outputTokens === "number" ? usage.outputTokens : 0;
+  // L'AI SDK sort déjà la réflexion de `outputTokens` (text = completion −
+  // reasoning). La règle de total sans double comptage est partagée avec
+  // lib/db/queries.ts : une seule implémentation, sinon les deux chemins
+  // divergent sur les fournisseurs qui comptent la réflexion dans la sortie.
+  const reasoningTokens = readReasoningTokens(usage);
+  const totalTokens = resolveBillableTotal({
+    inputTokens,
+    outputTokens,
+    reasoningTokens,
+    totalTokens: typeof usage.totalTokens === "number" ? usage.totalTokens : 0,
+  });
 
   if (totalTokens <= 0) {
-    return { inputTokens, outputTokens, totalTokens };
+    return { inputTokens, outputTokens, reasoningTokens, totalTokens };
   }
 
   await recordTokenUsage({
@@ -39,6 +50,7 @@ export async function recordAgentUsage(params: {
     isGhostMode: false,
     model: params.model,
     outputTokens,
+    reasoningTokens,
     totalTokens,
     userEmail: params.userEmail,
     userId: params.userId,
@@ -52,7 +64,9 @@ export async function recordAgentUsage(params: {
     );
   });
 
-  // Notification best-effort de l'endpoint de journalisation amont.
+  // Notification best-effort de l'endpoint de journalisation amont. Le total
+  // part déjà décomposé : le proxy ne doit pas recomposer et risquer un double
+  // comptage de la réflexion.
   try {
     await fetch(`${MAI_API_URL}/log-usage`, {
       body: JSON.stringify({
@@ -60,6 +74,7 @@ export async function recordAgentUsage(params: {
         isGhostMode: false,
         model: params.model,
         outputTokens,
+        reasoningTokens,
         tokensUsed: totalTokens,
       }),
       headers: {
@@ -74,5 +89,5 @@ export async function recordAgentUsage(params: {
     // doit jamais interrompre un run.
   }
 
-  return { inputTokens, outputTokens, totalTokens };
+  return { inputTokens, outputTokens, reasoningTokens, totalTokens };
 }

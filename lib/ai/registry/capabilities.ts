@@ -3,6 +3,7 @@ import {
   getModelCapabilities as getBaseModelCapabilities,
 } from "@/lib/ai/models";
 import {
+  isReasoningLevel,
   REASONING_LEVELS,
   type ReasoningLevel,
 } from "@/lib/ai/registry/reasoning";
@@ -21,6 +22,16 @@ export type ModelCapabilities = {
   images: boolean;
   maxFiles: number;
   reasoning: boolean;
+  // Le modèle peut-il raisonner sans que ce soit activable ? (`mandatory`).
+  // Un modèle à réflexion obligatoire n'expose jamais "none" en pratique, et
+  // l'interface doit pouvoir l'expliquer plutôt que d'identifier un bug.
+  reasoningMandatory: boolean;
+  // Niveau retenu par le fournisseur en l'absence de choix explicite.
+  reasoningDefault: ReasoningLevel | null;
+  // Niveaux RÉELLEMENT acceptés, dans l'ordre du catalogue. Vide = le modèle
+  // raisonne mais n'expose aucun niveau (ex. minimax/minimax-m3, alias
+  // mAI-2-Mini : `reasoning: { mandatory: false }` sans `supported_efforts`).
+  // L'interface masque alors le sélecteur plutôt que d'inventer des niveaux.
   reasoningLevels: ReasoningLevel[];
   tools: boolean;
   vision: boolean;
@@ -85,6 +96,46 @@ function readInputModalities(model: ChatModel | string): string[] {
   return model.architecture?.input_modalities ?? [];
 }
 
+function readReasoningField(
+  model: ChatModel | string,
+  field: "default_effort" | "mandatory"
+): unknown {
+  return typeof model === "string" ? undefined : model.reasoning?.[field];
+}
+
+function readReasoningMandatory(model: ChatModel | string): boolean {
+  return readReasoningField(model, "mandatory") === true;
+}
+
+function readReasoningDefault(
+  model: ChatModel | string
+): ReasoningLevel | null {
+  const value = readReasoningField(model, "default_effort");
+  return isReasoningLevel(value) ? value : null;
+}
+
+// Les niveaux sont lus depuis le catalogue, jamais définis ici. On conserve
+// l'ordre déclaré par le fournisseur (souvent décroissant) et on retire ce que
+// le vocabulaire partagé ne connaît pas, plutôt que d'inverser le tri : un
+// fournisseur qui ajoute un niveau intermédiaire doit apparaître sans qu'on
+// touche au code.
+function readReasoningLevels(model: ChatModel | string): ReasoningLevel[] {
+  if (typeof model === "string") {
+    return [];
+  }
+  const declared = model.reasoning?.supported_efforts;
+  if (!Array.isArray(declared)) {
+    return [];
+  }
+  const seen = new Set<ReasoningLevel>();
+  for (const value of declared) {
+    if (isReasoningLevel(value)) {
+      seen.add(value);
+    }
+  }
+  return REASONING_LEVELS.filter((level) => seen.has(level));
+}
+
 export function deriveModelCapabilities(
   model: ChatModel | string
 ): ModelCapabilities {
@@ -106,7 +157,12 @@ export function deriveModelCapabilities(
     images: base.image,
     maxFiles: supportsFiles ? DEFAULT_MAX_FILES : 0,
     reasoning: base.reasoning,
-    reasoningLevels: base.reasoning ? [...REASONING_LEVELS] : [],
+    // Niveaux et niveau par défaut lus depuis le catalogue. Un modèle qui
+    // raisonne sans exposer `supported_efforts` n'a pas de sélecteur à proposer
+    // : on laisse la liste vide plutôt que d'en inventer une.
+    reasoningDefault: readReasoningDefault(model),
+    reasoningLevels: readReasoningLevels(model),
+    reasoningMandatory: readReasoningMandatory(model),
     tools: base.tools,
     vision: base.vision,
   };
@@ -124,16 +180,19 @@ export function getMemoizedCapabilities(
   const modelId = typeof model === "string" ? model : model.id;
   // Les métadonnées OpenRouter évoluent sans changer l'identifiant. Inclure leur
   // signature dans la clé évite de conserver les capacités d'un ancien snapshot
-  // du catalogue pendant toute la vie du processus.
+  // du catalogue pendant toute la vie du processus. `reasoning` en fait partie
+  // depuis la v3 : sans lui, un modèle qui gagne (ou perd) des niveaux d'effort
+  // garderait ses anciennes capacités jusqu'au redémarrage du process.
   const metadataKey =
     typeof model === "string"
       ? ""
       : JSON.stringify({
           architecture: model.architecture,
           maxContext: model.maxContext,
+          reasoning: model.reasoning,
           supported_parameters: model.supported_parameters,
         });
-  const cacheKey = `v2:${modelId}:${metadataKey}`;
+  const cacheKey = `v3:${modelId}:${metadataKey}`;
   const cached = capabilitiesCache.get(cacheKey);
   if (cached) {
     return cached;
@@ -145,4 +204,89 @@ export function getMemoizedCapabilities(
 
 export function resetCapabilitiesCache(): void {
   capabilitiesCache.clear();
+}
+
+export type ReasoningEffortResolution = {
+  /** Niveau réellement transmis au modèle, ou `null` si le choix n'a pas d'effet. */
+  effort: ReasoningLevel | null;
+  /** La préférence a-t-elle pu être honorée telle quelle ? */
+  exact: boolean;
+  /**
+   * Raison du recadrage, pour l'interface : « Le modèle sélectionné ne propose
+   * pas ce niveau » ne s'applique pas de la même façon que « ce modèle ne
+   * propose aucun niveau ».
+   */
+  reason: "exact" | "no_levels" | "not_supported" | "capability_unknown";
+};
+
+/**
+ * Recale une préférence d'effort sur ce que le modèle sait réellement faire.
+ *
+ * L'utilisateur ne choisit pas un niveau « en général » : il choisit une
+ * préférence, et le modèle sélectionné décide. `space-bunny-alpha` accepte
+ * max/xhigh/high/medium/low alors que `mai-2` se limite à max/high/low — la
+ * même préférence doit donc produire une requête différente selon le modèle.
+ *
+ * Ordre de repli : préférence si acceptée, sinon le `default_effort` du
+ * fournisseur, sinon le niveau le plus proche *en dessous* (jamais au-dessus :
+ * on ne veut pas élever la facture de l'utilisateur), sinon le premier proposé.
+ */
+export function resolveReasoningEffort(params: {
+  capabilities: Pick<
+    ModelCapabilities,
+    "reasoning" | "reasoningDefault" | "reasoningLevels"
+  >;
+  preferred: unknown;
+}): ReasoningEffortResolution {
+  const { capabilities, preferred } = params;
+  const available = capabilities.reasoningLevels;
+
+  // Modèle qui ne raisonne pas du tout : aucun réglage n'a de sens.
+  if (!capabilities.reasoning) {
+    return { effort: null, exact: false, reason: "capability_unknown" };
+  }
+  // Le modèle raisonne mais n'expose aucun niveau (mAI-2-Mini, par exemple) :
+  // on laisse le fournisseur trancher plutôt que d'inventer un niveau.
+  if (available.length === 0) {
+    return { effort: null, exact: false, reason: "no_levels" };
+  }
+  if (isReasoningLevel(preferred) && available.includes(preferred)) {
+    return { effort: preferred, exact: true, reason: "exact" };
+  }
+
+  if (
+    capabilities.reasoningDefault &&
+    available.includes(capabilities.reasoningDefault)
+  ) {
+    return {
+      effort: capabilities.reasoningDefault,
+      exact: false,
+      reason: "not_supported",
+    };
+  }
+
+  // Plus proche niveau inférieur dans l'ordre canonique (max → none).
+  if (isReasoningLevel(preferred)) {
+    const wantedIndex = REASONING_LEVELS.indexOf(preferred);
+    for (
+      let index = wantedIndex + 1;
+      index < REASONING_LEVELS.length;
+      index++
+    ) {
+      const candidate = REASONING_LEVELS[index];
+      if (available.includes(candidate)) {
+        return { effort: candidate, exact: false, reason: "not_supported" };
+      }
+    }
+  }
+
+  // Rien en dessous et pas de défaut fournisseur : on prend le niveau le MOINS
+  // intense, jamais le premier de la liste. La liste est ordonnée du plus cher
+  // au moins cher, donc `available[0]` vaudrait « max » — demander depuis
+  // « minimal » tomberait sur la facture la plus élevée de tout le jeu.
+  return {
+    effort: available.at(-1) ?? null,
+    exact: false,
+    reason: "not_supported",
+  };
 }

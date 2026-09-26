@@ -123,6 +123,18 @@ const runMigrate = async () => {
   } catch (error) {
     noteIgnoredStep(error);
   }
+  // Colonnes UserMemory introduites par le schéma Drizzle sans migration
+  // (migration 0031). Répétées ici pour que les environnements dont le
+  // journal de migrations est incomplet disposent malgré tout du schéma
+  // attendu par lib/db/queries.ts — sinon GET /api/memory échoue en 42703.
+  try {
+    await connection`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "isEnabled" boolean DEFAULT true NOT NULL`;
+    await connection`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "isImportant" boolean DEFAULT false NOT NULL`;
+    await connection`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "tags" json DEFAULT '[]'::json NOT NULL`;
+    await connection`ALTER TABLE "UserMemory" DROP COLUMN IF EXISTS "category"`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
 
   // Colonnes NOT NULL dont le défaut a disparu (drift de schéma) : sans
   // réparation, saveChat/saveMessages échouent en production et le modèle IA
@@ -418,6 +430,32 @@ const runMigrate = async () => {
   // l'utilisateur a activé « Tâches » d'un run où le plan est interne.
   try {
     await connection`ALTER TABLE "AgentRun" ADD COLUMN IF NOT EXISTS "tasksEnabled" boolean DEFAULT false NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+
+  // Préférence de mode d'écran + niveaux de réflexion réels (migration 0030).
+  // Répété ici pour la même raison que ci-dessus, avec une attention
+  // particulière : la contrainte CHECK de 0016 n'admet que low/medium/high et
+  // rejeterait l'écriture d'un niveau « max » parfaitement valide. L'élargir
+  // est donc un prérequis, pas une confortabilité.
+  try {
+    await connection`ALTER TABLE "AgentSettings" ADD COLUMN IF NOT EXISTS "defaultMode" VARCHAR(10) DEFAULT 'chat' NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE "AgentSettings" DROP CONSTRAINT IF EXISTS "AgentSettings_reasoningLevel_check"`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE "AgentRun" DROP CONSTRAINT IF EXISTS "AgentRun_reasoningLevel_check"`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE "UsageEvent" ADD COLUMN IF NOT EXISTS "reasoningTokens" INTEGER DEFAULT 0 NOT NULL`;
   } catch (error) {
     noteIgnoredStep(error);
   }

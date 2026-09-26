@@ -100,6 +100,11 @@ export type AgentStreamParams = {
   modelId: string;
   plan: AgentPlan | null;
   projectId: string | null;
+  // Niveau réellement transmis au fournisseur. `null` quand le sélecteur est
+  // coupé ou que le modèle n'expose aucun niveau contrôlable : dans ce cas on
+  // n'envoie rien et le fournisseur applique son propre défaut. À ne pas
+  // confondre avec `reasoningLevel`, qui est l'intention enregistrée.
+  reasoningEffort?: ReasoningLevel | null;
   reasoningLevel: ReasoningLevel;
   revision?: number;
   runId: string;
@@ -339,10 +344,13 @@ export function createAgentStream(params: AgentStreamParams) {
         controller,
         tools: params.tools,
       });
-      const providerOptions = resolveReasoningProviderOptions(
-        params.modelId,
-        params.reasoningLevel
-      );
+      // `providerOptions.reasoningEffort` est validé par le provider contre un
+      // enum qui contient exactement les sept niveaux OpenRouter. Le niveau a
+      // déjà été recalé sur le modèle en amont (route.ts) : ici on ne fait que
+      // transmettre, ou rien du tout si le modèle n'en accepte aucun.
+      const providerOptions = params.reasoningEffort
+        ? resolveReasoningProviderOptions(params.reasoningEffort)
+        : undefined;
 
       // Interruption réelle : une réorientation « arrête-toi » doit couper la
       // génération en cours, pas seulement changer un état local. Le
@@ -546,11 +554,20 @@ export function createAgentStream(params: AgentStreamParams) {
           // La dernière place du budget est réservée à une synthèse textuelle.
           // Les instructions de finalisation sont composées avec les
           // réorientations pour que les deux contrats utilisent le même chemin.
-          if (hasNewReorientations || forceFinalResponse) {
+          //
+          // `planExecution` referredit le plan à chaque étape tant qu'aucune
+          // tâche n'est terminée : sans lui, l'appel à `tasks` suffisait à faire
+          // annoncer un plan puis s'arrêter dessus.
+          const planExecution =
+            !forceFinalResponse &&
+            plan !== null &&
+            plan.items.some((item) => item.status === "pending");
+          if (hasNewReorientations || forceFinalResponse || planExecution) {
             patch.instructions = composeAgentInstructions(
               params.context.instructions,
               pendingReorientations,
-              forceFinalResponse
+              forceFinalResponse,
+              planExecution
             );
           }
           if (forceFinalResponse) {

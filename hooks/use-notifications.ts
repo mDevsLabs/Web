@@ -1,17 +1,21 @@
 "use client";
 
 import useSWR from "swr";
+import {
+  NOTIFICATION_TYPES,
+  type NotificationType,
+} from "@/lib/notifications/types";
 import { fetcher } from "@/lib/utils";
+
+// La liste canonique des types vit dans lib/notifications/types.ts (elle est
+// contrainte par la base) : on la réexporte pour que les composants n'aient
+// qu'un point d'entrée.
+export { NOTIFICATION_TYPES, type NotificationType };
 
 export type NotificationItem = {
   id: string;
   userId: string;
-  type:
-    | "ai_response"
-    | "project_created"
-    | "mcp_created"
-    | "mcp_access_request"
-    | "news";
+  type: NotificationType;
   title: string;
   body: string | null;
   link: string | null;
@@ -23,10 +27,16 @@ export type NotificationPrefs = {
   userId: string;
   enabled: boolean;
   aiResponse: boolean;
-  projectCreated: boolean;
-  mcpCreated: boolean;
+  agentApprovalRequired: boolean;
+  agentRunFailed: boolean;
+  agentRunFinished: boolean;
+  agentUserInputRequired: boolean;
   mcpAccessRequest: boolean;
+  mcpCreated: boolean;
   news: boolean;
+  planningTaskCompleted: boolean;
+  projectCreated: boolean;
+  quotaWarning: boolean;
   regenerateMode: "truncate" | "fork";
   createdAt: string;
   updatedAt: string;

@@ -133,6 +133,20 @@ export function getTierRequestLimit(tier?: string | null): number {
   return TIER_REQUEST_LIMITS[normalizeTier(tier)];
 }
 
+// Nombre maximum d'agents personnalisés par utilisateur.
+// null = illimité (forfait Max). Miroir de TIER_LIMITS.agents côté Next
+// (lib/plans/tier-limits.ts) : toute évolution doit être répercutée des deux côtés.
+export const TIER_AGENT_LIMITS: Record<Tier, number | null> = {
+  Free: 0,
+  Max: null,
+  Plus: 15,
+  Pro: 25,
+};
+
+export function getTierAgentLimit(tier?: string | null): number | null {
+  return TIER_AGENT_LIMITS[normalizeTier(tier)];
+}
+
 /**
  * Extrait le forfait (TIER_USER) encodé directement dans une clé API au format :
  * mai-TIER_USER-XXXXX-XXXXX (ex: mai-free-ABC12-defgh, mai-plus-..., mai-pro-..., mai-max-...)

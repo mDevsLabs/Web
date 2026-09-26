@@ -115,185 +115,192 @@ export default function ArchivedPage() {
   );
 
   return (
-    <div className="flex flex-1 flex-col h-full overflow-y-auto bg-background p-4 sm:p-6 md:p-10 max-w-5xl mx-auto w-full">
-      <div className="pb-6 border-b border-border/50">
-        <div className="flex items-start gap-3">
-          <PageBackButton />
-          <div className="min-w-0">
-            <div className="flex items-center gap-2 text-primary font-semibold text-xs tracking-wider uppercase mb-1">
-              <span className="flex size-2 rounded-full bg-primary animate-pulse" />
-              <ArchiveRestoreIcon className="size-4" />
-              Messages Archivés
-            </div>
-            <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
-              Conversations archivées
-            </h1>
-            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-              Retrouvez vos discussions archivées. Vous pouvez les renommer,
-              copier leur ID, les désarchiver ou les supprimer.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-5 flex items-center gap-2">
-          <div className="relative flex-1 max-w-md">
-            <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-            <Input
-              className="pl-9 h-9 rounded-xl border-border/60 bg-muted/20 text-sm"
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Rechercher dans les archivés..."
-              value={search}
-            />
-          </div>
-          <span className="text-xs text-muted-foreground hidden sm:inline">
-            {chats.length} {chats.length > 1 ? "conversations" : "conversation"}
-          </span>
-        </div>
-      </div>
-
-      <div className="py-6 flex flex-col gap-3">
-        {isLoading ? (
-          <div className="py-20 flex flex-col items-center justify-center text-muted-foreground gap-3">
-            <Loader2Icon className="size-6 animate-spin text-primary" />
-            <span className="text-sm">Chargement des archivés...</span>
-          </div>
-        ) : chats.length === 0 ? (
-          <div className="py-16 flex flex-col items-center justify-center text-center border border-dashed border-border/50 rounded-2xl bg-muted/10">
-            <ArchiveRestoreIcon className="size-8 text-muted-foreground mb-3" />
-            <p className="text-sm font-medium text-foreground">
-              Aucune conversation archivée
-            </p>
-            <p className="text-xs text-muted-foreground mt-1 max-w-xs">
-              Archivez une discussion depuis l'historique ou les options de
-              conversation pour la retrouver ici.
-            </p>
-            <Link
-              className="mt-4 inline-flex items-center justify-center rounded-xl bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:opacity-90"
-              href="/"
-            >
-              Nouvelle discussion
-            </Link>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 gap-2">
-            {chats.map((c) => (
-              <div
-                className="group flex items-center gap-3 p-3 rounded-2xl border border-border/60 bg-card/60 hover:bg-card hover:shadow-sm transition-all"
-                key={c.id}
-              >
-                <div className="flex-1 min-w-0">
-                  {editingId === c.id ? (
-                    <div className="flex items-center gap-2">
-                      <Input
-                        autoFocus
-                        className="h-8 text-sm"
-                        maxLength={100}
-                        onChange={(e) => setEditValue(e.target.value)}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter") {
-                            handleRename(c.id);
-                          }
-                          if (e.key === "Escape") {
-                            setEditingId(null);
-                          }
-                        }}
-                        value={editValue}
-                      />
-                      <Button
-                        className="h-8 px-3"
-                        disabled={loadingId === c.id}
-                        onClick={() => handleRename(c.id)}
-                        size="sm"
-                      >
-                        OK
-                      </Button>
-                      <Button
-                        className="h-8"
-                        onClick={() => setEditingId(null)}
-                        size="sm"
-                        variant="ghost"
-                      >
-                        Annuler
-                      </Button>
-                    </div>
-                  ) : (
-                    <>
-                      <Link
-                        className="block truncate text-sm font-semibold text-foreground hover:text-primary"
-                        href={`/chat/${c.id}`}
-                      >
-                        {c.title || "Sans titre"}
-                      </Link>
-                      <div className="flex items-center gap-2 mt-1 text-[11px] text-muted-foreground">
-                        <span className="font-mono truncate max-w-[180px]">
-                          {c.id}
-                        </span>
-                        <span>•</span>
-                        <span>
-                          {c.archivedAt
-                            ? new Date(c.archivedAt).toLocaleDateString("fr-FR")
-                            : new Date(c.createdAt).toLocaleDateString("fr-FR")}
-                        </span>
-                        {c.pinned && (
-                          <span className="px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-600 border border-amber-500/20 text-[10px] font-medium">
-                            Épinglé
-                          </span>
-                        )}
-                      </div>
-                    </>
-                  )}
-                </div>
-
-                <div className="flex items-center gap-1 shrink-0">
-                  <Button
-                    className="size-8 rounded-lg"
-                    onClick={() => handleCopyId(c.id)}
-                    size="icon-sm"
-                    title="Copier l'ID"
-                    variant="ghost"
-                  >
-                    <CopyIcon className="size-4" />
-                  </Button>
-                  <Button
-                    className="size-8 rounded-lg"
-                    onClick={() => {
-                      setEditingId(c.id);
-                      setEditValue(c.title);
-                    }}
-                    size="icon-sm"
-                    title="Renommer"
-                    variant="ghost"
-                  >
-                    <Edit2Icon className="size-4" />
-                  </Button>
-                  <Button
-                    className="size-8 rounded-lg"
-                    disabled={loadingId === c.id}
-                    onClick={() => handleUnarchive(c.id)}
-                    size="icon-sm"
-                    title="Désarchiver"
-                    variant="ghost"
-                  >
-                    {loadingId === c.id ? (
-                      <Loader2Icon className="size-4 animate-spin" />
-                    ) : (
-                      <ArchiveRestoreIcon className="size-4" />
-                    )}
-                  </Button>
-                  <Button
-                    className="size-8 rounded-lg text-destructive hover:bg-destructive/10 hover:text-destructive"
-                    onClick={() => handleDelete(c.id)}
-                    size="icon-sm"
-                    title="Supprimer"
-                    variant="ghost"
-                  >
-                    <TrashIcon className="size-4" />
-                  </Button>
-                </div>
+    <div className="flex h-full flex-1 flex-col overflow-y-auto bg-background">
+      <div className="mx-auto w-full max-w-6xl p-4 pb-16 sm:p-6 md:p-10">
+        <div className="pb-6 border-b border-border/50">
+          <div className="flex items-start gap-3">
+            <PageBackButton />
+            <div className="min-w-0">
+              <div className="flex items-center gap-2 text-primary font-semibold text-xs tracking-wider uppercase mb-1">
+                <span className="flex size-2 rounded-full bg-primary animate-pulse" />
+                <ArchiveRestoreIcon className="size-4" />
+                Messages Archivés
               </div>
-            ))}
+              <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
+                Conversations archivées
+              </h1>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+                Retrouvez vos discussions archivées. Vous pouvez les renommer,
+                copier leur ID, les désarchiver ou les supprimer.
+              </p>
+            </div>
           </div>
-        )}
+
+          <div className="mt-5 flex items-center gap-2">
+            <div className="relative flex-1 max-w-md">
+              <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+              <Input
+                className="pl-9 h-9 rounded-xl border-border/60 bg-muted/20 text-sm"
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Rechercher dans les archivés..."
+                value={search}
+              />
+            </div>
+            <span className="text-xs text-muted-foreground hidden sm:inline">
+              {chats.length}{" "}
+              {chats.length > 1 ? "conversations" : "conversation"}
+            </span>
+          </div>
+        </div>
+
+        <div className="py-6 flex flex-col gap-3">
+          {isLoading ? (
+            <div className="py-20 flex flex-col items-center justify-center text-muted-foreground gap-3">
+              <Loader2Icon className="size-6 animate-spin text-primary" />
+              <span className="text-sm">Chargement des archivés...</span>
+            </div>
+          ) : chats.length === 0 ? (
+            <div className="py-16 flex flex-col items-center justify-center text-center border border-dashed border-border/50 rounded-xl bg-muted/10">
+              <ArchiveRestoreIcon className="size-8 text-muted-foreground mb-3" />
+              <p className="text-sm font-medium text-foreground">
+                Aucune conversation archivée
+              </p>
+              <p className="text-xs text-muted-foreground mt-1 max-w-xs">
+                Archivez une discussion depuis l'historique ou les options de
+                conversation pour la retrouver ici.
+              </p>
+              <Link
+                className="mt-4 inline-flex items-center justify-center rounded-xl bg-primary text-primary-foreground px-4 py-2 text-sm font-medium hover:opacity-90"
+                href="/"
+              >
+                Nouvelle discussion
+              </Link>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+              {chats.map((c) => (
+                <div
+                  className="group flex items-center gap-3 p-3 rounded-xl border border-border/60 bg-card/60 hover:bg-card hover:shadow-sm transition-all"
+                  key={c.id}
+                >
+                  <div className="flex-1 min-w-0">
+                    {editingId === c.id ? (
+                      <div className="flex items-center gap-2">
+                        <Input
+                          autoFocus
+                          className="h-8 text-sm"
+                          maxLength={100}
+                          onChange={(e) => setEditValue(e.target.value)}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                              handleRename(c.id);
+                            }
+                            if (e.key === "Escape") {
+                              setEditingId(null);
+                            }
+                          }}
+                          value={editValue}
+                        />
+                        <Button
+                          className="h-8 px-3"
+                          disabled={loadingId === c.id}
+                          onClick={() => handleRename(c.id)}
+                          size="sm"
+                        >
+                          OK
+                        </Button>
+                        <Button
+                          className="h-8"
+                          onClick={() => setEditingId(null)}
+                          size="sm"
+                          variant="ghost"
+                        >
+                          Annuler
+                        </Button>
+                      </div>
+                    ) : (
+                      <>
+                        <Link
+                          className="block truncate text-sm font-semibold text-foreground hover:text-primary"
+                          href={`/chat/${c.id}`}
+                        >
+                          {c.title || "Sans titre"}
+                        </Link>
+                        <div className="flex items-center gap-2 mt-1 text-[11px] text-muted-foreground">
+                          <span className="font-mono truncate max-w-[180px]">
+                            {c.id}
+                          </span>
+                          <span>•</span>
+                          <span>
+                            {c.archivedAt
+                              ? new Date(c.archivedAt).toLocaleDateString(
+                                  "fr-FR"
+                                )
+                              : new Date(c.createdAt).toLocaleDateString(
+                                  "fr-FR"
+                                )}
+                          </span>
+                          {c.pinned && (
+                            <span className="px-1.5 py-0.5 rounded-full bg-warning/10 text-warning border border-warning/20 text-[10px] font-medium">
+                              Épinglé
+                            </span>
+                          )}
+                        </div>
+                      </>
+                    )}
+                  </div>
+
+                  <div className="flex items-center gap-1 shrink-0">
+                    <Button
+                      className="size-8 rounded-lg"
+                      onClick={() => handleCopyId(c.id)}
+                      size="icon-sm"
+                      title="Copier l'ID"
+                      variant="ghost"
+                    >
+                      <CopyIcon className="size-4" />
+                    </Button>
+                    <Button
+                      className="size-8 rounded-lg"
+                      onClick={() => {
+                        setEditingId(c.id);
+                        setEditValue(c.title);
+                      }}
+                      size="icon-sm"
+                      title="Renommer"
+                      variant="ghost"
+                    >
+                      <Edit2Icon className="size-4" />
+                    </Button>
+                    <Button
+                      className="size-8 rounded-lg"
+                      disabled={loadingId === c.id}
+                      onClick={() => handleUnarchive(c.id)}
+                      size="icon-sm"
+                      title="Désarchiver"
+                      variant="ghost"
+                    >
+                      {loadingId === c.id ? (
+                        <Loader2Icon className="size-4 animate-spin" />
+                      ) : (
+                        <ArchiveRestoreIcon className="size-4" />
+                      )}
+                    </Button>
+                    <Button
+                      className="size-8 rounded-lg text-destructive hover:bg-destructive/10 hover:text-destructive"
+                      onClick={() => handleDelete(c.id)}
+                      size="icon-sm"
+                      title="Supprimer"
+                      variant="ghost"
+                    >
+                      <TrashIcon className="size-4" />
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

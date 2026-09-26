@@ -74,17 +74,21 @@ export function tasksToPlan(input: TasksToolInput): {
 
 export const tasksTool = defineTool({
   ...requireAgentToolMetadata("tasks"),
-  execute: (input) =>
-    toolSuccess(
+  execute: (input) => {
+    const plan = tasksToPlan(input);
+    return toolSuccess(
       {
+        // La sortie de l'outil est ce que le modèle lit IMMÉDIATEMENT après
+        // l'appel. Sans cette consigne explicite, il annonçait le plan et
+        // s'arrêtait : « le plan est prêt, les tâches restent en attente ».
+        next: `Plan enregistré et affiché à l'utilisateur. Tu dois maintenant l'EXÉCUTER, pas le décrire : commence par « ${plan.items[0]?.label ?? "la première tâche"} » dès cette étape, appelle les outils utiles, puis passe à la suivante. Ne réponds pas par un résumé du plan.`,
         tasks: input.tasks,
-        title: tasksToPlan(input).title,
+        title: plan.title,
       },
       undefined,
-      {
-        plan: tasksToPlan(input),
-      }
-    ),
+      { plan }
+    );
+  },
   schema: tasksToolInputSchema,
   summarize: (data) => {
     const value = (data ?? {}) as { tasks?: unknown };

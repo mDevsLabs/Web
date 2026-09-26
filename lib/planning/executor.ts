@@ -1,6 +1,7 @@
 import "server-only";
 
 import { generateText } from "ai";
+import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { calculator } from "@/lib/ai/tools/calculator";
 import { codeExecution } from "@/lib/ai/tools/code-execution";
@@ -25,6 +26,7 @@ import {
 } from "@/lib/db/queries";
 import { getPersistedTier } from "@/lib/db/users";
 import { requireOwnedPlanningChat } from "@/lib/planning/chat-access";
+import { deriveScheduleToolMode } from "@/lib/planning/tool-mode";
 import { getPluginManifest } from "@/lib/plugins/catalog";
 import { createPluginTools } from "@/lib/plugins/server";
 import { canUsePlugin } from "@/lib/plugins/tier-lock";
@@ -220,8 +222,7 @@ export async function executeScheduledMessage(scheduledId: string) {
       }
     }
 
-    const effectiveModel =
-      item.modelId || agentModel || "google/gemini-2.5-flash";
+    const effectiveModel = item.modelId || agentModel || DEFAULT_CHAT_MODEL;
     const effectiveTemp = item.temperature ?? agentTemp ?? undefined;
 
     // Bloc personnalisé : même contrat que le Chat et l'Agent — le socle vient
@@ -261,9 +262,22 @@ export async function executeScheduledMessage(scheduledId: string) {
       userId,
     });
 
-    const enabledToolsList = Array.isArray(item.enabledTools)
-      ? (item.enabledTools as string[])
-      : [];
+    // Périmètre d'outils de l'exécution : 3 modes (cf. lib/planning/tool-mode).
+    // L'ancien champ "enabledTools" (liste d'outils unitaires) n'est plus lu :
+    // l'exécuteur ne connaît que 4 outils natifs, plus les plugins, les
+    // serveurs MCP et les tools de skills — cocher un outil natif non pris en
+    // charge n'avait aucun effet. On dérive un mode des données existantes
+    // pour les tâches créées avant la migration 0029.
+    const toolMode = deriveScheduleToolMode({
+      enabledTools: item.enabledTools,
+      storedMode: item.toolMode,
+    });
+    const wantsNativeTools = toolMode === "auto";
+    // « Automatique » et « Plugins / MCP et Skills » chargent tous deux le
+    // contexte MCP (serveurs de l'agent ou, à défaut, serveurs par défaut de
+    // l'utilisateur — c'est ce que faisait l'ancien enabledTools "mcp").
+    // Seul « Aucun » s'en passe.
+    const wantsMcp = toolMode !== "none";
 
     // Outils de plugins autorisés : mêmes règles que dans le chat, seuls les
     // plugins installés et activés par l'utilisateur sont disponibles.
@@ -272,11 +286,14 @@ export async function executeScheduledMessage(scheduledId: string) {
     });
     const persistedTier = await getPersistedTier({ userId });
     const tier = persistedTier.ok ? persistedTier.tier : "free";
-    const enabledPluginIds = pluginInstallations.flatMap((installation) => {
-      if (!installation.isEnabled) return [];
-      const plugin = getPluginManifest(installation.pluginId);
-      return plugin && canUsePlugin(plugin, tier) ? [plugin.id] : [];
-    });
+    const enabledPluginIds =
+      toolMode === "none"
+        ? []
+        : pluginInstallations.flatMap((installation) => {
+            if (!installation.isEnabled) return [];
+            const plugin = getPluginManifest(installation.pluginId);
+            return plugin && canUsePlugin(plugin, tier) ? [plugin.id] : [];
+          });
     const pluginTools = createPluginTools(
       {
         channel: "planning",
@@ -285,11 +302,6 @@ export async function executeScheduledMessage(scheduledId: string) {
       },
       enabledPluginIds
     );
-
-    const wantsMcp =
-      enabledToolsList.includes("mcp") ||
-      agentSkillMcpServerIds.length > 0 ||
-      agentMcpServerIds.length > 0;
     const effectiveMcpServerIds =
       agentSkillMcpServerIds.length > 0
         ? agentSkillMcpServerIds
@@ -320,18 +332,21 @@ export async function executeScheduledMessage(scheduledId: string) {
     );
 
     // Outils serveur disponibles
-    const availableTools: Record<string, any> = {
+    const nativeTools: Record<string, any> = {
       calculator,
       codeExecution,
       dateTime,
       webSearch,
+    };
+    const availableTools: Record<string, any> = {
+      ...(wantsNativeTools ? nativeTools : {}),
       ...pluginTools,
       ...executableMcpTools,
     };
 
     const activeTools = Array.from(
       new Set([
-        ...enabledToolsList,
+        ...(wantsNativeTools ? Object.keys(nativeTools) : []),
         ...agentSkillToolIds,
         ...(wantsMcp ? Object.keys(executableMcpTools) : []),
       ])

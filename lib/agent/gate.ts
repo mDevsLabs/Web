@@ -4,10 +4,14 @@ import { type AgentFlags, getAgentFlags } from "@/lib/agent/flags";
 import type { ChatModel } from "@/lib/ai/models";
 import {
   type AgentModelEntry,
+  DEFAULT_REASONING_LEVEL,
   getModelEntry,
   isAgentCompatible,
   isModelAllowedForUser,
   type ModelCapabilities,
+  normalizeReasoningLevel,
+  type ReasoningLevel,
+  resolveReasoningEffort,
 } from "@/lib/ai/registry";
 import { errorResponse } from "@/lib/api/error-response";
 import { isPaidTier } from "@/lib/auth/plan";
@@ -153,20 +157,42 @@ export function checkAgentModelAccess(params: {
   return { capabilities, model: entry.id };
 }
 
-export function normalizeAgentReasoningLevel(params: {
+/**
+ * Détermine l'effort de réflexion, en distinguant deux notions qui ne se
+ * confondent pas.
+ *
+ * - `requested` : ce que l'utilisateur a choisi, normalisé. C'est ce qu'on
+ *   enregistre sur le run et ce qu'on annonce au prompt — l'intention, pas le
+ *   résultat. La colonne est NOT NULL, il faut donc toujours une valeur valide.
+ * - `effort` : ce qu'on transmet réellement au modèle. `null` quand le
+ *   sélecteur est coupé par le flag, ou quand le modèle n'expose aucun niveau
+ *   contrôlable (mAI-2-Mini) : dans ce cas on n'envoie rien et le fournisseur
+ *   applique sa propre valeur, déjà écrite dans ses métadonnées.
+ *
+ * Une préférence unique n'a pas de sens hors du modèle : mAI-2 accepte
+ * max/high/low quand space-bunny-alpha en accepte cinq. D'où deux valeurs.
+ */
+export function resolveAgentReasoning(params: {
   capabilities: ModelCapabilities;
   flags: AgentFlags;
   requested: unknown;
-  fallback: string;
-}): "low" | "medium" | "high" {
-  const normalized =
-    typeof params.requested === "string" ? params.requested : params.fallback;
+  fallback: unknown;
+}): { effort: ReasoningLevel | null; requested: ReasoningLevel } {
+  const requested = normalizeReasoningLevel(
+    params.requested ?? params.fallback,
+    DEFAULT_REASONING_LEVEL
+  );
 
-  if (!params.flags["agent.reasoning"] || !params.capabilities.reasoning) {
-    return "medium";
+  // Le flag coupe la molette mais ne fabrique pas de niveau : sans lui on
+  // laisse le fournisseur décider, plutôt que d'imposer un effort arbitraire.
+  if (!params.flags["agent.reasoning"]) {
+    return { effort: null, requested };
   }
-  if (normalized === "low" || normalized === "high") {
-    return normalized;
-  }
-  return "medium";
+  return {
+    effort: resolveReasoningEffort({
+      capabilities: params.capabilities,
+      preferred: requested,
+    }).effort,
+    requested,
+  };
 }

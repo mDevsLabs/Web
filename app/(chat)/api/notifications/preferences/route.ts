@@ -8,7 +8,20 @@ import {
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 
+// Les 6 préférences `agent*` existent en base (migrations 0017) et étaient
+// lisibles via GET, mais ce schéma ne les exposait pas : impossible de les
+// désactiver depuis l'interface, et `createNotification` venait de les câbler
+// (voir lib/db/queries.ts). Elles sont donc désormais acceptées ici.
+//
+// `agentEmailEnabled` / `agentPushEnabled` restent volontairement hors
+// schéma : aucun transport email/push n'existe (les ports sont de simples
+// journalisations console dans lib/agent/notifications/service.ts). Les
+// exposer laisserait croire à un réglage qui ne fait rien.
 const prefsSchema = z.object({
+  agentApprovalRequired: z.boolean().optional(),
+  agentRunFailed: z.boolean().optional(),
+  agentRunFinished: z.boolean().optional(),
+  agentUserInputRequired: z.boolean().optional(),
   aiResponse: z.boolean().optional(),
   enabled: z.boolean().optional(),
   mcpAccessRequest: z.boolean().optional(),

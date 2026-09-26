@@ -4,6 +4,7 @@ import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
 import { getMaiUser } from "@/lib/auth/session";
 import { createAgent, getAgentsByUserId } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
+import { agentQuotaMessage, getTierAgentLimit } from "@/lib/plans/tier-limits";
 
 const createAgentSchema = z.object({
   cloudFileUrls: z
@@ -16,7 +17,6 @@ const createAgentSchema = z.object({
     .optional(),
   defaultModelId: z.string().min(1).max(200).optional(),
   description: z.string().max(500).optional(),
-  emoji: z.string().max(10).nullable().optional(),
   icon: z.string().max(50).optional(),
   instructions: z.string().min(1).max(5000),
   maxTokens: z.number().int().min(1).max(1_000_000).nullable().optional(),
@@ -39,7 +39,13 @@ export async function GET() {
   const user = guard.user;
   const userId = user.id || user.email;
   const agents = await getAgentsByUserId({ userId });
-  return Response.json(agents);
+  // La limite dépend du forfait (Plus 15 / Pro 25 / Max illimité) : elle est
+  // renvoyée avec la liste pour que chaque affichage affiche la bonne valeur
+  // sans avoir à refaire un appel de résolution de forfait.
+  return Response.json({
+    agents,
+    limit: getTierAgentLimit(user.tier),
+  });
 }
 
 export async function POST(request: Request) {
@@ -50,13 +56,13 @@ export async function POST(request: Request) {
   const user = guard.user;
   const userId = user.id || user.email;
 
-  // Enforce max 10 agents per user
+  // Quota d'agents : Plus 15 / Pro 25 / Max illimité (null = pas de contrôle).
   const existing = await getAgentsByUserId({ userId });
-  if (existing.length >= 10) {
+  const agentLimit = getTierAgentLimit(user.tier);
+  if (agentLimit !== null && existing.length >= agentLimit) {
     return errorResponse("quota_exceeded", {
-      details: { limit: 10, used: existing.length },
-      message:
-        "Limite de 10 agents atteinte. Supprimez un agent avant d'en créer un nouveau.",
+      details: { limit: agentLimit, used: existing.length },
+      message: agentQuotaMessage(agentLimit),
       status: 403,
     });
   }
@@ -64,14 +70,6 @@ export async function POST(request: Request) {
   try {
     const json = await request.json();
     const parsed = createAgentSchema.parse(json);
-    if (parsed.emoji?.trim()) {
-      const graphemes = Array.from(parsed.emoji.trim());
-      if (graphemes.length > 4) {
-        return errorResponse("invalid_request", {
-          message: "Emoji trop long (maximum 4 caractères).",
-        });
-      }
-    }
     const created = await createAgent({
       ...parsed,
       instructions: parsed.instructions.slice(0, 5000),

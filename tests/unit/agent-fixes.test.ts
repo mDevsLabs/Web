@@ -48,6 +48,26 @@ describe("Réorientation — les consignes atteignent réellement le modèle", (
     expect(composed).toContain("ÉTAPE FINALE OBLIGATOIRE");
   });
 
+  it("relance l'exécution du plan tant qu'il n'est pas déroulé", () => {
+    const rolled = composeAgentInstructions("INSTRUCTIONS", [], false, true);
+    expect(rolled).toContain("PLAN EN COURS D'EXÉCUTION");
+    expect(rolled).toContain("INSTRUCTIONS");
+  });
+
+  it("ne relance pas l'exécution quand la synthèse finale est imposée", () => {
+    // Les deux consignes se contrediraient : « exécute » et « ne propose plus
+    // aucun outil ». La fin de run l'emporte.
+    const composed = composeAgentInstructions("INSTRUCTIONS", [], true, true);
+    expect(composed).toContain("ÉTAPE FINALE OBLIGATOIRE");
+    expect(composed).not.toContain("PLAN EN COURS D'EXÉCUTION");
+  });
+
+  it("laisse les instructions intactes sans plan ni réorientation", () => {
+    expect(composeAgentInstructions("INSTRUCTIONS", [], false, false)).toBe(
+      "INSTRUCTIONS"
+    );
+  });
+
   it("centralise les instructions des options one-shot", () => {
     const instructions = buildAgentOneShotInstructions({
       audio: false,
@@ -58,6 +78,8 @@ describe("Réorientation — les consignes atteignent réellement le modèle", (
     });
     expect(instructions).toContain("tasks");
     expect(instructions).toContain("réponse textuelle");
+    // L'option Tâches doit exiger l'exécution du plan, pas son simple annonce.
+    expect(instructions).toContain("EXÉCUTE ce plan");
     expect(buildAgentOneShotInstructions(null)).toBeNull();
   });
 

@@ -10,6 +10,7 @@ import {
   markAllNotificationsRead,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
+import { NOTIFICATION_TYPES } from "@/lib/notifications/types";
 
 const notificationSchema = z.object({
   body: z.string().max(500).nullish(),
@@ -88,13 +89,13 @@ export async function POST(request: Request) {
       message: "Les champs 'type' et 'titre' sont obligatoires.",
     });
   }
-  const allowed = [
-    "ai_response",
-    "project_created",
-    "mcp_created",
-    "mcp_access_request",
-    "news",
-  ];
+  // Aligné sur `Notification_type_check` (migration 0026) via
+  // NOTIFICATION_TYPES. Cette liste n'en listait que 5 : les 6 types Agent et
+  // `project_member_joined` étaient rejetés en 400 alors que la contrainte
+  // base les autorisait. Les types Agent sont produits en interne par
+  // lib/agent/notifications, mais ils doivent aussi pouvoir transiter par
+  // cette route (tests, rejeux, intégrations).
+  const allowed: readonly string[] = NOTIFICATION_TYPES;
   if (!allowed.includes(type)) {
     return errorResponse("invalid_request", {
       message: "Type de notification invalide.",

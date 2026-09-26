@@ -84,6 +84,11 @@ type ActiveChatContextValue = {
   setPendingCommand: (command: PendingCommand) => void;
   clearPendingCommand: () => void;
   resetChat: () => void;
+  // Compteur de « nouvelle conversation ». `resetChat` ne fait que vider l'état
+  // Chat ; ce compteur est le signal que l'écran Agent doit écouter pour vider,
+  // lui, le sien — l'AgentStreamProvider est monté plus bas, dans SidebarInset,
+  // et n'englobe donc pas le sidebar qui déclenche le reset.
+  resetEpoch: number;
   showCreditCardAlert: boolean;
   setShowCreditCardAlert: Dispatch<SetStateAction<boolean>>;
   isGhostMode: boolean;
@@ -683,6 +688,11 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
 
   const lastLoadedChatIdRef = useRef<string | null>(null);
 
+  // « Nouvelle discussion » doit ramener l'agent comme le chat à zéro. Son état
+  // vit dans un autre provider, on lui passe donc un compteur plutôt qu'un
+  // pointeur : un simple incrément suffit à réveiller tous ses abonnés.
+  const [resetEpoch, setResetEpoch] = useState(0);
+
   const resetChat = useCallback(() => {
     const newId = generateUUID();
     newChatIdRef.current = newId;
@@ -694,6 +704,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     setWaitingStatus(undefined);
     setDataStream([]);
     stop();
+    setResetEpoch((epoch) => epoch + 1);
   }, [
     setMessages,
     setActiveSkill,
@@ -817,6 +828,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       pendingTools,
       regenerate,
       resetChat,
+      resetEpoch,
       sendMessage,
       setActiveAgent,
       setActiveSkill,
@@ -877,6 +889,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       setPendingCommand,
       clearPendingCommand,
       resetChat,
+      resetEpoch,
       showCreditCardAlert,
       isGhostMode,
       toggleGhostMode,

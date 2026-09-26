@@ -13,7 +13,6 @@ const updateAgentSchema = z.object({
     .optional(),
   defaultModelId: z.string().min(1).max(200).optional(),
   description: z.string().max(500).optional(),
-  emoji: z.string().max(10).nullable().optional(),
   icon: z.string().max(50).optional(),
   instructions: z.string().min(1).max(5000).optional(),
   maxTokens: z.number().int().min(1).max(1_000_000).nullable().optional(),

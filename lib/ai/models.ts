@@ -6,6 +6,25 @@ export type ModelCapabilities = {
   reasoning: boolean;
 };
 
+/**
+ * Capacités de réflexion déclarées par le fournisseur pour ce modèle.
+ *
+ * Relevé tel quel sur `GET /v1/models` (models.ts) : la forme est celle
+ * d'OpenRouter, et chaque champ est facultatif — `supported_efforts` manque
+ * notamment sur les modèles qui raisonnent sans exposer de niveaux
+ * (ex. `minimax/minimax-m3`, alias mAI-2-Mini).
+ */
+export type ChatModelReasoning = {
+  /** Le modèle ne peut pas produire de réponse sans raisonner. */
+  mandatory?: boolean;
+  /** La réflexion est-elle active par défaut chez ce fournisseur ? */
+  default_enabled?: boolean;
+  /** Niveau appliqué en l'absence de choix explicite. */
+  default_effort?: string;
+  /** Niveaux réellement acceptés, du plus intense au plus faible. */
+  supported_efforts?: string[];
+};
+
 export type ChatModel = {
   id: string;
   name: string;
@@ -20,15 +39,20 @@ export type ChatModel = {
     output_modalities?: string[];
     [key: string]: any;
   };
+  reasoning?: ChatModelReasoning | null;
   supported_parameters?: string[];
 };
 
-export const DEFAULT_CHAT_MODEL = "google/gemini-2.5-flash";
+// Modèle par défaut unique de l'application : preference « Modèle par défaut »
+// des réglages, modèles d'agents, agents, planification et résumés de mémoire.
+// Toute évolution doit être répercutée dans la migration 0029 (valeurs
+// existantes + DEFAULT des colonnes) pour rester cohérente avec les données.
+export const DEFAULT_CHAT_MODEL = "gemini/gemini-3.8-flash";
 
 export const titleModel = {
   description: "Modèle rapide pour la génération de titres",
-  id: "google/gemini-2.5-flash",
-  name: "Gemini 2.5 Flash",
+  id: DEFAULT_CHAT_MODEL,
+  name: "Gemini 3.8 Flash",
   provider: "google",
 };
 
@@ -304,10 +328,21 @@ export function getModelCapabilities(
         lower.includes("light");
 
   // 4. Détection du raisonnement (Reasoning / Thinking)
-  const isReasoning =
-    supportedParams.length > 0 &&
-    (supportedParams.includes("thinking") ||
-      supportedParams.includes("reasoning"))
+  //
+  // L'objet `reasoning` du catalogue est la source de vérité : il dit ce que le
+  // modèle sait faire, pas ce que son nom laisse deviner. `supported_parameters`
+  // sert de repli pour les entrées de catalogue qui ne le portent pas encore,
+  // et les heuristiques par nom uniquement en dernier recours (catalogue de
+  // repli, où aucun metadata n'est disponible).
+  const declaredReasoning =
+    typeof model === "object" && model ? model.reasoning : null;
+  const isReasoning = declaredReasoning
+    ? true
+    : supportedParams.length > 0 &&
+        (supportedParams.includes("thinking") ||
+          supportedParams.includes("reasoning") ||
+          supportedParams.includes("reasoning_effort") ||
+          supportedParams.includes("include_reasoning"))
       ? true
       : lower.includes("r1") ||
         lower.includes("o1") ||

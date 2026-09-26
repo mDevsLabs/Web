@@ -61,9 +61,10 @@ export function tasksSection(input: PromptCapabilities): string | null {
     return null;
   }
   return [
-    "OUTIL DE TÂCHES — L'utilisateur a activé l'option Tâches pour cet échange.",
+    "OUTIL DE TÂCHES — L'utilisateur a activé l'option Tâches pour cet échange. C'est la seule raison pour laquelle cet outil existe ici.",
     "Appelle `tasks` EN PREMIER, avant tout autre outil et avant d'écrire la moindre réponse : il structure un plan de 2 à 8 tâches ordonnées, chacune avec un intitulé court et un résultat attendu.",
-    "Ce plan est affiché tel quel à l'utilisateur : il sert de contrat de progression, pas de brouillon. Exécute-le ensuite étape par étape sans attendre de validation, et termine toujours par une réponse textuelle.",
+    "Ce plan est affiché tel quel à l'utilisateur : c'est un contrat de progression, pas un brouillon, et pas un point d'arrivée.",
+    "Après l'appel, EXÉCUTE le plan : enchaîne les tâches une par une, appelle les outils utiles pour chacune, et ne t'arrête pas sur un résumé du plan. Tu ne termines qu'une fois le plan exécuté, ou lorsqu'une limite réelle est atteinte — et tu dis alors laquelle.",
   ].join("\n");
 }
 

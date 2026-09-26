@@ -69,11 +69,7 @@ export function AgentChip({
           className="size-5 rounded-full flex items-center justify-center text-white text-xs"
           style={{ backgroundColor: activeAgent.color || "#6366f1" }}
         >
-          {(activeAgent as any).emoji ? (
-            (activeAgent as any).emoji
-          ) : (
-            <BotIcon className="size-3.5" />
-          )}
+          <BotIcon className="size-3.5" />
         </span>
         <span>Agent actif : {activeAgent.name}</span>
         <button

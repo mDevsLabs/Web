@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { REASONING_LEVELS } from "@/lib/ai/registry/reasoning";
 
 const ALLOWED_MEDIA_TYPES = [
   "image/jpeg",
@@ -67,7 +68,10 @@ export const agentRequestBodySchema = z.object({
   messages: z.array(toolApprovalMessageSchema).optional(),
   modelId: z.string().min(1).max(200),
   projectId: z.string().uuid().nullable().optional(),
-  reasoningLevel: z.enum(["low", "medium", "high"]).optional(),
+  // Les sept niveaux du fournisseur, pas un triplet figé : le corps de requête
+  // n'accepterait sinon que low/medium/high et l'utilisateur ne pourrait pas
+  // choisir « max » sur un modèle qui le propose.
+  reasoningLevel: z.enum(REASONING_LEVELS).optional(),
   resumeFromRunId: z.uuid().optional(),
   skillId: z.string().uuid().nullable().optional(),
   skillParams: z.record(z.string().max(80), z.string().max(400)).optional(),

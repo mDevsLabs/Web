@@ -7,6 +7,7 @@ import useSWR from "swr";
 import type { AgentComposerSubmit } from "@/components/agent/agent-composer";
 import { AgentComposer } from "@/components/agent/agent-composer";
 import { AgentHome } from "@/components/agent/agent-home";
+import { AgentRunErrorBoundary } from "@/components/agent/agent-run-error-boundary";
 import { AgentRunFeedback } from "@/components/agent/agent-run-feedback";
 import { AgentRunTimeline } from "@/components/agent/agent-run-timeline";
 import {
@@ -26,6 +27,7 @@ import { extractChatIdFromPath, useAgentMode } from "@/hooks/use-agent-mode";
 import { useAgentModels } from "@/hooks/use-agent-models";
 import { type ProjectLite, useProjects } from "@/hooks/use-projects";
 import { AGENT_COMPOSER_ARIA_LABEL } from "@/lib/agent/channel";
+import { shouldShowAgentHome } from "@/lib/agent/timeline-visibility";
 import type {
   AgentRunRecord,
   AgentRunUsage,
@@ -85,8 +87,13 @@ function AgentShellInner() {
   const isNewChat = !extractChatIdFromPath(pathname);
   const { setMode } = useAgentMode();
 
-  const { chatId, currentModelId, setCurrentModelId, visibilityType } =
-    useActiveChat();
+  const {
+    chatId,
+    currentModelId,
+    resetEpoch,
+    setCurrentModelId,
+    visibilityType,
+  } = useActiveChat();
   const { flags, channelInfo } = useAgentFlags();
   const {
     capabilities: modelsCapabilities,
@@ -308,13 +315,41 @@ function AgentShellInner() {
   };
 
   const isRunning = status === "streaming" || status === "submitted";
+
+  // « Nouvelle discussion » (barre latérale) ne réinitialise que l'état Chat :
+  // l'AgentStreamProvider est monté plus bas que le sidebar, il n'était donc
+  // jamais vidé. Sans ce reset, `state.steps` restait peuplé après le retour à
+  // `/`, `showHome` restait faux et l'accueil Agent ne s'affichait jamais.
+  //
+  // Le run en cours est arrêté en même temps : sans cela le flux continuait
+  // d'alimenter `state.steps` et l'écran restait bloqué sur la timeline.
+  //
+  // L'hydratation depuis l'historique (effet suivant) ne peut pas ressusciter
+  // l'ancienne conversation : `hydratedRunIdRef` retient déjà l'ID du dernier
+  // run hydraté, et la clé SWR passe à null dès que le pathname redevient `/`.
+  const lastHandledResetEpochRef = useRef(resetEpoch);
+  useEffect(() => {
+    if (lastHandledResetEpochRef.current === resetEpoch) {
+      return;
+    }
+    lastHandledResetEpochRef.current = resetEpoch;
+    if (isRunning) {
+      void stopRun();
+    }
+    reset();
+    setResumeFromRunId(null);
+  }, [isRunning, reset, resetEpoch, stopRun]);
+
   // Hydratation de la conversation : le fetch /api/messages est-il encore en
   // cours ET l'agent est-il inerte ? Un run actif prime toujours — pendant une
   // génération, la conversation est déjà là, et « Chargement » s'affichait
   // par-dessus, à chaque révalidation, alors que l'agent travaillait.
   const isHydrating = isLoading && !isRunning;
-  const showHome =
-    !isHydrating && messages.length === 0 && state.steps.length === 0;
+  const showHome = shouldShowAgentHome({
+    isHydrating,
+    messageCount: messages.length,
+    stepCount: state.steps.length,
+  });
 
   const modelCompatibilityWarning =
     currentEntry && !currentModelIsAgentCompatible ? (
@@ -397,7 +432,13 @@ function AgentShellInner() {
           <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-3 py-5 md:px-4">
             {showHome ? null : (
               <>
-                <AgentRunTimeline state={state} />
+                {/* La zone d'exécution est la seule partie réellement exposée
+                    (icônes choisies par clé, listes, dialogue). Elle est
+                    encapsulée pour qu'un défaut d'affichage ne jette plus la
+                    conversation, le compositeur et l'historique avec. */}
+                <AgentRunErrorBoundary runId={state.run?.runId ?? null}>
+                  <AgentRunTimeline state={state} />
+                </AgentRunErrorBoundary>
                 {flags["agent.activity"] &&
                 state.run &&
                 ["completed", "failed", "cancelled", "timed_out"].includes(

@@ -277,11 +277,14 @@ export function SidebarHistory({
           <SidebarMenu>
             {paginatedChatHistories
               ? (() => {
-                  const chatsFromHistory = paginatedChatHistories.flatMap(
-                    (paginatedChatHistory) => paginatedChatHistory.chats
-                  );
-
-                  const groupedChats = groupChatsByDate(chatsFromHistory);
+                  // `allChats` est la SEULE lecture des pages de l'historique :
+                  // il filtre déjà les pages `undefined` que useSWRInfinite
+                  // laisse pour une page en cours ou en erreur. Le recomputer
+                  // ici sans garde faisait tomber toute la mise en page — la
+                  // barre latérale partage le segment de route avec le
+                  // compositeur — à la fin d chaque run Agent, qui revalide
+                  // l'historique.
+                  const groupedChats = groupChatsByDate(allChats);
 
                   return (
                     <div className="flex flex-col gap-4">

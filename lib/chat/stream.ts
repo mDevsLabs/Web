@@ -7,6 +7,7 @@ import {
   toUIMessageStream,
 } from "ai";
 import { generateTitleFromConversation } from "@/app/(chat)/actions";
+import { readReasoningTokens, resolveBillableTotal } from "@/lib/agent/usage";
 import { TOOL_SYSTEM_HINTS } from "@/lib/ai/tools/config";
 import type { ChatRequestContext } from "@/lib/chat/context";
 import type { MemoryContext } from "@/lib/chat/memory";
@@ -209,7 +210,16 @@ async function handleTokenAccounting(params: {
   // Décompte précis des tokens (entrée + sortie additionnés)
   const inputTokens = usage?.inputTokens ?? usage?.promptTokens ?? 0;
   const outputTokens = usage?.outputTokens ?? usage?.completionTokens ?? 0;
-  const totalTokens = usage?.totalTokens ?? inputTokens + outputTokens;
+  // La réflexion est un sous-ensemble des tokens de sortie, mais l'AI SDK la sort
+  // de `outputTokens` : elle doit donc être recomposée explicitement, sans
+  // double comptage. Règle partagée avec le chemin Agent.
+  const reasoningTokens = readReasoningTokens(usage);
+  const totalTokens = resolveBillableTotal({
+    inputTokens,
+    outputTokens,
+    reasoningTokens,
+    totalTokens: usage?.totalTokens ?? 0,
+  });
 
   if (totalTokens > 0) {
     // 1. Enregistrement direct et persistant en BDD (normal et fantôme)
@@ -219,6 +229,7 @@ async function handleTokenAccounting(params: {
       isGhostMode,
       model: chatModel,
       outputTokens,
+      reasoningTokens,
       totalTokens,
       userEmail: email,
       userId,
@@ -232,6 +243,7 @@ async function handleTokenAccounting(params: {
           isGhostMode,
           model: chatModel,
           outputTokens,
+          reasoningTokens,
           tokensUsed: totalTokens,
         }),
         headers: {
@@ -260,6 +272,7 @@ async function handleTokenAccounting(params: {
         data: {
           inputTokens,
           outputTokens,
+          reasoningTokens,
           tokens: totalTokens,
           total: totalTokens,
         } as any,

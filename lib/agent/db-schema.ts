@@ -2,6 +2,7 @@ import type { ScheduleRule } from "@/lib/agent/contracts";
 import type { DurationCheckpoint } from "@/lib/agent/limits";
 import type { AgentRunStatus } from "@/lib/agent/types";
 import type { NormalizedUsage } from "@/lib/agent/usage";
+import type { ReasoningLevel } from "@/lib/ai/registry/reasoning";
 
 // Définitions de schéma des fondations Agent (tables et colonnes ajoutées par
 // la migration 0017). Placées ici pour rester importables sans dépendre de
@@ -19,7 +20,9 @@ export type AgentScheduleConfig = {
   // Catégories d'outils autorisées (null = réglages utilisateur).
   autonomy: "careful" | "high" | "standard";
   enabledCategories: string[] | null;
-  reasoningLevel: "high" | "low" | "medium";
+  // Les sept niveaux du fournisseur, pas un triplet : un run planifié peut
+  // demander « max » si son modèle l'accepte.
+  reasoningLevel: ReasoningLevel;
 };
 
 export type AgentScheduleRecord = {

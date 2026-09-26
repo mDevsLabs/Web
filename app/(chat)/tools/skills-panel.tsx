@@ -6,7 +6,6 @@ import {
   Loader2Icon,
   PlusIcon,
   SettingsIcon,
-  SparklesIcon,
   Trash2Icon,
   WrenchIcon,
 } from "lucide-react";
@@ -41,13 +40,22 @@ type SkillLite = {
   templateId?: string | null;
 };
 
-function SkillGlyph({ color }: { color: string }) {
+// Pastille colorée d'un modèle de skill. Elle rend l'icône déclarée par le
+// manifeste (et non une icône générique) : c'est ce qui donne à chaque modèle
+// une icône unique dans la liste.
+function SkillGlyph({
+  color,
+  icon,
+}: {
+  color: string;
+  icon: { name: string; type: "lucide" };
+}) {
   return (
     <span
       className="flex size-7 items-center justify-center rounded-lg text-white"
       style={{ backgroundColor: color }}
     >
-      <SparklesIcon className="size-3.5" />
+      <SkillTemplateIcon className="size-3.5" icon={icon} />
     </span>
   );
 }
@@ -201,7 +209,7 @@ export default function SkillsPanel({
                 key={template.id}
                 title={`${template.name} — voir la fiche`}
               >
-                <SkillGlyph color={template.color} />
+                <SkillGlyph color={template.color} icon={template.icon} />
               </a>
             ))}
           </div>
@@ -266,7 +274,7 @@ export default function SkillsPanel({
                     href={`/tools/skills/${template.id}`}
                     title={`${template.name} — voir la fiche détaillée`}
                   >
-                    <SkillGlyph color={template.color} />
+                    <SkillGlyph color={template.color} icon={template.icon} />
                   </a>
                   <div className="flex min-w-0 flex-1 flex-col">
                     <span className="truncate text-sm font-semibold text-foreground">
@@ -322,7 +330,7 @@ export default function SkillsPanel({
             <>
               <DialogHeader>
                 <div className="flex items-center gap-3">
-                  <SkillGlyph color={details.color} />
+                  <SkillGlyph color={details.color} icon={details.icon} />
                   <div>
                     <DialogTitle>{details.name}</DialogTitle>
                     <DialogDescription>

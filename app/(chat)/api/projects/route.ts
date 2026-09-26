@@ -7,18 +7,22 @@ import {
   getProjectsByUserId,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
+import { buildCustomInstructionsSchema } from "@/lib/plans/custom-instructions";
 
-const createSchema = z.object({
-  color: z
-    .string()
-    .regex(/^#[0-9a-fA-F]{6}$/)
-    .optional(),
-  customInstructions: z.string().max(4000).optional(),
-  defaultModel: z.string().max(100).optional(),
-  description: z.string().max(500).optional(),
-  icon: z.string().max(10).optional(),
-  name: z.string().min(1).max(100),
-});
+// customInstructions est borné par le forfait de l'utilisateur : le schéma
+// est construit après résolution de la session (voir POST).
+const buildCreateSchema = (tier?: string | null) =>
+  z.object({
+    color: z
+      .string()
+      .regex(/^#[0-9a-fA-F]{6}$/)
+      .optional(),
+    customInstructions: buildCustomInstructionsSchema(tier),
+    defaultModel: z.string().max(100).optional(),
+    description: z.string().max(500).optional(),
+    icon: z.string().max(10).optional(),
+    name: z.string().min(1).max(100),
+  });
 
 export async function GET(request: Request) {
   const user = await getMaiUser();
@@ -68,7 +72,7 @@ export async function POST(request: Request) {
 
   try {
     const body = await request.json();
-    const parsed = createSchema.parse(body);
+    const parsed = buildCreateSchema(user.tier).parse(body);
 
     // Limit projects per user
     const existing = await getProjectsByUserId({

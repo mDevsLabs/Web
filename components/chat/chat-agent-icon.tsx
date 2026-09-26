@@ -10,31 +10,13 @@ import { resolveAgentIcon } from "@/components/agents/agent-registry";
  */
 export const ChatAgentIcon = memo(function ChatAgentIcon({
   agentIcon,
-  agentEmoji,
   agentColor,
   size = 14,
 }: {
   agentIcon?: string | null;
-  agentEmoji?: string | null;
   agentColor?: string | null;
   size?: number;
 }) {
-  if (agentEmoji) {
-    return (
-      <span
-        className="inline-flex shrink-0 items-center justify-center rounded-[4px] leading-none"
-        style={{
-          backgroundColor: agentColor || "#6366f1",
-          fontSize: size - 2,
-          height: size + 2,
-          width: size + 2,
-        }}
-      >
-        {agentEmoji}
-      </span>
-    );
-  }
-
   if (agentIcon) {
     const Icon = resolveAgentIcon(agentIcon);
     return (

@@ -158,15 +158,30 @@ export function AgentComposer({
   // Données des menus @ : projets, skills, agents, plugins et serveurs MCP
   // de l'utilisateur. Les effects de session sont retransmis dans la requête
   // et revérifiés côté serveur.
+  //
+  // Ces trois fetchers ne doivent jamais renvoyer autre chose qu'un tableau
+  // exploitable : le `= []` par défaut de SWR ne couvre que `undefined`, donc
+  // une réponse 200 au corps inattendu empoisonnait le cache et faisait lever
+  // `find is not a function` à CHAQUE rendu du composer — donc sur tout le
+  // mode Agent. `jsonArray`/`jsonObject` filtrent et laissent SWR réessayer.
   const { projects: allProjects } = useProjects();
   const { data: userSkills = [] } = useSWR<Skill[]>(
     "/api/skills",
-    (url: string) => fetch(url).then((r) => r.json()),
+    (url: string) =>
+      fetch(url).then((response) =>
+        response.ok
+          ? response.json()
+          : Promise.reject(new Error(`skills HTTP ${response.status}`))
+      ),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
+  const skills = useMemo(
+    () => (Array.isArray(userSkills) ? userSkills : []),
+    [userSkills]
+  );
   const selectedSkill = useMemo(
-    () => userSkills.find((skill) => skill.id === options.skillId) ?? null,
-    [options.skillId, userSkills]
+    () => skills.find((skill) => skill.id === options.skillId) ?? null,
+    [options.skillId, skills]
   );
   const selectedSkillHasParams = useMemo(
     () =>
@@ -175,14 +190,31 @@ export function AgentComposer({
     [selectedSkill]
   );
 
-  const { data: userAgents = [] } = useSWR<Agent[]>(
+  const { data: userAgentsData } = useSWR<{
+    agents: Agent[];
+    limit: number | null;
+  }>(
     "/api/agents",
-    (url: string) => fetch(url).then((r) => r.json()),
+    (url: string) =>
+      fetch(url).then((response) =>
+        response.ok
+          ? response.json()
+          : Promise.reject(new Error(`agents HTTP ${response.status}`))
+      ),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
+  );
+  const agents = useMemo(
+    () => (Array.isArray(userAgentsData?.agents) ? userAgentsData.agents : []),
+    [userAgentsData]
   );
   const { data: mcpData } = useSWR<{ servers: McpServer[] }>(
     flags["agent.mcp"] ? "/api/mcp" : null,
-    (url: string) => fetch(url).then((r) => r.json()),
+    (url: string) =>
+      fetch(url).then((response) =>
+        response.ok
+          ? response.json()
+          : Promise.reject(new Error(`mcp HTTP ${response.status}`))
+      ),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
   const userMcpServers = useMemo(
@@ -191,12 +223,17 @@ export function AgentComposer({
   );
   const { data: pluginData } = useSWR<{ plugins: PluginCatalogEntry[] }>(
     flags["agent.plugins"] ? "/api/plugins" : null,
-    (url: string) => fetch(url).then((response) => response.json()),
+    (url: string) =>
+      fetch(url).then((response) =>
+        response.ok
+          ? response.json()
+          : Promise.reject(new Error(`plugins HTTP ${response.status}`))
+      ),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
   const userPlugins = useMemo(
     () =>
-      (pluginData?.plugins ?? []).filter(
+      (Array.isArray(pluginData?.plugins) ? pluginData.plugins : []).filter(
         (plugin) => plugin.installed && plugin.enabled && !plugin.locked
       ),
     [pluginData]
@@ -319,8 +356,7 @@ export function AgentComposer({
     slashQuery,
     textareaProps,
   } = useComposerTriggers({
-    activeSkill:
-      userSkills.find((skill) => skill.id === options.skillId) ?? null,
+    activeSkill: skills.find((skill) => skill.id === options.skillId) ?? null,
     clearActiveSkill: () =>
       onOptionsChange({ skillId: null, skillParams: null }),
     clearPendingProject: () => onProjectChange(null),
@@ -336,7 +372,7 @@ export function AgentComposer({
     pendingTools: options.mcpServerIds.map((serverId) => `mcp:${serverId}`),
     projects: allProjects,
     setInput,
-    skills: userSkills,
+    skills,
     supportsTools: capabilities.tools,
     textareaRef,
     togglePendingTool: (toolId) => {
@@ -348,7 +384,7 @@ export function AgentComposer({
           : [...options.mcpServerIds, serverId],
       });
     },
-    userAgents,
+    userAgents: agents,
   });
 
   const sendTask = useCallback(
@@ -567,7 +603,7 @@ export function AgentComposer({
         ) : null}
         {mentionOpen ? (
           <MentionMenu
-            agents={userAgents}
+            agents={agents}
             customCommands={[]}
             id={mentionMenuId}
             isLoadingProjects={false}
@@ -579,7 +615,7 @@ export function AgentComposer({
             projects={allProjects as never}
             query={mentionQuery}
             selectedIndex={mentionIndex}
-            skills={userSkills}
+            skills={skills}
             supportsTools={capabilities.tools}
           />
         ) : null}

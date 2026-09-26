@@ -20,6 +20,13 @@ export type ToolSelectionContext = {
   };
   enabledCategories: ToolCategory[] | null;
   mode: ToolSelectionMode;
+  /**
+   * Outils « engageants » que l'utilisateur a explicitement activés (menu « + »).
+   * Sans cette liste, un outil marqué `optIn` au catalogue n'est JAMAIS
+   * sélectionné — même en mode « all », même si sa catégorie est active, même
+   * si le routeur LLM la réclame.
+   */
+  optInToolIds?: readonly string[];
   task: string;
   tools: RegisteredAgentTool[];
   userTier: string | null;
@@ -32,10 +39,24 @@ export type ToolSelectionResult = {
   uncertain: boolean;
 };
 
+function isToolOptedIn(
+  tool: RegisteredAgentTool,
+  context: ToolSelectionContext
+): boolean {
+  if (!tool.availability.optIn) {
+    return true;
+  }
+  return (context.optInToolIds ?? []).includes(tool.id);
+}
+
 function isToolAvailable(
   tool: RegisteredAgentTool,
   context: ToolSelectionContext
 ): boolean {
+  if (!isToolOptedIn(tool, context)) {
+    return false;
+  }
+
   const requires = tool.availability.requires;
 
   if (

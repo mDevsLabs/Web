@@ -20,10 +20,13 @@ const fetcher = (url: string) => fetch(url).then((r) => r.json());
 export function AgentSelectorCompact() {
   const { activeAgent, setActiveAgent, clearActiveAgent } = useActiveChat();
   const { isFree } = useTier();
-  const { data: agents = [] } = useSWR<Agent[]>(
+  const { data } = useSWR<{ agents: Agent[]; limit: number | null }>(
     isFree ? null : "/api/agents",
     fetcher
   );
+  const agents = data?.agents ?? [];
+  // `null` = forfait Max, nombre d'agents illimité.
+  const limit = data?.limit ?? null;
   const [open, setOpen] = useState(false);
 
   if (isFree) {
@@ -59,23 +62,14 @@ export function AgentSelectorCompact() {
         >
           <BotIcon className="size-3.5 shrink-0" />
           <span className="max-w-[100px] truncate hidden sm:inline">
-            {activeAgent
-              ? activeAgent.emoji
-                ? `${activeAgent.emoji} ${activeAgent.name}`
-                : activeAgent.name
-              : "Agent"}
+            {activeAgent ? activeAgent.name : "Agent"}
           </span>
           {activeAgent && (
             <span
               className="size-5 rounded-full flex items-center justify-center text-[11px] shrink-0"
               style={{ backgroundColor: activeAgent.color || "#6366f1" }}
             >
-              <AgentIcon
-                emoji={activeAgent.emoji}
-                icon={activeAgent.icon}
-                size={12}
-                variant="plain"
-              />
+              <AgentIcon icon={activeAgent.icon} size={12} variant="plain" />
             </span>
           )}
           <ChevronDownIcon className="size-3 opacity-60" />
@@ -90,7 +84,7 @@ export function AgentSelectorCompact() {
             <BotIcon className="size-3.5" /> Agents
           </span>
           <span className="text-[10px] normal-case font-normal">
-            {agents.length}/10
+            {agents.length}/{limit ?? "∞"}
           </span>
         </div>
         <button
@@ -139,12 +133,7 @@ export function AgentSelectorCompact() {
                   className="size-7 rounded-lg flex items-center justify-center text-white shrink-0"
                   style={{ backgroundColor: a.color || "#6366f1" }}
                 >
-                  <AgentIcon
-                    emoji={a.emoji}
-                    icon={a.icon}
-                    size={14}
-                    variant="plain"
-                  />
+                  <AgentIcon icon={a.icon} size={14} variant="plain" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <span className="font-medium text-xs truncate block">

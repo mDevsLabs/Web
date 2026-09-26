@@ -178,7 +178,12 @@ function formatTokens(count: number): string {
 }
 
 function RunSummary({ run }: { run: AgentRunEvent }) {
-  const badge = RUN_STATUS_BADGES[run.status];
+  // Même raison que pour l'icône d'étape : `status` est relu depuis une colonne
+  // varchar sans CHECK. On affiche le statut brut plutôt que de lever.
+  const badge = RUN_STATUS_BADGES[run.status] ?? {
+    className: "border-border/40",
+    label: run.status,
+  };
   return (
     <div
       className="flex flex-wrap items-center gap-x-3 gap-y-1 rounded-xl border border-border/40 bg-background/60 px-2.5 py-1.5 text-[11.5px] text-muted-foreground"
@@ -452,7 +457,7 @@ export function AgentRunTimeline({
             {plan.title}
           </p>
           <ol className="flex flex-col gap-1">
-            {plan.items.map((item) => (
+            {(plan.items ?? []).map((item) => (
               <li className="flex items-center gap-2 text-[13px]" key={item.id}>
                 <StatusDot status={item.status} />
                 <span className="flex min-w-0 flex-1 flex-col">
@@ -509,9 +514,14 @@ export function AgentRunTimeline({
             }
             const activity = activities.at(-1);
             const category: ToolCategory | undefined = activity?.category;
+            // `step.type` vient de la base, où la colonne n'est qu'un varchar
+            // sans CHECK : une valeur hors énumération rendrait `Icon` undefined
+            // et React lèverait « Element type is invalid » au premier rendu de
+            // l'historique. Le repli final est donc obligatoire.
             const Icon =
               (category ? CATEGORY_ICONS[category] : undefined) ??
-              STEP_ICONS[step.type];
+              STEP_ICONS[step.type] ??
+              CircleIcon;
             return (
               <motion.div
                 animate={{ opacity: 1, y: 0 }}

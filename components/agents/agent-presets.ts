@@ -27,23 +27,21 @@ export const AGENT_ICONS: AgentIconPreset[] = [
   { id: "cloud", label: "Cloud" },
 ];
 
+// Palette de badges : 10 couleurs classiques affichées sur deux lignes de 5,
+// plus une couleur libre choisie par l'utilisateur (voir ColorPicker).
+// Ces hex sont tous déjà présents dans l'ancienne palette de 16 : aucun agent
+// existant ne perd sa couleur.
 export const AGENT_COLORS: string[] = [
-  "#6366f1",
-  "#06b6d4",
-  "#10b981",
-  "#a855f7",
-  "#f43f5e",
-  "#f59e0b",
-  "#14b8a6",
+  "#ef4444",
   "#f97316",
   "#eab308",
-  "#ec4899",
-  "#8b5cf6",
-  "#0ea5e9",
-  "#64748b",
   "#22c55e",
-  "#ef4444",
-  "#d946ef",
+  "#14b8a6",
+  "#0ea5e9",
+  "#6366f1",
+  "#8b5cf6",
+  "#ec4899",
+  "#64748b",
 ];
 
 export const DEFAULT_AGENT_COLOR = "#6366f1";

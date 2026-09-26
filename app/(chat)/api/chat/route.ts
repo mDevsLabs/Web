@@ -26,7 +26,7 @@ import {
   getToolIdsForPluginIds,
 } from "@/lib/plugins/server";
 import { canUsePlugin } from "@/lib/plugins/tier-lock";
-import { type PostRequestBody, postRequestBodySchema } from "./schema";
+import { buildPostRequestBodySchema, type PostRequestBody } from "./schema";
 
 export const maxDuration = 300;
 
@@ -38,7 +38,12 @@ export async function POST(request: Request) {
   // requête car elle meurt avant tout appel au modèle.
   try {
     const json: unknown = await request.json();
-    const parsed = postRequestBodySchema.safeParse(json);
+    // Le schéma dépend du forfait (limite de customInstructions) : la session
+    // est donc résolue AVANT le parse. Elle l'est de toute façon un peu plus
+    // bas pour l'envoi, et un échec d'authentification doit primer sur un
+    // 400 de schéma.
+    const schemaTier = (await getMaiUser())?.tier;
+    const parsed = buildPostRequestBodySchema(schemaTier).safeParse(json);
     if (!parsed.success) {
       const issues = parsed.error.issues
         .slice(0, 5)

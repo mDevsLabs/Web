@@ -19,7 +19,6 @@ import { ChatbotError } from "@/lib/errors";
 const createSchema = z
   .object({
     agentId: z.string().uuid().nullable().optional(),
-    category: z.string().max(50).optional(),
     content: z.string().min(1).max(MEMORY_CONTENT_MAX_LENGTH),
     isEnabled: z.boolean().optional(),
     isImportant: z.boolean().optional(),
@@ -31,7 +30,6 @@ const createSchema = z
   });
 
 const updateSchema = z.object({
-  category: z.string().max(50).optional(),
   content: z.string().min(1).max(MEMORY_CONTENT_MAX_LENGTH).optional(),
   id: z.string().uuid(),
   isEnabled: z.boolean().optional(),
@@ -158,7 +156,6 @@ export async function POST(request: Request) {
     }
     const memory = await createMemory({
       agentId: scope.agentId,
-      category: parsed.category ?? "general",
       content,
       isEnabled: parsed.isEnabled ?? true,
       isImportant: parsed.isImportant ?? false,
@@ -209,7 +206,6 @@ export async function PATCH(request: Request) {
     const body = await request.json();
     const parsed = updateSchema.parse(body);
     const updated = await updateMemory({
-      category: parsed.category,
       content: parsed.content,
       id: parsed.id,
       isEnabled: parsed.isEnabled,

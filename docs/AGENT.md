@@ -10,9 +10,16 @@
 Chat est conversationnel ; Agent travaille par objectif :
 
 ```
-Utilisateur → objectif → plan éventuel → modèle → tool calls
+Utilisateur → objectif → modèle → tool calls
            → résultats → modèle → vérification → réponse / livrable
 ```
+
+Le plan de tâches est une **exception**, jamais un acquis : il n'existe que si
+l'utilisateur a activé l'option « Tâches » du menu « + ». L'outil `tasks` est
+donc marqué `optIn` au catalogue — invisible au sélecteur en mode `auto`, `all`
+comme `categories` — et c'est lui, et lui seul, qui rédige le plan, au premier
+tour. Le runtime le rappelle à chaque étape tant qu'aucune tâche n'est terminée,
+pour qu'un plan soit déroulé et non seulement annoncé.
 
 Techniquement, cette boucle reste **le tool calling standard** des API de type
 Chat Completions / Responses. Agent n'introduit ni Computer Use, ni navigateur
@@ -55,9 +62,8 @@ checkAgentModelAccess           → tool calling obligatoire, forfait
 collectAttachments + validation → types / nombre / capacités détaillées du modèle effectif
 normalizeAgentReasoningLevel    → valeur validée
 resolveAgentExecutionBudget     → maxSteps, maxToolCalls, durée, retries
-ToolSelector (hybride)          → outils pertinents
+ToolSelector (hybride)          → outils pertinents (hors outils « opt-in »)
 applyToolPermissions            → auto / ask / off (autonomie + surcharges)
-generateTaskPlan                → plan synthétique si la tâche le justifie
 createAgentRun / reprise        → unicité conversation/message, réservation d'exécution
 loadAgentProjectContext         → contexte projet ciblé
 buildAgentContext               → compaction + budget de tokens

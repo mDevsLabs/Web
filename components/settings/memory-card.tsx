@@ -5,25 +5,20 @@ import {
   BotIcon,
   BrainIcon,
   CheckIcon,
-  CodeIcon,
   CopyIcon,
   DownloadIcon,
   FileJsonIcon,
   FolderKanbanIcon,
   GlobeIcon,
-  LightbulbIcon,
   Loader2Icon,
   PencilIcon,
   PowerIcon,
-  ScrollTextIcon,
   SearchIcon,
-  Settings2Icon,
   SparklesIcon,
   StarIcon,
   TagIcon,
   Trash2Icon,
   UploadIcon,
-  UserIcon,
   XIcon,
 } from "lucide-react";
 import { type ChangeEvent, useMemo, useRef, useState } from "react";
@@ -58,7 +53,6 @@ import { cn } from "@/lib/utils";
 export type MemoryEntry = {
   agentId: string | null;
   agentName?: string | null;
-  category?: string | null;
   content: string;
   createdAt: string;
   id: string;
@@ -85,15 +79,6 @@ const SCOPE_FILTERS: { id: ScopeFilter; label: string }[] = [
   { id: "agent", label: "Agents" },
   { id: "project", label: "Projets" },
 ];
-
-export const MEMORY_CATEGORIES = [
-  { icon: LightbulbIcon, id: "general", label: "Général" },
-  { icon: Settings2Icon, id: "preferences", label: "Préférences" },
-  { icon: CodeIcon, id: "dev", label: "Code & Dev" },
-  { icon: FolderKanbanIcon, id: "projects", label: "Projets" },
-  { icon: UserIcon, id: "personal", label: "Personnel" },
-  { icon: ScrollTextIcon, id: "rules", label: "Règles" },
-] as const;
 
 function formatMemoryDate(value: string): string {
   try {
@@ -168,19 +153,17 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
 
   // Filtres & Recherche
   const [scopeFilter, setScopeFilter] = useState<ScopeFilter>("all");
-  const [categoryFilter, setCategoryFilter] = useState<string>("all");
+  const [importantOnly, setImportantOnly] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
   // Ajout / Édition
   const [newContent, setNewContent] = useState("");
-  const [newCategory, setNewCategory] = useState<string>("general");
   const [newTagsInput, setNewTagsInput] = useState("");
   const [newIsImportant, setNewIsImportant] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
 
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editContent, setEditContent] = useState("");
-  const [editCategory, setEditCategory] = useState<string>("general");
   const [editTagsInput, setEditTagsInput] = useState("");
   const [isUpdating, setIsUpdating] = useState(false);
 
@@ -202,23 +185,24 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
   >(null);
 
   // Filtrage avancé
+  const importantCount = useMemo(
+    () => memories.filter((m) => m.isImportant).length,
+    [memories]
+  );
   const filteredMemories = useMemo(() => {
     return memories.filter((m) => {
       // Filtre scope
       if (allScopes && !matchesScopeFilter(m, scopeFilter)) {
         return false;
       }
-      // Filtre catégorie / important
-      if (categoryFilter === "important") {
-        if (!m.isImportant) return false;
-      } else if (categoryFilter !== "all") {
-        if ((m.category || "general") !== categoryFilter) return false;
+      // Filtre « Important » (booléen isImportant, pas une catégorie)
+      if (importantOnly && !m.isImportant) {
+        return false;
       }
       // Filtre recherche textuelle
       if (searchQuery.trim()) {
         const q = normalizeStr(searchQuery);
         const contentMatch = normalizeStr(m.content).includes(q);
-        const catMatch = normalizeStr(m.category || "").includes(q);
         const tagsMatch = (m.tags || []).some((t) =>
           normalizeStr(t).includes(q)
         );
@@ -228,19 +212,13 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
         const projMatch = m.projectName
           ? normalizeStr(m.projectName).includes(q)
           : false;
-        if (
-          !contentMatch &&
-          !catMatch &&
-          !tagsMatch &&
-          !agentMatch &&
-          !projMatch
-        ) {
+        if (!contentMatch && !tagsMatch && !agentMatch && !projMatch) {
           return false;
         }
       }
       return true;
     });
-  }, [memories, allScopes, scopeFilter, categoryFilter, searchQuery]);
+  }, [memories, allScopes, scopeFilter, importantOnly, searchQuery]);
 
   // Ajouter une mémoire
   const handleAdd = async () => {
@@ -255,7 +233,6 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
 
       const res = await fetch("/api/memory", {
         body: JSON.stringify({
-          category: newCategory,
           content,
           isImportant: newIsImportant,
           tags,
@@ -295,7 +272,6 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
 
       const res = await fetch("/api/memory", {
         body: JSON.stringify({
-          category: editCategory,
           content,
           id: editingId,
           tags,
@@ -453,7 +429,6 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
       count: memories.length,
       exportedAt: new Date().toISOString(),
       memories: memories.map((m) => ({
-        category: m.category || "general",
         content: m.content,
         createdAt: m.createdAt,
         isEnabled: m.isEnabled ?? true,
@@ -509,7 +484,6 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
         const validItems: MemoryEntry[] = rawList
           .map((item: any, idx: number) => ({
             agentId: item.agentId || null,
-            category: item.category || "general",
             content:
               typeof item === "string" ? item : String(item.content || ""),
             createdAt: item.createdAt || new Date().toISOString(),
@@ -576,10 +550,10 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
   const remainingSlots = Math.max(0, limit - scopeCount);
 
   return (
-    <div className="p-4 rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md flex flex-col gap-4 sm:p-6">
+    <div className="surface-card flex flex-col gap-4">
       {/* En-tête */}
       <div className="flex items-center gap-2.5 flex-wrap">
-        <div className="p-2 rounded-xl bg-sky-500/10 text-sky-600 ring-1 ring-sky-500/20">
+        <div className="p-2 rounded-xl bg-info/10 text-info ring-1 ring-info/20">
           <BrainIcon className="size-5" />
         </div>
         <div className="flex-1 min-w-[200px]">
@@ -629,7 +603,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
 
           {/* Résumer IA */}
           <Button
-            className="gap-1.5 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-xs hover:from-sky-600 hover:to-indigo-700 text-xs h-8 px-3 cursor-pointer"
+            className="gap-1.5 rounded-xl bg-primary text-primary-foreground text-xs h-8 px-3 cursor-pointer"
             disabled={isSummarizing || memories.length === 0}
             onClick={handleSummarize}
             size="sm"
@@ -674,86 +648,47 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
           </div>
         </div>
 
-        {/* Filtres par portée (si allScopes) */}
-        {allScopes ? (
-          <div className="flex items-center gap-1.5 flex-wrap">
-            <span className="text-[11px] text-muted-foreground font-medium mr-1">
-              Portée :
-            </span>
-            {SCOPE_FILTERS.map((filter) => {
-              const count = memories.filter((m) =>
-                matchesScopeFilter(m, filter.id)
-              ).length;
-              return (
-                <button
-                  className={cn(
-                    "inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11.5px] font-medium transition-colors cursor-pointer",
-                    scopeFilter === filter.id
-                      ? "bg-sky-600 text-white shadow-xs"
-                      : "bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
-                  )}
-                  key={filter.id}
-                  onClick={() => setScopeFilter(filter.id)}
-                  type="button"
-                >
-                  {filter.label}
-                  <span className="opacity-70 text-[10px]">{count}</span>
-                </button>
-              );
-            })}
-          </div>
-        ) : null}
-
-        {/* Filtres par Catégorie & Favoris */}
+        {/* Filtres : portée (si allScopes) + bascule « Important ».
+            Les catégories ont été retirées — « Important » est un booléen
+            (isImportant), pas une catégorie, et reste donc filtrable. */}
         <div className="flex items-center gap-1.5 flex-wrap">
-          <span className="text-[11px] text-muted-foreground font-medium mr-1">
-            Catégorie :
-          </span>
+          {allScopes ? (
+            <>
+              <span className="text-[11px] text-muted-foreground font-medium mr-1">
+                Portée :
+              </span>
+              {SCOPE_FILTERS.map((filter) => {
+                const count = memories.filter((m) =>
+                  matchesScopeFilter(m, filter.id)
+                ).length;
+                return (
+                  <button
+                    className="chip"
+                    data-active={scopeFilter === filter.id}
+                    key={filter.id}
+                    onClick={() => setScopeFilter(filter.id)}
+                    type="button"
+                  >
+                    {filter.label}
+                    <span className="opacity-70 text-[10px]">{count}</span>
+                  </button>
+                );
+              })}
+              <span className="mx-1 text-muted-foreground/40 text-[11px]">
+                ·
+              </span>
+            </>
+          ) : null}
           <button
-            className={cn(
-              "inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-colors cursor-pointer",
-              categoryFilter === "all"
-                ? "bg-primary text-primary-foreground"
-                : "bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
-            )}
-            onClick={() => setCategoryFilter("all")}
-            type="button"
-          >
-            <GlobeIcon className="size-3" />
-            <span>Toutes</span>
-          </button>
-          <button
-            className={cn(
-              "inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-colors cursor-pointer",
-              categoryFilter === "important"
-                ? "bg-amber-500 text-white"
-                : "bg-amber-500/10 text-amber-600 dark:text-amber-400 hover:bg-amber-500/20"
-            )}
-            onClick={() => setCategoryFilter("important")}
+            className="chip"
+            data-active={importantOnly}
+            onClick={() => setImportantOnly((v) => !v)}
             type="button"
           >
             <StarIcon className="size-3 fill-current" />
             <span>Important</span>
+            <span className="opacity-70 text-[10px]">{importantCount}</span>
           </button>
-          {MEMORY_CATEGORIES.map((cat) => {
-            const CatIcon = cat.icon;
-            return (
-              <button
-                className={cn(
-                  "inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-colors cursor-pointer",
-                  categoryFilter === cat.id
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted/40 text-muted-foreground hover:bg-muted hover:text-foreground"
-                )}
-                key={cat.id}
-                onClick={() => setCategoryFilter(cat.id)}
-                type="button"
-              >
-                <CatIcon className="size-3" />
-                <span>{cat.label}</span>
-              </button>
-            );
-          })}
         </div>
       </div>
 
@@ -773,23 +708,9 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
           value={newContent}
         />
 
-        {/* Options de catégorisation & tags */}
+        {/* Tags & importance */}
         <div className="flex items-center justify-between gap-2 flex-wrap text-xs">
           <div className="flex items-center gap-2 flex-wrap">
-            {/* Sélecteur de catégorie */}
-            <select
-              aria-label="Catégorie de la mémoire"
-              className="h-7 rounded-lg border border-border/60 bg-background px-2 text-[11.5px] text-foreground outline-none cursor-pointer"
-              onChange={(e) => setNewCategory(e.target.value)}
-              value={newCategory}
-            >
-              {MEMORY_CATEGORIES.map((cat) => (
-                <option key={cat.id} value={cat.id}>
-                  {cat.label}
-                </option>
-              ))}
-            </select>
-
             {/* Input de tags */}
             <div className="flex items-center gap-1 rounded-lg border border-border/60 bg-background px-2 h-7">
               <TagIcon className="size-3 text-muted-foreground" />
@@ -806,7 +727,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
               className={cn(
                 "inline-flex items-center gap-1 h-7 px-2 rounded-lg text-[11px] font-medium transition cursor-pointer border",
                 newIsImportant
-                  ? "bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30"
+                  ? "bg-warning/15 text-warning border-warning/30"
                   : "bg-background text-muted-foreground border-border/60 hover:text-foreground"
               )}
               onClick={() => setNewIsImportant(!newIsImportant)}
@@ -824,7 +745,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
               {newContent.length}/{MEMORY_CONTENT_MAX_LENGTH}
             </span>
             <button
-              className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-sky-600 text-white px-3.5 py-1.5 text-xs font-medium transition-all hover:opacity-90 active:scale-95 shadow-xs cursor-pointer disabled:opacity-50"
+              className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-primary text-primary-foreground px-3.5 py-1.5 text-xs font-medium transition-all hover:opacity-90 active:scale-95 shadow-xs cursor-pointer disabled:opacity-50"
               disabled={isSaving || !newContent.trim() || isAtLimit}
               onClick={handleAdd}
               type="button"
@@ -863,9 +784,6 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
             const isEditing = editingId === m.id;
             const isEnabled = m.isEnabled !== false;
             const isImportant = Boolean(m.isImportant);
-            const catObj = MEMORY_CATEGORIES.find(
-              (c) => c.id === (m.category || "general")
-            );
 
             return (
               <div
@@ -874,7 +792,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                   !isEnabled && "opacity-60 bg-muted/10 border-border/30",
                   isEnabled &&
                     (isImportant
-                      ? "bg-amber-500/5 border-amber-500/30 shadow-xs"
+                      ? "bg-warning/5 border-warning/30 shadow-xs"
                       : "bg-muted/20 border-border/40 hover:border-border/70")
                 )}
                 key={m.id}
@@ -900,18 +818,6 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
 
                     <div className="flex items-center justify-between gap-2 flex-wrap">
                       <div className="flex items-center gap-2">
-                        <select
-                          aria-label="Modifier la catégorie"
-                          className="h-7 rounded-lg border border-border/60 bg-background px-2 text-[11px] outline-none cursor-pointer"
-                          onChange={(e) => setEditCategory(e.target.value)}
-                          value={editCategory}
-                        >
-                          {MEMORY_CATEGORIES.map((cat) => (
-                            <option key={cat.id} value={cat.id}>
-                              {cat.label}
-                            </option>
-                          ))}
-                        </select>
                         <input
                           className="h-7 w-32 rounded-lg border border-border/60 bg-background px-2 text-[11px] outline-none"
                           onChange={(e) => setEditTagsInput(e.target.value)}
@@ -931,7 +837,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                           <XIcon className="size-3" /> Annuler
                         </Button>
                         <Button
-                          className="h-7 px-3 text-xs gap-1 bg-sky-600 text-white hover:bg-sky-700"
+                          className="h-7 px-3 text-xs gap-1 bg-primary text-primary-foreground"
                           disabled={isUpdating || !editContent.trim()}
                           onClick={handleUpdate}
                           size="sm"
@@ -955,8 +861,8 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                       className={cn(
                         "mt-0.5 p-1 rounded-md transition-colors cursor-pointer shrink-0",
                         isImportant
-                          ? "text-amber-500 fill-amber-500 hover:text-amber-600"
-                          : "text-muted-foreground/40 hover:text-amber-500"
+                          ? "text-warning fill-warning hover:text-warning/80"
+                          : "text-muted-foreground/40 hover:text-warning"
                       )}
                       onClick={() => handleToggleImportant(m)}
                       title={
@@ -982,21 +888,13 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                         {m.content}
                       </p>
 
-                      {/* Badges : Catégorie, Tags, Scope, Date */}
+                      {/* Badges : Tags, Scope, Date */}
                       <div className="flex items-center gap-1.5 flex-wrap mt-1.5 text-[10.5px]">
-                        {/* Badge Catégorie */}
-                        {catObj ? (
-                          <span className="inline-flex items-center gap-1 bg-muted/60 text-muted-foreground px-1.5 py-0.5 rounded font-medium">
-                            <catObj.icon className="size-3 text-muted-foreground" />
-                            <span>{catObj.label}</span>
-                          </span>
-                        ) : null}
-
                         {/* Badges Tags */}
                         {m.tags && m.tags.length > 0
                           ? m.tags.map((t) => (
                               <span
-                                className="bg-sky-500/10 text-sky-600 dark:text-sky-400 px-1.5 py-0.5 rounded font-mono text-[10px]"
+                                className="bg-info/10 text-info px-1.5 py-0.5 rounded font-mono text-[10px]"
                                 key={t}
                               >
                                 #{t}
@@ -1025,7 +923,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
 
                         {/* Badge statut Suspendue */}
                         {isEnabled ? null : (
-                          <span className="bg-amber-500/10 text-amber-600 dark:text-amber-400 font-semibold px-1.5 py-0.5 rounded">
+                          <span className="bg-warning/10 text-warning font-semibold px-1.5 py-0.5 rounded">
                             Suspendue
                           </span>
                         )}
@@ -1039,7 +937,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                         className={cn(
                           "p-1.5 rounded-lg transition-colors cursor-pointer",
                           isEnabled
-                            ? "text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10"
+                            ? "text-success hover:bg-success/10"
                             : "text-muted-foreground hover:bg-muted"
                         )}
                         onClick={() => handleToggleEnabled(m)}
@@ -1059,7 +957,6 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                         onClick={() => {
                           setEditingId(m.id);
                           setEditContent(m.content);
-                          setEditCategory(m.category || "general");
                           setEditTagsInput((m.tags || []).join(", "));
                         }}
                         title="Modifier"
@@ -1129,7 +1026,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
         <DialogContent className="sm:max-w-[620px] max-h-[85vh] flex flex-col">
           <DialogHeader>
             <div className="flex items-center gap-2">
-              <span className="flex size-8 items-center justify-center rounded-lg bg-sky-500/10 text-sky-600">
+              <span className="flex size-8 items-center justify-center rounded-lg bg-info/10 text-info">
                 <BrainIcon className="size-4" />
               </span>
               <DialogTitle>Synthèse de votre Mémoire</DialogTitle>
@@ -1174,7 +1071,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
         <DialogContent className="sm:max-w-[540px]">
           <DialogHeader>
             <div className="flex items-center gap-2">
-              <span className="flex size-8 items-center justify-center rounded-lg bg-sky-500/10 text-sky-600">
+              <span className="flex size-8 items-center justify-center rounded-lg bg-info/10 text-info">
                 <FileJsonIcon className="size-4" />
               </span>
               <DialogTitle>Importer des mémoires (JSON)</DialogTitle>
@@ -1201,7 +1098,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                     Dépassement de quota
                   </span>
                 ) : (
-                  <span className="text-[11px] bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold px-2 py-1 rounded-md">
+                  <span className="text-[11px] bg-success/10 text-success font-semibold px-2 py-1 rounded-md">
                     Compatible
                   </span>
                 )}
@@ -1230,7 +1127,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                     </span>
                     <span className="flex-1 line-clamp-2">{item.content}</span>
                     {item.isImportant ? (
-                      <StarIcon className="size-3 fill-amber-500 text-amber-500 shrink-0 mt-0.5" />
+                      <StarIcon className="size-3 fill-warning text-warning shrink-0 mt-0.5" />
                     ) : null}
                   </div>
                 ))}
@@ -1255,7 +1152,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
               Annuler
             </Button>
             <Button
-              className="bg-sky-600 text-white hover:bg-sky-700 gap-1.5"
+              className="bg-primary text-primary-foreground gap-1.5"
               disabled={
                 isImporting ||
                 !pendingImportData ||

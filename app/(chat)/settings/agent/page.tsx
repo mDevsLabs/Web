@@ -160,7 +160,7 @@ export default function AgentSettingsPage() {
         ) : (
           <div className="flex flex-col gap-4 py-6">
             {flags["agent.enabled"] ? null : (
-              <p className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs text-amber-700 dark:text-amber-300">
+              <p className="surface-muted border-warning/30 bg-warning/10 p-4 text-xs text-warning">
                 L'espace Agent est actuellement désactivé. Ces réglages seront
                 conservés et appliqués dès sa réactivation.
               </p>
@@ -383,7 +383,7 @@ export default function AgentSettingsPage() {
                     className={cn(
                       "rounded-full border px-2.5 py-1 text-[11px] font-medium",
                       flags[key]
-                        ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
+                        ? "border-success/30 bg-success/10 text-success"
                         : "border-border/50 bg-muted/40 text-muted-foreground"
                     )}
                     key={key}

@@ -1,15 +1,35 @@
-// Intensité de réflexion : vocabulaire partagé par le registre de modèles,
-// les paramètres Agent et les routes API.
+// Intensité de réflexion : vocabulaire partagé par le registre de modèles, les
+// paramètres Agent et les routes API.
 //
-// IMPORTANT — contrat amont non confirmé : le proxy mAI (mai.val.run, hors de
-// ce dépôt) expose bien des modèles déclarés compatibles « thinking/reasoning »
-// (voir models.ts et maiModels.ts, qui ne font que déclarer la capacité), mais
-// aucun code du dépôt ne contractualise le nom du paramètre transmis. Tant que
-// REASONING_CONTRACT_CONFIRMED est false, aucune option n'est envoyée au modèle
-// et le sélecteur reste masqué (flag `agent.reasoning`). Le branchement se fait
-// alors en renseignant la table REASONING_PARAM_MAPPINGS, sans toucher au reste.
+// CONTRAT CONFIRMÉ. Le proxy mAI (models.ts, hors de ce dépôt) relaie la
+// requête à OpenRouter, dont l'API unifiée est `reasoning: { effort }` avec
+// sept niveaux : max, xhigh, high, medium, low, minimal, none. Le provider AI
+// SDK sérialise l'effort sous la clé historique `reasoning_effort` ; c'est le
+// proxy qui la traduit en `reasoning: { effort }` au moment du relais, un seul
+// point de contrôle pour les trois routes.
+//
+// La liste des niveaux disponibles n'est PLUS écrite ici : elle est lue dans le
+// catalogue (`GET /v1/models` → `reasoning.supported_efforts`). Ce fichier ne
+// définit plus que l'ordre canonique — du plus coûteux au moins coûteux — dont on
+// se sert pour recadrer une préférence qui ne conviendrait pas au modèle actif.
 
-export const REASONING_LEVELS = ["low", "medium", "high"] as const;
+/**
+ * Niveaux d'effort reconnus, du plus intense au plus faible.
+ *
+ * L'ordre est significatif : `resolveReasoningEffort` s'en sert pour retomber
+ * sur le niveau le plus proche *en dessous* de la préférence quand le modèle
+ * sélectionné ne l'accepte pas. Ajouter un niveau ici est sans risque — un
+ * modèle ne peut exposer que des valeurs déjà listées ici.
+ */
+export const REASONING_LEVELS = [
+  "max",
+  "xhigh",
+  "high",
+  "medium",
+  "low",
+  "minimal",
+  "none",
+] as const;
 
 export type ReasoningLevel = (typeof REASONING_LEVELS)[number];
 
@@ -18,13 +38,22 @@ export const DEFAULT_REASONING_LEVEL: ReasoningLevel = "medium";
 export const REASONING_LEVEL_LABELS: Record<ReasoningLevel, string> = {
   high: "Élevée",
   low: "Faible",
+  max: "Maximale",
   medium: "Moyenne",
+  minimal: "Minimale",
+  none: "Désactivée",
+  xhigh: "Très élevée",
 };
 
 export const REASONING_LEVEL_DESCRIPTIONS: Record<ReasoningLevel, string> = {
   high: "Réflexion approfondie, plus lente et plus coûteuse en tokens.",
   low: "Réponse directe, la plus rapide et la moins coûteuse.",
+  max: "Réflexion maximale : la plus longue, la plus coûteuse en tokens.",
   medium: "Équilibre entre profondeur d'analyse et rapidité.",
+  minimal: "Presque pas de réflexion, uniquement le strict nécessaire.",
+  none: "Aucune réflexion : le modèle répond directement.",
+  xhigh:
+    "Plus intense qu'élevée, pour les analyses qui ne tolèrent pas l'à-peu-près.",
 };
 
 export function isReasoningLevel(value: unknown): value is ReasoningLevel {
@@ -48,34 +77,15 @@ export type ReasoningProviderOptions = Record<
   Record<string, string | number | boolean | null>
 >;
 
-export type ReasoningParamMapping = {
-  providerOptions: ReasoningProviderOptions;
-};
-
-export const REASONING_CONTRACT_CONFIRMED = false;
-
-// Exemple de mapping une fois le contrat confirmé côté backend :
-//   "google/gemini-2.5-flash": OPENAI_COMPATIBLE_REASONING_EFFORT,
-export const OPENAI_COMPATIBLE_REASONING_EFFORT: Record<
-  ReasoningLevel,
-  ReasoningParamMapping
-> = {
-  high: { providerOptions: { openai: { reasoningEffort: "high" } } },
-  low: { providerOptions: { openai: { reasoningEffort: "low" } } },
-  medium: { providerOptions: { openai: { reasoningEffort: "medium" } } },
-};
-
-export const REASONING_PARAM_MAPPINGS: Record<
-  string,
-  Record<ReasoningLevel, ReasoningParamMapping>
-> = {};
-
+/**
+ * Options provider pour un niveau donné.
+ *
+ * Le provider AI SDK valide `reasoningEffort` contre un enum qui contient
+ * exactement ces sept valeurs : un niveau non supporté est donc retiré du corps
+ * de la requête avant l'envoi, plutôt que d'être rejeté par le fournisseur.
+ */
 export function resolveReasoningProviderOptions(
-  modelId: string,
   level: ReasoningLevel
-): ReasoningProviderOptions | undefined {
-  if (!REASONING_CONTRACT_CONFIRMED) {
-    return;
-  }
-  return REASONING_PARAM_MAPPINGS[modelId]?.[level]?.providerOptions;
+): ReasoningProviderOptions {
+  return { openai: { reasoningEffort: level } };
 }

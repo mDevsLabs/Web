@@ -1,15 +1,17 @@
 "use client";
 
 import {
+  BlocksIcon,
   CalendarIcon,
   CheckCircle2Icon,
+  CircleSlashIcon,
   ClockIcon,
   CloudIcon,
   Loader2Icon,
   MessagesSquareIcon,
-  PlusIcon,
   RepeatIcon,
   SparklesIcon,
+  WandSparklesIcon,
   WrenchIcon,
   XCircleIcon,
   XIcon,
@@ -32,12 +34,23 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { DEFAULT_CHAT_MODEL, FALLBACK_MODELS } from "@/lib/ai/models";
-import { TOOL_IDS, TOOLS_META, type ToolId } from "@/lib/ai/tools/config";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { Agent, ScheduledMessage } from "@/lib/db/schema";
-import { PLUGIN_TOOL_IDS } from "@/lib/plugins/catalog";
-import type { PluginCatalogEntry } from "@/lib/plugins/types";
+import {
+  DEFAULT_SCHEDULE_TOOL_MODE,
+  deriveScheduleToolMode,
+  SCHEDULE_TOOL_MODE_META,
+  SCHEDULE_TOOL_MODES,
+  type ScheduleToolMode,
+} from "@/lib/planning/tool-mode";
 import { cn, fetcher } from "@/lib/utils";
+
+// Icône associée à chaque mode d'outils (cf. lib/planning/tool-mode).
+const TOOL_MODE_ICONS = {
+  auto: WandSparklesIcon,
+  none: CircleSlashIcon,
+  plugins: BlocksIcon,
+} as const;
 
 interface ScheduleDialogProps {
   agents: Agent[];
@@ -66,7 +79,9 @@ export function ScheduleDialog({
   const [recurrence, setRecurrence] = useState<
     "none" | "daily" | "weekly" | "monthly"
   >("none");
-  const [enabledTools, setEnabledTools] = useState<string[]>([]);
+  const [toolMode, setToolMode] = useState<ScheduleToolMode>(
+    DEFAULT_SCHEDULE_TOOL_MODE
+  );
   const [cloudFileUrls, setCloudFileUrls] = useState<string[]>([]);
   const [cloudFileNames, setCloudFileNames] = useState<Record<string, string>>(
     {}
@@ -74,22 +89,6 @@ export function ScheduleDialog({
   const [isCloudPickerOpen, setIsCloudPickerOpen] = useState(false);
   const [customInstructions, setCustomInstructions] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { data: pluginData } = useSWR<{ plugins: PluginCatalogEntry[] }>(
-    isOpen ? "/api/plugins" : null,
-    fetcher,
-    { revalidateOnFocus: false }
-  );
-  const activePluginTools = (pluginData?.plugins ?? [])
-    .filter((plugin) => plugin.installed && plugin.enabled && !plugin.locked)
-    .flatMap((plugin) =>
-      plugin.tools.map((pluginTool) => ({
-        id: pluginTool.id,
-        label: `${plugin.name} · ${pluginTool.label}`,
-      }))
-    );
-  const activePluginToolIds = new Set(
-    activePluginTools.map((pluginTool) => pluginTool.id)
-  );
 
   useEffect(() => {
     if (initialData) {
@@ -105,7 +104,12 @@ export function ScheduleDialog({
       setCreateMode((initialData.createMode as any) || "new_chat");
       setSelectedChatId(initialData.chatId || "");
       setRecurrence((initialData.recurrence as any) || "none");
-      setEnabledTools((initialData.enabledTools as string[]) || []);
+      setToolMode(
+        deriveScheduleToolMode({
+          enabledTools: initialData.enabledTools,
+          storedMode: (initialData as { toolMode?: unknown }).toolMode,
+        })
+      );
       setCloudFileUrls((initialData.cloudFileUrls as string[]) || []);
       setCustomInstructions(initialData.customInstructions || "");
     } else {
@@ -122,19 +126,11 @@ export function ScheduleDialog({
       setCreateMode("new_chat");
       setSelectedChatId("");
       setRecurrence("none");
-      setEnabledTools(["webSearch"]);
+      setToolMode(DEFAULT_SCHEDULE_TOOL_MODE);
       setCloudFileUrls([]);
       setCustomInstructions("");
     }
   }, [initialData]);
-
-  const toggleTool = (toolKey: string) => {
-    setEnabledTools((prev) =>
-      prev.includes(toolKey)
-        ? prev.filter((t) => t !== toolKey)
-        : [...prev, toolKey]
-    );
-  };
 
   // Liste des discussions pour le mode "Continuer un fil existant"
   const { data: availableChats } = useSWR<
@@ -182,12 +178,12 @@ export function ScheduleDialog({
         cloudFileUrls,
         createMode,
         customInstructions: customInstructions.trim() || null,
-        enabledTools,
         modelId: selectedModel,
         prompt: prompt.trim(),
         recurrence,
         scheduledAt: scheduledDate.toISOString(),
         title: title.trim() || "Envoi planifié",
+        toolMode,
         ...(createMode === "existing_chat" ? { chatId: selectedChatId } : {}),
       };
 
@@ -329,7 +325,6 @@ export function ScheduleDialog({
                 <option value="">Aucun (mAI Standard)</option>
                 {agents.map((ag) => (
                   <option key={ag.id} value={ag.id}>
-                    {ag.emoji ? `${ag.emoji} ` : ""}
                     {ag.name}
                   </option>
                 ))}
@@ -519,70 +514,51 @@ export function ScheduleDialog({
 
           <div>
             <Label className="text-xs font-semibold text-muted-foreground">
-              Outils activés pour l'exécution
+              Outils disponibles pour l'exécution
             </Label>
-            <div className="mt-1.5 flex flex-wrap gap-1.5">
-              {/* Les outils de compte ne sont pas exécutables dans une tâche
-                  planifiée (pas de carte interactive, pas de contexte live). */}
-              {TOOL_IDS.filter(
-                (tid) =>
-                  tid !== "updateAccountProfile" &&
-                  tid !== "getAccountUsage" &&
-                  tid !== "updateProfilePicture" &&
-                  (!PLUGIN_TOOL_IDS.includes(tid) ||
-                    activePluginToolIds.has(tid))
-              ).map((tid) => {
-                const meta = TOOLS_META[tid];
-                const active = enabledTools.includes(tid);
+            <div className="mt-1.5 grid gap-2 sm:grid-cols-3">
+              {SCHEDULE_TOOL_MODES.map((mode) => {
+                const meta = SCHEDULE_TOOL_MODE_META[mode];
+                const Icon = TOOL_MODE_ICONS[mode];
+                const active = toolMode === mode;
                 return (
                   <button
+                    aria-pressed={active}
                     className={cn(
-                      "flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs transition cursor-pointer",
+                      "flex flex-col items-start gap-1.5 rounded-xl border p-2.5 text-left transition cursor-pointer",
                       active
-                        ? "border-primary bg-primary/10 text-primary font-medium"
-                        : "border-border/50 bg-background text-muted-foreground hover:bg-muted"
+                        ? "border-primary bg-primary/10"
+                        : "border-border/60 bg-background hover:bg-muted/50"
                     )}
-                    key={tid}
-                    onClick={() => toggleTool(tid)}
+                    key={mode}
+                    onClick={() => setToolMode(mode)}
                     type="button"
                   >
-                    {active ? (
-                      <CheckCircle2Icon className="size-3 text-primary" />
-                    ) : (
-                      <PlusIcon className="size-3 opacity-50" />
-                    )}
-                    <span>{meta?.label || tid}</span>
+                    <span className="flex w-full items-center gap-1.5">
+                      <Icon
+                        className={cn(
+                          "size-3.5 shrink-0",
+                          active ? "text-primary" : "text-muted-foreground"
+                        )}
+                      />
+                      <span
+                        className={cn(
+                          "text-xs font-semibold",
+                          active ? "text-primary" : "text-foreground"
+                        )}
+                      >
+                        {meta.label}
+                      </span>
+                      {active && (
+                        <CheckCircle2Icon className="ml-auto size-3.5 text-primary" />
+                      )}
+                    </span>
+                    <span className="text-[11px] leading-snug text-muted-foreground">
+                      {meta.description}
+                    </span>
                   </button>
                 );
               })}
-              {activePluginTools
-                .filter(
-                  (pluginTool) =>
-                    !(TOOL_IDS as readonly string[]).includes(pluginTool.id)
-                )
-                .map((pluginTool) => {
-                  const active = enabledTools.includes(pluginTool.id);
-                  return (
-                    <button
-                      className={cn(
-                        "flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs transition cursor-pointer",
-                        active
-                          ? "border-primary bg-primary/10 text-primary font-medium"
-                          : "border-border/50 bg-background text-muted-foreground hover:bg-muted"
-                      )}
-                      key={pluginTool.id}
-                      onClick={() => toggleTool(pluginTool.id)}
-                      type="button"
-                    >
-                      {active ? (
-                        <CheckCircle2Icon className="size-3 text-primary" />
-                      ) : (
-                        <PlusIcon className="size-3 opacity-50" />
-                      )}
-                      <span>{pluginTool.label}</span>
-                    </button>
-                  );
-                })}
             </div>
           </div>
 

@@ -203,11 +203,14 @@ function PureMultimodalInput({
     () => (Array.isArray(mcpData?.servers) ? mcpData.servers : []),
     [mcpData]
   );
-  const { data: userAgents = [] } = useSWR<Agent[]>(
+  const { data: userAgentsData } = useSWR<{ agents: Agent[]; limit: number | null }>(
     isFree ? null : "/api/agents",
     (url: string) => fetch(url).then((r) => r.json()),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
+  const userAgents = useMemo(() => userAgentsData?.agents ?? [], [
+    userAgentsData,
+  ]);
   const { data: customCommandsData = [] } = useSWR<CustomCommand[]>(
     isFree ? null : "/api/commands?kind=slash",
     (url: string) => fetch(url).then((r) => r.json()),
@@ -386,11 +389,8 @@ function PureMultimodalInput({
         );
       } else if (payload.type === "agent") {
         setActiveAgent(payload.agent);
-        const icon = (payload.agent as any).emoji
-          ? `${(payload.agent as any).emoji} `
-          : "";
         toast.success(
-          `Agent activé : ${icon}${payload.agent.name} — modèle ${(payload.agent as any).defaultModelId}`
+          `Agent activé : ${payload.agent.name} — modèle ${(payload.agent as any).defaultModelId}`
         );
       } else if (payload.type === "system") {
         if (payload.action === "web") {

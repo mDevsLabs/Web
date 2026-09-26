@@ -1,3 +1,4 @@
+import { BotIcon } from "lucide-react";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { isPaidTier } from "@/lib/auth/plan";
 import { getMaiUser } from "@/lib/auth/session";
@@ -32,16 +33,17 @@ export default async function AgentsPage() {
 
         <main className="flex-1 flex flex-col items-center justify-center px-4 py-12 max-w-2xl mx-auto text-center gap-6">
           <div className="size-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white shadow-md">
-            <span className="text-2xl">🤖</span>
+            <BotIcon className="size-8" />
           </div>
           <div>
             <h2 className="text-2xl font-bold mb-2">
               Agents IA réservés aux forfaits payants
             </h2>
             <p className="text-sm text-muted-foreground">
-              Créez jusqu'à 10 agents personnalisés avec styles, instructions
-              (5000c), icône/emoji, modèle par défaut, skills, MCP et fichiers
-              cloud. Passez à un forfait Plus, Pro ou Max pour y accéder.
+              Créez des agents personnalisés avec styles, instructions (5000c),
+              icône, modèle par défaut, skills, MCP et fichiers cloud : 15
+              agents avec Plus, 25 avec Pro, illimité avec Max. Passez à un
+              forfait Plus, Pro ou Max pour y accéder.
             </p>
           </div>
           <a

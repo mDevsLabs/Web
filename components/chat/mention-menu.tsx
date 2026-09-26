@@ -672,7 +672,6 @@ function MentionItem({
         style={{ backgroundColor: (item as any).agent.color || "#6366f1" }}
       >
         <AgentIcon
-          emoji={(item as any).agent.emoji}
           icon={(item as any).agent.icon}
           size={14}
           variant="plain"
