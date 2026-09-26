@@ -81,12 +81,12 @@ END $$;
 -- outil », toute autre sélection donnait accès à des outils.
 UPDATE "ScheduledMessage"
 SET "toolMode" = CASE
-  WHEN COALESCE("enabledTools", '[]'::json) = '[]'::json THEN 'none'
+  WHEN COALESCE("enabledTools"::jsonb, '[]'::jsonb) = '[]'::jsonb THEN 'none'
   ELSE 'auto'
 END
 WHERE "toolMode" IS DISTINCT FROM (
   CASE
-    WHEN COALESCE("enabledTools", '[]'::json) = '[]'::json THEN 'none'
+    WHEN COALESCE("enabledTools"::jsonb, '[]'::jsonb) = '[]'::jsonb THEN 'none'
     ELSE 'auto'
   END
 );

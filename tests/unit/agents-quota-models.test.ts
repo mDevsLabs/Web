@@ -436,6 +436,17 @@ describe("Planification : modes d'outils", () => {
     );
     expect(migration).toContain("ScheduledMessage_toolMode_check");
   });
+
+  it("compare le JSON du backfill sous forme jsonb", () => {
+    const migration = source(
+      "lib/db/migrations/0029_agent_templates_icons_and_tool_modes.sql"
+    );
+    const comparison = `COALESCE("enabledTools"::jsonb, '[]'::jsonb) = '[]'::jsonb`;
+    expect(migration.split(comparison)).toHaveLength(3);
+    expect(migration).not.toContain(
+      `COALESCE("enabledTools", '[]'::json) = '[]'::json`
+    );
+  });
 });
 
 describe("Designer d'agent", () => {
