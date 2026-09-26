@@ -12,8 +12,14 @@ name: 🚀 Deploy to Vercel
 # (500 sur /api/chat et /api/agent, aucun appel modèle).
 #
 # Garde-fous :
-#  • `preview` : ne migre jamais la base ; le garde de schéma bloque si la
-#    base n'est pas prête (PR de forks : jamais d'accès base) ;
+#  • `preview` : la base n'est atteinte que dans les contextes de confiance —
+#    le job est IGNORÉ pour une PR de fork (`if` du job) donc une branche non
+#    fiable n'a jamais accès à la base ni aux secrets. Ailleurs (push main /
+#    canary, PR du même dépôt) la migration est appliquée AVANT le garde de
+#    schéma, sinon `canary` ne peut pas déployer tant que la base est en
+#    retard (bug « garde de schéma » : la seule étape qui migrait était celle
+#    du job `production`, réservé à `main`, et le job `preview` échouait donc
+#    en parallèle, avant même que la migration ne parte).
 #  • `production` : réservé à `main` (environnement GitHub `production`,
 #    approbation requise), garde avant et après migration.
 on:
@@ -78,15 +84,55 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
-      # Les migrations ne sont jamais déclenchées automatiquement par une
-      # preview ou une branche canary. Le garde de schéma ci-dessous bloque
-      # le déploiement si la base n'a pas été préparée manuellement.
+      # Migration AVANT le garde.
+      #
+      # Portée : tout contexte où ce job s'exécute, c'est-à-dire push (main /
+      # canary) ET pull request du même dépôt. Le `if` DU JOB ignore déjà les
+      # PR de fork : une branche non fiable n'a donc toujours ni accès à la
+      # base, ni accès aux secrets. La condition ci-dessous reproduit
+      # volontairement celle du job (défense en profondeur si le `if` du job
+      # était assoupli un jour).
+      #
+      # Conséquence assumée : une PR applique ses migrations sur la base
+      # Preview partagée avant d'être mergée. Deux garde-fous restent en
+      # place — le garde de schéma bloquant qui suit, et
+      # MIGRATIONS_STRICT=true qui fait échouer bruyamment une étape de
+      # réparation refusée par la base au lieu de la laisser passer en
+      # silence. Les migrations sont par ailleurs idempotentes
+      # (CREATE ... IF NOT EXISTS, ON CONFLICT DO NOTHING) et journalisées
+      # par Drizzle : les rejouer est sans effet sur une base à jour.
+      - name: 🗄️ Migration de la base (avant garde)
+        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
+            echo "::warning::Migration appliquée depuis une pull_request sur la base Preview partagée."
+          fi
+          pnpm exec tsx lib/db/migrate.ts
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          POSTGRES_URL: ${{ secrets.DATABASE_URL }}
+          MIGRATIONS_STRICT: "true"
+
       # Garde bloquante : un schéma obsolète n'est plus déployé (il répondrait
-      # 500 sur chaque conversation).
+      # 500 sur chaque conversation). La migration ci-dessus ayant réussi,
+      # un échec ici ne signale plus un retard de migration mais une vraie
+      # divergence : secret GitHub DATABASE_URL ≠ base réellement utilisée par
+      # l'environnement Vercel, ou réparation refusée par la base.
       - name: 🛡️ Garde de schéma avant déploiement
+        id: guard
         run: node scripts/check-db-schema.mjs
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+      # Échec du garde alors que la migration vient de passer : le job reste en
+      # échec. Message orienté diagnostic, sinon le mainteneur peut croire à un
+      # retard de migration et relancer la migration en boucle.
+      - name: 💡 Diagnostic du garde de schéma
+        if: ${{ steps.guard.outcome == 'failure' }}
+        run: |
+          echo "::error::La migration vient de s'exécuter sans erreur, mais le garde de schéma signale toujours une base non conforme."
+          echo "::error::Ce n'est donc plus un retard de migration. Comparez l'empreinte de l'étape « 🔎 Révéler la base migrée » avec la variable DATABASE_URL de l'environnement Vercel : si elles diffèrent, le secret GitHub DATABASE_URL pointe sur une autre base que celle du déploiement."
+        continue-on-error: true
 
       - name: 🏗️ Build des artefacts
         run: vercel build --token=${{ env.VERCEL_TOKEN }}

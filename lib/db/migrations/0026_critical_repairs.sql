@@ -1,6 +1,8 @@
 -- Migration 0026 : répare les écarts de schéma critiques.
--- Idempotente : sûre sur une base déjà partiellement réparée.
--- Ne pas exécuter automatiquement depuis une preview/canary.
+-- Idempotente : sûre sur une base déjà partiellement réparée, donc sûre à
+-- rejouer (le job `preview` de .github/workflows/deploy-vercel.yml applique
+-- les migrations avant son garde de schéma, sur les pushes comme sur les PR
+-- du dépôt). Jamais exécutée depuis une PR de fork : le job est ignoré.
 
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "user_preferences" (
