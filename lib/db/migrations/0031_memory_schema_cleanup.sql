@@ -9,7 +9,7 @@
 --    (DB_RUNTIME_DDL_REPAIR) — ou par scripts/repair-db-drift.mjs, qui est
 --    un outil ponctuel. Une base construite uniquement depuis les migrations
 --    échouait donc en 42703 « column does not exist » sur GET /api/memory et
---    countiemories, et l'écran iémoire restait vide.
+--    /api/memory/summary, et l'écran mémoire restait vide.
 --
 -- 2. CATÉGORIE : `category` était un varchar(50) libre, sans enum, sans
 --    CHECK et sans index. Le serveur acceptait n'importe quelle chaîne de 50
