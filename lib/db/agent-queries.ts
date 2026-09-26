@@ -39,6 +39,7 @@ export async function createAgentRun(params: {
   plan?: AgentPlan | null;
   reasoningLevel: ReasoningLevel;
   status?: AgentRunStatus;
+  tasksEnabled?: boolean;
   toolPolicySnapshot: Record<string, ToolPermission>;
   userId: string;
 }): Promise<AgentRun> {
@@ -57,6 +58,7 @@ export async function createAgentRun(params: {
         reasoningLevel: params.reasoningLevel,
         startedAt: new Date(),
         status: params.status ?? "running",
+        tasksEnabled: params.tasksEnabled ?? false,
         toolPolicySnapshot: params.toolPolicySnapshot,
         userId: params.userId,
       })

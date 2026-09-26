@@ -1,10 +1,10 @@
 import "server-only";
 
 import { generateText } from "ai";
-import { systemPrompt } from "@/lib/ai/prompts";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { calculator } from "@/lib/ai/tools/calculator";
 import { codeExecution } from "@/lib/ai/tools/code-execution";
+import { TOOL_SYSTEM_HINTS } from "@/lib/ai/tools/config";
 import { dateTime } from "@/lib/ai/tools/datetime";
 import { webSearch } from "@/lib/ai/tools/web-search";
 import { loadMcpContext } from "@/lib/chat/mcp";
@@ -28,6 +28,12 @@ import { requireOwnedPlanningChat } from "@/lib/planning/chat-access";
 import { getPluginManifest } from "@/lib/plugins/catalog";
 import { createPluginTools } from "@/lib/plugins/server";
 import { canUsePlugin } from "@/lib/plugins/tier-lock";
+import { toolKindFor } from "@/lib/prompts/capabilities";
+import { buildChatSystemPrompt } from "@/lib/prompts/chat";
+import {
+  composePersonalInstructions,
+  type PersonalBlock,
+} from "@/lib/prompts/personal";
 import { generateUUID } from "@/lib/utils";
 
 export type PlanningRecurrence = "none" | "daily" | "weekly" | "monthly";
@@ -218,30 +224,37 @@ export async function executeScheduledMessage(scheduledId: string) {
       item.modelId || agentModel || "google/gemini-2.5-flash";
     const effectiveTemp = item.temperature ?? agentTemp ?? undefined;
 
-    let modeAddendum = "";
-    if (agentInstructions) {
-      modeAddendum += `AGENT ACTIF :\n${agentInstructions}\n\n`;
-    }
-    if (agentSkillInstructions.length > 0) {
-      modeAddendum += `SKILLS DE L'AGENT :\n${agentSkillInstructions.join("\n\n")}\n\n`;
-    }
-    if (item.customInstructions) {
-      modeAddendum += `INSTRUCTIONS PARTICULIÈRES :\n${item.customInstructions}\n\n`;
-    }
-
+    // Bloc personnalisé : même contrat que le Chat et l'Agent — le socle vient
+    // de lib/prompts/chat.ts, ces consignes arrivent en dernier, délimitées.
     const allAttachedUrls = Array.from(
       new Set([...planningCloudUrls, ...agentCloudUrls])
     );
-    if (allAttachedUrls.length > 0) {
-      modeAddendum += "FICHIERS JOINTS DE LA BIBLIOTHÈQUE / CLOUD :\n";
-      for (const url of allAttachedUrls) {
-        const name = decodeURIComponent(url.split("/").pop() || "fichier");
-        modeAddendum += `- ${name} (${url})\n`;
-      }
-      modeAddendum += "\n";
-    }
-
-    modeAddendum += `Ce message a été envoyé automatiquement à la date et heure planifiée (${new Date().toLocaleString("fr-FR")}). Réponds de manière complète et structurée.`;
+    const personalBlocks: PersonalBlock[] = [
+      { body: agentInstructions, label: "ASSISTANT ACTIF" },
+      {
+        body: agentSkillInstructions.join("\n\n") || null,
+        label: "COMPÉTENCES DE L'ASSISTANT",
+      },
+      { body: item.customInstructions, label: "INSTRUCTIONS PARTICULIÈRES" },
+      {
+        body:
+          allAttachedUrls.length > 0
+            ? [
+                "FICHIERS JOINTS DE LA BIBLIOTHÈQUE / CLOUD :",
+                ...allAttachedUrls.map(
+                  (url) =>
+                    `- ${decodeURIComponent(url.split("/").pop() || "fichier")} (${url})`
+                ),
+              ].join("\n")
+            : null,
+        label: "RESSOURCES JOINTES",
+      },
+      {
+        body: `Ce message a été envoyé automatiquement à la date et heure planifiée (${new Date().toLocaleString("fr-FR")}). Réponds de manière complète et structurée.`,
+        label: "DÉCLENCHEMENT",
+      },
+    ];
+    const personalBlock = composePersonalInstructions(personalBlocks);
 
     const modelInstance = getLanguageModel(effectiveModel, {
       apiKey: userApiKey,
@@ -329,9 +342,24 @@ export async function executeScheduledMessage(scheduledId: string) {
       // Une sélection vide signifie « aucun outil ». Passer `undefined` au SDK
       // réactiverait toutes les entrées de `tools`, y compris les plugins.
       activeTools: activeTools as any,
-      instructions: systemPrompt({
-        modeAddendum,
-        supportsTools: activeTools.length > 0,
+      instructions: buildChatSystemPrompt({
+        addendum: personalBlock,
+        artifactsAvailable: activeTools.length > 0,
+        capabilities: {
+          attachments: 0,
+          memory: null,
+          plan: null,
+          reasoning: false,
+          tools: activeTools.map((toolId) => ({
+            description:
+              TOOL_SYSTEM_HINTS[toolId] ?? "Outil disponible pour cette tâche.",
+            id: toolId,
+            kind: toolKindFor({ id: toolId }),
+            label: toolId,
+          })),
+          toolsSupported: activeTools.length > 0,
+        },
+        requestHints: null,
       }),
       messages: [
         ...existingDbMsgs.map((m) => ({

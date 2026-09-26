@@ -29,6 +29,13 @@ export type AgentStreamState = {
   run: AgentRunEvent | null;
   sources: AgentSource[];
   steps: AgentStepEvent[];
+  /**
+   * L'utilisateur a activé l'option « Tâches ». Seule condition d'affichage de
+   * la liste : un plan existe pour tous les runs, mais il ne doit être visible
+   * que si l'option a été demandée — y compris après rechargement, où l'état
+   * est reconstruit depuis AgentRun.tasksEnabled.
+   */
+  tasksEnabled: boolean;
   tools: AgentToolActivity[];
 };
 
@@ -38,6 +45,7 @@ export const EMPTY_AGENT_STREAM_STATE: AgentStreamState = {
   run: null,
   sources: [],
   steps: [],
+  tasksEnabled: false,
   tools: [],
 };
 
@@ -95,8 +103,18 @@ export function reduceAgentDataPart(
 ): AgentStreamState {
   switch (part.type) {
     case "data-agent-run":
-      return { ...state, run: part.data };
+      return {
+        ...state,
+        run: part.data,
+        tasksEnabled: part.data.tasksEnabled === true,
+      };
     case "data-agent-plan":
+      // Défense en double : le serveur n'émet déjà le plan que si l'option est
+      // active, mais un run repris depuis un ancien état ne doit pas non plus
+      // faire réapparaître la liste.
+      if (!state.tasksEnabled) {
+        return state;
+      }
       return { ...state, plan: part.data };
     case "data-agent-step":
       return { ...state, steps: upsertStep(state.steps, part.data) };

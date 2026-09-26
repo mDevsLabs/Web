@@ -14,34 +14,47 @@ import {
   attachmentsInstructions,
 } from "@/lib/agent/context/files";
 import type { AgentProjectContext } from "@/lib/agent/context/project";
-import { agentInstructions } from "@/lib/agent/prompts";
-import type { AgentToolFamily } from "@/lib/agent/tools/selector/families";
 import type {
   AgentAutonomy,
   AgentPlan,
   ReasoningLevel,
 } from "@/lib/agent/types";
+import { buildAgentSystemPrompt } from "@/lib/prompts/agent";
+import type { PromptToolDescriptor } from "@/lib/prompts/capabilities";
 
 // ContextBuilder : construit exactement ce qui part au modèle — instructions
 // ciblées et messages dans le budget. Ni tout l'historique, ni tous les
 // fichiers, ni tout le projet ; la compaction n'affecte jamais l'affichage.
+//
+// Le prompt, lui, est composé par lib/prompts/ à partir de ce que la requête
+// permet RÉELLEMENT (voir PromptCapabilities). Ce module ne décide plus du
+// texte : il décide seulement de ce qui est envoyé, et dans quel budget.
 
 export type AgentContextInput = {
+  assistantInstructions: string | null;
   attachments: AgentAttachment[];
   autonomy: AgentAutonomy;
+  /** Consignes de cette conversation : one-shot, reprise, surcharge locale. */
   chatInstructions: string | null;
   contextWindow: number | null;
-  families: AgentToolFamily[];
+  /** Mémoire fusionnée (utilisateur + projet), ou null si inaccessible. */
   memoryBlock: string | null;
+  /** L'utilisateur peut-il encore ajouter des mémoires (quota de forfait) ? */
+  memoryWritable: boolean;
   messages: ModelMessage[];
   plan: AgentPlan | null;
   project: AgentProjectContext;
+  /** Le modèle sait-il produire un raisonnement visible ? */
+  reasoningSupported: boolean;
   reasoningLevel: ReasoningLevel;
   sessionToken: string;
   skillInstructions: string | null;
   task: string;
+  /** Outils réellement disponibles pour ce run. */
+  tools: PromptToolDescriptor[];
+  /** Le modèle accepte-t-il des appels d'outils structurés ? */
+  toolsSupported: boolean;
   userId: string;
-  assistantInstructions: string | null;
   userInstructions: string | null;
 };
 
@@ -66,21 +79,29 @@ export async function buildAgentContext(
       ? `Éléments retenus liés au projet :\n${input.project.memories.join("\n")}`
       : null;
 
-  const instructions = agentInstructions({
+  const attachmentsBlock = attachmentsInstructions(input.attachments);
+  const memoryBlocks = [
+    input.memoryBlock,
+    projectBlock,
+    attachmentsBlock,
+  ].filter((block): block is string => Boolean(block));
+
+  const instructions = buildAgentSystemPrompt({
     assistantInstructions: input.assistantInstructions,
     autonomy: input.autonomy,
+    capabilities: {
+      attachments: input.attachments.length,
+      memory: input.memoryBlock
+        ? { block: memoryBlocks.join("\n\n"), writable: input.memoryWritable }
+        : null,
+      plan: input.plan,
+      reasoning: input.reasoningSupported,
+      tools: input.tools,
+      toolsSupported: input.toolsSupported,
+    },
     chatInstructions: input.chatInstructions,
-    families: input.families,
-    memoryBlock: [
-      input.memoryBlock,
-      projectBlock,
-      attachmentsInstructions(input.attachments),
-    ]
-      .filter(Boolean)
-      .join("\n\n"),
-    plan: input.plan,
     projectInstructions: input.project.instructions,
-    reasoningLevel: input.reasoningLevel,
+    requestHints: null,
     skillInstructions: input.skillInstructions,
     userInstructions: input.userInstructions,
   });

@@ -1187,6 +1187,11 @@ export const agentRun = pgTable(
       .$type<unknown[]>()
       .notNull()
       .default([]),
+    // L'utilisateur a explicitement activé l'option « Tâches » sur ce run. Le
+    // plan existe toujours côté modèle (cadrage des tâches longues), mais la
+    // liste n'est rendue que si ce drapeau est vrai — y compris après un
+    // refresh, où l'interface se reconstruit depuis AgentRun.
+    tasksEnabled: boolean("tasksEnabled").notNull().default(false),
     toolCallCount: integer("toolCallCount").notNull().default(0),
     toolPolicySnapshot: json("toolPolicySnapshot")
       .$type<Record<string, ToolPermission>>()

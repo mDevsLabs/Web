@@ -35,6 +35,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  hasTimelineContent,
+  visiblePlan,
+} from "@/lib/agent/timeline-visibility";
 import type {
   AgentArtifactRef,
   AgentRunEvent,
@@ -407,12 +411,10 @@ export function AgentRunTimeline({
     null
   );
 
-  const hasContent =
-    Boolean(state.run) ||
-    Boolean(state.plan) ||
-    state.steps.length > 0 ||
-    state.artifacts.length > 0 ||
-    state.sources.length > 0;
+  // Un plan caché ne compte pas comme contenu : sinon la timeline s'afficherait
+  // vide pour un run qui n'a produit ni étape, ni livrable, ni source.
+  const plan = visiblePlan(state);
+  const hasContent = hasTimelineContent({ ...state, plan });
 
   if (!hasContent) {
     return null;
@@ -444,13 +446,13 @@ export function AgentRunTimeline({
     >
       {state.run ? <RunSummary run={state.run} /> : null}
 
-      {state.plan ? (
+      {plan ? (
         <div aria-live="polite" className="flex flex-col gap-1.5">
           <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-            {state.plan.title}
+            {plan.title}
           </p>
           <ol className="flex flex-col gap-1">
-            {state.plan.items.map((item) => (
+            {plan.items.map((item) => (
               <li className="flex items-center gap-2 text-[13px]" key={item.id}>
                 <StatusDot status={item.status} />
                 <span className="flex min-w-0 flex-1 flex-col">

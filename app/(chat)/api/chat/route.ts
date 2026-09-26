@@ -174,6 +174,7 @@ export async function POST(request: Request) {
       effectiveMaxTokens,
       effectiveTemperature,
       effectiveTopP,
+      memoryContext: memoryCtx,
       model,
       prepareTools: async (dataStream) => {
         const mcpCtx = await loadMcpContext({

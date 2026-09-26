@@ -20,7 +20,7 @@ import type {
 import type { ReasoningLevel } from "@/lib/ai/registry/reasoning";
 import { apiEndpoints, apiUrl } from "@/lib/client/api-endpoints";
 import type { Attachment, ChatMessage } from "@/lib/types";
-import { fetcher, fetchWithErrorHandlers, generateUUID } from "@/lib/utils";
+import { fetchWithErrorHandlers, generateUUID } from "@/lib/utils";
 
 // Conduite de l'expérience Agent côté client. Le hook ne décide de rien : il
 // compose la requête (modèle, projet, réflexion, autonomie, familles d'outils)
@@ -144,6 +144,41 @@ function toToolActivity(execution: ToolExecutionRecord): AgentToolActivity {
   };
 }
 
+// Charge utile de /api/messages, réduite à ce dont l'Agent a besoin.
+type AgentChatPayload = {
+  chatId?: string;
+  messages?: ChatMessage[];
+  /**
+   * La conversation n'existe pas encore en base. Cas normal et non errno entre
+   * le pushState de l'envoi et la création par /api/agent — jamais une erreur.
+   */
+  pending?: boolean;
+};
+
+type AgentMessagesKey = readonly ["agent/messages", string];
+
+// L'URL /api/messages est aussi lue par le provider Chat
+// (hooks/use-active-chat.tsx). Deux hooks, deux fetchers, une seule entrée de
+// cache si la clé est l'URL brute : la requête dédupliquée est alors celle du
+// hook monté en premier, et le résultat dépend de l'ordre de montage. Le
+// préfixe de clé isole l'Agent sans changer l'URL appelée.
+function agentMessagesKey(chatId: string): AgentMessagesKey {
+  return ["agent/messages", chatId];
+}
+
+async function fetchAgentMessages(
+  key: AgentMessagesKey
+): Promise<AgentChatPayload> {
+  const response = await fetch(apiEndpoints.messagesForChat(key[1]));
+  if (response.status === 404) {
+    return { messages: [], pending: true };
+  }
+  if (!response.ok) {
+    throw new Error(`messages HTTP ${response.status}`);
+  }
+  return (await response.json()) as AgentChatPayload;
+}
+
 export function useAgentChat({
   chatId,
   isNewChat,
@@ -167,11 +202,18 @@ export function useAgentChat({
   const visibilityRef = useRef(visibility);
   visibilityRef.current = visibility;
 
-  const { data: chatData, isLoading } = useSWR(
-    isNewChat ? null : apiEndpoints.messagesForChat(chatId),
-    fetcher,
-    { revalidateOnFocus: false }
-  );
+  // Conversation créée par ce client : l'URL est poussée à l'envoi, alors que
+  // la ligne n'existe en base qu'une fois /api/agent l'a créée. Tant que ce
+  // repère est posé, /api/messages ne peut pas être la source de vérité de
+  // l'affichage — le flux, lui, l'est.
+  const locallyCreatedChatIdRef = useRef<string | null>(null);
+
+  const { data: chatData, isLoading } = useSWR<
+    AgentChatPayload,
+    AgentMessagesKey
+  >(isNewChat ? null : agentMessagesKey(chatId), fetchAgentMessages, {
+    revalidateOnFocus: false,
+  });
 
   const initialMessages: ChatMessage[] = isNewChat
     ? []
@@ -276,10 +318,40 @@ export function useAgentChat({
     }),
   });
 
+  // Miroir du statut du flux pour l'effet d'hydratation ci-dessous : lire `status`
+  // directement l'ajouterait aux dépendances et rejouerait l'hydratation à chaque
+  // transition de statut.
+  const statusRef = useRef(status);
+  statusRef.current = status;
+
+  // Le repère « créé localement » vaut pour la conversation courante seulement :
+  // rouvrir une conversation existante doit pouvoir s'hydrater normalement. La
+  // comparaison se fait pendant le rendu (même idiomme que newChatIdRef dans
+  // use-active-chat) parce qu'un effet ne serait pas rejoué sur un changement de
+  // chatId dont aucune valeur réactive n'a bougé.
+  const hydratedForChatIdRef = useRef(chatId);
+  if (hydratedForChatIdRef.current !== chatId) {
+    hydratedForChatIdRef.current = chatId;
+    locallyCreatedChatIdRef.current = null;
+  }
+
   // Chargement initial d'une conversation existante : une seule fois par chat.
+  //
+  // Deux interdits absolus. Le premier : une conversation que ce client vient
+  // de créer — /api/messages répond avant que /api/agent n'ait enregistré le
+  // message utilisateur, donc avec un tableau vide ou sans l'échange, et
+  // l'écrire par-dessus useChat effaçait la réponse en cours de streaming
+  // (l'agent « ne répondait jamais »). Le second : un flux en cours — même
+  // réponse, même conséquence, cette fois en pleine génération.
   const loadedChatIdRef = useRef<string | null>(null);
   useEffect(() => {
     if (isNewChat) {
+      return;
+    }
+    if (locallyCreatedChatIdRef.current === chatId) {
+      return;
+    }
+    if (statusRef.current !== "ready") {
       return;
     }
     if (loadedChatIdRef.current === chatId) {
@@ -336,6 +408,10 @@ export function useAgentChat({
         optionsRef.current = requestOptions;
       }
       if (typeof window !== "undefined") {
+        // Avant le pushState : dès que l'URL devient /chat/<id>, isNewChat
+        // passe à false et la clé /api/messages s'active. Le repère interdit
+        // à cette réponse d'écraser l'état du flux qu'on lance ici.
+        locallyCreatedChatIdRef.current = chatId;
         window.history.pushState({}, "", apiEndpoints.chatPath(chatId));
       }
       const request = sendMessage(

@@ -387,6 +387,9 @@ export type AgentRunEvent = {
   status: AgentRunStatus;
   stepCount?: number;
   toolCallCount?: number;
+  // L'utilisateur a activé l'option « Tâches » sur ce run : seule condition
+  // autorisant l'affichage de la liste de tâches.
+  tasksEnabled?: boolean;
   // Synthèse d'observabilité utilisateur : renseignée en fin de run (flux) et
   // à la reconstruction après refresh (API). Distincte des traces techniques.
   durationMs?: number;
@@ -467,6 +470,7 @@ export type AgentRunRecord = {
   startedAt: Date | null;
   status: AgentRunStatus;
   stepCount: number;
+  tasksEnabled: boolean;
   toolCallCount: number;
   userId: string;
 };

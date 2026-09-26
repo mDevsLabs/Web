@@ -412,6 +412,16 @@ const runMigrate = async () => {
     noteIgnoredStep(error);
   }
 
+  // Visibilité de la liste de tâches (migration 0028). Répété ici, comme les
+  // autres, pour les environnements dont le journal de migrations est incomplet :
+  // sans cette colonne, l'interface ne peut plus distinguer un run où
+  // l'utilisateur a activé « Tâches » d'un run où le plan est interne.
+  try {
+    await connection`ALTER TABLE "AgentRun" ADD COLUMN IF NOT EXISTS "tasksEnabled" boolean DEFAULT false NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+
   const start = Date.now();
   await migrate(db, { migrationsFolder: "./lib/db/migrations" });
   const end = Date.now();

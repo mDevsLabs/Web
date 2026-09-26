@@ -28,7 +28,6 @@ import {
 import { applyToolPermissions } from "@/lib/agent/tools/permissions";
 import { listRegisteredAgentTools } from "@/lib/agent/tools/registry";
 import { selectAgentTools } from "@/lib/agent/tools/selector";
-import { familyForCategory } from "@/lib/agent/tools/selector/families";
 import type {
   AgentExecutionBudget,
   RegisteredAgentTool,
@@ -66,6 +65,7 @@ import {
 } from "@/lib/db/queries";
 import { getPersistedTier } from "@/lib/db/users";
 import { getTierChatWeeklyLimit } from "@/lib/plans/tier-limits";
+import { describeTools } from "@/lib/prompts/capabilities";
 import type { ChatMessage } from "@/lib/types";
 import { generateUUID, getTextFromMessage } from "@/lib/utils";
 
@@ -448,9 +448,6 @@ export async function executeScheduledRun(params: {
     userEmail: "",
     userId,
   });
-  const families = [
-    ...new Set(enabledTools.map((tool) => familyForCategory(tool.category))),
-  ];
   const memoryContext = await buildMemoryContext({
     effectiveAgentId: schedule.agentId,
     effectiveProjectId: schedule.projectId,
@@ -464,19 +461,22 @@ export async function executeScheduledRun(params: {
     autonomy: schedule.config.autonomy,
     chatInstructions: schedule.instructions,
     contextWindow: resolvedModelEntry.capabilities.contextWindow,
-    families,
     memoryBlock:
       [memoryContext.userMemoryBlock, memoryContext.projectMemoryBlock]
         .filter(Boolean)
         .join("\n\n") || null,
+    memoryWritable: memoryContext.memoryAllowAdd,
     messages: await convertToModelMessages(existingMessages),
 
     plan: activeRun?.plan ?? null,
     project: projectContext,
     reasoningLevel: schedule.config.reasoningLevel,
+    reasoningSupported: resolvedModelEntry.capabilities.reasoning,
     sessionToken: SCHEDULED_SESSION_SENTINEL,
     skillInstructions: scheduledSkillInstructions.join("\n\n") || null,
     task,
+    tools: describeTools(enabledTools),
+    toolsSupported: resolvedModelEntry.capabilities.tools,
     userId,
     userInstructions: null,
   });
@@ -517,6 +517,9 @@ export async function executeScheduledRun(params: {
     startedAt: Date.now(),
     startStepIndex: activeRun?.stepCount ?? 0,
     task,
+    // Une tâche planifiée n'a pas d'utilisateur devant l'écran pour activer une
+    // option : la liste de tâches n'est jamais rendue pour ces runs.
+    tasksEnabled: activeRun?.tasksEnabled === true,
     tier,
     tools: enabledTools,
     userEmail: "",

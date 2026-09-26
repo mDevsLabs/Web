@@ -119,6 +119,10 @@ export type AgentStreamParams = {
   // chaque reprise (approbation, réponse utilisateur, continuation).
   startToolCallCount?: number;
   startedAt: number;
+  // L'utilisateur a activé l'option « Tâches » sur ce run. Le plan reste
+  // injecté dans le prompt dans tous les cas (il cadre les tâches longues),
+  // mais il n'est diffusé au client — donc affiché — que si ce drapeau est vrai.
+  tasksEnabled: boolean;
   task: string;
   tier?: string;
   tools: RegisteredAgentTool[];
@@ -255,6 +259,7 @@ export function createAgentStream(params: AgentStreamParams) {
           runId: params.runId,
           status,
           stepCount: extra.stepCount ?? state.stepIndex,
+          tasksEnabled: params.tasksEnabled,
           toolCallCount: extra.toolCallCount ?? state.toolCallCount,
           ...(extra.durationMs === undefined
             ? {}
@@ -273,7 +278,7 @@ export function createAgentStream(params: AgentStreamParams) {
       };
 
       emitRun("running");
-      if (plan) {
+      if (plan && params.tasksEnabled) {
         emitAgentPlan(writer, plan);
       }
       // Un run n'est annoncé qu'une fois : une reprise (approbation, question)
@@ -307,7 +312,11 @@ export function createAgentStream(params: AgentStreamParams) {
             return;
           }
           plan = applyPlanProgress({ plan: plan as AgentPlan, status, title });
-          emitAgentPlan(writer, plan);
+          // La progression est toujours persistée ; elle n'est diffusée que si
+          // l'utilisateur a demandé la liste de tâches.
+          if (params.tasksEnabled) {
+            emitAgentPlan(writer, plan);
+          }
           setAgentRunPlan({
             executionOwner: params.executionOwner,
             id: params.runId,

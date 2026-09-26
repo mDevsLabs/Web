@@ -64,6 +64,7 @@ import {
 import { getAnsweredAgentUserInputsForRun } from "@/lib/db/agent-user-input-queries";
 import { saveMessages } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
+import { describeTools } from "@/lib/prompts/capabilities";
 import type { ChatMessage } from "@/lib/types";
 import { getTextFromMessage } from "@/lib/utils";
 import { type AgentRequestBody, agentRequestBodySchema } from "./schema";
@@ -597,6 +598,10 @@ export async function POST(request: Request) {
           plan,
           reasoningLevel,
           status: "running",
+          // Le plan, lui, existe pour tous les runs (il cadre les tâches
+          // longues) ; seule l'option « Tâches » décide s'il est visible.
+          // Une reprise réutilise activeRun et n'enregistre rien de nouveau.
+          tasksEnabled: oneShotOptions?.tasks === true,
           toolPolicySnapshot: permissions.snapshot,
           userId: ctx.userId,
         });
@@ -726,11 +731,13 @@ export async function POST(request: Request) {
           .filter(Boolean)
           .join("\n\n") || null,
       contextWindow: capabilities.contextWindow,
-      families,
+      // La mémoire n'est annoncée que si elle est réellement lisible ici ; le
+      // bloc peut être vide (forfait à 0 élément) sans que la section disparaisse.
       memoryBlock:
         [memoryContext.userMemoryBlock, memoryContext.projectMemoryBlock]
           .filter(Boolean)
           .join("\n\n") || null,
+      memoryWritable: memoryContext.memoryAllowAdd,
 
       messages:
         parentRunId && body.message
@@ -739,12 +746,18 @@ export async function POST(request: Request) {
       plan,
       project: projectContext,
       reasoningLevel,
+      reasoningSupported: capabilities.reasoning,
       sessionToken: ctx.sessionToken,
       skillInstructions:
         [ctx.skillInstructions, ...ctx.agentSkillInstructions]
           .filter(Boolean)
           .join("\n\n") || null,
       task,
+      // Le prompt n'annonce que le plateau RÉELLEMENT retenu pour ce run : un
+      // modèle sans tool calling n'enverra pas la liste, l'agent ne le pourra
+      // pas davantage.
+      tools: describeTools(enabledTools),
+      toolsSupported: capabilities.tools,
       userId: ctx.userId,
       userInstructions: ctx.userCustomEnabled
         ? ctx.userCustomInstructions
@@ -791,6 +804,9 @@ export async function POST(request: Request) {
       // zéro (sinon une tâche relancée indéfiniment n'atteint jamais sa limite).
       startToolCallCount: activeRun?.toolCallCount ?? 0,
       task,
+      // Sur une reprise, la valeur vient du run d'origine : l'option a été
+      // décidée à l'envoi initial, pas à chaque question posée en cours de route.
+      tasksEnabled: activeRun?.tasksEnabled ?? oneShotOptions?.tasks === true,
       tier,
       tools: enabledTools,
 

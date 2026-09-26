@@ -236,9 +236,12 @@ function AgentShellInner() {
     }
     hydratedRunIdRef.current = lastRun.id;
     const runUsage = (lastRun as { usage?: AgentRunUsage }).usage ?? {};
+    // Après un refresh, l'option « Tâches » est relue depuis AgentRun : sans
+    // elle, un plan resterait invisible même si l'utilisateur l'avait demandée.
+    const tasksEnabled = lastRun.tasksEnabled === true;
     reset({
       artifacts: [],
-      plan: lastRun.plan ?? null,
+      plan: tasksEnabled ? (lastRun.plan ?? null) : null,
       run: {
         durationMs:
           runUsage.durationMs ??
@@ -254,6 +257,7 @@ function AgentShellInner() {
         runId: lastRun.id,
         status: lastRun.status,
         stepCount: lastRun.stepCount,
+        tasksEnabled,
         toolCallCount: lastRun.toolCallCount,
         totalTokens: runUsage.totalTokens,
       },
@@ -261,6 +265,7 @@ function AgentShellInner() {
       steps: (history.steps ?? [])
         .filter((step) => step.runId === lastRun.id)
         .map(toStepEvent),
+      tasksEnabled,
       tools: (history.executions ?? [])
         .filter((execution) => execution.runId === lastRun.id)
         .map(toToolActivity),
@@ -303,8 +308,13 @@ function AgentShellInner() {
   };
 
   const isRunning = status === "streaming" || status === "submitted";
+  // Hydratation de la conversation : le fetch /api/messages est-il encore en
+  // cours ET l'agent est-il inerte ? Un run actif prime toujours — pendant une
+  // génération, la conversation est déjà là, et « Chargement » s'affichait
+  // par-dessus, à chaque révalidation, alors que l'agent travaillait.
+  const isHydrating = isLoading && !isRunning;
   const showHome =
-    messages.length === 0 && !isRunning && state.steps.length === 0;
+    !isHydrating && messages.length === 0 && state.steps.length === 0;
 
   const modelCompatibilityWarning =
     currentEntry && !currentModelIsAgentCompatible ? (
@@ -460,7 +470,7 @@ function AgentShellInner() {
                     vote={undefined}
                   />
                 ))}
-                {isLoading ? (
+                {isHydrating && messages.length === 0 ? (
                   <p className="text-xs text-muted-foreground">
                     Chargement de la conversation…
                   </p>

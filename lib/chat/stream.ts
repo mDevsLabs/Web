@@ -7,8 +7,9 @@ import {
   toUIMessageStream,
 } from "ai";
 import { generateTitleFromConversation } from "@/app/(chat)/actions";
-import { systemPrompt } from "@/lib/ai/prompts";
+import { TOOL_SYSTEM_HINTS } from "@/lib/ai/tools/config";
 import type { ChatRequestContext } from "@/lib/chat/context";
+import type { MemoryContext } from "@/lib/chat/memory";
 import {
   getStreamContext,
   isModelStreamActivity,
@@ -21,6 +22,9 @@ import {
   saveMessages,
   updateMessage,
 } from "@/lib/db/queries";
+import { getPluginSystemHints } from "@/lib/plugins/server";
+import { toolKindFor } from "@/lib/prompts/capabilities";
+import { buildChatSystemPrompt } from "@/lib/prompts/chat";
 import type { ChatMessage } from "@/lib/types";
 import { generateUUID, getTextFromMessage } from "@/lib/utils";
 
@@ -37,6 +41,8 @@ export type ChatStreamParams = {
     activeToolsList: string[];
     effectiveAddendum: string;
   }>;
+  /** Mémoire de la requête : le prompt n'en parle que si elle est lisible. */
+  memoryContext: MemoryContext | null;
   effectiveTemperature?: number;
   effectiveTopP?: number;
   effectiveMaxTokens?: number;
@@ -47,6 +53,7 @@ export function createChatStream(params: ChatStreamParams) {
     ctx,
     model,
     prepareTools,
+    memoryContext,
     effectiveTemperature,
     effectiveTopP,
     effectiveMaxTokens,
@@ -76,15 +83,46 @@ export function createChatStream(params: ChatStreamParams) {
       const { tools, activeToolsList, effectiveAddendum } =
         await prepareTools(dataStream);
       const supportsTools = activeToolsList.length > 0;
+      // Les hints de plugins complètent (et peuvent surcharger) ceux des outils
+      // natifs : source unique côté registre de plugins.
+      const toolHints: Record<string, string> = {
+        ...TOOL_SYSTEM_HINTS,
+        ...getPluginSystemHints(),
+      };
 
       const usageEventKey = `chat:${ctx.id}:${ctx.message?.id ?? ctx.uiMessages.at(-1)?.id ?? `len-${ctx.uiMessages.length}`}:${ctx.chatModel}`;
 
       const result = streamText({
         activeTools: supportsTools ? (activeToolsList as any) : undefined,
-        instructions: systemPrompt({
-          modeAddendum: effectiveAddendum,
-          requestHints: ctx.requestHints,
-          supportsTools,
+        instructions: buildChatSystemPrompt({
+          addendum: effectiveAddendum || null,
+          artifactsAvailable: supportsTools,
+          capabilities: {
+            attachments: 0,
+            memory: memoryContext?.memoryActive
+              ? {
+                  block:
+                    [
+                      memoryContext.userMemoryBlock,
+                      memoryContext.projectMemoryBlock,
+                    ]
+                      .filter(Boolean)
+                      .join("\n\n") || null,
+                  writable: memoryContext.memoryAllowAdd,
+                }
+              : null,
+            plan: null,
+            reasoning: false,
+            tools: activeToolsList.map((toolId) => ({
+              description:
+                toolHints[toolId] ?? "Outil disponible pour cet échange.",
+              id: toolId,
+              kind: toolKindFor({ id: toolId }),
+              label: toolId,
+            })),
+            toolsSupported: supportsTools,
+          },
+          requestHints: ctx.requestHints ?? null,
         }),
         messages: ctx.modelMessages,
         model,
