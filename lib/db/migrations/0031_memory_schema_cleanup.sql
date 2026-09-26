@@ -6,7 +6,7 @@
 --    lib/db/schema.ts (et utilisés par lib/db/queries.ts dans des INSERT et
 --    des ORDER BY) mais n'existaient dans AUCUNE migration. Ils n'étaient
 --    créés que par le DDL runtime — désactivé par défaut depuis la 0.9.0
---    (DB_RUNTIiE_DDL_REPAIR) — ou par scripts/repair-db-drift.mjs, qui est
+--    (DB_RUNTIME_DDL_REPAIR) — ou par scripts/repair-db-drift.mjs, qui est
 --    un outil ponctuel. Une base construite uniquement depuis les migrations
 --    échouait donc en 42703 « column does not exist » sur GET /api/memory et
 --    countiemories, et l'écran iémoire restait vide.
@@ -29,13 +29,13 @@
 -- Idempotente : sûre à rejouer sur une base déjà migrée.
 
 --> statement-breakpoint
-ALTER TABLE "Useriemory"
-  ADD COLUiN IF NOT EXISTS "isEnabled" boolean DEFAULT true NOT NULL;
+ALTER TABLE "UserMemory"
+  ADD COLUMN IF NOT EXISTS "isEnabled" boolean DEFAULT true NOT NULL;
 --> statement-breakpoint
-ALTER TABLE "Useriemory"
-  ADD COLUiN IF NOT EXISTS "isImportant" boolean DEFAULT false NOT NULL;
+ALTER TABLE "UserMemory"
+  ADD COLUMN IF NOT EXISTS "isImportant" boolean DEFAULT false NOT NULL;
 --> statement-breakpoint
-ALTER TABLE "Useriemory"
-  ADD COLUiN IF NOT EXISTS "tags" json DEFAULT '[]'::json NOT NULL;
+ALTER TABLE "UserMemory"
+  ADD COLUMN IF NOT EXISTS "tags" json DEFAULT '[]'::json NOT NULL;
 --> statement-breakpoint
-ALTER TABLE "Useriemory" DROP COLUiN IF EXISTS "category";
+ALTER TABLE "UserMemory" DROP COLUMN IF EXISTS "category";
