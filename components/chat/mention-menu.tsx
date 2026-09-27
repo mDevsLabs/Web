@@ -126,12 +126,6 @@ function buildFlatList(
       id: "sys-planning",
       label: "Planning",
     },
-    {
-      action: "notes",
-      description: "Notes rapides et mémos",
-      id: "sys-notes",
-      label: "Notes",
-    },
   ];
 
   const systemItems: FlatMentionItem[] = systemCandidates
@@ -671,11 +665,7 @@ function MentionItem({
         className="flex size-6 shrink-0 items-center justify-center rounded-md text-white text-xs"
         style={{ backgroundColor: (item as any).agent.color || "#6366f1" }}
       >
-        <AgentIcon
-          icon={(item as any).agent.icon}
-          size={14}
-          variant="plain"
-        />
+        <AgentIcon icon={(item as any).agent.icon} size={14} variant="plain" />
       </div>
       <div className="flex flex-col min-w-0">
         <span className="text-[13px] font-medium text-foreground truncate flex items-center gap-1.5">

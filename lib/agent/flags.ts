@@ -47,10 +47,19 @@ export function filterToolsByFlags<T extends { category: ToolCategory }>(
   });
 }
 
-// Les fonctions Alpha essentielles sont actives par défaut ; les fonctions
-// Optional (Skills, MCP) et la réflexion (contrat amont non confirmé) sont
-// désactivées. `agent.enabled` reste un interrupteur global : le mettre à false
-// coupe l'espace Agent sans redéploiement de code.
+// Toutes les fonctions Alpha sont actives par défaut : Skills, MCP et la
+// réflexion ne sont plus expérimentales. Un flag ne décide de rien sur les
+// outils réellement utilisables — il borne ce que l'interface PROPOSE. Sans
+// sélection de catégories, Agent choisit lui-même dans sa boucle ; avec une
+// sélection, elle borne le choix. Le flag n'est donc pas un interrupteur
+// d'accès, et le remettre à `true` n'accorde aucun droit nouveau.
+//
+// Seules les fonctions de confort restent éteintes (Activité, Historique
+// planifié, Aperçu des approbations, Reprise guidée) : elles n'apportent rien
+// au travail lui-même.
+//
+// `agent.enabled` reste un interrupteur global : le mettre à false coupe
+// l'espace Agent sans redéploiement de code.
 export const DEFAULT_AGENT_FLAGS: AgentFlags = {
   "agent.activity": false,
   "agent.approvalPreview": false,
@@ -59,12 +68,12 @@ export const DEFAULT_AGENT_FLAGS: AgentFlags = {
   "agent.enabled": true,
   "agent.files": true,
   "agent.guidedResume": false,
-  "agent.mcp": false,
+  "agent.mcp": true,
   "agent.plugins": true,
   "agent.projects": true,
-  "agent.reasoning": false,
+  "agent.reasoning": true,
   "agent.scheduleHistory": false,
-  "agent.skills": false,
+  "agent.skills": true,
   "agent.webSearch": true,
 };
 

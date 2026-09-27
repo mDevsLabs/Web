@@ -3,7 +3,7 @@
 import {
   BrainIcon,
   FolderIcon,
-  GaugeIcon,
+  HomeIcon,
   Loader2Icon,
   ShieldCheckIcon,
   SparklesIcon,
@@ -22,19 +22,19 @@ import { PageBackButton } from "@/components/chat/page-back-button";
 import { OptionSelector } from "@/components/settings/option-selector";
 import { useAgentSettings } from "@/hooks/use-agent-settings";
 import { useProjects } from "@/hooks/use-projects";
+import { resolveReasoningOptions } from "@/lib/agent/reasoning-options";
 import { AGENT_FAMILY_LABELS } from "@/lib/agent/tools/selector/families";
-import {
-  AGENT_AUTONOMY_DESCRIPTIONS,
-  AGENT_AUTONOMY_LABELS,
-  type AgentAutonomy,
-  type ToolCategory,
-  type ToolPermission,
+import type {
+  AgentMode,
+  ToolCategory,
+  ToolPermission,
 } from "@/lib/agent/types";
 import {
   REASONING_LEVEL_DESCRIPTIONS,
   REASONING_LEVEL_LABELS,
   type ReasoningLevel,
 } from "@/lib/ai/registry/reasoning";
+import { isPaidTier } from "@/lib/auth/plan";
 import { cn } from "@/lib/utils";
 
 const TOOL_PERMISSION_LABELS: Record<ToolPermission, string> = {
@@ -106,6 +106,21 @@ export default function AgentSettingsPage() {
   const settings = data?.settings;
   const flags = data?.flags;
 
+  // Le sélecteur « Agent » comme écran par défaut n'est proposé qu'aux comptes
+  // qui peuvent réellement l'utiliser : sinon l'affichage proposerait un
+  // réglage que le serveur refuse, et l'utilisateur comprendrait qu'un bouton ne
+  // fait rien.
+  const canChooseDefaultMode = Boolean(
+    flags?.["agent.enabled"] && data?.tier && isPaidTier(data.tier)
+  );
+
+  // Les niveaux proposés viennent des capacités du modèle de repli choisi, ou
+  // de l'union du catalogue en mode automatique. Aucune liste n'est écrite ici.
+  const reasoningOptions = resolveReasoningOptions({
+    models: data?.agentModels ?? [],
+    selectedModelId: settings?.defaultModel ?? null,
+  });
+
   return (
     <div className="flex h-full flex-1 flex-col overflow-y-auto bg-background">
       <div className="mx-auto w-full max-w-6xl p-4 pb-16 sm:p-6 md:p-10">
@@ -123,8 +138,8 @@ export default function AgentSettingsPage() {
               Paramètres Agent
             </h1>
             <p className="mt-1 text-xs text-muted-foreground sm:text-sm">
-              Modèle, réflexion, autonomie et autorisations d'outils. Chaque
-              réglage est revérifié côté serveur à l'exécution.
+              Mode d'accueil, modèle, réflexion et autorisations d'outils.
+              Chaque réglage est revérifié côté serveur à l'exécution.
             </p>
           </div>
         </div>
@@ -166,6 +181,33 @@ export default function AgentSettingsPage() {
               </p>
             )}
 
+            {canChooseDefaultMode ? (
+              <Section
+                description="Écran affiché à chaque arrivée sur la page d'accueil. Vos conversations existantes gardent leur mode."
+                icon={HomeIcon}
+                title="Mode par défaut"
+              >
+                <OptionSelector
+                  items={[
+                    {
+                      description:
+                        "Conversation directe avec le modèle, sans boucle d'outils.",
+                      id: "chat",
+                      label: "Chat",
+                    },
+                    {
+                      description:
+                        "Agent autonome : il planifie, utilise vos outils et vos fichiers, et rend un résultat complet.",
+                      id: "agent",
+                      label: "Agent",
+                    },
+                  ]}
+                  onChange={(id) => update({ defaultMode: id as AgentMode })}
+                  value={settings.defaultMode}
+                />
+              </Section>
+            ) : null}
+
             <Section
               description="Utilisé uniquement si le modèle partagé avec Chat n'est pas disponible ou compatible avec Agent."
               icon={SparklesIcon}
@@ -193,49 +235,45 @@ export default function AgentSettingsPage() {
             </Section>
 
             <Section
-              description="Profondeur de réflexion demandée au modèle. Autonomie ≠ réflexion : l'autonomie règle l'usage des outils."
+              description="Profondeur de réflexion demandée au modèle. Sans effet sur les outils : l'Agent choisit lui-même ce qu'il utilise, et les autorisations se règlent plus bas."
               icon={BrainIcon}
               title="Intensité de réflexion"
             >
               {flags["agent.reasoning"] ? (
-                <OptionSelector
-                  items={(["low", "medium", "high"] as ReasoningLevel[]).map(
-                    (level) => ({
-                      description: REASONING_LEVEL_DESCRIPTIONS[level],
-                      id: level,
-                      label: REASONING_LEVEL_LABELS[level],
-                    })
-                  )}
-                  onChange={(id) =>
-                    update({ reasoningLevel: id as ReasoningLevel })
-                  }
-                  value={settings.reasoningLevel}
-                />
+                reasoningOptions.isEmpty ? (
+                  <p className="rounded-xl border border-border/50 bg-muted/40 px-3 py-2 text-xs text-muted-foreground">
+                    {reasoningOptions.isAutomatic
+                      ? "Aucun des modèles disponibles ne propose de niveau de réflexion réglable. L'effort restera celui du fournisseur."
+                      : `« ${reasoningOptions.modelId} » ne propose aucun niveau de réflexion réglable : son effort reste celui du fournisseur.`}
+                  </p>
+                ) : (
+                  <>
+                    <OptionSelector
+                      items={reasoningOptions.levels.map((level) => ({
+                        description: REASONING_LEVEL_DESCRIPTIONS[level],
+                        id: level,
+                        label: REASONING_LEVEL_LABELS[level],
+                      }))}
+                      onChange={(id) =>
+                        update({ reasoningLevel: id as ReasoningLevel })
+                      }
+                      value={settings.reasoningLevel}
+                    />
+                    <p className="mt-2 text-xs text-muted-foreground">
+                      {reasoningOptions.mandatory
+                        ? "Ce modèle raisonne obligatoirement : « Désactivée » ne sera pas proposé sur les modèles de cette famille."
+                        : reasoningOptions.isAutomatic
+                          ? "Sans modèle de repli choisi, ce niveau est une préférence : il est recalé sur ce que le modèle de chaque conversation accepte réellement."
+                          : "Ce niveau fait partie de ceux acceptés par le modèle de repli choisi."}
+                    </p>
+                  </>
+                )
               ) : (
                 <p className="rounded-xl border border-border/50 bg-muted/40 px-3 py-2 text-xs text-muted-foreground">
-                  La réflexion est prête côté Agent (registre, validation,
-                  interface) mais reste masquée tant que le paramètre exact
-                  n'est pas confirmé par le fournisseur de modèles.
+                  Le réglage de la réflexion est désactivé côté serveur pour
+                  l'instant. Aucun effort n'est transmis au modèle.
                 </p>
               )}
-            </Section>
-
-            <Section
-              description={AGENT_AUTONOMY_DESCRIPTIONS[settings.autonomy]}
-              icon={GaugeIcon}
-              title="Autonomie"
-            >
-              <OptionSelector
-                items={(["careful", "standard", "high"] as AgentAutonomy[]).map(
-                  (level) => ({
-                    description: AGENT_AUTONOMY_DESCRIPTIONS[level],
-                    id: level,
-                    label: AGENT_AUTONOMY_LABELS[level],
-                  })
-                )}
-                onChange={(id) => update({ autonomy: id as AgentAutonomy })}
-                value={settings.autonomy}
-              />
             </Section>
 
             <Section
@@ -362,7 +400,7 @@ export default function AgentSettingsPage() {
             </Section>
 
             <Section
-              description="Fonctionnalités activées côté serveur par les feature flags Alpha."
+              description="Ce que votre compte peut réellement utiliser. Une pastille verte signale une fonction active, une pastille grise une fonction indisponible — pour votre forfait, ou parce qu'elle est éteinte côté serveur. Ces pastilles sont une lecture, pas un réglage : pour choisir ce qu'Agent peut employer, utilisez « Outils » ci-dessus."
               icon={SparklesIcon}
               title="Disponibilité"
             >
@@ -377,6 +415,7 @@ export default function AgentSettingsPage() {
                     ["agent.plugins", "Plugins"],
                     ["agent.mcp", "MCP"],
                     ["agent.skills", "Skills"],
+                    ["agent.reasoning", "Réflexion"],
                   ] as const
                 ).map(([key, label]) => (
                   <span

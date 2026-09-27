@@ -52,7 +52,9 @@ describe("Déclencheurs du composer partagé", () => {
       []
     );
 
-    expect(items.filter((item) => item.kind === "system")).toHaveLength(4);
+    // Trois mentions système : web, library, planning. « Notes » a été
+    // retirée au profit de « Library », qui menait déjà au même endroit.
+    expect(items.filter((item) => item.kind === "system")).toHaveLength(3);
     expect(items.some((item) => item.id === "mcp-off")).toBe(false);
     expect(items.some((item) => item.id === "mcp-on")).toBe(true);
     expect(items.some((item) => item.id === "cmd-off")).toBe(false);
@@ -70,12 +72,26 @@ describe("Déclencheurs du composer partagé", () => {
       []
     );
 
+    // `/model` est désormais traité en mode Agent : le composer Agent a son
+    // propre sélecteur, la commande ouvre ce sélecteur.
     expect(agentCommands.some((command) => command.action === "model")).toBe(
-      false
+      true
     );
     expect(chatCommands.some((command) => command.action === "model")).toBe(
       true
     );
+
+    // En revanche les bascules d'outils one-shot restent propres au Chat :
+    // l'Agent choisit lui-même ses outils dans sa boucle.
+    for (const action of ["tool-code", "ghost", "quiz"] as const) {
+      expect(
+        agentCommands.some((command) => command.action === action),
+        `${action} ne doit pas être proposé en mode Agent`
+      ).toBe(false);
+      expect(chatCommands.some((command) => command.action === action)).toBe(
+        true
+      );
+    }
   });
 
   it("désactive les effets d'un token multi-mots avec la casse insensible", () => {

@@ -1,5 +1,6 @@
 import "server-only";
 
+import { AGENT_MODES, type AgentMode } from "@/lib/agent/channel";
 import {
   AGENT_SETTINGS_DEFAULTS,
   type AgentAutonomy,
@@ -29,7 +30,7 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
 ];
 
 export type AgentSettingsPatch = {
-  autonomy?: AgentAutonomy;
+  defaultMode?: AgentMode;
   defaultModel?: string | null;
   defaultProjectId?: string | null;
   enabledCategories?: ToolCategory[] | null;
@@ -56,9 +57,16 @@ export async function loadAgentSettings({
     : null;
 
   return {
-    autonomy: isAgentAutonomy(row.autonomy)
-      ? row.autonomy
-      : AGENT_SETTINGS_DEFAULTS.autonomy,
+    // L'autonomie n'est plus un réglage : la colonne reste pour l'historique et
+    // les runs passés, mais la valeur effective est imposée. Relire ce que la
+    // ligne contenait donnerait un compte « Élevée » des droits que l'interface
+    // ne propose plus — et que l'utilisateur ne peut ni voir ni révoquer.
+    autonomy: AGENT_SETTINGS_DEFAULTS.autonomy,
+    // Un mode illisible retombe sur Chat : c'est l'écran par défaut du
+    // produit, pas une préférence à préserver.
+    defaultMode: AGENT_MODES.includes(row.defaultMode as AgentMode)
+      ? (row.defaultMode as AgentMode)
+      : AGENT_SETTINGS_DEFAULTS.defaultMode,
     defaultModel: row.defaultModel ?? null,
     defaultProjectId: row.defaultProjectId ?? null,
     enabledCategories:
@@ -100,8 +108,12 @@ export async function saveAgentSettings({
 
   await upsertAgentSettingsRow({
     patch: {
-      autonomy:
-        patch.autonomy === undefined ? current.autonomy : patch.autonomy,
+      // `autonomy` n'est plus écrit : la valeur effective est imposée par le
+      // serveur, et la colonne conserve son dernier état pour l'historique.
+      defaultMode:
+        patch.defaultMode === undefined
+          ? current.defaultMode
+          : patch.defaultMode,
       defaultModel:
         patch.defaultModel === undefined
           ? current.defaultModel

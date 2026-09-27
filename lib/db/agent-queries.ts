@@ -1,6 +1,7 @@
 import "server-only";
 
 import { and, asc, desc, eq, gte, inArray, sql } from "drizzle-orm";
+import type { AgentMode } from "@/lib/agent/channel";
 import type {
   AgentAutonomy,
   AgentExecutionBudget,
@@ -389,6 +390,15 @@ export async function setAgentRunUsage({
             inputTokens: (previous.inputTokens ?? 0) + (usage.inputTokens ?? 0),
             outputTokens:
               (previous.outputTokens ?? 0) + (usage.outputTokens ?? 0),
+            // Les blocs de raisonnement s'ajoutent eux aussi : cette fonction est
+            // appelée à chaque étape, et un écrasement ne garderait que la
+            // dernière. Le volume est déjà plafonné à la collecte.
+            reasoningDetails: [
+              ...(previous.reasoningDetails ?? []),
+              ...(usage.reasoningDetails ?? []),
+            ],
+            reasoningTokens:
+              (previous.reasoningTokens ?? 0) + (usage.reasoningTokens ?? 0),
             totalTokens: (previous.totalTokens ?? 0) + (usage.totalTokens ?? 0),
           },
         })
@@ -683,6 +693,7 @@ export async function upsertAgentSettingsRow({
 }: {
   patch: {
     autonomy?: AgentAutonomy;
+    defaultMode?: AgentMode;
     defaultModel?: string | null;
     defaultProjectId?: string | null;
     enabledCategories?: ToolCategory[];
@@ -697,6 +708,7 @@ export async function upsertAgentSettingsRow({
       .insert(agentSettings)
       .values({
         autonomy: patch.autonomy ?? "standard",
+        defaultMode: patch.defaultMode ?? "chat",
         defaultModel: patch.defaultModel ?? null,
         defaultProjectId: patch.defaultProjectId ?? null,
         enabledCategories: patch.enabledCategories ?? [],
@@ -707,6 +719,9 @@ export async function upsertAgentSettingsRow({
       .onConflictDoUpdate({
         set: {
           ...(patch.autonomy === undefined ? {} : { autonomy: patch.autonomy }),
+          ...(patch.defaultMode === undefined
+            ? {}
+            : { defaultMode: patch.defaultMode }),
           ...(patch.defaultModel === undefined
             ? {}
             : { defaultModel: patch.defaultModel }),

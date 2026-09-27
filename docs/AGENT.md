@@ -60,10 +60,10 @@ buildChatContext({ mode: "agent" })
 ModelRegistry (/api/models)     → modèle utilisable + capacités
 checkAgentModelAccess           → tool calling obligatoire, forfait
 collectAttachments + validation → types / nombre / capacités détaillées du modèle effectif
-normalizeAgentReasoningLevel    → valeur validée
+resolveAgentReasoning          → effort recalé sur les niveaux du modèle
 resolveAgentExecutionBudget     → maxSteps, maxToolCalls, durée, retries
 ToolSelector (hybride)          → outils pertinents (hors outils « opt-in »)
-applyToolPermissions            → auto / ask / off (autonomie + surcharges)
+applyToolPermissions            → auto / ask / off (défaut « standard » + surcharges)
 createAgentRun / reprise        → unicité conversation/message, réservation d'exécution
 loadAgentProjectContext         → contexte projet ciblé
 buildAgentContext               → compaction + budget de tokens
@@ -171,7 +171,7 @@ ou MCP ne contourne une permission.
 | `ToolExecution`  | appels d'outils (entrée, sortie, statut, durée, erreur)       |
 | `AgentUserInputRequest` | questionnaire posé par `ask_user` : questions, empreinte, statut, révision, réponse |
 | `ApprovalRequest` | accord attendu sur des paramètres exacts (hash, décision, TTL) |
-| `AgentSettings`  | modèle, réflexion, autonomie, catégories, permissions        |
+| `AgentSettings`  | mode d'accueil, modèle, réflexion, catégories, permissions   |
 | `AgentScheduleVersion` | versions immuables des consignes et réglages planifiés |
 | `AgentScheduleOccurrence` | échéance liée à la version exécutée, si attribuable |
 | `Chat.mode`      | `chat` ou `agent`                                            |
@@ -239,10 +239,12 @@ affiché à l'utilisateur. Le projet n'est jamais envoyé en entier :
 | Paramètres Agent           | `app/(chat)/settings/agent/page.tsx`            |
 | Activité individuelle et versions planifiées | `components/agent/agent-activity-panel.tsx`, `agent-schedule-history-panel.tsx` |
 
-Le composer s'adapte aux capacités du modèle : Réflexion n'apparaît que si
-`flags["agent.reasoning"] && capabilities.reasoning`, Fichiers est grisé si le
-modèle n'accepte pas de fichiers, Agent est bloqué si `capabilities.tools` est
-faux.
+Le composer s'adapte aux capacités du modèle. Le sélecteur d'effort, placé à
+côté du choix du modèle, n'apparaît que si `flags["agent.reasoning"]` **et**
+que le modèle expose des niveaux (`capabilities.reasoningLevels` non vide) — un
+modèle qui raisonne sans niveaux contrôlables n'a rien à proposer. Fichiers est
+grisé si le modèle n'accepte pas de fichiers, Agent est bloqué si
+`capabilities.tools` est faux.
 
 ## 11. Feature flags
 
@@ -274,16 +276,65 @@ Elles sont désactivées par défaut et peuvent être ouvertes par `AGENT_FLAGS`
 
 ## 13. Points ouverts (non bloquants)
 
-1. **Paramètre de réflexion** : le catalogue déclare la capacité, mais le nom
-   exact du paramètre transmis par le proxy amont n'est pas contractualisé dans
-   ce dépôt. Le sélecteur reste donc derrière `agent.reasoning`
-   (`REASONING_CONTRACT_CONFIRMED = false`) ; l'activer = renseigner
-   `REASONING_PARAM_MAPPINGS`, sans toucher au reste.
-2. **Contenu des fichiers cloud** : selon l'endpoint disponible côté backend
+1. **Contenu des fichiers cloud** : selon l'endpoint disponible côté backend
    mAI, `read_file` lit soit une URL de contenu, soit retombe sur un échec
    structuré que le modèle peut expliquer. L'intervalle de l'outil ne change pas.
 
-## 14. Hors périmètre (Alpha)
+## 14. Réflexion — contrat établi
+
+Le point ouvert n°1 est résolu. Le contrat est le suivant.
+
+**Ce qui est transmis.** Le provider AI SDK valide `reasoningEffort` contre un
+enum contenant exactement les sept niveaux de l'API unifiée d'OpenRouter
+(`max`, `xhigh`, `high`, `medium`, `low`, `minimal`, `none`) et le sérialise
+sous la clé historique `reasoning_effort`. Le proxy (`models.ts`) traduit en
+`reasoning: { effort }` au moment du relais, pour ses trois routes de génération.
+Aucune table de correspondance n'existe, et aucun kill switch : le contrat est
+dans le schéma du provider.
+
+**Ce qui est proposé à l'utilisateur.** Rien n'est écrit à la main. Les niveaux
+viennent de `GET /v1/models` → `reasoning.supported_efforts`, exposé par
+`lib/ai/registry/capabilities.ts` sous `capabilities.reasoningLevels`. Si
+OpenRouter ajoute, retire ou change un niveau, l'interface suit au
+rechargement du catalogue. Un modèle qui raisonne sans exposer de niveaux
+(`minimax/minimax-m3`, alias mAI-2-Mini) a une liste vide : le sélecteur est
+masqué, il n'est jamais alimenté par une liste de repli.
+
+**Une préférence, recalée par modèle.** `AgentSettings.reasoningLevel` est une
+valeur unique parmi les sept ; elle n'a pas de sens hors du modèle. Avant
+chaque requête, `resolveReasoningEffort` la recale :
+
+1. accepté tel quel → transmis tel quel ;
+2. sinon le `default_effort` du fournisseur (sur le catalogue relevé, les 186
+   modèles qui exposent des niveaux en exposent tous un, et il appartient
+   toujours à leur propre liste) ;
+3. sinon le niveau immédiatement inférieur, jamais supérieur — élever le
+   niveau gonflerait la facture sans demande ;
+4. sinon le niveau le moins cher proposé.
+
+`AgentRun.reasoningLevel` conserve l'intention, et l'événement de run porte
+`effectiveReasoningLevel` pour ce qui part réellement. L'interface affiche le
+niveau effectif, avec la mention « recalée sur ce modèle » quand il diffère.
+
+`agent.reasoning` est passé à `true` par défaut. Il ne borne plus les niveaux :
+un modèle sans niveaux continue de n'en recevoir aucun. Il reste le moyen de
+couper la molette sans redéploiement.
+
+**Décompte.** `reasoning_tokens` est un sous-ensemble de `completion_tokens`, et
+le contrat de l'AI SDK le confirme : `onFinish` livre `outputTokens` **à plat**,
+réponse déjà incluse, et `outputTokenDetails.reasoningTokens` uniquement pour la
+décomposition. La réflexion est donc **déjà** dans le total — `resolveBillableTotal`
+ne l'ajoute jamais, seulement recomposé quand aucun total amont n'existe. Elle est
+conservée à part (`UsageEvent.reasoningTokens`, `AgentRun.usage.reasoningTokens`)
+pour expliquer la facture.
+
+**`reasoning_details`** n'est pas lu par le provider, qui n'analyse que
+`content`, `tool_calls` et `annotations`. Il est donc capté sur le flux par un
+tee dans le `fetch` de `lib/ai/providers.ts`, à la recherche du champ à toute
+profondeur (sa position varie selon la route). Collecte plafonnée à 20 blocs et
+256 Ko ; la branche de lecture ne peut ni ralentir ni casser le flux principal.
+
+## 15. Hors périmètre (Alpha)
 
 Éditeur de workflow visuel, DAG, multi-agents, agent-to-agent, Computer Use,
 navigateur autonome, exécution desktop, VM, orchestration distribuée.

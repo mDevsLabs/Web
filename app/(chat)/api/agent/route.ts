@@ -38,6 +38,7 @@ import type { RegisteredAgentTool, ToolPermission } from "@/lib/agent/types";
 import { injectUserInputAnswers } from "@/lib/agent/user-input/inject";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
+import { createReasoningDetailsSink } from "@/lib/ai/reasoning-details";
 import {
   getModelEntry,
   isAgentCompatible,
@@ -299,7 +300,11 @@ export async function POST(request: Request) {
       requested: body.reasoningLevel,
     });
     const reasoningLevel = reasoning.requested;
-    const autonomy = body.autonomy ?? settings.autonomy;
+    // L'autonomie n'est plus un choix : elle est fixée à « standard » (lecture
+    // et recherche libres, écriture et suppression soumises à approbation). Le
+    // paramètre est ignoré côté client ET non lu ici, donc un client qui
+    // l'enverrait encore ne pourrait pas s'attribuer plus de droits.
+    const autonomy = "standard" as const;
     const budget = resolveAgentExecutionBudget({ tier });
 
     // 8. Nouveau run ou reprise du run en attente (approbation, question).
@@ -771,8 +776,16 @@ export async function POST(request: Request) {
     });
 
     // 14. Flux d'exécution Agent (mêmes garanties de reprise que le Chat).
+    //
+    // Le collecteur est créé ici et partagé entre le modèle et le runtime : le
+    // premier branche la lecture sur le flux SSE, le second lit le résultat en
+    // fin d'appel pour le rattacher au run. Un collecteur par requête, jamais
+    // global : deux runs concurrents ne doivent pas seoirsiver leurs
+    // raisonnements.
+    const reasoningSink = createReasoningDetailsSink();
     const model = getLanguageModel(resolvedModel, {
       apiKey: ctx.userApiKey,
+      reasoningSink,
       sessionToken: ctx.sessionToken,
       userId: ctx.userId,
     });
@@ -800,6 +813,7 @@ export async function POST(request: Request) {
       // niveaux que la préférence n'en prévoit.
       reasoningEffort: reasoning.effort,
       reasoningLevel,
+      reasoningSink,
       runId: run.id,
       // Réflexion visible par défaut : identique au Chat (lib/chat/stream.ts
       // envoie toujours sendReasoning: true). Seuls les parts explicitement

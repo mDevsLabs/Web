@@ -203,14 +203,18 @@ function PureMultimodalInput({
     () => (Array.isArray(mcpData?.servers) ? mcpData.servers : []),
     [mcpData]
   );
-  const { data: userAgentsData } = useSWR<{ agents: Agent[]; limit: number | null }>(
+  const { data: userAgentsData } = useSWR<{
+    agents: Agent[];
+    limit: number | null;
+  }>(
     isFree ? null : "/api/agents",
     (url: string) => fetch(url).then((r) => r.json()),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
-  const userAgents = useMemo(() => userAgentsData?.agents ?? [], [
-    userAgentsData,
-  ]);
+  const userAgents = useMemo(
+    () => userAgentsData?.agents ?? [],
+    [userAgentsData]
+  );
   const { data: customCommandsData = [] } = useSWR<CustomCommand[]>(
     isFree ? null : "/api/commands?kind=slash",
     (url: string) => fetch(url).then((r) => r.json()),
@@ -400,8 +404,6 @@ function PureMultimodalInput({
           toast.success("Référence à la planification ajoutée !");
         } else if (payload.action === "library") {
           toast.success("Référence au stockage ajoutée !");
-        } else if (payload.action === "notes") {
-          toast.success("Référence aux notes ajoutée !");
         }
       } else if (payload.type === "memory") {
         if (!pendingTools.includes("memory")) {

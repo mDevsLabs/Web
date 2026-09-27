@@ -1,6 +1,7 @@
 import type { ZodType } from "zod";
 import type { AgentMode } from "@/lib/agent/channel";
 import type { ToolErrorCategory } from "@/lib/agent/tool-errors";
+import type { ReasoningDetail } from "@/lib/agent/usage";
 import type { ReasoningLevel } from "@/lib/ai/registry/reasoning";
 
 // Types du domaine Agent. Aucun `any` : unions discriminées aux frontières
@@ -393,6 +394,12 @@ export type AgentPlan = {
 export type AgentRunEvent = {
   model: string;
   reasoningLevel: ReasoningLevel;
+  /**
+   * Niveau réellement transmis au modèle. Diffère de `reasoningLevel` dès que
+   * la préférence n'est pas dans les niveaux du modèle (mAI-2 ne connaît que
+   * max/high/low). Afficher la préférence seule mentirait sur l'effort parti.
+   */
+  effectiveReasoningLevel?: ReasoningLevel;
   runId: string;
   status: AgentRunStatus;
   stepCount?: number;
@@ -406,6 +413,8 @@ export type AgentRunEvent = {
   error?: string | null;
   inputTokens?: number;
   outputTokens?: number;
+  // Sous-ensemble des tokens de sortie, déjà compris dans `totalTokens`.
+  reasoningTokens?: number;
   totalTokens?: number;
 };
 
@@ -443,6 +452,9 @@ export type AgentArtifactRef = {
 
 export type AgentSettings = {
   autonomy: AgentAutonomy;
+  // Écran chargé à chaque arrivée sur la page d'accueil. « Agent » n'est
+  // enregistrable que par un compte qui y a droit (cf. /api/agent/settings).
+  defaultMode: AgentMode;
   defaultModel: string | null;
   defaultProjectId: string | null;
   enabledCategories: ToolCategory[] | null;
@@ -453,6 +465,7 @@ export type AgentSettings = {
 
 export const AGENT_SETTINGS_DEFAULTS: AgentSettings = {
   autonomy: "standard",
+  defaultMode: "chat",
   defaultModel: null,
   defaultProjectId: null,
   enabledCategories: null,
@@ -464,6 +477,10 @@ export type AgentRunUsage = {
   durationMs?: number;
   inputTokens?: number;
   outputTokens?: number;
+  // Décomposition : la réflexion est un sous-ensemble des tokens de sortie, et
+  // le détail brut est conservé quand le fournisseur l'envoie.
+  reasoningDetails?: ReasoningDetail[];
+  reasoningTokens?: number;
   totalTokens?: number;
 };
 

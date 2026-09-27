@@ -153,17 +153,22 @@ export function readReasoningDetails(
   raw: unknown,
   limit = 20
 ): ReasoningDetail[] {
-  if (!raw || typeof raw !== "object") {
-    return [];
-  }
-  const record = raw as Record<string, unknown>;
-  const rawDetails =
-    record.reasoning_details ?? record.reasoningDetails ?? record.raw;
-  if (!Array.isArray(rawDetails)) {
+  // Accepte aussi bien l'objet enveloppant que le tableau nu : le champ est
+  // imbriqué à une profondeur variable selon la route (racine du chunk,
+  // choices[].delta, message…), et normaliser ici évite à chaque appelant de
+  // devoir connaître l'emplacement exact.
+  const source = Array.isArray(raw)
+    ? raw
+    : raw && typeof raw === "object"
+      ? ((raw as Record<string, unknown>).reasoning_details ??
+        (raw as Record<string, unknown>).reasoningDetails ??
+        (raw as Record<string, unknown>).raw)
+      : null;
+  if (!Array.isArray(source)) {
     return [];
   }
   const details: ReasoningDetail[] = [];
-  for (const item of rawDetails.slice(0, limit)) {
+  for (const item of source.slice(0, limit)) {
     if (item && typeof item === "object") {
       details.push(item as ReasoningDetail);
     }

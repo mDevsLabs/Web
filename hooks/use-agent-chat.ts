@@ -30,7 +30,6 @@ export type AgentToolMode = "auto" | "all" | "categories";
 
 export type AgentRequestOptions = {
   audioEnabled: boolean;
-  autonomy: AgentAutonomy;
   enabledCategories: ToolCategory[] | null;
   forceWeb: boolean;
   imageEnabled: boolean;
@@ -88,7 +87,6 @@ type AgentMessagePart = NonNullable<ChatMessage["parts"]>[number];
 
 const EMPTY_OPTIONS: AgentRequestOptions = {
   audioEnabled: false,
-  autonomy: "standard",
   enabledCategories: null,
   forceWeb: false,
   imageEnabled: false,
@@ -288,7 +286,6 @@ export function useAgentChat({
         return {
           body: {
             audioEnabled: options.audioEnabled || undefined,
-            autonomy: options.autonomy,
             enabledCategories: options.enabledCategories,
             forceWeb: options.forceWeb || undefined,
             id: request.id,

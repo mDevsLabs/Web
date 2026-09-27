@@ -36,6 +36,7 @@ import {
 } from "lucide-react";
 import { type ReactNode, useCallback, useEffect, useRef } from "react";
 import { toast } from "sonner";
+import { AGENT_EXCLUDED_SLASH_ACTIONS } from "@/lib/chat/slash-command-outcomes";
 import type { CustomCommand } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
 
@@ -54,7 +55,6 @@ export type SlashCommandAction =
   | "library"
   | "projects"
   | "planning"
-  | "notes"
   | "search"
   | "home"
   | "tasks"
@@ -248,13 +248,6 @@ export const slashCommands: SlashCommand[] = [
     name: "planning",
   },
   {
-    action: "notes",
-    aliases: ["notes", "mes-notes", "fichiers"],
-    description: "Accéder à vos documents et stockage (/library)",
-    icon: <NotebookIcon className="size-3.5" />,
-    name: "notes",
-  },
-  {
     action: "home",
     aliases: ["accueil", "racine"],
     description: "Revenir à l'accueil et démarrer une nouvelle session",
@@ -425,30 +418,10 @@ export type SlashCommandContext = {
   mode?: "agent" | "chat";
 };
 
-// Commandes conservées en mode Agent : navigation, export, thème et les
-// toggles remappés (image / audio / web / mémoire / tâches). Les autres
-// n'ont pas d'équivalent côté Agent et sont masquées plutôt que grisées.
-const AGENT_EXCLUDED_SLASH_ACTIONS = new Set([
-  "agents",
-  "clear",
-  "delete",
-  "ghost",
-  "model",
-  "purge",
-  "quiz",
-  "rename",
-  "tool-calc",
-  "tool-chart",
-  "tool-code",
-  "tool-doc",
-  "tool-note",
-  "tool-qr",
-  "tool-weather",
-  "tool-suggest",
-  "tool-summary",
-  "tool-time",
-  "tools-clear",
-]);
+// Commandes exclues en mode Agent : ce sont celles SANS issue implémentée
+// (lib/chat/slash-command-outcomes.ts). La liste est le complément de ce qui
+// fonctionne, donc une commande ajoutée sans implémentation disparaît du menu
+// Agent au lieu d'y apparaître puis d'échouer sur un toast.
 
 export function customCommandsToSlashCommands(
   commands: CustomCommand[]

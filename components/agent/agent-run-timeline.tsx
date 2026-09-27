@@ -47,6 +47,7 @@ import type {
   AgentToolActivity,
   ToolCategory,
 } from "@/lib/agent/types";
+import { REASONING_LEVEL_LABELS } from "@/lib/ai/registry/reasoning";
 import { apiEndpoints } from "@/lib/client/api-endpoints";
 import { cn } from "@/lib/utils";
 
@@ -200,7 +201,24 @@ function RunSummary({ run }: { run: AgentRunEvent }) {
       {run.model ? (
         <span className="max-w-full break-all">Modèle : {run.model}</span>
       ) : null}
-      <span>Réflexion : {run.reasoningLevel}</span>
+      {/*
+        Le libellé vient du libellé lisible, pas de la valeur brute : « high »
+        dans une interface française n'explique rien. `effective` porte le
+        niveau réellement transmis quand il diffère de la préférence.
+      */}
+      <span>
+        Réflexion :{" "}
+        {REASONING_LEVEL_LABELS[
+          run.effectiveReasoningLevel ?? run.reasoningLevel
+        ] ?? run.reasoningLevel}
+        {run.effectiveReasoningLevel &&
+        run.effectiveReasoningLevel !== run.reasoningLevel ? (
+          <span className="text-muted-foreground">
+            {" "}
+            (recálée sur ce modèle)
+          </span>
+        ) : null}
+      </span>
       <span className="inline-flex items-center gap-1">
         <TimerIcon className="size-3" />
         {run.stepCount ?? 0} étapes · {run.toolCallCount ?? 0} actions
@@ -216,6 +234,14 @@ function RunSummary({ run }: { run: AgentRunEvent }) {
           ~{formatTokens(run.totalTokens)} tokens
           {run.inputTokens !== undefined && run.outputTokens !== undefined
             ? ` (${formatTokens(run.inputTokens)} → ${formatTokens(run.outputTokens)})`
+            : ""}
+          {/*
+            La réflexion est déjà comprise dans le total ci-dessus : c'est un
+            sous-ensemble des tokens de sortie. L'annoncer séparément sert à
+            expliquer la facture, pas à l'augmenter.
+          */}
+          {run.reasoningTokens !== undefined && run.reasoningTokens > 0
+            ? ` · ${formatTokens(run.reasoningTokens)} de réflexion`
             : ""}
         </span>
       ) : null}

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { AGENT_MODES } from "@/lib/agent/channel";
 import { getAgentFlags } from "@/lib/agent/flags";
 import {
   loadAgentSettings,
@@ -8,18 +9,29 @@ import {
 import { AGENT_TOOL_CATALOG } from "@/lib/agent/tools/catalog";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { getAgentModelsForTier } from "@/lib/ai/registry";
+import { REASONING_LEVELS } from "@/lib/ai/registry/reasoning";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
-import { normalizeTier } from "@/lib/auth/plan";
+import { isPaidTier, normalizeTier } from "@/lib/auth/plan";
 import { requireUser, unauthorizedResponse } from "@/lib/auth/require-user";
 import { getPersistedTier } from "@/lib/db/users";
 import { getProjectAccess } from "@/lib/projects/access";
 
 const patchSchema = z.object({
-  autonomy: z.enum(["careful", "standard", "high"]).optional(),
+  // `autonomy` a disparu du contrat : elle n'est plus un réglage. Le serveur
+  // l'impose à « standard », un corps qui l'enverrait serait rejeté par zod
+  // plutôt que d'être silencieusement accepté puis ignoré.
+  //
+  // Préférence de mode d'écran. Elle ne décide que de l'affichage au premier
+  // écran ; l'accès réel reste filtré par resolveChatExperience, et le PATCH
+  // refuse "agent" aux comptes qui n'y ont pas droit (garde plus bas).
+  defaultMode: z.enum(AGENT_MODES).optional(),
   defaultModel: z.string().min(1).max(200).nullable().optional(),
   defaultProjectId: z.string().uuid().nullable().optional(),
   enabledCategories: z.array(z.string().max(40)).max(12).nullable().optional(),
-  reasoningLevel: z.enum(["low", "medium", "high"]).optional(),
+  // Les sept niveaux du fournisseur, pas un triplet : restreindre l'API alors
+  // que la colonne et le registre en acceptent sept rendrait « max » impossible
+  // à enregistrer depuis l'interface.
+  reasoningLevel: z.enum(REASONING_LEVELS).optional(),
   toolPolicies: z
     .record(z.string().max(80), z.enum(["auto", "ask", "off"]))
     .optional(),
@@ -55,6 +67,10 @@ export async function GET() {
       agentModels: getAgentModelsForTier(models, tier),
       flags,
       settings,
+      // Le tier est renvoyé pour que l'interface masque ce que le compte ne peut
+      // pas utiliser (préférence « Agent » comme écran par défaut), au lieu
+      // d'afficher un réglage que le serveur refuserait.
+      tier,
       tools: Object.values(AGENT_TOOL_CATALOG).map((tool) => ({
         category: tool.category,
         defaultPermission: tool.permissions.default,
@@ -128,9 +144,25 @@ export async function PATCH(request: Request) {
         message: "La liste des catégories Agent est invalide.",
       });
     }
+    // « Agent » comme écran par défaut n'a de sens que pour un compte qui peut
+    // réellement l'utiliser. Refuser ici plutôt que dans l'interface : le
+    // client n'est pas une frontière, et resolveChatExperience retomberait de
+    // toute façon sur Chat — la préférence resterait muette et déroutante.
+    if (patch.defaultMode === "agent") {
+      if (!getAgentFlags()["agent.enabled"]) {
+        return errorResponse("access_denied", {
+          message: "Le mode Agent n'est pas disponible sur ce compte.",
+        });
+      }
+      if (!isPaidTier(tier)) {
+        return errorResponse("plan_required", {
+          message: `Le mode Agent nécessite un forfait payant. Votre forfait actuel (${tier}) autorise uniquement le mode Chat.`,
+        });
+      }
+    }
     const settings = await saveAgentSettings({
       patch: {
-        autonomy: patch.autonomy,
+        defaultMode: patch.defaultMode,
         defaultModel: patch.defaultModel,
         defaultProjectId: patch.defaultProjectId,
         enabledCategories:

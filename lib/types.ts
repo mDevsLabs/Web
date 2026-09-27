@@ -162,7 +162,9 @@ export type CustomUIDataTypes = {
   proposal: DocumentProposalPayload;
   "chat-title": string;
   "waiting-status": WaitingStatusData;
-  usage: { tokens: number; total: number };
+  // La réflexion est un sous-ensemble des tokens de sortie : elle est déjà
+  // comprise dans `total`, et n'est envoyée que pour l'affichage.
+  usage: { reasoningTokens?: number; tokens: number; total: number };
   podcastProgress: { completed: number; id: string; total: number };
 };
 

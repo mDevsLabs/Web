@@ -1,6 +1,7 @@
 import type { Dispatch, SetStateAction } from "react";
 import { toast } from "sonner";
 import type { SlashCommand } from "@/components/chat/slash-commands";
+import { downloadChatAsMarkdown } from "@/lib/chat/export-markdown";
 import { executeCustomCommand } from "@/lib/commands/exec";
 import type { Agent, Skill } from "@/lib/db/schema";
 
@@ -224,10 +225,6 @@ export async function runSlashCommand(
       router.push("/planning");
       break;
     }
-    case "notes": {
-      router.push("/library");
-      break;
-    }
     case "home": {
       router.push("/");
       break;
@@ -274,26 +271,7 @@ export async function runSlashCommand(
       break;
     }
     case "export": {
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chats/${chatId}/export?format=md`
-        );
-        if (!res.ok) {
-          throw new Error("Export échoué");
-        }
-        const blob = await res.blob();
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = `chat-${chatId}.md`;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        URL.revokeObjectURL(url);
-        toast.success("Export Markdown téléchargé");
-      } catch (e: any) {
-        toast.error(e.message || "Erreur export");
-      }
+      await downloadChatAsMarkdown(chatId);
       break;
     }
     case "theme":

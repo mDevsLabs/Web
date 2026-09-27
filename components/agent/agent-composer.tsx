@@ -9,15 +9,17 @@ import {
   PaperclipIcon,
   XIcon,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
 import {
   AgentProjectPicker,
-  AgentReasoningPicker,
   AgentToolsPicker,
 } from "@/components/agent/composer/agent-option-pickers";
 import { AgentPlusMenu } from "@/components/agent/composer/agent-plus-menu";
+import { ReasoningEffortPicker } from "@/components/agent/reasoning-effort-picker";
 import { CloudFilePickerDialog } from "@/components/chat/cloud-file-picker-dialog";
 import {
   ComposerActionsRow,
@@ -57,7 +59,9 @@ import type { ToolCategory } from "@/lib/agent/types";
 import type { AgentComposerActionId } from "@/lib/agent/ui/composer-actions";
 import { getAgentComposerAction } from "@/lib/agent/ui/composer-actions";
 import type { ModelCapabilities } from "@/lib/ai/registry/capabilities";
-import type { ReasoningLevel } from "@/lib/ai/registry/reasoning";
+import { resolveReasoningEffort } from "@/lib/ai/registry/capabilities";
+import { resolveSlashCommandOutcome } from "@/lib/chat/slash-command-outcomes";
+import { pagePath } from "@/lib/client/api-endpoints";
 import type { Agent, McpServer, Skill } from "@/lib/db/schema";
 import type { PluginCatalogEntry } from "@/lib/plugins/types";
 import type { Attachment } from "@/lib/types";
@@ -71,6 +75,13 @@ export type AgentComposerSubmit = {
   attachments: Attachment[];
   options: AgentRequestOptions;
   text: string;
+};
+
+export type AgentComposerSlashSideEffect = {
+  /** Export de la conversation courante en Markdown. Délégué à l'écran. */
+  exportMarkdown: () => void;
+  /** Retour à l'accueil avec une conversation vierge. */
+  resetConversation: () => void;
 };
 
 // Chips des options one-shot actives : rappel visuel avec retrait possible,
@@ -96,6 +107,7 @@ export function AgentComposer({
   onModelChange,
   onOptionsChange,
   onProjectChange,
+  onSlashSideEffect,
   onStop,
   onSubmit,
   options,
@@ -112,6 +124,7 @@ export function AgentComposer({
   onModelChange: (modelId: string) => void;
   onOptionsChange: (patch: Partial<AgentRequestOptions>) => void;
   onProjectChange: (project: ProjectLite | null) => void;
+  onSlashSideEffect: AgentComposerSlashSideEffect;
   onStop: () => void;
   onSubmit: (payload: AgentComposerSubmit) => void;
   options: AgentRequestOptions;
@@ -129,6 +142,8 @@ export function AgentComposer({
   const [isCloudPickerOpen, setIsCloudPickerOpen] = useState(false);
   const [skillParamsDialogOpen, setSkillParamsDialogOpen] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const router = useRouter();
+  const { resolvedTheme, setTheme } = useTheme();
 
   const supportsFiles =
     capabilities.file || capabilities.image || capabilities.vision;
@@ -154,6 +169,16 @@ export function AgentComposer({
   const showReasoning = Boolean(
     flags["agent.reasoning"] && capabilities.reasoning
   );
+
+  // Le curseur doit se poser là où la requête atterrira réellement. Si la
+  // préférence n'est pas dans les niveaux du modèle — mAI-2 ne connaît que
+  // max/high/low — le serveur la recale : afficher la préférence brute
+  // mentirait sur l'effort qui partira.
+  const reasoning = resolveReasoningEffort({
+    capabilities,
+    preferred: options.reasoningLevel,
+  });
+  const reasoningLevels = showReasoning ? capabilities.reasoningLevels : [];
 
   // Données des menus @ : projets, skills, agents, plugins et serveurs MCP
   // de l'utilisateur. Les effects de session sont retransmis dans la requête
@@ -302,25 +327,35 @@ export function AgentComposer({
     [onOptionsChange, onProjectChange, options.mcpServerIds]
   );
 
+  // Deux familles cohabitent ici.
+  //
+  // 1. Les bascules propres à l'Agent (image, audio, web, mémoire, tâches) :
+  //    elles modifient les options de la prochaine tâche.
+  // 2. Les intentions partagées avec le Chat (navigation, accueil, thème,
+  //    recherche, modèle, export) : elles sont décidées dans
+  //    lib/chat/slash-command-outcomes, ce qui garantit que le menu n'expose
+  //    que ce qui est réellement traité. C'est la correction du défaut
+  //    d'origine, où le menu proposait vingt commandes qui finissaient toutes
+  //    sur « pas pris en charge dans le mode Agent ».
   const handleSlashSelection = useCallback(
     (command: SlashCommand) => {
       switch (command.action) {
         case "tool-audio":
           onOptionsChange({ audioEnabled: true });
           toast.success("Création audio activée pour la prochaine tâche.");
-          break;
+          return;
         case "tool-image":
           onOptionsChange({ imageEnabled: true });
           toast.success("Création d'image activée pour la prochaine tâche.");
-          break;
+          return;
         case "tool-memory":
           onOptionsChange({ memoryEnabled: true });
           toast.success("Mémoire activée pour la prochaine tâche.");
-          break;
+          return;
         case "tool-web":
           onOptionsChange({ forceWeb: true });
           toast.success("Recherche Web activée pour la prochaine tâche.");
-          break;
+          return;
         case "tasks":
           onOptionsChange({ tasksEnabled: !options.tasksEnabled });
           toast.success(
@@ -328,15 +363,54 @@ export function AgentComposer({
               ? "Option Tâches désactivée."
               : "Agent concevra d'abord un plan de tâches."
           );
-          break;
+          return;
         default:
+          break;
+      }
+
+      const outcome = resolveSlashCommandOutcome({ action: command.action });
+      switch (outcome.kind) {
+        case "navigate":
+          router.push(pagePath(outcome.href));
+          return;
+        case "reset":
+          onSlashSideEffect.resetConversation();
+          return;
+        case "toggle_theme":
+          setTheme(resolvedTheme === "dark" ? "light" : "dark");
+          return;
+        case "open_search":
+          window.dispatchEvent(new CustomEvent("open-search-dialog"));
+          return;
+        case "open_model_selector":
+          document
+            .querySelector<HTMLButtonElement>("[data-testid='model-selector']")
+            ?.click();
+          return;
+        case "export_markdown":
+          onSlashSideEffect.exportMarkdown();
+          return;
+        case "notice":
+          toast.info(outcome.message);
+          return;
+        default:
+          // Filet de sécurité : le menu filtre déjà les actions sans issue
+          // (AGENT_EXCLUDED_SLASH_ACTIONS). Si on arrive ici, c'est qu'une
+          // action a été ajoutée à l'union sans traitement — le test
+          // slash-command-agent le fait échouer.
           toast.info(
             `« /${command.name} » n'est pas pris en charge dans le mode Agent.`
           );
-          break;
       }
     },
-    [onOptionsChange, options.tasksEnabled]
+    [
+      onOptionsChange,
+      onSlashSideEffect,
+      options.tasksEnabled,
+      resolvedTheme,
+      router,
+      setTheme,
+    ]
   );
 
   // Triggers @ et / : la logique (détection, navigation clavier, insertion de
@@ -669,6 +743,16 @@ export function AgentComposer({
               placeholder="Modèle d'IA"
               selectedModelId={modelId}
             />
+            <ReasoningEffortPicker
+              level={reasoning.effort ?? options.reasoningLevel}
+              levels={reasoningLevels}
+              mandatory={capabilities.reasoningMandatory}
+              onLevelChange={(level) =>
+                onOptionsChange({ reasoningLevel: level })
+              }
+              onOpenChange={pickerOpenChange("reasoning")}
+              open={openPicker === "reasoning"}
+            />
             <VoiceRecorderButton input={input} setInput={setInput} />
             <ComposerSendButton
               canSend={canSend}
@@ -761,17 +845,6 @@ export function AgentComposer({
           onOpenChange={pickerOpenChange("tools")}
           open={openPicker === "tools"}
           toolMode={options.toolMode}
-        />
-        <AgentReasoningPicker
-          autonomy={options.autonomy}
-          onAutonomyChange={(autonomy) => onOptionsChange({ autonomy })}
-          onOpenChange={pickerOpenChange("reasoning")}
-          onReasoningChange={(reasoningLevel: ReasoningLevel) =>
-            onOptionsChange({ reasoningLevel })
-          }
-          open={openPicker === "reasoning"}
-          reasoningLevel={options.reasoningLevel}
-          showReasoning={showReasoning}
         />
       </div>
 

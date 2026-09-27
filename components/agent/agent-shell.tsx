@@ -3,6 +3,7 @@
 import { AlertTriangleIcon } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { toast } from "sonner";
 import useSWR from "swr";
 import type { AgentComposerSubmit } from "@/components/agent/agent-composer";
 import { AgentComposer } from "@/components/agent/agent-composer";
@@ -36,7 +37,8 @@ import type {
   AgentToolActivity,
   ToolExecutionRecord,
 } from "@/lib/agent/types";
-import { apiEndpoints } from "@/lib/client/api-endpoints";
+import { downloadChatAsMarkdown } from "@/lib/chat/export-markdown";
+import { apiEndpoints, pagePath } from "@/lib/client/api-endpoints";
 import { fetcher } from "@/lib/utils";
 
 // Enveloppe de l'expérience Agent : le provider d'état de flux est monté ici,
@@ -90,6 +92,7 @@ function AgentShellInner() {
   const {
     chatId,
     currentModelId,
+    resetChat,
     resetEpoch,
     setCurrentModelId,
     visibilityType,
@@ -135,7 +138,6 @@ function AgentShellInner() {
   const [project, setProject] = useState<ProjectLite | null>(null);
   const [options, setOptions] = useState<AgentRequestOptions>({
     audioEnabled: false,
-    autonomy: "standard",
     enabledCategories: null,
     forceWeb: false,
     imageEnabled: false,
@@ -261,6 +263,7 @@ function AgentShellInner() {
         model: lastRun.model,
         outputTokens: runUsage.outputTokens,
         reasoningLevel: lastRun.reasoningLevel,
+        reasoningTokens: runUsage.reasoningTokens,
         runId: lastRun.id,
         status: lastRun.status,
         stepCount: lastRun.stepCount,
@@ -365,6 +368,27 @@ function AgentShellInner() {
       </div>
     ) : null;
 
+  // Effets de bord que le composer ne peut pas faire lui-même : il ne connaît
+  // ni l'export de conversation ni le reset global. Le reset est celui de
+  // « Nouvelle discussion » — le même qui vide la timeline via resetEpoch, donc
+  // pas de second chemin à maintenir.
+  const slashSideEffects = useMemo(
+    () => ({
+      exportMarkdown: () => {
+        if (isNewChat) {
+          toast.info("Rien à exporter : la conversation est vide.");
+          return;
+        }
+        downloadChatAsMarkdown(chatId);
+      },
+      resetConversation: () => {
+        resetChat();
+        router.push(pagePath("/"));
+      },
+    }),
+    [chatId, isNewChat, resetChat, router]
+  );
+
   const composer = (
     <>
       {modelCompatibilityWarning}
@@ -399,6 +423,7 @@ function AgentShellInner() {
               });
           }
         }}
+        onSlashSideEffect={slashSideEffects}
         onStop={stopRun}
         onSubmit={handleSubmit}
         options={options}
@@ -547,6 +572,7 @@ function AgentShellInner() {
                   setProject(next);
                   handleOptionsChange({ projectId: next?.id ?? null });
                 }}
+                onSlashSideEffect={slashSideEffects}
                 onStop={stopRun}
                 onSubmit={handleSubmit}
                 options={options}

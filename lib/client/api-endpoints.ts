@@ -9,8 +9,21 @@ export function apiUrl(path: string): string {
   return `${BASE_PATH}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
+/**
+ * Route de page, préfixée comme les endpoints.
+ *
+ * Les `router.push("/…")` en dur sortent de l'application quand un base path
+ * est actif (mode démo) : le préfixe doit passer par ici, comme pour les routes
+ * API.
+ */
+export function pagePath(path: string): string {
+  return apiUrl(path);
+}
+
 export const apiEndpoints = {
   agentFlags: () => apiUrl("/api/agent/flags"),
+  /** Préférence d'écran d'accueil (Chat | Agent) — route légère, sans catalogue. */
+  agentMode: () => apiUrl("/api/agent/mode"),
   agentModels: () => apiUrl("/api/models"),
   agentRunById: (runId: string) => apiUrl(`/api/agent/runs/${runId}`),
   agentRunSuggestedAction: (runId: string) =>
@@ -25,7 +38,7 @@ export const apiEndpoints = {
   chatExport: (chatId: string, format: "html" | "md" = "md") =>
     apiUrl(`/api/chats/${chatId}/export?format=${format}`),
   /** Navigation SPA vers une conversation (history.pushState). */
-  chatPath: (chatId: string) => `${BASE_PATH}/chat/${chatId}`,
+  chatPath: (chatId: string) => pagePath(`/chat/${chatId}`),
   chatStream: (chatId: string) => apiUrl(`/api/chat/${chatId}/stream`),
 
   document: (documentId: string) => apiUrl(`/api/document?id=${documentId}`),

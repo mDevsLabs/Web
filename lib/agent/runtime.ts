@@ -57,6 +57,7 @@ import type {
   ReasoningLevel,
   RegisteredAgentTool,
 } from "@/lib/agent/types";
+import type { ReasoningDetailsSink } from "@/lib/ai/reasoning-details";
 import { resolveReasoningProviderOptions } from "@/lib/ai/registry/reasoning";
 import {
   getStreamContext,
@@ -105,6 +106,13 @@ export type AgentStreamParams = {
   // n'envoie rien et le fournisseur applique son propre défaut. À ne pas
   // confondre avec `reasoningLevel`, qui est l'intention enregistrée.
   reasoningEffort?: ReasoningLevel | null;
+  /**
+   * Collecteur des blocs `reasoning_details`, branché sur le flux par
+   * lib/ai/providers.ts. Transmis par l'appelant plutôt que créé ici : un run
+   * Agent émet plusieurs appels de génération et le détail doit être celui de
+   * l'appel qui vient de finir, pas celui d'un module partagé.
+   */
+  reasoningSink?: ReasoningDetailsSink;
   reasoningLevel: ReasoningLevel;
   revision?: number;
   runId: string;
@@ -198,6 +206,7 @@ export function createAgentStream(params: AgentStreamParams) {
       let usageTotals: {
         inputTokens?: number;
         outputTokens?: number;
+        reasoningTokens?: number;
         totalTokens?: number;
       } = {};
       // Réorientations appliquées aux points sûrs : réinjectées au modèle via
@@ -253,12 +262,15 @@ export function createAgentStream(params: AgentStreamParams) {
           error?: string;
           inputTokens?: number;
           outputTokens?: number;
+          reasoningTokens?: number;
           stepCount?: number;
           toolCallCount?: number;
           totalTokens?: number;
         } = {}
       ) => {
         emitAgentRun(writer, {
+          // Le niveau transmis, et la préférence qu'il peut différer de.
+          effectiveReasoningLevel: params.reasoningEffort ?? undefined,
           model: params.modelId,
           reasoningLevel: params.reasoningLevel,
           runId: params.runId,
@@ -276,6 +288,9 @@ export function createAgentStream(params: AgentStreamParams) {
           ...(extra.outputTokens === undefined
             ? {}
             : { outputTokens: extra.outputTokens }),
+          ...(extra.reasoningTokens === undefined
+            ? {}
+            : { reasoningTokens: extra.reasoningTokens }),
           ...(extra.totalTokens === undefined
             ? {}
             : { totalTokens: extra.totalTokens }),
@@ -420,7 +435,11 @@ export function createAgentStream(params: AgentStreamParams) {
           });
           if (totals.totalTokens > 0) {
             writer.write({
-              data: { tokens: totals.totalTokens, total: totals.totalTokens },
+              data: {
+                reasoningTokens: totals.reasoningTokens,
+                tokens: totals.totalTokens,
+                total: totals.totalTokens,
+              },
               transient: true,
               type: "data-usage",
             });
@@ -428,6 +447,7 @@ export function createAgentStream(params: AgentStreamParams) {
           usageTotals = {
             inputTokens: totals.inputTokens,
             outputTokens: totals.outputTokens,
+            reasoningTokens: totals.reasoningTokens,
             totalTokens: totals.totalTokens,
           };
           await setAgentRunUsage({
@@ -437,6 +457,10 @@ export function createAgentStream(params: AgentStreamParams) {
               durationMs: Date.now() - params.startedAt,
               inputTokens: totals.inputTokens,
               outputTokens: totals.outputTokens,
+              // Détail brut renvoyé par le fournisseur : le provider AI SDK
+              // l'ignore, il est donc capté par le tee SSE (providers.ts).
+              reasoningDetails: params.reasoningSink?.details ?? [],
+              reasoningTokens: totals.reasoningTokens,
               totalTokens: totals.totalTokens,
             },
           }).catch(() => {});

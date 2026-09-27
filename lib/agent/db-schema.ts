@@ -1,7 +1,7 @@
 import type { ScheduleRule } from "@/lib/agent/contracts";
 import type { DurationCheckpoint } from "@/lib/agent/limits";
 import type { AgentRunStatus } from "@/lib/agent/types";
-import type { NormalizedUsage } from "@/lib/agent/usage";
+import type { NormalizedUsage, ReasoningDetail } from "@/lib/agent/usage";
 import type { ReasoningLevel } from "@/lib/ai/registry/reasoning";
 
 // Définitions de schéma des fondations Agent (tables et colonnes ajoutées par
@@ -157,6 +157,10 @@ export type AgentRunUsageNormalized = AgentRunUsageShape & NormalizedUsage;
 
 type AgentRunUsageShape = {
   durationMs?: number;
+  // Détail de raisonnement renvoyé par le fournisseur. Conservé quand il est
+  // présent : sans lui, seul le compteur de tokens resterait et l'interface ne
+  // pourrait pas expliquer d'où vient un coût.
+  reasoningDetails?: ReasoningDetail[];
 };
 
 // ToolExecution : chaque tentative est une ligne, regroupée par step.

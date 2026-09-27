@@ -27,11 +27,15 @@ export type AgentSettingsPayload = {
   agentModels: AgentModelEntry[];
   flags: AgentFlags;
   settings: AgentSettings;
+  // Forfait persisté : l'interface s'en sert pour masquer ce que le compte ne
+  // peut pas utiliser, plutôt que d'afficher un réglage que le serveur refuse.
+  tier: string;
   tools: AgentSettingsTool[];
 };
 
 export type AgentSettingsPatch = {
   autonomy?: AgentSettings["autonomy"];
+  defaultMode?: AgentSettings["defaultMode"];
   defaultModel?: string | null;
   defaultProjectId?: string | null;
   enabledCategories?: ToolCategory[] | null;

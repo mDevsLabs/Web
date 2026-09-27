@@ -4,7 +4,10 @@ import { motion } from "framer-motion";
 import { AlertTriangleIcon, Settings2Icon } from "lucide-react";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import type { AgentComposerSubmit } from "@/components/agent/agent-composer";
+import type {
+  AgentComposerSlashSideEffect,
+  AgentComposerSubmit,
+} from "@/components/agent/agent-composer";
 import { AgentComposer } from "@/components/agent/agent-composer";
 import { AgentChannelNotice } from "@/components/agent/alpha-badge";
 import type { SharedModel } from "@/components/chat/model-selector-compact";
@@ -29,6 +32,7 @@ export function AgentHome({
   onModelChange,
   onOptionsChange,
   onProjectChange,
+  onSlashSideEffect,
   onStop,
   onSubmit,
   options,
@@ -49,6 +53,7 @@ export function AgentHome({
   onModelChange: (id: string) => void;
   onOptionsChange: (patch: Partial<AgentRequestOptions>) => void;
   onProjectChange: (project: ProjectLite | null) => void;
+  onSlashSideEffect: AgentComposerSlashSideEffect;
   onStop: () => void;
   onSubmit: (payload: AgentComposerSubmit) => void;
   options: AgentRequestOptions;
@@ -99,6 +104,7 @@ export function AgentHome({
           onModelChange={onModelChange}
           onOptionsChange={onOptionsChange}
           onProjectChange={onProjectChange}
+          onSlashSideEffect={onSlashSideEffect}
           onStop={onStop}
           onSubmit={onSubmit}
           options={options}
