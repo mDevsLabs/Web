@@ -216,3 +216,26 @@ describe("Filtrage des tokens sans jointure sur Chat", () => {
     }
   });
 });
+
+describe("Classement des modèles compatible PostgreSQL", () => {
+  beforeEach(() => {
+    captured.calls.length = 0;
+  });
+  it("utilise le même regroupement pour les modèles absents et inconnus", async () => {
+    await getUsageStats({ id: "1" }, { ...allTime, period: "30d" });
+    const ranking = captured.calls.find(
+      ({ sql }) =>
+        sql.includes('"model"') &&
+        sql.includes("coalesce(") &&
+        sql.includes("group by") &&
+        !sql.includes("date_trunc")
+    );
+    expect(ranking).toBeDefined();
+    // Le fallback figure à l'identique dans les deux expressions, jamais sous
+    // deux paramètres distincts ($1 / $7), rejetés par PostgreSQL.
+    expect(
+      ranking?.sql.match(/coalesce\((?:"UsageEvent"\.)?"model", 'inconnu'\)/g)
+    ).toHaveLength(2);
+    expect(ranking?.params).not.toContain("inconnu");
+  });
+});

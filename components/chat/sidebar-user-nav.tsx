@@ -4,6 +4,7 @@ import {
   ChevronUp,
   CloudIcon,
   ExternalLinkIcon,
+  FileTextIcon,
   HelpCircleIcon,
   InfoIcon,
   LineChartIcon,
@@ -203,6 +204,15 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
                     <ExternalLinkIcon className="size-3.5 text-muted-foreground" />
                     <span>Centre d'aide</span>
                   </a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link
+                    className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[13px] cursor-pointer hover:bg-sidebar-accent"
+                    href="/changelog"
+                  >
+                    <FileTextIcon className="size-3.5 text-muted-foreground" />
+                    <span>Notes de version</span>
+                  </Link>
                 </DropdownMenuItem>
                 {/* Version : information, pas une action. Un DropdownMenuItem
                     cliquable faisait fermer tout le menu (sous-menu compris) sans

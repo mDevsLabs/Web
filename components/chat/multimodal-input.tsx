@@ -142,15 +142,6 @@ function PureMultimodalInput({
     }
   }, [width, isMobileWidth]);
 
-  const { clearCurrentDraft } = useDrafts({
-    chatId,
-    input,
-    isNewChatInput,
-    setAttachments,
-    setInput,
-    textareaRef,
-  });
-
   const [cloudPickerOpen, setCloudPickerOpen] = useState(false);
   const [quizDialogOpen, setQuizDialogOpen] = useState(false);
 
@@ -166,6 +157,7 @@ function PureMultimodalInput({
     clearActiveAgent,
     pendingTools,
     togglePendingTool,
+    setPendingTools,
     clearPendingTools,
     setPendingCommand,
     setSkillParamValues,
@@ -174,6 +166,16 @@ function PureMultimodalInput({
     resetChat,
     clearPendingCommand,
   } = useActiveChat();
+  const { clearCurrentDraft } = useDrafts({
+    chatId,
+    input,
+    isNewChatInput,
+    setAttachments,
+    setInput,
+    setPendingTools,
+    textareaRef,
+  });
+
   const { isFree, raw: tierRaw } = useTier();
   const { projects, isLoading: isProjectsLoading } = useProjects();
 
@@ -813,18 +815,6 @@ function PureMultimodalInput({
         <SkillChip
           activeSkill={activeSkill}
           clearActiveSkill={clearActiveSkill}
-        />
-      ) : null}
-
-      {pendingTools.length > 0 ? (
-        <PendingToolsChips
-          clearPendingTools={clearPendingTools}
-          input={input}
-          pendingTools={pendingTools}
-          setInput={setInput}
-          togglePendingTool={togglePendingTool}
-          userMcpServers={userMcpServers}
-          variant="plain"
         />
       ) : null}
 

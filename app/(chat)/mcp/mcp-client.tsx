@@ -160,9 +160,11 @@ function pickOption<T extends readonly string[]>(
 }
 export default function McpClient({
   embedded = false,
+  initialCreate = false,
   searchQuery = "",
 }: {
   embedded?: boolean;
+  initialCreate?: boolean;
   searchQuery?: string;
 } = {}) {
   const {
@@ -175,7 +177,7 @@ export default function McpClient({
   }>("/api/mcp", fetcher);
   const [activeTab, setActiveTab] = useState<
     "store" | "servers" | "library" | "tutorial" | "logs" | "settings"
-  >("store");
+  >("servers");
   const { data: logs = [], mutate: mutateLogs } = useSWR<McpLog[]>(
     "/api/mcp/logs",
     fetcher,
@@ -214,7 +216,7 @@ export default function McpClient({
   const [installingConnector, setInstallingConnector] = useState<string | null>(
     null
   );
-  const [isServerModalOpen, setIsServerModalOpen] = useState(false);
+  const [isServerModalOpen, setIsServerModalOpen] = useState(initialCreate);
   const [editingServer, setEditingServer] = useState<McpServer | null>(null);
   const [serverToDelete, setSkillToDelete] = useState<McpServer | null>(null);
   const [isInspectingTools, setIsInspectingTools] = useState<McpServer | null>(
@@ -224,7 +226,7 @@ export default function McpClient({
   const [formDescription, setFormDescription] = useState("");
   const [formTransport, setFormTransport] = useState<
     "sse" | "http" | "stdio" | "websocket"
-  >("sse");
+  >("http");
   const [formUrl, setFormUrl] = useState("");
   const [formCommand, setFormCommand] = useState("");
   const [formArgs, setFormArgs] = useState("");
@@ -813,7 +815,7 @@ export default function McpClient({
         className={
           embedded
             ? "hidden"
-            : "sticky top-0 z-20 flex flex-col gap-4 border-b border-border/40 bg-background/95 backdrop-blur-md px-4 py-3 sm:px-6"
+            : "sticky top-0 z-20 flex min-w-0 flex-col gap-4 border-b border-border/40 bg-background/95 backdrop-blur-md px-4 py-3 sm:px-6"
         }
       >
         <div
@@ -821,13 +823,16 @@ export default function McpClient({
         >
           {embedded ? null : (
             <div className="flex items-center gap-3">
-              <PageBackButton fallbackHref="/" label="Retour au chat" />
+              <PageBackButton
+                fallbackHref="/tools?tab=mcp"
+                label="Retour aux serveurs MCP"
+              />
               <div className="flex items-center gap-2.5">
-                <div className="flex size-9 items-center justify-center rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400">
+                <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
                   <CpuIcon className="size-5" />
                 </div>
                 <div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-2">
                     <h1 className="text-lg font-bold tracking-tight sm:text-xl">
                       Model Context Protocol (MCP)
                     </h1>
@@ -848,7 +853,7 @@ export default function McpClient({
           )}
         </div>
         <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
-          <div className="flex items-center rounded-lg border border-border/50 bg-muted/20 p-0.5 text-xs">
+          <div className="flex max-w-full items-center overflow-x-auto rounded-lg border border-border/50 bg-muted/20 p-0.5 text-xs [&>button]:shrink-0">
             <button
               className={cn(
                 "rounded-md px-3 py-1.5 text-xs font-medium transition-colors flex items-center gap-1.5",

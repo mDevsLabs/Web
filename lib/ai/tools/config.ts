@@ -330,16 +330,6 @@ export const TOOL_SYSTEM_HINTS: Record<ToolId, string> = {
     "webSearch (recherche sur le Web en temps réel : actualités, documentation, faits vérifiables — citer les sources retournées)",
 };
 
-// `getUsageStats` est le SEUL outil activé par défaut, et c'est délibéré.
-//
-// Le serveur ne laisse le modèle appeler que les outils explicitement demandés
-// (app/(chat)/api/chat/route.ts) : un outil absent de cette liste n'est pas
-// seulement masqué, il est INJOIGNABLE. Sans cette entrée, le bouton « Analyser
-// avec l'IA » de la page Statistiques produirait un message où le modèle n'a
-// aucun moyen de lire les données qu'on lui demande d'analyser.
-//
-// Le coût est un emplacement d'outil dans chaque tour de parole, contre des
-// métadonnées d'outil qui tiennent en quelques lignes. Les autres outils restent
-// désactivés : les activer tous enverrait un catalogue complet à chaque appel
-// pour rien.
-export const DEFAULT_ENABLED_TOOLS: ToolId[] = ["getUsageStats"];
+// Les outils sont activés uniquement par une action explicite de l'utilisateur.
+// Le bouton d'analyse des statistiques transmet son outil avec le brouillon.
+export const DEFAULT_ENABLED_TOOLS: ToolId[] = [];

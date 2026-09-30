@@ -165,6 +165,9 @@ const nextConfig: NextConfig = {
     },
     incomingRequests: false,
   },
+  outputFileTracingIncludes: {
+    "/changelog": ["./CHANGELOG.md"],
+  },
   poweredByHeader: false,
   reactCompiler: true,
 };

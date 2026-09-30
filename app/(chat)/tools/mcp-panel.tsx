@@ -10,6 +10,7 @@ import {
   Trash2Icon,
   ZapIcon,
 } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { toast } from "sonner";
@@ -175,6 +176,22 @@ export default function McpPanel({
 
   return (
     <div className="flex w-full flex-col gap-8">
+      {actionsAnchor
+        ? createPortal(
+            <div className="flex flex-wrap gap-2">
+              <Button asChild className="h-8 gap-1.5 text-xs" variant="outline">
+                <Link href="/mcp">Mes serveurs MCP</Link>
+              </Button>
+              <Button asChild className="h-8 gap-1.5 text-xs">
+                <Link href="/mcp?create=1">
+                  <PlusIcon className="size-3.5" />
+                  Créer un serveur MCP
+                </Link>
+              </Button>
+            </div>,
+            actionsAnchor
+          )
+        : null}
       {isLoading ? (
         <div className="py-16 text-center text-sm text-muted-foreground">
           Chargement du catalogue…
@@ -187,7 +204,7 @@ export default function McpPanel({
           <h3 className="text-sm font-semibold text-foreground">Connectés</h3>
           <div className="flex flex-wrap items-center gap-3">
             {sortedInstalled.map((template) => (
-              <a
+              <Link
                 className={cn(
                   "flex size-12 items-center justify-center rounded-2xl border border-border/50 bg-card p-2 shadow-sm transition hover:scale-105 cursor-pointer",
                   !template.enabled && "opacity-45"
@@ -200,7 +217,7 @@ export default function McpPanel({
                   className="size-full object-contain dark:invert"
                   manifest={template}
                 />
-              </a>
+              </Link>
             ))}
           </div>
         </section>
@@ -259,7 +276,7 @@ export default function McpPanel({
                   className="group flex items-center gap-3 rounded-2xl border border-transparent p-3 transition-colors hover:border-border/50 hover:bg-muted/30"
                   key={template.id}
                 >
-                  <a
+                  <Link
                     className="flex size-11 shrink-0 items-center justify-center rounded-2xl border border-border/50 bg-card p-1.5 shadow-sm cursor-pointer"
                     href={`/tools/mcp/${template.id}`}
                     title={`${template.name} — voir la fiche détaillée`}
@@ -268,15 +285,18 @@ export default function McpPanel({
                       className="size-full object-contain dark:invert"
                       manifest={template}
                     />
-                  </a>
-                  <div className="flex min-w-0 flex-1 flex-col">
+                  </Link>
+                  <Link
+                    className="flex min-w-0 flex-1 flex-col"
+                    href={`/tools/mcp/${template.id}`}
+                  >
                     <span className="truncate text-sm font-semibold text-foreground">
                       {template.name}
                     </span>
                     <span className="truncate text-xs text-muted-foreground">
                       {template.description}
                     </span>
-                  </div>
+                  </Link>
                   {template.installed ? (
                     <Button
                       className="size-9 shrink-0 rounded-full"
@@ -292,7 +312,7 @@ export default function McpPanel({
                           className={cn(
                             "size-4",
                             template.enabled
-                              ? "text-emerald-500"
+                              ? "text-success"
                               : "text-muted-foreground"
                           )}
                         />
@@ -363,9 +383,9 @@ export default function McpPanel({
 
               {/* Où trouver les tokens */}
               {details.credentials.length > 0 ? (
-                <section className="flex flex-col gap-2 rounded-xl border border-amber-500/30 bg-amber-500/[0.04] p-3">
+                <section className="flex flex-col gap-2 rounded-xl border border-warning/30 bg-warning/5 p-3">
                   <h4 className="flex items-center gap-1.5 text-xs font-semibold text-foreground">
-                    <KeyIcon className="size-3.5 text-amber-500" />
+                    <KeyIcon className="size-3.5 text-warning" />
                     Où trouver les tokens
                   </h4>
                   {details.credentials.map((credential) => (
@@ -373,7 +393,7 @@ export default function McpPanel({
                       <span className="text-xs font-medium text-foreground">
                         {credential.label}
                         {credential.required ? (
-                          <span className="ml-1 text-[10px] font-semibold text-amber-600">
+                          <span className="ml-1 text-[10px] font-semibold text-destructive">
                             requis
                           </span>
                         ) : (
@@ -385,7 +405,7 @@ export default function McpPanel({
                       <p className="text-[11.5px] leading-relaxed text-muted-foreground">
                         {credential.instructions}
                       </p>
-                      <a
+                      <Link
                         className="inline-flex w-fit items-center gap-1 text-[11px] font-medium text-primary hover:underline"
                         href={credential.docsUrl}
                         rel="noopener noreferrer"
@@ -393,7 +413,7 @@ export default function McpPanel({
                       >
                         <ExternalLinkIcon className="size-3" />
                         Ouvrir la page des tokens
-                      </a>
+                      </Link>
                     </div>
                   ))}
                 </section>

@@ -26,6 +26,10 @@ export async function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
+  if (pathname === "/changelog") {
+    return NextResponse.next();
+  }
+
   // Routes publiques autorisées
   const isAuthRoute =
     pathname.startsWith("/login") || pathname.startsWith("/register");

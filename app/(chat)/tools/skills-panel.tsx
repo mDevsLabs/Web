@@ -5,10 +5,10 @@ import {
   CheckIcon,
   Loader2Icon,
   PlusIcon,
-  SettingsIcon,
   Trash2Icon,
   WrenchIcon,
 } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { toast } from "sonner";
@@ -179,14 +179,17 @@ export default function SkillsPanel({
       {/* Boutons portés dans la rangée globale (recherche dans l'en-tête). */}
       {actionsAnchor
         ? createPortal(
-            <Button
-              className="h-8 shrink-0 gap-1.5 text-xs font-medium"
-              onClick={() => window.open("/skills", "_blank")}
-              variant="outline"
-            >
-              <SettingsIcon className="size-3.5" />
-              Avancé
-            </Button>,
+            <div className="flex flex-wrap gap-2">
+              <Button asChild className="h-8 gap-1.5 text-xs" variant="outline">
+                <Link href="/skills">Mes Skills</Link>
+              </Button>
+              <Button asChild className="h-8 gap-1.5 text-xs">
+                <Link href="/skills?create=1">
+                  <PlusIcon className="size-3.5" />
+                  Créer un Skill
+                </Link>
+              </Button>
+            </div>,
             actionsAnchor
           )
         : null}
@@ -295,7 +298,7 @@ export default function SkillsPanel({
                       {isBusy ? (
                         <Loader2Icon className="size-4 animate-spin" />
                       ) : (
-                        <CheckIcon className="size-4 text-emerald-500" />
+                        <CheckIcon className="size-4 text-success" />
                       )}
                     </Button>
                   ) : (

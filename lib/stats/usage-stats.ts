@@ -210,9 +210,9 @@ async function aggregateModels(
     query.mode ? eq(usageEvent.chatMode, query.mode) : undefined,
     query.projectId ? eq(usageEvent.chatProjectId, query.projectId) : undefined,
   ];
-  const model = sql<
-    string | null
-  >`coalesce(${usageEvent.model}, ${UNKNOWN_MODEL})`;
+  // Une sentinelle SQL littérale évite deux paramètres distincts dans le
+  // SELECT et le GROUP BY, tout en fusionnant les modèles absents et inconnus.
+  const model = sql<string>`coalesce(${usageEvent.model}, 'inconnu')`;
   const tokens = sql<string>`coalesce(sum(${usageEvent.totalTokens}), 0)::text`;
 
   const rows = await database

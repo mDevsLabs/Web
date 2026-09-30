@@ -29,7 +29,7 @@ const querySchema = z.object({
   mode: z.string().optional(),
   model: z.string().trim().min(1).max(200).optional(),
   period: z.string().optional(),
-  projectId: z.string().trim().min(1).max(64).optional(),
+  projectId: z.uuid().optional(),
 });
 
 /**

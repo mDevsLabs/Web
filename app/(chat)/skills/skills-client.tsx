@@ -204,9 +204,11 @@ function VersionHistoryList({
 
 export default function SkillsClient({
   embedded = false,
+  initialCreate = false,
   searchQuery = "",
 }: {
   embedded?: boolean;
+  initialCreate?: boolean;
   searchQuery?: string;
 } = {}) {
   const _router = useRouter();
@@ -232,7 +234,7 @@ export default function SkillsClient({
   }, [embedded]);
 
   // Modals state
-  const [isEditorOpen, setIsEditorOpen] = useState(false);
+  const [isEditorOpen, setIsEditorOpen] = useState(initialCreate);
   const [editingSkill, setEditingSkill] = useState<Skill | null>(null);
   const [isImportOpen, setIsImportOpen] = useState(false);
   const [importJsonText, setImportJsonText] = useState("");
@@ -642,7 +644,10 @@ export default function SkillsClient({
           >
             {embedded ? null : (
               <div className="flex items-center gap-3">
-                <PageBackButton fallbackHref="/" label="Retour au chat" />
+                <PageBackButton
+                  fallbackHref="/tools?tab=skills"
+                  label="Retour aux Skills"
+                />
                 <div className="flex items-center gap-2.5">
                   <div className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     <WrenchIcon className="size-5" />

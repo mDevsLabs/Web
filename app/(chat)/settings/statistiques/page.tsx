@@ -18,6 +18,7 @@ import {
 } from "@/components/settings/stats-kpi-strip";
 import { StatsShareBar } from "@/components/settings/stats-share-bar";
 import { UsageLineChart } from "@/components/settings/usage-line-chart";
+import { useAgentMode } from "@/hooks/use-agent-mode";
 import { apiEndpoints } from "@/lib/client/api-endpoints";
 import { MAI_PENDING_ATTACHMENT_KEY } from "@/lib/constants";
 import {
@@ -91,10 +92,11 @@ const fetcher = async (url: string): Promise<UsageStats> => {
 
 export default function StatsPage() {
   const router = useRouter();
+  const { setMode } = useAgentMode();
   const [query, setQuery] = useState<StatsQuery>(DEFAULT_STATS_QUERY);
 
   const queryString = useMemo(() => buildStatsQueryString(query), [query]);
-  const { data, error, isLoading } = useSWR<UsageStats>(
+  const { data, error, isLoading, mutate } = useSWR<UsageStats>(
     apiEndpoints.stats(queryString),
     fetcher,
     { keepPreviousData: true }
@@ -131,13 +133,14 @@ export default function StatsPage() {
     try {
       sessionStorage.setItem(
         MAI_PENDING_ATTACHMENT_KEY,
-        JSON.stringify({ prompt })
+        JSON.stringify({ prompt, tools: ["getUsageStats"] })
       );
     } catch {
       // Session sans stockage (navigation privée stricte) : on navigue quand
       // même, l'utilisateur formulera sa question lui-même. Un échec ici ne
       // doit pas rendre un bouton inerte.
     }
+    setMode("chat");
     router.push("/");
   };
 
@@ -192,7 +195,7 @@ export default function StatsPage() {
               ) : (
                 <button
                   className="chip"
-                  onClick={() => router.refresh()}
+                  onClick={() => void mutate()}
                   type="button"
                 >
                   Réessayer
@@ -207,14 +210,16 @@ export default function StatsPage() {
             clignoter les tuiles à zéro avant l'affichage des nouvelles valeurs.
             Le squelette ne sert qu'au tout premier chargement.
           */}
-          <StatsKpiStrip
-            activity={data?.activity ?? null}
-            loading={isLoading && !data}
-            // `keepPreviousData` conserve la réponse précédente pendant un
-            // changement de filtre : les tuiles gardent donc les derniers
-            // chiffres connus au lieu de repasser par zéro.
-            overview={data?.overview ?? EMPTY_OVERVIEW}
-          />
+          {(!error || data) && (
+            <StatsKpiStrip
+              activity={data?.activity ?? null}
+              loading={isLoading && !data}
+              // `keepPreviousData` conserve la réponse précédente pendant un
+              // changement de filtre : les tuiles gardent donc les derniers
+              // chiffres connus au lieu de repasser par zéro.
+              overview={data?.overview ?? EMPTY_OVERVIEW}
+            />
+          )}
           {data && <StatsTotalsRow overview={data.overview} />}
 
           {/*
@@ -228,7 +233,7 @@ export default function StatsPage() {
               <ActivityHeatmap daily={data.daily} from={data.dailyFrom} />
             ) : (
               <p className="py-8 text-center text-sm text-muted-foreground">
-                Chargement de l&apos;activité…
+                {error ? "Activité indisponible." : "Chargement de l’activité…"}
               </p>
             )}
           </section>
@@ -333,7 +338,8 @@ export default function StatsPage() {
 
           <div className="flex flex-col items-start gap-2">
             <button
-              className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-4 py-2.5 text-sm font-medium transition-colors hover:bg-muted"
+              className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-4 py-2.5 text-sm font-medium transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50"
+              disabled={!data || Boolean(error)}
               onClick={analyseWithAi}
               type="button"
             >
