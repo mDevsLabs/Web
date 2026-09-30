@@ -125,7 +125,7 @@ export const ONBOARDING_STEPS: OnboardingStep[] = [
   {
     bullets: PLAN_SUMMARY_BULLETS,
     content:
-      "Envie de plus de tokens chat, de synthèse vocale ou d'images ? Quatre forfaits sont disponibles. Chaque forfait débloque aussi les Agents, Skills et MCP connecteurs à partir de Plus.",
+      "Envie de plus de tokens chat, de synthèse vocale ou d'images ? Quatre forfaits sont disponibles. Chaque forfait débloque aussi les Bots, Skills et MCP connecteurs à partir de Plus.",
     icon: BadgeCheckIcon,
     id: "plans",
     route: "/settings",

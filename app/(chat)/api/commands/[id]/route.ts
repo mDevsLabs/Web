@@ -5,6 +5,7 @@ import {
   zodIssuesMessage,
 } from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
+import { isReservedSlashCommandTrigger } from "@/lib/chat/slash-command-catalog";
 import { commandPayloadSchema } from "@/lib/commands/types";
 import { deleteCustomCommand, updateCustomCommand } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
@@ -43,6 +44,13 @@ export async function PATCH(
 
   try {
     const parsed = updateCommandSchema.parse(await request.json());
+    // Même garde que POST : renommer une commande en « /image » la ferait
+    // passer devant la commande système au prochain chargement du menu.
+    if (parsed.trigger && isReservedSlashCommandTrigger(parsed.trigger)) {
+      return errorResponse("conflict", {
+        message: `« /${parsed.trigger} » est une commande système. Choisissez un autre déclencheur.`,
+      });
+    }
     const updated = await updateCustomCommand({
       data: parsed,
       id,

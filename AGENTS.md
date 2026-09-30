@@ -2,9 +2,9 @@
 
 # This is NOT the Next.js you know
 
-This version has breaking changes - APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
 
-This block is written and re-added by `next dev` - verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
 
@@ -242,6 +242,16 @@ pnpm db:studio      # drizzle-kit studio
 Des pièges déjà payés, à ne pas réintroduire :
 
 - **`loader: null` de Next 16** : tout handler de page doit être `async`.
+- **Un cookie de session n'est pas une session.** `getMaiUser`
+  (`lib/auth/session.ts`) est l'unique juge : la signature HS256 locale est un
+  chemin **rapide**, pas une autorité — un refus local ne clôt rien, l'API qui a
+  émis le jeton tranche, et elle est la seule source d'identité dès lors que le
+  payload n'est pas vérifié. Rendre le refus local définitif enferme
+  l'utilisateur dans l'application (cookie présent → middleware satisfait,
+  `getMaiUser` → `null` → ni historique, ni API, ni menu utilisateur, ni
+  `/login`). C'est exactement ce qu'un `MAI_JWT_SECRET` local divergent produit
+  en dev. Le middleware ne lit que l'`exp` (`lib/auth/token-liveness.ts`), et
+  `components/chat/session-recovery.tsx` garantit une sortie visible.
 - `params` et `searchParams` sont des **Promises** dans les routes :
   `{ params }: { params: Promise<{ id: string }> }` puis `await params`.
 - Le champ `users.tier` est un `varchar(50)` **libre**, absent de

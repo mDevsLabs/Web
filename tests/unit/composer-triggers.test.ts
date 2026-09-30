@@ -60,6 +60,47 @@ describe("Déclencheurs du composer partagé", () => {
     expect(items.some((item) => item.id === "cmd-off")).toBe(false);
   });
 
+  it("ne casse pas quand un cache SWR contient autre chose qu'un tableau", () => {
+    // Enveloppe d'erreur 401 renvoyée par une route BFF : ni `undefined`, donc
+    // le `= []` par défaut de SWR ne rattrape rien. C'était ce cas qui faisait
+    // lever `filteredSkills.map is not a function` à l'ouverture du menu @.
+    const apiErrorPayload = {
+      code: "unauthorized",
+      message: "Session expirée",
+      status: 401,
+    };
+
+    const items = getFilteredMentionItems(
+      "",
+      apiErrorPayload,
+      apiErrorPayload,
+      null,
+      undefined,
+      apiErrorPayload,
+      apiErrorPayload
+    );
+
+    // Le menu reste utilisable : la mémoire et les trois entrées système
+    // subsistent, toutes les autres sections sont vides.
+    expect(items).toHaveLength(4);
+    expect(items.filter((item) => item.kind === "memory")).toHaveLength(1);
+    expect(items.filter((item) => item.kind === "system")).toHaveLength(3);
+  });
+
+  it("filtre toujours sur une liste valide même avec une requête nonempty", () => {
+    const items = getFilteredMentionItems(
+      "synth",
+      [],
+      { code: "internal_error", message: "oups", status: 500 },
+      [],
+      [],
+      [],
+      []
+    );
+
+    expect(items).toHaveLength(0);
+  });
+
   it("utilise le même filtrage de mode pour les commandes slash Agent", () => {
     const agentCommands = getFilteredSlashCommands(
       "",

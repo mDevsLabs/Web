@@ -141,9 +141,22 @@ export function createChatStream(params: ChatStreamParams) {
             markModelActive();
           }
         },
-        onFinish: async ({ usage }) => {
+        onFinish: async ({ text, usage }) => {
           await handleTokenAccounting({
+            chatId: ctx.id,
+            // Attribution figée ici (migration 0035) : la conversation peut être
+            // supprimée plus tard, son mode et son projet doivent rester
+            // lisibles dans l'historique de consommation. `ctx.chat` est la
+            // ligne persistée ; à défaut, le mode demandé par la requête est
+            // la meilleure information disponible, et le projet effectif peut
+            // venir d'une conversation pas encore écrite.
+            chatMode:
+              ctx.chat?.mode ??
+              (ctx.selectedChatMode as "chat" | "agent" | undefined) ??
+              "chat",
             chatModel: ctx.chatModel,
+            chatProjectId:
+              ctx.chat?.projectId ?? ctx.effectiveProjectId ?? null,
             dataStream,
             email: ctx.userEmail,
             isGhostMode: ctx.isGhostMode,
@@ -152,6 +165,42 @@ export function createChatStream(params: ChatStreamParams) {
             usageEventKey,
             userId: ctx.userId,
           });
+
+          // Renommage auto, ICI et pas dans `onEnd`.
+          //
+          // `onEnd` s'exécute après la fermeture du flux : le titre était bien
+          // écrit en base, mais rien ne pouvait le notifier au client. Le
+          // `mutate` de l'historique partait de `onFinish` côté client, donc
+          // avant, lisait l'ancien titre, et la sidebar affichait
+          // « Nouvelle discussion » jusqu'à une revalidation fortuite.
+          //
+          // Le type `"chat-title"` et son consommateur
+          // (components/chat/data-stream-handler.tsx) existaient déjà : c'est
+          // l'émission qui manquait.
+          if (ctx.shouldRenameAfterFirst && ctx.firstUserMessageForTitle) {
+            try {
+              const generated = await generateTitleFromConversation({
+                assistantText: (text ?? "").slice(0, 500).trim(),
+                userText: getTextFromMessage(
+                  ctx.firstUserMessageForTitle as any
+                ),
+              });
+              if (generated && generated !== "Nouvelle discussion") {
+                const { updateChatTitleById } = await import(
+                  "@/lib/db/queries"
+                );
+                await updateChatTitleById({ chatId: ctx.id, title: generated });
+                dataStream.write({
+                  data: generated,
+                  type: "data-chat-title",
+                });
+              }
+            } catch (error) {
+              // Un titre raté ne doit jamais faire échouer l'échange : la
+              // conversation est déjà complète et persistée.
+              console.error("Erreur renommage auto:", error);
+            }
+          }
         },
         stopWhen: ({ steps }) => {
           if (steps.length >= 12) return true;
@@ -190,6 +239,9 @@ export function createChatStream(params: ChatStreamParams) {
 async function handleTokenAccounting(params: {
   dataStream: any;
   usage: any;
+  chatId: string;
+  chatMode: "chat" | "agent";
+  chatProjectId: string | null;
   chatModel: string;
   email: string;
   isGhostMode: boolean;
@@ -200,6 +252,9 @@ async function handleTokenAccounting(params: {
   const {
     dataStream,
     usage,
+    chatId,
+    chatMode,
+    chatProjectId,
     chatModel,
     email,
     isGhostMode,
@@ -224,6 +279,9 @@ async function handleTokenAccounting(params: {
   if (totalTokens > 0) {
     // 1. Enregistrement direct et persistant en BDD (normal et fantôme)
     await recordTokenUsage({
+      chatId,
+      chatMode,
+      chatProjectId,
       idempotencyKey: usageEventKey,
       inputTokens,
       isGhostMode,
@@ -359,30 +417,10 @@ async function persistStreamEnd(
       })),
     });
 
-    // Renommage auto après fin du stream IA (premier message uniquement)
-    if (ctx.shouldRenameAfterFirst && ctx.firstUserMessageForTitle) {
-      try {
-        const assistantMsg = [...finishedMessages]
-          .reverse()
-          .find((m) => m.role === "assistant");
-        const assistantText = assistantMsg
-          ? (getTextFromMessage(assistantMsg as any) || "").slice(0, 500).trim()
-          : "";
-        const userText = getTextFromMessage(
-          ctx.firstUserMessageForTitle as any
-        );
-        const title = await generateTitleFromConversation({
-          assistantText,
-          userText,
-        });
-        if (title && title !== "Nouvelle discussion") {
-          const { updateChatTitleById } = await import("@/lib/db/queries");
-          await updateChatTitleById({ chatId: ctx.id, title });
-        }
-      } catch (e) {
-        console.error("Erreur renommage auto:", e);
-      }
-    }
+    // Le renommage auto n'est PLUS ici : il est fait dans `streamText.onFinish`
+    // (au-dessus), tant que le flux est ouvert, pour pouvoir émettre la part
+    // `data-chat-title`. Le faire ici fonctionnait en base, mais la sidebar
+    // n'apprenait le nouveau titre qu'à la revalidation suivante.
   }
 }
 

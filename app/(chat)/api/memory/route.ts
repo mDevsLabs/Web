@@ -5,6 +5,7 @@ import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
 import {
   countMemories,
   createMemory,
+  deleteAllMemoriesByUserId,
   deleteMemory,
   getAgentById,
   getAgentMemories,
@@ -182,10 +183,24 @@ export async function DELETE(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");
-    if (!id) {
-      return new ChatbotError("bad_request:api", "id requis").toResponse();
+    // `?scope=all` : purge totale de la mémoire (onglet Données). Le libellé
+    // est explicite pour qu'un appel sans identifiant ne vide jamais tout par
+    // simple oubli de paramètre.
+    const purgeAll = searchParams.get("scope") === "all";
+
+    if (!id && !purgeAll) {
+      return new ChatbotError(
+        "bad_request:api",
+        "id ou scope=all requis"
+      ).toResponse();
     }
-    const deleted = await deleteMemory({ id, userId });
+
+    if (purgeAll && !id) {
+      const deleted = await deleteAllMemoriesByUserId({ userId });
+      return Response.json({ count: deleted, success: true });
+    }
+
+    const deleted = await deleteMemory({ id: id as string, userId });
     if (!deleted) {
       return new ChatbotError("not_found:database").toResponse();
     }

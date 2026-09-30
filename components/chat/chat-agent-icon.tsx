@@ -1,8 +1,8 @@
 "use client";
 
-import { BotIcon } from "lucide-react";
 import { memo } from "react";
 import { resolveAgentIcon } from "@/components/agents/agent-registry";
+import { BotGlyph } from "@/components/agents/bot-avatar";
 
 /**
  * Sidebar chat icon: custom-agent chats show the agent's configured icon,
@@ -33,8 +33,9 @@ export const ChatAgentIcon = memo(function ChatAgentIcon({
     );
   }
 
-  // Standard (no custom agent): neutral bot glyph
+  // Standard (no custom agent): neutral bot glyph — la même identité que le
+  // sélecteur de bots, pas une icône Lucide à côté d'elle.
   return (
-    <BotIcon className="shrink-0 text-sidebar-foreground/50" size={size} />
+    <BotGlyph className="shrink-0 text-sidebar-foreground/50" size={size} />
   );
 });

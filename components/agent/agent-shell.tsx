@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertTriangleIcon } from "lucide-react";
+import { AlertTriangleIcon, PanelLeftIcon } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
@@ -20,13 +20,17 @@ import { AgentChannelBadge } from "@/components/agent/alpha-badge";
 import { HomeModeSwitcher } from "@/components/chat/home-mode-switcher";
 import { useModelCapabilities } from "@/components/chat/input/use-model-capabilities";
 import { PreviewMessage } from "@/components/chat/message";
+import { Button } from "@/components/ui/button";
+import { useSidebar } from "@/components/ui/sidebar";
 import { useActiveChat } from "@/hooks/use-active-chat";
 import type { AgentRunHistoryPayload } from "@/hooks/use-agent-chat";
 import { type AgentRequestOptions, useAgentChat } from "@/hooks/use-agent-chat";
 import { useAgentFlags } from "@/hooks/use-agent-flags";
 import { extractChatIdFromPath, useAgentMode } from "@/hooks/use-agent-mode";
 import { useAgentModels } from "@/hooks/use-agent-models";
+import { useAgentSettings } from "@/hooks/use-agent-settings";
 import { type ProjectLite, useProjects } from "@/hooks/use-projects";
+import { useSharedDraft } from "@/hooks/use-shared-draft";
 import { AGENT_COMPOSER_ARIA_LABEL } from "@/lib/agent/channel";
 import { shouldShowAgentHome } from "@/lib/agent/timeline-visibility";
 import type {
@@ -37,6 +41,7 @@ import type {
   AgentToolActivity,
   ToolExecutionRecord,
 } from "@/lib/agent/types";
+import { normalizeReasoningLevel } from "@/lib/ai/registry/reasoning";
 import { downloadChatAsMarkdown } from "@/lib/chat/export-markdown";
 import { apiEndpoints, pagePath } from "@/lib/client/api-endpoints";
 import { fetcher } from "@/lib/utils";
@@ -88,8 +93,10 @@ function AgentShellInner() {
   const router = useRouter();
   const isNewChat = !extractChatIdFromPath(pathname);
   const { setMode } = useAgentMode();
+  const { requestPreserveDraft } = useSharedDraft();
 
   const {
+    activeAgent,
     chatId,
     currentModelId,
     resetChat,
@@ -98,6 +105,11 @@ function AgentShellInner() {
     visibilityType,
   } = useActiveChat();
   const { flags, channelInfo } = useAgentFlags();
+  // Le mode Agent remplace tout le contenu de ChatShell, en-tête compris : il
+  // porte donc son propre accès à la navigation. `isMobile` sert à ne pas
+  // afficher un bouton d'en-tête de 44px au doigt sur desktop, ni l'inverse.
+  const { isMobile, state: sidebarState, toggleSidebar } = useSidebar();
+  const isCollapsedDesktop = sidebarState === "collapsed" && !isMobile;
   const {
     capabilities: modelsCapabilities,
     catalogModelIds,
@@ -137,6 +149,9 @@ function AgentShellInner() {
 
   const [project, setProject] = useState<ProjectLite | null>(null);
   const [options, setOptions] = useState<AgentRequestOptions>({
+    // La persona suit la sélection globale partagée avec le Chat : un seul et
+    // même « assistant actif » dans les deux modes, une seule source de vérité.
+    assistantId: activeAgent?.id ?? null,
     audioEnabled: false,
     enabledCategories: null,
     forceWeb: false,
@@ -144,12 +159,38 @@ function AgentShellInner() {
     mcpServerIds: [],
     memoryEnabled: false,
     projectId: null,
-    reasoningLevel: "medium",
+    // Aucun choix tant que l'utilisateur n'a pas bougé le sélecteur : le niveau
+    // par défaut est celui du compte, appliqué par le serveur.
+    reasoningLevel: null,
     skillId: null,
     skillParams: null,
     tasksEnabled: false,
     toolMode: "auto",
   });
+
+  // Réflexion : le niveau du compte sert de référence d'affichage tant que
+  // l'utilisateur n'a pas choisi dans le composer. Il ne remplace jamais le
+  // choix de session — il évite seulement que le sélecteur annonce une valeur
+  // que le serveur n'appliquera pas. Tant que le payload n'est pas arrivé,
+  // `normalizeReasoningLevel` retombe sur la même valeur que le serveur
+  // (colonne NOT NULL à « medium »), donc aucun clignotement trompeur.
+  const { data: agentSettings } = useAgentSettings();
+  const defaultReasoningLevel = normalizeReasoningLevel(
+    agentSettings?.settings.reasoningLevel
+  );
+
+  // `handleSubmit` remplace l'objet d'options en entier : sans cette
+  // synchronisation, la persona choisie au composer disparaîtrait dès le
+  // premier envoi. L'écriture est conditionnée pour ne pas créer de boucle
+  // quand la sélection n'a pas bougé.
+  const activeAgentId = activeAgent?.id ?? null;
+  useEffect(() => {
+    setOptions((current) =>
+      current.assistantId === activeAgentId
+        ? current
+        : { ...current, assistantId: activeAgentId }
+    );
+  }, [activeAgentId]);
 
   // Hydratation du projet depuis la conversation persistée : la vérité est en
   // base (chat.projectId), jamais dans un état React initialisé à null. Le
@@ -394,6 +435,7 @@ function AgentShellInner() {
       {modelCompatibilityWarning}
       <AgentComposer
         capabilities={capabilities}
+        defaultReasoningLevel={defaultReasoningLevel}
         flags={flags}
         isRunning={isRunning}
         modelId={currentModelId}
@@ -439,9 +481,40 @@ function AgentShellInner() {
     <div className="flex h-[100dvh] w-full flex-col overflow-hidden bg-background">
       {/* Le sélecteur Chat | Agent n'est plus dans l'en-tête Agent : il vit
           désormais dans la pile d'accueil (HomeModeSwitcher), au même endroit
-          exactement que sur l'accueil Chat. L'en-tête ne porte plus que
-          l'identité de canal. */}
-      <header className="flex shrink-0 items-center justify-end gap-2 border-b border-border/40 px-3 py-2 md:px-5">
+          exactement que sur l'accueil Chat. L'en-tête ne porte que
+          l'identité de canal et l'accès à la navigation.
+
+          Le déclencheur du tiroir est reproduit ici parce que `ChatShell`
+          remplace son contenu en mode Agent : sans lui, `ChatHeader` n'est jamais
+          rendu et la barre latérale devient inatteignable — sur mobile, on n'avait
+          plus ni historique, ni nouveau chat, ni réglages. Même code que
+          `chat-header.tsx` : deux boutons distincts, car un en-tête de 44px ne
+          doit pas être un bouton de 28px sur desktop. */}
+      <header className="flex h-[calc(env(safe-area-inset-top)+2.75rem)] shrink-0 items-center justify-between gap-2 border-b border-border/40 px-3 pt-[env(safe-area-inset-top)] md:px-5">
+        {isCollapsedDesktop ? (
+          <Button
+            aria-label="Ouvrir la navigation"
+            className="-ml-1"
+            data-testid="agent-nav-toggle"
+            onClick={toggleSidebar}
+            size="icon-sm"
+            variant="ghost"
+          >
+            <PanelLeftIcon className="size-4" />
+          </Button>
+        ) : (
+          <Button
+            aria-label="Ouvrir la navigation"
+            className="-ml-1 h-11 w-11 md:hidden"
+            data-testid="agent-nav-toggle"
+            onClick={toggleSidebar}
+            size="icon-sm"
+            variant="ghost"
+          >
+            <PanelLeftIcon className="size-5" />
+          </Button>
+        )}
+
         <div className="flex items-center gap-2">
           <AgentChannelBadge channel={channelInfo.channel} />
         </div>
@@ -559,6 +632,15 @@ function AgentShellInner() {
                   <HomeModeSwitcher
                     mode="agent"
                     onModeChange={(next) => {
+                      // Le `router.push("/")` ci-dessous change de `chatId`,
+                      // ce qui déclencherait les deux effets de purge du
+                      // brouillon. On le déclare à l'avance : ce changement de
+                      // `chatId` est une bascule de mode, pas un changement de
+                      // conversation, et le prompt saisi doit survivre au
+                      // retour en mode Chat. Voir hooks/use-shared-draft.tsx.
+                      if (next === "chat" && !isNewChat) {
+                        requestPreserveDraft();
+                      }
                       setMode(next);
                       if (next === "chat" && !isNewChat) {
                         router.push("/");

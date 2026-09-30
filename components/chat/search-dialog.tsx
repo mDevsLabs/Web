@@ -30,6 +30,16 @@ type SearchResult = {
 
 type SearchFilter = "all" | "chats" | "messages" | "projects" | "files";
 
+/**
+ * Résultats demandés par catégorie à la barre de recherche rapide.
+ *
+ * La route plafonne à 30 ; on ne demande pas le maximum, parce qu'une palette
+ * se lit en diagonale : au-delà d'une trentaine de lignes, l'utilisateur fait
+ * défiler au lieu de reconnaître. Quand une catégorie sature, la liste le dit
+ * explicitement plutôt que de laisser croire qu'elle est exhaustive.
+ */
+const SEARCH_LIMIT = 25;
+
 export function SearchDialog() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -51,7 +61,7 @@ export function SearchDialog() {
     setLoading(true);
     try {
       const res = await fetch(
-        `/api/search?q=${encodeURIComponent(q)}&limit=12`
+        `/api/search?q=${encodeURIComponent(q)}&limit=${SEARCH_LIMIT}`
       );
       if (res.ok) {
         const data = await res.json();
@@ -111,6 +121,15 @@ export function SearchDialog() {
     results.files.length;
 
   const hasAny = totalResults > 0;
+
+  // Une catégorie qui rend exactement `SEARCH_LIMIT` en a probablement
+  // davantage : on le dit, sinon l'utilisateur conclut à tort que la barre
+  // contient tout son historique.
+  const isSaturated =
+    results.chats.length === SEARCH_LIMIT ||
+    results.messages.length === SEARCH_LIMIT ||
+    results.projects.length === SEARCH_LIMIT ||
+    results.files.length === SEARCH_LIMIT;
 
   return (
     <CommandDialog
@@ -358,6 +377,13 @@ export function SearchDialog() {
               </CommandItem>
             ))}
           </CommandGroup>
+        )}
+        {isSaturated && (
+          <p className="px-3 py-2 text-center text-[11px] text-muted-foreground">
+            Davantage de résultats. Affinez la recherche, ou ouvrez la recherche
+            globale depuis l'icône de la barre latérale pour croiser Skills,
+            MCP, bots, modèles, images, audio et statistiques.
+          </p>
         )}
       </CommandList>
       <div className="border-t border-border/50 px-3 py-2 text-[10px] text-muted-foreground flex items-center justify-between">

@@ -55,13 +55,39 @@ const REQUIRED_COLUMNS = [
   // tokens de sortie : ils sont comptés, mais gardés à part).
   { column: "defaultMode", table: "AgentSettings" },
   { column: "reasoningTokens", table: "UsageEvent" },
+  // Migration 0033 : la page Statistiques est la première lecture de
+  // `UsageEvent`. Sans ce lien, ses filtres « projet » et « mode » ne sont pas
+  // exprimables en SQL et la page ne peut pas fonctionner du tout.
+  { column: "chatId", table: "UsageEvent" },
+  // Migration 0034 : la dictée vocale et le bouton « Traduire » lisent leurs
+  // valeurs dans cette table. Sans ces colonnes, `getUserPreferences`
+  // sélectionne des colonnes inexistantes et TOUTE la page des paramètres
+  // tombe en 42703 — pas seulement les deux réglages nouveaux.
+  { column: "defaultDictationLanguage", table: "user_preferences" },
+  { column: "defaultTranslationLanguage", table: "user_preferences" },
+  // Migration 0035 : sans `chatMode`/`chatProjectId`, la page Statistiques
+  // retombe sur une jointure `Chat` et les tokens d'une conversation
+  // SUPPRIMÉE disparaissent de l'historique — le filtre « mode » ferait
+  // chuter le total de tokens sans raison visible.
+  { column: "chatMode", table: "UsageEvent" },
+  { column: "chatProjectId", table: "UsageEvent" },
+  // Migration 0036 : sans `ToolExecution.chatId`/`userId`, les appels de
+  // plugins du mode Chat ne sont pas journalisés et le classement « Outils les
+  // plus utilisés » affiche 0 exécution pour un plugin très utilisé en Chat.
+  { column: "chatId", table: "ToolExecution" },
+  { column: "userId", table: "ToolExecution" },
 ];
 
 const REQUIRED_INDEXES = [
   "UsageEvent_userId_createdAt_idx",
+  "UsageEvent_chatId_idx",
   "Message_v2_chatId_createdAt_id_idx",
   "Stream_chatId_createdAt_idx",
   "ScheduledMessage_userId_status_scheduledAt_idx",
+  // Migrations 0035 et 0036 : les deux lectures les plus fréquentes de la page
+  // Statistiques (tokens filtrés par mode, appels d'outils du chemin Chat).
+  "UsageEvent_userId_chatMode_createdAt_idx",
+  "ToolExecution_userId_createdAt_idx",
 ];
 
 const envFiles =

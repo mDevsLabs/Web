@@ -10,10 +10,14 @@ import { registerAudioRoutes } from "./audio.ts";
 import { initSQLite } from "./config.ts";
 import { registerDeviceRoutes } from "./devices.ts";
 import { registerImageRoutes } from "./images.ts";
+import { registerMaiTranslateRoutes } from "./mai-translate.ts";
 import { registerMiddleware } from "./api-middleware.ts";
 import { registerModelRoutes } from "./models.ts";
 import { registerProjectRoutes } from "./projects.ts";
+import { registerRealtimeRoutes } from "./realtime.ts";
 import { registerStorageRoutes } from "./storage.ts";
+import { registerTranslateRoutes } from "./translate.ts";
+import { registerVibeAIRoutes } from "./vibe-ai.ts";
 import { registerVibeRoutes } from "./vibe.ts";
 import { registerWebRoutes } from "./web.ts";
 
@@ -28,52 +32,82 @@ initSQLite().catch(console.error);
 const app = new Hono();
 
 // ─────────────────────────────────────────────
-// CORS strict par allowlist + headers de sécurité
+// CORS ouvert : toutes les origines acceptées (tests local / preview / prod temporaire)
 // ─────────────────────────────────────────────
-const ALLOWED_ORIGINS = new Set([
-  "https://mai-vibe.vercel.app",
-  "https://mai-vibe-git-main-mcompany.vercel.app",
-  "http://localhost:5173",
-  "http://127.0.0.1:5173",
-  "http://localhost:3000",
-  "http://127.0.0.1:3000",
-  "capacitor://localhost",
-  "https://localhost",
-]);
 
 app.use(
   "*",
   cors({
+    origin: "*",
+    // "*" impose credentials: false (spec navigateur). Le frontend
+    // utilise Authorization Bearer (src/services/api.ts), pas de cookies.
+    credentials: false,
+    allowMethods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD"],
     allowHeaders: [
+      // Standards fetch / navigateur
+      "Accept",
+      "Accept-Language",
+      "Content-Language",
       "Content-Type",
+      "Content-Length",
+      "Content-Disposition",
+      "Range",
+      "Origin",
+      "Referer",
+      "X-Requested-With",
+      "DNT",
+      "Cache-Control",
+      "Pragma",
+      "Expires",
+      "If-Modified-Since",
+      "If-None-Match",
+      "If-Match",
+      // Auth / API maison (api-middleware.ts, audio.ts, images.ts)
       "Authorization",
       "x-user-id",
-      "x-api-key",
       "X-User-Id",
+      "x-api-key",
       "X-API-Key",
+      "x-goog-api-key",
+      "X-Goog-Api-Key",
+      // Custom app (web.ts)
       "x-web-search",
       "X-Web-Search",
       "x-disable-web-search",
       "X-Disable-Web-Search",
-      "x-goog-api-key",
-      "X-Goog-Api-Key",
+      // SDK Anthropic / OpenAI / OpenRouter compatibles
       "anthropic-version",
       "anthropic-beta",
+      "anthropic-dangerous-direct-browser-access",
+      "OpenAI-Organization",
+      "OpenAI-Project",
+      "X-Title",
+      "HTTP-Referer",
+      "X-Request-Id",
+      "X-Client-Info",
+      "apikey",
+      "x-client-version",
+      "x-app-version",
+      "X-Stripe-Signature",
     ],
-    allowMethods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    exposeHeaders: ["Content-Type", "Authorization", "x-user-id"],
+    exposeHeaders: [
+      "Content-Type",
+      "Authorization",
+      "x-user-id",
+      "x-audio-id",
+      "x-speech-limit",
+      "x-speech-used",
+      "x-tokens-used",
+      "Content-Length",
+      "Content-Range",
+      "ETag",
+    ],
     maxAge: 86_400,
-    // Rejette toute origine non autorisée (au lieu de la refléter avec credentials)
-    origin: (origin) => {
-      if (!origin) return null;
-      if (ALLOWED_ORIGINS.has(origin)) return origin;
-      if (/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) return origin;
-      if (/^https:\/\/mai-vibe[a-z0-9-]*\.vercel\.app$/.test(origin)) return origin;
-      return null;
-    },
-    credentials: true,
   })
 );
+
+// Filet preflight explicite : répond 204 avant l'auth (local / preview / SDK).
+app.options("*", (c) => c.text("", 204));
 
 app.use("*", async (c, next) => {
   await next();
@@ -108,6 +142,10 @@ registerAudioRoutes(app);
 registerWebRoutes(app);
 registerProjectRoutes(app);
 registerDeviceRoutes(app);
+registerRealtimeRoutes(app);
+registerVibeAIRoutes(app);
+registerTranslateRoutes(app);
+registerMaiTranslateRoutes(app);
 registerVibeRoutes(app);
 
 export default app.fetch;

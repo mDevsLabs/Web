@@ -18,6 +18,7 @@ import {
   deleteChatById,
   getChatById,
   getPluginInstallationsByUserId,
+  incrementCustomCommandUsage,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import { getPluginManifest, isPluginOnlyToolId } from "@/lib/plugins/catalog";
@@ -118,6 +119,23 @@ export async function POST(request: Request) {
       tags: body.tags,
       temperatureOverride: body.temperatureOverride,
     });
+
+    // 2 bis. Compteur d'usage des commandes personnalisées.
+    //
+    // `incrementCustomCommandUsage` existait mais n'était appelé nulle part :
+    // le badge « N usage(s) » de l'écran de configuration restait à 0 pour
+    // toutes les commandes, ce qui rendait le tri par popularité — et donc la
+    // décision de conserver ou non une commande — impossible.
+    //
+    // Fire-and-forget : un compteur raté ne doit jamais faire échouer un envoi.
+    // L'ajouter à la chaîne ajouterait une écriture sur le chemin critique, et
+    // la requête avale déjà ses propres erreurs.
+    if (body.pendingPrompt?.commandId) {
+      void incrementCustomCommandUsage({
+        id: body.pendingPrompt.commandId,
+        userId: auth.userId,
+      });
+    }
 
     // 3. Mémoire personnalisée (globale ou spécifique agent + projet)
     const memoryCtx = await buildMemoryContext({
@@ -234,6 +252,11 @@ export async function POST(request: Request) {
 
         const tools = createChatTools(
           {
+            // `chatId` n'est renseigné que si la conversation est déjà
+            // persistée : une nouvelle conversation l'est quelques instants plus
+            // tard, et un `ToolExecution` sans lien reste un `ToolExecution`
+            // compté pour le bon compte.
+            chatId: ctx.chat?.id ?? null,
             chatModel: ctx.chatModel,
             dataStream,
             effectiveAgentId: ctx.effectiveAgentId,

@@ -88,7 +88,7 @@ export const AGENT_FLAG_LABELS: Record<AgentFlagKey, string> = {
   "agent.mcp": "Connexions MCP",
   "agent.plugins": "Plugins",
   "agent.projects": "Projets",
-  "agent.reasoning": "Intensité de réflexion",
+  "agent.reasoning": "Réflexion",
   "agent.scheduleHistory": "Historique des tâches planifiées",
   "agent.skills": "Skills",
   "agent.webSearch": "Recherche web",

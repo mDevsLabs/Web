@@ -8,7 +8,7 @@ import { PlanningClient } from "./planning-client";
 
 export const metadata = {
   description:
-    "Programmez l'envoi automatique de messages à l'IA avec vos agents et outils préférés.",
+    "Programmez l'envoi automatique de messages à l'IA avec vos bots et outils préférés.",
   title: "Planification | mAI",
 };
 

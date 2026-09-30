@@ -1,5 +1,10 @@
 import { tool } from "ai";
 import { z } from "zod";
+import {
+  type BoundedFetchFailureKind,
+  type BoundedFetchOptions,
+  boundedFetch,
+} from "../shared/bounded-fetch";
 import { sourceRef, truncateText } from "../shared/public-api";
 import type { PluginDefinition, PluginManifest } from "../types";
 import manifest from "./index.json";
@@ -12,7 +17,36 @@ type PageResult =
   | { data: string; ok: true; url: string }
   | { error: string; ok: false; url: string };
 
-async function fetchCatalogPage(path: string): Promise<PageResult> {
+function describeFailure(
+  failure: { kind: BoundedFetchFailureKind; status?: number },
+  timeoutMs: number
+): string {
+  switch (failure.kind) {
+    case "http":
+      return failure.status === 404
+        ? "Jeu de données introuvable (HTTP 404)."
+        : `Service de données indisponible (HTTP ${failure.status ?? 0}).`;
+    case "too_large":
+      return "Page trop volumineuse; résultat refusé.";
+    case "body":
+      return "Réponse vide ou illisible.";
+    case "timeout":
+      return `Délai dépassé (${Math.round(timeoutMs / 1000)}s).`;
+    case "aborted":
+      return "Requête annulée avant son terme.";
+    case "redirect":
+      return "Redirection de la source refusée.";
+    case "network":
+      return "Erreur réseau lors de la lecture du catalogue.";
+  }
+}
+
+// Le catalogue ne publie pas de JSON : on réutilise le client borné commun et
+// on décode le HTML. Seule la liste blanche du site reste propre à ce plugin.
+async function fetchCatalogPage(
+  path: string,
+  options: Pick<BoundedFetchOptions, "signal"> = {}
+): Promise<PageResult> {
   let url: URL;
   try {
     url = new URL(path, BASE);
@@ -23,78 +57,25 @@ async function fetchCatalogPage(path: string): Promise<PageResult> {
     return { error: "Domaine de source non autorisé.", ok: false, url: "" };
   }
 
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
-  try {
-    const response = await fetch(url, {
-      headers: { Accept: "text/html", "User-Agent": "mAI-Web/1.0" },
-      method: "GET",
-      redirect: "error",
-      signal: controller.signal,
-    });
-    if (!response.ok) {
-      return {
-        error:
-          response.status === 404
-            ? "Jeu de données introuvable (HTTP 404)."
-            : `Service de données indisponible (HTTP ${response.status}).`,
-        ok: false,
-        url: url.href,
-      };
-    }
-    const contentLength = Number(response.headers.get("content-length") ?? 0);
-    if (contentLength > MAX_BYTES) {
-      return {
-        error: "Page trop volumineuse; résultat refusé.",
-        ok: false,
-        url: url.href,
-      };
-    }
-    const reader = response.body?.getReader();
-    if (!reader)
-      return { error: "Réponse vide ou illisible.", ok: false, url: url.href };
-
-    const chunks: Uint8Array[] = [];
-    let byteCount = 0;
-    while (true) {
-      const chunk = await reader.read();
-      if (chunk.done) break;
-      byteCount += chunk.value.byteLength;
-      if (byteCount > MAX_BYTES) {
-        await reader.cancel();
-        return {
-          error: "Page trop volumineuse; résultat refusé.",
-          ok: false,
-          url: url.href,
-        };
-      }
-      chunks.push(chunk.value);
-    }
-    const bytes = new Uint8Array(byteCount);
-    let offset = 0;
-    for (const chunk of chunks) {
-      bytes.set(chunk, offset);
-      offset += chunk.byteLength;
-    }
-    return { data: new TextDecoder().decode(bytes), ok: true, url: url.href };
-  } catch (error) {
-    const timedOut =
-      error instanceof Error &&
-      (error.name === "AbortError" || error.name === "TimeoutError");
-    const redirected =
-      error instanceof TypeError && /redirect/i.test(error.message);
+  const result = await boundedFetch(url, {
+    ...options,
+    headers: { Accept: "text/html", "User-Agent": "mAI-Web/1.0" },
+    maxBytes: MAX_BYTES,
+    retries: 0,
+    timeoutMs: TIMEOUT_MS,
+  });
+  if (!result.ok) {
     return {
-      error: timedOut
-        ? `Délai dépassé (${TIMEOUT_MS / 1000}s).`
-        : redirected
-          ? "Redirection de la source refusée."
-          : "Erreur réseau lors de la lecture du catalogue.",
+      error: describeFailure(result, TIMEOUT_MS),
       ok: false,
       url: url.href,
     };
-  } finally {
-    clearTimeout(timer);
   }
+  return {
+    data: new TextDecoder().decode(result.bytes),
+    ok: true,
+    url: url.href,
+  };
 }
 
 function decodeHtml(value: string): string {

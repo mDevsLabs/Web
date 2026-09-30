@@ -28,6 +28,11 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { CopyIcon, PencilEditIcon, ThumbDownIcon, ThumbUpIcon } from "./icons";
+import {
+  MessageTranslateMenu,
+  MessageTranslationBlock,
+  useMessageTranslation,
+} from "./message-translation";
 
 export function PureMessageActions({
   chatId,
@@ -68,6 +73,13 @@ export function PureMessageActions({
     { dedupingInterval: 10_000 }
   );
   const visibility = (chatData as any)?.visibility ?? "private";
+
+  // Traduction : l'état est local au message, donc le bloc disparaît avec lui.
+  const {
+    defaultTarget,
+    state: translation,
+    translate,
+  } = useMessageTranslation(textFromParts);
 
   const handleCopy = useCallback(async () => {
     if (!textFromParts) {
@@ -401,100 +413,111 @@ export function PureMessageActions({
   }
 
   return (
-    <Actions className="-ml-0.5 opacity-100 md:opacity-0 md:transition-opacity md:duration-150 md:group-hover/message:opacity-100">
-      <Action
-        className="text-muted-foreground/50 hover:text-foreground"
-        onClick={handleCopy}
-        tooltip="Copier"
-      >
-        <CopyIcon />
-      </Action>
+    <div className="flex flex-col gap-2">
+      <Actions className="-ml-0.5 opacity-100 md:opacity-0 md:transition-opacity md:duration-150 md:group-hover/message:opacity-100">
+        <Action
+          className="text-muted-foreground/50 hover:text-foreground"
+          onClick={handleCopy}
+          tooltip="Copier"
+        >
+          <CopyIcon />
+        </Action>
 
-      <Action
-        className="text-muted-foreground/50 hover:text-foreground"
-        onClick={handleRegenerate}
-        tooltip={`Régénérer (${regenerateMode})`}
-      >
-        <RefreshCwIcon className="size-4" />
-      </Action>
+        <Action
+          className="text-muted-foreground/50 hover:text-foreground"
+          onClick={handleRegenerate}
+          tooltip={`Régénérer (${regenerateMode})`}
+        >
+          <RefreshCwIcon className="size-4" />
+        </Action>
 
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <button
-            aria-label="Partager"
-            className="size-7 inline-flex items-center justify-center rounded-md text-muted-foreground/50 hover:text-foreground hover:bg-muted/40"
-            type="button"
-          >
-            <Share2Icon className="size-4" />
-          </button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-48">
-          <DropdownMenuItem onClick={() => handleShare("copy")}>
-            Copier le texte + lien
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => handleShare("x")}>
-            Partager sur X
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => handleShare("facebook")}>
-            Facebook
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => handleShare("linkedin")}>
-            LinkedIn
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => handleShare("whatsapp")}>
-            WhatsApp
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => handleShare("telegram")}>
-            Telegram
-          </DropdownMenuItem>
-          {(navigator as any).share && (
-            <DropdownMenuItem onClick={() => handleShare("native")}>
-              Partage natif
+        <MessageTranslateMenu
+          defaultTarget={defaultTarget}
+          isPending={translation.isPending}
+          onSelect={translate}
+        />
+
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button
+              aria-label="Partager"
+              className="size-7 inline-flex items-center justify-center rounded-md text-muted-foreground/50 hover:text-foreground hover:bg-muted/40"
+              type="button"
+            >
+              <Share2Icon className="size-4" />
+            </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-48">
+            <DropdownMenuItem onClick={() => handleShare("copy")}>
+              Copier le texte + lien
             </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => handleShare("x")}>
+              Partager sur X
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => handleShare("facebook")}>
+              Facebook
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => handleShare("linkedin")}>
+              LinkedIn
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => handleShare("whatsapp")}>
+              WhatsApp
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => handleShare("telegram")}>
+              Telegram
+            </DropdownMenuItem>
+            {(navigator as any).share && (
+              <DropdownMenuItem onClick={() => handleShare("native")}>
+                Partage natif
+              </DropdownMenuItem>
+            )}
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        <Action
+          className="text-muted-foreground/50 hover:text-foreground"
+          onClick={handleSpeak}
+          tooltip={isSpeaking ? "Stop" : "Écouter"}
+        >
+          {isSpeaking ? (
+            <VolumeXIcon className="size-4" />
+          ) : (
+            <Volume2Icon className="size-4" />
           )}
-        </DropdownMenuContent>
-      </DropdownMenu>
+        </Action>
 
-      <Action
-        className="text-muted-foreground/50 hover:text-foreground"
-        onClick={handleSpeak}
-        tooltip={isSpeaking ? "Stop" : "Écouter"}
-      >
-        {isSpeaking ? (
-          <VolumeXIcon className="size-4" />
-        ) : (
-          <Volume2Icon className="size-4" />
-        )}
-      </Action>
+        <Action
+          className="text-muted-foreground/50 hover:text-foreground"
+          onClick={handleFork}
+          tooltip="Brancher (fork)"
+        >
+          <GitForkIcon className="size-4" />
+        </Action>
 
-      <Action
-        className="text-muted-foreground/50 hover:text-foreground"
-        onClick={handleFork}
-        tooltip="Brancher (fork)"
-      >
-        <GitForkIcon className="size-4" />
-      </Action>
+        <Action
+          className="text-muted-foreground/50 hover:text-foreground"
+          data-testid="message-upvote"
+          disabled={vote?.isUpvoted}
+          onClick={handleUpvote}
+          tooltip="Bonne réponse"
+        >
+          <ThumbUpIcon />
+        </Action>
 
-      <Action
-        className="text-muted-foreground/50 hover:text-foreground"
-        data-testid="message-upvote"
-        disabled={vote?.isUpvoted}
-        onClick={handleUpvote}
-        tooltip="Bonne réponse"
-      >
-        <ThumbUpIcon />
-      </Action>
-
-      <Action
-        className="text-muted-foreground/50 hover:text-foreground"
-        data-testid="message-downvote"
-        disabled={vote && !vote.isUpvoted}
-        onClick={handleDownvote}
-        tooltip="Mauvaise réponse"
-      >
-        <ThumbDownIcon />
-      </Action>
-    </Actions>
+        <Action
+          className="text-muted-foreground/50 hover:text-foreground"
+          data-testid="message-downvote"
+          disabled={vote && !vote.isUpvoted}
+          onClick={handleDownvote}
+          tooltip="Mauvaise réponse"
+        >
+          <ThumbDownIcon />
+        </Action>
+      </Actions>
+      {/* Le bloc vit HORS de <Actions> : celle-ci s'efface au survol, une
+          traduction affichée doit rester lisible. */}
+      <MessageTranslationBlock state={translation} />
+    </div>
   );
 }
 

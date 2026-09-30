@@ -2,9 +2,15 @@
 // (Open-Meteo : météo et qualité de l'air). Une seule implémentation du
 // géocodage, de la résolution « ville OU coordonnées » et des appels HTTP
 // bornés, pour éviter que chaque plugin recopie sa propre variante.
+import {
+  type BoundedFetchFailureKind,
+  type BoundedFetchOptions,
+  boundedFetchJson,
+  DEFAULT_MAX_BYTES,
+} from "./bounded-fetch";
 
 export const PLUGIN_HTTP_TIMEOUT_MS = 8000;
-const MAX_RESPONSE_BYTES = 1_000_000;
+const MAX_RESPONSE_BYTES = DEFAULT_MAX_BYTES;
 const OPEN_METEO_HOSTS = new Set([
   "geocoding-api.open-meteo.com",
   "api.open-meteo.com",
@@ -22,11 +28,38 @@ export type HttpJsonResult<T> =
   | { ok: true; data: T }
   | { ok: false; error: string };
 
+function describeFailure(
+  failure: {
+    kind: BoundedFetchFailureKind | "json";
+    status?: number;
+  },
+  timeoutMs: number
+): string {
+  switch (failure.kind) {
+    case "http":
+      return `Service indisponible (HTTP ${failure.status ?? 0}).`;
+    case "too_large":
+      return "Réponse trop volumineuse.";
+    case "body":
+      return "Réponse vide ou illisible.";
+    case "timeout":
+      return `Délai d'attente dépassé (${Math.round(timeoutMs / 1000)}s).`;
+    case "aborted":
+      return "Requête annulée avant son terme.";
+    case "redirect":
+      return "Redirection du service refusée.";
+    case "json":
+    case "network":
+      return "Erreur réseau ou réponse JSON invalide.";
+  }
+}
+
 // Appel HTTP JSON avec délai maximal : ne bloque jamais une génération et
 // renvoie toujours une erreur exploitable par le modèle.
 export async function fetchJson<T>(
   url: string,
-  timeoutMs = PLUGIN_HTTP_TIMEOUT_MS
+  timeoutMs = PLUGIN_HTTP_TIMEOUT_MS,
+  options: Pick<BoundedFetchOptions, "retries" | "signal"> = {}
 ): Promise<HttpJsonResult<T>> {
   let parsedUrl: URL;
   try {
@@ -41,71 +74,25 @@ export async function fetchJson<T>(
     return { error: "Service Open-Meteo non autorisé.", ok: false };
   }
 
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
-  try {
-    const response = await fetch(parsedUrl, {
-      headers: { Accept: "application/json" },
-      redirect: "error",
-      signal: controller.signal,
-    });
-    if (!response.ok) {
-      return {
-        error: `Service indisponible (HTTP ${response.status}).`,
-        ok: false,
-      };
-    }
-    const contentLength = Number(response.headers.get("content-length") ?? 0);
-    if (contentLength > MAX_RESPONSE_BYTES) {
-      return { error: "Réponse trop volumineuse.", ok: false };
-    }
-    if (!response.body) {
-      return { error: "Réponse vide ou illisible.", ok: false };
-    }
-    const reader = response.body.getReader();
-    const chunks: Uint8Array[] = [];
-    let bytes = 0;
-    while (true) {
-      const chunk = await reader.read();
-      if (chunk.done) break;
-      bytes += chunk.value.byteLength;
-      if (bytes > MAX_RESPONSE_BYTES) {
-        await reader.cancel();
-        return { error: "Réponse trop volumineuse.", ok: false };
-      }
-      chunks.push(chunk.value);
-    }
-    const body = new Uint8Array(bytes);
-    let offset = 0;
-    for (const chunk of chunks) {
-      body.set(chunk, offset);
-      offset += chunk.byteLength;
-    }
-    return { data: JSON.parse(new TextDecoder().decode(body)) as T, ok: true };
-  } catch (error) {
-    const aborted =
-      error instanceof Error &&
-      (error.name === "AbortError" || error.name === "TimeoutError");
-    const redirect =
-      error instanceof TypeError && /redirect/i.test(error.message);
-    return {
-      error: aborted
-        ? `Délai d'attente dépassé (${timeoutMs / 1000}s).`
-        : redirect
-          ? "Redirection du service refusée."
-          : "Erreur réseau ou réponse JSON invalide.",
-      ok: false,
-    };
-  } finally {
-    clearTimeout(timer);
+  const result = await boundedFetchJson<T>(parsedUrl, {
+    ...options,
+    maxBytes: MAX_RESPONSE_BYTES,
+    timeoutMs,
+  });
+  if (!result.ok) {
+    return { error: describeFailure(result, timeoutMs), ok: false };
   }
+  return { data: result.data, ok: true };
 }
 
 type GeocodeResult =
   | { city: GeocodedCity; ok: true }
   | { error: string; ok: false; reason: "not_found" | "upstream" };
 
-export async function geocodeCity(city: string): Promise<GeocodeResult> {
+export async function geocodeCity(
+  city: string,
+  signal?: AbortSignal
+): Promise<GeocodeResult> {
   const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
     city
   )}&count=1&language=fr&format=json`;
@@ -116,7 +103,7 @@ export async function geocodeCity(city: string): Promise<GeocodeResult> {
       longitude: number;
       name: string;
     }>;
-  }>(url);
+  }>(url, PLUGIN_HTTP_TIMEOUT_MS, { signal });
   if (!result.ok) {
     return {
       error: `Géo-codeur indisponible : ${result.error}`,
@@ -149,13 +136,16 @@ export type ResolvedLocation =
 
 // Résout « ville » OU « latitude/longitude » en coordonnées : logique commune
 // aux plugins météo et qualité de l'air.
-export async function resolveLocation(input: {
-  city?: string;
-  latitude?: number;
-  longitude?: number;
-}): Promise<ResolvedLocation> {
+export async function resolveLocation(
+  input: {
+    city?: string;
+    latitude?: number;
+    longitude?: number;
+  },
+  signal?: AbortSignal
+): Promise<ResolvedLocation> {
   if (input.city) {
-    const geocoded = await geocodeCity(input.city);
+    const geocoded = await geocodeCity(input.city, signal);
     if (!geocoded.ok) {
       return { error: geocoded.error, ok: false };
     }

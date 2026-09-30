@@ -22,6 +22,16 @@ export async function recordAgentUsage(params: {
   idempotencyKey?: string;
   userEmail: string;
   userId: string;
+  // Conversation porteuse du run (migration 0033). `AgentRun.chatId` est NOT
+  // NULL, donc la valeur est toujours connue du runtime ; elle reste
+  // facultative dans la signature parce que le sélecteur de modèle et le
+  // routeur LLM dédupliquent leur comptage et peuvent être appelés avant que
+  // le run ne soit attaché à une conversation.
+  chatId?: string | null;
+  // Projet effectif du run. Un run Agent est TOUJOURS de mode `agent`, le mode
+  // est donc connu sans lecture (migration 0035) ; le projet, lui, vient du
+  // contexte d'exécution.
+  projectId?: string | null;
 }): Promise<AgentUsageTotals> {
   const usage = params.usage ?? {};
   const inputTokens =
@@ -45,6 +55,13 @@ export async function recordAgentUsage(params: {
   }
 
   await recordTokenUsage({
+    chatId: params.chatId ?? null,
+    // Attribution figée à l'écriture (migration 0035) : un run Agent ne peut
+    // être qu'en mode `agent`, et son projet vient du contexte. Les filtres
+    // « mode » et « projet » de la page Statistiques lisent ces colonnes, donc
+    // ils continuent de fonctionner après la suppression de la conversation.
+    chatMode: params.chatId ? "agent" : null,
+    chatProjectId: params.projectId ?? null,
     idempotencyKey: params.idempotencyKey,
     inputTokens,
     isGhostMode: false,
@@ -64,6 +81,15 @@ export async function recordAgentUsage(params: {
     );
   });
 
+  // Noter `chatId` (migration 0033) n'a de sens que pour les appelants qui
+  // fournissent une `idempotencyKey` : `recordTokenUsage` n'insère une ligne
+  // `UsageEvent` que dans ce cas. Le sélecteur de modèle, le routeur LLM et la
+  // compaction de contexte appellent bien `recordAgentUsage`, mais SANS clé —
+  // ils débitent le quota hebdomadaire et ne laissent aucune ligne événementielle.
+  // Leur consommation n'apparaît donc dans aucune série de la page Statistiques,
+  // par construction ; le commenter évite qu'on leur ajoute un `chatId` en
+  // croyant améliorer la restitution.
+  //
   // Notification best-effort de l'endpoint de journalisation amont. Le total
   // part déjà décomposé : le proxy ne doit pas recomposer et risquer un double
   // comptage de la réflexion.

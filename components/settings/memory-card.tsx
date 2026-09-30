@@ -2,7 +2,6 @@
 
 import {
   AlertCircleIcon,
-  BotIcon,
   BrainIcon,
   CheckIcon,
   CopyIcon,
@@ -24,6 +23,7 @@ import {
 import { type ChangeEvent, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
+import { BotGlyph } from "@/components/agents/bot-avatar";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -76,7 +76,7 @@ type ScopeFilter = "agent" | "all" | "global" | "project";
 const SCOPE_FILTERS: { id: ScopeFilter; label: string }[] = [
   { id: "all", label: "Toutes les portées" },
   { id: "global", label: "Globales" },
-  { id: "agent", label: "Agents" },
+  { id: "agent", label: "Bots" },
   { id: "project", label: "Projets" },
 ];
 
@@ -105,7 +105,7 @@ function matchesScopeFilter(entry: MemoryEntry, filter: ScopeFilter): boolean {
 
 function scopeLabel(entry: MemoryEntry): string {
   if (entry.agentId) {
-    return entry.agentName ? `Agent · ${entry.agentName}` : "Agent";
+    return entry.agentName ? `Bot · ${entry.agentName}` : "Bot";
   }
   if (entry.projectId) {
     return entry.projectName ? `Projet · ${entry.projectName}` : "Projet";
@@ -540,9 +540,9 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
 
   const title = allScopes
     ? "Mémoire"
-    : `Mémoire ${agentId ? "de l'agent" : projectId ? "du projet" : "personnalisée"}`;
+    : `Mémoire ${agentId ? "du bot" : projectId ? "du projet" : "personnalisée"}`;
   const scopeLabelHeader = agentId
-    ? "mémoires de cet agent"
+    ? "mémoires de ce bot"
     : projectId
       ? "mémoires de ce projet"
       : "informations que mAI retient sur vous";
@@ -906,7 +906,7 @@ export function MemoryCard({ agentId, allScopes, projectId }: MemoryCardProps) {
                         {allScopes ? (
                           <span className="text-muted-foreground">
                             {m.agentId ? (
-                              <BotIcon className="size-3 inline -mt-0.5 mr-0.5" />
+                              <BotGlyph className="size-3 inline -mt-0.5 mr-0.5" />
                             ) : m.projectId ? (
                               <FolderKanbanIcon className="size-3 inline -mt-0.5 mr-0.5" />
                             ) : (

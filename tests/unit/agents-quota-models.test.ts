@@ -263,12 +263,15 @@ describe("Palette de badges", () => {
   });
 });
 
-describe("Onglet Modèles", () => {
-  it("expose trois onglets dont un dédié aux modèles", () => {
+describe("Onglet Types de bots", () => {
+  it("expose trois onglets dont un dédié aux types de bots", () => {
     const client = source("app/(chat)/agents/agents-client.tsx");
     expect(client).toContain('"agents" | "templates" | "stats"');
-    expect(client).toContain("Modèles ({templates.length})");
-    expect(client).toContain("Rechercher un modèle...");
+    // L'onglet porte le nom de ce qu'il liste. « Modèles » y désignait les
+    // modèles d'IA qu'on choisit ailleurs dans l'interface : l'ambiguïté
+    // valait deux lectures du même mot dans la même page.
+    expect(client).toContain("Types de bots ({templates.length})");
+    expect(client).toContain("Rechercher un type de bot...");
   });
 
   it("filtre les modèles par tag et par modèle", () => {

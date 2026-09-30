@@ -177,10 +177,24 @@ export function getMentionedPluginToolIds(task: string, pluginIds: string[]) {
 }
 
 const TOOL_INTENT_TERMS: Record<string, string[]> = {
+  compareEurostatCountries: [
+    "comparer les pays eurostat",
+    "comparaison entre pays eurostat",
+    "classer les pays",
+    "écart entre pays eurostat",
+  ],
   compareFoodProducts: [
     "comparer des produits",
     "comparaison alimentaire",
     "comparer ces aliments",
+  ],
+  compareWeather: [
+    "comparer la météo",
+    "comparer la meteo",
+    "comparaison météo",
+    "météo dans plusieurs villes",
+    "quelle ville fait le plus chaud",
+    "comparer des villes",
   ],
   compareWorldBankCountries: [
     "comparer les pays",
@@ -199,6 +213,14 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "pollen",
     "pm2.5",
     "indice air",
+  ],
+  getAirQualityOutlook: [
+    "prévision de pollution",
+    "quand sortir",
+    "faire du sport dehors",
+    "activité en extérieur",
+    "meilleur moment pour sortir",
+    "prévision qualité de l'air",
   ],
   getAuthorBooks: ["livres de", "ouvrages de", "bibliographie de", "auteur"],
   getBookWork: ["détails de l'œuvre", "fiche d'œuvre", "ouvrage olid"],
@@ -253,11 +275,22 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "informations sur cette série",
   ],
   getWeather: ["météo", "température", "prévision météo", "weather", "pluie"],
+  getWikidataEntities: [
+    "comparer des entités wikidata",
+    "plusieurs entités wikidata",
+    "wikidata plusieurs",
+  ],
   getWikidataEntity: ["entité wikidata", "fiche wikidata", "id wikidata"],
   getWorldBankSeries: [
     "série chronologique",
     "évolution de l'indicateur",
     "historique d'indicateur",
+  ],
+  gradeQuiz: [
+    "corriger le quiz",
+    "corriger mes réponses",
+    "noter le quiz",
+    "quelle est ma note",
   ],
   internationalHolidays: [
     "jours fériés",
@@ -271,7 +304,15 @@ const TOOL_INTENT_TERMS: Record<string, string[]> = {
     "date fériée",
     "public holiday on",
   ],
-  jsonToolbox: ["json", "minifier json", "valider json", "formater json"],
+  jsonToolbox: [
+    "json",
+    "minifier json",
+    "valider json",
+    "formater json",
+    "extraire un champ json",
+    "aplatir le json",
+    "fusionner deux json",
+  ],
   listGithubIssues: [
     "issue github",
     "issues github",

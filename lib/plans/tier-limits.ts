@@ -147,7 +147,7 @@ export function isAgentQuotaExceeded(
 
 /** Message d'erreur affiché quand la limite est atteinte. */
 export function agentQuotaMessage(limit: number): string {
-  return `Limite de ${limit} agents atteinte. Supprimez un agent avant d'en créer un nouveau.`;
+  return `Limite de ${limit} bots atteinte. Supprimez un bot avant d'en créer un nouveau.`;
 }
 
 /**

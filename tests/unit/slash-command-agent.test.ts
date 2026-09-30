@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  getFilteredSlashCommands,
   type SlashCommandAction,
   slashCommands,
 } from "@/components/chat/slash-commands";
@@ -163,6 +164,51 @@ describe("Les bascules d'outils restent propres au Chat", () => {
       "tool-note",
     ] as const) {
       expect(AGENT_EXCLUDED_SLASH_ACTIONS.has(action)).toBe(true);
+    }
+  });
+});
+
+describe("/bots ouvre le sélecteur de bots dans les deux modes", () => {
+  // `/bots` remplace `/agents` comme déclencheur affiché. Les anciens restent
+  // des alias, mais la commande a gagné deux terrain : elle est proposée dans
+  // le mode Agent (le sélecteur y est monté) et au milieu d'une conversation
+  // (le sélecteur y est monté aussi), et elle reste absente des forfaits Free,
+  // où `AgentSelectorCompact` ne rend rien.
+  const names = (context?: Parameters<typeof getFilteredSlashCommands>[1]) =>
+    getFilteredSlashCommands("", context).map((command) => command.name);
+
+  it("a une issue partagée qui ouvre le sélecteur", () => {
+    expect(resolveSlashCommandOutcome({ action: "bots" })).toEqual({
+      kind: "open_bot_selector",
+    });
+  });
+
+  it("n'est pas exclue du mode Agent", () => {
+    expect(AGENT_EXCLUDED_SLASH_ACTIONS.has("bots")).toBe(false);
+  });
+
+  it("est proposée en mode Agent comme en mode Chat", () => {
+    expect(names({ mode: "agent" })).toContain("bots");
+    expect(names({ isHome: true, mode: "chat" })).toContain("bots");
+    expect(names({ isHome: false, mode: "chat" })).toContain("bots");
+  });
+
+  it("reste joignable par ses anciens déclencheurs", () => {
+    // Le menu n'affiche que `name`, mais la frappe `/agents` doit encore
+    // retrouver l'entrée.
+    for (const trigger of ["agent", "agents", "bot", "ia-agents"]) {
+      const found = getFilteredSlashCommands(trigger).filter((command) =>
+        [command.name, ...(command.aliases ?? [])].includes(trigger)
+      );
+      expect(found.map((command) => command.name)).toEqual(["bots"]);
+    }
+  });
+
+  it("est retirée aux comptes Free, comme les commandes personnalisées", () => {
+    for (const isHome of [true, false]) {
+      const list = names({ isFree: true, isHome, mode: "chat" });
+      expect(list).not.toContain("bots");
+      expect(list).not.toContain("custom");
     }
   });
 });

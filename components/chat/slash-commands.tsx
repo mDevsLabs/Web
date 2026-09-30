@@ -3,7 +3,6 @@
 import {
   BarChart3Icon,
   BombIcon,
-  BotIcon,
   BrainIcon,
   CalculatorIcon,
   CalendarClockIcon,
@@ -36,45 +35,13 @@ import {
 } from "lucide-react";
 import { type ReactNode, useCallback, useEffect, useRef } from "react";
 import { toast } from "sonner";
+import { BotGlyph } from "@/components/agents/bot-avatar";
+import type { SlashCommandAction } from "@/lib/chat/slash-command-catalog";
 import { AGENT_EXCLUDED_SLASH_ACTIONS } from "@/lib/chat/slash-command-outcomes";
 import type { CustomCommand } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
 
-export type SlashCommandAction =
-  | "new"
-  | "clear"
-  | "ghost"
-  | "rename"
-  | "model"
-  | "agents"
-  | "export"
-  | "theme"
-  | "delete"
-  | "purge"
-  | "usage"
-  | "library"
-  | "projects"
-  | "planning"
-  | "search"
-  | "home"
-  | "tasks"
-  | "tool-image"
-  | "tool-audio"
-  | "tool-web"
-  | "tool-code"
-  | "tool-weather"
-  | "tool-doc"
-  | "tool-suggest"
-  | "tool-calc"
-  | "tool-time"
-  | "tool-note"
-  | "tool-chart"
-  | "tool-memory"
-  | "tool-qr"
-  | "tool-summary"
-  | "quiz"
-  | "tools-clear"
-  | "custom";
+export type { SlashCommandAction } from "@/lib/chat/slash-command-catalog";
 
 export type SlashCommand = {
   name: string;
@@ -120,11 +87,14 @@ export const slashCommands: SlashCommand[] = [
     name: "model",
   },
   {
-    action: "agents",
-    aliases: ["agent", "agents", "ia-agents"],
-    description: "Ouvrir le menu de choix des agents",
-    icon: <BotIcon className="size-3.5" />,
-    name: "agents",
+    action: "bots",
+    // `agents`, `agent` et `ia-agents` restent des alias : ils étaient les
+    // déclencheurs de l'ancienne entrée, et les faire disparaître casserait les
+    // habitudes prises sans rien gagner — le menu n'affiche que `name`.
+    aliases: ["bot", "agents", "agent", "ia-agents"],
+    description: "Ouvrir le menu de choix des bots",
+    icon: <BotGlyph className="size-3.5" />,
+    name: "bots",
   },
   {
     action: "export",
@@ -410,7 +380,8 @@ function SlashCommandMenuItem({
 export type SlashCommandContext = {
   // Page d'accueil = aucune conversation en cours
   isHome?: boolean;
-  // Plans gratuits : /agents masquée
+  // Plans gratuits : /bots et les commandes personnalisées sont masquées — le
+  // sélecteur de bots lui-même ne s'affiche pas sur ces comptes.
   isFree?: boolean;
   // Mode d'exécution : « agent » filtre les commandes sans sens dans l'espace
   // Agent (mode fantôme, quiz, outils propres au Chat) et remappe les toggles
@@ -462,13 +433,14 @@ export function getFilteredSlashCommands(
   if (context?.isHome) {
     // Pas de conversation à exporter sur l'accueil
     list = list.filter((cmd) => cmd.action !== "export");
-  } else if (context?.isHome === false) {
-    // Conversation commencée : /agents masquée
-    list = list.filter((cmd) => cmd.action !== "agents");
   }
   if (context?.isFree) {
+    // `/bots` et les commandes personnalisées visent des fonctions réservées
+    // aux forfaits payants : les proposer à un compte Free mènerait à un sélecteur
+    // absent. Le filtre est posé ICI, sur le catalogue, plutôt que dans chaque
+    // composer — les deux sont alimentés par la même liste.
     list = list.filter(
-      (cmd) => cmd.action !== "agents" && cmd.action !== "custom"
+      (cmd) => cmd.action !== "bots" && cmd.action !== "custom"
     );
   }
   const q = query.toLowerCase().trim();

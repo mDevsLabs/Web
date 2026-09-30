@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  BotIcon,
   BrainIcon,
   CalendarClockIcon,
   CpuIcon,
@@ -16,6 +15,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { toast } from "sonner";
 import { AgentIcon } from "@/components/agents/agent-icon";
+import { BotGlyph } from "@/components/agents/bot-avatar";
 import type { ProjectLite } from "@/hooks/use-projects";
 import type { Agent, CustomCommand, McpServer, Skill } from "@/lib/db/schema";
 import { PluginIcon } from "@/lib/plugins/icon";
@@ -42,12 +42,15 @@ export type MentionSelectPayload =
 type MentionMenuProps = {
   id?: string;
   query: string;
-  projects: MentionProject[];
-  skills?: Skill[];
-  plugins?: PluginManifest[];
-  mcpServers?: McpServer[];
-  agents?: Agent[];
-  customCommands?: CustomCommand[];
+  // Volontairement `unknown` et non `T[]` : ces listes sortent de caches SWR,
+  // dont le contenu n'est garanti par aucun type. Les appelants doivent pouvoir
+  // passer un cache pollué sans que le menu casse.
+  projects: unknown;
+  skills?: unknown;
+  plugins?: unknown;
+  mcpServers?: unknown;
+  agents?: unknown;
+  customCommands?: unknown;
   isLoadingProjects?: boolean;
   /** Quota de mémoire atteint pour la portée courante : `add` n'est plus possible. */
   memoryAtLimit?: boolean;
@@ -86,16 +89,32 @@ export type FlatMentionItem =
       command: CustomCommand;
     };
 
+// Toutes les listes de ce menu sont lues dans des caches SWR. Une réponse
+// d'erreur (`{ code, message, status }`) ou un `null` empoisonnent le cache, et
+// le `= []` par défaut de SWR ne couvre que `undefined` : le premier `.map`
+// faisait alors tomber le composer entier, pas seulement le menu. On normalise
+// une fois pour toutes, ici, plutôt que de faire confiance à chaque appelant —
+// un menu de mention inerte coûte infiniment moins cher qu'un écran d'erreur.
+function toList<T>(value: unknown): T[] {
+  return Array.isArray(value) ? (value as T[]) : [];
+}
+
 function buildFlatList(
   query: string,
-  projects: MentionProject[],
-  skills: Skill[] = [],
-  mcpServers: McpServer[] = [],
-  agents: Agent[] = [],
-  customCommands: CustomCommand[] = [],
-  plugins: PluginManifest[] = []
+  projects: unknown,
+  skills: unknown,
+  mcpServers: unknown,
+  agents: unknown,
+  customCommands: unknown,
+  plugins: unknown
 ): FlatMentionItem[] {
   const q = query.toLowerCase().trim();
+  const projectList = toList<MentionProject>(projects);
+  const skillList = toList<Skill>(skills);
+  const mcpList = toList<McpServer>(mcpServers);
+  const agentList = toList<Agent>(agents);
+  const customCommandList = toList<CustomCommand>(customCommands);
+  const pluginList = toList<PluginManifest>(plugins);
 
   const memoryItems: FlatMentionItem[] =
     !q || "memory".includes(q) || "mémoire".includes(q) || "memoire".includes(q)
@@ -145,17 +164,17 @@ function buildFlatList(
     }));
 
   const filteredSkills = q
-    ? skills.filter(
+    ? skillList.filter(
         (s) =>
           s.name.toLowerCase().includes(q) ||
           (s.description ?? "").toLowerCase().includes(q) ||
           (Array.isArray(s.tags) &&
             s.tags.some((t) => t.toLowerCase().includes(q)))
       )
-    : skills;
+    : skillList;
 
   const filteredPlugins = q
-    ? plugins.filter(
+    ? pluginList.filter(
         (p) =>
           p.name.toLowerCase().includes(q) ||
           p.description.toLowerCase().includes(q) ||
@@ -166,9 +185,9 @@ function buildFlatList(
               tool.description.toLowerCase().includes(q)
           )
       )
-    : plugins;
+    : pluginList;
 
-  const filteredMcp = mcpServers.filter(
+  const filteredMcp = mcpList.filter(
     (m) =>
       m.isEnabled &&
       (!q ||
@@ -177,20 +196,20 @@ function buildFlatList(
   );
 
   const filteredProjects = q
-    ? projects.filter(
+    ? projectList.filter(
         (p) =>
           p.name.toLowerCase().includes(q) || p.name.toLowerCase().startsWith(q)
       )
-    : projects;
+    : projectList;
 
   const filteredAgents = q
-    ? agents.filter(
+    ? agentList.filter(
         (a) =>
           a.name.toLowerCase().includes(q) ||
           (a.description ?? "").toLowerCase().includes(q) ||
           (a.instructions ?? "").toLowerCase().includes(q)
       )
-    : agents;
+    : agentList;
 
   const skillItems: FlatMentionItem[] = filteredSkills.map((s) => ({
     id: s.id,
@@ -227,7 +246,7 @@ function buildFlatList(
     label: a.name,
   }));
 
-  const filteredCustom = customCommands.filter(
+  const filteredCustom = customCommandList.filter(
     (c) =>
       c.enabled &&
       (!q ||
@@ -257,12 +276,12 @@ function buildFlatList(
 
 export function getFilteredMentionItems(
   query: string,
-  projects: MentionProject[],
-  skills: Skill[] = [],
-  mcpServers: McpServer[] = [],
-  agents: Agent[] = [],
-  customCommands: CustomCommand[] = [],
-  plugins: PluginManifest[] = []
+  projects: unknown,
+  skills?: unknown,
+  mcpServers?: unknown,
+  agents?: unknown,
+  customCommands?: unknown,
+  plugins?: unknown
 ): FlatMentionItem[] {
   return buildFlatList(
     query,
@@ -670,8 +689,8 @@ function MentionItem({
       <div className="flex flex-col min-w-0">
         <span className="text-[13px] font-medium text-foreground truncate flex items-center gap-1.5">
           @{item.label}
-          <span className="text-[10px] bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-semibold px-1.5 py-0.2 rounded flex items-center gap-1">
-            <BotIcon className="size-3" /> Agent
+          <span className="text-[10px] bg-muted px-1.5 py-0.2 rounded font-semibold flex items-center gap-1">
+            <BotGlyph className="size-3" /> Bot
           </span>
         </span>
         {(item as any).agent.description && (
@@ -687,12 +706,12 @@ function MentionItem({
 export function MentionMenu({
   id = "composer-mention-listbox",
   query,
-  projects,
-  skills = [],
-  plugins = [],
-  mcpServers = [],
-  agents = [],
-  customCommands = [],
+  projects: rawProjects,
+  skills: rawSkills,
+  plugins: rawPlugins,
+  mcpServers: rawMcpServers,
+  agents: rawAgents,
+  customCommands: rawCustomCommands,
   isLoadingProjects,
   memoryAtLimit,
   memoryCount,
@@ -703,6 +722,15 @@ export function MentionMenu({
   supportsTools = true,
 }: MentionMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
+
+  // Normalisation immédiate : sans elle `projects.length` levait sur un cache
+  // non tableau, et le composer entier tombait avec.
+  const projects = toList<MentionProject>(rawProjects);
+  const skills = toList<Skill>(rawSkills);
+  const plugins = toList<PluginManifest>(rawPlugins);
+  const mcpServers = toList<McpServer>(rawMcpServers);
+  const agents = toList<Agent>(rawAgents);
+  const customCommands = toList<CustomCommand>(rawCustomCommands);
 
   const flat = useMemo(
     () =>
@@ -932,21 +960,21 @@ export function MentionMenu({
           })
         )}
 
-        {/* Section Agents */}
+        {/* Section Bots */}
         {agentItems.length > 0 || query.trim().length === 0 ? (
           <>
             <div className="px-4 py-2 mt-1 bg-muted/40 border-t border-b border-border/40 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
-              <BotIcon className="size-3.5" /> Agents
+              <BotGlyph className="size-3.5" /> Bots
             </div>
             {agentItems.length === 0 ? (
               <div className="px-4 py-2.5 text-[12px] text-muted-foreground/60 flex flex-col gap-1">
-                <span>Aucun agent correspondant</span>
+                <span>Aucun bot correspondant</span>
                 <Link
                   className="text-primary hover:underline text-xs"
                   href="/agents"
                   onClick={() => _onClose()}
                 >
-                  Créer un agent →
+                  Créer un bot →
                 </Link>
               </div>
             ) : (

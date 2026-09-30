@@ -2,7 +2,6 @@
 
 import {
   BookOpenIcon,
-  BotIcon,
   BrainIcon,
   BriefcaseIcon,
   CameraIcon,
@@ -30,11 +29,19 @@ import {
   WrenchIcon,
   ZapIcon,
 } from "lucide-react";
+import { BotGlyph, type BotGlyphProps } from "@/components/agents/bot-avatar";
 import { cn } from "@/lib/utils";
 
-const ICON_MAP: Record<string, any> = {
+/**
+ * Contrat commun aux icônes du registre : Lucide pour toutes, `BotGlyph` pour
+ * « bot ». Les deux acceptent les mêmes props, donc `<Icon size={…} />` reste
+ * valide quelle que soit l'entrée tirée du registre.
+ */
+type IconComponent = (props: BotGlyphProps) => React.ReactNode;
+
+const ICON_MAP: Record<string, IconComponent> = {
   book: BookOpenIcon,
-  bot: BotIcon,
+  bot: BotGlyph,
   brain: BrainIcon,
   briefcase: BriefcaseIcon,
   camera: CameraIcon,

@@ -3,6 +3,7 @@ import { z } from "zod";
 import {
   contactHeaders,
   fetchPublicJson,
+  PUBLIC_API_LARGE_MAX_BYTES,
   sourceRef,
   truncateText,
 } from "../shared/public-api";
@@ -13,6 +14,11 @@ const EUROSTAT = "https://ec.europa.eu/eurostat/api/dissemination";
 const headers = contactHeaders("mAI-Web");
 const MAX_OBSERVATIONS = 200;
 const MAX_DIMENSION_VALUES = 100;
+const MAX_COMPARE_COUNTRIES = 10;
+
+// Un jeu Eurostat complet dépasse régulièrement le mégoctet : la requête est
+// faite sans filtre `geo`/`time` serré, le plafond par défaut la refusait à tort.
+const requestOptions = { maxBytes: PUBLIC_API_LARGE_MAX_BYTES } as const;
 
 const datasetCodeSchema = z
   .string()
@@ -177,14 +183,26 @@ function decodeEurostatIndex(rawIndex: string, data: EurostatData) {
       ])
     ),
     index: rawIndex,
+    // Conservé pour retrouver un libellé de période : les positions sont la
+    // seule voie inverse de `category.index`, qui est un code → position.
+    positions,
     status: status ?? null,
   };
 }
 
-function eurostatDimensions(data: EurostatData) {
+function eurostatDimensions(
+  data: EurostatData,
+  usedCodes?: Map<string, Set<string>>
+) {
   return data.id.map((id) => {
     const dimension = data.dimension[id];
+    // Détail « used » : on ne renvoie que les codes réellement présents dans les
+    // observations retournées. Un jeu comme `demo_pjanind` déclare plusieurs
+    // centaines de codes de fréquence, tous absents d'une lecture filtrée —
+    // les renvoyer noie l'indicateur demandé sous des milliers de lignes.
+    const used = usedCodes?.get(id);
     const values = Object.entries(dimension?.category.index ?? {})
+      .filter(([code]) => !used || used.has(code))
       .sort(([, left], [, right]) => left - right)
       .slice(0, MAX_DIMENSION_VALUES)
       .map(([code, position]) => ({
@@ -206,9 +224,10 @@ function eurostatUrl(dataset: string): string {
 
 export const getEurostatData = tool({
   description:
-    "Lit des données Eurostat JSON-stat pour un jeu, des pays et des périodes, puis renvoie des observations compactes avec leurs dimensions.",
+    "Lit des données Eurostat JSON-stat pour un jeu, des pays et des périodes, puis renvoie des observations compactes avec leurs dimensions. Le détail des dimensions est réductible pour ne pas noyer l'indicateur demandé.",
   execute: async ({
     dataset,
+    dimensionsDetail = "full",
     filters,
     geo,
     indicator,
@@ -232,7 +251,11 @@ export const getEurostatData = tool({
     if (untilTimePeriod)
       url.searchParams.set("untilTimePeriod", untilTimePeriod);
 
-    const result = await fetchPublicJson<unknown>(url.href, headers);
+    const result = await fetchPublicJson<unknown>(
+      url.href,
+      headers,
+      requestOptions
+    );
     if (!result.ok) return { error: result.error };
     const parsed = eurostatDataSchema.safeParse(result.data);
     if (!parsed.success) {
@@ -264,12 +287,31 @@ export const getEurostatData = tool({
           observation !== null
       );
 
+    const returned = observations.slice(0, limit);
+    // Codes effectivement rencontrés, servant au mode de détail « used ».
+    const usedCodes =
+      dimensionsDetail === "used"
+        ? new Map(
+            data.id.map((id) => [
+              id,
+              new Set(
+                returned.flatMap((observation) => {
+                  const code = observation.dimensions[id];
+                  return code ? [code] : [];
+                })
+              ),
+            ])
+          )
+        : undefined;
+
     return {
       dataset: normalizedDataset,
-      dimensions: eurostatDimensions(data),
+      dimensions:
+        dimensionsDetail === "none" ? [] : eurostatDimensions(data, usedCodes),
       label: truncateText(data.label, 500),
-      observations: observations.slice(0, limit),
+      observations: returned,
       source: sourceRef(url.href, `Eurostat — ${normalizedDataset}`),
+      totalMatches: observations.length,
       totalReturned: Math.min(observations.length, limit),
       updated: truncateText(data.updated, 100),
     };
@@ -278,6 +320,12 @@ export const getEurostatData = tool({
     dataset: datasetCodeSchema.describe(
       "Code du jeu Eurostat, par exemple nama_10_gdp"
     ),
+    dimensionsDetail: z
+      .enum(["full", "used", "none"])
+      .default("full")
+      .describe(
+        "Détail des dimensions renvoyées : full (tous les codes), used (seuls ceux des observations retournées), none (dimensions omises)"
+      ),
     filters: filtersSchema
       .optional()
       .describe("Filtres par dimension, par exemple na_item ou unit"),
@@ -312,7 +360,11 @@ export const getEurostatDatasetMetadata = tool({
       `${EUROSTAT}/catalogue/jsonld/ESTAT/${encodeURIComponent(normalizedDataset)}/latest`
     );
     url.searchParams.set("lang", "fr");
-    const result = await fetchPublicJson<unknown>(url.href, headers);
+    const result = await fetchPublicJson<unknown>(
+      url.href,
+      headers,
+      requestOptions
+    );
     if (!result.ok) return { error: result.error };
     const parsed = eurostatMetadataSchema.safeParse(result.data);
     if (!parsed.success) {
@@ -362,8 +414,188 @@ export const getEurostatDatasetMetadata = tool({
   }),
 });
 
+/**
+ * Comparaison de pays sur un indicateur Eurostat. Elle ne réinvente rien : elle
+ * prépare la requête, puis classe et met en forme ce que l'API a renvoyé. Sans
+ * cela le modele doit faire l'addition, l'écart et le rang lui-même sur une
+ * grille d'observations, ce qu'il rate régulièrement.
+ */
+export const compareEurostatCountries = tool({
+  description:
+    "Comparer un indicateur Eurostat entre deux à dix pays pour une période donnée : valeur par pays, rang, écart avec le leader, moyenne de l'échantillon et évolution sur la période.",
+  execute: async ({
+    dataset,
+    geo,
+    indicator,
+    indicatorDimension = "indic_de",
+    sinceTimePeriod,
+    time,
+    untilTimePeriod,
+  }) => {
+    const countries = [...new Set(asValues(geo))].slice(
+      0,
+      MAX_COMPARE_COUNTRIES
+    );
+    if (countries.length < 2) {
+      return {
+        error: `Indiquez au moins deux codes pays distincts (maximum ${MAX_COMPARE_COUNTRIES}).`,
+      };
+    }
+
+    const normalizedDataset = dataset.toLowerCase();
+    const url = new URL(eurostatUrl(normalizedDataset));
+    url.searchParams.set("format", "JSON");
+    setEurostatFilter(url, "geo", countries);
+    setEurostatFilter(url, indicatorDimension, indicator);
+    setEurostatFilter(url, "time", time);
+    if (sinceTimePeriod)
+      url.searchParams.set("sinceTimePeriod", sinceTimePeriod);
+    if (untilTimePeriod)
+      url.searchParams.set("untilTimePeriod", untilTimePeriod);
+
+    const result = await fetchPublicJson<unknown>(
+      url.href,
+      headers,
+      requestOptions
+    );
+    if (!result.ok) return { error: result.error };
+    const parsed = eurostatDataSchema.safeParse(result.data);
+    if (!parsed.success) {
+      return { error: "Réponse de données Eurostat invalide." };
+    }
+    const data = parsed.data;
+    if (!data.id.includes("geo")) {
+      return {
+        error:
+          "Ce jeu Eurostat n'est pas ventilé par pays (dimension « geo » absente).",
+      };
+    }
+
+    const geoLabels = data.dimension.geo?.category.label ?? {};
+    const timePosition = data.id.indexOf("time");
+    const timeCodes = new Map(
+      Object.entries(data.dimension.time?.category.index ?? {}).map(
+        ([code, position]) => [position, code]
+      )
+    );
+
+    // Par pays : série période → valeur, l'ordre de la grille n'est pas garanti.
+    const byCountry = new Map<
+      string,
+      Array<{ period: string | null; value: number | null }>
+    >();
+    for (const [index, raw] of Object.entries(data.value)) {
+      const decoded = decodeEurostatIndex(index, data);
+      if (!decoded) continue;
+      const country = decoded.dimensions.geo;
+      if (!country) continue;
+      const rawValue = data.value[index];
+      const value =
+        typeof rawValue === "number" && Number.isFinite(rawValue)
+          ? rawValue
+          : null;
+      const period =
+        timePosition >= 0
+          ? (timeCodes.get(decoded.positions[timePosition] ?? -1) ?? null)
+          : null;
+      const bucket = byCountry.get(country) ?? [];
+      bucket.push({ period, value });
+      byCountry.set(country, bucket);
+    }
+
+    const ranked = [...byCountry.entries()]
+      .map(([country, series]) => {
+        const usable = series
+          .filter(
+            (point): point is { period: string; value: number } =>
+              typeof point.value === "number"
+          )
+          .sort((left, right) => left.period.localeCompare(right.period));
+        const last = usable.at(-1) ?? null;
+        const first = usable[0] ?? null;
+        return {
+          change:
+            last && first && first.value !== 0
+              ? Number(
+                  (
+                    ((last.value - first.value) / Math.abs(first.value)) *
+                    100
+                  ).toFixed(1)
+                )
+              : null,
+          country,
+          label: truncateText(geoLabels[country], 200),
+          period: last?.period ?? null,
+          series: usable.slice(-12),
+          value: last?.value ?? null,
+        };
+      })
+      .sort(
+        (left, right) =>
+          (right.value ?? Number.NEGATIVE_INFINITY) -
+          (left.value ?? Number.NEGATIVE_INFINITY)
+      )
+      .map((entry, index) => ({ ...entry, rank: index + 1 }));
+
+    const values = ranked
+      .map((entry) => entry.value)
+      .filter((value): value is number => value !== null);
+    const leader = values.length > 0 ? Math.max(...values) : null;
+
+    return {
+      countries: ranked.map((entry) => ({
+        ...entry,
+        gapToLeader:
+          leader !== null && entry.value !== null
+            ? Number((entry.value - leader).toFixed(4))
+            : null,
+      })),
+      dataset: normalizedDataset,
+      leader: ranked.find((entry) => entry.value !== null)?.country ?? null,
+      mean:
+        values.length > 0
+          ? Number(
+              (
+                values.reduce((sum, value) => sum + value, 0) / values.length
+              ).toFixed(4)
+            )
+          : null,
+      missing: countries.filter((country) => !byCountry.has(country)),
+      source: sourceRef(
+        url.href,
+        `Eurostat — comparaison ${normalizedDataset}`
+      ),
+      totalCompared: values.length,
+    };
+  },
+  inputSchema: z.object({
+    dataset: datasetCodeSchema.describe(
+      "Code du jeu Eurostat, par exemple nama_10_gdp"
+    ),
+    geo: filterValuesSchema.describe(
+      "Codes pays géographiques à comparer, par exemple FR et DE"
+    ),
+    indicator: filterValuesSchema
+      .optional()
+      .describe("Codes d’indicateur de la dimension du jeu"),
+    indicatorDimension: dimensionSchema.describe(
+      "Dimension qui reçoit l’indicateur (défaut indic_de)"
+    ),
+    sinceTimePeriod: periodSchema
+      .optional()
+      .describe("Première période incluse"),
+    time: filterValuesSchema
+      .optional()
+      .describe("Périodes Eurostat, par exemple 2020 ou 2020-Q1"),
+    untilTimePeriod: periodSchema
+      .optional()
+      .describe("Dernière période incluse"),
+  }),
+});
+
 export const eurostatPlugin: PluginDefinition = {
   createTools: () => ({
+    compareEurostatCountries,
     getEurostatData,
     getEurostatDatasetMetadata,
   }),

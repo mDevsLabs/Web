@@ -507,6 +507,23 @@ export type Stream = InferSelectModel<typeof stream>;
 export const usageEvent = pgTable(
   "UsageEvent",
   {
+    // Conversation à l'origine de l'appel (migration 0033). Volontairement
+    // SANS clé étrangère vers `Chat.id` : les lignes de planification peuvent
+    // être écrites avant que la conversation ne soit persistée, et une FK les
+    // refuserait. Historique non backfillable → `chatId` peut être nul, la
+    // page Statistiques lit donc `COALESCE` côté requête.
+    chatId: uuid("chatId"),
+    // Mode et projet de la conversation, FONDUS au moment de l'appel
+    // (migration 0035). Sans ces deux colonnes, les filtres « mode » et
+    // « projet » de la page Statistiques doivent joindre `Chat` — et cette
+    // jointure disparaît avec la conversation : supprimer un chat faisait
+    // baisser le total de tokens. Dénormalisé, ce n'est pas une redondance
+    // mais la seule source qui survit à la suppression ; `Chat.projectId` est
+    // de plus en `ON DELETE SET NULL`, donc l'autre source perd l'information
+    // dès qu'un projet est supprimé. Volontairement sans clé étrangère :
+    // l'écriture est sur le chemin critique du quota.
+    chatMode: varchar("chatMode", { enum: ["chat", "agent"] }),
+    chatProjectId: uuid("chatProjectId"),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     id: text("id").primaryKey().notNull(),
     inputTokens: integer("inputTokens").notNull().default(0),
@@ -521,8 +538,14 @@ export const usageEvent = pgTable(
     userId: text("userId").notNull(),
   },
   (table) => ({
+    chatIdx: index("UsageEvent_chatId_idx").on(table.chatId),
     userCreatedIdx: index("UsageEvent_userId_createdAt_idx").on(
       table.userId,
+      table.createdAt
+    ),
+    userModeCreatedIdx: index("UsageEvent_userId_chatMode_createdAt_idx").on(
+      table.userId,
+      table.chatMode,
       table.createdAt
     ),
   })
@@ -842,6 +865,11 @@ export const userPreferences = pgTable("user_preferences", {
   defaultChatVisibility: varchar("defaultChatVisibility", { length: 20 })
     .notNull()
     .default("private"),
+  // Locale BCP-47 de la dictée vocale ; `auto` = langue du navigateur.
+  // Liste de référence et repli : lib/i18n/languages.ts.
+  defaultDictationLanguage: varchar("defaultDictationLanguage", { length: 20 })
+    .notNull()
+    .default("auto"),
   defaultImageModel: text("defaultImageModel")
     .notNull()
     .default("black-forest-labs/flux-schnell"),
@@ -852,6 +880,12 @@ export const userPreferences = pgTable("user_preferences", {
     .notNull()
     .default(0.7),
   defaultTopP: doublePrecision("defaultTopP").notNull().default(0.9),
+  // Cible DeepL du bouton « Traduire » sur une réponse de l'IA.
+  defaultTranslationLanguage: varchar("defaultTranslationLanguage", {
+    length: 10,
+  })
+    .notNull()
+    .default("EN"),
   ghostMemoryEnabled: boolean("ghostMemoryEnabled").notNull().default(false),
   showAgentChatIcons: boolean("showAgentChatIcons").notNull().default(true),
   updatedAt: timestamp("updatedAt").notNull().defaultNow(),
@@ -1303,6 +1337,13 @@ export const toolExecution = pgTable(
     })
       .notNull()
       .default("internal"),
+    // Chemin CHAT (migration 0036). `runId` valant NULL, la ligne décrit un
+    // appel d'outil effectué dans une conversation et non dans un run Agent :
+    // c'est ce qui permet de compter les plugins utilisés en mode Chat. La
+    // conversation est un pointeur souple — sans clé étrangère, pour qu'une
+    // suppression ne fasse pas disparaître l'historique d'appels, comme pour
+    // `UsageEvent.chatId`.
+    chatId: uuid("chatId"),
     completedAt: timestamp("completedAt"),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     durationMs: integer("durationMs"),
@@ -1315,9 +1356,11 @@ export const toolExecution = pgTable(
     parentExecutionId: uuid("parentExecutionId"),
     retryAfterMs: integer("retryAfterMs"),
     retryable: boolean("retryable").notNull().default(false),
-    runId: uuid("runId")
-      .notNull()
-      .references(() => agentRun.id, { onDelete: "cascade" }),
+    // Nullable depuis la migration 0036 : `NULL` identifie une exécution du
+    // chemin Chat, qui n'appartient à aucun run. La clé étrangère est
+    // conservée — une valeur présente pointe toujours un run existant, et la
+    // suppression du run supprime toujours ses exécutions.
+    runId: uuid("runId").references(() => agentRun.id, { onDelete: "cascade" }),
     startedAt: timestamp("startedAt"),
     status: varchar("status", {
       enum: ["running", "completed", "failed", "denied", "cancelled"],
@@ -1326,6 +1369,7 @@ export const toolExecution = pgTable(
       .default("running"),
     stepId: uuid("stepId"),
     toolId: text("toolId").notNull(),
+    userId: text("userId"),
   },
   (table) => ({
     operationUnique: uniqueIndex(
@@ -1333,6 +1377,11 @@ export const toolExecution = pgTable(
     ).on(table.runId, table.operationKey, table.attempt),
     runIdIdx: index("ToolExecution_runId_idx").on(table.runId),
     toolIdIdx: index("ToolExecution_toolId_idx").on(table.toolId),
+    // Lecture « mes appels d'outils sur la période », tous chemins confondus.
+    userCreatedIdx: index("ToolExecution_userId_createdAt_idx").on(
+      table.userId,
+      table.createdAt
+    ),
   })
 );
 

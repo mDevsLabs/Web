@@ -1,11 +1,18 @@
 {
   "id": "weather",
   "name": "Météo",
-  "version": "1.1.0",
-  "description": "Météo actuelle et prévisions de 1 à 7 jours pour une ville ou des coordonnées, en Celsius ou Fahrenheit.",
+  "version": "1.2.0",
+  "description": "Météo actuelle et prévisions de 1 à 7 jours pour une ville ou des coordonnées, en Celsius ou Fahrenheit, avec historique, unités de vent au choix et comparaison de villes.",
   "author": "mAI",
   "category": "meteo",
-  "tags": ["météo", "prévisions", "climat", "température", "vent"],
+  "tags": [
+    "météo",
+    "prévisions",
+    "climat",
+    "température",
+    "vent",
+    "comparaison"
+  ],
   "icon": { "type": "lucide", "name": "CloudSun" },
   "minTier": "plus",
   "permissions": {
@@ -16,10 +23,16 @@
   },
   "tools": [
     {
-      "description": "Météo actuelle et prévisions pour une ville ou des coordonnées.",
+      "description": "Météo actuelle et prévisions pour une ville ou des coordonnées, avec résumé et lever/coucher du soleil.",
       "id": "getWeather",
       "label": "Météo",
-      "systemHint": "getWeather (météo actuelle et prévisions 1 à 7 jours, celsius/fahrenheit, par ville ou coordonnées)"
+      "systemHint": "getWeather (météo actuelle et prévisions 1 à 7 jours, historique 92 jours, celsius/fahrenheit, kmh/ms/mph/nœuds, par ville ou coordonnées)"
+    },
+    {
+      "description": "Comparaison de la météo actuelle de deux à cinq villes, avec classement.",
+      "id": "compareWeather",
+      "label": "Comparer des villes",
+      "systemHint": "compareWeather (comparer la météo de 2 à 5 villes, classement et écart de température)"
     }
   ]
 }

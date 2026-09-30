@@ -1,8 +1,8 @@
 {
   "id": "wikidata",
   "name": "Wikidata",
-  "version": "1.0.0",
-  "description": "Recherche et lecture d’entités, propriétés et liens de Wikidata.",
+  "version": "1.1.0",
+  "description": "Recherche et lecture d’entités, propriétés et liens de Wikidata, avec résolution des identifiants P et Q en libellés lisibles.",
   "author": "mAI",
   "category": "research",
   "tags": ["wikidata", "knowledge graph", "entités", "encyclopédie", "données"],
@@ -24,8 +24,14 @@
     {
       "id": "getWikidataEntity",
       "label": "Lire une entité",
-      "description": "Libellés, alias, propriétés et liens d’une entité Wikidata.",
-      "systemHint": "getWikidataEntity (lit une entité Wikidata à partir de son identifiant Q ou P)"
+      "description": "Libellés, alias, propriétés et liens d’une entité Wikidata, identifiants traduits.",
+      "systemHint": "getWikidataEntity (lit une entité Wikidata à partir de son identifiant Q ou P, avec le libellé de chaque propriété et de chaque entité liée)"
+    },
+    {
+      "id": "getWikidataEntities",
+      "label": "Comparer des entités",
+      "description": "Lit jusqu’à dix entités Wikidata en une requête pour les comparer.",
+      "systemHint": "getWikidataEntities (lit plusieurs entités Wikidata Q d'un coup pour les comparer, avec le nombre de propriétés et de sitelinks)"
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
   "id": "eurostat",
   "name": "Eurostat",
-  "version": "1.0.0",
-  "description": "Données et métadonnées publiques des statistiques européennes d’Eurostat.",
+  "version": "1.1.0",
+  "description": "Données et métadonnées publiques des statistiques européennes d’Eurostat, avec comparaison de pays sur un indicateur.",
   "author": "mAI",
   "category": "data",
   "tags": [
@@ -11,7 +11,8 @@
     "statistiques",
     "données",
     "économie",
-    "démographie"
+    "démographie",
+    "comparaison"
   ],
   "icon": { "type": "lucide", "name": "Landmark" },
   "minTier": "plus",
@@ -25,14 +26,20 @@
     {
       "id": "getEurostatData",
       "label": "Lire des données",
-      "description": "Observations Eurostat bornées pour un jeu et des filtres.",
-      "systemHint": "getEurostatData (lit des observations Eurostat pour un jeu, des pays, des indicateurs et une période)"
+      "description": "Observations Eurostat bornées pour un jeu et des filtres, avec détail des dimensions réductible.",
+      "systemHint": "getEurostatData (lit des observations Eurostat pour un jeu, des pays, des indicateurs et une période ; dimensionsDetail permet de ne renvoyer que les codes utilisés)"
     },
     {
       "id": "getEurostatDatasetMetadata",
       "label": "Métadonnées d’un jeu",
       "description": "Nom, description, couverture et licence d’un jeu Eurostat.",
       "systemHint": "getEurostatDatasetMetadata (consulte les métadonnées publiques d’un jeu Eurostat)"
+    },
+    {
+      "id": "compareEurostatCountries",
+      "label": "Comparer des pays",
+      "description": "Compare un indicateur Eurostat entre deux à dix pays, avec rang et écart au leader.",
+      "systemHint": "compareEurostatCountries (compare un indicateur Eurostat entre 2 à 10 pays : valeur, rang, écart avec le leader, moyenne et évolution sur la période)"
     }
   ]
 }

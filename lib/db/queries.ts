@@ -22,10 +22,17 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import type { ArtifactKind } from "@/components/chat/artifact";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
+import type { ToolCategory } from "@/lib/agent/types";
 import { resolveBillableTotal } from "@/lib/agent/usage";
 import { dedupeAgentTemplatesByName } from "@/lib/agent-templates/dedupe";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { resolveDatabaseUrl } from "@/lib/db/connection-string";
+import {
+  AUTO_DICTATION_LANGUAGE,
+  DEFAULT_TRANSLATION_TARGET,
+  normalizeDictationLanguage,
+  normalizeTranslationTarget,
+} from "@/lib/i18n/languages";
 import {
   redactMcpError,
   redactMcpText,
@@ -63,6 +70,7 @@ import {
   skillVersion,
   stream,
   suggestion,
+  toolExecution,
   userMcpPrefs,
   userMemory,
   vote,
@@ -2477,6 +2485,57 @@ export async function getMessagesByChatId({ id }: { id: string }) {
   }
 }
 
+/**
+ * Historique complet d'un utilisateur, à plat, pour l'export Markdown.
+ *
+ * Une seule requête, et non `getChatsByUserId` suivi d'un
+ * `getMessagesByChatId` par conversation : l'export porte sur TOUT
+ * l'historique, donc la variante N+1 reviendrait à faire une requête par
+ * discussion — plusieurs centaines sur un compte ancien. Le groupement par
+ * `chatId` est fait par l'appelant.
+ *
+ * `userId` est comparé en texte : la colonne est un `text` et contient
+ * indifféremment un uuid, un pseudo ou un e-mail selon l'origine de la ligne.
+ */
+export async function getMessagesForExportByUserId({
+  userId,
+  limit,
+}: {
+  userId: string;
+  limit: number;
+}): Promise<
+  {
+    chatCreatedAt: Date;
+    chatId: string;
+    chatTags: string[];
+    chatTitle: string;
+    createdAt: Date;
+    parts: unknown;
+    role: string;
+  }[]
+> {
+  try {
+    const db = await dbReady();
+    return (await db
+      .select({
+        chatCreatedAt: chat.createdAt,
+        chatId: chat.id,
+        chatTags: chat.tags,
+        chatTitle: chat.title,
+        createdAt: message.createdAt,
+        parts: message.parts,
+        role: message.role,
+      })
+      .from(message)
+      .innerJoin(chat, eq(message.chatId, chat.id))
+      .where(sql`${chat.userId}::text = ${userId}::text`)
+      .orderBy(desc(chat.createdAt), asc(message.createdAt))
+      .limit(limit)) as never;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
 export async function messageBelongsToChat({
   chatId,
   messageId,
@@ -2971,6 +3030,9 @@ export async function recordTokenUsage({
   model = "default",
   isGhostMode = false,
   idempotencyKey,
+  chatId = null,
+  chatMode = null,
+  chatProjectId = null,
 }: {
   userId: string;
   userEmail?: string | null;
@@ -2985,6 +3047,18 @@ export async function recordTokenUsage({
   model?: string;
   isGhostMode?: boolean;
   idempotencyKey?: string;
+  // Conversation à l'origine de l'appel (migration 0033). Facultatif : les
+  // lignes de planification peuvent être écrites sans conversation persistée.
+  // Volontairement hors du chemin critique du quota — une colonne NOT NULL
+  // ferait échouer le débit, qui doit rester garanti même si `UsageEvent` est
+  // en retard de migration (le `catch` plus bas conserve alors le débit).
+  chatId?: string | null;
+  // Mode et projet de cette conversation, figés ici (migration 0035) : la
+  // jointure `Chat` disparaît avec la conversation, et `Chat.projectId` est en
+  // `ON DELETE SET NULL`. Un filtre de la page Statistiques appliqué plus tard
+  // ne doit donc pas dépendre du fait que la conversation existe encore.
+  chatMode?: "chat" | "agent" | null;
+  chatProjectId?: string | null;
 }) {
   const actualTotal = resolveBillableTotal({
     inputTokens,
@@ -3029,8 +3103,70 @@ export async function recordTokenUsage({
       const safeOutputTokens = Math.max(0, Math.floor(outputTokens || 0));
       const safeReasoningTokens = Math.max(0, Math.floor(reasoningTokens || 0));
       const safeTotalTokens = Math.max(0, Math.floor(actualTotal));
-      try {
-        const inserted = await _rawClient`
+      // Un `chatId` non uuid (identifiant historique d'une autre forme) doit
+      // faire perdre le lien, pas l'INSERT : on l'écarte plutôt que de laisser
+      // Postgres rejeter l'ensemble de la ligne.
+      const safeChatId =
+        chatId && /^[0-9a-fA-F-]{36}$/.test(chatId) ? chatId : null;
+      // INSERT avec le lien de conversation. Sur une base pas encore migrée en
+      // 0033, Postgres rejette la colonne (42703) et l'on RETOMBE sur l'INSERT
+      // historique : le lien est perdu, pas la ligne. Ce repli est ce qui rend
+      // le déploiement sans risque — un environnement qui traîne une migration
+      // de retard continue d'enregistrer sa consommation au lieu de la
+      // perdre entièrement. La migration 0035 ajoute un TROISIÈME palier, dans
+      // le même ordre : on descend d'un cran à chaque 42703, jamais plus bas.
+      //
+      // `client` est capturé localement : le garde `if (!_rawClient) return`
+      // plus haut ne survit pas à la fermeture, et sans cette capture chaque
+      // requête serait typée `Sql | null`.
+      const client = _rawClient;
+      // Même règle que pour `chatId` : un identifiant de projet mal formé perd
+      // l'attribution, il ne doit pas faire échouer l'INSERT entier.
+      const safeChatProjectId =
+        chatProjectId && /^[0-9a-fA-F-]{36}$/.test(chatProjectId)
+          ? chatProjectId
+          : null;
+      // `chatMode` est une énumération fermée, un cast `::varchar` inutile :
+      // `postgres.js` l'échappe comme une chaîne.
+      const safeChatMode =
+        chatMode === "agent" ? "agent" : chatMode === "chat" ? "chat" : null;
+      const insertWithAttribution = async (
+        includeChatId: boolean,
+        includeAttribution: boolean
+      ) => {
+        if (includeAttribution) {
+          return client`
+            INSERT INTO "UsageEvent" (
+              "id", "userId", "model", "inputTokens", "outputTokens",
+              "reasoningTokens", "totalTokens", "isGhostMode", "chatId",
+              "chatMode", "chatProjectId"
+            )
+            VALUES (
+              ${safeKey}, ${targetUserId}, ${model}, ${safeInputTokens},
+              ${safeOutputTokens}, ${safeReasoningTokens},
+              ${safeTotalTokens}, ${isGhostMode}, ${safeChatId}::uuid,
+              ${safeChatMode}::varchar, ${safeChatProjectId}::uuid
+            )
+            ON CONFLICT ("id") DO NOTHING
+            RETURNING "id"
+          `;
+        }
+        if (includeChatId) {
+          return client`
+            INSERT INTO "UsageEvent" (
+              "id", "userId", "model", "inputTokens", "outputTokens",
+              "reasoningTokens", "totalTokens", "isGhostMode", "chatId"
+            )
+            VALUES (
+              ${safeKey}, ${targetUserId}, ${model}, ${safeInputTokens},
+              ${safeOutputTokens}, ${safeReasoningTokens},
+              ${safeTotalTokens}, ${isGhostMode}, ${safeChatId}::uuid
+            )
+            ON CONFLICT ("id") DO NOTHING
+            RETURNING "id"
+          `;
+        }
+        return client`
           INSERT INTO "UsageEvent" (
             "id", "userId", "model", "inputTokens", "outputTokens",
             "reasoningTokens", "totalTokens", "isGhostMode"
@@ -3043,14 +3179,39 @@ export async function recordTokenUsage({
           ON CONFLICT ("id") DO NOTHING
           RETURNING "id"
         `;
+      };
+
+      try {
+        // On ne lit que la LONGUEUR de la liste renvoyée (`ON CONFLICT DO
+        // NOTHING` + `RETURNING`) : le type précis de ligne n'a pas d'intérêt.
+        // Les paliers sont essayés dans l'ordre décroissant de fidélité ; seul
+        // un 42703 (colonne absente) fait descendre d'un cran, toute autre
+        // erreur est réelle et remontée plus bas.
+        const attempts: [boolean, boolean][] = [
+          [true, true],
+          [true, false],
+          [false, false],
+        ];
+        let inserted: unknown[] = [];
+        for (const [withChatId, withAttribution] of attempts) {
+          try {
+            inserted = await insertWithAttribution(withChatId, withAttribution);
+            break;
+          } catch (tierError) {
+            if ((tierError as { code?: string })?.code !== "42703") {
+              throw tierError;
+            }
+          }
+        }
         shouldDebit = inserted.length > 0;
         if (shouldDebit) {
           insertedUsageEventKey = safeKey;
         }
       } catch (eventError) {
         // La table est ajoutée par la migration 0026, `reasoningTokens` par la
-        // 0030. Tant qu'elles ne sont pas appliquées, conserver le comptage
-        // historique plutôt que de le perdre.
+        // 0030, `chatId` par la 0033, l'attribution par la 0035. Tant qu'elles
+        // ne sont pas appliquées, conserver le comptage historique plutôt que
+        // de le perdre.
         console.warn(
           "UsageEvent indisponible, comptage direct conservé:",
           eventError
@@ -3737,6 +3898,72 @@ export async function logMcpExecution(data: {
   }
 }
 
+/**
+ * Trace un appel d'outil effectué dans le CHAT (migration 0036).
+ *
+ * Écrit dans `ToolExecution` avec `runId` nul : c'est ce qui distingue une
+ * exécution de conversation d'une exécution d'Agent, et ce qui permet à la page
+ * Statistiques de compter les plugins utilisés en mode Chat. `userId` est
+ * renseigné — c'est l'identité de la ligne, `ToolExecution` n'ayant pas de run
+ * par lequel la retrouver.
+ *
+ * Aucun secret n'est journalisé : l'entrée et la sortie sont réécrites par
+ * `redactMcpValue` comme pour le MCP, et un `chatId` mal formé est écarté plutôt
+ * que de faire échouer l'insertion.
+ *
+ * Best-effort par construction : un échec ici ne doit JAMAIS faire échouer
+ * l'appel d'outil, dont la réponse est déjà produite. D'où le `catch` qui se
+ * contente de tracer.
+ */
+export async function logChatToolExecution(data: {
+  userId: string;
+  toolId: string;
+  category?: ToolCategory;
+  chatId?: string | null;
+  durationMs?: number;
+  error?: string | null;
+  input?: unknown;
+  output?: unknown;
+  status?: "completed" | "failed" | "denied";
+}) {
+  try {
+    const database = await getDb();
+    const now = new Date();
+    const [log] = await database
+      .insert(toolExecution)
+      .values({
+        // `runId` reste NULL : c'est le marqueur du chemin Chat. L'index unique
+        // `(runId, operationKey, attempt)` n'est pas entravé, `operationKey`
+        // étant lui aussi nul — en SQL, deux NULL ne violent pas un UNIQUE.
+        approvalStatus: "not_required",
+        category: data.category ?? "plugins",
+        chatId:
+          data.chatId && /^[0-9a-fA-F-]{36}$/.test(data.chatId)
+            ? data.chatId
+            : null,
+        completedAt: now,
+        createdAt: now,
+        durationMs: Math.max(0, Math.floor(data.durationMs ?? 0)),
+        error: data.error ? redactMcpText(data.error, 1000) : null,
+        input: (redactMcpValue(data.input) ?? null) as never,
+        output: (redactMcpValue(data.output) ?? null) as never,
+        runId: null,
+        // Pas d'approbation demandée : un plugin du canal Chat ne peut pas
+        // écrire de donnée utilisateur (createPluginTools refuse ces plugins
+        // hors canal Agent), donc rien n'a pu être soumis à validation.
+        startedAt: now,
+        status: data.status ?? "completed",
+        toolId: data.toolId,
+        userId: data.userId,
+      })
+      .returning();
+    return log ?? null;
+  } catch (err) {
+    console.error("Erreur logChatToolExecution:", redactMcpError(err));
+    return null;
+  }
+}
+
 export async function getMcpLogsByUserId({
   userId,
   limit = 50,
@@ -4170,9 +4397,17 @@ export async function getUserPreferences(userId: string) {
         defaultChatModel: row.defaultChatModel || null,
         defaultChatVisibility:
           (row.defaultChatVisibility as "private" | "public") || "private",
+        // Une locale ou une cible illisible retombe sur son défaut : la
+        // dictée et la traduction doivent toujours fonctionner.
+        defaultDictationLanguage: normalizeDictationLanguage(
+          row.defaultDictationLanguage
+        ),
         defaultImageModel:
           row.defaultImageModel || "black-forest-labs/flux-schnell",
         defaultImageSize: row.defaultImageSize || "1024x1024",
+        defaultTranslationLanguage:
+          normalizeTranslationTarget(row.defaultTranslationLanguage) ??
+          DEFAULT_TRANSLATION_TARGET,
         enabled: Boolean(row.customInstructionsEnabled),
         ghostMemoryEnabled: Boolean(row.ghostMemoryEnabled),
         showAgentChatIcons: row.showAgentChatIcons ?? true,
@@ -4193,8 +4428,10 @@ export async function getUserPreferences(userId: string) {
     defaultAudioVoice: "flux-alexis-en",
     defaultChatModel: null,
     defaultChatVisibility: "private" as const,
+    defaultDictationLanguage: AUTO_DICTATION_LANGUAGE,
     defaultImageModel: "black-forest-labs/flux-schnell",
     defaultImageSize: "1024x1024",
+    defaultTranslationLanguage: DEFAULT_TRANSLATION_TARGET,
     enabled: legacy.customInstructionsEnabled,
     ghostMemoryEnabled: false,
     showAgentChatIcons: true,
@@ -4211,11 +4448,13 @@ type UserPreferencesPatch = Partial<{
   defaultAgentId: string | null;
   defaultChatModel: string | null;
   defaultChatVisibility: "private" | "public";
+  defaultDictationLanguage: string;
   defaultImageModel: string;
   defaultImageSize: string;
   defaultAudioModel: string;
   defaultAudioVoice: string;
   defaultAudioSpeed: number;
+  defaultTranslationLanguage: string;
   ghostMemoryEnabled: boolean;
   showAgentChatIcons: boolean;
 }>;
@@ -4343,11 +4582,17 @@ export async function upsertUserPreferences(
           defaultAudioVoice: data.defaultAudioVoice ?? "flux-alexis-en",
           defaultChatModel: data.defaultChatModel ?? null,
           defaultChatVisibility: data.defaultChatVisibility ?? "private",
+          defaultDictationLanguage: normalizeDictationLanguage(
+            data.defaultDictationLanguage
+          ),
           defaultImageModel:
             data.defaultImageModel ?? "black-forest-labs/flux-schnell",
           defaultImageSize: data.defaultImageSize ?? "1024x1024",
           defaultTemperature: data.temperature ?? 0.7,
           defaultTopP: data.topP ?? 0.9,
+          defaultTranslationLanguage:
+            normalizeTranslationTarget(data.defaultTranslationLanguage) ??
+            DEFAULT_TRANSLATION_TARGET,
           ghostMemoryEnabled: data.ghostMemoryEnabled ?? false,
           showAgentChatIcons: data.showAgentChatIcons ?? true,
           userId,
@@ -4372,6 +4617,10 @@ export async function upsertUserPreferences(
       updatePayload.defaultChatModel = data.defaultChatModel;
     if (data.defaultChatVisibility !== undefined)
       updatePayload.defaultChatVisibility = data.defaultChatVisibility;
+    if (data.defaultDictationLanguage !== undefined)
+      updatePayload.defaultDictationLanguage = normalizeDictationLanguage(
+        data.defaultDictationLanguage
+      );
     if (data.defaultImageModel !== undefined)
       updatePayload.defaultImageModel = data.defaultImageModel;
     if (data.defaultImageSize !== undefined)
@@ -4382,6 +4631,10 @@ export async function upsertUserPreferences(
       updatePayload.defaultAudioVoice = data.defaultAudioVoice;
     if (data.defaultAudioSpeed !== undefined)
       updatePayload.defaultAudioSpeed = data.defaultAudioSpeed;
+    if (data.defaultTranslationLanguage !== undefined)
+      updatePayload.defaultTranslationLanguage =
+        normalizeTranslationTarget(data.defaultTranslationLanguage) ??
+        DEFAULT_TRANSLATION_TARGET;
     if (data.ghostMemoryEnabled !== undefined)
       updatePayload.ghostMemoryEnabled = data.ghostMemoryEnabled;
     if (data.showAgentChatIcons !== undefined)
@@ -4993,6 +5246,30 @@ export async function deleteMemory({
     .where(and(eq(userMemory.id, id), eq(userMemory.userId, userId)))
     .returning();
   return deleted ?? null;
+}
+
+/**
+ * Vide toute la mémoire d'un utilisateur : personnelle, projet ET agent.
+ *
+ * Le filtre porte UNIQUEMENT sur `userId` : c'est le seul moyen de garantir
+ * qu'aucune mémoire ne survit sous un autre portée. Borner par `agentId` ou
+ * `projectId` laisserait des traces que l'utilisateur ne voit plus nulle part,
+ * donc qu'il ne pourrait plus jamais supprimer.
+ *
+ * Retourne le nombre de lignes retirées, pour que l'interface puisse
+ * distinguer « rien à supprimer » d'une purge réellement effectuée.
+ */
+export async function deleteAllMemoriesByUserId({
+  userId,
+}: {
+  userId: string;
+}): Promise<number> {
+  const database = await getDb();
+  const deleted = await database
+    .delete(userMemory)
+    .where(eq(userMemory.userId, userId))
+    .returning({ id: userMemory.id });
+  return deleted.length;
 }
 
 function sanitizeMemoryContent(content: string): string {

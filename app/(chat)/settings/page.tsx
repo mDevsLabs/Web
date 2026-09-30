@@ -3,15 +3,17 @@
 import {
   AlertCircleIcon,
   BellIcon,
-  BotIcon,
   BrainIcon,
   CameraIcon,
   CloudIcon,
+  DatabaseIcon,
   ExternalLinkIcon,
   EyeIcon,
   EyeOffIcon,
   ImageIcon,
   KeyRoundIcon,
+  LanguagesIcon,
+  LineChartIcon,
   Loader2Icon,
   LockIcon,
   MonitorSmartphoneIcon,
@@ -39,6 +41,7 @@ import {
 } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
+import { BotGlyph } from "@/components/agents/bot-avatar";
 import {
   ModelSelectorCompact,
   type SharedModel,
@@ -47,6 +50,7 @@ import { reopenNotificationPrompt } from "@/components/chat/notification-permiss
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import { ConfigurationSection } from "@/components/settings/configuration-client";
+import { DataTab } from "@/components/settings/data-tab";
 import { MemoryCard } from "@/components/settings/memory-card";
 import { OptionSelector } from "@/components/settings/option-selector";
 import {
@@ -83,6 +87,14 @@ import type { ChatModel } from "@/lib/ai/models";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
+import {
+  AUTO_DICTATION_LANGUAGE,
+  DEFAULT_TRANSLATION_TARGET,
+  DICTATION_LANGUAGES,
+  normalizeDictationLanguage,
+  normalizeTranslationTarget,
+  TRANSLATION_TARGETS,
+} from "@/lib/i18n/languages";
 import {
   customInstructionsCounterLabel,
   customInstructionsHint,
@@ -148,6 +160,7 @@ function setCookie(name: string, value: string) {
 
 type SettingsTab =
   | "configuration"
+  | "data"
   | "memory"
   | "notifications"
   | "preferences"
@@ -164,6 +177,7 @@ const SETTINGS_TABS: {
   { icon: BrainIcon, id: "memory", label: "Mémoire" },
   { icon: ZapIcon, id: "usage", label: "Consommation & Forfait" },
   { icon: BellIcon, id: "notifications", label: "Notifications" },
+  { icon: DatabaseIcon, id: "data", label: "Données" },
   { icon: WrenchIcon, id: "configuration", label: "Outils" },
 ];
 
@@ -430,6 +444,13 @@ function SettingsPageInner() {
   const [agentsUpgradeOpen, setAgentsUpgradeOpen] = useState(false);
   const [showAgentChatIcons, setShowAgentChatIcons] = useState<boolean>(true);
   const [isSavingAgentIconsPref, setIsSavingAgentIconsPref] = useState(false);
+  const [dictationLanguage, setDictationLanguage] = useState(
+    AUTO_DICTATION_LANGUAGE
+  );
+  const [translationLanguage, setTranslationLanguage] = useState(
+    DEFAULT_TRANSLATION_TARGET
+  );
+  const [isSavingLanguages, setIsSavingLanguages] = useState(false);
   const { data: prefAgentsData } = useSWR<{
     agents: any[];
     limit: number | null;
@@ -455,17 +476,17 @@ function SettingsPageInner() {
           method: "POST",
         });
         if (!res.ok) {
-          throw new Error("Erreur de sauvegarde de l'agent par défaut");
+          throw new Error("Erreur de sauvegarde du bot par défaut");
         }
         toast.success(
           next === "none"
-            ? "Agent par défaut désactivé — modèle standard utilisé"
-            : "Agent par défaut enregistré — appliqué aux nouvelles discussions"
+            ? "Bot par défaut désactivé — modèle standard utilisé"
+            : "Bot par défaut enregistré — appliqué aux nouvelles discussions"
         );
         await mutateCustomPref();
       } catch (e: any) {
         setDefaultAgentId(previous);
-        toast.error(e.message || "Erreur de sauvegarde de l'agent par défaut");
+        toast.error(e.message || "Erreur de sauvegarde du bot par défaut");
       } finally {
         setIsSavingDefaultAgent(false);
       }
@@ -487,7 +508,7 @@ function SettingsPageInner() {
         if (!res.ok) {
           throw new Error("Erreur de sauvegarde de la préférence");
         }
-        toast.success("Préférence d'icônes d'agent enregistrée !");
+        toast.success("Préférence d'icône de bot enregistrée !");
         await mutateCustomPref();
       } catch (e: any) {
         setShowAgentChatIcons(prev);
@@ -539,6 +560,18 @@ function SettingsPageInner() {
       }
       if (customPrefData.defaultAudioSpeed) {
         setDefaultAudioSpeed(customPrefData.defaultAudioSpeed);
+      }
+      if (customPrefData.defaultDictationLanguage !== undefined) {
+        setDictationLanguage(
+          normalizeDictationLanguage(customPrefData.defaultDictationLanguage)
+        );
+      }
+      if (customPrefData.defaultTranslationLanguage !== undefined) {
+        setTranslationLanguage(
+          normalizeTranslationTarget(
+            customPrefData.defaultTranslationLanguage
+          ) ?? DEFAULT_TRANSLATION_TARGET
+        );
       }
     }
   }, [customPrefData]);
@@ -784,6 +817,29 @@ function SettingsPageInner() {
     defaultAudioSpeed,
     mutateCustomPref,
   ]);
+
+  const handleSaveLanguages = useCallback(async () => {
+    setIsSavingLanguages(true);
+    try {
+      const res = await fetch("/api/user/preferences", {
+        body: JSON.stringify({
+          defaultDictationLanguage: dictationLanguage,
+          defaultTranslationLanguage: translationLanguage,
+        }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      });
+      if (!res.ok) {
+        throw new Error("Erreur lors de l'enregistrement");
+      }
+      toast.success("Langues enregistrées !");
+      mutateCustomPref();
+    } catch (e: any) {
+      toast.error(e.message || "Erreur de sauvegarde des langues.");
+    } finally {
+      setIsSavingLanguages(false);
+    }
+  }, [dictationLanguage, translationLanguage, mutateCustomPref]);
 
   const handleSaveCustomInstructions = useCallback(async () => {
     setIsSavingCustom(true);
@@ -1042,9 +1098,10 @@ function SettingsPageInner() {
         return [
           { id: "prefs-defaults", label: "Modèle & visibilité" },
           { id: "prefs-instructions", label: "Instructions personnalisées" },
-          { id: "prefs-agent", label: "Agent par défaut" },
+          { id: "prefs-agent", label: "Bot par défaut" },
           { id: "prefs-tools", label: "Génération d'images" },
           { id: "prefs-audio", label: "Synthèse vocale" },
+          { id: "prefs-languages", label: "Langues" },
           { id: "prefs-regenerate", label: "Mode régénération" },
         ];
       case "memory":
@@ -1067,6 +1124,12 @@ function SettingsPageInner() {
         ];
       case "configuration":
         return [{ id: "config-commands", label: "Commandes personnalisées" }];
+      case "data":
+        return [
+          { id: "data-history", label: "Historique" },
+          { id: "data-memory", label: "Mémoire" },
+          { id: "data-generations", label: "Images & audios" },
+        ];
       default:
         return [];
     }
@@ -1444,8 +1507,8 @@ function SettingsPageInner() {
                       Préférences IA
                     </h3>
                     <p className="text-xs text-muted-foreground">
-                      Modèle par défaut (enregistré dans votre compte) et Agents
-                      — styles IA personnalisés remplaçant les Modes.
+                      Modèle par défaut (enregistré dans votre compte) et Bots —
+                      styles IA personnalisés remplaçant les Modes.
                     </p>
                   </div>
                 </div>
@@ -1493,18 +1556,18 @@ function SettingsPageInner() {
 
                 <div className="flex flex-col gap-2 p-3 rounded-xl border border-border/40 bg-muted/20">
                   <div className="flex items-center gap-2">
-                    <BotIcon className="size-4 text-primary" />
+                    <BotGlyph className="size-4 text-primary" />
                     <span className="text-xs font-semibold text-foreground">
-                      Agents IA
+                      Bots IA
                     </span>
                     <span className="text-[10px] px-1.5 py-0.5 rounded bg-primary/10 text-primary font-bold">
                       Nouveau
                     </span>
                   </div>
                   <p className="text-[11px] text-muted-foreground leading-relaxed">
-                    Les <strong>Agents</strong> remplacent les Modes IA. Créez
-                    des agents personnalisés (instructions 5000c, icône, modèle
-                    par défaut, skills, MCP et fichiers) : 15 avec Plus, 25 avec
+                    Les <strong>Bots</strong> remplacent les Modes IA. Créez des
+                    bots personnalisés (instructions 5000c, icône, modèle par
+                    défaut, skills, MCP et fichiers) : 15 avec Plus, 25 avec
                     Pro, illimité avec Max. Sélection globale via le menu à côté
                     du modèle ou{" "}
                     <code className="px-1 py-0.5 rounded bg-muted text-[10px]">
@@ -1520,7 +1583,7 @@ function SettingsPageInner() {
                     className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline w-fit"
                     href="/agents"
                   >
-                    <BotIcon className="size-3.5" /> Gérer mes agents →
+                    <BotGlyph className="size-3.5" /> Gérer mes bots →
                   </Link>
                 </div>
 
@@ -1542,7 +1605,7 @@ function SettingsPageInner() {
               >
                 <div className="flex items-center gap-2.5">
                   <div className="p-2 rounded-xl bg-warning/10 text-warning ring-1 ring-warning/20">
-                    <BotIcon className="size-5" />
+                    <BotGlyph className="size-5" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-base font-semibold text-foreground">
@@ -1685,7 +1748,7 @@ function SettingsPageInner() {
                 </div>
               </div>
 
-              {/* Agent par défaut */}
+              {/* Bot par défaut */}
               <div
                 className={`surface-card flex flex-col gap-4 scroll-mt-6 ${isFree ? "cursor-pointer" : ""}`}
                 id="prefs-agent"
@@ -1693,7 +1756,7 @@ function SettingsPageInner() {
                   isFree
                     ? () => {
                         toast.error(
-                          "Sélection d'agents réservée aux forfaits Plus, Pro et Max"
+                          "Sélection de bots réservée aux forfaits Plus, Pro et Max"
                         );
                         setAgentsUpgradeOpen(true);
                       }
@@ -1705,7 +1768,7 @@ function SettingsPageInner() {
                         if (event.key !== "Enter" && event.key !== " ") return;
                         event.preventDefault();
                         toast.error(
-                          "Sélection d'agents réservée aux forfaits Plus, Pro et Max"
+                          "Sélection de bots réservée aux forfaits Plus, Pro et Max"
                         );
                         setAgentsUpgradeOpen(true);
                       }
@@ -1715,16 +1778,16 @@ function SettingsPageInner() {
                 tabIndex={isFree ? 0 : undefined}
               >
                 <div className="flex items-center gap-2.5">
-                  <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 ring-1 ring-indigo-500/20">
-                    <BotIcon className="size-5" />
+                  <div className="p-2 rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
+                    <BotGlyph className="size-5" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-base font-semibold text-foreground">
-                      Agent par défaut
+                      Bot par défaut
                     </h3>
                     <p className="text-xs text-muted-foreground">
-                      Agent activé automatiquement au lancement de chaque
-                      nouvelle discussion.
+                      Bot activé automatiquement au lancement de chaque nouvelle
+                      discussion.
                     </p>
                   </div>
                   {isSavingDefaultAgent && (
@@ -1736,7 +1799,7 @@ function SettingsPageInner() {
                     <LockIcon className="size-4 shrink-0" />
                     <span>
                       Réservé aux forfaits Plus, Pro et Max — passez à un
-                      forfait supérieur pour choisir un agent par défaut.
+                      forfait supérieur pour choisir un bot par défaut.
                     </span>
                   </div>
                 ) : (
@@ -1749,13 +1812,13 @@ function SettingsPageInner() {
                       items={[
                         { id: "none", label: "Aucun (modèle standard)" },
                         ...prefAgents.map((a) => ({
-                          icon: <BotIcon className="size-3.5" />,
+                          icon: <BotGlyph className="size-3.5" />,
                           id: a.id,
                           label: a.name,
                         })),
                       ]}
                       onChange={handleSaveDefaultAgent}
-                      placeholder="Choisir un agent"
+                      placeholder="Choisir un bot"
                       value={defaultAgentId}
                     />
                     <span className="text-[11px] text-muted-foreground">
@@ -1963,6 +2026,89 @@ function SettingsPageInner() {
                     {isSavingToolsPref
                       ? "Enregistrement..."
                       : "Enregistrer les outils dans votre profil"}
+                  </button>
+                </div>
+              </div>
+
+              {/* Langues : dictée vocale + cible de traduction */}
+              <div
+                className="surface-card flex flex-col gap-5 scroll-mt-6"
+                id="prefs-languages"
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="p-2 rounded-xl bg-info/10 text-info ring-1 ring-info/20">
+                    <LanguagesIcon className="size-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-semibold text-foreground">
+                      Langues
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Langue de dictée vocale et langue de traduction par défaut
+                      des réponses de l'IA.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                  <div className="flex flex-col gap-2">
+                    <Label className="text-xs font-medium text-muted-foreground">
+                      Langue de dictée vocale
+                    </Label>
+                    <OptionSelector
+                      items={DICTATION_LANGUAGES.map((entry) => ({
+                        id: entry.value,
+                        label: entry.label,
+                      }))}
+                      onChange={setDictationLanguage}
+                      value={dictationLanguage}
+                    />
+                    <span className="text-[11px] text-muted-foreground">
+                      La reconnaissance vocale du navigateur ne comprend que les
+                      langues qu'il expose. « Automatique » suit la langue de
+                      votre système.
+                    </span>
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    <Label className="text-xs font-medium text-muted-foreground">
+                      Traduire les réponses en
+                    </Label>
+                    <OptionSelector
+                      items={TRANSLATION_TARGETS.map((entry) => ({
+                        id: entry.code,
+                        label: entry.label,
+                      }))}
+                      onChange={setTranslationLanguage}
+                      value={translationLanguage}
+                    />
+                    <span className="text-[11px] text-muted-foreground">
+                      Cible du bouton « Traduire » sur chaque réponse. Vous
+                      pourrez en choisir une autre à la volée.
+                    </span>
+                  </div>
+                </div>
+
+                <div className="surface-muted text-[11px] text-muted-foreground">
+                  La dictée est reconnue par votre navigateur : l'audio n'est
+                  pas envoyé à mAI, mais la reconnaissance vocale du navigateur
+                  peut elle-même s'appuyer sur un service tiers (Google, Apple)
+                  selon votre configuration système.
+                </div>
+
+                <div className="pt-2 flex justify-end">
+                  <button
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground px-6 py-2.5 text-sm font-semibold transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer disabled:opacity-50"
+                    disabled={isSavingLanguages}
+                    onClick={handleSaveLanguages}
+                    type="button"
+                  >
+                    {isSavingLanguages ? (
+                      <Loader2Icon className="size-4 animate-spin" />
+                    ) : null}
+                    {isSavingLanguages
+                      ? "Enregistrement..."
+                      : "Enregistrer les langues"}
                   </button>
                 </div>
               </div>
@@ -2316,6 +2462,11 @@ function SettingsPageInner() {
             <div className="scroll-mt-6" id="config-commands">
               <ConfigurationSection />
             </div>
+          ) : activeTab === "data" ? (
+            /* ────────────── SECTION DONNÉES ────────────── */
+            <div className="py-6 max-w-4xl">
+              <DataTab />
+            </div>
           ) : (
             /* ────────────── SECTION CONSOMMATION & QUOTAS ────────────── */
             <div
@@ -2357,12 +2508,46 @@ function SettingsPageInner() {
                 </Link>
               </div>
 
+              {/* Les jauges ci-dessous ne disent QUE « où en est-on » sur la
+                  semaine en cours. L'évolution dans le temps, la répartition
+                  texte/image/audio et le classement des modèles vivent sur une
+                  page dédiée : les mêler ici avec quatre jauges ferait du bruit
+                  pour une information déjà lisible ailleurs. */}
+              <div
+                className="surface-card flex flex-col gap-3"
+                id="usage-stats"
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="p-2 rounded-xl bg-muted/60 text-foreground ring-1 ring-border">
+                    <LineChartIcon className="size-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-semibold text-foreground">
+                      Statistiques détaillées
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      Historique de consommation, conversations par mode et
+                      modèle le plus utilisé
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <Link
+                    className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-4 py-2.5 text-sm font-medium transition-colors hover:bg-muted"
+                    href="/settings/statistiques"
+                  >
+                    <LineChartIcon className="size-4" />
+                    <span>Ouvrir les statistiques</span>
+                  </Link>
+                </div>
+              </div>
+
               {/* Consommation mAI (Tokens hebdomadaires) */}
               <div className="surface-card flex flex-col gap-4" id="usage">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
                     <div className="p-2 rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
-                      <BotIcon className="size-5" />
+                      <BotGlyph className="size-5" />
                     </div>
                     <div>
                       <h3 className="text-base font-semibold text-foreground">

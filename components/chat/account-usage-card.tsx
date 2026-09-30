@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  BotIcon,
   ExternalLinkIcon,
   GaugeIcon,
   HardDriveIcon,
@@ -10,6 +9,7 @@ import {
   Volume2Icon,
 } from "lucide-react";
 import type { ReactNode } from "react";
+import { BotGlyph } from "@/components/agents/bot-avatar";
 import {
   formatBytesFr,
   formatResetFr,
@@ -175,7 +175,7 @@ export function AccountUsageCard({ output, state }: AccountUsageCardProps) {
             {output.ai && (
               <UsageGauge
                 gradient="bg-gradient-to-r from-indigo-500 to-purple-600"
-                icon={<BotIcon className="size-3.5" />}
+                icon={<BotGlyph className="size-3.5" />}
                 label="Utilisation de l'IA"
                 note="Tokens hebdomadaires (invites + réponses)"
                 percent={output.ai.percent}

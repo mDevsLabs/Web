@@ -71,6 +71,13 @@ export async function executeScheduledMessage(scheduledId: string) {
   try {
     const userId = item.userId;
     let targetChatId = item.chatId;
+    // Mode de la conversation cible, figé pour l'attribution de la consommation
+    // (migration 0035). Une planification peut écrire dans une conversation
+    // EXISTANTE, dont le mode n'est pas forcément « chat » : le lire vaut mieux
+    // que supposer, d'autant que la conversation peut être supprimée ensuite.
+    let targetMode: "chat" | "agent" = "chat";
+    let targetProjectId: string | null = null;
+    let existingChat: Awaited<ReturnType<typeof getChatById>> = null;
 
     if (targetChatId) {
       const access = await requireOwnedPlanningChat({
@@ -86,6 +93,9 @@ export async function executeScheduledMessage(scheduledId: string) {
           "La conversation cible n'appartient pas à l'utilisateur."
         );
       }
+      existingChat = await getChatById({ id: targetChatId });
+      targetMode = existingChat?.mode === "agent" ? "agent" : "chat";
+      targetProjectId = existingChat?.projectId ?? null;
     }
 
     // Déterminer ou créer la discussion cible
@@ -103,23 +113,25 @@ export async function executeScheduledMessage(scheduledId: string) {
         userId,
         visibility: "private",
       });
-    } else {
-      const existing = await getChatById({ id: targetChatId });
-      if (!existing) {
-        targetChatId = generateUUID();
-        await saveChat({
-          agentId: item.agentId ?? null,
-          customInstructions: item.customInstructions ?? null,
-          id: targetChatId,
-          projectId: null,
-          skillId: null,
-          tags: ["planifié"],
-          temperatureOverride: item.temperature ?? null,
-          title: item.title || "Message planifié",
-          userId,
-          visibility: "private",
-        });
-      }
+    } else if (!existingChat) {
+      // La conversation annoncée par la planification a disparu entre-temps
+      // (suppression manuelle) : on repart sur une conversation neuve plutôt
+      // que d'échouer, et l'attribution repart sur le mode par défaut.
+      targetChatId = generateUUID();
+      targetMode = "chat";
+      targetProjectId = null;
+      await saveChat({
+        agentId: item.agentId ?? null,
+        customInstructions: item.customInstructions ?? null,
+        id: targetChatId,
+        projectId: null,
+        skillId: null,
+        tags: ["planifié"],
+        temperatureOverride: item.temperature ?? null,
+        title: item.title || "Message planifié",
+        userId,
+        visibility: "private",
+      });
     }
 
     // Charger les messages précédents de la discussion
@@ -422,6 +434,12 @@ export async function executeScheduledMessage(scheduledId: string) {
 
     if (totalTokens > 0) {
       await recordTokenUsage({
+        // La planification crée sa conversation cible avant l'appel : le lien
+        // est donc disponible, contrairement à une exécution qui débiterait
+        // avant la persistance du chat.
+        chatId: targetChatId,
+        chatMode: targetMode,
+        chatProjectId: targetProjectId,
         idempotencyKey: `planning:${item.id}:${new Date(item.scheduledAt).toISOString()}`,
         inputTokens,
         isGhostMode: false,

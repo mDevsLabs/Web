@@ -53,12 +53,13 @@ type CommandPayloadForm = {
 const NAVIGATION_ROUTES = [
   { label: "Projets", value: "/projects" },
   { label: "Bibliothèque", value: "/library" },
-  { label: "Agents", value: "/agents" },
+  { label: "Bots", value: "/agents" },
   { label: "Compétences", value: "/skills" },
   { label: "Serveurs MCP", value: "/mcp" },
   { label: "Images", value: "/images" },
   { label: "Audio", value: "/audio" },
   { label: "Paramètres — Consommation", value: "/settings?tab=usage" },
+  { label: "Paramètres — Statistiques", value: "/settings/statistiques" },
   { label: "Paramètres — Profil", value: "/settings?tab=profile" },
   { label: "Paramètres — Préférences IA", value: "/settings?tab=preferences" },
 ];
@@ -499,7 +500,7 @@ export function ConfigurationSection() {
 
             {form.actionType === "agent" && (
               <div className="space-y-1.5">
-                <Label className="text-xs font-semibold">Agent activé *</Label>
+                <Label className="text-xs font-semibold">Bot activé *</Label>
                 <Select
                   onValueChange={(v) =>
                     setFormPartial({
@@ -509,7 +510,7 @@ export function ConfigurationSection() {
                   value={form.payload.agentId ?? ""}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Choisir un agent" />
+                    <SelectValue placeholder="Choisir un bot" />
                   </SelectTrigger>
                   <SelectContent>
                     {agents.map((a) => (

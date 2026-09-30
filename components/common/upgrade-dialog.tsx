@@ -26,8 +26,8 @@ const FEATURE_COPY: Record<
 > = {
   agents: {
     description:
-      "Créez des agents IA personnalisés avec instructions, modèles, skills et connexions MCP. Réservé aux forfaits Plus, Pro et Max.",
-    title: "Agents IA — Plan requis",
+      "Créez des bots IA personnalisés avec instructions système, modèle, skills et connexions MCP. Réservé aux forfaits Plus, Pro et Max.",
+    title: "Bots IA — Plan requis",
   },
   generic: {
     description:

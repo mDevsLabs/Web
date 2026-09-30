@@ -460,6 +460,129 @@ const runMigrate = async () => {
     noteIgnoredStep(error);
   }
 
+  // Lien vers la conversation pour la page Statistiques (migration 0033).
+  // Répété ici pour la même raison que ci-dessus. La colonne reste VOLATILE
+  // pour le métier : si l'ALTER échoue, `recordTokenUsage` continue d'écrire
+  // ce qu'il écrivait avant et la page Statistiques lit `COALESCE` côté
+  // requête. Le débit de quota, lui, ne doit JAMAIS dépendre de cette colonne :
+  // c'est le chemin critique, et une colonne NOT NULL le ferait échouer.
+  try {
+    await connection`ALTER TABLE "UsageEvent" ADD COLUMN IF NOT EXISTS "chatId" uuid`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  // Backfill Chat : le chatId est le 2e segment de la clé d'idempotence
+  // `chat:<chatId>:<messageId>:<model>`. Le motif n'accepte qu'un uuid
+  // canonique, donc le cast ne peut pas lever 22P02 (code non toléré) sur une
+  // clé mal formée. `IS NULL` rend la reprise sans objet une fois rempli.
+  try {
+    await connection`
+      UPDATE "UsageEvent"
+         SET "chatId" = split_part("id", ':', 2)::uuid
+       WHERE "chatId" IS NULL
+         AND "id" ~ '^chat:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}:'
+    `;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  // Backfill Agent : `agent:<runId>:<revision>` → `AgentRun.chatId` (NOT NULL).
+  // Gardé par `to_regclass` car `AgentRun` peut manquer sur un environnement
+  // de schéma partiel ; le `::text` évite tout cast de type.
+  try {
+    await connection`
+      DO $$
+      BEGIN
+        IF to_regclass('public."UsageEvent"') IS NOT NULL
+           AND to_regclass('public."AgentRun"') IS NOT NULL
+        THEN
+          UPDATE "UsageEvent" u
+             SET "chatId" = r."chatId"
+            FROM "AgentRun" r
+           WHERE u."chatId" IS NULL
+             AND u."id" LIKE 'agent:%'
+             AND r."id"::text = split_part(u."id", ':', 2);
+        END IF;
+      END $$
+    `;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  // Sans cet index, chaque filtre « projet » ou « conversation » déclenche un
+  // seq scan sur `UsageEvent` ; il est donc requis, pas confortable.
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "UsageEvent_chatId_idx" ON "UsageEvent" ("chatId")`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+
+  // Attribution figée d'un comptage de tokens (migration 0035). Répété ici pour
+  // la même raison que ci-dessus : `recordTokenUsage` descend d'un palier sur un
+  // 42703, donc la page doit pouvoir compter sur les colonnes sans que leur
+  // absence casse quoi que ce soit. Le backfill ne touche que les
+  // conversations ENCORE PRÉSENTES : une conversation supprimée n'a plus de
+  // mode à recopier, et ces lignes restent simplement non attribuables — elles
+  // sont comptées dans les totaux et signalées par `warnings`.
+  try {
+    await connection`ALTER TABLE "UsageEvent" ADD COLUMN IF NOT EXISTS "chatMode" varchar(16)`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE "UsageEvent" ADD COLUMN IF NOT EXISTS "chatProjectId" uuid`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`
+      DO $$
+      BEGIN
+        IF to_regclass('public."UsageEvent"') IS NOT NULL
+           AND to_regclass('public."Chat"') IS NOT NULL
+        THEN
+          UPDATE "UsageEvent" u
+             SET "chatMode" = c."mode",
+                 "chatProjectId" = c."projectId"
+            FROM "Chat" c
+           WHERE u."chatId" = c."id"
+             AND (u."chatMode" IS NULL OR u."chatProjectId" IS NULL);
+        END IF;
+      END $$
+    `;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "UsageEvent_userId_chatMode_createdAt_idx" ON "UsageEvent" ("userId", "chatMode", "createdAt")`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+
+  // Journal des appels d'outils du chemin Chat (migration 0036). `runId` doit
+  // devenir nullable, sinon la table refuse structurellement toute exécution
+  // qui n'appartient pas à un run Agent — et la page Statistiques ne peut plus
+  // compter les plugins utilisés en mode Chat. C'est une RELAXATION : aucune
+  // donnée n'est touchée, et la clé étrangère est conservée.
+  try {
+    await connection`ALTER TABLE "ToolExecution" ALTER COLUMN "runId" DROP NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE "ToolExecution" ADD COLUMN IF NOT EXISTS "chatId" uuid`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE "ToolExecution" ADD COLUMN IF NOT EXISTS "userId" text`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "ToolExecution_userId_createdAt_idx" ON "ToolExecution" ("userId", "createdAt")`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+
   const start = Date.now();
   await migrate(db, { migrationsFolder: "./lib/db/migrations" });
   const end = Date.now();

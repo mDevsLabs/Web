@@ -174,10 +174,15 @@ function PureChatHeader({
         throw new Error("Erreur");
       }
       toast.success("Conversation renommée");
+      // Même paire d'invalidation que l'archivage et l'épinglage, lignes
+      // suivantes. Sans elle, le titre restait l'ancien dans la barre latérale
+      // — le header et l'historique lisaient deux caches différents.
+      mutate(`/api/chats/${chatId}`);
+      mutate(unstable_serialize(getChatHistoryPaginationKey));
     } catch {
       toast.error("Erreur lors du renommage");
     }
-  }, [chatId, chatData]);
+  }, [chatId, chatData, mutate]);
 
   const handleToggleArchive = useCallback(async () => {
     try {

@@ -6,8 +6,11 @@ import {
   resolveReasoningEffort,
 } from "@/lib/ai/registry/capabilities";
 import {
+  levelToRatio,
   REASONING_LEVELS,
+  ratioToLevel,
   resolveReasoningProviderOptions,
+  toAscendingLevels,
 } from "@/lib/ai/registry/reasoning";
 
 // La liste des niveaux d'effort n'est écrite nulle part dans l'application :
@@ -286,6 +289,66 @@ describe("L'effort transmis au fournisseur", () => {
       expect(resolveReasoningProviderOptions(level)).toEqual({
         openai: { reasoningEffort: level },
       });
+    }
+  });
+});
+
+describe("La piste du sélecteur se lit de gauche à droite", () => {
+  // Les capacités arrivent dans l'ordre décroissant (max → none) : c'est le bon
+  // ordre pour recaler une préférence vers le bas, et l'inverse de toute
+  // glissière. Ces tests verrouillent l'orientation affichée, qui n'a rien à
+  // voir avec cet ordre interne.
+
+  it("inverse l'ordre décroissant du catalogue", () => {
+    expect(
+      toAscendingLevels(["max", "xhigh", "high", "medium", "low"])
+    ).toEqual(["low", "medium", "high", "xhigh", "max"]);
+  });
+
+  it("place le niveau le plus faible à gauche et le plus intense à droite", () => {
+    const track = toAscendingLevels(["max", "high", "low"]);
+    expect(levelToRatio(track, "low")).toBe(0);
+    expect(levelToRatio(track, "max")).toBe(1);
+  });
+
+  it("n'invente pas de position pour un niveau absent", () => {
+    const track = toAscendingLevels(["max", "high", "low"]);
+    expect(levelToRatio(track, "medium")).toBe(0);
+  });
+
+  it("convertit une position en niveau, aux deux extrémités", () => {
+    const track = toAscendingLevels(["max", "high", "low"]);
+    expect(ratioToLevel(track, 0)).toBe("low");
+    expect(ratioToLevel(track, 0.5)).toBe("high");
+    expect(ratioToLevel(track, 1)).toBe("max");
+  });
+
+  it("borne la position avant l'arrondi", () => {
+    // Un clic dans le padding du popover, ou un glissement de quelques pixels
+    // hors piste, ne doit pas pouvoir sortir du vocabulaire.
+    const track = toAscendingLevels(["max", "high", "low"]);
+    expect(ratioToLevel(track, -1)).toBe("low");
+    expect(ratioToLevel(track, 4)).toBe("max");
+    expect(ratioToLevel(track, Number.NaN)).toBe("low");
+    expect(ratioToLevel(track, Number.POSITIVE_INFINITY)).toBe("max");
+  });
+
+  it("traite une piste à un seul cran comme sans géométrie", () => {
+    const track = toAscendingLevels(["medium"]);
+    expect(levelToRatio(track, "medium")).toBe(0);
+    // Le seul niveau proposé est le seul niveau atteignable, où qu'on clique.
+    expect(ratioToLevel(track, 0)).toBe("medium");
+    expect(ratioToLevel(track, 0.9)).toBe("medium");
+  });
+
+  it("ne renvoie aucun niveau quand la piste est vide", () => {
+    expect(ratioToLevel([], 0.5)).toBeUndefined();
+  });
+
+  it("fait l'aller-retour entre position et niveau", () => {
+    const track = toAscendingLevels(["max", "xhigh", "high", "medium", "low"]);
+    for (const level of track) {
+      expect(ratioToLevel(track, levelToRatio(track, level))).toBe(level);
     }
   });
 });

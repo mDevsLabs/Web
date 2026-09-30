@@ -47,6 +47,30 @@ test.describe("Agent et plugins sur mobile", () => {
     await expectNoHorizontalOverflow(page);
   });
 
+  test("le tiroir de navigation reste atteignable en mode Agent", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    await skipWhenAuthenticationIsRequired(page);
+    await page.getByRole("tab", { name: "Agent" }).click();
+
+    // `ChatShell` remplace l'en-tête du Chat : c'est `AgentShell` qui doit porter
+    // le déclencheur, sinon la navigation disparaît sur mobile.
+    const toggle = page.getByTestId("agent-nav-toggle");
+    await expect(toggle).toBeVisible();
+
+    // Cible tactile : 44px de côté, pas les 32px d'un bouton desktop.
+    const box = await toggle.boundingBox();
+    expect(box).not.toBeNull();
+    expect(box!.width).toBeGreaterThanOrEqual(44);
+    expect(box!.height).toBeGreaterThanOrEqual(44);
+
+    await toggle.click();
+
+    // Le tiroir doit s'ouvrir sur la navigation réelle.
+    await expect(page.locator('[data-slot="sidebar"]').first()).toBeVisible();
+  });
+
   test("la fiche plugin expose la sécurité et des actions tactiles", async ({
     page,
   }) => {

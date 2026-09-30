@@ -1,4 +1,4 @@
-import type { SlashCommandAction } from "@/components/chat/slash-commands";
+import type { SlashCommandAction } from "@/lib/chat/slash-command-catalog";
 
 // Issues des commandes slash, sans effet de bord.
 //
@@ -22,7 +22,7 @@ export const ALL_SLASH_COMMAND_ACTIONS = [
   "ghost",
   "rename",
   "model",
-  "agents",
+  "bots",
   "export",
   "theme",
   "delete",
@@ -64,6 +64,15 @@ export type SlashCommandOutcome =
   | { kind: "open_search" }
   /** Ouverture du sélecteur de modèle présent dans le composer. */
   | { kind: "open_model_selector" }
+  /**
+   * Ouverture du sélecteur de bots présent dans le composer.
+   *
+   * Les deux composers montent le MÊME sélecteur sous un `data-testid`
+   * différent : le clic se fait donc sur le sélecteur du composer courant, et
+   * `/agents` sert de repli quand il est absent (compte Free, sélecteur masqué,
+   * run Agent en cours).
+   */
+  | { kind: "open_bot_selector" }
   /** Export de la conversation courante en Markdown. */
   | { kind: "export_markdown" }
   /** Message informatif : la commande n'agit pas ici mais n'est pas fausse. */
@@ -78,12 +87,13 @@ export type SlashCommandOutcome =
  * Actions dont l'issue est implémentée pour les deux modes.
  *
  * Volontairement restreint à ce qui a le même sens partout : navigation,
- * remise à zéro, thème, recherche, sélecteur de modèle, export. Les bascules
- * d'outils one-shot du Chat (`/code`, `/weather`, `/calc`…) restent exclues —
- * l'Agent ne provisionne pas un outil « pour le prochain message », il en
- * choisit lui-même dans sa boucle.
+ * remise à zéro, thème, recherche, sélecteur de modèle, sélecteur de bots,
+ * export. Les bascules d'outils one-shot du Chat (`/code`, `/weather`,
+ * `/calc`…) restent exclues — l'Agent ne provisionne pas un outil « pour le
+ * prochain message », il en choisit lui-même dans sa boucle.
  */
 export const AGENT_SUPPORTED_ACTIONS = new Set<SlashCommandAction>([
+  "bots",
   "clear",
   "export",
   "home",
@@ -142,6 +152,8 @@ export function resolveSlashCommandOutcome(params: {
       return { kind: "open_search" };
     case "model":
       return { kind: "open_model_selector" };
+    case "bots":
+      return { kind: "open_bot_selector" };
     case "export":
       return { kind: "export_markdown" };
     default: {

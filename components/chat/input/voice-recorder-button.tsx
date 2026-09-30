@@ -3,8 +3,11 @@
 import { MicIcon, MicOffIcon } from "lucide-react";
 import { useCallback, useRef } from "react";
 import { toast } from "sonner";
+import useSWR from "swr";
 import { Button } from "@/components/ui/button";
 import { useSpeechRecognition } from "@/hooks/use-speech";
+import { AUTO_DICTATION_LANGUAGE } from "@/lib/i18n/languages";
+import { cn } from "@/lib/utils";
 
 export interface VoiceRecorderButtonProps {
   input: string;
@@ -16,6 +19,16 @@ export function VoiceRecorderButton({
   setInput,
 }: VoiceRecorderButtonProps) {
   const speechBaseRef = useRef<string>("");
+
+  // Langue de dictée choisie dans les paramètres. Elle n'est lue qu'au montage
+  // puis à chaque démarrage de la dictée : changer le réglage ne doit pas
+  // couper une dictée en cours, seulement la prochaine.
+  const { data: prefs } = useSWR<{ defaultDictationLanguage?: string }>(
+    "/api/user/preferences",
+    { dedupingInterval: 60_000, revalidateOnFocus: false }
+  );
+  const dictationLanguage =
+    prefs?.defaultDictationLanguage ?? AUTO_DICTATION_LANGUAGE;
 
   const handleSpeechTranscript = useCallback(
     (text: string, isFinal: boolean) => {
@@ -33,7 +46,9 @@ export function VoiceRecorderButton({
     isListening,
     isSupported: isSpeechSupported,
     toggle: toggleListening,
-  } = useSpeechRecognition(handleSpeechTranscript);
+  } = useSpeechRecognition(handleSpeechTranscript, {
+    language: dictationLanguage,
+  });
 
   const handleMicClick = useCallback(() => {
     if (!isSpeechSupported) {
@@ -48,13 +63,22 @@ export function VoiceRecorderButton({
 
   return (
     <Button
-      className={`h-9 w-9 sm:h-8 sm:w-8 rounded-full p-1.5 border ${
+      className={cn(
+        "h-9 w-9 rounded-full border p-1.5 sm:h-8 sm:w-8",
         isListening
-          ? "bg-red-500/10 border-red-500/30 text-red-500 animate-pulse"
-          : "border-border/40 hover:bg-muted text-foreground"
-      } ${isSpeechSupported ? "" : "opacity-40"}`}
+          ? "animate-pulse border-destructive/30 bg-destructive/10 text-destructive"
+          : "border-border/40 text-foreground hover:bg-muted",
+        !isSpeechSupported && "opacity-40"
+      )}
+      data-testid="voice-recorder"
       onClick={handleMicClick}
-      title={isListening ? "Arrêter la dictée" : "Dictée vocale"}
+      title={
+        isListening
+          ? "Arrêter la dictée"
+          : dictationLanguage === AUTO_DICTATION_LANGUAGE
+            ? "Dictée vocale (langue du navigateur)"
+            : "Dictée vocale"
+      }
       type="button"
       variant="ghost"
     >

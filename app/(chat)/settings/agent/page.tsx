@@ -237,7 +237,7 @@ export default function AgentSettingsPage() {
             <Section
               description="Profondeur de réflexion demandée au modèle. Sans effet sur les outils : l'Agent choisit lui-même ce qu'il utilise, et les autorisations se règlent plus bas."
               icon={BrainIcon}
-              title="Intensité de réflexion"
+              title="Réflexion"
             >
               {flags["agent.reasoning"] ? (
                 reasoningOptions.isEmpty ? (

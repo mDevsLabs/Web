@@ -422,8 +422,10 @@ export function createAgentStream(params: AgentStreamParams) {
         },
         onFinish: async ({ usage }) => {
           const totals = await recordAgentUsage({
+            chatId: params.chatId,
             idempotencyKey: `agent:${params.runId}:${params.revision ?? 0}`,
             model: params.modelId,
+            projectId: params.projectId,
             sessionToken: params.sessionToken,
             usage: usage as {
               inputTokens?: number;

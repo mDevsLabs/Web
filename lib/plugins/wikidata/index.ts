@@ -12,6 +12,11 @@ import manifest from "./index.json";
 const WIKIDATA = "https://www.wikidata.org";
 const headers = contactHeaders("mAI-Web");
 
+// `wbgetentities` refuse au-delà de 50 identifiants par requête : on reste
+// largement en dessous, le but est de nommer les propriétés et les entités les
+// plus citées, pas de tout résoudre.
+const MAX_RESOLVED_IDS = 24;
+
 const languageSchema = z
   .enum(["fr", "en", "de", "es", "it", "pt", "nl", "pl"])
   .default("fr");
@@ -126,17 +131,102 @@ function compactClaimValue(value: unknown): string | number | boolean | null {
   return null;
 }
 
+type Labels = Record<string, string>;
+
+function emptyLabels(): Labels {
+  return {};
+}
+
+/**
+ * Traduit les identifiants bruts (« P31 », « Q5 ») en libellés lisibles. Sans
+ * cela la sortie ne contient que `{"property":"P31","values":["Q5"]}`, que ni un
+ * humain ni le modèle ne peut interpréter. L'appel est facultatif : en cas
+ * d'échec on conserve les identifiants, jamais on ne perd la donnée.
+ */
+async function resolveLabels(ids: string[], language: string): Promise<Labels> {
+  const wanted = [...new Set(ids)]
+    .filter((id) => /^[PQ]\d+$/i.test(id))
+    .slice(0, MAX_RESOLVED_IDS);
+  if (wanted.length === 0) {
+    return emptyLabels();
+  }
+
+  const url = new URL(`${WIKIDATA}/w/api.php`);
+  url.searchParams.set("action", "wbgetentities");
+  url.searchParams.set("format", "json");
+  url.searchParams.set("ids", wanted.join("|"));
+  url.searchParams.set("props", "labels");
+  url.searchParams.set("languages", language);
+  url.searchParams.set("languagefallback", "1");
+
+  const result = await fetchPublicJson<unknown>(url.href, headers);
+  if (!result.ok) {
+    return emptyLabels();
+  }
+  const parsed = entityResponseSchema.safeParse(result.data);
+  if (!parsed.success) {
+    return emptyLabels();
+  }
+  const labels = emptyLabels();
+  for (const [id, entity] of Object.entries(parsed.data.entities)) {
+    const label = localized(entity.labels, language);
+    if (label) {
+      labels[id.toUpperCase()] = label;
+    }
+  }
+  return labels;
+}
+
+function claimValues(
+  claims: z.infer<typeof claimSchema>[] | undefined,
+  labels: Labels
+): Array<{
+  entityId?: string;
+  label: string | number | boolean | null;
+}> {
+  return (claims ?? [])
+    .slice(0, 8)
+    .map((claim) => {
+      const value = compactClaimValue(claim.mainsnak?.datavalue?.value);
+      const entityId = typeof value === "string" ? value : null;
+      const resolved = entityId ? labels[entityId.toUpperCase()] : undefined;
+      return {
+        ...(entityId ? { entityId } : {}),
+        // `id` est prioritaire : c'est un identifiant d'entité, donc résoluble.
+        label: resolved ?? value,
+      };
+    })
+    .filter((entry) => entry.label !== null);
+}
+
+function referencedIds(
+  claims: Record<string, z.infer<typeof claimSchema>[]> | undefined
+): string[] {
+  const ids: string[] = [];
+  for (const [property, values] of Object.entries(claims ?? {})) {
+    ids.push(property);
+    for (const claim of values) {
+      const value = compactClaimValue(claim.mainsnak?.datavalue?.value);
+      if (typeof value === "string" && /^[PQ]\d+$/i.test(value)) {
+        ids.push(value);
+      }
+    }
+  }
+  return ids;
+}
+
 function entityView(
   id: string,
   entity: z.infer<typeof entitySchema>,
-  language: string
+  language: string,
+  labels: Labels
 ) {
-  const labels = Object.fromEntries(
+  const localizedLabels = Object.fromEntries(
     Object.entries(entity.labels ?? {})
       .slice(0, 12)
       .map(([key, value]) => [key, truncateText(value.value, 240)])
   );
-  const descriptions = Object.fromEntries(
+  const localizedDescriptions = Object.fromEntries(
     Object.entries(entity.descriptions ?? {})
       .slice(0, 8)
       .map(([key, value]) => [key, truncateText(value.value, 500)])
@@ -149,11 +239,9 @@ function entityView(
   const claims = Object.entries(entity.claims ?? {})
     .slice(0, 40)
     .map(([property, values]) => ({
+      label: labels[property.toUpperCase()] ?? null,
       property,
-      values: values
-        .slice(0, 8)
-        .map((claim) => compactClaimValue(claim.mainsnak?.datavalue?.value))
-        .filter((value): value is string | number | boolean => value !== null),
+      values: claimValues(values, labels),
     }))
     .filter((claim) => claim.values.length > 0);
   const sitelinks = Object.entries(entity.sitelinks ?? {})
@@ -168,10 +256,10 @@ function entityView(
     aliases,
     claims,
     description: localized(entity.descriptions, language),
-    descriptions,
+    descriptions: localizedDescriptions,
     id,
     label: localized(entity.labels, language),
-    labels,
+    labels: localizedLabels,
     sitelinks,
   };
 }
@@ -218,7 +306,7 @@ export const searchWikidataEntities = tool({
 
 export const getWikidataEntity = tool({
   description:
-    "Lit une entité Wikidata publique et renvoie ses libellés, alias, propriétés et sitelinks dans une sortie bornée.",
+    "Lit une entité Wikidata publique et renvoie ses libellés, alias, propriétés et sitelinks dans une sortie bornée. Les identifiants de propriétés (P) et d'entités (Q) sont traduits en libellés lisibles.",
   execute: async ({ entityId, language = "fr" }) => {
     const normalizedEntityId = entityId.toUpperCase();
     const url = `${WIKIDATA}/wiki/Special:EntityData/${normalizedEntityId}.json`;
@@ -237,12 +325,15 @@ export const getWikidataEntity = tool({
       return { error: "Entité Wikidata introuvable." };
     }
 
+    const labels = await resolveLabels(referencedIds(entity.claims), language);
+
     return {
-      entity: entityView(normalizedEntityId, entity, language),
+      entity: entityView(normalizedEntityId, entity, language, labels),
       source: sourceRef(
         `${WIKIDATA}/wiki/${normalizedEntityId}`,
         "Wikidata — entité"
       ),
+      unresolvedLabels: Object.keys(labels).length === 0,
     };
   },
   inputSchema: z.object({
@@ -253,8 +344,72 @@ export const getWikidataEntity = tool({
   }),
 });
 
+export const getWikidataEntities = tool({
+  description:
+    "Lit jusqu'à dix entités Wikidata en une seule requête pour les comparer : libellé, description, instance de, nombre de sitelinks et lien vers la fiche.",
+  execute: async ({ entityIds, language = "fr" }) => {
+    const normalized = [
+      ...new Set(entityIds.map((id) => id.toUpperCase())),
+    ].slice(0, 10);
+    if (normalized.length === 0) {
+      return { error: "Indiquez au moins un identifiant Wikidata." };
+    }
+
+    const url = new URL(`${WIKIDATA}/w/api.php`);
+    url.searchParams.set("action", "wbgetentities");
+    url.searchParams.set("format", "json");
+    url.searchParams.set("ids", normalized.join("|"));
+    url.searchParams.set("props", "labels|descriptions|claims|sitelinks");
+    url.searchParams.set("languages", language);
+    url.searchParams.set("languagefallback", "1");
+
+    const result = await fetchPublicJson<unknown>(url.href, headers);
+    if (!result.ok) {
+      return { error: result.error };
+    }
+    const parsed = entityResponseSchema.safeParse(result.data);
+    if (!parsed.success) {
+      return { error: "Réponse d'entité Wikidata invalide." };
+    }
+
+    const missing = normalized.filter((id) => !parsed.data.entities[id]);
+    const found = normalized
+      .filter((id) => parsed.data.entities[id])
+      .map((id) => {
+        const entity = parsed.data.entities[id];
+        const view = entityView(id, entity, language, emptyLabels());
+        return {
+          description: view.description,
+          id,
+          label: view.label,
+          properties: view.claims.length,
+          sitelinkCount: view.sitelinks.length,
+          url: `${WIKIDATA}/wiki/${id}`,
+        };
+      });
+
+    return {
+      entities: found,
+      missing,
+      source: sourceRef(`${WIKIDATA}/wiki/Special:EntityData`, "Wikidata"),
+      totalReturned: found.length,
+    };
+  },
+  inputSchema: z.object({
+    entityIds: z
+      .array(entityIdSchema)
+      .min(1)
+      .max(10)
+      .describe("Identifiants Wikidata à lire, par exemple Q42, Q90, Q935"),
+    language: languageSchema.describe(
+      "Langue préférée pour les libellés (défaut fr)"
+    ),
+  }),
+});
+
 export const wikidataPlugin: PluginDefinition = {
   createTools: () => ({
+    getWikidataEntities,
     getWikidataEntity,
     searchWikidataEntities,
   }),

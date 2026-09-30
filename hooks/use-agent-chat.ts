@@ -29,6 +29,15 @@ import { fetchWithErrorHandlers, generateUUID } from "@/lib/utils";
 export type AgentToolMode = "auto" | "all" | "categories";
 
 export type AgentRequestOptions = {
+  /**
+   * Persona sélectionnée (assistant). `null` = style par défaut.
+   *
+   * Le serveur l'accepte depuis le début (`agentRequestBodySchema.assistantId`)
+   * et l'ajoute au prompt système APRÈS le socle Agent, sans jamais le
+   * remplacer. Le client ne l'envoyait pas : une persona était donc
+   * silencieusement ignorée en mode Agent.
+   */
+  assistantId: string | null;
   audioEnabled: boolean;
   enabledCategories: ToolCategory[] | null;
   forceWeb: boolean;
@@ -36,7 +45,14 @@ export type AgentRequestOptions = {
   memoryEnabled: boolean;
   mcpServerIds: string[];
   projectId: string | null;
-  reasoningLevel: ReasoningLevel;
+  /**
+   * Choix explicite de l'utilisateur pour cette session. `null` = aucun choix :
+   * la clé est alors omise du corps de la requête et le serveur replie sur le
+   * niveau enregistré dans les paramètres du compte. Coder une valeur en dur ici
+   * rendrait ce repli mort — l'interface imposerait « medium » à un compte qui a
+   * choisi autre chose.
+   */
+  reasoningLevel: ReasoningLevel | null;
   skillId: string | null;
   skillParams: Record<string, string> | null;
   tasksEnabled: boolean;
@@ -86,6 +102,7 @@ export type SubmitUserInputResult =
 type AgentMessagePart = NonNullable<ChatMessage["parts"]>[number];
 
 const EMPTY_OPTIONS: AgentRequestOptions = {
+  assistantId: null,
   audioEnabled: false,
   enabledCategories: null,
   forceWeb: false,
@@ -93,7 +110,9 @@ const EMPTY_OPTIONS: AgentRequestOptions = {
   mcpServerIds: [],
   memoryEnabled: false,
   projectId: null,
-  reasoningLevel: "medium",
+  // Aucun choix par défaut : la valeur vient des paramètres du compte, lus par
+  // l'interface et appliqués par le serveur quand la clé est absente.
+  reasoningLevel: null,
   skillId: null,
   skillParams: null,
   tasksEnabled: false,
@@ -285,6 +304,7 @@ export function useAgentChat({
         const options = optionsRef.current;
         return {
           body: {
+            assistantId: options.assistantId || undefined,
             audioEnabled: options.audioEnabled || undefined,
             enabledCategories: options.enabledCategories,
             forceWeb: options.forceWeb || undefined,
@@ -302,7 +322,9 @@ export function useAgentChat({
                   message: lastMessage,
                   projectId: options.projectId,
                 }),
-            reasoningLevel: options.reasoningLevel,
+            // `undefined` et non `null` : la clé disparaît du JSON, ce qui laisse
+            // `resolveAgentReasoning` appliquer le niveau du compte.
+            reasoningLevel: options.reasoningLevel ?? undefined,
             skillId: options.skillId || undefined,
             skillParams: options.skillParams ?? undefined,
             tasksEnabled: options.tasksEnabled || undefined,

@@ -436,20 +436,71 @@ textarea:focus-visible {
  * de vérité pour son style.
  */
 @utility chip {
-  @apply inline-flex cursor-pointer items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-medium transition-colors;
+  color: var(--muted-foreground);
   background-color: transparent;
   border-color: var(--border);
-  color: var(--muted-foreground);
+  @apply inline-flex cursor-pointer items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-medium transition-colors;
 
   &:hover {
-    background-color: color-mix(in oklab, var(--foreground) 6%, transparent);
     color: var(--foreground);
+    background-color: color-mix(in oklab, var(--foreground) 6%, transparent);
   }
 
   &[data-active="true"] {
+    color: var(--background);
     background-color: var(--foreground);
     border-color: var(--foreground);
-    color: var(--background);
+  }
+}
+
+/**
+ * Case de la carte de chaleur d'activité.
+ *
+ * L'intensité est portée par `data-level` (0 = vide, 4 = maximal) et
+ * recalculée par le composant à partir du maximum observé sur la période :
+ * une échelle fixe rendrait illisible un compte à 5 000 tokens par jour comme
+ * un compte à 5 000 000. Les paliers sont discrets et non un dégradé continu,
+ * parce qu'un dégradé ferait lire « 30 % du maximum » comme une petite journée
+ * alors que ça peut être un jour lourdment chargé.
+ *
+ * `data-agent` ajoute un pixel d'accent en bas à droite : la seule information
+ * « quel mode a tourné ce jour-là » lisible d'un coup d'œil sur 300 cases. Elle
+ * est absente de la légende et des cases vides, qui n'ont pas de mode.
+ */
+@utility heat-cell {
+  position: relative;
+  background-color: color-mix(in oklab, var(--muted) 55%, transparent);
+
+  &[data-level="1"] {
+    background-color: color-mix(in oklab, var(--foreground) 16%, var(--muted));
+  }
+  &[data-level="2"] {
+    background-color: color-mix(in oklab, var(--foreground) 32%, var(--muted));
+  }
+  &[data-level="3"] {
+    background-color: color-mix(in oklab, var(--foreground) 55%, var(--muted));
+  }
+  &[data-level="4"] {
+    background-color: var(--foreground);
+  }
+  /* Case d'un jour postérieur à aujourd'hui, ou d'un compte sans aucune
+     donnée : elle n'est pas « vide », elle est « pas encore mesurable ». */
+  &[data-empty="true"] {
+    background-color: color-mix(in oklab, var(--border) 45%, transparent);
+  }
+
+  &[data-agent="true"]::after {
+    position: absolute;
+    right: 1px;
+    bottom: 1px;
+    width: 3px;
+    height: 3px;
+    content: "";
+    background-color: var(--info);
+    border-radius: 1px;
+  }
+  &[data-agent="true"][data-level="4"]::after {
+    background-color: var(--info-foreground, var(--background));
   }
 }
 
@@ -457,7 +508,8 @@ textarea:focus-visible {
 @utility field-input {
   @apply w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm outline-none transition-shadow;
   &:focus-visible {
-    box-shadow: 0 0 0 3px color-mix(in oklab, var(--foreground) 12%, transparent);
+    box-shadow: 0 0 0 3px
+      color-mix(in oklab, var(--foreground) 12%, transparent);
   }
 }
 

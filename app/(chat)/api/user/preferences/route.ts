@@ -5,6 +5,12 @@ import { getMaiUser } from "@/lib/auth/session";
 import { getUserPreferences, upsertUserPreferences } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import {
+  DICTATION_LANGUAGES,
+  normalizeDictationLanguage,
+  normalizeTranslationTarget,
+  TRANSLATION_TARGET_CODE_LIST,
+} from "@/lib/i18n/languages";
+import {
   buildCustomInstructionsSchema,
   customInstructionsLimitPayload,
 } from "@/lib/plans/custom-instructions";
@@ -22,8 +28,21 @@ const buildSchema = (tier?: string | null) =>
     defaultAudioVoice: z.string().max(100).optional(),
     defaultChatModel: z.string().max(200).nullable().optional(),
     defaultChatVisibility: z.enum(["private", "public"]).optional(),
+    // Les deux listes viennent de lib/i18n/languages.ts, la même source que le
+    // sélecteur de l'interface : impossible qu'un code valide soit refusé par
+    // l'API, ni qu'une cible DeepL fantôme soit acceptée puis rejetée en aval.
+    defaultDictationLanguage: z
+      .string()
+      .transform(normalizeDictationLanguage)
+      .pipe(z.enum(DICTATION_LANGUAGES.map((entry) => entry.value)))
+      .optional(),
     defaultImageModel: z.string().max(150).optional(),
     defaultImageSize: z.string().max(50).optional(),
+    defaultTranslationLanguage: z
+      .string()
+      .transform((value) => normalizeTranslationTarget(value) ?? "EN")
+      .pipe(z.enum(TRANSLATION_TARGET_CODE_LIST as [string, ...string[]]))
+      .optional(),
     enabled: z.boolean().optional(),
     ghostMemoryEnabled: z.boolean().optional(),
     showAgentChatIcons: z.boolean().optional(),
@@ -53,8 +72,10 @@ export async function GET() {
       defaultAudioVoice: "flux-alexis-en",
       defaultChatModel: null,
       defaultChatVisibility: "private",
+      defaultDictationLanguage: "auto",
       defaultImageModel: "black-forest-labs/flux-schnell",
       defaultImageSize: "1024x1024",
+      defaultTranslationLanguage: "EN",
       enabled: false,
       ghostMemoryEnabled: false,
       showAgentChatIcons: true,

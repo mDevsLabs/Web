@@ -12,34 +12,19 @@
  */
 
 import type { Hono } from "npm:hono@4";
-import {
-  extractToken,
-  getDb,
-  getWeekData,
-  rateLimit,
-  verifyToken,
-} from "./config.ts";
+import { extractToken, getDb, getWeekData, rateLimit, verifyToken } from "./config.ts";
 import { createRegisterMulti } from "./vibe-common.ts";
 import { MAIAgentFleet } from "./vibe-mai-fleet.ts";
-import { visibilityFilter } from "./vibe-posts-core.ts";
 
-const TEXT_ACTIONS = new Set([
-  "complete",
-  "fix_spelling",
-  "lengthen",
-  "shorten",
-  "tone",
-]);
+const TEXT_ACTIONS = new Set(["complete", "fix_spelling", "lengthen", "shorten", "tone"]);
 
 const TONE_INSTRUCTIONS: Record<string, string> = {
+  professionnel: "professionnel, clair et crédible, adapté à un contexte de travail",
   amical: "amical et chaleureux, comme entre amis",
+  humoristique: "léger et humoristique, avec une touche d'esprit (sans en faire trop)",
   direct: "direct et percutant, va droit au but",
-  humoristique:
-    "léger et humoristique, avec une touche d'esprit (sans en faire trop)",
   inspirant: "inspirant et motivant",
   poetique: "poétique et imagé",
-  professionnel:
-    "professionnel, clair et crédible, adapté à un contexte de travail",
 };
 
 function stripCodeFences(raw: string): string {
@@ -54,11 +39,7 @@ export function cleanLlmText(raw: string): string {
   let text = stripCodeFences(String(raw || ""));
   text = text.replace(/^User Safety:[^\n]*\n*/gi, "");
   // Guillemets englobants uniquement (pas les guillemets internes)
-  if (
-    text.length >= 2 &&
-    ((text.startsWith('"') && text.endsWith('"')) ||
-      (text.startsWith("'") && text.endsWith("'")))
-  ) {
+  if (text.length >= 2 && ((text.startsWith('"') && text.endsWith('"')) || (text.startsWith("'") && text.endsWith("'")))) {
     text = text.slice(1, -1);
   }
   return text.trim();
@@ -81,11 +62,7 @@ export function extractJsonObject(raw: string): Record<string, any> | null {
 }
 
 /** Débite le quota hebdomadaire mAI (estimation ~1 token / 3 caractères). */
-export async function debitWeeklyTokens(
-  sql: any,
-  userId: number,
-  chars: number
-) {
+export async function debitWeeklyTokens(sql: any, userId: number, chars: number) {
   const { weekStartStr } = getWeekData();
   const tokens = Math.max(60, Math.ceil(chars / 3));
   try {
@@ -108,26 +85,16 @@ export function registerVibeAIRoutes(app: Hono) {
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
 
-      const body = await c.req.json().catch(() => ({}) as any);
+      const body = await c.req.json().catch(() => ({} as any));
       const text = String(body?.text || "");
       const action = String(body?.action || "");
       const tone = String(body?.tone || "");
 
       if (!text.trim()) return c.json({ error: "Texte requis." }, 400);
-      if (!TEXT_ACTIONS.has(action))
-        return c.json({ error: "Action invalide." }, 400);
+      if (!TEXT_ACTIONS.has(action)) return c.json({ error: "Action invalide." }, 400);
       // Anti-abus : la continuation se déclenche en tapant, on la plafonne plus fort
-      if (
-        !(await rateLimit(
-          `ai-text:${userId}`,
-          action === "complete" ? 40 : 20,
-          60_000
-        ))
-      ) {
-        return c.json(
-          { error: "Trop de requêtes mAI. Patientez un instant." },
-          429
-        );
+      if (!rateLimit(`ai-text:${userId}`, action === "complete" ? 40 : 20, 60_000)) {
+        return c.json({ error: "Trop de requêtes mAI. Patientez un instant." }, 429);
       }
 
       const sql = getDb();
@@ -152,10 +119,7 @@ export function registerVibeAIRoutes(app: Hono) {
           "Raccourcis le texte suivant d'environ moitié en conservant l'essentiel du sens, le ton et les hashtags/mentions importants. " +
           "Réponds UNIQUEMENT par le texte raccourci, sans guillemets ni commentaire.";
       } else {
-        const toneDesc =
-          TONE_INSTRUCTIONS[tone] ||
-          TONE_INSTRUCTIONS[tone.toLowerCase()] ||
-          `« ${tone} »`;
+        const toneDesc = TONE_INSTRUCTIONS[tone] || TONE_INSTRUCTIONS[tone.toLowerCase()] || `« ${tone} »`;
         system =
           `Réécris le texte suivant avec un ton ${toneDesc}, sans changer le fond du message. ` +
           "Conserve les hashtags/mentions/émojis pertinents. Réponds UNIQUEMENT par le texte réécrit, sans guillemets ni commentaire.";
@@ -163,10 +127,7 @@ export function registerVibeAIRoutes(app: Hono) {
 
       const result = await MAIAgentFleet.callOpenRouter(userId, system, text);
       if (!result) {
-        return c.json(
-          { error: "mAI est indisponible pour le moment (modèle ou clé IA)." },
-          502
-        );
+        return c.json({ error: "mAI est indisponible pour le moment (modèle ou clé IA)." }, 502);
       }
 
       await debitWeeklyTokens(sql, userId, text.length + result.length);
@@ -177,11 +138,7 @@ export function registerVibeAIRoutes(app: Hono) {
     }
   };
 
-  registerMulti(
-    "post",
-    ["/api/vibe/ai/text", "/vibe/ai/text", "/v1/ai/text", "/ai/text"],
-    handleAIText
-  );
+  registerMulti("post", ["/api/vibe/ai/text", "/vibe/ai/text", "/v1/ai/text", "/ai/text"], handleAIText);
 
   // ── « Traduire avec mAI » ─────────────────────────────────
   let translationsTableReady = false;
@@ -202,21 +159,9 @@ export function registerVibeAIRoutes(app: Hono) {
   };
 
   const LANG_NAMES: Record<string, string> = {
-    ar: "arabe",
-    de: "allemand",
-    en: "anglais",
-    es: "espagnol",
-    fr: "français",
-    hi: "hindi",
-    it: "italien",
-    ja: "japonais",
-    ko: "coréen",
-    nl: "néerlandais",
-    pl: "polonais",
-    pt: "portugais",
-    ru: "russe",
-    tr: "turc",
-    zh: "chinois",
+    fr: "français", en: "anglais", es: "espagnol", de: "allemand", it: "italien",
+    pt: "portugais", nl: "néerlandais", ar: "arabe", ja: "japonais", ko: "coréen",
+    zh: "chinois", ru: "russe", hi: "hindi", tr: "turc", pl: "polonais",
   };
   const langLabel = (code: string) => LANG_NAMES[code.toLowerCase()] || code;
 
@@ -227,32 +172,21 @@ export function registerVibeAIRoutes(app: Hono) {
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
 
-      const body = await c.req.json().catch(() => ({}) as any);
+      const body = await c.req.json().catch(() => ({} as any));
       const postId = String(body?.post_id || "");
       const rawText = String(body?.text || "").trim();
-      const targetLang = String(body?.target_lang || "fr")
-        .toLowerCase()
-        .slice(0, 8);
-      if (!(await rateLimit(`ai-translate:${userId}`, 20, 60_000))) {
-        return c.json(
-          { error: "Trop de traductions. Patientez un instant." },
-          429
-        );
+      const targetLang = String(body?.target_lang || "fr").toLowerCase().slice(0, 8);
+      if (!rateLimit(`ai-translate:${userId}`, 20, 60_000)) {
+        return c.json({ error: "Trop de traductions. Patientez un instant." }, 429);
       }
-      const isUuid =
-        /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
-          postId
-        );
+      const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(postId);
       // Traduction de texte brut (ex : message DM) : pas de cache post_translations
       if (!isUuid) {
         if (!rawText) {
           return c.json({ error: "Identifiant de post invalide." }, 400);
         }
         if (rawText.length > 8000) {
-          return c.json(
-            { error: "Texte trop long (8000 caractères max)." },
-            400
-          );
+          return c.json({ error: "Texte trop long (8000 caractères max)." }, 400);
         }
         const altTargetRaw = targetLang.slice(0, 2) === "FR" ? "EN-US" : "FR";
         const systemRaw =
@@ -262,66 +196,28 @@ export function registerVibeAIRoutes(app: Hono) {
           "Conserve les mentions @, émojis et liens tels quels. " +
           'Réponds UNIQUEMENT par un objet JSON strict : {"detected_language": "<langue d\'origine en français>", "target_language": "<langue cible>", "translation": "<traduction>"} — sans markdown ni commentaire.';
         const sqlRaw = getDb();
-        const raw = await MAIAgentFleet.callOpenRouter(
-          userId,
-          systemRaw,
-          rawText
-        );
-        if (!raw)
-          return c.json(
-            {
-              error: "mAI est indisponible pour le moment (modèle ou clé IA).",
-            },
-            502
-          );
+        const raw = await MAIAgentFleet.callOpenRouter(userId, systemRaw, rawText);
+        if (!raw) return c.json({ error: "mAI est indisponible pour le moment (modèle ou clé IA)." }, 502);
         await debitWeeklyTokens(sqlRaw, userId, rawText.length + raw.length);
         const parsedRaw = extractJsonObject(raw);
         let detectedRaw = "";
         let translationRaw = "";
         let effectiveTargetRaw = targetLang;
-        if (
-          parsedRaw &&
-          typeof parsedRaw.translation === "string" &&
-          parsedRaw.translation.trim()
-        ) {
+        if (parsedRaw && typeof parsedRaw.translation === "string" && parsedRaw.translation.trim()) {
           detectedRaw = String(parsedRaw.detected_language || "").trim();
           translationRaw = cleanLlmText(parsedRaw.translation);
-          if (
-            parsedRaw.target_language &&
-            String(parsedRaw.target_language).toLowerCase().includes("anglais")
-          ) {
+          if (parsedRaw.target_language && String(parsedRaw.target_language).toLowerCase().includes("anglais")) {
             effectiveTargetRaw = "EN-US";
           }
         } else {
           translationRaw = cleanLlmText(raw);
         }
         if (!translationRaw) return c.json({ error: "Traduction vide." }, 502);
-        return c.json({
-          cached: false,
-          detected_language: detectedRaw,
-          success: true,
-          target_lang: effectiveTargetRaw,
-          translation: translationRaw,
-        });
+        return c.json({ success: true, translation: translationRaw, detected_language: detectedRaw, target_lang: effectiveTargetRaw, cached: false });
       }
 
       const sql = getDb();
       await ensureTranslationsTable().catch(() => {});
-
-      // Vérifie l'accès AVANT de lire le cache ou d'envoyer le contenu à l'IA.
-      // Une traduction en cache ne doit pas contourner la visibilité du post.
-      const postRows = await sql`
-        SELECT p.content
-        FROM posts p
-        WHERE p.id = ${postId}::uuid
-          AND COALESCE(p.status, 'published') = 'published'
-          ${visibilityFilter(userId)}
-        LIMIT 1
-      `;
-      if (postRows.length === 0)
-        return c.json({ error: "Publication introuvable." }, 404);
-      const content = String(postRows[0].content || "").trim();
-      if (!content) return c.json({ error: "Publication vide." }, 400);
 
       // 1. Cache : traduction déjà générée pour ce post + langue cible
       try {
@@ -332,15 +228,20 @@ export function registerVibeAIRoutes(app: Hono) {
         `;
         if (cachedRows.length > 0) {
           return c.json({
-            cached: true,
-            detected_language: cachedRows[0].detected_language || "",
             success: true,
             translation: cachedRows[0].translation,
+            detected_language: cachedRows[0].detected_language || "",
+            cached: true,
           });
         }
       } catch {}
 
       // 2. Génération : détection de langue + traduction en un seul appel
+      const postRows = await sql`SELECT content FROM posts WHERE id = ${postId}::uuid LIMIT 1`;
+      if (postRows.length === 0) return c.json({ error: "Publication introuvable." }, 404);
+      const content = String(postRows[0].content || "").trim();
+      if (!content) return c.json({ error: "Publication vide." }, 400);
+
       const altTarget = targetLang.slice(0, 2) === "FR" ? "EN-US" : "FR";
       const system =
         "Tu es le moteur de traduction du réseau social Vibe. On te donne une publication. " +
@@ -350,11 +251,7 @@ export function registerVibeAIRoutes(app: Hono) {
         'Réponds UNIQUEMENT par un objet JSON strict : {"detected_language": "<nom de la langue d\'origine en français>", "target_language": "<nom de la langue cible>", "translation": "<traduction>"} — sans guillemets markdown ni commentaire.';
 
       const raw = await MAIAgentFleet.callOpenRouter(userId, system, content);
-      if (!raw)
-        return c.json(
-          { error: "mAI est indisponible pour le moment (modèle ou clé IA)." },
-          502
-        );
+      if (!raw) return c.json({ error: "mAI est indisponible pour le moment (modèle ou clé IA)." }, 502);
 
       await debitWeeklyTokens(sql, userId, content.length + raw.length);
 
@@ -362,17 +259,10 @@ export function registerVibeAIRoutes(app: Hono) {
       let detected = "";
       let translation = "";
       let effectiveTarget = targetLang;
-      if (
-        parsed &&
-        typeof parsed.translation === "string" &&
-        parsed.translation.trim()
-      ) {
+      if (parsed && typeof parsed.translation === "string" && parsed.translation.trim()) {
         detected = String(parsed.detected_language || "").trim();
         translation = cleanLlmText(parsed.translation);
-        if (
-          parsed.target_language &&
-          String(parsed.target_language).toLowerCase().includes("anglais")
-        ) {
+        if (parsed.target_language && String(parsed.target_language).toLowerCase().includes("anglais")) {
           effectiveTarget = "EN-US";
         }
       } else {
@@ -390,27 +280,12 @@ export function registerVibeAIRoutes(app: Hono) {
         `;
       } catch {}
 
-      return c.json({
-        cached: false,
-        detected_language: detected,
-        success: true,
-        target_lang: effectiveTarget,
-        translation,
-      });
+      return c.json({ success: true, translation, detected_language: detected, target_lang: effectiveTarget, cached: false });
     } catch (err: any) {
       console.error("[vibe-ai] Translate error:", err);
       return c.json({ error: err?.message || "Erreur traduction mAI." }, 500);
     }
   };
 
-  registerMulti(
-    "post",
-    [
-      "/api/vibe/ai/translate",
-      "/vibe/ai/translate",
-      "/v1/ai/translate",
-      "/ai/translate",
-    ],
-    handleTranslate
-  );
+  registerMulti("post", ["/api/vibe/ai/translate", "/vibe/ai/translate", "/v1/ai/translate", "/ai/translate"], handleTranslate);
 }

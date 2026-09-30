@@ -8,13 +8,16 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import {
+  levelToRatio,
   REASONING_LEVEL_DESCRIPTIONS,
   REASONING_LEVEL_LABELS,
   type ReasoningLevel,
+  ratioToLevel,
+  toAscendingLevels,
 } from "@/lib/ai/registry/reasoning";
 import { cn } from "@/lib/utils";
 
-// Sélecteur d'effort de réflexion du composer Agent.
+// Sélecteur de réflexion du composer Agent.
 //
 // Les niveaux affichés ne sont jamais écrits ici : ils viennent des capacités du
 // modèle sélectionné (reasoning.supported_efforts, lu via /api/models). Un
@@ -22,14 +25,22 @@ import { cn } from "@/lib/utils";
 // fichier — c'est tout l'intérêt d'une piste dont le nombre de crans suit la
 // donnée.
 //
-// Le curseur est un radiogroup plutôt qu'un <input type="range"> : le nombre de
-// positions est variable, et un radiogroup donne les flèches gauche/droite, la
-// tabulation et l'annonce par les lecteurs d'écran sans code supplémentaire.
+// ORIENTATION. La piste se lit comme un curseur de volume : « Faible » à gauche,
+// « Maximale » à droite. Les capacités arrivent dans l'ordre décroissant
+// (max → none), on les inverse une fois (`toAscendingLevels`) et toute la
+// géométrie — remplissage, repères, curseur, clic, flèches — découle de cet
+// ordre. Inverser les calculs un par un serait le meilleur moyen d'en laisser un
+// derrière.
+//
+// ACCESSIBILITÉ. `role="slider"` et non `radiogroup` : le nombre de positions est
+// variable (3, 5 ou 7 selon le modèle) et la sémantique de curseur tient dans un
+// seul élément focusable. `ArrowRight` augmente l'intensité, comme sur toute
+// glissière — la flèche droite va donc vers la droite de la piste.
 
 export type ReasoningEffortPickerProps = {
   /** Niveau effectif, déjà recalé sur le modèle par le serveur. */
   level: ReasoningLevel;
-  /** Niveaux réellement acceptés par le modèle, du plus intense au plus faible. */
+  /** Niveaux réellement acceptés par le modèle, dans l'ordre décroissant. */
   levels: readonly ReasoningLevel[];
   /** Le modèle ne peut pas produire de réponse sans raisonner. */
   mandatory?: boolean;
@@ -62,12 +73,23 @@ export function ReasoningEffortPicker({
     return null;
   }
 
-  const index = Math.max(0, levels.indexOf(level));
-  const current = levels[index] ?? levels[0];
+  const ascending = toAscendingLevels(levels);
+  const single = ascending.length === 1;
+  // Un niveau hors de la liste ne se produit pas en pratique — le serveur
+  // renvoie toujours l'effort qu'il a appliqué — mais l'interface ne doit pas
+  // non plus afficher un curseur sans position. On se rabat sur le niveau le
+  // plus faible, qui est aussi le moins cher de tout l'intervalle.
+  const activeIndex = Math.max(0, ascending.indexOf(level));
+  const current = ascending[activeIndex] ?? ascending[0];
+  // Un cran unique n'a pas de géométrie : la piste est pleine et le curseur au
+  // centre, plutôt qu'un curseur collé au bord sur une piste vide de sens.
+  const percent = single ? 100 : levelToRatio(ascending, current) * 100;
 
   const move = (delta: number) => {
     const next =
-      levels[Math.min(levels.length - 1, Math.max(0, index + delta))];
+      ascending[
+        Math.min(ascending.length - 1, Math.max(0, activeIndex + delta))
+      ];
     if (next) {
       onLevelChange(next);
     }
@@ -82,7 +104,7 @@ export function ReasoningEffortPicker({
           type="button"
         >
           <BrainIcon className="size-3.5" />
-          <span>Effort de réflexion</span>
+          <span>Réflexion</span>
           <ChevronDownIcon className="size-3 opacity-60" />
         </button>
       </PopoverTrigger>
@@ -98,38 +120,26 @@ export function ReasoningEffortPicker({
 
         {/*
           Une piste et un curseur, pas une liste de boutons : le nombre de
-          positions est variable (3, 5, 7 selon le modèle) et la position réelle
-          est continue. `slider` est la sémantique exacte — un seul élément
-          focusable, les flèches font le reste — là où `radiogroup` aurait
-          imposé N boutons pour N positions.
+          positions est variable et la position réelle est continue.
         */}
         <div className="relative h-6">
           {/* Piste remplie jusqu'au curseur. */}
           <div className="absolute inset-x-0 top-1/2 h-1.5 -translate-y-1/2 overflow-hidden rounded-full bg-muted">
             <div
               className="h-full rounded-full bg-primary transition-[width]"
-              style={{
-                width: `${
-                  levels.length === 1
-                    ? 100
-                    : (index / (levels.length - 1)) * 100
-                }%`,
-              }}
+              style={{ width: `${percent}%` }}
             />
           </div>
 
           {/* Repères : un point par niveau réellement supporté. */}
-          {levels.map((item, itemIndex) => {
-            const position =
-              levels.length === 1
-                ? 50
-                : (itemIndex / (levels.length - 1)) * 100;
+          {ascending.map((item, itemIndex) => {
+            const position = single ? 50 : levelToRatio(ascending, item) * 100;
             return (
               <span
                 aria-hidden
                 className={cn(
                   "absolute top-1/2 size-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full",
-                  itemIndex <= index ? "bg-background" : "bg-border"
+                  itemIndex <= activeIndex ? "bg-background" : "bg-border"
                 )}
                 key={item}
                 style={{ left: `${position}%` }}
@@ -138,37 +148,36 @@ export function ReasoningEffortPicker({
           })}
 
           <div
-            aria-label="Effort de réflexion"
+            aria-label="Réflexion"
             aria-orientation="horizontal"
-            aria-valuemax={levels.length - 1}
+            aria-valuemax={ascending.length - 1}
             aria-valuemin={0}
-            aria-valuenow={index}
+            aria-valuenow={activeIndex}
             aria-valuetext={REASONING_LEVEL_LABELS[current]}
             className="absolute inset-0 cursor-pointer focus:outline-none"
-            // Un clic dans la piste saute au niveau le plus proche, sans
-            // inverse : la piste est déjà orientée du plus cher au moins cher.
+            // Un clic dans la piste saute au niveau le plus proche, sans inverse :
+            // `ratioToLevel` raisonne sur la position, pas sur l'index.
             onClick={(event) => {
               const bounds = event.currentTarget.getBoundingClientRect();
               const ratio = bounds.width
                 ? (event.clientX - bounds.left) / bounds.width
                 : 0;
-              const target = Math.round(ratio * (levels.length - 1));
-              const next =
-                levels[Math.min(levels.length - 1, Math.max(0, target))];
+              const next = ratioToLevel(ascending, ratio);
               if (next) {
                 onLevelChange(next);
               }
             }}
             onKeyDown={(event) => {
-              if (event.key === "ArrowLeft" || event.key === "ArrowDown") {
-                event.preventDefault();
-                move(-1);
-              } else if (
-                event.key === "ArrowRight" ||
-                event.key === "ArrowUp"
-              ) {
+              // Vers la droite = plus intense, comme sur toute glissière.
+              if (event.key === "ArrowRight" || event.key === "ArrowUp") {
                 event.preventDefault();
                 move(1);
+              } else if (
+                event.key === "ArrowLeft" ||
+                event.key === "ArrowDown"
+              ) {
+                event.preventDefault();
+                move(-1);
               }
             }}
             role="slider"
@@ -176,18 +185,17 @@ export function ReasoningEffortPicker({
           >
             <span
               className="absolute top-1/2 block size-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-primary bg-background shadow-sm"
-              style={{
-                left: `${
-                  levels.length === 1 ? 50 : (index / (levels.length - 1)) * 100
-                }%`,
-              }}
+              style={{ left: `${percent}%` }}
             />
           </div>
         </div>
 
+        {/* Les deux extrémités de la piste, dans l'ordre où on les lit. */}
         <div className="mt-2 flex justify-between text-[10.5px] text-muted-foreground">
-          <span>{REASONING_LEVEL_LABELS[levels[0]]}</span>
-          <span>{REASONING_LEVEL_LABELS[levels.at(-1) ?? levels[0]]}</span>
+          <span>{REASONING_LEVEL_LABELS[ascending[0]]}</span>
+          <span>
+            {REASONING_LEVEL_LABELS[ascending.at(-1) ?? ascending[0]]}
+          </span>
         </div>
       </PopoverContent>
     </Popover>

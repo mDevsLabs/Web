@@ -39,6 +39,7 @@ export const TOOL_IDS = [
   "quizzly",
   "updateAccountProfile",
   "getAccountUsage",
+  "getUsageStats",
   "updateProfilePicture",
 ] as const;
 
@@ -79,6 +80,14 @@ export function isChatToolId(toolId: string): toolId is ChatToolId {
 // Les Skills et les plugins déclarent des identifiants du Chat ; le registre
 // Agent (lib/agent/tools/catalog.ts) utilise des identifiants snake_case. Sans
 // cette table, un skill posé sur un run Agent ne retrouve aucun outil.
+// `getAccountUsage` et `getUsageStats` n'ont volontairement PAS d'entrée dans
+// `CHAT_AGENT_TOOL_PAIRS` : ce sont des outils de COMPTE, ils interrogent les
+// tables du produit lui-même (quotas, `UsageEvent`, conversations) et n'ont pas
+// d'équivalent dans le registre Agent. Les rendre disponibles à l'Agent
+// reviendrait à lui donner accès à l'historique de facturation depuis une tâche
+// autonome, ce qui n'a pas de sens. Un Skill ne peut donc pas les activer en
+// mode Agent ; `normalizeToolIds` les rangera dans `unknown`, ce qui est le
+// comportement voulu.
 export const CHAT_AGENT_TOOL_PAIRS = [
   { agent: "search_web", chat: "webSearch" },
   { agent: "read_url", chat: "readUrl" },

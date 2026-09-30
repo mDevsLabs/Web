@@ -87,7 +87,7 @@ export async function POST(request: Request) {
     }
     logError("Erreur création agent", err);
     return errorResponse("internal_error", {
-      message: "Erreur lors de la création de l'agent.",
+      message: "Erreur lors de la création du bot.",
     });
   }
 }

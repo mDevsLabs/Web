@@ -33,6 +33,12 @@ export const apiEndpoints = {
   agentRunUserInput: (runId: string) =>
     apiUrl(`/api/agent/runs/${runId}/user-input`),
   agentSettings: () => apiUrl("/api/agent/settings"),
+  /** Bots de l'utilisateur (gardé côté serveur : forfait Plus minimum). */
+  agents: () => apiUrl("/api/agents"),
+  /** Générations audio de l'utilisateur. La route n'accepte aucun paramètre. */
+  audioHistory: () => apiUrl("/api/audio/history"),
+  /** Catalogue des modèles audio. */
+  audioModels: () => apiUrl("/api/models/audio"),
 
   chatById: (chatId: string) => apiUrl(`/api/chats/${chatId}`),
   chatExport: (chatId: string, format: "html" | "md" = "md") =>
@@ -45,7 +51,51 @@ export const apiEndpoints = {
 
   fileUpload: () => apiUrl("/api/files/upload"),
 
+  /** Générations d'images de l'utilisateur (l'amont plafonne à 50). */
+  imageHistory: () => apiUrl("/api/images/history"),
+  /** Catalogue des modèles d'image. */
+  imageModels: () => apiUrl("/api/models/images"),
+  /** Serveurs MCP de l'utilisateur (gardé côté serveur : forfait Plus minimum). */
+  mcpServers: () => apiUrl("/api/mcp"),
+
   messagesForChat: (chatId: string) => apiUrl(`/api/messages?chatId=${chatId}`),
 
   models: () => apiUrl("/api/models"),
+  /** Recherche globale : discussions, messages, projets et fichiers Cloud. */
+  search: (query: string, limit = 20) =>
+    apiUrl(`/api/search?q=${encodeURIComponent(query)}&limit=${limit}`),
+
+  /**
+   * Index de recherche interne : un point d'entrée unique pour toutes les
+   * sources du compte.
+   *
+   * `sources` vide = toutes les sources. `offset` est l'unique curseur : la
+   * pagination est globale, donc partagée par toutes les sources, ce qui
+   * suppose que la source d'un OFFSET suive `nextOffset` de la réponse.
+   */
+  searchIndex: (params: {
+    limit: number;
+    offset: number;
+    query: string;
+    sources: string[];
+  }) => {
+    const query = new URLSearchParams({
+      limit: String(params.limit),
+      offset: String(params.offset),
+      q: params.query,
+    });
+    if (params.sources.length > 0) {
+      query.set("sources", params.sources.join(","));
+    }
+    return apiUrl(`/api/recherche?${query.toString()}`);
+  },
+  /** Skills de l'utilisateur — ouvert à tous les forfaits. */
+  skills: () => apiUrl("/api/skills"),
+  /**
+   * Statistiques de consommation. La query string est déjà construite par
+   * `buildStatsQueryString` (lib/stats/stats-types.ts) : la page ne l'assemble
+   * pas à la main, sinon les deux côtés divergeraient sur le nom des filtres.
+   */
+  stats: (queryString: string) =>
+    apiUrl(`/api/stats${queryString ? `?${queryString}` : ""}`),
 } as const;

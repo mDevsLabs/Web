@@ -10,31 +10,11 @@ export const STATIC_PROJECTS_LIST = [
     features: ["Chat Web", "Interface fluide", "Streaming en direct"],
     id: "proj_web",
     is_public: true,
-    label: "Release Candidate",
+    label: "Alpha",
     name: "Web",
     project_id: "web",
     repository: "https://github.com/mDevsLabs/Web",
-    status: "rc",
-    version: "0.1.0",
-  },
-  {
-    category: "Social Network",
-    created_at: "2026-09-01T00:00:00.000Z",
-    description:
-      "Réseau social open source où l'IA mAI est intégrée nativement : feed social, conversations et création de contenu assistée.",
-    features: [
-      "Feed social",
-      "IA mAI intégrée",
-      "Création assistée",
-      "Open Source",
-    ],
-    id: "proj_vibe",
-    is_public: true,
-    label: "Bêta",
-    name: "Vibe",
-    project_id: "vibe",
-    repository: "https://github.com/mDevsLabs/Vibe",
-    status: "beta",
+    status: "alpha",
     version: "0.1.0",
   },
   {
@@ -45,11 +25,11 @@ export const STATIC_PROJECTS_LIST = [
     features: ["Extension navigateur", "Extension VS Code", "Accès contextuel"],
     id: "proj_pulse",
     is_public: true,
-    label: "Release Candidate",
+    label: "Bêta",
     name: "Pulse",
     project_id: "pulse",
     repository: "https://github.com/mDevsLabs/Pulse",
-    status: "rc",
+    status: "beta",
     version: "0.2.0",
   },
   {
@@ -64,11 +44,11 @@ export const STATIC_PROJECTS_LIST = [
     ],
     id: "proj_cli",
     is_public: true,
-    label: "Release Candidate",
+    label: "Bêta",
     name: "CLI",
     project_id: "cli",
     repository: "https://github.com/mDevsLabs/CLI",
-    status: "rc",
+    status: "beta",
     version: "0.5.0",
   },
   {
@@ -84,11 +64,11 @@ export const STATIC_PROJECTS_LIST = [
     ],
     id: "proj_coder",
     is_public: true,
-    label: "Release Candidate",
+    label: "Alpha",
     name: "Coder",
     project_id: "coder",
     repository: "https://github.com/mDevsLabs/Coder",
-    status: "rc",
+    status: "alpha",
     version: "0.1.0",
   },
   {
@@ -297,28 +277,6 @@ export const STATIC_PROJECTS_LIST = [
 ];
 
 export const STATIC_PROJECTS_MAP: Record<string, any> = {
-  api: {
-    category: "API",
-    created_at: "2026-03-01T00:00:00.000Z",
-    description: "Hub API mAI et agrégation de modèles.",
-    is_public: true,
-    label: "Bêta",
-    name: "API",
-    project_id: "api",
-    repository: "https://github.com/mDevsLabs/API",
-    status: "beta",
-  },
-  autre: {
-    category: "Autre",
-    created_at: "2026-08-01T00:00:00.000Z",
-    description: "Autres projets et expérimentations mAI.",
-    is_public: true,
-    label: "Concept",
-    name: "Autre",
-    project_id: "autre",
-    repository: "",
-    status: "conception",
-  },
   cli: {
     category: "Developer Tools",
     created_at: "2026-08-10T00:00:00.000Z",
@@ -355,17 +313,6 @@ export const STATIC_PROJECTS_MAP: Record<string, any> = {
     repository: "https://github.com/mDevsLabs/Coder",
     status: "alpha",
   },
-  desktop: {
-    category: "Desktop",
-    created_at: "2026-08-15T00:00:00.000Z",
-    description: "Application desktop intégrée mAI.",
-    is_public: true,
-    label: "Concept",
-    name: "Desktop",
-    project_id: "desktop",
-    repository: "https://github.com/mDevsLabs/Desktop",
-    status: "conception",
-  },
   mai: {
     category: "AI Suite",
     created_at: "2026-01-15T00:00:00.000Z",
@@ -400,39 +347,26 @@ export const STATIC_PROJECTS_MAP: Record<string, any> = {
     repository: "https://github.com/mDevsLabs/mSearch",
     status: "archived",
   },
-  openprovider: {
-    category: "API Gateway",
-    created_at: "2026-03-01T00:00:00.000Z",
-    description:
-      "Hub universel d'agrégation et de routage d'API et modèles LLM.",
+  site: {
+    category: "Site & Web",
+    created_at: "2026-08-01T00:00:00.000Z",
+    description: "Site officiel et application web mAI.",
     is_public: true,
-    label: "Archivé",
-    name: "OpenProvider",
-    project_id: "openprovider",
-    repository: "https://github.com/mDevsLabs/OpenProvider",
-    status: "archived",
+    label: "Alpha",
+    name: "Site",
+    project_id: "site",
+    repository: "https://github.com/mDevsLabs/Site",
+    status: "alpha",
   },
-  plugins: {
-    category: "Plugins",
-    created_at: "2026-08-10T00:00:00.000Z",
-    description: "Écosystème de plugins mAI.",
-    is_public: true,
-    label: "Concept",
-    name: "Plugins",
-    project_id: "plugins",
-    repository: "https://github.com/mDevsLabs/Plugins",
-    status: "conception",
-  },
-  pulse: {
+  "pulse-web": {
     category: "Extensions",
     created_at: "2026-08-05T00:00:00.000Z",
-    description:
-      "Ensemble d'extensions pour diverses applications pour discuter avec mAI directement (navigateur, VS Code...).",
+    description: "Extension Pulse pour le navigateur web.",
     is_public: true,
     label: "Bêta",
-    name: "Pulse",
-    project_id: "pulse",
-    repository: "https://github.com/mDevsLabs/Pulse",
+    name: "Pulse - Web",
+    project_id: "pulse-web",
+    repository: "https://github.com/mDevsLabs/Pulse-Web",
     status: "beta",
   },
   "pulse-jetbrains": {
@@ -457,27 +391,16 @@ export const STATIC_PROJECTS_MAP: Record<string, any> = {
     repository: "https://github.com/mDevsLabs/Pulse-VSCode",
     status: "beta",
   },
-  "pulse-web": {
-    category: "Extensions",
-    created_at: "2026-08-05T00:00:00.000Z",
-    description: "Extension Pulse pour le navigateur web.",
+  desktop: {
+    category: "Desktop",
+    created_at: "2026-08-15T00:00:00.000Z",
+    description: "Application desktop intégrée mAI.",
     is_public: true,
-    label: "Bêta",
-    name: "Pulse - Web",
-    project_id: "pulse-web",
-    repository: "https://github.com/mDevsLabs/Pulse-Web",
-    status: "beta",
-  },
-  site: {
-    category: "Site & Web",
-    created_at: "2026-08-01T00:00:00.000Z",
-    description: "Site officiel et application web mAI.",
-    is_public: true,
-    label: "Alpha",
-    name: "Site",
-    project_id: "site",
-    repository: "https://github.com/mDevsLabs/Site",
-    status: "alpha",
+    label: "Concept",
+    name: "Desktop",
+    project_id: "desktop",
+    repository: "https://github.com/mDevsLabs/Desktop",
+    status: "conception",
   },
   skills: {
     category: "Skills",
@@ -489,6 +412,63 @@ export const STATIC_PROJECTS_MAP: Record<string, any> = {
     project_id: "skills",
     repository: "https://github.com/mDevsLabs/Skills",
     status: "conception",
+  },
+  plugins: {
+    category: "Plugins",
+    created_at: "2026-08-10T00:00:00.000Z",
+    description: "Écosystème de plugins mAI.",
+    is_public: true,
+    label: "Concept",
+    name: "Plugins",
+    project_id: "plugins",
+    repository: "https://github.com/mDevsLabs/Plugins",
+    status: "conception",
+  },
+  api: {
+    category: "API",
+    created_at: "2026-03-01T00:00:00.000Z",
+    description: "Hub API mAI et agrégation de modèles.",
+    is_public: true,
+    label: "Bêta",
+    name: "API",
+    project_id: "api",
+    repository: "https://github.com/mDevsLabs/API",
+    status: "beta",
+  },
+  autre: {
+    category: "Autre",
+    created_at: "2026-08-01T00:00:00.000Z",
+    description: "Autres projets et expérimentations mAI.",
+    is_public: true,
+    label: "Concept",
+    name: "Autre",
+    project_id: "autre",
+    repository: "",
+    status: "conception",
+  },
+  openprovider: {
+    category: "API Gateway",
+    created_at: "2026-03-01T00:00:00.000Z",
+    description:
+      "Hub universel d'agrégation et de routage d'API et modèles LLM.",
+    is_public: true,
+    label: "Archivé",
+    name: "OpenProvider",
+    project_id: "openprovider",
+    repository: "https://github.com/mDevsLabs/OpenProvider",
+    status: "archived",
+  },
+  pulse: {
+    category: "Extensions",
+    created_at: "2026-08-05T00:00:00.000Z",
+    description:
+      "Ensemble d'extensions pour diverses applications pour discuter avec mAI directement (navigateur, VS Code...).",
+    is_public: true,
+    label: "Bêta",
+    name: "Pulse",
+    project_id: "pulse",
+    repository: "https://github.com/mDevsLabs/Pulse",
+    status: "beta",
   },
   snob: {
     category: "Games",
@@ -527,7 +507,7 @@ export function registerProjectRoutes(app: Hono) {
         data: [...STATIC_PROJECTS_LIST, ...dbProjects],
         object: "list",
       });
-    } catch {
+    } catch (_err) {
       return c.json({ data: STATIC_PROJECTS_LIST, object: "list" });
     }
   });
@@ -541,7 +521,7 @@ export function registerProjectRoutes(app: Hono) {
       return c.json({ error: "Le nom du projet est obligatoire." }, 400);
     }
 
-    const projectId = `proj-${Math.random().toString(36).substr(2, 9)}`;
+    const projectId = "proj-" + Math.random().toString(36).substr(2, 9);
 
     await sql`
       INSERT INTO mprojects_projects (user_id, project_id, name, description, is_public)

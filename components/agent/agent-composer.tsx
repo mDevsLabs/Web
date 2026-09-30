@@ -20,6 +20,7 @@ import {
 } from "@/components/agent/composer/agent-option-pickers";
 import { AgentPlusMenu } from "@/components/agent/composer/agent-plus-menu";
 import { ReasoningEffortPicker } from "@/components/agent/reasoning-effort-picker";
+import { AgentSelectorCompact } from "@/components/agents/agent-selector";
 import { CloudFilePickerDialog } from "@/components/chat/cloud-file-picker-dialog";
 import {
   ComposerActionsRow,
@@ -42,6 +43,7 @@ import {
   type SlashCommand,
   SlashCommandMenu,
 } from "@/components/chat/slash-commands";
+import { useActiveChat } from "@/hooks/use-active-chat";
 import type {
   AgentRequestOptions,
   AgentToolMode,
@@ -53,6 +55,8 @@ import {
 import { useComposerTriggers } from "@/hooks/use-composer-triggers";
 import type { ProjectLite } from "@/hooks/use-projects";
 import { useProjects } from "@/hooks/use-projects";
+import { useSharedDraft } from "@/hooks/use-shared-draft";
+import { useTier } from "@/hooks/use-tier";
 import { AGENT_HOME_PLACEHOLDER } from "@/lib/agent/channel";
 import type { AgentFlags } from "@/lib/agent/flags";
 import type { ToolCategory } from "@/lib/agent/types";
@@ -60,6 +64,11 @@ import type { AgentComposerActionId } from "@/lib/agent/ui/composer-actions";
 import { getAgentComposerAction } from "@/lib/agent/ui/composer-actions";
 import type { ModelCapabilities } from "@/lib/ai/registry/capabilities";
 import { resolveReasoningEffort } from "@/lib/ai/registry/capabilities";
+import {
+  DEFAULT_REASONING_LEVEL,
+  type ReasoningLevel,
+} from "@/lib/ai/registry/reasoning";
+import { asArray, jsonArray, jsonObject } from "@/lib/api/client-fetch";
 import { resolveSlashCommandOutcome } from "@/lib/chat/slash-command-outcomes";
 import { pagePath } from "@/lib/client/api-endpoints";
 import type { Agent, McpServer, Skill } from "@/lib/db/schema";
@@ -99,6 +108,12 @@ const ONE_SHOT_CHIP_META: Partial<
 export function AgentComposer({
   capabilities,
   className,
+  /**
+   * Niveau de réflexion enregistré dans les paramètres du compte. Sert de
+   * référence d'affichage tant que l'utilisateur n'a pas choisi explicitement :
+   * c'est la valeur que le serveur appliquera de toute façon.
+   */
+  defaultReasoningLevel = DEFAULT_REASONING_LEVEL,
   flags,
   isRunning,
   modelId,
@@ -116,6 +131,7 @@ export function AgentComposer({
 }: {
   capabilities: ModelCapabilities;
   className?: string;
+  defaultReasoningLevel?: ReasoningLevel;
   flags: AgentFlags;
   isRunning: boolean;
   modelId: string;
@@ -131,8 +147,16 @@ export function AgentComposer({
   placeholder?: string;
   project: ProjectLite | null;
 }) {
-  const [input, setInput] = useState("");
-  const [attachments, setAttachments] = useState<Attachment[]>([]);
+  // Le texte et les pièces jointes ne sont PAS locaux à ce composant : ils
+  // vivent dans des stores montés au-dessus du point de bascule Chat ⇄ Agent
+  // (components/chat/shell.tsx rend `AgentShell` OU le Chat, jamais les deux).
+  // Avant, un `useState` ici était détruit à chaque bascule — dans les deux
+  // sens — et le prompt saisi en Chat disparaissait en passant en Agent.
+  // Le texte vient de `ActiveChatProvider.input` (déjà au-dessus de la bascule),
+  // les pièces jointes du brouillon partagé : ce sont des URL HTTP, donc le
+  // transfert entre modes ne demande aucun ré-upload.
+  const { input, setInput } = useActiveChat();
+  const { attachments, setAttachments } = useSharedDraft();
   // « reasoning » n'est pas une action du menu « + » : c'est un panneau local,
   // mais il partage le même état d'ouverture pour qu'un seul panneau soit
   // ouvert à la fois.
@@ -144,6 +168,14 @@ export function AgentComposer({
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const router = useRouter();
   const { resolvedTheme, setTheme } = useTheme();
+  // Le tier est lu, pas supposé. Le composer était relié à `useComposerTriggers`
+  // avec `isFree: false` en dur, sous l'hypothèse — vraie aujourd'hui, car
+  // `resolveChatExperience` bloque l'Agent aux comptes Free — qu'un utilisateur
+  // Free n'atteint jamais cet écran. Une hypothèse de plus, et `/bots` restait
+  // proposé à un compte qui n'a pas accès aux bots, et le sélecteur sur lequel
+  // la commande doit cliquer n'était pas monté. Le canal est déjà chargé par
+  // `AgentSelectorCompact` : le lire ici ne coûte aucune requête de plus.
+  const { isFree } = useTier();
 
   const supportsFiles =
     capabilities.file || capabilities.image || capabilities.vision;
@@ -174,9 +206,11 @@ export function AgentComposer({
   // préférence n'est pas dans les niveaux du modèle — mAI-2 ne connaît que
   // max/high/low — le serveur la recale : afficher la préférence brute
   // mentirait sur l'effort qui partira.
+  // Un choix absent n'est pas « medium » : c'est le réglage du compte, celui que
+  // le serveur lira dans le repli `requested ?? fallback`.
   const reasoning = resolveReasoningEffort({
     capabilities,
-    preferred: options.reasoningLevel,
+    preferred: options.reasoningLevel ?? defaultReasoningLevel,
   });
   const reasoningLevels = showReasoning ? capabilities.reasoningLevels : [];
 
@@ -184,25 +218,21 @@ export function AgentComposer({
   // de l'utilisateur. Les effects de session sont retransmis dans la requête
   // et revérifiés côté serveur.
   //
-  // Ces trois fetchers ne doivent jamais renvoyer autre chose qu'un tableau
+  // Ces fetchers ne doivent jamais renvoyer autre chose qu'un tableau
   // exploitable : le `= []` par défaut de SWR ne couvre que `undefined`, donc
   // une réponse 200 au corps inattendu empoisonnait le cache et faisait lever
   // `find is not a function` à CHAQUE rendu du composer — donc sur tout le
-  // mode Agent. `jsonArray`/`jsonObject` filtrent et laissent SWR réessayer.
+  // mode Agent. `jsonArray`/`jsonObject` refusent la mauvaise forme et laissent
+  // SWR réessayer ; `asArray` ferme le verrou à la lecture.
   const { projects: allProjects } = useProjects();
-  const { data: userSkills = [] } = useSWR<Skill[]>(
+  const { data: userSkillsData } = useSWR<Skill[]>(
     "/api/skills",
-    (url: string) =>
-      fetch(url).then((response) =>
-        response.ok
-          ? response.json()
-          : Promise.reject(new Error(`skills HTTP ${response.status}`))
-      ),
+    (url: string) => jsonArray<Skill>(url),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
   const skills = useMemo(
-    () => (Array.isArray(userSkills) ? userSkills : []),
-    [userSkills]
+    () => asArray<Skill>(userSkillsData),
+    [userSkillsData]
   );
   const selectedSkill = useMemo(
     () => skills.find((skill) => skill.id === options.skillId) ?? null,
@@ -220,45 +250,30 @@ export function AgentComposer({
     limit: number | null;
   }>(
     "/api/agents",
-    (url: string) =>
-      fetch(url).then((response) =>
-        response.ok
-          ? response.json()
-          : Promise.reject(new Error(`agents HTTP ${response.status}`))
-      ),
+    (url: string) => jsonObject<{ agents: Agent[]; limit: number | null }>(url),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
   const agents = useMemo(
-    () => (Array.isArray(userAgentsData?.agents) ? userAgentsData.agents : []),
+    () => asArray<Agent>(userAgentsData?.agents),
     [userAgentsData]
   );
   const { data: mcpData } = useSWR<{ servers: McpServer[] }>(
     flags["agent.mcp"] ? "/api/mcp" : null,
-    (url: string) =>
-      fetch(url).then((response) =>
-        response.ok
-          ? response.json()
-          : Promise.reject(new Error(`mcp HTTP ${response.status}`))
-      ),
+    (url: string) => jsonObject<{ servers: McpServer[] }>(url),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
   const userMcpServers = useMemo(
-    () => (Array.isArray(mcpData?.servers) ? mcpData.servers : []),
+    () => asArray<McpServer>(mcpData?.servers),
     [mcpData]
   );
   const { data: pluginData } = useSWR<{ plugins: PluginCatalogEntry[] }>(
     flags["agent.plugins"] ? "/api/plugins" : null,
-    (url: string) =>
-      fetch(url).then((response) =>
-        response.ok
-          ? response.json()
-          : Promise.reject(new Error(`plugins HTTP ${response.status}`))
-      ),
+    (url: string) => jsonObject<{ plugins: PluginCatalogEntry[] }>(url),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
   const userPlugins = useMemo(
     () =>
-      (Array.isArray(pluginData?.plugins) ? pluginData.plugins : []).filter(
+      asArray<PluginCatalogEntry>(pluginData?.plugins).filter(
         (plugin) => plugin.installed && plugin.enabled && !plugin.locked
       ),
     [pluginData]
@@ -387,6 +402,21 @@ export function AgentComposer({
             .querySelector<HTMLButtonElement>("[data-testid='model-selector']")
             ?.click();
           return;
+        case "open_bot_selector": {
+          // Le composer Agent monte le MÊME sélecteur de bots que le Chat, sous
+          // un autre `data-testid` : on clique donc celui du composer courant.
+          // `/agents` sert de repli quand il n'est pas monté (compte Free,
+          // sélecteur désactivé pendant un run).
+          const botSelector = document.querySelector<HTMLButtonElement>(
+            "[data-testid='agent-composer-assistant-selector']"
+          );
+          if (botSelector) {
+            botSelector.click();
+          } else {
+            router.push(pagePath("/agents"));
+          }
+          return;
+        }
         case "export_markdown":
           onSlashSideEffect.exportMarkdown();
           return;
@@ -436,7 +466,7 @@ export function AgentComposer({
     clearPendingProject: () => onProjectChange(null),
     input,
     installedPlugins: userPlugins,
-    isFree: false,
+    isFree,
     isNewChatInput: true,
     mcpServers: userMcpServers,
     mode: "agent",
@@ -493,6 +523,12 @@ export function AgentComposer({
       onSubmit,
       options,
       project?.id,
+      // `setInput` et `setAttachments` viennent désormais des contextes
+      // (brouillon partagé) : ce sont des fonctions `useState`, donc leur
+      // identité est stable, mais elles doivent être déclarées pour que la
+      // liste reste honnête.
+      setAttachments,
+      setInput,
     ]
   );
 
@@ -735,6 +771,10 @@ export function AgentComposer({
           </div>
 
           <div className="flex min-w-0 flex-wrap items-center justify-end gap-1 sm:shrink-0 sm:flex-nowrap">
+            <AgentSelectorCompact
+              disabled={isRunning}
+              testId="agent-composer-assistant-selector"
+            />
             <ModelSelectorCompact
               capabilities={{ [modelId]: capabilities }}
               fallbackToFirst={false}
@@ -744,7 +784,7 @@ export function AgentComposer({
               selectedModelId={modelId}
             />
             <ReasoningEffortPicker
-              level={reasoning.effort ?? options.reasoningLevel}
+              level={reasoning.effort ?? defaultReasoningLevel}
               levels={reasoningLevels}
               mandatory={capabilities.reasoningMandatory}
               onLevelChange={(level) =>

@@ -23,9 +23,10 @@ import {
   useArtifact,
   useArtifactSelector,
 } from "@/hooks/use-artifact";
+import { useSharedDraft } from "@/hooks/use-shared-draft";
 import { useTier } from "@/hooks/use-tier";
 import { resolveChatExperience } from "@/lib/agent/mode-gate";
-import type { Attachment, ChatMessage } from "@/lib/types";
+import type { ChatMessage } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { Artifact } from "./artifact";
 import { ChatHeader } from "./chat-header";
@@ -76,7 +77,16 @@ export function ChatShell() {
   const [editingMessage, setEditingMessage] = useState<ChatMessage | null>(
     null
   );
-  const [attachments, setAttachments] = useState<Attachment[]>([]);
+  // Les pièces jointes vivent dans le brouillon partagé (hooks/use-shared-draft)
+  // et non dans un état local : ce store est monté au-dessus de ChatShell, donc
+  // au-dessus de la bascule Chat ⇄ Agent, et survit au démontage du
+  // compositeur. Un `useState` ici perdait les images à chaque bascule.
+  const {
+    attachments,
+    consumePreserveRequest,
+    requestPreserveDraft,
+    setAttachments,
+  } = useSharedDraft();
   const isArtifactVisible = useArtifactSelector((state) => state.isVisible);
   const { setArtifact } = useArtifact();
 
@@ -86,13 +96,19 @@ export function ChatShell() {
   const prevChatIdRef = useRef(chatId);
   useEffect(() => {
     if (prevChatIdRef.current !== chatId) {
+      const preserved = consumePreserveRequest();
       prevChatIdRef.current = chatId;
       stopRef.current();
       setArtifact(initialArtifactData);
       setEditingMessage(null);
-      setAttachments([]);
+      // Une bascule de mode conserve les pièces jointes ; tout autre changement
+      // de conversation les purge, parce que des images choisies pour la
+      // conversation A n'ont rien à faire dans la conversation B.
+      if (!preserved) {
+        setAttachments([]);
+      }
     }
-  }, [chatId, setArtifact]);
+  }, [chatId, consumePreserveRequest, setArtifact, setAttachments]);
 
   const handleEditMessage = useCallback(
     (msg: ChatMessage) => {
@@ -164,6 +180,13 @@ export function ChatShell() {
     if (probe.status === "blocked") {
       handleBlockedAgentSelect();
       return;
+    }
+    // Le `router.push("/")` ci-dessous change de `chatId`, ce qui déclencherait
+    // les deux effets de purge du brouillon. On le déclare à l'avance pour que
+    // ce changement précis soit traité comme une bascule et non comme un
+    // changement de conversation.
+    if (next === "agent" && pathname !== "/") {
+      requestPreserveDraft();
     }
     setMode(next);
     if (next === "agent" && pathname !== "/") {

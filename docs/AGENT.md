@@ -316,6 +316,23 @@ chaque requête, `resolveReasoningEffort` la recale :
 `effectiveReasoningLevel` pour ce qui part réellement. L'interface affiche le
 niveau effectif, avec la mention « recalée sur ce modèle » quand il diffère.
 
+**D'où vient la préférence.** `AgentRequestOptions.reasoningLevel` vaut `null`
+tant que l'utilisateur n'a pas touché le sélecteur : la clé est alors omise du
+corps de la requête, et `resolveAgentReasoning` retombe sur
+`AgentSettings.reasoningLevel`. Coder un niveau en dur côté client — « medium »
+par défaut — rendrait ce repli mort et le réglage du compte sans effet. Le
+sélecteur affiche le niveau du compte comme valeur de référence ; un choix fait
+dans le composer ne vaut que pour la session, il n'est pas écrit dans les
+paramètres.
+
+**Orientation de la piste.** Le sélecteur se lit comme un curseur de volume :
+`Faible` à gauche, `Maximale` à droite, `ArrowRight` augmentant l'intensité. Les
+capacités arrivent dans l'ordre décroissant (`max → none`) — le bon ordre pour
+recaler une préférence vers le bas, l'inverse de toute glissière. `toAscendingLevels`
+les remet dans l'ordre d'affichage une fois pour toutes ; `levelToRatio` et
+`ratioToLevel` portent ensuite la géométrie (remplissage, repères, curseur, clic)
+et sont testées sans DOM.
+
 `agent.reasoning` est passé à `true` par défaut. Il ne borne plus les niveaux :
 un modèle sans niveaux continue de n'en recevoir aucun. Il reste le moyen de
 couper la molette sans redéploiement.

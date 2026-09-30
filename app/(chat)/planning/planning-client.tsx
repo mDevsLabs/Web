@@ -3,7 +3,6 @@
 import {
   AlertCircleIcon,
   ArrowRightIcon,
-  BotIcon,
   CalendarClockIcon,
   CalendarIcon,
   CheckCircle2Icon,
@@ -26,6 +25,7 @@ import Link from "next/link";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
+import { BotGlyph } from "@/components/agents/bot-avatar";
 import { ScheduleDialog } from "@/components/planning/schedule-dialog";
 import {
   AlertDialog,
@@ -266,7 +266,7 @@ export function PlanningClient({
     const ag = initialAgents.find((a) => a.id === agentId);
     return ag ? (
       <span className="flex items-center gap-1">
-        <BotIcon className="size-3" />
+        <BotGlyph className="size-3" />
         <span>{ag.name}</span>
       </span>
     ) : null;

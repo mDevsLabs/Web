@@ -17,7 +17,8 @@ import {
   useState,
 } from "react";
 import { toast } from "sonner";
-import useSWR from "swr";
+import useSWR, { useSWRConfig } from "swr";
+import { unstable_serialize } from "swr/infinite";
 import { useWindowSize } from "usehooks-ts";
 import { AgentSelectorCompact } from "@/components/agents/agent-selector";
 import {
@@ -55,6 +56,7 @@ import {
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { PreviewAttachment } from "@/components/chat/preview-attachment";
 import { QuizConfigDialog } from "@/components/chat/quiz-config-dialog";
+import { getChatHistoryPaginationKey } from "@/components/chat/sidebar-history";
 import { SkillParamsDialog } from "@/components/chat/skill-params-dialog";
 import {
   type SlashCommand,
@@ -72,6 +74,7 @@ import { useProjects } from "@/hooks/use-projects";
 import { useTier } from "@/hooks/use-tier";
 import { chatModels } from "@/lib/ai/models";
 import type { ToolId } from "@/lib/ai/tools/config";
+import { asArray, jsonArray, jsonObject } from "@/lib/api/client-fetch";
 import { memoryLimitForTier } from "@/lib/auth/plan";
 import { runSlashCommand } from "@/lib/chat/slash-commands";
 import { executeCustomCommand } from "@/lib/commands/exec";
@@ -168,39 +171,60 @@ function PureMultimodalInput({
     setSkillParamValues,
     isGhostMode,
     toggleGhostMode,
+    resetChat,
+    clearPendingCommand,
   } = useActiveChat();
   const { isFree, raw: tierRaw } = useTier();
   const { projects, isLoading: isProjectsLoading } = useProjects();
 
+  // `/delete` et `/purge` invalidaient le cache sans le faire : la barre
+  // latérale continuait d'afficher les discussions supprimées jusqu'à la
+  // revalidation aléatoire suivante. Même paire que le renommage d'en-tête.
+  const { mutate: mutateGlobal } = useSWRConfig();
+  const invalidateHistory = useCallback(
+    () => mutateGlobal(unstable_serialize(getChatHistoryPaginationKey)),
+    [mutateGlobal]
+  );
+
+  // Ces fetchers ne doivent jamais renvoyer autre chose qu'un tableau (ou un
+  // objet) exploitable : le `= []` par défaut de SWR ne couvre que `undefined`,
+  // donc une réponse non-2xx — dont l'enveloppe d'erreur JSON
+  // `{ code, message, status }` — empoisonnait le cache et faisait lever
+  // `skills.map is not a function` dès l'ouverture du menu @, sur toute la
+  // page. `jsonArray`/`jsonObject` refusent la mauvaise forme et laissent SWR
+  // réessayer ; `asArray` ferme le verrou à la lecture.
+  //
   // Les Skills sont disponibles pour tous les forfaits (y compris Free).
-  const { data: userSkills = [] } = useSWR<Skill[]>(
+  const { data: userSkillsData } = useSWR<Skill[]>(
     "/api/skills",
-    (url: string) => fetch(url).then((r) => r.json()),
+    (url: string) => jsonArray<Skill>(url),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
+  );
+  const userSkills = useMemo(
+    () => asArray<Skill>(userSkillsData),
+    [userSkillsData]
   );
   // Plugins installés et activés (payants) — proposés uniquement dans la
   // mention @ (le menu « + » ne liste plus les plugins).
   const { data: pluginsData } = useSWR<{ plugins: PluginCatalogEntry[] }>(
     isFree ? null : "/api/plugins",
-    (url: string) => fetch(url).then((r) => r.json()),
+    (url: string) => jsonObject<{ plugins: PluginCatalogEntry[] }>(url),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
   const installedPlugins = useMemo(
     () =>
-      Array.isArray(pluginsData?.plugins)
-        ? pluginsData.plugins.filter(
-            (plugin) => plugin.installed && plugin.enabled && !plugin.locked
-          )
-        : [],
+      asArray<PluginCatalogEntry>(pluginsData?.plugins).filter(
+        (plugin) => plugin.installed && plugin.enabled && !plugin.locked
+      ),
     [pluginsData]
   );
   const { data: mcpData } = useSWR<{ servers: McpServer[] }>(
     isFree ? null : "/api/mcp",
-    (url: string) => fetch(url).then((r) => r.json()),
+    (url: string) => jsonObject<{ servers: McpServer[] }>(url),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
   const userMcpServers = useMemo(
-    () => (Array.isArray(mcpData?.servers) ? mcpData.servers : []),
+    () => asArray<McpServer>(mcpData?.servers),
     [mcpData]
   );
   const { data: userAgentsData } = useSWR<{
@@ -208,22 +232,30 @@ function PureMultimodalInput({
     limit: number | null;
   }>(
     isFree ? null : "/api/agents",
-    (url: string) => fetch(url).then((r) => r.json()),
+    (url: string) => jsonObject<{ agents: Agent[]; limit: number | null }>(url),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
   const userAgents = useMemo(
-    () => userAgentsData?.agents ?? [],
+    () => asArray<Agent>(userAgentsData?.agents),
     [userAgentsData]
   );
-  const { data: customCommandsData = [] } = useSWR<CustomCommand[]>(
+  const { data: customCommandsData } = useSWR<CustomCommand[]>(
     isFree ? null : "/api/commands?kind=slash",
-    (url: string) => fetch(url).then((r) => r.json()),
+    (url: string) => jsonArray<CustomCommand>(url),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
-  const { data: customMentionCommands = [] } = useSWR<CustomCommand[]>(
+  const customCommands = useMemo(
+    () => asArray<CustomCommand>(customCommandsData),
+    [customCommandsData]
+  );
+  const { data: customMentionCommandsData } = useSWR<CustomCommand[]>(
     isFree ? null : "/api/commands?kind=mention",
-    (url: string) => fetch(url).then((r) => r.json()),
+    (url: string) => jsonArray<CustomCommand>(url),
     { dedupingInterval: 30_000, revalidateOnFocus: false }
+  );
+  const customMentionCommands = useMemo(
+    () => asArray<CustomCommand>(customMentionCommandsData),
+    [customMentionCommandsData]
   );
 
   // Quota de mémoire de la portée du prochain message. Le serveur ignore
@@ -315,21 +347,32 @@ function PureMultimodalInput({
 
   const handleSlashCommand = useCallback(
     async (cmd: SlashCommand) => {
-      setInput("");
+      // B6 : une commande lancée pendant qu'on édite un message quittait
+      // l'input sans quitter le mode édition. Le placeholder restait
+      // « Modifier votre message… » et le prochain Enter envoyait un message
+      // VIDE. On sort donc du mode édition avant d'exécuter quoi que ce soit.
+      if (editingMessage) {
+        onCancelEdit?.();
+      }
+      // Le vidage de l'input est fait par `handleSlashSelect`
+      // (hooks/use-composer-triggers) : c'est le seul point partagé avec le
+      // composer Agent, qui ne vidait rien.
       await runSlashCommand(cmd, {
         chatId,
         clearPendingTools,
+        invalidateHistory,
         isGhostMode,
         onOpenQuizConfig: () => setQuizDialogOpen(true),
         pendingTools,
+        resetChat,
         resolvedTheme,
         router,
         setActiveAgent,
         setActiveSkill,
         setInput,
-        setMessages: setMessages as any,
-        setPendingCommand,
+        setPendingCommand: clearPendingCommand,
         setTheme,
+        stopStream: stop,
         toggleGhostMode,
         togglePendingTool,
         userAgents,
@@ -338,17 +381,21 @@ function PureMultimodalInput({
     },
     [
       chatId,
+      clearPendingCommand,
       clearPendingTools,
+      editingMessage,
+      invalidateHistory,
       isGhostMode,
+      onCancelEdit,
       pendingTools,
+      resetChat,
       resolvedTheme,
       router,
       setActiveAgent,
       setActiveSkill,
       setInput,
-      setMessages,
-      setPendingCommand,
       setTheme,
+      stop,
       toggleGhostMode,
       togglePendingTool,
       userAgents,
@@ -394,7 +441,7 @@ function PureMultimodalInput({
       } else if (payload.type === "agent") {
         setActiveAgent(payload.agent);
         toast.success(
-          `Agent activé : ${payload.agent.name} — modèle ${(payload.agent as any).defaultModelId}`
+          `Bot activé : ${payload.agent.name} — modèle ${(payload.agent as any).defaultModelId}`
         );
       } else if (payload.type === "system") {
         if (payload.action === "web") {
@@ -503,8 +550,9 @@ function PureMultimodalInput({
     activeSkill,
     clearActiveAgent,
     clearActiveSkill,
+    clearCurrentDraft,
     clearPendingProject,
-    customCommands: customCommandsData,
+    customCommands,
     customMentionCommands,
     input,
     installedPlugins,
@@ -679,11 +727,19 @@ function PureMultimodalInput({
     const exactSlash = input.trim().match(/^\/([\p{L}\p{N}_-]+)$/u);
     if (exactSlash) {
       const query = exactSlash[1].toLowerCase();
-      const command = filteredSlashCommands.find(
-        (item) =>
-          item.name.toLowerCase() === query ||
-          item.aliases?.some((alias) => alias.toLowerCase() === query)
-      );
+      // Les commandes SYSTÈME d'abord, les personnalisées ensuite.
+      // `getFilteredSlashCommands` place les customs en tête pour la recherche
+      // approximative, où l'utilisateur cherche clairement « sa » commande ;
+      // sur une saisie exacte, `/image` est `/image` système et rien d'autre.
+      // Une commande custom qui s'y cacherait s'exécuterait à la place de la
+      // commande système, sans aucun indice visuel.
+      const matches = (item: SlashCommand) =>
+        item.name.toLowerCase() === query ||
+        item.aliases?.some((alias) => alias.toLowerCase() === query);
+      const command =
+        filteredSlashCommands.find(
+          (item) => item.action !== "custom" && matches(item)
+        ) ?? filteredSlashCommands.find(matches);
       if (command) {
         handleSlashSelect(command);
         return;
@@ -738,12 +794,7 @@ function PureMultimodalInput({
     <div
       className={cn("relative flex w-full flex-col gap-3 md:gap-4", className)}
     >
-      {isGhostMode ? (
-        <GhostBanner
-          isNewChatInput={isNewChatInput}
-          toggleGhostMode={toggleGhostMode}
-        />
-      ) : null}
+      {isGhostMode ? <GhostBanner toggleGhostMode={toggleGhostMode} /> : null}
 
       {pendingProject ? (
         <ProjectChip
@@ -832,7 +883,7 @@ function PureMultimodalInput({
         ) : null}
         {mentionOpen ? (
           <MentionMenu
-            agents={userAgents as any}
+            agents={userAgents}
             customCommands={customMentionCommands}
             id={mentionMenuId}
             isLoadingProjects={isProjectsLoading}
@@ -843,7 +894,7 @@ function PureMultimodalInput({
             onClose={handleMentionClose}
             onSelect={handleMentionSelect}
             plugins={installedPlugins}
-            projects={projects as any}
+            projects={projects}
             query={mentionQuery}
             selectedIndex={mentionIndex}
             skills={userSkills}

@@ -1,6 +1,5 @@
 import {
   BookOpenIcon,
-  BotIcon,
   BrainIcon,
   BriefcaseIcon,
   CameraIcon,
@@ -15,7 +14,6 @@ import {
   HeadsetIcon,
   HeartIcon,
   LightbulbIcon,
-  type LucideIcon,
   MessageCircleIcon,
   MusicIcon,
   PaletteIcon,
@@ -29,11 +27,23 @@ import {
   WrenchIcon,
   ZapIcon,
 } from "lucide-react";
+import { BotGlyph, type BotGlyphProps } from "@/components/agents/bot-avatar";
 
-/** Central icon-name → lucide-component registry (agents, skills, chats). */
-export const AGENT_ICON_REGISTRY: Record<string, LucideIcon> = {
+/**
+ * Composant d'icône du registre.
+ *
+ * Le sous-ensemble des props que les appelants utilisent réellement
+ * (`className`, `color`, `size`, `style`). Le registre n'a plus besoin d'être
+ * typé `LucideIcon` depuis que l'entrée « bot » est rendue par `BotGlyph` —
+ * `public/icons/bot.webp`, la même identité que partout ailleurs. Ce type
+ * décrit le CONTRAT commun aux deux familles d'icônes, pas Lucide.
+ */
+export type AgentIconComponent = (props: BotGlyphProps) => React.ReactNode;
+
+/** Central icon-name → component registry (agents, skills, chats). */
+export const AGENT_ICON_REGISTRY: Record<string, AgentIconComponent> = {
   book: BookOpenIcon,
-  bot: BotIcon,
+  bot: BotGlyph,
   brain: BrainIcon,
   briefcase: BriefcaseIcon,
   camera: CameraIcon,
@@ -62,6 +72,6 @@ export const AGENT_ICON_REGISTRY: Record<string, LucideIcon> = {
   zap: ZapIcon,
 };
 
-export function resolveAgentIcon(name?: string | null): LucideIcon {
+export function resolveAgentIcon(name?: string | null): AgentIconComponent {
   return (name && AGENT_ICON_REGISTRY[name]) || SparklesIcon;
 }

@@ -8,13 +8,13 @@ import {
 } from "./config.ts";
 
 export interface StorageNode {
-  accessKeyId: string;
-  bucket: string;
-  endpoint: string;
   id: number;
-  publicUrl: string;
+  endpoint: string;
   region: string;
+  accessKeyId: string;
   secretAccessKey: string;
+  bucket: string;
+  publicUrl: string;
 }
 
 function cleanUrl(url: string, removeDefaultPort = true): string {
@@ -24,10 +24,7 @@ function cleanUrl(url: string, removeDefaultPort = true): string {
   }
   if (removeDefaultPort) {
     // Normalise https://domaine.com:443 -> https://domaine.com pour des URLs publiques propres
-    cleaned = cleaned.replace(
-      /^https:\/\/([^/:]+):443(\/.*)?$/,
-      "https://$1$2"
-    );
+    cleaned = cleaned.replace(/^https:\/\/([^/:]+):443(\/.*)?$/, "https://$1$2");
     cleaned = cleaned.replace(/^http:\/\/([^/:]+):80(\/.*)?$/, "http://$1$2");
   }
   return cleaned;
@@ -61,7 +58,9 @@ export function getStorageNodes(): StorageNode[] {
   const nodes: StorageNode[] = [];
 
   const baseAccessKey =
-    Deno.env.get("S3_ACCESS_KEY_ID") || Deno.env.get("Z1_ACCESS_KEY_ID") || "";
+    Deno.env.get("S3_ACCESS_KEY_ID") ||
+    Deno.env.get("Z1_ACCESS_KEY_ID") ||
+    "";
   const baseSecretKey =
     Deno.env.get("S3_SECRET_ACCESS_KEY") ||
     Deno.env.get("Z1_SECRET_ACCESS_KEY") ||
@@ -72,11 +71,16 @@ export function getStorageNodes(): StorageNode[] {
     "https://s3.z1storage.com";
   const baseEndpoint = cleanUrl(baseRawEndpoint);
   const baseRegion =
-    Deno.env.get("S3_REGION") || Deno.env.get("Z1_REGION") || "auto";
+    Deno.env.get("S3_REGION") ||
+    Deno.env.get("Z1_REGION") ||
+    "auto";
   const baseBucket =
-    Deno.env.get("S3_BUCKET") || Deno.env.get("Z1_BUCKET") || "mai-storage-1";
+    Deno.env.get("S3_BUCKET") ||
+    Deno.env.get("Z1_BUCKET") ||
+    "mai-storage-1";
   const basePublicUrl =
-    Deno.env.get("S3_PUBLIC_URL") || Deno.env.get("Z1_PUBLIC_URL");
+    Deno.env.get("S3_PUBLIC_URL") ||
+    Deno.env.get("Z1_PUBLIC_URL");
 
   // 1. Détection des configurations individuelles S3_BUCKET_1 à S3_BUCKET_10 (ou Z1_BUCKET_1 à 10)
   for (let i = 1; i <= TOTAL_STORAGE_NODES_COUNT; i++) {
@@ -127,13 +131,13 @@ export function getStorageNodes(): StorageNode[] {
 
     if (bucket && accessKeyId && secretAccessKey) {
       nodes.push({
-        accessKeyId,
-        bucket,
-        endpoint,
         id: i,
-        publicUrl: publicUrl || `${endpoint}/${bucket}`,
+        endpoint,
         region,
+        accessKeyId,
         secretAccessKey,
+        bucket,
+        publicUrl: publicUrl || `${endpoint}/${bucket}`,
       });
     }
   }
@@ -141,7 +145,8 @@ export function getStorageNodes(): StorageNode[] {
   // 2. Si S3_BUCKETS ou Z1_BUCKETS (liste séparée par des virgules) est configuré
   if (nodes.length === 0) {
     const bucketsList =
-      Deno.env.get("S3_BUCKETS") || Deno.env.get("Z1_BUCKETS");
+      Deno.env.get("S3_BUCKETS") ||
+      Deno.env.get("Z1_BUCKETS");
     if (bucketsList) {
       const bucketNames = bucketsList
         .split(",")
@@ -158,13 +163,13 @@ export function getStorageNodes(): StorageNode[] {
         }
 
         nodes.push({
-          accessKeyId: baseAccessKey,
-          bucket,
-          endpoint: baseEndpoint,
           id,
-          publicUrl,
+          endpoint: baseEndpoint,
           region: baseRegion,
+          accessKeyId: baseAccessKey,
           secretAccessKey: baseSecretKey,
+          bucket,
+          publicUrl,
         });
       });
     }
@@ -248,13 +253,13 @@ export function getStorageNodes(): StorageNode[] {
         }
 
         nodes.push({
-          accessKeyId,
-          bucket,
-          endpoint,
           id: i,
-          publicUrl,
+          endpoint,
           region,
+          accessKeyId,
           secretAccessKey,
+          bucket,
+          publicUrl,
         });
       }
     }
@@ -364,10 +369,10 @@ export function findStorageNodeForRecord(
   const nodes = getStorageNodes();
 
   // 1. Format explicite taggé : node-1:bucket-name:key-path
-  if (r2Key?.startsWith("node-")) {
+  if (r2Key && r2Key.startsWith("node-")) {
     const parts = r2Key.split(":");
     if (parts.length >= 3) {
-      const nodeId = Number.parseInt(parts[0].replace("node-", ""), 10);
+      const nodeId = parseInt(parts[0].replace("node-", ""), 10);
       const found = nodes.find((n) => n.id === nodeId);
       if (found) {
         return { node: found, rawKey: parts.slice(2).join(":") };
@@ -377,7 +382,7 @@ export function findStorageNodeForRecord(
 
   // 2. Recherche par nom de bucket dans la clé ou l'URL
   for (const node of nodes) {
-    if (r2Key?.startsWith(`${node.bucket}/`)) {
+    if (r2Key && r2Key.startsWith(`${node.bucket}/`)) {
       return { node, rawKey: r2Key.slice(node.bucket.length + 1) };
     }
     if (
@@ -442,7 +447,7 @@ export function registerStorageRoutes(app: Hono) {
       const userId = payload.sub as string;
 
       const body = await c.req.parseBody();
-      const file = body.avatar || body.file;
+      const file = body["avatar"] || body["file"];
 
       if (!(file instanceof File) || file.size === 0) {
         return c.json({ error: "Fichier invalide ou non fourni." }, 400);
@@ -452,28 +457,14 @@ export function registerStorageRoutes(app: Hono) {
       if (file.size > MAX_AVATAR_SIZE) {
         return c.json({ error: "Image trop volumineuse (max 10 MB)." }, 413);
       }
-      const ALLOWED_IMAGE_TYPES = [
-        "image/jpeg",
-        "image/png",
-        "image/webp",
-        "image/gif",
-      ];
+      const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
       if (file.type && !ALLOWED_IMAGE_TYPES.includes(file.type)) {
-        return c.json(
-          {
-            error:
-              "Format d'image non supporté (JPEG, PNG, WebP ou GIF requis).",
-          },
-          400
-        );
+        return c.json({ error: "Format d'image non supporté (JPEG, PNG, WebP ou GIF requis)." }, 400);
       }
 
       const primaryNode = selectStorageNode(`avatar-${userId}`);
       const ext =
-        file.name
-          .split(".")
-          .pop()
-          ?.replace(/[^a-zA-Z0-9]/g, "") || "jpg";
+        file.name.split(".").pop()?.replace(/[^a-zA-Z0-9]/g, "") || "jpg";
       const filename = `avatars/${userId}-${Date.now()}.${ext}`;
       const arrayBuffer = await file.arrayBuffer();
 
@@ -482,8 +473,8 @@ export function registerStorageRoutes(app: Hono) {
         filename,
         arrayBuffer,
         {
-          acl: "public-read",
           contentType: file.type || "image/jpeg",
+          acl: "public-read",
         }
       );
 
@@ -494,9 +485,9 @@ export function registerStorageRoutes(app: Hono) {
         );
         return c.json(
           {
-            details: uploadResult.error?.slice(0, 300),
             error:
               "L'upload a échoué sur tous les buckets de stockage. Vérifiez la configuration Z1 Storage (credentials S3) ou réessayez plus tard.",
+            details: uploadResult.error?.slice(0, 300),
           },
           503
         );
@@ -541,7 +532,7 @@ export function registerStorageRoutes(app: Hono) {
       }
 
       const body = await c.req.parseBody();
-      const file = body.file;
+      const file = body["file"];
 
       if (!(file instanceof File)) {
         return c.json({ error: "Fichier invalide ou non fourni." }, 400);
@@ -562,14 +553,11 @@ export function registerStorageRoutes(app: Hono) {
         file.type === "application/pdf" ||
         file.type === "application/json" ||
         file.type === "application/msword" ||
-        file.type ===
-          "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+        file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
         file.type === "application/vnd.ms-excel" ||
-        file.type ===
-          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
+        file.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
         file.type === "application/vnd.ms-powerpoint" ||
-        file.type ===
-          "application/vnd.openxmlformats-officedocument.presentationml.presentation";
+        file.type === "application/vnd.openxmlformats-officedocument.presentationml.presentation";
       if (file.type && !isAllowed) {
         return c.json({ error: "Type de fichier non autorisé." }, 400);
       }
@@ -585,8 +573,8 @@ export function registerStorageRoutes(app: Hono) {
         filename,
         arrayBuffer,
         {
-          acl: "public-read",
           contentType: file.type || "application/octet-stream",
+          acl: "public-read",
         }
       );
 
@@ -597,9 +585,9 @@ export function registerStorageRoutes(app: Hono) {
         );
         return c.json(
           {
-            details: uploadResult.error?.slice(0, 300),
             error:
               "L'upload a échoué sur tous les buckets de stockage. Vérifiez la configuration Z1 Storage (credentials S3) ou réessayez plus tard.",
+            details: uploadResult.error?.slice(0, 300),
           },
           503
         );
@@ -781,7 +769,7 @@ export function registerStorageRoutes(app: Hono) {
 
       // Lire le fichier
       const body = await c.req.parseBody();
-      const file = body.file;
+      const file = body["file"];
       if (!(file instanceof File)) {
         return c.json({ error: "Fichier invalide ou non fourni." }, 400);
       }
@@ -860,8 +848,8 @@ export function registerStorageRoutes(app: Hono) {
         fileKey,
         arrayBuffer,
         {
-          acl: "public-read",
           contentType: file.type || "application/octet-stream",
+          acl: "public-read",
         }
       );
 
@@ -871,10 +859,7 @@ export function registerStorageRoutes(app: Hono) {
           uploadResult.error
         );
         return c.json(
-          {
-            error:
-              "Erreur lors de l'upload vers le stockage (tous les buckets en échec).",
-          },
+          { error: "Erreur lors de l'upload vers le stockage (tous les buckets en échec)." },
           500
         );
       }
@@ -963,7 +948,7 @@ export function registerStorageRoutes(app: Hono) {
 
       try {
         const delRes = await s3Client.fetch(deleteUrl, { method: "DELETE" });
-        if (!delRes.ok && !r2_key?.startsWith("node-")) {
+        if (!delRes.ok && (!r2_key || !r2_key.startsWith("node-"))) {
           // Si suppression échoue sur nœud par défaut pour un ancien fichier, tenter sur les autres nœuds du pool
           for (const fallbackNode of getFallbackNodes(node).slice(1)) {
             try {
@@ -996,47 +981,6 @@ export function registerStorageRoutes(app: Hono) {
       return c.json({ error: "Erreur serveur lors de la suppression." }, 500);
     }
   };
-
-  // PATCH /cloud/files/:id — renommage persisté et vérifié côté serveur
-  const handleRenameFile = async (c: any) => {
-    try {
-      const token = extractToken(c.req.raw);
-      if (!token) return c.json({ error: "Non authentifié." }, 401);
-      const payload = await verifyToken(token);
-      const userId = String(payload.sub || (payload as any).id || "");
-      const fileId = c.req.param("id");
-      if (
-        !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
-          fileId
-        )
-      ) {
-        return c.json({ error: "Identifiant de fichier invalide." }, 400);
-      }
-      const body = await c.req.json().catch(() => ({}));
-      const name = typeof body?.name === "string" ? body.name.trim() : "";
-      if (!name || name.length > 255) {
-        return c.json({ error: "Nom de fichier invalide." }, 400);
-      }
-
-      const sql = getDb();
-      const rows = await sql`
-        UPDATE cloud_files
-        SET original_name = ${name}
-        WHERE id = ${fileId}::uuid AND user_id = ${userId}::text
-        RETURNING id, filename, original_name, url, size_bytes, mime_type, uploaded_at
-      `;
-      if (rows.length === 0) {
-        return c.json({ error: "Fichier introuvable ou accès refusé." }, 404);
-      }
-      return c.json({ file: rows[0], success: true });
-    } catch (err: any) {
-      console.error("Cloud Rename Error:", err);
-      return c.json({ error: "Erreur serveur lors du renommage." }, 500);
-    }
-  };
-
-  app.patch("/cloud/files/:id", handleRenameFile);
-  app.patch("/v1/cloud/files/:id", handleRenameFile);
 
   app.delete("/cloud/files/:id", handleDeleteFile);
   app.delete("/v1/cloud/files/:id", handleDeleteFile);

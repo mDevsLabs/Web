@@ -1,4 +1,5 @@
-// Intensité de réflexion : vocabulaire partagé par le registre de modèles, les
+// Réflexion : vocabulaire partagé par le registre de modèles, les paramètres
+// Agent et les routes API.
 // paramètres Agent et les routes API.
 //
 // CONTRAT CONFIRMÉ. Le proxy mAI (models.ts, hors de ce dépôt) relaie la
@@ -68,6 +69,68 @@ export function normalizeReasoningLevel(
   fallback: ReasoningLevel = DEFAULT_REASONING_LEVEL
 ): ReasoningLevel {
   return isReasoningLevel(value) ? value : fallback;
+}
+
+/**
+ * Niveaux dans l'ordre d'un curseur de volume : du moins intense au plus intense.
+ *
+ * `REASONING_LEVELS` est décroissant (max → none) parce qu'on s'en sert pour
+ * recadrer une préférence vers le bas. C'est le bon ordre pour le *repli*, et le
+ * mauvais pour l'*affichage* : une piste qui va de « Maximale » à « Désactivée »
+ * de gauche à droite se lit à l'envers de toute la réactivité de l'interface.
+ * On inverse donc une fois, ici, plutôt que d'inverser six calculs dans le
+ * composant.
+ */
+export function toAscendingLevels(
+  levels: readonly ReasoningLevel[]
+): ReasoningLevel[] {
+  return [...levels].reverse();
+}
+
+/**
+ * Position normalisée d'un niveau sur une piste ascendante : 0 = niveau le plus
+ * faible (à gauche), 1 = niveau le plus intense (à droite).
+ *
+ * Une piste d'un seul cran n'a pas de géométrie — le composant la traite à part.
+ * Un niveau absent de la liste vaut 0 : la position n'est jamais inventée.
+ */
+export function levelToRatio(
+  ascending: readonly ReasoningLevel[],
+  level: ReasoningLevel
+): number {
+  if (ascending.length < 2) {
+    return 0;
+  }
+  const index = ascending.indexOf(level);
+  if (index < 0) {
+    return 0;
+  }
+  return index / (ascending.length - 1);
+}
+
+/**
+ * Niveau le plus proche d'une position normalisée — ce que fait un geste sur la
+ * piste.
+ *
+ * La position est bornée avant l'arrondi : un clic dans le padding, ou un
+ * glissement de quelques pixels hors piste, ne doit pas pouvoir sortir du
+ * vocabulaire. Seul `NaN` est ramené au bord gauche ; les infinis sont des
+ * positions « au bout de la piste » et se bornent normalement.
+ */
+export function ratioToLevel(
+  ascending: readonly ReasoningLevel[],
+  ratio: number
+): ReasoningLevel | undefined {
+  if (ascending.length === 0) {
+    return;
+  }
+  if (ascending.length === 1) {
+    return ascending[0];
+  }
+  const finite = Number.isNaN(ratio) ? 0 : ratio;
+  const bounded = Math.min(1, Math.max(0, finite));
+  const target = Math.round(bounded * (ascending.length - 1));
+  return ascending[target];
 }
 
 // Options du provider, structurellement compatibles avec `providerOptions` des

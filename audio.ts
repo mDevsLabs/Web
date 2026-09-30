@@ -25,7 +25,7 @@ function cleanModelName(name: string): string {
 }
 
 function getOpenRouterApiKey(userCustomKey?: string | null): string {
-  if (userCustomKey?.trim().startsWith("sk-or-")) {
+  if (userCustomKey && userCustomKey.trim().startsWith("sk-or-")) {
     return userCustomKey.trim();
   }
   if (typeof Deno !== "undefined" && Deno.env) {
@@ -128,7 +128,7 @@ export function registerAudioRoutes(app: Hono) {
 
       // Règle stricte : filtrer par l'ID contenant ':free' quel que soit le forfait
       const freeSpeechModels = rawModels
-        .filter((m) => m?.id && (m.id || "").toLowerCase().includes(":free"))
+        .filter((m) => m && m.id && (m.id || "").toLowerCase().includes(":free"))
         .map((m) => {
           const rawName = m.name || m.id;
           const cleanedName = cleanModelName(rawName) || cleanModelName(m.id);
@@ -181,8 +181,8 @@ export function registerAudioRoutes(app: Hono) {
   // ─────────────────────────────────────────────
   // GET /v1/speech/voices & /v1/audio/voices
   // ─────────────────────────────────────────────
-  const handleGetSpeechVoices = (c: any) =>
-    c.json({
+  const handleGetSpeechVoices = (c: any) => {
+    return c.json({
       data: [
         {
           description: "Voix féminine chaleureuse, naturelle et claire.",
@@ -206,8 +206,7 @@ export function registerAudioRoutes(app: Hono) {
           name: "Stacy",
         },
         {
-          description:
-            "Voix masculine profonde, idéale pour narration & podcast.",
+          description: "Voix masculine profonde, idéale pour narration & podcast.",
           gender: "male",
           id: "flux-sam-en",
           language: "fr/en",
@@ -230,11 +229,16 @@ export function registerAudioRoutes(app: Hono) {
       ],
       object: "list",
     });
+  };
 
   app.get("/v1/speech/voices", handleGetSpeechVoices);
   app.get("/speech/voices", handleGetSpeechVoices);
   app.get("/v1/audio/voices", handleGetSpeechVoices);
   app.get("/audio/voices", handleGetSpeechVoices);
+  app.get("/api/vibe/speech/voices", handleGetSpeechVoices);
+  app.get("/vibe/speech/voices", handleGetSpeechVoices);
+  app.get("/api/speech/voices", handleGetSpeechVoices);
+  app.get("/api/v1/speech/voices", handleGetSpeechVoices);
 
   // ─────────────────────────────────────────────
   // GET /v1/speech/usage, /speech/usage, /v1/audio/usage & /usage/speech
@@ -305,8 +309,8 @@ export function registerAudioRoutes(app: Hono) {
         resetAt: nextResetIso,
         tokensUsed,
         userId,
-        weeklyLimit,
         weekStart: weekStartStr,
+        weeklyLimit,
       });
     } catch (err: any) {
       return c.json(
@@ -397,9 +401,7 @@ export function registerAudioRoutes(app: Hono) {
 
       if (body.title !== undefined) {
         sets.push(`title = $${idx++}`);
-        values.push(
-          body.title ? String(body.title).trim().slice(0, 200) : null
-        );
+        values.push(body.title ? String(body.title).trim().slice(0, 200) : null);
       }
       if (body.pinned !== undefined) {
         sets.push(`pinned = $${idx++}`);
@@ -438,6 +440,10 @@ export function registerAudioRoutes(app: Hono) {
 
   // ─────────────────────────────────────────────
   // DELETE /v1/audio/history/:id & /v1/speech/history/:id
+  //
+  // `?all=1` sans `id` = purge totale de l'utilisateur (onglet Données).
+  // Le drapeau est explicite pour qu'un appel sans identifiant ne puisse pas
+  // vider l'historique par simple oubli.
   // ─────────────────────────────────────────────
   const handleDeleteSpeechHistory = async (c: any) => {
     try {
@@ -456,11 +462,25 @@ export function registerAudioRoutes(app: Hono) {
       }
 
       const id = c.req.param("id") || c.req.query("id");
-      if (!id) {
+      const purgeAll = c.req.query("all") === "1";
+      if (!id && !purgeAll) {
         return c.json({ error: "ID manquant." }, 400);
       }
 
       const sql = getDb();
+
+      if (purgeAll && !id) {
+        const deleted = await sql`
+          DELETE FROM mprojects_speech_generations
+          WHERE user_id = ${userId}::text
+        `;
+        return c.json({
+          count: deleted.length ?? 0,
+          message: "Historique audio purgé",
+          success: true,
+        });
+      }
+
       await sql`
         DELETE FROM mprojects_speech_generations
         WHERE id::text = ${id}::text AND user_id = ${userId}::text
@@ -571,19 +591,18 @@ export function registerAudioRoutes(app: Hono) {
         body.response_format ||
         (body.audioConfig?.audioEncoding === "OGG_OPUS" ? "opus" : "mp3");
       const speed =
-        body.speed === undefined
-          ? body.audioConfig?.speakingRate === undefined
-            ? 1.0
-            : body.audioConfig.speakingRate
-          : body.speed;
+        body.speed !== undefined
+          ? body.speed
+          : body.audioConfig?.speakingRate !== undefined
+            ? body.audioConfig.speakingRate
+            : 1.0;
 
       if (!input) {
         return c.json(
           {
             error: {
               code: "missing_input",
-              message:
-                "Le paramètre 'input' ou 'prompt' est obligatoire pour la synthèse vocale.",
+              message: "Le paramètre 'input' ou 'prompt' est obligatoire pour la synthèse vocale.",
               param: "input",
               type: "invalid_request_error",
             },
@@ -692,8 +711,7 @@ export function registerAudioRoutes(app: Hono) {
         return c.json(
           {
             details: errText,
-            error:
-              "Erreur retournée par le fournisseur OpenRouter pour Speech.",
+            error: "Erreur retournée par le fournisseur OpenRouter pour Speech.",
           },
           openRouterRes.status
         );
@@ -794,9 +812,9 @@ export function registerAudioRoutes(app: Hono) {
       }
 
       // Format binaire standard pour OpenAI SDK & requêtes natives
+      // (CORS géré par le middleware global dans main.ts)
       return new Response(bytes, {
         headers: {
-          "Access-Control-Allow-Origin": "*",
           "Content-Type": mimeType,
           "x-audio-id": String(savedId),
           "x-speech-limit": String(weeklyLimit),
@@ -826,6 +844,12 @@ export function registerAudioRoutes(app: Hono) {
   app.post("/v1/audio/generations", handleAudioSpeech);
   app.post("/audio/speech", handleAudioSpeech);
   app.post("/audio/generations", handleAudioSpeech);
+  app.post("/api/vibe/speech", handleAudioSpeech);
+  app.post("/vibe/speech", handleAudioSpeech);
+  app.post("/api/speech", handleAudioSpeech);
+  app.post("/api/v1/speech", handleAudioSpeech);
+  app.post("/api/v1/audio/speech", handleAudioSpeech);
+  app.post("/api/vibe/audio/speech", handleAudioSpeech);
 
   // Routes Google Cloud TTS / Gemini SDK
   app.post("/v1beta/models/*:synthesizeSpeech", handleAudioSpeech);

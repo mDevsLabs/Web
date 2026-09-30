@@ -39,16 +39,24 @@ export async function setMaiSessionToken(token: string) {
   });
 }
 
-// Cache de sessions indexé par JETON. Deux garanties :
+// Cache de sessions indexé par JETON. Trois garanties :
 //  • taille BORNÉE (LRU) : un cache non borné indexé par jeton est un vecteur
 //    d'épuisement mémoire — il suffisait d'accumuler des jetons distincts ;
-//  • purge des entrées expirées : elles ne restent jamais indéfiniment.
+//  • purge des entrées expirées : elles ne restent jamais indéfiniment ;
+//  • entrée NÉGATIVE pour un refus DÉFINITIF de l'API distante : sans elle, un
+//    client porteur d'un jeton mort ferait interroger le backend à chaque
+//    requête. Un simple échec réseau, lui, n'est jamais mis en cache : il ne
+//    doit pas faire croire à une déconnexion.
 // Le jeton complet n'est jamais journalisé (aucun log ne le contient).
-const userCache = new Map<string, { user: MaiUser; expiresAt: number }>();
+type SessionCacheEntry = { user: MaiUser | null; expiresAt: number };
+
+const userCache = new Map<string, SessionCacheEntry>();
 const CACHE_TTL_MS = 120_000; // 2 minutes de cache en mémoire
+const CACHE_DENIED_TTL_MS = 30_000; // refus : fenêtre courte, le temps qu'une
+//                                    reconnexion (cookie neuf) prenne effet
 const CACHE_MAX_ENTRIES = 500;
 
-function readCachedUser(token: string) {
+function readCachedEntry(token: string) {
   const cached = userCache.get(token);
   if (!cached) {
     return null;
@@ -63,11 +71,39 @@ function readCachedUser(token: string) {
   return cached;
 }
 
-function cacheUser(token: string, user: MaiUser, expiresAt: number) {
+function cacheUser(token: string, user: MaiUser | null, expiresAt: number) {
   if (userCache.size >= CACHE_MAX_ENTRIES) {
-    userCache.delete(userCache.keys().next().value as string);
+    const oldest = userCache.keys().next().value as string;
+    userCache.delete(oldest);
+    remoteFallbackNotices.delete(oldest);
   }
   userCache.set(token, { expiresAt, user });
+}
+
+// Diagnostic « la clé locale ne correspond plus à celle du backend » : une
+// seule ligne par jeton, et uniquement hors production (en production le
+// silence évite de révéler la configuration de déploiement).
+const remoteFallbackNotices = new Set<string>();
+
+function noteRemoteValidation(
+  token: string,
+  reason: "no_secret" | "signature"
+) {
+  if (
+    process.env.NODE_ENV === "production" ||
+    remoteFallbackNotices.has(token)
+  ) {
+    return;
+  }
+  if (remoteFallbackNotices.size >= CACHE_MAX_ENTRIES) {
+    remoteFallbackNotices.clear();
+  }
+  remoteFallbackNotices.add(token);
+  console.warn(
+    reason === "no_secret"
+      ? "[auth] MAI_JWT_SECRET absent : session contrôlée par l'API distante."
+      : "[auth] Signature locale refusée (MAI_JWT_SECRET différent de celui du backend ?) : session contrôlée par l'API distante."
+  );
 }
 
 let _jwtSecret: Uint8Array | null | undefined;
@@ -120,6 +156,7 @@ export async function removeMaiSessionToken() {
   const token = cookieStore.get(MAI_SESSION_COOKIE)?.value;
   if (token) {
     userCache.delete(token);
+    remoteFallbackNotices.delete(token);
   }
   cookieStore.delete(MAI_SESSION_COOKIE);
 }
@@ -140,17 +177,17 @@ function triggerBackgroundUsageRefresh(token: string) {
     .then((r) => (r.ok ? r.json() : null))
     .then((data) => {
       if (data && !data.error) {
+        // Entrée négative (`user: null`) : rien à rafraîchir.
         const cached = userCache.get(token);
-        if (cached) {
-          cached.user.tokensUsed = Number(
-            data.tokensUsed || cached.user.tokensUsed
-          );
-          cached.user.limit = Number(data.limit || cached.user.limit);
-          cached.user.tier = data.tier || cached.user.tier;
-          if (data.username) cached.user.username = data.username;
-          if (data.name) cached.user.username = data.name;
-          if (data.avatarUrl) cached.user.avatarUrl = data.avatarUrl;
-          if (data.avatar) cached.user.avatarUrl = data.avatar;
+        const user = cached?.user;
+        if (user) {
+          user.tokensUsed = Number(data.tokensUsed || user.tokensUsed);
+          user.limit = Number(data.limit || user.limit);
+          user.tier = data.tier || user.tier;
+          if (data.username) user.username = data.username;
+          if (data.name) user.username = data.name;
+          if (data.avatarUrl) user.avatarUrl = data.avatarUrl;
+          if (data.avatar) user.avatarUrl = data.avatar;
           cached.expiresAt = Date.now() + CACHE_TTL_MS;
         }
       }
@@ -158,56 +195,54 @@ function triggerBackgroundUsageRefresh(token: string) {
     .catch(() => {});
 }
 
-export async function getMaiUser(
-  tokenInput?: string | null
-): Promise<MaiUser | null> {
-  const token = tokenInput || (await getMaiSessionToken());
-  if (!token) {
+// Projette un payload JWT VÉRIFIÉ (signature HS256 + expiration contrôlées par
+// `verifyJwtPayload`) en utilisateur. `null` si le payload ne porte aucune
+// identité exploitable.
+function userFromVerifiedPayload(payload: any): MaiUser | null {
+  if (!(payload.email || payload.sub)) {
     return null;
   }
-
-  // 1. Cache mémoire valide
-  const cached = readCachedUser(token);
-  if (cached) {
-    return cached.user;
-  }
-
-  // 2. Vérification cryptographique du JWT local (signature HS256 + expiration)
-  const hasSecret = getJwtSecret() !== null;
-  const payload = hasSecret ? await verifyJwtPayload(token) : null;
-  if (hasSecret && !payload) {
-    // Signature invalide, token expiré ou secret absent : refus immédiat,
-    // pas de repli sur un payload non vérifié.
+  // Double contrôle d'expiration : `jose` la vérifie déjà, mais ce chemin
+  // décide de l'accès — la garde reste ici, explicite.
+  if (!payload.exp || payload.exp * 1000 <= Date.now()) {
     return null;
   }
-  if (payload && (payload.email || payload.sub)) {
-    // Vérifier l'expiration du JWT si présente
-    if (!payload.exp || payload.exp * 1000 > Date.now()) {
-      const user: MaiUser = {
-        avatarUrl: payload.avatarUrl || null,
-        email: payload.email || "",
-        id: payload.id
-          ? String(payload.id)
-          : payload.sub
-            ? String(payload.sub)
-            : payload.email || "",
-        limit: Number(payload.limit || getTierChatWeeklyLimit(payload.tier)),
-        phone: payload.phone || "",
-        resetAt: payload.resetAt,
-        tier: payload.tier || "Free",
-        tokensUsed: Number(payload.tokensUsed || 0),
-        username: payload.username || payload.name || "Utilisateur",
-        weekStart: payload.weekStart,
-      };
+  return {
+    avatarUrl: payload.avatarUrl || null,
+    email: payload.email || "",
+    id: payload.id
+      ? String(payload.id)
+      : payload.sub
+        ? String(payload.sub)
+        : payload.email || "",
+    limit: Number(payload.limit || getTierChatWeeklyLimit(payload.tier)),
+    phone: payload.phone || "",
+    resetAt: payload.resetAt,
+    tier: payload.tier || "Free",
+    tokensUsed: Number(payload.tokensUsed || 0),
+    username: payload.username || payload.name || "Utilisateur",
+    weekStart: payload.weekStart,
+  };
+}
 
-      cacheUser(token, user, Date.now() + CACHE_TTL_MS);
-      // Lancer le rafraîchissement d'usage en arrière-plan sans bloquer la requête
-      triggerBackgroundUsageRefresh(token);
-      return user;
-    }
-  }
+type RemoteResolution =
+  | { status: "ok"; user: MaiUser }
+  // L'API a répondu et a refusé le jeton : décision définitive, elle mérite
+  // d'être mémorisée pour ne pas la redemander à chaque requête.
+  | { status: "refused" }
+  // Panne réseau / délai dépassé : décision INCONCLUANTE. La distinguer du
+  // refus évite de faire apparaître une déconnexion alors que la session est
+  // parfaitement valide.
+  | { status: "unreachable" };
 
-  // 3. Fallback réseau si JWT non présent
+// Résolution de l'identité par l'API distante. C'est elle qui a émis le jeton :
+// seule elle peut dire s'il est encore valide. Le payload local n'est
+// consulté que s'il a été VÉRIFIÉ — un jeton dont la signature échoue ne peut
+// injecter ni identité, ni identifiant, ni tier.
+async function resolveUserFromApi(
+  token: string,
+  verifiedPayload: any | null
+): Promise<RemoteResolution> {
   try {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 1500);
@@ -220,31 +255,75 @@ export async function getMaiUser(
     if (res.ok) {
       const data = await res.json();
       if (!data.error) {
-        let userId: string | undefined = data.id ? String(data.id) : undefined;
-        if (!userId && payload) {
-          userId = payload?.sub ? String(payload.sub) : undefined;
-        }
+        const userId = data.id
+          ? String(data.id)
+          : verifiedPayload?.sub
+            ? String(verifiedPayload.sub)
+            : undefined;
 
-        const user: MaiUser = {
-          avatarUrl: data.avatarUrl || null,
-          email: data.email || "",
-          id: userId || data.email,
-          limit: Number(data.limit || getTierChatWeeklyLimit(data.tier)),
-          phone: data.phone || "",
-          resetAt: data.resetAt,
-          tier: data.tier || "Free",
-          tokensUsed: Number(data.tokensUsed || 0),
-          username: data.username || "Utilisateur",
-          weekStart: data.weekStart,
+        return {
+          status: "ok",
+          user: {
+            avatarUrl: data.avatarUrl || null,
+            email: data.email || "",
+            id: userId || data.email,
+            limit: Number(data.limit || getTierChatWeeklyLimit(data.tier)),
+            phone: data.phone || "",
+            resetAt: data.resetAt,
+            tier: data.tier || "Free",
+            tokensUsed: Number(data.tokensUsed || 0),
+            username: data.username || "Utilisateur",
+            weekStart: data.weekStart,
+          },
         };
-
-        cacheUser(token, user, Date.now() + CACHE_TTL_MS);
-        return user;
       }
     }
+    return { status: "refused" };
   } catch (error) {
     console.error("Erreur récupération utilisateur mAI:", error);
+    return { status: "unreachable" };
+  }
+}
+
+export async function getMaiUser(
+  tokenInput?: string | null
+): Promise<MaiUser | null> {
+  const token = tokenInput || (await getMaiSessionToken());
+  if (!token) {
+    return null;
   }
 
+  // 1. Cache mémoire — session résolue comme refus définitif.
+  const cached = readCachedEntry(token);
+  if (cached) {
+    return cached.user;
+  }
+
+  // 2. Vérification cryptographique locale du JWT (signature HS256 + expiration).
+  // C'est un chemin RAPIDE, pas une autorité : le backend qui a émis le jeton
+  // reste l'arbitre. Une clé locale absente ou divergente (cas classique en dev :
+  // MAI_JWT_SECRET du .env différent de celui du déploiement) ne doit pas
+  // rendre l'application inutilisable ni enfermer l'utilisateur hors de l'app.
+  const hasSecret = getJwtSecret() !== null;
+  const payload = hasSecret ? await verifyJwtPayload(token) : null;
+  const localUser = payload ? userFromVerifiedPayload(payload) : null;
+  if (localUser) {
+    cacheUser(token, localUser, Date.now() + CACHE_TTL_MS);
+    // Rafraîchissement des quotas en arrière-plan, sans bloquer la requête.
+    triggerBackgroundUsageRefresh(token);
+    return localUser;
+  }
+
+  // 3. La vérification locale n'a pas conclu : l'API distante tranche. Un
+  // payload non vérifié n'est jamais utilisé pour construire l'identité.
+  noteRemoteValidation(token, hasSecret ? "signature" : "no_secret");
+  const resolution = await resolveUserFromApi(token, payload);
+  if (resolution.status === "ok") {
+    cacheUser(token, resolution.user, Date.now() + CACHE_TTL_MS);
+    return resolution.user;
+  }
+  if (resolution.status === "refused") {
+    cacheUser(token, null, Date.now() + CACHE_DENIED_TTL_MS);
+  }
   return null;
 }

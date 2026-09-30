@@ -26,7 +26,9 @@ import {
   type SlashCommand,
 } from "@/components/chat/slash-commands";
 import type { ProjectLite } from "@/hooks/use-projects";
+import { asArray } from "@/lib/api/client-fetch";
 import type { Agent, CustomCommand, McpServer, Skill } from "@/lib/db/schema";
+import type { PluginManifest } from "@/lib/plugins/types";
 
 // Triggers de composition partagés par le Chat et l'Agent : détection des
 // commandes « / » et des mentions « @ », navigation clavier dans les menus,
@@ -47,6 +49,15 @@ import type { Agent, CustomCommand, McpServer, Skill } from "@/lib/db/schema";
 export type ComposerTriggerOptions = {
   activeAgent?: Agent | null;
   activeSkill?: Skill | null;
+  /**
+   * Vide le brouillon persisté de la conversation courante.
+   *
+   * Appelé à la sélection d'une commande slash. Sans cela, `/new` et `/home`
+   * changeaient de clé de brouillon et `use-drafts` RESTAURAIT 200 ms plus
+   * tard le brouillon d'accueil : le texte que l'utilisateur venait de vider
+   * réapparaissait tout seul.
+   */
+  clearCurrentDraft?: () => void;
   clearActiveAgent?: () => void;
   clearActiveSkill?: () => void;
   clearPendingProject?: () => void;
@@ -55,7 +66,7 @@ export type ComposerTriggerOptions = {
   input: string;
   /** Mode du composer pour garder la même liste visible et clavier. */
   mode?: "agent" | "chat";
-  installedPlugins?: import("@/lib/plugins/types").PluginManifest[];
+  installedPlugins?: PluginManifest[];
   isFree?: boolean;
   isNewChatInput?: boolean;
   memoryAtLimit?: boolean;
@@ -127,6 +138,7 @@ export function useComposerTriggers(options: ComposerTriggerOptions) {
     activeSkill = null,
     clearActiveAgent,
     clearActiveSkill,
+    clearCurrentDraft,
     clearPendingProject,
     customCommands = [],
     customMentionCommands = [],
@@ -221,7 +233,7 @@ export function useComposerTriggers(options: ComposerTriggerOptions) {
     () =>
       getFilteredMentionItems(
         mentionQuery,
-        projects as never,
+        projects,
         skills,
         mcpServers,
         userAgents,
@@ -309,11 +321,21 @@ export function useComposerTriggers(options: ComposerTriggerOptions) {
         return;
       }
       closeMenus();
+      // Le vidage vit ICI, et non dans le composer Chat : l'Agent ne le
+      // faisait pas, et `/taches` laissait « /taches » dans la zone de saisie —
+      // le texte partait ensuite comme consigne de tâche. Un point unique
+      // garantit le même comportement pour les deux composers.
+      setInput("");
+      clearCurrentDraft?.();
       // Le propriétaire décide : le Chat délègue à runSlashCommand, l'Agent
       // traduit vers ses options one-shot.
-      void onSlashCommand?.(command);
+      // `onSlashCommand` est async : sans `catch`, une exception devenait une
+      // rejection non observée et l'utilisateur n'apprenait rien.
+      void Promise.resolve(onSlashCommand?.(command)).catch(() => {
+        toast.error(`La commande « /${command.name} » a échoué.`);
+      });
     },
-    [closeMenus, onSlashCommand, supportsTools]
+    [clearCurrentDraft, closeMenus, onSlashCommand, setInput, supportsTools]
   );
 
   const insertMentionToken = useCallback(
@@ -388,12 +410,17 @@ export function useComposerTriggers(options: ComposerTriggerOptions) {
       "Library",
       "Planning",
       "Notes",
-      ...projects.map((project) => project.name),
-      ...skills.map((skill) => skill.name),
-      ...mcpServers.map((server) => server.name),
-      ...userAgents.map((agent) => agent.name),
-      ...installedPlugins.map((plugin) => plugin.name),
-      ...customMentionCommands.map((command) => command.trigger),
+      // Même verrou que dans le menu : une réponse d'erreur empoisonne le cache
+      // SWR et le premier `.map` faisait tomber le composer au premier retour
+      // arrière. Les listes non tableaux comptent pour rien.
+      ...asArray<ProjectLite>(projects).map((project) => project.name),
+      ...asArray<Skill>(skills).map((skill) => skill.name),
+      ...asArray<McpServer>(mcpServers).map((server) => server.name),
+      ...asArray<Agent>(userAgents).map((agent) => agent.name),
+      ...asArray<PluginManifest>(installedPlugins).map((plugin) => plugin.name),
+      ...asArray<CustomCommand>(customMentionCommands).map(
+        (command) => command.trigger
+      ),
     ],
     [
       customMentionCommands,

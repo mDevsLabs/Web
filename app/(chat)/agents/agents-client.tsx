@@ -2,7 +2,6 @@
 
 import {
   BarChart3Icon,
-  BotIcon,
   BrainIcon,
   CheckIcon,
   CloudIcon,
@@ -34,6 +33,12 @@ import {
   DEFAULT_AGENT_COLOR,
 } from "@/components/agents/agent-presets";
 import { AgentsStats } from "@/components/agents/agents-stats";
+import { BotAvatar, BotGlyph } from "@/components/agents/bot-avatar";
+import {
+  INSTRUCTIONS_MAX_LENGTH,
+  InstructionBuilder,
+} from "@/components/agents/instruction-builder";
+import { TemperatureControl } from "@/components/agents/temperature-control";
 import { CloudFilePickerDialog } from "@/components/chat/cloud-file-picker-dialog";
 import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { PageBackButton } from "@/components/chat/page-back-button";
@@ -70,6 +75,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useActiveChat } from "@/hooks/use-active-chat";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import type { ModelCapabilities } from "@/lib/ai/registry/capabilities";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
 import type { Agent, AgentTemplate, McpServer, Skill } from "@/lib/db/schema";
 import { cn, fetcher } from "@/lib/utils";
@@ -97,7 +103,13 @@ export default function AgentsClient() {
     () => (Array.isArray(mcpData?.servers) ? mcpData.servers : []),
     [mcpData]
   );
-  const { data: modelsData } = useSWR("/api/models", fetcher);
+  // `capabilities` est indexé par identifiant de modèle : c'est ce qui permet de
+  // savoir si le modèle du bot raisonne, et donc si sa température sert à
+  // quelque chose.
+  const { data: modelsData } = useSWR<{
+    capabilities: Record<string, ModelCapabilities>;
+    models: unknown[];
+  }>("/api/models", fetcher);
   const models: any[] = modelsData?.models || [];
 
   const { activeAgent, setActiveAgent, clearActiveAgent } = useActiveChat();
@@ -144,7 +156,7 @@ export default function AgentsClient() {
   const handleStartChatWithAgent = useCallback(
     (a: Agent) => {
       setActiveAgent(a);
-      toast.success(`Agent activé : ${a.name}`);
+      toast.success(`Bot activé : ${a.name}`);
       router.push("/");
     },
     [router, setActiveAgent]
@@ -253,14 +265,13 @@ export default function AgentsClient() {
     e.preventDefault();
     setSaveError(null);
     if (!formName.trim()) {
-      const msg = "Nom de l'agent requis";
+      const msg = "Nom du bot requis";
       setSaveError(msg);
       toast.error(msg);
       return;
     }
     if (!formInstructions.trim()) {
-      const msg =
-        "Instructions requises pour définir le comportement de l'agent";
+      const msg = "Instructions requises pour définir le comportement du bot";
       setSaveError(msg);
       toast.error(msg);
       return;
@@ -306,14 +317,11 @@ export default function AgentsClient() {
       const data = await res.json();
       if (!res.ok) {
         throw new Error(
-          extractApiErrorMessage(data) ||
-            "Erreur lors de la sauvegarde de l'agent"
+          extractApiErrorMessage(data) || "Erreur lors de la sauvegarde du bot"
         );
       }
       toast.success(
-        editingAgent
-          ? "Agent mis à jour avec succès !"
-          : "Agent créé avec succès !"
+        editingAgent ? "Bot mis à jour avec succès !" : "Bot créé avec succès !"
       );
       await mutate();
       setIsEditorOpen(false);
@@ -337,7 +345,7 @@ export default function AgentsClient() {
       toast.error("Suppression échouée");
       return;
     }
-    toast.success(`Agent "${agentToDelete.name}" supprimé`);
+    toast.success(`Bot "${agentToDelete.name}" supprimé`);
     setAgentToDelete(null);
     await mutate();
     if (activeAgent?.id === agentToDelete.id) {
@@ -360,7 +368,7 @@ export default function AgentsClient() {
 
   const handleActivate = (a: Agent) => {
     setActiveAgent(a);
-    toast.success(`Agent activé : ${a.name} — modèle ${a.defaultModelId}`);
+    toast.success(`Bot activé : ${a.name} — modèle ${a.defaultModelId}`);
   };
 
   const handleTogglePin = async (a: Agent) => {
@@ -375,7 +383,7 @@ export default function AgentsClient() {
         throw new Error("Erreur épinglage");
       }
       toast.success(
-        next ? `Agent "${a.name}" épinglé` : `Agent "${a.name}" désépinglé`
+        next ? `Bot "${a.name}" épinglé` : `Bot "${a.name}" désépinglé`
       );
       await mutate();
     } catch (err: any) {
@@ -400,16 +408,13 @@ export default function AgentsClient() {
           <div className="flex items-center gap-3">
             <PageBackButton fallbackHref="/" label="Retour au chat" />
             <div className="flex items-center gap-2.5">
-              <div className="flex size-9 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-600">
-                <BotIcon className="size-5" />
-              </div>
+              <BotAvatar size={36} />
               <div>
                 <h1 className="text-lg font-bold tracking-tight sm:text-xl">
-                  Agents IA
+                  Bots IA
                 </h1>
                 <p className="text-xs text-muted-foreground">
-                  {agents.length}/{agentLimit ?? "∞"} agents • Sélection globale
-                  •{" "}
+                  {agents.length}/{agentLimit ?? "∞"} bots • Sélection globale •{" "}
                   <span className="font-mono text-[10px]">
                     5000c max instructions
                   </span>
@@ -423,12 +428,12 @@ export default function AgentsClient() {
             onClick={() => handleNewAgent()}
             title={
               isAtAgentLimit
-                ? `Limite du forfait atteinte (${agentLimit} agents)`
+                ? `Limite du forfait atteinte (${agentLimit} bots)`
                 : undefined
             }
           >
             <PlusIcon className="size-3.5" />
-            <span>Créer un agent</span>
+            <span>Créer un bot</span>
           </Button>
         </div>
         <div className="flex flex-col gap-3 pt-1">
@@ -443,8 +448,8 @@ export default function AgentsClient() {
               onClick={() => setActiveTab("agents")}
               type="button"
             >
-              <BotIcon className="size-3.5" />
-              <span>Mes agents ({agents.length})</span>
+              <BotGlyph className="size-3.5" />
+              <span>Mes bots ({agents.length})</span>
             </button>
             <button
               className={cn(
@@ -457,7 +462,7 @@ export default function AgentsClient() {
               type="button"
             >
               <LayoutGridIcon className="size-3.5" />
-              <span>Modèles ({templates.length})</span>
+              <span>Types de bots ({templates.length})</span>
             </button>
             <button
               className={cn(
@@ -481,7 +486,7 @@ export default function AgentsClient() {
                 <Input
                   className="h-8 pl-8 text-xs bg-muted/40"
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Rechercher un agent..."
+                  placeholder="Rechercher un bot..."
                   value={searchQuery}
                 />
               </div>
@@ -512,7 +517,7 @@ export default function AgentsClient() {
           <AgentsStats />
         ) : activeTab === "templates" ? (
           <>
-            {/* Barre de recherche et filtres dédiés aux modèles d'agents */}
+            {/* Barre de recherche et filtres dédiés aux types de bots */}
             <div className="flex flex-col gap-3">
               <div className="flex flex-col sm:flex-row sm:items-center gap-2">
                 <div className="relative w-full sm:w-72">
@@ -520,7 +525,7 @@ export default function AgentsClient() {
                   <Input
                     className="h-8 pl-8 text-xs bg-muted/40"
                     onChange={(e) => setTemplateQuery(e.target.value)}
-                    placeholder="Rechercher un modèle..."
+                    placeholder="Rechercher un type de bot..."
                     value={templateQuery}
                   />
                 </div>
@@ -639,13 +644,12 @@ export default function AgentsClient() {
               </div>
             ) : agents.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-12 text-center max-w-2xl mx-auto">
-                <div className="size-16 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-600 mb-4">
-                  <BotIcon className="size-8" />
-                </div>
-                <h2 className="text-xl font-bold mb-2">Aucun agent créé</h2>
+                <BotAvatar className="mb-4" size={64} />
+                <h2 className="text-xl font-bold mb-2">Aucun bot créé</h2>
                 <p className="text-sm text-muted-foreground mb-6">
-                  Parcourez les modèles d'agents prêts à l'emploi ou créez un
-                  agent personnalisé avec instructions, skills, MCP et fichiers.
+                  Parcourez les types de bots prêts à l'emploi ou créez un bot
+                  personnalisé : instructions système, modèle, skills, MCP et
+                  fichiers.
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-2">
                   <Button
@@ -662,13 +666,13 @@ export default function AgentsClient() {
                     onClick={() => handleNewAgent()}
                   >
                     <PlusIcon className="size-4" />
-                    Créer mon premier agent
+                    Créer mon premier bot
                   </Button>
                 </div>
               </div>
             ) : filteredAgents.length === 0 ? (
               <div className="py-12 text-center text-muted-foreground text-sm">
-                Aucun agent ne correspond à “{searchQuery}”.
+                Aucun bot ne correspond à “{searchQuery}”.
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -677,7 +681,7 @@ export default function AgentsClient() {
                     className={cn(
                       "flex flex-col rounded-2xl border bg-card p-4 transition-all duration-200 hover:shadow-md relative group",
                       activeAgent?.id === a.id
-                        ? "border-indigo-500/40 ring-1 ring-indigo-500/20 bg-indigo-500/[0.03]"
+                        ? "border-foreground/30 ring-1 ring-foreground/10 bg-foreground/[0.03]"
                         : "border-border/60 hover:border-border"
                     )}
                     key={a.id}
@@ -696,10 +700,10 @@ export default function AgentsClient() {
                           <h3 className="font-semibold text-sm text-foreground truncate flex items-center gap-1.5">
                             {a.name}{" "}
                             {(a as any).pinned && (
-                              <PinIcon className="size-3 text-indigo-500 shrink-0" />
+                              <PinIcon className="size-3 text-muted-foreground shrink-0" />
                             )}{" "}
                             {activeAgent?.id === a.id && (
-                              <span className="text-[10px] bg-indigo-500 text-white px-1.5 py-0.5 rounded-full">
+                              <span className="text-[10px] bg-foreground text-background px-1.5 py-0.5 rounded-full">
                                 Actif
                               </span>
                             )}
@@ -774,24 +778,24 @@ export default function AgentsClient() {
                           </span>
                         ) : null}
                         {(a.mcpServerIds as string[] | null)?.length ? (
-                          <span className="bg-purple-500/10 text-purple-600 px-1.5 py-0.5 rounded">
+                          <span className="bg-info/10 text-info px-1.5 py-0.5 rounded">
                             MCP {(a.mcpServerIds as any).length}
                           </span>
                         ) : null}
                         {(a.cloudFileUrls as string[] | null)?.length ? (
-                          <span className="bg-amber-500/10 text-amber-600 px-1.5 py-0.5 rounded">
+                          <span className="bg-warning/10 text-warning px-1.5 py-0.5 rounded">
                             Fichiers {(a.cloudFileUrls as any).length}
                           </span>
                         ) : null}
                         {((a as any).temperature !== null ||
                           (a as any).topP !== null ||
                           (a as any).maxTokens !== null) && (
-                          <span className="bg-cyan-500/10 text-cyan-600 px-1.5 py-0.5 rounded">
+                          <span className="bg-info/10 text-info px-1.5 py-0.5 rounded">
                             Params modèle
                           </span>
                         )}
                         {(a as any).starterPrompts?.length ? (
-                          <span className="bg-emerald-500/10 text-emerald-600 px-1.5 py-0.5 rounded">
+                          <span className="bg-success/10 text-success px-1.5 py-0.5 rounded">
                             Démarrage {(a as any).starterPrompts.length}
                           </span>
                         ) : null}
@@ -834,7 +838,7 @@ export default function AgentsClient() {
               chevauchait l'ancien sélecteur d'onglets. */}
           <DialogHeader className="pr-12">
             <DialogTitle>
-              {editingAgent ? "Modifier l'agent" : "Créer un agent"}
+              {editingAgent ? "Modifier le bot" : "Créer un bot"}
             </DialogTitle>
             <DialogDescription>
               Instructions ≤5000c, icône, paramètres du modèle, skills, MCP et
@@ -924,41 +928,50 @@ export default function AgentsClient() {
                       className={cn(
                         "text-[11px] font-normal",
                         formInstructions.length > 4800
-                          ? "text-amber-600"
+                          ? "text-warning"
                           : "text-muted-foreground"
                       )}
                     >
                       {formInstructions.length}/5000
                     </span>
                   </Label>
+                  <InstructionBuilder
+                    onChange={setFormInstructions}
+                    value={formInstructions}
+                  />
                   <Textarea
                     className="min-h-[140px] font-mono text-xs leading-relaxed"
-                    maxLength={5000}
+                    maxLength={INSTRUCTIONS_MAX_LENGTH}
                     onChange={(e) => setFormInstructions(e.target.value)}
-                    placeholder="Tu es un expert en... Tes réponses doivent toujours respecter..."
+                    placeholder="Tu es un expert en…&#10;&#10;Rôle : …&#10;Ton : …&#10;Contraintes : …&#10;Interdits : …&#10;Format de sortie : …&#10;&#10;Ce que tu ne fais jamais : …"
                     required
                     value={formInstructions}
                   />
+                  <p className="text-[11px] leading-relaxed text-muted-foreground">
+                    Une consigne par ligne, la plus contraignante en premier. Ce
+                    que le bot doit faire ET ce qu'il ne doit jamais faire : les
+                    deux méritent la même place.
+                  </p>
                 </div>
 
-                {/* Mémoire de l'agent */}
-                <div className="space-y-2 p-3 rounded-xl border border-sky-500/30 bg-sky-500/5">
+                {/* Mémoire du bot */}
+                <div className="space-y-2 p-3 rounded-xl border border-border/60 bg-muted/30">
                   <Label className="text-xs font-semibold flex items-center gap-1.5">
-                    <BrainIcon className="size-3.5 text-sky-600 dark:text-sky-400" />
-                    Mémoire de l'agent
+                    <BrainIcon className="size-3.5 text-muted-foreground" />
+                    Mémoire du bot
                   </Label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <label
                       className={cn(
                         "flex items-start gap-2 p-2.5 rounded-lg border cursor-pointer text-xs",
                         formMemoryMode === "global"
-                          ? "border-sky-500/50 bg-sky-500/10"
+                          ? "border-foreground/30 bg-foreground/5"
                           : "border-border/40 hover:bg-muted/30"
                       )}
                     >
                       <input
                         checked={formMemoryMode === "global"}
-                        className="mt-0.5 size-3.5 accent-sky-600"
+                        className="mt-0.5 size-3.5 accent-foreground"
                         name="agent-memory-mode"
                         onChange={() => setFormMemoryMode("global")}
                         type="radio"
@@ -974,13 +987,13 @@ export default function AgentsClient() {
                       className={cn(
                         "flex items-start gap-2 p-2.5 rounded-lg border cursor-pointer text-xs",
                         formMemoryMode === "custom"
-                          ? "border-sky-500/50 bg-sky-500/10"
+                          ? "border-foreground/30 bg-foreground/5"
                           : "border-border/40 hover:bg-muted/30"
                       )}
                     >
                       <input
                         checked={formMemoryMode === "custom"}
-                        className="mt-0.5 size-3.5 accent-sky-600"
+                        className="mt-0.5 size-3.5 accent-foreground"
                         name="agent-memory-mode"
                         onChange={() => setFormMemoryMode("custom")}
                         type="radio"
@@ -1032,25 +1045,15 @@ export default function AgentsClient() {
                     </Label>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div className="space-y-1.5">
-                      <Label className="text-xs flex items-center justify-between">
-                        Température{" "}
-                        <span className="font-mono text-muted-foreground">
-                          {formTemperature.toFixed(1)}
-                        </span>
-                      </Label>
-                      <input
-                        className="w-full accent-primary"
-                        max={2}
-                        min={0}
-                        onChange={(e) =>
-                          setFormTemperature(Number(e.target.value))
-                        }
-                        step={0.1}
-                        type="range"
-                        value={formTemperature}
-                      />
-                    </div>
+                    <TemperatureControl
+                      onChange={setFormTemperature}
+                      reasoningModel={Boolean(
+                        formModelId
+                          ? modelsData?.capabilities?.[formModelId]?.reasoning
+                          : false
+                      )}
+                      value={formTemperature}
+                    />
                     <div className="space-y-1.5">
                       <Label className="text-xs flex items-center justify-between">
                         Top P{" "}
@@ -1219,7 +1222,7 @@ export default function AgentsClient() {
                           className={cn(
                             "flex items-center gap-2 p-2 rounded-lg border cursor-pointer text-xs",
                             formMcpIds.includes(m.id)
-                              ? "border-purple-500/40 bg-purple-500/5"
+                              ? "border-border/60 bg-muted/30"
                               : "border-border/30 hover:bg-muted/30"
                           )}
                           key={m.id}
@@ -1334,7 +1337,7 @@ export default function AgentsClient() {
                   className={cn(
                     "mt-2 rounded-2xl border bg-card p-4 transition-colors",
                     formPinned &&
-                      "border-indigo-500/40 ring-1 ring-indigo-500/20"
+                      "border-foreground/30 ring-1 ring-foreground/10"
                   )}
                 >
                   <div className="flex items-start justify-between gap-2 mb-3">
@@ -1347,9 +1350,9 @@ export default function AgentsClient() {
                       </div>
                       <div className="min-w-0">
                         <h3 className="font-semibold text-sm text-foreground truncate flex items-center gap-1.5">
-                          {formName || "Nom de l'agent"}{" "}
+                          {formName || "Nom du bot"}{" "}
                           {formPinned && (
-                            <PinIcon className="size-3 text-indigo-500 shrink-0" />
+                            <PinIcon className="size-3 text-muted-foreground shrink-0" />
                           )}
                         </h3>
                         <p className="text-[12px] text-muted-foreground truncate">
@@ -1374,18 +1377,18 @@ export default function AgentsClient() {
                         </span>
                       ) : null}
                       {formMcpIds.length ? (
-                        <span className="bg-purple-500/10 text-purple-600 px-1.5 py-0.5 rounded">
+                        <span className="bg-info/10 text-info px-1.5 py-0.5 rounded">
                           MCP {formMcpIds.length}
                         </span>
                       ) : null}
                       {formCloudUrls.length ? (
-                        <span className="bg-amber-500/10 text-amber-600 px-1.5 py-0.5 rounded">
+                        <span className="bg-warning/10 text-warning px-1.5 py-0.5 rounded">
                           Fichiers {formCloudUrls.length}
                         </span>
                       ) : null}
                     </div>
                     <div className="flex items-center gap-1.5 text-[10px] font-mono text-muted-foreground">
-                      <ThermometerIcon className="size-3 text-cyan-600" /> temp{" "}
+                      <ThermometerIcon className="size-3 text-info" /> temp{" "}
                       {formTemperature.toFixed(1)} · topP {formTopP.toFixed(2)}
                       {formMaxTokens ? ` · max ${formMaxTokens}` : ""}
                     </div>
@@ -1401,7 +1404,7 @@ export default function AgentsClient() {
                           .slice(0, 3)
                           .map((p, i) => (
                             <span
-                              className="text-[10px] bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 px-1.5 py-0.5 rounded-full truncate max-w-full"
+                              className="text-[10px] bg-success/10 text-success border border-success/20 px-1.5 py-0.5 rounded-full truncate max-w-full"
                               key={i}
                             >
                               {p}
@@ -1432,7 +1435,7 @@ export default function AgentsClient() {
                   ? "Enregistrement..."
                   : editingAgent
                     ? "Mettre à jour"
-                    : "Créer l'agent"}
+                    : "Créer le bot"}
               </Button>
             </DialogFooter>
           </form>
@@ -1445,9 +1448,9 @@ export default function AgentsClient() {
       >
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Supprimer cet agent ?</AlertDialogTitle>
+            <AlertDialogTitle>Supprimer ce bot ?</AlertDialogTitle>
             <AlertDialogDescription>
-              Êtes-vous sûr de vouloir supprimer définitivement l'agent "
+              Êtes-vous sûr de vouloir supprimer définitivement le bot "
               {agentToDelete?.name}" ? Cette action est irréversible.
             </AlertDialogDescription>
           </AlertDialogHeader>

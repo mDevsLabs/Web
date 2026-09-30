@@ -83,6 +83,7 @@ const TOOL_FRIENDLY_NAMES: Record<string, string> = {
   generateChart: "Génération de graphique",
   getWeather: "Météo en direct",
   getAccountUsage: "Consommation & forfait",
+  getUsageStats: "Analyse des statistiques",
   imageGenerate: "Génération d'image",
   memory: "Mémoire utilisateur",
   note: "Bloc-notes",
