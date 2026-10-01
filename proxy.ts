@@ -30,6 +30,14 @@ export async function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Rapports de violation CSP. La route est publique par nature — un rapport
+  // arrive souvent après une redirection ou une expiration de session, et il ne
+  // contient aucune donnée de l'utilisateur. La lui refuser produirait des
+  // rapports muets, donc un mode d'observation qui n'observe rien.
+  if (pathname.startsWith("/api/security/csp-report")) {
+    return NextResponse.next();
+  }
+
   // Routes publiques autorisées
   const isAuthRoute =
     pathname.startsWith("/login") || pathname.startsWith("/register");

@@ -25,7 +25,11 @@ function buildContentSecurityPolicy(): string {
     "default-src": ["'self'"],
     "font-src": ["'self'", "data:"],
     "form-action": ["'self'"],
-    "frame-ancestors": ["'self'"],
+    // `'none'` et non `'self'` : l'application ne doit pas être intégrable dans
+    // une iframe tierce. C'est la protection contre le clickjacking que
+    // `X-Frame-Options` apporte, mais en moderne — et il est ajouté en doublon
+    // plus bas pour les navigateurs anciens.
+    "frame-ancestors": ["'none'"],
     "frame-src": [
       "'self'",
       "blob:",
@@ -53,6 +57,9 @@ function buildContentSecurityPolicy(): string {
       ...storageHosts,
     ],
     "object-src": ["'none'"],
+    // Doit être déclarée à part : `report-uri` est une directive propre, pas un
+    // mot-clé acceptant une liste de sources.
+    "report-uri": ["/api/security/csp-report"],
     "script-src": [
       "'self'",
       "'unsafe-inline'",
@@ -65,8 +72,17 @@ function buildContentSecurityPolicy(): string {
     "worker-src": ["'self'", "blob:"],
   };
 
+  // En-tête de rapport CSP. Sans lui, `CSP_REPORT_ONLY=1` bascule la politique
+  // en observation sans qu'aucune violation ne soit reçue nulle part : le mode
+  // d'observation ne permetait alors pas d'observer. Le chemin est relatif,
+  // donc valable quel que soit le `basePath` du build de démonstration.
+  // Chaque directive reçoit l'en-tête de rapport, `report-uri` comprise.
+  const reportTo = "report-uri /api/security/csp-report";
+
   return Object.entries(directives)
-    .map(([directive, values]) => `${directive} ${values.join(" ")}`)
+    .map(
+      ([directive, values]) => `${directive} ${values.join(" ")}; ${reportTo}`
+    )
     .join("; ");
 }
 
@@ -74,6 +90,13 @@ const securityHeaders = [
   {
     key: "X-Content-Type-Options",
     value: "nosniff",
+  },
+  {
+    // Redondance assumée avec `frame-ancestors 'none'` pour les navigateurs
+    // qui ne comprennent pas CSP. Ni le framework ni le backend ne
+    // positionnaient cet en-tête sur l'application.
+    key: "X-Frame-Options",
+    value: "DENY",
   },
   {
     key: "Referrer-Policy",
@@ -145,6 +168,18 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
+    // Tailles réellement rendues. Les valeurs par défaut commencent à 640 px,
+    // ce qui fait télécharger une image de 500 Ko à un logo de 24 px.
+    deviceSizes: [360, 640, 768, 1024, 1280, 1536, 1920],
+    // AVIF d'abord : sans `formats`, le défaut est webp seul et le format le
+    // plus efficace n'est jamais négocié.
+    formats: ["image/avif", "image/webp"],
+    imageSizes: [16, 24, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 60 * 60 * 24 * 30,
+    // Aligné sur l'`img-src` de la CSP ci-dessus : les deux listes doivent
+    // accepter les mêmes sources, sinon une URL d'avatar autorisée par la CSP
+    // échoue à l'optimisation et l'image ne s'affiche pas.
+    qualities: [60, 75, 90],
     remotePatterns: [
       {
         hostname: "avatar.vercel.sh",
@@ -155,6 +190,15 @@ const nextConfig: NextConfig = {
       },
       {
         hostname: "models.dev",
+        protocol: "https",
+      },
+      // Stockage des fichiers cloud (S3/R2), déjà autorisé par la CSP.
+      {
+        hostname: "s3.z1storage.com",
+        protocol: "https",
+      },
+      {
+        hostname: "*.r2.dev",
         protocol: "https",
       },
     ],
