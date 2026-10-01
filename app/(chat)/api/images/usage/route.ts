@@ -1,11 +1,7 @@
 import { NextResponse } from "next/server";
-import {
-  errorResponse,
-  logError,
-  normalizeUpstreamError,
-} from "@/lib/api/error-response";
+import { errorResponse } from "@/lib/api/error-response";
+import { upstreamJson } from "@/lib/api/upstream";
 import { getMaiSessionToken } from "@/lib/auth/session";
-import { MAI_API_URL } from "@/lib/constants";
 
 export async function GET() {
   const token = await getMaiSessionToken();
@@ -13,25 +9,10 @@ export async function GET() {
     return errorResponse("auth_required", { message: "Non authentifié." });
   }
 
-  try {
-    const res = await fetch(`${MAI_API_URL}/v1/images/usage`, {
-      cache: "no-store",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    const data = await res.json();
-    if (!res.ok) {
-      const payload = normalizeUpstreamError(data, res.status);
-      return NextResponse.json(payload, { status: payload.status });
-    }
-
-    return NextResponse.json(data);
-  } catch (error) {
-    logError("Erreur API images/usage", error);
-    return errorResponse("internal_error", {
-      message: "Erreur lors de la récupération de l'usage.",
-    });
+  const result = await upstreamJson({ path: "/v1/images/usage", token });
+  if (!result.ok) {
+    return NextResponse.json(result.payload, { status: result.payload.status });
   }
+
+  return NextResponse.json(result.data);
 }

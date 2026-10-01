@@ -5,6 +5,7 @@ import {
   normalizeUpstreamError,
 } from "@/lib/api/error-response";
 import { enforceApiRateLimit } from "@/lib/api/rate-limit";
+import { upstreamJson } from "@/lib/api/upstream";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
 import { getUserApiKey } from "@/lib/db/api-keys";
@@ -107,39 +108,35 @@ export async function POST(req: NextRequest) {
     // Pré-contrôle de quota Speech, purement informatif : le backend applique la
     // limite de toute façon, donc une panne de cette lecture ne doit pas
     // bloquer une synthèse légitime.
-    try {
-      const usageRes = await fetch(`${MAI_API_URL}/v1/audio/usage`, {
-        cache: "no-store",
-        headers: {
-          Authorization: authHeader,
-        },
-      });
-      if (usageRes.ok) {
-        const usageData = await usageRes.json();
-        const weeklyLimit = Number(usageData.weeklyLimit ?? 0);
-        const tokensUsed = Number(usageData.tokensUsed ?? 0);
-        const estimatedTokens = Math.max(
-          1,
-          Math.ceil(input.trim().length / 3.5)
-        );
-        if (
-          weeklyLimit > 0 &&
-          (tokensUsed >= weeklyLimit ||
-            tokensUsed + estimatedTokens > weeklyLimit)
-        ) {
-          return errorResponse("quota_exceeded", {
-            details: { limit: weeklyLimit, used: tokensUsed },
-            message: `Votre quota hebdomadaire Speech est atteint (${tokensUsed}/${weeklyLimit} tokens). Mettez à niveau votre forfait pour continuer.`,
-          });
-        }
+    const usage = await upstreamJson<{
+      tokensUsed?: number;
+      weeklyLimit?: number;
+    }>({ path: "/v1/audio/usage", token: authHeader });
+    if (usage.ok) {
+      const weeklyLimit = Number(usage.data.weeklyLimit ?? 0);
+      const tokensUsed = Number(usage.data.tokensUsed ?? 0);
+      const estimatedTokens = Math.max(1, Math.ceil(input.trim().length / 3.5));
+      if (
+        weeklyLimit > 0 &&
+        (tokensUsed >= weeklyLimit ||
+          tokensUsed + estimatedTokens > weeklyLimit)
+      ) {
+        return errorResponse("quota_exceeded", {
+          details: { limit: weeklyLimit, used: tokensUsed },
+          message: `Votre quota hebdomadaire Speech est atteint (${tokensUsed}/${weeklyLimit} tokens). Mettez à niveau votre forfait pour continuer.`,
+        });
       }
-    } catch (quotaErr) {
+    } else {
       console.warn(
         "Pré-contrôle de quota audio indisponible, la décision revient à l'amont :",
-        quotaErr instanceof Error ? quotaErr.message : quotaErr
+        usage.payload.message
       );
     }
 
+    // Cette route n'utilise pas `upstreamJson` : l'amont peut renvoyer du JSON OU
+    // un flux binaire audio, selon le fournisseur. Le client amont normalise le
+    // JSON et son erreur ; la branche binaire reste gérée ici, sur le même
+    // `fetch` mais avec un délai de génération.
     const maiRes = await fetch(`${MAI_API_URL}/v1/audio/speech`, {
       body: JSON.stringify({
         format: "json",
@@ -150,21 +147,29 @@ export async function POST(req: NextRequest) {
         speed,
         voice,
       }),
+      cache: "no-store",
       headers: {
         Accept: "application/json",
         Authorization: authHeader,
         "Content-Type": "application/json",
       },
       method: "POST",
+      signal: AbortSignal.timeout(60_000),
     });
 
     // Si le serveur a renvoyé du JSON
     const contentType = maiRes.headers.get("content-type") || "";
     if (contentType.includes("application/json")) {
-      const json = await maiRes.json();
+      const json = await maiRes.json().catch(() => null);
       if (!maiRes.ok) {
         const payload = normalizeUpstreamError(json, maiRes.status);
         return NextResponse.json(payload, { status: payload.status });
+      }
+      // Réponse announced JSON mais corps illisible : on n'indexe pas `null`.
+      if (!json || typeof json !== "object") {
+        return errorResponse("upstream_error", {
+          message: "Réponse inattendue du service de synthèse vocale.",
+        });
       }
       return NextResponse.json({
         audio_url:
