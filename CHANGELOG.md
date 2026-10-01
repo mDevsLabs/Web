@@ -1,5 +1,62 @@
 # Notes de version
 
+## 0.9.2 — 1er octobre 2026
+
+Cette version est surtout une version de corrections. Elle rétablit des
+fonctionnalités qui répondaient « non authentifié » alors que la session était
+valide, et referme une faille d'authentification côté API.
+
+### Nouveautés
+
+- **Limitation des requêtes coûteuses** : la génération d'image, la synthèse
+  vocale, la traduction, le résumé des mémoires, la connexion à un serveur MCP et
+  les opérations d'historique en masse sont désormais limitées. La réponse
+  indique le temps d'attente restant.
+- **Import de mémoires borné** : le nombre d'éléments par import est plafonné,
+  ce qui évite qu'une seule requête déclenche des centaines d'écritures.
+- **Rapports de violations CSP** : le mode d'observation de la politique de
+  sécurité recueille désormais les violations et les journalisent, ce qui
+  permet de basculer une directive à la fois.
+- **`.env.example`** : le dépôt documente désormais les variables
+  d'environnement attendues, avec les raisons des verrous à ne pas contourner.
+
+### Corrections
+
+- **Planification et préférences** : les espaces « Planification » et
+  « Préférences » fonctionnaient pour tous les comptes sauf ceux dont
+  l'identifiant est l'adresse. Ils sont de nouveau accessibles, comme le reste
+  de l'application.
+- **Tâches planifiées et quota atteint** : une tâche planifiée dont le quota
+  hebdomadaire était épuisé était marquée en échec, ce qui arrêtait définitivement
+  une récurrence. Elle est désormais reportée et repart automatiquement. Les
+  exécutions manuelles sont également soumises au quota et à la limite de
+  requêtes.
+- **Reconnexion après incident de base de données** : le service externe
+  d'API renvoyait une erreur d'authentification quand sa base était
+  momentanément injoignable, au lieu d'indiquer un incident temporaire. Aucun
+  accès n'est désormais accordé sur une panne d'infrastructure, et les messages
+  distinguent un identifiant invalide d'un service indisponible.
+- **Relevé de consommation** : le point d'entrée d'enregistrement des échanges
+  avec le service de statistiques acceptait des valeurs invalides et pouvait
+  écrire une consommation négative dans le relevé. Les valeurs sont maintenant
+  vérifiées avant tout accès à la base.
+- **Facturation des réponses qui raisonnent** : le nombre de tokens était
+  compté deux fois pour les modèles qui raisonnent.
+- **Exécution d'une conversation planifiée** : elle était le seul chemin de
+  dépense sans limite de requêtes.
+- **Connexion à un serveur MCP** : la route de test acceptait des configurations
+  que la route de création refuse, et ne vérifiait pas le protocole de
+  connexion.
+- **Envois vocaux** : la vitesse de synthèse et la longueur du texte étaient
+  transmises sans limite.
+- **Profil et historique des images** : la modification du profil n'acceptait
+  que les champs attendus, et les identifiants d'images sont validés avant
+  d'être transmis.
+- **Images** : les avatars et fichiers venus du stockage sont de nouveau
+  visibles, et le format le plus léger est proposé aux navigateurs compatibles.
+- **Application dans un cadre tiers** : l'interdiction d'intégration en iframe
+  est appliquée, avec un équivalent pour les navigateurs anciens.
+
 ## 0.9.1 — 30 septembre 2026
 
 ### Nouveautés
