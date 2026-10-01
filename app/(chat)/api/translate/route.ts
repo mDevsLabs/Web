@@ -146,7 +146,7 @@ export async function POST(request: Request) {
     // s'appliquer au passage.
     const model = await getUtilityModel({
       sessionToken,
-      userId: user.id,
+      userId: user.id || user.email,
     });
 
     const { text: translated, usage } = await generateText({
@@ -171,7 +171,7 @@ export async function POST(request: Request) {
         outputTokens: usage.outputTokens ?? 0,
         totalTokens,
         userEmail: user.email,
-        userId: user.id ?? user.email,
+        userId: user.id || user.email,
       }).catch((error: unknown) => {
         // Un échec de comptage ne doit pas faire perdre la traduction : le
         // quota sera rattrapé par la consommation du message d'origine.

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
-import { getMaiUser } from "@/lib/auth/session";
+import { requireUser } from "@/lib/auth/require-user";
 import { getUserPreferences, upsertUserPreferences } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import {
@@ -51,16 +51,16 @@ const buildSchema = (tier?: string | null) =>
   });
 
 export async function GET() {
-  const user = await getMaiUser();
-  if (!user) {
-    return new ChatbotError("unauthorized:chat").toResponse();
-  }
-  const userId = user.id;
-  if (!userId) {
+  // `requireUser` dérive l'identité canonique (`id || email`). Cette route lisait
+  // `user.id` et refusait la session dès qu'il était vide : pour un compte dont
+  // l'identifiant persistant EST l'adresse, les préférences étaient inaccessibles
+  // et l'interface revenait à ses valeurs par défaut.
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
   try {
-    const prefs = await getUserPreferences(userId);
+    const prefs = await getUserPreferences(session.userId);
     return NextResponse.json(prefs);
   } catch (e) {
     console.error("GET user preferences error", e);
@@ -86,14 +86,11 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id;
-  if (!userId) {
-    return new ChatbotError("unauthorized:chat").toResponse();
-  }
+  const { user, userId } = session;
   try {
     const body = await request.json().catch(() => ({}));
     const parsed = buildSchema(user.tier).safeParse(body);

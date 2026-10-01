@@ -1,6 +1,6 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { errorResponse, logError } from "@/lib/api/error-response";
-import { getMaiUser } from "@/lib/auth/session";
+import { requireUser } from "@/lib/auth/require-user";
 import { getScheduledMessageById } from "@/lib/db/queries";
 import { executeScheduledMessage } from "@/lib/planning/executor";
 
@@ -8,20 +8,16 @@ export async function POST(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const user = await getMaiUser();
-  if (!user) {
+  // `requireUser` dérive l'identité canonique (`id || email`) ; cette route
+  // lisait `user.id` seul et rejetait les comptes dont l'identifiant
+  // persistant est l'adresse.
+  const session = await requireUser();
+  if (!session) {
     return errorResponse("auth_required", { message: "Non autorisé." });
   }
 
   const { id } = await params;
-  const userId = user.id;
-  if (!userId) {
-    return errorResponse("auth_required", {
-      message: "Session utilisateur invalide.",
-    });
-  }
-
-  const item = await getScheduledMessageById({ id, userId });
+  const item = await getScheduledMessageById({ id, userId: session.userId });
   if (!item) {
     return errorResponse("not_found", {
       message: "Message planifié introuvable.",

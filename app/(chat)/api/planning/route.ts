@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { errorResponse, logError } from "@/lib/api/error-response";
-import { getMaiUser } from "@/lib/auth/session";
+import { requireUser } from "@/lib/auth/require-user";
 import {
   createScheduledMessage,
   getScheduledMessagesByUserId,
@@ -33,19 +33,18 @@ const buildCreateSchema = (tier?: string | null) =>
   });
 
 export async function GET(request: Request) {
-  const user = await getMaiUser();
-  if (!user) {
+  // `requireUser` est le seul endroit qui dérive l'identité canonique
+  // (`id || email`). Cette route lisait `user.id` seul : pour un compte dont
+  // l'identifiant persistant EST l'adresse, toute la planification répondait
+  // « non authentifié » alors que les autres espaces de travail fonctionnaient.
+  const session = await requireUser();
+  if (!session) {
     return errorResponse("auth_required", { message: "Non autorisé." });
   }
 
+  const { userId } = session;
   const { searchParams } = new URL(request.url);
   const status = searchParams.get("status") || "all";
-  const userId = user.id;
-  if (!userId) {
-    return errorResponse("auth_required", {
-      message: "Session utilisateur invalide.",
-    });
-  }
 
   const messages = await getScheduledMessagesByUserId({
     status,
@@ -56,20 +55,15 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return errorResponse("auth_required", { message: "Non autorisé." });
   }
+  const { user, userId } = session;
 
   try {
     const json = await request.json();
     const parsed = buildCreateSchema(user.tier).parse(json);
-    const userId = user.id;
-    if (!userId) {
-      return errorResponse("auth_required", {
-        message: "Session utilisateur invalide.",
-      });
-    }
 
     if (parsed.chatId) {
       const access = await requireOwnedPlanningChat({
