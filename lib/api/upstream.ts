@@ -87,6 +87,80 @@ export function upstreamUrl(
 }
 
 /**
+ * Envoie un `FormData` tel quel au backend.
+ *
+ * `upstreamJson` sérialise le corps en JSON et ne convient donc pas à un
+ * envoi de fichier. Cette variante ne fixe PAS de `Content-Type` : c'est le
+ * runtime qui doit ajouter la frontière multipart, et le faire à la main casse
+ * l'analyse du formulaire côté amont.
+ */
+export async function upstreamForm<T = unknown>(params: {
+  path: string;
+  form: FormData;
+  method?: UpstreamMethod;
+  query?: UpstreamParams["query"];
+  timeoutMs?: number;
+  token?: string | null;
+}): Promise<UpstreamCall<T>> {
+  const {
+    form,
+    method = "POST",
+    path,
+    query,
+    timeoutMs = DEFAULT_TIMEOUT_MS,
+    token,
+  } = params;
+
+  const headers: Record<string, string> = { Accept: "application/json" };
+  if (token) {
+    headers.Authorization = `Bearer ${token}`;
+  }
+
+  let response: Response;
+  try {
+    response = await fetch(upstreamUrl(path, query), {
+      body: form,
+      cache: "no-store",
+      headers,
+      method,
+      signal: AbortSignal.timeout(timeoutMs),
+    });
+  } catch {
+    return {
+      ok: false,
+      payload: normalizeUpstreamError(null, 502, {
+        message: "Le service de fichiers est momentanément injoignable.",
+      }),
+    };
+  }
+
+  const parsed = await readJsonBody(response);
+  if (!response.ok) {
+    return {
+      ok: false,
+      payload: normalizeUpstreamError(parsed.body, response.status),
+    };
+  }
+  return { data: parsed.body as T, ok: true, status: response.status };
+}
+
+/**
+ * Lit un corps JSON sans faire échouer une réponse d'erreur HTML.
+ * `res.json()` lèverait et transformerait une panne lisible en 500 opaque.
+ */
+async function readJsonBody(response: Response): Promise<{ body: unknown }> {
+  const text = await response.text();
+  if (!text) {
+    return { body: null };
+  }
+  try {
+    return { body: JSON.parse(text) };
+  } catch {
+    return { body: { message: text.slice(0, 500) } };
+  }
+}
+
+/**
  * Appelle le backend et normalise sa réponse.
  *
  * Ne lève jamais : un échec réseau devient un payload d'erreur comme un autre,
@@ -156,30 +230,19 @@ export async function upstreamJson<T = unknown>(
     };
   }
 
-  // Une réponse amont n'est pas forcément du JSON : une page d'erreur HTML ou
-  // un corps vide ferait échouer `res.json()` et transformerait une panne
-  // lisible en 500 « erreur interne ».
-  const text = await response.text();
-  let parsed: unknown = null;
-  if (text) {
-    try {
-      parsed = JSON.parse(text);
-    } catch {
-      parsed = { message: text.slice(0, 500) };
-    }
-  }
+  const parsed = await readJsonBody(response);
 
   if (!response.ok) {
     return {
       ok: false,
-      payload: normalizeUpstreamError(parsed, response.status, {
+      payload: normalizeUpstreamError(parsed.body, response.status, {
         ...(code ? { code } : {}),
         ...(message ? { message } : {}),
       }),
     };
   }
 
-  return { data: parsed as T, ok: true, status: response.status };
+  return { data: parsed.body as T, ok: true, status: response.status };
 }
 
 /**
