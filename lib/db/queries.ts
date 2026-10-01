@@ -5841,6 +5841,31 @@ export async function claimScheduledMessage(params: {
   return claimed ?? null;
 }
 
+/**
+ * Rend une réservation au fil de l'eau : repasse l'item en `pending` sans le
+ * terminer.
+ *
+ * Utilisé quand l'exécution est **différée** plutôt qu'en échec : quota
+ * hebdomadaire épuisé, par exemple. Marquer `failed` déclencherait une
+ * notification d'erreur alors que rien n'a échoué, et empêcherait la
+ * récurrence de repartir. En `pending`, l'item reste dû et sera repris au
+ * prochain tick.
+ */
+export async function releaseScheduledMessageClaim(params: {
+  id: string;
+}): Promise<void> {
+  const database = await getDb();
+  await database
+    .update(scheduledMessage)
+    .set({ status: "pending", updatedAt: new Date() })
+    .where(
+      and(
+        eq(scheduledMessage.id, params.id),
+        eq(scheduledMessage.status, "processing")
+      )
+    );
+}
+
 export async function getDueScheduledMessages(): Promise<ScheduledMessage[]> {
   const database = await getDb();
   // Les items "processing" bloqués depuis plus de 10 minutes (ex: crash serveur)

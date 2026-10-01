@@ -18,7 +18,9 @@ import {
   getMessagesByChatId,
   getPluginInstallationsByUserId,
   getSkillById,
+  getWeeklyAiTokenUsage,
   recordTokenUsage,
+  releaseScheduledMessageClaim,
   rescheduleRecurringMessage,
   saveChat,
   saveMessages,
@@ -27,6 +29,7 @@ import {
 import { getPersistedTier } from "@/lib/db/users";
 import { requireOwnedPlanningChat } from "@/lib/planning/chat-access";
 import { deriveScheduleToolMode } from "@/lib/planning/tool-mode";
+import { getTierChatWeeklyLimit } from "@/lib/plans/tier-limits";
 import { getPluginManifest } from "@/lib/plugins/catalog";
 import { createPluginTools } from "@/lib/plugins/server";
 import { canUsePlugin } from "@/lib/plugins/tier-lock";
@@ -60,12 +63,48 @@ export function computeNextOccurrence(
   }
 }
 
+/**
+ * Le quota hebdomadaire est-il épuisé pour cet utilisateur ?
+ *
+ * `null` = usage illisible (base momentanément indisponible). On ne bloque
+ * alors pas l'exécution : c'est l'amont qui applique de toute façon, et un
+ * refus sur une lecture ratée empêcherait une tâche légitime de partir.
+ * Même choix que `lib/agent/scheduler/execute.ts`.
+ */
+async function isWeeklyQuotaExhausted(userId: string): Promise<boolean | null> {
+  const persisted = await getPersistedTier({ userId });
+  if (!persisted.ok) {
+    return null;
+  }
+  const used = await getWeeklyAiTokenUsage({ userId });
+  if (used === null) {
+    return null;
+  }
+  return used >= getTierChatWeeklyLimit(persisted.tier);
+}
+
 export async function executeScheduledMessage(scheduledId: string) {
   // La réservation atomique empêche deux workers d'exécuter la même
   // planification. Les exécutions explicites d'un item failed restent possibles.
   const item = await claimScheduledMessage({ id: scheduledId });
   if (!item) {
     return { skipped: true, status: "not_claimable" };
+  }
+
+  // Quota épuisé : on DIFFÈRE au lieu d'échouer. Le scheduler Agent fait la
+  // même chose avant de créer un run. Marquer `failed` ici était le seul
+  // comportement possible jusqu'ici — une tâche récurrente s'arrêtait sur un
+  // quota atteint et ne repartait jamais, alors que rien n'avait échoué.
+  const quotaExhausted = await isWeeklyQuotaExhausted(item.userId);
+  if (quotaExhausted === true) {
+    await releaseScheduledMessageClaim({ id: item.id });
+    console.warn(
+      JSON.stringify({
+        event: "planning_quota_exhausted",
+        userId: item.userId,
+      })
+    );
+    return { deferred: true, status: "quota_exhausted" };
   }
 
   try {

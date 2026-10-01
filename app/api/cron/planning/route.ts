@@ -57,11 +57,18 @@ async function handleCronExecution(request: Request) {
   const results: Array<
     { id: string; status: string } & Record<string, unknown>
   > = [];
+  let executedCount = 0;
+  let deferredCount = 0;
 
   for (const item of dueItems) {
     try {
       const res = await executeScheduledMessage(item.id);
       results.push({ id: item.id, ...res });
+      if (res.deferred) {
+        deferredCount += 1;
+      } else {
+        executedCount += 1;
+      }
     } catch (err: any) {
       results.push({
         error: err?.message || String(err),
@@ -71,8 +78,11 @@ async function handleCronExecution(request: Request) {
     }
   }
 
+  // `executedCount` comptait auparavant les items différés : un quota épuisé
+  // apparaissait comme une réussite. Les deux sont distingués ici.
   return NextResponse.json({
-    executedCount: results.length,
+    deferredCount,
+    executedCount,
     results,
     timestamp: new Date().toISOString(),
   });
