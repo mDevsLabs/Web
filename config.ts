@@ -13,10 +13,16 @@ export const BCRYPT_ROUNDS = 12;
 // ─────────────────────────────────────────────
 const rateBuckets = new Map<string, { count: number; resetAt: number }>();
 
-export function rateLimit(key: string, limit: number, windowMs: number): boolean {
+export function rateLimit(
+  key: string,
+  limit: number,
+  windowMs: number
+): boolean {
   const now = Date.now();
   const bucket = rateBuckets.get(key);
-  if (!bucket || now > bucket.resetAt) {
+  // `>=` et non `>` : à l'instant exact d'expiration la fenêtre est close, et
+  // la fenêtre annoncée vaut `windowMs`, pas `windowMs + 1`.
+  if (!bucket || now >= bucket.resetAt) {
     rateBuckets.set(key, { count: 1, resetAt: now + windowMs });
     return true;
   }
@@ -38,9 +44,9 @@ export type Tier = "Free" | "Plus" | "Pro" | "Max";
 const TIER_ALIASES: Record<string, Tier> = {
   free: "Free",
   gratuit: "Free",
+  max: "Max",
   plus: "Plus",
   pro: "Pro",
-  max: "Max",
 };
 
 /**
@@ -49,7 +55,13 @@ const TIER_ALIASES: Record<string, Tier> = {
  * Une valeur vide ou inconnue retombe sur "Free", comme l'ancien `MAP[t] || MAP["Free"]`.
  */
 export function normalizeTier(tier?: string | null): Tier {
-  return TIER_ALIASES[String(tier || "").trim().toLowerCase()] || "Free";
+  return (
+    TIER_ALIASES[
+      String(tier || "")
+        .trim()
+        .toLowerCase()
+    ] || "Free"
+  );
 }
 
 export function isPaidTier(tier?: string | null): boolean {
@@ -59,9 +71,9 @@ export function isPaidTier(tier?: string | null): boolean {
 // Limites de tokens mAI hebdomadaires (Input + Output)
 export const TIER_LIMITS: Record<Tier, number> = {
   Free: 10_000_000,
+  Max: 50_000_000,
   Plus: 20_000_000,
   Pro: 30_000_000,
-  Max: 50_000_000,
 };
 
 export function getTierMaiTokenLimit(tier?: string | null): number {
@@ -71,9 +83,9 @@ export function getTierMaiTokenLimit(tier?: string | null): number {
 // Limites de tokens Speech hebdomadaires
 export const TIER_SPEECH_LIMITS: Record<Tier, number> = {
   Free: 30_000_000,
+  Max: 300_000_000,
   Plus: 75_000_000,
   Pro: 150_000_000,
-  Max: 300_000_000,
 };
 
 export function getTierSpeechLimit(tier?: string | null): number {
@@ -83,9 +95,9 @@ export function getTierSpeechLimit(tier?: string | null): number {
 // Limites de requêtes API hebdomadaires (remise à zéro le lundi 00:00 UTC)
 export const TIER_REQUEST_LIMITS: Record<Tier, number> = {
   Free: 500,
+  Max: 7500,
   Plus: 1500,
   Pro: 3000,
-  Max: 7500,
 };
 
 export function getTierRequestLimit(tier?: string | null): number {
@@ -97,7 +109,9 @@ export function getTierRequestLimit(tier?: string | null): number {
  * mai-TIER_USER-XXXXX-XXXXX (ex: mai-free-ABC12-defgh, mai-plus-..., mai-pro-..., mai-max-...)
  * Renvoie "Free", "Plus", "Pro", "Max" ou null si non présent.
  */
-export function extractTierFromApiKey(apiKey: string | null | undefined): "Free" | "Plus" | "Pro" | "Max" | null {
+export function extractTierFromApiKey(
+  apiKey: string | null | undefined
+): "Free" | "Plus" | "Pro" | "Max" | null {
   if (!apiKey || typeof apiKey !== "string") return null;
   const match = apiKey.trim().match(/^mai-(free|plus|pro|max)-/i);
   if (!match) return null;
@@ -149,9 +163,9 @@ export async function getUserQuotaBoost(
 // Limites quotidiennes de génération d'images
 export const TIER_DAILY_IMAGE_LIMITS: Record<Tier, number> = {
   Free: 5,
+  Max: 35,
   Plus: 10,
   Pro: 20,
-  Max: 35,
 };
 
 export function getTierDailyImageLimit(tier?: string | null): number {
@@ -161,9 +175,9 @@ export function getTierDailyImageLimit(tier?: string | null): number {
 // Coût en requêtes API par image générée (multiplié par le nombre d'images demandées)
 export const TIER_IMAGE_REQUEST_COST: Record<Tier, number> = {
   Free: 100,
+  Max: 10,
   Plus: 50,
   Pro: 25,
-  Max: 10,
 };
 
 export function getTierImageRequestCost(tier?: string | null): number {
@@ -175,9 +189,9 @@ const GIB = 1024 * 1024 * 1024;
 
 export const STORAGE_LIMITS_BYTES: Record<Tier, number> = {
   Free: 10 * GIB,
+  Max: 60 * GIB,
   Plus: 20 * GIB,
   Pro: 40 * GIB,
-  Max: 60 * GIB,
 };
 
 export function getTierStorageLimitBytes(tier?: string | null): number {
@@ -189,16 +203,18 @@ let _lastDbUrl: string | null = null;
 
 export function getDb() {
   const rawUrl =
-    (typeof (globalThis as any).Deno !== "undefined" ? (globalThis as any).Deno.env?.get("DATABASE_URL") : null) ||
-    (typeof process !== "undefined" ? process.env?.DATABASE_URL : null);
+    (typeof (globalThis as any).Deno === "undefined"
+      ? null
+      : (globalThis as any).Deno.env?.get("DATABASE_URL")) ||
+    (typeof process === "undefined" ? null : process.env?.DATABASE_URL);
   if (!rawUrl) {
     throw new Error("DATABASE_URL not set");
   }
 
   // Activer automatiquement le mode connection pooler Neon (-pooler) si disponible
   let url = rawUrl;
-  if (url.includes('.neon.tech') && !url.includes('-pooler')) {
-    url = url.replace(/@([^:]+)(\.neon\.tech)/, '@$1-pooler$2');
+  if (url.includes(".neon.tech") && !url.includes("-pooler")) {
+    url = url.replace(/@([^:]+)(\.neon\.tech)/, "@$1-pooler$2");
   }
 
   if (!_cachedDb || _lastDbUrl !== url) {
@@ -210,7 +226,9 @@ export function getDb() {
 
 export function getJwtSecret(): Uint8Array {
   const secret =
-    (typeof Deno !== "undefined" ? Deno.env.get("MAI_JWT_SECRET") || Deno.env.get("JWT_SECRET") : null) ||
+    (typeof Deno === "undefined"
+      ? null
+      : Deno.env.get("MAI_JWT_SECRET") || Deno.env.get("JWT_SECRET")) ||
     "mai_super_secret_jwt_key_2026_default_vibe";
   return new TextEncoder().encode(secret);
 }
@@ -237,7 +255,7 @@ export async function verifyToken(
       args: [token],
       sql: "SELECT 1 FROM token_blacklist WHERE token = ?",
     });
-    if (sqliteResult && sqliteResult.rows && sqliteResult.rows.length > 0) {
+    if (sqliteResult?.rows && sqliteResult.rows.length > 0) {
       throw new Error("Token révoqué.");
     }
   } catch (e: any) {
@@ -281,8 +299,8 @@ export async function blacklistToken(token: string) {
   } catch {}
   try {
     await sqlite.execute({
-      sql: "DELETE FROM token_blacklist WHERE revoked_at < datetime('now', '-14 days')",
       args: [],
+      sql: "DELETE FROM token_blacklist WHERE revoked_at < datetime('now', '-14 days')",
     });
   } catch {}
 }

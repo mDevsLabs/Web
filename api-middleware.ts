@@ -1,5 +1,12 @@
 import type { Hono } from "npm:hono@4";
-import { extractTierFromApiKey, getDb, getTierRequestLimit, getUserQuotaBoost, getWeekData, verifyToken } from "./config.ts";
+import {
+  extractTierFromApiKey,
+  getDb,
+  getTierRequestLimit,
+  getUserQuotaBoost,
+  getWeekData,
+  verifyToken,
+} from "./config.ts";
 
 export function registerMiddleware(app: Hono) {
   // Middleware global pour Auth, Rate limiting & Logging sur toutes les routes d'API
@@ -167,8 +174,12 @@ export function registerMiddleware(app: Hono) {
         userPlan = keyTier;
       }
 
-      const sql = getDb();
       try {
+        // `getDb()` doit rester DANS le try : une base injoignable au moment de
+        // l'ouverture est exactement le cas que ce bloc doit attraper, sinon
+        // l'exception remonte hors du middleware et la requête n'est ni servie
+        // ni refusée proprement.
+        const sql = getDb();
         const rows = await sql`
           SELECT k.*, u.tier as user_tier, u.id as u_id
           FROM mprojects_api_keys k
@@ -181,22 +192,42 @@ export function registerMiddleware(app: Hono) {
           const apiKeyData = rows[0];
           // Si le TIER_USER a été extrait de la clé fournie, il fait foi en priorité
           if (!keyTier) {
-            const rawPlan = String(apiKeyData.plan || "").trim().toLowerCase();
+            const rawPlan = String(apiKeyData.plan || "")
+              .trim()
+              .toLowerCase();
             const validTiers = ["free", "plus", "pro", "max"];
-            userPlan = apiKeyData.user_tier || (validTiers.includes(rawPlan) ? apiKeyData.plan : "Plus");
+            userPlan =
+              apiKeyData.user_tier ||
+              (validTiers.includes(rawPlan) ? apiKeyData.plan : "Plus");
           }
           currentUserId = apiKeyData.user_id;
           matchedApiKey = apiKeyData.api_key || apiKey;
           isRegisteredApiKey = true;
-        } else if (systemMaiApiKey && timingSafeEqual(apiKey, systemMaiApiKey)) {
+        } else if (
+          systemMaiApiKey &&
+          timingSafeEqual(apiKey, systemMaiApiKey)
+        ) {
           userPlan = "Plus";
           currentUserId = "system-mai";
         } else {
-          // Tenter de valider le token comme un JWT de session
+          // Tenter de valider le token comme un JWT de session.
+          //
+          // Le try interne ne couvre QUE la vérification du jeton : c'est la
+          // seule défaillance qui justifie un 403. La lecture du forfait qui
+          // suit interroge la base ; si elle échoue, ce n'est pas un mauvais
+          // identifiant mais une panne d'infrastructure, et la traiter ici
+          // disait à un client aux jetons valides de se réauthentifier.
+          let sessionPayload: { sub?: string; tier?: string } | null = null;
           try {
-            const payload = await verifyToken(apiKey);
-            currentUserId = String(payload.sub || "");
-            userPlan = String(payload.tier || "Free");
+            sessionPayload = await verifyToken(apiKey);
+          } catch {
+            if (!isPublicRoute) {
+              return c.json({ error: "Invalid API Key." }, 403);
+            }
+          }
+          if (sessionPayload) {
+            currentUserId = String(sessionPayload.sub || "");
+            userPlan = String(sessionPayload.tier || "Free");
 
             // Vérifier dans la table users si le forfait a changé
             if (currentUserId) {
@@ -209,14 +240,19 @@ export function registerMiddleware(app: Hono) {
                 userPlan = uRows[0].tier;
               }
             }
-          } catch {
-            if (!isPublicRoute) {
-              return c.json({ error: "Invalid API Key." }, 403);
-            }
           }
         }
       } catch (dbErr) {
+        // Échec de la base d'authentification : on REFUSE la requête.
+        //
+        // Avaler cette erreur revenait à laisser passer la requête avec
+        // `currentUserId` à null : le garde 401 plus bas teste `!apiKey`, qui est
+        // renseigné, donc aucune route privée n'était protégée et le handler
+        // s'exécutait sans identité établie. Une panne d'infrastructure ne doit
+        // jamais accorder un accès ; on répond 503 pour que l'appelant
+        // réessaie, et on n'appelle ni `next()` ni `c.set()`.
         console.error("Auth DB Error in middleware:", dbErr);
+        return c.json({ error: "Authentication service unavailable." }, 503);
       }
     }
 
@@ -294,21 +330,29 @@ export function registerMiddleware(app: Hono) {
         const used = Number(countRows[0]?.total_requests || 0);
         const remaining = Math.max(0, limit - used);
 
-        (c as any).set("requestQuota", { apiKey: matchedApiKey, limit, remaining, used });
+        (c as any).set("requestQuota", {
+          apiKey: matchedApiKey,
+          limit,
+          remaining,
+          used,
+        });
 
         if (remaining < 1) {
           if (isPublicRoute) {
             await next();
             return;
           }
-          return c.json({
-            code: "quota_exceeded",
-            error: "Quota exceeded for your account.",
-            limit,
-            remaining,
-            resetAt: nextResetIso,
-            used,
-          }, 429);
+          return c.json(
+            {
+              code: "quota_exceeded",
+              error: "Quota exceeded for your account.",
+              limit,
+              remaining,
+              resetAt: nextResetIso,
+              used,
+            },
+            429
+          );
         }
       } catch {}
     }
@@ -324,7 +368,10 @@ export function registerMiddleware(app: Hono) {
     // Uniquement pour les clés API enregistrées : +1 requête au solde hebdomadaire du
     // propriétaire de la clé. Les requêtes authentifiées par JWT de session sont
     // exécutées directement, sans log-usage ni débit ensuite.
-    const isExcludedRoute = path.startsWith("/v1/devices") || path === "/v1/status" || path === "/status";
+    const isExcludedRoute =
+      path.startsWith("/v1/devices") ||
+      path === "/v1/status" ||
+      path === "/status";
     if (!isExcludedRoute && isRegisteredApiKey) {
       try {
         const sql = getDb();

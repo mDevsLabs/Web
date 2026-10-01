@@ -22,7 +22,7 @@ function loadIsolated(file: string, stubs: Record<string, unknown> = {}) {
         return (
           ts.isVariableStatement(node) &&
           node.declarationList.declarations.some(
-            (declaration) => declaration.name.getText(ast) === "__rateBuckets"
+            (declaration) => declaration.name.getText(ast) === "rateBuckets"
           )
         );
       })
@@ -42,6 +42,11 @@ function loadIsolated(file: string, stubs: Record<string, unknown> = {}) {
   runInNewContext(outputText, {
     console: { error: vi.fn(), warn: vi.fn() },
     Date,
+    // Les fichiers racine tournent sur Val Town (Deno). `Deno.env` est un
+    // ambiant de la plateforme : sans ce stub, tout handler qui le lit explose
+    // en `ReferenceError: Deno is not defined` et le test échoue pour une
+    // raison qui n'a rien à voir avec ce qu'il vérifie.
+    Deno: { env: { get: () => undefined } },
     exports,
     require: (name: string) => {
       if (!Object.hasOwn(stubs, name)) {
@@ -74,12 +79,7 @@ const CALLS = [
       `${T("ai-translate", "userId")}, 20, 60_000`,
     ],
   ],
-  [
-    "vibe-users.ts",
-    [
-      `${T("pv", "viewerId}:${targetId".slice(0, 0) + "viewerId}:${targetId")}, 1, 60_000`,
-    ],
-  ],
+  ["vibe-users.ts", [`${T("pv", "viewerId}:${targetId")}, 1, 60_000`]],
 ] as const;
 
 function context(pathname: string, headers: Record<string, string> = {}) {
@@ -99,7 +99,7 @@ function context(pathname: string, headers: Record<string, string> = {}) {
 describe("bounded root backend audit", () => {
   it.each(
     CALLS
-  )("%s awaits every limiter with its original key and window", (file, expected) => {
+  )("%s consumes every limiter result and keeps its original key and window", (file, expected) => {
     const ast = ts.createSourceFile(
       file,
       source(file),
@@ -112,7 +112,17 @@ describe("bounded root backend audit", () => {
         ts.isCallExpression(node) &&
         node.expression.getText(ast) === "rateLimit"
       ) {
-        expect(ts.isAwaitExpression(node.parent)).toBe(true);
+        // `rateLimit` est SYNCHRONE (config.ts) : exiger un `await` était
+        // impossible à satisfaire, et échouait pour une raison sans rapport avec
+        // ce que le test prétend vérifier. Le vrai risque sur un limiteur
+        // synchrone est l'appel « flottant » — `rateLimit(...)` seul en
+        // statement, qui consomme un quota sans jamais bloquer la requête. On
+        // vérifie donc que la valeur de retour sert bien de condition.
+        const parent = node.parent;
+        expect(
+          ts.isBinaryExpression(parent) || ts.isPrefixUnaryExpression(parent),
+          `${file} : appel à rateLimit() dont le retour n'est pas utilisé comme condition`
+        ).toBe(true);
         calls.push(node.arguments.map((arg) => arg.getText(ast)).join(", "));
       }
       ts.forEachChild(node, visit);
@@ -129,15 +139,15 @@ describe("bounded root backend audit", () => {
     const clock = vi.spyOn(Date, "now").mockReturnValue(1000);
     try {
       const { rateLimit } = loadIsolated("config.ts");
-      expect(await rateLimit("post:1", 2, windowMs)).toBe(true);
-      expect(await rateLimit("post:1", 2, windowMs)).toBe(true);
-      expect(await rateLimit("post:1", 2, windowMs)).toBe(false);
-      expect(await rateLimit("post:2", 2, windowMs)).toBe(true);
-      expect(await rateLimit("ai-text:1", 2, windowMs)).toBe(true);
+      expect(rateLimit("post:1", 2, windowMs)).toBe(true);
+      expect(rateLimit("post:1", 2, windowMs)).toBe(true);
+      expect(rateLimit("post:1", 2, windowMs)).toBe(false);
+      expect(rateLimit("post:2", 2, windowMs)).toBe(true);
+      expect(rateLimit("ai-text:1", 2, windowMs)).toBe(true);
       clock.mockReturnValue(1000 + windowMs - 1);
-      expect(await rateLimit("post:1", 2, windowMs)).toBe(false);
+      expect(rateLimit("post:1", 2, windowMs)).toBe(false);
       clock.mockReturnValue(1000 + windowMs);
-      expect(await rateLimit("post:1", 2, windowMs)).toBe(true);
+      expect(rateLimit("post:1", 2, windowMs)).toBe(true);
     } finally {
       clock.mockRestore();
     }
@@ -149,13 +159,13 @@ describe("bounded root backend audit", () => {
       context("/login", { "x-forwarded-for": "192.0.2.1, 192.0.2.2" })
     );
     expect(ip).toBe("192.0.2.1");
-    expect(await rateLimit(`login:${ip}`, 1, 60_000)).toBe(true);
-    expect(await rateLimit(`login:${ip}`, 1, 60_000)).toBe(false);
-    expect(await rateLimit("login:192.0.2.2", 1, 60_000)).toBe(true);
-    expect(await rateLimit("pv:1:2", 1, 60_000)).toBe(true);
-    expect(await rateLimit("pv:1:2", 1, 60_000)).toBe(false);
-    expect(await rateLimit("pv:1:3", 1, 60_000)).toBe(true);
-    expect(await rateLimit("pv:2:3", 1, 60_000)).toBe(true);
+    expect(rateLimit(`login:${ip}`, 1, 60_000)).toBe(true);
+    expect(rateLimit(`login:${ip}`, 1, 60_000)).toBe(false);
+    expect(rateLimit("login:192.0.2.2", 1, 60_000)).toBe(true);
+    expect(rateLimit("pv:1:2", 1, 60_000)).toBe(true);
+    expect(rateLimit("pv:1:2", 1, 60_000)).toBe(false);
+    expect(rateLimit("pv:1:3", 1, 60_000)).toBe(true);
+    expect(rateLimit("pv:2:3", 1, 60_000)).toBe(true);
   });
 
   it("registers every alias for all five supported methods", () => {
