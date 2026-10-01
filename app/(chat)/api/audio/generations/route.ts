@@ -4,9 +4,36 @@ import {
   logError,
   normalizeUpstreamError,
 } from "@/lib/api/error-response";
+import { enforceApiRateLimit } from "@/lib/api/rate-limit";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import { MAI_API_URL } from "@/lib/constants";
 import { getUserApiKey } from "@/lib/db/api-keys";
+
+// Un corps de synthèse vocale se mesure en kilo-octets, pas en méga-octets :
+// lire au-delà de ce plafond coûte de la mémoire pour un envoi qui sera refusé.
+const SPEECH_BODY_MAX_BYTES = 64 * 1024;
+
+// Plages des fournisseurs : le chemin HTTP ne bornait ni la taille du texte ni
+// la vitesse, qui partaient tels quels vers l'amont.
+const SPEECH_INPUT_MAX_LENGTH = 5000;
+const SPEECH_SPEED_MIN = 0.25;
+const SPEECH_SPEED_MAX = 4;
+
+async function readBoundedJson(request: Request): Promise<unknown> {
+  const declared = Number(request.headers.get("content-length") ?? "0");
+  if (Number.isFinite(declared) && declared > SPEECH_BODY_MAX_BYTES) {
+    return null;
+  }
+  const raw = await request.text();
+  if (raw.length > SPEECH_BODY_MAX_BYTES) {
+    return null;
+  }
+  try {
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -33,7 +60,24 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const body = await req.json().catch(() => ({}));
+    const limited = await enforceApiRateLimit({
+      action: "audio_generation",
+      request: req,
+      userId: user ? user.id || user.email : null,
+    });
+    if (limited) {
+      return limited;
+    }
+
+    // Corps borné avant toute lecture de quota : la taille du texte est la seule
+    // donnée que l'appelant contrôle, et elle était transmise telle quelle.
+    const parsed = await readBoundedJson(req);
+    if (!parsed || typeof parsed !== "object") {
+      return errorResponse("invalid_request", {
+        message: "Corps de requête invalide.",
+      });
+    }
+    const body = parsed as Record<string, unknown>;
     const input = body.input || body.prompt || body.text || "";
 
     if (!input || typeof input !== "string" || !input.trim()) {
@@ -42,12 +86,27 @@ export async function POST(req: NextRequest) {
       });
     }
 
+    if (input.length > SPEECH_INPUT_MAX_LENGTH) {
+      return errorResponse("invalid_request", {
+        details: { limit: SPEECH_INPUT_MAX_LENGTH },
+        message: `Le texte à synthétiser dépasse ${SPEECH_INPUT_MAX_LENGTH} caractères.`,
+      });
+    }
+
     const model = body.model || "deepgram/flux-tts:free";
     const voice = body.voice || "flux-alexis-en";
-    const speed = body.speed === undefined ? 1.0 : Number(body.speed);
     const response_format = body.response_format || "mp3";
 
-    // Vérification préalable du quota Speech avant d'envoyer la requête
+    // `Number("abc")` vaut NaN et traversait le calcul de quota. On borne
+    // explicitement, et une valeur illisible retombe sur le défaut.
+    const rawSpeed = Number(body.speed);
+    const speed = Number.isFinite(rawSpeed)
+      ? Math.min(Math.max(rawSpeed, SPEECH_SPEED_MIN), SPEECH_SPEED_MAX)
+      : 1.0;
+
+    // Pré-contrôle de quota Speech, purement informatif : le backend applique la
+    // limite de toute façon, donc une panne de cette lecture ne doit pas
+    // bloquer une synthèse légitime.
     try {
       const usageRes = await fetch(`${MAI_API_URL}/v1/audio/usage`, {
         cache: "no-store",
@@ -75,7 +134,10 @@ export async function POST(req: NextRequest) {
         }
       }
     } catch (quotaErr) {
-      console.warn("Avertissement vérification quota audio:", quotaErr);
+      console.warn(
+        "Pré-contrôle de quota audio indisponible, la décision revient à l'amont :",
+        quotaErr instanceof Error ? quotaErr.message : quotaErr
+      );
     }
 
     const maiRes = await fetch(`${MAI_API_URL}/v1/audio/speech`, {
