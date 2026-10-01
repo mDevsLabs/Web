@@ -2,7 +2,6 @@
 
 import {
   BarChart3Icon,
-  BotIcon,
   CheckCircle2Icon,
   ClockIcon,
   MessageSquareIcon,
@@ -12,6 +11,7 @@ import {
   UsersIcon,
 } from "lucide-react";
 import useSWR from "swr";
+import { BotGlyph } from "@/components/agents/bot-avatar";
 import { cn } from "@/lib/utils";
 import { AgentIcon } from "./agent-icon";
 
@@ -22,7 +22,6 @@ export type AgentStatItem = {
   name: string;
   description: string | null;
   icon: string;
-  emoji: string | null;
   color: string;
   defaultModelId: string;
   pinned: boolean;
@@ -35,6 +34,8 @@ export type AgentsStatsData = {
   totalAgentChats: number;
   totalStandardChats: number;
   totalAgents: number;
+  /** Quota d'agents du forfait ; `null` = illimité (Max). */
+  agentLimit: number | null;
   agents: AgentStatItem[];
 };
 
@@ -66,7 +67,7 @@ export function AgentsStats() {
   if (error || !data) {
     return (
       <div className="py-12 text-center text-muted-foreground text-sm flex flex-col items-center gap-3">
-        <span>Impossible de charger les statistiques des agents.</span>
+        <span>Impossible de charger les statistiques des bots.</span>
         <button
           className="text-primary hover:underline text-xs font-semibold"
           onClick={() => mutate()}
@@ -152,12 +153,7 @@ export function AgentsStats() {
                     className="size-5 rounded-md flex items-center justify-center text-white text-xs shrink-0"
                     style={{ backgroundColor: topAgent.color }}
                   >
-                    <AgentIcon
-                      emoji={topAgent.emoji}
-                      icon={topAgent.icon}
-                      size={12}
-                      variant="plain"
-                    />
+                    <AgentIcon icon={topAgent.icon} size={12} variant="plain" />
                   </div>
                   <span className="text-base font-bold text-foreground truncate">
                     {topAgent.name}
@@ -188,12 +184,12 @@ export function AgentsStats() {
               Agents configurés
             </span>
             <div className="size-8 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center">
-              <BotIcon className="size-4" />
+              <BotGlyph className="size-4" />
             </div>
           </div>
           <div className="mt-3">
             <span className="text-2xl font-bold text-foreground">
-              {totalAgents}/10
+              {totalAgents}/{data.agentLimit ?? "∞"}
             </span>
             <p className="text-[11px] text-muted-foreground mt-0.5">
               agents personnalisés prêts à l'emploi
@@ -236,12 +232,7 @@ export function AgentsStats() {
                           className="size-5 rounded-md flex items-center justify-center text-white text-[10px] shrink-0"
                           style={{ backgroundColor: ag.color }}
                         >
-                          <AgentIcon
-                            emoji={ag.emoji}
-                            icon={ag.icon}
-                            size={12}
-                            variant="plain"
-                          />
+                          <AgentIcon icon={ag.icon} size={12} variant="plain" />
                         </div>
                         <span className="font-medium text-foreground truncate">
                           {ag.name}
@@ -317,7 +308,7 @@ export function AgentsStats() {
               <div className="flex items-center justify-between p-2 rounded-xl bg-muted/20 border border-border/30">
                 <div className="flex items-center gap-2">
                   <span className="size-2.5 rounded-full bg-indigo-500" />
-                  <span className="text-muted-foreground">Avec agent</span>
+                  <span className="text-muted-foreground">Avec bot</span>
                 </div>
                 <span className="font-semibold text-foreground font-mono">
                   {totalAgentChats}
@@ -361,7 +352,7 @@ export function AgentsStats() {
             <table className="w-full text-left text-xs">
               <thead className="bg-muted/30 text-muted-foreground border-b border-border/30">
                 <tr>
-                  <th className="py-3 px-4 font-semibold">Agent</th>
+                  <th className="py-3 px-4 font-semibold">Bot</th>
                   <th className="py-3 px-4 font-semibold">Modèle IA</th>
                   <th className="py-3 px-4 font-semibold text-center">
                     Discussions
@@ -381,12 +372,7 @@ export function AgentsStats() {
                           className="size-7 rounded-lg flex items-center justify-center text-white shrink-0 shadow-xs"
                           style={{ backgroundColor: ag.color }}
                         >
-                          <AgentIcon
-                            emoji={ag.emoji}
-                            icon={ag.icon}
-                            size={14}
-                            variant="plain"
-                          />
+                          <AgentIcon icon={ag.icon} size={14} variant="plain" />
                         </div>
                         <div className="min-w-0">
                           <span className="font-semibold text-foreground block truncate">

@@ -1,12 +1,20 @@
 {
   "id": "air-quality",
   "name": "Qualité de l'air",
-  "version": "1.0.0",
-  "description": "Indice de qualité de l'air, polluants et pollen (Europe) pour une ville ou des coordonnées, avec prévisions horaires.",
+  "version": "1.1.0",
+  "description": "Indice de qualité de l'air, polluants et pollen d'une ville ou de coordonnées, avec polluant dominant, conseils de santé et prévision jour par jour.",
   "author": "mAI",
   "category": "meteo",
-  "tags": ["air", "pollution", "pollen", "santé", "environnement"],
-  "icon": { "type": "lucide", "name": "Leaf" },
+  "tags": [
+    "qualité de l'air",
+    "pollution",
+    "pollen",
+    "pollens",
+    "allergènes",
+    "santé",
+    "prévisions"
+  ],
+  "icon": { "type": "lucide", "name": "Wind" },
   "minTier": "plus",
   "permissions": {
     "network": "read-only",
@@ -14,10 +22,18 @@
     "writesUserData": false,
     "requiresApproval": false
   },
-  "tools": [{
-    "description": "Mesures et prévisions de qualité de l'air et de pollen.",
-    "id": "getAirQuality",
-    "label": "Qualité de l'air",
-    "systemHint": "getAirQuality (indice de qualité de l'air, PM10/PM2.5, ozone, dioxyde d'azote et pollen par ville ou coordonnées, avec prévisions horaires sur 1 à 72 h)"
-  }]
+  "tools": [
+    {
+      "description": "Indice de qualité de l'air, polluants et pollen, avec niveau, polluant dominant et conseils de santé.",
+      "id": "getAirQuality",
+      "label": "Qualité de l'air",
+      "systemHint": "getAirQuality (indice européen et américain, PM10, PM2.5, O3, NO2, SO2, CO, pollen, polluant dominant et conseils de santé, par ville ou coordonnées)"
+    },
+    {
+      "description": "Prévision de la pollution jour par jour et meilleure fenêtre pour une activité en extérieur.",
+      "id": "getAirQualityOutlook",
+      "label": "Prévision de pollution",
+      "systemHint": "getAirQualityOutlook (prévision de la pollution sur 1 à 5 jours, moyenne et pic, meilleure fenêtre pour sortir ou faire du sport)"
+    }
+  ]
 }

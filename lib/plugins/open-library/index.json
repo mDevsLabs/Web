@@ -8,11 +8,36 @@
   "tags": ["livres", "lecture", "ISBN", "bibliothèque", "auteurs"],
   "icon": { "type": "lucide", "name": "GraduationCap" },
   "minTier": "plus",
-  "permissions": { "network": "read-only", "readsUserData": false, "writesUserData": false, "requiresApproval": false },
+  "permissions": {
+    "network": "read-only",
+    "readsUserData": false,
+    "writesUserData": false,
+    "requiresApproval": false
+  },
   "tools": [
-    { "id": "searchBooks", "label": "Rechercher des livres", "description": "Recherche dans le catalogue Open Library.", "systemHint": "searchBooks (recherche d'ouvrages par titre, sujet ou terme)" },
-    { "id": "searchBookByIsbn", "label": "Recherche ISBN", "description": "Trouver une édition avec ISBN-10 ou ISBN-13.", "systemHint": "searchBookByIsbn (trouve un livre à partir d'un ISBN)" },
-    { "id": "getBookWork", "label": "Détails d'une œuvre", "description": "Fiche descriptive d'une œuvre Open Library.", "systemHint": "getBookWork (détails d'une œuvre à partir de son OLID)" },
-    { "id": "getAuthorBooks", "label": "Livres d'un auteur", "description": "Ouvrages associés à un auteur.", "systemHint": "getAuthorBooks (recherche les ouvrages associés au nom d'un auteur)" }
+    {
+      "id": "searchBooks",
+      "label": "Rechercher des livres",
+      "description": "Recherche dans le catalogue Open Library.",
+      "systemHint": "searchBooks (recherche d'ouvrages par titre, sujet ou terme)"
+    },
+    {
+      "id": "searchBookByIsbn",
+      "label": "Recherche ISBN",
+      "description": "Trouver une édition avec ISBN-10 ou ISBN-13.",
+      "systemHint": "searchBookByIsbn (trouve un livre à partir d'un ISBN)"
+    },
+    {
+      "id": "getBookWork",
+      "label": "Détails d'une œuvre",
+      "description": "Fiche descriptive d'une œuvre Open Library.",
+      "systemHint": "getBookWork (détails d'une œuvre à partir de son OLID)"
+    },
+    {
+      "id": "getAuthorBooks",
+      "label": "Livres d'un auteur",
+      "description": "Ouvrages associés à un auteur.",
+      "systemHint": "getAuthorBooks (recherche les ouvrages associés au nom d'un auteur)"
+    }
   ]
 }

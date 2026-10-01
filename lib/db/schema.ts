@@ -18,6 +18,7 @@ import {
   uuid,
   varchar,
 } from "drizzle-orm/pg-core";
+import { AGENT_MODES, type AgentMode } from "@/lib/agent/channel";
 import type { ScheduleRule } from "@/lib/agent/contracts";
 import type {
   AgentOccurrenceRecord,
@@ -35,6 +36,8 @@ import type {
   ToolCategory,
   ToolPermission,
 } from "@/lib/agent/types";
+import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { REASONING_LEVELS } from "@/lib/ai/registry/reasoning";
 
 export const project = pgTable(
   "Project",
@@ -300,6 +303,7 @@ export const chat = pgTable(
     customInstructions: text("customInstructions"),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     isArchived: boolean("isArchived").notNull().default(false),
+
     // Conversation classique (chat) ou exécutée par Agent : évite de dupliquer
     // l'historique, la sidebar et les projets pour le mode Agent.
     mode: varchar("mode", { enum: ["chat", "agent"] })
@@ -385,16 +389,26 @@ export const documentProposal = pgTable(
 
 export type DocumentProposal = InferSelectModel<typeof documentProposal>;
 
-export const message = pgTable("Message_v2", {
-  attachments: json("attachments").notNull().default([]),
-  chatId: uuid("chatId")
-    .notNull()
-    .references(() => chat.id, { onDelete: "cascade" }),
-  createdAt: timestamp("createdAt").notNull().defaultNow(),
-  id: text("id").primaryKey().notNull(),
-  parts: json("parts").notNull(),
-  role: varchar("role").notNull(),
-});
+export const message = pgTable(
+  "Message_v2",
+  {
+    attachments: json("attachments").notNull().default([]),
+    chatId: uuid("chatId")
+      .notNull()
+      .references(() => chat.id, { onDelete: "cascade" }),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: text("id").primaryKey().notNull(),
+    parts: json("parts").notNull(),
+    role: varchar("role").notNull(),
+  },
+  (table) => ({
+    chatCreatedIdx: index("Message_v2_chatId_createdAt_id_idx").on(
+      table.chatId,
+      table.createdAt,
+      table.id
+    ),
+  })
+);
 
 export const DBMessage = message;
 export type DBMessage = InferSelectModel<typeof message>;
@@ -476,6 +490,10 @@ export const stream = pgTable(
     id: text("id").primaryKey().notNull(),
   },
   (table) => ({
+    chatCreatedIdx: index("Stream_chatId_createdAt_idx").on(
+      table.chatId,
+      table.createdAt
+    ),
     chatRef: foreignKey({
       columns: [table.chatId],
       foreignColumns: [chat.id],
@@ -485,6 +503,54 @@ export const stream = pgTable(
 );
 
 export type Stream = InferSelectModel<typeof stream>;
+
+export const usageEvent = pgTable(
+  "UsageEvent",
+  {
+    // Conversation à l'origine de l'appel (migration 0033). Volontairement
+    // SANS clé étrangère vers `Chat.id` : les lignes de planification peuvent
+    // être écrites avant que la conversation ne soit persistée, et une FK les
+    // refuserait. Historique non backfillable → `chatId` peut être nul, la
+    // page Statistiques lit donc `COALESCE` côté requête.
+    chatId: uuid("chatId"),
+    // Mode et projet de la conversation, FONDUS au moment de l'appel
+    // (migration 0035). Sans ces deux colonnes, les filtres « mode » et
+    // « projet » de la page Statistiques doivent joindre `Chat` — et cette
+    // jointure disparaît avec la conversation : supprimer un chat faisait
+    // baisser le total de tokens. Dénormalisé, ce n'est pas une redondance
+    // mais la seule source qui survit à la suppression ; `Chat.projectId` est
+    // de plus en `ON DELETE SET NULL`, donc l'autre source perd l'information
+    // dès qu'un projet est supprimé. Volontairement sans clé étrangère :
+    // l'écriture est sur le chemin critique du quota.
+    chatMode: varchar("chatMode", { enum: ["chat", "agent"] }),
+    chatProjectId: uuid("chatProjectId"),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: text("id").primaryKey().notNull(),
+    inputTokens: integer("inputTokens").notNull().default(0),
+    isGhostMode: boolean("isGhostMode").notNull().default(false),
+    model: text("model"),
+    outputTokens: integer("outputTokens").notNull().default(0),
+    // Les tokens de réflexion sont un sous-ensemble des tokens de sortie côté
+    // fournisseur : ils sont additionnés au quota mais gardés à part, pour que
+    // la décomposition reste lisible (migration 0030).
+    reasoningTokens: integer("reasoningTokens").notNull().default(0),
+    totalTokens: integer("totalTokens").notNull().default(0),
+    userId: text("userId").notNull(),
+  },
+  (table) => ({
+    chatIdx: index("UsageEvent_chatId_idx").on(table.chatId),
+    userCreatedIdx: index("UsageEvent_userId_createdAt_idx").on(
+      table.userId,
+      table.createdAt
+    ),
+    userModeCreatedIdx: index("UsageEvent_userId_chatMode_createdAt_idx").on(
+      table.userId,
+      table.chatMode,
+      table.createdAt
+    ),
+  })
+);
+export type UsageEvent = InferSelectModel<typeof usageEvent>;
 
 export const tokenBlacklist = pgTable("token_blacklist", {
   expiresAt: timestamp("expires_at").notNull().defaultNow(),
@@ -699,6 +765,7 @@ export const notification = pgTable(
   {
     body: text("body"),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
+    dedupeKey: text("dedupeKey"),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     isRead: boolean("isRead").notNull().default(false),
     link: text("link"),
@@ -723,6 +790,10 @@ export const notification = pgTable(
   },
   (table) => ({
     createdAtIdx: index("Notification_createdAt_idx").on(table.createdAt),
+    dedupeUnique: uniqueIndex("Notification_userId_dedupeKey_key").on(
+      table.userId,
+      table.dedupeKey
+    ),
     userIdIdx: index("Notification_userId_idx").on(table.userId),
     userReadIdx: index("Notification_userId_isRead_idx").on(
       table.userId,
@@ -794,6 +865,11 @@ export const userPreferences = pgTable("user_preferences", {
   defaultChatVisibility: varchar("defaultChatVisibility", { length: 20 })
     .notNull()
     .default("private"),
+  // Locale BCP-47 de la dictée vocale ; `auto` = langue du navigateur.
+  // Liste de référence et repli : lib/i18n/languages.ts.
+  defaultDictationLanguage: varchar("defaultDictationLanguage", { length: 20 })
+    .notNull()
+    .default("auto"),
   defaultImageModel: text("defaultImageModel")
     .notNull()
     .default("black-forest-labs/flux-schnell"),
@@ -804,6 +880,12 @@ export const userPreferences = pgTable("user_preferences", {
     .notNull()
     .default(0.7),
   defaultTopP: doublePrecision("defaultTopP").notNull().default(0.9),
+  // Cible DeepL du bouton « Traduire » sur une réponse de l'IA.
+  defaultTranslationLanguage: varchar("defaultTranslationLanguage", {
+    length: 10,
+  })
+    .notNull()
+    .default("EN"),
   ghostMemoryEnabled: boolean("ghostMemoryEnabled").notNull().default(false),
   showAgentChatIcons: boolean("showAgentChatIcons").notNull().default(true),
   updatedAt: timestamp("updatedAt").notNull().defaultNow(),
@@ -895,7 +977,7 @@ export const mcpServerSecret = pgTable(
 export type McpServerSecret = InferSelectModel<typeof mcpServerSecret>;
 
 export const userMcpPrefs = pgTable("user_mcp_prefs", {
-  allowStdio: boolean("allowStdio").notNull().default(true),
+  allowStdio: boolean("allowStdio").notNull().default(false),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
   defaultRateLimitPerMin: integer("defaultRateLimitPerMin")
     .notNull()
@@ -944,9 +1026,8 @@ export const agent = pgTable(
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     defaultModelId: text("defaultModelId")
       .notNull()
-      .default("google/gemini-2.5-flash"),
+      .default(DEFAULT_CHAT_MODEL),
     description: varchar("description", { length: 500 }).default(""),
-    emoji: varchar("emoji", { length: 10 }),
     icon: varchar("icon", { length: 50 }).default("sparkles").notNull(),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     instructions: text("instructions").notNull().default(""),
@@ -984,10 +1065,9 @@ export const agentTemplate = pgTable(
     color: varchar("color", { length: 7 }).default("#6366f1").notNull(),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     defaultModelId: text("defaultModelId")
-      .default("google/gemini-2.5-flash")
+      .default(DEFAULT_CHAT_MODEL)
       .notNull(),
     description: varchar("description", { length: 500 }).default(""),
-    emoji: varchar("emoji", { length: 10 }),
     icon: varchar("icon", { length: 50 }).default("bot").notNull(),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     instructions: text("instructions").notNull().default(""),
@@ -1000,7 +1080,9 @@ export const agentTemplate = pgTable(
   },
   (table) => ({
     isPublicIdx: index("AgentTemplate_isPublic_idx").on(table.isPublic),
-    nameIdx: index("AgentTemplate_name_idx").on(table.name),
+    // Un nom de modèle d'agent est unique : garantit qu'un rejeu du seed de
+    // 0007_agents.sql ne puisse pas dupliquer les modèles (cf. migration 0029).
+    nameKey: uniqueIndex("AgentTemplate_name_key").on(table.name),
   })
 );
 export type AgentTemplate = InferSelectModel<typeof agentTemplate>;
@@ -1009,7 +1091,6 @@ export const userMemory = pgTable(
   "UserMemory",
   {
     agentId: uuid("agentId"),
-    category: varchar("category", { length: 50 }).default("general"),
     content: text("content").notNull(),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
@@ -1049,7 +1130,7 @@ export const scheduledMessage = pgTable(
     executedAt: timestamp("executedAt"),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     lastError: text("lastError"),
-    modelId: text("modelId").notNull().default("google/gemini-2.5-flash"),
+    modelId: text("modelId").notNull().default(DEFAULT_CHAT_MODEL),
     prompt: text("prompt").notNull(),
     recurrence: varchar("recurrence", {
       enum: ["none", "daily", "weekly", "monthly"],
@@ -1065,6 +1146,12 @@ export const scheduledMessage = pgTable(
       .default("pending"),
     temperature: doublePrecision("temperature"),
     title: text("title").notNull().default("Envoi planifié"),
+    // Périmètre d'outils de l'exécution planifiée (cf. lib/planning/tool-mode).
+    toolMode: varchar("toolMode", {
+      enum: ["auto", "plugins", "none"],
+    })
+      .notNull()
+      .default("auto"),
     updatedAt: timestamp("updatedAt").notNull().defaultNow(),
     userId: text("userId").notNull(),
   },
@@ -1073,6 +1160,9 @@ export const scheduledMessage = pgTable(
       table.scheduledAt
     ),
     statusIdx: index("ScheduledMessage_status_idx").on(table.status),
+    statusScheduledIdx: index(
+      "ScheduledMessage_userId_status_scheduledAt_idx"
+    ).on(table.userId, table.status, table.scheduledAt),
     userIdIdx: index("ScheduledMessage_userId_idx").on(table.userId),
   })
 );
@@ -1106,20 +1196,16 @@ export const agentRun = pgTable(
     completedAt: timestamp("completedAt"),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     error: text("error"),
+    executionLeaseUntil: timestamp("executionLeaseUntil"),
+    executionOwner: text("executionOwner"),
+    feedbackAt: timestamp("feedbackAt"),
+    goalReached: boolean("goalReached"),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     messageId: text("messageId"),
-    parentRunId: uuid("parentRunId"),
-    stopReason: text("stopReason"),
-    executionOwner: text("executionOwner"),
-    executionLeaseUntil: timestamp("executionLeaseUntil"),
-    useful: boolean("useful"),
-    goalReached: boolean("goalReached"),
-    feedbackAt: timestamp("feedbackAt"),
     model: text("model").notNull(),
+    parentRunId: uuid("parentRunId"),
     plan: json("plan").$type<AgentPlan | null>(),
-    reasoningLevel: varchar("reasoningLevel", {
-      enum: ["low", "medium", "high"],
-    })
+    reasoningLevel: varchar("reasoningLevel", { enum: REASONING_LEVELS })
       .notNull()
       .default("medium"),
     revision: integer("revision").notNull().default(0),
@@ -1140,10 +1226,16 @@ export const agentRun = pgTable(
       .notNull()
       .default("queued"),
     stepCount: integer("stepCount").notNull().default(0),
+    stopReason: text("stopReason"),
     suggestedActions: json("suggestedActions")
       .$type<unknown[]>()
       .notNull()
       .default([]),
+    // L'utilisateur a explicitement activé l'option « Tâches » sur ce run. Le
+    // plan existe toujours côté modèle (cadrage des tâches longues), mais la
+    // liste n'est rendue que si ce drapeau est vrai — y compris après un
+    // refresh, où l'interface se reconstruit depuis AgentRun.
+    tasksEnabled: boolean("tasksEnabled").notNull().default(false),
     toolCallCount: integer("toolCallCount").notNull().default(0),
     toolPolicySnapshot: json("toolPolicySnapshot")
       .$type<Record<string, ToolPermission>>()
@@ -1153,12 +1245,17 @@ export const agentRun = pgTable(
       .$type<AgentRunUsage | AgentRunUsageNormalized>()
       .notNull()
       .default({}),
+    useful: boolean("useful"),
     userId: text("userId").notNull(),
   },
   (table) => ({
     chatIdIdx: index("AgentRun_chatId_idx").on(table.chatId),
     createdAtIdx: index("AgentRun_createdAt_idx").on(table.createdAt),
-    parentRunFk: foreignKey({ columns: [table.parentRunId], foreignColumns: [table.id], name: "AgentRun_parentRunId_fkey" }).onDelete("set null"),
+    parentRunFk: foreignKey({
+      columns: [table.parentRunId],
+      foreignColumns: [table.id],
+      name: "AgentRun_parentRunId_fkey",
+    }).onDelete("set null"),
     userStatusIdx: index("AgentRun_userId_status_idx").on(
       table.userId,
       table.status
@@ -1240,6 +1337,13 @@ export const toolExecution = pgTable(
     })
       .notNull()
       .default("internal"),
+    // Chemin CHAT (migration 0036). `runId` valant NULL, la ligne décrit un
+    // appel d'outil effectué dans une conversation et non dans un run Agent :
+    // c'est ce qui permet de compter les plugins utilisés en mode Chat. La
+    // conversation est un pointeur souple — sans clé étrangère, pour qu'une
+    // suppression ne fasse pas disparaître l'historique d'appels, comme pour
+    // `UsageEvent.chatId`.
+    chatId: uuid("chatId"),
     completedAt: timestamp("completedAt"),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     durationMs: integer("durationMs"),
@@ -1247,13 +1351,16 @@ export const toolExecution = pgTable(
     errorCategory: varchar("errorCategory", { length: 32 }),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     input: json("input").$type<unknown>(),
+    operationKey: text("operationKey"),
     output: json("output").$type<unknown>(),
     parentExecutionId: uuid("parentExecutionId"),
     retryAfterMs: integer("retryAfterMs"),
     retryable: boolean("retryable").notNull().default(false),
-    runId: uuid("runId")
-      .notNull()
-      .references(() => agentRun.id, { onDelete: "cascade" }),
+    // Nullable depuis la migration 0036 : `NULL` identifie une exécution du
+    // chemin Chat, qui n'appartient à aucun run. La clé étrangère est
+    // conservée — une valeur présente pointe toujours un run existant, et la
+    // suppression du run supprime toujours ses exécutions.
+    runId: uuid("runId").references(() => agentRun.id, { onDelete: "cascade" }),
     startedAt: timestamp("startedAt"),
     status: varchar("status", {
       enum: ["running", "completed", "failed", "denied", "cancelled"],
@@ -1262,10 +1369,19 @@ export const toolExecution = pgTable(
       .default("running"),
     stepId: uuid("stepId"),
     toolId: text("toolId").notNull(),
+    userId: text("userId"),
   },
   (table) => ({
+    operationUnique: uniqueIndex(
+      "ToolExecution_runId_operationKey_attempt_key"
+    ).on(table.runId, table.operationKey, table.attempt),
     runIdIdx: index("ToolExecution_runId_idx").on(table.runId),
     toolIdIdx: index("ToolExecution_toolId_idx").on(table.toolId),
+    // Lecture « mes appels d'outils sur la période », tous chemins confondus.
+    userCreatedIdx: index("ToolExecution_userId_createdAt_idx").on(
+      table.userId,
+      table.createdAt
+    ),
   })
 );
 
@@ -1279,15 +1395,18 @@ export const agentSettings = pgTable("AgentSettings", {
     .notNull()
     .default("standard"),
   createdAt: timestamp("createdAt").notNull().defaultNow(),
+  // Écran chargé à chaque arrivée sur la page d'accueil. "agent" n'est
+  // proposé qu'aux comptes qui y ont droit (cf. /api/agent/settings PATCH).
+  defaultMode: varchar("defaultMode", { enum: AGENT_MODES })
+    .notNull()
+    .default("chat"),
   defaultModel: text("defaultModel"),
   defaultProjectId: uuid("defaultProjectId"),
   enabledCategories: json("enabledCategories")
     .$type<ToolCategory[]>()
     .notNull()
     .default([]),
-  reasoningLevel: varchar("reasoningLevel", {
-    enum: ["low", "medium", "high"],
-  })
+  reasoningLevel: varchar("reasoningLevel", { enum: REASONING_LEVELS })
     .notNull()
     .default("medium"),
   toolPolicies: json("toolPolicies")
@@ -1349,19 +1468,25 @@ export type AgentSchedule = InferSelectModel<typeof agentSchedule>;
 export const agentScheduleVersion = pgTable(
   "AgentScheduleVersion",
   {
-    id: uuid("id").primaryKey().notNull().defaultRandom(),
-    scheduleId: uuid("scheduleId").notNull().references(() => agentSchedule.id, { onDelete: "cascade" }),
-    revision: integer("revision").notNull(),
-    snapshot: json("snapshot").$type<AgentScheduleRecord>().notNull(),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
+    id: uuid("id").primaryKey().notNull().defaultRandom(),
+    revision: integer("revision").notNull(),
+    scheduleId: uuid("scheduleId")
+      .notNull()
+      .references(() => agentSchedule.id, { onDelete: "cascade" }),
+    snapshot: json("snapshot").$type<AgentScheduleRecord>().notNull(),
     userId: text("userId").notNull(),
   },
   (table) => ({
-    scheduleRevisionUnique: uniqueIndex("AgentScheduleVersion_schedule_revision_key").on(table.scheduleId, table.revision),
+    scheduleRevisionUnique: uniqueIndex(
+      "AgentScheduleVersion_schedule_revision_key"
+    ).on(table.scheduleId, table.revision),
   })
 );
 
-export type AgentScheduleVersion = InferSelectModel<typeof agentScheduleVersion>;
+export type AgentScheduleVersion = InferSelectModel<
+  typeof agentScheduleVersion
+>;
 
 // Une exécution prévue. UNIQUE(scheduleId, dueAt) garantit l'idempotence : un
 // tick rejoué ou deux workers concurrents ne créent jamais deux occurrences.
@@ -1382,9 +1507,20 @@ export const agentScheduleOccurrence = pgTable(
     scheduleId: uuid("scheduleId")
       .notNull()
       .references(() => agentSchedule.id, { onDelete: "cascade" }),
-    scheduleVersionId: uuid("scheduleVersionId").references(() => agentScheduleVersion.id, { onDelete: "set null" }),
+    scheduleVersionId: uuid("scheduleVersionId").references(
+      () => agentScheduleVersion.id,
+      { onDelete: "set null" }
+    ),
     status: varchar("status", {
-      enum: ["pending", "claimed", "running", "waiting", "completed", "failed", "skipped"],
+      enum: [
+        "pending",
+        "claimed",
+        "running",
+        "waiting",
+        "completed",
+        "failed",
+        "skipped",
+      ],
     })
       .notNull()
       .default("pending"),

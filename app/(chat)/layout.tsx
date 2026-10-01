@@ -3,12 +3,15 @@ import Script from "next/script";
 import { Suspense } from "react";
 import { AppSidebar } from "@/components/chat/app-sidebar";
 import { DataStreamProvider } from "@/components/chat/data-stream-provider";
+import { NotificationPermissionGate } from "@/components/chat/notification-permission-gate";
 import { ChatShell } from "@/components/chat/shell";
 import { OnboardingTutorial } from "@/components/onboarding/onboarding-tutorial";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { ActiveChatProvider } from "@/hooks/use-active-chat";
 import { AgentModeProvider } from "@/hooks/use-agent-mode";
+import { SharedDraftProvider } from "@/hooks/use-shared-draft";
 import { getMaiUser } from "@/lib/auth/session";
+import { MAI_SESSION_COOKIE } from "@/lib/constants";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -29,23 +32,42 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 async function SidebarShell({ children }: { children: React.ReactNode }) {
   const [user, cookieStore] = await Promise.all([getMaiUser(), cookies()]);
   const isCollapsed = cookieStore.get("sidebar_state")?.value !== "true";
+  // Un cookie de session présent alors qu'aucun utilisateur n'a pu être
+  // résolu : la session est morte (expirée, révoquée, ou signée avec une clé
+  // différente de celle du backend). L'interface doit proposer une sortie —
+  // sans elle, l'utilisateur est coincé dans l'application, sans bouton de
+  // déconnexion ni accès à /login.
+  const hasDeadSession =
+    !user && Boolean(cookieStore.get(MAI_SESSION_COOKIE)?.value);
 
   return (
     <SidebarProvider defaultOpen={!isCollapsed}>
-      <ActiveChatProvider>
-        <AgentModeProvider>
-          <AppSidebar user={user} />
-          <SidebarInset className="flex flex-col">
-            <Suspense fallback={<div className="flex h-dvh" />}>
-              <ChatShell />
-            </Suspense>
-            <div className="flex flex-1 flex-col">
-              <div className="flex-1">{children}</div>
-            </div>
-            <OnboardingTutorial />
-          </SidebarInset>
-        </AgentModeProvider>
-      </ActiveChatProvider>
+      {/*
+        Le brouillon partagé est le provider le plus externe : il doit
+        surplomber `<ChatShell />` — le point de bascule Chat ⇄ Agent, où les
+        deux compositeurs se montent et se démontent — ET
+        `ActiveChatProvider`, dont l'effet de purge de l'input a lui aussi
+        besoin de son signal d'exception. Un provider sous l'un des deux ne
+        pourrait pas lui fournir ce signal : le contexte descend, jamais vers le
+        haut. Voir hooks/use-shared-draft.tsx.
+      */}
+      <SharedDraftProvider>
+        <ActiveChatProvider>
+          <AgentModeProvider>
+            <AppSidebar hasDeadSession={hasDeadSession} user={user} />
+            <SidebarInset className="flex flex-col">
+              <Suspense fallback={<div className="flex h-dvh" />}>
+                <ChatShell />
+              </Suspense>
+              <div className="flex flex-1 flex-col">
+                <div className="flex-1">{children}</div>
+              </div>
+              <OnboardingTutorial />
+              <NotificationPermissionGate />
+            </SidebarInset>
+          </AgentModeProvider>
+        </ActiveChatProvider>
+      </SharedDraftProvider>
     </SidebarProvider>
   );
 }

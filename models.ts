@@ -2,7 +2,6 @@ import type { Hono } from "npm:hono@4";
 import {
   extractToken,
   getDb,
-  getEnv,
   getTierMaiTokenLimit,
   getTierSpeechLimit,
   getUserQuotaBoost,
@@ -13,10 +12,71 @@ import {
 import { maiModelsList } from "./maiModels.ts";
 
 function getOpenRouterApiKey(userCustomKey?: string | null): string {
-  if (userCustomKey?.trim().startsWith("sk-or-")) {
+  if (userCustomKey && userCustomKey.trim().startsWith("sk-or-")) {
     return userCustomKey.trim();
   }
-  return getEnv("OPENROUTER_API_KEY") || "";
+  return Deno.env.get("OPENROUTER_API_KEY") || "";
+}
+
+// ─────────────────────────────────────────────
+// Alias cloud mAI-2 -> backends OpenRouter (cachés aux utilisateurs).
+// mAI-2      -> DeepSeek V4 Flash 0731 (1.3M ctx / 384k out)
+// mAI-2-Mini -> MiniMax M3 (1M ctx / 128k out)
+// Disponibles pour tous les plans (Free, Plus, Pro, Max).
+// ─────────────────────────────────────────────
+const MAI_CLOUD_ALIASES: Record<string, string> = {
+  "mai-2": "deepseek/deepseek-v4-flash-0731",
+  "mai-2-mini": "minimax/minimax-m3",
+};
+
+function normalizeMaiAliasId(model?: string | null): string {
+  let m = String(model || "").toLowerCase().trim();
+  if (m.startsWith("mdevslabs/")) m = m.slice("mdevslabs/".length);
+  return m;
+}
+
+function resolveMaiCloudBackend(model?: string | null): string | null {
+  return MAI_CLOUD_ALIASES[normalizeMaiAliasId(model)] || null;
+}
+
+// ─────────────────────────────────────────────
+// Les variantes ":batch" (ex: "openai/gpt-4o:batch") sont des endpoints
+// d'asynchrone/batch facturés à part : on ne les expose jamais dans
+// /v1/models pour éviter de renvoyer des modèles inutilisables en chat.
+// ─────────────────────────────────────────────
+function isBatchVariantId(id?: string | null): boolean {
+  return String(id || "").trim().toLowerCase().endsWith(":batch");
+}
+
+function buildMaiCloudPublicModels(nowSec: number) {
+  const defs = maiModelsList.filter(
+    (m) => resolveMaiCloudBackend(m.id) !== null
+  );
+  return defs.map((m) => ({
+    architecture: {
+      input_modalities: ["text"],
+      modality: "text->text",
+      output_modalities: ["text"],
+    },
+    created:
+      Math.floor(new Date(m.releaseDate).getTime() / 1000) || nowSec,
+    description: m.description || "",
+    id: m.id,
+    maxContext: m.contextWindow,
+    maxOutput: m.maxOutputTokens,
+    name: m.name,
+    object: "model",
+    owned_by: "mDevsLabs",
+    supported_parameters: [
+      "temperature",
+      "top_p",
+      "max_tokens",
+      "stream",
+      "stop",
+      "tools",
+      "response_format",
+    ],
+  }));
 }
 
 export function registerModelRoutes(app: Hono) {
@@ -59,8 +119,7 @@ export function registerModelRoutes(app: Hono) {
 
       const { weekStartStr, nextResetIso } = getWeekData();
 
-      const userResult =
-        await sql`SELECT id, tier, email, username, phone, avatar_url FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
+      const userResult = await sql`SELECT id, tier, email, username, phone, avatar_url FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
       const user = userResult[0];
       const resolvedUserId = user ? user.id : userId;
 
@@ -68,7 +127,7 @@ export function registerModelRoutes(app: Hono) {
         sql`
           SELECT COALESCE(SUM(tokens_used::numeric), 0) as tokens_used 
           FROM weekly_usage 
-          WHERE user_id = ${resolvedUserId}::text AND week_start = ${weekStartStr}::date
+          WHERE user_id = ${resolvedUserId}::integer AND week_start = ${weekStartStr}::date
         `.catch((e) => {
           console.error("[usageResult] Error:", e);
           return [];
@@ -153,14 +212,14 @@ export function registerModelRoutes(app: Hono) {
 
       const usageResult = await sql`
         SELECT tokens_used FROM weekly_usage
-        WHERE user_id = ${resolvedUserId}::text AND week_start = ${weekStartStr}::date
+        WHERE user_id = ${resolvedUserId}::integer AND week_start = ${weekStartStr}::date
         LIMIT 1
       `;
       const currentUsage = usageResult[0]?.tokens_used || 0;
 
       await sql`
         INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-        VALUES (${resolvedUserId}::text, ${weekStartStr}::date, ${tokensUsed})
+        VALUES (${resolvedUserId}::integer, ${weekStartStr}::date, ${tokensUsed})
         ON CONFLICT (user_id, week_start)
         DO UPDATE SET tokens_used = weekly_usage.tokens_used + ${tokensUsed}
       `;
@@ -175,7 +234,7 @@ export function registerModelRoutes(app: Hono) {
       });
     } catch (err: any) {
       console.error("[log-usage] Error:", err);
-      return c.json({ details: err?.message, error: "Erreur serveur." }, 500);
+      return c.json({ error: "Erreur serveur.", details: err?.message }, 500);
     }
   };
 
@@ -200,7 +259,8 @@ export function registerModelRoutes(app: Hono) {
       const rawModels: any[] = json.data || [];
 
       let filtered = rawModels
-        .filter((m) => m?.id && !m.id.startsWith("openrouter/"))
+        .filter((m) => m && m.id && !m.id.startsWith("openrouter/"))
+        .filter((m) => !isBatchVariantId(m.id))
         .filter((m) => {
           const modality = m.architecture?.modality || "";
           const outputModalities = m.architecture?.output_modalities || [];
@@ -237,16 +297,24 @@ export function registerModelRoutes(app: Hono) {
         );
       }
 
-      const lagunaIdx = filtered.findIndex(
-        (m) => m.id === "poolside/laguna-xs-2.1:free"
-      );
+      const lagunaIdx = filtered.findIndex((m) => m.id === "poolside/laguna-xs-2.1:free");
       if (lagunaIdx > 0) {
         const [laguna] = filtered.splice(lagunaIdx, 1);
         filtered.unshift(laguna);
       }
 
+      // Injecter les alias cloud mAI-2 (visibles pour tous les plans,
+      // après le filtre :free — backend OpenRouter caché).
+      try {
+        const nowSec = Math.floor(Date.now() / 1000);
+        const cloudModels = buildMaiCloudPublicModels(nowSec).filter(
+          (cm) => !filtered.some((m) => m.id === cm.id)
+        );
+        filtered.unshift(...cloudModels);
+      } catch {}
+
       return c.json({ data: filtered, object: "list" });
-    } catch {
+    } catch (_err) {
       let fallback = [
         {
           architecture: {
@@ -255,7 +323,8 @@ export function registerModelRoutes(app: Hono) {
             output_modalities: ["text"],
           },
           created: 0,
-          description: "Modèle IA Laguna XS 2.1 haute performance par Poolside",
+          description:
+            "Modèle IA Laguna XS 2.1 haute performance par Poolside",
           id: "poolside/laguna-xs-2.1:free",
           maxContext: 128_000,
           maxOutput: 4096,
@@ -376,6 +445,15 @@ export function registerModelRoutes(app: Hono) {
         );
       }
 
+      fallback = fallback.filter((m) => !isBatchVariantId(m.id));
+
+      try {
+        const cloudModels = buildMaiCloudPublicModels(0).filter(
+          (cm) => !fallback.some((m) => m.id === cm.id)
+        );
+        fallback.unshift(...cloudModels);
+      } catch {}
+
       return c.json({ data: fallback, object: "list" });
     }
   };
@@ -388,28 +466,40 @@ export function registerModelRoutes(app: Hono) {
   // GET /v1/models/mai & GET /v1/mai/models
   // ─────────────────────────────────────────────
   const handleGetMaiModels = (c: any) => {
-    const formatted = maiModelsList.map((m) => ({
-      capabilities: m.capabilities,
-      context_length: m.contextWindow,
-      created:
-        Math.floor(new Date(m.releaseDate).getTime() / 1000) ||
-        Math.floor(Date.now() / 1000),
-      description: m.description,
-      huggingface_tag: m.huggingFaceTag,
-      id: m.id,
-      license: m.license,
-      max_output_tokens: m.maxOutputTokens,
-      name: m.name,
-      object: "model",
-      ollama_tag: m.ollamaTag,
-      owned_by: "mDevsLabs",
-      parameters: m.parameters,
-      recommended_hardware: m.recommendedHardware,
-      status: m.status,
-      tagline: m.tagline,
-      usable_in_cloud_chat: false,
-      version: m.version,
-    }));
+    const formatted = maiModelsList.map((m) => {
+      // Modèles cloud mAI-2 : réponse épurée (pas de parameters/hardware).
+      if (resolveMaiCloudBackend(m.id) !== null) {
+        return {
+          description: m.description,
+          id: m.id,
+          name: m.name,
+          object: "model",
+          status: m.status,
+        };
+      }
+      return {
+        capabilities: m.capabilities,
+        context_length: m.contextWindow,
+        created:
+          Math.floor(new Date(m.releaseDate).getTime() / 1000) ||
+          Math.floor(Date.now() / 1000),
+        description: m.description,
+        huggingface_tag: m.huggingFaceTag,
+        id: m.id,
+        license: m.license,
+        max_output_tokens: m.maxOutputTokens,
+        name: m.name,
+        object: "model",
+        ollama_tag: m.ollamaTag,
+        owned_by: "mDevsLabs",
+        parameters: m.parameters,
+        recommended_hardware: m.recommendedHardware,
+        status: m.status,
+        tagline: m.tagline,
+        usable_in_cloud_chat: false,
+        version: m.version,
+      };
+    });
     return c.json({ data: formatted, object: "list" });
   };
 
@@ -472,14 +562,18 @@ export function registerModelRoutes(app: Hono) {
         );
       }
       const modelStr = String(modelRequested).toLowerCase().trim();
+      // Alias cloud mAI-2 : autorisés en chat cloud pour tous les plans,
+      // transférés vers OpenRouter en arrière-plan (backend caché).
+      const maiCloudBackend = resolveMaiCloudBackend(modelRequested);
 
       // Vérifier si c'est un modèle mAI (local uniquement)
       const isMaiLocal =
-        modelStr.startsWith("mai-") ||
-        modelStr.startsWith("mdevslabs/") ||
-        modelStr.includes("mai-1.") ||
-        modelStr === "mai-1" ||
-        modelStr === "mai-1-light";
+        (modelStr.startsWith("mai-") ||
+          modelStr.startsWith("mdevslabs/") ||
+          modelStr.includes("mai-1.") ||
+          modelStr === "mai-1" ||
+          modelStr === "mai-1-light") &&
+        !maiCloudBackend;
 
       if (isMaiLocal) {
         return c.json(
@@ -497,9 +591,11 @@ export function registerModelRoutes(app: Hono) {
 
       const isFreePlan = !isPaidTier(userPlan);
       const isFreeModel = modelStr.includes(":free");
+      const isMaiCloudAlias = maiCloudBackend !== null;
 
       // Bloquer avec 403 les requêtes pour les modèles payants avec une clé ou JWT free
-      if (isFreePlan && !isFreeModel) {
+      // Exception : alias cloud mAI-2 disponibles pour tous les plans.
+      if (isFreePlan && !isFreeModel && !isMaiCloudAlias) {
         return c.json(
           {
             error: {
@@ -532,7 +628,7 @@ export function registerModelRoutes(app: Hono) {
       const { weekStartStr } = getWeekData();
       const usageResult = await sql`
         SELECT tokens_used FROM weekly_usage
-        WHERE user_id = ${userId}::text AND week_start = ${weekStartStr}::date
+        WHERE user_id = ${userId}::integer AND week_start = ${weekStartStr}::date
         LIMIT 1
       `;
       const currentUsage = usageResult[0]?.tokens_used || 0;
@@ -559,12 +655,13 @@ export function registerModelRoutes(app: Hono) {
 
       // Nettoyer le body : retirer tout champ `api_key` ou `Authorization` injecté par le client
       // pour empêcher tout contournement de la clé serveur.
-      const {
-        api_key: _ck,
-        authorization: _ca,
-        Authorization: _cA,
-        ...safeBody
-      } = body as Record<string, any>;
+      const { api_key: _ck, authorization: _ca, Authorization: _cA, ...safeBody } =
+        body as Record<string, any>;
+
+      // Transférer l'alias mAI-2 vers le backend OpenRouter réel (caché).
+      if (maiCloudBackend) {
+        safeBody.model = maiCloudBackend;
+      }
 
       const openRouterRes = await fetch(
         "https://openrouter.ai/api/v1/chat/completions",
@@ -584,16 +681,15 @@ export function registerModelRoutes(app: Hono) {
         try {
           await sql`
             INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-            VALUES (${userId}::text, ${weekStartStr}::date, 1)
+            VALUES (${userId}::integer, ${weekStartStr}::date, 1)
             ON CONFLICT (user_id, week_start)
             DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
           `;
-        } catch {}
+        } catch (_e) {}
       }
 
       return new Response(openRouterRes.body, {
         headers: {
-          "Access-Control-Allow-Origin": "*",
           "Content-Type":
             openRouterRes.headers.get("Content-Type") || "application/json",
         },
@@ -638,15 +734,16 @@ export function registerModelRoutes(app: Hono) {
       }
 
       const modelRequested = body.model;
-      const modelStr = String(modelRequested || "")
-        .toLowerCase()
-        .trim();
+      const modelStr = String(modelRequested || "").toLowerCase().trim();
+      const maiCloudBackend = resolveMaiCloudBackend(modelRequested);
 
       const isFreePlan = !isPaidTier(userPlan);
       const isFreeModel = modelStr.includes(":free");
+      const isMaiCloudAlias = maiCloudBackend !== null;
 
       // Bloquer avec 403 les requêtes pour les modèles payants avec une clé ou JWT free
-      if (isFreePlan && !isFreeModel) {
+      // Exception : alias cloud mAI-2 disponibles pour tous les plans.
+      if (isFreePlan && !isFreeModel && !isMaiCloudAlias) {
         return c.json(
           {
             error: {
@@ -679,7 +776,7 @@ export function registerModelRoutes(app: Hono) {
       const { weekStartStr } = getWeekData();
       const usageResult = await sql`
         SELECT tokens_used FROM weekly_usage
-        WHERE user_id = ${userId}::text AND week_start = ${weekStartStr}::date
+        WHERE user_id = ${userId}::integer AND week_start = ${weekStartStr}::date
         LIMIT 1
       `;
       const currentUsage = usageResult[0]?.tokens_used || 0;
@@ -705,12 +802,12 @@ export function registerModelRoutes(app: Hono) {
       }
 
       // Nettoyer le body : retirer tout champ `api_key` ou `Authorization` injecté par le client
-      const {
-        api_key: _ck,
-        authorization: _ca,
-        Authorization: _cA,
-        ...safeBody
-      } = body as Record<string, any>;
+      const { api_key: _ck, authorization: _ca, Authorization: _cA, ...safeBody } =
+        body as Record<string, any>;
+
+      if (maiCloudBackend) {
+        safeBody.model = maiCloudBackend;
+      }
 
       const openRouterRes = await fetch(
         "https://openrouter.ai/api/v1/chat/completions",
@@ -730,16 +827,15 @@ export function registerModelRoutes(app: Hono) {
         try {
           await sql`
             INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-            VALUES (${userId}::text, ${weekStartStr}::date, 1)
+            VALUES (${userId}::integer, ${weekStartStr}::date, 1)
             ON CONFLICT (user_id, week_start)
             DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
           `;
-        } catch {}
+        } catch (_e) {}
       }
 
       return new Response(openRouterRes.body, {
         headers: {
-          "Access-Control-Allow-Origin": "*",
           "Content-Type":
             openRouterRes.headers.get("Content-Type") || "application/json",
         },
@@ -783,15 +879,16 @@ export function registerModelRoutes(app: Hono) {
 
       const paramModel = c.req.param("model");
       const modelRequested = body.model || paramModel || pathModel;
-      const modelStr = String(modelRequested || "")
-        .toLowerCase()
-        .trim();
+      const modelStr = String(modelRequested || "").toLowerCase().trim();
+      const maiCloudBackend = resolveMaiCloudBackend(modelRequested);
 
       const isFreePlan = !isPaidTier(userPlan);
       const isFreeModel = modelStr.includes(":free");
+      const isMaiCloudAlias = maiCloudBackend !== null;
 
       // Bloquer avec 403 les requêtes pour les modèles payants avec une clé ou JWT free
-      if (isFreePlan && !isFreeModel) {
+      // Exception : alias cloud mAI-2 disponibles pour tous les plans.
+      if (isFreePlan && !isFreeModel && !isMaiCloudAlias) {
         return c.json(
           {
             error: {
@@ -823,7 +920,7 @@ export function registerModelRoutes(app: Hono) {
       const { weekStartStr } = getWeekData();
       const usageResult = await sql`
         SELECT tokens_used FROM weekly_usage
-        WHERE user_id = ${userId}::text AND week_start = ${weekStartStr}::date
+        WHERE user_id = ${userId}::integer AND week_start = ${weekStartStr}::date
         LIMIT 1
       `;
       const currentUsage = usageResult[0]?.tokens_used || 0;
@@ -849,16 +946,12 @@ export function registerModelRoutes(app: Hono) {
       }
 
       // Nettoyer le body : retirer tout champ `api_key` ou `Authorization` injecté par le client
-      const {
-        api_key: _ck,
-        authorization: _ca,
-        Authorization: _cA,
-        ...safeBody
-      } = body as Record<string, any>;
+      const { api_key: _ck, authorization: _ca, Authorization: _cA, ...safeBody } =
+        body as Record<string, any>;
 
       const openRouterPayload = {
         ...safeBody,
-        model: body.model || modelRequested,
+        model: maiCloudBackend || body.model || modelRequested,
       };
 
       const openRouterRes = await fetch(
@@ -879,16 +972,15 @@ export function registerModelRoutes(app: Hono) {
         try {
           await sql`
             INSERT INTO weekly_usage (user_id, week_start, tokens_used)
-            VALUES (${userId}::text, ${weekStartStr}::date, 1)
+            VALUES (${userId}::integer, ${weekStartStr}::date, 1)
             ON CONFLICT (user_id, week_start)
             DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
           `;
-        } catch {}
+        } catch (_e) {}
       }
 
       return new Response(openRouterRes.body, {
         headers: {
-          "Access-Control-Allow-Origin": "*",
           "Content-Type":
             openRouterRes.headers.get("Content-Type") || "application/json",
         },

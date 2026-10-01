@@ -21,8 +21,11 @@ export type McpTemplateAuthType =
 // Où le credential est injecté côté serveur au moment de l'appel.
 export type McpTemplateCredentialKind = "env" | "auth" | "header";
 
-/** Un modèle est activable, ou documenté mais non installable (OAuth interactif). */
-export type McpTemplateActivation = "ready" | "requires_oauth_flow";
+/** Un modèle est activable, ou documenté mais volontairement bloqué. */
+export type McpTemplateActivation =
+  | "ready"
+  | "requires_oauth_flow"
+  | "requires_vetted_stdio";
 
 // Champ de credential attendu par le template (ex : token d'API, paire
 // utilisateur/mot de passe). Affiché dans la fiche de configuration avec son
@@ -61,9 +64,9 @@ export type McpTemplateManifest = {
 
   /**
    * `ready` : installable et utilisable avec un token personnel ou sans auth.
-   * `requires_oauth_flow` : intégration réelle et documentée, mais qui exige un
-   * flux OAuth interactif que mAI Web n'implémente pas encore → l'installation
-   * est refusée côté serveur (aucun faux bouton).
+   * `requires_oauth_flow` : intégration réelle qui exige un flux OAuth interactif.
+   * `requires_vetted_stdio` : intégration stdio documentée, mais volontairement
+   * bloquée tant qu'un wrapper vérifié n'est pas configuré sur l'infrastructure.
    */
   activation: McpTemplateActivation;
 

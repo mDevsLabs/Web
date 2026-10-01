@@ -37,16 +37,18 @@ export const audioGenerate = ({ dataStream, session }: AudioGenerateProps) =>
     inputSchema: z.object({
       speed: z
         .number()
+        .min(0.5)
+        .max(2.0)
         .optional()
-        .default(1.0)
         .describe("Vitesse d'élocution (0.5 à 2.0, par défaut 1.0)"),
       text: z
         .string()
         .describe("Le texte ou script complet à synthétiser en voix/audio"),
       voice: z
         .string()
+        .min(1)
+        .max(100)
         .optional()
-        .default("flux-alexis-en")
         .describe(
           "Nom de la voix (par défaut 'flux-alexis-en'). Ne JAMAIS demander à l'utilisateur de choisir la voix : utiliser directement la voix par défaut sauf s'il a explicitement précisé un nom de voix."
         ),

@@ -45,7 +45,8 @@ export const AGENT_FAMILY_DESCRIPTIONS: Record<AgentToolFamily, string> = {
   internal: "Questions à l'utilisateur, calculs, date et heure.",
   library: "Explorer les fichiers enregistrés dans la bibliothèque mAI.",
   mcp: "Outils exposés par les serveurs MCP connectés.",
-  plugins: "Consultation en lecture seule des sources publiques activées par les plugins.",
+  plugins:
+    "Consultation en lecture seule des sources publiques activées par les plugins.",
   project: "Exploiter les ressources et instructions du projet sélectionné.",
   skills: "Compétences spécialisées définies par l'utilisateur.",
   web: "Rechercher des informations à jour sur le Web et citer les sources.",

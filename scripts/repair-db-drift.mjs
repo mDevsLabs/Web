@@ -101,7 +101,8 @@ await sql`DO $$ BEGIN
 END $$;`;
 
 console.log("3/5 Colonnes UserMemory manquantes…");
-await sql`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "category" varchar(50) DEFAULT 'general'`;
+// La colonne "category" a été supprimée (migration 0030) : elle n'était
+// utilisée que par un filtre d'interface, jamais par un modèle ni un prompt.
 await sql`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "isEnabled" boolean DEFAULT true NOT NULL`;
 await sql`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "isImportant" boolean DEFAULT false NOT NULL`;
 await sql`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "tags" json DEFAULT '[]'::json NOT NULL`;
@@ -113,7 +114,6 @@ const check = await sql`
   WHERE (table_name, column_name) IN (
     ('Skill', 'userId'),
     ('weekly_usage', 'user_id'),
-    ('UserMemory', 'category'),
     ('UserMemory', 'isEnabled'),
     ('UserMemory', 'isImportant'),
     ('UserMemory', 'tags')

@@ -2,6 +2,8 @@
 
 import type { Dispatch, SetStateAction } from "react";
 import { useCallback, useEffect, useRef } from "react";
+import type { ToolId } from "@/lib/ai/tools/config";
+import { isChatToolId } from "@/lib/ai/tools/ids";
 import {
   clearDraft,
   draftKeyForChatId,
@@ -31,6 +33,7 @@ export function useDrafts(params: {
   input: string;
   setInput: Dispatch<SetStateAction<string>>;
   setAttachments: Dispatch<SetStateAction<Attachment[]>>;
+  setPendingTools: (tools: ToolId[]) => void;
   isNewChatInput: boolean;
   textareaRef: React.RefObject<HTMLTextAreaElement | null>;
 }) {
@@ -39,6 +42,7 @@ export function useDrafts(params: {
     input,
     setInput,
     setAttachments,
+    setPendingTools,
     isNewChatInput,
     textareaRef,
   } = params;
@@ -106,6 +110,7 @@ export function useDrafts(params: {
         mediaType?: string;
         name?: string;
         prompt?: string;
+        tools?: unknown;
         url?: string;
       };
       if (pending.url && pending.name) {
@@ -118,6 +123,9 @@ export function useDrafts(params: {
           } satisfies Attachment,
         ]);
       }
+      if (Array.isArray(pending.tools)) {
+        setPendingTools(pending.tools.filter(isChatToolId));
+      }
       if (pending.prompt) {
         setInput(pending.prompt);
       }
@@ -127,7 +135,7 @@ export function useDrafts(params: {
         error instanceof Error ? error.message : error
       );
     }
-  }, [isNewChatInput, setInput, setAttachments]);
+  }, [isNewChatInput, setInput, setAttachments, setPendingTools]);
 
   // Efface le brouillon de la conversation courante (après envoi). Expose
   // également un effacement de l'ancienne clé de compatibilité si un

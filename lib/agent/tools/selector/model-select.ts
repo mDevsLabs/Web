@@ -1,6 +1,7 @@
 import "server-only";
 
 import { generateObject } from "ai";
+import { recordAgentUsage } from "@/lib/agent/accounting";
 import {
   type ToolSelectionOutput,
   toolSelectionOutputSchema,
@@ -38,7 +39,7 @@ export async function selectFamiliesWithModel(params: {
   }
 
   try {
-    const { object } = await generateObject({
+    const result = await generateObject({
       abortSignal: AbortSignal.timeout(SELECT_TIMEOUT_MS),
       model: await getUtilityModel({
         sessionToken: params.sessionToken,
@@ -60,7 +61,15 @@ export async function selectFamiliesWithModel(params: {
       schemaName: "ToolSelection",
     });
 
-    return parseStructuredSelection(object, params.availableFamilies);
+    await recordAgentUsage({
+      model: "agent-tool-selector",
+      sessionToken: params.sessionToken,
+      usage: result.usage,
+      userEmail: "",
+      userId: params.userId,
+    }).catch(() => null);
+
+    return parseStructuredSelection(result.object, params.availableFamilies);
   } catch {
     // Sortie invalide, timeout, modèle indisponible : fallback déterministe.
     return { kind: "unavailable" };

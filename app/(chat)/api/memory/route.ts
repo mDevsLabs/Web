@@ -5,6 +5,7 @@ import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
 import {
   countMemories,
   createMemory,
+  deleteAllMemoriesByUserId,
   deleteMemory,
   getAgentById,
   getAgentMemories,
@@ -19,7 +20,6 @@ import { ChatbotError } from "@/lib/errors";
 const createSchema = z
   .object({
     agentId: z.string().uuid().nullable().optional(),
-    category: z.string().max(50).optional(),
     content: z.string().min(1).max(MEMORY_CONTENT_MAX_LENGTH),
     isEnabled: z.boolean().optional(),
     isImportant: z.boolean().optional(),
@@ -31,7 +31,6 @@ const createSchema = z
   });
 
 const updateSchema = z.object({
-  category: z.string().max(50).optional(),
   content: z.string().min(1).max(MEMORY_CONTENT_MAX_LENGTH).optional(),
   id: z.string().uuid(),
   isEnabled: z.boolean().optional(),
@@ -158,7 +157,6 @@ export async function POST(request: Request) {
     }
     const memory = await createMemory({
       agentId: scope.agentId,
-      category: parsed.category ?? "general",
       content,
       isEnabled: parsed.isEnabled ?? true,
       isImportant: parsed.isImportant ?? false,
@@ -185,10 +183,24 @@ export async function DELETE(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");
-    if (!id) {
-      return new ChatbotError("bad_request:api", "id requis").toResponse();
+    // `?scope=all` : purge totale de la mémoire (onglet Données). Le libellé
+    // est explicite pour qu'un appel sans identifiant ne vide jamais tout par
+    // simple oubli de paramètre.
+    const purgeAll = searchParams.get("scope") === "all";
+
+    if (!id && !purgeAll) {
+      return new ChatbotError(
+        "bad_request:api",
+        "id ou scope=all requis"
+      ).toResponse();
     }
-    const deleted = await deleteMemory({ id, userId });
+
+    if (purgeAll && !id) {
+      const deleted = await deleteAllMemoriesByUserId({ userId });
+      return Response.json({ count: deleted, success: true });
+    }
+
+    const deleted = await deleteMemory({ id: id as string, userId });
     if (!deleted) {
       return new ChatbotError("not_found:database").toResponse();
     }
@@ -209,7 +221,6 @@ export async function PATCH(request: Request) {
     const body = await request.json();
     const parsed = updateSchema.parse(body);
     const updated = await updateMemory({
-      category: parsed.category,
       content: parsed.content,
       id: parsed.id,
       isEnabled: parsed.isEnabled,

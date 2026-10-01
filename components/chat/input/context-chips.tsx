@@ -1,13 +1,8 @@
 "use client";
 
-import {
-  BotIcon,
-  CpuIcon,
-  FolderKanbanIcon,
-  SparklesIcon,
-  XIcon,
-} from "lucide-react";
+import { CpuIcon, FolderKanbanIcon, SparklesIcon, XIcon } from "lucide-react";
 import type { Dispatch, SetStateAction } from "react";
+import { AgentIcon } from "@/components/agents/agent-icon";
 import { ProjectIcon } from "@/components/chat/project-icon";
 import { TOOLS_META, type ToolId } from "@/lib/ai/tools/config";
 import type { Agent, McpServer, Skill } from "@/lib/db/schema";
@@ -63,30 +58,28 @@ export function AgentChip({
   clearActiveAgent: () => void;
 }) {
   return (
-    <div className="flex items-center gap-2 px-1 -mb-1">
-      <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-500/40 bg-indigo-500/10 px-2.5 py-1 text-[11px] font-medium text-foreground">
+    <div className="flex flex-wrap items-center gap-2 px-1 -mb-1">
+      <span className="inline-flex items-center gap-1.5 rounded-full border border-border/40 bg-muted/50 px-2.5 py-1 text-[11px] font-medium text-foreground">
         <span
           className="size-5 rounded-full flex items-center justify-center text-white text-xs"
           style={{ backgroundColor: activeAgent.color || "#6366f1" }}
         >
-          {(activeAgent as any).emoji ? (
-            (activeAgent as any).emoji
-          ) : (
-            <BotIcon className="size-3.5" />
-          )}
+          <AgentIcon icon={activeAgent.icon} size={12} variant="plain" />
         </span>
-        <span>Agent actif : {activeAgent.name}</span>
+        <span className="max-w-[180px] truncate">
+          Bot actif : {activeAgent.name}
+        </span>
         <button
-          aria-label="Retirer l'agent"
-          className="ml-1 rounded-full p-0.5 hover:bg-indigo-500/20 text-muted-foreground hover:text-foreground"
+          aria-label="Retirer le bot"
+          className="ml-1 rounded-full p-0.5 hover:bg-muted text-muted-foreground hover:text-foreground"
           onClick={clearActiveAgent}
-          title="Retirer l'agent"
+          title="Retirer le bot"
           type="button"
         >
           <XIcon className="size-3" />
         </button>
       </span>
-      <span className="text-[11px] text-muted-foreground">
+      <span className="max-w-full truncate text-[11px] text-muted-foreground">
         Sélection globale — modèle {activeAgent.defaultModelId}
       </span>
     </div>
@@ -228,7 +221,7 @@ export function PendingToolsChips({
           const meta = TOOLS_META[tid as ToolId];
           label = plugin
             ? `${plugin.name} · ${plugin.tools.find((tool) => tool.id === tidStr)?.label ?? tidStr}`
-            : meta?.label ?? tidStr;
+            : (meta?.label ?? tidStr);
           IconComponent = plugin ? null : meta?.icon;
         }
         return (

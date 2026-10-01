@@ -1,13 +1,16 @@
 "use client";
 
+import { AlertTriangleIcon, PanelLeftIcon } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { toast } from "sonner";
 import useSWR from "swr";
 import type { AgentComposerSubmit } from "@/components/agent/agent-composer";
 import { AgentComposer } from "@/components/agent/agent-composer";
 import { AgentHome } from "@/components/agent/agent-home";
-import { AgentRunTimeline } from "@/components/agent/agent-run-timeline";
+import { AgentRunErrorBoundary } from "@/components/agent/agent-run-error-boundary";
 import { AgentRunFeedback } from "@/components/agent/agent-run-feedback";
+import { AgentRunTimeline } from "@/components/agent/agent-run-timeline";
 import {
   AgentStreamProvider,
   useAgentStream,
@@ -17,14 +20,19 @@ import { AgentChannelBadge } from "@/components/agent/alpha-badge";
 import { HomeModeSwitcher } from "@/components/chat/home-mode-switcher";
 import { useModelCapabilities } from "@/components/chat/input/use-model-capabilities";
 import { PreviewMessage } from "@/components/chat/message";
+import { Button } from "@/components/ui/button";
+import { useSidebar } from "@/components/ui/sidebar";
 import { useActiveChat } from "@/hooks/use-active-chat";
 import type { AgentRunHistoryPayload } from "@/hooks/use-agent-chat";
 import { type AgentRequestOptions, useAgentChat } from "@/hooks/use-agent-chat";
 import { useAgentFlags } from "@/hooks/use-agent-flags";
 import { extractChatIdFromPath, useAgentMode } from "@/hooks/use-agent-mode";
 import { useAgentModels } from "@/hooks/use-agent-models";
+import { useAgentSettings } from "@/hooks/use-agent-settings";
 import { type ProjectLite, useProjects } from "@/hooks/use-projects";
+import { useSharedDraft } from "@/hooks/use-shared-draft";
 import { AGENT_COMPOSER_ARIA_LABEL } from "@/lib/agent/channel";
+import { shouldShowAgentHome } from "@/lib/agent/timeline-visibility";
 import type {
   AgentRunRecord,
   AgentRunUsage,
@@ -33,7 +41,9 @@ import type {
   AgentToolActivity,
   ToolExecutionRecord,
 } from "@/lib/agent/types";
-import { apiEndpoints } from "@/lib/client/api-endpoints";
+import { normalizeReasoningLevel } from "@/lib/ai/registry/reasoning";
+import { downloadChatAsMarkdown } from "@/lib/chat/export-markdown";
+import { apiEndpoints, pagePath } from "@/lib/client/api-endpoints";
 import { fetcher } from "@/lib/utils";
 
 // Enveloppe de l'expérience Agent : le provider d'état de flux est monté ici,
@@ -83,27 +93,104 @@ function AgentShellInner() {
   const router = useRouter();
   const isNewChat = !extractChatIdFromPath(pathname);
   const { setMode } = useAgentMode();
+  const { requestPreserveDraft } = useSharedDraft();
 
-  const { chatId, currentModelId, setCurrentModelId, visibilityType } =
-    useActiveChat();
+  const {
+    activeAgent,
+    chatId,
+    currentModelId,
+    resetChat,
+    resetEpoch,
+    setCurrentModelId,
+    visibilityType,
+  } = useActiveChat();
   const { flags, channelInfo } = useAgentFlags();
-  const { capabilities: modelsCapabilities, models } = useAgentModels();
-  const { currentCapabilities } = useModelCapabilities(currentModelId);
+  // Le mode Agent remplace tout le contenu de ChatShell, en-tête compris : il
+  // porte donc son propre accès à la navigation. `isMobile` sert à ne pas
+  // afficher un bouton d'en-tête de 44px au doigt sur desktop, ni l'inverse.
+  const { isMobile, state: sidebarState, toggleSidebar } = useSidebar();
+  const isCollapsedDesktop = sidebarState === "collapsed" && !isMobile;
+  const {
+    capabilities: modelsCapabilities,
+    catalogModelIds,
+    isLoading: isLoadingModels,
+    models,
+  } = useAgentModels();
+  const { currentCapabilities, currentEntry } =
+    useModelCapabilities(currentModelId);
   const { reset, state } = useAgentStream();
+
+  const currentModelIsAgentCompatible = Boolean(
+    currentEntry?.capabilities.tools &&
+      currentEntry.agentCompatibility?.toolDefinitions &&
+      currentEntry.agentCompatibility?.structuredToolCalls &&
+      currentEntry.agentCompatibility?.continuationAfterToolResult
+  );
+
+  // Le cookie peut contenir un modèle qui n'existe plus. Une fois le catalogue
+  // chargé, on synchronise seulement les IDs invalides ; un modèle Chat
+  // incompatible reste visible et l'utilisateur peut le changer lui-même.
+  useEffect(() => {
+    if (
+      !isLoadingModels &&
+      catalogModelIds.size > 0 &&
+      !catalogModelIds.has(currentModelId) &&
+      models.length > 0
+    ) {
+      setCurrentModelId(models[0].id);
+    }
+  }, [
+    catalogModelIds,
+    currentModelId,
+    isLoadingModels,
+    models,
+    setCurrentModelId,
+  ]);
 
   const [project, setProject] = useState<ProjectLite | null>(null);
   const [options, setOptions] = useState<AgentRequestOptions>({
+    // La persona suit la sélection globale partagée avec le Chat : un seul et
+    // même « assistant actif » dans les deux modes, une seule source de vérité.
+    assistantId: activeAgent?.id ?? null,
     audioEnabled: false,
-    autonomy: "standard",
     enabledCategories: null,
     forceWeb: false,
     imageEnabled: false,
+    mcpServerIds: [],
     memoryEnabled: false,
     projectId: null,
-    reasoningLevel: "medium",
+    // Aucun choix tant que l'utilisateur n'a pas bougé le sélecteur : le niveau
+    // par défaut est celui du compte, appliqué par le serveur.
+    reasoningLevel: null,
+    skillId: null,
+    skillParams: null,
     tasksEnabled: false,
     toolMode: "auto",
   });
+
+  // Réflexion : le niveau du compte sert de référence d'affichage tant que
+  // l'utilisateur n'a pas choisi dans le composer. Il ne remplace jamais le
+  // choix de session — il évite seulement que le sélecteur annonce une valeur
+  // que le serveur n'appliquera pas. Tant que le payload n'est pas arrivé,
+  // `normalizeReasoningLevel` retombe sur la même valeur que le serveur
+  // (colonne NOT NULL à « medium »), donc aucun clignotement trompeur.
+  const { data: agentSettings } = useAgentSettings();
+  const defaultReasoningLevel = normalizeReasoningLevel(
+    agentSettings?.settings.reasoningLevel
+  );
+
+  // `handleSubmit` remplace l'objet d'options en entier : sans cette
+  // synchronisation, la persona choisie au composer disparaîtrait dès le
+  // premier envoi. L'écriture est conditionnée pour ne pas créer de boucle
+  // quand la sélection n'a pas bougé.
+  const activeAgentId = activeAgent?.id ?? null;
+  useEffect(() => {
+    setOptions((current) =>
+      current.assistantId === activeAgentId
+        ? current
+        : { ...current, assistantId: activeAgentId }
+    );
+  }, [activeAgentId]);
 
   // Hydratation du projet depuis la conversation persistée : la vérité est en
   // base (chat.projectId), jamais dans un état React initialisé à null. Le
@@ -154,6 +241,7 @@ function AgentShellInner() {
     chatId,
     isNewChat,
     modelId: currentModelId,
+    onModelResolved: setCurrentModelId,
     visibility: visibilityType,
   });
   const [resumeFromRunId, setResumeFromRunId] = useState<string | null>(null);
@@ -198,9 +286,12 @@ function AgentShellInner() {
     }
     hydratedRunIdRef.current = lastRun.id;
     const runUsage = (lastRun as { usage?: AgentRunUsage }).usage ?? {};
+    // Après un refresh, l'option « Tâches » est relue depuis AgentRun : sans
+    // elle, un plan resterait invisible même si l'utilisateur l'avait demandée.
+    const tasksEnabled = lastRun.tasksEnabled === true;
     reset({
       artifacts: [],
-      plan: lastRun.plan ?? null,
+      plan: tasksEnabled ? (lastRun.plan ?? null) : null,
       run: {
         durationMs:
           runUsage.durationMs ??
@@ -213,9 +304,11 @@ function AgentShellInner() {
         model: lastRun.model,
         outputTokens: runUsage.outputTokens,
         reasoningLevel: lastRun.reasoningLevel,
+        reasoningTokens: runUsage.reasoningTokens,
         runId: lastRun.id,
         status: lastRun.status,
         stepCount: lastRun.stepCount,
+        tasksEnabled,
         toolCallCount: lastRun.toolCallCount,
         totalTokens: runUsage.totalTokens,
       },
@@ -223,6 +316,7 @@ function AgentShellInner() {
       steps: (history.steps ?? [])
         .filter((step) => step.runId === lastRun.id)
         .map(toStepEvent),
+      tasksEnabled,
       tools: (history.executions ?? [])
         .filter((execution) => execution.runId === lastRun.id)
         .map(toToolActivity),
@@ -258,64 +352,169 @@ function AgentShellInner() {
     sendTask({
       attachments: payload.attachments,
       options: payload.options,
-      text: payload.text,
       resumeFromRunId: resumeFromRunId ?? undefined,
+      text: payload.text,
     });
     setResumeFromRunId(null);
   };
 
   const isRunning = status === "streaming" || status === "submitted";
-  const showHome =
-    messages.length === 0 && !isRunning && state.steps.length === 0;
+
+  // « Nouvelle discussion » (barre latérale) ne réinitialise que l'état Chat :
+  // l'AgentStreamProvider est monté plus bas que le sidebar, il n'était donc
+  // jamais vidé. Sans ce reset, `state.steps` restait peuplé après le retour à
+  // `/`, `showHome` restait faux et l'accueil Agent ne s'affichait jamais.
+  //
+  // Le run en cours est arrêté en même temps : sans cela le flux continuait
+  // d'alimenter `state.steps` et l'écran restait bloqué sur la timeline.
+  //
+  // L'hydratation depuis l'historique (effet suivant) ne peut pas ressusciter
+  // l'ancienne conversation : `hydratedRunIdRef` retient déjà l'ID du dernier
+  // run hydraté, et la clé SWR passe à null dès que le pathname redevient `/`.
+  const lastHandledResetEpochRef = useRef(resetEpoch);
+  useEffect(() => {
+    if (lastHandledResetEpochRef.current === resetEpoch) {
+      return;
+    }
+    lastHandledResetEpochRef.current = resetEpoch;
+    if (isRunning) {
+      void stopRun();
+    }
+    reset();
+    setResumeFromRunId(null);
+  }, [isRunning, reset, resetEpoch, stopRun]);
+
+  // Hydratation de la conversation : le fetch /api/messages est-il encore en
+  // cours ET l'agent est-il inerte ? Un run actif prime toujours — pendant une
+  // génération, la conversation est déjà là, et « Chargement » s'affichait
+  // par-dessus, à chaque révalidation, alors que l'agent travaillait.
+  const isHydrating = isLoading && !isRunning;
+  const showHome = shouldShowAgentHome({
+    isHydrating,
+    messageCount: messages.length,
+    stepCount: state.steps.length,
+  });
+
+  const modelCompatibilityWarning =
+    currentEntry && !currentModelIsAgentCompatible ? (
+      <div
+        className="mb-2 flex items-start gap-2 rounded-xl border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-xs leading-5 text-amber-900 dark:text-amber-200"
+        role="status"
+      >
+        <AlertTriangleIcon className="mt-0.5 size-3.5 shrink-0" />
+        <span>
+          Ce modèle ne peut pas exécuter la boucle d&apos;outils Agent.
+          Choisissez un modèle compatible pour envoyer une nouvelle tâche.
+        </span>
+      </div>
+    ) : null;
+
+  // Effets de bord que le composer ne peut pas faire lui-même : il ne connaît
+  // ni l'export de conversation ni le reset global. Le reset est celui de
+  // « Nouvelle discussion » — le même qui vide la timeline via resetEpoch, donc
+  // pas de second chemin à maintenir.
+  const slashSideEffects = useMemo(
+    () => ({
+      exportMarkdown: () => {
+        if (isNewChat) {
+          toast.info("Rien à exporter : la conversation est vide.");
+          return;
+        }
+        downloadChatAsMarkdown(chatId);
+      },
+      resetConversation: () => {
+        resetChat();
+        router.push(pagePath("/"));
+      },
+    }),
+    [chatId, isNewChat, resetChat, router]
+  );
 
   const composer = (
-    <AgentComposer
-      capabilities={capabilities}
-      flags={flags}
-      isRunning={isRunning}
-      modelId={currentModelId}
-      models={models}
-      onModelChange={setCurrentModelId}
-      onOptionsChange={handleOptionsChange}
-      onProjectChange={(next) => {
-        setProject(next);
-        handleOptionsChange({ projectId: next?.id ?? null });
-        // Changement explicite : persisté immédiatement sur une conversation
-        // existante, pour survivre à un envoi raté, un refresh ou un retour.
-        if (!isNewChat) {
-          fetch(apiEndpoints.chatById(chatId), {
-            body: JSON.stringify({ projectId: next?.id ?? null }),
-            headers: { "Content-Type": "application/json" },
-            method: "PATCH",
-          })
-            .then((response) => {
-              if (!response.ok) {
-                throw new Error(String(response.status));
-              }
+    <>
+      {modelCompatibilityWarning}
+      <AgentComposer
+        capabilities={capabilities}
+        defaultReasoningLevel={defaultReasoningLevel}
+        flags={flags}
+        isRunning={isRunning}
+        modelId={currentModelId}
+        modelIsCompatible={currentModelIsAgentCompatible || !currentEntry}
+        models={models}
+        onModelChange={setCurrentModelId}
+        onOptionsChange={handleOptionsChange}
+        onProjectChange={(next) => {
+          setProject(next);
+          handleOptionsChange({ projectId: next?.id ?? null });
+          // Changement explicite : persisté immédiatement sur une conversation
+          // existante, pour survivre à un envoi raté, un refresh ou un retour.
+          if (!isNewChat) {
+            fetch(apiEndpoints.chatById(chatId), {
+              body: JSON.stringify({ projectId: next?.id ?? null }),
+              headers: { "Content-Type": "application/json" },
+              method: "PATCH",
             })
-            .catch(() => {
-              // L'association reste appliquée localement ; le prochain envoi
-              // retransmettra projectId et rattrapera l'état serveur.
-            });
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error(String(response.status));
+                }
+              })
+              .catch(() => {
+                // L'association reste appliquée localement ; le prochain envoi
+                // retransmettra projectId et rattrapera l'état serveur.
+              });
+          }
+        }}
+        onSlashSideEffect={slashSideEffects}
+        onStop={stopRun}
+        onSubmit={handleSubmit}
+        options={options}
+        placeholder={
+          showHome ? undefined : "Précisez, ajustez ou poursuivez la tâche"
         }
-      }}
-      onStop={stopRun}
-      onSubmit={handleSubmit}
-      options={options}
-      placeholder={
-        showHome ? undefined : "Précisez, ajustez ou poursuivez la tâche"
-      }
-      project={project}
-    />
+        project={project}
+      />
+    </>
   );
 
   return (
     <div className="flex h-[100dvh] w-full flex-col overflow-hidden bg-background">
       {/* Le sélecteur Chat | Agent n'est plus dans l'en-tête Agent : il vit
           désormais dans la pile d'accueil (HomeModeSwitcher), au même endroit
-          exactement que sur l'accueil Chat. L'en-tête ne porte plus que
-          l'identité de canal. */}
-      <header className="flex shrink-0 items-center justify-end gap-2 border-b border-border/40 px-3 py-2 md:px-5">
+          exactement que sur l'accueil Chat. L'en-tête ne porte que
+          l'identité de canal et l'accès à la navigation.
+
+          Le déclencheur du tiroir est reproduit ici parce que `ChatShell`
+          remplace son contenu en mode Agent : sans lui, `ChatHeader` n'est jamais
+          rendu et la barre latérale devient inatteignable — sur mobile, on n'avait
+          plus ni historique, ni nouveau chat, ni réglages. Même code que
+          `chat-header.tsx` : deux boutons distincts, car un en-tête de 44px ne
+          doit pas être un bouton de 28px sur desktop. */}
+      <header className="flex h-[calc(env(safe-area-inset-top)+2.75rem)] shrink-0 items-center justify-between gap-2 border-b border-border/40 px-3 pt-[env(safe-area-inset-top)] md:px-5">
+        {isCollapsedDesktop ? (
+          <Button
+            aria-label="Ouvrir la navigation"
+            className="-ml-1"
+            data-testid="agent-nav-toggle"
+            onClick={toggleSidebar}
+            size="icon-sm"
+            variant="ghost"
+          >
+            <PanelLeftIcon className="size-4" />
+          </Button>
+        ) : (
+          <Button
+            aria-label="Ouvrir la navigation"
+            className="-ml-1 h-11 w-11 md:hidden"
+            data-testid="agent-nav-toggle"
+            onClick={toggleSidebar}
+            size="icon-sm"
+            variant="ghost"
+          >
+            <PanelLeftIcon className="size-5" />
+          </Button>
+        )}
+
         <div className="flex items-center gap-2">
           <AgentChannelBadge channel={channelInfo.channel} />
         </div>
@@ -331,22 +530,60 @@ function AgentShellInner() {
           <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-3 py-5 md:px-4">
             {showHome ? null : (
               <>
-                <AgentRunTimeline state={state} />
-                {flags["agent.activity"] && state.run && ["completed", "failed", "cancelled", "timed_out"].includes(state.run.status) ? (
+                {/* La zone d'exécution est la seule partie réellement exposée
+                    (icônes choisies par clé, listes, dialogue). Elle est
+                    encapsulée pour qu'un défaut d'affichage ne jette plus la
+                    conversation, le compositeur et l'historique avec. */}
+                <AgentRunErrorBoundary runId={state.run?.runId ?? null}>
+                  <AgentRunTimeline state={state} />
+                </AgentRunErrorBoundary>
+                {flags["agent.activity"] &&
+                state.run &&
+                ["completed", "failed", "cancelled", "timed_out"].includes(
+                  state.run.status
+                ) ? (
                   <AgentRunFeedback
-                    goalReached={((history?.runs ?? []).find((run) => run.id === state.run?.runId) as { goalReached?: boolean | null } | undefined)?.goalReached ?? null}
+                    goalReached={
+                      (
+                        (history?.runs ?? []).find(
+                          (run) => run.id === state.run?.runId
+                        ) as { goalReached?: boolean | null } | undefined
+                      )?.goalReached ?? null
+                    }
                     key={state.run.runId}
                     runId={state.run.runId}
-                    useful={((history?.runs ?? []).find((run) => run.id === state.run?.runId) as { useful?: boolean | null } | undefined)?.useful ?? null}
+                    useful={
+                      (
+                        (history?.runs ?? []).find(
+                          (run) => run.id === state.run?.runId
+                        ) as { useful?: boolean | null } | undefined
+                      )?.useful ?? null
+                    }
                   />
                 ) : null}
-                {flags["agent.guidedResume"] && !isRunning && state.run?.status === "timed_out" ? (
+                {flags["agent.guidedResume"] &&
+                !isRunning &&
+                state.run?.status === "timed_out" ? (
                   <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-3 text-sm">
-                    <p>Le délai est dépassé. Vous pouvez poursuivre dans un nouveau run lié à celui-ci.</p>
-                    <button className="mt-2 rounded-md bg-primary px-3 py-1.5 text-primary-foreground" onClick={() => setResumeFromRunId(state.run?.runId ?? null)} type="button">
+                    <p>
+                      Le délai est dépassé. Vous pouvez poursuivre dans un
+                      nouveau run lié à celui-ci.
+                    </p>
+                    <button
+                      className="mt-2 rounded-md bg-primary px-3 py-1.5 text-primary-foreground"
+                      onClick={() =>
+                        setResumeFromRunId(state.run?.runId ?? null)
+                      }
+                      type="button"
+                    >
                       Poursuivre
                     </button>
-                    {resumeFromRunId ? <p className="mt-2 text-xs">Ajoutez votre consigne dans la zone de saisie, puis envoyez-la.</p> : null}
+                    {resumeFromRunId ? (
+                      <p className="mt-2 text-xs">
+                        Ajoutez votre consigne dans la zone de saisie, puis
+                        envoyez-la.
+                      </p>
+                    ) : null}
                   </div>
                 ) : null}
                 {!isRunning && suggestedActions.length > 0 ? (
@@ -372,7 +609,7 @@ function AgentShellInner() {
                     vote={undefined}
                   />
                 ))}
-                {isLoading ? (
+                {isHydrating && messages.length === 0 ? (
                   <p className="text-xs text-muted-foreground">
                     Chargement de la conversation…
                   </p>
@@ -387,12 +624,23 @@ function AgentShellInner() {
                 capabilities={capabilities}
                 flags={flags}
                 isRunning={isRunning}
+                modelCompatibilityKnown={Boolean(currentEntry)}
                 modelId={currentModelId}
+                modelIsCompatible={currentModelIsAgentCompatible}
                 models={models}
                 modeSwitcher={
                   <HomeModeSwitcher
                     mode="agent"
                     onModeChange={(next) => {
+                      // Le `router.push("/")` ci-dessous change de `chatId`,
+                      // ce qui déclencherait les deux effets de purge du
+                      // brouillon. On le déclare à l'avance : ce changement de
+                      // `chatId` est une bascule de mode, pas un changement de
+                      // conversation, et le prompt saisi doit survivre au
+                      // retour en mode Chat. Voir hooks/use-shared-draft.tsx.
+                      if (next === "chat" && !isNewChat) {
+                        requestPreserveDraft();
+                      }
                       setMode(next);
                       if (next === "chat" && !isNewChat) {
                         router.push("/");
@@ -406,6 +654,7 @@ function AgentShellInner() {
                   setProject(next);
                   handleOptionsChange({ projectId: next?.id ?? null });
                 }}
+                onSlashSideEffect={slashSideEffects}
                 onStop={stopRun}
                 onSubmit={handleSubmit}
                 options={options}

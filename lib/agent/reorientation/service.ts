@@ -58,10 +58,27 @@ export type AppliedReorientation = {
   text: string;
 };
 
-// Application au prochain point sûr : lit la file dans l'ordre, concatène les
-// instructions en une consigne unique pour le modèle, marque appliqué, émet
-// l'événement métier. Appelé par le runtime entre deux steps — jamais au
-// milieu d'un appel d'outil.
+export async function acknowledgeReorientations(params: {
+  appliedStepIndex: number;
+  ids: string[];
+  runId: string;
+}): Promise<void> {
+  if (params.ids.length === 0) return;
+  await markRunInstructionsApplied({
+    appliedStepIndex: params.appliedStepIndex,
+    ids: params.ids,
+  });
+  emitAgentBusinessEvent({
+    instructionId: params.ids[0]!,
+    runId: params.runId,
+    toolsRecomputed: true,
+    type: "reorientation_applied",
+  });
+}
+
+// Application au prochain point sûr : lit la file dans l'ordre sans la
+// supprimer. L'accusé de réception intervient lorsque le runtime a réellement
+// injecté la consigne dans l'étape suivante.
 export async function takePendingReorientations(params: {
   appliedStepIndex: number;
   runId: string;
@@ -75,20 +92,6 @@ export async function takePendingReorientations(params: {
     (instruction) => instruction.stopRequested
   );
   const text = pending.map((instruction) => instruction.text).join("\n");
-
-  await markRunInstructionsApplied({
-    appliedStepIndex: params.appliedStepIndex,
-    ids: pending.map((instruction) => instruction.id),
-  });
-
-  emitAgentBusinessEvent({
-    instructionId: pending[0]!.id,
-    // Le recalcul effectif des outils est décidé par le runtime en comparant
-    // la signature de sélection : l'événement reflète l'intention.
-    runId: params.runId,
-    toolsRecomputed: true,
-    type: "reorientation_applied",
-  });
 
   return { instructions: pending, stopRequested, text };
 }

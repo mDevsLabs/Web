@@ -7,8 +7,10 @@ import {
   toUIMessageStream,
 } from "ai";
 import { generateTitleFromConversation } from "@/app/(chat)/actions";
-import { systemPrompt } from "@/lib/ai/prompts";
+import { readReasoningTokens, resolveBillableTotal } from "@/lib/agent/usage";
+import { TOOL_SYSTEM_HINTS } from "@/lib/ai/tools/config";
 import type { ChatRequestContext } from "@/lib/chat/context";
+import type { MemoryContext } from "@/lib/chat/memory";
 import {
   getStreamContext,
   isModelStreamActivity,
@@ -21,6 +23,9 @@ import {
   saveMessages,
   updateMessage,
 } from "@/lib/db/queries";
+import { getPluginSystemHints } from "@/lib/plugins/server";
+import { toolKindFor } from "@/lib/prompts/capabilities";
+import { buildChatSystemPrompt } from "@/lib/prompts/chat";
 import type { ChatMessage } from "@/lib/types";
 import { generateUUID, getTextFromMessage } from "@/lib/utils";
 
@@ -37,6 +42,8 @@ export type ChatStreamParams = {
     activeToolsList: string[];
     effectiveAddendum: string;
   }>;
+  /** Mémoire de la requête : le prompt n'en parle que si elle est lisible. */
+  memoryContext: MemoryContext | null;
   effectiveTemperature?: number;
   effectiveTopP?: number;
   effectiveMaxTokens?: number;
@@ -47,6 +54,7 @@ export function createChatStream(params: ChatStreamParams) {
     ctx,
     model,
     prepareTools,
+    memoryContext,
     effectiveTemperature,
     effectiveTopP,
     effectiveMaxTokens,
@@ -76,13 +84,46 @@ export function createChatStream(params: ChatStreamParams) {
       const { tools, activeToolsList, effectiveAddendum } =
         await prepareTools(dataStream);
       const supportsTools = activeToolsList.length > 0;
+      // Les hints de plugins complètent (et peuvent surcharger) ceux des outils
+      // natifs : source unique côté registre de plugins.
+      const toolHints: Record<string, string> = {
+        ...TOOL_SYSTEM_HINTS,
+        ...getPluginSystemHints(),
+      };
+
+      const usageEventKey = `chat:${ctx.id}:${ctx.message?.id ?? ctx.uiMessages.at(-1)?.id ?? `len-${ctx.uiMessages.length}`}:${ctx.chatModel}`;
 
       const result = streamText({
         activeTools: supportsTools ? (activeToolsList as any) : undefined,
-        instructions: systemPrompt({
-          modeAddendum: effectiveAddendum,
-          requestHints: ctx.requestHints,
-          supportsTools,
+        instructions: buildChatSystemPrompt({
+          addendum: effectiveAddendum || null,
+          artifactsAvailable: supportsTools,
+          capabilities: {
+            attachments: 0,
+            memory: memoryContext?.memoryActive
+              ? {
+                  block:
+                    [
+                      memoryContext.userMemoryBlock,
+                      memoryContext.projectMemoryBlock,
+                    ]
+                      .filter(Boolean)
+                      .join("\n\n") || null,
+                  writable: memoryContext.memoryAllowAdd,
+                }
+              : null,
+            plan: null,
+            reasoning: false,
+            tools: activeToolsList.map((toolId) => ({
+              description:
+                toolHints[toolId] ?? "Outil disponible pour cet échange.",
+              id: toolId,
+              kind: toolKindFor({ id: toolId }),
+              label: toolId,
+            })),
+            toolsSupported: supportsTools,
+          },
+          requestHints: ctx.requestHints ?? null,
         }),
         messages: ctx.modelMessages,
         model,
@@ -100,16 +141,66 @@ export function createChatStream(params: ChatStreamParams) {
             markModelActive();
           }
         },
-        onFinish: async ({ usage }) => {
+        onFinish: async ({ text, usage }) => {
           await handleTokenAccounting({
+            chatId: ctx.id,
+            // Attribution figée ici (migration 0035) : la conversation peut être
+            // supprimée plus tard, son mode et son projet doivent rester
+            // lisibles dans l'historique de consommation. `ctx.chat` est la
+            // ligne persistée ; à défaut, le mode demandé par la requête est
+            // la meilleure information disponible, et le projet effectif peut
+            // venir d'une conversation pas encore écrite.
+            chatMode:
+              ctx.chat?.mode ??
+              (ctx.selectedChatMode as "chat" | "agent" | undefined) ??
+              "chat",
             chatModel: ctx.chatModel,
+            chatProjectId:
+              ctx.chat?.projectId ?? ctx.effectiveProjectId ?? null,
             dataStream,
             email: ctx.userEmail,
             isGhostMode: ctx.isGhostMode,
             sessionToken: ctx.sessionToken,
             usage: usage as any,
+            usageEventKey,
             userId: ctx.userId,
           });
+
+          // Renommage auto, ICI et pas dans `onEnd`.
+          //
+          // `onEnd` s'exécute après la fermeture du flux : le titre était bien
+          // écrit en base, mais rien ne pouvait le notifier au client. Le
+          // `mutate` de l'historique partait de `onFinish` côté client, donc
+          // avant, lisait l'ancien titre, et la sidebar affichait
+          // « Nouvelle discussion » jusqu'à une revalidation fortuite.
+          //
+          // Le type `"chat-title"` et son consommateur
+          // (components/chat/data-stream-handler.tsx) existaient déjà : c'est
+          // l'émission qui manquait.
+          if (ctx.shouldRenameAfterFirst && ctx.firstUserMessageForTitle) {
+            try {
+              const generated = await generateTitleFromConversation({
+                assistantText: (text ?? "").slice(0, 500).trim(),
+                userText: getTextFromMessage(
+                  ctx.firstUserMessageForTitle as any
+                ),
+              });
+              if (generated && generated !== "Nouvelle discussion") {
+                const { updateChatTitleById } = await import(
+                  "@/lib/db/queries"
+                );
+                await updateChatTitleById({ chatId: ctx.id, title: generated });
+                dataStream.write({
+                  data: generated,
+                  type: "data-chat-title",
+                });
+              }
+            } catch (error) {
+              // Un titre raté ne doit jamais faire échouer l'échange : la
+              // conversation est déjà complète et persistée.
+              console.error("Erreur renommage auto:", error);
+            }
+          }
         },
         stopWhen: ({ steps }) => {
           if (steps.length >= 12) return true;
@@ -148,33 +239,55 @@ export function createChatStream(params: ChatStreamParams) {
 async function handleTokenAccounting(params: {
   dataStream: any;
   usage: any;
+  chatId: string;
+  chatMode: "chat" | "agent";
+  chatProjectId: string | null;
   chatModel: string;
   email: string;
   isGhostMode: boolean;
   sessionToken: string;
+  usageEventKey: string;
   userId: string;
 }): Promise<void> {
   const {
     dataStream,
     usage,
+    chatId,
+    chatMode,
+    chatProjectId,
     chatModel,
     email,
     isGhostMode,
     sessionToken,
+    usageEventKey,
     userId,
   } = params;
   // Décompte précis des tokens (entrée + sortie additionnés)
   const inputTokens = usage?.inputTokens ?? usage?.promptTokens ?? 0;
   const outputTokens = usage?.outputTokens ?? usage?.completionTokens ?? 0;
-  const totalTokens = usage?.totalTokens ?? inputTokens + outputTokens;
+  // La réflexion est un sous-ensemble des tokens de sortie, mais l'AI SDK la sort
+  // de `outputTokens` : elle doit donc être recomposée explicitement, sans
+  // double comptage. Règle partagée avec le chemin Agent.
+  const reasoningTokens = readReasoningTokens(usage);
+  const totalTokens = resolveBillableTotal({
+    inputTokens,
+    outputTokens,
+    reasoningTokens,
+    totalTokens: usage?.totalTokens ?? 0,
+  });
 
   if (totalTokens > 0) {
     // 1. Enregistrement direct et persistant en BDD (normal et fantôme)
     await recordTokenUsage({
+      chatId,
+      chatMode,
+      chatProjectId,
+      idempotencyKey: usageEventKey,
       inputTokens,
       isGhostMode,
       model: chatModel,
       outputTokens,
+      reasoningTokens,
       totalTokens,
       userEmail: email,
       userId,
@@ -188,6 +301,7 @@ async function handleTokenAccounting(params: {
           isGhostMode,
           model: chatModel,
           outputTokens,
+          reasoningTokens,
           tokensUsed: totalTokens,
         }),
         headers: {
@@ -216,6 +330,7 @@ async function handleTokenAccounting(params: {
         data: {
           inputTokens,
           outputTokens,
+          reasoningTokens,
           tokens: totalTokens,
           total: totalTokens,
         } as any,
@@ -302,30 +417,10 @@ async function persistStreamEnd(
       })),
     });
 
-    // Renommage auto après fin du stream IA (premier message uniquement)
-    if (ctx.shouldRenameAfterFirst && ctx.firstUserMessageForTitle) {
-      try {
-        const assistantMsg = [...finishedMessages]
-          .reverse()
-          .find((m) => m.role === "assistant");
-        const assistantText = assistantMsg
-          ? (getTextFromMessage(assistantMsg as any) || "").slice(0, 500).trim()
-          : "";
-        const userText = getTextFromMessage(
-          ctx.firstUserMessageForTitle as any
-        );
-        const title = await generateTitleFromConversation({
-          assistantText,
-          userText,
-        });
-        if (title && title !== "Nouvelle discussion") {
-          const { updateChatTitleById } = await import("@/lib/db/queries");
-          await updateChatTitleById({ chatId: ctx.id, title });
-        }
-      } catch (e) {
-        console.error("Erreur renommage auto:", e);
-      }
-    }
+    // Le renommage auto n'est PLUS ici : il est fait dans `streamText.onFinish`
+    // (au-dessus), tant que le flux est ouvert, pour pouvoir émettre la part
+    // `data-chat-title`. Le faire ici fonctionnait en base, mais la sidebar
+    // n'apprenait le nouveau titre qu'à la revalidation suivante.
   }
 }
 

@@ -4,6 +4,7 @@ import {
   timezoneOffsetMs,
   zonedTimeToUtc,
 } from "@/lib/agent/scheduler/occurrence";
+import { resolveOnceDueAt } from "@/lib/agent/scheduler/once";
 
 describe("Calcul des occurrences (règle + fuseau IANA)", () => {
   it("résout une heure locale en UTC correctement", () => {
@@ -90,6 +91,17 @@ describe("Calcul des occurrences (règle + fuseau IANA)", () => {
       from
     );
     expect(next?.toISOString()).toBe("2026-02-28T07:00:00.000Z");
+  });
+
+  it("reprogramme une règle one-shot avec sa date locale", () => {
+    const resolution = resolveOnceDueAt({
+      rule: { kind: "once", runAt: "2026-10-01T09:30" },
+      timezone: "Europe/Paris",
+    });
+    expect(resolution.ok).toBe(true);
+    if (resolution.ok) {
+      expect(resolution.dueAt.toISOString()).toBe("2026-10-01T07:30:00.000Z");
+    }
   });
 
   it("retourne null pour une règle one-shot (date unique portée par la ligne)", () => {

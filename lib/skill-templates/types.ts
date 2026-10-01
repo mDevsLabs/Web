@@ -32,10 +32,25 @@ export type SkillTemplateManifest = {
 
   /** Instructions système injectées lors de l'usage du skill. */
   instructions: string;
-  /** Outils natifs autorisés (identifiants de lib/ai/tools/config.ts) ou "mcp". */
+  /**
+   * Outils autorisés : identifiants Chat, identifiants fournis par un plugin ou
+   * la sentinelle `mcp`. Les identifiants de plugin sont validés avec
+   * `pluginIds` ci-dessous.
+   */
   tools: string[];
-  /** Serveurs MCP auxquels le skill peut accéder (vides = tous ceux installés). */
+  /**
+   * Plugins dont les outils sont utilisés par le skill. Cette liste est une
+   * métadonnée du template statique : elle permet une validation stricte sans
+   * ajouter de colonne ou de migration à la table Skill.
+   */
+  pluginIds: string[];
+  /**
+   * Serveurs MCP explicitement autorisés. Une liste vide signifie « aucun
+   * serveur » ; aucune valeur générique (« all », « * ») n'est acceptée.
+   */
   mcpServerNames: string[];
+  /** Les dépendances MCP doivent être résolues avant l'installation. */
+  strictMcp?: boolean;
   parameters: SkillTemplateParameter[];
 };
 

@@ -5,6 +5,8 @@ import {
   zodIssuesMessage,
 } from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
+import { getMaiUser } from "@/lib/auth/session";
+import { enforceChatRateLimit } from "@/lib/chat/auth";
 import {
   getPluginInstallationsByUserId,
   setPluginEnabled,
@@ -22,26 +24,18 @@ const patchPluginSchema = z.object({
 });
 
 export async function DELETE(
-  _request: Request,
+  request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const guard = await requirePaidPlan("plus");
-  if (!guard.allowed) {
-    return planGuardResponse(guard)!;
+  const user = await getMaiUser();
+  if (!user) {
+    return errorResponse("auth_required");
   }
-  const user = guard.user;
   const userId = user.id || user.email;
   const { id } = await params;
 
-  if (!getPluginManifest(id)) {
-    return errorResponse("not_found", {
-      message: `Plugin introuvable : « ${id} ».`,
-    });
-  }
-
   try {
-    // Le retrait reste toujours possible (nettoyage après rétrogradation) : il
-    // ne donne accès à aucune capacité supplémentaire.
+    await enforceChatRateLimit(request, userId);
     await uninstallPlugin({ pluginId: id, userId });
     const installations = await getPluginInstallationsByUserId({ userId });
     return Response.json({
@@ -82,6 +76,7 @@ export async function PATCH(
   }
 
   try {
+    await enforceChatRateLimit(request, userId);
     const json = await request.json();
     const parsed = patchPluginSchema.parse(json);
     // Réactiver un plugin hors forfait est refusé côté serveur ; la
@@ -91,11 +86,16 @@ export async function PATCH(
         message: pluginTierMessage(manifest),
       });
     }
-    await setPluginEnabled({
+    const updated = await setPluginEnabled({
       isEnabled: parsed.isEnabled,
       pluginId: id,
       userId,
     });
+    if (!updated) {
+      return errorResponse("not_found", {
+        message: "Ce plugin n'est pas installé.",
+      });
+    }
     const installations = await getPluginInstallationsByUserId({ userId });
     return Response.json({
       plugins: withTierLock(

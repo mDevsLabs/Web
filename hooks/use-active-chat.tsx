@@ -23,6 +23,7 @@ import { useDataStream } from "@/components/chat/data-stream-provider";
 import { getChatHistoryPaginationKey } from "@/components/chat/sidebar-history";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
 import { useAutoResume } from "@/hooks/use-auto-resume";
+import { useSharedDraft } from "@/hooks/use-shared-draft";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import {
   ACCOUNT_PROFILE_TOOL,
@@ -84,6 +85,11 @@ type ActiveChatContextValue = {
   setPendingCommand: (command: PendingCommand) => void;
   clearPendingCommand: () => void;
   resetChat: () => void;
+  // Compteur de « nouvelle conversation ». `resetChat` ne fait que vider l'état
+  // Chat ; ce compteur est le signal que l'écran Agent doit écouter pour vider,
+  // lui, le sien — l'AgentStreamProvider est monté plus bas, dans SidebarInset,
+  // et n'englobe donc pas le sidebar qui déclenche le reset.
+  resetEpoch: number;
   showCreditCardAlert: boolean;
   setShowCreditCardAlert: Dispatch<SetStateAction<boolean>>;
   isGhostMode: boolean;
@@ -394,12 +400,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     if (typeof document !== "undefined") {
       if (agent?.id) {
         document.cookie = `agent-id=${encodeURIComponent(agent.id)}; path=/; max-age=31536000`;
-        // Le modèle par défaut de l'agent écrase le modèle global
-        if (agent.defaultModelId) {
-          setCurrentModelId(agent.defaultModelId);
-          currentModelIdRef.current = agent.defaultModelId;
-          document.cookie = `chat-model=${encodeURIComponent(agent.defaultModelId)}; path=/; max-age=31536000`;
-        }
+        // Chat et Agent partagent le modèle global. Le modèle propre à un
+        // assistant reste une préférence de secours serveur, il ne doit plus
+        // réécrire silencieusement le modèle choisi par l'utilisateur.
       } else {
         document.cookie = "agent-id=; path=/; max-age=0";
       }
@@ -506,11 +509,6 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
                   activeAgentRef.current = ag as Agent;
                   activeAgentIdRef.current = ag.id;
                   document.cookie = `agent-id=${encodeURIComponent(ag.id)}; path=/; max-age=31536000`;
-                  if (ag.defaultModelId) {
-                    setCurrentModelId(ag.defaultModelId);
-                    currentModelIdRef.current = ag.defaultModelId;
-                    document.cookie = `chat-model=${encodeURIComponent(ag.defaultModelId)}; path=/; max-age=31536000`;
-                  }
                 }
               })
               .catch(() => {});
@@ -522,6 +520,10 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
 
   const [input, setInput] = useState("");
   const [showCreditCardAlert, setShowCreditCardAlert] = useState(false);
+  // Signal d'exception du brouillon partagé : la bascule Chat ⇄ Agent passe
+  // aussi par un changement de `chatId`, et ce changement ne doit pas être
+  // confondu avec un changement de conversation. Voir l'effet plus bas.
+  const { consumePreserveRequest } = useSharedDraft();
 
   const { data: chatData, isLoading } = useSWR(
     isNewChat
@@ -691,6 +693,11 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
 
   const lastLoadedChatIdRef = useRef<string | null>(null);
 
+  // « Nouvelle discussion » doit ramener l'agent comme le chat à zéro. Son état
+  // vit dans un autre provider, on lui passe donc un compteur plutôt qu'un
+  // pointeur : un simple incrément suffit à réveiller tous ses abonnés.
+  const [resetEpoch, setResetEpoch] = useState(0);
+
   const resetChat = useCallback(() => {
     const newId = generateUUID();
     newChatIdRef.current = newId;
@@ -702,6 +709,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     setWaitingStatus(undefined);
     setDataStream([]);
     stop();
+    setResetEpoch((epoch) => epoch + 1);
   }, [
     setMessages,
     setActiveSkill,
@@ -734,6 +742,13 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   // Chaque conversation restaure son propre brouillon local (use-drafts) ; ici
   // on purge l'input du chat quitté pour empêcher la course où un setInput
   // tardif écrirait le texte du chat A dans la clé de brouillon du chat B.
+  //
+  // UNE exception : la bascule Chat ⇄ Agent. Elle passe aussi par un changement
+  // de `chatId` (`router.push("/")`), mais ce n'est pas un changement de
+  // conversation — c'est le même brouillon qu'on change d'écran. Sans cette
+  // exemption, taper une question puis passer en Agent perdait le texte alors
+  // qu'il doit être conservé. Le signal vient du brouillon partagé et vaut pour
+  // UNE navigation : un vrai changement de conversation purge toujours.
   const prevDraftChatIdRef = useRef<string | null>(null);
   useEffect(() => {
     if (prevDraftChatIdRef.current === chatId) {
@@ -745,13 +760,16 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     if (previousChatId === null) {
       return;
     }
+    if (consumePreserveRequest()) {
+      return;
+    }
     // Purge déboutée : laisse l'effet de sauvegarde du brouillon (clé capturée
     // au moment du chat quitté) finir son cycle sans écraser le nouveau chat.
     const timer = setTimeout(() => {
       setInput("");
     }, 0);
     return () => clearTimeout(timer);
-  }, [chatId]);
+  }, [chatId, consumePreserveRequest]);
 
   useEffect(() => {
     if (chatData && !isNewChat) {
@@ -825,6 +843,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       pendingTools,
       regenerate,
       resetChat,
+      resetEpoch,
       sendMessage,
       setActiveAgent,
       setActiveSkill,
@@ -885,6 +904,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       setPendingCommand,
       clearPendingCommand,
       resetChat,
+      resetEpoch,
       showCreditCardAlert,
       isGhostMode,
       toggleGhostMode,

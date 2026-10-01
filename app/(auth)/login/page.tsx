@@ -14,6 +14,8 @@ import { toast } from "sonner";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { getReturnToFromSearch } from "@/lib/auth/return-to";
+import { TERMS_URL } from "@/lib/constants";
 import type { AuthResponse } from "../actions";
 import { loginAction, resendCodeAction, verifyLoginAction } from "../actions";
 
@@ -27,7 +29,12 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [targetEmail, setTargetEmail] = useState("");
   const [otpCode, setOtpCode] = useState("");
-  const [acceptedTerms, setAcceptedTerms] = useState(true);
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [returnTo, setReturnTo] = useState("/");
+
+  useEffect(() => {
+    setReturnTo(getReturnToFromSearch(window.location.search));
+  }, []);
 
   const [isLoading, setIsLoading] = useState(false);
   const [countdown, setCountdown] = useState(60);
@@ -112,7 +119,7 @@ export default function LoginPage() {
     }
 
     toast.success("Connexion réussie ! Bienvenue sur mAI Web");
-    router.push("/");
+    router.push(returnTo);
     router.refresh();
   };
 
@@ -234,7 +241,7 @@ export default function LoginPage() {
                   J'accepte les{" "}
                   <a
                     className="font-medium text-foreground underline underline-offset-4 hover:text-primary transition-colors"
-                    href="https://mai-devs.vercel.app"
+                    href={TERMS_URL}
                     rel="noopener noreferrer"
                     target="_blank"
                   >

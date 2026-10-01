@@ -59,7 +59,10 @@ const exportDeliverableInputSchema = z
 function csvCell(value: unknown): string {
   const text =
     value === null || value === undefined ? "" : String(value as string);
-  return /[",;\n\r]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+  const safeText = /^[=+\-@]/.test(text) ? `'${text}` : text;
+  return /[",;\n\r]/.test(safeText)
+    ? `"${safeText.replace(/"/g, '""')}"`
+    : safeText;
 }
 
 function markdownCell(value: unknown): string {

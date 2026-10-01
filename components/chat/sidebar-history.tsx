@@ -2,10 +2,12 @@
 
 import { isToday, isYesterday, subMonths, subWeeks } from "date-fns";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
 import useSWRInfinite from "swr/infinite";
+import { SessionRecovery } from "@/components/chat/session-recovery";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -103,8 +105,10 @@ export function getChatHistoryPaginationKey(
 }
 
 export function SidebarHistory({
+  hasDeadSession,
   user,
 }: {
+  hasDeadSession?: boolean;
   user?: { email?: string; id?: string } | undefined;
 }) {
   const { setOpenMobile } = useSidebar();
@@ -190,9 +194,21 @@ export function SidebarHistory({
     return (
       <SidebarGroup className="group-data-[collapsible=icon]:hidden">
         <SidebarGroupContent>
-          <div className="flex w-full flex-row items-center justify-center gap-2 px-2 text-[13px] text-sidebar-foreground/60">
-            Connectez-vous pour retrouver vos discussions !
-          </div>
+          {hasDeadSession ? (
+            <SessionRecovery />
+          ) : (
+            // Cas « aucun cookie du tout » : le middleware renvoie normalement
+            // vers /login avant d'arriver ici. Le lien reste rendu pour que
+            // l'état ne soit jamais un cul-de-sac (base path personnalisé,
+            // route ouverte en test…).
+            <Link
+              className="flex w-full flex-row items-center justify-center gap-1.5 rounded-lg px-2 py-1.5 text-[13px] text-sidebar-foreground/60 transition-colors hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+              data-testid="history-login-link"
+              href="/login"
+            >
+              Connectez-vous pour retrouver vos discussions !
+            </Link>
+          )}
         </SidebarGroupContent>
       </SidebarGroup>
     );
@@ -277,11 +293,14 @@ export function SidebarHistory({
           <SidebarMenu>
             {paginatedChatHistories
               ? (() => {
-                  const chatsFromHistory = paginatedChatHistories.flatMap(
-                    (paginatedChatHistory) => paginatedChatHistory.chats
-                  );
-
-                  const groupedChats = groupChatsByDate(chatsFromHistory);
+                  // `allChats` est la SEULE lecture des pages de l'historique :
+                  // il filtre déjà les pages `undefined` que useSWRInfinite
+                  // laisse pour une page en cours ou en erreur. Le recomputer
+                  // ici sans garde faisait tomber toute la mise en page — la
+                  // barre latérale partage le segment de route avec le
+                  // compositeur — à la fin d chaque run Agent, qui revalide
+                  // l'historique.
+                  const groupedChats = groupChatsByDate(allChats);
 
                   return (
                     <div className="flex flex-col gap-4">

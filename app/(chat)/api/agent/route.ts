@@ -3,17 +3,21 @@ import { convertToModelMessages } from "ai";
 import { applyIncomingApprovalDecisions } from "@/lib/agent/approvals/incoming";
 import { resolveAgentExecutionBudget } from "@/lib/agent/budget";
 import { buildAgentContext } from "@/lib/agent/context/build";
-import { collectAttachments, validateAttachmentsAgainstModel } from "@/lib/agent/context/files";
+import {
+  collectAttachments,
+  validateAttachmentsAgainstModel,
+} from "@/lib/agent/context/files";
 import { loadAgentProjectContext } from "@/lib/agent/context/project";
+import { filterToolsByFlags } from "@/lib/agent/flags";
 import {
   type AgentTierFailure,
   agentTierFailureResponse,
   checkAgentAccess,
   checkAgentModelAccess,
-  normalizeAgentReasoningLevel,
+  resolveAgentReasoning,
 } from "@/lib/agent/gate";
+import { buildAgentOneShotInstructions } from "@/lib/agent/instructions";
 import { ensureAgentNotificationsInstalled } from "@/lib/agent/notifications/install";
-import { generateTaskPlan, shouldGeneratePlan } from "@/lib/agent/plan";
 import {
   createAgentStream,
   createAgentStreamResponse,
@@ -25,6 +29,7 @@ import {
   listInstalledPluginAgentTools,
   narrowPluginAgentToolsForTask,
 } from "@/lib/agent/tools/adapters/plugins";
+import { TASKS_TOOL_ID } from "@/lib/agent/tools/catalog";
 import { applyToolPermissions } from "@/lib/agent/tools/permissions";
 import { listRegisteredAgentTools } from "@/lib/agent/tools/registry";
 import { selectAgentTools } from "@/lib/agent/tools/selector";
@@ -33,25 +38,34 @@ import type { RegisteredAgentTool, ToolPermission } from "@/lib/agent/types";
 import { injectUserInputAnswers } from "@/lib/agent/user-input/inject";
 import { fetchUserModels } from "@/lib/ai/models.server";
 import { getLanguageModel } from "@/lib/ai/providers";
-import { getModelEntry, pickDefaultAgentModel } from "@/lib/ai/registry";
+import { createReasoningDetailsSink } from "@/lib/ai/reasoning-details";
+import {
+  getModelEntry,
+  isAgentCompatible,
+  isModelAllowedForUser,
+  pickDefaultAgentModel,
+} from "@/lib/ai/registry";
+import { toAgentToolId } from "@/lib/ai/tools/ids";
 import { errorResponse } from "@/lib/api/error-response";
 import { authenticateChatRequest, enforceChatRateLimit } from "@/lib/chat/auth";
 import { buildChatContext } from "@/lib/chat/context";
 import { loadMcpContext } from "@/lib/chat/mcp";
+import { buildMemoryContext } from "@/lib/chat/memory";
 import {
+  claimAgentRunExecution,
   createAgentRun,
   createAgentStep,
-  claimAgentRunExecution,
   getActiveAgentRunByChatId,
-  getAgentRunByMessageId,
   getAgentRunById,
+  getAgentRunByMessageId,
   getAgentStepsByRunId,
   getToolExecutionsByRunId,
   updateAgentRunStatus,
 } from "@/lib/db/agent-queries";
 import { getAnsweredAgentUserInputsForRun } from "@/lib/db/agent-user-input-queries";
-import { ChatbotError } from "@/lib/errors";
 import { saveMessages } from "@/lib/db/queries";
+import { ChatbotError } from "@/lib/errors";
+import { describeTools } from "@/lib/prompts/capabilities";
 import type { ChatMessage } from "@/lib/types";
 import { getTextFromMessage } from "@/lib/utils";
 import { type AgentRequestBody, agentRequestBodySchema } from "./schema";
@@ -132,16 +146,27 @@ export async function POST(request: Request) {
 
     // Un rejeu retrouve le run avant le nouveau contrôle de quota : le
     // premier essai a pu consommer le reste du quota après avoir été accepté.
-    const incomingMessageId = (body.message as { id?: string } | undefined)?.id ?? null;
+    const incomingMessageId =
+      (body.message as { id?: string } | undefined)?.id ?? null;
     if (incomingMessageId) {
-      const replay = await getAgentRunByMessageId({ chatId: body.id, messageId: incomingMessageId });
+      const replay = await getAgentRunByMessageId({
+        chatId: body.id,
+        messageId: incomingMessageId,
+      });
       if (replay) {
-        if (replay.userId !== auth.userId) return errorResponse("access_denied");
-        return Response.json({ code: "existing_run", runId: replay.id, status: replay.status }, { status: 409 });
+        if (replay.userId !== auth.userId)
+          return errorResponse("access_denied");
+        return Response.json(
+          { code: "existing_run", runId: replay.id, status: replay.status },
+          { status: 409 }
+        );
       }
       const active = await getActiveAgentRunByChatId({ chatId: body.id });
       if (active && active.userId === auth.userId) {
-        return Response.json({ code: "active_run_conflict", runId: active.id }, { status: 409 });
+        return Response.json(
+          { code: "active_run_conflict", runId: active.id },
+          { status: 409 }
+        );
       }
     }
 
@@ -161,18 +186,33 @@ export async function POST(request: Request) {
     const models = await fetchUserModels();
     const settings = await loadAgentSettings({ userId: auth.userId });
     const requested = getModelEntry(body.modelId, models);
-    const resolvedModel = requested.capabilities.tools
-      ? requested.id
-      : pickDefaultAgentModel(models, settings.defaultModel, tier);
+    const requestedModelExists = models.some(
+      (model) => model.id === body.modelId
+    );
+    const resolvedModel =
+      requestedModelExists &&
+      requested.capabilities.tools &&
+      isAgentCompatible(requested) &&
+      isModelAllowedForUser(requested.id, tier)
+        ? requested.id
+        : pickDefaultAgentModel(models, settings.defaultModel, tier);
 
-    // TOUTES les vérifications portent sur le modèle RÉELLEMENT résolu. Avant,
-    // `capabilitiesOverride` recevait les capacités du modèle DEMANDÉ : quand un
-    // repli était choisi (modèle sans outils), le garde jugeait l'accès avec les
-    // capacités d'un autre modèle et pouvait refuser un modèle légitime
-    // (model_access_denied) ou valider un modèle hors forfait.
+    // TOUTES les vérifications portent sur le modèle RÉELLEMENT résolu et sur
+    // l'entrée complète du catalogue utilisateur. Le gate ne relit jamais le
+    // fallback : une Laguna sélectionnée depuis /v1/models ne peut pas être
+    // reclassée à tort par une heuristique de nom.
+    if (resolvedModel !== body.modelId) {
+      console.info(
+        JSON.stringify({
+          event: "agent_model_resolved",
+          modelId: resolvedModel,
+          requestedModelId: body.modelId,
+        })
+      );
+    }
     const resolvedEntry = getModelEntry(resolvedModel, models);
     const modelAccess = checkAgentModelAccess({
-      capabilitiesOverride: resolvedEntry.capabilities,
+      entry: resolvedEntry,
       flags,
       modelId: resolvedEntry.id,
       tier,
@@ -199,15 +239,24 @@ export async function POST(request: Request) {
       message: (body.message as ChatMessage | undefined) ?? null,
       messages: (body.messages as ChatMessage[] | undefined) ?? null,
       mode: "agent",
-      persistIncomingMessage: false,
       pendingPrompt: null,
+      persistIncomingMessage: false,
       projectId: body.projectId,
       selectedAgentId: body.assistantId ?? null,
       selectedChatMode: "agent",
       selectedChatModel: resolvedModel,
       selectedVisibilityType: body.visibility,
       skillId: body.skillId,
+      skillParams: body.skillParams,
       tags: ["agent"],
+    });
+
+    const memoryContext = await buildMemoryContext({
+      effectiveAgentId: ctx.effectiveAgentId,
+      effectiveProjectId: ctx.effectiveProjectId,
+      isGhostMode: false,
+      tier,
+      userId: ctx.userId,
     });
 
     // 6. Fichiers : types, nombre et capacités du modèle revérifiés.
@@ -241,64 +290,114 @@ export async function POST(request: Request) {
     }
 
     // 7. Réflexion et autonomie : valeurs validées, jamais transmises telles quelles.
-    const reasoningLevel = normalizeAgentReasoningLevel({
+    //    `reasoning` sépare l'intention (persistée) de l'effort applicable au
+    //    modèle sélectionné : les deux ne coïncident pas quand le modèle expose
+    //    moins de niveaux que la préférence n'en prévoit.
+    const reasoning = resolveAgentReasoning({
       capabilities,
       fallback: settings.reasoningLevel,
       flags,
       requested: body.reasoningLevel,
     });
-    const autonomy = body.autonomy ?? settings.autonomy;
+    const reasoningLevel = reasoning.requested;
+    // L'autonomie n'est plus un choix : elle est fixée à « standard » (lecture
+    // et recherche libres, écriture et suppression soumises à approbation). Le
+    // paramètre est ignoré côté client ET non lu ici, donc un client qui
+    // l'enverrait encore ne pourrait pas s'attribuer plus de droits.
+    const autonomy = "standard" as const;
     const budget = resolveAgentExecutionBudget({ tier });
 
     // 8. Nouveau run ou reprise du run en attente (approbation, question).
     const isContinuation = Boolean(body.messages);
     const messageId = (body.message as { id?: string } | undefined)?.id ?? null;
     if (!isContinuation && messageId) {
-      const replay = await getAgentRunByMessageId({ chatId: ctx.id, messageId });
+      const replay = await getAgentRunByMessageId({
+        chatId: ctx.id,
+        messageId,
+      });
       if (replay) {
-        return Response.json({ code: "existing_run", runId: replay.id, status: replay.status }, { status: 409 });
+        return Response.json(
+          { code: "existing_run", runId: replay.id, status: replay.status },
+          { status: 409 }
+        );
       }
     }
     const activeRun = isContinuation
       ? await getActiveAgentRunByChatId({ chatId: ctx.id })
       : null;
     if (isContinuation && !activeRun) {
-      return errorResponse("conflict", { message: "Aucun run actif à reprendre dans cette conversation." });
+      return errorResponse("conflict", {
+        message: "Aucun run actif à reprendre dans cette conversation.",
+      });
     }
     if (!isContinuation) {
       const active = await getActiveAgentRunByChatId({ chatId: ctx.id });
       if (active) {
-        return Response.json({ code: "active_run_conflict", runId: active.id }, { status: 409 });
+        return Response.json(
+          { code: "active_run_conflict", runId: active.id },
+          { status: 409 }
+        );
       }
     }
     let resumeSummary: string | null = null;
     let parentRunId: string | null = null;
     if (body.resumeFromRunId) {
-      if (!flags["agent.guidedResume"]) return errorResponse("service_unavailable", { message: "La reprise guidée n'est pas encore activée." });
-      if (isContinuation) return errorResponse("invalid_request", { message: "Une reprise guidée doit envoyer une nouvelle consigne." });
-      const parent = await getAgentRunById({ id: body.resumeFromRunId, userId: ctx.userId });
-      if (!parent || parent.chatId !== ctx.id || parent.status !== "timed_out") {
-        return errorResponse("invalid_request", { message: "Le run à poursuivre est introuvable ou n'a pas expiré dans cette conversation." });
+      if (!flags["agent.guidedResume"])
+        return errorResponse("service_unavailable", {
+          message: "La reprise guidée n'est pas encore activée.",
+        });
+      if (isContinuation)
+        return errorResponse("invalid_request", {
+          message: "Une reprise guidée doit envoyer une nouvelle consigne.",
+        });
+      const parent = await getAgentRunById({
+        id: body.resumeFromRunId,
+        userId: ctx.userId,
+      });
+      if (
+        !parent ||
+        parent.chatId !== ctx.id ||
+        parent.status !== "timed_out"
+      ) {
+        return errorResponse("invalid_request", {
+          message:
+            "Le run à poursuivre est introuvable ou n'a pas expiré dans cette conversation.",
+        });
       }
       parentRunId = parent.id;
       const [steps, executions] = await Promise.all([
         getAgentStepsByRunId({ runId: parent.id }),
         getToolExecutionsByRunId({ runId: parent.id }),
       ]);
-      const completed = executions.filter((item) => item.status === "completed").slice(-8);
+      const completed = executions
+        .filter((item) => item.status === "completed")
+        .slice(-8);
       const entries = completed.map((item) => {
-        const output = item.output && typeof item.output === "object" ? item.output as Record<string, unknown> : {};
-        const useful = ["title", "url", "documentId", "artifactId", "source"].map((key) => output[key]).filter((value): value is string => typeof value === "string").map((value) => value.slice(0, 180));
+        const output =
+          item.output && typeof item.output === "object"
+            ? (item.output as Record<string, unknown>)
+            : {};
+        const useful = ["title", "url", "documentId", "artifactId", "source"]
+          .map((key) => output[key])
+          .filter((value): value is string => typeof value === "string")
+          .map((value) => value.slice(0, 180));
         return `- ${item.toolId}: ${useful.join(" · ") || "résultat disponible dans l'historique"}`;
       });
       resumeSummary = [
         `Reprise liée au run ${parent.id}. Le run initial et ses limites restent inchangés.`,
         `Arrêt: ${(parent.stopReason ?? parent.error ?? "délai dépassé").slice(0, 180)}`,
         "Étapes utiles:",
-        ...steps.filter((step) => step.status === "completed").slice(-10).map((step) => `- ${step.title}: ${(step.summary ?? "").slice(0, 180)}`),
+        ...steps
+          .filter((step) => step.status === "completed")
+          .slice(-10)
+          .map(
+            (step) => `- ${step.title}: ${(step.summary ?? "").slice(0, 180)}`
+          ),
         "Résultats, sources et livrables:",
         ...entries,
-      ].join("\n").slice(0, 3500);
+      ]
+        .join("\n")
+        .slice(0, 3500);
     }
 
     const task = isContinuation
@@ -316,33 +415,57 @@ export async function POST(request: Request) {
     // Outils MCP : les serveurs installés et activés deviennent des outils
     // réellement exécutables (source "mcp"), sous le drapeau agent.mcp.
     const pluginAgentContext = flags["agent.plugins"]
-      ? await listInstalledPluginAgentTools({ tier, userId: ctx.userId }).catch(() => ({ pluginIds: [], tools: [] }))
+      ? await listInstalledPluginAgentTools({ tier, userId: ctx.userId }).catch(
+          (error: unknown) => {
+            console.warn(
+              JSON.stringify({
+                event: "agent_plugin_registry_unavailable",
+                message: error instanceof Error ? error.message : "unknown",
+              })
+            );
+            return { pluginIds: [], tools: [] };
+          }
+        )
       : { pluginIds: [], tools: [] };
     const registeredTools = [
       ...listRegisteredAgentTools(),
       ...pluginAgentContext.tools,
     ];
-    const baselineTools = flags["agent.mcp"]
-      ? [
-          ...registeredTools,
-          ...(await loadMcpContext({
-            chatId: ctx.id,
-            isToolApprovalFlow: false,
-            messages: null,
-            requestedTools: [],
-            skillMcpServerIds: [],
-            skillMcpToolFilter: null,
-            userId: ctx.userId,
-          })
-            .then((mcp) =>
-              listMcpAgentTools({
-                servers: mcp.userMcpServers,
-                userId: ctx.userId,
-              })
-            )
-            .catch(() => [])),
-        ]
-      : registeredTools;
+    const selectedMcpServerIds = Array.from(
+      new Set([...ctx.agentMcpServerIds, ...ctx.skillMcpServerIds])
+    );
+    const baselineTools = filterToolsByFlags(
+      flags["agent.mcp"]
+        ? [
+            ...registeredTools,
+            ...(await loadMcpContext({
+              chatId: ctx.id,
+              isToolApprovalFlow: false,
+              messages: null,
+              requestedTools: [],
+              serverIds: selectedMcpServerIds,
+              skillMcpServerIds: ctx.skillMcpServerIds,
+              skillMcpToolFilter: ctx.skillMcpToolFilter,
+              userId: ctx.userId,
+            })
+              .then((mcp) =>
+                listMcpAgentTools({
+                  serverIds: selectedMcpServerIds,
+                  servers: mcp.userMcpServers,
+                  userId: ctx.userId,
+                })
+              )
+              .catch(() => [])),
+          ]
+        : registeredTools,
+      flags
+    );
+    const skillAgentToolIds = new Set(
+      ctx.skillTools
+        .filter((toolId) => toolId !== "mcp")
+        .map((toolId) => toAgentToolId(toolId) ?? toolId)
+    );
+
     const continuationSnapshot = activeRun
       ? (activeRun.toolPolicySnapshot as Record<string, ToolPermission>)
       : null;
@@ -371,6 +494,10 @@ export async function POST(request: Request) {
           body.enabledCategories ?? settings.enabledCategories ?? null
         ),
         mode: body.toolMode,
+        // Outils engageants : seul le menu « + » peut les activer. Sans cette
+        // liste, `tasks` reste invisible au sélecteur — quel que soit le mode —
+        // donc le modèle ne peut pas fabriquer un plan non demandé.
+        optInToolIds: oneShotOptions?.tasks ? [TASKS_TOOL_ID] : [],
         sessionToken: ctx.sessionToken,
         task,
         tools: baselineTools,
@@ -388,9 +515,11 @@ export async function POST(request: Request) {
 
       // Options one-shot : les outils correspondants sont forcés dans le
       // plateau, indépendamment du mode de sélection (auto / all / catégories).
+      // Pour `tasks`, c'est une redondance volontaire avec `optInToolIds` : les
+      // deux chemins doivent produire le même plateau.
       if (oneShotOptions) {
         const forcedIds = [
-          ...(oneShotOptions.tasks ? ["tasks"] : []),
+          ...(oneShotOptions.tasks ? [TASKS_TOOL_ID] : []),
           ...(oneShotOptions.image ? ["generate_image"] : []),
           ...(oneShotOptions.audio ? ["generate_audio"] : []),
           ...(oneShotOptions.memory ? ["manage_memory"] : []),
@@ -405,10 +534,24 @@ export async function POST(request: Request) {
           }
         }
       }
-      for (const toolId of getMentionedPluginToolIds(task, pluginAgentContext.pluginIds)) {
+      for (const toolId of getMentionedPluginToolIds(
+        task,
+        pluginAgentContext.pluginIds
+      )) {
         if (!selectedTools.some((tool) => tool.id === toolId)) {
           const forced = baselineTools.find((tool) => tool.id === toolId);
           if (forced) selectedTools = [...selectedTools, forced];
+        }
+      }
+      // Les outils d'un Skill sont une contrainte de contexte : ils ne
+      // dépendent pas du sélecteur auto et doivent rester disponibles dès que
+      // le plugin ou le MCP associé est installé.
+      for (const tool of baselineTools) {
+        if (
+          skillAgentToolIds.has(tool.id) &&
+          !selectedTools.some((selected) => selected.id === tool.id)
+        ) {
+          selectedTools = [...selectedTools, tool];
         }
       }
     }
@@ -441,61 +584,103 @@ export async function POST(request: Request) {
       ...new Set(enabledTools.map((tool) => familyForCategory(tool.category))),
     ];
 
-    // 10. Plan de tâche : uniquement pour les tâches qui le justifient, et
-    // conservé tel quel lors d'une reprise.
-    const plan =
-      activeRun?.plan ??
-      (shouldGeneratePlan({ familyCount: families.length, task })
-        ? await generateTaskPlan({
-            families,
-            sessionToken: ctx.sessionToken,
-            task,
-            userId: ctx.userId,
-          })
-        : null);
+    // 10. Plan de tâche.
+    //
+    // Il n'existe que si l'utilisateur a activé l'option « Tâches », et il est
+    // alors produit par l'OUTIL `tasks` lui-même, au premier tour : le modèle le
+    // rédige, l'interface l'affiche, la progression se met à jour via
+    // applyPlanProgress. Un plan généré en amont par le serveur doublonnait cet
+    // outil, coûtait un appel modèle, et suffisait à faire annoncer un plan sur
+    // un simple « Salut » — le modèle le suivait et s'arrêtait là, sans jamais
+    // exécuter quoi que ce soit. Conservé tel quel lors d'une reprise.
+    const plan = activeRun?.plan ?? null;
 
     // 11. Run : création, ou reprise du même run (statut remis en exécution).
     let run = activeRun;
     if (!run) {
       try {
         run = await createAgentRun({
-        autonomy,
-        budget,
-        chatId: ctx.id,
-        messageId,
-        parentRunId,
-        model: resolvedModel,
-        plan,
-        reasoningLevel,
-        status: "running",
-        toolPolicySnapshot: permissions.snapshot,
-        userId: ctx.userId,
+          autonomy,
+          budget,
+          chatId: ctx.id,
+          messageId,
+          model: resolvedModel,
+          parentRunId,
+          plan,
+          reasoningLevel,
+          status: "running",
+          // Le plan, lui, existe pour tous les runs (il cadre les tâches
+          // longues) ; seule l'option « Tâches » décide s'il est visible.
+          // Une reprise réutilise activeRun et n'enregistre rien de nouveau.
+          tasksEnabled: oneShotOptions?.tasks === true,
+          toolPolicySnapshot: permissions.snapshot,
+          userId: ctx.userId,
         });
       } catch (error) {
-        const replay = messageId ? await getAgentRunByMessageId({ chatId: ctx.id, messageId }) : null;
-        if (replay) return Response.json({ code: "existing_run", runId: replay.id, status: replay.status }, { status: 409 });
+        const replay = messageId
+          ? await getAgentRunByMessageId({ chatId: ctx.id, messageId })
+          : null;
+        if (replay)
+          return Response.json(
+            { code: "existing_run", runId: replay.id, status: replay.status },
+            { status: 409 }
+          );
         const conflict = await getActiveAgentRunByChatId({ chatId: ctx.id });
-        if (conflict) return Response.json({ code: "active_run_conflict", runId: conflict.id }, { status: 409 });
+        if (conflict)
+          return Response.json(
+            { code: "active_run_conflict", runId: conflict.id },
+            { status: 409 }
+          );
         throw error;
       }
     }
 
     const executionOwner = randomUUID();
-    if (!await claimAgentRunExecution({ id: run.id, owner: executionOwner })) {
-      console.warn(JSON.stringify({ event: "agent_run_reservation_conflict", runId: run.id, chatId: ctx.id }));
-      return Response.json({ code: "run_execution_in_progress", runId: run.id }, { status: 409 });
+    if (
+      !(await claimAgentRunExecution({ id: run.id, owner: executionOwner }))
+    ) {
+      console.warn(
+        JSON.stringify({
+          chatId: ctx.id,
+          event: "agent_run_reservation_conflict",
+          runId: run.id,
+        })
+      );
+      return Response.json(
+        { code: "run_execution_in_progress", runId: run.id },
+        { status: 409 }
+      );
     }
     if (body.message) {
-      await saveMessages({ messages: [{
-        attachments: [], chatId: ctx.id, createdAt: new Date(),
-        id: messageId as string, parts: (body.message as ChatMessage).parts,
-        role: "user",
-      }] });
+      await saveMessages({
+        messages: [
+          {
+            attachments: [],
+            chatId: ctx.id,
+            createdAt: new Date(),
+            id: messageId as string,
+            parts: (body.message as ChatMessage).parts,
+            role: "user",
+          },
+        ],
+      });
     }
-    if (parentRunId) console.info(JSON.stringify({ event: "agent_run_resumed", runId: run.id, parentRunId, chatId: ctx.id }));
+    if (parentRunId)
+      console.info(
+        JSON.stringify({
+          chatId: ctx.id,
+          event: "agent_run_resumed",
+          parentRunId,
+          runId: run.id,
+        })
+      );
 
     if (activeRun) {
-      await updateAgentRunStatus({ id: activeRun.id, status: "running" });
+      await updateAgentRunStatus({
+        executionOwner,
+        id: activeRun.id,
+        status: "running",
+      });
     }
 
     // 12a. Décisions d'approbation portées par les messages entrants : elles
@@ -544,37 +729,9 @@ export async function POST(request: Request) {
       userId: ctx.userId,
     });
 
-    // Bloc d'instructions des options one-shot : le modèle sait explicitement
-    // ce qu'il doit faire des outils forcés (plan d'abord, génération…).
-    const oneShotInstructions = oneShotOptions
-      ? [
-          ...(oneShotOptions.tasks
-            ? [
-                "L'utilisateur a activé l'option Tâches : commence IMMÉDIATEMENT par appeler l'outil tasks pour structurer un plan réel (2 à 8 tâches concrètes et ordonnées), puis exécute ce plan étape par étape sans attendre de validation.",
-              ]
-            : []),
-          ...(oneShotOptions.image
-            ? [
-                "L'utilisateur a activé l'option Créer une image : utilise l'outil generate_image dès que la demande le permet, sans redemander la permission.",
-              ]
-            : []),
-          ...(oneShotOptions.audio
-            ? [
-                "L'utilisateur a activé l'option Créer un audio : utilise l'outil generate_audio dès que la demande le permet, sans redemander la permission.",
-              ]
-            : []),
-          ...(oneShotOptions.memory
-            ? [
-                "L'utilisateur a activé l'option Mémoire : utilise l'outil manage_memory pour retenir, retrouver ou oublier des informations durables le concernant quand c'est pertinent.",
-              ]
-            : []),
-          ...(oneShotOptions.web
-            ? [
-                "L'utilisateur a demandé la Recherche Web : appuie tes affirmations factuelles sur search_web (et read_url pour les sources identifiées).",
-              ]
-            : []),
-        ].join("\n")
-      : null;
+    // Les options one-shot et la consigne de plan partagent un contrat unique ;
+    // la route ne duplique plus les instructions selon le chemin d'envoi.
+    const oneShotInstructions = buildAgentOneShotInstructions(oneShotOptions);
 
     const agentContext = await buildAgentContext({
       assistantInstructions: ctx.agentInstructions,
@@ -585,17 +742,33 @@ export async function POST(request: Request) {
           .filter(Boolean)
           .join("\n\n") || null,
       contextWindow: capabilities.contextWindow,
-      families,
-      memoryBlock: null,
-      messages: parentRunId && body.message
-        ? await convertToModelMessages([body.message as ChatMessage])
-        : ctx.modelMessages,
+      // La mémoire n'est annoncée que si elle est réellement lisible ici ; le
+      // bloc peut être vide (forfait à 0 élément) sans que la section disparaisse.
+      memoryBlock:
+        [memoryContext.userMemoryBlock, memoryContext.projectMemoryBlock]
+          .filter(Boolean)
+          .join("\n\n") || null,
+      memoryWritable: memoryContext.memoryAllowAdd,
+
+      messages:
+        parentRunId && body.message
+          ? await convertToModelMessages([body.message as ChatMessage])
+          : ctx.modelMessages,
       plan,
       project: projectContext,
       reasoningLevel,
+      reasoningSupported: capabilities.reasoning,
       sessionToken: ctx.sessionToken,
-      skillInstructions: ctx.skillInstructions,
+      skillInstructions:
+        [ctx.skillInstructions, ...ctx.agentSkillInstructions]
+          .filter(Boolean)
+          .join("\n\n") || null,
       task,
+      // Le prompt n'annonce que le plateau RÉELLEMENT retenu pour ce run : un
+      // modèle sans tool calling n'enverra pas la liste, l'agent ne le pourra
+      // pas davantage.
+      tools: describeTools(enabledTools),
+      toolsSupported: capabilities.tools,
       userId: ctx.userId,
       userInstructions: ctx.userCustomEnabled
         ? ctx.userCustomInstructions
@@ -603,18 +776,29 @@ export async function POST(request: Request) {
     });
 
     // 14. Flux d'exécution Agent (mêmes garanties de reprise que le Chat).
+    //
+    // Le collecteur est créé ici et partagé entre le modèle et le runtime : le
+    // premier branche la lecture sur le flux SSE, le second lit le résultat en
+    // fin d'appel pour le rattacher au run. Un collecteur par requête, jamais
+    // global : deux runs concurrents ne doivent pas seoirsiver leurs
+    // raisonnements.
+    const reasoningSink = createReasoningDetailsSink();
     const model = getLanguageModel(resolvedModel, {
       apiKey: ctx.userApiKey,
+      reasoningSink,
       sessionToken: ctx.sessionToken,
       userId: ctx.userId,
     });
 
     const stream = createAgentStream({
       abortSignal: request.signal,
+      agentId: ctx.effectiveAgentId,
       approvalRequiredToolIds,
+
       budget,
       chatId: ctx.id,
       context: agentContext,
+      executionOwner,
       existingMessages: ctx.uiMessages,
       firstUserMessageForTitle: ctx.firstUserMessageForTitle,
       flags,
@@ -623,9 +807,14 @@ export async function POST(request: Request) {
       modelId: resolvedModel,
       plan,
       projectId: ctx.effectiveProjectId ?? null,
+      // Niveau transmis au fournisseur. `null` = on n'envoie rien : le modèle
+      // applique son propre défaut, et `reasoningLevel` reste l'intention
+      // enregistrée. Les deux diffèrent dès que le modèle expose moins de
+      // niveaux que la préférence n'en prévoit.
+      reasoningEffort: reasoning.effort,
       reasoningLevel,
+      reasoningSink,
       runId: run.id,
-      executionOwner,
       // Réflexion visible par défaut : identique au Chat (lib/chat/stream.ts
       // envoie toujours sendReasoning: true). Seuls les parts explicitement
       // fournis par le provider transitent — jamais de chain-of-thought fabriqué.
@@ -640,7 +829,12 @@ export async function POST(request: Request) {
       // zéro (sinon une tâche relancée indéfiniment n'atteint jamais sa limite).
       startToolCallCount: activeRun?.toolCallCount ?? 0,
       task,
+      // Sur une reprise, la valeur vient du run d'origine : l'option a été
+      // décidée à l'envoi initial, pas à chaque question posée en cours de route.
+      tasksEnabled: activeRun?.tasksEnabled ?? oneShotOptions?.tasks === true,
+      tier,
       tools: enabledTools,
+
       userEmail: ctx.userEmail,
       userId: ctx.userId,
     });

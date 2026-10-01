@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { chatOwnerMatches } from "@/lib/agent/channel";
 import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import {
@@ -25,7 +26,12 @@ export async function POST(
   if (!maiUser) {
     return errorResponse("auth_required", { message: "Non authentifié." });
   }
-  const userId = maiUser.id || maiUser.email;
+  const userId = maiUser.id;
+  if (!userId) {
+    return errorResponse("auth_required", {
+      message: "Session utilisateur invalide.",
+    });
+  }
 
   const body = await request.json().catch(() => ({}));
   const bodySchema = z.object({
@@ -45,7 +51,14 @@ export async function POST(
       message: "Discussion introuvable.",
     });
   }
-  if (chat.userId !== userId && chat.userId !== maiUser.email) {
+  if (
+    !chatOwnerMatches({
+      chatUserId: chat.userId,
+      email: maiUser.email,
+      userId: maiUser.id,
+      username: maiUser.username,
+    })
+  ) {
     return errorResponse("access_denied");
   }
 
@@ -60,10 +73,12 @@ export async function POST(
 
   const newId = generateUUID();
   await saveChat({
+    agentId: (chat as any).agentId ?? null,
     customInstructions: (chat as any).customInstructions ?? null,
     id: newId,
-    modeId: (chat as any).modeId ?? "standard",
+    mode: (chat as any).mode ?? "chat",
     projectId: (chat as any).projectId ?? null,
+    skillId: (chat as any).skillId ?? null,
     tags: (chat as any).tags ?? [],
     temperatureOverride: (chat as any).temperatureOverride ?? null,
     title: `${chat.title} (branche)`,

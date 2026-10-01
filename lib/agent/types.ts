@@ -1,6 +1,7 @@
 import type { ZodType } from "zod";
 import type { AgentMode } from "@/lib/agent/channel";
 import type { ToolErrorCategory } from "@/lib/agent/tool-errors";
+import type { ReasoningDetail } from "@/lib/agent/usage";
 import type { ReasoningLevel } from "@/lib/ai/registry/reasoning";
 
 // Types du domaine Agent. Aucun `any` : unions discriminées aux frontières
@@ -135,6 +136,16 @@ export type AgentToolPermissions = {
 
 export type AgentToolAvailability = {
   categories: ToolCategory[];
+  /**
+   * Outil « engageant » : JAMAIS proposé automatiquement, quel que soit le mode
+   * de sélection (auto, all, categories) ou le routeur LLM. Il n'entre dans le
+   * plateau que si l'utilisateur l'a explicitement demandé — aujourd'hui, seule
+   * l'option « Tâches » du menu « + » qualifie `tasks`.
+   *
+   * Sans cette marque, un simple « Salut » suffisait à faire produire au modèle
+   * un plan de tâches que personne n'avait demandé.
+   */
+  optIn?: boolean;
   requires?: {
     files?: boolean;
     reasoning?: boolean;
@@ -243,6 +254,25 @@ export function toolFailure(
   };
 }
 
+export function unwrapAgentToolOutput(output: unknown): unknown {
+  if (!output || typeof output !== "object") return output;
+  const value = output as {
+    data?: unknown;
+    error?: { message?: unknown };
+    success?: unknown;
+  };
+  if (value.success === true && "data" in value) return value.data;
+  if (value.success === false && value.error) {
+    return {
+      error:
+        typeof value.error.message === "string"
+          ? value.error.message
+          : "Erreur de l'outil.",
+    };
+  }
+  return output;
+}
+
 export function isToolSuccess(result: ToolResult): result is ToolSuccess {
   return result.success;
 }
@@ -250,6 +280,7 @@ export function isToolSuccess(result: ToolResult): result is ToolSuccess {
 // Contexte d'exécution d'un outil : tout ce dont une fonction serveur a besoin
 // pour travailler sans dépendre du runtime ni du flux.
 export type ToolExecutionContext = {
+  agentId?: string | null;
   chatId: string;
   projectId: string | null;
   runId: string;
@@ -260,6 +291,7 @@ export type ToolExecutionContext = {
   // rattacher une approbation ou une réponse utilisateur au tool call exact.
   toolCallId: string;
   toolExecutionId: string;
+  tier?: string;
   userEmail: string;
   userId: string;
 };
@@ -268,10 +300,12 @@ export type ToolExecutionContext = {
 // d'exécution d'outil sont créés au moment de chaque appel (voir
 // ToolCallController), puisque un step n'existe qu'une fois l'outil demandé.
 export type AgentToolBaseContext = {
+  agentId?: string | null;
   chatId: string;
   projectId: string | null;
   sessionToken: string;
   signal?: AbortSignal;
+  tier?: string;
   userEmail: string;
   userId: string;
 };
@@ -344,6 +378,7 @@ export type AgentExecutionBudget = {
 };
 
 export type AgentPlanItem = {
+  description?: string;
   id: string;
   label: string;
   status: AgentStepStatus;
@@ -359,16 +394,27 @@ export type AgentPlan = {
 export type AgentRunEvent = {
   model: string;
   reasoningLevel: ReasoningLevel;
+  /**
+   * Niveau réellement transmis au modèle. Diffère de `reasoningLevel` dès que
+   * la préférence n'est pas dans les niveaux du modèle (mAI-2 ne connaît que
+   * max/high/low). Afficher la préférence seule mentirait sur l'effort parti.
+   */
+  effectiveReasoningLevel?: ReasoningLevel;
   runId: string;
   status: AgentRunStatus;
   stepCount?: number;
   toolCallCount?: number;
+  // L'utilisateur a activé l'option « Tâches » sur ce run : seule condition
+  // autorisant l'affichage de la liste de tâches.
+  tasksEnabled?: boolean;
   // Synthèse d'observabilité utilisateur : renseignée en fin de run (flux) et
   // à la reconstruction après refresh (API). Distincte des traces techniques.
   durationMs?: number;
   error?: string | null;
   inputTokens?: number;
   outputTokens?: number;
+  // Sous-ensemble des tokens de sortie, déjà compris dans `totalTokens`.
+  reasoningTokens?: number;
   totalTokens?: number;
 };
 
@@ -406,6 +452,9 @@ export type AgentArtifactRef = {
 
 export type AgentSettings = {
   autonomy: AgentAutonomy;
+  // Écran chargé à chaque arrivée sur la page d'accueil. « Agent » n'est
+  // enregistrable que par un compte qui y a droit (cf. /api/agent/settings).
+  defaultMode: AgentMode;
   defaultModel: string | null;
   defaultProjectId: string | null;
   enabledCategories: ToolCategory[] | null;
@@ -416,6 +465,7 @@ export type AgentSettings = {
 
 export const AGENT_SETTINGS_DEFAULTS: AgentSettings = {
   autonomy: "standard",
+  defaultMode: "chat",
   defaultModel: null,
   defaultProjectId: null,
   enabledCategories: null,
@@ -427,6 +477,10 @@ export type AgentRunUsage = {
   durationMs?: number;
   inputTokens?: number;
   outputTokens?: number;
+  // Décomposition : la réflexion est un sous-ensemble des tokens de sortie, et
+  // le détail brut est conservé quand le fournisseur l'envoie.
+  reasoningDetails?: ReasoningDetail[];
+  reasoningTokens?: number;
   totalTokens?: number;
 };
 
@@ -443,6 +497,7 @@ export type AgentRunRecord = {
   startedAt: Date | null;
   status: AgentRunStatus;
   stepCount: number;
+  tasksEnabled: boolean;
   toolCallCount: number;
   userId: string;
 };

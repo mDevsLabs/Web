@@ -21,6 +21,11 @@ import {
 } from "@/lib/agent/events/business";
 import type { AgentFlags } from "@/lib/agent/flags";
 import {
+  AGENT_FALLBACK_FINAL_RESPONSE,
+  AGENT_FINAL_RESPONSE_INSTRUCTION,
+  composeAgentInstructions,
+} from "@/lib/agent/instructions";
+import {
   type AgentRunClock,
   accumulatedActiveMs,
   closeActivity,
@@ -32,7 +37,10 @@ import {
 } from "@/lib/agent/limits";
 import { persistAgentRunMessages } from "@/lib/agent/persist";
 import { applyPlanProgress } from "@/lib/agent/plan";
-import { takePendingReorientations } from "@/lib/agent/reorientation/service";
+import {
+  acknowledgeReorientations,
+  takePendingReorientations,
+} from "@/lib/agent/reorientation/service";
 import {
   deriveSuggestedActions,
   validateDerivedActions,
@@ -49,6 +57,7 @@ import type {
   ReasoningLevel,
   RegisteredAgentTool,
 } from "@/lib/agent/types";
+import type { ReasoningDetailsSink } from "@/lib/ai/reasoning-details";
 import { resolveReasoningProviderOptions } from "@/lib/ai/registry/reasoning";
 import {
   getStreamContext,
@@ -76,6 +85,7 @@ import { generateUUID } from "@/lib/utils";
 
 export type AgentStreamParams = {
   abortSignal?: AbortSignal;
+  agentId?: string | null;
   approvalRequiredToolIds: string[];
   budget: AgentExecutionBudget;
   chatId: string;
@@ -91,6 +101,18 @@ export type AgentStreamParams = {
   modelId: string;
   plan: AgentPlan | null;
   projectId: string | null;
+  // Niveau réellement transmis au fournisseur. `null` quand le sélecteur est
+  // coupé ou que le modèle n'expose aucun niveau contrôlable : dans ce cas on
+  // n'envoie rien et le fournisseur applique son propre défaut. À ne pas
+  // confondre avec `reasoningLevel`, qui est l'intention enregistrée.
+  reasoningEffort?: ReasoningLevel | null;
+  /**
+   * Collecteur des blocs `reasoning_details`, branché sur le flux par
+   * lib/ai/providers.ts. Transmis par l'appelant plutôt que créé ici : un run
+   * Agent émet plusieurs appels de génération et le détail doit être celui de
+   * l'appel qui vient de finir, pas celui d'un module partagé.
+   */
+  reasoningSink?: ReasoningDetailsSink;
   reasoningLevel: ReasoningLevel;
   revision?: number;
   runId: string;
@@ -110,24 +132,47 @@ export type AgentStreamParams = {
   // chaque reprise (approbation, réponse utilisateur, continuation).
   startToolCallCount?: number;
   startedAt: number;
+  // L'utilisateur a activé l'option « Tâches » sur ce run. Le plan reste
+  // injecté dans le prompt dans tous les cas (il cadre les tâches longues),
+  // mais il n'est diffusé au client — donc affiché — que si ce drapeau est vrai.
+  tasksEnabled: boolean;
   task: string;
+  tier?: string;
   tools: RegisteredAgentTool[];
   userEmail: string;
   userId: string;
 };
 
+// Réexporté depuis le contrat d'instructions partagé : les tests et les
+// appelants historiques continuent d'utiliser l'API publique du runtime.
+export {
+  AGENT_FALLBACK_FINAL_RESPONSE,
+  AGENT_FINAL_RESPONSE_INSTRUCTION,
+  composeAgentInstructions,
+} from "@/lib/agent/instructions";
+
 /**
- * Compose les instructions système en y ajoutant les réorientations demandées
- * par l'utilisateur pendant le run. Exporté pour être testé directement.
+ * Une étape de tool calling doit toujours pouvoir être suivie d'une étape de
+ * synthèse. Le seuil est calculé sur le nombre total d'étapes déjà exécutées,
+ * afin de réserver la dernière place du budget à cette réponse.
  */
-export function composeAgentInstructions(
-  base: string,
-  reorientations: readonly string[]
-): string {
-  if (reorientations.length === 0) {
-    return base;
+export function shouldForceAgentFinalResponse(params: {
+  elapsedMs: number;
+  maxDurationMs: number;
+  maxSteps: number;
+  maxToolCalls: number;
+  stepCount: number;
+  toolCallCount: number;
+  productLimitReached: boolean;
+}): boolean {
+  if (
+    params.productLimitReached ||
+    params.elapsedMs >= params.maxDurationMs ||
+    params.toolCallCount >= params.maxToolCalls
+  ) {
+    return true;
   }
-  return `${base}\n\nCONSIGNES DE RÉORIENTATION DE L'UTILISATEUR (à prendre en compte maintenant, par ordre d'arrivée) :\n${reorientations.map((text) => `- ${text}`).join("\n")}`;
+  return params.stepCount >= Math.max(0, params.maxSteps - 1);
 }
 
 export function createAgentStream(params: AgentStreamParams) {
@@ -146,6 +191,8 @@ export function createAgentStream(params: AgentStreamParams) {
       let plan = params.plan;
       let aborted = false;
       let failure: string | null = null;
+      let lastStepHadText = false;
+      let lastStepHadToolCalls = false;
       let accountingStarted = false;
       let productLimitReached = false;
       // Horloge injectable + checkpoint persisté : la limite produit s'appuie
@@ -159,12 +206,15 @@ export function createAgentStream(params: AgentStreamParams) {
       let usageTotals: {
         inputTokens?: number;
         outputTokens?: number;
+        reasoningTokens?: number;
         totalTokens?: number;
       } = {};
       // Réorientations appliquées aux points sûrs : réinjectées au modèle via
       // le contexte du prochain appel (message système de fin).
       const pendingReorientations: string[] = [];
+      const pendingReorientationIds: string[] = [];
       // Nombre de réorientations déjà transmises au modèle : évite de les
+
       // réinjecter à chaque étape tout en garantissant qu'elles le sont AVANT
       // l'appel suivant.
       let injectedReorientations = 0;
@@ -180,13 +230,23 @@ export function createAgentStream(params: AgentStreamParams) {
             lastStepIndex: state.stepIndex,
             toolSelectionSignature: null,
           },
+          executionOwner: params.executionOwner,
           expectedRevision: revision,
           id: params.runId,
         }).catch(() => false);
+
         if (saved) {
           revision += 1;
         } else {
-          console.warn(JSON.stringify({ event: "agent_checkpoint_conflict", runId: params.runId, revision, stepCount: state.stepIndex, toolCallCount: state.toolCallCount }));
+          console.warn(
+            JSON.stringify({
+              event: "agent_checkpoint_conflict",
+              revision,
+              runId: params.runId,
+              stepCount: state.stepIndex,
+              toolCallCount: state.toolCallCount,
+            })
+          );
         }
         return saved;
       };
@@ -202,17 +262,21 @@ export function createAgentStream(params: AgentStreamParams) {
           error?: string;
           inputTokens?: number;
           outputTokens?: number;
+          reasoningTokens?: number;
           stepCount?: number;
           toolCallCount?: number;
           totalTokens?: number;
         } = {}
       ) => {
         emitAgentRun(writer, {
+          // Le niveau transmis, et la préférence qu'il peut différer de.
+          effectiveReasoningLevel: params.reasoningEffort ?? undefined,
           model: params.modelId,
           reasoningLevel: params.reasoningLevel,
           runId: params.runId,
           status,
           stepCount: extra.stepCount ?? state.stepIndex,
+          tasksEnabled: params.tasksEnabled,
           toolCallCount: extra.toolCallCount ?? state.toolCallCount,
           ...(extra.durationMs === undefined
             ? {}
@@ -224,6 +288,9 @@ export function createAgentStream(params: AgentStreamParams) {
           ...(extra.outputTokens === undefined
             ? {}
             : { outputTokens: extra.outputTokens }),
+          ...(extra.reasoningTokens === undefined
+            ? {}
+            : { reasoningTokens: extra.reasoningTokens }),
           ...(extra.totalTokens === undefined
             ? {}
             : { totalTokens: extra.totalTokens }),
@@ -231,7 +298,7 @@ export function createAgentStream(params: AgentStreamParams) {
       };
 
       emitRun("running");
-      if (plan) {
+      if (plan && params.tasksEnabled) {
         emitAgentPlan(writer, plan);
       }
       // Un run n'est annoncé qu'une fois : une reprise (approbation, question)
@@ -249,21 +316,35 @@ export function createAgentStream(params: AgentStreamParams) {
       const controller = createAgentToolController({
         approvalRequiredToolIds: params.approvalRequiredToolIds,
         base: {
+          agentId: params.agentId,
           chatId: params.chatId,
           projectId: params.projectId,
           sessionToken: params.sessionToken,
           signal: params.abortSignal,
+          tier: params.tier,
           userEmail: params.userEmail,
           userId: params.userId,
         },
+        executionOwner: params.executionOwner,
         maxToolAttempts: Math.max(1, params.budget.maxRetries + 1),
         onPlanProgress: ({ status, title }) => {
           if (!plan) {
             return;
           }
           plan = applyPlanProgress({ plan: plan as AgentPlan, status, title });
-          emitAgentPlan(writer, plan);
-          setAgentRunPlan({ id: params.runId, plan }).catch(() => {});
+          // La progression est toujours persistée ; elle n'est diffusée que si
+          // l'utilisateur a demandé la liste de tâches.
+          if (params.tasksEnabled) {
+            emitAgentPlan(writer, plan);
+          }
+          setAgentRunPlan({
+            executionOwner: params.executionOwner,
+            id: params.runId,
+            plan,
+          }).catch(() => {});
+        },
+        onPlanReplaced: (nextPlan) => {
+          plan = nextPlan;
         },
         runId: params.runId,
         state,
@@ -278,10 +359,13 @@ export function createAgentStream(params: AgentStreamParams) {
         controller,
         tools: params.tools,
       });
-      const providerOptions = resolveReasoningProviderOptions(
-        params.modelId,
-        params.reasoningLevel
-      );
+      // `providerOptions.reasoningEffort` est validé par le provider contre un
+      // enum qui contient exactement les sept niveaux OpenRouter. Le niveau a
+      // déjà été recalé sur le modèle en amont (route.ts) : ici on ne fait que
+      // transmettre, ou rien du tout si le modèle n'en accepte aucun.
+      const providerOptions = params.reasoningEffort
+        ? resolveReasoningProviderOptions(params.reasoningEffort)
+        : undefined;
 
       // Interruption réelle : une réorientation « arrête-toi » doit couper la
       // génération en cours, pas seulement changer un état local. Le
@@ -338,7 +422,10 @@ export function createAgentStream(params: AgentStreamParams) {
         },
         onFinish: async ({ usage }) => {
           const totals = await recordAgentUsage({
+            chatId: params.chatId,
+            idempotencyKey: `agent:${params.runId}:${params.revision ?? 0}`,
             model: params.modelId,
+            projectId: params.projectId,
             sessionToken: params.sessionToken,
             usage: usage as {
               inputTokens?: number;
@@ -350,7 +437,11 @@ export function createAgentStream(params: AgentStreamParams) {
           });
           if (totals.totalTokens > 0) {
             writer.write({
-              data: { tokens: totals.totalTokens, total: totals.totalTokens },
+              data: {
+                reasoningTokens: totals.reasoningTokens,
+                tokens: totals.totalTokens,
+                total: totals.totalTokens,
+              },
               transient: true,
               type: "data-usage",
             });
@@ -358,14 +449,20 @@ export function createAgentStream(params: AgentStreamParams) {
           usageTotals = {
             inputTokens: totals.inputTokens,
             outputTokens: totals.outputTokens,
+            reasoningTokens: totals.reasoningTokens,
             totalTokens: totals.totalTokens,
           };
           await setAgentRunUsage({
+            executionOwner: params.executionOwner,
             id: params.runId,
             usage: {
               durationMs: Date.now() - params.startedAt,
               inputTokens: totals.inputTokens,
               outputTokens: totals.outputTokens,
+              // Détail brut renvoyé par le fournisseur : le provider AI SDK
+              // l'ignore, il est donc capté par le tee SSE (providers.ts).
+              reasoningDetails: params.reasoningSink?.details ?? [],
+              reasoningTokens: totals.reasoningTokens,
               totalTokens: totals.totalTokens,
             },
           }).catch(() => {});
@@ -377,10 +474,12 @@ export function createAgentStream(params: AgentStreamParams) {
           // systématiquement) ; la valeur relue au prochain démarrage sert de
           // baseline cumulée.
           await bumpAgentRunCounters({
+            executionOwner: params.executionOwner,
             id: params.runId,
             stepDelta: 1,
             toolCallDelta: stepToolCalls,
           }).catch(() => {});
+
           state.toolCallCount += stepToolCalls;
           // Fin d'étape = point sûr : la tranche d'activité est refermée puis
           // persistée (un crash ne perd donc pas le temps déjà consommé), et
@@ -399,7 +498,16 @@ export function createAgentStream(params: AgentStreamParams) {
               runId: params.runId,
             });
             if (reorientation) {
-              pendingReorientations.push(reorientation.text);
+              pendingReorientations.push(
+                ...reorientation.instructions.map(
+                  (instruction) => instruction.text
+                )
+              );
+              pendingReorientationIds.push(
+                ...reorientation.instructions.map(
+                  (instruction) => instruction.id
+                )
+              );
               if (reorientation.stopRequested) {
                 // Interruption effective : le flux en cours est coupé, les
                 // étapes suivantes ne partent pas.
@@ -412,11 +520,16 @@ export function createAgentStream(params: AgentStreamParams) {
             // elle sera retentée au point sûr suivant, sans perte.
           }
           const text = (step.text ?? "").trim();
+          lastStepHadText = text.length > 0;
+          lastStepHadToolCalls = stepToolCalls > 0;
           if (text) {
             emitRun("running");
           }
         },
-        prepareStep: ({ steps }) => {
+        prepareStep: async ({ steps }) => {
+          if (state.waitingForUser || state.waitingForApproval) {
+            return { toolChoice: "none" };
+          }
           const elapsed = clock.now() - params.startedAt;
           // Comptage CUMULÉ à travers les reprises : baseline persistée +
           // étapes de l'invocation en cours. L'ancien calcul ne comptait que
@@ -437,41 +550,91 @@ export function createAgentStream(params: AgentStreamParams) {
             productLimitReached = true;
           }
 
+          const stepCount = stepBaseline + steps.length;
+          const maxSteps = Math.max(1, params.budget.maxSteps);
+          const forceFinalResponse = shouldForceAgentFinalResponse({
+            elapsedMs: elapsed,
+            maxDurationMs: params.budget.maxDurationMs,
+            maxSteps,
+            maxToolCalls: params.budget.maxToolCalls,
+            productLimitReached,
+            stepCount,
+            toolCallCount: toolCalls,
+          });
           const patch: { instructions?: string; toolChoice?: "none" } = {};
           // Les réorientations lues au dernier point sûr sont injectées ICI,
           // avant la construction de l'étape suivante. Les lire seulement en
           // fin d'étape (onStepEnd) les rendait inopérantes : les instructions
           // de l'appel suivant étaient déjà figées.
-          if (pendingReorientations.length > injectedReorientations) {
-            patch.instructions = composeAgentInstructions(
-              params.context.instructions,
-              [...pendingReorientations]
-            );
+          const hasNewReorientations =
+            pendingReorientations.length > injectedReorientations;
+          if (hasNewReorientations) {
+            await acknowledgeReorientations({
+              appliedStepIndex: state.stepIndex,
+              ids: pendingReorientationIds.slice(injectedReorientations),
+              runId: params.runId,
+            });
             injectedReorientations = pendingReorientations.length;
           }
 
-          // Budget d'invocation ou limite produit atteinte : on interdit les
-          // outils restants pour forcer une réponse finale au lieu d'une
-          // coupure brutale, sans perdre les résultats déjà produits.
-          if (
-            stop.stop ||
-            elapsed >= params.budget.maxDurationMs ||
-            toolCalls >= params.budget.maxToolCalls
-          ) {
+          // La dernière place du budget est réservée à une synthèse textuelle.
+          // Les instructions de finalisation sont composées avec les
+          // réorientations pour que les deux contrats utilisent le même chemin.
+          //
+          // `planExecution` referredit le plan à chaque étape tant qu'aucune
+          // tâche n'est terminée : sans lui, l'appel à `tasks` suffisait à faire
+          // annoncer un plan puis s'arrêter dessus.
+          const planExecution =
+            !forceFinalResponse &&
+            plan !== null &&
+            plan.items.some((item) => item.status === "pending");
+          if (hasNewReorientations || forceFinalResponse || planExecution) {
+            patch.instructions = composeAgentInstructions(
+              params.context.instructions,
+              pendingReorientations,
+              forceFinalResponse,
+              planExecution
+            );
+          }
+          if (forceFinalResponse) {
             patch.toolChoice = "none";
           }
 
           return Object.keys(patch).length > 0 ? patch : undefined;
         },
         ...(providerOptions ? { providerOptions } : {}),
-        stopWhen: ({ steps }) =>
-          stepBaseline + steps.length >= params.budget.maxSteps ||
-          clock.now() - params.startedAt >= params.budget.maxDurationMs ||
-          shouldStopAtSafePoint({
-            checkpoint: duration,
-            clock,
-            productLimitMs: params.budget.productLimitMs ?? null,
-          }).stop,
+        stopWhen: ({ steps }) => {
+          if (state.waitingForUser || state.waitingForApproval) {
+            return true;
+          }
+
+          const stepCount = stepBaseline + steps.length;
+          const maxSteps = Math.max(1, params.budget.maxSteps);
+          const lastStepHasToolCalls =
+            (steps.at(-1)?.toolCalls?.length ?? 0) > 0;
+          const hardLimitReached =
+            clock.now() - params.startedAt >= params.budget.maxDurationMs ||
+            shouldStopAtSafePoint({
+              checkpoint: duration,
+              clock,
+              productLimitMs: params.budget.productLimitMs ?? null,
+            }).stop;
+
+          // Une étape contenant des outils est suivie d'une étape de synthèse,
+          // même si elle vient d'atteindre le plafond. Le hard stop intervient
+          // seulement après cette tentative, pour ne jamais terminer sur un
+          // ToolCall sans réponse conversationnelle.
+          if (stepCount > maxSteps) {
+            return true;
+          }
+          if (
+            (stepCount >= maxSteps || hardLimitReached) &&
+            !lastStepHasToolCalls
+          ) {
+            return true;
+          }
+          return false;
+        },
         tools,
       });
 
@@ -494,6 +657,29 @@ export function createAgentStream(params: AgentStreamParams) {
         // L'erreur a déjà été captée par onError ; on poursuit la finalisation.
       }
 
+      // Un provider peut respecter toolChoice: "none" tout en renvoyant une
+      // étape vide. On ne laisse jamais un run terminé silencieusement sans
+      // texte conversationnel : les erreurs réseau réelles restent des
+      // erreurs, mais une réponse vide reçoit un fallback persistable.
+      if (
+        !state.waitingForApproval &&
+        !state.waitingForUser &&
+        !aborted &&
+        !failure &&
+        (!lastStepHadText || lastStepHadToolCalls)
+      ) {
+        const fallbackId = generateId();
+        writer.write({ id: fallbackId, type: "text-start" });
+        writer.write({
+          delta: AGENT_FALLBACK_FINAL_RESPONSE,
+          id: fallbackId,
+          type: "text-delta",
+        });
+        writer.write({ id: fallbackId, type: "text-end" });
+        lastStepHadText = true;
+        lastStepHadToolCalls = false;
+      }
+
       // Une suspension n'est ni un échec ni une fin : le run reste actif et
       // reprendra sur la décision ou la réponse enregistrée.
       const finalStatus: AgentRunStatus = state.waitingForApproval
@@ -501,7 +687,9 @@ export function createAgentStream(params: AgentStreamParams) {
         : state.waitingForUser
           ? "waiting_for_user"
           : aborted
-            ? params.abortSignal?.reason === "scheduler_deadline" ? "timed_out" : "cancelled"
+            ? params.abortSignal?.reason === "scheduler_deadline"
+              ? "timed_out"
+              : "cancelled"
             : failure
               ? state.lastErrorCategory === "timeout"
                 ? "timed_out"
@@ -531,7 +719,17 @@ export function createAgentStream(params: AgentStreamParams) {
       await persistCheckpoint();
       const runActiveMs = accumulatedActiveMs(duration, clock);
 
+      if (
+        finalStatus !== "waiting_for_user" &&
+        finalStatus !== "waiting_for_approval"
+      ) {
+        await expireAgentUserInputsForRun({ runId: params.runId }).catch(
+          () => null
+        );
+      }
+
       await updateAgentRunStatus({
+        executionOwner: params.executionOwner,
         ...(finalStatus === "waiting_for_user" ||
         finalStatus === "waiting_for_approval"
           ? {}
@@ -542,19 +740,29 @@ export function createAgentStream(params: AgentStreamParams) {
             ? "Limite de durée du forfait atteinte : le travail réalisé est conservé."
             : null),
         id: params.runId,
-        status: finalStatus,
         onlyIfActive: true,
-        stopReason: finalStatus === "timed_out"
-          ? params.abortSignal?.reason === "scheduler_deadline" ? "scheduler_deadline" : "duration_limit"
-          : finalStatus === "cancelled" ? "interrupted" : finalStatus === "failed" ? "execution_error" : null,
+        status: finalStatus,
+        stopReason:
+          finalStatus === "timed_out"
+            ? params.abortSignal?.reason === "scheduler_deadline"
+              ? "scheduler_deadline"
+              : "duration_limit"
+            : finalStatus === "cancelled"
+              ? "interrupted"
+              : finalStatus === "failed"
+                ? "execution_error"
+                : null,
       }).catch(() => {});
       if (finalStatus === "timed_out") {
-        console.warn(JSON.stringify({ event: "agent_run_timed_out", runId: params.runId, stepCount: state.stepIndex, toolCallCount: state.toolCallCount }));
+        console.warn(
+          JSON.stringify({
+            event: "agent_run_timed_out",
+            runId: params.runId,
+            stepCount: state.stepIndex,
+            toolCallCount: state.toolCallCount,
+          })
+        );
       }
-      if (params.executionOwner) {
-        await releaseAgentRunExecution({ id: params.runId, owner: params.executionOwner }).catch(() => {});
-      }
-
       if (productLimitReached) {
         emitBusiness({
           limitKind: "tier",
@@ -608,6 +816,7 @@ export function createAgentStream(params: AgentStreamParams) {
           }));
           await setAgentRunSuggestedActions({
             actions: displayActions,
+            executionOwner: params.executionOwner,
             id: params.runId,
           }).catch(() => {});
         }
@@ -629,22 +838,38 @@ export function createAgentStream(params: AgentStreamParams) {
         ...usageTotals,
       });
     },
+
     generateId: generateUUID,
     onEnd: async ({ messages: finishedMessages }) => {
-      await persistAgentRunMessages({
-        chatId: params.chatId,
-        existingMessages: params.existingMessages,
-        finishedMessages: finishedMessages as ChatMessage[],
-        firstUserMessageForTitle: params.firstUserMessageForTitle,
-        isContinuation: params.isContinuation,
-        shouldRenameAfterFirst: params.shouldRenameAfterFirst,
-      }).catch((error) => {
+      try {
+        await persistAgentRunMessages({
+          chatId: params.chatId,
+          executionOwner: params.executionOwner,
+          existingMessages: params.existingMessages,
+          finishedMessages: finishedMessages as ChatMessage[],
+          firstUserMessageForTitle: params.firstUserMessageForTitle,
+          isContinuation: params.isContinuation,
+          runId: params.runId,
+          shouldRenameAfterFirst: params.shouldRenameAfterFirst,
+          userId: params.userId,
+        });
+      } catch (error) {
         console.error("Erreur persistance conversation Agent :", error);
-      });
+      } finally {
+        if (params.executionOwner) {
+          await releaseAgentRunExecution({
+            id: params.runId,
+            owner: params.executionOwner,
+          }).catch(() => {});
+        }
+      }
     },
     onError: (error) => {
       if (params.executionOwner) {
-        releaseAgentRunExecution({ id: params.runId, owner: params.executionOwner }).catch(() => {});
+        releaseAgentRunExecution({
+          id: params.runId,
+          owner: params.executionOwner,
+        }).catch(() => {});
       }
       console.error("Erreur de streaming Agent :", error);
       return "Agent a rencontré une erreur pendant l'exécution. Les étapes déjà réalisées restent visibles.";

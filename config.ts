@@ -3,79 +3,44 @@ import { neon } from "npm:@neondatabase/serverless";
 import { jwtVerify, SignJWT } from "npm:jose";
 
 // ─────────────────────────────────────────────
-// Env helper compatible Deno / Node (corrige ReferenceError hors Deno)
+// Config & Données
 // ─────────────────────────────────────────────
-export function getEnv(name: string): string | undefined {
-  try {
-    const denoVal =
-      typeof Deno === "undefined" ? undefined : Deno.env.get(name);
-    if (denoVal) return denoVal;
-  } catch {
-    // ignore — Deno non disponible ou permission refusée
-  }
-  try {
-    if (typeof process !== "undefined" && process.env && process.env[name]) {
-      return process.env[name];
-    }
-  } catch {
-    // ignore
-  }
-}
+export const JWT_EXPIRY = "7d";
+export const BCRYPT_ROUNDS = 12;
 
 // ─────────────────────────────────────────────
-// Rate-limit en mémoire + IP client (corrige imports fantômes
-// `rateLimit` / `clientIp` depuis auth.ts et vibe-posts.ts)
+// Rate limiting en mémoire (par clé : ip ou user)
 // ─────────────────────────────────────────────
-const __rateBuckets = new Map<string, { count: number; resetAt: number }>();
+const rateBuckets = new Map<string, { count: number; resetAt: number }>();
 
-export function clientIp(c: any): string {
-  try {
-    const h =
-      c?.req?.header?.("x-forwarded-for") ||
-      c?.req?.header?.("x-real-ip") ||
-      c?.req?.header?.("cf-connecting-ip");
-    if (typeof h === "string" && h.length > 0) return h.split(",")[0].trim();
-    // Hono / Deno fallback
-    const raw =
-      c?.req?.raw?.headers?.get?.("x-forwarded-for") || c?.env?.ip || c?.ip;
-    if (typeof raw === "string" && raw.length > 0)
-      return raw.split(",")[0].trim();
-  } catch {
-    // ignore
-  }
-  return "unknown";
-}
-
-export async function rateLimit(
-  key: string,
-  limit: number,
-  windowMs: number
-): Promise<boolean> {
+export function rateLimit(key: string, limit: number, windowMs: number): boolean {
   const now = Date.now();
-  const entry = __rateBuckets.get(key);
-  if (!entry || entry.resetAt <= now) {
-    __rateBuckets.set(key, { count: 1, resetAt: now + windowMs });
+  const bucket = rateBuckets.get(key);
+  if (!bucket || now > bucket.resetAt) {
+    rateBuckets.set(key, { count: 1, resetAt: now + windowMs });
     return true;
   }
-  entry.count += 1;
-  if (entry.count > limit) return false;
+  if (bucket.count >= limit) return false;
+  bucket.count += 1;
   return true;
 }
 
-export function rateLimitResponse(c: any) {
-  return c.json({ error: "Trop de requêtes, réessayez plus tard." }, 429);
+export function clientIp(c: any): string {
+  return (
+    c.req.header("x-forwarded-for")?.split(",")[0]?.trim() ||
+    c.req.header("x-real-ip") ||
+    "unknown"
+  );
 }
-export const JWT_EXPIRY = "14d";
-export const BCRYPT_ROUNDS = 12;
 
 export type Tier = "Free" | "Plus" | "Pro" | "Max";
 
 const TIER_ALIASES: Record<string, Tier> = {
   free: "Free",
   gratuit: "Free",
-  max: "Max",
   plus: "Plus",
   pro: "Pro",
+  max: "Max",
 };
 
 /**
@@ -84,13 +49,7 @@ const TIER_ALIASES: Record<string, Tier> = {
  * Une valeur vide ou inconnue retombe sur "Free", comme l'ancien `MAP[t] || MAP["Free"]`.
  */
 export function normalizeTier(tier?: string | null): Tier {
-  return (
-    TIER_ALIASES[
-      String(tier || "")
-        .trim()
-        .toLowerCase()
-    ] || "Free"
-  );
+  return TIER_ALIASES[String(tier || "").trim().toLowerCase()] || "Free";
 }
 
 export function isPaidTier(tier?: string | null): boolean {
@@ -100,9 +59,9 @@ export function isPaidTier(tier?: string | null): boolean {
 // Limites de tokens mAI hebdomadaires (Input + Output)
 export const TIER_LIMITS: Record<Tier, number> = {
   Free: 10_000_000,
-  Max: 50_000_000,
   Plus: 20_000_000,
   Pro: 30_000_000,
+  Max: 50_000_000,
 };
 
 export function getTierMaiTokenLimit(tier?: string | null): number {
@@ -112,9 +71,9 @@ export function getTierMaiTokenLimit(tier?: string | null): number {
 // Limites de tokens Speech hebdomadaires
 export const TIER_SPEECH_LIMITS: Record<Tier, number> = {
   Free: 30_000_000,
-  Max: 300_000_000,
   Plus: 75_000_000,
   Pro: 150_000_000,
+  Max: 300_000_000,
 };
 
 export function getTierSpeechLimit(tier?: string | null): number {
@@ -124,9 +83,9 @@ export function getTierSpeechLimit(tier?: string | null): number {
 // Limites de requêtes API hebdomadaires (remise à zéro le lundi 00:00 UTC)
 export const TIER_REQUEST_LIMITS: Record<Tier, number> = {
   Free: 500,
-  Max: 7500,
   Plus: 1500,
   Pro: 3000,
+  Max: 7500,
 };
 
 export function getTierRequestLimit(tier?: string | null): number {
@@ -138,9 +97,7 @@ export function getTierRequestLimit(tier?: string | null): number {
  * mai-TIER_USER-XXXXX-XXXXX (ex: mai-free-ABC12-defgh, mai-plus-..., mai-pro-..., mai-max-...)
  * Renvoie "Free", "Plus", "Pro", "Max" ou null si non présent.
  */
-export function extractTierFromApiKey(
-  apiKey: string | null | undefined
-): "Free" | "Plus" | "Pro" | "Max" | null {
+export function extractTierFromApiKey(apiKey: string | null | undefined): "Free" | "Plus" | "Pro" | "Max" | null {
   if (!apiKey || typeof apiKey !== "string") return null;
   const match = apiKey.trim().match(/^mai-(free|plus|pro|max)-/i);
   if (!match) return null;
@@ -184,8 +141,7 @@ export async function getUserQuotaBoost(
         AND expires_at >= NOW()
     `;
     return Number(rows[0]?.total_boost || 0);
-  } catch (err) {
-    console.warn("[quotas] getUserQuotaBoost failed:", err);
+  } catch {
     return 0;
   }
 }
@@ -193,9 +149,9 @@ export async function getUserQuotaBoost(
 // Limites quotidiennes de génération d'images
 export const TIER_DAILY_IMAGE_LIMITS: Record<Tier, number> = {
   Free: 5,
-  Max: 35,
   Plus: 10,
   Pro: 20,
+  Max: 35,
 };
 
 export function getTierDailyImageLimit(tier?: string | null): number {
@@ -205,9 +161,9 @@ export function getTierDailyImageLimit(tier?: string | null): number {
 // Coût en requêtes API par image générée (multiplié par le nombre d'images demandées)
 export const TIER_IMAGE_REQUEST_COST: Record<Tier, number> = {
   Free: 100,
-  Max: 10,
   Plus: 50,
   Pro: 25,
+  Max: 10,
 };
 
 export function getTierImageRequestCost(tier?: string | null): number {
@@ -219,30 +175,43 @@ const GIB = 1024 * 1024 * 1024;
 
 export const STORAGE_LIMITS_BYTES: Record<Tier, number> = {
   Free: 10 * GIB,
-  Max: 60 * GIB,
   Plus: 20 * GIB,
   Pro: 40 * GIB,
+  Max: 60 * GIB,
 };
 
 export function getTierStorageLimitBytes(tier?: string | null): number {
   return STORAGE_LIMITS_BYTES[normalizeTier(tier)];
 }
 
+let _cachedDb: ReturnType<typeof neon> | null = null;
+let _lastDbUrl: string | null = null;
+
 export function getDb() {
-  const url = getEnv("DATABASE_URL");
-  if (!url) {
+  const rawUrl =
+    (typeof (globalThis as any).Deno !== "undefined" ? (globalThis as any).Deno.env?.get("DATABASE_URL") : null) ||
+    (typeof process !== "undefined" ? process.env?.DATABASE_URL : null);
+  if (!rawUrl) {
     throw new Error("DATABASE_URL not set");
   }
-  return neon(url);
+
+  // Activer automatiquement le mode connection pooler Neon (-pooler) si disponible
+  let url = rawUrl;
+  if (url.includes('.neon.tech') && !url.includes('-pooler')) {
+    url = url.replace(/@([^:]+)(\.neon\.tech)/, '@$1-pooler$2');
+  }
+
+  if (!_cachedDb || _lastDbUrl !== url) {
+    _cachedDb = neon(url);
+    _lastDbUrl = url;
+  }
+  return _cachedDb;
 }
 
 export function getJwtSecret(): Uint8Array {
-  const secret = getEnv("MAI_JWT_SECRET") || getEnv("JWT_SECRET");
-  if (!secret) {
-    throw new Error(
-      "MAI_JWT_SECRET (ou JWT_SECRET) manquant — définissez la variable d'environnement."
-    );
-  }
+  const secret =
+    (typeof Deno !== "undefined" ? Deno.env.get("MAI_JWT_SECRET") || Deno.env.get("JWT_SECRET") : null) ||
+    "mai_super_secret_jwt_key_2026_default_vibe";
   return new TextEncoder().encode(secret);
 }
 
@@ -268,7 +237,7 @@ export async function verifyToken(
       args: [token],
       sql: "SELECT 1 FROM token_blacklist WHERE token = ?",
     });
-    if (sqliteResult?.rows && sqliteResult.rows.length > 0) {
+    if (sqliteResult && sqliteResult.rows && sqliteResult.rows.length > 0) {
       throw new Error("Token révoqué.");
     }
   } catch (e: any) {
@@ -300,30 +269,22 @@ export async function blacklistToken(token: string) {
       args: [token],
       sql: "INSERT OR IGNORE INTO token_blacklist (token) VALUES (?)",
     });
-  } catch (err) {
-    console.warn("[auth] blacklistToken sqlite failed:", err);
-  }
+  } catch {}
   try {
     const sql = getDb();
     await sql`INSERT INTO token_blacklist (token, revoked_at, expires_at) VALUES (${token}, NOW(), ${expiresAt}::timestamp) ON CONFLICT (token) DO NOTHING`;
-  } catch (err) {
-    console.warn("[auth] blacklistToken postgres failed:", err);
-  }
+  } catch {}
   // Nettoyage opportuniste des vieux tokens
   try {
     const sql = getDb();
     await sql`DELETE FROM token_blacklist WHERE expires_at < NOW() OR revoked_at < NOW() - INTERVAL '14 days'`;
-  } catch (err) {
-    console.warn("[auth] blacklistToken cleanup pg failed:", err);
-  }
+  } catch {}
   try {
     await sqlite.execute({
-      args: [],
       sql: "DELETE FROM token_blacklist WHERE revoked_at < datetime('now', '-14 days')",
+      args: [],
     });
-  } catch (err) {
-    console.warn("[auth] blacklistToken cleanup sqlite failed:", err);
-  }
+  } catch {}
 }
 
 export function extractToken(req: Request): string | null {
@@ -452,7 +413,10 @@ export function getWeekData() {
 // ─────────────────────────────────────────────
 // E-mails & Vérification (SQLite)
 // ─────────────────────────────────────────────
+let sqliteReady = false;
+
 export async function initSQLite() {
+  if (sqliteReady) return;
   await sqlite.execute(`
     CREATE TABLE IF NOT EXISTS verification_codes (
       email TEXT,
@@ -468,12 +432,17 @@ export async function initSQLite() {
       revoked_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
   `);
+  sqliteReady = true;
+  console.log("[SQLite] Tables de vérification initialisées.");
 }
 
 export async function generateVerificationCode(
   email: string,
   action: string
 ): Promise<string> {
+  // Assure que les tables SQLite existent (retry si l'init au démarrage a échoué)
+  await initSQLite();
+
   const isDeletion = action === "delete_account";
   const length = isDeletion ? 8 : 6;
   const min = 10 ** (length - 1);
@@ -500,6 +469,9 @@ export async function verifyVerificationCode(
   code: string,
   action: string
 ): Promise<boolean> {
+  // Assure que les tables SQLite existent
+  await initSQLite();
+
   const result = await sqlite.execute({
     args: [email, action],
     sql: "SELECT code, expires_at FROM verification_codes WHERE email = ? AND action = ?",

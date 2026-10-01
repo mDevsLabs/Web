@@ -1,7 +1,15 @@
-import { redirect } from "next/navigation";
+import type { Metadata } from "next";
+import SkillsClient from "./skills-client";
 
-// Les Skills sont désormais accessibles à tous les forfaits depuis la page
-// Outils (onglet Skills).
-export default function SkillsPage() {
-  redirect("/tools?tab=skills");
+// Rendre la gestion personnelle accessible depuis le catalogue permet de
+// créer, modifier et importer un Skill avec les validations API existantes.
+export const metadata: Metadata = { title: "Mes Skills | mAI" };
+
+export default async function SkillsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ create?: string }>;
+}) {
+  const params = await searchParams;
+  return <SkillsClient initialCreate={params.create === "1"} />;
 }

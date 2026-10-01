@@ -80,7 +80,8 @@ export function remainingBudget(params: {
   );
 
   return {
-    exhausted: remainingMs <= 0 || remainingSteps <= 0,
+    exhausted:
+      remainingMs <= 0 || remainingSteps <= 0 || remainingToolCalls <= 0,
     remainingMs,
     remainingSteps,
     remainingToolCalls,

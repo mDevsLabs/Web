@@ -2,8 +2,20 @@
 // (Open-Meteo : météo et qualité de l'air). Une seule implémentation du
 // géocodage, de la résolution « ville OU coordonnées » et des appels HTTP
 // bornés, pour éviter que chaque plugin recopie sa propre variante.
+import {
+  type BoundedFetchFailureKind,
+  type BoundedFetchOptions,
+  boundedFetchJson,
+  DEFAULT_MAX_BYTES,
+} from "./bounded-fetch";
 
 export const PLUGIN_HTTP_TIMEOUT_MS = 8000;
+const MAX_RESPONSE_BYTES = DEFAULT_MAX_BYTES;
+const OPEN_METEO_HOSTS = new Set([
+  "geocoding-api.open-meteo.com",
+  "api.open-meteo.com",
+  "air-quality-api.open-meteo.com",
+]);
 
 export type GeocodedCity = {
   country: string;
@@ -16,42 +28,71 @@ export type HttpJsonResult<T> =
   | { ok: true; data: T }
   | { ok: false; error: string };
 
+function describeFailure(
+  failure: {
+    kind: BoundedFetchFailureKind | "json";
+    status?: number;
+  },
+  timeoutMs: number
+): string {
+  switch (failure.kind) {
+    case "http":
+      return `Service indisponible (HTTP ${failure.status ?? 0}).`;
+    case "too_large":
+      return "Réponse trop volumineuse.";
+    case "body":
+      return "Réponse vide ou illisible.";
+    case "timeout":
+      return `Délai d'attente dépassé (${Math.round(timeoutMs / 1000)}s).`;
+    case "aborted":
+      return "Requête annulée avant son terme.";
+    case "redirect":
+      return "Redirection du service refusée.";
+    case "json":
+    case "network":
+      return "Erreur réseau ou réponse JSON invalide.";
+  }
+}
+
 // Appel HTTP JSON avec délai maximal : ne bloque jamais une génération et
 // renvoie toujours une erreur exploitable par le modèle.
 export async function fetchJson<T>(
   url: string,
-  timeoutMs = PLUGIN_HTTP_TIMEOUT_MS
+  timeoutMs = PLUGIN_HTTP_TIMEOUT_MS,
+  options: Pick<BoundedFetchOptions, "retries" | "signal"> = {}
 ): Promise<HttpJsonResult<T>> {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  let parsedUrl: URL;
   try {
-    const response = await fetch(url, {
-      headers: { Accept: "application/json" },
-      signal: controller.signal,
-    });
-    if (!response.ok) {
-      return {
-        error: `Service indisponible (HTTP ${response.status}).`,
-        ok: false,
-      };
-    }
-    return { data: (await response.json()) as T, ok: true };
-  } catch (error) {
-    const aborted =
-      error instanceof Error &&
-      (error.name === "AbortError" || error.name === "TimeoutError");
-    return {
-      error: aborted
-        ? `Délai d'attente dépassé (${timeoutMs / 1000}s).`
-        : "Erreur réseau lors de l'appel du service.",
-      ok: false,
-    };
-  } finally {
-    clearTimeout(timer);
+    parsedUrl = new URL(url);
+  } catch {
+    return { error: "Adresse du service invalide.", ok: false };
   }
+  if (
+    parsedUrl.protocol !== "https:" ||
+    !OPEN_METEO_HOSTS.has(parsedUrl.hostname)
+  ) {
+    return { error: "Service Open-Meteo non autorisé.", ok: false };
+  }
+
+  const result = await boundedFetchJson<T>(parsedUrl, {
+    ...options,
+    maxBytes: MAX_RESPONSE_BYTES,
+    timeoutMs,
+  });
+  if (!result.ok) {
+    return { error: describeFailure(result, timeoutMs), ok: false };
+  }
+  return { data: result.data, ok: true };
 }
 
-export async function geocodeCity(city: string): Promise<GeocodedCity | null> {
+type GeocodeResult =
+  | { city: GeocodedCity; ok: true }
+  | { error: string; ok: false; reason: "not_found" | "upstream" };
+
+export async function geocodeCity(
+  city: string,
+  signal?: AbortSignal
+): Promise<GeocodeResult> {
   const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
     city
   )}&count=1&language=fr&format=json`;
@@ -62,19 +103,30 @@ export async function geocodeCity(city: string): Promise<GeocodedCity | null> {
       longitude: number;
       name: string;
     }>;
-  }>(url);
+  }>(url, PLUGIN_HTTP_TIMEOUT_MS, { signal });
   if (!result.ok) {
-    return null;
+    return {
+      error: `Géo-codeur indisponible : ${result.error}`,
+      ok: false,
+      reason: "upstream",
+    };
   }
   const first = result.data.results?.[0];
   if (!first) {
-    return null;
+    return {
+      error: `Ville introuvable : "${city}". Vérifiez l'orthographe.`,
+      ok: false,
+      reason: "not_found",
+    };
   }
   return {
-    country: first.country || "",
-    latitude: first.latitude,
-    longitude: first.longitude,
-    name: first.name,
+    city: {
+      country: first.country || "",
+      latitude: first.latitude,
+      longitude: first.longitude,
+      name: first.name,
+    },
+    ok: true,
   };
 }
 
@@ -84,19 +136,20 @@ export type ResolvedLocation =
 
 // Résout « ville » OU « latitude/longitude » en coordonnées : logique commune
 // aux plugins météo et qualité de l'air.
-export async function resolveLocation(input: {
-  city?: string;
-  latitude?: number;
-  longitude?: number;
-}): Promise<ResolvedLocation> {
+export async function resolveLocation(
+  input: {
+    city?: string;
+    latitude?: number;
+    longitude?: number;
+  },
+  signal?: AbortSignal
+): Promise<ResolvedLocation> {
   if (input.city) {
-    const coords = await geocodeCity(input.city);
-    if (!coords) {
-      return {
-        error: `Ville introuvable : "${input.city}". Vérifiez l'orthographe.`,
-        ok: false,
-      };
+    const geocoded = await geocodeCity(input.city, signal);
+    if (!geocoded.ok) {
+      return { error: geocoded.error, ok: false };
     }
+    const coords = geocoded.city;
     return {
       label: `${coords.name}${coords.country ? `, ${coords.country}` : ""}`,
       latitude: coords.latitude,

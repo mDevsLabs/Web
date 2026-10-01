@@ -24,6 +24,7 @@ import type { editDocument } from "./ai/tools/edit-document";
 import type { generateChart } from "./ai/tools/generate-chart";
 import type { generateDiagram } from "./ai/tools/generate-diagram";
 import type { getAccountUsage } from "./ai/tools/get-account-usage";
+import type { getUsageStatsTool } from "./ai/tools/get-usage-stats";
 import type { getWeather } from "./ai/tools/get-weather";
 import type { imageGenerate } from "./ai/tools/image-generate";
 import type { memory } from "./ai/tools/memory";
@@ -97,6 +98,9 @@ type updateProfilePictureTool = InferUITool<
   ReturnType<typeof updateProfilePicture>
 >;
 type getAccountUsageTool = InferUITool<ReturnType<typeof getAccountUsage>>;
+// L'alias de type est suffixé `Ui` : la fonction importée porte déjà ce nom,
+// et un alias identique la masquerait dans tout le fichier.
+type getUsageStatsUiTool = InferUITool<ReturnType<typeof getUsageStatsTool>>;
 
 export type ChatTools = {
   getWeather: weatherTool;
@@ -127,6 +131,7 @@ export type ChatTools = {
   updateAccountProfile: updateAccountProfileTool;
   updateProfilePicture: updateProfilePictureTool;
   getAccountUsage: getAccountUsageTool;
+  getUsageStats: getUsageStatsUiTool;
 };
 
 export type WaitingStatusData = {
@@ -162,7 +167,9 @@ export type CustomUIDataTypes = {
   proposal: DocumentProposalPayload;
   "chat-title": string;
   "waiting-status": WaitingStatusData;
-  usage: { tokens: number; total: number };
+  // La réflexion est un sous-ensemble des tokens de sortie : elle est déjà
+  // comprise dans `total`, et n'est envoyée que pour l'affichage.
+  usage: { reasoningTokens?: number; tokens: number; total: number };
   podcastProgress: { completed: number; id: string; total: number };
 };
 
@@ -173,7 +180,9 @@ export type ChatMessage = UIMessage<
 >;
 
 export type Attachment = {
-  name: string;
-  url: string;
   contentType: string;
+  name: string;
+  /** Taille connue du fichier, utilisée pour appliquer les limites côté client. */
+  size?: number;
+  url: string;
 };

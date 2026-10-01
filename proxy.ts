@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { API_ERROR_STATUS } from "./lib/api/error-codes";
 import { DEFAULT_MESSAGES_FR } from "./lib/api/error-messages";
+import { isLiveSessionToken } from "./lib/auth/token-liveness";
 import { MAI_SESSION_COOKIE } from "./lib/constants";
 
 export async function proxy(request: NextRequest) {
@@ -25,6 +26,10 @@ export async function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
+  if (pathname === "/changelog") {
+    return NextResponse.next();
+  }
+
   // Routes publiques autorisées
   const isAuthRoute =
     pathname.startsWith("/login") || pathname.startsWith("/register");
@@ -45,7 +50,12 @@ export async function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const token = request.cookies.get(MAI_SESSION_COOKIE)?.value;
+  const rawToken = request.cookies.get(MAI_SESSION_COOKIE)?.value;
+  // La PRÉSENCE du cookie ne suffit pas : un jeton expiré n'est pas une
+  // session. Le traiter comme absent rend /login accessible et fait répondre
+  // 401 les API, au lieu de laisser entrer dans une application où plus rien
+  // ne fonctionne et d'où l'on ne peut pas sortir.
+  const token = isLiveSessionToken(rawToken) ? rawToken : null;
   const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   const isApiRoute = pathname.startsWith("/api/");
 

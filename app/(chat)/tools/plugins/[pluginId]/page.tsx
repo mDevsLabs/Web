@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { isPaidTier } from "@/lib/auth/plan";
 import { getMaiUser } from "@/lib/auth/session";
 import { getPluginInstallationsByUserId } from "@/lib/db/queries";
 import { getPluginManifest } from "@/lib/plugins/catalog";
@@ -7,7 +6,8 @@ import { canUsePlugin } from "@/lib/plugins/tier-lock";
 import PluginDetailClient from "./plugin-detail-client";
 
 export const metadata: Metadata = {
-  description: "Détails d'un plugin mAI : version, description et gestion.",
+  description:
+    "Détails d'un plugin mAI : version, outils, permissions, sécurité et gestion.",
   title: "Plugin | mAI",
 };
 
@@ -41,14 +41,11 @@ export default async function PluginDetailPage({
     );
   }
 
-  const isPaid = isPaidTier(user?.tier);
-  // Verrou de forfait calculé côté serveur : l'interface ne fait qu'afficher
-  // la décision, elle ne l'arbitre jamais.
   const locked = !canUsePlugin(manifest, user?.tier);
   let installed = false;
   let enabled = false;
   let installedVersion: string | null = null;
-  if (isPaid && user) {
+  if (user) {
     const installations = await getPluginInstallationsByUserId({
       userId: user.id || user.email,
     });

@@ -12,13 +12,13 @@ import {
   deactivateScheduleAfterRun,
   ensureOccurrence,
   finishOccurrence,
+  getAgentScheduleForScheduler,
   getOccurrenceById,
+  getScheduleVersionById,
+  getWaitingRequestExpiry,
   listDueSchedules,
   listExpiredLeaseOccurrences,
   listWaitingOccurrences,
-  getScheduleVersionById,
-  getAgentScheduleForScheduler,
-  getWaitingRequestExpiry,
   recordScheduleRun,
   resetOccurrenceToPending,
   setAgentScheduleError,
@@ -44,9 +44,12 @@ export function isWaitingRequestExpired(params: {
   now: Date;
   runStatus: string;
 }): boolean {
-  return (params.runStatus === "waiting_for_approval" || params.runStatus === "waiting_for_user")
-    && params.expiresAt !== null
-    && params.expiresAt.getTime() <= params.now.getTime();
+  return (
+    (params.runStatus === "waiting_for_approval" ||
+      params.runStatus === "waiting_for_user") &&
+    params.expiresAt !== null &&
+    params.expiresAt.getTime() <= params.now.getTime()
+  );
 }
 
 function nextDueForSchedule(
@@ -98,6 +101,7 @@ export async function claimDueOccurrence(params: {
       id: claimed.id,
       now: params.now,
       status: "skipped",
+      workerId: claimed.claimedBy,
     });
     return { occurrence: claimed, outcome: "exhausted" };
   }
@@ -146,13 +150,23 @@ export async function processDueSchedule(params: {
 
   const { occurrence } = claim;
   const version = occurrence.scheduleVersionId
-    ? await getScheduleVersionById({ id: occurrence.scheduleVersionId, scheduleId: params.schedule.id })
+    ? await getScheduleVersionById({
+        id: occurrence.scheduleVersionId,
+        scheduleId: params.schedule.id,
+      })
     : null;
   const executionSchedule = version
-    ? { ...params.schedule, ...version.snapshot, nextDueAt: params.schedule.nextDueAt }
+    ? {
+        ...params.schedule,
+        ...version.snapshot,
+        nextDueAt: params.schedule.nextDueAt,
+      }
     : params.schedule;
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort("scheduler_deadline"), params.timeoutMs ?? 240_000);
+  const timer = setTimeout(
+    () => controller.abort("scheduler_deadline"),
+    params.timeoutMs ?? 240_000
+  );
   let hardTimer: ReturnType<typeof setTimeout> | null = null;
 
   try {
@@ -160,12 +174,19 @@ export async function processDueSchedule(params: {
     // run, la conversation, persiste steps, checkpoints et messages, et rend
     // le statut final relu depuis la base.
     const execution = await Promise.race([
-      executeScheduledRun({ abortSignal: controller.signal, occurrence, schedule: executionSchedule }),
+      executeScheduledRun({
+        abortSignal: controller.signal,
+        occurrence,
+        schedule: executionSchedule,
+      }),
       new Promise<never>((_, reject) => {
-        hardTimer = setTimeout(() => {
-          controller.abort("scheduler_deadline");
-          reject(new Error("Délai maximum du run planifié dépassé."));
-        }, (params.timeoutMs ?? 240_000) + 20_000);
+        hardTimer = setTimeout(
+          () => {
+            controller.abort("scheduler_deadline");
+            reject(new Error("Délai maximum du run planifié dépassé."));
+          },
+          (params.timeoutMs ?? 240_000) + 20_000
+        );
       }),
     ]);
 
@@ -175,17 +196,29 @@ export async function processDueSchedule(params: {
         id: occurrence.id,
         now: params.now,
         runId: execution.runId,
+        workerId: params.workerId,
       });
+
       await finishOccurrence({
         id: occurrence.id,
         now: params.now,
         status: execution.finalStatus === "completed" ? "completed" : "failed",
+        workerId: params.workerId,
       });
+
       if (execution.finalStatus === "completed") {
         const nextDue = nextDueForSchedule(params.schedule, params.now);
-        await closeScheduleAfterRun({ nextDue, now: params.now, schedule: params.schedule });
+        await closeScheduleAfterRun({
+          nextDue,
+          now: params.now,
+          schedule: params.schedule,
+        });
       } else {
-        await setAgentScheduleError({ id: params.schedule.id, expectedRevision: params.schedule.revision, lastError: `Run planifié terminé avec ${execution.finalStatus}.` });
+        await setAgentScheduleError({
+          expectedRevision: params.schedule.revision,
+          id: params.schedule.id,
+          lastError: `Run planifié terminé avec ${execution.finalStatus}.`,
+        });
       }
       return { outcome: "claimed", runId: execution.runId };
     }
@@ -202,10 +235,12 @@ export async function processDueSchedule(params: {
         id: occurrence.id,
         now: params.now,
         status: "skipped",
+        workerId: params.workerId,
       });
+
       await setAgentScheduleError({
-        id: params.schedule.id,
         expectedRevision: params.schedule.revision,
+        id: params.schedule.id,
         lastError:
           "Aucun outil disponible pour cette tâche (réglages ou forfait).",
       });
@@ -213,7 +248,12 @@ export async function processDueSchedule(params: {
     }
 
     if (execution.outcome === "awaiting_resolution") {
-      await waitOccurrence({ id: occurrence.id, runId: execution.runId });
+      await waitOccurrence({
+        id: occurrence.id,
+        runId: execution.runId,
+        workerId: params.workerId,
+      });
+
       // Attente persistée sans lease : aucune échéance suivante ne sera
       // réclamée avant résolution ou expiration de la demande.
       return { outcome: "awaiting_resolution", runId: execution.runId };
@@ -226,7 +266,9 @@ export async function processDueSchedule(params: {
       id: occurrence.id,
       now: params.now,
       status: failed ? "failed" : "completed",
+      workerId: params.workerId,
     });
+
     const nextDue = nextDueForSchedule(params.schedule, params.now);
     await closeScheduleAfterRun({
       nextDue,
@@ -235,8 +277,8 @@ export async function processDueSchedule(params: {
     });
     if (failed) {
       await setAgentScheduleError({
-        id: params.schedule.id,
         expectedRevision: params.schedule.revision,
+        id: params.schedule.id,
         lastError: `Dernier run en échec (${execution.finalStatus}).`,
       });
     }
@@ -257,16 +299,25 @@ export async function processDueSchedule(params: {
         id: occurrence.id,
         now: params.now,
         status: "failed",
+        workerId: params.workerId,
       }).catch(() => {});
+
       await setAgentScheduleError({
-        id: params.schedule.id,
         expectedRevision: params.schedule.revision,
+        id: params.schedule.id,
         lastError: message,
       });
     } else if (fresh?.runId && controller.signal.aborted) {
       // Le run reste lié à l'occurrence et sa lease expire naturellement.
       // Le runtime reçoit l'annulation et finalise son checkpoint en arrière-plan.
-      console.warn(JSON.stringify({ event: "agent_schedule_watchdog", occurrenceId: occurrence.id, runId: fresh.runId, attempt: fresh.attempt }));
+      console.warn(
+        JSON.stringify({
+          attempt: fresh.attempt,
+          event: "agent_schedule_watchdog",
+          occurrenceId: occurrence.id,
+          runId: fresh.runId,
+        })
+      );
     } else {
       await resetOccurrenceToPending({ id: occurrence.id }).catch(() => {});
     }
@@ -287,17 +338,17 @@ async function closeScheduleAfterRun(params: {
 }): Promise<void> {
   if (params.nextDue) {
     await recordScheduleRun({
+      expectedRevision: params.schedule.revision,
       id: params.schedule.id,
       lastRunAt: params.now,
       nextDueAt: params.nextDue,
-      expectedRevision: params.schedule.revision,
     });
     return;
   }
   await deactivateScheduleAfterRun({
+    expectedRevision: params.schedule.revision,
     id: params.schedule.id,
     lastRunAt: params.now,
-    expectedRevision: params.schedule.revision,
   });
 }
 
@@ -325,26 +376,60 @@ export async function runSchedulerTick(params: {
   const deadline = Date.now() + TICK_TIMEOUT_MS;
 
   for (const occurrence of await listWaitingOccurrences({})) {
-    if (Date.now() >= deadline - 5_000) break;
+    if (Date.now() >= deadline - 5000) break;
     if (!occurrence.runId) continue;
     const schedule = await getAgentScheduleForScheduler(occurrence.scheduleId);
     if (!schedule) continue;
-    const run = await getAgentRunById({ id: occurrence.runId, userId: schedule.userId });
+    const run = await getAgentRunById({
+      id: occurrence.runId,
+      userId: schedule.userId,
+    });
     if (!run) continue;
-    if (["completed", "failed", "cancelled", "timed_out"].includes(run.status)) {
-      await finishOccurrence({ id: occurrence.id, now, status: run.status === "completed" ? "completed" : "failed" });
-      await closeScheduleAfterRun({ nextDue: nextDueForSchedule(schedule, now), now, schedule });
-    } else if (run.status === "waiting_for_approval" || run.status === "waiting_for_user") {
+    if (
+      ["completed", "failed", "cancelled", "timed_out"].includes(run.status)
+    ) {
+      await finishOccurrence({
+        id: occurrence.id,
+        now,
+        status: run.status === "completed" ? "completed" : "failed",
+      });
+      await closeScheduleAfterRun({
+        nextDue: nextDueForSchedule(schedule, now),
+        now,
+        schedule,
+      });
+    } else if (
+      run.status === "waiting_for_approval" ||
+      run.status === "waiting_for_user"
+    ) {
       const expiresAt = await getWaitingRequestExpiry({
         kind: run.status === "waiting_for_approval" ? "approval" : "user",
         runId: run.id,
       });
       if (isWaitingRequestExpired({ expiresAt, now, runStatus: run.status })) {
-        const expired = await updateAgentRunStatus({ id: run.id, status: "timed_out", completedAt: now, stopReason: "user_request_expired", error: "Demande utilisateur expirée après 24 heures.", onlyIfActive: true });
+        const expired = await updateAgentRunStatus({
+          completedAt: now,
+          error: "Demande utilisateur expirée après 24 heures.",
+          id: run.id,
+          onlyIfActive: true,
+          status: "timed_out",
+          stopReason: "user_request_expired",
+        });
         if (expired) {
           await finishOccurrence({ id: occurrence.id, now, status: "failed" });
-          await setAgentScheduleError({ id: schedule.id, lastError: "Demande utilisateur expirée après 24 heures : tâche mise en pause." });
-          console.warn(JSON.stringify({ event: "agent_schedule_wait_expired", occurrenceId: occurrence.id, runId: run.id, scheduleId: schedule.id }));
+          await setAgentScheduleError({
+            id: schedule.id,
+            lastError:
+              "Demande utilisateur expirée après 24 heures : tâche mise en pause.",
+          });
+          console.warn(
+            JSON.stringify({
+              event: "agent_schedule_wait_expired",
+              occurrenceId: occurrence.id,
+              runId: run.id,
+              scheduleId: schedule.id,
+            })
+          );
         }
       }
     }
@@ -352,12 +437,12 @@ export async function runSchedulerTick(params: {
 
   const due = await listDueSchedules({ now });
   for (const schedule of due) {
-    if (Date.now() >= deadline - 5_000) break;
+    if (Date.now() >= deadline - 5000) break;
     const result = await processDueSchedule({
       now,
       schedule,
+      timeoutMs: Math.min(TICK_RUN_TIMEOUT_MS, deadline - Date.now() - 5000),
       workerId,
-      timeoutMs: Math.min(TICK_RUN_TIMEOUT_MS, deadline - Date.now() - 5_000),
     });
     results.push({
       outcome: result.outcome,
@@ -375,10 +460,10 @@ export async function runSchedulerTick(params: {
   // (le run actif, s'il existe, sera avancé sans duplication). Celles sans
   // run redeviennent éligibles à un nouveau claim (jamais perdues, jamais
   // doublonnées : clé unique + compteur attempt).
-  if (Date.now() < deadline - 5_000) {
+  if (Date.now() < deadline - 5000) {
     const expired = await listExpiredLeaseOccurrences({ now });
     for (const occurrence of expired) {
-      if (Date.now() >= deadline - 5_000) break;
+      if (Date.now() >= deadline - 5000) break;
       await resetOccurrenceToPending({ id: occurrence.id }).catch(() => {});
     }
   }

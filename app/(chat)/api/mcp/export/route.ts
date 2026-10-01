@@ -2,7 +2,7 @@ import { getMaiUser } from "@/lib/auth/session";
 import { getMcpServersByUserId } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import { type ExportFormat, formatExport } from "@/lib/export/formatters";
-import { sanitizeUrlForClient } from "@/lib/mcp/dto";
+import { toMcpServerDto } from "@/lib/mcp/dto";
 
 export async function GET(request: Request) {
   const user = await getMaiUser();
@@ -13,19 +13,22 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const format = (searchParams.get("format") ?? "json") as ExportFormat;
   const servers = await getMcpServersByUserId({ userId });
-  const rows = servers.map((s) => ({
-    avgLatencyMs: (s as any).avgLatencyMs ?? 0,
-    callCount: (s as any).callCount ?? 0,
-    isEnabled: s.isEnabled ? "enabled" : "disabled",
-    name: s.name,
-    requireApproval: s.requireApproval,
-    timeoutMs: (s as any).timeoutMs ?? 15_000,
-    transport: s.transport,
-    uptimeStatus: (s as any).uptimeStatus ?? "unknown",
-    // Les identifiants et paramètres de requête ressemblant à un secret sont
-    // retirés : un export ne doit pas recopier une URL porteuse de jeton.
-    url: sanitizeUrlForClient(s.url) ?? s.command ?? "",
-  }));
+  const rows = servers.map((s) => {
+    const safe = toMcpServerDto(s);
+    return {
+      avgLatencyMs: safe.avgLatencyMs,
+      callCount: safe.callCount,
+      isEnabled: safe.isEnabled ? "enabled" : "disabled",
+      name: safe.name,
+      requireApproval: safe.requireApproval,
+      timeoutMs: safe.timeoutMs,
+      transport: safe.transport,
+      uptimeStatus: safe.uptimeStatus,
+      // Les identifiants et paramètres de requête ressemblant à un secret
+      // sont retirés ; la commande stdio passe aussi par le DTO redacted.
+      url: safe.url ?? safe.command ?? "",
+    };
+  });
   const cols = [
     "name",
     "transport",

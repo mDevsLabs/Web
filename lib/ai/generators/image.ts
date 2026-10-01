@@ -1,6 +1,7 @@
 import "server-only";
 
 import { MAI_API_URL } from "@/lib/constants";
+import { getUserPreferences } from "@/lib/db/queries";
 import { formatImageSrc } from "@/lib/utils";
 
 // Cœur de génération d'image, extrait de l'outil du Chat
@@ -48,37 +49,26 @@ export async function generateImageViaMai(params: {
       };
     }
 
-    // Préférences utilisateur : modèle et format par défaut, avec repli local
-    // sur les valeurs canoniques (comportement identique à l'outil du Chat).
+    // Préférences utilisateur : lecture directe en base, sans fetch relatif
+    // depuis un module serveur.
     let targetModel = "black-forest-labs/flux-1-schnell";
     let targetWidth = width;
     let targetHeight = height;
-    try {
-      const prefRes = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/user/preferences`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      if (prefRes.ok) {
-        const prefs = (await prefRes.json()) as {
-          defaultImageModel?: string;
-          defaultImageSize?: string;
-        };
-        if (prefs.defaultImageModel) {
-          targetModel = prefs.defaultImageModel;
-        }
-        if (
-          params.request.width === undefined &&
-          params.request.height === undefined &&
-          prefs.defaultImageSize
-        ) {
-          const parts = prefs.defaultImageSize.split("x");
-          if (parts.length === 2) {
-            targetWidth = Number(parts[0]) || 1024;
-            targetHeight = Number(parts[1]) || 1024;
-          }
-        }
+    const prefs = await getUserPreferences(params.userId).catch(() => null);
+    if (prefs?.defaultImageModel) {
+      targetModel = prefs.defaultImageModel;
+    }
+    if (
+      params.request.width === undefined &&
+      params.request.height === undefined &&
+      prefs?.defaultImageSize
+    ) {
+      const parts = prefs.defaultImageSize.split("x");
+      if (parts.length === 2) {
+        targetWidth = Number(parts[0]) || 1024;
+        targetHeight = Number(parts[1]) || 1024;
       }
-    } catch {}
+    }
 
     // Vérification préalable du quota journalier disponible
     try {

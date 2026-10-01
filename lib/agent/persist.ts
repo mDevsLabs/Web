@@ -1,6 +1,7 @@
 import "server-only";
 
 import { generateTitleFromConversation } from "@/app/(chat)/actions";
+import { getAgentRunById } from "@/lib/db/agent-queries";
 import {
   saveMessages,
   updateChatTitleById,
@@ -15,12 +16,22 @@ import { getTextFromMessage } from "@/lib/utils";
 
 export async function persistAgentRunMessages(params: {
   chatId: string;
+  executionOwner?: string | null;
   existingMessages: ChatMessage[];
   finishedMessages: ChatMessage[];
   firstUserMessageForTitle: ChatMessage | null;
   isContinuation: boolean;
+  runId?: string;
   shouldRenameAfterFirst: boolean;
+  userId?: string;
 }): Promise<void> {
+  if (params.runId && params.executionOwner && params.userId) {
+    const run = await getAgentRunById({
+      id: params.runId,
+      userId: params.userId,
+    }).catch(() => null);
+    if (!run || run.executionOwner !== params.executionOwner) return;
+  }
   if (params.finishedMessages.length === 0) {
     return;
   }

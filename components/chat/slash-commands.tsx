@@ -3,7 +3,6 @@
 import {
   BarChart3Icon,
   BombIcon,
-  BotIcon,
   BrainIcon,
   CalculatorIcon,
   CalendarClockIcon,
@@ -36,45 +35,13 @@ import {
 } from "lucide-react";
 import { type ReactNode, useCallback, useEffect, useRef } from "react";
 import { toast } from "sonner";
+import { BotGlyph } from "@/components/agents/bot-avatar";
+import type { SlashCommandAction } from "@/lib/chat/slash-command-catalog";
+import { AGENT_EXCLUDED_SLASH_ACTIONS } from "@/lib/chat/slash-command-outcomes";
 import type { CustomCommand } from "@/lib/db/schema";
 import { cn } from "@/lib/utils";
 
-export type SlashCommandAction =
-  | "new"
-  | "clear"
-  | "ghost"
-  | "rename"
-  | "model"
-  | "agents"
-  | "export"
-  | "theme"
-  | "delete"
-  | "purge"
-  | "usage"
-  | "library"
-  | "projects"
-  | "planning"
-  | "notes"
-  | "search"
-  | "home"
-  | "tasks"
-  | "tool-image"
-  | "tool-audio"
-  | "tool-web"
-  | "tool-code"
-  | "tool-weather"
-  | "tool-doc"
-  | "tool-suggest"
-  | "tool-calc"
-  | "tool-time"
-  | "tool-note"
-  | "tool-chart"
-  | "tool-memory"
-  | "tool-qr"
-  | "tool-summary"
-  | "quiz"
-  | "tools-clear"
-  | "custom";
+export type { SlashCommandAction } from "@/lib/chat/slash-command-catalog";
 
 export type SlashCommand = {
   name: string;
@@ -120,11 +87,14 @@ export const slashCommands: SlashCommand[] = [
     name: "model",
   },
   {
-    action: "agents",
-    aliases: ["agent", "agents", "ia-agents"],
-    description: "Ouvrir le menu de choix des agents",
-    icon: <BotIcon className="size-3.5" />,
-    name: "agents",
+    action: "bots",
+    // `agents`, `agent` et `ia-agents` restent des alias : ils étaient les
+    // déclencheurs de l'ancienne entrée, et les faire disparaître casserait les
+    // habitudes prises sans rien gagner — le menu n'affiche que `name`.
+    aliases: ["bot", "agents", "agent", "ia-agents"],
+    description: "Ouvrir le menu de choix des bots",
+    icon: <BotGlyph className="size-3.5" />,
+    name: "bots",
   },
   {
     action: "export",
@@ -235,7 +205,7 @@ export const slashCommands: SlashCommand[] = [
   },
   {
     action: "tool-note",
-    aliases: ["note", "notes", "memo", "mémo"],
+    aliases: ["note", "memo", "mémo"],
     description: "Activer création de note téléchargeable (one-shot)",
     icon: <NotebookIcon className="size-3.5" />,
     name: "note",
@@ -246,13 +216,6 @@ export const slashCommands: SlashCommand[] = [
     description: "Ouvrir la planification de tâches (/planning)",
     icon: <CalendarClockIcon className="size-3.5" />,
     name: "planning",
-  },
-  {
-    action: "notes",
-    aliases: ["notes", "mes-notes", "fichiers"],
-    description: "Accéder à vos documents et stockage (/library)",
-    icon: <NotebookIcon className="size-3.5" />,
-    name: "notes",
   },
   {
     action: "home",
@@ -326,6 +289,7 @@ export const slashCommands: SlashCommand[] = [
 ];
 
 type SlashCommandMenuProps = {
+  id?: string;
   query: string;
   onSelect: (command: SlashCommand) => void;
   onClose: () => void;
@@ -337,12 +301,14 @@ type SlashCommandMenuProps = {
 
 function SlashCommandMenuItem({
   cmd,
+  id,
   index,
   onSelect,
   selectedIndex,
   supportsTools = true,
 }: {
   cmd: SlashCommand;
+  id?: string;
   index: number;
   onSelect: (command: SlashCommand) => void;
   selectedIndex: number;
@@ -370,6 +336,8 @@ function SlashCommandMenuItem({
 
   return (
     <button
+      aria-disabled={isDisabled}
+      aria-selected={index === selectedIndex && !isDisabled}
       className={cn(
         "flex w-full items-center gap-3 px-4 py-2.5 text-left transition-colors",
         isDisabled
@@ -379,8 +347,10 @@ function SlashCommandMenuItem({
             : "hover:bg-muted/40"
       )}
       data-selected={index === selectedIndex && !isDisabled}
+      id={id}
       onClick={handleClick}
       onMouseDown={handleMouseDown}
+      role="option"
       type="button"
     >
       <div className="flex size-6 shrink-0 items-center justify-center text-muted-foreground/60">
@@ -410,7 +380,8 @@ function SlashCommandMenuItem({
 export type SlashCommandContext = {
   // Page d'accueil = aucune conversation en cours
   isHome?: boolean;
-  // Plans gratuits : /agents masquée
+  // Plans gratuits : /bots et les commandes personnalisées sont masquées — le
+  // sélecteur de bots lui-même ne s'affiche pas sur ces comptes.
   isFree?: boolean;
   // Mode d'exécution : « agent » filtre les commandes sans sens dans l'espace
   // Agent (mode fantôme, quiz, outils propres au Chat) et remappe les toggles
@@ -418,30 +389,10 @@ export type SlashCommandContext = {
   mode?: "agent" | "chat";
 };
 
-// Commandes conservées en mode Agent : navigation, export, thème et les
-// toggles remappés (image / audio / web / mémoire / tâches). Les autres
-// n'ont pas d'équivalent côté Agent et sont masquées plutôt que grisées.
-const AGENT_EXCLUDED_SLASH_ACTIONS = new Set([
-  "agents",
-  "clear",
-  "delete",
-  "ghost",
-  "model",
-  "purge",
-  "quiz",
-  "rename",
-  "tool-calc",
-  "tool-chart",
-  "tool-code",
-  "tool-doc",
-  "tool-note",
-  "tool-qr",
-  "tool-weather",
-  "tool-suggest",
-  "tool-summary",
-  "tool-time",
-  "tools-clear",
-]);
+// Commandes exclues en mode Agent : ce sont celles SANS issue implémentée
+// (lib/chat/slash-command-outcomes.ts). La liste est le complément de ce qui
+// fonctionne, donc une commande ajoutée sans implémentation disparaît du menu
+// Agent au lieu d'y apparaître puis d'échouer sur un toast.
 
 export function customCommandsToSlashCommands(
   commands: CustomCommand[]
@@ -482,13 +433,14 @@ export function getFilteredSlashCommands(
   if (context?.isHome) {
     // Pas de conversation à exporter sur l'accueil
     list = list.filter((cmd) => cmd.action !== "export");
-  } else if (context?.isHome === false) {
-    // Conversation commencée : /agents masquée
-    list = list.filter((cmd) => cmd.action !== "agents");
   }
   if (context?.isFree) {
+    // `/bots` et les commandes personnalisées visent des fonctions réservées
+    // aux forfaits payants : les proposer à un compte Free mènerait à un sélecteur
+    // absent. Le filtre est posé ICI, sur le catalogue, plutôt que dans chaque
+    // composer — les deux sont alimentés par la même liste.
     list = list.filter(
-      (cmd) => cmd.action !== "agents" && cmd.action !== "custom"
+      (cmd) => cmd.action !== "bots" && cmd.action !== "custom"
     );
   }
   const q = query.toLowerCase().trim();
@@ -515,6 +467,7 @@ export function getFilteredSlashCommands(
 }
 
 export function SlashCommandMenu({
+  id = "composer-slash-listbox",
   query,
   onSelect,
   onClose: _onClose,
@@ -526,12 +479,19 @@ export function SlashCommandMenu({
   const menuRef = useRef<HTMLDivElement>(null);
   const filtered = getFilteredSlashCommands(query, context, customCommands);
 
+  const selectedOptionId = filtered[selectedIndex]
+    ? `${id}-option-${selectedIndex}`
+    : null;
+
   useEffect(() => {
-    const selected = menuRef.current?.querySelector("[data-selected='true']");
+    if (!selectedOptionId) {
+      return;
+    }
+    const selected = menuRef.current?.querySelector(`#${selectedOptionId}`);
     if (selected) {
       selected.scrollIntoView({ block: "nearest" });
     }
-  }, []);
+  }, [selectedOptionId]);
 
   if (filtered.length === 0) {
     return null;
@@ -539,8 +499,11 @@ export function SlashCommandMenu({
 
   return (
     <div
+      aria-label="Commandes slash"
       className="absolute bottom-full left-0 right-0 z-50 mb-3 overflow-hidden rounded-2xl border border-border/80 bg-white dark:bg-zinc-900 text-foreground shadow-2xl ring-1 ring-black/10 dark:ring-white/10"
+      id={id}
       ref={menuRef}
+      role="listbox"
     >
       <div className="px-4 py-2.5 bg-muted/40 border-b border-border/40 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground flex items-center justify-between">
         <span>Commandes (/)</span>
@@ -552,8 +515,9 @@ export function SlashCommandMenu({
         {filtered.map((cmd, index) => (
           <SlashCommandMenuItem
             cmd={cmd}
+            id={`${id}-option-${index}`}
             index={index}
-            key={cmd.name}
+            key={`${cmd.action}-${cmd.name}`}
             onSelect={onSelect}
             selectedIndex={selectedIndex}
             supportsTools={supportsTools}

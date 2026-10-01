@@ -1,6 +1,7 @@
 import { errorResponse } from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
 import { duplicateAgent, getAgentsByUserId } from "@/lib/db/queries";
+import { agentQuotaMessage, getTierAgentLimit } from "@/lib/plans/tier-limits";
 
 export async function POST(
   _request: Request,
@@ -13,10 +14,12 @@ export async function POST(
   const user = guard.user;
   const userId = user.id || user.email;
   const existing = await getAgentsByUserId({ userId });
-  if (existing.length >= 10) {
+  // Quota d'agents : Plus 15 / Pro 25 / Max illimité (null = pas de contrôle).
+  const agentLimit = getTierAgentLimit(user.tier);
+  if (agentLimit !== null && existing.length >= agentLimit) {
     return errorResponse("quota_exceeded", {
-      details: { limit: 10, used: existing.length },
-      message: "Limite de 10 agents atteinte.",
+      details: { limit: agentLimit, used: existing.length },
+      message: agentQuotaMessage(agentLimit),
       status: 403,
     });
   }

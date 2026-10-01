@@ -63,7 +63,7 @@ export const generateAudioTool = defineTool({
         voice: input.voice,
       },
       resolveToken: () => context.sessionToken,
-      userId: context.userEmail,
+      userId: context.userId,
     });
     return audioResultToToolResult(output);
   },

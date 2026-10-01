@@ -136,10 +136,11 @@ export function contextWindowFor(
 // Modèles utilisables par Agent : compatibilité complète outillage requise
 // (définitions, ToolCalls structurés, continuation après ToolResult).
 export function isAgentCompatible(entry: AgentModelEntry): boolean {
-  return (
-    entry.agentCompatibility.toolDefinitions &&
-    entry.agentCompatibility.structuredToolCalls &&
-    entry.agentCompatibility.continuationAfterToolResult
+  return Boolean(
+    entry.capabilities.tools &&
+      entry.agentCompatibility?.toolDefinitions &&
+      entry.agentCompatibility?.structuredToolCalls &&
+      entry.agentCompatibility?.continuationAfterToolResult
   );
 }
 
@@ -206,14 +207,21 @@ export function pickDefaultAgentModel(
 export {
   DEFAULT_MAX_FILES,
   deriveModelCapabilities,
+  getMemoizedCapabilities,
   type ModelCapabilities,
+  type ReasoningEffortResolution,
+  resetCapabilitiesCache,
+  resolveReasoningEffort,
 } from "@/lib/ai/registry/capabilities";
 export {
   DEFAULT_REASONING_LEVEL,
   isReasoningLevel,
   normalizeReasoningLevel,
+  REASONING_LEVEL_DESCRIPTIONS,
+  REASONING_LEVEL_LABELS,
   REASONING_LEVELS,
   type ReasoningLevel,
+  resolveReasoningProviderOptions,
 } from "@/lib/ai/registry/reasoning";
 export {
   filterModelsForTier,

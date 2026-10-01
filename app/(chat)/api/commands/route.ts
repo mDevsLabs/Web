@@ -5,6 +5,7 @@ import {
   zodIssuesMessage,
 } from "@/lib/api/error-response";
 import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
+import { isReservedSlashCommandTrigger } from "@/lib/chat/slash-command-catalog";
 import { commandPayloadSchema } from "@/lib/commands/types";
 import {
   createCustomCommand,
@@ -61,6 +62,18 @@ export async function POST(request: Request) {
 
   try {
     const parsed = createCommandSchema.parse(await request.json());
+    // Une commande personnalisée ne peut pas porter un déclencheur système :
+    // le menu place les customs en tête, elle exécuterait donc à la place de
+    // `/image` ou `/clear` — un comportement différent selon l'ordre d'affichage,
+    // et invisible pour l'utilisateur qui croit utiliser la commande système.
+    if (
+      parsed.kind === "slash" &&
+      isReservedSlashCommandTrigger(parsed.trigger)
+    ) {
+      return errorResponse("conflict", {
+        message: `« /${parsed.trigger} » est une commande système. Choisissez un autre déclencheur.`,
+      });
+    }
     const created = await createCustomCommand({
       ...parsed,
       userId,

@@ -3,16 +3,14 @@
 import { GhostIcon, TriangleAlertIcon } from "lucide-react";
 
 export function GhostBanner({
-  isNewChatInput,
   toggleGhostMode,
 }: {
-  isNewChatInput: boolean;
   toggleGhostMode: () => void;
 }) {
   return (
-    <div className="flex items-center justify-between gap-2 px-3 py-2 rounded-xl border border-purple-500/30 bg-purple-500/10 text-purple-300 text-xs shadow-xs">
+    <div className="flex items-center justify-between gap-2 px-3 py-2 rounded-xl border border-warning/30 bg-warning/10 text-xs shadow-xs">
       <div className="flex items-center gap-2 min-w-0">
-        <GhostIcon className="size-4 shrink-0 text-purple-400 animate-pulse" />
+        <GhostIcon className="size-4 shrink-0 text-warning animate-pulse" />
         <span className="font-semibold text-foreground shrink-0">
           Mode fantôme actif
         </span>
@@ -21,15 +19,18 @@ export function GhostBanner({
           indisponible.
         </span>
       </div>
-      {isNewChatInput ? (
-        <button
-          className="text-xs font-medium text-purple-400 hover:text-purple-300 underline shrink-0 ml-auto cursor-pointer"
-          onClick={toggleGhostMode}
-          type="button"
-        >
-          Désactiver
-        </button>
-      ) : null}
+      {/* Le bouton était conditionné à `isNewChatInput` : activé dans une
+          conversation enregistrée, le mode fantôme restait actif sans aucun
+          moyen de le couper, sinon qu'en recréant une discussion. Le garde
+          n'avait aucune raison d'être — la bannière n'apparaît que si le mode
+          est actif. */}
+      <button
+        className="text-xs font-medium text-warning hover:brightness-110 underline shrink-0 ml-auto cursor-pointer"
+        onClick={toggleGhostMode}
+        type="button"
+      >
+        Désactiver
+      </button>
     </div>
   );
 }

@@ -3,14 +3,14 @@
 import {
   BrainIcon,
   FolderIcon,
-  GaugeIcon,
+  HomeIcon,
   Loader2Icon,
   ShieldCheckIcon,
   SparklesIcon,
   WrenchIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState, type ReactNode } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 import { AgentActivityPanel } from "@/components/agent/agent-activity-panel";
 import { AgentScheduleHistoryPanel } from "@/components/agent/agent-schedule-history-panel";
 import {
@@ -22,19 +22,19 @@ import { PageBackButton } from "@/components/chat/page-back-button";
 import { OptionSelector } from "@/components/settings/option-selector";
 import { useAgentSettings } from "@/hooks/use-agent-settings";
 import { useProjects } from "@/hooks/use-projects";
+import { resolveReasoningOptions } from "@/lib/agent/reasoning-options";
 import { AGENT_FAMILY_LABELS } from "@/lib/agent/tools/selector/families";
-import {
-  AGENT_AUTONOMY_DESCRIPTIONS,
-  AGENT_AUTONOMY_LABELS,
-  type AgentAutonomy,
-  type ToolCategory,
-  type ToolPermission,
+import type {
+  AgentMode,
+  ToolCategory,
+  ToolPermission,
 } from "@/lib/agent/types";
 import {
   REASONING_LEVEL_DESCRIPTIONS,
   REASONING_LEVEL_LABELS,
   type ReasoningLevel,
 } from "@/lib/ai/registry/reasoning";
+import { isPaidTier } from "@/lib/auth/plan";
 import { cn } from "@/lib/utils";
 
 const TOOL_PERMISSION_LABELS: Record<ToolPermission, string> = {
@@ -106,6 +106,21 @@ export default function AgentSettingsPage() {
   const settings = data?.settings;
   const flags = data?.flags;
 
+  // Le sélecteur « Agent » comme écran par défaut n'est proposé qu'aux comptes
+  // qui peuvent réellement l'utiliser : sinon l'affichage proposerait un
+  // réglage que le serveur refuse, et l'utilisateur comprendrait qu'un bouton ne
+  // fait rien.
+  const canChooseDefaultMode = Boolean(
+    flags?.["agent.enabled"] && data?.tier && isPaidTier(data.tier)
+  );
+
+  // Les niveaux proposés viennent des capacités du modèle de repli choisi, ou
+  // de l'union du catalogue en mode automatique. Aucune liste n'est écrite ici.
+  const reasoningOptions = resolveReasoningOptions({
+    models: data?.agentModels ?? [],
+    selectedModelId: settings?.defaultModel ?? null,
+  });
+
   return (
     <div className="flex h-full flex-1 flex-col overflow-y-auto bg-background">
       <div className="mx-auto w-full max-w-6xl p-4 pb-16 sm:p-6 md:p-10">
@@ -123,8 +138,8 @@ export default function AgentSettingsPage() {
               Paramètres Agent
             </h1>
             <p className="mt-1 text-xs text-muted-foreground sm:text-sm">
-              Modèle, réflexion, autonomie et autorisations d'outils. Chaque
-              réglage est revérifié côté serveur à l'exécution.
+              Mode d'accueil, modèle, réflexion et autorisations d'outils.
+              Chaque réglage est revérifié côté serveur à l'exécution.
             </p>
           </div>
         </div>
@@ -132,14 +147,27 @@ export default function AgentSettingsPage() {
         {flags?.["agent.activity"] || flags?.["agent.scheduleHistory"] ? (
           <nav className="mt-4 flex gap-4 text-sm">
             <Link href="/settings/agent">Paramètres</Link>
-            {flags?.["agent.activity"] ? <Link href="/settings/agent?view=activity">Activité Agent</Link> : null}
-            {flags?.["agent.scheduleHistory"] ? <Link href="/settings/agent?view=history">Historique planifié</Link> : null}
+            {flags?.["agent.activity"] ? (
+              <Link href="/settings/agent?view=activity">Activité Agent</Link>
+            ) : null}
+            {flags?.["agent.scheduleHistory"] ? (
+              <Link href="/settings/agent?view=history">
+                Historique planifié
+              </Link>
+            ) : null}
           </nav>
         ) : null}
-        {activityView && flags?.["agent.activity"] ? <AgentActivityPanel /> : null}
-        {historyView && flags?.["agent.scheduleHistory"] ? <AgentScheduleHistoryPanel /> : null}
+        {activityView && flags?.["agent.activity"] ? (
+          <AgentActivityPanel />
+        ) : null}
+        {historyView && flags?.["agent.scheduleHistory"] ? (
+          <AgentScheduleHistoryPanel />
+        ) : null}
 
-        {(activityView && flags?.["agent.activity"]) || (historyView && flags?.["agent.scheduleHistory"]) ? null : isLoading || !settings || !flags ? (
+        {(activityView && flags?.["agent.activity"]) ||
+        (historyView && flags?.["agent.scheduleHistory"]) ? null : isLoading ||
+          !settings ||
+          !flags ? (
           <div className="flex flex-col items-center justify-center gap-3 py-20 text-muted-foreground">
             <Loader2Icon className="size-6 animate-spin text-primary" />
             <span className="text-sm">Chargement des paramètres…</span>
@@ -147,21 +175,49 @@ export default function AgentSettingsPage() {
         ) : (
           <div className="flex flex-col gap-4 py-6">
             {flags["agent.enabled"] ? null : (
-              <p className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-4 text-xs text-amber-700 dark:text-amber-300">
+              <p className="surface-muted border-warning/30 bg-warning/10 p-4 text-xs text-warning">
                 L'espace Agent est actuellement désactivé. Ces réglages seront
                 conservés et appliqués dès sa réactivation.
               </p>
             )}
 
+            {canChooseDefaultMode ? (
+              <Section
+                description="Écran affiché à chaque arrivée sur la page d'accueil. Vos conversations existantes gardent leur mode."
+                icon={HomeIcon}
+                title="Mode par défaut"
+              >
+                <OptionSelector
+                  items={[
+                    {
+                      description:
+                        "Conversation directe avec le modèle, sans boucle d'outils.",
+                      id: "chat",
+                      label: "Chat",
+                    },
+                    {
+                      description:
+                        "Agent autonome : il planifie, utilise vos outils et vos fichiers, et rend un résultat complet.",
+                      id: "agent",
+                      label: "Agent",
+                    },
+                  ]}
+                  onChange={(id) => update({ defaultMode: id as AgentMode })}
+                  value={settings.defaultMode}
+                />
+              </Section>
+            ) : null}
+
             <Section
-              description="Modèle utilisé par défaut pour les nouvelles tâches."
+              description="Utilisé uniquement si le modèle partagé avec Chat n'est pas disponible ou compatible avec Agent."
               icon={SparklesIcon}
-              title="Modèle par défaut"
+              title="Modèle de repli"
             >
               <ModelSelectorCompact
                 allowEmpty
                 capabilities={{}}
                 emptyLabel="Automatique (recommandé)"
+                fallbackToFirst={false}
                 models={data.agentModels.map((entry) => ({
                   description: entry.description,
                   id: entry.id,
@@ -179,49 +235,45 @@ export default function AgentSettingsPage() {
             </Section>
 
             <Section
-              description="Profondeur de réflexion demandée au modèle. Autonomie ≠ réflexion : l'autonomie règle l'usage des outils."
+              description="Profondeur de réflexion demandée au modèle. Sans effet sur les outils : l'Agent choisit lui-même ce qu'il utilise, et les autorisations se règlent plus bas."
               icon={BrainIcon}
-              title="Intensité de réflexion"
+              title="Réflexion"
             >
               {flags["agent.reasoning"] ? (
-                <OptionSelector
-                  items={(["low", "medium", "high"] as ReasoningLevel[]).map(
-                    (level) => ({
-                      description: REASONING_LEVEL_DESCRIPTIONS[level],
-                      id: level,
-                      label: REASONING_LEVEL_LABELS[level],
-                    })
-                  )}
-                  onChange={(id) =>
-                    update({ reasoningLevel: id as ReasoningLevel })
-                  }
-                  value={settings.reasoningLevel}
-                />
+                reasoningOptions.isEmpty ? (
+                  <p className="rounded-xl border border-border/50 bg-muted/40 px-3 py-2 text-xs text-muted-foreground">
+                    {reasoningOptions.isAutomatic
+                      ? "Aucun des modèles disponibles ne propose de niveau de réflexion réglable. L'effort restera celui du fournisseur."
+                      : `« ${reasoningOptions.modelId} » ne propose aucun niveau de réflexion réglable : son effort reste celui du fournisseur.`}
+                  </p>
+                ) : (
+                  <>
+                    <OptionSelector
+                      items={reasoningOptions.levels.map((level) => ({
+                        description: REASONING_LEVEL_DESCRIPTIONS[level],
+                        id: level,
+                        label: REASONING_LEVEL_LABELS[level],
+                      }))}
+                      onChange={(id) =>
+                        update({ reasoningLevel: id as ReasoningLevel })
+                      }
+                      value={settings.reasoningLevel}
+                    />
+                    <p className="mt-2 text-xs text-muted-foreground">
+                      {reasoningOptions.mandatory
+                        ? "Ce modèle raisonne obligatoirement : « Désactivée » ne sera pas proposé sur les modèles de cette famille."
+                        : reasoningOptions.isAutomatic
+                          ? "Sans modèle de repli choisi, ce niveau est une préférence : il est recalé sur ce que le modèle de chaque conversation accepte réellement."
+                          : "Ce niveau fait partie de ceux acceptés par le modèle de repli choisi."}
+                    </p>
+                  </>
+                )
               ) : (
                 <p className="rounded-xl border border-border/50 bg-muted/40 px-3 py-2 text-xs text-muted-foreground">
-                  La réflexion est prête côté Agent (registre, validation,
-                  interface) mais reste masquée tant que le paramètre exact
-                  n'est pas confirmé par le fournisseur de modèles.
+                  Le réglage de la réflexion est désactivé côté serveur pour
+                  l'instant. Aucun effort n'est transmis au modèle.
                 </p>
               )}
-            </Section>
-
-            <Section
-              description={AGENT_AUTONOMY_DESCRIPTIONS[settings.autonomy]}
-              icon={GaugeIcon}
-              title="Autonomie"
-            >
-              <OptionSelector
-                items={(["careful", "standard", "high"] as AgentAutonomy[]).map(
-                  (level) => ({
-                    description: AGENT_AUTONOMY_DESCRIPTIONS[level],
-                    id: level,
-                    label: AGENT_AUTONOMY_LABELS[level],
-                  })
-                )}
-                onChange={(id) => update({ autonomy: id as AgentAutonomy })}
-                value={settings.autonomy}
-              />
             </Section>
 
             <Section
@@ -248,7 +300,7 @@ export default function AgentSettingsPage() {
                   return (
                     <button
                       className={cn(
-                        "cursor-pointer rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
+                        "min-h-11 cursor-pointer rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
                         enabled
                           ? "border-primary/40 bg-primary/10 text-foreground"
                           : "border-border/50 bg-card/60 text-muted-foreground hover:text-foreground"
@@ -298,14 +350,16 @@ export default function AgentSettingsPage() {
                     </div>
                     <div className="shrink-0 sm:w-44">
                       <OptionSelector
-                        items={(((tool.impact === "external_mutation" || tool.impact === "deletion") ? ["ask", "off"] : ["auto", "ask", "off"]) as ToolPermission[]).map(
-                          (permission) => ({
-                            description:
-                              TOOL_PERMISSION_DESCRIPTIONS[permission],
-                            id: permission,
-                            label: TOOL_PERMISSION_LABELS[permission],
-                          })
-                        )}
+                        items={(
+                          (tool.impact === "external_mutation" ||
+                          tool.impact === "deletion"
+                            ? ["ask", "off"]
+                            : ["auto", "ask", "off"]) as ToolPermission[]
+                        ).map((permission) => ({
+                          description: TOOL_PERMISSION_DESCRIPTIONS[permission],
+                          id: permission,
+                          label: TOOL_PERMISSION_LABELS[permission],
+                        }))}
                         onChange={(value) =>
                           update({
                             toolPolicies: {
@@ -314,9 +368,12 @@ export default function AgentSettingsPage() {
                           })
                         }
                         value={
-                          (tool.impact === "external_mutation" || tool.impact === "deletion") && settings.toolPolicies[tool.id] === "auto"
+                          (tool.impact === "external_mutation" ||
+                            tool.impact === "deletion") &&
+                          settings.toolPolicies[tool.id] === "auto"
                             ? "ask"
-                            : settings.toolPolicies[tool.id] ?? tool.defaultPermission
+                            : (settings.toolPolicies[tool.id] ??
+                              tool.defaultPermission)
                         }
                       />
                     </div>
@@ -343,7 +400,7 @@ export default function AgentSettingsPage() {
             </Section>
 
             <Section
-              description="Fonctionnalités activées côté serveur par les feature flags Alpha."
+              description="Ce que votre compte peut réellement utiliser. Une pastille verte signale une fonction active, une pastille grise une fonction indisponible — pour votre forfait, ou parce qu'elle est éteinte côté serveur. Ces pastilles sont une lecture, pas un réglage : pour choisir ce qu'Agent peut employer, utilisez « Outils » ci-dessus."
               icon={SparklesIcon}
               title="Disponibilité"
             >
@@ -358,13 +415,14 @@ export default function AgentSettingsPage() {
                     ["agent.plugins", "Plugins"],
                     ["agent.mcp", "MCP"],
                     ["agent.skills", "Skills"],
+                    ["agent.reasoning", "Réflexion"],
                   ] as const
                 ).map(([key, label]) => (
                   <span
                     className={cn(
                       "rounded-full border px-2.5 py-1 text-[11px] font-medium",
                       flags[key]
-                        ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300"
+                        ? "border-success/30 bg-success/10 text-success"
                         : "border-border/50 bg-muted/40 text-muted-foreground"
                     )}
                     key={key}

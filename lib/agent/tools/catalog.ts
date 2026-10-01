@@ -43,7 +43,11 @@ export const AGENT_TOOL_CATALOG: Record<string, AgentToolMetadata> = {
       "Enregistre un livrable déjà créé dans un projet de l'utilisateur, pour que le résultat reste consultable avec le reste du projet. Exige un accord explicite : la demande précise le livrable et le projet.",
     id: "attach_to_project",
     name: "Ajouter un résultat au projet",
-    permissions: { default: "ask", impact: "external_mutation", readOnly: false },
+    permissions: {
+      default: "ask",
+      impact: "external_mutation",
+      readOnly: false,
+    },
   },
   create_artifact: {
     availability: {
@@ -108,7 +112,11 @@ export const AGENT_TOOL_CATALOG: Record<string, AgentToolMetadata> = {
       "Gère la mémoire personnalisée de l'utilisateur : ajouter (add), supprimer (delete), lister (list) ou rechercher (search) des informations durables le concernant (préférences, faits, contexte). Utilise cet outil quand l'utilisateur demande de retenir, d'oublier ou de retrouver des informations mémorisées.",
     id: "manage_memory",
     name: "Gérer la mémoire",
-    permissions: { default: "ask", impact: "external_mutation", readOnly: false },
+    permissions: {
+      default: "ask",
+      impact: "external_mutation",
+      readOnly: false,
+    },
   },
   read_file: {
     availability: {
@@ -152,12 +160,17 @@ export const AGENT_TOOL_CATALOG: Record<string, AgentToolMetadata> = {
   tasks: {
     availability: {
       categories: ["internal"],
+      // Jamais proposé d'office : l'utilisateur doit activer l'option « Tâches »
+      // dans le menu « + ». Sans cela, le modèle fabrique un plan sur un simple
+      // « Salut » et l'utilisateur se retrouve avec une liste de tâches qu'il n'a
+      // jamais demandée.
+      optIn: true,
       requires: { tools: true },
       tiers: "all",
     },
     category: "internal",
     description:
-      "Structure un plan de travail réel avant d'exécuter quoi que ce soit : une liste ordonnée de tâches concrètes (2 à 8), chacune avec un intitulé clair commençant par un verbe à l'infinitif et un résultat attendu. À appeler EN PREMIER, avant tout autre outil, dès que l'utilisateur active l'option Tâches : le plan s'affiche ensuite dans la timeline et guide l'exécution.",
+      "Structure un plan de travail réel avant d'exécuter quoi que ce soit : une liste ordonnée de tâches concrètes (2 à 8), chacune avec un intitulé clair commençant par un verbe à l'infinitif et un résultat attendu. À appeler EN PREMIER, avant tout autre outil, et seulement parce que l'utilisateur a activé l'option Tâches. Le plan s'affiche alors dans la timeline : il doit ensuite être exécuté tâche par tâche, sans s'arrêter sur un simple résumé.",
     id: "tasks",
     name: "Planifier les tâches",
     permissions: { default: "auto", readOnly: true },
@@ -165,6 +178,12 @@ export const AGENT_TOOL_CATALOG: Record<string, AgentToolMetadata> = {
 };
 
 export const AGENT_TOOL_IDS = Object.keys(AGENT_TOOL_CATALOG);
+
+/**
+ * Outil de planification. Seul outil « opt-in » du catalogue : il n'entre dans
+ * le plateau que si l'utilisateur a activé l'option « Tâches » du menu « + ».
+ */
+export const TASKS_TOOL_ID = "tasks";
 
 export function getAgentToolMetadata(
   toolId: string

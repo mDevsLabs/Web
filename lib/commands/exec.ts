@@ -69,8 +69,8 @@ export function executeCustomCommand(
       ctx.setActiveAgent(agent);
       ctx.toast({
         description: agent
-          ? `Agent « ${agent.name} » activé pour la conversation`
-          : "Agent introuvable pour cette commande",
+          ? `Bot « ${agent.name} » activé pour la conversation`
+          : "Bot introuvable pour cette commande",
         type: agent ? "success" : "error",
       });
       break;

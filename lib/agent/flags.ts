@@ -3,6 +3,8 @@
 // l'environnement, le client les reçoit par /api/agent/flags. Aucun composant
 // ne lit process.env directement.
 
+import type { ToolCategory } from "@/lib/agent/types";
+
 export const AGENT_FLAG_KEYS = [
   "agent.enabled",
   "agent.projects",
@@ -24,40 +26,70 @@ export type AgentFlagKey = (typeof AGENT_FLAG_KEYS)[number];
 
 export type AgentFlags = Record<AgentFlagKey, boolean>;
 
-// Les fonctions Alpha essentielles sont actives par défaut ; les fonctions
-// Optional (Skills, MCP) et la réflexion (contrat amont non confirmé) sont
-// désactivées. `agent.enabled` reste un interrupteur global : le mettre à false
-// coupe l'espace Agent sans redéploiement de code.
+const TOOL_FLAG_BY_CATEGORY: Partial<Record<ToolCategory, AgentFlagKey>> = {
+  artifact: "agent.artifacts",
+  files: "agent.files",
+  library: "agent.files",
+  mcp: "agent.mcp",
+  plugins: "agent.plugins",
+  project: "agent.projects",
+  skills: "agent.skills",
+  web: "agent.webSearch",
+};
+
+export function filterToolsByFlags<T extends { category: ToolCategory }>(
+  tools: readonly T[],
+  flags: AgentFlags
+): T[] {
+  return tools.filter((tool) => {
+    const flag = TOOL_FLAG_BY_CATEGORY[tool.category];
+    return flag === undefined || flags[flag];
+  });
+}
+
+// Toutes les fonctions Alpha sont actives par défaut : Skills, MCP et la
+// réflexion ne sont plus expérimentales. Un flag ne décide de rien sur les
+// outils réellement utilisables — il borne ce que l'interface PROPOSE. Sans
+// sélection de catégories, Agent choisit lui-même dans sa boucle ; avec une
+// sélection, elle borne le choix. Le flag n'est donc pas un interrupteur
+// d'accès, et le remettre à `true` n'accorde aucun droit nouveau.
+//
+// Seules les fonctions de confort restent éteintes (Activité, Historique
+// planifié, Aperçu des approbations, Reprise guidée) : elles n'apportent rien
+// au travail lui-même.
+//
+// `agent.enabled` reste un interrupteur global : le mettre à false coupe
+// l'espace Agent sans redéploiement de code.
 export const DEFAULT_AGENT_FLAGS: AgentFlags = {
+  "agent.activity": false,
+  "agent.approvalPreview": false,
   "agent.approvals": true,
   "agent.artifacts": true,
   "agent.enabled": true,
   "agent.files": true,
-  "agent.mcp": false,
-  "agent.approvalPreview": false,
   "agent.guidedResume": false,
-  "agent.scheduleHistory": false,
-  "agent.activity": false,
+  "agent.mcp": true,
   "agent.plugins": true,
   "agent.projects": true,
-  "agent.reasoning": false,
-  "agent.skills": false,
+  "agent.reasoning": true,
+  "agent.scheduleHistory": false,
+  "agent.skills": true,
   "agent.webSearch": true,
 };
 
 export const AGENT_FLAG_LABELS: Record<AgentFlagKey, string> = {
+  "agent.activity": "Activité Agent",
+  "agent.approvalPreview": "Aperçu des approbations",
   "agent.approvals": "Approbations d'outils",
   "agent.artifacts": "Livrables",
   "agent.enabled": "Espace Agent",
   "agent.files": "Fichiers et bibliothèque",
-  "agent.mcp": "Connexions MCP",
-  "agent.approvalPreview": "Aperçu des approbations",
   "agent.guidedResume": "Reprise guidée",
-  "agent.scheduleHistory": "Historique des tâches planifiées",
-  "agent.activity": "Activité Agent",
+  "agent.mcp": "Connexions MCP",
   "agent.plugins": "Plugins",
   "agent.projects": "Projets",
-  "agent.reasoning": "Intensité de réflexion",
+  "agent.reasoning": "Réflexion",
+  "agent.scheduleHistory": "Historique des tâches planifiées",
   "agent.skills": "Skills",
   "agent.webSearch": "Recherche web",
 };
@@ -66,18 +98,18 @@ export const AGENT_FLAG_LABELS: Record<AgentFlagKey, string> = {
 // éteindre les connexions MCP. `AGENT_FLAGS` accepte en plus un objet JSON
 // global, pratique en préproduction : AGENT_FLAGS='{"agent.mcp":true}'.
 export const AGENT_FLAG_ENV: Record<AgentFlagKey, string> = {
+  "agent.activity": "AGENT_ACTIVITY",
+  "agent.approvalPreview": "AGENT_APPROVAL_PREVIEW",
   "agent.approvals": "AGENT_APPROVALS",
   "agent.artifacts": "AGENT_ARTIFACTS",
   "agent.enabled": "AGENT_ENABLED",
   "agent.files": "AGENT_FILES",
-  "agent.mcp": "AGENT_MCP",
-  "agent.approvalPreview": "AGENT_APPROVAL_PREVIEW",
   "agent.guidedResume": "AGENT_GUIDED_RESUME",
-  "agent.scheduleHistory": "AGENT_SCHEDULE_HISTORY",
-  "agent.activity": "AGENT_ACTIVITY",
+  "agent.mcp": "AGENT_MCP",
   "agent.plugins": "AGENT_PLUGINS",
   "agent.projects": "AGENT_PROJECTS",
   "agent.reasoning": "AGENT_REASONING",
+  "agent.scheduleHistory": "AGENT_SCHEDULE_HISTORY",
   "agent.skills": "AGENT_SKILLS",
   "agent.webSearch": "AGENT_WEB_SEARCH",
 };

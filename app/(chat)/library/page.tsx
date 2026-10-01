@@ -3,7 +3,6 @@
 import {
   AlertCircleIcon,
   ArchiveIcon,
-  BotIcon,
   CheckSquareIcon,
   CloudIcon,
   CloudUploadIcon,
@@ -36,6 +35,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";
+import { BotGlyph } from "@/components/agents/bot-avatar";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import {
   AlertDialog,
@@ -1637,7 +1637,7 @@ export default function LibraryPage() {
                 type="button"
                 variant="default"
               >
-                <BotIcon className="size-3.5" />
+                <BotGlyph className="size-3.5" />
                 Discuter avec ce fichier
               </Button>
 

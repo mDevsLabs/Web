@@ -7,24 +7,32 @@ import {
   getScheduledMessageById,
   updateScheduledMessage,
 } from "@/lib/db/queries";
+import { requireOwnedPlanningChat } from "@/lib/planning/chat-access";
+import { SCHEDULE_TOOL_MODES } from "@/lib/planning/tool-mode";
+import { buildNullableCustomInstructionsSchema } from "@/lib/plans/custom-instructions";
 
-const patchSchema = z.object({
-  agentId: z.string().uuid().nullable().optional(),
-  chatId: z.string().uuid().nullable().optional(),
-  cloudFileUrls: z.array(z.string()).optional(),
-  createMode: z.enum(["new_chat", "existing_chat"]).optional(),
-  customInstructions: z.string().max(4000).nullable().optional(),
-  enabledTools: z.array(z.string()).optional(),
-  modelId: z.string().min(1).optional(),
-  prompt: z.string().min(1).max(5000).optional(),
-  recurrence: z.enum(["none", "daily", "weekly", "monthly"]).optional(),
-  scheduledAt: z.string().datetime().optional(),
-  status: z
-    .enum(["pending", "processing", "completed", "failed", "cancelled"])
-    .optional(),
-  temperature: z.number().min(0).max(2).nullable().optional(),
-  title: z.string().min(1).max(100).optional(),
-});
+// customInstructions est borné par le forfait de l'utilisateur : le schéma
+// est construit après résolution de la session (voir PATCH).
+const buildPatchSchema = (tier?: string | null) =>
+  z.object({
+    agentId: z.string().uuid().nullable().optional(),
+    chatId: z.string().uuid().nullable().optional(),
+    cloudFileUrls: z.array(z.string()).optional(),
+    createMode: z.enum(["new_chat", "existing_chat"]).optional(),
+    customInstructions: buildNullableCustomInstructionsSchema(tier),
+    // Obsolète : accepté pour compat, plus lu par l'exécuteur.
+    enabledTools: z.array(z.string()).optional(),
+    modelId: z.string().min(1).optional(),
+    prompt: z.string().min(1).max(5000).optional(),
+    recurrence: z.enum(["none", "daily", "weekly", "monthly"]).optional(),
+    scheduledAt: z.string().datetime().optional(),
+    status: z
+      .enum(["pending", "processing", "completed", "failed", "cancelled"])
+      .optional(),
+    temperature: z.number().min(0).max(2).nullable().optional(),
+    title: z.string().min(1).max(100).optional(),
+    toolMode: z.enum(SCHEDULE_TOOL_MODES).optional(),
+  });
 
 export async function GET(
   request: Request,
@@ -36,7 +44,12 @@ export async function GET(
   }
 
   const { id } = await params;
-  const userId = user.id || user.email;
+  const userId = user.id;
+  if (!userId) {
+    return errorResponse("auth_required", {
+      message: "Session utilisateur invalide.",
+    });
+  }
   const message = await getScheduledMessageById({ id, userId });
 
   if (!message) {
@@ -58,17 +71,45 @@ export async function PATCH(
   }
 
   const { id } = await params;
-  const userId = user.id || user.email;
+  const userId = user.id;
+  if (!userId) {
+    return errorResponse("auth_required", {
+      message: "Session utilisateur invalide.",
+    });
+  }
 
   try {
     const json = await request.json();
-    const parsed = patchSchema.parse(json);
+    const parsed = buildPatchSchema(user.tier).parse(json);
 
     const existing = await getScheduledMessageById({ id, userId });
     if (!existing) {
       return errorResponse("not_found", {
         message: "Message planifié introuvable.",
       });
+    }
+
+    if (
+      (parsed.createMode === "existing_chat" ||
+        existing.createMode === "existing_chat") &&
+      !parsed.chatId &&
+      !existing.chatId
+    ) {
+      return errorResponse("invalid_request", {
+        message:
+          "Une planification existante doit garder une conversation valide.",
+      });
+    }
+
+    const targetChatIds = [existing.chatId, parsed.chatId].filter(
+      (chatId): chatId is string =>
+        typeof chatId === "string" && chatId.length > 0
+    );
+    for (const chatId of new Set(targetChatIds)) {
+      const access = await requireOwnedPlanningChat({ chatId, user });
+      if (access.response) {
+        return access.response;
+      }
     }
 
     // Une planification terminée, échouée ou annulée qui est modifiée (ou
@@ -101,6 +142,7 @@ export async function PATCH(
       status: effectiveStatus,
       temperature: parsed.temperature,
       title: parsed.title,
+      toolMode: parsed.toolMode,
       userId,
     });
 
@@ -137,7 +179,12 @@ export async function DELETE(
   }
 
   const { id } = await params;
-  const userId = user.id || user.email;
+  const userId = user.id;
+  if (!userId) {
+    return errorResponse("auth_required", {
+      message: "Session utilisateur invalide.",
+    });
+  }
 
   const success = await deleteScheduledMessage({ id, userId });
   if (!success) {

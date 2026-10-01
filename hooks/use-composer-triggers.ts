@@ -1,13 +1,22 @@
 "use client";
 
 import type { Dispatch, RefObject, SetStateAction } from "react";
-import { useCallback, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import { toast } from "sonner";
 import {
   deactivateMentionToken,
   detectTrigger,
-  MENTION_TOKEN_RE,
+  findMentionTokenAtCursor,
 } from "@/components/chat/input/mention-utils";
 import {
+  type FlatMentionItem,
   getFilteredMentionItems,
   type MentionSelectPayload,
 } from "@/components/chat/mention-menu";
@@ -17,7 +26,9 @@ import {
   type SlashCommand,
 } from "@/components/chat/slash-commands";
 import type { ProjectLite } from "@/hooks/use-projects";
+import { asArray } from "@/lib/api/client-fetch";
 import type { Agent, CustomCommand, McpServer, Skill } from "@/lib/db/schema";
+import type { PluginManifest } from "@/lib/plugins/types";
 
 // Triggers de composition partagés par le Chat et l'Agent : détection des
 // commandes « / » et des mentions « @ », navigation clavier dans les menus,
@@ -38,16 +49,28 @@ import type { Agent, CustomCommand, McpServer, Skill } from "@/lib/db/schema";
 export type ComposerTriggerOptions = {
   activeAgent?: Agent | null;
   activeSkill?: Skill | null;
+  /**
+   * Vide le brouillon persisté de la conversation courante.
+   *
+   * Appelé à la sélection d'une commande slash. Sans cela, `/new` et `/home`
+   * changeaient de clé de brouillon et `use-drafts` RESTAURAIT 200 ms plus
+   * tard le brouillon d'accueil : le texte que l'utilisateur venait de vider
+   * réapparaissait tout seul.
+   */
+  clearCurrentDraft?: () => void;
   clearActiveAgent?: () => void;
   clearActiveSkill?: () => void;
   clearPendingProject?: () => void;
   customCommands?: CustomCommand[];
   customMentionCommands?: CustomCommand[];
   input: string;
-  installedPlugins?: import("@/lib/plugins/types").PluginManifest[];
+  /** Mode du composer pour garder la même liste visible et clavier. */
+  mode?: "agent" | "chat";
+  installedPlugins?: PluginManifest[];
   isFree?: boolean;
   isNewChatInput?: boolean;
   memoryAtLimit?: boolean;
+  memoryLimit?: number;
   mcpServers?: McpServer[];
   /** Callback à la sélection d'une commande slash système. */
   onSlashCommand?: (command: SlashCommand) => void | Promise<void>;
@@ -70,12 +93,52 @@ export type ComposerTriggerOptions = {
   onCustomCommand?: (command: CustomCommand) => string | null;
 };
 
+function isSlashCommandDisabled(command: SlashCommand, supportsTools: boolean) {
+  return command.action.startsWith("tool-") && !supportsTools;
+}
+
+function isMentionItemDisabled(
+  item: FlatMentionItem,
+  supportsTools: boolean,
+  memoryAtLimit: boolean,
+  memoryLimit?: number
+) {
+  const isToolFeature =
+    item.kind === "skill" || item.kind === "mcp" || item.kind === "plugin";
+  const isMemoryBlocked =
+    item.kind === "memory" &&
+    memoryAtLimit &&
+    typeof memoryLimit === "number" &&
+    memoryLimit > 0;
+  return (isToolFeature && !supportsTools) || isMemoryBlocked;
+}
+
+function moveSelectableIndex(
+  length: number,
+  current: number,
+  delta: 1 | -1,
+  isSelectable: (index: number) => boolean
+): number {
+  if (length <= 0) {
+    return 0;
+  }
+  let index = current;
+  for (let step = 0; step < length; step += 1) {
+    index = (index + delta + length) % length;
+    if (isSelectable(index)) {
+      return index;
+    }
+  }
+  return isSelectable(current) ? current : 0;
+}
+
 export function useComposerTriggers(options: ComposerTriggerOptions) {
   const {
     activeAgent = null,
     activeSkill = null,
     clearActiveAgent,
     clearActiveSkill,
+    clearCurrentDraft,
     clearPendingProject,
     customCommands = [],
     customMentionCommands = [],
@@ -84,7 +147,9 @@ export function useComposerTriggers(options: ComposerTriggerOptions) {
     isFree = false,
     isNewChatInput = true,
     memoryAtLimit = false,
+    memoryLimit,
     mcpServers = [],
+    mode = "chat",
     onCustomCommand,
     onSlashCommand,
     onSuggestionSelect,
@@ -107,6 +172,11 @@ export function useComposerTriggers(options: ComposerTriggerOptions) {
   const [mentionQuery, setMentionQuery] = useState("");
   const [mentionIndex, setMentionIndex] = useState(0);
   const mentionTriggerPosRef = useRef<number | null>(null);
+  const instanceId = useId().replace(/:/g, "");
+  const slashMenuId = `${instanceId}-slash-listbox`;
+  // Un seul menu est ouvert à la fois ; réutiliser l'identifiant évite les
+  // collisions entre plusieurs composers montés sur la même page.
+  const mentionMenuId = slashMenuId;
 
   const customSlashCommands = useMemo(
     () => customCommandsToSlashCommands(customCommands),
@@ -118,6 +188,8 @@ export function useComposerTriggers(options: ComposerTriggerOptions) {
     setMentionOpen(false);
     setSlashQuery("");
     setMentionQuery("");
+    setSlashIndex(0);
+    setMentionIndex(0);
     mentionTriggerPosRef.current = null;
   }, []);
 
@@ -151,17 +223,17 @@ export function useComposerTriggers(options: ComposerTriggerOptions) {
     () =>
       getFilteredSlashCommands(
         slashQuery,
-        { isFree, isHome: isNewChatInput },
+        { isFree, isHome: isNewChatInput, mode },
         customSlashCommands
       ),
-    [customSlashCommands, isFree, isNewChatInput, slashQuery]
+    [customSlashCommands, isFree, isNewChatInput, mode, slashQuery]
   );
 
   const filteredMentionItems = useMemo(
     () =>
       getFilteredMentionItems(
         mentionQuery,
-        projects as never,
+        projects,
         skills,
         mcpServers,
         userAgents,
@@ -179,14 +251,91 @@ export function useComposerTriggers(options: ComposerTriggerOptions) {
     ]
   );
 
+  const selectableSlashCommands = useMemo(
+    () =>
+      filteredSlashCommands.filter(
+        (command) => !isSlashCommandDisabled(command, supportsTools)
+      ),
+    [filteredSlashCommands, supportsTools]
+  );
+
+  const selectableMentionItems = useMemo(
+    () =>
+      filteredMentionItems.filter(
+        (item) =>
+          !isMentionItemDisabled(
+            item,
+            supportsTools,
+            memoryAtLimit,
+            memoryLimit
+          )
+      ),
+    [filteredMentionItems, supportsTools, memoryAtLimit, memoryLimit]
+  );
+
+  useEffect(() => {
+    setSlashIndex((current) => {
+      if (
+        filteredSlashCommands[current] &&
+        !isSlashCommandDisabled(filteredSlashCommands[current], supportsTools)
+      ) {
+        return current;
+      }
+      return filteredSlashCommands.findIndex(
+        (command) => !isSlashCommandDisabled(command, supportsTools)
+      );
+    });
+  }, [filteredSlashCommands, supportsTools]);
+
+  useEffect(() => {
+    setMentionIndex((current) => {
+      if (
+        filteredMentionItems[current] &&
+        !isMentionItemDisabled(
+          filteredMentionItems[current],
+          supportsTools,
+          memoryAtLimit,
+          memoryLimit
+        )
+      ) {
+        return current;
+      }
+      return filteredMentionItems.findIndex(
+        (item) =>
+          !isMentionItemDisabled(
+            item,
+            supportsTools,
+            memoryAtLimit,
+            memoryLimit
+          )
+      );
+    });
+  }, [filteredMentionItems, supportsTools, memoryAtLimit, memoryLimit]);
+
   const handleSlashSelect = useCallback(
     (command: SlashCommand) => {
+      if (isSlashCommandDisabled(command, supportsTools)) {
+        toast.warning(
+          "Ce modèle ne prend pas en charge les outils (tools). Cette commande est indisponible."
+        );
+        return;
+      }
       closeMenus();
+      // Le vidage vit ICI, et non dans le composer Chat : l'Agent ne le
+      // faisait pas, et `/taches` laissait « /taches » dans la zone de saisie —
+      // le texte partait ensuite comme consigne de tâche. Un point unique
+      // garantit le même comportement pour les deux composers.
+      setInput("");
+      clearCurrentDraft?.();
       // Le propriétaire décide : le Chat délègue à runSlashCommand, l'Agent
       // traduit vers ses options one-shot.
-      void onSlashCommand?.(command);
+      // `onSlashCommand` est async : sans `catch`, une exception devenait une
+      // rejection non observée et l'utilisateur n'apprenait rien.
+      void Promise.resolve(onSlashCommand?.(command)).catch(() => {
+        toast.error(`La commande « /${command.name} » a échoué.`);
+      });
     },
-    [closeMenus, onSlashCommand]
+    [clearCurrentDraft, closeMenus, onSlashCommand, setInput, supportsTools]
   );
 
   const insertMentionToken = useCallback(
@@ -254,25 +403,120 @@ export function useComposerTriggers(options: ComposerTriggerOptions) {
     ]
   );
 
+  const knownMentionLabels = useMemo(
+    () => [
+      "Memory",
+      "Web",
+      "Library",
+      "Planning",
+      "Notes",
+      // Même verrou que dans le menu : une réponse d'erreur empoisonne le cache
+      // SWR et le premier `.map` faisait tomber le composer au premier retour
+      // arrière. Les listes non tableaux comptent pour rien.
+      ...asArray<ProjectLite>(projects).map((project) => project.name),
+      ...asArray<Skill>(skills).map((skill) => skill.name),
+      ...asArray<McpServer>(mcpServers).map((server) => server.name),
+      ...asArray<Agent>(userAgents).map((agent) => agent.name),
+      ...asArray<PluginManifest>(installedPlugins).map((plugin) => plugin.name),
+      ...asArray<CustomCommand>(customMentionCommands).map(
+        (command) => command.trigger
+      ),
+    ],
+    [
+      customMentionCommands,
+      installedPlugins,
+      mcpServers,
+      projects,
+      skills,
+      userAgents,
+    ]
+  );
+
   const handleTextareaKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
       if (mentionOpen) {
-        const flat = filteredMentionItems;
         if (event.key === "ArrowDown") {
           event.preventDefault();
           setMentionIndex((index) =>
-            Math.min(index + 1, Math.max(flat.length - 1, 0))
+            moveSelectableIndex(
+              filteredMentionItems.length,
+              index,
+              1,
+              (candidate) =>
+                !isMentionItemDisabled(
+                  filteredMentionItems[candidate],
+                  supportsTools,
+                  memoryAtLimit,
+                  memoryLimit
+                )
+            )
           );
           return;
         }
         if (event.key === "ArrowUp") {
           event.preventDefault();
-          setMentionIndex((index) => Math.max(index - 1, 0));
+          setMentionIndex((index) =>
+            moveSelectableIndex(
+              filteredMentionItems.length,
+              index,
+              -1,
+              (candidate) =>
+                !isMentionItemDisabled(
+                  filteredMentionItems[candidate],
+                  supportsTools,
+                  memoryAtLimit,
+                  memoryLimit
+                )
+            )
+          );
+          return;
+        }
+        if (event.key === "Home") {
+          event.preventDefault();
+          setMentionIndex(
+            filteredMentionItems.findIndex(
+              (item) =>
+                !isMentionItemDisabled(
+                  item,
+                  supportsTools,
+                  memoryAtLimit,
+                  memoryLimit
+                )
+            )
+          );
+          return;
+        }
+        if (event.key === "End") {
+          event.preventDefault();
+          setMentionIndex(
+            filteredMentionItems
+              .map((item, index) => ({ index, item }))
+              .reverse()
+              .find(
+                ({ item }) =>
+                  !isMentionItemDisabled(
+                    item,
+                    supportsTools,
+                    memoryAtLimit,
+                    memoryLimit
+                  )
+              )?.index ?? 0
+          );
           return;
         }
         if (event.key === "Enter" || event.key === "Tab") {
           event.preventDefault();
-          const item = flat[mentionIndex];
+          const current = filteredMentionItems[mentionIndex];
+          const item =
+            current &&
+            !isMentionItemDisabled(
+              current,
+              supportsTools,
+              memoryAtLimit,
+              memoryLimit
+            )
+              ? current
+              : selectableMentionItems[0];
           if (item) {
             handleMentionSelect(mentionItemToPayload(item));
           }
@@ -287,22 +531,66 @@ export function useComposerTriggers(options: ComposerTriggerOptions) {
       }
 
       if (slashOpen) {
-        const filtered = filteredSlashCommands;
         if (event.key === "ArrowDown") {
           event.preventDefault();
           setSlashIndex((index) =>
-            Math.min(index + 1, Math.max(filtered.length - 1, 0))
+            moveSelectableIndex(
+              filteredSlashCommands.length,
+              index,
+              1,
+              (candidate) =>
+                !isSlashCommandDisabled(
+                  filteredSlashCommands[candidate],
+                  supportsTools
+                )
+            )
           );
           return;
         }
         if (event.key === "ArrowUp") {
           event.preventDefault();
-          setSlashIndex((index) => Math.max(index - 1, 0));
+          setSlashIndex((index) =>
+            moveSelectableIndex(
+              filteredSlashCommands.length,
+              index,
+              -1,
+              (candidate) =>
+                !isSlashCommandDisabled(
+                  filteredSlashCommands[candidate],
+                  supportsTools
+                )
+            )
+          );
+          return;
+        }
+        if (event.key === "Home") {
+          event.preventDefault();
+          setSlashIndex(
+            filteredSlashCommands.findIndex(
+              (command) => !isSlashCommandDisabled(command, supportsTools)
+            )
+          );
+          return;
+        }
+        if (event.key === "End") {
+          event.preventDefault();
+          setSlashIndex(
+            filteredSlashCommands
+              .map((command, index) => ({ command, index }))
+              .reverse()
+              .find(
+                ({ command }) => !isSlashCommandDisabled(command, supportsTools)
+              )?.index ?? 0
+          );
           return;
         }
         if (event.key === "Enter" || event.key === "Tab") {
           event.preventDefault();
-          const command = filtered[slashIndex];
+          const current = filteredSlashCommands[slashIndex];
+          const command =
+            current && !isSlashCommandDisabled(current, supportsTools)
+              ? current
+              : selectableSlashCommands[0];
           if (command) {
             handleSlashSelect(command);
           }
@@ -328,18 +616,21 @@ export function useComposerTriggers(options: ComposerTriggerOptions) {
           selectionStart !== null &&
           selectionStart > 0
         ) {
-          const before = value.slice(0, selectionStart);
-          const match = before.match(MENTION_TOKEN_RE);
+          const match = findMentionTokenAtCursor(
+            value,
+            selectionStart,
+            knownMentionLabels
+          );
           if (match) {
             event.preventDefault();
-            const token = match[1];
-            const deleteFrom = selectionStart - match[0].length;
-            setInput(
-              `${before.slice(0, deleteFrom)}${value.slice(selectionStart)}`
-            );
+            const trailing = value.slice(match.end, selectionStart);
+            const deleteTo = /^[ \t\u00a0]+$/.test(trailing)
+              ? selectionStart
+              : match.end;
+            setInput(`${value.slice(0, match.start)}${value.slice(deleteTo)}`);
             requestAnimationFrame(() => {
               try {
-                target.setSelectionRange(deleteFrom, deleteFrom);
+                target.setSelectionRange(match.start, match.start);
               } catch {}
             });
             deactivateMentionToken({
@@ -352,7 +643,7 @@ export function useComposerTriggers(options: ComposerTriggerOptions) {
               pendingTools,
               plugins: installedPlugins,
               togglePendingTool: togglePendingTool ?? (() => {}),
-              token,
+              token: match.token,
               userMcpServers: mcpServers,
             });
           }
@@ -370,14 +661,20 @@ export function useComposerTriggers(options: ComposerTriggerOptions) {
       handleMentionSelect,
       handleSlashSelect,
       installedPlugins,
+      knownMentionLabels,
+      memoryAtLimit,
+      memoryLimit,
       mentionIndex,
       mentionOpen,
       mcpServers,
       pendingProject,
       pendingTools,
+      selectableMentionItems,
+      selectableSlashCommands,
       setInput,
       slashIndex,
       slashOpen,
+      supportsTools,
       togglePendingTool,
     ]
   );
@@ -389,8 +686,18 @@ export function useComposerTriggers(options: ComposerTriggerOptions) {
     }, 150);
   }, []);
 
+  const activeSlashOptionId =
+    slashOpen && filteredSlashCommands[slashIndex]
+      ? `${slashMenuId}-option-${slashIndex}`
+      : undefined;
+  const activeMentionOptionId =
+    mentionOpen && filteredMentionItems[mentionIndex]
+      ? `${mentionMenuId}-option-${mentionIndex}`
+      : undefined;
+
   return {
     closeMenus,
+    customSlashCommands,
     filteredMentionItems,
     filteredSlashCommands,
     handleInput,
@@ -399,20 +706,43 @@ export function useComposerTriggers(options: ComposerTriggerOptions) {
     handleTextareaBlur,
     handleTextareaKeyDown,
     mentionIndex,
+    mentionMenuId,
     mentionOpen,
     mentionQuery,
     mentionTriggerPos: mentionTriggerPosRef.current,
     slashIndex,
+    slashMenuId,
     slashOpen,
     slashQuery,
     textareaProps: useMemo(
       () => ({
+        "aria-activedescendant": mentionOpen
+          ? activeMentionOptionId
+          : activeSlashOptionId,
+        "aria-autocomplete": "list" as const,
+        "aria-controls": mentionOpen
+          ? mentionMenuId
+          : slashOpen
+            ? slashMenuId
+            : undefined,
+        "aria-expanded": mentionOpen || slashOpen,
         onBlur: handleTextareaBlur,
         onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) =>
           handleInput(event.target.value, event.target.selectionStart),
         onKeyDown: handleTextareaKeyDown,
+        role: "combobox" as const,
       }),
-      [handleInput, handleTextareaBlur, handleTextareaKeyDown]
+      [
+        activeMentionOptionId,
+        activeSlashOptionId,
+        handleInput,
+        handleTextareaBlur,
+        handleTextareaKeyDown,
+        mentionMenuId,
+        mentionOpen,
+        slashMenuId,
+        slashOpen,
+      ]
     ),
   };
 }

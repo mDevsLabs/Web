@@ -13,7 +13,6 @@ const updateAgentSchema = z.object({
     .optional(),
   defaultModelId: z.string().min(1).max(200).optional(),
   description: z.string().max(500).optional(),
-  emoji: z.string().max(10).nullable().optional(),
   icon: z.string().max(50).optional(),
   instructions: z.string().min(1).max(5000).optional(),
   maxTokens: z.number().int().min(1).max(1_000_000).nullable().optional(),
@@ -42,7 +41,7 @@ export async function GET(
   const found = await getAgentById({ id, userId });
   // Allow fetching own agent or public template fallback via same id? Only own for now
   if (!found) {
-    return errorResponse("not_found", { message: "Agent introuvable." });
+    return errorResponse("not_found", { message: "Bot introuvable." });
   }
   return Response.json(found);
 }
@@ -66,7 +65,7 @@ export async function PATCH(
     }
     const updated = await updateAgent({ data: parsed as any, id, userId });
     if (!updated) {
-      return errorResponse("not_found", { message: "Agent introuvable." });
+      return errorResponse("not_found", { message: "Bot introuvable." });
     }
     return Response.json(updated);
   } catch (err: any) {
@@ -80,7 +79,7 @@ export async function PATCH(
     }
     logError("Erreur mise à jour agent", err);
     return errorResponse("internal_error", {
-      message: "Erreur lors de la mise à jour de l'agent.",
+      message: "Erreur lors de la mise à jour du bot.",
     });
   }
 }
@@ -98,7 +97,7 @@ export async function DELETE(
   const { id } = await params;
   const deleted = await deleteAgent({ id, userId });
   if (!deleted) {
-    return errorResponse("not_found", { message: "Agent introuvable." });
+    return errorResponse("not_found", { message: "Bot introuvable." });
   }
-  return Response.json({ message: "Agent supprimé", success: true });
+  return Response.json({ message: "Bot supprimé", success: true });
 }

@@ -1,6 +1,6 @@
 import "server-only";
 
-import { and, asc, desc, eq, inArray, lt, lte, or, sql } from "drizzle-orm";
+import { and, asc, desc, eq, gt, inArray, lt, lte, or, sql } from "drizzle-orm";
 import type { ScheduleRule } from "@/lib/agent/contracts";
 import {
   type AgentOccurrenceRecord,
@@ -17,8 +17,8 @@ import {
   agentRun,
   agentRunInstruction,
   agentSchedule,
-  agentScheduleVersion,
   agentScheduleOccurrence,
+  agentScheduleVersion,
   agentUserInputRequest,
   approvalRequest,
 } from "@/lib/db/schema";
@@ -50,18 +50,21 @@ export async function createAgentSchedule(params: {
   try {
     const db = await dbReady();
     return await db.transaction(async (tx) => {
-      const [row] = await tx.insert(agentSchedule).values({
-        agentId: params.agentId,
-        config: params.config,
-        instructions: params.instructions,
-        modelId: params.modelId,
-        nextDueAt: params.nextDueAt,
-        projectId: params.projectId,
-        rule: params.rule,
-        timezone: params.timezone,
-        title: params.title,
-        userId: params.userId,
-      }).returning();
+      const [row] = await tx
+        .insert(agentSchedule)
+        .values({
+          agentId: params.agentId,
+          config: params.config,
+          instructions: params.instructions,
+          modelId: params.modelId,
+          nextDueAt: params.nextDueAt,
+          projectId: params.projectId,
+          rule: params.rule,
+          timezone: params.timezone,
+          title: params.title,
+          userId: params.userId,
+        })
+        .returning();
       await tx.insert(agentScheduleVersion).values({
         revision: row.revision,
         scheduleId: row.id,
@@ -97,9 +100,15 @@ export async function getAgentScheduleById(params: {
   }
 }
 
-export async function getAgentScheduleForScheduler(id: string): Promise<AgentScheduleRecord | null> {
+export async function getAgentScheduleForScheduler(
+  id: string
+): Promise<AgentScheduleRecord | null> {
   const db = await dbReady();
-  const [row] = await db.select().from(agentSchedule).where(eq(agentSchedule.id, id)).limit(1);
+  const [row] = await db
+    .select()
+    .from(agentSchedule)
+    .where(eq(agentSchedule.id, id))
+    .limit(1);
   return row ?? null;
 }
 
@@ -144,7 +153,8 @@ export async function mutateAgentSchedule(params: {
             | "timezone"
             | "title"
           >
-        > & Partial<AgentScheduleRecord["config"]>;
+        > &
+          Partial<AgentScheduleRecord["config"]>;
       }
     | { action: "resume" };
   userId: string;
@@ -152,24 +162,39 @@ export async function mutateAgentSchedule(params: {
   try {
     const db = await dbReady();
     return await db.transaction(async (tx) => {
-      const [current] = await tx.select().from(agentSchedule).where(and(
-        eq(agentSchedule.id, params.id), eq(agentSchedule.userId, params.userId),
-        eq(agentSchedule.revision, params.expectedRevision), sql`${agentSchedule.deletedAt} IS NULL`
-      )).limit(1);
+      const [current] = await tx
+        .select()
+        .from(agentSchedule)
+        .where(
+          and(
+            eq(agentSchedule.id, params.id),
+            eq(agentSchedule.userId, params.userId),
+            eq(agentSchedule.revision, params.expectedRevision),
+            sql`${agentSchedule.deletedAt} IS NULL`
+          )
+        )
+        .limit(1);
       if (!current) return false;
       const set: Record<string, unknown> = {
-        revision: sql`${agentSchedule.revision} + 1`, updatedAt: new Date(),
+        revision: sql`${agentSchedule.revision} + 1`,
+        updatedAt: new Date(),
       };
       if (params.mutation.action === "delete") {
-        set.deletedAt = new Date(); set.status = "deleted";
+        set.deletedAt = new Date();
+        set.status = "deleted";
       } else if (params.mutation.action === "pause") {
         set.status = "paused";
       } else if (params.mutation.action === "resume") {
         set.status = "active";
       } else {
-        const { autonomy, enabledCategories, reasoningLevel, ...columns } = params.mutation.patch;
+        const { autonomy, enabledCategories, reasoningLevel, ...columns } =
+          params.mutation.patch;
         Object.assign(set, columns);
-        if (autonomy !== undefined || enabledCategories !== undefined || reasoningLevel !== undefined) {
+        if (
+          autonomy !== undefined ||
+          enabledCategories !== undefined ||
+          reasoningLevel !== undefined
+        ) {
           set.config = {
             ...current.config,
             ...(autonomy === undefined ? {} : { autonomy }),
@@ -178,14 +203,24 @@ export async function mutateAgentSchedule(params: {
           };
         }
       }
-      const [updated] = await tx.update(agentSchedule).set(set).where(and(
-        eq(agentSchedule.id, params.id), eq(agentSchedule.userId, params.userId),
-        eq(agentSchedule.revision, params.expectedRevision), sql`${agentSchedule.deletedAt} IS NULL`
-      )).returning();
+      const [updated] = await tx
+        .update(agentSchedule)
+        .set(set)
+        .where(
+          and(
+            eq(agentSchedule.id, params.id),
+            eq(agentSchedule.userId, params.userId),
+            eq(agentSchedule.revision, params.expectedRevision),
+            sql`${agentSchedule.deletedAt} IS NULL`
+          )
+        )
+        .returning();
       if (!updated) return false;
       await tx.insert(agentScheduleVersion).values({
-        revision: updated.revision, scheduleId: updated.id,
-        snapshot: updated, userId: updated.userId,
+        revision: updated.revision,
+        scheduleId: updated.id,
+        snapshot: updated,
+        userId: updated.userId,
       });
       return true;
     });
@@ -207,7 +242,14 @@ export async function setAgentScheduleError(params: {
         lastError: params.lastError,
         ...(params.lastError === null ? {} : { status: "paused" as const }),
       })
-      .where(and(eq(agentSchedule.id, params.id), ...(params.expectedRevision === undefined ? [] : [eq(agentSchedule.revision, params.expectedRevision)])));
+      .where(
+        and(
+          eq(agentSchedule.id, params.id),
+          ...(params.expectedRevision === undefined
+            ? []
+            : [eq(agentSchedule.revision, params.expectedRevision)])
+        )
+      );
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -224,7 +266,14 @@ export async function recordScheduleRun(params: {
     await db
       .update(agentSchedule)
       .set({ lastRunAt: params.lastRunAt, nextDueAt: params.nextDueAt })
-      .where(and(eq(agentSchedule.id, params.id), ...(params.expectedRevision === undefined ? [] : [eq(agentSchedule.revision, params.expectedRevision)])));
+      .where(
+        and(
+          eq(agentSchedule.id, params.id),
+          ...(params.expectedRevision === undefined
+            ? []
+            : [eq(agentSchedule.revision, params.expectedRevision)])
+        )
+      );
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -344,6 +393,7 @@ export async function startOccurrence(params: {
   id: string;
   now: Date;
   runId: string;
+  workerId?: string | null;
 }): Promise<void> {
   try {
     const db = await dbReady();
@@ -354,24 +404,52 @@ export async function startOccurrence(params: {
         runId: params.runId,
         status: "running",
       })
-      .where(eq(agentScheduleOccurrence.id, params.id));
+      .where(
+        and(
+          eq(agentScheduleOccurrence.id, params.id),
+          ...(params.workerId
+            ? [eq(agentScheduleOccurrence.claimedBy, params.workerId)]
+            : [])
+        )
+      );
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
 }
 
-export async function waitOccurrence(params: { id: string; runId: string }): Promise<void> {
+export async function waitOccurrence(params: {
+  id: string;
+  runId: string;
+  workerId?: string | null;
+}): Promise<void> {
   const db = await dbReady();
-  await db.update(agentScheduleOccurrence).set({
-    runId: params.runId, status: "waiting", leaseUntil: null,
-  }).where(eq(agentScheduleOccurrence.id, params.id));
+  await db
+    .update(agentScheduleOccurrence)
+    .set({
+      leaseUntil: null,
+      runId: params.runId,
+      status: "waiting",
+    })
+    .where(
+      and(
+        eq(agentScheduleOccurrence.id, params.id),
+        ...(params.workerId
+          ? [eq(agentScheduleOccurrence.claimedBy, params.workerId)]
+          : [])
+      )
+    );
 }
 
-export async function listWaitingOccurrences(params: { limit?: number }): Promise<AgentOccurrenceRecord[]> {
+export async function listWaitingOccurrences(params: {
+  limit?: number;
+}): Promise<AgentOccurrenceRecord[]> {
   const db = await dbReady();
-  return db.select().from(agentScheduleOccurrence)
+  return db
+    .select()
+    .from(agentScheduleOccurrence)
     .where(eq(agentScheduleOccurrence.status, "waiting"))
-    .orderBy(asc(agentScheduleOccurrence.claimedAt)).limit(params.limit ?? 50);
+    .orderBy(asc(agentScheduleOccurrence.claimedAt))
+    .limit(params.limit ?? 50);
 }
 
 export async function getWaitingRequestExpiry(params: {
@@ -380,28 +458,59 @@ export async function getWaitingRequestExpiry(params: {
 }): Promise<Date | null> {
   const db = await dbReady();
   if (params.kind === "approval") {
-    const [request] = await db.select({ expiresAt: approvalRequest.expiresAt, status: approvalRequest.status })
-      .from(approvalRequest).where(eq(approvalRequest.runId, params.runId))
-      .orderBy(desc(approvalRequest.createdAt)).limit(1);
-    return request && ["pending", "expired"].includes(request.status) ? request.expiresAt : null;
+    const [request] = await db
+      .select({
+        expiresAt: approvalRequest.expiresAt,
+        status: approvalRequest.status,
+      })
+      .from(approvalRequest)
+      .where(eq(approvalRequest.runId, params.runId))
+      .orderBy(desc(approvalRequest.createdAt))
+      .limit(1);
+    return request && ["pending", "expired"].includes(request.status)
+      ? request.expiresAt
+      : null;
   }
-  const [request] = await db.select({ expiresAt: agentUserInputRequest.expiresAt, status: agentUserInputRequest.status })
-    .from(agentUserInputRequest).where(eq(agentUserInputRequest.runId, params.runId))
-    .orderBy(desc(agentUserInputRequest.createdAt)).limit(1);
-  return request && ["pending", "expired"].includes(request.status) ? request.expiresAt : null;
+  const [request] = await db
+    .select({
+      expiresAt: agentUserInputRequest.expiresAt,
+      status: agentUserInputRequest.status,
+    })
+    .from(agentUserInputRequest)
+    .where(eq(agentUserInputRequest.runId, params.runId))
+    .orderBy(desc(agentUserInputRequest.createdAt))
+    .limit(1);
+  return request && ["pending", "expired"].includes(request.status)
+    ? request.expiresAt
+    : null;
 }
 
-export async function getScheduleVersionById(params: { id: string; scheduleId: string }) {
+export async function getScheduleVersionById(params: {
+  id: string;
+  scheduleId: string;
+}) {
   const db = await dbReady();
-  const [row] = await db.select().from(agentScheduleVersion).where(and(
-    eq(agentScheduleVersion.id, params.id), eq(agentScheduleVersion.scheduleId, params.scheduleId)
-  )).limit(1);
+  const [row] = await db
+    .select()
+    .from(agentScheduleVersion)
+    .where(
+      and(
+        eq(agentScheduleVersion.id, params.id),
+        eq(agentScheduleVersion.scheduleId, params.scheduleId)
+      )
+    )
+    .limit(1);
   return row ?? null;
 }
 
-export async function listScheduleVersions(params: { scheduleId: string; limit?: number }) {
+export async function listScheduleVersions(params: {
+  scheduleId: string;
+  limit?: number;
+}) {
   const db = await dbReady();
-  const query = db.select().from(agentScheduleVersion)
+  const query = db
+    .select()
+    .from(agentScheduleVersion)
     .where(eq(agentScheduleVersion.scheduleId, params.scheduleId))
     .orderBy(desc(agentScheduleVersion.revision));
   return params.limit === undefined ? query : query.limit(params.limit);
@@ -411,13 +520,21 @@ export async function finishOccurrence(params: {
   id: string;
   now: Date;
   status: "completed" | "failed" | "skipped";
+  workerId?: string | null;
 }): Promise<void> {
   try {
     const db = await dbReady();
     await db
       .update(agentScheduleOccurrence)
       .set({ finishedAt: params.now, status: params.status })
-      .where(eq(agentScheduleOccurrence.id, params.id));
+      .where(
+        and(
+          eq(agentScheduleOccurrence.id, params.id),
+          ...(params.workerId
+            ? [eq(agentScheduleOccurrence.claimedBy, params.workerId)]
+            : [])
+        )
+      );
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -504,7 +621,14 @@ export async function deactivateScheduleAfterRun(params: {
     await db
       .update(agentSchedule)
       .set({ lastRunAt: params.lastRunAt, status: "paused" })
-      .where(and(eq(agentSchedule.id, params.id), ...(params.expectedRevision === undefined ? [] : [eq(agentSchedule.revision, params.expectedRevision)])));
+      .where(
+        and(
+          eq(agentSchedule.id, params.id),
+          ...(params.expectedRevision === undefined
+            ? []
+            : [eq(agentSchedule.revision, params.expectedRevision)])
+        )
+      );
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -550,6 +674,7 @@ export async function listOccurrencesByScheduleId(params: {
 // ---------------------------------------------------------------------------
 
 export async function createApprovalRequest(params: {
+  executionOwner?: string | null;
   expiresAt: Date;
   params: Record<string, unknown>;
   paramsHash: string;
@@ -561,6 +686,16 @@ export async function createApprovalRequest(params: {
 }): Promise<ApprovalRequestRecord> {
   try {
     const db = await dbReady();
+    if (params.executionOwner) {
+      const [run] = await db
+        .select({ owner: agentRun.executionOwner })
+        .from(agentRun)
+        .where(eq(agentRun.id, params.runId))
+        .limit(1);
+      if (!run || run.owner !== params.executionOwner) {
+        throw new Error("lease_agent_invalid");
+      }
+    }
     const [row] = await db
       .insert(approvalRequest)
       .values({
@@ -575,6 +710,53 @@ export async function createApprovalRequest(params: {
       })
       .returning();
     return row;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function renewApprovalRequest(params: {
+  executionOwner?: string | null;
+  expiresAt: Date;
+  id: string;
+  params: Record<string, unknown>;
+  paramsHash: string;
+  stepId?: string | null;
+  toolExecutionId?: string | null;
+  toolId: string;
+}): Promise<ApprovalRequestRecord | null> {
+  try {
+    const db = await dbReady();
+    if (params.executionOwner) {
+      const [run] = await db
+        .select({ owner: agentRun.executionOwner })
+        .from(agentRun)
+        .innerJoin(approvalRequest, eq(approvalRequest.runId, agentRun.id))
+        .where(eq(approvalRequest.id, params.id))
+        .limit(1);
+      if (!run || run.owner !== params.executionOwner) return null;
+    }
+    const [row] = await db
+      .update(approvalRequest)
+      .set({
+        decidedAt: null,
+        denyReason: null,
+        expiresAt: params.expiresAt,
+        params: params.params,
+        paramsHash: params.paramsHash,
+        status: "pending",
+        stepId: params.stepId ?? null,
+        toolExecutionId: params.toolExecutionId ?? null,
+        toolId: params.toolId,
+      })
+      .where(
+        and(
+          eq(approvalRequest.id, params.id),
+          eq(approvalRequest.status, "expired")
+        )
+      )
+      .returning();
+    return row ?? null;
   } catch (error) {
     throw new ChatbotError("bad_request:database", { cause: error });
   }
@@ -655,7 +837,8 @@ export async function decideApprovalRequest(params: {
         and(
           eq(approvalRequest.id, params.id),
           eq(approvalRequest.paramsHash, params.paramsHash),
-          eq(approvalRequest.status, "pending")
+          eq(approvalRequest.status, "pending"),
+          gt(approvalRequest.expiresAt, new Date())
         )
       )
       .returning({ runId: approvalRequest.runId });
@@ -770,6 +953,7 @@ export async function markRunInstructionsApplied(params: {
 
 export async function saveAgentRunCheckpoint(params: {
   checkpoint: AgentRunCheckpoint;
+  executionOwner?: string | null;
   expectedRevision: number;
   id: string;
 }): Promise<boolean> {
@@ -784,7 +968,10 @@ export async function saveAgentRunCheckpoint(params: {
       .where(
         and(
           eq(agentRun.id, params.id),
-          eq(agentRun.revision, params.expectedRevision)
+          eq(agentRun.revision, params.expectedRevision),
+          ...(params.executionOwner
+            ? [eq(agentRun.executionOwner, params.executionOwner)]
+            : [])
         )
       )
       .returning({ id: agentRun.id });

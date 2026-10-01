@@ -1,24 +1,14 @@
-// DTO de sortie des serveurs MCP.
+// DTO de sortie des serveurs et journaux MCP.
 //
-// Règle unique : aucun secret ne sort de la base. Les colonnes JSON
-// `authConfig`, `env` et `headers` sont conservées dans la forme (les
-// composants lisent `server.headers` sans casser) mais TOUJOURS vidées, et
-// remplacées par `secretKeys` — la liste des NOMS de clés configurées, ce qui
-// suffit à l'interface (« token configuré ») sans jamais exposer de valeur.
-//
-// Sont également nettoyés :
-//  • l'URL (identifiants `user:pass@`, paramètres de requête / fragments
-//    contenant un jeton ou une clé) ;
-//  • les arguments stdio (`--token=…`, `API_KEY:…`).
-//
-// Testé par tests/unit/mcp-secrets.test.ts : aucune valeur secrète ne doit
-// apparaître dans la sortie sérialisée.
+// Règle unique : aucune valeur secrète ne sort de la base ou d'un message
+// d'erreur. Les colonnes JSON `authConfig`, `env` et `headers` sont conservées
+// dans la forme (les composants lisent `server.headers` sans casser) mais
+// toujours vidées, et remplacées par `secretKeys` — la liste des NOMS de clés
+// configurées. Les métadonnées libres (cache d'outils, overrides, erreurs)
+// passent aussi par la redaction : une ancienne ligne ou une réponse d'un
+// fournisseur ne doit pas contourner cette garantie.
 
-const SECRET_KEY_PATTERN =
-  /(pass(word|wd)?|secret|token|api[-_]?key|auth|credential|signature|sig|session|cookie|bearer|private[-_]?key)/i;
-
-const SECRET_QUERY_PARAMS =
-  /^(access[-_]?token|api[-_]?key|apikey|auth|authorization|code|credential|key|password|passwd|pwd|refresh[-_]?token|secret|sig|signature|token)$/i;
+import { isMcpSecretKey, redactMcpText, redactMcpValue } from "./redaction";
 
 export type McpSecretKeys = {
   auth: string[];
@@ -57,6 +47,22 @@ export type McpServerDto = {
   url: string | null;
 };
 
+export type McpLogDto = {
+  actionType: string;
+  approvalStatus: string;
+  chatId: string | null;
+  createdAt: Date | string | null;
+  durationMs: number;
+  error: string | null;
+  id: string;
+  inputPayload: unknown;
+  outputPayload: unknown;
+  serverId: string | null;
+  serverName: string;
+  toolName: string;
+  userId: string;
+};
+
 function asRecord(value: unknown): Record<string, unknown> {
   if (!value || typeof value !== "object" || Array.isArray(value)) {
     return {};
@@ -64,9 +70,39 @@ function asRecord(value: unknown): Record<string, unknown> {
   return value as Record<string, unknown>;
 }
 
+function safeString(value: unknown, fallback = ""): string {
+  return typeof value === "string" ? redactMcpText(value, 2000) : fallback;
+}
+
+function safeDate(value: unknown): Date | null {
+  if (value instanceof Date && !Number.isNaN(value.getTime())) return value;
+  if (typeof value === "string" || typeof value === "number") {
+    const date = new Date(value);
+    return Number.isNaN(date.getTime()) ? null : date;
+  }
+  return null;
+}
+
+function finiteNumber(value: unknown, fallback: number): number {
+  const number = typeof value === "number" ? value : Number(value);
+  return Number.isFinite(number) ? number : fallback;
+}
+
+function boundedInteger(
+  value: unknown,
+  fallback: number,
+  min: number,
+  max: number
+): number {
+  const number = finiteNumber(value, fallback);
+  return Math.min(max, Math.max(min, Math.floor(number)));
+}
+
 /** Noms de clés uniquement — jamais les valeurs. */
 function keyNames(value: unknown): string[] {
-  return Object.keys(asRecord(value)).sort();
+  return Object.keys(asRecord(value))
+    .map((key) => redactMcpText(key, 120))
+    .sort();
 }
 
 /**
@@ -78,19 +114,27 @@ export function redactArgument(argument: string): string {
   const eq = argument.indexOf("=");
   if (eq > 0) {
     const name = argument.slice(0, eq);
-    if (SECRET_KEY_PATTERN.test(name)) {
-      return `${name}=***`;
+    if (isMcpSecretKey(name) || isMcpSecretKey(name.replace(/^--/, ""))) {
+      return `${name}=${"***"}`;
     }
-    return argument;
+    // `--header=Authorization:Bearer ...` porte le secret dans la valeur.
+    if (
+      /^--?header$/i.test(name.replace(/^--/, "")) ||
+      /^header$/i.test(name)
+    ) {
+      return `${name}=${"***"}`;
+    }
+    return redactMcpText(argument, 2000);
   }
   const colon = argument.indexOf(":");
   if (colon > 0) {
     const name = argument.slice(0, colon);
-    if (SECRET_KEY_PATTERN.test(name)) {
-      return `${name}:***`;
+    if (isMcpSecretKey(name) || isMcpSecretKey(name.replace(/^--/, ""))) {
+      return `${name}:${"***"}`;
     }
+    return redactMcpText(argument, 2000);
   }
-  return argument;
+  return redactMcpText(argument, 2000);
 }
 
 /**
@@ -101,26 +145,41 @@ export function redactArgument(argument: string): string {
 export function sanitizeUrlForClient(
   raw: string | null | undefined
 ): string | null {
-  if (!raw) {
-    return null;
-  }
+  if (!raw) return null;
   let parsed: URL;
   try {
     parsed = new URL(raw);
   } catch {
     return null;
   }
+  // Une URL MCP doit être HTTP(S). Ne pas exposer un autre scheme dans un DTO.
+  if (parsed.protocol !== "https:" && parsed.protocol !== "http:") {
+    return null;
+  }
   parsed.username = "";
   parsed.password = "";
-  for (const name of [...parsed.searchParams.keys()]) {
-    if (SECRET_QUERY_PARAMS.test(name)) {
+  for (const [name] of [...parsed.searchParams.entries()]) {
+    const value = parsed.searchParams.get(name) ?? "";
+    if (isMcpSecretKey(name) || isMcpSecretKey(name.replace(/[-_]/g, ""))) {
       parsed.searchParams.set(name, "***");
+    } else {
+      // Redact known provider token shapes even behind an innocuous key.
+      const redacted = redactMcpText(value, 2000);
+      if (redacted !== value) parsed.searchParams.set(name, "***");
     }
   }
-  if (parsed.hash && SECRET_KEY_PATTERN.test(parsed.hash)) {
-    parsed.hash = "#***";
+  if (parsed.hash) {
+    const hash = parsed.hash.slice(1);
+    const [hashKey] = hash.split("=");
+    if (isMcpSecretKey(hashKey ?? "") || redactMcpText(hash, 2000) !== hash) {
+      parsed.hash = "#***";
+    }
   }
-  return parsed.toString();
+  // Dernière défense : un secret de type glpat- ne doit pas survivre dans
+  // le pathname, même si une intégration l'y a placé.
+  const pathname = redactMcpText(parsed.pathname, 2000);
+  parsed.pathname = pathname;
+  return redactMcpText(parsed.toString(), 4000);
 }
 
 /** Convertit une ligne `McpServer` en DTO sans secret. */
@@ -130,26 +189,32 @@ export function toMcpServerDto(row: unknown): McpServerDto {
   const args = Array.isArray(record.args)
     ? record.args.filter((arg): arg is string => typeof arg === "string")
     : [];
+  const toolsCache = Array.isArray(record.toolsCache)
+    ? redactMcpValue(record.toolsCache)
+    : [];
+  const overrides = redactMcpValue(asRecord(record.toolOverrides));
 
   return {
     args: args.map(redactArgument),
     authConfig: {},
-    authType: typeof record.authType === "string" ? record.authType : "none",
-    avgLatencyMs: Number(record.avgLatencyMs ?? 0),
-    callCount: Number(record.callCount ?? 0),
-    command: typeof record.command === "string" ? record.command : null,
-    createdAt: (record.createdAt as Date | null) ?? null,
-    description:
-      typeof record.description === "string" ? record.description : "",
+    authType: safeString(record.authType, "none") || "none",
+    avgLatencyMs: finiteNumber(record.avgLatencyMs, 0),
+    callCount: finiteNumber(record.callCount, 0),
+    command:
+      typeof record.command === "string"
+        ? redactMcpText(record.command, 512)
+        : null,
+    createdAt: safeDate(record.createdAt),
+    description: safeString(record.description),
     env: {},
     headers: {},
-    icon: typeof record.icon === "string" ? record.icon : "server",
-    id: String(record.id ?? ""),
+    icon: safeString(record.icon, "server") || "server",
+    id: safeString(record.id),
     isEnabled: record.isEnabled !== false,
-    lastCallAt: (record.lastCallAt as Date | null) ?? null,
-    lastSyncAt: (record.lastSyncAt as Date | null) ?? null,
-    name: typeof record.name === "string" ? record.name : "",
-    rateLimitPerMin: Number(record.rateLimitPerMin ?? 60),
+    lastCallAt: safeDate(record.lastCallAt),
+    lastSyncAt: safeDate(record.lastSyncAt),
+    name: safeString(record.name),
+    rateLimitPerMin: boundedInteger(record.rateLimitPerMin, 60, 1, 1000),
     requireApproval:
       typeof record.requireApproval === "string"
         ? record.requireApproval
@@ -161,11 +226,14 @@ export function toMcpServerDto(row: unknown): McpServerDto {
     },
     templateId:
       typeof record.templateId === "string" ? record.templateId : null,
-    timeoutMs: Number(record.timeoutMs ?? 15_000),
-    toolOverrides: asRecord(record.toolOverrides),
-    toolsCache: Array.isArray(record.toolsCache) ? record.toolsCache : [],
+    timeoutMs: boundedInteger(record.timeoutMs, 15_000, 1000, 120_000),
+    toolOverrides:
+      overrides && typeof overrides === "object" && !Array.isArray(overrides)
+        ? (overrides as Record<string, unknown>)
+        : {},
+    toolsCache: Array.isArray(toolsCache) ? toolsCache : [],
     transport: typeof record.transport === "string" ? record.transport : "sse",
-    updatedAt: (record.updatedAt as Date | null) ?? null,
+    updatedAt: safeDate(record.updatedAt),
     uptimeStatus:
       typeof record.uptimeStatus === "string" ? record.uptimeStatus : "unknown",
     url: sanitizeUrlForClient(
@@ -176,10 +244,39 @@ export function toMcpServerDto(row: unknown): McpServerDto {
 
 /** Idem, sur une collection (les non-objets sont écartés, jamais renvoyés bruts). */
 export function toMcpServerDtoList(rows: unknown): McpServerDto[] {
-  if (!Array.isArray(rows)) {
-    return [];
-  }
+  if (!Array.isArray(rows)) return [];
   return rows
     .filter((row) => Boolean(row) && typeof row === "object")
     .map((row) => toMcpServerDto(row));
+}
+
+/** DTO redacted d'un journal MCP, compatible avec les champs historiques. */
+export function toMcpLogDto(row: unknown): McpLogDto {
+  const record = asRecord(row);
+  return {
+    actionType: safeString(record.actionType, "read") || "read",
+    approvalStatus:
+      safeString(record.approvalStatus, "auto_approved") || "auto_approved",
+    chatId: typeof record.chatId === "string" ? record.chatId : null,
+    createdAt: safeDate(record.createdAt) ?? null,
+    durationMs: finiteNumber(record.durationMs, 0),
+    error:
+      typeof record.error === "string"
+        ? redactMcpText(record.error, 1000)
+        : null,
+    id: safeString(record.id),
+    inputPayload: redactMcpValue(record.inputPayload) ?? null,
+    outputPayload: redactMcpValue(record.outputPayload) ?? null,
+    serverId: typeof record.serverId === "string" ? record.serverId : null,
+    serverName: safeString(record.serverName),
+    toolName: safeString(record.toolName),
+    userId: safeString(record.userId),
+  };
+}
+
+export function toMcpLogDtoList(rows: unknown): McpLogDto[] {
+  if (!Array.isArray(rows)) return [];
+  return rows
+    .filter((row) => Boolean(row) && typeof row === "object")
+    .map((row) => toMcpLogDto(row));
 }

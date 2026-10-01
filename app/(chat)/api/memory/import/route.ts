@@ -12,7 +12,6 @@ import { ChatbotError } from "@/lib/errors";
 
 const memoryImportItemSchema = z.object({
   agentId: z.string().uuid().nullable().optional(),
-  category: z.string().max(50).optional().default("general"),
   content: z.string().min(1).max(MEMORY_CONTENT_MAX_LENGTH),
   isEnabled: z.boolean().optional().default(true),
   isImportant: z.boolean().optional().default(false),
@@ -84,7 +83,6 @@ export async function POST(request: Request) {
 
       const created = await createMemory({
         agentId: item.agentId ?? null,
-        category: item.category ?? "general",
         content: cleanContent,
         isEnabled: item.isEnabled ?? true,
         isImportant: item.isImportant ?? false,

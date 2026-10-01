@@ -9,6 +9,7 @@ import {
   toChatToolId,
 } from "@/lib/ai/tools/ids";
 import { MCP_TEMPLATE_LIST } from "@/lib/mcp-templates/catalog";
+import { PLUGIN_TOOL_IDS } from "@/lib/plugins/catalog";
 import { isLucideIconName } from "@/lib/plugins/icon-allowlist";
 import {
   buildSkillTemplateEntries,
@@ -57,7 +58,9 @@ describe("Catalogue de modèles de Skills", () => {
 
   it("n'utilise que des outils connus des registres Chat et Agent", () => {
     for (const template of SKILL_TEMPLATE_LIST) {
-      const normalized = normalizeToolIds(template.tools);
+      const normalized = normalizeToolIds(template.tools, {
+        pluginToolIds: PLUGIN_TOOL_IDS,
+      });
       expect(normalized.unknown, `outils inconnus — ${template.id}`).toEqual(
         []
       );

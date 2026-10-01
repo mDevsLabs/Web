@@ -1,7 +1,10 @@
 import { z } from "zod";
 import { getMaiUser } from "@/lib/auth/session";
+import { getUserMcpPrefs } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
-import { testMcpConnection } from "@/lib/mcp/client";
+import { checkGlobalKillSwitch, testMcpConnection } from "@/lib/mcp/client";
+import { toMcpRuntimePreferences } from "@/lib/mcp/policy";
+import { redactMcpError } from "@/lib/mcp/redaction";
 
 const testMcpSchema = z.object({
   args: z.array(z.string()).optional(),
@@ -35,24 +38,43 @@ export async function POST(request: Request) {
   try {
     const json = await request.json();
     const parsed = testMcpSchema.parse(json);
+    const prefs = toMcpRuntimePreferences(
+      await getUserMcpPrefs(user.id || user.email)
+    );
+    checkGlobalKillSwitch(prefs);
+    if (parsed.transport === "stdio") {
+      return Response.json(
+        {
+          message:
+            "Le test stdio est réservé à l'administration et n'est pas disponible ici.",
+          success: false,
+          tools: [],
+          toolsCount: 0,
+        },
+        { status: 403 }
+      );
+    }
 
-    const result = await testMcpConnection({
-      args: parsed.args,
-      authConfig: parsed.authConfig,
-      authType: parsed.authType,
-      command: parsed.command,
-      env: parsed.env,
-      headers: parsed.headers,
-      name: parsed.name,
-      transport: parsed.transport,
-      url: parsed.url,
-    });
+    const result = await testMcpConnection(
+      {
+        args: parsed.args,
+        authConfig: parsed.authConfig,
+        authType: parsed.authType,
+        command: parsed.command,
+        env: parsed.env,
+        headers: parsed.headers,
+        name: parsed.name,
+        transport: parsed.transport,
+        url: parsed.url,
+      },
+      prefs
+    );
 
-    return Response.json(result);
+    return Response.json(result, { status: result.success ? 200 : 400 });
   } catch (err: any) {
     return Response.json(
       {
-        message: err.message ?? "Erreur lors du test de connexion",
+        message: redactMcpError(err, "Erreur lors du test de connexion"),
         success: false,
         tools: [],
         toolsCount: 0,

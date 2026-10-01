@@ -9,6 +9,7 @@ export type ApiErrorCode =
   | "access_denied"
   | "plan_required"
   | "model_access_denied"
+  | "mcp_required"
   | "bot_detected"
   | "not_found"
   | "conflict"
@@ -28,6 +29,7 @@ export const API_ERROR_CODES = [
   "access_denied",
   "plan_required",
   "model_access_denied",
+  "mcp_required",
   "bot_detected",
   "not_found",
   "conflict",
@@ -50,6 +52,7 @@ export const API_ERROR_STATUS: Record<ApiErrorCode, number> = {
   internal_error: 500,
   invalid_credentials: 401,
   invalid_request: 400,
+  mcp_required: 428,
   model_access_denied: 403,
   not_found: 404,
   payload_too_large: 413,
@@ -102,6 +105,7 @@ export const API_TO_LEGACY: Record<ApiErrorCode, ErrorCode> = {
   internal_error: "bad_request:api",
   invalid_credentials: "unauthorized:auth",
   invalid_request: "bad_request:api",
+  mcp_required: "bad_request:api",
   model_access_denied: "forbidden:api",
   not_found: "not_found:chat",
   payload_too_large: "bad_request:api",
@@ -132,6 +136,9 @@ export function statusToApiCode(status: number): ApiErrorCode {
   }
   if (status === 415) {
     return "unsupported_media_type";
+  }
+  if (status === 428) {
+    return "mcp_required";
   }
   if (status === 429) {
     return "quota_exceeded";

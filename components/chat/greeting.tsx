@@ -58,7 +58,6 @@ export const Greeting = () => {
             style={{ backgroundColor: activeAgent.color || "#6366f1" }}
           >
             <AgentIcon
-              emoji={(activeAgent as any).emoji}
               icon={activeAgent.icon}
               size={32}
               variant="plain"

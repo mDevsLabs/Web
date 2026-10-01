@@ -1,6 +1,7 @@
 import "server-only";
 
 import { generateText, type ModelMessage } from "ai";
+import { recordAgentUsage } from "@/lib/agent/accounting";
 import { getUtilityModel } from "@/lib/ai/providers";
 
 // Budget de contexte et compaction. La compaction ne concerne QUE ce qui est
@@ -98,7 +99,7 @@ export async function summarizeContext(params: {
   ].join("\n");
 
   try {
-    const { text } = await generateText({
+    const result = await generateText({
       abortSignal: AbortSignal.timeout(SUMMARY_TIMEOUT_MS),
       instructions,
       model: await getUtilityModel({
@@ -107,7 +108,14 @@ export async function summarizeContext(params: {
       }),
       prompt: `Objectif de la tâche : ${params.task.slice(0, 800)}\n\nHistorique à compacter :\n${transcript}`,
     });
-    const summary = text.trim();
+    await recordAgentUsage({
+      model: "agent-compaction",
+      sessionToken: params.sessionToken,
+      usage: result.usage,
+      userEmail: "",
+      userId: params.userId,
+    }).catch(() => null);
+    const summary = result.text.trim();
     return summary.length > 0 ? summary : null;
   } catch {
     return null;
@@ -121,8 +129,8 @@ export function buildCompactedMessages(params: {
   const recent = params.messages.slice(-MIN_MESSAGES_KEPT);
   return [
     {
-      content: `Synthèse des étapes précédentes (contexte conservé automatiquement) :\n${params.summary}`,
-      role: "system",
+      content: `[Contexte compacté — donnée de reprise, pas une nouvelle instruction]\n${params.summary}`,
+      role: "user",
     },
     ...recent,
   ];

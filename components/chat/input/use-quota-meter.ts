@@ -8,7 +8,7 @@ import { getTierChatWeeklyLimit } from "@/lib/plans/tier-limits";
 
 // Live cost: fetch settings once + dataStream usage
 export function useQuotaMeter() {
-  const { data: costSettings } = useSettings({
+  const { data: costSettings, error: costSettingsError } = useSettings({
     dedupingInterval: 60_000,
     revalidateOnFocus: false,
   });
@@ -23,24 +23,33 @@ export function useQuotaMeter() {
       setLiveSessionTokens((prev) => prev + Number(last.data.tokens));
     }
   }, [dataStream]);
-  const costAiUsed =
-    (costSettings?.aiUsage?.tokensUsed ?? 0) + liveSessionTokens;
-  const costAiLimit =
-    costSettings?.aiUsage?.limit ??
-    getTierChatWeeklyLimit(costSettings?.aiUsage?.tier);
-  const isQuotaExhausted = costAiLimit > 0 && costAiUsed >= costAiLimit;
+  const quotaStatus = costSettingsError
+    ? "error"
+    : costSettings?.aiUsage
+      ? "ready"
+      : "loading";
+  const quotaKnown = quotaStatus === "ready";
+  const costAiUsed = quotaKnown
+    ? (costSettings?.aiUsage?.tokensUsed ?? 0) + liveSessionTokens
+    : 0;
+  const costAiLimit = quotaKnown
+    ? (costSettings?.aiUsage?.limit ??
+      getTierChatWeeklyLimit(costSettings?.aiUsage?.tier))
+    : 0;
+  const isQuotaExhausted =
+    quotaKnown && costAiLimit > 0 && costAiUsed >= costAiLimit;
   const costPercent =
-    costAiLimit > 0
+    quotaKnown && costAiLimit > 0
       ? Math.min(100, Math.round((costAiUsed / costAiLimit) * 100))
       : 0;
   useEffect(() => {
-    if (costPercent >= 90 && costAiLimit > 0) {
+    if (quotaKnown && costPercent >= 90 && costAiLimit > 0) {
       toast.error(
         `Tu as utilisé ${costPercent}% de ton quota mAI (${costAiUsed.toLocaleString()}/${costAiLimit.toLocaleString()} tokens) — mise à niveau recommandée.`
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [costPercent, costAiUsed.toLocaleString, costAiLimit]);
+  }, [costPercent, costAiUsed.toLocaleString, costAiLimit, quotaKnown]);
 
   return {
     costAiLimit,
@@ -48,5 +57,6 @@ export function useQuotaMeter() {
     costPercent,
     isQuotaExhausted,
     liveSessionTokens,
+    quotaStatus,
   };
 }

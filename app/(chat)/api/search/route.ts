@@ -5,6 +5,27 @@ import { getMaiUser } from "@/lib/auth/session";
 import { getDb } from "@/lib/db/queries";
 import { chat, message, project } from "@/lib/db/schema";
 
+/**
+ * Liste liée des variantes d'identité : `IN ($1, $2)`.
+ *
+ * `userId` est un texte libre et l'identité d'un compte a plusieurs formes
+ * (identifiant, email, pseudo). Cette route les filtre toutes.
+ *
+ * Le piège est `= ANY(${userIds})` : Drizzle sérialise un tableau interpolé en
+ * CONSTRUCTEUR DE LIGNE `($1, $2)`, pas en `text[]`. Postgres reçoit donc
+ * `ANY(($1, $2))`, tente de lire le texte `1` comme un tableau, et répond
+ * `22P02 malformed array literal`. Comme le `catch` global renvoyait alors
+ * quatre listes vides, la recherche était silencieusement morte : aucun message,
+ * aucun résultat. On énumère donc les valeurs, un paramètre lié par variante —
+ * exactement ce que fait `inArray` sur une colonne Drizzle.
+ */
+function identityList(userIds: string[]) {
+  return sql.join(
+    userIds.map((userId) => sql`${userId}`),
+    sql`, `
+  );
+}
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const q = searchParams.get("q")?.trim() ?? "";
@@ -28,6 +49,16 @@ export async function GET(request: Request) {
   const userIds = Array.from(
     new Set([maiUser.id, maiUser.email, maiUser.username].filter(Boolean))
   ) as string[];
+  // Une session sans aucune variante d'identité ne peut rien voir : on répond
+  // vide plutôt que d'énoncer une liste vide à Postgres (`IN ()` est invalide).
+  if (userIds.length === 0) {
+    return NextResponse.json({
+      chats: [],
+      files: [],
+      messages: [],
+      projects: [],
+    });
+  }
 
   // Tokenize keywords for flexible multi-term search
   const tokens = q.split(/\s+/).filter((t) => t.length > 0);
@@ -36,6 +67,11 @@ export async function GET(request: Request) {
 
   try {
     const db = getDb();
+
+    // Le périmètre d'identité est une liste de valeurs, pas un tableau SQL :
+    // voir `identityList`. Une liste vide produirait `IN ()`, qui est une
+    // erreur de syntaxe — on ne la laisse donc jamais atteindre Postgres.
+    const variants = identityList(userIds);
 
     // Chat search: Title matches all tokens OR tags contain any token OR prompt matches
     const chatConditions = escapedTokens.map((tok) =>
@@ -51,7 +87,7 @@ export async function GET(request: Request) {
       .from(chat)
       .where(
         and(
-          sql`${chat.userId}::text = ANY(${userIds})`,
+          sql`${chat.userId} IN (${variants})`,
           chatConditions.length > 0
             ? and(...chatConditions)
             : ilike(chat.title, escapedFull)
@@ -72,7 +108,10 @@ export async function GET(request: Request) {
         and(
           // Projets possédés OU projets partagés dont l'utilisateur est membre
           // (ProjectMember) : la recherche n'expose jamais un projet étranger.
-          sql`(${project.userId}::text = ANY(${userIds}) OR EXISTS (SELECT 1 FROM "ProjectMember" pm WHERE pm."projectId" = ${project.id} AND pm."userId"::text = ANY(${userIds})))`,
+          or(
+            sql`${project.userId} IN (${variants})`,
+            sql`EXISTS (SELECT 1 FROM "ProjectMember" pm WHERE pm."projectId" = ${project.id} AND pm."userId" IN (${variants}))`
+          ),
           projectConditions.length > 0
             ? and(...projectConditions)
             : ilike(project.name, escapedFull)
@@ -99,7 +138,7 @@ export async function GET(request: Request) {
       .innerJoin(chat, sql`${message.chatId}::text = ${chat.id}::text`)
       .where(
         and(
-          sql`${chat.userId}::text = ANY(${userIds})`,
+          sql`${chat.userId} IN (${variants})`,
           messageConditions.length > 0
             ? and(...messageConditions)
             : sql`${message.parts}::text ILIKE ${escapedFull}`

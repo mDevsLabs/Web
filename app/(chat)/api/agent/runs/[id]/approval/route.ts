@@ -85,6 +85,11 @@ async function handlePost(request: Request, params: Promise<{ id: string }>) {
       message: "Cette demande d'approbation n'est plus en attente.",
     });
   }
+  if (parsed.data.toolCallId && parsed.data.toolCallId !== pending.toolCallId) {
+    return errorResponse("invalid_request", {
+      message: "Cette décision ne correspond pas à l'appel en attente.",
+    });
+  }
 
   // Les paramètres approuvés sont ceux de la demande persistée, écrite par le
   // serveur à partir de l'appel d'outil présenté : le client ne fournit jamais

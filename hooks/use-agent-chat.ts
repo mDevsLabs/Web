@@ -20,7 +20,7 @@ import type {
 import type { ReasoningLevel } from "@/lib/ai/registry/reasoning";
 import { apiEndpoints, apiUrl } from "@/lib/client/api-endpoints";
 import type { Attachment, ChatMessage } from "@/lib/types";
-import { fetcher, fetchWithErrorHandlers, generateUUID } from "@/lib/utils";
+import { fetchWithErrorHandlers, generateUUID } from "@/lib/utils";
 
 // Conduite de l'expérience Agent côté client. Le hook ne décide de rien : il
 // compose la requête (modèle, projet, réflexion, autonomie, familles d'outils)
@@ -29,14 +29,32 @@ import { fetcher, fetchWithErrorHandlers, generateUUID } from "@/lib/utils";
 export type AgentToolMode = "auto" | "all" | "categories";
 
 export type AgentRequestOptions = {
+  /**
+   * Persona sélectionnée (assistant). `null` = style par défaut.
+   *
+   * Le serveur l'accepte depuis le début (`agentRequestBodySchema.assistantId`)
+   * et l'ajoute au prompt système APRÈS le socle Agent, sans jamais le
+   * remplacer. Le client ne l'envoyait pas : une persona était donc
+   * silencieusement ignorée en mode Agent.
+   */
+  assistantId: string | null;
   audioEnabled: boolean;
-  autonomy: AgentAutonomy;
   enabledCategories: ToolCategory[] | null;
   forceWeb: boolean;
   imageEnabled: boolean;
   memoryEnabled: boolean;
+  mcpServerIds: string[];
   projectId: string | null;
-  reasoningLevel: ReasoningLevel;
+  /**
+   * Choix explicite de l'utilisateur pour cette session. `null` = aucun choix :
+   * la clé est alors omise du corps de la requête et le serveur replie sur le
+   * niveau enregistré dans les paramètres du compte. Coder une valeur en dur ici
+   * rendrait ce repli mort — l'interface imposerait « medium » à un compte qui a
+   * choisi autre chose.
+   */
+  reasoningLevel: ReasoningLevel | null;
+  skillId: string | null;
+  skillParams: Record<string, string> | null;
   tasksEnabled: boolean;
   toolMode: AgentToolMode;
 };
@@ -84,14 +102,19 @@ export type SubmitUserInputResult =
 type AgentMessagePart = NonNullable<ChatMessage["parts"]>[number];
 
 const EMPTY_OPTIONS: AgentRequestOptions = {
+  assistantId: null,
   audioEnabled: false,
-  autonomy: "standard",
   enabledCategories: null,
   forceWeb: false,
   imageEnabled: false,
+  mcpServerIds: [],
   memoryEnabled: false,
   projectId: null,
-  reasoningLevel: "medium",
+  // Aucun choix par défaut : la valeur vient des paramètres du compte, lus par
+  // l'interface et appliqués par le serveur quand la clé est absente.
+  reasoningLevel: null,
+  skillId: null,
+  skillParams: null,
   tasksEnabled: false,
   toolMode: "auto",
 };
@@ -116,6 +139,9 @@ function clearOneShotOptions(
       (next as Record<string, unknown>)[key] = false;
     }
   }
+  next.mcpServerIds = [];
+  next.skillId = null;
+  next.skillParams = null;
   return next;
 }
 
@@ -135,15 +161,52 @@ function toToolActivity(execution: ToolExecutionRecord): AgentToolActivity {
   };
 }
 
+// Charge utile de /api/messages, réduite à ce dont l'Agent a besoin.
+type AgentChatPayload = {
+  chatId?: string;
+  messages?: ChatMessage[];
+  /**
+   * La conversation n'existe pas encore en base. Cas normal et non errno entre
+   * le pushState de l'envoi et la création par /api/agent — jamais une erreur.
+   */
+  pending?: boolean;
+};
+
+type AgentMessagesKey = readonly ["agent/messages", string];
+
+// L'URL /api/messages est aussi lue par le provider Chat
+// (hooks/use-active-chat.tsx). Deux hooks, deux fetchers, une seule entrée de
+// cache si la clé est l'URL brute : la requête dédupliquée est alors celle du
+// hook monté en premier, et le résultat dépend de l'ordre de montage. Le
+// préfixe de clé isole l'Agent sans changer l'URL appelée.
+function agentMessagesKey(chatId: string): AgentMessagesKey {
+  return ["agent/messages", chatId];
+}
+
+async function fetchAgentMessages(
+  key: AgentMessagesKey
+): Promise<AgentChatPayload> {
+  const response = await fetch(apiEndpoints.messagesForChat(key[1]));
+  if (response.status === 404) {
+    return { messages: [], pending: true };
+  }
+  if (!response.ok) {
+    throw new Error(`messages HTTP ${response.status}`);
+  }
+  return (await response.json()) as AgentChatPayload;
+}
+
 export function useAgentChat({
   chatId,
   isNewChat,
   modelId,
+  onModelResolved,
   visibility,
 }: {
   chatId: string;
   isNewChat: boolean;
   modelId: string;
+  onModelResolved?: (modelId: string) => void;
   visibility: VisibilityType;
 }) {
   const { applyDataPart, state: streamState } = useAgentStream();
@@ -156,11 +219,18 @@ export function useAgentChat({
   const visibilityRef = useRef(visibility);
   visibilityRef.current = visibility;
 
-  const { data: chatData, isLoading } = useSWR(
-    isNewChat ? null : apiEndpoints.messagesForChat(chatId),
-    fetcher,
-    { revalidateOnFocus: false }
-  );
+  // Conversation créée par ce client : l'URL est poussée à l'envoi, alors que
+  // la ligne n'existe en base qu'une fois /api/agent l'a créée. Tant que ce
+  // repère est posé, /api/messages ne peut pas être la source de vérité de
+  // l'affichage — le flux, lui, l'est.
+  const locallyCreatedChatIdRef = useRef<string | null>(null);
+
+  const { data: chatData, isLoading } = useSWR<
+    AgentChatPayload,
+    AgentMessagesKey
+  >(isNewChat ? null : agentMessagesKey(chatId), fetchAgentMessages, {
+    revalidateOnFocus: false,
+  });
 
   const initialMessages: ChatMessage[] = isNewChat
     ? []
@@ -180,6 +250,13 @@ export function useAgentChat({
     id: chatId,
     messages: initialMessages,
     onData: (dataPart) => {
+      if (
+        dataPart.type === "data-agent-run" &&
+        dataPart.data.model &&
+        dataPart.data.model !== modelIdRef.current
+      ) {
+        onModelResolved?.(dataPart.data.model);
+      }
       // Le statut d'attente est partagé avec le Chat : « Agent travaille… »
       // s'affiche pendant le premier chunk, comme pour une réponse classique.
       if (dataPart.type === "data-waiting-status") {
@@ -227,12 +304,16 @@ export function useAgentChat({
         const options = optionsRef.current;
         return {
           body: {
+            assistantId: options.assistantId || undefined,
             audioEnabled: options.audioEnabled || undefined,
-            autonomy: options.autonomy,
             enabledCategories: options.enabledCategories,
             forceWeb: options.forceWeb || undefined,
             id: request.id,
             imageEnabled: options.imageEnabled || undefined,
+            mcpServerIds:
+              options.mcpServerIds.length > 0
+                ? options.mcpServerIds
+                : undefined,
             memoryEnabled: options.memoryEnabled || undefined,
             modelId: modelIdRef.current,
             ...(isContinuation
@@ -241,7 +322,11 @@ export function useAgentChat({
                   message: lastMessage,
                   projectId: options.projectId,
                 }),
-            reasoningLevel: options.reasoningLevel,
+            // `undefined` et non `null` : la clé disparaît du JSON, ce qui laisse
+            // `resolveAgentReasoning` appliquer le niveau du compte.
+            reasoningLevel: options.reasoningLevel ?? undefined,
+            skillId: options.skillId || undefined,
+            skillParams: options.skillParams ?? undefined,
             tasksEnabled: options.tasksEnabled || undefined,
             toolMode: options.toolMode,
             visibility: visibilityRef.current,
@@ -252,10 +337,40 @@ export function useAgentChat({
     }),
   });
 
+  // Miroir du statut du flux pour l'effet d'hydratation ci-dessous : lire `status`
+  // directement l'ajouterait aux dépendances et rejouerait l'hydratation à chaque
+  // transition de statut.
+  const statusRef = useRef(status);
+  statusRef.current = status;
+
+  // Le repère « créé localement » vaut pour la conversation courante seulement :
+  // rouvrir une conversation existante doit pouvoir s'hydrater normalement. La
+  // comparaison se fait pendant le rendu (même idiomme que newChatIdRef dans
+  // use-active-chat) parce qu'un effet ne serait pas rejoué sur un changement de
+  // chatId dont aucune valeur réactive n'a bougé.
+  const hydratedForChatIdRef = useRef(chatId);
+  if (hydratedForChatIdRef.current !== chatId) {
+    hydratedForChatIdRef.current = chatId;
+    locallyCreatedChatIdRef.current = null;
+  }
+
   // Chargement initial d'une conversation existante : une seule fois par chat.
+  //
+  // Deux interdits absolus. Le premier : une conversation que ce client vient
+  // de créer — /api/messages répond avant que /api/agent n'ait enregistré le
+  // message utilisateur, donc avec un tableau vide ou sans l'échange, et
+  // l'écrire par-dessus useChat effaçait la réponse en cours de streaming
+  // (l'agent « ne répondait jamais »). Le second : un flux en cours — même
+  // réponse, même conséquence, cette fois en pleine génération.
   const loadedChatIdRef = useRef<string | null>(null);
   useEffect(() => {
     if (isNewChat) {
+      return;
+    }
+    if (locallyCreatedChatIdRef.current === chatId) {
+      return;
+    }
+    if (statusRef.current !== "ready") {
       return;
     }
     if (loadedChatIdRef.current === chatId) {
@@ -304,28 +419,42 @@ export function useAgentChat({
       resumeFromRunId?: string;
       text: string;
     }) => {
+      const requestOptions = options ?? optionsRef.current;
       if (options) {
-        // Capture puis remise à zéro des toggles one-shot : l'utilisateur n'a
-        // pas à désactiver lui-même Image/Audio/Web/Mémoire/Tâches après
-        // chaque envoi (même contrat que les outils one-shot du Chat). Les
-        // réglages persistants (projet, autonomie, réflexion) sont conservés.
-        optionsRef.current = clearOneShotOptions(options);
+        // Le transport lit optionsRef pendant la préparation de la requête.
+        // On conserve donc les options one-shot jusqu'à l'envoi effectif, puis
+        // on les remet à zéro pour le prochain message.
+        optionsRef.current = requestOptions;
       }
       if (typeof window !== "undefined") {
+        // Avant le pushState : dès que l'URL devient /chat/<id>, isNewChat
+        // passe à false et la clé /api/messages s'active. Le repère interdit
+        // à cette réponse d'écraser l'état du flux qu'on lance ici.
+        locallyCreatedChatIdRef.current = chatId;
         window.history.pushState({}, "", apiEndpoints.chatPath(chatId));
       }
-      sendMessage({
-        parts: [
-          ...attachments.map((attachment) => ({
-            mediaType: attachment.contentType,
-            name: attachment.name,
-            type: "file" as const,
-            url: attachment.url,
-          })),
-          { text, type: "text" as const },
-        ],
-        role: "user" as const,
-      }, resumeFromRunId ? { body: { resumeFromRunId } } : undefined);
+      const request = sendMessage(
+        {
+          parts: [
+            ...attachments.map((attachment) => ({
+              mediaType: attachment.contentType,
+              name: attachment.name,
+              type: "file" as const,
+              url: attachment.url,
+            })),
+            { text, type: "text" as const },
+          ],
+          role: "user" as const,
+        },
+        resumeFromRunId ? { body: { resumeFromRunId } } : undefined
+      );
+      if (options) {
+        void Promise.resolve(request)
+          .finally(() => {
+            optionsRef.current = clearOneShotOptions(requestOptions);
+          })
+          .catch(() => {});
+      }
     },
     [chatId, sendMessage]
   );

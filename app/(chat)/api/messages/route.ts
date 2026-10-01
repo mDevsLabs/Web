@@ -15,38 +15,31 @@ export async function GET(request: Request) {
     });
   }
 
-  const [maiUser, chat, messages] = await Promise.all([
-    getMaiUser(),
-    getChatById({ id: chatId }),
-    getMessagesByChatId({ id: chatId }),
-  ]);
+  const maiUser = await getMaiUser();
+  if (!maiUser) {
+    return errorResponse("auth_required");
+  }
 
+  const chat = await getChatById({ id: chatId });
   if (!chat) {
-    return Response.json({
-      isReadonly: false,
-      messages: [],
-      userId: null,
-      visibility: "private",
+    return errorResponse("not_found", {
+      message: "Conversation introuvable ou supprimée.",
     });
   }
 
-  const currentUserId = maiUser?.id || maiUser?.email;
-  const isOwner = Boolean(
-    currentUserId &&
-      (chat.userId === currentUserId ||
-        chatOwnerMatches({
-          chatUserId: chat.userId,
-          email: maiUser?.email,
-          userId: maiUser?.id,
-          username: maiUser?.username,
-        }))
-  );
+  const currentUserId = maiUser.id;
+  const isOwner = chatOwnerMatches({
+    chatUserId: chat.userId,
+    email: maiUser.email,
+    userId: maiUser.id,
+    username: maiUser.username,
+  });
 
   // Espace projet partagé : un membre peut lire les conversations du projet
   // (lecture seule), même privées, parce qu'il fait partie de l'espace. Les
   // autres utilisateurs ne peuvent rien lire (garde serveur).
   let isProjectMember = false;
-  if (!isOwner && chat.projectId && maiUser) {
+  if (!isOwner && chat.projectId) {
     const access = await getProjectAccess({
       projectId: chat.projectId,
       userEmail: maiUser.email,
@@ -60,6 +53,7 @@ export async function GET(request: Request) {
   }
 
   const isReadonly = !isOwner;
+  const messages = await getMessagesByChatId({ id: chatId });
 
   return Response.json({
     chatId: chat.id,

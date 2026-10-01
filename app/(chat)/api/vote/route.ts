@@ -1,6 +1,12 @@
 import { z } from "zod";
+import { chatOwnerMatches } from "@/lib/agent/channel";
 import { getMaiUser, type MaiUser } from "@/lib/auth/session";
-import { getChatById, getVotesByChatId, voteMessage } from "@/lib/db/queries";
+import {
+  getChatById,
+  getVotesByChatId,
+  messageBelongsToChat,
+  voteMessage,
+} from "@/lib/db/queries";
 import type { Chat } from "@/lib/db/schema";
 import { ChatbotError } from "@/lib/errors";
 
@@ -10,14 +16,13 @@ const voteSchema = z.object({
   type: z.enum(["up", "down"]),
 });
 
-// chat.userId peut contenir user.id, user.email ou username selon la création
 function isChatOwner(chat: Chat, maiUser: MaiUser): boolean {
-  return Boolean(
-    chat.userId === (maiUser.id || maiUser.email) ||
-      chat.userId === maiUser.id ||
-      chat.userId === maiUser.email ||
-      chat.userId === maiUser.username
-  );
+  return chatOwnerMatches({
+    chatUserId: chat.userId,
+    email: maiUser.email,
+    userId: maiUser.id,
+    username: maiUser.username,
+  });
 }
 
 export async function GET(request: Request) {
@@ -80,6 +85,10 @@ export async function PATCH(request: Request) {
 
   if (!isChatOwner(chat, maiUser)) {
     return new ChatbotError("forbidden:vote").toResponse();
+  }
+
+  if (!(await messageBelongsToChat({ chatId, messageId }))) {
+    return new ChatbotError("not_found:vote").toResponse();
   }
 
   await voteMessage({

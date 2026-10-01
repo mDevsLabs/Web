@@ -4,30 +4,61 @@ import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { getUserPreferences, upsertUserPreferences } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
+import {
+  DICTATION_LANGUAGES,
+  normalizeDictationLanguage,
+  normalizeTranslationTarget,
+  TRANSLATION_TARGET_CODE_LIST,
+} from "@/lib/i18n/languages";
+import {
+  buildCustomInstructionsSchema,
+  customInstructionsLimitPayload,
+} from "@/lib/plans/custom-instructions";
 
-const schema = z.object({
-  customInstructions: z.string().max(4000).optional(),
-  defaultAgentId: z.string().uuid().nullable().optional(),
-  defaultAudioModel: z.string().max(150).optional(),
-  defaultAudioSpeed: z.number().min(0.5).max(2.0).optional(),
-  defaultAudioVoice: z.string().max(100).optional(),
-  defaultChatModel: z.string().max(200).nullable().optional(),
-  defaultChatVisibility: z.enum(["private", "public"]).optional(),
-  defaultImageModel: z.string().max(150).optional(),
-  defaultImageSize: z.string().max(50).optional(),
-  enabled: z.boolean().optional(),
-  ghostMemoryEnabled: z.boolean().optional(),
-  showAgentChatIcons: z.boolean().optional(),
-  temperature: z.number().min(0).max(2).optional(),
-  topP: z.number().min(0).max(1).optional(),
-});
+// La limite de customInstructions dépend du forfait : le schéma est donc
+// construit par requête. Avant, `z.string().max(4000)` était figé ici comme
+// dans 6 autres routes — un compte Pro ou Max ne pouvait pas dépasser 4000
+// caractères, alors que le produit l'annonçait sans limite.
+const buildSchema = (tier?: string | null) =>
+  z.object({
+    customInstructions: buildCustomInstructionsSchema(tier),
+    defaultAgentId: z.string().uuid().nullable().optional(),
+    defaultAudioModel: z.string().max(150).optional(),
+    defaultAudioSpeed: z.number().min(0.5).max(2.0).optional(),
+    defaultAudioVoice: z.string().max(100).optional(),
+    defaultChatModel: z.string().max(200).nullable().optional(),
+    defaultChatVisibility: z.enum(["private", "public"]).optional(),
+    // Les deux listes viennent de lib/i18n/languages.ts, la même source que le
+    // sélecteur de l'interface : impossible qu'un code valide soit refusé par
+    // l'API, ni qu'une cible DeepL fantôme soit acceptée puis rejetée en aval.
+    defaultDictationLanguage: z
+      .string()
+      .transform(normalizeDictationLanguage)
+      .pipe(z.enum(DICTATION_LANGUAGES.map((entry) => entry.value)))
+      .optional(),
+    defaultImageModel: z.string().max(150).optional(),
+    defaultImageSize: z.string().max(50).optional(),
+    defaultTranslationLanguage: z
+      .string()
+      .transform((value) => normalizeTranslationTarget(value) ?? "EN")
+      .pipe(z.enum(TRANSLATION_TARGET_CODE_LIST as [string, ...string[]]))
+      .optional(),
+    enabled: z.boolean().optional(),
+    ghostMemoryEnabled: z.boolean().optional(),
+    showAgentChatIcons: z.boolean().optional(),
+    temperature: z.number().min(0).max(2).optional(),
+    topP: z.number().min(0).max(1).optional(),
+  });
 
 export async function GET() {
   const user = await getMaiUser();
   if (!user) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
+  const userId = user.id;
+  if (!userId) {
+    return new ChatbotError("unauthorized:chat").toResponse();
+  }
   try {
     const prefs = await getUserPreferences(userId);
     return NextResponse.json(prefs);
@@ -41,8 +72,10 @@ export async function GET() {
       defaultAudioVoice: "flux-alexis-en",
       defaultChatModel: null,
       defaultChatVisibility: "private",
+      defaultDictationLanguage: "auto",
       defaultImageModel: "black-forest-labs/flux-schnell",
       defaultImageSize: "1024x1024",
+      defaultTranslationLanguage: "EN",
       enabled: false,
       ghostMemoryEnabled: false,
       showAgentChatIcons: true,
@@ -57,11 +90,23 @@ export async function POST(request: Request) {
   if (!user) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
+  const userId = user.id;
+  if (!userId) {
+    return new ChatbotError("unauthorized:chat").toResponse();
+  }
   try {
     const body = await request.json().catch(() => ({}));
-    const parsed = schema.safeParse(body);
+    const parsed = buildSchema(user.tier).safeParse(body);
     if (!parsed.success) {
+      // Un dépassement de longueur mérite un message de forfait, pas une
+      // liste de champs invalides : on le distingue avant le repli Zod.
+      const raw = (body as { customInstructions?: unknown }).customInstructions;
+      if (typeof raw === "string") {
+        const payload = customInstructionsLimitPayload(user.tier, raw.length);
+        if (payload) {
+          return errorResponse("invalid_request", payload);
+        }
+      }
       return errorResponse("invalid_request", {
         message: zodIssuesMessage(parsed.error),
       });

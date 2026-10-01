@@ -15,10 +15,35 @@
     "requiresApproval": false
   },
   "tools": [
-    { "description": "Jours fériés français et jours ouvrés calculés localement.", "id": "frHolidays", "label": "Jours fériés français", "systemHint": "frHolidays (jours fériés légaux français, ponts et jours ouvrés — calcul local)" },
-    { "description": "Lister les jours fériés d'un pays pour une année.", "id": "internationalHolidays", "label": "Jours fériés par pays", "systemHint": "internationalHolidays (jours fériés nationaux par code pays ISO et année)" },
-    { "description": "Vérifier si une date précise est un jour férié national.", "id": "isPublicHoliday", "label": "Vérifier une date", "systemHint": "isPublicHoliday (vérifie une date AAAA-MM-JJ et un code pays ISO)" },
-    { "description": "Trouver les week-ends prolongés d'un pays pour une année.", "id": "getHolidayLongWeekends", "label": "Week-ends prolongés", "systemHint": "getHolidayLongWeekends (week-ends prolongés par pays et année)" },
-    { "description": "Lister les pays servis par la source des jours fériés.", "id": "listHolidayCountries", "label": "Pays pris en charge", "systemHint": "listHolidayCountries (codes ISO et noms des pays pris en charge)" }
+    {
+      "description": "Jours fériés français et jours ouvrés calculés localement.",
+      "id": "frHolidays",
+      "label": "Jours fériés français",
+      "systemHint": "frHolidays (jours fériés légaux français, ponts et jours ouvrés — calcul local)"
+    },
+    {
+      "description": "Lister les jours fériés d'un pays pour une année.",
+      "id": "internationalHolidays",
+      "label": "Jours fériés par pays",
+      "systemHint": "internationalHolidays (jours fériés nationaux par code pays ISO et année)"
+    },
+    {
+      "description": "Vérifier si une date précise est un jour férié national.",
+      "id": "isPublicHoliday",
+      "label": "Vérifier une date",
+      "systemHint": "isPublicHoliday (vérifie une date AAAA-MM-JJ et un code pays ISO)"
+    },
+    {
+      "description": "Trouver les week-ends prolongés d'un pays pour une année.",
+      "id": "getHolidayLongWeekends",
+      "label": "Week-ends prolongés",
+      "systemHint": "getHolidayLongWeekends (week-ends prolongés par pays et année)"
+    },
+    {
+      "description": "Lister les pays servis par la source des jours fériés.",
+      "id": "listHolidayCountries",
+      "label": "Pays pris en charge",
+      "systemHint": "listHolidayCountries (codes ISO et noms des pays pris en charge)"
+    }
   ]
 }

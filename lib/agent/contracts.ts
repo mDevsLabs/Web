@@ -1,10 +1,18 @@
 import { z } from "zod";
+import { REASONING_LEVELS } from "@/lib/ai/registry/reasoning";
 
 // Contrats structurés des intentions Agent. Toute sortie du modèle (ou du
 // client) passe par l'un de ces schémas avant d'être autorisée, persistée ou
 // exécutée : une sortie invalide ne devient jamais une opération exécutable.
 // Aucune détection par mots-clés ni commande textuelle : le backend reçoit des
 // structures, les valide, puis décide.
+
+// Les sept niveaux sont ceux de l'API unifiée du fournisseur. La liste vit dans
+// le registre et n'est jamais écrite ici : la restreindre au triplet
+// low/medium/high aurait rendu la colonne `reasoningLevel` incapable
+// d'accueillir autre chose, et l'élargissement de la migration 0030 aurait été
+// décoratif. Le tuple est passé tel quel pour que l'inférence reste littérale.
+const reasoningLevelSchema = z.enum(REASONING_LEVELS);
 
 // ---------------------------------------------------------------------------
 // Run immédiat
@@ -20,7 +28,7 @@ export const runIntentSchema = z.object({
   kind: z.literal("run"),
   modelId: z.string().min(1).max(200),
   projectId: z.string().uuid().nullable().default(null),
-  reasoningLevel: z.enum(["low", "medium", "high"]).optional(),
+  reasoningLevel: reasoningLevelSchema.optional(),
   task: z.string().min(1).max(8000),
 });
 
@@ -129,7 +137,7 @@ export const scheduleIntentSchema = z.object({
   kind: z.literal("schedule"),
   modelId: z.string().min(1).max(200),
   projectId: z.string().uuid().nullable().default(null),
-  reasoningLevel: z.enum(["low", "medium", "high"]).default("medium"),
+  reasoningLevel: reasoningLevelSchema.default("medium"),
   rule: scheduleRuleSchema,
   timezone: scheduleTimezoneSchema,
   title: z.string().min(1).max(120),
@@ -155,7 +163,7 @@ export const scheduleMutationSchema = z.discriminatedUnion("action", [
         instructions: z.string().min(1).max(8000).optional(),
         modelId: z.string().min(1).max(200).optional(),
         projectId: z.string().uuid().nullable().optional(),
-        reasoningLevel: z.enum(["low", "medium", "high"]).optional(),
+        reasoningLevel: reasoningLevelSchema.optional(),
         rule: scheduleRuleSchema.optional(),
         timezone: scheduleTimezoneSchema.optional(),
         title: z.string().min(1).max(120).optional(),

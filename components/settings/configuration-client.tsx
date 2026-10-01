@@ -7,6 +7,7 @@ import useSWR from "swr";
 
 import { AgentIcon } from "@/components/agents/agent-icon";
 import { AGENT_COLORS, AGENT_ICONS } from "@/components/agents/agent-presets";
+import { ColorPicker } from "@/components/common/color-picker";
 import { UpgradeDialog } from "@/components/common/upgrade-dialog";
 import { Button } from "@/components/ui/button";
 import {
@@ -52,12 +53,13 @@ type CommandPayloadForm = {
 const NAVIGATION_ROUTES = [
   { label: "Projets", value: "/projects" },
   { label: "Bibliothèque", value: "/library" },
-  { label: "Agents", value: "/agents" },
+  { label: "Bots", value: "/agents" },
   { label: "Compétences", value: "/skills" },
   { label: "Serveurs MCP", value: "/mcp" },
   { label: "Images", value: "/images" },
   { label: "Audio", value: "/audio" },
   { label: "Paramètres — Consommation", value: "/settings?tab=usage" },
+  { label: "Paramètres — Statistiques", value: "/settings/statistiques" },
   { label: "Paramètres — Profil", value: "/settings?tab=profile" },
   { label: "Paramètres — Préférences IA", value: "/settings?tab=preferences" },
 ];
@@ -86,10 +88,11 @@ export function ConfigurationSection() {
     servers: Array<{ id: string; name: string; isEnabled: boolean }>;
   }>(isFree ? null : "/api/mcp", fetcher);
   const mcpServers = mcpData?.servers ?? [];
-  const { data: agents = [] } = useSWR<Array<{ id: string; name: string }>>(
-    isFree ? null : "/api/agents",
-    fetcher
-  );
+  const { data: agentsData } = useSWR<{
+    agents: Array<{ id: string; name: string }>;
+    limit: number | null;
+  }>(isFree ? null : "/api/agents", fetcher);
+  const agents = agentsData?.agents ?? [];
   const { data: skills = [] } = useSWR<Array<{ id: string; name: string }>>(
     isFree ? null : "/api/skills",
     fetcher
@@ -439,20 +442,12 @@ export function ConfigurationSection() {
                   </button>
                 ))}
               </div>
-              <div className="flex flex-wrap gap-1.5 pt-1">
-                {AGENT_COLORS.map((c) => (
-                  <button
-                    className={cn(
-                      "size-6 rounded-full transition-transform",
-                      form.color === c && "ring-2 ring-foreground scale-110"
-                    )}
-                    key={c}
-                    onClick={() => setFormPartial({ color: c })}
-                    style={{ backgroundColor: c }}
-                    type="button"
-                  />
-                ))}
-              </div>
+              <ColorPicker
+                className="pt-1"
+                colors={AGENT_COLORS}
+                onChange={(color) => setFormPartial({ color })}
+                value={form.color}
+              />
             </div>
 
             {/* Action */}
@@ -505,7 +500,7 @@ export function ConfigurationSection() {
 
             {form.actionType === "agent" && (
               <div className="space-y-1.5">
-                <Label className="text-xs font-semibold">Agent activé *</Label>
+                <Label className="text-xs font-semibold">Bot activé *</Label>
                 <Select
                   onValueChange={(v) =>
                     setFormPartial({
@@ -515,7 +510,7 @@ export function ConfigurationSection() {
                   value={form.payload.agentId ?? ""}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Choisir un agent" />
+                    <SelectValue placeholder="Choisir un bot" />
                   </SelectTrigger>
                   <SelectContent>
                     {agents.map((a) => (

@@ -1,3 +1,4 @@
+import { chatOwnerMatches } from "@/lib/agent/channel";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { errorResponse } from "@/lib/api/error-response";
 import { isPaidTier } from "@/lib/auth/plan";
@@ -17,15 +18,16 @@ import {
   deleteChatById,
   getChatById,
   getPluginInstallationsByUserId,
+  incrementCustomCommandUsage,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import { getPluginManifest, isPluginOnlyToolId } from "@/lib/plugins/catalog";
-import { canUsePlugin } from "@/lib/plugins/tier-lock";
 import {
   createPluginTools,
   getToolIdsForPluginIds,
 } from "@/lib/plugins/server";
-import { type PostRequestBody, postRequestBodySchema } from "./schema";
+import { canUsePlugin } from "@/lib/plugins/tier-lock";
+import { buildPostRequestBodySchema, type PostRequestBody } from "./schema";
 
 export const maxDuration = 300;
 
@@ -37,7 +39,12 @@ export async function POST(request: Request) {
   // requête car elle meurt avant tout appel au modèle.
   try {
     const json: unknown = await request.json();
-    const parsed = postRequestBodySchema.safeParse(json);
+    // Le schéma dépend du forfait (limite de customInstructions) : la session
+    // est donc résolue AVANT le parse. Elle l'est de toute façon un peu plus
+    // bas pour l'envoi, et un échec d'authentification doit primer sur un
+    // 400 de schéma.
+    const schemaTier = (await getMaiUser())?.tier;
+    const parsed = buildPostRequestBodySchema(schemaTier).safeParse(json);
     if (!parsed.success) {
       const issues = parsed.error.issues
         .slice(0, 5)
@@ -113,6 +120,23 @@ export async function POST(request: Request) {
       temperatureOverride: body.temperatureOverride,
     });
 
+    // 2 bis. Compteur d'usage des commandes personnalisées.
+    //
+    // `incrementCustomCommandUsage` existait mais n'était appelé nulle part :
+    // le badge « N usage(s) » de l'écran de configuration restait à 0 pour
+    // toutes les commandes, ce qui rendait le tri par popularité — et donc la
+    // décision de conserver ou non une commande — impossible.
+    //
+    // Fire-and-forget : un compteur raté ne doit jamais faire échouer un envoi.
+    // L'ajouter à la chaîne ajouterait une écriture sur le chemin critique, et
+    // la requête avale déjà ses propres erreurs.
+    if (body.pendingPrompt?.commandId) {
+      void incrementCustomCommandUsage({
+        id: body.pendingPrompt.commandId,
+        userId: auth.userId,
+      });
+    }
+
     // 3. Mémoire personnalisée (globale ou spécifique agent + projet)
     const memoryCtx = await buildMemoryContext({
       effectiveAgentId: ctx.effectiveAgentId,
@@ -134,7 +158,9 @@ export async function POST(request: Request) {
     const enabledPluginIds = pluginInstallations.flatMap((installation) => {
       if (!installation.isEnabled) return [];
       const plugin = getPluginManifest(installation.pluginId);
-      return plugin && canUsePlugin(plugin, ctx.maiUser.tier) ? [plugin.id] : [];
+      return plugin && canUsePlugin(plugin, ctx.maiUser.tier)
+        ? [plugin.id]
+        : [];
     });
     const installedPluginToolIds = getToolIdsForPluginIds(enabledPluginIds);
 
@@ -171,6 +197,7 @@ export async function POST(request: Request) {
       effectiveMaxTokens,
       effectiveTemperature,
       effectiveTopP,
+      memoryContext: memoryCtx,
       model,
       prepareTools: async (dataStream) => {
         const mcpCtx = await loadMcpContext({
@@ -209,6 +236,7 @@ export async function POST(request: Request) {
 
         const pluginTools = createPluginTools(
           {
+            channel: "chat",
             chatModel: ctx.chatModel,
             dataStream,
             isGhostMode: ctx.isGhostMode,
@@ -224,6 +252,11 @@ export async function POST(request: Request) {
 
         const tools = createChatTools(
           {
+            // `chatId` n'est renseigné que si la conversation est déjà
+            // persistée : une nouvelle conversation l'est quelques instants plus
+            // tard, et un `ToolExecution` sans lien reste un `ToolExecution`
+            // compté pour le bon compte.
+            chatId: ctx.chat?.id ?? null,
             chatModel: ctx.chatModel,
             dataStream,
             effectiveAgentId: ctx.effectiveAgentId,
@@ -286,8 +319,14 @@ export async function DELETE(request: Request) {
     return new ChatbotError("not_found:chat").toResponse();
   }
 
-  const userId = maiUser.id || maiUser.email;
-  if (chat.userId !== userId && chat.userId !== maiUser.email) {
+  if (
+    !chatOwnerMatches({
+      chatUserId: chat.userId,
+      email: maiUser.email,
+      userId: maiUser.id,
+      username: maiUser.username,
+    })
+  ) {
     return new ChatbotError("forbidden:chat").toResponse();
   }
 

@@ -2,6 +2,7 @@ import { getMaiUser } from "@/lib/auth/session";
 import { getFilteredMcpLogs } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import { type ExportFormat, formatExport } from "@/lib/export/formatters";
+import { redactMcpText } from "@/lib/mcp/redaction";
 
 export async function GET(request: Request) {
   const user = await getMaiUser();
@@ -29,7 +30,7 @@ export async function GET(request: Request) {
     chatId: l.chatId ?? "",
     createdAt: new Date(l.createdAt as any).toISOString(),
     durationMs: l.durationMs ?? 0,
-    error: l.error ?? "",
+    error: l.error ? redactMcpText(l.error, 1000) : "",
     serverName: l.serverName,
     toolName: l.toolName,
   }));

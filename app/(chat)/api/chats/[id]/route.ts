@@ -12,6 +12,7 @@ import {
   updateChatVisibilityById,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
+import { buildNullableCustomInstructionsSchema } from "@/lib/plans/custom-instructions";
 import { getProjectAccess } from "@/lib/projects/access";
 
 // Lecture d'une conversation d'un espace projet partagé : le propriétaire du
@@ -42,17 +43,20 @@ async function canViewChat(params: {
   return Boolean(access);
 }
 
-const patchSchema = z.object({
-  customInstructions: z.string().max(4000).nullable().optional(),
-  isArchived: z.boolean().optional(),
-  modeId: z.string().max(20).nullable().optional(),
-  pinned: z.boolean().optional(),
-  projectId: z.string().uuid().nullable().optional(),
-  tags: z.array(z.string().min(1).max(30)).max(10).optional(),
-  temperatureOverride: z.number().min(0).max(2).nullable().optional(),
-  title: z.string().min(1).max(100).optional(),
-  visibility: z.enum(["public", "private"]).optional(),
-});
+// customInstructions est borné par le forfait de l'utilisateur : le schéma
+// est construit après résolution de la session (voir PATCH).
+const buildPatchSchema = (tier?: string | null) =>
+  z.object({
+    customInstructions: buildNullableCustomInstructionsSchema(tier),
+    isArchived: z.boolean().optional(),
+    modeId: z.string().max(20).nullable().optional(),
+    pinned: z.boolean().optional(),
+    projectId: z.string().uuid().nullable().optional(),
+    tags: z.array(z.string().min(1).max(30)).max(10).optional(),
+    temperatureOverride: z.number().min(0).max(2).nullable().optional(),
+    title: z.string().min(1).max(100).optional(),
+    visibility: z.enum(["public", "private"]).optional(),
+  });
 
 export async function GET(
   _request: Request,
@@ -107,7 +111,7 @@ export async function PATCH(
 
   try {
     const body = await request.json();
-    const parsed = patchSchema.parse(body);
+    const parsed = buildPatchSchema(user.tier).parse(body);
 
     if (parsed.title !== undefined) {
       await updateChatTitleById({ chatId: id, title: parsed.title });

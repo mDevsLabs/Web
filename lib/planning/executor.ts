@@ -1,30 +1,41 @@
 import "server-only";
 
 import { generateText } from "ai";
-import { systemPrompt } from "@/lib/ai/prompts";
+import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { calculator } from "@/lib/ai/tools/calculator";
 import { codeExecution } from "@/lib/ai/tools/code-execution";
+import { TOOL_SYSTEM_HINTS } from "@/lib/ai/tools/config";
 import { dateTime } from "@/lib/ai/tools/datetime";
 import { webSearch } from "@/lib/ai/tools/web-search";
+import { loadMcpContext } from "@/lib/chat/mcp";
 import { getUserApiKey } from "@/lib/db/api-keys";
-import { getPersistedTier } from "@/lib/db/users";
 import {
+  claimScheduledMessage,
   createNotification,
   getAgentById,
   getChatById,
   getMessagesByChatId,
   getPluginInstallationsByUserId,
-  getScheduledMessageById,
+  getSkillById,
   recordTokenUsage,
   rescheduleRecurringMessage,
   saveChat,
   saveMessages,
   setScheduledMessageStatus,
 } from "@/lib/db/queries";
+import { getPersistedTier } from "@/lib/db/users";
+import { requireOwnedPlanningChat } from "@/lib/planning/chat-access";
+import { deriveScheduleToolMode } from "@/lib/planning/tool-mode";
 import { getPluginManifest } from "@/lib/plugins/catalog";
 import { createPluginTools } from "@/lib/plugins/server";
 import { canUsePlugin } from "@/lib/plugins/tier-lock";
+import { toolKindFor } from "@/lib/prompts/capabilities";
+import { buildChatSystemPrompt } from "@/lib/prompts/chat";
+import {
+  composePersonalInstructions,
+  type PersonalBlock,
+} from "@/lib/prompts/personal";
 import { generateUUID } from "@/lib/utils";
 
 export type PlanningRecurrence = "none" | "daily" | "weekly" | "monthly";
@@ -50,24 +61,42 @@ export function computeNextOccurrence(
 }
 
 export async function executeScheduledMessage(scheduledId: string) {
-  const item = await getScheduledMessageById({ id: scheduledId });
+  // La réservation atomique empêche deux workers d'exécuter la même
+  // planification. Les exécutions explicites d'un item failed restent possibles.
+  const item = await claimScheduledMessage({ id: scheduledId });
   if (!item) {
-    throw new Error(`Message planifié introuvable : ${scheduledId}`);
+    return { skipped: true, status: "not_claimable" };
   }
-
-  if (item.status !== "pending" && item.status !== "failed") {
-    return { skipped: true, status: item.status };
-  }
-
-  // Marquer en processing
-  await setScheduledMessageStatus({
-    id: item.id,
-    status: "processing",
-  });
 
   try {
     const userId = item.userId;
     let targetChatId = item.chatId;
+    // Mode de la conversation cible, figé pour l'attribution de la consommation
+    // (migration 0035). Une planification peut écrire dans une conversation
+    // EXISTANTE, dont le mode n'est pas forcément « chat » : le lire vaut mieux
+    // que supposer, d'autant que la conversation peut être supprimée ensuite.
+    let targetMode: "chat" | "agent" = "chat";
+    let targetProjectId: string | null = null;
+    let existingChat: Awaited<ReturnType<typeof getChatById>> = null;
+
+    if (targetChatId) {
+      const access = await requireOwnedPlanningChat({
+        chatId: targetChatId,
+        user: {
+          email: null,
+          id: userId,
+          username: null,
+        },
+      });
+      if (access.response) {
+        throw new Error(
+          "La conversation cible n'appartient pas à l'utilisateur."
+        );
+      }
+      existingChat = await getChatById({ id: targetChatId });
+      targetMode = existingChat?.mode === "agent" ? "agent" : "chat";
+      targetProjectId = existingChat?.projectId ?? null;
+    }
 
     // Déterminer ou créer la discussion cible
     if (item.createMode === "new_chat" || !targetChatId) {
@@ -84,23 +113,25 @@ export async function executeScheduledMessage(scheduledId: string) {
         userId,
         visibility: "private",
       });
-    } else {
-      const existing = await getChatById({ id: targetChatId });
-      if (!existing) {
-        targetChatId = generateUUID();
-        await saveChat({
-          agentId: item.agentId ?? null,
-          customInstructions: item.customInstructions ?? null,
-          id: targetChatId,
-          projectId: null,
-          skillId: null,
-          tags: ["planifié"],
-          temperatureOverride: item.temperature ?? null,
-          title: item.title || "Message planifié",
-          userId,
-          visibility: "private",
-        });
-      }
+    } else if (!existingChat) {
+      // La conversation annoncée par la planification a disparu entre-temps
+      // (suppression manuelle) : on repart sur une conversation neuve plutôt
+      // que d'échouer, et l'attribution repart sur le mode par défaut.
+      targetChatId = generateUUID();
+      targetMode = "chat";
+      targetProjectId = null;
+      await saveChat({
+        agentId: item.agentId ?? null,
+        customInstructions: item.customInstructions ?? null,
+        id: targetChatId,
+        projectId: null,
+        skillId: null,
+        tags: ["planifié"],
+        temperatureOverride: item.temperature ?? null,
+        title: item.title || "Message planifié",
+        userId,
+        visibility: "private",
+      });
     }
 
     // Charger les messages précédents de la discussion
@@ -144,6 +175,11 @@ export async function executeScheduledMessage(scheduledId: string) {
     let agentModel: string | null = null;
     let agentTemp: number | null = null;
     let agentCloudUrls: string[] = [];
+    let agentSkillInstructions: string[] = [];
+    let agentSkillToolIds: string[] = [];
+    let agentMcpServerIds: string[] = [];
+    let agentSkillMcpServerIds: string[] = [];
+    const agentSkillMcpToolFilter: Record<string, string[] | null> = {};
     if (item.agentId) {
       const ag = await getAgentById({ id: item.agentId, userId });
       if (ag) {
@@ -153,43 +189,107 @@ export async function executeScheduledMessage(scheduledId: string) {
         agentCloudUrls = Array.isArray(ag.cloudFileUrls)
           ? (ag.cloudFileUrls as string[])
           : [];
+        const skillIds = Array.isArray(ag.skillIds)
+          ? (ag.skillIds as string[]).filter(
+              (skillId): skillId is string => typeof skillId === "string"
+            )
+          : [];
+        const skills = await Promise.all(
+          skillIds.map((skillId) =>
+            getSkillById({ id: skillId, userId }).catch(() => null)
+          )
+        );
+        agentSkillInstructions = skills
+          .map((skill) => skill?.instructions?.trim())
+          .filter((instructions): instructions is string =>
+            Boolean(instructions)
+          );
+        agentSkillToolIds = Array.from(
+          new Set(
+            skills.flatMap((skill) =>
+              Array.isArray(skill?.tools) ? (skill.tools as string[]) : []
+            )
+          )
+        );
+        agentMcpServerIds = Array.isArray(ag.mcpServerIds)
+          ? (ag.mcpServerIds as string[])
+          : [];
+        agentSkillMcpServerIds = Array.from(
+          new Set(
+            skills.flatMap((skill) =>
+              Array.isArray(skill?.mcpServerIds)
+                ? (skill.mcpServerIds as string[])
+                : []
+            )
+          )
+        );
+        for (const skill of skills) {
+          if (skill?.mcpToolFilter && typeof skill.mcpToolFilter === "object") {
+            Object.assign(
+              agentSkillMcpToolFilter,
+              skill.mcpToolFilter as Record<string, string[] | null>
+            );
+          }
+        }
       }
     }
 
-    const effectiveModel =
-      item.modelId || agentModel || "google/gemini-2.5-flash";
+    const effectiveModel = item.modelId || agentModel || DEFAULT_CHAT_MODEL;
     const effectiveTemp = item.temperature ?? agentTemp ?? undefined;
 
-    let modeAddendum = "";
-    if (agentInstructions) {
-      modeAddendum += `AGENT ACTIF :\n${agentInstructions}\n\n`;
-    }
-    if (item.customInstructions) {
-      modeAddendum += `INSTRUCTIONS PARTICULIÈRES :\n${item.customInstructions}\n\n`;
-    }
-
+    // Bloc personnalisé : même contrat que le Chat et l'Agent — le socle vient
+    // de lib/prompts/chat.ts, ces consignes arrivent en dernier, délimitées.
     const allAttachedUrls = Array.from(
       new Set([...planningCloudUrls, ...agentCloudUrls])
     );
-    if (allAttachedUrls.length > 0) {
-      modeAddendum += "FICHIERS JOINTS DE LA BIBLIOTHÈQUE / CLOUD :\n";
-      for (const url of allAttachedUrls) {
-        const name = decodeURIComponent(url.split("/").pop() || "fichier");
-        modeAddendum += `- ${name} (${url})\n`;
-      }
-      modeAddendum += "\n";
-    }
-
-    modeAddendum += `Ce message a été envoyé automatiquement à la date et heure planifiée (${new Date().toLocaleString("fr-FR")}). Réponds de manière complète et structurée.`;
+    const personalBlocks: PersonalBlock[] = [
+      { body: agentInstructions, label: "ASSISTANT ACTIF" },
+      {
+        body: agentSkillInstructions.join("\n\n") || null,
+        label: "COMPÉTENCES DE L'ASSISTANT",
+      },
+      { body: item.customInstructions, label: "INSTRUCTIONS PARTICULIÈRES" },
+      {
+        body:
+          allAttachedUrls.length > 0
+            ? [
+                "FICHIERS JOINTS DE LA BIBLIOTHÈQUE / CLOUD :",
+                ...allAttachedUrls.map(
+                  (url) =>
+                    `- ${decodeURIComponent(url.split("/").pop() || "fichier")} (${url})`
+                ),
+              ].join("\n")
+            : null,
+        label: "RESSOURCES JOINTES",
+      },
+      {
+        body: `Ce message a été envoyé automatiquement à la date et heure planifiée (${new Date().toLocaleString("fr-FR")}). Réponds de manière complète et structurée.`,
+        label: "DÉCLENCHEMENT",
+      },
+    ];
+    const personalBlock = composePersonalInstructions(personalBlocks);
 
     const modelInstance = getLanguageModel(effectiveModel, {
       apiKey: userApiKey,
       userId,
     });
 
-    const enabledToolsList = Array.isArray(item.enabledTools)
-      ? (item.enabledTools as string[])
-      : [];
+    // Périmètre d'outils de l'exécution : 3 modes (cf. lib/planning/tool-mode).
+    // L'ancien champ "enabledTools" (liste d'outils unitaires) n'est plus lu :
+    // l'exécuteur ne connaît que 4 outils natifs, plus les plugins, les
+    // serveurs MCP et les tools de skills — cocher un outil natif non pris en
+    // charge n'avait aucun effet. On dérive un mode des données existantes
+    // pour les tâches créées avant la migration 0029.
+    const toolMode = deriveScheduleToolMode({
+      enabledTools: item.enabledTools,
+      storedMode: item.toolMode,
+    });
+    const wantsNativeTools = toolMode === "auto";
+    // « Automatique » et « Plugins / MCP et Skills » chargent tous deux le
+    // contexte MCP (serveurs de l'agent ou, à défaut, serveurs par défaut de
+    // l'utilisateur — c'est ce que faisait l'ancien enabledTools "mcp").
+    // Seul « Aucun » s'en passe.
+    const wantsMcp = toolMode !== "none";
 
     // Outils de plugins autorisés : mêmes règles que dans le chat, seuls les
     // plugins installés et activés par l'utilisateur sont disponibles.
@@ -198,37 +298,95 @@ export async function executeScheduledMessage(scheduledId: string) {
     });
     const persistedTier = await getPersistedTier({ userId });
     const tier = persistedTier.ok ? persistedTier.tier : "free";
-    const enabledPluginIds = pluginInstallations.flatMap((installation) => {
-      if (!installation.isEnabled) return [];
-      const plugin = getPluginManifest(installation.pluginId);
-      return plugin && canUsePlugin(plugin, tier) ? [plugin.id] : [];
-    });
+    const enabledPluginIds =
+      toolMode === "none"
+        ? []
+        : pluginInstallations.flatMap((installation) => {
+            if (!installation.isEnabled) return [];
+            const plugin = getPluginManifest(installation.pluginId);
+            return plugin && canUsePlugin(plugin, tier) ? [plugin.id] : [];
+          });
     const pluginTools = createPluginTools(
-      { chatModel: effectiveModel, isGhostMode: false },
+      {
+        channel: "planning",
+        chatModel: effectiveModel,
+        isGhostMode: false,
+      },
       enabledPluginIds
+    );
+    const effectiveMcpServerIds =
+      agentSkillMcpServerIds.length > 0
+        ? agentSkillMcpServerIds
+        : agentMcpServerIds;
+    const mcpContext = wantsMcp
+      ? await loadMcpContext({
+          chatId: targetChatId,
+          isToolApprovalFlow: false,
+          messages: null,
+          requestedTools: ["mcp"],
+          serverIds:
+            effectiveMcpServerIds.length > 0
+              ? effectiveMcpServerIds
+              : undefined,
+          skillMcpServerIds: agentSkillMcpServerIds,
+          skillMcpToolFilter:
+            Object.keys(agentSkillMcpToolFilter).length > 0
+              ? agentSkillMcpToolFilter
+              : null,
+          userId,
+        }).catch(() => null)
+      : null;
+    const executableMcpTools = Object.fromEntries(
+      Object.entries(mcpContext?.mcpTools ?? {}).filter(
+        ([, tool]) =>
+          typeof (tool as { execute?: unknown }).execute === "function"
+      )
     );
 
     // Outils serveur disponibles
-    const availableTools: Record<string, any> = {
+    const nativeTools: Record<string, any> = {
       calculator,
       codeExecution,
       dateTime,
       webSearch,
+    };
+    const availableTools: Record<string, any> = {
+      ...(wantsNativeTools ? nativeTools : {}),
       ...pluginTools,
+      ...executableMcpTools,
     };
 
-    const activeTools = enabledToolsList.filter((t) =>
-      Boolean(availableTools[t])
-    );
+    const activeTools = Array.from(
+      new Set([
+        ...(wantsNativeTools ? Object.keys(nativeTools) : []),
+        ...agentSkillToolIds,
+        ...(wantsMcp ? Object.keys(executableMcpTools) : []),
+      ])
+    ).filter((toolId) => Boolean(availableTools[toolId]));
 
     // Générer la réponse
     const result = await generateText({
       // Une sélection vide signifie « aucun outil ». Passer `undefined` au SDK
       // réactiverait toutes les entrées de `tools`, y compris les plugins.
       activeTools: activeTools as any,
-      instructions: systemPrompt({
-        modeAddendum,
-        supportsTools: activeTools.length > 0,
+      instructions: buildChatSystemPrompt({
+        addendum: personalBlock,
+        artifactsAvailable: activeTools.length > 0,
+        capabilities: {
+          attachments: 0,
+          memory: null,
+          plan: null,
+          reasoning: false,
+          tools: activeTools.map((toolId) => ({
+            description:
+              TOOL_SYSTEM_HINTS[toolId] ?? "Outil disponible pour cette tâche.",
+            id: toolId,
+            kind: toolKindFor({ id: toolId }),
+            label: toolId,
+          })),
+          toolsSupported: activeTools.length > 0,
+        },
+        requestHints: null,
       }),
       messages: [
         ...existingDbMsgs.map((m) => ({
@@ -276,6 +434,13 @@ export async function executeScheduledMessage(scheduledId: string) {
 
     if (totalTokens > 0) {
       await recordTokenUsage({
+        // La planification crée sa conversation cible avant l'appel : le lien
+        // est donc disponible, contrairement à une exécution qui débiterait
+        // avant la persistance du chat.
+        chatId: targetChatId,
+        chatMode: targetMode,
+        chatProjectId: targetProjectId,
+        idempotencyKey: `planning:${item.id}:${new Date(item.scheduledAt).toISOString()}`,
         inputTokens,
         isGhostMode: false,
         model: effectiveModel,

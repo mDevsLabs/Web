@@ -1,6 +1,8 @@
 import type { Dispatch, SetStateAction } from "react";
 import { toast } from "sonner";
 import type { SlashCommand } from "@/components/chat/slash-commands";
+import { downloadChatAsMarkdown } from "@/lib/chat/export-markdown";
+import { pagePath } from "@/lib/client/api-endpoints";
 import { executeCustomCommand } from "@/lib/commands/exec";
 import type { Agent, Skill } from "@/lib/db/schema";
 
@@ -11,7 +13,21 @@ export type SlashCommandContext = {
   };
   chatId: string;
   setInput: Dispatch<SetStateAction<string>>;
-  setMessages: (updater: (messages: any[]) => any[]) => void;
+  /** Invalide le cache de l'historique après une suppression. */
+  invalidateHistory: () => unknown;
+  /**
+   * Vide la conversation ET son état transitoire (flux, outils en attente,
+   * artefact). `setMessages(() => [])` ne le fait pas : le flux continuait
+   * d'alimenter le dernier message et `/api/chat` continuait de consommer
+   * des tokens.
+   */
+  resetChat: () => void;
+  /**
+   * Interrompt le flux en cours. Appelé par toute commande qui quitte ou vide
+   * la conversation : sans cela, `/clear` coupait l'affichage mais laissait la
+   * requête facturer jusqu'à son terme.
+   */
+  stopStream: () => void;
   pendingTools: readonly unknown[];
   togglePendingTool: (toolId: any) => void;
   clearPendingTools: () => void;
@@ -38,6 +54,25 @@ const customCommandToast = (opts: {
   }
 };
 
+/** Commandes qui quittent la conversation : le flux doit être coupé d'abord. */
+const CONVERSATION_LEAVING_ACTIONS = new Set([
+  "clear",
+  "delete",
+  "home",
+  "new",
+  "purge",
+]);
+
+/** Message d'erreur générique, une seule formulation pour toutes les routes. */
+async function failFetch(response: Response, fallback: string): Promise<never> {
+  const data = await response.json().catch(() => ({}));
+  const message =
+    (data && typeof data === "object" && "error" in data
+      ? String((data as { error?: unknown }).error ?? "")
+      : "") || fallback;
+  throw new Error(message);
+}
+
 // Interpréteur des commandes slash système (les commandes personnalisées
 // sont déléguées à executeCustomCommand).
 export async function runSlashCommand(
@@ -48,7 +83,9 @@ export async function runSlashCommand(
     router,
     chatId,
     setInput,
-    setMessages,
+    invalidateHistory,
+    resetChat,
+    stopStream,
     pendingTools,
     togglePendingTool,
     clearPendingTools,
@@ -78,16 +115,34 @@ export async function runSlashCommand(
     return;
   }
 
+  // Toute commande système annule la commande personnalisée en attente.
+  // Sans cela, `/mon-prompt` puis `/image` laissait le prompt injecté dans le
+  // system prompt du message suivant, sans que rien ne l'indique.
+  if (cmd.action !== "custom") {
+    setPendingCommand(null);
+  }
+
+  // Le flux est arrêté AVANT l'effet : `/clear` vidait l'affichage pendant que
+  // le SDK continuait d'almenter le message et que la requête continuait de
+  // facturer des tokens.
+  if (CONVERSATION_LEAVING_ACTIONS.has(cmd.action)) {
+    stopStream();
+  }
+
   switch (cmd.action) {
     case "ghost": {
       toggleGhostMode();
       break;
     }
     case "new":
-      router.push("/");
+      router.push(pagePath("/"));
       break;
     case "clear":
-      setMessages(() => []);
+      // `resetChat` et non `setMessages(() => [])` : la commande est déclarée
+      // comme `{ kind: "reset" }` par lib/chat/slash-command-outcomes, et
+      // l'Agent l'exécute déjà ainsi. Les deux modes doivent se comporter
+      // pareil, sinon « /clear » veut dire deux choses selon l'écran.
+      resetChat();
       break;
     case "rename":
       toast.info(
@@ -102,7 +157,7 @@ export async function runSlashCommand(
       break;
     }
     case "usage": {
-      router.push("/settings?tab=usage");
+      router.push(pagePath("/settings?tab=usage"));
       // try scroll after navigation
       setTimeout(() => {
         const el =
@@ -113,23 +168,29 @@ export async function runSlashCommand(
       break;
     }
     case "library": {
-      router.push("/library");
+      router.push(pagePath("/library"));
       break;
     }
     case "projects": {
-      router.push("/projects");
+      router.push(pagePath("/projects"));
       break;
     }
     case "search": {
-      // Dispatch global event for CommandDialog in sidebar, fallback to toast if listener absent
+      // Un seul dispatch : l'eventListener de `SearchDialog` ouvre la boîte de
+      // recherche rapide. Le bouton `[data-search-trigger]` de la barre latérale
+      // a disparu au profit de l'icône qui ouvre la page de recherche globale
+      // — `/search` reste donc, lui, la voie VERS LA MODALE.
       window.dispatchEvent(new CustomEvent("open-search-dialog"));
-      // Also try common selectors as fallback (focus sidebar search if exists)
-      setTimeout(() => {
-        const trigger = document.querySelector<HTMLButtonElement>(
-          "[data-search-trigger]"
-        );
-        trigger?.click();
-      }, 50);
+      break;
+    }
+    case "tasks": {
+      // Le Chat ne dispose pas de l'outil « tâches » : l'Agent le provisionne
+      // lui-même dans sa boucle. Le menu annonçait « /taches » sans jamais
+      // rien produire, ce qui est pire qu'une absence.
+      toast.info(
+        "La gestion des tâches se fait dans l'onglet Planification, ou par l'Agent en mode Agent."
+      );
+      router.push(pagePath("/planning"));
       break;
     }
     case "tool-image": {
@@ -221,15 +282,11 @@ export async function runSlashCommand(
       break;
     }
     case "planning": {
-      router.push("/planning");
-      break;
-    }
-    case "notes": {
-      router.push("/library");
+      router.push(pagePath("/planning"));
       break;
     }
     case "home": {
-      router.push("/");
+      router.push(pagePath("/"));
       break;
     }
     case "tool-chart": {
@@ -262,37 +319,25 @@ export async function runSlashCommand(
       toast.success("Tous les outils désactivés");
       break;
     }
-    case "agents": {
-      const agentBtn = document.querySelector<HTMLButtonElement>(
+    case "bots": {
+      // Le sélecteur de bots est monté par le composer Chat. S'il est absent
+      // (compte Free, sélecteur masqué), on ne laisse pas la commande sans
+      // effet : la page /agents au moins explique ce que sont les bots.
+      const botBtn = document.querySelector<HTMLButtonElement>(
         "[data-testid='agent-selector']"
       );
-      if (agentBtn) {
-        agentBtn.click();
+      if (botBtn) {
+        botBtn.click();
       } else {
-        router.push("/agents");
+        router.push(pagePath("/agents"));
       }
       break;
     }
     case "export": {
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chats/${chatId}/export?format=md`
-        );
-        if (!res.ok) {
-          throw new Error("Export échoué");
-        }
-        const blob = await res.blob();
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = `chat-${chatId}.md`;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        URL.revokeObjectURL(url);
-        toast.success("Export Markdown téléchargé");
-      } catch (e: any) {
-        toast.error(e.message || "Erreur export");
+      // Le booléen de retour était ignoré : un export échoué ne disait rien.
+      const ok = await downloadChatAsMarkdown(chatId);
+      if (!ok) {
+        toast.error("L'export de la conversation a échoué.");
       }
       break;
     }
@@ -300,35 +345,66 @@ export async function runSlashCommand(
       setTheme(resolvedTheme === "dark" ? "light" : "dark");
       break;
     case "delete":
-      toast("Delete this chat?", {
+      toast("Supprimer cette discussion ?", {
         action: {
-          label: "Delete",
-          onClick: () => {
-            fetch(
-              `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chat?id=${chatId}`,
-              { method: "DELETE" }
-            );
-            router.push("/");
-            toast.success("Chat deleted");
+          label: "Supprimer",
+          onClick: async () => {
+            try {
+              const res = await fetch(
+                `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chat?id=${chatId}`,
+                { method: "DELETE" }
+              );
+              if (!res.ok) {
+                await failFetch(res, "La suppression a échoué.");
+              }
+              await invalidateHistory();
+              resetChat();
+              router.push(pagePath("/"));
+              toast.success("Discussion supprimée");
+            } catch (error) {
+              toast.error(
+                error instanceof Error
+                  ? error.message
+                  : "La suppression a échoué."
+              );
+            }
           },
         },
       });
       break;
     case "purge":
-      toast("Delete all chats?", {
+      toast("Supprimer toutes les discussions ?", {
         action: {
-          label: "Delete all",
-          onClick: () => {
-            fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/history`, {
-              method: "DELETE",
-            });
-            router.push("/");
-            toast.success("All chats deleted");
+          label: "Tout supprimer",
+          onClick: async () => {
+            try {
+              const res = await fetch(
+                `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/history`,
+                { method: "DELETE" }
+              );
+              if (!res.ok) {
+                await failFetch(res, "La suppression a échoué.");
+              }
+              await invalidateHistory();
+              resetChat();
+              router.push(pagePath("/"));
+              toast.success("Toutes les discussions ont été supprimées");
+            } catch (error) {
+              toast.error(
+                error instanceof Error
+                  ? error.message
+                  : "La suppression a échoué."
+              );
+            }
           },
         },
       });
       break;
     default:
-      break;
+      // Un `break` muet faisait croire à un bug : l'interface vidait l'input,
+      // la commande disparaissait du champ, et rien ne se passait. Une action
+      // ajoutée à l'union sans être traitée se voit maintenant, et le test
+      // slash-command-invariants échoue sur la même omission.
+      toast.info(`« /${cmd.name} » n'est pas pris en charge.`);
   }
 }

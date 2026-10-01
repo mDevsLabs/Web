@@ -16,8 +16,8 @@ export const PLUGIN_MANIFEST_LIST: PluginManifest[] = [
   ...PLUGIN_MANIFESTS,
 ].sort((a, b) => a.name.localeCompare(b.name, "fr"));
 
-export const PLUGIN_TOOL_IDS: string[] = PLUGIN_MANIFEST_LIST.flatMap((plugin) =>
-  plugin.tools.map((tool) => tool.id)
+export const PLUGIN_TOOL_IDS: string[] = PLUGIN_MANIFEST_LIST.flatMap(
+  (plugin) => plugin.tools.map((tool) => tool.id)
 );
 
 // Ids fournis par un plugin et absents du registre natif : eux seuls peuvent
@@ -114,10 +114,8 @@ export function buildCatalogEntries(
       ...manifest,
       enabled: installation?.isEnabled ?? false,
       installed: Boolean(installation),
-      installedVersion: installation?.version ?? null,
-      updateAvailable: Boolean(
-        installation?.version && installation.version !== manifest.version
-      ),
+      installedVersion: installation ? manifest.version : null,
+      updateAvailable: false,
     };
   });
 }

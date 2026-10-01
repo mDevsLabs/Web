@@ -63,19 +63,26 @@ export async function DELETE(req: NextRequest) {
 
   const { searchParams } = req.nextUrl;
   const id = searchParams.get("id");
-  if (!id) {
+  // `?all=1` : purge de tout l'historique (onglet Données). Le drapeau est
+  // explicite — un appel sans `id` ne doit jamais se transformer en purge.
+  const purgeAll = searchParams.get("all") === "1";
+
+  if (!id && !purgeAll) {
     return errorResponse("invalid_request", {
       message: "L'identifiant de l'image est requis.",
     });
   }
 
   try {
-    const res = await fetch(`${MAI_API_URL}/v1/images/history/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      method: "DELETE",
-    });
+    const res = await fetch(
+      `${MAI_API_URL}/v1/images/history${purgeAll ? "?all=1" : `/${id}`}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        method: "DELETE",
+      }
+    );
 
     const data = await res.json();
     if (!res.ok) {

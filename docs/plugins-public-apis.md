@@ -12,6 +12,10 @@ HTTPS GET vers les domaines fixes déclarés dans `lib/plugins/shared/public-api
 | Banque mondiale | `api.worldbank.org` | Aucune clé ni variable spécifique. |
 | Jours fériés | `nagerholidays.com` | Aucune clé ni variable spécifique. |
 | TVmaze | `api.tvmaze.com` | Aucune clé; les réponses attribuent explicitement TVmaze (CC BY-SA). |
+| Wikidata | `www.wikidata.org` | Aucune clé; `PUBLIC_API_CONTACT_EMAIL` facultatif pour identifier le client. |
+| GitLab public | `gitlab.com` | Aucune clé ni jeton; seuls les projets dont la visibilité est `public` sont lus. |
+| Eurostat | `ec.europa.eu` | Aucune clé; les sorties JSON-stat sont filtrées et bornées. |
+| OpenAlex | `api.openalex.org` | Aucune clé; `PUBLIC_API_CONTACT_EMAIL` facultatif pour le pool poli. |
 
 `PUBLIC_API_CONTACT_EMAIL` est une coordonnée non secrète, par exemple
 `support@example.com`; elle ne doit pas contenir de clé. `GITHUB_TOKEN` est

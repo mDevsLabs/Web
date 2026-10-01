@@ -35,6 +35,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  hasTimelineContent,
+  visiblePlan,
+} from "@/lib/agent/timeline-visibility";
 import type {
   AgentArtifactRef,
   AgentRunEvent,
@@ -43,6 +47,7 @@ import type {
   AgentToolActivity,
   ToolCategory,
 } from "@/lib/agent/types";
+import { REASONING_LEVEL_LABELS } from "@/lib/ai/registry/reasoning";
 import { apiEndpoints } from "@/lib/client/api-endpoints";
 import { cn } from "@/lib/utils";
 
@@ -174,7 +179,12 @@ function formatTokens(count: number): string {
 }
 
 function RunSummary({ run }: { run: AgentRunEvent }) {
-  const badge = RUN_STATUS_BADGES[run.status];
+  // Même raison que pour l'icône d'étape : `status` est relu depuis une colonne
+  // varchar sans CHECK. On affiche le statut brut plutôt que de lever.
+  const badge = RUN_STATUS_BADGES[run.status] ?? {
+    className: "border-border/40",
+    label: run.status,
+  };
   return (
     <div
       className="flex flex-wrap items-center gap-x-3 gap-y-1 rounded-xl border border-border/40 bg-background/60 px-2.5 py-1.5 text-[11.5px] text-muted-foreground"
@@ -188,8 +198,27 @@ function RunSummary({ run }: { run: AgentRunEvent }) {
       >
         {badge.label}
       </span>
-      {run.model ? <span>Modèle : {run.model}</span> : null}
-      <span>Réflexion : {run.reasoningLevel}</span>
+      {run.model ? (
+        <span className="max-w-full break-all">Modèle : {run.model}</span>
+      ) : null}
+      {/*
+        Le libellé vient du libellé lisible, pas de la valeur brute : « high »
+        dans une interface française n'explique rien. `effective` porte le
+        niveau réellement transmis quand il diffère de la préférence.
+      */}
+      <span>
+        Réflexion :{" "}
+        {REASONING_LEVEL_LABELS[
+          run.effectiveReasoningLevel ?? run.reasoningLevel
+        ] ?? run.reasoningLevel}
+        {run.effectiveReasoningLevel &&
+        run.effectiveReasoningLevel !== run.reasoningLevel ? (
+          <span className="text-muted-foreground">
+            {" "}
+            (recálée sur ce modèle)
+          </span>
+        ) : null}
+      </span>
       <span className="inline-flex items-center gap-1">
         <TimerIcon className="size-3" />
         {run.stepCount ?? 0} étapes · {run.toolCallCount ?? 0} actions
@@ -205,6 +234,14 @@ function RunSummary({ run }: { run: AgentRunEvent }) {
           ~{formatTokens(run.totalTokens)} tokens
           {run.inputTokens !== undefined && run.outputTokens !== undefined
             ? ` (${formatTokens(run.inputTokens)} → ${formatTokens(run.outputTokens)})`
+            : ""}
+          {/*
+            La réflexion est déjà comprise dans le total ci-dessus : c'est un
+            sous-ensemble des tokens de sortie. L'annoncer séparément sert à
+            expliquer la facture, pas à l'augmenter.
+          */}
+          {run.reasoningTokens !== undefined && run.reasoningTokens > 0
+            ? ` · ${formatTokens(run.reasoningTokens)} de réflexion`
             : ""}
         </span>
       ) : null}
@@ -405,12 +442,10 @@ export function AgentRunTimeline({
     null
   );
 
-  const hasContent =
-    Boolean(state.run) ||
-    Boolean(state.plan) ||
-    state.steps.length > 0 ||
-    state.artifacts.length > 0 ||
-    state.sources.length > 0;
+  // Un plan caché ne compte pas comme contenu : sinon la timeline s'afficherait
+  // vide pour un run qui n'a produit ni étape, ni livrable, ni source.
+  const plan = visiblePlan(state);
+  const hasContent = hasTimelineContent({ ...state, plan });
 
   if (!hasContent) {
     return null;
@@ -442,23 +477,31 @@ export function AgentRunTimeline({
     >
       {state.run ? <RunSummary run={state.run} /> : null}
 
-      {state.plan ? (
-        <div className="flex flex-col gap-1.5">
+      {plan ? (
+        <div aria-live="polite" className="flex flex-col gap-1.5">
           <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-            {state.plan.title}
+            {plan.title}
           </p>
           <ol className="flex flex-col gap-1">
-            {state.plan.items.map((item) => (
+            {(plan.items ?? []).map((item) => (
               <li className="flex items-center gap-2 text-[13px]" key={item.id}>
                 <StatusDot status={item.status} />
-                <span
-                  className={cn(
-                    item.status === "completed" &&
-                      "text-muted-foreground line-through decoration-border",
-                    item.status === "running" && "font-medium"
-                  )}
-                >
-                  {item.label}
+                <span className="flex min-w-0 flex-1 flex-col">
+                  <span
+                    className={cn(
+                      "min-w-0 break-words",
+                      item.status === "completed" &&
+                        "text-muted-foreground line-through decoration-border",
+                      item.status === "running" && "font-medium"
+                    )}
+                  >
+                    {item.label}
+                  </span>
+                  {item.description ? (
+                    <span className="text-[11px] leading-5 text-muted-foreground">
+                      {item.description}
+                    </span>
+                  ) : null}
                 </span>
               </li>
             ))}
@@ -497,9 +540,14 @@ export function AgentRunTimeline({
             }
             const activity = activities.at(-1);
             const category: ToolCategory | undefined = activity?.category;
+            // `step.type` vient de la base, où la colonne n'est qu'un varchar
+            // sans CHECK : une valeur hors énumération rendrait `Icon` undefined
+            // et React lèverait « Element type is invalid » au premier rendu de
+            // l'historique. Le repli final est donc obligatoire.
             const Icon =
               (category ? CATEGORY_ICONS[category] : undefined) ??
-              STEP_ICONS[step.type];
+              STEP_ICONS[step.type] ??
+              CircleIcon;
             return (
               <motion.div
                 animate={{ opacity: 1, y: 0 }}
@@ -514,8 +562,8 @@ export function AgentRunTimeline({
                   <Icon className="size-3.5 text-muted-foreground" />
                 </span>
                 <span className="flex min-w-0 flex-1 flex-col">
-                  <span className="flex items-center gap-2">
-                    <span className="truncate text-[13px] font-medium">
+                  <span className="flex min-w-0 flex-wrap items-center gap-2">
+                    <span className="min-w-0 break-words text-[13px] font-medium">
                       {step.title}
                     </span>
                     {category ? (
@@ -555,14 +603,16 @@ export function AgentRunTimeline({
           <div className="flex flex-wrap gap-2">
             {state.artifacts.map((artifact) => (
               <button
-                className="flex cursor-pointer items-center gap-2 rounded-xl border border-border/50 bg-background px-3 py-2 text-xs font-medium transition-colors hover:border-primary/40"
+                className="flex min-h-11 max-w-full cursor-pointer items-center gap-2 rounded-xl border border-border/50 bg-background px-3 py-2 text-xs font-medium transition-colors hover:border-primary/40 focus-visible:outline-2 focus-visible:outline-offset-2"
                 data-testid={`agent-artifact-${artifact.documentId}`}
                 key={artifact.documentId}
                 onClick={() => setOpenArtifact(artifact)}
                 type="button"
               >
                 <FileTextIcon className="size-3.5 text-muted-foreground" />
-                {artifact.title}
+                <span className="max-w-[min(22rem,70vw)] truncate">
+                  {artifact.title}
+                </span>
               </button>
             ))}
           </div>
@@ -584,7 +634,7 @@ export function AgentRunTimeline({
                 <HelpCircleIcon className="size-3 shrink-0 text-muted-foreground/60" />
                 {source.url ? (
                   <a
-                    className="truncate underline decoration-border underline-offset-2 hover:text-foreground"
+                    className="min-w-0 truncate underline decoration-border underline-offset-2 hover:text-foreground"
                     href={source.url}
                     rel="noreferrer"
                     target="_blank"

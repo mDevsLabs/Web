@@ -1,7 +1,10 @@
+import { readFileSync } from "node:fs";
 import { config } from "dotenv";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { migrate } from "drizzle-orm/postgres-js/migrator";
 import postgres from "postgres";
+
+import { sanitizeConnectionString } from "@/lib/db/connection-string";
 
 config({
   path: ".env.local",
@@ -44,7 +47,29 @@ function noteIgnoredStep(error: unknown): void {
 }
 
 const runMigrate = async () => {
-  const dbUrl = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+  // En CI, la cible peut être désignée par un fichier env généré à la volée
+  // (vercel pull) : DATABASE_URL_FILE/POSTGRES_URL_FILE pointe vers ce fichier
+  // et le secret ne transite jamais dans un fichier du projet. La variable
+  // directe reste prioritaire pour l'usage local.
+  // La variable peut avoir été collée avec des guillemets englobants dans un
+  // dashboard : sanitizeConnectionString() les retire avant usage.
+  let dbUrl = sanitizeConnectionString(
+    process.env.DATABASE_URL || process.env.POSTGRES_URL || ""
+  );
+  const urlFile =
+    process.env.DATABASE_URL_FILE || process.env.POSTGRES_URL_FILE;
+  if (!dbUrl && urlFile) {
+    try {
+      const content = readFileSync(urlFile, "utf8");
+      const match = content.match(/(?:DATABASE_URL|POSTGRES_URL)\s*=\s*(.+)?/);
+      if (match?.[1]) {
+        dbUrl = sanitizeConnectionString(match[1]);
+      }
+    } catch {
+      console.error(`Fichier env introuvable ou illisible : ${urlFile}`);
+      process.exit(1);
+    }
+  }
   if (!dbUrl) {
     console.log("DATABASE_URL / POSTGRES_URL not defined, skipping migrations");
     process.exit(0);
@@ -95,6 +120,18 @@ const runMigrate = async () => {
   }
   try {
     await connection`ALTER TABLE "Skill" ADD COLUMN IF NOT EXISTS "pinned" boolean DEFAULT false NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  // Colonnes UserMemory introduites par le schéma Drizzle sans migration
+  // (migration 0031). Répétées ici pour que les environnements dont le
+  // journal de migrations est incomplet disposent malgré tout du schéma
+  // attendu par lib/db/queries.ts — sinon GET /api/memory échoue en 42703.
+  try {
+    await connection`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "isEnabled" boolean DEFAULT true NOT NULL`;
+    await connection`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "isImportant" boolean DEFAULT false NOT NULL`;
+    await connection`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "tags" json DEFAULT '[]'::json NOT NULL`;
+    await connection`ALTER TABLE "UserMemory" DROP COLUMN IF EXISTS "category"`;
   } catch (error) {
     noteIgnoredStep(error);
   }
@@ -383,6 +420,165 @@ const runMigrate = async () => {
   }
   try {
     await connection`ALTER TABLE "Notification" ADD CONSTRAINT "Notification_type_check" CHECK ("type" IN ('ai_response','project_created','mcp_created','mcp_access_request','news','planning_task_completed','quota_warning','agent_run_finished','agent_run_failed','agent_approval_required','agent_user_input_required','project_member_joined'))`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+
+  // Visibilité de la liste de tâches (migration 0028). Répété ici, comme les
+  // autres, pour les environnements dont le journal de migrations est incomplet :
+  // sans cette colonne, l'interface ne peut plus distinguer un run où
+  // l'utilisateur a activé « Tâches » d'un run où le plan est interne.
+  try {
+    await connection`ALTER TABLE "AgentRun" ADD COLUMN IF NOT EXISTS "tasksEnabled" boolean DEFAULT false NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+
+  // Préférence de mode d'écran + niveaux de réflexion réels (migration 0030).
+  // Répété ici pour la même raison que ci-dessus, avec une attention
+  // particulière : la contrainte CHECK de 0016 n'admet que low/medium/high et
+  // rejeterait l'écriture d'un niveau « max » parfaitement valide. L'élargir
+  // est donc un prérequis, pas une confortabilité.
+  try {
+    await connection`ALTER TABLE "AgentSettings" ADD COLUMN IF NOT EXISTS "defaultMode" VARCHAR(10) DEFAULT 'chat' NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE "AgentSettings" DROP CONSTRAINT IF EXISTS "AgentSettings_reasoningLevel_check"`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE "AgentRun" DROP CONSTRAINT IF EXISTS "AgentRun_reasoningLevel_check"`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE "UsageEvent" ADD COLUMN IF NOT EXISTS "reasoningTokens" INTEGER DEFAULT 0 NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+
+  // Lien vers la conversation pour la page Statistiques (migration 0033).
+  // Répété ici pour la même raison que ci-dessus. La colonne reste VOLATILE
+  // pour le métier : si l'ALTER échoue, `recordTokenUsage` continue d'écrire
+  // ce qu'il écrivait avant et la page Statistiques lit `COALESCE` côté
+  // requête. Le débit de quota, lui, ne doit JAMAIS dépendre de cette colonne :
+  // c'est le chemin critique, et une colonne NOT NULL le ferait échouer.
+  try {
+    await connection`ALTER TABLE "UsageEvent" ADD COLUMN IF NOT EXISTS "chatId" uuid`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  // Backfill Chat : le chatId est le 2e segment de la clé d'idempotence
+  // `chat:<chatId>:<messageId>:<model>`. Le motif n'accepte qu'un uuid
+  // canonique, donc le cast ne peut pas lever 22P02 (code non toléré) sur une
+  // clé mal formée. `IS NULL` rend la reprise sans objet une fois rempli.
+  try {
+    await connection`
+      UPDATE "UsageEvent"
+         SET "chatId" = split_part("id", ':', 2)::uuid
+       WHERE "chatId" IS NULL
+         AND "id" ~ '^chat:[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}:'
+    `;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  // Backfill Agent : `agent:<runId>:<revision>` → `AgentRun.chatId` (NOT NULL).
+  // Gardé par `to_regclass` car `AgentRun` peut manquer sur un environnement
+  // de schéma partiel ; le `::text` évite tout cast de type.
+  try {
+    await connection`
+      DO $$
+      BEGIN
+        IF to_regclass('public."UsageEvent"') IS NOT NULL
+           AND to_regclass('public."AgentRun"') IS NOT NULL
+        THEN
+          UPDATE "UsageEvent" u
+             SET "chatId" = r."chatId"
+            FROM "AgentRun" r
+           WHERE u."chatId" IS NULL
+             AND u."id" LIKE 'agent:%'
+             AND r."id"::text = split_part(u."id", ':', 2);
+        END IF;
+      END $$
+    `;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  // Sans cet index, chaque filtre « projet » ou « conversation » déclenche un
+  // seq scan sur `UsageEvent` ; il est donc requis, pas confortable.
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "UsageEvent_chatId_idx" ON "UsageEvent" ("chatId")`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+
+  // Attribution figée d'un comptage de tokens (migration 0035). Répété ici pour
+  // la même raison que ci-dessus : `recordTokenUsage` descend d'un palier sur un
+  // 42703, donc la page doit pouvoir compter sur les colonnes sans que leur
+  // absence casse quoi que ce soit. Le backfill ne touche que les
+  // conversations ENCORE PRÉSENTES : une conversation supprimée n'a plus de
+  // mode à recopier, et ces lignes restent simplement non attribuables — elles
+  // sont comptées dans les totaux et signalées par `warnings`.
+  try {
+    await connection`ALTER TABLE "UsageEvent" ADD COLUMN IF NOT EXISTS "chatMode" varchar(16)`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE "UsageEvent" ADD COLUMN IF NOT EXISTS "chatProjectId" uuid`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`
+      DO $$
+      BEGIN
+        IF to_regclass('public."UsageEvent"') IS NOT NULL
+           AND to_regclass('public."Chat"') IS NOT NULL
+        THEN
+          UPDATE "UsageEvent" u
+             SET "chatMode" = c."mode",
+                 "chatProjectId" = c."projectId"
+            FROM "Chat" c
+           WHERE u."chatId" = c."id"
+             AND (u."chatMode" IS NULL OR u."chatProjectId" IS NULL);
+        END IF;
+      END $$
+    `;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "UsageEvent_userId_chatMode_createdAt_idx" ON "UsageEvent" ("userId", "chatMode", "createdAt")`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+
+  // Journal des appels d'outils du chemin Chat (migration 0036). `runId` doit
+  // devenir nullable, sinon la table refuse structurellement toute exécution
+  // qui n'appartient pas à un run Agent — et la page Statistiques ne peut plus
+  // compter les plugins utilisés en mode Chat. C'est une RELAXATION : aucune
+  // donnée n'est touchée, et la clé étrangère est conservée.
+  try {
+    await connection`ALTER TABLE "ToolExecution" ALTER COLUMN "runId" DROP NOT NULL`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE "ToolExecution" ADD COLUMN IF NOT EXISTS "chatId" uuid`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`ALTER TABLE "ToolExecution" ADD COLUMN IF NOT EXISTS "userId" text`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`CREATE INDEX IF NOT EXISTS "ToolExecution_userId_createdAt_idx" ON "ToolExecution" ("userId", "createdAt")`;
   } catch (error) {
     noteIgnoredStep(error);
   }

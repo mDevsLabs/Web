@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { buildCustomInstructionsSchema } from "@/lib/plans/custom-instructions";
 
 const textPartSchema = z.object({
   // Aligné sur /api/agent (8000) : le composer Chat autorise plus de 2000
@@ -63,32 +64,45 @@ const toolApprovalMessageSchema = z.object({
   role: z.enum(["user", "assistant"]),
 });
 
-export const postRequestBodySchema = z.object({
-  agentId: z.string().uuid().nullable().optional(),
-  customInstructions: z.string().max(4000).optional(),
-  enabledTools: z.array(z.string()).optional().default([]),
-  // Tolérance alignée sur l'Agent : les ids de conversation non-UUID
-  // (ex. nanoid) ne doivent plus faire rejeter tout le body.
-  id: z.string().min(8).max(64),
-  isGhostMode: z.boolean().optional().default(false),
-  message: userMessageSchema.optional(),
-  messages: z.array(toolApprovalMessageSchema).optional(),
-  pendingPrompt: z
-    .object({
-      commandId: z.string().uuid().optional(),
-      text: z.string().min(1).max(4000),
-    })
-    .nullable()
-    .optional(),
-  projectId: z.string().uuid().nullable().optional(),
-  selectedAgentId: z.string().uuid().nullable().optional(),
-  selectedChatMode: z.string().nullable().optional(),
-  selectedChatModel: z.string(),
-  selectedVisibilityType: z.enum(["public", "private"]),
-  skillId: z.string().uuid().nullable().optional(),
-  skillParams: z.record(z.string(), z.string().max(2000)).nullable().optional(),
-  tags: z.array(z.string().min(1).max(30)).max(10).optional(),
-  temperatureOverride: z.number().min(0).max(2).nullable().optional(),
-});
+// `customInstructions` est un override par requête, borné par le forfait de
+// l'utilisateur : le schéma est donc une fabrique (voir POST dans route.ts),
+// et non une constante exportée. Un tier absent ou inconnu est normalisé en
+// « free » par lib/plans/tier-limits.ts — soit la limite la plus stricte,
+// ce qui est la bonne direction pour un garde-fou de longueur.
+export const buildPostRequestBodySchema = (tier?: string | null) =>
+  z.object({
+    agentId: z.string().uuid().nullable().optional(),
+    customInstructions: buildCustomInstructionsSchema(tier),
+    enabledTools: z.array(z.string()).optional().default([]),
+    // Tolérance alignée sur l'Agent : les ids de conversation non-UUID
+    // (ex. nanoid) ne doivent plus faire rejeter tout le body.
+    id: z.string().min(8).max(64),
+    isGhostMode: z.boolean().optional().default(false),
+    message: userMessageSchema.optional(),
+    messages: z.array(toolApprovalMessageSchema).optional(),
+    pendingPrompt: z
+      .object({
+        commandId: z.string().uuid().optional(),
+        text: z.string().min(1).max(4000),
+      })
+      .nullable()
+      .optional(),
+    projectId: z.string().uuid().nullable().optional(),
+    selectedAgentId: z.string().uuid().nullable().optional(),
+    selectedChatMode: z.string().nullable().optional(),
+    selectedChatModel: z.string(),
+    selectedVisibilityType: z.enum(["public", "private"]),
+    skillId: z.string().uuid().nullable().optional(),
+    skillParams: z
+      .record(z.string(), z.string().max(2000))
+      .nullable()
+      .optional(),
+    tags: z.array(z.string().min(1).max(30)).max(10).optional(),
+    temperatureOverride: z.number().min(0).max(2).nullable().optional(),
+  });
 
-export type PostRequestBody = z.infer<typeof postRequestBodySchema>;
+// Le type est inchangé quelle que soit la limite : seule la contrainte
+// `.max()` varie selon le forfait, pas la forme du payload.
+export type PostRequestBody = z.infer<
+  ReturnType<typeof buildPostRequestBodySchema>
+>;

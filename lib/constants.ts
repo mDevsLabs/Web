@@ -25,9 +25,11 @@ export const MAI_PENDING_ATTACHMENT_KEY = "mai-pending-attachment";
 export const MEMORY_CONTENT_MAX_LENGTH = 2000;
 
 // ─────────────────────────────────────────────
-// App version & legal — SSOT: version from package.json ("0.5.5")
+// App version & legal
+// La version est lue dans package.json (lib/version.ts) et réexportée ici pour
+// que l'interface consomme une seule entrée. Ne jamais la redéclarer localement.
 // ─────────────────────────────────────────────
-export const APP_VERSION = "0.5.5";
+export { APP_VERSION } from "@/lib/version";
 export const APP_NAME = "mAI";
 export const APP_COPYRIGHT = `© ${new Date().getFullYear()} mAI — Tous droits réservés`;
 export const APP_SUPPORT_URL = "https://mai-devs.vercel.app/support";
@@ -36,6 +38,7 @@ export const LEGAL_LINKS = [
   { href: "https://mai-devs.vercel.app/privacy", label: "Confidentialité" },
   { href: "https://mai-devs.vercel.app/terms", label: "CGU" },
 ] as const;
+export const TERMS_URL = LEGAL_LINKS[2].href;
 
 // Limites quotidiennes de génération d'images par tier.
 // Source unique de vérité : lib/plans/tier-limits.ts (miroir du backend Val Town).

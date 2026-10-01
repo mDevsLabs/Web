@@ -29,6 +29,7 @@ import { toast } from "sonner";
 import useSWR from "swr";
 import { AGENT_COLORS } from "@/components/agents/agent-presets";
 import { PageBackButton } from "@/components/chat/page-back-button";
+import { ColorPicker } from "@/components/common/color-picker";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -203,9 +204,11 @@ function VersionHistoryList({
 
 export default function SkillsClient({
   embedded = false,
+  initialCreate = false,
   searchQuery = "",
 }: {
   embedded?: boolean;
+  initialCreate?: boolean;
   searchQuery?: string;
 } = {}) {
   const _router = useRouter();
@@ -231,7 +234,7 @@ export default function SkillsClient({
   }, [embedded]);
 
   // Modals state
-  const [isEditorOpen, setIsEditorOpen] = useState(false);
+  const [isEditorOpen, setIsEditorOpen] = useState(initialCreate);
   const [editingSkill, setEditingSkill] = useState<Skill | null>(null);
   const [isImportOpen, setIsImportOpen] = useState(false);
   const [importJsonText, setImportJsonText] = useState("");
@@ -641,7 +644,10 @@ export default function SkillsClient({
           >
             {embedded ? null : (
               <div className="flex items-center gap-3">
-                <PageBackButton fallbackHref="/" label="Retour au chat" />
+                <PageBackButton
+                  fallbackHref="/tools?tab=skills"
+                  label="Retour aux Skills"
+                />
                 <div className="flex items-center gap-2.5">
                   <div className="flex size-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     <WrenchIcon className="size-5" />
@@ -1227,20 +1233,12 @@ export default function SkillsClient({
                 <Label className="text-xs font-semibold">
                   Couleur du badge
                 </Label>
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  {AGENT_COLORS.map((c) => (
-                    <button
-                      className={cn(
-                        "size-6 rounded-full transition-transform",
-                        formColor === c && "ring-2 ring-foreground scale-110"
-                      )}
-                      key={c}
-                      onClick={() => setFormColor(c)}
-                      style={{ backgroundColor: c }}
-                      type="button"
-                    />
-                  ))}
-                </div>
+                <ColorPicker
+                  className="pt-1"
+                  colors={AGENT_COLORS}
+                  onChange={setFormColor}
+                  value={formColor}
+                />
               </div>
             </div>
 

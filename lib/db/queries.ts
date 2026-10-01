@@ -22,6 +22,24 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import type { ArtifactKind } from "@/components/chat/artifact";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
+import type { ToolCategory } from "@/lib/agent/types";
+import { resolveBillableTotal } from "@/lib/agent/usage";
+import { dedupeAgentTemplatesByName } from "@/lib/agent-templates/dedupe";
+import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { resolveDatabaseUrl } from "@/lib/db/connection-string";
+import {
+  AUTO_DICTATION_LANGUAGE,
+  DEFAULT_TRANSLATION_TARGET,
+  normalizeDictationLanguage,
+  normalizeTranslationTarget,
+} from "@/lib/i18n/languages";
+import {
+  redactMcpError,
+  redactMcpText,
+  redactMcpValue,
+} from "@/lib/mcp/redaction";
+import type { ScheduleToolMode } from "@/lib/planning/tool-mode";
+import { normalizeScheduleToolMode } from "@/lib/planning/tool-mode";
 import { MEMORY_CONTENT_MAX_LENGTH } from "../constants";
 import { ChatbotError } from "../errors";
 import {
@@ -52,6 +70,7 @@ import {
   skillVersion,
   stream,
   suggestion,
+  toolExecution,
   userMcpPrefs,
   userMemory,
   vote,
@@ -249,12 +268,12 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     END IF;
   END $$;`);
 
-  // UserMemory : les colonnes introduites par le schéma Drizzle (filtre de
-  // portée, importance, tags) manquaient en base — GET /api/memory et
-  // countMemories échouaient en 42703 « column does not exist ».
-  await run(
-    client`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "category" varchar(50) DEFAULT 'general'`
-  );
+  // UserMemory : les colonnes introduites par le schéma Drizzle (activation,
+  // importance, tags) manquaient en base — GET /api/memory et countMemories
+  // échouaient en 42703 « column does not exist ». La colonne "category" a été
+  // retirée (migration 0030) : elle n'était jamais utilisée en dehors d'un
+  // filtre d'interface, et un varchar libre sans contrainte côté serveur
+  // devenait une source de données incohérentes.
   await run(
     client`ALTER TABLE "UserMemory" ADD COLUMN IF NOT EXISTS "isEnabled" boolean DEFAULT true NOT NULL`
   );
@@ -894,7 +913,7 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     "defaultRequireApproval" varchar(20) DEFAULT 'write_only' NOT NULL CHECK ("defaultRequireApproval" IN ('always_allow','write_only','ask_permission')),
     "defaultTimeoutMs" integer DEFAULT 15000 NOT NULL,
     "defaultRateLimitPerMin" integer DEFAULT 60 NOT NULL,
-    "allowStdio" boolean DEFAULT true NOT NULL,
+    "allowStdio" boolean DEFAULT false NOT NULL,
     "retentionDays" integer DEFAULT 30 NOT NULL,
     "createdAt" timestamp DEFAULT now() NOT NULL,
     "updatedAt" timestamp DEFAULT now() NOT NULL
@@ -937,9 +956,8 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     "description" varchar(500) DEFAULT '',
     "instructions" text NOT NULL DEFAULT '',
     "icon" varchar(50) DEFAULT 'sparkles' NOT NULL,
-    "emoji" varchar(10) DEFAULT NULL,
     "color" varchar(7) DEFAULT '#6366f1' NOT NULL,
-    "defaultModelId" text NOT NULL DEFAULT 'google/gemini-2.5-flash',
+    "defaultModelId" text NOT NULL DEFAULT '${DEFAULT_CHAT_MODEL}',
     "skillIds" json DEFAULT '[]'::json NOT NULL,
     "mcpServerIds" json DEFAULT '[]'::json NOT NULL,
     "cloudFileUrls" json DEFAULT '[]'::json NOT NULL,
@@ -984,9 +1002,8 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
     "description" varchar(500) DEFAULT '',
     "instructions" text NOT NULL DEFAULT '',
     "icon" varchar(50) DEFAULT 'bot' NOT NULL,
-    "emoji" varchar(10) DEFAULT NULL,
     "color" varchar(7) DEFAULT '#6366f1' NOT NULL,
-    "defaultModelId" text DEFAULT 'google/gemini-2.5-flash' NOT NULL,
+    "defaultModelId" text DEFAULT '${DEFAULT_CHAT_MODEL}' NOT NULL,
     "skillIds" json DEFAULT '[]'::json,
     "mcpServerIds" json DEFAULT '[]'::json,
     "tags" varchar(50)[] DEFAULT '{}' NOT NULL,
@@ -997,8 +1014,11 @@ async function ensureTableTypes(client: ReturnType<typeof postgres>) {
   await run(
     client`CREATE INDEX IF NOT EXISTS "AgentTemplate_isPublic_idx" ON "AgentTemplate" USING btree ("isPublic")`
   );
+  // Unicité du nom : garde-fou qui empêche le rejeu du seed de 0007_agents.sql
+  // de dupliquer les modèles (cf. migration 0029). ON CONFLICT DO NOTHING sans
+  // cible couvre cette contrainte, le seed redevient idempotent.
   await run(
-    client`CREATE INDEX IF NOT EXISTS "AgentTemplate_name_idx" ON "AgentTemplate" USING btree ("name")`
+    client`CREATE UNIQUE INDEX IF NOT EXISTS "AgentTemplate_name_key" ON "AgentTemplate" USING btree ("name")`
   );
 
   await run(
@@ -1063,8 +1083,9 @@ END $$;`
     "resultChatId" uuid,
     "agentId" uuid REFERENCES "Agent"("id") ON DELETE SET NULL,
     "recurrence" varchar(20) DEFAULT 'none' NOT NULL,
-    "modelId" text DEFAULT 'google/gemini-2.5-flash' NOT NULL,
+    "modelId" text DEFAULT '${DEFAULT_CHAT_MODEL}' NOT NULL,
     "enabledTools" json DEFAULT '[]'::json NOT NULL,
+    "toolMode" varchar(16) DEFAULT 'auto' NOT NULL,
     "cloudFileUrls" json DEFAULT '[]'::json NOT NULL,
     "customInstructions" text,
     "temperature" double precision,
@@ -1080,6 +1101,9 @@ END $$;`
       END IF;
       IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='ScheduledMessage' AND column_name='recurrence') THEN
         ALTER TABLE "ScheduledMessage" ADD COLUMN "recurrence" varchar(20) DEFAULT 'none' NOT NULL;
+      END IF;
+      IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='ScheduledMessage' AND column_name='toolMode') THEN
+        ALTER TABLE "ScheduledMessage" ADD COLUMN "toolMode" varchar(16) DEFAULT 'auto' NOT NULL;
       END IF;
     END IF;
   END $$;`);
@@ -1177,10 +1201,7 @@ let _migrationPromise: Promise<void> | null = null;
 let _rawClient: postgres.Sql | null = null;
 
 function initDb() {
-  const connectionString =
-    process.env.DATABASE_URL ||
-    process.env.POSTGRES_URL ||
-    process.env.POSTGRES_PRISMA_URL;
+  const connectionString = resolveDatabaseUrl();
 
   if (!connectionString) {
     throw new Error(
@@ -1390,7 +1411,6 @@ export async function getChatsByUserId({
       return db
         .select({
           agentColor: agent.color,
-          agentEmoji: agent.emoji,
           agentIcon: agent.icon,
           agentId: chat.agentId,
           agentName: agent.name,
@@ -1844,7 +1864,6 @@ export async function getProjectChats({
     return await db
       .select({
         agentColor: agent.color,
-        agentEmoji: agent.emoji,
         agentIcon: agent.icon,
         agentId: chat.agentId,
         agentName: agent.name,
@@ -2466,6 +2485,77 @@ export async function getMessagesByChatId({ id }: { id: string }) {
   }
 }
 
+/**
+ * Historique complet d'un utilisateur, à plat, pour l'export Markdown.
+ *
+ * Une seule requête, et non `getChatsByUserId` suivi d'un
+ * `getMessagesByChatId` par conversation : l'export porte sur TOUT
+ * l'historique, donc la variante N+1 reviendrait à faire une requête par
+ * discussion — plusieurs centaines sur un compte ancien. Le groupement par
+ * `chatId` est fait par l'appelant.
+ *
+ * `userId` est comparé en texte : la colonne est un `text` et contient
+ * indifféremment un uuid, un pseudo ou un e-mail selon l'origine de la ligne.
+ */
+export async function getMessagesForExportByUserId({
+  userId,
+  limit,
+}: {
+  userId: string;
+  limit: number;
+}): Promise<
+  {
+    chatCreatedAt: Date;
+    chatId: string;
+    chatTags: string[];
+    chatTitle: string;
+    createdAt: Date;
+    parts: unknown;
+    role: string;
+  }[]
+> {
+  try {
+    const db = await dbReady();
+    return (await db
+      .select({
+        chatCreatedAt: chat.createdAt,
+        chatId: chat.id,
+        chatTags: chat.tags,
+        chatTitle: chat.title,
+        createdAt: message.createdAt,
+        parts: message.parts,
+        role: message.role,
+      })
+      .from(message)
+      .innerJoin(chat, eq(message.chatId, chat.id))
+      .where(sql`${chat.userId}::text = ${userId}::text`)
+      .orderBy(desc(chat.createdAt), asc(message.createdAt))
+      .limit(limit)) as never;
+  } catch (error) {
+    throw new ChatbotError("bad_request:database", { cause: error });
+  }
+}
+
+export async function messageBelongsToChat({
+  chatId,
+  messageId,
+}: {
+  chatId: string;
+  messageId: string;
+}): Promise<boolean> {
+  try {
+    const db = await dbReady();
+    const [row] = await db
+      .select({ id: message.id })
+      .from(message)
+      .where(and(eq(message.chatId, chatId), eq(message.id, messageId)))
+      .limit(1);
+    return Boolean(row);
+  } catch {
+    return false;
+  }
+}
+
 export async function voteMessage({
   chatId,
   messageId,
@@ -2935,22 +3025,47 @@ export async function recordTokenUsage({
   userEmail,
   inputTokens = 0,
   outputTokens = 0,
+  reasoningTokens = 0,
   totalTokens = 0,
   model = "default",
   isGhostMode = false,
+  idempotencyKey,
+  chatId = null,
+  chatMode = null,
+  chatProjectId = null,
 }: {
   userId: string;
   userEmail?: string | null;
   inputTokens?: number;
   outputTokens?: number;
+  // Décomposition du quota : les tokens de réflexion sont un sous-ensemble des
+  // tokens de sortie côté fournisseur, mais l'AI SDK les sort de `outputTokens`.
+  // Ils sont donc comptés à part pour rester lisibles, et inclus dans
+  // `actualTotal` s'ils n'y sont pas déjà.
+  reasoningTokens?: number;
   totalTokens?: number;
   model?: string;
   isGhostMode?: boolean;
+  idempotencyKey?: string;
+  // Conversation à l'origine de l'appel (migration 0033). Facultatif : les
+  // lignes de planification peuvent être écrites sans conversation persistée.
+  // Volontairement hors du chemin critique du quota — une colonne NOT NULL
+  // ferait échouer le débit, qui doit rester garanti même si `UsageEvent` est
+  // en retard de migration (le `catch` plus bas conserve alors le débit).
+  chatId?: string | null;
+  // Mode et projet de cette conversation, figés ici (migration 0035) : la
+  // jointure `Chat` disparaît avec la conversation, et `Chat.projectId` est en
+  // `ON DELETE SET NULL`. Un filtre de la page Statistiques appliqué plus tard
+  // ne doit donc pas dépendre du fait que la conversation existe encore.
+  chatMode?: "chat" | "agent" | null;
+  chatProjectId?: string | null;
 }) {
-  const actualTotal =
-    totalTokens > 0
-      ? totalTokens
-      : Math.max(0, (inputTokens || 0) + (outputTokens || 0));
+  const actualTotal = resolveBillableTotal({
+    inputTokens,
+    outputTokens,
+    reasoningTokens,
+    totalTokens,
+  });
 
   if (
     actualTotal <= 0 &&
@@ -2960,6 +3075,7 @@ export async function recordTokenUsage({
     return;
   }
 
+  let insertedUsageEventKey: string | null = null;
   try {
     await dbReady();
     if (!_rawClient) {
@@ -2980,12 +3096,135 @@ export async function recordTokenUsage({
       return;
     }
 
+    let shouldDebit = true;
+    if (idempotencyKey) {
+      const safeKey = idempotencyKey.slice(0, 256);
+      const safeInputTokens = Math.max(0, Math.floor(inputTokens || 0));
+      const safeOutputTokens = Math.max(0, Math.floor(outputTokens || 0));
+      const safeReasoningTokens = Math.max(0, Math.floor(reasoningTokens || 0));
+      const safeTotalTokens = Math.max(0, Math.floor(actualTotal));
+      // Un `chatId` non uuid (identifiant historique d'une autre forme) doit
+      // faire perdre le lien, pas l'INSERT : on l'écarte plutôt que de laisser
+      // Postgres rejeter l'ensemble de la ligne.
+      const safeChatId =
+        chatId && /^[0-9a-fA-F-]{36}$/.test(chatId) ? chatId : null;
+      // INSERT avec le lien de conversation. Sur une base pas encore migrée en
+      // 0033, Postgres rejette la colonne (42703) et l'on RETOMBE sur l'INSERT
+      // historique : le lien est perdu, pas la ligne. Ce repli est ce qui rend
+      // le déploiement sans risque — un environnement qui traîne une migration
+      // de retard continue d'enregistrer sa consommation au lieu de la
+      // perdre entièrement. La migration 0035 ajoute un TROISIÈME palier, dans
+      // le même ordre : on descend d'un cran à chaque 42703, jamais plus bas.
+      //
+      // `client` est capturé localement : le garde `if (!_rawClient) return`
+      // plus haut ne survit pas à la fermeture, et sans cette capture chaque
+      // requête serait typée `Sql | null`.
+      const client = _rawClient;
+      // Même règle que pour `chatId` : un identifiant de projet mal formé perd
+      // l'attribution, il ne doit pas faire échouer l'INSERT entier.
+      const safeChatProjectId =
+        chatProjectId && /^[0-9a-fA-F-]{36}$/.test(chatProjectId)
+          ? chatProjectId
+          : null;
+      // `chatMode` est une énumération fermée, un cast `::varchar` inutile :
+      // `postgres.js` l'échappe comme une chaîne.
+      const safeChatMode =
+        chatMode === "agent" ? "agent" : chatMode === "chat" ? "chat" : null;
+      const insertWithAttribution = async (
+        includeChatId: boolean,
+        includeAttribution: boolean
+      ) => {
+        if (includeAttribution) {
+          return client`
+            INSERT INTO "UsageEvent" (
+              "id", "userId", "model", "inputTokens", "outputTokens",
+              "reasoningTokens", "totalTokens", "isGhostMode", "chatId",
+              "chatMode", "chatProjectId"
+            )
+            VALUES (
+              ${safeKey}, ${targetUserId}, ${model}, ${safeInputTokens},
+              ${safeOutputTokens}, ${safeReasoningTokens},
+              ${safeTotalTokens}, ${isGhostMode}, ${safeChatId}::uuid,
+              ${safeChatMode}::varchar, ${safeChatProjectId}::uuid
+            )
+            ON CONFLICT ("id") DO NOTHING
+            RETURNING "id"
+          `;
+        }
+        if (includeChatId) {
+          return client`
+            INSERT INTO "UsageEvent" (
+              "id", "userId", "model", "inputTokens", "outputTokens",
+              "reasoningTokens", "totalTokens", "isGhostMode", "chatId"
+            )
+            VALUES (
+              ${safeKey}, ${targetUserId}, ${model}, ${safeInputTokens},
+              ${safeOutputTokens}, ${safeReasoningTokens},
+              ${safeTotalTokens}, ${isGhostMode}, ${safeChatId}::uuid
+            )
+            ON CONFLICT ("id") DO NOTHING
+            RETURNING "id"
+          `;
+        }
+        return client`
+          INSERT INTO "UsageEvent" (
+            "id", "userId", "model", "inputTokens", "outputTokens",
+            "reasoningTokens", "totalTokens", "isGhostMode"
+          )
+          VALUES (
+            ${safeKey}, ${targetUserId}, ${model}, ${safeInputTokens},
+            ${safeOutputTokens}, ${safeReasoningTokens},
+            ${safeTotalTokens}, ${isGhostMode}
+          )
+          ON CONFLICT ("id") DO NOTHING
+          RETURNING "id"
+        `;
+      };
+
+      try {
+        // On ne lit que la LONGUEUR de la liste renvoyée (`ON CONFLICT DO
+        // NOTHING` + `RETURNING`) : le type précis de ligne n'a pas d'intérêt.
+        // Les paliers sont essayés dans l'ordre décroissant de fidélité ; seul
+        // un 42703 (colonne absente) fait descendre d'un cran, toute autre
+        // erreur est réelle et remontée plus bas.
+        const attempts: [boolean, boolean][] = [
+          [true, true],
+          [true, false],
+          [false, false],
+        ];
+        let inserted: unknown[] = [];
+        for (const [withChatId, withAttribution] of attempts) {
+          try {
+            inserted = await insertWithAttribution(withChatId, withAttribution);
+            break;
+          } catch (tierError) {
+            if ((tierError as { code?: string })?.code !== "42703") {
+              throw tierError;
+            }
+          }
+        }
+        shouldDebit = inserted.length > 0;
+        if (shouldDebit) {
+          insertedUsageEventKey = safeKey;
+        }
+      } catch (eventError) {
+        // La table est ajoutée par la migration 0026, `reasoningTokens` par la
+        // 0030, `chatId` par la 0033, l'attribution par la 0035. Tant qu'elles
+        // ne sont pas appliquées, conserver le comptage historique plutôt que
+        // de le perdre.
+        console.warn(
+          "UsageEvent indisponible, comptage direct conservé:",
+          eventError
+        );
+      }
+    }
+
     // weekly_usage.user_id est un INTEGER (table plateforme partagée avec le
     // backend mAI : handleGetUsage passe un integer). On n'y débite que les
     // identifiants numériques (users.id) ; les autres formats (uuid, emails)
     // ne sont pas comptabilisés ici — le quota hebdomadaire reste cohérent.
     const numericUserId = String(targetUserId).match(/^\d+$/)?.[0];
-    if (numericUserId) {
+    if (shouldDebit && numericUserId) {
       // 1. Mise à jour ou insertion dans weekly_usage
       await _rawClient`
         INSERT INTO weekly_usage (user_id, week_start, tokens_used)
@@ -2995,25 +3234,55 @@ export async function recordTokenUsage({
       `;
     }
 
-    // 2. Enregistrement dans mprojects_api_logs
-    try {
-      await _rawClient`
-        INSERT INTO mprojects_api_logs (api_key, endpoint, method, status_code, latency_ms, created_at)
-        VALUES (
-          ${targetUserId}::text,
-          ${isGhostMode ? `/v1/chat/completions?ghost=true&model=${model}` : `/v1/chat/completions?model=${model}`}::text,
-          'POST',
-          200,
-          1200,
-          NOW()
-        )
-      `;
-    } catch (logErr) {
-      // Repli volontaire (l'usage a déjà été débité) — tracé pour audit.
-      console.warn("Insertion mprojects_api_logs impossible:", logErr);
+    if (shouldDebit) {
+      // 2. Enregistrement dans mprojects_api_logs
+      try {
+        await _rawClient`
+          INSERT INTO mprojects_api_logs (api_key, endpoint, method, status_code, latency_ms, created_at)
+          VALUES (
+            ${targetUserId}::text,
+            ${isGhostMode ? `/v1/chat/completions?ghost=true&model=${model}` : `/v1/chat/completions?model=${model}`}::text,
+            'POST',
+            200,
+            1200,
+            NOW()
+          )
+        `;
+      } catch (logErr) {
+        // Repli volontaire (l'usage a déjà été débité) — tracé pour audit.
+        console.warn("Insertion mprojects_api_logs impossible:", logErr);
+      }
     }
   } catch (err) {
+    if (insertedUsageEventKey && _rawClient) {
+      await _rawClient`
+        DELETE FROM "UsageEvent" WHERE "id" = ${insertedUsageEventKey}
+      `.catch(() => {});
+    }
     console.error("Erreur recordTokenUsage direct en BDD:", err);
+  }
+}
+
+export async function getWeeklyAiTokenUsage({
+  userId,
+}: {
+  userId: string;
+}): Promise<number | null> {
+  try {
+    await dbReady();
+    const client = getRawClient();
+    if (!client) return null;
+    const rows = await client.unsafe<{ tokens_used: number | string }[]>(
+      `SELECT COALESCE(tokens_used, 0)::bigint AS tokens_used
+       FROM weekly_usage
+       WHERE user_id::text = $1
+         AND week_start = date_trunc('week', now() AT TIME ZONE 'UTC')::date
+       LIMIT 1`,
+      [userId]
+    );
+    return rows[0] ? Number(rows[0].tokens_used) : 0;
+  } catch {
+    return null;
   }
 }
 
@@ -3613,18 +3882,84 @@ export async function logMcpExecution(data: {
         approvalStatus: data.approvalStatus ?? "auto_approved",
         chatId: data.chatId ?? null,
         durationMs: data.durationMs ?? 0,
-        error: data.error ?? null,
-        inputPayload: data.inputPayload ?? null,
-        outputPayload: data.outputPayload ?? null,
+        error: data.error ? redactMcpText(data.error, 1000) : null,
+        inputPayload: redactMcpValue(data.inputPayload),
+        outputPayload: redactMcpValue(data.outputPayload),
         serverId: data.serverId ?? null,
-        serverName: data.serverName,
-        toolName: data.toolName,
+        serverName: redactMcpText(data.serverName, 160),
+        toolName: redactMcpText(data.toolName, 160),
         userId: data.userId,
       })
       .returning();
     return log;
   } catch (err) {
-    console.error("Erreur logMcpExecution:", err);
+    console.error("Erreur logMcpExecution:", redactMcpError(err));
+    return null;
+  }
+}
+
+/**
+ * Trace un appel d'outil effectué dans le CHAT (migration 0036).
+ *
+ * Écrit dans `ToolExecution` avec `runId` nul : c'est ce qui distingue une
+ * exécution de conversation d'une exécution d'Agent, et ce qui permet à la page
+ * Statistiques de compter les plugins utilisés en mode Chat. `userId` est
+ * renseigné — c'est l'identité de la ligne, `ToolExecution` n'ayant pas de run
+ * par lequel la retrouver.
+ *
+ * Aucun secret n'est journalisé : l'entrée et la sortie sont réécrites par
+ * `redactMcpValue` comme pour le MCP, et un `chatId` mal formé est écarté plutôt
+ * que de faire échouer l'insertion.
+ *
+ * Best-effort par construction : un échec ici ne doit JAMAIS faire échouer
+ * l'appel d'outil, dont la réponse est déjà produite. D'où le `catch` qui se
+ * contente de tracer.
+ */
+export async function logChatToolExecution(data: {
+  userId: string;
+  toolId: string;
+  category?: ToolCategory;
+  chatId?: string | null;
+  durationMs?: number;
+  error?: string | null;
+  input?: unknown;
+  output?: unknown;
+  status?: "completed" | "failed" | "denied";
+}) {
+  try {
+    const database = await getDb();
+    const now = new Date();
+    const [log] = await database
+      .insert(toolExecution)
+      .values({
+        // `runId` reste NULL : c'est le marqueur du chemin Chat. L'index unique
+        // `(runId, operationKey, attempt)` n'est pas entravé, `operationKey`
+        // étant lui aussi nul — en SQL, deux NULL ne violent pas un UNIQUE.
+        approvalStatus: "not_required",
+        category: data.category ?? "plugins",
+        chatId:
+          data.chatId && /^[0-9a-fA-F-]{36}$/.test(data.chatId)
+            ? data.chatId
+            : null,
+        completedAt: now,
+        createdAt: now,
+        durationMs: Math.max(0, Math.floor(data.durationMs ?? 0)),
+        error: data.error ? redactMcpText(data.error, 1000) : null,
+        input: (redactMcpValue(data.input) ?? null) as never,
+        output: (redactMcpValue(data.output) ?? null) as never,
+        runId: null,
+        // Pas d'approbation demandée : un plugin du canal Chat ne peut pas
+        // écrire de donnée utilisateur (createPluginTools refuse ces plugins
+        // hors canal Agent), donc rien n'a pu être soumis à validation.
+        startedAt: now,
+        status: data.status ?? "completed",
+        toolId: data.toolId,
+        userId: data.userId,
+      })
+      .returning();
+    return log ?? null;
+  } catch (err) {
+    console.error("Erreur logChatToolExecution:", redactMcpError(err));
     return null;
   }
 }
@@ -3807,6 +4142,7 @@ export async function upsertMcpServerSecret({
     .where(
       and(
         eq(mcpServerSecret.serverId, serverId),
+        eq(mcpServerSecret.userId, userId),
         eq(mcpServerSecret.kind, kind),
         eq(mcpServerSecret.key, key)
       )
@@ -3816,7 +4152,13 @@ export async function upsertMcpServerSecret({
     const [updated] = await db
       .update(mcpServerSecret)
       .set({ encryptedValue })
-      .where(eq(mcpServerSecret.id, existing[0].id))
+      .where(
+        and(
+          eq(mcpServerSecret.id, existing[0].id),
+          eq(mcpServerSecret.serverId, serverId),
+          eq(mcpServerSecret.userId, userId)
+        )
+      )
       .returning();
     return updated;
   }
@@ -3842,7 +4184,7 @@ export async function getUserMcpPrefs(userId: string) {
     return prefs;
   }
   return {
-    allowStdio: true,
+    allowStdio: false,
     createdAt: new Date(),
     defaultRateLimitPerMin: 60,
     defaultRequireApproval: "write_only" as const,
@@ -3875,7 +4217,7 @@ export async function upsertUserMcpPrefs(
     const [created] = await db
       .insert(userMcpPrefs)
       .values({
-        allowStdio: data.allowStdio ?? true,
+        allowStdio: data.allowStdio ?? false,
         defaultRateLimitPerMin: data.defaultRateLimitPerMin ?? 60,
         defaultRequireApproval: data.defaultRequireApproval ?? "write_only",
         defaultTimeoutMs: data.defaultTimeoutMs ?? 15_000,
@@ -4036,9 +4378,9 @@ export async function upsertUserNotificationPrefs(
 // ==========================================
 
 export async function getUserPreferences(userId: string) {
-  const db = await dbReady();
   const { userPreferences } = await import("./schema");
   try {
+    const db = await dbReady();
     const [row] = await db
       .select()
       .from(userPreferences)
@@ -4055,9 +4397,17 @@ export async function getUserPreferences(userId: string) {
         defaultChatModel: row.defaultChatModel || null,
         defaultChatVisibility:
           (row.defaultChatVisibility as "private" | "public") || "private",
+        // Une locale ou une cible illisible retombe sur son défaut : la
+        // dictée et la traduction doivent toujours fonctionner.
+        defaultDictationLanguage: normalizeDictationLanguage(
+          row.defaultDictationLanguage
+        ),
         defaultImageModel:
           row.defaultImageModel || "black-forest-labs/flux-schnell",
         defaultImageSize: row.defaultImageSize || "1024x1024",
+        defaultTranslationLanguage:
+          normalizeTranslationTarget(row.defaultTranslationLanguage) ??
+          DEFAULT_TRANSLATION_TARGET,
         enabled: Boolean(row.customInstructionsEnabled),
         ghostMemoryEnabled: Boolean(row.ghostMemoryEnabled),
         showAgentChatIcons: row.showAgentChatIcons ?? true,
@@ -4069,117 +4419,244 @@ export async function getUserPreferences(userId: string) {
     console.error("getUserPreferences query error:", e);
   }
 
+  const legacy = await getUserModelPreferences(userId);
   return {
-    customInstructions: "",
+    customInstructions: legacy.customInstructions ?? "",
     defaultAgentId: null,
     defaultAudioModel: "deepgram/flux-tts:free",
     defaultAudioSpeed: 1.0,
     defaultAudioVoice: "flux-alexis-en",
     defaultChatModel: null,
     defaultChatVisibility: "private" as const,
+    defaultDictationLanguage: AUTO_DICTATION_LANGUAGE,
     defaultImageModel: "black-forest-labs/flux-schnell",
     defaultImageSize: "1024x1024",
-    enabled: false,
+    defaultTranslationLanguage: DEFAULT_TRANSLATION_TARGET,
+    enabled: legacy.customInstructionsEnabled,
     ghostMemoryEnabled: false,
     showAgentChatIcons: true,
-    temperature: 0.7,
-    topP: 0.9,
+    temperature: legacy.defaultTemperature ?? 0.7,
+    topP: legacy.defaultTopP ?? 0.9,
+  };
+}
+
+type UserPreferencesPatch = Partial<{
+  customInstructions: string;
+  enabled: boolean;
+  temperature: number;
+  topP: number;
+  defaultAgentId: string | null;
+  defaultChatModel: string | null;
+  defaultChatVisibility: "private" | "public";
+  defaultDictationLanguage: string;
+  defaultImageModel: string;
+  defaultImageSize: string;
+  defaultAudioModel: string;
+  defaultAudioVoice: string;
+  defaultAudioSpeed: number;
+  defaultTranslationLanguage: string;
+  ghostMemoryEnabled: boolean;
+  showAgentChatIcons: boolean;
+}>;
+
+function isMissingUserPreferencesTable(error: unknown): boolean {
+  const message = error instanceof Error ? error.message : String(error);
+  const code =
+    typeof error === "object" && error !== null && "code" in error
+      ? String((error as { code?: unknown }).code)
+      : "";
+  return (
+    code === "42P01" ||
+    message.includes("user_preferences") ||
+    message.includes("42P01")
+  );
+}
+
+async function upsertLegacyUserPreferences(
+  userId: string,
+  data: UserPreferencesPatch
+) {
+  await dbReady();
+  if (!_rawClient) {
+    throw new Error("Postgres client indisponible.");
+  }
+
+  await _rawClient`
+    INSERT INTO users (
+      id, custom_instructions, custom_instructions_enabled, default_agent_id,
+      default_audio_model, default_audio_speed, default_audio_voice,
+      default_chat_model, default_chat_visibility, default_image_model,
+      default_image_size, default_temperature, default_top_p,
+      ghost_memory_enabled, show_agent_chat_icons
+    )
+    VALUES (
+      ${userId}::uuid,
+      ${data.customInstructions ?? ""},
+      ${data.enabled ?? false},
+      ${data.defaultAgentId ?? null}::uuid,
+      ${data.defaultAudioModel ?? "deepgram/flux-tts:free"},
+      ${data.defaultAudioSpeed ?? 1.0},
+      ${data.defaultAudioVoice ?? "flux-alexis-en"},
+      ${data.defaultChatModel ?? null},
+      ${data.defaultChatVisibility ?? "private"},
+      ${data.defaultImageModel ?? "black-forest-labs/flux-schnell"},
+      ${data.defaultImageSize ?? "1024x1024"},
+      ${data.temperature ?? 0.7},
+      ${data.topP ?? 0.9},
+      ${data.ghostMemoryEnabled ?? false},
+      ${data.showAgentChatIcons ?? true}
+    )
+    ON CONFLICT (id) DO UPDATE SET
+      custom_instructions = COALESCE(${data.customInstructions ?? null}, users.custom_instructions),
+      custom_instructions_enabled = COALESCE(${data.enabled ?? null}, users.custom_instructions_enabled),
+      default_agent_id = COALESCE(${data.defaultAgentId ?? null}::uuid, users.default_agent_id),
+      default_audio_model = COALESCE(${data.defaultAudioModel ?? null}, users.default_audio_model),
+      default_audio_speed = COALESCE(${data.defaultAudioSpeed ?? null}, users.default_audio_speed),
+      default_audio_voice = COALESCE(${data.defaultAudioVoice ?? null}, users.default_audio_voice),
+      default_chat_model = CASE WHEN ${data.defaultChatModel !== undefined} THEN ${data.defaultChatModel ?? null} ELSE users.default_chat_model END,
+      default_chat_visibility = COALESCE(${data.defaultChatVisibility ?? null}, users.default_chat_visibility),
+      default_image_model = COALESCE(${data.defaultImageModel ?? null}, users.default_image_model),
+      default_image_size = COALESCE(${data.defaultImageSize ?? null}, users.default_image_size),
+      default_temperature = COALESCE(${data.temperature ?? null}, users.default_temperature),
+      default_top_p = COALESCE(${data.topP ?? null}, users.default_top_p),
+      ghost_memory_enabled = COALESCE(${data.ghostMemoryEnabled ?? null}, users.ghost_memory_enabled),
+      show_agent_chat_icons = COALESCE(${data.showAgentChatIcons ?? null}, users.show_agent_chat_icons),
+      updated_at = NOW()
+  `;
+
+  const rows = await _rawClient`
+    SELECT custom_instructions, custom_instructions_enabled, default_agent_id,
+           default_audio_model, default_audio_speed, default_audio_voice,
+           default_chat_model, default_chat_visibility, default_image_model,
+           default_image_size, default_temperature, default_top_p,
+           ghost_memory_enabled, show_agent_chat_icons
+    FROM users WHERE id = ${userId}::uuid LIMIT 1
+  `;
+  const row = (rows as any[])[0];
+  if (!row) {
+    throw new ChatbotError("bad_request:database");
+  }
+  return {
+    customInstructions: row.custom_instructions || "",
+    customInstructionsEnabled: Boolean(row.custom_instructions_enabled),
+    defaultAgentId: row.default_agent_id || null,
+    defaultAudioModel: row.default_audio_model,
+    defaultAudioSpeed: row.default_audio_speed,
+    defaultAudioVoice: row.default_audio_voice,
+    defaultChatModel: row.default_chat_model || null,
+    defaultChatVisibility: row.default_chat_visibility,
+    defaultImageModel: row.default_image_model,
+    defaultImageSize: row.default_image_size,
+    defaultTemperature: row.default_temperature,
+    defaultTopP: row.default_top_p,
+    ghostMemoryEnabled: Boolean(row.ghost_memory_enabled),
+    showAgentChatIcons: row.show_agent_chat_icons ?? true,
+    updatedAt: new Date(),
+    userId,
   };
 }
 
 export async function upsertUserPreferences(
   userId: string,
-  data: Partial<{
-    customInstructions: string;
-    enabled: boolean;
-    temperature: number;
-    topP: number;
-    defaultAgentId: string | null;
-    defaultChatModel: string | null;
-    defaultChatVisibility: "private" | "public";
-    defaultImageModel: string;
-    defaultImageSize: string;
-    defaultAudioModel: string;
-    defaultAudioVoice: string;
-    defaultAudioSpeed: number;
-    ghostMemoryEnabled: boolean;
-    showAgentChatIcons: boolean;
-  }>
+  data: UserPreferencesPatch
 ) {
-  const db = await dbReady();
   const { userPreferences } = await import("./schema");
 
-  const [existing] = await db
-    .select()
-    .from(userPreferences)
-    .where(eq(userPreferences.userId, userId))
-    .limit(1);
+  try {
+    const db = await dbReady();
+    const [existing] = await db
+      .select()
+      .from(userPreferences)
+      .where(eq(userPreferences.userId, userId))
+      .limit(1);
 
-  if (!existing) {
-    const [created] = await db
-      .insert(userPreferences)
-      .values({
-        customInstructions: data.customInstructions ?? "",
-        customInstructionsEnabled: data.enabled ?? false,
-        defaultAgentId: data.defaultAgentId
-          ? (data.defaultAgentId as any)
-          : null,
-        defaultAudioModel: data.defaultAudioModel ?? "deepgram/flux-tts:free",
-        defaultAudioSpeed: data.defaultAudioSpeed ?? 1.0,
-        defaultAudioVoice: data.defaultAudioVoice ?? "flux-alexis-en",
-        defaultChatModel: data.defaultChatModel ?? null,
-        defaultChatVisibility: data.defaultChatVisibility ?? "private",
-        defaultImageModel:
-          data.defaultImageModel ?? "black-forest-labs/flux-schnell",
-        defaultImageSize: data.defaultImageSize ?? "1024x1024",
-        defaultTemperature: data.temperature ?? 0.7,
-        defaultTopP: data.topP ?? 0.9,
-        ghostMemoryEnabled: data.ghostMemoryEnabled ?? false,
-        showAgentChatIcons: data.showAgentChatIcons ?? true,
-        userId,
-      })
+    if (!existing) {
+      const [created] = await db
+        .insert(userPreferences)
+        .values({
+          customInstructions: data.customInstructions ?? "",
+          customInstructionsEnabled: data.enabled ?? false,
+          defaultAgentId: data.defaultAgentId ?? null,
+          defaultAudioModel: data.defaultAudioModel ?? "deepgram/flux-tts:free",
+          defaultAudioSpeed: data.defaultAudioSpeed ?? 1.0,
+          defaultAudioVoice: data.defaultAudioVoice ?? "flux-alexis-en",
+          defaultChatModel: data.defaultChatModel ?? null,
+          defaultChatVisibility: data.defaultChatVisibility ?? "private",
+          defaultDictationLanguage: normalizeDictationLanguage(
+            data.defaultDictationLanguage
+          ),
+          defaultImageModel:
+            data.defaultImageModel ?? "black-forest-labs/flux-schnell",
+          defaultImageSize: data.defaultImageSize ?? "1024x1024",
+          defaultTemperature: data.temperature ?? 0.7,
+          defaultTopP: data.topP ?? 0.9,
+          defaultTranslationLanguage:
+            normalizeTranslationTarget(data.defaultTranslationLanguage) ??
+            DEFAULT_TRANSLATION_TARGET,
+          ghostMemoryEnabled: data.ghostMemoryEnabled ?? false,
+          showAgentChatIcons: data.showAgentChatIcons ?? true,
+          userId,
+        })
+        .returning();
+      return created;
+    }
+
+    const updatePayload: Record<string, any> = {
+      updatedAt: new Date(),
+    };
+    if (data.customInstructions !== undefined)
+      updatePayload.customInstructions = data.customInstructions;
+    if (data.enabled !== undefined)
+      updatePayload.customInstructionsEnabled = data.enabled;
+    if (data.temperature !== undefined)
+      updatePayload.defaultTemperature = data.temperature;
+    if (data.topP !== undefined) updatePayload.defaultTopP = data.topP;
+    if (data.defaultAgentId !== undefined)
+      updatePayload.defaultAgentId = data.defaultAgentId;
+    if (data.defaultChatModel !== undefined)
+      updatePayload.defaultChatModel = data.defaultChatModel;
+    if (data.defaultChatVisibility !== undefined)
+      updatePayload.defaultChatVisibility = data.defaultChatVisibility;
+    if (data.defaultDictationLanguage !== undefined)
+      updatePayload.defaultDictationLanguage = normalizeDictationLanguage(
+        data.defaultDictationLanguage
+      );
+    if (data.defaultImageModel !== undefined)
+      updatePayload.defaultImageModel = data.defaultImageModel;
+    if (data.defaultImageSize !== undefined)
+      updatePayload.defaultImageSize = data.defaultImageSize;
+    if (data.defaultAudioModel !== undefined)
+      updatePayload.defaultAudioModel = data.defaultAudioModel;
+    if (data.defaultAudioVoice !== undefined)
+      updatePayload.defaultAudioVoice = data.defaultAudioVoice;
+    if (data.defaultAudioSpeed !== undefined)
+      updatePayload.defaultAudioSpeed = data.defaultAudioSpeed;
+    if (data.defaultTranslationLanguage !== undefined)
+      updatePayload.defaultTranslationLanguage =
+        normalizeTranslationTarget(data.defaultTranslationLanguage) ??
+        DEFAULT_TRANSLATION_TARGET;
+    if (data.ghostMemoryEnabled !== undefined)
+      updatePayload.ghostMemoryEnabled = data.ghostMemoryEnabled;
+    if (data.showAgentChatIcons !== undefined)
+      updatePayload.showAgentChatIcons = data.showAgentChatIcons;
+
+    const [updated] = await db
+      .update(userPreferences)
+      .set(updatePayload)
+      .where(eq(userPreferences.userId, userId))
       .returning();
-    return created;
+
+    return updated;
+  } catch (error) {
+    if (!isMissingUserPreferencesTable(error)) {
+      throw error;
+    }
+    console.warn(
+      "user_preferences indisponible, écriture de transition vers users:",
+      error
+    );
+    return upsertLegacyUserPreferences(userId, data);
   }
-
-  const updatePayload: Record<string, any> = {
-    updatedAt: new Date(),
-  };
-  if (data.customInstructions !== undefined)
-    updatePayload.customInstructions = data.customInstructions;
-  if (data.enabled !== undefined)
-    updatePayload.customInstructionsEnabled = data.enabled;
-  if (data.temperature !== undefined)
-    updatePayload.defaultTemperature = data.temperature;
-  if (data.topP !== undefined) updatePayload.defaultTopP = data.topP;
-  if (data.defaultAgentId !== undefined)
-    updatePayload.defaultAgentId = data.defaultAgentId;
-  if (data.defaultChatModel !== undefined)
-    updatePayload.defaultChatModel = data.defaultChatModel;
-  if (data.defaultChatVisibility !== undefined)
-    updatePayload.defaultChatVisibility = data.defaultChatVisibility;
-  if (data.defaultImageModel !== undefined)
-    updatePayload.defaultImageModel = data.defaultImageModel;
-  if (data.defaultImageSize !== undefined)
-    updatePayload.defaultImageSize = data.defaultImageSize;
-  if (data.defaultAudioModel !== undefined)
-    updatePayload.defaultAudioModel = data.defaultAudioModel;
-  if (data.defaultAudioVoice !== undefined)
-    updatePayload.defaultAudioVoice = data.defaultAudioVoice;
-  if (data.defaultAudioSpeed !== undefined)
-    updatePayload.defaultAudioSpeed = data.defaultAudioSpeed;
-  if (data.ghostMemoryEnabled !== undefined)
-    updatePayload.ghostMemoryEnabled = data.ghostMemoryEnabled;
-  if (data.showAgentChatIcons !== undefined)
-    updatePayload.showAgentChatIcons = data.showAgentChatIcons;
-
-  const [updated] = await db
-    .update(userPreferences)
-    .set(updatePayload)
-    .where(eq(userPreferences.userId, userId))
-    .returning();
-
-  return updated;
 }
 
 export async function createNotification(data: {
@@ -4200,6 +4677,7 @@ export async function createNotification(data: {
     | "agent_user_input_required";
   title: string;
   body?: string | null;
+  dedupeKey?: string | null;
   link?: string | null;
 }) {
   const db = await dbReady();
@@ -4210,13 +4688,27 @@ export async function createNotification(data: {
     if (!prefs.enabled) {
       return null;
     }
+    // Le gate DOIT couvrir les 12 types. Un type absent de cette table
+    // valait `undefined`, donc différent de `false` : la notification passait
+    // sans jamais consulter la préférence correspondante. C'était le cas des
+    // 6 types `agent_*` et de `project_member_joined`, dont les colonnes
+    // existent en base (migrations 0017 / 0020) mais n'étaient pas câblées ici.
+    // `?? true` reste le repli : une ligne de prefs partielle (base antérieure
+    // à une migration) ne doit jamais faire perdre une notification.
     const gate: Record<string, boolean> = {
+      agent_approval_required: (prefs as any).agentApprovalRequired ?? true,
+      agent_run_failed: (prefs as any).agentRunFailed ?? true,
+      agent_run_finished: (prefs as any).agentRunFinished ?? true,
+      agent_user_input_required: (prefs as any).agentUserInputRequired ?? true,
       ai_response: prefs.aiResponse,
       mcp_access_request: prefs.mcpAccessRequest,
       mcp_created: prefs.mcpCreated,
       news: prefs.news,
       planning_task_completed: (prefs as any).planningTaskCompleted ?? true,
       project_created: prefs.projectCreated,
+      // Pas de colonne dédiée : la participation à un projet est un événement
+      // factuel, governed par projectCreated.
+      project_member_joined: prefs.projectCreated,
       quota_warning: (prefs as any).quotaWarning ?? true,
     };
     if (gate[data.type] === false) {
@@ -4231,11 +4723,14 @@ export async function createNotification(data: {
     .insert(notification)
     .values({
       body: data.body ?? null,
+      dedupeKey: data.dedupeKey ?? null,
       link: data.link ?? null,
       title: data.title,
       type: data.type,
       userId: data.userId,
     })
+    .onConflictDoNothing()
+
     .returning();
   return created;
 }
@@ -4371,7 +4866,6 @@ export async function createAgent(data: {
   description?: string;
   instructions: string;
   icon?: string;
-  emoji?: string | null;
   color?: string;
   defaultModelId?: string;
   skillIds?: string[];
@@ -4391,9 +4885,8 @@ export async function createAgent(data: {
     .values({
       cloudFileUrls: (data.cloudFileUrls as any) ?? [],
       color: data.color ?? "#6366f1",
-      defaultModelId: data.defaultModelId ?? "google/gemini-2.5-flash",
+      defaultModelId: data.defaultModelId ?? DEFAULT_CHAT_MODEL,
       description: data.description ?? "",
-      emoji: data.emoji ?? null,
       icon: data.icon ?? "sparkles",
       instructions: data.instructions,
       maxTokens: data.maxTokens ?? null,
@@ -4424,7 +4917,6 @@ export async function updateAgent({
     description: string;
     instructions: string;
     icon: string;
-    emoji: string | null;
     color: string;
     defaultModelId: string;
     skillIds: string[];
@@ -4479,9 +4971,8 @@ export async function duplicateAgent({
   return createAgent({
     cloudFileUrls: (original.cloudFileUrls as any) ?? [],
     color: original.color ?? "#6366f1",
-    defaultModelId: original.defaultModelId ?? "google/gemini-2.5-flash",
+    defaultModelId: original.defaultModelId ?? DEFAULT_CHAT_MODEL,
     description: original.description ?? "",
-    emoji: (original as any).emoji ?? null,
     icon: original.icon ?? "sparkles",
     instructions: original.instructions,
     maxTokens: (original as any).maxTokens ?? null,
@@ -4655,8 +5146,38 @@ export async function getUserModelPreferences(userId: string): Promise<{
     defaultTemperature: null,
     defaultTopP: null,
   };
+
+  // Source canonique : les préférences écrites par /api/user/preferences.
+  // Le fallback users ci-dessous est conservé pendant la transition afin de ne
+  // pas perdre les préférences des environnements dont la migration n'est pas
+  // encore appliquée.
   try {
-    await dbReady();
+    const db = await dbReady();
+    const { userPreferences } = await import("./schema");
+    const [row] = await db
+      .select({
+        customInstructions: userPreferences.customInstructions,
+        customInstructionsEnabled: userPreferences.customInstructionsEnabled,
+        defaultTemperature: userPreferences.defaultTemperature,
+        defaultTopP: userPreferences.defaultTopP,
+      })
+      .from(userPreferences)
+      .where(eq(userPreferences.userId, userId))
+      .limit(1);
+    if (row) {
+      return {
+        customInstructions: row.customInstructions || null,
+        customInstructionsEnabled: Boolean(row.customInstructionsEnabled),
+        defaultTemperature: row.defaultTemperature ?? null,
+        defaultTopP: row.defaultTopP ?? null,
+      };
+    }
+  } catch (error) {
+    // Une base ancienne peut ne pas encore connaître user_preferences.
+    console.warn("getUserModelPreferences canonical read skipped:", error);
+  }
+
+  try {
     if (!_rawClient) {
       return empty;
     }
@@ -4684,7 +5205,6 @@ export async function createMemory({
   content,
   agentId = null,
   projectId = null,
-  category = "general",
   tags = [],
   isImportant = false,
   isEnabled = true,
@@ -4693,7 +5213,6 @@ export async function createMemory({
   content: string;
   agentId?: string | null;
   projectId?: string | null;
-  category?: string;
   tags?: string[];
   isImportant?: boolean;
   isEnabled?: boolean;
@@ -4703,7 +5222,6 @@ export async function createMemory({
     .insert(userMemory)
     .values({
       agentId: agentId ?? null,
-      category: category ?? "general",
       content: sanitizeMemoryContent(content),
       isEnabled: isEnabled ?? true,
       isImportant: isImportant ?? false,
@@ -4730,6 +5248,30 @@ export async function deleteMemory({
   return deleted ?? null;
 }
 
+/**
+ * Vide toute la mémoire d'un utilisateur : personnelle, projet ET agent.
+ *
+ * Le filtre porte UNIQUEMENT sur `userId` : c'est le seul moyen de garantir
+ * qu'aucune mémoire ne survit sous un autre portée. Borner par `agentId` ou
+ * `projectId` laisserait des traces que l'utilisateur ne voit plus nulle part,
+ * donc qu'il ne pourrait plus jamais supprimer.
+ *
+ * Retourne le nombre de lignes retirées, pour que l'interface puisse
+ * distinguer « rien à supprimer » d'une purge réellement effectuée.
+ */
+export async function deleteAllMemoriesByUserId({
+  userId,
+}: {
+  userId: string;
+}): Promise<number> {
+  const database = await getDb();
+  const deleted = await database
+    .delete(userMemory)
+    .where(eq(userMemory.userId, userId))
+    .returning({ id: userMemory.id });
+  return deleted.length;
+}
+
 function sanitizeMemoryContent(content: string): string {
   return content
     .replace(new RegExp(String.fromCharCode(0), "g"), "")
@@ -4738,7 +5280,6 @@ function sanitizeMemoryContent(content: string): string {
 }
 
 export async function updateMemory({
-  category,
   content,
   id,
   isEnabled,
@@ -4746,7 +5287,6 @@ export async function updateMemory({
   tags,
   userId,
 }: {
-  category?: string;
   content?: string;
   id: string;
   isEnabled?: boolean;
@@ -4760,7 +5300,6 @@ export async function updateMemory({
     if (!safe) return null;
     setFields.content = safe;
   }
-  if (category !== undefined) setFields.category = category;
   if (isEnabled !== undefined) setFields.isEnabled = isEnabled;
   if (isImportant !== undefined) setFields.isImportant = isImportant;
   if (tags !== undefined) setFields.tags = tags;
@@ -4791,7 +5330,6 @@ export async function getUserMemoriesWithScope({
     .select({
       agentId: userMemory.agentId,
       agentName: agent.name,
-      category: userMemory.category,
       content: userMemory.content,
       createdAt: userMemory.createdAt,
       id: userMemory.id,
@@ -4845,11 +5383,16 @@ export async function searchMemories({
 
 export async function getAgentTemplates() {
   const database = await getDb();
-  return database
+  const rows = await database
     .select()
     .from(agentTemplate)
     .where(eq(agentTemplate.isPublic, true))
     .orderBy(asc(agentTemplate.name));
+  // Défense en profondeur : la migration 0029 supprime les doublons et pose un
+  // index UNIQUE sur "name", mais une base migrée à la main (ou une ligne
+  // insérée avant la contrainte) ne doit jamais afficher deux fois le même
+  // modèle. Voir lib/agent-templates/dedupe.ts.
+  return dedupeAgentTemplatesByName(rows);
 }
 
 export async function broadcastNewsNotification(data: {
@@ -5090,7 +5633,6 @@ export async function getAgentStatsByUserId({ userId }: { userId: string }) {
       color: ag.color,
       defaultModelId: ag.defaultModelId,
       description: ag.description,
-      emoji: ag.emoji,
       icon: ag.icon,
       id: ag.id,
       lastUsedAt: stats.lastUsedAt,
@@ -5126,6 +5668,7 @@ export async function createScheduledMessage(params: {
   agentId?: string | null;
   modelId?: string;
   enabledTools?: string[];
+  toolMode?: ScheduleToolMode;
   cloudFileUrls?: string[];
   customInstructions?: string | null;
   temperature?: number | null;
@@ -5140,14 +5683,17 @@ export async function createScheduledMessage(params: {
       cloudFileUrls: params.cloudFileUrls || [],
       createMode: params.createMode || "new_chat",
       customInstructions: params.customInstructions || null,
+      // Conservé pour la compat ascendante, plus lu par l'exécuteur : le
+      // périmètre d'outils est désormais porté par "toolMode".
       enabledTools: params.enabledTools || [],
-      modelId: params.modelId || "google/gemini-2.5-flash",
+      modelId: params.modelId || DEFAULT_CHAT_MODEL,
       prompt: params.prompt,
       recurrence: params.recurrence || "none",
       scheduledAt: params.scheduledAt,
       status: "pending",
       temperature: params.temperature ?? null,
       title: params.title || "Envoi planifié",
+      toolMode: normalizeScheduleToolMode(params.toolMode),
       userId: params.userId,
     })
     .returning();
@@ -5198,6 +5744,7 @@ export async function updateScheduledMessage(params: {
   agentId?: string | null;
   modelId?: string;
   enabledTools?: string[];
+  toolMode?: ScheduleToolMode;
   cloudFileUrls?: string[];
   customInstructions?: string | null;
   temperature?: number | null;
@@ -5224,6 +5771,8 @@ export async function updateScheduledMessage(params: {
   if (updates.modelId !== undefined) updateData.modelId = updates.modelId;
   if (updates.enabledTools !== undefined)
     updateData.enabledTools = updates.enabledTools;
+  if (updates.toolMode !== undefined)
+    updateData.toolMode = normalizeScheduleToolMode(updates.toolMode);
   if (updates.cloudFileUrls !== undefined)
     updateData.cloudFileUrls = updates.cloudFileUrls;
   if (updates.customInstructions !== undefined)
@@ -5264,6 +5813,32 @@ export async function deleteScheduledMessage(params: {
     )
     .returning();
   return res.length > 0;
+}
+
+export async function claimScheduledMessage(params: {
+  id: string;
+}): Promise<ScheduledMessage | null> {
+  const database = await getDb();
+  const now = new Date();
+  const stuckThreshold = new Date(now.getTime() - 10 * 60 * 1000);
+  const [claimed] = await database
+    .update(scheduledMessage)
+    .set({ status: "processing", updatedAt: now })
+    .where(
+      and(
+        eq(scheduledMessage.id, params.id),
+        or(
+          eq(scheduledMessage.status, "pending"),
+          eq(scheduledMessage.status, "failed"),
+          and(
+            eq(scheduledMessage.status, "processing"),
+            lte(scheduledMessage.updatedAt, stuckThreshold)
+          )
+        )
+      )
+    )
+    .returning();
+  return claimed ?? null;
 }
 
 export async function getDueScheduledMessages(): Promise<ScheduledMessage[]> {
@@ -5365,7 +5940,6 @@ export async function installPlugin(params: {
     })
     .onConflictDoUpdate({
       set: {
-        isEnabled: true,
         updatedAt: now,
         version: params.version,
       },

@@ -4,6 +4,7 @@ import { generateText, type UIMessage } from "ai";
 import { cookies } from "next/headers";
 import { auth } from "@/app/(auth)/auth";
 import type { VisibilityType } from "@/components/chat/visibility-selector";
+import { chatOwnerMatches } from "@/lib/agent/channel";
 import { titlePrompt } from "@/lib/ai/prompts";
 import { getTitleModel } from "@/lib/ai/providers";
 import {
@@ -103,9 +104,14 @@ export async function deleteTrailingMessages({ id }: { id: string }) {
   }
 
   const chat = await getChatById({ id: message.chatId });
-  // chat.userId peut contenir user.id ou user.email selon la création
-  const ownerVariants = [session.user.id, session.user.email].filter(Boolean);
-  if (!chat || !ownerVariants.includes(chat.userId)) {
+  if (
+    !chat ||
+    !chatOwnerMatches({
+      chatUserId: chat.userId,
+      email: session.user.email,
+      userId: session.user.id,
+    })
+  ) {
     throw new ChatbotError("unauthorized:chat");
   }
 
@@ -128,9 +134,14 @@ export async function updateChatVisibility({
   }
 
   const chat = await getChatById({ id: chatId });
-  // chat.userId peut contenir user.id ou user.email selon la création
-  const ownerVariants = [session.user.id, session.user.email].filter(Boolean);
-  if (!chat || !ownerVariants.includes(chat.userId)) {
+  if (
+    !chat ||
+    !chatOwnerMatches({
+      chatUserId: chat.userId,
+      email: session.user.email,
+      userId: session.user.id,
+    })
+  ) {
     throw new ChatbotError("unauthorized:chat");
   }
 

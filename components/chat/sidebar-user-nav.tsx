@@ -4,8 +4,10 @@ import {
   ChevronUp,
   CloudIcon,
   ExternalLinkIcon,
+  FileTextIcon,
   HelpCircleIcon,
   InfoIcon,
+  LineChartIcon,
   LogOutIcon,
   MoonIcon,
   SettingsIcon,
@@ -148,6 +150,16 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
             <DropdownMenuItem asChild>
               <Link
                 className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[13px] cursor-pointer hover:bg-sidebar-accent"
+                href="/settings/statistiques"
+              >
+                <LineChartIcon className="size-4 text-muted-foreground" />
+                <span>Statistiques détaillées</span>
+              </Link>
+            </DropdownMenuItem>
+
+            <DropdownMenuItem asChild>
+              <Link
+                className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[13px] cursor-pointer hover:bg-sidebar-accent"
                 href="/library"
               >
                 <CloudIcon className="size-4 text-muted-foreground" />
@@ -181,10 +193,10 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
                 <HelpCircleIcon className="size-4 text-muted-foreground" />
                 <span>Support</span>
               </DropdownMenuSubTrigger>
-              <DropdownMenuSubContent className="w-52 p-1.5 rounded-xl">
+              <DropdownMenuSubContent className="w-52 rounded-xl border border-border/60 bg-card/95 p-1.5 backdrop-blur-xl shadow-[var(--shadow-float)]">
                 <DropdownMenuItem asChild>
                   <a
-                    className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[13px] cursor-pointer"
+                    className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[13px] cursor-pointer hover:bg-sidebar-accent"
                     href={APP_SUPPORT_URL}
                     rel="noopener noreferrer"
                     target="_blank"
@@ -193,15 +205,30 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
                     <span>Centre d'aide</span>
                   </a>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[13px] cursor-default text-muted-foreground select-none">
-                  <span className="flex items-center gap-2">
-                    <InfoIcon className="size-3.5 text-muted-foreground" />
+                <DropdownMenuItem asChild>
+                  <Link
+                    className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[13px] cursor-pointer hover:bg-sidebar-accent"
+                    href="/changelog"
+                  >
+                    <FileTextIcon className="size-3.5 text-muted-foreground" />
+                    <span>Notes de version</span>
+                  </Link>
+                </DropdownMenuItem>
+                {/* Version : information, pas une action. Un DropdownMenuItem
+                    cliquable faisait fermer tout le menu (sous-menu compris) sans
+                    rien produire — d'où un simple div, hors parcours clavier. */}
+                <div
+                  className="flex items-center justify-between px-2.5 py-1.5 text-[13px] select-none"
+                  data-testid="app-version"
+                >
+                  <span className="flex items-center gap-2 text-muted-foreground">
+                    <InfoIcon className="size-3.5" />
                     <span>Version</span>
                   </span>
                   <span className="font-mono text-[11px] font-semibold text-foreground bg-muted px-2 py-0.5 rounded-md">
                     v{APP_VERSION}
                   </span>
-                </DropdownMenuItem>
+                </div>
               </DropdownMenuSubContent>
             </DropdownMenuSub>
 

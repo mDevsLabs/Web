@@ -3,12 +3,10 @@
 import {
   ArchiveIcon,
   ArrowRightIcon,
-  BotIcon,
   CalendarClockIcon,
   ChevronDownIcon,
   CloudIcon,
   FolderKanbanIcon,
-  HomeIcon,
   ImageIcon,
   LockIcon,
   MoreHorizontalIcon,
@@ -26,10 +24,11 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { createElement, useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useSWRConfig } from "swr";
 import { unstable_serialize } from "swr/infinite";
+import { BotGlyph } from "@/components/agents/bot-avatar";
 import { ProjectIcon } from "@/components/chat/project-icon";
 import { SearchDialog } from "@/components/chat/search-dialog";
 import {
@@ -38,6 +37,7 @@ import {
 } from "@/components/chat/sidebar-history";
 import { SidebarUserNav } from "@/components/chat/sidebar-user-nav";
 import { UpgradeDialog } from "@/components/common/upgrade-dialog";
+import { Button } from "@/components/ui/button";
 import {
   Collapsible,
   CollapsibleContent,
@@ -71,6 +71,7 @@ import { useActiveChat } from "@/hooks/use-active-chat";
 import { useProjects } from "@/hooks/use-projects";
 import { useTier } from "@/hooks/use-tier";
 import type { MaiUser } from "@/lib/auth/session";
+import { pagePath } from "@/lib/client/api-endpoints";
 import { cn } from "@/lib/utils";
 import {
   AlertDialog,
@@ -180,14 +181,18 @@ function SidebarProjects() {
 function LockedSidebarNavItem({
   closeMobile,
   href,
-  icon: Icon,
+  icon,
   label,
   onLockedClick,
   tooltip,
 }: {
   closeMobile: () => void;
   href: string;
-  icon: React.ComponentType<{ className?: string }>;
+  /**
+   * Un composant d'icône Lucide, ou n'importe quel nœud : certaines entrées
+   * portent une marque en image plutôt qu'un glyphe.
+   */
+  icon: React.ComponentType<{ className?: string }> | React.ReactNode;
   label: string;
   onLockedClick: () => void;
   tooltip: string;
@@ -235,9 +240,13 @@ function LockedSidebarNavItem({
         onClick={handleClick}
         tabIndex={locked ? -1 : 0}
       >
-        <Icon className={cn("size-4", isActive && "text-primary")} />
+        {typeof icon === "function"
+          ? createElement(icon as React.ComponentType<{ className?: string }>, {
+              className: cn("size-4", isActive && "text-primary"),
+            })
+          : icon}
         <span>{label}</span>
-        {locked && <LockIcon className="ml-auto size-3 text-amber-500" />}
+        {locked && <LockIcon className="ml-auto size-3 text-warning" />}
       </Link>
     </SidebarMenuButton>
   );
@@ -329,12 +338,16 @@ function SidebarNavCollapsible({
   );
 }
 
-export function AppSidebar({ user }: { user?: MaiUser | null }) {
+export function AppSidebar({
+  hasDeadSession,
+  user,
+}: {
+  hasDeadSession?: boolean;
+  user?: MaiUser | null;
+}) {
   const router = useRouter();
   const pathname = usePathname();
   const { setOpenMobile, toggleSidebar } = useSidebar();
-  const { mutate } = useSWRConfig();
-  const [showDeleteAllDialog, setShowDeleteAllDialog] = useState(false);
   const [upgradeFeature, setUpgradeFeature] = useState<
     "skills" | "mcp" | "agents" | null
   >(null);
@@ -386,24 +399,14 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
     router.push("/");
   }, [handleNavClick, resetChat, router]);
 
-  const handleShowDeleteAllDialog = useCallback(() => {
-    setShowDeleteAllDialog(true);
-  }, []);
-
-  const handleDeleteAll = useCallback(() => {
-    setShowDeleteAllDialog(false);
-    resetChat();
-    router.replace("/");
-    mutate(unstable_serialize(getChatHistoryPaginationKey), [], {
-      revalidate: false,
-    });
-
-    fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/history`, {
-      method: "DELETE",
-    });
-
-    toast.success("Toutes les discussions ont été supprimées");
-  }, [mutate, resetChat, router]);
+  // La page de recherche est un ÉCRAN, pas une modale : on referme la barre
+  // mobile puis on navigue. La modale de recherche rapide (⌘K, `/search`,
+  // bouton d'attache du compositeur) reste en place pour qui la demande
+  // explicitement.
+  const handleOpenSearch = useCallback(() => {
+    handleNavClick();
+    router.push(pagePath("/recherche"));
+  }, [handleNavClick, router]);
 
   return (
     <>
@@ -461,7 +464,21 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                   Web
                 </span>
               </button>
-              <div className="group-data-[collapsible=icon]:hidden">
+              {/* La recherche est une PAGE, pas une modale : l'icône tient à
+                  côté du bouton de rétractation, hors de la liste de navigation.
+                  En mode icône, la cellule du logo redevient ce bouton — l'icône
+                  de recherche disparaît donc avec le reste de l'en-tête. */}
+              <div className="group-data-[collapsible=icon]:hidden flex items-center">
+                <Button
+                  aria-label="Rechercher"
+                  className="text-sidebar-foreground/60 transition-colors duration-150 hover:text-sidebar-foreground"
+                  onClick={handleOpenSearch}
+                  size="icon-sm"
+                  title="Rechercher dans tout le compte"
+                  variant="ghost"
+                >
+                  <SearchIcon />
+                </Button>
                 <SidebarTrigger className="text-sidebar-foreground/60 transition-colors duration-150 hover:text-sidebar-foreground" />
               </div>
             </SidebarMenuItem>
@@ -473,39 +490,6 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
           <SidebarGroup className="pt-2">
             <SidebarGroupContent>
               <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton
-                    className={cn(
-                      "h-8 rounded-lg text-[13px] transition-colors duration-150",
-                      pathname === "/"
-                        ? "bg-sidebar-accent font-semibold text-sidebar-foreground"
-                        : "text-sidebar-foreground/80 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
-                    )}
-                    onClick={handleGoHome}
-                    tooltip="Accueil"
-                  >
-                    <HomeIcon className="size-4" />
-                    <span className="font-medium">Accueil</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-                <SidebarMenuItem>
-                  <SidebarMenuButton
-                    className="h-8 rounded-lg border border-sidebar-border text-[13px] text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
-                    data-search-trigger
-                    onClick={() =>
-                      window.dispatchEvent(
-                        new CustomEvent("open-search-dialog")
-                      )
-                    }
-                    tooltip="Rechercher (Cmd+K ou /search)"
-                  >
-                    <SearchIcon className="size-4" />
-                    <span className="font-medium">Rechercher</span>
-                    <span className="ml-auto hidden group-data-[collapsible=icon]:hidden md:inline text-[10px] text-muted-foreground border border-border/50 rounded px-1 py-0.5">
-                      ⌘K
-                    </span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
                 <SidebarMenuItem>
                   <SidebarMenuButton
                     className="h-8 rounded-lg border border-sidebar-border text-[13px] text-sidebar-foreground/80 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
@@ -661,19 +645,20 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                   </SidebarMenuButton>
                 </SidebarMenuItem>
 
-                {/* Agents — réservés aux forfaits payants */}
+                {/* Bots — réservés aux forfaits payants. La clé de montée en
+                    niveau reste « agents » : elle est technique, pas affichée. */}
                 <SidebarMenuItem>
                   <LockedSidebarNavItem
                     closeMobile={handleNavClick}
                     href="/agents"
-                    icon={BotIcon}
-                    label="Agents"
+                    icon={<BotGlyph className="size-4" />}
+                    label="Bots"
                     onLockedClick={() => setUpgradeFeature("agents")}
-                    tooltip="Agents IA"
+                    tooltip="Bots IA"
                   />
                 </SidebarMenuItem>
 
-                {/* 3. Plus : Paramètres, Messages Archivés, Supprimer l'historique */}
+                {/* 3. Plus : Paramètres, Messages Archivés */}
                 <SidebarNavCollapsible
                   dropdownItems={
                     <>
@@ -703,21 +688,6 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                           <span>Messages Archivés</span>
                         </Link>
                       </DropdownMenuItem>
-                      {user ? (
-                        <>
-                          <DropdownMenuSeparator />
-                          <DropdownMenuItem
-                            className="flex items-center gap-2 text-destructive focus:text-destructive cursor-pointer text-xs py-1.5"
-                            onClick={() => {
-                              handleNavClick();
-                              handleShowDeleteAllDialog();
-                            }}
-                          >
-                            <TrashIcon className="size-4" />
-                            <span>Supprimer l'historique</span>
-                          </DropdownMenuItem>
-                        </>
-                      ) : null}
                     </>
                   }
                   icon={MoreHorizontalIcon}
@@ -725,7 +695,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                   isOpen={openMenu === "plus"}
                   label="Plus"
                   onOpenChange={(open) => setOpenMenu(open ? "plus" : null)}
-                  tooltip="Plus (Paramètres, Archives, Historique)"
+                  tooltip="Plus (Paramètres, Messages archivés)"
                 >
                   <SidebarMenuSubItem>
                     <SidebarMenuSubButton
@@ -755,20 +725,6 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
                       </Link>
                     </SidebarMenuSubButton>
                   </SidebarMenuSubItem>
-                  {user ? (
-                    <SidebarMenuSubItem>
-                      <SidebarMenuSubButton
-                        className="h-7 rounded-lg text-[13px] text-sidebar-foreground/50 transition-colors duration-150 hover:bg-destructive/10 hover:text-destructive cursor-pointer"
-                        onClick={() => {
-                          handleNavClick();
-                          handleShowDeleteAllDialog();
-                        }}
-                      >
-                        <TrashIcon className="size-3.5" />
-                        <span>Supprimer l'historique</span>
-                      </SidebarMenuSubButton>
-                    </SidebarMenuSubItem>
-                  ) : null}
                 </SidebarNavCollapsible>
               </SidebarMenu>
             </SidebarGroupContent>
@@ -777,6 +733,7 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
           {user ? <SidebarProjects /> : null}
 
           <SidebarHistory
+            hasDeadSession={hasDeadSession}
             user={user ? { email: user.email, id: user.id } : undefined}
           />
         </SidebarContent>
@@ -786,32 +743,6 @@ export function AppSidebar({ user }: { user?: MaiUser | null }) {
         </SidebarFooter>
         <SidebarRail />
       </Sidebar>
-
-      <AlertDialog
-        onOpenChange={setShowDeleteAllDialog}
-        open={showDeleteAllDialog}
-      >
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>
-              Supprimer toutes les discussions ?
-            </AlertDialogTitle>
-            <AlertDialogDescription>
-              Cette action est irréversible. Toutes vos conversations seront
-              définitivement effacées.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Annuler</AlertDialogCancel>
-            <AlertDialogAction
-              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-              onClick={handleDeleteAll}
-            >
-              Tout supprimer
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
 
       <UpgradeDialog
         feature={upgradeFeature ?? "generic"}

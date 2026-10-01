@@ -1,6 +1,7 @@
 import { createOpenAI } from "@ai-sdk/openai";
 import { MAI_API_URL } from "../constants";
 import { titleModel } from "./models";
+import type { ReasoningDetailsSink } from "./reasoning-details";
 import { filterModelsForTier } from "./registry/tiers";
 
 // Résout un identifiant de modèle utilitaire (titres, résumés, planification)
@@ -38,6 +39,12 @@ export function getLanguageModel(
     apiKey?: string | null;
     sessionToken?: string | null;
     userId?: string | null;
+    /**
+     * Collecteur de `reasoning_details`. Transmis explicitement par l'appelant :
+     * un module mutable partagé enverrait le raisonnement d'une requête chez
+     * une autre requête concurrente.
+     */
+    reasoningSink?: ReasoningDetailsSink;
   }
 ) {
   const effectiveKey =
@@ -59,6 +66,8 @@ export function getLanguageModel(
     ? MAI_API_URL
     : `${MAI_API_URL.replace(/\/+$/, "")}/v1`;
 
+  const reasoningSink = options?.reasoningSink;
+
   const maiClient = createOpenAI({
     apiKey: effectiveKey,
     baseURL: maiBaseUrl,
@@ -70,7 +79,12 @@ export function getLanguageModel(
       ) {
         urlStr = urlStr.replace("/chat/completions", "/v1/chat/completions");
       }
-      return await fetch(urlStr, init);
+      const response = await fetch(urlStr, init);
+      // Le provider ignore les blocs de raisonnement : c'est le dernier point
+      // où le flux passe intact, donc le seul endroit où les capturer. Sans
+      // collecteur, la réponse est renvoyée telle quelle — un `tee()` inutile
+      // coûterait de la mémoire sur chaque appel.
+      return reasoningSink ? reasoningSink.attach(response) : response;
     },
     headers,
   });

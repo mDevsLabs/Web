@@ -17,6 +17,7 @@ import {
   ImagePlusIcon,
   KeyRoundIcon,
   LightbulbIcon,
+  LineChartIcon,
   NotebookIcon,
   PencilIcon,
   PlayIcon,
@@ -164,6 +165,13 @@ export const TOOLS_META: Record<ToolId, ToolMeta> = {
     id: "getAccountUsage",
     label: "Consommation & forfait",
   },
+  getUsageStats: {
+    description:
+      "Analyse l'historique de consommation : tokens dans le temps (texte, image, audio), conversations créées par mode et classement des modèles. Les images sont comptées en nombre de générations, pas en tokens.",
+    icon: LineChartIcon as any,
+    id: "getUsageStats",
+    label: "Analyser mes statistiques",
+  },
   getWeather: {
     description:
       "Fournit la météo actuelle et les prévisions de 1 à 7 jours pour une ville ou des coordonnées. À activer pour toute question sur le climat ou les conditions du jour.",
@@ -293,6 +301,8 @@ export const TOOL_SYSTEM_HINTS: Record<ToolId, string> = {
     "generateDiagram (génère un diagramme visuel interactif en Mermaid ou PlantUML : architecture, séquence, flowchart, mindmap, gantt, timeline — code propre sans balises ```)",
   getAccountUsage:
     "getAccountUsage (affiche le forfait Free/Plus/Pro/Max, les tokens IA consommés/limite, les images du jour, la synthèse vocale et le stockage cloud sous forme de carte — commente ensuite brièvement les points notables : taux supérieur à 80 %, quota épuisé, réinitialisation proche)",
+  getUsageStats:
+    "getUsageStats (analyse l'historique de consommation : tokens dans le temps pour texte et audio, nombre d'images générées, conversations créées par mode Chat/Agent, classement des modèles — les images et l'audio ne sont PAS en tokens et ne doivent pas être comparés au texte ; signale tout avertissement renvoyé)",
   getWeather:
     "getWeather (météo actuelle et prévisions 1 à 7 jours, celsius/fahrenheit, par ville ou coordonnées)",
   imageGenerate:
@@ -320,4 +330,6 @@ export const TOOL_SYSTEM_HINTS: Record<ToolId, string> = {
     "webSearch (recherche sur le Web en temps réel : actualités, documentation, faits vérifiables — citer les sources retournées)",
 };
 
-export const DEFAULT_ENABLED_TOOLS: ToolId[] = []; // tous désactivés par défaut
+// Les outils sont activés uniquement par une action explicite de l'utilisateur.
+// Le bouton d'analyse des statistiques transmet son outil avec le brouillon.
+export const DEFAULT_ENABLED_TOOLS: ToolId[] = [];

@@ -55,7 +55,9 @@ export default async function McpDetailPage({
   const installError: string | null =
     manifest.activation === "requires_oauth_flow"
       ? "Cette intégration exige un flux OAuth interactif non encore pris en charge par mAI Web : l'installation est refusée côté serveur."
-      : null;
+      : manifest.activation === "requires_vetted_stdio"
+        ? "Cette intégration stdio attend un wrapper vérifié par l'infrastructure. L'exécution de la commande du modèle est bloquée par sécurité."
+        : null;
   if (userId && paid) {
     const server = await getMcpServerByTemplateId({
       templateId: manifest.id,

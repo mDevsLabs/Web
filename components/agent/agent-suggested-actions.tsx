@@ -84,7 +84,7 @@ export function AgentSuggestedActions({
           const isDone = doneIds.has(action.id);
           return (
             <button
-              className="flex cursor-pointer items-center gap-2 rounded-full border border-border/50 bg-background px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground disabled:cursor-not-allowed disabled:opacity-50"
+              className="flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-border/50 bg-background px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
               data-testid={`agent-suggested-action-${action.id}`}
               disabled={busyId !== null || isDone}
               key={action.id}
