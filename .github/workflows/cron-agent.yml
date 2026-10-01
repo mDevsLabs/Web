@@ -1,0 +1,60 @@
+name: Agent Cron Trigger
+
+# Le tick du scheduler Agent (/api/cron/agent) n'était déclenché par aucun
+# workflow du dépôt : `vercel.json` ne déclare que `{"framework":"nextjs"}`, sans
+# clé `crons`, et seul `/api/cron/planning` avait un déclencheur GitHub Actions.
+#
+# S'ajoute sans risque de double exécution : la réservation d'une occurrence est
+# atomique (bail), donc deux ticks concurrents se neutralisent au niveau de
+# l'occurrence et jamais de l'exécution. Ajouter ce workflow alors qu'un
+# déclencheur hors-bande existe déjà ne change donc rien au comportement.
+#
+# Cadence à 5 min : le tick se donne 285 s de budget et chaque occurrence peut
+# attendre une approbation utilisateur jusqu'à 24 h. Une cadence plus espacée
+# retarderait les relances.
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  run-agent-cron:
+    name: 'Déclencher le tick du scheduler Agent'
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: 'Appeler le endpoint Cron Vercel'
+        env:
+          APP_URL: ${{ secrets.APP_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "$APP_URL" ]; then
+            echo "::error ::Le secret APP_URL n'est pas configuré dans GitHub Secrets."
+            exit 1
+          fi
+          if [ -z "$CRON_SECRET" ]; then
+            echo "::error ::Le secret CRON_SECRET n'est pas configuré dans GitHub Secrets."
+            exit 1
+          fi
+
+          CLEAN_URL="${APP_URL%/}"
+
+          echo "Appel de $CLEAN_URL/api/cron/agent..."
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST "$CLEAN_URL/api/cron/agent" \
+            -H "Authorization: Bearer $CRON_SECRET" \
+            -H "Content-Type: application/json")
+
+          HTTP_STATUS=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | sed '$d')
+
+          echo "Code HTTP: $HTTP_STATUS"
+          echo "Réponse: $BODY"
+
+          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 300 ]; then
+            echo "Tick exécuté avec succès !"
+          else
+            echo "::error ::Échec de l'appel cron (HTTP $HTTP_STATUS)"
+            exit 1
+          fi

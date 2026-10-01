@@ -13,6 +13,9 @@ node_modules*
 # primitive de forgerie d'authentification complète : elle ne doit pas être
 # versionnée. Le fichier reste utilisable en local après `git rm --cached`.
 tests/debug/
+
+# `.env.example` est versionné : c'est le contrat d'environnement du dépôt
+# (`.env*` est ignoré, ce fichier fait exception ligne 9).
 main.ts
 main-projects.ts
 aiModels.ts
