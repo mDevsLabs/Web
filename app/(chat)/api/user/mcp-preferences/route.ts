@@ -4,7 +4,7 @@ import {
   logError,
   zodIssuesMessage,
 } from "@/lib/api/error-response";
-import { getMaiUser } from "@/lib/auth/session";
+import { requireUser } from "@/lib/auth/require-user";
 import { getUserMcpPrefs, upsertUserMcpPrefs } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 
@@ -20,25 +20,23 @@ const schema = z.object({
 });
 
 export async function GET() {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
-  const prefs = await getUserMcpPrefs(userId);
+  const prefs = await getUserMcpPrefs(session.userId);
   return Response.json(prefs);
 }
 
 export async function POST(request: Request) {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
   try {
     const json = await request.json();
     const parsed = schema.parse(json);
-    const updated = await upsertUserMcpPrefs(userId, parsed);
+    const updated = await upsertUserMcpPrefs(session.userId, parsed);
     return Response.json(updated);
   } catch (err) {
     if (err instanceof z.ZodError) {

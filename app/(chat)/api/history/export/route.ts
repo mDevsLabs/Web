@@ -1,4 +1,4 @@
-import { getMaiUser } from "@/lib/auth/session";
+import { requireUser } from "@/lib/auth/require-user";
 import { getMessagesForExportByUserId } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import { getTextFromMessage } from "@/lib/utils";
@@ -31,14 +31,11 @@ function exportFileName(): string {
 }
 
 export async function GET() {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
-  if (!userId) {
-    return new ChatbotError("unauthorized:chat").toResponse();
-  }
+  const { userId } = session;
 
   let rows: Awaited<ReturnType<typeof getMessagesForExportByUserId>>;
   try {
