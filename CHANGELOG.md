@@ -1,6 +1,6 @@
 # Notes de version
 
-## 0.9.2 — 1er octobre 2026
+## 0.9.2 — 3 octobre 2026
 
 Cette version est surtout une version de corrections. Elle rétablit des
 fonctionnalités qui répondaient « non authentifié » alors que la session était
@@ -19,6 +19,14 @@ valide, et referme une faille d'authentification côté API.
   permet de basculer une directive à la fois.
 - **`.env.example`** : le dépôt documente désormais les variables
   d'environnement attendues, avec les raisons des verrous à ne pas contourner.
+- **Fichiers de l'espace de travail** : les lists de compétences, de serveurs
+  MCP, d'applications, de projets, de bibliothèque, d'images, de synthèse
+  vocale, de tâches planifiées, de robots, d'archivage et de statistiques
+  affichent désormais un squelette de chargement pendant leur préparation, au
+  lieu d'un écran vide.
+- **Tick des tâches Agent planifiées** : les tâches planifiées de l'Agent sont
+  déclenchées automatiquement toutes les cinq minutes. Ce déclenchement
+  n'existait pas et la fonctionnalité était inopérante en production.
 
 ### Corrections
 
@@ -56,6 +64,14 @@ valide, et referme une faille d'authentification côté API.
   visibles, et le format le plus léger est proposé aux navigateurs compatibles.
 - **Application dans un cadre tiers** : l'interdiction d'intégration en iframe
   est appliquée, avec un équivalent pour les navigateurs anciens.
+- **Textes en anglais dans l'interface** : plusieurs libellés et une fenêtre de
+  confirmation étaient restés en anglais, y compris sur toutes les pages de
+  l'espace de travail. L'interface est désormais entièrement en français.
+- **Envoi d'un fichier dans la bibliothèque** : la taille n'était pas limitée et
+  différait de celle des autres envois de fichier. Le téléversement d'un fichier
+  de projet indiquait une erreur interne lorsque le stockage était plein au lieu
+  de proposer une formule supérieure.
+- **Compteurs de la console d'aperçu** : « 1 erreur(s) » est devenu « 1 erreur ».
 
 ## 0.9.1 — 30 septembre 2026
 
