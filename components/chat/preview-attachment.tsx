@@ -68,7 +68,7 @@ export const PreviewAttachment = ({
     >
       {contentType?.startsWith("image") && url ? (
         <Image
-          alt={name ?? "attachment"}
+          alt={name ?? "pièce jointe"}
           className="size-full object-cover"
           height={96}
           src={url}

@@ -73,7 +73,7 @@ export function QuotaBanner({
 export function EditingBanner({ onCancelEdit }: { onCancelEdit?: () => void }) {
   return (
     <div className="flex items-center gap-2 text-[12px] text-muted-foreground">
-      <span>Editing message</span>
+      <span>Modification du message</span>
       <button
         className="rounded px-1.5 py-0.5 text-muted-foreground/50 transition-colors hover:bg-muted hover:text-foreground"
         onMouseDown={(e) => {
@@ -82,7 +82,7 @@ export function EditingBanner({ onCancelEdit }: { onCancelEdit?: () => void }) {
         }}
         type="button"
       >
-        Cancel
+        Annuler
       </button>
     </div>
   );

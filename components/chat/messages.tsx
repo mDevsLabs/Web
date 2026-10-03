@@ -311,7 +311,7 @@ function PureMessages({
       </div>
 
       <button
-        aria-label="Scroll to bottom"
+        aria-label="Aller en bas de la conversation"
         className={`absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 items-center rounded-full border border-border/50 bg-card/90 px-3.5 shadow-[var(--shadow-float)] backdrop-blur-lg transition-all duration-200 h-8 min-h-[32px] sm:h-7 text-[11px] sm:text-[10px] ${
           isAtBottom
             ? "pointer-events-none scale-90 opacity-0"

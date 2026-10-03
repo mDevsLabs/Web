@@ -103,6 +103,13 @@ export function SandboxPreview({ content }: { content: string }) {
   const errorCount = logs.filter((l) => l.level === "error").length;
   const warnCount = logs.filter((l) => l.level === "warn").length;
 
+  // « 1 erreur(s) » se lit mal et se prononce mal. Un accord en genre et en
+  // nombre ne coûte qu'une ligne et vaut mieux que la notation abrégée.
+  const plural = (count: number, one: string, many: string) =>
+    `${count} ${count > 1 ? many : one}`;
+  const errorLabel = plural(errorCount, "erreur", "erreurs");
+  const warnLabel = plural(warnCount, "avertissement", "avertissements");
+
   const srcDoc = useMemo(
     () =>
       buildSandboxDocument({
@@ -244,11 +251,9 @@ export function SandboxPreview({ content }: { content: string }) {
             <TerminalIcon className="size-3" />
             Console ({logs.length})
             {errorCount > 0 && (
-              <span className="text-red-400">{errorCount} erreur(s)</span>
+              <span className="text-destructive">{errorLabel}</span>
             )}
-            {warnCount > 0 && (
-              <span className="text-amber-400">{warnCount} avert.</span>
-            )}
+            {warnCount > 0 && <span className="text-warning">{warnLabel}</span>}
             <button
               className="ml-auto rounded p-0.5 hover:bg-zinc-800"
               onClick={() => setLogs([])}
@@ -315,7 +320,7 @@ export function SandboxPreview({ content }: { content: string }) {
         >
           <ChevronUpIcon className="size-3" />
           {errorCount > 0
-            ? `${errorCount} erreur(s) console`
+            ? `${errorLabel} console`
             : `${logs.length} log(s) console`}
         </button>
       ) : null}

@@ -242,7 +242,7 @@ function PureChatHeader({
     >
       {isCollapsedDesktop && (
         <Button
-          aria-label="Ouvrir sidebar"
+          aria-label="Ouvrir la barre latérale"
           onClick={toggleSidebar}
           size="icon-sm"
           variant="ghost"

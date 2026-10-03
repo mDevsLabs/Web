@@ -184,7 +184,7 @@ function Sidebar({
           side="bottom"
         >
           <SheetHeader className="sr-only">
-            <SheetTitle>Sidebar</SheetTitle>
+            <SheetTitle>Barre latérale</SheetTitle>
             <SheetDescription>Displays the mobile sidebar.</SheetDescription>
           </SheetHeader>
           <div className="mx-auto mt-3 h-1.5 w-10 rounded-full bg-sidebar-foreground/20" />
@@ -259,7 +259,7 @@ function SidebarTrigger({
       {...props}
     >
       <PanelLeftIcon />
-      <span className="sr-only">Toggle Sidebar</span>
+      <span className="sr-only">Afficher ou masquer la barre latérale</span>
     </Button>
   )
 }
@@ -278,14 +278,14 @@ function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
     >
       <button
         data-sidebar="rail"
-        aria-label="Toggle Sidebar"
+        aria-label="Afficher ou masquer la barre latérale"
         tabIndex={-1}
         onClick={toggleSidebar}
         className="absolute inset-y-0 left-0 w-4 cursor-w-resize [[data-side=left][data-state=collapsed]_&]:cursor-e-resize"
         {...props}
       />
       <button
-        aria-label="Toggle Sidebar"
+        aria-label="Afficher ou masquer la barre latérale"
         tabIndex={-1}
         onClick={toggleSidebar}
         className={cn(
@@ -294,7 +294,7 @@ function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
         )}
       />
       <button
-        aria-label="Toggle Sidebar"
+        aria-label="Afficher ou masquer la barre latérale"
         tabIndex={-1}
         onClick={toggleSidebar}
         className={cn(

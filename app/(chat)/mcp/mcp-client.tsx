@@ -1575,7 +1575,7 @@ export default function McpClient({
                   onChange={(e) => setLogActionFilter(e.target.value)}
                   value={logActionFilter}
                 >
-                  <option value="">Tous actions</option>
+                  <option value="">Toutes les actions</option>
                   <option value="read">read</option>
                   <option value="write">write</option>
                   <option value="delete">delete</option>
