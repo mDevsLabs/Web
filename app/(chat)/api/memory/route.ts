@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { memoryLimitForTier } from "@/lib/auth/plan";
-import { getMaiUser } from "@/lib/auth/session";
+import { requireUser } from "@/lib/auth/require-user";
 import { MEMORY_CONTENT_MAX_LENGTH } from "@/lib/constants";
 import {
   countMemories,
@@ -74,11 +74,11 @@ async function resolveScope(
 }
 
 export async function GET(request: Request) {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
+  const { user, userId } = session;
   try {
     const { searchParams } = new URL(request.url);
     const agentId = searchParams.get("agentId");
@@ -117,11 +117,11 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
+  const { user, userId } = session;
   try {
     const body = await request.json();
     const parsed = createSchema.parse(body);
@@ -175,11 +175,11 @@ export async function POST(request: Request) {
 }
 
 export async function DELETE(request: Request) {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
+  const { userId } = session;
   try {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");
@@ -212,11 +212,11 @@ export async function DELETE(request: Request) {
 }
 
 export async function PATCH(request: Request) {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
+  const { userId } = session;
   try {
     const body = await request.json();
     const parsed = updateSchema.parse(body);
