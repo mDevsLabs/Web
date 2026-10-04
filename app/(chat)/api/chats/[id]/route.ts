@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { chatOwnerMatches } from "@/lib/agent/channel";
-import { getMaiUser } from "@/lib/auth/session";
+import { requireUser } from "@/lib/auth/require-user";
 import {
   getChatById,
   updateChatArchivedById,
@@ -63,15 +63,15 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
+  const { user, userId } = session;
   const chat = await getChatById({ id });
   if (!chat) {
     return new ChatbotError("not_found:database").toResponse();
   }
-  const userId = user.id || user.email;
   if (
     !(await canViewChat({
       chat,
@@ -89,23 +89,16 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
+  const { user, userId } = session;
   const chat = await getChatById({ id });
   if (!chat) {
     return new ChatbotError("not_found:database").toResponse();
   }
-  if (
-    !chatOwnerMatches({
-      chatUserId: chat.userId,
-      email: user.email,
-      userId,
-      username: user.username,
-    })
-  ) {
+  if (!chatOwnerMatches({ chatUserId: chat.userId, userId })) {
     return new ChatbotError("forbidden:chat").toResponse();
   }
 
