@@ -5,7 +5,8 @@ import {
 } from "@/lib/agent/tools/internal/extract";
 import { errorResponse, logError } from "@/lib/api/error-response";
 import { upstreamForm, upstreamJson } from "@/lib/api/upstream";
-import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
+import { requireUser } from "@/lib/auth/require-user";
+import { getMaiSessionToken } from "@/lib/auth/session";
 import {
   createProjectFile,
   deleteProjectFile,
@@ -57,14 +58,15 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
+  const { user, userId } = session;
   const access = await getProjectAccess({
     projectId: id,
     userEmail: user.email,
-    userId: user.id || user.email,
+    userId,
   });
   if (!access) {
     return new ChatbotError(
@@ -81,11 +83,11 @@ export async function POST(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
+  const { user, userId } = session;
 
   // Un membre peut contribuer au projet partagé avec ses propres fichiers.
   const access = await getProjectAccess({
@@ -214,11 +216,11 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
+  const { user, userId } = session;
   const { searchParams } = new URL(request.url);
   const fileId = searchParams.get("fileId");
   if (!fileId) {

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { getMaiUser } from "@/lib/auth/session";
+import { requireUser } from "@/lib/auth/require-user";
 import {
   countProjectMembers,
   createProject,
@@ -25,12 +25,12 @@ const buildCreateSchema = (tier?: string | null) =>
   });
 
 export async function GET(request: Request) {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
-  const userEmail = user.email;
+  const { userId } = session;
+  const userEmail = session.user.email;
   const { searchParams } = new URL(request.url);
   const includeArchived = searchParams.get("includeArchived") === "true";
   const search = searchParams.get("search") ?? undefined;
@@ -63,11 +63,11 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
+  const { user, userId } = session;
   const userEmail = user.email;
 
   try {
