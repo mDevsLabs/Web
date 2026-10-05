@@ -30,7 +30,10 @@
       // réglages) et de comparaison. Ni compilées par Next ni typées
       // (tsconfig.json les exclut), et elles ont leur propre linter (oxlint).
       // Les soumettre à Biome noierait `pnpm check` sous du bruit de style.
-      "!apps/vibe/**"
+      "!apps/vibe/**",
+      // Sources Wakies d'origine (app Vite) : app autonome avec son propre
+      // linter et environnement. Exclue de Biome pour ne pas polluer pnpm check.
+      "!apps/wakies/**"
     ]
   },
   // Vibe : les tables de réglages (thèmes de bulles, fonds de discussion, formes,
