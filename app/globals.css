@@ -5,6 +5,27 @@
 
 @custom-variant dark (&:is(.dark, .dark *));
 
+/*
+  Variante de Vibe (/vibe).
+
+  Vibe vit sous `.vibe-root` : son thème (clair ou sombre) est posé sur cet
+  élément, jamais sur <html>, et ses jetons de couleur sont ré-ancrés sous ce
+  scope (scripts/build-vibe-css.mjs). La variante `dark:` ci-dessus ne peut donc
+  pas lui servir : elle s'allumerait dès que mAI est en thème sombre, même
+  quand Vibe est en clair — un composant Vibe virerait au sombre dans une page
+  claire. Les composants Vibe emploient `vibe-dark:*`, qui ne suit QUE la racine
+  Vibe. Le CSS de Vibe, lui, est généré : la variante est déclarée ici parce
+  que Tailwind ne traite que cette feuille (app/globals.css).
+*/
+@custom-variant vibe-dark (
+  &:where(
+    .vibe-root.dark,
+    .vibe-root.dark *,
+    .vibe-root[data-theme="dark"],
+    .vibe-root[data-theme="dark"] *
+  )
+);
+
 @plugin "tailwindcss-animate";
 @plugin "@tailwindcss/typography";
 

@@ -19,6 +19,7 @@ import {
   SlidersHorizontalIcon,
   SparklesIcon,
   TrashIcon,
+  UsersIcon,
   Volume2Icon,
 } from "lucide-react";
 import Image from "next/image";
@@ -545,6 +546,25 @@ export function AppSidebar({
                     <Link href="/planning" onClick={handleNavClick}>
                       <CalendarClockIcon className="size-4" />
                       <span>Planification</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+
+                {/*
+                  Vibe : réseau social et studio mAI. La page a sa propre coque
+                  (barre de navigation Vibe) et son propre thème, re-scopé sous
+                  `.vibe-root` — d'où un lien de navigation dédié plutôt qu'un
+                  onglet dans le chat.
+                */}
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    asChild
+                    className="h-8 rounded-lg text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                    tooltip="Vibe"
+                  >
+                    <Link href="/vibe" onClick={handleNavClick}>
+                      <UsersIcon className="size-4" />
+                      <span>Vibe</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

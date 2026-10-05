@@ -73,20 +73,24 @@ app/
 │   ├── api/                78 routes BFF
 │   ├── agents/ archived/ audio/ chat/[id]/ images/ library/
 │   ├── mcp/ planning/ projects/ skills/ tools/
-│   └── settings/           page.tsx (2561 l.) + agent/page.tsx
+│   ├── settings/           page.tsx (2561 l.) + agent/page.tsx
+│   └── vibe/               app sociale portée sous /vibe (pages générées)
 ├── api/cron/               ticks Agent et planification
 ├── globals.css             ← design system (tokens + primitives)
 └── layout.tsx              polices, ThemeProvider, Toaster
 components/
 ├── agent/ agents/ ai-elements/ chat/ common/ onboarding/ planning/ settings/ tools/
+├── vibe/                   Vibe portée (vibe.css généré) + router.tsx
 └── ui/                     24 primitives Radix (exclus du lint)
 lib/
 ├── agent/ (35 f.) ai/ auth/ chat/ commands/ db/ editor/ mcp/ plans/ plugins/
 ├── projects/ prompts/ security/ skill-templates/ notifications/
+├── vibe/                   services, hooks et contextes de Vibe (api, theme)
 └── constants.ts errors.ts ratelimit.ts types.ts utils.ts
 hooks/                      21 hooks, dont use-tier, use-notifications
 tests/                      unit/ e2e/ pages/ prompts/
-docs/                       AGENT.md, BACKEND_API.md, AI_AGENTS_API.md, …
+docs/                       AGENT.md, BACKEND_API.md, AI_AGENTS_API.md, VIBE.md
+apps/vibe/                  source Vite d'origine (référence, hors build Next)
 ```
 
 Alias : `@/*` → racine du dépôt (d'où `app/…`, `lib/…`).
@@ -231,11 +235,38 @@ pnpm test           # playwright (e2e)
 pnpm db:generate    # drizzle-kit generate
 pnpm db:migrate     # tsx lib/db/migrate.ts
 pnpm db:studio      # drizzle-kit studio
+
+node scripts/build-vibe-css.mjs      # régénère components/vibe/vibe.css
+node scripts/build-vibe-routes.mjs   # régénère les 15 pages app/(chat)/vibe/**
 ```
 
 > ⚠️ `pnpm fix` formate **tout** le dépôt, y compris `*.sql` et `*.md`. En cas
 > de travail parallèle dans l'arbre, préférer :
 > `node node_modules/@biomejs/biome/bin/biome check --write <fichiers>`
+
+## 8.1 Intégration Vibe (`/vibe`)
+
+Vibe, l'application sociale, est **portée** depuis `apps/vibe/` (app Vite
+conservée en référence, non compilée par Next) sous `/vibe`. Guide complet :
+`docs/VIBE.md` ; portage des composants : `components/vibe/README.md`.
+
+Quatre règles à ne pas contourner :
+
+- **`components/vibe/vibe.css` et les pages `app/(chat)/vibe/**/page.tsx` sont
+  générés** (`scripts/build-vibe-css.mjs`, `scripts/build-vibe-routes.mjs`).
+  Corriger la source, jamais la sortie.
+- **Tout Vibe vit sous `.vibe-root`** (thème, `data-theme`, `data-animations`),
+  donc les classes dépendant du thème s'écrivent `vibe-dark:` — jamais `dark:`,
+  qui suit `<html>` (la variante est déclarée dans `app/globals.css`).
+- **Les URL passent par `components/vibe/router.tsx`** : `toVibePath`,
+  `stripVibeBasePath`, `toVibeAbsoluteUrl`. Un chemin écrit à la main mène hors
+  de `/vibe` (404 chez le destinataire). `/vibe/@pseudo` est réécrit vers
+  `/vibe/u/[username]` par `next.config.ts`.
+- **`lib/vibe/context/ThemeContext.tsx` : l'ordre des clés de cinq tables de
+  réglages est l'ordre d'affichage** (protégé par un override `useSortedKeys`).
+
+`components/vibe/vibe.css` et `apps/vibe/**` sont exclus de Biome ; le code
+porté contient deux overrides documentés dans `biome.jsonc`.
 
 ## 9. Points d'attention historiques
 

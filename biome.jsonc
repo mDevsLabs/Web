@@ -19,9 +19,61 @@
       "!hooks/use-mobile.ts",
       "!scripts/newsletter_editor.html",
       "!lib/plugins/catalog.generated.ts",
-      "!lib/plugins/server.generated.ts"
+      "!lib/plugins/server.generated.ts",
+      // Feuille de style Vibe : sortie de scripts/build-vibe-css.mjs (source :
+      // apps/vibe/src/index.css). Comme les catalogues générés ci-dessus, elle
+      // n'est pas écrite à la main — la corriger ici serait perdu à la
+      // prochaine génération.
+      "!components/vibe/vibe.css",
+      // Sources Vibe d'origine (app Vite) : conservées uniquement comme
+      // référence de génération (feuille de style, ordre des tables de
+      // réglages) et de comparaison. Ni compilées par Next ni typées
+      // (tsconfig.json les exclut), et elles ont leur propre linter (oxlint).
+      // Les soumettre à Biome noierait `pnpm check` sous du bruit de style.
+      "!apps/vibe/**"
     ]
   },
+  // Vibe : les tables de réglages (thèmes de bulles, fonds de discussion, formes,
+  // palette d'accent, tailles de texte) sont itérées telles quelles par
+  // l'interface — `Object.keys`/`Object.values` côté réglages et page Messages.
+  // Leur ORDRE de clés est donc l'ordre d'affichage des options : l'assist
+  // `useSortedKeys` les alphabétiserait et changerait cet ordre (le thème par
+  // défaut ne serait plus le premier). Désactivé pour ce seul fichier.
+  "overrides": [
+    // Vibe (porté de l'app Vite) : plusieurs tableaux de dépendances sont des
+    // DÉCLENCHEURS volontaires — `[post.id, post.poll]` resynchronise un post
+    // rechargé, `[resetKey]` relance un fil, `[nonce]` force un refetch,
+    // `[messages]` défile en bas, `[current]` réapplique la vitesse. Ces valeurs
+    // ne sont pas lues par l'effet : Biome les voit comme « inutiles » et
+    // proposerait de les retirer, ce qui supprimerait le déclenchement. On
+    // désactive ce signalement pour le code porté — jamais celui des
+    // dépendances MANQUANTES, qui reste actif (elles sont corrigées).
+    {
+      "includes": ["components/vibe/**", "lib/vibe/**"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "useExhaustiveDependencies": {
+              "level": "error",
+              "options": {
+                "reportUnnecessaryDependencies": false
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "includes": ["**/lib/vibe/context/ThemeContext.tsx"],
+      "assist": {
+        "actions": {
+          "source": {
+            "useSortedKeys": "off"
+          }
+        }
+      }
+    }
+  ],
   "linter": {
     "rules": {
       "suspicious": {

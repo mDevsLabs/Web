@@ -1,0 +1,85 @@
+# ============================================================================
+# VIBE SOCIAL PLATFORM — WORKFLOW CI/CD VERCEL
+# Déploiement automatique sur Vercel
+#
+# ⚙️ Variables GitHub Secrets requises :
+#   - VERCEL_TOKEN        → vercel.com > Settings > Tokens > Create Token
+#   - VERCEL_ORG_ID       → vercel.com > Settings > General > Team ID
+#   - VERCEL_PROJECT_ID   → vercel.com > Project > Settings > General > Project ID
+#                           (ou dans .vercel/project.json après "vercel link")
+# ============================================================================
+
+name: 🚀 Deploy Vibe — Vercel
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      prod:
+        description: 'Forcer le déploiement en production (--prod)'
+        type: boolean
+        default: false
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+jobs:
+  # ─────────────────────────────────────────────────────────────────────────────
+  # JOB — Build & Deploy sur Vercel
+  # ─────────────────────────────────────────────────────────────────────────────
+  deploy:
+    name: 🚀 Build & Deploy Vercel
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout du code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 📦 Installation des dépendances
+        run: npm ci
+
+      - name: 🔨 Build de l'application React/Vite
+        run: npm run build
+        env:
+          # Injecter les variables d'env publiques si nécessaire
+          VITE_API_BASE: https://mai.val.run
+
+      - name: 📡 Installation du CLI Vercel
+        run: npm install -g vercel@latest
+
+      - name: 🔗 Lien avec le projet Vercel
+        run: vercel link --yes --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: 🚀 Déploiement Preview (PR ou branche secondaire)
+        if: github.event_name == 'pull_request' || ((github.ref_name != 'main' && github.ref_name != 'master') && !inputs.prod)
+        run: |
+          DEPLOY_URL=$(vercel deploy --token=${{ secrets.VERCEL_TOKEN }})
+          echo "🔗 Preview URL: $DEPLOY_URL"
+          echo "DEPLOY_URL=$DEPLOY_URL" >> $GITHUB_ENV
+
+      - name: 🌐 Déploiement Production (main / master ou forcé)
+        if: github.event_name != 'pull_request' && (github.ref_name == 'main' || github.ref_name == 'master' || inputs.prod == true)
+        run: |
+          DEPLOY_URL=$(vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }})
+          echo "✅ Production URL: $DEPLOY_URL"
+          echo "DEPLOY_URL=$DEPLOY_URL" >> $GITHUB_ENV
+
+      - name: 💬 Commentaire PR avec l'URL de preview
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## 🚀 Preview Vercel déployée !\n\n🔗 **URL :** ${{ env.DEPLOY_URL }}\n\n_Déployée automatiquement depuis le commit \`${{ github.sha }}\`_`
+            })

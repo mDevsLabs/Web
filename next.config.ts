@@ -11,6 +11,20 @@ const isProd = process.env.NODE_ENV === "production";
 // uploads Vercel Blob, stockage S3/R2 des fichiers cloud & avatars,
 // images de secours picsum). BotID et le streaming passent par 'self'.
 function buildContentSecurityPolicy(): string {
+  // Origine de l'API mAI, telle que configurée pour le backend. Elle doit être
+  // déclarée explicitement dans connect-src : les navigateurs refusent de la
+  // déduire, et une politique trop étroite coupe le réseau en silence (des
+  // erreurs de console, pas une page d'explication).
+  const apiOrigin = (() => {
+    try {
+      return new URL(
+        process.env.NEXT_PUBLIC_MAI_API_URL || "https://mai.val.run"
+      ).origin;
+    } catch {
+      return "https://mai.val.run";
+    }
+  })();
+
   // Fichiers cloud et avatars servis directement depuis le stockage S3/R2
   // (S3_PUBLIC_URL / S3_PUBLIC_URL_* côté backend Val Town).
   const storageHosts = ["https://s3.z1storage.com", "https://*.r2.dev"];
@@ -20,6 +34,12 @@ function buildContentSecurityPolicy(): string {
       "'self'",
       "https://cdn.jsdelivr.net",
       "https://kroki.io",
+      // Vibe appelle l'API mAI directement depuis le navigateur (lib/vibe/services/api.ts
+      // : `fetch` avec jeton Bearer, flux SSE inclus). Sans cette origine, la
+      // timeline, les messages et le temps réel de /vibe seraient bloqués par
+      // la politique — le reste de l'application passe par des routes BFF, ce
+      // qui explique l'absence de cette origine avant Vibe.
+      apiOrigin,
       ...(isDev ? ["ws:", "wss:", "http://localhost:*"] : []),
     ],
     "default-src": ["'self'"],
@@ -214,6 +234,27 @@ const nextConfig: NextConfig = {
   },
   poweredByHeader: false,
   reactCompiler: true,
+  /**
+   * Vibe nomme les profils `/@pseudo` : la barre latérale, les notifications,
+   * la recherche et le partage construisent tous leurs liens ainsi, et la barre
+   * latérale compare même `location.pathname` à `/@pseudo` pour marquer l'onglet
+   * actif. `/vibe/@pseudo` doit donc répondre. L'App Router ne peut pas porter
+   * un dossier `@[username]` (le préfixe `@` y désigne un slot parallèle) : on
+   * réécrit donc vers la route `/vibe/u/[username]`, qui rend la même page.
+   * La réécriture laisse l'URL visible en `/vibe/@pseudo` — les liens copiés et
+   * partagés restent ceux de Vibe.
+   *
+   * Les deux chemins d'écriture de chemins (rewrites et basePath) sont
+   * préfixés automatiquement par Next en mode démo.
+   */
+  async rewrites() {
+    return [
+      {
+        destination: "/vibe/u/:username",
+        source: "/vibe/@:username",
+      },
+    ];
+  },
 };
 
 export default withBotId(nextConfig);
