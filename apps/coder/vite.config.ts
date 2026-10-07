@@ -24,6 +24,16 @@ export default defineConfig({
     },
     target: "chrome140",
   },
+  css: {
+    // Sans configuration en ligne, Vite cherche un fichier PostCSS en remontant
+    // depuis apps/coder et tombe sur le postcss.config.mjs de la racine du
+    // dépôt (Tailwind du site Next). Sur un runner CI où seules les dépendances
+    // d'apps/coder sont installées, ce fichier échoue sur
+    // « Cannot find module '@tailwindcss/postcss' » dès la première feuille
+    // CSS et casse le build du renderer, donc les installeurs. Cet objet coupe
+    // la recherche : l'application n'utilise ni PostCSS ni Tailwind.
+    postcss: { plugins: [] },
+  },
   optimizeDeps: {
     include: ["monaco-editor", "react", "react-dom", "shiki"],
   },
