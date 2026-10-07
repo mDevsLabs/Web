@@ -1,9 +1,13 @@
-# OpenBot computer services
+# Services d’ordinateur Wakies
 
-OpenDots builds the computer service and supervisor from CopilotKit/OpenBot revision `b6932d31a8d6e7896c15139dfc27a6c6911deb27` (MIT). Their source is downloaded by BuildKit from the pinned Git context; it is not resolved from a moving branch or a `latest` image.
+Les images de service et de superviseur utilisent la révision OpenBot b6932d31a8d6e7896c15139dfc27a6c6911deb27, récupérée par BuildKit depuis un contexte Git épinglé. La construction ne dépend pas d’une branche mouvante ni d’une image latest.
 
-The computer service is unchanged. The supervisor keeps its narrow ensure/stop/reset/list implementation and resource ownership checks. Its image omits the unused SPIRE CLI, and applies one fail-closed patch to child environment construction: each computer receives `HMAC-SHA256(COMPUTER_TOKEN, "opendots-computer:" + dotId)` instead of the master token. The application uses the same derivation. No supervisor token, model key, or master computer token is forwarded to a computer.
+Le service ordinateur reste inchangé. Le superviseur conserve des opérations limitées à ensure, stop, reset et list, avec contrôle de propriété des ressources. Un patch refuse de construire si la ligne amont épinglée change.
 
-If the pinned upstream line changes, the patch refuses to build. Upgrades require reviewing the API contracts, ownership/volume behavior, and this patch together. On the next ensure request after a master-token change, the pinned supervisor replaces owned containers with the new credential while retaining their volumes. Do not delete profile or workspace volumes during normal updates.
+Chaque ordinateur reçoit un jeton dérivé pour son Wakie, calculé par HMAC-SHA256 à partir du jeton ordinateur et de l’identifiant du Wakie. Le jeton maître, les secrets du superviseur et les clés de modèle ne sont pas transmis au conteneur. Lorsqu’un jeton maître change, le superviseur remplace les conteneurs qu’il possède sans supprimer leurs volumes.
 
-See [computer setup](../../docs/COMPUTERS.md). OpenBot's MIT license is included in [LICENSE.openbot](LICENSE.openbot).
+Ne supprimez pas les volumes de profil ou de workspace lors d’une mise à jour normale. Toute mise à niveau OpenBot demande une revue conjointe des contrats API, de la propriété des volumes et du patch local.
+
+- [Architecture des ordinateurs dans le port mAI](../../../../docs/3-wakies/COMPUTERS.md)
+- [Guide de déploiement de la source](../../README.md)
+- Licence OpenBot : [LICENSE.openbot](LICENSE.openbot)

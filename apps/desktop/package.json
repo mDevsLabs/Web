@@ -8,8 +8,8 @@
   "homepage": "https://mai-officiel.vercel.app",
   "packageManager": "pnpm@10.32.1",
   "scripts": {
-    "dev": "tsc && electron .",
-    "build": "tsc",
+    "dev": "pnpm run build && electron .",
+    "build": "tsc && node scripts/build-terminal.mjs",
     "pack": "pnpm run build && electron-builder --dir",
     "dist": "pnpm run build && electron-builder",
     "dist:win": "pnpm run build && electron-builder --win",
@@ -22,6 +22,7 @@
     "appId": "app.mai.officiel.desktop",
     "productName": "mAI",
     "copyright": "Copyright © 2026 mAI",
+    "npmRebuild": false,
     "directories": {
       "buildResources": "build",
       "output": "dist-elec"
@@ -50,7 +51,6 @@
         }
       ],
       "icon": "build/icon.ico",
-      "publisherName": "mAI",
       "verifyUpdateCodeSignature": false
     },
     "nsis": {
@@ -119,11 +119,16 @@
     "publish": null,
     "forceCodeSigning": false
   },
-  "dependencies": {},
+  "dependencies": {
+    "@xterm/addon-fit": "^0.11.0",
+    "@xterm/xterm": "^6.0.0",
+    "node-pty": "^1.1.0"
+  },
   "devDependencies": {
-    "@types/node": "^24.13.2",
-    "electron": "^33.4.1",
-    "electron-builder": "^25.1.8",
-    "typescript": "^5.6.3"
+    "@types/node": "^24.19.1",
+    "electron": "^44.5.1",
+    "electron-builder": "^26.17.0",
+    "esbuild": "^0.28.2",
+    "typescript": "^5.9.3"
   }
 }

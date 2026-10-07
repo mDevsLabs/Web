@@ -84,6 +84,10 @@ export function isSkillMcpEligible(tier?: string | null): boolean {
   return isPaidTier(tier);
 }
 
+export function isWakiesEligible(tier?: string | null): boolean {
+  return isPaidTier(tier);
+}
+
 export function memoryLimitForTier(tier?: string | null): number {
   return getTierMemoryEntries(tier);
 }

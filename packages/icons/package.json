@@ -1,0 +1,341 @@
+{
+  "name": "@mdevs/icons",
+  "version": "0.2.0",
+  "description": "Minimal responsive 24px React SVG icons with Lucide attribution",
+  "type": "module",
+  "license": "MIT",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1 || ^19.0.0"
+  },
+  "files": [
+    "dist",
+    "src",
+    "svg",
+    "catalog",
+    "README.md",
+    "AGENTS.md",
+    "llms.txt",
+    "llms-full.txt",
+    "LICENSE",
+    "LICENSE-LUCIDE",
+    "NOTICE.md",
+    "CHANGELOG.md",
+    "LICENSE-TABLER",
+    "STYLE.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json",
+    "./catalog": "./catalog/manifest.json",
+    "./animals": {
+      "types": "./dist/icons/animals/index.d.ts",
+      "import": "./dist/icons/animals/index.js",
+      "require": "./dist/icons/animals/index.cjs"
+    },
+    "./animals/*": {
+      "types": "./dist/icons/animals/*.d.ts",
+      "import": "./dist/icons/animals/*.js",
+      "require": "./dist/icons/animals/*.cjs"
+    },
+    "./arrows": {
+      "types": "./dist/icons/arrows/index.d.ts",
+      "import": "./dist/icons/arrows/index.js",
+      "require": "./dist/icons/arrows/index.cjs"
+    },
+    "./arrows/*": {
+      "types": "./dist/icons/arrows/*.d.ts",
+      "import": "./dist/icons/arrows/*.js",
+      "require": "./dist/icons/arrows/*.cjs"
+    },
+    "./buildings": {
+      "types": "./dist/icons/buildings/index.d.ts",
+      "import": "./dist/icons/buildings/index.js",
+      "require": "./dist/icons/buildings/index.cjs"
+    },
+    "./buildings/*": {
+      "types": "./dist/icons/buildings/*.d.ts",
+      "import": "./dist/icons/buildings/*.js",
+      "require": "./dist/icons/buildings/*.cjs"
+    },
+    "./charts": {
+      "types": "./dist/icons/charts/index.d.ts",
+      "import": "./dist/icons/charts/index.js",
+      "require": "./dist/icons/charts/index.cjs"
+    },
+    "./charts/*": {
+      "types": "./dist/icons/charts/*.d.ts",
+      "import": "./dist/icons/charts/*.js",
+      "require": "./dist/icons/charts/*.cjs"
+    },
+    "./cloud": {
+      "types": "./dist/icons/cloud/index.d.ts",
+      "import": "./dist/icons/cloud/index.js",
+      "require": "./dist/icons/cloud/index.cjs"
+    },
+    "./cloud/*": {
+      "types": "./dist/icons/cloud/*.d.ts",
+      "import": "./dist/icons/cloud/*.js",
+      "require": "./dist/icons/cloud/*.cjs"
+    },
+    "./commerce": {
+      "types": "./dist/icons/commerce/index.d.ts",
+      "import": "./dist/icons/commerce/index.js",
+      "require": "./dist/icons/commerce/index.cjs"
+    },
+    "./commerce/*": {
+      "types": "./dist/icons/commerce/*.d.ts",
+      "import": "./dist/icons/commerce/*.js",
+      "require": "./dist/icons/commerce/*.cjs"
+    },
+    "./communication": {
+      "types": "./dist/icons/communication/index.d.ts",
+      "import": "./dist/icons/communication/index.js",
+      "require": "./dist/icons/communication/index.cjs"
+    },
+    "./communication/*": {
+      "types": "./dist/icons/communication/*.d.ts",
+      "import": "./dist/icons/communication/*.js",
+      "require": "./dist/icons/communication/*.cjs"
+    },
+    "./controls": {
+      "types": "./dist/icons/controls/index.d.ts",
+      "import": "./dist/icons/controls/index.js",
+      "require": "./dist/icons/controls/index.cjs"
+    },
+    "./controls/*": {
+      "types": "./dist/icons/controls/*.d.ts",
+      "import": "./dist/icons/controls/*.js",
+      "require": "./dist/icons/controls/*.cjs"
+    },
+    "./development": {
+      "types": "./dist/icons/development/index.d.ts",
+      "import": "./dist/icons/development/index.js",
+      "require": "./dist/icons/development/index.cjs"
+    },
+    "./development/*": {
+      "types": "./dist/icons/development/*.d.ts",
+      "import": "./dist/icons/development/*.js",
+      "require": "./dist/icons/development/*.cjs"
+    },
+    "./devices": {
+      "types": "./dist/icons/devices/index.d.ts",
+      "import": "./dist/icons/devices/index.js",
+      "require": "./dist/icons/devices/index.cjs"
+    },
+    "./devices/*": {
+      "types": "./dist/icons/devices/*.d.ts",
+      "import": "./dist/icons/devices/*.js",
+      "require": "./dist/icons/devices/*.cjs"
+    },
+    "./editing": {
+      "types": "./dist/icons/editing/index.d.ts",
+      "import": "./dist/icons/editing/index.js",
+      "require": "./dist/icons/editing/index.cjs"
+    },
+    "./editing/*": {
+      "types": "./dist/icons/editing/*.d.ts",
+      "import": "./dist/icons/editing/*.js",
+      "require": "./dist/icons/editing/*.cjs"
+    },
+    "./energy": {
+      "types": "./dist/icons/energy/index.d.ts",
+      "import": "./dist/icons/energy/index.js",
+      "require": "./dist/icons/energy/index.cjs"
+    },
+    "./energy/*": {
+      "types": "./dist/icons/energy/*.d.ts",
+      "import": "./dist/icons/energy/*.js",
+      "require": "./dist/icons/energy/*.cjs"
+    },
+    "./files": {
+      "types": "./dist/icons/files/index.d.ts",
+      "import": "./dist/icons/files/index.js",
+      "require": "./dist/icons/files/index.cjs"
+    },
+    "./files/*": {
+      "types": "./dist/icons/files/*.d.ts",
+      "import": "./dist/icons/files/*.js",
+      "require": "./dist/icons/files/*.cjs"
+    },
+    "./food": {
+      "types": "./dist/icons/food/index.d.ts",
+      "import": "./dist/icons/food/index.js",
+      "require": "./dist/icons/food/index.cjs"
+    },
+    "./food/*": {
+      "types": "./dist/icons/food/*.d.ts",
+      "import": "./dist/icons/food/*.js",
+      "require": "./dist/icons/food/*.cjs"
+    },
+    "./health": {
+      "types": "./dist/icons/health/index.d.ts",
+      "import": "./dist/icons/health/index.js",
+      "require": "./dist/icons/health/index.cjs"
+    },
+    "./health/*": {
+      "types": "./dist/icons/health/*.d.ts",
+      "import": "./dist/icons/health/*.js",
+      "require": "./dist/icons/health/*.cjs"
+    },
+    "./interface": {
+      "types": "./dist/icons/interface/index.d.ts",
+      "import": "./dist/icons/interface/index.js",
+      "require": "./dist/icons/interface/index.cjs"
+    },
+    "./interface/*": {
+      "types": "./dist/icons/interface/*.d.ts",
+      "import": "./dist/icons/interface/*.js",
+      "require": "./dist/icons/interface/*.cjs"
+    },
+    "./maps": {
+      "types": "./dist/icons/maps/index.d.ts",
+      "import": "./dist/icons/maps/index.js",
+      "require": "./dist/icons/maps/index.cjs"
+    },
+    "./maps/*": {
+      "types": "./dist/icons/maps/*.d.ts",
+      "import": "./dist/icons/maps/*.js",
+      "require": "./dist/icons/maps/*.cjs"
+    },
+    "./media": {
+      "types": "./dist/icons/media/index.d.ts",
+      "import": "./dist/icons/media/index.js",
+      "require": "./dist/icons/media/index.cjs"
+    },
+    "./media/*": {
+      "types": "./dist/icons/media/*.d.ts",
+      "import": "./dist/icons/media/*.js",
+      "require": "./dist/icons/media/*.cjs"
+    },
+    "./misc": {
+      "types": "./dist/icons/misc/index.d.ts",
+      "import": "./dist/icons/misc/index.js",
+      "require": "./dist/icons/misc/index.cjs"
+    },
+    "./misc/*": {
+      "types": "./dist/icons/misc/*.d.ts",
+      "import": "./dist/icons/misc/*.js",
+      "require": "./dist/icons/misc/*.cjs"
+    },
+    "./nature": {
+      "types": "./dist/icons/nature/index.d.ts",
+      "import": "./dist/icons/nature/index.js",
+      "require": "./dist/icons/nature/index.cjs"
+    },
+    "./nature/*": {
+      "types": "./dist/icons/nature/*.d.ts",
+      "import": "./dist/icons/nature/*.js",
+      "require": "./dist/icons/nature/*.cjs"
+    },
+    "./objects": {
+      "types": "./dist/icons/objects/index.d.ts",
+      "import": "./dist/icons/objects/index.js",
+      "require": "./dist/icons/objects/index.cjs"
+    },
+    "./objects/*": {
+      "types": "./dist/icons/objects/*.d.ts",
+      "import": "./dist/icons/objects/*.js",
+      "require": "./dist/icons/objects/*.cjs"
+    },
+    "./people": {
+      "types": "./dist/icons/people/index.d.ts",
+      "import": "./dist/icons/people/index.js",
+      "require": "./dist/icons/people/index.cjs"
+    },
+    "./people/*": {
+      "types": "./dist/icons/people/*.d.ts",
+      "import": "./dist/icons/people/*.js",
+      "require": "./dist/icons/people/*.cjs"
+    },
+    "./science": {
+      "types": "./dist/icons/science/index.d.ts",
+      "import": "./dist/icons/science/index.js",
+      "require": "./dist/icons/science/index.cjs"
+    },
+    "./science/*": {
+      "types": "./dist/icons/science/*.d.ts",
+      "import": "./dist/icons/science/*.js",
+      "require": "./dist/icons/science/*.cjs"
+    },
+    "./security": {
+      "types": "./dist/icons/security/index.d.ts",
+      "import": "./dist/icons/security/index.js",
+      "require": "./dist/icons/security/index.cjs"
+    },
+    "./security/*": {
+      "types": "./dist/icons/security/*.d.ts",
+      "import": "./dist/icons/security/*.js",
+      "require": "./dist/icons/security/*.cjs"
+    },
+    "./sports": {
+      "types": "./dist/icons/sports/index.d.ts",
+      "import": "./dist/icons/sports/index.js",
+      "require": "./dist/icons/sports/index.cjs"
+    },
+    "./sports/*": {
+      "types": "./dist/icons/sports/*.d.ts",
+      "import": "./dist/icons/sports/*.js",
+      "require": "./dist/icons/sports/*.cjs"
+    },
+    "./symbols": {
+      "types": "./dist/icons/symbols/index.d.ts",
+      "import": "./dist/icons/symbols/index.js",
+      "require": "./dist/icons/symbols/index.cjs"
+    },
+    "./symbols/*": {
+      "types": "./dist/icons/symbols/*.d.ts",
+      "import": "./dist/icons/symbols/*.js",
+      "require": "./dist/icons/symbols/*.cjs"
+    },
+    "./time": {
+      "types": "./dist/icons/time/index.d.ts",
+      "import": "./dist/icons/time/index.js",
+      "require": "./dist/icons/time/index.cjs"
+    },
+    "./time/*": {
+      "types": "./dist/icons/time/*.d.ts",
+      "import": "./dist/icons/time/*.js",
+      "require": "./dist/icons/time/*.cjs"
+    },
+    "./tools": {
+      "types": "./dist/icons/tools/index.d.ts",
+      "import": "./dist/icons/tools/index.js",
+      "require": "./dist/icons/tools/index.cjs"
+    },
+    "./tools/*": {
+      "types": "./dist/icons/tools/*.d.ts",
+      "import": "./dist/icons/tools/*.js",
+      "require": "./dist/icons/tools/*.cjs"
+    },
+    "./transport": {
+      "types": "./dist/icons/transport/index.d.ts",
+      "import": "./dist/icons/transport/index.js",
+      "require": "./dist/icons/transport/index.cjs"
+    },
+    "./transport/*": {
+      "types": "./dist/icons/transport/*.d.ts",
+      "import": "./dist/icons/transport/*.js",
+      "require": "./dist/icons/transport/*.cjs"
+    },
+    "./svg/*": "./svg/*.svg",
+    "./core": {
+      "types": "./dist/create-icon.d.ts",
+      "import": "./dist/create-icon.js",
+      "require": "./dist/create-icon.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts"
+}

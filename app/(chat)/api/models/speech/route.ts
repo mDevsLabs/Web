@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { normalizeModelDisplayName } from "@/lib/ai/models";
+import { upstreamJson } from "@/lib/api/upstream";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
-import { MAI_API_URL } from "@/lib/constants";
 import { getUserApiKey } from "@/lib/db/api-keys";
 
 // Voix Flux par défaut collées par l'API amont à tous les modèles sans voix
@@ -13,6 +13,23 @@ const FLUX_FALLBACK_VOICES = [
   "flux-sam-en",
   "flux-asteria-en",
   "flux-orion-en",
+];
+
+const FALLBACK_SPEECH_MODELS = [
+  {
+    description:
+      "Modèle Text-to-Speech (TTS) ultra-rapide et haute fidélité par Deepgram.",
+    id: "deepgram/flux-tts:free",
+    name: "Deepgram: Flux TTS",
+    voices: [
+      "flux-alexis-en",
+      "flux-michael-en",
+      "flux-stacy-en",
+      "flux-sam-en",
+      "flux-asteria-en",
+      "flux-orion-en",
+    ],
+  },
 ];
 
 function resolveModelVoices(modelId: string, declaredVoices: unknown) {
@@ -52,24 +69,24 @@ export async function GET(_req: NextRequest) {
       }
     }
 
-    const headers: Record<string, string> = {};
-    if (authHeader) {
-      headers.Authorization = authHeader;
-    }
-
-    const res = await fetch(`${MAI_API_URL}/v1/models/speech`, {
-      cache: "no-store",
-      headers,
+    const token = authHeader ? authHeader.replace(/^Bearer\s+/i, "") : null;
+    const result = await upstreamJson<{ data?: any[] }>({
+      path: "/v1/models/speech",
+      token,
     });
 
-    const data = await res.json();
-    if (!res.ok) {
-      return NextResponse.json(data, { status: res.status });
+    if (!result.ok) {
+      return NextResponse.json({
+        data: FALLBACK_SPEECH_MODELS,
+        models: FALLBACK_SPEECH_MODELS,
+        object: "list",
+      });
     }
 
+    const rawList = result.data.data || [];
     // Noms normalisés (préfixe fournisseur retiré, suffixe (Free)) et voix
     // filtrées : seules les voix propres au modèle sont exposées.
-    const models = (data.data || []).map((m: any) => ({
+    const models = rawList.map((m: any) => ({
       ...m,
       name: normalizeModelDisplayName(m.id, m.name || m.id),
       voices: resolveModelVoices(m.id, m.voices),
@@ -84,38 +101,8 @@ export async function GET(_req: NextRequest) {
     console.error("Erreur API models/speech:", error);
     return NextResponse.json(
       {
-        data: [
-          {
-            description:
-              "Modèle Text-to-Speech (TTS) ultra-rapide et haute fidélité par Deepgram.",
-            id: "deepgram/flux-tts:free",
-            name: "Deepgram: Flux TTS",
-            voices: [
-              "flux-alexis-en",
-              "flux-michael-en",
-              "flux-stacy-en",
-              "flux-sam-en",
-              "flux-asteria-en",
-              "flux-orion-en",
-            ],
-          },
-        ],
-        models: [
-          {
-            description:
-              "Modèle Text-to-Speech (TTS) ultra-rapide et haute fidélité par Deepgram.",
-            id: "deepgram/flux-tts:free",
-            name: "Deepgram: Flux TTS",
-            voices: [
-              "flux-alexis-en",
-              "flux-michael-en",
-              "flux-stacy-en",
-              "flux-sam-en",
-              "flux-asteria-en",
-              "flux-orion-en",
-            ],
-          },
-        ],
+        data: FALLBACK_SPEECH_MODELS,
+        models: FALLBACK_SPEECH_MODELS,
         object: "list",
       },
       { status: 200 }

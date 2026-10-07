@@ -13,7 +13,6 @@ export interface InAppToast {
   type?: "success" | "info" | "error";
 }
 
-/* biome-ignore lint/complexity/noStaticOnlyClass: espace de noms de service — la règle vise une classe instanciable qui n'expose que du statique ; la convertir en objet littéral ferait perdre le `private static` sans rien apporter. */
 export class NotificationService {
   /**
    * État actuel de la permission de notification sur l'appareil

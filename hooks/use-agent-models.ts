@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import useSWR from "swr";
 import type { ModelRegistryPayload } from "@/components/chat/input/use-model-capabilities";
 import type { SharedModel } from "@/components/chat/model-selector-compact";
@@ -13,14 +13,22 @@ import { fetcher } from "@/lib/utils";
 // tool calling et la continuation après ToolResult. La liste, les capacités et
 // les accès par forfait viennent tous du registre central exposé par /api/models.
 export function useAgentModels() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const { data, isLoading } = useSWR<ModelRegistryPayload>(
     apiEndpoints.models(),
     fetcher,
     { dedupingInterval: 30_000, revalidateOnFocus: false }
   );
 
+  const activeData = mounted ? data : undefined;
+
   const models = useMemo<SharedModel[]>(() => {
-    const entries = data?.entries ?? [];
+    const entries = activeData?.entries ?? [];
     return entries
       .filter((entry) => entry.capabilities.tools && isAgentCompatible(entry))
       .map((entry) => ({
@@ -35,22 +43,22 @@ export function useAgentModels() {
           ...(entry.capabilities.tools ? ["tools"] : []),
         ],
       }));
-  }, [data]);
+  }, [activeData]);
 
   const catalogModelIds = useMemo(
-    () => new Set((data?.entries ?? []).map((entry) => entry.id)),
-    [data]
+    () => new Set((activeData?.entries ?? []).map((entry) => entry.id)),
+    [activeData]
   );
 
   const capabilities = useMemo<Record<string, ModelCapabilities>>(() => {
     const map: Record<string, ModelCapabilities> = {};
-    for (const entry of data?.entries ?? []) {
+    for (const entry of activeData?.entries ?? []) {
       if (entry.capabilities.tools) {
         map[entry.id] = entry.capabilities;
       }
     }
     return map;
-  }, [data]);
+  }, [activeData]);
 
   return { capabilities, catalogModelIds, isLoading, models };
 }

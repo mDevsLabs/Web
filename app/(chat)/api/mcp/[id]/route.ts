@@ -375,7 +375,7 @@ export async function PATCH(
       }
       const entries = Object.entries(input).filter(
         ([, value]) => typeof value === "string" && value.trim().length > 0
-      ) as Array<[string, string]>;
+      ) as [string, string][];
       if (entries.length > 0 && !isEncryptionConfigured()) {
         return errorResponse("service_unavailable", {
           message:

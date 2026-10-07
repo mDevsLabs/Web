@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "BlogPost", "label": "Billets de blog", "description": "G\xE9rez vos billets de blog depuis une interface claire.", "fields": [{ "key": "title", "label": "Titre", "kind": "text", "required": true }, { "key": "author", "label": "Auteur", "kind": "text", "required": true }, { "key": "readTimeMinutes", "label": "Lecture (min)", "kind": "number", "required": true }, { "key": "publishedOn", "label": "Publication", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "scheduled", "published"] }], "titleKey": "title", "settings": [{ "key": "notifyBlogPost", "label": "Notifications : billets de blog", "description": "Recevoir un signal lors des changements." }, { "key": "archiveBlogPost", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section billets de blog." }, { "key": "approveBlogPost", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

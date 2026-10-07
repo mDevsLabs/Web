@@ -1,0 +1,6 @@
+"use client";
+import { createIcon } from "../../create-icon.js";
+const CactusIcon = /* @__PURE__ */ createIcon("CactusIcon", [["path", { "d": "M6 9v1a3 3 0 0 0 3 3h1" }], ["path", { "d": "M18 8v5a3 3 0 0 1 -3 3h-1" }], ["path", { "d": "M10 21v-16a2 2 0 1 1 4 0v16" }], ["path", { "d": "M7 21h10" }]]);
+export {
+  CactusIcon
+};

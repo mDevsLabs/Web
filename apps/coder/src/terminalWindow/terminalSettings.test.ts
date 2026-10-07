@@ -1,0 +1,194 @@
+import { describe, expect, it } from "vitest";
+import {
+  applyTerminalDisplayPreset,
+  buildTerminalProfileLaunchPreview,
+  cloneTerminalProfile,
+  countTerminalProfileEnvEntries,
+  defaultTerminalSettings,
+  getBuiltinTerminalProfiles,
+  normalizeTerminalSettings,
+  resolveTerminalProfile,
+} from "./terminalSettings";
+
+describe("terminalSettings", () => {
+  it("normalizes profile selector list settings", () => {
+    const base = defaultTerminalSettings();
+    expect(base.profileSelectorRecentMax).toBe(3);
+    expect(base.profileSelectorShowBuiltin).toBe(true);
+    expect(base.profileTypeDefaults.local).toEqual({});
+    expect(base.profileTypeDefaults.ssh).toEqual({});
+    const clamped = normalizeTerminalSettings({
+      profileSelectorRecentMax: 999,
+      profileSelectorShowBuiltin: false,
+    });
+    expect(clamped.profileSelectorRecentMax).toBe(50);
+    expect(clamped.profileSelectorShowBuiltin).toBe(false);
+    const withDefaults = normalizeTerminalSettings({
+      profileTypeDefaults: {
+        local: { builtinKey: "y", id: "x", shell: "/bin/zsh" },
+        ssh: { sshPort: 2222 },
+      },
+    });
+    expect(withDefaults.profileTypeDefaults.local.shell).toBe("/bin/zsh");
+    expect(withDefaults.profileTypeDefaults.local.id).toBeUndefined();
+    expect(withDefaults.profileTypeDefaults.ssh.sshPort).toBe(2222);
+  });
+
+  it("migrates legacy right-click settings and clamps new numeric fields", () => {
+    const settings = normalizeTerminalSettings({
+      fontWeight: 937,
+      fontWeightBold: 33,
+      minimumContrastRatio: 30,
+      rightClickPaste: false,
+    });
+
+    expect(settings.rightClickAction).toBe("off");
+    expect(settings.fontWeight).toBe(900);
+    expect(settings.fontWeightBold).toBe(100);
+    expect(settings.minimumContrastRatio).toBe(21);
+  });
+
+  it("builds an ssh launch preview from profile fields", () => {
+    const profile = {
+      ...defaultTerminalSettings().profiles[0],
+      kind: "ssh" as const,
+      sshExtraArgs: "-o ServerAliveInterval=30",
+      sshHost: "example.com",
+      sshIdentityFile: "~/.ssh/id_ed25519",
+      sshIdentityFiles: ["~/.ssh/id_ed25519"],
+      sshPort: 2222,
+      sshRemoteCommand: '"cd /srv/app && ./start.sh"',
+      sshUser: "deploy",
+    };
+
+    expect(buildTerminalProfileLaunchPreview(profile)).toBe(
+      "ssh -tt -o ServerAliveInterval=30 -i ~/.ssh/id_ed25519 -p 2222 deploy@example.com cd /srv/app && ./start.sh"
+    );
+  });
+
+  it("applies display presets without disturbing profile state", () => {
+    const base = defaultTerminalSettings();
+    const next = applyTerminalDisplayPreset(base, "presentation");
+
+    expect(next.fontSize).toBe(15);
+    expect(next.fontWeight).toBe(500);
+    expect(next.fontWeightBold).toBe(800);
+    expect(next.minimumContrastRatio).toBe(7);
+    expect(next.profiles).toEqual(base.profiles);
+    expect(next.defaultProfileId).toBe(base.defaultProfileId);
+  });
+
+  it("counts env entries from multiline profile env text", () => {
+    const profile = {
+      ...defaultTerminalSettings().profiles[0],
+      env: "NODE_ENV=dev\nEMPTY=\nINVALID\nAPI_URL=https://example.com",
+    };
+
+    expect(countTerminalProfileEnvEntries(profile)).toBe(3);
+  });
+
+  it("normalizes the extended terminal interaction settings", () => {
+    const settings = normalizeTerminalSettings({
+      autoOpen: false,
+      bell: "audible",
+      bracketedPaste: false,
+      pasteOnMiddleClick: true,
+      restoreTabs: false,
+      rightClickAction: "menu",
+      trimWhitespaceOnPaste: false,
+      warnOnMultilinePaste: false,
+    });
+
+    expect(settings.rightClickAction).toBe("menu");
+    expect(settings.pasteOnMiddleClick).toBe(true);
+    expect(settings.bracketedPaste).toBe(false);
+    expect(settings.warnOnMultilinePaste).toBe(false);
+    expect(settings.trimWhitespaceOnPaste).toBe(false);
+    expect(settings.bell).toBe("audible");
+    expect(settings.autoOpen).toBe(false);
+    expect(settings.restoreTabs).toBe(false);
+  });
+
+  it("uses Windows-style interaction defaults when the renderer platform is win32", () => {
+    const previousNavigator = Object.getOwnPropertyDescriptor(
+      globalThis,
+      "navigator"
+    );
+    Object.defineProperty(globalThis, "navigator", {
+      configurable: true,
+      value: {
+        platform: "Win32",
+        userAgent: "Windows",
+      },
+    });
+
+    try {
+      const settings = defaultTerminalSettings();
+      expect(settings.rightClickAction).toBe("clipboard");
+      expect(settings.copyOnSelect).toBe(true);
+      expect(settings.pasteOnMiddleClick).toBe(false);
+    } finally {
+      if (previousNavigator) {
+        Object.defineProperty(globalThis, "navigator", previousNavigator);
+      } else {
+        delete (globalThis as { navigator?: unknown }).navigator;
+      }
+    }
+  });
+
+  it("keeps builtin default profile ids when normalizing settings", () => {
+    const builtin = getBuiltinTerminalProfiles()[0];
+    const settings = normalizeTerminalSettings({
+      defaultProfileId: builtin.id,
+    });
+
+    expect(settings.defaultProfileId).toBe(builtin.id);
+  });
+
+  it("keeps dynamically detected builtin default profile ids when normalizing settings", () => {
+    const settings = normalizeTerminalSettings({
+      defaultProfileId: "builtin:wsl-ubuntu-22-04",
+    });
+
+    expect(settings.defaultProfileId).toBe("builtin:wsl-ubuntu-22-04");
+  });
+
+  it("migrates a legacy single ssh identity file into the new list field", () => {
+    const settings = normalizeTerminalSettings({
+      profiles: [
+        {
+          ...defaultTerminalSettings().profiles[0],
+          id: "profile-2",
+          kind: "ssh",
+          sshIdentityFile: "C:/Users/test/.ssh/id_ed25519",
+        },
+      ],
+    });
+
+    expect(settings.profiles[0].sshIdentityFiles).toEqual([
+      "C:/Users/test/.ssh/id_ed25519",
+    ]);
+  });
+
+  it("duplicates builtin profiles into editable custom profiles", () => {
+    const base = defaultTerminalSettings();
+    const builtin = getBuiltinTerminalProfiles().find(
+      (profile) => profile.builtinKey === "sshConnection"
+    );
+    expect(builtin).toBeTruthy();
+
+    const next = cloneTerminalProfile(base.profiles, builtin!);
+    expect(next.id).not.toBe(builtin!.id);
+    expect(next.builtinKey).toBeUndefined();
+    expect(next.kind).toBe("ssh");
+  });
+
+  it("resolves builtin profiles alongside saved custom profiles", () => {
+    const builtin = getBuiltinTerminalProfiles()[0];
+    const resolved = resolveTerminalProfile(
+      defaultTerminalSettings().profiles,
+      builtin.id
+    );
+    expect(resolved?.id).toBe(builtin.id);
+  });
+});

@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Database", "label": "Bases de donn\xE9es", "description": "G\xE9rez vos bases de donn\xE9es depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "engine", "label": "Moteur", "kind": "text", "required": true }, { "key": "sizeGb", "label": "Taille (Go)", "kind": "number", "required": true }, { "key": "connectionCount", "label": "Connexions", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["healthy", "degraded", "offline"] }], "titleKey": "name", "settings": [{ "key": "notifyDatabase", "label": "Notifications : bases de donn\xE9es", "description": "Recevoir un signal lors des changements." }, { "key": "archiveDatabase", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section bases de donn\xE9es." }, { "key": "approveDatabase", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

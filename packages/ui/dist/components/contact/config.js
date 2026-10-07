@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Contact", "label": "Contacts", "description": "G\xE9rez vos contacts depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "email", "label": "E-mail", "kind": "email", "required": true }, { "key": "company", "label": "Entreprise", "kind": "text", "required": true }, { "key": "phone", "label": "T\xE9l\xE9phone", "kind": "text", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["active", "inactive", "archived"] }], "titleKey": "name", "settings": [{ "key": "notifyContact", "label": "Notifications : contacts", "description": "Recevoir un signal lors des changements." }, { "key": "archiveContact", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section contacts." }, { "key": "approveContact", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

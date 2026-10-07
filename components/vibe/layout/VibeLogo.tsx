@@ -17,13 +17,13 @@ export const VibeLogo: React.FC<VibeLogoProps> = ({
 }) => (
   <div className={`flex items-center gap-2.5 ${className}`}>
     <div
-      className="relative flex items-center justify-center rounded-full overflow-hidden shadow-lg shadow-black/40 ring-1 ring-white/20 shrink-0 hover:scale-105 transition-transform"
+      className="relative flex items-center justify-center rounded-full overflow-hidden shadow-lg shadow-black/40 ring-1 ring-white/20 shrink-0 hover:scale-105 transition-transform bg-white"
       style={{ height: size, width: size }}
     >
       <img
         alt="mAI Vibe Logo"
-        className="w-full h-full object-cover"
-        src="/logo.png"
+        className="w-full h-full object-contain p-1"
+        src="/vibe/logo.PNG"
       />
     </div>
     {showText && (

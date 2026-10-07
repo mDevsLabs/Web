@@ -1,0 +1,71 @@
+{
+  "model": "Database",
+  "config": {
+    "name": "Database",
+    "label": "Bases de données",
+    "description": "Gérez vos bases de données depuis une interface claire.",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Nom",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "engine",
+        "label": "Moteur",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "sizeGb",
+        "label": "Taille (Go)",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "connectionCount",
+        "label": "Connexions",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "healthy",
+          "degraded",
+          "offline"
+        ]
+      }
+    ],
+    "titleKey": "name",
+    "settings": [
+      {
+        "key": "notifyDatabase",
+        "label": "Notifications : bases de données",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveDatabase",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section bases de données."
+      },
+      {
+        "key": "approveDatabase",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "database-demo-1",
+    "name": "primary-postgres",
+    "engine": "Moteur démo",
+    "sizeGb": 128,
+    "connectionCount": 128,
+    "status": "healthy"
+  }
+}

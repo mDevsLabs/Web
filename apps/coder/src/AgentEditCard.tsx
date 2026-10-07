@@ -1,0 +1,304 @@
+import {
+  memo,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
+import {
+  buildFileEditPreviewDiff,
+  type FileEditSegment,
+} from "./agentChatSegments";
+import { FileTypeIcon } from "./fileTypeIcons";
+import { useI18n } from "./i18n";
+import { sliceAgentEditPreviewLines } from "./pretextLayout";
+import { useTypewriter } from "./useTypewriter";
+
+type Props = {
+  edit: FileEditSegment;
+  isReverted?: boolean;
+  allowReviewActions?: boolean;
+  onOpenFile?: (
+    relPath: string,
+    revealLine?: number,
+    revealEndLine?: number,
+    options?: { diff?: string | null; allowReviewActions?: boolean }
+  ) => void;
+};
+
+function basename(p: string): string {
+  const i = Math.max(p.lastIndexOf("/"), p.lastIndexOf("\\"));
+  return i >= 0 ? p.slice(i + 1) : p;
+}
+
+type PreviewLine = {
+  kind: "add" | "del";
+  text: string;
+};
+
+const EDIT_PREVIEW_MAX_BODY_PX = 220;
+/** 流式预览：固定尾部行数，避免 pretext 按像素折算时行数忽多忽少导致高度抖动 */
+const STREAMING_PREVIEW_MAX_LINES = 22;
+
+function buildPreviewLines(edit: FileEditSegment): PreviewLine[] {
+  const lines: PreviewLine[] = [];
+  if (edit.oldStr) {
+    for (const line of edit.oldStr.split("\n")) {
+      lines.push({ kind: "del", text: line });
+    }
+  }
+  if (edit.newStr) {
+    for (const line of edit.newStr.split("\n")) {
+      lines.push({ kind: "add", text: line });
+    }
+  }
+  return lines;
+}
+
+export const AgentEditCard = memo(function AgentEditCard({
+  edit,
+  isReverted = false,
+  allowReviewActions = false,
+  onOpenFile,
+}: Props) {
+  const { t } = useI18n();
+  const displayPath = edit.path.trim();
+  const name = basename(displayPath) || t("agent.review.unknownPath");
+  const displayedOldStr = useTypewriter(
+    edit.oldStr ?? "",
+    Boolean(edit.isStreaming && edit.oldStr),
+    {
+      initialDisplayedText: "",
+    }
+  );
+  const displayedNewStr = useTypewriter(
+    edit.newStr ?? "",
+    Boolean(edit.isStreaming && edit.newStr),
+    {
+      initialDisplayedText: "",
+    }
+  );
+  const previewEdit = useMemo(
+    () =>
+      edit.isStreaming
+        ? { ...edit, newStr: displayedNewStr, oldStr: displayedOldStr }
+        : edit,
+    [displayedNewStr, displayedOldStr, edit]
+  );
+  const rawPreviewLines = useMemo(() => buildPreviewLines(edit), [edit]);
+  const previewLines = useMemo(
+    () => buildPreviewLines(previewEdit),
+    [previewEdit]
+  );
+  const [expanded, setExpanded] = useState(false);
+  const previewMeasureRef = useRef<HTMLDivElement>(null);
+  /** 流式时预览区内部滚动，避免整块高度顶动外层消息列表（对齐 Cursor 类产品的稳定布局） */
+  const previewScrollWrapRef = useRef<HTMLDivElement>(null);
+  const [previewInnerWidth, setPreviewInnerWidth] = useState(320);
+  const streamingRef = useRef(false);
+  streamingRef.current = Boolean(edit.isStreaming);
+
+  useLayoutEffect(() => {
+    if (!edit.isStreaming) {
+      return;
+    }
+    const wrap = previewScrollWrapRef.current;
+    if (!wrap) {
+      return;
+    }
+    wrap.scrollTop = wrap.scrollHeight;
+  }, [edit.isStreaming, previewLines]);
+
+  useLayoutEffect(() => {
+    const el = previewMeasureRef.current;
+    if (!el) {
+      return;
+    }
+    const apply = (w: number) => {
+      if (w > 0) {
+        setPreviewInnerWidth(w);
+      }
+    };
+    apply(el.getBoundingClientRect().width);
+    const ro = new ResizeObserver((entries) => {
+      if (streamingRef.current) {
+        return;
+      }
+      const w = entries[0]?.contentRect.width ?? 0;
+      apply(w);
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  /** 流式结束后再用真实宽度刷新一次折叠态，避免完成瞬间宽度仍为过时的 320 */
+  useEffect(() => {
+    if (edit.isStreaming) {
+      return;
+    }
+    const el = previewMeasureRef.current;
+    if (!el) {
+      return;
+    }
+    const w = el.getBoundingClientRect().width;
+    if (w > 0) {
+      setPreviewInnerWidth(w);
+    }
+  }, [edit.isStreaming]);
+
+  const collapsedHead = useMemo(
+    () =>
+      sliceAgentEditPreviewLines(
+        previewLines,
+        previewInnerWidth,
+        EDIT_PREVIEW_MAX_BODY_PX,
+        "head"
+      ),
+    [previewLines, previewInnerWidth]
+  );
+
+  const canExpand =
+    !edit.isStreaming && previewLines.length > collapsedHead.length;
+  // 流式：固定行数尾部，不用 pretext 像素裁切，避免高度忽高忽低；完成后：折叠态头部 / 展开全文。
+  const previewShouldAnimateHeight = canExpand && !edit.isStreaming;
+  const visibleLines = edit.isStreaming
+    ? previewLines.slice(-STREAMING_PREVIEW_MAX_LINES)
+    : previewShouldAnimateHeight || expanded
+      ? previewLines
+      : collapsedHead;
+  /** JSON 尚未解析出 old/new 时预览区为空，仍要占位避免「整块空白像卡住」 */
+  const showStreamingEmptyHint =
+    edit.isStreaming &&
+    visibleLines.length === 0 &&
+    rawPreviewLines.length === 0;
+  const canOpenFile = displayPath.length > 0 && !isReverted;
+  const expandRemainingLines = Math.max(
+    0,
+    previewLines.length - collapsedHead.length
+  );
+  const previewDiff = useMemo(() => buildFileEditPreviewDiff(edit), [edit]);
+
+  return (
+    <div
+      className={`ref-edit-card ${edit.isStreaming ? "ref-edit-card--streaming" : ""} ${isReverted ? "ref-edit-card--reverted" : ""}`}
+    >
+      <button
+        className="ref-edit-card-file"
+        disabled={!canOpenFile}
+        onClick={() => {
+          if (canOpenFile) {
+            onOpenFile?.(displayPath, edit.startLine, undefined, {
+              allowReviewActions,
+              diff: previewDiff || null,
+            });
+          }
+        }}
+        title={isReverted ? t("agent.edit.reverted") : displayPath || name}
+        type="button"
+      >
+        <FileTypeIcon
+          className="ref-edit-card-icon"
+          fileName={name}
+          isDirectory={false}
+        />
+        <span className="ref-edit-card-name">{name}</span>
+        {edit.isStreaming ? (
+          <span
+            className="ref-edit-card-streaming-pulse"
+            title={
+              edit.isNew
+                ? t("agent.activity.writing", { path: name })
+                : t("agent.activity.editing", { path: name })
+            }
+          />
+        ) : (
+          <span className="ref-edit-card-stats">
+            {isReverted ? (
+              <span className="ref-edit-card-status ref-edit-card-status--reverted">
+                {t("agent.edit.reverted")}
+              </span>
+            ) : null}
+            {edit.additions > 0 && (
+              <span className="ref-fc-add">+{edit.additions}</span>
+            )}
+            {edit.deletions > 0 && (
+              <span className="ref-fc-del">-{edit.deletions}</span>
+            )}
+          </span>
+        )}
+      </button>
+      {previewLines.length > 0 ||
+      rawPreviewLines.length > 0 ||
+      edit.isStreaming ? (
+        <div
+          className={`ref-edit-card-preview-wrap ${edit.isStreaming ? "ref-edit-card-preview-wrap--streaming-scroll" : ""}`}
+          ref={previewScrollWrapRef}
+        >
+          <div
+            className={[
+              "ref-edit-card-preview",
+              previewShouldAnimateHeight &&
+                "ref-edit-card-preview--animated-height",
+              previewShouldAnimateHeight &&
+                expanded &&
+                "ref-edit-card-preview--expanded",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+            ref={previewMeasureRef}
+          >
+            {showStreamingEmptyHint ? (
+              <div
+                className="ref-edit-card-streaming-placeholder"
+                role="status"
+              >
+                {t("agent.edit.streamingPlaceholder")}
+              </div>
+            ) : null}
+            {visibleLines.map((line, idx) => (
+              <div
+                className={`ref-edit-card-preview-line ref-edit-card-preview-line--${line.kind}`}
+                key={`${line.kind}-${idx}`}
+              >
+                <span aria-hidden className="ref-edit-card-preview-sign">
+                  {line.kind === "add" ? "+" : "-"}
+                </span>
+                <code className="ref-edit-card-preview-code">
+                  {line.text || " "}
+                </code>
+              </div>
+            ))}
+          </div>
+          {canExpand ? (
+            <button
+              aria-expanded={expanded}
+              className="ref-edit-card-toggle"
+              onClick={() => setExpanded((v) => !v)}
+              type="button"
+            >
+              <svg
+                className={`ref-fc-chevron ${expanded ? "ref-fc-chevron--open" : ""}`}
+                fill="none"
+                height="12"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2.5"
+                viewBox="0 0 24 24"
+                width="12"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+              <span>
+                {expanded
+                  ? t("agent.edit.collapse")
+                  : t("agent.edit.expand", { lines: expandRemainingLines })}
+              </span>
+            </button>
+          ) : null}
+        </div>
+      ) : null}
+    </div>
+  );
+});

@@ -40,19 +40,19 @@ export class ComputerService {
   }
   private token(id: string) {
     return createHmac('sha256', this.config.computerToken!.trim())
-      .update(`opendots-computer:${id}`)
+      .update(`wakies-computer:${id}`)
       .digest('hex');
   }
-  private requireDot(id: string) {
-    if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$/.test(id) || !this.workspace.dot(id))
-      throw new Error('Dot not found.');
+  private requireWakie(id: string) {
+    if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$/.test(id) || !this.workspace.wakie(id))
+      throw new Error('Wakie not found.');
   }
   private allowed(
     id: string,
     kind: 'browser' | 'files' | 'shell' | undefined,
     actor: 'agent' | 'owner',
   ) {
-    this.requireDot(id);
+    this.requireWakie(id);
     if (!this.configured)
       throw new Error('Computer service is not configured.');
     const policy = this.workspace.computers.permissions(id);
@@ -66,7 +66,7 @@ export class ComputerService {
     token: string,
     body: unknown | undefined,
     signal?: AbortSignal,
-    dotId?: string,
+    wakieId?: string,
   ): Promise<unknown> {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), this.deadlineMs);
@@ -79,7 +79,7 @@ export class ComputerService {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
-          ...(dotId ? { 'x-openbot-bot-id': dotId } : {}),
+          ...(wakieId ? { 'x-openbot-bot-id': wakieId } : {}),
         },
         body: body === undefined ? undefined : JSON.stringify(body),
         redirect: 'error',
@@ -143,7 +143,7 @@ export class ComputerService {
   }
   private endpoint(id: string, raw: unknown) {
     const state = stateSchema.parse(raw);
-    const ns = this.config.computerNamespace ?? 'opendots';
+    const ns = this.config.computerNamespace ?? 'wakies';
     if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$/.test(ns))
       throw new Error('Invalid computer namespace.');
     const expected = `${ns}-computer-${id}`;
@@ -171,7 +171,7 @@ export class ComputerService {
       url.hash ||
       (!network && !local)
     )
-      throw new Error('Computer endpoint is not bound to this Dot.');
+      throw new Error('Computer endpoint is not bound to this Wakie.');
     return url.origin;
   }
   private async existing(id: string, signal?: AbortSignal) {
@@ -183,11 +183,11 @@ export class ComputerService {
   private async running(id: string, signal?: AbortSignal) {
     const state = await this.existing(id, signal);
     if (!state || state.status !== 'running')
-      throw new Error('Start this Dot’s computer first.');
+      throw new Error('Start this Wakie’s computer first.');
     return this.endpoint(id, state);
   }
   async status(id: string): Promise<ComputerStatus> {
-    this.requireDot(id);
+    this.requireWakie(id);
     const base = {
       configured: this.configured,
       permissions: this.workspace.computers.permissions(id),
@@ -224,7 +224,7 @@ export class ComputerService {
     actor: 'owner' | 'agent',
     fn: () => Promise<T>,
   ): Promise<T> {
-    this.requireDot(id);
+    this.requireWakie(id);
     const receipt = this.workspace.computers.begin(id, action, actor);
     try {
       const result = await fn();

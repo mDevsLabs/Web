@@ -82,7 +82,7 @@ export interface VibeAppProps {
 export function VibeApp({ sessionToken, children }: VibeAppProps) {
   return (
     <ThemeProvider>
-      <AuthProvider>
+      <AuthProvider initialToken={sessionToken}>
         <VibeSessionBridge sessionToken={sessionToken} />
         <AudioPlayerProvider>
           <VibeShell>{children}</VibeShell>

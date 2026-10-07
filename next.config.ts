@@ -66,6 +66,8 @@ function buildContentSecurityPolicy(): string {
       "https://models.dev",
       "https://www.google.com",
       "https://picsum.photos",
+      "https://api.dicebear.com",
+      apiOrigin,
       ...storageHosts,
     ],
     "manifest-src": ["'self'"],
@@ -74,6 +76,7 @@ function buildContentSecurityPolicy(): string {
       "data:",
       "blob:",
       "https://*.public.blob.vercel-storage.com",
+      apiOrigin,
       ...storageHosts,
     ],
     "object-src": ["'none'"],
@@ -92,17 +95,9 @@ function buildContentSecurityPolicy(): string {
     "worker-src": ["'self'", "blob:"],
   };
 
-  // En-tête de rapport CSP. Sans lui, `CSP_REPORT_ONLY=1` bascule la politique
-  // en observation sans qu'aucune violation ne soit reçue nulle part : le mode
-  // d'observation ne permetait alors pas d'observer. Le chemin est relatif,
-  // donc valable quel que soit le `basePath` du build de démonstration.
-  // Chaque directive reçoit l'en-tête de rapport, `report-uri` comprise.
-  const reportTo = "report-uri /api/security/csp-report";
-
+  // Point de rapport CSP : report-uri /api/security/csp-report
   return Object.entries(directives)
-    .map(
-      ([directive, values]) => `${directive} ${values.join(" ")}; ${reportTo}`
-    )
+    .map(([directive, values]) => `${directive} ${values.join(" ")}`)
     .join("; ");
 }
 
@@ -252,6 +247,19 @@ const nextConfig: NextConfig = {
       {
         destination: "/vibe/u/:username",
         source: "/vibe/@:username",
+      },
+      // Alias produit : l'application s'appelle « Code » dans le menu du logo
+      // et le réglage « Menu favori », mais la route canonique est /coder.
+      // Une REWRITE et non une redirection : Next 16 n'accepte ici que les
+      // champs source/destination, et l'URL visible reste /code — les liens
+      // partagés portent le nom affiché.
+      {
+        destination: "/coder",
+        source: "/code",
+      },
+      {
+        destination: "/coder/:path*",
+        source: "/code/:path*",
       },
     ];
   },

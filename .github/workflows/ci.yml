@@ -34,8 +34,8 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck
 
-      # Le lint global est reintroduit comme gate après réduction de la dette
-      # existante ; typecheck/tests/build couvrent dès maintenant ce lot.
+      - name: Biome et Ultracite
+        run: pnpm check
       - name: Unit tests
         run: pnpm test:unit
 

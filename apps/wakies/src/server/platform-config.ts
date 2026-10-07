@@ -19,7 +19,7 @@ export interface PlatformConfig extends WebConfig {
   slackChannel?: string;
   slackTeam?: string;
   slackUsers: string[];
-  slackDotId?: string;
+  slackWakieId?: string;
   runtimeUrl: string;
   ownerToken?: string;
 }

@@ -6,12 +6,12 @@ import type {
 } from '../shared/computer-types.js';
 export class ComputerStore {
   constructor(private db: DatabaseSync) {
-    db.exec(`CREATE TABLE IF NOT EXISTS computer_permissions(dotId TEXT PRIMARY KEY,value TEXT NOT NULL);
-      CREATE TABLE IF NOT EXISTS computer_audit(id TEXT PRIMARY KEY,dotId TEXT NOT NULL,action TEXT NOT NULL,actor TEXT NOT NULL,outcome TEXT NOT NULL,createdAt INTEGER NOT NULL);`);
+    db.exec(`CREATE TABLE IF NOT EXISTS computer_permissions(wakieId TEXT PRIMARY KEY,value TEXT NOT NULL);
+      CREATE TABLE IF NOT EXISTS computer_audit(id TEXT PRIMARY KEY,wakieId TEXT NOT NULL,action TEXT NOT NULL,actor TEXT NOT NULL,outcome TEXT NOT NULL,createdAt INTEGER NOT NULL);`);
   }
   permissions(id: string): ComputerPermissions {
     const row = this.db
-      .prepare('SELECT value FROM computer_permissions WHERE dotId=?')
+      .prepare('SELECT value FROM computer_permissions WHERE wakieId=?')
       .get(id);
     return row
       ? JSON.parse(String(row.value))
@@ -24,11 +24,11 @@ export class ComputerStore {
       .run(id, JSON.stringify(value));
     return value;
   }
-  begin(dotId: string, action: string, actor: 'owner' | 'agent') {
+  begin(wakieId: string, action: string, actor: 'owner' | 'agent') {
     const id = randomUUID();
     this.db
       .prepare('INSERT INTO computer_audit VALUES (?,?,?,?,?,?)')
-      .run(id, dotId, action, actor, 'pending', Date.now());
+      .run(id, wakieId, action, actor, 'pending', Date.now());
     return id;
   }
   finish(id: string, outcome: 'succeeded' | 'failed') {
@@ -37,14 +37,14 @@ export class ComputerStore {
       .run(outcome, id);
     this.db
       .prepare(
-        `DELETE FROM computer_audit WHERE dotId=(SELECT dotId FROM computer_audit WHERE id=?) AND outcome!='pending' AND id NOT IN (SELECT id FROM computer_audit WHERE dotId=(SELECT dotId FROM computer_audit WHERE id=?) AND outcome!='pending' ORDER BY createdAt DESC,rowid DESC LIMIT 1000)`,
+        `DELETE FROM computer_audit WHERE wakieId=(SELECT wakieId FROM computer_audit WHERE id=?) AND outcome!='pending' AND id NOT IN (SELECT id FROM computer_audit WHERE wakieId=(SELECT wakieId FROM computer_audit WHERE id=?) AND outcome!='pending' ORDER BY createdAt DESC,rowid DESC LIMIT 1000)`,
       )
       .run(id, id);
   }
   audit(id: string): ComputerAudit[] {
     return this.db
       .prepare(
-        'SELECT id,action,actor,outcome,createdAt FROM computer_audit WHERE dotId=? ORDER BY createdAt DESC LIMIT 50',
+        'SELECT id,action,actor,outcome,createdAt FROM computer_audit WHERE wakieId=? ORDER BY createdAt DESC LIMIT 50',
       )
       .all(id) as unknown as ComputerAudit[];
   }

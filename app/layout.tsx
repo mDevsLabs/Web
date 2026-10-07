@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { Suspense } from "react";
 import { PlatformBridge } from "@/components/common/platform-bridge";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -113,7 +114,9 @@ export default function RootLayout({
           enableSystem
         >
           <TooltipProvider>
-            <PlatformBridge />
+            <Suspense fallback={null}>
+              <PlatformBridge />
+            </Suspense>
             {children}
             <Toaster
               position="top-center"

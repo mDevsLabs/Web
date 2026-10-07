@@ -40,7 +40,7 @@ function ArtifactActionButton({
     try {
       await Promise.resolve(action.onClick(actionContext));
     } catch {
-      toast.error("Failed to execute action");
+      toast.error("Impossible d'exécuter l'action");
     } finally {
       setIsLoading(false);
     }

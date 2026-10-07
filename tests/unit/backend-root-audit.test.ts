@@ -67,6 +67,7 @@ const CALLS = [
     [
       `${T("register", "clientIp(c)")}, 5, 15 * 60_000`,
       `${T("login", "clientIp(c)")}, 10, 5 * 60_000`,
+      `${T("verify-code", "userId")}, 10, 15 * 60_000`,
     ],
   ],
   ["vibe-posts-crud.ts", [`${T("post", "userId")}, 10, 5 * 60_000`]],
@@ -97,61 +98,61 @@ function context(pathname: string, headers: Record<string, string> = {}) {
 }
 
 describe("bounded root backend audit", () => {
-  it.each(
-    CALLS
-  )("%s consumes every limiter result and keeps its original key and window", (file, expected) => {
-    const ast = ts.createSourceFile(
-      file,
-      source(file),
-      ts.ScriptTarget.Latest,
-      true
-    );
-    const calls: string[] = [];
-    function visit(node: ts.Node) {
-      if (
-        ts.isCallExpression(node) &&
-        node.expression.getText(ast) === "rateLimit"
-      ) {
-        // `rateLimit` est SYNCHRONE (config.ts) : exiger un `await` était
-        // impossible à satisfaire, et échouait pour une raison sans rapport avec
-        // ce que le test prétend vérifier. Le vrai risque sur un limiteur
-        // synchrone est l'appel « flottant » — `rateLimit(...)` seul en
-        // statement, qui consomme un quota sans jamais bloquer la requête. On
-        // vérifie donc que la valeur de retour sert bien de condition.
-        const parent = node.parent;
-        expect(
-          ts.isBinaryExpression(parent) || ts.isPrefixUnaryExpression(parent),
-          `${file} : appel à rateLimit() dont le retour n'est pas utilisé comme condition`
-        ).toBe(true);
-        calls.push(node.arguments.map((arg) => arg.getText(ast)).join(", "));
+  it.each(CALLS)(
+    "%s consumes every limiter result and keeps its original key and window",
+    (file, expected) => {
+      const ast = ts.createSourceFile(
+        file,
+        source(file),
+        ts.ScriptTarget.Latest,
+        true
+      );
+      const calls: string[] = [];
+      function visit(node: ts.Node) {
+        if (
+          ts.isCallExpression(node) &&
+          node.expression.getText(ast) === "rateLimit"
+        ) {
+          // `rateLimit` est SYNCHRONE (config.ts) : exiger un `await` était
+          // impossible à satisfaire, et échouait pour une raison sans rapport avec
+          // ce que le test prétend vérifier. Le vrai risque sur un limiteur
+          // synchrone est l'appel « flottant » — `rateLimit(...)` seul en
+          // statement, qui consomme un quota sans jamais bloquer la requête. On
+          // vérifie donc que la valeur de retour sert bien de condition.
+          const parent = node.parent;
+          expect(
+            ts.isBinaryExpression(parent) || ts.isPrefixUnaryExpression(parent),
+            `${file} : appel à rateLimit() dont le retour n'est pas utilisé comme condition`
+          ).toBe(true);
+          calls.push(node.arguments.map((arg) => arg.getText(ast)).join(", "));
+        }
+        ts.forEachChild(node, visit);
       }
-      ts.forEachChild(node, visit);
+      visit(ast);
+      expect(calls).toEqual(expected);
     }
-    visit(ast);
-    expect(calls).toEqual(expected);
-  });
+  );
 
-  it.each([
-    60_000,
-    5 * 60_000,
-    15 * 60_000,
-  ])("enforces limits and expires at %i ms", async (windowMs) => {
-    const clock = vi.spyOn(Date, "now").mockReturnValue(1000);
-    try {
-      const { rateLimit } = loadIsolated("config.ts");
-      expect(rateLimit("post:1", 2, windowMs)).toBe(true);
-      expect(rateLimit("post:1", 2, windowMs)).toBe(true);
-      expect(rateLimit("post:1", 2, windowMs)).toBe(false);
-      expect(rateLimit("post:2", 2, windowMs)).toBe(true);
-      expect(rateLimit("ai-text:1", 2, windowMs)).toBe(true);
-      clock.mockReturnValue(1000 + windowMs - 1);
-      expect(rateLimit("post:1", 2, windowMs)).toBe(false);
-      clock.mockReturnValue(1000 + windowMs);
-      expect(rateLimit("post:1", 2, windowMs)).toBe(true);
-    } finally {
-      clock.mockRestore();
+  it.each([60_000, 5 * 60_000, 15 * 60_000])(
+    "enforces limits and expires at %i ms",
+    async (windowMs) => {
+      const clock = vi.spyOn(Date, "now").mockReturnValue(1000);
+      try {
+        const { rateLimit } = loadIsolated("config.ts");
+        expect(rateLimit("post:1", 2, windowMs)).toBe(true);
+        expect(rateLimit("post:1", 2, windowMs)).toBe(true);
+        expect(rateLimit("post:1", 2, windowMs)).toBe(false);
+        expect(rateLimit("post:2", 2, windowMs)).toBe(true);
+        expect(rateLimit("ai-text:1", 2, windowMs)).toBe(true);
+        clock.mockReturnValue(1000 + windowMs - 1);
+        expect(rateLimit("post:1", 2, windowMs)).toBe(false);
+        clock.mockReturnValue(1000 + windowMs);
+        expect(rateLimit("post:1", 2, windowMs)).toBe(true);
+      } finally {
+        clock.mockRestore();
+      }
     }
-  });
+  );
 
   it("separates IPs and viewer-target pairs", async () => {
     const { clientIp, rateLimit } = loadIsolated("config.ts");
@@ -227,71 +228,72 @@ describe("bounded root backend audit", () => {
     expect(sql).not.toHaveBeenCalled();
   });
 
-  it.each([
-    0,
-    10,
-    undefined,
-  ])("preserves valid/default usage %s with stubbed persistence", async (tokens) => {
-    const sql = vi.fn().mockResolvedValue([]);
-    const { registerVibeSettingsRoutes } = loadIsolated("vibe-settings.ts", {
-      "./config.ts": {
-        extractToken: () => "stub-token",
-        getDb: () => sql,
-        getWeekData: () => ({ weekStartStr: "2026-09-14" }),
-        verifyToken: async () => ({ sub: "1" }),
-      },
-      "./vibe-tools.ts": {},
-    });
-    const register = vi.fn();
-    registerVibeSettingsRoutes({}, register);
-    const handler = register.mock.calls.find((call) =>
-      call[1].includes("/usage/log")
-    )?.[2];
-    const c = context("/usage/log");
-    expect(
-      await handler({ ...c, req: { ...c.req, json: async () => ({ tokens }) } })
-    ).toEqual({
-      body: { logged: true, success: true },
-      status: 200,
-    });
-    expect(sql).toHaveBeenCalledTimes(2);
-    expect(sql.mock.calls[0][3]).toBe(tokens ?? 10);
-  });
-
-  it.each([
-    "initial-query",
-    "db-init",
-    "jwt-user-query",
-  ])("returns 503 without next on %s failure", async (failure) => {
-    const sql = vi.fn();
-    if (failure === "jwt-user-query") sql.mockResolvedValueOnce([]);
-    sql.mockRejectedValue(new Error("stub DB failure"));
-    const getDb = () => {
-      if (failure === "db-init") throw new Error("stub init failure");
-      return sql;
-    };
-    const { registerMiddleware } = loadIsolated("api-middleware.ts", {
-      "./config.ts": {
-        extractTierFromApiKey: () => null,
-        getDb,
-        getEnv: () => undefined,
-        verifyToken: async () => ({ sub: "1", tier: "Plus" }),
-      },
-    });
-    const use = vi.fn();
-    registerMiddleware({ use });
-    const middleware = use.mock.calls[0][1];
-    for (const pathname of ["/v1/chat/completions", "/v1/models"]) {
-      const next = vi.fn();
-      const c = context(pathname, { authorization: "Bearer stub-token" });
-      expect(await middleware(c, next)).toEqual({
-        body: { error: "Authentication service unavailable." },
-        status: 503,
+  it.each([0, 10, undefined])(
+    "preserves valid/default usage %s with stubbed persistence",
+    async (tokens) => {
+      const sql = vi.fn().mockResolvedValue([]);
+      const { registerVibeSettingsRoutes } = loadIsolated("vibe-settings.ts", {
+        "./config.ts": {
+          extractToken: () => "stub-token",
+          getDb: () => sql,
+          getWeekData: () => ({ weekStartStr: "2026-09-14" }),
+          verifyToken: async () => ({ sub: "1" }),
+        },
+        "./vibe-tools.ts": {},
       });
-      expect(next).not.toHaveBeenCalled();
-      expect(c.set).not.toHaveBeenCalled();
+      const register = vi.fn();
+      registerVibeSettingsRoutes({}, register);
+      const handler = register.mock.calls.find((call) =>
+        call[1].includes("/usage/log")
+      )?.[2];
+      const c = context("/usage/log");
+      expect(
+        await handler({
+          ...c,
+          req: { ...c.req, json: async () => ({ tokens }) },
+        })
+      ).toEqual({
+        body: { logged: true, success: true },
+        status: 200,
+      });
+      expect(sql).toHaveBeenCalledTimes(2);
+      expect(sql.mock.calls[0][3]).toBe(tokens ?? 10);
     }
-  });
+  );
+
+  it.each(["initial-query", "db-init", "jwt-user-query"])(
+    "returns 503 without next on %s failure",
+    async (failure) => {
+      const sql = vi.fn();
+      if (failure === "jwt-user-query") sql.mockResolvedValueOnce([]);
+      sql.mockRejectedValue(new Error("stub DB failure"));
+      const getDb = () => {
+        if (failure === "db-init") throw new Error("stub init failure");
+        return sql;
+      };
+      const { registerMiddleware } = loadIsolated("api-middleware.ts", {
+        "./config.ts": {
+          extractTierFromApiKey: () => null,
+          getDb,
+          getEnv: () => undefined,
+          verifyToken: async () => ({ sub: "1", tier: "Plus" }),
+        },
+      });
+      const use = vi.fn();
+      registerMiddleware({ use });
+      const middleware = use.mock.calls[0][1];
+      for (const pathname of ["/v1/chat/completions", "/v1/models"]) {
+        const next = vi.fn();
+        const c = context(pathname, { authorization: "Bearer stub-token" });
+        expect(await middleware(c, next)).toEqual({
+          body: { error: "Authentication service unavailable." },
+          status: 503,
+        });
+        expect(next).not.toHaveBeenCalled();
+        expect(c.set).not.toHaveBeenCalled();
+      }
+    }
+  );
 
   it("keeps invalid credentials at 403 and public anonymous access working", async () => {
     const { registerMiddleware } = loadIsolated("api-middleware.ts", {

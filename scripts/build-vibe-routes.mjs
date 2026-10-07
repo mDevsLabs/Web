@@ -79,6 +79,8 @@ const MODELE = (adaptateur, titre) => `/**
 
 import { ${adaptateur} } from "@/components/vibe/pages/vibe-routes";
 
+export const instant = false;
+
 export default function Page() {
   return <${adaptateur} />;
 }

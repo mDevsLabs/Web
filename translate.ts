@@ -13,20 +13,58 @@
  */
 
 import type { Hono } from "npm:hono@4";
-import { extractToken, getDb, getWeekData, rateLimit, verifyToken } from "./config.ts";
+import {
+  extractToken,
+  getDb,
+  getWeekData,
+  rateLimit,
+  verifyToken,
+} from "./config.ts";
 import { createRegisterMulti } from "./vibe-common.ts";
 import { MAIAgentFleet } from "./vibe-mai-fleet.ts";
 
 /** Codes cibles acceptés par DeepL /v2/translate (target_lang). */
 const DEEPL_TARGET_LANGS = new Set([
-  "AR", "BG", "CS", "DA", "DE", "EL", "EN", "ES", "ET", "FI", "FR", "HE",
-  "HU", "ID", "IT", "JA", "KO", "LT", "LV", "NB", "NL", "PL", "PT", "RO",
-  "RU", "SK", "SL", "SV", "TR", "UK", "VI", "ZH",
+  "AR",
+  "BG",
+  "CS",
+  "DA",
+  "DE",
+  "EL",
+  "EN",
+  "ES",
+  "ET",
+  "FI",
+  "FR",
+  "HE",
+  "HU",
+  "ID",
+  "IT",
+  "JA",
+  "KO",
+  "LT",
+  "LV",
+  "NB",
+  "NL",
+  "PL",
+  "PT",
+  "RO",
+  "RU",
+  "SK",
+  "SL",
+  "SV",
+  "TR",
+  "UK",
+  "VI",
+  "ZH",
 ]);
 
 /** Normalise « fr », « en-us », « pt_BR »… vers un code DeepL valide (null si inconnu). */
 function normalizeTargetLang(raw: string): string | null {
-  const upper = String(raw || "").trim().toUpperCase().replace("_", "-");
+  const upper = String(raw || "")
+    .trim()
+    .toUpperCase()
+    .replace("_", "-");
   if (!upper) return null;
   if (/^(EN|PT)-(US|GB|BR|PT)$/.test(upper)) return upper;
   const base = upper.slice(0, 2);
@@ -37,14 +75,16 @@ function normalizeTargetLang(raw: string): string | null {
 
 /** Les clés DeepL gratuites (suffixe « :fx ») utilisent un host dédié. */
 function deeplHost(key: string): string {
-  return key.endsWith(":fx") ? "https://api-free.deepl.com" : "https://api.deepl.com";
+  return key.endsWith(":fx")
+    ? "https://api-free.deepl.com"
+    : "https://api.deepl.com";
 }
 
 /** Clés DeepL dans l'ordre de priorité (DEEPL_API_KEY puis DEEPL_API_KEY_2). */
 function getDeeplKeys(): string[] {
   const read = (name: string) =>
-    (typeof Deno !== "undefined" ? Deno.env?.get(name) : null) ||
-    (typeof process !== "undefined" ? (process.env as any)?.[name] : null) ||
+    (typeof Deno === "undefined" ? null : Deno.env?.get(name)) ||
+    (typeof process === "undefined" ? null : (process.env as any)?.[name]) ||
     "";
   return [read("DEEPL_API_KEY"), read("DEEPL_API_KEY_2")]
     .map((k) => String(k).trim())
@@ -57,17 +97,22 @@ async function callDeepl(
   targetLang: string
 ): Promise<{ text: string; detected: string }> {
   const keys = getDeeplKeys();
-  if (keys.length === 0) throw new Error("Aucune clé DeepL configurée (DEEPL_API_KEY).");
+  if (keys.length === 0)
+    throw new Error("Aucune clé DeepL configurée (DEEPL_API_KEY).");
   const errors: string[] = [];
   for (const key of keys) {
     try {
       const res = await fetch(`${deeplHost(key)}/v2/translate`, {
-        method: "POST",
+        body: JSON.stringify({
+          tag_handling: "html",
+          target_lang: targetLang,
+          text: [text],
+        }),
         headers: {
-          "Authorization": `DeepL-Auth-Key ${key}`,
+          Authorization: `DeepL-Auth-Key ${key}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ text: [text], target_lang: targetLang, tag_handling: "html" }),
+        method: "POST",
         signal: AbortSignal.timeout(15_000),
       });
       if (!res.ok) {
@@ -81,8 +126,8 @@ async function callDeepl(
         continue;
       }
       return {
-        text: String(tr.text),
         detected: String(tr.detected_source_language || "").toUpperCase(),
+        text: String(tr.text),
       };
     } catch (err: any) {
       errors.push(err?.message || "erreur réseau");
@@ -92,15 +137,41 @@ async function callDeepl(
 }
 
 const LANG_LABELS: Record<string, string> = {
-  ar: "arabe", bg: "bulgare", cs: "tchèque", da: "danois", de: "allemand",
-  el: "grec", en: "anglais", es: "espagnol", et: "estonien", fi: "finnois",
-  fr: "français", he: "hébreu", hu: "hongrois", id: "indonésien", it: "italien",
-  ja: "japonais", ko: "coréen", lt: "lituanien", lv: "letton", nb: "norvégien",
-  nl: "néerlandais", pl: "polonais", pt: "portugais", ro: "roumain", ru: "russe",
-  sk: "slovaque", sl: "slovène", sv: "suédois", tr: "turc", uk: "ukrainien",
-  vi: "vietnamien", zh: "chinois",
+  ar: "arabe",
+  bg: "bulgare",
+  cs: "tchèque",
+  da: "danois",
+  de: "allemand",
+  el: "grec",
+  en: "anglais",
+  es: "espagnol",
+  et: "estonien",
+  fi: "finnois",
+  fr: "français",
+  he: "hébreu",
+  hu: "hongrois",
+  id: "indonésien",
+  it: "italien",
+  ja: "japonais",
+  ko: "coréen",
+  lt: "lituanien",
+  lv: "letton",
+  nb: "norvégien",
+  nl: "néerlandais",
+  pl: "polonais",
+  pt: "portugais",
+  ro: "roumain",
+  ru: "russe",
+  sk: "slovaque",
+  sl: "slovène",
+  sv: "suédois",
+  tr: "turc",
+  uk: "ukrainien",
+  vi: "vietnamien",
+  zh: "chinois",
 };
-const langLabel = (code: string) => LANG_LABELS[code.toLowerCase().slice(0, 2)] || code;
+const langLabel = (code: string) =>
+  LANG_LABELS[code.toLowerCase().slice(0, 2)] || code;
 
 // ── Helpers mAI : copies locales de vibe-ai.ts. translate.ts doit rester
 // auto-suffisant — un déploiement partiel peut servir un vibe-ai.ts sans
@@ -118,7 +189,11 @@ function cleanLlmText(raw: string): string {
   let text = stripCodeFences(String(raw || ""));
   text = text.replace(/^User Safety:[^\n]*\n*/gi, "");
   // Guillemets englobants uniquement (pas les guillemets internes)
-  if (text.length >= 2 && ((text.startsWith('"') && text.endsWith('"')) || (text.startsWith("'") && text.endsWith("'")))) {
+  if (
+    text.length >= 2 &&
+    ((text.startsWith('"') && text.endsWith('"')) ||
+      (text.startsWith("'") && text.endsWith("'")))
+  ) {
     text = text.slice(1, -1);
   }
   return text.trim();
@@ -154,7 +229,8 @@ async function debitWeeklyTokens(sql: any, userId: number, chars: number) {
   } catch {}
 }
 
-const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export function registerTranslateRoutes(app: Hono) {
   if ((app as any).__vibe_translate_registered) return;
@@ -199,7 +275,7 @@ export function registerTranslateRoutes(app: Hono) {
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
 
-      const body = await c.req.json().catch(() => ({} as any));
+      const body = await c.req.json().catch(() => ({}) as any);
       const postId = String(body?.post_id || "");
       const commentId = String(body?.comment_id || "");
       // Source exclusive : une publication OU un commentaire
@@ -215,13 +291,19 @@ export function registerTranslateRoutes(app: Hono) {
       let effective = String(body?.target_lang || "").trim();
       const sql = getDb();
       if (!effective) {
-        const srows = await sql`SELECT ui_language FROM user_settings WHERE user_id = ${userId} LIMIT 1`.catch(() => [] as any[]);
+        const srows =
+          await sql`SELECT ui_language FROM user_settings WHERE user_id = ${userId} LIMIT 1`.catch(
+            () => [] as any[]
+          );
         effective = String(srows?.[0]?.ui_language || "").trim();
       }
       const targetLang = normalizeTargetLang(effective) || "FR";
 
       if (!rateLimit(`translate:${userId}`, 30, 60_000)) {
-        return c.json({ error: "Trop de traductions. Patientez un instant." }, 429);
+        return c.json(
+          { error: "Trop de traductions. Patientez un instant." },
+          429
+        );
       }
 
       await ensureTranslateTables().catch(() => {});
@@ -233,17 +315,19 @@ export function registerTranslateRoutes(app: Hono) {
           : await sql`SELECT translation, detected_language, provider FROM comment_translations WHERE comment_id = ${commentId}::uuid AND target_lang = ${targetLang} LIMIT 1`;
         if (cachedRows.length > 0) {
           const det = String(cachedRows[0].detected_language || "");
-          const isSame = Boolean(det) && det.slice(0, 2).toUpperCase() === targetLang.slice(0, 2);
+          const isSame =
+            Boolean(det) &&
+            det.slice(0, 2).toUpperCase() === targetLang.slice(0, 2);
           // Si la traduction en cache est une vraie traduction (pas identique au texte source)
           if (!isSame && cachedRows[0].translation) {
             return c.json({
-              success: true,
-              translation: cachedRows[0].translation,
+              cached: true,
               detected_language: det,
-              target_lang: targetLang,
               provider: cachedRows[0].provider || "mai",
               same_language: false,
-              cached: true,
+              success: true,
+              target_lang: targetLang,
+              translation: cachedRows[0].translation,
             });
           }
         }
@@ -254,7 +338,12 @@ export function registerTranslateRoutes(app: Hono) {
         ? await sql`SELECT content FROM posts WHERE id = ${postId}::uuid LIMIT 1`
         : await sql`SELECT content FROM comments WHERE id = ${commentId}::uuid LIMIT 1`;
       if (rows.length === 0) {
-        return c.json({ error: postId ? "Publication introuvable." : "Réponse introuvable." }, 404);
+        return c.json(
+          {
+            error: postId ? "Publication introuvable." : "Réponse introuvable.",
+          },
+          404
+        );
       }
       const content = String(rows[0].content || "").trim();
       if (!content) return c.json({ error: "Contenu vide." }, 400);
@@ -295,14 +384,24 @@ export function registerTranslateRoutes(app: Hono) {
           'Réponds UNIQUEMENT par un objet JSON strict : {"detected_language": "<nom de la langue d\'origine en français>", "target_language": "<code ou nom de la langue cible>", "translation": "<traduction>"} — sans guillemets markdown ni commentaire.';
         const raw = await MAIAgentFleet.callOpenRouter(userId, system, content);
         if (!raw) {
-          return c.json({ error: "Traduction indisponible (DeepL et mAI injoignables)." }, 502);
+          return c.json(
+            { error: "Traduction indisponible (DeepL et mAI injoignables)." },
+            502
+          );
         }
         await debitWeeklyTokens(sql, userId, content.length + raw.length);
         const parsed = extractJsonObject(raw);
-        if (parsed && typeof parsed.translation === "string" && parsed.translation.trim()) {
+        if (
+          parsed &&
+          typeof parsed.translation === "string" &&
+          parsed.translation.trim()
+        ) {
           detected = String(parsed.detected_language || "").trim();
           translation = cleanLlmText(parsed.translation);
-          if (parsed.target_language && String(parsed.target_language).toLowerCase().includes("anglais")) {
+          if (
+            parsed.target_language &&
+            String(parsed.target_language).toLowerCase().includes("anglais")
+          ) {
             effectiveTargetLang = "EN-US";
           }
         } else {
@@ -333,13 +432,13 @@ export function registerTranslateRoutes(app: Hono) {
       }
 
       return c.json({
-        success: true,
-        translation,
+        cached: false,
         detected_language: detected,
-        target_lang: effectiveTargetLang,
         provider,
         same_language: sameLanguage,
-        cached: false,
+        success: true,
+        target_lang: effectiveTargetLang,
+        translation,
       });
     } catch (err: any) {
       console.error("[translate] Translate error:", err);
@@ -347,5 +446,9 @@ export function registerTranslateRoutes(app: Hono) {
     }
   };
 
-  registerMulti("post", ["/api/vibe/translate", "/vibe/translate", "/v1/translate", "/translate"], handleTranslate);
+  registerMulti(
+    "post",
+    ["/api/vibe/translate", "/vibe/translate", "/v1/translate", "/translate"],
+    handleTranslate
+  );
 }

@@ -7,6 +7,7 @@ import { jwtVerify, SignJWT } from "npm:jose";
 // ─────────────────────────────────────────────
 export const JWT_EXPIRY = "7d";
 export const BCRYPT_ROUNDS = 12;
+const MAX_VERIFICATION_ATTEMPTS = 5;
 
 // ─────────────────────────────────────────────
 // Rate limiting en mémoire (par clé : ip ou user)
@@ -225,12 +226,22 @@ export function getDb() {
 }
 
 export function getJwtSecret(): Uint8Array {
-  const secret =
+  const denoSecret =
     (typeof Deno === "undefined"
       ? null
-      : Deno.env.get("MAI_JWT_SECRET") || Deno.env.get("JWT_SECRET")) ||
-    "mai_super_secret_jwt_key_2026_default_vibe";
-  return new TextEncoder().encode(secret);
+      : Deno.env.get("MAI_JWT_SECRET") || Deno.env.get("JWT_SECRET"));
+  const nodeSecret =
+    typeof process === "undefined"
+      ? null
+      : process.env.MAI_JWT_SECRET || process.env.JWT_SECRET;
+  const secret = denoSecret || nodeSecret || "";
+  const encoded = new TextEncoder().encode(secret);
+  if (encoded.byteLength < 32) {
+    throw new Error(
+      "MAI_JWT_SECRET doit être configuré avec au moins 32 octets."
+    );
+  }
+  return encoded;
 }
 
 // ─────────────────────────────────────────────
@@ -274,7 +285,9 @@ export async function verifyToken(
     if (e?.message === "Token révoqué.") throw e;
   }
 
-  const { payload } = await jwtVerify(token, getJwtSecret());
+  const { payload } = await jwtVerify(token, getJwtSecret(), {
+    requiredClaims: ["exp"],
+  });
   return payload as Record<string, unknown>;
 }
 
@@ -441,9 +454,23 @@ export async function initSQLite() {
       code TEXT,
       action TEXT,
       expires_at DATETIME,
+      attempts INTEGER NOT NULL DEFAULT 0,
       PRIMARY KEY (email, action)
     );
   `);
+  // Migration additive pour les bases SQLite déjà créées.
+  const verificationCodeColumns = await sqlite.execute(
+    "PRAGMA table_info(verification_codes)"
+  );
+  if (
+    !verificationCodeColumns.rows.some(
+      (row: any) => String(row[1]) === "attempts"
+    )
+  ) {
+    await sqlite.execute(
+      "ALTER TABLE verification_codes ADD COLUMN attempts INTEGER NOT NULL DEFAULT 0"
+    );
+  }
   await sqlite.execute(`
     CREATE TABLE IF NOT EXISTS token_blacklist (
       token TEXT PRIMARY KEY,
@@ -476,7 +503,7 @@ export async function generateVerificationCode(
 
   await sqlite.execute({
     args: [email, code, action, expiresAt],
-    sql: "INSERT OR REPLACE INTO verification_codes (email, code, action, expires_at) VALUES (?, ?, ?, ?)",
+    sql: "INSERT OR REPLACE INTO verification_codes (email, code, action, expires_at, attempts) VALUES (?, ?, ?, ?, 0)",
   });
 
   return code;
@@ -487,35 +514,37 @@ export async function verifyVerificationCode(
   code: string,
   action: string
 ): Promise<boolean> {
-  // Assure que les tables SQLite existent
   await initSQLite();
 
-  const result = await sqlite.execute({
-    args: [email, action],
-    sql: "SELECT code, expires_at FROM verification_codes WHERE email = ? AND action = ?",
+  const now = new Date().toISOString();
+  const normalizedCode = String(code).trim();
+  // La consommation et le compteur sont atomiques pour résister aux essais concurrents.
+  const accepted = await sqlite.execute({
+    args: [email, normalizedCode, action, now, MAX_VERIFICATION_ATTEMPTS],
+    sql: "DELETE FROM verification_codes WHERE email = ? AND code = ? AND action = ? AND expires_at >= ? AND attempts < ? RETURNING email",
   });
-
-  if (result.rows.length === 0) {
-    return false;
-  }
-
-  const storedCode = result.rows[0][0] as string;
-  const expiresAt = new Date(result.rows[0][1] as string);
-
-  if (expiresAt < new Date()) {
-    await sqlite.execute({
-      args: [email, action],
-      sql: "DELETE FROM verification_codes WHERE email = ? AND action = ?",
-    });
-    return false;
-  }
-
-  if (storedCode === code) {
-    await sqlite.execute({
-      args: [email, action],
-      sql: "DELETE FROM verification_codes WHERE email = ? AND action = ?",
-    });
+  if (accepted.rows.length > 0) {
     return true;
+  }
+
+  const failedAttempt = await sqlite.execute({
+    args: [email, action, normalizedCode, now, MAX_VERIFICATION_ATTEMPTS],
+    sql: "UPDATE verification_codes SET attempts = attempts + 1 WHERE email = ? AND action = ? AND code != ? AND expires_at >= ? AND attempts < ? RETURNING attempts",
+  });
+  if (
+    failedAttempt.rows.length > 0 &&
+    Number(failedAttempt.rows[0][0]) >= MAX_VERIFICATION_ATTEMPTS
+  ) {
+    await sqlite.execute({
+      args: [email, action],
+      sql: "DELETE FROM verification_codes WHERE email = ? AND action = ?",
+    });
+  } else if (failedAttempt.rows.length === 0) {
+    // Nettoie un code expiré ou déjà verrouillé.
+    await sqlite.execute({
+      args: [email, action, now, MAX_VERIFICATION_ATTEMPTS],
+      sql: "DELETE FROM verification_codes WHERE email = ? AND action = ? AND (expires_at < ? OR attempts >= ?)",
+    });
   }
 
   return false;

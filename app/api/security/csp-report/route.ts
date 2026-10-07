@@ -62,9 +62,15 @@ export async function POST(request: Request) {
       continue;
     }
     const report = entry as Record<string, unknown>;
-    const directive = String(report.effectiveDirective ?? "unknown");
-    const blocked = String(report.blockedURI ?? "unknown");
-    const document = String(report["document-uri"] ?? "unknown");
+    const directive = String(
+      report["effective-directive"] ?? report.effectiveDirective ?? "unknown"
+    );
+    const blocked = String(
+      report["blocked-uri"] ?? report.blockedURI ?? "unknown"
+    );
+    const document = String(
+      report["document-uri"] ?? report.documentURI ?? "unknown"
+    );
 
     const key = `${directive}|${blocked}`;
     const known = state.seen.get(key);

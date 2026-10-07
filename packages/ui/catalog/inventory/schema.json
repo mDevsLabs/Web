@@ -1,0 +1,71 @@
+{
+  "model": "Inventory",
+  "config": {
+    "name": "Inventory",
+    "label": "Inventaire",
+    "description": "Gérez vos inventaire depuis une interface claire.",
+    "fields": [
+      {
+        "key": "itemName",
+        "label": "Article",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "location",
+        "label": "Emplacement",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "quantity",
+        "label": "Quantité",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "reorderAt",
+        "label": "Seuil de commande",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "available",
+          "low",
+          "out-of-stock"
+        ]
+      }
+    ],
+    "titleKey": "itemName",
+    "settings": [
+      {
+        "key": "notifyInventory",
+        "label": "Notifications : inventaire",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveInventory",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section inventaire."
+      },
+      {
+        "key": "approveInventory",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "inventory-demo-1",
+    "itemName": "Clavier Studio",
+    "location": "Emplacement démo",
+    "quantity": 128,
+    "reorderAt": 128,
+    "status": "available"
+  }
+}

@@ -17,7 +17,7 @@ export function SpaceWorkspace({
   onSchedule,
   onThread,
   onSettings,
-  onCreateDot,
+  onCreateWakie,
 }: {
   space: Space;
   pageId?: string;
@@ -29,7 +29,7 @@ export function SpaceWorkspace({
   onSchedule: (threadId: string) => void;
   onThread: (threadId: string) => void;
   onSettings: () => void;
-  onCreateDot: () => void;
+  onCreateWakie: () => void;
 }) {
   const [pages, setPages] = useState<Page[]>([]);
   const [error, setError] = useState('');
@@ -126,7 +126,7 @@ export function SpaceWorkspace({
             onSchedule={onSchedule}
             onThread={onThread}
             onSettings={onSettings}
-            onCreateDot={onCreateDot}
+            onCreateWakie={onCreateWakie}
           />
         </div>
       ) : (

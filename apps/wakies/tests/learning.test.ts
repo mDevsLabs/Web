@@ -17,8 +17,8 @@ afterEach(() =>
 function fixture() {
   const ws = new WorkspaceStore(':memory:', 'owner');
   cleanup.push(() => ws.close());
-  const dot = ws.dots()[0];
-  return { ws, dot };
+  const wakie = ws.wakies()[0];
+  return { ws, wakie };
 }
 const input = (threadId: string): RunAgentInput => ({
   threadId,
@@ -30,26 +30,26 @@ const input = (threadId: string): RunAgentInput => ({
   forwardedProps: {},
 });
 
-it('freezes container assignments, including disabled conversations, when a Dot changes', () => {
-  const { ws, dot } = fixture();
-  ws.bindThread('disabled', dot.id, 'Before learning');
-  ws.updateDot(dot.id, {
-    ...dot,
+it('freezes container assignments, including disabled conversations, when a Wakie changes', () => {
+  const { ws, wakie } = fixture();
+  ws.bindThread('disabled', wakie.id, 'Before learning');
+  ws.updateWakie(wakie.id, {
+    ...wakie,
     learningContainerId: 'research',
     skillDeliveryEnabled: true,
   });
-  ws.bindThread('research', dot.id, 'Research');
-  ws.updateDot(dot.id, {
-    ...dot,
+  ws.bindThread('research', wakie.id, 'Research');
+  ws.updateWakie(wakie.id, {
+    ...wakie,
     learningContainerId: 'writing',
     skillDeliveryEnabled: true,
   });
-  ws.bindThread('writing', dot.id, 'Writing');
+  ws.bindThread('writing', wakie.id, 'Writing');
   expect(ws.requireThread('disabled').learningContainerId).toBeNull();
   expect(ws.requireThread('research').learningContainerId).toBe('research');
   expect(ws.requireThread('writing').learningContainerId).toBe('writing');
-  ws.updateDot(dot.id, {
-    ...dot,
+  ws.updateWakie(wakie.id, {
+    ...wakie,
     learningContainerId: null,
     skillDeliveryEnabled: false,
   });
@@ -57,64 +57,64 @@ it('freezes container assignments, including disabled conversations, when a Dot 
 });
 
 it('migrates legacy threads without enrolling them and persists configuration across restart', () => {
-  const dir = mkdtempSync(join(tmpdir(), 'opendots-learning-'));
+  const dir = mkdtempSync(join(tmpdir(), 'wakies-learning-'));
   cleanup.push(() => rmSync(dir, { recursive: true, force: true }));
   const path = join(dir, 'workspace.sqlite');
   const legacy = new DatabaseSync(path);
-  legacy.exec(`CREATE TABLE thread_bindings(id TEXT PRIMARY KEY, dotId TEXT NOT NULL, ownerId TEXT NOT NULL, title TEXT NOT NULL, createdAt INTEGER NOT NULL);
-    INSERT INTO thread_bindings VALUES ('old', 'dot', 'owner', 'Existing', 1);`);
+  legacy.exec(`CREATE TABLE thread_bindings(id TEXT PRIMARY KEY, wakieId TEXT NOT NULL, ownerId TEXT NOT NULL, title TEXT NOT NULL, createdAt INTEGER NOT NULL);
+    INSERT INTO thread_bindings VALUES ('old', 'wakie', 'owner', 'Existing', 1);`);
   legacy.close();
   const ws = new WorkspaceStore(path, 'owner');
-  const dot = ws.dots()[0];
-  ws.updateDot(dot.id, {
-    ...dot,
+  const wakie = ws.wakies()[0];
+  ws.updateWakie(wakie.id, {
+    ...wakie,
     learningContainerId: 'research',
     skillDeliveryEnabled: true,
   });
-  ws.bindThread('new', dot.id, 'New');
+  ws.bindThread('new', wakie.id, 'New');
   ws.close();
   const reopened = new WorkspaceStore(path, 'owner');
   cleanup.push(() => reopened.close());
   expect(reopened.requireThread('old').learningContainerId).toBeNull();
   expect(reopened.requireThread('new').learningContainerId).toBe('research');
-  expect(reopened.dot(dot.id)).toMatchObject({
+  expect(reopened.wakie(wakie.id)).toMatchObject({
     learningContainerId: 'research',
     skillDeliveryEnabled: true,
   });
 });
 
-it('selects only owned web threads and binds the configured channel Dot before its first run', () => {
-  const { ws, dot } = fixture();
-  ws.updateDot(dot.id, {
-    ...dot,
+it('selects only owned web threads and binds the configured channel Wakie before its first run', () => {
+  const { ws, wakie } = fixture();
+  ws.updateWakie(wakie.id, {
+    ...wakie,
     learningContainerId: 'research',
     skillDeliveryEnabled: true,
   });
-  ws.bindThread('web', dot.id, 'Web');
-  const select = learningSelector(ws, dot.id);
+  ws.bindThread('web', wakie.id, 'Web');
+  const select = learningSelector(ws, wakie.id);
   const user = { id: 'owner', name: 'Owner' };
   expect(
-    select({ surface: 'web', user, agentId: dot.id, input: input('web') }),
+    select({ surface: 'web', user, agentId: wakie.id, input: input('web') }),
   ).toBe('research');
   expect(() =>
-    select({ surface: 'web', user, agentId: dot.id, input: input('unknown') }),
+    select({ surface: 'web', user, agentId: wakie.id, input: input('unknown') }),
   ).toThrow();
   expect(
     select({
       surface: 'channel',
       user,
-      agentId: dot.id,
+      agentId: wakie.id,
       input: input('slack'),
     }),
   ).toBe('research');
-  expect(ws.requireThread('slack', dot.id).learningContainerId).toBe(
+  expect(ws.requireThread('slack', wakie.id).learningContainerId).toBe(
     'research',
   );
   expect(() =>
     select({
       surface: 'channel',
       user: null,
-      agentId: dot.id,
+      agentId: wakie.id,
       input: input('unauthorized'),
     }),
   ).toThrow();
@@ -122,17 +122,17 @@ it('selects only owned web threads and binds the configured channel Dot before i
     select({
       surface: 'web',
       user: { id: 'other', name: 'Other' },
-      agentId: dot.id,
+      agentId: wakie.id,
       input: input('web'),
     }),
   ).toThrow();
-  const other = ws.createDot(dot.spaceId, 'Other', 'Other role', true, true);
+  const other = ws.createWakie(wakie.spaceId, 'Other', 'Other role', true, true);
   expect(() =>
     select({
       surface: 'channel',
       user,
       agentId: other.id,
-      input: input('wrong-dot'),
+      input: input('wrong-wakie'),
     }),
   ).toThrow();
   expect(() =>
@@ -142,7 +142,7 @@ it('selects only owned web threads and binds the configured channel Dot before i
 });
 
 it('rejects invalid container IDs and delivery without a container', () => {
-  const { ws, dot } = fixture();
+  const { ws, wakie } = fixture();
   for (const learningContainerId of [
     '',
     'Upper',
@@ -152,15 +152,15 @@ it('rejects invalid container IDs and delivery without a container', () => {
     'a'.repeat(65),
   ]) {
     expect(() =>
-      ws.updateDot(dot.id, { ...dot, learningContainerId }),
+      ws.updateWakie(wakie.id, { ...wakie, learningContainerId }),
     ).toThrow();
   }
   expect(() =>
-    ws.updateDot(dot.id, {
-      ...dot,
+    ws.updateWakie(wakie.id, {
+      ...wakie,
       learningContainerId: null,
       skillDeliveryEnabled: true,
     }),
   ).toThrow();
-  expect(ws.dot(dot.id)?.learningContainerId).toBeNull();
+  expect(ws.wakie(wakie.id)?.learningContainerId).toBeNull();
 });

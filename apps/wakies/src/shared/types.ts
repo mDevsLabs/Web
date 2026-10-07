@@ -69,7 +69,7 @@ export interface Space {
   description: string;
   createdAt: number;
 }
-export interface Dot {
+export interface Wakie {
   id: string;
   /** Default destination for saved pages, not ownership. */
   spaceId: string;
@@ -84,7 +84,7 @@ export interface Dot {
 }
 export interface Conversation {
   id: string;
-  dotId: string;
+  wakieId: string;
   ownerId: string;
   title: string;
   createdAt: number;
@@ -111,7 +111,7 @@ export interface SetupStatus {
 }
 export interface WorkspaceState {
   spaces: Space[];
-  dots: Dot[];
+  wakies: Wakie[];
   conversations: Conversation[];
   setup: SetupStatus;
   calls: CallReceipt[];

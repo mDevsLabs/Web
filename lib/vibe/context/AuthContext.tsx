@@ -31,18 +31,25 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  const [token, setToken] = useState<string | null>(() =>
-    ApiService.getToken()
-  );
+export const AuthProvider: React.FC<{
+  children: React.ReactNode;
+  initialToken?: string | null;
+}> = ({ children, initialToken }) => {
+  const [token, setToken] = useState<string | null>(() => {
+    if (initialToken !== undefined) {
+      return initialToken;
+    }
+    return ApiService.getToken();
+  });
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [quotas, setQuotas] = useState<MAIQuotas | null>(null);
-  const [isLoadingSession, setIsLoadingSession] = useState(() =>
-    Boolean(ApiService.getToken())
-  );
+  const [isLoadingSession, setIsLoadingSession] = useState(() => {
+    if (initialToken !== undefined) {
+      return Boolean(initialToken);
+    }
+    return Boolean(ApiService.getToken());
+  });
   const [showOnboarding, setShowOnboarding] = useState(false);
 
   /** Après session établie : ouvre l'onboarding si jamais terminé (getSettings séparé). */
@@ -163,6 +170,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   // jeton passent par `loginWithToken`, qui rappelle `fetchSession` lui-même.
   // biome-ignore lint/correctness/useExhaustiveDependencies: chargement de session au montage, par contrat.
   useEffect(() => {
+    if (initialToken && ApiService.getToken() !== initialToken) {
+      ApiService.setToken(initialToken);
+    }
     fetchSession().catch(() => {});
   }, []);
 

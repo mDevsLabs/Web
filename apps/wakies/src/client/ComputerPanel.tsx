@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { Dot } from '../shared/types';
+import type { Wakie } from '../shared/types';
 import type { ComputerAction, ComputerStatus } from '../shared/computer-types';
 import { api } from './api';
 
@@ -11,7 +11,7 @@ type Screen = {
   capturedAt: number;
 };
 
-export function ComputerPanel({ dot }: { dot: Dot }) {
+export function ComputerPanel({ wakie }: { wakie: Wakie }) {
   const [tab, setTab] = useState<'Browser' | 'Files' | 'Terminal' | 'Activity'>(
     'Browser',
   );
@@ -36,7 +36,7 @@ export function ComputerPanel({ dot }: { dot: Dot }) {
     running: false,
   });
   const controller = useRef<AbortController | null>(null);
-  const base = `/dots/${encodeURIComponent(dot.id)}/computer`;
+  const base = `/wakies/${encodeURIComponent(wakie.id)}/computer`;
   const refresh = useCallback(async () => {
     const revision = lifecycle.current.revision;
     const current = () =>
@@ -162,7 +162,7 @@ export function ComputerPanel({ dot }: { dot: Dot }) {
   return (
     <section
       className="computer-panel"
-      aria-label={`${dot.name}'s computer`}
+      aria-label={`${wakie.name}'s computer`}
       aria-busy={busy}
     >
       {error && (
@@ -184,19 +184,19 @@ export function ComputerPanel({ dot }: { dot: Dot }) {
               </button>
             )}
             <span>
-              {busy ? 'Working…' : human ? 'You have control' : 'Dot control'}
+              {busy ? 'Working…' : human ? 'You have control' : 'Wakie control'}
             </span>
           </div>
           {!status.configured && (
             <div className="computer-setup">
               <h3>Connect a computer service</h3>
               <p>
-                This Dot does not have a computer service configured. Configure
+                This Wakie does not have a computer service configured. Configure
                 the server’s computer service URL and token, then restart. Each
-                Dot gets its own browser and workspace.
+                Wakie gets its own browser and workspace.
               </p>
               <a
-                href="https://github.com/CopilotKit/OpenDots/blob/main/docs/COMPUTERS.md"
+                href="https://github.com/CopilotKit/Wakies/blob/main/docs/COMPUTERS.md"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -303,7 +303,7 @@ export function ComputerPanel({ dot }: { dot: Dot }) {
                     >
                       <img
                         src={`data:image/png;base64,${screen.base64}`}
-                        alt={`Live browser screen for ${dot.name}`}
+                        alt={`Live browser screen for ${wakie.name}`}
                       />
                     </button>
                     <small>
@@ -321,7 +321,7 @@ export function ComputerPanel({ dot }: { dot: Dot }) {
                 )}
                 <div className="computer-control-pill">
                   <span>
-                    {human ? 'You have control' : `${dot.name} has control`}
+                    {human ? 'You have control' : `${wakie.name} has control`}
                   </span>
                   <button
                     disabled={
@@ -460,7 +460,7 @@ export function ComputerPanel({ dot }: { dot: Dot }) {
                 hidden={tab !== 'Files'}
               >
                 <summary>Workspace files</summary>
-                <p>Paths are relative to this Dot’s persistent workspace.</p>
+                <p>Paths are relative to this Wakie’s persistent workspace.</p>
                 <label>
                   Path
                   <input
@@ -539,7 +539,7 @@ export function ComputerPanel({ dot }: { dot: Dot }) {
               >
                 <summary>Terminal</summary>
                 <p>
-                  Runs inside this Dot’s computer. Commands stop after 30
+                  Runs inside this Wakie’s computer. Commands stop after 30
                   seconds.
                 </p>
                 <form
@@ -614,7 +614,7 @@ export function ComputerPanel({ dot }: { dot: Dot }) {
             >
               <summary>Computer permissions</summary>
               <p>
-                Choose what {dot.name} and the computer controls can access.
+                Choose what {wakie.name} and the computer controls can access.
               </p>
               {(['enabled', 'browser', 'files', 'shell'] as const).map(
                 (permission) => (
@@ -663,7 +663,7 @@ export function ComputerPanel({ dot }: { dot: Dot }) {
               </button>
             </div>
             <p className="computer-hint">
-              Stopping retains this Dot’s workspace files. Browser sessions may
+              Stopping retains this Wakie’s workspace files. Browser sessions may
               require signing in again.
             </p>
           </details>

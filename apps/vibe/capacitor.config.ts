@@ -11,7 +11,7 @@ const config: CapacitorConfig = {
   webDir: 'dist',
   server: {
     // L'app native charge l'URL de production (API https://mai.val.run utilisée par le SPA)
-    url: process.env.VIBE_WEB_URL || 'https://mai-vibe.vercel.app',
+    url: process.env.VIBE_WEB_URL || 'https://mai-vibe.vercel.app/vibe',
     cleartext: false,
     androidScheme: 'https',
   },

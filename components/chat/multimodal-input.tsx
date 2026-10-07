@@ -760,7 +760,7 @@ function PureMultimodalInput({
     if (status === "ready" || status === "error") {
       submitForm();
     } else {
-      toast.error("Please wait for the model to finish its response!");
+      toast.error("Attendez que le modèle termine sa réponse !");
     }
   }, [
     attachments.length,

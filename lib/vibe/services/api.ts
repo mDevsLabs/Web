@@ -194,10 +194,9 @@ interface CacheEntry {
   ts: number;
 }
 
-/* biome-ignore lint/complexity/noStaticOnlyClass: espace de noms du client API — quatre états privés (cache, requêtes en vol, générations) sont encapsulés par la classe et partagés par 146 appels statiques ; un objet littéral les remonterait au niveau du module sans bénéfice. */
 export class ApiService {
-  private static cache = new Map<string, CacheEntry>();
-  private static inflight = new Map<string, Promise<any>>();
+  private static readonly cache = new Map<string, CacheEntry>();
+  private static readonly inflight = new Map<string, Promise<any>>();
   // Une réponse déjà partie en vol ne doit pas repeupler le cache après une purge.
   private static cacheGeneration = 0;
   private static sessionGeneration = 0;

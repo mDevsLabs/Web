@@ -44,7 +44,7 @@ export class Pages {
       'CREATE TABLE IF NOT EXISTS page_reviews(threadId TEXT NOT NULL, toolCallId TEXT NOT NULL, pageId TEXT NOT NULL, spaceId TEXT NOT NULL, PRIMARY KEY(threadId,toolCallId))',
     );
     db.exec(`CREATE TABLE IF NOT EXISTS pages(id TEXT PRIMARY KEY, spaceId TEXT NOT NULL, parentId TEXT, title TEXT NOT NULL, content TEXT NOT NULL, revision INTEGER NOT NULL, createdAt INTEGER NOT NULL, updatedAt INTEGER NOT NULL, sourceThreadId TEXT);
- CREATE TABLE IF NOT EXISTS page_threads(pageId TEXT NOT NULL,dotId TEXT NOT NULL,threadId TEXT NOT NULL UNIQUE,ready INTEGER NOT NULL DEFAULT 0, leaseUntil INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(pageId,dotId));`);
+ CREATE TABLE IF NOT EXISTS page_threads(pageId TEXT NOT NULL,wakieId TEXT NOT NULL,threadId TEXT NOT NULL UNIQUE,ready INTEGER NOT NULL DEFAULT 0, leaseUntil INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(pageId,wakieId));`);
     if (
       !db
         .prepare('PRAGMA table_info(page_threads)')
@@ -198,41 +198,41 @@ export class Pages {
       throw error;
     }
   }
-  thread(pageId: string, dotId: string) {
+  thread(pageId: string, wakieId: string) {
     const row = this.db
       .prepare(
-        'SELECT threadId,ready FROM page_threads WHERE pageId=? AND dotId=?',
+        'SELECT threadId,ready FROM page_threads WHERE pageId=? AND wakieId=?',
       )
-      .get(pageId, dotId);
+      .get(pageId, wakieId);
     return row
       ? { threadId: String(row.threadId), ready: !!row.ready }
       : undefined;
   }
-  reserveThread(pageId: string, dotId: string, threadId: string) {
+  reserveThread(pageId: string, wakieId: string, threadId: string) {
     this.db
       .prepare(
-        'INSERT OR IGNORE INTO page_threads(pageId,dotId,threadId,ready,leaseUntil) VALUES(?,?,?,0,0)',
+        'INSERT OR IGNORE INTO page_threads(pageId,wakieId,threadId,ready,leaseUntil) VALUES(?,?,?,0,0)',
       )
-      .run(pageId, dotId, threadId);
+      .run(pageId, wakieId, threadId);
     return (
       this.db
         .prepare(
-          'UPDATE page_threads SET leaseUntil=? WHERE pageId=? AND dotId=? AND ready=0 AND leaseUntil<=?',
+          'UPDATE page_threads SET leaseUntil=? WHERE pageId=? AND wakieId=? AND ready=0 AND leaseUntil<=?',
         )
-        .run(Date.now() + 60000, pageId, dotId, Date.now()).changes > 0
+        .run(Date.now() + 60000, pageId, wakieId, Date.now()).changes > 0
     );
   }
-  finishThread(pageId: string, dotId: string) {
+  finishThread(pageId: string, wakieId: string) {
     this.db
-      .prepare('UPDATE page_threads SET ready=1 WHERE pageId=? AND dotId=?')
-      .run(pageId, dotId);
+      .prepare('UPDATE page_threads SET ready=1 WHERE pageId=? AND wakieId=?')
+      .run(pageId, wakieId);
   }
-  releaseThread(pageId: string, dotId: string) {
+  releaseThread(pageId: string, wakieId: string) {
     this.db
       .prepare(
-        'UPDATE page_threads SET leaseUntil=0 WHERE pageId=? AND dotId=? AND ready=0',
+        'UPDATE page_threads SET leaseUntil=0 WHERE pageId=? AND wakieId=? AND ready=0',
       )
-      .run(pageId, dotId);
+      .run(pageId, wakieId);
   }
   forThread(threadId: string, spaceId?: string): Page | undefined {
     const row = this.db

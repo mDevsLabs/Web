@@ -1,0 +1,71 @@
+{
+  "model": "LeaveRequest",
+  "config": {
+    "name": "LeaveRequest",
+    "label": "Congés",
+    "description": "Gérez vos congés depuis une interface claire.",
+    "fields": [
+      {
+        "key": "employee",
+        "label": "Collaborateur",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "leaveType",
+        "label": "Type",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "startDate",
+        "label": "Début",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "endDate",
+        "label": "Fin",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "pending",
+          "approved",
+          "rejected"
+        ]
+      }
+    ],
+    "titleKey": "employee",
+    "settings": [
+      {
+        "key": "notifyLeaveRequest",
+        "label": "Notifications : congés",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveLeaveRequest",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section congés."
+      },
+      {
+        "key": "approveLeaveRequest",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "leave-request-demo-1",
+    "employee": "Marie Dupont",
+    "leaveType": "Type démo",
+    "startDate": "2026-10-04",
+    "endDate": "2026-10-04",
+    "status": "pending"
+  }
+}

@@ -26,7 +26,7 @@ import {
 import type {
   Conversation,
   Detail,
-  Dot,
+  Wakie,
   Result,
   State,
   WorkspaceState,
@@ -43,7 +43,7 @@ import { WorkspaceDialog, type Dialog } from './WorkspaceDialog';
 export function App() {
   const [state, setState] = useState<State>();
   const [workspace, setWorkspace] = useState<WorkspaceState>();
-  const [selectedDot, setSelectedDot] = useState('');
+  const [selectedWakie, setSelectedWakie] = useState('');
   const [selectedThread, setSelectedThread] = useState<string>();
   const [view, rawSetView] = useState<'chat' | 'tasks' | 'memories' | 'space'>(
     'chat',
@@ -114,7 +114,7 @@ export function App() {
       setState(s);
       setWorkspace(w);
       setNeedsAuth(false);
-      setSelectedDot((previous) => previous || w.dots[0]?.id || '');
+      setSelectedWakie((previous) => previous || w.wakies[0]?.id || '');
     } catch (e) {
       if (e instanceof ApiError && e.status === 401) setNeedsAuth(true);
       else
@@ -160,29 +160,29 @@ export function App() {
       return false;
     }
   };
-  const dot =
-    workspace?.dots.find((item) => item.id === selectedDot) ??
-    workspace?.dots[0];
+  const wakie =
+    workspace?.wakies.find((item) => item.id === selectedWakie) ??
+    workspace?.wakies[0];
   const thread = workspace?.conversations.find(
-    (item) => item.id === selectedThread && item.dotId === dot?.id,
+    (item) => item.id === selectedThread && item.wakieId === wakie?.id,
   );
   const configured = !!workspace && workspace.setup.missing.length === 0;
-  const chooseDot = (next: Dot) => {
-    setSelectedDot(next.id);
+  const chooseWakie = (next: Wakie) => {
+    setSelectedWakie(next.id);
     setSelectedThread(
-      workspace?.conversations.find((item) => item.dotId === next.id)?.id,
+      workspace?.conversations.find((item) => item.wakieId === next.id)?.id,
     );
     setView('chat');
     setMobile(false);
     setPendingPrompt(undefined);
   };
   const newConversation = async (text?: string) => {
-    if (!dot || !configured || busy) return;
+    if (!wakie || !configured || busy) return;
     setBusy(true);
     setError('');
     try {
       const next = await api<Conversation>('/conversations', 'POST', {
-        dotId: dot.id,
+        wakieId: wakie.id,
         title: text?.slice(0, 80) || 'A new thought',
       });
       await refresh();
@@ -232,7 +232,7 @@ export function App() {
             onChange={(e) => setAuth(e.target.value)}
             required
           />
-          <button className="primary">Unlock OpenDots</button>
+          <button className="primary">Unlock Wakies</button>
         </form>
         {error && (
           <p className="chat-error" role="alert">
@@ -242,11 +242,11 @@ export function App() {
         <p className="muted">The token stays in this tab’s session storage.</p>
       </main>
     );
-  if (!state || !workspace || !dot)
+  if (!state || !workspace || !wakie)
     return (
       <main className="unlock">
         <Mascot state="working" />
-        <h1>Finding your dots…</h1>
+        <h1>Finding your wakies…</h1>
         {error && (
           <>
             <p className="chat-error">{error}</p>
@@ -260,13 +260,17 @@ export function App() {
       <nav className="icon-rail" aria-label="Workspace navigation">
         <button
           className="rail-brand"
-          aria-label="OpenDots home"
+          aria-label="Wakies home"
           onClick={() => {
             setView('chat');
             setSelectedThread(undefined);
           }}
         >
-          o<span>·</span>
+          <img
+            src="/wakies/logo.PNG"
+            alt="Wakies"
+            style={{ width: 22, height: 22, objectFit: 'contain' }}
+          />
         </button>
         <button
           aria-label={navCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
@@ -327,13 +331,12 @@ export function App() {
             setSelectedThread(undefined);
           }}
         >
-          <span className="dotted-logo">
-            <i />
-            <i />
-            <i />
-            <i />
-          </span>
-          OpenDots<span className="wordmark-dot">•</span>
+          <img
+            src="/wakies/logo.PNG"
+            alt="Wakies"
+            style={{ width: 22, height: 22, objectFit: 'contain', flexShrink: 0 }}
+          />
+          Wakies<span className="wordmark-dot">•</span>
         </button>
         <button
           className="new-chat nav-item"
@@ -344,35 +347,35 @@ export function App() {
           <span>New chat</span>
         </button>
         <div className="spaces-heading nav-label">
-          DOTS
+          WAKIES
           <button
             className="icon-button"
-            aria-label="Create Dot"
+            aria-label="Create Wakie"
             onClick={() =>
-              setDialog({ type: 'dot', spaceId: workspace.spaces[0].id })
+              setDialog({ type: 'wakie', spaceId: workspace.spaces[0].id })
             }
           >
             <Plus size={14} />
           </button>
         </div>
-        <nav className="dots-nav" aria-label="Dots">
-          {workspace.dots.map((item) => (
-            <div className="dot-nav-row" key={item.id}>
+        <nav className="wakies-nav" aria-label="Wakies">
+          {workspace.wakies.map((item) => (
+            <div className="wakie-nav-row" key={item.id}>
               <button
-                className={`dot-nav ${dot.id === item.id && view === 'chat' ? 'active' : ''}`}
+                className={`wakie-nav ${wakie.id === item.id && view === 'chat' ? 'active' : ''}`}
                 aria-current={
-                  dot.id === item.id && view === 'chat' ? 'page' : undefined
+                  wakie.id === item.id && view === 'chat' ? 'page' : undefined
                 }
-                onClick={() => chooseDot(item)}
+                onClick={() => chooseWakie(item)}
               >
                 <Mascot identity={item.id} name={item.name} small decorative />
                 <span>{item.name}</span>
               </button>
               <button
-                className="icon-button dot-settings"
+                className="icon-button wakie-settings"
                 aria-label={`Edit ${item.name} settings`}
                 onClick={() =>
-                  setDialog({ type: 'dot', dot: item, spaceId: item.spaceId })
+                  setDialog({ type: 'wakie', wakie: item, spaceId: item.spaceId })
                 }
               >
                 <MoreHorizontal size={15} />
@@ -403,15 +406,15 @@ export function App() {
         </nav>
         {configured ? (
           <ThreadList
-            dotId={dot.id}
-            dots={workspace.dots}
+            wakieId={wakie.id}
+            wakies={workspace.wakies}
             local={workspace.conversations}
             selected={view === 'chat' ? selectedThread : undefined}
             onSelect={(id) => {
               const conversation = workspace.conversations.find(
                 (item) => item.id === id,
               );
-              if (conversation) setSelectedDot(conversation.dotId);
+              if (conversation) setSelectedWakie(conversation.wakieId);
               setSelectedThread(id);
               setView('chat');
               setMobile(false);
@@ -455,7 +458,7 @@ export function App() {
           </button>
           <a
             className="nav-item"
-            href="https://github.com/CopilotKit/OpenDots"
+            href="https://github.com/CopilotKit/Wakies"
             target="_blank"
             rel="noreferrer"
           >
@@ -481,12 +484,12 @@ export function App() {
             <span>
               {view === 'space'
                 ? workspace.spaces.find((space) => space.id === spaceId)?.name
-                : 'Dots'}
+                : 'Wakies'}
             </span>
             <span>/</span>
             <strong>
               {view === 'chat'
-                ? dot.name
+                ? wakie.name
                 : view === 'tasks'
                   ? 'Activity'
                   : view === 'space'
@@ -501,7 +504,7 @@ export function App() {
             <button
               className="pause-button"
               aria-label={
-                state.settings.paused ? 'Resume all Dots' : 'Pause all Dots'
+                state.settings.paused ? 'Resume all Wakies' : 'Pause all Wakies'
               }
               onClick={() =>
                 void mutate('/settings', 'PATCH', {
@@ -536,7 +539,7 @@ export function App() {
         )}
         {state.settings.paused && (
           <div className="notice">
-            All Dots are paused. Active compute stops and scheduled tasks wait.
+            All Wakies are paused. Active compute stops and scheduled tasks wait.
           </div>
         )}
         {view === 'space' ? (
@@ -551,7 +554,7 @@ export function App() {
             paused={state.settings.paused}
             onPage={(id) => openPage(spaceId, id)}
             onSettings={() => setDialog({ type: 'settings' })}
-            onCreateDot={() => setDialog({ type: 'dot', spaceId })}
+            onCreateWakie={() => setDialog({ type: 'wakie', spaceId })}
             onDirty={setDirtyPage}
             onRefresh={refresh}
             onSchedule={(threadId) => setDialog({ type: 'schedule', threadId })}
@@ -559,7 +562,7 @@ export function App() {
               const target = workspace.conversations.find((t) => t.id === id);
               if (target) {
                 setView('chat');
-                setSelectedDot(target.dotId);
+                setSelectedWakie(target.wakieId);
                 setSelectedThread(id);
               }
             }}
@@ -571,7 +574,7 @@ export function App() {
                 <Chat
                   key={thread.id}
                   thread={thread}
-                  dot={dot}
+                  wakie={wakie}
                   initialPrompt={pendingPrompt}
                   onConsumed={() => setPendingPrompt(undefined)}
                   voiceReady={workspace.setup.voice}
@@ -589,16 +592,16 @@ export function App() {
                 <div className="new-conversation">
                   <div className="empty-chat-persona">
                     <Mascot
-                      identity={dot.id}
-                      name={dot.name}
+                      identity={wakie.id}
+                      name={wakie.name}
                       state={state.settings.paused ? 'paused' : 'idle'}
                     />
-                    <h2>{dot.name}</h2>
-                    <p>{dot.instructions}</p>
+                    <h2>{wakie.name}</h2>
+                    <p>{wakie.instructions}</p>
                     <button
                       className="text-button"
                       onClick={() =>
-                        setDialog({ type: 'dot', dot, spaceId: dot.spaceId })
+                        setDialog({ type: 'wakie', wakie, spaceId: wakie.spaceId })
                       }
                     >
                       Edit specialist <MoreHorizontal size={14} />
@@ -610,14 +613,14 @@ export function App() {
                         <Settings2 size={20} />
                       </span>
                       <div>
-                        <strong>Connect your Dot</strong>
+                        <strong>Connect your Wakie</strong>
                         <p>
                           Connect your model and conversation service in
-                          Settings to start chatting. Your Spaces and Dot
+                          Settings to start chatting. Your Spaces and Wakie
                           preferences are ready to use.
                         </p>
                         <a
-                          href="https://github.com/CopilotKit/OpenDots/blob/main/docs/SETUP.md"
+                          href="https://github.com/CopilotKit/Wakies/blob/main/docs/SETUP.md"
                           target="_blank"
                           rel="noreferrer"
                         >
@@ -637,7 +640,7 @@ export function App() {
                       aria-label="Start a conversation"
                       placeholder={
                         configured
-                          ? `Message ${dot.name}…`
+                          ? `Message ${wakie.name}…`
                           : 'Your first conversation starts after setup.'
                       }
                       value={prompt}
@@ -692,11 +695,11 @@ export function App() {
             </div>
             {pane && (
               <ResultPane
-                key={dot.id}
-                dots={workspace.dots}
-                defaultDotId={dot.id}
+                key={wakie.id}
+                wakies={workspace.wakies}
+                defaultWakieId={wakie.id}
                 latest={capture}
-                dotState="idle"
+                wakieState="idle"
                 onClose={() => setPane(false)}
               />
             )}
@@ -713,7 +716,7 @@ export function App() {
                 </h1>
                 <p>
                   {view === 'memories'
-                    ? 'Preferences you choose to share with your Dots.'
+                    ? 'Preferences you choose to share with your Wakies.'
                     : 'Scheduled turns run on the server in their original conversation.'}
                 </p>
               </div>
@@ -737,7 +740,7 @@ export function App() {
                       <div>
                         <small>
                           {state.settings.memoryAllowed
-                            ? 'Available to permitted Dots'
+                            ? 'Available to permitted Wakies'
                             : 'Memory use disabled'}
                         </small>
                         <button
@@ -863,16 +866,16 @@ export function App() {
         {pane && view !== 'chat' && (
           <div className="computer-overlay">
             <ResultPane
-              key={view === 'space' ? spaceId : dot.id}
-              dots={workspace.dots}
-              defaultDotId={
+              key={view === 'space' ? spaceId : wakie.id}
+              wakies={workspace.wakies}
+              defaultWakieId={
                 view === 'space'
-                  ? (workspace.dots.find((candidate) =>
+                  ? (workspace.wakies.find((candidate) =>
                       candidate.spaceIds.includes(spaceId),
-                    )?.id ?? dot.id)
-                  : dot.id
+                    )?.id ?? wakie.id)
+                  : wakie.id
               }
-              dotState="idle"
+              wakieState="idle"
               onClose={() => setPane(false)}
             />
           </div>

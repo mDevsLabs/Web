@@ -3,7 +3,7 @@ import { expect, it } from 'vitest';
 import { TaskActions } from '../src/client/TaskActions';
 import type { Settings, Task } from '../src/shared/types';
 const settings: Settings = {
-  name: 'Dot',
+  name: 'Wakie',
   paused: false,
   researchAllowed: true,
   memoryAllowed: true,

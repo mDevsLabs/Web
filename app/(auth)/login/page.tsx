@@ -14,6 +14,8 @@ import { toast } from "sonner";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { resolveFavoriteAppAfterLogin } from "@/hooks/use-favorite-app";
+import { favoriteAppToPath } from "@/lib/apps/catalog";
 import { getReturnToFromSearch } from "@/lib/auth/return-to";
 import { TERMS_URL } from "@/lib/constants";
 import type { AuthResponse } from "../actions";
@@ -31,9 +33,14 @@ export default function LoginPage() {
   const [otpCode, setOtpCode] = useState("");
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [returnTo, setReturnTo] = useState("/");
+  // Une destination explicite (redirectUrl/next) prime sur le menu favori :
+  // on ne redirige vers l'application préférée QUE pour une entrée neutre.
+  const [hasExplicitReturnTo, setHasExplicitReturnTo] = useState(false);
 
   useEffect(() => {
-    setReturnTo(getReturnToFromSearch(window.location.search));
+    const target = getReturnToFromSearch(window.location.search);
+    setReturnTo(target);
+    setHasExplicitReturnTo(target !== "/");
   }, []);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -119,7 +126,18 @@ export default function LoginPage() {
     }
 
     toast.success("Connexion réussie ! Bienvenue sur mAI Web");
-    router.push(returnTo);
+    if (hasExplicitReturnTo) {
+      router.push(returnTo);
+      router.refresh();
+      return;
+    }
+    // Entrée neutre : ouvrir l'application favorite (réglage « Menu favori »).
+    // Le cache local répond instantanément ; resolveFavoriteAppAfterLogin
+    // rattrape par la base si le cache est absent ou périmé.
+    const favoritePath = favoriteAppToPath(
+      await resolveFavoriteAppAfterLogin()
+    );
+    router.push(favoritePath);
     router.refresh();
   };
 

@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "CommunityMember", "label": "Membres de communaut\xE9", "description": "G\xE9rez vos membres de communaut\xE9 depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "handle", "label": "Pseudonyme", "kind": "text", "required": true }, { "key": "postCount", "label": "Publications", "kind": "number", "required": true }, { "key": "joinedOn", "label": "Inscription", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["active", "moderator", "suspended"] }], "titleKey": "name", "settings": [{ "key": "notifyCommunityMember", "label": "Notifications : membres de communaut\xE9", "description": "Recevoir un signal lors des changements." }, { "key": "archiveCommunityMember", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section membres de communaut\xE9." }, { "key": "approveCommunityMember", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

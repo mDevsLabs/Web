@@ -9,6 +9,8 @@
 
 import { VibeSettingsRoute } from "@/components/vibe/pages/vibe-routes";
 
+export const instant = false;
+
 export default function Page() {
   return <VibeSettingsRoute />;
 }

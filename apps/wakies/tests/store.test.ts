@@ -6,7 +6,7 @@ import { Store } from '../src/server/store.js';
 
 const resources: { store: Store; dir: string }[] = [];
 function fixture() {
-  const dir = mkdtempSync(join(tmpdir(), 'opendots-'));
+  const dir = mkdtempSync(join(tmpdir(), 'wakies-'));
   const path = join(dir, 'test.sqlite');
   const store = new Store(path);
   resources.push({ store, dir });

@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "ApiEndpoint", "label": "Points d\u2019API", "description": "G\xE9rez vos points d\u2019api depuis une interface claire.", "fields": [{ "key": "path", "label": "Chemin", "kind": "text", "required": true }, { "key": "method", "label": "M\xE9thode", "kind": "text", "required": true }, { "key": "latencyMs", "label": "Latence (ms)", "kind": "number", "required": true }, { "key": "requestCount", "label": "Requ\xEAtes", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["healthy", "degraded", "disabled"] }], "titleKey": "path", "settings": [{ "key": "notifyApiEndpoint", "label": "Notifications : points d\u2019api", "description": "Recevoir un signal lors des changements." }, { "key": "archiveApiEndpoint", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section points d\u2019api." }, { "key": "approveApiEndpoint", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

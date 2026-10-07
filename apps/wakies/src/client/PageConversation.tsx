@@ -13,7 +13,7 @@ export function PageConversation({
   onRefresh,
   onSchedule,
   onSettings,
-  onCreateDot,
+  onCreateWakie,
   onOpenChange,
 }: {
   page: Page;
@@ -23,21 +23,21 @@ export function PageConversation({
   onRefresh: () => void;
   onSchedule: (id: string) => void;
   onSettings: () => void;
-  onCreateDot: () => void;
+  onCreateWakie: () => void;
   onOpenChange: (value: boolean) => void;
 }) {
-  const dots = workspace.dots.filter((dot) =>
-    dot.spaceIds.includes(page.spaceId),
+  const wakies = workspace.wakies.filter((wakie) =>
+    wakie.spaceIds.includes(page.spaceId),
   );
-  const [dotId, setDotId] = useState('');
-  const dot = dots.find((dot) => dot.id === dotId) ?? dots[0];
+  const [wakieId, setWakieId] = useState('');
+  const wakie = wakies.find((wakie) => wakie.id === wakieId) ?? wakies[0];
   const [thread, setThread] = useState<Conversation>();
   const [draft, setDraft] = useState('');
   const [pending, setPending] = useState<string>();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const requests = useRef(new PageChatRequests());
-  const scope = `${page.id}:${dot?.id ?? ''}`;
+  const scope = `${page.id}:${wakie?.id ?? ''}`;
   requests.current.select(scope);
   useEffect(() => {
     setThread(undefined);
@@ -50,7 +50,7 @@ export function PageConversation({
     return () => current.select('');
   }, []);
   const open = async () => {
-    if (!dot || busy) return;
+    if (!wakie || busy) return;
     setBusy(true);
     setError('');
     const prompt = draft.trim();
@@ -64,7 +64,7 @@ export function PageConversation({
         return api<Conversation>(
           `/spaces/${page.spaceId}/pages/${page.id}/conversation`,
           'POST',
-          { dotId: dot.id },
+          { wakieId: wakie.id },
         );
       },
       {
@@ -83,7 +83,7 @@ export function PageConversation({
       },
     );
   };
-  if (thread && dot && thread.dotId === dot.id)
+  if (thread && wakie && thread.wakieId === wakie.id)
     return (
       <aside className="document-chat-panel" aria-label="Page conversation">
         <div className="document-chat-heading">
@@ -104,7 +104,7 @@ export function PageConversation({
         <Chat
           key={thread.id}
           thread={thread}
-          dot={dot}
+          wakie={wakie}
           initialPrompt={pending}
           onConsumed={() => setPending(undefined)}
           voiceReady={workspace.setup.voice}
@@ -115,11 +115,11 @@ export function PageConversation({
         />
       </aside>
     );
-  if (!dot)
+  if (!wakie)
     return (
       <div className="document-chat-setup">
         <span>Add a specialist to work with this Space.</span>
-        <button onClick={onCreateDot}>Create specialist</button>
+        <button onClick={onCreateWakie}>Create specialist</button>
       </div>
     );
   if (workspace.setup.missing.length)
@@ -153,10 +153,10 @@ export function PageConversation({
             <select
               aria-label="Page specialist"
               disabled={busy}
-              value={dot.id}
-              onChange={(e) => setDotId(e.target.value)}
+              value={wakie.id}
+              onChange={(e) => setWakieId(e.target.value)}
             >
-              {dots.map((item) => (
+              {wakies.map((item) => (
                 <option key={item.id} value={item.id}>
                   {item.name}
                 </option>

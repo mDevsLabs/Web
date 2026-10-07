@@ -1,0 +1,70 @@
+{
+  "model": "Lesson",
+  "config": {
+    "name": "Lesson",
+    "label": "Leçons",
+    "description": "Gérez vos leçons depuis une interface claire.",
+    "fields": [
+      {
+        "key": "title",
+        "label": "Titre",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "course",
+        "label": "Formation",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "durationMinutes",
+        "label": "Durée (min)",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "position",
+        "label": "Ordre",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "draft",
+          "published"
+        ]
+      }
+    ],
+    "titleKey": "title",
+    "settings": [
+      {
+        "key": "notifyLesson",
+        "label": "Notifications : leçons",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveLesson",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section leçons."
+      },
+      {
+        "key": "approveLesson",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "lesson-demo-1",
+    "title": "Comprendre les tokens",
+    "course": "Formation démo",
+    "durationMinutes": 128,
+    "position": 128,
+    "status": "draft"
+  }
+}

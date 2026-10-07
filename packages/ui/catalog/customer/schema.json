@@ -1,0 +1,71 @@
+{
+  "model": "Customer",
+  "config": {
+    "name": "Customer",
+    "label": "Clients",
+    "description": "Gérez vos clients depuis une interface claire.",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Nom",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "email",
+        "label": "E-mail",
+        "kind": "email",
+        "required": true
+      },
+      {
+        "key": "lifetimeValue",
+        "label": "Valeur cumulée",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "joinedOn",
+        "label": "Inscription",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "active",
+          "new",
+          "inactive"
+        ]
+      }
+    ],
+    "titleKey": "name",
+    "settings": [
+      {
+        "key": "notifyCustomer",
+        "label": "Notifications : clients",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveCustomer",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section clients."
+      },
+      {
+        "key": "approveCustomer",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "customer-demo-1",
+    "name": "Maison Horizon",
+    "email": "bonjour@example.com",
+    "lifetimeValue": 128,
+    "joinedOn": "2026-10-04",
+    "status": "active"
+  }
+}

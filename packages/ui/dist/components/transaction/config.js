@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Transaction", "label": "Transactions", "description": "G\xE9rez vos transactions depuis une interface claire.", "fields": [{ "key": "reference", "label": "R\xE9f\xE9rence", "kind": "text", "required": true }, { "key": "description", "label": "Description", "kind": "text", "required": true }, { "key": "amount", "label": "Montant", "kind": "number", "required": true }, { "key": "postedOn", "label": "Date", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["pending", "posted", "reversed"] }], "titleKey": "reference", "settings": [{ "key": "notifyTransaction", "label": "Notifications : transactions", "description": "Recevoir un signal lors des changements." }, { "key": "archiveTransaction", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section transactions." }, { "key": "approveTransaction", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

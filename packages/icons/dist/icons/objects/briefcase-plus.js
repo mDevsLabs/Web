@@ -1,0 +1,6 @@
+"use client";
+import { createIcon } from "../../create-icon.js";
+const BriefcasePlusIcon = /* @__PURE__ */ createIcon("BriefcasePlusIcon", [["path", { "d": "M13.354 20H4a2 2 0 01-2-2V8a2 2 0 012-2h16a2 2 0 012 2v3.354" }], ["path", { "d": "M16 11.354V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" }], ["path", { "d": "M16 17h6" }], ["path", { "d": "M19 14v6" }]]);
+export {
+  BriefcasePlusIcon
+};

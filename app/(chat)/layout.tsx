@@ -62,6 +62,14 @@ async function SidebarShell({ children }: { children: React.ReactNode }) {
   // déconnexion ni accès à /login.
   const hasDeadSession =
     !user && Boolean(cookieStore.get(MAI_SESSION_COOKIE)?.value);
+  const rawModelCookie = cookieStore.get("chat-model")?.value;
+  const initialModelId = rawModelCookie
+    ? decodeURIComponent(rawModelCookie)
+    : undefined;
+  const rawAgentCookie = cookieStore.get("agent-id")?.value;
+  const initialAgentId = rawAgentCookie
+    ? decodeURIComponent(rawAgentCookie)
+    : undefined;
 
   return (
     <SidebarProvider defaultOpen={!isCollapsed}>
@@ -75,10 +83,13 @@ async function SidebarShell({ children }: { children: React.ReactNode }) {
         haut. Voir hooks/use-shared-draft.tsx.
       */}
       <SharedDraftProvider>
-        <ActiveChatProvider>
+        <ActiveChatProvider
+          initialAgentId={initialAgentId}
+          initialModelId={initialModelId}
+        >
           <AgentModeProvider>
             <AppSidebar hasDeadSession={hasDeadSession} user={user} />
-            <SidebarInset className="flex flex-col">
+            <SidebarInset className="flex flex-col has-[.site-root]:bg-white has-[.site-root]:[transform:none]">
               <Suspense fallback={<div className="flex h-dvh" />}>
                 <ChatShell />
               </Suspense>

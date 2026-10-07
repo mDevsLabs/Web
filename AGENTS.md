@@ -39,10 +39,14 @@ Conséquences pratiques :
   appellent le backend via `MAI_API_URL` (`lib/constants.ts`, défaut
   `https://mai.val.run`) et normalisent les erreurs amont avec
   `lib/api/error-response.ts`.
-- Le détail du backend est documenté dans **`docs/BACKEND_API.md`** (les 42
+- Le détail du backend est documenté dans **`docs/1-web/BACKEND_API.md`** (les 42
   fichiers du graphe d'imports transitif de `main.ts`).
-- Le détail de l'Agent est dans **`docs/AGENT.md`**.
-- L'API publique pour agents externes est dans **`docs/AI_AGENTS_API.md`**.
+- Le détail de l'Agent est dans **`docs/1-web/AGENT_ENGINE.md`**.
+- L'API publique pour agents externes est dans **`docs/1-web/AI_AGENTS_API.md`**.
+- Les règles spécifiques par domaine sont réparties dans **`docs/1-web/AGENTS.md`**,
+  **`docs/2-vibe/AGENTS.md`**, **`docs/3-wakies/AGENTS.md`**, **`docs/4-coder/AGENTS.md`**
+  et **`docs/5-site/AGENTS.md`**.
+
 
 ## 2. Stack
 
@@ -86,11 +90,14 @@ lib/
 ├── agent/ (35 f.) ai/ auth/ chat/ commands/ db/ editor/ mcp/ plans/ plugins/
 ├── projects/ prompts/ security/ skill-templates/ notifications/
 ├── vibe/                   services, hooks et contextes de Vibe (api, theme)
+├── wakies/                 données, quotas et utilitaires de /wakies
 └── constants.ts errors.ts ratelimit.ts types.ts utils.ts
 hooks/                      21 hooks, dont use-tier, use-notifications
 tests/                      unit/ e2e/ pages/ prompts/
-docs/                       AGENT.md, BACKEND_API.md, AI_AGENTS_API.md, VIBE.md
+docs/                       README.md, 1-web/, 2-vibe/, 3-wakies/, 4-coder/
 apps/vibe/                  source Vite d'origine (référence, hors build Next)
+
+apps/wakies/                idem (app Vite + serveur Hono)
 ```
 
 Alias : `@/*` → racine du dépôt (d'où `app/…`, `lib/…`).
@@ -238,6 +245,7 @@ pnpm db:studio      # drizzle-kit studio
 
 node scripts/build-vibe-css.mjs      # régénère components/vibe/vibe.css
 node scripts/build-vibe-routes.mjs   # régénère les 15 pages app/(chat)/vibe/**
+node scripts/build-wakies-css.mjs    # régénère les 2 feuilles de Wakies
 ```
 
 > ⚠️ `pnpm fix` formate **tout** le dépôt, y compris `*.sql` et `*.md`. En cas
@@ -248,7 +256,8 @@ node scripts/build-vibe-routes.mjs   # régénère les 15 pages app/(chat)/vibe/
 
 Vibe, l'application sociale, est **portée** depuis `apps/vibe/` (app Vite
 conservée en référence, non compilée par Next) sous `/vibe`. Guide complet :
-`docs/VIBE.md` ; portage des composants : `components/vibe/README.md`.
+`docs/2-vibe/INTEGRATION.md` ; portage des composants : `components/vibe/README.md`.
+Règles dédiées pour agents : `docs/2-vibe/AGENTS.md`.
 
 Quatre règles à ne pas contourner :
 
@@ -267,6 +276,71 @@ Quatre règles à ne pas contourner :
 
 `components/vibe/vibe.css` et `apps/vibe/**` sont exclus de Biome ; le code
 porté contient deux overrides documentés dans `biome.jsonc`.
+
+## 8.2 Intégration Wakies (`/wakies`)
+
+Wakies, l'espace de travail personnel, est **porté** depuis `apps/wakies/` (app
+Vite + serveur Hono, conservée en référence) sous `/wakies`. Guide complet :
+`docs/3-wakies/INTEGRATION.md` ; règles du port : `components/wakies/README.md`.
+Règles dédiées pour agents : `docs/3-wakies/AGENTS.md`.
+
+Contrairement à Vibe, ce port remplace des **services** par l'hôte, pas
+seulement des fichiers :
+
+- **Comptes** : plus d'`OWNER_TOKEN`. Le client (`components/wakies/api.ts`)
+  n'envoie rien ; c'est le cookie de session mAI, et `proxy.ts` protège
+  `/wakies` comme `/api/wakies/**`.
+- **Données** : les deux SQLite du gabarit deviennent les seize tables
+  `Wakies*` (migration `0037_wakies.sql`). Toute ligne porte `userId`, et
+  `lib/wakies/queries.ts` l'exige en premier paramètre : une fonction sans
+  `userId` n'a pas d'existence.
+- **IA** : le chat passe par `/api/wakies/chat` (pipeline de l'hôte), plus par
+  CopilotKit Intelligence. Les messages sont des `UIMessage` stockés dans
+  `WakiesMessage`, et un message Wakie consomme le quota hebdomadaire du compte
+  — il n'existe pas de quota séparé.
+- **Web** : l'outil `webSearch` de l'hôte, donc `/v1/web/search`.
+- **Tâches planifiées** : plus de `setInterval` ; tick par
+  `app/api/cron/wakies` (à planifier, `CRON_SECRET`), bail transactionnel.
+
+Cinq règles à ne pas contourner :
+
+- **Tout Wakies vit sous `.wakies-root`**, et `/wakies` vit dans son PROPRE
+  groupe de routes (`app/(wakies)/wakies`) : son rail est en `position: fixed`,
+  et le layout `(chat)` lui superposerait une seconde navigation.
+- **`components/wakies/wakies.css` et `wakies-editor.css` sont générés**
+  (`scripts/build-wakies-css.mjs`). Corriger la source dans
+  `apps/wakies/src/client/`, jamais la sortie.
+- **Pas de variante `wakies-dark`** : Wakies est son propre thème clair, sans
+  Tailwind. Ne pas introduire de `dark:`.
+- **Pas de CopilotKit, pas de `react-markdown`** : `useChat` (AI SDK) et
+  `components/wakies/markdown.tsx` (Streamdown, le moteur de l'hôte).
+- **Le vocabulaire est « conversation », pas « thread »** : `conversationId`.
+  Et l'agent s'appelle un **Wakie**, l'application **Wakies** — plus aucun
+  `Dot`/`OpenDots`, sauf cinq classes CSS qui décrivent un point graphique.
+
+Voix temps réel, ordinateurs persistants (OpenBot), Slack et la carte
+« Approuver et enregistrer » ne sont pas encore branchées : leur code est
+porté, `lib/wakies/setup.ts` déclare honnêtement l'absence, et `docs/3-wakies/INTEGRATION.md`
+§ 6 liste ce qu'il reste.
+
+## 8.3 Intégration Site Officiel (`/site`)
+
+Le site officiel mAI (`apps/site`) est **porté** au sein de l'application hôte
+sous `/site`. Guide complet : `docs/5-site/INTEGRATION.md` ; règles dédiées :
+`docs/5-site/AGENTS.md`.
+
+Cinq règles à ne pas contourner :
+
+- **`components/site/site.css` est généré** (`scripts/build-site-css.mjs`). Ne
+  jamais modifier ce fichier directement.
+- **Tout le site vit sous `.site-root`**, préservant le thème sombre et le
+  design achromatique du chat mAI principal.
+- **Les liens et la navigation passent par `components/site/router.tsx`** :
+  `<Link>`, `toSitePath`, `stripSiteBasePath`, `useSiteRouter`.
+- **SSO transparent** : l'utilisateur authentifié sur mAI est automatiquement
+  authentifié sur `/site` via `AuthProvider` (`initialToken`, `initialUser`).
+- **Deux runtimes** : ne jamais importer `@/email` (runtime Deno) dans les
+  modules du site, utiliser `@/lib/site/email`.
 
 ## 9. Points d'attention historiques
 

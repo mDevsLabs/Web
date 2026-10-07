@@ -1,0 +1,72 @@
+{
+  "model": "Subscription",
+  "config": {
+    "name": "Subscription",
+    "label": "Abonnements",
+    "description": "Gérez vos abonnements depuis une interface claire.",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Offre",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "subscriber",
+        "label": "Abonné",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "monthlyPrice",
+        "label": "Prix mensuel",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "renewsOn",
+        "label": "Renouvellement",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "trial",
+          "active",
+          "paused",
+          "cancelled"
+        ]
+      }
+    ],
+    "titleKey": "name",
+    "settings": [
+      {
+        "key": "notifySubscription",
+        "label": "Notifications : abonnements",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveSubscription",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section abonnements."
+      },
+      {
+        "key": "approveSubscription",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "subscription-demo-1",
+    "name": "Pro annuel",
+    "subscriber": "Abonné démo",
+    "monthlyPrice": 128,
+    "renewsOn": "2026-10-04",
+    "status": "trial"
+  }
+}

@@ -1,71 +1,64 @@
-<a href="https://chatbot.ai-sdk.dev/demo">
-  <img alt="Chatbot" src="app/(chat)/opengraph-image.png">
-  <h1 align="center">Chatbot</h1>
-</a>
+# mAI Web
 
-<p align="center">
-    Chatbot (formerly AI Chatbot) is a free, open-source template built with Next.js and the AI SDK that helps you quickly build powerful chatbot applications.
-</p>
+mAI Web est la plateforme principale de l’écosystème mAI : chat, agent, mémoire, projets, outils, serveurs MCP, génération multimodale et tâches planifiées. L’interface et la documentation du dépôt sont en français. 🙂
 
-<p align="center">
-  <a href="https://chatbot.ai-sdk.dev/docs"><strong>Read Docs</strong></a> ·
-  <a href="#features"><strong>Features</strong></a> ·
-  <a href="#model-providers"><strong>Model Providers</strong></a> ·
-  <a href="#deploy-your-own"><strong>Deploy Your Own</strong></a> ·
-  <a href="#running-locally"><strong>Running locally</strong></a>
-</p>
-<br/>
+## Architecture du dépôt
 
-## Features
+Le dépôt rassemble plusieurs applications dont les commandes et les cycles de publication sont distincts.
 
-- [Next.js](https://nextjs.org) App Router
-  - Advanced routing for seamless navigation and performance
-  - React Server Components (RSCs) and Server Actions for server-side rendering and increased performance
-- [AI SDK](https://ai-sdk.dev/docs/introduction)
-  - Unified API for generating text, structured objects, and tool calls with LLMs
-  - Hooks for building dynamic chat and generative user interfaces
-  - Supports OpenAI, Anthropic, Google, xAI, and other model providers via AI Gateway
-- [shadcn/ui](https://ui.shadcn.com)
-  - Styling with [Tailwind CSS](https://tailwindcss.com)
-  - Component primitives from [Radix UI](https://radix-ui.com) for accessibility and flexibility
-- Data Persistence
-  - [Neon Serverless Postgres](https://vercel.com/marketplace/neon) for saving chat history and user data
-  - [Vercel Blob](https://vercel.com/storage/blob) for efficient file storage
-- [Auth.js](https://authjs.dev)
-  - Simple and secure authentication
+| Partie | Rôle | Sources principales |
+| --- | --- | --- |
+| Application Web | Application Next.js et BFF qui sert l’interface authentifiée et ses API | app/, components/, lib/, hooks/ |
+| API mAI | Backend Hono déployé séparément sur Val Town | main.ts et modules TypeScript à la racine |
+| mAI Coder | Application de développement pour ordinateur, basée sur Electron | apps/coder/ |
+| Clients bureau et mobile | Conteneurs Electron et Capacitor qui ouvrent le site mAI | apps/desktop/, apps/mobile/ |
+| Sources de Vibe, Wakies et Site | Applications autonomes conservées comme sources des intégrations de l’hôte | apps/vibe/, apps/wakies/, apps/site/ |
+| Bibliothèques | Composants React et icônes distribuables | packages/ui/, packages/icons/ |
 
-## Model Providers
+L’application Next et le backend Hono ne partagent pas le même runtime. Le build racine compile Next.js. Les fichiers TypeScript Hono à la racine sont déployés indépendamment et ne sont pas couverts par le typecheck Next.
 
-This template uses the [Vercel AI Gateway](https://vercel.com/docs/ai-gateway) to access multiple AI models through a unified interface. Models are configured in `lib/ai/models.ts` with per-model provider routing. Included models: Mistral, Moonshot, DeepSeek, OpenAI, and xAI.
+Vibe, Wakies et le Site officiel sont disponibles dans l’hôte sous /vibe, /wakies et /site. Leurs versions autonomes dans apps/ servent de sources ou de références ; elles ne sont pas compilées par le build Next racine.
 
-### AI Gateway Authentication
+## Démarrer l’application Web
 
-**For Vercel deployments**: Authentication is handled automatically via OIDC tokens.
+Prérequis : Node.js 22 ou supérieur et pnpm 10.
 
-**For non-Vercel deployments**: You need to provide an AI Gateway API key by setting the `AI_GATEWAY_API_KEY` environment variable in your `.env.local` file.
-
-With the [AI SDK](https://ai-sdk.dev/docs/introduction), you can also switch to direct LLM providers like [OpenAI](https://openai.com), [Anthropic](https://anthropic.com), [Cohere](https://cohere.com/), and [many more](https://ai-sdk.dev/providers/ai-sdk-providers) with just a few lines of code.
-
-## Deploy Your Own
-
-You can deploy your own version of Chatbot to Vercel with one click:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/templates/next.js/chatbot)
-
-## Running locally
-
-You will need to use the environment variables [defined in `.env.example`](.env.example) to run Chatbot. It's recommended you use [Vercel Environment Variables](https://vercel.com/docs/projects/environment-variables) for this, but a `.env` file is all that is necessary.
-
-> Note: You should not commit your `.env` file or it will expose secrets that will allow others to control access to your various AI and authentication provider accounts.
-
-1. Install Vercel CLI: `npm i -g vercel`
-2. Link local instance with Vercel and GitHub accounts (creates `.vercel` directory): `vercel link`
-3. Download your environment variables: `vercel env pull`
-
-```bash
+~~~powershell
 pnpm install
-pnpm db:migrate # Setup database or apply latest database changes
-pnpm dev
-```
+Copy-Item .env.example .env.local
+~~~
 
-Your app template should now be running on [localhost:3000](http://localhost:3000).
+Renseignez les variables nécessaires dans .env.local, dont la connexion PostgreSQL. Pour une base prête à recevoir l’application, appliquez les migrations puis démarrez Next :
+
+~~~powershell
+pnpm db:migrate
+pnpm dev
+~~~
+
+L’application locale est servie sur http://localhost:3000. Les migrations exigent une base PostgreSQL configurée ; ne les lancez pas sur une base de production sans suivre la procédure de déploiement.
+
+## Commandes racine
+
+| Commande | Action |
+| --- | --- |
+| pnpm dev | Serveur Next.js de développement |
+| pnpm build | Génération des styles intégrés puis build Next.js |
+| pnpm check | Contrôle Biome via Ultracite |
+| pnpm typecheck | Typecheck de l’application Next |
+| pnpm test:unit | Tests unitaires Vitest |
+| pnpm test | Tests de bout en bout Playwright |
+| pnpm db:generate | Génération des migrations Drizzle |
+| pnpm db:migrate | Application des migrations PostgreSQL |
+
+Les applications dans apps/ ont leurs propres scripts. Consultez leur README avant de les lancer. Le workflow principal de validation se trouve dans .github/workflows/build.yml.
+
+## Repères
+
+- Architecture Web et API : [docs/1-web/README.md](docs/1-web/README.md)
+- Vue d’ensemble de la documentation : [docs/README.md](docs/README.md)
+- Intégration Vibe : [docs/2-vibe/INTEGRATION.md](docs/2-vibe/INTEGRATION.md)
+- Intégration Wakies : [docs/3-wakies/INTEGRATION.md](docs/3-wakies/INTEGRATION.md)
+- Intégration Site : [docs/5-site/INTEGRATION.md](docs/5-site/INTEGRATION.md)
+- mAI Coder : [apps/coder/README.md](apps/coder/README.md)
+
+Ne versionnez jamais .env.local ni les secrets personnels. Utilisez .env.example comme liste de variables à configurer.

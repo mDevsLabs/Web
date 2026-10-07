@@ -49,7 +49,7 @@ it('executes server turns without browser-only Core discovery and tears down the
     Response.json({
       mode: 'intelligence',
       intelligence: { wsUrl: 'wss://example.com/client' },
-      agents: { dot: {} },
+      agents: { wakie: {} },
     }),
   );
   vi.stubGlobal('fetch', fetcher);
@@ -62,11 +62,11 @@ it('executes server turns without browser-only Core discovery and tears down the
     await runThreadTurn(
       'https://runtime.test',
       { Authorization: 'Bearer test' },
-      'dot',
+      'wakie',
       'thread',
       'Record my call',
       new AbortController().signal,
-      { opendotsSource: 'voice_receipt' },
+      { wakiesSource: 'voice_receipt' },
     ),
   ).toBe('Confirmed receipt');
   expect(fetcher).toHaveBeenCalledWith(
@@ -75,17 +75,17 @@ it('executes server turns without browser-only Core discovery and tears down the
   );
   expect(sdk.config).toHaveBeenCalledWith(
     expect.objectContaining({
-      agentId: 'dot',
+      agentId: 'wakie',
       runtimeUrl: 'https://runtime.test',
       url: 'wss://example.com/client',
     }),
   );
   expect(sdk.message).toHaveBeenCalledWith(
     expect.objectContaining({
-      id: expect.stringMatching(/^opendots:voice_receipt:/),
+      id: expect.stringMatching(/^wakies:voice_receipt:/),
       role: 'user',
       content: 'Record my call',
-      metadata: { opendotsSource: 'voice_receipt' },
+      metadata: { wakiesSource: 'voice_receipt' },
     }),
   );
   expect(sdk.thread).toHaveBeenCalledWith('thread');
@@ -103,7 +103,7 @@ it('rejects failed runtime discovery instead of waiting for browser status indef
     runThreadTurn(
       'https://runtime.test',
       {},
-      'dot',
+      'wakie',
       'thread',
       'Call',
       new AbortController().signal,
@@ -111,7 +111,7 @@ it('rejects failed runtime discovery instead of waiting for browser status indef
   ).rejects.toThrow('HTTP 403');
   expect(sdk.run).not.toHaveBeenCalled();
 });
-it('rejects a Dot missing from runtime metadata', async () => {
+it('rejects a Wakie missing from runtime metadata', async () => {
   vi.stubGlobal(
     'fetch',
     vi.fn<typeof fetch>().mockResolvedValue(
@@ -126,12 +126,12 @@ it('rejects a Dot missing from runtime metadata', async () => {
     runThreadTurn(
       'https://runtime.test',
       {},
-      'dot',
+      'wakie',
       'thread',
       'Call',
       new AbortController().signal,
     ),
-  ).rejects.toThrow('Dot is unavailable');
+  ).rejects.toThrow('Wakie is unavailable');
 });
 
 it('aborts the running SDK turn and releases the subscriber on cancellation', async () => {
@@ -141,7 +141,7 @@ it('aborts the running SDK turn and releases the subscriber on cancellation', as
       Response.json({
         mode: 'intelligence',
         intelligence: { wsUrl: 'wss://example.com/client' },
-        agents: { dot: {} },
+        agents: { wakie: {} },
       }),
     ),
   );
@@ -156,7 +156,7 @@ it('aborts the running SDK turn and releases the subscriber on cancellation', as
     runThreadTurn(
       'https://runtime.test',
       {},
-      'dot',
+      'wakie',
       'thread',
       'Call',
       controller.signal,
@@ -175,7 +175,7 @@ it('cleans up rejected SDK turns while preserving the error', async () => {
       Response.json({
         mode: 'intelligence',
         intelligence: { wsUrl: 'wss://example.com/client' },
-        agents: { dot: {} },
+        agents: { wakie: {} },
       }),
     ),
   );
@@ -184,7 +184,7 @@ it('cleans up rejected SDK turns while preserving the error', async () => {
     runThreadTurn(
       'https://runtime.test',
       {},
-      'dot',
+      'wakie',
       'thread',
       'Call',
       new AbortController().signal,

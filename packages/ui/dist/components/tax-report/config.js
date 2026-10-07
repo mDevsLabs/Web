@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "TaxReport", "label": "D\xE9clarations fiscales", "description": "G\xE9rez vos d\xE9clarations fiscales depuis une interface claire.", "fields": [{ "key": "period", "label": "P\xE9riode", "kind": "text", "required": true }, { "key": "organization", "label": "Organisation", "kind": "text", "required": true }, { "key": "taxableAmount", "label": "Base imposable", "kind": "number", "required": true }, { "key": "dueDate", "label": "\xC9ch\xE9ance", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "submitted", "accepted"] }], "titleKey": "period", "settings": [{ "key": "notifyTaxReport", "label": "Notifications : d\xE9clarations fiscales", "description": "Recevoir un signal lors des changements." }, { "key": "archiveTaxReport", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section d\xE9clarations fiscales." }, { "key": "approveTaxReport", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

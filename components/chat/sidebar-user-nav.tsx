@@ -2,11 +2,11 @@
 
 import {
   ChevronUp,
-  CloudIcon,
   ExternalLinkIcon,
   FileTextIcon,
   HelpCircleIcon,
   InfoIcon,
+  LibraryIcon,
   LineChartIcon,
   LogOutIcon,
   MoonIcon,
@@ -55,7 +55,11 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
       setIsLoggingOut(true);
       await logoutAction();
       toast.success("Déconnexion réussie");
-      router.push("/login");
+      // Sortie vers le site public, avec bandeau d'invitation à la connexion
+      // (?connexion=1 lu par components/site/login-invite-banner.tsx). /login
+      // resterait une impasse sans destination : le site est l'accueil naturel
+      // d'un visiteur déconnecté.
+      router.push("/site?connexion=1");
       router.refresh();
     } catch {
       toast.error("Erreur lors de la déconnexion");
@@ -162,8 +166,8 @@ export function SidebarUserNav({ user }: { user?: MaiUser | null }) {
                 className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-[13px] cursor-pointer hover:bg-sidebar-accent"
                 href="/library"
               >
-                <CloudIcon className="size-4 text-muted-foreground" />
-                <span>Stockage de fichiers</span>
+                <LibraryIcon className="size-4 text-muted-foreground" />
+                <span>Bibliothèque</span>
               </Link>
             </DropdownMenuItem>
 

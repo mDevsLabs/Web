@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Deployment", "label": "D\xE9ploiements", "description": "G\xE9rez vos d\xE9ploiements depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "environment", "label": "Environnement", "kind": "text", "required": true }, { "key": "commit", "label": "Commit", "kind": "text", "required": true }, { "key": "deployedOn", "label": "Date", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["queued", "running", "succeeded", "failed"] }], "titleKey": "name", "settings": [{ "key": "notifyDeployment", "label": "Notifications : d\xE9ploiements", "description": "Recevoir un signal lors des changements." }, { "key": "archiveDeployment", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section d\xE9ploiements." }, { "key": "approveDeployment", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

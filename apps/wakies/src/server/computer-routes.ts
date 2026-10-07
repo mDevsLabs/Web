@@ -15,25 +15,25 @@ export function computerRoutes(computers: ComputerService) {
       400,
     ),
   );
-  app.get('/dots/:id/computer', async (c) =>
+  app.get('/wakies/:id/computer', async (c) =>
     c.json(await computers.status(c.req.param('id'))),
   );
-  app.patch('/dots/:id/computer/permissions', async (c) =>
+  app.patch('/wakies/:id/computer/permissions', async (c) =>
     c.json(await computers.permissions(c.req.param('id'), await c.req.json())),
   );
-  app.post('/dots/:id/computer/start', async (c) =>
+  app.post('/wakies/:id/computer/start', async (c) =>
     c.json(await computers.start(c.req.param('id'))),
   );
-  app.post('/dots/:id/computer/stop', async (c) =>
+  app.post('/wakies/:id/computer/stop', async (c) =>
     c.json(await computers.stop(c.req.param('id'))),
   );
-  app.post('/dots/:id/computer/take', async (c) =>
+  app.post('/wakies/:id/computer/take', async (c) =>
     c.json(await computers.control(c.req.param('id'), 'take')),
   );
-  app.post('/dots/:id/computer/release', async (c) =>
+  app.post('/wakies/:id/computer/release', async (c) =>
     c.json(await computers.control(c.req.param('id'), 'release')),
   );
-  app.post('/dots/:id/computer/actions', async (c) => {
+  app.post('/wakies/:id/computer/actions', async (c) => {
     const body = z
       .object({ action: z.string(), input: z.unknown() })
       .strict()

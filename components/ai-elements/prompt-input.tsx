@@ -454,7 +454,7 @@ export const PromptInput = ({
       if (incoming.length && accepted.length === 0) {
         onError?.({
           code: "accept",
-          message: "No files match the accepted types.",
+          message: "Aucun fichier ne correspond aux types acceptés.",
         });
         return;
       }
@@ -518,7 +518,7 @@ export const PromptInput = ({
       if (incoming.length && accepted.length === 0) {
         onError?.({
           code: "accept",
-          message: "No files match the accepted types.",
+          message: "Aucun fichier ne correspond aux types acceptés.",
         });
         return;
       }

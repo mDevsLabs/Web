@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Shipment", "label": "Exp\xE9ditions", "description": "G\xE9rez vos exp\xE9ditions depuis une interface claire.", "fields": [{ "key": "trackingNumber", "label": "Suivi", "kind": "text", "required": true }, { "key": "carrier", "label": "Transporteur", "kind": "text", "required": true }, { "key": "destination", "label": "Destination", "kind": "text", "required": true }, { "key": "expectedOn", "label": "Livraison pr\xE9vue", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["preparing", "in-transit", "delivered", "delayed"] }], "titleKey": "trackingNumber", "settings": [{ "key": "notifyShipment", "label": "Notifications : exp\xE9ditions", "description": "Recevoir un signal lors des changements." }, { "key": "archiveShipment", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section exp\xE9ditions." }, { "key": "approveShipment", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

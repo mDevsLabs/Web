@@ -1,0 +1,28 @@
+# @mdevs/ui
+
+> 1212 independent named React/TypeScript exports. 132 primitives and 1080 domain components (108 domains × 10 shared patterns). Liquid Glass CSS, explicit contracts, ESM/CJS/types.
+
+- [Agent guide](AGENTS.md)
+- [Documentation map](catalog/docs/README.md)
+- [Detailed agent workflow](catalog/docs/AI_AGENTS.md)
+- [API guide](catalog/docs/API.md)
+- [Installation](catalog/docs/GETTING_STARTED.md)
+- [UI composition](catalog/docs/UI_PLAYBOOK.md)
+- [Form contracts and async errors](catalog/docs/FORM_PATTERNS.md)
+- [Controlled overlays and focus](catalog/docs/OVERLAYS.md)
+- [Design](catalog/docs/LIQUID_GLASS.md)
+- [Accessibility](catalog/docs/ACCESSIBILITY.md)
+- [Machine catalog](catalog/manifest.json)
+- [Document path index](catalog/documentation.json)
+- [Troubleshooting](catalog/docs/TROUBLESHOOTING.md)
+- [Known scope](catalog/docs/LIMITATIONS.md)
+- [Consolidated guides](llms-full.txt)
+
+Start with AGENTS and a limited manifest search. Open catalog/components/<category>/<slug>.md for the chosen export: exact props, callbacks, defaults, models, real behavior and a complete React example. Domain catalog/<category>/README.md lists its ten families, statuses and settings. Follow public package exports; inspect src or dist declarations to resolve ambiguity. initialValues is a mount-time form default; filters/settings are controlled; network and async error management belong to the host app. Maintenance scripts mentioned in guides require the monorepo.
+
+Import @mdevs/ui/styles.css once. Use ThemeProvider for scoped theme and portal tokens. Read each source/declaration before inventing props. Domain data and callbacks belong to the application; examples are fixtures. No color/size variants counted as separate components.
+
+- [Creation/style rules](STYLE.md)
+- [0.2 component extension guide](catalog/docs/EXTENSIONS.md)
+
+Approved default: local Inter WOFF2 (UI), subtle 12px glass blur, monochrome black/white icons with 1.5px rounded strokes. Preserve asset licences. New entries must have a real contract and distinct purpose/geometry; sizes/colors/aliases do not count.

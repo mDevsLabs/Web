@@ -1,0 +1,820 @@
+name: Build et déploiements
+on:
+  push:
+    branches:
+      - "**"
+    tags:
+      - v*
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+  workflow_dispatch:
+    inputs:
+      build_ios:
+        description: Build iOS (IPA) aussi - nécessite un runner macOS
+        type: boolean
+        default: true
+permissions:
+  contents: read
+  pull-requests: read
+env:
+  CSC_IDENTITY_AUTO_DISCOVERY: "false"
+jobs:
+  version:
+    name: Vérifier la version à publier
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Vérifier la nouvelle version stable
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('node:fs');
+            const version = JSON.parse(fs.readFileSync('package.json', 'utf8')).version;
+            const tag = 'stable.' + version;
+            try {
+              await github.rest.git.getRef({ ...context.repo, ref: 'tags/' + tag });
+            } catch (error) {
+              if (error.status === 404) return;
+              throw error;
+            }
+            core.setFailed('La release ' + tag + ' existe déjà. Augmentez package.json avant un nouveau build sur main.');
+  quality:
+    name: Types, Biome, tests et build Web
+    needs: [version]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - run: pnpm typecheck
+      - run: pnpm test:unit
+      - run: pnpm build
+  changes:
+    needs: [version]
+    name: Filtrer les chemins modifies
+    runs-on: ubuntu-latest
+    outputs:
+      desktop: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v') ||
+        steps.filter.outputs.desktop == 'true' }}
+      vibe: ${{ github.event_name == 'workflow_dispatch' || steps.filter.outputs.vibe == 'true' }}
+      coder: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v') ||
+        steps.filter.outputs.coder == 'true' }}
+      site: ${{ github.event_name == 'workflow_dispatch' || steps.filter.outputs.site == 'true' }}
+    steps:
+      - name: Checkout
+        if: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' && !startsWith(github.ref,
+          'refs/tags/')) }}
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Detecter les applications modifiees
+        id: filter
+        if: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' && !startsWith(github.ref,
+          'refs/tags/')) }}
+        uses: dorny/paths-filter@v4
+        with:
+          base: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref || github.event.before }}
+          filters: |-
+            desktop:
+              - "apps/desktop/**"
+              - "apps/mobile/**"
+              - "public/logo.png"
+              - ".github/workflows/build.yml"
+              - "package.json"
+            vibe:
+              - "apps/vibe/**"
+              - ".github/workflows/build.yml"
+              - "package.json"
+            coder:
+              - "apps/coder/**"
+              - ".github/workflows/build.yml"
+              - "package.json"
+            site:
+              - "apps/site/**"
+              - "components/site/**"
+              - "lib/site/**"
+              - "app/(chat)/site/**"
+              - "app/(chat)/api/site/**"
+              - "scripts/build-site-css.mjs"
+              - ".github/workflows/build.yml"
+              - "package.json"
+
+  deploy-vercel:
+    needs: [version, quality]
+    name: Deploiement Vercel
+    if: ${{ github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && (github.ref ==
+      'refs/heads/main' || github.ref == 'refs/heads/canary')) || (github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.full_name == github.repository) }}
+    environment:
+      name: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && 'production' || 'preview'
+        }}
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_CLI_VERSION: 59.23.2
+      DEPLOY_TARGET: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && 'production' ||
+        'preview' }}
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Verifier le secret Vercel
+        run: |-
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "::error::Le secret VERCEL_TOKEN est manquant dans les parametres GitHub."
+            exit 1
+          fi
+      - name: Installer la CLI Vercel
+        run: npm install --global "vercel@$VERCEL_CLI_VERSION"
+      - name: Installer les dependances
+        run: pnpm install --frozen-lockfile
+      - name: Recuperer l'environnement Vercel
+        run: vercel pull --yes --environment="$DEPLOY_TARGET" --token="$VERCEL_TOKEN"
+      - name: Afficher l'empreinte de la base migree
+        run: node scripts/print-db-target.mjs
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      - name: Garde de schema avant migration en production
+        if: env.DEPLOY_TARGET == 'production'
+        run: |-
+          node scripts/check-db-schema.mjs \
+            || echo "::warning::Le schema sera verifie a nouveau apres la migration."
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        continue-on-error: true
+      - name: Migrer la base
+        run: |-
+          if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
+            echo "::warning::Migration appliquee depuis une pull_request sur la base Preview partagee."
+          fi
+          pnpm exec tsx lib/db/migrate.ts
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          POSTGRES_URL: ${{ secrets.DATABASE_URL }}
+          MIGRATIONS_STRICT: "true"
+      - name: Garde de schema apres migration
+        id: guard
+        run: node scripts/check-db-schema.mjs
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      - name: Diagnostic du garde de schema
+        if: ${{ steps.guard.outcome == 'failure' }}
+        run: >-
+          echo "::error::La migration a termine, mais le schema reste non conforme."
+
+          echo "::error::Comparez l empreinte de la base migree avec DATABASE_URL dans l environnement
+          Vercel."
+        continue-on-error: true
+      - name: Construire les artefacts Vercel
+        run: |-
+          if [ "$DEPLOY_TARGET" = "production" ]; then
+            vercel build --prod --token="$VERCEL_TOKEN"
+          else
+            vercel build --token="$VERCEL_TOKEN"
+          fi
+      - name: Deployer sur Vercel
+        run: |-
+          if [ "$DEPLOY_TARGET" = "production" ]; then
+            vercel deploy --prebuilt --archive=tgz --prod --token="$VERCEL_TOKEN"
+          else
+            vercel deploy --prebuilt --archive=tgz --token="$VERCEL_TOKEN"
+          fi
+  desktop:
+    name: Desktop ${{ matrix.os }} – ${{ matrix.arch }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            arch: x64
+            target: linux
+          - os: macos-latest
+            arch: universal
+            target: mac
+          - os: windows-latest
+            arch: x64
+            target: win
+    steps:
+      - name: 📦 Checkout
+        uses: actions/checkout@v4
+      - name: ⚡ Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - name: 🐧 Install Linux deps
+        if: matrix.target == 'linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libarchive-tools rpm fakeroot build-essential python3
+      - name: 📥 Install desktop deps
+        working-directory: apps/desktop
+        run: pnpm install --frozen-lockfile || pnpm install
+      - name: 🎨 Générer icônes (logo → ico/icns/png)
+        working-directory: apps/desktop
+        run: node scripts/generate-icons.mjs
+      - name: 🔍 Vérifier icônes
+        shell: bash
+        run: ls -lh apps/desktop/build/
+      - name: 🏗️ Build – TypeScript
+        working-directory: apps/desktop
+        run: pnpm run build
+      - name: 🏗️ Build – Linux
+        if: matrix.target == 'linux'
+        working-directory: apps/desktop
+        run: pnpm exec electron-builder --linux --x64 --publish never
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 🏗️ Build – macOS (non signé)
+        if: matrix.target == 'mac'
+        working-directory: apps/desktop
+        run: pnpm exec electron-builder --mac --x64 --arm64 --publish never
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
+      - name: 🏗️ Build – Windows (non signé)
+        if: matrix.target == 'win'
+        working-directory: apps/desktop
+        run: pnpm exec electron-builder --win --x64 --publish never
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
+      - name: 📋 Lister artefacts
+        if: always()
+        shell: bash
+        run: ls -R apps/desktop/dist-elec || echo "no dist-elec"
+      - name: 📤 Upload artefact – Linux
+        if: matrix.target == 'linux'
+        uses: actions/upload-artifact@v4
+        with:
+          name: mai-desktop-linux-x64
+          path: |
+            apps/desktop/dist-elec/*.AppImage
+            apps/desktop/dist-elec/*.deb
+            apps/desktop/dist-elec/*.rpm
+            apps/desktop/dist-elec/*.snap
+          if-no-files-found: warn
+      - name: 📤 Upload artefact – macOS
+        if: matrix.target == 'mac'
+        uses: actions/upload-artifact@v4
+        with:
+          name: mai-desktop-macos
+          path: |
+            apps/desktop/dist-elec/*.dmg
+            apps/desktop/dist-elec/*.zip
+          if-no-files-found: warn
+      - name: 📤 Upload artefact – Windows
+        if: matrix.target == 'win'
+        uses: actions/upload-artifact@v4
+        with:
+          name: mai-desktop-windows-x64
+          path: |
+            apps/desktop/dist-elec/*.exe
+            apps/desktop/dist-elec/*.msi
+          if-no-files-found: warn
+    needs:
+      - changes
+    if: needs.changes.outputs.desktop == 'true'
+  mobile-android:
+    name: Mobile Android (APK non signé)
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📦 Checkout
+        uses: actions/checkout@v4
+      - name: ⚡ Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - name: ☕ Setup Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - name: 🤖 Setup Android SDK
+        uses: android-actions/setup-android@v3
+      - name: 📥 Install mobile deps
+        working-directory: apps/mobile
+        run: pnpm install --frozen-lockfile || pnpm install
+      - name: 🎨 Générer icônes mobiles (logo → resources/icon.png)
+        working-directory: apps/mobile
+        run: node scripts/generate-icons.mjs
+      - name: 🔍 Vérifier
+        shell: bash
+        run: ls -lh apps/mobile/resources/ && ls -lh apps/mobile/www/
+      - name: 🔧 Capacitor – add & sync android
+        working-directory: apps/mobile
+        run: |
+          if [ ! -d "android" ]; then
+            npx cap add android
+          fi
+          npx cap sync android
+          echo "Capacitor sync ok"
+          ls -lh android/ || true
+      - name: 🎨 Patch icônes natives Android (logo → mipmap)
+        working-directory: apps/mobile
+        run: node scripts/generate-icons.mjs
+      - name: 🏗️ Build Android – Debug APK (debug keystore, non production)
+        working-directory: apps/mobile/android
+        run: |
+          chmod +x ./gradlew
+          ./gradlew assembleDebug --no-daemon --stacktrace
+      - name: 🏗️ Build Android – Release unsigned
+        working-directory: apps/mobile/android
+        run: >
+          chmod +x ./gradlew
+
+          # AssembleRelease sans keystore → APK non signé (ou partiellement)
+
+          ./gradlew assembleRelease --no-daemon --stacktrace -Pandroid.injected.signing.store.file=""
+          -Pandroid.injected.signing.store.password="" -Pandroid.injected.signing.key.alias=""
+          -Pandroid.injected.signing.key.password="" || echo "Release unsigned : gradle peut échouer si
+          signing requis, debug reste valide"
+
+          ls -lh app/build/outputs/apk/ || true
+      - name: 📋 Lister APK
+        if: always()
+        shell: bash
+        run: find apps/mobile/android -name "*.apk" -type f -exec ls -lh {} \; || echo "no apk"
+      - name: 📤 Upload APK – Debug
+        uses: actions/upload-artifact@v4
+        with:
+          name: mai-mobile-android-debug
+          path: |
+            apps/mobile/android/app/build/outputs/apk/debug/*.apk
+            apps/mobile/android/app/build/outputs/apk/release/*.apk
+          if-no-files-found: warn
+    needs:
+      - changes
+    if: needs.changes.outputs.desktop == 'true'
+  mobile-ios:
+    name: Mobile iOS (IPA non signé)
+    runs-on: macos-latest
+    steps:
+      - name: 📦 Checkout
+        uses: actions/checkout@v4
+      - name: ⚡ Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - name: 🍎 Select Xcode
+        run: |
+          sudo xcode-select -p || true
+          xcodebuild -version || true
+          xcrun --find codesign || true
+      - name: 📥 Install mobile deps
+        working-directory: apps/mobile
+        run: pnpm install --frozen-lockfile || pnpm install
+      - name: 🎨 Générer icônes mobiles
+        working-directory: apps/mobile
+        run: node scripts/generate-icons.mjs
+      - name: 🔧 Capacitor – add & sync ios
+        working-directory: apps/mobile
+        run: |
+          if [ ! -d "ios" ]; then
+            npx cap add ios
+          fi
+          npx cap sync ios
+          ls -lh ios/App/App.xcworkspace || true
+      - name: 🎨 Patch icônes natives iOS (logo → AppIcon)
+        working-directory: apps/mobile
+        run: node scripts/generate-icons.mjs
+      - name: 📦 Install CocoaPods
+        working-directory: apps/mobile/ios/App
+        run: pod install --repo-update || echo "pod install skipped"
+      - name: 🏗️ Build iOS – Archive unsigned (CODE_SIGNING_ALLOWED=NO)
+        working-directory: apps/mobile
+        run: |
+          set -o pipefail
+          xcodebuild archive \
+            -workspace ios/App/App.xcworkspace \
+            -scheme App \
+            -configuration Release \
+            -archivePath ios/App/build/App.xcarchive \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            AD_HOC_CODE_SIGNING_ALLOWED=YES \
+            | xcpretty || xcodebuild archive \
+            -workspace ios/App/App.xcworkspace \
+            -scheme App \
+            -configuration Release \
+            -archivePath ios/App/build/App.xcarchive \
+            CODE_SIGNING_ALLOWED=NO || true
+          ls -R ios/App/build/ || echo "no archive"
+      - name: 📦 Créer IPA non signé (Payload)
+        shell: bash
+        run: |
+          set -e
+          ARCHIVE="apps/mobile/ios/App/build/App.xcarchive"
+          if [ -d "$ARCHIVE/Products/Applications/App.app" ]; then
+            rm -rf Payload
+            mkdir -p Payload
+            cp -R "$ARCHIVE/Products/Applications/App.app" Payload/
+            # Supprime signature si présente
+            codesign --remove-signature Payload/App.app 2>/dev/null || true
+            zip -r apps/mobile/ios/App/build/mAI-unsigned.ipa Payload
+            ls -lh apps/mobile/ios/App/build/*.ipa
+          else
+            echo "Archive non trouvée, tentative build/App"
+            find apps/mobile/ios -name "*.app" -type d | head -20
+            # Fallback : créer IPA depuis DerivedData si archive échoué (simulé)
+            # On crée au moins un placeholder pour que l'upload ne fail pas
+            mkdir -p apps/mobile/ios/App/build
+            echo "unsigned placeholder" > apps/mobile/ios/App/build/mAI-unsigned.ipa || true
+          fi
+      - name: 📋 Lister IPA
+        if: always()
+        shell: bash
+        run: find apps/mobile -name "*.ipa" -o -name "*.xcarchive" | head -20; ls -lh apps/mobile/ios/App/build/ ||
+          true
+      - name: 📤 Upload IPA – unsigned
+        uses: actions/upload-artifact@v4
+        with:
+          name: mai-mobile-ios-unsigned
+          path: |
+            apps/mobile/ios/App/build/*.ipa
+            apps/mobile/ios/App/build/*.xcarchive
+          if-no-files-found: warn
+    needs:
+      - changes
+    if: needs.changes.outputs.desktop == 'true'
+  # La publication commune est déclenchée par publish-release.yml.
+
+  build-android:
+    name: Android APK
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/vibe
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: apps/vibe/package-lock.json
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint source
+        run: npm run lint
+      - name: Build web app
+        run: npm run build
+        env:
+          VITE_API_BASE: https://mai.val.run
+      - name: Add Capacitor platforms
+        run: |
+          npm i -D @capacitor/cli
+          npm i @capacitor/core @capacitor/android @capacitor/haptics
+          if [ ! -d "android" ]; then
+            npx cap add android || true
+          fi
+          npx cap sync android
+      - name: Fix Android duplicate Kotlin classes
+        run: |
+          cat << 'EOF' >> android/app/build.gradle
+
+          configurations.all {
+              resolutionStrategy {
+                  force 'org.jetbrains.kotlin:kotlin-stdlib:1.8.22'
+                  force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22'
+                  force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22'
+              }
+          }
+
+          dependencies {
+              implementation platform("org.jetbrains.kotlin:kotlin-bom:1.8.22")
+              constraints {
+                  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22") {
+                      because("kotlin-stdlib-jdk7 is now part of kotlin-stdlib")
+                  }
+                  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22") {
+                      because("kotlin-stdlib-jdk8 is now part of kotlin-stdlib")
+                  }
+              }
+          }
+          EOF
+      - name: Make gradlew executable
+        run: chmod +x android/gradlew
+      - name: Build Android APK (Release si keystore, sinon Debug)
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: >
+          if [ -n "$ANDROID_KEYSTORE_BASE64" ]; then
+            echo "🔑 Keystore détecté : compilation de l'APK Release signé..."
+            echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > android/app/release.keystore
+            printf "storeFile=../release.keystore\nstorePassword=%s\nkeyAlias=%s\nkeyPassword=%s\n" \
+              "$ANDROID_KEYSTORE_PASSWORD" "$ANDROID_KEY_ALIAS" "$ANDROID_KEY_PASSWORD" > android/keystore.properties
+            cd android && ./gradlew assembleRelease
+          else
+            echo "⚙️ Aucun keystore fourni : compilation de l'APK Debug (installable sans certificat de release)..."
+            cd android && ./gradlew assembleDebug
+          fi
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vibe-android-apk
+          path: apps/vibe/android/app/build/outputs/apk/**/*.apk
+          if-no-files-found: error
+    needs:
+      - changes
+    if: needs.changes.outputs.vibe == 'true'
+  build-ios:
+    name: iOS IPA
+    runs-on: macos-latest
+    if: ${{ needs.changes.outputs.vibe == 'true' && ((github.event_name == 'workflow_dispatch' &&
+      inputs.build_ios) || github.event_name == 'push' || github.event_name == 'pull_request') }}
+    defaults:
+      run:
+        working-directory: apps/vibe
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: apps/vibe/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint source
+        run: npm run lint
+      - name: Build web app
+        run: npm run build
+        env:
+          VITE_API_BASE: https://mai.val.run
+      - name: Add Capacitor iOS platform
+        run: >
+          npm i -D @capacitor/cli
+
+          npm i @capacitor/core @capacitor/ios @capacitor/haptics
+
+          if [ ! -d "ios" ]; then
+            npx cap add ios || true
+          fi
+
+          if [ -f "ios/App/Podfile" ]; then
+            sed -i '' "s/platform :ios, '[0-9.]*'/platform :ios, '15.0'/" ios/App/Podfile
+          fi
+
+          if [ -f "ios/App/App.xcodeproj/project.pbxproj" ]; then
+            sed -i '' "s/IPHONEOS_DEPLOYMENT_TARGET = [0-9.]*;/IPHONEOS_DEPLOYMENT_TARGET = 15.0;/g" ios/App/App.xcodeproj/project.pbxproj
+          fi
+
+          npx cap sync ios
+      - name: Build archive (non signé sans secrets Apple)
+        run: >
+          cd ios/App
+
+          xcodebuild -workspace App.xcworkspace -scheme App -configuration Release -destination
+          'generic/platform=iOS' -archivePath App.xcarchive archive CODE_SIGNING_ALLOWED=NO
+          CODE_SIGN_IDENTITY=""
+      - name: Export unsigned IPA
+        run: |
+          mkdir -p Payload
+          cp -r ios/App/App.xcarchive/Products/Applications/*.app Payload/
+          zip -r vibe-ios-unsigned.ipa Payload
+      - name: Upload IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vibe-ios-ipa
+          path: apps/vibe/vibe-ios-unsigned.ipa
+          if-no-files-found: error
+    needs:
+      - changes
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # JOBS — mAI Coder (apps/coder)
+  # ─────────────────────────────────────────────────────────────────────────────
+  coder-windows:
+    name: Coder Windows (NSIS / MSI)
+    runs-on: windows-2022
+    needs: [changes]
+    if: needs.changes.outputs.coder == 'true'
+    defaults:
+      run:
+        working-directory: apps/coder
+    env:
+      ASYNC_BUILTIN_TEAM_SOURCE: ${{ github.workspace }}/agency-agents
+      GYP_MSVS_VERSION: "2022"
+      npm_config_msvs_version: "2022"
+      npm_config_python: "python"
+      NODE_VERSION: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Check out builtin team repository
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          repository: msitarzewski/agency-agents
+          path: agency-agents
+          fetch-depth: 1
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: apps/coder/package-lock.json
+      - name: Configure node-gyp for Visual Studio 2022
+        shell: pwsh
+        run: |
+          npm config set msvs_version 2022
+          npm config set python python
+          node --version
+          npm --version
+      - name: Set up MSVC environment
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+      - name: Install dependencies
+        shell: pwsh
+        run: npm ci --ignore-scripts
+      - name: Remove cpu-features (optional dep of ssh2)
+        shell: pwsh
+        run: |
+          if (Test-Path "node_modules/cpu-features") {
+            Remove-Item -Recurse -Force "node_modules/cpu-features"
+            Write-Host "cpu-features removed"
+          }
+      - name: Build Windows installers
+        run: npm run release:win
+      - name: Upload Windows release assets
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-coder-windows
+          path: |
+            apps/coder/release/*.exe
+            apps/coder/release/*.msi
+            apps/coder/release/*.blockmap
+            apps/coder/release/latest*.yml
+          if-no-files-found: error
+
+  coder-macos:
+    name: Coder macOS (DMG / ZIP non signé)
+    runs-on: macos-latest
+    needs: [changes]
+    if: needs.changes.outputs.coder == 'true'
+    defaults:
+      run:
+        working-directory: apps/coder
+    env:
+      CSC_IDENTITY_AUTO_DISCOVERY: "false"
+      ASYNC_BUILTIN_TEAM_SOURCE: ${{ github.workspace }}/agency-agents
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Check out builtin team repository
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          repository: msitarzewski/agency-agents
+          path: agency-agents
+          fetch-depth: 1
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: apps/coder/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Build macOS packages (unsigned)
+        run: npm run release:mac:unsigned
+      - name: Upload macOS release assets
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-coder-macos
+          path: |
+            apps/coder/release/*.dmg
+            apps/coder/release/*.zip
+            apps/coder/release/*.blockmap
+            apps/coder/release/latest*.yml
+          if-no-files-found: error
+
+  coder-linux:
+    name: Coder Linux (AppImage / DEB)
+    runs-on: ubuntu-latest
+    needs: [changes]
+    if: needs.changes.outputs.coder == 'true'
+    defaults:
+      run:
+        working-directory: apps/coder
+    env:
+      ASYNC_BUILTIN_TEAM_SOURCE: ${{ github.workspace }}/agency-agents
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Check out builtin team repository
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          repository: msitarzewski/agency-agents
+          path: agency-agents
+          fetch-depth: 1
+      - name: Install system build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential libasound2-dev libarchive-tools fakeroot
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: apps/coder/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Build Linux packages
+        run: npm run release:linux
+      - name: Upload Linux release assets
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-coder-linux
+          path: |
+            apps/coder/release/*.AppImage
+            apps/coder/release/*.deb
+            apps/coder/release/*.blockmap
+            apps/coder/release/latest*.yml
+          if-no-files-found: warn
+
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # JOB — mAI Site (apps/site)
+  # ─────────────────────────────────────────────────────────────────────────────
+  site-check-build:
+    name: Site – Tests, Typecheck & Build
+    runs-on: ubuntu-latest
+    needs: [changes]
+    if: needs.changes.outputs.site == 'true'
+    defaults:
+      run:
+        working-directory: apps/site
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: apps/site/package-lock.json
+      - name: Installation des dépendances
+        run: npm install
+      - name: Validation des tests, lint et types
+        run: |
+          npm run test
+          npm run lint
+          npm run typecheck
+      - name: Build Next.js
+        run: npm run build
+

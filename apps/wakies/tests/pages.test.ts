@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { WorkspaceStore } from '../src/server/workspace.js';
 it('persists nested page content and revision across restart', () => {
-  const dir = mkdtempSync(join(tmpdir(), 'dots-pages-'));
+  const dir = mkdtempSync(join(tmpdir(), 'wakies-pages-'));
   let store = new WorkspaceStore(join(dir, 'db'), 'owner');
   const space = store.spaces()[0].id;
   const parent = store.pages.create(space, {

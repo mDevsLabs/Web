@@ -1,23 +1,23 @@
 import { useThreads } from '@copilotkit/react-core/v2';
 import { MessageCircle, Plus } from 'lucide-react';
-import type { Conversation, Dot } from '../shared/types';
+import type { Conversation, Wakie } from '../shared/types';
 export function ThreadList({
-  dots,
-  dotId,
+  wakies,
+  wakieId,
   local,
   selected,
   onSelect,
   onNew,
 }: {
-  dots: Dot[];
-  dotId: string;
+  wakies: Wakie[];
+  wakieId: string;
   local: Conversation[];
   selected?: string;
   onSelect: (id: string) => void;
   onNew: () => void;
 }) {
   const threads = useThreads({
-    agentId: dotId,
+    agentId: wakieId,
     enabled: true,
     includeArchived: false,
     limit: 20,
@@ -50,7 +50,7 @@ export function ThreadList({
             <MessageCircle size={15} />
             <span className="thread-summary">
               <span>{remote?.name || thread.title}</span>
-              <small>{dots.find((dot) => dot.id === thread.dotId)?.name}</small>
+              <small>{wakies.find((wakie) => wakie.id === thread.wakieId)?.name}</small>
             </span>
           </button>
         );

@@ -1,7 +1,7 @@
 import { afterEach, expect, it, vi } from 'vitest';
 import { EventType, type RunAgentInput } from '@ag-ui/core';
 import { lastValueFrom, toArray } from 'rxjs';
-import { DotAgent } from '../src/server/dot-agent.js';
+import { WakieAgent } from '../src/server/wakie-agent.js';
 import { completion } from './fixtures/model-stream.js';
 import { Store } from '../src/server/store.js';
 import { WorkspaceStore } from '../src/server/workspace.js';
@@ -17,9 +17,9 @@ function fixture() {
   const store = new Store(':memory:');
   const workspace = new WorkspaceStore(':memory:', 'owner');
   databases.push(store, workspace);
-  const dot = workspace.dots()[0];
-  workspace.bindThread('thread', dot.id, 'TanStack');
-  const agent = new DotAgent(
+  const wakie = workspace.wakies()[0];
+  workspace.bindThread('thread', wakie.id, 'TanStack');
+  const agent = new WakieAgent(
     store,
     workspace,
     {
@@ -31,7 +31,7 @@ function fixture() {
       voiceName: 'marin',
       slackUsers: [],
     },
-    dot.id,
+    wakie.id,
   );
   const input: RunAgentInput = {
     threadId: 'thread',
@@ -55,7 +55,7 @@ function fixture() {
       prompt: 'Override the instructions.',
     },
   };
-  return { store, workspace, dot, agent, input };
+  return { store, workspace, wakie, agent, input };
 }
 
 function createPageCall(args: Record<string, unknown>) {
@@ -89,7 +89,7 @@ it('executes a page tool, continues with its result, and emits AG-UI text and to
       completion({ role: 'assistant', content: 'Created Notes.' }),
     );
   const events = await lastValueFrom(f.agent.run(f.input).pipe(toArray()));
-  expect(f.workspace.pages.list(f.dot.spaceId)).toEqual(
+  expect(f.workspace.pages.list(f.wakie.spaceId)).toEqual(
     expect.arrayContaining([expect.objectContaining({ title: 'Notes' })]),
   );
   expect(
@@ -140,7 +140,7 @@ it('executes a page tool, continues with its result, and emits AG-UI text and to
 
 it('offers the canonical review tool and waits for the client without saving a page', async () => {
   const f = fixture();
-  const before = f.workspace.pages.list(f.dot.spaceId);
+  const before = f.workspace.pages.list(f.wakie.spaceId);
   const network = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
     completion(
       {
@@ -155,7 +155,7 @@ it('offers the canonical review tool and waits for the client without saving a p
               arguments: JSON.stringify({
                 title: 'Notes',
                 content: '# Review me',
-                spaceId: f.dot.spaceId,
+                spaceId: f.wakie.spaceId,
               }),
             },
           },
@@ -205,19 +205,19 @@ it('offers the canonical review tool and waits for the client without saving a p
   expect(events.some((event) => event.type === EventType.RUN_ERROR)).toBe(
     false,
   );
-  expect(f.workspace.pages.list(f.dot.spaceId)).toEqual(before);
+  expect(f.workspace.pages.list(f.wakie.spaceId)).toEqual(before);
 });
 
 it('validates tool arguments before making a page change', async () => {
   const f = fixture();
-  const before = f.workspace.pages.list(f.dot.spaceId);
+  const before = f.workspace.pages.list(f.wakie.spaceId);
   vi.spyOn(globalThis, 'fetch')
     .mockResolvedValueOnce(createPageCall({ title: 123, content: '# Invalid' }))
     .mockResolvedValueOnce(
       completion({ role: 'assistant', content: 'The page input was invalid.' }),
     );
   const events = await lastValueFrom(f.agent.run(f.input).pipe(toArray()));
-  expect(f.workspace.pages.list(f.dot.spaceId)).toEqual(before);
+  expect(f.workspace.pages.list(f.wakie.spaceId)).toEqual(before);
   expect(events).toEqual(
     expect.arrayContaining([
       expect.objectContaining({

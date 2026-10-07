@@ -1,0 +1,34 @@
+"use client";
+import { createIcon } from "./create-icon.js";
+export * from "./icons/animals/index.js";
+export * from "./icons/arrows/index.js";
+export * from "./icons/buildings/index.js";
+export * from "./icons/charts/index.js";
+export * from "./icons/cloud/index.js";
+export * from "./icons/commerce/index.js";
+export * from "./icons/communication/index.js";
+export * from "./icons/controls/index.js";
+export * from "./icons/development/index.js";
+export * from "./icons/devices/index.js";
+export * from "./icons/editing/index.js";
+export * from "./icons/energy/index.js";
+export * from "./icons/files/index.js";
+export * from "./icons/food/index.js";
+export * from "./icons/health/index.js";
+export * from "./icons/interface/index.js";
+export * from "./icons/maps/index.js";
+export * from "./icons/media/index.js";
+export * from "./icons/misc/index.js";
+export * from "./icons/nature/index.js";
+export * from "./icons/objects/index.js";
+export * from "./icons/people/index.js";
+export * from "./icons/science/index.js";
+export * from "./icons/security/index.js";
+export * from "./icons/sports/index.js";
+export * from "./icons/symbols/index.js";
+export * from "./icons/time/index.js";
+export * from "./icons/tools/index.js";
+export * from "./icons/transport/index.js";
+export {
+  createIcon
+};

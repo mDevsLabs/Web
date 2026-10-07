@@ -1,4 +1,4 @@
-const characters = ['blue', 'mint', 'orange', 'purple'] as const;
+const characters = ['blue', 'mint', 'orange', 'purple', 'red'] as const;
 
 /** Stable identity keeps each specialist recognizable across views and reloads. */
 function characterFor(identity?: string) {
@@ -13,7 +13,7 @@ export function Mascot({
   state = 'idle',
   small = false,
   identity,
-  name = 'Dot',
+  name = 'Wakie',
   decorative = false,
 }: {
   state?: string;
@@ -26,7 +26,7 @@ export function Mascot({
     <span className={`mascot ${state} ${small ? 'small' : ''}`}>
       <img
         className="dot-body"
-        src={`/dots/${characterFor(identity)}.png`}
+        src={`/wakies/${characterFor(identity)}.PNG`}
         alt={decorative ? '' : `${name} is ${state}`}
         width={512}
         height={512}

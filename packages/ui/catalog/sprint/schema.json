@@ -1,0 +1,71 @@
+{
+  "model": "Sprint",
+  "config": {
+    "name": "Sprint",
+    "label": "Sprints",
+    "description": "Gérez vos sprints depuis une interface claire.",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Nom",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "goal",
+        "label": "Objectif",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "startDate",
+        "label": "Début",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "endDate",
+        "label": "Fin",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "planned",
+          "active",
+          "completed"
+        ]
+      }
+    ],
+    "titleKey": "name",
+    "settings": [
+      {
+        "key": "notifySprint",
+        "label": "Notifications : sprints",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveSprint",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section sprints."
+      },
+      {
+        "key": "approveSprint",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "sprint-demo-1",
+    "name": "Sprint 12",
+    "goal": "Objectif démo",
+    "startDate": "2026-10-04",
+    "endDate": "2026-10-04",
+    "status": "planned"
+  }
+}

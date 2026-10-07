@@ -7,7 +7,7 @@ export function validateRuntimeScope(
   const url = new URL(request.url);
   const prefix = '/api/copilotkit/';
   const deny = () => {
-    throw new Error('This runtime route is not enabled in OpenDots.');
+    throw new Error('This runtime route is not enabled in Wakies.');
   };
   if (!url.pathname.startsWith(prefix)) return deny();
   const path = url.pathname.slice(prefix.length);
@@ -63,7 +63,7 @@ export function validateRuntimeScope(
   for (const candidate of [agentId, bodyAgent, queryAgent]) {
     if (
       candidate &&
-      (!workspace.dot(candidate) || (agentId && candidate !== agentId))
+      (!workspace.wakie(candidate) || (agentId && candidate !== agentId))
     )
       return deny();
   }

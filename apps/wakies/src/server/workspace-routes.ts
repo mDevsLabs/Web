@@ -7,7 +7,7 @@ import {
   learningContainerIdSchema,
   validateLearningSettings,
 } from '../shared/learning.js';
-const dotSchema = z
+const wakieSchema = z
   .object({
     name: z.string().trim().min(1).max(40),
     instructions: z.string().trim().min(3).max(2000),
@@ -25,7 +25,7 @@ export function workspaceRoutes(platform: Platform, voice: VoiceService) {
   app.get('/workspace', (c) =>
     c.json({
       spaces: platform.workspace.spaces(),
-      dots: platform.workspace.dots(),
+      wakies: platform.workspace.wakies(),
       conversations: platform.workspace.conversations(),
       setup: platform.setup(),
       calls: platform.workspace.calls(),
@@ -49,8 +49,8 @@ export function workspaceRoutes(platform: Platform, voice: VoiceService) {
       201,
     );
   });
-  app.post('/dots', async (c) => {
-    const data = dotSchema
+  app.post('/wakies', async (c) => {
+    const data = wakieSchema
       .extend({ spaceId: z.string() })
       .safeParse(await c.req.json());
     if (!data.success)
@@ -78,7 +78,7 @@ export function workspaceRoutes(platform: Platform, voice: VoiceService) {
       );
     }
     return c.json(
-      platform.workspace.createDot(
+      platform.workspace.createWakie(
         data.data.spaceId,
         data.data.name,
         data.data.instructions,
@@ -91,12 +91,12 @@ export function workspaceRoutes(platform: Platform, voice: VoiceService) {
       201,
     );
   });
-  app.put('/dots/:id', async (c) => {
-    const data = dotSchema.safeParse(await c.req.json());
+  app.put('/wakies/:id', async (c) => {
+    const data = wakieSchema.safeParse(await c.req.json());
     if (!data.success)
       return c.json({ error: 'Invalid specialist settings.' }, 400);
-    const current = platform.workspace.dot(c.req.param('id'));
-    if (!current) return c.json({ error: 'Dot not found.' }, 404);
+    const current = platform.workspace.wakie(c.req.param('id'));
+    if (!current) return c.json({ error: 'Wakie not found.' }, 404);
     try {
       validateLearningSettings(
         data.data.learningContainerId === undefined
@@ -115,25 +115,25 @@ export function workspaceRoutes(platform: Platform, voice: VoiceService) {
         400,
       );
     }
-    return c.json(platform.workspace.updateDot(c.req.param('id'), data.data));
+    return c.json(platform.workspace.updateWakie(c.req.param('id'), data.data));
   });
   app.post('/conversations', async (c) => {
     const data = z
       .object({
-        dotId: z.string(),
+        wakieId: z.string(),
         title: z.string().trim().min(1).max(120).default('A new thought'),
       })
       .strict()
       .safeParse(await c.req.json());
     if (!data.success)
-      return c.json({ error: 'Select a Dot and a conversation title.' }, 400);
+      return c.json({ error: 'Select a Wakie and a conversation title.' }, 400);
     if (platform.setup().missing.length)
       return c.json(
         { error: `Setup required: ${platform.setup().missing.join(', ')}.` },
         503,
       );
     return c.json(
-      await platform.createConversation(data.data.dotId, data.data.title),
+      await platform.createConversation(data.data.wakieId, data.data.title),
       201,
     );
   });
@@ -203,7 +203,7 @@ export function workspaceRoutes(platform: Platform, voice: VoiceService) {
   app.onError((error, c) => {
     const text = error.message;
     const known =
-      /^(Setup|Voice setup|Dot |Space |Specialist |Conversation |Call |This call|End the current|Voice provider|An audio|Intelligence could not)/.test(
+      /^(Setup|Voice setup|Wakie |Space |Specialist |Conversation |Call |This call|End the current|Voice provider|An audio|Intelligence could not)/.test(
         text,
       );
     return c.json(

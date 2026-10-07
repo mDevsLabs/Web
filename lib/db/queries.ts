@@ -26,6 +26,8 @@ import type { ToolCategory } from "@/lib/agent/types";
 import { resolveBillableTotal } from "@/lib/agent/usage";
 import { dedupeAgentTemplatesByName } from "@/lib/agent-templates/dedupe";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { normalizeAppKey } from "@/lib/apps/catalog";
+import { normalizeCreationMode } from "@/lib/creation/mode";
 import { resolveDatabaseUrl } from "@/lib/db/connection-string";
 import {
   AUTO_DICTATION_LANGUAGE,
@@ -4391,12 +4393,14 @@ export async function getUserPreferences(userId: string) {
       return {
         customInstructions: row.customInstructions || "",
         defaultAgentId: row.defaultAgentId || null,
+        defaultApp: normalizeAppKey(row.defaultApp),
         defaultAudioModel: row.defaultAudioModel || "deepgram/flux-tts:free",
         defaultAudioSpeed: row.defaultAudioSpeed ?? 1.0,
         defaultAudioVoice: row.defaultAudioVoice || "flux-alexis-en",
         defaultChatModel: row.defaultChatModel || null,
         defaultChatVisibility:
           (row.defaultChatVisibility as "private" | "public") || "private",
+        defaultCreationMode: normalizeCreationMode(row.defaultCreationMode),
         // Une locale ou une cible illisible retombe sur son défaut : la
         // dictée et la traduction doivent toujours fonctionner.
         defaultDictationLanguage: normalizeDictationLanguage(
@@ -4423,11 +4427,13 @@ export async function getUserPreferences(userId: string) {
   return {
     customInstructions: legacy.customInstructions ?? "",
     defaultAgentId: null,
+    defaultApp: "mai",
     defaultAudioModel: "deepgram/flux-tts:free",
     defaultAudioSpeed: 1.0,
     defaultAudioVoice: "flux-alexis-en",
     defaultChatModel: null,
     defaultChatVisibility: "private" as const,
+    defaultCreationMode: "image" as const,
     defaultDictationLanguage: AUTO_DICTATION_LANGUAGE,
     defaultImageModel: "black-forest-labs/flux-schnell",
     defaultImageSize: "1024x1024",
@@ -4446,6 +4452,9 @@ type UserPreferencesPatch = Partial<{
   temperature: number;
   topP: number;
   defaultAgentId: string | null;
+  // Menu favori : application ouverte par défaut après connexion.
+  defaultApp: string;
+  defaultCreationMode: "image" | "audio";
   defaultChatModel: string | null;
   defaultChatVisibility: "private" | "public";
   defaultDictationLanguage: string;
@@ -4577,11 +4586,16 @@ export async function upsertUserPreferences(
           customInstructions: data.customInstructions ?? "",
           customInstructionsEnabled: data.enabled ?? false,
           defaultAgentId: data.defaultAgentId ?? null,
+          // La validité (mai | site | vibe | code) est imposée par le schéma
+          // zod de la route ; ici on borne quand même la écriture : une valeur
+          // inattendue vaut « mai », comme un tier illisible vaut free.
+          defaultApp: normalizeAppKey(data.defaultApp),
           defaultAudioModel: data.defaultAudioModel ?? "deepgram/flux-tts:free",
           defaultAudioSpeed: data.defaultAudioSpeed ?? 1.0,
           defaultAudioVoice: data.defaultAudioVoice ?? "flux-alexis-en",
           defaultChatModel: data.defaultChatModel ?? null,
           defaultChatVisibility: data.defaultChatVisibility ?? "private",
+          defaultCreationMode: normalizeCreationMode(data.defaultCreationMode),
           defaultDictationLanguage: normalizeDictationLanguage(
             data.defaultDictationLanguage
           ),
@@ -4613,6 +4627,13 @@ export async function upsertUserPreferences(
     if (data.topP !== undefined) updatePayload.defaultTopP = data.topP;
     if (data.defaultAgentId !== undefined)
       updatePayload.defaultAgentId = data.defaultAgentId;
+    if (data.defaultApp !== undefined)
+      updatePayload.defaultApp = normalizeAppKey(data.defaultApp);
+    if (data.defaultCreationMode !== undefined) {
+      updatePayload.defaultCreationMode = normalizeCreationMode(
+        data.defaultCreationMode
+      );
+    }
     if (data.defaultChatModel !== undefined)
       updatePayload.defaultChatModel = data.defaultChatModel;
     if (data.defaultChatVisibility !== undefined)
@@ -4648,7 +4669,11 @@ export async function upsertUserPreferences(
 
     return updated;
   } catch (error) {
-    if (!isMissingUserPreferencesTable(error)) {
+    // Les anciens comptes ne peuvent pas enregistrer ce nouveau champ sans migration.
+    if (
+      data.defaultCreationMode !== undefined ||
+      !isMissingUserPreferencesTable(error)
+    ) {
       throw error;
     }
     console.warn(

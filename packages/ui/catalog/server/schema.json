@@ -1,0 +1,71 @@
+{
+  "model": "Server",
+  "config": {
+    "name": "Server",
+    "label": "Serveurs",
+    "description": "Gérez vos serveurs depuis une interface claire.",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Nom",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "region",
+        "label": "Région",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "cpuPercent",
+        "label": "CPU (%)",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "memoryGb",
+        "label": "Mémoire (Go)",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "online",
+          "offline",
+          "maintenance"
+        ]
+      }
+    ],
+    "titleKey": "name",
+    "settings": [
+      {
+        "key": "notifyServer",
+        "label": "Notifications : serveurs",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveServer",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section serveurs."
+      },
+      {
+        "key": "approveServer",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "server-demo-1",
+    "name": "api-eu-01",
+    "region": "Europe",
+    "cpuPercent": 128,
+    "memoryGb": 128,
+    "status": "online"
+  }
+}

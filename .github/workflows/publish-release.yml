@@ -1,0 +1,125 @@
+# La publication s'exécute depuis la branche de confiance après le build.
+# Cela permet aussi les releases de PR externes sans exécuter leur code avec un jeton d'écriture.
+name: Publier la release du build
+on:
+  workflow_run:
+    workflows: ["Build et déploiements"]
+    types: [completed]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  publish:
+    name: Release Stable, Beta ou PR
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - name: Charger les scripts de confiance
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+      - name: Déterminer et réserver le tag
+        id: release
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { nextReleaseTag, releaseChannel, releaseTitle, validateReleaseVersion } =
+              await import(process.cwd() + '/scripts/release-version.mjs');
+            const run = context.payload.workflow_run;
+            const sourceRepo = run.head_repository;
+            const source = sourceRepo
+              ? { owner: sourceRepo.owner.login, repo: sourceRepo.name }
+              : context.repo;
+            const { data: pkg } = await github.rest.repos.getContent({
+              ...source, path: 'package.json', ref: run.head_sha
+            });
+            if (Array.isArray(pkg) || pkg.type !== 'file') throw new Error('package.json absent du commit construit.');
+            const version = validateReleaseVersion(JSON.parse(Buffer.from(pkg.content, 'base64').toString()).version);
+            const channel = releaseChannel(run.event, run.head_branch);
+            // Un relancement de publication reprend la release de ce même build.
+            const marker = '<!-- mai-build:' + run.id + ':' + run.run_attempt + ' -->';
+            const releases = await github.paginate(github.rest.repos.listReleases, { ...context.repo, per_page: 100 });
+            const previous = releases.find(item => item.body?.includes(marker));
+            let tag = previous?.tag_name;
+            if (!tag) {
+              for (let attempt = 0; attempt < 20; attempt++) {
+                const refs = await github.paginate(github.rest.git.listMatchingRefs, {
+                  ...context.repo, ref: 'tags/' + channel + '.' + version
+                });
+                tag = nextReleaseTag(version, channel, refs.map(item => item.ref.slice('refs/tags/'.length)));
+                try {
+                  await github.rest.git.createRef({ ...context.repo, ref: 'refs/tags/' + tag, sha: run.head_sha });
+                  break;
+                } catch (error) {
+                  if (![409, 422].includes(error.status)) throw error;
+                  const { data: refsNow } = await github.rest.git.listMatchingRefs({
+                    ...context.repo, ref: 'tags/' + tag
+                  });
+                  if (!refsNow.some(item => item.ref === 'refs/tags/' + tag)) throw error;
+                  if (channel === 'stable') throw new Error('La version stable existe déjà : augmentez package.json.');
+                  tag = undefined;
+                }
+              }
+            }
+            if (!tag) throw new Error('Impossible de réserver un numéro de release après 20 tentatives.');
+            const { data: notes } = await github.rest.repos.generateReleaseNotes({
+              ...context.repo, tag_name: tag, target_commitish: run.head_sha
+            });
+            const body = marker + '\n\n' + notes.body + '\n\n' +
+              '### Compilation\n- Canal : ' + channel +
+              '\n- Version : ' + version + '\n- Commit : ' + run.head_sha +
+              '\n- Exécution : ' + run.html_url +
+              '\n\nLes téléchargements correspondent aux applications construites pendant cette exécution.';
+            const options = {
+              ...context.repo, tag_name: tag, name: releaseTitle(tag), body,
+              target_commitish: run.head_sha, prerelease: channel !== 'stable',
+              make_latest: channel === 'stable' ? 'true' : 'false'
+            };
+            const { data: release } = previous
+              ? await github.rest.repos.updateRelease({ ...options, release_id: previous.id })
+              : await github.rest.repos.createRelease(options);
+            core.setOutput('id', release.id);
+            core.setOutput('tag', tag);
+            core.setOutput('url', release.html_url);
+      - name: Télécharger les artefacts de cette exécution
+        uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+          path: release-artifacts
+      - name: Joindre les fichiers construits
+        uses: actions/github-script@v7
+        env:
+          RELEASE_ID: ${{ steps.release.outputs.id }}
+        with:
+          script: |
+            const fs = require('node:fs/promises');
+            const path = require('node:path');
+            const releaseId = Number(process.env.RELEASE_ID);
+            const existing = await github.paginate(github.rest.repos.listReleaseAssets, {
+              ...context.repo, release_id: releaseId, per_page: 100
+            });
+            async function visit(dir) {
+              for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
+                const file = path.join(dir, entry.name);
+                if (entry.isSymbolicLink()) continue;
+                if (entry.isDirectory()) { await visit(file); continue; }
+                if (!/\.(exe|msi|dmg|zip|deb|rpm|AppImage|snap|apk|ipa|aab|blockmap|yml)$/i.test(entry.name)) continue;
+                // Le préfixe d'artefact évite les collisions entre applications.
+                const relative = path.relative('release-artifacts', file);
+                const name = relative.split(path.sep).join('-');
+                if (existing.some(asset => asset.name === name)) continue;
+                await github.rest.repos.uploadReleaseAsset({
+                  ...context.repo, release_id: releaseId, name,
+                  data: await fs.readFile(file),
+                  headers: { 'content-type': 'application/octet-stream' }
+                });
+              }
+            }
+            try { await fs.access('release-artifacts'); }
+            catch { core.info('Cette exécution ne contient aucun artefact téléchargeable.'); return; }
+            await visit('release-artifacts');

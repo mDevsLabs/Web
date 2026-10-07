@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Organization", "label": "Organisations", "description": "G\xE9rez vos organisations depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "industry", "label": "Secteur", "kind": "text", "required": true }, { "key": "employeeCount", "label": "Collaborateurs", "kind": "number", "required": true }, { "key": "country", "label": "Pays", "kind": "text", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["active", "pending", "archived"] }], "titleKey": "name", "settings": [{ "key": "notifyOrganization", "label": "Notifications : organisations", "description": "Recevoir un signal lors des changements." }, { "key": "archiveOrganization", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section organisations." }, { "key": "approveOrganization", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

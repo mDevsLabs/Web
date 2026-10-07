@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Lesson", "label": "Le\xE7ons", "description": "G\xE9rez vos le\xE7ons depuis une interface claire.", "fields": [{ "key": "title", "label": "Titre", "kind": "text", "required": true }, { "key": "course", "label": "Formation", "kind": "text", "required": true }, { "key": "durationMinutes", "label": "Dur\xE9e (min)", "kind": "number", "required": true }, { "key": "position", "label": "Ordre", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "published"] }], "titleKey": "title", "settings": [{ "key": "notifyLesson", "label": "Notifications : le\xE7ons", "description": "Recevoir un signal lors des changements." }, { "key": "archiveLesson", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section le\xE7ons." }, { "key": "approveLesson", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

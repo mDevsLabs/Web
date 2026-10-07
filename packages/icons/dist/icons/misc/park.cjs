@@ -1,0 +1,30 @@
+"use client";
+"use strict";
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var park_exports = {};
+__export(park_exports, {
+  ParkIcon: () => ParkIcon
+});
+module.exports = __toCommonJS(park_exports);
+var import_create_icon = require("../../create-icon.cjs");
+const ParkIcon = /* @__PURE__ */ (0, import_create_icon.createIcon)("ParkIcon", [["path", { "d": "M12 18h10" }], ["path", { "d": "M13.248 9.998A4.5 4.5 0 0 0 11.75 8.6V8a1 1 0 0 0-7.5 0 4.9 4.9 0 0 0 2.25 9H8" }], ["path", { "d": "m15 14-2 6" }], ["path", { "d": "m19 14 2 6" }], ["path", { "d": "M21 14h-8" }], ["path", { "d": "M8 20v-5.922a2 2 0 0 0-.586-1.414L6.5 11.75" }], ["path", { "d": "M9.205 12.795 8 14" }], ["circle", { "cx": "19", "cy": "6", "r": "2" }]]);
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+  ParkIcon
+});

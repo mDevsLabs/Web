@@ -1,0 +1,64 @@
+import { ipcMain } from "electron";
+import {
+  type AutoUpdateStatus,
+  checkForUpdates,
+  downloadUpdate,
+  getStatus,
+  openUpdateFolder,
+  quitAndInstall,
+} from "../../autoUpdate.js";
+
+/**
+ * 自动更新 IPC：检查 / 下载 / 安装 / 状态。行为与原 register.ts 完全一致。
+ */
+export function registerAutoUpdateHandlers(): void {
+  ipcMain.handle("auto-update:check", async (): Promise<AutoUpdateStatus> => {
+    try {
+      return await checkForUpdates();
+    } catch (e) {
+      return { message: String(e), state: "error" };
+    }
+  });
+
+  /** 自动更新：下载更新 */
+  ipcMain.handle(
+    "auto-update:download",
+    async (): Promise<{ ok: boolean; error?: string }> => {
+      try {
+        await downloadUpdate();
+        return { ok: true };
+      } catch (e) {
+        return { error: String(e), ok: false };
+      }
+    }
+  );
+
+  /** 自动更新：重启并安装 */
+  ipcMain.handle(
+    "auto-update:install",
+    (): Promise<{ ok: boolean; error?: string }> => {
+      try {
+        quitAndInstall();
+        return Promise.resolve({ ok: true });
+      } catch (e) {
+        return Promise.resolve({ error: String(e), ok: false });
+      }
+    }
+  );
+
+  /** 自动更新：获取当前状态 */
+  ipcMain.handle("auto-update:get-status", (): AutoUpdateStatus => getStatus());
+
+  /** 自动更新：打开更新包所在文件夹 */
+  ipcMain.handle(
+    "auto-update:open-folder",
+    (): Promise<{ ok: boolean; error?: string }> => {
+      try {
+        openUpdateFolder();
+        return Promise.resolve({ ok: true });
+      } catch (e) {
+        return Promise.resolve({ error: String(e), ok: false });
+      }
+    }
+  );
+}

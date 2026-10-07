@@ -44,6 +44,22 @@ const FORBIDDEN: [RegExp, string][] = [
     /(AlertDialogTitle|DialogTitle|SheetTitle)[^>]*>\s*(Activate|Cancel|Close|Save|Delete|Loading|Retry|AI Gateway)\b/,
     "titre de dialogue anglais",
   ],
+  // Balayage élargi après la refonte Bibliothèque : des toasts anglais
+  // (« Please wait for the model… », « Failed to execute action ») et un
+  // libellé de soumission (« Submit form ») avaient survécu aux motifs
+  // initiaux, trop étroits.
+  [
+    /toast\.(error|success|info|warning)\(\s*"(Please|Failed|Something went wrong|Unexpected error|An error occurred|Oops)\b/,
+    "toast anglais",
+  ],
+  [
+    />\s*(Loading|Saving|Deleting|Uploading|Sending|Submitting|Cancel|Confirm|Delete|Remove|Edit|Share|Retry|Done|Apply|Reset|Refresh|Submit|Continue|Next|Previous|Back|Skip)\s*[<…]/,
+    "texte de bouton anglais",
+  ],
+  [
+    /(placeholder|title|aria-label)="(Type|Enter|Search|Write|Ask) [^"]*"/,
+    "placeholder/title anglais",
+  ],
 ];
 
 function walk(dir: string): string[] {

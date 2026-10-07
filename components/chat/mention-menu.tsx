@@ -135,9 +135,9 @@ function buildFlatList(
     },
     {
       action: "library",
-      description: "Stockage, fichiers et documents",
+      description: "Bibliothèque, fichiers et documents",
       id: "sys-library",
-      label: "Library",
+      label: "Bibliothèque",
     },
     {
       action: "planning",

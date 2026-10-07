@@ -9,8 +9,8 @@ it('shows real terminal output and does not treat a nonzero exit as success', ()
       name="computer_exec"
       toolCallId="exec"
       status="complete"
-      dotId="scout"
-      dotName="Scout"
+      wakieId="scout"
+      wakieName="Scout"
       showScreen={false}
       running={false}
       result={JSON.stringify({
@@ -31,8 +31,8 @@ it('marks unfinished calls interrupted after a run ends and labels live views as
       name="computer_navigate"
       toolCallId="nav"
       status="inProgress"
-      dotId="scout"
-      dotName="Scout"
+      wakieId="scout"
+      wakieName="Scout"
       showScreen
       running={false}
       args={{ url: 'https://example.com' }}
@@ -67,8 +67,8 @@ it.each([
       name="computer_navigate"
       toolCallId="nav"
       status="complete"
-      dotId="scout"
-      dotName="Scout"
+      wakieId="scout"
+      wakieName="Scout"
       showScreen={false}
       running={false}
       result={JSON.stringify(result)}

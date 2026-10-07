@@ -6,7 +6,7 @@ services:
       COMPUTER_SUPERVISOR_URL: http://computer-supervisor:4300
       COMPUTER_SUPERVISOR_TOKEN: ${COMPUTER_SUPERVISOR_TOKEN:?Set COMPUTER_SUPERVISOR_TOKEN in .env}
       COMPUTER_TOKEN: ${COMPUTER_TOKEN:?Set COMPUTER_TOKEN in .env}
-      COMPUTER_NAMESPACE: ${COMPUTER_NAMESPACE:-opendots}
+      COMPUTER_NAMESPACE: ${COMPUTER_NAMESPACE:-wakies}
     networks:
       - computer-control
       - computers
@@ -14,9 +14,9 @@ services:
     # Container-run apps use service DNS; no host supervisor port is needed.
     ports: !reset []
     environment:
-      COMPUTER_NETWORK: ${COMPUTER_NAMESPACE:-opendots}-computers
+      COMPUTER_NETWORK: ${COMPUTER_NAMESPACE:-wakies}-computers
 networks:
   computer-control:
     internal: true
   computers:
-    name: ${COMPUTER_NAMESPACE:-opendots}-computers
+    name: ${COMPUTER_NAMESPACE:-wakies}-computers

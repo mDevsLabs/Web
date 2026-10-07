@@ -9,6 +9,8 @@
 
 import { VibeMaiRoute } from "@/components/vibe/pages/vibe-routes";
 
+export const instant = false;
+
 export default function Page() {
   return <VibeMaiRoute />;
 }

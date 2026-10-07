@@ -39,7 +39,7 @@ export const searchBooks = tool({
     url.searchParams.set("limit", String(limit));
     url.searchParams.set("fields", fields);
     const result = await fetchPublicJson<{
-      docs?: Array<Record<string, unknown>>;
+      docs?: Record<string, unknown>[];
       numFound?: number;
     }>(url.href, headers);
     if (!result.ok) return { error: result.error };
@@ -63,7 +63,7 @@ export const searchBookByIsbn = tool({
     url.searchParams.set("limit", "1");
     url.searchParams.set("fields", fields);
     const result = await fetchPublicJson<{
-      docs?: Array<Record<string, unknown>>;
+      docs?: Record<string, unknown>[];
     }>(url.href, headers);
     if (!result.ok) return { error: result.error };
     const book = result.data.docs?.[0];
@@ -118,7 +118,7 @@ export const getAuthorBooks = tool({
     url.searchParams.set("limit", String(limit));
     url.searchParams.set("fields", fields);
     const result = await fetchPublicJson<{
-      docs?: Array<Record<string, unknown>>;
+      docs?: Record<string, unknown>[];
       numFound?: number;
     }>(url.href, headers);
     if (!result.ok) return { error: result.error };

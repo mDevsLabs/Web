@@ -255,14 +255,14 @@ h3 {
 .sidebar-bottom {
   margin-top: auto;
 }
-.dot-note {
+.wakie-note {
   display: flex;
   gap: 10px;
   padding: 19px 13px 28px;
   color: #94949c;
   align-items: center;
 }
-.dot-note p {
+.wakie-note p {
   font-size: 11px;
   margin: 0;
   line-height: 1.7;
@@ -909,30 +909,30 @@ h3 {
   line-height: 1.8;
   overflow-wrap: anywhere;
 }
-.dot-message {
+.wakie-message {
   display: flex;
   align-items: flex-start;
   margin-top: 30px;
   gap: 5px;
 }
-.dot-message .mascot {
+.wakie-message .mascot {
   margin-left: -10px;
   margin-top: -5px;
 }
-.dot-message > div {
+.wakie-message > div {
   padding-top: 3px;
 }
-.dot-message strong {
+.wakie-message strong {
   font-size: 12px;
   font-weight: 550;
 }
-.dot-message strong span {
+.wakie-message strong span {
   font-size: 9px;
   color: #a1a2ae;
   margin-left: 6px;
   font-weight: 400;
 }
-.dot-message p {
+.wakie-message p {
   font-size: 12px;
   line-height: 1.8;
   color: #8c8f9b;
@@ -1054,16 +1054,16 @@ h3 {
   margin-left: auto;
   font-size: 9px;
 }
-.history-dot {
+.history-wakie {
   width: 5px;
   height: 5px;
   background: #b2bbc8;
   border-radius: 50%;
 }
-.history-dot.completed {
+.history-wakie.completed {
   background: #98b299;
 }
-.history-dot.failed {
+.history-wakie.failed {
   background: #c39b8e;
 }
 .history-result {
@@ -1941,7 +1941,7 @@ h3 {
 .space-title > span {
   flex: 1;
 }
-.dot-nav {
+.wakie-nav {
   display: flex;
   width: 100%;
   border: 0;
@@ -1953,14 +1953,14 @@ h3 {
   color: #777e90;
   border-radius: 7px;
 }
-.dot-nav > span:nth-child(2) {
+.wakie-nav > span:nth-child(2) {
   flex: 1;
 }
-.dot-nav.active {
+.wakie-nav.active {
   background: #eceff7;
   color: #6077b7;
 }
-.dot-nav-mark {
+.wakie-nav-mark {
   width: 8px;
   height: 10px;
   border-radius: 6px 6px 4px 4px;
@@ -2833,7 +2833,7 @@ h3 {
   text-underline-offset: 3px;
 }
 
-/* A Dot's persistent computer shares the findings panel. */
+/* A Wakie's persistent computer shares the findings panel. */
 .computer-overlay {
   position: fixed;
   top: 83px;
@@ -2854,7 +2854,7 @@ h3 {
   font-size: 13px;
   line-height: 1.5;
 }
-.computer-dot-picker {
+.computer-wakie-picker {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -2862,14 +2862,14 @@ h3 {
   border-bottom: 1px solid var(--line);
   font-size: 12px;
 }
-.computer-dot-picker select {
+.computer-wakie-picker select {
   flex: 1;
   min-width: 0;
 }
 .computer-panel input:not([type='checkbox']),
 .computer-panel textarea,
 .computer-panel select,
-.computer-dot-picker select {
+.computer-wakie-picker select {
   width: 100%;
   min-width: 0;
   border: 1px solid #c4c8d0;
@@ -2897,7 +2897,7 @@ h3 {
   opacity: 0.5;
 }
 .computer-panel :is(input, textarea, select, button):focus-visible,
-.computer-dot-picker select:focus-visible {
+.computer-wakie-picker select:focus-visible {
   outline: 2px solid #476ba0;
   outline-offset: 2px;
 }
@@ -3124,7 +3124,7 @@ h3 {
   display: none;
 }
 .template-app .nav-item,
-.template-app .dot-nav,
+.template-app .wakie-nav,
 .template-app .space-title,
 .template-app .thread-item {
   font-size: 13px;
@@ -3319,11 +3319,11 @@ h3 {
   top: 64px;
   width: min(660px, 100vw);
 }
-.computer-dot-picker {
+.computer-wakie-picker {
   padding: 10px 18px;
   color: #666;
 }
-.computer-dot-picker select {
+.computer-wakie-picker select {
   background: transparent;
   border: 0;
   font-size: 13px;
@@ -3488,7 +3488,7 @@ h3 {
   }
 }
 
-/* Plush Dot avatars share identity and state across every surface. */
+/* Plush Wakie avatars share identity and state across every surface. */
 .mascot {
   display: inline-flex;
   align-items: center;
@@ -3500,11 +3500,11 @@ h3 {
   height: 100%;
   object-fit: contain;
 }
-.template-app .dot-nav > .mascot.small {
+.template-app .wakie-nav > .mascot.small {
   width: 30px;
   height: 30px;
 }
-.dot-nav {
+.wakie-nav {
   min-height: 42px;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -3513,12 +3513,12 @@ h3 {
   }
 }
 
-/* Dots and document Spaces are peers; only pages belong inside Spaces. */
-.dots-nav {
+/* Wakies and document Spaces are peers; only pages belong inside Spaces. */
+.wakies-nav {
   display: grid;
   gap: 3px;
 }
-.dots-nav .dot-nav {
+.wakies-nav .wakie-nav {
   margin: 0;
   width: 100%;
   padding: 6px 10px;
@@ -3572,17 +3572,17 @@ h3 {
   font-size: 12px;
 }
 
-.dot-nav-row {
+.wakie-nav-row {
   display: flex;
   align-items: center;
   gap: 2px;
 }
-.dot-nav-row > .dot-nav {
+.wakie-nav-row > .wakie-nav {
   flex: 1;
   min-width: 0;
   align-items: center;
 }
-.dot-nav-row > .dot-settings {
+.wakie-nav-row > .wakie-settings {
   flex-shrink: 0;
 }
 .template-app .thread-summary small {

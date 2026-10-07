@@ -7,18 +7,18 @@ type Selector = NonNullable<
   >[0]['getLearningContainerId']
 >;
 
-/** Called before execution, including before a new channel thread reaches DotAgent. */
+/** Called before execution, including before a new channel thread reaches WakieAgent. */
 export function learningSelector(
   workspace: WorkspaceStore,
-  channelDotId?: string,
+  channelWakieId?: string,
 ): Selector {
   return ({ surface, user, agentId, input }) => {
     if (user?.id !== workspace.ownerId)
       throw new Error('Conversation learning requires the workspace owner.');
     if (surface === 'channel') {
-      if (agentId !== channelDotId)
+      if (agentId !== channelWakieId)
         throw new Error(
-          'Conversation learning requires the configured Slack Dot.',
+          'Conversation learning requires the configured Slack Wakie.',
         );
       if (
         !workspace

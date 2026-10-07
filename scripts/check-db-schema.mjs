@@ -35,6 +35,25 @@ const REQUIRED_TABLES = [
   "Stream",
   "ScheduledMessage",
   "UserMemory",
+  // Wakies (migration 0037) : sans ces tables, /wakies répond 500 dès le
+  // premier chargement de l'espace de travail, et l'application n'affiche
+  // qu'un écran de chargement infini.
+  "WakiesCall",
+  "WakiesCapture",
+  "WakiesConversation",
+  "WakiesMemory",
+  "WakiesMessage",
+  "WakiesPage",
+  "WakiesPageConversation",
+  "WakiesPageReview",
+  "WakiesSettings",
+  "WakiesSpace",
+  "WakiesTask",
+  "WakiesTaskConversation",
+  "WakiesTaskEvent",
+  "WakiesTaskRun",
+  "WakiesWakie",
+  "WakiesWakieSpace",
 ];
 
 // Colonnes introduites par des migrations récentes : détecte une base partiellement migrée.
@@ -65,6 +84,11 @@ const REQUIRED_COLUMNS = [
   // tombe en 42703 — pas seulement les deux réglages nouveaux.
   { column: "defaultDictationLanguage", table: "user_preferences" },
   { column: "defaultTranslationLanguage", table: "user_preferences" },
+  // Migration 0038 : le menu favori (mAI / Site / Vibe / Code) est lu à chaque
+  // requête de préférences ; une colonne absente ferait tomber la page
+  // Paramètres comme en 0034.
+  { column: "defaultApp", table: "user_preferences" },
+  { column: "defaultCreationMode", table: "user_preferences" },
   // Migration 0035 : sans `chatMode`/`chatProjectId`, la page Statistiques
   // retombe sur une jointure `Chat` et les tokens d'une conversation
   // SUPPRIMÉE disparaissent de l'historique — le filtre « mode » ferait

@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "PullRequest", "label": "Demandes de fusion", "description": "G\xE9rez vos demandes de fusion depuis une interface claire.", "fields": [{ "key": "title", "label": "Titre", "kind": "text", "required": true }, { "key": "author", "label": "Auteur", "kind": "text", "required": true }, { "key": "number", "label": "Num\xE9ro", "kind": "number", "required": true }, { "key": "changedFiles", "label": "Fichiers modifi\xE9s", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["open", "review", "merged", "closed"] }], "titleKey": "title", "settings": [{ "key": "notifyPullRequest", "label": "Notifications : demandes de fusion", "description": "Recevoir un signal lors des changements." }, { "key": "archivePullRequest", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section demandes de fusion." }, { "key": "approvePullRequest", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

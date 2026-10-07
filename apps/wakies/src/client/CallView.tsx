@@ -9,14 +9,14 @@ import {
   Maximize2,
 } from 'lucide-react';
 import { Mascot } from './Mascot';
-import type { Dot } from '../shared/types';
+import type { Wakie } from '../shared/types';
 import type { useVoice } from './useVoice';
 
 export function CallView({
-  dot,
+  wakie,
   voice,
 }: {
-  dot: Dot;
+  wakie: Wakie;
   voice: ReturnType<typeof useVoice>;
 }) {
   const [minimized, setMinimized] = useState(false);
@@ -39,14 +39,14 @@ export function CallView({
         : voice.muted
           ? 'Microphone muted'
           : voice.phase === 'speaking'
-            ? `${dot.name} is speaking`
+            ? `${wakie.name} is speaking`
             : voice.phase === 'thinking'
               ? 'Working on it…'
               : 'Listening';
   return (
     <section
       className={`call-view ${minimized ? 'minimized' : ''}`}
-      aria-label={`Voice call with ${dot.name}`}
+      aria-label={`Voice call with ${wakie.name}`}
     >
       <div className="call-heading">
         <span>
@@ -61,8 +61,8 @@ export function CallView({
         </button>
       </div>
       <div className={`call-persona ${voice.phase}`}>
-        <Mascot identity={dot.id} name={dot.name} />
-        <h2>{dot.name}</h2>
+        <Mascot identity={wakie.id} name={wakie.name} />
+        <h2>{wakie.name}</h2>
         <span className="call-timer" aria-label="Call duration">
           {duration}
         </span>
@@ -77,8 +77,8 @@ export function CallView({
             </p>
           )}
           <p>
-            <small>{dot.name}</small>
-            {voice.caption || 'Speak naturally. Your Dot is here with you.'}
+            <small>{wakie.name}</small>
+            {voice.caption || 'Speak naturally. Your Wakie is here with you.'}
           </p>
         </div>
       )}

@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Quote", "label": "Devis", "description": "G\xE9rez vos devis depuis une interface claire.", "fields": [{ "key": "number", "label": "Num\xE9ro", "kind": "text", "required": true }, { "key": "customer", "label": "Client", "kind": "text", "required": true }, { "key": "amount", "label": "Montant", "kind": "number", "required": true }, { "key": "validUntil", "label": "Validit\xE9", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "sent", "accepted", "declined"] }], "titleKey": "number", "settings": [{ "key": "notifyQuote", "label": "Notifications : devis", "description": "Recevoir un signal lors des changements." }, { "key": "archiveQuote", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section devis." }, { "key": "approveQuote", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Cart", "label": "Paniers", "description": "G\xE9rez vos paniers depuis une interface claire.", "fields": [{ "key": "reference", "label": "R\xE9f\xE9rence", "kind": "text", "required": true }, { "key": "customer", "label": "Client", "kind": "text", "required": true }, { "key": "itemCount", "label": "Articles", "kind": "number", "required": true }, { "key": "subtotal", "label": "Sous-total", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["open", "abandoned", "converted"] }], "titleKey": "reference", "settings": [{ "key": "notifyCart", "label": "Notifications : paniers", "description": "Recevoir un signal lors des changements." }, { "key": "archiveCart", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section paniers." }, { "key": "approveCart", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

@@ -5,9 +5,8 @@
  * ============================================================================
  */
 
-/* biome-ignore lint/complexity/noStaticOnlyClass: espace de noms de service — l'état privé (`memoryCache`) est porté par la classe ; un objet littéral le remonterait au niveau du module. */
 export class AppStorage {
-  private static memoryCache = new Map<string, string>();
+  private static readonly memoryCache = new Map<string, string>();
 
   /**
    * Récupère une valeur de manière synchrone depuis le cache mémoire / localStorage.

@@ -12,9 +12,9 @@ export function pageRoutes(platform: Platform) {
       c.req.param('toolCallId'),
     );
     if (!receipt) return c.json(null);
-    if (!platform.workspace.canAccessSpace(thread.dotId, receipt.spaceId))
+    if (!platform.workspace.canAccessSpace(thread.wakieId, receipt.spaceId))
       return c.json(
-        { error: 'This Dot no longer has access to the selected Space.' },
+        { error: 'This Wakie no longer has access to the selected Space.' },
         403,
       );
     return c.json(
@@ -28,9 +28,9 @@ export function pageRoutes(platform: Platform) {
     if (!data.success)
       return c.json({ error: 'Enter a valid page draft.' }, 400);
     const thread = platform.workspace.requireThread(c.req.param('id'));
-    if (!platform.workspace.canAccessSpace(thread.dotId, data.data.spaceId))
+    if (!platform.workspace.canAccessSpace(thread.wakieId, data.data.spaceId))
       return c.json(
-        { error: 'This Dot no longer has access to the selected Space.' },
+        { error: 'This Wakie no longer has access to the selected Space.' },
         403,
       );
     const { spaceId, toolCallId, ...draft } = data.data;
@@ -46,10 +46,10 @@ export function pageRoutes(platform: Platform) {
   });
   app.get('/conversations/:id/page-context', (c) => {
     const thread = platform.workspace.requireThread(c.req.param('id'));
-    const dot = platform.workspace.dot(thread.dotId)!;
+    const wakie = platform.workspace.wakie(thread.wakieId)!;
     const page = platform.workspace.pages.forThread(thread.id);
     return c.json(
-      page && platform.workspace.canAccessSpace(dot.id, page.spaceId)
+      page && platform.workspace.canAccessSpace(wakie.id, page.spaceId)
         ? { id: page.id, spaceId: page.spaceId, title: page.title }
         : null,
     );
@@ -94,7 +94,7 @@ export function pageRoutes(platform: Platform) {
   });
   app.post('/spaces/:spaceId/pages/:id/conversation', async (c) => {
     const data = z
-      .object({ dotId: z.string().min(1) })
+      .object({ wakieId: z.string().min(1) })
       .strict()
       .safeParse(await c.req.json());
     if (!data.success) return c.json({ error: 'Choose a specialist.' }, 400);
@@ -102,7 +102,7 @@ export function pageRoutes(platform: Platform) {
       await platform.pages.conversation(
         c.req.param('spaceId'),
         c.req.param('id'),
-        data.data.dotId,
+        data.data.wakieId,
       ),
     );
   });

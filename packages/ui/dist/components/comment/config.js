@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Comment", "label": "Commentaires", "description": "G\xE9rez vos commentaires depuis une interface claire.", "fields": [{ "key": "author", "label": "Auteur", "kind": "text", "required": true }, { "key": "content", "label": "Contenu", "kind": "text", "required": true }, { "key": "postedOn", "label": "Date", "kind": "date", "required": true }, { "key": "likeCount", "label": "R\xE9actions", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["pending", "approved", "flagged"] }], "titleKey": "author", "settings": [{ "key": "notifyComment", "label": "Notifications : commentaires", "description": "Recevoir un signal lors des changements." }, { "key": "archiveComment", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section commentaires." }, { "key": "approveComment", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Document", "label": "Documents", "description": "G\xE9rez vos documents depuis une interface claire.", "fields": [{ "key": "title", "label": "Titre", "kind": "text", "required": true }, { "key": "owner", "label": "Propri\xE9taire", "kind": "text", "required": true }, { "key": "pageCount", "label": "Pages", "kind": "number", "required": true }, { "key": "updatedOn", "label": "Modification", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "review", "published"] }], "titleKey": "title", "settings": [{ "key": "notifyDocument", "label": "Notifications : documents", "description": "Recevoir un signal lors des changements." }, { "key": "archiveDocument", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section documents." }, { "key": "approveDocument", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

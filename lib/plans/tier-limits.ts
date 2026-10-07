@@ -188,3 +188,111 @@ export function exceedsCustomInstructionsProductLimit(
   const productMax = getTierCustomInstructionsMax(tier);
   return productMax !== null && length > productMax;
 }
+/**
+ * ============================================================================
+ * QUOTAS WAKIES
+ * ============================================================================
+ *
+ * L'application Wakies (portée sous /wakies) crée des objets persistants :
+ * espaces, Wakies, pages, conversations, tâches récurrentes, mémoires. Le
+ * gabarit d'origine n'avait aucune limite : il était mono-utilisateur, donc
+ * borné par le fait qu'une seule personne l'utilisait. Dans l'hôte, cette
+ * borne n'existe plus — les tables sont partagées par tous les comptes.
+ *
+ * Ces quotas vivent ici, avec `TIER_LIMITS`, et nulle part ailleurs : c'est le
+ * point d'entrée unique de toute limite produit (AGENTS.md §5). Ils sont
+ * VOLUMÉTRIQUES et non calculés par l'interface — le serveur lit, applique, et
+ * répond ; le client ne fait que relire ce qu'il reçoit.
+ *
+ * Les TOKENS des conversations Wakies ne sont pas un quota distinct : ils
+ * consomment le quota hebdomadaire du chat (`chatWeeklyTokens`), comme une
+ * conversation du chat principal. Doubler le compteur donnerait l'impression
+ * d'un quota infini.
+ */
+
+/** Ressources comptées pour un compte, par forfait. `null` = illimité. */
+export type WakiesQuotaKey =
+  | "spaces"
+  | "wakies"
+  | "pages"
+  | "tasks"
+  | "memories"
+  | "conversations";
+
+const WAKIES_QUOTAS: Record<TierKey, Record<WakiesQuotaKey, number | null>> = {
+  free: {
+    // Wakies est réservé aux forfaits payants (Plus, Pro, Max). Pour le forfait
+    // Free, les quotas sont nuls, à l'instar des bots et du mode Agent.
+    conversations: 0,
+    memories: 0,
+    pages: 0,
+    spaces: 0,
+    tasks: 0,
+    wakies: 0,
+  },
+  max: {
+    conversations: null,
+    memories: null,
+    pages: null,
+    spaces: null,
+    tasks: null,
+    wakies: null,
+  },
+  plus: {
+    conversations: 100,
+    memories: 60,
+    pages: 200,
+    spaces: 8,
+    tasks: 10,
+    wakies: 6,
+  },
+  pro: {
+    conversations: 300,
+    memories: 100,
+    pages: 800,
+    spaces: 20,
+    tasks: 25,
+    wakies: 12,
+  },
+};
+
+/**
+ * Vrai si le forfait donne accès à l'application Wakies (Plus, Pro, Max).
+ */
+export function canAccessWakies(tier?: string | null): boolean {
+  return normalizeTierKey(tier) !== "free";
+}
+
+/**
+ * Quota d'une ressource pour un forfait. `null` = illimité : l'appelant ne
+ * doit alors compter aucune ligne.
+ */
+export function getWakiesQuota(
+  tier: string | null | undefined,
+  limit: WakiesQuotaKey
+): number | null {
+  return WAKIES_QUOTAS[normalizeTierKey(tier)][limit];
+}
+
+/** Quota de toutes les ressources : l'interface affiche, elle ne calcule pas. */
+export function getWakiesQuotas(
+  tier?: string | null
+): Record<WakiesQuotaKey, number | null> {
+  return WAKIES_QUOTAS[normalizeTierKey(tier)];
+}
+
+/** Message d'erreur affiché quand la limite est atteinte. */
+export function wakiesQuotaMessage(
+  limit: WakiesQuotaKey,
+  quota: number
+): string {
+  const ressources: Record<WakiesQuotaKey, string> = {
+    conversations: "conversations",
+    memories: "mémoires",
+    pages: "pages",
+    spaces: "espaces",
+    tasks: "tâches planifiées",
+    wakies: "Wakies",
+  };
+  return `Limite de ${quota} ${ressources[limit]} atteinte pour ce forfait. Supprimez-en une avant d'en créer une nouvelle.`;
+}

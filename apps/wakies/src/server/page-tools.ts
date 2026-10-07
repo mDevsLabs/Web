@@ -8,12 +8,12 @@ export function pageAccess(
   threadId: string,
   check: () => void,
 ) {
-  const dotId = workspace.requireThread(threadId).dotId;
+  const wakieId = workspace.requireThread(threadId).wakieId;
   const resolve = (requested?: string) => {
     check();
     const target =
       requested ?? workspace.pages.forThread(threadId)?.spaceId ?? spaceId;
-    if (!workspace.canAccessSpace(dotId, target))
+    if (!workspace.canAccessSpace(wakieId, target))
       throw new Error('Space access has been revoked or was not granted.');
     return target;
   };
@@ -27,7 +27,7 @@ export function pageAccess(
       check();
       return workspace
         .spaces()
-        .filter((space) => workspace.canAccessSpace(dotId, space.id));
+        .filter((space) => workspace.canAccessSpace(wakieId, space.id));
     },
     list: (requested?: string) =>
       workspace.pages
@@ -56,7 +56,7 @@ export function pageTools(access: ReturnType<typeof pageAccess>) {
   return [
     defineTool({
       name: 'list_authorized_spaces',
-      description: 'List Spaces this Dot has permission to use.',
+      description: 'List Spaces this Wakie has permission to use.',
       parameters: z.object({}),
       execute: async () => access.spaces(),
     }),

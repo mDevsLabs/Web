@@ -23,7 +23,7 @@ const runtimeInfoSchema = z.object({
 export async function runThreadTurn(
   runtimeUrl: string,
   headers: Record<string, string>,
-  dotId: string,
+  wakieId: string,
   threadId: string,
   prompt: string,
   signal: AbortSignal,
@@ -34,14 +34,14 @@ export async function runThreadTurn(
   if (!response.ok)
     throw new Error(`Intelligence runtime returned HTTP ${response.status}.`);
   const info = runtimeInfoSchema.parse(await response.json());
-  if (!Object.hasOwn(info.agents, dotId))
-    throw new Error('The selected Dot is unavailable in the runtime.');
+  if (!Object.hasOwn(info.agents, wakieId))
+    throw new Error('The selected Wakie is unavailable in the runtime.');
   // Core's runtime discovery is browser-only. Use the SDK's Node-compatible
   // Intelligence agent for voice compute and scheduled server turns.
   const agent = new IntelligenceAgent({
     url: info.intelligence.wsUrl,
     runtimeUrl,
-    agentId: dotId,
+    agentId: wakieId,
     headers,
     fetch: (input, init) =>
       fetch(input, {
@@ -61,7 +61,7 @@ export async function runThreadTurn(
   try {
     signal.throwIfAborted();
     agent.addMessage({
-      id: `${metadata?.opendotsSource === 'voice_receipt' ? voiceReceiptMessagePrefix : ''}${randomUUID()}`,
+      id: `${metadata?.wakiesSource === 'voice_receipt' ? voiceReceiptMessagePrefix : ''}${randomUUID()}`,
       role: 'user',
       content: prompt,
       ...(metadata ? { metadata } : {}),

@@ -1,16 +1,16 @@
 # OpenBot services pinned to the source revision reviewed for this template.
 # Build both images; only the supervisor is started directly. It creates one
-# computer per Dot, with separate named volumes for files and browser profiles.
+# computer per Wakie, with separate named volumes for files and browser profiles.
 services:
   computer-image:
     profiles: [build-computers]
-    image: opendots-computer:b6932d3
+    image: wakies-computer:b6932d3
     build:
       context: https://github.com/CopilotKit/OpenBot.git#b6932d31a8d6e7896c15139dfc27a6c6911deb27
       dockerfile: agent-computer/Dockerfile
     command: ['true']
   computer-supervisor:
-    image: opendots-supervisor:b6932d3-dot-auth
+    image: wakies-supervisor:b6932d3-wakie-auth
     build:
       context: .
       dockerfile: deployment/computers/supervisor.Dockerfile
@@ -22,8 +22,8 @@ services:
       PORT: '4300'
       SUPERVISOR_TOKEN: ${COMPUTER_SUPERVISOR_TOKEN:?Set COMPUTER_SUPERVISOR_TOKEN in .env}
       COMPUTER_TOKEN: ${COMPUTER_TOKEN:?Set COMPUTER_TOKEN in .env}
-      COMPUTER_NAMESPACE: ${COMPUTER_NAMESPACE:-opendots}
-      COMPUTER_IMAGE: opendots-computer:b6932d3
+      COMPUTER_NAMESPACE: ${COMPUTER_NAMESPACE:-wakies}
+      COMPUTER_IMAGE: wakies-computer:b6932d3
       COMPUTER_BROWSER_MODE: headless
       COMPUTER_NETWORK: ''
       COMPUTER_MEMORY_BYTES: ${COMPUTER_MEMORY_BYTES:-2147483648}

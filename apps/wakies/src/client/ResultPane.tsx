@@ -8,30 +8,30 @@ import {
   X,
 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
-import type { Dot, Result, Status } from '../shared/types';
+import type { Wakie, Result, Status } from '../shared/types';
 import { Mascot } from './Mascot';
 import { ComputerPanel } from './ComputerPanel';
 export function ResultPane({
   latest,
   status,
-  dotState,
+  wakieState,
   onClose,
-  dots,
-  defaultDotId,
+  wakies,
+  defaultWakieId,
 }: {
-  dots: Dot[];
-  defaultDotId: string;
+  wakies: Wakie[];
+  defaultWakieId: string;
   latest?: Result | null;
   status?: Status;
-  dotState: string;
+  wakieState: string;
   onClose: () => void;
 }) {
   const [resultTab, setResultTab] = useState<'Brief' | 'Computer'>('Computer');
-  const [computerDotId, setComputerDotId] = useState(defaultDotId);
-  const computerDot =
-    dots.find((dot) => dot.id === computerDotId) ??
-    dots.find((dot) => dot.id === defaultDotId) ??
-    dots[0];
+  const [computerWakieId, setComputerWakieId] = useState(defaultWakieId);
+  const computerWakie =
+    wakies.find((wakie) => wakie.id === computerWakieId) ??
+    wakies.find((wakie) => wakie.id === defaultWakieId) ??
+    wakies[0];
   return (
     <aside className="result-pane">
       <div className="pane-header">
@@ -47,7 +47,7 @@ export function ResultPane({
             className={resultTab === 'Computer' ? 'selected' : ''}
             onClick={() => setResultTab('Computer')}
           >
-            <Monitor size={15} /> {computerDot?.name ?? 'Dot'}’s computer
+            <Monitor size={15} /> {computerWakie?.name ?? 'Wakie'}’s computer
           </button>
         </div>
         <button
@@ -60,25 +60,25 @@ export function ResultPane({
       </div>
       {resultTab === 'Computer' ? (
         <>
-          <label className="computer-dot-picker">
+          <label className="computer-wakie-picker">
             Computer for
             <select
-              value={computerDot?.id ?? ''}
-              onChange={(event) => setComputerDotId(event.target.value)}
-              aria-label="Select Dot computer"
+              value={computerWakie?.id ?? ''}
+              onChange={(event) => setComputerWakieId(event.target.value)}
+              aria-label="Select Wakie computer"
             >
-              {dots.map((dot) => (
-                <option key={dot.id} value={dot.id}>
-                  {dot.name}
+              {wakies.map((wakie) => (
+                <option key={wakie.id} value={wakie.id}>
+                  {wakie.name}
                 </option>
               ))}
             </select>
           </label>
-          {computerDot ? (
-            <ComputerPanel key={computerDot.id} dot={computerDot} />
+          {computerWakie ? (
+            <ComputerPanel key={computerWakie.id} wakie={computerWakie} />
           ) : (
             <p className="computer-panel">
-              Create a Dot to give it a computer.
+              Create a Wakie to give it a computer.
             </p>
           )}
         </>
@@ -105,7 +105,7 @@ export function ResultPane({
                 const url = URL.createObjectURL(blob);
                 const anchor = document.createElement('a');
                 anchor.href = url;
-                anchor.download = 'opendots-brief.txt';
+                anchor.download = 'wakies-brief.txt';
                 anchor.click();
                 URL.revokeObjectURL(url);
               }}
@@ -115,7 +115,7 @@ export function ResultPane({
           </div>
           {latest.sample && (
             <div className="sample-note">
-              An example of what Dot can do. The findings and sources below are
+              An example of what Wakie can do. The findings and sources below are
               invented.
             </div>
           )}
@@ -176,9 +176,9 @@ export function ResultPane({
       ) : (
         <div className="pane-empty">
           <Mascot
-            identity={defaultDotId}
-            name={dots.find((dot) => dot.id === defaultDotId)?.name}
-            state={dotState}
+            identity={defaultWakieId}
+            name={wakies.find((wakie) => wakie.id === defaultWakieId)?.name}
+            state={wakieState}
           />
           <h3>A little space for your findings.</h3>
           <p>

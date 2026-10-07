@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { X } from 'lucide-react';
-import type { Dot, Memory, State, WorkspaceState } from '../shared/types';
+import type { Wakie, Memory, State, WorkspaceState } from '../shared/types';
 export type Dialog =
   | { type: 'space' }
-  | { type: 'dot'; dot?: Dot; spaceId: string }
+  | { type: 'wakie'; wakie?: Wakie; spaceId: string }
   | { type: 'settings' }
   | { type: 'memory'; memory?: Memory }
   | { type: 'schedule'; threadId: string };
@@ -21,37 +21,37 @@ export function WorkspaceDialog({
   mutate: (path: string, method: string, body?: unknown) => Promise<boolean>;
 }) {
   const [name, setName] = useState(
-    dialog.type === 'dot' ? (dialog.dot?.name ?? '') : '',
+    dialog.type === 'wakie' ? (dialog.wakie?.name ?? '') : '',
   );
   const [text, setText] = useState(
-    dialog.type === 'dot'
-      ? (dialog.dot?.instructions ?? '')
+    dialog.type === 'wakie'
+      ? (dialog.wakie?.instructions ?? '')
       : dialog.type === 'memory'
         ? (dialog.memory?.text ?? '')
         : '',
   );
   const [research, setResearch] = useState(
-    dialog.type === 'dot'
-      ? (dialog.dot?.researchAllowed ?? true)
+    dialog.type === 'wakie'
+      ? (dialog.wakie?.researchAllowed ?? true)
       : state.settings.researchAllowed,
   );
   const [memory, setMemory] = useState(
-    dialog.type === 'dot'
-      ? (dialog.dot?.memoryAllowed ?? true)
+    dialog.type === 'wakie'
+      ? (dialog.wakie?.memoryAllowed ?? true)
       : state.settings.memoryAllowed,
   );
   const [spaceIds, setSpaceIds] = useState(
-    dialog.type === 'dot' ? (dialog.dot?.spaceIds ?? [dialog.spaceId]) : [],
+    dialog.type === 'wakie' ? (dialog.wakie?.spaceIds ?? [dialog.spaceId]) : [],
   );
   const [defaultSpace, setDefaultSpace] = useState(
-    dialog.type === 'dot' ? (dialog.dot?.spaceId ?? dialog.spaceId) : '',
+    dialog.type === 'wakie' ? (dialog.wakie?.spaceId ?? dialog.spaceId) : '',
   );
   const [interval, setInterval] = useState('86400');
   const [learningContainer, setLearningContainer] = useState(
-    dialog.type === 'dot' ? (dialog.dot?.learningContainerId ?? '') : '',
+    dialog.type === 'wakie' ? (dialog.wakie?.learningContainerId ?? '') : '',
   );
   const [skillDelivery, setSkillDelivery] = useState(
-    dialog.type === 'dot' ? (dialog.dot?.skillDeliveryEnabled ?? false) : false,
+    dialog.type === 'wakie' ? (dialog.wakie?.skillDeliveryEnabled ?? false) : false,
   );
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -90,15 +90,15 @@ export function WorkspaceDialog({
   const title =
     dialog.type === 'space'
       ? 'A space for something.'
-      : dialog.type === 'dot'
-        ? dialog.dot
-          ? 'Make this Dot yours.'
+      : dialog.type === 'wakie'
+        ? dialog.wakie
+          ? 'Make this Wakie yours.'
           : 'Meet your next specialist.'
         : dialog.type === 'settings'
           ? 'Your workspace, your rules.'
           : dialog.type === 'memory'
             ? 'Something to remember.'
-            : 'Let your Dot keep time.';
+            : 'Let your Wakie keep time.';
   return (
     <div className="modal-backdrop" onClick={onClose}>
       <section
@@ -116,7 +116,7 @@ export function WorkspaceDialog({
         >
           <X size={18} />
         </button>
-        <span className="eyebrow">OPENDOTS TEMPLATE</span>
+        <span className="eyebrow">WAKIES TEMPLATE</span>
         <h2 id="dialog-title">{title}</h2>
         <form
           onSubmit={async (e) => {
@@ -130,9 +130,9 @@ export function WorkspaceDialog({
               path = '/spaces';
               body = { name, description: text };
             }
-            if (dialog.type === 'dot') {
-              path = dialog.dot ? `/dots/${dialog.dot.id}` : '/dots';
-              method = dialog.dot ? 'PUT' : 'POST';
+            if (dialog.type === 'wakie') {
+              path = dialog.wakie ? `/wakies/${dialog.wakie.id}` : '/wakies';
+              method = dialog.wakie ? 'PUT' : 'POST';
               body = {
                 spaceId: defaultSpace,
                 spaceIds,
@@ -170,7 +170,7 @@ export function WorkspaceDialog({
             setBusy(false);
           }}
         >
-          {(dialog.type === 'space' || dialog.type === 'dot') && (
+          {(dialog.type === 'space' || dialog.type === 'wakie') && (
             <>
               <label className="field-label" htmlFor="entity-name">
                 Name
@@ -187,7 +187,7 @@ export function WorkspaceDialog({
           {dialog.type !== 'settings' && (
             <>
               <label className="field-label" htmlFor="entity-text">
-                {dialog.type === 'dot'
+                {dialog.type === 'wakie'
                   ? 'Role instructions'
                   : dialog.type === 'space'
                     ? 'What belongs here?'
@@ -203,18 +203,18 @@ export function WorkspaceDialog({
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder={
-                  dialog.type === 'dot'
+                  dialog.type === 'wakie'
                     ? 'You are a thoughtful research partner. Compare evidence and be clear about uncertainty.'
                     : ''
                 }
               />
             </>
           )}
-          {dialog.type === 'dot' && (
+          {dialog.type === 'wakie' && (
             <fieldset className="space-access-fields">
               <legend>Space access</legend>
               <p className="muted">
-                Choose where this Dot can read and edit pages.
+                Choose where this Wakie can read and edit pages.
               </p>
               {workspace.spaces.map((space) => (
                 <label className="permission-row" key={space.id}>
@@ -255,7 +255,7 @@ export function WorkspaceDialog({
               </select>
             </fieldset>
           )}
-          {(dialog.type === 'dot' || dialog.type === 'settings') && (
+          {(dialog.type === 'wakie' || dialog.type === 'settings') && (
             <>
               <label className="permission-row">
                 <input
@@ -287,7 +287,7 @@ export function WorkspaceDialog({
               </label>
             </>
           )}
-          {dialog.type === 'dot' && (
+          {dialog.type === 'wakie' && (
             <fieldset className="space-access-fields">
               <legend>Automatic Learning</legend>
               <label className="field-label" htmlFor="learning-container">
@@ -374,7 +374,7 @@ export function WorkspaceDialog({
                 .
               </p>
               <a
-                href="https://github.com/CopilotKit/OpenDots/blob/main/docs/SETUP.md"
+                href="https://github.com/CopilotKit/Wakies/blob/main/docs/SETUP.md"
                 target="_blank"
                 rel="noreferrer"
               >

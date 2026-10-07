@@ -122,7 +122,7 @@ export async function parallelSources(
   signal.throwIfAborted();
   if ((config.webSearchProvider ?? 'parallel') !== 'parallel')
     throw new Error('Parallel web research is disabled.');
-  const client = new Client({ name: 'opendots', version: '0.1.0' });
+  const client = new Client({ name: 'wakies', version: '0.1.0' });
   const boundedSignal = AbortSignal.any([signal, AbortSignal.timeout(60_000)]);
   const transport = new StreamableHTTPClientTransport(
     new URL('https://search.parallel.ai/mcp'),

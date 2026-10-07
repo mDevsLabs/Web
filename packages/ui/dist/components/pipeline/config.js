@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Pipeline", "label": "Pipelines", "description": "G\xE9rez vos pipelines depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "owner", "label": "Responsable", "kind": "text", "required": true }, { "key": "dealCount", "label": "Opportunit\xE9s", "kind": "number", "required": true }, { "key": "totalValue", "label": "Valeur totale", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["active", "paused", "archived"] }], "titleKey": "name", "settings": [{ "key": "notifyPipeline", "label": "Notifications : pipelines", "description": "Recevoir un signal lors des changements." }, { "key": "archivePipeline", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section pipelines." }, { "key": "approvePipeline", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

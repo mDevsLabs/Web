@@ -15,6 +15,7 @@
       "!components/ai-elements",
       "!components/elements",
       "!components/ui",
+      "!components/site/ui",
       "!lib/utils.ts",
       "!hooks/use-mobile.ts",
       "!scripts/newsletter_editor.html",
@@ -25,15 +26,22 @@
       // n'est pas écrite à la main — la corriger ici serait perdu à la
       // prochaine génération.
       "!components/vibe/vibe.css",
+      // Feuilles de style Wakies : sorties de scripts/build-wakies-css.mjs
+      // (sources : apps/wakies/src/client/style.css et editor.css). Générées,
+      // donc jamais écrites à la main — même règle que pour vibe.css.
+      "!components/wakies/wakies.css",
+      "!components/wakies/wakies-editor.css",
+      // Feuille de style Site : sortie de scripts/build-site-css.mjs (source :
+      // apps/site/app/globals.css). Générée, donc jamais écrite à la main.
+      "!components/site/site.css",
       // Sources Vibe d'origine (app Vite) : conservées uniquement comme
       // référence de génération (feuille de style, ordre des tables de
       // réglages) et de comparaison. Ni compilées par Next ni typées
       // (tsconfig.json les exclut), et elles ont leur propre linter (oxlint).
-      // Les soumettre à Biome noierait `pnpm check` sous du bruit de style.
-      "!apps/vibe/**",
-      // Sources Wakies d'origine (app Vite) : app autonome avec son propre
-      // linter et environnement. Exclue de Biome pour ne pas polluer pnpm check.
-      "!apps/wakies/**"
+      // Sources d'applications autonomes et paquets externes :
+      // Exclus pour ne pas polluer le linting du projet principal mAI Web.
+      "!apps",
+      "!packages"
     ]
   },
   // Vibe : les tables de réglages (thèmes de bulles, fonds de discussion, formes,
@@ -72,6 +80,63 @@
         "actions": {
           "source": {
             "useSortedKeys": "off"
+          }
+        }
+      }
+    },
+    // Wakies (porté de l'app Vite) : mêmes déclencheurs volontaires que Vibe —
+    // `[thread.id]` recharge un fil, `[selectedThread]` suit la conversation
+    // ouverte, `[messages]` colle le fil en bas, `[hash]` reprend la navigation
+    // par fragment. Le signalement « dépendance inutile » est donc coupé sur le
+    // code porté ; celui des dépendances MANQUANTES reste actif.
+    {
+      "includes": ["components/wakies/**", "lib/wakies/**"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "useExhaustiveDependencies": {
+              "level": "error",
+              "options": {
+                "reportUnnecessaryDependencies": false
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "includes": [
+        "components/site/**",
+        "lib/site/**",
+        "app/(chat)/site/**",
+        "app/(chat)/api/site/**"
+      ],
+      "linter": {
+        "rules": {
+          "complexity": {
+            "useOptionalChain": "off",
+            "noUselessCatchBinding": "off",
+            "useLiteralKeys": "off",
+            "noRedundantDefaultExport": "off",
+            "noUselessTernary": "off"
+          },
+          "style": {
+            "useNodejsImportProtocol": "off",
+            "useTemplate": "off",
+            "useForOf": "off",
+            "useCollapsedElseIf": "off"
+          },
+          "suspicious": {
+            "noGlobalIsNan": "off",
+            "noEvolvingTypes": "off"
+          },
+          "correctness": {
+            "useExhaustiveDependencies": {
+              "level": "error",
+              "options": {
+                "reportUnnecessaryDependencies": false
+              }
+            }
           }
         }
       }
@@ -114,6 +179,7 @@
         "useCollapsedIf": "off",
         "useErrorCause": "off",
         "useFilenamingConvention": "off",
+        "useConsistentMemberAccessibility": "off",
         "noCommonJs": "off"
       },
       "nursery": {
@@ -123,7 +189,8 @@
         "noExcessiveCognitiveComplexity": "off",
         "useSimplifiedLogicExpression": "off",
         "noVoid": "off",
-        "noForEach": "off"
+        "noForEach": "off",
+        "noStaticOnlyClass": "off"
       },
       "a11y": {
         "noSvgWithoutTitle": "off",

@@ -1,0 +1,1140 @@
+{
+  "name": "@mdevs/ui",
+  "version": "0.2.0",
+  "description": "React and TypeScript Liquid Glass components with independent domain APIs",
+  "type": "module",
+  "license": "MIT",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1 || ^19.0.0",
+    "react-dom": "^18.3.1 || ^19.0.0"
+  },
+  "dependencies": {
+    "radix-ui": "^1.7.0"
+  },
+  "files": [
+    "dist",
+    "src",
+    "catalog",
+    "README.md",
+    "AGENTS.md",
+    "llms.txt",
+    "llms-full.txt",
+    "LICENSE",
+    "CHANGELOG.md",
+    "STYLE.md",
+    "LICENSE-INTER.txt"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json",
+    "./catalog": "./catalog/manifest.json",
+    "./primitives": {
+      "types": "./dist/primitives/index.d.ts",
+      "import": "./dist/primitives/index.js",
+      "require": "./dist/primitives/index.cjs"
+    },
+    "./primitives/*": {
+      "types": "./dist/primitives/*.d.ts",
+      "import": "./dist/primitives/*.js",
+      "require": "./dist/primitives/*.cjs"
+    },
+    "./product": {
+      "types": "./dist/components/product/index.d.ts",
+      "import": "./dist/components/product/index.js",
+      "require": "./dist/components/product/index.cjs"
+    },
+    "./product/*": {
+      "types": "./dist/components/product/*.d.ts",
+      "import": "./dist/components/product/*.js",
+      "require": "./dist/components/product/*.cjs"
+    },
+    "./order": {
+      "types": "./dist/components/order/index.d.ts",
+      "import": "./dist/components/order/index.js",
+      "require": "./dist/components/order/index.cjs"
+    },
+    "./order/*": {
+      "types": "./dist/components/order/*.d.ts",
+      "import": "./dist/components/order/*.js",
+      "require": "./dist/components/order/*.cjs"
+    },
+    "./cart": {
+      "types": "./dist/components/cart/index.d.ts",
+      "import": "./dist/components/cart/index.js",
+      "require": "./dist/components/cart/index.cjs"
+    },
+    "./cart/*": {
+      "types": "./dist/components/cart/*.d.ts",
+      "import": "./dist/components/cart/*.js",
+      "require": "./dist/components/cart/*.cjs"
+    },
+    "./checkout": {
+      "types": "./dist/components/checkout/index.d.ts",
+      "import": "./dist/components/checkout/index.js",
+      "require": "./dist/components/checkout/index.cjs"
+    },
+    "./checkout/*": {
+      "types": "./dist/components/checkout/*.d.ts",
+      "import": "./dist/components/checkout/*.js",
+      "require": "./dist/components/checkout/*.cjs"
+    },
+    "./invoice": {
+      "types": "./dist/components/invoice/index.d.ts",
+      "import": "./dist/components/invoice/index.js",
+      "require": "./dist/components/invoice/index.cjs"
+    },
+    "./invoice/*": {
+      "types": "./dist/components/invoice/*.d.ts",
+      "import": "./dist/components/invoice/*.js",
+      "require": "./dist/components/invoice/*.cjs"
+    },
+    "./payment": {
+      "types": "./dist/components/payment/index.d.ts",
+      "import": "./dist/components/payment/index.js",
+      "require": "./dist/components/payment/index.cjs"
+    },
+    "./payment/*": {
+      "types": "./dist/components/payment/*.d.ts",
+      "import": "./dist/components/payment/*.js",
+      "require": "./dist/components/payment/*.cjs"
+    },
+    "./subscription": {
+      "types": "./dist/components/subscription/index.d.ts",
+      "import": "./dist/components/subscription/index.js",
+      "require": "./dist/components/subscription/index.cjs"
+    },
+    "./subscription/*": {
+      "types": "./dist/components/subscription/*.d.ts",
+      "import": "./dist/components/subscription/*.js",
+      "require": "./dist/components/subscription/*.cjs"
+    },
+    "./coupon": {
+      "types": "./dist/components/coupon/index.d.ts",
+      "import": "./dist/components/coupon/index.js",
+      "require": "./dist/components/coupon/index.cjs"
+    },
+    "./coupon/*": {
+      "types": "./dist/components/coupon/*.d.ts",
+      "import": "./dist/components/coupon/*.js",
+      "require": "./dist/components/coupon/*.cjs"
+    },
+    "./gift-card": {
+      "types": "./dist/components/gift-card/index.d.ts",
+      "import": "./dist/components/gift-card/index.js",
+      "require": "./dist/components/gift-card/index.cjs"
+    },
+    "./gift-card/*": {
+      "types": "./dist/components/gift-card/*.d.ts",
+      "import": "./dist/components/gift-card/*.js",
+      "require": "./dist/components/gift-card/*.cjs"
+    },
+    "./inventory": {
+      "types": "./dist/components/inventory/index.d.ts",
+      "import": "./dist/components/inventory/index.js",
+      "require": "./dist/components/inventory/index.cjs"
+    },
+    "./inventory/*": {
+      "types": "./dist/components/inventory/*.d.ts",
+      "import": "./dist/components/inventory/*.js",
+      "require": "./dist/components/inventory/*.cjs"
+    },
+    "./shipment": {
+      "types": "./dist/components/shipment/index.d.ts",
+      "import": "./dist/components/shipment/index.js",
+      "require": "./dist/components/shipment/index.cjs"
+    },
+    "./shipment/*": {
+      "types": "./dist/components/shipment/*.d.ts",
+      "import": "./dist/components/shipment/*.js",
+      "require": "./dist/components/shipment/*.cjs"
+    },
+    "./return": {
+      "types": "./dist/components/return/index.d.ts",
+      "import": "./dist/components/return/index.js",
+      "require": "./dist/components/return/index.cjs"
+    },
+    "./return/*": {
+      "types": "./dist/components/return/*.d.ts",
+      "import": "./dist/components/return/*.js",
+      "require": "./dist/components/return/*.cjs"
+    },
+    "./supplier": {
+      "types": "./dist/components/supplier/index.d.ts",
+      "import": "./dist/components/supplier/index.js",
+      "require": "./dist/components/supplier/index.cjs"
+    },
+    "./supplier/*": {
+      "types": "./dist/components/supplier/*.d.ts",
+      "import": "./dist/components/supplier/*.js",
+      "require": "./dist/components/supplier/*.cjs"
+    },
+    "./purchase-order": {
+      "types": "./dist/components/purchase-order/index.d.ts",
+      "import": "./dist/components/purchase-order/index.js",
+      "require": "./dist/components/purchase-order/index.cjs"
+    },
+    "./purchase-order/*": {
+      "types": "./dist/components/purchase-order/*.d.ts",
+      "import": "./dist/components/purchase-order/*.js",
+      "require": "./dist/components/purchase-order/*.cjs"
+    },
+    "./warehouse": {
+      "types": "./dist/components/warehouse/index.d.ts",
+      "import": "./dist/components/warehouse/index.js",
+      "require": "./dist/components/warehouse/index.cjs"
+    },
+    "./warehouse/*": {
+      "types": "./dist/components/warehouse/*.d.ts",
+      "import": "./dist/components/warehouse/*.js",
+      "require": "./dist/components/warehouse/*.cjs"
+    },
+    "./project": {
+      "types": "./dist/components/project/index.d.ts",
+      "import": "./dist/components/project/index.js",
+      "require": "./dist/components/project/index.cjs"
+    },
+    "./project/*": {
+      "types": "./dist/components/project/*.d.ts",
+      "import": "./dist/components/project/*.js",
+      "require": "./dist/components/project/*.cjs"
+    },
+    "./task": {
+      "types": "./dist/components/task/index.d.ts",
+      "import": "./dist/components/task/index.js",
+      "require": "./dist/components/task/index.cjs"
+    },
+    "./task/*": {
+      "types": "./dist/components/task/*.d.ts",
+      "import": "./dist/components/task/*.js",
+      "require": "./dist/components/task/*.cjs"
+    },
+    "./sprint": {
+      "types": "./dist/components/sprint/index.d.ts",
+      "import": "./dist/components/sprint/index.js",
+      "require": "./dist/components/sprint/index.cjs"
+    },
+    "./sprint/*": {
+      "types": "./dist/components/sprint/*.d.ts",
+      "import": "./dist/components/sprint/*.js",
+      "require": "./dist/components/sprint/*.cjs"
+    },
+    "./milestone": {
+      "types": "./dist/components/milestone/index.d.ts",
+      "import": "./dist/components/milestone/index.js",
+      "require": "./dist/components/milestone/index.cjs"
+    },
+    "./milestone/*": {
+      "types": "./dist/components/milestone/*.d.ts",
+      "import": "./dist/components/milestone/*.js",
+      "require": "./dist/components/milestone/*.cjs"
+    },
+    "./team": {
+      "types": "./dist/components/team/index.d.ts",
+      "import": "./dist/components/team/index.js",
+      "require": "./dist/components/team/index.cjs"
+    },
+    "./team/*": {
+      "types": "./dist/components/team/*.d.ts",
+      "import": "./dist/components/team/*.js",
+      "require": "./dist/components/team/*.cjs"
+    },
+    "./workspace": {
+      "types": "./dist/components/workspace/index.d.ts",
+      "import": "./dist/components/workspace/index.js",
+      "require": "./dist/components/workspace/index.cjs"
+    },
+    "./workspace/*": {
+      "types": "./dist/components/workspace/*.d.ts",
+      "import": "./dist/components/workspace/*.js",
+      "require": "./dist/components/workspace/*.cjs"
+    },
+    "./board": {
+      "types": "./dist/components/board/index.d.ts",
+      "import": "./dist/components/board/index.js",
+      "require": "./dist/components/board/index.cjs"
+    },
+    "./board/*": {
+      "types": "./dist/components/board/*.d.ts",
+      "import": "./dist/components/board/*.js",
+      "require": "./dist/components/board/*.cjs"
+    },
+    "./roadmap": {
+      "types": "./dist/components/roadmap/index.d.ts",
+      "import": "./dist/components/roadmap/index.js",
+      "require": "./dist/components/roadmap/index.cjs"
+    },
+    "./roadmap/*": {
+      "types": "./dist/components/roadmap/*.d.ts",
+      "import": "./dist/components/roadmap/*.js",
+      "require": "./dist/components/roadmap/*.cjs"
+    },
+    "./calendar": {
+      "types": "./dist/components/calendar/index.d.ts",
+      "import": "./dist/components/calendar/index.js",
+      "require": "./dist/components/calendar/index.cjs"
+    },
+    "./calendar/*": {
+      "types": "./dist/components/calendar/*.d.ts",
+      "import": "./dist/components/calendar/*.js",
+      "require": "./dist/components/calendar/*.cjs"
+    },
+    "./event": {
+      "types": "./dist/components/event/index.d.ts",
+      "import": "./dist/components/event/index.js",
+      "require": "./dist/components/event/index.cjs"
+    },
+    "./event/*": {
+      "types": "./dist/components/event/*.d.ts",
+      "import": "./dist/components/event/*.js",
+      "require": "./dist/components/event/*.cjs"
+    },
+    "./meeting": {
+      "types": "./dist/components/meeting/index.d.ts",
+      "import": "./dist/components/meeting/index.js",
+      "require": "./dist/components/meeting/index.cjs"
+    },
+    "./meeting/*": {
+      "types": "./dist/components/meeting/*.d.ts",
+      "import": "./dist/components/meeting/*.js",
+      "require": "./dist/components/meeting/*.cjs"
+    },
+    "./booking": {
+      "types": "./dist/components/booking/index.d.ts",
+      "import": "./dist/components/booking/index.js",
+      "require": "./dist/components/booking/index.cjs"
+    },
+    "./booking/*": {
+      "types": "./dist/components/booking/*.d.ts",
+      "import": "./dist/components/booking/*.js",
+      "require": "./dist/components/booking/*.cjs"
+    },
+    "./contact": {
+      "types": "./dist/components/contact/index.d.ts",
+      "import": "./dist/components/contact/index.js",
+      "require": "./dist/components/contact/index.cjs"
+    },
+    "./contact/*": {
+      "types": "./dist/components/contact/*.d.ts",
+      "import": "./dist/components/contact/*.js",
+      "require": "./dist/components/contact/*.cjs"
+    },
+    "./customer": {
+      "types": "./dist/components/customer/index.d.ts",
+      "import": "./dist/components/customer/index.js",
+      "require": "./dist/components/customer/index.cjs"
+    },
+    "./customer/*": {
+      "types": "./dist/components/customer/*.d.ts",
+      "import": "./dist/components/customer/*.js",
+      "require": "./dist/components/customer/*.cjs"
+    },
+    "./lead": {
+      "types": "./dist/components/lead/index.d.ts",
+      "import": "./dist/components/lead/index.js",
+      "require": "./dist/components/lead/index.cjs"
+    },
+    "./lead/*": {
+      "types": "./dist/components/lead/*.d.ts",
+      "import": "./dist/components/lead/*.js",
+      "require": "./dist/components/lead/*.cjs"
+    },
+    "./deal": {
+      "types": "./dist/components/deal/index.d.ts",
+      "import": "./dist/components/deal/index.js",
+      "require": "./dist/components/deal/index.cjs"
+    },
+    "./deal/*": {
+      "types": "./dist/components/deal/*.d.ts",
+      "import": "./dist/components/deal/*.js",
+      "require": "./dist/components/deal/*.cjs"
+    },
+    "./pipeline": {
+      "types": "./dist/components/pipeline/index.d.ts",
+      "import": "./dist/components/pipeline/index.js",
+      "require": "./dist/components/pipeline/index.cjs"
+    },
+    "./pipeline/*": {
+      "types": "./dist/components/pipeline/*.d.ts",
+      "import": "./dist/components/pipeline/*.js",
+      "require": "./dist/components/pipeline/*.cjs"
+    },
+    "./campaign": {
+      "types": "./dist/components/campaign/index.d.ts",
+      "import": "./dist/components/campaign/index.js",
+      "require": "./dist/components/campaign/index.cjs"
+    },
+    "./campaign/*": {
+      "types": "./dist/components/campaign/*.d.ts",
+      "import": "./dist/components/campaign/*.js",
+      "require": "./dist/components/campaign/*.cjs"
+    },
+    "./audience": {
+      "types": "./dist/components/audience/index.d.ts",
+      "import": "./dist/components/audience/index.js",
+      "require": "./dist/components/audience/index.cjs"
+    },
+    "./audience/*": {
+      "types": "./dist/components/audience/*.d.ts",
+      "import": "./dist/components/audience/*.js",
+      "require": "./dist/components/audience/*.cjs"
+    },
+    "./newsletter": {
+      "types": "./dist/components/newsletter/index.d.ts",
+      "import": "./dist/components/newsletter/index.js",
+      "require": "./dist/components/newsletter/index.cjs"
+    },
+    "./newsletter/*": {
+      "types": "./dist/components/newsletter/*.d.ts",
+      "import": "./dist/components/newsletter/*.js",
+      "require": "./dist/components/newsletter/*.cjs"
+    },
+    "./article": {
+      "types": "./dist/components/article/index.d.ts",
+      "import": "./dist/components/article/index.js",
+      "require": "./dist/components/article/index.cjs"
+    },
+    "./article/*": {
+      "types": "./dist/components/article/*.d.ts",
+      "import": "./dist/components/article/*.js",
+      "require": "./dist/components/article/*.cjs"
+    },
+    "./blog-post": {
+      "types": "./dist/components/blog-post/index.d.ts",
+      "import": "./dist/components/blog-post/index.js",
+      "require": "./dist/components/blog-post/index.cjs"
+    },
+    "./blog-post/*": {
+      "types": "./dist/components/blog-post/*.d.ts",
+      "import": "./dist/components/blog-post/*.js",
+      "require": "./dist/components/blog-post/*.cjs"
+    },
+    "./comment": {
+      "types": "./dist/components/comment/index.d.ts",
+      "import": "./dist/components/comment/index.js",
+      "require": "./dist/components/comment/index.cjs"
+    },
+    "./comment/*": {
+      "types": "./dist/components/comment/*.d.ts",
+      "import": "./dist/components/comment/*.js",
+      "require": "./dist/components/comment/*.cjs"
+    },
+    "./review": {
+      "types": "./dist/components/review/index.d.ts",
+      "import": "./dist/components/review/index.js",
+      "require": "./dist/components/review/index.cjs"
+    },
+    "./review/*": {
+      "types": "./dist/components/review/*.d.ts",
+      "import": "./dist/components/review/*.js",
+      "require": "./dist/components/review/*.cjs"
+    },
+    "./media-asset": {
+      "types": "./dist/components/media-asset/index.d.ts",
+      "import": "./dist/components/media-asset/index.js",
+      "require": "./dist/components/media-asset/index.cjs"
+    },
+    "./media-asset/*": {
+      "types": "./dist/components/media-asset/*.d.ts",
+      "import": "./dist/components/media-asset/*.js",
+      "require": "./dist/components/media-asset/*.cjs"
+    },
+    "./document": {
+      "types": "./dist/components/document/index.d.ts",
+      "import": "./dist/components/document/index.js",
+      "require": "./dist/components/document/index.cjs"
+    },
+    "./document/*": {
+      "types": "./dist/components/document/*.d.ts",
+      "import": "./dist/components/document/*.js",
+      "require": "./dist/components/document/*.cjs"
+    },
+    "./folder": {
+      "types": "./dist/components/folder/index.d.ts",
+      "import": "./dist/components/folder/index.js",
+      "require": "./dist/components/folder/index.cjs"
+    },
+    "./folder/*": {
+      "types": "./dist/components/folder/*.d.ts",
+      "import": "./dist/components/folder/*.js",
+      "require": "./dist/components/folder/*.cjs"
+    },
+    "./collection": {
+      "types": "./dist/components/collection/index.d.ts",
+      "import": "./dist/components/collection/index.js",
+      "require": "./dist/components/collection/index.cjs"
+    },
+    "./collection/*": {
+      "types": "./dist/components/collection/*.d.ts",
+      "import": "./dist/components/collection/*.js",
+      "require": "./dist/components/collection/*.cjs"
+    },
+    "./tag": {
+      "types": "./dist/components/tag/index.d.ts",
+      "import": "./dist/components/tag/index.js",
+      "require": "./dist/components/tag/index.cjs"
+    },
+    "./tag/*": {
+      "types": "./dist/components/tag/*.d.ts",
+      "import": "./dist/components/tag/*.js",
+      "require": "./dist/components/tag/*.cjs"
+    },
+    "./template": {
+      "types": "./dist/components/template/index.d.ts",
+      "import": "./dist/components/template/index.js",
+      "require": "./dist/components/template/index.cjs"
+    },
+    "./template/*": {
+      "types": "./dist/components/template/*.d.ts",
+      "import": "./dist/components/template/*.js",
+      "require": "./dist/components/template/*.cjs"
+    },
+    "./repository": {
+      "types": "./dist/components/repository/index.d.ts",
+      "import": "./dist/components/repository/index.js",
+      "require": "./dist/components/repository/index.cjs"
+    },
+    "./repository/*": {
+      "types": "./dist/components/repository/*.d.ts",
+      "import": "./dist/components/repository/*.js",
+      "require": "./dist/components/repository/*.cjs"
+    },
+    "./pull-request": {
+      "types": "./dist/components/pull-request/index.d.ts",
+      "import": "./dist/components/pull-request/index.js",
+      "require": "./dist/components/pull-request/index.cjs"
+    },
+    "./pull-request/*": {
+      "types": "./dist/components/pull-request/*.d.ts",
+      "import": "./dist/components/pull-request/*.js",
+      "require": "./dist/components/pull-request/*.cjs"
+    },
+    "./issue": {
+      "types": "./dist/components/issue/index.d.ts",
+      "import": "./dist/components/issue/index.js",
+      "require": "./dist/components/issue/index.cjs"
+    },
+    "./issue/*": {
+      "types": "./dist/components/issue/*.d.ts",
+      "import": "./dist/components/issue/*.js",
+      "require": "./dist/components/issue/*.cjs"
+    },
+    "./release": {
+      "types": "./dist/components/release/index.d.ts",
+      "import": "./dist/components/release/index.js",
+      "require": "./dist/components/release/index.cjs"
+    },
+    "./release/*": {
+      "types": "./dist/components/release/*.d.ts",
+      "import": "./dist/components/release/*.js",
+      "require": "./dist/components/release/*.cjs"
+    },
+    "./deployment": {
+      "types": "./dist/components/deployment/index.d.ts",
+      "import": "./dist/components/deployment/index.js",
+      "require": "./dist/components/deployment/index.cjs"
+    },
+    "./deployment/*": {
+      "types": "./dist/components/deployment/*.d.ts",
+      "import": "./dist/components/deployment/*.js",
+      "require": "./dist/components/deployment/*.cjs"
+    },
+    "./build-job": {
+      "types": "./dist/components/build-job/index.d.ts",
+      "import": "./dist/components/build-job/index.js",
+      "require": "./dist/components/build-job/index.cjs"
+    },
+    "./build-job/*": {
+      "types": "./dist/components/build-job/*.d.ts",
+      "import": "./dist/components/build-job/*.js",
+      "require": "./dist/components/build-job/*.cjs"
+    },
+    "./environment": {
+      "types": "./dist/components/environment/index.d.ts",
+      "import": "./dist/components/environment/index.js",
+      "require": "./dist/components/environment/index.cjs"
+    },
+    "./environment/*": {
+      "types": "./dist/components/environment/*.d.ts",
+      "import": "./dist/components/environment/*.js",
+      "require": "./dist/components/environment/*.cjs"
+    },
+    "./server": {
+      "types": "./dist/components/server/index.d.ts",
+      "import": "./dist/components/server/index.js",
+      "require": "./dist/components/server/index.cjs"
+    },
+    "./server/*": {
+      "types": "./dist/components/server/*.d.ts",
+      "import": "./dist/components/server/*.js",
+      "require": "./dist/components/server/*.cjs"
+    },
+    "./database": {
+      "types": "./dist/components/database/index.d.ts",
+      "import": "./dist/components/database/index.js",
+      "require": "./dist/components/database/index.cjs"
+    },
+    "./database/*": {
+      "types": "./dist/components/database/*.d.ts",
+      "import": "./dist/components/database/*.js",
+      "require": "./dist/components/database/*.cjs"
+    },
+    "./api-endpoint": {
+      "types": "./dist/components/api-endpoint/index.d.ts",
+      "import": "./dist/components/api-endpoint/index.js",
+      "require": "./dist/components/api-endpoint/index.cjs"
+    },
+    "./api-endpoint/*": {
+      "types": "./dist/components/api-endpoint/*.d.ts",
+      "import": "./dist/components/api-endpoint/*.js",
+      "require": "./dist/components/api-endpoint/*.cjs"
+    },
+    "./webhook": {
+      "types": "./dist/components/webhook/index.d.ts",
+      "import": "./dist/components/webhook/index.js",
+      "require": "./dist/components/webhook/index.cjs"
+    },
+    "./webhook/*": {
+      "types": "./dist/components/webhook/*.d.ts",
+      "import": "./dist/components/webhook/*.js",
+      "require": "./dist/components/webhook/*.cjs"
+    },
+    "./integration": {
+      "types": "./dist/components/integration/index.d.ts",
+      "import": "./dist/components/integration/index.js",
+      "require": "./dist/components/integration/index.cjs"
+    },
+    "./integration/*": {
+      "types": "./dist/components/integration/*.d.ts",
+      "import": "./dist/components/integration/*.js",
+      "require": "./dist/components/integration/*.cjs"
+    },
+    "./feature-flag": {
+      "types": "./dist/components/feature-flag/index.d.ts",
+      "import": "./dist/components/feature-flag/index.js",
+      "require": "./dist/components/feature-flag/index.cjs"
+    },
+    "./feature-flag/*": {
+      "types": "./dist/components/feature-flag/*.d.ts",
+      "import": "./dist/components/feature-flag/*.js",
+      "require": "./dist/components/feature-flag/*.cjs"
+    },
+    "./incident": {
+      "types": "./dist/components/incident/index.d.ts",
+      "import": "./dist/components/incident/index.js",
+      "require": "./dist/components/incident/index.cjs"
+    },
+    "./incident/*": {
+      "types": "./dist/components/incident/*.d.ts",
+      "import": "./dist/components/incident/*.js",
+      "require": "./dist/components/incident/*.cjs"
+    },
+    "./alert-rule": {
+      "types": "./dist/components/alert-rule/index.d.ts",
+      "import": "./dist/components/alert-rule/index.js",
+      "require": "./dist/components/alert-rule/index.cjs"
+    },
+    "./alert-rule/*": {
+      "types": "./dist/components/alert-rule/*.d.ts",
+      "import": "./dist/components/alert-rule/*.js",
+      "require": "./dist/components/alert-rule/*.cjs"
+    },
+    "./monitor": {
+      "types": "./dist/components/monitor/index.d.ts",
+      "import": "./dist/components/monitor/index.js",
+      "require": "./dist/components/monitor/index.cjs"
+    },
+    "./monitor/*": {
+      "types": "./dist/components/monitor/*.d.ts",
+      "import": "./dist/components/monitor/*.js",
+      "require": "./dist/components/monitor/*.cjs"
+    },
+    "./log-entry": {
+      "types": "./dist/components/log-entry/index.d.ts",
+      "import": "./dist/components/log-entry/index.js",
+      "require": "./dist/components/log-entry/index.cjs"
+    },
+    "./log-entry/*": {
+      "types": "./dist/components/log-entry/*.d.ts",
+      "import": "./dist/components/log-entry/*.js",
+      "require": "./dist/components/log-entry/*.cjs"
+    },
+    "./backup": {
+      "types": "./dist/components/backup/index.d.ts",
+      "import": "./dist/components/backup/index.js",
+      "require": "./dist/components/backup/index.cjs"
+    },
+    "./backup/*": {
+      "types": "./dist/components/backup/*.d.ts",
+      "import": "./dist/components/backup/*.js",
+      "require": "./dist/components/backup/*.cjs"
+    },
+    "./storage-bucket": {
+      "types": "./dist/components/storage-bucket/index.d.ts",
+      "import": "./dist/components/storage-bucket/index.js",
+      "require": "./dist/components/storage-bucket/index.cjs"
+    },
+    "./storage-bucket/*": {
+      "types": "./dist/components/storage-bucket/*.d.ts",
+      "import": "./dist/components/storage-bucket/*.js",
+      "require": "./dist/components/storage-bucket/*.cjs"
+    },
+    "./access-token": {
+      "types": "./dist/components/access-token/index.d.ts",
+      "import": "./dist/components/access-token/index.js",
+      "require": "./dist/components/access-token/index.cjs"
+    },
+    "./access-token/*": {
+      "types": "./dist/components/access-token/*.d.ts",
+      "import": "./dist/components/access-token/*.js",
+      "require": "./dist/components/access-token/*.cjs"
+    },
+    "./employee": {
+      "types": "./dist/components/employee/index.d.ts",
+      "import": "./dist/components/employee/index.js",
+      "require": "./dist/components/employee/index.cjs"
+    },
+    "./employee/*": {
+      "types": "./dist/components/employee/*.d.ts",
+      "import": "./dist/components/employee/*.js",
+      "require": "./dist/components/employee/*.cjs"
+    },
+    "./candidate": {
+      "types": "./dist/components/candidate/index.d.ts",
+      "import": "./dist/components/candidate/index.js",
+      "require": "./dist/components/candidate/index.cjs"
+    },
+    "./candidate/*": {
+      "types": "./dist/components/candidate/*.d.ts",
+      "import": "./dist/components/candidate/*.js",
+      "require": "./dist/components/candidate/*.cjs"
+    },
+    "./job-posting": {
+      "types": "./dist/components/job-posting/index.d.ts",
+      "import": "./dist/components/job-posting/index.js",
+      "require": "./dist/components/job-posting/index.cjs"
+    },
+    "./job-posting/*": {
+      "types": "./dist/components/job-posting/*.d.ts",
+      "import": "./dist/components/job-posting/*.js",
+      "require": "./dist/components/job-posting/*.cjs"
+    },
+    "./payroll": {
+      "types": "./dist/components/payroll/index.d.ts",
+      "import": "./dist/components/payroll/index.js",
+      "require": "./dist/components/payroll/index.cjs"
+    },
+    "./payroll/*": {
+      "types": "./dist/components/payroll/*.d.ts",
+      "import": "./dist/components/payroll/*.js",
+      "require": "./dist/components/payroll/*.cjs"
+    },
+    "./leave-request": {
+      "types": "./dist/components/leave-request/index.d.ts",
+      "import": "./dist/components/leave-request/index.js",
+      "require": "./dist/components/leave-request/index.cjs"
+    },
+    "./leave-request/*": {
+      "types": "./dist/components/leave-request/*.d.ts",
+      "import": "./dist/components/leave-request/*.js",
+      "require": "./dist/components/leave-request/*.cjs"
+    },
+    "./shift": {
+      "types": "./dist/components/shift/index.d.ts",
+      "import": "./dist/components/shift/index.js",
+      "require": "./dist/components/shift/index.cjs"
+    },
+    "./shift/*": {
+      "types": "./dist/components/shift/*.d.ts",
+      "import": "./dist/components/shift/*.js",
+      "require": "./dist/components/shift/*.cjs"
+    },
+    "./expense": {
+      "types": "./dist/components/expense/index.d.ts",
+      "import": "./dist/components/expense/index.js",
+      "require": "./dist/components/expense/index.cjs"
+    },
+    "./expense/*": {
+      "types": "./dist/components/expense/*.d.ts",
+      "import": "./dist/components/expense/*.js",
+      "require": "./dist/components/expense/*.cjs"
+    },
+    "./budget": {
+      "types": "./dist/components/budget/index.d.ts",
+      "import": "./dist/components/budget/index.js",
+      "require": "./dist/components/budget/index.cjs"
+    },
+    "./budget/*": {
+      "types": "./dist/components/budget/*.d.ts",
+      "import": "./dist/components/budget/*.js",
+      "require": "./dist/components/budget/*.cjs"
+    },
+    "./transaction": {
+      "types": "./dist/components/transaction/index.d.ts",
+      "import": "./dist/components/transaction/index.js",
+      "require": "./dist/components/transaction/index.cjs"
+    },
+    "./transaction/*": {
+      "types": "./dist/components/transaction/*.d.ts",
+      "import": "./dist/components/transaction/*.js",
+      "require": "./dist/components/transaction/*.cjs"
+    },
+    "./bank-account": {
+      "types": "./dist/components/bank-account/index.d.ts",
+      "import": "./dist/components/bank-account/index.js",
+      "require": "./dist/components/bank-account/index.cjs"
+    },
+    "./bank-account/*": {
+      "types": "./dist/components/bank-account/*.d.ts",
+      "import": "./dist/components/bank-account/*.js",
+      "require": "./dist/components/bank-account/*.cjs"
+    },
+    "./tax-report": {
+      "types": "./dist/components/tax-report/index.d.ts",
+      "import": "./dist/components/tax-report/index.js",
+      "require": "./dist/components/tax-report/index.cjs"
+    },
+    "./tax-report/*": {
+      "types": "./dist/components/tax-report/*.d.ts",
+      "import": "./dist/components/tax-report/*.js",
+      "require": "./dist/components/tax-report/*.cjs"
+    },
+    "./quote": {
+      "types": "./dist/components/quote/index.d.ts",
+      "import": "./dist/components/quote/index.js",
+      "require": "./dist/components/quote/index.cjs"
+    },
+    "./quote/*": {
+      "types": "./dist/components/quote/*.d.ts",
+      "import": "./dist/components/quote/*.js",
+      "require": "./dist/components/quote/*.cjs"
+    },
+    "./contract": {
+      "types": "./dist/components/contract/index.d.ts",
+      "import": "./dist/components/contract/index.js",
+      "require": "./dist/components/contract/index.cjs"
+    },
+    "./contract/*": {
+      "types": "./dist/components/contract/*.d.ts",
+      "import": "./dist/components/contract/*.js",
+      "require": "./dist/components/contract/*.cjs"
+    },
+    "./organization": {
+      "types": "./dist/components/organization/index.d.ts",
+      "import": "./dist/components/organization/index.js",
+      "require": "./dist/components/organization/index.cjs"
+    },
+    "./organization/*": {
+      "types": "./dist/components/organization/*.d.ts",
+      "import": "./dist/components/organization/*.js",
+      "require": "./dist/components/organization/*.cjs"
+    },
+    "./course": {
+      "types": "./dist/components/course/index.d.ts",
+      "import": "./dist/components/course/index.js",
+      "require": "./dist/components/course/index.cjs"
+    },
+    "./course/*": {
+      "types": "./dist/components/course/*.d.ts",
+      "import": "./dist/components/course/*.js",
+      "require": "./dist/components/course/*.cjs"
+    },
+    "./lesson": {
+      "types": "./dist/components/lesson/index.d.ts",
+      "import": "./dist/components/lesson/index.js",
+      "require": "./dist/components/lesson/index.cjs"
+    },
+    "./lesson/*": {
+      "types": "./dist/components/lesson/*.d.ts",
+      "import": "./dist/components/lesson/*.js",
+      "require": "./dist/components/lesson/*.cjs"
+    },
+    "./student": {
+      "types": "./dist/components/student/index.d.ts",
+      "import": "./dist/components/student/index.js",
+      "require": "./dist/components/student/index.cjs"
+    },
+    "./student/*": {
+      "types": "./dist/components/student/*.d.ts",
+      "import": "./dist/components/student/*.js",
+      "require": "./dist/components/student/*.cjs"
+    },
+    "./enrollment": {
+      "types": "./dist/components/enrollment/index.d.ts",
+      "import": "./dist/components/enrollment/index.js",
+      "require": "./dist/components/enrollment/index.cjs"
+    },
+    "./enrollment/*": {
+      "types": "./dist/components/enrollment/*.d.ts",
+      "import": "./dist/components/enrollment/*.js",
+      "require": "./dist/components/enrollment/*.cjs"
+    },
+    "./assignment": {
+      "types": "./dist/components/assignment/index.d.ts",
+      "import": "./dist/components/assignment/index.js",
+      "require": "./dist/components/assignment/index.cjs"
+    },
+    "./assignment/*": {
+      "types": "./dist/components/assignment/*.d.ts",
+      "import": "./dist/components/assignment/*.js",
+      "require": "./dist/components/assignment/*.cjs"
+    },
+    "./exam": {
+      "types": "./dist/components/exam/index.d.ts",
+      "import": "./dist/components/exam/index.js",
+      "require": "./dist/components/exam/index.cjs"
+    },
+    "./exam/*": {
+      "types": "./dist/components/exam/*.d.ts",
+      "import": "./dist/components/exam/*.js",
+      "require": "./dist/components/exam/*.cjs"
+    },
+    "./certificate": {
+      "types": "./dist/components/certificate/index.d.ts",
+      "import": "./dist/components/certificate/index.js",
+      "require": "./dist/components/certificate/index.cjs"
+    },
+    "./certificate/*": {
+      "types": "./dist/components/certificate/*.d.ts",
+      "import": "./dist/components/certificate/*.js",
+      "require": "./dist/components/certificate/*.cjs"
+    },
+    "./hotel-room": {
+      "types": "./dist/components/hotel-room/index.d.ts",
+      "import": "./dist/components/hotel-room/index.js",
+      "require": "./dist/components/hotel-room/index.cjs"
+    },
+    "./hotel-room/*": {
+      "types": "./dist/components/hotel-room/*.d.ts",
+      "import": "./dist/components/hotel-room/*.js",
+      "require": "./dist/components/hotel-room/*.cjs"
+    },
+    "./reservation": {
+      "types": "./dist/components/reservation/index.d.ts",
+      "import": "./dist/components/reservation/index.js",
+      "require": "./dist/components/reservation/index.cjs"
+    },
+    "./reservation/*": {
+      "types": "./dist/components/reservation/*.d.ts",
+      "import": "./dist/components/reservation/*.js",
+      "require": "./dist/components/reservation/*.cjs"
+    },
+    "./flight": {
+      "types": "./dist/components/flight/index.d.ts",
+      "import": "./dist/components/flight/index.js",
+      "require": "./dist/components/flight/index.cjs"
+    },
+    "./flight/*": {
+      "types": "./dist/components/flight/*.d.ts",
+      "import": "./dist/components/flight/*.js",
+      "require": "./dist/components/flight/*.cjs"
+    },
+    "./travel-itinerary": {
+      "types": "./dist/components/travel-itinerary/index.d.ts",
+      "import": "./dist/components/travel-itinerary/index.js",
+      "require": "./dist/components/travel-itinerary/index.cjs"
+    },
+    "./travel-itinerary/*": {
+      "types": "./dist/components/travel-itinerary/*.d.ts",
+      "import": "./dist/components/travel-itinerary/*.js",
+      "require": "./dist/components/travel-itinerary/*.cjs"
+    },
+    "./destination": {
+      "types": "./dist/components/destination/index.d.ts",
+      "import": "./dist/components/destination/index.js",
+      "require": "./dist/components/destination/index.cjs"
+    },
+    "./destination/*": {
+      "types": "./dist/components/destination/*.d.ts",
+      "import": "./dist/components/destination/*.js",
+      "require": "./dist/components/destination/*.cjs"
+    },
+    "./venue": {
+      "types": "./dist/components/venue/index.d.ts",
+      "import": "./dist/components/venue/index.js",
+      "require": "./dist/components/venue/index.cjs"
+    },
+    "./venue/*": {
+      "types": "./dist/components/venue/*.d.ts",
+      "import": "./dist/components/venue/*.js",
+      "require": "./dist/components/venue/*.cjs"
+    },
+    "./restaurant-menu": {
+      "types": "./dist/components/restaurant-menu/index.d.ts",
+      "import": "./dist/components/restaurant-menu/index.js",
+      "require": "./dist/components/restaurant-menu/index.cjs"
+    },
+    "./restaurant-menu/*": {
+      "types": "./dist/components/restaurant-menu/*.d.ts",
+      "import": "./dist/components/restaurant-menu/*.js",
+      "require": "./dist/components/restaurant-menu/*.cjs"
+    },
+    "./recipe": {
+      "types": "./dist/components/recipe/index.d.ts",
+      "import": "./dist/components/recipe/index.js",
+      "require": "./dist/components/recipe/index.cjs"
+    },
+    "./recipe/*": {
+      "types": "./dist/components/recipe/*.d.ts",
+      "import": "./dist/components/recipe/*.js",
+      "require": "./dist/components/recipe/*.cjs"
+    },
+    "./workout": {
+      "types": "./dist/components/workout/index.d.ts",
+      "import": "./dist/components/workout/index.js",
+      "require": "./dist/components/workout/index.cjs"
+    },
+    "./workout/*": {
+      "types": "./dist/components/workout/*.d.ts",
+      "import": "./dist/components/workout/*.js",
+      "require": "./dist/components/workout/*.cjs"
+    },
+    "./nutrition": {
+      "types": "./dist/components/nutrition/index.d.ts",
+      "import": "./dist/components/nutrition/index.js",
+      "require": "./dist/components/nutrition/index.cjs"
+    },
+    "./nutrition/*": {
+      "types": "./dist/components/nutrition/*.d.ts",
+      "import": "./dist/components/nutrition/*.js",
+      "require": "./dist/components/nutrition/*.cjs"
+    },
+    "./sleep-session": {
+      "types": "./dist/components/sleep-session/index.d.ts",
+      "import": "./dist/components/sleep-session/index.js",
+      "require": "./dist/components/sleep-session/index.cjs"
+    },
+    "./sleep-session/*": {
+      "types": "./dist/components/sleep-session/*.d.ts",
+      "import": "./dist/components/sleep-session/*.js",
+      "require": "./dist/components/sleep-session/*.cjs"
+    },
+    "./habit": {
+      "types": "./dist/components/habit/index.d.ts",
+      "import": "./dist/components/habit/index.js",
+      "require": "./dist/components/habit/index.cjs"
+    },
+    "./habit/*": {
+      "types": "./dist/components/habit/*.d.ts",
+      "import": "./dist/components/habit/*.js",
+      "require": "./dist/components/habit/*.cjs"
+    },
+    "./goal": {
+      "types": "./dist/components/goal/index.d.ts",
+      "import": "./dist/components/goal/index.js",
+      "require": "./dist/components/goal/index.cjs"
+    },
+    "./goal/*": {
+      "types": "./dist/components/goal/*.d.ts",
+      "import": "./dist/components/goal/*.js",
+      "require": "./dist/components/goal/*.cjs"
+    },
+    "./medical-appointment": {
+      "types": "./dist/components/medical-appointment/index.d.ts",
+      "import": "./dist/components/medical-appointment/index.js",
+      "require": "./dist/components/medical-appointment/index.cjs"
+    },
+    "./medical-appointment/*": {
+      "types": "./dist/components/medical-appointment/*.d.ts",
+      "import": "./dist/components/medical-appointment/*.js",
+      "require": "./dist/components/medical-appointment/*.cjs"
+    },
+    "./prescription": {
+      "types": "./dist/components/prescription/index.d.ts",
+      "import": "./dist/components/prescription/index.js",
+      "require": "./dist/components/prescription/index.cjs"
+    },
+    "./prescription/*": {
+      "types": "./dist/components/prescription/*.d.ts",
+      "import": "./dist/components/prescription/*.js",
+      "require": "./dist/components/prescription/*.cjs"
+    },
+    "./support-ticket": {
+      "types": "./dist/components/support-ticket/index.d.ts",
+      "import": "./dist/components/support-ticket/index.js",
+      "require": "./dist/components/support-ticket/index.cjs"
+    },
+    "./support-ticket/*": {
+      "types": "./dist/components/support-ticket/*.d.ts",
+      "import": "./dist/components/support-ticket/*.js",
+      "require": "./dist/components/support-ticket/*.cjs"
+    },
+    "./knowledge-article": {
+      "types": "./dist/components/knowledge-article/index.d.ts",
+      "import": "./dist/components/knowledge-article/index.js",
+      "require": "./dist/components/knowledge-article/index.cjs"
+    },
+    "./knowledge-article/*": {
+      "types": "./dist/components/knowledge-article/*.d.ts",
+      "import": "./dist/components/knowledge-article/*.js",
+      "require": "./dist/components/knowledge-article/*.cjs"
+    },
+    "./community-member": {
+      "types": "./dist/components/community-member/index.d.ts",
+      "import": "./dist/components/community-member/index.js",
+      "require": "./dist/components/community-member/index.cjs"
+    },
+    "./community-member/*": {
+      "types": "./dist/components/community-member/*.d.ts",
+      "import": "./dist/components/community-member/*.js",
+      "require": "./dist/components/community-member/*.cjs"
+    },
+    "./form-submission": {
+      "types": "./dist/components/form-submission/index.d.ts",
+      "import": "./dist/components/form-submission/index.js",
+      "require": "./dist/components/form-submission/index.cjs"
+    },
+    "./form-submission/*": {
+      "types": "./dist/components/form-submission/*.d.ts",
+      "import": "./dist/components/form-submission/*.js",
+      "require": "./dist/components/form-submission/*.cjs"
+    },
+    "./saved-filter": {
+      "types": "./dist/components/saved-filter/index.d.ts",
+      "import": "./dist/components/saved-filter/index.js",
+      "require": "./dist/components/saved-filter/index.cjs"
+    },
+    "./saved-filter/*": {
+      "types": "./dist/components/saved-filter/*.d.ts",
+      "import": "./dist/components/saved-filter/*.js",
+      "require": "./dist/components/saved-filter/*.cjs"
+    },
+    "./route-definition": {
+      "types": "./dist/components/route-definition/index.d.ts",
+      "import": "./dist/components/route-definition/index.js",
+      "require": "./dist/components/route-definition/index.cjs"
+    },
+    "./route-definition/*": {
+      "types": "./dist/components/route-definition/*.d.ts",
+      "import": "./dist/components/route-definition/*.js",
+      "require": "./dist/components/route-definition/*.cjs"
+    },
+    "./table-preset": {
+      "types": "./dist/components/table-preset/index.d.ts",
+      "import": "./dist/components/table-preset/index.js",
+      "require": "./dist/components/table-preset/index.cjs"
+    },
+    "./table-preset/*": {
+      "types": "./dist/components/table-preset/*.d.ts",
+      "import": "./dist/components/table-preset/*.js",
+      "require": "./dist/components/table-preset/*.cjs"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./fonts/*": "./dist/fonts/*"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts"
+}

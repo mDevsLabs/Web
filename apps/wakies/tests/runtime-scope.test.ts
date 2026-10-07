@@ -2,13 +2,13 @@ import { expect, it } from 'vitest';
 import { validateRuntimeScope } from '../src/server/runtime-scope.js';
 import { WorkspaceStore } from '../src/server/workspace.js';
 import { setupStatus } from '../src/server/platform-config.js';
-it('blocks unbound cross-Dot run and inspector routes before contacting Intelligence', () => {
+it('blocks unbound cross-Wakie run and inspector routes before contacting Intelligence', () => {
   const store = new WorkspaceStore(':memory:', 'owner');
-  const dot = store.dots()[0];
-  store.bindThread('thread-a', dot.id, 'A');
+  const wakie = store.wakies()[0];
+  store.bindThread('thread-a', wakie.id, 'A');
   expect(() =>
     validateRuntimeScope(
-      new Request(`http://localhost/api/copilotkit/agent/${dot.id}/run`, {
+      new Request(`http://localhost/api/copilotkit/agent/${wakie.id}/run`, {
         method: 'POST',
       }),
       store,
@@ -24,7 +24,7 @@ it('blocks unbound cross-Dot run and inspector routes before contacting Intellig
   ).toThrow();
   expect(() =>
     validateRuntimeScope(
-      new Request(`http://localhost/api/copilotkit/agent/${dot.id}/run`, {
+      new Request(`http://localhost/api/copilotkit/agent/${wakie.id}/run`, {
         method: 'POST',
       }),
       store,
@@ -47,12 +47,12 @@ it('reports setup honestly without a standalone agent fallback', () => {
 });
 it('rejects stop scope bypasses and misleading prefixes while allowing canonical owned routes', () => {
   const store = new WorkspaceStore(':memory:', 'owner');
-  const dot = store.dots()[0];
-  store.bindThread('bound', dot.id, 'Bound');
+  const wakie = store.wakies()[0];
+  store.bindThread('bound', wakie.id, 'Bound');
   for (const path of [
-    `/agent/${dot.id}/stop/foreign`,
+    `/agent/${wakie.id}/stop/foreign`,
     '/threads/bound/threads/foreign/messages',
-    `/agent/${dot.id}/agent/foreign/run`,
+    `/agent/${wakie.id}/agent/foreign/run`,
     '/prefix/info',
     '/threads//bound/messages',
     '/threads/bound%2Fthreads%2Fforeign/messages',
@@ -70,7 +70,7 @@ it('rejects stop scope bypasses and misleading prefixes while allowing canonical
   expect(() =>
     validateRuntimeScope(
       new Request(
-        `http://localhost/api/copilotkit/agent/${dot.id}/stop/bound`,
+        `http://localhost/api/copilotkit/agent/${wakie.id}/stop/bound`,
         { method: 'POST' },
       ),
       store,

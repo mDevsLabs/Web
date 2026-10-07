@@ -80,10 +80,10 @@ it('hides only marked receipt prompts while retaining summaries and prior unmark
       id: 'internal',
       role: 'user',
       content: 'Internal sync instructions',
-      metadata: { opendotsSource: 'voice_receipt' },
+      metadata: { wakiesSource: 'voice_receipt' },
     },
     {
-      id: 'opendots:voice_receipt:durable',
+      id: 'wakies:voice_receipt:durable',
       role: 'user',
       content: 'Persisted internal instructions without metadata',
     },
@@ -91,13 +91,13 @@ it('hides only marked receipt prompts while retaining summaries and prior unmark
       id: 'summary',
       role: 'assistant',
       content: 'Confirmed call summary',
-      metadata: { opendotsSource: 'voice_receipt' },
+      metadata: { wakiesSource: 'voice_receipt' },
     },
     {
       id: 'user',
       role: 'user',
       content: 'My next question',
-      metadata: { opendotsSource: 'voice_compute' },
+      metadata: { wakiesSource: 'voice_compute' },
     },
   ];
   const html = renderToStaticMarkup(

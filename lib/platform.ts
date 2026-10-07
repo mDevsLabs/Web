@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import type { MaiDesktopBridge } from "@/hooks/use-is-desktop-app";
 
 // Le preload Electron (apps/desktop/src/preload.ts) et le bridge Capacitor
 // exposent des objets globaux ; on les type ici pour le web.
@@ -8,11 +9,7 @@ declare global {
       getPlatform?: () => string;
       isNativePlatform?: () => boolean;
     };
-    maiDesktop?: {
-      isElectron?: boolean;
-      platform?: string;
-      version?: string;
-    };
+    maiDesktop?: MaiDesktopBridge;
   }
 }
 

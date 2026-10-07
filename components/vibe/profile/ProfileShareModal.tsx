@@ -173,7 +173,7 @@ export const ProfileShareModal: React.FC<ProfileShareModalProps> = ({
       }
 
       // Logo au centre du QR, sur une pastille blanche arrondie (correction H)
-      const logo = await loadImage("/logo.png");
+      const logo = await loadImage("/vibe/logo.png");
       if (logo) {
         const logoSize = QR_SIZE * 0.24;
         const qrCenterY = qrBadgeY + QR_BADGE_SIZE / 2;

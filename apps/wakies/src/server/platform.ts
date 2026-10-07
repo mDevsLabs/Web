@@ -11,7 +11,7 @@ import { createSlackChannel } from './slack-channel.js';
 export { slackIdentity } from './slack-channel.js';
 import { Store } from './store.js';
 import { WorkspaceStore } from './workspace.js';
-import { DotAgent } from './dot-agent.js';
+import { WakieAgent } from './wakie-agent.js';
 import { runThreadTurn } from './headless.js';
 import { setupStatus, type PlatformConfig } from './platform-config.js';
 import { validateRuntimeScope } from './runtime-scope.js';
@@ -43,20 +43,20 @@ export class Platform {
       wsUrl: config.intelligenceWsUrl,
       getLearningContainerId: learningSelector(
         workspace,
-        config.slackDotId ?? workspace.dots()[0]?.id,
+        config.slackWakieId ?? workspace.wakies()[0]?.id,
       ),
     });
     const channels = [];
     if (config.slackChannel && config.slackTeam && config.slackUsers.length) {
-      const dotId = config.slackDotId ?? workspace.dots()[0].id;
-      if (!workspace.dot(dotId))
-        throw new Error('SLACK_DOT_ID does not identify an existing Dot.');
+      const wakieId = config.slackWakieId ?? workspace.wakies()[0].id;
+      if (!workspace.wakie(wakieId))
+        throw new Error('SLACK_WAKIE_ID does not identify an existing Wakie.');
       const slack = createSlackChannel({
         name: config.slackChannel,
         config,
         ownerId: workspace.ownerId,
         paused: () => store.settings().paused,
-        agent: () => new DotAgent(store, workspace, config, dotId, true),
+        agent: () => new WakieAgent(store, workspace, config, wakieId, true),
       });
       channels.push(slack);
     }
@@ -64,15 +64,15 @@ export class Platform {
       intelligence: this.intelligence,
       identifyUser: async () => ({
         id: workspace.ownerId,
-        name: 'OpenDots owner',
+        name: 'Wakies owner',
       }),
       agents: async () =>
         Object.fromEntries(
           workspace
-            .dots()
-            .map((dot) => [
-              dot.id,
-              new DotAgent(store, workspace, config, dot.id),
+            .wakies()
+            .map((wakie) => [
+              wakie.id,
+              new WakieAgent(store, workspace, config, wakie.id),
             ]),
         ),
       channels,
@@ -113,15 +113,15 @@ export class Platform {
   async stop() {
     await this.handler?.channels?.stop();
   }
-  async createConversation(dotId: string, title: string) {
+  async createConversation(wakieId: string, title: string) {
     this.requireReady();
-    if (!this.workspace.dot(dotId)) throw new Error('Dot not found.');
+    if (!this.workspace.wakie(wakieId)) throw new Error('Wakie not found.');
     const id = randomUUID();
     try {
       await this.intelligence!.createThread({
         threadId: id,
         userId: this.workspace.ownerId,
-        agentId: dotId,
+        agentId: wakieId,
         name: title,
       });
     } catch {
@@ -129,7 +129,7 @@ export class Platform {
         'Intelligence could not create this conversation. Check the runtime key and connection.',
       );
     }
-    return this.workspace.bindThread(id, dotId, title);
+    return this.workspace.bindThread(id, wakieId, title);
   }
   async history(threadId: string): Promise<string> {
     this.requireReady();
@@ -188,7 +188,7 @@ export class Platform {
       this.config.ownerToken
         ? { Authorization: `Bearer ${this.config.ownerToken}` }
         : {},
-      thread.dotId,
+      thread.wakieId,
       threadId,
       prompt,
       signal,

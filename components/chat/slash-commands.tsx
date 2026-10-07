@@ -112,7 +112,7 @@ export const slashCommands: SlashCommand[] = [
   {
     action: "library",
     aliases: ["stockage"],
-    description: "Ouvrir le Stockage (/stockage, /library)",
+    description: "Ouvrir la Bibliothèque (/library)",
     icon: <FolderArchiveIcon className="size-3.5" />,
     name: "library",
   },

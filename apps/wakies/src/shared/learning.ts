@@ -15,8 +15,8 @@ export function validateLearningSettings(
 ) {
   if (!learningContainerIdSchema.safeParse(containerId).success)
     throw new Error(
-      'Dot Learning container ID must use 1–64 lowercase letters, numbers, and single hyphens.',
+      'Wakie Learning container ID must use 1–64 lowercase letters, numbers, and single hyphens.',
     );
   if (delivery && !containerId)
-    throw new Error('Dot skill delivery requires a Learning container.');
+    throw new Error('Wakie skill delivery requires a Learning container.');
 }

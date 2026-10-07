@@ -159,15 +159,18 @@ describe("« /bots » ouvre le sélecteur de bots, il ne se contente pas d'exist
 
   async function run(mounted: boolean) {
     const { clicked, pushed } = stubComposer({ mounted });
-    await runSlashCommand(botsCommand as never, {
-      router: {
-        push: (href: string) => {
-          pushed.push(href);
+    await runSlashCommand(
+      botsCommand as never,
+      {
+        router: {
+          push: (href: string) => {
+            pushed.push(href);
+          },
         },
-      },
-      // Toute commande système annule la commande personnalisée en attente.
-      setPendingCommand: () => undefined,
-    } as never);
+        // Toute commande système annule la commande personnalisée en attente.
+        setPendingCommand: () => undefined,
+      } as never
+    );
     return { clicked, pushed };
   }
 

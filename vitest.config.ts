@@ -9,6 +9,8 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "."),
+      electron: path.resolve(import.meta.dirname, "tests/stubs/electron.ts"),
+      "node-pty": path.resolve(import.meta.dirname, "tests/stubs/node-pty.ts"),
       "server-only": path.resolve(import.meta.dirname, "tests/stubs/empty.ts"),
     },
   },

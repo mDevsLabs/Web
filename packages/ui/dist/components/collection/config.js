@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Collection", "label": "Collections", "description": "G\xE9rez vos collections depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "curator", "label": "Responsable", "kind": "text", "required": true }, { "key": "itemCount", "label": "\xC9l\xE9ments", "kind": "number", "required": true }, { "key": "updatedOn", "label": "Modification", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "public", "private"] }], "titleKey": "name", "settings": [{ "key": "notifyCollection", "label": "Notifications : collections", "description": "Recevoir un signal lors des changements." }, { "key": "archiveCollection", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section collections." }, { "key": "approveCollection", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

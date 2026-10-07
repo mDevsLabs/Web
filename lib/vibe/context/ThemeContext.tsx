@@ -651,7 +651,12 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
         theme,
       }}
     >
-      <div className="vibe-root" data-vibe-root="" ref={rootRef}>
+      <div
+        className="vibe-root"
+        data-vibe-root=""
+        ref={rootRef}
+        suppressHydrationWarning
+      >
         {children}
       </div>
     </ThemeContext.Provider>

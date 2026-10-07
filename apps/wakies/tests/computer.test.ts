@@ -14,7 +14,7 @@ afterEach(() => {
 function fixture(deadline = 1000) {
   const workspace = new WorkspaceStore(':memory:', 'owner');
   stores.push(workspace);
-  const id = workspace.dots()[0].id;
+  const id = workspace.wakies()[0].id;
   const calls: { url: string; init?: RequestInit }[] = [];
   let paused = false;
   let endpoint: string | undefined;
@@ -27,9 +27,9 @@ function fixture(deadline = 1000) {
     calls.push({ url, init });
     if (url.endsWith('/computers'))
       return Response.json({
-        computers: workspace.dots().map((dot) => ({
-          botId: dot.id,
-          container: `opendots-computer-${dot.id}`,
+        computers: workspace.wakies().map((wakie) => ({
+          botId: wakie.id,
+          container: `wakies-computer-${wakie.id}`,
           status: 'running',
           ...(endpoint ? { url: endpoint } : {}),
         })),
@@ -37,9 +37,9 @@ function fixture(deadline = 1000) {
     if (url.endsWith('/ensure'))
       return Response.json({
         botId: id,
-        container: `opendots-computer-${id}`,
+        container: `wakies-computer-${id}`,
         status: 'running',
-        url: `http://opendots-computer-${id}:4100`,
+        url: `http://wakies-computer-${id}:4100`,
       });
     if (url.endsWith('/control'))
       return Response.json({
@@ -95,7 +95,7 @@ it('defaults every permission off and persists policy and metadata-only audit ac
   const dir = mkdtempSync(join(tmpdir(), 'computers-'));
   const path = join(dir, 'db');
   let workspace = new WorkspaceStore(path, 'owner');
-  const id = workspace.dots()[0].id;
+  const id = workspace.wakies()[0].id;
   expect(workspace.computers.permissions(id)).toEqual({
     enabled: false,
     browser: false,
@@ -115,7 +115,7 @@ it('defaults every permission off and persists policy and metadata-only audit ac
   workspace.close();
   rmSync(dir, { recursive: true });
 });
-it('status never provisions and actions use per-Dot derived credentials with audit before dispatch', async () => {
+it('status never provisions and actions use per-Wakie derived credentials with audit before dispatch', async () => {
   const f = fixture();
   f.config.computerToken = '  master-secret  ';
   await f.service.status(f.id);
@@ -129,12 +129,12 @@ it('status never provisions and actions use per-Dot derived credentials with aud
   ).toEqual({ text: '[redacted]' });
   const request = f.calls.find((call) => call.url.endsWith('/files/read'))!;
   expect(new Headers(request.init?.headers).get('authorization')).toBe(
-    `Bearer ${createHmac('sha256', 'master-secret').update(`opendots-computer:${f.id}`).digest('hex')}`,
+    `Bearer ${createHmac('sha256', 'master-secret').update(`wakies-computer:${f.id}`).digest('hex')}`,
   );
   expect(new Headers(request.init?.headers).get('x-openbot-bot-id')).toBe(f.id);
   expect(request.init?.redirect).toBe('error');
   f.handle(async () => Response.json({ text: 'result' }));
-  const other = f.workspace.createDot(
+  const other = f.workspace.createWakie(
     f.workspace.spaces()[0].id,
     'Other',
     '',
@@ -149,13 +149,13 @@ it('status never provisions and actions use per-Dot derived credentials with aud
   );
   expect(last.url).toContain(other.id);
 });
-it('rejects foreign targets, nonexistent Dots, traversal, unexpected inputs and agent human controls', async () => {
+it('rejects foreign targets, nonexistent Wakies, traversal, unexpected inputs and agent human controls', async () => {
   const f = fixture();
   f.setEndpoint('http://attacker.test:4100');
   await expect(f.service.action(f.id, 'read', {})).rejects.toThrow('endpoint');
   expect(f.calls).toHaveLength(1);
   await expect(f.service.action('missing', 'read', {})).rejects.toThrow(
-    'Dot not found',
+    'Wakie not found',
   );
   for (const path of [
     '../secret',
@@ -232,7 +232,7 @@ it('preserves recovery handback after permissions are revoked; upstream failures
     'size limit',
   );
 });
-it('binds tools to the current Dot without exposing human or policy controls', async () => {
+it('binds tools to the current Wakie without exposing human or policy controls', async () => {
   const f = fixture();
   const check = vi.fn();
   const tools = computerTools(
@@ -265,16 +265,16 @@ it('bounds completed audit storage while preserving pending work', () => {
 
 it('accepts an uppercase namespace while preserving exact container identity', async () => {
   const f = fixture();
-  const config = { ...f.config, computerNamespace: 'MyDots' };
+  const config = { ...f.config, computerNamespace: 'MyWakies' };
   const transport: typeof fetch = async (input, init) => {
     if (String(input).endsWith('/computers'))
       return Response.json({
         computers: [
           {
             botId: f.id,
-            container: `MyDots-computer-${f.id}`,
+            container: `MyWakies-computer-${f.id}`,
             status: 'running',
-            url: `http://MyDots-computer-${f.id}:4100`,
+            url: `http://MyWakies-computer-${f.id}:4100`,
           },
         ],
       });
@@ -289,7 +289,7 @@ it('accepts an uppercase namespace while preserving exact container identity', a
   await expect(service.action(f.id, 'read', {})).resolves.toEqual({
     text: 'result',
   });
-  expect(f.calls.at(-1)?.url).toBe(`http://mydots-computer-${f.id}:4100/read`);
+  expect(f.calls.at(-1)?.url).toBe(`http://mywakies-computer-${f.id}:4100/read`);
 });
 
 it('gives agents a safe recovery instruction for stale browser or control conflicts', async () => {

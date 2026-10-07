@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Server", "label": "Serveurs", "description": "G\xE9rez vos serveurs depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "region", "label": "R\xE9gion", "kind": "text", "required": true }, { "key": "cpuPercent", "label": "CPU (%)", "kind": "number", "required": true }, { "key": "memoryGb", "label": "M\xE9moire (Go)", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["online", "offline", "maintenance"] }], "titleKey": "name", "settings": [{ "key": "notifyServer", "label": "Notifications : serveurs", "description": "Recevoir un signal lors des changements." }, { "key": "archiveServer", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section serveurs." }, { "key": "approveServer", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

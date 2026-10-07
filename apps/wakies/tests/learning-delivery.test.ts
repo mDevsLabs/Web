@@ -8,7 +8,7 @@ import {
 import { EventType, type RunAgentInput } from '@ag-ui/core';
 import { lastValueFrom, toArray } from 'rxjs';
 import { chat } from '@tanstack/ai';
-import { DotAgent } from '../src/server/dot-agent.js';
+import { WakieAgent } from '../src/server/wakie-agent.js';
 import { completion } from './fixtures/model-stream.js';
 import { Store } from '../src/server/store.js';
 import { WorkspaceStore } from '../src/server/workspace.js';
@@ -23,13 +23,13 @@ it('TanStack AI streams with the verified skill catalog and authorized server to
   const store = new Store(':memory:');
   const workspace = new WorkspaceStore(':memory:', 'owner');
   try {
-    const dot = workspace.dots()[0];
-    workspace.updateDot(dot.id, {
-      ...dot,
+    const wakie = workspace.wakies()[0];
+    workspace.updateWakie(wakie.id, {
+      ...wakie,
       learningContainerId: 'research',
       skillDeliveryEnabled: true,
     });
-    workspace.bindThread('thread', dot.id, 'Learning');
+    workspace.bindThread('thread', wakie.id, 'Learning');
     const bytes = readFileSync(
       new URL('./fixtures/learning-skills.zip', import.meta.url),
     );
@@ -72,7 +72,7 @@ it('TanStack AI streams with the verified skill catalog and authorized server to
       .mockResolvedValueOnce(
         completion({ role: 'assistant', content: 'Ready to review evidence.' }),
       );
-    const agent = new DotAgent(
+    const agent = new WakieAgent(
       store,
       workspace,
       {
@@ -84,7 +84,7 @@ it('TanStack AI streams with the verified skill catalog and authorized server to
         voiceName: 'marin',
         slackUsers: [],
       },
-      dot.id,
+      wakie.id,
     );
     const events = await lastValueFrom(
       agent
@@ -131,20 +131,20 @@ it('native skill delivery fails the invocation before contacting the model when 
   const store = new Store(':memory:');
   const workspace = new WorkspaceStore(':memory:', 'owner');
   try {
-    const dot = workspace.dots()[0];
-    workspace.updateDot(dot.id, {
-      ...dot,
+    const wakie = workspace.wakies()[0];
+    workspace.updateWakie(wakie.id, {
+      ...wakie,
       learningContainerId: 'research',
       skillDeliveryEnabled: true,
     });
-    workspace.bindThread('thread', dot.id, 'Learning');
+    workspace.bindThread('thread', wakie.id, 'Learning');
     const delivery = vi
       .spyOn(CopilotKitIntelligence.prototype, 'getLearnedSkillsSnapshots')
       .mockRejectedValue(new LearnedSkillsError('DELIVERY_DISABLED', false));
     const network = vi
       .spyOn(globalThis, 'fetch')
       .mockRejectedValue(new Error('Unexpected network request'));
-    const agent = new DotAgent(
+    const agent = new WakieAgent(
       store,
       workspace,
       {
@@ -156,7 +156,7 @@ it('native skill delivery fails the invocation before contacting the model when 
         voiceName: 'marin',
         slackUsers: [],
       },
-      dot.id,
+      wakie.id,
     );
     const input: RunAgentInput = {
       threadId: 'thread',

@@ -48,14 +48,14 @@ export function ComputerToolCard({
   status,
   args,
   result,
-  dotId,
-  dotName,
+  wakieId,
+  wakieName,
   showScreen,
   running,
   onExpand,
 }: ComputerToolRenderProps & {
-  dotId: string;
-  dotName: string;
+  wakieId: string;
+  wakieName: string;
   showScreen: boolean;
   running: boolean;
   onExpand?: () => void;
@@ -105,7 +105,7 @@ export function ComputerToolCard({
       if (!document.hidden) {
         try {
           const value = await api<unknown>(
-            `/dots/${encodeURIComponent(dotId)}/computer/actions`,
+            `/wakies/${encodeURIComponent(wakieId)}/computer/actions`,
             'POST',
             { action: 'screenshot', input: {} },
             controller.signal,
@@ -134,7 +134,7 @@ export function ComputerToolCard({
       controller.abort();
       clearTimeout(timer);
     };
-  }, [dotId, showScreen]);
+  }, [wakieId, showScreen]);
   const Icon =
     action === 'exec'
       ? Terminal
@@ -144,7 +144,7 @@ export function ComputerToolCard({
   return (
     <section
       className={`inline-computer ${showScreen ? 'with-screen' : ''}`}
-      aria-label={`${dotName} computer: ${labels[action] ?? action}`}
+      aria-label={`${wakieName} computer: ${labels[action] ?? action}`}
     >
       <header>
         <Icon size={16} aria-hidden="true" />
@@ -155,7 +155,7 @@ export function ComputerToolCard({
         {onExpand && (
           <button
             type="button"
-            aria-label={`Expand ${dotName} computer`}
+            aria-label={`Expand ${wakieName} computer`}
             onClick={onExpand}
           >
             <ArrowUpRight size={16} />
@@ -182,12 +182,12 @@ export function ComputerToolCard({
         <div className="inline-computer-preview">
           <div className="inline-computer-caption">
             <span className="live-indicator" />
-            {dotName}’s computer · Current browser view
+            {wakieName}’s computer · Current browser view
           </div>
           {screen && (
             <img
               src={`data:image/png;base64,${screen.base64}`}
-              alt={`Current browser view from ${dotName}'s computer`}
+              alt={`Current browser view from ${wakieName}'s computer`}
             />
           )}
           {screenError ? (

@@ -57,11 +57,7 @@ export const Greeting = () => {
             className="size-16 rounded-2xl flex items-center justify-center text-white shadow-lg drop-shadow-md"
             style={{ backgroundColor: activeAgent.color || "#6366f1" }}
           >
-            <AgentIcon
-              icon={activeAgent.icon}
-              size={32}
-              variant="plain"
-            />
+            <AgentIcon icon={activeAgent.icon} size={32} variant="plain" />
           </div>
         ) : (
           <Image

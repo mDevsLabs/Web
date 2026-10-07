@@ -19,11 +19,11 @@ if (
   throw new Error(
     'External binding requires an OWNER_TOKEN of at least 24 characters.',
   );
-const database = process.env.DATABASE_PATH ?? 'data/opendots.sqlite';
+const database = process.env.DATABASE_PATH ?? 'data/wakies.sqlite';
 const store = new Store(database);
 const workspace = new WorkspaceStore(
   database,
-  process.env.OWNER_ID ?? 'opendots-owner',
+  process.env.OWNER_ID ?? 'wakies-owner',
 );
 const config: PlatformConfig = {
   intelligenceKey: process.env.INTELLIGENCE_API_KEY,
@@ -49,7 +49,7 @@ const config: PlatformConfig = {
     .split(',')
     .map((value) => value.trim())
     .filter(Boolean),
-  slackDotId: process.env.SLACK_DOT_ID || undefined,
+  slackWakieId: process.env.SLACK_WAKIE_ID || undefined,
   runtimeUrl: `http://${host === '::1' ? '[::1]' : '127.0.0.1'}:${port}/api/copilotkit`,
   ownerToken,
 };
@@ -106,7 +106,7 @@ app.get('/api/*', (c) => c.json({ error: 'Not found.' }, 404));
 app.use('/*', serveStatic({ root: './dist/client' }));
 app.get('*', serveStatic({ path: './dist/client/index.html' }));
 const server = serve({ fetch: app.fetch, hostname: host, port }, (info) => {
-  console.log(`OpenDots template listening on http://${host}:${info.port}`);
+  console.log(`Wakies template listening on http://${host}:${info.port}`);
   runner.start();
   void platform
     .start()

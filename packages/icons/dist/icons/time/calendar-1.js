@@ -1,0 +1,6 @@
+"use client";
+import { createIcon } from "../../create-icon.js";
+const Calendar1Icon = /* @__PURE__ */ createIcon("Calendar1Icon", [["path", { "d": "M11 13h1v4" }], ["path", { "d": "M16 2v3" }], ["path", { "d": "M3 9h18" }], ["path", { "d": "M8 2v3" }], ["rect", { "x": "3", "y": "3", "width": "18", "height": "18", "rx": "2" }]]);
+export {
+  Calendar1Icon
+};

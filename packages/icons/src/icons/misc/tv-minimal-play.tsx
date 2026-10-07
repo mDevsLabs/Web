@@ -1,0 +1,3 @@
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const TvMinimalPlayIcon = /* @__PURE__ */ createIcon('TvMinimalPlayIcon', [["path", { "d": "M15.033 9.44a.647.647 0 0 1 0 1.12l-4.065 2.352a.645.645 0 0 1-.968-.56V7.648a.645.645 0 0 1 .967-.56z" }], ["path", { "d": "M7 21h10" }], ["rect", { "width": "20", "height": "14", "x": "2", "y": "3", "rx": "2" }]]);

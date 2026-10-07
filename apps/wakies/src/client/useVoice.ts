@@ -218,7 +218,7 @@ export function useVoice(
             setUserCaption(data.transcript);
           }
           if (data.type === 'response.output_audio_transcript.done')
-            current.transcript.push(`Dot: ${data.transcript}`);
+            current.transcript.push(`Wakie: ${data.transcript}`);
         }
         if (data.type === 'error')
           setError(

@@ -35,7 +35,7 @@ export function PageDocument({
   onSchedule,
   onThread,
   onSettings,
-  onCreateDot,
+  onCreateWakie,
 }: {
   page: Page;
   pages: Page[];
@@ -50,7 +50,7 @@ export function PageDocument({
   onSchedule: (id: string) => void;
   onThread: (id: string) => void;
   onSettings: () => void;
-  onCreateDot: () => void;
+  onCreateWakie: () => void;
 }) {
   const { controller, state } = usePageAutosave(page, onSaved);
   const draft = state.draft!;
@@ -313,7 +313,7 @@ export function PageDocument({
           onRefresh={onRefresh}
           onSchedule={onSchedule}
           onSettings={onSettings}
-          onCreateDot={onCreateDot}
+          onCreateWakie={onCreateWakie}
           onOpenChange={setChatOpen}
         />
       </div>

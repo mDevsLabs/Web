@@ -1,0 +1,846 @@
+================================================================================
+RAPPORT — IMPLANTATION DES DEUX NOUVEAUX STYLES VIA DÉPENDANCES LOCALES
+@mdevs/ui (Liquid Glass) et @mdevs/icons dans mAI Web
+================================================================================
+Date   : 2026-10-06
+Branche: canary (HEAD = 2a5ace5c1)
+Méthode: analyse en lecture seule de l'intégralité du dépôt (6 explorations
+         indépendantes recoupées : packages/ui, packages/icons, app hôte,
+         ports CSS existants, mécanique pnpm, corpus documentaire).
+         AUCUNE modification appliquée — le dépôt est resté intact.
+
+================================================================================
+1. CONCLUSION EN UN ÉCRAN
+================================================================================
+
+1.1 Les deux packages sont PRÊTS À CONSOMMER tels quels :
+    - packages/ui   → @mdevs/ui   v0.2.0, dist/ précompilé complet
+      (1 541 fichiers .d.ts, styles.css de 35 ko, police Inter 4.1 WOFF2
+      locale, directive 'use client' préservée dans dist).
+    - packages/icons→ @mdevs/icons v0.2.0, 2 600 icônes, dist/ précompilé,
+      AUCUNE dépendance runtime, AUCUN CSS à importer.
+    Les exports package.json ne pointent que vers dist/ et svg/ : aucun build
+    n'est requis côté hôte, donc aucune `transpilePackages` à ajouter.
+
+1.2 Le dépôt n'est PAS encore un workspace : pas de pnpm-workspace.yaml
+    racine, pas de champ "workspaces", node_modules/@mdevs absent,
+    zéro import de @mdevs/ui ou @mdevs/icons dans app/, components/ ou lib/.
+    L'implantation commence donc par le câblage de la dépendance locale.
+
+1.3 Trois mécanismes réalistes pour lier ces dossiers avec pnpm (choix
+    détaillé §6) : workspaces ('workspace:*'), lien direct ('link:'),
+    ou tarball local ('file:' sur .tgz). Tous touchent exactement
+    package.json + pnpm-lock.yaml (+ pnpm-workspace.yaml pour le premier).
+
+1.4 Le seul VRAI risque de la refonte est CSS : @mdevs/ui/styles.css écrit
+    ses tokens sur `:root` et force `color-scheme: light` globalement —
+    le même type de débordement que les scripts build-vibe-css/build-wakies-css/
+    build-site-css neutralisent depuis toujours pour préserver le thème
+    achromatique du chat. Deux voies propres sont décrites au §7.
+
+1.5 Six arbitrages produit doivent être tranchés AVANT d'écrire du code
+    (accent indigo vs achromatisme, pilote du thème sombre, police,
+    frontière primitives, lucide-react vs @mdevs/icons, sonner vs
+    ToastProvider) — tableau au §8.
+
+1.6 Le prompt d'exécution complet, autoportant, est au §14.
+
+================================================================================
+2. INVENTAIRE — @mdevs/ui (packages/ui, v0.2.0)
+================================================================================
+
+2.1 Identité (packages/ui/package.json, 1 140 lignes, lu intégralement)
+    - name "@mdevs/ui" · version "0.2.0" · "type": "module" · MIT
+    - sideEffects: ["**/*.css"]
+    - engines: node >=18 (la consommation ne demande pas Node 22 ;
+      le >=22.12.0 des docs ne vise que le build monorepo d'origine)
+    - peerDependencies : react "^18.3.1 || ^19.0.0", react-dom idem
+    - dependencies     : radix-ui "^1.7.0"  (SEULE dépendance runtime)
+    - main ./dist/index.cjs · module ./dist/index.js · types ./dist/index.d.ts
+    - files : dist, src, catalog, README.md, AGENTS.md, llms.txt,
+      llms-full.txt, LICENSE, CHANGELOG.md, STYLE.md, LICENSE-INTER.txt
+    - publishConfig access "public" — mais le package N'EST PAS publié sur
+      npm (confirmé AGENTS) : distribution par dossier/tarball uniquement.
+    - Champ "scripts" ABSENT : catalog:find/generate/build/verify cités
+      dans AGENTS.md sont des scripts du monorepo d'ORIGINE ; ils n'existent
+      pas ici (vérifié : aucun scripts/generate.py, foundations.py,
+      extensions.py, verify.mjs dans ce dépôt). packages/ est ici un
+      artefact distribué, pas un projet développeur.
+
+2.2 Exports publics (champ "exports", ≈ 223 clés, trio types/import/require)
+    "."                        → dist/index.*
+    "./styles.css"             → dist/styles.css          (FEUILLE UNIQUE)
+    "./fonts/*"                → dist/fonts/*             (woff2 + metadata)
+    "./catalog"                → catalog/manifest.json
+    "./package.json"           → package.json
+    "./primitives"             → dist/primitives/index.*
+    "./primitives/*"           → dist/primitives/*.*      (ex. ./primitives/button)
+    "./<108 domaines>"         → dist/components/<dom>/index.*
+    "./<108 domaines>/*"       → dist/components/<dom>/*.* (ex. ./invoice/invoice-form)
+    Domaines (extrait) : product, order, invoice, payment, subscription,
+    project, task, team, contact, customer, campaign, article, document,
+    repository, pull-request, issue, incident, alert-rule, employee, budget,
+    transaction, course, reservation, habit, goal, medical-appointment,
+    support-ticket, saved-filter, route-definition, table-preset… (108 au total).
+    INTERDIT : importer @mdevs/ui/src/… ou @mdevs/ui/internal/… (non exporté).
+
+2.3 Contenu et comptes (vérifiés sur disque)
+    - 1 212 composants = 132 primitives (src/primitives/*.tsx PLATS)
+      + 1 080 composants métier = 108 domaines × 10 familles.
+    - Les 10 familles partagent src/internal/domain.tsx :
+      XCard(item) · XList(items,onSelect?,emptyMessage?) ·
+      XTable(items,emptyMessage? — trie local, PAS d'onSelect) ·
+      XForm(initialValues?,onSubmit,pending?) ·
+      XFilters(query,onQueryChange,status?,onStatusChange?) ·
+      XTimeline(events) · XStats(metrics) ·
+      XEmptyState(message?,actionLabel?,onAction?) ·
+      XSettings(values,onChange(key,value)) · XOverview(items,metrics,max 5).
+      Signatures contrôlées sur src/components/invoice/ (types.ts + 10 .tsx).
+    - dist/ présent et complet : styles.css 35 119 o (= concaténation
+      src/styles.css 23 417 o + src/extensions.css 11 701 o), 1 541 .d.ts,
+      fonts/inter-variable.woff2 (352 240 o, Inter 4.1, poids 100–900,
+      font-display: swap, sha256 693b77d4… consignés dans metadata.json).
+    - 'use client' : présent dans les sources ET conservé dans dist
+      (266 fichiers dist/primitives, 3 082 fichiers dist au total).
+    - catalog/manifest.json : {version 0.2.0, count 1212, primitives 132,
+      domainComponents 1080, domains 108, components:[…]} — entrée type :
+      name, category, pattern, description, import, source, propsType,
+      sampleProps (+ callbacks, demoState, behavior, introducedVersion
+      pour les extensions 0.2.0 ; + model pour les domaines).
+    - catalog/docs/ : 19 guides (AI_AGENTS, GETTING_STARTED, UI_PLAYBOOK,
+      FORM_PATTERNS, OVERLAYS, API, ACCESSIBILITY, LIQUID_GLASS,
+      LIMITATIONS, TROUBLESHOOTING…).
+
+2.4 Contrat d'usage (résumé opérationnel des AGENTS.md/STYLE.md des packages)
+    - Importer '@mdevs/ui/styles.css' UNE SEULE FOIS à l'entrée globale
+      (app/layout.tsx). Sans lui : rendu HTML brut.
+    - ThemeProvider : <div class="md-root" data-md-theme={theme}
+      data-md-glass> avec props theme 'light'|'dark'|'system' (défaut
+      system), accent, radius, glass, style. NE persiste RIEN, ne lit pas
+      localStorage ; theme="system" se résout en CSS. Il ne peint pas le
+      fond de page (définir un fond dans sa portée).
+    - PortalScope : les overlays portalisés ne recopient que les variables
+      CSS en "--" passées par ThemeProvider.style (jamais className/layout).
+    - ToastProvider : rendu LOCAL (sans portail), à placer SOUS
+      ThemeProvider ; useToast() lève sans provider ancêtre.
+    - Champs : Input/Textarea/Select/DateInput → onChange(event) natif ;
+      NumberInput → onValueChange(number|undefined) (PAS d'onChange !) ;
+      Checkbox → onCheckedChange(boolean|'indeterminate') ;
+      Switch/RadioGroup/TagInput/SegmentedControl/Pagination/FileUpload →
+      callbacks dédiés (cf. tableau packages/ui/AGENTS.md §4).
+    - Boutons : Button/IconButton ont type="button" PAR DÉFAUT → passer
+      type="submit" dans un formulaire.
+    - Formulaires métier : defaultValue (non contrôlé) ; un nouveau
+      initialValues ne resynchronise pas → changer d'enregistrement via
+      key={id stable} ; onSubmit ne gère pas de Promise, pending fourni
+      par le parent, erreurs à catcher côté app.
+    - Pas d'exports Sheet/AlertDialog chez @mdevs → Drawer / ConfirmDialog
+      (ConfirmDialog ferme immédiatement, sans pending : composer Dialog
+      pour une confirmation asynchrone persistante).
+    - Dates : champs "date" en YYYY-MM-DD civil ; pas de conversion
+      toISOString() sans vérifier le fuseau. Nombres : affichés bruts
+      (String(value) → "—" si vide) ; devise/statuts traduits → composer
+      DataTable<T> avec columns[].render (Intl.NumberFormat('fr-FR',…)).
+    - Libellés de config en français ; codes de statut anglais stables
+      ('draft', 'sent', 'paid'…).
+
+================================================================================
+3. INVENTAIRE — @mdevs/icons (packages/icons, v0.2.0)
+================================================================================
+
+3.1 Identité (packages/icons/package.json, 341 lignes)
+    - "@mdevs/icons" 0.2.0 · ESM+CJS+types · MIT · sideEffects: false
+    - peerDependencies : react ^18.3.1 || ^19.0.0 (SEULE déclaration ;
+      le champ "dependencies" n'existe PAS — zéro dépendance runtime,
+      zéro lien avec @mdevs/ui).
+    - engines node >=18 · scripts ABSENTS (même constat que pour ui :
+      artefact distribué, outillage générateur Python absent d'ici).
+
+3.2 Exports (63 clés)
+    "."  "./package.json"  "./catalog"  "./core" (create-icon)
+    29 catégories × 2 motifs : "<cat>" (barrel) + "<cat>/*" (icône seule)
+    "./svg/*" → svg/*.svg  (les bruts ; le motif AJOUTE .svg :
+      sous-chemin public = @mdevs/icons/svg/controls/search SANS extension)
+    Catégories : animals arrows buildings charts cloud commerce
+    communication controls development devices editing energy files food
+    health interface maps media misc nature objects people science
+    security sports symbols time tools transport.
+    Répartition : misc 1 126, files 137, arrows 136, interface 124…
+    Provenance : lucide 1 865 / tabler 735.
+
+3.3 Contrat (src/create-icon.tsx, 27 lignes, lu intégralement)
+    - IconProps extends SVGProps<SVGSVGElement> : size? (24), title?,
+      absoluteStrokeWidth? (false), + strokeWidth (1.5), color, style, ref
+      (SVGSVGElement), children (ajoutés après la géométrie).
+    - SVG par défaut : viewBox "0 0 24 24", fill none, stroke currentColor,
+      strokeLinecap/LineJoin round, focusable false, width/height = size.
+    - COULEUR 0.2.0 (breaking vs 0.1.0) : le SVG porte sa couleur propre —
+      color = color ?? '#000' ; style.color = var(--md-icon-color,
+      light-dark(#000,#fff)). Un parent coloré N'EST PLUS hérité ; pour
+      hériter volontairement : style={{color:'currentColor'}}.
+    - ARIA : title non vide → <title> + aria-labelledby + role="img" ;
+      sinon aria-hidden="true" (décoratif).
+    - PRIORITÉ RÉELLE : {...props} est étalé APRÈS les défauts → width,
+      height, viewBox, role, aria-hidden, aria-labelledby explicites
+      PEUVENT écraser le calcul. Ne pas prétendre le contraire.
+    - 2 600 modules src/icons/** n'importent QUE create-icon.js ; marqueur
+      /* @__PURE__ */ sur chaque icône → tree-shaking possible
+      (résultat dépend du bundler ; préférer les imports individuels).
+
+3.4 CE QUE LE PACKAGE N'EXIGE PAS (preuves : find *.css/*.woff → 0)
+    - Aucun styles.css à importer, aucune police, aucune dépendance.
+      --md-icon-color est optionnel (repli light-dark, puis #000).
+    - Inter appartient à @mdevs/ui uniquement ; size="1em" exploite la
+      police DÉJÀ calculée par l'hôte.
+    - Licences à préserver en toute redistribution : NOTICE.md, LICENSE
+      (MIT wrapper), LICENSE-LUCIDE (ISC, inclut l'attribution Feather),
+      LICENSE-TABLER (MIT). La collection n'est pas originale.
+
+================================================================================
+4. ÉTAT DE L'HÔTE (points de branchement vérifiés, avec lignes)
+================================================================================
+
+4.1 package.json racine (@mdevs/web 0.9.1, private)
+    - packageManager "pnpm@10.32.1" (l.167) · engines node >=22 (l.168-170)
+      — local : node v24.21.0, pnpm 10.32.1, tout est satisfait.
+    - next "16.3.8" (l.97) · react/react-dom "19.3.0" (l.116/119)
+    - radix-ui "^1.7.0" (l.115) — IDENTIQUE à la dep de @mdevs/ui →
+      pas de double installation Radix après lien.
+    - @radix-ui/react-use-controllable-state ^1.2.6 (l.48, seul sous-paquet)
+    - cva ^0.7.1 · clsx ^2.1.1 · classnames ^2.5.1 · cmdk ^1.1.1
+    - sonner ^2.0.8 (l.131) · react-hot-toast ^2.6.1 (l.120)
+    - lucide-react ^0.577.0 (l.90) · framer-motion ^12.43.0 · next-themes ^0.4.6
+    - tailwindcss ^4.3.3 + @tailwindcss/postcss ^4.3.3 en devDependencies
+    - "workspaces" : ABSENT. Bloc "pnpm.overrides" présent (l.171-191).
+    - scripts : "build" = les 3 générateurs CSS puis next build ;
+      "dev" = node scripts/dev.mjs ; typecheck/test:unit/check/fix.
+
+4.2 next.config.ts
+    - transpilePackages : ABSENT (et inutile — dist précompilé).
+    - cacheComponents: true (l.154) · reactCompiler: true (l.231) ·
+      experimental.inlineCss: true (l.159-165) → le CSS de @mdevs/ui sera
+      inliné/bundlé comme les autres feuilles importées.
+    - CSP (headers, l.166-184) : style-src 'self' unsafe-inline jsdelivr —
+      le CSS et les polices bundlés depuis un package local sont servis par
+      'self' : compatible, aucune modification à prévoir.
+    - rewrites /vibe/@:username et /code → /coder : sans rapport.
+
+4.3 tsconfig.json
+    - include : app, components, hooks, lib, scripts, tests + fichiers
+      racine précis. packages/** est DEHORS → les types @mdevs se résolvent
+      par node_modules → dist/*.d.ts. NE PAS ajouter packages/** à include.
+    - moduleResolution "bundler", paths "@/." uniquement.
+
+4.4 app/layout.tsx (le point d'injection n° 1)
+    - l.8 : import "./globals.css" (SEUL import CSS du layout racine ;
+      vibe.css/wakies.css/site.css sont importés dans leurs layouts de route).
+    - l.2/57-68/97 : polices next/font Google — Plus_Jakarta_Sans
+      (--font-sans) + JetBrains_Mono (--font-mono) sur <html>.
+      INTER N'EST PAS chargé par l'hôte aujourd'hui.
+    - l.110-131 : <ThemeProvider next-themes attribute="class"
+      defaultTheme="system" enableSystem> > TooltipProvider >
+      PlatformBridge > {children} > <Toaster sonner>.
+    - L'implantation insérera ici : (a) l'import de @mdevs/ui/styles.css,
+      (b) un nouveau wrapper CLIENT (@mdevs/ui ThemeProvider + ToastProvider)
+      sous le ThemeProvider next-themes existant (Server Component →
+      frontière 'use client' obligatoire).
+
+4.5 app/globals.css
+    - l.1-2 : @import "tailwindcss" + katex ; l.4 @source streamdown ;
+      l.6 @custom-variant dark (&:is(.dark, .dark *)) ; l.20-27 vibe-dark.
+    - Tokens : @theme inline (l.32+) mappe les variables ; :root (l.75+)
+      et .dark (l.135+) — base achromatique oklch chroma 0, les QUATRE
+      accents --success/--warning/--info/--destructive (l.93/103-105 clair,
+      150/157-159 sombre).
+    - @utility surface-card (l.444-446) surface-muted chip (l.459-475,
+      état actif via data-active) field-input (l.529-535).
+    - Précédent utile : les overrides de librairies tierces existent déjà
+      en sélecteurs bruts hors couche (.ProseMirror l.537, bloc .cm-*
+      l.541-606 avec !important) — le CSS non stratifié de l'hôte gagne la
+      cascade sur @layer mdevs. C'est la porte de la voie « import global »
+      du §7.
+    - Divergence constatée à mentionner aux agents : l'AGENTS.md racine
+      promet pour surface-card « rounded-2xl … bg-card/60 backdrop-blur-md »
+      mais la réalité l.444 est « rounded-xl border-border bg-card » (sans
+      flou). Le CSS est la vérité ; la refonte pourra harmoniser l'un vers
+      l'autre — décision humaine.
+
+4.6 components/ui — 21 fichiers (button, dialog, select, command, sheet,
+    alert-dialog, sidebar, tooltip…) — importent tous { Dialog, Slot… } du
+    paquet unifié "radix-ui". Chevauchement direct avec @mdevs/ui (Button,
+    Dialog, Select, Command…). La cohabitation est POSSIBLE (Radix partagé
+    1.7.0) mais exige la frontière du §8.5.
+
+4.7 biome.jsonc
+    - Exclusions actives : components/ui, components/ai-elements,
+      components/elements, lib/utils.ts, hooks/use-mobile.ts, sorties CSS
+      générées, ET — décisif — "!apps" (l.43) et "!packages" (l.44).
+      Le contenu de packages/ n'est donc JAMAIS linté ; en revanche toute
+      ligne d'import écrite dans app/ ou components/ l'est (ultracite).
+      Aucune modification de biome.jsonc n'est requise pour l'implantation.
+
+4.8 proxy.ts : protège des routes (session), sans aucun rapport avec les
+    assets/CSS bundlés. Intouchable.
+
+================================================================================
+5. ÉTAT D'INTÉGRATION DES PACKAGES (le « pas encore » factuel)
+================================================================================
+
+- Aucun import "@mdevs/ui" ou "@mdevs/icons" dans app/, components/, lib/,
+  hooks/, tests/ (grep systématique, hors packages/**). Seul le NOM circule
+  (@mdevs/web racine, @mdevs/mai = apps/site, mentions CLI/SDK dans le site).
+- node_modules/@mdevs : ABSENT. pnpm-lock.yaml : importer "." unique (l.28),
+  zéro "link:", les 12 "file:" sont du bruit de noms de paquets (vfile…),
+  grep -c "@mdevs" = 0. Aucune trace de lien local nulle part (bun.lock,
+  deno.lock, .npmrc absent, apps/*/package.json sans link:/file:/workspace:).
+- Les pnpm-workspace.yaml existants sont des exceptions locales :
+  apps/coder (allowBuilds) et apps/desktop (onlyBuiltDependencies) — ils
+  accompagnent des lockfiles PROPRES ; ces apps restent des projets pnpm
+  indépendants pilotés par pnpm --dir. Un workspace racine listant
+  uniquement packages/* ne les affecte pas.
+- packages/ui et packages/icons : pas de node_modules, pas de lockfile
+  propre → jamais installés.
+- GIT — POINT CRITIQUE : packages/ est STAGED (≈ 20 815 entrées dans
+  l'index, dont dist 4 626 + 7 893 fichiers, svg 2 600, fonts binaires)
+  mais ABSENT DE HEAD (git ls-tree HEAD packages/ = vide ; HEAD = le
+  commit « Suit les fichiers de apps/wakies au lieu d'un sous-module Git »,
+  même philosophie). Conséquence : tant que le stage n'est pas commité,
+  un fresh clone ne contient PAS packages/ et AUCUNE des méthodes du §6
+  ne résoudrait en CI. .gitignore n'ignore pas packages (la règle
+  « node_modules* » sans slash couvrira juste packages/*/node_modules).
+- Outillage générateur ABSENT (scripts/*.py, data/icons.json, verify.mjs) :
+  dans CE dépôt, packages/ se TRAITE COMME UN ARTÉFACT VENDORISÉ EN
+  LECTURE SEULE. Modifier src/ ou dist/ à la main serait sans régénération
+  possible et sans tests ; toute correction durable des packages se fait
+  dans leur monorepo d'origine. Règle : la refonte CONSOMME, ne patche pas.
+
+================================================================================
+6. IMPLANTATION — LES TROIS MÉCANISMES DE LIEN LOCAL (pnpm 10.32.1)
+================================================================================
+
+Préalable commun aux trois méthodes : (1) committer packages/ (le stage
+actuel) ; (2) les pairs sont déjà satisfaits par l'hôte (react/react-dom
+19.3.0 ∈ ^18.3.1||^19 ; radix-ui 1.7.0 ∈ ^1.7.0) ; (3) pnpm.lock a
+autoInstallPeers:true et excludeLinksFromLockfile:false (les liens sont
+enregistrés dans le lock). Aucune commande d'installation n'a été exécutée
+ici (consigne lecture seule) — les formes ci-dessous sont à valider par un
+pnpm install en local.
+
+MÉTHODE A — Workspaces pnpm (recommandée pour un vrai monorepo)
+  1. Créer pnpm-workspace.yaml à la racine :
+       packages:
+         - 'packages/*'
+  2. Dans package.json racine, dependencies :
+       "@mdevs/ui": "workspace:*",
+       "@mdevs/icons": "workspace:*",
+  3. pnpm install
+  Fichiers touchés : package.json, pnpm-lock.yaml, + pnpm-workspace.yaml
+  (nouveau). Le lock passe en multi-importers (., packages/ui, packages/icons).
+  Avantage : sémantique native, résolutions stables, radix-ui dédupliqué
+  par le store ; inconvénient : plus gros remaniement de lockfile.
+  NOTE : ne PAS lister 'apps/*' — elles gardent leurs lockfiles propres.
+
+MÉTHODE B — Lien direct (la plus légère, zéro nouveau fichier)
+  Dans package.json racine :
+       "@mdevs/ui": "link:./packages/ui",
+       "@mdevs/icons": "link:./packages/icons",
+  puis pnpm install (équivalent : pnpm add link:./packages/ui …).
+  pnpm crée des symlinks dans node_modules/@mdevs et installe les deps
+  propres (radix-ui pour ui — déjà présent en 1.7.0, dédupliqué) ;
+  packages/*/node_modules éventuels restent ignorés par git (règle
+  « node_modules* »). Fichiers touchés : package.json + pnpm-lock.yaml
+  (le lien y est enregistré, excludeLinksFromLockfile:false).
+
+MÉTHODE C — Tarballs locaux (la plus proche des intentions des AUTEURS)
+  GETTING_STARTED.md (identique dans les deux packages) prévoit
+  npm install --install-links sur dossiers extraits ou npm install *.tgz.
+  --install-links est propre à npm ; l'équivalent pnpm = packager puis
+  installer le tarball (copie réelle, plus de dépendance au dossier source) :
+       cd packages/ui    && pnpm pack --out ../../artifacts/mdevs-ui-0.2.0.tgz
+       cd packages/icons && pnpm pack --out ../../artifacts/mdevs-icons-0.2.0.tgz
+       pnpm add file:./artifacts/mdevs-ui-0.2.0.tgz file:./artifacts/mdevs-icons-0.2.0.tgz
+  "files" de chaque package détermine le contenu du tarball (dist, src,
+  catalog, licences — tout est déjà versionné). Fichiers touchés :
+  package.json, pnpm-lock.yaml, + les .tgz sous artifacts/.
+  Inconvénient : re-packager à chaque évolution des packages ; les tarballs
+  icônes sont volumineux (2 600 × 3 formats + 2 600 svg).
+
+CHOIX À PRÉSENTER À L'HUMAIN : A si le dépôt doit absorber durablement les
+packages comme membres du monorepo ; B pour un câblage minimal et réversible ;
+C pour des builds CI hermétiques au contenu de packages/. Dans les trois cas,
+l'API vue par le code applicatif est IDENTIQUE (sous-chemins §2.2/§3.2).
+
+================================================================================
+7. LE PROBLÈME CSS CENTRAL — @mdevs/ui/styles.css EST GLOBAL
+================================================================================
+
+7.1 Constat (src/styles.css, 236 lignes + extensions.css concaténé ; mêmes
+    formes dans dist/styles.css) :
+      @layer mdevs {
+        :root, .md-root { --md-accent:#4f46e5; --md-bg:#f4f6fb;
+          --md-blur:12px; --md-radius:20px; … ; color-scheme: light; }
+        .md-root[data-md-theme="dark"] { … ; color-scheme: dark; }
+        .md-glass { … } /* sélecteurs .md-* nus */
+      }
+    - LES BONS AMORTISSEURS (absents de Vibe/Wakies) :
+      (a) nomnage systématique --md-*, .md-*, [data-md-*] → zéro collision
+          avec les tokens achromatiques de l'hôte ni les utilitaires Tailwind ;
+      (b) @layer mdevs → priorité INFÉRIEURE aux styles non stratifiés :
+          les règles hôte (globals.css hors couche) et !important gagnent
+          sans lutte ; les tokens --md-* supplémentaires sur :root ne
+          cassent rien tant que l'hôte ne les consomme pas.
+    - LES DEUX VRAIS DÉBORDEMENTS (ceux que les scripts maison neutralisent
+      depuis toujours pour vibe/wakies/site) :
+      (1) les tokens posés sur :root (document entier, hors périmètre mdevs) ;
+      (2) color-scheme: light FORCÉ sur :root → peut court-circuiter le
+          mode sombre NATIF de l'hôte (scrollbars, champs, autofill) dès
+          que la feuille est importée globalement, y compris hors .md-root.
+
+7.2 VOIE « IMPORT GLOBAL MAÎTRISÉ » (simple, non scopée)
+    - import '@mdevs/ui/styles.css' une fois dans app/layout.tsx ;
+    - neutraliser (1)(2) par une règle HORS COUCHE dans app/globals.css,
+      p. ex. :
+        :root { color-scheme: light dark; }
+        .dark { color-scheme: dark; }
+      (le non-stratifié l'emporte sur @layer mdevs) ;
+    - pilote le thème par ThemeProvider (data-md-theme sur .md-root) ou par
+      surcharge .dark { --md-*… } si besoin.
+    Conformité : tolérée par @layer + préfixe md-, mais contredit la règle
+    maison « aucune règle CSS ne doit déborder » (docs 2-vibe/3-wakies/5-site).
+    Les tokens restent lus sur :root — inoffensif (préfixe unique) mais
+    non scopé.
+
+7.3 VOIE « SCOPE MAISON » (fidèle aux précédents — recommandée si la refonte
+    doit cohabiter avec les pages existantes sans risque visuel global)
+    - Écrire scripts/build-mdevs-css.mjs sur le patron de
+      build-vibe-css.mjs / build-wakies-css.mjs (table d'ancrage idempotente,
+      code d'erreur 1 si sélecteur non ancré subsiste) :
+        :root        → .md-root   (l'alias EXISTE déjà dans la feuille !)
+        html → n/a (aucun) ; @layer mdevs conservé (ou déballé) ;
+        color-scheme global retiré du scope racine et rendu au conteneur.
+    - Sortie components/mdevs/mdevs.css (générée, exclue de Biome comme les
+      trois autres sorties), importée UNIQUEMENT là où le ThemeProvider est
+      monté ; la classe .md-root est POSÉE PAR LE PROVIDER LUI-MÊME
+      (<div class="md-root">) → pas de div supplémentaire à inventer ;
+      PortalScope recopie data-md-theme + variables --* dans les portails.
+    - Cette voie est quasi triviale grâce au préfixage md- déjà présent :
+      c'est une substitution de sélecteur, pas une refonte du CSS.
+    - Chaîne de build : ajouter le nouveau script à "build" dans package.json
+      (avant next build) comme les trois autres.
+
+DECORRELLATEUR IMPORTANT : @mdevs/icons N'A AUCUN CSS → aucun débat de
+portée pour les icônes ; leurs styles sont des attributs inline sur <svg>.
+
+================================================================================
+8. SIX ARBITRAGES HUMAINS À TRANCHER AVANT LA REFONTA (tableau)
+================================================================================
+
+#8.1 ACCENT — LA TENSION MAJEURE
+  @mdevs/ui impose --md-accent #4f46e5 (indigo) + --md-focus #4338ca,
+  alors que l'AGENTS.md racine : achromatisme strict, QUATRE accents
+  sémantiques uniquement, interdiction littérale des teintes Tailwind.
+  Options : (a) neutraliser — ThemeProvider accent={une teinte de la
+  palette host} ou surcharger --md-accent dans la portée (recommandé pour
+  la conformité) ; (b) assumer l'indigo comme cinquième couleur de MARQUE
+  et l'enregistrer officiellement dans globals.css + assouplir la règle
+  pour ce seul usage. → Décision PRODUIT, pas technique.
+
+#8.2 PILOTE DU THÈME SOMBRE
+  Hôte : next-themes, classe .dark sur <html>, PERSISTE. @mdevs :
+  data-md-theme sur .md-root, NE PERSISTE PAS, system en CSS.
+  Solution : next-themes reste l'unique source de vérité ; le wrapper
+  client map resolvedTheme → prop theme du ThemeProvider @mdevs
+  (et prop theme="light"|"dark" explicite, pas "system", pour éviter
+  le double arbitrage). Vérifier au passage que les --md-* suivent bien :
+  le CSS @mdevs ne réagit PAS à .dark nativement — soit on passe par
+  la prop, soit par des surcharges .dark { --md-* } hors couche.
+
+#8.3 POLICE
+  Hôte : Plus_Jakarta_Sans + JetBrains_Mono (next/font Google, sur <html>,
+  --font-sans). @mdevs : Inter 4.1 WOFF2 locale, --md-font, appliquée par
+  les composants md- dans .md-root. Conséquence par défaut : deux polices
+  coexistent (Jakarta ailleurs, Inter dans les surfaces mdevs).
+  Options : (a) assumer le dualisme (les surfaces Liquid Glass « parlent
+  Inter ») ; (b) surcharger --md-font: var(--font-sans) dans la portée
+  pour tout en Jakarta ; (c) basculer l'hôte sur Inter (remplacer
+  next/font par la feuille @mdevs — plus invasif).
+
+#8.4 ICÔNES — LUCIDE vs @mdevs/icons
+  lucide-react ^0.577.0 reste dans components/ui (8 fichiers) et dans
+  l'app. @mdevs/icons rend les MÊMES NOMS (XIcon, SearchIcon, CheckIcon…)
+  avec une AUTRE stratégie couleur (noir/blanc propre ≠ currentColor hérité).
+  Risque d'import confus silencieux. Règles à fixer : (a) une seule source
+  par arbre de composants (surface mdevs = @mdevs/icons ; composants ui
+  legacy = lucide, tant qu'ils vivent) ; (b) imports individuels nommés
+  uniquement (@mdevs/icons/controls/x), jamais import * ni barrel catégorie ;
+  (c) pas de mélange dans un même écran ; (d) héritage de couleur volontaire
+  = style={{color:'currentColor'}} documenté ; (e) les composants ui legacy
+  qui survivront à la refonte gardent leurs XIcon/SearchIcon lucide — la
+  migration icône par icône doit être EXPLICITE dans le diff.
+
+#8.5 FRONTIÈRE DES PRIMITIVES
+  components/ui (21, shadcn radix-maia, EXCLU DE BIOME) vs @mdevs/ui
+  (132 primitives). Options : remplacement progressif (p. ex. refonte
+  page par page où Dialog/Button/Select de l'hôte cèdent la place), OU
+  cohabitation par périmètre (mdevs uniquement sur les nouvelles surfaces).
+  Absences @mdevs à cartographier avant tout remplacement : Sheet,
+  AlertDialog (→ Drawer, ConfirmDialog), sidebar/dropdown-menu/select
+  complets, et les API Radix non exposées (portal container, focus
+  callbacks). Décider aussi : sonner (Toaster global existant, thème
+  system, classes !bg-card) vs ToastProvider @mdevs local — garder sonner
+  pour l'hôte et n'utiliser useToast que dans un périmètre mdevs ; JAMAIS
+  deux toasters simultanés.
+
+#8.6 PÉRIMÈTRE DE LA REFONTA
+  L'application authentifiée (/chat, /settings…) ? Des pages précises ?
+  Les ports vibe/wakies/site NE SONT PAS dans le périmètre : leurs design
+  systems sont scopés et leurs sorties sont générées — ne pas y injecter
+  mdevs (sauf décision contraire explicite).
+
+================================================================================
+9. RÈGLES À IMPOSER À TOUT AGENT/HUMAIN QUI ÉCRIT LA REFONTA
+================================================================================
+
+RÈGLES HÔTE (précédence absolue) :
+ R1 Interface, commentaires, messages d'erreur et commits EN FRANÇAIS.
+ R2 Achromatisme + 4 accents sémantiques uniquement ; jamais de teintes
+    Tailwind chromées dans un composant (arbitrage #8.1 réservé).
+ R3 Primitives surface hôte : surface-card, surface-muted, chip
+    (data-active), field-input — sauf remplacement décidé par les surfaces
+    mdevs ; état actif jamais par classe conditionnelle.
+ R4 import "server-only" sur tout module touchant base/secrets ; un module
+    client n'importe pas lib/api/error-response ; les fournisseurs de thème
+    mdevs vivent derrière 'use client'.
+ R5 Stack figé : Next 16 App Router (cacheComponents, reactCompiler ;
+    loader:null → handlers async ; params/searchParams = Promises),
+    Tailwind v4 CSS-first (aucun tailwind.config), swr (jamais React
+    Query/Redux), Biome via ultracite (NI ESLint NI Prettier ; préférer
+    biome check --write <fichiers> ciblé à pnpm fix qui reforme tout).
+ R6 Ne jamais éditer une sortie générée : vibe.css, wakies*.css, site.css,
+    pages vibe/** — et désormais mdevs.css si la voie scope est retenue.
+ R7 pnpm uniquement (packageManager pnpm@10.32.1) ; ne pas basculer de
+    gestionnaire pour convenir aux docs d'auteurs « npm ».
+ R8 Avant « fini » : pnpm typecheck, pnpm check, pnpm test:unit,
+    et pnpm build pour une refonte de style.
+
+RÈGLES PACKAGE (@mdevs) :
+ P1 import '@mdevs/ui/styles.css' UNE seule fois (layout racine ou feuille
+    scope maison régénérée — jamais les deux).
+ P2 Providers dans un wrapper client : ThemeProvider (thème mdevs mappé
+    depuis next-themes, accent/radius/fond explicites) > ToastProvider ;
+    les overlays portalisés ne suivent que les variables --* passées via
+    ThemeProvider.style.
+ P3 Imports par sous-chemins publics uniquement ; JAMAIS /src/ ni /internal/.
+    Découvrir via catalog/manifest.json (export "./catalog") — la recherche
+    par nom inventé est interdite : une forme retournée/aliasée ne compte
+    pas comme nouveau composant.
+ P4 Boutons de formulaire : type="submit" explicite. Contrôlés : ne jamais
+    passer value sans onChange qui met à jour. NumberInput → onValueChange ;
+    Checkbox → onCheckedChange (indeterminate ≠ true) ; Pagination pages ≥ 1 ;
+    FileUpload = sélection locale (téléversement = app).
+ P5 XForm : defaultValue ; resynchronisation par key stable ; onSubmit
+    void — pending et erreurs pilotés par l'app ; pas d'erreurs par champ
+    → composer Form/Field (+ aria-describedby/aria-invalid à la main,
+    Field ne les pose pas).
+ P6 Affichage enrichi (devise, statuts traduits) → DataTable<T>
+    columns[].render, pas les XTable bruts. Dates YYYY-MM-DD civil.
+    Métriques facture : totalInvoice/activeInvoice/valueInvoice uniquement.
+ P7 Icônes @mdevs : suffixe Icon casse-sensible, imports individuels,
+    role décoratif/informatif géré par title/aria-label, nom accessible
+    sur chaque bouton sans texte, cible ≥ 44 px, noir/blanc par défaut,
+    style.color=currentColor pour hériter volontairement. Les props SVG
+    natives PEUVENT écraser viewBox/aria — ne pas l'interdire, le savoir.
+ P8 packages/ = artefact EN LECTURE SEULE ici (outillage générateur absent) ;
+    toute correction durable des packages se fait dans leur monorepo
+    d'origine. Ne pas patcher src/ ni dist/.
+ P9 Préserver les attributions en toute redistribution : NOTICE.md,
+    LICENSE, LICENSE-LUCIDE, LICENSE-TABLER, LICENSE-INTER.txt (+ SHA256
+    des fonts dans metadata.json).
+
+================================================================================
+10. PLAN D'EXÉCUTION DE LA REFONTA (phases)
+================================================================================
+
+PHASE 0 — Décisions (§8) + prérequis git : committer packages/ (le stage
+  existe déjà ; le modèle maison vient de faire identiquement avec
+  apps/wakies). Vérifier pnpm install propre.
+
+PHASE 1 — Câblage dépendance (§6, méthode A ou B au choix) :
+  pnpm-workspace.yaml {packages: ['packages/*']} ou link:, deps
+  workspace:*/link:, pnpm install, pnpm typecheck.
+  Contrôle : node_modules/@mdevs/ui/dist/styles.css + .d.ts résolus.
+
+PHASE 2 — Plomberie style :
+  a. app/layout.tsx : import styles.css (voie globale) OU futurs
+     components/mdevs/mdevs.css (voie scope, après Phase 2b) ;
+  b. (voie scope) créer scripts/build-mdevs-css.mjs sur le patron
+     build-vibe-css.mjs (:root → .md-root, échec code 1 sur résidu,
+     sortie exclue de Biome, chaîné dans "build") ;
+  c. override color-scheme hors couche dans globals.css (voie globale
+     seulement) ;
+  d. créer components/mdevs/providers.tsx ('use client') : ThemeProvider
+     mdevs mappé depuis useTheme() next-themes + ToastProvider ;
+  e. monter le wrapper sous le ThemeProvider next-themes dans app/layout.tsx.
+
+PHASE 3 — Pilot : une surface représentative (p. ex. une page /settings
+  ou une fiche projet) refondue intégralement avec primitives mdevs +
+  icônes @mdevs + DataTable pour formats ; contrôle navigateur réel
+  (clavier, focus, 320–375 px, clair/sombre, verre activé/désactivé).
+  C'est là que l'arbitrage #8.1 (accent) est validé visuellement.
+
+PHASE 4 — Industrialisation : par lots de pages ; migration des écrans
+  utilisant components/ui décidée par #8.5 ; journal des doublons
+  sonner/useToast et lucide/mdevs-icônes traités par arbre.
+
+PHASE 5 — Qualité : pnpm check/typecheck/test:unit/build ; revue
+  contrastes sur surfaces verre (le flou ne garantit pas le contraste) ;
+  suppression des imports devenus morts ; rapport final honnête des
+  vérifications RÉELLEMENT exécutées (Chromium ≠ Safari/iOS).
+
+================================================================================
+11. SNIPPETS D'USAGE (copiables tels quels)
+================================================================================
+
+// app/layout.tsx (extrait cible)
+import './globals.css';
+import '@mdevs/ui/styles.css';           // OU '@/components/mdevs/mdevs.css'
+import { MdevsProviders } from '@/components/mdevs/providers';
+// ...
+<ThemeProvider attribute="class" ...>     // next-themes : pilote unique
+  <MdevsProviders>                        // nouveau wrapper 'use client'
+    <TooltipProvider>...</TooltipProvider>
+  </MdevsProviders>
+</ThemeProvider>
+
+// components/mdevs/providers.tsx (squelette — accent/ fond à figer en #8.1/#7)
+'use client';
+import {useTheme} from 'next-themes';
+import {ThemeProvider, ToastProvider} from '@mdevs/ui';
+import type {CSSProperties, ReactNode} from 'react';
+
+export function MdevsProviders({children}: {children: ReactNode}) {
+  const {resolvedTheme} = useTheme();
+  const tokens = {
+    '--md-accent': '/* arbitrage 8.1 */',   // ex. valeur de --primary host
+    '--md-blur': '12px',
+  } as CSSProperties;
+  return (
+    <ThemeProvider
+      theme={resolvedTheme === 'dark' ? 'dark' : 'light'}  // next-themes pilote
+      glass
+      style={tokens}
+    >
+      <ToastProvider>{children}</ToastProvider>
+    </ThemeProvider>
+  );
+}
+
+// Imports typiques
+import {Button} from '@mdevs/ui/primitives/button';
+import {Dialog, Drawer, ConfirmDialog, Combobox, DataTable} from '@mdevs/ui';
+import {InvoiceForm} from '@mdevs/ui/invoice/invoice-form';
+import type {Invoice} from '@mdevs/ui/invoice';
+import {SearchIcon} from '@mdevs/icons/controls/search';
+import {ArrowRightIcon} from '@mdevs/icons/arrows/arrow-right';
+import type {IconProps} from '@mdevs/icons/core';
+
+// Icône accessible dans un bouton
+<button type="button" aria-label="Fermer le panneau"><XIcon size={20}/></button>
+<button type="button"><SearchIcon size="1em"/> Rechercher</button>
+
+// Recherche dans le catalogue installé (exhaustive, Node ESM)
+import {createRequire} from 'node:module';
+const require = createRequire(import.meta.url);
+const manifest = require('@mdevs/ui/catalog');
+manifest.components.filter(e => e.category === 'invoice');
+
+================================================================================
+12. LIMITES RÉELLES DES PACKAGES (à relire avant de promettre un comportement)
+================================================================================
+(consolidé des LIMITATIONS.md des deux packages — identiques)
+- Pas de persistance de thème ; pas de lecture localStorage ; theme=system
+  résolu en CSS. Pas de fond de page peint par le provider.
+- Tables sans virtualisation, redimensionnement ou export ; aucune taille
+  maximale validée. Besoin combobox recherchable lointaine / spreadsheet
+  éditable → autre solution, à signaler précisément.
+- Pas de formatage monétaire/date/fuseau intégré ; statut brut EN ;
+  pas de locale globale par domaine.
+- Pas d'API réseau ni auth : onSubmit/pending = contrat app ; validation
+  serveur obligatoire quoi qu'il arrive ; TS ne valide pas l'exécution.
+- Overlays : API Radix NON exposée (container, onOpenAutoFocus,
+  onEscapeKeyDown, className de contenu absents des props de Dialog) ;
+  ConfirmDialog ferme immédiatement sans pending ; Sheet/AlertDialog
+  inexistants. asChild exige un enfant ref+props compatible.
+- Portails : seules les variables --* passées à ThemeProvider.style
+  suivent le portail (PortalScope) ; className/layout non recopiés.
+- ToastProvider local (sans portail) — positionnement propre, à placer
+  sous ThemeProvider ; useToast lève sans ancêtre.
+- Icônes : props SVG natives peuvent écraser viewBox/aria ; pas de RTL
+  automatique ; pas de SVGR ni de déclarations d'assets ; <img> externe
+  n'hérite pas currentColor ; absoluteStrokeWidth ne couvre pas children ;
+  héritage de couleur = choice explicite 0.2.0 (breaking vs 0.1.0).
+- Preuves : Chromium (catalogue) ; Safari/Firefox/iOS/lecteurs d'écran
+  non certifiés. sideEffects:false aide le tree-shaking mais le résultat
+  dépend du bundler — mesurer le bundle hôte si cela compte.
+
+================================================================================
+13. FAITS SAILLANTS À NE PAS OUBLIER (pièges déjà vérifiés)
+================================================================================
+- docs/AI_AGENTS.md (cité par les AGENTS.md des packages) N'EXISTE PAS dans
+  ce dépôt — le vrai guide est packages/{ui,icons}/catalog/docs/AI_AGENTS.md.
+  Ne pas le citer comme racine dans un prompt d'agent.
+- Les « scripts de génération racine » (npm run generate, catalog:find,
+  verify.mjs, foundations.py…) cités par les AGENTS.md des packages sont
+  du monorepo D'ORIGINE (npm workspaces) : ABSENTS ici. Ne pas les promettre.
+- packages/ STAGED non commité (§5) : toute commande d'install en CI échoue
+  tant que le commit n'existe pas. Phase 0 l'impose.
+- Le champ sideEffects de @mdevs/ui ["**/*.css"] et des 3 082 fichiers 'use
+  client' dans dist sont des garanties réelles pour Next — mais les exports
+  ne livrent QUE du dist : un import '@mdevs/ui/src/button.tsx' échouerait
+  (non exporté), ce qui est exactement le comportement voulu.
+- inlineCss:true + CSP 'self' : le CSS/les fonts bundlés passent sans
+  modification de next.config.ts.
+- Biome exclut packages/ déjà aujourd'hui : aucun changement de config de
+  lint nécessaire ; en revanche les lignes d'import dans app/components
+  seront lintées (ultracite) — écrire des imports conformes dès le départ.
+- react-hot-toast ET sonner sont tous deux en deps ; la refonte ne doit PAS
+  en ajouter un troisième (ToastProvider mdevs périmétré seulement).
+
+================================================================================
+14. PROMPT DÉTAILLÉ POUR L'AGENT DE LA REFONTA
+    (à coller tel quel dans une nouvelle session, après arbitrage des §8 ;
+     les valeurs entre ⟪…⟫ sont à remplacer par les décisions humaines)
+================================================================================
+
+MISSION — Refonte de style de mAI Web : implanter les deux design systems
+locaux @mdevs/ui (Liquid Glass) et @mdevs/icons comme dépendances réelles,
+puis refactoriser le style de ⟪PÉRIMÈTRE : liste de pages/routes⟩ (les ports
+/vibe, /wakies et /site sont HORS périmètre — ne pas y toucher). Tu es en
+monorepo pnpm@10.32.1 ; node 22+ ; Next.js 16.3.8 App Router avec
+cacheComponents:true et reactCompiler:true ; React 19.3.0 ; Tailwind v4
+CSS-first (aucun tailwind.config.js) ; Biome via ultracite (PAS ESLint,
+PAS Prettier) ; interface 100 % française.
+
+CONTEXTE VÉRIFIÉ (ne le redemande pas, n'invente pas le reste) :
+- packages/ui = @mdevs/ui 0.2.0 : 1 212 exports nommés (132 primitives
+  + 108 domaines × 10 familles XCard/XList/XTable/XForm/XFilters/XTimeline/
+  XStats/XEmptyState/XSettings/XOverview). dist/ PRÉCOMPILÉ et complet —
+  AUCUN build requis, transpilePackages INUTILE et interdit. dep radix-ui
+  ^1.7.0 (l'hôte a radix-ui 1.7.0 → dédupliqué) ; peers react 19 satisfaits.
+  styles.css unique (35 ko, @layer mdevs, tokens --md-* sur :root ET .md-root,
+  color-scheme:light forcé sur :root, alias data-md-theme/data-md-glass).
+  Inter 4.1 woff2 via @font-face + export "./fonts/*". sideEffects ["**/*.css"].
+- packages/icons = @mdevs/icons 0.2.0 : 2 600 icônes (29 catégories),
+  sideEffects false, ZÉRO dépendance et ZÉRO CSS. IconProps = size(24),
+  title, absoluteStrokeWidth, ref SVGSVGElement, children. Défauts : viewBox
+  0 0 24 24, fill none, stroke currentColor, strokeWidth 1,5, linecap/linejoin
+  round, focusable false, role/aria auto (title→img+aria-labelledby, sinon
+  aria-hidden), couleur PROPRE noir/blanc (--md-icon-color/light-dark/#000 —
+  0.2.0 : PAS d'héritage du parent ; style={{color:'currentColor'}} =
+  héritage volontaire). Les props SVG natives sont étalées APRÈS les défauts
+  et peuvent les écraser.
+- Découverte contractuelle : packages/ui/catalog/manifest.json (export
+  public "./catalog") puis les sources types.ts et dist/*.d.ts. Les docs
+  catalogue (LIMITATIONS, UI_PLAYBOOK, FORM_PATTERNS, OVERLAYS) sont sous
+  packages/*/catalog/docs/. N'exécute PAS les scripts cités par les AGENTS.md
+  des packages (generate.py, catalog:find, verify.mjs) : ils appartiennent
+  au monorepo d'origine et N'EXISTENT PAS ICI. Ne cite jamais docs/AI_AGENTS.md
+  (fantôme) — les guides réels sont ceux ci-dessus.
+- L'hôte n'importe PAS encore @mdevs/*. node_modules/@mdevs absent ;
+  lockfile unique importer ".". packages/ est STAGED : committer d'abord
+  (message français, même logique que le commit apps/wakies).
+- Points d'injection : app/layout.tsx l.8 (CSS), l.110-131 (providers —
+  next-themes attribute="class" reste PILOTE UNIQUE ; sonner Toaster global
+  EXISTE). app/globals.css : tokens :root/.dark, @theme inline, @utility
+  surface-card/surface-muted/chip/field-input, override hors couche autorisé
+  pour neutraliser color-scheme. tsconfig n'inclut PAS packages/** (les
+  types viennent de dist — ne pas changer). biome.jsonc exclut DÉJÀ
+  !packages — ne pas changer. next.config.ts : NE PAS toucher (transpile
+  inutile ; CSP/inlineCss déjà compatibles). proxy.ts : ne pas toucher.
+
+ÉTAPES (dans cet ordre, commits français séparés par phase) :
+1. Prérequis : git add packages (déjà staged) + commit.
+2. Liaison : ⟪MÉTHODE A (recommandée) : créer pnpm-workspace.yaml avec
+   packages: ['packages/*'] puis dependencies racine "@mdevs/ui":
+   "workspace:*" et "@mdevs/icons": "workspace:*" ; OU MÉTHODE B :
+   "link:./packages/ui" et "link:./packages/icons"⟫. pnpm install.
+   Vérifier : pnpm typecheck passe, node_modules/@mdevs/ui/dist/styles.css
+   et *.d.ts résolvent.
+3. Plomberie CSS — CHOIX ARRÊTÉ PAR L'HUMAIN : ⟪VOIE SCOPE (fidèle au
+   pattern maison vibe/wakies/site) : créer scripts/build-mdevs-css.mjs qui,
+   avec PostCSS AST comme build-vibe-css.mjs (table d'ancrage, échec code 1
+   si résidu :root/html/body hors .md-root, idempotence), relit
+   packages/ui/dist/styles.css et RÉANCRE :root → .md-root (l'alias existe
+   déjà dans la feuille), puis écrit components/mdevs/mdevs.css (sortie
+   générée : JAMAIS éditée à la main ; ajoutée à "build" dans package.json
+   et à l'exclusion Biome). Importer mdevs.css dans la/les layout(s) du
+   périmètre. — OU — VOIE GLOBALE : import '@mdevs/ui/styles.css' une seule
+   fois dans app/layout.tsx + neutraliser le color-scheme global par des
+   règles HORS COUCHE dans globals.css (:root{color-scheme:light dark}
+   .dark{color-scheme:dark})⟫.
+4. Providers : créer components/mdevs/providers.tsx ('use client') :
+   ThemeProvider de @mdevs/ui avec theme mappé depuis useTheme().resolvedTheme
+   (next-themes persiste ; @mdevs ne persiste RIEN), ⟪accent et tokens
+   --md-* selon arbitrage #8.1 : ex. accent neutre aligné --primary host,
+   ou indigo #4f46e5 si accepté⟫, style={{...CSSProperties --*}} (seules
+   ces variables suivront les portails via PortalScope), puis ToastProvider
+   ENFANT direct (rendu local, jamais de portail). Monter <MdevsProviders>
+   SOUS le ThemeProvider next-themes existant dans app/layout.tsx.
+   Ne pas doubler les toaster : sonner reste global ; useToast() mdevs
+   uniquement dans le périmètre mdevs.
+5. Refonte des pages du périmètre : pour CHAQUE écran, consulter
+   catalog/manifest.json, PUIS la source types, PUIS dist/*.d.ts. Contrats :
+   - Button/IconButton par défaut type="button" → type="submit" en formulaire.
+   - NumberInput = onValueChange(number|undefined), JAMAIS onChange ;
+     Checkbox = onCheckedChange(boolean|'indeterminate') ; Switch pareil ;
+     XSettings = onChange(key,boolean) (pas onCheckedChange).
+   - XForm : initialValues = photo au montage ; changer de fiche via key=
+     {id stable} ; pending par le parent ; try/catch + finally côté app ;
+     erreurs par champ → composer Form/Field + aria-describedby/aria-invalid
+     à la main (Field génère les ids mais ne les pose pas).
+   - Tables : XTable trie localement, sans onSelect ni formatage ;
+     devise/statuts/date lisibles → DataTable<T> columns[].render +
+     Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR'}).
+   - Dates : YYYY-MM-DD civil ; ne jamais new Date(...).toISOString()
+     sans examiner le fuseau. Statuts : codes EN stables affichés via
+     rendu français explicite.
+   - Métriques facture : totalInvoice/activeInvoice/valueInvoice (clés
+     contractuelles). Pas d'alias ni de variantes inventés.
+   - Icônes : imports individuels '@mdevs/icons/<cat>/<slug>' (le motif
+     ./svg/* ajoute .svg — ne pas double-extension) ; suffixe Icon
+     obligatoire (SearchIcon, pas search) ; nom accessible sur chaque
+     bouton sans texte ; cible ≥ 44 px ; noir/blanc par défaut, currentColor
+     par style.color explicite SEULEMENT si l'arbitrage #8.4 le décide.
+     Une page donnée n'utilise QU'UN SEUL fournisseur d'icônes ; remplacer
+     lucide dans components/ui legacy UNIQUEMENT si la liste de migration
+     #8.5 le dit, icône par icône, diff explicite.
+   - Thème/verre : les surfaces md-glass ne garantissent pas le contraste
+     seul ; vérifier le fond réel derrière le verre (ThemeProvider ne peint
+     pas la page — définir un fond var(--md-bg) ou host dans la portée).
+6. Vérification (bloquentes avant « fini ») : pnpm typecheck ; pnpm check
+   (ultracite ; si travail parallèle dans l'arbre : biome check --write sur
+   TES fichiers seulement) ; pnpm test:unit ; pnpm build ; Lancer dev et
+   exercer RÉELLEMENT en navigateur : ouverture/fermeture overlays clavier,
+   focus piégé/restauré, un succès ET un échec de formulaire, contrôles
+   contrôlés qui mettent à jour leur valeur, 320–375 px, thèmes clair ET
+   sombre (la classe .dark de l'hôte ET data-md-theme du provider alignés),
+   glass on/off, FontFace Inter réellement chargée (voie scope/globale selon
+   décision). Une validation Chromium ne prouve pas Safari/Firefox/iOS :
+   ne rien certifier au-delà de ce qui est exercé.
+7. Signale explicitement dans le rapport final : fichiers changés, arbitrage
+   utilisé pour #8.1–#8.6, besoins NON couverts par les packages (virtualisa-
+   tion, combobox de recherche distantes, spreadsheet, persistance thème,
+   API Radix non exposée), et vérifications NON exécutées.
+
+INTERDICTIONS : ne rien écrire dans packages/ui ni packages/icons (artefacts
+versionnés, outillage générateur absent d'ici) ; ne pas éditer vibe.css/
+wakies.css/site.css ni app/(chat)/vibe/** ; pas de tailwind.config ; pas de
+React Query/Redux ; pas de nouvelle couleur hors arbitrage écrit dans
+globals.css (et JAMAIS emerald-500/amber-600/sky-600 dans un composant) ;
+pas de pnpm fix global (reformate tout le dépôt — .sql/.md compris) ; pas de
+migration de base de données dans ce chantier (sauf demande explicite) ;
+pas de supposition d'API Radix ou de nom d'import non lu dans manifest/dist.
+
+================================================================================
+FIN DU RAPPORT
+================================================================================

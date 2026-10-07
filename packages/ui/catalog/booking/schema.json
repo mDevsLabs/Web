@@ -1,0 +1,72 @@
+{
+  "model": "Booking",
+  "config": {
+    "name": "Booking",
+    "label": "Réservations de services",
+    "description": "Gérez vos réservations de services depuis une interface claire.",
+    "fields": [
+      {
+        "key": "reference",
+        "label": "Référence",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "customer",
+        "label": "Client",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "scheduledOn",
+        "label": "Date",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "durationMinutes",
+        "label": "Durée (min)",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "pending",
+          "confirmed",
+          "cancelled",
+          "completed"
+        ]
+      }
+    ],
+    "titleKey": "reference",
+    "settings": [
+      {
+        "key": "notifyBooking",
+        "label": "Notifications : réservations de services",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveBooking",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section réservations de services."
+      },
+      {
+        "key": "approveBooking",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "booking-demo-1",
+    "reference": "RDV-104",
+    "customer": "Maison Horizon",
+    "scheduledOn": "2026-10-04",
+    "durationMinutes": 128,
+    "status": "pending"
+  }
+}

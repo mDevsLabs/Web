@@ -8,7 +8,7 @@ services:
     environment:
       OWNER_TOKEN: ${OWNER_TOKEN:?Set a 24+ character OWNER_TOKEN in .env}
       APP_ORIGIN: ${APP_ORIGIN:-http://localhost:4310}
-      OWNER_ID: ${OWNER_ID:-opendots-owner}
+      OWNER_ID: ${OWNER_ID:-wakies-owner}
       INTELLIGENCE_API_KEY: ${INTELLIGENCE_API_KEY:-}
       INTELLIGENCE_API_URL: ${INTELLIGENCE_API_URL:-}
       INTELLIGENCE_WS_URL: ${INTELLIGENCE_WS_URL:-}
@@ -18,7 +18,7 @@ services:
       SLACK_CHANNEL_NAME: ${SLACK_CHANNEL_NAME:-}
       SLACK_TEAM_ID: ${SLACK_TEAM_ID:-}
       SLACK_USER_IDS: ${SLACK_USER_IDS:-}
-      SLACK_DOT_ID: ${SLACK_DOT_ID:-}
+      SLACK_WAKIE_ID: ${SLACK_WAKIE_ID:-}
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       OPENAI_BASE_URL: ${OPENAI_BASE_URL:-https://api.openai.com/v1}
       OPENAI_MODEL: ${OPENAI_MODEL:-}
@@ -27,7 +27,7 @@ services:
       BROWSER_URL: http://browser:4311
       BROWSER_SECRET: ${BROWSER_SECRET:-}
     volumes:
-      - opendots-data:/data
+      - wakies-data:/data
     networks:
       - browser-link
       - app-egress
@@ -63,4 +63,4 @@ networks:
   app-egress:
   browser-egress:
 volumes:
-  opendots-data:
+  wakies-data:

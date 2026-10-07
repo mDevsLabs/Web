@@ -41,8 +41,10 @@ export async function getAuthUserId(c: any): Promise<number | null> {
     const token = extractToken(c.req.raw);
     if (!token) return null;
     const payload = await verifyToken(token);
-    const userId = Number(payload.sub || (payload as any).id || (payload as any).userId);
-    if (!userId || isNaN(userId)) return null;
+    const userId = Number(
+      payload.sub || (payload as any).id || (payload as any).userId
+    );
+    if (!userId || Number.isNaN(userId)) return null;
     return userId;
   } catch {
     return null;
@@ -59,7 +61,7 @@ export async function getAuthUserId(c: any): Promise<number | null> {
 export async function resolveHiddenUserIds(
   currentUserId: number | null
 ): Promise<{ mutedIds: number[]; blockedIds: number[] }> {
-  if (!currentUserId) return { mutedIds: [], blockedIds: [] };
+  if (!currentUserId) return { blockedIds: [], mutedIds: [] };
   try {
     const sql = getDb();
     const [mutedRows, blockedRows] = await Promise.all([
@@ -71,11 +73,15 @@ export async function resolveHiddenUserIds(
       `,
     ]);
     return {
-      mutedIds: mutedRows.map((r: any) => Number(r.muted_user_id)).filter(Boolean),
-      blockedIds: blockedRows.map((r: any) => Number(r.blocked_user_id)).filter(Boolean),
+      blockedIds: blockedRows
+        .map((r: any) => Number(r.blocked_user_id))
+        .filter(Boolean),
+      mutedIds: mutedRows
+        .map((r: any) => Number(r.muted_user_id))
+        .filter(Boolean),
     };
   } catch {
-    return { mutedIds: [], blockedIds: [] };
+    return { blockedIds: [], mutedIds: [] };
   }
 }
 
@@ -84,7 +90,10 @@ export async function resolveHiddenUserIds(
  * Utilisé pour couper les notifications (mentions, likes, réponses) entre
  * comptes bloqués — le blocage doit être visible et total.
  */
-export async function isBlockEitherWay(userA: number, userB: number): Promise<boolean> {
+export async function isBlockEitherWay(
+  userA: number,
+  userB: number
+): Promise<boolean> {
   if (!userA || !userB || userA === userB) return false;
   try {
     const sql = getDb();

@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
+import { APP_KEYS } from "@/lib/apps/catalog";
 import { requireUser } from "@/lib/auth/require-user";
+import { CREATION_MODES } from "@/lib/creation/mode";
 import { getUserPreferences, upsertUserPreferences } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import {
@@ -23,11 +25,16 @@ const buildSchema = (tier?: string | null) =>
   z.object({
     customInstructions: buildCustomInstructionsSchema(tier),
     defaultAgentId: z.string().uuid().nullable().optional(),
+    // Menu favori : les quatre clés viennent du même catalogue que l'interface
+    // (lib/apps/catalog.ts) — impossible qu'une clé valide soit refusée, ni
+    // qu'une application fantôme soit persistée.
+    defaultApp: z.enum(APP_KEYS).optional(),
     defaultAudioModel: z.string().max(150).optional(),
     defaultAudioSpeed: z.number().min(0.5).max(2.0).optional(),
     defaultAudioVoice: z.string().max(100).optional(),
     defaultChatModel: z.string().max(200).nullable().optional(),
     defaultChatVisibility: z.enum(["private", "public"]).optional(),
+    defaultCreationMode: z.enum(CREATION_MODES).optional(),
     // Les deux listes viennent de lib/i18n/languages.ts, la même source que le
     // sélecteur de l'interface : impossible qu'un code valide soit refusé par
     // l'API, ni qu'une cible DeepL fantôme soit acceptée puis rejetée en aval.
@@ -67,11 +74,13 @@ export async function GET() {
     return NextResponse.json({
       customInstructions: "",
       defaultAgentId: null,
+      defaultApp: "mai",
       defaultAudioModel: "deepgram/flux-tts:free",
       defaultAudioSpeed: 1.0,
       defaultAudioVoice: "flux-alexis-en",
       defaultChatModel: null,
       defaultChatVisibility: "private",
+      defaultCreationMode: "image",
       defaultDictationLanguage: "auto",
       defaultImageModel: "black-forest-labs/flux-schnell",
       defaultImageSize: "1024x1024",

@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Destination", "label": "Destinations", "description": "G\xE9rez vos destinations depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "country", "label": "Pays", "kind": "text", "required": true }, { "key": "averageCost", "label": "Co\xFBt moyen", "kind": "number", "required": true }, { "key": "rating", "label": "Note", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["featured", "available", "seasonal"] }], "titleKey": "name", "settings": [{ "key": "notifyDestination", "label": "Notifications : destinations", "description": "Recevoir un signal lors des changements." }, { "key": "archiveDestination", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section destinations." }, { "key": "approveDestination", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

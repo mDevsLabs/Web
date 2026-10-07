@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Deal", "label": "Opportunit\xE9s", "description": "G\xE9rez vos opportunit\xE9s depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "company", "label": "Entreprise", "kind": "text", "required": true }, { "key": "amount", "label": "Montant", "kind": "number", "required": true }, { "key": "closesOn", "label": "Cl\xF4ture", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["discovery", "proposal", "won", "lost"] }], "titleKey": "name", "settings": [{ "key": "notifyDeal", "label": "Notifications : opportunit\xE9s", "description": "Recevoir un signal lors des changements." }, { "key": "archiveDeal", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section opportunit\xE9s." }, { "key": "approveDeal", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

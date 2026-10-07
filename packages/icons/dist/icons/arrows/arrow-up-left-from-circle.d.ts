@@ -1,0 +1,1 @@
+export declare const ArrowUpLeftFromCircleIcon: import("react").ForwardRefExoticComponent<Omit<import("../../create-icon.js").IconProps, "ref"> & import("react").RefAttributes<SVGSVGElement>>;

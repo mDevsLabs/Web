@@ -1,0 +1,122 @@
+:root[data-ui-style="mac-codex"]:not([data-color-scheme]),
+:root[data-ui-style="mac-codex"][data-color-scheme="dark"] {
+  --void-bg-0: #11171c;
+  --void-bg-1: #151c22;
+  --void-bg-2: #1e2831;
+  --void-bg-3: #293743;
+  --void-fg-0: #f3f7f8;
+  --void-fg-1: #ced7dc;
+  --void-fg-2: #94a3af;
+  --void-fg-3: #657582;
+  --void-accent-cool: #37d6d4;
+  --void-accent-cool-soft: color-mix(
+    in srgb,
+    var(--void-accent-cool) 16%,
+    transparent
+  );
+  --void-accent-warm: #ff9d59;
+  /** Ask / 辅助蓝（与主强调青区分，供 mode chip 等） */
+  --void-accent-assist: #8aa8ff;
+  --void-accent-warm-soft: color-mix(
+    in srgb,
+    var(--void-accent-warm) 16%,
+    transparent
+  );
+  --void-accent-glow: color-mix(
+    in srgb,
+    var(--void-accent-cool) 18%,
+    transparent
+  );
+  --void-accent-soft: color-mix(
+    in srgb,
+    var(--void-accent-cool) 10%,
+    transparent
+  );
+  --void-thought-meta: #8a98a4;
+  --void-thought-body: #d2dbe0;
+  --void-thought-detail: #a5b2bd;
+  --void-border: color-mix(in srgb, var(--void-fg-1) 14%, transparent);
+  --void-border-soft: color-mix(in srgb, var(--void-fg-1) 7%, transparent);
+  --void-ring: #37d6d4;
+  --void-git-untracked: #59d9b8;
+  --void-git-modified: #ffb05b;
+  --void-git-added: #70d89d;
+  --void-git-deleted: #ff7b86;
+  --void-git-ignored: #7d8a95;
+  --void-status-success: #4ade80;
+  --void-status-success-soft: color-mix(in srgb, #22c55e 12%, transparent);
+  --void-status-warning: #facc15;
+  --void-status-warning-soft: color-mix(in srgb, #eab308 12%, transparent);
+  --void-status-error: #f87171;
+  --void-status-error-soft: color-mix(in srgb, #ef4444 12%, transparent);
+  --void-status-orange: #fdba74;
+  --void-status-orange-soft: color-mix(in srgb, #f97316 12%, transparent);
+  --void-scrollbar-track: color-mix(in srgb, var(--void-bg-0) 66%, transparent);
+  --void-scrollbar-thumb: color-mix(in srgb, var(--void-fg-2) 42%, transparent);
+  --void-scrollbar-thumb-hover: color-mix(
+    in srgb,
+    var(--void-fg-1) 56%,
+    transparent
+  );
+  --void-scrollbar-thumb-active: color-mix(
+    in srgb,
+    var(--void-fg-1) 64%,
+    transparent
+  );
+  --void-settings-root-bg: #151c22;
+  --ref-menubar-chrome-bg: #161d24;
+  --void-sidebar-fill: #161d24;
+  --void-shadow-card: 0 20px 44px color-mix(in srgb, black 26%, transparent);
+  --void-shadow-soft: inset 0 1px 0
+    color-mix(in srgb, var(--void-fg-0) 3%, transparent);
+
+  --surface-panel-bg: color-mix(in srgb, var(--void-bg-1) 96%, transparent);
+  --surface-panel-bg-strong: color-mix(
+    in srgb,
+    var(--void-bg-0) 98.5%,
+    transparent
+  );
+  --surface-panel-bg-soft: color-mix(
+    in srgb,
+    var(--void-bg-3) 98%,
+    transparent
+  );
+  --surface-glass-stroke: color-mix(in srgb, var(--void-fg-0) 8%, transparent);
+  --surface-tint-soft: color-mix(in srgb, var(--void-fg-0) 5%, transparent);
+  --surface-tint-strong: color-mix(in srgb, var(--void-fg-0) 9%, transparent);
+  --surface-search-bg: color-mix(in srgb, var(--void-bg-2) 97%, transparent);
+  --shadow-floating: 0 18px 38px color-mix(in srgb, black 20%, transparent);
+  --shadow-toolbar: 0 1px 0
+    color-mix(in srgb, var(--void-fg-0) 2.8%, transparent);
+  --shadow-pressed: inset 0 1px 0
+    color-mix(in srgb, var(--void-fg-0) 4%, transparent);
+  --shadow-popover: 0 22px 52px color-mix(in srgb, black 32%, transparent);
+  --shadow-accent: 0 14px 28px
+    color-mix(
+      in srgb,
+      color-mix(in srgb, var(--void-accent-cool) 65%, black 35%) 22%,
+      transparent
+    );
+  --surface-popover-bg: color-mix(in srgb, var(--void-bg-1) 98.5%, transparent);
+  --surface-control-bg: color-mix(
+    in srgb,
+    color-mix(in srgb, var(--void-bg-2) 55%, var(--void-bg-3) 45%) 98%,
+    transparent
+  );
+  --surface-control-bg-hover: color-mix(
+    in srgb,
+    color-mix(in srgb, var(--void-bg-3) 88%, var(--void-fg-0) 12%) 98%,
+    transparent
+  );
+  --surface-control-bg-active: color-mix(
+    in srgb,
+    color-mix(in srgb, var(--void-bg-3) 82%, var(--void-fg-0) 18%) 98%,
+    transparent
+  );
+  --surface-code-bg: color-mix(in srgb, var(--void-bg-0) 96%, transparent);
+  --surface-bubble-user: var(--void-bg-2);
+  --surface-card-bg: var(--void-bg-1);
+  --surface-card-bg-soft: var(--void-bg-2);
+  --app-backdrop: var(--void-bg-0);
+  color-scheme: dark;
+}

@@ -123,7 +123,7 @@ describe("DTO MCP — aucun secret ne sort de l'API", () => {
   const SECRET = "ghp_SUPER_SECRET_TOKEN_VALUE_1234567890";
 
   const row = {
-    args: ["--token=" + SECRET, "--verbose"],
+    args: [`--token=${SECRET}`, "--verbose"],
     authConfig: { token: SECRET, username: "bot" },
     authType: "bearer",
     avgLatencyMs: 12,

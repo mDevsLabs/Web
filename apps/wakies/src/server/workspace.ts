@@ -5,7 +5,7 @@ import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { validateLearningSettings } from '../shared/learning.js';
-import type { CallReceipt, Conversation, Dot, Space } from '../shared/types.js';
+import type { CallReceipt, Conversation, Wakie, Space } from '../shared/types.js';
 export class WorkspaceStore {
   private db: DatabaseSync;
   readonly pages: Pages;
@@ -18,14 +18,14 @@ export class WorkspaceStore {
     this.db = new DatabaseSync(path);
     this.db.exec(`PRAGMA journal_mode=WAL; PRAGMA busy_timeout=5000;
       CREATE TABLE IF NOT EXISTS spaces(id TEXT PRIMARY KEY, name TEXT NOT NULL, description TEXT NOT NULL, createdAt INTEGER NOT NULL);
-      CREATE TABLE IF NOT EXISTS dots(id TEXT PRIMARY KEY, spaceId TEXT NOT NULL, name TEXT NOT NULL, instructions TEXT NOT NULL, researchAllowed INTEGER NOT NULL, memoryAllowed INTEGER NOT NULL, createdAt INTEGER NOT NULL);
-      CREATE TABLE IF NOT EXISTS thread_bindings(id TEXT PRIMARY KEY, dotId TEXT NOT NULL, ownerId TEXT NOT NULL, title TEXT NOT NULL, createdAt INTEGER NOT NULL);
+      CREATE TABLE IF NOT EXISTS wakies(id TEXT PRIMARY KEY, spaceId TEXT NOT NULL, name TEXT NOT NULL, instructions TEXT NOT NULL, researchAllowed INTEGER NOT NULL, memoryAllowed INTEGER NOT NULL, createdAt INTEGER NOT NULL);
+      CREATE TABLE IF NOT EXISTS thread_bindings(id TEXT PRIMARY KEY, wakieId TEXT NOT NULL, ownerId TEXT NOT NULL, title TEXT NOT NULL, createdAt INTEGER NOT NULL);
       CREATE TABLE IF NOT EXISTS task_threads(taskId TEXT PRIMARY KEY, threadId TEXT NOT NULL);
       CREATE TABLE IF NOT EXISTS calls(id TEXT PRIMARY KEY, threadId TEXT NOT NULL, startedAt INTEGER NOT NULL, endedAt INTEGER, status TEXT NOT NULL, transcript TEXT NOT NULL, error TEXT);
       CREATE TABLE IF NOT EXISTS captures(threadId TEXT PRIMARY KEY, value TEXT NOT NULL);`);
     for (const [table, column, definition] of [
-      ['dots', 'learningContainerId', 'TEXT'],
-      ['dots', 'skillDeliveryEnabled', 'INTEGER NOT NULL DEFAULT 0'],
+      ['wakies', 'learningContainerId', 'TEXT'],
+      ['wakies', 'skillDeliveryEnabled', 'INTEGER NOT NULL DEFAULT 0'],
       ['thread_bindings', 'learningContainerId', 'TEXT'],
     ]) {
       if (
@@ -40,13 +40,13 @@ export class WorkspaceStore {
     if (
       !this.db
         .prepare(
-          "SELECT name FROM sqlite_master WHERE type='table' AND name='dot_spaces'",
+          "SELECT name FROM sqlite_master WHERE type='table' AND name='wakie_spaces'",
         )
         .get()
     ) {
       this.db.exec(`BEGIN;
-        CREATE TABLE dot_spaces(dotId TEXT NOT NULL, spaceId TEXT NOT NULL, PRIMARY KEY(dotId, spaceId));
-        INSERT INTO dot_spaces SELECT id, spaceId FROM dots;
+        CREATE TABLE wakie_spaces(wakieId TEXT NOT NULL, spaceId TEXT NOT NULL, PRIMARY KEY(wakieId, spaceId));
+        INSERT INTO wakie_spaces SELECT id, spaceId FROM wakies;
         COMMIT;`);
     }
     this.computers = new ComputerStore(this.db);
@@ -65,9 +65,9 @@ export class WorkspaceStore {
         'Everyday',
         'A little space for your day.',
       );
-      this.createDot(
+      this.createWakie(
         space.id,
-        'Dot',
+        'Wakie',
         'Be thoughtful, practical, and concise. Help the user think clearly and follow through.',
         true,
         true,
@@ -94,27 +94,27 @@ export class WorkspaceStore {
       .run(space.id, name, description, space.createdAt);
     return space;
   }
-  dots(): Dot[] {
+  wakies(): Wakie[] {
     return this.db
-      .prepare('SELECT * FROM dots ORDER BY createdAt')
+      .prepare('SELECT * FROM wakies ORDER BY createdAt')
       .all()
       .map((row) => ({
         ...row,
         spaceIds: this.db
           .prepare(
-            'SELECT spaceId FROM dot_spaces WHERE dotId=? ORDER BY spaceId',
+            'SELECT spaceId FROM wakie_spaces WHERE wakieId=? ORDER BY spaceId',
           )
           .all(String(row.id))
           .map((grant) => String(grant.spaceId)),
         researchAllowed: !!row.researchAllowed,
         memoryAllowed: !!row.memoryAllowed,
         skillDeliveryEnabled: !!row.skillDeliveryEnabled,
-      })) as unknown as Dot[];
+      })) as unknown as Wakie[];
   }
-  dot(id: string) {
-    return this.dots().find((dot) => dot.id === id);
+  wakie(id: string) {
+    return this.wakies().find((wakie) => wakie.id === id);
   }
-  createDot(
+  createWakie(
     spaceId: string,
     name: string,
     instructions: string,
@@ -123,10 +123,10 @@ export class WorkspaceStore {
     spaceIds: string[] = [spaceId],
     learningContainerId: string | null = null,
     skillDeliveryEnabled = false,
-  ): Dot {
+  ): Wakie {
     this.validateSpaceAccess(spaceId, spaceIds);
     validateLearningSettings(learningContainerId, skillDeliveryEnabled);
-    const dot: Dot = {
+    const wakie: Wakie = {
       id: randomUUID(),
       spaceId,
       spaceIds: [...new Set(spaceIds)].sort(),
@@ -142,32 +142,32 @@ export class WorkspaceStore {
     try {
       this.db
         .prepare(
-          'INSERT INTO dots (id, spaceId, name, instructions, researchAllowed, memoryAllowed, createdAt, learningContainerId, skillDeliveryEnabled) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+          'INSERT INTO wakies (id, spaceId, name, instructions, researchAllowed, memoryAllowed, createdAt, learningContainerId, skillDeliveryEnabled) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
         )
         .run(
-          dot.id,
+          wakie.id,
           spaceId,
           name,
           instructions,
           +researchAllowed,
           +memoryAllowed,
-          dot.createdAt,
+          wakie.createdAt,
           learningContainerId,
           +skillDeliveryEnabled,
         );
-      for (const id of dot.spaceIds)
-        this.db.prepare('INSERT INTO dot_spaces VALUES (?, ?)').run(dot.id, id);
+      for (const id of wakie.spaceIds)
+        this.db.prepare('INSERT INTO wakie_spaces VALUES (?, ?)').run(wakie.id, id);
       this.db.exec('COMMIT');
     } catch (error) {
       this.db.exec('ROLLBACK');
       throw error;
     }
-    return dot;
+    return wakie;
   }
-  canAccessSpace(dotId: string, spaceId: string) {
+  canAccessSpace(wakieId: string, spaceId: string) {
     return !!this.db
-      .prepare('SELECT 1 FROM dot_spaces WHERE dotId=? AND spaceId=?')
-      .get(dotId, spaceId);
+      .prepare('SELECT 1 FROM wakie_spaces WHERE wakieId=? AND spaceId=?')
+      .get(wakieId, spaceId);
   }
   private validateSpaceAccess(defaultSpace: string, spaceIds: string[]) {
     if (
@@ -176,10 +176,10 @@ export class WorkspaceStore {
     )
       throw new Error('Space access must include a valid default destination.');
   }
-  updateDot(
+  updateWakie(
     id: string,
     patch: Pick<
-      Dot,
+      Wakie,
       'name' | 'instructions' | 'researchAllowed' | 'memoryAllowed'
     > & {
       spaceId?: string;
@@ -187,9 +187,9 @@ export class WorkspaceStore {
       learningContainerId?: string | null;
       skillDeliveryEnabled?: boolean;
     },
-  ): Dot {
-    const current = this.dot(id);
-    if (!current) throw new Error('Dot not found.');
+  ): Wakie {
+    const current = this.wakie(id);
+    if (!current) throw new Error('Wakie not found.');
     const defaultSpace = patch.spaceId ?? current.spaceId;
     const spaceIds = patch.spaceIds ?? current.spaceIds;
     this.validateSpaceAccess(defaultSpace, spaceIds);
@@ -204,7 +204,7 @@ export class WorkspaceStore {
     try {
       this.db
         .prepare(
-          'UPDATE dots SET name=?, instructions=?, researchAllowed=?, memoryAllowed=?, learningContainerId=?, skillDeliveryEnabled=? WHERE id=?',
+          'UPDATE wakies SET name=?, instructions=?, researchAllowed=?, memoryAllowed=?, learningContainerId=?, skillDeliveryEnabled=? WHERE id=?',
         )
         .run(
           patch.name,
@@ -216,17 +216,17 @@ export class WorkspaceStore {
           id,
         );
       this.db
-        .prepare('UPDATE dots SET spaceId=? WHERE id=?')
+        .prepare('UPDATE wakies SET spaceId=? WHERE id=?')
         .run(defaultSpace, id);
-      this.db.prepare('DELETE FROM dot_spaces WHERE dotId=?').run(id);
+      this.db.prepare('DELETE FROM wakie_spaces WHERE wakieId=?').run(id);
       for (const space of new Set(spaceIds))
-        this.db.prepare('INSERT INTO dot_spaces VALUES (?, ?)').run(id, space);
+        this.db.prepare('INSERT INTO wakie_spaces VALUES (?, ?)').run(id, space);
       this.db.exec('COMMIT');
     } catch (error) {
       this.db.exec('ROLLBACK');
       throw error;
     }
-    return this.dot(id)!;
+    return this.wakie(id)!;
   }
   conversations(): Conversation[] {
     return this.db
@@ -235,24 +235,24 @@ export class WorkspaceStore {
       )
       .all(this.ownerId) as unknown as Conversation[];
   }
-  bindThread(id: string, dotId: string, title: string): Conversation {
-    const dot = this.dot(dotId);
-    if (!dot) throw new Error('Dot not found.');
+  bindThread(id: string, wakieId: string, title: string): Conversation {
+    const wakie = this.wakie(wakieId);
+    if (!wakie) throw new Error('Wakie not found.');
     const value: Conversation = {
       id,
-      dotId,
+      wakieId,
       ownerId: this.ownerId,
       title,
       createdAt: Date.now(),
-      learningContainerId: dot.learningContainerId ?? null,
+      learningContainerId: wakie.learningContainerId ?? null,
     };
     this.db
       .prepare(
-        'INSERT INTO thread_bindings (id, dotId, ownerId, title, createdAt, learningContainerId) VALUES (?, ?, ?, ?, ?, ?)',
+        'INSERT INTO thread_bindings (id, wakieId, ownerId, title, createdAt, learningContainerId) VALUES (?, ?, ?, ?, ?, ?)',
       )
       .run(
         id,
-        dotId,
+        wakieId,
         this.ownerId,
         title,
         value.createdAt,
@@ -260,10 +260,10 @@ export class WorkspaceStore {
       );
     return value;
   }
-  requireThread(id: string, dotId?: string): Conversation {
+  requireThread(id: string, wakieId?: string): Conversation {
     const thread = this.conversations().find((thread) => thread.id === id);
-    if (!thread || (dotId && thread.dotId !== dotId))
-      throw new Error('Conversation does not belong to this Dot and owner.');
+    if (!thread || (wakieId && thread.wakieId !== wakieId))
+      throw new Error('Conversation does not belong to this Wakie and owner.');
     return thread;
   }
   bindTask(taskId: string, threadId: string) {

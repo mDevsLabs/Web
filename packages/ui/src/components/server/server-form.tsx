@@ -1,0 +1,12 @@
+// Generated from scripts/data/domains.txt. One independent export and data contract per module.
+'use client';
+import { DomainForm, type DomainFrameProps } from '../../internal/domain.js';
+import { config } from './config.js';
+import type { Server, ServerStatus, ServerActivity, ServerMetric, ServerSettingsValues } from './types.js';
+export interface ServerFormProps extends Omit<DomainFrameProps, 'children' | 'onSelect' | 'onChange' | 'onSubmit'> {
+    initialValues?: Partial<Server>;
+    onSubmit: (value: Omit<Server, 'id'>) => void;
+    submitLabel?: string;
+    pending?: boolean;
+}
+export function ServerForm({ onSubmit, ...props }: ServerFormProps) { return <DomainForm config={config} {...props} onSubmit={values => onSubmit(values as Omit<Server, 'id'>)}/>; }

@@ -26,13 +26,13 @@ import {
   type ComputerToolRenderProps,
 } from './ComputerToolCard';
 import { ChatTranscript, isInternalVoiceReceipt } from './ChatTranscript';
-import type { CallReceipt, Conversation, Dot } from '../shared/types';
+import type { CallReceipt, Conversation, Wakie } from '../shared/types';
 import { Mascot } from './Mascot';
 import { useVoice } from './useVoice';
 import { CallView } from './CallView';
 export function Chat({
   thread,
-  dot,
+  wakie,
   initialPrompt,
   onConsumed,
   voiceReady,
@@ -43,7 +43,7 @@ export function Chat({
   onComputer,
 }: {
   thread: Conversation;
-  dot: Dot;
+  wakie: Wakie;
   initialPrompt?: string;
   onConsumed: () => void;
   voiceReady: boolean;
@@ -55,7 +55,7 @@ export function Chat({
 }) {
   const { agent, isReady } = useAgent({
     agentId: `chat-${thread.id}`,
-    runtimeAgentId: dot.id,
+    runtimeAgentId: wakie.id,
     threadId: thread.id,
   });
   const { copilotkit } = useCopilotKit();
@@ -200,15 +200,15 @@ export function Chat({
         props.name.startsWith('computer_') ? (
           <ComputerToolCard
             {...props}
-            dotId={dot.id}
-            dotName={dot.name}
+            wakieId={wakie.id}
+            wakieName={wakie.name}
             running={running}
             showScreen={props.toolCallId === latestBrowserCall?.id}
             onExpand={onComputer}
           />
         ) : null,
     },
-    [dot.id, dot.name, running, latestBrowserCall?.id, onComputer],
+    [wakie.id, wakie.name, running, latestBrowserCall?.id, onComputer],
   );
   const visible = agent.messages.filter(
     (message) =>
@@ -226,13 +226,13 @@ export function Chat({
     <div className="live-chat">
       <header className="chat-persona">
         <Mascot
-          identity={dot.id}
-          name={dot.name}
+          identity={wakie.id}
+          name={wakie.name}
           small
           state={running ? 'working' : paused ? 'paused' : 'idle'}
         />
         <div>
-          <strong>{dot.name}</strong>
+          <strong>{wakie.name}</strong>
           <span>
             {paused
               ? 'Paused'
@@ -283,7 +283,7 @@ export function Chat({
             }
             title={
               voiceReady
-                ? 'Talk with your Dot'
+                ? 'Talk with your Wakie'
                 : 'Voice setup requires VOICE_API_KEY and VOICE_MODEL'
             }
             disabled={!voiceReady || paused || !loaded || !contextReady}
@@ -312,9 +312,9 @@ export function Chat({
           <div className="chat-welcome">
             <span className="eyebrow">A LITTLE SPACE TO THINK</span>
             <h1>What’s on your mind?</h1>
-            <p>{dot.instructions}</p>
+            <p>{wakie.instructions}</p>
             <p className="muted">
-              Your conversation stays with this Dot, across text and calls.
+              Your conversation stays with this Wakie, across text and calls.
             </p>
           </div>
         )}
@@ -333,7 +333,7 @@ export function Chat({
             <span />
             <span />
             <span />
-            <span>{dot.name} is thinking</span>
+            <span>{wakie.name} is thinking</span>
           </div>
         )}
         <div ref={bottom} />
@@ -366,7 +366,7 @@ export function Chat({
       )}
       <CallView
         key={voice.status === 'idle' ? 'idle' : 'call'}
-        dot={dot}
+        wakie={wakie}
         voice={voice}
       />
       <form
@@ -409,8 +409,8 @@ export function Chat({
             <Link2 size={19} />
           </button>
           <textarea
-            aria-label="Message your Dot"
-            placeholder={`Message ${dot.name}…`}
+            aria-label="Message your Wakie"
+            placeholder={`Message ${wakie.name}…`}
             rows={1}
             value={draft}
             maxLength={4000}

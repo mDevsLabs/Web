@@ -15,7 +15,7 @@ import {
 import { MAI_UPGRADE_URL } from "@/lib/constants";
 
 export type UpgradeDialogProps = {
-  feature?: "skills" | "mcp" | "agents" | "plugins" | "generic";
+  feature?: "skills" | "mcp" | "agents" | "plugins" | "wakies" | "generic";
   open: boolean;
   onOpenChange: (open: boolean) => void;
 };
@@ -48,6 +48,11 @@ const FEATURE_COPY: Record<
     description:
       "Créez des compétences IA personnalisées avec paramètres dynamiques, marketplace de templates et statistiques d'usage. Réservé aux forfaits Plus, Pro et Max.",
     title: "Skills & Outils IA — Plan requis",
+  },
+  wakies: {
+    description:
+      "Accédez à l'espace de travail Wakies avec vos agents coworkers persistants, vos espaces de documents et l'automatisation de tâches autonomes. Réservé aux forfaits Plus, Pro et Max.",
+    title: "Wakies — Plan requis",
   },
 };
 
@@ -126,7 +131,7 @@ export function UpgradeDialog({
             Plus tard
           </Button>
           <Button asChild className="gap-2" type="button">
-            <Link href={MAI_UPGRADE_URL} target="_blank">
+            <Link href="/site/pricing?plan=pro">
               <SparklesIcon className="size-4" />
               Mettre à niveau mon forfait
             </Link>

@@ -77,10 +77,9 @@ export function isReducedMotion(): boolean {
   return !getAnimationsEnabled() || getSystemReducedMotion();
 }
 
-// Applique au boot (importé une fois dans App.tsx)
+// Écoute les changements de préférences système
 if (typeof window !== "undefined") {
   try {
-    applyAnimationsAttribute();
     const mq = window.matchMedia?.("(prefers-reduced-motion: reduce)");
     mq?.addEventListener?.("change", () => applyAnimationsAttribute());
   } catch {}
