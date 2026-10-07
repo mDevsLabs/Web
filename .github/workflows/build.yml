@@ -46,7 +46,7 @@ jobs:
             }
             core.setFailed('La release ' + tag + ' existe déjà. Augmentez package.json avant un nouveau build sur main.');
   quality:
-    name: 🌐 Build Web
+    name: 🌐 Types et build Web
     needs: [version]
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -64,6 +64,8 @@ jobs:
           cache: pnpm
       - name: 📥 Installer les dépendances
         run: pnpm install --frozen-lockfile
+      - name: 🔍 Vérification des types
+        run: pnpm typecheck
       - name: 🏗️ Compiler l'application
         run: pnpm build
   changes:
@@ -643,7 +645,7 @@ jobs:
   # valide types + tests + bundles avant les trois builds d'installateurs.
   # ─────────────────────────────────────────────────────────────────────────────
   coder-check:
-    name: 💻 Coder – Build
+    name: 💻 Coder – Types et build
     runs-on: ubuntu-latest
     needs: [changes]
     if: needs.changes.outputs.coder == 'true'
@@ -668,6 +670,8 @@ jobs:
           cache-dependency-path: apps/coder/pnpm-lock.yaml
       - name: 📥 Installer les dépendances
         run: pnpm install --frozen-lockfile || pnpm install --no-frozen-lockfile
+      - name: 🔍 Vérification des types (typecheck)
+        run: pnpm run typecheck
       - name: 🏗️ Compiler le Main (esbuild)
         run: pnpm run build:main
       - name: 🏗️ Compiler le Renderer (Vite)

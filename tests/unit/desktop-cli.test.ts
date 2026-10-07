@@ -98,7 +98,11 @@ vi.mock("node:child_process", () => {
 });
 vi.mock("node-pty", () => ({ spawn: mocks.spawn }));
 
-const { openCliWindow } = await import("../../apps/desktop/src/cli-window");
+// Chargement dynamique via variable pour isoler le typecheck Web des dépendances natives Electron
+const desktopCliModule = "../../apps/desktop/src/cli-window";
+const { openCliWindow } = (await import(desktopCliModule)) as {
+  openCliWindow: () => Promise<{ success: boolean; error?: string }>;
+};
 
 function sender(window: any) {
   return {
