@@ -4,6 +4,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { promisify } from "node:util";
 import { app, BrowserWindow, ipcMain, shell } from "electron";
+import type { Event as ElectronEvent, IpcMainEvent, IpcMainInvokeEvent } from "electron";
 import * as pty from "node-pty";
 import type { CliState } from "./cli-protocol";
 
@@ -48,7 +49,7 @@ function publish(session: CliSession, patch: Partial<CliState>) {
   return session.state;
 }
 
-function localSession(event: Electron.IpcMainEvent | Electron.IpcMainInvokeEvent) {
+function localSession(event: IpcMainEvent | IpcMainInvokeEvent) {
   const session = sessions.get(event.sender.id);
   if (!session || session.window.isDestroyed() ||
       event.senderFrame !== event.sender.mainFrame ||
@@ -74,7 +75,7 @@ function spawnTerminal(session: CliSession, args: string[]) {
     env: { ...process.env, TERM: "xterm-256color" },
   });
   session.terminal = terminal;
-  terminal.onData((data) => {
+  terminal.onData((data: string) => {
     if (!session.window.isDestroyed()) {
       session.window.webContents.send("cli:data", data);
     }
@@ -84,7 +85,7 @@ function spawnTerminal(session: CliSession, args: string[]) {
 
 function launchMai(session: CliSession, mai: string) {
   const terminal = spawnTerminal(session, windows ? ["/d", "/q"] : ["-l"]);
-  terminal.onExit(({ exitCode }) => {
+  terminal.onExit(({ exitCode }: { exitCode: number }) => {
     if (session.terminal !== terminal || session.window.isDestroyed()) { return; }
     session.terminal = undefined;
     publish(session, { running: false, error: exitCode ? "Le terminal s'est fermé avec une erreur." : undefined });
@@ -93,7 +94,7 @@ function launchMai(session: CliSession, mai: string) {
   return publish(session, { running: true, installing: false, error: undefined });
 }
 
-ipcMain.handle("cli:start", async (event) => {
+ipcMain.handle("cli:start", async (event: IpcMainInvokeEvent) => {
   const session = localSession(event);
   if (session.busy || session.terminal) { return session.state; }
   session.busy = true;
@@ -111,7 +112,7 @@ ipcMain.handle("cli:start", async (event) => {
   } finally { session.busy = false; }
 });
 
-ipcMain.handle("cli:install", async (event) => {
+ipcMain.handle("cli:install", async (event: IpcMainInvokeEvent) => {
   const session = localSession(event);
   if (session.busy || session.terminal) { return session.state; }
   session.busy = true;
@@ -126,7 +127,7 @@ ipcMain.handle("cli:install", async (event) => {
     publish(session, { installing: true, error: undefined });
     const command = quoteCommand(commands.npm) + " install -g @mdevs/mai-cli";
     const terminal = spawnTerminal(session, windows ? ["/d", "/s", "/c", command] : ["-lc", command]);
-    terminal.onExit(({ exitCode }) => {
+    terminal.onExit(({ exitCode }: { exitCode: number }) => {
       if (session.terminal !== terminal || session.window.isDestroyed()) { return; }
       session.terminal = undefined;
       void (async () => {
@@ -147,7 +148,7 @@ ipcMain.handle("cli:install", async (event) => {
   } finally { session.busy = false; }
 });
 
-ipcMain.on("cli:write", (event, data: unknown) => {
+ipcMain.on("cli:write", (event: IpcMainEvent, data: unknown) => {
   try {
     const session = localSession(event);
     if (typeof data === "string" && data.length <= 65536 && (session.state.running || session.state.installing)) {
@@ -155,7 +156,7 @@ ipcMain.on("cli:write", (event, data: unknown) => {
     }
   } catch { /* Les messages d'une autre fenêtre sont ignorés. */ }
 });
-ipcMain.on("cli:resize", (event, cols: unknown, rows: unknown) => {
+ipcMain.on("cli:resize", (event: IpcMainEvent, cols: unknown, rows: unknown) => {
   try {
     const session = localSession(event);
     if (typeof cols === "number" && typeof rows === "number" &&
@@ -165,7 +166,7 @@ ipcMain.on("cli:resize", (event, cols: unknown, rows: unknown) => {
     }
   } catch { /* Une fenêtre distante ne peut pas redimensionner le PTY. */ }
 });
-ipcMain.handle("cli:help", (event) => {
+ipcMain.handle("cli:help", (event: IpcMainInvokeEvent) => {
   localSession(event);
   return shell.openExternal("https://nodejs.org/fr/download");
 });
@@ -185,7 +186,7 @@ export async function openCliWindow(): Promise<{ success: boolean; error?: strin
     sessions.set(window.webContents.id, session);
     const id = window.webContents.id;
     window.webContents.setWindowOpenHandler(() => ({ action: "deny" }));
-    window.webContents.on("will-navigate", (event) => { event.preventDefault(); });
+    window.webContents.on("will-navigate", (event: ElectronEvent) => { event.preventDefault(); });
     window.on("closed", () => {
       sessions.delete(id);
       try { session.terminal?.kill(); } catch { /* Le processus peut déjà être fermé. */ }
