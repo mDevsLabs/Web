@@ -240,7 +240,7 @@ jobs:
           sudo apt-get install -y libarchive-tools rpm fakeroot build-essential python3
       - name: 📥 Install desktop deps
         working-directory: apps/desktop
-        run: pnpm install --frozen-lockfile || pnpm install
+        run: pnpm install --frozen-lockfile || pnpm install --no-frozen-lockfile
       - name: 🎨 Générer icônes (logo → ico/icns/png)
         working-directory: apps/desktop
         run: node scripts/generate-icons.mjs
@@ -326,11 +326,11 @@ jobs:
         with:
           distribution: temurin
           java-version: "21"
-      - name: 🤖 Setup Android SDK
-        uses: android-actions/setup-android@v3
+      - name: 🤖 Accepter licences Android SDK
+        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses || true
       - name: 📥 Install mobile deps
         working-directory: apps/mobile
-        run: pnpm install --frozen-lockfile || pnpm install
+        run: pnpm install --frozen-lockfile || pnpm install --no-frozen-lockfile
       - name: 🎨 Générer icônes mobiles (logo → resources/icon.png)
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
@@ -404,7 +404,7 @@ jobs:
           xcrun --find codesign || true
       - name: 📥 Install mobile deps
         working-directory: apps/mobile
-        run: pnpm install --frozen-lockfile || pnpm install
+        run: pnpm install --frozen-lockfile || pnpm install --no-frozen-lockfile
       - name: 🎨 Générer icônes mobiles
         working-directory: apps/mobile
         run: node scripts/generate-icons.mjs
@@ -631,11 +631,48 @@ jobs:
 
   # ─────────────────────────────────────────────────────────────────────────────
   # JOBS — mAI Coder (apps/coder)
+  # Compilé avec pnpm, comme le reste du dépôt (apps/desktop). Le job coder-check
+  # valide types + tests + bundles avant les trois builds d'installateurs.
   # ─────────────────────────────────────────────────────────────────────────────
+  coder-check:
+    name: Coder – Types, tests et build
+    runs-on: ubuntu-latest
+    needs: [changes]
+    if: needs.changes.outputs.coder == 'true'
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: apps/coder
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: apps/coder/pnpm-lock.yaml
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile || pnpm install --no-frozen-lockfile
+      - name: Typecheck
+        run: pnpm run typecheck
+      - name: Tests unitaires
+        run: pnpm run test
+      - name: Build Main (esbuild)
+        run: pnpm run build:main
+      - name: Build Renderer (Vite)
+        run: pnpm run build:renderer
+
   coder-windows:
     name: Coder Windows (NSIS / MSI)
     runs-on: windows-2022
-    needs: [changes]
+    needs: [changes, coder-check]
     if: needs.changes.outputs.coder == 'true'
     defaults:
       run:
@@ -660,35 +697,38 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-          cache-dependency-path: apps/coder/package-lock.json
-      - name: Configure node-gyp for Visual Studio 2022
-        shell: pwsh
-        run: |
-          npm config set msvs_version 2022
-          npm config set python python
-          node --version
-          npm --version
+          cache: pnpm
+          cache-dependency-path: apps/coder/pnpm-lock.yaml
       - name: Set up MSVC environment
         uses: ilammy/msvc-dev-cmd@v1
         with:
           arch: x64
       - name: Install dependencies
         shell: pwsh
-        run: npm ci --ignore-scripts
+        run: pnpm install --frozen-lockfile --ignore-scripts || pnpm install --ignore-scripts
       - name: Remove cpu-features (optional dep of ssh2)
         shell: pwsh
         run: |
+          $dirs = @(Get-ChildItem -Path "node_modules/.pnpm" -Directory -ErrorAction SilentlyContinue |
+            Where-Object { $_.Name -like "cpu-features@*" })
+          foreach ($d in $dirs) {
+            Remove-Item -Recurse -Force $d.FullName -ErrorAction SilentlyContinue
+            Write-Host "cpu-features removed: $($d.Name)"
+          }
           if (Test-Path "node_modules/cpu-features") {
-            Remove-Item -Recurse -Force "node_modules/cpu-features"
-            Write-Host "cpu-features removed"
+            Remove-Item -Recurse -Force "node_modules/cpu-features" -ErrorAction SilentlyContinue
+            Write-Host "cpu-features removed (npm layout)"
           }
       - name: Build Windows installers
-        run: npm run release:win
+        run: pnpm run release:win
       - name: Upload Windows release assets
         uses: actions/upload-artifact@v4
         with:
@@ -703,7 +743,7 @@ jobs:
   coder-macos:
     name: Coder macOS (DMG / ZIP non signé)
     runs-on: macos-latest
-    needs: [changes]
+    needs: [changes, coder-check]
     if: needs.changes.outputs.coder == 'true'
     defaults:
       run:
@@ -721,16 +761,20 @@ jobs:
           repository: msitarzewski/agency-agents
           path: agency-agents
           fetch-depth: 1
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-          cache-dependency-path: apps/coder/package-lock.json
+          cache: pnpm
+          cache-dependency-path: apps/coder/pnpm-lock.yaml
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile || pnpm install --no-frozen-lockfile
       - name: Build macOS packages (unsigned)
-        run: npm run release:mac:unsigned
+        run: pnpm run release:mac:unsigned
       - name: Upload macOS release assets
         uses: actions/upload-artifact@v4
         with:
@@ -745,7 +789,7 @@ jobs:
   coder-linux:
     name: Coder Linux (AppImage / DEB)
     runs-on: ubuntu-latest
-    needs: [changes]
+    needs: [changes, coder-check]
     if: needs.changes.outputs.coder == 'true'
     defaults:
       run:
@@ -766,16 +810,20 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y build-essential libasound2-dev libarchive-tools fakeroot
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
-          cache-dependency-path: apps/coder/package-lock.json
+          cache: pnpm
+          cache-dependency-path: apps/coder/pnpm-lock.yaml
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile || pnpm install --no-frozen-lockfile
       - name: Build Linux packages
-        run: npm run release:linux
+        run: pnpm run release:linux
       - name: Upload Linux release assets
         uses: actions/upload-artifact@v4
         with:

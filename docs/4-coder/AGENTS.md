@@ -23,15 +23,19 @@ Le projet est divisé en deux mondes strictement isolés par le pont IPC :
 
 ## 2. ⚡ Cycle de Build & Scripts Essentiels
 
+L'application se compile avec **pnpm** (comme le reste du dépôt ; `pnpm-lock.yaml`
+fait foi). La CI (`.github/workflows/build.yml`) enchaîne le job `coder-check`
+(types, tests, bundles) puis les trois builds d'installateurs.
+
 | Commande | Action |
 |---|---|
-| `npm run build:main` | Compile `main-src/` vers `electron/main.bundle.cjs` via esbuild. |
-| `npm run build:renderer` | Compile l'application React/Monaco sous `dist/` via Vite. |
-| `npm run build` | Exécute la synchronisation de team, le build main et le build renderer. |
-| `npm run typecheck` | Vérifie les types TypeScript (`tsc --noEmit`). |
-| `npm test` | Exécute les tests unitaires avec Vitest (`vitest run`). |
-| `npm run release:win` | Compile les installeurs Windows x64 (NSIS + MSI). |
-| `npm run release:mac:unsigned` | Compile les paquets macOS (DMG + ZIP non signés). |
+| `pnpm run build:main` | Compile `main-src/` vers `electron/main.bundle.cjs` via esbuild. |
+| `pnpm run build:renderer` | Compile l'application React/Monaco sous `dist/` via Vite. |
+| `pnpm run build` | Exécute la synchronisation de team, le build main et le build renderer. |
+| `pnpm run typecheck` | Vérifie les types TypeScript (`tsc --noEmit`). |
+| `pnpm test` | Exécute les tests unitaires avec Vitest (`vitest run`). |
+| `pnpm run release:win` | Compile les installeurs Windows x64 (NSIS + MSI). |
+| `pnpm run release:mac:unsigned` | Compile les paquets macOS (DMG + ZIP non signés). |
 
 ---
 

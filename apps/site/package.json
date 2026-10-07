@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint app components lib tests vitest.config.ts api-middleware.ts models.ts",
+    "lint": "eslint app components lib tests vitest.config.ts --no-error-on-unmatched-pattern",
     "lint:all": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",

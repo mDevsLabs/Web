@@ -227,9 +227,9 @@ export function getDb() {
 
 export function getJwtSecret(): Uint8Array {
   const denoSecret =
-    (typeof Deno === "undefined"
+    typeof Deno === "undefined"
       ? null
-      : Deno.env.get("MAI_JWT_SECRET") || Deno.env.get("JWT_SECRET"));
+      : Deno.env.get("MAI_JWT_SECRET") || Deno.env.get("JWT_SECRET");
   const nodeSecret =
     typeof process === "undefined"
       ? null

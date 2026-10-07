@@ -1,13 +1,24 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import ts from "typescript";
 import { describe, expect, it } from "vitest";
 
-const ROOT = process.cwd();
+function resolveFile(file: string): string {
+  const candidates = [
+    join(process.cwd(), file),
+    join(import.meta.dirname, "..", file),
+    join(import.meta.dirname, "..", "..", "..", file),
+    join(process.cwd(), "..", "..", file),
+  ];
+  for (const c of candidates) {
+    if (existsSync(c)) return c;
+  }
+  return join(process.cwd(), file);
+}
 
 describe("Val Town TypeScript syntax", () => {
   it.each(["api-middleware.ts", "models.ts"])("parses %s", (file) => {
-    const source = readFileSync(join(ROOT, file), "utf8");
+    const source = readFileSync(resolveFile(file), "utf8");
     const result = ts.transpileModule(source, {
       fileName: file,
       reportDiagnostics: true,

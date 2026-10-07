@@ -1,0 +1,396 @@
+import nodemailer from "nodemailer";
+
+function escapeHtml(str: string): string {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function getEnv(key: string): string | undefined {
+  if (typeof process !== "undefined" && process.env && process.env[key]) {
+    return process.env[key];
+  }
+}
+
+export async function sendVerificationEmail(
+  email: string,
+  code: string,
+  action: string,
+  extraInfo?: any
+) {
+  const maskedEmail = email.replace(/(.{2}).*(@.*)/, "$1***$2");
+  console.log(
+    `[EMAIL] action=${action} to=${maskedEmail} hasCode=${Boolean(code)} code=${code}`
+  );
+
+  let subject = "Notification - mAI";
+  let title = "Notification";
+  let textContent = "";
+  let showCode = code ? true : false;
+
+  switch (action) {
+    case "register":
+      subject = "Vérifiez votre adresse e-mail - mAI";
+      title = "Vérification d'inscription";
+      textContent =
+        "Voici votre code de vérification à 6 chiffres pour votre compte <strong>mAI</strong> :";
+      break;
+    case "login":
+      subject = "Code de vérification de connexion - mAI";
+      title = "Vérification de connexion";
+      textContent =
+        "Voici votre code de vérification à 6 chiffres pour votre compte <strong>mAI</strong> :";
+      break;
+    case "verify_new_email":
+      subject = "Vérification de votre nouvelle adresse e-mail - mAI";
+      title = "Changement d'e-mail";
+      textContent =
+        "Voici le code de vérification pour confirmer votre nouvelle adresse e-mail :";
+      break;
+    case "delete_account":
+      subject = "Code de suppression de compte - mAI";
+      title = "Suppression du compte";
+      textContent =
+        "Vous avez demandé la suppression de votre compte. Voici votre code à 8 chiffres :";
+      break;
+    case "subscription_unlocked": {
+      const tierUnlocked = escapeHtml(extraInfo?.tier || "Pro");
+      subject = `Merci d'avoir souscrit au forfait ${tierUnlocked} ! - mAI`;
+      title = `Merci d'avoir souscrit au forfait ${tierUnlocked} !`;
+      showCode = false;
+      textContent = `Nous vous remercions chaleureusement pour votre souscription au forfait <strong>${tierUnlocked}</strong> sur <strong>mAI</strong> !<br><br>
+        Votre compte bénéficie dès maintenant de vos nouveaux quotas étendus pour l'ensemble de vos applications et clés d'API (tokens mAI, requêtes API et stockage Cloud).<br><br>
+        Toute l'équipe mDevsLabs vous remercie pour votre confiance et vous souhaite une excellente expérience créative et productive avec mAI.`;
+      break;
+    }
+    case "new_login": {
+      subject = "Nouvelle connexion détectée - mAI";
+      title = "Alerte de sécurité";
+      showCode = false;
+      const device = escapeHtml(extraInfo?.device || "Appareil inconnu");
+      const location = escapeHtml(extraInfo?.location || "Lieu inconnu");
+      textContent = `Une nouvelle connexion à votre compte <strong>mAI</strong> a été détectée depuis :<br><br>
+        <strong>Appareil :</strong> ${device}<br>
+        <strong>Localisation :</strong> ${location}<br><br>
+        Si vous êtes à l'origine de cette connexion, aucune action n'est requise. Sinon, modifiez immédiatement votre mot de passe et déconnectez cet appareil.`;
+      break;
+    }
+  }
+
+  const html = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="margin:0; padding:0; background-color:#090d16; font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color:#f8fafc;">
+      <div style="max-width:560px; margin:40px auto; background:#111827; border:1px solid #1f293d; border-radius:16px; overflow:hidden; box-shadow:0 20px 25px -5px rgba(0,0,0,0.5);">
+        
+        <!-- Header & Logo -->
+        <div style="background:linear-gradient(135deg, #1e1b4b 0%, #31104b 100%); padding:32px 24px; text-align:center; border-bottom:1px solid #2e1065;">
+          <img src="https://upload.fs.fr/azq3C6GLea.png" alt="mAI Logo" style="height:48px; width:auto; max-width:180px; object-fit:contain; display:inline-block;" />
+          <h1 style="color:#ffffff; font-size:20px; font-weight:700; margin:16px 0 0 0; letter-spacing:-0.5px;">${title}</h1>
+        </div>
+
+        <!-- Body Content -->
+        <div style="padding:32px 28px; line-height:1.6; font-size:15px; color:#cbd5e1;">
+          <p style="margin-top:0;">Bonjour,</p>
+          <p>${textContent}</p>
+          
+          ${
+            showCode
+              ? `
+          <!-- Styled Code Container -->
+          <div style="background:#1e293b; border:1px solid #334155; border-radius:12px; padding:24px; text-align:center; margin:28px 0;">
+            <div style="font-size:34px; font-weight:800; letter-spacing:8px; color:#a855f7; font-family:Consolas, Monaco, monospace; margin-bottom:12px; user-select:all;">
+              ${escapeHtml(code)}
+            </div>
+            <p style="font-size:12px; color:#94a3b8; margin:0;">Code unique • Expire dans 10 minutes</p>
+          </div>
+          `
+              : ""
+          }
+
+          <p style="font-size:13px; color:#94a3b8; margin-top:28px;">Si vous n'êtes pas à l'origine de cette demande, vous pouvez l'ignorer ou sécuriser votre compte.</p>
+        </div>
+
+        <!-- Footer -->
+        <div style="background-color:#0b0f19; padding:20px 24px; text-align:center; border-top:1px solid #1e293b; font-size:12px; color:#64748b;">
+          <p style="margin:0 0 6px 0;">© 2026 mAI — Plateforme d'Intelligence Artificielle & APIs</p>
+          <p style="margin:0;">Cet e-mail automatique a été envoyé de manière sécurisée.</p>
+        </div>
+
+      </div>
+    </body>
+    </html>
+  `;
+
+  await sendHtmlEmail(email, subject, html);
+}
+
+export async function sendHtmlEmail(
+  to: string,
+  subject: string,
+  html: string
+): Promise<boolean> {
+  const googleScriptsUrl =
+    getEnv("GOOGLE_SCRIPTS_URL") || getEnv("GOOGLE_SCRIPT_URL");
+  const googleScriptSecret =
+    getEnv("GOOGLE_SCRIPTS_SECRET") || getEnv("GOOGLE_SCRIPT_SECRET");
+
+  if (googleScriptsUrl && googleScriptSecret) {
+    try {
+      let res = await fetch(googleScriptsUrl, {
+        body: JSON.stringify({
+          body: "Veuillez activer l'affichage HTML pour lire cet e-mail mAI.",
+          htmlBody: html,
+          secret: googleScriptSecret,
+          subject,
+          to,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        redirect: "manual",
+      });
+
+      if (
+        res.status === 301 ||
+        res.status === 302 ||
+        res.status === 303 ||
+        res.status === 307 ||
+        res.status === 308
+      ) {
+        const location =
+          res.headers.get("Location") || res.headers.get("location");
+        if (location) {
+          res = await fetch(location, {
+            method: "GET",
+          });
+        }
+      }
+
+      if (res.ok) {
+        const data = await res.json().catch(() => ({}));
+        if (data.success) {
+          const maskedTo = to.replace(/(.{2}).*(@.*)/, "$1***$2");
+          console.log(`[EMAIL] Google Apps Script OK to=${maskedTo}`);
+          return true;
+        }
+        console.error("Erreur de retour Google Apps Script :", data.error);
+      } else {
+        console.error(
+          "Erreur HTTP Google Apps Script :",
+          res.status,
+          res.statusText
+        );
+      }
+    } catch (err: any) {
+      console.error(
+        "Erreur envoi via Google Apps Script :",
+        err?.message || err
+      );
+    }
+  }
+
+  const gmailUser = getEnv("GMAIL_USER") || "tusseaumathias85@gmail.com";
+  const gmailAppPass = getEnv("GMAIL_APP_PASSWORD");
+
+  if (gmailUser && gmailAppPass) {
+    try {
+      const transporter = nodemailer.createTransport({
+        auth: {
+          pass: gmailAppPass,
+          user: gmailUser,
+        },
+        service: "gmail",
+      });
+
+      await transporter.sendMail({
+        from: `"mAI Support" <${gmailUser}>`,
+        html,
+        subject,
+        to,
+      });
+
+      const maskedTo = to.replace(/(.{2}).*(@.*)/, "$1***$2");
+      console.log(`[EMAIL] Gmail SMTP OK to=${maskedTo}`);
+      return true;
+    } catch (err: any) {
+      console.error("Erreur envoi Gmail SMTP :", err?.message || err);
+    }
+  } else {
+    console.warn(
+      "[EMAIL] Ni Google Apps Script ni Gmail SMTP configurés pour l'envoi."
+    );
+  }
+
+  return false;
+}
+
+export interface SupportTicketEmailPayload {
+  category: string;
+  created_at?: string;
+  description: string;
+  id: string;
+  isAiGenerated?: boolean;
+  priority: string;
+  project: string;
+  status?: string;
+  ticket_number?: number | string;
+  title: string;
+  user_email: string;
+  user_id: string;
+  user_name: string;
+  user_tier?: string;
+}
+
+export async function sendSupportTicketCreatedEmail({
+  ticket,
+  appUrl = "https://m-ai.fr",
+}: {
+  ticket: SupportTicketEmailPayload;
+  appUrl?: string;
+}) {
+  const adminEmail = "mathias.tss2012@gmail.com";
+  const ticketRef = ticket.ticket_number
+    ? `#TICK-${ticket.ticket_number}`
+    : `#${ticket.id.slice(0, 8)}`;
+  const subject = `[Support mAI] Nouveau ticket ${ticketRef} : ${ticket.title}`;
+
+  const directLink = `${appUrl.replace(/\/$/, "")}/support/tickets/${ticket.id}`;
+  const safeDescription = escapeHtml(ticket.description).replace(/\n/g, "<br>");
+
+  const html = `
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>${escapeHtml(subject)}</title>
+    </head>
+    <body style="margin:0; padding:0; background-color:#080c14; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color:#f1f5f9;">
+      <div style="max-width:600px; margin:40px auto; background:#0f172a; border:1px solid #1e293b; border-radius:24px; overflow:hidden; box-shadow:0 25px 50px -12px rgba(0,0,0,0.85);">
+        <div style="background:linear-gradient(135deg, #1e1b4b 0%, #31104b 50%, #0f172a 100%); padding:32px 28px; text-align:center; border-bottom:1px solid #2e1065;">
+          <img src="https://upload.fs.fr/azq3C6GLea.png" alt="mAI Logo" style="height:44px; width:auto; max-width:180px; object-fit:contain; display:inline-block;" />
+          <h1 style="color:#ffffff; font-size:20px; font-weight:800; margin:16px 0 4px 0; letter-spacing:-0.5px;">Nouveau ticket de support</h1>
+          <p style="color:#a855f7; font-size:13px; font-weight:600; margin:0; letter-spacing:0.5px;">RÉFÉRENCE : ${ticketRef}</p>
+        </div>
+
+        <div style="padding:32px 28px; line-height:1.6; font-size:15px; color:#cbd5e1;">
+          <p style="margin-top:0;">Un nouvel utilisateur a sollicité le support technique :</p>
+          <ul style="padding-left:20px; margin:16px 0;">
+            <li><strong>Utilisateur :</strong> ${escapeHtml(ticket.user_name)} (${escapeHtml(ticket.user_email)})</li>
+            <li><strong>Catégorie :</strong> ${escapeHtml(ticket.category)}</li>
+            <li><strong>Projet :</strong> ${escapeHtml(ticket.project)}</li>
+            <li><strong>Priorité :</strong> ${escapeHtml(ticket.priority)}</li>
+          </ul>
+
+          <div style="background:#131d31; border:1px solid #1e293b; border-left:4px solid #a855f7; border-radius:14px; padding:20px; margin:24px 0; color:#f1f5f9; font-size:14px; line-height:1.7;">
+            ${safeDescription}
+          </div>
+
+          <div style="text-align:center; margin:32px 0 16px 0;">
+            <a href="${directLink}" style="display:inline-block; background:linear-gradient(135deg, #9333ea 0%, #4f46e5 100%); color:#ffffff; text-decoration:none; font-weight:700; font-size:15px; padding:14px 32px; border-radius:14px;">
+              Accéder au ticket
+            </a>
+          </div>
+        </div>
+
+        <div style="background-color:#080c14; padding:20px 28px; text-align:center; border-top:1px solid #1e293b; font-size:12px; color:#64748b;">
+          <p style="margin:0 0 6px 0;">© 2026 mAI — Centre de Support & Signalement Technique</p>
+        </div>
+      </div>
+    </body>
+    </html>
+  `;
+
+  return await sendHtmlEmail(adminEmail, subject, html);
+}
+
+export async function sendSupportTicketUpdateEmail({
+  ticket,
+  recipientEmail,
+  recipientName,
+  message,
+  isFromAdmin: isFromAdminParam,
+  newStatus,
+  appUrl = "https://m-ai.fr",
+  isAiGenerated = false,
+  authorRole,
+}: {
+  ticket: SupportTicketEmailPayload;
+  recipientEmail: string;
+  recipientName: string;
+  message: string;
+  isFromAdmin?: boolean;
+  newStatus?: string;
+  appUrl?: string;
+  isAiGenerated?: boolean;
+  authorRole?: string;
+}) {
+  const isFromAdmin = isFromAdminParam ?? authorRole === "admin";
+  const ticketRef = ticket.ticket_number
+    ? `#TICK-${ticket.ticket_number}`
+    : `#${ticket.id.slice(0, 8)}`;
+  const subject = isFromAdmin
+    ? `[Support mAI] Réponse à votre ticket ${ticketRef} : ${ticket.title}`
+    : `[Support mAI] Nouveau message sur le ticket ${ticketRef}`;
+
+  const directLink = `${appUrl.replace(/\/$/, "")}/support/tickets/${ticket.id}`;
+  const safeMessage = escapeHtml(message).replace(/\n/g, "<br>");
+
+  const html = `
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>${escapeHtml(subject)}</title>
+    </head>
+    <body style="margin:0; padding:0; background-color:#080c14; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color:#f1f5f9;">
+      <div style="max-width:600px; margin:40px auto; background:#0f172a; border:1px solid #1e293b; border-radius:24px; overflow:hidden;">
+        <div style="background:linear-gradient(135deg, #1e1b4b 0%, #31104b 50%, #0f172a 100%); padding:32px 28px; text-align:center; border-bottom:1px solid #2e1065;">
+          <img src="https://upload.fs.fr/azq3C6GLea.png" alt="mAI Logo" style="height:44px; width:auto; max-width:180px; object-fit:contain; display:inline-block;" />
+          <h1 style="color:#ffffff; font-size:20px; font-weight:800; margin:16px 0 4px 0;">
+            ${isFromAdmin ? "Réponse de l'Équipe Support" : "Nouveau message"}
+          </h1>
+          <p style="color:#a855f7; font-size:13px; font-weight:600; margin:0;">TICKET ${ticketRef} • ${escapeHtml(ticket.title)}</p>
+        </div>
+
+        <div style="padding:32px 28px; line-height:1.6; font-size:15px; color:#cbd5e1;">
+          <p style="margin-top:0;">Bonjour <strong>${escapeHtml(recipientName)}</strong>,</p>
+          <p>
+            ${
+              isFromAdmin
+                ? "Un membre de l'équipe technique de <strong>mAI</strong> a répondu à votre demande :"
+                : "Un nouveau message a été posté sur le ticket :"
+            }
+          </p>
+          
+          <div style="background:#131d31; border:1px solid #1e293b; border-left:4px solid ${isFromAdmin ? "#10b981" : "#a855f7"}; border-radius:14px; padding:20px; margin:24px 0; color:#f1f5f9; font-size:14px; line-height:1.7;">
+            ${safeMessage}
+          </div>
+
+          <div style="text-align:center; margin:32px 0 16px 0;">
+            <a href="${directLink}" style="display:inline-block; background:linear-gradient(135deg, #9333ea 0%, #4f46e5 100%); color:#ffffff; text-decoration:none; font-weight:700; font-size:15px; padding:14px 32px; border-radius:14px;">
+              Voir le fil de discussion et répondre
+            </a>
+          </div>
+        </div>
+
+        <div style="background-color:#080c14; padding:20px 28px; text-align:center; border-top:1px solid #1e293b; font-size:12px; color:#64748b;">
+          <p style="margin:0 0 6px 0;">© 2026 mAI — Centre de Support & Signalement Technique</p>
+        </div>
+      </div>
+    </body>
+    </html>
+  `;
+
+  return await sendHtmlEmail(recipientEmail, subject, html);
+}

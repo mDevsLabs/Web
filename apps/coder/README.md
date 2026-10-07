@@ -26,14 +26,16 @@ Ne branchez pas directement fs, child_process ou une dépendance native dans le 
 
 ## Développement
 
-Prérequis : Node.js et npm. Depuis ce dossier :
+Prérequis : Node.js et pnpm (le dépôt racine épingle `pnpm@10.32.1`). Depuis ce dossier :
 
 ~~~sh
-npm ci
-npm run dev
+pnpm install
+pnpm run dev
 ~~~
 
-Commandes utiles : npm run typecheck, npm test et npm run build. Le build prépare le Main et le Renderer ; les scripts de release sont disponibles pour Windows, macOS et Linux dans package.json.
+Ou depuis la racine du dépôt : `pnpm dev:coder`, `pnpm build:coder`.
+
+Commandes utiles : pnpm run typecheck, pnpm test et pnpm run build. Le build prépare le Main et le Renderer ; les scripts de release sont disponibles pour Windows, macOS et Linux dans package.json.
 
 Les clés de fournisseurs se configurent dans l’application. Ne les ajoutez pas au dépôt ni aux journaux. Consultez la documentation avant de modifier les frontières Main/Renderer.
 

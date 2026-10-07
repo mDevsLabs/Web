@@ -1,13 +1,15 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
 import { getModelById } from "@/lib/models";
 
-const ROOT = process.cwd();
-
 function read(relativePath: string): string {
-  return readFileSync(join(ROOT, relativePath), "utf8");
+  const local = join(process.cwd(), relativePath);
+  if (existsSync(local)) return readFileSync(local, "utf8");
+  const inSite = join(import.meta.dirname, "..", relativePath);
+  if (existsSync(inSite)) return readFileSync(inSite, "utf8");
+  return readFileSync(local, "utf8");
 }
 
 function section(markdown: string, heading: string): string {
