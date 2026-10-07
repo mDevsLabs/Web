@@ -13,6 +13,7 @@ import { NextResponse } from "next/server";
 // la première apparition de chaque couple (directive, ressource).
 const MAX_REPORTS = 50;
 const DEDUPE_WINDOW_MS = 15 * 60_000;
+const MAX_CSP_REPORT_BYTES = 64 * 1024; // 64 Ko max pour un rapport CSP
 
 type Report = {
   blockedURI: string;
@@ -42,9 +43,24 @@ function prune(now: number) {
 }
 
 export async function POST(request: Request) {
+  const contentLength = Number(request.headers.get("content-length"));
+  if (contentLength && contentLength > MAX_CSP_REPORT_BYTES) {
+    return NextResponse.json(
+      { error: "Payload trop volumineux.", ok: false },
+      { status: 413 }
+    );
+  }
+
   let payload: unknown;
   try {
-    payload = await request.json();
+    const rawText = await request.text();
+    if (rawText.length > MAX_CSP_REPORT_BYTES) {
+      return NextResponse.json(
+        { error: "Payload trop volumineux.", ok: false },
+        { status: 413 }
+      );
+    }
+    payload = JSON.parse(rawText);
   } catch {
     return NextResponse.json({ ok: false }, { status: 400 });
   }

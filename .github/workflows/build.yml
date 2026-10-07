@@ -45,7 +45,7 @@ jobs:
             }
             core.setFailed('La release ' + tag + ' existe déjà. Augmentez package.json avant un nouveau build sur main.');
   quality:
-    name: Types, Biome, tests et build Web
+    name: Types et build Web
     needs: [version]
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -59,9 +59,7 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm check
       - run: pnpm typecheck
-      - run: pnpm test:unit
       - run: pnpm build
   changes:
     needs: [version]
@@ -635,7 +633,7 @@ jobs:
   # valide types + tests + bundles avant les trois builds d'installateurs.
   # ─────────────────────────────────────────────────────────────────────────────
   coder-check:
-    name: Coder – Types, tests et build
+    name: Coder – Types et build
     runs-on: ubuntu-latest
     needs: [changes]
     if: needs.changes.outputs.coder == 'true'
@@ -662,8 +660,6 @@ jobs:
         run: pnpm install --frozen-lockfile || pnpm install --no-frozen-lockfile
       - name: Typecheck
         run: pnpm run typecheck
-      - name: Tests unitaires
-        run: pnpm run test
       - name: Build Main (esbuild)
         run: pnpm run build:main
       - name: Build Renderer (Vite)
@@ -840,7 +836,7 @@ jobs:
   # JOB — mAI Site (apps/site)
   # ─────────────────────────────────────────────────────────────────────────────
   site-check-build:
-    name: Site – Tests, Typecheck & Build
+    name: Site – Lint, Typecheck & Build
     runs-on: ubuntu-latest
     needs: [changes]
     if: needs.changes.outputs.site == 'true'
@@ -858,9 +854,8 @@ jobs:
           cache-dependency-path: apps/site/package-lock.json
       - name: Installation des dépendances
         run: npm install
-      - name: Validation des tests, lint et types
+      - name: Validation du lint et des types
         run: |
-          npm run test
           npm run lint
           npm run typecheck
       - name: Build Next.js

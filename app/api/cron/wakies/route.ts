@@ -5,6 +5,7 @@ import { getLanguageModel } from "@/lib/ai/providers";
 import { errorResponse } from "@/lib/api/error-response";
 import { isPaidTier } from "@/lib/auth/plan";
 import { getPersistedTier } from "@/lib/db/users";
+import { timingSafeCompare } from "@/lib/security/timing";
 import {
   addTaskEvent,
   appendMessages,
@@ -52,7 +53,10 @@ async function isAuthorized(request: Request): Promise<boolean> {
   if (cronSecret) {
     const enTete = request.headers.get("authorization");
     const secret = request.headers.get("x-cron-secret");
-    return enTete === `Bearer ${cronSecret}` || secret === cronSecret;
+    return (
+      timingSafeCompare(enTete, `Bearer ${cronSecret}`) ||
+      timingSafeCompare(secret, cronSecret)
+    );
   }
   if (process.env.NODE_ENV === "production") {
     console.error("[cron/wakies] CRON_SECRET manquant en production — refusé");

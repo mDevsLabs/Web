@@ -2,6 +2,7 @@ import "server-only";
 
 import { neon } from "@neondatabase/serverless";
 import crypto from "crypto";
+import { timingSafeCompare } from "@/lib/security/timing";
 import { getApiKeyRef } from "./api-key-ref";
 import type { ApiKeyMetadata, CreatedApiKeyResult } from "./api-key-types";
 import {
@@ -735,7 +736,7 @@ export async function validateApiKey(
   // Support de MAI_API_KEY en environnement. Cette validation est une
   // égalité serveur-side exacte ; aucune valeur d'environnement n'est exposée.
   const systemMaiApiKey = process.env.MAI_API_KEY;
-  if (systemMaiApiKey && cleanedKey === systemMaiApiKey) {
+  if (systemMaiApiKey && timingSafeCompare(cleanedKey, systemMaiApiKey)) {
     const now = new Date().toISOString();
     return {
       keyInfo: {

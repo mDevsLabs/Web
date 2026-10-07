@@ -3,6 +3,7 @@ import { errorResponse } from "@/lib/api/error-response";
 import { getMaiUser } from "@/lib/auth/session";
 import { getDueScheduledMessages } from "@/lib/db/queries";
 import { executeScheduledMessage } from "@/lib/planning/executor";
+import { timingSafeCompare } from "@/lib/security/timing";
 
 export const maxDuration = 300;
 
@@ -14,8 +15,8 @@ async function isAuthorized(request: Request): Promise<boolean> {
   // Secret uniquement via header (jamais en query : logs/proxy/history).
   // En prod, CRON_SECRET obligatoire (fail-closed).
   if (cronSecret) {
-    if (authHeader === `Bearer ${cronSecret}`) return true;
-    if (headerSecret === cronSecret) return true;
+    if (timingSafeCompare(authHeader, `Bearer ${cronSecret}`)) return true;
+    if (timingSafeCompare(headerSecret, cronSecret)) return true;
     return false;
   }
 

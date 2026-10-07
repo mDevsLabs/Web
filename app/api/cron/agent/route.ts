@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { ensureAgentNotificationsInstalled } from "@/lib/agent/notifications/install";
 import { runSchedulerTick } from "@/lib/agent/scheduler/engine";
 import { errorResponse } from "@/lib/api/error-response";
+import { timingSafeCompare } from "@/lib/security/timing";
 
 export const maxDuration = 300;
 
@@ -17,8 +18,8 @@ async function isAuthorized(request: Request): Promise<boolean> {
   const headerSecret = request.headers.get("x-cron-secret");
 
   if (cronSecret) {
-    if (authHeader === `Bearer ${cronSecret}`) return true;
-    if (headerSecret === cronSecret) return true;
+    if (timingSafeCompare(authHeader, `Bearer ${cronSecret}`)) return true;
+    if (timingSafeCompare(headerSecret, cronSecret)) return true;
     return false;
   }
 

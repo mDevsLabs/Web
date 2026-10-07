@@ -1,6 +1,7 @@
 import { jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { type NextRequest, NextResponse } from "next/server";
+import { MAI_SESSION_COOKIE } from "@/lib/constants";
 
 /**
  * Vérification serveur de la session mAI (JWT HS256 signé par le backend Val Town).
@@ -26,7 +27,11 @@ export async function verifyMaiSessionToken(
   try {
     const { payload } = await jwtVerify(token, secret, {
       algorithms: ["HS256"],
+      requiredClaims: ["exp"],
     });
+    if (typeof payload.exp !== "number" || payload.exp * 1000 <= Date.now()) {
+      return null;
+    }
     const userId = typeof payload.sub === "string" ? payload.sub.trim() : "";
     if (!userId) return null;
     return {
@@ -43,7 +48,7 @@ function extractToken(req: NextRequest): string {
   const bearer = authHeader.replace(/^Bearer\s+/i, "").trim();
   if (bearer) return bearer;
   return (
-    req.cookies.get("mai_session_token")?.value ||
+    req.cookies.get(MAI_SESSION_COOKIE)?.value ||
     req.cookies.get("mai_token")?.value ||
     ""
   );
@@ -78,8 +83,6 @@ export async function authenticateSession(
 export async function getSessionIdentity(): Promise<SessionIdentity | null> {
   const store = await cookies();
   const token =
-    store.get("mai_session_token")?.value ||
-    store.get("mai_token")?.value ||
-    "";
+    store.get(MAI_SESSION_COOKIE)?.value || store.get("mai_token")?.value || "";
   return verifyMaiSessionToken(token);
 }

@@ -319,9 +319,9 @@ export async function sendSupportTicketUpdateEmail({
   recipientName,
   message,
   isFromAdmin: isFromAdminParam,
-  newStatus,
+  newStatus: _newStatus,
   appUrl = "https://m-ai.fr",
-  isAiGenerated = false,
+  isAiGenerated: _isAiGenerated = false,
   authorRole,
 }: {
   ticket: SupportTicketEmailPayload;

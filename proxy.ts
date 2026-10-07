@@ -47,6 +47,18 @@ export async function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Routes API autonomes : elles portent leur propre mécanisme d'authentification
+  // (CRON_SECRET par en-tête pour les crons, Bearer API Key pour l'API publique
+  // d'agents, ou sont publiques par conception comme la consultation de skills partagés).
+  // Elles ne requièrent pas de cookie de session navigateur.
+  if (
+    pathname.startsWith("/api/cron/") ||
+    pathname.startsWith("/api/site/v1/") ||
+    pathname.startsWith("/api/skills/share/")
+  ) {
+    return NextResponse.next();
+  }
+
   // Routes publiques autorisées
   const isAuthRoute =
     pathname.startsWith("/login") || pathname.startsWith("/register");
@@ -69,8 +81,6 @@ export async function proxy(request: NextRequest) {
     pathname === "/preview.png" ||
     pathname.startsWith("/images/") ||
     pathname.startsWith("/icons/") ||
-    pathname.startsWith("/mcp/") ||
-    pathname.startsWith("/coder/") ||
     pathname.startsWith("/demo-assets/") ||
     pathname === "/sitemap.xml" ||
     pathname === "/robots.txt";
