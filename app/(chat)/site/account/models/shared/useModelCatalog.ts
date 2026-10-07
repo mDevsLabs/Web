@@ -8,7 +8,7 @@ import { useAuth } from "@/components/site/auth-provider";
 
 type ModelCatalogOptions<T> = {
   emptyError: string;
-  endpoint: `/api/v1/models${string}`;
+  endpoint: `/api/site/v1/models${string}` | `/api/v1/models${string}`;
   errorMessage: string;
   getModelId: (model: T) => string;
 };

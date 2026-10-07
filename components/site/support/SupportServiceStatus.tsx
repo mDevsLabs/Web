@@ -18,6 +18,7 @@ import {
   type SupportStatusService,
 } from "@/components/site/support/support-status-types";
 import { formatDisplayDateTime } from "@/lib/site/date-format";
+import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 
 const STATUS_PRESENTATION: Record<
   SupportStatus,
@@ -164,7 +165,7 @@ export function SupportServiceStatus() {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch("/api/v1/status", {
+      const response = await fetch(SITE_API_ROUTES.status, {
         cache: "no-store",
         signal,
       });

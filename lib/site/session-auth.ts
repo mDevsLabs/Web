@@ -1,11 +1,12 @@
 import { jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { type NextRequest, NextResponse } from "next/server";
+import { getMaiUser } from "@/lib/auth/session";
 import { MAI_SESSION_COOKIE } from "@/lib/constants";
 
 /**
  * Vérification serveur de la session mAI (JWT HS256 signé par le backend Val Town).
- * L'identité provient exclusivement du token signé — jamais d'un en-tête ou d'un champ fourni par le client.
+ * L'identité provient exclusivement du token signé ou validé par le backend — jamais d'un en-tête ou d'un champ non vérifié.
  */
 
 export type SessionIdentity = {
@@ -43,6 +44,36 @@ export async function verifyMaiSessionToken(
   }
 }
 
+/**
+ * Résolution de l'identité de session :
+ * 1. Chemin rapide : validation cryptographique locale HS256 via MAI_JWT_SECRET.
+ * 2. Si la vérification locale échoue (secret absent, signature non vérifiée localement),
+ *    délègue à l'API distante émettrice via getMaiUser (chemin canonique mAI).
+ * 3. Ne retourne une identité que si la session est légitimement confirmée.
+ */
+export async function resolveSessionIdentity(
+  token: string | null | undefined
+): Promise<SessionIdentity | null> {
+  const cleanToken = token?.trim();
+  if (!cleanToken) return null;
+
+  const localIdentity = await verifyMaiSessionToken(cleanToken);
+  if (localIdentity) {
+    return localIdentity;
+  }
+
+  // Fallback canonique : l'API distante tranche.
+  const remoteUser = await getMaiUser(cleanToken);
+  if (remoteUser && (remoteUser.id || remoteUser.email)) {
+    return {
+      tier: remoteUser.tier || "Free",
+      userId: remoteUser.id || remoteUser.email,
+    };
+  }
+
+  return null;
+}
+
 function extractToken(req: NextRequest): string {
   const authHeader = req.headers.get("authorization") || "";
   const bearer = authHeader.replace(/^Bearer\s+/i, "").trim();
@@ -61,7 +92,7 @@ export type SessionAuthResult =
 export async function authenticateSession(
   req: NextRequest
 ): Promise<SessionAuthResult> {
-  const identity = await verifyMaiSessionToken(extractToken(req));
+  const identity = await resolveSessionIdentity(extractToken(req));
   if (!identity) {
     return {
       ok: false,
@@ -79,10 +110,10 @@ export async function authenticateSession(
   return { identity, ok: true };
 }
 
-/** Pour les Server Actions : identité dérivée du cookie de session signé. */
+/** Pour les Server Actions : identité dérivée du cookie de session signé ou validé. */
 export async function getSessionIdentity(): Promise<SessionIdentity | null> {
   const store = await cookies();
   const token =
     store.get(MAI_SESSION_COOKIE)?.value || store.get("mai_token")?.value || "";
-  return verifyMaiSessionToken(token);
+  return resolveSessionIdentity(token);
 }

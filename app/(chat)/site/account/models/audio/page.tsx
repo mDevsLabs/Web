@@ -10,6 +10,7 @@ import { AudioModelFilters, useAudioModelFilters } from "./AudioModelFilters";
 import { AudioModelResults } from "./AudioModelResults";
 import { AudioVoicesPanel } from "./AudioVoicesPanel";
 import { type AudioModelItem, getAudioModelId } from "./audio-model-types";
+import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 
 export default function ApiAudioModelsPage() {
   const router = useRouter();
@@ -25,7 +26,7 @@ export default function ApiAudioModelsPage() {
     setOpenModelId,
   } = useModelCatalog<AudioModelItem>({
     emptyError: "Impossible de récupérer la liste des modèles audio.",
-    endpoint: "/api/v1/models/audio",
+    endpoint: SITE_API_ROUTES.modelsAudio,
     errorMessage: "Erreur lors de la récupération des modèles audio.",
     getModelId: getAudioModelId,
   });

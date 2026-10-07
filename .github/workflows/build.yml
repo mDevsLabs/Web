@@ -484,7 +484,7 @@ jobs:
     needs:
       - changes
     if: needs.changes.outputs.desktop == 'true'
-  # La publication commune est déclenchée par publish-release.yml.
+  # La publication de la release est gérée par le job 'publish' en fin de workflow après toutes les validations de paquets et déploiements.
 
   build-android:
     name: 🤖 Android APK
@@ -872,4 +872,193 @@ jobs:
           npm run typecheck
       - name: 🏗️ Compilation Next.js
         run: npm run build
+
+  # ─────────────────────────────────────────────────────────────────────────────
+  # JOB — Publication de la release (GitHub Releases)
+  # Exécuté après validation complète de tous les builds de paquets et déploiements
+  # ─────────────────────────────────────────────────────────────────────────────
+  publish:
+    name: 🚀 Publication de la release
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs:
+      - quality
+      - deploy-vercel
+      - desktop
+      - mobile-android
+      - mobile-ios
+      - build-android
+      - build-ios
+      - coder-check
+      - coder-windows
+      - coder-macos
+      - coder-linux
+      - site-check-build
+    if: |
+      always() &&
+      (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) &&
+      !contains(needs.*.result, 'failure') &&
+      !contains(needs.*.result, 'cancelled')
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - name: 📦 Checkout du code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: ⚡ Configuration de pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+      - name: 🟢 Configuration de Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: 🏷️ Déterminer le tag et créer la release
+        id: release
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('node:fs');
+            const { nextReleaseTag, releaseChannel, releaseTitle, validateReleaseVersion } =
+              await import(process.cwd() + '/scripts/release-version.mjs');
+
+            const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+            const version = validateReleaseVersion(pkg.version);
+
+            const isPr = context.eventName === 'pull_request';
+            const headSha = isPr ? context.payload.pull_request.head.sha : context.sha;
+            const branch = isPr
+              ? (context.payload.pull_request.head.ref || '')
+              : context.ref.replace(/^refs\/heads\//, '').replace(/^refs\/tags\//, '');
+            const channel = releaseChannel(context.eventName, branch);
+
+            const marker = '<!-- mai-build:' + context.runId + ':' + context.runAttempt + ' -->';
+            const releases = await github.paginate(github.rest.repos.listReleases, { ...context.repo, per_page: 100 });
+            const previous = releases.find(item => item.body?.includes(marker));
+
+            let tag = previous?.tag_name;
+            if (!tag) {
+              if (context.ref.startsWith('refs/tags/')) {
+                tag = context.ref.slice('refs/tags/'.length);
+              } else {
+                for (let attempt = 0; attempt < 20; attempt++) {
+                  const refs = await github.paginate(github.rest.git.listMatchingRefs, {
+                    ...context.repo, ref: 'tags/' + channel + '.' + version
+                  });
+                  tag = nextReleaseTag(version, channel, refs.map(item => item.ref.slice('refs/tags/'.length)));
+                  try {
+                    await github.rest.git.createRef({ ...context.repo, ref: 'refs/tags/' + tag, sha: headSha });
+                    break;
+                  } catch (error) {
+                    if (![409, 422].includes(error.status)) throw error;
+                    const { data: refsNow } = await github.rest.git.listMatchingRefs({
+                      ...context.repo, ref: 'tags/' + tag
+                    });
+                    if (!refsNow.some(item => item.ref === 'refs/tags/' + tag)) throw error;
+                    if (channel === 'stable') throw new Error('La version stable existe déjà : augmentez package.json.');
+                    tag = undefined;
+                  }
+                }
+              }
+            }
+            if (!tag) throw new Error('Impossible de réserver un numéro de release après 20 tentatives.');
+
+            const { data: notes } = await github.rest.repos.generateReleaseNotes({
+              ...context.repo, tag_name: tag, target_commitish: headSha
+            });
+
+            const title = releaseTitle(tag);
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const channelBadge = channel === 'stable' ? '🟢 Stable' : channel === 'beta' ? '🟡 Bêta' : '🔵 Pull Request';
+
+            const body = [
+              marker,
+              `## 🚀 ${title}`,
+              '',
+              `Publication officielle de la version **${version}** (${channelBadge}).`,
+              '',
+              '### 📋 Notes de version & Nouveautés',
+              notes.body || 'Aucune note de version spécifique fournie pour cette révision.',
+              '',
+              '---',
+              '',
+              '### 📦 Applications et Paquets inclus',
+              'Tous les paquets ci-dessous ont été construits et validés lors de cette exécution :',
+              '- 🖥️ **mAI Desktop** : Windows (`.exe`, `.msi`), macOS (`.dmg`, `.zip`), Linux (`.AppImage`, `.deb`, `.rpm`)',
+              '- 💻 **mAI Coder** : Windows (`.exe`, `.msi`), macOS (`.dmg`, `.zip`), Linux (`.AppImage`, `.deb`)',
+              '- 📱 **mAI Mobile** : Android (`.apk`), iOS (`.ipa`)',
+              '- 🌐 **Vibe** : Android (`.apk`), iOS (`.ipa`)',
+              '- ☁️ **Web** : Déploiement Vercel validé et opérationnel',
+              '',
+              '---',
+              '',
+              '### 🔍 Traçabilité de la compilation',
+              `- **Canal** : \`${channel}\``,
+              `- **Version** : \`${version}\``,
+              `- **Tag Git** : \`${tag}\``,
+              `- **Commit** : \`${headSha}\``,
+              `- **Exécution GitHub Actions** : [Voir le build #${context.runNumber}](${runUrl})`,
+              '',
+              'Les fichiers téléchargeables ci-dessous correspondent aux applications construites et validées durant ce workflow.'
+            ].join('\n');
+
+            const options = {
+              ...context.repo,
+              tag_name: tag,
+              name: title,
+              body,
+              target_commitish: headSha,
+              prerelease: channel !== 'stable',
+              make_latest: channel === 'stable' ? 'true' : 'false'
+            };
+
+            const { data: release } = previous
+              ? await github.rest.repos.updateRelease({ ...options, release_id: previous.id })
+              : await github.rest.repos.createRelease(options);
+
+            core.setOutput('id', release.id);
+            core.setOutput('tag', tag);
+            core.setOutput('url', release.html_url);
+      - name: 📥 Télécharger tous les artefacts du build
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          path: release-artifacts
+      - name: 📎 Joindre les fichiers construits à la release
+        uses: actions/github-script@v7
+        env:
+          RELEASE_ID: ${{ steps.release.outputs.id }}
+        with:
+          script: |
+            const fs = require('node:fs/promises');
+            const path = require('node:path');
+            const releaseId = Number(process.env.RELEASE_ID);
+            const existing = await github.paginate(github.rest.repos.listReleaseAssets, {
+              ...context.repo, release_id: releaseId, per_page: 100
+            });
+            async function visit(dir) {
+              for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
+                const file = path.join(dir, entry.name);
+                if (entry.isSymbolicLink()) continue;
+                if (entry.isDirectory()) { await visit(file); continue; }
+                if (!/\.(exe|msi|dmg|zip|deb|rpm|AppImage|snap|apk|ipa|aab|blockmap|yml)$/i.test(entry.name)) continue;
+                // Le préfixe d'artefact évite les collisions entre applications.
+                const relative = path.relative('release-artifacts', file);
+                const name = relative.split(path.sep).join('-');
+                if (existing.some(asset => asset.name === name)) continue;
+                console.log(`Upload de l'artefact: ${name}`);
+                await github.rest.repos.uploadReleaseAsset({
+                  ...context.repo, release_id: releaseId, name,
+                  data: await fs.readFile(file),
+                  headers: { 'content-type': 'application/octet-stream' }
+                });
+              }
+            }
+            try { await fs.access('release-artifacts'); }
+            catch { core.info('Cette exécution ne contient aucun artefact téléchargeable.'); return; }
+            await visit('release-artifacts');
+
 

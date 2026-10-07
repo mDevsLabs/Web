@@ -102,7 +102,7 @@ function VibeSidebarIcon({ className }: { className?: string }) {
       alt="Vibe"
       className={cn("size-4 rounded-sm object-contain dark:invert", className)}
       height={16}
-      src="/vibe/logo.PNG"
+      src="/vibe/logo.png"
       unoptimized
       width={16}
     />
@@ -538,11 +538,6 @@ export function AppSidebar({
     }
   }, [handleNavClick, isDesktop, isUserLoggedIn, router]);
 
-  // Sur /site, la navigation propre au site est utilisée : pas de double barre latérale
-  if (pathname?.startsWith("/site")) {
-    return null;
-  }
-
   const handleNewChat = useCallback(() => {
     handleNavClick();
     resetChat();
@@ -557,6 +552,12 @@ export function AppSidebar({
     handleNavClick();
     router.push(pagePath("/recherche"));
   }, [handleNavClick, router]);
+
+  // La navigation du site remplace cette barre, mais tous les hooks doivent
+  // rester appelés lors des allers-retours entre le chat et /site.
+  if (pathname?.startsWith("/site")) {
+    return null;
+  }
 
   return (
     <>
@@ -865,7 +866,7 @@ export function AppSidebar({
                         alt="Wakies"
                         className="size-4 rounded-sm object-contain dark:invert"
                         height={16}
-                        src="/wakies/logo.PNG"
+                        src="/wakies/logo.png"
                         unoptimized
                         width={16}
                       />

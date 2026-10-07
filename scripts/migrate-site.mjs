@@ -49,7 +49,7 @@ function transformContent(content, filePath) {
     [/(["'])\/galaxy\.JPG\1/g, "$1/site/galaxy.JPG$1"],
     [/(["'])\/snob\.png\1/g, "$1/site/snob.png$1"],
     [/(["'])\/openprovider\.png\1/g, "$1/site/openprovider.png$1"],
-    [/(["'])\/msearch\.PNG\1/g, "$1/site/msearch.PNG$1"],
+    [/(["'])\/msearch\.png\1/g, "$1/site/msearch.png$1"],
     [/(["'])\/devices\//g, "$1/site/devices/"],
     [/(["'])\/mai-1\//g, "$1/site/mai-1/"],
     [/(["'])\/mai-1-light\//g, "$1/site/mai-1-light/"],

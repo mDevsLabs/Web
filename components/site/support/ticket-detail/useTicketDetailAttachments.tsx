@@ -14,6 +14,7 @@ import type {
   TicketAttachmentUploadState,
   TicketRole,
 } from "@/components/site/support/ticket-detail/ticket-detail-types";
+import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 
 type UploadResponse = {
   success?: boolean;
@@ -112,7 +113,7 @@ export function useTicketDetailAttachments({
         form.append("uploaderEmail", user.email);
         form.append("uploaderName", user.username || user.email.split("@")[0]);
         try {
-          const response = await fetch("/api/support/upload", {
+          const response = await fetch(SITE_API_ROUTES.supportUpload, {
             body: form,
             method: "POST",
           });

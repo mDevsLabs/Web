@@ -116,6 +116,9 @@ importers:
       vscode-jsonrpc:
         specifier: ^8.2.1
         version: 8.2.1
+      ws:
+        specifier: ^8.18.2
+        version: 8.22.0
     devDependencies:
       '@electron/notarize':
         specifier: ^2.5.0

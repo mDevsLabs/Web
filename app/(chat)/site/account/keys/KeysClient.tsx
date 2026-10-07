@@ -21,6 +21,7 @@ import type {
   CreatedApiKeyResult,
 } from "@/lib/site/api-key-types";
 import { formatDisplayDateTime } from "@/lib/site/date-format";
+import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import { KeyModals } from "./KeyModals";
 
 export default function KeysClient() {
@@ -65,7 +66,7 @@ export default function KeysClient() {
     if (!token) return;
     setLoading(true);
     try {
-      const res = await fetch("/api/dev-keys", {
+      const res = await fetch(SITE_API_ROUTES.devKeys, {
         cache: "no-store",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -105,7 +106,7 @@ export default function KeysClient() {
 
     setCreating(true);
     try {
-      const res = await fetch("/api/dev-keys", {
+      const res = await fetch(SITE_API_ROUTES.devKeys, {
         body: JSON.stringify({
           maxLimit: newKeyLimit,
           name: newKeyName.trim(),
@@ -143,7 +144,7 @@ export default function KeysClient() {
 
     try {
       const res = await fetch(
-        `/api/dev-keys/${encodeURIComponent(keyToEdit.keyRef)}`,
+        SITE_API_ROUTES.devKey(keyToEdit.keyRef),
         {
           body: JSON.stringify({
             isActive: editIsActive,
@@ -191,7 +192,7 @@ export default function KeysClient() {
     if (!targetId || revoking) return;
     setRevoking(true);
     try {
-      const res = await fetch(`/api/dev-keys/${encodeURIComponent(targetId)}`, {
+      const res = await fetch(SITE_API_ROUTES.devKey(targetId), {
         headers: {
           Authorization: `Bearer ${token}`,
         },

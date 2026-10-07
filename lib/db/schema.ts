@@ -665,6 +665,28 @@ export type MprojectsImageGenerations = InferSelectModel<
   typeof mprojectsImageGenerations
 >;
 
+export const mprojectsApiKeys = pgTable(
+  "mprojects_api_keys",
+  {
+    apiKey: text("api_key").notNull(),
+    createdAt: timestamp("created_at").defaultNow(),
+    id: serial("id").primaryKey(),
+    isActive: boolean("is_active").default(true),
+    keyName: text("key_name"),
+    lastUsedAt: timestamp("last_used_at"),
+    maxLimit: integer("max_limit"),
+    plan: text("plan"),
+    requestCount: integer("request_count").default(0),
+    userId: text("user_id").notNull(),
+  },
+  (table) => ({
+    apiKeyIdx: index("mprojects_api_keys_api_key_idx").on(table.apiKey),
+    userIdIdx: index("mprojects_api_keys_user_id_idx").on(table.userId),
+  })
+);
+
+export type MprojectsApiKey = InferSelectModel<typeof mprojectsApiKeys>;
+
 export const mcpServer = pgTable(
   "McpServer",
   {

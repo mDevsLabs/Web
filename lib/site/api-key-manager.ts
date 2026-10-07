@@ -48,30 +48,6 @@ export function getDb() {
  * est idempotente et appliquée paresseusement au premier accès à la table ; les
  * lectures retombent sur `plan` pour les lignes créées avant la migration.
  */
-let keyNameColumnChecked = false;
-
-async function ensureKeyNameColumn(
-  db: ReturnType<typeof getDb>
-): Promise<boolean> {
-  if (!db || keyNameColumnChecked) return keyNameColumnChecked;
-  try {
-    await db`ALTER TABLE mprojects_api_keys ADD COLUMN IF NOT EXISTS key_name TEXT`;
-    // Recopie fige le contenu historique de `plan` comme nom de clé avant que
-    // `plan` ne soit réattribué au forfait. Sans cela, la prochaine activation
-    // d'abonnement aurait définitivement écrasé le nom des clés existantes.
-    await db`
-      UPDATE mprojects_api_keys
-      SET key_name = plan
-      WHERE key_name IS NULL AND plan IS NOT NULL AND plan <> ''
-    `;
-    keyNameColumnChecked = true;
-  } catch (err) {
-    // Base non migrable (ou absente) : on continue en lecture de secours sur `plan`.
-    console.warn("Colonne key_name indisponible, repli sur plan:", err);
-    keyNameColumnChecked = false;
-  }
-  return keyNameColumnChecked;
-}
 
 /** Nom d'une clé, avec repli sur l'ancienne colonne `plan` pour l'historique. */
 function readKeyName(row: { key_name?: unknown; plan?: unknown }): string {
@@ -218,20 +194,10 @@ export async function createApiKey(
 
   if (db) {
     try {
-      const hasKeyNameColumn = await ensureKeyNameColumn(db);
-      // Le nom va dans `key_name`, le forfait dans `plan`. Sur une base non migrée on
-      // conserve l'écriture historique dans `plan` pour ne pas perdre le nom.
-      if (hasKeyNameColumn) {
-        await db`
-          INSERT INTO mprojects_api_keys (user_id, api_key, key_name, plan, request_count, created_at, max_limit, is_active)
-          VALUES (${userId}, ${secretKey}, ${name}, ${plan}, 0, ${now}, ${maxLimit}, true)
-        `;
-      } else {
-        await db`
-          INSERT INTO mprojects_api_keys (user_id, api_key, plan, request_count, created_at, max_limit, is_active)
-          VALUES (${userId}, ${secretKey}, ${name}, 0, ${now}, ${maxLimit}, true)
-        `;
-      }
+      await db`
+        INSERT INTO mprojects_api_keys (user_id, api_key, key_name, plan, request_count, created_at, max_limit, is_active)
+        VALUES (${userId}, ${secretKey}, ${name}, ${plan}, 0, ${now}, ${maxLimit}, true)
+      `;
       storedInDb = true;
     } catch (err) {
       console.warn(
@@ -280,7 +246,6 @@ export async function listApiKeys(userId: string): Promise<ApiKeyMetadata[]> {
 
   if (db) {
     try {
-      await ensureKeyNameColumn(db);
       const identifiers = await getUserIdentifiers(db, userId);
       const rows = await db`
         SELECT k.api_key, k.key_name, k.plan, k.request_count, k.created_at, k.last_used_at,
@@ -551,13 +516,11 @@ export async function updateApiKey(
         (row: any) => getApiKeyRef(row.api_key) === keyRef
       );
       if (exact.length === 1) {
-        const hasKeyNameColumn = await ensureKeyNameColumn(db);
-        // Le renommage ne doit plus écraser le forfait stocké dans `plan`.
-        const nameTargetColumn = hasKeyNameColumn ? "key_name" : "plan";
+        // Le renommage met à jour key_name sans écraser le forfait stocké dans `plan`.
         const updated = await db`
           UPDATE mprojects_api_keys
           SET
-            ${db.unsafe(nameTargetColumn)} = COALESCE(${updates.name === undefined ? null : updates.name}, ${db.unsafe(nameTargetColumn)}),
+            key_name = COALESCE(${updates.name === undefined ? null : updates.name}, key_name),
             max_limit = CASE WHEN ${updates.maxLimit !== undefined} THEN ${updates.maxLimit ?? null}::integer ELSE max_limit END,
             is_active = COALESCE(${updates.isActive === undefined ? null : updates.isActive}, is_active)
           WHERE user_id = ANY(${identifiers})
@@ -801,7 +764,6 @@ export async function validateApiKey(
   const db = getDb();
   if (db) {
     try {
-      await ensureKeyNameColumn(db);
       const rows = await db`
         SELECT k.user_id, k.api_key, k.key_name, k.plan, k.request_count, k.created_at,
                k.last_used_at, k.max_limit, k.is_active, u.tier as user_tier

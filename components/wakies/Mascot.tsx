@@ -31,7 +31,7 @@ export function Mascot({
         className="dot-body"
         draggable={false}
         height={512}
-        src={`/wakies/${characterFor(identity)}.PNG`}
+        src={`/wakies/${characterFor(identity)}.png`}
         width={512}
       />
     </span>

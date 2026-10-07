@@ -24,6 +24,7 @@ import {
   computeRequestTargetUrl,
   type RequestCodeTab,
 } from "./request-snippets";
+import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 
 const ROUTE_DEFINITIONS = API_ROUTE_DEFINITIONS;
 export default function RequestsClient() {
@@ -66,7 +67,7 @@ export default function RequestsClient() {
     async function loadCreatedKeys() {
       if (!token) return;
       try {
-        const res = await fetch("/api/dev-keys", {
+        const res = await fetch(SITE_API_ROUTES.devKeys, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (res.ok) {
@@ -151,7 +152,7 @@ export default function RequestsClient() {
         }
       }
 
-      const res = await fetch("/api/account/api-executor", {
+      const res = await fetch(SITE_API_ROUTES.apiExecutor, {
         body: JSON.stringify({
           body: parsedBody,
           keyRef: selectedKeyRef || undefined,

@@ -318,7 +318,7 @@ export function WakiesWorkspace() {
           <img
             alt="Wakies"
             className="size-5.5 object-contain"
-            src="/wakies/logo.PNG"
+            src="/wakies/logo.png"
           />
         </button>
         <button
@@ -387,7 +387,7 @@ export function WakiesWorkspace() {
           <img
             alt="Wakies"
             className="size-5.5 object-contain shrink-0"
-            src="/wakies/logo.PNG"
+            src="/wakies/logo.png"
           />
           Wakies<span className="wordmark-dot">•</span>
         </button>

@@ -37,7 +37,7 @@ export default async function WakiesPage() {
                 alt="Wakies"
                 className="size-9 rounded-xl object-cover shadow-xs"
                 height={36}
-                src="/wakies/logo.PNG"
+                src="/wakies/logo.png"
                 unoptimized
                 width={36}
               />
@@ -58,7 +58,7 @@ export default async function WakiesPage() {
             alt="Wakies"
             className="size-16 rounded-2xl object-cover shadow-sm"
             height={64}
-            src="/wakies/logo.PNG"
+            src="/wakies/logo.png"
             unoptimized
             width={64}
           />

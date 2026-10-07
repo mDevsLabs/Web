@@ -9,6 +9,7 @@ import {
   DEFAULT_CLOUD_MODEL,
   DEFAULT_LOCAL_MODEL,
 } from "./config-data";
+import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 
 export type ConfigModelOption = {
   id: string;
@@ -42,7 +43,7 @@ export function useConfigCatalog() {
       setKeysLoading(true);
       setKeysError(null);
       try {
-        const res = await fetch("/api/dev-keys", {
+        const res = await fetch(SITE_API_ROUTES.devKeys, {
           cache: "no-store",
           credentials: "include",
           headers: { Authorization: `Bearer ${token}` },
@@ -96,7 +97,7 @@ export function useConfigCatalog() {
           headers["x-mai-key-ref"] = selectedKeyRef;
           headers.Authorization = `Bearer ${token}`;
         }
-        const res = await fetch("/api/v1/models", {
+        const res = await fetch(SITE_API_ROUTES.models, {
           cache: selectedKeyRef ? "no-store" : "default",
           credentials: "include",
           headers,

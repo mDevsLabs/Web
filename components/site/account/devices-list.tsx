@@ -21,6 +21,7 @@ import { useCallback, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useAuth } from "@/components/site/auth-provider";
 import { formatDisplayDate } from "@/lib/site/date-format";
+import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 
 type Device = {
   id: string;
@@ -52,7 +53,7 @@ export function DevicesList() {
       if (!silent) setLoading(true);
       setIsRefreshing(true);
       try {
-        const res = await fetch("/api/v1/devices", {
+        const res = await fetch(SITE_API_ROUTES.devices, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -84,7 +85,7 @@ export function DevicesList() {
     if (!editName.trim()) return;
     setActionLoading(`rename-${id}`);
     try {
-      const res = await fetch(`/api/v1/devices/${id}`, {
+      const res = await fetch(SITE_API_ROUTES.device(id), {
         body: JSON.stringify({ device_name: editName.trim() }),
         headers: {
           Authorization: `Bearer ${token || ""}`,
@@ -113,7 +114,7 @@ export function DevicesList() {
   const handleDisconnect = async (device: Device) => {
     setActionLoading(`delete-${device.id}`);
     try {
-      const res = await fetch(`/api/v1/devices/${device.id}`, {
+      const res = await fetch(SITE_API_ROUTES.device(device.id), {
         headers: {
           Authorization: `Bearer ${token || ""}`,
         },
@@ -140,7 +141,7 @@ export function DevicesList() {
   const handleDisconnectOthers = async () => {
     setActionLoading("disconnect-others");
     try {
-      const res = await fetch("/api/v1/devices/others", {
+      const res = await fetch(SITE_API_ROUTES.devicesOthers, {
         headers: {
           Authorization: `Bearer ${token || ""}`,
         },
@@ -183,7 +184,7 @@ export function DevicesList() {
     setActionLoading(`block-${device.id}`);
     try {
       const newStatus = !device.is_blocked;
-      const res = await fetch(`/api/v1/devices/${device.id}`, {
+      const res = await fetch(SITE_API_ROUTES.device(device.id), {
         body: JSON.stringify({ is_blocked: newStatus }),
         headers: {
           Authorization: `Bearer ${token || ""}`,

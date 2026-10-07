@@ -183,7 +183,7 @@ export const archivedProjects: Project[] = [
       "Moteur de recherche sémantique et d'indexation vectorielle unifié.",
     iconKey: "search",
     id: "msearch",
-    image: "/site/msearch.PNG",
+    image: "/site/msearch.png",
     label: "Archivé",
     link: "/projects/msearch",
     name: "mSearch",

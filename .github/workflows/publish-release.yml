@@ -1,10 +1,10 @@
-# La publication s'exécute depuis la branche de confiance après le build.
-# Cela permet aussi les releases de PR externes sans exécuter leur code avec un jeton d'écriture.
-name: Publier la release du build
+# Note : la publication automatique de la release est intégrée directement
+# dans le workflow 'Build et déploiements' (.github/workflows/build.yml, job 'publish')
+# après validation complète de toutes les constructions de paquets et déploiements.
+# Ce workflow est conservé pour déclenchement manuel (workflow_dispatch) en cas de besoin.
+name: Publier la release du build (manuel)
 on:
-  workflow_run:
-    workflows: ["Build et déploiements"]
-    types: [completed]
+  workflow_dispatch:
 permissions:
   contents: read
   actions: read

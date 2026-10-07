@@ -23,7 +23,7 @@ export const VibeLogo: React.FC<VibeLogoProps> = ({
       <img
         alt="mAI Vibe Logo"
         className="w-full h-full object-contain p-1"
-        src="/vibe/logo.PNG"
+        src="/vibe/logo.png"
       />
     </div>
     {showText && (

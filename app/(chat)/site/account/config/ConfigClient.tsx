@@ -21,6 +21,7 @@ import {
   type ConfigTab,
   getConfigBaseUrl,
 } from "./config-data";
+import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import { useConfigCatalog } from "./useConfigCatalog";
 
 type TabType = ConfigTab;
@@ -92,7 +93,7 @@ export default function ConfigClient() {
         temperature,
       };
 
-      const res = await fetch("/api/account/api-executor", {
+      const res = await fetch(SITE_API_ROUTES.apiExecutor, {
         body: JSON.stringify({
           body: payload,
           keyRef: hostTarget === "ollama" ? undefined : selectedKeyRef,

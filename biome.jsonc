@@ -51,6 +51,18 @@
   // `useSortedKeys` les alphabétiserait et changerait cet ordre (le thème par
   // défaut ne serait plus le premier). Désactivé pour ce seul fichier.
   "overrides": [
+    // Le layout conserve la barre latérale pendant la navigation vers /site :
+    // un retour avant les hooks provoquerait l’erreur React #300.
+    {
+      "includes": ["components/chat/app-sidebar.tsx"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "useHookAtTopLevel": "error"
+          }
+        }
+      }
+    },
     // Vibe (porté de l'app Vite) : plusieurs tableaux de dépendances sont des
     // DÉCLENCHEURS volontaires — `[post.id, post.poll]` resynchronise un post
     // rechargé, `[resetKey]` relance un fil, `[nonce]` force un refetch,

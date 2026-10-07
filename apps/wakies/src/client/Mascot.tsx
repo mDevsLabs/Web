@@ -26,7 +26,7 @@ export function Mascot({
     <span className={`mascot ${state} ${small ? 'small' : ''}`}>
       <img
         className="dot-body"
-        src={`/wakies/${characterFor(identity)}.PNG`}
+        src={`/wakies/${characterFor(identity)}.png`}
         alt={decorative ? '' : `${name} is ${state}`}
         width={512}
         height={512}

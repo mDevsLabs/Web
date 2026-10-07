@@ -10,6 +10,7 @@ import { ModelNavigation } from "../shared/ModelNavigation";
 import { MaiModelFilters, useMaiModelFilters } from "./MaiModelFilters";
 import { MaiModelResults } from "./MaiModelResults";
 import type { MaiModelItem } from "./mai-model-types";
+import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 
 export default function ApiMaiModelsPage() {
   const { isAuthenticated, loading: authLoading } = useAuth();
@@ -28,7 +29,7 @@ export default function ApiMaiModelsPage() {
   const loadModels = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await fetch("/api/v1/models/mai", { cache: "no-store" });
+      const response = await fetch(SITE_API_ROUTES.modelsMai, { cache: "no-store" });
       const data = await response.json();
       if (!response.ok || !Array.isArray(data.data)) {
         throw new Error("Catalogue mAI invalide");

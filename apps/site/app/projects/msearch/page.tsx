@@ -51,7 +51,7 @@ export default function MsearchProjectPage() {
               className="w-20 h-20 md:w-28 md:h-28 rounded-3xl md:rounded-full bg-white/30 backdrop-blur-md border border-white/60 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] flex items-center justify-center p-4"
             >
               <Image
-                src="/msearch.PNG"
+                src="/msearch.png"
                 alt="mSearch logo"
                 width={112}
                 height={112}

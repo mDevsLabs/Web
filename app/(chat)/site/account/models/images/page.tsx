@@ -9,6 +9,7 @@ import { useModelCatalog } from "../shared/useModelCatalog";
 import { ImageModelFilters, useImageModelFilters } from "./ImageModelFilters";
 import { ImageModelResults } from "./ImageModelResults";
 import { getImageModelId, type ImageModelItem } from "./image-model-types";
+import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 
 export default function ApiImageModelsPage() {
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function ApiImageModelsPage() {
     setOpenModelId,
   } = useModelCatalog<ImageModelItem>({
     emptyError: "Impossible de récupérer la liste des modèles d'images.",
-    endpoint: "/api/v1/models/images",
+    endpoint: SITE_API_ROUTES.modelsImages,
     errorMessage: "Erreur lors de la récupération des modèles d'images.",
     getModelId: getImageModelId,
   });

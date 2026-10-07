@@ -9,6 +9,7 @@ import { useModelCatalog } from "./shared/useModelCatalog";
 import { TextModelFilters, useTextModelFilters } from "./text/TextModelFilters";
 import { TextModelResults } from "./text/TextModelResults";
 import { getTextModelId, type TextModelItem } from "./text/text-model-types";
+import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 
 export default function ApiModelsPage() {
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function ApiModelsPage() {
     setOpenModelId,
   } = useModelCatalog<TextModelItem>({
     emptyError: "Impossible de récupérer la liste des modèles.",
-    endpoint: "/api/v1/models",
+    endpoint: SITE_API_ROUTES.models,
     errorMessage: "Erreur lors de la récupération des modèles.",
     getModelId: getTextModelId,
   });

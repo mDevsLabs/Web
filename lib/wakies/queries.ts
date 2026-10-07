@@ -18,7 +18,7 @@ import "server-only";
  * pas d'existence.
  */
 
-import { and, asc, desc, eq, inArray, lte, or, sql } from "drizzle-orm";
+import { and, asc, desc, eq, inArray, lt, lte, or, sql } from "drizzle-orm";
 import { dbReady, getDb } from "@/lib/db/queries";
 import {
   wakiesCall,
@@ -821,7 +821,12 @@ export async function createTask(
   const db = getDb();
   const [row] = await db
     .insert(wakiesTask)
-    .values({ prompt: input.prompt, status: "queued", userId })
+    .values({
+      intervalSeconds: input.intervalSeconds ?? null,
+      prompt: input.prompt,
+      status: "queued",
+      userId,
+    })
     .returning();
   await db.insert(wakiesTaskEvent).values({
     runId: null,
@@ -966,10 +971,10 @@ export async function taskConversation(taskId: string): Promise<string | null> {
  * réservation est transactionnelle, donc deux ticks de cron concurrents ne
  * peuvent pas exécuter la même tâche.
  *
- * « Due » couvre les deux états qui doivent repartir : une tâche en file
- * (`queued`) et une tâche RÉUSSIE dont la prochaine exécution est atteinte
- * (`completed` avec `nextRunAt` passé). Sans ce second cas, une tâche répétée
- * ne se déclencherait qu'une fois.
+ * « Due » couvre trois états qui doivent être exécutés :
+ *  1. une tâche en file (`queued`) ;
+ *  2. une tâche RÉUSSIE dont la prochaine exécution est atteinte (`completed` avec `nextRunAt` passé) ;
+ *  3. une tâche EN COURS dont le bail a expiré (`running` avec `leaseUntil` passé — reprise après crash ou timeout du worker).
  */
 export async function claimDueTask(userId: string): Promise<{
   task: WakieTaskRow;
@@ -983,26 +988,28 @@ export async function claimDueTask(userId: string): Promise<{
   }
   const maintenant = new Date();
   return db.transaction(async (tx) => {
+    const isDueCondition = or(
+      eq(wakiesTask.status, "queued"),
+      and(
+        eq(wakiesTask.status, "completed"),
+        lte(wakiesTask.nextRunAt, maintenant)
+      ),
+      and(
+        eq(wakiesTask.status, "running"),
+        lt(wakiesTask.leaseUntil, maintenant)
+      )
+    );
+
     const [due] = await tx
       .select()
       .from(wakiesTask)
-      .where(
-        and(
-          eq(wakiesTask.userId, userId),
-          or(
-            eq(wakiesTask.status, "queued"),
-            and(
-              eq(wakiesTask.status, "completed"),
-              lte(wakiesTask.nextRunAt, maintenant)
-            )
-          )
-        )
-      )
+      .where(and(eq(wakiesTask.userId, userId), isDueCondition))
       .orderBy(asc(wakiesTask.createdAt))
       .limit(1);
     if (!due) {
       return null;
     }
+
     const [claimed] = await tx
       .update(wakiesTask)
       .set({
@@ -1013,22 +1020,29 @@ export async function claimDueTask(userId: string): Promise<{
         status: "running",
         updatedAt: maintenant,
       })
-      .where(
-        and(
-          eq(wakiesTask.id, due.id),
-          or(
-            eq(wakiesTask.status, "queued"),
-            and(
-              eq(wakiesTask.status, "completed"),
-              lte(wakiesTask.nextRunAt, maintenant)
-            )
-          )
-        )
-      )
+      .where(and(eq(wakiesTask.id, due.id), isDueCondition))
       .returning();
     if (!claimed) {
       return null;
     }
+
+    // Si la tâche était en cours d'exécution avec un bail expiré, clore l'ancien run
+    if (due.status === "running" && due.lease) {
+      await tx
+        .update(wakiesTaskRun)
+        .set({
+          error: "Bail d'exécution expiré (interrompu).",
+          finishedAt: maintenant,
+          status: "interrupted",
+        })
+        .where(
+          and(
+            eq(wakiesTaskRun.id, due.lease),
+            eq(wakiesTaskRun.status, "running")
+          )
+        );
+    }
+
     await tx.insert(wakiesTaskRun).values({
       id: claimed.lease ?? "",
       startedAt: maintenant,
@@ -1038,7 +1052,10 @@ export async function claimDueTask(userId: string): Promise<{
     await tx.insert(wakiesTaskEvent).values({
       runId: claimed.lease,
       taskId: claimed.id,
-      text: "Exécution de la tâche démarrée.",
+      text:
+        due.status === "running"
+          ? "Reprise de la tâche après expiration du bail."
+          : "Exécution de la tâche démarrée.",
     });
     return { lease: claimed.lease ?? "", task: claimed };
   });

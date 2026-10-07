@@ -34,7 +34,7 @@ function VibeGlyph({ className }: { className?: string }) {
       alt="Vibe"
       className={cn("size-4 rounded-sm object-contain dark:invert", className)}
       height={16}
-      src="/vibe/logo.PNG"
+      src="/vibe/logo.png"
       unoptimized
       width={16}
     />

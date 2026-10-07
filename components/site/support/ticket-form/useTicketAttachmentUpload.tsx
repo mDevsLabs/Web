@@ -9,6 +9,7 @@ import {
   type SupportAttachment,
 } from "@/app/(chat)/site/actions/support-utils";
 import type { AuthUser } from "@/components/site/auth-provider";
+import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 
 type UploadResponse = {
   success?: boolean;
@@ -82,7 +83,7 @@ export function useTicketAttachmentUpload(user: AuthUser | null) {
         form.append("file", file);
         // Pas de ticketId en création : le fichier reste pending jusqu'à l'envoi.
         try {
-          const response = await fetch("/api/support/upload", {
+          const response = await fetch(SITE_API_ROUTES.supportUpload, {
             body: form,
             method: "POST",
           });

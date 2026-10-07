@@ -54,7 +54,7 @@ export default function MsearchProjectPage() {
                 className="w-full h-full object-contain drop-shadow-md"
                 height={112}
                 priority
-                src="/site/msearch.PNG"
+                src="/site/msearch.png"
                 width={112}
               />
             </motion.div>

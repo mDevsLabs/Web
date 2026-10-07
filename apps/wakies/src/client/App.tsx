@@ -267,7 +267,7 @@ export function App() {
           }}
         >
           <img
-            src="/wakies/logo.PNG"
+            src="/wakies/logo.png"
             alt="Wakies"
             style={{ width: 22, height: 22, objectFit: 'contain' }}
           />
@@ -332,7 +332,7 @@ export function App() {
           }}
         >
           <img
-            src="/wakies/logo.PNG"
+            src="/wakies/logo.png"
             alt="Wakies"
             style={{ width: 22, height: 22, objectFit: 'contain', flexShrink: 0 }}
           />
