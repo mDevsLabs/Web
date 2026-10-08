@@ -4,10 +4,14 @@ import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 describe("Routes API Site (SITE_API_ROUTES)", () => {
   it("définit des chemins d'API tous préfixés par /api/site/", () => {
     expect(SITE_API_ROUTES.devKeys).toBe("/api/site/dev-keys");
-    expect(SITE_API_ROUTES.devKey("key_123")).toBe("/api/site/dev-keys/key_123");
+    expect(SITE_API_ROUTES.devKey("key_123")).toBe(
+      "/api/site/dev-keys/key_123"
+    );
     expect(SITE_API_ROUTES.apiExecutor).toBe("/api/site/account/api-executor");
     expect(SITE_API_ROUTES.devices).toBe("/api/site/v1/devices");
-    expect(SITE_API_ROUTES.device("dev_456")).toBe("/api/site/v1/devices/dev_456");
+    expect(SITE_API_ROUTES.device("dev_456")).toBe(
+      "/api/site/v1/devices/dev_456"
+    );
     expect(SITE_API_ROUTES.devicesOthers).toBe("/api/site/v1/devices/others");
     expect(SITE_API_ROUTES.models).toBe("/api/site/v1/models");
     expect(SITE_API_ROUTES.modelsAudio).toBe("/api/site/v1/models/audio");

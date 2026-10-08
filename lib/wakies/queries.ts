@@ -224,6 +224,8 @@ export async function createWakie(
     instructions: string;
     researchAllowed: boolean;
     memoryAllowed: boolean;
+    avatar?: string | null;
+    model?: string | null;
     learningContainerId?: string | null;
     skillDeliveryEnabled?: boolean;
   }
@@ -246,9 +248,11 @@ export async function createWakie(
     const [insere] = await tx
       .insert(wakiesWakie)
       .values({
+        avatar: input.avatar ?? null,
         instructions: input.instructions,
         learningContainerId: input.learningContainerId ?? null,
         memoryAllowed: input.memoryAllowed,
+        model: input.model ?? null,
         name: input.name,
         researchAllowed: input.researchAllowed,
         skillDeliveryEnabled: input.skillDeliveryEnabled ?? false,
@@ -272,6 +276,8 @@ export async function updateWakie(
     instructions: string;
     researchAllowed: boolean;
     memoryAllowed: boolean;
+    avatar?: string | null;
+    model?: string | null;
     spaceId?: string;
     spaceIds?: string[];
     learningContainerId?: string | null;
@@ -301,12 +307,14 @@ export async function updateWakie(
     const [misAJour] = await tx
       .update(wakiesWakie)
       .set({
+        avatar: patch.avatar === undefined ? actuel.avatar : patch.avatar,
         instructions: patch.instructions,
         learningContainerId:
           patch.learningContainerId === undefined
             ? actuel.learningContainerId
             : patch.learningContainerId,
         memoryAllowed: patch.memoryAllowed,
+        model: patch.model === undefined ? actuel.model : patch.model,
         name: patch.name,
         researchAllowed: patch.researchAllowed,
         skillDeliveryEnabled:
@@ -324,6 +332,27 @@ export async function updateWakie(
     return [misAJour];
   });
   return { ...row, spaceIds };
+}
+
+/**
+ * Supprime un Wakie du compte. Conversations, messages, appels, captures et
+ * accès aux espaces partent en cascade (clés étrangères `on delete cascade`) :
+ * rien à nettoyer à la main, et un identifiant d'un autre compte n'efface rien.
+ *
+ * Le DERNIER Wakie peut être supprimé : l'interface affiche alors l'écran
+ * « aucun Wakie » et propose d'en créer un, plutôt que de ressusciter un
+ * Wakie de départ que l'utilisateur vient de retirer.
+ */
+export async function deleteWakie(
+  userId: string,
+  wakieId: string
+): Promise<boolean> {
+  await dbReady();
+  const rows = await getDb()
+    .delete(wakiesWakie)
+    .where(and(eq(wakiesWakie.id, wakieId), eq(wakiesWakie.userId, userId)))
+    .returning({ id: wakiesWakie.id });
+  return rows.length > 0;
 }
 
 /** Le Wakie a-t-il le droit d'écrire dans cet espace ? */
@@ -363,7 +392,7 @@ export async function listConversations(
 
 export async function createConversation(
   userId: string,
-  input: { wakieId: string; title: string }
+  input: { wakieId: string; title: string; model?: string | null }
 ): Promise<WakieConversationRow> {
   await dbReady();
   const wakie = await findWakie(userId, input.wakieId);
@@ -374,12 +403,52 @@ export async function createConversation(
     .insert(wakiesConversation)
     .values({
       learningContainerId: wakie.learningContainerId ?? null,
+      // Le modèle du Wakie est le DÉFAUT de ses nouvelles conversations ; la
+      // conversation en garde une copie, donc changer le Wakie ne réécrit pas
+      // le modèle des fils existants (et donc leur facturation).
+      model: input.model ?? wakie.model ?? null,
       title: input.title,
       userId,
       wakieId: input.wakieId,
     })
     .returning();
   return row;
+}
+
+/**
+ * Met à jour une conversation du compte (titre et/ou modèle IA).
+ *
+ * Les champs absents ne sont pas touchés : le renommage et le choix du modèle
+ * sont deux gestes indépendants, et un PATCH qui n'en porte qu'un ne doit pas
+ * écraser l'autre. `model: null` revient au modèle du Wakie (puis au défaut) :
+ * c'est un choix explicite, pas une absence de valeur.
+ */
+export async function updateConversation(
+  userId: string,
+  conversationId: string,
+  patch: { title?: string; model?: string | null }
+): Promise<WakieConversationRow | null> {
+  await dbReady();
+  const changes: { title?: string; model?: string | null; updatedAt: Date } = {
+    updatedAt: new Date(),
+  };
+  if (patch.title !== undefined) {
+    changes.title = patch.title;
+  }
+  if (patch.model !== undefined) {
+    changes.model = patch.model;
+  }
+  const [row] = await getDb()
+    .update(wakiesConversation)
+    .set(changes)
+    .where(
+      and(
+        eq(wakiesConversation.id, conversationId),
+        eq(wakiesConversation.userId, userId)
+      )
+    )
+    .returning();
+  return row ?? null;
 }
 
 /** Conversation du compte, ou `null` — le garde-fou d'isolation du port. */

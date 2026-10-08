@@ -1,0 +1,139 @@
+/* ============================================================================
+ * WAKIES — CONTRÔLES DE L'HÔTE (écrit à la main, hors script de build)
+ * ============================================================================
+ *
+ * POURQUOI CE FICHIER EXISTE
+ *
+ * Le thème Wakies re-style les `button` nus (fond blanc, bordure, padding,
+ * `font: inherit`). Ces règles viennent de la feuille GÉNÉRÉE et ne sont pas
+ * dans un `@layer` : elles l'emportent donc sur les classes Tailwind des
+ * composants de l'hôte, qui vivent dans `@layer utilities`. Un composant
+ * partagé (le sélecteur de modèle du Chat et du mode Agent) monté tel quel dans
+ * /wakies perdrait ses classes de fond et de padding.
+ *
+ * Ce fichier ne modifie PAS la feuille générée : il ne porte que ce que
+ * l'HÔTE ajoute à Wakies — le sélecteur de modèle (`.wakies-model-picker`), la
+ * galerie de mascottes du dialogue (`.avatar-picker`) et la zone de
+ * suppression d'un Wakie (`.dialog-danger-zone`). Ces contrôles n'existent pas
+ * dans le gabarit, ils n'ont donc rien à faire dans sa feuille : ils sont
+ * écrits ici, dans les jetons du thème Wakies (`--ink`, `--muted`, `--line`,
+ * `--blue`, `--lavender`). Le MENU de modèles lui-même — le contenu du popover
+ * — est porté dans `document.body`, donc hors `.wakies-root` : il garde
+ * exactement l'apparence du Chat et du mode Agent, c'est voulu.
+ *
+ * Importé par app/(wakies)/wakies/layout.tsx, après les deux feuilles générées.
+ * ============================================================================ */
+
+.wakies-root .wakies-model-picker {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.wakies-root .wakies-model-picker button {
+  gap: 6px;
+  max-width: 190px;
+  padding: 6px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted, #8c8d97);
+  background: none;
+  border: 1px solid transparent;
+}
+
+.wakies-root .wakies-model-picker button:hover:not(:disabled) {
+  color: var(--ink, #333641);
+  background: #f1f0ed;
+  border-color: var(--line, #e9e8e6);
+}
+
+/* Champ de formulaire (dialogue du Wakie) : le sélecteur y prend la place d'un
+   `select` — même largeur, même fond que les champs voisins. */
+.wakies-root .wakies-model-picker.block {
+  display: block;
+  width: 100%;
+}
+
+.wakies-root .wakies-model-picker.block button {
+  width: 100%;
+  background: white;
+  border-color: var(--line, #e9e8e6);
+}
+
+/* ------------------------------------------------------------------ */
+/* Galerie de mascottes (création / édition d'un Wakie)               */
+/* ------------------------------------------------------------------ */
+
+.wakies-root .avatar-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.wakies-root .avatar-choice {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  cursor: pointer;
+  background: white;
+  border: 1px solid var(--line, #e9e8e6);
+  border-radius: 12px;
+}
+
+.wakies-root .avatar-choice input {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.wakies-root .avatar-choice img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.wakies-root .avatar-choice.active {
+  border-color: var(--blue, #7285d5);
+  box-shadow: 0 0 0 2px var(--lavender, #eeeffa);
+}
+
+/* ------------------------------------------------------------------ */
+/* Suppression d'un Wakie                                             */
+/* ------------------------------------------------------------------ */
+
+.wakies-root .dialog-danger-zone {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  margin-top: 16px;
+  border-top: 1px solid var(--line, #e9e8e6);
+}
+
+.wakies-root .dialog-danger-zone strong {
+  font-size: 12px;
+}
+
+.wakies-root .dialog-danger-zone p {
+  max-width: 330px;
+  margin: 4px 0 0;
+  font-size: 11px;
+}
+
+/* Seule couleur portée par une information : l'action est destructive. Le
+   jeton --destructive est celui du design system mAI (défini sur :root), donc
+   disponible ici sans introduire une seconde palette. */
+.wakies-root .dialog-danger-zone .danger {
+  flex-shrink: 0;
+  color: var(--destructive, #c0553f);
+  border-color: var(--destructive, #c0553f);
+}
+
+.wakies-root .dialog-danger-zone .danger:hover:not(:disabled) {
+  background: color-mix(in oklab, var(--destructive, #c0553f) 12%, white);
+}

@@ -721,7 +721,7 @@ jobs:
           arch: x64
       - name: 📥 Installer les dépendances
         shell: pwsh
-        run: pnpm install --frozen-lockfile --ignore-scripts || pnpm install --ignore-scripts
+        run: pnpm install --frozen-lockfile --ignore-scripts || pnpm install --no-frozen-lockfile --ignore-scripts
       - name: 🧹 Supprimer cpu-features (dépendance optionnelle ssh2)
         shell: pwsh
         run: |

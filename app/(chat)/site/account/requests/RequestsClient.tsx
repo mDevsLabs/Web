@@ -16,6 +16,7 @@ import {
   type RouteDefinition,
 } from "@/lib/site/api-key-routes";
 import type { ApiKeyMetadata } from "@/lib/site/api-key-types";
+import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import { RequestCodePanel } from "./RequestCodePanel";
 import { RequestKeySelector } from "./RequestKeySelector";
 import { RequestResponsePanel } from "./RequestResponsePanel";
@@ -24,7 +25,6 @@ import {
   computeRequestTargetUrl,
   type RequestCodeTab,
 } from "./request-snippets";
-import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 
 const ROUTE_DEFINITIONS = API_ROUTE_DEFINITIONS;
 export default function RequestsClient() {

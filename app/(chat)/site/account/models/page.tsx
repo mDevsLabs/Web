@@ -3,13 +3,13 @@
 import { Loader2, RefreshCw } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import { KeyCatalogBanner } from "./shared/KeyCatalogBanner";
 import { ModelNavigation } from "./shared/ModelNavigation";
 import { useModelCatalog } from "./shared/useModelCatalog";
 import { TextModelFilters, useTextModelFilters } from "./text/TextModelFilters";
 import { TextModelResults } from "./text/TextModelResults";
 import { getTextModelId, type TextModelItem } from "./text/text-model-types";
-import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 
 export default function ApiModelsPage() {
   const router = useRouter();

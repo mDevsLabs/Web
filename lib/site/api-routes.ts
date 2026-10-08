@@ -4,29 +4,16 @@
  */
 
 export const SITE_API_ROUTES = {
-  // Clés API de développement
-  devKeys: "/api/site/dev-keys",
-  devKey: (id: string) => `/api/site/dev-keys/${encodeURIComponent(id)}`,
-
   // Exécuteur de requêtes API
   apiExecutor: "/api/site/account/api-executor",
+  device: (id: string) => `/api/site/v1/devices/${encodeURIComponent(id)}`,
 
   // Appareils connectés
   devices: "/api/site/v1/devices",
-  device: (id: string) => `/api/site/v1/devices/${encodeURIComponent(id)}`,
   devicesOthers: "/api/site/v1/devices/others",
-
-  // Modèles
-  models: "/api/site/v1/models",
-  modelsAudio: "/api/site/v1/models/audio",
-  modelsImages: "/api/site/v1/models/images",
-  modelsMai: "/api/site/v1/models/mai",
-
-  // Statut des services
-  status: "/api/site/v1/status",
-
-  // Support
-  supportUpload: "/api/site/support/upload",
+  devKey: (id: string) => `/api/site/dev-keys/${encodeURIComponent(id)}`,
+  // Clés API de développement
+  devKeys: "/api/site/dev-keys",
 
   // GitHub BFF
   githubActivity: (repo?: string) =>
@@ -39,4 +26,16 @@ export const SITE_API_ROUTES = {
     }`,
   githubStats: (repo: string) =>
     `/api/site/github/stats?repo=${encodeURIComponent(repo)}`,
+
+  // Modèles
+  models: "/api/site/v1/models",
+  modelsAudio: "/api/site/v1/models/audio",
+  modelsImages: "/api/site/v1/models/images",
+  modelsMai: "/api/site/v1/models/mai",
+
+  // Statut des services
+  status: "/api/site/v1/status",
+
+  // Support
+  supportUpload: "/api/site/support/upload",
 } as const;

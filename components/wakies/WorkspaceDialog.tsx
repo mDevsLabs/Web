@@ -1,7 +1,14 @@
 "use client";
 
-import { X } from "lucide-react";
+import { Trash2, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
+import { resolveWakieModelId } from "@/lib/wakies/model";
+import {
+  DEFAULT_WAKIE_AVATAR,
+  isWakieAvatar,
+  WAKIE_AVATARS,
+} from "@/lib/wakies/shared/avatars";
 import type {
   Memory,
   State,
@@ -52,6 +59,17 @@ export function WorkspaceDialog({
   );
   const [defaultSpace, setDefaultSpace] = useState(
     dialog.type === "wakie" ? (dialog.wakie?.spaceId ?? dialog.spaceId) : ""
+  );
+  // Mascotte et modèle : deux réglages propres au Wakie. Le modèle est le
+  // DÉFAUT de ses nouvelles conversations ; la conversation peut le changer
+  // ensuite, depuis le menu de l'en-tête du chat.
+  const [avatar, setAvatar] = useState<string>(
+    dialog.type === "wakie" && isWakieAvatar(dialog.wakie?.avatar)
+      ? dialog.wakie.avatar
+      : DEFAULT_WAKIE_AVATAR
+  );
+  const [model, setModel] = useState(() =>
+    resolveWakieModelId(dialog.type === "wakie" ? dialog.wakie?.model : null)
   );
   const [interval, setInterval] = useState("86400");
   const [learningContainer, setLearningContainer] = useState(
@@ -144,9 +162,11 @@ export function WorkspaceDialog({
               path = dialog.wakie ? `/wakies/${dialog.wakie.id}` : "/wakies";
               method = dialog.wakie ? "PUT" : "POST";
               body = {
+                avatar,
                 instructions: text,
                 learningContainerId: learningContainer.trim() || null,
                 memoryAllowed: memory,
+                model,
                 name,
                 researchAllowed: research,
                 skillDeliveryEnabled: skillDelivery,
@@ -221,6 +241,54 @@ export function WorkspaceDialog({
                 value={text}
               />
             </>
+          )}
+          {dialog.type === "wakie" && (
+            <fieldset className="space-access-fields">
+              <legend>Mascotte</legend>
+              <p className="muted">
+                Choisissez le visage de ce Wakie. Il apparaît dans la
+                navigation, l'en-tête du chat et les conversations.
+              </p>
+              <div className="avatar-picker">
+                {WAKIE_AVATARS.map((choice) => (
+                  <label
+                    className={`avatar-choice ${avatar === choice ? "active" : ""}`}
+                    key={choice}
+                  >
+                    <input
+                      checked={avatar === choice}
+                      name="wakie-avatar"
+                      onChange={() => setAvatar(choice)}
+                      type="radio"
+                      value={choice}
+                    />
+                    <img
+                      alt=""
+                      height={64}
+                      src={`/wakies/${choice}.png`}
+                      width={64}
+                    />
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+          )}
+          {dialog.type === "wakie" && (
+            <fieldset className="space-access-fields">
+              <legend>Modèle IA</legend>
+              <p className="muted">
+                Le modèle par défaut de ses nouvelles conversations. Le même
+                menu que dans le Chat et le mode Agent.
+              </p>
+              <span className="wakies-model-picker block">
+                <ModelSelectorCompact
+                  modal
+                  onModelChange={setModel}
+                  selectedModelId={model}
+                  variant="block"
+                />
+              </span>
+            </fieldset>
           )}
           {dialog.type === "wakie" && (
             <fieldset className="space-access-fields">
@@ -412,6 +480,44 @@ export function WorkspaceDialog({
             {busy ? "Enregistrement…" : "Enregistrer"}
           </button>
         </form>
+        {dialog.type === "wakie" && dialog.wakie && (
+          <div className="dialog-danger-zone">
+            <div>
+              <strong>Supprimer « {dialog.wakie.name} »</strong>
+              <p className="muted">
+                Ses conversations et ses messages partent avec lui. Les pages
+                déjà enregistrées dans vos Espaces restent en place.
+              </p>
+            </div>
+            <button
+              className="danger"
+              disabled={busy}
+              onClick={async () => {
+                if (
+                  !window.confirm(
+                    `Supprimer définitivement « ${dialog.wakie?.name} » et toutes ses conversations ?`
+                  )
+                ) {
+                  return;
+                }
+                setBusy(true);
+                setError("");
+                if (await mutate(`/wakies/${dialog.wakie?.id}`, "DELETE")) {
+                  onClose();
+                } else {
+                  setError(
+                    "Suppression impossible. Vérifiez l'erreur de l'espace de travail et réessayez."
+                  );
+                }
+                setBusy(false);
+              }}
+              type="button"
+            >
+              <Trash2 size={15} />
+              Supprimer ce Wakie
+            </button>
+          </div>
+        )}
       </section>
     </div>
   );

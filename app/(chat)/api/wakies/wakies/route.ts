@@ -9,6 +9,7 @@ import {
   toErrorResponse,
 } from "@/lib/wakies/http";
 import { createWakie, listWakies } from "@/lib/wakies/queries";
+import { WAKIE_AVATARS } from "@/lib/wakies/shared/avatars";
 
 /**
  * POST /api/wakies/wakies — création d'un Wakie.
@@ -20,6 +21,8 @@ import { createWakie, listWakies } from "@/lib/wakies/queries";
 
 const schema = z
   .object({
+    // Mascotte choisie parmi les images de /wakies ; absente = défaut.
+    avatar: z.enum(WAKIE_AVATARS).nullable().optional(),
     instructions: z.string().trim().min(3).max(2000),
     // Conteneur d'apprentissage Intelligence : hors périmètre du port, il est
     // conservé pour ne pas perdre la donnée si un compte l'exploite.
@@ -31,6 +34,10 @@ const schema = z
       .nullable()
       .optional(),
     memoryAllowed: z.boolean(),
+    // Modèle IA par défaut des nouvelles conversations. Le catalogue des
+    // modèles est dynamique (API mAI) : on borne la forme, l'accès est tranché
+    // par le backend au moment de l'appel.
+    model: z.string().trim().min(1).max(200).nullable().optional(),
     name: z.string().trim().min(1).max(40),
     researchAllowed: z.boolean(),
     skillDeliveryEnabled: z.boolean().optional(),

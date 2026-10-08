@@ -3,13 +3,13 @@
 import { Loader2, RefreshCw } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import { KeyCatalogBanner } from "../shared/KeyCatalogBanner";
 import { ModelNavigation } from "../shared/ModelNavigation";
 import { useModelCatalog } from "../shared/useModelCatalog";
 import { ImageModelFilters, useImageModelFilters } from "./ImageModelFilters";
 import { ImageModelResults } from "./ImageModelResults";
 import { getImageModelId, type ImageModelItem } from "./image-model-types";
-import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 
 export default function ApiImageModelsPage() {
   const router = useRouter();

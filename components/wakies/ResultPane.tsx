@@ -180,6 +180,7 @@ export function ResultPane({
       ) : (
         <div className="pane-empty">
           <Mascot
+            avatar={wakies.find((wakie) => wakie.id === defaultWakieId)?.avatar}
             identity={defaultWakieId}
             name={wakies.find((wakie) => wakie.id === defaultWakieId)?.name}
             state={wakieState}

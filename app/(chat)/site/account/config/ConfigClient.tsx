@@ -16,12 +16,12 @@ import {
 import { useState } from "react";
 import toast from "react-hot-toast";
 import Link from "@/components/site/router";
+import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import {
   buildConfigSnippet,
   type ConfigTab,
   getConfigBaseUrl,
 } from "./config-data";
-import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import { useConfigCatalog } from "./useConfigCatalog";
 
 type TabType = ConfigTab;

@@ -75,11 +75,15 @@ export interface Space {
   name: string;
 }
 export interface Wakie {
+  /** Mascotte choisie (`/wakies/<avatar>.png`) ; null = déduite de l'id. */
+  avatar?: string | null;
   createdAt: number;
   id: string;
   instructions: string;
   learningContainerId?: string | null;
   memoryAllowed: boolean;
+  /** Modèle IA par défaut des nouvelles conversations ; null = défaut mAI. */
+  model?: string | null;
   name: string;
   researchAllowed: boolean;
   skillDeliveryEnabled?: boolean;
@@ -92,6 +96,8 @@ export interface Conversation {
   id: string;
   /** Frozen at creation; null means this conversation does not participate. */
   learningContainerId?: string | null;
+  /** Modèle IA de cette conversation ; null = modèle du Wakie, puis défaut. */
+  model?: string | null;
   ownerId: string;
   title: string;
   wakieId: string;

@@ -1,8 +1,5 @@
-import { eq } from "drizzle-orm";
 import { z } from "zod";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
-import { dbReady, getDb } from "@/lib/db/queries";
-import { wakiesConversation } from "@/lib/db/schema";
 import {
   isResponse,
   json,
@@ -10,14 +7,30 @@ import {
   requireWakiesUser,
   toErrorResponse,
 } from "@/lib/wakies/http";
-import { deleteConversation, findConversation } from "@/lib/wakies/queries";
+import {
+  deleteConversation,
+  findConversation,
+  updateConversation,
+} from "@/lib/wakies/queries";
 
 /**
- * PATCH  /api/wakies/conversations/:id — renommage.
+ * PATCH  /api/wakies/conversations/:id — renommage et modèle IA.
  * DELETE /api/wakies/conversations/:id — suppression (messages inclus, en cascade).
+ *
+ * Le modèle se choisit dans l'en-tête du chat, comme dans le Chat principal :
+ * `null` est un choix explicite (« revenir au modèle du Wakie »), pas une
+ * absence de valeur — d'où un schéma qui distingue `undefined` de `null`.
  */
 
-const schema = z.object({ title: z.string().trim().min(1).max(120) }).strict();
+const schema = z
+  .object({
+    model: z.string().trim().min(1).max(200).nullable().optional(),
+    title: z.string().trim().min(1).max(120).optional(),
+  })
+  .strict()
+  .refine((value) => value.title !== undefined || value.model !== undefined, {
+    message: "Rien à modifier : précisez un titre ou un modèle.",
+  });
 
 export async function PATCH(
   request: Request,
@@ -34,15 +47,10 @@ export async function PATCH(
       message: zodIssuesMessage(parsed.error),
     });
   }
-  if (!(await findConversation(identite.userId, id))) {
+  const row = await updateConversation(identite.userId, id, parsed.data);
+  if (!row) {
     return notFound("Conversation introuvable.");
   }
-  await dbReady();
-  const [row] = await getDb()
-    .update(wakiesConversation)
-    .set({ title: parsed.data.title, updatedAt: new Date() })
-    .where(eq(wakiesConversation.id, id))
-    .returning();
   return json(row);
 }
 

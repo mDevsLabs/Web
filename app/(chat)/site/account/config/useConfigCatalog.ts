@@ -3,13 +3,13 @@
 import { useEffect, useMemo, useState } from "react";
 import { useAuth } from "@/components/site/auth-provider";
 import type { ApiKeyMetadata } from "@/lib/site/api-key-types";
+import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import { maiModelsList } from "@/lib/site/mai-models";
 import {
   type ConfigHostTarget,
   DEFAULT_CLOUD_MODEL,
   DEFAULT_LOCAL_MODEL,
 } from "./config-data";
-import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 
 export type ConfigModelOption = {
   id: string;

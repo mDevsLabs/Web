@@ -21,6 +21,7 @@ import {
   X,
 } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { AppSwitcherMenu } from "@/components/common/app-switcher";
 import { ApiError, api } from "@/components/wakies/api";
 import { Chat } from "@/components/wakies/Chat";
 import { Mascot } from "@/components/wakies/Mascot";
@@ -304,23 +305,71 @@ export function WakiesWorkspace() {
         </div>
       </main>
     );
+  if (!wakie) {
+    // Tous les Wakies ont été supprimés : l'écran doit le DIRE et proposer le
+    // geste suivant. Rester sur « Chargement de vos Wakies… » ferait croire à
+    // une panne, et ressusciter un Wakie de départ ignorerait le choix de
+    // l'utilisateur (voir lib/wakies/queries.ts, deleteWakie).
+    const space = workspace.spaces[0];
+    return (
+      <div className="app template-app">
+        <main className="unlock">
+          <Mascot />
+          <h1>Aucun Wakie pour l’instant</h1>
+          <p>
+            Un Wakie est un spécialiste : donnez-lui un rôle, une mascotte et un
+            modèle, puis ouvrez la conversation. Vos Espaces et vos pages
+            restent en place.
+          </p>
+          <button
+            className="primary"
+            onClick={() =>
+              space
+                ? setDialog({ spaceId: space.id, type: "wakie" })
+                : setDialog({ type: "space" })
+            }
+          >
+            {space ? "Créer un Wakie" : "Créer un Espace"}
+          </button>
+          {error && (
+            <p className="chat-error" role="alert">
+              {error}
+            </p>
+          )}
+        </main>
+        {dialog && (
+          <WorkspaceDialog
+            dialog={dialog}
+            mutate={mutate}
+            onClose={() => setDialog(undefined)}
+            state={state}
+            workspace={workspace}
+          />
+        )}
+      </div>
+    );
+  }
   const content = (
     <div className={`app template-app ${navCollapsed ? "nav-collapsed" : ""}`}>
       <nav aria-label="Navigation de l’espace de travail" className="icon-rail">
-        <button
-          aria-label="Accueil Wakies"
-          className="rail-brand"
-          onClick={() => {
-            setView("chat");
-            setSelectedThread(undefined);
-          }}
-        >
-          <img
-            alt="Wakies"
-            className="size-5.5 object-contain"
-            src="/wakies/logo.png"
-          />
-        </button>
+        {/* Le logo n'est plus un simple retour à l'accueil : il ouvre le menu
+            des espaces de mAI (mAI, Site, Vibe, Coder, CLI). Wakies n'appartient
+            pas au catalogue, donc AUCUNE entrée n'est marquée « courante » —
+            celle de mAI reste cliquable, sinon on ne pourrait plus revenir au
+            chat depuis /wakies. */}
+        <AppSwitcherMenu align="start" currentAppOverride={null} side="right">
+          <button
+            aria-label="Changer d’espace de travail"
+            className="rail-brand"
+            type="button"
+          >
+            <img
+              alt=""
+              className="size-5.5 object-contain"
+              src="/wakies/logo.png"
+            />
+          </button>
+        </AppSwitcherMenu>
         <button
           aria-label={
             navCollapsed
@@ -421,7 +470,13 @@ export function WakiesWorkspace() {
                 className={`wakie-nav ${wakie.id === item.id && view === "chat" ? "active" : ""}`}
                 onClick={() => chooseWakie(item)}
               >
-                <Mascot decorative identity={item.id} name={item.name} small />
+                <Mascot
+                  avatar={item.avatar}
+                  decorative
+                  identity={item.id}
+                  name={item.name}
+                  small
+                />
                 <span>{item.name}</span>
               </button>
               <button
@@ -658,6 +713,7 @@ export function WakiesWorkspace() {
                 <div className="new-conversation">
                   <div className="empty-chat-persona">
                     <Mascot
+                      avatar={wakie.avatar}
                       identity={wakie.id}
                       name={wakie.name}
                       state={state.settings.paused ? "paused" : "idle"}

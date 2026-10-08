@@ -62,7 +62,7 @@ describe("Authentification Site — resolveSessionIdentity et authenticateSessio
       .mockResolvedValue({
         email: "mathias@mai.dev",
         id: "user_remote_789",
-        limit: 100000,
+        limit: 100_000,
         tier: "Max",
         tokensUsed: 120,
         username: "mathias",

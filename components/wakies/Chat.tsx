@@ -35,6 +35,7 @@ import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, type UIMessage } from "ai";
 import { ArrowUp, Clock3, FilePlus, Link2, Square, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { ModelSelectorCompact } from "@/components/chat/model-selector-compact";
 import { api } from "@/components/wakies/api";
 import { ChatTranscript } from "@/components/wakies/ChatTranscript";
 import { Mascot } from "@/components/wakies/Mascot";
@@ -42,6 +43,7 @@ import {
   contextualMessage,
   type PageContext,
 } from "@/components/wakies/page-context";
+import { resolveWakieModelId } from "@/lib/wakies/model";
 import type { Page } from "@/lib/wakies/pages";
 import type {
   CallReceipt,
@@ -149,6 +151,11 @@ function WakieChat({
   const [pageContext, setPageContext] = useState<
     PageContext | null | undefined
   >(undefined);
+  // Modèle de CE fil : la conversation d'abord (choix du menu), sinon celui du
+  // Wakie, sinon le défaut. C'est exactement l'ordre que le serveur applique.
+  const [modelId, setModelId] = useState(() =>
+    resolveWakieModelId(thread.model, wakie.model)
+  );
   const [draft, setDraft] = useState("");
   const [source, setSource] = useState("");
   const [sourceOpen, setSourceOpen] = useState(false);
@@ -167,6 +174,12 @@ function WakieChat({
 
   const { messages, sendMessage, status, stop } = useChat({
     id: thread.id,
+    // L'historique est fourni ICI, à la création du chat : `useChat` le lit une
+    // fois, et le composant n'est monté qu'une fois l'historique chargé (le
+    // parent le remonte par `key` à chaque changement de conversation). Sans
+    // lui, l'historique s'affichait vide après un rechargement et le tour
+    // suivant repartait sans contexte.
+    messages: historique,
     onError: (erreur) =>
       setErreur(
         erreur.message ||
@@ -175,6 +188,30 @@ function WakieChat({
     onFinish: onSaved,
     transport,
   });
+
+  // Changement de modèle : écrit sur la CONVERSATION (comme le Chat principal
+  // garde le modèle choisi dans son fil). L'affichage suit immédiatement ; en
+  // cas d'échec, on revient au modèle précédent plutôt que de laisser croire
+  // que le choix est enregistré.
+  const changerModele = useCallback(
+    async (next: string) => {
+      const precedent = modelId;
+      setErreur("");
+      setModelId(next);
+      try {
+        await api(`/conversations/${thread.id}`, "PATCH", { model: next });
+        onSaved();
+      } catch (e) {
+        setModelId(precedent);
+        setErreur(
+          e instanceof Error
+            ? e.message
+            : "Le modèle n'a pas pu être enregistré."
+        );
+      }
+    },
+    [modelId, onSaved, thread.id]
+  );
 
   // Contexte de page : la conversation sait-elle quelle page elle édite ?
   useEffect(() => {
@@ -236,6 +273,7 @@ function WakieChat({
     <div className="live-chat">
       <header className="chat-persona">
         <Mascot
+          avatar={wakie.avatar}
           identity={wakie.id}
           name={wakie.name}
           small
@@ -254,6 +292,12 @@ function WakieChat({
           </span>
         </div>
         <div className="chat-persona-actions">
+          <span className="wakies-model-picker">
+            <ModelSelectorCompact
+              onModelChange={(next) => void changerModele(next)}
+              selectedModelId={modelId}
+            />
+          </span>
           <button
             aria-label="Enregistrer la conversation en page"
             className="icon-button"

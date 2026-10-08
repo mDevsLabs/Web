@@ -6,7 +6,7 @@ import {
   type UIMessage,
 } from "ai";
 import { z } from "zod";
-import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
+import { readReasoningTokens, resolveBillableTotal } from "@/lib/agent/usage";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { webSearch } from "@/lib/ai/tools/web-search";
 import { errorResponse } from "@/lib/api/error-response";
@@ -16,8 +16,9 @@ import {
   enforceChatRateLimit,
   weeklyQuotaExceeded,
 } from "@/lib/chat/auth";
-import { MAI_UPGRADE_URL } from "@/lib/constants";
+import { MAI_API_URL, MAI_UPGRADE_URL } from "@/lib/constants";
 import { recordTokenUsage } from "@/lib/db/queries";
+import { resolveWakieModelId } from "@/lib/wakies/model";
 import {
   appendMessages,
   ensureSettings,
@@ -62,6 +63,24 @@ import {
  * OUTIL de recherche Web (`webSearch`) qui interroge l'API mAI avec repli
  * DuckDuckGo/Searx : il est réutilisé tel quel, et n'est proposé au modèle que
  * si le compte a accordé la recherche (`researchAllowed`).
+ *
+ * LE MODÈLE EST CELUI QUE L'UTILISATEUR A CHOISI
+ *
+ * Le gabarit et la première version du port appelaient le modèle par défaut
+ * codé en dur : impossible de choisir, et le journal d'usage portait toujours
+ * le même identifiant. Le modèle vient maintenant de la conversation (menu de
+ * l'en-tête du chat, comme dans le Chat principal) puis du Wakie, puis du
+ * défaut — et c'est CE modèle qui est journalisé, en base ET via `/log-usage`.
+ *
+ * L'IDENTIFIANT DE RÉPONSE EST GÉNÉRÉ EXPLICITEMENT
+ *
+ * Sans `generateMessageId`, l'AI SDK émet un chunk `start` SANS `messageId` et
+ * `responseMessage.id` vaut la chaîne vide : la réponse était écrite en base
+ * avec une clé primaire vide, donc la PREMIÈRE seulement (les suivantes
+ * tombaient en conflit silencieux et l'historique ne conservait qu'une réponse
+ * assistant par conversation). Le chat principal passe par
+ * `createUIMessageStream({ generateId })` ; ici l'identifiant est fourni au
+ * flux de réponse, ce qui rend la persistance idempotente ET complète.
  */
 
 export const maxDuration = 300;
@@ -184,7 +203,11 @@ export async function POST(request: Request) {
     page: page ? { contenu: page.content, title: page.title } : null,
   })}${consigneSource}`;
 
-  const model = getLanguageModel(DEFAULT_CHAT_MODEL, {
+  // Modèle de CETTE conversation, sinon du Wakie, sinon défaut : c'est le
+  // choix fait dans le menu de modèle (le même composant que le Chat et le
+  // mode Agent), appliqué à l'appel réel.
+  const modelId = resolveWakieModelId(conversation.model, wakie.model);
+  const model = getLanguageModel(modelId, {
     sessionToken: auth.sessionToken,
     userId: auth.userId,
   });
@@ -201,15 +224,65 @@ export async function POST(request: Request) {
       // donc un Wakie ne peut pas être « gratuit » à côté du chat. La clé
       // d'idempotence porte l'identifiant du tour, généré à la requête : un
       // rejeu du même flux ne sera pas compté deux fois.
-      void recordTokenUsage({
-        idempotencyKey: `wakies:${conversationId}:${turnId}`,
-        inputTokens: usage.inputTokens ?? 0,
-        model: DEFAULT_CHAT_MODEL,
-        outputTokens: usage.outputTokens ?? 0,
+      const inputTokens = usage.inputTokens ?? 0;
+      const outputTokens = usage.outputTokens ?? 0;
+      // La réflexion est un sous-ensemble des tokens de sortie côté
+      // fournisseur, mais l'AI SDK la sort de `outputTokens` : elle est
+      // recomposée explicitement, sans double comptage — même règle que le
+      // chat principal (`resolveBillableTotal`).
+      const reasoningTokens = readReasoningTokens(usage);
+      const totalTokens = resolveBillableTotal({
+        inputTokens,
+        outputTokens,
+        reasoningTokens,
         totalTokens: usage.totalTokens ?? 0,
+      });
+
+      void recordTokenUsage({
+        chatId: conversationId,
+        chatMode: "chat",
+        idempotencyKey: `wakies:${conversationId}:${turnId}`,
+        inputTokens,
+        model: modelId,
+        outputTokens,
+        reasoningTokens,
+        totalTokens,
         userEmail: auth.maiUser.email,
         userId: auth.userId,
       });
+
+      // Notification du compteur côté API mAI, comme `/api/chat` : la base
+      // Next n'est pas la seule à tenir le quota du compte, et un message de
+      // Wakie doit y apparaître comme un message du chat.
+      if (totalTokens <= 0) {
+        return;
+      }
+      try {
+        const logRes = await fetch(`${MAI_API_URL}/log-usage`, {
+          body: JSON.stringify({
+            inputTokens,
+            isGhostMode: false,
+            model: modelId,
+            outputTokens,
+            reasoningTokens,
+            tokensUsed: totalTokens,
+          }),
+          headers: {
+            Authorization: `Bearer ${auth.sessionToken}`,
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+        });
+        if (!logRes.ok) {
+          console.error(
+            "[wakies-chat][API log-usage] Status:",
+            logRes.status,
+            await logRes.text()
+          );
+        }
+      } catch (logErr) {
+        console.error("[wakies-chat] Erreur décompte log-usage:", logErr);
+      }
     },
     stopWhen: stepCountIs(8),
     system,
@@ -217,6 +290,9 @@ export async function POST(request: Request) {
   });
 
   return result.toUIMessageStreamResponse({
+    // Identifiant de réponse explicite : sans lui, le message assistant est
+    // écrit en base avec une clé vide (voir le commentaire d'en-tête).
+    generateMessageId: () => randomUUID(),
     // Le client affiche déjà « en cours » de son côté ; renvoyer un texte
     // d'erreur comme message de tour le ferait apparaître comme une réponse
     // du Wakie, ce qu'elle n'est pas.

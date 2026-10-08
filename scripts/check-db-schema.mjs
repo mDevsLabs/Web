@@ -100,6 +100,13 @@ const REQUIRED_COLUMNS = [
   // plus utilisés » affiche 0 exécution pour un plugin très utilisé en Chat.
   { column: "chatId", table: "ToolExecution" },
   { column: "userId", table: "ToolExecution" },
+  // Migration 0041 : `GET /api/wakies/workspace` sélectionne toute la ligne du
+  // Wakie et de ses conversations. Une colonne absente fait répondre 500 au
+  // premier chargement de /wakies (écran de chargement infini), et le chat ne
+  // peut plus ni choisir son modèle ni journaliser le bon.
+  { column: "model", table: "WakiesWakie" },
+  { column: "avatar", table: "WakiesWakie" },
+  { column: "model", table: "WakiesConversation" },
 ];
 
 const REQUIRED_INDEXES = [

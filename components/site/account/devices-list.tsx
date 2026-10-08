@@ -20,8 +20,8 @@ import {
 import { useCallback, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useAuth } from "@/components/site/auth-provider";
-import { formatDisplayDate } from "@/lib/site/date-format";
 import { SITE_API_ROUTES } from "@/lib/site/api-routes";
+import { formatDisplayDate } from "@/lib/site/date-format";
 
 type Device = {
   id: string;

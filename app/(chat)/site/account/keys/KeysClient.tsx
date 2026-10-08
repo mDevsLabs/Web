@@ -20,8 +20,8 @@ import type {
   ApiKeyMetadata,
   CreatedApiKeyResult,
 } from "@/lib/site/api-key-types";
-import { formatDisplayDateTime } from "@/lib/site/date-format";
 import { SITE_API_ROUTES } from "@/lib/site/api-routes";
+import { formatDisplayDateTime } from "@/lib/site/date-format";
 import { KeyModals } from "./KeyModals";
 
 export default function KeysClient() {
@@ -143,20 +143,17 @@ export default function KeysClient() {
     setEditing(true);
 
     try {
-      const res = await fetch(
-        SITE_API_ROUTES.devKey(keyToEdit.keyRef),
-        {
-          body: JSON.stringify({
-            isActive: editIsActive,
-            maxLimit: editLimit,
-          }),
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-          method: "PUT",
-        }
-      );
+      const res = await fetch(SITE_API_ROUTES.devKey(keyToEdit.keyRef), {
+        body: JSON.stringify({
+          isActive: editIsActive,
+          maxLimit: editLimit,
+        }),
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        method: "PUT",
+      });
 
       const data = await res.json();
       if (data.success) {

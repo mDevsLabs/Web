@@ -1754,6 +1754,9 @@ export type WakiesSpace = InferSelectModel<typeof wakiesSpace>;
 export const wakiesWakie = pgTable(
   "WakiesWakie",
   {
+    // Mascotte choisie à la création (`/wakies/<avatar>.png`). NULL = déduite
+    // de l'identifiant, comportement historique du port.
+    avatar: varchar("avatar", { length: 16 }),
     createdAt: timestamp("createdAt").notNull().defaultNow(),
     id: uuid("id").primaryKey().notNull().defaultRandom(),
     instructions: text("instructions").notNull().default(""),
@@ -1762,6 +1765,10 @@ export const wakiesWakie = pgTable(
     // la donnée si un jour un compte l'exploite.
     learningContainerId: text("learningContainerId"),
     memoryAllowed: boolean("memoryAllowed").notNull().default(true),
+    // Modèle IA par défaut des NOUVELLES conversations de ce Wakie. NULL = le
+    // modèle par défaut de l'application. La conversation peut le surcharger
+    // (`WakiesConversation.model`) : c'est cette valeur-là qui est facturée.
+    model: text("model"),
     name: varchar("name", { length: 40 }).notNull(),
     researchAllowed: boolean("researchAllowed").notNull().default(true),
     skillDeliveryEnabled: boolean("skillDeliveryEnabled")
@@ -1813,6 +1820,9 @@ export const wakiesConversation = pgTable(
     // Figé à la création : une conversation qui ne participe pas à
     // l'apprentissage y porte `null` DÉFINITIVEMENT.
     learningContainerId: text("learningContainerId"),
+    // Modèle IA de CETTE conversation, choisi dans l'en-tête du chat. NULL =
+    // repli sur le modèle du Wakie, puis sur le modèle par défaut.
+    model: text("model"),
     title: varchar("title", { length: 120 }).notNull(),
     updatedAt: timestamp("updatedAt").notNull().defaultNow(),
     userId: text("userId").notNull(),

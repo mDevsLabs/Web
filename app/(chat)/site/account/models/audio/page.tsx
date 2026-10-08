@@ -3,6 +3,7 @@
 import { Loader2, RefreshCw } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 import { KeyCatalogBanner } from "../shared/KeyCatalogBanner";
 import { ModelNavigation } from "../shared/ModelNavigation";
 import { useModelCatalog } from "../shared/useModelCatalog";
@@ -10,7 +11,6 @@ import { AudioModelFilters, useAudioModelFilters } from "./AudioModelFilters";
 import { AudioModelResults } from "./AudioModelResults";
 import { AudioVoicesPanel } from "./AudioVoicesPanel";
 import { type AudioModelItem, getAudioModelId } from "./audio-model-types";
-import { SITE_API_ROUTES } from "@/lib/site/api-routes";
 
 export default function ApiAudioModelsPage() {
   const router = useRouter();

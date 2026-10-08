@@ -36,6 +36,9 @@
 import type { ReactNode } from "react";
 import "@/components/wakies/wakies.css";
 import "@/components/wakies/wakies-editor.css";
+// Après les deux feuilles générées : n'agit que sur les contrôles de l'hôte
+// (sélecteur de modèle) — voir l'en-tête du fichier.
+import "@/components/wakies/wakies-host.css";
 
 export default function WakiesLayout({ children }: { children: ReactNode }) {
   // `wakies-root` est le porteur du thème ET des sélecteurs : l'élément doit

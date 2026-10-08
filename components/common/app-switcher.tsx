@@ -55,6 +55,12 @@ interface AppSwitcherProps {
   align?: "start" | "center" | "end";
   children?: React.ReactNode;
   className?: string;
+  /**
+   * Application considérée comme courante. `null` = aucune : le menu sert de
+   * portail vers les autres espaces (cas de /wakies, qui n'appartient pas au
+   * catalogue) et TOUTES les entrées restent cliquables, y compris mAI.
+   */
+  currentAppOverride?: AppKey | null;
   isAuthenticated?: boolean;
   side?: "top" | "bottom" | "left" | "right";
 }
@@ -64,13 +70,17 @@ export function AppSwitcherMenu({
   align = "start",
   side = "bottom",
   className,
+  currentAppOverride,
   isAuthenticated,
 }: AppSwitcherProps) {
   const pathname = usePathname();
   const router = useRouter();
   const { isDesktop } = useIsDesktopApp();
   const { favorite } = useFavoriteApp();
-  const currentApp = appKeyFromPath(pathname);
+  const currentApp =
+    currentAppOverride === undefined
+      ? appKeyFromPath(pathname)
+      : currentAppOverride;
 
   // Authentification : prop explicite, ou contexte du site, ou présence de session client
   const siteAuth = useOptionalAuth();
