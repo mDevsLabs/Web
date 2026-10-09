@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  BrainIcon,
-  GlobeIcon,
-  ImageIcon,
-  ListChecksIcon,
-  MicIcon,
-  PaperclipIcon,
-  XIcon,
-} from "lucide-react";
+import { BrainIcon, GlobeIcon, ImageIcon, ListChecksIcon, MicIcon, PaperclipIcon, XIcon } from "@mdevs/icons";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useCallback, useMemo, useRef, useState } from "react";

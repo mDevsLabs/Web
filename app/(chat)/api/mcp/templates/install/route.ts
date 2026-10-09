@@ -5,16 +5,15 @@
 
 import { z } from "zod";
 import { errorResponse } from "@/lib/api/error-response";
-import { planGuardResponse, requirePaidPlan } from "@/lib/auth/plan-guard";
+import { getMaiUser } from "@/lib/auth/session";
 import { toMcpServerDto } from "@/lib/mcp/dto";
 import { installMcpTemplate } from "@/lib/mcp-templates/install";
 
 export async function POST(request: Request) {
-  const guard = await requirePaidPlan("plus");
-  if (!guard.allowed) {
-    return planGuardResponse(guard)!;
+  const user = await getMaiUser();
+  if (!user) {
+    return errorResponse("auth_required");
   }
-  const user = guard.user;
   const userId = user.id || user.email;
 
   const json = await request.json().catch(() => ({}));

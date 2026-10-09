@@ -1,0 +1,92 @@
+/**
+ * ============================================================================
+ * VIBE — THÈME SOMBRE DE LA VISITE GUIDÉE (src/components/tutorial/tour.css)
+ * Surcharge driver.js (popoverClass 'vibe-tour-popover') aux couleurs zinc.
+ * Boutons « Retour » et croix : fond transparent, contour visible et texte
+ * clair dans TOUS les états (normal, survol, focus) — jamais noir sur noir.
+ * Importé par tutorialService.ts.
+ * ============================================================================
+ */
+
+.vibe-tour-popover.driver-popover {
+  background-color: #09090b !important;
+  border: 1px solid #27272a;
+  border-radius: 16px;
+  color: #fafafa;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+.vibe-tour-popover .driver-popover-title {
+  color: #fff !important;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.vibe-tour-popover .driver-popover-description {
+  color: #a1a1aa !important;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.vibe-tour-popover .driver-popover-progress-text {
+  color: #71717a !important;
+  font-size: 11px;
+}
+
+/* Base commune des boutons du pied (classes réellement émises par driver.js) */
+.vibe-tour-popover .driver-popover-footer-btn,
+.vibe-tour-popover .driver-popover-prev-btn,
+.vibe-tour-popover .driver-popover-next-btn {
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  text-shadow: none;
+}
+
+/* « Suivant » / « Terminer » : plein blanc, texte noir */
+.vibe-tour-popover .driver-popover-next-btn,
+.vibe-tour-popover .driver-popover-done-btn {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #ffffff !important;
+}
+
+.vibe-tour-popover .driver-popover-next-btn:hover,
+.vibe-tour-popover .driver-popover-next-btn:focus,
+.vibe-tour-popover .driver-popover-done-btn:hover,
+.vibe-tour-popover .driver-popover-done-btn:focus {
+  background-color: #e4e4e7 !important;
+  color: #000000 !important;
+  border-color: #e4e4e7 !important;
+}
+
+/* « Retour » : fond transparent, contour visible, texte clair */
+.vibe-tour-popover .driver-popover-prev-btn {
+  background-color: transparent !important;
+  color: #fafafa !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+}
+
+.vibe-tour-popover .driver-popover-prev-btn:hover,
+.vibe-tour-popover .driver-popover-prev-btn:focus {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+}
+
+/* Croix de fermeture : même traitement fantôme, légèrement détachée du coin */
+.vibe-tour-popover .driver-popover-close-btn {
+  background-color: transparent !important;
+  color: #fafafa !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  border-radius: 9px;
+  top: 6px;
+  right: 6px;
+}
+
+.vibe-tour-popover .driver-popover-close-btn:hover,
+.vibe-tour-popover .driver-popover-close-btn:focus {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+}

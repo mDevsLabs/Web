@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Subscription", "label": "Abonnements", "description": "G\xE9rez vos abonnements depuis une interface claire.", "fields": [{ "key": "name", "label": "Offre", "kind": "text", "required": true }, { "key": "subscriber", "label": "Abonn\xE9", "kind": "text", "required": true }, { "key": "monthlyPrice", "label": "Prix mensuel", "kind": "number", "required": true }, { "key": "renewsOn", "label": "Renouvellement", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["trial", "active", "paused", "cancelled"] }], "titleKey": "name", "settings": [{ "key": "notifySubscription", "label": "Notifications : abonnements", "description": "Recevoir un signal lors des changements." }, { "key": "archiveSubscription", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section abonnements." }, { "key": "approveSubscription", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

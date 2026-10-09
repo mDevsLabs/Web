@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Campaign", "label": "Campagnes", "description": "G\xE9rez vos campagnes depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "channel", "label": "Canal", "kind": "text", "required": true }, { "key": "budget", "label": "Budget", "kind": "number", "required": true }, { "key": "startsOn", "label": "D\xE9but", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "active", "paused", "completed"] }], "titleKey": "name", "settings": [{ "key": "notifyCampaign", "label": "Notifications : campagnes", "description": "Recevoir un signal lors des changements." }, { "key": "archiveCampaign", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section campagnes." }, { "key": "approveCampaign", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

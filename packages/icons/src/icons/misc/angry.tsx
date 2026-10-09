@@ -1,0 +1,3 @@
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const AngryIcon = /* @__PURE__ */ createIcon('AngryIcon', [["path", { "d": "M15 12v-1.584" }], ["path", { "d": "M17 10a5 5 0 00-3 1" }], ["path", { "d": "M7 10a5 5 0 013 1" }], ["path", { "d": "M9 12v-1.584" }], ["path", { "d": "M9 17a5 5 0 016.001 0" }], ["circle", { "cx": "12", "cy": "12", "r": "10" }]]);

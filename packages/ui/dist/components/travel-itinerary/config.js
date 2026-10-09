@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "TravelItinerary", "label": "Itin\xE9raires", "description": "G\xE9rez vos itin\xE9raires depuis une interface claire.", "fields": [{ "key": "title", "label": "Titre", "kind": "text", "required": true }, { "key": "traveler", "label": "Voyageur", "kind": "text", "required": true }, { "key": "startsOn", "label": "D\xE9but", "kind": "date", "required": true }, { "key": "dayCount", "label": "Jours", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "confirmed", "completed"] }], "titleKey": "title", "settings": [{ "key": "notifyTravelItinerary", "label": "Notifications : itin\xE9raires", "description": "Recevoir un signal lors des changements." }, { "key": "archiveTravelItinerary", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section itin\xE9raires." }, { "key": "approveTravelItinerary", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

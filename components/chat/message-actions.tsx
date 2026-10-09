@@ -1,11 +1,5 @@
 import equal from "fast-deep-equal";
-import {
-  GitForkIcon,
-  RefreshCwIcon,
-  Share2Icon,
-  Volume2Icon,
-  VolumeXIcon,
-} from "lucide-react";
+import { GitForkIcon, RefreshCwIcon, Share2Icon, Volume2Icon, VolumeXIcon } from "@mdevs/icons";
 import { useRouter } from "next/navigation";
 import { memo, useCallback, useState } from "react";
 import { toast } from "sonner";

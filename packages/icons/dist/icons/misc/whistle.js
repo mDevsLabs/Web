@@ -1,0 +1,4 @@
+"use client";
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const WhistleIcon = /* @__PURE__ */ createIcon('WhistleIcon', [["path", { "d": "M10 6v4" }], ["path", { "d": "M21 6a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-5.675A7 7 0 1 1 9 6z" }]]);

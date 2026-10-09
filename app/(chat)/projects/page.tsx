@@ -1,27 +1,11 @@
 "use client";
 
-import {
-  ArchiveIcon,
-  ArchiveRestoreIcon,
-  Edit2Icon,
-  FolderIcon,
-  FolderKanbanIcon,
-  LayoutGridIcon,
-  ListIcon,
-  MoreHorizontalIcon,
-  PinIcon,
-  PinOffIcon,
-  PlusIcon,
-  SearchIcon,
-  SparklesIcon,
-  TagIcon,
-  Trash2Icon,
-} from "lucide-react";
+import { ArchiveIcon, ArchiveRestoreIcon, Edit2Icon, FolderIcon, FolderKanbanIcon, LayoutGridIcon, ListIcon, MoreHorizontalIcon, PinIcon, PinOffIcon, PlusIcon, SearchIcon, SparklesIcon, TagIcon, Trash2Icon } from "@mdevs/icons";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTheme } from "next-themes";
 import { Suspense, useCallback, useEffect, useMemo, useState } from "react";
-import DataGrid, { SelectColumn } from "react-data-grid";
+import { DataGrid, SelectColumn } from "react-data-grid";
 import { toast } from "sonner";
 import useSWR, { mutate as globalMutate } from "swr";
 import useSWRInfinite from "swr/infinite";

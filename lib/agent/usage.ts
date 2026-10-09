@@ -195,6 +195,18 @@ export function normalizeProviderUsage(
   );
   const reasoningTokens = readReasoningTokens(record);
 
+  // Le total est délégué à `resolveBillableTotal` : cette fonction additionnait
+  // `input + output + reasoning`, alors que la réflexion est déjà incluse dans
+  // `outputTokens` (contrat de l'AI SDK). Deux définitions du total coexistaient
+  // dans ce fichier et se contredisaient — `docs/AGENT.md` §14 tranche pour la
+  // première. On ne garde qu'un seul calcul, ici.
+  const totalTokens = resolveBillableTotal({
+    inputTokens,
+    outputTokens,
+    reasoningTokens,
+    totalTokens: readNumber(record.totalTokens),
+  });
+
   const normalized: NormalizedUsage = {
     ...emptyNormalizedUsage(),
     cacheReadTokens: readNumber(
@@ -212,7 +224,7 @@ export function normalizeProviderUsage(
     provider: context.provider ?? null,
     reasoningTokens,
     retries: context.retries ?? 0,
-    totalTokens: inputTokens + outputTokens + reasoningTokens,
+    totalTokens,
   };
   return normalized;
 }

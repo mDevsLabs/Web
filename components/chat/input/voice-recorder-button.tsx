@@ -1,6 +1,6 @@
 "use client";
 
-import { MicIcon, MicOffIcon } from "lucide-react";
+import { MicIcon, MicOffIcon } from "@mdevs/icons";
 import { useCallback, useRef } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";

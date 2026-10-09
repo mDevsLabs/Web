@@ -3,7 +3,7 @@
 import type { UseChatHelpers } from "@ai-sdk/react";
 import type { UIMessage } from "ai";
 import equal from "fast-deep-equal";
-import { ArrowUpIcon } from "lucide-react";
+import { ArrowUpIcon } from "@mdevs/icons";
 import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import {
@@ -760,7 +760,7 @@ function PureMultimodalInput({
     if (status === "ready" || status === "error") {
       submitForm();
     } else {
-      toast.error("Please wait for the model to finish its response!");
+      toast.error("Attendez que le modèle termine sa réponse !");
     }
   }, [
     attachments.length,
@@ -896,7 +896,7 @@ function PureMultimodalInput({
       {!supportsTools && <NoToolsWarning />}
 
       <PromptInput
-        className="[&>div]:rounded-[28px] [&>div]:border [&>div]:border-border/40 [&>div]:bg-card/85 [&>div]:backdrop-blur-xl [&>div]:shadow-[var(--shadow-composer)] [&>div]:transition-all [&>div]:duration-200 [&>div]:focus-within:border-border/70 [&>div]:focus-within:shadow-[var(--shadow-composer-focus)]"
+        className="[&>div]:rounded-[28px] [&>div]:border [&>div]:border-border/60 [&>div]:bg-card/80 [&>div]:backdrop-blur-xl [&>div]:shadow-[inset_0_1px_0_var(--md-highlight),var(--md-shadow)] [&>div]:transition-all [&>div]:duration-200 [&>div]:focus-within:border-border/90 [&>div]:focus-within:shadow-[inset_0_1px_0_var(--md-highlight),0_4px_24px_-4px_oklch(0_0_0/0.14)]"
         data-onboarding="chat-input"
         onSubmit={handlePromptSubmit}
       >

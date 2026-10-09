@@ -1,0 +1,79 @@
+{
+  "model": "SavedFilter",
+  "config": {
+    "name": "SavedFilter",
+    "label": "Filtres enregistrés",
+    "description": "Gérez vos filtres enregistrés depuis une interface claire.",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Nom",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "query",
+        "label": "Recherche",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "owner",
+        "label": "Propriétaire",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "resultCount",
+        "label": "Résultats",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "updatedAt",
+        "label": "Mise à jour",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "draft",
+          "active",
+          "shared",
+          "archived"
+        ]
+      }
+    ],
+    "titleKey": "name",
+    "settings": [
+      {
+        "key": "notifySavedFilter",
+        "label": "Notifications : filtres enregistrés",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveSavedFilter",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section filtres enregistrés."
+      },
+      {
+        "key": "approveSavedFilter",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "saved-filter-demo-1",
+    "name": "Documents actifs",
+    "query": "Recherche démo",
+    "owner": "Marie Dupont",
+    "resultCount": 128,
+    "updatedAt": "2026-10-04",
+    "status": "draft"
+  }
+}

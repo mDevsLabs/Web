@@ -1,7 +1,7 @@
 import "server-only";
 
+import { upstreamJson } from "@/lib/api/upstream";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
-import { MAI_API_URL } from "@/lib/constants";
 import { getUserApiKey } from "@/lib/db/api-keys";
 import {
   type ChatModel,
@@ -37,17 +37,22 @@ export async function fetchUserModels(): Promise<ChatModel[]> {
       headers["x-user-id"] = user.id;
     }
 
-    const res = await fetch(`${MAI_API_URL}/v1/models`, {
-      cache: "no-store",
+    const result = await upstreamJson<{ data?: unknown }>({
       headers,
+      path: "/v1/models",
+      // `authHeader` est déjà préfixé par « Bearer » : c'est une clé API
+      // personnelle pour les comptes qui en ont une, sinon le jeton de session.
+      token: authHeader ? authHeader.replace(/^Bearer\s+/i, "") : null,
     });
 
-    if (!res.ok) {
+    // Un catalogue illisible ne doit pas casser le sélecteur de modèle : on
+    // retombe sur la liste embarquée, qui est la seule source disponible hors
+    // ligne. Le repli est le comportement attendu ici, pas une erreur.
+    if (!result.ok) {
       return FALLBACK_MODELS;
     }
 
-    const json = await res.json();
-    const rawList = json.data || [];
+    const rawList = result.data.data || [];
 
     if (!Array.isArray(rawList) || rawList.length === 0) {
       return FALLBACK_MODELS;

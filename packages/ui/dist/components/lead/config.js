@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Lead", "label": "Prospects", "description": "G\xE9rez vos prospects depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "email", "label": "E-mail", "kind": "email", "required": true }, { "key": "source", "label": "Origine", "kind": "text", "required": true }, { "key": "score", "label": "Score", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["new", "qualified", "contacted", "converted"] }], "titleKey": "name", "settings": [{ "key": "notifyLead", "label": "Notifications : prospects", "description": "Recevoir un signal lors des changements." }, { "key": "archiveLead", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section prospects." }, { "key": "approveLead", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

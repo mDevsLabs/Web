@@ -1,0 +1,1681 @@
+{
+  "comparison": "Sauvegarde du travail local avant migration, pas HEAD ; documentation et nouveaux tests décrits séparément dans le rapport.",
+  "files": [
+    {
+      "file": "app/(chat)/api/wakies/chat/route.ts",
+      "change": "modified"
+    },
+    {
+      "file": "app/(chat)/api/wakies/conversations/[id]/capture/route.ts",
+      "change": "modified"
+    },
+    {
+      "file": "app/(chat)/api/wakies/conversations/[id]/messages/route.ts",
+      "change": "modified"
+    },
+    {
+      "file": "app/(chat)/api/wakies/conversations/[id]/page/route.ts",
+      "change": "modified"
+    },
+    {
+      "file": "app/(chat)/api/wakies/conversations/[id]/route.ts",
+      "change": "modified"
+    },
+    {
+      "file": "app/(chat)/api/wakies/conversations/route.ts",
+      "change": "modified"
+    },
+    {
+      "file": "app/(chat)/api/wakies/files/route.ts",
+      "change": "added"
+    },
+    {
+      "file": "app/(chat)/api/wakies/memories/[id]/route.ts",
+      "change": "modified"
+    },
+    {
+      "file": "app/(chat)/api/wakies/memories/route.ts",
+      "change": "modified"
+    },
+    {
+      "file": "app/(chat)/api/wakies/pages/[id]/route.ts",
+      "change": "modified"
+    },
+    {
+      "file": "app/(chat)/api/wakies/settings/route.ts",
+      "change": "modified"
+    },
+    {
+      "file": "app/(chat)/api/wakies/spaces/[spaceId]/pages/route.ts",
+      "change": "modified"
+    },
+    {
+      "file": "app/(chat)/api/wakies/spaces/route.ts",
+      "change": "modified"
+    },
+    {
+      "file": "app/(chat)/api/wakies/tasks/[id]/actions/route.ts",
+      "change": "modified"
+    },
+    {
+      "file": "app/(chat)/api/wakies/tasks/[id]/schedule/route.ts",
+      "change": "modified"
+    },
+    {
+      "file": "app/(chat)/api/wakies/tasks/route.ts",
+      "change": "modified"
+    },
+    {
+      "file": "app/(chat)/api/wakies/wakies/[id]/route.ts",
+      "change": "modified"
+    },
+    {
+      "file": "app/(chat)/api/wakies/wakies/route.ts",
+      "change": "modified"
+    },
+    {
+      "file": "app/(wakies)/wakies/layout.tsx",
+      "change": "modified"
+    },
+    {
+      "file": "apps/wakies/.dockerignore",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/.env",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/.env.example",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/.gitattributes",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/.github/ISSUE_TEMPLATE/bug_report.yml",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/.github/ISSUE_TEMPLATE/feature_request.yml",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/.github/pull_request_template.md",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/.github/workflows/ci.yml",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/.gitignore",
+      "change": "modified"
+    },
+    {
+      "file": "apps/wakies/.npmrc",
+      "change": "modified"
+    },
+    {
+      "file": "apps/wakies/.prettierignore",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/.prettierrc.json",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/apps/computer/.dockerignore",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/computer/Dockerfile",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/computer/e2b-desktop-smoke.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/computer/files.py",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/computer/smoke.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/app.json",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/App.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/assets/capybara.png",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/assets/README.md",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/index.js",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/metro.config.js",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/package.json",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/README.md",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/agent-ui.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/agent-workspace.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/api-response.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/api.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/assistant-markdown.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/assistant-response.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/background-updates.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/browser-address.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/browser-tool-card.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/BrowserConsole.native.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/BrowserConsole.web.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/chat.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/computer-drafts.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/computer-status.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/computer-workspace.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/computer.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/conversation-queue.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/conversation-run.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/date-time.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/DateFields.native.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/DateFields.web.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/DateTimeEditor.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/desktop-stream.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/desktop-tool-card.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/details.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/jev-actions.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/jev-tool-card.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/mail-tool-card.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/PdfReader.native.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/PdfReader.web.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/relative-date.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/screens.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/search-tool-card.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/thread-artifacts.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/threads.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/ui.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/src/workspace.tsx",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/test/api-response.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/test/assistant-markdown.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/test/browser-address.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/test/computer-status.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/test/conversation-queue.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/test/date-time.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/test/jev-actions.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/test/relative-date.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/mobile/tsconfig.json",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/actions.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/agent.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/app.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/auth.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/browser-console.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/browser.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/computer-backend.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/computer-e2b-desktop.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/computer-routes.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/computer-tools.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/computer.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/config.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/db.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/demo/entry.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/demo/jev-fixture.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/demo/model.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/engine/conversation.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/engine/finance.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/engine/model.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/engine/page-diff.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/engine/routes.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/engine/service.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/engine/tanstack-agent.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/engine/worker.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/errors.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/files.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/google-auth.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/index.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/jev/adapter.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/jev/service.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/jev/tools.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/log.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/rate-limit.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/search.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/worker-entry.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/server/src/workspace.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/.dockerignore",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/Dockerfile",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/package-lock.json",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/package.json",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/README.md",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/src/browser.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/src/demo-entry.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/src/downloads.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/src/errors.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/src/index.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/src/network.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/src/proxy.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/src/server.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/tests/close-resilience.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/tests/docker.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/tests/fixture-worker.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/tests/fixtures.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/tests/fixtures/document.pdf",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/tests/lifecycle.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/tests/run-docker.mjs",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/tests/worker-checks.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/apps/worker/tsconfig.json",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/assets/computer.png",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/assets/demos/2026-09-16/mobile.gif",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/assets/demos/2026-09-16/mobile.mp4",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/assets/demos/2026-09-16/mobile.png",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/assets/demos/2026-09-16/web.gif",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/assets/demos/2026-09-16/web.mp4",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/assets/demos/2026-09-16/web.png",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/assets/demos/2026-09-23/jev-live-web.mp4",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/assets/demos/2026-09-23/jev-live-web.png",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/assets/demos/2026-09-23/jev-web.mp4",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/assets/demos/2026-09-23/jev-web.png",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/assets/document.png",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/assets/finance.png",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/assets/openmuse-demo.mp4",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/biome.json",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/CHANGELOG.md",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/compose.computers-app.yml",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/compose.computers.yml",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/compose.yml",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/CONTRIBUTING.md",
+      "change": "modified"
+    },
+    {
+      "file": "apps/wakies/data/wakies.sqlite",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/data/wakies.sqlite-shm",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/data/wakies.sqlite-wal",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/deployment/computers/harden-supervisor.mjs",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/deployment/computers/LICENSE.openbot",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/deployment/computers/README.md",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/deployment/computers/supervisor.Dockerfile",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/Dockerfile",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/docs/COMPUTER.md",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/docs/DEMO.md",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/docs/demos/jev-generative-ui.md",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/docs/EXPERIENCE.md",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/docs/FEATURES.md",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/docs/OPENBOT-INTEGRATION.md",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/docs/README.md",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/docs/RICH-THREADS.md",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/docs/TELEMETRY.md",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/docs/VERIFICATION.md",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/eslint.config.js",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/index.html",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/infra/compose.yaml",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/integration/NOTICE_OPENDOTS.txt",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/integration/web/editor.css",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/integration/web/style.css",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/LICENSE",
+      "change": "modified"
+    },
+    {
+      "file": "apps/wakies/package-lock.json",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/package.json",
+      "change": "modified"
+    },
+    {
+      "file": "apps/wakies/packages/backends/src/openbot.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/packages/domain/src/agent.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/packages/domain/src/computer.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/packages/domain/src/date-time.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/packages/domain/src/index.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/packages/domain/src/jev.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/packages/integrations/src/google.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/packages/integrations/src/pdf.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/packages/integrations/src/vault.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/patches/metro@0.83.3.patch",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/pnpm-lock.yaml",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/pnpm-workspace.yaml",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/PROVENANCE.json",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/public/favicon.svg",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/public/logo.png",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/public/wakies/blue.png",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/public/wakies/logo.png",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/public/wakies/mint.png",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/public/wakies/orange.png",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/public/wakies/purple.png",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/public/wakies/red.png",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/README.md",
+      "change": "modified"
+    },
+    {
+      "file": "apps/wakies/render.yaml",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/renovate.json",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/ROADMAP.md",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/SECURITY.md",
+      "change": "modified"
+    },
+    {
+      "file": "apps/wakies/SOURCE_AUDIT.json",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/SOURCE_MANIFEST.json",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/src/browser/index.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/browser/security.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/browser/transport.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/api.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/App.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/CallView.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/Chat.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/ChatTranscript.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/ComputerPanel.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/ComputerToolCard.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/editor.css",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/editor/autosave.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/editor/DocumentMenu.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/editor/markdown.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/editor/RichEditor.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/editor/slash-commands.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/editor/use-page-autosave.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/main.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/Mascot.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/page-chat-requests.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/page-context.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/page-navigation.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/page-review-decision.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/page-snapshots.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/PageConversation.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/PageDocument.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/PageOutline.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/PageReviewCard.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/ResultPane.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/SpaceLibrary.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/SpaceNav.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/SpaceWorkspace.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/style.css",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/TaskActions.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/TaskPresentation.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/ThreadList.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/useVoice.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/client/WorkspaceDialog.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/app.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/computer-routes.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/computer-service.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/computer-store.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/computer-tools.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/headless.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/index.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/learning.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/page-routes.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/page-service.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/page-tools.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/pages.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/parallel.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/platform-config.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/platform.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/research.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/runner.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/runtime-scope.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/shutdown.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/slack-channel.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/store.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/tanstack-tools.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/voice.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/wakie-agent.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/workspace-routes.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/server/workspace.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/shared/computer-types.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/shared/learning.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/shared/page-review.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/shared/types.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/src/shared/voice-receipt.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/actions.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/agent-api.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/api.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/app.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/auth-startup.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/autosave.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/browser-fixture-runner.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/browser-imports-race.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/browser.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/computer-api.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/computer-card.test.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/computer-deployment.test.js",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/computer-e2b-desktop.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/computer-runner.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/computer.test.ts",
+      "change": "modified"
+    },
+    {
+      "file": "apps/wakies/tests/config.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/controls.test.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/conversation-browser.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/conversation-calendar.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/conversation-jev.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/conversation-sdk.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/demo-model.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/domain.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/engine.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/finance-headers.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/finance.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/fixtures/learning-skills.zip",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/fixtures/model-stream.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/fixtures/README.md",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/gateway-chat-completions.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/google.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/headless-runtime.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/headless.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/helpers/browser.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/helpers/computer.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/helpers/model.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/helpers/search.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/jev-persistence.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/jev.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/learning-delivery.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/learning.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/library.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/log.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/markdown.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/model-outcome.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/model-provider.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/model-retry.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/model-worker.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/monitor-price-spacing.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/monitor-recovery.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/oauth.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/openbot.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/page-chat-request.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/page-context.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/page-diff.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/page-review.test.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/page-routes.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/page-service.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/page-snapshots.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/pages.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/parallel.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/pdf.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/persistence.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/prepare-lease-loss.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/rate-limit.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/research.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/resource-ids.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/rich-threads.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/runner.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/runtime-scope.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/search-results.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/search.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/security.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/setup.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/setup.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/shutdown.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/slack-channel-wiring.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/slack-channel.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/step-limit.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/store.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/tanstack-agent.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/telemetry.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/transcript.test.tsx",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/transport.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/vault.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/voice.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/wakie-agent-channel.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tests/workflows.test.ts",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tests/workspace.test.ts",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/tsconfig.build.json",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/tsconfig.json",
+      "change": "modified"
+    },
+    {
+      "file": "apps/wakies/tsconfig.server.json",
+      "change": "removed"
+    },
+    {
+      "file": "apps/wakies/UPSTREAM_README.md",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/upstream.package.json",
+      "change": "added"
+    },
+    {
+      "file": "apps/wakies/vite.config.ts",
+      "change": "removed"
+    },
+    {
+      "file": "components/wakies/AppsScreen.tsx",
+      "change": "added"
+    },
+    {
+      "file": "components/wakies/Chat.tsx",
+      "change": "modified"
+    },
+    {
+      "file": "components/wakies/ChatTranscript.tsx",
+      "change": "modified"
+    },
+    {
+      "file": "components/wakies/ConversationList.tsx",
+      "change": "modified"
+    },
+    {
+      "file": "components/wakies/DraftProvider.tsx",
+      "change": "added"
+    },
+    {
+      "file": "components/wakies/FileLibrary.tsx",
+      "change": "added"
+    },
+    {
+      "file": "components/wakies/GoalsScreen.tsx",
+      "change": "added"
+    },
+    {
+      "file": "components/wakies/IdeasScreen.tsx",
+      "change": "added"
+    },
+    {
+      "file": "components/wakies/ModelPicker.tsx",
+      "change": "modified"
+    },
+    {
+      "file": "components/wakies/README.md",
+      "change": "modified"
+    },
+    {
+      "file": "components/wakies/ThemeProvider.tsx",
+      "change": "modified"
+    },
+    {
+      "file": "components/wakies/ToolResultCard.tsx",
+      "change": "added"
+    },
+    {
+      "file": "components/wakies/wakies-editor.css",
+      "change": "modified"
+    },
+    {
+      "file": "components/wakies/wakies-ui.css",
+      "change": "added"
+    },
+    {
+      "file": "components/wakies/wakies.css",
+      "change": "modified"
+    },
+    {
+      "file": "components/wakies/workspace-app.tsx",
+      "change": "modified"
+    },
+    {
+      "file": "components/wakies/WorkspaceNavigation.tsx",
+      "change": "added"
+    },
+    {
+      "file": "lib/db/migrations/meta/_journal.json",
+      "change": "modified"
+    },
+    {
+      "file": "lib/db/schema.ts",
+      "change": "modified"
+    },
+    {
+      "file": "lib/wakies/attachments.ts",
+      "change": "added"
+    },
+    {
+      "file": "lib/wakies/blob.ts",
+      "change": "modified"
+    },
+    {
+      "file": "lib/wakies/http.ts",
+      "change": "modified"
+    },
+    {
+      "file": "lib/wakies/model-access.ts",
+      "change": "added"
+    },
+    {
+      "file": "lib/wakies/queries.ts",
+      "change": "modified"
+    },
+    {
+      "file": "lib/wakies/setup.ts",
+      "change": "modified"
+    },
+    {
+      "file": "lib/wakies/shared/conversation-queue.ts",
+      "change": "added"
+    },
+    {
+      "file": "lib/wakies/shared/goals.ts",
+      "change": "added"
+    },
+    {
+      "file": "lib/wakies/shared/messages.ts",
+      "change": "added"
+    },
+    {
+      "file": "lib/wakies/shared/origin.ts",
+      "change": "added"
+    },
+    {
+      "file": "scripts/build-wakies-css.mjs",
+      "change": "modified"
+    },
+    {
+      "file": "scripts/check-db-schema.mjs",
+      "change": "added"
+    },
+    {
+      "file": "scripts/rewrite-wakies-imports.mjs",
+      "change": "modified"
+    }
+  ]
+}

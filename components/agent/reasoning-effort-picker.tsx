@@ -1,6 +1,6 @@
 "use client";
 
-import { BrainIcon, ChevronDownIcon } from "lucide-react";
+import { BrainIcon, ChevronDownIcon } from "@mdevs/icons";
 import { useCallback, useState } from "react";
 import {
   Popover,

@@ -1,6 +1,6 @@
 "use client";
 
-import { BellIcon, BellOffIcon, CheckIcon } from "lucide-react";
+import { BellIcon, BellOffIcon, CheckIcon } from "@mdevs/icons";
 import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";

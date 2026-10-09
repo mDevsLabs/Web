@@ -1,0 +1,4 @@
+"use client";
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const BandageIcon = /* @__PURE__ */ createIcon('BandageIcon', [["path", { "d": "M10 10.01h.01" }], ["path", { "d": "M10 14.01h.01" }], ["path", { "d": "M14 10.01h.01" }], ["path", { "d": "M14 14.01h.01" }], ["path", { "d": "M18 6v12" }], ["path", { "d": "M6 6v12" }], ["rect", { "x": "2", "y": "6", "width": "20", "height": "12", "rx": "2" }]]);

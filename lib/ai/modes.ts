@@ -1,10 +1,4 @@
-import {
-  BrainIcon,
-  Code2Icon,
-  ScaleIcon,
-  SparklesIcon,
-  TargetIcon,
-} from "lucide-react";
+import { BrainIcon, Code2Icon, ScaleIcon, SparklesIcon, TargetIcon } from "@mdevs/icons";
 
 export type AIModeId =
   | "standard"

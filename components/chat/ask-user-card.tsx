@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle2Icon, HelpCircleIcon, SendIcon } from "lucide-react";
+import { CheckCircle2Icon, HelpCircleIcon, SendIcon } from "@mdevs/icons";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";

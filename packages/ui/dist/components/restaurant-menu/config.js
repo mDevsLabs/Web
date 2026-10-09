@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "RestaurantMenu", "label": "Menus de restaurant", "description": "G\xE9rez vos menus de restaurant depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "restaurant", "label": "Restaurant", "kind": "text", "required": true }, { "key": "dishCount", "label": "Plats", "kind": "number", "required": true }, { "key": "averagePrice", "label": "Prix moyen", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "active", "seasonal"] }], "titleKey": "name", "settings": [{ "key": "notifyRestaurantMenu", "label": "Notifications : menus de restaurant", "description": "Recevoir un signal lors des changements." }, { "key": "archiveRestaurantMenu", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section menus de restaurant." }, { "key": "approveRestaurantMenu", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

@@ -1,0 +1,5 @@
+"use client";
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const CheckCircle2Icon = /* @__PURE__ */ createIcon('CheckCircle2Icon', [["circle", { "cx": "12", "cy": "12", "r": "10" }], ["path", { "d": "m16 9-5.5 5.5L8 12" }]]);
+exports.CheckCircle2Icon = CheckCircle2Icon;

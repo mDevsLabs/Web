@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Warehouse", "label": "Entrep\xF4ts", "description": "G\xE9rez vos entrep\xF4ts depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "city", "label": "Ville", "kind": "text", "required": true }, { "key": "capacity", "label": "Capacit\xE9", "kind": "number", "required": true }, { "key": "occupancy", "label": "Occupation", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["active", "maintenance", "closed"] }], "titleKey": "name", "settings": [{ "key": "notifyWarehouse", "label": "Notifications : entrep\xF4ts", "description": "Recevoir un signal lors des changements." }, { "key": "archiveWarehouse", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section entrep\xF4ts." }, { "key": "approveWarehouse", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

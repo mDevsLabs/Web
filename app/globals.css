@@ -5,6 +5,27 @@
 
 @custom-variant dark (&:is(.dark, .dark *));
 
+/*
+  Variante de Vibe (/vibe).
+
+  Vibe vit sous `.vibe-root` : son thème (clair ou sombre) est posé sur cet
+  élément, jamais sur <html>, et ses jetons de couleur sont ré-ancrés sous ce
+  scope (scripts/build-vibe-css.mjs). La variante `dark:` ci-dessus ne peut donc
+  pas lui servir : elle s'allumerait dès que mAI est en thème sombre, même
+  quand Vibe est en clair — un composant Vibe virerait au sombre dans une page
+  claire. Les composants Vibe emploient `vibe-dark:*`, qui ne suit QUE la racine
+  Vibe. Le CSS de Vibe, lui, est généré : la variante est déclarée ici parce
+  que Tailwind ne traite que cette feuille (app/globals.css).
+*/
+@custom-variant vibe-dark (
+  &:where(
+    .vibe-root.dark,
+    .vibe-root.dark *,
+    .vibe-root[data-theme="dark"],
+    .vibe-root[data-theme="dark"] *
+  )
+);
+
 @plugin "tailwindcss-animate";
 @plugin "@tailwindcss/typography";
 
@@ -109,6 +130,23 @@
   --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Tokens Liquid Glass (@mdevs/ui) harmonisés avec l'achromatisme mAI */
+  --md-font: var(--font-sans);
+  --md-text: var(--foreground);
+  --md-bg: var(--background);
+  --md-surface: oklch(1 0 0 / 0.82);
+  --md-solid: oklch(1 0 0);
+  --md-border: oklch(0.9 0 0 / 0.8);
+  --md-highlight: oklch(1 0 0 / 0.95);
+  --md-shadow: 0 16px 40px -20px oklch(0 0 0 / 0.08), 0 2px 8px -4px oklch(0 0 0 / 0.04);
+  --md-blur: 16px;
+  --md-radius: var(--radius);
+  --md-input-radius: 0.5rem;
+  --md-focus: var(--ring);
+  --md-success: var(--success);
+  --md-danger: var(--destructive);
+  --md-warning: var(--warning);
 }
 
 .dark {
@@ -162,6 +200,38 @@
   --shadow-composer-focus:
     0 0 0 1px oklch(1 0 0 / 0.1), 0 4px 16px -4px oklch(0 0 0 / 0.3),
     inset 0 1px 0 oklch(1 0 0 / 0.04);
+
+  /* Tokens Liquid Glass (@mdevs/ui) harmonisés avec l'achromatisme mAI */
+  --md-font: var(--font-sans);
+  --md-text: var(--foreground);
+  --md-bg: var(--background);
+  --md-surface: oklch(0.18 0 0 / 0.82);
+  --md-solid: oklch(0.16 0 0);
+  --md-border: oklch(0.28 0 0 / 0.65);
+  --md-highlight: oklch(1 0 0 / 0.10);
+  --md-shadow: 0 18px 48px -20px oklch(0 0 0 / 0.50), 0 3px 10px -4px oklch(0 0 0 / 0.35);
+  --md-blur: 16px;
+  --md-radius: var(--radius);
+  --md-input-radius: 0.5rem;
+  --md-focus: var(--ring);
+  --md-success: var(--success);
+  --md-danger: var(--destructive);
+  --md-warning: var(--warning);
+}
+
+/* Synchronisation systématique pour les composants @mdevs/ui sous mode sombre */
+.dark .md-root,
+.dark.md-root,
+html.dark .md-root {
+  --md-surface: oklch(0.18 0 0 / 0.82);
+  --md-solid: oklch(0.16 0 0);
+  --md-border: oklch(0.28 0 0 / 0.65);
+  --md-highlight: oklch(1 0 0 / 0.10);
+  --md-shadow: 0 18px 48px -20px oklch(0 0 0 / 0.50), 0 3px 10px -4px oklch(0 0 0 / 0.35);
+  --md-focus: var(--ring);
+  --md-success: var(--success);
+  --md-danger: var(--destructive);
+  --md-warning: var(--warning);
 }
 
 @layer base {
@@ -419,38 +489,64 @@ textarea:focus-visible {
    pas, on ajuste l'utilitaire — pas chaque appelant.
    ───────────────────────────────────────────────────────────── */
 
-/** Carte de contenu : surface pleine, sans flou ni ombre. */
+/**
+ * Carte de contenu : Liquid Glass avec translucidité satinée,
+ * reflet spéculaire supérieur et ombre volumétrique.
+ */
 @utility surface-card {
-  @apply rounded-xl border border-border bg-card p-4 sm:p-6;
-}
-
-/** Surface secondaire : encadré explicatif, info, avertissement. */
-@utility surface-muted {
-  @apply rounded-xl border border-border/60 bg-muted/30 p-4;
+  @apply rounded-xl border border-border/70 bg-card/85 p-4 sm:p-6 backdrop-blur-md;
+  box-shadow: inset 0 1px 0 var(--md-highlight), var(--md-shadow);
 }
 
 /**
- * Pastille filtrante ou indicatrice d'état.
+ * Surface secondaire : encadré feutré avec flou doux et liseré supérieur.
+ */
+@utility surface-muted {
+  @apply rounded-xl border border-border/50 bg-muted/40 p-4 backdrop-blur-sm;
+  box-shadow: inset 0 1px 0 var(--md-highlight);
+}
+
+/**
+ * Pastille filtrante ou indicatrice d'état Liquid Glass tactile.
  * L'état actif se porte sur l'attribut `data-active`, jamais sur une
  * classe conditionnelle : le composant n'a ainsi qu'une seule source
  * de vérité pour son style.
  */
 @utility chip {
   color: var(--muted-foreground);
-  background-color: transparent;
-  border-color: var(--border);
-  @apply inline-flex cursor-pointer items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-medium transition-colors;
+  background-color: color-mix(in oklab, var(--foreground) 3%, transparent);
+  border-color: color-mix(in oklab, var(--border) 80%, transparent);
+  box-shadow: inset 0 1px 0 var(--md-highlight);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  @apply inline-flex cursor-pointer items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-medium transition-all;
 
   &:hover {
     color: var(--foreground);
-    background-color: color-mix(in oklab, var(--foreground) 6%, transparent);
+    background-color: color-mix(in oklab, var(--foreground) 7%, transparent);
+    border-color: color-mix(in oklab, var(--border) 95%, transparent);
   }
 
   &[data-active="true"] {
     color: var(--background);
     background-color: var(--foreground);
     border-color: var(--foreground);
+    box-shadow: 0 2px 8px -2px color-mix(in oklab, var(--foreground) 30%, transparent);
   }
+}
+
+/**
+ * Surface Liquid Glass universelle (@mdevs/ui).
+ */
+@utility md-glass {
+  position: relative;
+  color: var(--foreground);
+  background: var(--md-surface);
+  border: 1px solid var(--md-border);
+  border-radius: var(--radius);
+  box-shadow: inset 0 1px 0 var(--md-highlight), var(--md-shadow);
+  backdrop-filter: blur(var(--md-blur)) saturate(145%);
+  -webkit-backdrop-filter: blur(var(--md-blur)) saturate(145%);
 }
 
 /**
@@ -504,12 +600,14 @@ textarea:focus-visible {
   }
 }
 
-/** Champ de saisie : le focus est porté par l'anneau, pas par la bordure. */
+/** Champ de saisie Liquid Glass : le focus est porté par l'anneau, pas par la bordure. */
 @utility field-input {
-  @apply w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm outline-none transition-shadow;
+  @apply w-full rounded-lg border border-border/80 bg-background/85 px-3 py-2.5 text-sm outline-none transition-all backdrop-blur-sm;
+  box-shadow: inset 0 1px 0 var(--md-highlight);
   &:focus-visible {
+    border-color: color-mix(in oklab, var(--foreground) 30%, var(--border));
     box-shadow: 0 0 0 3px
-      color-mix(in oklab, var(--foreground) 12%, transparent);
+      color-mix(in oklab, var(--foreground) 12%, transparent), inset 0 1px 0 var(--md-highlight);
   }
 }
 
@@ -660,4 +758,39 @@ textarea:focus-visible {
 }
 .dark .border-border\/40 {
   border-color: oklch(0.28 0 0 / 0.6);
+}
+
+/* Chrome & Navigation Liquid Glass (@mdevs/ui) */
+[data-sidebar="sidebar"] {
+  background-color: color-mix(in oklab, var(--sidebar) 85%, transparent);
+  backdrop-filter: blur(var(--md-blur));
+  -webkit-backdrop-filter: blur(var(--md-blur));
+  border-right: 1px solid var(--sidebar-border);
+  box-shadow: inset -1px 0 0 var(--md-highlight);
+}
+
+.dark [data-sidebar="sidebar"] {
+  background-color: color-mix(in oklab, var(--sidebar) 80%, transparent);
+  box-shadow: inset -1px 0 0 var(--md-highlight);
+}
+
+[data-sidebar="menu-button"]:hover,
+[data-sidebar="menu-sub-button"]:hover {
+  background-color: color-mix(in oklab, var(--sidebar-foreground) 6%, transparent);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+[data-sidebar="menu-button"][data-active="true"] {
+  background-color: color-mix(in oklab, var(--sidebar-foreground) 10%, transparent);
+  box-shadow: inset 0 1px 0 var(--md-highlight);
+}
+
+/* Chat Header Liquid Glass */
+.chat-header-glass {
+  background-color: color-mix(in oklab, var(--background) 80%, transparent);
+  backdrop-filter: blur(var(--md-blur));
+  -webkit-backdrop-filter: blur(var(--md-blur));
+  border-bottom: 1px solid var(--border);
+  box-shadow: inset 0 -1px 0 var(--md-highlight);
 }

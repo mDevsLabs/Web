@@ -1,0 +1,52 @@
+name: Wakies CI
+
+on:
+  push:
+    paths:
+      - 'apps/wakies/**'
+      - '.github/workflows/wakies-ci.yml'
+  pull_request:
+    paths:
+      - 'apps/wakies/**'
+      - '.github/workflows/wakies-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Lint, typecheck, tests et build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: apps/wakies
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: apps/wakies/package-lock.json
+
+      - name: Installation des dépendances
+        run: npm ci
+
+      - name: Vérification du formatage
+        run: npm run check-format
+
+      - name: Linting ESLint
+        run: npm run lint
+
+      - name: Vérification des types TypeScript
+        run: npm run typecheck
+
+      - name: Tests unitaires Vitest
+        run: npm test
+
+      - name: Build de production
+        run: npm run build

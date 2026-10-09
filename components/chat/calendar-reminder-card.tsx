@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarPlusIcon, DownloadIcon } from "lucide-react";
+import { CalendarPlusIcon, DownloadIcon } from "@mdevs/icons";
 import { toast } from "sonner";
 
 type CalendarOutput = {

@@ -9,10 +9,11 @@ import {
   isPaidTier,
   verifyToken,
 } from "./config.ts";
+import { injectMaiIdentityPrompt } from "./mai-identity.ts";
 import { maiModelsList } from "./maiModels.ts";
 
 function getOpenRouterApiKey(userCustomKey?: string | null): string {
-  if (userCustomKey && userCustomKey.trim().startsWith("sk-or-")) {
+  if (userCustomKey?.trim().startsWith("sk-or-")) {
     return userCustomKey.trim();
   }
   return Deno.env.get("OPENROUTER_API_KEY") || "";
@@ -20,17 +21,19 @@ function getOpenRouterApiKey(userCustomKey?: string | null): string {
 
 // ─────────────────────────────────────────────
 // Alias cloud mAI-2 -> backends OpenRouter (cachés aux utilisateurs).
-// mAI-2      -> DeepSeek V4 Flash 0731 (1.3M ctx / 384k out)
-// mAI-2-Mini -> MiniMax M3 (1M ctx / 128k out)
+// mAI-2      -> DeepSeek V4.1 Flash (1M ctx)
+// mAI-2-Mini -> GLM 5.3 Flash (1M ctx)
 // Disponibles pour tous les plans (Free, Plus, Pro, Max).
 // ─────────────────────────────────────────────
 const MAI_CLOUD_ALIASES: Record<string, string> = {
-  "mai-2": "deepseek/deepseek-v4-flash-0731",
-  "mai-2-mini": "minimax/minimax-m3",
+  "mai-2": "deepseek/deepseek-v4.1-flash",
+  "mai-2-mini": "z-ai/glm-5.3-flash",
 };
 
 function normalizeMaiAliasId(model?: string | null): string {
-  let m = String(model || "").toLowerCase().trim();
+  let m = String(model || "")
+    .toLowerCase()
+    .trim();
   if (m.startsWith("mdevslabs/")) m = m.slice("mdevslabs/".length);
   return m;
 }
@@ -45,7 +48,10 @@ function resolveMaiCloudBackend(model?: string | null): string | null {
 // /v1/models pour éviter de renvoyer des modèles inutilisables en chat.
 // ─────────────────────────────────────────────
 function isBatchVariantId(id?: string | null): boolean {
-  return String(id || "").trim().toLowerCase().endsWith(":batch");
+  return String(id || "")
+    .trim()
+    .toLowerCase()
+    .endsWith(":batch");
 }
 
 function buildMaiCloudPublicModels(nowSec: number) {
@@ -58,8 +64,7 @@ function buildMaiCloudPublicModels(nowSec: number) {
       modality: "text->text",
       output_modalities: ["text"],
     },
-    created:
-      Math.floor(new Date(m.releaseDate).getTime() / 1000) || nowSec,
+    created: Math.floor(new Date(m.releaseDate).getTime() / 1000) || nowSec,
     description: m.description || "",
     id: m.id,
     maxContext: m.contextWindow,
@@ -119,7 +124,8 @@ export function registerModelRoutes(app: Hono) {
 
       const { weekStartStr, nextResetIso } = getWeekData();
 
-      const userResult = await sql`SELECT id, tier, email, username, phone, avatar_url FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
+      const userResult =
+        await sql`SELECT id, tier, email, username, phone, avatar_url FROM users WHERE id::text = ${userId}::text OR username = ${userId}::text OR email = ${userId}::text LIMIT 1`;
       const user = userResult[0];
       const resolvedUserId = user ? user.id : userId;
 
@@ -234,7 +240,7 @@ export function registerModelRoutes(app: Hono) {
       });
     } catch (err: any) {
       console.error("[log-usage] Error:", err);
-      return c.json({ error: "Erreur serveur.", details: err?.message }, 500);
+      return c.json({ details: err?.message, error: "Erreur serveur." }, 500);
     }
   };
 
@@ -259,7 +265,7 @@ export function registerModelRoutes(app: Hono) {
       const rawModels: any[] = json.data || [];
 
       let filtered = rawModels
-        .filter((m) => m && m.id && !m.id.startsWith("openrouter/"))
+        .filter((m) => m?.id && !m.id.startsWith("openrouter/"))
         .filter((m) => !isBatchVariantId(m.id))
         .filter((m) => {
           const modality = m.architecture?.modality || "";
@@ -297,7 +303,9 @@ export function registerModelRoutes(app: Hono) {
         );
       }
 
-      const lagunaIdx = filtered.findIndex((m) => m.id === "poolside/laguna-xs-2.1:free");
+      const lagunaIdx = filtered.findIndex(
+        (m) => m.id === "poolside/laguna-xs-2.1:free"
+      );
       if (lagunaIdx > 0) {
         const [laguna] = filtered.splice(lagunaIdx, 1);
         filtered.unshift(laguna);
@@ -314,7 +322,7 @@ export function registerModelRoutes(app: Hono) {
       } catch {}
 
       return c.json({ data: filtered, object: "list" });
-    } catch (_err) {
+    } catch {
       let fallback = [
         {
           architecture: {
@@ -323,8 +331,7 @@ export function registerModelRoutes(app: Hono) {
             output_modalities: ["text"],
           },
           created: 0,
-          description:
-            "Modèle IA Laguna XS 2.1 haute performance par Poolside",
+          description: "Modèle IA Laguna XS 2.1 haute performance par Poolside",
           id: "poolside/laguna-xs-2.1:free",
           maxContext: 128_000,
           maxOutput: 4096,
@@ -655,18 +662,29 @@ export function registerModelRoutes(app: Hono) {
 
       // Nettoyer le body : retirer tout champ `api_key` ou `Authorization` injecté par le client
       // pour empêcher tout contournement de la clé serveur.
-      const { api_key: _ck, authorization: _ca, Authorization: _cA, ...safeBody } =
-        body as Record<string, any>;
+      const {
+        api_key: _ck,
+        authorization: _ca,
+        Authorization: _cA,
+        ...safeBody
+      } = body as Record<string, any>;
 
       // Transférer l'alias mAI-2 vers le backend OpenRouter réel (caché).
       if (maiCloudBackend) {
         safeBody.model = maiCloudBackend;
       }
 
+      // Prompt système obligatoire « You are mAI-2 … » pour les alias mAI-2.
+      const identifiedBody = injectMaiIdentityPrompt(
+        safeBody,
+        modelRequested,
+        "openai"
+      );
+
       const openRouterRes = await fetch(
         "https://openrouter.ai/api/v1/chat/completions",
         {
-          body: JSON.stringify(safeBody),
+          body: JSON.stringify(identifiedBody),
           headers: {
             Authorization: `Bearer ${apiKey}`,
             "Content-Type": "application/json",
@@ -685,7 +703,7 @@ export function registerModelRoutes(app: Hono) {
             ON CONFLICT (user_id, week_start)
             DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
           `;
-        } catch (_e) {}
+        } catch {}
       }
 
       return new Response(openRouterRes.body, {
@@ -734,7 +752,9 @@ export function registerModelRoutes(app: Hono) {
       }
 
       const modelRequested = body.model;
-      const modelStr = String(modelRequested || "").toLowerCase().trim();
+      const modelStr = String(modelRequested || "")
+        .toLowerCase()
+        .trim();
       const maiCloudBackend = resolveMaiCloudBackend(modelRequested);
 
       const isFreePlan = !isPaidTier(userPlan);
@@ -802,17 +822,28 @@ export function registerModelRoutes(app: Hono) {
       }
 
       // Nettoyer le body : retirer tout champ `api_key` ou `Authorization` injecté par le client
-      const { api_key: _ck, authorization: _ca, Authorization: _cA, ...safeBody } =
-        body as Record<string, any>;
+      const {
+        api_key: _ck,
+        authorization: _ca,
+        Authorization: _cA,
+        ...safeBody
+      } = body as Record<string, any>;
 
       if (maiCloudBackend) {
         safeBody.model = maiCloudBackend;
       }
 
+      // Prompt système obligatoire « You are mAI-2 … » pour les alias mAI-2.
+      const identifiedBody = injectMaiIdentityPrompt(
+        safeBody,
+        modelRequested,
+        "anthropic"
+      );
+
       const openRouterRes = await fetch(
         "https://openrouter.ai/api/v1/chat/completions",
         {
-          body: JSON.stringify(safeBody),
+          body: JSON.stringify(identifiedBody),
           headers: {
             Authorization: `Bearer ${apiKey}`,
             "Content-Type": "application/json",
@@ -831,7 +862,7 @@ export function registerModelRoutes(app: Hono) {
             ON CONFLICT (user_id, week_start)
             DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
           `;
-        } catch (_e) {}
+        } catch {}
       }
 
       return new Response(openRouterRes.body, {
@@ -879,7 +910,9 @@ export function registerModelRoutes(app: Hono) {
 
       const paramModel = c.req.param("model");
       const modelRequested = body.model || paramModel || pathModel;
-      const modelStr = String(modelRequested || "").toLowerCase().trim();
+      const modelStr = String(modelRequested || "")
+        .toLowerCase()
+        .trim();
       const maiCloudBackend = resolveMaiCloudBackend(modelRequested);
 
       const isFreePlan = !isPaidTier(userPlan);
@@ -946,13 +979,21 @@ export function registerModelRoutes(app: Hono) {
       }
 
       // Nettoyer le body : retirer tout champ `api_key` ou `Authorization` injecté par le client
-      const { api_key: _ck, authorization: _ca, Authorization: _cA, ...safeBody } =
-        body as Record<string, any>;
+      const {
+        api_key: _ck,
+        authorization: _ca,
+        Authorization: _cA,
+        ...safeBody
+      } = body as Record<string, any>;
 
-      const openRouterPayload = {
-        ...safeBody,
-        model: maiCloudBackend || body.model || modelRequested,
-      };
+      const openRouterPayload = injectMaiIdentityPrompt(
+        {
+          ...safeBody,
+          model: maiCloudBackend || body.model || modelRequested,
+        },
+        modelRequested,
+        "gemini"
+      );
 
       const openRouterRes = await fetch(
         "https://openrouter.ai/api/v1/chat/completions",
@@ -976,7 +1017,7 @@ export function registerModelRoutes(app: Hono) {
             ON CONFLICT (user_id, week_start)
             DO UPDATE SET tokens_used = weekly_usage.tokens_used + 1
           `;
-        } catch (_e) {}
+        } catch {}
       }
 
       return new Response(openRouterRes.body, {

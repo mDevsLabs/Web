@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { Suspense } from "react";
 import { PlatformBridge } from "@/components/common/platform-bridge";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 import "./globals.css";
+import "@mdevs/ui/styles.css";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
@@ -105,7 +107,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased">
+      <body className="antialiased md-root">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -113,7 +115,9 @@ export default function RootLayout({
           enableSystem
         >
           <TooltipProvider>
-            <PlatformBridge />
+            <Suspense fallback={null}>
+              <PlatformBridge />
+            </Suspense>
             {children}
             <Toaster
               position="top-center"

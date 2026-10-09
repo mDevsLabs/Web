@@ -1,0 +1,196 @@
+{
+  "name": "mai-coder",
+  "version": "0.9.1",
+  "private": true,
+  "packageManager": "pnpm@10.32.1",
+  "type": "module",
+  "author": "mDevsLabs",
+  "main": "electron/main.bundle.cjs",
+  "scripts": {
+    "sync:builtin-team": "node scripts/sync-builtin-team-repo.mjs",
+    "build:main": "node esbuild.main.mjs",
+    "build:main:watch": "node esbuild.main.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "build:renderer": "vite build",
+    "prebuild": "npm run typecheck && npm run test -- --run",
+    "build": "npm run sync:builtin-team && npm run build:main && npm run build:renderer",
+    "preview": "npm run build:renderer && vite preview",
+    "icons": "node scripts/export-app-icon.mjs",
+    "readme:screenshots": "node scripts/export-readme-screenshots.mjs",
+    "desktop": "npm run build && cross-env MAI_CODER_LOAD_DIST=1 electron .",
+    "desktop:dev": "npm run dev",
+    "dev": "npm run build:main && node scripts/free-port-5173.mjs && concurrently -k \"npm run build:main:watch\" \"vite\" \"wait-on http://127.0.0.1:5173 --timeout 30000 && electron .\"",
+    "dev:debug": "npm run build:main && node scripts/free-port-5173.mjs && concurrently -k \"npm run build:main:watch\" \"vite\" \"wait-on http://127.0.0.1:5173 --timeout 30000 && cross-env MAI_CODER_DEVTOOLS=1 electron .\"",
+    "start:electron": "npm run desktop",
+    "rebuild:native": "electron-builder install-app-deps",
+    "release:mac": "npm run typecheck && npm run test -- --run && npm run build && npm run icons && npm run rebuild:native && electron-builder --mac dmg zip --publish never",
+    "release:mac:unsigned": "npm run typecheck && npm run test -- --run && npm run build && npm run icons && npm run rebuild:native && cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac dmg zip --publish never",
+    "release:mac:dir": "npm run typecheck && npm run test -- --run && npm run build && npm run icons && npm run rebuild:native && electron-builder --mac dir --publish never",
+    "release:mac:arm64": "npm run typecheck && npm run test -- --run && npm run build && npm run icons && npm run rebuild:native && cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac dmg zip --arm64 --publish never",
+    "release:mac:x64": "npm run typecheck && npm run test -- --run && npm run build && npm run icons && npm run rebuild:native && cross-env CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac dmg zip --x64 --publish never",
+    "release:win": "npm run typecheck && npm run test -- --run && npm run build && npm run icons && npm run rebuild:native && electron-builder --win nsis msi --x64 --publish never",
+    "release:win:dir": "npm run typecheck && npm run test -- --run && npm run build && npm run icons && npm run rebuild:native && electron-builder --win dir --x64 --publish never",
+    "release:linux": "npm run typecheck && npm run test -- --run && npm run build && npm run icons && npm run rebuild:native && electron-builder --linux AppImage deb --x64 --publish never",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "build": {
+    "appId": "com.maicoder.app",
+    "productName": "mAI Coder",
+    "artifactName": "mAI-Coder-${version}-${arch}.${ext}",
+    "npmRebuild": false,
+    "directories": {
+      "output": "release"
+    },
+    "afterSign": "scripts/notarize.mjs",
+    "files": [
+      "dist/**/*",
+      "electron/main.bundle.cjs",
+      "electron/preload.cjs",
+      "resources/**/*",
+      "package.json",
+      "!**/*.map",
+      "!**/*.tsbuildinfo"
+    ],
+    "asarUnpack": [
+      "**/*.node"
+    ],
+    "win": {
+      "icon": "resources/icons/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "msi",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "mac": {
+      "icon": "resources/icons/icon.icns",
+      "category": "public.app-category.developer-tools",
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.inherit.plist",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ]
+    },
+    "dmg": {
+      "icon": "resources/icons/icon.icns"
+    },
+    "linux": {
+      "icon": "resources/icons/icon.png",
+      "category": "Development",
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "deb",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": "always",
+      "createStartMenuShortcut": true,
+      "differentialPackage": true
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "mDevsLabs",
+      "repo": "Web",
+      "releaseType": "release"
+    }
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/diff": "^5.2.3",
+    "@types/minimatch": "^5.1.2",
+    "@types/node": "^24.19.1",
+    "@types/node-forge": "^1.3.14",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/ssh2-sftp-client": "^9.0.6",
+    "@types/ws": "^8.18.2",
+    "@vitejs/plugin-react": "^4.7.0",
+    "concurrently": "^9.2.4",
+    "cross-env": "^7.0.3",
+    "electron": "44.5.1",
+    "electron-builder": "^26.17.0",
+    "@electron/notarize": "^2.5.0",
+    "electron-devtools-installer": "^4.0.0",
+    "esbuild": "^0.28.2",
+    "jsdom": "^25.0.1",
+    "png-to-ico": "^3.0.2",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.4",
+    "vitest": "^3.2.7",
+    "wait-on": "^8.0.5"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.131.0",
+    "@chenglou/pretext": "^0.0.9",
+    "@fontsource/inter": "^5.3.0",
+    "@google/generative-ai": "^0.24.1",
+    "@larksuiteoapi/node-sdk": "^1.74.0",
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "@monaco-editor/react": "^4.7.0",
+    "@tanstack/react-virtual": "^3.14.13",
+    "@types/form-data": "^2.5.2",
+    "@vscode/sudo-prompt": "^9.3.2",
+    "@xterm/addon-fit": "^0.10.0",
+    "@xterm/addon-search": "^0.16.0",
+    "@xterm/xterm": "^5.5.0",
+    "better-sqlite3": "^12.11.1",
+    "chokidar": "^3.6.0",
+    "diff": "^5.2.2",
+    "electron-updater": "^6.8.10",
+    "form-data": "^4.0.6",
+    "https-proxy-agent": "^8.0.0",
+    "iconv-lite": "^0.7.3",
+    "minimatch": "^9.0.9",
+    "monaco-editor": "^0.57.0",
+    "node-forge": "^1.4.0",
+    "node-pty": "^1.1.0",
+    "openai": "^4.104.0",
+    "playwright-core": "^1.63.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-markdown": "^10.1.0",
+    "recharts": "^2.15.4",
+    "remark-gfm": "^4.0.1",
+    "sharp": "^0.35.5",
+    "shiki": "^4.5.0",
+    "ssh2": "^1.17.0",
+    "ssh2-sftp-client": "^11.0.0",
+    "vscode-jsonrpc": "^8.2.1",
+    "ws": "^8.18.2"
+  }
+}

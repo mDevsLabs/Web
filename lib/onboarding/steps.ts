@@ -1,16 +1,4 @@
-import {
-  BadgeCheckIcon,
-  CloudIcon,
-  FolderKanbanIcon,
-  GaugeIcon,
-  ImageIcon,
-  MessagesSquareIcon,
-  PenSquareIcon,
-  PuzzleIcon,
-  SettingsIcon,
-  SparklesIcon,
-  Volume2Icon,
-} from "lucide-react";
+import { BadgeCheckIcon, CloudIcon, FolderKanbanIcon, GaugeIcon, ImageIcon, MessagesSquareIcon, PenSquareIcon, PuzzleIcon, SettingsIcon, SparklesIcon, Volume2Icon } from "@mdevs/icons";
 import type { ComponentType } from "react";
 
 import { TIER_KEYS, TIER_LIMITS } from "@/lib/plans/tier-limits";
@@ -88,12 +76,12 @@ export const ONBOARDING_STEPS: OnboardingStep[] = [
   },
   {
     content:
-      "Retrouvez ici tous vos fichiers, documents et ressources générés. Le stockage centralise vos contenus pour les réutiliser dans vos discussions.",
+      "Retrouvez ici tous vos fichiers, documents et ressources générés. La Bibliothèque centralise vos contenus (stockage cloud) pour les réutiliser dans vos discussions.",
     icon: CloudIcon,
     id: "library",
     route: "/library",
     selector: '[data-onboarding="nav-library"]',
-    title: "Votre stockage cloud",
+    title: "Votre bibliothèque (stockage)",
   },
   {
     content:

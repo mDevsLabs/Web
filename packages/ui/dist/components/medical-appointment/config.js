@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "MedicalAppointment", "label": "Rendez-vous m\xE9dicaux", "description": "G\xE9rez vos rendez-vous m\xE9dicaux depuis une interface claire.", "fields": [{ "key": "title", "label": "Objet", "kind": "text", "required": true }, { "key": "practitioner", "label": "Praticien", "kind": "text", "required": true }, { "key": "scheduledOn", "label": "Date", "kind": "date", "required": true }, { "key": "location", "label": "Lieu", "kind": "text", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["scheduled", "confirmed", "completed", "cancelled"] }], "titleKey": "title", "settings": [{ "key": "notifyMedicalAppointment", "label": "Notifications : rendez-vous m\xE9dicaux", "description": "Recevoir un signal lors des changements." }, { "key": "archiveMedicalAppointment", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section rendez-vous m\xE9dicaux." }, { "key": "approveMedicalAppointment", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

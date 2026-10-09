@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  CheckIcon,
-  LanguagesIcon,
-  Loader2Icon,
-  Volume2Icon,
-} from "lucide-react";
+import { CheckIcon, LanguagesIcon, Loader2Icon, Volume2Icon } from "@mdevs/icons";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
 import useSWR from "swr";

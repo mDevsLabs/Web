@@ -102,7 +102,6 @@ export function inputSchemaFor(toolDefinition: McpToolDefinition) {
         case "null":
           schema = z.null();
           break;
-        case "string":
         default:
           schema = z.string();
           break;

@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Assignment", "label": "Travaux \xE0 rendre", "description": "G\xE9rez vos travaux \xE0 rendre depuis une interface claire.", "fields": [{ "key": "title", "label": "Titre", "kind": "text", "required": true }, { "key": "course", "label": "Formation", "kind": "text", "required": true }, { "key": "dueDate", "label": "\xC9ch\xE9ance", "kind": "date", "required": true }, { "key": "maxScore", "label": "Note maximale", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "open", "closed"] }], "titleKey": "title", "settings": [{ "key": "notifyAssignment", "label": "Notifications : travaux \xE0 rendre", "description": "Recevoir un signal lors des changements." }, { "key": "archiveAssignment", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section travaux \xE0 rendre." }, { "key": "approveAssignment", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

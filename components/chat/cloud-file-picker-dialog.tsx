@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  CheckSquareIcon,
-  CloudIcon,
-  Loader2Icon,
-  SearchIcon,
-  SparklesIcon,
-  SquareIcon,
-  UploadIcon,
-} from "lucide-react";
+import { CheckSquareIcon, LibraryIcon, Loader2Icon, SearchIcon, SparklesIcon, SquareIcon, UploadIcon } from "@mdevs/icons";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import {
@@ -110,8 +102,8 @@ export function CloudFilePickerDialog({
       <DialogContent className="sm:max-w-2xl max-h-[85vh] flex flex-col p-6 gap-4">
         <DialogHeader className="gap-1">
           <div className="flex items-center gap-2 text-primary font-semibold text-xs uppercase tracking-wider">
-            <CloudIcon className="size-4" />
-            Stockage Cloud
+            <LibraryIcon className="size-4" />
+            Bibliothèque
           </div>
           <DialogTitle className="text-xl">
             Sélectionner des fichiers pour l'IA
@@ -139,7 +131,9 @@ export function CloudFilePickerDialog({
           {isLoading ? (
             <div className="py-16 flex flex-col items-center justify-center text-muted-foreground gap-3">
               <Loader2Icon className="size-6 animate-spin text-primary" />
-              <span className="text-xs">Chargement de votre stockage...</span>
+              <span className="text-xs">
+                Chargement de votre bibliothèque...
+              </span>
             </div>
           ) : filteredFiles.length === 0 ? (
             <div className="py-14 flex flex-col items-center justify-center text-muted-foreground text-center p-6 gap-2">
@@ -147,12 +141,12 @@ export function CloudFilePickerDialog({
               <p className="text-xs font-medium text-foreground">
                 {searchQuery
                   ? "Aucun résultat trouvé"
-                  : "Votre stockage est vide"}
+                  : "Votre bibliothèque est vide"}
               </p>
               <p className="text-[11px] text-muted-foreground max-w-xs">
                 {searchQuery
                   ? "Modifiez votre recherche pour retrouver vos fichiers."
-                  : "Importez d'abord des fichiers dans la section Stockage pour les retrouver ici."}
+                  : "Importez d'abord des fichiers dans la Bibliothèque pour les retrouver ici."}
               </p>
             </div>
           ) : (

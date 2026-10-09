@@ -1,0 +1,72 @@
+{
+  "model": "SupportTicket",
+  "config": {
+    "name": "SupportTicket",
+    "label": "Tickets de support",
+    "description": "Gérez vos tickets de support depuis une interface claire.",
+    "fields": [
+      {
+        "key": "subject",
+        "label": "Objet",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "customer",
+        "label": "Client",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "priority",
+        "label": "Priorité",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "createdOn",
+        "label": "Création",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "open",
+          "in-progress",
+          "resolved",
+          "closed"
+        ]
+      }
+    ],
+    "titleKey": "subject",
+    "settings": [
+      {
+        "key": "notifySupportTicket",
+        "label": "Notifications : tickets de support",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveSupportTicket",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section tickets de support."
+      },
+      {
+        "key": "approveSupportTicket",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "support-ticket-demo-1",
+    "subject": "Aide à l’intégration",
+    "customer": "Maison Horizon",
+    "priority": "Priorité démo",
+    "createdOn": "2026-10-04",
+    "status": "open"
+  }
+}

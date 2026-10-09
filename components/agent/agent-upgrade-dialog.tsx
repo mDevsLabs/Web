@@ -1,6 +1,6 @@
 "use client";
 
-import { CrownIcon, SparklesIcon, ZapIcon } from "lucide-react";
+import { CrownIcon, SparklesIcon, ZapIcon } from "@mdevs/icons";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";

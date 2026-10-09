@@ -94,13 +94,31 @@ describe("Calcul des occurrences (règle + fuseau IANA)", () => {
   });
 
   it("reprogramme une règle one-shot avec sa date locale", () => {
+    // `now` est injecté explicitement. Sans lui, `resolveOnceDueAt` compare au
+    // `new Date()` du moment et le test devenait rouge dès que l'horloge
+    // dépassait la date du fixture (2026-10-01T09:30) — un test qui depend du
+    // jour où on le lance. Le code de production, lui, refuse à raison une date
+    // passée : c'est le fixture qui était bancal, pas la règle.
     const resolution = resolveOnceDueAt({
+      now: new Date("2026-01-01T00:00:00.000Z"),
       rule: { kind: "once", runAt: "2026-10-01T09:30" },
       timezone: "Europe/Paris",
     });
     expect(resolution.ok).toBe(true);
     if (resolution.ok) {
       expect(resolution.dueAt.toISOString()).toBe("2026-10-01T07:30:00.000Z");
+    }
+  });
+
+  it("refuse une date d'exécution déjà passée", () => {
+    const resolution = resolveOnceDueAt({
+      now: new Date("2026-10-02T00:00:00.000Z"),
+      rule: { kind: "once", runAt: "2026-10-01T09:30" },
+      timezone: "Europe/Paris",
+    });
+    expect(resolution.ok).toBe(false);
+    if (!resolution.ok) {
+      expect(resolution.error).toContain("futur");
     }
   });
 

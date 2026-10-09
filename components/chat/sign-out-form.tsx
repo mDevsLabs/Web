@@ -8,7 +8,9 @@ export const SignOutForm = () => {
 
   const handleLogout = async () => {
     await logoutAction();
-    router.push("/login");
+    // Même parcours que la déconnexion du menu utilisateur : sortie vers le
+    // site public avec invitation à se reconnecter (?connexion=1).
+    router.push("/site?connexion=1");
     router.refresh();
   };
 

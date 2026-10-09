@@ -3,6 +3,7 @@ import { z } from "zod";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { errorResponse, logError } from "@/lib/api/error-response";
+import { enforceApiRateLimit } from "@/lib/api/rate-limit";
 import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
 import {
   getAgentMemories,
@@ -24,6 +25,16 @@ export async function POST(request: Request) {
   }
 
   const userId = maiUser.id || maiUser.email;
+
+  // Résumé généré sur l'ensemble des mémoires : un appel modèle complet.
+  const limited = await enforceApiRateLimit({
+    action: "memory_summary",
+    request,
+    userId,
+  });
+  if (limited) {
+    return limited;
+  }
 
   try {
     const json = await request.json().catch(() => ({}));

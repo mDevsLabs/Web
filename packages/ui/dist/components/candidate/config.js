@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Candidate", "label": "Candidatures", "description": "G\xE9rez vos candidatures depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "email", "label": "E-mail", "kind": "email", "required": true }, { "key": "position", "label": "Poste", "kind": "text", "required": true }, { "key": "score", "label": "\xC9valuation", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["applied", "screening", "interview", "offer", "rejected"] }], "titleKey": "name", "settings": [{ "key": "notifyCandidate", "label": "Notifications : candidatures", "description": "Recevoir un signal lors des changements." }, { "key": "archiveCandidate", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section candidatures." }, { "key": "approveCandidate", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  ClockIcon,
-  FileIcon,
-  FolderKanbanIcon,
-  MessageSquareIcon,
-  PinIcon,
-  SearchIcon,
-} from "lucide-react";
+import { ClockIcon, FileIcon, FolderKanbanIcon, MessageSquareIcon, PinIcon, SearchIcon } from "@mdevs/icons";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { getFileIcon } from "@/app/(chat)/library/page";

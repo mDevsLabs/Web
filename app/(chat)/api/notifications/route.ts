@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { errorResponse } from "@/lib/api/error-response";
-import { getMaiUser } from "@/lib/auth/session";
+import { requireUser } from "@/lib/auth/require-user";
 import {
   broadcastNewsNotification,
   createNotification,
@@ -31,11 +31,11 @@ function isAdminEmail(email?: string | null): boolean {
 }
 
 export async function GET(request: Request) {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
+  const { userId } = session;
   const { searchParams } = new URL(request.url);
   const limit = Math.min(
     Math.max(Number.parseInt(searchParams.get("limit") || "20", 10), 1),
@@ -57,10 +57,11 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
+  const { user } = session;
   const body = await request.json().catch(() => ({}));
   const parsed = notificationSchema.safeParse(body);
   if (!parsed.success) {
@@ -101,26 +102,24 @@ export async function POST(request: Request) {
       message: "Type de notification invalide.",
     });
   }
-  const userId = user.id || user.email;
   const created = await createNotification({
     body: notifBody ?? null,
     link: link ?? null,
     title,
     type: type as any,
-    userId,
+    userId: session.userId,
   });
   return NextResponse.json(created);
 }
 
 export async function PATCH(request: Request) {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
   const body = await request.json().catch(() => ({}));
   if (body.action === "markAllRead") {
-    await markAllNotificationsRead(userId);
+    await markAllNotificationsRead(session.userId);
     return NextResponse.json({ success: true });
   }
   return errorResponse("invalid_request", {
@@ -129,11 +128,11 @@ export async function PATCH(request: Request) {
 }
 
 export async function DELETE(request: Request) {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
+  const { userId } = session;
   const { searchParams } = new URL(request.url);
   const clearRead = searchParams.get("clearRead") === "true";
   const all = searchParams.get("all") === "true";

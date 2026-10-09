@@ -1,0 +1,3 @@
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const RainbowIcon = /* @__PURE__ */ createIcon('RainbowIcon', [["path", { "d": "M22 17a10 10 0 0 0-20 0" }], ["path", { "d": "M6 17a6 6 0 0 1 12 0" }], ["path", { "d": "M10 17a2 2 0 0 1 4 0" }]]);

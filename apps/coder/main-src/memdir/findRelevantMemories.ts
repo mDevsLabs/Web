@@ -1,0 +1,510 @@
+import * as fs from "node:fs/promises";
+import * as path from "node:path";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import { HttpsProxyAgent } from "https-proxy-agent";
+import OpenAI from "openai";
+import type { ProviderIdentitySettings } from "../../src/providerIdentitySettings.js";
+import { resolveProviderIdentityWithOverride } from "../../src/providerIdentitySettings.js";
+import { runCodexOAuthResponseText } from "../llm/codexOAuthAdapter.js";
+import { resolveModelRequest } from "../llm/modelResolve.js";
+import {
+  applyAnthropicProviderIdentity,
+  applyOpenAIProviderIdentity,
+  buildAnthropicAuthOptions,
+  buildAnthropicProviderIdentityMetadata,
+  createAnthropicClient,
+  prependProviderIdentitySystemPrompt,
+  providerIdentityForOAuthAuth,
+} from "../llm/providerIdentity.js";
+import { ensureFreshOAuthAuthForRequest } from "../llm/providerOAuthLogin.js";
+import {
+  openAICompatibleEffectiveTemperature,
+  resolveRequestedTemperature,
+} from "../llm/thinkingLevel.js";
+import { checkMaiQuotaAvailable } from "../maiAccountStore.js";
+import type {
+  ModelRequestParadigm,
+  ProviderOAuthAuthRecord,
+  ShellSettings,
+  ThinkingLevel,
+} from "../settingsStore.js";
+import {
+  formatMemoryManifest,
+  type MemoryHeader,
+  scanMemoryFiles,
+} from "./memoryScan.js";
+import { getAutoMemPath } from "./paths.js";
+
+export type RelevantMemory = {
+  path: string;
+  mtimeMs: number;
+};
+
+export type RuntimeMemoryModel = {
+  requestModelId: string;
+  paradigm: ModelRequestParadigm;
+  requestApiKey: string;
+  requestBaseURL?: string;
+  requestProxyUrl?: string;
+  requestProviderId?: string;
+  requestOAuthAuth?: ProviderOAuthAuthRecord;
+  temperatureMode?: "auto" | "custom";
+  temperature?: number;
+  thinkingLevel?: ThinkingLevel;
+  providerIdentity?: ProviderIdentitySettings;
+};
+
+function throwIfAborted(signal?: AbortSignal): void {
+  if (signal?.aborted) {
+    throw new DOMException("Aborted", "AbortError");
+  }
+}
+
+const MAX_SELECTED = 5;
+const MAX_MEMORY_LINES = 120;
+const MAX_MEMORY_BYTES = 12_000;
+
+const SELECT_MEMORIES_SYSTEM_PROMPT = `You are selecting memory files that will be useful to an agent handling the user's current request.
+
+You will receive:
+- the current query
+- a list of available memory files with filenames, types, timestamps, and descriptions
+
+Return JSON with this exact shape:
+{"selected_memories":["file1.md","folder/file2.md"]}
+
+Rules:
+- Select at most 5 files.
+- Only choose files that are clearly useful right now.
+- Prefer precision over recall.
+- If nothing looks clearly useful, return an empty array.
+- Do not invent filenames that are not in the manifest.`;
+
+function tokenize(text: string): string[] {
+  return (text.toLowerCase().match(/[a-z0-9_./-]{3,}/g) ?? []).filter(
+    (s) => s.length >= 3
+  );
+}
+
+export function selectRelevantMemoriesHeuristically(
+  query: string,
+  memories: MemoryHeader[],
+  alreadySurfaced: ReadonlySet<string> = new Set()
+): string[] {
+  const queryTerms = new Set(tokenize(query));
+  const scored = memories
+    .filter((m) => !alreadySurfaced.has(m.filePath))
+    .map((m) => {
+      const hay = `${m.filename} ${m.description ?? ""}`.toLowerCase();
+      let score = 0;
+      for (const term of queryTerms) {
+        if (hay.includes(term)) {
+          score += term.length >= 8 ? 4 : 2;
+        }
+      }
+      if (m.description && score > 0) {
+        score += 1;
+      }
+      score +=
+        Math.max(0, 1 - (Date.now() - m.mtimeMs) / (1000 * 60 * 60 * 24 * 30)) *
+        0.5;
+      return { filename: m.filename, score };
+    })
+    .filter((x) => x.score > 0)
+    .sort((a, b) => b.score - a.score || a.filename.localeCompare(b.filename))
+    .slice(0, MAX_SELECTED);
+  return scored.map((x) => x.filename);
+}
+
+function extractTextContent(raw: unknown): string {
+  if (typeof raw === "string") {
+    return raw;
+  }
+  if (Array.isArray(raw)) {
+    return raw
+      .map((part) => {
+        if (typeof part === "string") {
+          return part;
+        }
+        if (
+          part &&
+          typeof part === "object" &&
+          "text" in part &&
+          typeof (part as { text?: unknown }).text === "string"
+        ) {
+          return (part as { text: string }).text;
+        }
+        return "";
+      })
+      .join("\n");
+  }
+  return "";
+}
+
+function parseSelectedFilenames(
+  raw: string,
+  validFilenames: Set<string>
+): string[] {
+  const trimmed = raw.trim();
+  if (!trimmed) {
+    return [];
+  }
+  let parsed: unknown = null;
+  try {
+    parsed = JSON.parse(trimmed);
+  } catch {
+    const match = trimmed.match(/\{[\s\S]*\}/);
+    if (match) {
+      try {
+        parsed = JSON.parse(match[0]);
+      } catch {
+        parsed = null;
+      }
+    }
+  }
+  if (
+    !parsed ||
+    typeof parsed !== "object" ||
+    !("selected_memories" in parsed)
+  ) {
+    return [];
+  }
+  const selected = (parsed as { selected_memories?: unknown })
+    .selected_memories;
+  if (!Array.isArray(selected)) {
+    return [];
+  }
+  return selected
+    .filter((x): x is string => typeof x === "string" && validFilenames.has(x))
+    .slice(0, MAX_SELECTED);
+}
+
+async function selectRelevantMemoriesWithRuntimeModel(
+  runtime: RuntimeMemoryModel,
+  query: string,
+  memories: MemoryHeader[],
+  signal?: AbortSignal
+): Promise<string[]> {
+  const manifest = formatMemoryManifest(memories);
+  const userPrompt = `Query: ${query}\n\nAvailable memories:\n${manifest}`;
+  const validFilenames = new Set(memories.map((m) => m.filename));
+
+  try {
+    throwIfAborted(signal);
+    if (runtime.paradigm === "openai-compatible") {
+      if (runtime.requestOAuthAuth?.provider === "codex") {
+        const requestProviderIdentity =
+          providerIdentityForOAuthAuth(runtime.requestOAuthAuth) ??
+          runtime.providerIdentity;
+        const identitySettings: ShellSettings = {
+          providerIdentity: requestProviderIdentity,
+        };
+        const temperature =
+          runtime.temperatureMode === "custom" && runtime.temperature != null
+            ? resolveRequestedTemperature(
+                0,
+                runtime.temperatureMode,
+                runtime.temperature
+              )
+            : openAICompatibleEffectiveTemperature(runtime.requestModelId, 0);
+        const text = await runCodexOAuthResponseText({
+          auth: runtime.requestOAuthAuth,
+          baseURL: runtime.requestBaseURL,
+          input: userPrompt,
+          instructions: prependProviderIdentitySystemPrompt(
+            identitySettings,
+            SELECT_MEMORIES_SYSTEM_PROMPT
+          ),
+          maxOutputTokens: 256,
+          model: runtime.requestModelId,
+          providerId: runtime.requestProviderId,
+          signal,
+          temperature,
+        });
+        return parseSelectedFilenames(text, validFilenames);
+      }
+      const proxyRaw = runtime.requestProxyUrl?.trim() ?? "";
+      const httpAgent = proxyRaw ? new HttpsProxyAgent(proxyRaw) : undefined;
+      const identitySettings: ShellSettings = {
+        providerIdentity: runtime.providerIdentity,
+      };
+      const client = new OpenAI(
+        applyOpenAIProviderIdentity(identitySettings, {
+          apiKey: runtime.requestApiKey,
+          baseURL: runtime.requestBaseURL,
+          dangerouslyAllowBrowser: false,
+          httpAgent,
+        })
+      );
+      const resp = await client.chat.completions.create(
+        {
+          max_tokens: 256,
+          messages: [
+            {
+              content: prependProviderIdentitySystemPrompt(
+                identitySettings,
+                SELECT_MEMORIES_SYSTEM_PROMPT
+              ),
+              role: "system",
+            },
+            { content: userPrompt, role: "user" },
+          ],
+          model: runtime.requestModelId,
+          temperature:
+            runtime.temperatureMode === "custom" && runtime.temperature != null
+              ? resolveRequestedTemperature(
+                  0,
+                  runtime.temperatureMode,
+                  runtime.temperature
+                )
+              : openAICompatibleEffectiveTemperature(runtime.requestModelId, 0),
+        },
+        { signal }
+      );
+      return parseSelectedFilenames(
+        extractTextContent(resp.choices[0]?.message?.content ?? ""),
+        validFilenames
+      );
+    }
+
+    if (runtime.paradigm === "anthropic") {
+      const oauthAuth =
+        runtime.requestOAuthAuth?.provider === "claude"
+          ? await ensureFreshOAuthAuthForRequest(
+              runtime.requestProviderId,
+              runtime.requestOAuthAuth
+            )
+          : undefined;
+      const key = (oauthAuth?.accessToken ?? runtime.requestApiKey).trim();
+      const requestProviderIdentity =
+        providerIdentityForOAuthAuth(oauthAuth) ?? runtime.providerIdentity;
+      const identitySettings: ShellSettings = {
+        providerIdentity: requestProviderIdentity,
+      };
+      const anthropicMetadata =
+        buildAnthropicProviderIdentityMetadata(identitySettings);
+      const client = createAnthropicClient(
+        applyAnthropicProviderIdentity(identitySettings, {
+          ...buildAnthropicAuthOptions(key, oauthAuth),
+          baseURL: runtime.requestBaseURL || undefined,
+        })
+      );
+      const resp = await client.messages.create(
+        {
+          max_tokens: 256,
+          model: runtime.requestModelId,
+          system: prependProviderIdentitySystemPrompt(
+            identitySettings,
+            SELECT_MEMORIES_SYSTEM_PROMPT
+          ),
+          temperature: 0,
+          ...(anthropicMetadata ? { metadata: anthropicMetadata } : {}),
+          messages: [{ content: userPrompt, role: "user" }],
+        },
+        { signal }
+      );
+      const text = resp.content
+        .map((block) => (block.type === "text" ? block.text : ""))
+        .join("\n");
+      return parseSelectedFilenames(text, validFilenames);
+    }
+
+    const genAI = new GoogleGenerativeAI(runtime.requestApiKey);
+    const model = genAI.getGenerativeModel({
+      generationConfig: { maxOutputTokens: 256, temperature: 0 },
+      model: runtime.requestModelId,
+      systemInstruction: prependProviderIdentitySystemPrompt(
+        { providerIdentity: runtime.providerIdentity },
+        SELECT_MEMORIES_SYSTEM_PROMPT
+      ),
+    });
+    const resp = await model.generateContent(userPrompt, { signal });
+    return parseSelectedFilenames(resp.response.text(), validFilenames);
+  } catch {
+    return [];
+  }
+}
+
+export async function findRelevantMemoriesInDir(
+  query: string,
+  memoryDir: string,
+  runtime: RuntimeMemoryModel | null,
+  alreadySurfaced: ReadonlySet<string> = new Set(),
+  signal?: AbortSignal
+): Promise<RelevantMemory[]> {
+  throwIfAborted(signal);
+  const memories = (await scanMemoryFiles(memoryDir)).filter(
+    (m) => !alreadySurfaced.has(m.filePath)
+  );
+  if (memories.length === 0) {
+    return [];
+  }
+  const selectedByModel = runtime
+    ? await selectRelevantMemoriesWithRuntimeModel(
+        runtime,
+        query,
+        memories,
+        signal
+      )
+    : [];
+  const selectedFilenames =
+    selectedByModel.length > 0
+      ? selectedByModel
+      : selectRelevantMemoriesHeuristically(query, memories, alreadySurfaced);
+  const byFilename = new Map(memories.map((m) => [m.filename, m]));
+  return selectedFilenames
+    .map((filename) => byFilename.get(filename))
+    .filter((m): m is MemoryHeader => m !== undefined)
+    .map((m) => ({ mtimeMs: m.mtimeMs, path: m.filePath }));
+}
+
+export async function findRelevantMemories(
+  query: string,
+  settings: ShellSettings,
+  modelSelection: string,
+  workspaceRoot?: string | null,
+  alreadySurfaced: ReadonlySet<string> = new Set()
+): Promise<RelevantMemory[]> {
+  const memoryDir = getAutoMemPath(workspaceRoot);
+  if (!memoryDir) {
+    return [];
+  }
+  const resolved = resolveModelRequest(settings, modelSelection);
+  let isQuotaAvailable = true;
+  if (
+    resolved.ok &&
+    (resolved.providerId === "mai" || resolved.baseURL?.includes("mai.val.run"))
+  ) {
+    const quota = await checkMaiQuotaAvailable(settings, false);
+    isQuotaAvailable = quota.available;
+  }
+  const runtime =
+    resolved.ok && isQuotaAvailable
+      ? {
+          paradigm: resolved.paradigm,
+          providerIdentity: resolveProviderIdentityWithOverride(
+            settings.providerIdentity,
+            resolved.providerIdentity
+          ),
+          requestApiKey: resolved.apiKey,
+          requestBaseURL: resolved.baseURL,
+          requestModelId: resolved.requestModelId,
+          requestOAuthAuth: resolved.oauthAuth,
+          requestProviderId: resolved.providerId,
+          requestProxyUrl: resolved.proxyUrl,
+          temperature: resolved.temperature,
+          temperatureMode: resolved.temperatureMode,
+        }
+      : null;
+  return findRelevantMemoriesInDir(query, memoryDir, runtime, alreadySurfaced);
+}
+
+async function readMemoryForContext(
+  filePath: string,
+  mtimeMs: number
+): Promise<{
+  path: string;
+  content: string;
+  mtimeMs: number;
+  header: string;
+} | null> {
+  try {
+    const raw = await fs.readFile(filePath, "utf8");
+    const lines = raw
+      .replace(/\r\n/g, "\n")
+      .split("\n")
+      .slice(0, MAX_MEMORY_LINES);
+    let content = lines.join("\n");
+    if (Buffer.byteLength(content, "utf8") > MAX_MEMORY_BYTES) {
+      let cut = content.length;
+      while (
+        cut > 0 &&
+        Buffer.byteLength(content.slice(0, cut), "utf8") > MAX_MEMORY_BYTES
+      ) {
+        cut--;
+      }
+      content = content.slice(0, cut) + "\n... (truncated)";
+    }
+    return {
+      content,
+      header: path.basename(filePath),
+      mtimeMs,
+      path: filePath,
+    };
+  } catch {
+    return null;
+  }
+}
+
+export async function buildRelevantMemoryContextBlock(params: {
+  query: string;
+  settings: ShellSettings;
+  modelSelection: string;
+  workspaceRoot?: string | null;
+  alreadySurfaced?: ReadonlySet<string>;
+  memoryDirOverride?: string;
+  label?: string;
+  signal?: AbortSignal;
+}): Promise<string> {
+  throwIfAborted(params.signal);
+  const resolved = resolveModelRequest(params.settings, params.modelSelection);
+  let isQuotaAvailable = true;
+  if (
+    resolved.ok &&
+    (resolved.providerId === "mai" || resolved.baseURL?.includes("mai.val.run"))
+  ) {
+    const quota = await checkMaiQuotaAvailable(params.settings, false);
+    isQuotaAvailable = quota.available;
+  }
+  const runtime =
+    resolved.ok && isQuotaAvailable
+      ? {
+          paradigm: resolved.paradigm,
+          providerIdentity: resolveProviderIdentityWithOverride(
+            params.settings.providerIdentity,
+            resolved.providerIdentity
+          ),
+          requestApiKey: resolved.apiKey,
+          requestBaseURL: resolved.baseURL,
+          requestModelId: resolved.requestModelId,
+          requestOAuthAuth: resolved.oauthAuth,
+          requestProviderId: resolved.providerId,
+          requestProxyUrl: resolved.proxyUrl,
+          temperature: resolved.temperature,
+          temperatureMode: resolved.temperatureMode,
+        }
+      : null;
+  const memoryDir =
+    params.memoryDirOverride ?? getAutoMemPath(params.workspaceRoot);
+  if (!memoryDir) {
+    return "";
+  }
+  const selected = await findRelevantMemoriesInDir(
+    params.query,
+    memoryDir,
+    runtime,
+    params.alreadySurfaced ?? new Set(),
+    params.signal
+  );
+  if (selected.length === 0) {
+    return "";
+  }
+  throwIfAborted(params.signal);
+  const read = await Promise.all(
+    selected.map((m) => readMemoryForContext(m.path, m.mtimeMs))
+  );
+  const memories = read.filter((m): m is NonNullable<typeof m> => m !== null);
+  if (memories.length === 0) {
+    return "";
+  }
+  const body = memories
+    .map((m, i) => {
+      const rel = memoryDir
+        ? path.relative(memoryDir, m.path).split(path.sep).join("/")
+        : path.basename(m.path);
+      const updated = new Date(m.mtimeMs).toISOString();
+      return `### Memory ${i + 1}: ${rel} (updated ${updated})\n\`\`\`md\n${m.content}\n\`\`\``;
+    })
+    .join("\n\n");
+  return `## ${params.label ?? "Relevant memories"}\nThe following memory files were selected from persistent memory because they may help with this request.\n\n${body}`;
+}

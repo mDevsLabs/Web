@@ -1,6 +1,6 @@
 "use client";
 
-import { EraserIcon, PlusIcon, WandIcon } from "lucide-react";
+import { EraserIcon, PlusIcon, WandIcon } from "@mdevs/icons";
 import { useCallback, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";

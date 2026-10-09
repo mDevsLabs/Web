@@ -1,0 +1,1119 @@
+{
+  "description": "Extraction AST du code exécuté : expressions de réponses et schémas exacts. Les types des requêtes importées restent définis dans lib/wakies ; ceci ne remplace pas un test HTTP réel.",
+  "routes": [
+    {
+      "file": "app/(chat)/api/wakies/chat/route.ts",
+      "schemas": [
+        {
+          "name": "schema",
+          "definition": "z .object({ conversationId: z.string().uuid(), messages: z.array(z.unknown()).min(1).max(200), sourceUrl: z.string().max(500).optional(), }) .passthrough()"
+        }
+      ],
+      "handlers": [
+        {
+          "method": "POST",
+          "authentication": ["authenticateChatRequest"],
+          "guards": [
+            "rejectCrossOriginMutation(request)",
+            "findConversation(auth.userId, conversationId)",
+            "findWakie(auth.userId, conversation.wakieId)",
+            "reserveChatTurn( auth.userId, conversationId, dernier.id )"
+          ],
+          "validation": [
+            "schema.safeParse(await request.json().catch(() => null))",
+            "incomingUserMessage.safeParse(parsed.data.messages.at(-1))"
+          ],
+          "responses": [
+            {
+              "factory": "errorResponse",
+              "arguments": ["\"access_denied\""]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": ["\"auth_required\""]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"plan_required\"",
+                "{ details: { upgradeUrl: MAI_UPGRADE_URL }, message: \"Wakies est disponible avec les forfaits mAI Plus, Pro et Max.\", }"
+              ]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: \"Requête de conversation invalide.\", }"
+              ]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"quota_exceeded\"",
+                "{ details: { limit: auth.maiUser.limit, resetAt: auth.maiUser.resetAt, used: auth.maiUser.tokensUsed, }, message: \"Votre limite hebdomadaire de tokens est atteinte. Un message envoyé à un Wakie la consomme comme un message du chat.\", }"
+              ]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"not_found\"",
+                "{ message: \"Conversation introuvable.\", }"
+              ]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"access_denied\"",
+                "{ message: \"Les Wakies sont en pause. Reactivez-les dans les réglages.\", }"
+              ]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"not_found\"",
+                "{ message: \"Wakie introuvable.\" }"
+              ]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: \"Envoyez un message utilisateur contenant du texte ou un fichier.\", }"
+              ]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"access_denied\"",
+                "{ message: \"Pièce jointe privée invalide pour ce compte.\", }"
+              ]
+            },
+            {
+              "factory": "Response.json",
+              "arguments": [
+                "{ code: \"turn_already_saved\", message: \"Ce message est déjà enregistré. Rouvrez la conversation pour retrouver la réponse.\", }",
+                "{ status: 409 }"
+              ]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"access_denied\"",
+                "{ message: \"Ce modèle n’est pas disponible pour votre compte. Choisissez un modèle du catalogue mAI.\", }"
+              ]
+            },
+            {
+              "factory": "Response.json",
+              "arguments": [
+                "{ code: \"conversation_busy\", message: reservation.conflict === \"busy\" ? \"Une réponse est déjà en cours dans cette conversation. Réessayez après sa fin.\" : \"Ce tour a déjà été lancé. Rechargez l’historique avant un nouvel envoi.\", }",
+                "{ status: 409 }"
+              ]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: error instanceof Error && error.name === \"WakiesAttachmentError\" ? error.message : \"Impossible de préparer la conversation. Réessayez dans quelques instants.\", }"
+              ]
+            },
+            {
+              "factory": "createUIMessageStreamResponse",
+              "arguments": ["{ stream }"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/conversations/route.ts",
+      "schemas": [
+        {
+          "name": "schema",
+          "definition": "z .object({ title: z.string().trim().min(1).max(120).default(\"Une nouvelle idée\"), wakieId: z.string().min(1), }) .strict()"
+        }
+      ],
+      "handlers": [
+        {
+          "method": "GET",
+          "authentication": ["requireWakiesUser"],
+          "guards": [],
+          "validation": [],
+          "responses": [
+            {
+              "factory": "json",
+              "arguments": ["await listConversations(identite.userId)"]
+            }
+          ]
+        },
+        {
+          "method": "POST",
+          "authentication": ["requireWakiesUser"],
+          "guards": [
+            "rejectCrossOriginMutation(request)",
+            "enforceWakiesLimit({ limit: \"conversations\", tier: identite.tier, used: (await listConversations(identite.userId)).length, })"
+          ],
+          "validation": [
+            "schema.safeParse(await request.json().catch(() => null))"
+          ],
+          "responses": [
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: zodIssuesMessage(parsed.error), }"
+              ]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"access_denied\"",
+                "{ message: \"Les Wakies sont en pause. Reactivez-les dans les réglages.\", }"
+              ]
+            },
+            {
+              "factory": "json",
+              "arguments": ["conversation", "{ status: 201 }"]
+            },
+            {
+              "factory": "badRequest",
+              "arguments": ["erreur.message"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/conversations/[id]/capture/route.ts",
+      "schemas": [],
+      "handlers": [
+        {
+          "method": "GET",
+          "authentication": ["requireWakiesUser"],
+          "guards": ["findConversation(identite.userId, id)"],
+          "validation": [],
+          "responses": [
+            {
+              "factory": "notFound",
+              "arguments": ["\"Conversation introuvable.\""]
+            },
+            {
+              "factory": "json",
+              "arguments": ["await getCapture(identite.userId, id)"]
+            }
+          ]
+        },
+        {
+          "method": "POST",
+          "authentication": ["requireWakiesUser"],
+          "guards": ["rejectCrossOriginMutation(request)"],
+          "validation": [],
+          "responses": [
+            {
+              "factory": "notFound",
+              "arguments": ["\"Capture illisible.\""]
+            },
+            {
+              "factory": "json",
+              "arguments": ["{ ok: true }"]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: \"Conversation introuvable sur ce compte.\", }"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/conversations/[id]/messages/route.ts",
+      "schemas": [
+        {
+          "name": "QUERIES",
+          "definition": "z.object({ avant: z.coerce.number().int().nonnegative().optional(), limite: z.coerce.number().int().min(1).max(500).optional(), })"
+        }
+      ],
+      "handlers": [
+        {
+          "method": "GET",
+          "authentication": ["requireWakiesUser"],
+          "guards": ["findConversation(identite.userId, id)"],
+          "validation": [
+            "QUERIES.safeParse({ avant: url.searchParams.get(\"avant\") ?? undefined, limite: url.searchParams.get(\"limite\") ?? undefined, })"
+          ],
+          "responses": [
+            {
+              "factory": "notFound",
+              "arguments": ["\"Conversation introuvable.\""]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: \"Curseur d’historique invalide.\", }"
+              ]
+            },
+            {
+              "factory": "json",
+              "arguments": [
+                "{ messages, // `null` quand la page rend le début de l'historique : rien à recharger. seqProchain: hasMore && premier ? premier.seq : null, }",
+                "{ headers: { \"Cache-Control\": \"no-store\" } }"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/conversations/[id]/page/route.ts",
+      "schemas": [
+        {
+          "name": "schema",
+          "definition": "z .object({ spaceId: z.string().min(1).optional(), title: z.string().trim().min(1).max(160), }) .strict()"
+        }
+      ],
+      "handlers": [
+        {
+          "method": "POST",
+          "authentication": ["requireWakiesUser"],
+          "guards": [
+            "rejectCrossOriginMutation(request)",
+            "findConversation(identite.userId, id)",
+            "findWakie(identite.userId, conversation.wakieId)",
+            "enforceWakiesLimit({ limit: \"pages\", tier: identite.tier, used: (await listPages(identite.userId, spaceId)).length, })"
+          ],
+          "validation": [
+            "schema.safeParse(await request.json().catch(() => null))"
+          ],
+          "responses": [
+            {
+              "factory": "notFound",
+              "arguments": ["\"Conversation introuvable.\""]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: zodIssuesMessage(parsed.error), }"
+              ]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: \"Ce Wakie n'a pas d'espace de destination défini.\", }"
+              ]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"access_denied\"",
+                "{ message: \"Ce Wakie n'a pas accès à cet espace.\", }"
+              ]
+            },
+            {
+              "factory": "json",
+              "arguments": ["page", "{ status: 201 }"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/conversations/[id]/page-context/route.ts",
+      "schemas": [],
+      "handlers": [
+        {
+          "method": "GET",
+          "authentication": ["requireWakiesUser"],
+          "guards": ["findConversation(identite.userId, id)"],
+          "validation": [],
+          "responses": [
+            {
+              "factory": "notFound",
+              "arguments": ["\"Conversation introuvable.\""]
+            },
+            {
+              "factory": "json",
+              "arguments": [
+                "page ? { id: page.id, spaceId: page.spaceId, title: page.title } : null",
+                "{ headers: { \"Cache-Control\": \"no-store\" } }"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/conversations/[id]/route.ts",
+      "schemas": [
+        {
+          "name": "liste",
+          "definition": "z.array(z.string().min(1).max(64)).max(60).nullable().optional()"
+        },
+        {
+          "name": "schema",
+          "definition": "z .object({ mcpServerIds: liste, model: z.string().trim().min(1).max(200).nullable().optional(), pluginIds: liste, skillIds: liste, skillParams: z .record( z.string().min(1).max(64), z.record(z.string(), z.string().max(2000)) ) .nullable() .optional(), title: z.string().trim().min(1).max(120).optional(), toolIds: liste, }) .strict() .refine( (value) => value.title !== undefined || value.model !== undefined || value.skillIds !== undefined || value.pluginIds !== undefined || value.mcpServerIds !== undefined || value.toolIds !== undefined || value.skillParams !== undefined, { message: \"Rien à modifier : précisez un titre, un modèle ou une sélection.\", } )"
+        }
+      ],
+      "handlers": [
+        {
+          "method": "PATCH",
+          "authentication": ["requireWakiesUser"],
+          "guards": ["rejectCrossOriginMutation(request)"],
+          "validation": [
+            "schema.safeParse(await request.json().catch(() => null))"
+          ],
+          "responses": [
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: zodIssuesMessage(parsed.error), }"
+              ]
+            },
+            {
+              "factory": "notFound",
+              "arguments": ["\"Conversation introuvable.\""]
+            },
+            {
+              "factory": "json",
+              "arguments": ["row"]
+            }
+          ]
+        },
+        {
+          "method": "DELETE",
+          "authentication": ["requireWakiesUser"],
+          "guards": ["rejectCrossOriginMutation(_request)"],
+          "validation": [],
+          "responses": [
+            {
+              "factory": "notFound",
+              "arguments": ["\"Conversation introuvable.\""]
+            },
+            {
+              "factory": "json",
+              "arguments": ["{ ok: true }"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/files/route.ts",
+      "schemas": [
+        {
+          "name": "query",
+          "definition": "z.object({ cursor: z.string().max(2048).optional(), pathname: z.string().max(512).optional(), })"
+        },
+        {
+          "name": "removal",
+          "definition": "z.object({ pathname: z.string().min(1).max(512) })"
+        }
+      ],
+      "handlers": [
+        {
+          "method": "GET",
+          "authentication": ["requireWakiesUser"],
+          "guards": [
+            "pathnameDuCompte(identity.userId, parsed.data.pathname)",
+            "pathnameDuCompte(identity.userId, blob.pathname)"
+          ],
+          "validation": [
+            "query.safeParse({ cursor: params.get(\"cursor\") ?? undefined, pathname: params.get(\"pathname\") ?? undefined, })"
+          ],
+          "responses": [
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: \"Paramètres de fichiers invalides.\", }"
+              ]
+            },
+            {
+              "factory": "notFound",
+              "arguments": ["\"Fichier introuvable.\""]
+            },
+            {
+              "factory": "json",
+              "arguments": [
+                "{ mediaType: metadata.contentType, name: pathname.split(\"/\").at(-1) ?? \"Fichier\", pathname, size: metadata.size, url: await signerPieceJointe(identity.userId, pathname), }",
+                "{ headers: { \"Cache-Control\": \"no-store\" } }"
+              ]
+            },
+            {
+              "factory": "json",
+              "arguments": [
+                "{ cursor: result.hasMore ? result.cursor : null, files: result.blobs .filter((blob) => pathnameDuCompte(identity.userId, blob.pathname)) .map((blob) => ({ name: blob.pathname.split(\"/\").at(-1) ?? \"Fichier\", pathname: blob.pathname, size: blob.size, uploadedAt: blob.uploadedAt.getTime(), })), }",
+                "{ headers: { \"Cache-Control\": \"no-store\" } }"
+              ]
+            },
+            {
+              "factory": "notFound",
+              "arguments": ["\"Fichier introuvable.\""]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"internal_error\"",
+                "{ message: \"Le stockage de fichiers mAI est indisponible. Réessayez plus tard.\", }"
+              ]
+            }
+          ]
+        },
+        {
+          "method": "DELETE",
+          "authentication": ["requireWakiesUser"],
+          "guards": [
+            "rejectCrossOriginMutation(request)",
+            "pathnameDuCompte(identity.userId, parsed.data.pathname)"
+          ],
+          "validation": [
+            "removal.safeParse(await request.json().catch(() => null))"
+          ],
+          "responses": [
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: \"Fichier invalide.\" }"
+              ]
+            },
+            {
+              "factory": "notFound",
+              "arguments": ["\"Fichier introuvable.\""]
+            },
+            {
+              "factory": "json",
+              "arguments": ["{ ok: true }"]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"internal_error\"",
+                "{ message: \"Le fichier n’a pas pu être supprimé.\", }"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/memories/route.ts",
+      "schemas": [
+        {
+          "name": "schema",
+          "definition": "z.object({ text: z.string().trim().min(1).max(2000) }).strict()"
+        }
+      ],
+      "handlers": [
+        {
+          "method": "POST",
+          "authentication": ["requireWakiesUser"],
+          "guards": [
+            "rejectCrossOriginMutation(request)",
+            "enforceWakiesLimit({ limit: \"memories\", tier: identite.tier, used: (await listMemories(identite.userId)).length, })"
+          ],
+          "validation": [
+            "schema.safeParse(await request.json().catch(() => null))"
+          ],
+          "responses": [
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: \"La mémoire doit contenir entre 1 et 2 000 caractères.\", }"
+              ]
+            },
+            {
+              "factory": "json",
+              "arguments": ["row", "{ status: 201 }"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/memories/[id]/route.ts",
+      "schemas": [
+        {
+          "name": "schema",
+          "definition": "z.object({ text: z.string().trim().min(1).max(2000) }).strict()"
+        }
+      ],
+      "handlers": [
+        {
+          "method": "PUT",
+          "authentication": ["requireWakiesUser"],
+          "guards": ["rejectCrossOriginMutation(request)"],
+          "validation": [
+            "schema.safeParse(await request.json().catch(() => null))"
+          ],
+          "responses": [
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: \"La mémoire doit contenir entre 1 et 2 000 caractères.\", }"
+              ]
+            },
+            {
+              "factory": "json",
+              "arguments": ["row"]
+            },
+            {
+              "factory": "notFound",
+              "arguments": ["\"Mémoire introuvable.\""]
+            }
+          ]
+        },
+        {
+          "method": "DELETE",
+          "authentication": ["requireWakiesUser"],
+          "guards": ["rejectCrossOriginMutation(_request)"],
+          "validation": [],
+          "responses": [
+            {
+              "factory": "json",
+              "arguments": ["{ ok: true }"]
+            },
+            {
+              "factory": "notFound",
+              "arguments": ["\"Mémoire introuvable.\""]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/pages/[id]/route.ts",
+      "schemas": [],
+      "handlers": [
+        {
+          "method": "GET",
+          "authentication": ["requireWakiesUser"],
+          "guards": ["findPage(identite.userId, id)"],
+          "validation": [],
+          "responses": [
+            {
+              "factory": "json",
+              "arguments": ["page"]
+            },
+            {
+              "factory": "notFound",
+              "arguments": ["\"Page introuvable.\""]
+            }
+          ]
+        },
+        {
+          "method": "PATCH",
+          "authentication": ["requireWakiesUser"],
+          "guards": [
+            "rejectCrossOriginMutation(request)",
+            "findPage(identite.userId, id)"
+          ],
+          "validation": [
+            "pagePatch.safeParse(await request.json().catch(() => null))"
+          ],
+          "responses": [
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: \"Enregistrement invalide : un numéro de révision attendu est obligatoire.\", }"
+              ]
+            },
+            {
+              "factory": "notFound",
+              "arguments": ["\"Page introuvable.\""]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"conflict\"",
+                "{ message: \"Cette page a changé. Rechargez la dernière révision avant d'enregistrer votre brouillon.\", }"
+              ]
+            },
+            {
+              "factory": "json",
+              "arguments": ["page"]
+            },
+            {
+              "factory": "badRequest",
+              "arguments": ["erreur.message"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/route.ts",
+      "schemas": [],
+      "handlers": []
+    },
+    {
+      "file": "app/(chat)/api/wakies/settings/route.ts",
+      "schemas": [
+        {
+          "name": "schema",
+          "definition": "z .object({ memoryAllowed: z.boolean().optional(), name: z.string().trim().min(1).max(40).optional(), // Repère de PARCOURS, jamais d'autorisation : il dit « l'assistant de // configuration a été terminé ». Il ne déverrouille rien, et le retirer ne // retirerait aucun droit. onboardingCompleted: z.boolean().optional(), paused: z.boolean().optional(), researchAllowed: z.boolean().optional(), }) .strict()"
+        }
+      ],
+      "handlers": [
+        {
+          "method": "PATCH",
+          "authentication": ["requireWakiesUser"],
+          "guards": ["rejectCrossOriginMutation(request)"],
+          "validation": [
+            "schema.safeParse(await request.json().catch(() => null))"
+          ],
+          "responses": [
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: zodIssuesMessage(parsed.error), }"
+              ]
+            },
+            {
+              "factory": "json",
+              "arguments": ["settings"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/spaces/route.ts",
+      "schemas": [
+        {
+          "name": "schema",
+          "definition": "z .object({ description: z.string().max(500).optional(), name: z.string().trim().min(1).max(60), }) .strict()"
+        }
+      ],
+      "handlers": [
+        {
+          "method": "GET",
+          "authentication": ["requireWakiesUser"],
+          "guards": [],
+          "validation": [],
+          "responses": [
+            {
+              "factory": "json",
+              "arguments": ["await listSpaces(identite.userId)"]
+            }
+          ]
+        },
+        {
+          "method": "POST",
+          "authentication": ["requireWakiesUser"],
+          "guards": [
+            "rejectCrossOriginMutation(request)",
+            "enforceWakiesLimit({ limit: \"spaces\", tier: identite.tier, used: (await listSpaces(identite.userId)).length, })"
+          ],
+          "validation": [
+            "schema.safeParse(await request.json().catch(() => null))"
+          ],
+          "responses": [
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: zodIssuesMessage(parsed.error), }"
+              ]
+            },
+            {
+              "factory": "json",
+              "arguments": ["space", "{ status: 201 }"]
+            },
+            {
+              "factory": "badRequest",
+              "arguments": ["erreur.message"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/spaces/[spaceId]/pages/route.ts",
+      "schemas": [
+        {
+          "name": "schema",
+          "definition": "z .object({ content: z.string().max(100_000).optional(), parentId: z.string().min(1).nullable().optional(), title: z.string().trim().min(1).max(160), }) .strict()"
+        }
+      ],
+      "handlers": [
+        {
+          "method": "GET",
+          "authentication": ["requireWakiesUser"],
+          "guards": [],
+          "validation": [],
+          "responses": [
+            {
+              "factory": "notFound",
+              "arguments": ["\"Espace introuvable.\""]
+            },
+            {
+              "factory": "json",
+              "arguments": ["await listPages(identite.userId, spaceId)"]
+            }
+          ]
+        },
+        {
+          "method": "POST",
+          "authentication": ["requireWakiesUser"],
+          "guards": [
+            "rejectCrossOriginMutation(request)",
+            "enforceWakiesLimit({ limit: \"pages\", tier: identite.tier, used: (await listPages(identite.userId, spaceId)).length, })"
+          ],
+          "validation": [
+            "schema.safeParse(await request.json().catch(() => null))"
+          ],
+          "responses": [
+            {
+              "factory": "notFound",
+              "arguments": ["\"Espace introuvable.\""]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: zodIssuesMessage(parsed.error), }"
+              ]
+            },
+            {
+              "factory": "json",
+              "arguments": ["page", "{ status: 201 }"]
+            },
+            {
+              "factory": "badRequest",
+              "arguments": ["erreur.message"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/state/route.ts",
+      "schemas": [],
+      "handlers": [
+        {
+          "method": "GET",
+          "authentication": ["requireWakiesUser"],
+          "guards": [],
+          "validation": [],
+          "responses": [
+            {
+              "factory": "json",
+              "arguments": [
+                "{ configured: setup.missing.length === 0, memories, mode: \"live\", settings, tasks, }",
+                "{ headers: { \"Cache-Control\": \"no-store\" } }"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/tasks/route.ts",
+      "schemas": [
+        {
+          "name": "schema",
+          "definition": "z .object({ conversationId: z.string().min(1), intervalSeconds: z .number() .int() .min(60) .max(31_536_000) .nullable() .optional(), prompt: z.string().trim().min(3).max(4000), }) .strict()"
+        }
+      ],
+      "handlers": [
+        {
+          "method": "POST",
+          "authentication": ["requireWakiesUser"],
+          "guards": [
+            "rejectCrossOriginMutation(request)",
+            "findConversation(identite.userId, parsed.data.conversationId)",
+            "enforceWakiesLimit({ limit: \"tasks\", tier: identite.tier, used: (await listTasks(identite.userId)).length, })"
+          ],
+          "validation": [
+            "schema.safeParse(await request.json().catch(() => null))"
+          ],
+          "responses": [
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: zodIssuesMessage(parsed.error), }"
+              ]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"access_denied\"",
+                "{ message: \"La recherche est désactivée dans les réglages.\", }"
+              ]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"access_denied\"",
+                "{ message: \"Cette conversation n'appartient pas à ce compte.\", }"
+              ]
+            },
+            {
+              "factory": "json",
+              "arguments": ["task", "{ status: 201 }"]
+            },
+            {
+              "factory": "badRequest",
+              "arguments": ["erreur.message"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/tasks/[id]/actions/route.ts",
+      "schemas": [
+        {
+          "name": "schema",
+          "definition": "z .object({ action: z.enum([\"run\", \"pause\", \"cancel\"]) }) .strict()"
+        }
+      ],
+      "handlers": [
+        {
+          "method": "POST",
+          "authentication": ["requireWakiesUser"],
+          "guards": ["rejectCrossOriginMutation(request)"],
+          "validation": [
+            "schema.safeParse(await request.json().catch(() => null))"
+          ],
+          "responses": [
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: \"Action inconnue.\" }"
+              ]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"access_denied\"",
+                "{ message: \"La recherche est désactivée dans les réglages.\", }"
+              ]
+            },
+            {
+              "factory": "json",
+              "arguments": ["task"]
+            },
+            {
+              "factory": "notFound",
+              "arguments": ["\"Tâche introuvable.\""]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/tasks/[id]/route.ts",
+      "schemas": [],
+      "handlers": [
+        {
+          "method": "GET",
+          "authentication": ["requireWakiesUser"],
+          "guards": [],
+          "validation": [],
+          "responses": [
+            {
+              "factory": "json",
+              "arguments": ["detail"]
+            },
+            {
+              "factory": "notFound",
+              "arguments": ["\"Tâche introuvable.\""]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/tasks/[id]/schedule/route.ts",
+      "schemas": [
+        {
+          "name": "schema",
+          "definition": "z .object({ intervalSeconds: z.number().int().min(60).max(31_536_000).nullable(), }) .strict()"
+        }
+      ],
+      "handlers": [
+        {
+          "method": "PUT",
+          "authentication": ["requireWakiesUser"],
+          "guards": ["rejectCrossOriginMutation(request)"],
+          "validation": [
+            "schema.safeParse(await request.json().catch(() => null))"
+          ],
+          "responses": [
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: \"L'intervalle de répétition va de 60 secondes à un an, ou null pour l'arrêter.\", }"
+              ]
+            },
+            {
+              "factory": "json",
+              "arguments": ["task"]
+            },
+            {
+              "factory": "notFound",
+              "arguments": ["\"Tâche introuvable.\""]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/wakies/route.ts",
+      "schemas": [
+        {
+          "name": "schema",
+          "definition": "z .object({ // Mascotte choisie parmi les images de /wakies ; absente = défaut. avatar: z.enum(WAKIE_AVATARS).nullable().optional(), instructions: z.string().trim().min(3).max(2000), // Conteneur d'apprentissage Intelligence : hors périmètre du port, il est // conservé pour ne pas perdre la donnée si un compte l'exploite. learningContainerId: z .string() .trim() .min(1) .max(200) .nullable() .optional(), // Sélection d'outils. Absente = réglage par défaut ; `null` = effacer ; // un tableau = choix explicite, éventuellement vide. Les identifiants // sont revalidés côté serveur à chaque tour : une valeur inconnue ici // n'accorde aucun accès. mcpServerIds: z .array(z.string().min(1).max(64)) .max(50) .nullable() .optional(), memoryAllowed: z.boolean(), // Modèle IA par défaut des nouvelles conversations. Le catalogue des // modèles est dynamique (API mAI) : on borne la forme, l'accès est tranché // par le backend au moment de l'appel. model: z.string().trim().min(1).max(200).nullable().optional(), name: z.string().trim().min(1).max(40), pluginIds: z.array(z.string().min(1).max(64)).max(50).nullable().optional(), researchAllowed: z.boolean(), skillDeliveryEnabled: z.boolean().optional(), skillIds: z.array(z.string().min(1).max(64)).max(50).nullable().optional(), skillParams: z .record(z.string().min(1).max(64), z.record(z.string(), z.string())) .nullable() .optional(), spaceId: z.string().min(1), spaceIds: z.array(z.string().min(1)).min(1).max(100).optional(), toolIds: z.array(z.string().min(1).max(64)).max(60).nullable().optional(), }) .strict()"
+        }
+      ],
+      "handlers": [
+        {
+          "method": "GET",
+          "authentication": ["requireWakiesUser"],
+          "guards": [],
+          "validation": [],
+          "responses": [
+            {
+              "factory": "json",
+              "arguments": ["await listWakies(identite.userId)"]
+            }
+          ]
+        },
+        {
+          "method": "POST",
+          "authentication": ["requireWakiesUser"],
+          "guards": ["rejectCrossOriginMutation(request)"],
+          "validation": [
+            "schema.safeParse(await request.json().catch(() => null))"
+          ],
+          "responses": [
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: zodIssuesMessage(parsed.error), }"
+              ]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: \"L'apprentissage exige l'activation explicite de la livraison de compétences.\", }"
+              ]
+            },
+            {
+              "factory": "json",
+              "arguments": ["wakie", "{ status: 201 }"]
+            },
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"quota_exceeded\"",
+                "{ details: { limit: \"wakies\", quota: erreur.limite, used: erreur.utilise, }, message: `Limite de ${erreur.limite} Wakies atteinte pour ce forfait. Supprimez-en une avant d'en créer une nouvelle.`, }"
+              ]
+            },
+            {
+              "factory": "badRequest",
+              "arguments": ["erreur.message"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/wakies/[id]/route.ts",
+      "schemas": [
+        {
+          "name": "liste",
+          "definition": "z.array(z.string().min(1).max(64)).max(60).nullable().optional()"
+        },
+        {
+          "name": "schema",
+          "definition": "z .object({ avatar: z.enum(WAKIE_AVATARS).nullable().optional(), instructions: z.string().trim().min(3).max(2000), learningContainerId: z .string() .trim() .min(1) .max(200) .nullable() .optional(), mcpServerIds: liste, memoryAllowed: z.boolean(), model: z.string().trim().min(1).max(200).nullable().optional(), name: z.string().trim().min(1).max(40), pluginIds: liste, researchAllowed: z.boolean(), skillDeliveryEnabled: z.boolean().optional(), skillIds: liste, skillParams: z .record( z.string().min(1).max(64), z.record(z.string(), z.string().max(2000)) ) .nullable() .optional(), spaceId: z.string().min(1).optional(), spaceIds: z.array(z.string().min(1)).min(1).max(100).optional(), toolIds: liste, }) .strict()"
+        }
+      ],
+      "handlers": [
+        {
+          "method": "PUT",
+          "authentication": ["requireWakiesUser"],
+          "guards": ["rejectCrossOriginMutation(request)"],
+          "validation": [
+            "schema.safeParse(await request.json().catch(() => null))"
+          ],
+          "responses": [
+            {
+              "factory": "errorResponse",
+              "arguments": [
+                "\"invalid_request\"",
+                "{ message: zodIssuesMessage(parsed.error), }"
+              ]
+            },
+            {
+              "factory": "json",
+              "arguments": ["wakie"]
+            },
+            {
+              "factory": "notFound",
+              "arguments": ["\"Wakie introuvable.\""]
+            },
+            {
+              "factory": "badRequest",
+              "arguments": ["erreur.message"]
+            }
+          ]
+        },
+        {
+          "method": "DELETE",
+          "authentication": ["requireWakiesUser"],
+          "guards": ["rejectCrossOriginMutation(_request)"],
+          "validation": [],
+          "responses": [
+            {
+              "factory": "notFound",
+              "arguments": ["\"Wakie introuvable.\""]
+            },
+            {
+              "factory": "json",
+              "arguments": ["{ ok: true }"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "app/(chat)/api/wakies/workspace/route.ts",
+      "schemas": [],
+      "handlers": [
+        {
+          "method": "GET",
+          "authentication": ["requireWakiesUser"],
+          "guards": [],
+          "validation": [],
+          "responses": [
+            {
+              "factory": "json",
+              "arguments": [
+                "{ calls, conversations, setup, spaces, wakies }",
+                "{ headers: { \"Cache-Control\": \"no-store\" } }"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

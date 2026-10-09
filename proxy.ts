@@ -30,18 +30,57 @@ export async function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Le site officiel et portail vitrine (/site) est public par défaut.
+  // Seul l'espace de gestion de compte (/site/account) exige une authentification.
+  if (
+    pathname === "/site" ||
+    (pathname.startsWith("/site/") && !pathname.startsWith("/site/account"))
+  ) {
+    return NextResponse.next();
+  }
+
+  // Rapports de violation CSP. La route est publique par nature — un rapport
+  // arrive souvent après une redirection ou une expiration de session, et il ne
+  // contient aucune donnée de l'utilisateur. La lui refuser produirait des
+  // rapports muets, donc un mode d'observation qui n'observe rien.
+  if (pathname.startsWith("/api/security/csp-report")) {
+    return NextResponse.next();
+  }
+
+  // Routes API autonomes : elles portent leur propre mécanisme d'authentification
+  // (CRON_SECRET par en-tête pour les crons, Bearer API Key pour l'API publique
+  // d'agents, ou sont publiques par conception comme la consultation de skills partagés).
+  // Elles ne requièrent pas de cookie de session navigateur.
+  if (
+    pathname.startsWith("/api/cron/") ||
+    pathname.startsWith("/api/site/v1/") ||
+    pathname.startsWith("/api/skills/share/")
+  ) {
+    return NextResponse.next();
+  }
+
   // Routes publiques autorisées
   const isAuthRoute =
     pathname.startsWith("/login") || pathname.startsWith("/register");
   // Bypass strictement limité aux assets statiques réels.
-  // (Ne plus utiliser pathname.endsWith(".png"/".svg"/".ico") : cela
-  // permettait de contourner l'auth via /api/.../*.svg)
+  // (La garde `!pathname.startsWith("/api/")` empêche tout contournement d'API
+  // via une extension d'image fictive).
+  const isStaticAsset =
+    !pathname.startsWith("/api/") &&
+    /\.(?:png|jpg|jpeg|gif|webp|svg|ico|mp3|mp4|webm|woff2?|ttf|eot)$/i.test(
+      pathname
+    );
+
   const isStaticRoute =
+    isStaticAsset ||
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api/auth") ||
     pathname === "/favicon.ico" ||
+    pathname === "/favicon.png" ||
     pathname === "/logo.png" ||
+    pathname === "/preview.png" ||
     pathname.startsWith("/images/") ||
+    pathname.startsWith("/icons/") ||
     pathname.startsWith("/demo-assets/") ||
     pathname === "/sitemap.xml" ||
     pathname === "/robots.txt";

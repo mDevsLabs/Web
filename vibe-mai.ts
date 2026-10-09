@@ -15,16 +15,19 @@
 
 import type { Hono } from "npm:hono@4";
 import type { RegisterMultiFn } from "./vibe-common.ts";
-import { ensureMAIConversations } from "./vibe-mai-core.ts";
 import { registerVibeMAIChatRoutes } from "./vibe-mai-chat.ts";
 import { registerVibeMAIConversationRoutes } from "./vibe-mai-conversations.ts";
+import { ensureMAIConversations } from "./vibe-mai-core.ts";
 import { registerVibeMAIExecuteRoutes } from "./vibe-mai-execute.ts";
 import { registerVibeMAISettingsRoutes } from "./vibe-mai-settings.ts";
 
-export { buildPostContext, getOpenRouterKey } from "./vibe-mai-core.ts";
 export { generateMAICommentAnswer } from "./vibe-mai-chat.ts";
+export { buildPostContext, getOpenRouterKey } from "./vibe-mai-core.ts";
 
-export function registerVibeMAIRoutes(app: Hono, registerMulti: RegisterMultiFn) {
+export function registerVibeMAIRoutes(
+  app: Hono,
+  registerMulti: RegisterMultiFn
+) {
   ensureMAIConversations();
   registerVibeMAIChatRoutes(app, registerMulti);
   registerVibeMAIConversationRoutes(app, registerMulti);

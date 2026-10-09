@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { enforceApiRateLimit } from "@/lib/api/rate-limit";
 import { getMaiUser } from "@/lib/auth/session";
 import { bulkUpdateChats, deleteAllChatsByUserId } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
@@ -25,6 +26,19 @@ export async function POST(request: Request) {
       return new ChatbotError("unauthorized:chat").toResponse();
     }
     const userId = user.id || user.email;
+
+    // Archivage, épinglage et suppression en masse sur 100 conversations d'un
+    // coup : borné en nombre d'appels, sinon la route est le chemin le plus
+    // court pour vider un historique.
+    const limited = await enforceApiRateLimit({
+      action: "chat_bulk",
+      request,
+      userId,
+    });
+    if (limited) {
+      return limited;
+    }
+
     const body = await request.json();
     const parsed = bulkSchema.parse(body);
 
@@ -57,6 +71,18 @@ export async function DELETE(request: Request) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
   const userId = user.id || user.email;
+
+  // Même budget que le POST : la suppression est plus destructive que
+  // l'archivage, elle partage donc la limite.
+  const limited = await enforceApiRateLimit({
+    action: "chat_bulk",
+    request,
+    userId,
+  });
+  if (limited) {
+    return limited;
+  }
+
   const { searchParams } = new URL(request.url);
   const projectId = searchParams.get("projectId");
   const isArchived = searchParams.get("isArchived");

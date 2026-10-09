@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "PurchaseOrder", "label": "Commandes fournisseurs", "description": "G\xE9rez vos commandes fournisseurs depuis une interface claire.", "fields": [{ "key": "reference", "label": "R\xE9f\xE9rence", "kind": "text", "required": true }, { "key": "supplier", "label": "Fournisseur", "kind": "text", "required": true }, { "key": "amount", "label": "Montant", "kind": "number", "required": true }, { "key": "expectedOn", "label": "R\xE9ception", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "approved", "ordered", "received"] }], "titleKey": "reference", "settings": [{ "key": "notifyPurchaseOrder", "label": "Notifications : commandes fournisseurs", "description": "Recevoir un signal lors des changements." }, { "key": "archivePurchaseOrder", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section commandes fournisseurs." }, { "key": "approvePurchaseOrder", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

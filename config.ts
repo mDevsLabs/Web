@@ -7,16 +7,23 @@ import { jwtVerify, SignJWT } from "npm:jose";
 // ─────────────────────────────────────────────
 export const JWT_EXPIRY = "7d";
 export const BCRYPT_ROUNDS = 12;
+const MAX_VERIFICATION_ATTEMPTS = 5;
 
 // ─────────────────────────────────────────────
 // Rate limiting en mémoire (par clé : ip ou user)
 // ─────────────────────────────────────────────
 const rateBuckets = new Map<string, { count: number; resetAt: number }>();
 
-export function rateLimit(key: string, limit: number, windowMs: number): boolean {
+export function rateLimit(
+  key: string,
+  limit: number,
+  windowMs: number
+): boolean {
   const now = Date.now();
   const bucket = rateBuckets.get(key);
-  if (!bucket || now > bucket.resetAt) {
+  // `>=` et non `>` : à l'instant exact d'expiration la fenêtre est close, et
+  // la fenêtre annoncée vaut `windowMs`, pas `windowMs + 1`.
+  if (!bucket || now >= bucket.resetAt) {
     rateBuckets.set(key, { count: 1, resetAt: now + windowMs });
     return true;
   }
@@ -38,9 +45,9 @@ export type Tier = "Free" | "Plus" | "Pro" | "Max";
 const TIER_ALIASES: Record<string, Tier> = {
   free: "Free",
   gratuit: "Free",
+  max: "Max",
   plus: "Plus",
   pro: "Pro",
-  max: "Max",
 };
 
 /**
@@ -49,7 +56,13 @@ const TIER_ALIASES: Record<string, Tier> = {
  * Une valeur vide ou inconnue retombe sur "Free", comme l'ancien `MAP[t] || MAP["Free"]`.
  */
 export function normalizeTier(tier?: string | null): Tier {
-  return TIER_ALIASES[String(tier || "").trim().toLowerCase()] || "Free";
+  return (
+    TIER_ALIASES[
+      String(tier || "")
+        .trim()
+        .toLowerCase()
+    ] || "Free"
+  );
 }
 
 export function isPaidTier(tier?: string | null): boolean {
@@ -59,9 +72,9 @@ export function isPaidTier(tier?: string | null): boolean {
 // Limites de tokens mAI hebdomadaires (Input + Output)
 export const TIER_LIMITS: Record<Tier, number> = {
   Free: 10_000_000,
+  Max: 50_000_000,
   Plus: 20_000_000,
   Pro: 30_000_000,
-  Max: 50_000_000,
 };
 
 export function getTierMaiTokenLimit(tier?: string | null): number {
@@ -71,9 +84,9 @@ export function getTierMaiTokenLimit(tier?: string | null): number {
 // Limites de tokens Speech hebdomadaires
 export const TIER_SPEECH_LIMITS: Record<Tier, number> = {
   Free: 30_000_000,
+  Max: 300_000_000,
   Plus: 75_000_000,
   Pro: 150_000_000,
-  Max: 300_000_000,
 };
 
 export function getTierSpeechLimit(tier?: string | null): number {
@@ -83,9 +96,9 @@ export function getTierSpeechLimit(tier?: string | null): number {
 // Limites de requêtes API hebdomadaires (remise à zéro le lundi 00:00 UTC)
 export const TIER_REQUEST_LIMITS: Record<Tier, number> = {
   Free: 500,
+  Max: 7500,
   Plus: 1500,
   Pro: 3000,
-  Max: 7500,
 };
 
 export function getTierRequestLimit(tier?: string | null): number {
@@ -97,7 +110,9 @@ export function getTierRequestLimit(tier?: string | null): number {
  * mai-TIER_USER-XXXXX-XXXXX (ex: mai-free-ABC12-defgh, mai-plus-..., mai-pro-..., mai-max-...)
  * Renvoie "Free", "Plus", "Pro", "Max" ou null si non présent.
  */
-export function extractTierFromApiKey(apiKey: string | null | undefined): "Free" | "Plus" | "Pro" | "Max" | null {
+export function extractTierFromApiKey(
+  apiKey: string | null | undefined
+): "Free" | "Plus" | "Pro" | "Max" | null {
   if (!apiKey || typeof apiKey !== "string") return null;
   const match = apiKey.trim().match(/^mai-(free|plus|pro|max)-/i);
   if (!match) return null;
@@ -149,9 +164,9 @@ export async function getUserQuotaBoost(
 // Limites quotidiennes de génération d'images
 export const TIER_DAILY_IMAGE_LIMITS: Record<Tier, number> = {
   Free: 5,
+  Max: 35,
   Plus: 10,
   Pro: 20,
-  Max: 35,
 };
 
 export function getTierDailyImageLimit(tier?: string | null): number {
@@ -161,9 +176,9 @@ export function getTierDailyImageLimit(tier?: string | null): number {
 // Coût en requêtes API par image générée (multiplié par le nombre d'images demandées)
 export const TIER_IMAGE_REQUEST_COST: Record<Tier, number> = {
   Free: 100,
+  Max: 10,
   Plus: 50,
   Pro: 25,
-  Max: 10,
 };
 
 export function getTierImageRequestCost(tier?: string | null): number {
@@ -175,9 +190,9 @@ const GIB = 1024 * 1024 * 1024;
 
 export const STORAGE_LIMITS_BYTES: Record<Tier, number> = {
   Free: 10 * GIB,
+  Max: 60 * GIB,
   Plus: 20 * GIB,
   Pro: 40 * GIB,
-  Max: 60 * GIB,
 };
 
 export function getTierStorageLimitBytes(tier?: string | null): number {
@@ -189,16 +204,18 @@ let _lastDbUrl: string | null = null;
 
 export function getDb() {
   const rawUrl =
-    (typeof (globalThis as any).Deno !== "undefined" ? (globalThis as any).Deno.env?.get("DATABASE_URL") : null) ||
-    (typeof process !== "undefined" ? process.env?.DATABASE_URL : null);
+    (typeof (globalThis as any).Deno === "undefined"
+      ? null
+      : (globalThis as any).Deno.env?.get("DATABASE_URL")) ||
+    (typeof process === "undefined" ? null : process.env?.DATABASE_URL);
   if (!rawUrl) {
     throw new Error("DATABASE_URL not set");
   }
 
   // Activer automatiquement le mode connection pooler Neon (-pooler) si disponible
   let url = rawUrl;
-  if (url.includes('.neon.tech') && !url.includes('-pooler')) {
-    url = url.replace(/@([^:]+)(\.neon\.tech)/, '@$1-pooler$2');
+  if (url.includes(".neon.tech") && !url.includes("-pooler")) {
+    url = url.replace(/@([^:]+)(\.neon\.tech)/, "@$1-pooler$2");
   }
 
   if (!_cachedDb || _lastDbUrl !== url) {
@@ -209,10 +226,22 @@ export function getDb() {
 }
 
 export function getJwtSecret(): Uint8Array {
-  const secret =
-    (typeof Deno !== "undefined" ? Deno.env.get("MAI_JWT_SECRET") || Deno.env.get("JWT_SECRET") : null) ||
-    "mai_super_secret_jwt_key_2026_default_vibe";
-  return new TextEncoder().encode(secret);
+  const denoSecret =
+    typeof Deno === "undefined"
+      ? null
+      : Deno.env.get("MAI_JWT_SECRET") || Deno.env.get("JWT_SECRET");
+  const nodeSecret =
+    typeof process === "undefined"
+      ? null
+      : process.env.MAI_JWT_SECRET || process.env.JWT_SECRET;
+  const secret = denoSecret || nodeSecret || "";
+  const encoded = new TextEncoder().encode(secret);
+  if (encoded.byteLength < 32) {
+    throw new Error(
+      "MAI_JWT_SECRET doit être configuré avec au moins 32 octets."
+    );
+  }
+  return encoded;
 }
 
 // ─────────────────────────────────────────────
@@ -237,7 +266,7 @@ export async function verifyToken(
       args: [token],
       sql: "SELECT 1 FROM token_blacklist WHERE token = ?",
     });
-    if (sqliteResult && sqliteResult.rows && sqliteResult.rows.length > 0) {
+    if (sqliteResult?.rows && sqliteResult.rows.length > 0) {
       throw new Error("Token révoqué.");
     }
   } catch (e: any) {
@@ -256,7 +285,9 @@ export async function verifyToken(
     if (e?.message === "Token révoqué.") throw e;
   }
 
-  const { payload } = await jwtVerify(token, getJwtSecret());
+  const { payload } = await jwtVerify(token, getJwtSecret(), {
+    requiredClaims: ["exp"],
+  });
   return payload as Record<string, unknown>;
 }
 
@@ -281,8 +312,8 @@ export async function blacklistToken(token: string) {
   } catch {}
   try {
     await sqlite.execute({
-      sql: "DELETE FROM token_blacklist WHERE revoked_at < datetime('now', '-14 days')",
       args: [],
+      sql: "DELETE FROM token_blacklist WHERE revoked_at < datetime('now', '-14 days')",
     });
   } catch {}
 }
@@ -423,9 +454,23 @@ export async function initSQLite() {
       code TEXT,
       action TEXT,
       expires_at DATETIME,
+      attempts INTEGER NOT NULL DEFAULT 0,
       PRIMARY KEY (email, action)
     );
   `);
+  // Migration additive pour les bases SQLite déjà créées.
+  const verificationCodeColumns = await sqlite.execute(
+    "PRAGMA table_info(verification_codes)"
+  );
+  if (
+    !verificationCodeColumns.rows.some(
+      (row: any) => String(row[1]) === "attempts"
+    )
+  ) {
+    await sqlite.execute(
+      "ALTER TABLE verification_codes ADD COLUMN attempts INTEGER NOT NULL DEFAULT 0"
+    );
+  }
   await sqlite.execute(`
     CREATE TABLE IF NOT EXISTS token_blacklist (
       token TEXT PRIMARY KEY,
@@ -458,7 +503,7 @@ export async function generateVerificationCode(
 
   await sqlite.execute({
     args: [email, code, action, expiresAt],
-    sql: "INSERT OR REPLACE INTO verification_codes (email, code, action, expires_at) VALUES (?, ?, ?, ?)",
+    sql: "INSERT OR REPLACE INTO verification_codes (email, code, action, expires_at, attempts) VALUES (?, ?, ?, ?, 0)",
   });
 
   return code;
@@ -469,35 +514,37 @@ export async function verifyVerificationCode(
   code: string,
   action: string
 ): Promise<boolean> {
-  // Assure que les tables SQLite existent
   await initSQLite();
 
-  const result = await sqlite.execute({
-    args: [email, action],
-    sql: "SELECT code, expires_at FROM verification_codes WHERE email = ? AND action = ?",
+  const now = new Date().toISOString();
+  const normalizedCode = String(code).trim();
+  // La consommation et le compteur sont atomiques pour résister aux essais concurrents.
+  const accepted = await sqlite.execute({
+    args: [email, normalizedCode, action, now, MAX_VERIFICATION_ATTEMPTS],
+    sql: "DELETE FROM verification_codes WHERE email = ? AND code = ? AND action = ? AND expires_at >= ? AND attempts < ? RETURNING email",
   });
-
-  if (result.rows.length === 0) {
-    return false;
-  }
-
-  const storedCode = result.rows[0][0] as string;
-  const expiresAt = new Date(result.rows[0][1] as string);
-
-  if (expiresAt < new Date()) {
-    await sqlite.execute({
-      args: [email, action],
-      sql: "DELETE FROM verification_codes WHERE email = ? AND action = ?",
-    });
-    return false;
-  }
-
-  if (storedCode === code) {
-    await sqlite.execute({
-      args: [email, action],
-      sql: "DELETE FROM verification_codes WHERE email = ? AND action = ?",
-    });
+  if (accepted.rows.length > 0) {
     return true;
+  }
+
+  const failedAttempt = await sqlite.execute({
+    args: [email, action, normalizedCode, now, MAX_VERIFICATION_ATTEMPTS],
+    sql: "UPDATE verification_codes SET attempts = attempts + 1 WHERE email = ? AND action = ? AND code != ? AND expires_at >= ? AND attempts < ? RETURNING attempts",
+  });
+  if (
+    failedAttempt.rows.length > 0 &&
+    Number(failedAttempt.rows[0][0]) >= MAX_VERIFICATION_ATTEMPTS
+  ) {
+    await sqlite.execute({
+      args: [email, action],
+      sql: "DELETE FROM verification_codes WHERE email = ? AND action = ?",
+    });
+  } else if (failedAttempt.rows.length === 0) {
+    // Nettoie un code expiré ou déjà verrouillé.
+    await sqlite.execute({
+      args: [email, action, now, MAX_VERIFICATION_ATTEMPTS],
+      sql: "DELETE FROM verification_codes WHERE email = ? AND action = ? AND (expires_at < ? OR attempts >= ?)",
+    });
   }
 
   return false;

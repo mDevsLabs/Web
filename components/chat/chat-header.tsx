@@ -1,20 +1,6 @@
 "use client";
 
-import {
-  ArchiveIcon,
-  ArchiveRestoreIcon,
-  BrainIcon,
-  CopyIcon,
-  DownloadIcon,
-  Edit2Icon,
-  GhostIcon,
-  MoreHorizontalIcon,
-  PanelLeftIcon,
-  PinIcon,
-  PinOffIcon,
-  SearchIcon,
-  TrashIcon,
-} from "lucide-react";
+import { ArchiveIcon, ArchiveRestoreIcon, BrainIcon, CopyIcon, DownloadIcon, Edit2Icon, GhostIcon, MoreHorizontalIcon, PanelLeftIcon, PinIcon, PinOffIcon, SearchIcon, TrashIcon } from "@mdevs/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -238,11 +224,11 @@ function PureChatHeader({
 
   return (
     <header
-      className={`sticky top-0 z-10 flex items-center gap-1.5 sm:gap-2 bg-sidebar/90 supports-[backdrop-filter]:bg-sidebar/80 backdrop-blur-sm sm:backdrop-blur-md px-2 sm:px-4 border-b border-border/40 ${isCollapsedDesktop ? "h-[calc(env(safe-area-inset-top)+2.5rem)] pt-[env(safe-area-inset-top)]" : "h-[calc(env(safe-area-inset-top)+3.5rem)] pt-[env(safe-area-inset-top)]"}`}
+      className={`sticky top-0 z-10 flex items-center gap-1.5 sm:gap-2 chat-header-glass px-2 sm:px-4 ${isCollapsedDesktop ? "h-[calc(env(safe-area-inset-top)+2.5rem)] pt-[env(safe-area-inset-top)]" : "h-[calc(env(safe-area-inset-top)+3.5rem)] pt-[env(safe-area-inset-top)]"}`}
     >
       {isCollapsedDesktop && (
         <Button
-          aria-label="Ouvrir sidebar"
+          aria-label="Ouvrir la barre latérale"
           onClick={toggleSidebar}
           size="icon-sm"
           variant="ghost"

@@ -1,47 +1,30 @@
 # mAI Desktop
 
-Application desktop Electron – simple conteneur pour https://mai-officiel.vercel.app
+Ce client Electron ouvre le site mAI dans une fenêtre de bureau. Il s’agit d’un conteneur léger : l’interface, la session et les fonctions IA restent fournies par le site distant.
 
-## Structure
+## Développement
 
-```
-apps/desktop/
-  src/
-    main.ts      # Process principal Electron (BrowserWindow + loadURL)
-    preload.ts   # Preload sécurisé (contextIsolation)
-  build/
-    icon.png     # Icône Linux / source
-    icon.ico     # Icône Windows (générée)
-    icon.icns    # Icône macOS (générée)
-    entitlements.mac.plist
-  scripts/
-    generate-icons.mjs  # Génère ico/icns depuis public/logo.png
-```
+Depuis ce dossier, installez les dépendances, générez les icônes si nécessaire et lancez l’application :
 
-## Logo
-
-Le logo est `public/logo.png` (676×676) du site. `generate-icons.mjs` le copie et génère `icon.ico`/`icon.icns` sans dépendance native (embed PNG). Si `sharp` est installé, il génère des variantes multi-résolutions propres.
-
-## Dev
-
-```bash
-cd apps/desktop
+~~~powershell
 pnpm install
 pnpm run generate:icons
 pnpm run dev
-```
+~~~
 
-## Build local
+La cible distante est définie dans apps/desktop/src/main.ts. Les liens externes s’ouvrent dans le navigateur système.
 
-```bash
-pnpm run dist        # build selon OS courant
-pnpm run dist:win    # nécessite Windows ou wine
-pnpm run dist:mac    # nécessite macOS
-pnpm run dist:linux  # Linux
-```
+## Compilation
 
-Sortie : `apps/desktop/dist-elec/`
+~~~powershell
+pnpm run build
+pnpm run dist
+~~~
+
+Les commandes dist:win, dist:mac et dist:linux produisent le paquet de la plateforme correspondante. Une compilation macOS demande macOS ; la création d’un installateur Windows depuis un autre système dépend de Wine et de la configuration Electron Builder.
+
+Les projets natifs générés et les artefacts de compilation ne sont pas les sources de l’interface Web.
 
 ## CI
 
-Workflow `.github/workflows/desktop.yml` build les 3 plateformes en parallèle et publie les artefacts + Release GitHub.
+Le workflow de build et de publication est [build.yml](../../.github/workflows/build.yml). Il prend en charge les clients desktop et mobile selon les chemins modifiés et les déclencheurs du workflow.

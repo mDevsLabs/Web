@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { errorResponse, logError } from "@/lib/api/error-response";
-import { getMaiUser } from "@/lib/auth/session";
+import { requireUser } from "@/lib/auth/require-user";
 import {
   deleteScheduledMessage,
   getScheduledMessageById,
@@ -38,18 +38,13 @@ export async function GET(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return errorResponse("auth_required", { message: "Non autorisé." });
   }
 
   const { id } = await params;
-  const userId = user.id;
-  if (!userId) {
-    return errorResponse("auth_required", {
-      message: "Session utilisateur invalide.",
-    });
-  }
+  const { userId } = session;
   const message = await getScheduledMessageById({ id, userId });
 
   if (!message) {
@@ -65,18 +60,13 @@ export async function PATCH(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return errorResponse("auth_required", { message: "Non autorisé." });
   }
 
   const { id } = await params;
-  const userId = user.id;
-  if (!userId) {
-    return errorResponse("auth_required", {
-      message: "Session utilisateur invalide.",
-    });
-  }
+  const { user, userId } = session;
 
   try {
     const json = await request.json();
@@ -173,20 +163,13 @@ export async function DELETE(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return errorResponse("auth_required", { message: "Non autorisé." });
   }
 
   const { id } = await params;
-  const userId = user.id;
-  if (!userId) {
-    return errorResponse("auth_required", {
-      message: "Session utilisateur invalide.",
-    });
-  }
-
-  const success = await deleteScheduledMessage({ id, userId });
+  const success = await deleteScheduledMessage({ id, userId: session.userId });
   if (!success) {
     return errorResponse("not_found", { message: "Message introuvable." });
   }

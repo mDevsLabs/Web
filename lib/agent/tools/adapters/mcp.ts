@@ -109,7 +109,7 @@ export async function buildMcpAgentTools(params: {
   // Secrets : déchiffrés une fois par run, fusionnés dans la configuration
   // d'appel. En cas d'échec de déchiffrement, la valeur est ignorée (jamais
   // de secret vide envoyé).
-  let secrets;
+  let secrets: Awaited<ReturnType<typeof loadMcpSecretDescriptors>>;
   try {
     secrets = await loadMcpSecretDescriptors({
       serverId: params.server.id,
@@ -225,7 +225,7 @@ export async function listMcpAgentTools(params: {
   // donc aucun MCP disponible.
   const requestedServerIds = params.serverIds;
   const selectedIds =
-    requestedServerIds == null
+    requestedServerIds === null || requestedServerIds === undefined
       ? null
       : new Set(requestedServerIds.filter((id) => typeof id === "string"));
   const servers =

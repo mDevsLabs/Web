@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Product", "label": "Produits", "description": "G\xE9rez vos produits depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "sku", "label": "R\xE9f\xE9rence", "kind": "text", "required": true }, { "key": "price", "label": "Prix", "kind": "number", "required": true }, { "key": "stock", "label": "Stock", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "active", "archived"] }], "titleKey": "name", "settings": [{ "key": "notifyProduct", "label": "Notifications : produits", "description": "Recevoir un signal lors des changements." }, { "key": "archiveProduct", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section produits." }, { "key": "approveProduct", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

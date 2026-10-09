@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpIcon, Loader2Icon, SquareIcon, XIcon } from "lucide-react";
+import { ArrowUpIcon, Loader2Icon, SquareIcon, XIcon } from "@mdevs/icons";
 import type { ComponentProps, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 

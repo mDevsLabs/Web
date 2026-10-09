@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Invoice", "label": "Factures", "description": "G\xE9rez vos factures depuis une interface claire.", "fields": [{ "key": "number", "label": "Num\xE9ro", "kind": "text", "required": true }, { "key": "customer", "label": "Client", "kind": "text", "required": true }, { "key": "amount", "label": "Montant", "kind": "number", "required": true }, { "key": "dueDate", "label": "\xC9ch\xE9ance", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "sent", "paid", "overdue"] }], "titleKey": "number", "settings": [{ "key": "notifyInvoice", "label": "Notifications : factures", "description": "Recevoir un signal lors des changements." }, { "key": "archiveInvoice", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section factures." }, { "key": "approveInvoice", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

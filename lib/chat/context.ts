@@ -3,14 +3,9 @@ import { convertToModelMessages, type ModelMessage } from "ai";
 import { chatOwnerMatches } from "@/lib/agent/channel";
 import { DEFAULT_CHAT_MODEL, getModelCapabilities } from "@/lib/ai/models";
 import type { RequestHints } from "@/lib/ai/prompts";
-import {
-  type SkillParameterDefinition,
-  substituteSkillParams,
-  validateSkillParams,
-  withSkillDefaults,
-} from "@/lib/ai/skill-params";
 import type { ChatAuth } from "@/lib/chat/auth";
 import { buildProjectFilesPromptBlock } from "@/lib/chat/project-files";
+import { intersecterFiltres, prepareSkillContext } from "@/lib/chat/skills";
 import { getUserApiKey } from "@/lib/db/api-keys";
 import {
   getAgentById,
@@ -184,55 +179,26 @@ export async function buildChatContext(
     } catch {}
   }
 
-  // Les Skills sont ouverts à tous les forfaits, y compris Free. En revanche,
-  // les serveurs MCP intégrés à un skill restent réservés aux forfaits payants.
+  // Les Skills et serveurs MCP associés sont ouverts à tous les forfaits.
+  // La préparation elle-même est dans `lib/chat/skills.ts` : c'est une
+  // fonction NEUTRE, réutilisée telle quelle par le chat Wakies, qui n'a ni
+  // table Chat ni table Message à écrire.
   const effectiveSkillId =
     skillId === undefined ? ((chat as any)?.skillId ?? null) : skillId;
-  let skillInstructions: string | null = null;
-  let skillTools: string[] = [];
-  let skillMcpServerIds: string[] = [];
-  let skillMcpToolFilter: Record<string, string[] | null> | null = null;
-  let skillParameterError: string | null = null;
-
-  if (effectiveSkillId) {
-    try {
-      const activeSkill = await getSkillById({
-        id: effectiveSkillId,
-        userId,
-      });
-      if (activeSkill) {
-        const parameters = Array.isArray(activeSkill.parameters)
-          ? (activeSkill.parameters as SkillParameterDefinition[])
-          : [];
-        const parameterError = validateSkillParams(parameters, skillParams);
-        if (parameterError) {
-          skillParameterError = parameterError;
-        }
-        const effectiveSkillParams = withSkillDefaults(parameters, skillParams);
-        skillInstructions = substituteSkillParams(
-          activeSkill.instructions,
-          effectiveSkillParams
-        );
-        if (Array.isArray(activeSkill.tools)) {
-          skillTools = activeSkill.tools as string[];
-        }
-        if (!isFreeUser && Array.isArray(activeSkill.mcpServerIds)) {
-          skillMcpServerIds = activeSkill.mcpServerIds as string[];
-        }
-        if (
-          !isFreeUser &&
-          activeSkill.mcpToolFilter &&
-          typeof activeSkill.mcpToolFilter === "object"
-        ) {
-          skillMcpToolFilter = activeSkill.mcpToolFilter as Record<
-            string,
-            string[] | null
-          >;
-        }
-        trackSkillUsage({ skillId: activeSkill.id, userId }).catch(() => {});
-      }
-    } catch {}
-  }
+  const prepare = await prepareSkillContext({
+    isFreeUser,
+    skillId: effectiveSkillId,
+    skillParams,
+    userId,
+  });
+  const skillInstructions: string | null = prepare.skillId
+    ? prepare.instructions
+    : null;
+  let skillTools: string[] = prepare.skillId ? prepare.tools : [];
+  let skillMcpServerIds: string[] = prepare.skillId ? prepare.mcpServerIds : [];
+  let skillMcpToolFilter: Record<string, string[] | null> | null =
+    prepare.skillId ? prepare.mcpToolFilter : null;
+  const skillParameterError: string | null = prepare.parameterError;
 
   if (skillParameterError) {
     throw new ChatbotError("bad_request:api", skillParameterError);
@@ -299,13 +265,14 @@ export async function buildChatContext(
       const selectedAgentSkills = ownedSkills.filter((skill) =>
         agentSkillIds.includes(skill.id)
       );
+      const filtresAgent: (Record<string, string[] | null> | null)[] = [];
       for (const agentSkill of selectedAgentSkills) {
         if (Array.isArray(agentSkill.tools)) {
           skillTools = Array.from(
             new Set([...skillTools, ...(agentSkill.tools as string[])])
           );
         }
-        if (!isFreeUser && Array.isArray(agentSkill.mcpServerIds)) {
+        if (Array.isArray(agentSkill.mcpServerIds)) {
           skillMcpServerIds = Array.from(
             new Set([
               ...skillMcpServerIds,
@@ -313,17 +280,22 @@ export async function buildChatContext(
             ])
           );
         }
-        if (
-          !isFreeUser &&
+        filtresAgent.push(
           agentSkill.mcpToolFilter &&
-          typeof agentSkill.mcpToolFilter === "object"
-        ) {
-          skillMcpToolFilter = {
-            ...(skillMcpToolFilter ?? {}),
-            ...(agentSkill.mcpToolFilter as Record<string, string[] | null>),
-          };
-        }
+            typeof agentSkill.mcpToolFilter === "object"
+            ? (agentSkill.mcpToolFilter as Record<string, string[] | null>)
+            : null
+        );
       }
+      // Les filtres d'outils de plusieurs Skills se COMPOSENT par
+      // intersection, jamais par `...spread` : un spread laisserait le dernier
+      // Skill du tableau écraser la restriction des précédents et
+      // RÉÉLARGIRAIT la surface d'outils. Ici, l'intersection ne peut que la
+      // rétrécir.
+      skillMcpToolFilter = intersecterFiltres([
+        skillMcpToolFilter,
+        ...filtresAgent,
+      ]);
     } catch {}
   }
 

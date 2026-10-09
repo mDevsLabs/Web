@@ -1,23 +1,6 @@
 "use client";
 
-import {
-  BrainIcon,
-  CalendarClockIcon,
-  ChevronDownIcon,
-  CpuIcon,
-  FileIcon,
-  FolderKanbanIcon,
-  ImageIcon,
-  ListChecksIcon,
-  Loader2Icon,
-  MessageSquareIcon,
-  PuzzleIcon,
-  SearchIcon,
-  ServerIcon,
-  SparklesIcon,
-  SquarePenIcon,
-  Volume2Icon,
-} from "lucide-react";
+import { BrainIcon, CalendarClockIcon, ChevronDownIcon, CpuIcon, FileIcon, FolderKanbanIcon, ImageIcon, ListChecksIcon, Loader2Icon, MessageSquareIcon, PuzzleIcon, SearchIcon, ServerIcon, SparklesIcon, SquarePenIcon, Volume2Icon } from "@mdevs/icons";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import useSWRInfinite from "swr/infinite";

@@ -1,0 +1,71 @@
+{
+  "model": "TravelItinerary",
+  "config": {
+    "name": "TravelItinerary",
+    "label": "Itinéraires",
+    "description": "Gérez vos itinéraires depuis une interface claire.",
+    "fields": [
+      {
+        "key": "title",
+        "label": "Titre",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "traveler",
+        "label": "Voyageur",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "startsOn",
+        "label": "Début",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "dayCount",
+        "label": "Jours",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "draft",
+          "confirmed",
+          "completed"
+        ]
+      }
+    ],
+    "titleKey": "title",
+    "settings": [
+      {
+        "key": "notifyTravelItinerary",
+        "label": "Notifications : itinéraires",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveTravelItinerary",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section itinéraires."
+      },
+      {
+        "key": "approveTravelItinerary",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "travel-itinerary-demo-1",
+    "title": "Week-end à Lisbonne",
+    "traveler": "Voyageur démo",
+    "startsOn": "2026-10-04",
+    "dayCount": 128,
+    "status": "draft"
+  }
+}

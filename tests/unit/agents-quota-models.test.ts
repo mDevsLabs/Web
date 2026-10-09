@@ -15,6 +15,7 @@ import {
   getTierAgentLimit,
   isAgentLimitUnlimited,
   isAgentQuotaExceeded,
+  TIER_LIMITS,
 } from "@/lib/plans/tier-limits";
 
 const ROOT = path.resolve(import.meta.dirname, "..", "..");
@@ -52,9 +53,32 @@ describe("Quota d'agents par forfait", () => {
 
   it("garde le miroir backend (config.ts) aligné sur lib/plans/tier-limits.ts", () => {
     const config = source("config.ts");
-    expect(config).toContain("Plus: 15");
-    expect(config).toContain("Pro: 25");
-    expect(config).toContain("Max: null");
+
+    // Le quota d'agents par forfait n'a PAS de pendant backend : les agents
+    // vivent dans la base Next et la limite est appliquée par la BFF
+    // (`app/(chat)/api/agents/route.ts` via `getTierAgentLimit`). Ce test
+    // vérifiait `Plus: 15 / Pro: 25 / Max: null` dans config.ts — une table qui
+    // n'y existe pas. Il échouait donc depuis la 0.9.1 sans rien protéger, et
+    // laissait croire que le miroir était aligné. Le quota d'agents est donc
+    // asservi à sa vraie source de vérité, et le miroir backend ne porte plus
+    // que les grandeurs que le backend possède réellement.
+    expect(getTierAgentLimit("plus")).toBe(15);
+    expect(getTierAgentLimit("pro")).toBe(25);
+    expect(getTierAgentLimit("max")).toBeNull();
+    expect(config).not.toContain("TIER_AGENT_LIMITS");
+
+    // Grandeurs réellement dupliquées côté backend : tokens de chat, tokens de
+    // parole, images par jour, stockage.
+    const limits = TIER_LIMITS;
+    const tiers = ["Free", "Plus", "Pro", "Max"] as const;
+    for (const tier of tiers) {
+      const entry = limits[tier.toLowerCase() as keyof typeof limits];
+      const numeric = (value: number) =>
+        value.toLocaleString("en-US").replace(/,/g, "_");
+      expect(config).toContain(`${tier}: ${numeric(entry.chatWeeklyTokens)}`);
+      expect(config).toContain(`${tier}: ${numeric(entry.speechWeeklyTokens)}`);
+      expect(config).toContain(`${tier}: ${numeric(entry.imagesPerDay)}`);
+    }
   });
 
   it("n'a plus aucun plafond codé en dur dans l'API des agents", () => {

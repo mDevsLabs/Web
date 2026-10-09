@@ -1,0 +1,5 @@
+"use client";
+// Geometry: tabler. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const BookUploadIcon = /* @__PURE__ */ createIcon('BookUploadIcon', [["path", { "d": "M14 20h-8a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12v5" }], ["path", { "d": "M11 16h-5a2 2 0 0 0 -2 2" }], ["path", { "d": "M15 16l3 -3l3 3" }], ["path", { "d": "M18 13v9" }]]);
+exports.BookUploadIcon = BookUploadIcon;

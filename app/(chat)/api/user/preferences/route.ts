@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { errorResponse, zodIssuesMessage } from "@/lib/api/error-response";
-import { getMaiUser } from "@/lib/auth/session";
+import { APP_KEYS } from "@/lib/apps/catalog";
+import { requireUser } from "@/lib/auth/require-user";
+import { CREATION_MODES } from "@/lib/creation/mode";
 import { getUserPreferences, upsertUserPreferences } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import {
@@ -23,11 +25,16 @@ const buildSchema = (tier?: string | null) =>
   z.object({
     customInstructions: buildCustomInstructionsSchema(tier),
     defaultAgentId: z.string().uuid().nullable().optional(),
+    // Menu favori : les quatre clés viennent du même catalogue que l'interface
+    // (lib/apps/catalog.ts) — impossible qu'une clé valide soit refusée, ni
+    // qu'une application fantôme soit persistée.
+    defaultApp: z.enum(APP_KEYS).optional(),
     defaultAudioModel: z.string().max(150).optional(),
     defaultAudioSpeed: z.number().min(0.5).max(2.0).optional(),
     defaultAudioVoice: z.string().max(100).optional(),
     defaultChatModel: z.string().max(200).nullable().optional(),
     defaultChatVisibility: z.enum(["private", "public"]).optional(),
+    defaultCreationMode: z.enum(CREATION_MODES).optional(),
     // Les deux listes viennent de lib/i18n/languages.ts, la même source que le
     // sélecteur de l'interface : impossible qu'un code valide soit refusé par
     // l'API, ni qu'une cible DeepL fantôme soit acceptée puis rejetée en aval.
@@ -51,27 +58,29 @@ const buildSchema = (tier?: string | null) =>
   });
 
 export async function GET() {
-  const user = await getMaiUser();
-  if (!user) {
-    return new ChatbotError("unauthorized:chat").toResponse();
-  }
-  const userId = user.id;
-  if (!userId) {
+  // `requireUser` dérive l'identité canonique (`id || email`). Cette route lisait
+  // `user.id` et refusait la session dès qu'il était vide : pour un compte dont
+  // l'identifiant persistant EST l'adresse, les préférences étaient inaccessibles
+  // et l'interface revenait à ses valeurs par défaut.
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
   try {
-    const prefs = await getUserPreferences(userId);
+    const prefs = await getUserPreferences(session.userId);
     return NextResponse.json(prefs);
   } catch (e) {
     console.error("GET user preferences error", e);
     return NextResponse.json({
       customInstructions: "",
       defaultAgentId: null,
+      defaultApp: "mai",
       defaultAudioModel: "deepgram/flux-tts:free",
       defaultAudioSpeed: 1.0,
       defaultAudioVoice: "flux-alexis-en",
       defaultChatModel: null,
       defaultChatVisibility: "private",
+      defaultCreationMode: "image",
       defaultDictationLanguage: "auto",
       defaultImageModel: "black-forest-labs/flux-schnell",
       defaultImageSize: "1024x1024",
@@ -86,14 +95,11 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id;
-  if (!userId) {
-    return new ChatbotError("unauthorized:chat").toResponse();
-  }
+  const { user, userId } = session;
   try {
     const body = await request.json().catch(() => ({}));
     const parsed = buildSchema(user.tier).safeParse(body);

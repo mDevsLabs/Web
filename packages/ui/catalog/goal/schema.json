@@ -1,0 +1,71 @@
+{
+  "model": "Goal",
+  "config": {
+    "name": "Goal",
+    "label": "Objectifs",
+    "description": "Gérez vos objectifs depuis une interface claire.",
+    "fields": [
+      {
+        "key": "title",
+        "label": "Titre",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "owner",
+        "label": "Responsable",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "progress",
+        "label": "Avancement (%)",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "dueDate",
+        "label": "Échéance",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "active",
+          "achieved",
+          "paused"
+        ]
+      }
+    ],
+    "titleKey": "title",
+    "settings": [
+      {
+        "key": "notifyGoal",
+        "label": "Notifications : objectifs",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveGoal",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section objectifs."
+      },
+      {
+        "key": "approveGoal",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "goal-demo-1",
+    "title": "Lancer le nouveau produit",
+    "owner": "Marie Dupont",
+    "progress": 128,
+    "dueDate": "2026-10-04",
+    "status": "active"
+  }
+}

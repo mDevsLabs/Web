@@ -1,27 +1,6 @@
 "use client";
 
-import {
-  BarChart3Icon,
-  BrainIcon,
-  CheckIcon,
-  CloudIcon,
-  CopyIcon,
-  Edit2Icon,
-  LayoutGridIcon,
-  MessageSquareIcon,
-  MessageSquareTextIcon,
-  MoreVerticalIcon,
-  PinIcon,
-  PlusIcon,
-  SearchIcon,
-  SlidersHorizontalIcon,
-  SparklesIcon,
-  TagIcon,
-  ThermometerIcon,
-  Trash2Icon,
-  TriangleAlertIcon,
-  XIcon,
-} from "lucide-react";
+import { BarChart3Icon, BrainIcon, CheckIcon, CloudIcon, CopyIcon, Edit2Icon, LayoutGridIcon, MessageSquareIcon, MessageSquareTextIcon, MoreVerticalIcon, PinIcon, PlusIcon, SearchIcon, SlidersHorizontalIcon, SparklesIcon, TagIcon, ThermometerIcon, Trash2Icon, TriangleAlertIcon, XIcon } from "@mdevs/icons";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useState } from "react";
 import { toast } from "sonner";

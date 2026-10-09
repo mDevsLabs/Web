@@ -1,0 +1,5 @@
+"use client";
+// Geometry: tabler. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const BallBasketballIcon = /* @__PURE__ */ createIcon('BallBasketballIcon', [["path", { "d": "M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" }], ["path", { "d": "M5.65 5.65l12.7 12.7" }], ["path", { "d": "M5.65 18.35l12.7 -12.7" }], ["path", { "d": "M12 3a9 9 0 0 0 9 9" }], ["path", { "d": "M3 12a9 9 0 0 1 9 9" }]]);
+exports.BallBasketballIcon = BallBasketballIcon;

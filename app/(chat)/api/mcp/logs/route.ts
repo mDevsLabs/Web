@@ -1,14 +1,14 @@
-import { getMaiUser } from "@/lib/auth/session";
+import { requireUser } from "@/lib/auth/require-user";
 import { getMcpLogsByUserId } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import { toMcpLogDtoList } from "@/lib/mcp/dto";
 
 export async function GET(request: Request) {
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
+  const { userId } = session;
   const { searchParams } = new URL(request.url);
   const requestedLimit = Number(searchParams.get("limit") ?? 50);
   const limit = Number.isFinite(requestedLimit)

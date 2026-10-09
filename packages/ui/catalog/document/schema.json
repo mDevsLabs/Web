@@ -1,0 +1,71 @@
+{
+  "model": "Document",
+  "config": {
+    "name": "Document",
+    "label": "Documents",
+    "description": "Gérez vos documents depuis une interface claire.",
+    "fields": [
+      {
+        "key": "title",
+        "label": "Titre",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "owner",
+        "label": "Propriétaire",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "pageCount",
+        "label": "Pages",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "updatedOn",
+        "label": "Modification",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "draft",
+          "review",
+          "published"
+        ]
+      }
+    ],
+    "titleKey": "title",
+    "settings": [
+      {
+        "key": "notifyDocument",
+        "label": "Notifications : documents",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveDocument",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section documents."
+      },
+      {
+        "key": "approveDocument",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "document-demo-1",
+    "title": "Guide de conception",
+    "owner": "Marie Dupont",
+    "pageCount": 128,
+    "updatedOn": "2026-10-04",
+    "status": "draft"
+  }
+}

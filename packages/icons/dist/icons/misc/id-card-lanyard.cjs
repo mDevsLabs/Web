@@ -1,0 +1,5 @@
+"use client";
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const IdCardLanyardIcon = /* @__PURE__ */ createIcon('IdCardLanyardIcon', [["path", { "d": "M13.5 8h-3" }], ["path", { "d": "m15 2-1 2h3a2 2 0 012 2v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2h3" }], ["path", { "d": "M16 22a4 4 0 00-8 0" }], ["path", { "d": "m9 2 3 6" }], ["circle", { "cx": "12", "cy": "15", "r": "3" }]]);
+exports.IdCardLanyardIcon = IdCardLanyardIcon;

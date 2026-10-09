@@ -1,32 +1,6 @@
 "use client";
 
-import {
-  AlertCircleIcon,
-  BellIcon,
-  BrainIcon,
-  CameraIcon,
-  CloudIcon,
-  DatabaseIcon,
-  ExternalLinkIcon,
-  EyeIcon,
-  EyeOffIcon,
-  ImageIcon,
-  KeyRoundIcon,
-  LanguagesIcon,
-  LineChartIcon,
-  Loader2Icon,
-  LockIcon,
-  MonitorSmartphoneIcon,
-  RefreshCwIcon,
-  SettingsIcon,
-  ShieldCheckIcon,
-  SparklesIcon,
-  SquareSlashIcon,
-  UserIcon,
-  Volume2Icon,
-  WrenchIcon,
-  ZapIcon,
-} from "lucide-react";
+import { AlertCircleIcon, BellIcon, BotIcon, BrainIcon, CameraIcon, CloudIcon, DatabaseIcon, ExternalLinkIcon, EyeIcon, EyeOffIcon, ImageIcon, KeyRoundIcon, LanguagesIcon, LineChartIcon, Loader2Icon, LockIcon, MonitorSmartphoneIcon, RefreshCwIcon, SettingsIcon, ShieldCheckIcon, SparklesIcon, SquareSlashIcon, StarIcon, UserIcon, Volume2Icon, WrenchIcon, ZapIcon } from "@mdevs/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -49,10 +23,14 @@ import {
 import { reopenNotificationPrompt } from "@/components/chat/notification-permission-gate";
 import { PageBackButton } from "@/components/chat/page-back-button";
 import { UpgradeDialog } from "@/components/common/upgrade-dialog";
+import { AgentTab } from "@/components/settings/agent-tab";
 import { ConfigurationSection } from "@/components/settings/configuration-client";
 import { DataTab } from "@/components/settings/data-tab";
 import { MemoryCard } from "@/components/settings/memory-card";
-import { OptionSelector } from "@/components/settings/option-selector";
+import {
+  OptionSelector,
+  type OptionSelectorItem,
+} from "@/components/settings/option-selector";
 import {
   ImageSizeOptionSelector,
   mapVoicesForModel,
@@ -76,6 +54,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PillSwitcher } from "@/components/ui/pill-switcher";
+import { useFavoriteApp } from "@/hooks/use-favorite-app";
 import { requestOnboardingReplay } from "@/hooks/use-onboarding";
 import {
   resolveImagesUsage,
@@ -86,7 +66,13 @@ import { useTier } from "@/hooks/use-tier";
 import type { ChatModel } from "@/lib/ai/models";
 import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import { extractApiErrorMessage } from "@/lib/api/client-error";
+import {
+  APP_ORDER,
+  type AppCatalogEntry,
+  type AppKey,
+} from "@/lib/apps/catalog";
 import { MAI_UPGRADE_URL } from "@/lib/constants";
+import { type CreationMode, normalizeCreationMode } from "@/lib/creation/mode";
 import {
   AUTO_DICTATION_LANGUAGE,
   DEFAULT_TRANSLATION_TARGET,
@@ -114,6 +100,17 @@ import { cn, fetcher } from "@/lib/utils";
 function formatTokens(n: number) {
   return new Intl.NumberFormat("fr-FR").format(n);
 }
+
+// Options du réglage « Menu favori » : libellés et descriptions viennent du
+// catalogue (même source que le menu du logo). Défini hors composant : la
+// liste est statique et ne doit pas être recréée à chaque rendu.
+const FAVORITE_APP_OPTIONS: OptionSelectorItem[] = APP_ORDER.map(
+  (entry: AppCatalogEntry) => ({
+    description: entry.description,
+    id: entry.key,
+    label: entry.label,
+  })
+);
 
 function formatBytes(bytes: number) {
   if (!bytes || bytes === 0) {
@@ -159,6 +156,7 @@ function setCookie(name: string, value: string) {
 }
 
 type SettingsTab =
+  | "agent"
   | "configuration"
   | "data"
   | "memory"
@@ -174,6 +172,7 @@ const SETTINGS_TABS: {
 }[] = [
   { icon: UserIcon, id: "profile", label: "Mon Profil" },
   { icon: SparklesIcon, id: "preferences", label: "Préférences IA" },
+  { icon: BotIcon, id: "agent", label: "Agent" },
   { icon: BrainIcon, id: "memory", label: "Mémoire" },
   { icon: ZapIcon, id: "usage", label: "Consommation & Forfait" },
   { icon: BellIcon, id: "notifications", label: "Notifications" },
@@ -336,6 +335,8 @@ function SettingsPageInner() {
   const [isSavingCustom, setIsSavingCustom] = useState(false);
 
   // Préférences Outils IA (Génération d'images et Synthèse vocale)
+  const [defaultCreationMode, setDefaultCreationMode] =
+    useState<CreationMode>("image");
   const [defaultImageModel, setDefaultImageModel] = useState<string>(
     "black-forest-labs/flux-schnell"
   );
@@ -440,6 +441,11 @@ function SettingsPageInner() {
   );
 
   const [defaultAgentId, setDefaultAgentId] = useState<string>("none");
+  // Menu favori : application ouverte par défaut après connexion. Le hook
+  // partage le cache SWR de /api/user/preferences : le choix fait ici met à
+  // jour le menu du logo sans rechargement.
+  const { favorite: favoriteApp, setFavorite: setFavoriteApp } =
+    useFavoriteApp();
   const [isSavingDefaultAgent, setIsSavingDefaultAgent] = useState(false);
   const [agentsUpgradeOpen, setAgentsUpgradeOpen] = useState(false);
   const [showAgentChatIcons, setShowAgentChatIcons] = useState<boolean>(true);
@@ -546,6 +552,9 @@ function SettingsPageInner() {
       if (customPrefData.topP !== undefined) {
         setCustomTopP(customPrefData.topP);
       }
+      setDefaultCreationMode(
+        normalizeCreationMode(customPrefData.defaultCreationMode)
+      );
       if (customPrefData.defaultImageModel) {
         setDefaultImageModel(customPrefData.defaultImageModel);
       }
@@ -793,6 +802,7 @@ function SettingsPageInner() {
           defaultAudioModel,
           defaultAudioSpeed,
           defaultAudioVoice,
+          defaultCreationMode,
           defaultImageModel,
           defaultImageSize,
         }),
@@ -811,6 +821,7 @@ function SettingsPageInner() {
     }
   }, [
     defaultImageModel,
+    defaultCreationMode,
     defaultImageSize,
     defaultAudioModel,
     defaultAudioVoice,
@@ -1094,9 +1105,21 @@ function SettingsPageInner() {
           { id: "profile-form", label: "Informations personnelles" },
           { id: "profile-security", label: "Sécurité & mot de passe" },
         ];
+      case "agent":
+        return [
+          { id: "agent-mode", label: "Mode par défaut" },
+          { id: "agent-fallback", label: "Modèle de repli" },
+          { id: "agent-reasoning", label: "Réflexion" },
+          { id: "agent-tools", label: "Outils" },
+          { id: "agent-permissions", label: "Autorisations des outils" },
+          { id: "agent-project", label: "Projet par défaut" },
+          { id: "agent-availability", label: "Disponibilité" },
+          { id: "agent-activity", label: "Activité Agent" },
+        ];
       case "preferences":
         return [
           { id: "prefs-defaults", label: "Modèle & visibilité" },
+          { id: "prefs-favorite-app", label: "Menu favori" },
           { id: "prefs-instructions", label: "Instructions personnalisées" },
           { id: "prefs-agent", label: "Bot par défaut" },
           { id: "prefs-tools", label: "Génération d'images" },
@@ -1149,7 +1172,7 @@ function SettingsPageInner() {
               <div className="flex items-center gap-2 text-primary font-semibold text-xs tracking-wider uppercase mb-1">
                 <span className="flex size-2 rounded-full bg-primary animate-pulse" />
                 <SettingsIcon className="size-4" />
-                mAI Account & Preferences
+                Compte & Préférences mAI
               </div>
               <h1 className="text-2xl truncate md:text-3xl font-bold tracking-tight text-foreground">
                 Paramètres du compte
@@ -1200,7 +1223,6 @@ function SettingsPageInner() {
         className="max-w-7xl mx-auto w-full p-4 sm:p-6 md:p-10 flex gap-8 items-start"
         id={`settings-panel-${activeTab}`}
         role="tabpanel"
-        tabIndex={0}
       >
         <SettingsAnchorNav items={anchorItems} />
         <div className="flex-1 min-w-0">
@@ -1553,49 +1575,87 @@ function SettingsPageInner() {
                     pourrez toujours la modifier par conversation.
                   </span>
                 </div>
+              </div>
 
-                <div className="flex flex-col gap-2 p-3 rounded-xl border border-border/40 bg-muted/20">
-                  <div className="flex items-center gap-2">
-                    <BotGlyph className="size-4 text-primary" />
-                    <span className="text-xs font-semibold text-foreground">
-                      Bots IA
-                    </span>
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-primary/10 text-primary font-bold">
-                      Nouveau
-                    </span>
+              {/* Menu favori : application ouverte par défaut après connexion.
+                  Carte sœur des autres préférences, pas un champ de la carte
+                  « Modèle & visibilité » : l'ancre et le titre sont indépendants. */}
+              <div
+                className="surface-card flex flex-col gap-5 scroll-mt-6"
+                id="prefs-favorite-app"
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="p-2 rounded-xl bg-info/10 text-info ring-1 ring-info/20">
+                    <StarIcon className="size-5" />
                   </div>
-                  <p className="text-[11px] text-muted-foreground leading-relaxed">
-                    Les <strong>Bots</strong> remplacent les Modes IA. Créez des
-                    bots personnalisés (instructions 5000c, icône, modèle par
-                    défaut, skills, MCP et fichiers) : 15 avec Plus, 25 avec
-                    Pro, illimité avec Max. Sélection globale via le menu à côté
-                    du modèle ou{" "}
-                    <code className="px-1 py-0.5 rounded bg-muted text-[10px]">
-                      @
-                    </code>{" "}
-                    /{" "}
-                    <code className="px-1 py-0.5 rounded bg-muted text-[10px]">
-                      /agents
-                    </code>
-                    .
-                  </p>
-                  <Link
-                    className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline w-fit"
-                    href="/agents"
-                  >
-                    <BotGlyph className="size-3.5" /> Gérer mes bots →
-                  </Link>
+                  <div>
+                    <h3 className="text-base font-semibold text-foreground">
+                      Menu favori
+                    </h3>
+                    <p className="text-xs text-muted-foreground">
+                      L&apos;application ouverte automatiquement à la connexion,
+                      quand aucune destination précise n&apos;est demandée.
+                    </p>
+                  </div>
                 </div>
+                <div className="flex flex-col gap-2 pt-2">
+                  <Label className="text-xs font-medium text-muted-foreground">
+                    Application préférée
+                  </Label>
+                  <OptionSelector
+                    items={FAVORITE_APP_OPTIONS}
+                    onChange={(id) => setFavoriteApp(id as AppKey)}
+                    placeholder="Application"
+                    value={favoriteApp}
+                  />
+                  <span className="text-[11px] text-muted-foreground">
+                    Ce choix alimente aussi le menu du logo (mAI, Site, Vibe,
+                    Code) et s&apos;applique sur tous vos appareils.
+                  </span>
+                </div>
+              </div>
 
-                <div className="pt-2 flex justify-end">
-                  <button
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer"
-                    onClick={handleSavePreferences}
-                    type="button"
-                  >
-                    Enregistrer les préférences
-                  </button>
+              <div className="flex flex-col gap-2 p-3 rounded-xl border border-border/40 bg-muted/20">
+                <div className="flex items-center gap-2">
+                  <BotGlyph className="size-4 text-primary" />
+                  <span className="text-xs font-semibold text-foreground">
+                    Bots IA
+                  </span>
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-primary/10 text-primary font-bold">
+                    Nouveau
+                  </span>
                 </div>
+                <p className="text-[11px] text-muted-foreground leading-relaxed">
+                  Les <strong>Bots</strong> remplacent les Modes IA. Créez des
+                  bots personnalisés (instructions 5000c, icône, modèle par
+                  défaut, skills, MCP et fichiers) : 15 avec Plus, 25 avec Pro,
+                  illimité avec Max. Sélection globale via le menu à côté du
+                  modèle ou{" "}
+                  <code className="px-1 py-0.5 rounded bg-muted text-[10px]">
+                    @
+                  </code>{" "}
+                  /{" "}
+                  <code className="px-1 py-0.5 rounded bg-muted text-[10px]">
+                    /agents
+                  </code>
+                  .
+                </p>
+                <Link
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline w-fit"
+                  href="/agents"
+                >
+                  <BotGlyph className="size-3.5" /> Gérer mes bots →
+                </Link>
+              </div>
+
+              <div className="pt-2 flex justify-end">
+                <button
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-2.5 text-sm font-medium transition-all hover:opacity-90 active:scale-95 shadow-sm cursor-pointer"
+                  onClick={handleSavePreferences}
+                  type="button"
+                >
+                  Enregistrer les préférences
+                </button>
               </div>
 
               {/* Instructions personnalisées */}
@@ -1865,6 +1925,26 @@ function SettingsPageInner() {
                 className="surface-card flex flex-col gap-5 scroll-mt-6"
                 id="prefs-tools"
               >
+                <div className="flex flex-col gap-3 border-b border-border/50 pb-5">
+                  <Label className="text-sm font-semibold">
+                    Mode Création par défaut
+                  </Label>
+                  <p className="text-xs text-muted-foreground">
+                    Mode ouvert lorsque vous cliquez sur Création.
+                  </p>
+                  <div>
+                    <PillSwitcher
+                      activeId={defaultCreationMode}
+                      ariaLabel="Mode Création par défaut"
+                      items={[
+                        { id: "image", label: "Image" },
+                        { id: "audio", label: "Audio" },
+                      ]}
+                      layoutId="creation-default-pill"
+                      onSelect={setDefaultCreationMode}
+                    />
+                  </div>
+                </div>
                 <div className="flex items-center gap-2.5">
                   <div className="p-2 rounded-xl bg-violet-500/10 text-violet-500 ring-1 ring-violet-500/20">
                     <ImageIcon className="size-5" />
@@ -2178,6 +2258,11 @@ function SettingsPageInner() {
                   </button>
                 </div>
               </div>
+            </div>
+          ) : activeTab === "agent" ? (
+            /* ────────────── SECTION AGENT ────────────── */
+            <div className="py-6 max-w-4xl">
+              <AgentTab />
             </div>
           ) : activeTab === "notifications" ? (
             /* ────────────── SECTION NOTIFICATIONS ────────────── */
@@ -2497,15 +2582,30 @@ function SettingsPageInner() {
                   </p>
                 </div>
 
-                <Link
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2.5 text-sm font-semibold transition-all hover:opacity-90 active:scale-95 shadow-md shrink-0"
-                  href={MAI_UPGRADE_URL}
-                  target="_blank"
-                >
-                  <SparklesIcon className="size-4" />
-                  <span>Gérer / Mettre à niveau</span>
-                  <ExternalLinkIcon className="size-3.5" />
-                </Link>
+                {(() => {
+                  const currentTierKey = (profile?.tier || "free")
+                    .toLowerCase()
+                    .trim();
+                  const targetPlan =
+                    currentTierKey === "free"
+                      ? "pro"
+                      : currentTierKey === "plus"
+                        ? "pro"
+                        : currentTierKey === "pro"
+                          ? "max"
+                          : "pro";
+
+                  return (
+                    <Link
+                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2.5 text-sm font-semibold transition-all hover:opacity-90 active:scale-95 shadow-md shrink-0"
+                      href={`/site/pricing?plan=${targetPlan}`}
+                    >
+                      <SparklesIcon className="size-4" />
+                      <span>Gérer / Mettre à niveau</span>
+                      <ExternalLinkIcon className="size-3.5" />
+                    </Link>
+                  );
+                })()}
               </div>
 
               {/* Les jauges ci-dessous ne disent QUE « où en est-on » sur la

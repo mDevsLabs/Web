@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Newsletter", "label": "Newsletters", "description": "G\xE9rez vos newsletters depuis une interface claire.", "fields": [{ "key": "subject", "label": "Objet", "kind": "text", "required": true }, { "key": "sender", "label": "Exp\xE9diteur", "kind": "email", "required": true }, { "key": "recipientCount", "label": "Destinataires", "kind": "number", "required": true }, { "key": "sendOn", "label": "Envoi", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "scheduled", "sent"] }], "titleKey": "subject", "settings": [{ "key": "notifyNewsletter", "label": "Notifications : newsletters", "description": "Recevoir un signal lors des changements." }, { "key": "archiveNewsletter", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section newsletters." }, { "key": "approveNewsletter", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

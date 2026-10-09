@@ -1,18 +1,13 @@
 "use client";
 
-import {
-  BrainIcon,
-  EyeIcon,
-  ImageIcon,
-  Volume2Icon,
-  WrenchIcon,
-} from "lucide-react";
+import { BrainIcon, EyeIcon, ImageIcon, Volume2Icon, WrenchIcon } from "@mdevs/icons";
 import {
   type Dispatch,
   memo,
   type ReactNode,
   type SetStateAction,
   useCallback,
+  useEffect,
   useMemo,
   useState,
 } from "react";
@@ -376,6 +371,11 @@ function PureModelSelectorCompact({
 }: ModelSelectorCompactProps) {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleOpenChange = useCallback((nextOpen: boolean) => {
     setOpen(nextOpen);
@@ -395,12 +395,17 @@ function PureModelSelectorCompact({
   const capabilities: Record<string, ModelCapabilities> | undefined =
     capabilitiesProp ?? modelsData?.capabilities;
 
+  // Pendant le SSR et l'hydratation initiale côté client, on s'assure d'utiliser
+  // les mêmes modèles de référence (fallbackModels) pour éviter tout écart
+  // d'hydratation entre le serveur (qui n'a pas de cache SWR) et le client.
+  const activeModelsData = mounted ? modelsData : undefined;
+
   const models: SharedModel[] =
     modelsProp ??
-    (modelsData?.models?.length > 0
-      ? modelsData.models
-      : modelsData?.data?.length > 0
-        ? modelsData.data
+    (activeModelsData?.models?.length > 0
+      ? activeModelsData.models
+      : activeModelsData?.data?.length > 0
+        ? activeModelsData.data
         : fallbackModels) ??
     [];
 
@@ -468,17 +473,21 @@ function PureModelSelectorCompact({
           <Button
             className="h-8 max-w-[min(220px,calc(100vw-9rem))] justify-between gap-1.5 rounded-lg px-2 text-[12px] text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 cursor-pointer sm:h-7 sm:max-w-[220px]"
             data-testid="model-selector"
+            suppressHydrationWarning
             variant="ghost"
           >
             {!isEmptySelection && provider ? (
               <ModelSelectorLogo provider={provider} />
             ) : null}
-            <ModelSelectorName>{triggerLabel}</ModelSelectorName>
+            <ModelSelectorName suppressHydrationWarning>
+              {triggerLabel}
+            </ModelSelectorName>
           </Button>
         ) : (
           <Button
             className="h-9 w-full justify-between gap-2 rounded-lg border border-border/60 bg-background px-3 text-[13px] font-normal text-foreground hover:bg-muted/50 cursor-pointer"
             data-testid="model-selector"
+            suppressHydrationWarning
             type="button"
             variant="outline"
           >
@@ -486,7 +495,9 @@ function PureModelSelectorCompact({
               {!isEmptySelection && provider ? (
                 <ModelSelectorLogo provider={provider} />
               ) : null}
-              <ModelSelectorName>{triggerLabel}</ModelSelectorName>
+              <ModelSelectorName suppressHydrationWarning>
+                {triggerLabel}
+              </ModelSelectorName>
             </span>
           </Button>
         )}

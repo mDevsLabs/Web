@@ -1,0 +1,72 @@
+{
+  "model": "Incident",
+  "config": {
+    "name": "Incident",
+    "label": "Incidents",
+    "description": "Gérez vos incidents depuis une interface claire.",
+    "fields": [
+      {
+        "key": "title",
+        "label": "Titre",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "severity",
+        "label": "Sévérité",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "startedOn",
+        "label": "Début",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "affectedUsers",
+        "label": "Utilisateurs impactés",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "investigating",
+          "identified",
+          "monitoring",
+          "resolved"
+        ]
+      }
+    ],
+    "titleKey": "title",
+    "settings": [
+      {
+        "key": "notifyIncident",
+        "label": "Notifications : incidents",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveIncident",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section incidents."
+      },
+      {
+        "key": "approveIncident",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "incident-demo-1",
+    "title": "Latence API accrue",
+    "severity": "Sévérité démo",
+    "startedOn": "2026-10-04",
+    "affectedUsers": 128,
+    "status": "investigating"
+  }
+}

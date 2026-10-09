@@ -1,0 +1,172 @@
+/**
+ * ============================================================================
+ * VIBE SOCIAL PLATFORM — RIGHT SIDEBAR (src/components/layout/RightSidebar.tsx)
+ * Search Bar, Real Dynamic Trends & Suggested Accounts (Quotas Removed)
+ * ============================================================================
+ */
+
+import { ArrowUpRightIcon as ArrowUpRight, SearchIcon as Search, TrendingUpIcon as TrendingUp } from "@mdevs/icons";
+import type React from "react";
+import { useEffect, useState } from "react";
+import { ProfileAvatar } from "@/components/vibe/common/ProfileAvatar";
+import { VerifiedBadge } from "@/components/vibe/common/VerifiedBadge";
+import { ApiService } from "@/lib/vibe/services/api";
+
+interface RightSidebarProps {
+  onOpenProfile?: (username: string) => void;
+  onSearch?: (query: string) => void;
+  onSelectTopic?: (topic: string) => void;
+}
+
+export const RightSidebar: React.FC<RightSidebarProps> = ({
+  onSearch,
+  onSelectTopic,
+  onOpenProfile,
+}) => {
+  const [searchInput, setSearchInput] = useState("");
+  const [suggestedUsers, setSuggestedUsers] = useState<any[]>([]);
+  const [trends, setTrends] = useState<
+    Array<{ tag: string; category?: string; posts: string }>
+  >([]);
+  const [isLoadingTrends, setIsLoadingTrends] = useState(false);
+
+  useEffect(() => {
+    // Load suggested users
+    ApiService.getSuggestedUsers()
+      .then((res) => {
+        if (res?.users) {
+          setSuggestedUsers(res.users);
+        }
+      })
+      .catch(() => {});
+
+    // Load real dynamic trends from DB
+    setIsLoadingTrends(true);
+    ApiService.getTrends()
+      .then((res) => {
+        if (res?.trends) {
+          setTrends(res.trends);
+        }
+      })
+      .catch(() => {})
+      .finally(() => setIsLoadingTrends(false));
+  }, []);
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchInput.trim() && onSearch) {
+      onSearch(searchInput.trim());
+    }
+  };
+
+  return (
+    <aside className="hidden lg:flex flex-col w-80 xl:w-96 p-4 space-y-4 border-l border-zinc-800 bg-black min-h-screen sticky top-0 select-none">
+      {/* Search Bar */}
+      <form className="relative" onSubmit={handleSearchSubmit}>
+        <Search className="w-4 h-4 text-zinc-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+        <input
+          className="w-full pl-10 pr-4 py-2.5 rounded-full bg-zinc-900 border border-zinc-800 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-zinc-500 transition-colors"
+          onChange={(e) => setSearchInput(e.target.value)}
+          placeholder="Rechercher sur Vibe ou par #tag..."
+          type="text"
+          value={searchInput}
+        />
+      </form>
+
+      {/* Real Dynamic Trends */}
+      <div className="p-4 rounded-3xl bg-zinc-950 border border-zinc-800/90 space-y-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <TrendingUp className="w-4 h-4 text-white" />
+            <h3 className="text-sm font-bold text-white tracking-tight">
+              Tendances pour vous
+            </h3>
+          </div>
+          <span className="text-[10px] font-mono text-zinc-500">
+            Temps réel
+          </span>
+        </div>
+
+        <div className="divide-y divide-zinc-900">
+          {trends.map((item) => (
+            <div
+              className="py-2.5 flex items-center justify-between group cursor-pointer"
+              key={item.tag}
+              onClick={() => onSelectTopic?.(item.tag)}
+            >
+              <div className="space-y-0.5">
+                <p className="text-sm font-bold text-white group-hover:underline flex items-center gap-1">
+                  {item.tag}
+                </p>
+                <span className="text-[11px] text-zinc-500">{item.posts}</span>
+              </div>
+              <div className="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 group-hover:text-white group-hover:border-zinc-600 transition-all">
+                <ArrowUpRight className="w-4 h-4" />
+              </div>
+            </div>
+          ))}
+
+          {trends.length === 0 && (
+            <div className="py-6 text-center text-xs text-zinc-500">
+              {isLoadingTrends
+                ? "Chargement des tendances..."
+                : "Aucune tendance pour le moment."}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Real Registered Accounts Suggestions */}
+      {suggestedUsers.length > 0 && (
+        <div className="p-4 rounded-3xl bg-zinc-950 border border-zinc-800/90 space-y-3">
+          <h3 className="text-sm font-bold text-white tracking-tight">
+            Comptes à découvrir
+          </h3>
+          <div className="divide-y divide-zinc-900">
+            {suggestedUsers.map((acc) => (
+              <div
+                className="py-2.5 flex items-center justify-between gap-3 group cursor-pointer"
+                key={acc.id}
+                onClick={() => onOpenProfile?.(acc.username)}
+              >
+                <div className="flex items-center gap-3 overflow-hidden">
+                  <ProfileAvatar
+                    alt={acc.username}
+                    className="border border-zinc-800 shrink-0"
+                    fallbackName={acc.username}
+                    size="md"
+                    src={acc.avatar_url}
+                  />
+                  <div className="truncate">
+                    <div className="flex items-center gap-1">
+                      <span className="text-xs font-bold text-white group-hover:underline truncate">
+                        {acc.display_name || acc.username}
+                      </span>
+                      <VerifiedBadge
+                        isVerified={acc.is_verified}
+                        size="xs"
+                        tier={acc.tier}
+                      />
+                    </div>
+                    <span className="text-[11px] text-zinc-500 font-mono">
+                      @{acc.username}
+                    </span>
+                  </div>
+                </div>
+                <button
+                  className="py-1 px-3 rounded-full bg-white text-black font-semibold text-xs hover:bg-zinc-200 transition-all shrink-0"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (onOpenProfile) onOpenProfile(acc.username);
+                  }}
+                >
+                  Voir
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </aside>
+  );
+};

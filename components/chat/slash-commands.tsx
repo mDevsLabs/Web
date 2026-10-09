@@ -1,38 +1,6 @@
 "use client";
 
-import {
-  BarChart3Icon,
-  BombIcon,
-  BrainIcon,
-  CalculatorIcon,
-  CalendarClockIcon,
-  CalendarIcon,
-  CloudSunIcon,
-  Code2Icon,
-  DownloadIcon,
-  FileTextIcon,
-  FolderArchiveIcon,
-  FolderKanbanIcon,
-  GhostIcon,
-  GlobeIcon,
-  HomeIcon,
-  ImageIcon,
-  LightbulbIcon,
-  ListChecksIcon,
-  ListIcon,
-  NotebookIcon,
-  PaletteIcon,
-  PenLineIcon,
-  PenSquareIcon,
-  QrCodeIcon,
-  SearchIcon,
-  SlidersHorizontalIcon,
-  Trash2Icon,
-  TrophyIcon,
-  Volume2Icon,
-  XIcon,
-  ZapIcon,
-} from "lucide-react";
+import { BarChart3Icon, BombIcon, BrainIcon, CalculatorIcon, CalendarClockIcon, CalendarIcon, CloudSunIcon, Code2Icon, DownloadIcon, FileTextIcon, FolderArchiveIcon, FolderKanbanIcon, GhostIcon, GlobeIcon, HomeIcon, ImageIcon, LightbulbIcon, ListChecksIcon, ListIcon, NotebookIcon, PaletteIcon, PenLineIcon, PenSquareIcon, QrCodeIcon, SearchIcon, SlidersHorizontalIcon, Trash2Icon, TrophyIcon, Volume2Icon, XIcon, ZapIcon } from "@mdevs/icons";
 import { type ReactNode, useCallback, useEffect, useRef } from "react";
 import { toast } from "sonner";
 import { BotGlyph } from "@/components/agents/bot-avatar";
@@ -112,7 +80,7 @@ export const slashCommands: SlashCommand[] = [
   {
     action: "library",
     aliases: ["stockage"],
-    description: "Ouvrir le Stockage (/stockage, /library)",
+    description: "Ouvrir la Bibliothèque (/library)",
     icon: <FolderArchiveIcon className="size-3.5" />,
     name: "library",
   },

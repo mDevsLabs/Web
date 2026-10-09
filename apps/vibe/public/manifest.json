@@ -1,0 +1,53 @@
+{
+  "name": "mAI Vibe",
+  "short_name": "Vibe",
+  "description": "Réseau social nouvelle génération propulsé par l'intelligence artificielle mAI",
+  "start_url": "/",
+  "id": "/",
+  "lang": "fr",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["social", "entertainment", "productivity"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Explorer",
+      "url": "/#explore",
+      "description": "Explorer les publications et tendances"
+    },
+    {
+      "name": "Messages",
+      "url": "/#messages",
+      "description": "Accéder aux messages privés"
+    },
+    {
+      "name": "Assistant mAI",
+      "url": "/#mai",
+      "description": "Discuter avec l'IA mAI"
+    }
+  ]
+}

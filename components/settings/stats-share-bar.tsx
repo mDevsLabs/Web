@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  CheckIcon,
-  CopyIcon,
-  DownloadIcon,
-  FileCodeIcon,
-  ImageDownIcon,
-  Share2Icon,
-} from "lucide-react";
+import { CheckIcon, CopyIcon, DownloadIcon, FileCodeIcon, ImageDownIcon, Share2Icon } from "@mdevs/icons";
 import { useTheme } from "next-themes";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";

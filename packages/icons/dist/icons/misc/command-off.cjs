@@ -1,0 +1,5 @@
+"use client";
+// Geometry: tabler. See LICENSE-LUCIDE and LICENSE-TABLER.
+const { createIcon } = require('../../create-icon.cjs');
+const CommandOffIcon = /* @__PURE__ */ createIcon('CommandOffIcon', [["path", { "d": "M9 9v8a2 2 0 1 1 -2 -2h8m3.411 3.417a2 2 0 0 1 -3.411 -1.417v-2m0 -4v-4a2 2 0 1 1 2 2h-4m-4 0h-2a2 2 0 0 1 -1.417 -3.411" }], ["path", { "d": "M3 3l18 18" }]]);
+exports.CommandOffIcon = CommandOffIcon;

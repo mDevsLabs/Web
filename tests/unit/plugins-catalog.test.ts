@@ -93,7 +93,7 @@ describe("Catalogue de plugins", () => {
     expect(new Set(toolIds).size).toBe(toolIds.length);
   });
 
-  it("déclare des permissions explicites, un forfait payant et une icône connue", () => {
+  it("déclare des permissions explicites, un forfait valide et une icône connue", () => {
     for (const plugin of PLUGIN_MANIFEST_LIST) {
       expect(plugin.version).toMatch(/^\d+\.\d+\.\d+/);
       expect(plugin.category.length).toBeGreaterThan(0);
@@ -105,8 +105,8 @@ describe("Catalogue de plugins", () => {
         expect(pluginTool.systemHint.length).toBeGreaterThan(0);
       }
 
-      // Les plugins sont réservés aux forfaits payants.
-      expect(["plus", "pro", "max"]).toContain(plugin.minTier);
+      // Les plugins sont autorisés dès le forfait Free.
+      expect(["free", "plus", "pro", "max"]).toContain(plugin.minTier);
 
       // Permissions déclaratives obligatoires.
       expect(["none", "read-only", "read-write"]).toContain(

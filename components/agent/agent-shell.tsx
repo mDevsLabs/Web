@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertTriangleIcon, PanelLeftIcon } from "lucide-react";
+import { AlertTriangleIcon, PanelLeftIcon } from "@mdevs/icons";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";

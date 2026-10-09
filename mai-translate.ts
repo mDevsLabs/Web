@@ -40,9 +40,38 @@ import { createRegisterMulti } from "./vibe-common.ts";
  * inexistant. `ZH` n'existe pas : DeepL attend ZH-HANS / ZH-HANT.
  */
 const DEEPL_TARGET_LANGS = new Set([
-  "AR", "BG", "CS", "DA", "DE", "EL", "EN", "ES", "ET", "FI", "FR", "HE",
-  "HU", "ID", "IT", "JA", "KO", "LT", "LV", "NB", "NL", "PL", "PT", "RO",
-  "RU", "SK", "SL", "SV", "TR", "UK", "VI", "ZH",
+  "AR",
+  "BG",
+  "CS",
+  "DA",
+  "DE",
+  "EL",
+  "EN",
+  "ES",
+  "ET",
+  "FI",
+  "FR",
+  "HE",
+  "HU",
+  "ID",
+  "IT",
+  "JA",
+  "KO",
+  "LT",
+  "LV",
+  "NB",
+  "NL",
+  "PL",
+  "PT",
+  "RO",
+  "RU",
+  "SK",
+  "SL",
+  "SV",
+  "TR",
+  "UK",
+  "VI",
+  "ZH",
 ]);
 
 /** Variantes régionales explicitement supportées. */
@@ -56,7 +85,7 @@ const DEEPL_TARGET_VARIANTS = new Set([
 ]);
 
 /** Longueur maximale envoyée par requête DeepL (le palier gratuit plafonne à 5 000). */
-const DEEPL_MAX_CHARS = 4_500;
+const DEEPL_MAX_CHARS = 4500;
 
 /** Garde-fou applicatif : au-delà, le découpage ne sert plus à rien. */
 const MAX_INPUT_CHARS = 20_000;
@@ -69,7 +98,10 @@ const MAX_INPUT_CHARS = 20_000;
  * langue qu'il n'a pas demandée.
  */
 function normalizeTargetLang(raw: string): string | null {
-  const upper = String(raw || "").trim().toUpperCase().replace("_", "-");
+  const upper = String(raw || "")
+    .trim()
+    .toUpperCase()
+    .replace("_", "-");
   if (!upper) return null;
   if (DEEPL_TARGET_VARIANTS.has(upper)) return upper;
   const base = upper.slice(0, 2);
@@ -81,14 +113,16 @@ function normalizeTargetLang(raw: string): string | null {
 
 /** Les clés DeepL gratuites (suffixe « :fx ») utilisent un host dédié. */
 function deeplHost(key: string): string {
-  return key.endsWith(":fx") ? "https://api-free.deepl.com" : "https://api.deepl.com";
+  return key.endsWith(":fx")
+    ? "https://api-free.deepl.com"
+    : "https://api.deepl.com";
 }
 
 /** Clés DeepL dans l'ordre de priorité (DEEPL_API_KEY puis DEEPL_API_KEY_2). */
 function getDeeplKeys(): string[] {
   const read = (name: string) =>
-    (typeof Deno !== "undefined" ? Deno.env?.get(name) : null) ||
-    (typeof process !== "undefined" ? (process.env as any)?.[name] : null) ||
+    (typeof Deno === "undefined" ? null : Deno.env?.get(name)) ||
+    (typeof process === "undefined" ? null : (process.env as any)?.[name]) ||
     "";
   return [read("DEEPL_API_KEY"), read("DEEPL_API_KEY_2")]
     .map((k) => String(k).trim())
@@ -129,17 +163,22 @@ async function callDeepl(
   targetLang: string
 ): Promise<{ text: string; detected: string }> {
   const keys = getDeeplKeys();
-  if (keys.length === 0) throw new Error("Aucune clé DeepL configurée (DEEPL_API_KEY).");
+  if (keys.length === 0)
+    throw new Error("Aucune clé DeepL configurée (DEEPL_API_KEY).");
   const errors: string[] = [];
   for (const key of keys) {
     try {
       const res = await fetch(`${deeplHost(key)}/v2/translate`, {
-        method: "POST",
+        body: JSON.stringify({
+          tag_handling: "html",
+          target_lang: targetLang,
+          text: [text],
+        }),
         headers: {
-          "Authorization": `DeepL-Auth-Key ${key}`,
+          Authorization: `DeepL-Auth-Key ${key}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ text: [text], target_lang: targetLang, tag_handling: "html" }),
+        method: "POST",
         signal: AbortSignal.timeout(15_000),
       });
       if (!res.ok) {
@@ -153,8 +192,8 @@ async function callDeepl(
         continue;
       }
       return {
-        text: String(tr.text),
         detected: String(tr.detected_source_language || "").toUpperCase(),
+        text: String(tr.text),
       };
     } catch (err: any) {
       errors.push(err?.message || "erreur réseau");
@@ -221,14 +260,16 @@ export function registerMaiTranslateRoutes(app: Hono) {
         );
       }
 
-      const body = await c.req.json().catch(() => ({} as any));
+      const body = await c.req.json().catch(() => ({}) as any);
       const text = String(body?.text || "").trim();
       if (!text) {
         return c.json({ error: "Aucun texte à traduire." }, 400);
       }
       if (text.length > MAX_INPUT_CHARS) {
         return c.json(
-          { error: `Message trop long (${text.length} caractères, maximum ${MAX_INPUT_CHARS}).` },
+          {
+            error: `Message trop long (${text.length} caractères, maximum ${MAX_INPUT_CHARS}).`,
+          },
           400
         );
       }
@@ -253,13 +294,13 @@ export function registerMaiTranslateRoutes(app: Hono) {
         if (cached.length > 0) {
           const detected = String(cached[0].detected_language || "");
           return c.json({
-            success: true,
-            translation: cached[0].translation,
+            cached: true,
             detected_language: detected,
-            target_lang: targetLang,
             provider: "deepl",
             same_language: sameLanguage(detected, targetLang),
-            cached: true,
+            success: true,
+            target_lang: targetLang,
+            translation: cached[0].translation,
           });
         }
       } catch {
@@ -299,20 +340,23 @@ export function registerMaiTranslateRoutes(app: Hono) {
       }
 
       return c.json({
-        success: true,
-        translation: alreadyInTarget ? text : translation,
+        cached: false,
         detected_language: detected,
-        target_lang: targetLang,
         provider: "deepl",
         same_language: alreadyInTarget,
-        cached: false,
+        success: true,
+        target_lang: targetLang,
+        translation: alreadyInTarget ? text : translation,
       });
     } catch (err: any) {
       // DeepL indisponible : la BFF bascule sur son repli mAI. Un 503
       // explicite plutôt qu'une 500, pour que ce choix soit lisible.
       console.warn("[mai-translate] traduction impossible:", err?.message);
       return c.json(
-        { error: "Moteur de traduction indisponible.", provider_unavailable: true },
+        {
+          error: "Moteur de traduction indisponible.",
+          provider_unavailable: true,
+        },
         503
       );
     }

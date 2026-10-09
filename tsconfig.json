@@ -19,7 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "electron": ["./tests/stubs/electron.ts"],
+      "node-pty": ["./tests/stubs/node-pty.ts"]
     },
     "strictNullChecks": true
   },
@@ -44,5 +46,5 @@
     "instrumentation-client.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "apps"]
 }

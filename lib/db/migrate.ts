@@ -583,6 +583,27 @@ const runMigrate = async () => {
     noteIgnoredStep(error);
   }
 
+  // Migration 0040 : colonne dédiée key_name pour mprojects_api_keys
+  try {
+    await connection`ALTER TABLE IF EXISTS "mprojects_api_keys" ADD COLUMN IF NOT EXISTS "key_name" text`;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+  try {
+    await connection`
+      DO $$
+      BEGIN
+        IF to_regclass('public."mprojects_api_keys"') IS NOT NULL THEN
+          UPDATE "mprojects_api_keys"
+          SET "key_name" = "plan"
+          WHERE "key_name" IS NULL AND "plan" IS NOT NULL AND "plan" <> '';
+        END IF;
+      END $$;
+    `;
+  } catch (error) {
+    noteIgnoredStep(error);
+  }
+
   const start = Date.now();
   await migrate(db, { migrationsFolder: "./lib/db/migrations" });
   const end = Date.now();

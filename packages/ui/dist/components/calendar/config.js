@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Calendar", "label": "Calendriers", "description": "G\xE9rez vos calendriers depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "owner", "label": "Propri\xE9taire", "kind": "text", "required": true }, { "key": "eventCount", "label": "\xC9v\xE9nements", "kind": "number", "required": true }, { "key": "timeZone", "label": "Fuseau", "kind": "text", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["active", "shared", "private"] }], "titleKey": "name", "settings": [{ "key": "notifyCalendar", "label": "Notifications : calendriers", "description": "Recevoir un signal lors des changements." }, { "key": "archiveCalendar", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section calendriers." }, { "key": "approveCalendar", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

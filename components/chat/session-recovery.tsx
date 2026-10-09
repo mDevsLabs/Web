@@ -1,6 +1,6 @@
 "use client";
 
-import { LogInIcon, LogOutIcon, TriangleAlertIcon } from "lucide-react";
+import { LogInIcon, LogOutIcon, TriangleAlertIcon } from "@mdevs/icons";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";

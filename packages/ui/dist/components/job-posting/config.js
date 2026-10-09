@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "JobPosting", "label": "Offres d\u2019emploi", "description": "G\xE9rez vos offres d\u2019emploi depuis une interface claire.", "fields": [{ "key": "title", "label": "Poste", "kind": "text", "required": true }, { "key": "department", "label": "Service", "kind": "text", "required": true }, { "key": "location", "label": "Lieu", "kind": "text", "required": true }, { "key": "applicantCount", "label": "Candidatures", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "published", "closed"] }], "titleKey": "title", "settings": [{ "key": "notifyJobPosting", "label": "Notifications : offres d\u2019emploi", "description": "Recevoir un signal lors des changements." }, { "key": "archiveJobPosting", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section offres d\u2019emploi." }, { "key": "approveJobPosting", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

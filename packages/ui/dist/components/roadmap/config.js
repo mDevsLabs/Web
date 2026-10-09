@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Roadmap", "label": "Feuilles de route", "description": "G\xE9rez vos feuilles de route depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "owner", "label": "Responsable", "kind": "text", "required": true }, { "key": "quarter", "label": "Trimestre", "kind": "text", "required": true }, { "key": "initiativeCount", "label": "Initiatives", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "published", "archived"] }], "titleKey": "name", "settings": [{ "key": "notifyRoadmap", "label": "Notifications : feuilles de route", "description": "Recevoir un signal lors des changements." }, { "key": "archiveRoadmap", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section feuilles de route." }, { "key": "approveRoadmap", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

@@ -1,2 +1,5 @@
-allowBuilds:
-  electron: true
+# Ces dépendances compilent les exécutables locaux du terminal.
+onlyBuiltDependencies:
+  - electron
+  - esbuild
+  - node-pty

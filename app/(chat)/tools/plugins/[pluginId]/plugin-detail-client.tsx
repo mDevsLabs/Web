@@ -1,19 +1,6 @@
 "use client";
 
-import {
-  AlertTriangleIcon,
-  CheckIcon,
-  CircleCheckIcon,
-  DatabaseIcon,
-  Globe2Icon,
-  InfoIcon,
-  KeyRoundIcon,
-  Loader2Icon,
-  LockIcon,
-  PlusIcon,
-  ShieldCheckIcon,
-  Trash2Icon,
-} from "lucide-react";
+import { AlertTriangleIcon, CheckIcon, CircleCheckIcon, DatabaseIcon, Globe2Icon, InfoIcon, KeyRoundIcon, Loader2Icon, LockIcon, PlusIcon, ShieldCheckIcon, Trash2Icon } from "@mdevs/icons";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useSWRConfig } from "swr";

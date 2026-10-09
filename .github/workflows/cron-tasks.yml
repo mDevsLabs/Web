@@ -1,0 +1,144 @@
+name: Tâches planifiées (Agent · Planning · Wakies)
+
+# Un seul workflow couvre les trois ticks cron de l'hôte :
+#   • /api/cron/agent    — scheduler Agent (déjà existant)
+#   • /api/cron/planning — messages planifiés (déjà existant)
+#   • /api/cron/wakies   — tâches planifiées Wakies (nouveau)
+#
+# Identique aux deux fichiers fusionnés : mêmes secrets (APP_URL, CRON_SECRET),
+# mêmes headers (Bearer CRON_SECRET), mêmes retries d'erreur. La fusion
+# supprime la double maintenance d'un fichier quasi-identique.
+#
+# Chronologie des occurrences : le scheduler Agent réserve atomiquement chaque
+# occurrence (bail transactionnel), donc deux ticks concurrents se neutralisent
+# sur l'occurrence plutôt que de lancer une seconde exécution. Ajouter un
+# workflow supplémentaire ne change donc rien au comportement.
+#
+# Wakies : /api/cron/wakies réserve aussi atomiquement les tâches dues
+# (bail 3 min, couvre queued et completed avec nextRunAt passé) — deux ticks
+# concurrents ne double pas une tâche.
+#
+# Cadence 5 min : le tick agent se donne 285 s de budget ; chaque occurrence
+# peut attendre une approbation utilisateur jusqu'à 24 h. Une cadence plus
+# espacée retarderait les relances. Wakies et planning suivent la même cadence
+# par simplicité ; si un jour Wakies a une contrainte différente, il suffit de
+# déplacer l'étape dans un deuxième job à sa propre cadence (le fichier reste
+# un seul fichier).
+#
+# Échec par étape, pas par endpoint : chaque curl est `continue-on-error`
+# sauf si l'endpoint renvoie un code HTTP hors 2xx — dans ce cas l'étape échoue
+# mais le job continue pour les deux autres, et le step qui a échoué porte
+# l'erreur réelle dans le log.
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  run-scheduled-tasks:
+    name: Tick cron — agent, planning, wakies
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Vérifier les secrets requis
+        env:
+          APP_URL: ${{ secrets.APP_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          if [ -z "$APP_URL" ]; then
+            echo "::error::Le secret APP_URL n'est pas configuré dans GitHub Secrets."
+            exit 1
+          fi
+          if [ -z "$CRON_SECRET" ]; then
+            echo "::error::Le secret CRON_SECRET n'est pas configuré dans GitHub Secrets."
+            exit 1
+          fi
+
+      - name: Nettoyer l'URL
+        id: clean-url
+        env:
+          APP_URL: ${{ secrets.APP_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          CLEAN_URL="${APP_URL%/}"
+          echo "clean_url=$CLEAN_URL" >> "$GITHUB_OUTPUT"
+
+      - name: Tick scheduler Agent — /api/cron/agent
+        env:
+          CLEAN_URL: ${{ steps.clean-url.outputs.clean_url }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        timeout-minutes: 6
+        continue-on-error: false
+        run: |
+          set -euo pipefail
+
+          echo "Appel de $CLEAN_URL/api/cron/agent..."
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST "$CLEAN_URL/api/cron/agent" \
+            -H "Authorization: Bearer $CRON_SECRET" \
+            -H "Content-Type: application/json")
+
+          HTTP_STATUS=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | sed '$d')
+
+          echo "Code HTTP: $HTTP_STATUS"
+          echo "Réponse: $BODY"
+
+          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 300 ]; then
+            echo "Tick agent exécuté avec succès."
+          else
+            echo "::error::Échec du tick agent (HTTP $HTTP_STATUS)"
+            echo "::warning::Les deux autres cron vont quand même tourner, mais ce job va sortir en échec."
+            exit 1
+          fi
+
+      - name: Tick messages planifiés — /api/cron/planning
+        env:
+          CLEAN_URL: ${{ steps.clean-url.outputs.clean_url }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        continue-on-error: true
+        run: |
+          echo "Appel de $CLEAN_URL/api/cron/planning..."
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST "$CLEAN_URL/api/cron/planning" \
+            -H "Authorization: Bearer $CRON_SECRET" \
+            -H "Content-Type: application/json")
+
+          HTTP_STATUS=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | sed '$d')
+
+          echo "Code HTTP: $HTTP_STATUS"
+          echo "Réponse: $BODY"
+
+          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 300 ]; then
+            echo "Cron planning exécuté avec succès."
+          else
+            echo "::error::Échec du cron planning (HTTP $HTTP_STATUS)"
+            exit 1
+          fi
+
+      - name: Tick tâches planifiées Wakies — /api/cron/wakies
+        env:
+          CLEAN_URL: ${{ steps.clean-url.outputs.clean_url }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        continue-on-error: true
+        run: |
+          echo "Appel de $CLEAN_URL/api/cron/wakies..."
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST "$CLEAN_URL/api/cron/wakies" \
+            -H "Authorization: Bearer $CRON_SECRET" \
+            -H "Content-Type: application/json")
+
+          HTTP_STATUS=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | sed '$d')
+
+          echo "Code HTTP: $HTTP_STATUS"
+          echo "Réponse: $BODY"
+
+          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 300 ]; then
+            echo "Cron Wakies exécuté avec succès."
+          else
+            echo "::error::Échec du cron Wakies (HTTP $HTTP_STATUS)"
+            exit 1
+          fi

@@ -1,0 +1,630 @@
+import {
+  startTransition,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  useTransition,
+} from "react";
+import {
+  type AgentCustomization,
+  type AgentRule,
+  type AgentSkill,
+  type AgentSubagent,
+  defaultAgentCustomization,
+  isAnyDiskImportedSkill,
+  isPluginImportedCommand,
+  isPluginImportedSkill,
+  mergeSkillsBySlug,
+  type TeamSettings,
+} from "../agentSettingsTypes";
+import type { BotIntegrationConfig } from "../botSettingsTypes";
+import type { EditorSettings } from "../EditorSettingsPanel";
+import { defaultEditorSettings } from "../EditorSettingsPanel";
+import type { TFunction } from "../i18n";
+import {
+  coerceThinkingByModelId,
+  type MaiAccountState,
+  type ThinkingLevel,
+} from "../ipcTypes";
+import type { ModelPickerItem } from "../ModelPickerDropdown";
+import type { McpServerConfig, McpServerStatus } from "../mcpTypes";
+import {
+  coerceDefaultModel,
+  mergeEnabledIdsWithAllModels,
+  paradigmForModelEntry,
+  type UserLlmProvider,
+  type UserModelEntry,
+} from "../modelCatalog";
+import {
+  EMPTY_PLUGIN_RUNTIME_STATE,
+  type PluginRuntimeState,
+} from "../pluginRuntimeTypes";
+import {
+  defaultProviderIdentitySettings,
+  type ProviderIdentitySettings,
+  resolveProviderIdentitySettings,
+} from "../providerIdentitySettings";
+import type { SettingsNavId } from "../SettingsPage";
+import { normalizeTeamSettings } from "../teamPresetCatalog";
+
+/* ── Project agent slice ── */
+
+export type ProjectAgentSliceState = {
+  rules: AgentRule[];
+  skills: AgentSkill[];
+  subagents: AgentSubagent[];
+};
+
+export const EMPTY_PROJECT_AGENT: ProjectAgentSliceState = {
+  rules: [],
+  skills: [],
+  subagents: [],
+};
+
+function scheduleIdleWorkspaceLoad(fn: () => void): () => void {
+  if (typeof window === "undefined") {
+    fn();
+    return () => {};
+  }
+  if (typeof window.requestIdleCallback === "function") {
+    const id = window.requestIdleCallback(() => fn(), { timeout: 1500 });
+    return () => window.cancelIdleCallback?.(id);
+  }
+  const id = window.setTimeout(fn, 120);
+  return () => window.clearTimeout(id);
+}
+
+export type LoadedSettingsSnapshot = {
+  providerIdentity?: ProviderIdentitySettings;
+  defaultModel?: string;
+  models?: {
+    providers?: UserLlmProvider[];
+    entries?: UserModelEntry[];
+    enabledIds?: string[];
+    thinkingByModelId?: Record<string, unknown>;
+  };
+  agent?: AgentCustomization;
+  editor?: Partial<EditorSettings>;
+  team?: TeamSettings;
+  bots?: {
+    integrations?: BotIntegrationConfig[];
+  };
+  maiAccount?: MaiAccountState;
+};
+
+export function tagProjectOrigin<T extends { origin?: "user" | "project" }>(
+  items: T[] | undefined
+): T[] {
+  return (items ?? []).map((x) => ({ ...x, origin: "project" as const }));
+}
+
+/* ── Hook ── */
+
+export function useSettings(
+  shell: NonNullable<Window["maiShell"]> | undefined,
+  workspace: string | null,
+  t: TFunction
+) {
+  // ── Model state ──
+  const [modelProviders, setModelProviders] = useState<UserLlmProvider[]>([]);
+  const [defaultModel, setDefaultModel] = useState("");
+  const [modelEntries, setModelEntries] = useState<UserModelEntry[]>([]);
+  const [enabledModelIds, setEnabledModelIds] = useState<string[]>([]);
+  const [thinkingByModelId, setThinkingByModelId] = useState<
+    Record<string, ThinkingLevel>
+  >({});
+  const [providerIdentity, setProviderIdentity] =
+    useState<ProviderIdentitySettings>(() => defaultProviderIdentitySettings());
+
+  // ── Agent customization ──
+  const [agentCustomization, setAgentCustomization] =
+    useState<AgentCustomization>(() => defaultAgentCustomization());
+  const [projectAgentSlice, setProjectAgentSlice] =
+    useState<ProjectAgentSliceState>(EMPTY_PROJECT_AGENT);
+  const [workspaceDiskSkills, setWorkspaceDiskSkills] = useState<AgentSkill[]>(
+    []
+  );
+  const [diskSkillsRefreshTicker, setDiskSkillsRefreshTicker] = useState(0);
+  const [pluginRuntimeState, setPluginRuntimeState] =
+    useState<PluginRuntimeState>(EMPTY_PLUGIN_RUNTIME_STATE);
+  const [pluginRuntimeRefreshTicker, setPluginRuntimeRefreshTicker] =
+    useState(0);
+
+  // ── Editor / MCP ──
+  const [editorSettings, setEditorSettings] = useState<EditorSettings>(() =>
+    defaultEditorSettings()
+  );
+  const [mcpServers, setMcpServers] = useState<McpServerConfig[]>([]);
+  const [mcpStatuses, setMcpStatuses] = useState<McpServerStatus[]>([]);
+  const [teamSettings, setTeamSettings] = useState<TeamSettings>({
+    ...normalizeTeamSettings(undefined),
+  });
+  const [botIntegrations, setBotIntegrations] = useState<
+    BotIntegrationConfig[]
+  >([]);
+
+  // ── mAI Account state ──
+  const [maiAccount, setMaiAccount] = useState<MaiAccountState | undefined>(
+    undefined
+  );
+  const [maiAccountModalOpen, setMaiAccountModalOpen] = useState(false);
+  const openMaiAccountModal = useCallback(
+    () => setMaiAccountModalOpen(true),
+    []
+  );
+  const closeMaiAccountModal = useCallback(
+    () => setMaiAccountModalOpen(false),
+    []
+  );
+
+  // ── Settings page UI ──
+  const [settingsPageOpen, setSettingsPageOpen] = useState(false);
+  const [settingsInitialNav, setSettingsInitialNav] =
+    useState<SettingsNavId>("general");
+  const [settingsOpenPending, startSettingsOpenTransition] = useTransition();
+
+  // ── Derived ──
+  const hasSelectedModel = useMemo(
+    () => defaultModel.trim().length > 0,
+    [defaultModel]
+  );
+
+  const mergedAgentCustomization = useMemo((): AgentCustomization => {
+    const persistedSkills = [
+      ...(agentCustomization.skills ?? []),
+      ...projectAgentSlice.skills,
+    ];
+    const pluginThenPersistedSkills = mergeSkillsBySlug(
+      pluginRuntimeState.skills,
+      persistedSkills
+    );
+    const diskSkills =
+      workspaceDiskSkills.length > 0
+        ? mergeSkillsBySlug(pluginThenPersistedSkills, workspaceDiskSkills)
+        : pluginThenPersistedSkills;
+    // 应用磁盘 skill 的启用/禁用覆盖
+    const overrides = agentCustomization.diskSkillEnabledOverrides ?? {};
+    const skills = diskSkills.map((s) => {
+      if (!isAnyDiskImportedSkill(s)) return s;
+      const slug = s.slug.trim().toLowerCase();
+      if (slug in overrides) {
+        return { ...s, enabled: overrides[slug] };
+      }
+      return s;
+    });
+    return {
+      ...agentCustomization,
+      commands: [
+        ...(agentCustomization.commands ?? []),
+        ...pluginRuntimeState.commands,
+      ],
+      rules: [...(agentCustomization.rules ?? []), ...projectAgentSlice.rules],
+      skills,
+      subagents: [
+        ...(agentCustomization.subagents ?? []),
+        ...projectAgentSlice.subagents,
+      ],
+    };
+  }, [
+    agentCustomization,
+    projectAgentSlice,
+    workspaceDiskSkills,
+    pluginRuntimeState,
+  ]);
+
+  const onChangeMergedAgentCustomization = useCallback(
+    (next: AgentCustomization) => {
+      const ur =
+        next.rules?.filter((r) => (r.origin ?? "user") !== "project") ?? [];
+      const pr = next.rules?.filter((r) => r.origin === "project") ?? [];
+      const skillsPersist = (next.skills ?? []).filter(
+        (s) => !isAnyDiskImportedSkill(s) && !isPluginImportedSkill(s)
+      );
+      const us = skillsPersist.filter(
+        (s) => (s.origin ?? "user") !== "project"
+      );
+      const ps = skillsPersist.filter((s) => s.origin === "project");
+      const ua =
+        next.subagents?.filter((s) => (s.origin ?? "user") !== "project") ?? [];
+      const pa = next.subagents?.filter((s) => s.origin === "project") ?? [];
+      const commandsPersist = (next.commands ?? []).filter(
+        (command) => !isPluginImportedCommand(command)
+      );
+      setAgentCustomization({
+        ...next,
+        commands: commandsPersist,
+        rules: ur,
+        skills: us,
+        subagents: ua,
+      });
+      const proj: ProjectAgentSliceState = {
+        rules: pr,
+        skills: ps,
+        subagents: pa,
+      };
+      setProjectAgentSlice(proj);
+      if (shell && workspace) {
+        void shell.invoke("workspaceAgent:set", proj);
+      }
+    },
+    [shell, workspace]
+  );
+
+  const modelPickerItems = useMemo((): ModelPickerItem[] => {
+    const enabledSet = new Set(enabledModelIds);
+    return modelEntries
+      .filter(
+        (e) =>
+          enabledSet.has(e.id) && (e.displayName.trim() || e.requestName.trim())
+      )
+      .map((e) => {
+        const paradigm = paradigmForModelEntry(e, modelProviders);
+        const paradigmLabel = paradigm
+          ? t(`settings.paradigm.${paradigm}`)
+          : "—";
+        const provLabel =
+          modelProviders
+            .find((p) => p.id === e.providerId)
+            ?.displayName?.trim() ?? "";
+        return {
+          description: `${paradigmLabel} · ${e.requestName || t("modelPicker.requestNameMissing")}`,
+          id: e.id,
+          label: e.displayName.trim() || e.requestName,
+          providerLabel: provLabel,
+        };
+      });
+  }, [enabledModelIds, modelEntries, modelProviders, t]);
+
+  const modelPillLabel = useMemo(() => {
+    if (!defaultModel.trim()) {
+      return t("modelPicker.selectModel");
+    }
+    const e = modelEntries.find((x) => x.id === defaultModel);
+    return e
+      ? e.displayName.trim() || e.requestName || defaultModel
+      : defaultModel;
+  }, [defaultModel, modelEntries, t]);
+
+  // ── Callbacks ──
+  const openSettingsPage = useCallback((nav: SettingsNavId) => {
+    startSettingsOpenTransition(() => {
+      setSettingsInitialNav(nav);
+      setSettingsPageOpen(true);
+    });
+  }, []);
+
+  const onPickDefaultModel = useCallback(
+    async (id: string) => {
+      setDefaultModel(id);
+      if (shell) {
+        await shell.invoke("settings:set", { defaultModel: id });
+      }
+    },
+    [shell]
+  );
+
+  const onChangeModelEntries = useCallback((entries: UserModelEntry[]) => {
+    setModelEntries(entries);
+    setEnabledModelIds((prev) => mergeEnabledIdsWithAllModels(entries, prev));
+  }, []);
+
+  const onChangeModelProviders = useCallback((providers: UserLlmProvider[]) => {
+    setModelProviders(providers);
+  }, []);
+
+  const onRefreshMcpStatuses = useCallback(async () => {
+    if (!shell) return;
+    const r = (await shell.invoke("mcp:getStatuses")) as
+      | { statuses?: McpServerStatus[] }
+      | undefined;
+    setMcpStatuses(r?.statuses ?? []);
+  }, [shell]);
+
+  const onStartMcpServer = useCallback(
+    async (id: string) => {
+      if (!shell) return;
+      await shell.invoke("mcp:startServer", id);
+      await onRefreshMcpStatuses();
+    },
+    [shell, onRefreshMcpStatuses]
+  );
+
+  const onStopMcpServer = useCallback(
+    async (id: string) => {
+      if (!shell) return;
+      await shell.invoke("mcp:stopServer", id);
+      await onRefreshMcpStatuses();
+    },
+    [shell, onRefreshMcpStatuses]
+  );
+
+  const onRestartMcpServer = useCallback(
+    async (id: string) => {
+      if (!shell) return;
+      await shell.invoke("mcp:restartServer", id);
+      await onRefreshMcpStatuses();
+    },
+    [shell, onRefreshMcpStatuses]
+  );
+
+  const refreshWorkspaceDiskSkills = useCallback(() => {
+    setDiskSkillsRefreshTicker((ticker) => ticker + 1);
+  }, []);
+
+  const refreshPluginRuntime = useCallback(() => {
+    setPluginRuntimeRefreshTicker((ticker) => ticker + 1);
+  }, []);
+
+  const applyLoadedSettings = useCallback(
+    (st: LoadedSettingsSnapshot | undefined) => {
+      const rawProviders = Array.isArray(st?.models?.providers)
+        ? st.models.providers
+        : [];
+      setModelProviders(rawProviders);
+
+      const rawEntries = Array.isArray(st?.models?.entries)
+        ? st.models.entries
+        : [];
+      setModelEntries(rawEntries);
+
+      const saneEnabled = mergeEnabledIdsWithAllModels(
+        rawEntries,
+        st?.models?.enabledIds
+      );
+      setEnabledModelIds(saneEnabled);
+      setDefaultModel(
+        coerceDefaultModel(st?.defaultModel, rawEntries, saneEnabled)
+      );
+      setThinkingByModelId(
+        coerceThinkingByModelId(st?.models?.thinkingByModelId)
+      );
+      const rawProviderIdentity = st?.providerIdentity;
+      if (rawProviderIdentity == null) {
+        setProviderIdentity(defaultProviderIdentitySettings());
+      } else {
+        setProviderIdentity({
+          ...rawProviderIdentity,
+          preset: resolveProviderIdentitySettings(rawProviderIdentity).preset,
+        });
+      }
+
+      const defs = defaultAgentCustomization();
+      const ag = st?.agent;
+      setAgentCustomization({
+        ...defs,
+        ...(ag ?? {}),
+        backgroundForkAgent:
+          ag?.backgroundForkAgent ?? defs.backgroundForkAgent,
+        commands: Array.isArray(ag?.commands) ? ag.commands : [],
+        confirmShellCommands:
+          ag?.confirmShellCommands ?? defs.confirmShellCommands,
+        confirmWritesBeforeExecute:
+          ag?.confirmWritesBeforeExecute ?? defs.confirmWritesBeforeExecute,
+        importThirdPartyConfigs: true,
+        maxConsecutiveMistakes:
+          ag?.maxConsecutiveMistakes ?? defs.maxConsecutiveMistakes,
+        memoryExtraction:
+          ag?.memoryExtraction === undefined
+            ? undefined
+            : { ...ag.memoryExtraction },
+        mistakeLimitEnabled:
+          ag?.mistakeLimitEnabled ?? defs.mistakeLimitEnabled,
+        rules: Array.isArray(ag?.rules) ? ag.rules : [],
+        shellPermissionMode:
+          ag?.shellPermissionMode ?? defs.shellPermissionMode,
+        shouldAvoidPermissionPrompts:
+          ag?.shouldAvoidPermissionPrompts ?? defs.shouldAvoidPermissionPrompts,
+        skills: Array.isArray(ag?.skills) ? ag.skills : [],
+        skipSafeShellCommandsConfirm:
+          ag?.skipSafeShellCommandsConfirm ?? defs.skipSafeShellCommandsConfirm,
+        subagents: Array.isArray(ag?.subagents) ? ag.subagents : [],
+        toolPermissionRules: Array.isArray(ag?.toolPermissionRules)
+          ? ag.toolPermissionRules
+          : [],
+      });
+
+      if (st?.editor) {
+        setEditorSettings({ ...defaultEditorSettings(), ...st.editor });
+      }
+      if (st?.maiAccount !== undefined) {
+        setMaiAccount(st.maiAccount);
+      }
+      setTeamSettings(normalizeTeamSettings(st?.team));
+      setBotIntegrations(
+        Array.isArray(st?.bots?.integrations) ? st!.bots!.integrations : []
+      );
+    },
+    []
+  );
+
+  useEffect(() => {
+    if (import.meta.env.DEV) {
+      console.warn(
+        "[VoidShell] 调试：在应用窗口按 Ctrl+Shift+I（macOS：⌥⌘I）打开开发者工具；输入 window.__voidShellTabCloseLog 查看最近记录。"
+      );
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!shell || !workspace) {
+      setProjectAgentSlice(EMPTY_PROJECT_AGENT);
+      return;
+    }
+    let cancelled = false;
+    const cancelIdle = scheduleIdleWorkspaceLoad(() => {
+      void (async () => {
+        const r = (await shell.invoke("workspaceAgent:get")) as {
+          ok?: boolean;
+          slice?: {
+            rules?: AgentRule[];
+            skills?: AgentSkill[];
+            subagents?: AgentSubagent[];
+          };
+        };
+        if (cancelled) return;
+        const slice = r?.slice;
+        startTransition(() => {
+          setProjectAgentSlice({
+            rules: tagProjectOrigin(slice?.rules),
+            skills: tagProjectOrigin(slice?.skills),
+            subagents: tagProjectOrigin(slice?.subagents),
+          });
+        });
+      })();
+    });
+    return () => {
+      cancelled = true;
+      cancelIdle();
+    };
+  }, [shell, workspace]);
+
+  useEffect(() => {
+    if (!shell || !workspace) {
+      setWorkspaceDiskSkills([]);
+      return;
+    }
+    let cancelled = false;
+    const cancelIdle = scheduleIdleWorkspaceLoad(() => {
+      void (async () => {
+        try {
+          const r = (await shell.invoke("workspace:listDiskSkills")) as {
+            ok?: boolean;
+            skills?: AgentSkill[];
+          };
+          if (cancelled) return;
+          startTransition(() => {
+            setWorkspaceDiskSkills(Array.isArray(r?.skills) ? r.skills : []);
+          });
+        } catch {
+          if (!cancelled) {
+            setWorkspaceDiskSkills([]);
+          }
+        }
+      })();
+    });
+    return () => {
+      cancelled = true;
+      cancelIdle();
+    };
+  }, [shell, workspace, diskSkillsRefreshTicker]);
+
+  useEffect(() => {
+    if (!shell) {
+      setPluginRuntimeState(EMPTY_PLUGIN_RUNTIME_STATE);
+      return;
+    }
+    let cancelled = false;
+    const cancelIdle = scheduleIdleWorkspaceLoad(() => {
+      void (async () => {
+        try {
+          const next = (await shell.invoke(
+            "plugins:getRuntimeState"
+          )) as PluginRuntimeState;
+          if (cancelled) {
+            return;
+          }
+          startTransition(() => {
+            setPluginRuntimeState(
+              next && typeof next === "object"
+                ? next
+                : EMPTY_PLUGIN_RUNTIME_STATE
+            );
+          });
+        } catch {
+          if (!cancelled) {
+            setPluginRuntimeState(EMPTY_PLUGIN_RUNTIME_STATE);
+          }
+        }
+      })();
+    });
+    return () => {
+      cancelled = true;
+      cancelIdle();
+    };
+  }, [shell, workspace, pluginRuntimeRefreshTicker]);
+
+  useEffect(() => {
+    if (!shell?.subscribePluginsChanged) {
+      return;
+    }
+    return shell.subscribePluginsChanged(() => {
+      refreshPluginRuntime();
+    });
+  }, [shell, refreshPluginRuntime]);
+
+  useEffect(() => {
+    if (!shell?.subscribeMaiAccount) {
+      return;
+    }
+    return shell.subscribeMaiAccount((account: MaiAccountState) => {
+      setMaiAccount(account);
+    });
+  }, [shell]);
+
+  return {
+    // Agent
+    agentCustomization,
+    applyLoadedSettings,
+    botIntegrations,
+    closeMaiAccountModal,
+    defaultModel,
+    diskSkillsRefreshTicker,
+    // Editor / MCP
+    editorSettings,
+    enabledModelIds,
+    hasSelectedModel,
+    // mAI Account
+    maiAccount,
+    maiAccountModalOpen,
+    mcpServers,
+    mcpStatuses,
+    mergedAgentCustomization,
+    modelEntries,
+    modelPickerItems,
+    modelPillLabel,
+    // Model
+    modelProviders,
+    onChangeMergedAgentCustomization,
+    onChangeModelEntries,
+    onChangeModelProviders,
+    // Callbacks
+    onPickDefaultModel,
+    onRefreshMcpStatuses,
+    onRestartMcpServer,
+    onStartMcpServer,
+    onStopMcpServer,
+    openMaiAccountModal,
+    openSettingsPage,
+    pluginRuntimeState,
+    projectAgentSlice,
+    providerIdentity,
+    refreshPluginRuntime,
+    refreshWorkspaceDiskSkills,
+    setAgentCustomization,
+    setBotIntegrations,
+    setDefaultModel,
+    setDiskSkillsRefreshTicker,
+    setEditorSettings,
+    setEnabledModelIds,
+    setMaiAccount,
+    setMaiAccountModalOpen,
+    setMcpServers,
+    setMcpStatuses,
+    setModelEntries,
+    setModelProviders,
+    setProjectAgentSlice,
+    setProviderIdentity,
+    setSettingsPageOpen,
+    setTeamSettings,
+    setThinkingByModelId,
+    settingsInitialNav,
+    settingsOpenPending,
+    // Settings page
+    settingsPageOpen,
+    setWorkspaceDiskSkills,
+    teamSettings,
+    thinkingByModelId,
+    workspaceDiskSkills,
+  };
+}

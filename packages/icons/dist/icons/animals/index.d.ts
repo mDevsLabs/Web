@@ -1,0 +1,17 @@
+export { BatIcon } from './bat.js';
+export { BirdIcon } from './bird.js';
+export { CatIcon } from './cat.js';
+export { DogIcon } from './dog.js';
+export { FishIcon } from './fish.js';
+export { FishBoneIcon } from './fish-bone.js';
+export { FishChristianityIcon } from './fish-christianity.js';
+export { FishHookIcon } from './fish-hook.js';
+export { FishHookOffIcon } from './fish-hook-off.js';
+export { FishOffIcon } from './fish-off.js';
+export { FishSymbolIcon } from './fish-symbol.js';
+export { PawIcon } from './paw.js';
+export { PawOffIcon } from './paw-off.js';
+export { PawPrintIcon } from './paw-print.js';
+export { RabbitIcon } from './rabbit.js';
+export { SquirrelIcon } from './squirrel.js';
+export { TurtleIcon } from './turtle.js';

@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Exam", "label": "Examens", "description": "G\xE9rez vos examens depuis une interface claire.", "fields": [{ "key": "title", "label": "Titre", "kind": "text", "required": true }, { "key": "course", "label": "Formation", "kind": "text", "required": true }, { "key": "scheduledOn", "label": "Date", "kind": "date", "required": true }, { "key": "durationMinutes", "label": "Dur\xE9e (min)", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["scheduled", "open", "graded"] }], "titleKey": "title", "settings": [{ "key": "notifyExam", "label": "Notifications : examens", "description": "Recevoir un signal lors des changements." }, { "key": "archiveExam", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section examens." }, { "key": "approveExam", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

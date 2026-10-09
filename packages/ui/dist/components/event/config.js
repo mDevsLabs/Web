@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Event", "label": "\xC9v\xE9nements", "description": "G\xE9rez vos \xE9v\xE9nements depuis une interface claire.", "fields": [{ "key": "title", "label": "Titre", "kind": "text", "required": true }, { "key": "location", "label": "Lieu", "kind": "text", "required": true }, { "key": "startsOn", "label": "Date", "kind": "date", "required": true }, { "key": "attendeeCount", "label": "Participants", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "scheduled", "cancelled", "completed"] }], "titleKey": "title", "settings": [{ "key": "notifyEvent", "label": "Notifications : \xE9v\xE9nements", "description": "Recevoir un signal lors des changements." }, { "key": "archiveEvent", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section \xE9v\xE9nements." }, { "key": "approveEvent", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

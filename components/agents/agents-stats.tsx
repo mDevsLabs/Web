@@ -1,15 +1,6 @@
 "use client";
 
-import {
-  BarChart3Icon,
-  CheckCircle2Icon,
-  ClockIcon,
-  MessageSquareIcon,
-  PieChartIcon,
-  SparklesIcon,
-  TrendingUpIcon,
-  UsersIcon,
-} from "lucide-react";
+import { BarChart3Icon, CheckCircle2Icon, ClockIcon, MessageSquareIcon, PieChartIcon, SparklesIcon, TrendingUpIcon, UsersIcon } from "@mdevs/icons";
 import useSWR from "swr";
 import { BotGlyph } from "@/components/agents/bot-avatar";
 import { cn } from "@/lib/utils";

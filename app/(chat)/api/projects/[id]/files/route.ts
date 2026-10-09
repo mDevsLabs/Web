@@ -4,8 +4,9 @@ import {
   fetchDocumentBuffer,
 } from "@/lib/agent/tools/internal/extract";
 import { errorResponse, logError } from "@/lib/api/error-response";
-import { getMaiSessionToken, getMaiUser } from "@/lib/auth/session";
-import { MAI_API_URL } from "@/lib/constants";
+import { upstreamForm, upstreamJson } from "@/lib/api/upstream";
+import { requireUser } from "@/lib/auth/require-user";
+import { getMaiSessionToken } from "@/lib/auth/session";
 import {
   createProjectFile,
   deleteProjectFile,
@@ -57,14 +58,15 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
+  const { user, userId } = session;
   const access = await getProjectAccess({
     projectId: id,
     userEmail: user.email,
-    userId: user.id || user.email,
+    userId,
   });
   if (!access) {
     return new ChatbotError(
@@ -81,11 +83,11 @@ export async function POST(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
+  const { user, userId } = session;
 
   // Un membre peut contribuer au projet partagé avec ses propres fichiers.
   const access = await getProjectAccess({
@@ -137,28 +139,28 @@ export async function POST(
     // Upload proxifié vers le stockage cloud mAI (compte du membre).
     const uploadFormData = new FormData();
     uploadFormData.append("file", file);
-    const uploadRes = await fetch(`${MAI_API_URL}/cloud/upload`, {
-      body: uploadFormData,
-      headers: { Authorization: `Bearer ${token}` },
-      method: "POST",
+    const upload = await upstreamForm<{
+      file_id?: string;
+      id?: string;
+      url?: string;
+    }>({
+      form: uploadFormData,
+      path: "/cloud/upload",
+      timeoutMs: 120_000,
+      token,
     });
-    const uploadData = await uploadRes.json().catch(() => ({}));
-    if (!uploadRes.ok) {
-      return errorResponse("internal_error", {
-        message:
-          (uploadData as { error?: string }).error ||
-          "L'envoi du fichier a échoué.",
+    if (!upload.ok) {
+      // Un échec amont gardait son statut : une quote de stockage était rendue
+      // comme une erreur interne, ce qui poussait l'utilisateur à réessayer au
+      // lieu de prendre une formule supérieure.
+      return Response.json(upload.payload, {
+        status: upload.payload.status,
       });
     }
+    const uploadData = upload.data ?? {};
 
-    const storageUrl =
-      (uploadData as { url?: string; file_url?: string }).url ||
-      (uploadData as { url?: string; file_url?: string }).file_url ||
-      "";
-    const fileRef =
-      (uploadData as { id?: string; file_id?: string }).id ||
-      (uploadData as { id?: string; file_id?: string }).file_id ||
-      null;
+    const storageUrl = uploadData.url || "";
+    const fileRef = uploadData.id || uploadData.file_id || null;
 
     // Extraction texte pour les documents (PDF/DOCX/CSV/texte) : cache borné
     // en base, injecté sous budget par la policy (lib/chat/project-files.ts).
@@ -214,11 +216,11 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const user = await getMaiUser();
-  if (!user) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
-  const userId = user.id || user.email;
+  const { user, userId } = session;
   const { searchParams } = new URL(request.url);
   const fileId = searchParams.get("fileId");
   if (!fileId) {
@@ -270,18 +272,16 @@ export async function DELETE(
       throw new Error("Session requise pour supprimer le fichier cloud.");
     }
     if (file.fileRef) {
-      const remoteDelete = await fetch(
-        `${MAI_API_URL}/cloud/files/${file.fileRef}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-          method: "DELETE",
-        }
-      ).catch(() => null);
-      if (remoteDelete && !remoteDelete.ok && remoteDelete.status !== 404) {
-        throw new Error("Suppression cloud refusée.");
-      }
-      if (!remoteDelete) {
-        throw new Error("Suppression cloud indisponible.");
+      // 404 = déjà supprimé en amont : c'est l'état voulu, pas une erreur.
+      const remoteDelete = await upstreamJson({
+        method: "DELETE",
+        path: `/cloud/files/${file.fileRef}`,
+        token,
+      });
+      if (!remoteDelete.ok && remoteDelete.payload.status !== 404) {
+        throw new Error(
+          `Suppression cloud refusée : ${remoteDelete.payload.message}`
+        );
       }
     }
     await deleteProjectFile({ id: fileId });

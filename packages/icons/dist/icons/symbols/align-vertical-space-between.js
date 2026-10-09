@@ -1,0 +1,4 @@
+"use client";
+// Geometry: lucide. See LICENSE-LUCIDE and LICENSE-TABLER.
+import { createIcon } from '../../create-icon.js';
+export const AlignVerticalSpaceBetweenIcon = /* @__PURE__ */ createIcon('AlignVerticalSpaceBetweenIcon', [["rect", { "width": "14", "height": "6", "x": "5", "y": "15", "rx": "2" }], ["rect", { "width": "10", "height": "6", "x": "7", "y": "3", "rx": "2" }], ["path", { "d": "M2 21h20" }], ["path", { "d": "M2 3h20" }]]);

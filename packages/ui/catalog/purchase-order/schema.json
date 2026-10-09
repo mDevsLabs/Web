@@ -1,0 +1,72 @@
+{
+  "model": "PurchaseOrder",
+  "config": {
+    "name": "PurchaseOrder",
+    "label": "Commandes fournisseurs",
+    "description": "Gérez vos commandes fournisseurs depuis une interface claire.",
+    "fields": [
+      {
+        "key": "reference",
+        "label": "Référence",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "supplier",
+        "label": "Fournisseur",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "amount",
+        "label": "Montant",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "expectedOn",
+        "label": "Réception",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "draft",
+          "approved",
+          "ordered",
+          "received"
+        ]
+      }
+    ],
+    "titleKey": "reference",
+    "settings": [
+      {
+        "key": "notifyPurchaseOrder",
+        "label": "Notifications : commandes fournisseurs",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archivePurchaseOrder",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section commandes fournisseurs."
+      },
+      {
+        "key": "approvePurchaseOrder",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "purchase-order-demo-1",
+    "reference": "ACH-104",
+    "supplier": "Fournisseur démo",
+    "amount": 128,
+    "expectedOn": "2026-10-04",
+    "status": "draft"
+  }
+}

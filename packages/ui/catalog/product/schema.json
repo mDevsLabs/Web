@@ -1,0 +1,71 @@
+{
+  "model": "Product",
+  "config": {
+    "name": "Product",
+    "label": "Produits",
+    "description": "Gérez vos produits depuis une interface claire.",
+    "fields": [
+      {
+        "key": "name",
+        "label": "Nom",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "sku",
+        "label": "Référence",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "price",
+        "label": "Prix",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "stock",
+        "label": "Stock",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "draft",
+          "active",
+          "archived"
+        ]
+      }
+    ],
+    "titleKey": "name",
+    "settings": [
+      {
+        "key": "notifyProduct",
+        "label": "Notifications : produits",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveProduct",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section produits."
+      },
+      {
+        "key": "approveProduct",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "product-demo-1",
+    "name": "Lampe Horizon",
+    "sku": "Référence démo",
+    "price": 128,
+    "stock": 128,
+    "status": "draft"
+  }
+}

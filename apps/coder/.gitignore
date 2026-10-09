@@ -1,0 +1,29 @@
+.vercel/*
+.vercel
+node_modules*
+.next
+.next/*
+.agents
+.agents/*
+.env*
+!.env.example
+main.ts
+main-projects.ts
+aiModels.ts
+maiModels.ts
+.neon
+
+# AI Agent Docs
+docs/AI_AGENTS_API.md
+docs/llms-api.md
+*.agent-doc.md
+
+# Builds Electron Desktop
+release/
+
+# Sorties de build régénérées par `pnpm run build` (Vite + esbuild) et par la
+# synchronisation builtin-team : jamais versionnées.
+dist/
+electron/main.bundle.cjs
+electron/main.bundle.cjs.map
+resources/builtin-team/

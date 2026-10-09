@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Project", "label": "Projets", "description": "G\xE9rez vos projets depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "owner", "label": "Responsable", "kind": "text", "required": true }, { "key": "progress", "label": "Avancement (%)", "kind": "number", "required": true }, { "key": "dueDate", "label": "\xC9ch\xE9ance", "kind": "date", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["planned", "active", "completed", "archived"] }], "titleKey": "name", "settings": [{ "key": "notifyProject", "label": "Notifications : projets", "description": "Recevoir un signal lors des changements." }, { "key": "archiveProject", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section projets." }, { "key": "approveProject", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

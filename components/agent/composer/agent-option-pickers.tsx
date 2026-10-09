@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  BrainIcon,
-  CheckIcon,
-  FolderIcon,
-  GaugeIcon,
-  WrenchIcon,
-} from "lucide-react";
+import { BrainIcon, CheckIcon, FolderIcon, GaugeIcon, WrenchIcon } from "@mdevs/icons";
 import { useState } from "react";
 import {
   Popover,

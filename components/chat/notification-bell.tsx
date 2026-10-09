@@ -1,23 +1,6 @@
 "use client";
 
-import {
-  AlertTriangle,
-  BellIcon,
-  Bot,
-  CalendarClock,
-  CheckCheckIcon,
-  CheckCircle2,
-  CheckIcon,
-  Folder,
-  Lock,
-  Megaphone,
-  MessageCircleQuestion,
-  Puzzle,
-  ShieldQuestion,
-  Trash2Icon,
-  TrashIcon,
-  UserPlus,
-} from "lucide-react";
+import { AlertTriangleIcon as AlertTriangle, BellIcon, BotIcon as Bot, CalendarClockIcon as CalendarClock, CheckCheckIcon, CheckCircle2Icon as CheckCircle2, CheckIcon, FolderIcon as Folder, LockIcon as Lock, MegaphoneIcon as Megaphone, MessageCircleQuestionIcon as MessageCircleQuestion, PuzzleIcon as Puzzle, ShieldQuestionIcon as ShieldQuestion, Trash2Icon, TrashIcon, UserPlusIcon as UserPlus } from "@mdevs/icons";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";

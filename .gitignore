@@ -7,6 +7,15 @@ node_modules*
 .agents/*
 .env*
 !.env.example
+
+# Outil de debug local : forge un JWT signé avec le vrai MAI_JWT_SECRET.
+# Injoignable depuis l'application (ni route, ni import), mais c'est une
+# primitive de forgerie d'authentification complète : elle ne doit pas être
+# versionnée. Le fichier reste utilisable en local après `git rm --cached`.
+tests/debug/
+
+# `.env.example` est versionné : c'est le contrat d'environnement du dépôt
+# (`.env*` est ignoré, ce fichier fait exception ligne 9).
 main.ts
 main-projects.ts
 aiModels.ts
@@ -31,3 +40,6 @@ playwright-report/
 test-results/
 .sbom/
 sbom.json
+
+# Builds Electron Desktop
+apps/coder/release/

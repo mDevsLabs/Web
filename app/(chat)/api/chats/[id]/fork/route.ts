@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { chatOwnerMatches } from "@/lib/agent/channel";
 import { errorResponse } from "@/lib/api/error-response";
-import { getMaiUser } from "@/lib/auth/session";
+import { requireUser } from "@/lib/auth/require-user";
 import {
   getChatById,
   getMessagesByChatId,
@@ -22,16 +22,11 @@ export async function POST(
       message: "L'identifiant de la discussion est invalide.",
     });
   }
-  const maiUser = await getMaiUser();
-  if (!maiUser) {
+  const session = await requireUser();
+  if (!session) {
     return errorResponse("auth_required", { message: "Non authentifié." });
   }
-  const userId = maiUser.id;
-  if (!userId) {
-    return errorResponse("auth_required", {
-      message: "Session utilisateur invalide.",
-    });
-  }
+  const { user, userId } = session;
 
   const body = await request.json().catch(() => ({}));
   const bodySchema = z.object({
@@ -51,14 +46,7 @@ export async function POST(
       message: "Discussion introuvable.",
     });
   }
-  if (
-    !chatOwnerMatches({
-      chatUserId: chat.userId,
-      email: maiUser.email,
-      userId: maiUser.id,
-      username: maiUser.username,
-    })
-  ) {
+  if (!chatOwnerMatches({ chatUserId: chat.userId, userId })) {
     return errorResponse("access_denied");
   }
 

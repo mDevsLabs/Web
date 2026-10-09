@@ -8,8 +8,11 @@ import {
 } from "@/lib/plans/custom-instructions";
 import {
   CUSTOM_INSTRUCTIONS_HARD_CAP,
+  canAccessWakies,
   getCustomInstructionsEffectiveMax,
   getTierCustomInstructionsMax,
+  getWakiesQuota,
+  getWakiesQuotas,
 } from "@/lib/plans/tier-limits";
 
 // Non-régression du passage de « 4000 en dur » à un plafond par forfait.
@@ -164,5 +167,39 @@ describe("libellés d'interface", () => {
   it("n'affiche aucune mention d'illimité pour les forfaits plafonnés", () => {
     expect(customInstructionsHint("free")).toBe("");
     expect(customInstructionsHint("plus")).toBe("");
+  });
+});
+
+describe("quotas et accès Wakies par forfait", () => {
+  it("bloque l'accès à Wakies pour Free et l'autorise pour Plus, Pro, Max", () => {
+    expect(canAccessWakies("free")).toBe(false);
+    expect(canAccessWakies("gratuit")).toBe(false);
+    expect(canAccessWakies(null)).toBe(false);
+    expect(canAccessWakies(undefined)).toBe(false);
+    expect(canAccessWakies("plus")).toBe(true);
+    expect(canAccessWakies("pro")).toBe(true);
+    expect(canAccessWakies("max")).toBe(true);
+  });
+
+  it("met tous les quotas Wakies à zéro pour le forfait Free", () => {
+    const freeQuotas = getWakiesQuotas("free");
+    expect(freeQuotas.conversations).toBe(0);
+    expect(freeQuotas.memories).toBe(0);
+    expect(freeQuotas.pages).toBe(0);
+    expect(freeQuotas.spaces).toBe(0);
+    expect(freeQuotas.tasks).toBe(0);
+    expect(freeQuotas.wakies).toBe(0);
+
+    expect(getWakiesQuota("free", "spaces")).toBe(0);
+    expect(getWakiesQuota("free", "wakies")).toBe(0);
+  });
+
+  it("conserve les quotas pour Plus, Pro et Max", () => {
+    expect(getWakiesQuota("plus", "spaces")).toBe(8);
+    expect(getWakiesQuota("plus", "wakies")).toBe(6);
+    expect(getWakiesQuota("pro", "spaces")).toBe(20);
+    expect(getWakiesQuota("pro", "wakies")).toBe(12);
+    expect(getWakiesQuota("max", "spaces")).toBeNull();
+    expect(getWakiesQuota("max", "wakies")).toBeNull();
   });
 });

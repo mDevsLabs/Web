@@ -714,10 +714,6 @@ export function convertSkillMarkdown(
   const pluginIds = (frontmatter.pluginIds ?? [])
     .map((pluginId) => pluginId.trim())
     .filter(Boolean);
-  const hasExternalDependency =
-    tools.some((tool) => tool === "mcp") ||
-    pluginIds.length > 0 ||
-    mcpServerNames.length > 0;
   const manifest: SkillTemplateManifest = {
     author: frontmatter.author?.trim() || "Local",
     category: frontmatter.category?.trim() || "research",
@@ -727,7 +723,7 @@ export function convertSkillMarkdown(
     id,
     instructions,
     mcpServerNames,
-    minTier: frontmatter.minTier ?? (hasExternalDependency ? "plus" : "free"),
+    minTier: frontmatter.minTier ?? "free",
     name: frontmatter.name,
     parameters: frontmatter.parameters ?? [],
     pluginIds,

@@ -1,4 +1,4 @@
-import { getMaiUser } from "@/lib/auth/session";
+import { requireUser } from "@/lib/auth/require-user";
 import { getDocumentById } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import {
@@ -42,17 +42,17 @@ export async function GET(request: Request) {
     ).toResponse();
   }
 
-  const maiUser = await getMaiUser();
-  if (!maiUser) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:document").toResponse();
   }
+  const { user: maiUser, userId } = session;
 
   const doc = await getDocumentById({ id });
   if (!doc) {
     return new ChatbotError("not_found:document").toResponse();
   }
 
-  const userId = maiUser.id || maiUser.email;
   if (doc.userId !== userId && doc.userId !== maiUser.email) {
     return new ChatbotError("forbidden:document").toResponse();
   }

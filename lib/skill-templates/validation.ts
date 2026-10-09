@@ -225,15 +225,6 @@ export function validateSkillTemplateManifest(
     );
   }
 
-  if (
-    manifest.minTier === "free" &&
-    (tools.plugin.length > 0 || declaredPluginIds.size > 0 || hasMcpTool)
-  ) {
-    errors.push(
-      "un outil Plugin ou MCP ne peut pas être accessible au forfait free"
-    );
-  }
-
   return {
     errors: unique(errors),
     tools,

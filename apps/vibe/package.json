@@ -1,0 +1,53 @@
+{
+  "name": "vibe",
+  "private": true,
+  "version": "0.9.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "test": "npm run test:backend",
+    "test:backend": "deno test --allow-import --allow-env tests",
+    "check:backend": "deno check --allow-import main.ts",
+    "check:migrations": "deno check --allow-import lib/db/migrator.ts",
+    "preview": "vite preview",
+    "migrate": "node scripts/migrate.js",
+    "migrate:ci": "node scripts/migrate.js"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.2.0",
+    "@types/qrcode": "^1.5.6",
+    "bcryptjs": "^3.0.3",
+    "clsx": "^2.1.1",
+    "dompurify": "^3.4.16",
+    "driver.js": "^1.9.0",
+    "framer-motion": "^13.5.1",
+    "highlight.js": "^11.12.0",
+    "katex": "^0.19.0",
+    "lucide-react": "^1.52.0",
+    "markdown-it": "^15.0.2",
+    "markdown-it-mark": "^4.0.0",
+    "qrcode": "^1.5.4",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-router-dom": "^7.18.4",
+    "recharts": "^3.10.1",
+    "tailwind-merge": "^3.7.0"
+  },
+  "devDependencies": {
+    "@capacitor/haptics": "^8.0.2",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.19.1",
+    "@types/nodemailer": "^8.0.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "nodemailer": "^10.0.15",
+    "oxlint": "^1.87.0",
+    "pg": "^8.23.1",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.3"
+  }
+}

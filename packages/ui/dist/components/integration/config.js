@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Integration", "label": "Int\xE9grations", "description": "G\xE9rez vos int\xE9grations depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "provider", "label": "Fournisseur", "kind": "text", "required": true }, { "key": "connectedOn", "label": "Connexion", "kind": "date", "required": true }, { "key": "syncCount", "label": "Synchronisations", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["connected", "pending", "error"] }], "titleKey": "name", "settings": [{ "key": "notifyIntegration", "label": "Notifications : int\xE9grations", "description": "Recevoir un signal lors des changements." }, { "key": "archiveIntegration", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section int\xE9grations." }, { "key": "approveIntegration", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

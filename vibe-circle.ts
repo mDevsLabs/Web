@@ -48,10 +48,14 @@ export async function ensureCircleTable() {
   circleTableReady = true;
 }
 
-export async function getOrCreateUserCircle(userId: number, name = 'Cercle Privé') {
+export async function getOrCreateUserCircle(
+  userId: number,
+  name = "Cercle Privé"
+) {
   const sql = getDb();
   await ensureCircleTable();
-  const existing = await sql`SELECT * FROM user_circles WHERE user_id = ${userId} AND name = ${name} LIMIT 1`;
+  const existing =
+    await sql`SELECT * FROM user_circles WHERE user_id = ${userId} AND name = ${name} LIMIT 1`;
   if (existing.length > 0) return existing[0];
   const inserted = await sql`
     INSERT INTO user_circles (user_id, name, description)
@@ -62,7 +66,10 @@ export async function getOrCreateUserCircle(userId: number, name = 'Cercle Priv�
   return inserted[0];
 }
 
-export function registerVibeCircleRoutes(app: Hono, registerMulti: RegisterMultiFn) {
+export function registerVibeCircleRoutes(
+  app: Hono,
+  registerMulti: RegisterMultiFn
+) {
   // Mon cercle (liste de membres & métadonnées du cercle en base)
   const handleGetCircle = async (c: any) => {
     try {
@@ -91,7 +98,11 @@ export function registerVibeCircleRoutes(app: Hono, registerMulti: RegisterMulti
     }
   };
 
-  registerMulti("get", ["/api/vibe/circle", "/vibe/circle", "/v1/circle"], handleGetCircle);
+  registerMulti(
+    "get",
+    ["/api/vibe/circle", "/vibe/circle", "/v1/circle"],
+    handleGetCircle
+  );
 
   // Le membre @username est-il dans MON cercle ? (état du bouton sur les profils)
   const handleCheckCircle = async (c: any) => {
@@ -100,7 +111,9 @@ export function registerVibeCircleRoutes(app: Hono, registerMulti: RegisterMulti
       if (!token) return c.json({ error: "Non authentifié." }, 401);
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
-      const username = String(c.req.param("username") || "").replace(/^@/, "").trim();
+      const username = String(c.req.param("username") || "")
+        .replace(/^@/, "")
+        .trim();
       if (!username) return c.json({ error: "Nom d'utilisateur requis." }, 400);
 
       const sql = getDb();
@@ -112,12 +125,20 @@ export function registerVibeCircleRoutes(app: Hono, registerMulti: RegisterMulti
         LIMIT 1
       `;
       return c.json({ in_circle: rows.length > 0 });
-    } catch (err: any) {
+    } catch {
       return c.json({ error: "Erreur vérification du cercle." }, 500);
     }
   };
 
-  registerMulti("get", ["/api/vibe/circle/check/:username", "/vibe/circle/check/:username", "/v1/circle/check/:username"], handleCheckCircle);
+  registerMulti(
+    "get",
+    [
+      "/api/vibe/circle/check/:username",
+      "/vibe/circle/check/:username",
+      "/v1/circle/check/:username",
+    ],
+    handleCheckCircle
+  );
 
   // Ajouter un membre au cercle
   const handleAddCircle = async (c: any) => {
@@ -126,15 +147,23 @@ export function registerVibeCircleRoutes(app: Hono, registerMulti: RegisterMulti
       if (!token) return c.json({ error: "Non authentifié." }, 401);
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
-      const username = String(c.req.param("username") || "").replace(/^@/, "").trim();
+      const username = String(c.req.param("username") || "")
+        .replace(/^@/, "")
+        .trim();
       if (!username) return c.json({ error: "Nom d'utilisateur requis." }, 400);
 
       const sql = getDb();
       await ensureCircleTable();
-      const target = await sql`SELECT id FROM users WHERE LOWER(username) = LOWER(${username}) LIMIT 1`;
-      if (target.length === 0) return c.json({ error: "Utilisateur introuvable." }, 404);
+      const target =
+        await sql`SELECT id FROM users WHERE LOWER(username) = LOWER(${username}) LIMIT 1`;
+      if (target.length === 0)
+        return c.json({ error: "Utilisateur introuvable." }, 404);
       const memberId = Number(target[0].id);
-      if (memberId === userId) return c.json({ error: "Vous ne pouvez pas vous ajouter vous-même." }, 400);
+      if (memberId === userId)
+        return c.json(
+          { error: "Vous ne pouvez pas vous ajouter vous-même." },
+          400
+        );
 
       const circle = await getOrCreateUserCircle(userId);
       await sql`
@@ -143,14 +172,22 @@ export function registerVibeCircleRoutes(app: Hono, registerMulti: RegisterMulti
         ON CONFLICT (user_id, member_user_id) DO UPDATE SET circle_id = EXCLUDED.circle_id
       `;
       await sql`UPDATE user_circles SET updated_at = NOW() WHERE id = ${circle.id}`;
-      return c.json({ success: true, in_circle: true, circle_id: circle.id });
+      return c.json({ circle_id: circle.id, in_circle: true, success: true });
     } catch (err: any) {
       console.error("[vibe-circle] add error:", err);
       return c.json({ error: "Erreur ajout au cercle." }, 500);
     }
   };
 
-  registerMulti("post", ["/api/vibe/circle/:username", "/vibe/circle/:username", "/v1/circle/:username"], handleAddCircle);
+  registerMulti(
+    "post",
+    [
+      "/api/vibe/circle/:username",
+      "/vibe/circle/:username",
+      "/v1/circle/:username",
+    ],
+    handleAddCircle
+  );
 
   // Retirer un membre du cercle
   const handleRemoveCircle = async (c: any) => {
@@ -159,23 +196,35 @@ export function registerVibeCircleRoutes(app: Hono, registerMulti: RegisterMulti
       if (!token) return c.json({ error: "Non authentifié." }, 401);
       const payload = await verifyToken(token);
       const userId = Number(payload.sub || (payload as any).id);
-      const username = String(c.req.param("username") || "").replace(/^@/, "").trim();
+      const username = String(c.req.param("username") || "")
+        .replace(/^@/, "")
+        .trim();
       if (!username) return c.json({ error: "Nom d'utilisateur requis." }, 400);
 
       const sql = getDb();
       await ensureCircleTable();
-      const target = await sql`SELECT id FROM users WHERE LOWER(username) = LOWER(${username}) LIMIT 1`;
-      if (target.length === 0) return c.json({ error: "Utilisateur introuvable." }, 404);
+      const target =
+        await sql`SELECT id FROM users WHERE LOWER(username) = LOWER(${username}) LIMIT 1`;
+      if (target.length === 0)
+        return c.json({ error: "Utilisateur introuvable." }, 404);
 
       const circle = await getOrCreateUserCircle(userId);
       await sql`DELETE FROM circle_members WHERE user_id = ${userId} AND member_user_id = ${Number(target[0].id)}`;
       await sql`UPDATE user_circles SET updated_at = NOW() WHERE id = ${circle.id}`;
-      return c.json({ success: true, in_circle: false });
+      return c.json({ in_circle: false, success: true });
     } catch (err: any) {
       console.error("[vibe-circle] remove error:", err);
       return c.json({ error: "Erreur retrait du cercle." }, 500);
     }
   };
 
-  registerMulti("delete", ["/api/vibe/circle/:username", "/vibe/circle/:username", "/v1/circle/:username"], handleRemoveCircle);
+  registerMulti(
+    "delete",
+    [
+      "/api/vibe/circle/:username",
+      "/vibe/circle/:username",
+      "/v1/circle/:username",
+    ],
+    handleRemoveCircle
+  );
 }

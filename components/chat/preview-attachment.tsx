@@ -1,12 +1,4 @@
-import {
-  ArchiveIcon,
-  CodeIcon,
-  FileIcon,
-  FileSpreadsheetIcon,
-  FileTextIcon,
-  MusicIcon,
-  VideoIcon,
-} from "lucide-react";
+import { ArchiveIcon, CodeIcon, FileIcon, FileSpreadsheetIcon, FileTextIcon, MusicIcon, VideoIcon } from "@mdevs/icons";
 import Image from "next/image";
 import type { Attachment } from "@/lib/types";
 import { Spinner } from "../ui/spinner";
@@ -68,7 +60,7 @@ export const PreviewAttachment = ({
     >
       {contentType?.startsWith("image") && url ? (
         <Image
-          alt={name ?? "attachment"}
+          alt={name ?? "pièce jointe"}
           className="size-full object-cover"
           height={96}
           src={url}

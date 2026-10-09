@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Incident", "label": "Incidents", "description": "G\xE9rez vos incidents depuis une interface claire.", "fields": [{ "key": "title", "label": "Titre", "kind": "text", "required": true }, { "key": "severity", "label": "S\xE9v\xE9rit\xE9", "kind": "text", "required": true }, { "key": "startedOn", "label": "D\xE9but", "kind": "date", "required": true }, { "key": "affectedUsers", "label": "Utilisateurs impact\xE9s", "kind": "number", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["investigating", "identified", "monitoring", "resolved"] }], "titleKey": "title", "settings": [{ "key": "notifyIncident", "label": "Notifications : incidents", "description": "Recevoir un signal lors des changements." }, { "key": "archiveIncident", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section incidents." }, { "key": "approveIncident", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

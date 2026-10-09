@@ -1,0 +1,19 @@
+allowBuilds:
+  better-sqlite3: true
+  cpu-features: true
+  electron: true
+  electron-winstaller: false
+  esbuild: true
+  node-pty: true
+  protobufjs: false
+  sharp: true
+  ssh2: true
+
+# cpu-features est une dépendance OPTIONNELLE de ssh2 (accélération AES-NI) :
+# ssh2 fonctionne sans elle (repli JavaScript). La garder installer obligeait
+# `electron-builder install-app-deps` (script `rebuild:native`) à la recompiler
+# via node-gyp, ce qui casse le build des installateurs dès qu'aucun Visual
+# Studio n'est présent (EBUSY/node-gyp) — la CI Windows contournait déjà le
+# problème en supprimant le dossier à la main.
+ignoredOptionalDependencies:
+  - cpu-features

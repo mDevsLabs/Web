@@ -1,0 +1,55 @@
+@supports (view-transition-name: none) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: var(--theme-switch-duration, 420ms);
+    animation-timing-function: var(
+      --void-ease-out-expo,
+      cubic-bezier(0.22, 1, 0.36, 1)
+    );
+  }
+
+  ::view-transition-old(root) {
+    animation-name: ref-theme-fade-out;
+  }
+
+  ::view-transition-new(root) {
+    animation-name: ref-theme-reveal;
+  }
+}
+
+@keyframes ref-theme-reveal {
+  from {
+    clip-path: circle(0 at var(--theme-switch-x) var(--theme-switch-y));
+    filter: blur(18px) saturate(0.92);
+    opacity: 0.72;
+  }
+
+  to {
+    clip-path: circle(150vmax at var(--theme-switch-x) var(--theme-switch-y));
+    filter: blur(0) saturate(1);
+    opacity: 1;
+  }
+}
+
+@keyframes ref-theme-fade-out {
+  from {
+    filter: blur(0);
+    opacity: 1;
+  }
+
+  to {
+    filter: blur(8px);
+    opacity: 0.22;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-ui-style="mac-codex"] {
+    --theme-switch-duration: 0ms;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0ms !important;
+  }
+}

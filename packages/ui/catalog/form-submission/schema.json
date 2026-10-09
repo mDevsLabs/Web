@@ -1,0 +1,79 @@
+{
+  "model": "FormSubmission",
+  "config": {
+    "name": "FormSubmission",
+    "label": "Soumissions de formulaire",
+    "description": "Gérez vos soumissions de formulaire depuis une interface claire.",
+    "fields": [
+      {
+        "key": "reference",
+        "label": "Référence",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "formName",
+        "label": "Formulaire",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "submittedBy",
+        "label": "Auteur",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "submittedAt",
+        "label": "Date",
+        "kind": "date",
+        "required": true
+      },
+      {
+        "key": "fieldCount",
+        "label": "Nombre de champs",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "received",
+          "reviewing",
+          "accepted",
+          "rejected"
+        ]
+      }
+    ],
+    "titleKey": "reference",
+    "settings": [
+      {
+        "key": "notifyFormSubmission",
+        "label": "Notifications : soumissions de formulaire",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveFormSubmission",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section soumissions de formulaire."
+      },
+      {
+        "key": "approveFormSubmission",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "form-submission-demo-1",
+    "reference": "SUB-2026-001",
+    "formName": "Formulaire démo",
+    "submittedBy": "Auteur démo",
+    "submittedAt": "2026-10-04",
+    "fieldCount": 128,
+    "status": "received"
+  }
+}

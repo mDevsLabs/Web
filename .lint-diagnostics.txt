@@ -1,0 +1,345 @@
+app\(chat)\site\news\[slug]\ArticleClient.tsx format ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Formatter would have printed the following content:
+  
+    384 384 │         );
+    385 385 │       }
+    386     │ - ····if·(comment.avatar·&&·(/\p{Extended_Pictographic}/u.test(comment.avatar)·||·/[^\u0020-\uFFFF]/.test(comment.avatar)))·{
+        386 │ + ····if·(
+        387 │ + ······comment.avatar·&&
+        388 │ + ······(/\p{Extended_Pictographic}/u.test(comment.avatar)·||
+        389 │ + ········/[^\u0020-\uFFFF]/.test(comment.avatar))
+        390 │ + ····)·{
+    387 391 │         return (
+    388 392 │           <div className="w-12 h-12 rounded-full bg-slate-200 border-2 border-orange-200 flex items-center justify-center text-xl">
+  
+
+app\(chat)\site\support\tickets\TicketsListClient.tsx format ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Formatter would have printed the following content:
+  
+    144 144 │       if (!authLoading && isAuthenticated) fetchTickets();
+    145 145 │       else if (!authLoading && !isAuthenticated) setLoading(false);
+    146     │ - ··},·[
+    147     │ - ····authLoading,
+    148     │ - ····isAuthenticated,
+    149     │ - ····fetchTickets,
+    150     │ - ··]);
+        146 │ + ··},·[authLoading,·isAuthenticated,·fetchTickets]);
+    151 147 │   
+    152 148 │     const handleSearchSubmit = (e: React.FormEvent) => {
+  
+
+scripts\release-version.mjs:22:18 lint/style/useTemplate  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Template literals are preferred over string concatenation.
+  
+    20 │     throw new Error("Canal de release invalide.");
+    21 │   }
+  > 22 │   const prefix = channel + "." + version;
+       │                  ^^^^^^^^^^^^^^^^^^^^^^^
+    23 │   if (channel === "stable") {
+    24 │     if (tags.includes(prefix)) {
+  
+  i Unsafe fix: Use a template literal.
+  
+    20 20 │       throw new Error("Canal de release invalide.");
+    21 21 │     }
+    22    │ - ··const·prefix·=·channel·+·"."·+·version;
+       22 │ + ··const·prefix·=·`${channel}.${version}`;
+    23 23 │     if (channel === "stable") {
+    24 24 │       if (tags.includes(prefix)) {
+  
+
+scripts\release-version.mjs:35:25 lint/style/useTemplate  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Template literals are preferred over string concatenation.
+  
+    33 │   let largest = 0;
+    34 │   for (const tag of tags) {
+  > 35 │     if (!tag.startsWith(prefix + "-")) {
+       │                         ^^^^^^^^^^^^
+    36 │       continue;
+    37 │     }
+  
+  i Unsafe fix: Use a template literal.
+  
+    33 33 │     let largest = 0;
+    34 34 │     for (const tag of tags) {
+    35    │ - ····if·(!tag.startsWith(prefix·+·"-"))·{
+       35 │ + ····if·(!tag.startsWith(`${prefix}-`))·{
+    36 36 │         continue;
+    37 37 │       }
+  
+
+scripts\release-version.mjs:43:10 lint/style/useTemplate  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Template literals are preferred over string concatenation.
+  
+    41 │     }
+    42 │   }
+  > 43 │   return prefix + "-" + (largest + 1);
+       │          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    44 │ }
+    45 │ export function releaseTitle(tag) {
+  
+  i Unsafe fix: Use a template literal.
+  
+    41 41 │       }
+    42 42 │     }
+    43    │ - ··return·prefix·+·"-"·+·(largest·+·1);
+       43 │ + ··return·`${prefix}-${largest·+·1}`;
+    44 44 │   }
+    45 45 │   export function releaseTitle(tag) {
+  
+
+tests\unit\desktop-cli.test.ts:74:37 lint/style/useTemplate  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Template literals are preferred over string concatenation.
+  
+    72 │     const file =
+    73 │       process.platform === "win32"
+  > 74 │         ? path.join("C:", "outils", command + ".cmd")
+       │                                     ^^^^^^^^^^^^^^^^
+    75 │         : "/usr/bin/" + command;
+    76 │     callback(null, { stderr: "", stdout: file + "\n" });
+  
+  i Unsafe fix: Use a template literal.
+  
+     72  72 │       const file =
+     73  73 │         process.platform === "win32"
+     74     │ - ········?·path.join("C:",·"outils",·command·+·".cmd")
+         74 │ + ········?·path.join("C:",·"outils",·`${command}.cmd`)
+     75  75 │           : "/usr/bin/" + command;
+     76  76 │       callback(null, { stderr: "", stdout: file + "\n" });
+  
+
+tests\unit\desktop-cli.test.ts:75:11 lint/style/useTemplate  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Template literals are preferred over string concatenation.
+  
+    73 │       process.platform === "win32"
+    74 │         ? path.join("C:", "outils", command + ".cmd")
+  > 75 │         : "/usr/bin/" + command;
+       │           ^^^^^^^^^^^^^^^^^^^^^
+    76 │     callback(null, { stderr: "", stdout: file + "\n" });
+    77 │   },
+  
+  i Unsafe fix: Use a template literal.
+  
+     73  73 │         process.platform === "win32"
+     74  74 │           ? path.join("C:", "outils", command + ".cmd")
+     75     │ - ········:·"/usr/bin/"·+·command;
+         75 │ + ········:·`/usr/bin/${command}`;
+     76  76 │       callback(null, { stderr: "", stdout: file + "\n" });
+     77  77 │     },
+  
+
+tests\unit\desktop-cli.test.ts:76:42 lint/style/useTemplate  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Template literals are preferred over string concatenation.
+  
+    74 │         ? path.join("C:", "outils", command + ".cmd")
+    75 │         : "/usr/bin/" + command;
+  > 76 │     callback(null, { stderr: "", stdout: file + "\n" });
+       │                                          ^^^^^^^^^^^
+    77 │   },
+    78 │ }));
+  
+  i Unsafe fix: Use a template literal.
+  
+     74  74 │           ? path.join("C:", "outils", command + ".cmd")
+     75  75 │           : "/usr/bin/" + command;
+     76     │ - ····callback(null,·{·stderr:·"",·stdout:·file·+·"\n"·});
+         76 │ + ····callback(null,·{·stderr:·"",·stdout:·`${file}\n`·});
+     77  77 │     },
+     78  78 │   }));
+  
+
+vibe-mai-fleet.ts:53:8 lint/complexity/noStaticOnlyClass ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Avoid classes that contain only static members.
+  
+      51 │ ];
+      52 │ 
+    > 53 │ export class MAIAgentFleet {
+         │        ^^^^^^^^^^^^^^^^^^^^^
+    > 54 │   public static assessContentSafety(content: string): {
+          ...
+  > 1731 │     }
+  > 1732 │   }
+  > 1733 │ }
+         │ ^
+    1734 │ 
+  
+  i Prefer using simple functions instead of classes with only static members.
+  
+
+vibe-mai-fleet.ts:54:3 lint/style/useConsistentMemberAccessibility ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × The public modifier is disallowed.
+  
+    53 │ export class MAIAgentFleet {
+  > 54 │   public static assessContentSafety(content: string): {
+       │   ^^^^^^
+    55 │     isSafe: boolean;
+    56 │     toxicityScore: number;
+  
+  i Remove the accessibility modifier.
+  
+
+vibe-mai-fleet.ts:82:3 lint/style/useConsistentMemberAccessibility ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × The public modifier is disallowed.
+  
+    80 │   }
+    81 │ 
+  > 82 │   public static async modulateText(opts: {
+       │   ^^^^^^
+    83 │     text: string;
+    84 │     tone?: string;
+  
+  i Remove the accessibility modifier.
+  
+
+vibe-mai-fleet.ts:99:3 lint/style/useConsistentMemberAccessibility ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × The public modifier is disallowed.
+  
+     97 │   }
+     98 │ 
+   > 99 │   public static synthesizeThread(
+        │   ^^^^^^
+    100 │     comments: Array<{ author: string; content: string }>
+    101 │   ): string {
+  
+  i Remove the accessibility modifier.
+  
+
+vibe-mai-fleet.ts:114:3 lint/style/useConsistentMemberAccessibility ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × The public modifier is disallowed.
+  
+    112 │    * Récupère une clé OpenRouter (variable d'environnement ou table mprojects_api_keys).
+    113 │    */
+  > 114 │   public static async getOpenRouterKey(userId: number): Promise<string> {
+        │   ^^^^^^
+    115 │     if ((globalThis as any).Deno?.env?.get("OPENROUTER_API_KEY")) {
+    116 │       return (globalThis as any).Deno.env.get("OPENROUTER_API_KEY");
+  
+  i Remove the accessibility modifier.
+  
+
+vibe-mai-fleet.ts:140:3 lint/style/useConsistentMemberAccessibility ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × The public modifier is disallowed.
+  
+    138 │   >();
+    139 │ 
+  > 140 │   public static async getUserDefaultModel(
+        │   ^^^^^^
+    141 │     userId: number | string
+    142 │   ): Promise<string> {
+  
+  i Remove the accessibility modifier.
+  
+
+vibe-mai-fleet.ts:165:3 lint/style/useConsistentMemberAccessibility ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × The public modifier is disallowed.
+  
+    163 │    * Sans `model`, utilise le modèle par défaut de l'utilisateur.
+    164 │    */
+  > 165 │   public static async callOpenRouter(
+        │   ^^^^^^
+    166 │     userId: number,
+    167 │     system: string,
+  
+  i Remove the accessibility modifier.
+  
+
+vibe-mai-fleet.ts:203:3 lint/style/useConsistentMemberAccessibility ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × The public modifier is disallowed.
+  
+    201 │   }
+    202 │ 
+  > 203 │   public static async executeTool(
+        │   ^^^^^^
+    204 │     toolName: string,
+    205 │     args: Record<string, any>,
+  
+  i Remove the accessibility modifier.
+  
+
+vibe-posts-engage.ts format ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Formatter would have printed the following content:
+  
+    1139 1139 │     );
+    1140 1140 │   }
+    1141      │ - ␍
+    1142 1141 │   
+  
+
+vibe-recommender.ts:170:8 lint/complexity/noStaticOnlyClass ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Avoid classes that contain only static members.
+  
+    168 │ // ─────────────────────────────────────────────
+    169 │ 
+  > 170 │ export class HybridRecommender {
+        │        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  > 171 │   private static readonly DEFAULT_TUNER: FeedTunerWeights = {
+         ...
+  > 274 │     };
+  > 275 │   }
+  > 276 │ }
+        │ ^
+    277 │ 
+  
+  i Prefer using simple functions instead of classes with only static members.
+  
+
+vibe-recommender.ts:180:3 lint/style/useConsistentMemberAccessibility ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × The public modifier is disallowed.
+  
+    178 │   };
+    179 │ 
+  > 180 │   public static scorePost(candidate: PostCandidate): RecommendationSignal {
+        │   ^^^^^^
+    181 │     const tuner = candidate.tuner || HybridRecommender.DEFAULT_TUNER;
+    182 │     const dwellW = (tuner as any).dwell ?? 0.13;
+  
+  i Remove the accessibility modifier.
+  
+
+web.ts:229:5 lint/style/useForOf ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × This for loop only uses its index to read from the iterated array.
+  
+    227 │     ];
+    228 │ 
+  > 229 │     for (let i = 0; i < keys.length; i++) {
+        │     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  > 230 │       const key = keys[i];
+         ...
+  > 311 │       }
+  > 312 │     }
+        │     ^
+    313 │   }
+    314 │ 
+  
+  i A for...of loop expresses that pattern more clearly because it iterates over the array values directly.
+  
+  i Use a for...of loop instead.
+  
+
+Checked 1242 files in 131s. No fixes applied.
+Found 20 errors.
+check ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  × Some errors were emitted while running checks.
+  
+

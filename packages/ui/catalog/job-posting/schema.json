@@ -1,0 +1,71 @@
+{
+  "model": "JobPosting",
+  "config": {
+    "name": "JobPosting",
+    "label": "Offres d’emploi",
+    "description": "Gérez vos offres d’emploi depuis une interface claire.",
+    "fields": [
+      {
+        "key": "title",
+        "label": "Poste",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "department",
+        "label": "Service",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "location",
+        "label": "Lieu",
+        "kind": "text",
+        "required": true
+      },
+      {
+        "key": "applicantCount",
+        "label": "Candidatures",
+        "kind": "number",
+        "required": true
+      },
+      {
+        "key": "status",
+        "label": "Statut",
+        "kind": "status",
+        "required": true,
+        "options": [
+          "draft",
+          "published",
+          "closed"
+        ]
+      }
+    ],
+    "titleKey": "title",
+    "settings": [
+      {
+        "key": "notifyJobPosting",
+        "label": "Notifications : offres d’emploi",
+        "description": "Recevoir un signal lors des changements."
+      },
+      {
+        "key": "archiveJobPosting",
+        "label": "Archivage automatique",
+        "description": "Archiver les éléments terminés de la section offres d’emploi."
+      },
+      {
+        "key": "approveJobPosting",
+        "label": "Validation requise",
+        "description": "Demander une validation avant publication ou activation."
+      }
+    ]
+  },
+  "sample": {
+    "id": "job-posting-demo-1",
+    "title": "Designer Produit",
+    "department": "Service démo",
+    "location": "Lieu démo",
+    "applicantCount": 128,
+    "status": "draft"
+  }
+}

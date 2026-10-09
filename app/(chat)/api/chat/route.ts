@@ -1,7 +1,7 @@
 import { chatOwnerMatches } from "@/lib/agent/channel";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { errorResponse } from "@/lib/api/error-response";
-import { isPaidTier } from "@/lib/auth/plan";
+import { requireUser } from "@/lib/auth/require-user";
 import { getMaiUser } from "@/lib/auth/session";
 import {
   authenticateChatRequest,
@@ -147,14 +147,10 @@ export async function POST(request: Request) {
     });
 
     // 4. Plugins installés et activés pour l'utilisateur : seuls leurs outils
-    // peuvent être instanciés, même si le client les mentionne. Les plugins
-    // sont réservés aux forfaits payants : la vérification du forfait est
-    // refaite ici, indépendamment de l'état d'installation.
-    const pluginsAllowed = isPaidTier(ctx.maiUser.tier);
-    const pluginInstallations =
-      ctx.isGhostMode || !pluginsAllowed
-        ? []
-        : await getPluginInstallationsByUserId({ userId: ctx.userId });
+    // peuvent être instanciés, même si le client les mentionne.
+    const pluginInstallations = ctx.isGhostMode
+      ? []
+      : await getPluginInstallationsByUserId({ userId: ctx.userId });
     const enabledPluginIds = pluginInstallations.flatMap((installation) => {
       if (!installation.isEnabled) return [];
       const plugin = getPluginManifest(installation.pluginId);
@@ -309,24 +305,18 @@ export async function DELETE(request: Request) {
     return new ChatbotError("bad_request:api").toResponse();
   }
 
-  const maiUser = await getMaiUser();
-  if (!maiUser) {
+  const session = await requireUser();
+  if (!session) {
     return new ChatbotError("unauthorized:chat").toResponse();
   }
+  const { user: maiUser, userId } = session;
 
   const chat = await getChatById({ id });
   if (!chat) {
     return new ChatbotError("not_found:chat").toResponse();
   }
 
-  if (
-    !chatOwnerMatches({
-      chatUserId: chat.userId,
-      email: maiUser.email,
-      userId: maiUser.id,
-      username: maiUser.username,
-    })
-  ) {
+  if (!chatOwnerMatches({ chatUserId: chat.userId, userId })) {
     return new ChatbotError("forbidden:chat").toResponse();
   }
 

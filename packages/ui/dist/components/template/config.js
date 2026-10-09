@@ -1,0 +1,5 @@
+"use client";
+const config = { "name": "Template", "label": "Mod\xE8les", "description": "G\xE9rez vos mod\xE8les depuis une interface claire.", "fields": [{ "key": "name", "label": "Nom", "kind": "text", "required": true }, { "key": "author", "label": "Auteur", "kind": "text", "required": true }, { "key": "usageCount", "label": "Utilisations", "kind": "number", "required": true }, { "key": "category", "label": "Cat\xE9gorie", "kind": "text", "required": true }, { "key": "status", "label": "Statut", "kind": "status", "required": true, "options": ["draft", "published", "archived"] }], "titleKey": "name", "settings": [{ "key": "notifyTemplate", "label": "Notifications : mod\xE8les", "description": "Recevoir un signal lors des changements." }, { "key": "archiveTemplate", "label": "Archivage automatique", "description": "Archiver les \xE9l\xE9ments termin\xE9s de la section mod\xE8les." }, { "key": "approveTemplate", "label": "Validation requise", "description": "Demander une validation avant publication ou activation." }] };
+export {
+  config
+};

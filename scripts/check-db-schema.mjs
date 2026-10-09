@@ -35,10 +35,38 @@ const REQUIRED_TABLES = [
   "Stream",
   "ScheduledMessage",
   "UserMemory",
+  // Wakies (migration 0037) : sans ces tables, /wakies répond 500 dès le
+  // premier chargement de l'espace de travail, et l'application n'affiche
+  // qu'un écran de chargement infini.
+  "WakiesChatTurn",
+  "WakiesCall",
+  "WakiesCapture",
+  "WakiesConversation",
+  "WakiesMemory",
+  "WakiesMessage",
+  "WakiesPage",
+  "WakiesPageConversation",
+  "WakiesPageReview",
+  "WakiesSettings",
+  "WakiesSpace",
+  "WakiesTask",
+  "WakiesTaskConversation",
+  "WakiesTaskEvent",
+  "WakiesTaskRun",
+  "WakiesWakie",
+  "WakiesWakieSpace",
 ];
 
 // Colonnes introduites par des migrations récentes : détecte une base partiellement migrée.
 const REQUIRED_COLUMNS = [
+  ...[
+    "userId",
+    "conversationId",
+    "messageId",
+    "responseId",
+    "status",
+    "expiresAt",
+  ].map((column) => ({ column, table: "WakiesChatTurn" })),
   { column: "agentApprovalRequired", table: "user_notification_prefs" },
   { column: "executionOwner", table: "AgentRun" },
   { column: "executionLeaseUntil", table: "AgentRun" },
@@ -65,6 +93,11 @@ const REQUIRED_COLUMNS = [
   // tombe en 42703 — pas seulement les deux réglages nouveaux.
   { column: "defaultDictationLanguage", table: "user_preferences" },
   { column: "defaultTranslationLanguage", table: "user_preferences" },
+  // Migration 0038 : le menu favori (mAI / Site / Vibe / Code) est lu à chaque
+  // requête de préférences ; une colonne absente ferait tomber la page
+  // Paramètres comme en 0034.
+  { column: "defaultApp", table: "user_preferences" },
+  { column: "defaultCreationMode", table: "user_preferences" },
   // Migration 0035 : sans `chatMode`/`chatProjectId`, la page Statistiques
   // retombe sur une jointure `Chat` et les tokens d'une conversation
   // SUPPRIMÉE disparaissent de l'historique — le filtre « mode » ferait
@@ -76,6 +109,29 @@ const REQUIRED_COLUMNS = [
   // plus utilisés » affiche 0 exécution pour un plugin très utilisé en Chat.
   { column: "chatId", table: "ToolExecution" },
   { column: "userId", table: "ToolExecution" },
+  // Migration 0041 : `GET /api/wakies/workspace` sélectionne toute la ligne du
+  // Wakie et de ses conversations. Une colonne absente fait répondre 500 au
+  // premier chargement de /wakies (écran de chargement infini), et le chat ne
+  // peut plus ni choisir son modèle ni journaliser le bon.
+  { column: "model", table: "WakiesWakie" },
+  { column: "avatar", table: "WakiesWakie" },
+  { column: "model", table: "WakiesConversation" },
+  // Migration 0042 : `GET /api/wakies/workspace` sélectionne désormais les
+  // colonnes de sélection d'outils, et la configuration de départ lit
+  // `onboardingCompleted`. Une colonne absente fait répondre 500 au premier
+  // chargement de /wakies : plus d'espace de travail, plus de chat, plus
+  // d'assistant — l'application entière est inutilisable.
+  { column: "onboardingCompleted", table: "WakiesSettings" },
+  { column: "mcpServerIds", table: "WakiesWakie" },
+  { column: "pluginIds", table: "WakiesWakie" },
+  { column: "skillIds", table: "WakiesWakie" },
+  { column: "skillParams", table: "WakiesWakie" },
+  { column: "toolIds", table: "WakiesWakie" },
+  { column: "mcpServerIds", table: "WakiesConversation" },
+  { column: "pluginIds", table: "WakiesConversation" },
+  { column: "skillIds", table: "WakiesConversation" },
+  { column: "skillParams", table: "WakiesConversation" },
+  { column: "toolIds", table: "WakiesConversation" },
 ];
 
 const REQUIRED_INDEXES = [

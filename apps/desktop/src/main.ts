@@ -1,5 +1,8 @@
-import { app, BrowserWindow, Menu, shell, dialog, nativeImage } from "electron";
+import { app, BrowserWindow, Menu, shell, dialog, nativeImage, ipcMain } from "electron";
+import { existsSync } from "node:fs";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
+import { openCliWindow } from "./cli-window";
 
 const APP_URL = "https://mai-officiel.vercel.app";
 const APP_TITLE = "mAI";
@@ -11,6 +14,7 @@ if (!gotLock) {
 }
 
 let mainWindow: BrowserWindow | null = null;
+let coderWindow: BrowserWindow | null = null;
 
 function getIconPath(): string | undefined {
   if (process.platform === "win32") {
@@ -52,11 +56,19 @@ function createWindow(): void {
   });
 
   // Charge l'URL officielle (iframe = loadURL en Electron)
-  mainWindow.loadURL(APP_URL).catch((err) => {
+  const targetAppArg = process.argv.find((a) => a.startsWith("--app="));
+  const targetApp = targetAppArg
+    ? targetAppArg.split("=")[1].toLowerCase().trim()
+    : (process.env.MAI_APP || "").toLowerCase().trim();
+  const launchUrl = targetApp
+    ? `${APP_URL}/?app=${encodeURIComponent(targetApp)}`
+    : APP_URL;
+
+  mainWindow.loadURL(launchUrl).catch((err) => {
     console.error("[mAI] loadURL failed:", err);
     dialog.showErrorBox(
       "Erreur de chargement",
-      `Impossible de charger ${APP_URL}\n\nVérifiez votre connexion internet.`
+      `Impossible de charger ${launchUrl}\n\nVérifiez votre connexion internet.`
     );
   });
 
@@ -250,3 +262,154 @@ app.on("web-contents-created", (_event, contents) => {
     event.preventDefault();
   });
 });
+
+/**
+ * Recherche les chemins d'accès au runtime Coder (bundle HTML et preload)
+ */
+function resolveCoderPaths(): { htmlPath: string | null; preloadPath: string | null } {
+  const candidatePreloads = [
+    path.resolve(__dirname, "../../coder/electron/preload.cjs"),
+    path.resolve(__dirname, "../coder/electron/preload.cjs"),
+    path.resolve(process.resourcesPath, "coder/electron/preload.cjs"),
+    path.resolve(app.getAppPath(), "../coder/electron/preload.cjs"),
+  ];
+
+  const candidateHtmls = [
+    path.resolve(__dirname, "../../coder/dist/index.html"),
+    path.resolve(__dirname, "../coder/dist/index.html"),
+    path.resolve(process.resourcesPath, "coder/dist/index.html"),
+    path.resolve(app.getAppPath(), "../coder/dist/index.html"),
+  ];
+
+  const preloadPath = candidatePreloads.find((p) => existsSync(p)) ?? null;
+  const htmlPath = candidateHtmls.find((p) => existsSync(p)) ?? null;
+
+  return { htmlPath, preloadPath };
+}
+
+/**
+ * Crée ou met au premier plan la fenêtre dédiée mAI Coder
+ */
+async function createOrFocusCoderWindow(opts?: { workspacePath?: string }): Promise<{ success: boolean; error?: string }> {
+  try {
+    if (coderWindow && !coderWindow.isDestroyed()) {
+      if (coderWindow.isMinimized()) coderWindow.restore();
+      coderWindow.show();
+      coderWindow.focus();
+      return { success: true };
+    }
+
+    const { htmlPath, preloadPath } = resolveCoderPaths();
+    const isDev = !app.isPackaged;
+    const devUrl = process.env.VITE_DEV_SERVER_URL ?? "http://127.0.0.1:5173";
+
+    const titleBarOptions =
+      process.platform === "darwin"
+        ? { titleBarStyle: "hiddenInset" as const }
+        : process.platform === "win32"
+          ? {
+              titleBarStyle: "hidden" as const,
+              titleBarOverlay: {
+                color: "#0a0c10",
+                symbolColor: "#c9d1d9",
+                height: 36,
+              },
+            }
+          : {};
+
+    coderWindow = new BrowserWindow({
+      width: 1440,
+      height: 900,
+      minWidth: 900,
+      minHeight: 600,
+      title: "mAI Coder",
+      backgroundColor: "#0d0f12",
+      icon: getIconPath(),
+      show: false,
+      ...titleBarOptions,
+      webPreferences: {
+        preload: preloadPath ?? path.join(__dirname, "preload.js"),
+        contextIsolation: true,
+        nodeIntegration: false,
+        sandbox: true,
+        webviewTag: true,
+      },
+    });
+
+    // SSO : Synchroniser les cookies de session mAI depuis la fenêtre principale
+    if (mainWindow && !mainWindow.isDestroyed()) {
+      try {
+        const cookies = await mainWindow.webContents.session.cookies.get({});
+        for (const cookie of cookies) {
+          const scheme = cookie.secure ? "https://" : "http://";
+          const domain = cookie.domain?.startsWith(".") ? cookie.domain.slice(1) : (cookie.domain ?? "mai-officiel.vercel.app");
+          const url = `${scheme}${domain}${cookie.path ?? "/"}`;
+          await coderWindow.webContents.session.cookies.set({
+            url,
+            name: cookie.name,
+            value: cookie.value,
+            domain: cookie.domain,
+            path: cookie.path,
+            secure: cookie.secure,
+            httpOnly: cookie.httpOnly,
+            expirationDate: cookie.expirationDate,
+          }).catch(() => {
+            // Ignorer les erreurs silencieuses sur certains cookies système
+          });
+        }
+      } catch (_err) {
+        console.warn("[mAI Desktop] Impossible de synchroniser les cookies de session vers Coder:", _err);
+      }
+    }
+
+    coderWindow.once("ready-to-show", () => {
+      coderWindow?.show();
+      coderWindow?.focus();
+    });
+
+    coderWindow.on("closed", () => {
+      coderWindow = null;
+    });
+
+    const params = new URLSearchParams();
+    if (opts?.workspacePath) {
+      params.set("workspace", opts.workspacePath);
+    }
+    const query = params.toString() ? `?${params.toString()}` : "";
+
+    if (isDev && process.env.MAI_CODER_DEV === "1") {
+      await coderWindow.loadURL(`${devUrl}${query}`);
+    } else if (htmlPath) {
+      const fileUrl = pathToFileURL(htmlPath).href + query;
+      await coderWindow.loadURL(fileUrl);
+    } else {
+      await coderWindow.loadURL(`${APP_URL}/coder${query}`);
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error("[mAI Desktop] Erreur lors de l'ouverture de mAI Coder:", error);
+    return { success: false, error: String(error) };
+  }
+}
+
+// Seule la fenêtre web officielle peut demander l'ouverture du terminal local.
+ipcMain.handle("desktop:open-cli", async (event) => {
+  if (event.sender !== mainWindow?.webContents || event.senderFrame !== event.sender.mainFrame ||
+      new URL(event.senderFrame?.url || "about:blank").origin !== new URL(APP_URL).origin) {
+    return { success: false, error: "Ouverture du CLI refusée depuis cette fenêtre." };
+  }
+  return openCliWindow();
+});
+
+// Handlers IPC pour la communication entre la fenêtre web et le système desktop
+ipcMain.handle("desktop:open-coder", async (_event, opts) => {
+  return await createOrFocusCoderWindow(opts);
+});
+
+ipcMain.handle("desktop:get-coder-status", () => {
+  return {
+    running: Boolean(coderWindow && !coderWindow.isDestroyed()),
+  };
+});
+

@@ -13,12 +13,12 @@
  */
 import type { Hono } from "npm:hono@4";
 import type { RegisterMultiFn } from "./vibe-common.ts";
-import { ensureDMTables, ensureMAIAccount } from "./vibe-dms-core.ts";
 import { registerDMDirectRoutes } from "./vibe-dms-conversations.ts";
+import { ensureDMTables, ensureMAIAccount } from "./vibe-dms-core.ts";
+import { registerDMGroupRoutes } from "./vibe-dms-groups.ts";
 import { registerDMMessageActionRoutes } from "./vibe-dms-message-actions.ts";
 import { registerDMModerationRoutes } from "./vibe-dms-moderation.ts";
 import { registerDMNotificationRoutes } from "./vibe-dms-notifications.ts";
-import { registerDMGroupRoutes } from "./vibe-dms-groups.ts";
 
 export {
   DM_MESSAGE_CHARS_FREE,
@@ -28,7 +28,10 @@ export {
   publishScheduledDMs,
 } from "./vibe-dms-core.ts";
 
-export function registerVibeDMsRoutes(app: Hono, registerMulti: RegisterMultiFn) {
+export function registerVibeDMsRoutes(
+  app: Hono,
+  registerMulti: RegisterMultiFn
+) {
   ensureDMTables();
   ensureMAIAccount();
   registerDMDirectRoutes(app, registerMulti);
